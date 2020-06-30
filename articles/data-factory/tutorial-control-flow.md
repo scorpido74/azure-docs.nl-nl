@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 7746726775cd5230f48842ad9a9260efe0e540b5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fd006e836432ce775be8cbbefea6d9219e8b13b3
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022109"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253457"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Activiteiten vertakken en koppelen in een Data Factory-pijplijn
 
@@ -48,7 +48,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 * Azure-opslagaccount. U gebruikt de blobopslag als bron-gegevensopslag. Raadpleeg [Een opslagaccount maken](../storage/common/storage-account-create.md) als u geen account Azure-opslagaccount hebt.
 * Azure Storage Explorer. Zie [Azure Storage Explorer](https://storageexplorer.com/) als u dit hulpprogramma wilt installeren.
-* Azure SQL Database. U gebruikt de database als sink-gegevensopslag. Zie [Een Azure SQL-database maken](../azure-sql/database/single-database-create-quickstart.md) als u geen Azure SQL Database hebt.
+* Azure SQL Database. U gebruikt de database als sink-gegevensopslag. Als u geen database in Azure SQL Database hebt, raadpleegt u het artikel [Een database in Azure SQL Database maken](../azure-sql/database/single-database-create-quickstart.md).
 * Visual Studio. Dit artikel gebruikt Visual Studio 2019.
 * Azure .NET SDK. Download en installeer de [Azure .NET SDK](https://azure.microsoft.com/downloads/).
 

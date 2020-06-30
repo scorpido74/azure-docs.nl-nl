@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een node. js-web-app bouwen met Azure Cosmos DB java script SDK voor het beheren van SQL-API-gegevens'
+title: 'Zelfstudie: Een Node.js-web-app bouwen met Azure Cosmos DB voor het beheren van SQL API-gegevens'
 description: In deze zelfstudie over Node.js wordt uitgelegd hoe u Microsoft Azure Cosmos DB gebruikt voor het opslaan van en de toegang tot gegevens van een Node.js Express-webtoepassing die wordt gehost op de Web Apps-functie van Microsoft Azure App Service.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 9257a87c69e98db1107528551fe9ce0553c50f75
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: b85a70b6d2feba68ed5a766ad05bc6aa22f597f8
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858148"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114687"
 ---
-# <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Zelf studie: een node. js-web-app maken met behulp van de Java script SDK voor het beheren van een SQL-API-account in Azure Cosmos DB 
+# <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Zelfstudie: Een Node.js-web-app bouwen met behulp van de JavaScript SDK voor het beheren van een SQL API-account in Azure Cosmos DB 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -27,7 +27,7 @@ ms.locfileid: "82858148"
 
 Als ontwikkelaar hebt u mogelijk toepassingen die gebruikmaken van NoSQL-documentgegevens. U kunt een SQL-API-account in Azure Cosmos DB gebruiken om deze documentgegevens op te slaan en te openen. In deze zelfstudie over Node.js wordt uitgelegd hoe u gegevens uit een SQL API-account in Azure Cosmos DB kunt opslaan en openen met behulp van een Node.js Express-toepassing die wordt gehost in de Web Apps-functie van Microsoft Azure App Service. In deze zelfstudie bouwt u een webtoepassing (Todo-app) waarmee u taken kunt maken, ophalen en voltooien. De taken worden opgeslagen als JSON-documenten in Azure Cosmos DB. 
 
-Deze zelfstudie laat zien hoe u een SQL API-account in Azure Cosmos DB kunt maken met behulp van Azure Portal. Vervolgens bouwt u een web-app die op de Node.js SDK is gebouwd om een database en container te maken en items aan de container toe te voegen. Daarna kunt u de web-app uitvoeren. In deze zelf studie wordt Java script SDK versie 3,0 gebruikt.
+Deze zelfstudie laat zien hoe u een SQL API-account in Azure Cosmos DB kunt maken met behulp van Azure Portal. Vervolgens bouwt u een web-app die op de Node.js SDK is gebouwd om een database en container te maken en items aan de container toe te voegen. Daarna kunt u de web-app uitvoeren. In deze zelfstudie wordt gebruikgemaakt van JavaScript SDK-versie 3.0.
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -50,7 +50,7 @@ Voordat u de instructies in dit artikel uitvoert, moet u beschikken over de volg
 * Installeer [Git][Git] op uw lokale werkstation.
 
 ## <a name="create-an-azure-cosmos-db-account"></a><a name="_Toc395637761"></a>Een Azure Cosmos DB-account maken
-Begin met het maken van een Azure Cosmos DB-account. Als u al een account hebt of de Azure Cosmos DB-emulator gebruikt voor deze zelfstudie, kunt u direct doorgaan naar [Stap 2: een nieuwe Node.js-toepassing maken](#_Toc395783178).
+Begin met het maken van een Azure Cosmos DB-account. Als u al een account hebt of de Azure Cosmos DB-emulator gebruikt voor deze zelfstudie, kunt u direct doorgaan naar [Stap 2: Een nieuwe Node.js-toepassing maken](#_Toc395783178).
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -84,15 +84,15 @@ Laten we eens kijken hoe u het Express-framework gebruikt om een eenvoudig Hallo
 
 1. U kunt uw nieuwe toepassing bekijken door in uw browser naar `http://localhost:3000` te gaan.
    
-   ![Node.js leren - Schermopname van de toepassing Hello World in een browservenster](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
+   :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-express.png" alt-text="Node.js leren - Schermopname van de toepassing Hello World in een browservenster":::
 
-   Stop de toepassing met behulp van CTRL + C in het Terminal venster en selecteer **y** om de batch-taak te beëindigen.
+   Stop de toepassing door middel van Ctrl+C in het terminalvenster en selecteer **y** om de batchtaak te beëindigen.
 
 ## <a name="install-the-required-modules"></a><a name="_Toc395783179"></a>De vereiste modules installeren
 
 Het bestand **package.json** is een van de bestanden die zijn gemaakt in de hoofdmap van het project. Dit bestand bevat een lijst met aanvullende modules die u nodig hebt voor uw Node.js-toepassing. Wanneer u deze toepassing implementeert in Azure, wordt dit bestand gebruikt om te bepalen welke modules ter ondersteuning van de toepassing in Azure moeten worden geïnstalleerd. Installeer nog twee pakketten voor deze zelfstudie.
 
-1. Installeer de ** \@Azure/Cosmos-** module via NPM. 
+1. Installeer de module **\@azure/cosmos** via NPM. 
 
    ```bash
    npm install @azure/cosmos
@@ -102,7 +102,7 @@ Het bestand **package.json** is een van de bestanden die zijn gemaakt in de hoof
 U hebt nu de initiële setup en configuratie voltooid. U gaat nu code schrijven die voor de Todo-toepassing is vereist om met Azure Cosmos DB te kunnen communiceren.
 
 ### <a name="create-the-model"></a>Het model maken
-1. Maak in de hoofdmap van de projectmap een nieuwe map met de naam **modellen**.  
+1. Maak in de hoofdmap van uw projectmap een nieuwe map met de naam **models**.  
 
 2. Maak in de map **models** een nieuw bestand met de naam **taskDao.js**. Dit bestand bevat code die vereist is voor het maken van de database en de container. Het definieert ook methoden om taken te lezen, bij te werken, te maken en te zoeken in Azure Cosmos DB. 
 
@@ -358,7 +358,7 @@ U hebt nu de initiële setup en configuratie voltooid. U gaat nu code schrijven 
 
 ## <a name="build-a-user-interface"></a><a name="_Toc395783181"></a>Een gebruikersinterface maken
 
-Nu gaan we de gebruikers interface maken, zodat een gebruiker kan communiceren met de toepassing. De Express-toepassing die is gemaakt in de vorige secties, gebruikt **Jade** als de weergave-engine.
+Nu gaan we de gebruikersinterface bouwen zodat een gebruiker kan werken met de toepassing. De Express-toepassing die is gemaakt in de vorige secties, gebruikt **Jade** als de weergave-engine.
 
 1. Het bestand **layout.jade** in de map **views** wordt gebruikt als een algemeen sjabloon voor andere **.jade**-bestanden. In deze stap wordt het bestand aangepast voor het gebruik van Twitter Bootstrap. Dit is een werkset waarmee u een website kunt ontwerpen.  
 
@@ -438,16 +438,16 @@ Nu u de toepassing hebt gebouwd, kunt u deze lokaal uitvoeren met behulp van de 
 
 1. Als u de toepassing wilt testen op de lokale machine, voert u `npm start` uit in de terminal om de toepassing te starten. Vernieuw vervolgens de browserpagina `http://localhost:3000`. De pagina ziet er nu uit zoals de volgende schermafbeelding:
    
-    ![Schermopname van de toepassing MyTodo List in een browservenster](./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png)
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="Schermopname van de toepassing MyTodo List in een browservenster":::
 
     > [!TIP]
     > Als u een fout ontvangt over de inspringing in het layout.jade- of index.jade-bestand, moet u ervoor zorgen dat de eerste twee regels in beide bestanden links worden uitgelijnd, zonder spaties. Als er vóór de eerste twee regels spaties staan, verwijdert u deze, slaat u beide bestanden op en vernieuwt u het browservenster. 
 
-2. Gebruik de velden item, item naam en categorie om een nieuwe taak in te voeren en selecteer vervolgens **item toevoegen**. Hiermee maakt u in Azure Cosmos DB een document met deze eigenschappen. 
+2. Gebruik de velden Item, Itemnaam en Categorie om een nieuwe taak in te voeren en selecteer vervolgens **Item toevoegen**. Hiermee maakt u in Azure Cosmos DB een document met deze eigenschappen. 
 
 3. De pagina moet worden bijgewerkt met het nieuwe item in de takenlijst.
    
-    ![Schermopname van de toepassing met een nieuw item in de takenlijst](./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png)
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="Schermopname van de toepassing met een nieuw item in de takenlijst":::
 
 4. Als u een taak wilt voltooien, schakelt u het selectievakje in de kolom Voltooid in en selecteert u vervolgens **Taken bijwerken**. Hiermee wordt het door u gemaakte document bijgewerkt en uit de weergave verwijderd.
 

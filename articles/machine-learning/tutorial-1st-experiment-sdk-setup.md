@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Uw eerste ML-experiment opzetten'
-titleSuffix: Azure Machine Learning
+title: 'Zelfstudie: Experimenteren in Jupyter-notebooks (Python)'
+titleSuffix: Machine Learning - Azure
 description: In deze zelfstudie gaat u aan de slag met de Python SDK voor Azure Machine Learning die wordt uitgevoerd in Jupyter-notebooks.  In deel 1 maakt u een werkruimte waarin u experimenten en ML-modellen beheert.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 564358bf7d689abf93f6a9549fab0c2932e99f5b
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c0df2459b09eca472c833be2865232c0247210dd
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558378"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106599"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Zelfstudie: Ga aan de slag met het maken van uw eerste ML-experiment met de Python SDK
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begin
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 
-Een Azure Machine Learning-werkruimte is een basisblok in de cloud dat u gebruikt voor het experimenteren, trainen en implementeren van machine learning-modellen. Het bindt uw Azure-abonnement en resourcegroep aan een eenvoudig te verbruiken object in de service. 
+Een Azure Machine Learning-werkruimte is een basisblok in de cloud dat u gebruikt voor het experimenteren, trainen en implementeren van machine learning-modellen. De klasse bindt uw Azure-abonnement en resourcegroep aan een eenvoudig te verbruiken object in de service. 
 
 U maakt een werkruimte via de Azure-portal, een webconsole om uw Azure-resources te beheren. 
 
@@ -58,7 +58,7 @@ U doorloopt de volgende stappen voor het voorbereiden en uitvoeren van het exper
 
 1. Meld u aan bij [Azure Machine Learning Studio](https://ml.azure.com/).
 
-1. Selecteer uw abonnement en de werkruimte die u hebt gemaakt.
+1. Selecteer uw abonnement en de werkruimte die u heeft gemaakt.
 
 1. Selecteer **Notebooks** aan de linkerkant.
 

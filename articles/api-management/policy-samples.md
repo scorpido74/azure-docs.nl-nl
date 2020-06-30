@@ -1,46 +1,31 @@
 ---
-title: Voorbeelden van Azure API Management-beleid | Microsoft Docs
-description: Meer informatie over het beschikbare beleid voor gebruik in Azure API Management.
-services: api-management
-documentationcenter: ''
-author: vladvino
-manager: cflower
-editor: ''
+title: Ingebouwde beleidsdefinities voor Azure API Management
+description: Een overzicht van de ingebouwde Azure Policy-beleidsdefinities voor Azure API Management. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
+ms.date: 06/11/2020
+author: georgewallace
+ms.author: gwallace
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: sample
-ms.date: 10/31/2017
-ms.author: apimpm
-ms.custom: mvc
-ms.openlocfilehash: 9bdcf9ea247adb8d5941c75f90f7db3915af20bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: subject-policy-samples
+ms.openlocfilehash: b7e273b4ae7d213eb45775540d1e83b5a4d8b971
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75940944"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124002"
 ---
-# <a name="api-management-policy-samples"></a>Voorbeelden van API Management-beleid
+# <a name="azure-policy-built-in-policy-definitions-for-azure-api-management"></a>Lijst met ingebouwde beleidsdefinities van Azure Policy voor Azure API Management
 
-[Beleidsregels](api-management-howto-policies.md) zijn een krachtige mogelijkheid van API Management waarmee de uitgever het gedrag van de API via configuratie kan wijzigen. Beleidsregels zijn een verzameling instructies die sequentieel worden uitgevoerd op de aanvraag of het antwoord van een API. De volgende tabel bevat koppelingen naar voorbeelden en geeft u een korte beschrijving van elk voorbeeld.
+Deze pagina is een index van ingebouwde [Azure Policy](../governance/policy/overview.md)-beleidsdefinities voor Azure API Management. Zie [Ingebouwde Azure Policy-definities](../governance/policy/samples/built-in-policies.md) voor aanvullende ingebouwde modules voor Azure Policy voor andere services. Zie [API Management - Beleidsindex](./policies/index.md) voor voorbeelden van API Management-beleid.
 
-|                                                                                                                                                                      |                                                                                                                                                                                                                             |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Inkomende beleidsregels**                                                                                                                                                 |                                                                                                                                                                                                                             |
-| [Voegt een Forwarded-koptekst zodat de back-end API de juiste URL's kan maken](./policies/set-header-to-enable-backend-to-construct-urls.md?toc=api-management/toc.json) | Demonstreert hoe u een Forwarded-koptekst toevoegt in de binnenkomende aanvraag zodat de back-end-API de juiste URL's kan maken.                                                                                                        |
-| [Een header met een correlatie-id toevoegen](./policies/add-correlation-id.md?toc=api-management/toc.json)                                                             | Demonstreert hoe u een koptekst met een correlatie-id kunt toevoegen aan de binnenkomende aanvraag.                                                                                                                                        |
-| [Mogelijkheden toevoegen aan een back-endservice en de reactie in cache opslaan](./policies/cache-response.md?toc=api-management/toc.json)                                             | Laat zien hoe u mogelijkheden kunt toevoegen aan een back-endservice. Bijvoorbeeld, een naam van de locatie accepteren in plaats van de breedtegraad en lengtegraad in een weerprognose-API.                                                                    |
-| [Toegang verlenen op basis van JWT-claims ](./policies/authorize-request-based-on-jwt-claims.md?toc=api-management/toc.json)                                              | Laat zien hoe u toegang verleent aan specifieke HTTP-methoden op een API op basis van JWT-claims.                                                                                                                                       |
-| [Aanvragen via externe authorizer autoriseren](./policies/authorize-request-using-external-authorizer.md)                                                   | Hiermee kunt u zien hoe u een externe authorizer gebruikt voor het beveiligen van API-toegang.                                                                                                                                                               |
-| [Toestaan van toegang met behulp van Google-OAuth-token](./policies/use-google-as-oauth-token-provider.md?toc=api-management/toc.json)                                            | Laat zien hoe u toegang verleent aan uw eindpunten met Google als een provider van OAuth-token.                                                                                                                                    |
-| [IP-adressen filteren bij het gebruik van een Application Gateway](./policies/filter-ip-addresses-when-using-appgw.md) | Toont hoe IP-filter in beleid wordt weer gegeven wanneer het API Management exemplaar wordt geopend via een Application Gateway
-| [Shared Access Signature genereren en aanvraag doorsturen naar Azure-opslag](./policies/generate-shared-access-signature.md?toc=api-management/toc.json)                  | Laat zien hoe u [Shared Access Signature](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) genereert met expressies en de aanvraag doorstuurt naar Azure-opslag met beleid voor herschrijven van URI. |
-| [OAuth2 toegangstoken ophalen uit AAD en dit doorsturen naar de back-end](./policies/use-oauth2-for-authorization.md?toc=api-management/toc.json)                             | Biedt een voorbeeld van het gebruik van OAuth2 voor autorisatie tussen de gateway en een back-end. Er wordt weergegeven hoe u een toegangstoken van AAD kunt verkrijgen en dit door kunt sturen naar de back-end.                                                    |
-| [X-CSRF-token ophalen uit SAP-gateway met behulp van beleid voor verbindingsaanvragen verzenden](./policies/get-x-csrf-token-from-sap-gateway.md?toc=api-management/toc.json)                           | Laat zien hoe u een X-CSRF-patroon implementeert dat wordt gebruikt door veel API's. Dit voorbeeld is specifiek voor SAP-Gateway.                                                                                                                           |
-| [De aanvraag op basis van de grootte van de hoofdtekst routeren](./policies/route-requests-based-on-size.md?toc=api-management/toc.json)                                            | Demonstreert hoe u aanvragen op basis van de grootte van hun hoofdtekst routeert.                                                                                                                                                       |
-| [Aanvraag contextinformatie sturen naar de back-endservice](./policies/send-request-context-info-to-backend-service.md?toc=api-management/toc.json)                    | Laat zien hoe u bepaalde contextgegevens kunt verzenden naar de back-endservice voor logboekregistratie of voor verwerking.                                                                                                                                |
-| [Duur antwoordcache instellen](./policies/set-cache-duration.md?toc=api-management/toc.json)                                                                          | Demonstreert hoe u de duur van het antwoord instelt met de maxAge-waarde in Cache-Control-header die door de back-end is verstuurd.                                                                                                             |
-| **Uitgaand beleid**                                                                                                                                                |                                                                                                                                                                                                                             |
-| [Antwoordinhoud filteren](./policies/filter-response-content.md?toc=api-management/toc.json)                                                                         | Demonstreert hoe u gegevenselementen van de nettolading van de reactie moet filteren op basis van het product dat is gekoppeld aan de aanvraag.                                                                                                        |
-| **Beleid op fout**                                                                                                                                                |                                                                                                                                                                                                                             |
-| [Fouten registreren in Stackify](./policies/log-errors-to-stackify.md?toc=api-management/toc.json)                                                                           | Laat zien hoe u een beleid voor logboekregistratie van fouten toevoegt voor het verzenden van fouten naar Stackify voor logboekregistratie.                                                                                                                                            |
+De naam van elke ingebouwde beleidsdefinitie linkt naar de beleidsdefinitie in de Azure-portal. Gebruik de koppeling in de kolom **Versie** om de bron te bekijken in de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
+
+## <a name="azure-api-management"></a>Azure API Management
+
+[!INCLUDE [azure-policy-samples-rp-apimanagement](../../includes/policy/samples/byrp/microsoft.apimanagement.md)]
+
+## <a name="next-steps"></a>Volgende stappen
+
+- Bekijk de inbouwingen op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
+- Lees over de [structuur van Azure Policy-definities](../governance/policy/concepts/definition-structure.md).
+- Lees [Informatie over de effecten van het beleid](../governance/policy/concepts/effects.md).

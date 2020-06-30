@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 83e6498f47c36fa54890131922dc8d452a3d9220
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: edb6846d199470818e07a208feb778aca3021d9e
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560491"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253661"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Activiteiten in een Azure Data Factory-pijplijn vertakken en koppelen met behulp van de Azure-portal
 
@@ -44,7 +44,7 @@ In deze zelfstudie wordt Azure Portal gebruikt. U kunt andere methoden gebruiken
 
 * **Azure-abonnement**. Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 * **Een Azure Storage-account**. U gebruikt de blob-opslag als **bron**-gegevensopslag. Als u geen Azure-opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-account-create.md) om een account te maken.
-* **Azure SQL-database**. U gebruikt de database als **sink**-gegevensopslag. Als u geen Azure SQL-database hebt, raadpleegt u het artikel [Een Azure SQL-database maken](../azure-sql/database/single-database-create-quickstart.md) om een database te maken.
+* **Azure SQL-database**. U gebruikt de database als **sink**-gegevensopslag. Als u geen database in Azure SQL Database hebt, raadpleegt u het artikel [Een database in Azure SQL Database maken](../azure-sql/database/single-database-create-quickstart.md) om te stappen te zien om er een te maken.
 
 ### <a name="create-blob-table"></a>Blobtabel maken
 
@@ -206,6 +206,7 @@ In deze stap maakt u een pijplijn met één kopieeractiviteit en twee webactivit
 13. Ga naar het tabblad **Pijplijn** (of) klik op de pijplijn in de structuurweergave. Controleer of **SourceBlobDataset** is geselecteerd als **Brongegevensset**.
 
     ![Brongegevensset](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
+
 13. Ga in het venster Eigenschappen naar het tabblad **Sink** en klik op **+ Nieuw** voor **Sink-gegevensset**. In deze stap maakt u een sink-gegevensset voor de kopieeractiviteit. Dit doet u op dezelfde manier als waarop u de brongegevensset hebt gemaakt.
 
     ![Knop Nieuwe sink-gegevensset](./media/tutorial-control-flow-portal/new-sink-dataset-button.png)

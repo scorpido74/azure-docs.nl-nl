@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4a5936501f45694febe284d9747bdefdfeae6aeb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ca0af9a34587f8d3a3c0502c77556975b1d8df4e
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84023985"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253831"
 ---
 # <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Zelfstudie: Een voorspellend model maken in R met Azure SQL Database Machine Learning Services (preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-In deel twee van deze driedelige zelfstudie maakt u twee voorspellende modellen in R en selecteert u het meest accurate model. In het volgende deel implementeert u dit model in een SQL-database met Azure SQL Database Machine Learning Services (preview).
+In deel twee van deze driedelige zelfstudie maakt u twee voorspellende modellen in R en selecteert u het meest accurate model. In het volgende deel implementeert u dit model in een database in Azure SQL Database met Azure SQL Database Machine Learning Services (preview).
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
@@ -38,7 +38,7 @@ In dit artikel leert u het volgende:
 
 In [deel een](predictive-model-prepare-data-tutorial.md) hebt u geleerd hoe u een voorbeelddatabase importeert en vervolgens de gegevens voorbereidt om te worden gebruikt voor het trainen van een voorspellend model in R.
 
-In [deel drie](predictive-model-deploy-tutorial.md) leert u hoe u het model opslaat in een database en vervolgens opgeslagen procedures maakt vanuit de R-scripts die u hebt ontwikkeld in delen een en twee. De opgeslagen procedures worden in een SQL-database uitgevoerd om voorspellingen te doen op basis van nieuwe gegevens.
+In [deel drie](predictive-model-deploy-tutorial.md) leert u hoe u het model opslaat in een database en vervolgens opgeslagen procedures maakt vanuit de R-scripts die u hebt ontwikkeld in delen één en twee. De opgeslagen procedures worden in een database uitgevoerd om voorspellingen te doen op basis van nieuwe gegevens.
 
 ## <a name="prerequisites"></a>Vereisten
 

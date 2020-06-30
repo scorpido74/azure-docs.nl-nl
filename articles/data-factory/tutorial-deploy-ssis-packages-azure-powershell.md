@@ -14,12 +14,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 6ffc1aa6e28bf17d0de3783e5e03b6a2df541e4a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2c3f2ccd80f2f329a7495beda1a002d84d769802
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194653"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253916"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>Een Azure-SSIS IR instellen in Azure Data Factory met behulp van PowerShell
 
@@ -55,7 +55,7 @@ In deze zelfstudie leert u het volgende:
     - Op basis van de geselecteerde databaseserver kan SSISDB namens u worden gemaakt als een enkele database, als onderdeel van een elastische pool of in SQL Managed Instance. De database is toegankelijk in een openbaar netwerk of kan worden toegevoegd aan een virtueel netwerk. Zie [SQL Database en een beheerd exemplaar van SQL vergelijken](create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance) voor hulp bij het kiezen van het type databaseserver om SSISDB te hosten.
     
       Als u SQL Database gebruikt met een IP-firewall of eindpunten voor een virtuele-netwerkservice, of SQL Managed Instance met een privé-eindpunt om SSISDB te hosten, of als u toegang tot on-premises gegevens nodig hebt zonder een zelf-hostende IR te configureren, moet u uw Azure-SSIS IR toevoegen aan een virtueel netwerk. Zie [Een Azure-SSIS IR maken in een virtueel netwerk](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime) voor meer informatie.
-    - Controleer of de instelling **Toegang tot Azure-services toestaan** is ingeschakeld voor SQL Database. Deze instelling is niet van toepassing wanneer u SQL Database gebruikt met IP-firewallregels of eindpunten voor een virtuele-netwerkservice, of SQL Managed Instance met een privé-eindpunt om SSISDB te hosten. Zie [Secure your Azure SQL database](../azure-sql/database/secure-database-tutorial.md#create-firewall-rules) (Azure SQL-database beveiligen) voor meer informatie. Zie [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) om deze instelling in te schakelen met behulp van PowerShell.
+    - Controleer of de instelling **Toegang tot Azure-services toestaan** is ingeschakeld voor SQL Database. Deze instelling is niet van toepassing wanneer u SQL Database gebruikt met IP-firewallregels of eindpunten voor een virtuele-netwerkservice, of SQL Managed Instance met een privé-eindpunt om SSISDB te hosten. Zie [Secure Azure SQL Database](../azure-sql/database/secure-database-tutorial.md#create-firewall-rules) (Azure SQL Database beveiligen) voor meer informatie. Zie [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) om deze instelling in te schakelen met behulp van PowerShell.
     - Voeg het IP-adres van de clientcomputer (of een reeks IP-adressen dat het IP-adres van de clientcomputer bevat) toe aan de lijst met client-IP-adressen in de instellingen van de firewall voor SQL Database. Zie [Firewallregels op server- en -databaseniveau maken](../azure-sql/database/firewall-configure.md) voor meer informatie.
     - U kunt verbinding maken met SQL Database of SQL Managed Instance via SQL-verificatie met de beheerdersreferenties van de server of Azure AD-verificatie (Azure Active Directory) met de beheerde identiteit voor uw data factory. Voor verificatie met Azure AD moet u de beheerde identiteit voor uw data factory toevoegen aan een Azure AD-groep met toegangsmachtigingen voor de databaseserver. Zie [Een Azure-SSIS IR maken met Azure AD-verificatie](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime) voor meer informatie.
     - Controleer of er nog geen SSISDB is gemaakt voor SQL Database of SQL Managed Instance. Bij het instellen van een Azure-SSIS IR is het niet mogelijk om een bestaande SSISDB te gebruiken.

@@ -1,6 +1,6 @@
 ---
 title: Incrementeel gegevens kopiëren met behulp van Wijzigingen bijhouden met behulp van de Azure-portal
-description: In deze zelfstudie maakt u een Azure Data Factory-pijplijn waarmee wijzigingsgegevens incrementeel uit meerdere tabellen van een SQL Server-database worden gekopieerd naar een Azure SQL-database.
+description: In deze zelfstudie maakt u een Azure Data Factory-pijplijn waarmee wijzigingsgegevens incrementeel uit meerdere tabellen van een SQL Server-database worden gekopieerd naar een database in Azure SQL Database.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 51d8d1c7405622ea8fd3bb847937abcb0e748523
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: cb8d03b853e4e0f4f5f60a144e7a05ef19de1071
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559795"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251825"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Incrementeel gegevens kopiëren van Azure SQL Database naar Azure Blob Storage met behulp van technologie voor bijhouden van wijzigingen met behulp van de Azure-portal
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-In deze zelfstudie maakt u een Azure data factory met een pijplijn die gewijzigde gegevens laadt op basis van informatie over **wijzigingen** in de Azure SQL-brondatabase naar een Azure blob storage.  
+In deze zelfstudie maakt u een Azure data factory met een pijplijn die gewijzigde gegevens laadt op basis van informatie over **wijzigingen** in de brondatabase in Azure SQL Database naar een Azure blob storage.  
 
 In deze zelfstudie voert u de volgende stappen uit:
 
@@ -45,9 +45,9 @@ Hier zijn de gangbare end-to-end werkstroomstappen voor het incrementeel laden v
 > Zowel de Azure SQL Database als SQL Server ondersteunen de technologie voor wijzigingen bijhouden. In deze zelfstudie wordt Azure SQL Database gebruikt als de bron-gegevensopslag. U kunt ook een SQL Server-exemplaar gebruiken.
 
 1. **Initieel laden van historische gegevens** (één keer uitgevoerd):
-    1. Technologie voor wijzigingen bijhouden inschakelen in de Azure SQL-brondatabase.
-    2. Haal de eerste waarde van SYS_CHANGE_VERSION op uit de Azure SQL-database als de basislijn voor het vastleggen van gewijzigde gegevens.
-    3. Volledige gegevens laden van een Azure SQL-database naar een Azure blob storage.
+    1. Technologie voor wijzigingen bijhouden inschakelen in de brondatabase in Azure SQL Database.
+    2. Haal de eerste waarde van SYS_CHANGE_VERSION op uit de database als de basislijn voor het vastleggen van gewijzigde gegevens.
+    3. Volledige gegevens laden van een brondatabase naar een Azure blob storage.
 2. **Incrementeel laden van wijzigingsgegevens volgens een schema** (uitvoeren na het initiële laden van gegevens):
     1. Haal de oude en nieuwe SYS_CHANGE_VERSION waarden op.
     3. Laden van de deltagegevens door de primaire sleutels van gewijzigde rijen (tussen twee SYS_CHANGE_VERSION waarden) uit **sys.change_tracking_tables** met gegevens in de **brontabel**, en vervolgens de deltagegevens naar de bestemming te verplaatsen.
@@ -70,13 +70,14 @@ In deze zelfstudie maakt u twee pijplijnen die de volgende twee bewerkingen uitv
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
-* **Azure SQL-database**. U gebruikt de database als de **brongegevensopslag**. Als u geen Azure SQL-database hebt, raadpleegt u het artikel [Een Azure SQL-database maken](../azure-sql/database/single-database-create-quickstart.md) voor de stappen voor het maken van een account.
+* **Azure SQL-database**. U gebruikt de database als de **brongegevensopslag**. Als u geen database in Azure SQL Database hebt, raadpleegt u het artikel [Een database in Azure SQL Database maken](../azure-sql/database/single-database-create-quickstart.md) om te stappen te zien om er een te maken.
 * **Een Azure Storage-account**. U gebruikt de Blob-opslag als de **sinkgegevensopslag**. Als u geen Azure Storage-account hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-account-create.md) voor de stappen voor het maken van een account. Maak een container met de naam **adftutorial**. 
 
-### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Een gegevensbrontabel maken in de Azure SQL-database
+### <a name="create-a-data-source-table-in-azure-sql-database"></a>Een gegevensbrontabel maken in Azure SQL Database
+
 1. Start **SQL Server Management Studio** en maak verbinding met SQL Database.
 2. Klik in **Server Explorer** met de rechtermuisknop op de **database** en kies de **Nieuwe query**.
-3. Voer de volgende SQL-opdracht uit voor de Azure SQL-database om een tabel met de naam `data_source_table` te maken als gegevensbronopslag.  
+3. Voer de volgende SQL-opdracht uit voor de database om een tabel met de naam `data_source_table` te maken als gegevensbronopslag.  
 
     ```sql
     create table data_source_table
@@ -97,10 +98,11 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
         (5, 'eeee', 22);
 
     ```
+
 4. Schakel **wijzigingen bijhouden** op uw database en de brontabel (data_source_table) in door het uitvoeren van de volgende SQL-query:
 
     > [!NOTE]
-    > - Vervang &lt;uw databasenaam&gt; met de naam van uw Azure SQL-database waarin de data_source_table staat.
+    > - Vervang &lt;uw databasenaam&gt; met de naam van de database in Azure SQL Database waarin de data_source_table staat.
     > - De gewijzigde gegevens worden in het huidige voorbeeld twee dagen bewaard. Als u de gewijzigde gegevens elke drie dagen of meer laadt, zal sommige informatie niet worden meegenomen.  U moet dan eventueel de waarde van CHANGE_RETENTION naar een hoger getal wijzigen. U kunt er ook voor zorgen dat de periode voor laden van de gewijzigde gegevens binnen twee dagen ligt. Zie voor meer informatie [Inschakelen bijhouden van wijzigingen voor een database](/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server#enable-change-tracking-for-a-database)
 
     ```sql
@@ -130,7 +132,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
     > [!NOTE]
     > Als de gegevens niet zijn gewijzigd nadat u het bijhouden van wijzigingen voor Misciroft Azure SQL Database hebt ingeschakeld, is de waarde van de versie van wijzigingen 0.
-6. Voer de volgende opdracht uit om een opgeslagen procedure te maken in uw Azure SQL-database. De pijplijn roept deze opgeslagen procedure aan voor het bijwerken van de wijzigingsversie in de tabel die u in de vorige stap hebt gemaakt.
+6. Voer de volgende opdracht uit om een opgeslagen procedure te maken in uw database. De pijplijn roept deze opgeslagen procedure aan voor het bijwerken van de wijzigingsversie in de tabel die u in de vorige stap hebt gemaakt.
 
     ```sql
     CREATE PROCEDURE Update_ChangeTracking_Version @CurrentTrackingVersion BIGINT, @TableName varchar(50)
@@ -188,7 +190,7 @@ Installeer de nieuwste Azure PowerShell-modules met de instructies in [Azure Pow
     ![Knop Pijplijn maken](./media/tutorial-incremental-copy-change-tracking-feature-portal/get-started-page.png)
 
 ## <a name="create-linked-services"></a>Gekoppelde services maken
-U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en compute-services aan de gegevensfactory te koppelen. In deze sectie maakt u gekoppelde services in het Azure Storage-account en de Azure SQL-database.
+U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en compute-services aan de gegevensfactory te koppelen. In deze sectie maakt u gekoppelde services in het Azure Storage-account en uw database in Azure SQL Database.
 
 ### <a name="create-azure-storage-linked-service"></a>Een gekoppelde Azure Storage-service maakt.
 Tijdens deze stap koppelt u uw Azure Storage-account aan de data factory.
@@ -209,7 +211,7 @@ Tijdens deze stap koppelt u uw Azure Storage-account aan de data factory.
 
 
 ### <a name="create-azure-sql-database-linked-service"></a>Maak een gekoppelde Azure SQL Database-service.
-In deze stap koppelt u uw Azure SQL-database aan uw data factory.
+In deze stap koppelt u uw database aan de data factory.
 
 1. Klik op **Connections** en klik op **+ New**.
 2. In het venster **New Linked Service** selecteert u **Azure SQL Database** en klikt u op **Doorgaan**.
@@ -217,11 +219,11 @@ In deze stap koppelt u uw Azure SQL-database aan uw data factory.
 
     1. Voer **AzureSqlDatabaseLinkedService** in bij **Naam**.
     2. Selecteer uw server in het veld **Servernaam**.
-    4. Selecteer uw database in het veld **Databasenaam**.
-    5. Voer de gebruikersnaam in bij **Gebruikersnaam**.
-    6. Voer het wachtwoord voor de gebruiker in bij **Wachtwoord**.
-    7. Als u de verbinding wilt testen, klikt u op **Verbinding testen**.
-    8. Klik op **Save** om de gekoppelde service op te slaan.
+    3. Selecteer uw database in het veld **Databasenaam**.
+    4. Voer de gebruikersnaam in bij **Gebruikersnaam**.
+    5. Voer het wachtwoord voor de gebruiker in bij **Wachtwoord**.
+    6. Als u de verbinding wilt testen, klikt u op **Verbinding testen**.
+    7. Klik op **Save** om de gekoppelde service op te slaan.
 
        ![Instellingen voor gekoppelde Azure SQL Database-service](./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-sql-database-linked-service-settings.png)
 
@@ -329,7 +331,7 @@ U ziet u een bestand met de naam `incremental-<GUID>.txt` in de `incchgtracking`
 
 ![Bestand voor uitvoer van een volledige kopie](media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-output-file.png)
 
-Het bestand moet de gegevens van de Azure SQL-database bevatten:
+Het bestand moet de gegevens van uw database bevatten:
 
 ```
 1,aaaa,21
@@ -341,7 +343,7 @@ Het bestand moet de gegevens van de Azure SQL-database bevatten:
 
 ## <a name="add-more-data-to-the-source-table"></a>Meer gegevens toevoegen aan de brontabellen
 
-De volgende query uitvoeren op de Azure SQL-database om een rij toe te voegen en een rij bij te werken.
+De volgende query uitvoeren op uw database om een rij toe te voegen en een rij bij te werken.
 
 ```sql
 INSERT INTO data_source_table
@@ -452,7 +454,7 @@ U ziet u het tweede bestand in de `incchgtracking` map van de `adftutorial` cont
 
 ![Bestand voor uitvoer van een incrementele kopie](media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-output-file.png)
 
-Het bestand moet alleen de wijzigingsgegevens van de Azure SQL-database bevatten. De record met `U` de bijgewerkte rij in de database en `I` is het een rij toegevoegd.
+Het bestand moet alleen de wijzigingsgegevens van uw database bevatten. De record met `U` de bijgewerkte rij in de database en `I` is het een rij toegevoegd.
 
 ```
 1,update,10,2,U

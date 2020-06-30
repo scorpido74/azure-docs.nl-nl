@@ -9,15 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7aa7c33a94980081efa3bc54422389aef7defa61
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 6c0518e12a2c654b8f971db3a6733b0e64f80a1f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235005"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254047"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Zelfstudie: Gegevens synchroniseren vanuit Azure SQL Edge naar Azure SQL Database met behulp van SQL Data Sync
-
 
 In deze zelfstudie leert u hoe u een Azure SQL Data Sync-*synchronisatiegroep* kunt gebruiken om gegevens van de Azure SQL Edge incrementeel te synchroniseren naar Azure SQL Database. SQL Data Sync is een service die is gebouwd op een Azure SQL Database waarmee u de gegevens die u selecteert in twee richtingen kunt synchroniseren over meerdere Microsoft Azure SQL-databases en SQL server-exemplaren. Zie [Azure SQL Data Sync](../azure-sql/database/sql-data-sync-data-sql-server-sql-database.md) voor meer informatie over SQL Data Sync.
 
@@ -29,7 +28,7 @@ Bij deze zelfstudie is een Windows-computer vereist die is geconfigureerd met de
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-* Een Azure SQL-database maken. Zie [Een afzonderlijke database maken in Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal) voor meer informatie over het maken van een Azure SQL-database met behulp van de Azure-portal.
+* Een database maken in Azure SQL Database. Zie [Een afzonderlijke database maken in Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal) voor meer informatie over het maken van een database met behulp van de Azure-portal.
 
 * De tabellen en andere benodigde objecten in uw Azure SQL Database-implementatie maken.
 
@@ -37,9 +36,9 @@ Bij deze zelfstudie is een Windows-computer vereist die is geconfigureerd met de
 
 * De Azure SQL Edge-instantie registreren met de Data Sync-agent voor Azure SQL Data Sync. Zie [Een SQL Server-database toevoegen](../azure-sql/database/sql-data-sync-sql-server-configure.md#add-on-prem) voor meer informatie.
 
-## <a name="sync-data-between-an-azure-sql-database-and-sql-edge"></a>Gegevens synchroniseren tussen een Azure SQL-database en SQL Edge
+## <a name="sync-data-between-a-database-in-azure-sql-database-and-sql-edge"></a>Gegevens synchroniseren tussen een database in Azure SQL Database en SQL Edge
 
-Het instellen van synchronisatie tussen een Azure SQL-database en een SQL Edge-exemplaar met behulp van SQL Data Sync omvat drie belangrijke stappen:  
+Het instellen van synchronisatie tussen een database in Azure SQL Database en een SQL Edge-exemplaar met behulp van SQL Data Sync omvat drie belangrijke stappen:  
 
 
 1. Gebruik de Azure-portal om een synchronisatiegroep te maken. Zie [Een synchronisatiegroep maken](../azure-sql/database/sql-data-sync-sql-server-configure.md#create-sync-group) voor meer informatie. U kunt één *hub*-database gebruiken om meerdere synchronisatiegroepen te maken om gegevens van verschillende SQL Edge-exemplaren te synchroniseren met een of meer databases in Microsoft Azure SQL Database. 
@@ -48,7 +47,7 @@ Het instellen van synchronisatie tussen een Azure SQL-database en een SQL Edge-e
 
 3. Stel de synchronisatiegroep in om de tabellen te selecteren die deel zullen uitmaken van de synchronisatie. Zie [Een synchronisatiegroep configureren](../azure-sql/database/sql-data-sync-sql-server-configure.md#add-sync-members) voor meer informatie.
 
-Nadat u de voorgaande stappen hebt voltooid, hebt u een synchronisatiegroep die een Azure-SQL database en een SQL Edge-exemplaar bevat.
+Nadat u de voorgaande stappen hebt voltooid, hebt u een synchronisatiegroep die een database in Azure SQL Database en een SQL Edge-exemplaar bevat.
 
 Zie de volgende artikelen voor meer informatie over SQL Data Sync:
 

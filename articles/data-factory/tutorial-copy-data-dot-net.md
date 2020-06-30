@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: ad257d0bea38d03803bf2be44313a3e086e7654c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 182c5b4059874b6e03092481c68b39cf55bc7e62
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118168"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253933"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Gegevens met Azure Data Factory kopiëren van Azure Blob Storage naar SQL Database
 
@@ -41,7 +41,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](htt
 ## <a name="prerequisites"></a>Vereisten
 
 * *Een Azure Storage-account*. U gebruikt de blob-opslag als *bron*-gegevensopslag. Zie [Een opslagaccount voor algemene doeleinden maken](../storage/common/storage-account-create.md) als u geen Azure Storage-account hebt.
-* *Azure SQL-database*. U gebruikt de database als *sink*-gegevensopslag. Zie [Een Azure SQL-database maken](../azure-sql/database/single-database-create-quickstart.md) als u geen Azure SQL-database hebt.
+* *Azure SQL-database*. U gebruikt de database als *sink*-gegevensopslag. Als u geen database in Azure SQL Database hebt, raadpleegt u het artikel [Een database in Azure SQL Database maken](../azure-sql/database/single-database-create-quickstart.md).
 * *Visual Studio*. De procedures in dit artikel zijn gebaseerd op Visual Studio 2019.
 * *[Azure-SDK voor .NET](/dotnet/azure/dotnet-tools)* .
 * *Azure Active Directory-toepassing*. Als u geen Azure Active Directory-toepassing hebt, raadpleegt u de sectie [Een Azure Active Directory-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) van [Procedure: De portal gebruiken om een Azure AD-toepassing te maken](../active-directory/develop/howto-create-service-principal-portal.md). Kopieer de volgende waarden voor gebruik in latere stappen: **Toepassings-id (client-id)** , **Verificatiesleutel** en **Map-id (tenant-id)** . Wijs de toepassing toe aan de rol **Inzender** door de instructies in hetzelfde artikel te volgen.

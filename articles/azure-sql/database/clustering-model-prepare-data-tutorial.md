@@ -1,7 +1,7 @@
 ---
 title: 'Zelfstudie: Gegevens voorbereiden om clustering in R uit te voeren'
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: In deel een van deze reeks met drie zelfstudies gaat u de gegevens van een Azure SQL-database voorbereiden om clustering in R te uit te voeren met Azure SQL Database Machine Learning Services (preview).
+description: In deel een van deze reeks met drie zelfstudies gaat u de gegevens van een database in Azure SQL Database voorbereiden om clustering in R te uit te voeren met Azure SQL Database Machine Learning Services (preview).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: c06e1b13f87972cbcd50e888edf55158b77881d8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a23dbd150dbe8ab05e0d4cf1f3decd67a856cbf4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84024095"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251247"
 ---
 # <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Zelfstudie: Gegevens voorbereiden om clustering in R uit te voeren met Azure SQL Database Machine Learning Services (preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-In deel een van deze reeks met drie zelfstudies gaat u de gegevens uit een Azure SQL-database importeren en voorbereiden met behulp van R. Verderop in deze reeks gebruikt u deze gegevens om een clustering-model in R te trainen en te implementeren met Azure SQL Database Machine Learning Services (preview).
+In deel een van deze reeks met drie zelfstudies gaat u de gegevens uit een database in Azure SQL Database importeren en voorbereiden met behulp van R. Verderop in deze reeks gebruikt u deze gegevens om een clustering-model in R te trainen en te implementeren met Azure SQL Database Machine Learning Services (preview).
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
@@ -32,7 +32,7 @@ In deel een van deze reeks met drie zelfstudies gaat u de gegevens uit een Azure
 U gebruikt het **K-Means**-algoritme om klanten te groeperen in een gegevensset van productaankopen en -retouren. Door klanten te groeperen (clustering) kunt u uw marketinginspanningen effectiever richten op specifieke groepen.
 K-Means-clustering is een *leeralgoritme zonder toezicht* dat naar patronen zoekt in gegevens op basis van overeenkomsten.
 
-In delen een en twee van deze reeks ontwikkelt u enkele R-scripts in RStudio om uw gegevens voor te bereiden en een machine learning-model te trainen. In deel drie voert u deze R-scripts uit in een SQL-database met behulp van opgeslagen procedures.
+In delen één en twee van deze reeks ontwikkelt u enkele R-scripts in RStudio om uw gegevens voor te bereiden en een machine learning-model te trainen. In deel drie voert u deze R-scripts uit in de database met behulp van opgeslagen procedures.
 
 In dit artikel leert u het volgende:
 
@@ -40,11 +40,11 @@ In dit artikel leert u het volgende:
 >
 > * Een voorbeelddatabase importeren in Azure SQL Database
 > * Klanten differentiëren op verschillende aspecten met R
-> * De gegevens laden van een Azure SQL-database naar een R-gegevensframe
+> * De gegevens laden van een database naar een R-gegevensframe
 
 In [deel twee](clustering-model-build-tutorial.md) leert u hoe u een K-means-clusteringmodel in R maakt en traint.
 
-In [deel drie](clustering-model-deploy-tutorial.md) leert u hoe u een opgeslagen procedure maakt in een Azure SQL-database die clustering in R kan uitvoeren op basis van nieuwe gegevens.
+In [deel drie](clustering-model-deploy-tutorial.md) leert u hoe u een opgeslagen procedure maakt die clustering in R kan uitvoeren op basis van nieuwe gegevens.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -68,7 +68,7 @@ De voorbeeldgegevensset die in deze zelfstudie wordt gebruikt, is opgeslagen in 
 
 1. Download het bestand [tpcxbb_1gb.bacpac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/tpcxbb_1gb.bacpac).
 
-1. Volg de instructies in [Een BACPAC-bestand importeren om een Azure SQL database te maken](https://docs.microsoft.com/azure/sql-database/sql-database-import) met behulp van de volgende gegevens:
+1. Volg de instructies in [Een BACPAC-bestand importeren naar een database in Azure SQL Database of Azure SQL Managed Instance](../../azure-sql/database/database-import.md) met behulp van de volgende gegevens:
 
    * Importeer vanuit het bestand **tpcxbb_1gb.bacpac** dat u hebt gedownload
    * Kies tijdens de openbare preview de configuratie **GEN5/vCore** voor de nieuwe database
@@ -202,18 +202,18 @@ U ziet als het goed is resultaten die vergelijkbaar zijn met het volgende.
 
 Volg deze stappen vanuit Azure Portal:
 
-1. Selecteer in het linkermenu in de Azure-portal **Alle resources** of **SQL-databases**.
+1. Selecteer in het linkermenu in de Microsoft Azure-portal **Alle resources** of **SQL-databases**.
 1. Voer in het veld **Filteren op naam...** **tpcxbb_1gb** in en selecteer uw abonnement.
 1. Selecteer de database **tpcxbb_1gb**.
 1. Selecteer **Verwijderen** op de pagina **Overzicht**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deel een van deze reeks zelfstudies hebt u deze stappen voltooid:
+In deel één van deze reeks zelfstudies hebt u deze stappen voltooid:
 
-* Een voorbeelddatabase importeren in een Azure SQL-database
+* Een voorbeelddatabase importeren in een database in Azure SQL Database met R
 * Klanten differentiëren op verschillende aspecten met R
-* De gegevens laden van een Azure SQL-database naar een R-gegevensframe
+* De gegevens laden van een database naar een R-gegevensframe
 
 Volg deel twee van deze reeks zelfstudies om een machine learning-model te maken dat deze klantgegevens gebruikt:
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: tracking-python
-ms.openlocfilehash: 30ceed388412f08e31b9c9b0c7ea6fdf2fed143e
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 5555c176adfb5be78ea73f17bfa01ba87766acc1
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607207"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100394"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>Zelfstudie: Een clienttoepassing maken en verbinden met uw Azure IoT Central-toepassing (Python)
 
@@ -306,7 +306,7 @@ U kunt zien hoe het apparaat reageert op opdrachten en updates van eigenschappen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U, als apparaatontwikkelaar, kent nu de basisbeginselen van het maken van een apparaat met behulp van Node.js. Hierna volgen enkele voorgestelde volgende stappen:
+U, als apparaatontwikkelaar, kent nu de basisbeginselen van het maken van een apparaat met behulp van Python. Hierna volgen enkele voorgestelde volgende stappen:
 
 * In het artikel met instructies [Een MXChip IoT DevKit-apparaat verbinden met uw Azure IoT Central-toepassing](./howto-connect-devkit.md) leest u hoe u een echt apparaat verbindt met IoT Central.
 * Lees [Wat zijn apparaatsjablonen?](./concepts-device-templates.md) voor meer informatie over de rol van apparaatsjablonen wanneer u uw apparaatcode implementeert.

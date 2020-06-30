@@ -1,7 +1,7 @@
 ---
 title: 'Zelfstudie: Gegevens voorbereiden om een voorspellend model te trainen in R'
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: In deel één van deze reeks met drie zelfstudies gaat u de gegevens van een Azure SQL-database voorbereiden om een voorspellend model in R te trainen met Azure SQL Database Machine Learning Services (preview).
+description: In deel één van deze reeks met drie zelfstudies gaat u de gegevens van een database in Azure SQL Database voorbereiden om een voorspellend model in R te trainen met Azure SQL Database Machine Learning Services (preview).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -14,35 +14,36 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: a82467a097c50314e8f26f4a5cc4507f867ad504
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 698cc089f770d60b6399864c9832fbc8d104c16f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84024788"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253797"
 ---
 # <a name="tutorial-prepare-data-to-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Zelfstudie: Gegevens voorbereiden om een voorspellend model te trainen in R met Azure SQL Database Machine Learning Services (preview)
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-In deel één van deze reeks met drie zelfstudies gaat u gegevens uit een Azure SQL-database importeren en voorbereiden met behulp van R. Verderop in deze reeks gebruikt u deze gegevens om een voorspellend machine learning-model in R te trainen en te implementeren met Azure SQL Database Machine Learning Services (preview).
+In deel één van deze reeks met drie zelfstudies gaat u gegevens uit een database in Azure SQL Database importeren en voorbereiden met behulp van R. Verderop in deze reeks gebruikt u deze gegevens om een voorspellend machine learning-model in R te trainen en te implementeren met Azure SQL Database Machine Learning Services (preview).
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
 Stel u voor deze reeks zelfstudies voor dat u eigenaar bent van een skiverhuurbedrijf en dat u de huuropbrengsten wilt voorspellen die u op een toekomstige datum hebt. Deze informatie helpt u bij de voorbereiding v an uw voorraad, medewerkers en faciliteiten.
 
-In delen één en twee van deze reeks ontwikkelt u enkele R-scripts in RStudio om uw gegevens voor te bereiden en een machine learning-model te trainen. In deel drie voert u deze R-scripts uit in een SQL-database met behulp van opgeslagen procedures.
+In delen één en twee van deze reeks ontwikkelt u enkele R-scripts in RStudio om uw gegevens voor te bereiden en een machine learning-model te trainen. In deel drie voert u deze R-scripts uit in een database met behulp van opgeslagen procedures.
 
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
 >
-> * Een voorbeelddatabase importeren in een Azure SQL-database met R
-> * De gegevens laden van een Azure SQL-database naar een R-gegevensframe
+> * Een voorbeelddatabase importeren in een database in Azure SQL Database met R
+> * De gegevens laden van een database naar een R-gegevensframe
 > * De gegevens voorbereiden in R door bepaalde kolommen te identificeren als categorisch
 
 In [deel twee](predictive-model-build-compare-tutorial.md) leert u hoe u meerdere machine learning-modellen maakt en traint in R en hoe u vervolgens de meest nauwkeurige kiest.
 
-In [deel drie](predictive-model-deploy-tutorial.md) leert u hoe u het model opslaat in een database en vervolgens opgeslagen procedures maakt vanuit de R-scripts die u hebt ontwikkeld in delen één en twee. De opgeslagen procedures worden in een SQL-database uitgevoerd om voorspellingen te doen op basis van nieuwe gegevens.
+In [deel drie](predictive-model-deploy-tutorial.md) leert u hoe u het model opslaat in een database en vervolgens opgeslagen procedures maakt vanuit de R-scripts die u hebt ontwikkeld in delen één en twee. De opgeslagen procedures worden in een database uitgevoerd om voorspellingen te doen op basis van nieuwe gegevens.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -66,7 +67,7 @@ De voorbeeldgegevensset die in deze zelfstudie wordt gebruikt, is opgeslagen in 
 
 1. Download het bestand [TutorialDB.bacpac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/TutorialDB.bacpac).
 
-1. Volg de instructies in [Een BACPAC-bestand importeren om een Azure SQL database te maken](https://docs.microsoft.com/azure/sql-database/sql-database-import) met behulp van de volgende gegevens:
+1. Volg de instructies in [Een BACPAC-bestand importeren naar een database in Azure SQL Database of Azure SQL Managed Instance](../../azure-sql/database/database-import.md) met behulp van de volgende gegevens:
 
    * Import vanuit het bestand **TutorialDB.bacpac** dat u hebt gedownload
    * Kies tijdens de openbare preview de configuratie **GEN5/vCore** voor de nieuwe database
@@ -74,7 +75,7 @@ De voorbeeldgegevensset die in deze zelfstudie wordt gebruikt, is opgeslagen in 
 
 ## <a name="load-the-data-into-a-data-frame"></a>Laad de gegevens in een gegevensframe
 
-Als u de gegevens wilt gebruiken in R, laadt u de gegevens vanuit de Azure SQL-database naar een gegevensframe (`rentaldata`).
+Als u de gegevens wilt gebruiken in R, laadt u de gegevens vanuit de database naar een gegevensframe (`rentaldata`).
 
 Maak een nieuw RScript-bestand in RStudio en voer het volgende script uit. Vervang **Server**, **UID** en **PWD** door uw eigen verbindingsgegevens.
 
@@ -163,8 +164,8 @@ Volg deze stappen vanuit Azure Portal:
 
 In deel één van deze reeks zelfstudies hebt u deze stappen voltooid:
 
-* Een voorbeelddatabase importeren in een Azure SQL-database met R
-* De gegevens laden van een Azure SQL-database naar een R-gegevensframe
+* Een voorbeelddatabase importeren in een database in Azure SQL Database met R
+* De gegevens laden van een database naar een R-gegevensframe
 * De gegevens voorbereiden in R door bepaalde kolommen te identificeren als categorisch
 
 Volg deel twee van deze reeks zelfstudies om een machine learning-model te maken dat gegevens uit de TutorialDB-database gebruikt:

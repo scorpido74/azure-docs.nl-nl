@@ -1,13 +1,11 @@
 ---
-title: Push meldingen verzenden naar Android met behulp van Azure Notification Hubs en Google Cloud Messaging | Microsoft Docs
-description: In deze zelfstudie leert u hoe u met Azure Notification Hubs en Google Cloud Messaging pushmeldingen verzendt naar Android-apparaten.
+title: Pushmeldingen verzenden naar Android met Azure Notification Hubs en Google Cloud Messaging | Microsoft Docs
+description: In deze zelfstudie leert u hoe u met Azure Notification Hubs en Google Firebase Cloud Messaging pushmeldingen verzendt naar Android-apparaten.
 services: notification-hubs
 documentationcenter: android
 keywords: pushmeldingen,pushmelding,android-pushmelding
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 8268c6ef-af63-433c-b14e-a20b04a0342a
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
@@ -18,19 +16,19 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 7e442d85303485ca8800d4bcb31a9afde06d0e69
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: 3f2ad007ff0e1012f957c718d125b2e5b2e40964
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82595015"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249229"
 ---
-# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Zelf studie: Push meldingen naar Android-apparaten met behulp van Azure Notification Hubs en Google Cloud Messaging (afgeschaft)
+# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Zelfstudie: Pushmeldingen naar Android-apparaten met Azure Notification Hubs en Google Cloud Messaging (afgeschaft)
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 > [!WARNING]
-> Sinds 10 april 2018 heeft Google afgeschaft Google Cloud Messaging (GCM). De GCM-server en de client-Api's zijn afgeschaft en worden verwijderd zodra 29 mei 2019. Zie [Veelgestelde vragen over GCM en FCM](https://developers.google.com/cloud-messaging/faq)voor meer informatie.
+> Sinds 10 april 2018 heeft Google Google Cloud Messaging (GCM) afgeschaft. De GCM-server en de client-API's zijn afgeschaft en worden verwijderd op 29 mei 2019. Raadpleeg voor meer informatie de [Veelgestelde vragen over GCM en FCM](https://developers.google.com/cloud-messaging/faq).
 
 ## <a name="overview"></a>Overzicht
 
@@ -38,7 +36,7 @@ In deze zelfstudie wordt gedemonstreerd hoe u met Azure Notification Hubs pushme
 U maakt een lege Android-app die pushmeldingen ontvangt via Google Cloud Messaging (GCM).
 
 > [!IMPORTANT]
-> De Google Cloud Messaging (GCM) is afgeschaft en zal [binnenkort](https://developers.google.com/cloud-messaging/faq)worden verwijderd.
+> De Google Cloud Messaging (GCM) is afgeschaft en zal [binnenkort](https://developers.google.com/cloud-messaging/faq) worden verwijderd.
 
 > [!IMPORTANT]
 > In dit onderwerp worden pushmeldingen met Google Cloud Messaging (GCM) getoond. Als u gebruikmaakt van Google Firebase Cloud Messaging (FCM), verwijzen wij u naar [Sending push notifications to Android with Azure Notification Hubs and FCM](notification-hubs-android-push-notification-google-fcm-get-started.md) (Pushmeldingen verzenden naar Android met Azure Notification Hubs en FCM).
@@ -83,7 +81,7 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
 1. Start een nieuw Android Studio-project in Android Studio.
 
    ![Android Studio - nieuw project][13]
-2. Kies de vormfactor voor **Telefoon en tablet** en de **minimale SDK** die u wilt ondersteunen. Klik vervolgens op **Volgende**.
+2. Kies de vormfactor voor **Telefoon en tablet** en de **minimale SDK** die u wilt ondersteunen. Klik op **Volgende**.
 
    ![Android Studio - werkstroom voor het maken van een project][14]
 3. Kies **Lege activiteit** als belangrijkste activiteit, klik op **Volgende** en klik vervolgens op **Voltooien**.
@@ -160,15 +158,15 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
 
 ### <a name="adding-code"></a>Code toevoegen
 
-1. Vouw in de Project weergave **app** > **src** > **Main** > **Java**uit. Klik met de rechtermuisknop op de pakketmap onder **java**, klik op **Nieuw** en klik vervolgens op **Java-klasse**. Voeg een nieuwe klasse met de naam `NotificationSettings` toe.
+1. Vouw in de Project-weergave **app** > **src** > **main** > **java** uit. Klik met de rechtermuisknop op de pakketmap onder **java**, klik op **Nieuw** en klik vervolgens op **Java-klasse**. Voeg een nieuwe klasse met de naam `NotificationSettings` toe.
 
     ![Android Studio - nieuwe Java-klasse][6]
 
     Werk de drie tijdelijke aanduidingen in de volgende code bij voor de klasse `NotificationSettings`:
 
-   * `SenderId`: Het project nummer dat u eerder in de [Google Cloud console](https://cloud.google.com/console)hebt verkregen.
-   * `HubListenConnectionString`: De `DefaultListenAccessSignature` Connection String voor uw hub. Kopieer deze verbindingsreeks door te klikken op **Toegangsbeleid** op de hubpagina **Instellingen** in [Azure Portal].
-   * `HubName`: Gebruik de naam van uw notification hub die wordt weer gegeven op de hub-pagina in het [Azure Portal].
+   * `SenderId`: Het projectnummer dat u eerder in de [Google Cloud Console](https://cloud.google.com/console) hebt verkregen.
+   * `HubListenConnectionString`: De verbindingsreeks `DefaultListenAccessSignature` voor de hub. Kopieer deze verbindingsreeks door te klikken op **Toegangsbeleid** op de hubpagina **Instellingen** in [Azure-portal].
+   * `HubName`: Gebruik de naam van uw Notification Hub die wordt weergegeven op de hubpagina in de [Azure-portal].
 
      `NotificationSettings`-code:
 
@@ -383,7 +381,7 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
         });
     }
     ```
-10. Voor de methode `ToastNotify` wordt het besturingselement *Hello World gebruikt * `TextView` om de status en kennisgevingen permanent in de app te melden. In de indeling activity_main.xml voegt u de volgende id toe voor het besturingselement.
+10. Voor de methode `ToastNotify` wordt het besturingselement *Hallo wereld* `TextView` gebruikt om de status en kennisgevingen permanent in de app te melden. In de indeling activity_main.xml voegt u de volgende id toe voor het besturingselement.
 
     ```xml
     android:id="@+id/text_hello"
@@ -449,7 +447,7 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
         }
     }
     ```
-14. Klik in Android Studio op de menu balk op **Build** > **project opnieuw opbouwen** om te controleren of er geen fouten in uw code aanwezig zijn.
+14. Klik in Android Studio in de menubalk op **Bouwen** > **Project opnieuw opbouwen** om ervoor te zorgen dat uw code geen fouten bevat.
 
 ## <a name="testing-your-app"></a>Uw app testen
 
@@ -468,7 +466,7 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
 
 ### <a name="test-send-push-notifications-from-the-azure-portal"></a>Het verzenden van pushmeldingen vanuit Azure Portal testen
 
-U kunt het ontvangen van meldingen in de app testen door deze te verzenden via [Azure Portal].
+U kunt het ontvangen van meldingen in de app testen door deze te verzenden via [Azure-portal].
 
 1. In de sectie **Probleemoplossing** selecteert u **Test verzenden**.
 2. Selecteer voor **Platforms** de optie **Android**.
@@ -483,13 +481,13 @@ U kunt het ontvangen van meldingen in de app testen door deze te verzenden via [
 
 Als u pushmeldingen binnen een emulator wilt testen, moet u ervoor zorgen dat de installatiekopie van de emulator het Google API-niveau ondersteunt dat u voor uw app hebt gekozen. Als uw installatiekopie geen ondersteuning biedt voor native Google API’s, verschijnt de uitzondering **SERVICE\_NIET\_BESCHIKBAAR**.
 
-Zorg er bovendien voor dat u uw Google-account hebt toegevoegd aan de actieve emulator onder **instellingen** > **accounts**. Anders kunnen pogingen om opnieuw te registreren bij GCM leiden tot de uitzondering **VERIFICATIE\_MISLUKT**.
+Bovendien moet uw Google-account zijn toegevoegd aan de actieve emulator onder **Instellingen** > **Accounts**. Anders kunnen pogingen om opnieuw te registreren bij GCM leiden tot de uitzondering **VERIFICATIE\_MISLUKT**.
 
 ## <a name="optional-send-push-notifications-directly-from-the-app"></a>(Optioneel) Pushmeldingen rechtstreeks vanuit de app verzenden
 
 Normaal gesproken verzendt u meldingen via een back-endserver. Mogelijk wilt u pushmeldingen direct vanuit de clienttoepassing kunnen verzenden. In dit gedeelte wordt uitgelegd hoe u meldingen vanuit de client verzendt met de [Azure Notification Hub REST API](https://msdn.microsoft.com/library/azure/dn223264.aspx).
 
-1. Vouw in Android Studio project weergave de**indeling** **app** > **src** > **Main** > **Res** > uit. Open het indelingsbestand `activity_main.xml` en klik op het tabblad **Tekst** om de tekst van het bestand bij te werken. Werk de tekst bij met de onderstaande code, waarmee u nieuwe besturingselementen `Button` en `EditText` voor het verzenden van pushmeldingen toevoegt aan de Notification Hub. Voeg deze code onderin toe, net voor `</RelativeLayout>`.
+1. Vouw in de Project-weergave van Android Studio-Project **App** > **src** > **main** > **res** > **layout** uit. Open het indelingsbestand `activity_main.xml` en klik op het tabblad **Tekst** om de tekst van het bestand bij te werken. Werk de tekst bij met de onderstaande code, waarmee u nieuwe besturingselementen `Button` en `EditText` voor het verzenden van pushmeldingen toevoegt aan de Notification Hub. Voeg deze code onderin toe, net voor `</RelativeLayout>`.
 
     ```xml
     <Button
@@ -510,7 +508,7 @@ Normaal gesproken verzendt u meldingen via een back-endserver. Mogelijk wilt u p
     android:layout_marginBottom="42dp"
     android:hint="@string/notification_message_hint" />
     ```
-2. Vouw in Android Studio project weergave de**waarde** **app** > **src** > **Main** > **Res** > uit. Open het bestand `strings.xml` en voeg de tekenreekswaarden toe waarnaar wordt verwezen door de nieuwe besturingselementen `Button` en `EditText`. Voeg de volgende regels onder in het bestand toe, net voor `</resources>`.
+2. Vouw in de Project-weergave van Android Studio-Project **App** > **src** > **main** > **res** > **values** uit. Open het bestand `strings.xml` en voeg de tekenreekswaarden toe waarnaar wordt verwezen door de nieuwe besturingselementen `Button` en `EditText`. Voeg de volgende regels onder in het bestand toe, net voor `</resources>`.
 
     ```xml
     <string name="send_button">Send Notification</string>
@@ -518,7 +516,7 @@ Normaal gesproken verzendt u meldingen via een back-endserver. Mogelijk wilt u p
     ```
 3. Voeg in het bestand `NotificationSetting.java` de volgende instelling toe voor de klasse `NotificationSettings`.
 
-    Werk `HubFullAccess` bij met de verbindingsreeks **DefaultFullSharedAccessSignature** voor uw hub. U kunt deze verbindingsreeks kopiëren vanuit [Azure Portal] door te klikken op **Toegangsbeleid** op de pagina **Instellingen** voor uw Notification Hub.
+    Werk `HubFullAccess` bij met de verbindingsreeks **DefaultFullSharedAccessSignature** voor uw hub. U kunt deze verbindingsreeks kopiëren vanuit [Azure-portal] door te klikken op **Toegangsbeleid** op de pagina **Instellingen** voor uw Notification Hub.
 
     ```java
     public static String HubFullAccess = "<Enter Your DefaultFullSharedAccess Connection string>";
@@ -746,4 +744,4 @@ In deze zelfstudie hebt u meldingen uitgezonden naar al uw Android-apparaten die
 [Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-[Azure Portal]: https://portal.azure.com
+[Azure-portal]: https://portal.azure.com

@@ -1,6 +1,6 @@
 ---
 title: Een data factory-pijplijn maken met Azure Portal
-description: Deze zelfstudie bevat stapsgewijze instructies voor het maken van een data factory met een pijplijn met behulp van Azure Portal. In dit voorbeeld gebruikt de pijplijn de kopieeractiviteit om gegevens vanuit Azure Blob Storage naar een Azure SQL-database te kopiëren.
+description: Deze zelfstudie bevat stapsgewijze instructies voor het maken van een data factory met een pijplijn met behulp van Azure Portal. In dit voorbeeld gebruikt de pijplijn de kopieeractiviteit om gegevens vanuit Azure Blob Storage naar Azure SQL Database te kopiëren.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 8372683c1463fe3443730bd004c013666deb4100
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 16b5eeb33f8be07d6257d8d7957ea2526ab9d3f1
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248614"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253960"
 ---
-# <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Gegevens kopiëren van Azure Blob-opslag naar een SQL database met Azure Data Factory
+# <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Gegevens kopiëren van Azure Blob-opslag naar een database in Azure SQL Database met Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-In deze zelfstudie maakt u een data factory met behulp van de Azure Data Factory-gebruikersinterface. Met de pijplijn in deze data factory worden gegevens gekopieerd van Azure Blob Storage naar een Azure SQL-database. Het configuratiepatroon in deze zelfstudie geldt voor het kopiëren van een gegevensarchief op basis van bestanden naar een relationeel gegevensarchief. Zie de tabel [Ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensarchieven die worden ondersteund als bron en als sink.
+In deze zelfstudie maakt u een data factory met behulp van de Azure Data Factory-gebruikersinterface. Met de pijplijn in deze data factory worden gegevens gekopieerd van Azure Blob Storage naar een database in Azure SQL Database. Het configuratiepatroon in deze zelfstudie geldt voor het kopiëren van een gegevensarchief op basis van bestanden naar een relationeel gegevensarchief. Zie de tabel [Ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensarchieven die worden ondersteund als bron en als sink.
 
 > [!NOTE]
 > - Zie [Inleiding tot Azure Data Factory](introduction.md) als u niet bekend bent met Azure Data Factory.
@@ -41,7 +41,7 @@ In deze zelfstudie voert u de volgende stappen uit:
 ## <a name="prerequisites"></a>Vereisten
 * **Azure-abonnement**. Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
 * **Azure-opslagaccount**. U gebruikt de blobopslag als *bron*-gegevensopslag. Als u geen opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-account-create.md) om een account te maken.
-* **Azure SQL-database**. U gebruikt de database als *sink*-gegevensopslag. Als u geen Azure SQL-database hebt, raadpleegt u het artikel [Een SQL-database maken](../azure-sql/database/single-database-create-quickstart.md) om er een te maken.
+* **Azure SQL-database**. U gebruikt de database als *sink*-gegevensopslag. Als u geen database in Azure SQL Database hebt, raadpleegt u [Een database in Azure SQL Database maken](../azure-sql/database/single-database-create-quickstart.md) om er een te maken.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Een blob en een SQL-tabel maken
 
@@ -61,7 +61,7 @@ Voer nu de volgende stappen uit om uw blobopslag en SQL database voor te bereide
 
 #### <a name="create-a-sink-sql-table"></a>Een SQL-sink-tabel maken
 
-1. Gebruik het volgende SQL-script om de tabel **dbo.emp** te maken in uw SQL database:
+1. Gebruik het volgende SQL-script om de tabel **dbo.emp** te maken in uw database:
 
     ```sql
     CREATE TABLE dbo.emp
@@ -75,7 +75,7 @@ Voer nu de volgende stappen uit om uw blobopslag en SQL database voor te bereide
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-1. Geef Azure-services toegang tot SQL Server. Zorg ervoor dat **Toegang tot Azure-services toestaan** is **ingeschakeld** voor SQL Server, zodat Data Factory gegevens naar SQL Server kan schrijven. U kunt deze instelling controleren en inschakelen door naar Logische SQL-server > Overzicht > Serverfirewall instellen > Instellen te gaan en de optie **Toegang tot Azure-services toestaan** in te stellen op **AAN**.
+1. Geef Azure-services toegang tot de SQL-server. Zorg ervoor dat **Toegang tot Azure-services toestaan** is **ingeschakeld** voor SQL Server, zodat Data Factory gegevens naar SQL Server kan schrijven. U kunt deze instelling controleren en inschakelen door naar Logische SQL-server > Overzicht > Serverfirewall instellen > Instellen te gaan en de optie **Toegang tot Azure-services toestaan** in te stellen op **AAN**.
 
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 In deze stap maakt u een data factory en start u de Data Factory-gebruikersinterface om een pijplijn te maken in de data factory.
@@ -154,7 +154,7 @@ In deze zelfstudie begint u met het maken van de pijplijn. Vervolgens maakt u ge
 
 1. Voer in het dialoogvenster **Nieuwe gegevensset** 'SQL' in het zoekvak in om de connectoren te filteren, selecteer **Azure SQL Database** en selecteer vervolgens **Doorgaan**. In deze zelfstudie kopieert u gegevens naar een SQL database.
 
-1. Voer in het dialoogvenster **Eigenschappen instellen** als naam **OutputSqlDataset** in. Selecteer **+ Nieuw** in de vervolgkeuzelijst **Gekoppelde service**. Een gegevensset moet worden gekoppeld aan een gekoppelde service. De gekoppelde service beschikt over de verbindingsreeks die door Data Factory wordt gebruikt om tijdens runtime een verbinding met de SQL-database tot stand te brengen. De dataset geeft informatie over de container, map en het bestand (optioneel) met de brongegevens.
+1. Voer in het dialoogvenster **Eigenschappen instellen** als naam **OutputSqlDataset** in. Selecteer **+ Nieuw** in de vervolgkeuzelijst **Gekoppelde service**. Een gegevensset moet worden gekoppeld aan een gekoppelde service. De gekoppelde service beschikt over de verbindingsreeks die door Data Factory wordt gebruikt om tijdens runtime een verbinding met SQL Database tot stand te brengen. De dataset geeft informatie over de container, map en het bestand (optioneel) met de brongegevens.
 
 1. Voer in het dialoogvenster **Nieuwe gekoppelde service (Azure SQL Database)** de volgende stappen uit:
 
@@ -162,7 +162,7 @@ In deze zelfstudie begint u met het maken van de pijplijn. Vervolgens maakt u ge
 
     b. Selecteer bij **Servernaam** uw SQL Server-exemplaar.
 
-    c. Selecteer uw SQL-database bij **Databasenaam**.
+    c. Selecteer uw database bij **Databasenaam**.
 
     d. Voer bij **Gebruikersnaam** de naam van de gebruiker in.
 
@@ -209,7 +209,7 @@ In deze stap moet u handmatig de pijplijn activeren, die u in de vorige stap hee
 
     [![Uitvoering van activiteiten controleren](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox)
 
-1. Controleer of er twee extra rijen zijn toegevoegd aan de **emp**-tabel in de SQL database.
+1. Controleer of er twee extra rijen zijn toegevoegd aan de **emp**-tabel in de database.
 
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>De pijplijn activeren volgens een schema
 In dit schema maakt u een planningstrigger voor de pijplijn. De trigger voert de pijplijn uit volgens de opgegeven planning, bijvoorbeeld elk uur of dagelijks. Hier stelt u de trigger in om de pijplijn elke minuut uit te voeren tot en met de opgegeven einddatum/-tijd.

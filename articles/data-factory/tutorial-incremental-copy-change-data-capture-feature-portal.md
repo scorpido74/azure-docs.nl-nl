@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: 754fb27d03aebf6029d3ae2f22e748db87a89753
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: ca6b0ff197c21dd41521d2aa6106aa3b0df2d177
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84325223"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249480"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Incrementeel laden van gegevens vanuit Azure SQL Managed Instance naar Azure Storage met behulp van change data capture (CDC)
 
@@ -55,7 +55,8 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 * **Azure SQL Managed Instance-database**. U gebruikt de database als de **brongegevensopslag**. Als u geen Azure SQL Managed Instance-database hebt, raadpleegt u het artikel [Create an Azure SQL Database Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started) (Een Azure SQL Managed Instance-database maken) om een database te maken.
 * **Een Azure Storage-account**. U gebruikt de Blob-opslag als de **sinkgegevensopslag**. Als u geen Azure-opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-account-create.md) om een account te maken. Maak een container met de naam **raw**. 
 
-### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Een gegevensbrontabel maken in de Azure SQL-database
+### <a name="create-a-data-source-table-in-azure-sql-database"></a>Een gegevensbrontabel maken in Azure SQL Database
+
 1. Start **SQL Server Management Studio** en maak verbinding met uw Azure SQL Managed Instance-server.
 2. Klik in **Server Explorer** met de rechtermuisknop op de **database** en kies de **Nieuwe query**.
 3. Voer de volgende SQL-opdracht uit voor de Azure SQL Managed Instance-database om een tabel met de naam `customers` te maken als gegevensbronopslag.  

@@ -1,84 +1,84 @@
 ---
-title: C#-zelf studie indexering optimaliseren met de Push-API
+title: 'C#-zelfstudie: indexering optimaliseren met de push-API'
 titleSuffix: Azure Cognitive Search
-description: Meer informatie over het efficiënt indexeren van gegevens met behulp van de Push-API van Azure Cognitive Search. Deze zelf studie en voorbeeld code zijn in C#.
+description: Meer informatie over het efficiënt indexeren van gegevens met behulp van de push-API van Azure Cognitive Search. Deze zelfstudie en de voorbeeldcode maken gebruik van C#.
 manager: liamca
 author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: 85ac56eb20eabf308d6686a047d8c5ede914fed9
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.openlocfilehash: ef1f0c607eb1d0152a5dd5f5acc812bb9364e47a
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966440"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079214"
 ---
-# <a name="tutorial-optimize-indexing-with-the-push-api"></a>Zelf studie: indexeren optimaliseren met de Push-API
+# <a name="tutorial-optimize-indexing-with-the-push-api"></a>Zelfstudie: indexering optimaliseren met de push-API
 
-Azure Cognitive Search ondersteunt [twee basis benaderingen](search-what-is-data-import.md) voor het importeren van gegevens in een zoek index: het *pushen* van uw gegevens in de index via een programma of het aanwijzen van een [Azure Cognitive Search indexer](search-indexer-overview.md) bij een ondersteunde gegevens bron om de gegevens op te *halen* .
+In Azure Cognitive Search worden [twee basismethoden](search-what-is-data-import.md) voor het importeren van gegevens in een zoekindex ondersteund: het *pushen* van uw gegevens naar de index via een programma of het verwijzen van een [Azure Cognitive Search-indexeerfunctie](search-indexer-overview.md) naar een ondersteunde gegevensbron om de gegevens *op te halen*.
 
-In deze zelf studie wordt beschreven hoe u efficiënt gegevens kunt indexeren met behulp van het [push model](search-what-is-data-import.md#pushing-data-to-an-index) door aanvragen te verwerken en een exponentiële uitstel-strategie voor opnieuw proberen te gebruiken. U kunt [de toepassing downloaden en uitvoeren](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing). In dit artikel worden de belangrijkste aspecten van de toepassing en factoren beschreven waarmee u rekening moet houden bij het indexeren van gegevens.
+In deze zelfstudie wordt beschreven hoe u efficiënt gegevens indexeert met behulp van het [push-model](search-what-is-data-import.md#pushing-data-to-an-index) door aanvragen als batches te verwerken en een strategie te gebruiken waarbij exponentieel uitstel opnieuw wordt uitgevoerd. U kunt [de toepassing downloaden en uitvoeren](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing). In dit artikel worden de belangrijkste aspecten van de toepassing beschreven en tevens de factoren waarmee u rekening moet houden bij het indexeren van gegevens.
 
-In deze zelf studie wordt C# en de [.NET SDK](https://aka.ms/search-sdk) gebruikt om de volgende taken uit te voeren:
+In deze zelfstudie wordt gebruikgemaakt van C# en de [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) om de volgende taken uit te voeren:
 
 > [!div class="checklist"]
 > * Een index maken
-> * Verschillende batch grootten testen om de meest efficiënte grootte te bepalen
+> * Verschillende batchgrootten testen om de meest efficiënte grootte te bepalen
 > * Gegevens asynchroon indexeren
-> * Meerdere threads gebruiken om de indexerings snelheden te verhogen
-> * Een exponentiële uitstel-strategie voor opnieuw proberen gebruiken om mislukte items opnieuw op te doen
+> * Meerdere threads gebruiken om de indexeringssnelheden te verhogen
+> * Een herhaalstrategie voor exponentiële uitstel gebruiken om mislukte items opnieuw uit te voeren
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-De volgende services en hulpprogram ma's zijn vereist voor deze zelf studie.
+De volgende services en hulpprogramma's zijn vereist voor deze zelfstudie.
 
-+ [Visual Studio](https://visualstudio.microsoft.com/downloads/), een wille keurige versie. Voor beelden van code en instructies zijn getest in de gratis Community-editie.
++ [Visual Studio](https://visualstudio.microsoft.com/downloads/), een willekeurige editie. Voorbeeldcode en instructies zijn getest met de gratis Community-editie.
 
-+ [Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement.
++ [Maak een Azure Cognitive Search-service](search-create-service-portal.md) of [zoek een bestaande service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement.
 
 <a name="get-service-info"></a>
 
 ## <a name="download-files"></a>Bestanden downloaden
 
-De bron code voor deze zelf studie bevindt zich in de map [optimzize-data-indexering](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing) in de GitHub-opslag plaats [Azure-samples/Azure-Search-DotNet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) .
+De broncode voor deze zelfstudie bevindt zich in de GitHub-opslagplaats [Azure-Samples/azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing), in de map [optimzize-data-indexing](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
 ## <a name="key-considerations"></a>Belangrijkste overwegingen
 
-Bij het pushen van gegevens naar een index, zijn er verschillende belang rijke aandachtspunten die van invloed zijn op de indexerings snelheid. Meer informatie over deze factoren vindt u in het [artikel index grote gegevens sets](search-howto-large-index.md).
+Bij het pushen van gegevens naar een index zijn er enkele belangrijke aandachtspunten die van invloed zijn op de indexeringssnelheden. Meer informatie over deze factoren vindt u in het artikel [Grote gegevenssets indexeren](search-howto-large-index.md).
 
-Er zijn zes belang rijke factoren die u moet overwegen:
+Er zijn zes belangrijke factoren die u moet overwegen:
 
-+ Servicelaag **en aantal partities/replica's** : het toevoegen van partities en het verg Roten van uw niveau, verhogen de index snelheid.
-+ **Index schema** : velden toevoegen en extra eigenschappen toevoegen aan velden (zoals *Doorzoek*bare, *facet*bare of *filterbaar*) beide de indexerings snelheden verlagen.
-+ **Batch grootte** : de optimale Batch grootte varieert op basis van uw index schema en gegevensset.
-+ **Aantal threads/werk nemers** : een enkele thread biedt geen volledige voor delen van indexerings snelheden
-+ **Strategie voor opnieuw proberen** : een exponentiële uitstel-strategie voor opnieuw proberen moet worden gebruikt om de indexering te optimaliseren.
-+ **Netwerk gegevens overdrachts snelheden** : gegevens overdrachts snelheden kunnen een beperkende factor zijn. Indexeer gegevens uit uw Azure-omgeving om de snelheid van gegevens overdracht te verhogen.
++ **Servicelaag en aantal partities/replica's**: het toevoegen van partities en het verhogen van uw laag, verhogen de indexeringssnelheden.
++ **Indexschema**: het toevoegen van velden en van aanvullende eigenschappen aan velden (zoals *searchable*, *facetable* of *filterable*) verlagen beide de indexeringssnelheden.
++ **Batchgrootte**: de optimale batchgrootte varieert naar gelang uw indexschema en gegevensset.
++ **Aantal threads/werkrollen**: één thread profiteert niet ten volle van indexeringssnelheden
++ **Herhaalstrategie**: er moet een herhaalstrategie voor exponentieel uitstel worden gebruikt om de indexering te optimaliseren.
++ **Snelheden van overdracht van netwerkgegevens**: snelheden van gegevensoverdracht kunnen een beperkende factor zijn. Indexeer gegevens vanuit uw Azure-omgeving om de snelheid van gegevensoverdracht te verhogen.
 
 
-## <a name="1---create-azure-cognitive-search-service"></a>1-Azure Cognitive Search-service maken
+## <a name="1---create-azure-cognitive-search-service"></a>1 - Azure Cognitive Search-service maken
 
-Voor het volt ooien van deze zelf studie hebt u een Azure Cognitive Search-service nodig die u [in de portal kunt maken](search-create-service-portal.md). U kunt het beste dezelfde laag gebruiken die u in productie wilt gebruiken, zodat u de indexerings snelheden nauw keurig en kunnen testen.
+Voor het voltooien van deze zelfstudie hebt u een Azure Cognitive Search-service nodig, die u [in de portal kunt maken](search-create-service-portal.md). U kunt het beste dezelfde laag gebruiken die u in productie wilt gebruiken, zodat u de indexeringssnelheden nauwkeurig kunt testen en optimaliseren.
 
-### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Een beheer-API-sleutel en-URL voor Azure Cognitive Search ophalen
+### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Een beheer-API-sleutel en URL voor Azure Cognitive Search ophalen
 
-Voor API-aanroepen zijn de service-URL en een toegangs sleutel vereist. Een zoek service wordt met beide gemaakt, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, voert u de volgende stappen uit om de benodigde gegevens op te halen:
+Voor API-aanroepen is de service-URL en een toegangssleutel vereist. Een zoekservice wordt gemaakt met beide, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, volgt u deze stappen om de benodigde informatie op te halen:
 
-1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
+1. [Meld u aan bij Azure Portal](https://portal.azure.com/) en haal op de pagina **Overzicht** van uw zoekservice de URL op. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
 
-1. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
+1. Haal onder **Instellingen** > **Sleutels** een beheersleutel op voor volledige rechten op de service. Er zijn twee uitwisselbare beheersleutels die voor bedrijfscontinuïteit worden verstrekt voor het geval u een moet overschakelen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
 
-   ![Een HTTP-eind punt en toegangs sleutel ophalen](media/search-get-started-postman/get-url-key.png "Een HTTP-eind punt en toegangs sleutel ophalen")
+   ![Een HTTP-eindpunt en toegangssleutel ophalen](media/search-get-started-postman/get-url-key.png "Een HTTP-eindpunt en toegangssleutel ophalen")
 
-## <a name="2---set-up-your-environment"></a>2-uw omgeving instellen
+## <a name="2---set-up-your-environment"></a>2 - De omgeving instellen
 
-1. Start Visual Studio en open **OptimizeDataIndexing. SLN**.
-1. Open **appSettings. json** in Solution Explorer om verbindings gegevens op te geven.
-1. Voor `searchServiceName`, als de volledige URL "https://my-demo-service.search.windows.net" is, is de naam van de service die u wilt bieden "My-demo-service".
+1. Start Visual Studio en open **OptimizeDataIndexing.sln**.
+1. Open **appsettings.json** in Solution Explorer om verbindingsgegevens op te geven.
+1. Voor `searchServiceName` geldt: als de volledige URL https://my-demo-service.search.windows.net is, moet u de servicenaam my-demo-service opgeven.
 
 ```json
 {
@@ -88,34 +88,34 @@ Voor API-aanroepen zijn de service-URL en een toegangs sleutel vereist. Een zoek
 }
 ```
 
-## <a name="3---explore-the-code"></a>3-de code verkennen
+## <a name="3---explore-the-code"></a>3 - De code verkennen
 
-Zodra u *appSettings. json*hebt bijgewerkt, moet het voorbeeld programma in **OptimizeDataIndexing. SLN** klaar zijn om te worden gemaakt en uitgevoerd.
+Zodra u *appsettings.json* hebt bijgewerkt, moet het voorbeeldprogramma in **OptimizeDataIndexing.sln** klaar zijn om te bouwen en uit te voeren.
 
-Deze code is afgeleid van de [C#-Snelstartgids](search-get-started-dotnet.md). Meer gedetailleerde informatie over de basis beginselen van het werken met de .NET SDK vindt u in dat artikel.
+Deze code is afkomstig van de [C#-quickstart](search-get-started-dotnet.md). Meer uitgebreide informatie over de basisbeginselen van het werken met de .NET SDK vindt u in dat artikel.
 
-Deze eenvoudige C#/.net-ontwikkeling.-console-app voert de volgende taken uit:
+Deze eenvoudige C#-/.NET-console-app voert de volgende taken uit:
 
-+ Hiermee maakt u een nieuwe index op basis van de gegevens structuur van de C#-klasse (die ook verwijst naar de klasse Address).
-+ Test verschillende batch grootten om de meest efficiënte grootte te bepalen
-+ Gegevens asynchroon indexeren
-    + Meerdere threads gebruiken om de indexerings snelheden te verhogen
-    + Een exponentiële uitstel-strategie voor opnieuw proberen te gebruiken voor het opnieuw proberen van mislukte items
++ Maakt een nieuwe index op basis van de gegevensstructuur van de C#-klasse Hotel (die ook verwijst naar de klasse Address).
++ Test verschillende batchgrootten om de meest efficiënte grootte te bepalen
++ Indexeert gegevens asynchroon
+    + Gebruik van meerdere threads om de indexeringssnelheden te verhogen
+    + Gebruik van een herhaalstrategie voor exponentieel uitstel om mislukte items opnieuw uit te voeren
 
- Voordat u het programma uitvoert, moet u een paar minuten duren om de code en de index definities voor dit voor beeld te bestuderen. De relevante code bevindt zich in verschillende bestanden:
+ Neem, voordat u het programma gaat uitvoeren, even een minuut de tijd om de code en de indexdefinities voor dit voorbeeld te bestuderen. De relevante code bevindt zich in twee bestanden:
 
   + **Hotel.cs** en **Address.cs** bevatten het schema dat de index definieert
-  + **DataGenerator.cs** bevat een eenvoudige klasse waarmee u eenvoudig grote hoeveel heden Hotel gegevens kunt maken
-  + **ExponentialBackoff.cs** bevat code voor het optimaliseren van het indexerings proces zoals hieronder wordt beschreven
-  + **Program.cs** bevat functies voor het maken en verwijderen van de index van Azure Cognitive Search, het indexeren van batches met gegevens en het testen van verschillende batch grootten
+  + **DataGenerator.cs** bevat een eenvoudige klasse waarmee eenvoudig grote hoeveelheden hotelgegevens kunnen worden gemaakt
+  + **ExponentialBackoff.cs** bevat code voor het optimaliseren van het indexeringsproces, zoals hieronder wordt beschreven
+  + **Program.cs** bevat functies voor het maken en verwijderen van de Azure Cognitive Search-index, het indexeren van batches met gegevens en het testen van verschillende batchgrootten
 
 ### <a name="creating-the-index"></a>De index maken
 
-In dit voorbeeld programma wordt de .NET SDK gebruikt om een Azure Cognitive Search-index te definiëren en te maken. Het maakt gebruik van de [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) -klasse om een index structuur te genereren op basis van een C#-gegevens model klasse.
+In dit voorbeeldprogramma wordt de .NET SDK gebruikt om een Azure Cognitive Search-index te definiëren en te maken. Er wordt gebruikgemaakt van de [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder)-klasse om een indexstructuur te genereren op basis van een C#-gegevensmodelklasse.
 
-Het gegevens model wordt gedefinieerd door de klasse hotel, dat ook verwijzingen bevat naar de klasse address. De FieldBuilder zoomt uit op meerdere klassen definities om een complexe gegevens structuur voor de index te genereren. Tags voor meta gegevens worden gebruikt voor het definiëren van de kenmerken van elk veld, bijvoorbeeld of het zoekbaar of sorteerbaar is.
+Het gegevensmodel wordt gedefinieerd door de klasse Hotel, die ook verwijzingen bevat naar de klasse Address. Met FieldBuilder wordt ingezoomd op meerdere klassedefinities om een complexe gegevensstructuur voor de index te genereren. Tags voor metagegevens worden gebruikt voor het definiëren van de kenmerken van elk veld; er kan bijvoorbeeld worden aangegeven of een veld doorzoekbaar of sorteerbaar is.
 
-In de volgende fragmenten uit het **Hotel.cs** -bestand ziet u hoe een enkel veld en een verwijzing naar een andere gegevens model klasse kunnen worden opgegeven.
+De volgende fragmenten uit het bestand **Hotel.cs** laten zien hoe een enkel veld en een verwijzing naar een andere gegevensmodelklasse kunnen worden opgegeven.
 
 ```csharp
 . . .
@@ -126,7 +126,7 @@ public Address Address { get; set; }
 . . .
 ```
 
-In het **Program.cs** -bestand wordt de index gedefinieerd met een naam en een veld verzameling die wordt gegenereerd `FieldBuilder.BuildForType<Hotel>()` door de methode en die vervolgens als volgt worden gemaakt:
+In het bestand **Program.cs** wordt de index gedefinieerd met een naam en een veldverzameling en die wordt gegenereerd door de methode `FieldBuilder.BuildForType<Hotel>()`. De index wordt daarna als volgt gemaakt:
 
 ```csharp
 private static async Task CreateIndex(string indexName, SearchServiceClient searchService)
@@ -145,36 +145,36 @@ private static async Task CreateIndex(string indexName, SearchServiceClient sear
 
 ### <a name="generating-data"></a>Gegevens genereren
 
-Er wordt een eenvoudige klasse geïmplementeerd in het **DataGenerator.cs** -bestand om gegevens te genereren voor het testen. Het enige doel van deze klasse is om het eenvoudig te maken om een groot aantal documenten te genereren met een unieke ID voor indexering.
+Er wordt een eenvoudige klasse geïmplementeerd in het bestand **DataGenerator.cs** om gegevens te genereren voor het testen. Het enige doel van deze klasse is om op eenvoudige wijze een groot aantal documenten te genereren met een unieke id voor indexering.
 
-Als u een lijst van 100.000 hotels met unieke Id's wilt ophalen, voert u de volgende twee regels code uit:
+Als u een lijst met 100.000 hotels met unieke id's wilt verkrijgen, voert u de volgende twee regels code uit:
 
 ```csharp
 DataGenerator dg = new DataGenerator();
 List<Hotel> hotels = dg.GetHotels(100000, "large");
 ```
 
-Er zijn twee soorten hotels die in dit voor beeld kunnen worden getest: **klein** en **groot**.
+Er zijn hotels in twee formaten beschikbaar die in dit voorbeeld kunnen worden getest: **klein** en **groot**.
 
-Het schema van uw index kan een grote invloed hebben op de index snelheid. Als gevolg hiervan is het zinvol deze klasse te converteren om gegevens te genereren die overeenkomen met uw beoogde index schema nadat u deze zelf studie hebt door lopen.
+Het schema van uw index kan een grote invloed hebben op de indexeringssnelheid. Als gevolg hiervan is het zinvol deze klasse te converteren om gegevens te genereren die overeenkomen met uw beoogde indexschema nadat u deze zelfstudie hebt doorlopen.
 
-## <a name="4---test-batch-sizes"></a>4-batch-grootten testen
+## <a name="4---test-batch-sizes"></a>4 - Batchgroottes testen
 
-Azure Cognitive Search ondersteunt de volgende Api's om één of meerdere documenten in een index te laden:
+In Azure Cognitive Search worden de volgende API's ondersteund om één of meerdere documenten in een index te laden:
 
 + [Documenten toevoegen, bijwerken of verwijderen (REST API)](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents)
 + [indexAction-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) of [indexBatch-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet)
 
-Als u documenten in batches indexeert, worden de index prestaties aanzienlijk verbeterd. Deze batches kunnen Maxi maal 1000 documenten of Maxi maal ongeveer 16 MB per batch bevatten.
+Als u documenten in batches indexeert, worden de prestaties van de indexering aanzienlijk verbeterd. Deze batches kunnen maximaal duizend documenten of maximaal circa 16 MB per batch bevatten.
 
-Het bepalen van de optimale Batch grootte voor uw gegevens is een belang rijk onderdeel van het optimaliseren van de index snelheid. De twee primaire factoren die van invloed zijn op de optimale Batch grootte zijn:
+Het vaststellen van de optimale batchgrootte voor uw gegevens is een belangrijk onderdeel van voor het optimaliseren van de indexeringssnelheid. De twee primaire factoren die van invloed zijn op de optimale batchgrootte zijn:
 
 + Het schema van uw index
-+ De grootte van uw gegevens
++ De hoeveelheid gegevens
 
-Omdat de optimale Batch grootte afhankelijk is van uw index en uw gegevens, is het de beste manier om verschillende batch grootten te testen om te bepalen wat resulteert in de snelste indexerings snelheden voor uw scenario.
+Omdat de optimale batchgrootte afhankelijk is van uw index en uw gegevens, kunt u het best verschillende batchgroottes testen om te bepalen wat de snelste indexeringssnelheden voor uw scenario zijn.
 
-Met de volgende functie wordt een eenvoudige benadering van het testen van batch grootten gedemonstreerd.
+Met de volgende functie wordt een eenvoudige benadering van het testen van batchgroottes gedemonstreerd.
 
 ```csharp
 public static async Task TestBatchSizes(ISearchIndexClient indexClient, int min = 100, int max = 1000, int step = 100, int numTries = 3)
@@ -210,7 +210,7 @@ public static async Task TestBatchSizes(ISearchIndexClient indexClient, int min 
 }
 ```
 
-Omdat niet alle documenten dezelfde grootte hebben (hoewel ze zich in dit voor beeld bevinden), schatten we de grootte van de gegevens die we verzenden naar de zoek service. We doen dit met behulp van de onderstaande functie waarmee het object voor het eerst naar JSON wordt geconverteerd en vervolgens de grootte in bytes. Met deze techniek kunnen we bepalen welke batch grootten het meest efficiënt zijn in het aantal MB/s-indexerings snelheden.
+Omdat niet alle documenten dezelfde grootte hebben (hoewel ze dit in dit voorbeeld wel zijn), wordt een schatting gemaakt van de grootte van de gegevens die we naar de zoekservice verzenden. Dit wordt gedaan met behulp van de onderstaande functie. Hiermee wordt het object eerst naar JSON geconverteerd en wordt vervolgens de grootte in bytes vastgesteld. Met deze techniek kunnen we bepalen welke batchgroottes het meest efficiënt zijn in termen van MB's/indexeringssnelheden.
 
 ```csharp
 public static double EstimateObjectSize(object data)
@@ -233,43 +233,43 @@ public static double EstimateObjectSize(object data)
 }
 ```
 
-Voor de functie is `ISearchIndexClient` een vereist en het aantal pogingen dat u wilt testen voor elke batch grootte. Omdat er voor elke batch een aantal verschillen kan optreden, wordt elke batch drie keer geprobeerd om de resultaten statistisch te maken.
+Voor de functie is een `ISearchIndexClient` vereist, evenals het aantal testpogingen voor elke batchgrootte. Omdat voor elke batch enige variatie in indexeringstijden verschillen kan voorkomen, wordt elke batch standaard drie keer getest om statistisch significantere resultaten te verkrijgen.
 
 ```csharp
 await TestBatchSizes(indexClient, numTries: 3);
 ```
 
-Wanneer u de functie uitvoert, ziet u een uitvoer zoals hieronder in de console:
+Wanneer u de functie uitvoert, ziet u in de console een uitvoer zoals hieronder weergegeven:
 
-   ![Uitvoer van de functie test Batch grootte](media/tutorial-optimize-data-indexing/test-batch-sizes.png "Uitvoer van de functie test Batch grootte")
+   ![Uitvoer van de functie voor het testen van de batchgrootte](media/tutorial-optimize-data-indexing/test-batch-sizes.png "Uitvoer van de functie voor het testen van de batchgrootte")
 
-Identificeer welke Batch grootte het efficiëntst is en gebruik deze batch grootte in de volgende stap van de zelf studie. Mogelijk ziet u een in MB/s voor verschillende batch grootten.
+Bepaal welke batchgrootte het efficiëntst is en gebruik deze batchgrootte in de volgende stap van de zelfstudie. Mogelijk ziet u een plateauwaarde (in MB) optreden voor de diverse batchgroottes.
 
-## <a name="5---index-data"></a>5-index gegevens
+## <a name="5---index-data"></a>5 - Gegevens indexeren
 
-Nu we de Batch grootte hebben geïdentificeerd die we willen gebruiken, is de volgende stap het indexeren van de gegevens. Als u gegevens efficiënt wilt indexeren, doet u het volgende voor beeld:
+Nu de batchgrootte die we willen gebruiken, is vastgesteld, gaan we in de volgende stap de gegevens indexeren. Om gegevens efficiënt te kunnen indexeren, geldt voor dit voorbeeld dat het:
 
-* Maakt gebruik van meerdere threads/werk rollen.
-* Implementeert een exponentiële uitstel-strategie voor opnieuw proberen.
+* Gebruikmaakt van meerdere threads/werkrollen.
+* Een herhaalstrategie voor exponentieel uitstel implementeert.
 
-### <a name="use-multiple-threadsworkers"></a>Meerdere threads/werk nemers gebruiken
+### <a name="use-multiple-threadsworkers"></a>Meerdere threads/werkrollen gebruiken
 
-Als u optimaal gebruik wilt maken van de indexerings snelheden van Azure Cognitive Search, moet u waarschijnlijk meerdere threads gebruiken voor het gelijktijdig verzenden van batch-indexerings aanvragen naar de service.  
+Als u optimaal gebruik wilt maken van de indexeringssnelheden van Azure Cognitive Search, moet u waarschijnlijk meerdere threads gebruiken voor het gelijktijdig verzenden van aanvragen voor batchindexering naar de service.  
 
-Enkele van de belangrijkste overwegingen die hierboven worden beschreven, hebben invloed op het optimale aantal threads. U kunt dit voor beeld wijzigen en testen met verschillende thread aantallen om het optimale thread aantal voor uw scenario te bepalen. Als er echter meerdere threads gelijktijdig worden uitgevoerd, kunt u profiteren van de meeste efficiëntie-winsten van.
+Enkele belangrijke overwegingen die hierboven worden beschreven, zijn van invloed op het optimale aantal threads. U kunt dit voorbeeld wijzigen en testen met verschillende aantallen threads om het optimale aantal voor uw scenario te bepalen. Als u echter meerdere threads gelijktijdig uitvoert, profiteert u van de meeste verbeteringen in de efficiëntie.
 
-Wanneer u de aanvragen van de zoek service aanpast, kunnen er [HTTP-status codes](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) worden weer gegeven die aangeven dat de aanvraag niet volledig is voltooid. Tijdens het indexeren zijn twee veelvoorkomende HTTP-status codes:
+Wanneer u de aanvragen van de zoekservice verhoogt, kunnen er [HTTP-statuscodes](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) optreden die aangeven dat de aanvraag niet volledig is voltooid. Twee veelvoorkomende HTTP-statuscodes die zich tijdens het indexeren kunnen voordoen, zijn:
 
-+ **503-Service niet beschikbaar** : deze fout betekent dat het systeem zwaar wordt belast en dat de aanvraag op dit moment niet kan worden verwerkt.
-+ **207 multi-status** : deze fout betekent dat sommige documenten zijn geslaagd, maar dat er ten minste één is mislukt.
++ **503: service niet beschikbaar**: deze fout betekent dat het systeem zwaar belast wordt en uw aanvraag op dit moment niet kan worden verwerkt.
++ **207: meerdere statussen**: deze fout betekent dat sommige documenten zijn geslaagd, maar dat er ten minste één is mislukt.
 
-### <a name="implement-an-exponential-backoff-retry-strategy"></a>Een exponentiële uitstel-strategie voor opnieuw proberen implementeren
+### <a name="implement-an-exponential-backoff-retry-strategy"></a>Een herhaalstrategie voor exponentieel uitstel implementeren
 
-Als er een fout optreedt, moeten aanvragen opnieuw worden geprobeerd met een [exponentiële uitstel-strategie voor opnieuw proberen](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff).
+Als er een fout optreedt, moeten aanvragen opnieuw worden ingediend met een [herhaalstrategie voor exponentieel uitstel](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff).
 
-Met de .NET SDK van Azure Cognitive Search worden automatisch 503s en andere mislukte aanvragen opnieuw geprobeerd, maar u moet uw eigen logica implementeren om 207s opnieuw uit te voeren. Open source-hulpprogram ma's, zoals [Polly](https://github.com/App-vNext/Polly) , kunnen ook worden gebruikt voor het implementeren van een strategie voor opnieuw proberen. 
+Met de .NET SDK van Azure Cognitive Search worden aanvragen bij 503-fouten en andere mislukte aanvragen opnieuw uitgevoerd, maar u moet uw eigen logica implementeren om bij 207-fouten aanvragen opnieuw uit te voeren. Opensource-hulpprogramma's als [Polly](https://github.com/App-vNext/Polly) kunnen ook worden gebruikt voor het implementeren van een herhaalstrategie. 
 
-In dit voor beeld implementeren we onze eigen exponentiële uitstel-strategie voor opnieuw proberen. Voor het implementeren van deze strategie beginnen we met het definiëren van enkele `maxRetryAttempts` variabelen, waaronder `delay` de en de eerste voor een mislukte aanvraag:
+In dit voor beeld implementeren we onze eigen herhaalstrategie voor exponentieel uitstel. Voor het implementeren van deze strategie worden eerst enkele variabelen gedefinieerd, waaronder de `maxRetryAttempts` en de initiële `delay` bij een mislukte aanvraag:
 
 ```csharp
 // Create batch of documents for indexing
@@ -281,9 +281,9 @@ TimeSpan delay = delay = TimeSpan.FromSeconds(2);
 int maxRetryAttempts = 5;
 ```
 
-Het is belang rijk om [IndexBatchException](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet) op te vangen, omdat deze uitzonde ringen aangeven dat de indexerings bewerking slechts gedeeltelijk is geslaagd (207s). Mislukte items moeten opnieuw worden geprobeerd met de `FindFailedActionsToRetry` methode waarmee u eenvoudig een nieuwe batch met alleen de mislukte items kunt maken.
+Het is belangrijk om [IndexBatchException](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet) te ondervangen, omdat deze uitzonderingen aangeven dat de indexeringsbewerking slechts gedeeltelijk is geslaagd (207-fouten). Mislukte items moeten opnieuw worden geprobeerd met de `FindFailedActionsToRetry`-methode, waarna gemakkelijk een nieuwe batch met alleen de mislukte items kan worden gemaakt.
 
-Andere uitzonde `IndexBatchException` ringen dan moeten ook worden onderschept en aangeven dat de aanvraag volledig is mislukt. Deze uitzonde ringen zijn minder gangbaar, met name met de .NET SDK, omdat deze automatisch nieuwe pogingen 503s.
+Andere uitzonderingen dan `IndexBatchException` moeten ook worden afgevangen en geven aan dat de aanvraag volledig is mislukt. Deze uitzonderingen zijn minder gangbaar, met name met de .NET SDK, omdat bij 503-fouten automatisch een nieuwe poging wordt uitgevoerd.
 
 ```csharp
 // Implement exponential backoff
@@ -322,43 +322,43 @@ do
 } while (true);
 ```
 
-Hier verpakken we de exponentiële uitstel-code naar een functie zodat deze eenvoudig kan worden aangeroepen.
+Hierna verpakken we de code voor exponentieel uitstel in een functie zodat deze eenvoudig kan worden aangeroepen.
 
-Vervolgens wordt er een andere functie gemaakt om de actieve threads te beheren. Deze functie is niet hier opgenomen, maar kan ook worden gevonden in [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/OptimizeDataIndexing/ExponentialBackoff.cs). De functie kan worden aangeroepen met de volgende opdracht, `hotels` waarbij de gegevens die u wilt uploaden, `1000` de Batch grootte is en `8` het aantal gelijktijdige threads is:
+Vervolgens wordt er een andere functie gemaakt om de actieve threads te beheren. Voor het gemak is deze functie hier niet opgenomen, maar u kunt deze vinden in [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/OptimizeDataIndexing/ExponentialBackoff.cs). De functie kan worden aangeroepen met de volgende opdracht, waarbij `hotels` de gegevens zijn die we willen uploaden, `1000` de batchgrootte is en `8` het aantal gelijktijdige threads:
 
 ```csharp
 ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8).Wait();
 ```
 
-Wanneer u de functie uitvoert, ziet u een uitvoer zoals hieronder:
+Wanneer u de functie uitvoert, ziet u een uitvoer zoals hieronder weergegeven:
 
-![Uitvoer van de functie index gegevens](media/tutorial-optimize-data-indexing/index-data-start.png "Uitvoer van de functie index gegevens")
+![Uitvoer van de functie voor het indexeren van gegevens](media/tutorial-optimize-data-indexing/index-data-start.png "Uitvoer van de functie voor het indexeren van gegevens")
 
-Wanneer een batch met documenten mislukt, wordt een fout afgedrukt die de fout aangeeft en wordt de batch opnieuw geprobeerd:
+Wanneer een batch met documenten mislukt, wordt een fout afgedrukt die de storing aangeeft en tevens de melding dat de batch opnieuw wordt uitgevoerd:
 
-![Fout van de functie index gegevens](media/tutorial-optimize-data-indexing/index-data-error.png "Uitvoer van de functie test Batch grootte")
+![Fout van de functie voor het indexeren van gegevens](media/tutorial-optimize-data-indexing/index-data-error.png "Uitvoer van de functie voor het testen van de batchgrootte")
 
-Nadat de functie is voltooid, kunt u controleren of alle documenten aan de index zijn toegevoegd.
+Nadat de functie is uitgevoerd, kunt u controleren of alle documenten aan de index zijn toegevoegd.
 
-## <a name="6---explore-index"></a>6-Verken index
+## <a name="6---explore-index"></a>6 - Index onderzoeken
 
-U kunt de gevulde zoek index verkennen nadat het programma programmatisch is uitgevoerd of met behulp van de [**Zoek Verkenner**](search-explorer.md) in de portal.
+U kunt de gevulde zoekindex onderzoeken nadat het programma programmatisch is uitgevoerd of gebruikmaken van [**Search Explorer**](search-explorer.md) in de portal.
 
 ### <a name="programatically"></a>Programmatisch
 
-Er zijn twee hoofd opties voor het controleren van het aantal documenten in een index: de API [aantal documenten](https://docs.microsoft.com/rest/api/searchservice/count-documents) en de [API index statistieken ophalen](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics). Beide paden hebben mogelijk enige extra tijd nodig om bij te werken, dus er wordt geen waarschuwing weer gegeven als het aantal geretourneerde documenten lager is dan u aanvankelijk had verwacht.
+Er zijn twee hoofdopties waarmee het aantal documenten in een index kan worden gecontroleerd: de [API voor het tellen van documenten](https://docs.microsoft.com/rest/api/searchservice/count-documents) en de [API voor het ophalen van de indexstatistieken](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics). Voor het bijwerken van beide paden is mogelijk enige extra tijd nodig, dus maak u niet ongerust als het aantal geretourneerde documenten lager is dan u aanvankelijk had verwacht.
 
 #### <a name="count-documents"></a>Documenten tellen
 
-Met de bewerking aantal documenten wordt het aantal documenten in een zoek index opgehaald:
+Met de bewerking Documenten tellen wordt een telling van het aantal documenten in een zoekindex opgehaald:
 
 ```csharp
 long indexDocCount = indexClient.Documents.Count();
 ```
 
-#### <a name="get-index-statistics"></a>Index statistieken ophalen
+#### <a name="get-index-statistics"></a>Indexstatistieken ophalen
 
-De bewerking index statistieken ophalen retourneert een aantal documenten voor de huidige index, plus het gebruik van de opslag. De index statistieken duren langer dan het aantal documenten dat moet worden bijgewerkt.
+Met de bewerking Indexstatistieken ophalen wordt een telling van de documenten voor de huidige index geretourneerd plus de gebruikte hoeveelheid opslag. Het bijwerken van de indexstatistieken duurt langer dan dat van de telling van de documenten.
 
 ```csharp
 IndexGetStatisticsResult indexStats = serviceClient.Indexes.GetStatistics(configuration["SearchIndexName"]);
@@ -366,29 +366,29 @@ IndexGetStatisticsResult indexStats = serviceClient.Indexes.GetStatistics(config
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Open in Azure Portal de pagina **overzicht** van de zoek service en zoek de index **Optimize-Indexing** in de lijst **indexen** .
+Open in de Azure-portal de pagina **Overzicht** van de zoekservice en zoek in de lijst **Indexen** de index **optimize-indexing**.
 
   ![Lijst met Azure Cognitive Search-indexen](media/tutorial-optimize-data-indexing/portal-output.png "Lijst met Azure Cognitive Search-indexen")
 
-Het *aantal documenten* en de *opslag grootte* zijn gebaseerd op de [API voor index statistieken ophalen](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) en het kan enkele minuten duren om de update uit te voeren.
+*Aantal documenten* en *Opslaggrootte* zijn gebaseerd op [API voor het ophalen van indexstatistieken](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics). Het bijwerken van deze opties kan enige tijd in beslag nemen.
 
 ## <a name="reset-and-rerun"></a>Opnieuw instellen en uitvoeren
 
-In de vroege experimentele stadia van de ontwikkeling kunt u het beste de objecten uit Azure Cognitive Search verwijderen en uw code zo instellen dat deze opnieuw worden opgebouwd. Resourcenamen zijn uniek. Na het verwijderen van een object kunt u het opnieuw maken met dezelfde naam.
+In de eerste experimentele fasen van ontwikkeling, is de meest praktische aanpak voor ontwerpiteraties om de objecten uit Azure Cognitive Search te verwijderen en uw code ze te laten herbouwen. Resourcenamen zijn uniek. Na het verwijderen van een object kunt u het opnieuw maken met dezelfde naam.
 
-In de voorbeeld code voor deze zelf studie wordt gecontroleerd op bestaande indexen en worden deze verwijderd zodat u de code opnieuw kunt uitvoeren.
+In de voorbeeldcode voor deze zelfstudie wordt gecontroleerd op bestaande indexen en worden deze verwijderd zodat u de code opnieuw kunt uitvoeren.
 
-U kunt ook de portal gebruiken om indexen te verwijderen.
+U kunt de portal ook gebruiken om indexen te verwijderen.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u aan het eind van een project aan het werk bent, is het een goed idee om de resources te verwijderen die u niet meer nodig hebt. Resources die actief blijven, kunnen u geld kosten. U kunt resources afzonderlijk verwijderen, maar u kunt ook de resourcegroep verwijderen als u de volledige resourceset wilt verwijderen.
+Wanneer u in uw eigen abonnement werkt, is het een goed idee om aan het einde van een project te bepalen of u de gemaakte resources nog steeds nodig hebt en of u deze moet verwijderen. Resources die actief blijven, kunnen u geld kosten. U kunt resources afzonderlijk verwijderen, maar u kunt ook de resourcegroep verwijderen als u de volledige resourceset wilt verwijderen.
 
-U kunt resources vinden en beheren in de portal met behulp van de koppeling **alle resources** of **resource groepen** in het navigatie deel venster aan de linkerkant.
+U kunt resources vinden en beheren in de portal via de koppeling **Alle resources** of **Resourcegroepen** in het navigatiedeelvenster aan de linkerkant.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u bekend bent met het concept van het efficiënt opnemen van gegevens, gaan we eens kijken naar de architectuur van de Lucene-query en hoe zoeken in volledige tekst werkt in azure Cognitive Search.
+U bent nu bekend met het concept van het efficiënt opnemen van gegevens. Laten we de Lucene-queryarchitectuur eens nader bekijken en zien hoe het zoeken in volledige tekst in zijn werk gaat in Azure Cognitive Search.
 
 > [!div class="nextstepaction"]
 > [Hoe zoeken in de volledige tekst werkt in Azure Cognitive Search](search-lucene-query-architecture.md)

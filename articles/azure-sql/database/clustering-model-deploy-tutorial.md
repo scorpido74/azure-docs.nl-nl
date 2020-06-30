@@ -14,21 +14,21 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: d5227fc89d99257f3390820d4930c3d57b63f03d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2a90003c9de2cf0e942b518c6d4e9c3569039caf
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84024106"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251417"
 ---
 # <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Zelfstudie: Een clustermodel in R implementeren met Azure SQL Database Machine Learning Services (preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-In deel drie van deze driedelige serie zelfstudies implementeert u een in R ontwikkeld clustermodel in een SQL-database met behulp van Azure SQL Database Machine Learning Services (preview).
+In deel drie van deze driedelige serie zelfstudies implementeert u een in R ontwikkeld clustermodel in een database in Azure SQL Database met behulp van Azure SQL Database Machine Learning Services (preview).
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
-U maakt een opgeslagen procedure met een ingesloten R-script dat clustering uitvoert. Omdat uw model wordt uitgevoerd in de Azure SQL-database, kan het eenvoudig worden getraind op basis van gegevens die in de database zijn opgeslagen.
+U maakt een opgeslagen procedure met een ingesloten R-script dat clustering uitvoert. Omdat uw model wordt uitgevoerd in de Azure SQL Database, kan het eenvoudig worden getraind op basis van gegevens die in de database zijn opgeslagen.
 
 In dit artikel leert u het volgende:
 
@@ -38,7 +38,7 @@ In dit artikel leert u het volgende:
 > * Clustering uitvoeren in SQL Database
 > * De clusterinformatie gebruiken
 
-In [deel één](clustering-model-prepare-data-tutorial.md) hebt u geleerd hoe u de gegevens van een Azure SQL-database voorbereidt om clustering uit te voeren.
+In [deel één](clustering-model-prepare-data-tutorial.md) hebt u geleerd hoe u de gegevens van een database voorbereidt om clustering uit te voeren.
 
 In [deel twee](clustering-model-build-tutorial.md)hebt u geleerd hoe u een K-means-clustermodel in R maakt en traint.
 

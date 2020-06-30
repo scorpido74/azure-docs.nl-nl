@@ -14,21 +14,22 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 86c73944753126aa3fb5c14c8d6626a449365c64
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 84c0f6564fc9ab8abc43205b58d9445cda82a2da
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84023974"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253814"
 ---
 # <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Zelfstudie: Een voorspellend model implementeren in R met Azure SQL Database Machine Learning Services (preview)
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-In deel drie van deze driedelige zelfstudie implementeert u een in R ontwikkeld voorspellend model in een SQL-database met behulp van Azure SQL Database Machine Learning Services (preview).
+In deel drie van deze driedelige zelfstudie implementeert u een in R ontwikkeld voorspellend model in een database in Azure SQL Database met behulp van Azure SQL Database Machine Learning Services (preview).
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
-U maakt een opgeslagen procedure met een ingesloten R-script dat voorspellingen doet met behulp van het model. Omdat uw model wordt uitgevoerd in de Azure SQL-database, kan het eenvoudig worden getraind op basis van gegevens die in de database zijn opgeslagen.
+U maakt een opgeslagen procedure met een ingesloten R-script dat voorspellingen doet met behulp van het model. Omdat uw model wordt uitgevoerd in de database, kan het eenvoudig worden getraind op basis van gegevens die in de database zijn opgeslagen.
 
 In dit artikel leert u hoe u de R-scripts, die u in de delen één en twee hebt ontwikkeld, moet gebruiken om het volgende te doen:
 
@@ -200,7 +201,7 @@ RentalCount_Predicted
 332.571428571429
 ```
 
-U hebt met succes een model gemaakt, getraind en geïmplementeerd in een Azure SQL-database. Vervolgens heeft u dat model in een opgeslagen procedure gebruikt om waarden te voorspellen op basis van nieuwe gegevens.
+U hebt met succes een model gemaakt, getraind en geïmplementeerd in een database in Azure SQL Database. Vervolgens heeft u dat model in een opgeslagen procedure gebruikt om waarden te voorspellen op basis van nieuwe gegevens.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -208,7 +209,7 @@ Wanneer u de TutorialDB-database niet meer nodig hebt, verwijdert u deze van uw 
 
 Volg deze stappen vanuit de Microsoft Azure-portal:
 
-1. Selecteer in het linkermenu in de Microsoft Azure-portal **Alle resources** of **SQL-databases**.
+1. Selecteer in het linkermenu in Azure Portal **Alle resources** of **SQL-databases**.
 1. Voer in het veld **Filteren op naam...** **TutorialDB** in en selecteer uw abonnement.
 1. Selecteer uw TutorialDB-database.
 1. Selecteer **Verwijderen** op de pagina **Overzicht**.

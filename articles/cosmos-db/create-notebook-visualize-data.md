@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 3de73156618b0f5234cc8049c4ea70385b790388
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: dfcde775780cdb42f9df1d677ff2f2475de92843
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743582"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115275"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Zelfstudie: Een notebook in Azure Cosmos DB maken om de gegevens te analyseren en visualiseren
 
@@ -30,7 +30,7 @@ In deze sectie gaat u de Azure Cosmos-database en -container maken en de retailg
 
 1. Ga naar het tabblad **Notebooks**, selecteer `…` naast **Mijn notebooks** en maak een **Nieuwe notebook**. Selecteer **Python 3** als de standaard-Kernel.
 
-   ![Een nieuwe notebook maken](./media/create-notebook-visualize-data/create-new-notebook.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="Een nieuwe notebook maken":::
 
 1. Nadat een nieuwe notebook is gemaakt, kunt u de naam wijzigen in bijvoorbeeld **VisualizeRetailData.ipynb.**
 
@@ -49,7 +49,7 @@ In deze sectie gaat u de Azure Cosmos-database en -container maken en de retailg
 
    Als u een cel wilt uitvoeren, selecteert u `Shift + Enter`. Of selecteer de cel en kies de optie **Actieve cel uitvoeren** op de navigatiebalk van Data Explorer.
 
-   ![De actieve cel uitvoeren](./media/create-notebook-visualize-data/run-active-cell.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="De actieve cel uitvoeren":::
 
    De database en container worden gemaakt in uw huidige Azure Cosmos-account. De container wordt ingericht met 400 RU/s. U ziet de volgende uitvoer nadat de database en container zijn gemaakt. 
 
@@ -60,7 +60,7 @@ In deze sectie gaat u de Azure Cosmos-database en -container maken en de retailg
 
    U kunt ook het tabblad **Gegevens** vernieuwen en de zojuist gemaakte resources bekijken:
 
-   ![Het tabblad Gegevens vernieuwen om de nieuwe container weer te geven](media/create-notebook-visualize-data/refresh-data-tab.png)
+   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="Het tabblad Gegevens vernieuwen om de nieuwe container weer te geven":::
 
 1. Hierna gaat u de voorbeeldretailgegevens importeren in de Azure Cosmos-container. Hier ziet u de indeling van een item uit de retailgegevens:
 
@@ -135,7 +135,7 @@ Voer in een nieuwe notebookcel de volgende code uit om de eerste tien items van 
 df_cosmos.head(10)
 ```
 
-![Een query uitvoeren om de tien eerste resultaten op te halen](./media/create-notebook-visualize-data/run-query-get-top10-items.png)
+:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="Een query uitvoeren om de tien eerste resultaten op te halen":::
 
 ## <a name="run-queries-and-analyze-your-data"></a>Query's uitvoeren en uw gegevens analyseren
 
@@ -148,7 +148,7 @@ In deze sectie gaat u een aantal query's uitvoeren op de opgehaalde gegevens.
    display(df_revenue.head(5))
    ```
 
-   ![Uitvoer: totale verkoopomzet](./media/create-notebook-visualize-data/total-sales-revenue-output.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="Uitvoer: totale verkoopomzet":::
 
 * **Query2:** U kunt een lijst met de vijf meest aangeschafte items ophalen door een nieuwe notebookcel te openen en de volgende code uit te voeren:
 
@@ -159,7 +159,7 @@ In deze sectie gaat u een aantal query's uitvoeren op de opgehaalde gegevens.
    pd.DataFrame(df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False).head(5), columns=['Count'])
    ```
 
-   ![Vijf meest aangeschafte items](./media/create-notebook-visualize-data/top5-purchased-items.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="Vijf meest aangeschafte items":::
 
 ## <a name="visualize-your-data"></a>Uw gegevens visualiseren  
 
@@ -286,7 +286,7 @@ In deze sectie gaat u een aantal query's uitvoeren op de opgehaalde gegevens.
    show(p)
    ```
 
-   ![De conversieverhouding van aankopen visualiseren](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="De conversieverhouding van aankopen visualiseren":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

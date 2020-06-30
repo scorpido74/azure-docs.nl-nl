@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 06/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1da910cbf700845bdb6d5c07a6ee375a73579e75
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 1ade9e3200909c781dc00cf4e3713395f55f173d
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456858"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253733"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Zelfstudie: Azure Active Directory-integratie met GitHub voor eenmalige aanmelding
 
@@ -58,7 +58,6 @@ Voor het configureren van de integratie van GitHub in Azure AD, moet u GitHub va
 1. In het gedeelte **Toevoegen uit de galerie** typt u in het zoekvak **GitHub**.
 1. Selecteer **GitHub** in het resultatenvenster en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-github"></a>Eenmalige aanmelding van Azure AD configureren en testen voor GitHub
 
 Configureer en test eenmalige aanmelding van Azure AD met GitHub met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in GitHub.
@@ -84,14 +83,17 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. In de sectie **Standaard-SAML-configuratie** voert u de waarden in voor de volgende velden:
 
-   a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://github.com/orgs/<entity-id>/sso`
+   a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://github.com/orgs/<Organization ID>/sso`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://github.com/orgs/<entity-id>`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://github.com/orgs/<Organization ID>`
+
+    c. In het tekstvak **Antwoord-URL** typt u een URL met behulp van het volgende patroon: `https://github.com/orgs/<Organization ID>/saml/consume`
+
 
     > [!NOTE]
-    > Houd er rekening mee dat dit niet de werkelijke waarden zijn. U dient deze waarden bij te werken met de werkelijke aanmeldings-URL en -id. Wij raden u aan hiervoor de unieke waarde van de tekenreeks in de id te gebruiken. Ga naar de sectie GitHub-beheerder om de waarden op te halen.
+    > Houd er rekening mee dat dit niet de werkelijke waarden zijn. U moet deze waarden bijwerken met de werkelijke aanmeldings-URL, id en antwoord-URL. Wij raden u aan hiervoor de unieke waarde van de tekenreeks in de id te gebruiken. Ga naar de sectie GitHub-beheerder om de waarden op te halen.
 
-5. In de GitHub-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding ziet u de lijst met standaardkenmerken, waarbij **nameidentifier** is toegewezen aan **user.userprincipalname**. In de GitHub-toepassing wordt verwacht dat **nameidentifier** is toegewezen aan **user.mail**. Daarom moet u de kenmerktoewijzing bewerken door op het pictogram **Bewerken** te klikken en de kenmerktoewijzing te wijzigen.
+5. In de GitHub-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding ziet u de lijst met standaardkenmerken, waarbij **Unieke gebruikers-id** is toegewezen aan **user.userprincipalname**. In de GitHub-toepassing wordt verwacht dat **Unieke gebruikers-id (naam-id)** is toegewezen aan **user.mail**. Daarom moet u de kenmerktoewijzing bewerken door op het pictogram **Bewerken** te klikken en de kenmerktoewijzing te wijzigen.
 
     ![image](common/edit-attribute.png)
 
@@ -147,9 +149,13 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
     ![Instellingen](./media/github-tutorial/tutorial_github_config_github_03.png)
 
-3. Schakel het selectievakje **Enable SAML authentication** in. De velden voor het configureren van eenmalige aanmelding worden zichtbaar. Gebruik vervolgens de URL-waarde voor eenmalige aanmelding om de URL voor eenmalige aanmelding in Azure AD-configuratie te werken.
+3. Schakel het selectievakje **Enable SAML authentication** in. De velden voor het configureren van eenmalige aanmelding worden zichtbaar. voer de volgende stappen uit:
 
     ![Instellingen](./media/github-tutorial/tutorial_github_config_github_13.png)
+
+    a. Kopieer de waarde van **URL voor enkele aanmelding** en plak deze waarde in het vak **Aanmeldings-URL** in **Standaard SAML-configuratie** in de Azure-portal.
+    
+    b. Kopieer de waarde van de **URL voor Assertion Consumer Service** en plak deze in het tekstvak **Antwoord-URL** in de **Standaard SAML-configuratie** in de Azure-portal.
 
 4. Configureer de volgende velden:
 

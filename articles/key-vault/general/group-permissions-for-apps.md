@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0d2666e2b56e73b809a0480d45fa3a4a63f06490
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 28765d3a4a0812f6f3631427432105fdc4650808
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652221"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126226"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Key Vault-verificatie met een toegangsbeheerbeleid bieden
 
@@ -60,10 +60,10 @@ De object-id voor een toepassing komt overeen met de bijbehorende service-princi
 
 Er zijn twee manieren om een object-id voor een toepassing te verkrijgen.  Allereerst kunt u de toepassing registreren bij Azure Active Directory. Volg hiervoor de stappen in de quickstart [Een toepassing registreren bij het Microsoft Identity Platform](../../active-directory/develop/quickstart-register-app.md). Wanneer de registratie is voltooid, wordt de object-id vermeld als de 'Toepassings-id (client)'.
 
-De tweede manier is het maken van een service-principal in een terminalvenster. Gebruik de Azure CLI met de opdracht [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) en geef een unieke naam op voor de service-principal via de -n-vlag in de indeling ‘ http://&lt;my-unique-service-principle-name&gt;’.
+De tweede manier is het maken van een service-principal in een terminalvenster. Gebruik de Azure CLI met de opdracht [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) en geef een unieke naam op voor de service-principal via de -n-vlag in de indeling ‘ http://&lt;my-unique-service-principal-name&gt;’.
 
 ```azurecli-interactive
-az ad sp create-for-rbac -n "http://<my-unique-service-principle-name"
+az ad sp create-for-rbac -n "http://<my-unique-service-principal-name"
 ```
 
 De object-id wordt weer gegeven in de uitvoer als `clientID`.
@@ -72,7 +72,7 @@ Gebruik met Azure PowerShell de cmdlet [New-AzADServicePrincipal](/powershell/mo
 
 
 ```azurepowershell-interactive
-New-AzADServicePrincipal -DisplayName <my-unique-service-principle-name>
+New-AzADServicePrincipal -DisplayName <my-unique-service-principal-name>
 ```
 
 De object-id wordt weer gegeven in de uitvoer als `Id` (niet `ApplicationId`).

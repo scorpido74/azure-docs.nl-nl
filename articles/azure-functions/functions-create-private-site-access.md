@@ -1,47 +1,47 @@
 ---
-title: Toegang tot Azure Functions van privé-site inschakelen
-description: Meer informatie over het instellen van toegang tot de persoonlijke site van Azure Virtual Network voor Azure Functions.
+title: Toegang tot Azure Functions via privésite inschakelen
+description: Meer informatie over het instellen van toegang tot de privésite van Azure Virtual Network voor Azure Functions.
 author: mcollier
 ms.author: mcollier
 ms.service: azure-functions
 ms.topic: tutorial
-ms.date: 02/15/2020
-ms.openlocfilehash: ada08de182791c6ecb2b83ef3b924bf40975e1ee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 06/17/2020
+ms.openlocfilehash: 930b691019d5cb56e487c58e3ca01c4f7ee4ef98
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851280"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261129"
 ---
-# <a name="tutorial-establish-azure-functions-private-site-access"></a>Zelf studie: toegang tot Azure Functions privé-site tot stand brengen
+# <a name="tutorial-establish-azure-functions-private-site-access"></a>Zelfstudie: Toegang tot privésite van Azure Functions tot stand brengen
 
-In deze zelf studie wordt uitgelegd hoe u [toegang tot de persoonlijke site](./functions-networking-options.md#private-site-access) inschakelt met Azure functions. Door toegang tot de persoonlijke site te gebruiken, kunt u vereisen dat uw functie code alleen wordt geactiveerd vanuit een specifiek virtueel netwerk.
+In deze zelfstudie wordt uitgelegd hoe u [toegang tot privésite](./functions-networking-options.md#private-site-access) kunt inschakelen met Azure Functions. Als u toegang tot privésite gebruikt, kunt u vereisen dat uw functiecode alleen wordt geactiveerd vanuit een specifiek virtueel netwerk.
 
-Toegang tot de persoonlijke site is handig in scenario's wanneer de toegang tot de functie-app moet worden beperkt tot een specifiek virtueel netwerk. De functie-app kan bijvoorbeeld alleen worden toegepast op werk nemers van een specifieke organisatie of services die zich binnen het opgegeven virtuele netwerk bevinden (zoals een andere Azure-functie, een virtuele Azure-machine of een AKS-cluster).
+Toegang tot de privésite is handig in scenario's waarbij de toegang tot de functie-app moet worden beperkt tot een specifiek virtueel netwerk. De functie-app kan bijvoorbeeld alleen van toepassing zijn op werknemers van een specifieke organisatie of op services die zich binnen het opgegeven virtuele netwerk bevinden (zoals een andere Azure-functie, een virtuele Azure-machine of een AKS-cluster).
 
-Als een functions-app toegang moet hebben tot Azure-resources in het virtuele netwerk of verbonden zijn via [service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md), is [integratie met virtueel netwerk](./functions-create-vnet.md) nodig.
+Als een Functions-app toegang moet hebben tot Azure-resources in het virtuele netwerk, of moet worden verbonden via [service-eindpunten](../virtual-network/virtual-network-service-endpoints-overview.md), dan is [integratie van virtueel netwerk](./functions-create-vnet.md) nodig.
 
-In deze zelf studie leert u hoe u toegang tot persoonlijke sites kunt configureren voor uw functie-app:
+In deze zelfstudie leert u hoe u toegang tot privésites kunt configureren voor uw functie-app:
 
 > [!div class="checklist"]
 > * Een virtuele machine maken
 > * Een Azure Bastion-service maken
 > * Een Azure Functions-app maken
-> * Een service-eind punt voor een virtueel netwerk configureren
-> * Een Azure-functie maken en implementeren
+> * Een service-eindpunten voor virtuele netwerken configureren
+> * Een Azure Function maken en implementeren
 > * De functie van buiten en binnen het virtuele netwerk aanroepen
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="topology"></a>Topologie
 
-In het volgende diagram ziet u de architectuur van de oplossing die moet worden gemaakt:
+In het volgende diagram wordt de architectuur van de te maken toepassing weergegeven:
 
-![Architectuur diagram op hoog niveau voor de toegangs oplossing van een particuliere site](./media/functions-create-private-site-access/topology.png)
+![Diagram van architectuur op hoog niveau voor de oplossing voor toegang tot privésite](./media/functions-create-private-site-access/topology.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor deze zelf studie is het belang rijk dat u inzicht hebt in IP-adres sering en-subnetten. U kunt beginnen met [dit artikel voor informatie over de basis principes van adres sering en subnetten](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics). Er zijn veel meer artikelen en Video's online beschikbaar.
+Voor deze zelfstudie is het belangrijk dat u inzicht hebt in IP-adressering en subnetten. U kunt beginnen met [dit artikel waarin de basisprincipes van adressering en subnetten worden beschreven](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics). Er zijn veel meer artikelen en video's online beschikbaar.
 
 ## <a name="sign-in-to-azure-portal"></a>Meld u aan bij Azure Portal
 
@@ -49,170 +49,174 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
-De eerste stap in deze zelf studie is het maken van een nieuwe virtuele machine in een virtueel netwerk.  De virtuele machine wordt gebruikt om toegang te krijgen tot uw functie zodra u de toegang tot de app hebt beperkt, zodat deze alleen beschikbaar is in het virtuele netwerk.
+De eerste stap in deze zelfstudie is het maken van een nieuwe virtuele machine in een virtueel netwerk.  De virtuele machine wordt gebruikt om toegang te krijgen tot uw functie zodra u de toegang tot de app hebt beperkt, zodat deze alleen beschikbaar is in het virtuele netwerk.
 
-1. Selecteer de knop **een resource maken** .
+1. Selecteer de knop **Een resource maken**.
 
-2. Typ `Windows Server`in het zoek veld en selecteer **Windows Server** in de zoek resultaten.
+1. Typ **Windows Server** in het zoekveld en selecteer **Windows Server** in de zoekresultaten.
 
-3. Selecteer **Windows server 2019 Data Center** in de lijst met opties voor Windows Server en klik op de knop **maken** .
+1. Selecteer **Windows Server 2019 Data Center** in de lijst met opties voor Windows Server en druk op de knop **Maken**.
 
-4. Op het tabblad **basis beginselen** gebruikt u de VM-instellingen zoals opgegeven in de tabel onder de installatie kopie:
+1. Gebruik in het tabblad _Basisbeginselen_ de VM-instellingen die in de tabel onder de afbeelding zijn opgegeven:
 
     >[!div class="mx-imgBorder"]
-    >![Tabblad basis principes voor een nieuwe Windows-VM](./media/functions-create-private-site-access/create-vm-3.png)
+    >![Tabblad Basisbeginselen voor een nieuwe Windows-VM](./media/functions-create-private-site-access/create-vm-3.png)
 
     | Instelling      | Voorgestelde waarde  | Beschrijving      |
     | ------------ | ---------------- | ---------------- |
-    | **Abonnement** | Uw abonnement | Het abonnement waarmee uw resources worden gemaakt. |
-    | [**Resourcegroep**](../azure-resource-manager/management/overview.md) | myResourceGroup | Kies de resource groep om alle resources voor deze zelf studie te bevatten.  Door gebruik te maken van dezelfde resource groep kunt u gemakkelijker resources opschonen wanneer u met deze zelf studie klaar bent. |
-    | **Naam van de virtuele machine** | myVM | De naam van de virtuele machine moet uniek zijn in de resource groep |
-    | [**Regio**](https://azure.microsoft.com/regions/) | VS VS Noord-Centraal | Kies een regio bij u in de buurt of in de buurt van de functies die u wilt openen. |
-    | **Open bare binnenkomende poorten** | Geen | Selecteer **geen** om er zeker van te zijn dat er geen inkomende verbinding met de virtuele machine via internet is. Externe toegang tot de virtuele machine wordt geconfigureerd via de Azure Bastion-service. |
+    | _Abonnement_ | Uw abonnement | Het abonnement waarmee deze nieuwe resources zijn gemaakt. |
+    | [_Resourcegroep_](../azure-resource-manager/management/overview.md) | myResourceGroup | Kies de resourcegroep die alle resources moet bevatten voor deze zelfstudie.  Door dezelfde resourcegroep te gebruiken, is het eenvoudiger om resources op te schonen wanneer u klaar bent met deze zelfstudie. |
+    | _Naam van virtuele machine_ | myVM | De VM-naam moet uniek zijn in de resourcegroep |
+    | [_Regio_](https://azure.microsoft.com/regions/) | (VS) VS - noord-centraal | Kies een regio bij u in de buurt of in de buurt van de functies die u wilt gebruiken. |
+    | _Openbare binnenkomende poorten_ | Geen | Selecteer **Geen** om er zeker van te zijn dat er geen inkomende connectiviteit is met de virtuele machine via internet. Externe toegang tot de virtuele machine wordt geconfigureerd via de Azure Bastion-service. |
 
-5. Kies het tabblad **netwerken** en selecteer **nieuwe maken** om een nieuw virtueel netwerk te configureren.
-
-    >[!div class="mx-imgBorder"]
-    >![Een nieuw virtueel netwerk maken voor de nieuwe virtuele machine](./media/functions-create-private-site-access/create-vm-networking.png)
-
-6. In **virtueel netwerk maken**gebruikt u de instellingen in de tabel onder de installatie kopie:
+1. Kies het tabblad _Netwerken_ en selecteer **Nieuwe maken** om een nieuw virtueel netwerk te configureren.
 
     >[!div class="mx-imgBorder"]
-    >![Een nieuw virtueel netwerk maken voor de nieuwe virtuele machine](./media/functions-create-private-site-access/create-vm-vnet-1.png)
+    >![Maak een nieuw virtueel netwerk voor de nieuwe VM](./media/functions-create-private-site-access/create-vm-networking.png)
+
+1. Gebruik in _Virtueel netwerk maken_ de instellingen in de tabel onder de afbeelding:
+
+    >[!div class="mx-imgBorder"]
+    >![Maak een nieuw virtueel netwerk voor de nieuwe VM](./media/functions-create-private-site-access/create-vm-vnet-1.png)
 
     | Instelling      | Voorgestelde waarde  | Beschrijving      |
     | ------------ | ---------------- | ---------------- |
-    | **Naam** | myResourceGroup-vnet | U kunt de standaard naam die voor het virtuele netwerk is gegenereerd, gebruiken. |
-    | **Adresbereik** | 10.10.0.0/16 | Gebruik één adres bereik voor het virtuele netwerk. |
-    | **Subnetnaam** | Zelfstudie | De naam van het subnet. |
-    | **Adres bereik** (subnet) | 10.10.1.0/24 | De subnet grootte definieert het aantal interfaces dat aan het subnet kan worden toegevoegd. Dit subnet wordt gebruikt door de virtuele machine. Een `/24` subnet biedt 254 hostadressen. |
+    | _Naam_ | myResourceGroup-vnet | U kunt de standaardnaam gebruiken die voor het virtuele netwerk is gegenereerd. |
+    | _Adresbereik_ | 10.10.0.0/16 | Gebruik één adresbereik voor het virtuele netwerk. |
+    | _Subnetnaam_ | Zelfstudie | Naam van het subnet. |
+    | _Adresbereik_ (subnet) | 10.10.1.0/24 | De subnetgrootte bepaalt hoeveel interfaces aan het subnet kunnen worden toegevoegd. Dit subnet wordt gebruikt door de virtuele machine. Een /24-subnet biedt 254 hostadressen. |
 
-7. Selecteer **OK** om het virtuele netwerk te maken.
-8. Schakel op het tabblad **netwerken** de waarde **geen** is geselecteerd voor **openbaar IP-adres**.
-9. Kies het tabblad **beheer** en kies in **Diagnostische opslag account** **nieuwe maken** om een nieuw opslag account te maken.
-10. Behoud de standaard waarden voor de secties **identiteit**, **automatisch afsluiten**en **back-up** .
-11. Selecteer **controleren + maken**. Nadat de validatie is voltooid, selecteert u **maken**. Het proces voor het maken van de virtuele machine duurt een paar minuten.
+1. Selecteer **OK** om het virtuele netwerk te maken.
+1. Schakel op het tabblad _Netwerken_ de optie **Geen** in voor _Openbare IP_.
+1. Kies het tabblad _Beheer_ en kies in _Diagnostische opslagaccount_ de optie **Nieuwe maken** om een nieuw opslagaccount te maken.
+1. Behoud de standaardwaarden voor de gedeelten _Identiteit_, _Automatisch afsluiten_ en _Back-up_.
+1. Selecteer _Controleren + maken_. Nadat de validatie is voltooid, selecteert u **Maken**. Het proces voor het maken van de virtuele machine duurt een paar minuten.
 
-## <a name="configure-azure-bastion"></a>Azure-Bastion configureren
+## <a name="configure-azure-bastion"></a>Azure Bastion configureren
 
-[Azure Bastion](https://azure.microsoft.com/services/azure-bastion/) is een volledig beheerde Azure-service die rechtstreeks vanuit de Azure Portal beveiligde RDP-en SSH-toegang biedt tot virtuele machines. Als u de Azure Bastion-service gebruikt, wordt de nood zaak om netwerk instellingen te configureren met betrekking tot RDP-toegang.
+[Azure Bastion](https://azure.microsoft.com/services/azure-bastion/) is een volledig beheerde Azure-service die rechtstreeks vanuit de Azure-portal beveiligde RDP- en SSH-toegang biedt tot virtuele machines. Als u de Azure Bastion-service gebruikt, is het niet meer nodig om netwerkinstellingen met betrekking tot RDP-toegang te configureren.
 
-1. Klik in de portal op **toevoegen** boven aan de weer gave resource groep.
-2. Typ ' Bastion ' in het zoek veld.  Selecteer ' Bastion '.
-3. Selecteer **maken** om te beginnen met het proces van het maken van een nieuwe Azure Bastion-resource. Er wordt een fout bericht weer gegeven in de sectie **virtueel netwerk** omdat er nog geen `AzureBastionSubnet` subnet is. Het subnet wordt in de volgende stappen gemaakt. Gebruik de instellingen in de tabel onder de afbeelding:
+1. Kies in de portal **Toevoegen** bovenaan de resourcegroepweergave.
+1. Typ **Bastion** in het zoekveld.
+1. Selecteer **Bastion** in de zoekresultaten.
+1. Selecteer **Maken** om het proces voor het maken van een nieuwe Azure Bastion-resource te starten. Er wordt een foutbericht weergegeven in het gedeelte _Virtueel netwerk_ omdat er nog geen AzureBastionSubnet-subnet is. Het subnet wordt in de volgende stappen gemaakt. Gebruik de instellingen van de tabel onder de afbeelding:
 
     >[!div class="mx-imgBorder"]
     >![Starten met het maken van Azure Bastion](./media/functions-create-private-site-access/create-bastion-basics-1.png)
 
     | Instelling      | Voorgestelde waarde  | Beschrijving      |
     | ------------ | ---------------- | ---------------- |
-    | **Naam** | myBastion | De naam van de nieuwe Bastion-resource |
-    | **Regio** | VS - noord-centraal | Kies een [regio](https://azure.microsoft.com/regions/) in de buurt of in de buurt van andere services die door uw functie worden gebruikt. |
-    | **Virtueel netwerk** | myResourceGroup-vnet | Het virtuele netwerk waarin de Bastion-resource wordt gemaakt |
-    | **Subnetrouter** | AzureBastionSubnet | Het subnet in het virtuele netwerk waarop de nieuwe bastion-host wordt geïmplementeerd. U moet een subnet maken met behulp van `AzureBastionSubnet`de naam waarde. Met deze waarde kan Azure weten met welk subnet de Bastion-resources moeten worden geïmplementeerd. U moet een subnet van Mini maal `/27` of groter gebruiken (`/27`, `/26`, enzovoort). |
+    | _Naam_ | myBastion | De naam van de nieuwe Bastion-resource |
+    | _Regio_ | VS - noord-centraal | Kies een [regio](https://azure.microsoft.com/regions/) in de buurt of in de buurt van andere services die door uw functie worden gebruikt. |
+    | _Virtueel netwerk_ | myResourceGroup-vnet | Het virtuele netwerk waarin de Bastion-resource wordt gemaakt |
+    | _Subnet_ | AzureBastionSubnet | Het subnet in het virtuele netwerk waarop de nieuwe Bastion-hostresource wordt geïmplementeerd. U moet een subnet maken met de naamwaarde **AzureBastionSubnet**. Deze waarde geeft Azure aan op welk subnet de Bastion-resources moeten worden geïmplementeerd. U moet een subnet van minimaal **/27** of groter (/27, /26 enzovoort) gebruiken. |
 
     > [!NOTE]
-    > Raadpleeg de zelf studie [een Azure bastion-host maken](../bastion/bastion-create-host-portal.md) voor een gedetailleerde, stapsgewijze hand leiding voor het maken van een Azure Bastion-resource.
+    > Raadpleeg de zelfstudie [Een Azure Bastion-host maken](../bastion/bastion-create-host-portal.md) voor een gedetailleerde, stapsgewijze handleiding voor het maken van een Azure Bastion-resource.
 
-4. Maak een subnet waarin Azure de Azure bastion-host kan inrichten. Als u **subnet-configuratie beheren** kiest, wordt er een nieuw deel venster geopend waarin u een nieuw subnet kunt definiëren.  Kies **+ subnet** om een nieuw subnet te maken.
-5. Het subnet moet de naam `AzureBastionSubnet` hebben en het voor voegsel van het subnet moet mini `/27`maal zijn.  Selecteer **OK** om het subnet te maken.
-
-    >[!div class="mx-imgBorder"]
-    >![Subnet maken voor Azure bastion-host](./media/functions-create-private-site-access/create-bastion-subnet-2.png)
-
-6. Selecteer op de pagina **een bastion maken** de nieuwe `AzureBastionSubnet` in de lijst met beschik bare subnetten.
+1. Maak een subnet waarin Azure de Azure Bastion-host kan inrichten. Als u **Subnet-configuratie beheren** kiest, wordt een nieuw deelvenster geopend waarin u een nieuw subnet kunt definiëren.  Kies **+ Subnet** om een nieuw subnet te maken.
+1. Het subnet moet de naam **AzureBastionSubnet** hebben en het subnetvoorvoegsel moet ten minste **/27** zijn.  Selecteer **OK** om het subnet te maken.
 
     >[!div class="mx-imgBorder"]
-    >![Een Azure bastion-host met een specifiek subnet maken](./media/functions-create-private-site-access/create-bastion-basics-2.png)
+    >![Subnet maken voor Azure Bastion-host](./media/functions-create-private-site-access/create-bastion-subnet-2.png)
 
-7. Selecteer **controleren & maken**. Wanneer de validatie is voltooid, selecteert u **maken**. Het duurt enkele minuten voordat de Azure Bastion-resource is gemaakt.
+1. Selecteer op de pagina _Een bastion maken_ de zojuist gemaakte **AzureBastionSubnet** in de lijst met beschikbare subnetten.
+
+    >[!div class="mx-imgBorder"]
+    >![Een Azure Bastion-host met een specifiek subnet maken](./media/functions-create-private-site-access/create-bastion-basics-2.png)
+
+1. Selecteer **Beoordelen en maken**. Wanneer de validatie is voltooid, selecteert u **Maken**. Het duurt enkele minuten voordat de Azure Bastion-resource is gemaakt.
 
 ## <a name="create-an-azure-functions-app"></a>Een Azure Functions-app maken
 
-De volgende stap is het maken van een functie-app in azure met behulp van het [verbruiks abonnement](functions-scale.md#consumption-plan). Verderop in de zelf studie implementeert u uw functie code in deze resource.
+De volgende stap is het maken van een functie-app in Azure met behulp van het [Verbruiksabonnement](functions-scale.md#consumption-plan). Verderop in de zelfstudie implementeert u uw functiecode in deze resource.
 
-1. Klik in de portal op **toevoegen** boven aan de weer gave resource groep.
-2. **Reken > selecteren functie-app**
-3. Gebruik in de sectie **basis beginselen** de instellingen van de functie-app, zoals is opgegeven in de volgende tabel.
-
-    | Instelling      | Voorgestelde waarde  | Beschrijving      |
-    | ------------ | ---------------- | ---------------- |
-    | **Resource groep** | myResourceGroup | Kies de resource groep om alle resources voor deze zelf studie te bevatten.  Als u dezelfde resource groep gebruikt voor de functie-app en de virtuele machine, kunt u resources gemakkelijker opschonen wanneer u met deze zelf studie klaar bent. |
-    | **functie-app naam** | Wereldwijd unieke naam | Naam waarmee uw nieuwe functie-app wordt aangeduid. Geldige tekens zijn a-z (niet hoofdletter gevoelig), 0-9 en-. |
-    | **Publiceren** | Code | Optie voor het publiceren van codebestanden of een Docker-container. |
-    | **Runtimestack** | Voorkeurstaal | Kies een runtime die uw favoriete functieprogrammeertaal ondersteunt. |
-    | **Regio** | VS - noord-centraal | Kies een [regio](https://azure.microsoft.com/regions/) in de buurt of in de buurt van andere services die door uw functie worden gebruikt. |
-
-    Selecteer de knop **volgende: hosten >** .
-4. Voor de sectie **Hosting** selecteert u het juiste **opslag account**, **besturings systeem**en **plant** u een beschrijving in de volgende tabel.
+1. Kies in de portal **Toevoegen** bovenaan de resourcegroepweergave.
+1. Selecteer **Berekenen > Functie-app**
+1. In het gedeelte _Basisbeginselen_ gebruikt u de instellingen voor de functie-app die in de onderstaande tabel zijn opgegeven.
 
     | Instelling      | Voorgestelde waarde  | Beschrijving      |
     | ------------ | ---------------- | ---------------- |
-    | **Storage-account** | Wereldwijd unieke naam | Maak een opslagaccount die wordt gebruikt door uw functie-app. Namen van opslagaccounts moeten tussen 3 en 24 tekens lang zijn en mogen alleen cijfers en kleine letters bevatten. U kunt ook een bestaand account gebruiken dat moet voldoen aan de [vereisten voor het opslag account](./functions-scale.md#storage-account-requirements). |
-    | **Besturingssysteem** | Voor keur besturings systeem | Er wordt vooraf een besturings systeem geselecteerd voor u op basis van de selectie van de runtime stack, maar u kunt de instelling wijzigen, indien nodig. |
-    | **Plannen** | Verbruik | Het [hosting plan](./functions-scale.md) bepaalt hoe de functie-app wordt geschaald en welke resources beschikbaar zijn voor elk exemplaar. |
-5. Selecteer **controleren + maken** om de selecties van de app-configuratie te controleren.
-6. Selecteer **Maken** om de functie-app in te richten en te implementeren.
+    | _Resourcegroep_ | myResourceGroup | Kies de resourcegroep die alle resources moet bevatten voor deze zelfstudie.  Door dezelfde resourcegroep te gebruiken voor de functie-app en de VM, is het eenvoudiger om resources op te schonen wanneer u klaar bent met deze zelfstudie. |
+    | _Naam van de functie-app_ | Wereldwijd unieke naam | Naam waarmee uw nieuwe functie-app wordt aangeduid. Geldige tekens zijn a-z (hoofdlettergevoelig), 0-9 en -. |
+    | _Publiceren_ | Code | Optie voor het publiceren van codebestanden of een Docker-container. |
+    | _Runtimestack_ | Voorkeurstaal | Kies een runtime die uw favoriete functieprogrammeertaal ondersteunt. |
+    | _Regio_ | VS - noord-centraal | Kies een [regio](https://azure.microsoft.com/regions/) in de buurt of in de buurt van andere services die door uw functie worden gebruikt. |
 
-## <a name="configure-access-restrictions"></a>Toegangs beperkingen configureren
+    Selecteer de knop **Volgende: Hosting >** .
+1. Selecteer voor het gedeelte _Hosting_ het juiste _Opslagaccount_, _Besturingssysteem_ en _Abonnement_, zoals wordt beschreven in de volgende tabel.
 
-De volgende stap is het configureren van [toegangs beperkingen](../app-service/app-service-ip-restrictions.md) om ervoor te zorgen dat alleen bronnen in het virtuele netwerk de functie kunnen aanroepen.
+    | Instelling      | Voorgestelde waarde  | Beschrijving      |
+    | ------------ | ---------------- | ---------------- |
+    | _Opslagaccount_ | Wereldwijd unieke naam | Maak een opslagaccount die wordt gebruikt door uw functie-app. Namen van opslagaccounts moeten tussen 3 en 24 tekens lang zijn en mogen alleen cijfers en kleine letters bevatten. U kunt ook een bestaand account gebruiken dat voldoet aan de [vereisten voor een opslagaccount](./functions-scale.md#storage-account-requirements). |
+    | _Besturingssysteem_ | Voorkeurbesturingssysteem | Er wordt vooraf een besturingssysteem geselecteerd voor u op basis van de selectie van de runtimestack, maar u kunt de instelling wijzigen, indien nodig. |
+    | _Plannen_ | Verbruik | Het [hostingabonnement](./functions-scale.md) bepaalt hoe de functie-app wordt geschaald en welke resources beschikbaar zijn voor elke instantie. |
+1. Selecteer **Beoordelen + maken** om de selecties van appconfiguratie te controleren.
+1. Selecteer **Maken** om de functie-app in te richten en te implementeren.
 
-Toegang tot de [persoonlijke site](functions-networking-options.md#private-site-access) wordt ingeschakeld door een Azure Virtual Network [service-eind punt](../virtual-network/virtual-network-service-endpoints-overview.md) te maken tussen de functie-app en het opgegeven virtuele netwerk. Toegangs beperkingen worden geïmplementeerd via service-eind punten. Service-eind punten zorgen ervoor dat alleen verkeer dat afkomstig is van binnen het opgegeven virtuele netwerk toegang heeft tot de aangewezen resource. In dit geval is de aangewezen resource de Azure-functie.
+## <a name="configure-access-restrictions"></a>Toegangsbeperkingen configureren
 
-1. Ga in de functie-app naar het tabblad **platform functies** . Selecteer de **netwerk koppeling onder** de sectie *netwerk* -header om de sectie status van de netwerk functie te openen.
-2. De pagina **status van netwerk functie** is het begin punt voor het configureren van de Azure-front-deur, het Azure CDN en ook toegangs beperkingen. Selecteer **toegangs beperkingen configureren** om toegang tot de persoonlijke site te configureren.
-3. Op de pagina **toegangs beperkingen** ziet u alleen de standaard beperking in plaats. De standaard instelling bevat geen beperkingen voor toegang tot de functie-app.  Selecteer **regel toevoegen** om een configuratie voor toegangs beperking van een persoonlijke site te maken.
-4. Selecteer in het deel venster **toegangs beperking toevoegen** **Virtual Network** in de vervolg keuzelijst **type** en selecteer vervolgens het eerder gemaakte virtuele netwerk en subnet.
-5. Op de pagina **toegangs beperkingen** ziet u nu dat er een nieuwe beperking is. Het kan een paar seconden duren voordat de **eindpunt status** wordt gewijzigd van `Disabled` `Provisioning` naar `Enabled`.
+De volgende stap is het configureren van [toegangsbeperkingen](../app-service/app-service-ip-restrictions.md) om ervoor te zorgen dat alleen resources in het virtuele netwerk de functie kunnen aanroepen.
+
+Toegang tot de [privésite](functions-networking-options.md#private-site-access) wordt ingeschakeld door een Azure Virtual Network-[service-eindpunt](../virtual-network/virtual-network-service-endpoints-overview.md) te maken tussen de functie-app en het opgegeven virtuele netwerk. Toegangsbeperkingen worden geïmplementeerd via service-eindpunten. Service-eindpunten zorgen ervoor dat alleen verkeer dat afkomstig is van binnen het opgegeven virtuele netwerk toegang heeft tot de aangewezen resource. In dit geval is de aangewezen resource de Azure-functie.
+
+1. Selecteer in de functie-app de koppeling **Netwerk** onder de gedeelteheader _Instellingen_.
+1. De pagina _Netwerken_ is het beginpunt voor het configureren van de Azure Front Door, de Azure CDN en ook toegangsbeperkingen.
+1. Selecteer **Toegangsbeperkingen configureren** om toegang tot privésite te configureren.
+1. Op de pagina _Toegangsbeperkingen_ ziet u alleen de standaardbeperking. De standaardbeperking bevat geen beperkingen voor toegang tot de functie-app.  Selecteer **Regel toevoegen** om een beperkingsconfiguratie voor toegang tot de privésite te maken.
+1. Geef in het deelvenster _Toegangsbeperking toevoegen_ een _Naam_, _Prioriteit_ en _Beschrijving_ op voor de nieuwe regel.
+1. Selecteer **Virtueel netwerk** in de vervolgkeuzelijst _Type_, selecteer het eerder gemaakte virtuele netwerk en selecteer vervolgens het subnet **Zelfstudie**. 
+    > [!NOTE]
+    > Het kan enkele minuten duren om het service-eindpunt in te schakelen.
+1. Op de pagina _Toegangsbeperkingen_ wordt nu een nieuwe beperking weergegeven. Het kan enkele seconden duren voordat de status van het _Eindpunt_ wordt gewijzigd van Uitgeschakeld naar Inrichten tot Ingeschakeld.
 
     >[!IMPORTANT]
-    > Elke functie-app beschikt over een [geavanceerde hulp programma-site (kudu)](../app-service/app-service-ip-restrictions.md#scm-site) die wordt gebruikt voor het beheren van implementaties van functie-apps. Deze site wordt geopend vanuit een URL zoals: `<FUNCTION_APP_NAME>.scm.azurewebsites.net`. Omdat de toegangs beperkingen niet zijn ingeschakeld op deze implementatie site, kunt u uw project code nog steeds implementeren vanuit een lokaal ontwikkelaars werkstation of een service bouwen zonder een agent in te richten in het virtuele netwerk.
+    > Elke functie-app heeft een [site voor Geavanceerd hulpprogramma (Kudu)](../app-service/app-service-ip-restrictions.md#scm-site) die wordt gebruikt om de implementaties van functie-apps te beheren. Deze site wordt geopend via een URL zoals: `<FUNCTION_APP_NAME>.scm.azurewebsites.net`. Als toegangsbeperkingen op de Kudu-site worden ingeschakeld, wordt de implementatie van de projectcode van een lokaal ontwikkelaarswerkstation voorkomen. Er is een agent binnen het virtuele netwerk vereist om de implementatie uit te voeren.
 
 ## <a name="access-the-functions-app"></a>De functie-app openen
 
-1. Ga terug naar de eerder gemaakte functie-app.  Kopieer de URL in de sectie **overzicht** .
+1. Ga terug naar de eerder gemaakte functie-app.  Kopieer de URL in het gedeelte _Overzicht_.
 
     >[!div class="mx-imgBorder"]
     >![De URL van de functie-app ophalen](./media/functions-create-private-site-access/access-function-overview.png)
 
-2. Als u nu toegang probeert te krijgen tot de functie-app vanaf uw computer buiten het virtuele netwerk, ontvangt u een HTTP 403-pagina die aangeeft dat de app is gestopt.  De app is niet gestopt. De reactie is in feite een HTTP 403 IP verboden status.
-3. U hebt nu toegang tot uw functie vanaf de eerder gemaakte virtuele machine, die is verbonden met uw virtuele netwerk. Als u toegang wilt krijgen tot de site via de VM, moet u verbinding maken met de virtuele machine via de Azure Bastion-service.  Selecteer eerst **verbinding maken** en kies vervolgens **Bastion**.
-4. Geef de vereiste gebruikers naam en het wacht woord op om u aan te melden bij de virtuele machine.  Selecteer **Verbinden**. Er wordt een nieuw browser venster weer gegeven waarin u kunt communiceren met de virtuele machine.
-5. Omdat deze virtuele machine toegang heeft tot de functie via het virtuele netwerk, is het mogelijk om toegang te krijgen tot de site vanuit de webbrowser op de virtuele machine.  Het is belang rijk te weten dat wanneer de functie-app alleen toegankelijk is vanuit het aangewezen virtuele netwerk, een open bare DNS-vermelding blijft. Zoals hierboven wordt weer gegeven, resulteert het uitvoeren van een poging om toegang te krijgen tot de site tot een HTTP 403-antwoord.
+    Als u nu toegang probeert te krijgen tot de functie-app vanaf uw computer buiten het virtuele netwerk, ontvangt u een HTTP 403-pagina die aangeeft dat de toegang niet is toegestaan.
+1. Ga terug naar de resourcegroep en selecteer de eerder gemaakte virtuele machine. Als u toegang wilt krijgen tot de site vanaf de virtuele machine, moet u verbinding maken met de virtuele machine via de Azure Bastion-service.
+1. Selecteer **Verbinding maken** en kies vervolgens **Bastion**.
+1. Geef de vereiste gebruikersnaam en het wachtwoord op om in te loggen bij de virtuele machine.
+1. Selecteer **Verbinden**. Er wordt een nieuw browservenster weergegeven waarin u kunt communiceren met de virtuele machine.
+Het is mogelijk om toegang te krijgen tot de site vanuit de webbrowser op de virtuele machine omdat de virtuele machine toegang heeft tot de site via het virtuele netwerk.  Hoewel de site alleen toegankelijk is vanuit het aangewezen virtuele netwerk, blijft een openbare DNS-vermelding aanwezig.
 
 ## <a name="create-a-function"></a>Een functie maken
 
-De volgende stap in deze zelf studie is het maken van een Azure-functie die door HTTP wordt geactiveerd. Het aanroepen van de functie via een HTTP GET of POST moet resulteren in een antwoord van ' Hello, {name} '.  
+De volgende stap in deze zelfstudie is het maken van een Azure-functie die door HTTP wordt geactiveerd. Het aanroepen van de functie via een HTTP GET of POST moet resulteren in een antwoord zoals 'Hallo {name}'.  
 
-1. Volg een van de volgende Quick starts om uw Azure Functions-app te maken en te implementeren.
+1. Volg een van de volgende quickstarts om uw Azure Functions-app te maken en te implementeren.
 
     * [Visual Studio Code](./functions-create-first-function-vs-code.md)
     * [Visual Studio](./functions-create-your-first-function-visual-studio.md)
-    * [Opdracht regel](./functions-create-first-azure-function-azure-cli.md)
+    * [Opdrachtregel](./functions-create-first-azure-function-azure-cli.md)
     * [Maven (Java)](./functions-create-first-java-maven.md)
 
-2. Wanneer u uw Azure Functions-project publiceert, kiest u de resource van de functie-app die u eerder in deze zelf studie hebt gemaakt.
-3. Controleer of de functie is geïmplementeerd.
+1. Wanneer u uw Azure Functions-project publiceert, kiest u de resource van de functie-app die u eerder in deze zelfstudie hebt gemaakt.
+1. Controleer of de functie is geïmplementeerd.
 
     >[!div class="mx-imgBorder"]
     >![Geïmplementeerde functie in lijst met functies](./media/functions-create-private-site-access/verify-deployed-function.png)
 
-## <a name="invoke-the-function-directly"></a>De functie rechtstreeks aanroepen
+## <a name="invoke-the-function-directly"></a>De functie direct aanroepen
 
-1. Als u de toegang tot de functie wilt testen, moet u de functie-URL kopiëren. Selecteer de geïmplementeerde functie en selecteer vervolgens **</> functie-URL ophalen**. Klik vervolgens op de knop **kopiëren** om de URL naar het klem bord te kopiëren.
+1. Als u de toegang tot de functie wilt testen, moet u de functie-URL kopiëren. Selecteer de geïmplementeerde functie en selecteer **Functie-URL ophalen**. Klik vervolgens op de knop **Kopiëren** om de URL naar het klembord te kopiëren.
 
     >[!div class="mx-imgBorder"]
     >![De functie-URL kopiëren](./media/functions-create-private-site-access/get-function-url.png)
 
-    > [!NOTE]
-    > Wanneer de functie wordt uitgevoerd, wordt er een runtime-fout weer gegeven in de portal, met de mede deling dat de functie-runtime niet kan worden gestart. Ondanks de bericht tekst wordt de functie-app in feite uitgevoerd. De fout treedt op als gevolg van de nieuwe toegangs beperkingen, waarmee wordt voor komen dat de portal een query uitvoert om de runtime te controleren.
+1. Plak de URL in een webbrowser. Als u nu toegang probeert te krijgen tot de functie-app vanaf uw computer buiten het virtuele netwerk, ontvangt u een HTTP 403-antwoord dat aangeeft dat toegang tot de app niet is toegestaan.
 
-2. Plak de URL in een webbrowser. Wanneer u nu probeert toegang te krijgen tot de functie-app vanaf een computer buiten uw virtuele netwerk, ontvangt u een HTTP 403-antwoord met de melding dat de app is gestopt.
+## <a name="invoke-the-function-from-the-virtual-network"></a>De functie van binnen het virtuele netwerk aanroepen
 
-## <a name="invoke-the-function-from-the-virtual-network"></a>De functie aanroepen vanuit het virtuele netwerk
-
-Als u de functie opent via een webbrowser (door gebruik te maken van de Azure Bastion-service) op de geconfigureerde VM in het virtuele netwerk, resulteert dit in geslaagde pogingen.
+Als u de functie opent via een webbrowser (door gebruik te maken van de Azure Bastion-service) op de geconfigureerde VM in het virtuele netwerk, lukt dit.
 
 >[!div class="mx-imgBorder"]
 >![Toegang tot de Azure-functie via Azure Bastion](./media/functions-create-private-site-access/access-function-via-bastion-final.png)
@@ -223,4 +227,4 @@ Als u de functie opent via een webbrowser (door gebruik te maken van de Azure Ba
 
 
 > [!div class="nextstepaction"]
-> [Meer informatie over de netwerk opties in functions](./functions-networking-options.md)
+> [Meer informatie over de netwerkopties in Functions](./functions-networking-options.md)

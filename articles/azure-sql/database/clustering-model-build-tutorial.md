@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: a7d0bc787f1ae4444849a1483d6323f8a098ae1e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 115688eeccab3a48bf4234f00124bcd6bc950853
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84024128"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251434"
 ---
 # <a name="tutorial-build-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Zelfstudie: Een clustering-model maken in R met Azure SQL Database Machine Learning Services (preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-In deel twee van deze driedelige zelfstudie bouwt u een K-Means-model in R om clustering uit te voeren. In het volgende deel implementeert u dit model in een SQL-database met Azure SQL Database Machine Learning Services (preview).
+In deel twee van deze driedelige zelfstudie bouwt u een K-Means-model in R om clustering uit te voeren. In het volgende deel implementeert u dit model in een database in Azure SQL Database met Azure SQL Database Machine Learning Services (preview).
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
@@ -36,9 +36,9 @@ In dit artikel leert u het volgende:
 > * Clustering uitvoeren
 > * Resultaten analyseren
 
-In [deel een](clustering-model-prepare-data-tutorial.md) hebt u geleerd hoe u de gegevens van een Azure SQL-database voorbereidt om clustering uit te voeren.
+In [deel één](clustering-model-prepare-data-tutorial.md) hebt u geleerd hoe u de gegevens van een database voorbereidt om clustering uit te voeren.
 
-In [deel drie](clustering-model-deploy-tutorial.md) leert u hoe u een opgeslagen procedure maakt in een Azure SQL-database die clustering in R kan uitvoeren op basis van nieuwe gegevens.
+In [deel drie](clustering-model-deploy-tutorial.md) leert u hoe u een opgeslagen procedure maakt die clustering in R kan uitvoeren op basis van nieuwe gegevens.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -144,8 +144,8 @@ Hier zijn een paar manieren waarop u deze resultaten zou kunnen interpreteren:
 
 Volg deze stappen vanuit Azure Portal:
 
-1. Selecteer in het linkermenu in de Azure-portal **Alle resources** of **SQL-databases**.
-1. Voer in het veld **Filteren op naam...** , **tpcxbb_1gb** in en selecteer uw abonnement.
+1. Selecteer in het linkermenu in de Microsoft Azure-portal **Alle resources** of **SQL-databases**.
+1. Voer in het veld **Filteren op naam...** **tpcxbb_1gb** in en selecteer uw abonnement.
 1. Selecteer de database **tpcxbb_1gb**.
 1. Selecteer **Verwijderen** op de pagina **Overzicht**.
 

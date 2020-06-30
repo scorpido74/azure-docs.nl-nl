@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: c150972c2804b12ac436a0dd10cdf13f92f43478
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: b1601bf095b5898de965d42a16e63f278499a9bf
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560997"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251506"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>Meerdere tabellen bulksgewijs kopiëren met behulp van Azure Data Factory met PowerShell
 
@@ -59,7 +59,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 **De Azure SQL Database-bron voorbereiden**:
 
-Maak een Azure SQL Database met Adventure Works LT-testgegevens door het artikel [Create an Azure SQL database](../azure-sql/database/single-database-create-quickstart.md) (Een Azure SQL-database maken) te volgen. In deze zelfstudie worden alle tabellen van deze voorbeelddatabase naar een SQL0datawarehouse gekopieerd.
+Maak een database met Adventure Works LT-testgegevens in SQL Database door het artikel [Create an Azure SQL database](../azure-sql/database/single-database-create-quickstart.md) (Een database in Azure SQL Database maken) te volgen. In deze zelfstudie worden alle tabellen van deze voorbeelddatabase naar een SQL0datawarehouse gekopieerd.
 
 **De Azure SQL Data Warehouse-sink voorbereiden**:
 
@@ -334,7 +334,7 @@ In deze pijplijn wordt een lijst met tabellen gebruikt als parameter. Voor elke 
                         "activities": [
                             {
                                 "name": "CopyData",
-                                "description": "Copy data from SQL database to SQL DW",
+                                "description": "Copy data from Azure SQL Database to SQL DW",
                                 "type": "Copy",
                                 "inputs": [
                                     {

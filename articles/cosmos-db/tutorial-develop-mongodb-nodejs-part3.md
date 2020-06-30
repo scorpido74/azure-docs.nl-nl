@@ -1,5 +1,5 @@
 ---
-title: De hoek-app-gebruikers interface maken met de API van Azure Cosmos DB voor MongoDB (part3)
+title: De UI voor Angular-app maken met de API van Azure Cosmos DB voor MongoDB (deel 3)
 description: Deel 3 van de serie zelfstudies voor het maken van een MongoDB-app met Angular en Node op Azure Cosmos DB, waarbij gebruik wordt gemaakt van dezelfde API's als voor MongoDB.
 author: johnpapa
 ms.service: cosmos-db
@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: c9467aef1dd7d28b41c2e05b5f157a158d7377ab
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 64085c55376ec85e20244abb452c2e365aa0aeec
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75444742"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114381"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Een Angular-app maken met de API voor MongoDB van Azure Cosmos DB - De gebruikersinterface maken met Angular
 
@@ -37,7 +37,7 @@ Deel 3 van de zelfstudie bouwt voort op [deel 2](tutorial-develop-mongodb-nodejs
 Voltooi de stappen in [deel 2](tutorial-develop-mongodb-nodejs-part2.md) van de zelfstudie voordat u aan dit deel begint.
 
 > [!TIP]
-> Aan de hand van deze zelfstudie wordt u stapsgewijs begeleid bij het maken van de toepassing. Als u het voltooide project wilt downloaden, kunt u de voltooide app vinden in de [angular-cosmosdb-opslagplaats](https://github.com/Azure-Samples/angular-cosmosdb) op GitHub.
+> Aan de hand van deze zelfstudie wordt u stapsgewijs begeleid bij het maken van de app. Als u het voltooide project wilt downloaden, kunt u de voltooide app vinden in de [angular-cosmosdb-opslagplaats](https://github.com/Azure-Samples/angular-cosmosdb) op GitHub.
 
 ## <a name="build-the-ui"></a>De gebruikersinterface bouwen
 
@@ -51,7 +51,7 @@ Voltooi de stappen in [deel 2](tutorial-develop-mongodb-nodejs-part2.md) van de 
 
     In het terminalvenster wordt een bevestiging getoond van de nieuwe componenten.
 
-    ![Hero-component installeren](./media/tutorial-develop-mongodb-nodejs-part3/install-heros-component.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/install-heros-component.png" alt-text="Hero-component installeren":::
 
     Laten we eens kijken naar de bestanden die zijn gemaakt en bijgewerkt. 
 
@@ -62,7 +62,7 @@ Voltooi de stappen in [deel 2](tutorial-develop-mongodb-nodejs-part2.md) van de 
 
 4. Open in dezelfde map het bestand **app.module.ts**. U ziet dat `HeroesComponent` aan de declaraties in regel 5 is toegevoegd en dat het ook in regel 10 is geïmporteerd.
 
-    ![Het bestand app-module.ts openen](./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="Het bestand app-module.ts openen":::
 
 5. Ga terug naar het bestand **heroes.component.html** en kopieer er de volgende code in. `<div>` is de container voor de hele pagina. In de container bevindt zich een lijst met hero's die we moeten maken, zodat als u op een ervan klikt, u deze kunt selecteren en in de gebruikersinterface bewerken of verwijderen. In de HTML staat de stijl, zodat u weet welke is geselecteerd. Er is ook een bewerkingsgebied, waar u een nieuwe hero kunt toevoegen of een bestaande hero kunt bewerken. 
 
@@ -394,7 +394,7 @@ Hoe kunnen we de component nu op het scherm weergeven? We gaan de standaardcompo
 
 5. Klik op de term `Hero` en links van het codeblok wordt een gloeilamppictogram weergegeven. 
 
-    ![Gloeilamp in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="Gloeilamp in Visual Studio Code":::
 
 6. Klik op de gloeilamp en klik op **Import Hero from "/app/hero".** of **Import Hero from "./hero".** (Het bericht dat u ziet, is afhankelijk van uw instellingen)
 
@@ -490,7 +490,7 @@ Hoe kunnen we de component nu op het scherm weergeven? We gaan de standaardcompo
 
 3. Open vervolgens een internetbrowser en ga naar **localhost:3000** om te zien hoe de app lokaal wordt uitgevoerd.
 
-     ![Hero-app wordt lokaal uitgevoerd](./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png)
+     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="Hero-app wordt lokaal uitgevoerd":::
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -503,4 +503,4 @@ In dit deel van de zelfstudie hebt u het volgende gedaan:
 U kunt doorgaan met het volgende deel van de zelfstudie om een Azure Cosmos DB-account te maken.
 
 > [!div class="nextstepaction"]
-> [Een Azure Cosmos DB account maken met de Azure CLI](tutorial-develop-mongodb-nodejs-part4.md)
+> [Een Azure Cosmos DB-account maken met de Azure CLI](tutorial-develop-mongodb-nodejs-part4.md)

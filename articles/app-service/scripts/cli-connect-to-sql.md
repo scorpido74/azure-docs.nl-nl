@@ -1,6 +1,6 @@
 ---
-title: 'CLI: Een app verbinden met een SQL-database'
-description: Meer informatie over het gebruik van de Azure CLI voor het automatiseren van de implementatie en het beheer van uw App Service-app. In dit voorbeeld ziet u hoe u een app verbindt met een SQL-database.
+title: 'CLI: Een app verbinden met SQL Database'
+description: Meer informatie over het gebruik van de Azure CLI voor het automatiseren van de implementatie en het beheer van uw App Service-app. In dit voorbeeld ziet u hoe u een app verbindt met SQL Database.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 7c2efdd0-f553-4038-a77a-e953021b3f77
@@ -9,16 +9,16 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: aa922930314d630e1aece004bab0c74adaf8eb2f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 297ef15cbf2b8e261d38dabe3a91cb26f3b449d2
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015485"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250737"
 ---
-# <a name="connect-an-app-service-app-to-a-sql-database-using-cli"></a>Een App Service-app verbinden met een SQL-database met behulp van CLI
+# <a name="connect-an-app-service-app-to-sql-database-using-cli"></a>Een App Service-app verbinden met SQL Database met behulp van CLI
 
-Met dit voorbeeldscript maakt u een Azure SQL-database en een App Service-app. Vervolgens wordt de SQL-database aan de app gekoppeld met behulp van app-instellingen.
+Met dit voorbeeldscript maakt u een database in Azure SQL Database en een App Service-app. Vervolgens wordt de database aan de app gekoppeld met behulp van app-instellingen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

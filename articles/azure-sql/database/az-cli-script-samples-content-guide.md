@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: ecd78cdc534b68d913b6b5114a04ad2720796665
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 1f63b8adfabb9de427fd19a992f913d032aa9d8b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658181"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251507"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>Azure CLI-voorbeelden voor Azure SQL Database en beheerde SQL-exemplaren 
  
@@ -39,15 +39,15 @@ De volgende tabel bevat links naar Azure CLI-voorbeeldscript voor het beheren va
 |---|---|
 |**Databases maken in Azure SQL Database**||
 | [Een individuele database maken en een firewallregel configureren](scripts/create-and-configure-database-cli.md) | Hiermee maakt u een SQL-database en configureert u een firewallregel op serverniveau. |
-| [Elastische pools maken en pooldatabases verplaatsen](scripts/move-database-between-elastic-pools-cli.md) | Hiermee maakt u elastische pools, verplaatst u gegroepeerde SQL-databases en wijzigt u de rekenkracht. |
+| [Elastische pools maken en pooldatabases verplaatsen](scripts/move-database-between-elastic-pools-cli.md) | Hiermee maakt u elastische pools, verplaatst u gegroepeerde databases en wijzigt u de rekenkracht. |
 |**Databases schalen in Azure SQL Database**||
 | [Een individuele database schalen](scripts/monitor-and-scale-database-cli.md) | Hiermee wordt een Azure SQL-database naar een andere rekenkracht geschaald nadat de grootte van de database is opgevraagd. |
 | [Een elastische pool schalen](scripts/scale-pool-cli.md) | Hiermee wordt een elastische SQL-pool naar een andere rekenkracht geschaald. |
 |**Geo-replicatie en failover configureren**||
 | [Een individuele database aan een failovergroep toevoegen](scripts/add-database-to-failover-group-cli.md)| Hiermee maakt u een database en een failovergroep, voegt u de database toe aan de failovergroep en test u een failover naar de secundaire server. |
 | [Een failovergroep voor een elastische pool configureren](../../sql-database/scripts/sql-database-add-elastic-pool-to-failover-group-cli.md) | Hiermee maakt u een database, voegt u deze toe aan een elastische pool, voegt u de elastische pool toe aan de failovergroep en test u een failover naar de secundaire server. |
-| [Actieve geo-replicatie gebruiken om een individuele database te configureren en een failover-overschakeling uit te voeren](../../sql-database/scripts/sql-database-setup-geodr-and-failover-database-cli.md)| Hiermee wordt actieve geo-replicatie geconfigureerd voor een individuele Azure SQL-database en wordt overgeschakeld naar de secundaire replica. |
-| [Actieve geo-replicatie gebruiken om een pooldatabase te configureren en een failover-overschakeling uit te voeren](../../sql-database/scripts/sql-database-setup-geodr-and-failover-pool-cli.md)| Hiermee wordt actieve geo-replicatie geconfigureerd voor een Azure SQL-database in een elastische SQL-pool en wordt overgeschakeld naar de secundaire replica. |
+| [Actieve geo-replicatie gebruiken om een individuele database te configureren en een failover-overschakeling uit te voeren](../../sql-database/scripts/sql-database-setup-geodr-and-failover-database-cli.md)| Hiermee wordt actieve geo-replicatie geconfigureerd voor een individuele database in Azure SQL Database en wordt overgeschakeld naar de secundaire replica. |
+| [Actieve geo-replicatie gebruiken om een pooldatabase te configureren en een failover-overschakeling uit te voeren](../../sql-database/scripts/sql-database-setup-geodr-and-failover-pool-cli.md)| Hiermee wordt actieve geo-replicatie geconfigureerd voor een database in een elastische pool en wordt overgeschakeld naar de secundaire replica. |
 | **Controle en bedreigingen detecteren** |
 | [Controle en detectie van bedreigingen configureren](../../sql-database/scripts/sql-database-auditing-and-threat-detection-cli.md)| Hiermee wordt beleid voor controle en detectie van bedreigingen geconfigureerd voor een database in Azure SQL Database. |
 | **Herstellen, kopiëren, importeren en een back-up maken van een database**||
