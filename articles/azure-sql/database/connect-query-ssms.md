@@ -96,7 +96,7 @@ Maak een verbinding met de server in SSMS.
 
 ## <a name="query-data"></a>Querygegevens
 
-Voer deze Transact-SQL \[SELECT](/sql/t-sql/queries/select-transact-sql/)-code uit om op categorie een query uit te voeren voor de twintig populairste producten.
+Voer deze Transact-SQL [SELECT](/sql/t-sql/queries/select-transact-sql/)-code uit om op categorie een query uit te voeren voor de twintig populairste producten.
 
 1. Klik in Objectverkenner met de rechtermuisknop op **mySampleDatabase** en selecteer vervolgens **Nieuwe query**. Er wordt een nieuw queryvenster geopend dat is verbonden met uw database.
 

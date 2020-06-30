@@ -1,68 +1,68 @@
 ---
 title: Verbinding maken met Power BI Professional
-description: In deze zelf studie gaan we stappen uitvoeren om Power BI bureau blad verbinding te maken met SQL op aanvraag (preview).
+description: In deze zelfstudie voert u stappen uit om te leren hoe u Power BI Desktop kunt verbinden met SQL on-demand (preview).
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: tutorial
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 4bedcc1f7375cb83131b00be93c785069a7d3e7d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: MT
+ms.openlocfilehash: f5699624300d262630c9582131d00f33f5ce5be9
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692398"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212884"
 ---
-# <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Verbinding maken met Synapse SQL met Power BI Professional
+# <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Verbinding maken met Synapse SQL met behulp van Power BI Professional
 
 > [!div class="op_single_selector"]
 >
 > - [Azure Data Studio](get-started-azure-data-studio.md)
 > - [Power BI](get-started-power-bi-professional.md)
 > - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> - [Sqlcmd](../sql/get-started-connect-sqlcmd.md)
+> - [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > - [SSMS](get-started-ssms.md)
 
-In deze zelf studie worden de stappen beschreven voor het verbinden van Power BI bureau blad naar SQL op aanvraag (preview).
+In deze zelfstudie voert u stappen uit om te leren hoe u Power BI Desktop kunt verbinden met SQL on-demand (preview).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Hulp programma voor het verlenen van query's:
+Hulpprogramma voor het uitgeven van query's:
 
 - Gewenste SQL-client:
 
   - Azure Data Studio
   - SQL Server Management Studio
 
-- Power BI bureau blad geïnstalleerd
+- Power BI Desktop geïnstalleerd
 
 Parameters:
 
 | Parameter                                 | Beschrijving                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| SQL on-demand service-eindpunt adres    | Wordt gebruikt als server naam                                   |
-| SQL on-demand service-eindpunt regio     | Wordt gebruikt om te bepalen welke opslag wordt gebruikt in voor beelden |
-| Gebruikers naam en wacht woord voor endpoint Access | Wordt gebruikt voor toegang tot het eind punt                               |
-| Data Base die u gebruikt voor het maken van weer gaven     | Deze data base wordt gebruikt als uitgangs punt in voor beelden       |
+| Adres van SQL on-demand service-eindpunt    | Zal worden gebruikt als servernaam                                   |
+| Regio van SQL on-demand service-eindpunt     | Zal worden gebruikt om te bepalen welke opslag wordt gebruikt in voorbeelden |
+| Gebruikersnaam en wachtwoord voor eindpunttoegang | Zal worden gebruikt om toegang te krijgen tot het eindpunt                               |
+| De database die u gaat gebruiken om weergaven te maken     | Deze database zal worden gebruikt als uitgangspunt in voorbeelden       |
 
-## <a name="first-time-setup"></a>Eerste keer instellen
+## <a name="first-time-setup"></a>De eerste installatie
 
-Er zijn twee stappen voorafgaand aan het gebruik van voor beelden:
+Er zijn twee stappen voorafgaand aan het gebruik van voorbeelden:
 
-1. Data base maken voor uw weer gaven
-2. Referenties maken voor gebruik door SQL op aanvraag om toegang te krijgen tot bestanden in de opslag
+1. Database voor uw weergaven maken
+2. Referenties maken voor gebruik door SQL on-demand om toegang te krijgen tot bestanden in opslag
 
 ### <a name="create-database"></a>Database maken
 
-Voor dit aan de slag-artikel moet u uw eigen data base maken om te gebruiken als demo. Er is een data base nodig voor het maken van weer gaven. U gebruikt deze data base in enkele van de voorbeeld query's in deze documentatie.
+Voor dit aan de slag-artikel moet u uw eigen database maken om als demo te gebruiken. Er is een database nodig voor het maken van weergaven. U gebruikt deze database in enkele van de voorbeeldquery's in deze documentatie.
 
 > [!NOTE]
-> Data bases worden alleen gebruikt voor het weer geven van meta gegevens, niet voor werkelijke gegevens.
+> De databases worden alleen gebruikt voor het weergeven van metagegevens, niet voor de werkelijke gegevens.
 >
-> Noteer de naam van de data base die u gebruikt. u hebt deze later nodig.
+> Noteer de naam van de database die u gebruikt. U hebt deze later nodig.
 
 ```sql
 DROP DATABASE IF EXISTS demo;
@@ -70,12 +70,12 @@ DROP DATABASE IF EXISTS demo;
 
 ### <a name="create-credentials"></a>Referenties maken
 
-We moeten referenties maken voordat u query's kunt uitvoeren. Deze referentie wordt gebruikt door SQL service op aanvraag om toegang te krijgen tot bestanden in de opslag.
+U moet referenties maken voordat u query's kunt uitvoeren. Deze referenties worden gebruikt door de SQL on-demand-service om toegang te krijgen tot bestanden in opslag.
 
 > [!NOTE]
-> U moet referenties maken voor toegang tot het opslag account. Hoewel SQL on-demand toegang kan krijgen tot opslag vanuit verschillende regio's, biedt opslag-en Azure Synapse-werk ruimte in dezelfde regio een betere prestatie ervaring.
+> U moet referenties maken voor toegang tot het opslagaccount. Hoewel SQL on-demand toegang kan krijgen tot opslagaccounts uit verschillende regio's, verkrijgt u betere prestaties als de opslag en de Azure Synapse-werkruimte zich in dezelfde regio bevinden.
 
-**Code fragment voor het maken van referenties voor gegevens containers met tellingen**, uitvoeren:
+**Codefragment voor het maken van referenties voor Census-gegevenscontainers** uitvoeren:
 
 ```sql
 IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')
@@ -90,23 +90,23 @@ SECRET = '';
 GO
 ```
 
-## <a name="creating-power-bi-desktop-report"></a>Power BI bureau blad-rapport maken
+## <a name="creating-power-bi-desktop-report"></a>Power BI Desktop-rapport maken
 
-Open de Power BI-bureaublad toepassing en selecteer de optie **gegevens ophalen** .
+Open de toepassing Power BI Desktop en selecteer de optie **Gegevens ophalen**.
 
-![Open Power BI bureaublad toepassing en selecteer gegevens ophalen.](./media/get-started-power-bi-professional/step-0-open-powerbi.png)
+![Open de toepassing Power BI Desktop en selecteer Gegevens ophalen.](./media/get-started-power-bi-professional/step-0-open-powerbi.png)
 
-### <a name="step-1---select-data-source"></a>Stap 1: gegevens bron selecteren
+### <a name="step-1---select-data-source"></a>Stap 1 - gegevensbron selecteren
 
-Selecteer **Azure** in het menu en klik vervolgens **Azure SQL database**.
-![Selecteer een gegevens bron.](./media/get-started-power-bi-professional/step-1-select-data-source.png)
+Selecteer **Azure** in het menu en vervolgens **Azure SQL Database**.
+![Selecteer de gegevensbron.](./media/get-started-power-bi-professional/step-1-select-data-source.png)
 
-### <a name="step-2---select-database"></a>Stap 2: data base selecteren
+### <a name="step-2---select-database"></a>Step 2 - database selecteren
 
-Schrijf de URL voor de data base en de naam van de Data Base waarin de weer gave zich bevindt.
-![Selecteer Data Base op het eind punt.](./media/get-started-power-bi-professional/step-2-db.png)
+Schrijf de URL voor de database en de naam van de database waarin de weergave zich bevindt.
+![Selecteer database op het eindpunt.](./media/get-started-power-bi-professional/step-2-db.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar [opslag bestanden opvragen](get-started-azure-data-studio.md) om te leren hoe u verbinding kunt maken met SQL op aanvraag met behulp van Azure Data Studio.
+Ga naar [Queryopslagbestanden](get-started-azure-data-studio.md) om te leren hoe u verbinding kunt maken met SQL on-demand via Azure Data Studio.
  

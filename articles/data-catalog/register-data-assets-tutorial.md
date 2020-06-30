@@ -6,16 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 1c3987e4f2f31dd0c2395f9b40cc40780c40a518
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 10733dc59d7b143657c67e24d45d4a7c920cbd03
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021599"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255191"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Zelfstudie: Gegevensassets registreren in Azure Data Catalog
 
-In deze zelfstudie gebruikt u het hulpprogramma voor registratie om gegevensassets uit de Azure SQL-databasesample te registreren bij de catalogus. Registratie is het proces waarbij belangrijke structurele metagegevens, zoals namen, typen en locaties, worden geëxtraheerd uit de gegevensbron en bijbehorende assets, en worden gekopieerd naar de catalogus. De gegevensbronnen en gegevensassets blijven waar ze zijn, maar de metagegevens worden door de catalogus gebruikt om de gegevensbronnen en gegevensassets eenvoudiger te detecteren en te begrijpen.
+In deze zelfstudie gebruikt u het hulpprogramma voor registratie om gegevensassets uit de databasesample te registreren bij de catalogus. Registratie is het proces waarbij belangrijke structurele metagegevens, zoals namen, typen en locaties, worden geëxtraheerd uit de gegevensbron en bijbehorende assets, en worden gekopieerd naar de catalogus. De gegevensbronnen en gegevensassets blijven waar ze zijn, maar de metagegevens worden door de catalogus gebruikt om de gegevensbronnen en gegevensassets eenvoudiger te detecteren en te begrijpen.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
@@ -39,11 +39,11 @@ Voor het instellen van Data Catalog moet u eigenaar of mede-eigenaar van een Azu
 
 ### <a name="register-a-data-source"></a>Een gegevensbron registreren
 
-U registreert gegevensassets (tabellen) uit een [Azure SQL-databasesample](../azure-sql/database/single-database-create-quickstart.md), maar u kunt elke ondersteunde gegevensbron gebruiken als u liever werkt met gegevens die vertrouwd en relevant zijn voor uw rol. Zie voor een lijst met ondersteunde gegevensbronnen [Ondersteunde gegevensbronnen](data-catalog-dsr.md).
+U registreert gegevensassets (tabellen) uit een [databasesample](../azure-sql/database/single-database-create-quickstart.md) voor Azure SQL Database, maar u kunt elke ondersteunde gegevensbron gebruiken als u liever werkt met gegevens die vertrouwd en relevant zijn voor uw rol. Zie voor een lijst met ondersteunde gegevensbronnen [Ondersteunde gegevensbronnen](data-catalog-dsr.md).
 
-De naam van de Azure SQL-database die in deze zelfstudie wordt gebruikt, is *RLSTest*.
+De naam van de database die in deze zelfstudie wordt gebruikt, is *RLSTest*.
 
-U kunt nu gegevensassets uit de Azure SQL-databasesample registreren met behulp van Azure Data Catalog.
+U kunt nu gegevensassets uit de databasesample registreren met behulp van Azure Data Catalog.
 
 1. Ga naar de [startpagina van Azure Data Catalog](http://azuredatacatalog.com) en selecteer **Gegevens publiceren**.
 
@@ -61,13 +61,13 @@ U kunt nu gegevensassets uit de Azure SQL-databasesample registreren met behulp 
 
     ![Azure Data Catalog - gegevensbronnen](media/register-data-assets-tutorial/data-catalog-data-sources.png)
 
-5. Voer de SQL Server-verbindingseigenschappen voor uw Azure SQL-databasesample in en selecteer **VERBINDING MAKEN**.
+5. Voer de SQL Server-verbindingseigenschappen voor uw databasesample in en selecteer **VERBINDING MAKEN**.
 
    ![Azure Data Catalog - SQL Server-verbindingsinstellingen](media/register-data-assets-tutorial/data-catalog-sql-server-connection.png)
 
-6. Registreer de metagegevens van uw gegevensasset. In dit voorbeeld registreert u **Product**-objecten van de naamruimte van de Azure SQL-databasesample:
+6. Registreer de metagegevens van uw gegevensasset. In dit voorbeeld registreert u **Product**-objecten van de naamruimte van de databasesample:
 
-    1. Vouw in de structuur **Serverhiërarchie** uw Azure SQL-databasesample uit en selecteer **SalesLT**.
+    1. Vouw in de structuur **Serverhiërarchie** uw databasesample uit en selecteer **SalesLT**.
 
     2. Selecteer **Product**, **ProductCategory**, **ProductDescription** en **ProductModel** door Ctrl+selecteren te gebruiken.
 
@@ -85,7 +85,7 @@ U kunt nu gegevensassets uit de Azure SQL-databasesample registreren met behulp 
 
           ![Zelfstudie voor Azure Data Catalog - te registreren objecten](media/register-data-assets-tutorial/data-catalog-objects-register.png)
 
-    8. Selecteer **REGISTREREN**. Azure Data Catalog registreert uw geselecteerde objecten. In deze oefening worden de geselecteerde objecten van uw Azure SQL-databasesample geregistreerd. Het hulpprogramma voor registratie extraheert metagegevens uit de gegevensasset en kopieert deze gegevens naar de Azure Data Catalog-catalogus. De gegevens blijven waar deze zich op dat moment bevinden. De gegevens blijven in beheer bij de beheerders en blijven vallen onder de beleidsregels van het oorspronkelijke systeem.
+    8. Selecteer **REGISTREREN**. Azure Data Catalog registreert uw geselecteerde objecten. In deze oefening worden de geselecteerde objecten van uw databasesample geregistreerd. Het hulpprogramma voor registratie extraheert metagegevens uit de gegevensasset en kopieert deze gegevens naar de Azure Data Catalog-catalogus. De gegevens blijven waar deze zich op dat moment bevinden. De gegevens blijven in beheer bij de beheerders en blijven vallen onder de beleidsregels van het oorspronkelijke systeem.
 
           ![Azure Data Catalog - geregistreerde objecten](media/register-data-assets-tutorial/data-catalog-registered-objects.png)
 
@@ -93,7 +93,7 @@ U kunt nu gegevensassets uit de Azure SQL-databasesample registreren met behulp 
 
         ![Objecten in de Azure Data Catalog-portal](media/register-data-assets-tutorial/data-catalog-view-portal.png)
 
-In deze oefening hebt u objecten uit de Azure SQL-databasesample geregistreerd, zodat deze eenvoudig kunnen worden gevonden door gebruikers in uw organisatie.
+In deze oefening hebt u objecten uit de databasesample voor Azure SQL Database geregistreerd, zodat deze eenvoudig kunnen worden gevonden door gebruikers in uw organisatie.
 
 In de volgende oefening leert u hoe u geregistreerde gegevensassets kunt detecteren.
 
@@ -178,7 +178,7 @@ Met vergelijkingsoperators kunt u andere vergelijkingen dan gelijkheid gebruiken
 
 3. Druk op **ENTER**.
 
-4. Bevestig dat u in de zoekresultaten de tabellen **Product**, **ProductCategory** en **ProductDescription** en de geregistreerde Azure SQL-database ziet.
+4. Bevestig dat u in de zoekresultaten de tabellen **Product**, **ProductCategory** en **ProductDescription** en de geregistreerde SQL-database ziet.
 
     ![Azure Data Catalog - vergelijking van zoekresultaten](media/register-data-assets-tutorial/data-catalog-comparison-operator-results.png)
 
@@ -251,7 +251,7 @@ In deze oefening opent u gegevensassets in geïntegreerde clienthulpprogramma's 
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 
-In deze oefening hebt u verbinding gemaakt met gegevensasssets die zijn gedetecteerd via Azure Data Catalog. Via de portal van Azure Data Catalog kunt u direct verbinding maken via de clienttoepassingen die zijn geïntegreerd in het menu **Openen in**. U kunt ook verbinding maken met behulp van een andere toepassing naar keuze. Hierbij wordt gebruikgemaakt van de locatiegegevens van de verbinding in de metagegevens van de asset. U kunt bijvoorbeeld SQL Server Management Studio gebruiken om verbinding te maken met de Azure SQL-database voor toegang tot de gegevens in de gegevensassets die in deze zelfstudie zijn geregistreerd.
+In deze oefening hebt u verbinding gemaakt met gegevensasssets die zijn gedetecteerd via Azure Data Catalog. Via de portal van Azure Data Catalog kunt u direct verbinding maken via de clienttoepassingen die zijn geïntegreerd in het menu **Openen in**. U kunt ook verbinding maken met behulp van een andere toepassing naar keuze. Hierbij wordt gebruikgemaakt van de locatiegegevens van de verbinding in de metagegevens van de asset. U kunt bijvoorbeeld SQL Server Management Studio gebruiken om verbinding te maken met Azure SQL Database om toegang te krijgen tot de gegevens in de gegevensassets die in deze zelfstudie zijn geregistreerd.
 
 1. Open **SQL Server Management Studio**.
 

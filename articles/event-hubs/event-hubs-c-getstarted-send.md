@@ -1,10 +1,9 @@
 ---
-title: 'Quick Start: gebeurtenissen verzenden met C-Azure Event Hubs'
-description: 'Snelstartgids: in dit artikel vindt u een overzicht van het maken van een C-toepassing die gebeurtenissen naar Azure Event Hubs verzendt.'
+title: 'Quickstart: Gebeurtenissen verzenden met C - Azure-Event Hubs'
+description: 'Quickstart: Dit artikel bevat een overzicht voor het maken van een C-toepassing die gebeurtenissen verzendt naar Azure Event Hubs.'
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 editor: ''
 ms.assetid: ''
 ms.service: event-hubs
@@ -13,45 +12,46 @@ ms.tgt_pltfrm: c
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 11/05/2019
-ms.author: shvija
-ms.openlocfilehash: 5bd4bb66b7e3c3ec37724f8684105befbc9132ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: 6bb4e6d754c091b57399a6154d491e93becad57e
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73720673"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299310"
 ---
-# <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>Quick Start: gebeurtenissen verzenden naar Azure Event Hubs met C
+# <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>Quickstart: Gebeurtenissen verzenden naar Azure-Event Hubs met C
 
 ## <a name="introduction"></a>Inleiding
 Azure Event Hubs is een big data-platform voor het streamen van gegevens en een gebeurtenisopneemservice die miljoenen gebeurtenissen per seconde kan opnemen en verwerken. Event Hubs kan gebeurtenissen, gegevens of telemetrie die wordt geproduceerd door gedistribueerde software en apparaten verwerken en opslaan. Gegevens die naar een Event Hub worden verzonden, kunnen worden omgezet en opgeslagen via een provider voor realtime analytische gegevens of batchverwerking/opslagadapters. Zie [Overzicht van Event Hubs](event-hubs-about.md) en [Functies van Event Hubs](event-hubs-features.md) voor een gedetailleerd overzicht van Event Hubs.
 
-In deze zelf studie wordt beschreven hoe u gebeurtenissen naar een Event Hub verzendt met behulp van een console toepassing in C. 
+In deze zelfstudie wordt beschreven hoe u met een consoletoepassing in C gebeurtenissen naar een Event Hub verzendt. 
 
 ## <a name="prerequisites"></a>Vereisten
 Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
-* Een C-ontwikkel omgeving. In deze zelf studie wordt ervan uitgegaan dat de gcc-stack op een Azure Linux-VM met Ubuntu 14,04.
-* [Micro soft Visual Studio](https://www.visualstudio.com/).
-* **Een event hubs naam ruimte en een event hub maken**. Gebruik de [Azure Portal](https://portal.azure.com) om een naam ruimte van het type Event hubs te maken en de beheer referenties te verkrijgen die uw toepassing nodig heeft om met de Event hub te communiceren. Volg de procedure in [dit artikel](event-hubs-create.md) om een naamruimte en een Event Hub te maken. Haal de waarde van de toegangs sleutel voor de Event Hub door de instructies in het artikel: [Get Connection String](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). U gebruikt de toegangs sleutel in de code die u verderop in deze zelf studie schrijft. De naam van de standaard sleutel is: **RootManageSharedAccessKey**.
+* Een C-ontwikkelomgeving. In deze zelfstudie wordt uitgegaan van de gcc-stack op een Azure Linux-VM met Ubuntu 14.04.
+* [Microsoft Visual Studio](https://www.visualstudio.com/).
+* **Een Event Hubs-naamruimte en een Event Hub maken**. Gebruik de [Azure-portal](https://portal.azure.com) om een naamruimte van het type Event Hubs te maken en de beheerreferenties te verkrijgen die de toepassing nodig heeft om met de Event Hub te communiceren. Volg de procedure in [dit artikel](event-hubs-create.md) om een naamruimte en een Event Hub te maken. Haal de waarde van de toegangssleutel voor de Event Hub aan de hand van de instructies in het artikel: [Verbindingstekenreeks ophalen](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). U gebruikt de toegangssleutel in de code die u verderop in deze zelfstudie schrijft. De standaardsleutelnaam is: **RootManageSharedAccessKey**.
 
 ## <a name="write-code-to-send-messages-to-event-hubs"></a>Code schrijven om berichten te verzenden naar Event Hubs
-In deze sectie wordt beschreven hoe u een C-app schrijft voor het verzenden van gebeurtenissen naar uw Event Hub. De code maakt gebruik van de Proton AMQP-bibliotheek van het [Apache Qpid-project](https://qpid.apache.org/). Dit komt overeen met het gebruik van Service Bus-wacht rijen en-onderwerpen met AMQP van C, zoals [in dit voor beeld](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)wordt weer gegeven. Zie de [QPid Proton-documentatie](https://qpid.apache.org/proton/index.html)voor meer informatie.
+In deze sectie wordt beschreven hoe u een C-app schrijft waarmee gebeurtenissen worden verzonden naar uw Event Hub. De code maakt gebruik van de Proton AMQP-bibliotheek van het [Apache Qpid-project](https://qpid.apache.org/). Dit is vergelijkbaar met het gebruik van Service Bus-wachtrijen en onderwerpen met AMQP van C, zoals wordt weergegeven [in dit voorbeeld](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504). Zie de [documentatie bij Qpid Proton](https://qpid.apache.org/proton/index.html) voor meer informatie.
 
-1. Volg de instructies voor het installeren van QPid proton op de [pagina QPID AMQP Mess enger](https://qpid.apache.org/proton/messenger.html), afhankelijk van uw omgeving.
+1. Volg op de [pagina QPid AMQP Messenger](https://qpid.apache.org/proton/messenger.html) de instructies voor het installeren van QPid Proton, afhankelijk van uw omgeving.
 2. Als u de Proton-bibliotheek wilt compileren, installeert u de volgende pakketten:
    
     ```shell
     sudo apt-get install build-essential cmake uuid-dev openssl libssl-dev
     ```
-3. Down load de [QPid Proton-bibliotheek](https://qpid.apache.org/proton/index.html)en pak deze uit, bijvoorbeeld:
+3. Download de [QPid Proton-bibliotheek](https://qpid.apache.org/proton/index.html) en pak deze uit, bijvoorbeeld:
    
     ```shell
     wget https://archive.apache.org/dist/qpid/proton/0.7/qpid-proton-0.7.tar.gz
     tar xvfz qpid-proton-0.7.tar.gz
     ```
-4. Een build-Directory maken, compileren en installeren:
+4. Een buildmap maken, compileren en installeren:
    
     ```shell
     cd qpid-proton-0.7
@@ -60,7 +60,7 @@ In deze sectie wordt beschreven hoe u een C-app schrijft voor het verzenden van 
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     sudo make install
     ```
-5. Maak in uw werkmap een nieuw bestand met de naam **Sender. c** met de volgende code. Vergeet niet om de waarden voor uw SAS-sleutel/naam, Event Hub naam en naam ruimte te vervangen. U moet ook een URL-gecodeerde versie van de sleutel vervangen voor de **SendRule** die u eerder hebt gemaakt. U kunt de URL [hier](https://www.w3schools.com/tags/ref_urlencode.asp)coderen.
+5. Maak in uw werkmap een nieuw bestand met de naam **sender.c** en met de volgende code. Vergeet niet om de waarden voor de SAS-sleutel/-naam, Event Hub-naam en naamruimte te vervangen. U moet ook een URL-gecodeerde versie van de sleutel vervangen door de **SendRule** die u eerder hebt gemaakt. U kunt de URL [hier](https://www.w3schools.com/tags/ref_urlencode.asp) coderen.
    
     ```c
     #include "proton/message.h"
@@ -141,14 +141,14 @@ In deze sectie wordt beschreven hoe u een C-app schrijft voor het verzenden van 
         return 0;
     }
     ```
-6. Compileer het bestand, aangenomen **gcc**:
+6. Compileer het bestand, uitgaande van **gcc**:
    
     ```
     gcc sender.c -o sender -lqpid-proton
     ```
 
     > [!NOTE]
-    > Deze code maakt gebruik van een uitgaand venster van 1 om de berichten zo snel mogelijk af te dwingen. Het is raadzaam dat uw toepassing batch berichten probeert op te nemen om de door voer te verbeteren. Zie de [QPID AMQP Messenger-pagina](https://qpid.apache.org/proton/messenger.html) voor informatie over het gebruik van de QPid Proton-bibliotheek in deze en andere omgevingen, en van platforms waarvoor bindingen worden verstrekt (momenteel perl, PHP, python en Ruby).
+    > Deze code maakt gebruik van een uitgaand venster van 1 om het verzenden van de berichten zo snel mogelijk af te dwingen. U wordt aangeraden de toepassing zo in te stellen dat berichten in batches worden verzonden om de doorvoer te verbeteren. Zie de [pagina Qpid AMQP Messenger](https://qpid.apache.org/proton/messenger.html) voor informatie over het gebruik van de Qpid Proton-bibliotheek in deze en andere omgevingen en vanaf platforms waarvoor bindingen worden geleverd (momenteel Perl, PHP, Python en Ruby).
 
 Voer de toepassing uit om berichten naar de Event Hub te verzenden. 
 
@@ -158,7 +158,7 @@ Gefeliciteerd! U hebt nu berichten verzonden naar een Event Hub.
 Lees de volgende artikelen:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
-- [Functies en terminologie in Azure Event hubs](event-hubs-features.md).
+- [Functies en terminologie in Azure Event Hubs](event-hubs-features.md).
 
 
 <!-- Images. -->

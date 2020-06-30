@@ -7,71 +7,71 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/18/2019
 ms.author: lbosq
-ms.openlocfilehash: 9151b54d7fa0b64a465aa8384cb4bfdb8e72c482
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 0eb778d1fc2dca522bef675709b5241f214e2b86
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75500002"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118114"
 ---
-# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Inleiding tot Azure Cosmos DB: Gremlin API
+# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Inleiding tot Azure Cosmos DB: Gremlin-API
 
-[Azure Cosmos DB](introduction.md) is de wereld wijd gedistribueerde, multi-model database service van micro soft voor essentiële toepassingen. Het is een Data Base met meerdere modellen die ondersteuning biedt voor document-, sleutel waarde-, grafiek-en kolom gegevens modellen. De Azure Cosmos DB Gremlin-API wordt gebruikt om grafiek gegevens op te slaan en te gebruiken in een volledig beheerde database service die is ontworpen voor elke schaal.  
+[Azure Cosmos DB](introduction.md)  is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft voor essentiële toepassingen. Dit is een database met meerdere modellen die modellen voor document-, sleutelwaarde-, grafiek- en kolomgegevens ondersteunt. De Gremlin-API van Azure Cosmos DB wordt gebruikt voor het opslaan van en werken met grafiekgegevens in een volledig beheerde databaseservice die voor welke schaal dan ook is ontworpen.  
 
-![Azure Cosmos DB-grafiekarchitectuur](./media/graph-introduction/cosmosdb-graph-architecture.png)
+:::image type="content" source="./media/graph-introduction/cosmosdb-graph-architecture.png" alt-text="Azure Cosmos DB-grafiekarchitectuur" border="false":::
 
-Dit artikel biedt een overzicht van de Azure Cosmos DB Gremlin API en legt uit hoe u deze kunt gebruiken om zeer grote grafieken met miljarden hoekpunten en randen op te slaan. U kunt een query uitvoeren op de grafieken met milliseconde latentie en de grafiek structuur eenvoudig ontwikkelen. De Gremlin-API van Azure Cosmos DB is gebaseerd op de [Apache TinkerPop](https://tinkerpop.apache.org) Graph data base Standard en maakt gebruik van de Gremlin-query taal. 
+Dit artikel biedt een overzicht van de Azure Cosmos DB Gremlin API en legt uit hoe u deze kunt gebruiken om zeer grote grafieken met miljarden hoekpunten en randen op te slaan. U kunt query's uitvoeren voor de grafieken met een latentie van milliseconden en eenvoudig de grafiekstructuur ontwikkelen. De Gremlin-API van Azure Cosmos DB is gebaseerd op de [Apache TinkerPop](https://tinkerpop.apache.org) -graafdatabasestandaard. Hiervoor wordt de Gremlin-querytaal gebruikt. 
 
-De Gremlin-API van Azure Cosmos DB combineert de kracht van Graph-database algoritmen met een zeer schaal bare, beheerde infra structuur om een unieke, flexibele oplossing te bieden voor de meest voorkomende gegevens problemen die betrekking hebben op het ontbreken van flexibiliteit en relationele benaderingen. 
+De Gremlin-API van Azure Cosmos DB combineert de kracht van graafdatabase-algoritmen met een uiterst schaalbare, beheerde infrastructuur om een unieke, flexibele oplossing te bieden voor de meeste algemene gegevensproblemen die het gevolg zijn van gebrek aan flexibiliteit en relationele methoden. 
 
 ## <a name="features-of-azure-cosmos-db-graph-database"></a>Functies van Azure Cosmos DB-graafdatabase
  
 Azure Cosmos DB is een volledig beheerde grafiekdatabase met wereldwijde distributie, elastisch schalen van opslag en doorvoer, automatisch indexeren en doorzoeken, instelbare consistentieniveaus, en ondersteuning voor de standaardversie van TinkerPop. 
 
-Hieronder vindt u de onderscheidende functies die Azure Cosmos DB Gremlin API-aanbiedingen:
+De volgende functies zijn de gedifferentieerde functies die beschikbaar zijn met de Gremlin-API van Azure Cosmos DB:
 
-* **Elastische schaalbare doorvoer en opslag**
+* **Elastisch schaalbare doorvoer en opslag**
 
-  Grafieken moeten in de praktijk hoger worden geschaald dan de capaciteit van een enkele server. Azure Cosmos DB ondersteunt horizon taal schaal bare grafische data bases die een vrijwel onbeperkte grootte kunnen hebben met betrekking tot opslag en ingerichte door voer. Naarmate de schaal van de grafiek database groeit, worden de gegevens automatisch gedistribueerd met behulp van [Graph-partitionering](https://docs.microsoft.com/azure/cosmos-db/graph-partitioning).
+  Grafieken moeten in de praktijk hoger worden geschaald dan de capaciteit van een enkele server. Azure Cosmos DB biedt ondersteuning voor horizontaal schaalbare graafdatabases die, wat opslag en ingerichte doorvoer betreft, een vrijwel onbeperkte grootte kunnen hebben. Naarmate de schaal van de graafdatabase wordt uitgebreid, worden de gegevens automatisch gedistribueerd met behulp van [grafiekpartitionering](https://docs.microsoft.com/azure/cosmos-db/graph-partitioning).
 
-* **Replicatie met meerdere regio’s**
+* **Replicatie naar meerdere regio's**
 
-  Azure Cosmos DB kunt uw grafiek gegevens automatisch repliceren naar elke Azure-regio. Globale Replicatie vereenvoudigt de ontwikkeling van toepassingen waarvoor globale toegang tot gegevens is vereist. Naast het minimaliseren van de latentie van lees-en schrijf bewerkingen overal ter wereld, biedt Azure Cosmos DB automatische regionale failover-mechanisme waarmee de continuïteit van uw toepassing in zeldzame gevallen van een onderbreking van de service in een regio kan worden gegarandeerd. 
+  Met Azure Cosmos DB kunnen uw graafgegevens automatisch worden gerepliceerd naar elke Azure-regio wereldwijd. Met behulp van wereldwijde replicatie wordt de ontwikkeling van toepassingen waarvoor wereldwijde toegang tot gegevens vereist is, vereenvoudigd. Niet alleen wordt de lees- en schrijflatentie over de hele wereld geminimaliseerd, Azure Cosmos DB biedt bovendien een mechanisme voor automatische regionale failover die de continuïteit van uw toepassing garandeert in het zeldzame geval van een storing van de service in een bepaalde regio. 
 
-* **Snelle query's en door lopen met de meestgebruikte grafiek query standaard**
+* **Snelle query's en traversals met de meest gebruikte grafiekquerystandaard**
 
-  Sla heterogene hoek punten en randen op en vraag ze op met een vertrouwde Gremlin-syntaxis. Gremlin is een belang rijke, functionele query taal die een uitgebreide interface biedt voor het implementeren van algemene grafiek algoritmen. 
+  Sla heterogene hoekpunten en randen op en doorzoek deze met behulp van de vertrouwde Gremlin-syntaxis. Gremlin is een belangrijke, functionele querytaal die een uitgebreide interface beidt om algemene grafiekalgoritmen te implementeren. 
   
-  Azure Cosmos DB biedt uitgebreide realtime query's en interacties zonder dat u schema hints, secundaire indexen of weer gaven hoeft op te geven. Meer informatie vindt u in [Querygrafieken met behulp van Gremlin](gremlin-support.md).
+  Azure Cosmos DB stelt u in staat om query's en traversals in realtime uit te voeren zonder dat u schemahints, secundaire indexen of weergaven hoeft op te geven. Meer informatie vindt u in [Querygrafieken met behulp van Gremlin](gremlin-support.md).
 
-* **Volledig beheerde Graph-data base**
+* **Volledig beheerde graafdatabase**
 
-  Dankzij Azure Cosmos DB is het niet meer nodig om database- en machineresources te beheren. De meeste bestaande grafieken van de grafiek database zijn gebonden aan de beperkingen van hun infra structuur en vereisen vaak een hoge mate van onderhoud om de werking ervan te garanderen. 
+  Dankzij Azure Cosmos DB is het niet meer nodig om database- en machineresources te beheren. De meeste bestaande graafdatabaseplatformen zijn afhankelijk van de beperkingen van hun infrastructuur en vergen vaak een hoge mate van onderhoud om de werking ervan te kunnen blijven garanderen. 
   
-  Als volledig beheerde service verwijdert Cosmos DB de nood zaak voor het beheren van virtuele machines, het bijwerken van runtime-software, het beheren van sharding of replicatie of het afhandelen van complexe gegevenslaag upgrades. Er wordt automatisch een back-up van elke grafiek gemaakt en de databases worden automatisch beveiligd tegen regionale fouten. Hierdoor kunnen ontwikkel aars zich richten op het leveren van toepassings waarde in plaats van het besturings systeem te gebruiken en hun grafiek databases te beheren. 
+  Omdat Cosmos DB een volledig beheerde service is, hoeven virtuele machines niet meer te worden beheerd, hoeft de runtimesoftware niet te worden bijgewerkt, hoeft sharding of replicatie niet te worden beheerd en hoeven er geen ingewikkelde upgrades van de gegevenslagen te worden uitgevoerd. Er wordt automatisch een back-up van elke grafiek gemaakt en de databases worden automatisch beveiligd tegen regionale fouten. Door deze garanties kunnen ontwikkelaars zich volledig richten op het leveren van waardevolle toepassingen in plaats van het uitvoeren en beheren van hun graafdatabases. 
 
 * **Automatisch indexeren**
 
-  In Azure Cosmos DB worden standaard alle eigenschappen in de knooppunten en randen van de grafiek geïndexeerd. Er wordt geen schema verwacht of vereist en er hoeven geen secundaire indexen te worden gemaakt. Meer informatie over [indexeren in azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/index-overview). 
+  In Azure Cosmos DB worden standaard alle eigenschappen in de knooppunten en randen van de grafiek geïndexeerd. Er wordt geen schema verwacht of vereist en er hoeven geen secundaire indexen te worden gemaakt. Meer informatie over [indexeren in Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/index-overview). 
 
 * **Compatibiliteit met Apache TinkerPop**
 
-  Azure Cosmos DB ondersteunt de [Open Source Apache TinkerPop-standaard](https://tinkerpop.apache.org/). De Tinkerpop-standaard heeft een ruim ecosysteem van toepassingen en bibliotheken die eenvoudig kunnen worden geïntegreerd met de Gremlin-API van Azure Cosmos DB. 
+  Azure Cosmos DB biedt ondersteuning voor de [opensource Apache TinkerPop-standaard](https://tinkerpop.apache.org/). De Tinkerpop-standaard beschikt over een uitgebreid ecosysteem van toepassingen en bibliotheken die eenvoudig kunnen worden geïntegreerd met de Gremlin-API van Azure Cosmos DB. 
 
 * **Instelbare consistentieniveaus**
 
-  Azure Cosmos DB biedt vijf goed gedefinieerde consistentie niveaus om de juiste balans tussen consistentie en prestaties van uw toepassing te krijgen. Voor query's en leesbewerkingen biedt Azure Cosmos DB vijf verschillende consistentieniveaus: sterk, gebonden-verouderd, sessie, consistent voorvoegsel en mogelijk. Op basis van deze gedetailleerde, goed gedefinieerde consistentieniveaus kunt u een goede balans vinden tussen de consistentie, beschikbaarheid en latentie. Meer informatie over [Instelbare gegevensconsistentieniveaus in Azure Cosmos DB](consistency-levels.md).
+  Azure Cosmos DB biedt vijf goed gedefinieerde consistentieniveaus om de juiste balans te vinden tussen consistentie en prestaties voor uw toepassing. Voor query's en leesbewerkingen biedt Azure Cosmos DB vijf verschillende consistentieniveaus: sterk, gebonden-verouderd, sessie, consistent voorvoegsel en mogelijk. Op basis van deze gedetailleerde, goed gedefinieerde consistentieniveaus kunt u een goede balans vinden tussen de consistentie, beschikbaarheid en latentie. Meer informatie over [Instelbare gegevensconsistentieniveaus in Azure Cosmos DB](consistency-levels.md).
 
 ## <a name="scenarios-that-can-use-gremlin-api"></a>Scenario's waarin de Gremlin-API kan worden gebruikt
-Hier volgen enkele scenario's waarin de ondersteuning van de grafiek van Azure Cosmos DB nuttig kan zijn:
+Hier zijn enkele scenario's waarin ondersteuning voor grafieken in Azure Cosmos DB nuttig kan zijn:
 
-* **Sociale netwerken/klant 365**
+* **Sociale netwerken/Customer 365**
 
   Door gegevens over uw klanten en hun interacties met andere personen te combineren kunt u een persoonlijke ervaring ontwikkelen, het gedrag van klanten voorspellen of personen in contact brengen met anderen die gelijksoortige interesses hebben. Azure Cosmos DB kan worden gebruikt om sociale netwerken te beheren en klantvoorkeuren en -gegevens bij te houden.
 
 * **Aanbevelingsengines**
 
-  Dit scenario wordt doorgaans gebruikt in de detailhandel. Door informatie over producten, gebruikers en interactie tussen gebruikers, zoals het kopen, zoeken of beoordelen van een item, te combineren, kunt u aangepaste aanbevelingen genereren. De ondersteuning voor de lage latentie, elastische schaal en de systeem eigen grafiek van Azure Cosmos DB is ideaal voor deze scenario's.
+  Dit scenario wordt doorgaans gebruikt in de detailhandel. Door informatie over producten, gebruikers en interactie tussen gebruikers, zoals het kopen, zoeken of beoordelen van een item, te combineren, kunt u aangepaste aanbevelingen genereren. De lage latentie, elastische schaal en systeemeigen ondersteuning voor grafieken van Azure Cosmos DB is ideaal voor deze scenario's.
 
 * **Georuimtelijk**
 
@@ -81,41 +81,41 @@ Hier volgen enkele scenario's waarin de ondersteuning van de grafiek van Azure C
 
   Omdat het netwerk en de verbindingen tussen IoT-apparaten zijn gemodelleerd als een grafiek krijgt u een beter beeld van de status van uw apparaten en activa. U krijgt ook inzicht in hoe wijzigingen in één deel van het netwerk van invloed kunnen zijn op een ander deel.
 
-## <a name="introduction-to-graph-databases"></a>Inleiding tot Graph-data bases
-Gegevens zoals deze in werkelijkheid voorkomen, zijn op natuurlijke wijze verbonden. Traditionele gegevens modellering is gericht op het afzonderlijk definiëren van entiteiten en het berekenen van hun relaties tijdens runtime. Hoewel dit model over de voor delen beschikt, kunnen zeer verbonden gegevens lastig te beheren zijn onder de beperkingen.  
+## <a name="introduction-to-graph-databases"></a>Inleiding tot graafdatabases
+Gegevens zoals deze in werkelijkheid voorkomen, zijn op natuurlijke wijze verbonden. Traditionele gegevensmodellering is gericht op het definiëren van afzonderlijke entiteiten en het berekenen van hun relaties in runtime. Hoewel dit model weliswaar enkele voordelen biedt, kan het beheer van uiterst verbonden gegevens een ware uitdaging vormen door alle beperkingen.  
 
-Een grafiek database aanpak is afhankelijk van het persistent maken van relaties in de opslaglaag, wat leidt tot zeer efficiënte bewerkingen voor het ophalen van grafieken. De Gremlin-API van Azure Cosmos DB ondersteunt het [Eigenschappen grafiek model](https://tinkerpop.apache.org/docs/current/reference/#intro).
+De graafdatabasemethode is in plaats daarvan gebaseerd op permanente relaties in de opslaglaag, wat tot uiterst efficiënte ophaalbewerkingen van grafieken leidt. De Gremlin-API van Azure Cosmos DB biedt ondersteuning voor het [eigenschappengrafiekmodel](https://tinkerpop.apache.org/docs/current/reference/#intro).
 
-### <a name="property-graph-objects"></a>Eigenschappen grafiek objecten
+### <a name="property-graph-objects"></a>Objecten van de eigenschappengrafiek
 
-Een eigenschaps [grafiek](http://mathworld.wolfram.com/Graph.html) is een structuur die bestaat uit [hoek punten](http://mathworld.wolfram.com/GraphVertex.html) en [randen](http://mathworld.wolfram.com/GraphEdge.html). Beide objecten kunnen een wille keurig aantal sleutel-waardeparen als eigenschappen hebben. 
+Een [eigenschappengrafiek](http://mathworld.wolfram.com/Graph.html) is een structuur die is samengesteld uit [hoekpunten](http://mathworld.wolfram.com/GraphVertex.html) en [randen](http://mathworld.wolfram.com/GraphEdge.html). Voor beide objecten kan een willekeurig aantal sleutel-waardeparen als eigenschappen worden gebruikt. 
 
-* **Vertices** : vertices duiden discrete entiteiten aan, zoals een persoon, een plaats of een gebeurtenis.
+* **Hoekpunten**: hoekpunten duiden afzonderlijke entiteiten aan, zoals een persoon, plaats of gebeurtenis.
 
 * **Kanten**: Kanten duiden relaties tussen hoekpunten aan. Bijvoorbeeld, een persoon kent mogelijk een andere persoon, is betrokken bij een gebeurtenis, en is onlangs op een bepaalde locatie geweest. 
 
-* **Eigenschappen**: Eigenschappen geven informatie over de hoekpunten en kanten. Er kan een wille keurig aantal eigenschappen zijn in hoek punten of randen, en ze kunnen worden gebruikt om de objecten in een query te beschrijven en te filteren. Voor beelden van eigenschappen zijn een hoek punt met naam en leeftijd, of een rand, die een tijds tempel en/of gewicht kan hebben. 
+* **Eigenschappen**: Eigenschappen geven informatie over de hoekpunten en kanten. Er kan een willekeurig aantal eigenschappen worden gebruikt in hoekpunten of randen en ze kunnen worden gebruikt voor het beschrijven en filteren van de objecten in een query. Voorbeeldeigenschappen omvatten een hoekpunt met een naam en een leeftijd, of een rand, die een tijdstempel en/of gewicht kan hebben. 
 
-Graph-data bases worden vaak opgenomen in de categorie NoSQL of niet-relationele data base, omdat er geen afhankelijkheid is van een schema of beperkt gegevens model. Dit gebrek aan schema maakt het mogelijk om op natuurlijke en efficiënte wijze gekoppelde structuren te model leren en op te slaan. 
+Graafdatabases worden vaak opgenomen in de NoSQL- of niet-relationele databasecategorie, omdat deze niet afhankelijk zijn van een schema of beperkt gegevensmodel. Door dit ontbreken van een schema kunnen verbonden structuren natuurlijk en efficiënt worden gemodelleerd en opgeslagen. 
 
 ### <a name="gremlin-by-example"></a>Gremlin via een voorbeeld
 Laten we een voorbeeldgrafiek gebruiken om te zien hoe query’s kunnen worden uitgedrukt in Gremlin. In de volgende afbeelding ziet u een zakelijke toepassing waarmee gegevens over gebruikers, interesses en apparaten worden beheerd, in de vorm van een grafiek.  
 
-![Voorbeelddatabase met personen, apparaten en interesses](./media/gremlin-support/sample-graph.png) 
+:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Voorbeelddatabase met personen, apparaten en interesses" border="false"::: 
 
-Deze grafiek heeft de volgende *vertex* typen (' label ') in Gremlin):
+Deze grafiek heeft de volgende *hoekpunt*-typen (in Gremlin 'label' genaamd):
 
-- **Personen**: de grafiek heeft drie personen, Robin, Thomas en ben
-- **Interesses**: in dit voor beeld is het spelletje van voetbal
-- **Apparaten**: de apparaten die mensen gebruiken
-- **Besturings systemen**: de besturings systemen waarop de apparaten worden uitgevoerd
+- **Personen**: In de grafiek komen drie personen voor: Robin, Thomas en Ben
+- **Interesses**: In dit voorbeeld is hun interesse voetbal
+- **Apparaten**: De apparaten die de personen gebruiken
+- **Besturingssystemen**: De besturingssystemen op de apparaten
 
-We vertegenwoordigen de relaties tussen deze entiteiten met behulp van de volgende *rand* typen/Labels:
+We laten de relaties tussen deze entiteiten zien via de volgende *rand*-typen/labels:
 
-- **Weet**: bijvoorbeeld ' Thomas weet '
-- **Geïnteresseerd**: voor de weer gave van de interesses van de mensen in onze grafiek, bijvoorbeeld ' ben is geïnteresseerd in voetbal '
-- **RunsOS**: laptop voert het Windows-besturings systeem uit
-- **Gebruikt**: om aan te geven welk apparaat een persoon gebruikt. Robin gebruikt bijvoorbeeld een Motorola-telefoon met serienummer 77
+- **Kent**: Bijvoorbeeld 'Thomas kent Robin'
+- **Is geïnteresseerd in**: Geeft de interesses weer van de personen in de grafiek, bijvoorbeeld 'Ben is geïnteresseerd in voetbal'
+- **RunsOS**: Op de laptop wordt het Windows-besturingssysteem uitgevoerd
+- **Gebruikt**: Geeft aan welk apparaat een persoon gebruikt. Robin gebruikt bijvoorbeeld een Motorola-telefoon met serienummer 77
 
 We gaan enkele bewerkingen uitvoeren in deze grafiek met behulp van de [Gremlin-console](https://tinkerpop.apache.org/docs/3.3.2/reference/#gremlin-console). U kunt deze bewerkingen ook uitvoeren met behulp van Gremlin-stuurprogramma’s op een platform naar keuze (Java, Node.js, Python of NET).  Voordat we kijken wat wordt ondersteund in Azure Cosmos DB, bekijken we een aantal voorbeelden om vertrouwd te raken met de syntaxis.
 
@@ -136,7 +136,7 @@ Met de volgende query worden de hoekpunten voor Persoon in aflopende volgorde va
 :> g.V().hasLabel('person').order().by('firstName', decr)
 ```
 
-Waar grafieken in uitblinken is in het beantwoorden van vragen zoals: Welke besturingssystemen gebruiken de vrienden van Thomas? U kunt deze Gremlin-passage uitvoeren om die informatie op te halen uit de grafiek:
+Waar grafieken in uitblinken is in het beantwoorden van vragen zoals: Welke besturingssystemen gebruiken de vrienden van Thomas? U kunt deze Gremlin-traversal uitvoeren om deze gegevens op te halen uit de grafiek:
 
 ```java
 :> g.V('thomas.1').out('knows').out('uses').out('runsos').group().by('name').by(count())

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9804a44a29f4540c28ec4e1eb6927e65af70218c
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: fbfa16223484928dda1004011d2e92295edd8b89
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682963"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297254"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Zelfstudie: Azure Active Directory-integratie met Palo Alto Networks - Admin UI
 
@@ -67,7 +67,7 @@ Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure 
 Voer de volgende procedures uit om eenmalige aanmelding van Azure AD met Palo Alto Networks - Admin UI te configureren en testen:
 
 1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
-    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B. Simon.
+    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B.Simon.
     * **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** : zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
 1. **[Eenmalige aanmelding voor Palo Alto Networks - Admin UI configureren](#configure-palo-alto-networks---admin-ui-sso)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
     * **[Testgebruiker voor Palo Alto Networks - Admin UI maken](#create-palo-alto-networks---admin-ui-test-user)** : als u een tegenhanger van B.Simon in Palo Alto Networks - Admin UI wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
@@ -106,14 +106,14 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met Palo Alto 
 
     > Poort 443 is vereist voor de **Id** en de **Antwoord-URL**, aangezien deze waarden vastliggen in de Palo Alto Firewall. Wanneer het poortnummer wordt verwijderd, treedt er een fout op tijdens het aanmelden.
 
-1. In de PureCloud by Genesys-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+1. De toepassing Palo Alto Networks - Admin UI verwacht de SAML-asserties in een specifieke indeling. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
     ![image](common/default-attributes.png)
 
    > [!NOTE]
    > Omdat de kenmerkwaarden slechts voorbeelden zijn, moet u de juiste waarden opgeven voor *username* en *adminrole*. Er is een ander optioneel kenmerk, *accessdomain*, dat wordt gebruikt om beheerderstoegang tot specifieke virtuele systemen in de firewall te beperken.
 
-1. Bovendien verwacht de PureCloud by Genesys-toepassing nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. Deze worden hieronder weergegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze herzien volgens uw vereisten.
+1. Bovendien verwacht de toepassing Palo Alto Networks - Admin UI dat er nog een paar kenmerken als SAML-antwoord worden doorgestuurd. Deze worden hieronder weergegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze herzien volgens uw vereisten.
 
     | Naam |  Bronkenmerk|
     | --- | --- |
@@ -142,9 +142,9 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met Palo Alto 
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie gaat u een testgebruiker met de naam B.Simon maken in de Azure-portal.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
@@ -167,7 +167,7 @@ In dit gedeelte gaat u B.Simon toestemming geven voor gebruik van eenmalige aanm
     ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
 1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
 ### <a name="configure-palo-alto-networks---admin-ui-sso"></a>Eenmalige aanmelding voor Palo Alto Networks - Admin UI configureren

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 61162a0e2e95a08547848f286f2db489f4b9d963
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 289cc463732ee6b612b67f6c408d9d7260016137
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737016"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125801"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop? 
 
@@ -40,8 +40,8 @@ Bekijk [onze afspeellijst](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXt
 
 Met Windows Virtual Desktop kunt u een schaalbare en flexibele omgeving instellen:
 
-* Ontwerp een volledige virtualisatieomgeving voor desktops in uw Azure-abonnement zonder extra gatewayservers.
-* Publiceer zoveel hostgroepen als u nodig heeft voor uw verschillende workloads.
+* Maak een volledige virtualisatieomgeving voor desktops in uw Azure-abonnement zonder extra gatewayservers uit te voeren.
+* Publiceer zoveel hostgroepen als u nodig hebt voor uw verschillende werkbelastingen.
 * Gebruik uw eigen installatiekopie voor productieworkloads of voer tests uit vanuit de Azure Gallery.
 * Beperk kosten met gegroepeerde resources voor meerdere sessies. Met de nieuwe mogelijkheid voor meerdere sessies van Windows 10 Enterprise, exclusief voor Windows Virtual Desktop en de RDSH-rol (Remote Desktop Session Host) in Windows Server kunt u het aantal virtuele machines en de overhead voor het besturingssysteem beperken zonder dat uw gebruikers minder resources ter beschikking hebben.
 * Bied individuele eigendom aan via persoonlijke (permanente) desktops.
@@ -113,7 +113,7 @@ In de volgende tabel vindt u optionele URL's waar uw virtuele Azure-machines toe
 |*.events.data.microsoft.com|443|Telemetrieservice|Geen|
 |www.msftconnecttest.com|443|Detecteert of het besturingssysteem een verbinding heeft met het internet|Geen|
 |*.prod.do.dsp.mp.microsoft.com|443|Windows Update|Geen|
-|login.windows.net|443|Aanmelden bij Microsoft Online Services, Office 365|Geen|
+|login.windows.net|443|Aanmelden bij Microsoft Online Services, Microsoft 365|Geen|
 |*.sfx.ms|443|Updates voor OneDrive-clientsoftware|Geen|
 |*.digicert.com|443|Controle van certificaatintrekking|Geen|
 

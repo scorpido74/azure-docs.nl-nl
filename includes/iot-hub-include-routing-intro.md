@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 9a20dca71727e83db98c4c97567949bd127fc7fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 552a40be0c069d1002ebc7ea4dafe0d6f93a5755
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77111192"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85128209"
 ---
-Met [bericht routering](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) kunnen telemetriegegevens van uw IOT-apparaten worden verzonden naar ingebouwde Event hub-compatibele eind punten of aangepaste eind punten, zoals BLOB storage, service bus wachtrijen, service bus onderwerpen en Event hubs. Als u aangepaste bericht routering wilt configureren, maakt u [routerings query's](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md) om de route aan te passen die overeenkomt met een bepaalde voor waarde. Zodra u deze hebt ingesteld, worden de inkomende gegevens automatisch door de IoT Hub doorgestuurd naar de eindpunten. Als een bericht niet overeenkomt met een van de gedefinieerde routerings query's, wordt het doorgestuurd naar het standaard eindpunt.
+Met [berichtroutering](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) kunt u telemetriegegevens verzenden van uw IoT-apparaten naar ingebouwde, met Event Hub compatibele eindpunten of aangepaste eindpunten zoals blobopslag, Service Bus-wachtrijen, Service Bus-onderwerpen en Event Hubs. Als u een aangepaste berichtroutering wilt configureren, maakt u [routeringsquery’s](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md) om een route aan te passen die overeenkomt met een bepaalde regel. Zodra u deze hebt ingesteld, worden de inkomende gegevens automatisch door de IoT Hub doorgestuurd naar de eindpunten. Als een bericht niet overeenkomt met een van de gedefinieerde routeringsquery's, wordt het doorgestuurd naar het standaardeindpunt.
 
-In deze tweedelige zelf studie leert u hoe u deze aangepaste routerings query's kunt instellen en gebruiken met IoT Hub. U stuurt berichten van een IoT-apparaat naar een van de verschillende eind punten, met inbegrip van Blob-opslag en een Service Bus wachtrij. Berichten naar de Service Bus wachtrij worden door een logische app opgehaald en via e-mail verzonden. Berichten waarvoor geen aangepaste bericht routering is gedefinieerd, worden verzonden naar het standaard eindpunt, vervolgens opgehaald door Azure Stream Analytics en weer gegeven in een Power BI visualisatie.
+In deze tweedelige zelfstudie leert u hoe u deze aangepaste routeringsquery’s kunt instellen en gebruiken met IoT Hub. U stuurt berichten door van een IoT-apparaat naar een of meerdere eindpunten, met inbegrip van blobopslag en een Service Bus-wachtrij. Berichten in de Service Bus-wachtrij worden opgehaald door een logische app en via e-mail verzonden. Berichten waarvoor geen aangepaste berichtroutering is gedefinieerd, worden naar het standaardeindpunt gestuurd, vervolgens opgehaald door Azure Stream Analytics en weergegeven in een Power BI-visualisatie.
 
-Als u de onderdelen 1 en 2 van deze zelf studie wilt volt ooien, voert u de volgende taken uit:
+Als u deel 1 en 2 van deze zelfstudie wilt afronden, voert u de volgende taken uit:
 
-**Deel I: resources maken, bericht routering instellen**
+**Deel I: Resources maken, berichtroutering instellen**
 > [!div class="checklist"]
-> * Maak de resources--een IoT-hub, een opslag account, een Service Bus wachtrij en een gesimuleerd apparaat. U kunt dit doen met behulp van de Azure Portal, een Azure Resource Manager sjabloon, de Azure CLI of Azure PowerShell.
-> * Configureer de eind punten en bericht routes in IoT Hub voor het opslag account en de Service Bus wachtrij.
+> * Maak de resources: een IoT hub, een opslagaccount, een Service Bus-wachtrij en een gesimuleerd apparaat. U kunt dit doen met behulp van Azure Portal, een Azure Resource Manager-sjabloon, de Azure CLI of Azure PowerShell.
+> * Configureer de eindpunten en berichtroutes in IoT Hub voor het opslagaccount en de Service Bus-wachtrij.
 
-**Deel II: berichten verzenden naar de hub, gerouteerde resultaten weer geven**
+**Deel II: Berichten verzenden naar de hub, gerouteerde resultaten weergeven**
 > [!div class="checklist"]
 > * Maak een logische app die wordt geactiveerd en een e-mailbericht verzendt wanneer een bericht wordt toegevoegd aan de Service Bus-wachtrij.
 > * Download een app die een IoT-apparaat aanzet tot het verzenden van berichten naar de hub voor de verschillende routeringsopties en voer deze uit.
@@ -38,14 +38,14 @@ Als u de onderdelen 1 en 2 van deze zelf studie wilt volt ooien, voert u de volg
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Voor deel 1 van deze zelf studie:
+* Voor Deel 1 van deze zelfstudie:
   - U hebt een abonnement op Azure nodig. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-* Voor deel 2 van deze zelf studie:
-  - U moet deel 1 van deze zelf studie hebben voltooid. de resources zijn nog steeds beschikbaar.
+* Voor Deel 2 van deze zelfstudie:
+  - U moet Deel 1 van deze zelfstudie hebben afgerond en de resources nog tot uw beschikking hebben.
   - Installeer [Visual Studio](https://www.visualstudio.com/).
-  - Toegang hebben tot een Power BI-account om de stream Analytics van het standaard eindpunt te analyseren. ([Probeer Power BI gratis uit](https://app.powerbi.com/signupredirect?pbi_source=web).)
-  - Een Office 365-account hebben voor het verzenden van e-mail berichten.
-  - Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld in deze zelf studie maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](../articles/iot-hub/iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+  - Toegang tot een Power BI-account voor het analyseren van de Stream Analytics van het standaardeindpunt. ([Probeer Power BI gratis uit](https://app.powerbi.com/signupredirect?pbi_source=web).)
+  - Een werk- of schoolaccount voor het verzenden van e-mailberichten.
+  - Zorg ervoor dat de poort 8883 is geopend in de firewall. In het voorbeeld in deze zelfstudie wordt het MQTT-protocol gebruikt, dat communiceert via poort 8883. Deze poort is in sommige netwerkomgevingen van bedrijven en onderwijsinstellingen mogelijk geblokkeerd. Zie [Verbinding maken met IoT Hub (MQTT)](../articles/iot-hub/iot-hub-mqtt-support.md#connecting-to-iot-hub) voor meer informatie en manieren om dit probleem te omzeilen.
 
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]

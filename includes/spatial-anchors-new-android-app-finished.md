@@ -2,20 +2,20 @@
 author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
-ms.date: 04/03/2019
+ms.date: 06/22/2020
 ms.topic: include
 ms.author: rgarcia
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8bef7b12f4d9d9a63e41441ef22b029b2ee5afd1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 4d20b7dee533dae17cfb1c6138e336b91c7e2b0c
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74276951"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296182"
 ---
-## <a name="putting-everything-together"></a>Alles samen zetten
+## <a name="putting-everything-together"></a>Alles bij elkaar
 
-Hier ziet u hoe het `MainActivity` volledige klassen bestand eruit moet zien, nadat alle verschillende elementen samen zijn geplaatst. U kunt deze gebruiken als referentie om te vergelijken met uw eigen bestand, en als er verschillen zijn opgetreden.
+Hier ziet u hoe het volledige klassebestand `MainActivity` eruit moet zien, nadat alle verschillende elementen bij elkaar zijn geplaatst. U kunt deze gebruiken ter referentie om te vergelijken met uw eigen bestand, en om te controleren of er verschillen zijn opgetreden.
 
 ```java
 package com.example.myfirstapp;
@@ -145,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
 
         this.cloudSession.getConfiguration().setAccountId(/* Copy your account Identifier in here */);
         this.cloudSession.getConfiguration().setAccountKey(/* Copy your account Key in here */);
+        this.cloudSession.getConfiguration().setAccountDomain(/* Copy your account Domain in here */);
         this.cloudSession.start();
     }
     // </initializeSession>
@@ -244,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u gezien hoe u een nieuwe Android-app kunt maken die de ARCore-functionaliteit integreert met Azure spatiale ankers. Ga voor meer informatie over de Azure Spatial Anchors-bibliotheek door naar de handleiding over het maken en vinden van ankers.
+In deze zelfstudie hebt u gezien hoe u een nieuwe Android-app kunt maken die ARCore-functies combineert met Azure Spatial Anchors. Ga voor meer informatie over de Azure Spatial Anchors-bibliotheek door naar de handleiding over het maken en vinden van ankers.
 
 > [!div class="nextstepaction"]
 > [Create and locate anchors using Azure Spatial Anchors](/azure/spatial-anchors/create-locate-anchors-overview) (Ankers maken en vinden met Azure Spatial Anchors)

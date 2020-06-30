@@ -1,6 +1,6 @@
 ---
 title: 'Zelfstudie: REST-API gebruiken voor het maken van een Azure Data Factory-pijplijn '
-description: In deze zelfstudie gebruikt u REST API om een Azure Data Factory-pijplijn te maken met een kopieeractiviteit om gegevens uit een Azure-blobopslag naar een Azure SQL-database te kopiëren.
+description: In deze zelfstudie gebruikt u REST API om een Azure Data Factory-pijplijn te maken met een kopieeractiviteit om gegevens uit een Azure-blobopslag naar Azure SQL Database te kopiëren.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6344f2c69e7b6407152e752c61c1928ab651a88c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 3007aa1fab8797d77e1edde83f22e359196641cc
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119237"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248578"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Zelfstudie: REST-API gebruiken voor het maken van een Azure Data Factory-pijplijn om gegevens te kopiëren 
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "84119237"
 > [!NOTE]
 > Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u de [zelfstudie over kopieeractiviteiten](../quickstart-create-data-factory-rest-api.md). 
 
-In dit artikel leert u hoe u REST API kunt gebruiken om een gegevensfactory te maken met een pijplijn waarmee gegevens worden gekopieerd van een Azure blobopslag naar een Azure SQL-database. Als u niet bekend bent met Azure Data Factory, lees dan het artikel [Inleiding tot Azure Data Factory](data-factory-introduction.md) voordat u deze zelfstudie volgt.   
+In dit artikel leert u hoe u REST API kunt gebruiken om een data factory te maken met een pijplijn waarmee gegevens worden gekopieerd van een Azure-blobopslag naar Azure SQL Database. Als u niet bekend bent met Azure Data Factory, lees dan het artikel [Inleiding tot Azure Data Factory](data-factory-introduction.md) voordat u deze zelfstudie volgt.   
 
 In deze zelfstudie maakt u een pijplijn met één activiteit erin: kopieeractiviteit. De kopieeractiviteit in Data Factory kopieert gegevens uit een ondersteund gegevensarchief naar een ondersteund sinkgegevensarchief. Zie [Ondersteunde gegevensarchieven](data-factory-data-movement-activities.md#supported-data-stores-and-formats) voor een lijst met gegevensarchieven die worden ondersteund als bron en als sink. De activiteit wordt mogelijk gemaakt door een wereldwijd beschikbare service waarmee gegevens veilig, betrouwbaar en schaalbaar kunnen worden gekopieerd tussen verschillende gegevensarchieven. Zie het artikel [Activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md) voor meer informatie over kopieeractiviteiten.
 
@@ -222,7 +222,7 @@ De volgende tabel bevat beschrijvingen van de JSON-eigenschappen die in het code
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| type | De eigenschap type wordt ingesteld op **AzureSqlTable** omdat gegevens naar een tabel in een Azure SQL-database worden gekopieerd. |
+| type | De eigenschap type wordt ingesteld op **AzureSqlTable**, omdat gegevens naar een tabel in Azure SQL Database worden gekopieerd. |
 | linkedServiceName | Deze eigenschap verwijst naar de **AzureSqlLinkedService** die u eerder hebt gemaakt. |
 | tableName | Geeft de **tabel** aan waarnaar de gegevens worden gekopieerd. | 
 | frequency/interval | De frequentie is ingesteld op **Hour** en het interval is **1**, wat betekent dat de uitvoersegmenten worden geproduceerd **per uur** tussen de begin- en eindtijd van de pijplijn, niet voor of na deze tijden.  |
@@ -241,7 +241,7 @@ Zie het [artikel over Azure SQL-connectoren](data-factory-azure-sql-connector.md
     "activities": [
       {
         "name": "CopyFromBlobToSQL",
-        "description": "Push Regional Effectiveness Campaign data to Azure SQL database",
+        "description": "Push Regional Effectiveness Campaign data to Azure SQL Database",
         "type": "Copy",
         "inputs": [
           {
@@ -381,7 +381,7 @@ U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en co
 
 De AzureStorageLinkedService koppelt uw Azure-opslagaccount aan de gegevensfactory. Dit opslagaccount is het account waarin u een container hebt gemaakt en gegevens hebt geüpload als onderdeel van de [vereisten](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).   
 
-De AzureSqlLinkedService koppelt uw Azure SQL-database aan de gegevensfactory. De gegevens die worden gekopieerd uit de blobopslag worden opgeslagen in deze database. Als onderdeel van de [vereisten](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) hebt u de emp-tabel in deze database gemaakt.  
+Met AzureSqlLinkedService wordt Azure SQL Database aan de data factory gekoppeld. De gegevens die worden gekopieerd uit de blobopslag worden opgeslagen in deze database. Als onderdeel van de [vereisten](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) hebt u de emp-tabel in deze database gemaakt.  
 
 ### <a name="create-azure-storage-linked-service"></a>Een gekoppelde Azure Storage-service maken
 In deze stap koppelt u uw Azure Storage-account aan uw gegevensfactory. In deze sectie geeft u de naam en sleutel van uw Azure Storage-account op. Zie [Een gekoppelde Azure Storage-service](data-factory-azure-blob-connector.md#azure-storage-linked-service) voor meer informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van een gekoppelde Azure Storage-service.  
@@ -403,7 +403,7 @@ In deze stap koppelt u uw Azure Storage-account aan uw gegevensfactory. In deze 
     ```
 
 ### <a name="create-azure-sql-linked-service"></a>Gekoppelde Azure SQL-service maken
-In deze stap koppelt u uw Azure SQL-database aan uw data factory. U geeft in deze sectie de logische SQL-servernaam, -databasenaam, -gebruikersnaam en -wachtwoord op. Zie [Een gekoppelde Azure SQL-service](data-factory-azure-sql-connector.md#linked-service-properties) voor meer informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van een gekoppelde Azure SQL-service.
+In deze stap koppelt u Azure SQL Database aan uw data factory. U geeft in deze sectie de logische SQL-servernaam, -databasenaam, -gebruikersnaam en -wachtwoord op. Zie [Een gekoppelde Azure SQL-service](data-factory-azure-sql-connector.md#linked-service-properties) voor meer informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van een gekoppelde Azure SQL-service.
 
 1. Wijs de opdracht toe aan de variabele met de naam **cmd**. 
    
@@ -422,11 +422,11 @@ In deze stap koppelt u uw Azure SQL-database aan uw data factory. U geeft in dez
     ```
 
 ## <a name="create-datasets"></a>Gegevenssets maken
-In de vorige stap hebt u gekoppelde services gemaakt om uw Azure-opslagaccount en Azure SQL-database aan de gegevensfactory te koppelen. In deze stap definieert u twee gegevenssets, AzureBlobInput en AzureSqlOutput genaamd, die staan voor de invoer- en uitvoergegevens die zijn opgeslagen in de gegevensarchieven waarnaar wordt verwezen door respectievelijk de AzureStorageLinkedService en de AzureSqlLinkedService.
+In de vorige stap hebt u gekoppelde services gemaakt om uw Azure-opslagaccount en Azure SQL Database aan uw data factory te koppelen. In deze stap definieert u twee gegevenssets, AzureBlobInput en AzureSqlOutput genaamd, die staan voor de invoer- en uitvoergegevens die zijn opgeslagen in de gegevensarchieven waarnaar wordt verwezen door respectievelijk de AzureStorageLinkedService en de AzureSqlLinkedService.
 
 De gekoppelde Azure Storage-service geeft de verbindingsreeks op die de Data Factory-service tijdens runtime gebruikt om verbinding te maken met uw Azure-opslagaccount. En de blobgegevensset voor invoer (AzureBlobInput) geeft de container en de map met de invoergegevens op.  
 
-Op dezelfde manier geeft de gekoppelde Azure SQL Database-service de verbindingsreeks op die de Data Factory-service in runtime gebruikt om verbinding te maken met uw Azure SQL-database. En de uitvoergegevensset van de SQL-tabel (OututDataset) geeft de tabel in de database op waarnaar de gegevens uit de blobopslag worden gekopieerd. 
+Op dezelfde manier geeft de gekoppelde Azure SQL Database-service de verbindingsreeks op die de Data Factory-service in runtime gebruikt om verbinding te maken met Azure SQL Database. En de uitvoergegevensset van de SQL-tabel (OututDataset) geeft de tabel in de database op waarnaar de gegevens uit de blobopslag worden gekopieerd. 
 
 ### <a name="create-input-dataset"></a>Invoergegevensset maken
 In deze stap maakt u een gegevensset met de naam AzureBlobInput die verwijst naar een blobbestand (emp.txt) in de hoofdmap van een blobcontainer (adftutorial) in Azure Storage. Deze container wordt vertegenwoordigd door de gekoppelde AzureStorageLinkedService-service. Als u geen waarde voor de fileName hebt opgeven (of hebt overgeslagen), worden gegevens uit alle blobs in de invoermap naar het doel gekopieerd. In deze zelfstudie geeft u een waarde op voor de fileName. 
@@ -448,7 +448,7 @@ In deze stap maakt u een gegevensset met de naam AzureBlobInput die verwijst naa
     ```
 
 ### <a name="create-output-dataset"></a>Uitvoergegevensset maken
-De gekoppelde Azure SQL Database-service geeft de verbindingsreeks op die de Data Factory-service in runtime gebruikt om verbinding te maken met uw Azure SQL-database. De uitvoergegevensset van de SQL-tabel (OututDataset) die u in deze stap hebt gemaakt, geeft de tabel in de database op waarnaar de gegevens uit de blobopslag worden gekopieerd.
+De gekoppelde Azure SQL Database-service geeft de verbindingsreeks op die de Data Factory-service in runtime gebruikt om verbinding te maken met Azure SQL Database. De uitvoergegevensset van de SQL-tabel (OututDataset) die u in deze stap hebt gemaakt, geeft de tabel in de database op waarnaar de gegevens uit de blobopslag worden gekopieerd.
 
 1. Wijs de opdracht toe aan de variabele met de naam **cmd**.
 
@@ -487,7 +487,7 @@ Momenteel is de uitvoergegevensset dat wat de planning aanstuurt. In deze zelfst
     Write-Host $results
     ```
 
-**Gefeliciteerd!** U hebt een Azure-gegevensfactory gemaakt met een pijplijn die gegevens van Azure-blobopslag kopieert naar de Azure SQL-database.
+**Gefeliciteerd!** U hebt een Azure-data factory gemaakt met een pijplijn die gegevens van Azure-blobopslag kopieert naar de Azure SQL Database.
 
 ## <a name="monitor-pipeline"></a>De pijplijn bewaken
 In deze stap gebruikt u Data Factory-REST API voor het bewaken van segmenten die worden geproduceerd door de pijplijn.
@@ -515,22 +515,22 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 }
 ```
 
-Voer de Invoke-Command en de volgende uit totdat u het segment in de status **Gereed** of **Mislukt** ziet. Als het segment de status Gereed heeft, controleert u de uitvoergegevens in de **emp**-tabel in uw Azure SQL-database. 
+Voer de Invoke-Command en de volgende uit totdat u het segment in de status **Gereed** of **Mislukt** ziet. Als het segment de status Gereed heeft, controleert u de uitvoergegevens in de **emp**-tabel in Azure SQL Database. 
 
-Voor elk segment worden twee rijen gegevens uit het bronbestand gekopieerd naar de emp-tabel in de Azure SQL-database. U ziet daarom 24 nieuwe records in de emp-tabel wanneer alle segmenten zijn verwerkt (in de status Gereed). 
+Voor elk segment worden twee rijen gegevens uit het bronbestand gekopieerd naar de emp-tabel in Azure SQL Database. U ziet daarom 24 nieuwe records in de emp-tabel wanneer alle segmenten zijn verwerkt (in de status Gereed). 
 
 ## <a name="summary"></a>Samenvatting
-In deze zelfstudie hebt u REST API gebruikt om een Azure-gegevensfactory te maken voor het kopiëren van gegevens van een Azure-blob naar een Azure SQL-database. In deze zelfstudie hebt u de volgende hoofdstappen uitgevoerd:  
+In deze zelfstudie hebt u REST API gebruikt om een Azure-data factory te maken voor het kopiëren van gegevens van een Azure-blob naar Azure SQL Database. In deze zelfstudie hebt u de volgende hoofdstappen uitgevoerd:  
 
 1. U hebt een Azure-**gegevensfactory** gemaakt.
 2. U hebt **gekoppelde services** gemaakt:
    1. Een gekoppelde Azure Storage-service om uw Azure Storage-account te koppelen dat invoergegevens bevat.     
-   2. Een gekoppelde Azure SQL-service om uw Azure SQL-database te koppelen die uitvoergegevens bevat. 
+   2. Een gekoppelde Azure SQL-service om uw database te koppelen die de uitvoergegevens bevat. 
 3. U hebt **gegevenssets** gemaakt waarin de invoer- en uitvoergegevens van pijplijnen worden beschreven.
 4. U hebt een **pijplijn** gemaakt met een kopieeractiviteit met BlobSource als bron en SqlSink als sink. 
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie hebt u voor een kopieerbewerking een Azure Blob-opslag gebruikt als brongegevensarchief en een Azure SQL-database als doelgegevensarchief. De volgende tabel bevat een lijst met gegevensarchieven die worden ondersteund als bron en doel voor de kopieeractiviteit: 
+In deze zelfstudie hebt u voor een kopieerbewerking Azure-blobopslag gebruikt als brongegevensarchief en Azure SQL Database als doelgegevensarchief. De volgende tabel bevat een lijst met gegevensarchieven die worden ondersteund als bron en doel voor de kopieeractiviteit: 
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 

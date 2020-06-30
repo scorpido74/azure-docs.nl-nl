@@ -1,23 +1,25 @@
 ---
 title: Nalevingsdetails van de regelgeving voor CIS Microsoft Azure Foundations Benchmark
 description: Informatie over het ingebouwde initiatief voor naleving van regelgeving in CIS Microsoft Azure Foundations Benchmark. Elke beheeroptie wordt toegewezen aan een of meer Azure Policy-definities die helpen bij de evaluatie.
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 1e3c2baec1186e29da45c6395123e2f5aab9165a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 214d50c790f9976b96bf29906d4db64a111e859f
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84736829"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299021"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-regulatory-compliance-built-in-initiative"></a>Informatie over het ingebouwde initiatief voor naleving van regelgeving in CIS Microsoft Azure Foundations Benchmark
 
-Het volgende artikel beschrijft hoe de definitie van het ingebouwde initiatief voor naleving van regelgeving in Azure Policy wordt toegewezen aan **nalevingsdomeinen** en **beheeropties** van CIS Microsoft Foundations Benchmark.
+Het volgende artikel beschrijft hoe de definitie van het ingebouwde initiatief voor naleving van regelgeving in Azure Policy wordt toegewezen aan **nalevingsdomeinen** en **beheeropties** in CIS Microsoft Foundations Benchmark.
 Zie [CIS Microsoft Azure Foundations Benchmark](https://www.cisecurity.org/benchmark/azure/)voor meer informatie over deze nalevingsstandaard. Zie [Azure Policy-beleidsdefinitie](../concepts/definition-structure.md#type) en [Gedeelde verantwoordelijkheid in de Cloud](../../../security/fundamentals/shared-responsibility.md) om _Eigendom_ te begrijpen.
 
 De volgende toewijzingen bevinden zich in het besturingselement **CIS Microsoft Azure Foundations Benchmark**. Gebruik de navigatie aan de rechterkant om rechtstreeks naar een toewijzing van een specifiek **nalevingsdomein** te gaan. Veel van de beheeropties worden geïmplementeerd met een [Azure Policy](../overview.md)-initiatiefdefinitie. Als u de complete initiatiefdefinitie wilt bekijken, opent u **Beleid** in de Azure-portal en selecteert u de pagina **Definities**.
 Zoek en selecteer vervolgens de ingebouwde definitie van het initiatief voor naleving van regelgeving in **CIS Microsoft Azure Benchmark 1.1.0**.
+
+Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdrukvoorbeeld van CIS Microsoft Azure Foundations Benchmark](../../blueprints/samples/cis-azure-1-1-0.md).
 
 > [!IMPORTANT]
 > Elke beheeroptie hieronder is gekoppeld aan een of meer [Azure Policy](../overview.md)-definities.
@@ -486,7 +488,7 @@ Zoek en selecteer vervolgens de ingebouwde definitie van het initiatief voor nal
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Adaptieve toepassingsregelaars om veilige toepassingen in de toegestane lijst op te nemen, moeten worden ingeschakeld op uw computers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a6b606-51aa-4496-8bb7-64b11cf66adc) |Schakel de besturingselementen van de toepassing in om de lijst met bekende veilige toepassingen te definiëren die worden uitgevoerd op uw machines en om waarschuwen te ontvangen wanneer andere toepassingen worden uitgevoerd. Dit helpt uw computers te beschermen tegen schadelijke software. Om het proces van het configureren en onderhouden van uw regels te vereenvoudigen, gebruikt Security Center machine learning om de toepassingen te analyseren die op elke computer worden uitgevoerd en stelt de lijst met bekende veilige toepassingen voor. |AuditIfNotExists, uitgeschakeld |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_AppWhitelistMonitoring_Audit.json) |
+|[Adaptieve toepassingsregelaars om veilige toepassingen in de toegestane lijst op te nemen, moeten worden ingeschakeld op uw computers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a6b606-51aa-4496-8bb7-64b11cf66adc) |Schakel toepassingsregelaars in om de lijst te definiëren met bekende veilige toepassingen die worden uitgevoerd op uw machines en om een waarschuwing te ontvangen wanneer andere toepassingen worden uitgevoerd. Dit helpt uw computers te beschermen tegen schadelijke software. Om het proces van het configureren en onderhouden van uw regels te vereenvoudigen, gebruikt Security Center machine learning om de toepassingen te analyseren die op elke computer worden uitgevoerd en stelt de lijst met bekende veilige toepassingen voor. |AuditIfNotExists, uitgeschakeld |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_AppWhitelistMonitoring_Audit.json) |
 
 ### <a name="ensure-asc-default-policy-setting-monitor-disk-encryption-is-not-disabled"></a>Controleren of de standaardbeleidsinstelling voor "Schijfversleuteling" van de ASC niet is "uitgeschakeld"
 
@@ -606,7 +608,6 @@ Zoek en selecteer vervolgens de ingebouwde definitie van het initiatief voor nal
 
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[De prijscategorie Standard voor Security Center moet zijn geselecteerd](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa1181c5f-672a-477a-979a-7d58aa086233) |De prijscategorie Standard voorziet in detectie van bedreigingen voor netwerken en virtuele machines en biedt bedreigingsinformatie, anomaliedetectie en gedragsanalyse in Azure Security Center |Controle, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Standard_pricing_tier.json) |
 
 ## <a name="storage-accounts"></a>Opslagaccounts
 

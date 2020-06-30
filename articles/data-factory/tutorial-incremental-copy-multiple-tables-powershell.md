@@ -1,6 +1,6 @@
 ---
 title: Meerdere tabellen incrementeel kopiëren met behulp van PowerShell
-description: In deze zelfstudie maakt u een Azure Data Factory-pijplijn waarmee wijzigingsgegevens incrementeel uit meerdere tabellen van een SQL Server-database worden gekopieerd naar een Azure SQL-database.
+description: In deze zelfstudie maakt u een Azure Data Factory-pijplijn waarmee wijzigingsgegevens incrementeel uit meerdere tabellen van een SQL Server-database worden gekopieerd naar een database in Azure SQL Database.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 18f004b88a2b79f057ce3bf2fcc4cbe73e2b46da
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: e7846ae0f52dfee4260838302d55213d2791eb07
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84736613"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250958"
 ---
-# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database-using-powershell"></a>Incrementeel gegevens uit meerdere tabellen in SQL Server naar Azure SQL Database kopiëren met behulp van PowerShell
+# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>Incrementeel gegevens uit meerdere tabellen in SQL Server naar Azure SQL Database kopiëren met behulp van PowerShell
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -70,7 +70,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 ## <a name="prerequisites"></a>Vereisten
 
 * **SQL Server**. In deze zelfstudie gebruikt u een SQL Server-database als een brongegevensopslag. 
-* **Azure SQL-database**. U gebruikt een SQL database als de sink-gegevensopslag. Als u geen SQL-database hebt, raadpleegt u het artikel [Een Azure SQL-database maken](../azure-sql/database/single-database-create-quickstart.md) om een database te maken. 
+* **Azure SQL-database**. U gebruikt een database in Azure SQL Database als de sink-gegevensopslag. Als u geen SQL-database hebt, raadpleegt u het artikel [Een Azure SQL Database maken](../azure-sql/database/single-database-create-quickstart.md) voor de stappen voor het maken van een database. 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>Brontabellen maken in uw SQL Server-database
 
@@ -117,7 +117,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 2. In **Server Explorer (SSMS)** of in het deelvenster **Verbindingen (Azure Data Studio)** klikt u met de rechtermuisknop op de database en kiest u **Nieuwe query**.
 
-3. Voer de volgende SQL-opdracht uit op uw SQL-database om tabellen te maken met de naam `customer_table` en `project_table`:  
+3. Voer de volgende SQL-opdracht uit op uw database om tabellen te maken met de naam `customer_table` en `project_table`:  
 
     ```sql
     create table customer_table
@@ -134,9 +134,9 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
     );
     ```
 
-### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>Nog een tabel in de Azure SQL Database maken om de bovengrenswaarde op te slaan
+### <a name="create-another-table-in-azure-sql-database-to-store-the-high-watermark-value"></a>Nog een tabel in Azure SQL Database maken om de bovengrenswaarde op te slaan
 
-1. Voer de volgende SQL-opdracht uit op de SQL-database om een tabel met de naam `watermarktable` te maken om de grenswaarde op te slaan: 
+1. Voer de volgende SQL-opdracht uit op uw database om een tabel met de naam `watermarktable` te maken om de bovengrenswaarde op te slaan: 
     
     ```sql
     create table watermarktable
@@ -159,7 +159,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Een opgeslagen procedure maken in de Azure SQL Database 
 
-Voer de volgende opdracht uit om een opgeslagen procedure te maken in de SQL-database. Deze opgeslagen procedure werkt de bovengrenswaarde bij elke pijplijnuitvoering bij. 
+Voer de volgende opdracht uit om een opgeslagen procedure te maken in uw database. Deze opgeslagen procedure werkt de bovengrenswaarde bij elke pijplijnuitvoering bij. 
 
 ```sql
 CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
@@ -175,9 +175,9 @@ END
 
 ```
 
-### <a name="create-data-types-and-additional-stored-procedures-in-the-azure-sql-database"></a>Gegevenstypen en aanvullende opgeslagen procedures maken in de Azure SQL Database
+### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Gegevenstypen en aanvullende opgeslagen procedures maken in Azure SQL Database
 
-Voer de volgende query uit om twee opgeslagen procedures en twee gegevenstypen te maken in de SQL-database. Deze worden gebruikt voor het samenvoegen van de gegevens uit de brontabellen in doeltabellen. 
+Voer de volgende query uit om twee opgeslagen procedures en twee gegevenstypen in uw database te maken. Deze worden gebruikt voor het samenvoegen van de gegevens uit de brontabellen in doeltabellen. 
 
 Om het begin van de beleving toegankelijk te houden, gebruiken we direct deze opgeslagen procedures. Hiermee worden de deltagegevens doorgegeven via een tabelvariabele en vervolgens samengevoegd in het doelarchief. Let erop dat er geen 'groot' aantal deltarijen (meer dan 100) wordt verwacht dat moet worden opgeslagen in de tabelvariabele.  
 
@@ -283,13 +283,13 @@ Houd rekening met de volgende punten:
 
 * Als u Data Factory-exemplaren wilt maken, moet het gebruikersaccount waarmee u zich bij Azure aanmeldt, lid zijn van de rollen Inzender of Eigenaar, of moet dit een beheerder van het Azure-abonnement zijn.
 
-* Voor een lijst met Azure-regio's waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio's waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, SQL Database, enzovoort) en berekeningen (Azure HDInsight, enzovoort) die worden gebruikt door de data factory, kunnen zich in andere regio's bevinden.
+* Voor een lijst met Azure-regio's waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio's waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensarchieven (Azure Storage, SQL Database, SQL Managed Instance, enzovoort) en rekenprocessen (Azure HDInsight, enzovoort) die worden gebruikt in de data factory, kunnen zich in andere regio's bevinden.
 
 [!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
 
 ## <a name="create-linked-services"></a>Gekoppelde services maken
 
-U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en compute-services aan de gegevensfactory te koppelen. In deze sectie maakt u gekoppelde services in uw SQL Server-database en de Azure SQL Database. 
+U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en compute-services aan de gegevensfactory te koppelen. In deze sectie maakt u gekoppelde services in uw SQL Server-database en uw database in Azure SQL Database. 
 
 ### <a name="create-the-sql-server-linked-service"></a>De gekoppelde service voor SQL Server maken
 
@@ -372,7 +372,7 @@ In deze stap gaat u uw SQL Server-database aan de data factory koppelen.
     Properties        : Microsoft.Azure.Management.DataFactory.Models.SqlServerLinkedService
     ```
 
-### <a name="create-the-sql-database-linked-service"></a>De gekoppelde SQL-databaseservice maken
+### <a name="create-the-sql-database-linked-service"></a>De gekoppelde SQL Database-service maken
 
 1. Maak een JSON-bestand met de naam **AzureSQLDatabaseLinkedService.json** in de map C:\ADFTutorials\IncCopyMultiTableTutorial met de volgende inhoud. (Maak de map ADF als deze nog niet bestaat.) Vervang voordat u het bestand opslaat &lt;servername&gt;, &lt;database name&gt;, &lt;user name&gt; en &lt;password&gt; door de naam van uw SQL Server-database, databasenaam, gebruikersnaam en wachtwoord. 
 

@@ -10,31 +10,31 @@ ms.subservice: video-indexer
 ms.topic: quickstart
 ms.date: 03/17/2020
 ms.author: juliako
-ms.openlocfilehash: 22b06ce99333750d48d1cb65d9f60779572723b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: f6c3953947e6f7e84f4cf9b565d2f66648b177f7
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79499624"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130752"
 ---
-# <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Snelstartgids: aanmelden en uw eerste video uploaden
+# <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Quickstart: Registreren en uw eerste video uploaden
 
-In deze Snelstartgids ziet u hoe u zich aanmeldt bij de Video Indexer website en hoe u uw eerste video uploadt.
+In deze quickstart leert u zich aanmelden bij de Video Indexer-website en hoe u uw eerste video kunt uploaden.
 
-Wanneer u een Video Indexer-account maakt, kunt u kiezen uit een gratis proefversie (waarmee u een bepaald aantal gratis minuten indexering krijgt) of een betaalde optie (zonder quotumlimiet). Bij de gratis proefversie biedt Video Indexer websitegebruikers maximaal 600 minuten aan gratis indexering en API-gebruikers maximaal 2400 minuten gratis indexering. Met betaalde optie maakt u een Video Indexer-account dat is [verbonden met uw Azure-abonnement en een Azure Media Services-account](connect-to-azure.md). U betaalt zowel voor de geïndexeerde minuten als voor kosten verbonden aan het Azure Media Services-account. 
+Wanneer u een Video Indexer-account maakt, kunt u kiezen uit een gratis proefversie (waarmee u een bepaald aantal gratis minuten indexering krijgt) of een betaalde optie (zonder quotumlimiet). Bij de gratis proefversie biedt Video Indexer websitegebruikers maximaal 600 minuten aan gratis indexering en API-gebruikers maximaal 2400 minuten gratis indexering. Met de betaalde versie maakt u een Video Indexer-account dat is [gekoppeld aan uw Azure-abonnement en een Azure Media Services-account](connect-to-azure.md). U betaalt zowel voor de geïndexeerde minuten als voor kosten verbonden aan het Azure Media Services-account. 
 
 ## <a name="sign-up-for-video-indexer"></a>Registreren voor Video Indexer
 
-Als u wilt gaan ontwikkelen met Video Indexer, gaat u naar de website van [Video Indexer](https://www.videoindexer.com) en registreert u zich.
+Als u wilt gaan ontwikkelen met Video Indexer, gaat u naar de website van [Video Indexer](https://www.videoindexer.ai/) en registreert u zich.
 
 > [!NOTE]
-> Zodra u begint met het gebruik van Video Indexer, worden al uw opgeslagen gegevens en geüploade inhoud op rest versleuteld met een door micro soft beheerde sleutel.
+> Als u eenmaal begint met het gebruik van Video Indexer, worden al uw opgeslagen gegevens en geüploade inhoud at-rest gecodeerd met een door Microsoft beheerde sleutel.
 
 ## <a name="upload-a-video-using-the-video-indexer-website"></a>Een video met behulp van de Video Indexer-website uploaden
 
-### <a name="supported-file-formats-for-video-indexer"></a>Ondersteunde bestands indelingen voor Video Indexer
+### <a name="supported-file-formats-for-video-indexer"></a>Ondersteunde bestandsindelingen voor Video Indexer
 
-Zie het artikel [invoer container/bestands indelingen](../latest/media-encoder-standard-formats.md#input-containerfile-formats) voor een lijst met bestands indelingen die u kunt gebruiken met video indexer.
+Zie het artikel [invoercontainer/bestandsindelingen](../latest/media-encoder-standard-formats.md#input-containerfile-formats) voor een lijst bestandsindelingen die u kunt gebruiken met Video Indexer.
 
 ### <a name="upload-a-video"></a>Een video uploaden
 
@@ -56,13 +56,13 @@ Zie het artikel [invoer container/bestands indelingen](../latest/media-encoder-s
 
 Zie [Video's uploaden en indexeren](upload-index-videos.md) voor meer informatie.
 
-Nadat u een video hebt geüpload en geïndexeerd, kunt u [video indexer](video-indexer-view-edit.md) website of [video indexer ontwikkelaars Portal](video-indexer-use-apis.md) gaan gebruiken om de inzichten van de video te bekijken. 
+Nadat u een video hebt geüpload en geïndexeerd, kunt u de [Video Indexer](video-indexer-view-edit.md)-website of [Video Indexer Developer Portal](video-indexer-use-apis.md) gebruiken om de inzichten van de video te bekijken. 
 
-[Beginnen met het gebruik van Api's](video-indexer-use-apis.md)
+[Starten met het gebruik van API's](video-indexer-use-apis.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor gedetailleerde inleiding gaat u naar ons [Introductie Lab](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md). 
+Ga voor een gedetailleerde introductie naar ons [introductielab](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md). 
 
-Aan het einde van de workshop hebt u een goed inzicht in het soort informatie dat kan worden geëxtraheerd uit video-en audio-inhoud. u bent meer voor bereid op het identificeren van mogelijkheden met betrekking tot content Intelligence, het verkopen van video AI op Azure en het samen stellen van verschillende scenario's op Video Indexer.
+Aan het einde van de workshop hebt u een beter begrip van het soort informatie dat uit video- en audiocontent kan worden gehaald, bent u beter in staat mogelijkheden te identificeren met betrekking tot content intelligence, video AI op Azure te presenteren en verschillende scenario's op Video Indexer te tonen.
 
