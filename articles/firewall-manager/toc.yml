@@ -12,7 +12,7 @@
       href: quick-secure-virtual-hub.md
 - name: Zelfstudies
   items:
-    - name: Uw virtuele WAN beveiligen - portal
+    - name: Uw virtuele hub beveiligen - portal
       href: secure-cloud-network.md
     - name: Uw virtuele hubnetwerk beveiligen - portal
       href: secure-hybrid-network.md
@@ -26,16 +26,24 @@
       href: deployment-overview.md
     - name: Beveiligingspartnerproviders
       href: trusted-security-partners.md
+    - name: IP-groepen
+      href: ip-groups.md
     - name: Logica voor verwerking van regels
       href: rule-processing.md
     - name: Architectuuropties
       href: vhubs-and-vnets.md
+    - name: Instellingen voor bedreigingsinformatie
+      href: threat-intelligence-settings.md
+    - name: FQDN in netwerkregels
+      href: fqdn-filtering-network-rules.md
 - name: Instructiegidsen
   items:
     - name: Beveiligingspartnerproviders implementeren
       href: deploy-trusted-security-partner.md
     - name: Migreren naar firewallbeleid - PowerShell
       href: migrate-to-policy.md
+    - name: DNS-instellingen
+      href: dns-settings.md
 - name: Naslaginformatie
   items:
     - name: Azure CLI

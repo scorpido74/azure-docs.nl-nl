@@ -3,20 +3,14 @@
 - name: Overzicht
   expanded: true
   items:
-    - name: Wat houdt beheer van cloud-apps en eenmalige aanmelding in?
+    - name: Wat is toepassingsbeheer?
       href: what-is-application-management.md
-    - name: Wat is een toepassingsproxy voor on-premises apps?
-      href: what-is-application-proxy.md
-    - name: Algemene appbeheerscenario's
-      href: common-scenarios.md
-    - name: Wat is toepassingsinrichting?
-      href: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
 - name: Snelstartgidsen
   items:
-    - name: Een cloud-app uit de galerie toevoegen
-      href: add-application-portal.md
     - name: Uw bedrijfstoepassingen bekijken
       href: view-applications-portal.md
+    - name: Een cloud-app uit de galerie toevoegen
+      href: add-application-portal.md
 - name: Zelfstudies
   items:
     - name: 'Geïntegreerde galerie-apps (bijvoorbeeld ServiceNow, Salesforce, Dropbox)'
@@ -32,6 +26,8 @@
   items:
     - name: Best practices voor app-beheer
       href: application-management-fundamentals.md
+    - name: Algemene scenario's voor app-beheer
+      href: common-scenarios.md
     - name: Cloud-apps en eenmalige aanmelding
       items:
         - name: Integratie van een cloud-app plannen
@@ -80,6 +76,8 @@
       items:
         - name: Toepassingsproxy
           href: application-proxy.md
+        - name: Wat is een toepassingsproxy voor on-premises apps?
+          href: what-is-application-proxy.md
         - name: Een implementatie van een toepassingsproxy plannen
           href: application-proxy-deployment-plan.md
         - name: Connectors

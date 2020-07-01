@@ -4,6 +4,14 @@
   items:
     - name: Wat is Azure Advisor?
       href: advisor-overview.md
+- name: Snelstartgidsen
+  items:
+    - name: Waarschuwingen configureren voor nieuwe aanbevelingen
+      items:
+        - name: Azure Portal
+          href: advisor-alerts-portal.md
+        - name: ARM-sjabloon
+          href: advisor-alerts-arm.md
 - name: Zelfstudies
   items:
     - name: Aan de slag met Advisor
@@ -25,7 +33,7 @@
     - name: Machtigingen en geblokkeerde acties
       href: permissions.md
     - name: Waarschuwingen voor aanbevelingen configureren
-      href: advisor-alerts.md
+      href: advisor-alerts-portal.md
     - name: Bulkherstel voor aanbevelingen
       href: advisor-quick-fix.md
     - name: Advisor-gegevens in Azure Resource Graph

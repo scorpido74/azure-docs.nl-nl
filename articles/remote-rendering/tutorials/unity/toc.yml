@@ -1,6 +1,14 @@
-- name: Een geheel nieuw Unity-project opstarten
-  href: project-setup.md
-- name: Werken met externe entiteiten in Unity
-  href: working-with-remote-entities.md
-- name: Omgeving en materialen wijzigen
-  href: changing-environment-and-materials.md
+- name: Overzicht
+  href: tutorial-landing.md
+- name: U bekijkt een model dat extern wordt weergegeven
+  href: view-remote-models/view-remote-models.md
+- name: Interfaces en aangepaste modellen
+  href: custom-models/custom-models.md
+- name: Modellen bewerken
+  href: manipulate-models/manipulate-models.md
+- name: 'Materialen, belichting en effecten verfijnen'
+  href: materials-lighting-effects/materials-lighting-effects.md
+- name: Azure Remote Rendering en modelopslag beveiligen
+  href: security/security.md
+- name: Een Azure Remote Rendering-toepassing maken die commercieel gereed is
+  href: commercial-ready/commercial-ready.md

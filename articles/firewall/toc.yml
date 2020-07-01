@@ -58,6 +58,8 @@
       href: central-management.md
     - name: Ondersteuning voor externe werk
       href: remote-work-support.md
+    - name: FQDN in netwerkregels
+      href: fqdn-filtering-network-rules.md
 - name: Instructiegidsen
   items:
     - name: Implementeren met Azure PowerShell
@@ -80,6 +82,10 @@
       href: create-ip-group.md
     - name: Windows Virtual Desktop beschermen
       href: protect-windows-virtual-desktop.md
+    - name: Azure Kubernetes Service (AKS) beschermen
+      href: protect-azure-kubernetes-service.md
+    - name: DNS-instellingen
+      href: dns-settings.md
 - name: Naslaginformatie
   items:
     - name: Azure CLI

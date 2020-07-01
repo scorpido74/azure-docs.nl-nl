@@ -855,6 +855,8 @@
           href: incremental-snapshots.md
         - name: Migratie en conversie
           items:
+            - name: Converteren naar versleuteling aan serverzijde
+              href: disks-ade-sse-conversion-powershell.md
             - name: Een schijf converteren van Standard naar Premium
               href: convert-disk-storage.md
             - name: Migreren naar Premium Storage met Azure Site Recovery

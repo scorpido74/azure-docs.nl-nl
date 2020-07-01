@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Documentatie voor Azure Firewall Manager
-summary: Meer informatie over het implementeren van Azure Firewall Manager, een wereldwijd gedistribueerde service voor beveiligingsbeheer.
+summary: Informatie over het implementeren van Azure Firewall Manager, een wereldwijd gedistribueerde service voor beveiligingsbeheer.
 metadata:
   title: Documentatie voor Azure Firewall Manager
   description: Meer informatie over het implementeren van Azure Firewall Manager, een wereldwijd gedistribueerde service voor beveiligingsbeheer.
@@ -10,12 +10,12 @@ metadata:
   author: vhorne
   ms.author: victorh
   ms.date: 10/10/2019
-  ms.openlocfilehash: e3b98f3954ee70b5e002bb844147d4d51b1f6d9d
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: bf7474f1519fbd94be3de8daa15a43775a6a6a0a
+  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73508666"
+  ms.lasthandoff: 06/30/2020
+  ms.locfileid: "85561434"
 landingContent:
 - title: Meer informatie over Azure Firewall Manager
   linkLists:
@@ -31,15 +31,15 @@ landingContent:
     links:
     - text: Wat is een beveiligde virtuele hub?
       url: secured-virtual-hub.md
-- title: Vertrouwde beveiligingspartners
+- title: Beveiligingspartnerproviders
   linkLists:
   - linkListType: concept
     links:
-    - text: Wat zijn vertrouwde beveiligingspartners (preview)?
+    - text: Wat zijn beveiligingspartnerproviders?
       url: trusted-security-partners.md
   - linkListType: how-to-guide
     links:
-    - text: Een vertrouwde beveiligingspartner implementeren (preview)
+    - text: Een beveiligingspartnerprovider implementeren
       url: deploy-trusted-security-partner.md
 - title: Uw Azure-cloudnetwerk beveiligen
   linkLists:

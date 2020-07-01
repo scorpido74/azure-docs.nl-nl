@@ -135,6 +135,8 @@
           href: batch-virtual-network.md
         - name: Een groep met openbare IP-adressen maken
           href: create-pool-public-ip.md
+        - name: Een groep zonder openbare IP-adressen maken
+          href: batch-pool-no-public-ip-address.md
         - name: Een virtueel bestandssysteem koppelen
           href: virtual-file-mount.md
         - name: Azure-bestandsshare koppelen

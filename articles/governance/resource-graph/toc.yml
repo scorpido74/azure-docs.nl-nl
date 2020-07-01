@@ -8,7 +8,7 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: 'Uw eerste query uitvoeren: Azure-portal'
+    - name: 'Uw eerste query uitvoeren: Portal'
       displayName: 'portal, resource, graph, explorer'
       href: ./first-query-portal.md
     - name: 'Uw eerste query uitvoeren: Azure CLI'
@@ -26,6 +26,9 @@
     - name: 'Uw eerste query uitvoeren: Python'
       displayName: 'library, azure-mgmt, cli'
       href: ./first-query-python.md
+    - name: Een gedeelde query maken - Azure CLI
+      displayName: 'extension, docker, queries'
+      href: ./shared-query-azure-cli.md
     - name: 'Een gedeelde query implementeren: ARM-sjabloon'
       displayName: 'resource manager, queries'
       href: ./shared-query-template.md
