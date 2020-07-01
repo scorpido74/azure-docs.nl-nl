@@ -3,12 +3,12 @@ title: Voor beeld van een label entiteit utterance
 description: Meer informatie over het labelen van een machine learning-entiteit met subentiteiten in een voor beeld van een utterance op een pagina met details van de LUIS-Portal.
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 959b9c6b25a7a76a87112fcbd1a10e7da12db1dd
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: f576f42f46930d81212ff754a14ee30c75b79624
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722640"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610486"
 ---
 # <a name="label-machine-learning-entity-in-an-example-utterance"></a>Label machine-learning-entiteit in een voor beeld-utterance
 
@@ -16,7 +16,7 @@ Het labelen van een entiteit in een voor beeld utterance geeft LUIS een voor bee
 
 U kunt door machines geleerde entiteiten en subentiteiten labelen.
 
-Omdat u geen reguliere expressie, lijst of vooraf gedefinieerde entiteiten kunt labelen, maakt u een entiteit of subentiteit en voegt u deze entiteiten toe, indien van toepassing, functies van de entiteit of subentiteit.
+Omdat u geen reguliere expressie, lijst of vooraf gedefinieerde entiteiten kunt labelen, maakt u een entiteit of een subentiteit en voegt u deze entiteiten vervolgens toe als onderdelen, indien van toepassing, aan de entiteit of subentiteit.
 
 ## <a name="label-example-utterances-from-the-intent-detail-page"></a>Voor beeld van een label uitingen van de detail pagina van de intentie
 

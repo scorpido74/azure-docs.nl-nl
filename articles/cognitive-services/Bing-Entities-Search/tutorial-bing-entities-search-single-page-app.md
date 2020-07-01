@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 33c5cbd47213d021d374f52c1dadaf20d508ae37
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943138"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608565"
 ---
 # <a name="tutorial-single-page-web-app"></a>Zelfstudie: Web-app van één pagina
 
@@ -58,7 +58,12 @@ In deze zelfstudie bespreken we alleen bepaalde gedeelten van de broncode. De vo
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de zelf studie wilt volgen, moet u abonnements sleutels voor de Bing Search-API en de Bing Maps-API hebben. Als u deze niet hebt, kunt u een [proef sleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) en een [eenvoudige Bing Maps-sleutel](https://www.microsoft.com/maps/create-a-bing-maps-key)gebruiken.
+Als u de zelf studie wilt volgen, moet u abonnements sleutels voor de Bing Search-API en de Bing Maps-API hebben. 
+
+* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
+* Wanneer u uw Azure-abonnement hebt:
+  * <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Maak een Bing Search resource Maak "  target="_blank"> een Bing Search resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
+  * <a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title="Maak een Computer Vision resource Maak "  target="_blank"> een Bing Maps-resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
 
 ## <a name="app-components"></a>App-onderdelen
 
@@ -86,7 +91,7 @@ De HTML bevat ook de delen (HTML-`<div>`-tags) waar de zoekresultaten worden wee
 ## <a name="managing-subscription-keys"></a>Abonnementssleutels beheren
 
 > [!NOTE]
-> Deze app vereist abonnementssleutels voor zowel de Bing zoeken-API als de Bing Kaarten-API. U kunt een [sleutel van de proefversie van Bing Zoeken](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) gebruiken en een [basissleutel van Bing Kaarten](https://www.microsoft.com/maps/create-a-bing-maps-key).
+> Deze app vereist abonnementssleutels voor zowel de Bing zoeken-API als de Bing Kaarten-API.
 
 Om te voorkomen dat de abonnementssleutels van de Bing Zoeken- en Bing Kaarten-API's moeten worden opgenomen in de code, gebruiken we de permanente opslag van de browser om de sleutels op te slaan. Als een van beide sleutels niet is opgeslagen, wordt de sleutel opgevraagd en opgeslagen voor later gebruik. Als de sleutel later wordt geweigerd door de API, wordt de opgeslagen sleutel ongeldig gemaakt zodat de gebruiker bij de volgende zoekopdracht om een sleutel wordt gevraagd.
 
@@ -394,7 +399,7 @@ Fouten worden afgehandeld door `renderErrorMessage()` aan te roepen met eventuel
 
 ## <a name="displaying-search-results"></a>Zoekresultaten weergeven
 
-De Bing Entiteiten zoeken-API [vereist dat u resultaten weergeeft in een bepaalde volgorde](use-display-requirements.md). Omdat de API twee verschillende soorten antwoorden kan retourneren, is het niet voldoende om de verzameling `Entities` of `Places` op het hoogste niveau in het JSON-antwoord te doorlopen en die resultaten weer te geven. (Als u slechts één type resultaat wilt, gebruikt u de queryparameter `responseFilter`.)
+De Bing Entiteiten zoeken-API [vereist dat u resultaten weergeeft in een bepaalde volgorde](use-display-requirements.md). Omdat de API twee verschillende soorten reacties kan retour neren, is het niet voldoende om het hoogste niveau of de `Entities` `Places` verzameling in het JSON-antwoord te herhalen en deze resultaten weer te geven. (Als u slechts één type resultaat wilt, gebruikt u de queryparameter `responseFilter`.)
 
 In plaats daarvan gebruiken we de verzameling `rankingResponse` in de zoekresultaten om de resultaten te ordenen voor weergave. Dit object verwijst naar items in de verzameling `Entitiess` en/of `Places`.
 
@@ -520,7 +525,7 @@ Met onze rendererfunctie worden de volgende handelingen uitgevoerd:
 
 Antwoorden van de Bing Zoeken-API’s kunnen een `X-MSEdge-ClientID`-header omvatten die bij volgende aanvragen moet worden teruggestuurd naar de API. Als er meerdere Bing Zoeken-API’s worden gebruikt, moet voor al deze API’s, indien mogelijk, dezelfde client-id worden gebruikt.
 
-Door de `X-MSEdge-ClientID`-header op te geven kunnen met Bing-API's alle zoekopdrachten van een gebruiker worden gekoppeld. Dit heeft twee belangrijke voordelen.
+Door de `X-MSEdge-ClientID` header te bieden, kunnen de Bing-api's alle Zoek opdrachten van een gebruiker koppelen. Dit heeft twee belang rijke voor delen.
 
 Ten eerste kan met de Bing-zoekmachine vroegere context worden toegepast op zoekopdrachten om beter kloppende resultaten te vinden voor de gebruiker. Als een gebruiker bijvoorbeeld eerder heeft gezocht naar termen die zijn gerelateerd aan zeilen, kan bij een latere zoekopdracht naar ‘knopen’ de voorkeur worden gegeven aan informatie over knopen die worden gebruikt bij zeilen.
 
@@ -531,7 +536,7 @@ Beveiligingsbeleid voor browsers (CORS) kan ervoor zorgen dat de `X-MSEdge-Clien
 > [!NOTE]
 > In een webtoepassing die bedoeld is voor productie, moet u de aanvraag toch aan de serverzijde uitvoeren. Anders moet de sleutel voor de Bing Search-API worden opgenomen op de webpagina, waar deze beschikbaar is voor iedereen die de bron weergeeft. Al uw gebruik van de API-abonnementssleutel wordt in rekening gebracht, zelfs aanvragen die zijn gedaan door partijen die niet zijn gemachtigd. Het is daarom van groot belang dat u uw sleutel niet algemeen beschikbaar maakt.
 
-Voor ontwikkelingsdoeleinden kunt u de aanvraag van de Bing Web Search-API via een CORS-proxy doen. Het antwoord van een dergelijke proxy heeft een `Access-Control-Expose-Headers`-header waardoor antwoordheaders worden opgenomen in de whitelist en beschikbaar gemaakt voor JavaScript.
+Voor ontwikkelingsdoeleinden kunt u de aanvraag van de Bing Web Search-API via een CORS-proxy doen. Het antwoord van een dergelijke proxy heeft een `Access-Control-Expose-Headers` kop die antwoord headers toestaat en maakt deze beschikbaar voor Java script.
 
 U kunt eenvoudig een CORS-proxy installeren zodat de zelfstudie-app toegang krijgt tot de client-id-header. Als u [Node.js](https://nodejs.org/en/download/) nog niet hebt, moet u dit eerst installeren. Voer vervolgens de volgende opdracht uit in een opdrachtvenster:
 

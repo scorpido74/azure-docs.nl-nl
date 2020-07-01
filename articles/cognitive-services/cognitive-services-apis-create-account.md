@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: aahi
-ms.openlocfilehash: 33200f8807ad28ac160bb377b1107548f4e42d51
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4a73ff517347baa2cf589432be025bd922597ed3
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590805"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611387"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Een Cognitive Services resource maken met behulp van de Azure Portal
 
@@ -25,34 +25,34 @@ Gebruik deze Quick Start om Azure Cognitive Services te gebruiken. Nadat u een c
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een geldig Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/).
+* Een geldig Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="create-a-new-azure-cognitive-services-resource"></a>Een nieuwe Azure Cognitive Services-resource maken
 
 1. Een resource maken.
 
     #### <a name="multi-service-resource"></a>[Resource met meerdere services](#tab/multiservice)
-    
+
     De resource met meerdere services heeft de naam **Cognitive Services** in de portal. [Maak een Cognitive Services resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne).
-    
+
     Op dit moment biedt de resource met meerdere services toegang tot de volgende Cognitive Services:
-    
+
     |                  |                                                      |                    |                               |                  |
     |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
-    | Computer Vision  | Content Moderator                                    | Face               | Language Understanding (LUIS) | Text Analytics   |
-    | Translator  | Bing Search V7 <br>(Web, afbeelding, nieuws, video, visueel element) | Bing Custom Search | Bing Entity Search            | Bing Automatische suggesties |
+    | Computer Vision  | Content Moderator                                    | Face               | Language Understanding (LUIS) | Tekstanalyse   |
+    | Vertaler  | Bing Search V7 <br>(Web, afbeelding, nieuws, video, visueel element) | Bing Aangepaste zoekopdrachten | Bing Entiteiten zoeken            | Bing Automatische suggesties |
     | Bing Spellingcontrole |                                                      |                    |                               |                  |
-    
+
     #### <a name="single-service-resource"></a>[Resource met één service](#tab/singleservice)
 
     Gebruik de onderstaande koppelingen om een resource te maken voor de beschik bare Cognitive Services:
 
     | Vision                      | Speech                  | Taal                          | Besluit             | Zoeken                 |
     |-----------------------------|-------------------------|-----------------------------------|----------------------|------------------------|
-    | [Computer vision](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Spraak Services](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [Insluitende lezer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Anomaly Detector](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [Bing Search API V7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
-    | [Aangepaste Vision-service](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [Speaker Recognition](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Bing Custom Search](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
-    | [Face](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [Personalizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     | [Bing Entity Search](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch) |
-    | [Ink Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [Text Analytics](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |                      | [Bing Spellingcontrole](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
+    | [Computer Vision](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Spraak Services](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [Insluitende lezer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Anomaly Detector](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [Bing Search API V7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
+    | [Aangepaste Vision-service](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [Speaker Recognition](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Bing Aangepaste zoekopdrachten](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
+    | [Face](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [Personalizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     | [Bing Entiteiten zoeken](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch) |
+    | [Ink Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [Tekstanalyse](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |                      | [Bing Spellingcontrole](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
     |           |                         | [Translator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [Bing Automatische suggesties](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
     ***
 
@@ -65,12 +65,12 @@ Gebruik deze Quick Start om Azure Cognitive Services te gebruiken. Nadat u een c
     | **Naam** | Een beschrijvende naam voor uw cognitieve Services-resource. Bijvoorbeeld *MyCognitiveServicesResource*. |
     | **Abonnement** | Selecteer een van de beschik bare Azure-abonnementen. |
     | **Locatie** | De locatie van uw cognitieve service-exemplaar. Verschillende locaties kunnen latentie introduceren, maar hebben geen invloed op de runtime-Beschik baarheid van uw resource. |
-    | **Prijs categorie** | De kosten van uw Cognitive Services-account zijn afhankelijk van de opties die u kiest en uw gebruik. Zie de [prijs informatie](https://azure.microsoft.com/pricing/details/cognitive-services/)voor de API voor meer informatie.
+    | **Prijscategorie** | De kosten van uw Cognitive Services-account zijn afhankelijk van de opties die u kiest en uw gebruik. Zie de [prijs informatie](https://azure.microsoft.com/pricing/details/cognitive-services/)voor de API voor meer informatie.
     | **Resourcegroep** | De Azure-resource groep die uw Cognitive Services-resource bevat. U kunt een nieuwe groep maken of toevoegen aan een bestaande groep. |
 
     ![Scherm voor het maken van resources](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    Klik op **Maken**.
+    Klik op **Create**.
 
     #### <a name="single-service-resource"></a>[Resource met één service](#tab/singleservice)
 
@@ -79,12 +79,12 @@ Gebruik deze Quick Start om Azure Cognitive Services te gebruiken. Nadat u een c
     | **Naam** | Een beschrijvende naam voor uw cognitieve Services-resource. Bijvoorbeeld *TextAnalyticsResource*. |
     | **Abonnement** | Selecteer een van de beschik bare Azure-abonnementen. |
     | **Locatie** | De locatie van uw cognitieve service-exemplaar. Verschillende locaties kunnen latentie introduceren, maar hebben geen invloed op de runtime-Beschik baarheid van uw resource. |
-    | **Prijs categorie** | De kosten van uw Cognitive Services-account zijn afhankelijk van de opties die u kiest en uw gebruik. Zie de [prijs informatie](https://azure.microsoft.com/pricing/details/cognitive-services/)voor de API voor meer informatie.
+    | **Prijscategorie** | De kosten van uw Cognitive Services-account zijn afhankelijk van de opties die u kiest en uw gebruik. Zie de [prijs informatie](https://azure.microsoft.com/pricing/details/cognitive-services/)voor de API voor meer informatie.
     | **Resourcegroep** | De Azure-resource groep die uw Cognitive Services-resource bevat. U kunt een nieuwe groep maken of toevoegen aan een bestaande groep. |
 
     ![Scherm voor het maken van resources](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    Klik op **Maken**.
+    Klik op **Create**.
 
     ***
 

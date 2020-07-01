@@ -3,12 +3,12 @@ title: 'Zelf studie: gestructureerde gegevens met machine learning-entiteit extr
 description: Gestructureerde gegevens uit een utterance extra heren met behulp van de machine learning-entiteit. Voeg subentiteiten met functies toe om de nauw keurigheid van de extractie te verg Roten.
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: f9a732d38d2d4557340080d9d1bbdcf789caea08
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e16badfb2e024c5d82f1aed8a02aa901dca2c2a9
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83676168"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611013"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>Zelf studie: gestructureerde gegevens uit de utterance van de gebruiker met machine learning-entiteiten in Language Understanding extra heren (LUIS)
 
@@ -98,7 +98,7 @@ In de vorige stappen maakt u de entiteit en de subentiteit. Voeg functies toe aa
 
 1. Selecteer **nieuwe woordgroepen lijst maken** in de vervolg keuzelijst.
 
-1. Voer in het vak **nieuwe woordgroepen lijst maken** de naam in en `SizePhraselist` Voer vervolgens waarden in: `small` , `medium` en `large` . Wanneer in het vak **suggesties** wordt ingevuld, selecteert u `extra large` en `xl` . Selecteer **Opslaan** om de nieuwe woordgroepen lijst te maken.
+1. Voer in het vak **nieuwe woordgroepen lijst maken** de naam in en `SizePhraselist` Voer vervolgens waarden in: `small` , `medium` en `large` . Wanneer in het vak **suggesties** wordt ingevuld, selecteert u `extra large` en `xl` . Selecteer **maken** om de nieuwe woordgroepen lijst te maken.
 
     Met deze woordgroepen lijst functie kan de `Size` subentiteit woorden vinden die gerelateerd zijn aan de grootte door bijvoorbeeld woorden op te geven. Deze woordgroepen lijst hoeft niet elk woord grootte op te geven, maar moet woorden bevatten die worden verwacht om de grootte aan te duiden.
 
@@ -131,7 +131,7 @@ Bij het toevoegen van een lijst met bekende grootten die door de client toepassi
 
 1. Selecteer op het tabblad **schema en functies** de entiteit **grootte** en selecteer vervolgens **+ functie toevoegen**.
 
-1. Selecteer **@ SizeList** in de vervolg keuzelijst.
+1. Selecteer **@ SizeListentity** in de vervolg keuzelijst.
 
 <a name="add-prebuilt-number-entity-to-app"></a>
 

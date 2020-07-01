@@ -9,14 +9,14 @@ ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 06/24/2020
 ms.author: aahi
-ms.openlocfilehash: 1c8e0bb136fddeb84dc991e63a761378b38cc470
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 272a10e211e99e200b82807b188d828a9ece42d8
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382324"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85609432"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>Een console-app zoeken-client in C bouwen #
 
@@ -31,8 +31,9 @@ Deze zelf studie laat zien hoe u:
 
 Als u de zelf studie wilt volgen, hebt u het volgende nodig:
 
-- Visual Studio. Als u dit niet hebt, [downloadt en installeert u de gratis Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/).
-- Een abonnements sleutel voor de Bing Webzoekopdrachten-API. Als u geen sleutel hebt, kunt u zich [registreren voor een gratis proefversie](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
+* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" maakt u een Bing Search resource Maak "  target="_blank"> een Bing Search resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
+* De [Visual Studio IDE](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-a-new-console-app-project"></a>Een nieuw console-app-project maken
 
@@ -42,18 +43,18 @@ Klik in het dialoog venster **Nieuw project** op **Visual C# > Windows Classic b
 
 Noem de toepassing **MyConsoleSearchApp**en klik vervolgens op **OK**.
 
-## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>Het JSON.net Nuget-pakket toevoegen aan het project
+## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>Het JSON.net NuGet-pakket toevoegen aan het project
 
 Met JSON.net kunt u werken met de JSON-antwoorden die zijn geretourneerd door de API. Voeg het NuGet-pakket toe aan uw project:
 
 - Klik in **Solution Explorer** met de rechter muisknop op het project en selecteer **NuGet-pakketten beheren...**.
-- Zoek op het tabblad **Bladeren** naar `Newtonsoft.Json`. Selecteer de nieuwste versie en klik vervolgens op **installeren**.
+- Zoek op het tabblad **Bladeren** naar `Newtonsoft.Json` . Selecteer de nieuwste versie en klik vervolgens op **installeren**.
 - Klik op de knop **OK** in het venster **wijzigingen bekijken** .
 - Sluit het tabblad Visual Studio met de titel **NuGet: MyConsoleSearchApp**.
 
 ## <a name="add-a-reference-to-systemweb"></a>Een verwijzing naar System. web toevoegen
 
-Deze zelf studie is afhankelijk van `System.Web` de assembly. Voeg een verwijzing naar deze assembly toe aan uw project:
+Deze zelf studie is afhankelijk van de `System.Web` Assembly. Voeg een verwijzing naar deze assembly toe aan uw project:
 
 - Klik in **Solution Explorer**met de rechter muisknop op **verwijzingen** en selecteer **referentie toevoegen...**
 - Selecteer **assembly's > Framework**, Schuif omlaag en controleer **System. Web**
@@ -61,7 +62,7 @@ Deze zelf studie is afhankelijk van `System.Web` de assembly. Voeg een verwijzin
 
 ## <a name="add-some-necessary-using-statements"></a>Enkele vereiste instructies gebruiken
 
-Voor de code in deze zelf studie zijn drie extra instructies vereist. Voeg deze instructies toe onder de `using` bestaande instructies boven aan **Program.cs**:
+Voor de code in deze zelf studie zijn drie extra instructies vereist. Voeg deze instructies toe onder de bestaande `using` instructies boven aan **Program.cs**:
 
 ```csharp
 using System.Web;
@@ -137,12 +138,12 @@ static void RunQueryAndDisplayResults(string userQuery)
 
 Deze methode:
 
-- Hiermee maakt `HttpClient` u een query voor de WEBZOEKOPDRACHTEN-API
-- Hiermee wordt `Ocp-Apim-Subscription-Key` de http-header ingesteld die door Bing wordt gebruikt om de aanvraag te verifiëren
+- Hiermee maakt `HttpClient` u een query voor de webzoekopdrachten-API
+- Hiermee wordt de `Ocp-Apim-Subscription-Key` http-header ingesteld die door Bing wordt gebruikt om de aanvraag te verifiëren
 - Voert de aanvraag uit en gebruikt JSON.net om de resultaten te deserialiseren
 - Aanroepen `DisplayAllRankedResults(responseObjects)` om alle resultaten weer te geven in de rang orde
 
-Zorg ervoor dat u de waarde van `Ocp-Apim-Subscription-Key` instelt op uw abonnements sleutel.
+Zorg ervoor dat u de waarde van instelt `Ocp-Apim-Subscription-Key` op uw abonnements sleutel.
 
 ## <a name="display-ranked-results"></a>Gerangschikte resultaten weer geven
 
@@ -221,7 +222,7 @@ Bekijk een voor beeld van een zoek opdracht op het web voordat u kunt zien hoe d
 }
 ```
 
-In `rankingResponse` het JSON-object ([documentatie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) wordt de juiste weergave volgorde voor zoek resultaten beschreven. Het bevat een of meer van de volgende groepen met prioriteit:
+`rankingResponse`In het JSON-object ([documentatie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) wordt de juiste weergave volgorde voor zoek resultaten beschreven. Het bevat een of meer van de volgende groepen met prioriteit:
 
 - `pole`: De zoek resultaten voor het verkrijgen van de meest zicht bare behandeling (bijvoorbeeld weer gegeven boven de mainline en Sidebar).
 - `mainline`: De zoek resultaten worden weer gegeven in de Mainline.

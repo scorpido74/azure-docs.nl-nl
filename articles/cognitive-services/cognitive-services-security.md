@@ -3,19 +3,19 @@ title: Beveiliging
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over de verschillende beveiligings overwegingen voor het gebruik van Cognitive Services.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.author: dapine
+ms.date: 06/30/2020
+ms.author: aahi
 ms.custom: tracking-python
-ms.openlocfilehash: be1f6bd05069024194cb9312b17941c609d544dd
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: d97b944d5d18a39d6eaf84b55363f487a2c17dbf
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608448"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611404"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services-beveiliging
 
@@ -205,7 +205,7 @@ Klanten-lockbox is beschikbaar voor deze cognitieve service:
 
 Voor Language Understanding heeft micro soft-technici geen toegang tot klant gegevens in de E0-SKU. Als u de mogelijkheid wilt aanvragen om de E0-SKU te gebruiken, vult u het [aanvraag formulier](https://aka.ms/cogsvc-cmk)voor de Luis in en verzendt u dit. Het duurt ongeveer 3-5 werk dagen voordat de status van uw aanvraag wordt weer gegeven. Afhankelijk van de vraag, kunt u in een wachtrij plaatsen en worden goedgekeurd als er ruimte beschikbaar is. Nadat u hebt goedgekeurd voor het gebruik van de E0 SKU met LUIS, moet u een nieuwe Language Understanding resource maken op basis van de Azure Portal en E0 selecteren als prijs categorie. Gebruikers kunnen geen upgrade uitvoeren van de F0 naar de nieuwe E0-SKU.
 
-De spraak service biedt momenteel geen ondersteuning voor Klanten-lockbox. Klant gegevens kunnen echter worden opgeslagen met behulp van BYOS, zodat u vergelijk bare gegevens besturings elementen kunt gebruiken om te [klanten-lockbox](../security/fundamentals/customer-lockbox-overview.md). Houd er wel bij dat de gegevens van de speech-service blijven en worden verwerkt in de regio waarin de spraak bron is gemaakt. Dit geldt voor alle gegevens in rust en gegevens die onderweg zijn. Wanneer u aanpassings functies gebruikt, zoals Custom Speech en aangepaste spraak, worden alle klant gegevens overgebracht, opgeslagen en verwerkt in dezelfde regio waar uw BYOS (indien gebruikt) en de speech service-bron zich bevinden.
+De spraak service biedt momenteel geen ondersteuning voor Klanten-lockbox. Klant gegevens kunnen echter worden opgeslagen met behulp van BYOS (' uw eigen opslag gebruiken '), zodat u vergelijk bare gegevens besturings elementen kunt behalen voor [klanten-lockbox](../security/fundamentals/customer-lockbox-overview.md). Houd er wel bij dat de gegevens van de speech-service blijven en worden verwerkt in de regio waarin de spraak bron is gemaakt. Dit geldt voor alle gegevens in rust en gegevens die onderweg zijn. Wanneer u aanpassings functies gebruikt, zoals Custom Speech en aangepaste spraak, worden alle klant gegevens overgebracht, opgeslagen en verwerkt in dezelfde regio waar uw BYOS (indien gebruikt) en de speech service-bron zich bevinden.
 
 > [!IMPORTANT]
 > Micro soft gebruikt **geen** klant gegevens om de spraak modellen te verbeteren. Als eindpunt logboek registratie is uitgeschakeld en er geen aanpassingen worden gebruikt, worden er geen klant gegevens opgeslagen. 

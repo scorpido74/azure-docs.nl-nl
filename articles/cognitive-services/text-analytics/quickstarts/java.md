@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 0541438659f25780be0c7bc1c87670cab6d7ca08
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 68095a86d3593349a356a6ee44e3f75ab5726979
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446314"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610996"
 ---
 # <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Snelstartgids: Java gebruiken om de service Azure Text Analytics cognitieve aan te roepen
 <a name="HOLTop"></a>
@@ -37,7 +37,7 @@ U moet ook de [eindpunt- en toegangssleutel](../../cognitive-services-apis-creat
 
 Met de Taaldetectie-API wordt de taal van een tekstdocument gedetecteerd met behulp van de  [methode Taal detecteren](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
-1. Maak een nieuw Java-project in uw favoriete IDE (of een nieuwe map op uw bureau blad). Maak een klasse met `DetectLanguage.java`de naam.
+1. Maak een nieuw Java-project in uw favoriete IDE (of een nieuwe map op uw bureau blad). Maak een klasse met de naam `DetectLanguage.java` .
 1. Voeg de hieronder vermelde code toe aan uw klasse.
 1. Kopieer de Text Analytics sleutel en het eind punt naar de code. 
 1. Zorg ervoor dat de [Gson](https://github.com/google/gson) -bibliotheek is geïnstalleerd.
@@ -100,7 +100,7 @@ public class DetectLanguage {
         endpoint = "<paste-your-text-analytics-endpoint-here>";
     }
 
-    static String path = "/text/analytics/v2.1/languages";
+    static String path = "/text/analytics/v3.0/languages";
     
     public static String GetLanguage (Documents documents) throws Exception {
         String text = new Gson().toJson(documents);
@@ -161,43 +161,38 @@ public class DetectLanguage {
 Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien in het volgende voorbeeld: 
 
 ```json
-
 {
-   "documents": [
-      {
-         "id": "1",
-         "detectedLanguages": [
-            {
-               "name": "English",
-               "iso6391Name": "en",
-               "score": 1.0
-            }
-         ]
-      },
-      {
-         "id": "2",
-         "detectedLanguages": [
-            {
-               "name": "Spanish",
-               "iso6391Name": "es",
-               "score": 1.0
-            }
-         ]
-      },
-      {
-         "id": "3",
-         "detectedLanguages": [
-            {
-               "name": "Chinese_Simplified",
-               "iso6391Name": "zh_chs",
-               "score": 1.0
-            }
-         ]
-      }
-   ],
-   "errors": [
-
-   ]
+    "documents": [
+        {
+            "id": "1",
+            "detectedLanguage": {
+                "name": "English",
+                "iso6391Name": "en",
+                "confidenceScore": 1.0
+            },
+            "warnings": []
+        },
+        {
+            "id": "2",
+            "detectedLanguage": {
+                "name": "Spanish",
+                "iso6391Name": "es",
+                "confidenceScore": 1.0
+            },
+            "warnings": []
+        },
+        {
+            "id": "3",
+            "detectedLanguage": {
+                "name": "Chinese_Simplified",
+                "iso6391Name": "zh_chs",
+                "confidenceScore": 1.0
+            },
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2019-10-01"
 }
 ```
 <a name="SentimentAnalysis"></a>
@@ -206,7 +201,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 
 Met de Sentiment Analysis-API wordt een set tekstrecords gedetecteerd met behulp van de [methode Sentiment](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9). In het volgende voorbeeld worden twee documenten beoordeeld, één in het Engels en één in het Spaans.
 
-1. Maak een nieuw Java-project in uw favoriete IDE (of een nieuwe map op uw bureau blad). Maak een klasse met de naam `GetSentiment.java`.
+1. Maak een nieuw Java-project in uw favoriete IDE (of een nieuwe map op uw bureau blad). Maak een klasse met de naam `GetSentiment.java` .
 1. Voeg de hieronder vermelde code toe aan uw klasse.
 1. Kopieer de Text Analytics sleutel en het eind punt naar de code.
 1. Zorg ervoor dat de [Gson](https://github.com/google/gson) -bibliotheek is geïnstalleerd.
@@ -270,7 +265,7 @@ public class GetSentiment {
         endpoint = "<paste-your-text-analytics-endpoint-here>";
     }
 
-    static String path = "/text/analytics/v2.1/sentiment";
+    static String path = "/text/analytics/v3.0/sentiment";
     
     public static String getTheSentiment (Documents documents) throws Exception {
         String text = new Gson().toJson(documents);
@@ -332,17 +327,56 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 
 ```json
 {
-   "documents": [
-      {
-         "score": 0.99984133243560791,
-         "id": "1"
-      },
-      {
-         "score": 0.024017512798309326,
-         "id": "2"
-      },
-   ],
-   "errors": [   ]
+    "documents": [
+        {
+            "id": "1",
+            "sentiment": "positive",
+            "confidenceScores": {
+                "positive": 1.0,
+                "neutral": 0.0,
+                "negative": 0.0
+            },
+            "sentences": [
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 1.0,
+                        "neutral": 0.0,
+                        "negative": 0.0
+                    },
+                    "offset": 0,
+                    "length": 102,
+                    "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."
+                }
+            ],
+            "warnings": []
+        },
+        {
+            "id": "2",
+            "sentiment": "negative",
+            "confidenceScores": {
+                "positive": 0.02,
+                "neutral": 0.05,
+                "negative": 0.93
+            },
+            "sentences": [
+                {
+                    "sentiment": "negative",
+                    "confidenceScores": {
+                        "positive": 0.02,
+                        "neutral": 0.05,
+                        "negative": 0.93
+                    },
+                    "offset": 0,
+                    "length": 92,
+                    "text": "Este ha sido un dia terrible, llegué tarde al trabajo debido a un accidente automobilistico."
+                }
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2020-04-01"
 }
 ```
 
@@ -352,7 +386,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 
 Met de Key Phrase Extraction-API worden sleuteltermen opgehaald uit een tekstdocument met behulp van de [methode Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). In het volgende voorbeeld worden sleuteltermen opgehaald voor zowel de Engelse als Spaanse documenten.
 
-1. Maak een nieuw Java-project in uw favoriete IDE (of een nieuwe map op uw bureau blad). Maak een klasse in de naam `GetKeyPhrases.java`.
+1. Maak een nieuw Java-project in uw favoriete IDE (of een nieuwe map op uw bureau blad). Maak een klasse in de naam `GetKeyPhrases.java` .
 1. Voeg de hieronder vermelde code toe aan uw klasse.
 1. Kopieer de Text Analytics sleutel en het eind punt naar de code. 
 1. Zorg ervoor dat de [Gson](https://github.com/google/gson) -bibliotheek is geïnstalleerd.
@@ -416,7 +450,7 @@ public class GetKeyPhrases {
         endpoint = "<paste-your-text-analytics-endpoint-here>";
     }
 
-    static String path = "/text/analytics/v2.1/keyPhrases";
+    static String path = "/text/analytics/v3.0/keyPhrases";
     
     public static String GetKeyPhrases (Documents documents) throws Exception {
         String text = new Gson().toJson(documents);
@@ -478,46 +512,50 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 
 ```json
 {
-   "documents": [
-      {
-         "keyPhrases": [
-            "HDR resolution",
-            "new XBox",
-            "clean look"
-         ],
-         "id": "1"
-      },
-      {
-         "keyPhrases": [
-            "Carlos",
-            "notificacion",
-            "algun problema",
-            "telefono movil"
-         ],
-         "id": "2"
-      },
-      {
-         "keyPhrases": [
-            "new hotel",
-            "Grand Hotel",
-            "review",
-            "center of Seattle",
-            "classiest decor",
-            "stars"
-         ],
-         "id": "3"
-      }
-   ],
-   "errors": [  ]
+    "documents": [
+        {
+            "id": "1",
+            "keyPhrases": [
+                "HDR resolution",
+                "new XBox",
+                "clean look"
+            ],
+            "warnings": []
+        },
+        {
+            "id": "2",
+            "keyPhrases": [
+                "Carlos",
+                "notificacion",
+                "algun problema",
+                "telefono movil"
+            ],
+            "warnings": []
+        },
+        {
+            "id": "3",
+            "keyPhrases": [
+                "new hotel",
+                "Grand Hotel",
+                "review",
+                "center of Seattle",
+                "classiest decor",
+                "stars"
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2019-10-01"
 }
 ```
 <a name="Entities"></a>
 
 ## <a name="identify-entities"></a>Entiteiten identificeren
 
-De Entities-API identificeert bekende entiteiten in een tekstdocument, met behulp van de [methode Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entiteiten](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) halen woorden op uit tekst, zoals ' Verenigde Staten ', en geven vervolgens het type en/of de Wikipedia-koppeling voor dit woord (en). Het type voor ' Verenigde Staten ' is `location`, terwijl de koppeling naar Wikipedia is `https://en.wikipedia.org/wiki/United_States`.  In het volgende voorbeeld worden entiteiten geïdentificeerd voor Engelse documenten.
+De Entities-API identificeert bekende entiteiten in een tekstdocument, met behulp van de [methode Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entiteiten](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) halen woorden op uit tekst, zoals ' Verenigde Staten ', en geven vervolgens het type en/of de Wikipedia-koppeling voor dit woord (en). Het type voor ' Verenigde Staten ' is `location` , terwijl de koppeling naar Wikipedia is `https://en.wikipedia.org/wiki/United_States` .  In het volgende voorbeeld worden entiteiten geïdentificeerd voor Engelse documenten.
 
-1. Maak een nieuw Java-project in uw favoriete IDE (of een nieuwe map op uw bureau blad). Maak een klasse met de naam `GetEntities.java`.
+1. Maak een nieuw Java-project in uw favoriete IDE (of een nieuwe map op uw bureau blad). Maak een klasse met de naam `GetEntities.java` .
 1. Voeg de hieronder vermelde code toe aan uw klasse.
 1. Kopieer de Text Analytics sleutel en het eind punt naar de code. 
 1. Zorg ervoor dat de [Gson](https://github.com/google/gson) -bibliotheek is geïnstalleerd.
@@ -581,7 +619,7 @@ public class GetEntities {
         endpoint = "<paste-your-text-analytics-endpoint-here>";
     }
 
-    static String path = "/text/analytics/v2.1/entities";
+    static String path = "/text/analytics/v3.0/entities/recognition/general";
     
     public static String GetEntities (Documents documents) throws Exception {
         String text = new Gson().toJson(documents);
@@ -640,47 +678,31 @@ public class GetEntities {
 Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien in het volgende voorbeeld:
 
 ```json
-{  
-   "documents":[  
-      {  
-         "id":"1",
-         "entities":[  
-            {  
-               "name":"Microsoft",
-               "matches":[  
-                  {  
-                     "wikipediaScore":0.20872054383103444,
-                     "entityTypeScore":0.99996185302734375,
-                     "text":"Microsoft",
-                     "offset":0,
-                     "length":9
-                  }
-               ],
-               "wikipediaLanguage":"en",
-               "wikipediaId":"Microsoft",
-               "wikipediaUrl":"https://en.wikipedia.org/wiki/Microsoft",
-               "bingId":"a093e9b9-90f5-a3d5-c4b8-5855e1b01f85",
-               "type":"Organization"
-            },
-            {  
-               "name":"Technology company",
-               "matches":[  
-                  {  
-                     "wikipediaScore":0.82123868042800585,
-                     "text":"It company",
-                     "offset":16,
-                     "length":10
-                  }
-               ],
-               "wikipediaLanguage":"en",
-               "wikipediaId":"Technology company",
-               "wikipediaUrl":"https://en.wikipedia.org/wiki/Technology_company",
-               "bingId":"bc30426e-22ae-7a35-f24b-454722a47d8f"
-            }
-         ]
-      }
-   ],
-    "errors":[]
+{
+    "documents": [
+        {
+            "id": "1",
+            "entities": [
+                {
+                    "text": "Microsoft",
+                    "category": "Organization",
+                    "offset": 0,
+                    "length": 9,
+                    "confidenceScore": 0.86
+                },
+                {
+                    "text": "IT",
+                    "category": "Skill",
+                    "offset": 16,
+                    "length": 2,
+                    "confidenceScore": 0.8
+                }
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2020-04-01"
 }
 ```
 

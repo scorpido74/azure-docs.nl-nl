@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: f663c9af8c352d0170c633fe76b3fbc5268aad1e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5dc0a7fc9797948e834b8b3cb802bb92fce0eb59
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399855"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610758"
 ---
 # <a name="about-the-speech-sdk"></a>Info over de Speech-SDK
 
@@ -37,7 +37,7 @@ Met [spraak naar tekst](speech-to-text.md) (ook wel *spraak herkenning*genoemd) 
 
 ### <a name="voice-assistants"></a>Spraakassistenten
 
-Met de spraak-SDK kunnen ontwikkel aars natuurlijke, menselijke-achtige gespreks interfaces maken voor hun toepassingen en ervaringen. De Voice Assistant-service biedt snelle, betrouw bare interactie tussen een apparaat en een assistent. De implementatie maakt gebruik van het direct lijn speech Channel van het bot-Framework of de geïntegreerde service voor het volt ooien van taken (preview). Daarnaast kunnen spraak assistenten worden gemaakt met behulp van de [aangepaste Voice Portal](https://aka.ms/customvoice) om een unieke spraak ervaring te creëren.
+[Met de spraak-](voice-assistants.md) SDK kunnen ontwikkel aars natuurlijke, menselijke-achtige gespreks interfaces maken voor hun toepassingen en ervaringen. De Voice Assistant-service biedt snelle, betrouw bare interactie tussen een apparaat en een assistent. De implementatie maakt gebruik van het direct lijn speech Channel van het bot-Framework of de geïntegreerde service voor het volt ooien van taken (preview). Daarnaast kunnen spraak assistenten aangepaste stemmen gebruiken die zijn gemaakt in de [aangepaste Voice Portal](https://aka.ms/customvoice) om een unieke spraak-uitvoer ervaring toe te voegen.
 
 #### <a name="keyword-spotting"></a>Tref woord herkennen
 
@@ -65,7 +65,7 @@ De Speech-SDK kan worden gebruikt voor het transcriberen van oproep centrum scen
 
 ### <a name="codec-compressed-audio-input"></a>Door codec gecomprimeerde audio-invoer
 
-Diverse spraak-SDK-programmeer talen ondersteunen codec gecomprimeerde audio-invoer stromen. Zie <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">gecomprimeerde audio-invoer indelingen <span class="docon docon-navigate-external x-hidden-focus"> </span>gebruiken </a>voor meer informatie.
+Diverse spraak-SDK-programmeer talen ondersteunen codec gecomprimeerde audio-invoer stromen. Zie <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">gecomprimeerde audio-invoer indelingen <span class="docon docon-navigate-external x-hidden-focus"></span> gebruiken </a>voor meer informatie.
 
 ## <a name="rest-api"></a>REST-API
 

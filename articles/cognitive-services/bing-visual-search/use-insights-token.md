@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
 ms.custom: tracking-python
-ms.openlocfilehash: ac704ff7213b08072debf9d56da10a74e8315c68
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 733eec452501a829d0162b91aca9ece191d68914
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607030"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611421"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Een Insights-token gebruiken om inzichten op te halen voor een installatie kopie
 
-Bing Visual Search-API retourneert informatie over een afbeelding die u opgeeft. U kunt de afbeelding opgeven door de URL van de afbeelding te gebruiken, een inzichttoken of door een afbeelding te uploaden. Zie [Wat is Bing Visual Search-API?](overview.md)voor meer informatie over deze opties. In dit artikel wordt gedemonstreerd hoe u een Insights-token gebruikt. Voor voor beelden van hoe u een afbeelding uploadt om inzicht te krijgen, raadpleegt u de Quick starts ([C#](quickstarts/csharp.md)  |  [Java](quickstarts/java.md)  |  [node. js](quickstarts/nodejs.md)  |  [python](quickstarts/python.md)).
+Bing Visual Search-API retourneert informatie over een afbeelding die u opgeeft. U kunt de afbeelding opgeven door de URL van de afbeelding te gebruiken, een inzichttoken of door een afbeelding te uploaden. Zie [Wat is Bing Visual Search-API?](overview.md)voor meer informatie over deze opties. In dit artikel wordt gedemonstreerd hoe u een Insights-token gebruikt. Zie Quick starts ([C#](quickstarts/csharp.md)  |  [Java](quickstarts/java.md)  |  [Node.js](quickstarts/nodejs.md)  |  [python](quickstarts/python.md)) voor voor beelden van hoe u een afbeelding uploadt om inzichten te verkrijgen.
 
 Als u Bing Visual Search een afbeeldings token of URL verzendt, worden de formulier gegevens weer gegeven die u moet gebruiken in de hoofd tekst van het bericht. De formulier gegevens moeten de `Content-Disposition` koptekst bevatten en u moet de `name` para meter instellen op ' knowledgeRequest '. Voor meer informatie over het `imageInfo` object raadpleegt u de aanvraag:
 
@@ -59,14 +59,15 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
-Zie [C#](#use-with-c)  |  [Java](#use-with-java)  |  [node. js](#use-with-nodejs)  |  [python](#use-with-python)voor voor beelden die gebruikmaken van het Insights-token.
+Zie [C#](#use-with-c)  |  [Java](#use-with-java)  |  [Node.js](#use-with-nodejs)  |  [python](#use-with-python)voor voor beelden die gebruikmaken van het Insights-token.
 
 ## <a name="use-with-c"></a>Gebruiken met C #
 
 ### <a name="c-prerequisites"></a>C#-vereisten
 
-- Een versie van [Visual Studio 2019](https://www.visualstudio.com/downloads/) voor het verkrijgen van deze code die wordt uitgevoerd in Windows.
-- Een Azure-abonnement. U kunt voor deze Quick Start een [gratis proef](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) abonnement of een betaalde abonnements sleutel gebruiken.
+* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
+* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" maakt u een Bing Search resource Maak "  target="_blank"> een Bing Search resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
+* Een versie van [Visual Studio 2019](https://www.visualstudio.com/downloads/) voor het verkrijgen van deze code die wordt uitgevoerd in Windows.
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
@@ -238,8 +239,10 @@ namespace VisualSearchInsightsToken
 
 ### <a name="java-prerequisites"></a>Java-vereisten
 
-- U moet [JDK 7 of 8](https://aka.ms/azure-jdks) gebruiken om deze code te compileren en uit te voeren. U kunt een Java IDE gebruiken als u een favoriet hebt, maar een tekst editor is voldoende.
-- U kunt voor deze Quick Start een [gratis proef](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) abonnement of een betaalde abonnements sleutel gebruiken.
+* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
+* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" maakt u een Bing Search resource Maak "  target="_blank"> een Bing Search resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
+* [JDK 7 of 8](https://aka.ms/azure-jdks) om deze code te compileren en uit te voeren. U kunt een Java IDE gebruiken als u een favoriet hebt, maar een tekst editor is voldoende.
+
 
 ## <a name="run-the-java-application"></a>De Java-toepassing uitvoeren
 
@@ -348,12 +351,13 @@ public class InsightsToken {
 }
 ```
 
-## <a name="use-with-nodejs"></a>Gebruiken met node. js
+## <a name="use-with-nodejs"></a>Gebruiken met Node.js
 
-### <a name="nodejs-prerequisites"></a>Vereisten voor node. js
+### <a name="nodejs-prerequisites"></a>Node.js vereisten
 
-- U moet [node. js 6](https://nodejs.org/en/download/) hebben om deze code uit te voeren.
-- U kunt voor deze Quick Start een [gratis proef](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) abonnement of een betaalde abonnements sleutel gebruiken.
+* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
+* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" maakt u een Bing Search resource Maak "  target="_blank"> een Bing Search resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
+* U moet [Node.js 6](https://nodejs.org/en/download/) hebben om deze code uit te voeren.
 
 ## <a name="run-the-javascript-application"></a>De Java script-toepassing uitvoeren
 
@@ -416,8 +420,9 @@ function requestCallback(err, res, body) {
 
 ### <a name="python-prerequisites"></a>Vereisten voor python
 
-- U moet [python 3](https://www.python.org/) hebben om deze code uit te voeren.
-- In deze Quick Start kunt u een abonnementssleutel van een [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) of een betaalde abonnementssleutel gebruiken.
+* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
+* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" maakt u een Bing Search resource Maak "  target="_blank"> een Bing Search resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
+* U moet [python 3](https://www.python.org/) hebben om deze code uit te voeren.
 
 ## <a name="run-the-python-application"></a>De python-toepassing uitvoeren
 
@@ -480,5 +485,4 @@ if __name__ == '__main__':
 [Een Visual Search Web-app met één pagina maken](tutorial-bing-visual-search-single-page-app.md)  
 [Wat is Bing Visual Search-API?](overview.md)  
 [Cognitive Services proberen](https://aka.ms/bingvisualsearchtryforfree)  
-[Een toegangscode voor een gratis proefversie aanvragen](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
 [Afbeeldingen-Visual Search](https://aka.ms/bingvisualsearchreferencedoc)
