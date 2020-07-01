@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 241d91a8c8670c32461684ed964b6fc0fd7c1672
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8885f66b3501217ead302486d2e5ef7de63f5f47
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206407"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563259"
 ---
 # <a name="what-is-form-recognizer"></a>Wat is Form Recognizer?
 
@@ -81,7 +81,7 @@ U gebruikt de volgende Api's om modellen te trainen en gestructureerde gegevens 
 | **Toename analyseren** |Analyseer één ontvangst document voor het extra heren van belang rijke informatie en andere ontvangst tekst.|
 | **Indeling analyseren** |Analyseer de indeling van een formulier om tekst-en tabel structuur op te halen.|
 
-Bekijk de [rest API referentie documentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm) voor meer informatie. Als u bekend bent met een eerdere versie van de API, raadpleegt u het artikel [Wat is er nieuw](./whats-new.md) ? voor meer informatie over recente wijzigingen.
+Bekijk de [rest API referentie documentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) voor meer informatie. Als u bekend bent met een eerdere versie van de API, raadpleegt u het artikel [Wat is er nieuw](./whats-new.md) ? voor meer informatie over recente wijzigingen.
 
 ## <a name="input-requirements"></a>Invoer vereisten
 ### <a name="custom-model"></a>Aangepast model
@@ -104,4 +104,4 @@ Net als bij alle cognitieve services moeten ontwikkel aars die gebruikmaken van 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voer een [Snelstartgids](quickstarts/curl-train-extract.md) uit om aan de slag te gaan met de [API voor formulier herkenning](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm).
+Voer een [Snelstartgids](quickstarts/curl-train-extract.md) uit om aan de slag te gaan met de [API voor formulier herkenning](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm).

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 06/29/2020
 ms.author: swmachan
-ms.openlocfilehash: 100084a244944bcaf0d566e347d56dd4a03ecfae
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: d9fda476a184731cd00317facbeceaf7bdf55edf
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995782"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85561464"
 ---
 # <a name="request-limits-for-translator"></a>Aanvraag limieten voor Translator
 
@@ -29,8 +29,8 @@ De volgende tabel bevat een overzicht van matrix elementen en teken limieten voo
 
 | Bewerking | Maximale grootte van matrix element |    Maximum aantal matrix elementen |    Maximale aanvraag grootte (tekens) |
 |:----|:----|:----|:----|
-| Vertalen | 5.000    | 100    | 5.000 |
-| Transcriberen | 5.000    | 10    | 5.000 |
+| Vertalen | 5\.000    | 100    | 5\.000 |
+| Transcriberen | 5\.000    | 10    | 5\.000 |
 | Detecteren | 10.000 |    100 |    50,000 |
 | BreakSentence | 10.000    | 100 |    50,000 |
 | Opzoeken in woordenlijst| 100 |    10    | 1000 |
@@ -66,14 +66,13 @@ Wanneer u de functie [BreakSentence](https://docs.microsoft.com/azure/cognitive-
 
 | Taal | Code | Teken limiet |
 |----------|------|-----------------|
-| Chinees | zh | 132 |
-| Duits | de | 290 |
-| Italiaans | it | 280 |
-| Japans | ja | 150 |
-| Portugees | pt | 290 |
-| Spaans | Ja | 280 |
-| Italiaans | it | 280 |
-| Thai | e | 258 |
+| Chinees | zh | 166 |
+| Duits | de | 800 |
+| Italiaans | it | 800 |
+| Japans | ja | 166 |
+| Portugees | pt | 800 |
+| Spaans | Ja | 800 |
+| Thai | e | 180 |
 
 > [!NOTE]
 > Deze limiet is niet van toepassing op vertalingen.

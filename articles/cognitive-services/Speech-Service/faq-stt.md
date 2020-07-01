@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: a279aebdd19ebd3a41ddad0c1c279937e00838c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c572c03936a809ce2f5ccb0071352d6c84c2ee90
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77168463"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85561575"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Veelgestelde vragen over spraak naar tekst
 
@@ -100,7 +100,7 @@ We hebben de volgende informatie nodig om de gelijktijdigheid voor een ***aangep
   - aanmelden (indien nodig)
   - Selecteer uw project en implementatie,
   - Selecteer het eind punt waarvoor u de gelijktijdigheids toename wilt verhogen,
-  - Kopieer de `Endpoint ID`.
+  - Kopieer de `Endpoint ID` .
 
 We hebben de volgende informatie nodig om de gelijktijdigheid van een ***basis model***te verg Roten:
 
@@ -117,7 +117,10 @@ of
   - Selecteer `Cognitive Services` in het zoekvak,
   - Kies in de weer gegeven Services de spraak service waarvoor u de gelijktijdigheid wilt verhogen,
   - de `Properties` voor deze service weer geven
-  - Kopieer de volledige `Resource ID`.
+  - Kopieer de volledige `Resource ID` .
+  
+>[!NOTE]
+>Voor [containers](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-container-howto) zijn geen verhogingen van gelijktijdigheids limieten vereist, omdat containers alleen worden beperkt door de cpu's van de hardware waarop ze worden gehost.
 
 ## <a name="importing-data"></a>Gegevens importeren
 

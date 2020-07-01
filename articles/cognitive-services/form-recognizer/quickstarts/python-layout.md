@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: 61402a851ddac1cc279c51a59e48bed7949da273
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: c84e36f668a9b5cd7fdb61103300d971fdf6c0fa
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85412852"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563077"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Snelstartgids: tekst-en indelings informatie extra heren met behulp van de formulier Recognizer REST API met python
 
@@ -39,7 +39,7 @@ Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
 
 ## <a name="analyze-the-form-layout"></a>De indeling van het formulier analyseren
 
-Om te beginnen met het analyseren van de lay-out roept u de **[indelings](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeLayoutAsync)** -API analyseren op met het python-script hieronder. Voordat u het script uitvoert, moet u de volgende wijzigingen aanbrengen:
+Om te beginnen met het analyseren van de lay-out roept u de **[indelings](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** -API analyseren op met het python-script hieronder. Voordat u het script uitvoert, moet u de volgende wijzigingen aanbrengen:
 
 1. Vervang door `<Endpoint>` het eind punt dat u hebt verkregen met het formulier Recognizer-abonnement.
 1. Vervang door `<path to your form>` het pad naar het lokale formulier document.
@@ -283,4 +283,4 @@ Bekijk de volgende factuur afbeelding en de bijbehorende JSON-uitvoer. De uitvoe
 In deze Quick Start hebt u de formulier Recognizer REST API met python gebruikt om de tekst indeling van een factuur uit te pakken. Raadpleeg vervolgens de referentie documentatie om de API voor het formulier Recognizer te verkennen.
 
 > [!div class="nextstepaction"]
-> [Documentatie over REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeLayoutAsync)
+> [Documentatie over REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)

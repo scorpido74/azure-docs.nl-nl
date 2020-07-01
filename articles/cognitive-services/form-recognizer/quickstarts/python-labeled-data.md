@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: 12af4c57fd906d687eedfe7c865d36abaa0da18e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d9bb6ef7629d236120660912daaad82ad18b8480
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209144"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563105"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Een model voor het herkennen van een formulier met labels trainen met behulp van REST API en python
 
@@ -65,8 +65,8 @@ Al deze bestanden moeten dezelfde submap innemen en de volgende indeling hebben:
 
 U hebt OCR-resultaten bestanden nodig om de service te laten nadenken over de bijbehorende invoer bestanden voor gelabelde training. Volg de onderstaande stappen om OCR-resultaten voor een bepaald bron formulier te verkrijgen:
 
-1. Roep de **[indelings](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeLayoutAsync)** -API voor analyse op de container Lees indeling aan met het invoer bestand als onderdeel van de hoofd tekst van de aanvraag. Sla de ID op die is gevonden in de koptekst van de **bewerkings locatie** van de reactie.
-1. Roep de resultaat-API voor het analyseren van de **[indeling ophalen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/GetAnalyzeLayoutResult)** aan met behulp van de bewerkings-id uit de vorige stap.
+1. Roep de **[indelings](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** -API voor analyse op de container Lees indeling aan met het invoer bestand als onderdeel van de hoofd tekst van de aanvraag. Sla de ID op die is gevonden in de koptekst van de **bewerkings locatie** van de reactie.
+1. Roep de resultaat-API voor het analyseren van de **[indeling ophalen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** aan met behulp van de bewerkings-id uit de vorige stap.
 1. Haal het antwoord op en schrijf de inhoud naar een bestand. Voor elk bron formulier moet aan het bijbehorende OCR-bestand de oorspronkelijke bestands naam worden toegevoegd `.ocr.json` . De OCR JSON-uitvoer moet de volgende indeling hebben. Zie het [OCR-voorbeeld bestand](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) voor een volledig voor beeld. 
 
     ```json
@@ -197,7 +197,7 @@ Voor elk bron formulier moet de oorspronkelijke bestands naam worden toegevoegd 
 
 ## <a name="train-a-model-using-labeled-data"></a>Een model trainen met behulp van gelabelde gegevens
 
-Als u een model met gelabelde gegevens wilt trainen, roept u de API voor het **[trainen van aangepaste modellen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync)** aan door de volgende python-code uit te voeren. Voordat u de code uitvoert, moet u de volgende wijzigingen aanbrengen:
+Als u een model met gelabelde gegevens wilt trainen, roept u de API voor het **[trainen van aangepaste modellen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** aan door de volgende python-code uit te voeren. Voordat u de code uitvoert, moet u de volgende wijzigingen aanbrengen:
 
 1. Vervang door `<Endpoint>` de URL van het eind punt voor de resource voor uw formulier herkenning.
 1. Vervang door `<SAS URL>` de URL voor Shared Access Signature (SAS) van de Azure Blob Storage-container. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Zorg ervoor dat de machtigingen **lezen** en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
@@ -561,4 +561,4 @@ We begrijpen dat dit scenario essentieel is voor onze klanten en we werken eraan
 In deze Quick Start hebt u geleerd hoe u de formulier Recognizer REST API met python kunt gebruiken om een model te trainen met hand matig gelabelde gegevens. Bekijk vervolgens de API-referentie documentatie om de formulier Recognizer API te verkennen.
 
 > [!div class="nextstepaction"]
-> [Documentatie over REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm)
+> [Documentatie over REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)

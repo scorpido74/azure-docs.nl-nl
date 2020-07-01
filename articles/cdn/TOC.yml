@@ -13,6 +13,7 @@
     - name: Een profiel en eindpunt maken
       href: cdn-create-new-endpoint.md
     - name: Profiel en eindpunt maken - Azure Resource Manager-sjabloon
+      displayName: Resource Manager
       href: create-profile-endpoint-template.md
 - name: Zelfstudies
   items:

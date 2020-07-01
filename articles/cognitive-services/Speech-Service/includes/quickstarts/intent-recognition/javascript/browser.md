@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: dapine
-ms.openlocfilehash: 4ebd0b7b02036ca9aed6848ee261d32245ba4973
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 904144b044a0a0223d4807372407b5ce0b9f127b
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82979656"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85570149"
 ---
 ## <a name="start-with-some-boilerplate-code"></a>Begin met een van de standaard code
 
@@ -159,7 +159,7 @@ Voordat u een object kunt initialiseren `SpeechRecognizer` , moet u een configur
 
 ## <a name="create-an-audio-configuration"></a>Een audio configuratie maken
 
-Nu moet u een `AudioConfig` object maken dat verwijst naar uw invoer devic3. Voeg deze code toe in de `startIntentRecognizeAsyncButton.addEventListener()` -methode, rechts onder uw spraak configuratie.
+Nu moet u een `AudioConfig` object maken dat verwijst naar het invoer apparaat. Voeg deze code toe in de `startIntentRecognizeAsyncButton.addEventListener()` -methode, rechts onder uw spraak configuratie.
 
 ```JavaScript
         var audioConfig = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
