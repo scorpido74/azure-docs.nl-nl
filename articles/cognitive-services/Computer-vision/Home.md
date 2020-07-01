@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 90c2068021f1e9a173f37bdf1098edda10ab3d8d
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: cfd8dd7474cf7926ef2230e6be53a967a97645db
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413464"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554403"
 ---
 # <a name="what-is-computer-vision"></a>Wat is Computer Vision?
 
@@ -48,11 +48,9 @@ U kunt afbeeldingen analyseren om inzicht te krijgen in de visuele functies en k
 |**[Een miniatuur genereren](concept-generating-thumbnails.md)**|Analyseer de inhoud van een afbeelding om een geschikte miniatuur voor deze afbeelding te genereren. Computer Vision genereert eerst een miniatuur van hoge kwaliteit, waarna de objecten in de afbeelding worden geanalyseerd om het *interessegebied* te bepalen. Computer Vision past de afbeelding vervolgens aan de vereisten van het interessegebied aan. De gegenereerde miniatuur kan worden weergegeven met een andere hoogte-breedteverhouding dan wordt gebruikt in de oorspronkelijke afbeelding, afhankelijk van uw behoeften.|
 |**[Interessegebied ophalen](concept-generating-thumbnails.md#area-of-interest)**|Analyseer de inhoud van een afbeelding om de coördinaten van het *interessegebied* te retourneren. In plaats van de afbeelding te bijsnijden en een miniatuur te genereren, Computer Vision de coördinaten van het selectie kader van de regio als resultaat gegeven, zodat de aanroepende toepassing de oorspronkelijke afbeelding kan wijzigen naar wens.|
 
-## <a name="extract-text-from-images"></a>Extraheren van tekst uit afbeeldingen
+## <a name="detect-text-from-images"></a>Tekst van afbeeldingen detecteren
 
-U kunt de Computer Vision [Lees](concept-recognizing-text.md#read-api) -API gebruiken om gedrukte en handgeschreven tekst uit afbeeldingen te extra heren in een door een machine Lees bare teken stroom. De Lees-API maakt gebruik van de nieuwste modellen en werkt met tekst op verschillende Opper vlakken en achtergronden, zoals bevestigingen, posters, visite kaartjes, brieven en White boards. Het werkt op dit moment voor zeven verschillende talen (Zie [taal ondersteuning](./language-support.md)).
-
-U kunt ook de [OCR-API (Optical Character Recognition)](concept-recognizing-text.md) gebruiken om gedrukte tekst in verschillende talen te extra heren. Via OCR wordt zo nodig de draaiing van de herkende tekst gecorrigeerd en worden de framecoördinaten van elk woord weergegeven. OCR ondersteunt 25 talen en detecteert automatisch de taal van de herkende tekst.
+U kunt de API voor Computer Vision [tekst detectie-api's](concept-recognizing-text.md) gebruiken om gedrukte en handgeschreven tekst uit afbeeldingen te extra heren in een door een machine Lees bare teken stroom. De Lees-API maakt gebruik van de nieuwste modellen en werkt met tekst op verschillende Opper vlakken en achtergronden, zoals bevestigingen, posters, visite kaartjes, brieven en White boards. De twee tekst detectie-Api's bieden ondersteuning voor het extra heren van gedrukte tekst in [verschillende talen](./language-support.md).
 
 ## <a name="moderate-content-in-images"></a>Beheren van inhoud in afbeeldingen
 

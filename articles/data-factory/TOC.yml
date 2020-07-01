@@ -26,7 +26,7 @@
     - name: Een data factory maken - Resource Manager-sjabloon
       href: quickstart-create-data-factory-resource-manager-template.md
     - name: Beveiliging - Door de klant beheerde sleutelversleuteling inschakelen
-      href: quickstart-enable-customer-managed-key.md
+      href: enable-customer-managed-key.md
     - name: Gegevensstroom maken
       href: data-flow-create.md
 - name: Zelfstudies
@@ -576,7 +576,7 @@
         - name: Beheerde identiteit voor Data Factory
           href: data-factory-service-identity.md
         - name: Door de klant beheerde sleutelversleuteling
-          href: quickstart-enable-customer-managed-key.md
+          href: enable-customer-managed-key.md
     - name: Controleren en beheren
       items:
         - name: Visueel bewaken
