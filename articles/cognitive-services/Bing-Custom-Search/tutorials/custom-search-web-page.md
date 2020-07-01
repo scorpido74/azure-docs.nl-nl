@@ -10,16 +10,16 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: c7b41f77f8eb57c39489f1e5a69b0ac1c3c9c7d4
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 588751c178205ceb21617f8d9271bfa9ed76193d
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943914"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603346"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Zelfstudie: Een webpagina voor aangepaste zoekopdrachten maken
 
-Met Bing Aangepaste zoekopdrachten kunt u op maat gemaakte zoekervaringen maken voor onderwerpen die u interesseren. Als u bijvoorbeeld een website over martial arts hebt die een zoekervaring biedt, kunt u de domeinen, subsites en webpagina's opgeven waarin Bing moet zoeken. Uw gebruikers zien dan zoekresultaten die zijn afgestemd op de inhoud die ze interessant vinden in plaats van dat ze door pagina's met algemene zoekresultaten moeten bladeren die mogelijk niet-relevante inhoud bevatten. 
+Met Bing Aangepaste zoekopdrachten kunt u op maat gemaakte zoekervaringen maken voor onderwerpen die u interesseren. Als u bijvoorbeeld een gevechts kunst-website hebt die een zoek ervaring biedt, kunt u de domeinen, subsites en webpagina's opgeven waarnaar Bing zoekt. Uw gebruikers zien dan zoekresultaten die zijn afgestemd op de inhoud die ze interessant vinden in plaats van dat ze door pagina's met algemene zoekresultaten moeten bladeren die mogelijk niet-relevante inhoud bevatten. 
 
 Deze zelfstudie laat zien hoe u een exemplaar voor aangepaste zoekopdrachten maakt en integreert met een nieuwe webpagina.
 
@@ -34,7 +34,7 @@ De behandelde taken zijn:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u deze zelfstudie wilt volgen, hebt u een abonnementssleutel nodig voor de Bing Aangepaste zoekopdrachten-API.  Als u een sleutel wilt ophalen, [maakt u een Bing aangepaste zoekopdrachten resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) in de Azure Portal. u kunt ook een [proef sleutel](https://azure.microsoft.com/try/cognitive-services)gebruiken.
+- Als u deze zelfstudie wilt volgen, hebt u een abonnementssleutel nodig voor de Bing Aangepaste zoekopdrachten-API.  Als u een sleutel wilt ophalen, [maakt u een Bing aangepaste zoekopdrachten resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) in de Azure Portal.
 - Als u Visual Studio 2017 of hoger nog niet hebt geïnstalleerd, kunt u de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken.
 
 ## <a name="create-a-custom-search-instance"></a>Een exemplaar voor aangepaste zoekopdrachten maken
@@ -79,7 +79,7 @@ Als u resultaten van bepaalde websites of URL's wilt uitsluiten, voegt u deze to
 
 ## <a name="add-pinned-entries"></a>Vastgemaakte vermeldingen toevoegen
 
-Als u een specifieke webpagina wilt vastmaken aan de bovenkant van de zoek resultaten, voegt u de webpagina en de query term toe aan het tabblad **vastgemaakt** . Het tabblad **vastgemaakte** bevat een lijst met de webpagina-en query term paren waarmee de webpagina wordt opgegeven die als het beste resultaat voor een specifieke query wordt weer gegeven. De webpagina wordt alleen vastgemaakt als de query reeks van de gebruiker overeenkomt met de query reeks van de pincode op basis van de voor waarde van de pincode. In zoekopdrachten worden alleen geïndexeerde webpagina's weergegeven. Zie [Uw aangepaste weergave definiëren](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results) voor meer informatie.
+Als u een specifieke webpagina wilt vastmaken aan de bovenkant van de zoek resultaten, voegt u de webpagina en de query term toe aan het tabblad **vastgemaakt** . Het tabblad **vastgemaakte** bevat een lijst met de webpagina-en query term paren waarmee de webpagina wordt opgegeven die als het beste resultaat voor een specifieke query wordt weer gegeven. De webpagina wordt alleen vastgemaakt als de query reeks van de gebruiker overeenkomt met de query reeks van de pincode op basis van de voor waarde van de pincode. In zoekopdrachten worden alleen geïndexeerde webpagina's weergegeven. Zie [uw aangepaste weer gave definiëren](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results)voor meer informatie.
 
 1. Klik op de pagina **Configuration** op het tabblad **Pinned** en voer de webpagina en zoekterm in van de webpagina die u als het bovenste resultaat in de lijst wilt weergeven.  
   
@@ -116,7 +116,7 @@ Custom Search biedt een gehoste gebruikersinterface voor het weergeven van het J
 
    ![Schermafbeelding van het opgeven van geavanceerde configuraties voor de gehoste gebruikersinterface](./media/custom-search-hosted-ui-advanced-configurations.png)  
   
-5. Selecteer uw abonnementssleutels in de vervolgkeuzelijsten. U kunt de abonnementssleutel ook handmatig invoeren. Zie [Cognitive Services uitproberen](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api) voor informatie over het opvragen van sleutels.  
+5. Selecteer uw abonnementssleutels in de vervolgkeuzelijsten. U kunt de abonnementssleutel ook handmatig invoeren.
   
    ![Schermafbeelding van het opgeven van aanvullende configuraties voor de gehoste gebruikersinterface](./media/custom-search-hosted-ui-subscription-key.png)
 
@@ -130,7 +130,7 @@ Er zijn twee manieren om de gehoste-gebruikersinterface te gebruiken.
 - Optie 1: het opgegeven JavaScript-fragment integreren in uw toepassing.
 - Optie 2: het opgegeven HTML-eindpunt gebruiken.
 
-In de rest van deze zelfstudie wordt de **optie met het Javascript-fragment toegelicht**.  
+In de rest van deze zelf studie ziet u **optie 1: Java script**-code fragment.  
 
 ## <a name="set-up-your-visual-studio-solution"></a>Uw Visual Studio-oplossing instellen
 

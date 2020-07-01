@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 5d1b0b19523eb37aa83aa59b24114be9f76ffa55
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d459222327ef3535202e82f640f5b513f0426d54
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68882781"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85609466"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>Analyses toevoegen aan de Bing Zoeken-API's
 
 Bing-statistieken bieden analyses voor de Bing Zoeken-API's. Deze analyse omvat het aanroep volume, de belangrijkste query reeksen, geografische distributie en nog veel meer. U kunt de Bing-statistieken in de [Azure Portal](https://ms.portal.azure.com) inschakelen door te navigeren naar uw Azure-resource en op **Bing-statistieken inschakelen**te klikken.
 
 > [!IMPORTANT]
-> * Bing-statistieken zijn niet beschikbaar met gratis proef abonnementen of resources in de gratis `F0` prijs categorie.
+> * Bing-statistieken zijn niet beschikbaar voor resources in de `F0` prijs categorie gratis.
 > * U mag geen gegevens gebruiken die beschikbaar zijn via het Bing statistieken-dash board om toepassingen te maken voor distributie aan derden.
 > * Als u de Bing-statistieken inschakelt, wordt uw abonnements rente enigszins verhoogd. Zie de [prijzen](https://aka.ms/bingstatisticspricing) voor meer informatie.
 
@@ -86,7 +86,7 @@ Hieronder vindt u mogelijke metrische gegevens en eindpunt beperkingen.
   > [!NOTE]  
   > Sommige query termen kunnen worden onderdrukt om vertrouwelijke informatie, zoals e-mail berichten, telefoon nummers, SSN enz., te verwijderen.
 
-- **Geografische distributie**: de markten waar de zoek resultaten afkomstig zijn. Bijvoorbeeld `en-us` (engels, Verenigde Staten). Bing gebruikt de `mkt` query parameter om de markt te bepalen, indien opgegeven. Anders gebruikt Bing signalen zoals het IP-adres van de beller om de markt te bepalen.
+- **Geografische distributie**: de markten waar de zoek resultaten afkomstig zijn. Bijvoorbeeld `en-us` (Engels, Verenigde Staten). Bing gebruikt de `mkt` query parameter om de markt te bepalen, indien opgegeven. Anders gebruikt Bing signalen zoals het IP-adres van de beller om de markt te bepalen.
 
 - De **code verdeling**van de reactie: de HTTP-status codes van alle aanroepen tijdens de rapportage periode.
 
@@ -94,7 +94,7 @@ Hieronder vindt u mogelijke metrische gegevens en eindpunt beperkingen.
 
 - **Distributie van veilige Zoek opdrachten**: de distributie van veilige Zoek waarden. Bijvoorbeeld uit, gemiddeld of strikt. De `safeSearch` query parameter bevat de waarde, indien opgegeven. Anders wordt de waarde standaard ingesteld op gemiddeld.  
 
-- **Antwoorden aangevraagde distributie**: de webzoekopdrachten API-antwoorden die u `responseFilter` hebt aangevraagd in de query parameter.  
+- **Antwoorden aangevraagde distributie**: de webzoekopdrachten API-antwoorden die u hebt aangevraagd in de `responseFilter` query parameter.  
 
 - **Antwoorden geretourneerde distributie**: de antwoorden die webzoekopdrachten API geretourneerd in het antwoord.
 

@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: f692367ad431dc8f1623e1b3d5109c313e351934
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 085bfd51ae6eabfc26201897a124a6272e0221fa
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943880"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603584"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Zelfstudie: Een app van één pagina maken met de Bing Webzoekopdrachten-API
 
@@ -30,15 +30,16 @@ Met deze voorbeeld-app kunt u:
 > * Abonnementssleutels beheren
 > * Fouten verwerken
 
-Voor het gebruik van deze app is een [Azure Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met Bing Zoeken-API's vereist. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) gebruiken om een abonnementssleutel op te halen.
+Voor het gebruik van deze app is een [Azure Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met Bing Zoeken-API's vereist.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Hier zijn een aantal zaken die u nodig hebt om de app uit te voeren:
 
+* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
+* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" maakt u een Bing Search resource Maak "  target="_blank"> een Bing Search resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
+
 * Node.js 8 of later
-* Een abonnements sleutel voor de Bing Search-API. Als u er nog geen hebt, [maakt u een Bing Search V7-resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). U kunt ook een [proef sleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)gebruiken.
-## <a name="get-the-source-code-and-install-dependencies"></a>De broncode ophalen en afhankelijkheden installeren
 
 De eerste stap bestaat uit het klonen van de opslagplaats met de broncode van de voorbeeld-app.
 
@@ -127,7 +128,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-`SafeSearch` kan worden ingesteld op `strict`, `moderate` of `off`, waarbij `moderate` de standaardinstelling voor Bing Web Search is. Dit formulier gebruikt een selectie vakje met twee statussen: `strict` of `moderate`.
+`SafeSearch` kan worden ingesteld op `strict`, `moderate` of `off`, waarbij `moderate` de standaardinstelling voor Bing Web Search is. Dit formulier gebruikt een selectie vakje met twee statussen: `strict` of `moderate` .
 
 Als een van de **Promoten**-selectievakjes is geselecteerd, wordt de `answerCount`-parameter toegevoegd aan de query. `answerCount` is vereist wanneer u de `promote`-parameter gebruikt. In dit fragment is de waarde ingesteld op `9` zodat alle beschikbare resultaattypen worden geretourneerd.
 > [!NOTE]

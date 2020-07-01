@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: een webzoekopdracht uitvoeren met behulp van node. js-Bing Web Search REST API'
+title: 'Quick Start: een webzoekopdracht uitvoeren met Node.js-Bing Web Search REST API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om aanvragen naar de REST API van Bing Web Search te verzenden via Node.js en een JSON-antwoord te ontvangen
 services: cognitive-services
@@ -11,29 +11,29 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4a96f31588e199d5696e2d9eff351051d46c1f96
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 872a90a0b4f5b348e45b04998067f9e97a3ae987
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873966"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611319"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Quick Start: zoeken op internet met behulp van de Bing Web Search REST API en node. js
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Quick Start: zoeken op internet met behulp van de Bing Web Search REST API en Node.js
 
-Gebruik deze Quick Start om uw eerste oproep naar de Bing Webzoekopdrachten-API te maken. Met deze node. js-toepassing wordt een zoek opdracht naar de API verzonden en wordt het JSON-antwoord weer gegeven. Hoewel deze toepassing wordt geschreven in Java script, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
+Gebruik deze Quick Start om uw eerste oproep naar de Bing Webzoekopdrachten-API te maken. Met deze Node.js toepassing wordt een zoek opdracht naar de API verzonden en wordt het JSON-antwoord weer gegeven. Hoewel deze toepassing wordt geschreven in Java script, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u verdergaat met deze snelstart moet u beschikken over:
 
-* [Node. js 6](https://nodejs.org/en/download/) of hoger
+* [Node.js 6](https://nodejs.org/en/download/) of hoger
 * Een abonnementssleutel
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-declare-required-modules"></a>Een project maken en de vereiste modules declareren
 
-Maak een nieuw Node.js-project in uw favoriete IDE of editor. Kopieer vervolgens het volgende code fragment naar uw project in een bestand met de naam Search. js:
+Maak een nieuw Node.js-project in uw favoriete IDE of editor. Kopieer vervolgens het volgende code fragment naar uw project in een bestand met de naam search.js:
 
 ```javascript
 // Use this simple app to query the Bing Web Search API and get a JSON response.
@@ -43,7 +43,7 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>Abonnementssleutel instellen
 
-In dit code fragment wordt de `AZURE_SUBSCRIPTION_KEY` omgevings variabele gebruikt voor het opslaan van uw abonnements sleutel. Dit is een goede gewoonte om te voor komen dat uw sleutels per ongeluk worden blootgesteld tijdens het implementeren van code. Zie [uw api's](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7)om uw abonnements sleutel op te zoeken.
+In dit code fragment wordt de `AZURE_SUBSCRIPTION_KEY` omgevings variabele gebruikt voor het opslaan van uw abonnements sleutel. Dit is een goede gewoonte om te voor komen dat uw sleutels per ongeluk worden blootgesteld tijdens het implementeren van code.
 
 Als u niet bekend bent met het gebruik van omgevings variabelen of als u deze app zo snel mogelijk wilt uitvoeren, moet u `process.env['AZURE_SUBSCRIPTION_KEY']` de sleutel van uw abonnement vervangen als een teken reeks.
 

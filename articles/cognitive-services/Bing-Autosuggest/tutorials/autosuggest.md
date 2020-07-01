@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: 10e25338ab6960addeebcc224d0a6633df451964
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 04f4c91ece77f7476cbe3bb27236ecdc2b5c60e7
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943150"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603159"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Zelf studie: Zoek suggesties op een webpagina ophalen
 
@@ -29,7 +29,7 @@ In deze handleiding ontdekt u hoe u:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze zelfstudie wilt volgen, hebt u een abonnementssleutel nodig voor de Automatische suggestie-API voor Bing. Als u er nog geen hebt, [maakt u een Bing automatische suggesties-resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7) in de Azure Portal. U kunt ook een [proef sleutel](https://azure.microsoft.com/try/cognitive-services/)gebruiken.
+Als u deze zelfstudie wilt volgen, hebt u een abonnementssleutel nodig voor de Automatische suggestie-API voor Bing. Als u er nog geen hebt, [maakt u een Bing automatische suggesties-resource](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7) in de Azure Portal.
 
 ## <a name="create-a-new-web-page"></a>Een nieuwe webpagina maken
 

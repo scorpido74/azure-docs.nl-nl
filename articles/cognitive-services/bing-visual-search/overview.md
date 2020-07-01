@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 52e3e65fb4f42530373decca547674a28a60f759
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 14acebb71538dddfd2421fbb27794f456b6c9c8f
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446659"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611506"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Wat is Bing Visual Search-API?
 
@@ -26,7 +26,7 @@ Als u de [Bing afbeeldingen zoeken-API](../bing-image-search/overview.md)gebruik
 > [!IMPORTANT]
 > Als u afbeeldingsinzichten ophaalt met behulp van Bing Afbeeldingen zoeken-API, kunt u overwegen om over te schakelen naar Bing Visual Search-API, omdat deze uitgebreidere inzichten biedt.
 
-## <a name="insights"></a>Insights
+## <a name="insights"></a>Inzichten
 
 U kunt de volgende inzichten vinden met behulp van Bing Visual Search:
 
@@ -48,7 +48,7 @@ Bing Visual Search resultaten bevatten ook selectie kaders voor regio's die van 
 
 Bing Visual Search-API is een RESTful-webservice die eenvoudig kan worden aangeroepen vanuit elke programmeertaal waarmee HTTP-aanvragen kunnen worden gedaan en JSON kan worden geparseerd. U kunt de REST API of de SDK voor de service gebruiken.
 
-1. Maak een [Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om toegang te krijgen tot de Bing zoeken-API's. Als u geen Azure-abonnement hebt, kunt u [gratis een account maken](https://azure.microsoft.com/free/). Nadat u een gratis proef versie hebt geactiveerd, kunt u uw abonnements sleutel ophalen uit de [Azure Portal](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) na het maken van uw account of [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis) .
+1. Maak een [Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om toegang te krijgen tot de Bing zoeken-API's. Als u geen Azure-abonnement hebt, kunt u [gratis een account maken](https://azure.microsoft.com/free/cognitive-services/).
 2. Een aanvraag verzenden naar de API met een geldige Zoek query.
 3. Verwerk de API-reactie door het geretourneerde JSON-bericht te parseren.
 
@@ -57,7 +57,7 @@ Bing Visual Search-API is een RESTful-webservice die eenvoudig kan worden aanger
 Probeer eerst de [interactieve demo](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/)van Bing Visual Search-API.
 De demo laat zien hoe u snel een zoek opdracht kunt aanpassen en op op het web voor installatie kopieën.
 
-Als u snel aan de slag wilt met uw eerste aanvraag, raadpleegt u Quick starts: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node. js](quickstarts/nodejs.md) | [python](quickstarts/python.md).
+Als u snel aan de slag wilt met uw eerste aanvraag, raadpleegt u Quick starts: [C#](quickstarts/csharp.md)  |  [Java](quickstarts/java.md)  |  [node.js](quickstarts/nodejs.md)  |  [python](quickstarts/python.md).
 
 ## <a name="see-also"></a>Zie ook
 

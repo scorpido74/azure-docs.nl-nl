@@ -12,12 +12,12 @@ ms.date: 04/14/2020
 ms.author: trbye
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 2bba1536c9d0990eb771f62d27b852ae1eb3b45c
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: ddcfeaad70e6552f94f9c87b6e9cf24ed15bfba8
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84604612"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611460"
 ---
 # <a name="learn-the-basics-of-speech-synthesis"></a>Meer informatie over de basis beginselen van spraak synthese
 
@@ -29,8 +29,8 @@ In dit artikel leert u veelvoorkomende ontwerp patronen voor het uitvoeren van t
 * Neural stemmen gebruiken
 
 > [!TIP]
-> Als u een van onze Quick starts nog niet hebt kunnen volt ooien, raden we u aan om de banden te starten en de spraak herkenning zelf uit te proberen.
-> * [Spraak herkennen met een microfoon](quickstarts/text-to-speech.md)
+> Als u een van onze Quick starts nog niet hebt kunnen volt ooien, raden we u aan om de banden te starten en tekst naar spraak voor uzelf te sturen.
+> * [Spraaksynthese naar een luidspreker](quickstarts/text-to-speech.md)
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-csharp.md)]

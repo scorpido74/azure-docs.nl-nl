@@ -3,12 +3,12 @@ title: Bronnen voor ontwikkel aars-Language Understanding
 description: Sdk's, REST Api's, CLI, helpen u bij het ontwikkelen van Language Understanding-apps (LUIS) in uw programmeer taal. Beheer uw Azure-resources en LUIS-voor spellingen.
 ms.topic: reference
 ms.date: 05/19/2020
-ms.openlocfilehash: c712a81e5b786ac980a0c48d358fef4caf2e7597
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 27212f30c90abb20e7ded2eee01365c7b023f851
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758058"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610780"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>SDK-, REST-en CLI-ontwikkelaars bronnen voor Language Understanding (LUIS)
 
@@ -72,6 +72,10 @@ In de volgende tabel worden de para meters beschreven, aangeduid met accolades `
 |`q` of `query`|utterance tekst verzonden vanuit client toepassing zoals chat-bot|
 |`version`|versie naam van 10 tekens|
 |`slot`| `production` of `staging`|
+
+### <a name="rest-query-string-parameters"></a>Query teken reeks parameters voor REST
+
+[!INCLUDE [V3 query params](./includes/v3-prediction-query-params.md)]
 
 ## <a name="app-schema"></a>App-schema
 

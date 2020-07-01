@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: d50eafd8464a315cb4e619a0c34b6a173d6ca638
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 5aac12f4da6304e8e14f0b4f1e33ef6257f50c11
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362190"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85602785"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Zelf studie: een web-app met één pagina maken
 
@@ -43,8 +43,10 @@ De zelfstudiepagina staat volledig op zichzelf. Er worden geen externe framework
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de zelf studie wilt volgen, moet u abonnements sleutels voor de Bing Search-API hebben. Als u deze niet hebt, kunt u een [proef sleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) en een [eenvoudige Bing Maps-sleutel](https://www.microsoft.com/maps/create-a-bing-maps-key)gebruiken.
+Als u de zelf studie wilt volgen, moet u abonnements sleutels voor de Bing Search-API hebben. Als u deze niet hebt, moet u deze maken:
 
+* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
+* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" maakt u een Bing Search resource Maak "  target="_blank"> een Bing Search resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
 
 ## <a name="app-components"></a>App-onderdelen
 Net zoals andere web-apps met één pagina bestaat de toepassing in deze zelfstudie uit drie onderdelen:

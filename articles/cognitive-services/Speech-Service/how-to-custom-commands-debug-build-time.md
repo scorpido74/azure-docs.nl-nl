@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: b0a26b4d3f0f59f8e05c5990bbc64ee55f12f124
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 6624c8072c60793771d4f4b9943e15f1b276cd34
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307554"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85604689"
 ---
 # <a name="debug-errors-when-authoring-a-custom-commands-application"></a>Fouten opsporen tijdens het ontwerpen van een toepassing voor aangepaste opdrachten
 
@@ -26,7 +26,7 @@ Aangepaste opdrachten maken ook een toepassing in [Luis](https://www.luis.ai/) b
 
 [Luis beperkt 500-toepassingen per ontwerp bron](https://docs.microsoft.com/azure/cognitive-services/luis/luis-limits). Het maken van een LUIS-toepassing kan mislukken als u een ontwerp bron gebruikt die al 500-toepassingen heeft. 
 
-Zorg ervoor dat de geselecteerde LUIS-ontwerp bron minder is dan 500. Als dat niet het geval is, kunt u een nieuwe LUIS-ontwerp bron maken, overschakelen naar een andere, of proberen om uw LUIS-toepassingen op te schonen.  
+Zorg ervoor dat de geselecteerde LUIS-ontwerp bron minder dan 500 toepassingen bevat. Als dat niet het geval is, kunt u een nieuwe LUIS-ontwerp bron maken, overschakelen naar een andere, of proberen om uw LUIS-toepassingen op te schonen.  
 
 ## <a name="errors-when-deleting-an-application"></a>Fouten bij het verwijderen van een toepassing
 ### <a name="cant-delete-luis-application"></a>Kan de LUIS-toepassing niet verwijderen
@@ -48,13 +48,13 @@ U mag geen para meter verwijderen als deze wordt gebruikt. Verwijder alle verwij
 U mag geen web-eind punt verwijderen wanneer het wordt gebruikt. Verwijder een webeindpunt actie voor een **gesprek** die gebruikmaakt van dit webeindpunt voordat u een webeindpunt verwijdert.
 
 ## <a name="errors-when-training-an-application"></a>Fouten bij het trainen van een toepassing
-### <a name="build-in-intents"></a>Intenties bouwen
-LUIS heeft een samen stelling van Ja/geen intenties. Als er voorbeeld zinnen met alleen ' ja ' en ' nee ' worden toegevoegd, mislukt de training. 
+### <a name="built-in-intents"></a>Ingebouwde intenties
+LUIS heeft ingebouwde Ja/geen intenties. Als er voorbeeld zinnen met alleen ' ja ' en ' nee ' worden toegevoegd, mislukt de training. 
 
 | Zoek | Variaties | 
 | ------- | --------- | 
-| Yes | Zeker, OK |
-| No | Klopt, niet | 
+| Ja | Zeker, OK |
+| Nee | Klopt, niet | 
 
 ### <a name="common-sample-sentences"></a>Algemene voorbeeld zinnen
 Aangepaste opdrachten staan geen veelvoorkomende voorbeeld zinnen toe die worden gedeeld tussen verschillende opdrachten. De training van een toepassing kan mislukken als sommige voorbeeld zinnen in één opdracht al zijn gedefinieerd in een andere opdracht. 
@@ -72,7 +72,7 @@ In de voorbeeld zinnen worden een of meer para meters gebruikt, maar deze zijn n
 ### <a name="training-takes-too-long"></a>De training duurt te lang
 LUIS training is bedoeld om snel te leren werken met minder voor beelden. Voeg niet te veel voorbeeld zinnen toe. 
 
-Als er veel voorbeeld zinnen zijn, definieert u een para meter, geeft u deze op in een patroon en voegt u deze toe aan voorbeeld zinnen.
+Als er veel voorbeeld zinnen zijn die vergelijkbaar zijn, definieert u een para meter, geeft u deze op in een patroon en voegt u deze toe aan voorbeeld zinnen.
 
 U kunt bijvoorbeeld een para meter {tuig} definiëren voor de onderstaande voorbeeld zinnen en alleen een {voer tuig boeken} toevoegen aan voorbeeld zinnen.
 
