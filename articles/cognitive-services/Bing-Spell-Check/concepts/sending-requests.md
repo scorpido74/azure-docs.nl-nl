@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 893317b8f46415b1df540d67ebf28b65c5ba6d32
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4f79e3d8d8d32bb577e8c6c6f6f6c247de13c58a
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68883439"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801237"
 ---
 # <a name="sending-requests-to-the-bing-spell-check-api"></a>Aanvragen verzenden naar de Bing Spellingcontrole-API
 
@@ -25,7 +25,7 @@ Om een stuk tekst te controleren op spel- en grammaticafouten, verzendt u een GE
 https://api.cognitive.microsoft.com/bing/v7.0/spellcheck
 ```  
   
-In de aanvraag moet u het HTTPS-protocol gebruiken.
+Voor de aanvraag moet het HTTPS-protocol worden gebruikt.
 
 Het is raadzaam dat alle aanvragen afkomstig zijn van een server. Het distribueren van de sleutel als onderdeel van een clienttoepassing biedt een kwaadwillende gebruiker namelijk meer mogelijkheden om de sleutel te onderscheppen. Een server biedt ook een centraal upgradepunt voor toekomstige versies van de API.
 
@@ -46,15 +46,18 @@ Om dit probleem op te lossen, kunt u de aanvraag voor de Bing Spellingcontrole-A
 
 U kunt eenvoudig een CORS-proxy installeren zodat de [zelfstudie-app](../tutorials/spellcheck.md) toegang krijgt tot de optionele clientheaders. Als u [Node.js](https://nodejs.org/en/download/) nog niet hebt, moet u dit eerst installeren. Voer vervolgens de volgende opdracht in een opdrachtprompt in.
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-Wijzig vervolgens het eindpunt van de Bing Spellingcontrole-API in het HTML-bestand in:
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/spellcheck/
+Wijzig vervolgens het Bing Spellingcontrole-API-eind punt in het HTML-bestand in: \
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/spellcheck/`
 
 Start ten slotte de CORS-proxy met de volgende opdracht:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Laat het opdrachtvenster geopend terwijl u de zelfstudie-app gebruikt. Als u het venster sluit, wordt de proxy gestopt. In de uitbreidbare sectie met HTTP-headers onder de zoekresultaten ziet u nu (onder andere) de `X-MSEdge-ClientID`-header en kunt u controleren of deze voor elke aanvraag gelijk is.
 

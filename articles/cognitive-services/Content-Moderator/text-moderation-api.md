@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 31bd6a2680d8c71df6b6030187ff44ca10d09440
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: fa292f0441369ed13f3f85035a2ec8cc3f5c6723
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561031"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800088"
 ---
 # <a name="learn-text-moderation-concepts"></a>Concepten van tekst toezicht leren
 
@@ -36,13 +36,15 @@ Het antwoord van de service bevat de volgende informatie:
 
 Als de API in een van de [ondersteunde talen](Text-Moderation-API-Languages.md)ongepaste termen detecteert, worden deze termen opgenomen in het antwoord. Het antwoord bevat ook hun locatie ( `Index` ) in de oorspronkelijke tekst. De `ListId` in de volgende voor beeld-JSON verwijst naar termen die zijn gevonden in de [lijst met aangepaste termen](try-terms-list-api.md) , indien beschikbaar.
 
-    "Terms": [
+```json
+"Terms": [
     {
         "Index": 118,
         "OriginalIndex": 118,
         "ListId": 0,
         "Term": "crap"
     }
+```
 
 > [!NOTE]
 > Voor de para meter **taal** wijst `eng` of laat u het leeg om de door de machine ondersteunde **classificatie** te zien (preview-functie). **Deze functie ondersteunt alleen Engels**.
@@ -55,18 +57,20 @@ De **functie voor tekst classificatie** met automatische ondersteuning van conte
 
 In de volgende extractie in de JSON-analyse wordt een voorbeeld uitvoer weer gegeven:
 
-    "Classification": {
-        "ReviewRecommended": true,
-        "Category1": {
-              "Score": 1.5113095059859916E-06
-            },
-        "Category2": {
-              "Score": 0.12747249007225037
-            },
-        "Category3": {
-              "Score": 0.98799997568130493
-        }
+```json
+"Classification": {
+    "ReviewRecommended": true,
+    "Category1": {
+        "Score": 1.5113095059859916E-06
+    },
+    "Category2": {
+        "Score": 0.12747249007225037
+    },
+    "Category3": {
+        "Score": 0.98799997568130493
     }
+}
+```
 
 ### <a name="explanation"></a>Uitleg
 
@@ -127,11 +131,11 @@ In het volgende voor beeld ziet u een voor beeld van een antwoord:
 
 Stel dat de invoer tekst (de ' lzay ' en ' f0x ' opzettelijk is):
 
-    The qu!ck brown f0x jumps over the lzay dog.
+> Het qu!/St Brown f0x springt over de lzaye Dog.
 
 Als u voor de automatische correctie vraagt, bevat het antwoord de gecorrigeerde versie van de tekst:
 
-    The quick brown fox jumps over the lazy dog.
+> De Quick Brown Fox springt over de luie hond.
 
 ## <a name="creating-and-managing-your-custom-lists-of-terms"></a>Uw aangepaste lijsten met voor waarden maken en beheren
 
@@ -143,13 +147,15 @@ De standaard instelling is dat de algemene lijst met termen prima werkt in de me
 
 In het volgende voor beeld ziet u de overeenkomende lijst-ID:
 
-    "Terms": [
+```json
+"Terms": [
     {
         "Index": 118,
         "OriginalIndex": 118,
         "ListId": 231.
         "Term": "crap"
     }
+```
 
 De Content Moderator biedt een [term List-API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) met bewerkingen voor het beheren van aangepaste termen lijsten. Begin met de [API-console van de termen lijst](try-terms-list-api.md) en gebruik de rest API code voorbeelden. Bekijk ook de [term lijsten .net Quick](term-lists-quickstart-dotnet.md) start als u bekend bent met Visual Studio en C#.
 

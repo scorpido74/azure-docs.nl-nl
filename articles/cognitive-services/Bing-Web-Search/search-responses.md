@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 95ebfaef863a1fa05e8a5d3b46fca9659c61f6b7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7933d5e5cf7d82de013e18b221f3a0c3ce6b5229
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74110613"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800525"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Webzoekopdrachten-API-antwoord structuur en-antwoord typen  
 
@@ -38,7 +38,7 @@ Wanneer u Bing Web Search een zoek opdracht verzendt, wordt een [`SearchResponse
 }, ...
 ```
 
-Meestal retourneert Bing Web Search een subset van de antwoorden. Als de query term bijvoorbeeld *dinghies*is, kan de reactie het volgende omvatten `webPages`: `images`, en. `rankingResponse` Tenzij u [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) hebt gebruikt om webpagina's te filteren, bevat het antwoord altijd de `webpages` en `rankingResponse` antwoorden.
+Meestal retourneert Bing Web Search een subset van de antwoorden. Als de query term bijvoorbeeld *dinghies*is, kan de reactie het volgende omvatten `webPages` :, `images` en `rankingResponse` . Tenzij u [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) hebt gebruikt om webpagina's te filteren, bevat het antwoord altijd de `webpages` en `rankingResponse` antwoorden.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -105,13 +105,13 @@ U kunt de miniatuur ook uitbreiden op het moment dat de gebruiker er met de curs
 ![Expanded view of thumbnail image](./media/cognitive-services-bing-web-api/bing-web-image-thumbnail-expansion.PNG)
 -->
 
-Als de gebruiker op de miniatuur klikt, `webSearchUrl` kunt u gebruiken om de gebruiker naar de zoek resultaten pagina van Bing te gaan voor installatie kopieën, die een collage van de afbeeldingen bevat.
+Als de gebruiker op de miniatuur klikt, kunt u gebruiken `webSearchUrl` om de gebruiker naar de zoek resultaten pagina van Bing te gaan voor installatie kopieën, die een collage van de afbeeldingen bevat.
 
 Zie [afbeeldingen zoeken-API](../bing-image-search/search-the-web.md)voor meer informatie over het antwoord en de installatie kopieën van de afbeelding.
 
 ## <a name="related-searches-answer"></a>Antwoord op verwante Zoek opdrachten
 
-Het [relatedSearches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse-relatedsearches) -antwoord bevat een lijst met de populairste gerelateerde query's die door andere gebruikers zijn gemaakt. Elke [query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query_obj) in de lijst bevat een query teken reeks`text`(), een query reeks met treffer markeringen (`displayText`) en een URL (`webSearchUrl`) naar de pagina Zoek resultaten van Bing voor die query.
+Het [relatedSearches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse-relatedsearches) -antwoord bevat een lijst met de populairste gerelateerde query's die door andere gebruikers zijn gemaakt. Elke [query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query_obj) in de lijst bevat een query teken reeks ( `text` ), een query reeks met treffer markeringen ( `displayText` ) en een URL ( `webSearchUrl` ) naar de pagina Zoek resultaten van Bing voor die query.
 
 ```json
 {
@@ -121,9 +121,9 @@ Het [relatedSearches](https://docs.microsoft.com/rest/api/cognitiveservices-bing
 }, ...
 ```
 
-Gebruik de `displayText` query teken reeks en `webSearchUrl` de URL voor het maken van een Hyper link waarmee de gebruiker naar de zoek resultaten pagina van Bing voor de gerelateerde query gaat. U kunt de `text` query reeks ook gebruiken in uw eigen webzoekopdrachten API-query en de resultaten zelf weer geven.
+Gebruik de `displayText` query teken reeks en de `webSearchUrl` URL voor het maken van een Hyper link waarmee de gebruiker naar de zoek resultaten pagina van Bing voor de gerelateerde query gaat. U kunt de `text` query reeks ook gebruiken in uw eigen WEBZOEKOPDRACHTEN API-query en de resultaten zelf weer geven.
 
-Zie [treffers markeren](../bing-web-search/hit-highlighting.md)voor informatie over het afhandelen van `displayText`markeringen in.
+`displayText`Zie [treffers markeren](../bing-web-search/hit-highlighting.md)voor informatie over het afhandelen van markeringen in.
 
 Hieronder ziet u een voor beeld van het gebruik van gerelateerde query's in Bing.com.
 
@@ -208,7 +208,7 @@ Het [Nieuws](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bi
 }, ...
 ```
 
-Afhankelijk van het apparaat van de gebruiker, kunt u een subset van de nieuws artikelen weer geven met een optie voor de gebruiker om de resterende artikelen weer te geven. Gebruik `name` en `url` om een hyperlink te maken waarmee de gebruiker naar het nieuwsartikel op de site van de host gaat. Als het artikel een afbeelding bevat, kunt u de afbeelding klikken met `url`behulp van. Vergeet niet om met `provider` bronvermelding toe te passen voor het artikel.
+Afhankelijk van het apparaat van de gebruiker, kunt u een subset van de nieuws artikelen weer geven met een optie voor de gebruiker om de resterende artikelen weer te geven. Gebruik `name` en `url` om een hyperlink te maken waarmee de gebruiker naar het nieuwsartikel op de site van de host gaat. Als het artikel een afbeelding bevat, kunt u de afbeelding klikken met behulp van `url` . Vergeet niet om met `provider` bronvermelding toe te passen voor het artikel.
 
 <!-- Remove until this can be replaced with a sanitized version.
 The following shows an example of how you might display articles in a search results page.
@@ -234,7 +234,7 @@ Hieronder ziet u het `computation` antwoord op het *aantal poten in 10 meters?*
 }, ...
 ```
 
-Hieronder ziet u voor beelden van wiskundige query's en hun `computation` bijbehorende antwoorden.
+Hieronder ziet u voor beelden van wiskundige query's en hun bijbehorende `computation` antwoorden.
 
 ```
 Query: (5+3)(10/2)+8
@@ -292,11 +292,11 @@ Een wiskundige expressie kan de volgende symbolen bevatten:
 
 |Symbool|Beschrijving|
 |------------|-----------------|
-|+|Optelling|
+|+|Optellen|
 |-|Aftrekking|
-|/|Deling|
-|*|Vermenigvuldiging|
-|^|Power|
+|/|Afdeling|
+|*|Vermenigvuldigen|
+|^|Voeding|
 |!|Faculteit|
 |.|Decimal|
 |()|Rang groepering|
@@ -309,7 +309,7 @@ Een wiskundige expressie kan de volgende constanten bevatten:
 |Pi|3,14159...|
 |Hoek|Hoek|
 |i|Imaginair getal|
-|a|e, 2,71828...|
+|e|e, 2,71828...|
 |GoldenRatio|Golden-verhouding, 1,61803...|
 
 Een wiskundige expressie kan de volgende functies bevatten:
@@ -332,9 +332,9 @@ Als de gebruiker een tijd-of datum query invoert, kan het antwoord een tijd [zon
 
 Het `timeZone` antwoord bevat de naam van de locatie, de huidige UTC-datum en-tijd op de opgegeven locatie en de UTC-afwijking. Als de grens van de locatie zich binnen meerdere tijd zones bevindt, bevat het antwoord de huidige UTC-datum en-tijd van alle tijd zones binnen de grens. Omdat de provincie van Florida bijvoorbeeld binnen twee tijd zones valt, bevat het antwoord de lokale datum en tijd van beide tijd zones.  
 
-Als de query de tijd van een staat of land/regio aanvraagt, bepaalt Bing de primaire plaats binnen de geografische grens van de locatie en retourneert `primaryCityTime` deze in het veld. Als de grens meerdere tijd zones bevat, worden de resterende tijd zones in het `otherCityTimes` veld geretourneerd.
+Als de query de tijd van een staat of land/regio aanvraagt, bepaalt Bing de primaire plaats binnen de geografische grens van de locatie en retourneert deze in het `primaryCityTime` veld. Als de grens meerdere tijd zones bevat, worden de resterende tijd zones in het `otherCityTimes` veld geretourneerd.
 
-Hieronder ziet u voor beelden van query's waarmee `timeZone` het antwoord wordt geretourneerd.
+Hieronder ziet u voor beelden van query's waarmee het antwoord wordt geretourneerd `timeZone` .
 
 ```
 Query: What time is it?
@@ -449,15 +449,18 @@ Als u toegang wilt krijgen tot de headers, kunt u de Bing Webzoekopdrachten-API 
 
 Het is eenvoudig om een CORS-proxy te installeren zodat onze [zelf studie-app](tutorial-bing-web-search-single-page-app.md) toegang kan krijgen tot de optionele client headers. Als u [Node.js](https://nodejs.org/en/download/) nog niet hebt, moet u dit eerst installeren. Voer vervolgens de volgende opdracht in een opdrachtprompt in.
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-Wijzig vervolgens het Bing Webzoekopdrachten-API-eind punt in het HTML-bestand in:
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+Wijzig vervolgens het Bing Webzoekopdrachten-API-eind punt in het HTML-bestand in: \
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 Start ten slotte de CORS-proxy met de volgende opdracht:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Laat het opdrachtvenster geopend terwijl u de zelfstudie-app gebruikt. Als u het venster sluit, wordt de proxy gestopt. In de uitbreidbare sectie met HTTP-headers onder de zoekresultaten ziet u nu (onder andere) de `X-MSEdge-ClientID`-header en kunt u controleren of deze voor elke aanvraag gelijk is.
 
