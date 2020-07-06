@@ -20,7 +20,7 @@ ms.locfileid: "83698305"
 ### <a name="bug-fixes-224"></a>Opgeloste fouten 2.2.4 ###
 
 - [Opgeloste fout][AMP][Toegankelijkheid] Er is een bereikbaar fantoomtabblad verwijderd wanneer het foutscherm wordt weergegeven
-- [Opgeloste fout][AMP] De sneltoets M voor IE11 en Edge is hersteld
+- [Opgeloste fout][AMP] De sneltoets M voor IE11 en Microsoft Edge is hersteld
 - [Opgeloste fout][AMP] Een uitzondering voor CEA708-bijschriften is opgelost
 - [Opgeloste fout][AMP] Een probleem met het blokkeren van video voor de Edge-browser is opgelost
 
@@ -82,7 +82,7 @@ ms.locfileid: "83698305"
 
 ### <a name="bug-fixes-220"></a>Opgeloste fouten 2.2.0 ###
 
-- [Opgeloste fout] Flash-versiedetectie werkt niet in Chrome/Edge
+- [Opgeloste fout] Flash-versiedetectie werkt niet in Chrome/Microsoft Edge
 
 ### <a name="changes-220"></a>Wijzigingen 2.2.0 ###
 
@@ -339,7 +339,7 @@ ms.locfileid: "83698305"
 
 ### <a name="changes-173"></a>Wijzigingen 1.7.3 ###
 
-- [Wijziging] Webcrypto inschakelen voor Edge voor het ontsleutelen van AES-inhoud
+- [Wijziging] Webcrypto inschakelen voor Microsoft Edge voor het ontsleutelen van AES-inhoud
 - [Wijziging] AMP-heuristiek optimaliseren voor segmenten in de cache
 - [Wijziging][AzureHtml5JS] Optimaliseer heuristiek door latentie van bandbreedteschatting te verlagen
 
@@ -359,7 +359,7 @@ ms.locfileid: "83698305"
 - [Opgeloste fout] Responsief vergroten/verkleinen voldoet niet aan snelle veranderingen van venstergrootte
 - [Opgeloste fout][EDGE|IE] Responsief vergroten/verkleinen niet meegenomen bij laden van pagina's voor breedte=x, hoogte=auto
 - [Opgeloste fout][Android|Chrome] Chrome vraagt om machtigingen voor het afspelen van DRM-inhoud wanneer de inhoud niet is versleuteld
-- [Opgeloste fout][Toegankelijkheid][Edge] Besturingselementen voor het toetsenbord selecteren contextmenu-items niet correct
+- [Opgeloste fout][Toegankelijkheid][Microsoft Edge] Besturingselementen voor het toetsenbord selecteren contextmenu-items niet correct
 - [Opgeloste fout][Toegankelijkheid] Ontbrekende weergegeven rand in de modus Hoog contrast
 - [Opgeloste fout][FlashSS] Gebeurtenis-listener voor muis omhoog is niet verwijderd nadat door het verwijderen van de speler een uitzondering is veroorzaakt
 - [Opgeloste fout][FlashSS] Probleem met parseren van manifest-URL met gecodeerde ruimten
@@ -439,7 +439,7 @@ ms.locfileid: "83698305"
 
 ### <a name="bug-fixes-161"></a>Opgeloste fouten 1.6.1 ###
 
-- [Opgeloste fout][FlashSS|Edge,IE][SilverlightsSS|IE] Kan geen focus krijgen op andere elementen van de gebruikersinterface voor invoer of iets anders in IE/Edge
+- [Opgeloste fout][FlashSS|Edge,IE][SilverlightsSS|IE] Kan geen focus krijgen op andere elementen van de gebruikersinterface voor invoer of iets anders in IE/Microsoft Edge
 - [Opgeloste fout] AES-afspelen mislukt wanneer forge niet is gedefinieerd
 - [Opgeloste fout][Android][AzureHtml5JS|Chrome] Doorlopend kringveld speelt geen inhoud af wanneer in statuscontrolelus
 - [Opgeloste fout][IE9] console.log () wordt niet ondersteund door IE 9, waardoor een uitzondering wordt veroorzaakt
@@ -449,7 +449,7 @@ ms.locfileid: "83698305"
 ### <a name="features-160"></a>Functies 1.6.0 ###
 
 - [Functie] Groottereductie van 33% van azuremediaplayer.min.js
-- [Functie][AzureHtml5JS|Edge][Niet-getest] Ondersteuning voor DD + audiostreams in Edge (geen codec-switches na de eerste keuze). De app moet op dit moment de juiste audiostroom selecteren.
+- [Functie][AzureHtml5JS|Microsoft Edge][Niet-getest] Ondersteuning voor DD + audiostreams in Microsoft Edge (geen codec-switches na de eerste keuze). De app moet op dit moment de juiste audiostroom selecteren.
 - [Functie] Besturingselementen voor sneltoetsen (zie docs voor meer informatie)
 - [Functie] Tip voor voortgangstijd voor tijdnauwkeurig zoeken
 - [Functie] Asynchrone detectie van invoegtoepassingen toestaan als de methode setupDone in de invoegtoepassing bestaat
@@ -460,8 +460,8 @@ ms.locfileid: "83698305"
 - [Opgeloste fout] Het selectievakje voor bitrate wordt opnieuw ingesteld bij het verplaatsen van de muis, wat een probleem veroorzaakt bij het selecteren van lagere bitrates middels muisbesturing
 - [Opgeloste fout] Mac Office in de app loopt vast bij het uitvoeren van DRM-controle
 - [Opgeloste fout] CSS-klassen kunnen eenvoudig per ongeluk worden overschreven
-- [Opgeloste fout][Chrome] Het bijwerken van de id van de tekenreeksbrowser van de gebruikersagent is Edge
-- [Opgeloste fout][AzureHtml5JS] De knop Bijschriften wordt niet weergegeven in de werkbalk in Edge (Win10) of Chrome (Mac)
+- [Opgeloste fout][Chrome] Het bijwerken van de id van de tekenreeksbrowser van de gebruikersagent is Microsoft Edge
+- [Opgeloste fout][AzureHtml5JS] De knop Bijschriften wordt niet weergegeven in de werkbalk in Microsoft Edge (Win10) of Chrome (Mac)
 - [Opgeloste fout][Android][AzureHtml5JS|Chrome] InvalidStateError-uitzondering op endOfStream()-aanroep op korte video's
 - [Opgeloste fout][Firefox] Verwijderen van DRM-waarschuwing wordt veroorzaakt door Firefox bij het controleren van browsermogelijkheden
 - [Opgeloste fout][Html5] Ondertitel/bijschriften worden niet weergegeven bij progressieve MP4-inhoud
@@ -488,7 +488,7 @@ ms.locfileid: "83698305"
 - [Opgeloste fout] CSS-minificatie bijwerken om lettertypecodes van HTML-entiteit te gebruiken voor knoppen in plaats van Unicode
 - [Opgeloste fout][AzureHtml5JS] Multi-DRM-inhoud selecteert altijd het token van het eerste element van protectionInfo waardoor de tweede DRM niet kan worden uitgevoerd
 - [Opgeloste fout][AzureHtml5JS] Zoekbewerkingen worden nooit voltooid wanneer wordt gezocht in een gebied met ontbrekende segmenten.
-- [Opgeloste fout][AzureHtml5JS|Edge] Prefixed EME inschakelen in Edge-update voor PlayReady-afspelen
+- [Opgeloste fout][AzureHtml5JS|Microsoft Edge] Prefixed EME inschakelen in Microsoft Edge-update voor PlayReady-afspelen
 - [Opgeloste fout][AzureHtml5JS|Firefox] EME-controle bijwerken zodat Firefox v42+ (met MSE) kan terugvallen op Silverlight voor beveiligde inhoud
 - [Opgeloste fout][FlashSS] error.message bijwerken van nummer naar gedetailleerde tekenreeks
 
@@ -530,7 +530,7 @@ ms.locfileid: "83698305"
 ### <a name="bug-fixes-120"></a>Opgeloste fouten 1.2.0 ###
 
 - [Opgeloste fout][AzureHtml5JS|Chrome] De speler wordt achter live edge geplaatst wanneer de speler op de achtergrond is
-- [Opgeloste fout][AzureHtml5JS|Edge] Volledig scherm werkt niet
+- [Opgeloste fout][AzureHtml5JS|Microsoft Edge] Volledig scherm werkt niet
 - [Opgeloste fout][AzureHtml5JS] Logboekregistratie was niet correct ingeschakeld bij het instellen in opties
 - [Opgeloste fout][Flash] Zowel buffering als het pictogram voor bufferen worden weergegeven tijdens wachtgebeurtenis
 - [Opgeloste fout] Afspelen toestaan om door te gaan als de eerste bandbreedteaanvraag mislukt

@@ -234,7 +234,7 @@ Als u de code wilt uitvoeren in de Visual Studio Code-foutopsporing, configureer
 De uitbreiding voor foutopsporing in Visual Studio Code instellen:
 
 1. Selecteer **Uitvoeren > Configuratie toevoegen**
-2. Selecteer **Edge**, **Chrome**of **Firefox**, afhankelijk van de extensie die eerder u hebt geïnstalleerd in het gedeelte [Vereisten](#prerequisites).
+2. Selecteer **Microsoft Edge**, **Chrome**of **Firefox**, afhankelijk van de extensie die eerder u hebt geïnstalleerd in het gedeelte [Vereisten](#prerequisites).
 
 Als u een nieuwe configuratie toevoegt, wordt er een *launch.json*-bestand gemaakt en geopend in de editor. Wijzig het bestand *launch.json* zodat de `url`-waarde `http://localhost:1234/index.html` is, zoals hier wordt weergegeven:
 
