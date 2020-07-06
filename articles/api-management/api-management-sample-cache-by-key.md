@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 922ab731ccd76e6a1336d61abe4b0251e358beb7
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60780817"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Custom caching in Azure API Management (Aangepast opslaan in Azure API Management)
-De Azure API Management-service heeft ingebouwde ondersteuning voor [http-antwoord cache](api-management-howto-cache.md) met behulp van de resource-URL als sleutel. De sleutel kan worden gewijzigd met aanvraag headers met behulp van de `vary-by` eigenschappen. Dit is handig voor het in de cache opslaan van volledige HTTP-antwoorden (ook wel-voors tellingen), maar soms is het handig om alleen een gedeelte van een weer gave in de cache op te slaan. De nieuwe beleids regels voor [cache-lookup-value](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) en [cache-Store-value](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) bieden de mogelijkheid om wille keurige stukjes gegevens op te slaan en op te halen uit de beleids definities. Deze mogelijkheid voegt ook waarde toe aan het eerder geïntroduceerde beleid voor het [verzenden van aanvragen](/azure/api-management/api-management-advanced-policies#SendRequest) omdat u nu reacties van externe services kunt opslaan in de cache.
+De Azure API Management-service heeft ingebouwde ondersteuning voor [http-antwoord cache](api-management-howto-cache.md) met behulp van de resource-URL als sleutel. De sleutel kan worden gewijzigd met aanvraag headers met behulp van de `vary-by` Eigenschappen. Dit is handig voor het in de cache opslaan van volledige HTTP-antwoorden (ook wel-voors tellingen), maar soms is het handig om alleen een gedeelte van een weer gave in de cache op te slaan. De nieuwe beleids regels voor [cache-lookup-value](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) en [cache-Store-value](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) bieden de mogelijkheid om wille keurige stukjes gegevens op te slaan en op te halen uit de beleids definities. Deze mogelijkheid voegt ook waarde toe aan het eerder geïntroduceerde beleid voor het [verzenden van aanvragen](/azure/api-management/api-management-advanced-policies#SendRequest) omdat u nu reacties van externe services kunt opslaan in de cache.
 
 ## <a name="architecture"></a>Architectuur
 API Management-service maakt gebruik van een gedeelde gegevens cache per Tenant, zodat u, wanneer u omhoog schaalt naar meerdere eenheden, u nog steeds toegang krijgt tot dezelfde gegevens in de cache. Wanneer u werkt met een implementatie met meerdere regio's, zijn er echter onafhankelijke caches in elk van de regio's. Het is belang rijk dat u de cache niet als een gegevens archief behandelt, waarbij het de enige bron is van een deel van de gegevens. Als u dit hebt gedaan en later besluit om te profiteren van de implementatie met meerdere regio's, kunnen klanten met gebruikers die onderweg geen toegang meer hebben tot de gegevens in de cache.
@@ -43,7 +43,7 @@ Bekijk de volgende JSON-reactie van een back-end-API.
 }  
 ```
 
-En de secundaire resource `/userprofile/{userid}` op dat lijkt,
+En de secundaire resource op `/userprofile/{userid}` dat lijkt,
 
 ```json
 { "username" : "Bob Smith", "Status" : "Gold" }
@@ -65,7 +65,7 @@ key="@("userprofile-" + context.Variables["enduserid"])"
 variable-name="userprofile" />
 ```
 
-Als er geen vermelding is in de cache die overeenkomt met de sleutel waarde, wordt `userprofile` er geen context variabele gemaakt. API Management controleert of de zoek actie is geslaagd met `choose` behulp van het controle beleid.
+Als er geen vermelding is in de cache die overeenkomt met de sleutel waarde, wordt er geen `userprofile` context variabele gemaakt. API Management controleert of de zoek actie is geslaagd met behulp van het `choose` controle beleid.
 
 ```xml
 <choose>
@@ -184,7 +184,7 @@ Hetzelfde soort fragment cache kan ook worden uitgevoerd op de back-end-webserve
 ## <a name="transparent-versioning"></a>Transparante versie beheer
 Het is gebruikelijk dat meerdere verschillende implementatie versies van een API tegelijk worden ondersteund. Ter ondersteuning van verschillende omgevingen (dev, test, productie, enz.) of ter ondersteuning van oudere versies van de API om tijd te bieden aan API-gebruikers om te migreren naar nieuwere versies. 
 
-Een manier om dit af te handelen, in plaats van client ontwikkelaars in te stellen `/v1/customers` om `/v2/customers` de url's te wijzigen van in, is om op te slaan in de profiel gegevens van de gebruiker welke versie van de API ze momenteel willen gebruiken en de juiste back-end-URL aan te roepen. Als u wilt bepalen welke back-end-URL moet worden aangeroepen voor een bepaalde client, moet u een query uitvoeren op sommige configuratie gegevens. Als u deze configuratie gegevens in de cache opslaat, kan API Management de prestaties van deze zoek actie tot een minimum beperken.
+Een manier om dit af te handelen, in plaats van client ontwikkelaars in te stellen om de Url's te wijzigen van `/v1/customers` in `/v2/customers` , is om op te slaan in de profiel gegevens van de gebruiker welke versie van de API ze momenteel willen gebruiken en de juiste back-end-URL aan te roepen. Als u wilt bepalen welke back-end-URL moet worden aangeroepen voor een bepaalde client, moet u een query uitvoeren op sommige configuratie gegevens. Als u deze configuratie gegevens in de cache opslaat, kan API Management de prestaties van deze zoek actie tot een minimum beperken.
 
 De eerste stap is het bepalen van de id die wordt gebruikt voor het configureren van de gewenste versie. In dit voor beeld koos ik ervoor om de versie te koppelen aan de sleutel voor het product abonnement. 
 

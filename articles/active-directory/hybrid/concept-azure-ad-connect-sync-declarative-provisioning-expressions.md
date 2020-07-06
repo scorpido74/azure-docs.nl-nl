@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60245508"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect Sync: uitleg over declaratieve inrichtings expressies
@@ -72,19 +72,19 @@ Hier volgt een voor beeld waarin het omgekeerde kenmerk domein wordt gevuld met 
 De volgende Opera tors kunnen worden gebruikt:
 
 * **Vergelijking**: <, <=,  <>, =, >, >=
-* **Wiskunde**: +,-, \*,-
+* **Wiskunde**: +,-, \* ,-
 * **Teken reeks**: & (samen voegen)
 * **Logische**:  &&  (en), | | of
 * **Evaluatie volgorde**: ()
 
-Opera tors worden van links naar rechts geëvalueerd en hebben dezelfde evaluatie prioriteit. Dat wil zeggen, \* de (vermenigvuldiger) wordt niet geëvalueerd vóór-(aftrekken). 2\*(5 + 3) is niet hetzelfde als 2\*5 + 3. De haakjes () worden gebruikt om de evaluatie volgorde te wijzigen wanneer de volg orde van links naar rechts niet geschikt is.
+Opera tors worden van links naar rechts geëvalueerd en hebben dezelfde evaluatie prioriteit. Dat wil zeggen, de \* (vermenigvuldiger) wordt niet geëvalueerd vóór-(aftrekken). 2 \* (5 + 3) is niet hetzelfde als 2 \* 5 + 3. De haakjes () worden gebruikt om de evaluatie volgorde te wijzigen wanneer de volg orde van links naar rechts niet geschikt is.
 
 ## <a name="multi-valued-attributes"></a>Kenmerken met meerdere waarden
 De functies kunnen worden toegepast op kenmerken met één waarde en meerdere waarden. Voor kenmerken met meerdere waarden wordt de functie voor elke waarde gebruikt en wordt dezelfde functie op elke waarde toegepast.
 
 Bijvoorbeeld:  
 `Trim([proxyAddresses])`Maak een afgesneden van elke waarde in het kenmerk proxyAddress attribuut.  
-`Word([proxyAddresses],1,"@") & "@contoso.com"`Voor elke waarde met een @-signmoet u het domein vervangen @contoso.comdoor.  
+`Word([proxyAddresses],1,"@") & "@contoso.com"`Voor elke waarde met een @-sign moet u het domein vervangen door @contoso.com .  
 `IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])`Zoek naar het SIP-adres en verwijder deze uit de waarden.
 
 ## <a name="next-steps"></a>Volgende stappen

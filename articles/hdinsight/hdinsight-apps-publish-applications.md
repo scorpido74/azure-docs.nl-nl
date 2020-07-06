@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: e64bf253a73df3a2f8170109dc1dfb9a59613733
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "64685330"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Een HDInsight-toepassing publiceren in azure Marketplace
@@ -31,7 +31,7 @@ Als u uw aangepaste toepassing in Marketplace wilt verzenden, moet [u eerst uw a
 U moet ook uw ontwikkelaars account registreren. Zie [een aanbieding publiceren in azure Marketplace](../marketplace/marketplace-publishers-guide.md) en [een micro soft-ontwikkelaars account maken](../marketplace/marketplace-publishers-guide.md)voor meer informatie.
 
 ## <a name="define-the-application"></a>De toepassing definiëren
-Er zijn twee stappen betrokken bij het publiceren van toepassingen in de Marketplace. Definieer eerst een bestand *createUiDef. json* . Het bestand createUiDef. json geeft aan aan welke clusters uw toepassing compatibel is. Publiceer vervolgens de sjabloon vanuit het Azure Portal. Hier volgt een voor beeld van een createUiDef. JSON-bestand:
+Er zijn twee stappen betrokken bij het publiceren van toepassingen in de Marketplace. Definieer eerst een *createUiDef.jsin* het bestand. De createUiDef.jsin het bestand geeft aan aan welke clusters uw toepassing compatibel is. Publiceer vervolgens de sjabloon vanuit het Azure Portal. Hier volgt een voor beeld createUiDef.jsvan het bestand:
 
 ```json
 {
@@ -76,8 +76,8 @@ Het installatie script moet de volgende kenmerken hebben:
 ## <a name="package-the-application"></a>De toepassing inpakken
 Maak een zip-bestand dat alle bestanden bevat die nodig zijn voor het installeren van uw HDInsight-toepassing. U gebruikt het zip-bestand om de toepassing te publiceren. Het zip-bestand bevat de volgende bestanden:
 
-* createUiDefinition. json
-* mainTemplate. json (Zie [aangepaste HDInsight-toepassingen installeren](hdinsight-apps-install-custom-applications.md)voor een voor beeld.)
+* createUiDefinition.jsop
+* mainTemplate.jsop (Zie [aangepaste HDInsight-toepassingen installeren](hdinsight-apps-install-custom-applications.md)voor een voor beeld.)
 * Alle vereiste scripts
 
 > [!NOTE]  
@@ -91,8 +91,8 @@ Een HDInsight-toepassing publiceren:
 3. Voer een titel in en selecteer vervolgens **een nieuwe oplossings sjabloon maken**.
 4. Als u uw organisatie nog niet hebt geregistreerd, selecteert u **ontwikkelaars centrum-account maken en lid worden van het Azure-programma**.  Zie [een micro soft-ontwikkelaars account maken](../marketplace/marketplace-publishers-guide.md)voor meer informatie.
 5. Selecteer **enkele topologieën definiëren om aan de slag te gaan**. Een oplossings sjabloon is een ' Parent ' van alle topologieën. U kunt meerdere topologieën definiëren in één aanbieding of oplossings sjabloon. Wanneer een aanbieding naar fase ring wordt gepusht, wordt deze met alle topologieën gepusht. 
-6. Voer een topologie naam in en selecteer **+** deze.
-7. Voer een nieuwe versie in en selecteer **+**.
+6. Voer een topologie naam in en selecteer deze **+** .
+7. Voer een nieuwe versie in en selecteer **+** .
 8. Upload het zip-bestand dat u hebt gemaakt tijdens het inpakken van de toepassing.  
 9. Selecteer **certificerings**instantie. Het micro soft-certificerings team beoordeelt de bestanden en certificeert de topologie.
 

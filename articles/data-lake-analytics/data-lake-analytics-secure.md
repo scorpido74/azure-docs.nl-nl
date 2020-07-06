@@ -9,17 +9,17 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.openlocfilehash: 9fbc94259d6fdfb6758204efd6e6f0a346dc58da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60813367"
 ---
 # <a name="configure-user-access-to-job-information-to-job-information-in-azure-data-lake-analytics"></a>Gebruikers toegang tot taak gegevens configureren voor taak gegevens in Azure Data Lake Analytics 
 
 In Azure Data Lake Analytics kunt u meerdere gebruikers accounts of service-principals gebruiken om taken uit te voeren. 
 
-Als u wilt dat dezelfde gebruikers de gedetailleerde taak gegevens zien, moeten de gebruikers de inhoud van de taak mappen kunnen lezen. De taak mappen bevinden zich `/system/` in de map. 
+Als u wilt dat dezelfde gebruikers de gedetailleerde taak gegevens zien, moeten de gebruikers de inhoud van de taak mappen kunnen lezen. De taak mappen bevinden zich in de `/system/` map. 
 
 Als de benodigde machtigingen niet zijn geconfigureerd, ziet de gebruiker mogelijk een fout melding:`Graph data not available - You don't have permissions to access the graph data.` 
 

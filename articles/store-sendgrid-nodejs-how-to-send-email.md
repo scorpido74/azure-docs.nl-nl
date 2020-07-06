@@ -1,6 +1,6 @@
 ---
-title: De SendGrid-e-mail service gebruiken (node. js) | Microsoft Docs
-description: Meer informatie over het verzenden van e-mail met de SendGrid-e-mail service op Azure. Code voorbeelden die zijn geschreven met behulp van de node. js-API.
+title: De SendGrid-e-mail service gebruiken (Node.js) | Microsoft Docs
+description: Meer informatie over het verzenden van e-mail met de SendGrid-e-mail service op Azure. Code voorbeelden die zijn geschreven met behulp van de Node.js-API.
 services: ''
 documentationcenter: nodejs
 author: erikre
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: f2d653441598a47986913d525057672eed24b435
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60931701"
 ---
-# <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>E-mail verzenden met SendGrid vanuit node. js
+# <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>E-mail verzenden met SendGrid van Node.js
 
-In deze hand leiding wordt gedemonstreerd hoe u algemene programmeer taken uitvoert met de SendGrid-e-mail service op Azure. De voor beelden zijn geschreven met behulp van de node. js-API. De besproken scenario's zijn onder andere het **maken van e-mail**, het **verzenden van e-mail**, het toevoegen van **bijlagen**, het **gebruiken van filters**en het **bijwerken van eigenschappen**. Zie de sectie [volgende stappen](#next-steps) voor meer informatie over het SendGrid en verzenden van e-mail.
+In deze hand leiding wordt gedemonstreerd hoe u algemene programmeer taken uitvoert met de SendGrid-e-mail service op Azure. De voor beelden zijn geschreven met behulp van de Node.js-API. De besproken scenario's zijn onder andere het **maken van e-mail**, het **verzenden van e-mail**, het toevoegen van **bijlagen**, het **gebruiken van filters**en het **bijwerken van eigenschappen**. Zie de sectie [volgende stappen](#next-steps) voor meer informatie over het SendGrid en verzenden van e-mail.
 
 ## <a name="what-is-the-sendgrid-email-service"></a>Wat is de SendGrid-e-mail service?
 
@@ -36,15 +36,15 @@ SendGrid is een [cloud-gebaseerde e-mail service] die betrouw bare [transactione
 * Vragen van klanten door sturen
 * E-mail meldingen van uw toepassing
 
-Zie [https://sendgrid.com](https://sendgrid.com)voor meer informatie.
+Zie voor meer informatie [https://sendgrid.com](https://sendgrid.com) .
 
 ## <a name="create-a-sendgrid-account"></a>Een SendGrid-account maken
 
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
-## <a name="reference-the-sendgrid-nodejs-module"></a>Verwijzen naar de SendGrid node. js-module
+## <a name="reference-the-sendgrid-nodejs-module"></a>Verwijzen naar de SendGrid-Node.js module
 
-De SendGrid-module voor node. js kan worden geïnstalleerd via de node Package Manager (NPM) met behulp van de volgende opdracht:
+De SendGrid-module voor Node.js kan worden geïnstalleerd via de node Package Manager (NPM) met behulp van de volgende opdracht:
 
 ```bash
 npm install sendgrid
@@ -211,7 +211,7 @@ SendGrid biedt op web gebaseerde Api's die u kunt gebruiken om gebruik te maken 
 
 Nu u de basis principes van de SendGrid-e-mail service hebt geleerd, volgt u deze koppelingen voor meer informatie.
 
-* SendGrid node. js-module opslag plaats: [SendGrid-nodejs][sendgrid-nodejs]
+* SendGrid Node.js module opslag plaats: [SendGrid-nodejs][sendgrid-nodejs]
 * SendGrid API-documentatie:<https://sendgrid.com/docs>
 * SendGrid speciale aanbieding voor Azure-klanten:[http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
 

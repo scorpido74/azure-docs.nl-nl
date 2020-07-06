@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 51fffbd170daecfec6fcea95caa0526e6d881407
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "64724113"
 ---
 # <a name="media-services-development-with-net"></a>Media Services ontwikkeling met .NET 
@@ -57,13 +57,13 @@ U kunt ook de nieuwste Media Services .NET SDK-bits verkrijgen via GitHub ([gith
    
     4. Het project wordt gewijzigd en er wordt verwezen naar de Media Services .NET SDK-extensies, Media Services .NET SDK en andere afhankelijke assembly's worden toegevoegd.
 4. Als u een schone ontwikkel omgeving wilt promoten, kunt u het NuGet-pakket herstellen inschakelen. Zie [NuGet package Restore](https://docs.nuget.org/consume/package-restore)voor meer informatie.
-5. Voeg een verwijzing naar de **System. Configuration** -assembly toe. Deze assembly bevat de System. Configuration. Klasse **ConfigurationManager** die wordt gebruikt voor toegang tot configuratie bestanden (bijvoorbeeld app. config).
+5. Voeg een verwijzing naar **System.Configuratie** -assembly toe. Deze assembly bevat de System.Configuratie. Klasse **ConfigurationManager** die wordt gebruikt voor toegang tot configuratie bestanden (bijvoorbeeld App.config).
    
     1. Als u referenties wilt toevoegen met behulp van het dialoog venster verwijzingen beheren, klikt u met de rechter muisknop op de naam van het project in de Solution Explorer. Klik vervolgens op **toevoegen**en vervolgens op **verwijzing...**.
    
     2. Het dialoog venster referenties beheren wordt weer gegeven.
-    3. Zoek en selecteer onder .NET Framework-assembly's de System. Configuration-assembly en druk op **OK**.
-6. Open het bestand app. config en voeg de sectie **appSettings** aan het bestand toe. Stel de waarden in die nodig zijn om verbinding te maken met de Media Services-API. Zie [toegang tot de Azure Media Services-API met Azure AD-verificatie](media-services-use-aad-auth-to-access-ams-api.md)voor meer informatie. 
+    3. Zoek en selecteer onder .NET Framework-assembly's de System.Configuratie-assembly en druk op **OK**.
+6. Open het App.config-bestand en voeg de sectie **appSettings** aan het bestand toe. Stel de waarden in die nodig zijn om verbinding te maken met de Media Services-API. Zie [toegang tot de Azure Media Services-API met Azure AD-verificatie](media-services-use-aad-auth-to-access-ams-api.md)voor meer informatie. 
 
     Stel de waarden in die nodig zijn om verbinding te maken met behulp van de **Service-Principal** -verificatie methode.
 
@@ -79,7 +79,7 @@ U kunt ook de nieuwste Media Services .NET SDK-bits verkrijgen via GitHub ([gith
                 </configuration>
         ```
 
-7. Voeg de verwijzing **System. Configuration** toe aan uw project.
+7. Voeg de **System.Configuratie** -verwijzing toe aan uw project.
 8. Overschrijf de bestaande **using** -instructies aan het begin van het Program.CS-bestand met de volgende code:
 
     ```csharp      

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 50c52369a5a957a4dd6279cac5079e2dea023106
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61463400"
 ---
 # <a name="sample-presets-for-media-encoder-standard-mes"></a>Voor beeld van voor instellingen voor Media Encoder Standard (MES)
@@ -29,7 +29,7 @@ ms.locfileid: "61463400"
 Media Services volledig ondersteunt het aanpassen van alle waarden in voor instellingen om te voldoen aan uw specifieke behoeften en vereisten voor de code ring. Als u een vooraf ingestelde code ring wilt aanpassen, moet u beginnen met een van de onderstaande systeem voorinstellingen die in deze sectie zijn opgenomen als een sjabloon voor uw aangepaste configuratie. Zie het onderwerp [Media Encoder Standard schema](media-services-mes-schema.md) voor uitleg over wat elk-element in deze voor instellingen betekent en de geldige waarden voor elk element.  
   
 > [!NOTE]
->  Wanneer u een voor instelling voor 4 KB-code ringen gebruikt, `S3` moet u het gereserveerde eenheids type ophalen. Zie [How to scale encoding](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)(Engelstalig) voor meer informatie.  
+>  Wanneer u een voor instelling voor 4 KB-code ringen gebruikt, moet u het `S3` gereserveerde eenheids type ophalen. Zie [How to scale encoding](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)(Engelstalig) voor meer informatie.  
 
 #### <a name="video-rotation-default-setting-in-presets"></a>Standaard instelling voor het draaien van video in voor instellingen:
 Wanneer u werkt met Media Encoder Standard, wordt de rotatie van de video standaard ingeschakeld. Als uw video is vastgelegd op een mobiel apparaat in de modus Staand, worden deze voor waarden door deze voor waarden naar de liggende modus geroteerd vóór de code ring.

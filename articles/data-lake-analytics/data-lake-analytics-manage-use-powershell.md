@@ -10,10 +10,10 @@ ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.openlocfilehash: 4273828c9c2bdb75fcbc1de45da55c5a03dd615f
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66156421"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Azure Data Lake Analytics beheren met Azure PowerShell
@@ -133,7 +133,7 @@ $adla_acct = Get-AdlAnalyticsAccount -Name $adla
 $dataLakeStoreName = $adla_acct.DefaultDataLakeAccount
 ```
 
-U kunt het standaard Data Lake Store-account vinden door de lijst met gegevens bronnen te filteren `IsDefault` op de eigenschap:
+U kunt het standaard Data Lake Store-account vinden door de lijst met gegevens bronnen te filteren op de `IsDefault` eigenschap:
 
 ```powershell
 Get-AdlAnalyticsDataSource -Account $adla  | ? { $_.IsDefault } 
@@ -295,7 +295,7 @@ Stop-AdlJob -Account $adla -JobID $jobID
 
 ### <a name="wait-for-a-job-to-finish"></a>Wachten tot een taak is voltooid
 
-In plaats van `Get-AdlAnalyticsJob` herhalen totdat een taak is voltooid, kunt u de `Wait-AdlJob` cmdlet gebruiken om te wachten tot de taak is beëindigd.
+In plaats van herhalen `Get-AdlAnalyticsJob` totdat een taak is voltooid, kunt u de `Wait-AdlJob` cmdlet gebruiken om te wachten tot de taak is beëindigd.
 
 ```powershell
 Wait-AdlJob -Account $adla -JobId $job.JobId
@@ -557,5 +557,5 @@ U kunt ook een Azure Resource Group-sjabloon gebruiken met behulp van het volgen
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Overzicht van Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
-* Aan de slag met data Lake Analytics met behulp van de [Azure Portal](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [Azure cli](data-lake-analytics-get-started-cli.md)
-* Azure data Lake Analytics beheren met [Azure Portal](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [cli](data-lake-analytics-manage-use-cli.md) 
+* Aan de slag met data Lake Analytics met behulp van de [Azure Portal](data-lake-analytics-get-started-portal.md)  |  [Azure PowerShell](data-lake-analytics-get-started-powershell.md)  |  [Azure cli](data-lake-analytics-get-started-cli.md)
+* Azure data Lake Analytics beheren met [Azure Portal](data-lake-analytics-manage-use-portal.md)  |  [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)  |  [cli](data-lake-analytics-manage-use-cli.md) 

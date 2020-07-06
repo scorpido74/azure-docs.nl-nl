@@ -1,6 +1,6 @@
 ---
 title: Alle onderwerpen voor SQL Server Stretch Database Service | Microsoft Docs
-description: Tabel met alle onderwerpen voor de Azure-service met de naam SQL Server Stretch Database https://azure.microsoft.com/documentation/articles/die bestaat op, titel en beschrijving.
+description: Tabel met alle onderwerpen voor de Azure-service met de naam SQL Server Stretch Database die bestaat op https://azure.microsoft.com/documentation/articles/ , titel en beschrijving.
 services: sql-server-stretch-database
 documentationcenter: ''
 ms.assetid: b1718024-84d6-4f5c-a912-3a99edb3f632
@@ -14,10 +14,10 @@ ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
 ms.openlocfilehash: 81f1ac3280381ef08a1daf1fa4e041227a07aeaf
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66003031"
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>Alle onderwerpen voor Azure SQL Server Stretch Database Service
@@ -55,6 +55,6 @@ In dit onderwerp vindt u alle onderwerpen die rechtstreeks van toepassing zijn o
 ## <a name="backup-and-recovery"></a>Back-ups maken en herstellen
 | &nbsp; | Titel | Beschrijving |
 | ---:|:--- |:--- |
-| 14 |[Back-up maken van Stretch-databases](sql-server-stretch-database-backup.md) |Meer informatie over het maken van\-een back-up van Stretch-data bases. |
-| 15 |[Data bases die stretch ondersteunen herstellen](sql-server-stretch-database-restore.md) |Meer informatie over het herstellen\-van data bases met stretch-ondersteuning. |
+| 14 |[Back-up maken van Stretch-databases](sql-server-stretch-database-backup.md) |Meer informatie over het maken van een back-up van Stretch- \- data bases. |
+| 15 |[Data bases die stretch ondersteunen herstellen](sql-server-stretch-database-restore.md) |Meer informatie over het herstellen van \- data bases met stretch-ondersteuning. |
 

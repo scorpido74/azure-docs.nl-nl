@@ -16,10 +16,10 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 441aa9805f2a453e22f207238315125d2a281838
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60280403"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Zelf studie: concur configureren voor automatische gebruikers inrichting
@@ -124,6 +124,6 @@ U kunt nu een test account maken. Wacht Maxi maal 20 minuten om te controleren o
 ## <a name="additional-resources"></a>Extra resources
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](tutorial-list.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 * [Eenmalige aanmelding configureren](concur-tutorial.md)
 

@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 05/20/2018
 ms.openlocfilehash: 5a2935d559a967151c5bdc01c4b0806fe52179b4
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60629711"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>Problemen met een abnormale terugkerende taak oplossen
@@ -33,7 +33,7 @@ Als u de gerelateerde taak weergave wilt gebruiken om een probleem met een terug
 
 ### <a name="case-1-you-have-the-url-for-the-recurring-job"></a>Voor beeld 1: u hebt de URL voor de terugkerende taak
 
-Via **hulpprogram ma's** > **Data Lake** > **taak weergave**kunt u de taak-URL voor het openen van de taak weergave in Visual Studio plakken. Selecteer **gerelateerde taken weer geven** om de gerelateerde taak weergave te openen.
+Via **hulpprogram ma's**  >  **Data Lake**  >  **taak weergave**kunt u de taak-URL voor het openen van de taak weergave in Visual Studio plakken. Selecteer **gerelateerde taken weer geven** om de gerelateerde taak weergave te openen.
 
 ![Koppeling Verwante taken weer geven in Data Lake Analytics-Hulpprogram Ma's](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/view-related-job.png)
  

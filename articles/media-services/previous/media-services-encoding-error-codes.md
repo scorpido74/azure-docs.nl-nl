@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 5c038f0be31acea52c2ef07d43f0dbaf3434a371
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "64709525"
 ---
 # <a name="encoding-error-codes"></a>Foutcodes voor codering
@@ -30,7 +30,7 @@ De volgende tabel bevat de fout codes die kunnen worden geretourneerd als er een
 | Onbekend |Onbekende fout tijdens het uitvoeren van de taak |
 | ErrorDownloadingInputAssetMalformedContent |Categorie fouten die fouten bevatten bij het downloaden van invoer-assets, zoals onjuiste bestands namen, bestanden met een lengte van nul, onjuiste indelingen, enzovoort. |
 | ErrorDownloadingInputAssetServiceFailure |Categorie fouten die betrekking hebben op problemen aan de kant van de service, zoals netwerk-of opslag fouten tijdens het downloaden. |
-| ErrorParsingConfiguration |Categorie fouten waarbij taak \<Zie CREF = "MediaTask. PrivateData"/> (configuratie) ongeldig is, bijvoorbeeld omdat de configuratie geen geldige systeem instelling is of ongeldige XML bevat. |
+| ErrorParsingConfiguration |Fout categorie waarbij taak \<see cref="MediaTask.PrivateData"/> (configuratie) ongeldig is, bijvoorbeeld omdat de configuratie geen geldige systeem instelling is of ongeldige XML bevat. |
 | ErrorExecutingTaskMalformedContent |Categorie van fouten tijdens de uitvoering van de taak waarbij problemen in de invoer media bestanden een fout veroorzaken. |
 | ErrorExecutingTaskUnsupportedFormat |Categorie fouten waarbij de media processor de opgegeven bestanden niet kan verwerken. de media-indeling wordt niet ondersteund of komt niet overeen met de configuratie. U kunt bijvoorbeeld proberen een alleen audio-uitvoer te maken van een Asset met alleen video |
 | ErrorProcessingTask |Categorie van andere fouten die de media processor tegen komt tijdens de verwerking van de taak die niet gerelateerd is aan inhoud. |

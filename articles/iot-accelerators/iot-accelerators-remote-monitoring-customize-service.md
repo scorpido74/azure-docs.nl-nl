@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: e44aa8ade512a6005959e795cb1d4ad861da1338
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61447043"
 ---
 # <a name="add-a-custom-service-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Een aangepaste service toevoegen aan de webgebruikersinterface voor externe bewaking oplossings versneller
@@ -45,25 +45,25 @@ Als u een service wilt toevoegen aan de webgebruikersinterface, moet u de bron b
 
 Om aan de slag te gaan, bevat de map **src/walkthrough/Services** de bestanden die een eenvoudige service definiëren:
 
-**exampleService. js**
+**exampleService.js**
 
 [!code-javascript[Example service](~/remote-monitoring-webui/src/walkthrough/services/exampleService.js?name=service "Example service")]
 
 Voor meer informatie over hoe services worden geïmplementeerd, raadpleegt [u de inleiding op reactieve programmering die u mist](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754).
 
-**model-exampleModels. js**
+**model/exampleModels.js**
 
 [!code-javascript[Example model](~/remote-monitoring-webui/src/walkthrough/services/models/exampleModels.js?name=models "Example model")]
 
-Kopieer **exampleService. js** naar de map **src/Services** en kopieer **exampleModels. js** naar de map **src/Services/modellen** .
+Kopieer **exampleService.js** naar de map **src/services** en kopieer **exampleModels.js** naar de map **src/Services/modellen** .
 
-Werk het bestand **index. js** in de map **src/Services** bij om de nieuwe service te exporteren:
+Werk het **index.js** -bestand in de map **src/Services** bij om de nieuwe service te exporteren:
 
 ```js
 export * from './exampleService';
 ```
 
-Werk het bestand **index. js** in de map **src/Services/modellen** bij om het nieuwe model te exporteren:
+Werk het **index.js** -bestand in de map **src/Services/modellen** bij om het nieuwe model te exporteren:
 
 ```js
 export * from './exampleModels';
@@ -73,17 +73,17 @@ export * from './exampleModels';
 
 Om aan de slag te gaan, bevat de map **src/walkthrough/Store/Reducers** een voor beeld van een versmaller:
 
-**exampleReducer. js**
+**exampleReducer.js**
 
 [!code-javascript[Example reducer](~/remote-monitoring-webui/src/walkthrough/store/reducers/exampleReducer.js?name=reducer "Example reducer")]
 
-Kopieer **exampleReducer. js** naar de map **src/Store/Reducers** .
+Kopieer **exampleReducer.js** naar de map **src/Store/Reducers** .
 
 Zie [Redux-waarneembaar](https://redux-observable.js.org/)voor meer informatie over de Reducer en de **EPICS**.
 
 ### <a name="configure-the-middleware"></a>De middleware configureren
 
-Als u de middleware wilt configureren, voegt u de verminderr toe aan het bestand **rootReducer. js** in de map **src/Store** :
+Als u de middleware wilt configureren, voegt u de verminderr toe aan het **rootReducer.js** -bestand in de map **src/Store** :
 
 ```js
 import { reducer as exampleReducer } from './reducers/exampleReducer';
@@ -97,7 +97,7 @@ const rootReducer = combineReducers({
 });
 ```
 
-Voeg de EPICS toe aan het bestand **rootEpics. js** in de map **src/Store** :
+Voeg de EPICS toe aan het **rootEpics.js** -bestand in de map **src/Store** :
 
 ```js
 import { epics as exampleEpics } from './reducers/exampleReducer';

@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60245483"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect Sync: informatie over gebruikers, groepen en contact personen
@@ -47,13 +47,13 @@ Belang rijke punten waar u rekening mee moet houden bij het synchroniseren van g
 
     * Als het kenmerk *proxyAddress attribuut* van de groep leeg is, moet het *e-mail* kenmerk een waarde hebben
 
-    * Als het kenmerk *proxyAddress attribuut* van de groep niet-leeg is, moet deze ten minste één SMTP-proxy adres waarde bevatten. Hier volgen enkele voorbeelden:
+    * Als het kenmerk *proxyAddress attribuut* van de groep niet-leeg is, moet deze ten minste één SMTP-proxy adres waarde bevatten. Enkele voorbeelden:
     
       * Een Active Directory groep waarvan het kenmerk proxyAddress attribuut de waarde *{"een x500:/0 = contoso. com/OE = users/CN = testgroup"}* heeft, wordt in azure AD geen e-mail ingeschakeld. Het bevat geen SMTP-adres.
       
-      * Een Active Directory groep waarvan het kenmerk proxyAddress attribuut waarden *{"een x500:/0 = contoso. com/OE = users/CN = testgroup", "SMTP: janjansen\@contoso.com"} heeft,* wordt in azure AD ingeschakeld als e-mail adres.
+      * Een Active Directory groep waarvan het kenmerk proxyAddress attribuut waarden *{"een x500:/0 = contoso. com/OE = users/CN = testgroup", "SMTP: janjansen \@ contoso.com"} heeft,* wordt in azure AD ingeschakeld als e-mail adres.
       
-      * Een Active Directory-groep waarvan het kenmerk proxyAddress attribuut waarden *{"een x500:/0 = contoso. com/OE = users/CN = testgroup", "SMTP:\@JANJANSEN contoso.com"} heeft,* wordt ook in azure AD ingeschakeld.
+      * Een Active Directory-groep waarvan het kenmerk proxyAddress attribuut waarden *{"een x500:/0 = contoso. com/OE = users/CN = testgroup", "SMTP: janjansen \@ contoso.com"} heeft,* wordt ook in azure AD ingeschakeld.
 
 ## <a name="contacts"></a>Contactpersonen
 Het hebben van contact personen die een gebruiker in een ander forest vertegenwoordigen, is gebruikelijk nadat een fusie & verwerving waarbij een GALSync-oplossing twee of meer Exchange-forests overbrugget. Het contact-object wordt altijd aan de hand van de ruimte van de connector aan de tekst toegevoegd met behulp van het kenmerk mail. Als er al een contact object of gebruikers object is met hetzelfde e-mail adres, worden de objecten samengevoegd. Dit wordt geconfigureerd in de regel **in vanuit AD: contact opnemen met**. Er is ook een regel genoemd **in van AD: contact opnemen met common** met een kenmerk stroom naar het **sourceObjectType** kenmerk van de permanente **contact persoon**. Deze regel heeft een zeer lage prioriteit, dus als een gebruikers object lid is van hetzelfde omgekeerde object, wordt de waarde gebruiker door de regel **in van AD: gemeen schappelijk door de gebruiker gebruikt** . Met deze regel krijgt dit kenmerk de waarde contact als er geen gebruiker is toegevoegd en de waarde gebruiker als er ten minste één gebruiker is gevonden.

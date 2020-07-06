@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f5d3125b7b77e8ce7a943f640c44615049ab160
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60455761"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>Privacy en Azure AD Connect van gebruiker 
@@ -48,10 +48,10 @@ Azure AD Connect klanten moeten de volgende richt lijnen gebruiken bij het verwi
 Gegevens over een persoon worden automatisch uit de Azure AD Connect-Data Base verwijderd wanneer de gegevens van die persoon worden verwijderd uit het bron systeem waarvan ze afkomstig zijn. Een specifieke actie van beheerders moet AVG compatibel zijn.  Het is echter wel vereist dat de Azure AD Connect gegevens ten minste elke twee dagen worden gesynchroniseerd met uw gegevens bron.
 
 ## <a name="delete-the-azure-ad-connect-installation-log-file-folder-contents"></a>De inhoud van de map Azure AD Connect-installatie logboek bestand verwijderen
-Controleer regel matig de inhoud van de map **c:\programdata\aadconnect** , met uitzonde ring van het bestand **PersistedState. XML** . Dit bestand houdt de status van de vorige installatie van Azure A Connect bij en wordt gebruikt wanneer een upgrade-installatie wordt uitgevoerd. Dit bestand bevat geen gegevens over een persoon en mag niet worden verwijderd.
+De inhoud van de map **c:\programdata\aadconnect** regel matig controleren en verwijderen, met uitzonde ring van het **PersistedState.Xml** -bestand. Dit bestand houdt de status van de vorige installatie van Azure A Connect bij en wordt gebruikt wanneer een upgrade-installatie wordt uitgevoerd. Dit bestand bevat geen gegevens over een persoon en mag niet worden verwijderd.
 
 >[!IMPORTANT]
->Verwijder het bestand PersistedState. XML niet.  Dit bestand bevat geen gebruikers gegevens en onderhoudt de status van de vorige installatie.
+>Verwijder het PersistedState.xml bestand niet.  Dit bestand bevat geen gebruikers gegevens en onderhoudt de status van de vorige installatie.
 
 U kunt deze bestanden controleren en verwijderen met Windows Verkenner of u kunt een script gebruiken zoals de volgende om de vereiste acties uit te voeren:
 

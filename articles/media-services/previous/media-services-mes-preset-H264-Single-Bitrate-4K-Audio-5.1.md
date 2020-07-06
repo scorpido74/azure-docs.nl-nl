@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 9c4b133ae74438def30f4fcd9e49a5ca5e6f9cd4
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61463562"
 ---
 # <a name="h264-single-bitrate-4k-audio-51"></a>H264 Single Bitrate 4K Audio 5.1
-`Media Encoder Standard`Hiermee definieert u een set coderings definities die u kunt gebruiken bij het maken van coderings taken. U kunt een `preset name` gebruiken om aan te geven welke indeling uw media bestand moet coderen. U kunt ook uw eigen voor keuren voor JSON of XML maken (met UTF-8-of UTF-16-code ring. Vervolgens geeft u de aangepaste voor instelling door aan het coderings programma. Zie voor de lijst met alle vooraf gedefinieerde namen die worden `Media Encoder Standard` ondersteund door dit coderings programma, voor [instellingen voor taken voor Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`Hiermee definieert u een set coderings definities die u kunt gebruiken bij het maken van coderings taken. U kunt een gebruiken om aan te `preset name` geven welke indeling uw media bestand moet coderen. U kunt ook uw eigen voor keuren voor JSON of XML maken (met UTF-8-of UTF-16-code ring. Vervolgens geeft u de aangepaste voor instelling door aan het coderings programma. Zie voor de lijst met alle vooraf gedefinieerde namen die worden ondersteund door dit `Media Encoder Standard` coderings programma, voor [instellingen voor taken voor Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- In dit onderwerp wordt `H264 Single Bitrate 4K Audio 5.1` de voor instelling (in XML-en JSON-indeling) weer gegeven.  
+ In dit onderwerp wordt de `H264 Single Bitrate 4K Audio 5.1` voor instelling (in XML-en JSON-indeling) weer gegeven.  
   
  Deze standaard instelling produceert één MP4-bestand met een bitrate van 18000 kbps en AAC 5,1-audio. Voor gedetailleerde informatie over profiel, bitrate, sampling frequentie, enzovoort, bekijkt u de hieronder gedefinieerde XML of JSON. Zie het [Media Encoder Standard schema](media-services-mes-schema.md)voor uitleg over wat elk element betekent en de geldige waarden voor elk element.  
   

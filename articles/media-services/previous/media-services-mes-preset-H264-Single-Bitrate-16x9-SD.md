@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: fcc370afeca41a8d1d227db368eeaba789c56137
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61129508"
 ---
 # <a name="h264-single-bitrate-16x9-sd"></a>H264 Single Bitrate 16x9 SD
-`Media Encoder Standard`Hiermee definieert u een set coderings definities die u kunt gebruiken bij het maken van coderings taken. U kunt een `preset name` gebruiken om aan te geven welke indeling uw media bestand moet coderen. U kunt ook uw eigen voor keuren voor JSON of XML maken (met UTF-8-of UTF-16-code ring. Vervolgens geeft u de aangepaste voor instelling door aan het coderings programma. Zie voor de lijst met alle vooraf gedefinieerde namen die worden `Media Encoder Standard` ondersteund door dit coderings programma, voor [instellingen voor taken voor Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`Hiermee definieert u een set coderings definities die u kunt gebruiken bij het maken van coderings taken. U kunt een gebruiken om aan te `preset name` geven welke indeling uw media bestand moet coderen. U kunt ook uw eigen voor keuren voor JSON of XML maken (met UTF-8-of UTF-16-code ring. Vervolgens geeft u de aangepaste voor instelling door aan het coderings programma. Zie voor de lijst met alle vooraf gedefinieerde namen die worden ondersteund door dit `Media Encoder Standard` coderings programma, voor [instellingen voor taken voor Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- In dit onderwerp worden `H264 Single Bitrate 16x9 SD` de voor instellingen in de XML-en JSON-indeling weer gegeven.  
+ In dit onderwerp worden de `H264 Single Bitrate 16x9 SD` voor instellingen in de XML-en JSON-indeling weer gegeven.  
   
  Deze vooraf ingestelde produceert een enkel MP4-bestand met een bitrate van 2200 kbps en stereo AAC-audio. Voor gedetailleerde informatie over profiel, bitrate, sampling frequentie, enzovoort, bekijkt u de hieronder gedefinieerde XML of JSON. Zie het onderwerp [Media Encoder Standard schema](media-services-mes-schema.md) voor uitleg over wat elk-element in deze voor instellingen betekent en de geldige waarden voor elk element.  
   

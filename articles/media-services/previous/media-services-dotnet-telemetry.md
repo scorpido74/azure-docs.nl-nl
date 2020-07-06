@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 1ffaefc51121aeb7421d6e49a3c0e58c76d4391e
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61464943"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-net"></a>Azure Media Services telemetrie configureren met .NET 
@@ -67,9 +67,9 @@ Zie dit artikel voor meer informatie over [het](media-services-telemetry-overvie
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Maak en configureer een Visual Studio-project.
 
-1. Stel uw ontwikkel omgeving in en vul in het bestand app. config de verbindings informatie in, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
+1. Stel uw ontwikkel omgeving in en vul het app.config bestand in met verbindings informatie, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
 
-2. Voeg het volgende-element toe aan **appSettings** die in het bestand app. config zijn gedefinieerd:
+2. Voeg het volgende-element toe aan **appSettings** die in uw app.config bestand zijn gedefinieerd:
 
     ```xml
         <add key="StorageAccountName" value="storage_name" />

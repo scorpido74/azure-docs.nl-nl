@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
 ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61447427"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>De azureiotsolutions.com-site gebruiken voor het implementeren van uw oplossings versneller
@@ -68,5 +68,5 @@ Raadpleeg de quickstarts om een van de oplossingsverbeteringen uit te proberen:
 
 * [Een externe bewakingsoplossing uitproberen](quickstart-remote-monitoring-deploy.md)
 * [Een oplossing voor een verbonden fabriek uitproberen](quickstart-connected-factory-deploy.md)
-* [Een oplossing voor predictief onderhoud uitproberen](quickstart-predictive-maintenance-deploy.md)
-* [Een oplossing voor apparaatsimulatie uitproberen](quickstart-device-simulation-deploy.md)
+* [Een oplossing voor voorspellend onderhoud uitproberen](quickstart-predictive-maintenance-deploy.md)
+* [Een apparaatsimulatieoplossing uitproberen](quickstart-device-simulation-deploy.md)

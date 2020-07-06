@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 803fcc0161f2a092006e60db5a98f5bf18dce1c1
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60381175"
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>Windows Azure Active Directory-synchronisatie en Azure Active Directory-synchronisatie upgraden
@@ -35,7 +35,7 @@ De laatste versie van DirSync is uitgebracht in juli 2014 en de laatste release 
 Azure AD Connect is de opvolgende taak van DirSync en Azure AD Sync. Alle scenario's die deze twee ondersteunen worden gecombineerd. Meer informatie hierover vindt u in [uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md).
 
 ## <a name="deprecation-schedule"></a>Schema voor afschaffing
-| Date | Opmerking |
+| Datum | Opmerking |
 | --- | --- |
 | 13 april 2016 |Windows Azure Active Directory Sync (' DirSync ') en Microsoft Azure Active Directory Sync (' Azure AD Sync ') worden aangekondigd als afgeschaft. |
 | 13 april 2017 |Ondersteuning wordt beëindigd. Klanten kunnen niet langer een ondersteunings aanvraag openen zonder eerst een upgrade naar Azure AD Connect te hoeven uitvoeren. |
@@ -57,7 +57,7 @@ Als u wilt zien hoe u een in-place upgrade van DirSync naar Azure AD Connect kun
 
 ## <a name="faq"></a>Veelgestelde vragen
 **V: Ik heb een e-mail melding ontvangen van het Azure-team en/of een bericht van het Office 365-berichten centrum, maar ik gebruik Connect.**  
-De melding werd ook naar klanten verzonden met behulp van Azure AD Connect met een buildnummer 1,0. \*dpm\dpm\protectionagents\ra\3.0. (met een bèta versie van 1,1). Micro soft raadt klanten aan om actueel te blijven met Azure AD Connect releases. Met de functie voor [automatische upgrades](how-to-connect-install-automatic-upgrade.md) die in 1,1 is geïntroduceerd, kunt u op eenvoudige wijze altijd een recente versie van Azure AD Connect installeren.
+De melding werd ook naar klanten verzonden met behulp van Azure AD Connect met een buildnummer 1,0. \* . 0 (met een bèta versie van 1,1). Micro soft raadt klanten aan om actueel te blijven met Azure AD Connect releases. Met de functie voor [automatische upgrades](how-to-connect-install-automatic-upgrade.md) die in 1,1 is geïntroduceerd, kunt u op eenvoudige wijze altijd een recente versie van Azure AD Connect installeren.
 
 **V: zal DirSync/Azure AD Sync niet meer werken op 13 april 2017?**  
 DirSync/Azure AD Sync blijft werken op 13 april 2017.  Azure AD aanvaardt echter mogelijk niet langer communicatie van DirSync/Azure AD Sync na 31 december 2017.

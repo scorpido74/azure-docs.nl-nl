@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: bced6a9e6c59dc32657dbabef986e29e0447b28b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60947201"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Rapport met kostenramingen van Azure Site Recovery Deployment Planner 
@@ -119,7 +119,7 @@ Handmatig VM's toevoegen:
 
     f. **Duur van elke noodherstelanalyse (dagen)**
 
-    g. **Het type besturingssysteem**
+    bijvoorbeeld **Het type besturingssysteem**
 
     h. **De gegevensredundantie**
 
@@ -167,7 +167,7 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Ondersteunde valuta's
 Met Azure Site Recovery Deployment Planner kunt u het kostenrapport genereren met een van de volgende valuta's.
 
-|Valuta|Naam||Valuta|Naam||Valuta|Naam|
+|Valuta|Name||Valuta|Name||Valuta|Name|
 |---|---|---|---|---|---|---|---|
 |ARS|Argentijnse peso ($)||AUD|Australische dollar ($)||BRL|Braziliaanse real (R$)|
 |CAD|Canadese dollar ($)||CHF|Zwitserse frank (chf)||DKK|Deense kroon (kr)|

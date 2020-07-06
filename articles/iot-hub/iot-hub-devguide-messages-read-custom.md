@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.openlocfilehash: e5e92c40cef15e99431dc9652820c71e87935f67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61244341"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Bericht routes en aangepaste eind punten voor apparaat-naar-Cloud-berichten gebruiken
@@ -26,7 +26,7 @@ Met IoT Hub [bericht routering](iot-hub-devguide-routing-query-syntax.md) kunnen
 | **Naam**      | De unieke naam waarmee de query wordt geïdentificeerd. |
 | **Bron**    | De oorsprong van de gegevens stroom waarop moet worden gehandeld. Bijvoorbeeld telemetrie van apparaat. |
 | **Voorwaarde** | De query-expressie voor de routerings query die wordt uitgevoerd op basis van de eigenschappen van de bericht toepassing, systeem eigenschappen, bericht tekst, dubbele labels van het apparaat en dubbele eigenschappen van het apparaat om te bepalen of het een overeenkomst voor het eind punt is. Voor meer informatie over het maken van een query raadpleegt u de [syntaxis voor bericht routering query's](iot-hub-devguide-routing-query-syntax.md) weer geven |
-| **Endpoints**  | De naam van het eind punt waar IoT Hub berichten verzendt die overeenkomen met de query. We raden u aan een eind punt in dezelfde regio te kiezen als uw IoT-hub. |
+| **Eindpunt**  | De naam van het eind punt waar IoT Hub berichten verzendt die overeenkomen met de query. We raden u aan een eind punt in dezelfde regio te kiezen als uw IoT-hub. |
 
 Eén bericht kan overeenkomen met de voor waarde voor meerdere routerings query's, in welk geval IoT Hub het bericht levert aan het eind punt dat is gekoppeld aan elke overeenkomende query. IoT Hub wordt ook de levering van berichten automatisch gedupliceerd, dus als een bericht overeenkomt met meerdere query's die dezelfde bestemming hebben, wordt deze slechts eenmaal naar die bestemming geschreven.
 

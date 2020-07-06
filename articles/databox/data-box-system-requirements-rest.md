@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/19/2019
 ms.author: alkohli
 ms.openlocfilehash: 71e0ebf7d7851ae65a6fba67a1695d755fd98bb1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61436491"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Vereisten voor Blob Storage Azure Data Box
@@ -55,9 +55,9 @@ Voor Data Box Blob Storage zijn er specifieke client bibliotheken en specifieke 
 
 | Clientbibliotheek     |Data Box versie van Blob Storage die wordt ondersteund     | Koppeling   |     Eindpunt specificatie      |
 |--------------------|--------------------------------------------|--------|---------------------------------|
-|    .NET                |    9.2.0                                           |    Nuget-pakket:https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0    <br>GitHub release:https://github.com/Azure/azure-storage-net/releases/tag/v9.2.0                                                                                                                                                                                               |    bestand app. config                 |
+|    .NET                |    9.2.0                                           |    Nuget-pakket:https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0    <br>GitHub release:https://github.com/Azure/azure-storage-net/releases/tag/v9.2.0                                                                                                                                                                                               |    app.config-bestand                 |
 |    Java                |    7.0.0                                           |    Maven-pakket:https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>GitHub release:https://github.com/Azure/azure-storage-java/releases/tag/v7.0.0                                                                                                                                                                              |    Verbindingsteken reeks instellen         |
-|    Node.js             |    2.8.3                                           |    NPM-koppeling https://www.npmjs.com/package/azure-storage : (uitvoeren `npm install azure-storage@2.7.0`:)   <br>GitHub release:https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3                                                                                                                                                                        |    Declaratie van service-exemplaar    |
+|    Node.js             |    2.8.3                                           |    NPM-koppeling: https://www.npmjs.com/package/azure-storage (uitvoeren: `npm install azure-storage@2.7.0` )   <br>GitHub release:https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3                                                                                                                                                                        |    Declaratie van service-exemplaar    |
 |    C++                 |    5.2.0                                           |    Nuget-pakket:https://www.nuget.org/packages/wastorage.v140/5.2.0   <br>GitHub release:https://github.com/Azure/azure-storage-cpp/releases/tag/v5.2.0                                                                                                                                                                                                     |    Verbindingsteken reeks instellen         |
 |    PHP                 |    1.2.0                                           |    GitHub release:<br>Algemenehttps://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-common   <br>Blobcachehttps://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-blob      <br>Installeren via Composer (Zie de details hieronder voor meer informatie).                                                                                                             |    Verbindingsteken reeks instellen         |
 |    Python              |    1.1.0                                           |    GitHub release:<br>Algemenehttps://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common <br>Blobcachehttps://github.com/Azure/azure-storage-python/releases/tag/v1.1.0-blob                                                                                                                                                                          |    Declaratie van service-exemplaar    |
@@ -68,7 +68,7 @@ Voor Data Box Blob Storage zijn er specifieke client bibliotheken en specifieke 
 ### <a name="install-php-client-via-composer---current"></a>PHP-client installeren via Composer-actueel
 
 Installeren via Composer: (Maak een BLOB als voor beeld).
-1. Maak een bestand met de naam Composer. json in de hoofdmap van het project met de volgende code:
+1. Maak een bestand met de naam composer.jsin de hoofdmap van het project met de volgende code:
 
     ```
     {
@@ -77,19 +77,19 @@ Installeren via Composer: (Maak een BLOB als voor beeld).
     }
     ```
 
-2. Down `composer.phar` load de hoofdmap van het project.
+2. Down load `composer.phar` de hoofdmap van het project.
 
 3. Uitvoeren: PHP Composer. Phar-installatie.
 
 ### <a name="endpoint-declaration"></a>Eindpunt declaratie
 
-Een Azure Data Box Blob Storage-eind punt bestaat uit twee delen: de naam van een regio en het Data Box domein. In de Data Box Blob Storage SDK is `\<serial no. of the device>.microsoftdatabox.com`het standaard eindpunt.  Ga voor meer informatie over het eind punt van de BLOB-service naar [verbinding maken via data Box Blob-opslag](data-box-deploy-copy-data-via-rest.md).
+Een Azure Data Box Blob Storage-eind punt bestaat uit twee delen: de naam van een regio en het Data Box domein. In de Data Box Blob Storage SDK is het standaard eindpunt `\<serial no. of the device>.microsoftdatabox.com` .  Ga voor meer informatie over het eind punt van de BLOB-service naar [verbinding maken via data Box Blob-opslag](data-box-deploy-copy-data-via-rest.md).
  
 ## <a name="examples"></a>Voorbeelden
 
 ### <a name="net"></a>.NET
 
-Voor Data Box Blob-opslag is het achtervoegsel van het eind punt `app.config` opgegeven in het bestand:
+Voor Data Box Blob-opslag is het achtervoegsel van het eind punt opgegeven in het `app.config` bestand:
 
 ```
 <add key="StorageConnectionString"

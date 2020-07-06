@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60246361"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect Sync: uitleg over declaratieve inrichting
@@ -105,7 +105,7 @@ In de kenmerk stromen is er een instelling om te bepalen of kenmerken met meerde
 
 Er is ook **samen voegen** en **MergeCaseInsensitive**. Met deze opties kunt u waarden uit verschillende bronnen samen voegen. Het kan bijvoorbeeld worden gebruikt om het kenmerk lid of proxyAddresses uit verschillende forests samen te voegen. Wanneer u deze optie gebruikt, moeten alle synchronisatie regels in het bereik voor een object hetzelfde type samen voegen gebruiken. U kunt de **Update** niet definiëren vanuit de ene connector en **samen voegen** van een andere. Als u probeert, treedt er een fout op.
 
-Het verschil tussen **Merge** en **MergeCaseInsensitive** is het verwerken van dubbele kenmerk waarden. De synchronisatie-engine zorgt ervoor dat er geen dubbele waarden worden ingevoegd in het doel kenmerk. Met **MergeCaseInsensitive**zijn dubbele waarden met alleen een verschil in het geval niet aanwezig. U zou bijvoorbeeld niet zowel "SMTP:bob@contoso.com" alssmtp:bob@contoso.com"in het doel kenmerk moeten zien. **Samen voegen** heeft alleen betrekking op de exacte waarden en meerdere waarden, waarbij er alleen een verschil is in het geval kan aanwezig zijn.
+Het verschil tussen **Merge** en **MergeCaseInsensitive** is het verwerken van dubbele kenmerk waarden. De synchronisatie-engine zorgt ervoor dat er geen dubbele waarden worden ingevoegd in het doel kenmerk. Met **MergeCaseInsensitive**zijn dubbele waarden met alleen een verschil in het geval niet aanwezig. U zou bijvoorbeeld niet zowel " SMTP:bob@contoso.com " als " smtp:bob@contoso.com in het doel kenmerk moeten zien. **Samen voegen** heeft alleen betrekking op de exacte waarden en meerdere waarden, waarbij er alleen een verschil is in het geval kan aanwezig zijn.
 
 De optie **vervangen** is hetzelfde als **Update**, maar wordt niet gebruikt.
 
