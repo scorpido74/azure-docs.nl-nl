@@ -8,10 +8,10 @@ ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.openlocfilehash: 5fc74c554cbb283bc6bbfee737ef98e59dd4b0ea
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82509666"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies
@@ -59,14 +59,14 @@ Opgeslagen procedures zijn gekoppeld aan een Azure Cosmos-container en de uitvoe
 
 ### <a name="commit-and-rollback"></a>Door voeren en terugdraaien
 
-Trans acties zijn systeem eigen geïntegreerd in het Azure Cosmos DB java script-programmeer model. Binnen een Java script-functie worden alle bewerkingen automatisch verpakt onder één trans actie. Als de Java script-logica in een opgeslagen procedure zonder uitzonde ringen is voltooid, worden alle bewerkingen binnen de trans actie doorgevoerd naar de data base. Instructies, `BEGIN TRANSACTION` zoals `COMMIT TRANSACTION` en (vertrouwde relationele data bases) zijn impliciet in azure Cosmos db. Als er uitzonde ringen van het script zijn, wordt de hele trans actie teruggedraaid met de Azure Cosmos DB Java Script runtime. Als zodanig is een uitzonde ring opgetreden die in `ROLLBACK TRANSACTION` feite overeenkomt met een in azure Cosmos db.
+Trans acties zijn systeem eigen geïntegreerd in het Azure Cosmos DB java script-programmeer model. Binnen een Java script-functie worden alle bewerkingen automatisch verpakt onder één trans actie. Als de Java script-logica in een opgeslagen procedure zonder uitzonde ringen is voltooid, worden alle bewerkingen binnen de trans actie doorgevoerd naar de data base. Instructies `BEGIN TRANSACTION` , zoals en `COMMIT TRANSACTION` (vertrouwde relationele data bases) zijn impliciet in azure Cosmos db. Als er uitzonde ringen van het script zijn, wordt de hele trans actie teruggedraaid met de Azure Cosmos DB Java Script runtime. Als zodanig is een uitzonde ring opgetreden die in feite overeenkomt met een `ROLLBACK TRANSACTION` in azure Cosmos db.
 
 ### <a name="data-consistency"></a>Gegevensconsistentie
 
 Opgeslagen procedures en triggers worden altijd uitgevoerd op de primaire replica van een Azure Cosmos-container. Deze functie zorgt ervoor dat lees bewerkingen van opgeslagen procedures een [sterke consistentie](consistency-levels-tradeoffs.md)bieden. Query's met door de gebruiker gedefinieerde functies kunnen worden uitgevoerd op de primaire of een secundaire replica. Opgeslagen procedures en triggers zijn bedoeld ter ondersteuning van transactionele schrijf bewerkingen. in de richting van alleen-lezen logica wordt het beste geïmplementeerd als logica en query's op toepassings zijde met behulp van de [Azure Cosmos DB SQL API sdk's](sql-api-dotnet-samples.md), helpt u de door Voer van de data base te verzadigen. 
 
 > [!TIP]
-> De query's die in een opgeslagen procedure of trigger worden uitgevoerd, zien mogelijk geen wijzigingen in items die door dezelfde script transactie zijn gemaakt. Deze instructie is van toepassing op SQL-query's, `getContent().getCollection.queryDocuments()`zoals, en geïntegreerde taal query's, zoals `getContext().getCollection().filter()`.
+> De query's die in een opgeslagen procedure of trigger worden uitgevoerd, zien mogelijk geen wijzigingen in items die door dezelfde script transactie zijn gemaakt. Deze instructie is van toepassing op SQL-query's, zoals `getContent().getCollection.queryDocuments()` , en geïntegreerde taal query's, zoals `getContext().getCollection().filter()` .
 
 ## <a name="bounded-execution"></a>Gebonden uitvoering
 
@@ -82,7 +82,7 @@ Azure Cosmos DB biedt ondersteuning voor twee typen triggers:
 
 ### <a name="pre-triggers"></a>Pre-triggers
 
-Azure Cosmos DB biedt triggers die kunnen worden aangeroepen door een bewerking uit te voeren op een Azure Cosmos-item. U kunt bijvoorbeeld een pre-trigger opgeven wanneer u een item maakt. In dit geval wordt de pre-trigger uitgevoerd voordat het item wordt gemaakt. Pre-triggers kunnen geen invoerparameters hebben. Indien nodig kan het aanvraagobject worden gebruikt om de hoofdtekst van het document van de oorspronkelijke aanvraag bij te werken. Wanneer triggers zijn geregistreerd, kunnen gebruikers de bewerkingen opgeven waarmee deze kunnen worden uitgevoerd. Als er een trigger is gemaakt `TriggerOperation.Create`met, betekent dit dat het gebruik van de trigger in een vervangings bewerking niet is toegestaan. Zie [het artikel triggers schrijven](how-to-write-stored-procedures-triggers-udfs.md#triggers) voor voor beelden.
+Azure Cosmos DB biedt triggers die kunnen worden aangeroepen door een bewerking uit te voeren op een Azure Cosmos-item. U kunt bijvoorbeeld een pre-trigger opgeven wanneer u een item maakt. In dit geval wordt de pre-trigger uitgevoerd voordat het item wordt gemaakt. Pre-triggers kunnen geen invoerparameters hebben. Indien nodig kan het aanvraagobject worden gebruikt om de hoofdtekst van het document van de oorspronkelijke aanvraag bij te werken. Wanneer triggers zijn geregistreerd, kunnen gebruikers de bewerkingen opgeven waarmee deze kunnen worden uitgevoerd. Als een trigger is gemaakt met `TriggerOperation.Create`, betekent dit dat het gebruik van de trigger in een vervangbewerking niet is toegestaan. Zie [het artikel triggers schrijven](how-to-write-stored-procedures-triggers-udfs.md#triggers) voor voor beelden.
 
 ### <a name="post-triggers"></a>Post-triggers
 

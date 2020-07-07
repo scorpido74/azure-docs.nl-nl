@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
 ms.openlocfilehash: dde84f0973cc7e21e57574bbabe398b38581358f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82562384"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Gebruiks voorbeelden voor Azure Data Box Gateway
@@ -32,7 +32,7 @@ Elk van deze scenario's wordt gedetailleerd beschreven in de volgende secties.
 
 Een van de belangrijkste voor delen van Data Box Gateway is de mogelijkheid om voortdurend gegevens op te nemen in het apparaat om te kopiëren naar de Cloud, ongeacht de grootte van de gegevens.
 
-Wanneer de gegevens naar het gateway apparaat worden geschreven, uploadt het apparaat de gegevens naar Azure Storage. Het apparaat beheert opslag automatisch door de bestanden lokaal te verwijderen en de meta gegevens te behouden wanneer er een bepaalde drempel waarde wordt bereikt. Door een lokale kopie van de meta gegevens te bewaren, kan het gateway apparaat alleen de wijzigingen uploaden wanneer het bestand wordt bijgewerkt. De gegevens die naar uw gateway apparaat worden geüpload, moeten volgens de richt lijnen in het voor [behoud van gegevens uploads](data-box-gateway-limits.md#data-upload-caveats)zijn.
+Wanneer de gegevens naar het gatewayapparaat worden geschreven, uploadt het apparaat de gegevens naar Azure Storage. Het apparaat beheert opslag automatisch door de bestanden lokaal te verwijderen en de meta gegevens te behouden wanneer er een bepaalde drempel waarde wordt bereikt. Door een lokale kopie van de meta gegevens te bewaren, kan het gateway apparaat alleen de wijzigingen uploaden wanneer het bestand wordt bijgewerkt. De gegevens die naar uw gateway apparaat worden geüpload, moeten volgens de richt lijnen in het voor [behoud van gegevens uploads](data-box-gateway-limits.md#data-upload-caveats)zijn.
 
 Wanneer het apparaat wordt gevuld met gegevens, begint het met het beperken van de ingangs snelheid (indien nodig) om overeen te komen met de snelheid waarmee gegevens naar de cloud worden geüpload. U kunt waarschuwingen gebruiken om de doorlopende opname op het apparaat te controleren. Deze waarschuwingen worden gegenereerd zodra de beperking is gestart en worden gewist zodra de beperking is gestopt.
 

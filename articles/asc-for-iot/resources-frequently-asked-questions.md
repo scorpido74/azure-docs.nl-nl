@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 1aeab1a7dcdf2b12efc268ed0d47834b24d34b87
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82734974"
 ---
 # <a name="azure-security-center-for-iot-frequently-asked-questions"></a>Veelgestelde vragen over Azure Security Center for IoT
@@ -66,11 +66,11 @@ Azure Security Center voor IoT-agent biedt een bedreigings dekking op apparaatni
 
 ## <a name="where-can-i-get-the-azure-security-center-for-iot-security-agent"></a>Waar kan ik de Azure Security Center voor IoT-beveiligings agent krijgen?
 
-De Azure Security Center voor IoT-beveiligings agent is open source en beschikbaar op GitHub in 32 bits en 64-bits Windows-en Linux https://github.com/Azure/Azure-IoT-Security-versies:.
+De Azure Security Center voor IoT-beveiligings agent is open source en beschikbaar op GitHub in 32 bits en 64-bits Windows-en Linux-versies: https://github.com/Azure/Azure-IoT-Security .
 
 ## <a name="where-does-the-azure-security-center-for-iot-agent-get-installed"></a>Waar wordt de Azure Security Center voor IoT-agent geïnstalleerd?
 
-Gedetailleerde informatie over de installatie en implementatie van de agent vindt u https://github.com/Azure/Azure-IoT-Securityin github:.
+Gedetailleerde informatie over de installatie en implementatie van de agent vindt u in GitHub: https://github.com/Azure/Azure-IoT-Security .
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Wat zijn de afhankelijkheden en vereisten van de agent?
 

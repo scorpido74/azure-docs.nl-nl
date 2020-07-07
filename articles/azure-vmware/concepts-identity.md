@@ -4,10 +4,10 @@ description: Meer informatie over de identiteits-en toegangs concepten van de Az
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: ce85b60b38db86af14b9e9aa06e568436dc76658
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82740952"
 ---
 # <a name="azure-vmware-solution-avs-identity-concepts"></a>Azure VMware-oplossing (AVS)-identiteits concepten
@@ -29,10 +29,10 @@ De CloudAdmin-en CloudGlobalAdmin-bevoegdheden worden weer gegeven in de volgend
 |  Certificaten            |  --  |        --       |  Micro soft biedt certificaat beheer.  |
 |  Inhoudsbibliotheek         | Een CloudAdmin-gebruiker heeft bevoegdheden voor het maken en gebruiken van bestanden in een inhouds bibliotheek.    |         Ingeschakeld met SSO.         |  Micro soft zal bestanden in de inhouds bibliotheek distribueren naar ESXi-hosts.  |
 |  Datacenter              |  --  |        --          |  Micro soft voert alle Data Center-bewerkingen uit.  |
-|  Gegevensarchief               | Data Store. AllocateSpace, Data Store. browse, Data Store. config, Data Store. Delete File, Data Store. File Management, Data Store. UpdateVirtualMachineMetadata     |    --    |   -- |
+|  Gegevensarchief               | Data Store. AllocateSpace, Data Store. browse, Datastore.Config, Data Store. Delete File, Data Store. File Management, Data Store. UpdateVirtualMachineMetadata     |    --    |   -- |
 |  ESX-agent beheer       |  --  |         --       |  Micro soft voert alle bewerkingen uit.  |
 |  Map                  |  Een CloudAdmin-gebruiker heeft alle machtigingen voor de map.     |  --  |  --  |
-|  Wereldwijd                  |  Global. CancelTask, Global. GlobalTag, Global. Health, Global. LogEvent, Global. ManageCustomFields, Global. ServiceManagers, Global. SetCustomField, Global. SystemTag         |                  |    |
+|  Globaal                  |  Global. CancelTask, Global. GlobalTag, Global. Health, Global. LogEvent, Global. ManageCustomFields, Global. ServiceManagers, Global. SetCustomField, Global.SystemTag         |                  |    |
 |  Host                    |  Host. HBR. HbrManagement      |        --          |  Micro soft doet alle andere host-bewerkingen.  |
 |  InventoryService        |  InventoryService. tagging      |        --          |  --  |
 |  Netwerk                 |  Netwerk. assign    |                  |  Micro soft doet alle andere netwerk bewerkingen.  |

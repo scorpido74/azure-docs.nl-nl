@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: 93813dfaecf40fcb5cab0856d013fb890118886c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82580675"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Use cases voor Azure Time Series Insights (preview)
@@ -60,7 +60,7 @@ Er zijn drie manieren om te communiceren met gegevens die zijn opgeslagen in Tim
 
   * Meer informatie over het delen van Url's en de nieuwe gebruikers interface vindt u [in visualiseren van gegevens in de Azure time series Insights preview Explorer](time-series-insights-update-explorer.md).
 
-* De derde manier om te beginnen is het gebruik van de krachtige Api's om query's uit te voeren op gegevens die zijn opgeslagen in Time Series Insights. Time Series Insights heeft tijdelijke Opera tors zoals `from`, `to` `first`, en `last`. `average`Het bevat aggregaties en trans formaties zoals, `min` `max` `split by` `order by`,,, en. `DateHistogram` Er zijn `has`ook filter operatoren, zoals, `in` `and` `or` `greater than`,,, en. `REGEX` Al deze opera tors bieden downstream-toepassingen de mogelijkheid om snel interessante trends en patronen in uw gegevens te vinden. Gebruik ze om Homegrown-visualisaties te vullen om afwijkingen op te sporen.
+* De derde manier om te beginnen is het gebruik van de krachtige Api's om query's uit te voeren op gegevens die zijn opgeslagen in Time Series Insights. Time Series Insights heeft tijdelijke Opera tors zoals `from` , `to` , `first` en `last` . Het bevat aggregaties en trans formaties zoals,,,, `average` `min` `max` `split by` `order by` en `DateHistogram` . Er zijn ook filter operatoren, zoals,,,, `has` `in` `and` `or` `greater than` en `REGEX` . Al deze opera tors bieden downstream-toepassingen de mogelijkheid om snel interessante trends en patronen in uw gegevens te vinden. Gebruik ze om Homegrown-visualisaties te vullen om afwijkingen op te sporen.
 
 ## <a name="operational-analysis-and-driving-process-efficiency"></a>Operationele analyse en efficiëntie van het proces
 

@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
 ms.openlocfilehash: 79c99a8ba2712fe69ec6d3b9b9d32ddf6aa081cb
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82580628"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Verbinding maken met on-premises bestandssystemen met Azure Logic Apps
@@ -38,7 +38,7 @@ In dit artikel wordt uitgelegd hoe u verbinding kunt maken met een on-premises b
 * Een e-mail account van een provider die wordt ondersteund door Logic Apps, zoals Office 365 Outlook, Outlook.com of Gmail. Voor andere providers [kunt u hier de lijst met connectors bekijken](https://docs.microsoft.com/connectors/). Deze logische app maakt gebruik van een Office 365 Outlook-account. Als u een ander e-mailaccount gebruikt, zijn de algemene stappen hetzelfde, maar ziet de gebruikersinterface er misschien iets anders uit.
 
   > [!IMPORTANT]
-  > Als u de Gmail-connector wilt gebruiken, kunnen alleen zakelijke accounts van G-Suite deze connector gebruiken zonder beperkingen in Logic apps. Als u een Gmail-Consumer-account hebt, kunt u deze connector gebruiken met alleen specifieke door Google goedgekeurde Services, of u kunt [een Google-client-app maken die voor verificatie met uw Gmail-connector wordt gebruikt](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Zie voor meer informatie [beleid voor gegevens beveiliging en privacybeleid voor Google connectors in azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
+  > Als u de Gmail-connector wilt gebruiken, kunnen alleen bedrijfsaccounts van G Suite deze connector zonder beperking in logische apps gebruiken. Als u een Gmail-consumentenaccount hebt, kunt u deze connector alleen gebruiken met specifieke door Google goedgekeurde services, of u kunt [een Google-client-app maken voor verificatie bij uw Gmail-connector](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Zie [Beleid voor gegevensbeveiliging en privacybeleid voor Google-connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md) voor meer informatie.
 
 * Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md). Voor dit voor beeld hebt u een lege logische app nodig.
 
@@ -70,10 +70,10 @@ In dit artikel wordt uitgelegd hoe u verbinding kunt maken met een on-premises b
 
    | Eigenschap | Vereist | Waarde | Beschrijving |
    | -------- | -------- | ----- | ----------- |
-   | **Verbindings naam** | Ja | <*verbindings naam*> | De naam die u voor de verbinding wilt hebben |
+   | **Verbindingsnaam** | Ja | <*verbindings naam*> | De naam die u voor de verbinding wilt hebben |
    | **Hoofdmap** | Ja | <*root-mapnaam*> | De hoofdmap voor uw bestands systeem, bijvoorbeeld als u de on-premises gegevens gateway hebt geïnstalleerd, zoals een lokale map op de computer waarop de on-premises gegevens gateway is geïnstalleerd, of de map voor een netwerk share waartoe de computer toegang heeft. <p>Bijvoorbeeld: `\\PublicShare\\DropboxFiles` <p>De hoofdmap is de bovenliggende map, die wordt gebruikt voor relatieve paden voor alle bestand-gerelateerde acties. |
    | **Verificatie type** | Nee | <*verificatie-type*> | Het type verificatie dat door het bestands systeem wordt gebruikt: **Windows** |
-   | **Gebruikers** | Ja | <*domain*>domein\\*username* gebruikers<naam> <p>-of- <p><*lokale*>\\computer<*gebruikers naam*> | De gebruikers naam voor de computer waarop u de map van het bestands systeem hebt. <p>Als uw bestandssysteem map zich op dezelfde computer bevindt als de on-premises gegevens gateway, kunt u <*gebruikers naam* van de *lokale computer*>\\<gebruiken>. |
+   | **Gebruikersnaam** | Ja | <*domain* > \\ domein < *gebruikers naam*> <p>-of- <p><*lokale* > \\ computer < *gebruikers naam*> | De gebruikers naam voor de computer waarop u de map van het bestands systeem hebt. <p>Als uw bestandssysteem map zich op dezelfde computer bevindt als de on-premises gegevens gateway, kunt u <gebruikers naam van de *lokale computer*gebruiken > \\ < *username*>. |
    | **Wachtwoord** | Ja | <*uw-wacht woord*> | Het wacht woord voor de computer waarop u het bestands systeem hebt |
    | **#b0** | Ja | <*geïnstalleerd-gateway naam*> | De naam voor de eerder geïnstalleerde gateway |
    |||||

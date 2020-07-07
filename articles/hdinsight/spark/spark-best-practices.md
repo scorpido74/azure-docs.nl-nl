@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: 01cdc121abded954c2443599c5d69689acd69b62
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82562335"
 ---
 # <a name="apache-spark-guidelines"></a>Apache Spark richtlijnen
@@ -53,7 +53,7 @@ Dit artikel bevat verschillende richt lijnen voor het gebruik van Apache Spark i
 
 | Optie | Documenten |
 |---|---|
-| Apache Hive op HDInsight | [Apache Spark en Apache Hive integreren met de Hive-Warehouse connector](../interactive-query/apache-hive-warehouse-connector.md) |
+| Apache Hive op HDInsight | [Apache Spark en Apache Hive integreren met Hive Warehouse Connector](../interactive-query/apache-hive-warehouse-connector.md) |
 | Apache HBase in HDInsight | [Apache Spark gebruiken om Apache HBase-gegevens te lezen en schrijven](../hdinsight-using-spark-query-hbase.md) |
 | Apache Kafka op HDInsight | [Zelfstudie: Apache Spark Structured Streaming gebruiken met Apache Kafka op HDInsight](../hdinsight-apache-kafka-spark-structured-streaming.md) |
 | Azure Cosmos DB | [Azure Cosmos DB: een lambda-architectuur op het Azure-platform implementeren](../../cosmos-db/lambda-architecture.md) |

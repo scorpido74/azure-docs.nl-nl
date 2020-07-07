@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 8028b1f301a3c7fb4ca39c8920824091a4065118
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: ccbafcfcbf13809b84883352c5a31835c6988d51
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261950"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962693"
 ---
 # <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>Een Java-toepassing maken die Azure Cosmos DB SQL API en de wijzigingenfeedverwerer gebruikt
 
@@ -57,7 +57,7 @@ mvn clean package
 
 1. Controleer eerst of u een Azure Cosmos DB-account hebt. Open de **Azure-portal** in uw browser, ga naar uw Azure Cosmos DB-account en navigeer naar **Data Explorer** in het linker deelvenster.
 
-    ![Azure Cosmos DB-account](media/create-sql-api-java-changefeed/cosmos_account_empty.JPG)
+   :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_account_empty.JPG" alt-text="Azure Cosmos DB-account":::
 
 1. Voer de app in de terminal uit met de volgende opdracht:
 
@@ -77,9 +77,7 @@ mvn clean package
     * **InventoryContainer-pktype**: een gerealiseerde weergave van het inventarisrecord, geoptimaliseerd voor query's in item ```type```
     * **InventoryContainer-leases**: een leasecontainer is altijd nodig voor een wijzigingenfeed. Deze houdt de leesvoortgang van de app bij in de wijzigingenfeed.
 
-
-    ![Lege containers](media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG)
-
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG" alt-text="Lege containers":::
 
 1. In de terminal ziet u nu een prompt
 
@@ -97,7 +95,7 @@ mvn clean package
 
     Ga terug naar de Azure Portal-gegevensverkenner in uw browser. Klik op **items** in de container **InventoryContainer-leases** om de inhoud ervan te bekijken. U ziet dat de wijzigingenfeedverwerker de leasecontainer heeft gevuld, ofwel de verwerker heeft de werkrol ```SampleHost_1``` een lease gegeven op een aantal partities van de **InventoryContainer**.
 
-    ![Leases](media/create-sql-api-java-changefeed/cosmos_leases.JPG)
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_leases.JPG" alt-text="Leases":::
 
 1. Druk in de terminal nogmaals op enter. Hiermee worden 10 documenten ingevoegd in **InventoryContainer**. Elke invoeging van documenten verschijnt in de wijzigingenfeed als JSON. De volgende callback-code verwerkt deze gebeurtenissen door de JSON-documenten te spiegelen in een gerealiseerde weergave:
 
@@ -107,15 +105,15 @@ mvn clean package
 
 1. Laat de code 5-10 seconden lopen Ga vervolgens terug naar de Azure Portal-gegevensverkenner en navigeer naar **InventoryContainer > items**. U ziet dat de items worden ingevoegd in de inventariscontainer. Let op de partitiesleutel (```id```).
 
-    ![Feedcontainer](media/create-sql-api-java-changefeed/cosmos_items.JPG)
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_items.JPG" alt-text="Feedcontainer":::
 
 1. Navigeer nu in Data Explorer naar **InventoryContainer-pktype > items**. Dit is de gerealiseerde weergave. De items in deze container weergeven **InventoryContainer**, omdat ze programmatisch zijn ingevoegd door de wijzigingenfeed. Let op de partitiesleutel (```type```). Deze gerealiseerde weergave is geoptimaliseerd voor queryfilters in ```type```, dat in **InventoryContainer** inefficiënt zou zijn, omdat die is gepartitioneerd in ```id```.
 
-    ![Gerealiseerde weergave](media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG)
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="Gerealiseerde weer gave":::
 
 1. We verwijderen een document uit zowel **InventoryContainer** als **InventoryContainer-pktype** met alleen de aanroep ```upsertItem()```. Bekijk eerste de Azure Portal-gegevensverkenner. We verwijderen het document voor ```/type == "plums"```. Deze is hieronder rood omcirkelt
 
-    ![Gerealiseerde weergave](media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG)
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="Gerealiseerde weergave":::
 
     Druk opnieuw op enter om de functie ```deleteDocument()``` in de voorbeeldcode aan te roepen. Deze functie die hieronder wordt weergegeven, voegt een nieuwe versie van het document in met ```/ttl == 5```, dat de TTL (time-to-live) van het document instelt op 5 seconden. 
     

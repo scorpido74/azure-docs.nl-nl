@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: alkohli
 ms.openlocfilehash: 9f4633a3fcafcb2b3151270715036e7940eb1c91
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82561840"
 ---
 # <a name="azure-data-box-edge-and-azure-data-box-gateway-1906-release-notes"></a>Release opmerkingen bij Azure Data Box Edge en Azure Data Box Gateway 1906
@@ -29,7 +29,7 @@ Deze release komt overeen met de software versies:
 > [!NOTE]
 > Update 1906 kan alleen worden toegepast op Data Box Edge apparaten met een algemene Beschik baarheid (GA) of 1905 versie van de software.
 
-## <a name="whats-new"></a>Nieuwe functies
+## <a name="whats-new"></a>Nieuw
 
 - **Fout oplossing in de werk stroom voor herstel sleutel beheer** : in de eerdere versie is er een fout opgetreden, omdat de herstel sleutel niet werd toegepast. Deze fout is opgelost in deze release. We raden u ten zeerste aan deze update toe te passen als herstel sleutel, zodat u de gegevens op het apparaat kunt herstellen, in het geval dat het apparaat niet wordt opgestart. Zie voor meer informatie hoe u [de herstel sleutel opslaat bij het implementeren van data Box Edge of Data Box gateway](azure-stack-edge-deploy-connect-setup-activate.md#set-up-and-activate-the-physical-device).
 - De **FPGA-logboek registratie van de Programmeer bare Gate Array-matrix (in) is verbeterd** : de start van 1905 release, logboek registratie en waarschuwings verbeteringen met betrekking tot FPGA zijn gemaakt. Dit blijft een vereiste update voor Data Box Edge als u de functie Edge Compute gebruikt met de FPGA. Zie [gegevens transformeren met Edge Compute op uw data Box Edge](azure-stack-edge-deploy-configure-compute-advanced.md)voor meer informatie.

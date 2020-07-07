@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: 1fb5b78f210a9bd817a2987dcb30fa25d156d5d2
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82780433"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Het maken van een cluster mislukt met InvalidNetworkConfigurationErrorCode in azure HDInsight
 
 In dit artikel worden de stappen beschreven voor het oplossen van problemen en mogelijke oplossingen voor problemen bij het werken met Azure HDInsight-clusters.
 
-Als u fout code `InvalidNetworkConfigurationErrorCode` ziet met de beschrijving Virtual Network configuratie niet compatibel is met HDInsight-vereiste, duidt dit meestal op een probleem met de configuratie van het [virtuele netwerk](../hdinsight-plan-virtual-network-deployment.md) voor uw cluster. Op basis van de rest van de fout beschrijving, volgt u de onderstaande secties om het probleem op te lossen.
+Als u fout code ziet `InvalidNetworkConfigurationErrorCode` met de beschrijving Virtual Network configuratie niet compatibel is met HDInsight-vereiste, duidt dit meestal op een probleem met de configuratie van het [virtuele netwerk](../hdinsight-plan-virtual-network-deployment.md) voor uw cluster. Op basis van de rest van de fout beschrijving, volgt u de onderstaande secties om het probleem op te lossen.
 
 ## <a name="hostname-resolution-failed"></a>' Omzetting van HostNamen mislukt '
 
@@ -32,11 +32,11 @@ Deze fout wijst op een probleem met de aangepaste DNS-configuratie. DNS-servers 
 
 ### <a name="resolution"></a>Oplossing
 
-1. SSH naar de virtuele machine die deel uitmaakt van het cluster en voer de `hostname -f`opdracht uit. Hiermee wordt de Fully Qualified Domain Name van de host geretourneerd (zoals `<host_fqdn>` beschreven in de onderstaande instructies).
+1. SSH naar de virtuele machine die deel uitmaakt van het cluster en voer de opdracht uit `hostname -f` . Hiermee wordt de Fully Qualified Domain Name van de host geretourneerd (zoals `<host_fqdn>` beschreven in de onderstaande instructies).
 
-1. Voer vervolgens de opdracht `nslookup <host_fqdn>` uit (bijvoorbeeld `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`). Als met deze opdracht de naam wordt omgezet in een IP-adres, betekent dit dat uw DNS-server goed werkt. In dit geval kunt u een ondersteunings aanvraag met HDInsight genereren en uw probleem onderzoeken. Neem in uw ondersteunings aanvraag de stappen voor het oplossen van problemen op die u hebt uitgevoerd. Dit helpt ons het probleem sneller op te lossen.
+1. Voer vervolgens de opdracht uit `nslookup <host_fqdn>` (bijvoorbeeld `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net` ). Als met deze opdracht de naam wordt omgezet in een IP-adres, betekent dit dat uw DNS-server goed werkt. In dit geval kunt u een ondersteunings aanvraag met HDInsight genereren en uw probleem onderzoeken. Neem in uw ondersteunings aanvraag de stappen voor het oplossen van problemen op die u hebt uitgevoerd. Dit helpt ons het probleem sneller op te lossen.
 
-1. Als de bovenstaande opdracht geen IP-adres retourneert, voert u `nslookup <host_fqdn> 168.63.129.16` uit (bijvoorbeeld `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`). Als met deze opdracht het IP-adres kan worden omgezet, betekent dit dat de DNS-server de query niet doorstuurt naar de DNS van Azure, of geen VM is die deel uitmaakt van hetzelfde virtuele netwerk als het cluster.
+1. Als de bovenstaande opdracht geen IP-adres retourneert, voert u uit `nslookup <host_fqdn> 168.63.129.16` (bijvoorbeeld `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16` ). Als met deze opdracht het IP-adres kan worden omgezet, betekent dit dat de DNS-server de query niet doorstuurt naar de DNS van Azure, of geen VM is die deel uitmaakt van hetzelfde virtuele netwerk als het cluster.
 
 1. Als u geen Azure-VM hebt die kan fungeren als aangepaste DNS-server in het virtuele netwerk van het cluster, moet u dit eerst toevoegen. Maak een VM in het virtuele netwerk, die wordt geconfigureerd als DNS-doorstuur server.
 
@@ -143,6 +143,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
 
 * Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

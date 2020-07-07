@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: 791eed9419375c7245488b8ec61a1c5481be382e
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82580561"
 ---
 # <a name="configure-tls-in-azure-database-for-postgresql---hyperscale-citus"></a>TLS configureren in Azure Database for PostgreSQL-grootschalige (Citus)
@@ -26,17 +26,17 @@ De verbindings reeksen die vooraf zijn gedefinieerd in de instellingen voor verb
 Voor sommige toepassings raamwerken die gebruikmaken van PostgreSQL voor hun database services, wordt TLS niet standaard ingeschakeld tijdens de installatie. Als uw PostgreSQL-server TLS-verbindingen afdwingt, maar de toepassing niet is geconfigureerd voor TLS, kan de toepassing geen verbinding maken met de database server. Raadpleeg de documentatie van uw toepassing voor informatie over het inschakelen van TLS-verbindingen.
 
 ## <a name="applications-that-require-certificate-verification-for-tls-connectivity"></a>Toepassingen waarvoor certificaat verificatie voor TLS-connectiviteit is vereist
-In sommige gevallen vereist toepassingen een lokaal certificaat bestand dat is gegenereerd op basis van een certificaat bestand van een vertrouwde certificerings instantie (. CER) om veilig verbinding te kunnen maken. Het certificaat om verbinding te maken met een Azure Database for PostgreSQL-grootschalige (Citus) bevindt zich op https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem. Down load het certificaat bestand en sla het op naar uw voorkeurs locatie.
+In sommige gevallen vereist toepassingen een lokaal certificaat bestand dat is gegenereerd op basis van een certificaat bestand van een vertrouwde certificerings instantie (. CER) om veilig verbinding te kunnen maken. Het certificaat om verbinding te maken met een Azure Database for PostgreSQL-grootschalige (Citus) bevindt zich op https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem . Down load het certificaat bestand en sla het op naar uw voorkeurs locatie.
 
 ### <a name="connect-using-psql"></a>Verbinding maken met psql
-In het volgende voor beeld ziet u hoe u verbinding maakt met uw grootschalige (Citus)-coördinator knooppunt met behulp van het psql-opdracht regel programma. Gebruik de `sslmode=verify-full` instelling Connection String om TLS-certificaat verificatie af te dwingen. Geef het pad van het lokale certificaat bestand `sslrootcert` door aan de para meter.
+In het volgende voor beeld ziet u hoe u verbinding maakt met uw grootschalige (Citus)-coördinator knooppunt met behulp van het psql-opdracht regel programma. Gebruik de `sslmode=verify-full` instelling Connection String om TLS-certificaat verificatie af te dwingen. Geef het pad van het lokale certificaat bestand door aan de `sslrootcert` para meter.
 
 Hieronder ziet u een voor beeld van de psql-connection string:
 ```
 psql "sslmode=verify-full sslrootcert=DigiCertGlobalRootCA.crt.pem host=mydemoserver.postgres.database.azure.com dbname=citus user=citus password=your_pass"
 ```
 > [!TIP]
-> Controleer of de waarde die is `sslrootcert` door gegeven, overeenkomt met het bestandspad voor het certificaat dat u hebt opgeslagen.
+> Controleer of de waarde die is door gegeven, `sslrootcert` overeenkomt met het bestandspad voor het certificaat dat u hebt opgeslagen.
 
 ## <a name="next-steps"></a>Volgende stappen
 Verbeter de beveiliging verder met de [firewall regels in azure database for PostgreSQL-grootschalige (Citus)](concepts-hyperscale-firewall-rules.md).

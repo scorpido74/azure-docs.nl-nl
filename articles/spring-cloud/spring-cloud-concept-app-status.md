@@ -1,5 +1,5 @@
 ---
-title: Informatie over de app-status in azure lente Cloud
+title: Informatie over appstatus in Azure Spring Cloud
 description: Meer informatie over de app-status Categorieën in azure lente Cloud
 author: MikeDodaro
 ms.service: spring-cloud
@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: brendm
 ms.openlocfilehash: 70a9e6392e21422d7513197fbf7a1a75e1f6ab8f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82569002"
 ---
-# <a name="understanding-app-status-in-azure-spring-cloud"></a>Informatie over de app-status in azure lente Cloud
+# <a name="understanding-app-status-in-azure-spring-cloud"></a>Informatie over appstatus in Azure Spring Cloud
 
 De Azure veer Cloud-gebruikers interface levert informatie over de status van actieve toepassingen.  Er is een optie voor **apps** voor elke resource groep in een abonnement dat algemene status van toepassings typen weergeeft.  Voor elk toepassings type worden **toepassings exemplaren**weer gegeven.
 
@@ -42,7 +42,7 @@ Als u de algemene status van een toepassings type wilt weer geven, selecteert u 
 | Bijwerken | De resource wordt bijgewerkt. |
 | Geslaagd | Er zijn resources opgegeven en het binaire bestand wordt geïmplementeerd. |
 | Mislukt | Het doel van het *succes* is niet gerealiseerd. |
-| Verwijder | De resource wordt verwijderd. Dit voor komt dat de bewerking wordt voor komen en de resource is niet beschikbaar in deze status. |
+| Verwijderen | De resource wordt verwijderd. Dit voor komt dat de bewerking wordt voor komen en de resource is niet beschikbaar in deze status. |
 
 ## <a name="app-instances-status"></a>Status app-exemplaren
 
@@ -71,4 +71,4 @@ Als u de status van een specifiek exemplaar van een geïmplementeerde app wilt w
 
 
 ## <a name="see-also"></a>Zie ook
-* [Een Java-lente toepassing voorbereiden voor implementatie in azure lente Cloud](spring-cloud-tutorial-prepare-app-deployment.md)
+* [Een Java Spring-toepassing voorbereiden voor implementatie in Azure Spring Cloud](spring-cloud-tutorial-prepare-app-deployment.md)

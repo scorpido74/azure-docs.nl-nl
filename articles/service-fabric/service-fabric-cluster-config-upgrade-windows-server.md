@@ -6,22 +6,22 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
 ms.openlocfilehash: 8d0279cc323f7eee87feb2a596a4c2df0b4667e1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82790844"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>De configuratie van een zelfstandig cluster bijwerken 
 
 Voor elk modern systeem is de mogelijkheid om een upgrade uit te kunnen zetten van de lange termijn voor het succes van uw product. Een Azure Service Fabric-cluster is een bron waarvan u eigenaar bent. In dit artikel wordt beschreven hoe u de configuratie-instellingen van uw zelfstandige Service Fabric cluster bijwerkt.
 
-## <a name="customize-cluster-settings-in-the-clusterconfigjson-file"></a>Cluster instellingen aanpassen in het bestand ClusterConfig. json
-Zelfstandige clusters worden geconfigureerd via het bestand *ClusterConfig. json* . Zie [configuratie-instellingen voor een zelfstandig Windows-cluster](service-fabric-cluster-manifest.md)voor meer informatie over de verschillende instellingen.
+## <a name="customize-cluster-settings-in-the-clusterconfigjson-file"></a>Cluster instellingen aanpassen in de ClusterConfig.jsvoor het bestand
+Zelfstandige clusters worden geconfigureerd via de *ClusterConfig.jsvoor* het bestand. Zie [configuratie-instellingen voor een zelfstandig Windows-cluster](service-fabric-cluster-manifest.md)voor meer informatie over de verschillende instellingen.
 
-U kunt instellingen toevoegen, bijwerken of verwijderen in de `fabricSettings` sectie in het gedeelte [cluster eigenschappen](./service-fabric-cluster-manifest.md#cluster-properties) van *ClusterConfig. json*. 
+U kunt instellingen toevoegen, bijwerken of verwijderen in de `fabricSettings` sectie onder het gedeelte [cluster eigenschappen](./service-fabric-cluster-manifest.md#cluster-properties) in *ClusterConfig.jsop*. 
 
-De volgende JSON voegt bijvoorbeeld een nieuwe instelling *MaxDiskQuotaInMB* toe aan de sectie *Diagnostische gegevens* onder `fabricSettings`:
+De volgende JSON voegt bijvoorbeeld een nieuwe instelling *MaxDiskQuotaInMB* toe aan de sectie *Diagnostische gegevens* onder `fabricSettings` :
 
 ```json
       {
@@ -35,7 +35,7 @@ De volgende JSON voegt bijvoorbeeld een nieuwe instelling *MaxDiskQuotaInMB* toe
       }
 ```
 
-Nadat u de instellingen in het bestand ClusterConfig. json hebt gewijzigd, [test u de cluster configuratie](#test-the-cluster-configuration) en voert u vervolgens [een upgrade uit van de cluster configuratie](#upgrade-the-cluster-configuration) om de instellingen toe te passen op uw cluster. 
+Nadat u de instellingen in uw ClusterConfig.jsin het bestand hebt gewijzigd, [test u de cluster configuratie](#test-the-cluster-configuration) en voert u vervolgens [een upgrade uit voor de cluster configuratie](#upgrade-the-cluster-configuration) om de instellingen toe te passen op uw cluster. 
 
 ## <a name="test-the-cluster-configuration"></a>De cluster configuratie testen
 Voordat u de configuratie-upgrade initieert, kunt u de nieuwe JSON van de cluster configuratie testen door het volgende Power shell-script uit te voeren in het zelfstandige pakket:

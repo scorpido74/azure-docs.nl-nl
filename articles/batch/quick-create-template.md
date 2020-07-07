@@ -4,12 +4,12 @@ description: Leer snel hoe u een Batch-taak kunt uitvoeren met behulp van Azure 
 ms.topic: quickstart
 ms.date: 05/19/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 1e3becaa8a71fbb0f3c7baea97b57a03722a99cc
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 5f26aeead41fa1ffcebefdeaabae84490dfdae2b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262681"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959820"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-azure-resource-manager-template"></a>Quickstart: een Batch-account maken met een Azure Resource Manager-sjabloon
 
@@ -33,8 +33,8 @@ De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstart-sj
 
 Er worden twee Azure-resources gedefinieerd in de sjabloon:
 
-- [Microsoft.Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts): Hiermee maakt u een opslagaccount.
-- [Microsoft.Batch/batchAccounts](https://docs.microsoft.com/azure/templates/microsoft.batch/batchaccounts): Hiermee maakt u een Batch-account.
+- [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): Hiermee maakt u een opslagaccount.
+- [Microsoft.Batch/batchAccounts](/azure/templates/microsoft.batch/batchaccounts): Hiermee maakt u een Batch-account.
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren
 

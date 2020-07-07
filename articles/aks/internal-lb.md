@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.openlocfilehash: 0789a866ebda270f3e5e8b150e072c7aedea7f04
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82790606"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Een interne load balancer gebruiken met Azure Kubernetes service (AKS)
@@ -29,7 +29,7 @@ De AKS-Cluster service-principal moet machtigingen hebben om netwerk bronnen te 
 
 ## <a name="create-an-internal-load-balancer"></a>Een interne load balancer maken
 
-Als u een interne load balancer wilt maken, maakt u een `internal-lb.yaml` service manifest met de naam met de *LoadBalancer* van het Service type en de *Azure-Load Balancer-interne* aantekening, zoals wordt weer gegeven in het volgende voor beeld:
+Als u een interne load balancer wilt maken, maakt u een service manifest `internal-lb.yaml` met de naam met de *LoadBalancer* van het Service type en de *Azure-Load Balancer-interne* aantekening, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```yaml
 apiVersion: v1
@@ -54,7 +54,7 @@ kubectl apply -f internal-lb.yaml
 
 Er wordt een Azure-load balancer gemaakt in de knooppunt resource groep en verbonden met hetzelfde virtuele netwerk als het AKS-cluster.
 
-Wanneer u de service details bekijkt, wordt het IP-adres van de interne load balancer weer gegeven in de kolom *extern-IP* . In deze context bevindt *extern* zich ten opzichte van de externe interface van de Load Balancer, niet dat het een openbaar, extern IP-adres ontvangt. Het kan een paar minuten duren voordat het IP-adres is gewijzigd van * \<in\> behandeling* naar een effectief intern IP-adres, zoals wordt weer gegeven in het volgende voor beeld:
+Wanneer u de service details bekijkt, wordt het IP-adres van de interne load balancer weer gegeven in de kolom *extern-IP* . In deze context bevindt *extern* zich ten opzichte van de externe interface van de Load Balancer, niet dat het een openbaar, extern IP-adres ontvangt. Het kan een paar minuten duren voordat het IP-adres is gewijzigd van *\<pending\>* naar een effectief intern IP-adres, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```
 $ kubectl get service internal-app
@@ -106,7 +106,7 @@ internal-app   LoadBalancer   10.1.15.188   10.0.0.35     80:31669/TCP   1m
 ```
 
 > [!NOTE]
-> Mogelijk moet u de service-principal voor uw AKS-cluster de rol *Network contributor* verlenen aan de resource groep waar uw virtuele Azure-netwerk resources zijn geïmplementeerd. Bekijk de service-principal met [AZ AKS show][az-aks-show], zoals `az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId"`. Als u een roltoewijzing wilt maken, gebruikt u de opdracht [AZ Role Assignment Create][az-role-assignment-create] .
+> Mogelijk moet u de service-principal voor uw AKS-cluster de rol *Network contributor* verlenen aan de resource groep waar uw virtuele Azure-netwerk resources zijn geïmplementeerd. Bekijk de service-principal met [AZ AKS show][az-aks-show], zoals `az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId"` . Als u een roltoewijzing wilt maken, gebruikt u de opdracht [AZ Role Assignment Create][az-role-assignment-create] .
 
 ## <a name="specify-a-different-subnet"></a>Geef een ander subnet op
 
@@ -132,7 +132,7 @@ spec:
 
 Wanneer alle services die gebruikmaken van de interne load balancer worden verwijderd, wordt de load balancer zelf ook verwijderd.
 
-U kunt een service ook rechtstreeks verwijderen, net als bij elke Kubernetes-resource `kubectl delete service internal-app`, zoals, waardoor de onderliggende Azure-Load Balancer worden verwijderd.
+U kunt een service ook rechtstreeks verwijderen, net als bij elke Kubernetes-resource, zoals `kubectl delete service internal-app` , waardoor de onderliggende Azure-Load Balancer worden verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

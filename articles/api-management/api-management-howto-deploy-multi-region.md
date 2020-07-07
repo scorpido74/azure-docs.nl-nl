@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 17c92558ebef2eee0a4daead45d16a295cedd1bb
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82790476"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Exemplaar van Azure API Management-service implementeren in meerdere Azure-regio's
@@ -53,7 +53,7 @@ Een nieuwe Azure API Management-service bevat in eerste instantie slechts één 
 
 Azure API Management bevat slechts één back-end-service-URL. Hoewel er Azure API Management instanties in verschillende regio's zijn, zal de API-gateway nog steeds aanvragen door sturen naar dezelfde back-end-service, die slechts in één regio is geïmplementeerd. In dit geval wordt de prestatie verbetering alleen opgehaald van antwoorden in de cache van Azure API Management in een specifieke regio voor de aanvraag, maar neemt het contact op met de back-end over de hele wereld mogelijk toch een hoge latentie.
 
-Als u de geografische distributie van uw systeem volledig wilt benutten, moet u de back-upservices hebben geïmplementeerd in dezelfde regio's als Azure API Management-exemplaren. Vervolgens kunt u met beleid `@(context.Deployment.Region)` en eigenschap het verkeer door sturen naar lokale exemplaren van uw back-end.
+Als u de geografische distributie van uw systeem volledig wilt benutten, moet u de back-upservices hebben geïmplementeerd in dezelfde regio's als Azure API Management-exemplaren. Vervolgens kunt u met beleid en `@(context.Deployment.Region)` eigenschap het verkeer door sturen naar lokale exemplaren van uw back-end.
 
 1. Navigeer naar uw Azure API Management-exemplaar en klik op **api's** in het menu links.
 2. Selecteer de gewenste API.
@@ -61,7 +61,7 @@ Als u de geografische distributie van uw systeem volledig wilt benutten, moet u 
 
     ![API-code-editor](./media/api-management-howto-deploy-multi-region/api-management-api-code-editor.png)
 
-4. Gebruik de `set-backend` combi natie met `choose` voorwaardelijke beleids regels voor het maken van een juist `<inbound> </inbound>` routerings beleid in de sectie van het bestand.
+4. Gebruik de `set-backend` combi natie met voorwaardelijke `choose` beleids regels voor het maken van een juist routerings beleid in de `<inbound> </inbound>` sectie van het bestand.
 
     Het onderstaande XML-bestand zou bijvoorbeeld werken voor de regio's vs-West en Azië-oost:
 
@@ -102,8 +102,8 @@ API Management stuurt de aanvragen naar een regionale _Gateway_ op basis van [de
 
 1. Maak uw eigen [Azure-Traffic Manager](https://azure.microsoft.com/services/traffic-manager/).
 1. Als u een aangepast domein gebruikt, [gebruikt u dit met de Traffic Manager](../traffic-manager/traffic-manager-point-internet-domain.md) in plaats van de API Management-service.
-1. [Configureer de API Management regionale eind punten in Traffic Manager](../traffic-manager/traffic-manager-manage-endpoints.md). De regionale eind punten volgen bijvoorbeeld `https://<service-name>-<region>-01.regional.azure-api.net` `https://contoso-westus2-01.regional.azure-api.net`het URL-patroon van.
-1. [Configureer de API Management regionale status eindpunten in Traffic Manager](../traffic-manager/traffic-manager-monitoring.md). De regionale status-eind punten volgen het URL- `https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef`patroon van, `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef`bijvoorbeeld.
+1. [Configureer de API Management regionale eind punten in Traffic Manager](../traffic-manager/traffic-manager-manage-endpoints.md). De regionale eind punten volgen bijvoorbeeld het URL-patroon van `https://<service-name>-<region>-01.regional.azure-api.net` `https://contoso-westus2-01.regional.azure-api.net` .
+1. [Configureer de API Management regionale status eindpunten in Traffic Manager](../traffic-manager/traffic-manager-monitoring.md). De regionale status-eind punten volgen het URL-patroon van `https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef` , bijvoorbeeld `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef` .
 1. Geef [de routerings methode](../traffic-manager/traffic-manager-routing-methods.md) van de Traffic Manager op.
 
 [create an api management service instance]: get-started-create-service-instance.md

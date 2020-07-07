@@ -8,10 +8,10 @@ ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 68453341defd2d359e69e0ecf8a821464fead0d3
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82744063"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Azure-beveiligings basislijn voor back-up
@@ -186,7 +186,7 @@ Daarnaast verzendt Azure Backup diagnostische gebeurtenissen die kunnen worden v
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: Logboeken bewaken en controleren
 
-**Hulp**: Azure Backup biedt ingebouwde mogelijkheden voor bewaking en waarschuwingen in een Recovery Services kluis. Deze mogelijkheden zijn beschikbaar zonder enige extra beheer infrastructuur. U kunt de schaal van uw bewaking en rapportage ook verg Roten met behulp van Azure Monitor.
+**Hulp**: Azure Backup biedt ingebouwde mogelijkheden voor bewaking en waarschuwingen in een Recovery Services kluis. Deze mogelijkheden zijn beschikbaar zonder enige extra beheerinfrastructuur. U kunt tevens de schaal van uw bewaking en rapportage vergroten door Azure Monitor te gebruiken.
 
 Schakel Diagnostische instellingen voor Azure-activiteiten logboek in en verzend de logboeken naar een Log Analytics-werk ruimte. Voer query's uit in Log Analytics om zoek termen te zoeken, trends te identificeren, patronen te analyseren en veel andere inzichten te bieden op basis van de activiteiten logboek gegevens die mogelijk zijn verzameld voor Recovery Services kluizen.
 
@@ -202,7 +202,7 @@ Schakel Diagnostische instellingen voor Azure-activiteiten logboek in en verzend
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: waarschuwingen inschakelen voor afwijkende activiteit
 
-**Hulp**: Azure Backup biedt ingebouwde mogelijkheden voor bewaking en waarschuwingen in een Recovery Services kluis. Deze mogelijkheden zijn beschikbaar zonder enige extra beheer infrastructuur. U kunt de schaal van uw bewaking en rapportage ook verg Roten met behulp van Azure Monitor.
+**Hulp**: Azure Backup biedt ingebouwde mogelijkheden voor bewaking en waarschuwingen in een Recovery Services kluis. Deze mogelijkheden zijn beschikbaar zonder enige extra beheerinfrastructuur. U kunt tevens de schaal van uw bewaking en rapportage vergroten door Azure Monitor te gebruiken.
 
 Waarschuwingen zijn voornamelijk scenario's waarin gebruikers een melding ontvangen dat ze relevante actie kunnen ondernemen. In het gedeelte back-upwaarschuwingen worden waarschuwingen weer gegeven die zijn gegenereerd door Azure Backup service. Deze waarschuwingen worden gedefinieerd door de service en u kunt geen aangepaste waarschuwingen maken.
 
@@ -410,7 +410,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -426,7 +426,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: systemen isoleren die gevoelige informatie opslaan of verwerken
 
-**Richt lijnen**: bij het maken van een back-up van Azure IaaS vm's biedt Azure backup onafhankelijke en geïsoleerde back-ups om te beschermen tegen onbedoelde vernietiging van originele gegevens. Back-ups worden opgeslagen in een Recovery Services kluis met ingebouwd beheer van herstel punten.
+**Richt lijnen**: bij het maken van een back-up van Azure IaaS vm's biedt Azure backup onafhankelijke en geïsoleerde back-ups om te beschermen tegen onbedoelde vernietiging van originele gegevens. Back-ups worden opgeslagen in een Recovery Services-kluis met ingebouwd beheer van herstelpunten.
 
 Implementeer afzonderlijke abonnementen en/of beheer groepen voor ontwikkelings-, test-en productie Recovery Services kluizen. Resources moeten worden gescheiden door VNet/subnet, op de juiste wijze worden gelabeld en beveiligd door een NSG of Azure Firewall. Resources die gevoelige gegevens opslaan of verwerken, moeten voldoende geïsoleerd zijn. Voor Virtual Machines het opslaan of verwerken van gevoelige gegevens, implementeert u beleid en procedure (s) om ze uit te scha kelen wanneer ze niet worden gebruikt.
 
@@ -894,7 +894,7 @@ Gebruik Azure Security Center bedreigings detectie voor gegevens Services om mal
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: volledige back-ups van het systeem uitvoeren en een back-up maken van een door de klant beheerde sleutels
 
-**Hulp**: lokaal redundante opslag (LRS) repliceert uw gegevens drie keer (er worden drie kopieën gemaakt van uw gegevens) in een opslag schaal eenheid in een Data Center. Alle kopieën van de gegevens komen binnen dezelfde regio voor. LRS is een goedkope optie voor het beveiligen van uw gegevens tegen fouten in de lokale hardware. Geo-redundante opslag (GRS) is de standaard en aanbevolen replicatie optie. Met GRS worden uw gegevens gerepliceerd naar een secundaire regio (honderden kilometers verwijderd van de primaire locatie van de brongegevens). GRS kost meer dan LRS, maar GRS biedt een hoger duurzaamheids niveau voor uw gegevens, zelfs als er sprake is van een regionale storing.
+**Hulp**: lokaal redundante opslag (LRS) repliceert uw gegevens drie keer (er worden drie kopieën gemaakt van uw gegevens) in een opslag schaal eenheid in een Data Center. Alle kopieën van de gegevens komen binnen dezelfde regio voor. LRS is een goedkope optie voor het beveiligen van uw gegevens tegen fouten in de lokale hardware. Geo-redundante opslag (GRS) is de standaard en aanbevolen replicatie optie. Met GRS worden uw gegevens gerepliceerd naar een secundaire regio (honderden kilometers verwijderd van de primaire locatie van de brongegevens). GRS is duurder dan LRS, maar biedt een hoger duurzaamheidsniveau voor uw gegevens, zelfs in geval van een regionale onderbreking.
 
 Back-ups van door de klant beheerde sleutels binnen Azure Key Vault.
 

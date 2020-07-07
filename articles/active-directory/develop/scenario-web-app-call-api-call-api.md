@@ -12,10 +12,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 12802ab6dcfbbe5a1c5576ab672ead864dd0b4ae
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82559874"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Een web-app die web-Api's aanroept: een web-API aanroepen
@@ -28,7 +28,7 @@ Het aanroepen van een beveiligde web-API is afhankelijk van uw taal en het gewen
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Hier volgt een vereenvoudigde code voor de actie van `HomeController`. Met deze code wordt een token opgehaald om Microsoft Graph aan te roepen. Code is toegevoegd om te laten zien hoe Microsoft Graph moet worden aangeroepen als een REST API. De URL voor de Microsoft Graph-API wordt opgegeven in het bestand appSettings. json en wordt gelezen in een variabele `webOptions`met de naam:
+Hier volgt een vereenvoudigde code voor de actie van `HomeController` . Met deze code wordt een token opgehaald om Microsoft Graph aan te roepen. Code is toegevoegd om te laten zien hoe Microsoft Graph moet worden aangeroepen als een REST API. De URL voor de Microsoft Graph-API wordt opgegeven in het appsettings.jsbestand en wordt gelezen in een variabele met de naam `webOptions` :
 
 ```json
 {
@@ -117,4 +117,4 @@ def graphcall():
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Verplaatsen naar productie](scenario-web-app-call-api-production.md)
+> [Naar productie verplaatsen](scenario-web-app-call-api-production.md)

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: ac37e9bd10caea5c6e58fc797eac73ce6c714162
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82561028"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Continue integratie en continue implementatie naar Azure IoT Edge
@@ -25,7 +25,7 @@ In dit artikel leert u hoe u de ingebouwde Azure IoT Edge taken voor Azure-pijp 
 
 * **Azure IOT Edge-build-installatie kopieën van de module maken** uw IOT Edge oplossings code en bouwt de container installatie kopieën.
 * Met **Azure IOT Edge-push installatie kopieën** worden module-installatie kopieën gepusht naar het container register dat u hebt opgegeven.
-* **Azure IOT Edge-implementatie manifest maken** neemt een implementatie. sjabloon. JSON-bestand en de variabelen op, waarna het definitieve manifest bestand voor IOT Edge implementatie wordt gegenereerd.
+* **Azure IOT Edge-implementatie manifest maken** neemt een deployment.template.jsop in het bestand en de variabelen en vervolgens wordt het definitieve manifest bestand voor de implementatie van IOT Edge gegenereerd.
 * **Azure IOT Edge-implementeren op IOT edge-apparaten** helpt bij het maken van IOT Edge-implementaties op één of meerdere IOT edge apparaten.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -54,7 +54,7 @@ In deze sectie maakt u een nieuwe build-pijp lijn. Configureer de pijp lijn zo d
 >
 >Zie [een build-pijp lijn maken](https://docs.microsoft.com/azure/devops/pipelines/create-first-pipeline)voor meer informatie.
 
-1. Meld u aan bij uw Azure DevOps-organisatie (**https:\//dev.Azure.com/{your organization}/**) en open het project met uw IOT Edge Solution-opslag plaats.
+1. Meld u aan bij uw Azure DevOps-organisatie (**https: \/ /dev.Azure.com/{your organization}/**) en open het project met uw IOT Edge Solution-opslag plaats.
 
    Voor dit artikel hebt u een opslag plaats gemaakt met de naam **IoTEdgeRepo**. Deze opslag plaats bevat **IoTEdgeSolution** die de code voor een module met de naam **filtermodule**heeft.
 
@@ -84,7 +84,7 @@ In deze sectie maakt u een nieuwe build-pijp lijn. Configureer de pijp lijn zo d
 
      ![Groep bouwen agent configureren](./media/how-to-ci-cd/configure-env.png)
 
-5. Uw pijp lijn wordt vooraf geconfigureerd met een taak genaamd **Agent taak 1**. Selecteer het plus teken (**+**) om drie taken toe te voegen aan de taak: **Azure IOT Edge** twee maal, **Kopieer bestanden** één keer en **Publiceer de build-artefacten** eenmaal. (Beweeg de muis aanwijzer over de naam van elke taak om de knop **toevoegen** te zien.)
+5. Uw pijp lijn wordt vooraf geconfigureerd met een taak genaamd **Agent taak 1**. Selecteer het plus teken ( **+** ) om drie taken toe te voegen aan de taak: **Azure IOT Edge** twee maal, **Kopieer bestanden** één keer en **Publiceer de build-artefacten** eenmaal. (Beweeg de muis aanwijzer over de naam van elke taak om de knop **toevoegen** te zien.)
 
    ![Azure IoT Edge taak toevoegen](./media/how-to-ci-cd/add-iot-edge-task.png)
 
@@ -96,23 +96,23 @@ In deze sectie maakt u een nieuwe build-pijp lijn. Configureer de pijp lijn zo d
 
    * **Weergave naam**: accepteer de standaard instellingen voor de **module installatie van Azure IOT Edge-build**.
    * **Actie**: accepteer de standaard **installatie kopieën**voor de build-module.
-   * **. sjabloon. JSON-bestand**: Selecteer het weglatings teken (**...**) en navigeer naar het bestand **Deployment. Temp late. json** in de opslag plaats met uw IOT EDGE-oplossing.
+   * **.template.jsbij bestand**: Selecteer het weglatings teken (**...**) en navigeer naar het **deployment.template.js** in het bestand in de opslag plaats met uw IOT EDGE oplossing.
    * **Standaard platform**: Selecteer het juiste platform voor uw modules op basis van uw doel IOT edge apparaat.
-   * **Uitvoer variabelen**: de uitvoer variabelen bevatten een referentie naam die u kunt gebruiken om het bestandspad te configureren waar uw implementatie. JSON-bestand wordt gegenereerd. Stel de naam van de verwijzing in op een onthouden soort, net als een **rand**.
+   * **Uitvoer variabelen**: de uitvoer variabelen bevatten een referentie naam die u kunt gebruiken om het bestandspad te configureren waar uw deployment.jsvoor het bestand worden gegenereerd. Stel de naam van de verwijzing in op een onthouden soort, net als een **rand**.
 
 
-   Deze configuraties gebruiken de opslag plaats en label van de installatie kopie die `module.json` in het bestand zijn gedefinieerd om de module installatie kopie te labelen. Het **maken van module-installatie kopieën** helpt ook de variabelen te vervangen door de exacte `module.json` waarde die u in het bestand definieert. In Visual Studio of Visual Studio code geeft u de daad werkelijke waarde op in een `.env` bestand. In azure-pijp lijnen stelt u de waarde in op het tabblad **pijplijn variabelen** . Selecteer het tabblad **variabelen** en configureer de naam en waarde als volgt:
+   Deze configuraties gebruiken de opslag plaats en label van de installatie kopie die in het bestand zijn gedefinieerd `module.json` om de module installatie kopie te labelen. Het **maken van module-installatie kopieën** helpt ook de variabelen te vervangen door de exacte waarde die u in het `module.json` bestand definieert. In Visual Studio of Visual Studio code geeft u de daad werkelijke waarde op in een `.env` bestand. In azure-pijp lijnen stelt u de waarde in op het tabblad **pijplijn variabelen** . Selecteer het tabblad **variabelen** en configureer de naam en waarde als volgt:
 
     * **ACR_ADDRESS**: uw Azure container Registry adres. 
 
-    Als u andere variabelen in uw project hebt, kunt u de naam en waarde op dit tabblad opgeven. bij het **bouwen van module-installatie kopieën** worden `${VARIABLE}` alleen variabelen met een notatie herkend. Zorg ervoor dat u deze indeling in uw `**/module.json` bestanden gebruikt.
+    Als u andere variabelen in uw project hebt, kunt u de naam en waarde op dit tabblad opgeven. bij het **bouwen van module-installatie kopieën** worden alleen variabelen met een `${VARIABLE}` notatie herkend. Zorg ervoor dat u deze indeling in uw `**/module.json` bestanden gebruikt.
     
 7. Selecteer de tweede **Azure IOT Edge** taak om deze te bewerken. Met deze taak worden alle module-installatie kopieën gepusht naar het container register dat u selecteert.
 
    * **Weergave naam**: de weergave naam wordt automatisch bijgewerkt wanneer het actie veld wordt gewijzigd.
    * **Actie**: gebruik de vervolg keuzelijst om **installatie kopieën van push module**te selecteren.
    * **Container register type**: Selecteer het type container register dat u gebruikt om de module installatie kopieën op te slaan. Afhankelijk van het register type dat u kiest, verandert het formulier. Als u **Azure container Registry**selecteert, gebruikt u de vervolg keuzelijst om het Azure-abonnement en de naam van uw container register te selecteren. Als u **algemene container Registry**kiest, selecteert u **Nieuw** om een register service verbinding te maken.
-   * **. sjabloon. JSON-bestand**: Selecteer het weglatings teken (**...**) en navigeer naar het bestand **Deployment. Temp late. json** in de opslag plaats met uw IOT EDGE-oplossing.
+   * **.template.jsbij bestand**: Selecteer het weglatings teken (**...**) en navigeer naar het **deployment.template.js** in het bestand in de opslag plaats met uw IOT EDGE oplossing.
    * **Standaard platform**: Selecteer hetzelfde platform als uw ingebouwde module-installatie kopieën.
 
    Als u meerdere container registers hebt om uw module installatie kopieën te hosten, moet u deze taak dupliceren, een ander container register selecteren en **module (s) overs Laan** gebruiken in de geavanceerde instellingen om de installatie kopieën die niet voor dit specifieke REGI ster zijn, over te slaan.
@@ -120,13 +120,13 @@ In deze sectie maakt u een nieuwe build-pijp lijn. Configureer de pijp lijn zo d
 8. Selecteer de taak **bestanden kopiëren** om deze te bewerken. Gebruik deze taak om bestanden te kopiëren naar de map voor het voorbereiden van artefacten.
 
    * **Weergave naam**: bestanden kopiëren naar: map verwijderen.
-   * **Inhoud**: plaats twee regels in deze sectie `deployment.template.json` en. `**/module.json` Deze twee typen bestanden zijn de invoer voor het genereren van IoT Edge implementatie manifest. Moet worden gekopieerd naar de map voor het voorbereiden van een artefact en gepubliceerd voor release pijplijn.
-   * **Doelmap**: plaats de variabele `$(Build.ArtifactStagingDirectory)`. Zie [Build Varia bles](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) voor meer informatie over de beschrijving.
+   * **Inhoud**: plaats twee regels in deze sectie `deployment.template.json` en `**/module.json` . Deze twee typen bestanden zijn de invoer voor het genereren van IoT Edge implementatie manifest. Moet worden gekopieerd naar de map voor het voorbereiden van een artefact en gepubliceerd voor release pijplijn.
+   * **Doelmap**: plaats de variabele `$(Build.ArtifactStagingDirectory)` . Zie [Build Varia bles](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) voor meer informatie over de beschrijving.
 
 9. Selecteer de taak **Build-artefacten publiceren** om deze te bewerken. Geef het pad naar de map voor het klaarzetten van artefacten naar de taak zodat het pad naar de release pijplijn kan worden gepubliceerd.
 
    * **Weergave naam**: publicatie-artefact: neerzetten.
-   * **Pad voor publiceren**: plaats de variabele `$(Build.ArtifactStagingDirectory)`. Zie [Build Varia bles](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) voor meer informatie over de beschrijving.
+   * **Pad voor publiceren**: plaats de variabele `$(Build.ArtifactStagingDirectory)` . Zie [Build Varia bles](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) voor meer informatie over de beschrijving.
    * **Artefact naam**: neerzetten.
    * **Publicatie locatie artefacten**: Azure-pijp lijnen.
 
@@ -158,7 +158,7 @@ Een nieuwe pijp lijn maken en een nieuw stadium toevoegen
 
    ![Artefacten toevoegen](./media/how-to-ci-cd/add-artifacts.png)  
 
-5. Selecteer op **de pagina een artefact toevoegen de**optie bron type **Build**. Selecteer vervolgens het project en de build-pijp lijn die u hebt gemaakt. Selecteer vervolgens **Toevoegen**.
+5. Selecteer op **de pagina een artefact toevoegen de**optie bron type **Build**. Selecteer vervolgens het project en de build-pijp lijn die u hebt gemaakt. Selecteer vervolgens **toevoegen**.
 
    ![Een build-artefact toevoegen](./media/how-to-ci-cd/add-an-artifact.png)
 
@@ -172,7 +172,7 @@ Een nieuwe pijp lijn maken en een nieuw stadium toevoegen
 
 8. In de **ontwikkel** fase ziet u een standaard **Agent taak**. U kunt details over de agent taak configureren, maar de implementatie taak is niet van het platform, zodat u een **gehoste VS2017** of **gehoste Ubuntu 1604** in de **agent groep** (of een andere door uzelf beheerde agent) kunt gebruiken.
 
-9. Selecteer het plus teken (**+**) om twee taken toe te voegen. Zoek en Voeg twee keer **Azure IOT Edge** toe.
+9. Selecteer het plus teken ( **+** ) om twee taken toe te voegen. Zoek en Voeg twee keer **Azure IOT Edge** toe.
 
     ![Taken toevoegen voor dev](./media/how-to-ci-cd/add-task-qa.png)
 
@@ -180,17 +180,17 @@ Een nieuwe pijp lijn maken en een nieuw stadium toevoegen
 
     * **Weergave naam**: de weergave naam wordt automatisch bijgewerkt wanneer het actie veld wordt gewijzigd.
     * **Actie**: gebruik de vervolg keuzelijst om **implementatie manifest genereren**te selecteren. Als u de actie waarde wijzigt, wordt ook de weergave naam van de taak bijgewerkt zodat deze overeenkomt.
-    * **. sjabloon. JSON-bestand**: plaats het `$(System.DefaultWorkingDirectory)/Drop/drop/deployment.template.json`pad. Het pad wordt gepubliceerd vanuit een build-pijp lijn.
+    * **.template.jsin het bestand**: plaats het pad `$(System.DefaultWorkingDirectory)/Drop/drop/deployment.template.json` . Het pad wordt gepubliceerd vanuit een build-pijp lijn.
     * **Standaard platform**: Kies dezelfde waarde bij het bouwen van de module installatie kopieën.
-    * **Uitvoerpad**: plaats het pad `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json`. Dit pad is het uiteindelijke manifest bestand voor de implementatie van IoT Edge.
+    * **Uitvoerpad**: plaats het pad `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json` . Dit pad is het uiteindelijke manifest bestand voor de implementatie van IoT Edge.
 
-    Deze configuraties helpt bij het vervangen van de installatie kopie `deployment.template.json` -url's van de module in het bestand. Het **genereren van het implementatie manifest** helpt ook de variabelen te vervangen door de exacte waarde die `deployment.template.json` u in het bestand hebt gedefinieerd. In VS/VS-code geeft u de daad werkelijke waarde op in `.env` een bestand. In azure-pijp lijnen stelt u de waarde in op het tabblad release pijplijn variabelen. Ga naar het tabblad variabelen en configureer de naam en waarde als volgt.
+    Deze configuraties helpt bij het vervangen van de installatie kopie-Url's van de module in het `deployment.template.json` bestand. Het **genereren van het implementatie manifest** helpt ook de variabelen te vervangen door de exacte waarde die u in het bestand hebt gedefinieerd `deployment.template.json` . In VS/VS-code geeft u de daad werkelijke waarde op in een `.env` bestand. In azure-pijp lijnen stelt u de waarde in op het tabblad release pijplijn variabelen. Ga naar het tabblad variabelen en configureer de naam en waarde als volgt.
 
     * **ACR_ADDRESS**: uw Azure container Registry adres.
     * **ACR_PASSWORD**: uw Azure container Registry wacht woord.
     * **ACR_USER**: de gebruikers naam van uw Azure container Registry.
 
-    Als u andere variabelen in uw project hebt, kunt u de naam en waarde op dit tabblad opgeven. Het **manifest** voor het genereren van `${VARIABLE}` implementaties kan alleen de variabelen herkennen. Zorg ervoor dat u deze in uw `*.template.json` bestanden gebruikt.
+    Als u andere variabelen in uw project hebt, kunt u de naam en waarde op dit tabblad opgeven. Het **manifest voor het genereren van implementaties** kan alleen de variabelen herkennen `${VARIABLE}` . Zorg ervoor dat u deze in uw `*.template.json` bestanden gebruikt.
 
     ![Variabelen voor release pijplijn configureren](./media/how-to-ci-cd/configure-variables.png)
 
@@ -203,7 +203,7 @@ Een nieuwe pijp lijn maken en een nieuw stadium toevoegen
     * **Kies één of meerdere**apparaten: Kies of u wilt dat de release pijplijn op één apparaat of op meerdere apparaten wordt geïmplementeerd.
       * Als u op één apparaat implementeert, voert u de **IOT edge apparaat-id**in.
       * Als u implementeert op meerdere apparaten, geeft u de **voor waarde voor**het apparaat doel op. De doel voorwaarde is een filter dat overeenkomt met een set IoT Edge apparaten in IoT Hub. Als u Device Tags als voor waarde wilt gebruiken, moet u de labels van de bijbehorende apparaten bijwerken met IoT Hub apparaat twee. Werk de **IOT Edge implementatie-id** en **IOT Edge implementatie prioriteit** bij in de geavanceerde instellingen. Zie [inzicht IOT Edge automatische implementaties](module-deployment-monitoring.md)voor meer informatie over het maken van een implementatie voor meerdere apparaten.
-    * Vouw geavanceerde instellingen uit, selecteer **IOT Edge implementatie-id**, plaats `$(System.TeamProject)-$(Release.EnvironmentName)`de variabele. Hiermee wordt de naam van het project en de release toegewezen aan uw IoT Edge-implementatie-ID.
+    * Vouw geavanceerde instellingen uit, selecteer **IOT Edge implementatie-id**, plaats de variabele `$(System.TeamProject)-$(Release.EnvironmentName)` . Hiermee wordt de naam van het project en de release toegewezen aan uw IoT Edge-implementatie-ID.
 
 12. Selecteer **Opslaan** om uw wijzigingen op te slaan in de nieuwe release pijplijn. Ga terug naar de pijplijn weergave door **pijp lijn** te selecteren in het menu.
 

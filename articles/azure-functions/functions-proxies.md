@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
 ms.openlocfilehash: 5e756258bb92d7def195959d909068e87e765c0f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82562063"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Werken met Azure Functions-proxy's
@@ -30,7 +30,7 @@ In deze sectie wordt beschreven hoe u een proxy maakt in de functions-Portal.
 3. Geef een naam op voor uw proxy.
 4. Configureer het eind punt dat wordt weer gegeven in deze functie-app door de **route sjabloon** en **http-methoden**op te geven. Deze para meters gedragen zich op basis van de regels voor [http-triggers].
 5. Stel de **back-end-URL** in op een ander eind punt. Dit eind punt kan een functie zijn in een andere functie-app of een andere API. De waarde hoeft niet statisch te zijn en kan verwijzen naar [Toepassings instellingen] en- [para meters van de oorspronkelijke client aanvraag].
-6. Klik op **Maken**.
+6. Klik op **Create**.
 
 Uw proxy bestaat nu als een nieuw eind punt in uw functie-app. Vanuit een client perspectief is het gelijk aan een http trigger in Azure Functions. U kunt de nieuwe proxy proberen door de proxy-URL te kopiëren en deze te testen met uw favoriete HTTP-client.
 
@@ -61,23 +61,23 @@ U kunt gebruiken `localhost` om rechtstreeks naar een functie binnen dezelfde fu
 
  
 >[!Note]  
->Als uw functie gebruikmaakt van *functie-, beheer-of sys* -autorisatie niveaus, moet u de code en clientId opgeven, conform de oorspronkelijke functie-URL. In dit geval ziet de verwijzing er als volgt `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` uit: we raden u aan deze sleutels op te slaan in [Toepassings instellingen] en ernaar te verwijzen naar die in uw proxy's. Zo voor komt u dat geheimen worden opgeslagen in de bron code. 
+>Als uw functie gebruikmaakt van *functie-, beheer-of sys* -autorisatie niveaus, moet u de code en clientId opgeven, conform de oorspronkelijke functie-URL. In dit geval ziet de verwijzing er als volgt uit: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` we raden u aan deze sleutels op te slaan in [Toepassings instellingen] en ernaar te verwijzen naar die in uw proxy's. Zo voor komt u dat geheimen worden opgeslagen in de bron code. 
 
 ### <a name="reference-request-parameters"></a><a name="request-parameters"></a>Referentie aanvraag parameters
 
 U kunt aanvraag parameters gebruiken als invoer voor de URL-eigenschap van de back-end of als onderdeel van het wijzigen van aanvragen en antwoorden. Sommige para meters kunnen worden gekoppeld aan de route sjabloon die is opgegeven in de configuratie van de basis proxy en anderen kunnen afkomstig zijn van de eigenschappen van de inkomende aanvraag.
 
 #### <a name="route-template-parameters"></a>Route sjabloon parameters
-De para meters die worden gebruikt in de route sjabloon kunnen worden verwezen met de naam. De parameter namen worden tussen accolades ({}) geplaatst.
+De para meters die worden gebruikt in de route sjabloon kunnen worden verwezen met de naam. De parameter namen worden tussen accolades () geplaatst {} .
 
-Als een proxy bijvoorbeeld een route sjabloon heeft, zoals `/pets/{petId}`, kan de back-end-URL de waarde van `{petId}`, zoals in `https://<AnotherApp>.azurewebsites.net/api/pets/{petId}`, bevatten. Als de route sjabloon in een Joker teken wordt beëindigd, zoals `/api/{*restOfPath}`, is de `{restOfPath}` waarde een teken reeks representatie van de resterende padsegmenten van de binnenkomende aanvraag.
+Als een proxy bijvoorbeeld een route sjabloon heeft, zoals `/pets/{petId}` , kan de back-end-URL de waarde van `{petId}` , zoals in, bevatten `https://<AnotherApp>.azurewebsites.net/api/pets/{petId}` . Als de route sjabloon in een Joker teken wordt beëindigd, zoals `/api/{*restOfPath}` , is de waarde `{restOfPath}` een teken reeks representatie van de resterende padsegmenten van de binnenkomende aanvraag.
 
 #### <a name="additional-request-parameters"></a>Aanvullende aanvraag parameters
 Naast de para meters van de route sjabloon kunnen de volgende waarden worden gebruikt in configuratie waarden:
 
 * **{Request. Method}**: de HTTP-methode die wordt gebruikt voor de oorspronkelijke aanvraag.
-* **{Request. headers.\< Kopnaam\>}**: een koptekst die kan worden gelezen vanuit de oorspronkelijke aanvraag. Vervang * \<kopnaam\> * door de naam van de koptekst die u wilt lezen. Als de koptekst niet is opgenomen in de aanvraag, is de waarde de lege teken reeks.
-* **{Request. query string\< . Para meternaam\>}**: een query reeks parameter die uit de oorspronkelijke aanvraag kan worden gelezen. Vervang * \<de para\> meter* name door de naam van de para meter die u wilt lezen. Als de para meter niet is opgenomen in de aanvraag, is de waarde de lege teken reeks.
+* **{Request. headers. \<HeaderName\> }**: een koptekst die van de oorspronkelijke aanvraag kan worden gelezen. Vervang door *\<HeaderName\>* de naam van de koptekst die u wilt lezen. Als de koptekst niet is opgenomen in de aanvraag, is de waarde de lege teken reeks.
+* **{Request. query string. \<ParameterName\> }**: een query reeks parameter die uit de oorspronkelijke aanvraag kan worden gelezen. Vervang door *\<ParameterName\>* de naam van de para meter die u wilt lezen. Als de para meter niet is opgenomen in de aanvraag, is de waarde de lege teken reeks.
 
 ### <a name="reference-back-end-response-parameters"></a><a name="response-parameters"></a>Referentie parameters voor back-end
 
@@ -85,7 +85,7 @@ Antwoord parameters kunnen worden gebruikt als onderdeel van het wijzigen van de
 
 * **{back-end. Response. code status}**: de HTTP-status code die wordt geretourneerd tijdens het back-end-antwoord.
 * **{back-end. Response. statusReason}**: de WACHTWOORDZIN voor http die wordt geretourneerd tijdens het back-end-antwoord.
-* **{back-end. Response.\< headers. Kopnaam\>}**: een header die kan worden gelezen vanuit het back-end-antwoord. Vervang * \<kopnaam\> * door de naam van de koptekst die u wilt lezen. Als de koptekst niet in het antwoord is opgenomen, is de waarde de lege teken reeks.
+* **{back-end. Response. headers. \<HeaderName\> }**: een header die kan worden gelezen vanuit het back-end-antwoord. Vervang door *\<HeaderName\>* de naam van de koptekst die u wilt lezen. Als de koptekst niet in het antwoord is opgenomen, is de waarde de lege teken reeks.
 
 ### <a name="reference-application-settings"></a><a name="use-appsettings"></a>Referentie toepassings instellingen
 
@@ -98,24 +98,24 @@ Bijvoorbeeld: een back-end-URL van *https://%ORDER_PROCESSING_HOST%/api/orders* 
 
 ## <a name="troubleshoot-proxies"></a><a name="debugProxies"></a>Problemen met Proxy's oplossen
 
-Door de markering `"debug":true` toe te voegen aan een `proxies.json` proxy in uw kunt u logboek registratie voor fout opsporing inschakelen. Logboeken worden opgeslagen `D:\home\LogFiles\Application\Proxies\DetailedTrace` in en zijn toegankelijk via de geavanceerde hulp middelen (kudu). HTTP-antwoorden bevatten ook een `Proxy-Trace-Location` header met een URL voor toegang tot het logboek bestand.
+Door de markering toe `"debug":true` te voegen aan een proxy in uw `proxies.json` kunt u logboek registratie voor fout opsporing inschakelen. Logboeken worden opgeslagen in `D:\home\LogFiles\Application\Proxies\DetailedTrace` en zijn toegankelijk via de geavanceerde hulp middelen (kudu). HTTP-antwoorden bevatten ook een `Proxy-Trace-Location` header met een URL voor toegang tot het logboek bestand.
 
-U kunt fouten opsporen in een proxy van de client zijde `Proxy-Trace-Enabled` door een header `true`-set toe te voegen aan. Hiermee wordt ook een tracering naar het bestands systeem vastgelegd en wordt de tracerings-URL als een header in het antwoord geretourneerd.
+U kunt fouten opsporen in een proxy van de client zijde door een header-set toe te voegen `Proxy-Trace-Enabled` aan `true` . Hiermee wordt ook een tracering naar het bestands systeem vastgelegd en wordt de tracerings-URL als een header in het antwoord geretourneerd.
 
 ### <a name="block-proxy-traces"></a>Proxy traceringen blok keren
 
 Om veiligheids redenen wilt u mogelijk niet toestaan dat iedereen die uw service aanroept, een tracering kan genereren. Ze hebben geen toegang tot de tracerings inhoud zonder uw aanmeldings gegevens, maar het genereren van de tracering van resources en geeft aan dat u gebruikmaakt van functie-Proxy's.
 
-Schakel traceringen samen uit door toe `"debug":false` te voegen aan een bepaalde `proxies.json`proxy in uw.
+Schakel traceringen samen uit door toe `"debug":false` te voegen aan een bepaalde proxy in uw `proxies.json` .
 
 ## <a name="advanced-configuration"></a>Geavanceerde configuratie
 
-De proxy's die u configureert, worden opgeslagen in een *Proxie. json* -bestand, dat zich in de hoofdmap van een functie-app-map bevindt. U kunt dit bestand hand matig bewerken en implementeren als onderdeel van uw app wanneer u een van de [implementatie methoden](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment) gebruikt die door functies worden ondersteund. 
+De proxy's die u configureert, worden opgeslagen in een *proxies.js* in het bestand, dat zich in de hoofdmap van een functie-app-map bevindt. U kunt dit bestand hand matig bewerken en implementeren als onderdeel van uw app wanneer u een van de [implementatie methoden](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment) gebruikt die door functies worden ondersteund. 
 
 > [!TIP] 
-> Als u een van de implementatie methoden niet hebt ingesteld, kunt u ook werken met het bestand *proxies. json* in de portal. Ga naar uw functie-app, selecteer **platform functies**en selecteer vervolgens **app service-editor**. Op die manier kunt u de volledige bestands structuur van de functie-app bekijken en vervolgens wijzigingen aanbrengen.
+> Als u een van de implementatie methoden niet hebt ingesteld, kunt u ook werken met de *proxies.js* in het bestand in de portal. Ga naar uw functie-app, selecteer **platform functies**en selecteer vervolgens **app service-editor**. Op die manier kunt u de volledige bestands structuur van de functie-app bekijken en vervolgens wijzigingen aanbrengen.
 
-*Proxy's. json* wordt gedefinieerd door een proxy object, dat bestaat uit benoemde proxy's en hun definities. Als uw editor dit ondersteunt, kunt u ook verwijzen naar een [JSON-schema](http://json.schemastore.org/proxies) voor het volt ooien van de code. Een voorbeeld bestand kan er als volgt uitzien:
+*Proxies.jsop* is gedefinieerd door een proxy object, dat bestaat uit benoemde proxy's en hun definities. Als uw editor dit ondersteunt, kunt u ook verwijzen naar een [JSON-schema](http://json.schemastore.org/proxies) voor het volt ooien van de code. Een voorbeeld bestand kan er als volgt uitzien:
 
 ```json
 {
@@ -142,11 +142,11 @@ Elke proxy heeft een beschrijvende naam, zoals *Proxy1* in het vorige voor beeld
 * **responseOverrides**: een object dat trans formaties voor het client antwoord definieert. Zie [een responseOverrides-object definiëren].
 
 > [!NOTE] 
-> De eigenschap *route* in azure functions-proxy's voldoet niet aan de eigenschap *routePrefix* van de configuratie van de functie-app-host. Als u een voor voegsel wilt opnemen zoals `/api`, moet dit worden opgenomen in de eigenschap *route* .
+> De eigenschap *route* in azure functions-proxy's voldoet niet aan de eigenschap *routePrefix* van de configuratie van de functie-app-host. Als u een voor voegsel wilt opnemen zoals `/api` , moet dit worden opgenomen in de eigenschap *route* .
 
 ### <a name="disable-individual-proxies"></a><a name="disableProxies"></a>Afzonderlijke proxy's uitschakelen
 
-U kunt afzonderlijke proxy's uitschakelen door toe te `"disabled": true` voegen aan de proxy `proxies.json` in het bestand. Dit zorgt ervoor dat aanvragen die aan de matchCondition voldoen, 404 retour neren.
+U kunt afzonderlijke proxy's uitschakelen door toe te voegen `"disabled": true` aan de proxy in het `proxies.json` bestand. Dit zorgt ervoor dat aanvragen die aan de matchCondition voldoen, 404 retour neren.
 ```json
 {
     "$schema": "http://json.schemastore.org/proxies",
@@ -184,8 +184,8 @@ Proxy's lezen alle teken reeksen uit een JSON-bestand met behulp van \ als een e
 Het requestOverrides-object definieert wijzigingen die in de aanvraag zijn aangebracht wanneer de back-end-resource wordt aangeroepen. Het object wordt gedefinieerd door de volgende eigenschappen:
 
 * **back-endserver**: de HTTP-methode die wordt gebruikt om de back-end aan te roepen.
-* **back-end. Request. query string. Para \<-name: een query reeks parameter die kan worden ingesteld voor de aanroep van de back-\>** end. Vervang * \<de para\> meter* name door de naam van de para meter die u wilt instellen. Houd er rekening mee dat als er een lege teken reeks wordt opgegeven, de para meter nog steeds wordt opgenomen in de back-end-aanvraag.
-* **back-end. Request. headers. \<Kopnaam: een header die kan worden ingesteld voor de aanroep van de back-\>** end. Vervang * \<kopnaam\> * door de naam van de koptekst die u wilt instellen. Houd er rekening mee dat als er een lege teken reeks wordt opgegeven, de para meter nog steeds wordt opgenomen in de back-end-aanvraag.
+* **back-end. Request. \<ParameterName\> query string.**: een query reeks parameter die kan worden ingesteld voor de aanroep van de back-end. Vervang door *\<ParameterName\>* de naam van de para meter die u wilt instellen. Houd er rekening mee dat als er een lege teken reeks wordt opgegeven, de para meter nog steeds wordt opgenomen in de back-end-aanvraag.
+* **back-end. Request. \<HeaderName\> headers.**: een header die kan worden ingesteld voor de aanroep van de back-enddatabase. Vervang door *\<HeaderName\>* de naam van de koptekst die u wilt instellen. Houd er rekening mee dat als er een lege teken reeks wordt opgegeven, de para meter nog steeds wordt opgenomen in de back-end-aanvraag.
 
 Waarden kunnen verwijzen naar toepassings instellingen en para meters van de oorspronkelijke client aanvraag.
 
@@ -217,7 +217,7 @@ Het requestOverrides-object definieert wijzigingen die worden aangebracht in het
 * **Response. code status**: de HTTP-status code die wordt geretourneerd naar de client.
 * **Response. statusReason**: de woord groep met de http-reden die moet worden geretourneerd naar de client.
 * **Response. Body**: de teken reeks representatie van de hoofd tekst die wordt geretourneerd naar de client.
-* **Response. headers. \<Kopnaam: een koptekst die kan worden ingesteld voor de reactie op de\>** client. Vervang * \<kopnaam\> * door de naam van de koptekst die u wilt instellen. Als u de lege teken reeks opgeeft, wordt de header niet in het antwoord opgenomen.
+* **Response. headers. \<HeaderName\> **: een header die kan worden ingesteld voor de reactie op de client. Vervang door *\<HeaderName\>* de naam van de koptekst die u wilt instellen. Als u de lege teken reeks opgeeft, wordt de header niet in het antwoord opgenomen.
 
 Waarden kunnen verwijzen naar toepassings instellingen, para meters van de oorspronkelijke client aanvraag en para meters uit het back-end-antwoord.
 
@@ -241,9 +241,9 @@ Een voorbeeld configuratie kan er als volgt uitzien:
 }
 ```
 > [!NOTE] 
-> In dit voor beeld wordt de hoofd tekst van de reactie direct ingesteld `backendUri` , zodat er geen eigenschap nodig is. In het voor beeld ziet u hoe u Azure Functions-proxy's kunt gebruiken om Api's te model leren.
+> In dit voor beeld wordt de hoofd tekst van de reactie direct ingesteld, zodat er geen `backendUri` eigenschap nodig is. In het voor beeld ziet u hoe u Azure Functions-proxy's kunt gebruiken om Api's te model leren.
 
-[Azure Portal]: https://portal.azure.com
+[Azure-portal]: https://portal.azure.com
 [HTTP-triggers]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response

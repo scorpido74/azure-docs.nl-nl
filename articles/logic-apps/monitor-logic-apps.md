@@ -7,10 +7,10 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
 ms.openlocfilehash: c2a609266a77293a0e3a5cb9c973a6eb3f7f72a9
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82731999"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>De uitvoerings status controleren, de trigger geschiedenis controleren en waarschuwingen instellen voor Azure Logic Apps
@@ -24,13 +24,13 @@ Voor real-time gebeurtenis bewaking en uitgebreidere fout opsporing kunt u diagn
 
 <a name="review-runs-history"></a>
 
-## <a name="review-runs-history"></a>Geschiedenis van uitvoeringen controleren
+## <a name="review-runs-history"></a>Uitvoeringsgeschiedenis controleren
 
 Telkens wanneer de trigger wordt geactiveerd voor een item of gebeurtenis, maakt en voert de Logic Apps Engine een afzonderlijk werk stroom exemplaar voor elk item of elke gebeurtenis. Standaard wordt elk workflowexemplaar parallel uitgevoerd zodat er geen werk stroom moet worden gewacht voordat een uitvoering wordt gestart. U kunt zien wat er tijdens de uitvoering is gebeurd, inclusief de status van elke stap in de werk stroom plus de invoer en uitvoer voor elke stap.
 
 1. Zoek en open uw logische app in het [Azure Portal](https://portal.azure.com)in de ontwerp functie voor logische apps.
 
-   Als u uw logische app wilt vinden, voert `logic apps`u in het hoofd venster van Azure Search in en selecteert u **Logic apps**.
+   Als u uw logische app wilt vinden, voert u in het hoofd venster van Azure Search in `logic apps` en selecteert u **Logic apps**.
 
    ![Zoek en selecteer de service ' Logic Apps '](./media/monitor-logic-apps/find-your-logic-app.png)
 
@@ -51,7 +51,7 @@ Telkens wanneer de trigger wordt geactiveerd voor een item of gebeurtenis, maakt
    | **Geannuleerd** | De werk stroom is uitgevoerd, maar er is een annulerings aanvraag ontvangen |
    | **Mislukt** | Ten minste één actie is mislukt en er zijn geen latere acties in de werk stroom ingesteld voor het afhandelen van de fout |
    | **Wordt uitgevoerd** | De werk stroom wordt momenteel uitgevoerd. <p>Deze status kan ook worden weer gegeven voor vertraagde werk stromen of vanwege het huidige prijs plan. Zie de [pagina met prijzen voor de actie limieten](https://azure.microsoft.com/pricing/details/logic-apps/)voor meer informatie. Als u [Diagnostische logboek registratie](../logic-apps/monitor-logic-apps.md)instelt, kunt u informatie ophalen over eventuele vertragings gebeurtenissen die plaatsvinden. |
-   | **Is voltooid** | Alle acties zijn voltooid. <p>**Opmerking**: als er fouten zijn opgetreden in een specifieke actie, wordt die fout door een latere actie in de werk stroom verwerkt. |
+   | **Geslaagd** | Alle acties zijn voltooid. <p>**Opmerking**: als er fouten zijn opgetreden in een specifieke actie, wordt die fout door een latere actie in de werk stroom verwerkt. |
    | **Wachten** | De werk stroom is niet gestart of is onderbroken, bijvoorbeeld vanwege een eerdere werk stroom die nog steeds wordt uitgevoerd. |
    |||
 
@@ -90,13 +90,13 @@ Telkens wanneer de trigger wordt geactiveerd voor een item of gebeurtenis, maakt
 
 <a name="review-trigger-history"></a>
 
-## <a name="review-trigger-history"></a>Trigger geschiedenis controleren
+## <a name="review-trigger-history"></a>Triggergeschiedenis controleren
 
 De uitvoering van elke logische app begint met een trigger. De trigger geschiedenis bevat een lijst met alle trigger pogingen die uw logische app heeft gemaakt en informatie over de invoer en uitvoer voor elke trigger poging.
 
 1. Zoek en open uw logische app in het [Azure Portal](https://portal.azure.com)in de ontwerp functie voor logische apps.
 
-   Als u uw logische app wilt vinden, voert `logic apps`u in het hoofd venster van Azure Search in en selecteert u **Logic apps**.
+   Als u uw logische app wilt vinden, voert u in het hoofd venster van Azure Search in `logic apps` en selecteert u **Logic apps**.
 
    ![Zoek en selecteer de service ' Logic Apps '](./media/monitor-logic-apps/find-your-logic-app.png)
 
@@ -120,7 +120,7 @@ De uitvoering van elke logische app begint met een trigger. De trigger geschiede
    |--------|-------------|
    | **Mislukt** | Er is een fout opgetreden. Als u gegenereerde fout berichten voor een mislukte trigger wilt controleren, selecteert u de trigger poging en kiest u **uitvoer**. U kunt bijvoorbeeld invoer zoeken die niet geldig is. |
    | **Overgeslagen** | De trigger heeft het eind punt gecontroleerd, maar er zijn geen gegevens gevonden. |
-   | **Is voltooid** | De trigger heeft het eind punt gecontroleerd en beschik bare gegevens gevonden. Normaal gesp roken wordt naast deze status ook de status ' geactiveerd ' weer gegeven. Als dat niet het geval is, kan de definitie van `SplitOn` de trigger een voor waarde of een opdracht hebben die niet is voldaan. <p>Deze status kan van toepassing zijn op een hand matige trigger, een herhalings trigger of een polling-trigger. Een trigger kan worden uitgevoerd, maar de uitvoeringsrun zelf kan echter nog steeds mislukken wanneer de acties onverwerkte fouten genereren. |
+   | **Geslaagd** | De trigger heeft het eind punt gecontroleerd en beschik bare gegevens gevonden. Normaal gesp roken wordt naast deze status ook de status ' geactiveerd ' weer gegeven. Als dat niet het geval is, kan de definitie van de trigger een voor waarde of een opdracht hebben die niet is `SplitOn` voldaan. <p>Deze status kan van toepassing zijn op een hand matige trigger, een herhalings trigger of een polling-trigger. Een trigger kan worden uitgevoerd, maar de uitvoeringsrun zelf kan echter nog steeds mislukken wanneer de acties onverwerkte fouten genereren. |
    |||
 
    > [!TIP]
@@ -140,7 +140,7 @@ De uitvoering van elke logische app begint met een trigger. De trigger geschiede
 
 Als u waarschuwingen wilt ontvangen op basis van specifieke metrische gegevens of drempel waarden voor de logische app hebt overschreden, stelt u [waarschuwingen in azure monitor in](../azure-monitor/platform/alerts-overview.md). Meer informatie over [metrische gegevens in azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md). Voer de volgende stappen uit als u waarschuwingen wilt instellen zonder [Azure monitor](../log-analytics/log-analytics-overview.md)te gebruiken.
 
-1. **Selecteer in** > het menu van de logische app, onder **bewaking**, de optie waarschuwing**nieuwe waarschuwings regel**.
+1. Selecteer in het menu van de logische app, onder **bewaking**, de **optie waarschuwing**  >  **nieuwe waarschuwings regel**.
 
    ![Een waarschuwing voor uw logische app toevoegen](./media/monitor-logic-apps/add-new-alert-rule.png)
 
@@ -162,7 +162,7 @@ Als u waarschuwingen wilt ontvangen op basis van specifieke metrische gegevens o
 
    1. Selecteer **aantal**bij **aggregatie type**.
 
-   1. Voer `1`in bij **drempel waarde**.
+   1. Voer in bij **drempel waarde** `1` .
 
    1. Controleer onder **voor waarde preview**of uw voor waarde juist wordt weer gegeven.
 

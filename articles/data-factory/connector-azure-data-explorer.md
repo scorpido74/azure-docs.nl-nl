@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2020
 ms.openlocfilehash: ba8c35fc1802f7ef3ac54c693c8106bbc40cc185
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82560159"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Gegevens kopiëren van of naar Azure Data Explorer met behulp van Azure Data Factory
@@ -78,7 +78,7 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde Azure Data Explo
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap **type** moet worden ingesteld op **AzureDataExplorer**. | Ja |
-| endpoint | Eind punt-URL van het Azure Data Explorer-cluster, met `https://<clusterName>.<regionName>.kusto.windows.net`de indeling als. | Ja |
+| endpoint | Eind punt-URL van het Azure Data Explorer-cluster, met de indeling als `https://<clusterName>.<regionName>.kusto.windows.net` . | Ja |
 | database | De naam van de data base. | Ja |
 | tenant | Geef de Tenant gegevens op (domein naam of Tenant-ID) waaronder uw toepassing zich bevindt. Dit staat bekend als ' Authority-ID ' in [Kusto Connection String](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). U kunt deze ophalen door de muis aanwijzer in de rechter bovenhoek van de Azure Portal aan te wijzen. | Ja |
 | servicePrincipalId | Geef de client-ID van de toepassing op. Dit wordt ook wel ' AAD-toepassings client-ID ' genoemd in [Kusto Connection String](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Ja |

@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 9/12/2019
 ms.openlocfilehash: 127840738d8fb8db00a7efc0b0d8fe393138488d
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82580923"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>Firewall regels in Azure Database for PostgreSQL-grootschalige (Citus)
@@ -32,7 +32,7 @@ Een grootschalige (Citus) Server groep firewall bepaalt wie verbinding kan maken
 
 Wanneer de firewall verbindingen blokkeert, kan dit leiden tot toepassings fouten. Als u het JDBC-stuur programma van PostgreSQL gebruikt, treedt er bijvoorbeeld een fout op als:
 
-> Java. util. gelijktijdige. ExecutionException: Java. lang. RuntimeException: org. postgresql. util. PSQLException: fataal: No PG\_HBA. conf entry for host "123.45.67.890", User "Citus", data base "Citus", SSL
+> java.util.concurrent.ExecutionException: Java. lang. RuntimeException: org. postgresql. util. PSQLException: fataal: geen PG \_ HBA. conf entry for host "123.45.67.890", User "Citus", data base "Citus", SSL
 
 Zie [firewall regels maken en beheren](howto-hyperscale-manage-firewall-using-portal.md) voor meer informatie over het definiëren van de regels.
 
@@ -44,7 +44,7 @@ Wanneer de toegang tot de Microsoft Azure-Data Base voor PostgreSQL-grootschalig
 * **De gebruiker is niet gemachtigd of er is een onjuist wacht woord gebruikt:** Als een gebruiker geen machtigingen heeft op de server of het gebruikte wacht woord onjuist is, wordt de verbinding met de server geweigerd. Het maken van een firewall instelling biedt clients alleen de mogelijkheid om verbinding te maken met uw server. elke client moet nog steeds de benodigde beveiligings referenties opgeven.
 
 Als u bijvoorbeeld een JDBC-client gebruikt, kan de volgende fout worden weer gegeven.
-> Java. util. gelijktijdige. ExecutionException: Java. lang. RuntimeException: org. postgresql. util. PSQLException: fataal: wachtwoord verificatie mislukt voor gebruiker ' yourusername '
+> java.util.concurrent.ExecutionException: Java. lang. RuntimeException: org. postgresql. util. PSQLException: fataal: wachtwoord verificatie is mislukt voor gebruiker ' yourusername '
 
 * **Dynamisch IP-adres:** als u een internetverbinding hebt met dynamische IP-adressering en problemen ondervindt bij het passeren van de firewall, kunt u een van de volgende oplossingen proberen:
 

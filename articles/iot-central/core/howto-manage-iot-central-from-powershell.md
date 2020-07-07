@@ -9,10 +9,10 @@ ms.date: 03/27/2020
 ms.topic: how-to
 manager: philmea
 ms.openlocfilehash: 9ca1c8f4a8e92babf65ec049b3784882bd3af689
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82744978"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>IoT Central beheren vanuit Azure PowerShell
@@ -71,7 +71,7 @@ Het script maakt eerst een resource groep in de regio VS-Oost voor de toepassing
 |ResourceGroupName |De resource groep die de toepassing bevat. Deze resource groep moet al bestaan in uw abonnement. |
 |Locatie |Deze cmdlet gebruikt standaard de locatie van de resource groep. Op dit moment kunt u een IoT Central-toepassing maken in de geografs **Australia**, **Azië en Stille Oceaan**, **Europa**, **Verenigde Staten**, het **Verenigd Konink rijk**en **Japan** . |
 |Naam              |De naam van de toepassing in de Azure Portal. |
-|Subdomein         |Het subdomein in de URL van de toepassing. In het voor beeld is `https://mysubdomain.azureiotcentral.com`de URL van de toepassing. |
+|Subdomein         |Het subdomein in de URL van de toepassing. In het voor beeld is de URL van de toepassing `https://mysubdomain.azureiotcentral.com` . |
 |Sku               |Op dit moment kunt u **ST1** of **ST2**gebruiken. Zie [prijzen voor Azure IOT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
 |Template          | De toepassings sjabloon die moet worden gebruikt. Zie de volgende tabel voor meer informatie. |
 |DisplayName       |De naam van de toepassing, zoals deze wordt weer gegeven in de gebruikers interface. |
