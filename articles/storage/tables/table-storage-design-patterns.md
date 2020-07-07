@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.openlocfilehash: 5478163a6103bcc84b4f3608d7513c6e7cb11c01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79529336"
 ---
 # <a name="table-design-patterns"></a>Tabelontwerppatronen
@@ -41,7 +41,7 @@ Om het ontbreken van secundaire indexen te omzeilen, kunt u meerdere exemplaren 
 De volgende twee filter criteria (één op te geven op basis van de werk nemer-ID en één op te zoeken op basis van een e-mail adres) beide opgeven punt query's:  
 
 * $filter = (PartitionKey EQ ' Sales ') en (RowKey EQ ' empid_000223 ')  
-* $filter = (PartitionKey EQ ' Sales ') en (RowKey EQ 'email_jonesj@contoso.com')  
+* $filter = (PartitionKey EQ ' Sales ') en (RowKey EQ ' email_jonesj@contoso.com ')  
 
 Als u een query uitvoert voor een bereik van werk nemers, kunt u een bereik opgeven dat is gesorteerd in de volg orde van de werk nemer-ID of een bereik dat in de e-mail adres volgorde is gesorteerd door een query uit te sturen naar entiteiten met het juiste voor voegsel in de **RowKey**.  
 
@@ -97,7 +97,7 @@ Om het ontbreken van secundaire indexen te omzeilen, kunt u meerdere exemplaren 
 De volgende twee filter criteria (één op te geven op basis van de werk nemer-ID en één op te zoeken op basis van een e-mail adres) beide opgeven punt query's:  
 
 * $filter = (PartitionKey EQ ' empid_Sales ') en (RowKey EQ ' 000223 ')
-* $filter = (PartitionKey EQ ' email_Sales ') en (RowKey EQ 'jonesj@contoso.com')  
+* $filter = (PartitionKey EQ ' email_Sales ') en (RowKey EQ ' jonesj@contoso.com ')  
 
 Als u een query uitvoert voor een bereik van werk nemers, kunt u een bereik opgeven dat is gesorteerd in de volg orde van de werk nemer-ID of een bereik dat in de e-mail adres volgorde is gesorteerd door een query uit te sturen naar entiteiten met het juiste voor voegsel in de **RowKey**.  
 
@@ -588,7 +588,7 @@ using Microsoft.Azure.Cosmos.Table;
 using Microsoft.Azure.Cosmos.Table.Queryable;
 ```
 
-De employeeTable is een CloudTable-object dat de methode CreateQuery\<ITableEntity> () implementeert, waarmee een TableQuery\<ITableEntity-> wordt geretourneerd. Objecten van dit type implementeren een IQueryable en toestaan de syntaxis van LINQ-query-expressies en punt notatie te gebruiken.
+De employeeTable is een CloudTable-object dat een methode CreateQuery \<ITableEntity> () implementeert, die een TableQuery retourneert \<ITableEntity> . Objecten van dit type implementeren een IQueryable en toestaan de syntaxis van LINQ-query-expressies en punt notatie te gebruiken.
 
 Meerdere entiteiten ophalen en worden bereikt door een query op te geven met een **where** -component. Als u een tabel scan wilt voor komen, moet u altijd de waarde **PartitionKey** in de component WHERE toevoegen en indien mogelijk de **RowKey** -waarde om te voor komen dat er tabel-en partitie scans worden uitgevoerd. De tabel service ondersteunt een beperkt aantal vergelijkings operatoren (groter dan, groter dan of gelijk aan, kleiner dan, kleiner dan of gelijk aan, gelijk aan en niet gelijk aan) die worden gebruikt in de component WHERE. 
 

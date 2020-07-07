@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 683b89b29265159b0316d427a7ae616bf3766f7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79529014"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Gebruik de Azure Portal om waarschuwingen in te stellen voor Azure Database for MariaDB
@@ -25,7 +25,7 @@ U kunt een waarschuwing configureren om de volgende acties uit te voeren wanneer
 * Een webhook aanroepen
 
 U kunt informatie over waarschuwings regels configureren en ophalen met behulp van:
-* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure-portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure-CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 

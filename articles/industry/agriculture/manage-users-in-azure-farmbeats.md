@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
 ms.openlocfilehash: 6ccc29422c6abf1120d13c05d10125efd0871ca6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79502064"
 ---
 # <a name="manage-users"></a>Gebruikers beheren
@@ -54,7 +54,7 @@ Gebruikers verwijderen uit het Azure FarmBeats-systeem:
 
 1. Meld u aan bij Accelerator en selecteer vervolgens het pictogram **instellingen** .
 2. Selecteer **Access Control**.
-3. Selecteer **verwijderen**.
+3. Selecteer **Verwijderen**.
 
    De gebruiker wordt verwijderd uit het systeem. U ontvangt het volgende bevestigings bericht:
 
@@ -67,9 +67,9 @@ Gebruikers verwijderen uit het Azure FarmBeats-systeem:
 
 Volg de stappen om gebruikers toe te voegen aan Azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Selecteer rechtsboven uw account en schakel vervolgens over naar de Azure AD-Tenant die is gekoppeld aan FarmBeats.
-3. Selecteer **Azure Active Directory** > **gebruikers**.
+3. Selecteer **Azure Active Directory**  >  **gebruikers**.
 
     Er wordt een lijst met Azure AD-gebruikers weer gegeven.
 

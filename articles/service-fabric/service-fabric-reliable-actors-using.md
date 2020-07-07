@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
 ms.openlocfilehash: 9f5f9e00c374b16026f22d4efdee51ec94d2902a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79502285"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>Functies op service niveau in uw actor service implementeren
 
-Zoals beschreven in [service lagen](service-fabric-reliable-actors-platform.md#service-layering), is de actor service zelf een betrouw bare service. U kunt uw eigen service schrijven die is afgeleid van `ActorService`. U kunt functies op service niveau ook implementeren op dezelfde manier als wanneer u een stateful service overneemt, zoals:
+Zoals beschreven in [service lagen](service-fabric-reliable-actors-platform.md#service-layering), is de actor service zelf een betrouw bare service. U kunt uw eigen service schrijven die is afgeleid van `ActorService` . U kunt functies op service niveau ook implementeren op dezelfde manier als wanneer u een stateful service overneemt, zoals:
 
 - Back-up en herstel van de service.
 - Gedeelde functionaliteit voor alle actors, bijvoorbeeld een circuit onderbreker.
@@ -89,12 +89,12 @@ static class Program
 
 ## <a name="actor-service-methods"></a>Actor service-methoden
 
-`IActorService` De actor-service implementeert (c#) `ActorService` of (Java), die op zijn beurt `IService` implementeert (c# `Service` ) of (Java). Deze interface wordt gebruikt door Reliable Services externe toegang, waarmee externe procedure aanroepen op service methoden mogelijk wordt. Het bevat serviceniveau methoden die extern kunnen worden aangeroepen via service Remoting. U kunt deze gebruiken om actors op te [sommen](service-fabric-reliable-actors-enumerate.md) en te [verwijderen](service-fabric-reliable-actors-delete-actors.md) .
+De actor-service implementeert `IActorService` (c#) of `ActorService` (Java), die op zijn beurt implementeert `IService` (c#) of `Service` (Java). Deze interface wordt gebruikt door Reliable Services externe toegang, waarmee externe procedure aanroepen op service methoden mogelijk wordt. Het bevat serviceniveau methoden die extern kunnen worden aangeroepen via service Remoting. U kunt deze gebruiken om actors op te [sommen](service-fabric-reliable-actors-enumerate.md) en te [verwijderen](service-fabric-reliable-actors-delete-actors.md) .
 
 
 ## <a name="custom-actor-service"></a>Aangepaste actor service
 
-Met behulp van de actor-registratie-Lambda kunt u uw eigen aangepaste actor service registreren die `ActorService` is afgeleid van ( `FabricActorService` C#) en (Java). U kunt vervolgens uw eigen functionaliteit op service niveau implementeren door een service klasse te schrijven die overneemt `ActorService` (C# `FabricActorService` ) of (Java). Een aangepaste actor-service neemt alle actor runtime-functies van `ActorService` (C#) of `FabricActorService` (Java) over. Het kan worden gebruikt voor het implementeren van uw eigen service methoden.
+Met behulp van de actor-registratie-Lambda kunt u uw eigen aangepaste actor service registreren die is afgeleid van `ActorService` (C#) en `FabricActorService` (Java). U kunt vervolgens uw eigen functionaliteit op service niveau implementeren door een service klasse te schrijven die overneemt `ActorService` (C#) of `FabricActorService` (Java). Een aangepaste actor-service neemt alle actor runtime-functies van `ActorService` (C#) of `FabricActorService` (Java) over. Het kan worden gebruikt voor het implementeren van uw eigen service methoden.
 
 ```csharp
 class MyActorService : ActorService
@@ -143,7 +143,7 @@ public class Program
 
 ## <a name="implement-actor-backup-and-restore"></a>Actor back-up en herstel implementeren
 
-Een aangepaste actor service kan een methode beschikbaar stellen voor het maken van back-ups van actor gegevens door gebruik te maken van de externe `ActorService`listener die al aanwezig is in. Zie voor een voor beeld [Backup en Restore actors](service-fabric-reliable-actors-backup-and-restore.md).
+Een aangepaste actor service kan een methode beschikbaar stellen voor het maken van back-ups van actor gegevens door gebruik te maken van de externe listener die al aanwezig is in `ActorService` . Zie voor een voor beeld [Backup en Restore actors](service-fabric-reliable-actors-backup-and-restore.md).
 
 ## <a name="actor-that-uses-a-remoting-v2-interface-compatible-stack"></a>Actor die gebruikmaakt van een externe v2-stack (interface compatibel)
 

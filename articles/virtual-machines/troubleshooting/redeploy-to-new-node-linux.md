@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 18e96f9463176b0fce04252492eea6dbede416c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79531104"
 ---
 # <a name="redeploy-linux-virtual-machine-to-new-azure-node"></a>Een Linux-virtual machine opnieuw implementeren naar een nieuw Azure-knooppunt
@@ -41,7 +41,7 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 
-Installeer de [nieuwste Azure Classic cli](../../cli-install-nodejs.md) en meld u aan bij uw Azure-account. Zorg ervoor dat u zich in de modus Resource Manager`azure config mode arm`() bevindt.
+Installeer de [nieuwste Azure Classic cli](../../cli-install-nodejs.md) en meld u aan bij uw Azure-account. Zorg ervoor dat u zich in de modus Resource Manager () bevindt `azure config mode arm` .
 
 In het volgende voor beeld wordt de virtuele machine met de naam *myVM* in de resource groep met de naam *myResourceGroup*opnieuw geïmplementeerd:
 

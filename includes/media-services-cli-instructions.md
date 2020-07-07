@@ -9,10 +9,10 @@ ms.date: 01/28/2019
 ms.author: juliako
 ms.custom: include file
 ms.openlocfilehash: 5ebbac39c8850737ea6f9ef333e45d305a520655
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79461211"
 ---
 ## <a name="use-cli-shell"></a>CLI-shell gebruiken
@@ -23,9 +23,9 @@ U kunt de CLI ook lokaal installeren. Zie [de Azure cli installeren](https://doc
 
 ### <a name="sign-in"></a>Aanmelden
 
-Als u een lokale installatie van de CLI wilt gebruiken, moet u zich aanmelden bij Azure. Deze stap is niet vereist voor Azure Cloud Shell. Meld u aan met `az login` de opdracht.
+Als u een lokale installatie van de CLI wilt gebruiken, moet u zich aanmelden bij Azure. Deze stap is niet vereist voor Azure Cloud Shell. Meld u aan met de `az login` opdracht.
 
-Als de CLI uw standaardbrowser kan openen, gebeurt dat ook en wordt er een aanmeldingspagina gedownload. Anders moet u een browser pagina openen en de instructies op de opdracht regel volgen om een autorisatie code in te voeren nadat u https://aka.ms/devicelogin in uw browser hebt genavigeerd.
+Als de CLI uw standaardbrowser kan openen, gebeurt dat ook en wordt er een aanmeldingspagina gedownload. Anders moet u een browser pagina openen en de instructies op de opdracht regel volgen om een autorisatie code in te voeren nadat u in uw browser hebt genavigeerd https://aka.ms/devicelogin .
 
 ### <a name="specify-location-of-files"></a>Locatie van bestanden opgeven
 

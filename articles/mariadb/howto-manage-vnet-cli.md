@@ -8,10 +8,10 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 46bfab6935d08ac28ced7f392892ade6f68a0492
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79530849"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-using-azure-cli"></a>Azure Database for MariaDB VNet-service-eind punten maken en beheren met Azure CLI
@@ -29,7 +29,7 @@ Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 ## <a name="configure-vnet-service-endpoints"></a>VNet-service-eind punten configureren
 De opdracht [AZ Network vnet](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest) wordt gebruikt voor het configureren van virtuele netwerken.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 

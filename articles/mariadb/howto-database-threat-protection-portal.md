@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: de056f61337311642589ba937c6d9842d8354d36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79530135"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>Advanced Threat Protection voor Azure Database for MariaDB
@@ -26,7 +26,7 @@ Advanced Threat Protection maakt deel uit van de Advanced Data Security-aanbiedi
 > De functie Advanced Threat Protection is **niet** beschikbaar in de volgende Azure Government-en soevereine Cloud regio's: US Gov-Texas, US Gov-Arizona, US gov-Iowa, VS, gov Virginia, US DoD-oost, US DoD-centraal, Duitsland-centraal, Duitsland-noord, China-oost, China-Oost 2. Ga naar beschik [bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/) voor de beschik baarheid van algemene producten.
 
 ## <a name="set-up-threat-detection"></a>Detectie van bedreigingen instellen
-1. Start de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
+1. Start de Azure Portal op [https://portal.azure.com](https://portal.azure.com) .
 2. Ga naar de configuratie pagina van de Azure Database for MariaDB-server die u wilt beveiligen. Selecteer in de beveiligings instellingen **Advanced Threat Protection (preview)**.
 3. Op de configuratie pagina **Advanced Threat Protection (preview)** :
 

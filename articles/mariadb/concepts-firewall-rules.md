@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 743e3f50d747993250399493d97fc2becab19319
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79532039"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Firewall regels van Azure Database for MariaDB server
@@ -66,7 +66,7 @@ Houd rekening met de volgende punten wanneer toegang tot de Microsoft Azure data
 
    * Vraag in plaats daarvan statische IP-adressen voor uw clientcomputers en voeg de IP-adressen als firewallregels toe.
 
-* **Het IP-adres van de server lijkt openbaar te zijn:** Verbindingen met de Azure Database for MariaDB-server worden doorgestuurd via een openbaar toegankelijke Azure-gateway. Het daadwerkelijke IP-adres van de server wordt echter beschermd door de firewall. Ga naar het artikel over de [connectiviteits architectuur](concepts-connectivity-architecture.md)voor meer informatie. 
+* **Het IP-adres van de server lijkt openbaar te zijn:** Verbindingen met de Azure Database for MariaDB-server worden doorgestuurd via een openbaar toegankelijke Azure-gateway. Het daadwerkelijke IP-adres van de server wordt echter beschermd door de firewall. Raadpleeg het artikel [over de connectiviteitsarchitectuur](concepts-connectivity-architecture.md) voor meer informatie. 
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Azure Database for MariaDB firewall regels maken en beheren met behulp van de Azure Portal](./howto-manage-firewall-portal.md)

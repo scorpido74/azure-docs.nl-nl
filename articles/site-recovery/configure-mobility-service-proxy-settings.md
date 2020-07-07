@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/18/2020
 ms.author: sideeksh
 ms.openlocfilehash: 3d33b5a89a718a41e5c547551f6e7eb4f7033a63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79503125"
 ---
 # <a name="configure-mobility-service-proxy-settings-for-azure-to-azure-disaster-recovery"></a>Proxy-instellingen voor de Mobility-service configureren voor Azure voor herstel na nood gevallen
@@ -51,7 +51,7 @@ Mobility service detecteert automatisch de proxy instellingen van omgevings inst
 In dit geval biedt de klant aangepaste instellingen voor toepassings proxy in het configuratie bestand ProxyInfo. conf van de Mobility-service. Met deze methode kunnen klanten alleen proxy bieden voor de Mobility-service of een andere proxy voor Azure Site Recovery Mobility-service dan een proxy (of geen proxy) voor de rest van de toepassingen op de computer.
 
 ## <a name="proxy-template"></a>Proxy sjabloon
-ProxyInfo. conf bevat de volgende sjabloon [proxy] address =http://1.2.3.4 Port = 5678 BypassList = hypervrecoverymanager. windowsazure. com, login. microsoftonline. com, blob. core. Windows. net. De BypassList biedt geen ondersteuning voor joker tekens zoals *. windows.net, maar het geven van windows.net is goed genoeg om over te slaan. 
+ProxyInfo. conf bevat de volgende sjabloon [proxy] address = http://1.2.3.4 Port = 5678 BypassList = hypervrecoverymanager. windowsazure. com, login. microsoftonline. com, blob. core. Windows. net. De BypassList biedt geen ondersteuning voor joker tekens zoals *. windows.net, maar het geven van windows.net is goed genoeg om over te slaan. 
 
 ## <a name="next-steps"></a>Volgende stappen:
 - Lees de [netwerk richtlijnen](site-recovery-azure-to-azure-networking-guidance.md) voor het repliceren van virtuele Azure-machines.

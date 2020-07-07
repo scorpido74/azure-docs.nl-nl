@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: a502638744009fc34a7f0a27f8034b89d2c8fa26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79527806"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Azure Database for MariaDB prestaties bewaken met query Store
@@ -87,16 +87,16 @@ Wanneer query Store is ingeschakeld, worden gegevens opgeslagen in een periode v
 
 De volgende opties zijn beschikbaar voor het configureren van query Store-para meters.
 
-| **Bepaalde** | **Beschrijving** | **Prijs** | **Bereik** |
+| **Parameter** | **Beschrijving** | **Standaard** | **Bereik** |
 |---|---|---|---|
-| query_store_capture_mode | De functie query Store in-of uitschakelen op basis van de waarde. Opmerking: als performance_schema is uitgeschakeld, wordt performance_schema en een subset van de performance schema-instrumenten die voor deze functie zijn vereist query_store_capture_mode, ingeschakeld. | ALLE | GEEN, ALLE |
+| query_store_capture_mode | De functie query Store in-of uitschakelen op basis van de waarde. Opmerking: als performance_schema is uitgeschakeld, wordt performance_schema en een subset van de performance schema-instrumenten die voor deze functie zijn vereist query_store_capture_mode, ingeschakeld. | ALL | GEEN, ALLE |
 | query_store_capture_interval | De interval voor het vastleggen van de query opslag in minuten. Hiermee kunt u het interval opgeven waarin de metrische gegevens van de query worden geaggregeerd | 15 | 5 - 60 |
 | query_store_capture_utility_queries | In-of uitschakelen voor het vastleggen van alle hulp query's die in het systeem worden uitgevoerd. | NO | JA, NEE |
 | query_store_retention_period_in_days | Tijd venster in dagen dat de gegevens in het query archief moeten worden bewaard. | 7 | 1 - 30 |
 
 De volgende opties zijn specifiek van toepassing op wacht statistieken.
 
-| **Bepaalde** | **Beschrijving** | **Prijs** | **Bereik** |
+| **Parameter** | **Beschrijving** | **Standaard** | **Bereik** |
 |---|---|---|---|
 | query_store_wait_sampling_capture_mode | Hiermee kunt u de wacht statistieken in-of uitschakelen. | GEEN | GEEN, ALLE |
 | query_store_wait_sampling_frequency | Wijzigt de frequentie van wacht-sampling in seconden. 5 tot 300 seconden. | 30 | 5-300 |
@@ -116,7 +116,7 @@ Query's worden genormaliseerd door de structuur te bekijken na het verwijderen v
 
 In deze weer gave worden alle gegevens in query Store geretourneerd. Er is één rij voor elke afzonderlijke data base-ID, gebruikers-ID en query-ID.
 
-| **Naam** | **Gegevenstype** | **IS_NULLABLE** | **Beschrijving** |
+| **Naam** | **Gegevens type** | **IS_NULLABLE** | **Beschrijving** |
 |---|---|---|---|
 | `schema_name`| varchar (64) | NO | Naam van het schema |
 | `query_id`| bigint (20) | NO| De unieke ID die voor de specifieke query is gegenereerd, als dezelfde query in een ander schema wordt uitgevoerd, wordt een nieuwe ID gegenereerd |
@@ -149,7 +149,7 @@ In deze weer gave worden alle gegevens in query Store geretourneerd. Er is één
 
 Met deze weer gave worden wachtende gebeurtenis gegevens in query Store geretourneerd. Er is één rij voor elke afzonderlijke data base-ID, gebruikers-ID, query-ID en gebeurtenis.
 
-| **Naam**| **Gegevenstype** | **IS_NULLABLE** | **Beschrijving** |
+| **Naam**| **Gegevens type** | **IS_NULLABLE** | **Beschrijving** |
 |---|---|---|---|
 | `interval_start` | tijdstempel | NO| Begin van het interval (toename van 15 minuten)|
 | `interval_end` | tijdstempel | NO| Einde van het interval (toename van 15 minuten)|
@@ -171,10 +171,10 @@ Met deze weer gave worden wachtende gebeurtenis gegevens in query Store geretour
 
 ## <a name="limitations-and-known-issues"></a>Beperkingen en bekende problemen
 
-- Als een MariaDB-server de para `default_transaction_read_only` meter op heeft, kan de query Store geen gegevens vastleggen.
-- De functionaliteit van het query archief kan worden onderbroken als er lange Unicode-query's\>worden aangetroffen (= 6000 bytes).
+- Als een MariaDB-server de para meter `default_transaction_read_only` op heeft, kan de query Store geen gegevens vastleggen.
+- De functionaliteit van het query archief kan worden onderbroken als er lange Unicode-query's worden aangetroffen ( \> = 6000 bytes).
 - De Bewaar periode voor wacht statistieken is 24 uur.
-- Wacht statistieken maken gebruik van voor beeld Ti een fractie van gebeurtenissen vastleggen. De frequentie kan worden gewijzigd met behulp `query_store_wait_sampling_frequency`van de para meter.
+- Wacht statistieken maken gebruik van voor beeld Ti een fractie van gebeurtenissen vastleggen. De frequentie kan worden gewijzigd met behulp van de para meter `query_store_wait_sampling_frequency` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

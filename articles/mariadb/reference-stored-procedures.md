@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 2f6d1e20db64cb0c2a64771ea26b971b22031fd9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79529987"
 ---
 # <a name="azure-database-for-mariadb-management-stored-procedures"></a>Opgeslagen procedures voor Azure Database for MariaDB beheer
@@ -39,8 +39,8 @@ De volgende opgeslagen procedures zijn beschikbaar in Azure Database for MariaDB
 
 |**Naam van opgeslagen procedure**|**Invoerparameters**|**Uitvoer parameters**|**Opmerking over gebruik**|
 |-----|-----|-----|-----|
-|*MySQL. az_kill*|processlist_id|N.v.t.|Gelijk aan [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) -opdracht. De verbinding die is gekoppeld aan de geleverde processlist_id na het beëindigen van een instructie die wordt uitgevoerd, wordt beëindigd.|
-|*MySQL. az_kill_query*|processlist_id|N.v.t.|Gelijk aan [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) -opdracht. Hiermee wordt de instructie beëindigd die momenteel wordt uitgevoerd door de verbinding. De verbinding zelf blijft actief.|
+|*MySQL. az_kill*|processlist_id|N.v.t.|Gelijk aan- [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) opdracht. De verbinding die is gekoppeld aan de geleverde processlist_id na het beëindigen van een instructie die wordt uitgevoerd, wordt beëindigd.|
+|*MySQL. az_kill_query*|processlist_id|N.v.t.|Gelijk aan- [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) opdracht. Hiermee wordt de instructie beëindigd die momenteel wordt uitgevoerd door de verbinding. De verbinding zelf blijft actief.|
 |*MySQL. az_load_timezone*|N.v.t.|N.v.t.|Laadt tijd zone tabellen zodat de `time_zone` para meter kan worden ingesteld op benoemde waarden (bijvoorbeeld "VS/Pacific").|
 
 ## <a name="next-steps"></a>Volgende stappen
