@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/07/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 1e08e758fbba911d3391794f5bab31aaf6a5fc73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81454676"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-gegevens versleuteling-at-rest
@@ -268,7 +268,7 @@ Versleuteling aan client zijde van Azure SQL Database gegevens wordt ondersteund
 | Azure Machine Learning Studio    | Ja                | Preview, RSA 2048-bits | -               |
 | Content Moderator                | Ja                | Ja                | -                  |
 | Face                             | Ja                | Ja                | -                  |
-| Taal begrijpen           | Ja                | Ja                | -                  |
+| Taalbegrip           | Ja                | Ja                | -                  |
 | Personalizer                     | Ja                | Ja                | -                  |
 | QnA Maker                        | Ja                | Ja                | -                  |
 | Spraakservices                  | Ja                | Ja                | -                  |
@@ -291,19 +291,19 @@ Versleuteling aan client zijde van Azure SQL Database gegevens wordt ondersteund
 | Container Instances              | Ja                | Ja                | -                  |
 | Container Registry               | Ja                | Ja                | -                  |
 | **Compute**                      |                    |                    |                    |
-| Virtuele machines                 | Ja                | Ja, RSA 2048-bits  | -                  |
+| Virtual Machines                 | Ja                | Ja, RSA 2048-bits  | -                  |
 | Schaalset voor virtuele machines        | Ja                | Ja, RSA 2048-bits  | -                  |
 | SAP HANA                         | Ja                | Ja, RSA 2048-bits  | -                  |
 | App Service                      | Ja                | Klikt\*\*            | -                  |
 | Automation                       | Ja                | Klikt\*\*            | -                  |
 | Azure Functions                  | Ja                | Klikt\*\*            | -                  |
-| Azure-portal                     | Ja                | Klikt\*\*            | -                  |
+| Azure Portal                     | Ja                | Klikt\*\*            | -                  |
 | Logic Apps                       | Ja                | Ja                | -                  |
 | Azure Managed Applications       | Ja                | Klikt\*\*            | -                  |
 | Service Bus                      | Ja                | Ja                | -                  |
-| Site Recovery                    | Ja                | Ja                | -                  |
+| Siteherstel                    | Ja                | Ja                | -                  |
 | **Databases**                    |                    |                    |                    |
-| SQL Server op Virtual Machines   | Ja                | Ja, RSA 2048-bits  | Ja                |
+| SQL Server on Virtual Machines   | Ja                | Ja, RSA 2048-bits  | Ja                |
 | Azure SQL Database               | Ja                | Ja, RSA 2048-bits  | Ja                |
 | Azure SQL Database voor MariaDB   | Ja                | -                  | -                  |
 | Azure SQL Database voor MySQL     | Ja                | Ja                | -                  |

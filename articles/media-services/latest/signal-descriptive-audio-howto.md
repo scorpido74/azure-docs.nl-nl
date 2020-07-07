@@ -13,10 +13,10 @@ ms.custom: ''
 ms.date: 09/25/2019
 ms.author: juliako
 ms.openlocfilehash: 0d8f88e6c2fe273efa969278146de67ba18eaecf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72392187"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Beschrijvende geluids sporen voor signalen
@@ -27,7 +27,7 @@ In dit artikel wordt beschreven hoe u een video codeert, een alleen-audio-MP4-be
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Een Azure Media Services-account maken](create-account-cli-how-to.md).
+- [Maak een Media Services-account](create-account-cli-how-to.md).
 - Volg de stappen in [Access Azure Media Services API with the Azure CLI](access-api-cli-how-to.md) (Toegang tot de Azure Media Services-API met de Azure CLI) en sla de referenties op. U hebt deze nodig voor toegang tot de API.
 - Bekijk [dynamische verpakkingen](dynamic-packaging-overview.md).
 - Bekijk de zelf studie [Video's uploaden, coderen en streamen](stream-files-tutorial-with-api.md) .
@@ -48,7 +48,7 @@ De volgende functie voert deze acties uit:
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
 
-Als u de naam van het gemaakte invoer element wilt door geven aan andere methoden, moet u ervoor zorgen dat `Name` u de eigenschap gebruikt voor het activa `CreateInputAssetAsync`object dat wordt geretourneerd, bijvoorbeeld inputAsset.name. 
+Als u de naam van het gemaakte invoer element wilt door geven aan andere methoden, moet u ervoor zorgen dat u de eigenschap gebruikt voor `Name` het activa object dat wordt geretourneerd `CreateInputAssetAsync` , bijvoorbeeld inputAsset.name. 
 
 ## <a name="create-an-output-asset-to-store-the-result-of-the-encoding-job"></a>Een uitvoer activum maken om het resultaat van de coderings taak op te slaan
 
@@ -56,7 +56,7 @@ In de [uitvoerasset](https://docs.microsoft.com/rest/api/media/assets) wordt het
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAsset)]
 
-Als u de naam van het gemaakte uitvoer activum wilt door geven aan andere methoden, moet u ervoor zorgen dat `Name` u de eigenschap gebruikt voor het activa `CreateIOutputAssetAsync`object dat wordt geretourneerd, bijvoorbeeld outputAsset.name. 
+Als u de naam van het gemaakte uitvoer activum wilt door geven aan andere methoden, moet u ervoor zorgen dat u de eigenschap gebruikt voor `Name` het activa object dat wordt geretourneerd `CreateIOutputAssetAsync` , bijvoorbeeld outputAsset.name. 
 
 In het geval van dit artikel geeft u de `outputAsset.Name` waarde door aan `SubmitJobAsync` de `UploadAudioIntoOutputAsset` functies en.
 
@@ -76,7 +76,7 @@ Met de volgende functie wordt een taak verzonden.
 
 De taak neemt enige tijd in beslag en wanneer deze is voltooid, wordt u hiervan op de hoogte gesteld. U kunt het beste Event Grid gebruiken om te wachten tot de taak is voltooid.
 
-De taak doorloopt doorgaans de volgende statussen: **gepland**, **in de wachtrij geplaatst**, **verwerkt**, **voltooid** (de eind status). Als bij de taak een fout is opgetreden is, krijgt u de status **Fout**. Als de taak momenteel wordt geannuleerd, krijgt u de melding **Wordt geannuleerd** en **Geannuleerd** wanneer het annuleren is voltooid.
+De taak doorloopt doorgaans de volgende statussen: **gepland**, **in de wachtrij geplaatst**, **verwerkt**, **voltooid** (de eind status). Als er een fout is opgetreden in de taak, krijgt u de **fout** status. Als de taak momenteel wordt geannuleerd, krijgt u de melding **Wordt geannuleerd** en **Geannuleerd** wanneer het annuleren is voltooid.
 
 Zie [Handling Event grid Events](reacting-to-media-services-events.md)(Engelstalig) voor meer informatie.
 
@@ -127,7 +127,7 @@ private static async Task UpoadAudioIntoOutputAsset(
 }
 ```
 
-Hier volgt een voor beeld van een aanroep van `UpoadAudioIntoOutputAsset` de functie:
+Hier volgt een voor beeld van een aanroep van de `UpoadAudioIntoOutputAsset` functie:
 
 ```csharp
 await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName, outputAsset.Name, "audio_description.m4a");
@@ -142,7 +142,7 @@ Wanneer uw coderings taak is voltooid, bevat de uitvoer-Asset de bestanden die d
 1. Zoek in de container het. ISM-bestand en klik op **BLOB bewerken** (in het rechter venster). 
 1. Bewerk het ISM-bestand door de informatie over het geüploade MP4-bestand (AAC-codec) met de beschrijvende audio toe te voegen en op **Opslaan** te drukken wanneer u klaar bent.
 
-    U moet de para meters Accessibility en Role toevoegen aan het. ISM-bestand om de beschrijvende audio tracks te Signa leren. Het is uw verantwoordelijkheid om deze para meters op de juiste wijze in te stellen om een audio track als audio beschrijving te Signa leren. Voeg `<param name="accessibility" value="description" />` bijvoorbeeld en `<param name="role" value="alternate" />` toe aan het. ISM-bestand voor een specifiek audio spoor, zoals wordt weer gegeven in het volgende voor beeld.
+    U moet de para meters Accessibility en Role toevoegen aan het. ISM-bestand om de beschrijvende audio tracks te Signa leren. Het is uw verantwoordelijkheid om deze para meters op de juiste wijze in te stellen om een audio track als audio beschrijving te Signa leren. Voeg bijvoorbeeld `<param name="accessibility" value="description" />` en `<param name="role" value="alternate" />` toe aan het. ISM-bestand voor een specifiek audio spoor, zoals wordt weer gegeven in het volgende voor beeld.
  
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -233,7 +233,7 @@ In dit artikel gebruiken we Azure Media Player om de stream te testen.
 > [!NOTE]
 > Als een speler wordt gehost op een https-site, moet u de URL bijwerken naar 'https'.
 
-1. Open een webbrowser en ga naar [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
+1. Open een webbrowser en ga naar [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/) .
 2. Plak in het vak **URL:** een van de waarden van de streaming-URL die u hebt ontvangen van uw toepassing. 
  
      U kunt de URL plakken in de HLS-, Dash-, of Smooth-indeling. Azure Media Player schakelt over op naar een geschikt streaming-protocol zodat de stream automatisch op uw apparaat wordt afgespeeld.

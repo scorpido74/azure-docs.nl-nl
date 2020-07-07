@@ -10,14 +10,14 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: d7fdc5074f3c92eea4f236a9b1f7c823b930f391
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72992559"
 ---
 # <a name="advanced-filtering"></a>Geavanceerd filteren
-Met Event Grid kunt u filters voor elke eigenschap in de JSON-nettolading opgeven. Deze filters zijn gemodelleerd als set `AND` voor waarden, waarbij elke Outer voor waarde optionele `OR` interne voor waarden heeft. Voor elke `AND` voor waarde geeft u de volgende waarden op:
+Met Event Grid kunt u filters voor elke eigenschap in de JSON-nettolading opgeven. Deze filters zijn gemodelleerd als set `AND` voor waarden, waarbij elke Outer voor waarde optionele interne `OR` voor waarden heeft. Voor elke `AND` voor waarde geeft u de volgende waarden op:
 
 * `OperatorType`-Het type vergelijking.
 * `Key`-Het JSON-pad naar de eigenschap waarop het filter moet worden toegepast.
@@ -50,12 +50,12 @@ Event Grid biedt geen ondersteuning voor filteren op een matrix met waarden vand
 
 ## <a name="and-or-not-semantics"></a>EN-of-geen semantiek
 
-U ziet dat in het JSON-voor beeld `AdvancedFilters` dat eerder is gegeven, een matrix is. Denk aan elk `AdvancedFilter` matrix element als een `AND` voor waarde.
+U ziet dat in het JSON-voor beeld dat eerder is gegeven, `AdvancedFilters` een matrix is. Denk aan elk `AdvancedFilter` matrix element als een `AND` voor waarde.
 
-Voor de Opera tors die meerdere waarden ondersteunen (zoals `NumberIn`, `NumberNotIn`, `StringIn`, enzovoort), wordt elke waarde behandeld als een `OR` voor waarde. Een `StringBeginsWith("a", "b", "c")` komt dus overeen met een teken reeks waarde die begint met `a` ofwel `b` of `c`.
+Voor de Opera tors die meerdere waarden ondersteunen (zoals `NumberIn` , `NumberNotIn` , `StringIn` , enzovoort), wordt elke waarde behandeld als een `OR` voor waarde. Een komt dus `StringBeginsWith("a", "b", "c")` overeen met een teken reeks waarde die begint met `a` ofwel `b` of `c` .
 
 > [!CAUTION]
-> De Opera tors `NumberNotIn` en `StringNotIn` gedragen zich als en voor waarden voor elke waarde die in het `Values` veld wordt gegeven.
+> De Opera tors en `NumberNotIn` `StringNotIn` gedragen zich als en voor waarden voor elke waarde die in het `Values` veld wordt gegeven.
 >
 > Als u dit niet doet, wordt het filter ' accept-all filter en verslaan het doel van het filteren.
 
@@ -80,7 +80,7 @@ Voor gebeurtenissen in het Event Grid schema:
 * Id
 * Onderwerp
 * Onderwerp
-* Type
+* EventType
 * DataVersion
 * Data. Prop1
 * Data. prop * Prop2. Prop3. Prop4. Prop5

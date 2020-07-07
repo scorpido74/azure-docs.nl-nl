@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 07/31/2019
 ms.openlocfilehash: 70ebcb1f340ba28cf80ad3e24a464aad5584b3a4
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82207153"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Via SSH verbinding maken met AKS-clusterknooppunten (Azure Kubernetes Service) voor onderhoud of probleemoplossing
@@ -149,7 +149,7 @@ Als u een SSH-verbinding met een AKS-knoop punt wilt maken, voert u een helper-p
     >
     > `kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"apps/v1","spec":{"template":{"spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}}}'`
 
-1. Zodra de terminal sessie is verbonden met de container, installeert u een SSH- `apt-get`client met behulp van:
+1. Zodra de terminal sessie is verbonden met de container, installeert u een SSH-client met behulp van `apt-get` :
 
     ```console
     apt-get update && apt-get install openssh-client -y
@@ -163,7 +163,7 @@ Als u een SSH-verbinding met een AKS-knoop punt wilt maken, voert u een helper-p
     kubectl cp ~/.ssh/id_rsa $(kubectl get pod -l run=aks-ssh -o jsonpath='{.items[0].metadata.name}'):/id_rsa
     ```
 
-1. Ga terug naar de terminal sessie naar uw container, werk de machtigingen voor de `id_rsa` gekopieerde persoonlijke SSH-sleutel zo in dat deze alleen-lezen is:
+1. Ga terug naar de terminal sessie naar uw container, werk de machtigingen voor de gekopieerde `id_rsa` persoonlijke SSH-sleutel zo in dat deze alleen-lezen is:
 
     ```console
     chmod 0600 id_rsa
@@ -194,7 +194,7 @@ Als u een SSH-verbinding met een AKS-knoop punt wilt maken, voert u een helper-p
 
 ## <a name="remove-ssh-access"></a>SSH-toegang verwijderen
 
-Wanneer u klaar `exit` bent, wordt de SSH `exit` -sessie en vervolgens de interactieve container sessie uitgevoerd. Wanneer deze container sessie wordt gesloten, wordt de pod die wordt gebruikt voor SSH-toegang uit het AKS-cluster verwijderd.
+Wanneer u klaar bent, wordt `exit` de SSH-sessie en vervolgens `exit` de interactieve container sessie uitgevoerd. Wanneer deze container sessie wordt gesloten, wordt de pod die wordt gebruikt voor SSH-toegang uit het AKS-cluster verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

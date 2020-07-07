@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: f1f3667c088c5f7300317ea02ca19a72e4e62905
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81431031"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maximale Rijg roep-kwaliteit voor column Store
@@ -80,9 +80,9 @@ De trim_reason_desc geeft aan of de Rijg roep is bijgesneden (trim_reason_desc =
 Het Maxi maal vereiste geheugen voor het comprimeren van één Rijg roep is ongeveer
 
 - 72 MB +
-- \#rijen \* \#kolommen \* 8 bytes +
-- \#rijen \* \#korte teken reeks-kolommen \* 32 bytes +
-- \#lange-teken reeks- \* kolommen 16 MB voor de compressie woordenlijst
+- \#rijen \* \# kolommen \* 8 bytes +
+- \#rijen \* \# korte teken reeks-kolommen \* 32 bytes +
+- \#lange-teken reeks-kolommen \* 16 MB voor de compressie woordenlijst
 
 Wanneer in korte teken reeks kolommen teken reeks gegevens typen van <= 32 bytes en lange teken reeks kolommen gebruikmaken van teken reeks gegevens typen van > 32 bytes.
 

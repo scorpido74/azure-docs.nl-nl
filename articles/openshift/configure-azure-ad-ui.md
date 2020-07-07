@@ -9,15 +9,15 @@ ms.author: asabbour
 keywords: Aro, open Shift, AZ Aro, Red Hat, cli
 ms.custom: mvc
 ms.openlocfilehash: 6b6248aac35c22b9ffd2cd95df41e84986356259
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205311"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>Azure Active Directory authenticatie configureren voor een Azure Red Hat open Shift 4-cluster (Portal)
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelf studie gebruikmaken van de Azure CLI-versie 2.0.75 of hoger. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.75 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -58,7 +58,7 @@ U kunt optionele claims gebruiken voor het volgende:
 * Wijzig het gedrag van bepaalde claims die Azure AD retourneert in tokens.
 * Aangepaste claims toevoegen en openen voor uw toepassing.
 
-We configureren open Shift om de `email` claim te gebruiken en terug te `upn` vallen op om de voorkeurs gebruikersnaam in te stellen `upn` door het toevoegen van het id-token dat wordt geretourneerd door Azure Active Directory.
+We configureren open Shift om de claim te gebruiken `email` en terug te vallen op `upn` om de voorkeurs gebruikersnaam in te stellen door het toevoegen `upn` van het id-token dat wordt geretourneerd door Azure Active Directory.
 
 Navigeer naar **token configuratie (preview)** en klik op **optionele claim toevoegen**. Selecteer **id** en controleer vervolgens de **e-mail-** en **UPN** -claims.
 
@@ -72,7 +72,7 @@ Volg de instructies in de Azure Active Directory-documentatie om [gebruikers en 
 
 ## <a name="configure-openshift-openid-authentication"></a>Open Shift OpenID Connect-verificatie configureren
 
-De `kubeadmin` referenties ophalen. Voer de volgende opdracht uit om het wacht woord voor `kubeadmin` de gebruiker te zoeken.
+De `kubeadmin` referenties ophalen. Voer de volgende opdracht uit om het wacht woord voor de gebruiker te zoeken `kubeadmin` .
 
 ```azurecli-interactive
 az aro list-credentials \
@@ -80,7 +80,7 @@ az aro list-credentials \
   --resource-group aro-rg
 ```
 
-In de volgende voorbeeld uitvoer ziet u dat het wacht `kubeadminPassword`woord in wordt weer gegeven.
+In de volgende voorbeeld uitvoer ziet u dat het wacht woord in wordt weer gegeven `kubeadminPassword` .
 
 ```json
 {
@@ -98,14 +98,14 @@ U kunt de URL van de cluster console vinden door de volgende opdracht uit te voe
     --query "consoleProfile.url" -o tsv
 ```
 
-Start de console-URL in een browser en meld u `kubeadmin` aan met de referenties.
+Start de console-URL in een browser en meld u aan met de `kubeadmin` referenties.
 
 Navigeer naar **beheer**, klik op **cluster instellingen**en selecteer vervolgens het tabblad **globale configuratie** . Schuif naar Select **OAuth**.
 
 Schuif omlaag om **toevoegen** onder **id-providers** te selecteren en selecteer **OpenID Connect Connect**.
 ![Selecteer OpenID Connect Connect in de vervolg keuzelijst ID-providers](media/aro4-oauth-idpdrop.png)
 
-Vul de naam in als **Aad**, de **client-id** als de **toepassings-id** en het **client geheim**. De **URL** van de uitgever heeft de volgende indeling `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`:. Vervang de tijdelijke aanduiding door de Tenant-ID die u eerder hebt opgehaald.
+Vul de naam in als **Aad**, de **client-id** als de **toepassings-id** en het **client geheim**. De **URL** van de uitgever heeft de volgende indeling: `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . Vervang de tijdelijke aanduiding door de Tenant-ID die u eerder hebt opgehaald.
 
 ![OAuth-details invullen](media/aro4-oauth-idp-1.png)
 

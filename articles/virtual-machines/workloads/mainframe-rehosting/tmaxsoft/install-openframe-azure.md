@@ -9,10 +9,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.openlocfilehash: 1ad6e52c421d9cfec4640d3a330b5507d6ed3e9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72436047"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>TmaxSoft open frame installeren op Azure
@@ -104,7 +104,7 @@ Ga als volgt te werk voordat u aan de slag gaat:
 
 - Down load het medium voor OpenFrame-installatie van TmaxSoft. Als u een bestaande TmaxSoft-klant bent, neemt u contact op met uw TmaxSoft-vertegenwoordiger voor een gelicentieerd exemplaar. Vraag anders een proef versie aan vanuit [TmaxSoft](https://www.tmaxsoft.com/contact/).
 
-- Vraag de documentatie van OpenFrame aan door een <support@tmaxsoft.com>e-mail te verzenden naar.
+- Vraag de documentatie van OpenFrame aan door een e-mail te verzenden naar <support@tmaxsoft.com> .
 
 - Ontvang een Azure-abonnement als u er nog geen hebt. U kunt ook een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) maken voordat u begint.
 
@@ -145,20 +145,20 @@ U kunt de OpenFrame-omgeving instellen met behulp van verschillende implementati
 
 Als u een Windows-besturings systeem gebruikt, hebt u PuTTYgen nodig om een openbaar/persoonlijk sleutel paar te genereren.
 
-De open bare sleutel kan vrij worden gedeeld, maar de persoonlijke sleutel moet volledig geheim blijven en mag nooit worden gedeeld met een andere partij. Nadat u de sleutels hebt gegenereerd, moet u de **open bare SSH-sleutel** in de configuratie plakken: in feite wordt deze geüpload naar de virtuele Linux-machine. Het wordt opgeslagen in geautoriseerde\_sleutels in \~de map/.SSH van de basismap van het gebruikers account. De virtuele Linux-machine kan de verbinding vervolgens herkennen en valideren zodra u de bijbehorende **persoonlijke SSH-sleutel** hebt verstrekt in de SSH-client (in ons geval putty).
+De open bare sleutel kan vrij worden gedeeld, maar de persoonlijke sleutel moet volledig geheim blijven en mag nooit worden gedeeld met een andere partij. Nadat u de sleutels hebt gegenereerd, moet u de **open bare SSH-sleutel** in de configuratie plakken: in feite wordt deze geüpload naar de virtuele Linux-machine. Het wordt opgeslagen in geautoriseerde \_ sleutels in de \~ map/.SSH van de basismap van het gebruikers account. De virtuele Linux-machine kan de verbinding vervolgens herkennen en valideren zodra u de bijbehorende **persoonlijke SSH-sleutel** hebt verstrekt in de SSH-client (in ons geval putty).
 
 Bij het verlenen van nieuwe personen toegang tot de virtuele machine: 
 
 - Elke nieuwe persoon genereert hun eigen open bare/persoonlijke sleutels met behulp van PuTTYgen.
 - Personen slaan hun eigen persoonlijke sleutels afzonderlijk op en verzenden de informatie van de open bare sleutel naar de beheerder van de virtuele machine.
-- De beheerder plakt de inhoud van de open bare sleutel naar het \~/.ssh/authorized\_-sleutel bestand.
+- De beheerder plakt de inhoud van de open bare sleutel naar het \~ /.ssh/authorized- \_ sleutel bestand.
 - De nieuwe persoon maakt verbinding via PuTTy.
 
 **Een openbaar/persoonlijk sleutel paar genereren**
 
-1.  Down load PuTTYgen <https://www.putty.org/> uit en installeer het met de standaard instellingen.
+1.  Down load PuTTYgen uit <https://www.putty.org/> en installeer het met de standaard instellingen.
 
-2.  Om PuTTYgen te openen, zoekt u de PuTTy-installatie directory\\in C\\: programma bestanden putty.
+2.  Om PuTTYgen te openen, zoekt u de PuTTy-installatie directory in C: \\ programma bestanden \\ putty.
 
     ![PuTTy-interface](media/puttygen-01.png)
 
@@ -166,7 +166,7 @@ Bij het verlenen van nieuwe personen toegang tot de virtuele machine:
 
     ![Het dialoog venster PuTTy-sleutel generator](media/puttygen-02.png)
 
-4.  Sla na het genereren zowel de open bare sleutel als de persoonlijke sleutel op. Plak de inhoud van de open bare sleutel in de sectie **open bare SSH-sleutel** van het deel venster **basis principes voor virtuele machines \> maken** (zie stap 6 en 7 in de vorige sectie).
+4.  Sla na het genereren zowel de open bare sleutel als de persoonlijke sleutel op. Plak de inhoud van de open bare sleutel in de sectie **open bare SSH-sleutel** van het deel venster ** \> basis principes voor virtuele machines maken** (zie stap 6 en 7 in de vorige sectie).
 
     ![Het dialoog venster PuTTy-sleutel generator](media/puttygen-03.png)
 
@@ -189,7 +189,7 @@ Bij het verlenen van nieuwe personen toegang tot de virtuele machine:
 
 6. Open PuTTY.
 
-7. Typ voor **hostnaam**de gebruikers naam en het open bare IP-adres dat u hebt gekopieerd. Bijvoorbeeld publicip voor **gebruikers\@naam**.
+7. Typ voor **hostnaam**de gebruikers naam en het open bare IP-adres dat u hebt gekopieerd. Bijvoorbeeld publicip voor **gebruikers \@ naam**.
 
     ![Dialoog venster PuTTy-configuratie](media/putty-01.png)
 
@@ -207,7 +207,7 @@ Bij het verlenen van nieuwe personen toegang tot de virtuele machine:
 
 Nu de virtuele machine is gemaakt en u bent aangemeld, moet u enkele installatie stappen uitvoeren en de vereiste voor installatie pakketten installeren.
 
-1. Wijs de naam **ofdemo** met behulp van VI toe aan het lokale IP-adres om het`vi /etc/hosts`bestand hosts () te bewerken. Ervan uitgaande dat het IP-adres 192.168.96.148 ofdemo is, is dit vóór de wijziging:
+1. Wijs de naam **ofdemo** met behulp van VI toe aan het lokale IP-adres om het bestand hosts () te bewerken `vi /etc/hosts` . Ervan uitgaande dat het IP-adres 192.168.96.148 ofdemo is, is dit vóór de wijziging:
 
     ```vi
     127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 
@@ -256,7 +256,7 @@ Nu de virtuele machine is gemaakt en u bent aangemeld, moet u enkele installatie
 
      - dos2unix
      - glibc
-     - glibc. i686 glibc. x86\_64
+     - glibc. i686 glibc. x86 \_ 64
      - libaio
      - ncurses
 
@@ -269,7 +269,7 @@ Nu de virtuele machine is gemaakt en u bent aangemeld, moet u enkele installatie
 
      - gcc
      - gcc-c + +
-     - libaio-devel. x86\_64
+     - libaio-devel. x86 \_ 64
      - strace
      - ltrace
      - gdb
@@ -315,7 +315,7 @@ Tibero biedt de verschillende belang rijke functies in de open frame-omgeving va
     [oframe7@ofdemo ~]$ mv license.xml /opt/tmaxdb/tibero6/license/
     ```
 
-3. Open. bash\_-profiel in VI`vi .bash_profile`() en plak het volgende in het bestand:
+3. Open. bash- \_ profiel in VI ( `vi .bash_profile` ) en plak het volgende in het bestand:
 
     ```
     # Tibero6 ENV
@@ -338,7 +338,7 @@ Tibero biedt de verschillende belang rijke functies in de open frame-omgeving va
     [oframe7@ofdemo ~]$ vi $TB_HOME/config/$TB_SID.tip
     ```
 
-6. Wijzig \$TB\_Home/client/config/tbdsn. TBR en plaats 127.0.0.1 in het oflocalhost, zoals wordt weer gegeven:
+6. Wijzig \$ TB \_ Home/client/config/tbdsn. TBR en plaats 127.0.0.1 in het oflocalhost, zoals wordt weer gegeven:
 
     ```
     TVSAM=( 
@@ -386,14 +386,14 @@ Tibero biedt de verschillende belang rijke functies in de open frame-omgeving va
      ******************************************************************************
     ```
 
-8. Als u de Tibero wilt recyclen, moet u deze `tbdown` eerst afsluiten met behulp van de opdracht. Bijvoorbeeld:
+8. Als u de Tibero wilt recyclen, moet u deze eerst afsluiten met behulp van de `tbdown` opdracht. Bijvoorbeeld:
 
     ```
     [oframe7@ofdemo ~]$$ tbdown 
     Tibero instance terminated (NORMAL mode).
     ```
 
-9. Start Tibero nu op `tbboot`met. Bijvoorbeeld:
+9. Start Tibero nu op met `tbboot` . Bijvoorbeeld:
 
     ```
     [oframe7@ofdemo ~]$ tbboot
@@ -458,7 +458,7 @@ ODBC installeren:
      [oframe7@ofdemo unixODBC-2.3.4]$ ./configure --prefix=/opt/tmaxapp/unixODBC/ --sysconfdir=/opt/tmaxapp/unixODBC/etc
      ```
 
-     UnixODBC is standaard geïnstalleerd in/usr/local, dus `--prefix` wordt een waarde door gegeven om de locatie te wijzigen. Op dezelfde manier worden configuratie bestanden standaard in/etc geïnstalleerd, zodat `--sysconfdir` de waarde van de gewenste locatie wordt door gegeven.
+     UnixODBC is standaard geïnstalleerd in/usr/local, dus wordt `--prefix` een waarde door gegeven om de locatie te wijzigen. Op dezelfde manier worden configuratie bestanden standaard in/etc geïnstalleerd, zodat `--sysconfdir` de waarde van de gewenste locatie wordt door gegeven.
 
 4. Makefile uitvoeren:`[oframe7@ofdemo unixODBC-2.3.4]$ make`
 
@@ -468,7 +468,7 @@ ODBC installeren:
      [oframe7@ofdemo unixODBC-2.3.4]$ make install
      ```
 
-6. Gebruik VI om het bash Profiel (`vi ~/.bash_profile`) te bewerken en het volgende toe te voegen:
+6. Gebruik VI om het bash Profiel () te bewerken `vi ~/.bash_profile` en het volgende toe te voegen:
 
      ```
      # UNIX ODBC ENV 
@@ -543,7 +543,7 @@ De basis toepassings server wordt geïnstalleerd vóór de afzonderlijke service
 
 **Basis voor het installeren van openstaande frames**
 
-1. Controleer of de installatie van Tibero is geslaagd en controleer vervolgens of het volgende\_openstaande\_frame\_Base7\_0\_linux x86 64. bin Installer File en base. Properties aanwezig zijn.
+1. Controleer of de installatie van Tibero is geslaagd en controleer vervolgens of het volgende openstaande frame \_ Base7 \_ 0 \_ Linux \_ x86 \_ 64. bin Installer File en base. Properties aanwezig zijn.
 
 2. Werk het bash-profiel bij met de volgende Tibero-specifieke informatie:
 
@@ -677,9 +677,9 @@ OpenFrame batch bestaat uit verschillende onderdelen die mainframe batch-omgevin
 
 **Batch installeren**
 
-1. Zorg ervoor dat de basis installatie is geslaagd en controleer vervolgens of het\_OpenFrame\_Batch7\_\_0\_Fix2\_MVS\_linux x86 64. bin Installer-bestand en batch. Properties-configuratie bestand aanwezig zijn:
+1. Zorg ervoor dat de basis installatie is geslaagd en controleer vervolgens of het OpenFrame \_ Batch7 \_ 0 \_ Fix2 \_ MVS \_ Linux \_ x86 \_ 64. bin Installer-bestand en batch. Properties-configuratie bestand aanwezig zijn:
 
-2. Typ `vi batch.properties` bij de opdracht prompt om het bestand batch. Properties te bewerken met behulp van VI.
+2. Typ bij de opdracht prompt `vi batch.properties` om het bestand batch. Properties te bewerken met behulp van VI.
 
 3. Wijzig de para meters als volgt:
 
@@ -706,7 +706,7 @@ OpenFrame batch bestaat uit verschillende onderdelen die mainframe batch-omgevin
      ./OpenFrame_Batch7_0_Fix2_MVS_Linux_x86_64.bin -f batch.properties
      ```
 
-5. Wanneer de installatie is voltooid, start u de geïnstalleerde open frame-suites `tmboot` door te typen op de opdracht regel.
+5. Wanneer de installatie is voltooid, start u de geïnstalleerde open frame-suites door te typen `tmboot` op de opdracht regel.
 
     ![tmboot uitvoer](media/tmboot-01.png)
 
@@ -765,8 +765,8 @@ TACF Manager is een open frame-service module waarmee gebruikers toegang tot sys
 
 **TACF installeren**
 
-1. Controleer of het configuratie bestand\_OpenFrame\_Tacf7\_\_0\_Fix2\_linux x86 64. bin Installer en tacf. Properties aanwezig zijn.
-2. Controleer of de batch is geïnstalleerd en gebruik vervolgens VI om het bestand tacf. Properties (`vi tacf.properties`) te openen.
+1. Controleer of het \_ configuratie bestand OpenFrame Tacf7 \_ 0 \_ Fix2 \_ Linux \_ x86 \_ 64. bin Installer en tacf. Properties aanwezig zijn.
+2. Controleer of de batch is geïnstalleerd en gebruik vervolgens VI om het bestand tacf. Properties () te openen `vi tacf.properties` .
 3. Wijzig de TACF-para meters:
 
      ```
@@ -779,19 +779,19 @@ TACF Manager is een open frame-service module waarmee gebruikers toegang tot sys
      TACF_TABLE_CREATE=YES
      ```
 
-4. Nadat TACF Installer is voltooid, past u de omgevings variabelen TACF toe. Typ het volgende na de opdrachtprompt:
+4. Nadat TACF Installer is voltooid, past u de omgevings variabelen TACF toe. Typ in de opdrachtprompt:
 
      ```
      source \~/.bash\_profile
      ```
 
-5. Voer het installatie programma TACF uit. Typ het volgende na de opdrachtprompt:
+5. Voer het installatie programma TACF uit. Typ in de opdrachtprompt:
 
      ```
      ./OpenFrame_Tacf7_0_Fix2_Linux_x86_64.bin -f tacf.properties
      ```
 
-     De uitvoer ziet er ongeveer als volgt uit:
+     De uitvoer ziet er ongeveer zo uit:
 
      ```
      Wed Dec 07 17:36:42 EDT 2016
@@ -812,7 +812,7 @@ TACF Manager is een open frame-service module waarmee gebruikers toegang tot sys
      /tmp/install.dir.41422/Linux/resource/jre/lib/resources.jar /tmp/install.dir.41422/Linux/resource/jre/lib/rt.jar /tmp/install.dir.41422/Linux/resource/jre/lib/sunrsasign.jar /tmp/install.dir.41422/Linux/resource/jre/lib/jsse.jar /tmp/install.dir.41422/Linux/resource/jre/lib/jce.jar /tmp/install.dir.41422/Linux/resource/jre/lib/charsets.jar /tmp/install.dir.41422/Linux/resource/jre/lib/jfr.jar /tmp/install.dir.41422/Linux/resource/jre/classes
      ```
 
-6. Typ `tmboot` bij de opdracht prompt om OpenFrame opnieuw te starten. De uitvoer ziet er ongeveer als volgt uit:
+6. Typ bij de opdracht prompt `tmboot` om OpenFrame opnieuw te starten. De uitvoer ziet er ongeveer zo uit:
 
      ```
      TMBOOT for node(NODE1) is starting: 
@@ -849,7 +849,7 @@ TACF Manager is een open frame-service module waarmee gebruikers toegang tot sys
      TMBOOT: SVR(tmsvr) is starting: Wed Sep  7 17:48:53 2016
      ```
 
-7. Controleer of de status van het proces gereed `tmadmin` is met `si` de opdracht. Bijvoorbeeld:
+7. Controleer of de status van het proces gereed is met `tmadmin` de `si` opdracht. Bijvoorbeeld:
 
      ```
      [oframe7\@ofdemo \~]\$ tmadmin
@@ -875,7 +875,7 @@ TACF Manager is een open frame-service module waarmee gebruikers toegang tot sys
      [oframe7@ofdemo ~]$ tmdow
      ```
 
-9. Sluit de server af met behulp van de `tmdown` opdracht. De uitvoer ziet er ongeveer als volgt uit:
+9. Sluit de server af met behulp van de `tmdown` opdracht. De uitvoer ziet er ongeveer zo uit:
 
      ```
      [oframe7@ofdemo ~]$ tmdown 
@@ -909,15 +909,15 @@ Prosorteren is een hulp programma dat wordt gebruikt in batch-trans acties voor 
 
 **Een sorteer bewerking installeren**
 
-1. Zorg ervoor dat de batch-installatie is voltooid en controleer vervolgens of het installatie bestand voor de **prosorteren\_-bin-2sp3-linux64-2123-opt. tar. gz** is geïnstalleerd.
+1. Zorg ervoor dat de batch-installatie is voltooid en controleer vervolgens of het installatie bestand voor de **prosorteren-bin- \_ 2sp3-linux64-2123-opt. tar. gz** is geïnstalleerd.
 
-2. Voer het installatie programma uit met behulp van het eigenschappen bestand. Typ het volgende na de opdrachtprompt:
+2. Voer het installatie programma uit met behulp van het eigenschappen bestand. Typ in de opdrachtprompt:
 
      ```
      tar -zxvf prosort-bin-prosort\_2sp3-linux64-2123-opt.tar.gz
      ```
 
-3. Verplaats de sorteer Directory naar de thuis locatie. Typ het volgende na de opdrachtprompt:
+3. Verplaats de sorteer Directory naar de thuis locatie. Typ in de opdrachtprompt:
 
      ```
      mv prosort /opt/tmaxapp/prosort
@@ -931,7 +931,7 @@ Prosorteren is een hulp programma dat wordt gebruikt in batch-trans acties voor 
      cp /opt/tmaxsw/oflicense/prosort/license.xml /opt/tmaxapp/prosort/license
      ```
 
-5. Open bash. profile in VI (`vi .bash_profile`) en werk het als volgt bij:
+5. Open bash. profile in VI ( `vi .bash_profile` ) en werk het als volgt bij:
 
      ```bash
      #       PROSORT
@@ -963,7 +963,7 @@ Prosorteren is een hulp programma dat wordt gebruikt in batch-trans acties voor 
      oframe@oframe7home/oframe7/OpenFrame/util :  ln -s DFSORT SORT
      ```
 
-9. Controleer de installatie van de sorteer bewerking door de `prosort -h` opdracht uit te voeren. Bijvoorbeeld:
+9. Controleer de installatie van de sorteer bewerking door de opdracht uit te voeren `prosort -h` . Bijvoorbeeld:
 
      ```
      oframe@oframe7: prosort -h
@@ -983,7 +983,7 @@ OFCOBOL is de OpenFrame-compiler waarmee de COBOL-Program ma's van het mainframe
 
 **OFCOBOL installeren**
 
-1. Zorg ervoor dat de batch/online-installatie is geslaagd en controleer vervolgens of het\_OpenFrame\_COBOL3\_\_0\_40\_linux x86 64. bin Installer-bestand aanwezig is.
+1. Zorg ervoor dat de batch/online-installatie is geslaagd en controleer vervolgens of het OpenFrame \_ COBOL3 \_ 0 \_ 40 \_ Linux \_ x86 \_ 64. bin Installer-bestand aanwezig is.
 
 2. Als u het OFCOBOL-installatie programma wilt uitvoeren, typt u bij de opdracht prompt:
 
@@ -1017,8 +1017,8 @@ OFCOBOL is de OpenFrame-compiler waarmee de COBOL-Program ma's van het mainframe
      PRESS <ENTER> TO EXIT THE INSTALLER
      ```
 
-5. Open het bash-profiel in VI`vi .bash_profile`() en controleer of het is bijgewerkt met OFCOBOL-variabelen.
-6. Voer het bash-profiel uit. Typ het volgende na de opdrachtprompt:
+5. Open het bash-profiel in VI ( `vi .bash_profile` ) en controleer of het is bijgewerkt met OFCOBOL-variabelen.
+6. Voer het bash-profiel uit. Typ in de opdrachtprompt:
 
      ```
       source ~/.bash_profile
@@ -1043,7 +1043,7 @@ OFCOBOL is de OpenFrame-compiler waarmee de COBOL-Program ma's van het mainframe
      [SYSLIB] BIN_PATH=${OPENFRAME_HOME}/bin:${OPENFRAME_HOME}/util:${COBDIR}/bin:/usr/local/bin:/bin LIB_PATH=${OPENFRAME_HOME}/lib:${OPENFRAME_HOME}/core/lib:${TB_HOME}/client/lib:${COBDIR}/lib:/ usr/lib:/lib:/lib/i686:/usr/local/lib:${PROSORT_HOME}/lib:/opt/FSUNbsort/lib :${ODBC_HOME}/lib 
      :${OFCOB_HOME}/lib
      ```
-9. Controleer het bestand\_OpenFrame\_COBOL InstallLog. log in VI en controleer of er geen fouten zijn. Bijvoorbeeld:
+9. Controleer het bestand OpenFrame \_ COBOL \_ InstallLog. log in VI en controleer of er geen fouten zijn. Bijvoorbeeld:
      ```
      [oframe7@ofdemo ~]$ vi $OFCOB_HOME/UninstallerData/log/OpenFrame_COBOL_InstallLog.log 
      …….. 
@@ -1063,7 +1063,7 @@ OFCOBOL is de OpenFrame-compiler waarmee de COBOL-Program ma's van het mainframe
      CommitTag:: 645f3f6bf7fbe1c366a6557c55b96c48454f4bf
      ```
 
-11. Start OpenFrame opnieuw met `tmdown/tmboot` behulp van de opdracht.
+11. Start OpenFrame opnieuw met behulp van de `tmdown/tmboot` opdracht.
 
 ## <a name="install-ofasm"></a>OFASM installeren
 
@@ -1071,7 +1071,7 @@ OFASM is de OpenFrame-compiler waarmee de assembler-program ma's van het mainfra
 
 **OFASM installeren**
 
-1. Zorg ervoor dat de batch/online-installatie is geslaagd en controleer vervolgens of het\_OpenFrame\_ASM3\_\_0\_linux x86 64. bin Installer-bestand aanwezig is.
+1. Zorg ervoor dat de batch/online-installatie is geslaagd en controleer vervolgens of het OpenFrame \_ ASM3 \_ 0 \_ Linux \_ x86 \_ 64. bin Installer-bestand aanwezig is.
 
 2. Voer het installatie programma uit. Bijvoorbeeld:
 
@@ -1117,7 +1117,7 @@ OFASM is de OpenFrame-compiler waarmee de assembler-program ma's van het mainfra
      [SYSLIB] BIN_PATH=${OPENFRAME_HOME}/bin:${OPENFRAME_HOME}/util:${COBDIR}/bin:/usr/local/bin:/bi n:${OPENFRAME_HOME}/volume_default/SYS1.LOADLIB LIB_PATH=${OPENFRAME_HOME}/lib:${OPENFRAME_HOME}/core/lib:${TB_HOME}/client/lib:${CO BDIR}/lib:/usr/lib:/lib:/lib/i686:/usr/local/lib:${PROSORT_HOME}/lib:/opt/FSUNbsort/lib:${OFCOB_HOM E}/lib:${ODBC_HOME}/lib:${OFPLI_HOME}/lib:${OFASM_HOME}/lib
      ```
 
-7. Open het bestand\_OpenFrame\_ASM InstallLog. log in VI en controleer of er geen fouten zijn. Bijvoorbeeld:
+7. Open het bestand OpenFrame \_ ASM \_ InstallLog. log in VI en controleer of er geen fouten zijn. Bijvoorbeeld:
 
      ```
      [oframe7@ofdemo ~]$ vi 
@@ -1152,7 +1152,7 @@ OSC is de OpenFrame-omgeving vergelijkbaar met IBM CICS die ondersteuning biedt 
 
 **OSC installeren**
 
-1. Controleer of de basis installatie is geslaagd en controleer vervolgens of het bestand\_OpenFrame\_OSC7\_\_0\_Fix2\_linux x86 64. bin Installer en osc. Properties aanwezig zijn.
+1. Controleer of de basis installatie is geslaagd en controleer vervolgens of het bestand OpenFrame \_ OSC7 \_ 0 \_ Fix2 \_ Linux \_ x86 \_ 64. bin Installer en osc. Properties aanwezig zijn.
 2. Bewerk de volgende para meters in het bestand osc. Properties:
      ```
      OPENFRAME_HOME=/opt/tmaxapp/OpenFrame OSC_SYS_OSC_NCS_PATH=/opt/tmaxapp/OpenFrame/temp/OSC_NCS OSC_APP_OSC_TC_PATH=/opt/tmaxapp/OpenFrame/temp/OSC_TC
@@ -1167,7 +1167,7 @@ OSC is de OpenFrame-omgeving vergelijkbaar met IBM CICS die ondersteuning biedt 
      Wanneer u klaar bent, wordt het bericht installatie voltooid weer gegeven.
 
 4. Controleer of het bash-profiel is bijgewerkt met OSC-variabelen.
-5. Controleer het bestand\_OpenFrame\_OSC7\_0\_Fix2 InstallLog. log. Het ziet er ongeveer als volgt uit:
+5. Controleer het bestand OpenFrame \_ OSC7 \_ 0 \_ Fix2 \_ InstallLog. log. Het ziet er ongeveer als volgt uit:
 
      ```
      Summary 
@@ -1186,7 +1186,7 @@ OSC is de OpenFrame-omgeving vergelijkbaar met IBM CICS die ondersteuning biedt 
      vi $OPENFRAME_HOME/config/ofsys.seq
      ```
 
-7. Bewerk in \#de secties \#basis en batch de para meters zoals weer gegeven.
+7. Bewerk in de \# secties basis en \# batch de para meters zoals weer gegeven.
 
      ```
      Before changes
@@ -1238,9 +1238,9 @@ OSC is de OpenFrame-omgeving vergelijkbaar met IBM CICS die ondersteuning biedt 
      -rwxrwxr-x. 1 oframe mqm 80 Sep  3 11:54 lictjes.da
      ```
 
-9. Als u OSC wilt opstarten en afsluiten, initialiseert u de CICS-regio gedeeld geheugen `osctdlinit OSCOIVP1` door te typen bij de opdracht prompt.
+9. Als u OSC wilt opstarten en afsluiten, initialiseert u de CICS-regio gedeeld geheugen door te typen `osctdlinit OSCOIVP1` bij de opdracht prompt.
 
-10. Voer `oscboot` uit om osc op te starten. De uitvoer ziet er ongeveer als volgt uit:
+10. Voer uit `oscboot` om osc op te starten. De uitvoer ziet er ongeveer zo uit:
 
      ```
      OSCBOOT : pre-processing       [ OK ]
@@ -1254,7 +1254,7 @@ OSC is de OpenFrame-omgeving vergelijkbaar met IBM CICS die ondersteuning biedt 
           TMBOOT: TLM(tlm) is starting: Mon Sep 12 01:40:25 2016 
      ```
 
-11. Als u wilt controleren of de status van het proces gereed `tmadmin` is, gebruikt u de opdracht in si. Alle processen moeten RDY weer geven in de kolom **status** .
+11. Als u wilt controleren of de status van het proces gereed is, gebruikt u de `tmadmin` opdracht in si. Alle processen moeten RDY weer geven in de kolom **status** .
 
     ![Processen die RDY weer geven](media/tmadmin-02.png)
 
@@ -1268,7 +1268,7 @@ Voordat u JEUS installeert, installeert u het Apache Ant-pakket, dat de biblioth
 
 **Apache Ant installeren**
 
-1. Down load ant binary met `wget` behulp van de opdracht. Bijvoorbeeld:
+1. Down load ant binary met behulp van de `wget` opdracht. Bijvoorbeeld:
 
      ```
      wget http://apache.mirror.cdnetworks.com/ant/binaries/apacheant-1.9.7-bin.tar.gz
@@ -1286,7 +1286,7 @@ Voordat u JEUS installeert, installeert u het Apache Ant-pakket, dat de biblioth
      ln -s apache-ant-1.9.7 ant
      ```
 
-4. Open het bash-profiel in VI`vi .bash_profile`() en werk het bij met de volgende variabelen:
+4. Open het bash-profiel in VI ( `vi .bash_profile` ) en werk het bij met de volgende variabelen:
 
      ```
      # Ant ENV
@@ -1302,20 +1302,20 @@ Voordat u JEUS installeert, installeert u het Apache Ant-pakket, dat de biblioth
 
 **JEUS installeren**
 
-1. Vouw het installatie programma uit `tar` met het hulp programma. Bijvoorbeeld:
+1. Vouw het installatie programma uit met het `tar` hulp programma. Bijvoorbeeld:
 
      ```
      [oframe7@ofdemo ~]$ tar -zxvf jeus704.tar.gz
      ```
 
-2. Maak een **Jeus** -map`mkdir jeus7`() en pak het binaire bestand uit.
+2. Maak een **Jeus** -map ( `mkdir jeus7` ) en pak het binaire bestand uit.
 3. Ga naar de installatiemap (of **Gebruik de para** meter JEUS voor uw eigen omgeving). Bijvoorbeeld:
 
      ```
      [oframe7@ofdemo ~]$ cd jeus7/setup/
      ```
 
-4. Voer `ant clean-all` uit voordat u de build uitvoert. De uitvoer ziet er ongeveer als volgt uit:
+4. Voer uit `ant clean-all` voordat u de build uitvoert. De uitvoer ziet er ongeveer zo uit:
 
      ```
      Buildfile: /home/oframe7jeus7/setup/build.xml
@@ -1345,7 +1345,7 @@ Voordat u JEUS installeert, installeert u het Apache Ant-pakket, dat de biblioth
 7. Wijzigen `jeus.password=jeusadmin nodename=Tmaxsoft` in`jeus.password=tmax1234 nodename=ofdemo`
 
 8. Voer de `ant install` opdracht uit om JEUS te bouwen.
-9.  Werk het. bash\_-profiel bestand bij met de JEUS-variabelen, zoals wordt weer gegeven:
+9.  Werk het. bash- \_ profiel bestand bij met de JEUS-variabelen, zoals wordt weer gegeven:
 
      ```
      # JEUS ENV 
@@ -1382,12 +1382,12 @@ Voordat u JEUS installeert, installeert u het Apache Ant-pakket, dat de biblioth
      http://<IP>:<port>/webadmin/login
      ```
 
-     <http://192.168.92.133:9736/webadmin/login.> Het aanmeldings scherm wordt bijvoorbeeld weer gegeven:
+     <http://192.168.92.133:9736/webadmin/login.>Het aanmeldings scherm wordt bijvoorbeeld weer gegeven:
     
      ![Aanmeldings scherm JEUS webbeheer](media/jeus-01.png)
 
      > [!NOTE]
-     > Als u problemen ondervindt met poort beveiliging, opent u poort 9736 of schakelt u`systemctl stop firewall`de firewall () uit.
+     > Als u problemen ondervindt met poort beveiliging, opent u poort 9736 of schakelt u de firewall ( `systemctl stop firewall` ) uit.
 
 14. Als u de hostnaam voor Server1 wilt wijzigen, klikt u op **vergren delen & bewerken**en klikt u vervolgens op **Server1**. Wijzig de hostnaam in het server venster als volgt:
 
@@ -1413,7 +1413,7 @@ OFGW is de open frame-gateway die communicatie ondersteunt tussen de 3270-termin
 
 **OFGW installeren**
 
-1. Controleer of JEUS is geïnstalleerd en controleer vervolgens of het installatie bestand van\_de\_algemene\_OFGW7 0 1 aanwezig is.
+1. Controleer of JEUS is geïnstalleerd en controleer vervolgens of het \_ installatie bestand van de algemene OFGW7 0 \_ 1 \_ aanwezig is.
 2. Voer het installatie programma uit. Bijvoorbeeld:
 
      ```
@@ -1447,7 +1447,7 @@ OFManager biedt bewerkings-en beheer functies voor OpenFrame in de webomgeving.
 
 **OFManager installeren**
 
-1. Controleer of het installatie\_bestand GENERIC. bin OFManager7 aanwezig is.
+1. Controleer of het \_ installatie bestand GENERIC. bin OFManager7 aanwezig is.
 2. Voer het installatie programma uit. Bijvoorbeeld:
 
      ```

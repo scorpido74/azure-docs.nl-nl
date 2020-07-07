@@ -4,10 +4,10 @@ description: Samen vatting van nalevings aanbiedingen voor Azure Backup
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: da25c6b9b8206ebd2e7ca1a3d90ec88a6efe04b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80423117"
 ---
 # <a name="azure-backup-compliance-offerings"></a>Nalevings aanbod Azure Backup
@@ -16,7 +16,7 @@ Om organisaties te helpen bij de naleving van nationale, regionale en branchespe
 
 Hieronder vindt u een nalevings aanbod voor Azure Backup om ervoor te zorgen dat uw service wordt gereguleerd wanneer de Azure Backup-service wordt gebruikt.
 
-## <a name="global"></a>Wereldwijd
+## <a name="global"></a>Globaal
 
 * [CSA-STAR-Attestation](https://docs.microsoft.com/microsoft-365/compliance/offering-csa-star-attestation)
 * [CSA-Star-certificering](https://docs.microsoft.com/microsoft-365/compliance/offering-csa-star-certification)

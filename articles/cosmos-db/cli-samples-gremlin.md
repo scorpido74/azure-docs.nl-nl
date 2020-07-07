@@ -7,18 +7,18 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 1f927823fd7984014e2b8dd4d2ab90d83f144605
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 01e46d144c287569687bb79e7e9cb67b4923b78a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262953"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552894"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-gremlin-api"></a>Voorbeelden van Azure CLI voor Azure Cosmos DB Gremlin-API
 
 De volgende tabel bevat koppelingen naar Azure CLI-voorbeeldscripts voor de Azure Cosmos DB Gremlin-API. Referentiepagina's voor alle Azure Cosmos DB CLI-opdrachten zijn beschikbaar in de [naslaginformatie voor Azure CLI](/cli/azure/cosmosdb). Alle Azure Cosmos DB CLI-voorbeeldscripts vindt u in de [documentatie van Azure Cosmos DB CLI GitHub-opslagplaats](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).
 
-| |  |
+|Taak | Beschrijving |
 |---|---|
 | [Een Azure Cosmos-account, -database en -grafiek maken](scripts/cli/gremlin/create.md?toc=%2fcli%2fazure%2ftoc.json)| Hiermee maakt u een Azure Cosmos DB-account, -database en -grafiek voor de Gremlin-API. |
 | [Doorvoer wijzigen](scripts/cli/gremlin/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | RU/s bijwerken voor een database en grafiek.|

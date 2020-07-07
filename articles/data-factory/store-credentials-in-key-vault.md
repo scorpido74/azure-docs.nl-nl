@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: jingwang
 ms.openlocfilehash: 22ab4433d84db926733fd0b18035875e63322dda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81451683"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Referenties opslaan in Azure Key Vault
@@ -49,7 +49,7 @@ De volgende eigenschappen worden ondersteund voor Azure Key Vault gekoppelde ser
 
 **Gebruikers interface voor ontwerpen gebruiken:**
 
-Selecteer **verbindingen** -> **gekoppelde services** -> **Nieuw**. In nieuwe gekoppelde service zoekt en selecteert u ' Azure Key Vault ':
+Selecteer **verbindingen**  ->  **gekoppelde services**  ->  **Nieuw**. In nieuwe gekoppelde service zoekt en selecteert u ' Azure Key Vault ':
 
 ![Azure Key Vault zoeken](media/store-credentials-in-key-vault/search-akv.png)
 

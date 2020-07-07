@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 02e13ce81ed2f11c0bb69015a4864c4a1ad55593
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81430966"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>Het maken van certificaten controleren en beheren
@@ -414,7 +414,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 |Elementnaam|Vereist|Type|Versie|Beschrijving|
 |------------------|--------------|----------|-------------|-----------------|
-|x5c|Ja|matrix|\<introductie van versie>|X509-certificaat keten als basis 64 teken reeks matrix.|
+|x5c|Ja|matrix|\<introducing version>|X509-certificaat keten als basis 64 teken reeks matrix.|
 
 ### <a name="response"></a>Antwoord
 

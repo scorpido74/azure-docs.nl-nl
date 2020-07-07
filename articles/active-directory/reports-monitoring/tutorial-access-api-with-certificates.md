@@ -10,19 +10,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: tutorial
 ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: a6699d7a117eee95ba635c8c94ed9b2955f21a7b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4f27385cc33c6c289718c3143d03e24f0454a9f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196883"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608005"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Zelf studie: gegevens ophalen met behulp van de API voor Azure Active Directory rapportage met certificaten
 
@@ -90,10 +90,10 @@ In deze zelf studie leert u hoe u een test certificaat kunt gebruiken om toegang
 7. Gebruik het toegangs token in uw Power shell-script om de Graph API op te vragen. Gebruik de cmdlet **invoke-MSCloudIdMSGraphQuery** van de MSCloudIDUtils om het eind punt aanmeldingen en directoryAudits te inventariseren. Met deze cmdlet worden resultaten met meerdere pagina's verwerkt en worden deze resultaten verzonden naar de Power shell-pijp lijn.
 
 8. Zoek het directoryAudits-eind punt op om de audit logboeken op te halen. 
-   ![Azure Portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
+   ![Azure-portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
 
 9. Zoek het aanmeldingen-eind punt op om de aanmeld logboeken op te halen.
-    ![Azure Portal](./media/tutorial-access-api-with-certificates/query-signins.png)
+    ![Azure-portal](./media/tutorial-access-api-with-certificates/query-signins.png)
 
 10. U kunt er nu voor kiezen om deze gegevens te exporteren naar een CSV en op te slaan in een SIEM-systeem. U kunt uw script ook verpakken in een geplande taak om periodiek gegevens van Azure AD op te halen uit uw tenant zonder dat u toepassingssleutels hoeft op te slaan in de broncode. 
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: bb5288d043ab5638bb33c357cea55c64b03fcf1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81432123"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>Key Vault-verificatie bieden met een beheerde identiteit
@@ -28,14 +28,14 @@ In dit artikel wordt beschreven hoe u een beheerde identiteit voor een App Servi
 
 ## <a name="prerequisites"></a>Vereisten 
 
-Voor het volt ooien van deze hand leiding hebt u de volgende resources nodig. 
+U hebt de volgende resources nodig om deze handleiding te voltooien. 
 
-- Een sleutel kluis. U kunt een bestaande sleutel kluis gebruiken of een nieuwe maken door de stappen in een van deze Quick starts te volgen:
-   - [Een sleutel kluis maken met Azure CLI](../secrets/quick-create-cli.md)
-   - [Een sleutel kluis maken met Azure PowerShell](../secrets/quick-create-powershell.md)
-   - [Een sleutel kluis maken met de Azure Portal](../secrets/quick-create-portal.md).
+- Een sleutelkluis. U kunt een bestaande sleutelkluis gebruiken of een nieuwe maken door de stappen in een van deze quickstarts te volgen:
+   - [Een sleutelkluis maken met de Azure CLI](../secrets/quick-create-cli.md)
+   - [Een sleutelkluis maken met Azure PowerShell](../secrets/quick-create-powershell.md)
+   - [Een sleutelkluis maken met de Azure-portal](../secrets/quick-create-portal.md).
 - Een bestaande App Service-toepassing waaraan toegang tot de sleutel kluis moet worden verleend. U kunt een snelle versie maken door de stappen in de [app service-documentatie](../../app-service/overview.md)te volgen.
-- [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) of [Azure PowerShell](/powershell/azure/overview). U kunt ook de [Azure Portal](https://portal.azure.com)gebruiken.
+- [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) of [Azure PowerShell](/powershell/azure/overview). U kunt ook de [Azure-portal](https://portal.azure.com) gebruiken.
 
 
 ## <a name="adding-a-system-assigned-identity"></a>Een door het systeem toegewezen identiteit toevoegen 
@@ -77,7 +77,7 @@ az webapp identity assign --name myApp --resource-group myResourceGroup
 az functionapp identity assign --name myApp --resource-group myResourceGroup
 ```
 
-Noteer de, die in `PrincipalId`de volgende sectie nodig is.
+Noteer de `PrincipalId` , die in de volgende sectie nodig is.
 
 ```json
 {
@@ -112,8 +112,8 @@ az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-perm
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Key Vault beveiliging: identiteits-en toegangs beheer](overview-security.md#identity-and-access-management)
-- [Key Vault verificatie met een toegangscontrole beleid bieden](group-permissions-for-apps.md)
-- [Beveilig uw sleutel kluis](secure-your-key-vault.md)).
-- [Ontwikkelaars handleiding Azure Key Vault](developers-guide.md)
-- [Azure Key Vault aanbevolen procedures](best-practices.md) controleren
+- [Azure Key Vault-beveiliging: Identiteits- en toegangsbeheer](overview-security.md#identity-and-access-management)
+- [Key Vault-verificatie met een toegangsbeheerbeleid bieden](group-permissions-for-apps.md)
+- [Uw sleutelkluis beveiligen](secure-your-key-vault.md)).
+- [Gids voor Azure Key Vault-ontwikkelaars](developers-guide.md)
+- Bekijk de [best practices voor Azure Key Vault](best-practices.md)

@@ -7,10 +7,10 @@ ms.date: 03/20/2020
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 847de2c2c8916558d542473d9b7c80fd5552dbf7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80437255"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Continue implementatie naar Azure App Service
@@ -69,14 +69,14 @@ U kunt de ingebouwde kudu-App Service build-server gebruiken om voortdurend te i
    - Voor GitHub, vervolg keuzelijst en selecteer de **organisatie**, **opslag plaats**en **vertakking** die u continu wilt implementeren.
      
      > [!NOTE]
-     > Als u geen opslag plaatsen ziet, moet u mogelijk Azure App Service autoriseren in GitHub. Blader naar de GitHub-opslag plaats en ga naar **instellingen** > **toepassingen** > **geautoriseerde OAuth-apps**. Selecteer **Azure app service**en selecteer vervolgens **verlenen**. Voor organisatie opslagplaatsen moet u een eigenaar van de organisatie zijn om de machtigingen te verlenen.
+     > Als u geen opslag plaatsen ziet, moet u mogelijk Azure App Service autoriseren in GitHub. Blader naar de GitHub-opslag plaats en ga naar **instellingen**  >  **toepassingen**  >  **geautoriseerde OAuth-apps**. Selecteer **Azure app service**en selecteer vervolgens **verlenen**. Voor organisatie opslagplaatsen moet u een eigenaar van de organisatie zijn om de machtigingen te verlenen.
      
    - Selecteer voor bitbucket het bitbucket- **team**, de **opslag plaats**en de **vertakking** die u continu wilt implementeren.
      
    - Selecteer voor Azure opslag plaatsen de **Azure DevOps-organisatie**, **het project**, de **opslag plaats**en de **vertakking** die u continu wilt implementeren.
      
      > [!NOTE]
-     > Als uw Azure DevOps-organisatie niet wordt weer gegeven, controleert u of deze is gekoppeld aan uw Azure-abonnement. Zie [een Azure DevOps Services-account instellen zodat het kan worden geïmplementeerd in een web-app](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops)voor meer informatie.
+     > Als uw Azure DevOps-organisatie niet wordt weergegeven, controleert u of deze is gekoppeld aan uw Azure-abonnement. Zie [een Azure DevOps Services-account instellen zodat het kan worden geïmplementeerd in een web-app](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops)voor meer informatie.
      
 1. Selecteer **Doorgaan**.
    
@@ -119,7 +119,7 @@ Om Azure App Service continue levering te maken met behulp van Azure-pijp lijnen
 1. Selecteer op de pagina **configureren** , in de sectie **code** , de **organisatie**, de **opslag plaats**en de **vertakking** die u continu wilt implementeren en selecteer **door gaan**.
      
      > [!NOTE]
-     > Als u geen opslag plaatsen ziet, moet u mogelijk Azure App Service autoriseren in GitHub. Blader naar de GitHub-opslag plaats en ga naar **instellingen** > **toepassingen** > **geautoriseerde OAuth-apps**. Selecteer **Azure app service**en selecteer vervolgens **verlenen**. Voor organisatie opslagplaatsen moet u een eigenaar van de organisatie zijn om de machtigingen te verlenen.
+     > Als u geen opslag plaatsen ziet, moet u mogelijk Azure App Service autoriseren in GitHub. Blader naar de GitHub-opslag plaats en ga naar **instellingen**  >  **toepassingen**  >  **geautoriseerde OAuth-apps**. Selecteer **Azure app service**en selecteer vervolgens **verlenen**. Voor organisatie opslagplaatsen moet u een eigenaar van de organisatie zijn om de machtigingen te verlenen.
        
     Geef in de sectie **Build** de Azure DevOps-organisatie, het project, de taal structuur op die door Azure-pijp lijnen moet worden gebruikt om Build-taken uit te voeren, en selecteer vervolgens **door gaan**.
 
@@ -174,7 +174,7 @@ Als u continue implementatie wilt uitschakelen, selecteert u de **verbinding ver
 
 Voor Windows-apps kunt u een continue implementatie hand matig configureren vanuit een Git-of mercurial-opslag plaats in de cloud die niet rechtstreeks wordt ondersteund door de portal, zoals [GitLab](https://gitlab.com/). U doet dit door het externe vak op de pagina **implementatie centrum** te kiezen. Zie [continue implementatie instellen met behulp van hand matige stappen](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps)voor meer informatie.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
 * [Veelvoorkomende problemen met doorlopende implementatie onderzoeken](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
 * [Azure PowerShell gebruiken](/powershell/azureps-cmdlets-docs)

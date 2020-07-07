@@ -4,10 +4,10 @@ description: In dit artikel wordt beschreven hoe u de bewaking van uw Azure Red 
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.openlocfilehash: 768c4db8d72778b555a4f343cf2e23b8fa861991
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82196437"
 ---
 # <a name="how-to-stop-monitoring-your-azure-and-red-hat-openshift-v4-cluster"></a>Het bewaken van uw Azure-en Red Hat open Shift v4-cluster stoppen
@@ -39,13 +39,13 @@ Nadat u de bewaking van uw Azure Red Hat open Shift en Red Hat open Shift versie
 
     `helm delete azmon-containers-release-1`
 
-    Hiermee wordt de release uit het cluster verwijderd. U kunt dit controleren door de `helm list` opdracht uit te voeren:
+    Hiermee wordt de release uit het cluster verwijderd. U kunt dit controleren door de opdracht uit te voeren `helm list` :
 
     ```
     NAME                            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                           APP VERSION
     ```
 
-Het kan enkele minuten duren voordat de configuratie is gewijzigd. Omdat helm uw releases registreert, zelfs nadat u ze hebt verwijderd, kunt u de geschiedenis van een cluster controleren en zelfs een release verwijderen `helm rollback`met.
+Het kan enkele minuten duren voordat de configuratie is gewijzigd. Omdat helm uw releases registreert, zelfs nadat u ze hebt verwijderd, kunt u de geschiedenis van een cluster controleren en zelfs een release verwijderen met `helm rollback` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

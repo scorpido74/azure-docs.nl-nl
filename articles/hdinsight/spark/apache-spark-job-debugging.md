@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 75f8c1f77a372d3b9b9e9a5582927f24b99fe9ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82190211"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Fouten opsporen in Apache Spark-taken die worden uitgevoerd in Azure HDInsight
@@ -34,7 +34,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
     ![Azure Portal GARENs-UI starten](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
 
    > [!TIP]  
-   > U kunt ook de gebruikers interface van garen starten vanuit de Ambari-gebruikers interface. Als u de Ambari-gebruikers interface wilt starten, selecteert u **Ambari Home** onder **cluster dashboards**. Ga in de Ambari-gebruikers interface naar de**snelle koppelingen** voor **garens** > > de actieve Resource Manager-> **Resource Manager-gebruikers interface**.
+   > U kunt ook de gebruikers interface van garen starten vanuit de Ambari-gebruikers interface. Als u de Ambari-gebruikers interface wilt starten, selecteert u **Ambari Home** onder **cluster dashboards**. Ga in de Ambari-gebruikers interface naar de snelle koppelingen voor **garens**  >  **Quick Links** > de actieve Resource Manager-> **Resource Manager-gebruikers interface**.
 
 2. Omdat u de Spark-taak met Jupyter-notebooks hebt gestart, heeft de toepassing de naam **remotesparkmagics** (de naam voor alle toepassingen die vanuit de notitie blokken zijn gestart). Selecteer de toepassings-ID voor de toepassings naam om meer informatie over de taak weer te geven. Met deze actie wordt de toepassings weergave gestart.
 
@@ -98,7 +98,7 @@ Zodra een taak is voltooid, wordt de informatie over de taak opgeslagen in de Sp
     ![Azure Portal Spark-geschiedenis server starten](./media/apache-spark-job-debugging/launch-spark-history-server.png "Spark geschiedenis server1 starten")
 
    > [!TIP]  
-   > U kunt ook de gebruikers interface van de Spark-geschiedenis server starten vanuit de Ambari-gebruikers interface. Als u de Ambari-gebruikers interface wilt starten, selecteert u op de Blade overzicht de optie **Ambari Home** onder **cluster dashboards**. Ga in de Ambari-gebruikers interface naar **Spark2** > **Quick links** > **Spark2 geschiedenis server UI**.
+   > U kunt ook de gebruikers interface van de Spark-geschiedenis server starten vanuit de Ambari-gebruikers interface. Als u de Ambari-gebruikers interface wilt starten, selecteert u op de Blade overzicht de optie **Ambari Home** onder **cluster dashboards**. Ga in de Ambari-gebruikers interface naar **Spark2**  >  **Quick links**  >  **Spark2 geschiedenis server UI**.
 
 2. U ziet alle voltooide toepassingen die worden weer gegeven. Selecteer een toepassings-ID om in te zoomen op een toepassing voor meer informatie.
 

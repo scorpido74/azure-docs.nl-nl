@@ -7,18 +7,18 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 04bbfe3ee38c5ce37c36ab2f85467ce68e7335be
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 093d8cdd97f28a419788070e674d80aad595f46a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262970"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556308"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-cassandra-api"></a>Voorbeelden van Azure CLI voor Azure Cosmos DB Cassandra API
 
 De volgende tabel bevat koppelingen naar Azure CLI-voorbeeldscripts voor Azure Cosmos DB Cassandra API. Referentiepagina's voor alle Azure Cosmos DB CLI-opdrachten zijn beschikbaar in de [naslaginformatie voor Azure CLI](/cli/azure/cosmosdb). Alle Azure Cosmos DB CLI-voorbeeldscripts vindt u in de [documentatie van Azure Cosmos DB CLI GitHub-opslagplaats](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).
 
-| |  |
+|Taak | Beschrijving |
 |---|---|
 | [Een Azure Cosmos-account, -keyspace en -tabel maken](scripts/cli/cassandra/create.md?toc=%2fcli%2fazure%2ftoc.json)| Hiermee wordt een Azure Cosmos-account, -keyspace en -tabel voor Cassandra API gemaakt. |
 | [Doorvoer wijzigen](scripts/cli/cassandra/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | RU/s in een keyspace en tabel bijwerken.|

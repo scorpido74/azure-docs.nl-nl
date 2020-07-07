@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: edfb2fe5cc37a00335ca7b5be851a88825b03eb1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72792221"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Gelijktijdigheid beheren in azure Cognitive Search
@@ -20,9 +20,9 @@ ms.locfileid: "72792221"
 Bij het beheren van Azure Cognitive Search resources, zoals indexen en gegevens bronnen, is het belang rijk om bronnen veilig bij te werken, met name als bronnen gelijktijdig worden geopend door verschillende onderdelen van uw toepassing. Wanneer twee clients gelijktijdig een resource bijwerken zonder coördinatie, zijn race voorwaarden mogelijk. Om dit te voor komen, biedt Azure Cognitive Search een *optimistisch gelijktijdigheids model*. Er zijn geen vergren delingen op een resource. In plaats daarvan is er een ETag voor elke resource waarmee de resource versie wordt geïdentificeerd, zodat u aanvragen kunt bezorgen die onbedoelde overschrijvingen voor komen.
 
 > [!Tip]
-> Concept code in een [C#-voorbeeld oplossing](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) wordt uitgelegd hoe gelijktijdigheids beheer werkt in azure Cognitive Search. De code maakt voor waarden die gelijktijdigheids beheer aanroepen. Lees het [onderstaande code fragment](#samplecode) is waarschijnlijk voldoende voor de meeste ontwikkel aars, maar als u het wilt uitvoeren, bewerkt u appSettings. json om de service naam en een beheer-API-sleutel toe te voegen. Op basis van de service `http://myservice.search.windows.net`-URL van is `myservice`de service naam.
+> Concept code in een [C#-voorbeeld oplossing](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) wordt uitgelegd hoe gelijktijdigheids beheer werkt in azure Cognitive Search. De code maakt voor waarden die gelijktijdigheids beheer aanroepen. Lees het [onderstaande code fragment](#samplecode) is waarschijnlijk voldoende voor de meeste ontwikkel aars, maar als u het wilt uitvoeren, bewerkt u appsettings.jsop om de service naam en een beheer-API-sleutel toe te voegen. Op basis van de service `http://myservice.search.windows.net` -URL van is de service naam `myservice` .
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 
 Optimistische gelijktijdigheid wordt geïmplementeerd via controle van toegangs voorwaarden in API-aanroepen die schrijven naar indexen, Indexeer functies, gegevens bronnen en synonymMap-resources.
 
@@ -216,6 +216,6 @@ Wijzig een van de volgende voor beelden om ETags-of AccessCondition-objecten op 
 
 ## <a name="see-also"></a>Zie ook
 
-[Algemene HTTP-aanvraag en antwoord headers](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
-[HTTP-status codes](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
-[index bewerkingen (rest API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)
+[Algemene HTTP-aanvraag-en-antwoord headers](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) 
+ [HTTP-status codes](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) 
+ [Index bewerkingen (rest API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)

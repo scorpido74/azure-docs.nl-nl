@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/27/2020
 ms.openlocfilehash: 242fefb3b153d11e23d66f26049d0b68c0a4bf4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80383987"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Gebruik Gpu's voor computerintensieve werk belastingen op Azure Kubernetes service (AKS)
@@ -36,7 +36,7 @@ Maak eerst een resource groep voor het cluster met behulp van de opdracht [AZ Gr
 az group create --name myResourceGroup --location eastus
 ```
 
-Maak nu een AKS-cluster met behulp van de opdracht [AZ AKS Create][az-aks-create] . In het volgende voor beeld wordt een cluster gemaakt met één knoop `Standard_NC6`punt van grootte:
+Maak nu een AKS-cluster met behulp van de opdracht [AZ AKS Create][az-aks-create] . In het volgende voor beeld wordt een cluster gemaakt met één knoop punt van grootte `Standard_NC6` :
 
 ```azurecli-interactive
 az aks create \
@@ -129,7 +129,7 @@ NAME                       STATUS   ROLES   AGE   VERSION
 aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
 ```
 
-Gebruik nu de opdracht [kubectl beschrijven knoop punt][kubectl-describe] om te bevestigen dat de gpu's Schedulable zijn. Onder het gedeelte *capaciteit* moet de GPU worden weer geven `nvidia.com/gpu:  1`als.
+Gebruik nu de opdracht [kubectl beschrijven knoop punt][kubectl-describe] om te bevestigen dat de gpu's Schedulable zijn. Onder het gedeelte *capaciteit* moet de GPU worden weer geven als `nvidia.com/gpu:  1` .
 
 In het volgende verkorte voor beeld ziet u dat er een GPU beschikbaar is op het knoop punt met de naam *AKS-nodepool1-18821093-0*:
 
@@ -185,7 +185,7 @@ Non-terminated Pods:         (9 in total)
 
 Als u de GPU in actie wilt zien, moet u een werk belasting met GPU plannen met de juiste resource aanvraag. In dit voor beeld wordt een [tensor flow](https://www.tensorflow.org/) -taak uitgevoerd op basis van de [MNIST-gegevensset](http://yann.lecun.com/exdb/mnist/).
 
-Maak een bestand met de naam *samples-TF-mnist-demo. yaml* en plak het volgende YAML-manifest. Het volgende taak manifest bevat een resource limiet van `nvidia.com/gpu: 1`:
+Maak een bestand met de naam *samples-TF-mnist-demo. yaml* en plak het volgende YAML-manifest. Het volgende taak manifest bevat een resource limiet van `nvidia.com/gpu: 1` :
 
 > [!NOTE]
 > Als er een fout is opgetreden die niet overeenkomt bij het aanroepen van Stuur Programma's, zoals de versie van het CUDA-stuur programma is niet voldoende voor de CUDA-runtime versie, raadpleegt u de compatibiliteits grafiek voor NVIDIA-Stuur[https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
@@ -242,7 +242,7 @@ NAME                          READY   STATUS      RESTARTS   AGE
 samples-tf-mnist-demo-mtd44   0/1     Completed   0          4m39s
 ```
 
-Gebruik nu de [kubectl-logboeken][kubectl-logs] opdracht om de pod-logboeken weer te geven. In het volgende voor beeld worden pod-logboeken gecontroleerd of het juiste GPU `Tesla K80`-apparaat is gedetecteerd. Geef de naam op voor uw eigen Pod:
+Gebruik nu de [kubectl-logboeken][kubectl-logs] opdracht om de pod-logboeken weer te geven. In het volgende voor beeld worden pod-logboeken gecontroleerd of het juiste GPU-apparaat is gedetecteerd `Tesla K80` . Geef de naam op voor uw eigen Pod:
 
 ```console
 $ kubectl logs samples-tf-mnist-demo-smnr6

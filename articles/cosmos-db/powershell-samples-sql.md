@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 06/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 82d709567e75540a865758162ac87f55dfa84bea
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: fc4ec916e71f2fcfd3b411420879d42b2fa90f18
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126090"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563847"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---sql-core-api"></a>Azure PowerShell-voorbeelden voor Azure Cosmos DB SQL (Core) API
 
@@ -22,7 +22,7 @@ Zie [Azure Cosmos DB SQL API-resources beheren met PowerShell](manage-with-power
 > [!NOTE]
 > De voorbeelden maken gebruik van beheer-cmdlets voor [AZ. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb). Controleer regelmatig of er updates zijn van `Az.CosmosDB`.
 
-| | |
+|Taak | Beschrijving |
 |---|---|
 |[Een account, database en container maken](scripts/powershell/sql/ps-sql-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Maak een Azure Cosmos DB-account, -database en -container. |
 |[Een container maken met een grote partitiesleutel](scripts/powershell/sql/ps-sql-container-create-large-partition-key.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Maak een container met een grote partitiesleutel. |

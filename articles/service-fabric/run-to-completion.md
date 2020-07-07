@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: shsha
 ms.openlocfilehash: adf4b11412aa752144d4ed4fef06d2de1d76598d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81431291"
 ---
 # <a name="runtocompletion"></a>RunToCompletion
@@ -22,7 +22,7 @@ Voordat u verder gaat met dit artikel, raden we u aan vertrouwd te raken met het
 > RunToCompletion-semantiek wordt momenteel niet ondersteund voor services die zijn geschreven met behulp van het [reliable Services][reliable-services-link] -programmeer model.
  
 ## <a name="runtocompletion-semantics-and-specification"></a>RunToCompletion-semantiek en-specificatie
-RunToCompletion-semantiek kunnen worden opgegeven als een **ExecutionPolicy** bij [het importeren van de ServiceManifest][application-and-service-manifests-link]. Het opgegeven beleid wordt overgenomen door alle CodePackages die de ServiceManifest omvatten. Het volgende ApplicationManifest. XML-fragment bevat een voor beeld.
+RunToCompletion-semantiek kunnen worden opgegeven als een **ExecutionPolicy** bij [het importeren van de ServiceManifest][application-and-service-manifests-link]. Het opgegeven beleid wordt overgenomen door alle CodePackages die de ServiceManifest omvatten. Het volgende ApplicationManifest.xml fragment bevat een voor beeld.
 
 ```xml
 <ServiceManifestImport>
@@ -47,7 +47,7 @@ Laten we eens kijken naar een volledig voor beeld met behulp van RunToCompletion
 >
 > In dit voor beeld wordt verwezen naar mcr.microsoft.com/windows/nanoserver:1809. Windows Server-containers zijn niet compatibel in alle versies van een host-besturings systeem. Zie compatibiliteit met Windows- [container versie](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)voor meer informatie.
 
-In het volgende ServiceManifest. XML wordt een ServicePackage beschreven dat bestaat uit twee CodePackages, die containers vertegenwoordigen. *RunToCompletionCodePackage1* meldt alleen een bericht aan **stdout** en wordt afgesloten. *RunToCompletionCodePackage2* pingt het loop back-adres voor een tijdje en sluit af met een afsluit code van **0**, **1** of **2**.
+In de volgende ServiceManifest.xml wordt een ServicePackage beschreven dat bestaat uit twee CodePackages, die containers vertegenwoordigen. *RunToCompletionCodePackage1* meldt alleen een bericht aan **stdout** en wordt afgesloten. *RunToCompletionCodePackage2* pingt het loop back-adres voor een tijdje en sluit af met een afsluit code van **0**, **1** of **2**.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -78,7 +78,7 @@ In het volgende ServiceManifest. XML wordt een ServicePackage beschreven dat bes
 </ServiceManifest>
 ```
 
-In het volgende ApplicationManifest. XML-bestand wordt een toepassing beschreven op basis van de hierboven beschreven ServiceManifest. XML. Hiermee wordt **RunToCompletion** **ExecutionPolicy** voor *WindowsRunToCompletionServicePackage* opgegeven met het beleid voor opnieuw opstarten van **OnFailure**. Bij de activering van *WindowsRunToCompletionServicePackage*wordt het onderdeel CodePackages gestart. *RunToCompletionCodePackage1* moet bij de eerste activering worden afgesloten. *RunToCompletionCodePackage2* kan echter mislukken **(niet-nul afsluit code)**, in dat geval wordt de computer opnieuw opgestart nadat het beleid voor opnieuw opstarten is **OnFailure**.
+In de volgende ApplicationManifest.xml wordt een toepassing beschreven op basis van de ServiceManifest.xml hierboven beschreven. Hiermee wordt **RunToCompletion** **ExecutionPolicy** voor *WindowsRunToCompletionServicePackage* opgegeven met het beleid voor opnieuw opstarten van **OnFailure**. Bij de activering van *WindowsRunToCompletionServicePackage*wordt het onderdeel CodePackages gestart. *RunToCompletionCodePackage1* moet bij de eerste activering worden afgesloten. *RunToCompletionCodePackage2* kan echter mislukken **(niet-nul afsluit code)**, in dat geval wordt de computer opnieuw opgestart nadat het beleid voor opnieuw opstarten is **OnFailure**.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

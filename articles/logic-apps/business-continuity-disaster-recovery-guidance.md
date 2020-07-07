@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.openlocfilehash: 7bf71ce7c44229ccf19022e9cfb0162f9d77cd97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80437704"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Bedrijfs continuïteit en herstel na nood gevallen voor Azure Logic Apps
@@ -234,7 +234,7 @@ Om te voor komen dat dezelfde gegevens herhaaldelijk worden gelezen, moet uw log
 
 * Logic apps die samen werken met de status van de server, de service of het systeem, maken gebruik van eigenschaps waarden of-instellingen die zich op de server, service of systeem zijde bevinden.
 
-  Een op query's gebaseerde trigger die een rij uit een Data Base leest, vereist bijvoorbeeld dat de rij een `isRead` kolom bevat die is ingesteld op `FALSE`. Telkens wanneer de trigger een rij leest, wordt die rij door de logische app bijgewerkt door de `isRead` kolom te `FALSE` wijzigen `TRUE`van in.
+  Een op query's gebaseerde trigger die een rij uit een Data Base leest, vereist bijvoorbeeld dat de rij een `isRead` kolom bevat die is ingesteld op `FALSE` . Telkens wanneer de trigger een rij leest, wordt die rij door de logische app bijgewerkt door de `isRead` kolom te wijzigen van `FALSE` in `TRUE` .
 
   Deze aanpak op de server werkt op dezelfde manier als Service Bus-wacht rijen of-onderwerpen die een wachtrij semantiek hebben waarbij een trigger een bericht kan lezen en vergren delen terwijl het bericht door de logische app wordt verwerkt. Wanneer de logische app is verwerkt, verwijdert de trigger het bericht uit de wachtrij of het onderwerp.
 
@@ -341,7 +341,7 @@ U kunt logboek registratie instellen voor uw logische app-uitvoeringen en de res
 
 * Als u deze gegevens wilt gebruiken met Azure Log Analytics, kunt u de gegevens beschikbaar maken voor zowel de primaire als de secundaire locatie door de **Diagnostische instellingen** van uw logische app in te stellen en de gegevens naar meerdere log Analytics-werk ruimten te verzenden. Zie [Azure monitor-logboeken instellen en diagnostische gegevens verzamelen voor Azure Logic apps](../logic-apps/monitor-logic-apps-log-analytics.md)voor meer informatie.
 
-* Als u de gegevens naar Azure Storage of Azure Event Hubs wilt verzenden, kunt u de gegevens beschikbaar maken voor zowel de primaire als de secundaire locatie door geografische redundantie in te stellen. Raadpleeg voor meer informatie de volgende artikelen:<p>
+* Als u de gegevens naar Azure Storage of Azure Event Hubs wilt verzenden, kunt u de gegevens beschikbaar maken voor zowel de primaire als de secundaire locatie door geografische redundantie in te stellen. Raadpleeg deze artikelen voor meer informatie:<p>
 
   * [Azure Blob Storage herstel na nood gevallen en failover van account](../storage/common/storage-disaster-recovery-guidance.md)
   * [Azure Event Hubs geo-nood herstel](../event-hubs/event-hubs-geo-dr.md)

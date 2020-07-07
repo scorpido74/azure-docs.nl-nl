@@ -14,17 +14,17 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: d151e55f627166d8ad7d8affa53740e86cd1e501
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72298805"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Aan de slag met aan Azure Blob Storage en Visual Studio verbonden services (cloudserviceprojecten)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Overzicht
-In dit artikel wordt beschreven hoe u aan de slag gaat met Azure Blob Storage nadat u een Azure Storage-account hebt gemaakt of ernaar hebt verwezen met behulp van het dialoog venster **verbonden services toevoegen** in een Visual Studio-Cloud Services-project. We laten u zien hoe u toegang krijgt tot BLOB-containers en hoe u veelvoorkomende taken kunt uitvoeren, zoals het uploaden, vermelden en downloaden van blobs. De voor beelden zijn geschreven in\# C en gebruiken de [Microsoft Azure Storage-client bibliotheek voor .net](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+In dit artikel wordt beschreven hoe u aan de slag gaat met Azure Blob Storage nadat u een Azure Storage-account hebt gemaakt of ernaar hebt verwezen met behulp van het dialoog venster **verbonden services toevoegen** in een Visual Studio-Cloud Services-project. We laten u zien hoe u toegang krijgt tot BLOB-containers en hoe u veelvoorkomende taken kunt uitvoeren, zoals het uploaden, vermelden en downloaden van blobs. De voor beelden zijn geschreven in C \# en gebruiken de [Microsoft Azure Storage-client bibliotheek voor .net](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
 Azure Blob Storage is een service voor het opslaan van grote hoeveel heden ongestructureerde gegevens die overal ter wereld toegankelijk zijn via HTTP of HTTPS. Eén Blob kan elke grootte hebben. Blobs kunnen dingen zijn zoals afbeeldingen, audio-en video bestanden, onbewerkte gegevens en document bestanden.
 

@@ -7,13 +7,13 @@ ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 212624b857d65297830995018603c2627f83369b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81453520"
 ---
-# <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Implementeren in Azure Container Instances van Azure Container Registry
+# <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Instances implementeren vanuit Azure Container Registry
 
 [Azure container Registry](../container-registry/container-registry-intro.md) is een beheerde container register service in azure die wordt gebruikt voor het opslaan van privé-docker-container installatie kopieën. In dit artikel wordt beschreven hoe u container installatie kopieën kunt ophalen die zijn opgeslagen in een Azure container Registry bij het implementeren naar Azure Container Instances. Een aanbevolen manier om register toegang te configureren is door een Azure Active Directory Service-Principal en-wacht woord te maken en de aanmeldings referenties op te slaan in een Azure-sleutel kluis.
 
@@ -40,7 +40,7 @@ Als u nog geen kluis hebt in [Azure Key Vault](../key-vault/general/overview.md)
 
 Werk de `RES_GROUP` variabele bij met de naam van een bestaande resource groep waarin u de sleutel kluis wilt maken en `ACR_NAME` met de naam van uw container register. Uit de opdrachten in dit artikel wordt ervan uitgegaan dat uw REGI ster, sleutel kluis en container instanties allemaal zijn gemaakt in dezelfde resource groep.
 
- Geef een naam op voor de nieuwe sleutel kluis `AKV_NAME`in. De kluis naam moet uniek zijn binnen Azure en moet 3-24 alfanumerieke tekens lang zijn, beginnen met een letter, eindigen met een letter of cijfer en mag geen opeenvolgende afbreek streepjes bevatten.
+ Geef een naam op voor de nieuwe sleutel kluis in `AKV_NAME` . De kluis naam moet uniek zijn binnen Azure en moet 3-24 alfanumerieke tekens lang zijn, beginnen met een letter, eindigen met een letter of cijfer en mag geen opeenvolgende afbreek streepjes bevatten.
 
 ```azurecli
 RES_GROUP=myresourcegroup # Resource Group name
@@ -92,7 +92,7 @@ U kunt nu op naam naar deze geheime gegevens verwijzen wanneer u of uw toepassin
 
 Nu de referenties van de Service-Principal zijn opgeslagen in Azure Key Vault geheimen, kunnen uw toepassingen en services deze gebruiken om toegang te krijgen tot uw persoonlijke REGI ster.
 
-Haal eerst de naam van de aanmeldings server van het REGI ster op met behulp van de opdracht [AZ ACR show][az-acr-show] . De naam van de aanmeldings server is allemaal kleine letters `myregistry.azurecr.io`en is vergelijkbaar met.
+Haal eerst de naam van de aanmeldings server van het REGI ster op met behulp van de opdracht [AZ ACR show][az-acr-show] . De naam van de aanmeldings server is allemaal kleine letters en is vergelijkbaar met `myregistry.azurecr.io` .
 
 ```azurecli
 ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --resource-group $RES_GROUP --query "loginServer" --output tsv)
@@ -144,7 +144,7 @@ Zie [Azure Key Vault gebruiken om een veilige parameter waarde door te geven tij
 
 Als u container installatie kopieën in een Azure container Registry onderhoudt, kunt u eenvoudig een container maken in Azure Container Instances met behulp van de Azure Portal. Wanneer u de portal gebruikt om een container exemplaar te implementeren vanuit een container register, moet u het [beheerders account](../container-registry/container-registry-authentication.md#admin-account)van het REGI ster inschakelen. Het beheerders account is ontworpen voor één gebruiker voor toegang tot het REGI ster, voornamelijk voor test doeleinden. 
 
-1. Ga in het Azure Portal naar het container register.
+1. Ga in de Azure-portal naar uw containerregister.
 
 1. Als u wilt controleren of het beheerders account is ingeschakeld, selecteert u **toegangs sleutels**en selecteert u onder **gebruiker met beheerders** rechten **inschakelen**.
 

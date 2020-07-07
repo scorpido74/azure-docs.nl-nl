@@ -9,13 +9,13 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
 ms.openlocfilehash: 19a1883685193e80da5f1365ec2a30db0b8754f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81450137"
 ---
-# <a name="improve-security-for-b2b-messages-by-using-certificates"></a>Verbeter de beveiliging van B2B-berichten met behulp van certificaten
+# <a name="improve-security-for-b2b-messages-by-using-certificates"></a>De beveiliging van B2B-berichten verbeteren met behulp van certificaten
 
 Wanneer u B2B-communicatie vertrouwelijk wilt blijven gebruiken, kunt u de beveiliging van B2B-communicatie in uw bedrijfs integratie-apps, met name Logic apps, verhogen door certificaten aan uw integratie account toe te voegen. Certificaten zijn digitale documenten die de identiteiten van de deel nemers in elektronische communicatie controleren en u helpen communicatie op de volgende manieren te beveiligen:
 
@@ -34,7 +34,7 @@ U kunt deze certificaten gebruiken in uw Enter prise Integration-apps:
 
 Als u een *openbaar certificaat* wilt gebruiken in Logic apps die B2B-mogelijkheden hebben, moet u het certificaat eerst uploaden naar uw integratie account. Nadat u de eigenschappen hebt gedefinieerd in de [overeenkomsten](logic-apps-enterprise-integration-agreements.md) die u hebt gemaakt, is het certificaat beschikbaar om u te helpen bij het beveiligen van uw B2B-berichten.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **alle resources**in het hoofd menu van Azure. Voer in het zoekvak de naam van uw integratie account in en selecteer vervolgens het gewenste integratie account.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **alle resources**in het hoofd menu van Azure. Voer in het zoekvak de naam van uw integratie account in en selecteer vervolgens het gewenste integratie account.
 
    ![Uw integratie account zoeken en selecteren](media/logic-apps-enterprise-integration-certificates/select-integration-account.png)  
 
@@ -73,7 +73,7 @@ Nadat u de eigenschappen hebt gedefinieerd in de [overeenkomsten](logic-apps-ent
    `Set-AzKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
    '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
  
-3. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **alle resources**in het hoofd menu van Azure. Voer in het zoekvak de naam van uw integratie account in en selecteer vervolgens het gewenste integratie account.
+3. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **alle resources**in het hoofd menu van Azure. Voer in het zoekvak de naam van uw integratie account in en selecteer vervolgens het gewenste integratie account.
 
    ![Uw integratie account zoeken](media/logic-apps-enterprise-integration-certificates/select-integration-account.png) 
 
@@ -88,7 +88,7 @@ Nadat u de eigenschappen hebt gedefinieerd in de [overeenkomsten](logic-apps-ent
    | **Naam** | <*certificaat naam*> | De naam van uw certificaat, dat is "privateCert" in dit voor beeld | 
    | **Certificaat type** | Privé | Het type van het certificaat |
    | **Certificaat** | <*certificaat bestand-naam*> | Klik op het mappictogram naast het vak **certificaat** om het certificaat bestand te zoeken en te selecteren dat u wilt uploaden. Wanneer u een sleutel kluis voor de persoonlijke sleutel gebruikt, is het geüploade bestand het open bare certificaat. | 
-   | **Resource groep** | <*Integration-account-Resource-Group*> | De resource groep van uw integratie account, dat wil zeggen ' MyResourceGroup ' in dit voor beeld | 
+   | **Resourcegroep** | <*Integration-account-Resource-Group*> | De resource groep van uw integratie account, dat wil zeggen ' MyResourceGroup ' in dit voor beeld | 
    | **Key Vault** | <*sleutel-kluis-naam*> | De naam van uw Azure-sleutel kluis |
    | **Sleutelnaam** | <*sleutel naam*> | De naam van uw sleutel |
    ||||
