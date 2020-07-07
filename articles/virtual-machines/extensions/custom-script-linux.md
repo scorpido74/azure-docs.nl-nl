@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
 ms.openlocfilehash: 92bb254873669ae7c0894d633f17b5701b7ddc97
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594726"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>De aangepaste scriptextensie van Azure versie 2 gebruiken met virtuele Linux-machines
@@ -112,14 +112,14 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 
 | Naam | Waarde/voor beeld | Gegevenstype | 
 | ---- | ---- | ---- |
-| apiVersion | 2019-03-01 | datum |
+| apiVersion | 2019-03-01 | date |
 | publisher | Micro soft. compute. Extensions | tekenreeks |
 | type | CustomScript | tekenreeks |
 | typeHandlerVersion | 2.1 | int |
 | fileUris (bijvoorbeeld) | `https://github.com/MyProject/Archive/MyPythonScript.py` | matrix |
-| commandToExecute (bijvoorbeeld) | python MyPythonScript.py \<mijn-param1> | tekenreeks |
-| uit | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | tekenreeks |
-| skipDos2Unix (bijvoorbeeld) | onjuist | booleaans |
+| commandToExecute (bijvoorbeeld) | python-MyPythonScript.py\<my-param1> | tekenreeks |
+| script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | tekenreeks |
+| skipDos2Unix (bijvoorbeeld) | false | booleaans |
 | tijds tempel (bijvoorbeeld) | 123456789 | 32-bits geheel getal |
 | storageAccountName (bijvoorbeeld) | examplestorageacct | tekenreeks |
 | storageAccountKey (bijvoorbeeld) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | tekenreeks |
@@ -132,7 +132,7 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 * `commandToExecute`: (**vereist** als script niet is ingesteld, teken reeks) het ingangs punt script dat moet worden uitgevoerd. Gebruik dit veld in plaats daarvan als uw opdracht geheimen bevat zoals wacht woorden.
 * `script`: (**vereist** als commandToExecute niet is ingesteld, String) een met base64 gecodeerd (en optioneel gzip'ed) script dat wordt uitgevoerd door/bin/sh.
 * `fileUris`: (optioneel, teken reeks matrix) de Url's voor bestanden die moeten worden gedownload.
-* `storageAccountName`: (optioneel, String) de naam van het opslag account. Als u opslag referenties opgeeft, moeten `fileUris` alle Url's voor Azure-blobs zijn.
+* `storageAccountName`: (optioneel, String) de naam van het opslag account. Als u opslag referenties opgeeft, `fileUris` moeten alle url's voor Azure-blobs zijn.
 * `storageAccountKey`: (optioneel, String) de toegangs sleutel van het opslag account
 * `managedIdentity`: (optioneel, JSON-object) de [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) voor het downloaden van bestand (en)
   * `clientId`: (optioneel, String) de client-ID van de beheerde identiteit
@@ -152,10 +152,10 @@ Open bare instellingen worden in ongecodeerde tekst verzonden naar de virtuele m
 
 De standaard waarde is False, wat betekent dat de dos2unix-conversie **wordt** uitgevoerd.
 
-Met de vorige versie van CustomScript, micro soft. OSTCExtensions. CustomScriptForLinux, worden DOS-bestanden automatisch geconverteerd naar UNIX- `\r\n` bestanden `\n`door te vertalen naar. Deze vertaling bestaat nog en is standaard ingeschakeld. Deze conversie wordt toegepast op alle bestanden die zijn gedownload van fileUris of de script instelling op basis van een van de volgende criteria.
+Met de vorige versie van CustomScript, micro soft. OSTCExtensions. CustomScriptForLinux, worden DOS-bestanden automatisch geconverteerd naar UNIX-bestanden door `\r\n` te vertalen naar `\n` . Deze vertaling bestaat nog en is standaard ingeschakeld. Deze conversie wordt toegepast op alle bestanden die zijn gedownload van fileUris of de script instelling op basis van een van de volgende criteria.
 
-* Als de uitbrei ding een `.sh`van `.txt` `.py`is,, `.pl` of wordt geconverteerd. De script instelling komt altijd overeen met deze criteria, omdat ervan wordt uitgegaan dat een script wordt uitgevoerd met/bin/sh, en dat wordt opgeslagen als script.sh op de virtuele machine.
-* Als het bestand begint met `#!`.
+* Als de uitbrei ding een van is,, `.sh` `.txt` `.py` of `.pl` wordt geconverteerd. De script instelling komt altijd overeen met deze criteria, omdat ervan wordt uitgegaan dat een script wordt uitgevoerd met/bin/sh, en dat wordt opgeslagen als script.sh op de virtuele machine.
+* Als het bestand begint met `#!` .
 
 De dos2unix-conversie kan worden overgeslagen door de skipDos2Unix in te stellen op True.
 
@@ -378,8 +378,8 @@ az vm extension set \
   --protected-settings ./protected-config.json
 ```
 
-## <a name="troubleshooting"></a>Probleemoplossing
-Wanneer de aangepaste script extensie wordt uitgevoerd, wordt het script gemaakt of gedownload in een directory die er ongeveer als volgt uitziet. De uitvoer van de opdracht wordt ook opgeslagen in deze `stdout` map `stderr` en in bestanden.
+## <a name="troubleshooting"></a>Problemen oplossen
+Wanneer de aangepaste script extensie wordt uitgevoerd, wordt het script gemaakt of gedownload in een directory die er ongeveer als volgt uitziet. De uitvoer van de opdracht wordt ook opgeslagen in deze map `stdout` en in `stderr` bestanden.
 
 ```bash
 /var/lib/waagent/custom-script/download/0/
@@ -448,7 +448,7 @@ Hier ziet u het volgende:
 * De extensie die het bestand downloadt en het resultaat hiervan.
 * De opdracht die wordt uitgevoerd en het resultaat.
 
-U kunt ook de uitvoerings status van de aangepaste script extensie ophalen, met inbegrip van de werkelijke `commandToExecute` argumenten die zijn door gegeven als de met behulp van Azure cli:
+U kunt ook de uitvoerings status van de aangepaste script extensie ophalen, met inbegrip van de werkelijke argumenten die zijn door gegeven als de met `commandToExecute` behulp van Azure cli:
 
 ```azurecli
 az vm extension list -g myResourceGroup --vm-name myVM

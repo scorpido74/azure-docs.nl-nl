@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.openlocfilehash: be0f0a48e2fd334e2000c8a4b8c2e0101b291cef
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791864"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Capaciteits planning en schalen voor Azure Service Fabric
@@ -48,7 +48,7 @@ Voor het [verticaal schalen](https://docs.microsoft.com/azure/service-fabric/vir
 
 Verticaal schalen van een schaalset voor virtuele machines is een destructieve bewerking. In plaats daarvan schaalt u het cluster horizon taal door een nieuwe schaalset toe te voegen met de gewenste SKU. Migreer vervolgens uw services naar de gewenste SKU om een veilige, verticale schaal bewerking te volt ooien. Het wijzigen van een resource-SKU voor een schaalset voor virtuele machines is een destructieve bewerking omdat de host van uw hosts wordt hersteld, waardoor alle lokaal blijvende status wordt verwijderd.
 
-Uw cluster maakt gebruik van Service Fabric [knooppunt eigenschappen en plaatsings beperkingen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#node-properties-and-placement-constraints) om te bepalen waar u de services van uw toepassing wilt hosten. Wanneer u het primaire knooppunt type verticaal wilt schalen, declareert u identieke eigenschaps `"nodeTypeRef"`waarden voor. U kunt deze waarden vinden in de uitbrei ding Service Fabric voor schaal sets voor virtuele machines. 
+Uw cluster maakt gebruik van Service Fabric [knooppunt eigenschappen en plaatsings beperkingen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#node-properties-and-placement-constraints) om te bepalen waar u de services van uw toepassing wilt hosten. Wanneer u het primaire knooppunt type verticaal wilt schalen, declareert u identieke eigenschaps waarden voor `"nodeTypeRef"` . U kunt deze waarden vinden in de uitbrei ding Service Fabric voor schaal sets voor virtuele machines. 
 
 In het volgende code fragment van een resource manager-sjabloon worden de eigenschappen weer gegeven die u moet declareren. Deze heeft dezelfde waarde voor de nieuwe ingerichte schaal sets waarop u de schaalt, en wordt alleen ondersteund als tijdelijke stateful service voor uw cluster.
 
@@ -65,12 +65,12 @@ In het volgende code fragment van een resource manager-sjabloon worden de eigens
 
 Als de knooppunt eigenschappen en plaatsings beperkingen zijn gedeclareerd, voert u de volgende stappen uit voor één VM-exemplaar. Hierdoor kunnen de systeem services (en stateful Services) op de juiste wijze worden afgesloten op het VM-exemplaar dat u verwijdert, omdat er elders nieuwe replica's worden gemaakt.
 
-1. Voer `Disable-ServiceFabricNode` met behulp van Power shell `RemoveNode` uit met opzet om het knoop punt dat u wilt verwijderen, uit te scha kelen. Verwijder het knooppunt type met het hoogste nummer. Als u bijvoorbeeld een cluster met zes knoop punten hebt, verwijdert u het exemplaar van de virtuele machine "MyNodeType_5".
-2. Voer `Get-ServiceFabricNode` uit om ervoor te zorgen dat het knoop punt is overgeschakeld naar uitgeschakeld. Als dat niet het geval is, wacht u totdat het knoop punt is uitgeschakeld. Dit kan enkele uren duren voor elk knoop punt. Ga niet verder totdat het knoop punt is overgeschakeld op uitgeschakeld.
+1. Voer met behulp van Power shell uit `Disable-ServiceFabricNode` met opzet `RemoveNode` om het knoop punt dat u wilt verwijderen, uit te scha kelen. Verwijder het knooppunt type met het hoogste nummer. Als u bijvoorbeeld een cluster met zes knoop punten hebt, verwijdert u het exemplaar van de virtuele machine "MyNodeType_5".
+2. Voer uit `Get-ServiceFabricNode` om ervoor te zorgen dat het knoop punt is overgeschakeld naar uitgeschakeld. Als dat niet het geval is, wacht u totdat het knoop punt is uitgeschakeld. Dit kan enkele uren duren voor elk knoop punt. Ga niet verder totdat het knoop punt is overgeschakeld op uitgeschakeld.
 3. Verminder het aantal Vm's met één in dat knooppunt type. Het hoogste VM-exemplaar wordt nu verwijderd.
 4. Herhaal stap 1 tot en met 3 zo nodig, maar Verklein het aantal instanties in de primaire knooppunt typen kleiner dan wat de betrouwbaarheids categorie warrantt. Zie [de service Fabric cluster capaciteit plannen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) voor een lijst met aanbevolen exemplaren.
 5. Zodra alle Vm's zijn verdwenen (weer gegeven als ' omlaag '), wordt in de fabric:/System/InfrastructureService/[naam van knoop punt] een fout status weer gegeven. Vervolgens kunt u de cluster bron bijwerken om het knooppunt type te verwijderen. U kunt de implementatie van de ARM-sjabloon gebruiken of de cluster bron bewerken via [Azure Resource Manager](https://resources.azure.com). Hiermee wordt een cluster upgrade gestart waarmee de service Fabric:/System/InfrastructureService/[node type] met de fout status wordt verwijderd.
- 6. Nadat u de VMScaleSet eventueel kunt verwijderen, ziet u de knoop punten nog steeds als ' down ' in de weer gave Service Fabric Explorer. De laatste stap is het opschonen van `Remove-ServiceFabricNodeState` de opdracht.
+ 6. Nadat u de VMScaleSet eventueel kunt verwijderen, ziet u de knoop punten nog steeds als ' down ' in de weer gave Service Fabric Explorer. De laatste stap is het opschonen van de `Remove-ServiceFabricNodeState` opdracht.
 
 ## <a name="horizontal-scaling"></a>Horizontaal schalen
 
@@ -81,7 +81,7 @@ U kunt horizon taal schalen ofwel [hand matig](https://docs.microsoft.com/azure/
 
 ### <a name="scaling-out"></a>Uitschalen
 
-Een Service Fabric cluster uitschalen door het aantal exemplaren voor een bepaalde schaalset voor virtuele machines te verhogen. U kunt het programma op `AzureClient` een programmatische manier uitbreiden met de id voor de gewenste schaalset om de capaciteit te verg Roten.
+Een Service Fabric cluster uitschalen door het aantal exemplaren voor een bepaalde schaalset voor virtuele machines te verhogen. U kunt het programma op een programmatische manier uitbreiden met de `AzureClient` id voor de gewenste schaalset om de capaciteit te verg Roten.
 
 ```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
@@ -108,8 +108,8 @@ Schalen in vereist meer aandacht dan uitschalen. Bijvoorbeeld:
 
 Voer de volgende stappen uit om de schaal hand matig in te schalen:
 
-1. Voer `Disable-ServiceFabricNode` met behulp van Power shell `RemoveNode` uit met opzet om het knoop punt dat u wilt verwijderen, uit te scha kelen. Verwijder het knooppunt type met het hoogste nummer. Als u bijvoorbeeld een cluster met zes knoop punten hebt, verwijdert u het exemplaar van de virtuele machine "MyNodeType_5".
-2. Voer `Get-ServiceFabricNode` uit om ervoor te zorgen dat het knoop punt is overgeschakeld naar uitgeschakeld. Als dat niet het geval is, wacht u totdat het knoop punt is uitgeschakeld. Dit kan enkele uren duren voor elk knoop punt. Ga niet verder totdat het knoop punt is overgeschakeld op uitgeschakeld.
+1. Voer met behulp van Power shell uit `Disable-ServiceFabricNode` met opzet `RemoveNode` om het knoop punt dat u wilt verwijderen, uit te scha kelen. Verwijder het knooppunt type met het hoogste nummer. Als u bijvoorbeeld een cluster met zes knoop punten hebt, verwijdert u het exemplaar van de virtuele machine "MyNodeType_5".
+2. Voer uit `Get-ServiceFabricNode` om ervoor te zorgen dat het knoop punt is overgeschakeld naar uitgeschakeld. Als dat niet het geval is, wacht u totdat het knoop punt is uitgeschakeld. Dit kan enkele uren duren voor elk knoop punt. Ga niet verder totdat het knoop punt is overgeschakeld op uitgeschakeld.
 3. Verminder het aantal Vm's met één in dat knooppunt type. Het hoogste VM-exemplaar wordt nu verwijderd.
 4. Herhaal de stappen 1 tot en met 3 totdat u de gewenste capaciteit hebt ingericht. Schaal niet in het aantal instanties in de primaire knooppunt typen tot minder dan wat de betrouwbaarheids categorie garandeert. Zie [de service Fabric cluster capaciteit plannen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) voor een lijst met aanbevolen exemplaren.
 
@@ -140,7 +140,7 @@ using (var client = new FabricClient())
         .FirstOrDefault();
 ```
 
-Deactiveer en verwijder het knoop punt met behulp `FabricClient` van`client` dezelfde instantie (in dit geval) en`instanceIdString` het knooppunt exemplaar (in dit geval) dat u in de vorige code hebt gebruikt:
+Deactiveer en verwijder het knoop punt met behulp van dezelfde `FabricClient` instantie ( `client` in dit geval) en het knooppunt exemplaar ( `instanceIdString` in dit geval) dat u in de vorige code hebt gebruikt:
 
 ```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
@@ -166,7 +166,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```
 
 > [!NOTE]
-> Wanneer u in een cluster schaalt, ziet u dat het verwijderde knoop punt/VM-exemplaar wordt weer gegeven in een slechte staat in Service Fabric Explorer. Zie [gedragingen die u mogelijk in service Fabric Explorer kunt](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out#behaviors-you-may-observe-in-service-fabric-explorer)zien voor een uitleg van dit gedrag. U kunt het volgende doen:
+> Wanneer u in een cluster schaalt, ziet u dat het verwijderde knoop punt/VM-exemplaar wordt weer gegeven in een slechte staat in Service Fabric Explorer. Zie [gedragingen die u mogelijk in service Fabric Explorer kunt](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out#behaviors-you-may-observe-in-service-fabric-explorer)zien voor een uitleg van dit gedrag. U kunt:
 > * Roep de [opdracht Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) aan met de juiste knooppunt naam.
 > * Implementeer het [service Fabric hulp programma voor automatisch schalen](https://github.com/Azure/service-fabric-autoscale-helper/) in uw cluster. Deze toepassing zorgt ervoor dat de geschaalde knoop punten uit Service Fabric Explorer worden gewist.
 

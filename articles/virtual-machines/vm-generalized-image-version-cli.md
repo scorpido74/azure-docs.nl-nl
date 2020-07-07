@@ -9,10 +9,10 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.openlocfilehash: 5e59872a4da0136232652008a2980601428eeab6
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796783"
 ---
 # <a name="create-a-vm-from-a-generalized-image-version-using-the-cli"></a>Een virtuele machine maken op basis van een gegeneraliseerde installatie kopie met behulp van de CLI
@@ -32,9 +32,9 @@ az sig image-definition list --resource-group $resourceGroup --gallery-name $gal
 
 ## <a name="create-the-vm"></a>De virtuele machine maken
 
-Maak een VM met [az vm create](/cli/azure/vm#az-vm-create). Als u de meest recente versie van de installatie kopie `--image` wilt gebruiken, stelt u de id van de definitie van de installatie kopie in. 
+Maak een VM met [az vm create](/cli/azure/vm#az-vm-create). Als u de meest recente versie van de installatie kopie wilt gebruiken, stelt `--image` u de id van de definitie van de installatie kopie in. 
 
-Vervang resource namen naar behoefte in dit voor beeld. 
+Vervang resourcenamen naar behoefte in dit voorbeeld. 
 
 ```azurecli-interactive 
 imgDef="/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition"
@@ -54,7 +54,7 @@ az vm create\
    --generate-ssh-keys
 ```
 
-U kunt ook een specifieke versie gebruiken met de versie-ID van de installatie `--image` kopie voor de para meter. Als u bijvoorbeeld de afbeeldings versie *1.0.0* type: `--image "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`wilt gebruiken.
+U kunt ook een specifieke versie gebruiken met de versie-ID van de installatie kopie voor de `--image` para meter. Als u bijvoorbeeld de afbeeldings versie *1.0.0* type: wilt gebruiken `--image "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

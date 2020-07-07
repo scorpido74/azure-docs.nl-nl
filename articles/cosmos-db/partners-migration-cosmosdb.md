@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.openlocfilehash: ad5ed2b45a182c1f33f33ca1f6d4e3212c61b6a2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791728"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL-migratie en partners voor toepassings ontwikkeling
@@ -25,7 +25,7 @@ Van NoSQL-migratie naar toepassings ontwikkeling, kunt u kiezen uit een groot aa
 | [10thMagnitude](https://www.10thmagnitude.com/) | IoT, Retail (inventarisatie), Operational Analytics (Spark), Serverloze architectuur, app-ontwikkeling | VS |
 |[Altoros Development LLC](https://www.altoros.com/)  |  IoT-, personalisatie Retail (inventarisatie), Serverloze architecturen NoSQL migratie, app-ontwikkeling|   VS |
 |[Avanade](https://www.avanade.com/) | IoT, Retail (inventarisatie), Serverloze architectuur, app-ontwikkeling | Oosten rijk, Duitsland, Zwitser land, Italië, Noor wegen, Spanje, UK, Canada |
-|[Accenture](https://www.accenture.com/) | IoT, Retail (inventarisatie), Serverloze architectuur, app-ontwikkeling |Wereldwijd|
+|[Accenture](https://www.accenture.com/) | IoT, Retail (inventarisatie), Serverloze architectuur, app-ontwikkeling |Globaal|
 |[Bluemetal](https://www.bluemetal.com/)     |  IoT, personalisatie Retail (inventarisatie), operationele analyse voor Enter prise & SMC, AI-annotatie, Asset Control, NoSQL migratie, app-ontwikkeling     |    Noord-Amerika, Azië en Stille Oceaan     |
 |[Capax Global LLC](https://www.capaxglobal.com/) | IoT, personalisatie, Retail (inventarisatie), Operational Analytics (Spark), Serverloze architectuur, app-ontwikkeling|    VS     |  
 | [Capgemini](https://www.capgemini.com/) | Retail (inventarisatie), IoT, Operational Analytics (Spark), app-ontwikkeling | USA, Frank rijk, UK, Nederland, Finland  |

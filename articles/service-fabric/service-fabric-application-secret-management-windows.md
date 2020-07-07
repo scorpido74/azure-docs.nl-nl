@@ -4,10 +4,10 @@ description: Meer informatie over het instellen van een versleutelings certifica
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.openlocfilehash: eb4909d62a2627c368f24dab572b25c6f1df30ec
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583290"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>Een versleutelings certificaat instellen en geheimen op Windows-clusters versleutelen
@@ -16,13 +16,13 @@ In dit artikel wordt beschreven hoe u een versleutelings certificaat instelt en 
 [Azure Key Vault][key-vault-get-started] wordt hier gebruikt als een veilige opslag locatie voor certificaten en als manier om certificaten te verkrijgen die zijn geïnstalleerd op service Fabric clusters in Azure. Als u niet in azure implementeert, hoeft u Key Vault niet te gebruiken om geheimen in Service Fabric toepassingen te beheren. Het *gebruik* van geheimen in een toepassing is echter het Cloud platform-neutraal zodat toepassingen kunnen worden geïmplementeerd in een cluster dat overal wordt gehost. 
 
 ## <a name="obtain-a-data-encipherment-certificate"></a>Een certificaat voor gegevens codering verkrijgen
-Een gegevens versleuteling certificaat wordt uitsluitend gebruikt voor het versleutelen en ontsleutelen van [para meters][parameters-link] in de instellingen van een service. XML en [omgevings variabelen][environment-variables-link] in de ServiceManifest. XML van een service. Het wordt niet gebruikt voor verificatie of ondertekening van versleutelings tekst. Het certificaat moet voldoen aan de volgende vereisten:
+Een gegevens versleuteling certificaat wordt uitsluitend gebruikt voor het versleutelen en ontsleutelen van [para meters][parameters-link] in de Settings.xml en [omgevings variabelen][environment-variables-link] van een service in de ServiceManifest.xml van een service. Het wordt niet gebruikt voor verificatie of ondertekening van versleutelings tekst. Het certificaat moet voldoen aan de volgende vereisten:
 
 * Het certificaat moet een persoonlijke sleutel bevatten.
 * Het certificaat moet worden gemaakt voor sleutel uitwisseling, exporteerbaar naar een pfx-bestand (Personal Information Exchange).
 * Het gebruik van de certificaat sleutel moet gegevens codering (10) bevatten en mag geen server verificatie of client verificatie omvatten. 
   
-  Wanneer u bijvoorbeeld een zelfondertekend certificaat maakt met behulp van Power shell, `KeyUsage` moet de vlag worden ingesteld `DataEncipherment`op:
+  Wanneer u bijvoorbeeld een zelfondertekend certificaat maakt met behulp van Power shell, `KeyUsage` moet de vlag worden ingesteld op `DataEncipherment` :
   
   ```powershell
   New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEncipherment -Subject mydataenciphermentcert -Provider 'Microsoft Enhanced Cryptographic Provider v1.0'

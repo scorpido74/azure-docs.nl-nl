@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f5e0eda72f39a70f02b596a8fd69728336eac333
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594811"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>De Azure-infra structuur voor SAP HA voorbereiden met behulp van een Windows-failovercluster en een gedeelde schijf voor SAP ASCS/SCS
@@ -194,28 +194,28 @@ _**Afbeelding 1:** SAP-Azure Resource Manager-para meters met hoge Beschik baarh
   De sjablonen maken:
 
   * **Virtuele machines**:
-    * SAP-toepassings server virtuele machines \<:\>SAPSystemSID-di\<-Number\>
-    * ASCS/SCS cluster virtuele machines: \<SAPSystemSID\>-ASCS-\<Number\>
-    * DBMS-cluster \<:\>SAPSystemSID-DB\<-Number\>
+    * SAP-toepassings server virtuele machines: \<SAPSystemSID\> -di-\<Number\>
+    * ASCS/SCS cluster virtual machines: \<SAPSystemSID\> -ASCS-\<Number\>
+    * DBMS-cluster: \<SAPSystemSID\> -db-\<Number\>
 
   * **Netwerk kaarten voor alle virtuele machines, met de bijbehorende IP-adressen**:
     * \<SAPSystemSID\>-NIC-di-\<Number\>
     * \<SAPSystemSID\>-NIC-ascs-\<Number\>
-    * \<SAPSystemSID\>-NIC-DB-\<Number\>
+    * \<SAPSystemSID\>-NIC-db-\<Number\>
 
   * **Azure-opslag accounts (alleen onbeheerde schijven)**:
 
   * **Beschikbaarheids groepen** voor:
-    * SAP-toepassings server virtuele machines \<:\>SAPSystemSID-avset-di
-    * SAP ASCS/SCS cluster virtual machines: \<SAPSystemSID\>-avset-ASCS
-    * Virtuele machines in DBMS- \<cluster\>: SAPSystemSID-avset-db
+    * SAP-toepassings server virtuele machines: \<SAPSystemSID\> -avset-di
+    * SAP ASCS/SCS cluster virtual machines: \<SAPSystemSID\> -avset-ASCS
+    * Virtuele machines van DBMS-cluster: \<SAPSystemSID\> -avset-db
 
   * **Interne Load Balancer van Azure**:
-    * Met alle poorten voor het ASCS/SCS-exemplaar en IP \<-\>adres SAPSystemSID-lb-ASCS
-    * Met alle poorten voor de SQL Server DBMS en het IP \<-\>adres SAPSystemSID-lb-db
+    * Met alle poorten voor het ASCS/SCS-exemplaar en IP \<SAPSystemSID\> -adres-lb-ASCS
+    * Met alle poorten voor de SQL Server DBMS en IP \<SAPSystemSID\> -adres-lb-db
 
-  * **Netwerk beveiligings groep**: \<SAPSystemSID\>-NSG-ascs-0  
-    * Met een open externe Remote Desktop Protocol-poort (RDP) naar \<de\>virtuele machine SAPSystemSID-ascs-0
+  * **Netwerk beveiligings groep**: \<SAPSystemSID\> -NSG-ascs-0  
+    * Met een open externe Remote Desktop Protocol (RDP)-poort naar de \<SAPSystemSID\> virtuele machine-ascs-0
 
 > [!NOTE]
 > Alle IP-adressen van de netwerk kaarten en interne load balancers van Azure zijn standaard dynamisch. Wijzig deze in vaste IP-adressen. Verderop in dit artikel wordt beschreven hoe u dit doet.
@@ -305,7 +305,7 @@ Als u de sjabloon ASCS/SCS multi-sid wilt instellen, voert u in de sjabloon [ASC
 - **Nieuw of bestaand subnet**: Stel in of u een nieuw virtueel netwerk en subnet wilt maken of een bestaand subnet wilt gebruiken. Als u al een virtueel netwerk hebt dat is verbonden met uw on-premises netwerk, selecteert u **bestaande**.
 - **Subnet-id**: als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de id van het specifieke subnet benoemen. De ID ziet er meestal als volgt uit:
 
-  /Subscriptions/\<-abonnements\>-\<id/resourceGroups/naam\>van\<resource groep/providers/Microsoft.Network/virtualNetworks/\>virtuele\<netwerk naam/subnets/subnet naam\>
+  /Subscriptions/ \<subscription id\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name\> /subnets/\<subnet name\>
 
 De sjabloon implementeert één Azure Load Balancer-exemplaar, dat ondersteuning biedt voor meerdere SAP-systemen:
 
@@ -410,7 +410,7 @@ U kunt hand matig de andere twee namen van virtuele hosts maken, PR1-ascs-SAP en
 ## <a name="set-static-ip-addresses-for-the-sap-virtual-machines"></a><a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a>Statische IP-adressen voor de virtuele machines van SAP instellen
 Nadat u de virtuele machines hebt geïmplementeerd voor gebruik in uw cluster, moet u vaste IP-adressen instellen voor alle virtuele machines. Doe dit in de Azure Virtual Network-configuratie en niet in het gast besturingssysteem.
 
-1. Selecteer in het Azure Portal**IP-adres**van de **resource groep** > **netwerk kaart** > **instellingen** > .
+1. Selecteer in het Azure Portal **Resource Group**  >  **Network Card**  >  **Settings**  >  **IP-adres**van de resource groep netwerk kaart instellingen.
 2. Selecteer in het deel venster **IP-adressen** onder **toewijzing**de optie **statisch**. Geef in het vak **IP-adres** het IP-adres op dat u wilt gebruiken.
 
    > [!NOTE]
@@ -483,11 +483,11 @@ Als u vereiste interne taakverdelings eindpunten wilt maken, moet u eerst deze t
 | ABAP-bericht server/ *lbrule3600* |36\<InstanceNumber\> |3600 |
 | Intern ABAP-bericht/ *lbrule3900* |39\<InstanceNumber\> |3900 |
 | HTTP- *Lbrule8100* van bericht server |81\<InstanceNumber\> |8100 |
-| ASCS HTTP/ *Lbrule50013* voor SAP-start service |5\<InstanceNumber\>13 |50013 |
-| ASCS HTTPS/ *Lbrule50014* voor SAP-start service |5\<InstanceNumber\>14 |50014 |
-| Replicatie- *Lbrule50016* in wachtrij plaatsen |5\<InstanceNumber\>16 |50016 |
-| ERS HTTP- *Lbrule51013* voor SAP-start service |5\<InstanceNumber\>13 |51013 |
-| ERS HTTP- *Lbrule51014* voor SAP-start service |5\<InstanceNumber\>14 |51014 |
+| ASCS HTTP/ *Lbrule50013* voor SAP-start service |5 \<InstanceNumber\> 13 |50013 |
+| ASCS HTTPS/ *Lbrule50014* voor SAP-start service |5 \<InstanceNumber\> 14 |50014 |
+| Replicatie- *Lbrule50016* in wachtrij plaatsen |5 \<InstanceNumber\> 16 |50016 |
+| ERS HTTP- *Lbrule51013* voor SAP-start service |5 \<InstanceNumber\> 13 |51013 |
+| ERS HTTP- *Lbrule51014* voor SAP-start service |5 \<InstanceNumber\> 14 |51014 |
 | *Lbrule5985* voor Windows Remote Management (WinRM) | |5985 |
 | Bestands share *Lbrule445* | |445 |
 
@@ -501,11 +501,11 @@ Vervolgens maakt u deze eind punten voor taak verdeling voor de SAP NetWeaver Ja
 | Gateway server- *lbrule3301* |33\<InstanceNumber\> |3301 |
 | Java-bericht server- *lbrule3900* |39\<InstanceNumber\> |3901 |
 | HTTP- *Lbrule8101* van bericht server |81\<InstanceNumber\> |8101 |
-| SCS HTTP/ *Lbrule50113* voor SAP-start service |5\<InstanceNumber\>13 |50113 |
-| SCS HTTPS/ *Lbrule50114* voor SAP-start service |5\<InstanceNumber\>14 |50114 |
-| Replicatie- *Lbrule50116* in wachtrij plaatsen |5\<InstanceNumber\>16 |50116 |
-| ERS HTTP- *Lbrule51113* voor SAP-start service |5\<InstanceNumber\>13 |51113 |
-| ERS HTTP- *Lbrule51114* voor SAP-start service |5\<InstanceNumber\>14 |51114 |
+| SCS HTTP/ *Lbrule50113* voor SAP-start service |5 \<InstanceNumber\> 13 |50113 |
+| SCS HTTPS/ *Lbrule50114* voor SAP-start service |5 \<InstanceNumber\> 14 |50114 |
+| Replicatie- *Lbrule50116* in wachtrij plaatsen |5 \<InstanceNumber\> 16 |50116 |
+| ERS HTTP- *Lbrule51113* voor SAP-start service |5 \<InstanceNumber\> 13 |51113 |
+| ERS HTTP- *Lbrule51114* voor SAP-start service |5 \<InstanceNumber\> 14 |51114 |
 | WinRM *Lbrule5985* | |5985 |
 | Bestands share *Lbrule445* | |445 |
 
@@ -521,7 +521,7 @@ Stel het IP-adres van de load balancer PR1-lb-DBMS in op het IP-adres van de naa
 
 Als u andere nummers wilt gebruiken voor de SAP-instanties ASCS of SCS, moet u de namen en waarden van de poorten van de standaard waarden wijzigen.
 
-1. Selecteer ** \<in het Azure Portal sid\>-lb-ascs Load Balancer** > **taakverdelings regels**.
+1. Selecteer in de Azure Portal Load Balancer taakverdelings regels ** \<SID\> -lb-ascs**  >  **Load Balancing Rules**.
 2. Wijzig deze waarden voor alle taakverdelings regels die horen bij het SAP ASCS-of SCS-exemplaar:
 
    * Naam
@@ -546,7 +546,7 @@ _**Afbeelding 7:** Een virtuele machine toevoegen aan een domein_
 
 ## <a name="add-registry-entries-on-both-cluster-nodes-of-the-sap-ascsscs-instance"></a><a name="661035b2-4d0f-4d31-86f8-dc0a50d78158"></a>Voeg register vermeldingen toe aan cluster knooppunten van het SAP ASCS/SCS-exemplaar
 
-Azure Load Balancer heeft een interne load balancer die verbindingen sluit wanneer de verbindingen gedurende een bepaalde periode inactief zijn (een time-out voor inactiviteit). SAP-werk processen in dialoogvenster exemplaren openen verbindingen met het SAP-bewerkings proces zodra de eerste aanvraag voor het plaatsen/verwijderen van de wachtrij moet worden verzonden. Deze verbindingen blijven doorgaans tot stand worden gebracht tot het werk proces of het proces voor het in de wachtrij plaatsen opnieuw wordt gestart. Als de verbinding echter gedurende een bepaalde periode inactief is, worden de verbindingen met de interne Azure-load balancer gesloten. Dit is geen probleem omdat het SAP werk proces de verbinding met het bewerkings proces moet herstellen als het niet meer bestaat. Deze activiteiten zijn gedocumenteerd in de ontwikkel aars van SAP-processen, maar ze maken een grote hoeveelheid extra inhoud in deze traceringen. Het is een goed idee om het TCP/IP- `KeepAliveTime` adres `KeepAliveInterval` en de cluster knooppunten te wijzigen. Combi neer deze wijzigingen in de TCP/IP-para meters met SAP-profiel parameters, verderop in het artikel beschreven.
+Azure Load Balancer heeft een interne load balancer die verbindingen sluit wanneer de verbindingen gedurende een bepaalde periode inactief zijn (een time-out voor inactiviteit). SAP-werk processen in dialoogvenster exemplaren openen verbindingen met het SAP-bewerkings proces zodra de eerste aanvraag voor het plaatsen/verwijderen van de wachtrij moet worden verzonden. Deze verbindingen blijven doorgaans tot stand worden gebracht tot het werk proces of het proces voor het in de wachtrij plaatsen opnieuw wordt gestart. Als de verbinding echter gedurende een bepaalde periode inactief is, worden de verbindingen met de interne Azure-load balancer gesloten. Dit is geen probleem omdat het SAP werk proces de verbinding met het bewerkings proces moet herstellen als het niet meer bestaat. Deze activiteiten zijn gedocumenteerd in de ontwikkel aars van SAP-processen, maar ze maken een grote hoeveelheid extra inhoud in deze traceringen. Het is een goed idee om het TCP/IP-adres `KeepAliveTime` en de `KeepAliveInterval` cluster knooppunten te wijzigen. Combi neer deze wijzigingen in de TCP/IP-para meters met SAP-profiel parameters, verderop in het artikel beschreven.
 
 Als u Register vermeldingen wilt toevoegen aan cluster knooppunten van het SAP ASCS/SCS-exemplaar, voegt u eerst deze Windows-register vermeldingen toe op beide Windows-cluster knooppunten voor SAP ASCS/SCS:
 
@@ -724,7 +724,7 @@ Het configureren van een cluster bestands share-Witness omvat de volgende taken:
 
    _**Afbeelding 26:** De bestandssharewitness selecteren_
 
-4. Voer het UNC-pad naar de bestands share in (in het \\voor beeld domcontr-0\FSW). Selecteer **volgende**om een lijst weer te geven met de wijzigingen die u kunt aanbrengen.
+4. Voer het UNC-pad naar de bestands share in (in het voor beeld \\ domcontr-0\FSW). Selecteer **volgende**om een lijst weer te geven met de wijzigingen die u kunt aanbrengen.
 
    ![Afbeelding 27: de locatie van de bestands share voor de witness-share definiëren][sap-ha-guide-figure-3026]
 
@@ -769,7 +769,7 @@ Er zijn twee manieren om .NET Framework 3,5 toe te voegen:
 
   _**Afbeelding 30:** Voortgangs balk voor installatie wanneer u .NET Framework 3,5 installeert met behulp van de wizard functies en onderdelen toevoegen_
 
-- Gebruik het opdracht regel programma DISM. exe. Voor dit type installatie moet u toegang hebben tot de map SxS op het Windows-installatie medium. Voer de volgende opdracht uit vanaf een opdracht prompt met verhoogde bevoegdheid:
+- Gebruik het opdracht regel programma dism.exe. Voor dit type installatie moet u toegang hebben tot de map SxS op het Windows-installatie medium. Voer de volgende opdracht uit vanaf een opdracht prompt met verhoogde bevoegdheid:
 
   ```
   Dism /online /enable-feature /featurename:NetFx3 /All /Source:installation_media_drive:\sources\sxs /LimitAccess

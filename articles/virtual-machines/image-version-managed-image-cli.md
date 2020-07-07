@@ -10,10 +10,10 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 6f49ece874ea52227e6531193fc53b3bea525702
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796601"
 ---
 # <a name="migrate-from-a-managed-image-to-an-image-version-using-the-azure-cli"></a>Migreren van een beheerde installatie kopie naar een installatie kopie versie met behulp van de Azure CLI
@@ -34,17 +34,17 @@ Wanneer u dit artikel doorwerkt, moet u de namen van de resource groep en de VM 
 
 
 
-## <a name="create-an-image-definition"></a>Een definitie van een installatie kopie maken
+## <a name="create-an-image-definition"></a>Een definitie voor de installatiekopie maken
 
-Omdat beheerde installatie kopieën altijd gegeneraliseerde installatie kopieën zijn, maakt u een definitie `--os-state generalized` van een installatie kopie met behulp van een gegeneraliseerde installatie kopie.
+Omdat beheerde installatie kopieën altijd gegeneraliseerde installatie kopieën zijn, maakt u een definitie van een installatie kopie met behulp `--os-state generalized` van een gegeneraliseerde installatie kopie.
 
-Definitie namen van afbeeldingen kunnen bestaan uit hoofd letters, kleine letters, cijfers, punten, streepjes en punten. 
+Namen van installatiekopiedefinities kunnen bestaan uit hoofdletters, kleine letters, cijfers, streepjes en punten. 
 
-Zie [afbeeldings definities](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions)voor meer informatie over de waarden die u kunt opgeven voor de definitie van een installatie kopie.
+Zie [Installatiekopiedefinities](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions) voor meer informatie over de waarden die u kunt specificeren voor een installatiekopiedefinitie.
 
-Maak een definitie van een installatie kopie in de galerie met behulp van [AZ sig image-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create).
+Een installatiekopiedefinitie in de galerie maken met [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create).
 
-In dit voor beeld heeft de definitie van de installatie kopie de naam *myImageDefinition*en is voor een [gegeneraliseerde](./linux/shared-image-galleries.md#generalized-and-specialized-images) installatie kopie van Linux-besturings systeem. Als u een definitie voor installatie kopieën wilt maken met een Windows `--os-type Windows`-besturings systeem, gebruikt u. 
+In dit voor beeld heeft de definitie van de installatie kopie de naam *myImageDefinition*en is voor een [gegeneraliseerde](./linux/shared-image-galleries.md#generalized-and-specialized-images) installatie kopie van Linux-besturings systeem. Als u een definitie voor installatie kopieën wilt maken met een Windows-besturings systeem, gebruikt u `--os-type Windows` . 
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG
@@ -62,7 +62,7 @@ az sig image-definition create \
 ```
 
 
-## <a name="create-the-image-version"></a>De versie van de installatie kopie maken
+## <a name="create-the-image-version"></a>De installatiekopieversie maken
 
 Maak een versie met behulp van [AZ Image Gallery Create-Image galerie-version](/cli/azure/sig/image-version#az-sig-image-version-create). U moet de ID van de beheerde installatie kopie door geven om te gebruiken als basis voor het maken van de installatie kopie versie. U kunt [AZ Image List](/cli/azure/image?view#az-image-list) gebruiken om de id's van uw installatie kopieën op te halen. 
 
@@ -70,11 +70,11 @@ Maak een versie met behulp van [AZ Image Gallery Create-Image galerie-version](/
 az image list --query "[].[name, id]" -o tsv
 ```
 
-Toegestane tekens voor de versie van de installatie kopie zijn getallen en punten. Getallen moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion*. *MinorVersion*. *Patch*.
+Toegestane tekens voor een installatiekopieversie zijn cijfers en punten. Cijfers moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion*.*MinorVersion*.*Patch*.
 
 In dit voor beeld is de versie van onze installatie kopie *1.0.0* en we gaan 1 replica maken in de regio *Zuid-Centraal VS* en 1 replica in de regio *VS-Oost 2* met zone-redundante opslag. Houd er rekening mee dat u bij het kiezen van doel regio's voor replicatie ook de *bron* regio moet toevoegen als doel voor replicatie.
 
-Geef de ID van de beheerde installatie kopie op `--managed-image` in de para meter.
+Geef de ID van de beheerde installatie kopie op in de `--managed-image` para meter.
 
 
 ```azurecli-interactive 
@@ -90,9 +90,9 @@ az sig image-version create \
 ```
 
 > [!NOTE]
-> U moet wachten tot de versie van de installatie kopie volledig is gebouwd en gerepliceerd voordat u dezelfde beheerde installatie kopie kunt gebruiken om een andere versie van de installatie kopie te maken.
+> U moet wachten tot de installatiekopieversie volledig is gebouwd en gerepliceerd voordat u dezelfde beheerde installatiekopie kunt gebruiken om een andere versie van de installatiekopie te maken.
 >
-> U kunt ook al uw afbeeldings versie replica's opslaan in [zone redundante opslag](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) door toe `--storage-account-type standard_zrs` te voegen wanneer u de versie van de installatie kopie maakt.
+> U kunt ook al uw afbeeldings versie replica's opslaan in [zone redundante opslag](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) door toe te voegen `--storage-account-type standard_zrs` Wanneer u de versie van de installatie kopie maakt.
 >
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: ce0cd0866cc6daa36d598767a486faeabac8076d
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791813"
 ---
 # <a name="monitoring-the-cluster"></a>Het cluster bewaken
@@ -18,7 +18,7 @@ Het is belang rijk om op het cluster niveau te controleren om te bepalen of uw h
 
 Service Fabric biedt verschillende gestructureerd platform gebeurtenissen, zoals [service Fabric gebeurtenissen](service-fabric-diagnostics-events.md), via de Event Store en verschillende logboek kanalen out-of-the-box. 
 
-In Windows zijn Service Fabric gebeurtenissen beschikbaar van één ETW-provider met een set relevante `logLevelKeywordFilters` gegevens die worden gebruikt om te kiezen tussen operationele en data & Messa ging-kanalen. Dit is de manier waarop we uitgaande service Fabric gebeurtenissen die worden gefilterd, gescheiden moeten worden gemaakt.
+In Windows zijn Service Fabric gebeurtenissen beschikbaar van één ETW-provider met een set relevante `logLevelKeywordFilters` gegevens die worden gebruikt om te kiezen tussen operationele en Data & Messa ging-kanalen. Dit is de manier waarop we uitgaande service Fabric gebeurtenissen die worden gefilterd, gescheiden moeten worden gemaakt.
 
 * **Operationeel** Bewerkingen op hoog niveau die worden uitgevoerd door Service Fabric en het cluster, met inbegrip van gebeurtenissen voor een knoop punt dat wordt geleverd, een nieuwe toepassing die wordt geïmplementeerd of het terugdraaien van een upgrade, enzovoort. Bekijk [hier](service-fabric-diagnostics-event-generation-operational.md)de volledige lijst met gebeurtenissen.  
 

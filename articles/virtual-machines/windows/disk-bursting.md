@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.openlocfilehash: 25aa9fc166e831acd2ed0389bbbe4d2dc7e04b19
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594397"
 ---
 # <a name="disk-bursting"></a>Disk Bursting
@@ -25,7 +25,7 @@ Bursting is standaard ingeschakeld voor virtuele machines die dit ondersteunen.
 
 ## <a name="disk-level-bursting"></a>Burstisatie op schijf niveau
 Bursting is ook beschikbaar op onze [Premium-ssd's](disks-types.md#premium-ssd) voor schijf grootten P20 en kleiner in alle regio's. Schijf bursting is standaard ingeschakeld voor nieuwe implementaties van de schijf grootten die dit ondersteunen. Bestaande schijf grootten, als deze schijf bursting ondersteunen, kunnen bursting op een van de volgende manieren inschakelen: 
-- **De virtuele machine opnieuw opstarten** 
+- **Start de VM opnieuw op** 
 - **De schijf loskoppelen en opnieuw koppelen**
 
 

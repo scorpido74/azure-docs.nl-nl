@@ -10,19 +10,19 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: efce2eb33bb95a3dc13cec4cbe0ea89d1a2c3452
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796744"
 ---
 # <a name="create-a-vm-using-a-generalized-image"></a>Een virtuele machine maken met behulp van een gegeneraliseerde installatie kopie 
 
 Maak een virtuele machine op basis van een gegeneraliseerde installatie kopie die is opgeslagen in een galerie met gedeelde afbeeldingen. Als u een virtuele machine wilt maken met behulp van een gespecialiseerde installatie kopie, raadpleegt u [een virtuele machine maken op basis van een gespecialiseerde installatie kopie](vm-specialized-image-version-powershell.md).
 
-Zodra u een algemene versie van de installatie kopie hebt, kunt u een of meer nieuwe virtuele machines maken. Met de cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) . 
+Zodra u een algemene versie van de installatie kopie hebt, kunt u een of meer nieuwe virtuele machines maken. De cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) gebruiken. 
 
-In dit voor beeld gebruiken we de definitie-ID van de installatie kopie om ervoor te zorgen dat de meest recente versie van een installatie kopie wordt gebruikt voor uw nieuwe virtuele machine. U kunt ook een specifieke versie gebruiken met de versie-ID van de `Set-AzVMSourceImage -Id`installatie kopie voor. Als u bijvoorbeeld de afbeeldings versie *1.0.0* type: `Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`wilt gebruiken. 
+In dit voor beeld gebruiken we de definitie-ID van de installatie kopie om ervoor te zorgen dat de meest recente versie van een installatie kopie wordt gebruikt voor uw nieuwe virtuele machine. U kunt ook een specifieke versie gebruiken met de versie-ID van de installatie kopie voor `Set-AzVMSourceImage -Id` . Als u bijvoorbeeld de afbeeldings versie *1.0.0* type: wilt gebruiken `Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` . 
 
 Houd er rekening mee dat automatisering met behulp van een specifieke versie van de installatie kopie kan mislukken als deze specifieke installatie kopie versie niet beschikbaar is omdat deze is verwijderd of uit de regio is verwijderd. U kunt het beste de definitie-ID van de installatie kopie gebruiken voor het maken van uw nieuwe VM, tenzij een specifieke installatie kopie versie vereist is.
 

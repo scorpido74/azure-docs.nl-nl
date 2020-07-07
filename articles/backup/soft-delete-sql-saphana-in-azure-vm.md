@@ -4,10 +4,10 @@ description: Meer informatie over hoe zacht verwijderen voor SQL Server in azure
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: f1e3ecae5d643b8e32f8f4f07808d56cdc421163
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791371"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Voorlopig verwijderen voor SQL Server in azure VM en SAP HANA in werk belastingen voor Azure VM

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: ce3916ef1155224a91c0736c3dabe907ae8d2611
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796367"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Apache Hive optimaliseren met Apache Ambari in azure HDInsight
@@ -58,11 +58,11 @@ Deze wijzigingen zijn van invloed op alle TEZ-taken op de server. Kies de juiste
 
 Apache ORC en Snappy bieden hoge prestaties. Hive kan echter te weinig vertragers hebben, waardoor er knel punten ontstaan.
 
-Stel, u hebt een grootte van 50 GB voor de invoer gegevens. De gegevens in de ORC-indeling met Snappy-compressie is 1 GB. Hive schat het aantal verminderers dat nodig is als: (aantal bytes invoer voor mappers `hive.exec.reducers.bytes.per.reducer`/).
+Stel, u hebt een grootte van 50 GB voor de invoer gegevens. De gegevens in de ORC-indeling met Snappy-compressie is 1 GB. Hive schat het aantal verminderers dat nodig is als: (aantal bytes invoer voor mappers/ `hive.exec.reducers.bytes.per.reducer` ).
 
 Met de standaard instellingen is dit voor beeld vier verminderers.
 
-Met `hive.exec.reducers.bytes.per.reducer` de para meter wordt het aantal verwerkte bytes per verminderr opgegeven. De standaard waarde is 64 MB. Het afstemmen van deze waarde is groter, en kan de prestaties verbeteren. Als u het apparaat te laag afstemt, kunnen er ook te veel vertraagden worden geproduceerd, waardoor de prestaties mogelijk nadelig worden beïnvloed. Deze para meter is gebaseerd op uw specifieke gegevens vereisten, compressie-instellingen en andere omgevings factoren.
+Met de `hive.exec.reducers.bytes.per.reducer` para meter wordt het aantal verwerkte bytes per verminderr opgegeven. De standaard waarde is 64 MB. Het afstemmen van deze waarde is groter, en kan de prestaties verbeteren. Als u het apparaat te laag afstemt, kunnen er ook te veel vertraagden worden geproduceerd, waardoor de prestaties mogelijk nadelig worden beïnvloed. Deze para meter is gebaseerd op uw specifieke gegevens vereisten, compressie-instellingen en andere omgevings factoren.
 
 1. Als u de para meter wilt wijzigen, gaat u naar het tabblad **configuratie** van Hive en zoekt u de para meter **gegevens per verkorter** op de pagina instellingen.
 
@@ -74,15 +74,15 @@ Met `hive.exec.reducers.bytes.per.reducer` de para meter wordt het aantal verwer
   
     Op basis van een invoer grootte van 1.024 MB, met 128 MB aan gegevens per verkorter, zijn er acht verminderingen (1024/128).
 
-1. Een onjuiste waarde voor de **gegevens per reduceerere** para meter kan leiden tot een groot aantal verminderers, wat een negatieve invloed heeft op de prestaties van query's. Als u het maximum aantal verminderers wilt beperken `hive.exec.reducers.max` , stelt u een geschikte waarde in. De standaard waarde is 1009.
+1. Een onjuiste waarde voor de **gegevens per reduceerere** para meter kan leiden tot een groot aantal verminderers, wat een negatieve invloed heeft op de prestaties van query's. Als u het maximum aantal verminderers wilt beperken, stelt `hive.exec.reducers.max` u een geschikte waarde in. De standaard waarde is 1009.
 
 ## <a name="enable-parallel-execution"></a>Parallelle uitvoering inschakelen
 
 Een Hive-query wordt uitgevoerd in een of meer fasen. Als de onafhankelijke fasen parallel kunnen worden uitgevoerd, worden de query prestaties verbeterd.
 
-1. Als u parallelle query uitvoering wilt inschakelen, gaat u naar het tabblad **configuratie** van Hive `hive.exec.parallel` en zoekt u naar de eigenschap. De standaardwaarde is false. Wijzig de waarde in True en druk vervolgens op **Enter** om de waarde op te slaan.
+1. Als u parallelle query uitvoering wilt inschakelen, gaat u naar het tabblad **configuratie** van Hive en zoekt u naar de `hive.exec.parallel` eigenschap. De standaardwaarde is false. Wijzig de waarde in True en druk vervolgens op **Enter** om de waarde op te slaan.
 
-1. Als u het aantal taken dat parallel moet worden uitgevoerd, wilt beperken `hive.exec.parallel.thread.number` , wijzigt u de eigenschap. De standaard waarde is 8.
+1. Als u het aantal taken dat parallel moet worden uitgevoerd, wilt beperken, wijzigt u de `hive.exec.parallel.thread.number` eigenschap. De standaard waarde is 8.
 
     ![Parallelle weer gave Apache Hive exec](./media/optimize-hive-ambari/apache-hive-exec-parallel.png)
 
@@ -90,7 +90,7 @@ Een Hive-query wordt uitgevoerd in een of meer fasen. Als de onafhankelijke fase
 
 Hive verwerkt gegevens rijen per rij. Vectorization-doorstuur component voor het verwerken van gegevens in blokken van 1.024 rijen in plaats van één rij tegelijk. Vectorization is alleen van toepassing op de ORC-bestands indeling.
 
-1. Als u een vector query-uitvoering wilt inschakelen, gaat u naar het tabblad **configuratie** van Hive en `hive.vectorized.execution.enabled` zoekt u naar de para meter. De standaard waarde is True voor Hive 0.13.0 of hoger.
+1. Als u een vector query-uitvoering wilt inschakelen, gaat u naar het tabblad **configuratie** van Hive en zoekt u naar de `hive.vectorized.execution.enabled` para meter. De standaard waarde is True voor Hive 0.13.0 of hoger.
 
 1. Als u een vector uitvoering wilt inschakelen voor de reductie van de query, stelt `hive.vectorized.execution.reduce.enabled` u de para meter in op waar. De standaardwaarde is false.
 
@@ -100,7 +100,7 @@ Hive verwerkt gegevens rijen per rij. Vectorization-doorstuur component voor het
 
 Hive volgt standaard een set regels om één optimaal query-uitvoerings plan te vinden. Met CBO (cost-based Optimization) worden meerdere plannen geëvalueerd voor het uitvoeren van een query. En wijst de kosten aan elk plan toe en bepaalt vervolgens het goedkoopste-plan om een query uit te voeren.
 
-Om CBO in te scha kelen, gaat u naar **Hive** > **configuratie** > **instellingen** en zoek **optimalisatie op basis van kosten inschakelen**. vervolgens schakelt u de wissel knop in **op**aan.
+Om CBO in te scha kelen, gaat u naar **Hive**  >  **configuratie**  >  **instellingen** en zoek **optimalisatie op basis van kosten inschakelen**. vervolgens schakelt u de wissel knop in **op**aan.
 
 ![Optimalisatie op basis van HDInsight-kosten](./media/optimize-hive-ambari/hdinsight-cbo-config.png)
 
@@ -108,7 +108,7 @@ De volgende aanvullende configuratie parameters verhogen Hive-query prestaties w
 
 * `hive.compute.query.using.stats`
 
-    Als deze eigenschap is ingesteld op True, gebruikt Hive statistieken die zijn opgeslagen in de meta Store `count(*)`om eenvoudige query's te beantwoorden, zoals.
+    Als deze eigenschap is ingesteld op True, gebruikt Hive statistieken die zijn opgeslagen in de meta Store om eenvoudige query's te beantwoorden, zoals `count(*)` .
 
     ![Reken query Apache Hive met behulp van statistieken](./media/optimize-hive-ambari/hive-compute-query-using-stats.png)
 
@@ -148,15 +148,15 @@ Een algemene regel is dat de compressie methode splitsbaar belang rijk is, ander
     > [!NOTE]  
     > Als u tussenliggende bestanden wilt comprimeren, kiest u een compressie-codec met lagere CPU-kosten, zelfs als de codec geen hoge compressie-uitvoer heeft.
 
-1. Als u de tussenliggende compressie-codec wilt instellen, voegt `mapred.map.output.compression.codec` u de `hive-site.xml` aangepaste `mapred-site.xml` eigenschap toe aan het bestand of.
+1. Als u de tussenliggende compressie-codec wilt instellen, voegt u de aangepaste eigenschap toe `mapred.map.output.compression.codec` aan het `hive-site.xml` `mapred-site.xml` bestand of.
 
 1. Een aangepaste instelling toevoegen:
 
-    a. Navigeer naar **Hive** > **configurations** > **Geavanceerde** > **aangepaste Hive-site**.
+    a. Navigeer naar **Hive**  >  **configurations**  >  **Geavanceerde**  >  **aangepaste Hive-site**.
 
     b. Selecteer **eigenschap toevoegen...** aan de onderkant van het aangepaste Hive-site deel venster.
 
-    c. Voer `mapred.map.output.compression.codec` in het venster Eigenschappen toevoegen als sleutel en `org.apache.hadoop.io.compress.SnappyCodec` als de waarde in.
+    c. Voer in het venster Eigenschappen toevoegen `mapred.map.output.compression.codec` als sleutel en `org.apache.hadoop.io.compress.SnappyCodec` als de waarde in.
 
     d. Selecteer **Toevoegen**.
 
@@ -171,9 +171,9 @@ Een algemene regel is dat de compressie methode splitsbaar belang rijk is, ander
 
 De uiteindelijke Hive-uitvoer kan ook worden gecomprimeerd.
 
-1. Als u de laatste Hive-uitvoer wilt comprimeren, gaat u naar het tabblad **configuratie** van Hive en `hive.exec.compress.output` stelt u de para meter in op waar. De standaardwaarde is false.
+1. Als u de laatste Hive-uitvoer wilt comprimeren, gaat u naar het tabblad **configuratie** van Hive en stelt `hive.exec.compress.output` u de para meter in op waar. De standaardwaarde is false.
 
-1. Als u de compressie-codec voor uitvoer wilt `mapred.output.compression.codec` kiezen, voegt u de aangepaste eigenschap toe aan het deel venster aangepaste Hive-site, zoals wordt beschreven in stap 3 van de vorige sectie.
+1. Als u de compressie-codec voor uitvoer wilt kiezen, voegt `mapred.output.compression.codec` u de aangepaste eigenschap toe aan het deel venster aangepaste Hive-site, zoals wordt beschreven in stap 3 van de vorige sectie.
 
     ![Aangepaste eigenschap ADD2 Apache Hive](./media/optimize-hive-ambari/hive-custom-property2.png)
 
@@ -191,19 +191,19 @@ Speculatieve uitvoering moet niet worden ingeschakeld voor langlopende MapReduce
 
 Hive maakt het mogelijk om dynamische partities te maken bij het invoegen van records in een tabel, zonder dat elke partitie vooraf wordt gedefinieerd. Deze mogelijkheid is een krachtig onderdeel. Hoewel dit kan leiden tot het maken van een groot aantal partities. En een groot aantal bestanden voor elke partitie.
 
-1. Voor Hive kunnen dynamische partities worden uitgevoerd, `hive.exec.dynamic.partition` de parameter waarde moet True zijn (de standaard instelling).
+1. Voor Hive kunnen dynamische partities worden uitgevoerd, de `hive.exec.dynamic.partition` parameter waarde moet True zijn (de standaard instelling).
 
 1. Wijzig de dynamische partitie modus in *strict*. In de strikte modus moet ten minste één partitie statisch zijn. Met deze instelling wordt voor komen dat query's zonder het partitie filter in de component WHERE, dat wil zeggen, *strikte* query's die alle partities scannen, worden voor komen. Ga naar het tabblad **configuratie** van Hive en stel `hive.exec.dynamic.partition.mode` in op **strikt**. De standaard waarde is niet **strikt**.
 
-1. Wijzig de `hive.exec.max.dynamic.partitions` para meter om het aantal dynamische partities te beperken dat moet worden gemaakt. De standaard waarde is 5000.
+1. Wijzig de para meter om het aantal dynamische partities te beperken dat moet worden gemaakt `hive.exec.max.dynamic.partitions` . De standaard waarde is 5000.
 
-1. Als u het totale aantal dynamische partities per knoop punt wilt beperken `hive.exec.max.dynamic.partitions.pernode`, wijzigt u. De standaard waarde is 2000.
+1. Als u het totale aantal dynamische partities per knoop punt wilt beperken, wijzigt u `hive.exec.max.dynamic.partitions.pernode` . De standaard waarde is 2000.
 
 ## <a name="enable-local-mode"></a>Lokale modus inschakelen
 
 Met de lokale modus kunnen componenten alle taken van een taak op één computer uitvoeren. Of soms in één proces. Deze instelling verbetert de query prestaties als de invoer gegevens klein zijn. En de overhead van het starten van query's verbruikt een aanzienlijk percentage van de algemene query-uitvoering.
 
-Als u de lokale modus wilt inschakelen `hive.exec.mode.local.auto` , voegt u de para meter toe aan het aangepaste Hive-site paneel, zoals wordt beschreven in stap 3 van de sectie [tussenliggende compressie inschakelen](#enable-intermediate-compression) .
+Als u de lokale modus wilt inschakelen, voegt `hive.exec.mode.local.auto` u de para meter toe aan het aangepaste Hive-site paneel, zoals wordt beschreven in stap 3 van de sectie [tussenliggende compressie inschakelen](#enable-intermediate-compression) .
 
 ![Modus voor Apache Hive uitvoering lokale automatisch](./media/optimize-hive-ambari/hive-exec-mode-local-auto.png)
 
@@ -211,7 +211,7 @@ Als u de lokale modus wilt inschakelen `hive.exec.mode.local.auto` , voegt u de 
 
 Als deze eigenschap is ingesteld op True, genereert een query met meerdere groepen met algemene groep-op sleutels één MapReduce-taak.  
 
-Als u dit gedrag wilt inschakelen, `hive.multigroupby.singlereducer` voegt u de para meter toe aan het deel venster aangepaste Hive-site, zoals wordt beschreven in stap 3 van de sectie [tussenliggende compressie inschakelen](#enable-intermediate-compression) .
+Als u dit gedrag wilt inschakelen, voegt `hive.multigroupby.singlereducer` u de para meter toe aan het deel venster aangepaste Hive-site, zoals wordt beschreven in stap 3 van de sectie [tussenliggende compressie inschakelen](#enable-intermediate-compression) .
 
 ![Hive-set met één MapReduce meerdere groepen op](./media/optimize-hive-ambari/hive-multigroupby-singlereducer.png)
 
@@ -235,7 +235,7 @@ Aanvullende aanbevelingen voor het optimaliseren van de engine voor het uitvoere
 
 | Instelling | Aanbevolen | Standaard HDInsight |
 | --- | --- | --- |
-| `hive.mapjoin.hybridgrace.hashtable` | Waar = veiliger, langzamer; ONWAAR = sneller | onjuist |
+| `hive.mapjoin.hybridgrace.hashtable` | Waar = veiliger, langzamer; ONWAAR = sneller | false |
 | `tez.am.resource.memory.mb` | 4-GB bovengrens voor de meeste | Automatisch afgestemd |
 | `tez.session.am.dag.submit.timeout.secs` | 300 + | 300 |
 | `tez.am.container.idle.release-timeout-min.millis` | 20000 + | 10.000 |
@@ -248,4 +248,4 @@ Aanvullende aanbevelingen voor het optimaliseren van de engine voor het uitvoere
 * [Apache Hive-query's in Azure HDInsight optimaliseren](./hdinsight-hadoop-optimize-hive-query.md)
 * [Clusters optimaliseren](./optimize-hive-ambari.md)
 * [Apache HBase optimaliseren](./optimize-hbase-ambari.md)
-* [Apache-Pig optimaliseren](./optimize-pig-ambari.md)
+* [Apache Pig optimaliseren](./optimize-pig-ambari.md)

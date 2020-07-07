@@ -10,10 +10,10 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 8ba9379125917c482ce12cb28b6fa6e5be809203
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796549"
 ---
 # <a name="create-a-scale-set-from-a-specialized-image-using-powershell"></a>Een schaalset maken op basis van een gespecialiseerde afbeelding met behulp van Power shell 
@@ -22,7 +22,7 @@ Maak een virtuele machine op basis van een gespecialiseerde afbeeldings versie d
 
 Zodra u een gespecialiseerde afbeelding in uw galerie hebt, kunt u een schaalset voor virtuele machines maken met behulp van de cmdlet [New-AzVmss](/powershell/module/az.compute/new-azvmss) . 
 
-In dit voor beeld gebruiken we de definitie-ID van de installatie kopie om ervoor te zorgen dat de meest recente versie van een installatie kopie wordt gebruikt voor uw nieuwe virtuele machine. U kunt ook een specifieke versie gebruiken met de versie-ID van de `-ImageReferenceId`installatie kopie voor. Als u bijvoorbeeld de afbeeldings versie *1.0.0* type: `-ImageReferenceId "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`wilt gebruiken. 
+In dit voor beeld gebruiken we de definitie-ID van de installatie kopie om ervoor te zorgen dat de meest recente versie van een installatie kopie wordt gebruikt voor uw nieuwe virtuele machine. U kunt ook een specifieke versie gebruiken met de versie-ID van de installatie kopie voor `-ImageReferenceId` . Als u bijvoorbeeld de afbeeldings versie *1.0.0* type: wilt gebruiken `-ImageReferenceId "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` . 
 
 Houd er rekening mee dat automatisering met behulp van een specifieke versie van de installatie kopie kan mislukken als deze specifieke installatie kopie versie niet beschikbaar is omdat deze is verwijderd of uit de regio is verwijderd. U kunt het beste de definitie-ID van de installatie kopie gebruiken voor het maken van uw nieuwe VM, tenzij een specifieke installatie kopie versie vereist is.
 

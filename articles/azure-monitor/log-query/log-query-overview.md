@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
 ms.openlocfilehash: 6cd2a28ddbe970385ff44deec2158c257937982e
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82591649"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Overzicht van logboek query's in Azure Monitor
@@ -76,7 +76,7 @@ Zie [aan de slag met logboek query's in azure monitor](get-started-queries.md) v
 
 
 ## <a name="what-is-log-analytics"></a>Wat is Log Analytics?
-Log Analytics is het primaire hulp programma in de Azure Portal voor het schrijven van logboek query's en het interactief analyseren van de resultaten. Zelfs als een logboekquery elders in Azure Monitor wordt gebruikt, moet u de query doorgaans eerst schrijven en testen met behulp van Log Analytics.
+Log Analytics is het primaire hulpprogramma in de Azure Portal voor het schrijven van logboekquery's en het interactief analyseren van de resultaten. Zelfs als een logboekquery elders in Azure Monitor wordt gebruikt, moet u de query doorgaans eerst schrijven en testen met behulp van Log Analytics.
 
 U kunt Log Analytics vanaf verschillende locaties in de Azure Portal starten. Het bereik van de beschik bare gegevens voor Log Analytics is afhankelijk van hoe u het start. Zie [query bereik](scope.md) voor meer informatie.
 

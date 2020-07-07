@@ -4,10 +4,10 @@ description: Gebruik kopieer bewerkingen en matrices in een Azure Resource Manag
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.openlocfilehash: d4f40b606ffd56019b44cc8b67e5629b935bf50c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583397"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>Resource iteratie in ARM-sjablonen
@@ -18,7 +18,7 @@ U kunt ook kopiëren met [Eigenschappen](copy-properties.md), [variabelen](copy-
 
 Zie [voor waarde-element](conditional-resource-deployment.md)als u wilt opgeven of een resource helemaal moet worden geïmplementeerd.
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
 Het element Copy heeft de volgende algemene indeling:
 
@@ -109,7 +109,7 @@ Hiermee maakt u deze namen:
 * storage2
 * storage3
 
-De Kopieer bewerking is handig bij het werken met matrices, omdat u elk element in de matrix kunt door lopen. Gebruik de `length` functie op de matrix om het aantal voor herhalingen op te geven `copyIndex` en om de huidige index in de matrix op te halen.
+De Kopieer bewerking is handig bij het werken met matrices, omdat u elk element in de matrix kunt door lopen. Gebruik de `length` functie op de matrix om het aantal voor herhalingen op te geven en `copyIndex` om de huidige index in de matrix op te halen.
 
 In het volgende voor beeld wordt één opslag account gemaakt voor elke naam die in de para meter wordt gegeven.
 
@@ -154,7 +154,7 @@ Als u waarden van de geïmplementeerde resources wilt retour neren, kunt u [in d
 
 Resource Manager maakt standaard de resources parallel. Er geldt geen limiet voor het aantal resources dat parallel is geïmplementeerd, met uitzonde ring van de totale limiet van 800 resources in de sjabloon. De volg orde waarin ze worden gemaakt, is niet gegarandeerd.
 
-Het is echter mogelijk dat u wilt opgeven dat de resources in de juiste volg orde worden geïmplementeerd. Wanneer u bijvoorbeeld een productie omgeving bijwerkt, wilt u mogelijk de updates spreiden zodat alleen een bepaald aantal tegelijk wordt bijgewerkt. Als u meer dan één exemplaar van een bron wilt implementeren, stelt `mode` u in op `batchSize` **serie** en op het aantal exemplaren dat tegelijk moet worden geïmplementeerd. Met de seriële modus maakt Resource Manager een afhankelijkheid van eerdere instanties in de lus, zodat deze geen batch Start totdat de vorige batch is voltooid.
+Het is echter mogelijk dat u wilt opgeven dat de resources in de juiste volg orde worden geïmplementeerd. Wanneer u bijvoorbeeld een productie omgeving bijwerkt, wilt u mogelijk de updates spreiden zodat alleen een bepaald aantal tegelijk wordt bijgewerkt. Als u meer dan één exemplaar van een bron wilt implementeren, stelt `mode` u in op **serie** en `batchSize` op het aantal exemplaren dat tegelijk moet worden geïmplementeerd. Met de seriële modus maakt Resource Manager een afhankelijkheid van eerdere instanties in de lus, zodat deze geen batch Start totdat de vorige batch is voltooid.
 
 Als u opslag accounts bijvoorbeeld twee keer tegelijk wilt implementeren, gebruikt u:
 
@@ -189,7 +189,7 @@ De eigenschap mode kan ook **parallel**worden geaccepteerd. Dit is de standaard 
 
 ## <a name="depend-on-resources-in-a-loop"></a>Is afhankelijk van resources in een lus
 
-U geeft aan dat een resource wordt geïmplementeerd na een andere resource met `dependsOn` behulp van het-element. Als u een resource wilt implementeren die afhankelijk is van de verzameling van resources in een lus, geeft u de naam van de Kopieer-lus op in het element dependsOn. In het volgende voor beeld ziet u hoe u drie opslag accounts implementeert voordat u de virtuele machine implementeert. De volledige definitie van de virtuele machine wordt niet weer gegeven. U ziet dat de naam van het element Copy `storagecopy` is ingesteld op en dat het element dependsOn voor de virtuele machine `storagecopy`ook is ingesteld op.
+U geeft aan dat een resource wordt geïmplementeerd na een andere resource met behulp van het- `dependsOn` element. Als u een resource wilt implementeren die afhankelijk is van de verzameling van resources in een lus, geeft u de naam van de Kopieer-lus op in het element dependsOn. In het volgende voor beeld ziet u hoe u drie opslag accounts implementeert voordat u de virtuele machine implementeert. De volledige definitie van de virtuele machine wordt niet weer gegeven. U ziet dat de naam van het element Copy is ingesteld op `storagecopy` en dat het element dependsOn voor de virtuele machine ook is ingesteld op `storagecopy` .
 
 ```json
 {
@@ -248,7 +248,7 @@ Stel bijvoorbeeld dat u een gegevensset definieert als een onderliggende bron in
   ]
 ```
 
-Als u meer dan één gegevensset wilt maken, verplaatst u deze buiten het data factory. De gegevensset moet op hetzelfde niveau zijn als de data factory, maar het is nog steeds een onderliggende resource van de data factory. U behoudt de relatie tussen de gegevensset en data factory via de eigenschappen type en naam. Omdat het type niet meer kan worden afgeleid van de positie in de sjabloon, moet u het volledig gekwalificeerde type opgeven in de notatie: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.
+Als u meer dan één gegevensset wilt maken, verplaatst u deze buiten het data factory. De gegevensset moet op hetzelfde niveau zijn als de data factory, maar het is nog steeds een onderliggende resource van de data factory. U behoudt de relatie tussen de gegevensset en data factory via de eigenschappen type en naam. Omdat het type niet meer kan worden afgeleid van de positie in de sjabloon, moet u het volledig gekwalificeerde type opgeven in de notatie: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}` .
 
 Als u een bovenliggende/onderliggende relatie met een exemplaar van de data factory wilt instellen, geeft u een naam op voor de gegevensset die de naam van de bovenliggende resource bevat. Gebruik de notatie `{parent-resource-name}/{child-resource-name}`.
 

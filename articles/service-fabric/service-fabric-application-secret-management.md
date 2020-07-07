@@ -4,10 +4,10 @@ description: Meer informatie over het beveiligen van geheime waarden in een Serv
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.openlocfilehash: 18090dd3e4046da2069e3035be4edb4d2f979204
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583234"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Versleutelde geheimen in Service Fabric-toepassingen beheren
@@ -24,9 +24,9 @@ Het instellen van een versleutelings certificaat voor het versleutelen van gehei
 * [Een versleutelings certificaat instellen en geheimen op Linux-clusters versleutelen.][secret-management-linux-specific-link]
 
 ## <a name="specify-encrypted-secrets-in-an-application"></a>Versleutelde geheimen in een toepassing opgeven
-In de vorige stap wordt beschreven hoe u een geheim versleutelt met een certificaat en een met base 64 gecodeerde teken reeks produceert voor gebruik in een toepassing. Deze met base 64 gecodeerde teken reeks kan worden opgegeven als een versleutelde [para meter][parameters-link] in de instellingen. XML van een service of als een versleutelde [omgevings variabele][environment-variables-link] in de ServiceManifest. XML van een service.
+In de vorige stap wordt beschreven hoe u een geheim versleutelt met een certificaat en een met base 64 gecodeerde teken reeks produceert voor gebruik in een toepassing. Deze met base 64 gecodeerde teken reeks kan worden opgegeven als een versleutelde [para meter][parameters-link] in de Settings.xml van een service of als een versleutelde [omgevings variabele][environment-variables-link] in de ServiceManifest.xml van een service.
 
-Geef een versleutelde [para meter][parameters-link] op in het configuratie bestand van de service `IsEncrypted` -instellingen. `true`XML waarvoor het kenmerk is ingesteld op:
+Geef een versleutelde [para meter][parameters-link] in het Settings.xml configuratie bestand van uw service op waarvan het `IsEncrypted` kenmerk is ingesteld op `true` :
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -36,7 +36,7 @@ Geef een versleutelde [para meter][parameters-link] op in het configuratie besta
   </Section>
 </Settings>
 ```
-Geef een versleutelde [omgevings variabele][environment-variables-link] in het ServiceManifest. XML-bestand `Type` van uw service `Encrypted`op waarvan het kenmerk is ingesteld op:
+Geef een versleutelde [omgevings variabele][environment-variables-link] in het ServiceManifest.xml-bestand van uw service op waarvan het `Type` kenmerk is ingesteld op `Encrypted` :
 ```xml
 <CodePackage Name="Code" Version="1.0.0">
   <EnvironmentVariables>
@@ -45,7 +45,7 @@ Geef een versleutelde [omgevings variabele][environment-variables-link] in het S
 </CodePackage>
 ```
 
-De geheimen moeten ook worden opgenomen in uw Service Fabric-toepassing door een certificaat op te geven in het manifest van de toepassing. Voeg een **SecretsCertificate** -element toe aan **ApplicationManifest. XML** en voeg de vinger afdruk van het gewenste certificaat toe.
+De geheimen moeten ook worden opgenomen in uw Service Fabric-toepassing door een certificaat op te geven in het manifest van de toepassing. Voeg een **SecretsCertificate** -element toe aan **ApplicationManifest.xml** en voeg de vinger afdruk van het gewenste certificaat toe.
 
 ```xml
 <ApplicationManifest … >
@@ -64,8 +64,8 @@ De geheimen moeten ook worden opgenomen in uw Service Fabric-toepassing door een
 ### <a name="inject-application-secrets-into-application-instances"></a>Toepassings geheimen in toepassings exemplaren invoeren
 In het ideale geval moet de implementatie naar verschillende omgevingen zo automatisch mogelijk worden uitgevoerd. Dit kan worden bereikt door geheime versleuteling uit te voeren in een bouw omgeving en de versleutelde geheimen op te geven als para meters bij het maken van toepassings exemplaren.
 
-#### <a name="use-overridable-parameters-in-settingsxml"></a>Overschrijf bare-para meters gebruiken in Settings. XML
-Met het configuratie bestand settings. XML kunt u Overschrijf bare-para meters opgeven die tijdens het maken van de toepassing kunnen worden opgegeven. Gebruik het `MustOverride` kenmerk in plaats van een waarde voor een para meter op te geven:
+#### <a name="use-overridable-parameters-in-settingsxml"></a>Overschrijf bare-para meters gebruiken in Settings.xml
+Met het Settings.xml configuratie bestand kunt u Overschrijf bare-para meters opgeven die tijdens het maken van de toepassing kunnen worden opgegeven. Gebruik het `MustOverride` kenmerk in plaats van een waarde voor een para meter op te geven:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -76,7 +76,7 @@ Met het configuratie bestand settings. XML kunt u Overschrijf bare-para meters o
 </Settings>
 ```
 
-Als u waarden in Settings. XML wilt overschrijven, declareert u een override-para meter voor de service in ApplicationManifest. XML:
+Als u de waarden in Settings.xml wilt overschrijven, declareert u een onderdrukkings parameter voor de service in ApplicationManifest.xml:
 
 ```xml
 <ApplicationManifest ... >
@@ -99,13 +99,13 @@ Als u waarden in Settings. XML wilt overschrijven, declareert u een override-par
 
 De waarde kan nu worden opgegeven als een *toepassings parameter* bij het maken van een exemplaar van de toepassing. Het maken van een toepassings exemplaar kan worden gescripteerd met Power shell of is geschreven in C#, voor een eenvoudige integratie in een bouw proces.
 
-Met behulp van Power shell wordt de para `New-ServiceFabricApplication` meter aan de opdracht opgegeven als een [hash-tabel](https://technet.microsoft.com/library/ee692803.aspx):
+Met behulp van Power shell wordt de para meter aan de `New-ServiceFabricApplication` opdracht opgegeven als een [hash-tabel](https://technet.microsoft.com/library/ee692803.aspx):
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}
 ```
 
-Met C# worden toepassings parameters opgegeven in een `ApplicationDescription` as a: `NameValueCollection`
+Met C# worden toepassings parameters opgegeven in een `ApplicationDescription` as a `NameValueCollection` :
 
 ```csharp
 FabricClient fabricClient = new FabricClient();

@@ -1,7 +1,7 @@
 ---
-title: Push meldingen verzenden met Azure Notification Hubs en node. js
-description: Meer informatie over het gebruik van Notification Hubs voor het verzenden van push meldingen van een node. js-toepassing.
-keywords: push melding, Push meldingen, node. js-push, Ios-push
+title: Push meldingen verzenden met Azure Notification Hubs en Node.js
+description: Meer informatie over het gebruik van Notification Hubs voor het verzenden van push meldingen van een Node.js toepassing.
+keywords: push melding, Push meldingen, node.js push, Ios-push
 services: notification-hubs
 documentationcenter: nodejs
 author: sethmanheim
@@ -18,13 +18,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: cb984a944067ddb1449f58b464e596fd138dc7c7
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82592006"
 ---
-# <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Push meldingen verzenden met Azure Notification Hubs en node. js
+# <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Push meldingen verzenden met Azure Notification Hubs en Node.js
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
@@ -33,7 +33,7 @@ ms.locfileid: "82592006"
 > [!IMPORTANT]
 > U hebt een actief Azure-account nodig om deze zelfstudie te voltooien. Als u geen account hebt, kunt u in slechts een paar minuten een gratis proef account maken via de [gratis proef versie van Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-nodejs-how-to-use-notification-hubs).
 
-In deze hand leiding wordt beschreven hoe u push meldingen kunt verzenden met behulp van Azure Notification Hubs rechtstreeks vanuit een [node. js](https://nodejs.org) -toepassing.
+Deze hand leiding laat zien hoe u push meldingen kunt verzenden met behulp van Azure Notification Hubs rechtstreeks vanuit een [Node.js](https://nodejs.org) toepassing.
 
 De gedekte scenario's zijn het verzenden van push meldingen naar toepassingen op de volgende platforms:
 
@@ -46,26 +46,26 @@ De gedekte scenario's zijn het verzenden van push meldingen naar toepassingen op
 
 Azure Notification Hubs biedt een gebruiks vriendelijke, schaal bare infra structuur met meerdere platformen voor het verzenden van push meldingen naar mobiele apparaten. Zie de pagina [Azure notification hubs](https://msdn.microsoft.com/library/windowsazure/jj927170.aspx) voor meer informatie over de service-infra structuur.
 
-## <a name="create-a-nodejs-application"></a>Een node. js-toepassing maken
+## <a name="create-a-nodejs-application"></a>Een Node.js-toepassing maken
 
-De eerste stap in deze zelf studie is het maken van een nieuwe, lege node. js-toepassing. Zie voor instructies over het maken van een node. js-toepassing [een node. js-toepassing maken en implementeren in azure web site][nodejswebsite], [node. js Cloud service][Node.js Cloud Service] met behulp van Windows Power shell of website [met webmatrix][webmatrix].
+De eerste stap in deze zelf studie is het maken van een nieuwe, lege Node.js-toepassing. Zie [een Node.js toepassing maken en implementeren op Azure web site][nodejswebsite], [Node.js Cloud service][Node.js Cloud Service] met Windows Power shell of een [website met webmatrix][webmatrix]voor instructies over het maken van een Node.js-toepassing.
 
 ## <a name="configure-your-application-to-use-notification-hubs"></a>Uw toepassing configureren voor het gebruik van Notification Hubs
 
-Als u Azure Notification Hubs wilt gebruiken, moet u het node. js Azure- [pakket](https://www.npmjs.com/package/azure)downloaden en gebruiken, dat een ingebouwde set van helper-bibliotheken bevat die communiceren met de Push Notification rest-Services.
+Als u Azure Notification Hubs wilt gebruiken, moet u het Node.js Azure- [pakket](https://www.npmjs.com/package/azure)downloaden en gebruiken, dat een ingebouwde set van helper-bibliotheken bevat die communiceren met de Push Notification rest-Services.
 
-### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Gebruik node Package Manager (NPM) om het pakket te verkrijgen
+### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Node Package Manager (NPM) gebruiken om het pakket te verkrijgen
 
 1. Gebruik een opdracht regel interface zoals **Power shell** (Windows), **Terminal** (Mac) of **bash** (Linux) en navigeer naar de map waarin u de lege toepassing hebt gemaakt.
 2. Voer `npm install azure-sb` uit in het opdracht venster.
-3. U kunt de `ls` of `dir` -opdracht hand matig uitvoeren om te `node_modules` controleren of een map is gemaakt.
+3. U kunt de of-opdracht hand matig uitvoeren `ls` `dir` om te controleren of een `node_modules` map is gemaakt.
 4. Zoek in die map naar het **Azure** -pakket, dat de bibliotheken bevat die u nodig hebt om toegang te krijgen tot de notification hub.
 
 > [!NOTE]
 > Meer informatie over het installeren van NPM vindt u in de officiële [NPM-blog](https://blog.npmjs.org/post/85484771375/how-to-install-npm).
 
 ### <a name="import-the-module"></a>De module importeren
-Gebruik een tekst editor om het volgende toe te voegen aan de `server.js` bovenkant van het bestand van de toepassing:
+Gebruik een tekst editor om het volgende toe te voegen aan de bovenkant van het `server.js` bestand van de toepassing:
 
 ```javascript
 var azure = require('azure-sb');
@@ -73,7 +73,7 @@ var azure = require('azure-sb');
 
 ### <a name="set-up-an-azure-notification-hub-connection"></a>Een Azure notification hub-verbinding instellen
 
-Met `NotificationHubService` het object kunt u werken met Notification hubs. Met de volgende code wordt `NotificationHubService` een object gemaakt voor de notification `hubname`hub met de naam. Voeg het toe aan de bovenkant van `server.js` het bestand, na de instructie voor het importeren van de Azure-module:
+`NotificationHubService`Met het object kunt u werken met Notification hubs. Met de volgende code wordt een `NotificationHubService` object gemaakt voor de notification hub met de naam `hubname` . Voeg het toe aan de bovenkant van het `server.js` bestand, na de instructie voor het importeren van de Azure-module:
 
 ```javascript
 var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
@@ -110,7 +110,7 @@ Het `GcmService` object biedt een `send` methode die kan worden gebruikt voor he
 
 Zie de [Payload-documentatie](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload)voor meer informatie over de indeling van de nettolading.
 
-De volgende code gebruikt het `GcmService` exemplaar dat wordt weer `NotificationHubService` gegeven door de om een push melding naar alle geregistreerde clients te verzenden.
+De volgende code gebruikt het `GcmService` exemplaar dat wordt weer gegeven door de `NotificationHubService` om een push melding naar alle geregistreerde clients te verzenden.
 
 ```javascript
 var payload = {
@@ -127,7 +127,7 @@ notificationHubService.gcm.send(null, payload, function(error){
 
 ### <a name="how-to-send-push-notifications-to-ios-applications"></a>Procedure: Push meldingen verzenden naar iOS-toepassingen
 
-Hetzelfde als met de hierboven beschreven Android-toepassingen `ApnsService` biedt het object `send` een methode die kan worden gebruikt voor het verzenden van push meldingen naar IOS-toepassingen. De `send` methode accepteert de volgende para meters:
+Hetzelfde als met de hierboven beschreven Android-toepassingen `ApnsService` biedt het object een `send` methode die kan worden gebruikt voor het verzenden van push meldingen naar IOS-toepassingen. De `send` methode accepteert de volgende para meters:
 
 - **Tags** : de tag-id. Als er geen tag wordt gegeven, wordt de melding verzonden naar alle clients.
 - **Payload** : de JSON of de teken reeks payload van het bericht.
@@ -135,7 +135,7 @@ Hetzelfde als met de hierboven beschreven Android-toepassingen `ApnsService` bie
 
 Zie de sectie **meldings inhoud** van de [UserNotifications-gids](https://developer.apple.com/documentation/usernotifications)voor meer informatie over de indeling van de nettolading.
 
-De volgende code gebruikt het `ApnsService` exemplaar dat wordt weer `NotificationHubService` gegeven door de om een waarschuwings bericht te verzenden naar alle clients:
+De volgende code gebruikt het `ApnsService` exemplaar dat wordt weer gegeven door de `NotificationHubService` om een waarschuwings bericht te verzenden naar alle clients:
 
 ```javascript
 var payload={
@@ -154,14 +154,14 @@ Het `MpnsService` object biedt een `send` methode die kan worden gebruikt om Pus
 
 - **Tags** : de tag-id. Als er geen tag wordt gegeven, wordt de melding verzonden naar alle clients.
 - **Payload** : de XML-nettolading van het bericht.
-- **Doel** naam`toast` voor pop-upmeldingen. -  `token`voor tegel meldingen.
+- **Doel naam**  -  `toast` voor pop-upmeldingen. `token`voor tegel meldingen.
 - **NotificationClass** : de prioriteit van de melding. Zie de sectie **http-header-elementen** van de [Push meldingen van een server](https://msdn.microsoft.com/library/hh221551.aspx) document voor geldige waarden.
 - **Opties** -optionele aanvraag headers.
 - **Call back** -de functie call back.
 
-Bekijk de `TargetName` [Push meldingen van een server](https://msdn.microsoft.com/library/hh221551.aspx) pagina voor een lijst met geldige `NotificationClass` en koptekst opties.
+`TargetName` `NotificationClass` Bekijk de [Push meldingen van een server](https://msdn.microsoft.com/library/hh221551.aspx) pagina voor een lijst met geldige en koptekst opties.
 
-De volgende voorbeeld code gebruikt het `MpnsService` exemplaar dat wordt weer `NotificationHubService` gegeven door de push melding voor het verzenden van een pop-upbericht:
+De volgende voorbeeld code gebruikt het `MpnsService` exemplaar dat wordt weer gegeven door de `NotificationHubService` push melding voor het verzenden van een pop-upbericht:
 
 ```javascript
 var payload = '<?xml version="1.0" encoding="utf-8"?><wp:Notification xmlns:wp="WPNotification"><wp:Toast><wp:Text1>string</wp:Text1><wp:Text2>string</wp:Text2></wp:Toast></wp:Notification>';
@@ -184,7 +184,7 @@ Het `WnsService` object biedt een `send` methode die kan worden gebruikt om Push
 
 Voor een lijst met geldige typen en aanvraag headers raadpleegt u [Push Notification Service-aanvraag en-antwoord headers](https://msdn.microsoft.com/library/windows/apps/hh465435.aspx).
 
-De volgende code gebruikt het `WnsService` exemplaar dat wordt weer `NotificationHubService` gegeven door de om een push melding naar een pop-upbericht te verzenden naar een UWP-app:
+De volgende code gebruikt het `WnsService` exemplaar dat wordt weer gegeven door de `NotificationHubService` om een push melding naar een pop-upbericht te verzenden naar een UWP-app:
 
 ```javascript
 var payload = '<toast><visual><binding template="ToastText01"><text id="1">Hello!</text></binding></visual></toast>';
@@ -197,7 +197,7 @@ notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Met de voorbeeld fragmenten hierboven kunt u eenvoudig service-infra structuur bouwen voor het leveren van push meldingen naar een groot aantal verschillende apparaten. Nu u de basis principes van het gebruik van Notification Hubs met node. js hebt geleerd, volgt u deze koppelingen voor meer informatie over hoe u deze mogelijkheden verder kunt uitbreiden.
+Met de voorbeeld fragmenten hierboven kunt u eenvoudig service-infra structuur bouwen voor het leveren van push meldingen naar een groot aantal verschillende apparaten. Nu u de basis principes van het gebruik van Notification Hubs met node.js hebt geleerd, volgt u deze koppelingen voor meer informatie over hoe u deze mogelijkheden verder kunt uitbreiden.
 
 - Zie de MSDN-referentie voor [Azure notification hubs](https://msdn.microsoft.com/library/azure/jj927170.aspx).
 - Ga naar de [Azure SDK voor knooppunt] opslagplaats op github voor meer voor beelden en meer informatie over de implementatie.
@@ -232,4 +232,4 @@ Met de voorbeeld fragmenten hierboven kunt u eenvoudig service-infra structuur b
 [webmatrix]: https://docs.microsoft.com/aspnet/web-pages/videos/introduction/create-a-website-using-webmatrix
 [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
 [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
-[Azure-Portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

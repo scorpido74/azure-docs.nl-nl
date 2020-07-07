@@ -8,10 +8,10 @@ ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 040eeda3edc8aa1165915a157cb7e1bdd1594740
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796497"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure-beveiligings basislijn voor Azure Functions
@@ -175,9 +175,9 @@ Het is ook mogelijk dat er meerdere Marketplace-opties zijn, zoals de Barracuda 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: standaard beveiligings configuraties voor netwerk apparaten onderhouden
 
 **Hulp**: Definieer en implementeer standaard beveiligings configuraties voor netwerk instellingen met betrekking tot uw Azure functions. Gebruik Azure Policy aliassen in de naam ruimten ' micro soft. Web ' en ' micro soft. Network ' om aangepaste beleids regels te maken om de netwerk configuratie van uw Azure Functions te controleren of af te dwingen. U kunt ook gebruik maken van ingebouwde beleids definities voor Azure Functions, zoals:
-- CORS mag niet elke resource toestaan om toegang te krijgen tot uw functie-apps
-- functie-app mag alleen toegankelijk zijn via HTTPS
-- De meest recente versie van TLS moet worden gebruikt in uw functie-app
+- Gebruik van CORS mag er niet toe leiden dat elke resource toegang heeft tot uw Function-apps
+- Functie-app mag alleen toegankelijk zijn via HTTPS
+- De nieuwste TLS-versie moet worden gebruikt in uw functie-app
 
 U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, op rollen gebaseerd toegangs beheer (RBAC) en beleids regels in één blauw druk-definitie. U kunt de blauw druk eenvoudig Toep assen op nieuwe abonnementen, omgevingen en het beheer en de verwerkings mogelijkheden van versies.
 
@@ -637,7 +637,7 @@ Micro soft beheert de onderliggende infra structuur voor Azure Functions en heef
 
 **Verantwoordelijkheid**: klant
 
-## <a name="vulnerability-management"></a>Beveiligings beheer
+## <a name="vulnerability-management"></a>Beheer van beveiligingsproblemen
 
 *Zie [beveiligings beheer: beveiligingslek beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)voor meer informatie.*
 
@@ -689,7 +689,7 @@ Volg daarnaast aanbevelingen van Azure Security Center om uw Azure function-apps
 
 **Verantwoordelijkheid**: gedeeld
 
-## <a name="inventory-and-asset-management"></a>Inventarisatie en het beheer van middelen
+## <a name="inventory-and-asset-management"></a>Inventarisatie en asset-management
 
 *Zie voor meer informatie [beveiligings beheer: inventarisatie en activa beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
 
@@ -850,9 +850,9 @@ Een interne ASE maken:
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: veilige configuraties instellen voor alle Azure-resources
 
 **Richt lijnen**: standaard beveiligings configuraties voor uw Azure function-app definiëren en implementeren met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimte ' micro soft. Web ' om aangepaste beleids regels te maken om de configuratie van uw Azure Functions apps te controleren of af te dwingen. U kunt ook gebruik maken van ingebouwde beleids definities zoals:
-- De beheerde identiteit moet worden gebruikt in uw functie-app
-- Fout opsporing op afstand moet worden uitgeschakeld voor functie-apps
-- functie-app mag alleen toegankelijk zijn via HTTPS
+- Er moet een beheerde identiteit worden gebruikt in uw Function-app
+- Externe foutopsporing moet worden uitgeschakeld voor Function-apps
+- Functie-app mag alleen toegankelijk zijn via HTTPS
 
 - [Beschik bare Azure Policy aliassen weer geven](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
@@ -988,7 +988,7 @@ Een interne ASE maken:
 
 **Verantwoordelijkheid**: klant
 
-## <a name="malware-defense"></a>Bescherming tegen malware
+## <a name="malware-defense"></a>Beveiliging tegen malware
 
 *Zie [beveiligings beheer: verdediging tegen malware](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)voor meer informatie.*
 
@@ -1021,7 +1021,7 @@ Micro soft anti-malware is ingeschakeld op de onderliggende host die ondersteuni
 
 **Verantwoordelijkheid**: niet van toepassing
 
-## <a name="data-recovery"></a>Gegevens herstellen
+## <a name="data-recovery"></a>Gegevensherstel
 
 *Zie [beveiligings beheer: gegevens herstel](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)voor meer informatie.*
 
@@ -1163,7 +1163,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Verantwoordelijkheid**: klant
 
-## <a name="penetration-tests-and-red-team-exercises"></a>Indringings tests en rode team oefeningen
+## <a name="penetration-tests-and-red-team-exercises"></a>Penetratietests en Red Team-oefeningen
 
 *Zie voor meer informatie [Security Control: Indringings tests en Red team-oefeningen](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
 

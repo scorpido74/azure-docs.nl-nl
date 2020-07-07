@@ -9,15 +9,15 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 772521a8d3181721270d7fe4dbd11b7807c8d90e
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583667"
 ---
 # <a name="create-a-new-device-template-version"></a>Een nieuwe sjabloon versie voor een apparaat maken
 
-*Dit artikel is van toepassing op oplossingen bouwers en ontwikkel aars van apparaten.*
+*Dit artikel is van toepassing op oplossingenbouwers en apparaatontwikkelaars.*
 
 Een sjabloon voor een apparaat bevat een schema dat beschrijft hoe een apparaat samenwerkt met IoT Central. Deze interacties zijn onder andere telemetrie, eigenschappen en opdrachten. Zowel het apparaat als de IoT Central-toepassing zijn afhankelijk van een gemeen schappelijke uitleg van dit schema om informatie uit te wisselen. U kunt alleen beperkte wijzigingen aanbrengen in het schema zonder het contract te verbreken. Daarom is het belang rijk dat de meeste schema wijzigingen een nieuwe versie van de sjabloon voor het apparaat vereisen. Door de versie van de sjabloon te bepalen, kunnen oudere apparaten door gaan met de schema versie die ze begrijpen, terwijl nieuwere of bijgewerkte apparaten een latere schema versie gebruiken.
 
@@ -30,7 +30,7 @@ U moet wijzigingen in de sjabloon van een apparaat publiceren, ongeacht of er ee
 
 ## <a name="versioning-rules"></a>Versie beheer regels
 
-In deze sectie vindt u een overzicht van de versie beheer regels die van toepassing zijn op Apparaatinstellingen. Zowel DCMs als-interfaces hebben versie nummers. Het volgende code fragment toont de DCM voor een omgevings sensor apparaat. DCM heeft twee interfaces: **DeviceInformation** en **EnvironmentalSensor**. U ziet de versie nummers aan het einde van de`@id` velden. Als u deze informatie wilt weer geven in de IoT Central-gebruikers interface, selecteert u **identiteit weer geven** in de editor voor Apparaatbeheer.
+In deze sectie vindt u een overzicht van de versie beheer regels die van toepassing zijn op Apparaatinstellingen. Zowel DCMs als-interfaces hebben versie nummers. Het volgende code fragment toont de DCM voor een omgevings sensor apparaat. DCM heeft twee interfaces: **DeviceInformation** en **EnvironmentalSensor**. U ziet de versie nummers aan het einde van de `@id` velden. Als u deze informatie wilt weer geven in de IoT Central-gebruikers interface, selecteert u **identiteit weer geven** in de editor voor Apparaatbeheer.
 
 ```json
 {
@@ -105,7 +105,7 @@ Een sjabloon voor een apparaat versie:
 1. Ga naar de pagina met **Apparaatinstellingen** .
 1. Selecteer de sjabloon voor het apparaat dat u wilt versieren.
 1. Klik boven aan de pagina op de knop **versie** en geef de sjabloon een nieuwe naam. IoT Central stelt een nieuwe naam voor die u kunt bewerken.
-1. Klik op **Maken**.
+1. Klik op **Create**.
 1. Uw sjabloon voor het apparaat bevindt zich nu in de concept modus. U kunt zien dat uw interfaces nog steeds zijn vergrendeld. De versie van de interfaces die u wilt wijzigen.
 
 ## <a name="version-an-interface"></a>Een interface versie
@@ -118,7 +118,7 @@ Een interface versie:
 1. Selecteer de Device-sjabloon die u in een concept modus hebt.
 1. Selecteer de interface in de gepubliceerde modus die u wilt versie en bewerken.
 1. Klik boven aan de interface pagina op de knop **versie** .
-1. Klik op **Maken**.
+1. Klik op **Create**.
 1. Uw interface bevindt zich nu in de concept modus. U kunt mogelijkheden aan uw interface toevoegen of deze bewerken zonder bestaande aanpassingen en weer gaven te verbreken.
 
 ## <a name="migrate-a-device-across-versions"></a>Een apparaat migreren over versies

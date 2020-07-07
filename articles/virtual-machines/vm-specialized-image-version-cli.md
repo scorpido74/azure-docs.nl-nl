@@ -10,17 +10,17 @@ ms.date: 04/23/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 1ccf03deee2a2f72c1eb2008e1acc5bf67d16447
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796770"
 ---
 # <a name="create-a-vm-using-a-specialized-image-version-with-the-azure-cli"></a>Een virtuele machine maken met behulp van een gespecialiseerde installatie kopie versie met de Azure CLI
 
 Maak een virtuele machine op basis van een [gespecialiseerde afbeeldings versie](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) die is opgeslagen in een galerie met gedeelde afbeeldingen. Zie [een virtuele machine maken op basis van een gegeneraliseerde](vm-generalized-image-version-cli.md)installatie kopie, als u een virtuele machine wilt maken met behulp van een gegeneraliseerde installatie kopie versie.
 
-Vervang resource namen naar behoefte in dit voor beeld. 
+Vervang resourcenamen naar behoefte in dit voorbeeld. 
 
 De afbeeldings definities in een galerie weer geven met behulp van [AZ sig Image List-definitie lijst](/cli/azure/sig/image-definition#az-sig-image-definition-list) om de naam en id van de definities weer te geven.
 
@@ -34,11 +34,11 @@ az sig image-definition list \
    --output tsv
 ```
 
-Maak de virtuele machine met [AZ VM Create](/cli/azure/vm#az-vm-create) met behulp van de--gespecialiseerde para meter om aan te geven dat de afbeelding een gespecialiseerde installatie kopie is. 
+Maak de virtuele machine met [az vm create](/cli/azure/vm#az-vm-create) en gebruik de parameter --specialized om aan te geven dat de installatiekopie een gespecialiseerde installatiekopie is. 
 
-Gebruik de definitie-ID van `--image` de installatie kopie om de virtuele machine te maken op basis van de meest recente versie van de installatie kopie die beschikbaar is. U kunt de virtuele machine ook maken op basis van een specifieke versie door de versie-ID `--image`voor de installatie kopie op te geven voor. 
+Gebruik de id van de installatiekopiedefinitie voor `--image` om de virtuele machine te maken op basis van de laatste beschikbare versie van de installatiekopie. U kunt de virtuele machine ook maken op basis van een specifieke versie door de id van de installatiekopieversie op te geven voor `--image`. 
 
-In dit voor beeld maken we een VM op basis van de nieuwste versie van de *myImageDefinition* -installatie kopie.
+In dit voorbeeld maken we een virtuele machine op basis van de nieuwste versie van de *myImageDefinition*-installatiekopie.
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

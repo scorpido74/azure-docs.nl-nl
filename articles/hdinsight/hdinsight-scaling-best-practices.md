@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/29/2020
 ms.openlocfilehash: 2dae0f662eefa7f7b1f56d057cd47f1cb92244ce
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82592057"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-clusters schalen
@@ -30,13 +30,13 @@ U kunt een cluster hand matig schalen met behulp van een van de hieronder beschr
 
 Micro soft biedt de volgende hulpprogram ma's om clusters te schalen:
 
-|Utility | Beschrijving|
+|Hulpprogramma | Beschrijving|
 |---|---|
 |[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[`Set-AzHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[Azure-CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) | [`az hdinsight resize`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) `--resource-group RESOURCEGROUP --name CLUSTERNAME --workernode-count NEWSIZE`|
-|[Klassieke Azure-CLI](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
-|[Azure Portal](https://portal.azure.com)|Open het deel venster HDInsight-cluster, selecteer **cluster grootte** in het menu aan de linkerkant en typ in het deel venster cluster grootte het aantal worker-knoop punten en selecteer Opslaan.|  
+|[Klassieke versie van Azure-CLI](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
+|[Azure-portal](https://portal.azure.com)|Open het deel venster HDInsight-cluster, selecteer **cluster grootte** in het menu aan de linkerkant en typ in het deel venster cluster grootte het aantal worker-knoop punten en selecteer Opslaan.|  
 
 ![Optie voor Azure Portal schaal cluster](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
 
@@ -94,7 +94,7 @@ De impact van het wijzigen van het aantal gegevens knooppunten varieert voor elk
      storm rebalance TOPOLOGYNAME
     ```
 
-    U kunt ook para meters opgeven voor het overschrijven van de parallellisme-hints die oorspronkelijk door de topologie worden opgegeven. Met de onderstaande code wordt de `mytopology` topologie bijvoorbeeld opnieuw geconfigureerd op 5 werk processen, 3 voor de uitvoering van het onderdeel Blue-Spout en 10 uitvoerendeers voor het onderdeel Yellow-schicht.
+    U kunt ook para meters opgeven voor het overschrijven van de parallellisme-hints die oorspronkelijk door de topologie worden opgegeven. Met de onderstaande code wordt de topologie bijvoorbeeld opnieuw geconfigureerd `mytopology` op 5 werk processen, 3 voor de uitvoering van het onderdeel Blue-Spout en 10 uitvoerendeers voor het onderdeel Yellow-schicht.
 
     ```bash
     ## Reconfigure the topology "mytopology" to use 5 worker processes,
@@ -120,13 +120,13 @@ Om te voor komen dat uw actieve taken mislukken tijdens een schaal bare bewerkin
 Als u een lijst met in behandeling zijnde en actieve taken wilt weer geven, kunt u de **gebruikers interface**van het garen gebruiken door de volgende stappen uit te voeren:
 
 1. Selecteer uw cluster in de [Azure Portal](https://portal.azure.com/).  Het cluster wordt geopend op een nieuwe portal-pagina.
-2. Ga in de hoofd weergave naar **cluster dashboards** > **Ambari Home**. Voer de referenties voor uw cluster in.
+2. Ga in de hoofd weergave naar **cluster dashboards**  >  **Ambari Home**. Voer de referenties voor uw cluster in.
 3. Selecteer in de Ambari-gebruikers interface de optie **garens** in de lijst met Services in het menu aan de linkerkant.  
 4. Selecteer op de pagina GARENs de optie **snelle koppelingen** en beweeg de muis aanwijzer over het actieve hoofd knooppunt en selecteer vervolgens de **gebruikers interface van Resource Manager**.
 
     ![Resource Manager-gebruikers interface voor Apache Ambari Quick links](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 
-U kunt rechtstreeks toegang krijgen tot de Resource Manager `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`-gebruikers interface met.
+U kunt rechtstreeks toegang krijgen tot de Resource Manager-gebruikers interface met `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster` .
 
 U ziet een lijst met taken, samen met de huidige status. In de scherm afbeelding wordt momenteel één taak uitgevoerd:
 
@@ -162,7 +162,7 @@ org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create director
 org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.servername.internal.cloudapp.net:10001 [active-headnode-name.servername. internal.cloudapp.net/1.1.1.1] failed: Connection refused
 ```
 
-U kunt de naam van de logboeken in `/var/log/hadoop/hdfs/` de map bekijken, in de buurt van het tijdstip waarop het cluster is geschaald, om te zien wanneer de veilige modus is geactiveerd. De logboek bestanden hebben de `Hadoop-hdfs-namenode-<active-headnode-name>.*`naam.
+U kunt de naam van de logboeken in de map bekijken, in de buurt van het `/var/log/hadoop/hdfs/` tijdstip waarop het cluster is geschaald, om te zien wanneer de veilige modus is geactiveerd. De logboek bestanden hebben de naam `Hadoop-hdfs-namenode-<active-headnode-name>.*` .
 
 De hoofd oorzaak is dat de Hive afhankelijk is van tijdelijke bestanden in HDFS tijdens het uitvoeren van query's. Als HDFS de veilige modus wordt geactiveerd, kan Hive geen query's uitvoeren omdat er niet naar HDFS kan worden geschreven. Tijdelijke bestanden in HDFS bevinden zich in het lokale station dat is gekoppeld aan de Vm's van het afzonderlijke worker-knoop punt. De bestanden worden tussen andere werk knooppunten met drie replica's, mini maal gerepliceerd.
 
@@ -171,7 +171,7 @@ De hoofd oorzaak is dat de Hive afhankelijk is van tijdelijke bestanden in HDFS 
 Er zijn verschillende manieren om te voor komen dat HDInsight in de veilige modus wordt verlaten:
 
 * Stop alle Hive-taken voordat u HDInsight uitschaalt. U kunt ook het proces voor omlaag schalen plannen om te voor komen dat er conflicten ontstaan met het uitvoeren van Hive-taken.
-* Verwijder hand matig de Scratch `tmp` Directory-bestanden van de Hive in HDFS voordat u omlaag schaalt.
+* Verwijder hand matig de Scratch Directory-bestanden van de Hive `tmp` in HDFS voordat u omlaag schaalt.
 * Schaal HDInsight alleen naar drie worker-knoop punten, mini maal. Vermijd het gebruik van één worker-knoop punt.
 * Voer de opdracht uit om de veilige modus te verlaten, indien nodig.
 
@@ -187,7 +187,7 @@ Als u de Hive-taken voor het schalen stopt, beperkt u het aantal Scratch-bestand
 
 Als Hive zich achter tijdelijke bestanden bevindt, kunt u deze bestanden hand matig opschonen voordat u uitschaalt om de veilige modus te voor komen.
 
-1. Controleer welke locatie wordt gebruikt voor tijdelijke bestanden van Hive door te kijken naar `hive.exec.scratchdir` de configuratie-eigenschap. Deze para meter is ingesteld `/etc/hive/conf/hive-site.xml`in:
+1. Controleer welke locatie wordt gebruikt voor tijdelijke bestanden van Hive door te kijken naar de `hive.exec.scratchdir` configuratie-eigenschap. Deze para meter is ingesteld in `/etc/hive/conf/hive-site.xml` :
 
     ```xml
     <property>
@@ -198,7 +198,7 @@ Als Hive zich achter tijdelijke bestanden bevindt, kunt u deze bestanden hand ma
 
 1. Stop Hive-Services en zorg ervoor dat alle query's en taken zijn voltooid.
 
-1. Geef een lijst weer van de inhoud van de map `hdfs://mycluster/tmp/hive/` Scratch die hierboven is gevonden om te zien of deze bestanden bevat:
+1. Geef een lijst weer van de inhoud van de map Scratch die hierboven is gevonden `hdfs://mycluster/tmp/hive/` om te zien of deze bestanden bevat:
 
     ```bash
     hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
@@ -262,7 +262,7 @@ Regio servers worden automatisch binnen enkele minuten na het volt ooien van een
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Automatisch schalen van Azure HDInsight-clusters](hdinsight-autoscale-clusters.md)
+* [Azure HDInsight-clusters automatisch schalen](hdinsight-autoscale-clusters.md)
 
 Zie voor specifieke informatie over het schalen van uw HDInsight-cluster:
 

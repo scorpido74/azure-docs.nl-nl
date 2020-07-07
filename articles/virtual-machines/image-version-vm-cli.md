@@ -10,10 +10,10 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: f53a6b63c744b0e3e41f7ad22270cd842da57674
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796575"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>Een installatie kopie versie maken op basis van een virtuele machine in azure met behulp van Azure CLI
@@ -33,34 +33,34 @@ Als er een gegevens schijf aan de virtuele machine is gekoppeld, kan de grootte 
 
 Wanneer u dit artikel doorwerkt, vervangt u de resource namen waar nodig.
 
-## <a name="get-information-about-the-vm"></a>Informatie over de virtuele machine ophalen
+## <a name="get-information-about-the-vm"></a>Informatie over de VM ophalen
 
-U ziet een lijst met virtuele machines die beschikbaar zijn via de [AZ VM-lijst](/cli/azure/vm#az-vm-list). 
+U kunt een lijst weergeven met virtuele machines die beschikbaar zijn met [az vm list](/cli/azure/vm#az-vm-list). 
 
 ```azurecli-interactive
 az vm list --output table
 ```
 
-Wanneer u de naam van de virtuele machine kent en de resource groep waarin deze zich bevindt, haalt u de ID van de virtuele machine op met [AZ VM Get-instance-View](/cli/azure/vm#az-vm-get-instance-view). 
+Zodra u de naam van de virtuele machine weet en in welke resourcegroep die zich bevindt kunt u de id van de virtuele machine ophalen met [az vm get-instance-view](/cli/azure/vm#az-vm-get-instance-view). 
 
 ```azurecli-interactive
 az vm get-instance-view -g MyResourceGroup -n MyVm --query id
 ```
 
 
-## <a name="create-an-image-definition"></a>Een definitie van een installatie kopie maken
+## <a name="create-an-image-definition"></a>Een definitie voor de installatiekopie maken
 
-Afbeeldings definities maken een logische groepering voor installatie kopieën. Ze worden gebruikt voor het beheren van informatie over de installatie kopieën die in deze versies worden gemaakt. 
+Definities van installatiekopieën maken een logische groepering voor installatiekopieën. Die worden gebruikt voor het beheren van informatie over de installatiekopieversies die daarbinnen worden gemaakt. 
 
-Definitie namen van afbeeldingen kunnen bestaan uit hoofd letters, kleine letters, cijfers, punten, streepjes en punten. 
+Namen van installatiekopiedefinities kunnen bestaan uit hoofdletters, kleine letters, cijfers, streepjes en punten. 
 
-Zorg ervoor dat de definitie van de afbeelding het juiste type is. Als u de VM hebt gegeneraliseerd (met behulp van Sysprep voor Windows of waagent-deprovisioning voor Linux), moet u een `--os-state generalized`algemene definitie voor de installatie kopie maken met behulp van. Als u de virtuele machine wilt gebruiken zonder bestaande gebruikers accounts te verwijderen, maakt u een gespecialiseerde definitie `--os-state specialized`van de installatie kopie met behulp van.
+Zorg ervoor dat de definitie van de afbeelding het juiste type is. Als u de VM hebt gegeneraliseerd (met behulp van Sysprep voor Windows of waagent-deprovisioning voor Linux), moet u een algemene definitie voor de installatie kopie maken met behulp van `--os-state generalized` . Als u de virtuele machine wilt gebruiken zonder bestaande gebruikers accounts te verwijderen, maakt u een gespecialiseerde definitie van de installatie kopie met behulp van `--os-state specialized` .
 
-Zie [afbeeldings definities](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions)voor meer informatie over de waarden die u kunt opgeven voor de definitie van een installatie kopie.
+Zie [Installatiekopiedefinities](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions) voor meer informatie over de waarden die u kunt specificeren voor een installatiekopiedefinitie.
 
-Maak een definitie van een installatie kopie in de galerie met behulp van [AZ sig image-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create).
+Een installatiekopiedefinitie in de galerie maken met [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create).
 
-In dit voor beeld heeft de definitie van de installatie kopie de naam *myImageDefinition*en is voor een [gespecialiseerde](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) Linux-installatie kopie van het besturings systeem. Als u een definitie voor installatie kopieën wilt maken met een Windows `--os-type Windows`-besturings systeem, gebruikt u. 
+In dit voorbeeld heeft de definitie van de installatiekopie de naam *myImageDefinition* en is deze voor een [gespecialiseerde](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) installatiekopie van een Linux-besturingssysteem. Als u een definitie voor installatie kopieën wilt maken met een Windows-besturings systeem, gebruikt u `--os-type Windows` . 
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -75,15 +75,15 @@ az sig image-definition create \
 ```
 
 
-## <a name="create-the-image-version"></a>De versie van de installatie kopie maken
+## <a name="create-the-image-version"></a>De installatiekopieversie maken
 
-Maak een installatie kopie versie van de virtuele machine met behulp van [AZ Image Gallery Create-Image galerie-version](/cli/azure/sig/image-version#az-sig-image-version-create).  
+Maak een installatiekopieversie van de virtuele machine met [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create).  
 
-Toegestane tekens voor de versie van de installatie kopie zijn getallen en punten. Getallen moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion*. *MinorVersion*. *Patch*.
+Toegestane tekens voor een installatiekopieversie zijn cijfers en punten. Cijfers moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion*.*MinorVersion*.*Patch*.
 
-In dit voor beeld is de versie van onze installatie kopie *1.0.0* en we gaan twee replica's maken in de regio *West-Centraal VS* , 1 replica in de regio *Zuid-Centraal VS* en 1 replica in de regio *VS-Oost 2* met zone-redundante opslag. De replicatie regio's moeten de regio bevatten waarin de bron-VM zich bevindt.
+In dit voorbeeld is de installatiekopieversie *1.0.0* en gaan we 2 replica's maken in de regio *VS - west-centraal*, 1 replica in de regio *VS - zuid-centraal* regio en 1 replica in de regio *US - oost 2* met zone-redundante opslag. De replicatieregio’s moeten de regio omvatten waarin de bron-VM zich bevindt.
 
-Vervang de waarde van `--managed-image` in dit voor beeld door de id van uw virtuele machine uit de vorige stap.
+Vervang de waarde van `--managed-image` in dit voorbeeld door de id van uw virtuele machine uit de vorige stap.
 
 ```azurecli-interactive 
 az sig image-version create \
@@ -97,9 +97,9 @@ az sig image-version create \
 ```
 
 > [!NOTE]
-> U moet wachten tot de versie van de installatie kopie volledig is gebouwd en gerepliceerd voordat u dezelfde beheerde installatie kopie kunt gebruiken om een andere versie van de installatie kopie te maken.
+> U moet wachten tot de installatiekopieversie volledig is gebouwd en gerepliceerd voordat u dezelfde beheerde installatiekopie kunt gebruiken om een andere versie van de installatiekopie te maken.
 >
-> U kunt uw installatie kopie ook opslaan in Premiun-opslag door `--storage-account-type  premium_lrs`een toevoeg-of [zone-redundante opslag](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) door toe te voegen `--storage-account-type  standard_zrs` wanneer u de versie van de installatie kopie maakt.
+> U kunt uw installatiekopie ook opslaan in Premium Storage door een `--storage-account-type  premium_lrs` toe te voegen, of in [Zone-redundante opslag](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) door `--storage-account-type  standard_zrs` toe te voegen wanneer u de installatiekopieversie maakt.
 >
 
 ## <a name="next-steps"></a>Volgende stappen

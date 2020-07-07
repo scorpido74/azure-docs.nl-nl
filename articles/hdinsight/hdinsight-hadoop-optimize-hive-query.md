@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
 ms.openlocfilehash: c81d70577c5e7b852d315bdb91993d15624a7336
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791490"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Apache Hive-query's in Azure HDInsight optimaliseren
 
 In azure HDInsight zijn er verschillende cluster typen en-technologieën die Apache Hive query's kunnen uitvoeren. Kies het juiste cluster type om de prestaties te optimaliseren voor de behoeften van uw werk belasting.
 
-Kies bijvoorbeeld **interactieve query** cluster type om te optimaliseren voor `ad hoc`interactieve query's. Kies Apache **Hadoop** -cluster type om te optimaliseren voor Hive-query's die als batch proces worden gebruikt. **Spark** -en **HBase** -cluster typen kunnen ook Hive-query's uitvoeren. Zie [Wat is Apache Hive en HiveQL in azure HDInsight?](hadoop/hdinsight-use-hive.md)voor meer informatie over het uitvoeren van Hive-query's op verschillende typen HDInsight-clusters.
+Kies bijvoorbeeld **interactieve query** cluster type om te optimaliseren voor `ad hoc` interactieve query's. Kies Apache **Hadoop** -cluster type om te optimaliseren voor Hive-query's die als batch proces worden gebruikt. **Spark** -en **HBase** -cluster typen kunnen ook Hive-query's uitvoeren. Zie [Wat is Apache Hive en HiveQL in azure HDInsight?](hadoop/hdinsight-use-hive.md)voor meer informatie over het uitvoeren van Hive-query's op verschillende typen HDInsight-clusters.
 
 HDInsight-clusters van het Hadoop-cluster type zijn standaard niet geoptimaliseerd voor prestaties. In dit artikel worden enkele van de meest voorkomende methoden voor het optimaliseren van Hive-onderdelen beschreven die u kunt Toep assen op uw query's.
 

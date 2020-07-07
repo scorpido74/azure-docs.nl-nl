@@ -5,13 +5,13 @@ ms.topic: article
 ms.date: 04/29/2020
 ms.author: danlep
 ms.openlocfilehash: 7e54690efc7955eaaa88ca87a6f7a086dd3e19a4
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583653"
 ---
-# <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Container instanties implementeren in een virtueel Azure-netwerk
+# <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Containerinstanties implementeren in een virtueel Azure-netwerk
 
 [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) biedt veilige, persoonlijke netwerken voor uw Azure-en on-premises resources. Door container groepen te implementeren in een virtueel Azure-netwerk, kunnen uw containers veilig communiceren met andere resources in het virtuele netwerk.
 
@@ -34,13 +34,13 @@ Als u wilt implementeren in een nieuw virtueel netwerk en Azure de netwerk resou
 * Subnetnaam
 * Adres voorvoegsel van het subnet in CIDR-indeling
 
-Met de voor voegsels voor het virtuele netwerk en het subnet adres worden de adres ruimten voor het virtuele netwerk en het subnet opgegeven. Deze waarden worden weer gegeven in een CIDR-notatie (Classless Inter-Domain Routing), `10.0.0.0/16`bijvoorbeeld. Zie [een subnet van een virtueel netwerk toevoegen, wijzigen of verwijderen](../virtual-network/virtual-network-manage-subnet.md)voor meer informatie over het werken met subnetten.
+Met de voor voegsels voor het virtuele netwerk en het subnet adres worden de adres ruimten voor het virtuele netwerk en het subnet opgegeven. Deze waarden worden weer gegeven in een CIDR-notatie (Classless Inter-Domain Routing), bijvoorbeeld `10.0.0.0/16` . Zie [een subnet van een virtueel netwerk toevoegen, wijzigen of verwijderen](../virtual-network/virtual-network-manage-subnet.md)voor meer informatie over het werken met subnetten.
 
 Wanneer u uw eerste container groep met deze methode hebt geïmplementeerd, kunt u in hetzelfde subnet implementeren door het virtuele netwerk en de subnetnaam op te geven, of het netwerk profiel dat door Azure automatisch voor u wordt gemaakt. Omdat Azure het subnet delegeert naar Azure Container Instances, kunt u *alleen* container groepen implementeren naar het subnet.
 
 ### <a name="example"></a>Voorbeeld
 
-Met de volgende opdracht [AZ container Create][az-container-create] worden de instellingen voor een nieuw virtueel netwerk en subnet opgegeven. Geef de naam op van een resource groep die is gemaakt in een regio waarin implementaties van container groepen in een virtueel netwerk [beschikbaar](container-instances-region-availability.md#availability---virtual-network-deployment)zijn. Met deze opdracht wordt de open bare container van micro soft [ACI-HelloWorld][aci-helloworld] geïmplementeerd die een kleine node. js-webserver voor een statische webpagina uitvoert. In de volgende sectie implementeert u een tweede container groep naar hetzelfde subnet en test u de communicatie tussen de twee container exemplaren.
+Met de volgende opdracht [AZ container Create][az-container-create] worden de instellingen voor een nieuw virtueel netwerk en subnet opgegeven. Geef de naam op van een resource groep die is gemaakt in een regio waarin implementaties van container groepen in een virtueel netwerk [beschikbaar](container-instances-region-availability.md#availability---virtual-network-deployment)zijn. Met deze opdracht wordt de open bare container micro soft [ACI-HelloWorld][aci-helloworld] met een kleine Node.js webserver met een statische webpagina geïmplementeerd. In de volgende sectie implementeert u een tweede container groep naar hetzelfde subnet en test u de communicatie tussen de twee container exemplaren.
 
 ```azurecli
 az container create \
@@ -83,7 +83,7 @@ In de uitvoer wordt het IP-adres van de container groep in het privé-subnet wee
 10.0.0.4
 ```
 
-Stel `CONTAINER_GROUP_IP` nu in op het IP-adres dat u hebt `az container show` opgehaald met de opdracht en voer `az container create` de volgende opdracht uit. Deze tweede container, *commchecker*, voert een alpine Linux-installatie kopie uit en `wget` voert een uitvoer uit op basis van het IP-adres van het particuliere subnet van de container groep.
+Stel nu `CONTAINER_GROUP_IP` in op het IP-adres dat u hebt opgehaald met de `az container show` opdracht en voer de volgende `az container create` opdracht uit. Deze tweede container, *commchecker*, voert een alpine Linux-installatie kopie uit en voert een uitvoer uit `wget` op basis van het IP-adres van het particuliere subnet van de container groep.
 
 ```azurecli
 CONTAINER_GROUP_IP=<container-group-IP-address>
@@ -98,7 +98,7 @@ az container create \
   --subnet aci-subnet
 ```
 
-Nadat deze tweede container implementatie is voltooid, haalt u de logboeken op zodat u de uitvoer van `wget` de opdracht die deze heeft uitgevoerd, kunt zien:
+Nadat deze tweede container implementatie is voltooid, haalt u de logboeken op zodat u de uitvoer van de `wget` opdracht die deze heeft uitgevoerd, kunt zien:
 
 ```azurecli
 az container logs --resource-group myResourceGroup --name commchecker
@@ -111,7 +111,7 @@ Connecting to 10.0.0.4 (10.0.0.4:80)
 index.html           100% |*******************************|  1663   0:00:00 ETA
 ```
 
-De logboek uitvoer geeft aan dat `wget` er verbinding kan worden gemaakt met het index bestand van de eerste container met behulp van het bijbehorende privé-IP-adres op het lokale subnet. Het netwerk verkeer tussen de twee container groepen bleef binnen het virtuele netwerk.
+De logboek uitvoer geeft aan dat er `wget` verbinding kan worden gemaakt met het index bestand van de eerste container met behulp van het bijbehorende privé-IP-adres op het lokale subnet. Het netwerk verkeer tussen de twee container groepen bleef binnen het virtuele netwerk.
 
 ### <a name="example---yaml"></a>Voor beeld-YAML
 
@@ -124,7 +124,7 @@ Wanneer u bijvoorbeeld een YAML-bestand gebruikt, kunt u implementeren in een vi
   * `ports`: De poorten die moeten worden geopend, indien van toepassing.
   * `protocol`: Het Protocol (TCP of UDP) voor de geopende poort.
 * `networkProfile`: Netwerk instellingen voor het virtuele netwerk en subnet.
-  * `id`: De volledige Resource Manager-Resource-ID `networkProfile`van de.
+  * `id`: De volledige Resource Manager-Resource-ID van de `networkProfile` .
 
 Als u de ID van het netwerk profiel wilt ophalen, voert u de opdracht [AZ Network profile list][az-network-profile-list] uit en geeft u de naam op van de resource groep die het virtuele netwerk en het overgedragen subnet bevat.
 
@@ -139,7 +139,7 @@ Voorbeelduitvoer:
 /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-aci-subnet
 ```
 
-Wanneer u de netwerk profiel-ID hebt, kopieert u de volgende YAML naar een nieuw bestand met de naam *vnet-Deploy-ACI. yaml*. Vervang `networkProfile`onder de waarde `id` door de id die u zojuist hebt opgehaald en sla het bestand op. Met deze YAML maakt u een container groep met de naam *appcontaineryaml* in uw virtuele netwerk.
+Wanneer u de netwerk profiel-ID hebt, kopieert u de volgende YAML naar een nieuw bestand met de naam *vnet-Deploy-ACI. yaml*. `networkProfile`Vervang onder de waarde door de `id` id die u zojuist hebt opgehaald en sla het bestand op. Met deze YAML maakt u een container groep met de naam *appcontaineryaml* in uw virtuele netwerk.
 
 ```YAML
 apiVersion: '2018-10-01'
@@ -170,7 +170,7 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Implementeer de container groep met de opdracht [AZ container Create][az-container-create] en geef de naam van het yaml- `--file` bestand op voor de para meter:
+Implementeer de container groep met de opdracht [AZ container Create][az-container-create] en geef de naam van het yaml-bestand op voor de `--file` para meter:
 
 ```azurecli
 az container create --resource-group myResourceGroup \
@@ -201,7 +201,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 Voor deze functie zijn momenteel verschillende extra opdrachten vereist voor het verwijderen van de netwerk resources die u eerder hebt gemaakt. Als u de voorbeeld opdrachten in vorige secties van dit artikel hebt gebruikt om uw virtuele netwerk en subnet te maken, kunt u het volgende script gebruiken om die netwerk resources te verwijderen. In het script wordt ervan uitgegaan dat uw resource groep één virtueel netwerk met één netwerk profiel bevat.
 
-Voordat u het script uitvoert, stelt u `RES_GROUP` de variabele in op de naam van de resource groep met het virtuele netwerk en het subnet dat moet worden verwijderd. Werk de naam van het virtuele netwerk bij als u de `aci-vnet` naam die u eerder hebt voorgesteld niet hebt gebruikt. Het script is geformatteerd voor de bash-shell. Als u de voor keur geeft aan een andere shell, zoals Power shell of opdracht prompt, moet u de toewijzings-en toegangs rechten van de variabele dienovereenkomstig aanpassen.
+Voordat u het script uitvoert, stelt `RES_GROUP` u de variabele in op de naam van de resource groep met het virtuele netwerk en het subnet dat moet worden verwijderd. Werk de naam van het virtuele netwerk bij als u de naam die u eerder hebt voorgesteld niet hebt gebruikt `aci-vnet` . Het script is geformatteerd voor de bash-shell. Als u de voor keur geeft aan een andere shell, zoals Power shell of opdracht prompt, moet u de toewijzings-en toegangs rechten van de variabele dienovereenkomstig aanpassen.
 
 > [!WARNING]
 > Met dit script worden resources verwijderd! Hiermee verwijdert u het virtuele netwerk en alle subnetten die het bevat. Zorg ervoor dat u *een* van de resources in het virtuele netwerk niet meer nodig hebt, met inbegrip van de subnetten die het bevat, voordat u dit script uitvoert. Nadat **deze bronnen zijn verwijderd, kunnen ze onherstelbaar zijn**.

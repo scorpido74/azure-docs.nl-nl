@@ -9,17 +9,17 @@ ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.openlocfilehash: e484cccb2dc15266fb7889c335a0acc981053e5c
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792136"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>Een galerie met gedeelde Azure-afbeeldingen maken met behulp van de portal
 
-Een [Galerie met gedeelde afbeeldingen](shared-image-galleries.md) vereenvoudigt het delen van aangepaste afbeeldingen in uw organisatie. Aangepaste installatiekopieën zijn soortgelijk aan Marketplace-installatiekopieën, maar u kunt deze zelf maken. Aangepaste installatie kopieën kunnen worden gebruikt om implementatie taken te Boots trapn, zoals het vooraf laden van toepassingen, toepassings configuraties en andere besturingssysteem configuraties. 
+Met een [Shared Image Gallery](shared-image-galleries.md) kunt u het delen van aangepaste installatiekopieën in uw organisatie vereenvoudigen. Aangepaste installatiekopieën zijn soortgelijk aan Marketplace-installatiekopieën, maar u kunt deze zelf maken. Aangepaste installatie kopieën kunnen worden gebruikt om implementatie taken te Boots trapn, zoals het vooraf laden van toepassingen, toepassings configuraties en andere besturingssysteem configuraties. 
 
-Met de galerie voor gedeelde afbeeldingen kunt u uw aangepaste VM-installatie kopieën delen met anderen in uw organisatie, binnen of tussen verschillende regio's binnen een AAD-Tenant. Kies welke installatie kopieën u wilt delen, in welke regio's u ze beschikbaar wilt maken en met wie u wilt delen. U kunt meerdere galerieën maken zodat u gedeelde installatie kopieën logisch kunt groeperen. 
+Met de galerie voor gedeelde afbeeldingen kunt u uw aangepaste VM-installatie kopieën delen met anderen in uw organisatie, binnen of tussen verschillende regio's binnen een AAD-Tenant. U kunt kiezen welke installatiekopieën u wilt delen, in welke regio’s u ze beschikbaar wilt maken en met wie u ze wilt delen. U kunt meerdere galerieën maken zodat u gedeelde installatie kopieën logisch kunt groeperen. 
 
 De galerie is een resource op het hoogste niveau die volledige op rollen gebaseerd toegangs beheer (RBAC) biedt. Installatie kopieën kunnen versie nummer hebben en u kunt ervoor kiezen om elke installatie kopie versie te repliceren naar een andere set Azure-regio's. De galerie werkt alleen met beheerde installatie kopieën.
 
@@ -44,9 +44,9 @@ U kunt nu een of meer nieuwe virtuele machines maken. In dit voor beeld wordt ee
 1. Selecteer op de pagina voor de definitie van de installatie kopie de optie **VM maken** in het menu boven aan de pagina.
 1. Selecteer voor **resource groep**de optie **nieuwe maken** en typ *myResourceGroup* voor de naam.
 1. Typ *myVM*in de naam van de **virtuele machine**.
-1. Selecteer voor **regio** *VS Oost*.
+1. Selecteer bij **Regio** *VS - oost*.
 1. Voor **beschikbaarheids opties**moet u de standaard waarde voor de *redundantie van de infra structuur niet*behouden.
-1. De waarde voor de **installatie kopie** wordt automatisch gevuld `latest` met de versie van de installatie kopie als u bent begonnen met de pagina voor de definitie van de installatie kopie.
+1. De waarde voor de **installatie kopie** wordt automatisch gevuld met de versie van de `latest` installatie kopie als u bent begonnen met de pagina voor de definitie van de installatie kopie.
 1. Kies bij **grootte**een VM-grootte in de lijst met beschik bare grootten en kies vervolgens **selecteren**.
 1. Als de installatie kopie is gegeneraliseerd onder **Administrator-account**, moet u een gebruikers naam opgeven, zoals *azureuser* en een wacht woord. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](faq.md#what-are-the-password-requirements-when-creating-a-vm). Als uw installatie kopie gespecialiseerd was, worden de velden gebruikers naam en wacht woord grijs weer gegeven, omdat de gebruikers naam en het wacht woord voor de bron-VM worden gebruikt.
 1. Als u externe toegang tot de virtuele machine wilt toestaan, klikt u onder **open bare binnenkomende poorten**op **geselecteerde poorten toestaan** en selecteert u vervolgens **RDP (3389)** in de vervolg keuzelijst. Als u externe toegang tot de virtuele machine niet wilt toestaan, laat u **niets** geselecteerd voor **open bare binnenkomende poorten**.

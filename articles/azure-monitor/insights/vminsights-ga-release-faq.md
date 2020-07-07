@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
 ms.openlocfilehash: df96ceb47bf33b734f2127bade50af18713a97a0
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82581365"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor voor VM's algemeen beschikbaar (GA)
@@ -44,17 +44,17 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-grou
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>Wat moet ik doen met de prestatie meter items in mijn werk ruimte als ik de VMInsights-oplossing Installeer?
 
-De vorige methode voor het inschakelen van Azure Monitor voor VM's gebruikte prestatie meter items in uw werk ruimte. In de huidige versie worden deze gegevens opgeslagen in een `InsightsMetrics`tabel met de naam. U kunt ervoor kiezen om deze prestatie meter items in uw werk ruimte uit te scha kelen als u ze niet meer nodig hebt. 
+De vorige methode voor het inschakelen van Azure Monitor voor VM's gebruikte prestatie meter items in uw werk ruimte. In de huidige versie worden deze gegevens opgeslagen in een tabel met de naam `InsightsMetrics` . U kunt ervoor kiezen om deze prestatie meter items in uw werk ruimte uit te scha kelen als u ze niet meer nodig hebt. 
 
 >[!NOTE]
->Als u waarschuwings regels hebt die naar deze prestatie meter items `Perf` in de tabel verwijzen, moet u deze bijwerken om te verwijzen naar nieuwe `InsightsMetrics` gegevens die zijn opgeslagen in de tabel. Raadpleeg de documentatie voor voorbeeld logboek query's die u kunt gebruiken om deze tabel te raadplegen.
+>Als u waarschuwings regels hebt die naar deze prestatie meter items in de `Perf` tabel verwijzen, moet u deze bijwerken om te verwijzen naar nieuwe gegevens die zijn opgeslagen in de `InsightsMetrics` tabel. Raadpleeg de documentatie voor voorbeeld logboek query's die u kunt gebruiken om deze tabel te raadplegen.
 >
 
-Als u ervoor kiest om de prestatie meter items ingeschakeld te laten, wordt u gefactureerd voor de gegevens die zijn opgenomen `Perf` en opgeslagen in de tabel op basis vanhttps://azure.microsoft.com/pricing/details/monitor/)[log Analytics prijzen [(.
+Als u ervoor kiest om de prestatie meter items ingeschakeld te laten, wordt u gefactureerd voor de gegevens die zijn opgenomen en opgeslagen in de `Perf` tabel op basis van [log Analytics prijzen [( https://azure.microsoft.com/pricing/details/monitor/) .
 
 ## <a name="how-will-this-change-affect-my-alert-rules"></a>Wat is de invloed van deze wijziging op mijn waarschuwings regels?
 
-Als u [logboek waarschuwingen](../platform/alerts-unified-log.md) hebt gemaakt die query's uitvoeren `Perf` op de tabel doel prestatie meter items die zijn ingeschakeld in de werk ruimte, moet u deze regels bijwerken om `InsightsMetrics` in plaats daarvan naar de tabel te verwijzen. Deze richt `ServiceMapComputer_CL` lijnen gelden ook voor zoek regels in Logboeken `ServiceMapProcess_CL`met en, omdat deze gegevens sets worden `VMComputer` verplaatst `VMProcess` naar en tabellen.
+Als u [logboek waarschuwingen](../platform/alerts-unified-log.md) hebt gemaakt die query's uitvoeren op de `Perf` tabel doel prestatie meter items die zijn ingeschakeld in de werk ruimte, moet u deze regels bijwerken om `InsightsMetrics` in plaats daarvan naar de tabel te verwijzen. Deze richt lijnen gelden ook voor zoek regels in Logboeken met `ServiceMapComputer_CL` en `ServiceMapProcess_CL` , omdat deze gegevens sets worden verplaatst naar `VMComputer` en `VMProcess` tabellen.
 
 Deze veelgestelde vragen worden bijgewerkt en onze documentatie bevat voor beelden van waarschuwings regels voor logboek zoeken in de gegevens sets die worden verzameld.
 
@@ -62,31 +62,31 @@ Deze veelgestelde vragen worden bijgewerkt en onze documentatie bevat voor beeld
 
 Facturering is nog steeds gebaseerd op gegevens die zijn opgenomen en bewaard in uw Log Analytics-werk ruimte.
 
-De prestaties van het computer niveau die we verzamelen, zijn hetzelfde als die van de gegevens die we in de `Perf` tabel hebben opgeslagen en kosten ongeveer hetzelfde bedrag.
+De prestaties van het computer niveau die we verzamelen, zijn hetzelfde als die van de gegevens die we in de tabel hebben opgeslagen `Perf` en kosten ongeveer hetzelfde bedrag.
 
 ## <a name="what-if-i-only-want-to-use-service-map"></a>Wat moet ik doen als ik alleen Servicetoewijzing wil gebruiken?
 
 Dat is prima. U ziet de prompts in de Azure Portal wanneer u Azure Monitor voor VM's over de aanstaande update bekijkt. Zodra de release is uitgebracht, wordt u gevraagd om u bij te werken naar de nieuwe versie. Als u liever alleen de [Maps](vminsights-maps.md) -functie gebruikt, kunt u ervoor kiezen om niet te upgraden en door te gaan met het gebruik van de Maps-functie in azure monitor voor VM's en de servicetoewijzing-oplossing die wordt geopend vanuit uw werk ruimte of dashboard tegel.
 
-Als u ervoor hebt gekozen om de prestatie meter items in uw werk ruimte hand matig in te scha kelen, kunt u de gegevens in een aantal van de prestatie diagrammen weer geven vanuit Azure Monitor. Zodra de nieuwe oplossing is uitgebracht, worden de prestatie grafieken bijgewerkt om de gegevens op te vragen die `InsightsMetrics` in de tabel zijn opgeslagen. Als u gegevens uit die tabel in deze grafieken wilt zien, moet u een upgrade uitvoeren naar de nieuwe versie van Azure Monitor voor VM's.
+Als u ervoor hebt gekozen om de prestatie meter items in uw werk ruimte hand matig in te scha kelen, kunt u de gegevens in een aantal van de prestatie diagrammen weer geven vanuit Azure Monitor. Zodra de nieuwe oplossing is uitgebracht, worden de prestatie grafieken bijgewerkt om de gegevens op te vragen die in de tabel zijn opgeslagen `InsightsMetrics` . Als u gegevens uit die tabel in deze grafieken wilt zien, moet u een upgrade uitvoeren naar de nieuwe versie van Azure Monitor voor VM's.
 
-De wijzigingen voor het verplaatsen van `ServiceMapComputer_CL` gegevens `ServiceMapProcess_CL` en zijn van invloed op zowel servicetoewijzing als Azure monitor voor VM's, zodat u deze update nog steeds moet plannen.
+De wijzigingen voor het verplaatsen van gegevens `ServiceMapComputer_CL` en `ServiceMapProcess_CL` zijn van invloed op zowel Servicetoewijzing als Azure monitor voor VM's, zodat u deze update nog steeds moet plannen.
 
-Als u ervoor hebt gekozen om geen upgrade uit te voeren naar de **VMInsights** -oplossing, zullen we oudere versies van onze prestatie werkmappen blijven leveren die `Perf` verwijzen naar de gegevens in de tabel.  
+Als u ervoor hebt gekozen om geen upgrade uit te voeren naar de **VMInsights** -oplossing, zullen we oudere versies van onze prestatie werkmappen blijven leveren die verwijzen naar de gegevens in de `Perf` tabel.  
 
 ## <a name="will-the-service-map-data-sets-also-be-stored-in-insightsmetrics"></a>Worden de Servicetoewijzing gegevens sets ook opgeslagen in InsightsMetrics?
 
-De gegevens sets worden niet gedupliceerd als u beide oplossingen gebruikt. Beide aanbiedingen `VMComputer` delen de gegevens sets die worden opgeslagen in (voorheen ServiceMapComputer_CL), `VMProcess` (voorheen ServiceMapProcess_CL), `VMConnection`en `VMBoundPort` tabellen om de kaart gegevens sets op te slaan die we verzamelen.  
+De gegevens sets worden niet gedupliceerd als u beide oplossingen gebruikt. Beide aanbiedingen delen de gegevens sets die worden opgeslagen in `VMComputer` (voorheen ServiceMapComputer_CL), `VMProcess` (voorheen ServiceMapProcess_CL), `VMConnection` en `VMBoundPort` tabellen om de kaart gegevens sets op te slaan die we verzamelen.  
 
-In `InsightsMetrics` de tabel worden de gegevens sets van de VM, het proces en de service opgeslagen die we verzamelen en alleen worden ingevuld als u Azure monitor voor VM's en de VM Insights-oplossing gebruikt. Met de Servicetoewijzing oplossing worden gegevens in de `InsightsMetrics` tabel niet verzameld of opgeslagen.
+In de tabel worden de `InsightsMetrics` gegevens sets van de VM, het proces en de service opgeslagen die we verzamelen en alleen worden ingevuld als u Azure monitor voor VM's en de VM Insights-oplossing gebruikt. Met de Servicetoewijzing oplossing worden gegevens in de tabel niet verzameld of opgeslagen `InsightsMetrics` .
 
 ## <a name="will-i-be-double-charged-if-i-have-the-service-map-and-vminsights-solutions-in-my-workspace"></a>Worden er dubbele kosten in rekening gebracht als ik de Servicetoewijzing-en VMInsights-oplossingen in mijn werk ruimte heb?
 
-Nee, de twee oplossingen delen de kaart gegevens sets die worden opgeslagen in `VMComputer` (voorheen ServiceMapComputer_CL), `VMProcess` (voorheen ServiceMapProcess_CL) `VMConnection`, en. `VMBoundPort` Als u beide oplossingen in uw werk ruimte hebt, worden deze gegevens niet dubbel in rekening gebracht.
+Nee, de twee oplossingen delen de kaart gegevens sets die worden opgeslagen in `VMComputer` (voorheen ServiceMapComputer_CL), `VMProcess` (voorheen ServiceMapProcess_CL), `VMConnection` en `VMBoundPort` . Als u beide oplossingen in uw werk ruimte hebt, worden deze gegevens niet dubbel in rekening gebracht.
 
 ## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data"></a>Als ik de Servicetoewijzing-of VMInsights-oplossing Verwijder, worden mijn gegevens verwijderd?
 
-Nee, de twee oplossingen delen de kaart gegevens sets die worden opgeslagen in `VMComputer` (voorheen ServiceMapComputer_CL), `VMProcess` (voorheen ServiceMapProcess_CL) `VMConnection`, en. `VMBoundPort` Als u een van de oplossingen verwijdert, ziet u in deze gegevens sets dat er nog steeds een oplossing aanwezig is die gebruikmaakt van de gegevens en deze blijft in de werk ruimte Log Analytics. U moet beide oplossingen uit uw werk ruimte verwijderen om ervoor te zorgen dat de gegevens erin worden verwijderd.
+Nee, de twee oplossingen delen de kaart gegevens sets die worden opgeslagen in `VMComputer` (voorheen ServiceMapComputer_CL), `VMProcess` (voorheen ServiceMapProcess_CL), `VMConnection` en `VMBoundPort` . Als u een van de oplossingen verwijdert, ziet u in deze gegevens sets dat er nog steeds een oplossing aanwezig is die gebruikmaakt van de gegevens en deze blijft in de werk ruimte Log Analytics. U moet beide oplossingen uit uw werk ruimte verwijderen om ervoor te zorgen dat de gegevens erin worden verwijderd.
 
 ## <a name="health-feature-is-in-limited-public-preview"></a>Health-functie heeft een beperkte open bare preview
 
@@ -100,9 +100,9 @@ We zijn van plan deze status functie opnieuw te starten in 2020, nadat Azure Mon
 
 Bestaande klanten die gebruikmaken van het Health-onderdeel, hebben nog steeds toegang tot het, maar ze worden niet aangeboden aan nieuwe klanten.  
 
-Als u de functie wilt openen, kunt u de volgende functie `feature.vmhealth=true` vlag toevoegen aan de [https://portal.azure.com](https://portal.azure.com)Azure Portal URL. Voor `https://portal.azure.com/?feature.vmhealth=true`beeld.
+Als u de functie wilt openen, kunt u de volgende functie vlag toevoegen `feature.vmhealth=true` aan de Azure Portal URL [https://portal.azure.com](https://portal.azure.com) . Voor beeld `https://portal.azure.com/?feature.vmhealth=true` .
 
-U kunt deze korte URL ook gebruiken, waarmee de functie vlag automatisch wordt ingesteld [https://aka.ms/vmhealthpreview](https://aka.ms/vmhealthpreview):.
+U kunt deze korte URL ook gebruiken, waarmee de functie vlag automatisch wordt ingesteld: [https://aka.ms/vmhealthpreview](https://aka.ms/vmhealthpreview) .
 
 Als een bestaande klant kunt u de status functie blijven gebruiken op virtuele machines die zijn verbonden met een bestaande installatie van een werk ruimte met de status functionaliteit.  
 

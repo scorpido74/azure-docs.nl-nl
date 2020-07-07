@@ -10,10 +10,10 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 10cd8514b529f29f68ea3df14cdc208dd8fdd556
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796926"
 ---
 # <a name="copy-an-image-from-another-gallery"></a>Een afbeelding uit een andere galerie kopiëren
@@ -39,7 +39,7 @@ U hebt gegevens nodig van de definitie van de bron installatie kopie, zodat u ee
 
 Informatie weer geven over de bestaande galerieën, afbeeldings definities en installatie kopie versies met de cmdlet [Get-AzResource](/powershell/module/az.resources/get-azresource) .
 
-De resultaten hebben de indeling `gallery\image definition\image version`.
+De resultaten hebben de indeling `gallery\image definition\image version` .
 
 ```azurepowershell-interactive
 Get-AzResource `
@@ -47,7 +47,7 @@ Get-AzResource `
    Format-Table -Property Name,ResourceGroupName
 ```
 
-Zodra u alle informatie hebt die u nodig hebt, kunt u de ID van de versie van de bron installatie kopie ophalen met [Get-AzGalleryImageVersion](/powershell/module/az.compute/get-azgalleryimageversion). In dit `1.0.0` voor beeld wordt de installatie kopie versie van de `myImageDefinition` definitie in de `myGallery` bron galerie in de `myResourceGroup` resource groep opgehaald.
+Zodra u alle informatie hebt die u nodig hebt, kunt u de ID van de versie van de bron installatie kopie ophalen met [Get-AzGalleryImageVersion](/powershell/module/az.compute/get-azgalleryimageversion). In dit voor beeld wordt de `1.0.0` installatie kopie versie van de `myImageDefinition` definitie in de `myGallery` bron galerie in de `myResourceGroup` resource groep opgehaald.
 
 ```azurepowershell-interactive
 $sourceImgVer = Get-AzGalleryImageVersion `
@@ -121,11 +121,11 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
 ```
 
 
-## <a name="create-the-image-version"></a>De versie van de installatie kopie maken
+## <a name="create-the-image-version"></a>De installatiekopieversie maken
 
 Maak een installatie kopie versie met behulp van [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). U moet de ID van de bron installatie kopie door geven in de `--managed-image` para meter voor het maken van de installatie kopie versie in de doel galerie. 
 
-Toegestane tekens voor de versie van de installatie kopie zijn getallen en punten. Getallen moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion*. *MinorVersion*. *Patch*.
+Toegestane tekens voor een installatiekopieversie zijn cijfers en punten. Cijfers moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion*.*MinorVersion*.*Patch*.
 
 In dit voor beeld heeft de doel galerie de naam *myDestinationGallery*, in de resource groep *myDestinationRG* , op de locatie *VS-West* . De versie van onze installatie kopie is *1.0.0* en we gaan 1 replica maken in de regio *Zuid-Centraal VS* en 2 REPLICA'S in de regio *VS West* . 
 
@@ -147,16 +147,16 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -asJob 
 ```
 
-Het kan even duren om de installatie kopie te repliceren naar alle doel regio's. Daarom hebben we een taak gemaakt zodat we de voortgang kunnen volgen. Als u de voortgang van de taak wilt zien `$job.State`, typt u.
+Het kan even duren om de installatie kopie te repliceren naar alle doel regio's. Daarom hebben we een taak gemaakt zodat we de voortgang kunnen volgen. Als u de voortgang van de taak wilt zien, typt u `$job.State` .
 
 ```azurepowershell-interactive
 $job.State
 ```
 
 > [!NOTE]
-> U moet wachten tot de versie van de installatie kopie volledig is gebouwd en gerepliceerd voordat u dezelfde beheerde installatie kopie kunt gebruiken om een andere versie van de installatie kopie te maken.
+> U moet wachten tot de installatiekopieversie volledig is gebouwd en gerepliceerd voordat u dezelfde beheerde installatiekopie kunt gebruiken om een andere versie van de installatiekopie te maken.
 >
-> U kunt uw installatie kopie ook opslaan in Premiun-opslag door `-StorageAccountType Premium_LRS`een toevoeg-of [zone-redundante opslag](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) door toe te voegen `-StorageAccountType Standard_ZRS` wanneer u de versie van de installatie kopie maakt.
+> U kunt uw installatiekopie ook opslaan in Premium Storage door een `-StorageAccountType Premium_LRS` toe te voegen, of in [Zone-redundante opslag](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) door `-StorageAccountType Standard_ZRS` toe te voegen wanneer u de installatiekopieversie maakt.
 >
 
 

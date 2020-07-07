@@ -4,10 +4,10 @@ description: Gebruik een Kopieer bewerking in een Azure Resource Manager sjabloo
 ms.topic: conceptual
 ms.date: 04/17/2020
 ms.openlocfilehash: 50c4b4b8f301ad88d3dfde98ace1aed4431693db
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583421"
 ---
 # <a name="output-iteration-in-arm-templates"></a>Uitvoer herhaling in ARM-sjablonen
@@ -16,7 +16,7 @@ In dit artikel wordt beschreven hoe u meer dan één waarde voor een uitvoer in 
 
 U kunt ook kopiëren met [resources](copy-resources.md), [Eigenschappen in een resource](copy-properties.md)en [variabelen](copy-variables.md)gebruiken.
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
 Het element Copy heeft de volgende algemene indeling:
 

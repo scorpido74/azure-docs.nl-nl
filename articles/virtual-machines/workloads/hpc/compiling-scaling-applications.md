@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.openlocfilehash: 1de7b1412a242e1b658128ba11f482a2d9dc3107
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594794"
 ---
 # <a name="scaling-hpc-applications"></a>HPC-toepassingen schalen
@@ -37,7 +37,7 @@ Clang is een C-, C++-en objectief-C-compiler verwerking, parsering, optimalisati
 
 ### <a name="flang"></a>FLANG
 
-De FLANG-compiler is een recente toevoeging aan de AOCC-suite (toegevoegde versie van april 2018) en is momenteel beschikbaar voor ontwikkel aars om te downloaden en te testen. Op basis van Fortran 2008 biedt AMD een uitbrei ding van dehttps://github.com/flang-compiler/flang)github-versie van FLANG (. De FLANG-compiler ondersteunt alle clang-compiler opties en een extra aantal FLANG-specifieke compiler opties.
+De FLANG-compiler is een recente toevoeging aan de AOCC-suite (toegevoegde versie van april 2018) en is momenteel beschikbaar voor ontwikkel aars om te downloaden en te testen. Op basis van Fortran 2008 biedt AMD een uitbrei ding van de GitHub-versie van FLANG ( https://github.com/flang-compiler/flang) . De FLANG-compiler ondersteunt alle clang-compiler opties en een extra aantal FLANG-specifieke compiler opties.
 
 ### <a name="dragonegg"></a>DragonEgg
 
