@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8a829d39ff21a1abeafd3b4362747894d196d9d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67109389"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>De levens cyclus van hybride identiteit plannen
@@ -61,7 +61,7 @@ Zorg er bij het definiëren van deze vereisten voor dat ten minste de volgende v
 ## <a name="synchronization-management"></a>Synchronisatie beheer
 Een van de doel stellingen van een identiteits Manager, waarmee alle id-providers kunnen worden gesynchroniseerd en gesynchroniseerd. U behoudt de gegevens gesynchroniseerd op basis van een gezaghebbende Master-ID-provider. In een scenario met een hybride identiteit beheert u met een gesynchroniseerd beheer model alle gebruikers-en apparaat-id's in een on-premises server en synchroniseert u de accounts en, desgewenst, wacht woorden in de Cloud. De gebruiker voert hetzelfde wacht woord on-premises in als in de Cloud en bij het aanmelden wordt het wacht woord gecontroleerd door de identiteits oplossing. Dit model maakt gebruik van een hulp programma voor Directory synchronisatie.
 
-![met Directory](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) -synchronisatie kunt u de synchronisatie van uw hybride identiteits oplossing het beste ontwerpen door ervoor te zorgen dat de volgende vragen worden beantwoord:
+![met Directory-synchronisatie ](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) kunt u de synchronisatie van uw hybride identiteits oplossing het beste ontwerpen door ervoor te zorgen dat de volgende vragen worden beantwoord:
 *    Wat zijn de synchronisatie oplossingen die beschikbaar zijn voor de hybride identiteits oplossing?
 *    Wat zijn de mogelijkheden voor eenmalige aanmelding?
 *    Wat zijn de opties voor identiteits Federatie tussen B2B en B2C?

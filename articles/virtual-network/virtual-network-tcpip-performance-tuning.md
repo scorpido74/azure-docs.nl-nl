@@ -16,10 +16,10 @@ ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
 ms.openlocfilehash: bb23484903ac3ce129c6e7a7a27e0765c227fb1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68297772"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>TCP/IP-prestaties afstemmen voor Azure-Vm's
@@ -219,11 +219,11 @@ U kunt de eerste TCP-venster grootte en TCP-schaal factor in Windows instellen m
 Set-NetTCPSetting
 ```
 
-Dit zijn de effectiefste TCP- `AutoTuningLevel`instellingen voor:
+Dit zijn de effectiefste TCP-instellingen voor `AutoTuningLevel` :
 
 | | | | |
 |-|-|-|-|
-|**AutoTuningLevel**|**Schaal factor**|**Vermenigvuldigings factor schalen**|**Formule voor<br/>het berekenen van de maximale venster grootte**|
+|**AutoTuningLevel**|**Schaal factor**|**Vermenigvuldigings factor schalen**|**Formule voor het berekenen van de <br/> Maximale venster grootte**|
 |Uitgeschakeld|Geen|Geen|Venster grootte|
 |Beperkt|4|2 ^ 4|Venster grootte * (2 ^ 4)|
 |Zeer beperkt|2|2 ^ 2|Venster grootte * (2 ^ 2)|
@@ -359,7 +359,7 @@ NTttcp is een hulp programma voor het testen van de TCP-prestaties van een Linux
 
 U kunt de prestaties van verschillende VM-typen, versnelde netwerken, enzovoort, testen met behulp van een hulp programma met de naam iPerf. iPerf is ook beschikbaar in Linux en Windows. iPerf kunnen TCP of UDP gebruiken om de algehele netwerk doorvoer te testen. iPerf TCP-doorvoer tests worden beïnvloed door de factoren die in dit artikel worden besproken (zoals latentie en RTT). UDP kan dus betere resultaten opleveren als u alleen de maximale door voer wilt testen.
 
-Raadpleeg voor meer informatie de volgende artikelen:
+Raadpleeg deze artikelen voor meer informatie:
 
 - [Problemen met Expressroute-netwerk prestaties oplossen](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-network-performance)
 

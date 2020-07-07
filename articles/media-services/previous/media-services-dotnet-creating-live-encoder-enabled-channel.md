@@ -16,17 +16,17 @@ ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
 ms.openlocfilehash: 37969986b1d015ed08113da42a309eef42df569c
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69015510"
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>Live streamen met Azure Media Services om multi-bitrate streams te maken met .NET
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
-> * [REST-API](https://docs.microsoft.com/rest/api/media/operations/channel)
+> * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > [!NOTE]
 > U hebt een Azure-account nodig om deze zelfstudie te voltooien. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) voor meer informatie.
@@ -106,7 +106,7 @@ U kunt [hier](https://azure.microsoft.com/documentation/samples/media-services-d
 
 ## <a name="set-up-for-development-with-media-services-sdk-for-net"></a>Setup voor de ontwikkeling met Media Services SDK voor .NET
 
-Stel uw ontwikkel omgeving in en vul in het bestand app. config de verbindings informatie in, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
+Stel uw ontwikkel omgeving in en vul het app.config bestand in met verbindings informatie, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
 
 ## <a name="code-example"></a>Voorbeeld van code
 

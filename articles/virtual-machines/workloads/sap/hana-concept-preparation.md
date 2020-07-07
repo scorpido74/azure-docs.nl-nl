@@ -14,10 +14,10 @@ ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 33d52f871de75a7f7d34016b040e44d6f1623fd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70101264"
 ---
 # <a name="disaster-recovery-principles"></a>Principes voor herstel na nood gevallen
@@ -64,7 +64,7 @@ De volgende stap is dat u het tweede SAP HANA-exemplaar installeert op de HANA-e
 
 - Voer stap 2 uit van de voor bereiding van de opslag momentopname die wordt beschreven in [back-up en herstel](hana-backup-restore.md).
 - Maak een open bare sleutel voor de DR-eenheid van HANA grote instantie-eenheid als u dit nog niet hebt gedaan. Zie stap 3 van de voor bereiding van de opslag momentopname die wordt beschreven in [back-up en herstel](hana-backup-restore.md).
-- Onderhoud *HANABackupCustomerDetails. txt* met het nieuwe Hana-exemplaar en test of connectiviteit in de opslag correct werkt.  
+- Onderhoud de *HANABackupCustomerDetails.txt* met het nieuwe Hana-exemplaar en test of de connectiviteit in Storage goed werkt.  
 - Stop de zojuist geïnstalleerde SAP HANA-instantie op de HANA-eenheid voor grote instanties in de Azure-regio.
 - Ontkoppel deze PRD-volumes en neem contact op met SAP HANA op Azure Service Management. De volumes kunnen niet worden gekoppeld aan de eenheid omdat deze niet toegankelijk zijn terwijl het doel van de opslag replicatie is.  
 

@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 9c4a57111566248d3537cab0d9d85c0c3be874a1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68335943"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Interoperabiliteit in azure back-end-connectiviteits functies: Configuratie Details testen
@@ -25,18 +25,18 @@ In dit artikel worden de configuratie details van de [test installatie][Setup]be
 
 In de volgende afbeelding ziet u de details van Azure Virtual Network peering van een spoke Virtual Network (VNet). Zie [VNet-peering beheren][VNet-Config]voor meer informatie over het instellen van peering tussen twee VNets. Als u wilt dat de spoke VNet gebruikmaakt van de gateways die zijn verbonden met de hub VNet, selecteert u **externe gateways gebruiken**.
 
-[![i]][1]
+[![1]][1]
 
 In de volgende afbeelding ziet u de VNet-peering Details van de hub VNet. Als u wilt dat de hub vnet toestaat dat de spoke VNet de gateways van de hub gebruikt, selecteert u **Gateway doorvoer toestaan**.
 
-[![twee]][2]
+[![2]][2]
 
 ## <a name="branch-vnet-connectivity-by-using-a-site-to-site-vpn"></a>Vertakkings-VNet-connectiviteit met behulp van een site-naar-site-VPN
 
 Stel de site-naar-site-VPN-verbinding tussen de hub en de vertakkings VNets in met behulp van VPN-gateways in azure VPN Gateway. Standaard gebruiken VPN-gateways en Azure ExpressRoute-gateways een privé-waarde voor autonoom systeem nummer (ASN) van **65515**. U kunt de ASN-waarde wijzigen in VPN Gateway. In de test installatie wordt de ASN-waarde van de branch VNet VPN-gateway gewijzigd in **65516** om eBGP-route ring tussen de hub en vertakking VNets te ondersteunen.
 
 
-[![3D]][3]
+[![3]][3]
 
 
 ## <a name="on-premises-location-1-connectivity-by-using-expressroute-and-a-site-to-site-vpn"></a>On-premises locatie 1 connectiviteit met behulp van ExpressRoute en een site-naar-site-VPN
@@ -45,7 +45,7 @@ Stel de site-naar-site-VPN-verbinding tussen de hub en de vertakkings VNets in m
 
 In de volgende afbeelding ziet u de configuratie van het ExpressRoute-circuit van Azure regio 1 naar de on-premises locatie 1 Customer Edge (CE)-routers:
 
-[![3]][4]
+[![4]][4]
 
 In de volgende afbeelding ziet u de verbindings configuratie tussen het circuit ExpressRoute 1 en de hub-VNet:
 
@@ -160,7 +160,7 @@ In de volgende afbeelding ziet u de verbindings configuratie tussen het tweede E
 
 ExpressRoute 1 verbindt zowel de hub-VNet als de on-premises locatie 1 met een extern VNet in een andere Azure-regio:
 
-[![achtste]][8]
+[![8]][8]
 
 ## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute-en site-naar-site-VPN-verbinding
 

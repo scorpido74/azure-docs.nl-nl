@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 52b5e37c29e4b3df3f171f683266b5d0a3e0c95d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67109282"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Vereisten voor respons op incidenten bepalen voor uw hybride identiteits oplossing
@@ -52,7 +52,7 @@ Het identiteits beheersysteem moet IT-beheerders helpen bij het identificeren en
 * Moet uw bedrijf de toegang tot en de actie van de gebruiker controleren?
 * Moet uw bedrijf weten wanneer een gebruiker het wacht woord opnieuw instelt?
 
-## <a name="policy-enforcement"></a>Beleidsafdwinging
+## <a name="policy-enforcement"></a>Afdwingen van beleid
 Tijdens beschadigings controle en risico reductie-fase is het belang rijk om snel de daad werkelijke en mogelijke gevolgen van een aanval te verminderen. Deze actie die u op dit punt gaat uitvoeren, kan het verschil tussen een secundaire en een groot deel hiervan maken. Het exacte antwoord is afhankelijk van uw organisatie en de aard van de aanval die u aanneemt. Als de eerste evaluatie heeft geconcludeerd dat er is geknoeid met een account, moet u beleid afdwingen om dit account te blok keren. Dat is slechts één voor beeld waarin het identiteits beheersysteem wordt benut. Gebruik de onderstaande vragen om u te helpen bij het ontwerpen van uw hybride identiteits oplossing, waarbij rekening wordt gehouden met de manier waarop beleids regels worden afgedwongen om te reageren op een doorlopend incident:
 
 * Heeft uw bedrijf beleid voor het blok keren van gebruikers, indien nodig, toegang tot het netwerk?

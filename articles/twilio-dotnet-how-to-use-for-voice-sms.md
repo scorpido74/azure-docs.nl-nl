@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/24/2015
 ms.author: gwallace
 ms.openlocfilehash: 22b33d7b4b0ff69a2e751cadff70453f73ed4f8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69876808"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Twilio gebruiken voor spraak-en SMS-mogelijkheden van Azure
@@ -38,7 +38,7 @@ De Twilio-API is een resterende API die spraak-en SMS-functionaliteit biedt voor
 De belangrijkste aspecten van de Twilio-API zijn Twilio-werk woorden en Twilio Markup Language (TwiML).
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio-werk woorden
-De API maakt gebruik van Twilio-werk woorden. de ** &lt;term zeg&gt; ** geeft bijvoorbeeld Twilio aan audibly een bericht te verzenden bij een aanroep.
+De API maakt gebruik van Twilio-werk woorden. de term ** &lt; zeg &gt; ** geeft bijvoorbeeld Twilio aan audibly een bericht te verzenden bij een aanroep.
 
 Hier volgt een lijst met Twilio-werk woorden.  Meer informatie over de andere bewerkingen en mogelijkheden via [documentatie voor Twilio Markup Language](https://www.twilio.com/docs/api/twiml).
 
@@ -98,7 +98,7 @@ In de voor beelden in deze hand leiding wordt gebruikgemaakt van de bibliotheek 
 
 De bibliotheken kunnen worden [geïnstalleerd met behulp van de NuGet package manager-extensie](https://www.twilio.com/docs/csharp/install) die beschikbaar is voor Visual Studio 2010 tot 2015.  De bron code wordt gehost op [github][twilio_github_repo], die een wiki bevat met volledige documentatie over het gebruik van de bibliotheken.
 
-Micro soft Visual Studio 2010 installeert standaard versie 1,2 van NuGet. Voor het installeren van de Twilio-bibliotheken is versie 1,6 van NuGet of hoger vereist. Zie [https://nuget.org/][nuget]voor meer informatie over het installeren of bijwerken van NuGet.
+Micro soft Visual Studio 2010 installeert standaard versie 1,2 van NuGet. Voor het installeren van de Twilio-bibliotheken is versie 1,6 van NuGet of hoger vereist. Zie voor meer informatie over het installeren of bijwerken van NuGet [https://nuget.org/][nuget] .
 
 > [!NOTE]
 > Als u de meest recente versie van NuGet wilt installeren, moet u eerst de geladen versie verwijderen met behulp van Visual Studio Extension Manager. Hiervoor moet u Visual Studio als beheerder uitvoeren. Anders is de knop verwijderen uitgeschakeld.
@@ -139,7 +139,7 @@ var call = CallResource.Create(
     }
 ```
 
-Zie [https://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls]voor meer informatie over de para meters die worden door gegeven aan de methode **CallResource. Create** .
+Zie voor meer informatie over de para meters die worden door gegeven aan de methode **CallResource. Create** [https://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls] .
 
 Zoals vermeld, gebruikt deze code een Twilio-site voor het retour neren van het TwiML-antwoord. U kunt in plaats daarvan uw eigen site gebruiken om het TwiML-antwoord op te geven. Zie [How to: TwiML Responses van uw eigen website bieden](#howto_provide_twiml_responses)voor meer informatie.
 
@@ -171,10 +171,10 @@ catch (TwilioException ex)
 ```
 
 ## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>Procedure: TwiML-reacties van uw eigen website opgeven
-Wanneer uw toepassing een aanroep initieert naar de Twilio-API, bijvoorbeeld via de methode **CallResource. Create** , stuurt Twilio uw aanvraag naar een URL die naar verwachting een TwiML-antwoord retourneert. In het voor beeld in [procedure: het maken van een uitgaande oproep](#howto_make_call) maakt gebruik van [https://twimlets.com/message][twimlet_message_url] de Twilio-URL voor het retour neren van het antwoord.
+Wanneer uw toepassing een aanroep initieert naar de Twilio-API, bijvoorbeeld via de methode **CallResource. Create** , stuurt Twilio uw aanvraag naar een URL die naar verwachting een TwiML-antwoord retourneert. In het voor beeld in [procedure: het maken van een uitgaande oproep](#howto_make_call) maakt gebruik van de TWILIO-URL [https://twimlets.com/message][twimlet_message_url] voor het retour neren van het antwoord.
 
 > [!NOTE]
-> Hoewel TwiML is ontworpen voor gebruik door Web Services, kunt u de TwiML in uw browser weer geven. Klik [https://twimlets.com/message][twimlet_message_url] bijvoorbeeld om een leeg `<Response>` element weer te geven. Klik op [https://twimlets.com/message?Message%5B0%5D=Hello%20World](https://twimlets.com/message?Message%5B0%5D=Hello%20World) een ander voor beeld om een `<Response>` -element te zien &lt;dat&gt; een dict-element bevat.
+> Hoewel TwiML is ontworpen voor gebruik door Web Services, kunt u de TwiML in uw browser weer geven. Klik bijvoorbeeld [https://twimlets.com/message][twimlet_message_url] om een leeg element weer te geven. `<Response>` als een ander voor beeld klikt [https://twimlets.com/message?Message%5B0%5D=Hello%20World](https://twimlets.com/message?Message%5B0%5D=Hello%20World) u op om een element te zien `<Response>` dat een &lt; dict-element bevat &gt; .
 >
 
 In plaats van te vertrouwen op de Twilio-URL, kunt u uw eigen URL-site maken die HTTP-antwoorden retourneert. U kunt de site maken in elke taal waarin HTTP-antwoorden worden geretourneerd. In dit onderwerp wordt ervan uitgegaan dat u de URL wilt hosten vanuit een algemene ASP.NET-handler.
@@ -251,7 +251,7 @@ namespace WebRole1
 }
 ```
 
-Zie [https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml)voor meer informatie over TwiML.
+Zie voor meer informatie over TwiML [https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml) .
 
 Zodra u een manier hebt ingesteld om TwiML-reacties te geven, kunt u die URL door geven aan de methode **CallResource. Create** . Als u bijvoorbeeld een webtoepassing met de naam MyTwiML hebt geïmplementeerd in een Azure-Cloud service en de naam van uw ASP.NET-handler MyTwiML. ashx is, kan de URL worden door gegeven aan **CallResource. Create** , zoals weer gegeven in het volgende code voorbeeld:
 

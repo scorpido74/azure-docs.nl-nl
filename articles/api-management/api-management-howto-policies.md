@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
 ms.openlocfilehash: c10939b50a66cd608d27a71f02d959fbc2380f59
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70072310"
 ---
 # <a name="policies-in-azure-api-management"></a>Beleidsregels in Azure API Management
@@ -38,7 +38,7 @@ Als u op een ingeschakelde instructie klikt, wordt de juiste XML toegevoegd op d
 > 
 > 
 
-De configuratie is onderverdeeld in `inbound`, `backend`, `outbound`, en `on-error`. De reeks opgegeven beleids instructies wordt uitgevoerd in de volg orde van een aanvraag en een antwoord.
+De configuratie is onderverdeeld in `inbound` , `backend` ,, `outbound` en `on-error` . De reeks opgegeven beleids instructies wordt uitgevoerd in de volg orde van een aanvraag en een antwoord.
 
 ```xml
 <policies>
@@ -58,7 +58,7 @@ De configuratie is onderverdeeld in `inbound`, `backend`, `outbound`, en `on-err
 </policies> 
 ```
 
-Als er een fout optreedt tijdens de verwerking van een aanvraag, worden alle resterende stappen in `inbound`de `backend`secties, `outbound` of worden overgeslagen en wordt de uitvoering naar de instructies in `on-error` de sectie geleid. Door beleids instructies in de `on-error` sectie in te stellen, kunt u de fout controleren `context.LastError` met behulp van de eigenschap, het fout bericht `set-body` controleren en aanpassen met behulp van het beleid en configureren wat er gebeurt als er een fout optreedt. Er zijn fout codes voor ingebouwde stappen en voor fouten die kunnen optreden tijdens het verwerken van beleids instructies. Zie [fout afhandeling in API management-beleid](/azure/api-management/api-management-error-handling-policies)voor meer informatie.
+Als er een fout optreedt tijdens de verwerking van een aanvraag, worden alle resterende stappen in `inbound` de `backend` secties, of `outbound` worden overgeslagen en wordt de uitvoering naar de instructies in de `on-error` sectie geleid. Door beleids instructies in de `on-error` sectie in te stellen, kunt u de fout controleren met behulp van de `context.LastError` eigenschap, het fout bericht controleren en aanpassen met behulp van het `set-body` beleid en configureren wat er gebeurt als er een fout optreedt. Er zijn fout codes voor ingebouwde stappen en voor fouten die kunnen optreden tijdens het verwerken van beleids instructies. Zie [fout afhandeling in API management-beleid](/azure/api-management/api-management-error-handling-policies)voor meer informatie.
 
 ## <a name="how-to-configure-policies"></a><a name="scopes"> </a>Beleids regels configureren
 
@@ -92,11 +92,11 @@ In het bovenstaande voor beeld beleid wordt de `cross-domain` instructie uitgevo
 
 ### <a name="restrict-incoming-requests"></a>Binnenkomende aanvragen beperken
 
-Als u een nieuwe instructie wilt toevoegen om binnenkomende aanvragen te beperken tot opgegeven IP-adressen, plaatst u de cursor net `inbound` in de inhoud van het XML-element en klikt u op de instructie **Caller ip's beperken** .
+Als u een nieuwe instructie wilt toevoegen om binnenkomende aanvragen te beperken tot opgegeven IP-adressen, plaatst u de cursor net in de inhoud van het `inbound` XML-element en klikt u op de instructie **Caller ip's beperken** .
 
 ![Restrictie beleid][policies-restrict]
 
-Hiermee voegt u een XML-fragment toe `inbound` aan het-element dat hulp biedt bij het configureren van de-instructie.
+Hiermee voegt u een XML-fragment toe aan het- `inbound` element dat hulp biedt bij het configureren van de-instructie.
 
 ```xml
 <ip-filter action="allow | forbid">

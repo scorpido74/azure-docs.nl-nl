@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/03/2018
 ms.author: damaerte
 ms.openlocfilehash: 4fc4f6523eb19294cabdf6b5b910dd346a877502
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67204140"
 ---
 # <a name="powershell-in-azure-cloud-shell-for-windows-users"></a>PowerShell in Azure Cloud Shell voor Windows-gebruikers
@@ -32,11 +32,11 @@ Met deze wijziging zijn er mogelijk enkele verschillen in de Power shell-ervarin
 Het bestands systeem is hoofdletter gevoelig in Windows, terwijl het bestands systeem op Linux hoofdletter gevoelig is.
 Voorheen `file.txt` en `FILE.txt` werden beschouwd als hetzelfde bestand, maar nu worden ze beschouwd als andere bestanden.
 De juiste behuizing moet worden gebruikt `tab-completing` in het bestands systeem.
-Specifieke Power shell-ervaringen, `tab-completing` zoals namen van cmdlets, para meters en waarden, zijn niet hoofdletter gevoelig.
+Specifieke Power shell-ervaringen, zoals `tab-completing` namen van cmdlets, para meters en waarden, zijn niet hoofdletter gevoelig.
 
 ## <a name="windows-powershell-aliases-vs-linux-utilities"></a>Windows Power shell-aliassen versus Linux-hulpprogram ma's
 
-Sommige bestaande Power shell-aliassen hebben dezelfde namen als ingebouwde Linux-opdrachten, `cat`zoals,`ls`, `sort`, `sleep`enzovoort. In Power shell Core 6 worden aliassen die conflicteren met ingebouwde Linux-opdrachten, verwijderd.
+Sommige bestaande Power shell-aliassen hebben dezelfde namen als ingebouwde Linux-opdrachten, zoals `cat` ,, `ls` `sort` , `sleep` enzovoort. In Power shell Core 6 worden aliassen die conflicteren met ingebouwde Linux-opdrachten, verwijderd.
 Hieronder ziet u de algemene aliassen die zijn verwijderd, evenals de gelijkwaardige opdrachten:  
 
 |Verwijderde alias   |Overeenkomende opdracht   |
@@ -59,13 +59,13 @@ De $HOME directory van de gebruiker wordt nu ook opgeslagen in sessies.
 ## <a name="powershell-profile"></a>Power shell-profiel
 
 Standaard wordt het Power shell-Profiel van een gebruiker niet gemaakt.
-Als u uw profiel wilt maken, `PowerShell` maakt u `$HOME/.config`een map onder.
+Als u uw profiel wilt maken, maakt u een `PowerShell` map onder `$HOME/.config` .
 
 ```azurepowershell-interactive
 mkdir (Split-Path $profile.CurrentUserAllHosts)
 ```
 
-Onder `$HOME/.config/PowerShell`kunt u uw profiel bestanden maken- `profile.ps1` en/of. `Microsoft.PowerShell_profile.ps1`
+Onder `$HOME/.config/PowerShell` kunt u uw profiel bestanden maken- `profile.ps1` en/of `Microsoft.PowerShell_profile.ps1` .
 
 ## <a name="whats-new-in-powershell-core-6"></a>Wat is er nieuw in Power shell Core 6
 

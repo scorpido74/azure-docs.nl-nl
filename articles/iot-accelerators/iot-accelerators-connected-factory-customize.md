@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
 ms.openlocfilehash: 6062f8b3992732e0e0f9bbdae9549e69c393f4ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67080491"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Aanpassen hoe de oplossing Connected Factory gegevens van uw OPC UA-servers weergeeft
@@ -32,7 +32,7 @@ Als u op een van de grafieken klikt, kunt u de gegevens verder verkennen met beh
 
 ![Gegevens verkennen met behulp van Time Series Insights][img-tsi]
 
-In dit artikel wordt beschreven:
+In dit artikel wordt het volgende beschreven:
 
 - Hoe de gegevens beschikbaar worden gemaakt voor de verschillende weer gaven in de oplossing.
 - De manier waarop de gegevens worden weer gegeven, kunt u aanpassen.
@@ -71,9 +71,9 @@ Zie [How to configure the Connected Factory Solution Accelerator ](iot-accelerat
 
 ## <a name="deploy-the-changes"></a>De wijzigingen implementeren
 
-Wanneer u klaar bent met het aanbrengen van wijzigingen in het bestand **ContosoTopologyDescription. json** , moet u de oplossing Connected Factory opnieuw implementeren in uw Azure-account.
+Wanneer u klaar bent met het aanbrengen van wijzigingen in de **ContosoTopologyDescription.jsin** het bestand, moet u de oplossing Connected Factory opnieuw implementeren in uw Azure-account.
 
-De opslag plaats **Azure-IOT-Connected-Factory** bevat een **Build. ps1** Power shell-script dat u kunt gebruiken om de oplossing opnieuw te bouwen en te implementeren.
+De opslag plaats **Azure-IOT-Connected-Factory** bevat een **build.ps1** Power shell-script dat u kunt gebruiken om de oplossing opnieuw te bouwen en te implementeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

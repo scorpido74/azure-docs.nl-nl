@@ -1,6 +1,6 @@
 ---
 title: Twilio gebruiken voor spraak-, VoIP-en SMS-berichten in azure
-description: Meer informatie over het maken van een telefoon gesprek en het verzenden van een SMS-bericht met de Twilio API-service in Azure. Code voorbeelden geschreven in node. js.
+description: Meer informatie over het maken van een telefoon gesprek en het verzenden van een SMS-bericht met de Twilio API-service in Azure. Code voorbeelden geschreven in Node.js.
 services: ''
 documentationcenter: nodejs
 author: georgewallace
@@ -13,14 +13,14 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: 164bedffcf9a1aca9f1fa46dea254fb928abcf04
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69637274"
 ---
 # <a name="using-twilio-for-voice-voip-and-sms-messaging-in-azure"></a>Twilio gebruiken voor spraak-, VoIP-en SMS-berichten in azure
-In deze hand leiding wordt gedemonstreerd hoe u apps bouwt die communiceren met Twilio en node. js op Azure.
+In deze hand leiding wordt gedemonstreerd hoe u apps bouwt die communiceren met Twilio en node.js op Azure.
 
 <a id="whatis"/>
 
@@ -34,7 +34,7 @@ Met Twilio kunnen ontwikkel aars [Programmeer bare telefoon nummers kopen][purch
 Met behulp van HTTP-aanvragen voor de Twilio Web Service-API kunnen ontwikkel aars tekst berichten verzenden of uitgaande telefoon gesprekken initiëren. Voor uitgaande oproepen moet de ontwikkelaar ook een URL opgeven die TwiML instructies retourneert voor het afhandelen van de uitgaande oproep zodra deze is verbonden.
 
 ### <a name="embedding-voip-capabilities-in-ui-code-javascript-ios-or-android"></a>VoIP-mogelijkheden insluiten in gebruikers interface code (Java script, iOS of Android)
-Twilio biedt een SDK aan de client zijde die een bureaublad webbrowser, iOS-app of Android-app kan omzetten in een VoIP-telefoon. In dit artikel wordt aandacht besteed aan het gebruik van VoIP-aanroepen in de browser. Naast de *Twilio java script SDK* die in de browser wordt uitgevoerd, moet een toepassing aan de server zijde (onze node. js-toepassing) worden gebruikt voor het uitgeven van een "Capability-token" aan de Java script-client. Meer informatie over het gebruik van VoIP met node. js vindt u [in de Twilio dev-blog][voipnode].
+Twilio biedt een SDK aan de client zijde die een bureaublad webbrowser, iOS-app of Android-app kan omzetten in een VoIP-telefoon. In dit artikel wordt aandacht besteed aan het gebruik van VoIP-aanroepen in de browser. Naast de *Twilio java script SDK* die in de browser wordt uitgevoerd, moet een toepassing aan de server zijde (onze node.js-toepassing) worden gebruikt voor het uitgeven van een ' bekwaamheids token ' aan de Java script-client. Meer informatie over het gebruik van VoIP met node.js vindt u [in de Twilio dev-blog][voipnode].
 
 <a id="signup"/>
 
@@ -43,31 +43,31 @@ Voordat u Twilio Services kunt gebruiken, moet u [zich eerst aanmelden voor een 
 
 <a id="azuresite"/>
 
-## <a name="create-and-deploy-a-nodejs-azure-website"></a>Een node. js Azure-website maken en implementeren
-Vervolgens moet u een node. js-website maken die op Azure wordt uitgevoerd. [De officiële documentatie][azure_new_site]hiervoor vindt u hier. Op hoog niveau gaat u als volgt te werk:
+## <a name="create-and-deploy-a-nodejs-azure-website"></a>Een node.js Azure-website maken en implementeren
+Vervolgens moet u een node.js website maken die op Azure wordt uitgevoerd. [De officiële documentatie][azure_new_site]hiervoor vindt u hier. Op hoog niveau gaat u als volgt te werk:
 
 * Aanmelden voor een Azure-account, als u er nog geen hebt
 * De Azure-beheer console gebruiken om een nieuwe website te maken
 * Ondersteuning voor broncode beheer toevoegen (er wordt ervan uitgegaan dat u Git hebt gebruikt)
-* Een bestand `server.js` met een eenvoudige node. js-webtoepassing maken
+* Een bestand `server.js` met een eenvoudige node.js-webtoepassing maken
 * Deze eenvoudige toepassing implementeren in azure
 
 <a id="twiliomodule"/>
 
 ## <a name="configure-the-twilio-module"></a>De Twilio-module configureren
-We gaan nu een eenvoudige node. js-toepassing schrijven die gebruikmaakt van de Twilio-API. Voordat we beginnen, moeten we de referenties voor het Twilio-account configureren.
+We gaan nu een eenvoudige node.js toepassing schrijven die gebruikmaakt van de Twilio-API. Voordat we beginnen, moeten we de referenties voor het Twilio-account configureren.
 
 ### <a name="configuring-twilio-credentials-in-system-environment-variables"></a>Twilio-referenties configureren in systeem omgevingsvariabelen
 Voor het maken van geverifieerde aanvragen voor de back-end van de Twilio hebben we het account-SID en verificatie token nodig, dat als de gebruikers naam en het wacht woord is ingesteld voor het Twilio-account. De veiligste manier om deze te configureren voor gebruik met de knooppunt module in Azure is via systeem omgevingsvariabelen, die u rechtstreeks kunt instellen in de Azure-beheer console.
 
-Selecteer de node. js-website en klik op de koppeling configureren.  Als u een bit omlaag schuift, ziet u een gebied waar u de configuratie-eigenschappen voor uw toepassing kunt instellen.  Voer uw referenties voor het Twilio-account ([gevonden in uw Twilio-console][twilio_console]) in zoals weer gegeven `TWILIO_ACCOUNT_SID` : `TWILIO_AUTH_TOKEN`zorg ervoor dat u deze naam en respectievelijk
+Selecteer uw node.js website en klik op de koppeling configureren.  Als u een bit omlaag schuift, ziet u een gebied waar u de configuratie-eigenschappen voor uw toepassing kunt instellen.  Voer uw referenties voor het Twilio-account ([gevonden in uw Twilio-console][twilio_console]) in zoals weer gegeven: Zorg ervoor dat u deze naam `TWILIO_ACCOUNT_SID` en `TWILIO_AUTH_TOKEN` respectievelijk
 
 ![Azure-beheer console][azure-admin-console]
 
 Nadat u deze variabelen hebt geconfigureerd, start u de toepassing opnieuw op in de Azure-console.
 
-### <a name="declaring-the-twilio-module-in-packagejson"></a>De Twilio-module in package. json declareren
-We moeten nu een package. json maken voor het beheren van de node module-afhankelijkheden via [NPM]. Op hetzelfde niveau als het `server.js` bestand dat u hebt gemaakt in de zelf studie *Azure/node. js* , maakt u `package.json`een bestand met de naam.  In dit bestand plaatst u het volgende:
+### <a name="declaring-the-twilio-module-in-packagejson"></a>Declareer de Twilio-module in package.jsop
+We moeten nu een package.jsmaken voor het beheren van de afhankelijkheden van de node module via [NPM]. Op hetzelfde niveau als het `server.js` bestand dat u hebt gemaakt in de zelf studie over *Azure/node.js* maakt u een bestand met de naam `package.json` .  In dit bestand plaatst u het volgende:
 
 ```json
 {
@@ -93,7 +93,7 @@ Hiermee declareert u de twilio-module als afhankelijkheid, evenals het populaire
 <a id="makecall"/>
 
 ## <a name="make-an-outbound-call"></a>Een uitgaande oproep doen
-We gaan een eenvoudig formulier maken dat een aanroep naar een nummer dat wij kiezen. Open up `server.js`en voer de volgende code in. Houd er rekening mee dat de naam van de Azure-website in CHANGE_ME wordt vermeld:
+We gaan een eenvoudig formulier maken dat een aanroep naar een nummer dat wij kiezen. Open up `server.js` en voer de volgende code in. Houd er rekening mee dat de naam van de Azure-website in CHANGE_ME wordt vermeld:
 
 ```javascript
 // Module dependencies
@@ -165,7 +165,7 @@ app.listen(app.get('port'), function(){
 });
 ```
 
-Maak vervolgens een map met de `views` naam-in deze map en maak een bestand `index.ejs` met de naam met de volgende inhoud:
+Maak vervolgens een map `views` met de naam-in deze map en maak een bestand `index.ejs` met de naam met de volgende inhoud:
 
 ```html
 <!DOCTYPE html>
@@ -192,7 +192,7 @@ Implementeer uw website nu naar Azure en open uw start. U moet uw telefoon numme
 <a id="sendmessage"/>
 
 ## <a name="send-an-sms-message"></a>Een SMS-bericht verzenden
-Nu gaan we een gebruikers interface en formulier verwerkings logica instellen om een SMS-bericht te verzenden. Open up `server.js`en voeg de volgende code toe na de laatste aanroep naar `app.post`:
+Nu gaan we een gebruikers interface en formulier verwerkings logica instellen om een SMS-bericht te verzenden. Open up `server.js` en voeg de volgende code toe na de laatste aanroep naar `app.post` :
 
 ```javascript
 app.post('/sms', (request, response) => {
@@ -216,7 +216,7 @@ app.post('/sms', (request, response) => {
 });
 ```
 
-Voeg `views/index.ejs`in een ander formulier in de eerste vorm toe om een nummer en een tekst bericht in te dienen:
+Voeg in een `views/index.ejs` ander formulier in de eerste vorm toe om een nummer en een tekst bericht in te dienen:
 
 ```html
 <form action="/sms" method="POST">
@@ -233,14 +233,14 @@ Implementeer uw toepassing opnieuw naar Azure en u kunt dit formulier nu verzend
 <a id="nextsteps"/>
 
 ## <a name="next-steps"></a>Volgende stappen
-U hebt nu de basis beginselen geleerd van het gebruik van node. js en Twilio om apps te bouwen die met elkaar communiceren. Maar deze voor beelden krassen het Opper vlak van wat mogelijk is met Twilio en node. js. Raadpleeg de volgende bronnen voor meer informatie over het gebruik van Twilio met node. js:
+U hebt nu de basis beginselen geleerd van het gebruik van node.js en Twilio om apps te bouwen die met elkaar communiceren. Maar deze voor beelden krassen het Opper vlak van wat mogelijk is met Twilio en node.js. Raadpleeg de volgende bronnen voor meer informatie over het gebruik van Twilio met node.js:
 
 * [Officiële module docs][docs]
-* [Zelf studie over VoIP met node. js-toepassingen][voipnode]
-* [Votr: een real-time SMS-stem toepassing met node. js en CouchDB (drie delen)][votr]
-* [Koppelings programmering in de browser met node. js][pair]
+* [Zelf studie over VoIP met node.js-toepassingen][voipnode]
+* [Votr: een real-time SMS-stem toepassing met node.js en CouchDB (drie delen)][votr]
+* [Gekoppelde Program ma's in de browser met node.js][pair]
 
-We hopen dat u de Hacking van node. js en Twilio op Azure hebt.
+We hopen dat u node.js en Twilio op Azure hebt gekraakt.
 
 [purchase_phone]: https://www.twilio.com/console/phone-numbers/search
 [twiml]: https://www.twilio.com/docs/api/twiml

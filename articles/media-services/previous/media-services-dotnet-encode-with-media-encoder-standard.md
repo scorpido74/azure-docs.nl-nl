@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 259e32d55f25c4a146b7ff358eb503763dd5fab2
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69016593"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Een Asset coderen met Media Encoder Standard met behulp van .NET  
@@ -46,9 +46,9 @@ Media Encoder Standard is geconfigureerd met een van de voor instellingen van co
 ### <a name="input-and-output-metadata"></a>Invoer-en uitvoer meta gegevens
 Wanneer u een invoer activum (of activa) codeert met behulp van MES, ontvangt u een uitvoer activum wanneer de versleutelings taak is voltooid. Het uitvoer element bevat video, audio, miniaturen, manifest enz. op basis van de voor instelling voor de code ring die u gebruikt.
 
-Het uitvoer activum bevat ook een bestand met meta gegevens over de invoer Asset. De naam van het XML-bestand met meta gegevens heeft de volgende indeling: <asset_id>_metadata. XML (bijvoorbeeld 41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata. XML), waarbij <asset_id> de AssetId-waarde van de invoer Asset is. Het schema van deze XML voor invoer van meta gegevens wordt [hier](media-services-input-metadata-schema.md)beschreven.
+Het uitvoer activum bevat ook een bestand met meta gegevens over de invoer Asset. De naam van het XML-bestand met meta gegevens heeft de volgende indeling: <asset_id # C1_metadata.xml (bijvoorbeeld 41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml), waarbij <asset_id> de AssetId-waarde van de invoer-Asset is. Het schema van deze XML voor invoer van meta gegevens wordt [hier](media-services-input-metadata-schema.md)beschreven.
 
-Het uitvoer activum bevat ook een bestand met meta gegevens over het uitvoer element. De naam van het XML-bestand met meta gegevens heeft de volgende indeling: <source_file_name>_manifest. XML (bijvoorbeeld BigBuckBunny_manifest. XML). Het schema van deze XML voor uitvoer meta gegevens wordt [hier](media-services-output-metadata-schema.md)beschreven.
+Het uitvoer activum bevat ook een bestand met meta gegevens over het uitvoer element. De naam van het XML-bestand met meta gegevens heeft de volgende indeling: <source_file_name # C1_manifest.xml (bijvoorbeeld BigBuckBunny_manifest.xml). Het schema van deze XML voor uitvoer meta gegevens wordt [hier](media-services-output-metadata-schema.md)beschreven.
 
 Als u een van de twee meta gegevensbestanden wilt controleren, kunt u een SAS-Locator maken en het bestand downloaden naar uw lokale computer. Hier vindt u een voor beeld van hoe u een SAS-Locator maakt en een bestand downloadt met behulp van de Media Services .NET SDK-extensies.
 
@@ -70,7 +70,7 @@ In het volgende code voorbeeld wordt Media Services .NET SDK gebruikt om de volg
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Maak en configureer een Visual Studio-project.
 
-Stel uw ontwikkel omgeving in en vul in het bestand app. config de verbindings informatie in, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
+Stel uw ontwikkel omgeving in en vul het app.config bestand in met verbindings informatie, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Voorbeeld 
 
@@ -210,6 +210,6 @@ namespace MediaEncoderStandardSample
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-[Miniatuur genereren met behulp van Media Encoder Standard met .net](media-services-dotnet-generate-thumbnail-with-mes.md)
-[Media Services encoding-overzicht](media-services-encode-asset.md)
+[Miniatuur genereren met behulp van Media Encoder Standard met .net](media-services-dotnet-generate-thumbnail-with-mes.md) 
+ [Overzicht van Media Services encoding](media-services-encode-asset.md)
 

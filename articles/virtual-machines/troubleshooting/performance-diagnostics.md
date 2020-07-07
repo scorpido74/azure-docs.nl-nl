@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
 ms.openlocfilehash: 16be3d1695608165405a3490b686a01ba6a2a62c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70080602"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Diagnostische gegevens over prestaties voor virtuele Azure-machines
@@ -37,10 +37,10 @@ Windows 10, Windows 8, Windows 8 Enter prise, Windows 8 Pro, Windows 8,1, Window
 
 ### <a name="linux"></a>Linux
 
-Oracle Linux Server 6,10 [`*`], 7,3, 7,6, 7,5 (Oracle-data base-ee 13,8 Marketplace-installatie kopie),`*`CentOS 6,5 [], 7,6, RHEL 7,2, 7,5`*`, 8,0 [], Ubuntu 14,04, 16,04, 18,04, Debian 8, 9`*`, 10 [], SLES`*`12 SP4 []
+Oracle Linux Server 6,10 [ `*` ], 7,3, 7,6, 7,5 (Oracle-data base-Ee 13,8 Marketplace-installatie kopie), CentOS 6,5 [ `*` ], 7,6, RHEL 7,2, 7,5, 8,0 [ `*` ], Ubuntu 14,04, 16,04, 18,04, Debian 8, 9, 10 [ `*` ], SLES 12 SP4 [ `*` ]
 
 >[!Note]
->[`*`] Raadpleeg [bekende problemen](how-to-use-perfinsights-linux.md#known-issues)
+>[ `*` ] Raadpleeg [bekende problemen](how-to-use-perfinsights-linux.md#known-issues)
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>Prestatie diagnostiek op uw virtuele machine installeren en uitvoeren
 
@@ -86,7 +86,7 @@ De volgende analyse scenario's zijn beschikbaar via de Azure Portal. Selecteer e
     Omvat alle controles in de prestatie analyse en legt een netwerk tracering en SMB-teller vast. Gebruik dit scenario om de prestaties van Azure files op te lossen. Het uitvoeren van deze analyse duurt 30 seconden tot 15 minuten, afhankelijk van de geselecteerde duur. [Meer informatie](https://aka.ms/perfinsights/azurefiles)
 
 >[!Note]
->[`*`] Deze analyse scenario's worden alleen ondersteund in Windows.
+>[ `*` ] Deze analyse scenario's worden alleen ondersteund in Windows.
 
 ![Scherm opname van het deel venster diagnostische gegevens uitvoeren in de Blade prestatie diagnostiek](media/performance-diagnostics/run-diagnostics-pane.png)
 
@@ -109,7 +109,7 @@ Er wordt een melding weer gegeven wanneer prestatie diagnostiek wordt geïnstall
 Nadat de analyse is voltooid, worden de volgende items geüpload naar Azure-tabellen en een BLOB-container (binary large object) in het opgegeven opslag account:
 
 * Alle inzichten en gerelateerde informatie over de uitvoering
-* Een gecomprimeerd zip-bestand (met de naam **PerformanceDiagnostics_yyyy-mm-dd_hh-mm-SS-FFF. zip** ) in Windows en een tar-balle-bestand (met de naam **PerformanceDiagnostics_yyyy-mm-dd_hh-mm-SS-FFF. tar. gz** ) op Linux dat logboek bestanden bevat
+* Een gecomprimeerd zip-bestand (met de naam **PerformanceDiagnostics_yyyy-MM-dd_hh-mm-ss-fff.zip** ) in Windows en een tar balle-bestand (met de naam **PerformanceDiagnostics_yyyy-mm-dd_hh-mm-SS-FFF. tar. gz** ) op Linux dat logboek bestanden bevat
 * Een HTML-rapport
 
 Na het uploaden wordt een nieuw rapport met diagnostische gegevens weer gegeven in de Azure Portal.

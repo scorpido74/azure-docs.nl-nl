@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
 ms.openlocfilehash: 21270d3c7143ce063ffe30d939368b9813e9072e
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70094107"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>De prestaties van een Cloud service lokaal in de Azure Compute-emulator testen met behulp van de Visual Studio Profiler
@@ -30,7 +30,7 @@ Mogelijk wilt u uw toepassing ook lokaal in de compute-emulator gebruiken voorda
 Dit artikel heeft betrekking op de CPU-steekproef methode voor profile ring, die lokaal kan worden uitgevoerd in de emulator. CPU-steek proeven zijn een manier om een profileren te doen die niet zeer opvallend is. Bij een aangewezen steekproef interval maakt de Profiler een moment opname van de aanroep stack. De gegevens worden verzameld over een bepaalde tijd en weer gegeven in een rapport. Deze methode van profile ring geeft aan waar in een reken kundige, intensieve toepassing het meren deel van het CPU-werk wordt uitgevoerd.  Zo kunt u zich richten op het ' warme pad ' waar uw toepassing de meeste tijd in de praktijk brengt.
 
 ## <a name="1-configure-visual-studio-for-profiling"></a>1: Visual Studio configureren voor profile ring
-Eerst zijn er enkele opties voor Visual Studio-configuratie die handig kunnen zijn bij het profileren van een profiel. Om inzicht te hebben in de profilerings rapporten, hebt u symbolen (. PDB-bestanden) nodig voor uw toepassing en ook symbolen voor systeem bibliotheken. U wilt er zeker van zijn dat u naar de beschik bare symbool servers verwijst. U doet dit door in het menu **extra** in Visual Studio **Opties**te kiezen en vervolgens **fout opsporing**en **symbolen**te kiezen. Zorg ervoor dat de micro soft-symbool servers worden weer gegeven onder **symbool bestand (. pdb)-locaties**.  U kunt ook verwijzen https://referencesource.microsoft.com/symbolsnaar, die mogelijk aanvullende symbool bestanden bevat.
+Eerst zijn er enkele opties voor Visual Studio-configuratie die handig kunnen zijn bij het profileren van een profiel. Om inzicht te hebben in de profilerings rapporten, hebt u symbolen (. PDB-bestanden) nodig voor uw toepassing en ook symbolen voor systeem bibliotheken. U wilt er zeker van zijn dat u naar de beschik bare symbool servers verwijst. U doet dit door in het menu **extra** in Visual Studio **Opties**te kiezen en vervolgens **fout opsporing**en **symbolen**te kiezen. Zorg ervoor dat de micro soft-symbool servers worden weer gegeven onder **symbool bestand (. pdb)-locaties**.  U kunt ook verwijzen naar https://referencesource.microsoft.com/symbols , die mogelijk aanvullende symbool bestanden bevat.
 
 ![Symbool opties][4]
 
@@ -83,13 +83,13 @@ Als u de Profiler aan een proces wilt koppelen, kiest u in het menu **analyseren
 
 ![Profiel optie bijvoegen][6]
 
-Zoek het proces WaWorkerHost. exe voor een rol van werk rollen.
+Zoek het WaWorkerHost.exe proces voor een rol van werk rollen.
 
 ![WaWorkerHost-proces][7]
 
 Als uw projectmap zich op een netwerk station bevindt, wordt u door de Profiler gevraagd een andere locatie op te geven voor het opslaan van de profilerings rapporten.
 
- U kunt ook koppelen aan een ondernemingsrol door te koppelen aan WaIISHost. exe.
+ U kunt ook koppelen aan een ondernemingsrol door te koppelen aan WaIISHost.exe.
 Als er meerdere werk rollen worden verwerkt in uw toepassing, moet u de processID gebruiken om ze te onderscheiden. U kunt de processID programmatisch opvragen door het proces object te openen. Als u deze code bijvoorbeeld toevoegt aan de run-methode van de RoleEntryPoint-afgeleide klasse in een rol, kunt u het logboek in de interface van de compute-emulator bekijken om te weten welk proces moet worden gebruikt om verbinding te maken.
 
 ```csharp
@@ -153,14 +153,14 @@ De rapporten markeren de verschillen tussen de twee uitvoeringen.
 
 ![Vergelijkend rapport][16]
 
-Gefeliciteerd! U bent klaar met de Profiler.
+Gefeliciteerd U bent klaar met de Profiler.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 * Zorg ervoor dat u een release-build profileert en start zonder fouten opsporen.
 * Als de optie koppelen/loskoppelen niet is ingeschakeld in het menu Profiler, voert u de wizard prestaties uit.
 * Gebruik de compute emulator-gebruikers interface om de status van uw toepassing weer te geven. 
 * Als u problemen ondervindt bij het starten van toepassingen in de emulator of het koppelen van de Profiler, sluit u de compute-emulator af en start u deze opnieuw. Als het probleem hiermee niet is opgelost, probeert u opnieuw op te starten. Dit probleem kan optreden als u de compute-emulator gebruikt voor het onderbreken en verwijderen van implementaties die worden uitgevoerd.
-* Als u een van de profilerings opdrachten van de opdracht regel hebt gebruikt, met name de algemene instellingen, moet u ervoor zorgen dat VSPerfClrEnv/globaloff is aangeroepen en dat VsPerfMon. exe is afgesloten.
+* Als u een van de profilerings opdrachten van de opdracht regel hebt gebruikt, met name de algemene instellingen, moet u ervoor zorgen dat VSPerfClrEnv/globaloff is aangeroepen en dat VsPerfMon.exe is afgesloten.
 * Als bij de steek proef het bericht ' PRF0025: er zijn geen gegevens verzameld, ' wordt weer gegeven, controleert u of het proces dat u hebt gekoppeld, een CPU-activiteit heeft. Toepassingen die geen reken werkzaamheden uitvoeren, produceren mogelijk geen steekproef gegevens.  Het is ook mogelijk dat het proces is afgesloten voordat er een steek proef is uitgevoerd. Controleer of de uitvoerings methode voor een rol waarvoor u een profile ring maakt, niet wordt beëindigd.
 
 ## <a name="next-steps"></a>Volgende stappen

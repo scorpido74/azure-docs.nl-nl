@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
 ms.openlocfilehash: eb3d5fea68b5b1b6e648943cb3dbaab5857e9e07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68608002"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>De oplossings versneller voor externe controle aanpassen
@@ -23,7 +23,7 @@ In dit artikel vindt u informatie over hoe u toegang kunt krijgen tot de bron co
 
 ## <a name="prepare-a-local-development-environment-for-the-ui"></a>Een lokale ontwikkel omgeving voorbereiden voor de gebruikers interface
 
-De gebruikers interface van de oplossing voor externe controle van oplossingen wordt geïmplementeerd met het Framework reageren. js. U vindt de bron code in de [Azure-IOT-PCs-Remote-Monitoring-webui github-](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) opslag plaats.
+De code van de gebruikers interface voor de externe controle oplossing wordt geïmplementeerd met behulp van het React.js-Framework. U vindt de bron code in de [Azure-IOT-PCs-Remote-Monitoring-webui github-](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) opslag plaats.
 
 Als u wijzigingen wilt aanbrengen in de gebruikers interface, kunt u een kopie van het bestand lokaal uitvoeren. Voor het volt ooien van acties zoals het ophalen van telemetrie, maakt de lokale kopie verbinding met een geïmplementeerd exemplaar van de oplossing.
 
@@ -73,13 +73,13 @@ De volgende stappen beschrijven het proces voor het instellen van een lokale omg
     npm start
     ```
 
-1. Met de vorige opdracht wordt de gebruikers interface lokaal uitgevoerd\/op http:/localhost: 3000/dash board. U kunt de code bewerken terwijl de site wordt uitgevoerd en de update dynamisch weer geven.
+1. Met de vorige opdracht wordt de gebruikers interface lokaal uitgevoerd op http: \/ /localhost: 3000/dash board. U kunt de code bewerken terwijl de site wordt uitgevoerd en de update dynamisch weer geven.
 
 ## <a name="customize-the-layout"></a>De lay-out aanpassen
 
 Elke pagina in de oplossing voor controle op afstand bestaat uit een set besturings elementen, aangeduid als *panels* in de bron code. De **Dashboard** pagina bestaat uit vijf deel Vensters: overzicht, kaart, waarschuwingen, telemetrie en analyses. U vindt de bron code waarmee elke pagina en de bijbehorende panelen worden gedefinieerd in de [pc's-externe controle-webui github-](https://github.com/Azure/pcs-remote-monitoring-webui) opslag plaats. De code die de **Dashboard** pagina, de indeling en de panelen op de pagina definieert, bevindt zich bijvoorbeeld in de map [src/Components/pages/dash board](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) .
 
-Omdat de panelen hun eigen indeling en grootte beheren, kunt u eenvoudig de lay-out van een pagina wijzigen. Breng de volgende wijzigingen aan in het **page content** -element `src/components/pages/dashboard/dashboard.js` in het bestand:
+Omdat de panelen hun eigen indeling en grootte beheren, kunt u eenvoudig de lay-out van een pagina wijzigen. Breng de volgende wijzigingen aan in het **page content** -element in het `src/components/pages/dashboard/dashboard.js` bestand:
 
 * Hiermee wordt de positie van de deel Vensters kaart en telemetrie gewisseld.
 * De relatieve breedten van de deel Vensters kaart en analyse wijzigen.
@@ -154,7 +154,7 @@ Omdat de panelen hun eigen indeling en grootte beheren, kunt u eenvoudig de lay-
 
 ![Indeling van het deel venster wijzigen](./media/iot-accelerators-remote-monitoring-customize/layout.png)
 
-U kunt ook meerdere exemplaren van hetzelfde paneel of meerdere versies toevoegen als u [een paneel dupliceert en aanpast](#duplicate-and-customize-an-existing-control). In het volgende voor beeld ziet u hoe u twee exemplaren van het deel venster telemetrie toevoegt. Bewerk het `src/components/pages/dashboard/dashboard.js` bestand om deze wijzigingen aan te brengen:
+U kunt ook meerdere exemplaren van hetzelfde paneel of meerdere versies toevoegen als u [een paneel dupliceert en aanpast](#duplicate-and-customize-an-existing-control). In het volgende voor beeld ziet u hoe u twee exemplaren van het deel venster telemetrie toevoegt. Bewerk het bestand om deze wijzigingen aan te brengen `src/components/pages/dashboard/dashboard.js` :
 
 ```javascript
 <PageContent className="dashboard-container">
@@ -243,15 +243,15 @@ U kunt vervolgens verschillende telemetrie in elk deel venster bekijken:
 
 In de volgende stappen wordt beschreven hoe u een bestaand paneel dupliceert, wijzigt en hoe u de gewijzigde versie gebruikt. In de stappen wordt het deel venster **waarschuwingen** als voor beeld gebruikt:
 
-1. Maak in uw lokale kopie van de opslag plaats een kopie van de map met **waarschuwingen** in `src/components/pages/dashboard/panels` de map. Geef de nieuwe kopie **cust_alerts**een naam.
+1. Maak in uw lokale kopie van de opslag plaats een kopie van de map met **waarschuwingen** in de `src/components/pages/dashboard/panels` map. Geef de nieuwe kopie **cust_alerts**een naam.
 
-1. In het bestand **alertsPanel. js** in de map **cust_alerts** bewerkt u de naam van de klasse die moet worden **CustAlertsPanel**:
+1. Bewerk in het **alertsPanel.js** -bestand in de map **cust_alerts** de naam van de klasse **CustAlertsPanel**:
 
     ```javascript
     export class CustAlertsPanel extends Component {
     ```
 
-1. Voeg de volgende regel toe aan `src/components/pages/dashboard/panels/index.js` het bestand:
+1. Voeg de volgende regel toe aan het `src/components/pages/dashboard/panels/index.js` bestand:
 
     ```javascript
     export * from './cust_alerts';
@@ -308,9 +308,9 @@ In de volgende scherm afbeelding ziet u de nieuwe versie van het paneel **waarsc
 
 ## <a name="customize-the-telemetry-chart"></a>De telemetrie-grafiek aanpassen
 
-De bestanden in de `src/components/pages/dashboard/panels/telemtry` map definiëren de telemetrie-grafiek op de **Dashboard** pagina. De gebruikers interface haalt de telemetrie op uit de back- `src/services/telemetryService.js` end van de oplossing in het bestand. De volgende stappen laten zien hoe u de periode van 15 tot 5 minuten kunt wijzigen die in het telemetrie-diagram wordt weer gegeven:
+De bestanden in de `src/components/pages/dashboard/panels/telemtry` map definiëren de telemetrie-grafiek op de **Dashboard** pagina. De gebruikers interface haalt de telemetrie op uit de back-end van de oplossing in het `src/services/telemetryService.js` bestand. De volgende stappen laten zien hoe u de periode van 15 tot 5 minuten kunt wijzigen die in het telemetrie-diagram wordt weer gegeven:
 
-1. Zoek in `src/services/telemetryService.js` het bestand de functie met de naam **getTelemetryByDeviceIdP15M**. Maak een kopie van deze functie en wijzig de kopie als volgt:
+1. Zoek in het `src/services/telemetryService.js` bestand de functie met de naam **getTelemetryByDeviceIdP15M**. Maak een kopie van deze functie en wijzig de kopie als volgt:
 
     ```javascript
     static getTelemetryByDeviceIdP5M(devices = []) {
@@ -323,7 +323,7 @@ De bestanden in de `src/components/pages/dashboard/panels/telemtry` map definië
     }
     ```
 
-1. Als u deze nieuwe functie wilt gebruiken om de telemetrie-grafiek `src/components/pages/dashboard/dashboard.js` te vullen, opent u het bestand. Zoek de regel die de telemetrie-stroom initialiseert en wijzig deze als volgt:
+1. Als u deze nieuwe functie wilt gebruiken om de telemetrie-grafiek te vullen, opent u het `src/components/pages/dashboard/dashboard.js` bestand. Zoek de regel die de telemetrie-stroom initialiseert en wijzig deze als volgt:
 
     ```javascript
     const getTelemetryStream = ({ deviceIds = [] }) => TelemetryService.getTelemetryByDeviceIdP5M(deviceIds)
@@ -435,7 +435,7 @@ Op de **Dashboard** pagina worden kpi's weer gegeven in het deel venster **analy
       t={t} />
     ```
 
-U hebt nu de wijzigingen in het `src/components/pages/dashboard/dashboard.js` bestand voltooid. In de volgende stappen worden de wijzigingen beschreven die in `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` het bestand moeten worden aangebracht om de nieuwe KPI weer te geven:
+U hebt nu de wijzigingen in het `src/components/pages/dashboard/dashboard.js` bestand voltooid. In de volgende stappen worden de wijzigingen beschreven die in het bestand moeten worden aangebracht `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` om de nieuwe KPI weer te geven:
 
 1. Wijzig de volgende regel code om de nieuwe KPI-waarde als volgt op te halen:
 

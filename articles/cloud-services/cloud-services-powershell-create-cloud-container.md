@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
 ms.openlocfilehash: ef9d3c7c479df9c71a855f0a243b5b9d0da947d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68359503"
 ---
 # <a name="use-an-azure-powershell-command-to-create-an-empty-cloud-service-container"></a>Een Azure PowerShell opdracht gebruiken om een lege Cloud service container te maken
@@ -52,4 +52,4 @@ Get-help New-AzureService
 ### <a name="next-steps"></a>Volgende stappen
 
 * Raadpleeg de opdrachten [Get-service](/powershell/module/servicemanagement/azure/Get-AzureService?view=azuresmps-4.0.0), [Remove-service](/powershell/module/servicemanagement/azure/Remove-AzureService?view=azuresmps-4.0.0)en [set-service](/powershell/module/servicemanagement/azure/set-azureservice?view=azuresmps-4.0.0) om de Cloud service-implementatie te beheren. U kunt ook verwijzen naar [Cloud Services configureren](cloud-services-how-to-configure-portal.md) voor meer informatie.
-* Als u uw Cloud service project wilt publiceren naar Azure, raadpleegt u het code voorbeeld **PublishCloudService. ps1** van de [gearchiveerde Cloud Services-opslag plaats](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Scripts/cloud-services-continuous-delivery).
+* Als u uw Cloud service project wilt publiceren naar Azure, raadpleegt u het **PublishCloudService.ps1** code voorbeeld van [gearchiveerde Cloud Services-opslag plaats](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Scripts/cloud-services-continuous-delivery).

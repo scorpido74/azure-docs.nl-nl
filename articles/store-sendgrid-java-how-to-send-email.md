@@ -16,10 +16,10 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 ms.openlocfilehash: 8ae948e9c79cff4cd0c896b250743fd9dc521752
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67876515"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>E-mail verzenden met SendGrid vanuit Java
@@ -35,13 +35,13 @@ SendGrid is een [cloud-gebaseerde e-mail service] die betrouw bare [transactione
 * Vragen van klanten door sturen
 * E-mail meldingen van uw toepassing
 
-Zie <https://sendgrid.com> voor meer informatie.
+Voor meer informatie raadpleegt u <https://sendgrid.com>.
 
 ## <a name="create-a-sendgrid-account"></a>Een SendGrid-account maken
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
 ## <a name="how-to-use-the-javaxmail-libraries"></a>Procedure: de bibliotheken javax. mail gebruiken
-Zorg ervoor dat u de Java. mail-bibliotheken kunt <https://www.oracle.com/technetwork/java/javamail> ophalen, bijvoorbeeld uit en importeren in uw code. Op hoog niveau is het proces voor het gebruik van de javax. mail-bibliotheek voor het verzenden van e-mail via SMTP de volgende handelingen uit te voeren:
+Zorg ervoor dat u de Java. mail-bibliotheken kunt ophalen, bijvoorbeeld uit <https://www.oracle.com/technetwork/java/javamail> en importeren in uw code. Op hoog niveau is het proces voor het gebruik van de javax. mail-bibliotheek voor het verzenden van e-mail via SMTP de volgende handelingen uit te voeren:
 
 1. Geef de SMTP-waarden op, met inbegrip van de SMTP-server, die voor SendGrid is smtp.sendgrid.net.
 

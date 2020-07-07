@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
 ms.openlocfilehash: f136fb666e93adc0fe92aee014e3da9a37bbd6aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70035797"
 ---
 # <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-media-services-api"></a>Azure CLI gebruiken om een Azure AD-app te maken en deze te configureren voor toegang tot Media Services-API 
@@ -34,7 +34,7 @@ In dit onderwerp wordt beschreven hoe u de Azure CLI gebruikt om een Azure Activ
 
 ## <a name="use-the-azure-cloud-shell"></a>De Azure Cloud Shell gebruiken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Start de Cloud Shell vanuit het bovenste navigatie deel venster van de portal.
 
     ![Cloud Shell](./media/media-services-cli-create-and-configure-aad-app/media-services-cli-create-and-configure-aad-app01.png) 

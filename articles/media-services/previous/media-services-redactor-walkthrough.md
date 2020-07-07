@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
 ms.openlocfilehash: a8db8de6ef062dcf757f3d264379677d6550ea3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69997679"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Gezichten met Azure Media Analytics-Overzicht redigeren
@@ -67,11 +67,11 @@ De uitvoer bevat een consistentie bestand met de locatie gegevens van het Opper 
 
     ![Gezichten onherkenbaar maken](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough005.png)
 
-2. Beschrijving Upload een bestand ' Dance_idlist. txt ' met daarin een lijst met door een nieuwe regel gescheiden waarden van de Id's die u wilt redigeren. 
+2. Beschrijving Upload een Dance_idlist.txt-bestand met een door een nieuwe regel gescheiden lijst met de Id's die u wilt redigeren. 
 
     ![Gezichten onherkenbaar maken](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
 
-3. Beschrijving Breng wijzigingen aan in het bestand annotaties. json, zoals het verg Roten van de grenzen van het selectie kader. 
+3. Beschrijving Breng wijzigingen aan in het annotations.jsop bestand, zoals het verg Roten van de grenzen van het selectie kader. 
 4. Klik met de rechter muisknop op het uitvoer activum van de eerste stap, selecteer de Redactor en voer uit met de modus **redactie** . 
 
     ![Gezichten onherkenbaar maken](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
@@ -95,11 +95,11 @@ Als u een ontwikkelaar bent die de gegevens van de JSON-aantekening probeert te 
     ![Gezichten onherkenbaar maken](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
 
 2.  Down load FFMPEG van [hier](https://ffmpeg.org/download.html). Dit project is oorspronkelijk ontwikkeld met versie be1d324 (2016-10-04) met statische koppeling. 
-3.  Kopieer ffmpeg. exe en ffprobe. exe naar dezelfde uitvoermap als AzureMediaRedactor. exe. 
+3.  Kopieer ffmpeg.exe en ffprobe.exe naar dezelfde uitvoermap als AzureMediaRedactor.exe. 
 
     ![Gezichten onherkenbaar maken](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
 
-4. Voer AzureMediaRedactor. exe uit. 
+4. Voer AzureMediaRedactor.exe uit. 
 
 ### <a name="use-the-tool"></a>Het hulp programma gebruiken
 
@@ -113,10 +113,10 @@ Als u een ontwikkelaar bent die de gegevens van de JSON-aantekening probeert te 
     
     ![Gezichten onherkenbaar maken](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
 
-5.  Het onderste tekst veld wordt bijgewerkt met de face-Id's. Maak een bestand met de naam ' idlist. txt ' met deze Id's als een lijst met door een nieuwe regel gescheiden waarden. 
+5.  Het onderste tekst veld wordt bijgewerkt met de face-Id's. Maak een bestand met de naam ' idlist.txt ' met deze Id's als een lijst met door een nieuwe regel gescheiden waarden. 
 
     >[!NOTE]
-    > Idlist. txt moet worden opgeslagen in ANSI. U kunt Klad blok gebruiken om op te slaan in ANSI.
+    > Het idlist.txt moet worden opgeslagen in ANSI. U kunt Klad blok gebruiken om op te slaan in ANSI.
     
 6.  Upload dit bestand uit stap 1 naar het uitvoer activum. Upload de oorspronkelijke video naar dit activum en stel deze in als primair activum. 
 7.  Een redactie taak uitvoeren op deze asset met de modus ' redigeren ' om de uiteindelijke, geredigeerde video te verkrijgen. 

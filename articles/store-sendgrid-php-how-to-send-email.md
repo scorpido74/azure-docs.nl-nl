@@ -16,10 +16,10 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
 ms.openlocfilehash: b3a9fee09d1eac6fb4d716af83c348cb2c21f7a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67870916"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>De SendGrid-e-mail service van PHP gebruiken
@@ -37,7 +37,7 @@ SendGrid is een [cloud-gebaseerde e-mail service] die betrouw bare [transactione
 * Vragen van klanten door sturen
 * E-mail meldingen van uw toepassing
 
-Zie [https://sendgrid.com][https://sendgrid.com]voor meer informatie.
+Zie voor meer informatie [https://sendgrid.com][https://sendgrid.com] .
 
 ## <a name="create-a-sendgrid-account"></a>Een SendGrid-account maken
 
@@ -53,7 +53,7 @@ U kunt e-mail verzenden via SMTP of met de Web-API van SendGrid.
 
 ### <a name="smtp-api"></a>SMTP-API
 
-Als u e-mail berichten wilt verzenden met de SendGrid SMTP API, gebruikt u *Swift Mailer*, een op onderdelen gebaseerde bibliotheek voor het verzenden van e-mail berichten van PHP-toepassingen. U kunt de [Swift Mailer-bibliotheek](https://swiftmailer.symfony.com/) v 5.3.0 downloaden (gebruik [Composer] om de SWIFT-mailer te installeren). Het verzenden van een e-mail met de bibliotheek omvat het `Swift\_SmtpTransport`maken `Swift\_Mailer`van instanties `Swift\_Message` van de klassen,,, en het instellen van `Swift\_Mailer::send` de juiste eigenschappen, en het aanroepen van de-methode.
+Als u e-mail berichten wilt verzenden met de SendGrid SMTP API, gebruikt u *Swift Mailer*, een op onderdelen gebaseerde bibliotheek voor het verzenden van e-mail berichten van PHP-toepassingen. U kunt de [Swift Mailer-bibliotheek](https://swiftmailer.symfony.com/) v 5.3.0 downloaden (gebruik [Composer] om de SWIFT-mailer te installeren). Het verzenden van een e-mail met de bibliotheek omvat het maken van instanties van de `Swift\_SmtpTransport` `Swift\_Mailer` klassen,,, en het `Swift\_Message` instellen van de juiste eigenschappen, en het aanroepen van de- `Swift\_Mailer::send` methode.
 
 ```php
 <?php

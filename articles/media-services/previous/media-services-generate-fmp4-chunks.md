@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 48c09a6100586c0c99f3d54f9708c770488c681f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61463838"
 ---
 #  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>Een coderings taak maken voor het genereren van fMP4-segmenten
@@ -45,7 +45,7 @@ In het volgende code voorbeeld wordt Media Services .NET SDK gebruikt om de volg
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Maak en configureer een Visual Studio-project.
 
-Stel uw ontwikkel omgeving in en vul in het bestand app. config de verbindings informatie in, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
+Stel uw ontwikkel omgeving in en vul het app.config bestand in met verbindings informatie, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Voorbeeld
 

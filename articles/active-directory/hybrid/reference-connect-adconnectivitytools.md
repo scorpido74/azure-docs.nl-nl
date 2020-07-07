@@ -11,10 +11,10 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6b90ff82601acca1249c7d8c353944e39e89f95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66473787"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect: ADConnectivityTools Power shell-referentie
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)voor meer informatie.
+Zie about_CommonParameters (voor meer informatie https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="confirm-forestexists"></a>Bevestigen-ForestExists
 
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)voor meer informatie.
+Zie about_CommonParameters (voor meer informatie https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="confirm-functionallevel"></a>Bevestigen-FunctionalLevel
 
@@ -254,7 +254,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)voor meer informatie.
+Zie about_CommonParameters (voor meer informatie https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="confirm-networkconnectivity"></a>Bevestigen-NetworkConnectivity
 
@@ -310,7 +310,8 @@ Accept wildcard characters: False
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
 Als de gebruiker geen DNS-services van de AD-site/aanmeldings domein controller gebruikt, kan het zijn dat u poort 53 wilt overs Laan.
-De gebruiker moet nog wel _. LDAP. _tcp kunnen omzetten. \<forestfqdn\> , zodat de configuratie van de Active Directory-Connector slaagt.
+De gebruiker moet nog wel _. LDAP. _tcp kunnen omzetten.\<forestfqdn\>
+de configuratie van de Active Directory-Connector slaagt alleen als deze is voltooid.
 
 ```yml
 Type: SwitchParameter
@@ -344,7 +345,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)voor meer informatie.
+Zie about_CommonParameters (voor meer informatie https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="confirm-targetsarereachable"></a>Bevestigen-TargetsAreReachable
 
@@ -413,7 +414,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)voor meer informatie.
+Zie about_CommonParameters (voor meer informatie https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="confirm-validdomains"></a>Bevestigen-ValidDomains
 
@@ -513,7 +514,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)voor meer informatie.
+Zie about_CommonParameters (voor meer informatie https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="confirm-validenterpriseadmincredentials"></a>Bevestigen-ValidEnterpriseAdminCredentials
 
@@ -567,7 +568,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)voor meer informatie.
+Zie about_CommonParameters (voor meer informatie https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="get-domainfqdndata"></a>Get-DomainFQDNData
 
@@ -656,7 +657,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)voor meer informatie.
+Zie about_CommonParameters (voor meer informatie https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="get-forestfqdn"></a>Get-ForestFQDN
 
@@ -726,7 +727,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)voor meer informatie.
+Zie about_CommonParameters (voor meer informatie https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="start-connectivityvalidation"></a>Start-ConnectivityValidation
 
@@ -808,7 +809,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)voor meer informatie.
+Zie about_CommonParameters (voor meer informatie https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="start-networkconnectivitydiagnosistools"></a>Start-NetworkConnectivityDiagnosisTools
 
@@ -962,4 +963,4 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)voor meer informatie.
+Zie about_CommonParameters (voor meer informatie https://go.microsoft.com/fwlink/?LinkID=113216) .

@@ -9,23 +9,23 @@ ms.date: 06/14/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 4e699707db02de07f3d1ebb7d1fa8d0575a10aa3
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67836933"
 ---
-FTP en lokale Git kunnen worden geïmplementeerd in een Azure-web-app met behulp van een *implementatie gebruiker*. Wanneer u de implementatie gebruiker hebt geconfigureerd, kunt u deze gebruiken voor al uw Azure-implementaties. De gebruikers naam en het wacht woord voor implementatie op account niveau verschillen van de referenties van uw Azure-abonnement. 
+FTP en lokale Git kunnen worden geïmplementeerd in een Azure-web-app met behulp van een *implementatiegebruikers*. Zodra u deze implementatiegebruiker hebt gemaakt, kunt u deze voor al uw Azure-implementaties gebruiken. Uw gebruikersnaam en wachtwoord voor implementatie op accountniveau verschillen van de referenties voor uw Azure-abonnement. 
 
 Als u de implementatie gebruiker wilt configureren, voert u de opdracht [AZ webapp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) uit in azure Cloud shell. Vervang \<username> en \<password> door een gebruikers naam en wacht woord voor de implementatie gebruiker. 
 
-- De gebruikers naam moet uniek zijn binnen Azure en voor lokale Git-pushes mag het symbool ' @ ' niet bevatten. 
-- Het wacht woord moet ten minste acht tekens lang zijn, met twee van de volgende drie elementen: letters, cijfers en symbolen. 
+- De gebruikersnaam moet uniek zijn binnen Azure en voor lokale Git-pushes en mag het symbool @ niet bevatten. 
+- Het wachtwoord moet ten minste acht tekens lang zijn en minimaal twee van de volgende drie typen elementen bevatten: letters, cijfers en symbolen. 
 
 ```azurecli-interactive
 az webapp deployment user set --user-name <username> --password <password>
 ```
 
-De JSON-uitvoer toont het wacht woord als `null` . Als er een `'Conflict'. Details: 409`-fout optreedt, wijzigt u de gebruikersnaam. Als er een `'Bad Request'. Details: 400`-fout optreedt, kiest u een sterker wachtwoord. 
+De JSON-uitvoer toont het wachtwoord als `null`. Als er een `'Conflict'. Details: 409`-fout optreedt, wijzigt u de gebruikersnaam. Als er een `'Bad Request'. Details: 400`-fout optreedt, kiest u een sterker wachtwoord. 
 
-Registreer de gebruikers naam en het wacht woord die u wilt gebruiken om uw web-apps te implementeren.
+Noteer uw gebruikersnaam en wachtwoord om te gebruiken bij het implementeren van uw web-apps.

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: 18e93ce18ed746612996399dc1aeb258abd26165
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69637212"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>Twilio gebruiken voor spraak-en SMS-mogelijkheden in Java
@@ -28,7 +28,7 @@ Twilio is een Telephony Web-Service-API waarmee u uw bestaande webtalen en-vaard
 Met **Twilio Voice** kunnen uw toepassingen telefoon gesprekken voeren en ontvangen. Met **TWILIO SMS** kunnen uw toepassingen SMS-berichten maken en ontvangen. Met **Twilio-client** kunnen uw toepassingen spraak communicatie mogelijk maken via bestaande Internet verbindingen, waaronder mobiele verbindingen.
 
 ## <a name="twilio-pricing-and-special-offers"></a><a id="Pricing"></a>Prijzen voor Twilio en speciale aanbiedingen
-Informatie over prijzen voor Twilio is beschikbaar op [Twilio-prijzen][twilio_pricing]. Azure-klanten ontvangen een [speciale aanbieding][special_offer]: een gratis tegoed van 1000 teksten of 1000 binnenkomende minuten. Als u zich voor deze aanbieding wilt aanmelden of meer informatie wilt krijgen [https://ahoy.twilio.com/azure][special_offer], gaat u naar.
+Informatie over prijzen voor Twilio is beschikbaar op [Twilio-prijzen][twilio_pricing]. Azure-klanten ontvangen een [speciale aanbieding][special_offer]: een gratis tegoed van 1000 teksten of 1000 binnenkomende minuten. Als u zich voor deze aanbieding wilt aanmelden of meer informatie wilt krijgen, gaat u naar [https://ahoy.twilio.com/azure][special_offer] .
 
 ## <a name="concepts"></a><a id="Concepts"></a>Concepten
 De Twilio-API is een resterende API die spraak-en SMS-functionaliteit biedt voor toepassingen. Client bibliotheken zijn beschikbaar in meerdere talen. Zie [TWILIO API libraries][twilio_libraries]voor een lijst.
@@ -36,21 +36,21 @@ De Twilio-API is een resterende API die spraak-en SMS-functionaliteit biedt voor
 De belangrijkste aspecten van de Twilio-API zijn Twilio-werk woorden en Twilio Markup Language (TwiML).
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio-werk woorden
-De API maakt gebruik van Twilio-werk woorden. de ** &lt;term zeg&gt; ** geeft bijvoorbeeld Twilio aan audibly een bericht te verzenden bij een aanroep.
+De API maakt gebruik van Twilio-werk woorden. de term ** &lt; zeg &gt; ** geeft bijvoorbeeld Twilio aan audibly een bericht te verzenden bij een aanroep.
 
 Hier volgt een lijst met Twilio-werk woorden.
 
-* Dial: verbindt de beller met een andere telefoon. ** &lt;&gt;**
-* Verzamelen: Hiermee worden numerieke cijfers op het telefoon blok verzameld. ** &lt;&gt;**
-* Ophangen: beëindigt een aanroep. ** &lt;&gt;**
-* Afspelen: Hiermee wordt een audio bestand afgespeeld. ** &lt;&gt;**
-* Wachtrij: Voeg het toe aan een wachtrij met bellers. ** &lt;&gt;**
-* **Pause&gt;: wacht een opgegeven aantal seconden op de &lt;** achtergrond.
-* Record: registreert de stem van de beller en retourneert een URL van een bestand dat de opname bevat. ** &lt;&gt;**
-* Omleiden: overdracht van de besturing van een aanroep of SMS naar de TwiML op een andere URL. ** &lt;&gt;**
-* Afwijzen: Hiermee wordt een inkomende oproep naar uw Twilio-nummer afgewezen zonder dat u wordt gefactureerd. ** &lt;&gt;**
-* Zeg: Hiermee wordt tekst geconverteerd naar spraak die tijdens een aanroep wordt gemaakt. ** &lt;&gt;**
-* SMS: er wordt een SMS-bericht verzonden. ** &lt;&gt;**
+* ** &lt; Dial &gt; **: verbindt de beller met een andere telefoon.
+* ** &lt; Verzamelen &gt; **: Hiermee worden numerieke cijfers op het telefoon blok verzameld.
+* ** &lt; Ophangen &gt; **: beëindigt een aanroep.
+* ** &lt; Afspelen &gt; **: Hiermee wordt een audio bestand afgespeeld.
+* ** &lt; Wachtrij &gt; **: Voeg het toe aan een wachtrij met bellers.
+* ** &lt; Pause &gt; **: wacht een opgegeven aantal seconden op de achtergrond.
+* ** &lt; Record &gt; **: registreert de stem van de beller en retourneert een URL van een bestand dat de opname bevat.
+* ** &lt; Omleiden &gt; **: overdracht van de besturing van een aanroep of SMS naar de TWIML op een andere URL.
+* ** &lt; Afwijzen &gt; **: Hiermee wordt een inkomende oproep naar uw Twilio-nummer afgewezen zonder dat u wordt gefactureerd.
+* ** &lt; Zeg &gt; **: Hiermee wordt tekst geconverteerd naar spraak die tijdens een aanroep wordt gemaakt.
+* ** &lt; SMS &gt; **: er wordt een SMS-bericht verzonden.
 
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
 TwiML is een reeks op XML gebaseerde instructies op basis van de Twilio-werk woorden die Twilio over het verwerken van een aanroep of SMS.
@@ -75,7 +75,7 @@ Wanneer u zich aanmeldt voor een Twilio-account, ontvangt u een account-ID en ee
 
 ## <a name="create-a-java-application"></a><a id="create_app"></a>Een Java-toepassing maken
 1. Haal het Twilioe JAR op en voeg deze toe aan uw Java-build-pad en uw WAR-implementatie-assembly. [https://github.com/twilio/twilio-java][twilio_java]U kunt de GitHub-bronnen downloaden en uw eigen jar maken, of een vooraf gebouwde jar (met of zonder afhankelijkheden) downloaden.
-2. Zorg ervoor dat de JDK van de **cacerts** -opslag bevat het certificaat voor de Equifax Secure Certificate Authority met MD5-vinger afdruk 67: CB: 9D: C0:13:24:8 bis: 82:9b: B2:17:1e: D1:1b: EC: D4 (het serie nummer is 35: de: F4: CF en de SHA1-vinger afdruk is D2:32:09: AD: 23: D3:14:23::................ Dit is het certificaat van de certificerings instantie (CA [https://api.twilio.com][twilio_api_service] ) voor de service, die wordt aangeroepen wanneer u Twilio-api's gebruikt. Zie [een certificaat toevoegen aan het certificaat archief van de Java-ca][add_ca_cert]voor meer informatie over het controleren van de **cacerts** -jdk van uw computer met het juiste CA-certificaat.
+2. Zorg ervoor dat de JDK van de **cacerts** -opslag bevat het certificaat voor de Equifax Secure Certificate Authority met MD5-vinger afdruk 67: CB: 9D: C0:13:24:8 bis: 82:9b: B2:17:1e: D1:1b: EC: D4 (het serie nummer is 35: de: F4: CF en de SHA1-vinger afdruk is D2:32:09: AD: 23: D3:14:23::................ Dit is het certificaat van de certificerings instantie (CA) voor de [https://api.twilio.com][twilio_api_service] service, die wordt aangeroepen wanneer u Twilio-api's gebruikt. Zie [een certificaat toevoegen aan het certificaat archief van de Java-ca][add_ca_cert]voor meer informatie over het controleren van de **cacerts** -jdk van uw computer met het juiste CA-certificaat.
 
 Gedetailleerde instructies voor het gebruik van de Twilio-client bibliotheek voor Java zijn beschikbaar voor [het maken van een telefoon oproep met behulp van Twilio in een Java-toepassing in azure][howto_phonecall_java].
 
@@ -127,7 +127,7 @@ Hieronder ziet u hoe u een uitgaande oproep maakt met behulp van de **aanroep** 
     Call.creator(to, from, uri).create();
 ```
 
-Zie [https://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls]voor meer informatie over de para meters die worden door gegeven aan de methode **call. Creator** .
+Zie voor meer informatie over de para meters die worden door gegeven aan de methode **call. Creator** [https://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls] .
 
 Zoals vermeld, gebruikt deze code een Twilio-site voor het retour neren van het TwiML-antwoord. U kunt in plaats daarvan uw eigen site gebruiken om het TwiML-antwoord op te geven. Zie [TwiML-antwoorden bieden in een Java-toepassing op Azure](#howto_provide_twiml_responses)voor meer informatie.
 
@@ -153,10 +153,10 @@ Hieronder ziet u hoe u een SMS-bericht verzendt met behulp van de **bericht** kl
     Message sms = Message.creator(to, from, body).create();
 ```
 
-Zie [https://www.twilio.com/docs/api/rest/sending-sms][twilio_rest_sending_sms]voor meer informatie over de para meters die worden door gegeven aan de methode **Message. Creator** .
+Zie voor meer informatie over de para meters die worden door gegeven aan de methode **Message. Creator** [https://www.twilio.com/docs/api/rest/sending-sms][twilio_rest_sending_sms] .
 
 ## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>Procedure: TwiML-reacties van uw eigen website opgeven
-Wanneer uw toepassing een aanroep initieert naar de Twilio-API, bijvoorbeeld via de methode **CallCreator. Create** , stuurt Twilio uw aanvraag naar een URL die naar verwachting een TwiML-antwoord retourneert. In het bovenstaande voor beeld wordt gebruikgemaakt van [https://twimlets.com/message][twimlet_message_url]de TWILIO-URL. (Hoewel TwiML is ontworpen voor gebruik door webservices, kunt u de TwiML in uw browser weer geven. Klik [https://twimlets.com/message][twimlet_message_url] bijvoorbeeld om een leeg ** &lt;antwoord&gt; ** element weer te geven. Klik op [https://twimlets.com/message?Message%5B0%5D=Hello%20World%21][twimlet_message_url_hello_world] een ander voor beeld om een ** &lt;antwoord&gt; ** element te zien dat een ** &lt;element dict&gt; ** bevat.)
+Wanneer uw toepassing een aanroep initieert naar de Twilio-API, bijvoorbeeld via de methode **CallCreator. Create** , stuurt Twilio uw aanvraag naar een URL die naar verwachting een TwiML-antwoord retourneert. In het bovenstaande voor beeld wordt gebruikgemaakt van de Twilio-URL [https://twimlets.com/message][twimlet_message_url] . (Hoewel TwiML is ontworpen voor gebruik door webservices, kunt u de TwiML in uw browser weer geven. Klik bijvoorbeeld op [https://twimlets.com/message][twimlet_message_url] om een leeg ** &lt; antwoord &gt; ** element weer te geven. Klik op een ander voor beeld [https://twimlets.com/message?Message%5B0%5D=Hello%20World%21][twimlet_message_url_hello_world] om een ** &lt; &gt; antwoord** element te zien dat een element ** &lt; dict &gt; ** bevat.)
 
 In plaats van te vertrouwen op de Twilio-URL, kunt u uw eigen URL-site maken die HTTP-antwoorden retourneert. U kunt de site maken in elke taal die HTTP-antwoorden retourneert; in dit onderwerp wordt ervan uitgegaan dat u de URL op een JSP-pagina host.
 
@@ -183,9 +183,9 @@ De volgende JSP-pagina resulteert in een TwiML-antwoord met een tekst, bevat ver
     </Response>
 ```
 
-De para meter **ApiVersion** is beschikbaar in Twilio-spraak aanvragen (geen SMS-aanvragen). Zie <https://www.twilio.com/docs/api/twiml/twilio_request> en <https://www.twilio.com/docs/api/twiml/sms/twilio_request>voor een overzicht van de beschik bare aanvraag parameters voor TWILIO Voice-en SMS-aanvragen. De omgevings variabele **rolnaam** is beschikbaar als onderdeel van een Azure-implementatie. (Als u aangepaste omgevings variabelen wilt toevoegen, zodat ze kunnen worden opgehaald uit **System. GETENV**, raadpleegt u de sectie omgevings variabelen in de [configuratie-instellingen voor diverse rollen][misc_role_config_settings].)
+De para meter **ApiVersion** is beschikbaar in Twilio-spraak aanvragen (geen SMS-aanvragen). Zie en voor een overzicht van de beschik bare aanvraag parameters voor Twilio Voice-en SMS-aanvragen <https://www.twilio.com/docs/api/twiml/twilio_request> <https://www.twilio.com/docs/api/twiml/sms/twilio_request> . De omgevings variabele **rolnaam** is beschikbaar als onderdeel van een Azure-implementatie. (Als u aangepaste omgevings variabelen wilt toevoegen, zodat ze kunnen worden opgehaald uit **System. GETENV**, raadpleegt u de sectie omgevings variabelen in de [configuratie-instellingen voor diverse rollen][misc_role_config_settings].)
 
-Zodra u uw JSP-pagina hebt ingesteld om TwiML-antwoorden te geven, gebruikt u de URL van de JSP-pagina als de URL die wordt door gegeven aan de methode **call. Creator** . Als u bijvoorbeeld een webtoepassing met de naam MyTwiML hebt geïmplementeerd in een door Azure gehoste service en de naam van de JSP-pagina MyTwiML. jsp is, kan de URL worden door gegeven aan **call. Creator** , zoals wordt weer gegeven in het volgende:
+Zodra u uw JSP-pagina hebt ingesteld om TwiML-antwoorden te geven, gebruikt u de URL van de JSP-pagina als de URL die wordt door gegeven aan de methode **call. Creator** . Als u bijvoorbeeld een webtoepassing met de naam MyTwiML hebt geïmplementeerd in een door Azure gehoste service en de naam van de JSP-pagina mytwiml.jsp is, kan de URL worden door gegeven aan **call. Creator** , zoals wordt weer gegeven in het volgende:
 
 ```java
     // Declare To and From numbers and the URL of your JSP page

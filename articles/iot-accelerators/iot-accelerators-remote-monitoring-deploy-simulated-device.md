@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: 7cbab38db859935c9f4490d79a131d6c9a7e302b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66427565"
 ---
 # <a name="deploy-a-new-simulated-device"></a>Een nieuw gesimuleerd apparaat implementeren
@@ -33,14 +33,14 @@ Met de stappen in deze hand leiding leert u het volgende:
 
 Als u de stappen in deze hand leiding wilt uitvoeren, hebt u een actief Azure-abonnement nodig.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u deze hand leiding wilt volgen, hebt u het volgende nodig:
 
 - Een geïmplementeerd exemplaar van de [oplossings versneller voor externe controle](https://www.azureiotsolutions.com/Accelerators#solutions/types/RM2).
-- Een lokale **bash** -shell om de `ssh` opdrachten `scp` en uit te voeren. Een eenvoudige manier om **bash** te installeren in Windows is door [Git](https://git-scm.com/download/win)te installeren.
+- Een lokale **bash** -shell om de `ssh` opdrachten en uit te voeren `scp` . Een eenvoudige manier om **bash** te installeren in Windows is door [Git](https://git-scm.com/download/win)te installeren.
 - Uw aangepaste model bestanden voor apparaten, zoals de modellen die zijn beschreven in [een nieuw gesimuleerd apparaat maken en testen](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
 [!INCLUDE [iot-solution-accelerators-access-vm](../../includes/iot-solution-accelerators-access-vm.md)]

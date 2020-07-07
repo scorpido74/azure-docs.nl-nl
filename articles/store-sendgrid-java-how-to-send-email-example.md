@@ -16,10 +16,10 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.openlocfilehash: 35307848c09391ae4468afc00adafd8171aaaa7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67876487"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>E-mail verzenden met SendGrid vanuit java in een Azure-implementatie
@@ -33,7 +33,7 @@ De resulterende e-mail ziet er ongeveer uit als in de volgende scherm afbeelding
 
 U moet de volgende stappen uitvoeren om de code in dit onderwerp te gebruiken:
 
-1. Verkrijg de javax. mail potten, bijvoorbeeld van <https://www.oracle.com/technetwork/java/javamail/index.html>.
+1. Verkrijg de javax. mail potten, bijvoorbeeld van <https://www.oracle.com/technetwork/java/javamail/index.html> .
 2. Voeg de potten aan uw Java-build-pad toe.
 3. Als u een eclips gebruikt om deze Java-toepassing te maken, kunt u de SendGrid-bibliotheken in uw toepassings implementatie bestand (WAR) met behulp van de implementatie assemblage functie van eclips toevoegen. Als u geen gebruik maakt van eclips om deze Java-toepassing te maken, moet u ervoor zorgen dat de bibliotheken zijn opgenomen in dezelfde Azure-rol als uw Java-toepassing en worden toegevoegd aan het pad naar de klasse van uw toepassing.
 
@@ -42,7 +42,7 @@ U moet ook uw eigen SendGrid-gebruikers naam en-wacht woord hebben om het e-mail
 Daarnaast is het raadzaam om de informatie over het [maken van een Hallo wereld-toepassing voor Azure in een eclips](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app?view=azure-java-stable)of met andere technieken voor het hosten van Java-toepassingen in azure te gebruiken als u geen gebruik maakt van eclips.
 
 ## <a name="create-a-web-form-for-sending-email"></a>Een webformulier voor het verzenden van e-mail maken
-De volgende code laat zien hoe u een webformulier maakt om gebruikers gegevens op te halen voor het verzenden van e-mail. Voor doel einden van deze inhoud heeft het JSP-bestand de naam **emailform. jsp**.
+De volgende code laat zien hoe u een webformulier maakt om gebruikers gegevens op te halen voor het verzenden van e-mail. Voor doel einden van deze inhoud heeft het JSP-bestand de naam **emailform.jsp**.
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
         pageEncoding="ISO-8859-1" %>
@@ -98,7 +98,7 @@ De volgende code laat zien hoe u een webformulier maakt om gebruikers gegevens o
     </html>
 
 ## <a name="create-the-code-to-send-the-email"></a>De code maken om het e-mail bericht te verzenden
-Met de volgende code, die wordt aangeroepen wanneer u het formulier in emailform. jsp voltooit, wordt het e-mail bericht gemaakt en verzonden. Voor doel einden van deze inhoud heeft het JSP-bestand de naam **sendemail. jsp**.
+Met de volgende code, die wordt aangeroepen wanneer u het formulier in emailform.jsp voltooit, wordt het e-mail bericht gemaakt en verzonden. Voor doel einden van deze inhoud heeft het JSP-bestand de naam **sendemail.jsp**.
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
         pageEncoding="ISO-8859-1" import="javax.activation.*, javax.mail.*, javax.mail.internet.*, java.util.Date, java.util.Properties" %>
@@ -205,12 +205,12 @@ Met de volgende code, die wordt aangeroepen wanneer u het formulier in emailform
     </body>
     </html>
 
-Naast het verzenden van het e-mail bericht, biedt emailform. jsp een resultaat voor de gebruiker. een voor beeld is de volgende scherm afbeelding:
+Naast het verzenden van het e-mail bericht levert emailform.jsp een resultaat voor de gebruiker. een voor beeld is de volgende scherm afbeelding:
 
 ![Resultaat van e-mail verzenden][emailresult]
 
 ## <a name="next-steps"></a>Volgende stappen
-Implementeer uw toepassing in de compute-emulator en voer in een browser emailform. jsp uit, geef waarden op in het formulier, klik op **Dit e-mail bericht verzenden**en Bekijk de resultaten in sendemail. jsp.
+Implementeer uw toepassing in de compute-emulator en voer de volgende handelingen uit in een browser emailform.jsp, geef waarden op in het formulier, klik op **Dit e-mail bericht verzenden**en Bekijk de resultaten in sendemail.jsp.
 
 Deze code is opgenomen om u te laten zien hoe u SendGrid in Java kunt gebruiken in Azure. Voordat u naar Azure implementeert in productie, wilt u mogelijk meer fout afhandeling of andere functies toevoegen. Bijvoorbeeld: 
 
