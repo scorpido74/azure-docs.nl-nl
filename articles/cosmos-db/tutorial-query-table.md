@@ -8,16 +8,16 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 06/05/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 14a6d2b448bb943356ae1738c3d53d9c6fee1a98
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: bab0487b09d7088e75ce762c9e4f0338cea507eb
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484676"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391890"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Zelfstudie: query's uitvoeren in Azure Cosmos DB met behulp van de Table-API
 
-De [tabel-API](table-introduction.md) van Azure Cosmos DB ondersteunt de uitvoering van OData- en [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service)-query's op gegevens van de sleutelwaarde (tabel).  
+De [tabel-API](table-introduction.md) van Azure Cosmos DB ondersteunt de uitvoering van OData- en [LINQ](/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service)-query's op gegevens van de sleutelwaarde (tabel).  
 
 Dit artikel behandelt de volgende taken:
 
@@ -32,7 +32,7 @@ In de query's in dit artikel wordt de volgende voorbeeldtabel `People` gebruikt:
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
 | Smith | Jeff | Jeff@contoso.com| 425-555-0104 |
 
-Zie [Querying Tables and Entities](https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities) (Tabellen en entiteiten opvragen) voor meer informatie over het uitvoeren van query's met behulp van de tabel-API.
+Zie [Querying Tables and Entities](/rest/api/storageservices/fileservices/querying-tables-and-entities) (Tabellen en entiteiten opvragen) voor meer informatie over het uitvoeren van query's met behulp van de tabel-API.
 
 Meer informatie over de premium-mogelijkheden van Azure Cosmos DB vindt u in [De tabel-API van Azure Cosmos DB](table-introduction.md) en [Ontwikkelen met de tabel-API in .NET](tutorial-develop-table-dotnet.md).
 
@@ -65,7 +65,7 @@ Houd bij het samenstellen van een filtertekenreeks rekening met deze regels:
 * Gebruik de logische operators die door de specificatie van het OData-protocol zijn gedefinieerd om een eigenschap te vergelijken met een waarde. U kunt een eigenschap niet vergelijken met een dynamische waarde. Eén kant van de expressie moet een constante zijn.
 * De eigenschapsnaam, operator en constante waarde moeten worden gescheiden door in URL gecodeerde spaties. Een spatie wordt in URL gecodeerd als `%20`.
 * Alle onderdelen van de filtertekenreeks zijn hoofdlettergevoelig.
-* Het filter retourneert alleen geldige resultaten als de constante waarde van hetzelfde gegevenstype is als de eigenschap. Zie [Understanding the Table Service Data Model](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model) (Het gegevensmodel van de tabelservice) voor meer informatie over ondersteunde eigenschapstypen.
+* Het filter retourneert alleen geldige resultaten als de constante waarde van hetzelfde gegevenstype is als de eigenschap. Zie [Understanding the Table Service Data Model](/rest/api/storageservices/understanding-the-table-service-data-model) (Het gegevensmodel van de tabelservice) voor meer informatie over ondersteunde eigenschapstypen.
 
 Hier volgt een voorbeeldquery die laat zien hoe u de eigenschappen PartitionKey en Email filtert met behulp van een OData-`$filter`.
 
@@ -75,7 +75,7 @@ Hier volgt een voorbeeldquery die laat zien hoe u de eigenschappen PartitionKey 
 https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and%20Email%20eq%20'Ben@contoso.com'
 ```
 
-Zie [Querying Tables and Entities](https://docs.microsoft.com/rest/api/storageservices/querying-tables-and-entities) (Tabellen en entiteiten opvragen) voor meer informatie over het samenstellen van filterexpressies voor verschillende soorten gegevens.
+Zie [Querying Tables and Entities](/rest/api/storageservices/querying-tables-and-entities) (Tabellen en entiteiten opvragen) voor meer informatie over het samenstellen van filterexpressies voor verschillende soorten gegevens.
 
 **Results**
 

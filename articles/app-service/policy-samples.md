@@ -1,15 +1,15 @@
 ---
 title: Ingebouwde beleidsdefinities voor Azure App Service
 description: Een overzicht van de ingebouwde Azure Policy-beleidsdefinities voor Azure App Service. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: b56f2807bc1e18aedce5757f90181b598a821221
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 348c70c1e26bd4325979659a8a0fd93c8a31f8fe
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887845"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316421"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-app-service"></a>Ingebouwde Azure Policy-definities voor Azure App Service
 

@@ -6,12 +6,12 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 0a6a1bd5e56f94a97779a85eafd0d46473cc2d0c
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 227e60486f0a6712b0d29de47983bad737481bd4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262426"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800542"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Azure Cosmos Emulator gebruiken voor lokaal ontwikkelen en testen
 
@@ -233,7 +233,9 @@ Vanaf de installatielocatie kunt u de opdrachtregel gebruiken om de emulator te 
 
 ### <a name="command-line-syntax"></a>De syntaxis van opdrachtregel
 
-    Microsoft.Azure.Cosmos.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/EnableMongoDbEndpoint] [/?]
+```cmd
+Microsoft.Azure.Cosmos.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/EnableMongoDbEndpoint] [/?]
+```
 
 Typ `Microsoft.Azure.Cosmos.Emulator.exe /?` bij de opdrachtprompt om een lijst met opties te zien.
 
@@ -418,7 +420,7 @@ Wanneer u de interactieve shell sluit nadat de emulator is gestart, wordt de con
 
 U opent de Data Explorer door naar de volgende URL in uw browser te gaan. Het eindpunt van de emulator wordt vermeld in het reactiebericht dat hierboven wordt getoond.
 
-    https://<emulator endpoint provided in response>/_explorer/index.html
+** \: https // ** \<emulator endpoint provided in response> **/_explorer/index.html**
 
 Als er een .NET-clienttoepassing wordt uitgevoerd in een Linux-docker-container en als u de Azure Cosmos-emulator uitvoert op een hostmachine, volgt u de onderstaande sectie voor Linux om het certificaat te importeren in de Linux-docker-container.
 

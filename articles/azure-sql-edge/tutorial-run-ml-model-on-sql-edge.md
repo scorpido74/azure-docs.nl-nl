@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 02850b8780e70d402cff2b8fd301c2f79cd6c55e
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: f38a973611cb1ab18eead4ec51e6be91ada2cc40
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235065"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318638"
 ---
 # <a name="deploy-ml-model-on-azure-sql-edge-using-onnx"></a>ML-model op Azure SQL Edge implementeren met behulp van ONNX 
 
@@ -32,7 +32,7 @@ In deel drie van deze driedelige zelfstudie over het voorspellen van onzuiverhed
    |_Veld_|_Waarde_|
    |-------|-------|
    |Verbindingstype| Microsoft SQL Server|
-   |Serve|Openbaar IP-adres dat wordt vermeld in de VM die is gemaakt voor deze demo|
+   |server|Openbaar IP-adres dat wordt vermeld in de VM die is gemaakt voor deze demo|
    |Gebruikersnaam|sa|
    |Wachtwoord|Het sterke wachtwoord dat is gebruikt bij het maken van de Azure SQL Edge-instance|
    |Database|Standaard|

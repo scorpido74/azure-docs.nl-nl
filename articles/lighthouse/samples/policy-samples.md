@@ -1,15 +1,15 @@
 ---
 title: Ingebouwde beleidsdefinities voor Azure Lighthouse
 description: Toont ingebouwde Azure Policy-beleidsdefinities voor Azure Lighthouse. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 88b80fd9e362637250973d108b12b11821ee8ee4
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: bb4c90af88fcfd43ca2b1725b9396df33910fe6b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84885095"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322241"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-lighthouse"></a>Ingebouwde Azure Policy-definities voor Azure Lighthouse
 
