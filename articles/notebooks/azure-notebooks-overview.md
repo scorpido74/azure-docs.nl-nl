@@ -3,22 +3,22 @@ title: Overzicht van Azure Notebooks Preview
 description: Jupyter Notebooks in de cloud uitvoeren met behulp van de gratis Azure Notebooks Preview-service, waarvoor geen installatie of configuratie is vereist.
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: e40b7056aef7e59759c9e04ba9d98fbfb7d28ca3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d229e48e5c49a9a672c533fb24231e9329e524c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647555"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85831400"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Overzicht van Azure Notebooks Preview
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Azure Notebooks is een gratis gehoste service om Jupyter-notebooks te ontwikkelen en uitvoeren in de cloud, zonder installatie. [Jupyter](https://jupyter.org/) (voorheen IPython) is een opensourceproject waarmee u eenvoudig Markdown-tekst, uitvoerbare code en permanente gegevens, afbeeldingen en visualisaties kunt combineren op één deelbaar canvas, het *notebook* genaamd (de afbeelding is ter beschikking gesteld door jupyter.org):
 
 [![Voorbeelden van Jupyter Notebooks](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 Vanwege deze krachtige combinatie van code, afbeeldingen en verklarende tekst is Jupyter populair geworden voor vele toepassingen, waaronder onderwijs in datawetenschap, het opschonen en transformeren van gegevens, numerieke simulatie, statistisch modelleren en de ontwikkeling van modellen voor machine learning.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="hassle-free-experience"></a>Probleemloze ervaring
 

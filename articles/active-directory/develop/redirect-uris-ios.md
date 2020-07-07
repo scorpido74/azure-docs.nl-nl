@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: jak
 ms.custom: aaddev
-ms.openlocfilehash: c25de9a41678af7391fc271b1dc3413c332ce8b6
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 95bd7b5ac325ef5484bd01284c46489acb919a32
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85479263"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830346"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>Omleidings-Uri's gebruiken met de micro soft-verificatie bibliotheek voor iOS en macOS
 
@@ -40,10 +40,12 @@ De omleidings-Uri's moeten voor elke iOS-app verschillend zijn. Hierdoor kan de 
 
 Op basis van de volgende registratie van de toepassing in de Azure Portal:
 
-    Client ID: ABCDE-12345 (this is a single client ID)
-    RedirectUris: msauth.com.contoso.app1://auth, msauth.com.contoso.app2://auth, msauth.com.contoso.app3://auth
+* Client-ID: `ABCDE-12345` (dit is één client-id)
+* RedirectUris: `msauth.com.contoso.app1://auth` , `msauth.com.contoso.app2://auth` ,`msauth.com.contoso.app3://auth`
 
-App1 gebruikt redirect App2 maakt gebruik van `msauth.com.contoso.app1://auth` `msauth.com.contoso.app2://auth` App3`msauth.com.contoso.app1://auth`
+App1 maakt gebruik van omleiding `msauth.com.contoso.app1://auth` . \
+App2 maakt gebruik van `msauth.com.contoso.app2://auth` . \
+App3 maakt gebruik van `msauth.com.contoso.app1://auth` .
 
 ### <a name="migrating-from-adal-to-msal"></a>Migreren van ADAL naar MSAL
 
@@ -70,7 +72,6 @@ Bij het migreren van code die de Azure AD-verificatie bibliotheek (ADAL) heeft g
         </dict>
     </array>
     ```
-    
 
 MSAL controleert of de omleidings-URI correct wordt geregistreerd en retourneert een fout als dat niet het geval is.
     

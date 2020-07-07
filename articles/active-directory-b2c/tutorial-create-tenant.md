@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/08/2020
+ms.date: 07/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d6b445d1e795cfb34452f48bfb5ed375f6a284e1
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 044a2d2cb23e36234256b9b19363462e542176fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85385039"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806847"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Zelfstudie: Een Azure Active Directory B2C-tenant maken
 
@@ -31,11 +31,11 @@ In dit artikel leert u het volgende:
 
 In de volgende zelf studie leert u hoe u een toepassing registreert.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Een Azure AD B2C-tenant maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/). Meld u aan met een Azure-account waaraan ten minste de rol [Inzender](../role-based-access-control/built-in-roles.md) is toegewezen binnen het abonnement of een resource groep binnen het abonnement.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/). Meld u aan met een Azure-account waaraan ten minste de rol [Inzender](../role-based-access-control/built-in-roles.md) is toegewezen binnen het abonnement of een resource groep binnen het abonnement.
 
 1. Selecteer de map die uw abonnement bevat.
 
@@ -51,8 +51,8 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 1. Voer op de pagina **een directory maken** het volgende in:
 
-   - **Organisatie naam** : Voer de naam van uw organisatie in.
-   - **Initiële domein naam** : Voer een domein naam in. Deze naam wordt standaard toegevoegd met *. onmicrosoft.com*. U kunt dit later wijzigen door een domein naam toe te voegen die uw organisatie al gebruikt, zoals ' contoso.com '.
+   - **Organisatie naam** : Voer een naam in voor de Azure AD B2C Tenant.
+   - **Initiële domein naam** : Voer een domein naam in voor uw Azure AD B2C-Tenant.
    - **Land of regio** : Selecteer uw land of regio in de lijst. U kunt deze selectie later niet meer wijzigen.
    - **Abonnement** : Selecteer uw abonnement in de lijst.
    - **Resource groep** : Selecteer een resource groep die de Tenant zal bevatten. Of selecteer **Nieuw maken**, voer een **naam** in voor de resource groep, selecteer de locatie van de **resource groep**en selecteer **OK**.
@@ -82,7 +82,7 @@ In plaats van elke keer dat u met uw Tenant wilt werken, kunt u in plaats daarva
 
 U hoeft deze bewerking slechts één keer uit te voeren. Voordat u deze stappen uitvoert, moet u ervoor zorgen dat u bent overgeschakeld naar de map met uw Azure AD B2C Tenant, zoals wordt beschreven in de vorige sectie, [Selecteer uw B2C-Tenant Directory](#select-your-b2c-tenant-directory).
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer in het menu Azure Portal **alle services**.
 1. In het zoekvak **alle services** zoekt u naar **Azure AD B2C**, houdt u de muis aanwijzer boven het Zoek resultaat en selecteert u vervolgens het ster pictogram in de knop info. **Azure AD B2C** nu wordt weer gegeven in de Azure portal onder **Favorieten**.
 1. Als u de positie van uw nieuwe favoriet wilt wijzigen, gaat u naar het menu Azure Portal, selecteert u **Azure AD B2C**en sleept u het omhoog of omlaag naar de gewenste positie.

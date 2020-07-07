@@ -4,14 +4,16 @@ description: Snel een Jupyter-notebook maken en uitvoeren via Azure Notebooks Pr
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: tracking-python
-ms.openlocfilehash: 01d1035f794287e679b6ebc84fa9498b184b4791
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 809cb006e1ea40e31d079b40febee6a09714731f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561081"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832097"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>Quickstart: Een notebook maken en uitvoeren in Azure Notebooks Preview
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 In deze quickstart gaat u een Jupyter-notebook maken en uitvoeren via Azure Notebooks en dat notebook vervolgens delen met anderen. Met Jupyter kunt u eenvoudig Markdown-tekst, uitvoerbare code, persistente gegevens, afbeeldingen en visualisaties combineren op één deelbaar canvas, het notebook. Azure Notebooks is een gratis gehoste service om Jupyter-notebooks te ontwikkelen en uitvoeren in de cloud, zonder installatie.
 
@@ -19,8 +21,6 @@ In deze quickstart gaat u een Jupyter-notebook maken en uitvoeren via Azure Note
 Geen.
 
 ## <a name="create-a-new-project-and-notebook"></a>Een nieuw project en notebook maken
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 1. Ga naar de [Azure Notebooks-site (https://notebooks.azure.com)](https://notebooks.azure.com) en meld u aan. Zie [Quickstart: Aanmelden bij Azure Notebooks](quickstart-sign-in-azure-notebooks.md) voor meer informatie.
 

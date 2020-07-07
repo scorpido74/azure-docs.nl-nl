@@ -6,14 +6,14 @@ ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
-ms.topic: sample
+ms.topic: tutorial
 ms.date: 12/03/2019
-ms.openlocfilehash: 6e1dc5f0016c27d987361aa52e59682806a31c95
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 2133b68bf942cee87548783fb40d08c9bfe876ff
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118913"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851635"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Aan de slag met de Azure Cosmos DB Table-API en Azure Table Storage met behulp van de .NET-SDK
 
@@ -255,7 +255,7 @@ Klik met de rechtermuisknop op uw project **CosmosTableSamples**. Selecteer **To
  }
 ```
 
-### <a name="get-an-entity-from-a-partition"></a>Een entiteit uit een partitie ophalen
+## <a name="get-an-entity-from-a-partition"></a>Een entiteit uit een partitie ophalen
 
 U kunt een entiteit uit een partitie ophalen door de methode Retrieve onder de klasse [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) te gebruiken. Met het volgende codevoorbeeld worden de rijsleutel van de partitiesleutel, het e-mailadres en het telefoonnummer van een klantentiteit opgehaald. Met dit voorbeeld worden ook de aanvraageenheden afgedrukt die zijn verbruikt om query’s uit te voeren voor de entiteit. Als u query’s wilt uitvoeren voor een entiteit, voegt u de volgende code toe aan het bestand **SamplesUtils.cs**: 
 

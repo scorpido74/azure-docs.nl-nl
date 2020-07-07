@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: a92f65bd88a5aec79a179a6e2d53de15c274add4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 1fa270907c96cb341f6ce2cbaeb91dfa323c4431
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834557"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855210"
 ---
 # <a name="send-an-email-from-a-runbook"></a>Een e-mailbericht vanuit een runbook verzenden
 
@@ -67,8 +67,8 @@ Zie [Key Vault-quickstarts](/azure/key-vault/) voor andere manieren om een Azure
 
 Als u Azure Key Vault binnen een runbook wilt gebruiken, moet u de volgende modules importeren in uw Automation-account:
 
-    * [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile)
-    * [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault)
+* [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile)
+* [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault)
 
 Zie [Az-modules importeren](shared-resources/modules.md#import-az-modules) voor instructies.
 

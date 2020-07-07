@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f10bf6a0487ea53bf4e05d0d2d389e2a275e83a
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: ea300148f421577e6f3ace961d06127fc9f2b536
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765212"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801169"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pymetrics"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met pymetrics
 
@@ -102,11 +102,11 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. Bovendien verwacht de pymetrics-toepassing nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. Deze worden hieronder weergegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze herzien volgens uw vereisten.
     
-    | Naam |  |  Bronkenmerk|
-    | ---------------| --------------- | --------- |
-    | UserFirstName | | user.givenname |
-    | UserLastName | | user.surname |
-    | UserEmail | | user.userprincipalname |
+    | Naam | Bronkenmerk|
+    | --------------- | --------- |
+    | UserFirstName | user.givenname |
+    | UserLastName | user.surname |
+    | UserEmail | user.userprincipalname |
 
 1. Ga op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** naar **XML-bestand met federatieve metagegevens** en selecteer **Downloaden** om het certificaat te downloaden. Sla dit vervolgens op de computer op.
 

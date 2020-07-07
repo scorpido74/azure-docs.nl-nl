@@ -4,20 +4,20 @@ description: Leer hoe u in Azure Notebooks Preview een Jupyter-notebook kunt mak
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.custom: tracking-python
-ms.openlocfilehash: e677fca9291bb5247071c3970b7db3f36a6bdceb
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: fd7fc324894595a991074c6d83ffc0f9fa3cff75
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561755"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85834128"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Zelfstudie: een Jupyter-notebook maken en uitvoeren met Python
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 In deze zelfstudie wordt u begeleid bij het gebruik van Azure Notebooks om een compleet Jupyter-notebook te maken waarmee eenvoudige lineaire regressie wordt gedemonstreerd. In de loop van deze zelfstudie maakt u kennis met de gebruikersinterface van Jupyter-notebooks voor het maken van verschillende cellen, het uitvoeren van cellen en het presenteren van het notebook als een diavoorstelling.
 
 Het voltooide notebook is te vinden op [GitHub - Azure Notebooks Samples](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps). Deze zelfstudie begint echter met een nieuw project en een leeg notebook, zodat u het maken ervan stap voor stap kunt ervaren.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 In deze zelfstudie leert u het volgende:
 

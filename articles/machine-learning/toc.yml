@@ -335,9 +335,6 @@
         - name: Externe compute-doelen gebruiken
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
-        - name: ML-taken definiëren
-          displayName: 'machine learning, task type, automl'
-          href: how-to-define-task-type.md
         - name: Automatisch een prognosemodel trainen
           displayName: time series
           href: how-to-auto-train-forecast.md

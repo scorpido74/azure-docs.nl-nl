@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 6b446fe83ad37dfe9edbe55fcb1b5b42aa578274
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 4c3cc572dd9629605414cd88d7735c2b31f92249
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100357"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851263"
 ---
 # <a name="transform-and-protect-your-api"></a>Uw API transformeren en beveiligen
 
@@ -82,8 +82,10 @@ Het oorspronkelijke antwoord moet er als volgt uitzien:
 
 7. Wijzig de code **\<outbound>** zodat deze er als volgt uitziet:
 
-       <set-header name="X-Powered-By" exists-action="delete" />
-       <set-header name="X-AspNet-Version" exists-action="delete" />
+   ```
+   <set-header name="X-Powered-By" exists-action="delete" />
+   <set-header name="X-AspNet-Version" exists-action="delete" />
+   ```
 
    ![Beleidsregels](./media/transform-api/set-policy.png)
 
@@ -129,31 +131,35 @@ In deze sectie wordt beschreven hoe u beveiliging voor uw back-end-API kunt toev
 6.  Klik in het rechtervenster onder **Toegang tot beperkingsbeleid** op **+ Aantal oproepen per sleutel beperken**.
 7.  Wijzig de code **rate-limit-by-key** (in het element **\<inbound\>** ) in de volgende code:
 
-        <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
+    ```
+    <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
+    ```
 
 ## <a name="test-the-transformations"></a>De transformaties testen
 
 Als u nu naar de code in de code-editor kijkt, ziet uw beleid er als volgt uit:
 
-    <policies>
-        <inbound>
-            <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
-            <base />
-        </inbound>
-        <backend>
-            <base />
-        </backend>
-        <outbound>
-            <set-header name="X-Powered-By" exists-action="delete" />
-            <set-header name="X-AspNet-Version" exists-action="delete" />
-            <find-and-replace from="://conferenceapi.azurewebsites.net:443" to="://apiphany.azure-api.net/conference"/>
-            <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
-            <base />
-        </outbound>
-        <on-error>
-            <base />
-        </on-error>
-    </policies>
+   ```
+   <policies>
+      <inbound>
+        <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
+        <base />
+      </inbound>
+      <backend>
+        <base />
+      </backend>
+      <outbound>
+        <set-header name="X-Powered-By" exists-action="delete" />
+        <set-header name="X-AspNet-Version" exists-action="delete" />
+        <find-and-replace from="://conferenceapi.azurewebsites.net:443" to="://apiphany.azure-api.net/conference"/>
+        <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
+        <base />
+      </outbound>
+      <on-error>
+        <base />
+      </on-error>
+   </policies>
+   ```
 
 In de rest van deze sectie worden de beleidstransformaties getest die u in dit artikel hebt ingesteld.
 
