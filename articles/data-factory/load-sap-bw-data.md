@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
 ms.openlocfilehash: 96b23696164514ad2f16de72f0f76aa237ffce2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415843"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Gegevens van SAP Business Warehouse kopiëren met behulp van Azure Data Factory
@@ -69,7 +69,7 @@ Ga in Azure Portal naar uw data factory. Selecteer **auteur & monitor** om de Da
 
    3. Selecteer **verbinding testen** om de instellingen te valideren en selecteer vervolgens **volt ooien**.
 
-   4. Er wordt een nieuwe verbinding gemaakt. Selecteer **Next**.
+   4. Er wordt een nieuwe verbinding gemaakt. Selecteer **Volgende**.
 
 5. Blader op de pagina **Open hub-doelen selecteren** door de open hub-bestemmingen die beschikbaar zijn in uw SAP BW. Selecteer de OHD waaruit u gegevens wilt kopiëren en selecteer vervolgens **volgende**.
 
@@ -77,20 +77,20 @@ Ga in Azure Portal naar uw data factory. Selecteer **auteur & monitor** om de Da
 
 6. Geef een filter op, als u er een hebt. Als uw OHD alleen gegevens bevat van één DTP-uitvoering (data-overdracht) met één aanvraag-ID, of als u zeker weet dat uw DTP is voltooid en u de gegevens wilt kopiëren, schakelt u het selectie vakje **laatste aanvraag uitsluiten** uit.
 
-   Meer informatie over deze instellingen vindt u in de sectie [SAP BW open hub-doel configuraties](#sap-bw-open-hub-destination-configurations) van dit artikel. Selecteer **valideren** om te controleren welke gegevens worden geretourneerd. Selecteer **volgende**.
+   Meer informatie over deze instellingen vindt u in de sectie [SAP BW open hub-doel configuraties](#sap-bw-open-hub-destination-configurations) van dit artikel. Selecteer **valideren** om te controleren welke gegevens worden geretourneerd. Selecteer vervolgens **Volgende**.
 
    ![SAP BW open hub-filter configureren](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
 
-7. Selecteer op de pagina **doel gegevens archief** de optie **+ nieuwe verbinding** > maken**Azure data Lake Storage Gen2** > **door gaan**.
+7. Selecteer op de pagina **doel gegevens archief** de optie **+ nieuwe verbinding maken**  >  **Azure data Lake Storage Gen2**  >  **door gaan**.
 
 8. Voer op de pagina **Azure data Lake Storage verbinding opgeven** de volgende stappen uit om een verbinding te maken.
 
    ![Een ADLS Gen2 pagina gekoppelde service maken](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
 
    1. Selecteer uw Data Lake Storage Gen2-compatibele account in de vervolg keuzelijst **naam** .
-   2. Selecteer **Voltooien** om de verbinding te maken. Selecteer **volgende**.
+   2. Selecteer **Voltooien** om de verbinding te maken. Selecteer vervolgens **Volgende**.
 
-9. Voer op de pagina **het uitvoer bestand of de map kiezen** **copyfromopenhub** in als de naam van de uitvoermap. Selecteer **volgende**.
+9. Voer op de pagina **het uitvoer bestand of de map kiezen** **copyfromopenhub** in als de naam van de uitvoermap. Selecteer vervolgens **Volgende**.
 
    ![Pagina uitvoermap kiezen](media/load-sap-bw-data/choose-output-folder.png)
 
@@ -98,11 +98,11 @@ Ga in Azure Portal naar uw data factory. Selecteer **auteur & monitor** om de Da
 
     ![Pagina Sink-indeling opgeven](media/load-sap-bw-data/specify-sink-format.png)
 
-11. Vouw op de pagina **instellingen** de optie **prestatie-instellingen**uit. Voer een waarde in voor de **mate van afparallelie van kopieën** , zoals 5, die parallel moeten worden geladen in SAP BW. Selecteer **volgende**.
+11. Vouw op de pagina **instellingen** de optie **prestatie-instellingen**uit. Voer een waarde in voor de **mate van afparallelie van kopieën** , zoals 5, die parallel moeten worden geladen in SAP BW. Selecteer vervolgens **Volgende**.
 
     ![Kopieer instellingen configureren](media/load-sap-bw-data/configure-copy-settings.png)
 
-12. Bekijk de instellingen op de pagina **Samenvatting** . Selecteer **volgende**.
+12. Bekijk de instellingen op de pagina **Samenvatting** . Selecteer vervolgens **Volgende**.
 
 13. Selecteer op de pagina **implementatie** de optie **controleren** om de pijp lijn te bewaken.
 
@@ -165,7 +165,7 @@ Selecteer op de pagina data factory **aan de slag** de optie **pijp lijn maken v
 
    - **HighWatermarkBlobDirectory**: Geef het mappad op onder de container waarin de hoogste watermerk waarde moet worden opgeslagen.
 
-   - **HighWatermarkBlobName**: Geef de naam van de BLOB op voor het opslaan van de bovengrens waarde, zoals `requestIdCache.txt`. Ga in Blob Storage naar het overeenkomstige pad van HighWatermarkBlobContainer + HighWatermarkBlobDirectory + HighWatermarkBlobName, zoals *container/pad/requestIdCache. txt*. Maak een blob met inhoud 0.
+   - **HighWatermarkBlobName**: Geef de naam van de BLOB op voor het opslaan van de bovengrens waarde, zoals `requestIdCache.txt` . Ga in Blob Storage naar het overeenkomstige pad van HighWatermarkBlobContainer + HighWatermarkBlobDirectory + HighWatermarkBlobName, zoals *container/pad/requestIdCache.txt*. Maak een blob met inhoud 0.
 
       ![Blobinhoud](media/load-sap-bw-data/blob.png)
 
@@ -194,7 +194,7 @@ Selecteer op de pagina data factory **aan de slag** de optie **pijp lijn maken v
 
       4. Selecteer **Opslaan**. Kopieer vervolgens de waarde van de **http post-URL** voor gebruik in de Data Factory-pijp lijn.
 
-4. Nadat u de para meters voor de Data Factory pijplijn hebt opgegeven, selecteert u **fout opsporing** > **volt ooien** om een uitvoering aan te roepen om de configuratie te valideren. Of selecteer **publiceren** om alle wijzigingen te publiceren en selecteer vervolgens **trigger toevoegen** om een uitvoering uit te voeren.
+4. Nadat u de para meters voor de Data Factory pijplijn hebt opgegeven, selecteert u **fout opsporing**  >  **volt ooien** om een uitvoering aan te roepen om de configuratie te valideren. Of selecteer **publiceren** om alle wijzigingen te publiceren en selecteer vervolgens **trigger toevoegen** om een uitvoering uit te voeren.
 
 ## <a name="sap-bw-open-hub-destination-configurations"></a>SAP BW open hub-doel configuraties
 

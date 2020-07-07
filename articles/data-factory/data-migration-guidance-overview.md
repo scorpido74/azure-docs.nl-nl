@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/30/2019
 ms.openlocfilehash: 4408546c892299e5bbbc22b00a4b334c36eda616
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416434"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Azure Data Factory gebruiken om gegevens van uw data Lake of Data Warehouse te migreren naar Azure
@@ -52,7 +52,7 @@ Er zijn drie belang rijke aandachtspunten wanneer u kiest tussen een online-en o
 
 Stel dat u van plan bent om Azure Data Factory te gebruiken voor het volt ooien van de gegevens migratie binnen twee weken (uw *migratie venster*). Let op de regel roze/blauw knippen in de volgende tabel. In de laagste roze cel voor een bepaalde kolom ziet u de gegevens grootte/netwerk bandbreedte koppeling waarvan het migratie venster zich het dichtst bij maar minder dan twee weken bevindt. (Elke grootte/band breedte-koppeling in een blauwe cel heeft een venster voor online migratie van meer dan twee weken.) 
 
-![Online versus offline](media/data-migration-guidance-overview/online-offline.png) deze tabel helpt u te bepalen of u kunt voldoen aan uw beoogde migratie venster via online migratie (Azure Data Factory) op basis van de grootte van uw gegevens en de beschik bare netwerk bandbreedte. Als het venster voor online migratie meer dan twee weken duurt, moet u offline migratie gebruiken.
+![Online versus offline ](media/data-migration-guidance-overview/online-offline.png) deze tabel helpt u te bepalen of u kunt voldoen aan uw beoogde migratie venster via online migratie (Azure Data Factory) op basis van de grootte van uw gegevens en de beschik bare netwerk bandbreedte. Als het venster voor online migratie meer dan twee weken duurt, moet u offline migratie gebruiken.
 
 > [!NOTE]
 > Door online migratie te gebruiken, kunt u zowel historische gegevens belasting als incrementele feeds end-to-end uitvoeren met één hulp programma.  Met deze aanpak kunnen uw gegevens worden gesynchroniseerd tussen de bestaande Store en de nieuwe Store tijdens het hele migratie venster. Dit betekent dat u uw ETL-logica opnieuw kunt samen stellen in de nieuwe opslag met vernieuwde gegevens.

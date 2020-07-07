@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: f0ce0f7d90540274d24a7e0248e6f197b74033a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416971"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>GA referentie gegevens voor een Azure Time Series Insights omgeving beheren met C #
@@ -23,7 +23,7 @@ ms.locfileid: "81416971"
 In dit artikel wordt beschreven hoe u C#-, [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)-en Azure Active Directory kunt combi neren om PROGRAMMATISCHe API-aanvragen naar de api van Azure Time Series Insights ga [Gegevensbeheer](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)te maken.
 
 > [!TIP]
-> GA C#-code voorbeelden weer [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)geven op.
+> GA C#-code voorbeelden weer geven op [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) .
 
 ## <a name="summary"></a>Samenvatting
 
@@ -54,7 +54,7 @@ Voer de volgende stappen uit voordat u de voorbeeld code compileert en uitvoert:
 
 1. Bewerk de voorbeeld code hieronder door elk **#PLACEHOLDER #** te vervangen door de juiste omgevings-id.
 
-1. Voer `dotnet run` uit in de hoofdmap van uw project. Wanneer u hierom wordt gevraagd, gebruikt u uw gebruikers profiel om u aan te melden bij Azure. 
+1. Voer uit `dotnet run` in de hoofdmap van uw project. Wanneer u hierom wordt gevraagd, gebruikt u uw gebruikers profiel om u aan te melden bij Azure. 
 
 ## <a name="project-dependencies"></a>Projectafhankelijkheden
 
@@ -66,7 +66,7 @@ Het is raadzaam om de nieuwste versie van Visual Studio en **NetCore. app**te ge
 De voorbeeld code bevat twee vereiste afhankelijkheden:
 
 * MSAL.NET [micro soft. Identity. client](https://www.nuget.org/packages/Microsoft.Identity.Client/) -4.7.1-pakket.
-* [Newton soft. json](https://www.nuget.org/packages/Newtonsoft.Json) -12.0.3-pakket.
+* [Newtonsoft.Js](https://www.nuget.org/packages/Newtonsoft.Json) een 12.0.3-pakket.
 
 De pakketten toevoegen met behulp van [NuGet 2.12 +](https://www.nuget.org/):
 
@@ -75,7 +75,7 @@ De pakketten toevoegen met behulp van [NuGet 2.12 +](https://www.nuget.org/):
 
 Of
 
-1. Een `csharp-tsi-msal-ga-sample.csproj` bestand declareren:
+1. Een bestand declareren `csharp-tsi-msal-ga-sample.csproj` :
 
     ```XML
     <Project Sdk="Microsoft.NET.Sdk">

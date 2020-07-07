@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 6751f64706444176f0df8f8fc0c6132e76b39b2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417326"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Gegevens uit Google BigQuery kopiëren met behulp van Azure Data Factory
@@ -66,7 +66,7 @@ Stel de eigenschap authenticationType in op **UserAuthentication**en geef de vol
 | clientSecret | Geheim van de toepassing die wordt gebruikt voor het genereren van het vernieuwings token. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Nee |
 | refreshToken | Het vernieuwings token dat is verkregen van Google, wordt gebruikt om toegang te verlenen aan BigQuery. Meer informatie over het verkrijgen van [OAuth 2,0-toegangs tokens](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens) en [deze Community-Blog](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59). Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Nee |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -103,7 +103,7 @@ Stel de eigenschap authenticationType in op **ServiceAuthentication**en geef de 
 | trustedCertPath | Het volledige pad van het. pem-bestand dat vertrouwde CA-certificaten bevat die worden gebruikt om de server te controleren wanneer u verbinding maakt via TLS. Deze eigenschap kan alleen worden ingesteld wanneer u gebruikmaakt van TLS op zelf-hostende Integration Runtime. De standaard waarde is het cacerts. pem-bestand dat is geïnstalleerd met de Integration runtime.  | Nee |
 | useSystemTrustStore | Hiermee geeft u op of u een CA-certificaat wilt gebruiken uit de systeem vertrouwens archief of vanuit een opgegeven PEM-bestand. De standaardwaarde is **onwaar**.  | Nee |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -136,7 +136,7 @@ Als u gegevens wilt kopiëren uit Google BigQuery, stelt u de eigenschap type va
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **GoogleBigQueryObject** | Ja |
 | sets | De naam van de Google BigQuery-gegevensset. |Nee (als "query" in activiteit bron is opgegeven)  |
 | tabel | De naam van de tabel. |Nee (als "query" in activiteit bron is opgegeven)  |
-| tableName | De naam van de tabel. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `dataset` en `table`voor nieuwe werk belasting. | Nee (als "query" in activiteit bron is opgegeven) |
+| tableName | De naam van de tabel. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik en voor nieuwe werk `dataset` belasting `table` . | Nee (als "query" in activiteit bron is opgegeven) |
 
 **Voorbeeld**
 
@@ -168,7 +168,7 @@ Als u gegevens wilt kopiëren uit Google BigQuery, stelt u het bron type in de K
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **GoogleBigQuerySource**. | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Een voorbeeld is `"SELECT * FROM MyTable"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[

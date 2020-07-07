@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.custom: sfrev
 ms.openlocfilehash: dd0cbd3251185a7831852ead47ca0b120126cf55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415671"
 ---
 # <a name="configure-managed-identity-support-for-a-new-service-fabric-cluster"></a>Ondersteuning voor beheerde identiteiten configureren voor een nieuw Service Fabric cluster
@@ -48,7 +48,7 @@ Als de implementatie mislukt met dit bericht, betekent dit dat het cluster niet 
 }
 ```
 
-## <a name="related-articles"></a>Verwante artikelen
+## <a name="related-articles"></a>Gerelateerde artikelen
 
 * [Ondersteuning voor beheerde identiteiten](./concepts-managed-identity.md) bekijken in azure service Fabric
 

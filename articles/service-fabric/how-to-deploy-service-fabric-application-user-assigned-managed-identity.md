@@ -4,10 +4,10 @@ description: In dit artikel wordt beschreven hoe u Service Fabric-toepassing imp
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: 9aef81db7a455b72c83cf96898a0c228f1c382fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415631"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>Service Fabric toepassing implementeren met een door de gebruiker toegewezen beheerde identiteit
@@ -18,7 +18,7 @@ Als u een Service Fabric toepassing wilt implementeren met beheerde identiteit, 
 > 
 > Toepassingen die niet zijn geïmplementeerd als een Azure-resource, **kunnen** geen beheerde identiteiten hebben. 
 >
-> Service Fabric toepassings implementatie met een beheerde identiteit wordt ondersteund met API `"2019-06-01-preview"`-versie. U kunt ook dezelfde API-versie gebruiken voor het toepassings type, de versie van het toepassings type en service bronnen.
+> Service Fabric toepassings implementatie met een beheerde identiteit wordt ondersteund met API-versie `"2019-06-01-preview"` . U kunt ook dezelfde API-versie gebruiken voor het toepassings type, de versie van het toepassings type en service bronnen.
 >
 
 ## <a name="user-assigned-identity"></a>Door gebruiker toegewezen identiteit
@@ -62,7 +62,7 @@ In het bovenstaande voor beeld wordt de resource naam van de door de gebruiker t
 
 ### <a name="application-package"></a>Toepassings pakket
 
-1. Voor elke identiteit die is gedefinieerd `managedIdentities` in de sectie van de Azure Resource Manager sjabloon, `<ManagedIdentity>` voegt u een tag toe in het manifest van de toepassing, in de sectie **principals** . Het `Name` kenmerk moet overeenkomen met `name` de eigenschap die in `managedIdentities` de sectie is gedefinieerd.
+1. Voor elke identiteit die is gedefinieerd in de `managedIdentities` sectie van de Azure Resource Manager sjabloon, voegt u een `<ManagedIdentity>` tag toe in het manifest van de toepassing, in de sectie **principals** . Het `Name` kenmerk moet overeenkomen met de `name` eigenschap die in de sectie is gedefinieerd `managedIdentities` .
 
     **ApplicationManifest.xml**
 
@@ -86,7 +86,7 @@ In het bovenstaande voor beeld wordt de resource naam van de door de gebruiker t
       </ServiceManifestImport>
     ```
 
-3. Werk het service manifest bij om een **ManagedIdentity** toe te voegen aan de sectie **resources** met `ServiceIdentityRef` de naam `IdentityBindingPolicy` die overeenkomt met de in het manifest van de toepassing:
+3. Werk het service manifest bij om een **ManagedIdentity** toe te voegen aan de sectie **resources** met de naam die overeenkomt met de `ServiceIdentityRef` in het `IdentityBindingPolicy` manifest van de toepassing:
 
     **ServiceManifest.xml**
 

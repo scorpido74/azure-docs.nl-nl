@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/30/2019
 ms.openlocfilehash: 63b657e77172282225a9bc890b2f185b0f4d42a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417139"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>Azure Data Factory gebruiken om gegevens van een on-premises Hadoop-cluster te migreren naar Azure Storage 
@@ -53,7 +53,7 @@ Zie de [prestatie handleiding Kopieer activiteit](https://docs.microsoft.com/azu
 
 ## <a name="resilience"></a>Tolerantie
 
-In Data Factory DistCp-modus kunt u verschillende DistCp-opdracht regel parameters gebruiken (bijvoorbeeld `-i`, fouten negeren of `-update`gegevens schrijven wanneer het bron bestand en het doel bestand een andere grootte hebben) voor verschillende tolerantie niveaus.
+In Data Factory DistCp-modus kunt u verschillende DistCp-opdracht regel parameters gebruiken (bijvoorbeeld `-i` , fouten negeren of `-update` gegevens schrijven wanneer het bron bestand en het doel bestand een andere grootte hebben) voor verschillende tolerantie niveaus.
 
 In de Data Factory native Integration runtime-modus, in één exemplaar van een Kopieer activiteit, heeft Data Factory een ingebouwd mechanisme voor opnieuw proberen. Het kan een bepaald niveau van tijdelijke fouten in de gegevens archieven of in het onderliggende netwerk verwerken. 
 
@@ -108,9 +108,9 @@ Als een van de Kopieer taken mislukt als gevolg van tijdelijke problemen met het
 
 ### <a name="delta-data-migration"></a>Delta gegevens migratie 
 
-In Data Factory DistCp-modus kunt u de opdracht regel parameter `-update`DistCp gebruiken om gegevens te schrijven wanneer het bron bestand en het doel bestand verschillen qua grootte, voor Delta gegevens migratie.
+In Data Factory DistCp-modus kunt u de opdracht regel parameter DistCp gebruiken `-update` om gegevens te schrijven wanneer het bron bestand en het doel bestand verschillen qua grootte, voor Delta gegevens migratie.
 
-In Data Factory systeem eigen integratie modus is de meest krachtige manier om nieuwe of gewijzigde bestanden van HDFS te identificeren met behulp van een tijdgebonden naamgevings Conventie. Als uw gegevens in HDFS zijn gepartitioneerd met tijds segmenten in de naam van het bestand of de map (bijvoorbeeld */yyyy/mm/dd/file.CSV*), kunt u met de pijp lijn eenvoudig bepalen welke bestanden en mappen incrementeel moeten worden gekopieerd.
+In Data Factory systeem eigen integratie modus is de meest krachtige manier om nieuwe of gewijzigde bestanden van HDFS te identificeren met behulp van een tijdgebonden naamgevings Conventie. Als uw gegevens in HDFS zijn gepartitioneerd met tijds segmenten in de naam van het bestand of de map (bijvoorbeeld */yyyy/mm/dd/file.csv*), kan uw pijp lijn eenvoudig bepalen welke bestanden en mappen incrementeel moeten worden gekopieerd.
 
 Als uw gegevens in HDFS niet tijdgebonden zijn, kunt Data Factory nieuwe of gewijzigde bestanden identificeren met behulp van de **LastModifiedDate** -waarde. Data Factory scant alle bestanden van HDFS en kopieert alleen nieuwe en bijgewerkte bestanden met een tijds tempel laatst gewijzigd dat groter is dan een ingestelde waarde. 
 

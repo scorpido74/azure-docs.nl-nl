@@ -7,10 +7,10 @@ ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: fcc7c5b8fa182cace6e3dae0b1cae4cd41c5dcb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81532578"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Uw app implementeren op Azure App Service met behulp van FTP/S
@@ -29,7 +29,7 @@ Het FTP/S-eind punt voor uw app is al actief. Er is geen configuratie nodig om d
 
     ![Selecteer uw app.](media/app-service-continuous-deployment/select-your-app.png)
 
-3. Selecteer het**FTP-** > **dash board**van het **implementatie centrum** > .
+3. Selecteer **Deployment Center**het  >  **FTP-**  >  **dash board**van het implementatie centrum.
 
     ![FTP-dash board openen](./media/app-service-deploy-ftp/open-dashboard.png)
 
@@ -60,7 +60,7 @@ Het is raadzaam om app- **referenties** te gebruiken voor het implementeren van 
 >
 > - afhankelijkheden herstellen (zoals NuGet, NPM, PIP en Composer automatisering)
 > - compilatie van .NET binaire bestanden
-> - het genereren van web. config (hier is een [node. js-voor beeld](https://github.com/projectkudu/kudu/wiki/Using-a-custom-web.config-for-Node-apps))
+> - genereren van web.config (dit is een [Node.js voor beeld](https://github.com/projectkudu/kudu/wiki/Using-a-custom-web.config-for-Node-apps))
 > 
 > Genereer deze benodigde bestanden hand matig op uw lokale machine en implementeer ze vervolgens samen met uw app.
 >
@@ -69,7 +69,7 @@ Het is raadzaam om app- **referenties** te gebruiken voor het implementeren van 
 
 Voor een betere beveiliging moet u FTP alleen toestaan via TLS/SSL. U kunt ook FTP-en FTPS uitschakelen als u geen FTP-implementatie gebruikt.
 
-Op de resource pagina van uw app [in azure Portal](https://portal.azure.com)selecteert u**algemene instellingen** voor **configuratie** > in het linkernavigatievenster.
+Op de resource pagina van uw app in [Azure Portal](https://portal.azure.com)selecteert u **Configuration**  >  **algemene instellingen** voor configuratie in het linkernavigatievenster.
 
 Als u niet-versleutelde FTP wilt uitschakelen, selecteert u **FTPS alleen** in **FTP-status**. Als u zowel FTP als FTPS volledig wilt uitschakelen, selecteert u **uitgeschakeld**. Klik op **Opslaan** als u klaar bent. Als u **alleen FTPS**gebruikt, moet u TLS 1,2 of hoger afdwingen door te navigeren naar de Blade **TLS/SSL-instellingen** van uw web-app. TLS 1,0 en 1,1 worden alleen ondersteund met **FTPS**.
 

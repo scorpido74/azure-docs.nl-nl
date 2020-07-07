@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.openlocfilehash: 35d61e896a395c3044a51780fef72d54c211a31f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417180"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>ForEach-activiteit in Azure Data Factory
@@ -23,7 +23,7 @@ ms.locfileid: "81417180"
 
 De ForEach-activiteit definieert een herhalende controle stroom in de pijp lijn. Deze activiteit wordt gebruikt om een verzameling te herhalen en voert opgegeven activiteiten uit in een lus. De lusimplementatie van deze activiteit is vergelijkbaar met Foreach-lusstructuur in computertalen.
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 De eigenschappen worden verderop in dit artikel beschreven. De eigenschap items is de verzameling en elk item in de verzameling waarnaar wordt verwezen met behulp `@item()` van de zoals wordt weer gegeven in de volgende syntaxis:  
 
 ```json
@@ -72,9 +72,9 @@ De eigenschappen worden verderop in dit artikel beschreven. De eigenschap items 
 
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-name | De naam van de for-each-activiteit. | Tekenreeks | Ja
+naam | De naam van de for-each-activiteit. | Tekenreeks | Ja
 type | Moet worden ingesteld op **foreach** | Tekenreeks | Ja
-isSequential | Hiermee wordt aangegeven of de lus opeenvolgend of parallel moet worden uitgevoerd.  Maxi maal 20 herhalings herhalingen kunnen gelijktijdig worden uitgevoerd. Als u bijvoorbeeld een ForEach-activiteit doorloopt over een Kopieer activiteit met tien verschillende bron-en Sink-gegevens sets waarvoor **isSequential** is ingesteld op False, worden alle kopieën tegelijk uitgevoerd. De standaard waarde is False. <br/><br/> Als "isSequential" is ingesteld op False, moet u ervoor zorgen dat er een juiste configuratie is om meerdere uitvoer bare bestanden uit te voeren. Anders moet deze eigenschap worden gebruikt om te voor komen dat er schrijf conflicten ontstaan. Zie de sectie [parallel uitvoeren](#parallel-execution) voor meer informatie. | Booleaans | Nee. De standaard waarde is False.
+isSequential | Hiermee wordt aangegeven of de lus opeenvolgend of parallel moet worden uitgevoerd.  Maxi maal 20 herhalings herhalingen kunnen gelijktijdig worden uitgevoerd. Als u bijvoorbeeld een ForEach-activiteit doorloopt over een Kopieer activiteit met tien verschillende bron-en Sink-gegevens sets waarvoor **isSequential** is ingesteld op False, worden alle kopieën tegelijk uitgevoerd. De standaard waarde is False. <br/><br/> Als "isSequential" is ingesteld op False, moet u ervoor zorgen dat er een juiste configuratie is om meerdere uitvoer bare bestanden uit te voeren. Anders moet deze eigenschap worden gebruikt om te voor komen dat er schrijf conflicten ontstaan. Zie de sectie [parallel uitvoeren](#parallel-execution) voor meer informatie. | Boolean-waarde | Nee. De standaard waarde is False.
 batchCount | Batch aantal dat moet worden gebruikt voor het beheren van het aantal parallelle uitvoeringen (wanneer isSequential is ingesteld op false). Dit is de bovengrens limiet, maar de for-each-activiteit wordt niet altijd uitgevoerd op dit nummer | Geheel getal (maximum 50) | Nee. De standaard waarde is 20.
 Items | Een expressie die een JSON-matrix retourneert die moet worden herhaald. | Expressie (waarmee een JSON-matrix wordt geretourneerd) | Ja
 Activiteiten | De activiteiten die moeten worden uitgevoerd. | Lijst met activiteiten | Ja
@@ -195,7 +195,7 @@ Geef in de ForEach-activiteit een matrix op die u voor de eigenschaps **items**w
 Het is mogelijk om meerdere activiteiten te herhalen (bijvoorbeeld: Copy en web activities) in een ForEach-activiteit. In dit scenario raden we u aan om meerdere activiteiten samen te stellen in een afzonderlijke pijp lijn. Vervolgens kunt u de ExecutePipeline- [activiteit](control-flow-execute-pipeline-activity.md) in de pijp lijn met de foreach-activiteit gebruiken om de afzonderlijke pijp lijn met meerdere activiteiten aan te roepen. 
 
 
-### <a name="syntax"></a>Syntaxis
+### <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -486,7 +486,7 @@ Hier volgen enkele beperkingen van de ForEach-activiteit en voorgestelde tijdeli
 | Beperking | Tijdelijke oplossing |
 |---|---|
 | U kunt een ForEach-lus niet nesten binnen een andere ForEach-lus (of een lus until). | Ontwerp een pijp lijn op twee niveaus waarbij de buitenste pijp lijn met de buitenste ForEach-lus met de geneste lus wordt herhaald. |
-| De ForEach-activiteit heeft een `batchCount` maximum van 50 voor parallelle verwerking en maxi maal 100.000 items. | Ontwerp een pijp lijn op twee niveaus waarbij de buitenste pijp lijn met de ForEach-activiteit wordt herhaald via een inner pijp lijn. |
+| De ForEach-activiteit heeft een maximum `batchCount` van 50 voor parallelle verwerking en Maxi maal 100.000 items. | Ontwerp een pijp lijn op twee niveaus waarbij de buitenste pijp lijn met de ForEach-activiteit wordt herhaald via een inner pijp lijn. |
 | | |
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -495,4 +495,4 @@ Zie andere controle stroom activiteiten die door Data Factory worden ondersteund
 - [Activiteit uitvoeren van pijplijn](control-flow-execute-pipeline-activity.md)
 - [Activiteit ophalen van metagegevens](control-flow-get-metadata-activity.md)
 - [Opzoekactiviteit](control-flow-lookup-activity.md)
-- [Web Activity](control-flow-web-activity.md)
+- [Webactiviteit](control-flow-web-activity.md)

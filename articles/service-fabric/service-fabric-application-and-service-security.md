@@ -4,10 +4,10 @@ description: Een overzicht van hoe u op een veilige manier micro Services-toepas
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.openlocfilehash: c97c5345a1a18cce8c44508542f12d3642d2b8f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81461426"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Beveiliging van toepassingen en Services Service Fabric
@@ -42,7 +42,7 @@ API Management kan rechtstreeks worden geïntegreerd met Service Fabric, zodat u
 ## <a name="manage-application-secrets"></a>Toepassingsgeheimen beheren
 Geheimen kunnen gevoelige informatie zijn, zoals verbindings reeksen voor opslag, wacht woorden of andere waarden die niet in tekst zonder opmaak moeten worden verwerkt. In dit artikel wordt gebruikgemaakt van Azure Key Vault voor het beheren van sleutels en geheimen. Het *gebruik* van geheimen in een toepassing is echter het Cloud platform-neutraal zodat toepassingen kunnen worden geïmplementeerd in een cluster dat overal wordt gehost.
 
-De aanbevolen manier om service configuratie-instellingen te beheren is via [Service configuratie pakketten][config-package]. Configuratie pakketten zijn versie en kunnen worden bijgewerkt via beheerde rolling upgrades met status validatie en automatisch terugdraaien. Dit verdient de voor keur aan globale configuratie, omdat hiermee de kans op een globale service storing wordt gereduceerd. Versleutelde geheimen zijn geen uitzonde ringen. Service Fabric heeft ingebouwde functies voor het versleutelen en ontsleutelen van waarden in een XML-bestand met configuratie pakket instellingen met behulp van certificaat versleuteling.
+De aanbevolen manier om service configuratie-instellingen te beheren is via [Service configuratie pakketten][config-package]. Configuratie pakketten zijn versie en kunnen worden bijgewerkt via beheerde rolling upgrades met status validatie en automatisch terugdraaien. Dit verdient de voor keur aan globale configuratie, omdat hiermee de kans op een globale service storing wordt gereduceerd. Versleutelde geheimen zijn geen uitzonde ringen. Service Fabric heeft ingebouwde functies voor het versleutelen en ontsleutelen van waarden in een configuratie pakket Settings.xml bestand met behulp van certificaat versleuteling.
 
 In het volgende diagram ziet u de basis stroom voor het beheer van geheimen in een Service Fabric-toepassing:
 
@@ -52,8 +52,8 @@ Er zijn vier belang rijke stappen in deze stroom:
 
 1. Een certificaat voor gegevens versleuteling ophalen.
 2. Installeer het certificaat in uw cluster.
-3. Versleutel de geheime waarden bij het implementeren van een toepassing met het certificaat en Injecteer deze in het configuratie bestand instellingen. XML van een service.
-4. Versleutelde waarden uit instellingen. XML lezen door te ontsleutelen met hetzelfde coderings certificaat. 
+3. Versleutel de geheime waarden bij het implementeren van een toepassing met het certificaat en Injecteer deze in een Settings.xml configuratie bestand van een service.
+4. Versleutelde waarden van Settings.xml lezen door te ontsleutelen met hetzelfde coderings certificaat. 
 
 [Azure Key Vault][key-vault-get-started] wordt hier gebruikt als een veilige opslag locatie voor certificaten en als manier om certificaten te verkrijgen die zijn geïnstalleerd op service Fabric clusters in Azure. Als u niet in azure implementeert, hoeft u Key Vault niet te gebruiken om geheimen in Service Fabric toepassingen te beheren.
 
@@ -66,7 +66,7 @@ Het toepassings manifest declareert de beveiligings-principals (gebruikers en gr
 
 Bij het declareren van principals kunt u ook gebruikers groepen definiëren en maken, zodat een of meer gebruikers aan elke groep kunnen worden toegevoegd om samen te worden beheerd. Dit is handig wanneer er meerdere gebruikers zijn voor verschillende service toegangs punten en er bepaalde algemene bevoegdheden moeten zijn die op het groeps niveau beschikbaar zijn.
 
-Service Fabric toepassingen worden standaard uitgevoerd onder het account waaronder het Fabric. exe-proces wordt uitgevoerd. Service Fabric biedt ook de mogelijkheid om toepassingen uit te voeren onder een lokaal gebruikers account of lokaal systeem account, dat is opgegeven in het manifest van de toepassing. Zie [een service uitvoeren als een lokaal gebruikers account of lokaal systeem account](service-fabric-application-runas-security.md)voor meer informatie.  U kunt [een service-opstart script ook uitvoeren als een lokale gebruiker of systeem account](service-fabric-run-script-at-service-startup.md).
+Service Fabric toepassingen worden standaard uitgevoerd onder het account dat door het Fabric.exe proces wordt uitgevoerd. Service Fabric biedt ook de mogelijkheid om toepassingen uit te voeren onder een lokaal gebruikers account of lokaal systeem account, dat is opgegeven in het manifest van de toepassing. Zie [een service uitvoeren als een lokaal gebruikers account of lokaal systeem account](service-fabric-application-runas-security.md)voor meer informatie.  U kunt [een service-opstart script ook uitvoeren als een lokale gebruiker of systeem account](service-fabric-run-script-at-service-startup.md).
 
 Wanneer u Service Fabric uitvoert op een zelfstandige Windows-cluster, kunt u een service uitvoeren onder [Active Directory domein accounts](service-fabric-run-service-as-ad-user-or-group.md) of door de [groep beheerde service accounts](service-fabric-run-service-as-gmsa.md).
 

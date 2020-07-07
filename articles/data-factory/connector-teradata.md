@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
 ms.openlocfilehash: 4eed79210e3e39f82b892ac0681e161ebb59597e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418028"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Gegevens van Teradata-Vantage kopiëren met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
 >
-> * [Versie 1](v1/data-factory-onprem-teradata-connector.md)
+> * [Versie 1:](v1/data-factory-onprem-teradata-connector.md)
 > * [Huidige versie](connector-teradata.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -71,8 +71,8 @@ Meer verbindings eigenschappen die u in connection string per case kunt instelle
 
 | Eigenschap | Beschrijving | Standaardwaarde |
 |:--- |:--- |:--- |
-| CharacterSet | De tekenset die moet worden gebruikt voor de sessie. Bijvoorbeeld, `CharacterSet=UTF16`.<br><br/>Deze waarde kan een door de gebruiker gedefinieerde tekenset of een van de volgende vooraf gedefinieerde teken sets zijn: <br/>-ASCII<br/>-UTF8<br/>-UTF16<br/>-LATIN1252_0A<br/>-LATIN9_0A<br/>-LATIN1_0A<br/>-Shift-JIS (Windows, DOS-compatibel, KANJISJIS_0S)<br/>-EUC (compatibel met UNIX, KANJIEC_0U)<br/>-IBM mainframe (KANJIEBCDIC5035_0I)<br/>-KANJI932_1S0<br/>-BIG5 (TCHBIG5_1R0)<br/>-GB (SCHGB2312_1T0)<br/>-SCHINESE936_6R0<br/>-TCHINESE950_8R0<br/>-NetworkKorean (HANGULKSC5601_2R4)<br/>-HANGUL949_7R0<br/>-ARABIC1256_6A0<br/>-CYRILLIC1251_2A0<br/>-HEBREW1255_5A0<br/>-LATIN1250_1A0<br/>-LATIN1254_7A0<br/>-LATIN1258_8A0<br/>-THAI874_4A0 | De standaard waarde `ASCII`is. |
-| MaxRespSize |De maximale grootte van de antwoord buffer voor SQL-aanvragen, in kilo bytes (Kb's). Bijvoorbeeld, `MaxRespSize=‭10485760‬`.<br/><br/>Voor de Teradata-Data Base versie 16,00 of hoger is de maximum waarde 7361536. De maximum waarde is 1048576 voor verbindingen die gebruikmaken van eerdere versies. | De standaard waarde `65536`is. |
+| CharacterSet | De tekenset die moet worden gebruikt voor de sessie. Bijvoorbeeld, `CharacterSet=UTF16` .<br><br/>Deze waarde kan een door de gebruiker gedefinieerde tekenset of een van de volgende vooraf gedefinieerde teken sets zijn: <br/>-ASCII<br/>-UTF8<br/>-UTF16<br/>-LATIN1252_0A<br/>-LATIN9_0A<br/>-LATIN1_0A<br/>-Shift-JIS (Windows, DOS-compatibel, KANJISJIS_0S)<br/>-EUC (compatibel met UNIX, KANJIEC_0U)<br/>-IBM mainframe (KANJIEBCDIC5035_0I)<br/>-KANJI932_1S0<br/>-BIG5 (TCHBIG5_1R0)<br/>-GB (SCHGB2312_1T0)<br/>-SCHINESE936_6R0<br/>-TCHINESE950_8R0<br/>-NetworkKorean (HANGULKSC5601_2R4)<br/>-HANGUL949_7R0<br/>-ARABIC1256_6A0<br/>-CYRILLIC1251_2A0<br/>-HEBREW1255_5A0<br/>-LATIN1250_1A0<br/>-LATIN1254_7A0<br/>-LATIN1258_8A0<br/>-THAI874_4A0 | De standaard waarde is `ASCII` . |
+| MaxRespSize |De maximale grootte van de antwoord buffer voor SQL-aanvragen, in kilo bytes (Kb's). Bijvoorbeeld, `MaxRespSize=‭10485760‬` .<br/><br/>Voor de Teradata-Data Base versie 16,00 of hoger is de maximum waarde 7361536. De maximum waarde is 1048576 voor verbindingen die gebruikmaken van eerdere versies. | De standaard waarde is `65536` . |
 
 **Voor beeld van basis verificatie**
 
@@ -148,11 +148,11 @@ Als u gegevens wilt kopiëren uit Teradata, worden de volgende eigenschappen ond
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de DataSet moet worden ingesteld op `TeradataTable`. | Ja |
+| type | De eigenschap type van de DataSet moet worden ingesteld op `TeradataTable` . | Ja |
 | database | De naam van het Teradata-exemplaar. | Nee (als "query" in activiteit bron is opgegeven) |
 | tabel | De naam van de tabel in het Teradata-exemplaar. | Nee (als "query" in activiteit bron is opgegeven) |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -202,13 +202,13 @@ Als u gegevens wilt kopiëren uit Teradata, worden de volgende eigenschappen ond
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet worden `TeradataSource`ingesteld op. | Ja |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op `TeradataSource` . | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Een voorbeeld is `"SELECT * FROM MyTable"`.<br>Wanneer u gepartitioneerde belasting inschakelt, moet u alle bijbehorende ingebouwde partitie parameters in uw query koppelen. Zie de sectie [parallelle kopie van Teradata](#parallel-copy-from-teradata) voor voor beelden. | Nee (als de tabel in de gegevensset is opgegeven) |
-| partitionOptions | Hiermee geeft u de opties voor gegevens partities op die worden gebruikt voor het laden van gegevens uit Teradata. <br>Toegestane waarden zijn: **geen** (standaard), **hash** -en **DynamicRange**.<br>Wanneer een partitie optie is ingeschakeld (dat wil zeggen, `None`niet), is de mate van parallelle uitvoering om gegevens uit de Teradata gelijktijdig te laden, bepaald [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) door de instelling van de Kopieer activiteit. | Nee |
-| partitionSettings | Geef de groep van de instellingen voor het partitioneren van gegevens op. <br>Toep assen als de partitie `None`optie niet is. | Nee |
-| partitionColumnName | Geef de naam op van de bron kolom die wordt gebruikt door de bereik partitie of hash-partitie voor parallelle kopieën. Als u niets opgeeft, wordt de primaire index van de tabel automatisch gedetecteerd en gebruikt als partitie kolom. <br>Toep assen wanneer de partitie optie `Hash` is `DynamicRange`of. Als u een query gebruikt om de bron gegevens, de Hook `?AdfHashPartitionCondition` of `?AdfRangePartitionColumnName` de component WHERE op te halen. Zie voor beeld in [parallelle kopie van](#parallel-copy-from-teradata) de sectie Teradata. | Nee |
-| partitionUpperBound | De maximum waarde van de partitie kolom waaruit de gegevens moeten worden gekopieerd. <br>Toep assen wanneer partitie optie `DynamicRange`is. Als u query gebruikt om bron gegevens op te halen `?AdfRangePartitionUpbound` , Hook in de component WHERE. Zie de sectie [parallelle kopie van Teradata](#parallel-copy-from-teradata) voor een voor beeld. | Nee |
-| partitionLowerBound | De minimum waarde van de partitie kolom waaruit de gegevens moeten worden gekopieerd. <br>Toep assen wanneer de partitie optie `DynamicRange`is. Als u een query gebruikt om de bron gegevens op te halen `?AdfRangePartitionLowbound` , Hook in de component WHERE. Zie de sectie [parallelle kopie van Teradata](#parallel-copy-from-teradata) voor een voor beeld. | Nee |
+| partitionOptions | Hiermee geeft u de opties voor gegevens partities op die worden gebruikt voor het laden van gegevens uit Teradata. <br>Toegestane waarden zijn: **geen** (standaard), **hash** -en **DynamicRange**.<br>Wanneer een partitie optie is ingeschakeld (dat wil zeggen, niet `None` ), is de mate van parallelle uitvoering om gegevens uit de Teradata gelijktijdig te laden, bepaald door de [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) instelling van de Kopieer activiteit. | Nee |
+| partitionSettings | Geef de groep van de instellingen voor het partitioneren van gegevens op. <br>Toep assen als de partitie optie niet is `None` . | Nee |
+| partitionColumnName | Geef de naam op van de bron kolom die wordt gebruikt door de bereik partitie of hash-partitie voor parallelle kopieën. Als u niets opgeeft, wordt de primaire index van de tabel automatisch gedetecteerd en gebruikt als partitie kolom. <br>Toep assen wanneer de partitie optie is `Hash` of `DynamicRange` . Als u een query gebruikt om de bron gegevens, de Hook `?AdfHashPartitionCondition` of de `?AdfRangePartitionColumnName` component WHERE op te halen. Zie voor beeld in [parallelle kopie van](#parallel-copy-from-teradata) de sectie Teradata. | Nee |
+| partitionUpperBound | De maximum waarde van de partitie kolom waaruit de gegevens moeten worden gekopieerd. <br>Toep assen wanneer partitie optie is `DynamicRange` . Als u query gebruikt om bron gegevens op te halen, Hook `?AdfRangePartitionUpbound` in de component WHERE. Zie de sectie [parallelle kopie van Teradata](#parallel-copy-from-teradata) voor een voor beeld. | Nee |
+| partitionLowerBound | De minimum waarde van de partitie kolom waaruit de gegevens moeten worden gekopieerd. <br>Toep assen wanneer de partitie optie is `DynamicRange` . Als u een query gebruikt om de bron gegevens op te halen, Hook `?AdfRangePartitionLowbound` in de component WHERE. Zie de sectie [parallelle kopie van Teradata](#parallel-copy-from-teradata) voor een voor beeld. | Nee |
 
 > [!NOTE]
 >
@@ -259,8 +259,8 @@ U wordt aangeraden om parallelle kopieën in te scha kelen met gegevens partitie
 | Scenario                                                     | Aanbevolen instellingen                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Volledige belasting van een grote tabel.                                   | **Partitie optie**: hash. <br><br/>Tijdens de uitvoering van Data Factory detecteert de primaire index kolom automatisch een hash en kopieert gegevens per partitie. |
-| Laad grote hoeveelheid gegevens met behulp van een aangepaste query.                 | **Partitie optie**: hash.<br>**Query**: `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`.<br>**Partitie kolom**: Geef de kolom op die wordt gebruikt voor het Toep assen van de hash-partitie. Als u dit niet opgeeft, detecteert Data Factory automatisch de PK-kolom van de tabel die u in de Teradata-gegevensset hebt opgegeven.<br><br>Tijdens de uitvoering wordt Data Factory `?AdfHashPartitionCondition` vervangen door de hash-partitie logica en verzonden naar Teradata. |
-| Laad een grote hoeveelheid gegevens met behulp van een aangepaste query, met een kolom met gehele getallen met een gelijkmatig gedistribueerde waarde voor bereik partitionering. | **Partitie opties**: partitie met dynamisch bereik.<br>**Query**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`.<br>**Partitie kolom**: Geef de kolom op die wordt gebruikt om gegevens te partitioneren. U kunt de kolom met het gegevens type geheel getal partitioneren.<br>**Bovengrens van partities** en partities met een **ondergrens**: Geef op of u wilt filteren op de partitie kolom om alleen gegevens tussen het onderste en het bovenste bereik op te halen.<br><br>Tijdens de uitvoering Data Factory vervangt `?AdfRangePartitionColumnName`, `?AdfRangePartitionUpbound`, en `?AdfRangePartitionLowbound` met de werkelijke kolom naam en waardeparen voor elke partitie, en verzonden naar Teradata. <br>Als uw partitie kolom "ID" bijvoorbeeld is ingesteld met de ondergrens als 1 en de bovengrens als 80, met een parallelle kopie ingesteld als 4, Data Factory worden gegevens opgehaald met vier partities. Hun Id's liggen respectievelijk tussen [1, 20], [21, 40], [41, 60] en [61, 80]. |
+| Laad grote hoeveelheid gegevens met behulp van een aangepaste query.                 | **Partitie optie**: hash.<br>**Query**: `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>` .<br>**Partitie kolom**: Geef de kolom op die wordt gebruikt voor het Toep assen van de hash-partitie. Als u dit niet opgeeft, detecteert Data Factory automatisch de PK-kolom van de tabel die u in de Teradata-gegevensset hebt opgegeven.<br><br>Tijdens de uitvoering wordt Data Factory vervangen `?AdfHashPartitionCondition` door de hash-partitie logica en verzonden naar Teradata. |
+| Laad een grote hoeveelheid gegevens met behulp van een aangepaste query, met een kolom met gehele getallen met een gelijkmatig gedistribueerde waarde voor bereik partitionering. | **Partitie opties**: partitie met dynamisch bereik.<br>**Query**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>` .<br>**Partitie kolom**: Geef de kolom op die wordt gebruikt om gegevens te partitioneren. U kunt de kolom met het gegevens type geheel getal partitioneren.<br>**Bovengrens van partities** en partities met een **ondergrens**: Geef op of u wilt filteren op de partitie kolom om alleen gegevens tussen het onderste en het bovenste bereik op te halen.<br><br>Tijdens de uitvoering Data Factory vervangt `?AdfRangePartitionColumnName` , `?AdfRangePartitionUpbound` , en `?AdfRangePartitionLowbound` met de werkelijke kolom naam en waardeparen voor elke partitie, en verzonden naar Teradata. <br>Als uw partitie kolom "ID" bijvoorbeeld is ingesteld met de ondergrens als 1 en de bovengrens als 80, met een parallelle kopie ingesteld als 4, Data Factory worden gegevens opgehaald met vier partities. Hun Id's liggen respectievelijk tussen [1, 20], [21, 40], [41, 60] en [61, 80]. |
 
 **Voor beeld: query met hash-partitie**
 
@@ -304,37 +304,37 @@ Wanneer u gegevens uit Teradata kopieert, zijn de volgende toewijzingen van toep
 | CLOB |Tekenreeks |
 | Date |DateTime |
 | Decimal |Decimal |
-| Double |Double |
-| Afbeelding |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
+| Dubbel |Dubbel |
+| Afbeelding |Niet ondersteund. Expliciete cast Toep assen in bron query. |
 | Geheel getal |Int32 |
-| Interval dag |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
-| Interval van dag tot uur |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
-| Interval van dag tot minuut |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
-| Interval van dag tot seconde |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
-| Interval-uur |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
-| Interval van uur tot minuut |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
-| Interval per seconde |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
-| Interval minuut |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
-| Interval minuut tot seconde |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
-| Interval maand |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
-| Interval seconde |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
-| Interval jaar |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
-| Interval jaar tot maand |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
-| Aantal |Double |
-| Periode (datum) |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
-| Periode (tijd) |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
-| Periode (tijd met tijd zone) |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
-| Periode (tijds tempel) |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
-| Periode (tijds tempel met tijd zone) |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
+| Interval dag |Niet ondersteund. Expliciete cast Toep assen in bron query. |
+| Interval van dag tot uur |Niet ondersteund. Expliciete cast Toep assen in bron query. |
+| Interval van dag tot minuut |Niet ondersteund. Expliciete cast Toep assen in bron query. |
+| Interval van dag tot seconde |Niet ondersteund. Expliciete cast Toep assen in bron query. |
+| Interval-uur |Niet ondersteund. Expliciete cast Toep assen in bron query. |
+| Interval van uur tot minuut |Niet ondersteund. Expliciete cast Toep assen in bron query. |
+| Interval per seconde |Niet ondersteund. Expliciete cast Toep assen in bron query. |
+| Interval minuut |Niet ondersteund. Expliciete cast Toep assen in bron query. |
+| Interval minuut tot seconde |Niet ondersteund. Expliciete cast Toep assen in bron query. |
+| Interval maand |Niet ondersteund. Expliciete cast Toep assen in bron query. |
+| Interval seconde |Niet ondersteund. Expliciete cast Toep assen in bron query. |
+| Interval jaar |Niet ondersteund. Expliciete cast Toep assen in bron query. |
+| Interval jaar tot maand |Niet ondersteund. Expliciete cast Toep assen in bron query. |
+| Aantal |Dubbel |
+| Periode (datum) |Niet ondersteund. Expliciete cast Toep assen in bron query. |
+| Periode (tijd) |Niet ondersteund. Expliciete cast Toep assen in bron query. |
+| Periode (tijd met tijd zone) |Niet ondersteund. Expliciete cast Toep assen in bron query. |
+| Periode (tijds tempel) |Niet ondersteund. Expliciete cast Toep assen in bron query. |
+| Periode (tijds tempel met tijd zone) |Niet ondersteund. Expliciete cast Toep assen in bron query. |
 | SmallInt |Int16 |
-| Time |TimeSpan |
+| Tijd |TimeSpan |
 | Tijd met tijd zone |TimeSpan |
 | Tijdstempel |DateTime |
 | Tijds tempel met tijd zone |DateTime |
 | VarByte |Byte [] |
 | VarChar |Tekenreeks |
-| VarGraphic |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
-| Xml |Wordt niet ondersteund. Expliciete cast Toep assen in bron query. |
+| VarGraphic |Niet ondersteund. Expliciete cast Toep assen in bron query. |
+| Xml |Niet ondersteund. Expliciete cast Toep assen in bron query. |
 
 
 ## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit

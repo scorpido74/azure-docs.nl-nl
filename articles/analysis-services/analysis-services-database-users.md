@@ -8,10 +8,10 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: b7e3cc2b9d35eafcb875efa167821a8e9ad80146
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81454200"
 ---
 # <a name="manage-database-roles-and-users"></a>Database rollen en-gebruikers beheren
@@ -27,7 +27,7 @@ Rolmachtigingen zijn onder andere:
 
 Bij het maken van een tabellaire model project maakt u rollen en voegt u gebruikers of groepen toe aan die rollen met behulp van Role Manager in Visual Studio met Analysis Services-projecten. Gebruik SQL Server Management Studio (SSMS), [Analysis Services Power shell-cmdlets](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)of [Tabellaire model scripting language](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) om rollen en gebruikers leden toe te voegen of te verwijderen wanneer deze op een server worden geïmplementeerd.
 
-Gebruik wanneer u `obj:groupid@tenantid`een **beveiligings groep**toevoegt.
+Gebruik wanneer u een **beveiligings groep**toevoegt `obj:groupid@tenantid` .
 
 ## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Rollen en gebruikers toevoegen aan of beheren in Visual Studio  
   
@@ -51,7 +51,7 @@ Gebruik wanneer u `obj:groupid@tenantid`een **beveiligings groep**toevoegt.
   
 5.  Als de rol die u maakt lees-of lees-en proces machtiging heeft, kunt u rijdefinities toevoegen met behulp van een DAX-formule. Klik op het tabblad **rij filters** , selecteer een tabel en klik vervolgens op het **Dax-filter** veld en typ een Dax-formule.
   
-6.  Klik op **leden** > **toevoegen extern**.  
+6.  Klik op **leden**  >  **toevoegen extern**.  
   
 8.  In **extern lid toevoegen**voert u gebruikers of groepen in uw TENANT Azure AD op e-mail adres in. Nadat u op OK hebt geklikt en rollen beheerder hebt gesloten, worden rollen en Rolgroepen weer gegeven in Tabellaire model Verkenner. 
  
@@ -64,7 +64,7 @@ Gebruik wanneer u `obj:groupid@tenantid`een **beveiligings groep**toevoegt.
 
 Als u functies en gebruikers wilt toevoegen aan een geïmplementeerde model database, moet u met de server zijn verbonden als server beheerder of al een databaserol met beheerders machtigingen.
 
-1. Klik in object Exporer met de rechter muisknop op **rollen** > **nieuwe rol**.
+1. Klik in object Exporer met de rechter muisknop op **rollen**  >  **nieuwe rol**.
 
 2. Voer bij **rol maken**de naam en beschrijving van een rol in.
 

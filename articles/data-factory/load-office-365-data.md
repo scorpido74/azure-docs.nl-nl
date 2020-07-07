@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
 ms.openlocfilehash: 3422176ed89b7f575c11cc40e5be8420da0018b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415801"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Gegevens laden uit Office 365 met behulp van Azure Data Factory
@@ -26,13 +26,13 @@ In dit artikel wordt beschreven hoe u de Data Factory _gegevens uit Office 365 l
 
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
-1. Selecteer in het menu links de optie **een resource** > **Analytics** > -**Data Factory**maken: 
+1. Selecteer in het linkermenu **Een resource maken** > **Analyse** > **Data Factory**: 
    
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
 2. Geef op de pagina **nieuw Data Factory** waarden op voor de velden die worden weer gegeven in de volgende afbeelding:
       
-   ![Pagina Nieuwe gegevensfactory](./media/load-office-365-data/new-azure-data-factory.png)
+   ![De pagina Nieuwe data factory](./media/load-office-365-data/new-azure-data-factory.png)
  
     * **Naam**: Voer een wereld wijd unieke naam in voor uw Azure-Data Factory. Als u de fout melding ' Data Factory-naam *LoadFromOffice365Demo* is niet beschikbaar ' ontvangt, voert u een andere naam in voor de Data Factory. U kunt bijvoorbeeld _**de naam**_**LoadFromOffice365Demo**. Probeer de data factory opnieuw te maken. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
     * **Abonnement**: Selecteer het Azure-abonnement waarin u de Data Factory wilt maken. 
@@ -79,7 +79,7 @@ In dit artikel wordt beschreven hoe u de Data Factory _gegevens uit Office 365 l
 
     ![Tabel met configuratie van Office 365-gegevensset](./media/load-office-365-data/edit-dataset.png)
 
-8. Ga nu terug naar het tabblad **pijplijn** > **bron** om verder te gaan met het configureren van aanvullende eigenschappen voor Office 365-gegevens extractie.  Het filter gebruikers bereik en gebruikers bereik zijn optionele predikaten die u kunt definiëren om de gegevens te beperken die u wilt uitpakken van Office 365. Zie de sectie [Eigenschappen van Office 365-gegevensset](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties) voor informatie over het configureren van deze instellingen.
+8. Ga nu terug naar het **pipeline**  >  **tabblad pijplijn bron** om verder te gaan met het configureren van aanvullende eigenschappen voor Office 365-gegevens extractie.  Het filter gebruikers bereik en gebruikers bereik zijn optionele predikaten die u kunt definiëren om de gegevens te beperken die u wilt uitpakken van Office 365. Zie de sectie [Eigenschappen van Office 365-gegevensset](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties) voor informatie over het configureren van deze instellingen.
 
 9. U moet een van de datum filters kiezen en de waarden voor de begin-en eind tijd opgeven.
 
@@ -118,7 +118,7 @@ Selecteer in de bovenste werk balk de optie **Alles publiceren**. Met deze actie
 
 ## <a name="trigger-the-pipeline-manually"></a>De pijplijn handmatig activeren
 
-Selecteer **trigger toevoegen** op de werk balk en selecteer **nu activeren**. Klik op de pagina Pijplijnuitvoering op **Voltooien**. 
+Selecteer **trigger toevoegen** op de werk balk en selecteer **nu activeren**. Selecteer op de pagina pijplijn uitvoering de optie **volt ooien**. 
 
 ## <a name="monitor-the-pipeline"></a>De pijplijn bewaken
 
@@ -132,8 +132,8 @@ Selecteer de link **Uitvoeringen van activiteit weergeven** in de kolom Acties o
 
 Als dit de eerste keer is dat u gegevens aanvraagt voor deze context (een combi natie van welke gegevens tabel wordt geopend, met welk doel account de gegevens worden geladen en welke gebruikers-id de aanvraag voor gegevens toegang maakt), ziet u dat de status van de Kopieer activiteit wordt **uitgevoerd**, en alleen wanneer u op de koppeling Details onder acties ziet, wordt de status weer gegeven als **RequesetingConsent**.  Een lid van de groep voor het goed keuren van gegevens toegang moet de aanvraag goed keuren in de Privileged Access Management voordat de gegevens extractie kan worden voortgezet.
 
-_Status als aanvraag om toestemming:_
-![uitvoerings Details van activiteit-aanvraag toestemming](./media/load-office-365-data/activity-details-request-consent.png) 
+_Status als aanvraag om toestemming:_ 
+ ![ Details van uitvoering van activiteit-toestemming van aanvraag](./media/load-office-365-data/activity-details-request-consent.png) 
 
 _Status als geëxtraheerde gegevens:_
 

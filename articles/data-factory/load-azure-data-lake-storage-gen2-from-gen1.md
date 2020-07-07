@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
 ms.openlocfilehash: 6655510a4cfdb88e98319c7fc26c7ae83255bb6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415829"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Gegevens kopiëren van Azure Data Lake Storage Gen1 naar Gen2 met Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Lake Storage Gen2 is een set mogelijkheden die is toegewezen aan big data Analytics die is ingebouwd in [Azure Blob-opslag](../storage/blobs/storage-blobs-introduction.md). U kunt het gebruiken om de interface met uw gegevens te maken met behulp van zowel bestands systeem-als object opslag-modellen.
+Azure Data Lake Storage Gen2 is een set mogelijkheden die is toegewezen aan big data Analytics die is ingebouwd in [Azure Blob-opslag](../storage/blobs/storage-blobs-introduction.md). U kunt het gebruiken om interactie met uw gegevens te maken met behulp van paradigma's voor zowel het bestandssysteem als de objectopslag.
 
 Als u momenteel Azure Data Lake Storage Gen1 gebruikt, kunt u Azure Data Lake Storage Gen2 evalueren door gegevens te kopiëren van Data Lake Storage Gen1 naar Gen2 met behulp van Azure Data Factory.
 
@@ -41,7 +41,7 @@ In dit artikel leest u hoe u het hulp programma voor Data Factory het kopiëren 
 
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
-1. Selecteer in het menu links de optie **een resource** > maken**gegevens en analyses** > **Data Factory**.
+1. Selecteer in het menu links de optie **een resource maken**  >  **gegevens en analyses**  >  **Data Factory**.
    
    ![Data Factory selectie in het nieuwe deel venster](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -49,7 +49,7 @@ In dit artikel leest u hoe u het hulp programma voor Data Factory het kopiëren 
       
    ![Pagina nieuwe Data Factory](./media/load-azure-data-lake-storage-gen2-from-gen1/new-azure-data-factory.png)
  
-    * **Naam**: Voer een wereld wijd unieke naam in voor uw Azure-Data Factory. Als het fout bericht ' Data Factory-naam \"LoadADLSDemo\" is niet beschikbaar ' wordt weer gegeven, voert u een andere naam in voor de Data Factory. Gebruik bijvoorbeeld de naam _**uwnaam**_**ADFTutorialDataFactory**. Maak de data factory opnieuw. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
+    * **Naam**: Voer een wereld wijd unieke naam in voor uw Azure-Data Factory. Als het fout bericht ' Data Factory-naam \" LoadADLSDemo \" is niet beschikbaar ' wordt weer gegeven, voert u een andere naam in voor de Data Factory. Gebruik bijvoorbeeld de naam _**uwnaam**_**ADFTutorialDataFactory**. Maak de data factory opnieuw. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
     * **Abonnement**: Selecteer het Azure-abonnement waarin u de Data Factory wilt maken. 
     * **Resource groep**: Selecteer een bestaande resource groep in de vervolg keuzelijst. U kunt ook de optie **nieuwe maken** selecteren en de naam van een resource groep invoeren. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie. 
     * **Versie**: Selecteer **v2**.
@@ -67,7 +67,7 @@ In dit artikel leest u hoe u het hulp programma voor Data Factory het kopiëren 
 1. Selecteer op de pagina **aan de slag** de **gegevens kopiëren** tegel om het hulp programma Copy data te starten. 
 
    ![De tegel gegevens kopiëren](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-data-tool-tile.png)
-2. Geef op de pagina **Eigenschappen** **CopyFromADLSGen1ToGen2** op voor het veld **taak naam** . Selecteer **Next**.
+2. Geef op de pagina **Eigenschappen** **CopyFromADLSGen1ToGen2** op voor het veld **taak naam** . Selecteer **Volgende**.
 
     ![De pagina Eigenschappen](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-data-tool-properties-page.png)
 3. Selecteer op de pagina **brongegevens archief** de optie **+ nieuwe verbinding maken**.
@@ -84,7 +84,7 @@ In dit artikel leest u hoe u het hulp programma voor Data Factory het kopiëren 
   
    b. Selecteer **verbinding testen** om de instellingen te valideren. Selecteer vervolgens **Voltooien**.
   
-   c. U ziet dat er een nieuwe verbinding is gemaakt. Selecteer **Next**.
+   c. U ziet dat er een nieuwe verbinding is gemaakt. Selecteer **Volgende**.
    
    > [!IMPORTANT]
    > In deze procedure gebruikt u een beheerde identiteit voor Azure-resources om uw Azure Data Lake Storage Gen1 te verifiëren. Volg [deze instructies](connector-azure-data-lake-store.md#managed-identity)om de beheerde identiteit de juiste machtigingen te geven in azure data Lake Storage gen1.
@@ -95,11 +95,11 @@ In dit artikel leest u hoe u het hulp programma voor Data Factory het kopiëren 
 
     ![Het invoerbestand of de invoermap kiezen](./media/load-azure-data-lake-storage-gen2-from-gen1/choose-input-folder.png)
 
-7. Geef het Kopieer gedrag op door de opties **bestanden recursief** en **binair kopiëren** te selecteren. Selecteer **Next**.
+7. Geef het Kopieer gedrag op door de opties **bestanden recursief** en **binair kopiëren** te selecteren. Selecteer **Volgende**.
 
     ![Uitvoermap opgeven](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-binary-copy.png)
     
-8. Selecteer op de pagina **doel gegevens archief** de optie **+ nieuwe verbinding** > maken**Azure data Lake Storage Gen2** > **door gaan**.
+8. Selecteer op de pagina **doel gegevens archief** de optie **+ nieuwe verbinding maken**  >  **Azure data Lake Storage Gen2**  >  **door gaan**.
 
     ![De pagina Doelgegevensarchief](./media/load-azure-data-lake-storage-gen2-from-gen1/destination-data-storage-page.png)
 
@@ -107,7 +107,7 @@ In dit artikel leest u hoe u het hulp programma voor Data Factory het kopiëren 
 
    a. Selecteer uw Data Lake Storage Gen2 geschikte account in de vervolg keuzelijst **opslag account naam** .
    
-   b. Selecteer **Voltooien** om de verbinding te maken. Selecteer **volgende**.
+   b. Selecteer **Voltooien** om de verbinding te maken. Selecteer vervolgens **Volgende**.
    
    ![Azure Data Lake Storage Gen2 account opgeven](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-account.png)
 
@@ -180,6 +180,6 @@ De juiste frequentie voor incrementele belasting is afhankelijk van het totale a
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Overzicht](copy-activity-overview.md)
-> van de Kopieer activiteit[Azure data Lake Storage gen1 connector](connector-azure-data-lake-store.md)
-> [Azure data Lake Storage Gen2 connector](connector-azure-data-lake-storage.md)
+> Overzicht van de [Kopieer activiteit](copy-activity-overview.md) 
+>  [Azure data Lake Storage gen1-connector](connector-azure-data-lake-store.md) 
+>  [Azure data Lake Storage Gen2-connector](connector-azure-data-lake-storage.md)

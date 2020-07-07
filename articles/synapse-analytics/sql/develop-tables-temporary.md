@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 090f453771dba6f537ad60605c6e9b96f3ca9957
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81428756"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Tijdelijke tabellen in Synapse SQL
@@ -33,7 +33,7 @@ In de resource van de SQL-groep bieden tijdelijke tabellen een voor deel van pre
 
 ### <a name="create-a-temporary-table"></a>Een tijdelijke tabel maken
 
-Tijdelijke tabellen worden gemaakt door het voor voegsel van de tabel naam `#`te maken met een.  Bijvoorbeeld:
+Tijdelijke tabellen worden gemaakt door het voor voegsel van de tabel naam te maken met een `#` .  Bijvoorbeeld:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -99,7 +99,7 @@ GROUP BY
 > 
 
 ### <a name="dropping-temporary-tables"></a>Tijdelijke tabellen verwijderen
-Wanneer er een nieuwe sessie wordt gemaakt, moeten er geen tijdelijke tabellen aanwezig zijn.  Als u echter dezelfde opgeslagen procedure aanroept die een tijdelijke met dezelfde naam maakt, om ervoor te zorgen dat uw `CREATE TABLE` instructies slagen, gebruikt u een eenvoudige controle van het voor komen met `DROP`: 
+Wanneer er een nieuwe sessie wordt gemaakt, moeten er geen tijdelijke tabellen aanwezig zijn.  Als u echter dezelfde opgeslagen procedure aanroept die een tijdelijke met dezelfde naam maakt, om ervoor te zorgen dat uw `CREATE TABLE` instructies slagen, gebruikt u een eenvoudige controle van het voor komen met `DROP` : 
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -108,7 +108,7 @@ BEGIN
 END
 ```
 
-Voor het coderen van consistentie is het een goed idee om dit patroon te gebruiken voor zowel tabellen als tijdelijke tabellen.  Het is ook een goed idee om tijdelijke `DROP TABLE` tabellen te verwijderen wanneer u er klaar mee bent.  
+Voor het coderen van consistentie is het een goed idee om dit patroon te gebruiken voor zowel tabellen als tijdelijke tabellen.  Het is ook een goed idee om `DROP TABLE` tijdelijke tabellen te verwijderen wanneer u er klaar mee bent.  
 
 Bij het ontwikkelen van opgeslagen procedures is het gebruikelijk om de door u gebundelde opdrachten aan het einde van een procedure te bekijken om ervoor te zorgen dat deze objecten worden opgeruimd.
 
@@ -193,7 +193,7 @@ GO
 
 In deze fase is de enige actie die is opgetreden, het maken van een opgeslagen procedure waarmee de tijdelijke tabel #stats_ddl wordt gegenereerd.  De opgeslagen procedure daalt #stats_ddl als deze al bestaat. Deze drop zorgt ervoor dat deze niet kan mislukken als er meer dan één keer in een sessie wordt uitgevoerd.  
 
-Omdat de opgeslagen procedure `DROP TABLE` zich niet aan het einde van de opgeslagen procedure bevindt, blijft de gemaakte tabel aanwezig en kan deze buiten de opgeslagen procedure worden gelezen.  
+Omdat de opgeslagen procedure zich niet `DROP TABLE` aan het einde van de opgeslagen procedure bevindt, blijft de gemaakte tabel aanwezig en kan deze buiten de opgeslagen procedure worden gelezen.  
 
 In tegens telling tot andere SQL Server-data bases, kunt u met Synapse SQL de tijdelijke tabel gebruiken buiten de procedure waarmee deze wordt gemaakt.  De tijdelijke tabellen die zijn gemaakt via de SQL-groep, kunnen **overal** in de sessie worden gebruikt. Als gevolg hiervan hebt u meer modulaire en beheersbaarere code, zoals wordt geïllustreerd in het voor beeld hieronder:
 

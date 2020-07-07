@@ -11,10 +11,10 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
 ms.openlocfilehash: bbb30c0ad41babca4158391c9e4e5c5d4d25cbf9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81432058"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API fout codes
@@ -55,11 +55,11 @@ De header ' autorisatie ' is het toegangs token dat vereist is voor elke aanroep
 
 ### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>Het token heeft niet de juiste resource die eraan is gekoppeld. 
 
-Bij het aanvragen van een toegangs token van het Azure OAUTH-eind punt is een para meter met de naam ' resource ' verplicht. De waarde is belang rijk voor de token provider, omdat deze het token voor het beoogde gebruik van het bereik. De resource voor **alle** tokens voor toegang tot een Key Vault is *https\/:/Vault.keyvault.net* (zonder afsluitende slash).
+Bij het aanvragen van een toegangs token van het Azure OAUTH-eind punt is een para meter met de naam ' resource ' verplicht. De waarde is belang rijk voor de token provider, omdat deze het token voor het beoogde gebruik van het bereik. De resource voor **alle** tokens voor toegang tot een Key Vault is *https: \/ /Vault.keyvault.net* (zonder afsluitende slash).
 
 ### <a name="the-token-is-expired"></a>Het token is verlopen
 
-Tokens zijn base64-gecodeerd en de waarden kunnen worden gedecodeerd op websites, [http://jwt.calebb.net](http://jwt.calebb.net)zoals. Dit is het bovenstaande token dat is gedecodeerd:
+Tokens zijn base64-gecodeerd en de waarden kunnen worden gedecodeerd op websites, zoals [http://jwt.calebb.net](http://jwt.calebb.net) . Dit is het bovenstaande token dat is gedecodeerd:
 
 ```
     {
@@ -89,7 +89,7 @@ Tokens zijn base64-gecodeerd en de waarden kunnen worden gedecodeerd op websites
 
 Er kunnen veel belang rijke onderdelen in dit token worden weer geven:
 
-- AUD (doel groep): de bron van het token. Zoals u ziet, <https://vault.azure.net>is dit. Dit token werkt niet voor resources die niet expliciet overeenkomen met deze waarde, zoals Graph.
+- AUD (doel groep): de bron van het token. Zoals u ziet, is dit <https://vault.azure.net> . Dit token werkt niet voor resources die niet expliciet overeenkomen met deze waarde, zoals Graph.
 - IAT (uitgegeven op): het aantal maat streepjes sinds het begin van de Epoch wanneer het token is uitgegeven.
 - NBF (niet vóór): het aantal maat streepjes sinds het begin van de epoche wanneer dit token geldig wordt.
 - EXP (verval datum): het aantal maat streepjes sinds het begin van de epoche wanneer dit token verloopt.
@@ -100,7 +100,7 @@ Het is belang rijk dat alle waarden correct worden geïdentificeerd in het token
 
 ### <a name="troubleshooting-401"></a>Problemen oplossen 401
 
-401s moet worden onderzocht vanaf het moment dat het token wordt gegenereerd, voordat de aanvraag wordt gedaan aan de sleutel kluis. In de meeste gevallen wordt code gebruikt om het token aan te vragen. Zodra het token is ontvangen, wordt het door gegeven aan de Key Vault aanvraag. Als de code lokaal wordt uitgevoerd, kunt u Fiddler gebruiken voor het vastleggen van de aanvraag/ `https://login.microsoftonline.com`reactie op. Een aanvraag ziet er als volgt uit:
+401s moet worden onderzocht vanaf het moment dat het token wordt gegenereerd, voordat de aanvraag wordt gedaan aan de sleutel kluis. In de meeste gevallen wordt code gebruikt om het token aan te vragen. Zodra het token is ontvangen, wordt het door gegeven aan de Key Vault aanvraag. Als de code lokaal wordt uitgevoerd, kunt u Fiddler gebruiken voor het vastleggen van de aanvraag/reactie op `https://login.microsoftonline.com` . Een aanvraag ziet er als volgt uit:
 
 ``` 
 POST https://login.microsoftonline.com/<key vault tenant ID>/oauth2/token HTTP/1.1

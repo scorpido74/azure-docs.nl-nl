@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
 ms.openlocfilehash: 8483e00f55d0dd49ba57db58b99b237ce0a169e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81430628"
 ---
 # <a name="initializer-codepackages"></a>CodePackages voor initialisatiefunctie
@@ -52,7 +52,7 @@ We kijken naar een volledig voor beeld met behulp van initializer CodePackages.
 >
 > In dit voor beeld wordt verwezen naar mcr.microsoft.com/windows/nanoserver:1809. Windows Server-containers zijn niet compatibel in alle versies van een host-besturings systeem. Zie compatibiliteit met Windows- [container versie](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)voor meer informatie.
 
-De volgende ServiceManifest. XML bouwt voort op het ServiceManifest-fragment dat eerder is beschreven. *InitCodePackage0*, *InitCodePackage1* en *WorkloadCodePackage* zijn CodePackages die containers vertegenwoordigen. Na activering wordt *InitCodePackage0* eerst uitgevoerd. Er wordt een bericht in een bestand geregistreerd en afgesloten. Vervolgens wordt *InitCodePackage1* uitgevoerd, waarmee ook een bericht wordt geregistreerd bij een bestand en wordt afgesloten. Ten slotte wordt de *WorkloadCodePackage* uitgevoerd. Ook wordt er een bericht naar een bestand geregistreerd, wordt de inhoud van het bestand naar **stdout** uitgevoerd en wordt vervolgens de opdracht ' altijd '.
+De volgende ServiceManifest.xml bouwt voort op het ServiceManifest-code fragment dat eerder is beschreven. *InitCodePackage0*, *InitCodePackage1* en *WorkloadCodePackage* zijn CodePackages die containers vertegenwoordigen. Na activering wordt *InitCodePackage0* eerst uitgevoerd. Er wordt een bericht in een bestand geregistreerd en afgesloten. Vervolgens wordt *InitCodePackage1* uitgevoerd, waarmee ook een bericht wordt geregistreerd bij een bestand en wordt afgesloten. Ten slotte wordt de *WorkloadCodePackage* uitgevoerd. Ook wordt er een bericht naar een bestand geregistreerd, wordt de inhoud van het bestand naar **stdout** uitgevoerd en wordt vervolgens de opdracht ' altijd '.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -93,7 +93,7 @@ De volgende ServiceManifest. XML bouwt voort op het ServiceManifest-fragment dat
 </ServiceManifest>
 ```
 
-In het volgende ApplicationManifest. XML-bestand wordt een toepassing beschreven op basis van de hierboven beschreven ServiceManifest. XML. Houd er rekening mee dat het dezelfde **volume** koppeling voor alle containers bevat, dat wil zeggen dat **C:\WorkspaceOnHost** wordt gekoppeld aan **C:\WorkspaceOnContainer** op alle drie de containers. Het net-effect is dat alle containers naar hetzelfde logboek bestand schrijven in de volg orde waarin ze zijn geactiveerd.
+In de volgende ApplicationManifest.xml wordt een toepassing beschreven op basis van de ServiceManifest.xml hierboven beschreven. Houd er rekening mee dat het dezelfde **volume** koppeling voor alle containers bevat, dat wil zeggen dat **C:\WorkspaceOnHost** wordt gekoppeld aan **C:\WorkspaceOnContainer** op alle drie de containers. Het net-effect is dat alle containers naar hetzelfde logboek bestand schrijven in de volg orde waarin ze zijn geactiveerd.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

@@ -11,10 +11,10 @@ ms.workload: big-data
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: 10616c8003d9bbbe42cb70bd1bac4193044907c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416999"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Een aangepaste weergave delen via een geparameteriseerde URL
@@ -29,11 +29,11 @@ De Time Series Insights Explorer ondersteunt URL-query parameters om weer gaven 
 
 ## <a name="environment-id"></a>Omgevings-id
 
-De parameter `environmentId=<guid>` geeft de id van de doelomgeving op. Het is een onderdeel van de FQDN van gegevens toegang en u vindt het in de rechter bovenhoek van het overzicht van de omgeving in het Azure Portal. Alles dat voorafgaat aan `env.timeseries.azure.com`.
+De parameter `environmentId=<guid>` geeft de id van de doelomgeving op. Het is een onderdeel van de FQDN van gegevens toegang en u vindt het in de rechter bovenhoek van het overzicht van de omgeving in het Azure Portal. Alles dat voorafgaat aan `env.timeseries.azure.com` .
 
 Een voorbeeld van de parameter voor omgevings-id is `?environmentId=10000000-0000-0000-0000-100000000108`.
 
-## <a name="time"></a>Time
+## <a name="time"></a>Tijd
 
 U kunt absolute of relatieve tijdwaarden opgeven met een geparameteriseerde URL.
 
@@ -49,7 +49,7 @@ Voor absolute tijdwaarden gebruikt u de parameters `from=<integer>` en `to=<inte
 
 ### <a name="relative-time-values"></a>Relatieve tijdwaarden
 
-Voor een relatieve tijd waarde gebruikt u `relativeMillis=<value>`, waarbij *waarde* in Java script-milliseconden is van de meest recente tijds tempel die is ontvangen van de API.
+Voor een relatieve tijd waarde gebruikt u `relativeMillis=<value>` , waarbij *waarde* in Java script-milliseconden is van de meest recente tijds tempel die is ontvangen van de API.
 
 `&relativeMillis=3600000` geeft bijvoorbeeld de afgelopen 60 minuten aan gegevens weer.
 
@@ -66,7 +66,7 @@ Geaccepteerde waarden komen overeen met het menu **snelle tijd** van Time Series
 
 ### <a name="optional-parameters"></a>Optionele parameters
 
-Met `timeSeriesDefinitions=<collection of term objects>` de para meter worden de voor waarden van de predikaten opgegeven die worden weer gegeven in een time series Insights weergave:
+Met de `timeSeriesDefinitions=<collection of term objects>` para meter worden de voor waarden van de predikaten opgegeven die worden weer gegeven in een time series Insights weergave:
 
 | Parameter | URL-item | Beschrijving |
 | --- | --- | --- |
@@ -80,16 +80,16 @@ Met `timeSeriesDefinitions=<collection of term objects>` de para meter worden de
 > Als `Events` de geselecteerde **useSum** -meting is, is aantal standaard geselecteerd.  
 > Als `Events` niet is geselecteerd, wordt standaard het gemiddelde geselecteerd. |
 
-* Met `multiChartStack=<true/false>` het sleutel-waardepaar kan de grafiek worden gestapeld.
-* Met `multiChartSameScale=<true/false>` het sleutel-waardepaar kunt u dezelfde schaal van de Y-as voor alle termen binnen een optionele para meter.  
-* U `timeBucketUnit=<Unit>&timeBucketSize=<integer>` kunt de schuif regelaar voor het interval aanpassen om een meer gedetailleerde of vloeiendere weer gave van de grafiek te bieden.  
-* Met `timezoneOffset=<integer>` de para meter kunt u de tijd zone voor de grafiek instellen zodat deze wordt weer gegeven als een offset naar UTC.
+* `multiChartStack=<true/false>`Met het sleutel-waardepaar kan de grafiek worden gestapeld.
+* Met het `multiChartSameScale=<true/false>` sleutel-waardepaar kunt u dezelfde schaal van de Y-as voor alle termen binnen een optionele para meter.  
+* `timeBucketUnit=<Unit>&timeBucketSize=<integer>`U kunt de schuif regelaar voor het interval aanpassen om een meer gedetailleerde of vloeiendere weer gave van de grafiek te bieden.  
+* Met de `timezoneOffset=<integer>` para meter kunt u de tijd zone voor de grafiek instellen zodat deze wordt weer gegeven als een offset naar UTC.
 
 | Paar (s) | Beschrijving |
 | --- | --- |
-| `multiChartStack=false` | `true`is standaard ingeschakeld, dus door `false` gegeven aan stack. |
-| `multiChartStack=false&multiChartSameScale=true` | Stapelen moet zijn ingeschakeld om dezelfde schaling van de Y-as te gebruiken voor verschillende onderdelen.  Deze functie `false` is standaard `true` ingeschakeld. |
-| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Units = `days`, `hours` `minutes`,, `seconds`, `milliseconds`.  Gebruik altijd een hoofdletter voor de eenheid. </br> Definieer het aantal eenheden door het gewenste gehele getal voor **timeBucketSize**door te geven.  |
+| `multiChartStack=false` | `true`is standaard ingeschakeld, dus door gegeven `false` aan stack. |
+| `multiChartStack=false&multiChartSameScale=true` | Stapelen moet zijn ingeschakeld om dezelfde schaling van de Y-as te gebruiken voor verschillende onderdelen.  `false` `true` Deze functie is standaard ingeschakeld. |
+| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Units = `days` ,,, `hours` `minutes` `seconds` , `milliseconds` .  Gebruik altijd een hoofdletter voor de eenheid. </br> Definieer het aantal eenheden door het gewenste gehele getal voor **timeBucketSize**door te geven.  |
 | `timezoneOffset=-<integer>` | Het gehele getal is altijd in milliseconden. |
 
 > [!NOTE]

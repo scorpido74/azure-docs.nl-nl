@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 63873a4f8301d3cb20488b02b32200f476922276
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417943"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Until-activiteit in Azure Data Factory
@@ -23,7 +23,7 @@ ms.locfileid: "81417943"
 
 De activiteit Until biedt dezelfde functionaliteit als de lusstructuur do-until in een programmeertaal. Er wordt een reeks activiteiten uitgevoerd totdat de voorwaarde die aan de activiteit is gekoppeld, resulteert in waar. U kunt in Data Factory een time-outwaarde voor de Until-activiteit opgeven. 
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -55,11 +55,11 @@ De activiteit Until biedt dezelfde functionaliteit als de lusstructuur do-until 
 
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-name | De naam van `Until` de activiteit. | Tekenreeks | Ja
+naam | De naam van de `Until` activiteit. | Tekenreeks | Ja
 type | Moet worden ingesteld op **until**. | Tekenreeks | Ja
 expressie | Expressie die moet worden geëvalueerd als waar of onwaar | Expressie.  | Ja
-timeout | De lus-until loopt na de opgegeven tijd hier. | Tekenreeks. `d.hh:mm:ss`of `hh:mm:ss`. De standaardwaarde is 7 dagen. De maximum waarde is: 90 dagen. | Nee
-Activiteiten | Set activiteiten die worden uitgevoerd tot de expressie wordt geëvalueerd `true`. | Matrix van activiteiten. |  Ja
+timeout | De lus-until loopt na de opgegeven tijd hier. | Tekenreeks. `d.hh:mm:ss`(of) `hh:mm:ss` . De standaardwaarde is 7 dagen. De maximum waarde is: 90 dagen. | Nee
+Activiteiten | Set activiteiten die worden uitgevoerd tot de expressie wordt geëvalueerd `true` . | Matrix van activiteiten. |  Ja
 
 ## <a name="example-1"></a>Voorbeeld 1
 
@@ -120,7 +120,7 @@ In dit voor beeld heeft de pijp lijn twee activiteiten: **tot** en met een **oge
 ## <a name="example-2"></a>Voorbeeld 2 
 Met de pijp lijn in dit voor beeld worden gegevens gekopieerd van een uitvoermap naar een uitvoermap in een lus. De lus wordt beëindigd wanneer de waarde voor de para meter REPEAT is ingesteld op False of na één minuut een time-out optreedt.   
 
-### <a name="pipeline-with-until-activity-adfv2quickstartpipelinejson"></a>Pijp lijn met until-activiteit (Adfv2QuickStartPipeline. json)
+### <a name="pipeline-with-until-activity-adfv2quickstartpipelinejson"></a>Pijp lijn met until-activiteit (Adfv2QuickStartPipeline.jsaan)
 
 ```json
 {
@@ -193,7 +193,7 @@ Met de pijp lijn in dit voor beeld worden gegevens gekopieerd van een uitvoermap
 ```
 
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Storage gekoppelde service (AzureStorageLinkedService. json)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Storage gekoppelde service (AzureStorageLinkedService.jsop)
 
 ```json
 {
@@ -207,7 +207,7 @@ Met de pijp lijn in dit voor beeld worden gegevens gekopieerd van een uitvoermap
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Geparametriseerde Azure Blob-gegevensset met para meters (BlobDataset. json)
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Geparametriseerde Azure Blob-gegevensset (BlobDataset.jsop)
 De pijp lijn stelt de **FolderPath** in op de waarde van de para meter **outputPath1** of **outputPath2** van de pijp lijn. 
 
 ```json
@@ -234,7 +234,7 @@ De pijp lijn stelt de **FolderPath** in op de waarde van de para meter **outputP
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>JSON-para meter (PipelineParameters. json)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>JSON-para meter (PipelineParameters.js)
 
 ```json
 {
@@ -295,4 +295,4 @@ Zie andere controle stroom activiteiten die door Data Factory worden ondersteund
 - [Voor elke activiteit](control-flow-for-each-activity.md)
 - [Activiteit ophalen van metagegevens](control-flow-get-metadata-activity.md)
 - [Opzoekactiviteit](control-flow-lookup-activity.md)
-- [Web Activity](control-flow-web-activity.md)
+- [Webactiviteit](control-flow-web-activity.md)

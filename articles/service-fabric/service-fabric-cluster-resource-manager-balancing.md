@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: b6df25b525975f2d4fe6a02064e81f359a804c58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416256"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Balancing your service Fabric-cluster
@@ -33,7 +33,7 @@ Elk van de verschillende typen verbeteringen die de cluster resource manager kan
 
 Hieronder vindt u voor beelden van de configuratie met betrekking tot deze timers:
 
-ClusterManifest. XML:
+ClusterManifest.xml:
 
 ``` xml
         <Section Name="PlacementAndLoadBalancing">
@@ -44,7 +44,7 @@ ClusterManifest. XML:
         </Section>
 ```
 
-via ClusterConfig. json voor zelfstandige implementaties of sjabloon. json voor door Azure gehoste clusters:
+via ClusterConfig.jsop voor zelfstandige implementaties of Template.jsop voor door Azure gehoste clusters:
 
 ```json
 "fabricSettings": [
@@ -83,7 +83,7 @@ Een drempel waarde voor Balancing is het belangrijkste besturings element voor h
 
 Drempel waarden voor de verdeling worden per metriek gedefinieerd als onderdeel van de cluster definitie. Raadpleeg [dit artikel](service-fabric-cluster-resource-manager-metrics.md)voor meer informatie over metrische gegevens.
 
-ClusterManifest. XML
+ClusterManifest.xml
 
 ```xml
     <Section Name="MetricBalancingThresholds">
@@ -92,7 +92,7 @@ ClusterManifest. XML
     </Section>
 ```
 
-via ClusterConfig. json voor zelfstandige implementaties of sjabloon. json voor door Azure gehoste clusters:
+via ClusterConfig.jsop voor zelfstandige implementaties of Template.jsop voor door Azure gehoste clusters:
 
 ```json
 "fabricSettings": [
@@ -144,7 +144,7 @@ Stel dat we onze drempel waarde voor de balans van drie voor deze metrische waar
 
 Net als bij het verdelen van de drempel waarden, worden de drempel waarden voor de activiteit per metriek gedefinieerd via de cluster definitie:
 
-ClusterManifest. XML
+ClusterManifest.xml
 
 ``` xml
     <Section Name="MetricActivityThresholds">
@@ -152,7 +152,7 @@ ClusterManifest. XML
     </Section>
 ```
 
-via ClusterConfig. json voor zelfstandige implementaties of sjabloon. json voor door Azure gehoste clusters:
+via ClusterConfig.jsop voor zelfstandige implementaties of Template.jsop voor door Azure gehoste clusters:
 
 ```json
 "fabricSettings": [

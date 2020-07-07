@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.custom: sfrev
 ms.openlocfilehash: 699015e322c599dea996b3a8b9dbc0a4589440ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81429666"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>X. 509 authenticatie op basis van certificaten in Service Fabric clusters
@@ -106,8 +106,8 @@ Laten we eerst een fragment overwegen van een cluster manifest exemplifying beid
 ```
 De declaraties verwijzen respectievelijk naar de id's van de server en het cluster. Houd er rekening mee dat de op CN gebaseerde declaraties hun eigen secties hebben in het cluster manifest, gescheiden van de standaard beveiliging. In beide declaraties staat de ' naam ' voor de algemene onderwerpnaam van het certificaat en het veld ' waarde ' staat voor de verwachte uitgever, als volgt:
 
-- in het eerste geval wordt met de verklaring aangegeven dat het algemene naam element van het DN-onderwerp van het server certificaat naar verwachting overeenkomt met de teken reeks ' server. demo. System. servicefabric. Azure-int '; het lege veld ' waarde ' geeft aan dat de basis van de certificaat keten wordt vertrouwd op het knoop punt/de computer waarop het server certificaat wordt gevalideerd; in Windows betekent dit dat het certificaat kan worden gekoppeld aan een van de certificaten die zijn geïnstalleerd in het archief van de vertrouwde basis certificerings instantie.
-- in het tweede geval geeft de verklaring aan dat de presentator van een certificaat als knoop punt van een peer in het cluster wordt geaccepteerd als de algemene naam van het certificaat overeenkomt met de teken reeks "cluster. demo. System. servicefabric. Azure-int" *en* de vinger afdruk van de directe verlener van het certificaat overeenkomt met een van de door komma's gescheiden vermeldingen in het veld waarde. (Dit regel type is colloquially bekend als ' algemene naam bij het vastmaken van de verlener '.)
+- in het eerste geval wordt met de verklaring aangegeven dat het algemene naam element van het DN-onderwerp van het server certificaat naar verwachting overeenkomt met de teken reeks ' server.demo.system. servicefabric. Azure-int '; het lege veld ' waarde ' geeft aan dat de basis van de certificaat keten wordt vertrouwd op het knoop punt/de computer waarop het server certificaat wordt gevalideerd; in Windows betekent dit dat het certificaat kan worden gekoppeld aan een van de certificaten die zijn geïnstalleerd in het archief van de vertrouwde basis certificerings instantie.
+- in het tweede geval geeft de verklaring aan dat de presentator van een certificaat als knoop punt van een peer in het cluster wordt geaccepteerd als de algemene naam van het certificaat overeenkomt met de teken reeks "cluster.demo.system. servicefabric. Azure-int" *en* de vinger afdruk van de directe verlener van het certificaat overeenkomt met een van de door komma's gescheiden vermeldingen in het veld waarde. (Dit regel type is colloquially bekend als ' algemene naam bij het vastmaken van de verlener '.)
 
 In beide gevallen wordt de keten van het certificaat gebouwd en wordt naar verwachting een fout vrij. dat wil zeggen, intrekkings fouten, gedeeltelijke keten of tijd-ongeldige vertrouwens fouten worden als onherstelbaar beschouwd en de certificaat validatie mislukt. Het vastmaken van de uitgevers leidt ertoe dat de status niet-vertrouwd root wordt beschouwd als een niet-fatale fout. Ondanks het uiterlijk is dit een striktere vorm van validatie, omdat de cluster eigenaar het mogelijk maakt om de set geautoriseerde/geaccepteerde verleners te beperken tot hun eigen PKI.
 
@@ -156,7 +156,7 @@ Laten we het volgende fragment van een cluster manifest overwegen:
     </NodeType>
   </NodeTypes>
 ```
-Het element ' ClusterCertificate ' illustreert het volledige schema, inclusief optionele para meters (' X509FindValueSecondary ') of gebruikers met de juiste standaard waarden (' X509StoreName '). de andere declaraties tonen een afgekort formulier. In de declaratie van het cluster certificaat hierboven wordt aangegeven dat de beveiligings instellingen van knoop punten van het type ' nt1vm ' zijn geïnitialiseerd met het certificaat cc71.. 1984 ' als de primaire en ' 49e2.. 19d6 ' certificaat als secundaire; beide certificaten worden naar verwachting gevonden in het LocalMachine\'mijn certificaat archief (of het bijbehorende Linux-pad, *var/lib/sfcerts*).
+Het element ' ClusterCertificate ' illustreert het volledige schema, inclusief optionele para meters (' X509FindValueSecondary ') of gebruikers met de juiste standaard waarden (' X509StoreName '). de andere declaraties tonen een afgekort formulier. In de declaratie van het cluster certificaat hierboven wordt aangegeven dat de beveiligings instellingen van knoop punten van het type ' nt1vm ' zijn geïnitialiseerd met het certificaat cc71.. 1984 ' als de primaire en ' 49e2.. 19d6 ' certificaat als secundaire; beide certificaten worden naar verwachting gevonden in het LocalMachine \' mijn certificaat archief (of het bijbehorende Linux-pad, *var/lib/sfcerts*).
 
 #### <a name="common-name-based-certificate-presentation-declarations"></a>Algemene presentatie declaraties op basis van naam certificaten
 Het knooppunt type certificaten kunnen ook worden gedeclareerd door de algemene naam van het onderwerp, zoals hieronder geïllustreerd:

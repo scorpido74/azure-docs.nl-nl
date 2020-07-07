@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81460644"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>Best practices virtuele array van StorSimple
@@ -84,7 +84,7 @@ De totale ruimte die is vereist voor de lokale laag is tot nu toe: 240 GB + 120 
 Ten tweede hebben we ten minste zoveel ruimte op de lokale laag als grootste enkele reserve ring nodig. Dit extra bedrag wordt gebruikt wanneer u een Cloud momentopname wilt herstellen. In dit voor beeld is de grootste lokale reserve ring 330 GB (inclusief reserve ring voor bestands systeem), zodat u deze toevoegt aan de 690 GB: 690 GB + 330 GB = 1020 GB.
 Als we verdere herstel bewerkingen hebben uitgevoerd, kunnen we de ruimte van de vorige terugzet bewerking altijd vrijmaken.
 
-Ten derde hebben we 15% van uw totale lokale ruimte tot nu toe nodig voor het opslaan van lokale moment opnamen, zodat er slechts 85% van de schijf beschikbaar is. In dit voor beeld zou dat ongeveer 1020 GB = 0,85&ast;ingerichte gegevens schijf TB zijn. Daarom zou de ingerichte gegevens schijf (1020&ast;(1/0.85)) = 1200 GB = 1,20 tb ~ 1,25 TB (afronden op het dichtstbijzijnde kwartiel)
+Ten derde hebben we 15% van uw totale lokale ruimte tot nu toe nodig voor het opslaan van lokale moment opnamen, zodat er slechts 85% van de schijf beschikbaar is. In dit voor beeld zou dat ongeveer 1020 GB = 0,85 &ast; ingerichte gegevens schijf TB zijn. Daarom zou de ingerichte gegevens schijf (1020 &ast; (1/0.85)) = 1200 GB = 1,20 TB ~ 1,25 TB (afronden op het dichtstbijzijnde kwartiel)
 
 Voor de factor in onverwachte groei en nieuwe herstel bewerkingen moet u een lokale schijf van circa 1,25-1,5 TB inrichten.
 
@@ -107,7 +107,7 @@ De totale benodigde ruimte voor de lokale laag is: 240 GB + 330 GB = 570 GB
 
 De minimale lokale schijf ruimte die nodig is voor herstel is 330 GB.
 
-15% van de totale schijf wordt gebruikt om moment opnamen op te slaan, zodat er slechts 0,85 beschikbaar is. De schijf grootte is dus (900&ast;(1/0.85)) = 1,06 tb ~ 1,25 TB (afronden op het dichtstbijzijnde kwartiel)
+15% van de totale schijf wordt gebruikt om moment opnamen op te slaan, zodat er slechts 0,85 beschikbaar is. De schijf grootte is dus (900 &ast; (1/0.85)) = 1,06 TB ~ 1,25 TB (afronden op het dichtstbijzijnde kwartiel)
 
 Factor in een onverwachte groei kunt u een lokale schijf van 1,25-1,5 TB inrichten.
 
@@ -250,7 +250,7 @@ Houd bij het deactiveren van uw virtuele array de volgende aanbevolen procedures
 * Voordat u een virtuele StorSimple-matrix deactiveert, moet u ervoor zorgen dat clients en hosts die afhankelijk zijn van dat apparaat, worden gestopt of verwijderd.
 * Een gedeactiveerd apparaat verwijderen als u niet meer gebruikt, zodat er geen kosten in rekening worden gebracht.
 
-### <a name="monitoring"></a>Bewaking
+### <a name="monitoring"></a>Controleren
 Om ervoor te zorgen dat uw virtuele StorSimple-matrix een voortdurende status heeft, moet u de matrix controleren en ervoor zorgen dat u informatie ontvangt van het systeem, inclusief waarschuwingen. Als u de algehele status van de virtuele matrix wilt bewaken, voert u de volgende aanbevolen procedures uit:
 
 * Configureer bewaking om het schijf gebruik van de gegevens schijf van uw virtuele matrix en de besturingssysteem schijf bij te houden. Als Hyper-V wordt uitgevoerd, kunt u een combi natie van System Center Virtual Machine Manager (SCVMM) en System Center Operations Manager gebruiken om de virtualisatiehost te bewaken.

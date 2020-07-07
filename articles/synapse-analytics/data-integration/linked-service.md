@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 435c3fd6b1e6444fa3a31c68b4d74c2553d2e634
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81430550"
 ---
 # <a name="securing-a-linked-service-with-private-links"></a>Een gekoppelde service beveiligen met persoonlijke koppelingen 
@@ -49,7 +49,7 @@ In het geval kunt u niet klikken op de Hyper link bij het testen van de bovensta
 1. Selecteer **+ Nieuw** onder beheerd persoonlijk eind punt.
 1. Selecteer de tegel Azure Data Lake Storage Gen2 in de lijst en selecteer **door gaan**.
 1. Voer de naam in van het opslag account dat u hierboven hebt gemaakt.
-1. Selecteer **maken**
+1. Selecteer **Maken**
 1. U moet zien nadat u enkele seconden hebt gewacht dat de persoonlijke koppeling een goed keuring vereist.
 
 ## <a name="approval-of-a-private-link"></a>Goed keuring van een persoonlijke koppeling

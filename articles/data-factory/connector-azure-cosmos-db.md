@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
 ms.openlocfilehash: f0aa70333454b327a0ca76beef2985062ce56715
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415387"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Gegevens in Azure Cosmos DB (SQL API) kopiëren en transformeren met behulp van Azure Data Factory
 
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](v1/data-factory-azure-documentdb-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](v1/data-factory-azure-documentdb-connector.md)
 > * [Huidige versie](connector-azure-cosmos-db.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -211,13 +211,13 @@ De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopiee
 | type | De eigenschap **type** van de Sink voor kopieer activiteiten moet worden ingesteld op **CosmosDbSqlApiSink**. |Ja |
 | writeBehavior |Hierin wordt beschreven hoe u gegevens naar Azure Cosmos DB schrijft. Toegestane waarden: **Insert** en **upsert**.<br/><br/>Het gedrag van **upsert** is om het document te vervangen als er al een document met dezelfde id bestaat. Als dat niet het geval is, voegt u het document in.<br /><br />**Opmerking**: de Data Factory genereert automatisch een id voor een document als er geen id is opgegeven in het oorspronkelijke document of op kolom toewijzing. Dit betekent dat u ervoor moet zorgen dat uw document een ID heeft om **upsert** te laten werken zoals verwacht. |Nee<br />(de standaard waarde is **Invoegen**) |
 | writeBatchSize | Data Factory maakt gebruik van de [Azure Cosmos DB bulk](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) -uitvoerder bibliotheek om gegevens naar Azure Cosmos DB te schrijven. De eigenschap **writeBatchSize** bepaalt de grootte van documenten die door ADF aan de bibliotheek worden verstrekt. U kunt proberen de waarde voor **writeBatchSize** te verhogen om de prestaties te verbeteren en de waarde te verlagen als uw document groot is. Zie de onderstaande tips voor meer informatie. |Nee<br />(de standaard waarde is **10.000**) |
-| disableMetricsCollection | Data Factory verzamelt metrische gegevens zoals Cosmos DB RUs voor het optimaliseren van Kopieer prestaties en aanbevelingen. Als u zich zorgen maakt over dit gedrag, `true` geeft u op dat u deze functie wilt uitschakelen. | Nee (standaard instelling `false`) |
+| disableMetricsCollection | Data Factory verzamelt metrische gegevens zoals Cosmos DB RUs voor het optimaliseren van Kopieer prestaties en aanbevelingen. Als u zich zorgen maakt over dit gedrag, geeft u `true` op dat u deze functie wilt uitschakelen. | Nee (standaard instelling `false` ) |
 
 >[!TIP]
 >Als u JSON-documenten wilt importeren als-is, raadpleegt u de sectie [JSON-documenten importeren of exporteren](#import-and-export-json-documents) . Als u wilt kopiëren van gegevens in tabel vorm, raadpleegt u [migreren van relationele data base naar Cosmos DB](#migrate-from-relational-database-to-cosmos-db).
 
 >[!TIP]
->Cosmos DB beperkt de grootte van één aanvraag tot 2 MB. De formule is aanvraag grootte = één document grootte * Batch grootte schrijven. Als u een fout bericht krijgt met de melding dat de grootte van de **aanvraag te groot is**, **vermindert u `writeBatchSize` de waarde** in Sink-configuratie kopiëren.
+>Cosmos DB beperkt de grootte van één aanvraag tot 2 MB. De formule is aanvraag grootte = één document grootte * Batch grootte schrijven. Als u een fout bericht krijgt met de melding dat de grootte van de **aanvraag te groot is**, **vermindert u de `writeBatchSize` waarde** in Sink-configuratie kopiëren.
 
 Als u een bron van het type ' DocumentDbCollectionSink ' gebruikt, wordt deze nog steeds ondersteund voor compatibiliteit met eerdere versies. U wordt aangeraden het nieuwe model te gebruiken dat naar uitgebreidere mogelijkheden biedt om gegevens van Cosmos DB te kopiëren.
 
@@ -265,7 +265,7 @@ Wanneer gegevens worden getransformeerd in de toewijzing van gegevens stromen, k
 
 Instellingen die specifiek zijn voor Azure Cosmos DB, zijn beschikbaar op het tabblad **bron opties** van de bron transformatie. 
 
-**Systeem kolommen insluiten:** Als waar, ```id```, ```_ts```, en andere systeem kolommen worden opgenomen in de meta gegevens van de gegevensstroom vanuit CosmosDB. Wanneer u verzamelingen bijwerkt, is het belang rijk om dit op te halen, zodat u de bestaande rij-id kunt ophalen.
+**Systeem kolommen insluiten:** Als waar, ```id``` ,, ```_ts``` en andere systeem kolommen worden opgenomen in de meta gegevens van de gegevensstroom vanuit CosmosDB. Wanneer u verzamelingen bijwerkt, is het belang rijk om dit op te halen, zodat u de bestaande rij-id kunt ophalen.
 
 **Pagina formaat:** Het aantal documenten per pagina van het query resultaat. De standaard waarde is '-1 ' die gebruikmaakt van de dynamische pagina van de service tot 1000.
 

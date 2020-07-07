@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: 40bff9585e64163039a8847ff868c982ffb20414
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81458246"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Azure Key Vault als Event Grid bron
@@ -67,7 +67,7 @@ In het volgende voor beeld wordt schema voor **micro soft. SecretNewVersionCreat
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | ---------- | ----------- |---|
 | id | tekenreeks | De ID van het object dat deze gebeurtenis heeft geactiveerd |
 | vaultName | tekenreeks | De naam van de sleutel kluis van het object dat deze gebeurtenis heeft geactiveerd |
@@ -91,7 +91,7 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 * Zie [Key Vault bewaken met Azure Event grid (preview)](../key-vault/general/event-grid-overview.md)voor meer informatie over de integratie van Key Vault met Event grid.
 * Zie voor een zelf studie over Key Vault integratie met Event Grid de [sleutel kluis meldingen ontvangen en erop reageren met Azure Event grid (preview)](../key-vault/general/event-grid-tutorial.md).
 * Zie voor aanvullende richt lijnen voor Key Vault en Azure Automation:
-    - [Wat is Azure Sleutelkluis?](../key-vault/general/overview.md)
+    - [Wat is Azure Key Vault?](../key-vault/general/overview.md)
     - [Key Vault bewaken met Azure Event Grid (preview-versie)](../key-vault/general/event-grid-overview.md)
     - [Belang rijke kluis meldingen ontvangen en hierop reageren met Azure Event Grid (preview-versie)](../key-vault/general/event-grid-tutorial.md)
     - [Overzicht van Azure Automation](../automation/index.yml)

@@ -12,10 +12,10 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
 ms.openlocfilehash: 4620ef5b6a72afbe86b0ace33328a769eab31e5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418266"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Gegevens kopiëren van de web-service van Amazon Marketplace met Azure Data Factory
@@ -49,7 +49,7 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service van Amaz
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **AmazonMWS** | Ja |
 | endpoint | Het eind punt van de Amazon MWS-server, (dat wil zeggen mws.amazonservices.com)  | Ja |
-| marketplaceID | De Amazon Marketplace-ID waaruit u gegevens wilt ophalen. Als u gegevens wilt ophalen uit meerdere Marketplace-Id's, scheidt u`,`deze met een komma (). (dat wil zeggen, A2EUQ1WTGCTBG2)  | Ja |
+| marketplaceID | De Amazon Marketplace-ID waaruit u gegevens wilt ophalen. Als u gegevens wilt ophalen uit meerdere Marketplace-Id's, scheidt u deze met een komma ( `,` ). (dat wil zeggen, A2EUQ1WTGCTBG2)  | Ja |
 | sellerID | De verkoper-ID van Amazon.  | Ja |
 | mwsAuthToken | Het Amazon MWS-verificatie token. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | accessKeyId | De toegangs sleutel-ID die wordt gebruikt voor toegang tot gegevens.  | Ja |
@@ -58,7 +58,7 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service van Amaz
 | useHostVerification | Hiermee geeft u op of de hostnaam in het certificaat van de server moet overeenkomen met de hostnaam van de server bij het maken van verbinding via TLS. De standaardwaarde is waar.  | Nee |
 | usePeerVerification | Hiermee wordt aangegeven of de identiteit van de server moet worden gecontroleerd wanneer er verbinding wordt gemaakt via TLS. De standaardwaarde is waar.  | Nee |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -125,7 +125,7 @@ Als u gegevens wilt kopiëren uit de web-service van Amazon Marketplace, stelt u
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **AmazonMWSSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[

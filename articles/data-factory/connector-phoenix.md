@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: d236b9f8800b644a0aa51597d01df1c1442475ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416777"
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Gegevens kopiëren van Phoenix met Azure Data Factory 
@@ -53,7 +53,7 @@ De volgende eigenschappen worden ondersteund voor gekoppelde services van Breda:
 | type | De eigenschap type moet worden ingesteld op: **Phoenix** | Ja |
 | host | Het IP-adres of de hostnaam van de Bredase server. (dat wil zeggen, 192.168.222.160)  | Ja |
 | poort | De TCP-poort die de Phoenix-server gebruikt om te Luis teren naar client verbindingen. De standaard waarde is 8765. Als u verbinding maakt met Azure HDInsights, geeft u poort op als 443. | Nee |
-| httpPath | De gedeeltelijke URL die overeenkomt met de Phoenix-server. (dat wil zeggen,/gateway/sandbox/Phoenix/Version). Geef `/hbasephoenix0` op of HDInsights-cluster wordt gebruikt.  | Nee |
+| httpPath | De gedeeltelijke URL die overeenkomt met de Phoenix-server. (dat wil zeggen,/gateway/sandbox/Phoenix/Version). Geef op `/hbasephoenix0` of HDInsights-cluster wordt gebruikt.  | Nee |
 | authenticationType | Het verificatie mechanisme dat wordt gebruikt om verbinding te maken met de Phoenix-server. <br/>Toegestane waarden zijn: **Anonymous**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ja |
 | gebruikersnaam | De gebruikers naam die wordt gebruikt om verbinding te maken met de Bredase server.  | Nee |
 | wachtwoord | Het wacht woord dat overeenkomt met de gebruikers naam. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Nee |
@@ -65,9 +65,9 @@ De volgende eigenschappen worden ondersteund voor gekoppelde services van Breda:
 | connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
 >[!NOTE]
->Als uw cluster geen plak sessie ondersteunt, bijvoorbeeld HDInsight, voegt u de knooppunt index expliciet toe aan het einde van de instelling van het http `/hbasephoenix0` -pad `/hbasephoenix`, bijvoorbeeld in plaats van.
+>Als uw cluster geen plak sessie ondersteunt, bijvoorbeeld HDInsight, voegt u de knooppunt index expliciet toe aan het einde van de instelling van het HTTP-pad, bijvoorbeeld `/hbasephoenix0` in plaats van `/hbasephoenix` .
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -132,7 +132,7 @@ Als u gegevens wilt kopiëren van Breda, stelt u het bron type in de Kopieer act
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **PhoenixSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[

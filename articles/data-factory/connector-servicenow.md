@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: bc48f651a1adb099017e8f47d9fa6bcfa8078fa1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415340"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Gegevens kopiëren van ServiceNow met behulp van Azure Data Factory
@@ -47,7 +47,7 @@ De volgende eigenschappen worden ondersteund voor ServiceNow gekoppelde service:
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **ServiceNow** | Ja |
-| endpoint | Het eind punt van de ServiceNow-`http://<instance>.service-now.com`server ().  | Ja |
+| endpoint | Het eind punt van de ServiceNow-server ( `http://<instance>.service-now.com` ).  | Ja |
 | authenticationType | Het verificatie type dat moet worden gebruikt. <br/>Toegestane waarden zijn: **Basic**, **OAuth2** | Ja |
 | gebruikersnaam | De gebruikers naam die wordt gebruikt om verbinding te maken met de ServiceNow-server voor Basic-en OAuth2-verificatie.  | Ja |
 | wachtwoord | Het wacht woord dat overeenkomt met de gebruikers naam voor Basic-en OAuth2-verificatie. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
@@ -57,7 +57,7 @@ De volgende eigenschappen worden ondersteund voor ServiceNow gekoppelde service:
 | useHostVerification | Hiermee geeft u op of de hostnaam in het certificaat van de server moet overeenkomen met de hostnaam van de server bij het maken van verbinding via TLS. De standaardwaarde is waar.  | Nee |
 | usePeerVerification | Hiermee wordt aangegeven of de identiteit van de server moet worden gecontroleerd wanneer er verbinding wordt gemaakt via TLS. De standaardwaarde is waar.  | Nee |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -120,14 +120,14 @@ Als u gegevens wilt kopiëren uit ServiceNow, stelt u het bron type in de Kopiee
 
 Let op het volgende wanneer u het schema en de kolom voor ServiceNow in query opgeeft en **Raadpleeg de [prestatie tips](#performance-tips) bij het kopiëren van de prestatie implicaties**.
 
-- **Schema:** Geef het schema op `Actual` als `Display` of in de ServiceNow-query, die u kunt bekijken als de para meter `sysparm_display_value` True of False bij het aanroepen van [ServiceNow-rest-api's](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
-- **Kolom:** de kolom naam voor de werkelijke waarde `Actual` onder schema `[column name]_value`is, terwijl de waarde weer `Display` geven onder `[column name]_display_value`schema is. Houd er rekening mee dat de naam van de kolom moet worden toegewezen aan het schema dat wordt gebruikt in de query.
+- **Schema:** Geef het schema op als `Actual` of `Display` in de ServiceNow-query, die u kunt bekijken als de para meter `sysparm_display_value` True of False bij het aanroepen van [ServiceNow-rest-api's](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
+- **Kolom:** de kolom naam voor de werkelijke waarde onder `Actual` schema is `[column name]_value` , terwijl de waarde weer geven onder `Display` schema is `[column name]_display_value` . Houd er rekening mee dat de naam van de kolom moet worden toegewezen aan het schema dat wordt gebruikt in de query.
 
 **Voorbeeld query:** 
- `SELECT col_value FROM Actual.alm_asset` of 
+ `SELECT col_value FROM Actual.alm_asset` OF 
 `SELECT col_display_value FROM Display.alm_asset`
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[

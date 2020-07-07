@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: 261bdedee56bb4de2dfbbef27358fae5ae8fdc3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416745"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Gegevens kopiëren van Presto met behulp van Azure Data Factory (preview-versie)
@@ -64,7 +64,7 @@ De volgende eigenschappen worden ondersteund voor Presto gekoppelde service:
 | allowSelfSignedServerCert | Hiermee geeft u op of zelfondertekende certificaten van de server mogen worden toegestaan. De standaardwaarde is false.  | Nee |
 | timeZoneID | De lokale tijd zone die wordt gebruikt door de verbinding. Geldige waarden voor deze optie zijn opgegeven in de data base van de IANA-tijd zone. De standaard waarde is de systeem tijd zone.  | Nee |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -131,7 +131,7 @@ Als u gegevens wilt kopiëren uit Presto, stelt u het bron type in de Kopieer ac
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **PrestoSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[

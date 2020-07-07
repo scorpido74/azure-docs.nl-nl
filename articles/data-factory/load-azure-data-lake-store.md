@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/17/2018
 ms.openlocfilehash: 1b1b19814709451bdbbea97462c459149484e71f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415851"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Gegevens in Azure Data Lake Storage Gen1 laden met behulp van Azure Data Factory
@@ -46,15 +46,15 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopi√
 
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
-1. Selecteer in het menu links de optie **een resource** > **Analytics** > -**Data Factory**maken:
+1. Selecteer in het linkermenu **Een resource maken** > **Analyse** > **Data Factory**:
    
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
 2. Geef op de pagina **nieuw Data Factory** waarden op voor de velden die worden weer gegeven in de volgende afbeelding: 
       
-   ![Pagina Nieuwe gegevensfactory](./media/load-data-into-azure-data-lake-store//new-azure-data-factory.png)
+   ![De pagina Nieuwe data factory](./media/load-data-into-azure-data-lake-store//new-azure-data-factory.png)
  
-    * **Naam**: Voer een wereld wijd unieke naam in voor uw Azure-Data Factory. Als het fout bericht ' Data Factory-naam \"LoadADLSG1Demo\" is niet beschikbaar ' wordt weer gegeven, voert u een andere naam in voor de Data Factory. U kunt bijvoorbeeld _**de naam**_**ADFTutorialDataFactory**. Probeer de data factory opnieuw te maken. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
+    * **Naam**: Voer een wereld wijd unieke naam in voor uw Azure-Data Factory. Als het fout bericht ' Data Factory-naam \" LoadADLSG1Demo \" is niet beschikbaar ' wordt weer gegeven, voert u een andere naam in voor de Data Factory. U kunt bijvoorbeeld _**de naam**_**ADFTutorialDataFactory**. Probeer de data factory opnieuw te maken. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
     * **Abonnement**: Selecteer het Azure-abonnement waarin u de Data Factory wilt maken. 
     * **Resource groep**: Selecteer een bestaande resource groep in de vervolg keuzelijst of selecteer de optie **nieuwe maken** en voer de naam van een resource groep in. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie.  
     * **Versie**: Selecteer **v2**.
@@ -90,7 +90,7 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopi√
    
       ![Amazon S3-account opgeven](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
-   4. Er wordt een nieuwe verbinding weer geven. Selecteer **Next**.
+   4. Er wordt een nieuwe verbinding weer geven. Selecteer **Volgende**.
    
    ![Amazon S3-account opgeven](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
    
@@ -110,7 +110,7 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopi√
 
    1. Selecteer uw Data Lake Storage Gen1 account voor de **naam**van het data Lake Store-account.
    2. Geef de **Tenant**op en selecteer volt ooien.
-   3. Selecteer **Next**.
+   3. Selecteer **Volgende**.
    
    > [!IMPORTANT]
    > In dit scenario gebruikt u een beheerde identiteit voor Azure-resources om uw Data Lake Storage Gen1-account te verifi√´ren. Zorg ervoor dat u het MSI-bestand de juiste machtigingen geeft in Data Lake Storage Gen1 door [deze instructies](connector-azure-data-lake-store.md#managed-identity)te volgen.
@@ -122,7 +122,7 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopi√
 
 10. Selecteer op de pagina **instellingen** de optie **volgende**:
 
-    ![De pagina Instellingen](./media/load-data-into-azure-data-lake-store/copy-settings.png)
+    ![Pagina Instellingen](./media/load-data-into-azure-data-lake-store/copy-settings.png)
 11. Controleer de instellingen op de pagina **samen vatting** en selecteer **volgende**:
 
     ![Overzichtspagina](./media/load-data-into-azure-data-lake-store/copy-summary.png)

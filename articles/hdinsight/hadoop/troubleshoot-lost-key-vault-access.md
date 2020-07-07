@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.openlocfilehash: b1d941fbf86d453a56a5157ed988a32173c614fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81461528"
 ---
 # <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Scenario: Azure HDInsight-clusters met schijf versleuteling, verlies Key Vault toegang
@@ -20,7 +20,7 @@ In dit artikel worden de stappen beschreven voor het oplossen van problemen en m
 
 ## <a name="issue"></a>Probleem
 
-De RHC-waarschuwing `The HDInsight cluster is unable to access the key for BYOK encryption at rest`(resource Health Center) wordt weer gegeven voor Bring your own Key-clusters (BYOK) waarin de cluster knooppunten de toegang tot klanten Key Vault (kV) hebben verloren. Vergelijk bare waarschuwingen kunnen ook worden weer gegeven op Apache Ambari-gebruikers interface.
+De RHC-waarschuwing (Resource Health Center) `The HDInsight cluster is unable to access the key for BYOK encryption at rest` wordt weer gegeven voor Bring your own Key-clusters (BYOK) waarin de cluster knooppunten de toegang tot klanten Key Vault (kV) hebben verloren. Vergelijk bare waarschuwingen kunnen ook worden weer gegeven op Apache Ambari-gebruikers interface.
 
 ## <a name="cause"></a>Oorzaak
 
@@ -86,6 +86,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
 * Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

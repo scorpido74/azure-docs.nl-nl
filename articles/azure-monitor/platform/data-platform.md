@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: 58f542238c952088777ed9809b57dae3cdb9cf12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81457260"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor gegevens platform
@@ -32,7 +32,7 @@ Azure-resources genereren een aanzienlijke hoeveelheid bewakings gegevens. Azure
 
 
 ### <a name="metrics"></a>Metrische gegevens
-[Metrische gegevens](data-platform-metrics.md) zijn numerieke waarden die een aspect van een systeem op een bepaald moment beschrijven. Ze worden regel matig verzameld en worden geïdentificeerd met een tijds tempel, een naam, een waarde en een of meer labels definiëren. Metrische gegevens kunnen worden geaggregeerd met behulp van verschillende algoritmen, vergeleken met andere metrische gegevens, en gedurende een bepaalde periode geanalyseerd. 
+[Metrische gegevens](data-platform-metrics.md) zijn numeriek waarden waarmee een bepaald aspect van een systeem op een bepaald tijdstip wordt beschreven. Ze worden regel matig verzameld en worden geïdentificeerd met een tijds tempel, een naam, een waarde en een of meer labels definiëren. Metrische gegevens kunnen worden geaggregeerd met behulp van verschillende algoritmen, vergeleken met andere metrische gegevens, en gedurende een bepaalde periode geanalyseerd. 
 
 Metrische gegevens in Azure Monitor worden opgeslagen in een Data Base met een tijd reeks die is geoptimaliseerd voor het analyseren van tijdgebonden data. Dit maakt metrische gegevens bijzonder geschikt voor waarschuwingen en snelle detectie van problemen. Ze kunnen u vertellen hoe uw systeem wordt uitgevoerd, maar normaal gesp roken moet worden gecombineerd met Logboeken om de hoofd oorzaak van problemen te identificeren.
 

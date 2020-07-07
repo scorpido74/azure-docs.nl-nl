@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e3ed549e51b911452bca7d4d4a16c7ef45594a8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81451428"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Een authenticatie-implementatie met een wacht woord plannen in Azure Active Directory
@@ -96,7 +96,7 @@ De volgende tabel bevat een overzicht van de use cases die tijdens dit project m
 | Onderwerp | Beschrijving |
 | --- | --- |
 | **Toegang** | Aanmelden met een wacht woord is beschikbaar vanaf een zakelijk of persoonlijk apparaat binnen of buiten het bedrijfs netwerk. |
-| **Controleren** | Gebruiks gegevens zijn beschikbaar voor beheerders die bijna in realtime kunnen worden gecontroleerd. <br> Gebruiks gegevens worden minstens elke 29 dagen naar bedrijfs systemen gedownload, of het hulp programma SIEM wordt gebruikt. |
+| **Controle** | Gebruiks gegevens zijn beschikbaar voor beheerders die bijna in realtime kunnen worden gecontroleerd. <br> Gebruiks gegevens worden minstens elke 29 dagen naar bedrijfs systemen gedownload, of het hulp programma SIEM wordt gebruikt. |
 | **Beheer** | De levens cyclus van gebruikers toewijzingen aan de juiste verificatie methode en de bijbehorende groepen wordt gedefinieerd en bewaakt. |
 | **Beveiliging** | Toegang tot de juiste verificatie methode wordt geregeld via gebruikers-en groeps toewijzingen. <br> Alleen geautoriseerde gebruikers kunnen aanmelden zonder wacht woord gebruiken. |
 | **Prestaties** | De tijd lijnen voor het door geven van toegangs toewijzingen worden gedocumenteerd en gecontroleerd. <br> Aanmeldings tijden worden gemeten voor gebruiks gemak. |
@@ -228,7 +228,7 @@ De volgende tabel bevat enkele voor beelden van typische rapportage scenario's:
 
 **Azure AD houdt de meeste controle gegevens gedurende 30 dagen** en maakt de gegevens beschikbaar via de Azure-beheer portal of-API die u kunt downloaden naar uw analyse systemen. Als u langere retentie nodig hebt, kunt u Logboeken exporteren en gebruiken in een SIEM-hulp programma zoals [Azure Sentinel](../../sentinel/connect-azure-active-directory.md), Splunk of Sumo Logic. [Meer informatie over het weer geven van uw toegangs-en gebruiks rapporten](../reports-monitoring/overview-reports.md).
 
-Gebruikers kunnen hun referenties registreren en beheren door te navigeren naar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). Met deze koppeling worden gebruikers omgeleid naar de beheer ervaring voor de eind gebruiker die is ingeschakeld via de gecombineerde registratie-ervaring voor SSPR/multi-factor Authentication. Azure AD registreert de registratie van FIDO2-beveiligings apparaten en wijzigt de verificatie methoden door een gebruiker.
+Gebruikers kunnen hun referenties registreren en beheren door te navigeren naar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) . Met deze koppeling worden gebruikers omgeleid naar de beheer ervaring voor de eind gebruiker die is ingeschakeld via de gecombineerde registratie-ervaring voor SSPR/multi-factor Authentication. Azure AD registreert de registratie van FIDO2-beveiligings apparaten en wijzigt de verificatie methoden door een gebruiker.
 
 ### <a name="plan-security"></a>Beveiliging plannen
 Als onderdeel van dit implementatie plan raadt micro soft aan dat authenticatie met een wacht woord is ingeschakeld voor alle bevoegde beheerders accounts.
@@ -324,7 +324,7 @@ Volg de stappen in het artikel, [Schakel wacht woordloze beveiligings sleutel aa
 | **Fout bericht**: er is vastgesteld dat deze browser of dit besturings systeem geen FIDO2-beveiligings sleutels ondersteunt. | Wacht woord-FIDO2 beveiligings apparaten kunnen alleen worden geregistreerd in ondersteunde browsers (micro soft Edge, Firefox versie 67) op Windows 10 versie 1809 of hoger. |
 | **Fout bericht**: voor uw bedrijfs beleid moet u een andere methode gebruiken om u aan te melden. | Controleren of beveiligings sleutels zijn ingeschakeld in de Tenant. |
 | Gebruiker kan mijn beveiligings sleutel niet beheren in Windows 10 versie 1809 | Versie 1809 vereist dat u de software voor beveiligings sleutel beheer gebruikt die wordt verschaft door de leverancier van de FIDO2-sleutel. Neem contact op met de leverancier voor ondersteuning. |
-| Ik denk dat mijn FIDO2-beveiligings sleutel defect is, hoe kan ik deze testen. | Navigeer naar [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/), voer referenties in voor een test account, sluit de verdachte beveiligings sleutel aan, selecteer **+** de knop rechtsboven in het scherm, klik op maken en ga door het aanmaak proces. Als dit scenario mislukt, is uw apparaat mogelijk defect. |
+| Ik denk dat mijn FIDO2-beveiligings sleutel defect is, hoe kan ik deze testen. | Navigeer naar [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/) , voer referenties in voor een test account, sluit de verdachte beveiligings sleutel aan, selecteer de **+** knop rechtsboven in het scherm, klik op maken en ga door het aanmaak proces. Als dit scenario mislukt, is uw apparaat mogelijk defect. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

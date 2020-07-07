@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: ae6bfb0ab0208d0f778476c9f0959b0c0f1d6471
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683719"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Oracle Golden-Gate implementeren op een Azure Linux-VM 
@@ -82,7 +82,7 @@ az vm availability-set create \
 
 Maak een VM met de opdracht [az vm create](/cli/azure/vm). 
 
-In het volgende voor beeld worden twee `myVM1` virtuele `myVM2`machines gemaakt met de naam en. Maak SSH-sleutels als deze nog niet bestaan op een standaard sleutel locatie. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`.
+In het volgende voor beeld worden twee virtuele machines gemaakt met de naam `myVM1` en `myVM2` . Maak SSH-sleutels als deze nog niet bestaan op een standaard sleutel locatie. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`.
 
 #### <a name="create-myvm1-primary"></a>MyVM1 maken (primair):
 
@@ -96,7 +96,7 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-Nadat de VM is gemaakt, toont de Azure CLI informatie die lijkt op het volgende voor beeld. (Noteer de `publicIpAddress`. Dit adres wordt gebruikt voor toegang tot de virtuele machine.)
+Nadat de VM is gemaakt, toont de Azure CLI informatie die lijkt op het volgende voor beeld. (Noteer de `publicIpAddress` . Dit adres wordt gebruikt voor toegang tot de virtuele machine.)
 
 ```output
 {
@@ -354,7 +354,7 @@ SQL> EXIT;
 ### <a name="download-golden-gate-software"></a>Gouden poort software downloaden
 Voer de volgende stappen uit om de Oracle Golden-Gate-software te downloaden en voor te bereiden:
 
-1. Down load het bestand **fbo_ggs_Linux_x64_shiphome. zip** van de [Download pagina van de Oracle Golden-Gate](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). Onder de Download titel **Oracle Golden Gate 12. x. x. x voor Oracle Linux x86-64**moet er een set zip-bestanden worden gedownload.
+1. Down load het **fbo_ggs_Linux_x64_shiphome.zip** -bestand van de [Oracle Golden Gate-download pagina](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). Onder de Download titel **Oracle Golden Gate 12. x. x. x voor Oracle Linux x86-64**moet er een set zip-bestanden worden gedownload.
 
 2. Nadat u de zip-bestanden naar uw client computer hebt gedownload, gebruikt u het Secure Copy Protocol (SCP) om de bestanden te kopiëren naar uw VM:
 
@@ -391,7 +391,7 @@ Dit is een optionele stap. U kunt deze stap overs Laan als u een Linux-client ge
    * [PuTTy downloaden](https://www.putty.org/)
    * [Xming downloaden](https://xming.en.softonic.com/)
 
-2. Nadat u PuTTy hebt geïnstalleerd, voert u in de map PuTTy (bijvoorbeeld C:\Program Files\PuTTY) puttygen. exe (PuTTy Key Generator) uit.
+2. Nadat u PuTTy hebt geïnstalleerd, voert u in de map PuTTy (bijvoorbeeld C:\Program Files\PuTTY) puttygen.exe uit (sleutel Generator van PuTTy).
 
 3. In PuTTy-sleutel Generator:
 
@@ -413,14 +413,14 @@ Dit is een optionele stap. U kunt deze stap overs Laan als u een Linux-client ge
 5. Maak een bestand met de naam **authorized_keys**. Plak de inhoud van de sleutel in dit bestand en sla het bestand op.
 
    > [!NOTE]
-   > De sleutel moet de teken reeks `ssh-rsa`bevatten. De inhoud van de sleutel moet ook één tekst regel zijn.
+   > De sleutel moet de teken reeks bevatten `ssh-rsa` . De inhoud van de sleutel moet ook één tekst regel zijn.
    >  
 
-6. Start PuTTY. Selecteer in het deel venster **categorie** de optie **verbinding** > **SSH** > **auth**. Blader in het vak **persoonlijk sleutel bestand voor verificatie** naar de sleutel die u eerder hebt gegenereerd.
+6. Start PuTTY. Selecteer in het deel venster **categorie** de optie **verbinding**  >  **SSH**  >  **auth**. Blader in het vak **persoonlijk sleutel bestand voor verificatie** naar de sleutel die u eerder hebt gegenereerd.
 
    ![Scherm afbeelding van de pagina persoonlijke sleutel instellen](./media/oracle-golden-gate/setprivatekey.png)
 
-7. Selecteer in het deel venster **categorie** de optie **verbinding** > **SSH** > -**X11**. Schakel vervolgens het **doorstuur selectie vakje X11 inschakelen** in.
+7. Selecteer in het deel venster **categorie** de optie **verbinding**  >  **SSH**-  >  **X11**. Schakel vervolgens het **doorstuur selectie vakje X11 inschakelen** in.
 
    ![Scherm afbeelding van de pagina X11 inschakelen](./media/oracle-golden-gate/enablex11.png)
 

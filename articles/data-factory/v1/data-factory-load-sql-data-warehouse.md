@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0bef6b5e87e7f0964989db371014c305b97f1d12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81419303"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB onder 15 minuten aan Azure SQL Data Warehouse laden met Data Factory
@@ -46,7 +46,7 @@ In dit artikel vindt u stapsgewijze instructies voor het verplaatsen van gegeven
 
 ## <a name="prerequisites"></a>Vereisten
 * Azure-Blob Storage: dit experiment maakt gebruik van Azure Blob Storage (GRS) voor het opslaan van de gegevensset van de TPC-H-test.  Als u geen Azure Storage-account hebt, leert u [hoe u een opslag account maakt](../../storage/common/storage-account-create.md).
-* [TPC-h-](http://www.tpc.org/tpch/) gegevens: we gaan TPC-h gebruiken als de gegevensset voor testen.  Hiervoor moet u gebruikmaken `dbgen` van de TPC-H Toolkit, waarmee u de gegevensset kunt genereren.  U kunt de bron code `dbgen` van de TPC- [hulpprogram ma's](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) downloaden en zelf compileren, of het gecompileerde binaire bestand downloaden uit [github](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools).  Voer dbgen. exe uit met de volgende opdrachten voor het genereren van 1 TB `lineitem` plat bestand voor tabel verspreiding over 10 bestanden:
+* [TPC-h-](http://www.tpc.org/tpch/) gegevens: we gaan TPC-h gebruiken als de gegevensset voor testen.  Hiervoor moet u gebruikmaken `dbgen` van de TPC-H Toolkit, waarmee u de gegevensset kunt genereren.  U kunt de bron code van de `dbgen` [TPC-hulpprogram ma's](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) downloaden en zelf compileren, of het gecompileerde binaire bestand downloaden uit [github](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools).  Voer dbgen.exe uit met de volgende opdrachten voor het genereren van 1 TB plat bestand voor `lineitem` tabel verspreiding over 10 bestanden:
 
   * `Dbgen -s 1000 -S **1** -C 10 -T L -v`
   * `Dbgen -s 1000 -S **2** -C 10 -T L -v`
@@ -77,9 +77,9 @@ In dit artikel vindt u stapsgewijze instructies voor het verplaatsen van gegeven
 
     ![Dialoog venster schalen](media/data-factory-load-sql-data-warehouse/scale-dialog.png)
 
-    In dit experiment worden gegevens geladen in `xlargerc` Azure SQL data warehouse met behulp van de resource klasse.
+    In dit experiment worden gegevens geladen in Azure SQL Data Warehouse met behulp van de `xlargerc` resource klasse.
 
-    Voor een optimale door voer moet kopiëren worden uitgevoerd met behulp van een SQL Data Warehouse gebruiker die behoort `xlargerc` tot een resource klasse.  Meer informatie over hoe u dit doet door [een voor beeld van een gebruikers resource klasse te wijzigen](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md).  
+    Voor een optimale door voer moet kopiëren worden uitgevoerd met behulp van een SQL Data Warehouse gebruiker die behoort tot een `xlargerc` resource klasse.  Meer informatie over hoe u dit doet door [een voor beeld van een gebruikers resource klasse te wijzigen](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md).  
 * Maak een doel tabel schema in Azure SQL Data Warehouse data base door de volgende DDL-instructie uit te voeren:
 
     ```SQL  
@@ -111,20 +111,20 @@ In dit artikel vindt u stapsgewijze instructies voor het verplaatsen van gegeven
   Wanneer de vereiste stappen zijn uitgevoerd, kunt u de Kopieer activiteit nu configureren met behulp van de wizard kopiëren.
 
 ## <a name="launch-copy-wizard"></a>De wizard Kopiëren starten
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Klik op **een resource maken** in de linkerbovenhoek, klik op **Intelligence en analytische**gegevens en klik op **Data Factory**.
 3. In het deel venster **nieuw Data Factory** :
 
    1. Voer **LoadIntoSQLDWDataFactory** in als **naam**.
        De naam van de Azure-gegevensfactory moet wereldwijd uniek zijn. Als het volgende fout bericht wordt weer gegeven: **naam van Data Factory "LoadIntoSQLDWDataFactory" is niet beschikbaar**, wijzigt u de naam van de Data Factory (bijvoorbeeld yournameLoadIntoSQLDWDataFactory) en probeert u het opnieuw. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](data-factory-naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.  
-   2. Selecteer uw Azure- **abonnement**.
+   2. Selecteer uw Azure-**abonnement**.
    3. Voer een van de volgende stappen uit voor de resourcegroep:
       1. Selecteer **Bestaande gebruiken** om een bestaande resourcegroep te selecteren.
       2. Selecteer **Nieuwe maken** als u een naam voor een resourcegroep wilt typen.
    4. Selecteer een **locatie** voor de gegevensfactory.
    5. Selecteer het selectievakje **Vastmaken aan dashboard** onderaan de blade.  
-   6. Klik op **maken**.
-4. Nadat het maken is voltooid, ziet u de Blade **Data Factory** , zoals wordt weer gegeven in de volgende afbeelding:
+   6. Klik op **Create**.
+4. Wanneer het aanmaken is voltooid, ziet u de blade **Gegevensfactory** zoals op de volgende afbeelding wordt weergegeven:
 
    ![Startpagina van de gegevensfactory](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
 5. Op de startpagina van de gegevensfactory klikt u op de tegel **Gegevens kopiëren** om de **wizard Kopiëren** te openen.
@@ -165,7 +165,7 @@ In deze sectie worden de stappen beschreven voor het configureren van de bron: A
     ![Wizard kopiëren: instellingen voor bestands indeling](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
 ## <a name="step-3-configure-destination"></a>Stap 3: bestemming configureren
-In deze sectie wordt beschreven hoe u de tabel Destination `lineitem` : in de Azure SQL Data Warehouse-data base configureert.
+In deze sectie wordt beschreven hoe u de tabel Destination: `lineitem` in de Azure SQL Data Warehouse-data base configureert.
 
 1. Kies **Azure SQL Data Warehouse** als doel archief en klik op **volgende**.
 

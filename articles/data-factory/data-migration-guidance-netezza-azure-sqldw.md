@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
 ms.openlocfilehash: a0263880262da95f4d26ee8388da464e9a59efca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416445"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Azure Data Factory gebruiken om gegevens van een on-premises Netezza-server naar Azure te migreren 
@@ -121,7 +121,7 @@ Het voor gaande diagram kan als volgt worden geïnterpreteerd:
 
 Voor kleine tabellen (dat wil zeggen: tabellen met een volume kleiner dan 100 GB of die binnen twee uur naar Azure kunnen worden gemigreerd), kunt u elke taak voor het laden van gegevens per tabel maken. Voor een hogere door Voer kunt u meerdere Azure Data Factory Kopieer taken uitvoeren om afzonderlijke tabellen gelijktijdig te laden. 
 
-U kunt binnen elke Kopieer taak parallelle query's uitvoeren en gegevens kopiëren per partitie, maar ook een zekere mate van parallellisme bereiken met behulp van de [ `parallelCopies` instelling](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) van de eigenschap met een van de volgende opties voor de gegevens partitie:
+U kunt binnen elke Kopieer taak parallelle query's uitvoeren en gegevens kopiëren per partitie, maar ook een zekere mate van parallellisme bereiken met behulp van de instelling van de [ `parallelCopies` eigenschap](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) met een van de volgende opties voor de gegevens partitie:
 
 - Voor een grotere efficiëntie kunt u het beste beginnen met een gegevens segment.  Zorg ervoor dat de waarde in de `parallelCopies` instelling lager is dan het totale aantal gegevens segment partities in de tabel op de Netezza-server.  
 
@@ -157,7 +157,7 @@ Als deze niet binnen twee uur kan worden geladen in azure, en de capaciteit van 
 
 Bewaak het CPU-en geheugen gebruik op de zelf-hostende IR-computer en bereid u voor om de machine te schalen of uit te breiden naar meerdere machines wanneer u ziet dat de CPU en het geheugen volledig worden gebruikt. 
 
-Wanneer u vertragings fouten ondervindt, zoals gerapporteerd door Azure Data Factory Kopieer activiteit, verlaagt u `parallelCopies` de gelijktijdigheid of instelling in azure Data Factory, of overweegt u de limieten voor de band breedte of I/O-bewerkingen per seconde (IOPS) van het netwerk en de gegevens opslag te verg Roten. 
+Wanneer u vertragings fouten ondervindt, zoals gerapporteerd door Azure Data Factory Kopieer activiteit, verlaagt u de gelijktijdigheid of `parallelCopies` instelling in azure Data Factory, of overweegt u de limieten voor de band breedte of I/O-bewerkingen per seconde (IOPS) van het netwerk en de gegevens opslag te verg Roten. 
 
 
 ### <a name="estimate-your-pricing"></a>Uw prijzen ramen 

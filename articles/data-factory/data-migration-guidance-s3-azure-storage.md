@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
 ms.openlocfilehash: 3f40ad7346219b48a38ade38b2a75ddf71940875
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416420"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Azure Data Factory gebruiken om gegevens te migreren van Amazon S3 naar Azure Storage 
@@ -94,7 +94,7 @@ Als een van de Kopieer taken mislukt als gevolg van een probleem met de tijdelij
 
 ### <a name="delta-data-migration"></a>Delta gegevens migratie 
 
-De meest krachtige manier om nieuwe of gewijzigde bestanden van AWS S3 te identificeren, is door gebruik te maken van tijdgebonden naamgevings conventies: wanneer uw gegevens in AWS S3 zijn gepartitioneerd met tijds segment informatie in het bestand of de mapnaam (bijvoorbeeld/yyyy/mm/dd/file.CSV), kan uw pijp lijn gemakkelijk bepalen welke bestanden/mappen incrementeel moeten worden gekopieerd. 
+De meest krachtige manier om nieuwe of gewijzigde bestanden van AWS S3 te identificeren, is door gebruik te maken van tijdgebonden naamgevings conventies – wanneer uw gegevens in AWS S3 zijn gepartitioneerd met tijds segment informatie in het bestand of de mapnaam (bijvoorbeeld/yyyy/mm/dd/file.csv), kan de pijp lijn eenvoudig bepalen welke bestanden/mappen er incrementeel moeten worden gekopieerd. 
 
 Als uw gegevens in AWS S3 niet gepartitioneerd zijn, kan ADF nieuwe of gewijzigde bestanden identificeren met hun LastModifiedDate.   Zoals u ziet, scant de ADF alle bestanden van AWS S3 en kopieert alleen het nieuwe en bijgewerkte bestand waarvan het tijdstip waarop de laatste wijziging is aangebracht, groter is dan een bepaalde waarde.  Houd er rekening mee dat als u een groot aantal bestanden in S3 hebt, de eerste scan van het bestand veel tijd kan duren, ongeacht het aantal bestanden dat overeenkomt met de filter voorwaarde.  In dit geval wordt u geadviseerd om eerst de gegevens te partitioneren met dezelfde prefix instelling voor de eerste migratie van moment opnamen, zodat het scannen van bestanden parallel kan plaatsvinden.  
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: 3ea9d7baf427e70df349c926a0b6b8b72ba82293
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416856"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Gegevens kopiëren van Oracle Eloqua met behulp van Azure Data Factory (preview-versie)
@@ -50,14 +50,14 @@ De volgende eigenschappen worden ondersteund voor de Oracle Eloqua-gekoppelde se
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **Eloqua** | Ja |
-| endpoint | Het eind punt van de Eloqua-server. Eloqua ondersteunt meerdere data centers, om het eind punt te bepalen https://login.eloqua.com , u aan te melden bij uw referentie en vervolgens het **basis-URL** -gedeelte van de omgeleide URL te kopiëren met het patroon van `xxx.xxx.eloqua.com`. | Ja |
-| gebruikersnaam | De site naam en gebruikers naam van uw Eloqua-account in het formulier `SiteName\Username` : bijvoorbeeld `Eloqua\Alice`.  | Ja |
+| endpoint | Het eind punt van de Eloqua-server. Eloqua ondersteunt meerdere data centers, om het eind punt te bepalen, u aan te melden bij https://login.eloqua.com uw referentie en vervolgens het **basis-URL** -gedeelte van de OMgeleide URL te kopiëren met het patroon van `xxx.xxx.eloqua.com` . | Ja |
+| gebruikersnaam | De site naam en gebruikers naam van uw Eloqua-account in het formulier: `SiteName\Username` bijvoorbeeld `Eloqua\Alice` .  | Ja |
 | wachtwoord | Het wacht woord dat overeenkomt met de gebruikers naam. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | useEncryptedEndpoints | Hiermee geeft u op of de eind punten van de gegevens bron moeten worden versleuteld met HTTPS. De standaardwaarde is waar.  | Nee |
 | useHostVerification | Hiermee geeft u op of de hostnaam in het certificaat van de server moet overeenkomen met de hostnaam van de server bij het maken van verbinding via TLS. De standaardwaarde is waar.  | Nee |
 | usePeerVerification | Hiermee wordt aangegeven of de identiteit van de server moet worden gecontroleerd wanneer er verbinding wordt gemaakt via TLS. De standaardwaarde is waar.  | Nee |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -117,7 +117,7 @@ Als u gegevens wilt kopiëren uit Oracle Eloqua, stelt u het bron type in de Kop
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **EloquaSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM Accounts"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[

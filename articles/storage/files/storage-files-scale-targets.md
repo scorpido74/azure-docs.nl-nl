@@ -8,10 +8,10 @@ ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 46c46faf8f7ee52978ae5542ab7ebd72a41b8357
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81536427"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Schaalbaarheids- en prestatiedoelen in Azure Files
@@ -112,5 +112,5 @@ Als algemene hand leiding voor uw implementatie moet u een aantal zaken in acht 
 
 ## <a name="see-also"></a>Zie ook
 
-- [Planning voor de implementatie van Azure Files](storage-files-planning.md)
-- [Planning voor de implementatie van Azure Files Sync](storage-sync-files-planning.md)
+- [Implementatie van Azure Files plannen](storage-files-planning.md)
+- [Planning voor een Azure Files Sync-implementatie](storage-sync-files-planning.md)

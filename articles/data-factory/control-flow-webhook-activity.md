@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: 4056550ae0a71138d136878fc7e3aa5f6f8f4180
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417875"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Webhook-activiteit in Azure Data Factory
@@ -24,7 +24,7 @@ ms.locfileid: "81417875"
 
 Met een webhook-activiteit kan de uitvoering van pijp lijnen via uw aangepaste code worden beheerd. Met de webhook-activiteit kan de code van klanten een eind punt aanroepen en een URL voor terugbellen door geven. De pijplijn uitvoering wacht op het aanroepen van de retour aanroep voordat de volgende activiteit wordt uitgevoerd.
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 
@@ -56,14 +56,14 @@ Met een webhook-activiteit kan de uitvoering van pijp lijnen via uw aangepaste c
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
 **naam** | De naam van de webhook-activiteit. | Tekenreeks | Ja |
-**voert** | Moet worden ingesteld op webhook. | Tekenreeks | Ja |
+**type** | Moet worden ingesteld op webhook. | Tekenreeks | Ja |
 **methode** | De REST API methode voor het doel eindpunt. | Tekenreeks. Het ondersteunde type is ' POST '. | Ja |
 **URL** | Het doel eindpunt en-pad. | Een teken reeks of expressie met de waarde van het **resultType** van een teken reeks. | Ja |
-**koppen** | Kopteksten die naar de aanvraag worden verzonden. Hier volgt een voor beeld waarin de taal en het type van een aanvraag `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`worden ingesteld:. | Een teken reeks of expressie met de waarde van het **resultType** van een teken reeks. | Ja. Een `Content-Type` koptekst zoals `"headers":{ "Content-Type":"application/json"}` is vereist. |
+**koppen** | Kopteksten die naar de aanvraag worden verzonden. Hier volgt een voor beeld waarin de taal en het type van een aanvraag worden ingesteld: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Een teken reeks of expressie met de waarde van het **resultType** van een teken reeks. | Ja. Een `Content-Type` koptekst zoals `"headers":{ "Content-Type":"application/json"}` is vereist. |
 **organen** | Vertegenwoordigt de nettolading die naar het eind punt wordt verzonden. | Een geldige JSON of een expressie met de waarde van het **resultType** van JSON. Zie [Payload-schema aanvragen](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema) voor het schema van de aanvraag lading. | Ja |
 **verificatie** | De verificatie methode die wordt gebruikt om het eind punt aan te roepen. De ondersteunde typen zijn "Basic" en "ClientCertificate". Zie [Verificatie](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication) voor meer informatie. Als verificatie niet is vereist, sluit u deze eigenschap. | Een teken reeks of expressie met de waarde van het **resultType** van een teken reeks. | Nee |
-**timeout** | Hoe lang de activiteit wacht op de call back die is opgegeven door **callBackUri** , om te worden aangeroepen. De standaard waarde is 10 minuten ("00:10:00"). De waarden hebben de time span-indeling *d*. *uu*:*mm*:*SS*. | Tekenreeks | Nee |
-**Rapport status bij terugbellen** | Hiermee kan een gebruiker de mislukte status van een webhook-activiteit rapporteren. | Booleaans | Nee |
+**out** | Hoe lang de activiteit wacht op de call back die is opgegeven door **callBackUri** , om te worden aangeroepen. De standaard waarde is 10 minuten ("00:10:00"). De waarden hebben de time span-indeling *d*. *uu*:*mm*:*SS*. | Tekenreeks | Nee |
+**Rapport status bij terugbellen** | Hiermee kan een gebruiker de mislukte status van een webhook-activiteit rapporteren. | Boolean-waarde | Nee |
 
 ## <a name="authentication"></a>Verificatie
 
@@ -99,7 +99,7 @@ Geef de met base64 gecodeerde inhoud van een PFX-bestand en een wacht woord op.
 
 ### <a name="managed-identity"></a>Beheerde identiteit
 
-Gebruik de beheerde identiteit van de data factory om de bron-URI op te geven waarvoor het toegangs token is aangevraagd. Gebruik `https://management.azure.com/`om de Azure Resource Management-API aan te roepen. Zie voor meer informatie over de werking van beheerde identiteiten het [overzicht beheerde identiteiten voor Azure-resources](/azure/active-directory/managed-identities-azure-resources/overview).
+Gebruik de beheerde identiteit van de data factory om de bron-URI op te geven waarvoor het toegangs token is aangevraagd. Gebruik om de Azure Resource Management-API aan te roepen `https://management.azure.com/` . Zie voor meer informatie over de werking van beheerde identiteiten het [overzicht beheerde identiteiten voor Azure-resources](/azure/active-directory/managed-identities-azure-resources/overview).
 
 ```json
 "authentication": {
@@ -121,7 +121,7 @@ Voor elke REST API-aanroep wordt een time-out van de client uitgevoerd als het e
 
 De time-out van één minuut op de aanvraag heeft niets te maken met de time-out van de activiteit. De laatste wordt gebruikt om te wachten op de call back die is opgegeven door **callbackUri**.
 
-De hoofd tekst die is door gegeven aan de call back-URI moet een geldige JSON zijn. Stel de `Content-Type` koptekst in `application/json`op.
+De hoofd tekst die is door gegeven aan de call back-URI moet een geldige JSON zijn. Stel de `Content-Type` koptekst in op `application/json` .
 
 Wanneer u de eigenschap **rapport status bij terugbellen** gebruikt, moet u de volgende code aan de hoofd tekst toevoegen wanneer u de call back maakt:
 
@@ -149,5 +149,5 @@ Zie de volgende controle stroom activiteiten die worden ondersteund door Data Fa
 - [Voor elke activiteit](control-flow-for-each-activity.md)
 - [Activiteit ophalen van metagegevens](control-flow-get-metadata-activity.md)
 - [Opzoekactiviteit](control-flow-lookup-activity.md)
-- [Web Activity](control-flow-web-activity.md)
+- [Webactiviteit](control-flow-web-activity.md)
 - [Until-activiteit](control-flow-until-activity.md)

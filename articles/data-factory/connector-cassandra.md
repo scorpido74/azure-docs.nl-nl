@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: 4b7fd2de0762de147ad3ceae0d562a1c78b33dc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417477"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Gegevens kopiëren van Cassandra met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](v1/data-factory-onprem-cassandra-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](v1/data-factory-onprem-cassandra-connector.md)
 > * [Huidige versie](connector-cassandra.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -73,7 +73,7 @@ De volgende eigenschappen worden ondersteund voor Cassandra gekoppelde service:
 >[!NOTE]
 >Momenteel wordt geen verbinding met Cassandra met behulp van TLS ondersteund.
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -109,7 +109,7 @@ Als u gegevens van Cassandra wilt kopiëren, stelt u de eigenschap type van de g
 | Keys Pace |De naam van de spatie of het schema in de Cassandra-data base. |Nee (als "query" voor "CassandraSource" is opgegeven) |
 | tableName |De naam van de tabel in de Cassandra-data base. |Nee (als "query" voor "CassandraSource" is opgegeven) |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -142,9 +142,9 @@ Als u gegevens wilt kopiëren uit Cassandra, stelt u het bron type in de Kopieer
 |:--- |:--- |:--- |
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **CassandraSource** | Ja |
 | query |Gebruik de aangepaste query om gegevens te lezen. SQL-92-query of CQL-query. Zie [CQL Reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)(Engelstalig). <br/><br/>Wanneer u SQL query gebruikt, geeft u de naam van de **spatie op. tabel naam** voor de tabel die u wilt doorzoeken. |Nee (als "TableName" en "Keys" in de gegevensset zijn opgegeven). |
-| consistencyLevel |Het consistentie niveau geeft aan hoeveel replica's moeten reageren op een lees aanvraag voordat gegevens worden geretourneerd naar de client toepassing. Cassandra controleert het opgegeven aantal replica's voor gegevens om te voldoen aan de Lees aanvraag. Zie [gegevens consistentie configureren](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) voor meer informatie.<br/><br/>Toegestane waarden zijn: **een**, **twee**, **drie**, **quorum**, **alle**, **LOCAL_QUORUM**, **EACH_QUORUM**en **LOCAL_ONE**. |Nee (standaard instelling `ONE`) |
+| consistencyLevel |Het consistentie niveau geeft aan hoeveel replica's moeten reageren op een lees aanvraag voordat gegevens worden geretourneerd naar de client toepassing. Cassandra controleert het opgegeven aantal replica's voor gegevens om te voldoen aan de Lees aanvraag. Zie [gegevens consistentie configureren](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) voor meer informatie.<br/><br/>Toegestane waarden zijn: **een**, **twee**, **drie**, **quorum**, **alle**, **LOCAL_QUORUM**, **EACH_QUORUM**en **LOCAL_ONE**. |Nee (standaard instelling `ONE` ) |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[
@@ -185,10 +185,10 @@ Bij het kopiëren van gegevens uit Cassandra worden de volgende toewijzingen geb
 | ASCII |Tekenreeks |
 | BIGINT |Int64 |
 | BLOBCACHE |Byte [] |
-| True |Booleaans |
+| True |Boolean-waarde |
 | KOMMA |Decimal |
-| DUBBELKLIK |Double |
-| FLOAT |Enkel |
+| DUBBELKLIK |Dubbel |
+| FLOAT |Enkelvoudig |
 | INET |Tekenreeks |
 | INT |Int32 |
 | TEXT |Tekenreeks |

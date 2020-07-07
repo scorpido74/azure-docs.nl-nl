@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.openlocfilehash: 07e103c3e1f56e8a46ea24e750d83e719abab3d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81457974"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-portal"></a>Gegevens versleuteling voor Azure Database for PostgreSQL Eén server met behulp van de Azure Portal
@@ -41,7 +41,7 @@ Meer informatie over het gebruik van de Azure Portal voor het instellen en beher
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>De juiste machtigingen voor sleutel bewerkingen instellen
 
-1. Selecteer in Key Vault **toegangs** > beleid toegangs**beleid toevoegen**.
+1. Selecteer in Key Vault **toegangs**beleid toegangs  >  **beleid toevoegen**.
 
    ![Scherm opname van Key Vault, met beleids regels voor toegang en toegangs beleid toevoegen gemarkeerd](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
 
@@ -69,7 +69,7 @@ Meer informatie over het gebruik van de Azure Portal voor het instellen en beher
 
 Nadat Azure Database for PostgreSQL één server is versleuteld met een door de klant beheerde sleutel die is opgeslagen in Key Vault, wordt een nieuw gemaakt exemplaar van de server ook versleuteld. U kunt deze nieuwe kopie maken via een lokale of geo-herstel bewerking, of via een replica (lokale/Kruis regio). Voor een versleutelde PostgreSQL-server kunt u dus de volgende stappen gebruiken om een versleutelde herstelde server te maken.
 
-1. Selecteer **overzicht** > **herstellen**op uw server.
+1. Selecteer **overzicht**  >  **herstellen**op uw server.
 
    ![Scherm opname van Azure Database for PostgreSQL, met overzicht en herstellen gemarkeerd](media/concepts-data-access-and-security-data-encryption/show-restore.png)
 
@@ -81,7 +81,7 @@ Nadat Azure Database for PostgreSQL één server is versleuteld met een door de 
 
    ![Scherm opname van Azure Database for PostgreSQL, met een niet-toegankelijke status gemarkeerd](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
 
-3. Valideer de sleutel op de herstelde server om de server toegankelijk te maken. Selecteer**sleutel voor hervalideren**van **gegevens versleuteling** > .
+3. Valideer de sleutel op de herstelde server om de server toegankelijk te maken. Selecteer **Data Encryption**  >  **sleutel voor hervalideren**van gegevens versleuteling.
 
    > [!NOTE]
    > De eerste poging om opnieuw te valideren, mislukt, omdat de service-principal van de nieuwe server toegang moet krijgen tot de sleutel kluis. Als u de Service-Principal wilt genereren, selecteert u **sleutel opnieuw valideren**. er wordt dan een fout weer gegeven, maar de service-principal wordt gegenereerd. Ga daarna naar [deze stappen](#set-the-right-permissions-for-key-operations) eerder in dit artikel.

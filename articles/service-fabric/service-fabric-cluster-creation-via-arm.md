@@ -4,16 +4,16 @@ description: Meer informatie over het instellen van een beveiligd Service Fabric
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: 24bc80a7ab3ce61b79466cdd943c60efd367ce01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81458297"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Een Service Fabric-cluster maken met behulp van Azure Resource Manager 
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure-portal](service-fabric-cluster-creation-via-portal.md)
 >
 >
 
@@ -63,7 +63,7 @@ De sjabloon die wordt gebruikt, is beschikbaar in de sjabloon voor [beelden van 
 Met de volgende opdracht kunt u Windows-of Linux-clusters maken. u moet het besturings systeem dienovereenkomstig opgeven. De Power shell/CLI-opdrachten voeren ook het certificaat uit in de opgegeven *CertificateOutputFolder*. Zorg echter dat de map certificaat al is gemaakt. De opdracht neemt ook andere para meters op, zoals de VM-SKU.
 
 > [!NOTE]
-> De volgende Power shell-opdracht werkt alleen met `Az` de module Azure PowerShell. Als u de huidige versie van Azure Resource Manager Power shell-versie wilt controleren, voert u de volgende Power shell-opdracht ' Get-module AZ ' uit. Volg [deze koppeling](/powershell/azure/install-Az-ps) om uw Azure Resource Manager Power shell-versie bij te werken. 
+> De volgende Power shell-opdracht werkt alleen met de `Az` module Azure PowerShell. Als u de huidige versie van Azure Resource Manager Power shell-versie wilt controleren, voert u de volgende Power shell-opdracht ' Get-module AZ ' uit. Volg [deze koppeling](/powershell/azure/install-Az-ps) om uw Azure Resource Manager Power shell-versie bij te werken. 
 >
 >
 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 9adbe7b03283a00f78222ffdc77dca7aaadcbda0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81461698"
 ---
 # <a name="securing-paas-deployments"></a>PaaS-implementaties beveiligen
@@ -98,7 +98,7 @@ De levens cyclus van micro soft [Security Development](https://www.microsoft.com
 
 De volgende tabel geeft een overzicht van de STRIDE-bedreigingen en biedt enkele voor beelden van oplossingen die gebruikmaken van Azure-functies. Deze oplossingen werken niet in elke situatie.
 
-| Bestaat | Beveiligings eigenschap | Mogelijke problemen met het Azure-platform |
+| Bedreiging | Beveiligings eigenschap | Mogelijke problemen met het Azure-platform |
 | --- | --- | --- |
 | Adresvervalsing (spoofing) | Verificatie | HTTPS-verbindingen vereisen. |
 | Knoeien | Gegevensintegriteit | Valideer TLS/SSL-certificaten. |

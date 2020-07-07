@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
 ms.openlocfilehash: cd6602f68b63e2c236e7f3905d33b88fbda36ed2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81429861"
 ---
 # <a name="security-controls-for-azure-key-vault"></a>Beveiligings controles voor Azure Key Vault
@@ -45,7 +45,7 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 | Verificatie| Ja | Verificatie is via Azure Active Directory. |
 | Autorisatie| Ja | Key Vault toegangs beleid gebruiken. |
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen |
 |---|---|--|

@@ -4,10 +4,10 @@ description: In dit artikel wordt beschreven hoe u een door het systeem toegewez
 ms.topic: article
 ms.date: 07/25/2019
 ms.openlocfilehash: c5c7a17c51eee18d9b7276f2c57289a5de5c8181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415657"
 ---
 # <a name="deploy-service-fabric-application-with-system-assigned-managed-identity"></a>Service Fabric toepassing implementeren met door het systeem toegewezen beheerde identiteit
@@ -15,7 +15,7 @@ ms.locfileid: "81415657"
 Als u toegang wilt krijgen tot de functie Managed Identity voor Azure Service Fabric-toepassingen, moet u eerst de service beheerde identiteits token inschakelen op het cluster. Deze service is verantwoordelijk voor de verificatie van Service Fabric toepassingen met behulp van hun beheerde identiteiten en voor het verkrijgen van toegangs tokens in hun naam. Zodra de service is ingeschakeld, kunt u deze weer geven in Service Fabric Explorer onder het gedeelte **systeem** in het linkerdeel venster, dat wordt uitgevoerd onder de naam **Fabric:/System/ManagedIdentityTokenService** naast andere systeem services.
 
 > [!NOTE] 
-> De implementatie van Service Fabric toepassingen met beheerde identiteiten wordt ondersteund vanaf de `"2019-06-01-preview"`API-versie. U kunt ook dezelfde API-versie gebruiken voor het toepassings type, de versie van het toepassings type en service bronnen. De mini maal ondersteunde Service Fabric runtime is 6,5 CU2. In additoin moet de ontwikkel-en pakket omgeving ook de SF .NET SDK op CU2 of hoger hebben
+> De implementatie van Service Fabric toepassingen met beheerde identiteiten wordt ondersteund vanaf de API-versie `"2019-06-01-preview"` . U kunt ook dezelfde API-versie gebruiken voor het toepassings type, de versie van het toepassings type en service bronnen. De mini maal ondersteunde Service Fabric runtime is 6,5 CU2. In additoin moet de ontwikkel-en pakket omgeving ook de SF .NET SDK op CU2 of hoger hebben
 
 ## <a name="system-assigned-managed-identity"></a>Door het systeem toegewezen beheerde identiteit
 
@@ -43,7 +43,7 @@ Als u een toepassing met een door het systeem toegewezen beheerde identiteit wil
       }
     }
 ```
-Met deze eigenschap declareert u (voor Azure Resource Manager en de beheerde identiteits-en Service Fabric bron providers, die door deze resource een impliciet (`system assigned`) beheerde identiteit hebben.
+Met deze eigenschap declareert u (voor Azure Resource Manager en de beheerde identiteits-en Service Fabric bron providers, die door deze resource een impliciet ( `system assigned` ) beheerde identiteit hebben.
 
 ### <a name="application-and-service-package"></a>Toepassings-en service pakket
 
@@ -72,9 +72,9 @@ Met deze eigenschap declareert u (voor Azure Resource Manager en de beheerde ide
         </ServiceManifestImport>
       ```
 
-    Dit element wijst de identiteit van de toepassing toe aan de service. zonder deze toewijzing heeft de service geen toegang meer tot de identiteit van de toepassing. In het bovenstaande code fragment is `SystemAssigned` de identiteit (een gereserveerd tref woord) toegewezen aan de definitie van de service onder de beschrijvende naam `WebAdmin`.
+    Dit element wijst de identiteit van de toepassing toe aan de service. zonder deze toewijzing heeft de service geen toegang meer tot de identiteit van de toepassing. In het bovenstaande code fragment `SystemAssigned` is de identiteit (een gereserveerd tref woord) toegewezen aan de definitie van de service onder de beschrijvende naam `WebAdmin` .
 
-3. Werk het service manifest bij om een **ManagedIdentity** -element toe te voegen aan de sectie **resources** met de naam `ServiceIdentityRef` die overeenkomt `IdentityBindingPolicy` met de waarde van de instelling van de definitie in het manifest van de toepassing:
+3. Werk het service manifest bij om een **ManagedIdentity** -element toe te voegen aan de sectie **resources** met de naam die overeenkomt met de waarde van de `ServiceIdentityRef` instelling van de `IdentityBindingPolicy` definitie in het manifest van de toepassing:
 
     **ServiceManifest.xml**
 
@@ -86,7 +86,7 @@ Met deze eigenschap declareert u (voor Azure Resource Manager en de beheerde ide
         </ManagedIdentities>
       </Resources>
     ```
-    Dit is de equivalente toewijzing van een identiteit aan een service zoals hierboven wordt beschreven, maar vanuit het perspectief van de service definitie. Er wordt naar de identiteit verwezen met de beschrijvende naam (`WebAdmin`), zoals aangegeven in het manifest van de toepassing.
+    Dit is de equivalente toewijzing van een identiteit aan een service zoals hierboven wordt beschreven, maar vanuit het perspectief van de service definitie. Er wordt naar de identiteit verwezen met de beschrijvende naam ( `WebAdmin` ), zoals aangegeven in het manifest van de toepassing.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Ondersteuning voor beheerde identiteiten](./concepts-managed-identity.md) bekijken in azure service Fabric

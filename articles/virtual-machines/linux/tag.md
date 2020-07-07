@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
 ms.openlocfilehash: fd4a93f4c0b2f052fe5c9890bee01e5da0dcead2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81460950"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Een virtuele Linux-machine in azure labelen
@@ -35,7 +35,7 @@ U kunt alle eigenschappen van een bepaalde virtuele machine, inclusief de tags, 
 az vm show --resource-group MyResourceGroup --name MyTestVM
 ```
 
-Als u een nieuwe VM-tag wilt toevoegen via de Azure CLI, kunt `azure vm update` u de opdracht gebruiken samen met de para meter tag **--set**:
+Als u een nieuwe VM-tag wilt toevoegen via de Azure CLI, kunt u de `azure vm update` opdracht gebruiken samen met de para meter tag **--set**:
 
 ```azurecli
 az vm update \

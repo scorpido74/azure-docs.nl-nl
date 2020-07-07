@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: f2d10a6150a6e6957b303ca391c97e166342111c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417257"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Gegevens kopiëren van HBase met behulp van Azure Data Factory 
@@ -51,9 +51,9 @@ De volgende eigenschappen worden ondersteund voor HBase gekoppelde service:
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **HBase** | Ja |
-| host | Het IP-adres of de hostnaam van de HBase-server. dat wil zeggen.  `[clustername].azurehdinsight.net`, `192.168.222.160`)  | Ja |
+| host | Het IP-adres of de hostnaam van de HBase-server. dat wil zeggen.  `[clustername].azurehdinsight.net`, `192.168.222.160` )  | Ja |
 | poort | De TCP-poort die door het HBase-exemplaar wordt gebruikt om te Luis teren naar client verbindingen. De standaard waarde is 9090. Als u verbinding maakt met Azure HDInsights, geeft u poort op als 443. | Nee |
-| httpPath | De gedeeltelijke URL die overeenkomt met de HBase-server `/hbaserest0` , bijvoorbeeld wanneer HDInsights-cluster wordt gebruikt. | Nee |
+| httpPath | De gedeeltelijke URL die overeenkomt met de HBase-server, bijvoorbeeld `/hbaserest0` Wanneer HDInsights-cluster wordt gebruikt. | Nee |
 | authenticationType | Het verificatie mechanisme dat moet worden gebruikt om verbinding te maken met de HBase-server. <br/>Toegestane waarden zijn: **anoniem**, **basis** | Ja |
 | gebruikersnaam | De gebruikers naam die wordt gebruikt om verbinding te maken met het HBase-exemplaar.  | Nee |
 | wachtwoord | Het wacht woord dat overeenkomt met de gebruikers naam. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Nee |
@@ -64,7 +64,7 @@ De volgende eigenschappen worden ondersteund voor HBase gekoppelde service:
 | connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
 >[!NOTE]
->Als uw cluster geen plak sessie ondersteunt, bijvoorbeeld HDInsight, voegt u de knooppunt index expliciet toe aan het einde van de instelling van het http `/hbaserest0` -pad `/hbaserest`, bijvoorbeeld in plaats van.
+>Als uw cluster geen plak sessie ondersteunt, bijvoorbeeld HDInsight, voegt u de knooppunt index expliciet toe aan het einde van de instelling van het HTTP-pad, bijvoorbeeld `/hbaserest0` in plaats van `/hbaserest` .
 
 **Voor beeld voor HDInsights HBase:**
 
@@ -164,7 +164,7 @@ Als u gegevens wilt kopiëren uit HBase, stelt u het bron type in de Kopieer act
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **HBaseSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[

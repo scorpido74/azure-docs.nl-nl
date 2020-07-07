@@ -4,10 +4,10 @@ description: Meer informatie over het Azure Migrate replicatie apparaat voor VMW
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 85641f514fc4367f02901eb1dd394cfa204c3ec4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81535210"
 ---
 # <a name="replication-appliance"></a>Replicatie apparaat
@@ -26,7 +26,7 @@ Het replicatie apparaat wordt geïmplementeerd wanneer u migratie van virtuele V
 
 ## <a name="appliance-deployment"></a>Implementatie van het apparaat
 
-**Gebruikt voor** | **Nadere**
+**Gebruikt voor** | **Details**
 --- |  ---
 **Migratie op basis van VMware VM-agent** | U kunt de eicellen-sjabloon downloaden van de Azure Migrate hub en importeren in vCenter Server om de apparaat-VM te maken.
 **Migratie van op de fysieke machine gebaseerde agent** | Als u geen VMware-infra structuur hebt of als u geen virtuele VMware-machine kunt maken met behulp van een eicellen-sjabloon, downloadt u een software-installatie programma van de Azure Migrate hub en voert u deze uit om de toestel machine in te stellen.
@@ -38,7 +38,7 @@ Het replicatie apparaat wordt geïmplementeerd wanneer u migratie van virtuele V
 
 Wanneer u het replicatie apparaat instelt met behulp van de eicellen-sjabloon die is opgegeven in de Azure Migrate hub, voert het apparaat Windows Server 2016 uit en voldoet aan de ondersteunings vereisten. Als u het replicatie apparaat hand matig instelt op een fysieke server, moet u ervoor zorgen dat het voldoet aan de vereisten.
 
-**Component** | **Vereiste**
+**Onderdeel** | **Vereiste**
 --- | ---
  | **VMware-VM-apparaat**
 PowerCLI | [PowerCLI-versie 6,0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) moet worden geïnstalleerd als het replicatie apparaat wordt uitgevoerd op een virtuele VMWare-machine.
@@ -60,7 +60,7 @@ Andere apps | Voer geen andere apps uit op het replicatie apparaat.
 Windows Server-functies | Deze rollen niet inschakelen: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V
 Groeps beleid | Dit groeps beleid niet inschakelen: <br> -Toegang tot de opdracht prompt voor komen. <br> -Toegang tot register bewerkings Programma's verhinderen. <br> -Logica vertrouwen voor bestands bijlagen. <br> -Schakel uitvoering van script in. <br> [Meer informatie](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | -Geen vooraf bestaande standaard website <br> -Geen vooraf bestaande website/toepassing die luistert op poort 443 <br>- [Anonieme verificatie](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) inschakelen <br> - [Fastcgi](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) -instelling inschakelen
-**Netwerk instellingen** |
+**Netwerkinstellingen** |
 Type IP-adres | Statisch
 Poorten | 443 (Orchestration-besturingselement)<br>9443 (Gegevenstransport)
 NIC-type | VMXNET3
@@ -69,7 +69,7 @@ NIC-type | VMXNET3
 
 MySQL moet worden geïnstalleerd op de computer met het replicatie apparaat. Deze kan worden geïnstalleerd met een van deze methoden.
 
-**Methode** | **Nadere**
+**Methode** | **Details**
 --- | ---
 Hand matig downloaden en installeren | Down load MySQL-toepassing & plaats deze in de map C:\Temp\ASRSetup en installeer hand matig.<br/> Bij het instellen van het apparaat MySQL wordt weer gegeven dat het al is geïnstalleerd.
 Zonder online downloaden | Plaats de MySQL-installatie toepassing in de map C:\Temp\ASRSetup. Wanneer u het apparaat installeert en klikt om MySQL te downloaden en te installeren, wordt het installatie programma gebruikt dat u hebt toegevoegd.
@@ -79,7 +79,7 @@ Downloaden en installeren in Azure Migrate | Wanneer u het apparaat installeert 
 
 Het replicatie apparaat moet toegang hebben tot deze Url's in de open bare Azure-Cloud.
 
-**URL** | **Nadere**
+**URL** | **Details**
 --- | ---
 \*.backup.windowsazure.com | Gebruikt voor gerepliceerde gegevens overdracht en coördinatie
 \*.store.core.windows.net | Gebruikt voor gerepliceerde gegevens overdracht en coördinatie
@@ -88,15 +88,15 @@ Het replicatie apparaat moet toegang hebben tot deze Url's in de open bare Azure
 https:\//management.azure.com | Gebruikt voor replicatie beheer bewerkingen en coördinatie
 *.services.visualstudio.com | Gebruikt voor telemetrische doel einden (deze is optioneel)
 time.windows.com | Wordt gebruikt om de tijdsynchronisatie tussen de systeemtijd en de algemene tijd te controleren.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//Graph.Windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.Microsoft.com  | Het toestel instellen heeft toegang tot deze Url's nodig. Ze worden gebruikt voor toegangs beheer en identiteits beheer door Azure Active Directory
-https:\//dev.mysql.com/Get/downloads/MySQLInstaller/mysql-Installer-Community-5.7.20.0.msi | Om de MySQL-down load te volt ooien. In een paar regio's wordt de down load mogelijk omgeleid naar de CDN-URL. Zorg ervoor dat de CDN-URL ook is toegestaan als dat nodig is.
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https: \/ /login.live.com <br/> https: \/ /Graph.Windows.net <br/> https:\//login.windows.net <br/> https: \/ /www.live.com <br/> https: \/ /www.Microsoft.com  | Het toestel instellen heeft toegang tot deze Url's nodig. Ze worden gebruikt voor toegangs beheer en identiteits beheer door Azure Active Directory
+https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | Om de MySQL-down load te volt ooien. In een paar regio's wordt de down load mogelijk omgeleid naar de CDN-URL. Zorg ervoor dat de CDN-URL ook is toegestaan als dat nodig is.
 
 
 ## <a name="azure-government-url-access"></a>Azure Government URL-toegang
 
 Het replicatie apparaat moet toegang hebben tot deze Url's in Azure Government.
 
-**URL** | **Nadere**
+**URL** | **Details**
 --- | ---
 \*. backup.windowsazure.us | Gebruikt voor gerepliceerde gegevens overdracht en coördinatie
 \*.store.core.windows.net | Gebruikt voor gerepliceerde gegevens overdracht en coördinatie
@@ -105,12 +105,12 @@ Het replicatie apparaat moet toegang hebben tot deze Url's in Azure Government.
 https:\//management.usgovcloudapi.net | Gebruikt voor replicatie beheer bewerkingen en coördinatie
 *.services.visualstudio.com | Gebruikt voor telemetrische doel einden (deze is optioneel)
 time.nist.gov | Wordt gebruikt om de tijdsynchronisatie tussen de systeemtijd en de algemene tijd te controleren.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//Graph.Windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.Microsoft.com  | Het toestel instellen met eicellen moet toegang hebben tot deze Url's. Ze worden gebruikt voor toegangs beheer en identiteits beheer door Azure Active Directory.
-https:\//dev.mysql.com/Get/downloads/MySQLInstaller/mysql-Installer-Community-5.7.20.0.msi | Om de MySQL-down load te volt ooien. In een paar regio's wordt de down load mogelijk omgeleid naar de CDN-URL. Zorg ervoor dat de CDN-URL ook is toegestaan als dat nodig is.
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https: \/ /login.live.com <br/> https: \/ /Graph.Windows.net <br/> https:\//login.windows.net <br/> https: \/ /www.live.com <br/> https: \/ /www.Microsoft.com  | Het toestel instellen met eicellen moet toegang hebben tot deze Url's. Ze worden gebruikt voor toegangs beheer en identiteits beheer door Azure Active Directory.
+https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | Om de MySQL-down load te volt ooien. In een paar regio's wordt de down load mogelijk omgeleid naar de CDN-URL. Zorg ervoor dat de CDN-URL ook is toegestaan als dat nodig is.
 
 ## <a name="port-access"></a>Poort toegang
 
-**Apparaat** | **Combi**
+**Apparaat** | **Verbinding**
 --- | ---
 VM's | De Mobility-service die wordt uitgevoerd op Vm's communiceert met het on-premises replicatie apparaat (configuratie server) op poort HTTPS 443 inkomend voor replicatie beheer.<br/><br/> Vm's verzenden replicatie gegevens naar de proces server (die wordt uitgevoerd op de computer van de configuratie server) op poort HTTPS 9443-binnenkomend. Deze poort kan worden gewijzigd.
 Replicatie apparaat | Het replicatie apparaat organiseert de replicatie met Azure via poort HTTPS 443 uitgaand.
@@ -121,7 +121,7 @@ Processerver | De proces server ontvangt replicatie gegevens, optimaliseert en v
 
 1. Wanneer u replicatie voor een virtuele machine inschakelt, begint de initiële replicatie naar Azure Storage met behulp van het opgegeven replicatie beleid. 
 2. Verkeer wordt gerepliceerd naar open bare eind punten van Azure Storage via internet. Het repliceren van verkeer via een site-naar-site virtueel particulier netwerk (VPN) van een on-premises site naar Azure wordt niet ondersteund.
-3. Nadat de initiële replicatie is voltooid, begint de replicatie van verschillen. Bijgehouden wijzigingen voor een machine worden vastgelegd.
+3. Nadat de initiële replicatie is voltooid, begint de deltareplicatie. Bijgehouden wijzigingen voor een machine worden vastgelegd.
 4. Communicatie gebeurt als volgt:
     - Vm's communiceren met het replicatie apparaat op poort HTTPS 443 inkomend voor replicatie beheer.
     - Het replicatie apparaat organiseert de replicatie met Azure via poort HTTPS 443 uitgaand.
