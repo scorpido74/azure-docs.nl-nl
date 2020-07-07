@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mayg
 ms.openlocfilehash: 2cf4f22be2a4407d73fcc7bb340fad647c8aa145
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80546523"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Herstel na nood geval instellen voor Active Directory en DNS
@@ -108,7 +108,7 @@ Wanneer de **VM-GenerationID** opnieuw wordt ingesteld, wordt de **InvocationID*
 
 Failover naar Azure kan ertoe leiden dat **VM-GenerationID** opnieuw wordt ingesteld. Als u de virtuele machine opnieuw instelt, worden er extra beveiligingen geactiveerd wanneer de domein controller **-** VM wordt gestart in Azure. Dit kan leiden tot een aanzienlijke vertraging in de mogelijkheid om u aan te melden bij de virtuele machine van de domein controller.
 
-Omdat deze domein controller alleen wordt gebruikt in een testfailover, zijn er geen veiligheids maatregelen voor virtualisatie nodig. Om ervoor te zorgen dat de **VM-GenerationID-** waarde voor de virtuele machine van de domein controller niet verandert, kunt u `DWORD` de waarde van de volgende wijzigen in **4** op de on-premises domein controller:
+Omdat deze domein controller alleen wordt gebruikt in een testfailover, zijn er geen veiligheids maatregelen voor virtualisatie nodig. Om ervoor te zorgen dat de **VM-GenerationID-** waarde voor de virtuele machine van de domein controller niet verandert, kunt u de waarde van de volgende wijzigen `DWORD` in **4** op de on-premises domein controller:
 
 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gencounter\Start`
 
@@ -139,7 +139,7 @@ Als de beveiliging van de virtualisatie wordt geactiveerd na een testfailover, z
 > [!IMPORTANT]
 > Enkele van de configuraties die in deze sectie worden beschreven, zijn geen standaard configuraties voor domein controllers. Als u deze wijzigingen niet wilt aanbrengen in een productie domein controller, kunt u een domein controller maken die is toegewezen voor Site Recovery testfailover. Breng de gewenste wijzigingen aan in die specifieke domein controller.
 
-1. Voer bij de opdracht prompt de volgende opdracht uit om te controleren `SYSVOL` of map `NETLOGON` en map worden gedeeld:
+1. Voer bij de opdracht prompt de volgende opdracht uit om te controleren of `SYSVOL` map en `NETLOGON` map worden gedeeld:
 
     `NET SHARE`
 
@@ -181,7 +181,7 @@ Als aan de voor waarden wordt voldaan, is het waarschijnlijk dat de domein contr
 
 Als u de domein controller en DNs op dezelfde VM uitvoert, kunt u deze procedure overs Laan.
 
-Als DNS zich niet op dezelfde VM bevindt als de domein controller, moet u een DNS-VM maken voor de testfailover. U kunt een nieuwe DNS-server gebruiken en alle vereiste zones maken. Als uw Active Directory domein bijvoorbeeld is `contoso.com`, kunt u een DNS-zone met de naam `contoso.com`maken. De vermeldingen die overeenkomen met Active Directory moeten als volgt in DNS worden bijgewerkt:
+Als DNS zich niet op dezelfde VM bevindt als de domein controller, moet u een DNS-VM maken voor de testfailover. U kunt een nieuwe DNS-server gebruiken en alle vereiste zones maken. Als uw Active Directory domein bijvoorbeeld is `contoso.com` , kunt u een DNS-zone met de naam maken `contoso.com` . De vermeldingen die overeenkomen met Active Directory moeten als volgt in DNS worden bijgewerkt:
 
 1. Zorg ervoor dat deze instellingen aanwezig zijn voordat een andere virtuele machine in het herstel plan wordt gestart:
 

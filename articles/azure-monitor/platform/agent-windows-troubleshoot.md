@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
 ms.openlocfilehash: 4112555347ce1d718375fbab3f166c6f2f5deeaa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80333510"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Problemen met de Log Analytics-agent voor Windows oplossen 
@@ -20,7 +20,7 @@ Als geen van deze stappen voor u werkt, zijn de volgende ondersteunings kanalen 
 
 * Klanten met premier-ondersteunings voordelen kunnen een ondersteunings aanvraag openen met [premier](https://premier.microsoft.com/).
 * Klanten met ondersteunings overeenkomsten voor Azure kunnen een ondersteunings aanvraag openen [in de Azure Portal](https://manage.windowsazure.com/?getsupport=true).
-* Ga naar de Log Analytics feedback pagina om de verzonden ideeën en [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) bugs te bekijken of een nieuwe bestand te openen. 
+* Ga naar de Log Analytics feedback pagina om de verzonden ideeën en bugs te bekijken [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) of een nieuwe bestand te openen. 
 
 ## <a name="important-troubleshooting-sources"></a>Belang rijke bronnen voor probleem oplossing
 
@@ -44,7 +44,7 @@ Er zijn verschillende manieren waarop u kunt controleren of de agent met succes 
 
 - De [Azure Log Analytics status van agent-beoordeling](../insights/solution-agenthealth.md) inschakelen in de werk ruimte. Bekijk in het dash board van Status van agent de kolom **aantal agents** die niet meer reageert om snel te zien of de agent wordt weer gegeven.  
 
-- Voer de volgende query uit om te bevestigen dat de agent een heartbeat verzendt naar de werk ruimte waarmee deze is geconfigureerd om te rapporteren. Vervang `<ComputerName>` door de werkelijke naam van de computer.
+- Voer de volgende query uit om te bevestigen dat de agent een heartbeat verzendt naar de werk ruimte waarmee deze is geconfigureerd om te rapporteren. Vervang door `<ComputerName>` de werkelijke naam van de computer.
 
     ```
     Heartbeat 
@@ -58,7 +58,7 @@ Er zijn verschillende manieren waarop u kunt controleren of de agent met succes 
 
     ![Resultaten van de uitvoering van het TestCloudConnection-hulp programma](./media/agent-windows-troubleshoot/output-testcloudconnection-tool-01.png)
 
-- Filter het *Operations Manager* gebeurtenis logboek op **gebeurtenis bronnen** - *Health Service modules*, *HealthService*en *service connector* en filter op **gebeurtenis niveau** *waarschuwing* en *fout* om te bevestigen of het een geschreven gebeurtenis in de volgende tabel heeft. Als dat het geval is, raadpleegt u de oplossings stappen die voor elke mogelijke gebeurtenis zijn opgenomen.
+- Filter het *Operations Manager* gebeurtenis logboek op **gebeurtenis bronnen**  -  *Health Service modules*, *HealthService*en *service connector* en filter op **gebeurtenis niveau** *waarschuwing* en *fout* om te bevestigen of het een geschreven gebeurtenis in de volgende tabel heeft. Als dat het geval is, raadpleegt u de oplossings stappen die voor elke mogelijke gebeurtenis zijn opgenomen.
 
     |Gebeurtenis-id |Bron |Beschrijving |Oplossing |
     |---------|-------|------------|-----------|
@@ -68,7 +68,7 @@ Er zijn verschillende manieren waarop u kunt controleren of de agent met succes 
     |2127 |Health Service modules |Fout code voor het verzenden van ontvangen gegevens is mislukt |Als deze alleen periodiek plaatsvindt gedurende de dag, zou dit een wille keurige afwijkingen kunnen zijn die kunnen worden genegeerd. Monitor om te begrijpen hoe vaak het gebeurt. Als het vaak gedurende de dag gebeurt, controleert u eerst uw netwerk configuratie en proxy-instellingen. Als de beschrijving HTTP-fout code 404 bevat en de eerste keer dat de agent gegevens verzendt naar de service, wordt er een 500-fout met een interne 404-fout code opgenomen. 404 betekent niet gevonden. Dit geeft aan dat het opslag gebied voor de nieuwe werk ruimte nog steeds wordt ingericht. Bij de volgende nieuwe poging worden gegevens naar de werk ruimte geschreven zoals verwacht. Een HTTP-fout 403 kan duiden op een probleem met machtigingen of referenties. Er is meer informatie opgenomen in de 403-fout om het probleem op te lossen.|
     |4000 |Service connector |De DNS-naam omzetting is mislukt |De computer kan het Internet adres dat wordt gebruikt voor het verzenden van gegevens naar de service niet omzetten. Dit kunnen de instellingen voor de DNS-resolver op uw computer, onjuiste proxy-instellingen of een tijdelijk DNS-probleem met uw provider zijn. Als het regel matig gebeurt, kan dit worden veroorzaakt door een tijdelijk netwerk probleem.|
     |4001 |Service connector |De verbinding met de service is mislukt. |Deze fout kan optreden wanneer de agent niet rechtstreeks of via een firewall of proxy server naar de Azure Monitor-service kan communiceren. Controleer de proxy-instellingen van de agent of Controleer of de netwerk firewall/-proxy TCP-verkeer van de computer naar de service toestaat.|
-    |4002 |Service connector |De service heeft de HTTP-status code 403 geretourneerd als antwoord op een query. Neem contact op met de service beheerder voor de status van de service. De query wordt later opnieuw geprobeerd. |Deze fout wordt geschreven tijdens de eerste registratie fase van de agent. er wordt een URL weer gegeven die er ongeveer als volgt uitziet: *https://\<workspaceID>. OMS.opinsights.Azure.com/AgentService.SVC/AgentTopologyRequest*. De fout code 403 betekent verboden en kan worden veroorzaakt door een niet-getypte werk ruimte-ID of-sleutel, of de gegevens en tijd zijn onjuist op de computer. Als de tijd +/-15 minuten vanaf de huidige tijd is, mislukt de onboarding. U kunt dit corrigeren door de datum en/of tijd zone van uw Windows-computer bij te werken.|
+    |4002 |Service connector |De service heeft de HTTP-status code 403 geretourneerd als antwoord op een query. Neem contact op met de service beheerder voor de status van de service. De query wordt later opnieuw geprobeerd. |Deze fout wordt geschreven tijdens de eerste registratie fase van de agent. er wordt een URL weer gegeven die er ongeveer als volgt uitziet: *https:// \<workspaceID> . OMS.opinsights.Azure.com/AgentService.SVC/AgentTopologyRequest*. De fout code 403 betekent verboden en kan worden veroorzaakt door een niet-getypte werk ruimte-ID of-sleutel, of de gegevens en tijd zijn onjuist op de computer. Als de tijd +/-15 minuten vanaf de huidige tijd is, mislukt de onboarding. U kunt dit corrigeren door de datum en/of tijd zone van uw Windows-computer bij te werken.|
 
 ## <a name="data-collection-issues"></a>Problemen met gegevens verzameling
 
@@ -91,7 +91,7 @@ Heartbeat
 
 Als de query resultaten retourneert, moet u bepalen of een bepaald gegevens type niet wordt verzameld en doorgestuurd naar de service. Dit kan worden veroorzaakt doordat de agent geen bijgewerkte configuratie van de service ontvangt of een andere symptoom die verhindert dat de agent normaal werkt. Voer de volgende stappen uit om verder te gaan met het oplossen van problemen.
 
-1. Open een opdracht prompt met verhoogde bevoegdheid op de computer en start de Agent-service `net stop healthservice && net start healthservice`opnieuw door te typen.
+1. Open een opdracht prompt met verhoogde bevoegdheid op de computer en start de Agent-service opnieuw door te typen `net stop healthservice && net start healthservice` .
 2. Open het gebeurtenis logboek van *Operations Manager* en zoek naar **gebeurtenis-id's** *7023, 7024, 7025, 7028* en *1210* van **gebeurtenis bron** *HealthService*.  Deze gebeurtenissen geven aan dat de agent configuratie kan ontvangen van Azure Monitor en dat de computer actief wordt gecontroleerd. De gebeurtenis beschrijving voor gebeurtenis-ID 1210 wordt ook op de laatste regel op alle oplossingen en inzichten vermeld die zijn opgenomen in het bewakings bereik van de agent.  
 
     ![Beschrijving gebeurtenis-ID 1210](./media/agent-windows-troubleshoot/event-id-1210-healthservice-01.png)

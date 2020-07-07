@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: a4d761abf54682ed0263922d0a118debc9eccf0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334354"
 ---
 # <a name="set-map-style-using-azure-maps-android-sdk"></a>Kaart stijl instellen met Azure Maps Android SDK
@@ -27,7 +27,7 @@ Om het proces in dit artikel te volt ooien, moet u [Azure Maps ANDROID SDK](http
 
 ## <a name="set-map-style-in-the-layout"></a>Kaart stijl instellen in de lay-out
 
-U kunt een kaart stijl instellen in het indelings bestand voor uw activiteiten klasse. Wijzig de **indeling res > > activity_main. XML**, zodat deze er als volgt uitziet:
+U kunt een kaart stijl instellen in het indelings bestand voor uw activiteiten klasse. Wijzig de **indeling res > > activity_main.xml**, zodat deze er als volgt uitziet:
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -51,7 +51,7 @@ U kunt een kaart stijl instellen in het indelings bestand voor uw activiteiten k
 </FrameLayout>
 ```
 
-Met `mapcontrol_style` het bovenstaande kenmerk stelt u de stijl van de kaart in op **grayscale_dark**. 
+`mapcontrol_style`Met het bovenstaande kenmerk stelt u de stijl van de kaart in op **grayscale_dark**. 
 
 <center>
 

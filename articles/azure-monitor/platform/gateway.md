@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
 ms.openlocfilehash: a92e96a835f24ac54fa55b05086a35b9a91d609e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80298339"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Computers zonder Internet toegang verbinden met behulp van de Log Analytics-gateway in Azure Monitor
@@ -97,8 +97,8 @@ In de volgende tabel ziet u ongeveer hoeveel agents kunnen communiceren met een 
 
 |Gateway |Ondersteunde agents (bij benadering)|  
 |--------|----------------------------------|  
-|CPU: Intel Xeon-processor E5-2660 \@ v3 2,6 GHz 2 kernen<br> Geheugen: 4 GB<br> Netwerk bandbreedte: 1 Gbps| 600|  
-|CPU: Intel Xeon-processor E5-2660 \@ v3 2,6 GHz 4-cores<br> Geheugen: 8 GB<br> Netwerk bandbreedte: 1 Gbps| 1000|  
+|CPU: Intel Xeon-processor E5-2660 v3 \@ 2,6 GHz 2 kernen<br> Geheugen: 4 GB<br> Netwerk bandbreedte: 1 Gbps| 600|  
+|CPU: Intel Xeon-processor E5-2660 v3 \@ 2,6 GHz 4-cores<br> Geheugen: 8 GB<br> Netwerk bandbreedte: 1 Gbps| 1000|  
 
 ## <a name="download-the-log-analytics-gateway"></a>De Log Analytics-gateway downloaden
 
@@ -117,13 +117,13 @@ Voer de volgende stappen uit om de Log Analytics-gateway op te halen uit de Azur
 of 
 
 1. Selecteer in de Blade van de werk ruimte onder **instellingen**de optie **Geavanceerde instellingen**.
-1. Ga naar **verbonden bronnen** > **Windows-servers** en selecteer **log Analytics gateway downloaden**.
+1. Ga naar **verbonden bronnen**  >  **Windows-servers** en selecteer **log Analytics gateway downloaden**.
 
 ## <a name="install-log-analytics-gateway-using-setup-wizard"></a>Log Analytics gateway installeren met de wizard Setup
 
 Voer de volgende stappen uit als u een gateway wilt installeren met de wizard Setup. 
 
-1. Dubbel klik in de doelmap op **log Analytics gateway. msi**.
+1. Dubbel klik in de doelmap op **Log Analytics gateway.msi**.
 1. Op de pagina **Welkom** selecteert u **Volgende**.
 
    ![Scherm afbeelding van de welkomst pagina in de wizard gateway installeren](./media/gateway/gateway-wizard01.png)
@@ -134,14 +134,14 @@ Voer de volgende stappen uit als u een gateway wilt installeren met de wizard Se
    a. Voer het TCP-poort nummer in dat voor de gateway moet worden gebruikt. Setup gebruikt dit poort nummer voor het configureren van een binnenkomende regel op Windows Firewall.  De standaard waarde is 8080.
       Het geldige bereik van het poort nummer is 1 tot en met 65535. Als de invoer niet in dit bereik valt, wordt een fout bericht weer gegeven.
 
-   b. Als de server waarop de gateway is geïnstalleerd, moet communiceren via een proxy, voert u het proxy adres in waar de gateway verbinding moet maken. Geef bijvoorbeeld `http://myorgname.corp.contoso.com:80` op.  Als u dit veld leeg laat, probeert de gateway rechtstreeks verbinding te maken met het internet.  Als voor uw proxy server verificatie is vereist, voert u een gebruikers naam en wacht woord in.
+   b. Als de server waarop de gateway is geïnstalleerd, moet communiceren via een proxy, voert u het proxy adres in waar de gateway verbinding moet maken. Voer bijvoorbeeld `http://myorgname.corp.contoso.com:80` in.  Als u dit veld leeg laat, probeert de gateway rechtstreeks verbinding te maken met het internet.  Als voor uw proxy server verificatie is vereist, voert u een gebruikers naam en wacht woord in.
 
-   c. Selecteer **Next**.
+   c. Selecteer **Volgende**.
 
    ![Scherm opname van configuratie voor de gateway proxy](./media/gateway/gateway-wizard02.png)
 
 1. Als Microsoft Update niet is ingeschakeld, wordt de pagina Microsoft Update weer gegeven en kunt u ervoor kiezen om deze in te scha kelen. Maak een selectie en selecteer **volgende**. Als dat niet het geval is, gaat u verder met de volgende stap.
-1. Accepteer op de pagina **doelmap** de standaardmap C:\Program Files\OMS gateway of voer de locatie in waar u de gateway wilt installeren. Selecteer **volgende**.
+1. Accepteer op de pagina **doelmap** de standaardmap C:\Program Files\OMS gateway of voer de locatie in waar u de gateway wilt installeren. Selecteer vervolgens **Volgende**.
 1. Selecteer **installeren**op de pagina **gereed voor installatie** . Selecteer **Ja**als u wilt dat Gebruikersaccountbeheer toestemming heeft om te installeren.
 1. Nadat de installatie is voltooid, selecteert u **volt ooien**. Als u wilt controleren of de service wordt uitgevoerd, opent u de module Services. msc en controleert u of de **OMS-gateway** wordt weer gegeven in de lijst met Services en of de status wordt **uitgevoerd**.
 
@@ -260,13 +260,13 @@ Als u de integratie wilt configureren, werkt u de systeem proxy configuratie bij
 
    `netsh winhttp set proxy <proxy>:<port>`
 
-Nadat de integratie met Log Analytics is voltooid, verwijdert u de wijziging `netsh winhttp reset proxy`door uit te voeren. Gebruik vervolgens de optie **proxy server configureren** in de operations-console om de log Analytics Gateway server op te geven. 
+Nadat de integratie met Log Analytics is voltooid, verwijdert u de wijziging door uit te voeren `netsh winhttp reset proxy` . Gebruik vervolgens de optie **proxy server configureren** in de operations-console om de log Analytics Gateway server op te geven. 
 
 1. Selecteer in de Operations Manager-console, onder **Operations Management Suite**, de optie **verbinding**en selecteer vervolgens **proxy server configureren**.
 
    ![Scherm opname van Operations Manager, met de selectie proxy server configureren](./media/gateway/scom01.png)
 
-1. Selecteer **een proxy server gebruiken voor toegang tot de Operations Management Suite** en voer vervolgens het IP-adres in van de log Analytics Gateway server of het virtuele IP-adres van de Load Balancer. Zorg ervoor dat u begint met het `http://`voor voegsel.
+1. Selecteer **een proxy server gebruiken voor toegang tot de Operations Management Suite** en voer vervolgens het IP-adres in van de log Analytics Gateway server of het virtuele IP-adres van de Load Balancer. Zorg ervoor dat u begint met het voor voegsel `http://` .
 
    ![Scherm opname van Operations Manager, met het proxyserver adres](./media/gateway/scom02.png)
 
@@ -288,7 +288,7 @@ Specifieke servers of groepen configureren voor het gebruik van de Log Analytics
 1. In het veld **zoeken naar** voert u **Health Service** in en selecteert u deze in de lijst. Selecteer **OK**.  
 1. Zoek naar een regel voor de instellingen van de **Advisor-proxy**. 
 1. Selecteer op de Operations Manager werk balk **onderdrukkingen** en wijs vervolgens **de Rule\For een specifiek object van klasse: Health Service** en selecteer een object in de lijst.  Of maak een aangepaste groep die het Health Service-object bevat van de servers waarop u deze onderdrukking wilt Toep assen. Pas vervolgens de onderdrukking toe op uw aangepaste groep.
-1. Voeg in het dialoog venster **onderdrukkings eigenschappen** het selectie vakje in de kolom **overschrijven** naast de para meter **WebProxyAddress** toe.  Voer in het veld **onderdrukkings waarde** de URL in van de log Analytics Gateway server. Zorg ervoor dat u begint met het `http://`voor voegsel.  
+1. Voeg in het dialoog venster **onderdrukkings eigenschappen** het selectie vakje in de kolom **overschrijven** naast de para meter **WebProxyAddress** toe.  Voer in het veld **onderdrukkings waarde** de URL in van de log Analytics Gateway server. Zorg ervoor dat u begint met het voor voegsel `http://` .  
 
     >[!NOTE]
     > U hoeft de regel niet in te scha kelen. Het wordt al automatisch beheerd met een onderdrukking in de beveiligings onderdrukking van micro soft System Center Advisor management pack die gericht is op de micro soft System Center Advisor monitoring Server-groep.
@@ -350,7 +350,7 @@ Als u gebeurtenissen wilt verzamelen die door de gateway worden geregistreerd, m
 
 In de volgende tabel worden de gebeurtenis-Id's en beschrijvingen voor Log Analytics-gateway logboek gebeurtenissen weer gegeven.
 
-| **ID** | **Beschrijving** |
+| **Id** | **Beschrijving** |
 | --- | --- |
 | 400 |Een toepassings fout die geen specifieke ID heeft. |
 | 401 |Onjuiste configuratie. Bijvoorbeeld, listenPort = "text" in plaats van een geheel getal. |

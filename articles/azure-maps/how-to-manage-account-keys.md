@@ -9,25 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 42247cc576e55c7c504e9832017af336439b11b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335557"
 ---
 # <a name="manage-your-azure-maps-account"></a>Uw Azure Maps-account beheren
 
 U kunt uw Azure Maps-account beheren via de Azure Portal. Nadat u een account hebt, kunt u de Api's implementeren in uw website of mobiele toepassing.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="create-a-new-account"></a>Een nieuw account maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Selecteer **Een resource maken** in de linkerbovenhoek van Azure Portal.
 
-3. Zoek en selecteer **kaarten**. Selecteer vervolgens **maken**.
+3. Zoek en selecteer **kaarten**. Selecteer vervolgens **Maken**.
 
 4. Voer de gegevens voor uw nieuwe account in.
 

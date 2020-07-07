@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.custom: seodec18
 ms.openlocfilehash: 23094ec71dac5780def10e16b90de0b818ef3c68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80284888"
 ---
 # <a name="data-querying-in-azure-time-series-insights-preview"></a>Gegevens query's in Azure Time Series Insights preview
@@ -38,7 +38,7 @@ De volgende kern-Api's worden ondersteund.
 ## <a name="environment-apis"></a>Omgevings-Api's
 
 * [Omgevings-API ophalen](https://docs.microsoft.com/rest/api/time-series-insights/management/environments/get): retourneert de lijst met omgevingen waarvoor de aanroeper gemachtigd is om toegang te krijgen.
-* [Beschikbaarheids-API voor omgevingen ophalen](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability): retourneert de verdeling van het aantal gebeurtenissen over `$ts`het tijds tempel van de gebeurtenis. Met deze API kunt u bepalen of er gebeurtenissen in de omgeving zijn door het aantal gebeurtenissen te retour neren dat is opgesplitst in tijds intervallen, indien aanwezig.
+* [Beschikbaarheids-API voor omgevingen ophalen](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability): retourneert de verdeling van het aantal gebeurtenissen over het tijds tempel van de gebeurtenis `$ts` . Met deze API kunt u bepalen of er gebeurtenissen in de omgeving zijn door het aantal gebeurtenissen te retour neren dat is opgesplitst in tijds intervallen, indien aanwezig.
 * [Event schema-API ophalen](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/geteventschema): retourneert de meta gegevens van het gebeurtenis schema voor een opgegeven zoek reeks. Deze API helpt bij het ophalen van alle meta gegevens en eigenschappen die beschikbaar zijn in het schema voor de opgegeven zoek reeks.
 
 ## <a name="time-series-model-query-tsm-q-apis"></a>Time Series model-query (TSM-Q)-Api's

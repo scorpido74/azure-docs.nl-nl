@@ -14,10 +14,10 @@ ms.date: 01/21/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 7e4f1141a9d4bd58451782e8412063a22565556d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80584536"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Filters, ordening en paginering van Media Services entiteiten
@@ -45,7 +45,7 @@ Bereik operatoren:
 - `ge`: Test of een veld *groter is dan of gelijk is aan* een constante waarde.
 - `le`: Test of een veld *kleiner is dan of gelijk is aan* een constante waarde.
 
-## <a name="filter"></a>Filteren
+## <a name="filter"></a>Filter
 
 Gebruik `$filter` om een OData-filter parameter op te geven om alleen de objecten te vinden waarin u bent geïnteresseerd.
 
@@ -70,22 +70,22 @@ Gebruiken `$orderby` om de geretourneerde objecten te sorteren op basis van de o
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
 ```
 
-Als u de resultaten wilt sorteren in oplopende of aflopende `asc` Volg `desc` orde, voegt u een of aan de veld naam toe, gescheiden door een spatie. Bijvoorbeeld: `$orderby properties/created desc`.
+Als u de resultaten wilt sorteren in oplopende of aflopende volg orde, voegt u een `asc` of `desc` aan de veld naam toe, gescheiden door een spatie. Bijvoorbeeld: `$orderby properties/created desc`.
 
 ## <a name="skip-token"></a>Token overs Laan
 
-Als een query-antwoord veel items bevat, retourneert de service `$skiptoken` een`@odata.nextLink`()-waarde die u gebruikt om de volgende pagina met resultaten op te halen. Gebruik deze pagina om de gehele resultatenset te door lopen.
+Als een query-antwoord veel items bevat, retourneert de service een `$skiptoken` ( `@odata.nextLink` )-waarde die u gebruikt om de volgende pagina met resultaten op te halen. Gebruik deze pagina om de gehele resultatenset te door lopen.
 
 In Media Services v3 kunt u de pagina grootte niet configureren. De pagina grootte is afhankelijk van het type entiteit. Lees de afzonderlijke secties die volgen voor meer informatie.
 
 Als entiteiten worden gemaakt of verwijderd terwijl u door de verzameling wisselt, worden de wijzigingen weer gegeven in de geretourneerde resultaten (als deze wijzigingen zich in het deel van de verzameling bevinden dat nog niet is gedownload).
 
 > [!TIP]
-> Gebruik `nextLink` altijd voor het opsommen van de verzameling en is niet afhankelijk van een bepaalde pagina grootte.
+> Gebruik altijd `nextLink` voor het opsommen van de verzameling en is niet afhankelijk van een bepaalde pagina grootte.
 >
 > De `nextLink` waarde wordt alleen weer gegeven als er meer dan één pagina met entiteiten is.
 
-Bekijk het volgende voor beeld van `$skiptoken` waar wordt gebruikt. Zorg ervoor dat u *amstestaccount* vervangt door de naam van uw account en stel de *API-versie* waarde in op de nieuwste versie.
+Bekijk het volgende voor beeld van waar `$skiptoken` wordt gebruikt. Zorg ervoor dat u *amstestaccount* vervangt door de naam van uw account en stel de *API-versie* waarde in op de nieuwste versie.
 
 Als u een lijst met assets als volgt aanvraagt:
 
@@ -156,27 +156,27 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 In de volgende tabel ziet u hoe u de opties voor filteren en ordenen kunt Toep assen op verschillende entiteiten:
 
-|Entiteitsnaam|Naam van eigenschap|Filteren|Bestellen|
+|Entiteitsnaam|Naam van eigenschap|Filter|Bestellen|
 |---|---|---|---|
-|[Activa](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` en `desc`|
+|[Assets](https://docs.microsoft.com/rest/api/media/assets/)|naam|`eq`, `gt`, `lt`, `ge`, `le`|`asc` en `desc`|
 ||Eigenschappen. alternateId |`eq`||
 ||Eigenschappen. assetId |`eq`||
 ||Eigenschappen. gemaakt| `eq`, `gt`, `lt`| `asc` en `desc`|
-|[Beleid voor inhouds sleutels](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
+|[Beleid voor inhoudssleutels](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|naam|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
 ||Eigenschappen. gemaakt    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
 ||Eigenschappen. Beschrijving    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
 ||Eigenschappen. lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
 ||Eigenschappen. policyId|`eq`, `ne`||
-|[Taken](https://docs.microsoft.com/rest/api/media/jobs)| name  | `eq`            | `asc` en `desc`|
+|[Taken](https://docs.microsoft.com/rest/api/media/jobs)| naam  | `eq`            | `asc` en `desc`|
 ||Eigenschappen. State        | `eq`, `ne`        |                         |
 ||Eigenschappen. gemaakt      | `gt`, `ge`, `lt`, `le`| `asc` en `desc`|
 ||Eigenschappen. lastModified | `gt`, `ge`, `lt`, `le` | `asc` en `desc`| 
-|[Streaming-Locators](https://docs.microsoft.com/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
+|[Streaming-locators](https://docs.microsoft.com/rest/api/media/streaminglocators)|naam|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
 ||Eigenschappen. gemaakt    |`eq`, `ne`, `ge`, `le`,  `gt`, `lt`|`asc` en `desc`|
 ||Eigenschappen. endTime    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
-|[Streaming-beleid](https://docs.microsoft.com/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
+|[Beleid voor streaming](https://docs.microsoft.com/rest/api/media/streamingpolicies)|naam|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
 ||Eigenschappen. gemaakt    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
-|[Transformaties](https://docs.microsoft.com/rest/api/media/transforms)| name | `eq`            | `asc` en `desc`|
+|[Transformaties](https://docs.microsoft.com/rest/api/media/transforms)| naam | `eq`            | `asc` en `desc`|
 || Eigenschappen. gemaakt      | `gt`, `ge`, `lt`, `le`| `asc` en `desc`|
 || Eigenschappen. lastModified | `gt`, `ge`, `lt`, `le`| `asc` en `desc`|
 

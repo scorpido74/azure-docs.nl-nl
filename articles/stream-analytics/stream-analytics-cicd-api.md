@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.openlocfilehash: 328ca7cd2c6f76095c8334ae6fdb4aa75fbb867d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80292006"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>CI/CD voor Stream Analytics implementeren op IoT Edge met behulp van Api's
@@ -24,7 +24,7 @@ REST-Api's kunnen worden aangeroepen vanuit Linux en Windows. De volgende opdrac
 
 ### <a name="linux"></a>Linux
 
-Voor Linux kunt u of `Curl` `Wget` -opdrachten gebruiken:
+Voor Linux kunt u of- `Curl` `Wget` opdrachten gebruiken:
 
 ```bash
 curl -u { <username:password> }  -H "Content-Type: application/json" -X { <method> } -d "{ <request body> }" { <url> }   

@@ -8,10 +8,10 @@ ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: e4838597c50898748eb4b33e81ff22eaeea37b30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80476892"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Uw ILB App Service-omgeving integreren met Azure Application Gateway #
@@ -40,7 +40,7 @@ Als u uw Application Gateway wilt integreren met uw ILB-App Service Environment,
 * Een ILB-App Service Environment.
 * Een app die wordt uitgevoerd in de ILB-App Service Environment.
 * Een Internet routeerbaar domein naam die wordt gebruikt voor uw app in de ILB-App Service Environment.
-* Het ILB-adres dat uw ILB-App Service Environment gebruikt. Deze informatie bevindt zich in de app service Environment portal onder **instellingen** > **IP-adressen**:
+* Het ILB-adres dat uw ILB-App Service Environment gebruikt. Deze informatie bevindt zich in de app service Environment portal onder **instellingen**  >  **IP-adressen**:
 
     ![Een voor beeld van een lijst met IP-adressen die worden gebruikt door de ILB-App Service Environment][9]
     
@@ -56,7 +56,7 @@ U kunt de gateway ook niet in het subnet plaatsen dat door uw ILB-App Service En
 
 ## <a name="configuration-steps"></a>Configuratiestappen ##
 
-1. Ga in het Azure Portal naar **Nieuw** > **netwerk** > **Application Gateway**.
+1. Ga in het Azure Portal naar **Nieuw**  >  **netwerk**  >  **Application Gateway**.
 
 2. In het gebied **basis** :
 

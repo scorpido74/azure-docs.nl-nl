@@ -9,13 +9,13 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 3353620f1751e939a04543115fe704555fb3bc21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334086"
 ---
-# <a name="supported-data-format-details"></a>Details van ondersteunde gegevens indeling
+# <a name="supported-data-format-details"></a>Details van ondersteunde gegevensindeling
 
 In dit artikel vindt u specifieke informatie over de ondersteuning voor lezen en schrijven voor alle XML-labels en bekende tekst Geometry-typen. Ook wordt beschreven hoe de gescheiden ruimtelijke gegevens worden geparseerd in de ruimtelijke IO-module.
 
@@ -52,9 +52,9 @@ De ruimtelijke IO-module ondersteunt de volgende KML-elementen.
 | `atom:author`        | ja     | ja     |                                                                                                                            |
 | `atom:link`          | ja     | ja     |                                                                                                                            |
 | `atom:name`          | ja     | ja     |                                                                                                                            |
-| `BalloonStyle`       | gedeeltelijke | gedeeltelijke | `displayMode`wordt niet ondersteund. Geconverteerd naar een `PopupTemplate`. Als u wilt schrijven, `popupTemplate` voegt u een eigenschap toe als een eigenschap van de functie waarvoor u deze wilt schrijven. |
+| `BalloonStyle`       | gedeeltelijke | gedeeltelijke | `displayMode`wordt niet ondersteund. Geconverteerd naar een `PopupTemplate` . Als u wilt schrijven, voegt `popupTemplate` u een eigenschap toe als een eigenschap van de functie waarvoor u deze wilt schrijven. |
 | `begin`              | ja     | ja     |                                                                                                                            |
-| `color`              | ja     | ja     | Inclusief `#AABBGGRR` en `#BBGGRR`. Geparseerd naar een CSS-kleur teken reeks                                                           |
+| `color`              | ja     | ja     | Inclusief `#AABBGGRR` en `#BBGGRR` . Geparseerd naar een CSS-kleur teken reeks                                                           |
 | `colorMode`          | ja     | nee      |                                                                                                                            |
 | `coordinates`        | ja     | ja     |                                                                                                                            |
 | `Data`               | ja     | ja     |                                                                                                                            |
@@ -64,16 +64,16 @@ De ruimtelijke IO-module ondersteunt de volgende KML-elementen.
 | `drawOrder`          | gedeeltelijke | nee      | Lezen voor de grond bedekkingen en worden gebruikt om ze te sorteren. 
 | `east`               | ja     | ja     |                                                                                                                            |
 | `end`                | ja     | ja     |                                                                                                                            |
-| `ExtendedData`       | ja     | ja     | Biedt ondersteuning voor niet `Data`- `SimpleData` getypte, of `Schema`-en entiteits vervangingen van het formulier `$[dataName]`.                      |
+| `ExtendedData`       | ja     | ja     | Biedt ondersteuning voor niet-getypte `Data` , `SimpleData` of `Schema` -en entiteits vervangingen van het formulier `$[dataName]` .                      |
 | `extrude`            | gedeeltelijke | gedeeltelijke | Alleen ondersteund voor veelhoeken. Meerdere geometrie met veelhoeken met verschillende hoogten wordt onderverdeeld in afzonderlijke functies. Lijn stijlen worden niet ondersteund. Veelhoeken met een hoogte van 0 worden weer gegeven als een platte veelhoek. Bij het lezen wordt de hoogte van de eerste coördinaat in de buitenste ring toegevoegd als eigenschap height van de polygoon. Vervolgens wordt de hoogte van de eerste coördinaat gebruikt om de veelhoek op de kaart weer te geven. |
 | `fill`               | ja     | ja     |                                                                                                                            |
 | `Folder`             | ja     | ja     |                                                                                                                            |
 | `GroundOverlay`      | ja     | ja     | `color`wordt niet ondersteund                                                                                                   |
-| `heading`            | gedeeltelijke | nee      | Geparseerd maar niet gerenderd door `SimpleDataLayer`. Schrijft alleen als de gegevens worden opgeslagen in de eigenschap van de vorm.                 |
+| `heading`            | gedeeltelijke | nee      | Geparseerd maar niet gerenderd door `SimpleDataLayer` . Schrijft alleen als de gegevens worden opgeslagen in de eigenschap van de vorm.                 |
 | `hotSpot`            | ja     | gedeeltelijke | Schrijft alleen als de gegevens worden opgeslagen in de eigenschap van de vorm. Eenheden worden alleen als ' pixels ' gegenereerd.                         |
 | `href`               | ja     | ja     |                                                                                                                            |
-| `Icon`               | gedeeltelijke | gedeeltelijke | Geparseerd maar niet gerenderd door `SimpleDataLayer`. Schrijft alleen de eigenschap icon van de vorm als deze een URI-gegevens bevat. Alleen `href` wordt ondersteund. |
-| `IconStyle`          | gedeeltelijke | gedeeltelijke | `icon`, `heading`, `colorMode`en `hotspots` waarden worden geparseerd, maar ze worden niet weer gegeven door`SimpleDataLayer`         |
+| `Icon`               | gedeeltelijke | gedeeltelijke | Geparseerd maar niet gerenderd door `SimpleDataLayer` . Schrijft alleen de eigenschap icon van de vorm als deze een URI-gegevens bevat. Alleen `href` wordt ondersteund. |
+| `IconStyle`          | gedeeltelijke | gedeeltelijke | `icon`, `heading` , `colorMode` en `hotspots` waarden worden geparseerd, maar ze worden niet weer gegeven door`SimpleDataLayer`         |
 | `innerBoundaryIs`    | ja     | ja     |                                                                                                                            |
 | `kml`                | ja     | ja     |                                                                                                                            |
 | `LabelStyle`         | nee      | nee      |                                                                                                                            |
@@ -121,7 +121,7 @@ De ruimtelijke IO-module ondersteunt de volgende KML-elementen.
 | `TimeSpan`           | ja     | ja     |                                                                                                                            |
 | `TimeStamp`          | ja     | ja     |                                                                                                                            |
 | `value`              | ja     | ja     |                                                                                                                            |
-| `viewRefreshMode`    | gedeeltelijke | nee      |  Als er wordt verwezen naar een WMS-service `onStop` , wordt alleen voor de grond overlays ondersteund. Wordt toegevoegd `BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]` aan de URL en wordt bijgewerkt als de kaart wordt verplaatst.  |
+| `viewRefreshMode`    | gedeeltelijke | nee      |  Als er wordt verwezen naar een WMS-service, `onStop` wordt alleen voor de grond overlays ondersteund. Wordt toegevoegd `BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]` aan de URL en wordt bijgewerkt als de kaart wordt verplaatst.  |
 | `visibility`         | ja     | ja     |                                                                                                                            |
 | `west`               | ja     | ja     |                                                                                                                            |
 | `when`               | ja     | ja     |                                                                                                                            |
@@ -153,9 +153,9 @@ De ruimtelijke IO-module ondersteunt de volgende GeoRSS-elementen.
 | `atom:title`             | ja     | ja   |                                                                                                |
 | `atom:updated`           | ja     | ja   |                                                                                                |
 | `atom:uri`               | ja     | ja   |                                                                                                |
-| `geo:lat`                | ja     | nee    | Geschreven als een `georss:point`.                                                                   |
-| `geo:lon`                | ja     | nee    | Geschreven als een `georss:point`.                                                                   |
-| `geo:long`               | ja     | nee    | Geschreven als een `georss:point`.                                                                   |
+| `geo:lat`                | ja     | nee    | Geschreven als een `georss:point` .                                                                   |
+| `geo:lon`                | ja     | nee    | Geschreven als een `georss:point` .                                                                   |
+| `geo:long`               | ja     | nee    | Geschreven als een `georss:point` .                                                                   |
 | `georss:box`             | ja     | nee    | Lezen als een veelhoek en een `subType` eigenschap van ' Rectangle ' gegeven                                |
 | `georss:circle`          | ja     | ja   |                                                                                                |
 | `georss:elev`            | ja     | ja   |                                                                                                |
@@ -168,34 +168,34 @@ De ruimtelijke IO-module ondersteunt de volgende GeoRSS-elementen.
 | `georss:radius`          | ja     | ja   |                                                                                                |
 | `georss:relationshiptag` | ja     | ja   |                                                                                                |
 | `georss:where`           | ja     | ja   |                                                                                                |
-| `geourl:latitude`        | ja     | nee    | Geschreven als een `georss:point`.                                                                   |
-| `geourl:longitude`       | ja     | nee    | Geschreven als een `georss:point`.                                                                   |
-| `position`               | ja     | nee    | Met sommige XML-feeds wordt GML gewrappt met een positie code in plaats `georss:where` van deze op te maken met een tag. Leest deze tag, maar schrijft met behulp van `georss:where` een tag. |
+| `geourl:latitude`        | ja     | nee    | Geschreven als een `georss:point` .                                                                   |
+| `geourl:longitude`       | ja     | nee    | Geschreven als een `georss:point` .                                                                   |
+| `position`               | ja     | nee    | Met sommige XML-feeds wordt GML gewrappt met een positie code in plaats van deze op te maken met een `georss:where` tag. Leest deze tag, maar schrijft met behulp van een `georss:where` tag. |
 | `rss`                    | ja     | nee    | GeoRSS geschreven in ATOM-indeling.                                                                 |
-| `rss:author`             | ja     | gedeeltelijke | Geschreven als een `atom:author`.                                                                 |
-| `rss:category`           | ja     | gedeeltelijke | Geschreven als een `atom:category`.                                                               |
+| `rss:author`             | ja     | gedeeltelijke | Geschreven als een `atom:author` .                                                                 |
+| `rss:category`           | ja     | gedeeltelijke | Geschreven als een `atom:category` .                                                               |
 | `rss:channel`            | ja     | nee    |                                                                                                |
 | `rss:cloud`              | ja     | nee    |                                                                                                |
 | `rss:comments`           | ja     | nee    |                                                                                                |
-| `rss:copyright`          | ja     | gedeeltelijke | Geschreven als een `atom:rights` if-vorm `rights` `properties` heeft geen eigenschap al.       |
-| `rss:description`        | ja     | gedeeltelijke | Geschreven als een `atom:content` if-vorm `content` `properties` heeft geen eigenschap al.      |
+| `rss:copyright`          | ja     | gedeeltelijke | Geschreven als een `atom:rights` if-vorm heeft geen `rights` `properties` eigenschap al.       |
+| `rss:description`        | ja     | gedeeltelijke | Geschreven als een `atom:content` if-vorm heeft geen `content` `properties` eigenschap al.      |
 | `rss:docs`               | ja     | nee    |                                                                                                |
 | `rss:enclosure`          | ja     | nee    |                                                                                                |
 | `rss:generator`          | ja     | nee    |                                                                                                |
-| `rss:guid`               | ja     | gedeeltelijke | Geschreven als een `atom:id` if-vorm heeft `id` `properties` geen eigenschap al.         |
-| `rss:image`              | ja     | gedeeltelijke | Geschreven als een `atom:logo` if-vorm `logo` `properties` heeft geen eigenschap al.      |
-| `rss:item`               | ja     | gedeeltelijke | Geschreven als een `atom:entry`.                                                                  |
+| `rss:guid`               | ja     | gedeeltelijke | Geschreven als een `atom:id` if-vorm heeft geen `id` `properties` eigenschap al.         |
+| `rss:image`              | ja     | gedeeltelijke | Geschreven als een `atom:logo` if-vorm heeft geen `logo` `properties` eigenschap al.      |
+| `rss:item`               | ja     | gedeeltelijke | Geschreven als een `atom:entry` .                                                                  |
 | `rss:language`           | ja     | nee    |                                                                                                |
-| `rss:lastBuildDate`      | ja     | gedeeltelijke | Geschreven als een `atom:updated` if-vorm heeft `updated` `properties` geen eigenschap al.     |
-| `rss:link`               | ja     | gedeeltelijke | Geschreven als een `atom:link`.                                                                   |
-| `rss:managingEditor`     | ja     | gedeeltelijke | Geschreven als een `atom:contributor`.                                                            |
-| `rss:pubDate`            | ja     | gedeeltelijke | Geschreven als een `atom:published` if-vorm `published` `properties` heeft geen eigenschap al.  |
+| `rss:lastBuildDate`      | ja     | gedeeltelijke | Geschreven als een `atom:updated` if-vorm heeft geen `updated` `properties` eigenschap al.     |
+| `rss:link`               | ja     | gedeeltelijke | Geschreven als een `atom:link` .                                                                   |
+| `rss:managingEditor`     | ja     | gedeeltelijke | Geschreven als een `atom:contributor` .                                                            |
+| `rss:pubDate`            | ja     | gedeeltelijke | Geschreven als een `atom:published` if-vorm heeft geen `published` `properties` eigenschap al.  |
 | `rss:rating`             | ja     | nee    |                                                                                                |
 | `rss:skipDays`           | ja     | nee    |                                                                                                |
 | `rss:skipHours`          | ja     | nee    |                                                                                                |
-| `rss:source`             | ja     | gedeeltelijke | Geschreven als een `atom:source` `atom:link`.                                       |
+| `rss:source`             | ja     | gedeeltelijke | Geschreven als een `atom:source` `atom:link` .                                       |
 | `rss:textInput`          | ja     | nee    |                                                                                                |
-| `rss:title`              | ja     | gedeeltelijke | Geschreven als een `atom:title`.                                                                  |
+| `rss:title`              | ja     | gedeeltelijke | Geschreven als een `atom:title` .                                                                  |
 | `rss:ttl`                | ja     | nee    |                                                                                                |
 | `rss:webMaster`          | ja     | nee    |                                                                                                |
 
@@ -205,10 +205,10 @@ De ruimtelijke IO-module ondersteunt de volgende GML-elementen.
 
 | Naam van element            | Lezen | Schrijven | Opmerkingen                                                                                  |
 |-------------------------|------|-------|----------------------------------------------------------------------------------------|
-| `gml:coordinates`       | ja  | nee    | Geschreven als `gml:posList`.                                                              |
+| `gml:coordinates`       | ja  | nee    | Geschreven als `gml:posList` .                                                              |
 | `gml:curveMember`       | ja  | nee    |                                                                                        |
 | `gml:curveMembers`      | ja  | nee    |                                                                                        |
-| `gml:Box`               | ja  | nee    | Geschreven als `gml:Envelope`.                                                             |
+| `gml:Box`               | ja  | nee    | Geschreven als `gml:Envelope` .                                                             |
 | `gml:description`       | ja  | ja   |                                                                                        |
 | `gml:Envelope`          | ja  | ja   |                                                                                        |
 | `gml:exterior`          | ja  | ja   |                                                                                        |
@@ -219,20 +219,20 @@ De ruimtelijke IO-module ondersteunt de volgende GML-elementen.
 | `gml:geometryMember`    | ja  | ja   |                                                                                        |
 | `gml:geometryMembers`   | ja  | ja   |                                                                                        |
 | `gml:identifier`        | ja  | ja   |                                                                                        |
-| `gml:innerBoundaryIs`   | ja  | nee    | Geschreven met `gml.interior`.                                                          |
+| `gml:innerBoundaryIs`   | ja  | nee    | Geschreven met `gml.interior` .                                                          |
 | `gml:interior`          | ja  | ja   |                                                                                        |
 | `gml:LinearRing`        | ja  | ja   |                                                                                        |
 | `gml:LineString`        | ja  | ja   |                                                                                        |
 | `gml:lineStringMember`  | ja  | ja   |                                                                                        |
 | `gml:lineStringMembers` | ja  | nee    |                                                                                        |
-| `gml:MultiCurve`        | ja  | nee    | Alleen leden `gml:LineString` worden gelezen. Geschreven als`gml.MultiLineString`                  |
+| `gml:MultiCurve`        | ja  | nee    | Alleen leden worden gelezen `gml:LineString` . Geschreven als`gml.MultiLineString`                  |
 | `gml:MultiGeometry`     | gedeeltelijke  | gedeeltelijke   | Alleen lezen als een FeatureCollection.                                              |
 | `gml:MultiLineString`   | ja  | ja   |                                                                                        |
 | `gml:MultiPoint`        | ja  | ja   |                                                                                        |
 | `gml:MultiPolygon`      | ja  | ja   |                                                                                        |
-| `gml:MultiSurface`      | ja  | nee    | Alleen leden `gml:Polygon` worden gelezen. Geschreven als`gml.MultiPolygon`                        |
+| `gml:MultiSurface`      | ja  | nee    | Alleen leden worden gelezen `gml:Polygon` . Geschreven als`gml.MultiPolygon`                        |
 | `gml:name`              | ja  | ja   |                                                                                        |
-| `gml:outerBoundaryIs`   | ja  | nee    | Geschreven met `gml.exterior`.                                                          |
+| `gml:outerBoundaryIs`   | ja  | nee    | Geschreven met `gml.exterior` .                                                          |
 | `gml:Point`             | ja  | ja   |                                                                                        |
 | `gml:pointMember`       | ja  | ja   |                                                                                        |
 | `gml:pointMembers`      | ja  | nee    |                                                                                        |
@@ -287,13 +287,13 @@ De ruimtelijke IO-module ondersteunt de volgende GPX-elementen.
 | `gpx:vdop`               | ja     | ja     |                                                                                             |
 | `gpx:wpt`                | ja     | ja     |                                                                                             |
 | `gpx_style:color`        | ja     | ja     |                                                                                             |
-| `gpx_style:line`         | gedeeltelijke | gedeeltelijke | `color`, `opacity`, `width`, `lineCap` worden ondersteund.                                           |
+| `gpx_style:line`         | gedeeltelijke | gedeeltelijke | `color`, `opacity` , `width` , `lineCap` worden ondersteund.                                           |
 | `gpx_style:opacity`      | ja     | ja     |                                                                                             |
 | `gpx_style:width`        | ja     | ja     |                                                                                             |
-| `gpxx:DisplayColor`      | ja     | nee      | Wordt gebruikt om de kleur van een vorm op te geven. Wanneer u schrijft `gpx_style:line` , wordt er in plaats daarvan kleur gebruikt.  |
-| `gpxx:RouteExtension`    | gedeeltelijke | nee      | Alle eigenschappen worden in `properties`gelezen. Wordt `DisplayColor` alleen gebruikt.                     |
-| `gpxx:TrackExtension`    | gedeeltelijke | nee      | Alle eigenschappen worden in `properties`gelezen. Wordt `DisplayColor` alleen gebruikt.                     |
-| `gpxx:WaypointExtension` | gedeeltelijke | nee      | Alle eigenschappen worden in `properties`gelezen. Wordt `DisplayColor` alleen gebruikt.                     |
+| `gpxx:DisplayColor`      | ja     | nee      | Wordt gebruikt om de kleur van een vorm op te geven. Wanneer u schrijft, wordt `gpx_style:line` er in plaats daarvan kleur gebruikt.  |
+| `gpxx:RouteExtension`    | gedeeltelijke | nee      | Alle eigenschappen worden in gelezen `properties` . Wordt alleen `DisplayColor` gebruikt.                     |
+| `gpxx:TrackExtension`    | gedeeltelijke | nee      | Alle eigenschappen worden in gelezen `properties` . Wordt alleen `DisplayColor` gebruikt.                     |
+| `gpxx:WaypointExtension` | gedeeltelijke | nee      | Alle eigenschappen worden in gelezen `properties` . Wordt alleen `DisplayColor` gebruikt.                     |
 | `gpx:keywords`           | ja     | ja     |                                                                                             |
 | `gpx:fix`                | ja     | ja     |                                                                                             |
 
@@ -337,9 +337,9 @@ Bij het schrijven;
 | GEOMETRYCOLLECTION M | x | x<sup>[2]</sup> | 
 | GEOMETRYCOLLECTION ZM | x<sup>[1]</sup><sup>[2]</sup> | x | 
 
-\[1\] er wordt alleen een Z-para meter vastgelegd en als derde waarde toegevoegd in de positie waarde.
+\[1 \] Er wordt alleen een Z-para meter vastgelegd en als derde waarde toegevoegd in de positie waarde.
 
-\[de\] para meter 2 M is niet vastgelegd.
+\[de \] para meter 2 M is niet vastgelegd.
 
 ## <a name="delimited-spatial-data-support"></a>Ondersteuning voor ruimtelijke gegevens met scheidings tekens
 
@@ -375,7 +375,7 @@ Bij het lezen van een bestand met scheidings tekens dat ruimtelijke gegevens bev
 - `xcenter`
 - `point-x`
 
-#### <a name="elevation"></a>Uitbrei ding
+#### <a name="elevation"></a>Terrein
 
 - `elevation`
 - `elv`

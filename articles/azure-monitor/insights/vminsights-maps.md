@@ -1,5 +1,5 @@
 ---
-title: App-afhankelijkheden met Azure Monitor voor VM's weer geven
+title: App-afhankelijkheden weergeven met Azure Monitor voor VM's
 description: De kaart is een functie van Azure Monitor voor VM's. Het detecteert automatisch toepassings onderdelen op Windows-en Linux-systemen en wijst de communicatie tussen services toe. In dit artikel vindt u informatie over het gebruik van de kaart functie in verschillende scenario's.
 ms.subservice: ''
 ms.topic: conceptual
@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
 ms.openlocfilehash: acb96984a49e4ad8535f87a41da11b3b63ae207b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80283851"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>De kaart functie van Azure Monitor voor VM's gebruiken om inzicht te krijgen in toepassings onderdelen
@@ -114,7 +114,7 @@ Standaard toont de kaart de laatste 30 minuten. Als u wilt zien hoe afhankelijkh
 ![Overzicht van directe VM-kaart](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
->U kunt ook toegang krijgen tot een kaart voor een specifiek exemplaar vanuit de weer gave **instanties** voor de schaalset van de virtuele machine. Ga in de sectie **instellingen** naar **instances** > **Insights**.
+>U kunt ook toegang krijgen tot een kaart voor een specifiek exemplaar vanuit de weer gave **instanties** voor de schaalset van de virtuele machine. Ga in de sectie **instellingen** naar **instances**  >  **Insights**.
 
 ## <a name="view-a-map-from-azure-monitor"></a>Een kaart van Azure Monitor weer geven
 

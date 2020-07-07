@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
 ms.openlocfilehash: 05effb7d2e64c5f27acabad4b086ba27d6849cc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80348824"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server voor SAP-toepassingen
@@ -91,32 +91,32 @@ De NFS-server, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS en de SA
 * Front-end configuratie
   * IP-adres 10.0.0.7
 * Test poort
-  * Poort 620<strong>&lt;nr&gt;</strong>
+  * Poort 620<strong> &lt; Nr &gt; </strong>
 * Taakverdelings regels
   * Als u Standard Load Balancer gebruikt, selecteert u **ha-poorten**
   * Als u basis Load Balancer gebruikt, maakt u regels voor taak verdeling voor de volgende poorten
-    * 32<strong>&lt;nr&gt; </strong> TCP
-    * 36<strong>&lt;nr&gt; </strong> TCP
-    * 39<strong>&lt;nr&gt; </strong> TCP
-    * 81<strong>&lt;nr&gt; </strong> TCP
-    * 5<strong>&lt;nr&gt;</strong>. 13 TCP
-    * 5<strong>&lt;nr&gt;</strong>. 14 TCP
-    * 5<strong>&lt;nr&gt;</strong>. 16 TCP
+    * 32<strong> &lt; Nr &gt; </strong> TCP
+    * 36<strong> &lt; Nr &gt; </strong> TCP
+    * 39<strong> &lt; Nr &gt; </strong> TCP
+    * 81<strong> &lt; Nr &gt; </strong> TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 13 TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 14 TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 16 TCP
 
 ### <a name="ers"></a>ERS
 
 * Front-end configuratie
   * IP-adres 10.0.0.8
 * Test poort
-  * Poort 621<strong>&lt;nr&gt;</strong>
+  * Poort 621<strong> &lt; Nr &gt; </strong>
 * Taakverdelings regels
   * Als u Standard Load Balancer gebruikt, selecteert u **ha-poorten**
   * Als u basis Load Balancer gebruikt, maakt u regels voor taak verdeling voor de volgende poorten
-    * 32<strong>&lt;nr&gt; </strong> TCP
-    * 33<strong>&lt;nr&gt; </strong> TCP
-    * 5<strong>&lt;nr&gt;</strong>. 13 TCP
-    * 5<strong>&lt;nr&gt;</strong>. 14 TCP
-    * 5<strong>&lt;nr&gt;</strong>. 16 TCP
+    * 32<strong> &lt; Nr &gt; </strong> TCP
+    * 33<strong> &lt; Nr &gt; </strong> TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 13 TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 14 TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 16 TCP
 
 * Back-end-configuratie
   * Verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van het (A) SCS/ERS-cluster
@@ -156,15 +156,15 @@ U kunt een van de Quick Start-sjablonen op GitHub gebruiken voor het implementer
    9. Gebruikers naam en beheerders wachtwoord voor beheerder  
       Er wordt een nieuwe gebruiker gemaakt die kan worden gebruikt om u aan te melden bij de computer.
    10. Subnet-ID  
-   Als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de ID van het specifieke subnet benoemen. De id ziet er meestal uit als/Subscriptions/**&lt;-abonnements-&gt;id**/resourceGroups/**&lt;naam&gt;van de resource groep**/providers/Microsoft.Network/virtualNetworks/**&lt;naam&gt;van het virtuele netwerk**/subnets/**&lt;subnet naam&gt; **
+   Als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de ID van het specifieke subnet benoemen. De ID ziet er meestal uit als/Subscriptions/** &lt; -abonnements &gt; -id**/resourceGroups/naam** &lt; &gt; van de resource groep**/providers/Microsoft.Network/virtualNetworks/naam** &lt; &gt; van het virtuele netwerk**/subnets/** &lt; subnet naam &gt; **
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Linux hand matig implementeren via Azure Portal
 
 U moet eerst de virtuele machines voor dit NFS-cluster maken. Daarna maakt u een load balancer en gebruikt u de virtuele machines in de back-end-pool.
 
 1. Een resourcegroep maken
-1. Een virtueel netwerk maken
-1. Een Beschikbaarheidsset maken  
+1. Een Virtual Network maken
+1. Een beschikbaarheidsset maken  
    Maximum aantal update domeinen instellen
 1. Virtuele machine 1 maken  
    Gebruik ten minste SLES4SAP 12 SP1, in dit voor beeld de installatie kopie van SLES4SAP 12 SP1https://portal.azure.com/#create/SUSE.SUSELinuxEnterpriseServerforSAPApplications12SP1PremiumImage-ARM  
@@ -175,7 +175,7 @@ U moet eerst de virtuele machines voor dit NFS-cluster maken. Daarna maakt u een
    SLES for SAP-toepassingen 12 SP1 wordt gebruikt  
    Selecteer een Beschikbaarheidsset die u eerder hebt gemaakt  
 1. Voeg ten minste één gegevens schijf toe aan beide virtuele machines  
-   De gegevens schijven worden gebruikt voor de/usr/sap/`<SAPSID` -> Directory
+   De gegevens schijven worden gebruikt voor de/usr/sap/- `<SAPSID`> Directory
 1. Load balancer maken (intern, standaard):  
    1. De frontend-IP-adressen maken
       1. IP-adres 10.0.0.7 voor de ASCS
@@ -803,7 +803,7 @@ De volgende tests zijn een kopie van de test cases in de best practices-gidsen v
 
 1. Test HAGetFailoverConfig, HACheckConfig en HACheckFailoverConfig
 
-   Voer de volgende opdrachten uit \<als sapsid>adm op het knoop punt waar de ASCS-instantie momenteel wordt uitgevoerd. Als de opdrachten mislukken met een fout: onvoldoende geheugen, kan dit worden veroorzaakt door streepjes in uw hostnaam. Dit is een bekend probleem en wordt opgelost door SUSE in het pakket SAP-SuSE-cluster-connector.
+   Voer de volgende opdrachten uit als \<sapsid> adm op het knoop punt waar het ASCS-exemplaar op dit moment wordt uitgevoerd. Als de opdrachten mislukken met een fout: onvoldoende geheugen, kan dit worden veroorzaakt door streepjes in uw hostnaam. Dit is een bekend probleem en wordt opgelost door SUSE in het pakket SAP-SuSE-cluster-connector.
 
    <pre><code>nw1-cl-0:nw1adm 54> sapcontrol -nr <b>00</b> -function HAGetFailoverConfig
    
@@ -915,7 +915,7 @@ De volgende tests zijn een kopie van de test cases in de best practices-gidsen v
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-   Voer de volgende opdrachten uit \<als sapsid>adm om de ASCS-instantie te migreren.
+   Voer de volgende opdrachten uit als \<sapsid> adm om het ASCS-exemplaar te migreren.
 
    <pre><code>nw1-cl-0:nw1adm 55> sapcontrol -nr 00 -host nw1-ascs -user nw1adm &lt;password&gt; -function HAFailoverToNode ""
    
@@ -1034,7 +1034,7 @@ De volgende tests zijn een kopie van de test cases in de best practices-gidsen v
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-   Maak een vergren deling in de wachtrij door bijvoorbeeld een gebruiker in trans actie su01 te bewerken. Voer de volgende opdrachten uit \<als sapsid>adm op het knoop punt waarop het ASCS-exemplaar wordt uitgevoerd. Met de opdrachten wordt het ASCS-exemplaar gestopt en opnieuw gestart. Als u de architectuur voor de bewaarde server 1 gebruikt, wordt de beplaatsings vergrendeling naar verwachting verloren gegaan tijdens deze test. Als u de architectuur van Server 2 in plaats van gebruikt, wordt de in de wachtrij bewaard. 
+   Maak een vergren deling in de wachtrij door bijvoorbeeld een gebruiker in trans actie su01 te bewerken. Voer de volgende opdrachten uit als \<sapsid> adm op het knoop punt waar het ASCS-exemplaar wordt uitgevoerd. Met de opdrachten wordt het ASCS-exemplaar gestopt en opnieuw gestart. Als u de architectuur voor de bewaarde server 1 gebruikt, wordt de beplaatsings vergrendeling naar verwachting verloren gegaan tijdens deze test. Als u de architectuur van Server 2 in plaats van gebruikt, wordt de in de wachtrij bewaard. 
 
    <pre><code>nw1-cl-1:nw1adm 54> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>

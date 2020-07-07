@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a08120b98c7a08bca50453df59df313b1645c5c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80331272"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Opties voor Azure AD Connect gebruikers aanmelding
@@ -112,7 +112,7 @@ Zie voor meer informatie de [ad-compatibiliteits lijst van derden van micro soft
 ### <a name="understanding-user-principal-name"></a>Wat is user principal name?
 In Active Directory is het user principal name standaard achtervoegsel (UPN) de DNS-naam van het domein waar het gebruikers account is gemaakt. In de meeste gevallen is dit de domein naam die is geregistreerd als het ondernemings domein op internet. U kunt echter meer UPN-achtervoegsels toevoegen met behulp van Active Directory domeinen en vertrouwens relaties.
 
-De UPN van de gebruiker heeft de indeling username@domain. Voor een Active Directory domein met de naam ' contoso.com ' kan een gebruiker met de naam John bijvoorbeeld de UPN 'john@contoso.com' hebben. De UPN van de gebruiker is gebaseerd op RFC 822. Hoewel de UPN en e-mail dezelfde indeling hebben, kan de waarde van de UPN voor een gebruiker al dan niet hetzelfde zijn als het e-mail adres van de gebruiker.
+De UPN van de gebruiker heeft de indeling username@domain . Voor een Active Directory domein met de naam ' contoso.com ' kan een gebruiker met de naam John bijvoorbeeld de UPN ' john@contoso.com ' hebben. De UPN van de gebruiker is gebaseerd op RFC 822. Hoewel de UPN en e-mail dezelfde indeling hebben, kan de waarde van de UPN voor een gebruiker al dan niet hetzelfde zijn als het e-mail adres van de gebruiker.
 
 ### <a name="user-principal-name-in-azure-ad"></a>Principal-naam van gebruiker in azure AD
 De wizard Azure AD Connect gebruikt het kenmerk userPrincipalName of u kunt het kenmerk (in een aangepaste installatie) opgeven dat van on-premises moet worden gebruikt als de user principal name in azure AD. Dit is de waarde die wordt gebruikt om u aan te melden bij Azure AD. Als de waarde van het kenmerk userPrincipalName niet overeenkomt met een geverifieerd domein in azure AD, wordt dit door Azure AD vervangen door een standaard waarde. onmicrosoft.com.
@@ -151,15 +151,15 @@ We raden u ten zeerste aan het standaard kenmerk userPrincipalName te hand haven
 #### <a name="different-custom-domain-states-and-their-effect-on-the-azure-sign-in-experience"></a>Verschillende aangepaste domein statussen en hun effect op de Azure-aanmeldings ervaring
 Het is belang rijk dat u de relatie tussen de aangepaste domein statussen in uw Azure AD-Directory en de UPN-achtervoegsels die on-premises zijn gedefinieerd begrijpt. Laten we de verschillende mogelijke Azure-aanmeldings ervaringen door lopen wanneer u synchronisatie instelt met behulp van Azure AD Connect.
 
-Voor de volgende informatie wordt ervan uitgegaan dat we het UPN-achtervoegsel contoso.com, dat wordt gebruikt in de on-premises Directory als onderdeel van de UPN--bijvoorbeeld user@contoso.com.
+Voor de volgende informatie wordt ervan uitgegaan dat we het UPN-achtervoegsel contoso.com, dat wordt gebruikt in de on-premises Directory als onderdeel van de UPN--bijvoorbeeld user@contoso.com .
 
 ###### <a name="express-settingspassword-hash-synchronization"></a>Snelle instellingen/wachtwoord-hash-synchronisatie
 
 | Status | Gevolgen voor de aanmeldings ervaring van de gebruiker met Azure |
 |:---:|:--- |
-| Niet toegevoegd |In dit geval is er geen aangepast domein voor contoso.com toegevoegd aan de Azure AD-adres lijst. Gebruikers met UPN on-premises met het achtervoegsel @contoso.com kunnen hun lokale UPN niet gebruiken om zich aan te melden bij Azure. Ze moeten in plaats daarvan een nieuwe UPN gebruiken die door Azure AD wordt geleverd door het achtervoegsel voor de standaard Azure AD-adres lijst toe te voegen. Als u bijvoorbeeld gebruikers synchroniseert met de Azure AD-adres lijst azurecontoso.onmicrosoft.com, krijgt de lokale gebruiker user@contoso.com een UPN van. user@azurecontoso.onmicrosoft.com |
+| Niet toegevoegd |In dit geval is er geen aangepast domein voor contoso.com toegevoegd aan de Azure AD-adres lijst. Gebruikers met UPN on-premises met het achtervoegsel @contoso.com kunnen hun lokale UPN niet gebruiken om zich aan te melden bij Azure. Ze moeten in plaats daarvan een nieuwe UPN gebruiken die door Azure AD wordt geleverd door het achtervoegsel voor de standaard Azure AD-adres lijst toe te voegen. Als u bijvoorbeeld gebruikers synchroniseert met de Azure AD-adres lijst azurecontoso.onmicrosoft.com, krijgt de lokale gebruiker user@contoso.com een UPN van user@azurecontoso.onmicrosoft.com . |
 | Niet geverifieerd |In dit geval hebben we een aangepast domein contoso.com dat wordt toegevoegd aan de Azure AD-adres lijst. Het is echter nog niet geverifieerd. Als u de synchronisatie van gebruikers verloopt zonder het domein te verifiëren, worden de gebruikers een nieuwe UPN toegewezen door Azure AD, net als in het scenario ' niet toegevoegd '. |
-| Gegaan |In dit geval hebben we een aangepast domein contoso.com dat al is toegevoegd en gecontroleerd in azure AD voor het UPN-achtervoegsel. Gebruikers kunnen hun lokale user principal name gebruiken om zich bijvoorbeeld user@contoso.comaan te melden bij Azure nadat ze zijn gesynchroniseerd met Azure AD. |
+| Gegaan |In dit geval hebben we een aangepast domein contoso.com dat al is toegevoegd en gecontroleerd in azure AD voor het UPN-achtervoegsel. Gebruikers kunnen hun lokale user principal name gebruiken user@contoso.com om zich bijvoorbeeld aan te melden bij Azure nadat ze zijn gesynchroniseerd met Azure AD. |
 
 ###### <a name="ad-fs-federation"></a>AD FS federatie
 U kunt geen Federatie maken met het default. onmicrosoft.com-domein in azure AD of een niet-geverifieerd aangepast domein in azure AD. Wanneer u de wizard Azure AD Connect uitvoert en u een niet-geverifieerd domein selecteert voor het maken van een Federatie met, wordt u in Azure AD Connect gevraagd om de benodigde records die moeten worden gemaakt waarbij uw DNS wordt gehost voor het domein. Zie voor meer informatie [controleren van het Azure AD-domein dat is geselecteerd voor Federatie](how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation).
@@ -168,7 +168,7 @@ Als u de optie Federatie gebruiker aanmelden hebt geselecteerd **met AD FS**, mo
 
 | Status | Gevolgen voor de aanmeldings ervaring van de gebruiker met Azure |
 |:---:|:--- |
-| Niet toegevoegd |In dit geval heeft Azure AD Connect geen overeenkomend aangepast domein gevonden voor het UPN-achtervoegsel contoso.com in de Azure AD-adres lijst. U moet een aangepast domein contoso.com toevoegen als u gebruikers wilt aanmelden met behulp van AD FS met hun lokale UPN (zoals user@contoso.com). |
+| Niet toegevoegd |In dit geval heeft Azure AD Connect geen overeenkomend aangepast domein gevonden voor het UPN-achtervoegsel contoso.com in de Azure AD-adres lijst. U moet een aangepast domein contoso.com toevoegen als u gebruikers wilt aanmelden met behulp van AD FS met hun lokale UPN (zoals user@contoso.com ). |
 | Niet geverifieerd |In dit geval vraagt Azure AD Connect u de juiste informatie over hoe u uw domein in een later stadium kunt controleren. |
 | Gegaan |In dit geval kunt u door gaan met de configuratie zonder verdere actie. |
 

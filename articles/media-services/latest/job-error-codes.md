@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/28/2019
 ms.author: juliako
 ms.openlocfilehash: d66347bc5510189b1d947b4c6b00345b0a56c3f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582225"
 ---
 # <a name="media-services-job-error-codes"></a>Fout codes Media Services taak
@@ -34,7 +34,7 @@ Bekijk het [Azure Media Services Community](media-services-community.md) -artike
 
 ## <a name="see-also"></a>Zie ook
 
-- [Foutcodes voor streaming-eindpunten](streaming-endpoint-error-codes.md)
+- [Fout codes voor streaming-eind punten](streaming-endpoint-error-codes.md)
 - [Azure Media Services concepten](concepts-overview.md)
 - [Quota en limieten](limits-quotas-constraints.md)
 

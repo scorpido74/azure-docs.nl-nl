@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: rohink
 ms.openlocfilehash: 4863ffd383cfcd46bad462156e26293d145fd418
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80294857"
 ---
 # <a name="how-traffic-manager-works"></a>Hoe Traffic Manager werkt
@@ -34,7 +34,7 @@ Wanneer een client probeert verbinding maken met een service, moet deze eerst de
 
 ## <a name="traffic-manager-example"></a>Traffic Manager-voor beeld
 
-Contoso Corp heeft een nieuwe partner portal ontwikkeld. De URL voor deze portal is `https://partners.contoso.com/login.aspx`. De toepassing wordt gehost in drie regio's van Azure. Om de beschik baarheid te verbeteren en de wereld wijde prestaties te maximaliseren, gebruiken ze Traffic Manager om client verkeer te distribueren naar het dichtstbijzijnde beschik bare eind punt.
+Contoso Corp heeft een nieuwe partner portal ontwikkeld. De URL voor deze portal is `https://partners.contoso.com/login.aspx` . De toepassing wordt gehost in drie regio's van Azure. Om de beschik baarheid te verbeteren en de wereld wijde prestaties te maximaliseren, gebruiken ze Traffic Manager om client verkeer te distribueren naar het dichtstbijzijnde beschik bare eind punt.
 
 Om deze configuratie te vervolledigen, moet u de volgende stappen uitvoeren:
 
@@ -49,7 +49,7 @@ Om deze configuratie te vervolledigen, moet u de volgende stappen uitvoeren:
 
 ### <a name="how-clients-connect-using-traffic-manager"></a>Hoe clients verbinding maken via Traffic Manager
 
-Wanneer een client de pagina `https://partners.contoso.com/login.aspx`opvraagt, voert de client de volgende stappen uit om de DNS-naam op te lossen en een verbinding tot stand te brengen:
+Wanneer een client de pagina opvraagt, `https://partners.contoso.com/login.aspx` voert de client de volgende stappen uit om de DNS-naam op te lossen en een verbinding tot stand te brengen:
 
 ![De verbinding tot stand brengen met behulp van Traffic Manager][2]
 

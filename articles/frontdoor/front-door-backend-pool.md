@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 18b165d83bfa154348842542bd8323a40330aa2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80293472"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door"></a>Back-end-en back-end-Pools in azure front-deur
@@ -43,7 +43,7 @@ Back-ends voor de voor deur verwijzen naar de hostnaam of het open bare IP-adres
 
 Aanvragen die door de voor deur naar een back-end worden doorgestuurd, bevatten een host-header veld dat door de back-end wordt gebruikt om de doel resource op te halen. De waarde voor dit veld is doorgaans afkomstig van de back-end-URI en heeft de host en poort.
 
-Een aanvraag voor `www.contoso.com` heeft bijvoorbeeld de hostheader www.contoso.com. Als u Azure Portal gebruikt voor het configureren van uw back-end, is de standaard waarde voor dit veld de hostnaam van de back-end. Als uw back-end contoso-westus.azurewebsites.net is, wordt in de Azure Portal de automatisch gevulde waarde voor de host-header van de back-end contoso-westus.azurewebsites.net. Als u echter Azure Resource Manager sjablonen of een andere methode gebruikt zonder dit veld expliciet in te stellen, stuurt front deur de binnenkomende hostnaam als de waarde voor de host-header. Als de aanvraag voor www\.-contoso.com is gemaakt en uw back-end contoso-westus.azurewebsites.net met een leeg header-veld heeft, wordt de hostheader door de voor deur\.ingesteld als www-contoso.com.
+Een aanvraag voor heeft bijvoorbeeld `www.contoso.com` de hostheader www.contoso.com. Als u Azure Portal gebruikt voor het configureren van uw back-end, is de standaard waarde voor dit veld de hostnaam van de back-end. Als uw back-end contoso-westus.azurewebsites.net is, wordt in de Azure Portal de automatisch gevulde waarde voor de host-header van de back-end contoso-westus.azurewebsites.net. Als u echter Azure Resource Manager sjablonen of een andere methode gebruikt zonder dit veld expliciet in te stellen, stuurt front deur de binnenkomende hostnaam als de waarde voor de host-header. Als de aanvraag voor www \. -contoso.com is gemaakt en uw back-end contoso-westus.azurewebsites.net met een leeg header-veld heeft, wordt de hostheader door de voor deur ingesteld als www- \. contoso.com.
 
 Voor de meeste app-back-ends (Azure Web Apps, Blob Storage en Cloud Services) moet de host-header overeenkomen met het domein van de back-end. De frontend-host die naar uw back-end stuurt, gebruikt echter een andere hostnaam, zoals www.contoso.net.
 
@@ -67,7 +67,7 @@ Een back-end-pool definieert hoe de verschillende back-ends moeten worden geëva
 ### <a name="health-probes"></a>Statuscontroles
 Met de voor deur worden periodiek HTTP/HTTPS-test aanvragen verzonden naar elk van de geconfigureerde back-ends. Test aanvragen bepalen de nabijheid en status van elke back-end om uw aanvragen van uw eind gebruikers te verdelen. De status test instellingen voor een back-end-pool bepalen hoe we de status van app-back-ends controleren. De volgende instellingen zijn beschikbaar voor de configuratie van de taak verdeling:
 
-- **Pad**: de URL die wordt gebruikt voor het testen van aanvragen voor alle back-ends in de back-end-pool. Als een van uw back-ends bijvoorbeeld contoso-westus.azurewebsites.net is en het pad is ingesteld op/probe/test.aspx, worden de front-deur omgevingen, ervan uitgaande dat het protocol is ingesteld op HTTP, status test aanvragen verzonden\:naar http//contoso-westus.azurewebsites.net/probe/test.aspx.
+- **Pad**: de URL die wordt gebruikt voor het testen van aanvragen voor alle back-ends in de back-end-pool. Als een van uw back-ends bijvoorbeeld contoso-westus.azurewebsites.net is en het pad is ingesteld op/probe/test.aspx, worden de front-deur omgevingen, ervan uitgaande dat het protocol is ingesteld op HTTP, status test aanvragen verzonden naar http \: //Contoso-westus.azurewebsites.net/probe/test.aspx.
 
 - **Protocol**: definieert of de Health probe-aanvragen van de voor deur naar uw back-end moeten worden verzonden met het HTTP-of HTTPS-protocol.
 
@@ -95,5 +95,5 @@ Zie voor meer informatie [op minste latentie gebaseerde routerings methode](fron
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een voor deur profiel maken](quickstart-create-front-door.md)
+- [Een Front Door-profiel maken](quickstart-create-front-door.md)
 - [De werking van de voor deur](front-door-routing-architecture.md)

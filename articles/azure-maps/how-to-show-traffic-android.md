@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: e5611eeb08ac370e12cf452d57a87e449fbd80da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335377"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Verkeers gegevens op de kaart weer geven met behulp van Azure Maps Android SDK
@@ -25,13 +25,13 @@ Voordat u verkeer op de kaart kunt weer geven, moet u [een Azure-account maken](
 
 ## <a name="incidents-traffic-data"></a>Verkeers gegevens van incidenten 
 
-U moet de volgende bibliotheken importeren om te kunnen `setTraffic` aanroepen `incidents`en:
+U moet de volgende bibliotheken importeren om te kunnen aanroepen `setTraffic` en `incidents` :
 
 ```java
 import static com.microsoft.com.azure.maps.mapcontrol.options.TrafficOptions.incidents;
 ```
 
- Het volgende code fragment laat zien hoe u verkeers gegevens op de kaart kunt weer geven. We geven een Booleaanse waarde door aan `incidents` de methode en geven deze door aan `setTraffic` de-methode. 
+ Het volgende code fragment laat zien hoe u verkeers gegevens op de kaart kunt weer geven. We geven een Booleaanse waarde door aan de `incidents` methode en geven deze door aan de- `setTraffic` methode. 
 
 ```java
 protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +44,14 @@ protected void onCreate(Bundle savedInstanceState) {
 
 ## <a name="flow-traffic-data"></a>Verkeer gegevens stroom
 
-Eerst moet u de volgende bibliotheken importeren om te kunnen `setTraffic` aanroepen `flow`en:
+Eerst moet u de volgende bibliotheken importeren om te kunnen aanroepen `setTraffic` en `flow` :
 
 ```java
 import com.microsoft.azure.maps.mapcontrol.options.TrafficFlow;
 import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 ```
 
-Gebruik het volgende code fragment om gegevens over de verkeers stroom in te stellen. Net als bij de code in de vorige sectie geven we de retour waarde van de `flow` methode door aan `setTraffic` de-methode. Er zijn vier waarden die kunnen worden door gegeven `flow`aan, en elke waarde wordt `flow` geactiveerd om de desbetreffende waarde te retour neren. De geretourneerde waarde `flow` van wordt vervolgens door gegeven als het argument `setTraffic`aan. Zie de onderstaande tabel voor deze vier waarden:
+Gebruik het volgende code fragment om gegevens over de verkeers stroom in te stellen. Net als bij de code in de vorige sectie geven we de retour waarde van de `flow` methode door aan de- `setTraffic` methode. Er zijn vier waarden die kunnen worden door gegeven aan `flow` , en elke waarde wordt geactiveerd `flow` om de desbetreffende waarde te retour neren. De geretourneerde waarde van `flow` wordt vervolgens door gegeven als het argument aan `setTraffic` . Zie de onderstaande tabel voor deze vier waarden:
 
 | | |
 | :-- | :-- |
@@ -73,7 +73,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 U kunt de volgende code gebruiken om de incidenten voor een specifieke functie te verkrijgen. Wanneer er op een functie wordt geklikt, controleert de code logica op incidenten en wordt er een bericht over het incident gegenereerd. Aan de onderkant van het scherm wordt een bericht met de details weer gegeven.
 
-1. Eerst moet u de indeling van **res > bewerken > activity_main. XML**, zodat deze er als volgt uitziet. U kunt de `mapcontrol_centerLat`, `mapcontrol_centerLng`en `mapcontrol_zoom` door de gewenste waarden vervangen. Intrekken, het zoom niveau is een waarde tussen 0 en 22. Op Zoom niveau 0 past de hele wereld op één tegel.
+1. Eerst moet u de indeling van **res > > activity_main.xml**bewerken, zodat deze er als volgt uitziet. U kunt de `mapcontrol_centerLat` , en door de `mapcontrol_centerLng` `mapcontrol_zoom` gewenste waarden vervangen. Intrekken, het zoom niveau is een waarde tussen 0 en 22. Op Zoom niveau 0 past de hele wereld op één tegel.
 
    ```XML
    <?xml version="1.0" encoding="utf-8"?>
@@ -221,7 +221,7 @@ U kunt de volgende code gebruiken om de incidenten voor een specifieke functie t
    }
    ```
 
-3. Zodra u de bovenstaande code in uw toepassing hebt opgenomen, kunt u op een functie klikken en de details van de verkeers incidenten bekijken. Afhankelijk van de waarden voor de breedte graad, lengte graad en zoom niveau die u in uw **activity_main. XML-** bestand hebt gebruikt, worden de resultaten weer gegeven die vergelijkbaar zijn met de volgende afbeelding:
+3. Zodra u de bovenstaande code in uw toepassing hebt opgenomen, kunt u op een functie klikken en de details van de verkeers incidenten bekijken. Afhankelijk van de waarden voor de breedte graad, lengte graad en zoom niveau die u in uw **activity_main.xml** -bestand hebt gebruikt, worden de resultaten weer gegeven die vergelijkbaar zijn met de volgende afbeelding:
 
    <center>
 

@@ -13,17 +13,17 @@ ms.date: 07/26/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 85a9cad80156dc6ac40e78610c91805d485ff3df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80585997"
 ---
 # <a name="content-key-policies"></a>Beleid voor inhoudssleutels
 
-Met Media Services kunt u uw Live en on-demand inhoud dynamisch versleutelen met Advanced Encryption Standard (AES-128) of een van de drie belangrijkste Digital Rights Management (DRM)-systemen: micro soft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM-licenties (PlayReady, Widevine en FairPlay) aan geautoriseerde clients. 
+Met Media Services kunt u uw live en on-demand inhoud dynamisch versleutelen met Advanced Encryption Standard (AES-128) of een van de drie belangrijkste Digital Rights Management-systemen (DRM): Microsoft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM-licenties (PlayReady, Widevine en FairPlay) aan geautoriseerde klanten. 
 
-Als u versleutelings opties wilt opgeven voor uw stream, moet u een [streaming-beleid](streaming-policy-concept.md) maken en dit koppelen aan uw [streaming-Locator](streaming-locators-concept.md). U maakt het [beleid voor inhouds sleutels](https://docs.microsoft.com/rest/api/media/contentkeypolicies) om te configureren hoe de inhouds sleutel (die beveiligde toegang tot uw [assets](assets-concept.md)biedt) wordt geleverd aan de eind clients. U moet de vereisten (beperkingen) instellen voor het beleid voor de inhouds sleutel waaraan moet worden voldaan om sleutels met de opgegeven configuratie aan clients te kunnen leveren. Het beleid voor inhouds sleutels is niet nodig voor het wissen van streams of downloaden. 
+Als u versleutelings opties wilt opgeven voor uw stream, moet u een [streaming-beleid](streaming-policy-concept.md) maken en dit koppelen aan uw [streaming-Locator](streaming-locators-concept.md). U maakt het [beleid voor inhouds sleutels](https://docs.microsoft.com/rest/api/media/contentkeypolicies) om te configureren hoe de inhouds sleutel (die beveiligde toegang tot uw [assets](assets-concept.md)biedt) wordt geleverd aan de eind clients. U moet de vereisten (beperkingen) instellen voor het beleid voor de inhouds sleutel waaraan moet worden voldaan om sleutels met de opgegeven configuratie aan clients te kunnen leveren. Het beleid voor inhoudssleutels is niet nodig voor het wissen van streams of downloaden. 
 
 Normaal gesp roken koppelt u het beleid voor inhouds sleutels aan uw [streaming-Locator](streaming-locators-concept.md). U kunt ook het beleid voor de inhouds sleutel binnen een [streaming-beleid](streaming-policy-concept.md) opgeven (bij het maken van een aangepast streaming-beleid voor geavanceerde scenario's). 
 
@@ -47,7 +47,7 @@ Normaal gesp roken koppelt u het beleid voor inhouds sleutels aan uw [streaming-
 
 ## <a name="example"></a>Voorbeeld
 
-Als u de sleutel wilt weer geven `GetPolicyPropertiesWithSecretsAsync`, gebruikt u, zoals wordt weer gegeven in het voor beeld [een handtekening sleutel van het bestaande beleid ophalen](get-content-key-policy-dotnet-howto.md#get-contentkeypolicy-with-secrets) .
+Als u de sleutel wilt weer geven, gebruikt u `GetPolicyPropertiesWithSecretsAsync` , zoals wordt weer gegeven in het voor beeld [een handtekening sleutel van het bestaande beleid ophalen](get-content-key-policy-dotnet-howto.md#get-contentkeypolicy-with-secrets) .
 
 ## <a name="filtering-ordering-paging"></a>Filteren, ordenen, paginering
 
@@ -56,7 +56,7 @@ Zie [filteren, ordenen, pagineren van Media Services entiteiten](entities-overvi
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
 * Eigenschappen van het beleid voor de inhouds sleutel van het `Datetime` type zijn altijd in UTC-indeling.
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
 
 ## <a name="next-steps"></a>Volgende stappen
 

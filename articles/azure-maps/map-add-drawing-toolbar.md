@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: bebf1ddfbca3aec5a551193609381cf3510bc3ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334488"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>Een werk balk voor teken hulpprogramma's toevoegen aan een kaart
@@ -38,7 +38,7 @@ Hieronder ziet u het volledige uitvoerings voorbeeld code van de bovenstaande fu
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Tekenwerkbalk toevoegen" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Ga naar de pen <a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>werk balk tekening toevoegen</a> op<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+Ga naar de pen <a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>werk balk tekening toevoegen</a> op Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
@@ -62,13 +62,13 @@ Hieronder ziet u het volledige uitvoerings voorbeeld code van de bovenstaande fu
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Een hulp programma voor veelhoek tekenen toevoegen" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zie de pen <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>een hulp programma voor veelhoek tekenen toevoegen</a> door<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+Zie de pen <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>een hulp programma voor veelhoek tekenen toevoegen</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
 ## <a name="change-drawing-rendering-style"></a>Stijl van tekening weergave wijzigen
 
-De stijl van de getekende vormen kan worden aangepast door de onderliggende lagen van de tekening Manager op te halen met behulp van de `drawingManager.getLayers()` functie en vervolgens opties in te stellen voor de afzonderlijke lagen. De Sleep grepen die voor coördinaten worden weer gegeven bij het bewerken van een vorm, zijn HTML-markeringen. De stijl van de Sleep grepen kan worden aangepast door HTML-markerings opties door `dragHandleStyle` te `secondaryDragHandleStyle` geven in de opties en van de teken beheer.  
+De stijl van de getekende vormen kan worden aangepast door de onderliggende lagen van de tekening Manager op te halen met behulp van de `drawingManager.getLayers()` functie en vervolgens opties in te stellen voor de afzonderlijke lagen. De Sleep grepen die voor coördinaten worden weer gegeven bij het bewerken van een vorm, zijn HTML-markeringen. De stijl van de Sleep grepen kan worden aangepast door HTML-markerings opties door te geven in de `dragHandleStyle` `secondaryDragHandleStyle` Opties en van de teken beheer.  
 
 Met de volgende code worden de weergave lagen opgehaald uit de tekening Manager en worden de opties voor het wijzigen van de stijl van de tekening gewijzigd. In dit geval worden punten weer gegeven met een pictogram met een blauwe markering. Lijnen worden rood en vier pixels breed. Veelhoeken hebben een groene opvul kleur en een oranje overzicht. Vervolgens worden de stijlen van de Sleep grepen gewijzigd in vier Kante pictogrammen. 
 
@@ -122,7 +122,7 @@ Hieronder ziet u het volledige uitvoerings voorbeeld code van de bovenstaande fu
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Stijl van tekening weergave wijzigen" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Bekijk de stijl voor het <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>weer geven van wijzigingen</a> in<a href='https://codepen.io/azuremaps'>@azuremaps</a>de pen op Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+Bekijk de stijl voor het <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>weer geven van wijzigingen</a> in de Pen op Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 

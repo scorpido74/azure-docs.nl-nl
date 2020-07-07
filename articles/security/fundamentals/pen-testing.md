@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 08/13/2018
 ms.author: terrylan
 ms.openlocfilehash: 413ec8b121838a4ffac4119421ec3266e141618b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80549255"
 ---
-# <a name="penetration-testing"></a>Indringings tests
+# <a name="penetration-testing"></a>Penetratietesten
 Een van de voor delen van het gebruik van Azure voor het testen en implementeren van toepassingen is dat u snel omgevingen kunt maken. U hoeft zich geen zorgen te maken over uw eigen on-premises hardware voor het aanvragen van opdrachten, voor het verkrijgen en ' rekken en stapelen '.
 
 Dit is geweldig, maar u moet er wel zeker van zijn dat u uw normale beveiligings toelaat. Een van de dingen die u waarschijnlijk wilt doen, is de toepassingen die u in azure implementeert, door penetratie testen.

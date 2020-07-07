@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
 ms.openlocfilehash: d9874e27c21906512c2f6c841767b4d6591dbeaf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80550264"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Modus voor gedeeld apparaat voor Android-apparaten
@@ -25,7 +25,7 @@ ms.locfileid: "80550264"
 > [!NOTE]
 > Deze functie is beschikbaar voor openbare preview.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Firstline-werk rollen, zoals Retail Associates, leden van de vliegtuig bemanning en mede werkers van de Field service gebruiken vaak een gedeeld mobiel apparaat om hun werk uit te voeren. Dit wordt problematisch wanneer ze beginnen met het delen van wacht woorden of pincodes om toegang te krijgen tot klant-en bedrijfs gegevens op het gedeelde apparaat.
 
@@ -35,8 +35,8 @@ De modus gedeeld apparaat biedt ook micro soft-identiteits beheer van het appara
 
 Als u een app voor gedeelde apparaten wilt maken, werken ontwikkel aars en beheerders van Cloud apparaten samen:
 
-- Ontwikkel aars schrijven een app met één account (apps met meerdere accounts worden niet ondersteund in de modus gedeeld apparaat) `"shared_device_mode_supported": true` , toevoegen aan de configuratie van de app en code schrijven voor het afhandelen van dingen zoals het afmelden van gedeelde apparaten.
-- Apparaat beheerders maken het apparaat klaar om te worden gedeeld door de verificator-app te installeren en het apparaat in te stellen op de gedeelde modus met de verificator-app. Alleen gebruikers met de rol [beheerder van Cloud apparaat](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions) kunnen een apparaat in de gedeelde modus plaatsen met behulp van de [verificator-app](../user-help/user-help-auth-app-overview.md). U kunt het lidmaatschap van uw organisatie rollen in de Azure Portal configureren via: **Azure Active Directory** > -**rollen en-Administrators** > van de**Cloud apparaat-beheerder**.
+- Ontwikkel aars schrijven een app met één account (apps met meerdere accounts worden niet ondersteund in de modus gedeeld apparaat), toevoegen `"shared_device_mode_supported": true` aan de configuratie van de app en code schrijven voor het afhandelen van dingen zoals het afmelden van gedeelde apparaten.
+- Apparaat beheerders maken het apparaat klaar om te worden gedeeld door de verificator-app te installeren en het apparaat in te stellen op de gedeelde modus met de verificator-app. Alleen gebruikers met de rol [beheerder van Cloud apparaat](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions) kunnen een apparaat in de gedeelde modus plaatsen met behulp van de [verificator-app](../user-help/user-help-auth-app-overview.md). U kunt het lidmaatschap van uw organisatie rollen in de Azure Portal configureren via: **Azure Active Directory**-  >  **rollen en-Administrators**van de  >  **Cloud apparaat-beheerder**.
 
  In dit artikel wordt voornamelijk aandacht besteed aan ontwikkel aars.
 
@@ -63,7 +63,7 @@ Het volgende object model illustreert het type object dat u kunt ontvangen en wa
 
 ![overname model voor open bare client toepassing](media/v2-shared-device-mode/ipublic-client-app-inheritance.png)
 
-Als u uw `PublicClientApplication` object ontvangt, moet u een type controle uitvoeren en naar de juiste interface casten. Met de volgende code wordt gecontroleerd op de modus voor meerdere accounts of één account en wordt het toepassings object op de juiste wijze geconverteerd:
+Als u uw object ontvangt, moet u een type controle uitvoeren en naar de juiste interface casten `PublicClientApplication` . Met de volgende code wordt gecontroleerd op de modus voor meerdere accounts of één account en wordt het toepassings object op de juiste wijze geconverteerd:
 
 ```java
 private IPublicClientApplication mApplication;
@@ -84,8 +84,8 @@ De volgende verschillen zijn van toepassing, afhankelijk van het feit of uw app 
 |  | Apparaat voor gedeelde modus  | Persoonlijk apparaat |
 |---------|---------|---------|
 | **Accounts**     | Eén account | Meerdere accounts |
-| **Aanmelden** | Wereldwijd | Wereldwijd |
-| **Afmelden** | Wereldwijd | Elke toepassing kan bepalen of de afmelding lokaal is voor de app of voor de reeks toepassingen. |
+| **Aanmelden** | Globaal | Globaal |
+| **Afmelden** | Globaal | Elke toepassing kan bepalen of de afmelding lokaal is voor de app of voor de reeks toepassingen. |
 | **Ondersteunde accounttypen** | Alleen werk accounts | Persoonlijke en werk accounts worden ondersteund  |
 
 ## <a name="why-you-may-want-to-only-support-single-account-mode"></a>Waarom u alleen één-account modus wilt ondersteunen

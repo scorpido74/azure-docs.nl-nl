@@ -15,10 +15,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
 ms.openlocfilehash: a693eb374365670da3fe8c4b2bb8ce664a024217
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80295446"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Azure Active Directory-verificatie gebruiken voor toegang tot de Media Services-API met REST
@@ -64,7 +64,7 @@ Als u toegang wilt krijgen tot Media Services-API, moet u de volgende gegevens p
 
 |Instelling|Voorbeeld|Beschrijving|
 |---|-------|-----|
-|Azure Active Directory Tenant domein|microsoft.onmicrosoft.com|Azure AD als een STS-eind punt (Secure Token Service) wordt gemaakt met de volgende <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token>indeling:. Azure AD geeft een JWT-verbinding om toegang te krijgen tot bronnen (een toegangs token).|
+|Azure Active Directory Tenant domein|microsoft.onmicrosoft.com|Azure AD als een STS-eind punt (Secure Token Service) wordt gemaakt met de volgende indeling: <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token> . Azure AD geeft een JWT-verbinding om toegang te krijgen tot bronnen (een toegangs token).|
 |Eindpunt van de REST-API|<https://amshelloworld.restv2.westus.media.azure.net/api/>|Dit is het eind punt waartegen alle Media Services REST API-aanroepen in uw toepassing worden gedaan.|
 |Client-ID (toepassings-ID)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Client-ID van Azure AD-toepassing. De client-ID is vereist om het toegangs token op te halen. |
 |Clientgeheim|+ mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq + Dbim0 =|Azure AD-toepassings sleutels (client geheim). Het client geheim is vereist om het toegangs token op te halen.|
@@ -73,7 +73,7 @@ Als u toegang wilt krijgen tot Media Services-API, moet u de volgende gegevens p
 
 Voer de volgende stappen uit om de informatie op te halen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Navigeer naar uw AMS-exemplaar.
 3. Selecteer **API-toegang**.
 4. Klik op **verbinding maken met Azure Media Services API met Service-Principal**.
@@ -115,7 +115,7 @@ Voer de volgende stappen uit om de informatie op te halen:
 
    ![API-toegang](./media/connect-with-rest/connect-with-rest03.png)
 
-U kunt waarden voor AD-verbindings parameters toevoegen aan uw web. config-of app. config-bestand, zodat u het later kunt gebruiken in uw code.
+U kunt waarden voor AD-verbindings parameters toevoegen aan uw web.config-of app.config-bestand, zodat ze later in uw code kunnen worden gebruikt.
 
 > [!IMPORTANT]
 > De **client sleutel** is een belang rijk geheim en moet goed worden beveiligd in een sleutel kluis of worden versleuteld in de productie omgeving.

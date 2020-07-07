@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: 03356c0b4a93f4befdbc529523e58642137a8887
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80420822"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Verificatiefouten oplossen als u RDP gebruikt om verbinding te maken met Azure-VM's
@@ -163,7 +163,7 @@ Als de communicatie tussen de domein controller en de VM goed is, maar de domein
 
 Als de voor gaande opdrachten het communicatie probleem met het domein niet hebben opgelost, kunt u deze VM opnieuw toevoegen aan het domein. Voer de volgende stappen uit om dit te doen:
 
-1. Maak een script met de naam unjoin's. ps1 met behulp van de volgende inhoud en implementeer vervolgens het script als een aangepaste script extensie op de Azure Portal:
+1. Maak een script met de naam Unjoin.ps1 met behulp van de volgende inhoud en implementeer vervolgens het script als een aangepaste script extensie op de Azure Portal:
 
     ```cmd
     cmd /c "netdom remove <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10 /Force"
@@ -171,7 +171,7 @@ Als de voor gaande opdrachten het communicatie probleem met het domein niet hebb
     
     Dit script neemt de virtuele machine uit het domein geforceerd en start deze 10 seconden later opnieuw op. Vervolgens moet u het computer object op het domein opschonen.
 
-2.  Nadat het opschonen is voltooid, wordt deze VM opnieuw lid van het domein. Als u dit wilt doen, maakt u een script met de naam JoinDomain. ps1 met behulp van de volgende inhoud en implementeert u het script als een aangepaste script extensie op de Azure Portal: 
+2.  Nadat het opschonen is voltooid, wordt deze VM opnieuw lid van het domein. Als u dit wilt doen, maakt u een script met de naam JoinDomain.ps1 met behulp van de volgende inhoud en implementeert u het script als een aangepaste script extensie op de Azure Portal: 
 
     ```cmd
     cmd /c "netdom join <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10"

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 7a793ff35675c876dc429976ebee96887b12735a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335597"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Een shape aan een kaart toevoegen met Azure Maps Android SDK
@@ -28,7 +28,7 @@ Om het proces in dit artikel te volt ooien, moet u [Azure Maps ANDROID SDK](http
 
 U kunt een lijn toevoegen aan de kaart met behulp van een **laag**. Volg de onderstaande stappen om een regel toe te voegen aan de kaart.
 
-1. Bewerk de **indeling res > > activity_main. XML** , zodat deze er als volgt uitziet:
+1. Wijzig de **indeling van res > > activity_main.xml** zodat deze er als volgt uitziet:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -78,7 +78,7 @@ U kunt een lijn toevoegen aan de kaart met behulp van een **laag**. Volg de onde
     
     In het bovenstaande code fragment wordt eerst een exemplaar van Azure Maps kaart besturings element opgehaald met de call back methode **onReady ()** . Vervolgens wordt een gegevens bron object gemaakt met behulp van de klasse **Data Source** en toegevoegd aan de kaart. Vervolgens wordt er een lijst met **punt** objecten gemaakt. Er wordt een **Lines Tring** gemaakt op basis van de lijst met punten en toegevoegd aan de gegevens bron. Met een **lijn laag** worden lijn objecten weer gegeven die zijn verpakt in een gegevens bron op de kaart. Er wordt dan een laag gemaakt en de gegevens bron wordt hieraan toegevoegd.
 
-    Nadat u het code fragment hierboven hebt toegevoegd `MainActivity.java` , ziet uw er als volgt uit:
+    Nadat u het code fragment hierboven hebt toegevoegd, `MainActivity.java` ziet uw er als volgt uit:
     
     ```Java
     package com.example.myapplication;
@@ -185,7 +185,7 @@ Als u de toepassing nu uitvoert, ziet u een regel op de kaart zoals hieronder wo
 
 Met de **polygoon laag** kunt u het gebied van de veelhoek naar de kaart renderen. Volg de onderstaande stappen om een veelhoek op de kaart toe te voegen.
 
-1. Bewerk de **indeling res > > activity_main. XML** , zodat deze er als volgt uitziet:
+1. Wijzig de **indeling van res > > activity_main.xml** zodat deze er als volgt uitziet:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -240,7 +240,7 @@ Met de **polygoon laag** kunt u het gebied van de veelhoek naar de kaart rendere
 
     In het bovenstaande code fragment wordt eerst een exemplaar van Azure Maps kaart besturings element opgehaald met de call back methode **onReady ()** . Vervolgens wordt een gegevens bron object gemaakt met behulp van de klasse **Data Source** en toegevoegd aan de kaart. Een **veelhoek** object wordt vervolgens gemaakt op basis van een lijst met **punt** objecten en wordt toegevoegd aan de gegevens bron. Met een **polygoon laag** worden gegevens weer gegeven die in de gegevens bron op de kaart zijn verpakt. Vervolgens wordt er een polygoon laag gemaakt waarmee het polygoon gebied wordt weer gegeven en wordt er een gegevens bron aan toegevoegd. Met een **lijn laag** worden lijn objecten weer gegeven die zijn verpakt in een gegevens bron. In het laatste deel van het code fragment wordt een laag gemaakt om het overzicht van de veelhoek weer te geven en de gegevens bron hieraan toe te voegen.
 
-    Nadat u het code fragment hierboven hebt toegevoegd `MainActivity.java` , ziet uw er als volgt uit:
+    Nadat u het code fragment hierboven hebt toegevoegd, `MainActivity.java` ziet uw er als volgt uit:
 
     ```Java
     package com.example.myapplication;

@@ -9,13 +9,13 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 6becb504671c1fa380207fda9d7d553fca8ceddf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335235"
 ---
-# <a name="use-the-azure-maps-map-control"></a>Het Azure Maps kaart besturings element gebruiken
+# <a name="use-the-azure-maps-map-control"></a>Het kaartbesturingselement in Azure Maps gebruiken
 
 Met de Map Control java script-bibliotheek aan de client zijde kunt u kaarten en Inge sloten Azure Maps functionaliteit weer geven in uw web-of mobiele toepassing.
 
@@ -34,11 +34,11 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
         <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
         ```
 
-    * Laad de Azure Maps Web SDK-bron code lokaal met behulp van het [Azure-Maps-Control NPM-](https://www.npmjs.com/package/azure-maps-control) pakket en host dit met uw app. Dit pakket bevat ook type script definities.
+    * Laad de Azure Maps Web SDK-bron code lokaal met behulp van het [Azure-Maps-Control NPM-](https://www.npmjs.com/package/azure-maps-control) pakket en host dit met uw app. Dit pakket bevat ook TypeScript-definities.
 
         > **NPM Azure-Maps-beheer installeren**
 
-       Voeg vervolgens verwijzingen naar het Azure Maps opmaak model en de script bron verwijzingen `<head>` naar het element van het bestand toe:
+       Voeg vervolgens verwijzingen naar het Azure Maps opmaak model en de script bron verwijzingen naar het `<head>` element van het bestand toe:
 
         ```HTML
         <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
@@ -52,7 +52,7 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
     > import * as atlas from 'azure-maps-control';
     > ```
 
-3. Als u de kaart zo wilt genereren dat de volledige hoofd tekst van de pagina wordt gevuld, `<style>` voegt u het `<head>` volgende element toe aan het-element.
+3. Als u de kaart zo wilt genereren dat de volledige hoofd tekst van de pagina wordt gevuld, voegt u het volgende `<style>` element toe aan het- `<head>` element.
 
    ```HTML
     <style>
@@ -67,7 +67,7 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
     </style>
    ```
 
-4. Voeg in de hoofd tekst van de pagina een `<div>` element toe en geef het `id` de naam **myMap**.
+4. Voeg in de hoofd tekst van de pagina een `<div>` element toe en geef het de naam `id` **myMap**.
 
    ```HTML
     <body>
@@ -75,7 +75,7 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
     </body>
    ```
 
-5. Als u het kaart besturings element wilt initialiseren, definieert u een nieuwe script code in de HTML-hoofd tekst. Geef de naam `id` van de kaart `<div>` of een `HTMLElement` (bijvoorbeeld `document.getElementById('myMap')`) door als de eerste para meter bij het maken van een instantie `Map` van de klasse. Gebruik uw eigen Azure Maps account sleutel of certificerings Azure Active Directory (AAD) om de kaart te verifiëren met behulp van [verificatie opties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). 
+5. Als u het kaart besturings element wilt initialiseren, definieert u een nieuwe script code in de HTML-hoofd tekst. Geef de `id` naam van de kaart `<div>` of een `HTMLElement` (bijvoorbeeld) door `document.getElementById('myMap')` als de eerste para meter bij het maken van een instantie van de `Map` klasse. Gebruik uw eigen Azure Maps account sleutel of certificerings Azure Active Directory (AAD) om de kaart te verifiëren met behulp van [verificatie opties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). 
 
    Als u een account wilt maken of uw sleutel wilt vinden, volgt u de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) en de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) . 
 
@@ -181,9 +181,9 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
 
    ![Kaart afbeelding die het gegenereerde resultaat weergeeft](./media/how-to-use-map-control/map-of-seattle.png)
 
-## <a name="localizing-the-map"></a>De kaart lokaliseren
+## <a name="localizing-the-map"></a>Lokaliseren van de kaart
 
-Azure Maps biedt twee verschillende manieren om de taal-en regionale weer gave voor de gerenderde kaart in te stellen. De eerste optie is om deze informatie toe te voegen `atlas` aan de globale naam ruimte, wat resulteert in alle instanties van de kaart besturing in uw app die standaard worden ingesteld op deze instellingen. Hiermee stelt u de taal in op Frans ("fr-FR") en de regionale weer gave op ' auto ':
+Azure Maps biedt twee verschillende manieren om de taal-en regionale weer gave voor de gerenderde kaart in te stellen. De eerste optie is om deze informatie toe te voegen aan de globale `atlas` naam ruimte, wat resulteert in alle instanties van de kaart besturing in uw app die standaard worden ingesteld op deze instellingen. Hiermee stelt u de taal in op Frans ("fr-FR") en de regionale weer gave op ' auto ':
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -219,7 +219,7 @@ Een volledige lijst met ondersteunde talen en regionale weer gaven wordt [hier](
 
 De Azure Maps Web-SDK ondersteunt de Azure Government Cloud. Alle Java script-en CSS-Url's die worden gebruikt voor toegang tot de Azure Maps Web-SDK blijven hetzelfde. De volgende taken moeten worden uitgevoerd om verbinding te maken met de Azure Government Cloud versie van het Azure Maps platform.
 
-Wanneer u het besturings element interactieve map gebruikt, voegt u de volgende regel code toe voordat u een `Map` instantie van de klasse maakt. 
+Wanneer u het besturings element interactieve map gebruikt, voegt u de volgende regel code toe voordat u een instantie van de `Map` klasse maakt. 
 
 ```javascript
 atlas.setDomain('atlas.azure.us');
@@ -233,7 +233,7 @@ Wanneer u de Services-module gebruikt, moet het domein voor de services worden i
 var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 ```
 
-Als u rechtstreeks toegang hebt tot de Azure Maps REST-services, wijzigt `atlas.azure.us`u het URL-domein in. Als u bijvoorbeeld de Search API-service gebruikt, wijzigt u het URL- `https://atlas.microsoft.com/search/` domein `https://atlas.azure.us/search/`van in naar.
+Als u rechtstreeks toegang hebt tot de Azure Maps REST-services, wijzigt u het URL-domein in `atlas.azure.us` . Als u bijvoorbeeld de Search API-service gebruikt, wijzigt u het URL-domein van `https://atlas.microsoft.com/search/` in naar `https://atlas.azure.us/search/` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

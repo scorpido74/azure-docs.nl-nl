@@ -14,10 +14,10 @@ ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: 7cecbc48eb362c2c0f1741352e6f7f5f6ad40c9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80550251"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>Modus voor gedeeld apparaat voor iOS-apparaten
@@ -25,7 +25,7 @@ ms.locfileid: "80550251"
 > [!NOTE]
 > Deze functie is beschikbaar voor openbare preview.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Firstline-werk rollen, zoals Retail Associates, leden van de vliegtuig bemanning en mede werkers van de Field service gebruiken vaak een gedeeld mobiel apparaat om hun werk uit te voeren. Deze gedeelde apparaten kunnen beveiligings Risico's opleveren als uw gebruikers hun wacht woord of pincode, opzettelijk of niet delen, om toegang te krijgen tot klant-en bedrijfs gegevens op het gedeelde apparaat.
 
@@ -45,7 +45,7 @@ Als u een app voor gedeelde apparaten wilt maken, werken ontwikkel aars en behee
 
 1. [**Vereist tijdens alleen open bare preview**] Een gebruiker met de rol van beheerder van het [Cloud apparaat](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator) moet vervolgens de [app Microsoft Authenticator](../user-help/user-help-auth-app-overview.md) starten en hun apparaat toevoegen aan de organisatie.
 
-    Als u het lidmaatschap van uw organisatie rollen wilt configureren in de Azure portal: **Azure Active Directory** > **rollen en Administrators** > van de**Cloud apparaat-beheerder**
+    Als u het lidmaatschap van uw organisatie rollen wilt configureren in de Azure portal: **Azure Active Directory**  >  **rollen en Administrators**van de  >  **Cloud apparaat-beheerder**
 
 In de volgende secties wordt beschreven hoe u uw toepassing bijwerkt voor de ondersteuning van de modus gedeeld apparaat.
 
@@ -92,7 +92,7 @@ Het detecteren van de modus gedeeld apparaat is belang rijk voor uw toepassing. 
 
 Gebruik de `getDeviceInformationWithParameters:completionBlock:` API in de `MSALPublicClientApplication` om te bepalen of een app wordt uitgevoerd op een apparaat in de modus gedeeld apparaat.
 
-De volgende code fragmenten bevatten voor beelden van het gebruik `getDeviceInformationWithParameters:completionBlock:` van de API.
+De volgende code fragmenten bevatten voor beelden van het gebruik van de `getDeviceInformationWithParameters:completionBlock:` API.
 
 #### <a name="swift"></a>Swift
 
@@ -128,7 +128,7 @@ application.getDeviceInformation(with: nil, completionBlock: { (deviceInformatio
 
 Een ander belang rijk onderdeel van de ondersteunende modus voor gedeelde apparaten is het bepalen van de status van de gebruiker op het apparaat en het wissen van toepassings gegevens als een gebruiker heeft gewijzigd of als er op het apparaat geen gebruiker aanwezig is. U bent zelf verantwoordelijk voor het garanderen van gegevens die niet aan een andere gebruiker worden gelekt.
 
-U kunt API `getCurrentAccountWithParameters:completionBlock:` gebruiken om een query uit te zoeken op het account dat momenteel is aangemeld op het apparaat.
+U kunt `getCurrentAccountWithParameters:completionBlock:` API gebruiken om een query uit te zoeken op het account dat momenteel is aangemeld op het apparaat.
 
 #### <a name="swift"></a>Swift
 
@@ -159,7 +159,7 @@ parameters.completionBlockQueue = dispatch_get_main_queue();
 
 ### <a name="globally-sign-in-a-user"></a>Wereld wijd aanmelden bij een gebruiker
 
-Wanneer een apparaat is geconfigureerd als een gedeeld apparaat, kan uw toepassing de `acquireTokenWithParameters:completionBlock:` API aanroepen om het account aan te melden. Het account is wereld wijd beschikbaar voor alle apps die in aanmerking komen op het apparaat na de eerste app-ondertekening in het account.
+Wanneer een apparaat is geconfigureerd als een gedeeld apparaat, kan uw toepassing de API aanroepen `acquireTokenWithParameters:completionBlock:` om het account aan te melden. Het account is wereld wijd beschikbaar voor alle apps die in aanmerking komen op het apparaat na de eerste app-ondertekening in het account.
 
 #### <a name="objective-c"></a>Objective-C
 

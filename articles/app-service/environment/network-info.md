@@ -8,10 +8,10 @@ ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 4aec7fa78292f224952dd2ae929d2b8bfd97ab9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80477687"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Netwerkoverwegingen voor een App Service-omgeving #
@@ -43,7 +43,7 @@ Als u een ILB ASE hebt, is het adres van het ILB-adres het eind punt voor HTTP/S
 De grootte van het subnet dat wordt gebruikt voor het hosten van een ASE kan niet worden gewijzigd nadat de ASE is geïmplementeerd.  De ASE maakt gebruik van een adres voor elke infrastructuur functie en voor elk exemplaar van de geïsoleerde App Service-abonnement.  Daarnaast zijn er vijf adressen die worden gebruikt door Azure-netwerken voor elk subnet dat wordt gemaakt.  Voor een ASE zonder App Service-abonnementen worden 12 adressen gebruikt voordat u een app maakt.  Als het een ILB-ASE is, worden er 13 adressen gebruikt voordat u een app maakt in die ASE. Wanneer u uw ASE uitbreidt, worden de infrastructuur rollen toegevoegd elke meervoud van 15 en 20 van uw App Service-abonnement.
 
    > [!NOTE]
-   > Niets anders kan zich in het subnet bevinden, maar de ASE. Zorg ervoor dat u een adres ruimte kiest voor toekomstige groei. U kunt deze instelling later niet meer wijzigen. U kunt het beste een `/24` grootte van met 256-adressen aanraden.
+   > Niets anders kan zich in het subnet bevinden, maar de ASE. Zorg ervoor dat u een adres ruimte kiest voor toekomstige groei. U kunt deze instelling later niet meer wijzigen. U kunt het beste een grootte van `/24` met 256-adressen aanraden.
 
 Wanneer u omhoog of omlaag schaalt, worden nieuwe rollen van de juiste grootte toegevoegd. vervolgens worden uw workloads van de huidige grootte gemigreerd naar de doel grootte. De oorspronkelijke Vm's worden alleen verwijderd nadat de werk belastingen zijn gemigreerd. Als u een ASE met 100 ASP-exemplaren had, is er een periode waarin u het aantal Vm's moet verdubbelen.  Daarom wordt u aangeraden een '/24 ' te gebruiken voor alle wijzigingen die u mogelijk nodig hebt.  
 
@@ -90,7 +90,7 @@ De ASE communiceert met internet toegankelijke adressen op de volgende poorten:
 | NTP | 123 |
 | CRL, Windows-updates, Linux-afhankelijkheden, Azure-Services | 80/443 |
 | Azure SQL | 1433 | 
-| Bewaking | 12000 |
+| Controleren | 12000 |
 
 De uitgaande afhankelijkheden worden weer gegeven in het document met een beschrijving van het [vergren delen van app service Environment uitgaand verkeer](./firewall-integration.md). Als de ASE geen toegang meer heeft tot de afhankelijkheden, werkt deze niet meer. Wanneer dit lang genoeg duurt, wordt de ASE onderbroken. 
 
@@ -112,7 +112,7 @@ Naast de functionele afhankelijkheden van ASE zijn er enkele extra items die bet
 -   Functions
 -   Logboek streaming
 -   Kudu
--   Uitbreidingen
+-   Extensies
 -   Proces Verkenner
 -   Console
 
@@ -177,9 +177,9 @@ Wanneer rekening wordt gehouden met de inkomende en uitgaande vereisten, moet de
 
 ![Inkomende beveiligingsregels][4]
 
-Met een standaard regel kunnen de IP-adressen in het VNet worden gecommuniceerd met het ASE-subnet. Een andere standaard regel maakt het load balancer, ook wel bekend als de open bare VIP, om te communiceren met de ASE. Als u de standaard regels wilt zien, selecteert u **standaard regels** naast het pictogram **toevoegen** . Als u voor de standaard regels een andere regel voor het weigeren van alle gegevens plaatst, voor komt u verkeer tussen de VIP en de ASE. Als u verkeer wilt voor komen dat zich binnen het VNet bevindt, voegt u uw eigen regel toe om binnenkomende verbindingen toe te staan. Gebruik een bron die gelijk is aan AzureLoadBalancer met een doel van **een en een** poort **\*** bereik van. Omdat de NSG-regel wordt toegepast op het ASE-subnet, hoeft u niet specifiek te zijn in het doel.
+Met een standaard regel kunnen de IP-adressen in het VNet worden gecommuniceerd met het ASE-subnet. Een andere standaard regel maakt het load balancer, ook wel bekend als de open bare VIP, om te communiceren met de ASE. Als u de standaard regels wilt zien, selecteert u **standaard regels** naast het pictogram **toevoegen** . Als u voor de standaard regels een andere regel voor het weigeren van alle gegevens plaatst, voor komt u verkeer tussen de VIP en de ASE. Als u verkeer wilt voor komen dat zich binnen het VNet bevindt, voegt u uw eigen regel toe om binnenkomende verbindingen toe te staan. Gebruik een bron die gelijk is aan AzureLoadBalancer met een doel van **een en een poort bereik van** **\*** . Omdat de NSG-regel wordt toegepast op het ASE-subnet, hoeft u niet specifiek te zijn in het doel.
 
-Als u een IP-adres aan uw app hebt toegewezen, moet u ervoor zorgen dat de poorten geopend blijven. Selecteer **app service Environment** > **IP-adressen**om de poorten weer te geven.  
+Als u een IP-adres aan uw app hebt toegewezen, moet u ervoor zorgen dat de poorten geopend blijven. Selecteer **app service Environment**  >  **IP-adressen**om de poorten weer te geven.  
 
 Alle items die worden weer gegeven in de volgende regels voor uitgaande verbindingen, zijn vereist, met uitzonde ring van het laatste item. Ze bieden netwerk toegang tot de ASE-afhankelijkheden die eerder in dit artikel werden vermeld. Als u ze blokkeert, werkt uw ASE niet meer. Met het laatste item in de lijst kan uw ASE communiceren met andere resources in uw VNet.
 
@@ -194,11 +194,11 @@ Geforceerde tunneling is het instellen van routes in uw VNet, zodat het uitgaand
 Wanneer u in de portal een ASE maakt, wordt er ook een set route tabellen gemaakt op het subnet dat is gemaakt met de ASE.  Deze routes zeggen gewoon het verzenden van uitgaand verkeer rechtstreeks naar het internet.  
 Als u dezelfde routes hand matig wilt maken, voert u de volgende stappen uit:
 
-1. Ga naar Azure Portal. Selecteer **netwerk** > **route tabellen**.
+1. Ga naar Azure Portal. Selecteer **netwerk**  >  **route tabellen**.
 
 2. Maak een nieuwe route tabel in dezelfde regio als uw VNet.
 
-3. Selecteer in de gebruikers interface van de route tabel de optie **routes** > **toevoegen**.
+3. Selecteer in de gebruikers interface van de route tabel de optie **routes**  >  **toevoegen**.
 
 4. Stel het **type van de volgende hop** in op **Internet** en het **adres voorvoegsel** op **0.0.0.0/0**. Selecteer **Opslaan**.
 

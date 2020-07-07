@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 0eca73b5acae715283c05125181e12729ed5a772
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335575"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Een symbool laag aan een kaart toevoegen met Azure Maps Android SDK
@@ -27,7 +27,7 @@ Als u de stappen in dit artikel volledig wilt volgen, moet u [Azure Maps ANDROID
 
 Volg de onderstaande stappen om een markering op de kaart toe te voegen met behulp van de Symbol-laag:
 
-1. Bewerk de**indeling** >  **Res** > **activity_main. XML** zodat deze eruitziet als de volgende XML:
+1. **res**  >  **layout**  >  U kunt de indeling van de res bewerken**activity_main.xml** zodat deze eruitziet als de volgende XML:
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -74,7 +74,7 @@ Volg de onderstaande stappen om een markering op de kaart toe te voegen met behu
     
     In het bovenstaande code fragment wordt eerst een exemplaar van Azure Maps kaart besturings element opgehaald met de call back methode **onReady ()** . Vervolgens wordt een gegevens bron object gemaakt met behulp van de klasse **Data Source** en toegevoegd aan de kaart. Vervolgens wordt er een **functie** met een punt geometrie toegevoegd. Vervolgens wordt een rode afbeelding van de markering ingesteld als pictogram voor het symbool. Een **symbool laag** gebruikt tekst of pictogrammen voor het weer geven van op punten gebaseerde gegevens die in de gegevens bron zijn verpakt als symbool op de kaart. Er wordt vervolgens een symbool laag gemaakt en de gegevens bron wordt door gegeven om weer te geven en wordt vervolgens toegevoegd aan de lagen van de kaart.
     
-    Nadat u het code fragment hierboven hebt toegevoegd `MainActivity.java` , ziet uw er als volgt uit:
+    Nadat u het code fragment hierboven hebt toegevoegd, `MainActivity.java` ziet uw er als volgt uit:
     
     ```Java
     package com.example.myapplication;

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 711609f9382e2153cbc738d544933796dbbe2e99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334312"
 ---
 # <a name="use-the-drawing-tools-module"></a>De module voor tekenprogramma's gebruiken
@@ -23,18 +23,18 @@ De Azure Maps Web-SDK bevat een *module voor teken hulpprogramma's*. Met deze mo
 
 1. Maak een nieuw HTML-bestand en [Implementeer de kaart zoals gebruikelijk](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
 2. Laad de module Azure Maps drawing tools. U kunt deze op twee manieren laden:
-    - Gebruik de wereld wijd gehoste Azure Content Delivery Network-versie van de module Azure Maps Services. Voeg verwijzing naar het opmaak model java script en CSS `<head>` toe aan het element van het bestand:
+    - Gebruik de wereld wijd gehoste Azure Content Delivery Network-versie van de module Azure Maps Services. Voeg verwijzing naar het opmaak model java script en CSS toe aan het `<head>` element van het bestand:
 
         ```html
         <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.css" type="text/css" />
         <script src="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.js"></script>
         ```
 
-    - U kunt ook de module teken hulpprogramma's voor de Azure Maps Web SDK-bron code lokaal laden met behulp van het NPM-pakket [Azure-Maps-drawing tools](https://www.npmjs.com/package/azure-maps-drawing-tools) en het vervolgens hosten met uw app. Dit pakket bevat ook type script definities. Gebruik deze opdracht:
+    - U kunt ook de module teken hulpprogramma's voor de Azure Maps Web SDK-bron code lokaal laden met behulp van het NPM-pakket [Azure-Maps-drawing tools](https://www.npmjs.com/package/azure-maps-drawing-tools) en het vervolgens hosten met uw app. Dit pakket bevat ook TypeScript-definities. Gebruik deze opdracht:
     
         > **NPM Azure-Maps-draw-tools installeren**
     
-        Voeg vervolgens een verwijzing naar het opmaak model java script en CSS in `<head>` het element van het bestand toe:
+        Voeg vervolgens een verwijzing naar het opmaak model java script en CSS in het `<head>` element van het bestand toe:
 
          ```html
         <link rel="stylesheet" href="node_modules/azure-maps-drawing-tools/dist/atlas-drawing.min.css" type="text/css" />
@@ -43,7 +43,7 @@ De Azure Maps Web-SDK bevat een *module voor teken hulpprogramma's*. Met deze mo
 
 ## <a name="use-the-drawing-manager-directly"></a>De tekening Manager rechtstreeks gebruiken
 
-Zodra de module voor teken hulpprogramma's in uw toepassing is geladen, kunt u teken-en bewerk mogelijkheden inschakelen met behulp van de [tekening beheerder](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-). U kunt opties voor de tekening beheerder opgeven tijdens het instantiëren of de `drawingManager.setOptions()` functie gebruiken.
+Zodra de module voor teken hulpprogramma's in uw toepassing is geladen, kunt u teken-en bewerk mogelijkheden inschakelen met behulp van de [tekening beheerder](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-). U kunt opties voor de tekening beheerder opgeven tijdens het instantiëren of de functie gebruiken `drawingManager.setOptions()` .
 
 ### <a name="set-the-drawing-mode"></a>De teken modus instellen
 
@@ -61,7 +61,7 @@ De onderstaande code is een volledig actief voor beeld van het instellen van een
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Een veelhoek tekenen" src="//codepen.io/azuremaps/embed/YzKVKRa/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Bekijk de pen <a href='https://codepen.io/azuremaps/pen/YzKVKRa/'>een veelhoek</a> op Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+Bekijk de pen <a href='https://codepen.io/azuremaps/pen/YzKVKRa/'>een veelhoek</a> op Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
@@ -73,7 +73,7 @@ De tekening beheerder ondersteunt drie verschillende manieren van interactie met
 * `freehand `-Coördinaten worden toegevoegd wanneer de muis of het aanraak scherm op de kaart wordt gesleept. 
 * `hybrid`-Coördinaten worden toegevoegd wanneer de muis of het aanraken wordt geklikt of gesleept.
 
-Met de volgende code wordt de teken modus veelhoek ingeschakeld en wordt het type teken interactie ingesteld waaraan de tekening manager moet voldoen `freehand`. 
+Met de volgende code wordt de teken modus veelhoek ingeschakeld en wordt het type teken interactie ingesteld waaraan de tekening manager moet voldoen `freehand` . 
 
 ```Javascript
 //Create an instance of the drawing manager and set drawing mode.
@@ -88,7 +88,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Vrije hand tekening" src="//codepen.io/azuremaps/embed/ZEzKoaj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zie Azure Maps () op <a href='https://codepen.io'>CodePen</a>(<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op de pen voor een <a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'>vrije hand tekening</a> .
+Zie Azure Maps () op CodePen () op de pen voor een <a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'>vrije hand tekening</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
@@ -98,7 +98,7 @@ In de vorige voor beelden wordt uitgelegd hoe u teken opties kunt aanpassen tijd
 
 <br/>
 
-<iframe height="685" title="Drawing Manager aanpassen" src="//codepen.io/azuremaps/embed/LYPyrxR/?height=600&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/LYPyrxR/'>Get Shape Data</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height="685" title="Drawing Manager aanpassen" src="//codepen.io/azuremaps/embed/LYPyrxR/?height=600&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/LYPyrxR/'>Get Shape Data</a> by Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 

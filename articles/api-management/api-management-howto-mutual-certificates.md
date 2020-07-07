@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
 ms.openlocfilehash: b0ddf6dda99ee666e3052b5a70e51c7e4208a374
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80347105"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Back-endservices beveiligen met behulp van verificatie via clientcertificaten in Azure API Management
@@ -46,7 +46,7 @@ Volg de onderstaande stappen om een nieuw client certificaat te uploaden. Als u 
 3. Klik op de knop **+ Toevoegen**.
     ![Client certificaten toevoegen](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
 4. Blader naar het certificaat en geef de ID en het wacht woord op.
-5. Klik op **maken**.
+5. Klik op **Create**.
 
 > [!NOTE]
 > Het certificaat moet de indeling **. pfx** hebben. Zelfondertekende certificaten zijn toegestaan.
@@ -86,7 +86,7 @@ Als het certificaat wordt gebruikt door een API, wordt er een waarschuwings sche
 
 ## <a name="self-signed-certificates"></a>Zelfondertekende certificaten
 
-Als u zelfondertekende certificaten gebruikt, moet u validatie van de certificaat keten uitschakelen om API Management te communiceren met het back-end-systeem. Anders wordt er een fout code van 500 geretourneerd. Als u dit wilt configureren, kunt u [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) de (voor nieuwe back-end [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) ) of (voor bestaande back-end) Power shell- `-SkipCertificateChainValidation` cmdlets `True`gebruiken en de para meter instellen op.
+Als u zelfondertekende certificaten gebruikt, moet u validatie van de certificaat keten uitschakelen om API Management te communiceren met het back-end-systeem. Anders wordt er een fout code van 500 geretourneerd. Als u dit wilt configureren, kunt u de [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (voor nieuwe back-end) of [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (voor bestaande back-end) Power shell-cmdlets gebruiken en de `-SkipCertificateChainValidation` para meter instellen op `True` .
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'

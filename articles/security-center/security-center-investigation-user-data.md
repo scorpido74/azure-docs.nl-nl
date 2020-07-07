@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
 ms.openlocfilehash: aa262b0be3902f6e143a53f8f1302156fc5aede6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582986"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Gebruikers gegevens beheren die zijn gevonden in een Azure Security Center onderzoek
@@ -38,14 +38,14 @@ Zie [ingebouwde rollen voor op rollen gebaseerd toegangs beheer voor Azure](../r
 ## <a name="deleting-personal-data"></a>Persoonlijke gegevens verwijderen
 Een Security Center gebruiker aan wie de rol van eigenaar, bijdrager of account beheerder is toegewezen, kan de onderzoek gegevens verwijderen.
 
-Als u een onderzoek wilt verwijderen, kunt u `DELETE` een aanvraag indienen bij de Azure Resource Manager rest API:
+Als u een onderzoek wilt verwijderen, kunt u een `DELETE` aanvraag indienen bij de Azure Resource Manager rest API:
 
 ```HTTP
 DELETE
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/features/security/incidents/{incidentName}
 ```
 
-U `incidentName` kunt de invoer vinden door alle incidenten te vermelden `GET` met behulp van een aanvraag:
+`incidentName`U kunt de invoer vinden door alle incidenten te vermelden met behulp van een `GET` aanvraag:
 
 ```HTTP
 GET

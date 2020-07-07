@@ -8,10 +8,10 @@ ms.date: 06/17/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: 50e2666aa533a5111055a095c612b58bfe6f9db4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80546702"
 ---
 # <a name="security-recommendations-for-app-service"></a>Beveiligings aanbevelingen voor App Service
@@ -33,7 +33,7 @@ Dit artikel bevat beveiligings aanbevelingen voor Azure App Service. Als u deze 
 | Back-end-bronnen beveiligen met geverifieerde toegang | U kunt de identiteit van de gebruiker gebruiken of een toepassings-id gebruiken om een back-end-bron te verifiëren. Wanneer u ervoor kiest om een toepassings-id te gebruiken, moet u een [beheerde identiteit](overview-managed-identity.md)gebruiken.
 | Verificatie van client certificaat vereisen | Verificatie van client certificaten verbetert de beveiliging door alleen verbindingen toe te staan van clients die kunnen worden geverifieerd met behulp van door u verstrekte certificaten. |
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 | Aanbeveling | Opmerkingen |
 |-|-|
@@ -52,7 +52,7 @@ Dit artikel bevat beveiligings aanbevelingen voor Azure App Service. Als u deze 
 | Beveiligde verbindingen gebruiken voor toegang tot on-premises resources | U kunt [hybride verbindingen](app-service-hybrid-connections.md), [Virtual Network integratie](web-sites-integrate-with-vnet.md)of [app service omgeving](environment/intro.md) gebruiken om verbinding te maken met on-premises resources. |
 | Beperk de bloot stelling aan binnenkomend netwerk verkeer | Met netwerk beveiligings groepen kunt u netwerk toegang beperken en het aantal weer gegeven eind punten beheren. Zie voor meer informatie [inkomend verkeer naar een app service Environment beheren](environment/app-service-app-service-environment-control-inbound-traffic.md). |
 
-## <a name="monitoring"></a>Bewaking
+## <a name="monitoring"></a>Controleren
 
 | Aanbeveling | Opmerkingen |
 |-|-|

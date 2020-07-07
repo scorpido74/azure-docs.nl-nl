@@ -7,10 +7,10 @@ ms.date: 04/01/2020
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 6547bcf2061213cd01550367171d432900693ea5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80584135"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Replicatie naar Azure inschakelen voor virtuele VMware-machines
@@ -49,7 +49,7 @@ Houd bij het repliceren van virtuele VMware-machines de volgende informatie in a
 
 Lees de volgende informatie voordat u de stappen in deze sectie uitvoert:
 
-- Azure Site Recovery wordt nu rechtstreeks gerepliceerd naar Managed disks voor alle nieuwe replicaties. De proces server schrijft replicatie logboeken naar een cache-opslag account in de doel regio. Deze logboeken worden gebruikt voor het maken van herstel punten in replica Managed disks `asrseeddisk`met een naam Conventie van.
+- Azure Site Recovery wordt nu rechtstreeks gerepliceerd naar Managed disks voor alle nieuwe replicaties. De proces server schrijft replicatie logboeken naar een cache-opslag account in de doel regio. Deze logboeken worden gebruikt voor het maken van herstel punten in replica Managed disks met een naam Conventie van `asrseeddisk` .
 - Power Shell-ondersteuning voor replicatie naar Managed disks is beschikbaar vanaf [AZ. Recovery Services module versie 2.0.0](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview)
 - Op het moment van de failover wordt het door u geselecteerde herstel punt gebruikt voor het maken van de doel-beheerde schijf.
 - Vm's die eerder zijn geconfigureerd om te worden gerepliceerd naar doel opslag accounts, worden niet beïnvloed.
@@ -57,7 +57,7 @@ Lees de volgende informatie voordat u de stappen in deze sectie uitvoert:
 
 Voer de volgende stappen uit om replicatie in te scha kelen:
 
-1. Ga naar **stap 2: toepassings** > **bron**repliceren. Nadat u replicatie voor de eerste keer hebt ingeschakeld, selecteert u **+ repliceren** in de kluis om replicatie in te scha kelen voor aanvullende virtuele machines.
+1. Ga naar **stap 2: toepassings**  >  **bron**repliceren. Nadat u replicatie voor de eerste keer hebt ingeschakeld, selecteert u **+ repliceren** in de kluis om replicatie in te scha kelen voor aanvullende virtuele machines.
 1. Selecteer de configuratie server in de **bron** pagina > **bron**.
 1. Selecteer bij **computer type** **virtual machines** of **fysieke machines**.
 1. Selecteer in **vCenter/vSphere-hypervisor** de vCenter-server waarmee de vSphere-host wordt beheerd, of selecteer de host. Deze instelling is niet relevant als u fysieke computers repliceert.
@@ -75,16 +75,16 @@ Voer de volgende stappen uit om replicatie in te scha kelen:
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-rep3.png" alt-text="Venster replicatie doel inschakelen":::
 
-1. Voor **virtuele machines** > **selecteert u virtuele machines**, selecteert u elke virtuele machine die u wilt repliceren. U kunt alleen virtuele machines selecteren waarvoor replicatie kan worden ingeschakeld. Selecteer vervolgens **OK**. Als u een bepaalde virtuele machine niet kunt zien of selecteren, Zie [bron machine wordt niet vermeld in de Azure Portal](vmware-azure-troubleshoot-replication.md#step-3-troubleshoot-source-machines-that-arent-available-for-replication) om het probleem op te lossen.
+1. Voor **virtuele machines**  >  **selecteert u virtuele machines**, selecteert u elke virtuele machine die u wilt repliceren. U kunt alleen virtuele machines selecteren waarvoor replicatie kan worden ingeschakeld. Selecteer vervolgens **OK**. Als u een bepaalde virtuele machine niet kunt zien of selecteren, Zie [bron machine wordt niet vermeld in de Azure Portal](vmware-azure-troubleshoot-replication.md#step-3-troubleshoot-source-machines-that-arent-available-for-replication) om het probleem op te lossen.
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication5.png" alt-text="Replicatie inschakelen voor het venster virtuele machines selecteren":::
 
-1. Selecteer voor **Eigenschappen** > **eigenschappen configureren**het account dat door de proces server wordt gebruikt om automatisch de site Recovery Mobility-service op de VM te installeren. Kies ook het type doel-beheerde schijf dat moet worden gebruikt voor replicatie op basis van uw gegevens verloop patronen.
+1. Selecteer voor **Eigenschappen**  >  **eigenschappen configureren**het account dat door de proces server wordt gebruikt om automatisch de site Recovery Mobility-service op de VM te installeren. Kies ook het type doel-beheerde schijf dat moet worden gebruikt voor replicatie op basis van uw gegevens verloop patronen.
 1. Standaard worden alle schijven van een bron-VM gerepliceerd. Als u schijven wilt uitsluiten van replicatie, schakelt u het selectie vakje **opnemen** uit voor schijven die u niet wilt repliceren. Selecteer vervolgens **OK**. Later kunt u eventueel extra eigenschappen instellen. Meer [informatie](vmware-azure-exclude-disk.md) over het uitsluiten van schijven.
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication6.png" alt-text="Het venster Eigenschappen voor replicatie configureren inschakelen":::
 
-1. Controleer of het juiste replicatie beleid is geselecteerd in **replicatie-instellingen** > **replicatie-instellingen configureren**. U kunt de instellingen voor het replicatie beleid wijzigen bij **instellingen** > **replicatie beleid** > _beleids naam_ > **Instellingen bewerken**. Wijzigingen die worden toegepast op een beleid, zijn ook van toepassing op replicatie en nieuwe virtuele machines.
+1. **Replication settings**  >  Controleer of het juiste replicatie beleid is geselecteerd in replicatie-instellingen**replicatie-instellingen configureren**. U kunt de instellingen voor het replicatie beleid wijzigen bij **instellingen**  >  **replicatie beleid**  >  _beleids naam_  >  **Instellingen bewerken**. Wijzigingen die worden toegepast op een beleid, zijn ook van toepassing op replicatie en nieuwe virtuele machines.
 1. Als u virtuele machines in een replicatie groep wilt verzamelen, schakelt u **consistentie tussen meerdere vm's**in. Geef een naam op voor de groep en selecteer **OK**.
 
    > [!NOTE]
@@ -93,15 +93,15 @@ Voer de volgende stappen uit om replicatie in te scha kelen:
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="Replicatie venster inschakelen":::
 
-1. Selecteer **Replicatie inschakelen**. U kunt de voortgang van de taak **beveiliging inschakelen** bij **instellingen** > **taken** > **site Recovery taken**volgen. Nadat de taak **beveiliging volt ooien** is uitgevoerd, is de virtuele machine klaar voor failover.
+1. Selecteer **Replicatie inschakelen**. U kunt de voortgang van de taak **beveiliging inschakelen** bij **instellingen**  >  **taken**  >  **site Recovery taken**volgen. Nadat de taak **beveiliging volt ooien** is uitgevoerd, is de virtuele machine klaar voor failover.
 
 ## <a name="view-and-manage-vm-properties"></a>Eigenschappen van virtuele machines weergeven en beheren
 
 Controleer vervolgens de eigenschappen van de virtuele bron machine. Houd er rekening mee dat de Azure VM-naam moet voldoen aan de vereisten van de [virtuele Azure-machine](vmware-physical-azure-support-matrix.md#replicated-machines).
 
-1. Ga naar **instellingen** > **gerepliceerde items**en selecteer de virtuele machine. Op de pagina **Essentials** vindt u informatie over de instellingen en status van de virtuele machine.
+1. Ga naar **instellingen**  >  **gerepliceerde items**en selecteer de virtuele machine. Op de pagina **Essentials** vindt u informatie over de instellingen en status van de virtuele machine.
 1. In **Eigenschappen**kunt u de replicatie-en failover-informatie voor de virtuele machine weer geven.
-1. In **Compute-en Network** > **compute properties**kunt u meerdere VM-eigenschappen wijzigen.
+1. In **Compute-en Network**  >  **compute properties**kunt u meerdere VM-eigenschappen wijzigen.
 
    :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="Venster Eigenschappen van Compute en netwerk":::
 

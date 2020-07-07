@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 2eafe3c16a89723d55ec52fde785e9ec69e45e0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334042"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps ondersteunde kaart stijlen
@@ -34,7 +34,7 @@ Een **wegkaart is een standaard** kaart met wegen, natuurlijke en kunst matige f
 De **lege** en **blank_accessible** kaart stijlen bieden een leeg canvas waarop gegevens kunnen worden gevisualiseerd. De **blank_accessible** stijl blijft scherm lezers-updates bieden met de locatie Details van de kaart, ook al wordt de basis toewijzing niet weer gegeven.
 
 > [!Note]
-> In de Web-SDK kunt u de achtergrond kleur van de kaart wijzigen door de CSS `background-color` -stijl van het element map div in te stellen.
+> In de Web-SDK kunt u de achtergrond kleur van de kaart wijzigen door de CSS- `background-color` stijl van het element map div in te stellen.
 
 **Toepasselijke Api's:**
 * Web SDK-kaart besturings element

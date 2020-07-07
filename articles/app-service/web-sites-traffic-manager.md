@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 02/25/2016
 ms.custom: seodec18
 ms.openlocfilehash: 040f84288c66f4506919e775b9ea41324b617cfa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80437901"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Azure App Service verkeer beheren met Azure Traffic Manager
@@ -40,7 +40,7 @@ Houd bij het gebruik van Azure Traffic Manager met Azure de volgende punten in a
 * Voor implementaties in dezelfde regio die gebruikmaken van App Service in combi natie met een andere Azure-Cloud service, kunt u beide typen eind punten combi neren om hybride scenario's in te scha kelen.
 * U kunt slechts één App Service eind punt per regio in een profiel opgeven. Wanneer u een app als een eind punt voor één regio selecteert, zijn de resterende apps in die regio niet meer beschikbaar voor selectie voor dat profiel.
 * De App Service-eind punten die u opgeeft in een Azure Traffic Manager-profiel, worden weer gegeven onder de sectie **domein namen** op de pagina configureren voor de app in het profiel, maar kan daar niet worden geconfigureerd.
-* Nadat u een app aan een profiel hebt toegevoegd, wordt in de **site-URL** op het dash board van de portal pagina van de app de aangepaste domein-URL van de app weer gegeven als u er een hebt ingesteld. Anders wordt de URL van het Traffic Manager profiel weer gegeven (bijvoorbeeld `contoso.trafficmanager.net`). Zowel de directe domein naam van de app als de URL van de Traffic Manager worden weer gegeven op de pagina configureren van de app in de sectie **domein namen** .
+* Nadat u een app aan een profiel hebt toegevoegd, wordt in de **site-URL** op het dash board van de portal pagina van de app de aangepaste domein-URL van de app weer gegeven als u er een hebt ingesteld. Anders wordt de URL van het Traffic Manager profiel weer gegeven (bijvoorbeeld `contoso.trafficmanager.net` ). Zowel de directe domein naam van de app als de URL van de Traffic Manager worden weer gegeven op de pagina configureren van de app in de sectie **domein namen** .
 * Uw aangepaste domein namen werken zoals verwacht, maar u kunt ze niet alleen toevoegen aan uw apps als u uw DNS-map zo configureert dat deze verwijst naar de Traffic Manager URL. Zie [een aangepaste domein naam configureren in azure app service met Traffic manager-integratie](configure-domain-traffic-manager.md)voor meer informatie over het instellen van een aangepast domein voor een app service-app.
 * U kunt alleen apps in de modus Standard of Premium toevoegen aan een Azure Traffic Manager-profiel.
 * Als u een app toevoegt aan een Traffic Manager profiel, wordt de app opnieuw gestart.

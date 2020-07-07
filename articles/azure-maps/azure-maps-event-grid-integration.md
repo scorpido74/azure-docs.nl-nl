@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 9c9483af191e5439af0c0b5e433187d6475c178c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335716"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>Reageren op Azure Maps gebeurtenissen met behulp van Event Grid 
@@ -82,7 +82,7 @@ Toepassingen die Azure Maps geofence-gebeurtenissen afhandelen, moeten een aanta
 
 * Meerdere abonnementen configureren voor het door sturen van gebeurtenissen naar dezelfde gebeurtenis-handler. Het is belang rijk dat u ervan uitgaat dat gebeurtenissen van een bepaalde bron afkomstig zijn. Controleer altijd het onderwerp bericht om er zeker van te zijn dat het bericht afkomstig is van de bron die u verwacht.
 * Gebruik het `X-Correlation-id` veld in de antwoord header om te begrijpen of uw informatie over objecten up-to-date is. Berichten kunnen buiten de juiste volg orde of na een vertraging arriveren.
-* Wanneer een GET-of POST-aanvraag in de geofence-API wordt aangeroepen met de para meter `EnterAndExit`mode ingesteld op, wordt er een Enter-of exit-gebeurtenis gegenereerd voor elke geometrie in de geofence waarvoor de status is gewijzigd ten opzichte van de vorige GEOfence API-aanroep.
+* Wanneer een GET-of POST-aanvraag in de geofence-API wordt aangeroepen met de para meter mode ingesteld op `EnterAndExit` , wordt er een Enter-of exit-gebeurtenis gegenereerd voor elke geometrie in de geofence waarvoor de status is gewijzigd ten opzichte van de vorige geofence API-aanroep.
 
 ## <a name="next-steps"></a>Volgende stappen
 

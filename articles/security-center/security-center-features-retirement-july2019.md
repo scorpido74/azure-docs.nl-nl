@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 4a760fe1e5df7cf614a68f8fa8a05926326d3edf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80583221"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Buiten gebruik stellen van Security Center-functies (2019 juli)
@@ -53,7 +53,7 @@ Het dash board gebeurtenissen dat werd weer gegeven toen u een werk ruimte heb g
 
 We raden u aan de systeem eigen mogelijkheden van Azure Log Analytics te gebruiken om de belangrijkste gebeurtenissen in uw werk ruimten te bekijken.
 
-Als u aangepaste gebeurtenissen in Security Center hebt gemaakt, zijn deze toegankelijk. Ga in log Analytics naar **Selecteer werk ruimte** > **opgeslagen Zoek opdrachten**. Uw gegevens gaan verloren of worden niet gewijzigd. Systeem eigen gebeurtenissen zijn ook beschikbaar in hetzelfde scherm in Log Analytics.
+Als u aangepaste gebeurtenissen in Security Center hebt gemaakt, zijn deze toegankelijk. Ga in log Analytics naar **Selecteer werk ruimte**  >  **opgeslagen Zoek opdrachten**. Uw gegevens gaan verloren of worden niet gewijzigd. Systeem eigen gebeurtenissen zijn ook beschikbaar in hetzelfde scherm in Log Analytics.
 
 ![Opgeslagen Zoek opdrachten in werk ruimte][3]
 

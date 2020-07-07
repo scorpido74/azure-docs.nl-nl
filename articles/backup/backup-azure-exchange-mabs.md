@@ -5,10 +5,10 @@ ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.openlocfilehash: 1d7d28d813df82a5e1ea0fe424bba2ef5a9a2684
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80421337"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Een back-up maken van een Exchange-Server naar Azure met Azure Backup Server
@@ -53,7 +53,7 @@ Voer de volgende stappen uit om de MABS-beveiligings agent te installeren op de 
     Nadat u deze optie hebt geselecteerd, wordt de consistentie controle van de back-up op MABS uitgevoerd om te voor komen dat het I/O-verkeer dat wordt gegenereerd door de opdracht **Eseutil** uit te voeren op de Exchange-Server.
 
    > [!NOTE]
-   > Als u deze optie wilt gebruiken, moet u de bestanden ESE. dll en Eseutil. exe kopiëren naar de map C:\Program Files\Microsoft Azure Backup\DPM\DPM\bin op de MABS-server. Anders wordt de volgende fout geactiveerd:  
+   > Als u deze optie wilt gebruiken, moet u de Ese.dll-en Eseutil.exe-bestanden kopiëren naar de map C:\Program Files\Microsoft Azure Backup\DPM\DPM\bin op de MABS-server. Anders wordt de volgende fout geactiveerd:  
    > ![Eseutil-fout](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >

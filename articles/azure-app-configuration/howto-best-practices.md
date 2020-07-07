@@ -13,10 +13,10 @@ ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
 ms.openlocfilehash: df56f53b64a35737700529b80c004efeb31eaabc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80348663"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Aanbevolen procedures voor Azure-app configuratie
@@ -32,7 +32,7 @@ App-configuratie biedt twee opties voor het ordenen van sleutels:
 
 U kunt een of beide opties gebruiken om uw sleutels te groeperen.
 
-*Sleutel voorvoegsels* zijn de begin onderdelen van sleutels. U kunt een set sleutels logisch groeperen met behulp van hetzelfde voor voegsel in hun namen. Voor voegsels kunnen meerdere onderdelen bevatten die zijn verbonden met een scheidings `/`teken, zoals, vergelijkbaar met een URL-pad, om een naam ruimte te vormen. Dergelijke hiërarchieën zijn handig wanneer u sleutels opslaat voor veel toepassingen, Component Services en omgevingen in één app-configuratie opslag.
+*Sleutel voorvoegsels* zijn de begin onderdelen van sleutels. U kunt een set sleutels logisch groeperen met behulp van hetzelfde voor voegsel in hun namen. Voor voegsels kunnen meerdere onderdelen bevatten die zijn verbonden met een scheidings teken, zoals `/` , vergelijkbaar met een URL-pad, om een naam ruimte te vormen. Dergelijke hiërarchieën zijn handig wanneer u sleutels opslaat voor veel toepassingen, Component Services en omgevingen in één app-configuratie opslag.
 
 Het is belang rijk om ervoor te zorgen dat sleutels uw toepassings code bevat om de waarden van de overeenkomstige instellingen op te halen. Sleutels mogen niet worden gewijzigd, anders moet u de code altijd wijzigen.
 
@@ -62,7 +62,7 @@ configBuilder.AddAzureAppConfiguration(options => {
 
 Als u toegang wilt krijgen tot een app-configuratie archief, kunt u de bijbehorende connection string gebruiken, die beschikbaar is in de Azure Portal. Omdat verbindings reeksen referentie gegevens bevatten, worden ze beschouwd als geheimen. Deze geheimen moeten worden opgeslagen in Azure Key Vault en uw code moet worden geverifieerd bij Key Vault om ze op te halen.
 
-Een betere optie is het gebruik van de functie Managed Identities in Azure Active Directory. Met beheerde identiteiten hebt u alleen de app configuratie-eind punt-URL nodig om de Boots trap toegang te geven tot uw app-configuratie archief. U kunt de URL insluiten in uw toepassings code (bijvoorbeeld in het bestand *appSettings. json* ). Zie [integreren met door Azure beheerde identiteiten](howto-integrate-azure-managed-service-identity.md) voor meer informatie.
+Een betere optie is het gebruik van de functie Managed Identities in Azure Active Directory. Met beheerde identiteiten hebt u alleen de app configuratie-eind punt-URL nodig om de Boots trap toegang te geven tot uw app-configuratie archief. U kunt de URL insluiten in de code van uw toepassing (bijvoorbeeld in de *appsettings.jsin* het bestand). Zie [integreren met door Azure beheerde identiteiten](howto-integrate-azure-managed-service-identity.md) voor meer informatie.
 
 ## <a name="app-or-function-access-to-app-configuration"></a>App of functie toegang tot de app-configuratie
 

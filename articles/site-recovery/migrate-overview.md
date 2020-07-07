@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: a7107eae5c798deb78d4d35eccdf4adcf5273335
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80388896"
 ---
 # <a name="about-migration"></a>Info over migratie
@@ -40,9 +40,9 @@ Naast het gebruik van Site Recovery voor herstel na nood gevallen van on-premise
 - Voor migratie repliceert u on-premises machines naar Azure of Azure-Vm's naar een secundaire regio. Vervolgens voert u de virtuele machine van de primaire site naar de secundaire uit en voltooit u het migratie proces. Hierbij is geen failback betrokken.  
 
 
-## <a name="migration-scenarios"></a> Migratiescenario's
+## <a name="migration-scenarios"></a>Migratiescenario's
 
-**Scenario** | **Nadere**
+**Scenario** | **Details**
 --- | ---
 **Migreren vanaf on-premises machines naar Azure** | U kunt on-premises VMware-Vm's, virtuele Hyper-V-machines en fysieke servers naar Azure migreren. Hiervoor moet u bijna dezelfde stappen uitvoeren als voor een volledig herstel na nood gevallen. U kunt geen computers van Azure terugsturen naar de on-premises site.
 **Migreren tussen Azure-regio's** | U kunt virtuele Azure-machines van de ene Azure-regio naar de andere migreren. Nadat de migratie is voltooid, kunt u herstel na nood gevallen configureren voor de virtuele Azure-machines in de secundaire regio waarnaar u hebt gemigreerd.

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: mvc
 ms.openlocfilehash: 7bd781a21a32ca29fe3f5dd2f4432dbf1e5ca411
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80292147"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>API Management integreren met Service Fabric in azure
@@ -29,8 +29,8 @@ In dit artikel wordt beschreven hoe u [Azure API Management](../api-management/a
 
 Voordat u begint:
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan
-* Installeer [Azure Power shell](https://docs.microsoft.com/powershell/azure/install-Az-ps) of [Azure cli](/cli/azure/install-azure-cli).
+* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Installeer [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) of [Azure CLI](/cli/azure/install-azure-cli).
 * Maak een beveiligd [Windows-cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) in een netwerk beveiligings groep.
 * Als u een Windows-cluster implementeert, richt u een Windows-ontwikkelomgeving in. Installeer [Visual Studio 2019](https://www.visualstudio.com) en de ontwikkelings-, **ASP.net-en Web**-ontwikkeling van **Azure**en het ontwikkelen van **.net core-** werk belastingen.  Richt vervolgens een [.NET-ontwikkelomgeving in](service-fabric-get-started.md).
 
@@ -134,7 +134,7 @@ Met [Microsoft.ApiManagement/service/apis](/azure/templates/microsoft.apimanagem
 
 * **displayName** kan elke naam zijn voor uw API. Gebruik voor dit artikel ' Service Fabric-app '.
 * **name** is een unieke en beschrijvende naam voor de API, zoals 'service-fabric-app'. Deze naam wordt weergegeven in de portals ontwikkelaars en de uitgever.
-* **serviceUrl** verwijst naar de HTTP-service die de API implementeert. API Management stuurt aanvragen door naar dit adres. De waarde van deze URL wordt niet gebruikt voor Service Fabric-back-ends. U kunt hier elke waarde invoeren. Voor dit artikel, bijvoorbeeld ' http:\//servicefabric '.
+* **serviceUrl** verwijst naar de HTTP-service die de API implementeert. API Management stuurt aanvragen door naar dit adres. De waarde van deze URL wordt niet gebruikt voor Service Fabric-back-ends. U kunt hier elke waarde invoeren. Voor dit artikel, bijvoorbeeld ' http: \/ /servicefabric '.
 * De waarde voor **path** wordt toegevoegd aan de basis-URL voor de API Management-service. De basis-URL is gemeenschappelijk voor alle API's die worden gehost door een exemplaar van API Management-service. In API Management worden API's herkend aan hun achtervoegsel en daarom moet het achtervoegsel uniek zijn voor elke API voor een bepaalde uitgever.
 * **protocols** bepaalt welke protocollen kunnen worden gebruikt om toegang te krijgen tot de API. Voor dit artikel, lijst **http** en **https**.
 * **path** is een achtervoegsel voor de API. Gebruik voor dit artikel ' Mijntoep '.
@@ -147,7 +147,7 @@ Geef deze waarden op als u een API-bewerking voor de front-end wilt toevoegen:
 
 * **displayName** en **description** beschrijven de bewerking. Gebruik voor dit artikel ' Values '.
 * **method** is het HTTP-woord.  Geef voor dit artikel **Get**op.
-* **urlTemplate** wordt toegevoegd aan de basis-URL van de API en identificeert één HTTP-bewerking.  Voor dit artikel gebruikt `/api/values` u als u de .net-back-end `getMessage` -service hebt toegevoegd of als u de Java-back-end-service hebt toegevoegd.  De standaardinstelling is dat het URL-pad dat hier wordt opgegeven, het URL-pad is dat naar de service van Service Fabric in de back-end wordt verzonden. Als u hier het URL-pad opgeeft dat ook door de service wordt gebruikt, zoals '/api/values', werkt de bewerking zonder verdere aanpassingen. U kunt hier ook een URL-pad opgeven dat verschilt van het URL-pad dat wordt gebruikt door de service van Service Fabric in de back-end. In dat geval moet u later ook een opdracht voor wijziging van het pad opgeven in het beleid voor de bewerking.
+* **urlTemplate** wordt toegevoegd aan de basis-URL van de API en identificeert één HTTP-bewerking.  Voor dit artikel gebruikt `/api/values` u als u de .net-back-end-service hebt toegevoegd of `getMessage` Als u de Java-back-end-service hebt toegevoegd.  De standaardinstelling is dat het URL-pad dat hier wordt opgegeven, het URL-pad is dat naar de service van Service Fabric in de back-end wordt verzonden. Als u hier het URL-pad opgeeft dat ook door de service wordt gebruikt, zoals '/api/values', werkt de bewerking zonder verdere aanpassingen. U kunt hier ook een URL-pad opgeven dat verschilt van het URL-pad dat wordt gebruikt door de service van Service Fabric in de back-end. In dat geval moet u later ook een opdracht voor wijziging van het pad opgeven in het beleid voor de bewerking.
 
 ### <a name="microsoftapimanagementserviceapispolicies"></a>Microsoft.ApiManagement/service/apis/policies
 
@@ -303,7 +303,7 @@ Meer informatie over het gebruik van [API Management](/azure/api-management/impo
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png
-Vice-Fabric-scripts-and-templates/BLOB/Master/templates/Service-Integration/Network-APIM. para meters. jsonn
+Vice-Fabric-scripts-en-sjablonen/BLOB/Master/templates/Service-integratie/network-apim.parameters.jsopn
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png

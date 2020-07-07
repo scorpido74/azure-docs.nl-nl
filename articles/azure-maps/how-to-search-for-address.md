@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: cf0e5267885df1ace51271c53bb2d68ee5002f00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335435"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Zoeken naar een locatie met behulp van Azure Maps-Zoek Services
@@ -29,7 +29,7 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de stappen in dit artikel wilt uitvoeren, moet u eerst een Azure Maps-account maken en uw abonnements sleutel voor Maps-accounts ophalen. Volg de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) voor het maken van een abonnement op een Azure Maps-account en volg de stappen in de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
+Als u de stappen in dit artikel wilt uitvoeren, moet u eerst een Azure Maps-account maken en uw abonnements sleutel voor Maps-accounts ophalen. Volg de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) voor het maken van een abonnement op een Azure Maps-account en volg de stappen in de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [Verificatie beheren in Azure Maps](./how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
 
 In dit artikel wordt gebruikgemaakt van de [app postman](https://www.getpostman.com/apps) om rest-aanroepen te bouwen. U kunt elke gewenste API-ontwikkel omgeving gebruiken.
 
@@ -39,7 +39,7 @@ In dit voor beeld gebruiken we Azure Maps [Zoek adres-API ophalen](https://docs.
 
 Als u een reeks adressen naar Geocode hebt, kunt u [post Search Address batch-API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatch) gebruiken om een batch met query's te verzenden in één API-aanroep.
 
-1. Klik in postman op **nieuwe aanvraag** | **Get aanvraag** en geef de naam van de **Zoek opdracht**op.
+1. Klik in postman op **nieuwe aanvraag**  |  **Get aanvraag** en geef de naam van de **Zoek opdracht**op.
 
 2. Op het tabblad opbouw functie selecteert u de methode http **ophalen** , voert u de aanvraag-URL in voor uw API-eind punt en selecteert u een autorisatie protocol, indien van toepassing.
 
@@ -58,7 +58,7 @@ Als u een reeks adressen naar Geocode hebt, kunt u [post Search Address batch-AP
 | Sleutel | Waarde | 
 |------------------|-------------------------| 
 | api-versie | 1.0 | 
-| abonnement-sleutel | \<uw Azure Maps sleutel\> | 
+| abonnement-sleutel | \<your Azure Maps key\> | 
 | query | 400 brede St, Seattle, WA 98109 | 
 
 4. Klik op **verzenden** en controleer de tekst van het antwoord. 
@@ -75,7 +75,7 @@ In dit geval hebt u een volledige adres query opgegeven en krijgt u één result
 
 | Sleutel | Waarde | 
 |-----|------------| 
-| typeahead | waar | 
+| typeahead | true | 
 
 De vlag **typeahead** geeft aan dat de zoek-API van het adres de query als gedeeltelijke invoer behandelt en een matrix van voorspellende waarden retourneert.
 
@@ -83,7 +83,7 @@ De vlag **typeahead** geeft aan dat de zoek-API van het adres de query als gedee
 
 Azure Maps[ fuzzy Search-API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) wordt aanbevolen service te gebruiken wanneer u niet weet wat uw gebruikers invoer zijn voor een zoek opdracht. De API combineert POI-Zoek resultaten (Point of interest) en Geocode ring in een canonieke zoek opdracht met één regel. De API kan bijvoorbeeld invoer van een wille keurige combi natie van adressen of POI verwerken. Het kan ook worden gewogen met een contextuele positie (lat./Lon. paar), volledig beperkt door een coördinaat en RADIUS, of meer in het algemeen zonder enige geo-veranderings anker punt.
 
-De meeste zoek query's zijn `maxFuzzyLevel=1` standaard voor het verkrijgen van prestaties en het verminderen van ongebruikelijke resultaten. Deze standaard waarde kan worden overschreven als nodig per aanvraag door door gegeven te worden `maxFuzzyLevel=2` in `3`de query parameter of.
+De meeste zoek query's zijn standaard voor `maxFuzzyLevel=1` het verkrijgen van prestaties en het verminderen van ongebruikelijke resultaten. Deze standaard waarde kan worden overschreven als nodig per aanvraag door door gegeven te worden in de query parameter `maxFuzzyLevel=2` of `3` .
 
 ### <a name="search-for-an-address-using-fuzzy-search"></a>Zoeken naar een adres met behulp van fuzzy Search
 
@@ -108,7 +108,7 @@ De meeste zoek query's zijn `maxFuzzyLevel=1` standaard voor het verkrijgen van 
     | Sleutel | Waarde |
     |------------------|-------------------------|
     | api-versie | 1.0 |
-    | abonnement-sleutel | \<uw Azure Maps sleutel\> |
+    | abonnement-sleutel | \<your Azure Maps key\> |
     | query | Pizza |
 
 4. Klik op **verzenden** en controleer de tekst van het antwoord.
@@ -143,7 +143,7 @@ Azure Maps [Zoek adres voor reverse-API ophalen]( https://docs.microsoft.com/res
 Als u een set coördinaten locaties hebt voor reverse Geocode, kunt u [post Search Address reverse batch-API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatch) gebruiken om een batch met query's in één API-aanroep te verzenden.
 
 
-1. Klik in postman op **nieuwe aanvraag** | **Get aanvraag** en noem de **Zoek opdracht voor omgekeerde adressen**.
+1. Klik in postman op **nieuwe aanvraag**  |  **Get aanvraag** en noem de **Zoek opdracht voor omgekeerde adressen**.
 
 2. Selecteer op het tabblad opbouw functie de methode http **ophalen** en voer de aanvraag-URL in voor uw API-eind punt.
   
@@ -162,7 +162,7 @@ Als u een set coördinaten locaties hebt voor reverse Geocode, kunt u [post Sear
     | Sleutel | Waarde |
     |------------------|-------------------------|
     | api-versie | 1.0 |
-    | abonnement-sleutel | \<uw Azure Maps sleutel\> |
+    | abonnement-sleutel | \<your Azure Maps key\> |
     | query | 47.591180,-122,332700 |
   
 4. Klik op **verzenden** en controleer de tekst van het antwoord.
@@ -173,7 +173,7 @@ Als u een set coördinaten locaties hebt voor reverse Geocode, kunt u [post Sear
 
     | Sleutel | Waarde |
     |-----|------------|
-    | getal | waar |
+    | getal | true |
 
     Als de para meter voor de query [nummer](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) met de aanvraag wordt verzonden, kan het antwoord de zijde van de straat (links of rechts) bevatten en ook een verschuivings positie voor dat nummer.
   
@@ -181,7 +181,7 @@ Als u een set coördinaten locaties hebt voor reverse Geocode, kunt u [post Sear
 
     | Sleutel | Waarde |
     |-----|------------|
-    | returnSpeedLimit | waar |
+    | returnSpeedLimit | true |
   
     Wanneer de [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) -query parameter is ingesteld, retourneert het antwoord de limiet voor de geboekte snelheid.
 
@@ -189,7 +189,7 @@ Als u een set coördinaten locaties hebt voor reverse Geocode, kunt u [post Sear
 
     | Sleutel | Waarde |
     |-----|------------|
-    | returnRoadUse | waar |
+    | returnRoadUse | true |
 
     Wanneer de [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) -query parameter is ingesteld, retourneert het antwoord de gebruiks matrix voor de weg voor reverse geocodes op straat niveau.
 
@@ -197,13 +197,13 @@ Als u een set coördinaten locaties hebt voor reverse Geocode, kunt u [post Sear
 
     | Sleutel | Waarde |
     |-----|------------|
-    | roadUse | waar |
+    | roadUse | true |
 
     U kunt de omgekeerde Geocode query beperken tot een specifiek type weg met behulp van de [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) -query parameter.
   
 ## <a name="search-for-cross-street-using-reverse-address-cross-street-search"></a>Zoeken naar meerdere Streets met omgekeerde adres zoeken in meerdere straat
 
-1. Klik in postman op **nieuwe aanvraag** | **Get aanvraag** en geef deze de naam **omgekeerd adres zoeken in meerdere Streets**.
+1. Klik in postman op **nieuwe aanvraag**  |  **Get aanvraag** en geef deze de naam **omgekeerd adres zoeken in meerdere Streets**.
 
 2. Selecteer op het tabblad opbouw functie de methode http **ophalen** en voer de aanvraag-URL in voor uw API-eind punt.
   
@@ -220,7 +220,7 @@ Als u een set coördinaten locaties hebt voor reverse Geocode, kunt u [post Sear
     | Sleutel | Waarde |
     |------------------|-------------------------|
     | api-versie | 1.0 |
-    | abonnement-sleutel | \<uw Azure Maps sleutel\> |
+    | abonnement-sleutel | \<your Azure Maps key\> |
     | query | 47.591180,-122,332700 |
   
 4. Klik op **verzenden** en controleer de tekst van het antwoord.

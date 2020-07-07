@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 907ad8705742e4b2e38b13c3c675ebd333bd27d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80295326"
 ---
 # <a name="building-a-conditional-access-policy"></a>Beleid voor voorwaardelijke toegang bouwen
@@ -84,8 +84,8 @@ De granting Control kan de afdwinging van een of meer besturings elementen activ
 
 - Multi-factor Authentication (Azure Multi-Factor Authentication) vereisen
 - Vereisen dat het apparaat wordt gemarkeerd als compatibel (intune)
-- Hybride Azure AD-aangesloten apparaat vereisen
-- Goedgekeurde client-app vereisen
+- Hybride Azure AD-gekoppeld apparaat is vereist
+- Goedgekeurde client-apps vereisen
 - Beleid voor app-beveiliging vereisen
 
 Beheerders kunnen ervoor kiezen om een van de vorige besturings elementen of alle geselecteerde besturings elementen te vereisen met behulp van de volgende opties. De standaard instelling voor meerdere besturings elementen is alle nood zakelijk.
@@ -115,10 +115,10 @@ Beheerders kunnen ervoor kiezen om een van de vorige besturings elementen of all
 Een beleid voor voorwaardelijke toegang moet mini maal het volgende bevatten om af te dwingen:
 
 - De **naam** van het beleid.
-- **Toewijzingen**
+- **Sneltoetsen**
    - **Gebruikers en/of groepen** waarop het beleid moet worden toegepast.
    - **Cloud-apps of-acties** waarop het beleid moet worden toegepast.
-- **Besturingselementen voor toegang**
+- **Toegangs beheer**
    - Besturings elementen **toekennen** of **blok keren**
 
 ![Leeg beleid voor voorwaardelijke toegang](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)

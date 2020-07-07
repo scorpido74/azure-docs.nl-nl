@@ -13,10 +13,10 @@ ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
 ms.openlocfilehash: 7c1b446ccf04199449f012e738f6a03660735f50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80382950"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>Coderen met een aangepaste trans formatie-Azure CLI
@@ -32,7 +32,7 @@ Bij het maken van aangepaste voor instellingen gelden de volgende overwegingen:
 
 ## <a name="prerequisites"></a>Vereisten
 
-[Een Azure Media Services-account maken](create-account-cli-how-to.md).
+[Maak een Media Services-account](create-account-cli-how-to.md).
 
 Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet.
 
@@ -44,7 +44,7 @@ In het volgende voor beeld wordt de hoofd tekst van de aanvraag van een nieuwe t
 
 In dit voor beeld voegen we eerst een AacAudio-laag toe voor de audio codering en twee H264Video-lagen voor de video codering. In de video lagen worden labels toegewezen zodat ze kunnen worden gebruikt in de naam van het uitvoer bestand. Vervolgens willen we dat de uitvoer ook miniaturen bevat. In het onderstaande voor beeld geven we installatie kopieën op in PNG-indeling, gegenereerd om 50% van de oplossing van de video-invoer en met drie time Stamps-{25%, 50%, 75} van de lengte van de invoer video. Ten slotte geven we de indeling voor de uitvoer bestanden op: één voor video en audio, en een andere voor de miniaturen. Omdat we meerdere H264Layers hebben, moeten we macro's gebruiken waarmee unieke namen per laag worden geproduceerd. We kunnen een `{Label}` or `{Bitrate}` -macro gebruiken, maar in het voor beeld wordt het voormalige weer gegeven.
 
-We gaan deze trans formatie opslaan in een bestand. In dit voor beeld noemen we het bestand `customPreset.json`.
+We gaan deze trans formatie opslaan in een bestand. In dit voor beeld noemen we het bestand `customPreset.json` .
 
 ```json
 {
@@ -126,7 +126,7 @@ We gaan deze trans formatie opslaan in een bestand. In dit voor beeld noemen we 
 
 ## <a name="create-a-new-transform"></a>Een nieuwe trans formatie maken  
 
-In dit voor beeld maken we een **trans formatie** die is gebaseerd op de aangepaste voor instelling die we eerder hebben gedefinieerd. Wanneer u een trans formatie maakt, moet u eerst controleren of er al een bestaat. Als de trans formatie bestaat, kunt u deze opnieuw gebruiken. Met de `show` volgende opdracht wordt `customTransformName` de trans formatie geretourneerd als deze bestaat:
+In dit voor beeld maken we een **trans formatie** die is gebaseerd op de aangepaste voor instelling die we eerder hebben gedefinieerd. Wanneer u een trans formatie maakt, moet u eerst controleren of er al een bestaat. Als de trans formatie bestaat, kunt u deze opnieuw gebruiken. Met de volgende `show` opdracht wordt de `customTransformName` trans formatie geretourneerd als deze bestaat:
 
 ```azurecli-interactive
 az ams transform show -a amsaccount -g amsResourceGroup -n customTransformName

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
 ms.openlocfilehash: 986da8980a569583ef454833957ace85dd1bfbb6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80351065"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Opmerkingen bij de release Microsoft Azure Storage Explorer
@@ -37,17 +37,17 @@ Als u vorige versies van Storage Explorer wilt downloaden, gaat u naar de [pagin
    * Blobs
       * Openen voor bewerken en uploaden
       * Uploaden, inclusief slepen & neerzetten
-      * Download
+      * Downloaden
       * & plakken #1249 kopiëren
       * Verwijderen
    * ADLS Gen2 blobs
       * Uploaden, inclusief slepen & neerzetten
-      * Download
+      * Downloaden
       * Kopiëren & plakken
       * Verwijderen, inclusief map verwijderen
-   * Beheerde schijven
+   * Managed Disks
       * Uploaden
-      * Download
+      * Downloaden
       * Kopiëren & plakken
 
    Daarnaast zijn er verschillende vaak aangevraagde functies toegevoegd aan de geïntegreerde AzCopy-ervaring:
@@ -101,8 +101,8 @@ Als u vorige versies van Storage Explorer wilt downloaden, gaat u naar de [pagin
    * Toegangslagen
    * Voorlopig verwijderen
    * ADLS Gen2
-   * Beheerde schijven
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+   * Managed Disks
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -168,7 +168,7 @@ Als u vorige versies van Storage Explorer wilt downloaden, gaat u naar de [pagin
   * #1526 automatisch vernieuwen
   * AzCopy inschakelen
   * AzCopy SAS-duur als er andere instellingen zijn die u wilt toevoegen, opent u [een probleem op github](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=) met een beschrijving van de instelling die u wilt weer geven.
-* Storage Explorer ondersteunt nu Managed Disks. U kunt het volgende doen:
+* Storage Explorer ondersteunt nu Managed Disks. U kunt:
   * Een on-premises VHD uploaden naar een nieuwe schijf
   * Een schijf downloaden
   * Schijven kopiëren en plakken in resource groepen en regio's
@@ -217,8 +217,8 @@ Het uploaden, downloaden en cross-Region kopiëren van schijven wordt mogelijk g
    * Toegangslagen
    * Voorlopig verwijderen
    * ADLS Gen2
-   * Beheerde schijven
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+   * Managed Disks
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -242,7 +242,7 @@ Het uploaden, downloaden en cross-Region kopiëren van schijven wordt mogelijk g
     * SAS-duur AzCopy
 
     Als er andere instellingen zijn die u wilt toevoegen, [opent u een probleem op github met een beschrijving van de instelling die u wilt zien](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=).
-* Storage Explorer ondersteunt nu Managed Disks. U kunt het volgende doen:
+* Storage Explorer ondersteunt nu Managed Disks. U kunt:
     * Een on-premises VHD uploaden naar een nieuwe schijf
     * Een schijf downloaden
     * Schijven kopiëren en plakken in resource groepen en regio's
@@ -291,8 +291,8 @@ Het uploaden, downloaden en cross-Region kopiëren van schijven wordt mogelijk g
    * Toegangslagen
    * Voorlopig verwijderen
    * ADLS Gen2
-   * Beheerde schijven
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+   * Managed Disks
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -350,7 +350,7 @@ Het uploaden, downloaden en cross-Region kopiëren van schijven wordt mogelijk g
    * Toegangslagen
    * Voorlopig verwijderen
    * ADLS Gen2
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -407,7 +407,7 @@ Het uploaden, downloaden en cross-Region kopiëren van schijven wordt mogelijk g
    * Toegangslagen
    * Voorlopig verwijderen
    * ADLS Gen2
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -459,7 +459,7 @@ Het uploaden, downloaden en cross-Region kopiëren van schijven wordt mogelijk g
    * Toegangslagen
    * Voorlopig verwijderen
    * ADLS Gen2
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -515,7 +515,7 @@ Het uploaden, downloaden en cross-Region kopiëren van schijven wordt mogelijk g
    * Bestandsshares
    * Toegangslagen
    * Voorlopig verwijderen
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -587,7 +587,7 @@ Het uploaden, downloaden en cross-Region kopiëren van schijven wordt mogelijk g
    * Bestandsshares
    * Toegangslagen
    * Voorlopig verwijderen
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -656,7 +656,7 @@ Het uploaden, downloaden en cross-Region kopiëren van schijven wordt mogelijk g
    * Bestandsshares
    * Toegangslagen
    * Voorlopig verwijderen
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -711,7 +711,7 @@ Het uploaden, downloaden en cross-Region kopiëren van schijven wordt mogelijk g
    * Bestandsshares
    * Toegangslagen
    * Voorlopig verwijderen
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -775,7 +775,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
    * Bestandsshares
    * Toegangslagen
    * Voorlopig verwijderen
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -810,7 +810,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
    * Pas de weergave naam aan van de resource die u wilt koppelen. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Verbinden met meerdere lokale emulators met behulp van verschillende poorten. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Voeg gekoppelde resources toe aan snelle toegang. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Storage Explorer ondersteunt nu het voorlopig verwijderen. U kunt het volgende doen:
+* Storage Explorer ondersteunt nu het voorlopig verwijderen. U kunt:
    * Configureer een beleid voor voorlopig verwijderen door met de rechter muisknop te klikken op het knoop punt BLOB containers voor uw opslag account.
    * Bekijk de voorlopig verwijderde blobs in de BLOB-editor door actieve en verwijderde blobs te selecteren in de vervolg keuzelijst naast de navigatie balk.
    * Verwijder tijdelijke verwijderde blobs.
@@ -832,7 +832,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
 * Als u het verkeerde pincode/smartcard certificaat kiest, moet u de computer opnieuw opstarten om deze beslissing te Storage Explorer vergren delen.
 * Bij het wijzigen van de naam van blobs (afzonderlijk of binnen een nieuwe BLOB-container) worden geen moment opnamen bewaard. Alle andere eigenschappen en meta gegevens voor blobs, bestanden en entiteiten blijven behouden tijdens het wijzigen van de naam.
 * Hoewel Azure Stack momenteel geen bestanden ondersteunt, wordt het knoop punt bestands shares nog steeds weer gegeven onder een Azure Stack opslag account dat is gekoppeld.
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -866,7 +866,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
    * Pas de weergave naam aan van de resource die u wilt koppelen. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Verbinden met meerdere lokale emulators met behulp van verschillende poorten. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Voeg gekoppelde resources toe aan snelle toegang. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Storage Explorer ondersteunt nu het voorlopig verwijderen. U kunt het volgende doen:
+* Storage Explorer ondersteunt nu het voorlopig verwijderen. U kunt:
    * Configureer een beleid voor voorlopig verwijderen door met de rechter muisknop te klikken op het knoop punt BLOB containers voor uw opslag account.
    * Bekijk de voorlopig verwijderde blobs in de BLOB-editor door actieve en verwijderde blobs te selecteren in de vervolg keuzelijst naast de navigatie balk.
    * Verwijder tijdelijke verwijderde blobs.
@@ -888,7 +888,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
 * Als u het verkeerde pincode/smartcard certificaat kiest, moet u de computer opnieuw opstarten om deze beslissing te Storage Explorer vergren delen.
 * Bij het wijzigen van de naam van blobs (afzonderlijk of binnen een nieuwe BLOB-container) worden geen moment opnamen bewaard. Alle andere eigenschappen en meta gegevens voor blobs, bestanden en entiteiten blijven behouden tijdens het wijzigen van de naam.
 * Hoewel Azure Stack momenteel geen bestanden ondersteunt, wordt het knoop punt bestands shares nog steeds weer gegeven onder een Azure Stack opslag account dat is gekoppeld.
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -921,7 +921,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
    * Pas de weergave naam aan van de resource die u wilt koppelen. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Verbinden met meerdere lokale emulators met behulp van verschillende poorten. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Voeg gekoppelde resources toe aan snelle toegang. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Storage Explorer ondersteunt nu het voorlopig verwijderen. U kunt het volgende doen:
+* Storage Explorer ondersteunt nu het voorlopig verwijderen. U kunt:
    * Configureer een beleid voor voorlopig verwijderen door met de rechter muisknop te klikken op het knoop punt BLOB containers voor uw opslag account.
    * Bekijk de voorlopig verwijderde blobs in de BLOB-editor door actieve en verwijderde blobs te selecteren in de vervolg keuzelijst naast de navigatie balk.
    * Verwijder tijdelijke verwijderde blobs.
@@ -943,7 +943,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
 * Als u het verkeerde pincode/smartcard certificaat kiest, moet u de computer opnieuw opstarten om deze beslissing te Storage Explorer vergren delen.
 * Bij het wijzigen van de naam van blobs (afzonderlijk of binnen een nieuwe BLOB-container) worden geen moment opnamen bewaard. Alle andere eigenschappen en meta gegevens voor blobs, bestanden en entiteiten blijven behouden tijdens het wijzigen van de naam.
 * Hoewel Azure Stack momenteel geen bestanden ondersteunt, wordt het knoop punt bestands shares nog steeds weer gegeven onder een Azure Stack opslag account dat is gekoppeld.
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -981,7 +981,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
    * Pas de weergave naam aan van de resource die u wilt koppelen. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Verbinden met meerdere lokale emulators met behulp van verschillende poorten. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Voeg gekoppelde resources toe aan snelle toegang. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Storage Explorer ondersteunt nu het voorlopig verwijderen. U kunt het volgende doen:
+* Storage Explorer ondersteunt nu het voorlopig verwijderen. U kunt:
    * Configureer een beleid voor voorlopig verwijderen door met de rechter muisknop te klikken op het knoop punt BLOB containers voor uw opslag account.
    * Bekijk de voorlopig verwijderde blobs in de BLOB-editor door actieve en verwijderde blobs te selecteren in de vervolg keuzelijst naast de navigatie balk.
    * Verwijder tijdelijke verwijderde blobs.
@@ -1003,7 +1003,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
 * Als u het verkeerde pincode/smartcard certificaat kiest, moet u de computer opnieuw opstarten om deze beslissing te Storage Explorer vergren delen.
 * Bij het wijzigen van de naam van blobs (afzonderlijk of binnen een nieuwe BLOB-container) worden geen moment opnamen bewaard. Alle andere eigenschappen en meta gegevens voor blobs, bestanden en entiteiten blijven behouden tijdens het wijzigen van de naam.
 * Hoewel Azure Stack momenteel geen bestanden ondersteunt, wordt het knoop punt bestands shares nog steeds weer gegeven onder een Azure Stack opslag account dat is gekoppeld.
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -1060,7 +1060,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
    * Bestandsshares
    * Toegangslagen
    * Voorlopig verwijderen
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -1117,7 +1117,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
 * Als u het verkeerde pincode/smartcard certificaat kiest, moet u de computer opnieuw opstarten om deze beslissing te Storage Explorer vergren delen.
 * Bij het wijzigen van de naam van blobs (afzonderlijk of binnen een nieuwe BLOB-container) worden geen moment opnamen bewaard. Alle andere eigenschappen en meta gegevens voor blobs, bestanden en entiteiten blijven behouden tijdens het wijzigen van de naam.
 * Hoewel Azure Stack momenteel geen bestanden ondersteunt, wordt het knoop punt bestands shares nog steeds weer gegeven onder een Azure Stack opslag account dat is gekoppeld.
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -1171,7 +1171,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
 * Als u het verkeerde pincode/smartcard certificaat kiest, moet u de computer opnieuw opstarten om deze beslissing te Storage Explorer vergren delen.
 * Bij het wijzigen van de naam van blobs (afzonderlijk of binnen een nieuwe BLOB-container) worden geen moment opnamen bewaard. Alle andere eigenschappen en meta gegevens voor blobs, bestanden en entiteiten blijven behouden tijdens het wijzigen van de naam.
 * Hoewel Azure Stack momenteel geen bestanden ondersteunt, wordt het knoop punt bestands shares nog steeds weer gegeven onder een Azure Stack opslag account dat is gekoppeld.
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -1201,7 +1201,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
 * Verbeterde verificatie waarmee Storage Explorer hetzelfde account archief kunt gebruiken als Visual Studio 2017. Als u deze functie wilt gebruiken, moet u zich opnieuw aanmelden bij uw accounts en uw gefilterde abonnementen opnieuw instellen.
 * Voor Azure Stack-accounts die door AAD worden ondersteund, haalt Storage Explorer nu Azure Stack-abonnementen op wanneer target Azure Stack is ingeschakeld. U hoeft geen aangepaste aanmeldings omgeving meer te maken.
 * Er zijn enkele snelkoppelingen toegevoegd om sneller te kunnen navigeren. Dit omvat het wisselen van verschillende deel Vensters en het verplaatsen tussen editors. Zie het menu weer geven voor meer informatie.
-* Storage Explorer feedback bevindt zich nu op GitHub. U kunt onze pagina met problemen bereiken door te klikken op de knop feedback linksonder of door naar te [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues)gaan. U kunt suggesties doen, problemen melden, vragen stellen of een andere vorm van feedback geven.
+* Storage Explorer feedback bevindt zich nu op GitHub. U kunt onze pagina met problemen bereiken door te klikken op de knop feedback linksonder of door naar te gaan [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues) . U kunt suggesties doen, problemen melden, vragen stellen of een andere vorm van feedback geven.
 * Als u problemen ondervindt met TLS/SSL-certificaten en niet het foutieve certificaat kan vinden, kunt u Storage Explorer nu starten vanaf de opdracht regel met de `--ignore-certificate-errors` vlag. Wanneer met deze markering wordt gestart, negeert Storage Explorer TLS/SSL-certificaat fouten.
 * Er is nu een download optie in het context menu voor Blob-en file-items.
 * Verbeterde ondersteuning voor toegankelijkheid en scherm lezers. Als u afhankelijk bent van toegankelijkheids functies, raadpleegt u de [toegankelijkheids documentatie](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-accessibility) voor meer informatie.
@@ -1237,7 +1237,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
 * Als u het verkeerde pincode/smartcard certificaat kiest, moet u de computer opnieuw opstarten om deze beslissing te Storage Explorer vergren delen.
 * Bij het wijzigen van de naam van blobs (afzonderlijk of binnen een nieuwe BLOB-container) worden geen moment opnamen bewaard. Alle andere eigenschappen en meta gegevens voor blobs, bestanden en entiteiten blijven behouden tijdens het wijzigen van de naam.
 * Hoewel Azure Stack momenteel geen bestanden ondersteunt, wordt het knoop punt bestands shares nog steeds weer gegeven onder een Azure Stack opslag account dat is gekoppeld.
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -1274,7 +1274,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
 * In het deel venster account instellingen kan worden aangegeven dat u de referenties opnieuw moet invoeren om abonnementen te filteren.
 * Bij het wijzigen van de naam van blobs (afzonderlijk of binnen een nieuwe BLOB-container) worden geen moment opnamen bewaard. Alle andere eigenschappen en meta gegevens voor blobs, bestanden en entiteiten blijven behouden tijdens het wijzigen van de naam.
 * Hoewel Azure Stack momenteel geen bestanden ondersteunt, wordt het knoop punt bestands shares nog steeds weer gegeven onder een Azure Stack opslag account dat is gekoppeld.
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -1323,7 +1323,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
 * In het deel venster account instellingen kan worden aangegeven dat u de referenties opnieuw moet invoeren om abonnementen te filteren.
 * Bij het wijzigen van de naam van blobs (afzonderlijk of binnen een nieuwe BLOB-container) worden geen moment opnamen bewaard. Alle andere eigenschappen en meta gegevens voor blobs, bestanden en entiteiten blijven behouden tijdens het wijzigen van de naam.
 * Hoewel Azure Stack momenteel geen bestanden ondersteunt, wordt het knoop punt bestands shares nog steeds weer gegeven onder een Azure Stack opslag account dat is gekoppeld.
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -1370,7 +1370,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
 * In het deel venster account instellingen kan worden aangegeven dat u de referenties opnieuw moet invoeren om abonnementen te filteren.
 * Bij het wijzigen van de naam van blobs (afzonderlijk of binnen een nieuwe BLOB-container) worden geen moment opnamen bewaard. Alle andere eigenschappen en meta gegevens voor blobs, bestanden en entiteiten blijven behouden tijdens het wijzigen van de naam.
 * Hoewel Azure Stack momenteel geen bestanden ondersteunt, wordt het knoop punt bestands shares nog steeds weer gegeven onder een Azure Stack opslag account dat is gekoppeld.
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer --disable-gpu
@@ -1434,7 +1434,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
 * In het deel venster account instellingen kan worden aangegeven dat u de referenties opnieuw moet invoeren om abonnementen te filteren.
 * Bij het wijzigen van de naam van blobs (afzonderlijk of binnen een nieuwe BLOB-container) worden geen moment opnamen bewaard. Alle andere eigenschappen en meta gegevens voor blobs, bestanden en entiteiten blijven behouden tijdens het wijzigen van de naam.
 * Hoewel Azure Stack momenteel geen bestanden ondersteunt, wordt het knoop punt bestands shares nog steeds weer gegeven onder een Azure Stack opslag account dat is gekoppeld.
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer --disable-gpu
@@ -1490,7 +1490,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
 * In het deel venster account instellingen kan worden aangegeven dat u de referenties opnieuw moet invoeren om abonnementen te filteren.
 * Bij het wijzigen van de naam van blobs (afzonderlijk of binnen een nieuwe BLOB-container) worden geen moment opnamen bewaard. Alle andere eigenschappen en meta gegevens voor blobs, bestanden en entiteiten blijven behouden tijdens het wijzigen van de naam.
 * Hoewel Azure Stack momenteel geen bestanden ondersteunt, wordt het knoop punt bestands shares nog steeds weer gegeven onder een Azure Stack opslag account dat is gekoppeld.
-* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU- `--disable-gpu` versnelling uit te scha kelen door de switch toe te voegen:
+* De elektron-Shell die door Storage Explorer wordt gebruikt, heeft moeite met het versnellen van een GPU (graphics processing unit). Als Storage Explorer een leeg (leeg) hoofd venster wordt weer gegeven, kunt u proberen om Storage Explorer te starten vanaf de opdracht regel en de GPU-versnelling uit te scha kelen door de switch toe te voegen `--disable-gpu` :
 
     ```
     ./StorageExplorer --disable-gpu
@@ -1627,7 +1627,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
 * U kunt zich nu aanmelden bij Azure Active Directory (AAD) op basis Azure Stack accounts.
 * U kunt nu archief bestanden uploaden naar een Premium-opslag account van 32 MB
 * Verbeterde ondersteuning voor toegankelijkheid
-* U kunt nu vertrouwde basis-64 gecodeerde X. 509 TLS/SSL-certificaten toevoegen door naar bewerken-&gt; SSL-certificaten&gt; te gaan-certificaten importeren
+* U kunt nu vertrouwde basis-64 gecodeerde X. 509 TLS/SSL-certificaten toevoegen door naar bewerken- &gt; SSL-certificaten te gaan- &gt; certificaten importeren
 
 #### <a name="fixes"></a>Oplossingen
 
@@ -1730,7 +1730,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
 * We hebben de scoped Search opnieuw geïntroduceerd met onze nieuwe zoek functie voor uitgebreide subtekenreeksen, zodat u nu twee opties kunt zoeken:
     * Algemene zoek opdracht: Voer alleen een zoek term in het tekstvak Zoeken in
     * Zoek opdracht in bereik: Klik op het pictogram met het vergroot glas naast een knoop punt en voeg vervolgens een zoek term toe aan het einde van het pad, of klik met de rechter muisknop en selecteer ' zoeken vanaf hier '.
-* We hebben diverse Thema's toegevoegd: licht (standaard), donker, hoog contrast zwart en hoog contrast wit. Ga naar bewerken-&gt; Thema's om uw voor keuren te wijzigen
+* We hebben diverse Thema's toegevoegd: licht (standaard), donker, hoog contrast zwart en hoog contrast wit. Ga naar bewerken- &gt; Thema's om uw voor keuren te wijzigen
 * U kunt de eigenschappen van blobs en bestanden wijzigen
 * Er wordt nu ondersteuning geboden voor gecodeerde (base64) en niet-versleutelde wachtrij berichten
 * Op Linux is een 64-bits besturings systeem nu vereist. Voor deze release ondersteunen we alleen 64-bits Ubuntu 16.04.1 LTS
@@ -1889,7 +1889,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
 
 #### <a name="known-issues"></a>Bekende problemen
 
-* Tabellen: toevoegen, bewerken of importeren van een entiteit met een eigenschap met een niet-eenduidige numerieke waarde, zoals "1" of "1,0", en de gebruiker probeert deze te verzenden als een `Edm.String`EDM. Double-waarde voor de client-API
+* Tabellen: toevoegen, bewerken of importeren van een entiteit met een eigenschap met een niet-eenduidige numerieke waarde, zoals "1" of "1,0", en de gebruiker probeert deze te verzenden als een `Edm.String` EDM. Double-waarde voor de client-API
 
 03/31/2016
 
@@ -1912,11 +1912,11 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
 
 * Verbeteringen in prestaties en betrouw baarheid
 
-### <a name="known-issues-amp-mitigations"></a>Oplossingen voor &amp; bekende problemen
+### <a name="known-issues-amp-mitigations"></a>Oplossingen voor bekende problemen &amp;
 
 * Het downloaden van grote BLOB-bestanden werkt niet goed-we raden u aan AzCopy te gebruiken terwijl dit probleem wordt opgelost
 * Account referenties worden niet opgehaald of in de cache opgeslagen als de basismap niet kan worden gevonden of niet kan worden geschreven naar
-* Als we een entiteit die een eigenschap bevat met een niet-eenduidige numerieke waarde, zoals "1" of "1,0", toevoegt, bewerkt of importeert, wordt de waarde door de client `Edm.String`-API teruggestuurd als een EDM. Double
+* Als we een entiteit die een eigenschap bevat met een niet-eenduidige numerieke waarde, zoals "1" of "1,0", toevoegt, bewerkt of importeert, `Edm.String` wordt de waarde door de client-API teruggestuurd als een EDM. Double
 * Bij het importeren van CSV-bestanden met meerdere records worden de gegevens mogelijk schokkerig of versleuteld
 
 02/03/2016

@@ -8,10 +8,10 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: e06fcdbac097e85c039e34274c61cb51ee06bcd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80478317"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Een ASE maken met behulp van een Azure Resource Manager sjabloon
@@ -27,7 +27,7 @@ Een ASE kan worden gemaakt met behulp van de Azure Portal of een Azure Resource 
 Wanneer u een ASE maakt in de Azure Portal, kunt u uw VNet op hetzelfde moment maken of een bestaand VNet selecteren dat u wilt implementeren in. Wanneer u een ASE maakt op basis van een sjabloon, moet u beginnen met: 
 
 * Een resource manager-VNet.
-* Een subnet in dat VNet. We raden u aan om een ASE `/24` -subnet grootte van met 256-adressen aan te passen aan toekomstige groei-en schaal behoeften. Nadat de ASE is gemaakt, kunt u de grootte niet wijzigen.
+* Een subnet in dat VNet. We raden u aan om een ASE-subnet grootte van `/24` met 256-adressen aan te passen aan toekomstige groei-en schaal behoeften. Nadat de ASE is gemaakt, kunt u de grootte niet wijzigen.
 * De resource-ID van uw VNet. U kunt deze informatie ophalen van de Azure Portal onder de eigenschappen van uw virtuele netwerk.
 * Het abonnement dat u wilt implementeren.
 * De locatie waarnaar u wilt implementeren.
@@ -38,19 +38,19 @@ Het maken van uw ASE automatiseren:
 
 2. Nadat uw ILB-ASE is gemaakt, wordt een TLS/SSL-certificaat dat overeenkomt met uw ILB ASE-domein geüpload.
 
-3. Het geüploade TLS/SSL-certificaat is toegewezen aan de ILB-ASE als het ' standaard ' TLS/SSL-certificaat.  Dit certificaat wordt gebruikt voor TLS/SSL-verkeer naar apps op de ILB-ASE wanneer ze gebruikmaken van het gemeen schappelijke hoofd domein dat is toegewezen aan `https://someapp.mycustomrootdomain.com`de ASE (bijvoorbeeld).
+3. Het geüploade TLS/SSL-certificaat is toegewezen aan de ILB-ASE als het ' standaard ' TLS/SSL-certificaat.  Dit certificaat wordt gebruikt voor TLS/SSL-verkeer naar apps op de ILB-ASE wanneer ze gebruikmaken van het gemeen schappelijke hoofd domein dat is toegewezen aan de ASE (bijvoorbeeld `https://someapp.mycustomrootdomain.com` ).
 
 
 ## <a name="create-the-ase"></a>De ASE maken
 Een resource manager-sjabloon voor het maken van een ASE en het bijbehorende parameter bestand is beschikbaar [in een voor beeld][quickstartasev2create] op github.
 
-Als u een ILB-ASE wilt maken, gebruikt u deze [voor beelden][quickstartilbasecreate]van Resource Manager-sjablonen. Ze zijn geschikt voor die use-case. De meeste para meters in het bestand *azuredeploy. para meters. json* zijn gebruikelijk voor het maken van ILB-as en externe as. In de volgende lijst worden de para meters van speciale opmerkingen, of die uniek zijn, aangeroepen wanneer u een ILB-ASE maakt:
+Als u een ILB-ASE wilt maken, gebruikt u deze [voor beelden][quickstartilbasecreate]van Resource Manager-sjablonen. Ze zijn geschikt voor die use-case. De meeste para meters in de *azuredeploy.parameters.jsop* bestand zijn gebruikelijk voor het maken van ILB as en externe as. In de volgende lijst worden de para meters van speciale opmerkingen, of die uniek zijn, aangeroepen wanneer u een ILB-ASE maakt:
 
 * *internalLoadBalancingMode*: Stel dit in de meeste gevallen in op 3. Dit betekent dat zowel HTTP/HTTPS-verkeer op poort 80/443 als de besturings-en gegevens kanaal poorten die worden geluisterd door de FTP-service op de ASE, gebonden zijn aan een ILB-toegewezen virtueel netwerk adres. Als deze eigenschap is ingesteld op 2, worden alleen de FTP-service poorten (zowel besturings-als gegevens kanalen) gebonden aan een ILB-adres. Het HTTP/HTTPS-verkeer blijft op het open bare VIP.
 * *dnsSuffix*: met deze para meter wordt het standaard hoofd domein gedefinieerd dat wordt toegewezen aan de ASE. In de open bare variatie van Azure App Service is het standaard hoofd domein voor alle web-apps *azurewebsites.net*. Omdat een ILB-ASE intern is voor het virtuele netwerk van een klant, is het niet zinvol het standaard hoofd domein van de open bare service te gebruiken. In plaats daarvan moet een ILB-ASE een standaard hoofd domein hebben dat zinvol is voor gebruik binnen het interne virtuele netwerk van het bedrijf. Contoso Corporation kan bijvoorbeeld gebruikmaken van een standaard hoofd domein van *Internal-contoso.com* voor apps die bedoeld zijn om te worden omgezet en alleen toegankelijk zijn binnen het virtuele netwerk van contoso. 
-* *ipSslAddressCount*: deze para meter wordt automatisch ingesteld op de waarde 0 in het bestand *azuredeploy. json* omdat ILB as slechts één ILB-adres heeft. Er zijn geen expliciete IP-SSL-adressen voor een ILB-ASE. De IP-SSL-adres groep voor een ILB-ASE moet daarom worden ingesteld op nul. Anders treedt er een inrichtings fout op. 
+* *ipSslAddressCount*: deze para meter wordt automatisch ingesteld op de waarde 0 in de *azuredeploy.jsin* het bestand omdat ILB as slechts één ILB-adres heeft. Er zijn geen expliciete IP-SSL-adressen voor een ILB-ASE. De IP-SSL-adres groep voor een ILB-ASE moet daarom worden ingesteld op nul. Anders treedt er een inrichtings fout op. 
 
-Nadat u het bestand *azuredeploy. para meters. json* hebt ingevuld, maakt u het ASE met behulp van het Power shell-code fragment. Wijzig de bestands paden zodat deze overeenkomen met de locatie van het Resource Manager-bestand op uw computer. Zorg ervoor dat u uw eigen waarden opgeeft voor de naam van de Resource Manager-implementatie en de naam van de resource groep:
+Nadat de *azuredeploy.parameters.jsvoor* het bestand is ingevuld, maakt u het ASE met behulp van het Power shell-code fragment. Wijzig de bestands paden zodat deze overeenkomen met de locatie van het Resource Manager-bestand op uw computer. Zorg ervoor dat u uw eigen waarden opgeeft voor de naam van de Resource Manager-implementatie en de naam van de resource groep:
 
 ```powershell
 $templatePath="PATH\azuredeploy.json"
@@ -62,7 +62,7 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 Het duurt ongeveer een uur voordat de ASE is gemaakt. Vervolgens wordt de ASE weer gegeven in de portal in de lijst met as voor het abonnement dat de implementatie heeft geactiveerd.
 
 ## <a name="upload-and-configure-the-default-tlsssl-certificate"></a>Het ' standaard TLS/SSL-certificaat uploaden en configureren
-Een TLS/SSL-certificaat moet worden gekoppeld aan de ASE als het ' standaard ' TLS/SSL-certificaat dat wordt gebruikt om TLS-verbindingen met apps tot stand te brengen. Als het standaard-DNS-achtervoegsel van de ASE *Internal-contoso.com*is, `https://some-random-app.internal-contoso.com` is een verbinding vereist voor een TLS/SSL-certificaat dat geldig is voor **. Internal-contoso.com*. 
+Een TLS/SSL-certificaat moet worden gekoppeld aan de ASE als het ' standaard ' TLS/SSL-certificaat dat wordt gebruikt om TLS-verbindingen met apps tot stand te brengen. Als het standaard-DNS-achtervoegsel van de ASE *Internal-contoso.com*is, is een verbinding `https://some-random-app.internal-contoso.com` vereist voor een TLS/SSL-certificaat dat geldig is voor **. Internal-contoso.com*. 
 
 Verkrijg een geldig TLS/SSL-certificaat door interne certificerings instanties te kopen, een certificaat aan te schaffen bij een externe verlener of een zelfondertekend certificaat te gebruiken. Ongeacht de bron van het TLS/SSL-certificaat moeten de volgende certificaat kenmerken correct worden geconfigureerd:
 
@@ -98,16 +98,16 @@ $fileContentEncoded | set-content ($fileName + ".b64")
 
 Nadat het TLS/SSL-certificaat is gegenereerd en is geconverteerd naar een base64-gecodeerde teken reeks, moet u het [standaard SSL-certificaat][quickstartconfiguressl] op github configureren in de voorbeeld sjabloon voor de Resource Manager. 
 
-De para meters in het bestand *azuredeploy. para meters. json* worden hier weer gegeven:
+De para meters in de *azuredeploy.parameters.jsvoor* het bestand worden hier vermeld:
 
 * *appServiceEnvironmentName*: de naam van de ILB-ASE die wordt geconfigureerd.
 * *existingAseLocation*: een tekst teken reeks met de Azure-regio waar de ILB ASE is geïmplementeerd.  Bijvoorbeeld: Zuid-Centraal vs.
 * *pfxBlobString*: de based64-gecodeerde teken reeks representatie van het pfx-bestand. Gebruik het code fragment dat eerder is weer gegeven en kopieer de teken reeks die is opgenomen in ' exportedcert. pfx. b64 '. Plak deze in als de waarde van het kenmerk *pfxBlobString* .
 * *wacht woord*: het wacht woord dat wordt gebruikt om het pfx-bestand te beveiligen.
 * *certificateThumbprint*: de vinger afdruk van het certificaat. Als u deze waarde ophaalt uit Power shell (bijvoorbeeld *$Certificate. Vinger afdruk* van het vorige code fragment), kunt u de waarde gebruiken als. Als u de waarde in het dialoog venster Windows-certificaat kopieert, vergeet dan niet de overbodige spaties te verwijderen. De *certificateThumbprint* moet er ongeveer uitzien als AF3143EB61D43F6727842115BB7F17BBCECAECAE.
-* *certificaatpad*: een beschrijvende teken reeks-id van uw eigen keuze voor het identificeren van het certificaat. De naam wordt gebruikt als onderdeel van de unieke Resource Manager-id voor de entiteit *micro soft. Web/getuigies* die het TLS/SSL-certificaat vertegenwoordigt. De naam *moet* eindigen op het volgende achtervoegsel: \_yourASENameHere_InternalLoadBalancingASE. Het Azure Portal gebruikt dit achtervoegsel als een indicator waarmee het certificaat wordt gebruikt voor het beveiligen van een ILB-ASE.
+* *certificaatpad*: een beschrijvende teken reeks-id van uw eigen keuze voor het identificeren van het certificaat. De naam wordt gebruikt als onderdeel van de unieke Resource Manager-id voor de entiteit *micro soft. Web/getuigies* die het TLS/SSL-certificaat vertegenwoordigt. De naam *moet* eindigen op het volgende achtervoegsel: \_ yourASENameHere_InternalLoadBalancingASE. Het Azure Portal gebruikt dit achtervoegsel als een indicator waarmee het certificaat wordt gebruikt voor het beveiligen van een ILB-ASE.
 
-Een afkorting voor beeld van *azuredeploy. para meters. json* wordt hier weer gegeven:
+Een afkorting voor beeld van *azuredeploy.parameters.jsop* wordt hier weer gegeven:
 
 ```json
 {
@@ -136,7 +136,7 @@ Een afkorting voor beeld van *azuredeploy. para meters. json* wordt hier weer ge
 }
 ```
 
-Nadat u het bestand *azuredeploy. para meters. json* hebt ingevuld, configureert u het standaard TLS/SSL-certificaat met behulp van het Power shell-code fragment. Wijzig de bestands paden zodat deze overeenkomen met de locatie van de Resource Manager-sjabloon bestanden op de computer. Zorg ervoor dat u uw eigen waarden opgeeft voor de naam van de Resource Manager-implementatie en de naam van de resource groep:
+Nadat de *azuredeploy.parameters.jsin* het bestand is ingevuld, configureert u het standaard TLS/SSL-certificaat met behulp van het Power shell-code fragment. Wijzig de bestands paden zodat deze overeenkomen met de locatie van de Resource Manager-sjabloon bestanden op de computer. Zorg ervoor dat u uw eigen waarden opgeeft voor de naam van de Resource Manager-implementatie en de naam van de resource groep:
 
 ```powershell
 $templatePath="PATH\azuredeploy.json"
@@ -147,7 +147,7 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 Het duurt ongeveer 40 minuten per ASE front-end om de wijziging toe te passen. Bijvoorbeeld: voor een ASE met standaard grootte die twee front-ends gebruikt, duurt de sjabloon ongeveer één uur en 20 minuten om te volt ooien. Terwijl de sjabloon wordt uitgevoerd, kan de ASE niet worden geschaald.  
 
-Nadat de sjabloon is voltooid, kunnen apps op de ILB ASE via HTTPS worden geopend. De verbindingen worden beveiligd met behulp van het standaard TLS/SSL-certificaat. Het standaard TLS/SSL-certificaat wordt gebruikt wanneer apps op de ILB ASE worden geadresseerd met behulp van een combi natie van de naam van de toepassing plus de naam van de standaard-host. `https://mycustomapp.internal-contoso.com` Maakt bijvoorbeeld gebruik van het standaard TLS/SSL-certificaat voor **. Internal-contoso.com*.
+Nadat de sjabloon is voltooid, kunnen apps op de ILB ASE via HTTPS worden geopend. De verbindingen worden beveiligd met behulp van het standaard TLS/SSL-certificaat. Het standaard TLS/SSL-certificaat wordt gebruikt wanneer apps op de ILB ASE worden geadresseerd met behulp van een combi natie van de naam van de toepassing plus de naam van de standaard-host. `https://mycustomapp.internal-contoso.com`Maakt bijvoorbeeld gebruik van het standaard TLS/SSL-certificaat voor **. Internal-contoso.com*.
 
 Net als bij apps die worden uitgevoerd op de open bare multi tenant-service kunnen ontwikkel aars echter aangepaste hostnamen configureren voor afzonderlijke apps. Ze kunnen ook unieke SNI TLS/SSL-certificaat bindingen configureren voor afzonderlijke apps.
 

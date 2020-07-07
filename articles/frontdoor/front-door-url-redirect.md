@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2019
 ms.author: sharadag
 ms.openlocfilehash: 5e3e44c4aee84fe9e2e21174a1d65fdf26b765a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80295482"
 ---
 # <a name="url-redirect"></a>URL-omleiding
@@ -40,13 +40,13 @@ U kunt het protocol instellen dat voor omleiding wordt gebruikt. Zo kunt u een v
 - **Overeenkomst aanvragen: met**deze optie behoudt u het protocol dat door de binnenkomende aanvraag wordt gebruikt. Een HTTP-aanvraag blijft dus HTTP en een HTTPS-aanvraag blijft HTTPS post-omleiding.
 
 ## <a name="destination-host"></a>Doelhost
-Als onderdeel van het configureren van een omleidings routering kunt u de hostnaam of het domein voor de omleidings aanvraag ook wijzigen. U kunt dit veld instellen om de hostnaam in de URL voor de omleiding te wijzigen of op een andere manier de hostnaam van de inkomende aanvraag te behouden. Met dit veld kunt u dus alle aanvragen omleiden `https://www.contoso.com/*` die zijn verzonden `https://www.fabrikam.com/*`naar.
+Als onderdeel van het configureren van een omleidings routering kunt u de hostnaam of het domein voor de omleidings aanvraag ook wijzigen. U kunt dit veld instellen om de hostnaam in de URL voor de omleiding te wijzigen of op een andere manier de hostnaam van de inkomende aanvraag te behouden. Met dit veld kunt u dus alle aanvragen omleiden die zijn verzonden `https://www.contoso.com/*` naar `https://www.fabrikam.com/*` .
 
 ## <a name="destination-path"></a>Doelpad
-Als u het pad van een URL als onderdeel van de omleiding wilt vervangen, kunt u dit veld instellen met de nieuwe waarde voor het pad. Als dat niet het geval is, kunt u ervoor kiezen om de padwaarde als onderdeel van de omleiding te behouden. Met dit veld kunt u dus alle aanvragen omleiden die worden verzonden `https://www.contoso.com/\*` naar `https://www.contoso.com/redirected-site`.
+Als u het pad van een URL als onderdeel van de omleiding wilt vervangen, kunt u dit veld instellen met de nieuwe waarde voor het pad. Als dat niet het geval is, kunt u ervoor kiezen om de padwaarde als onderdeel van de omleiding te behouden. Met dit veld kunt u dus alle aanvragen omleiden die worden verzonden `https://www.contoso.com/\*` naar `https://www.contoso.com/redirected-site` .
 
 ## <a name="query-string-parameters"></a>Query reeks parameters
-U kunt ook de query reeks parameters in de omgeleide URL vervangen. Als u een bestaande query reeks wilt vervangen door de URL van de inkomende aanvraag, stelt u dit veld in op vervangen en stelt u vervolgens de juiste waarde in. Als dat niet het geval is, kunt u de oorspronkelijke reeks query reeksen behouden door het veld in te stellen op ' behouden '. Met dit veld kunt u bijvoorbeeld alle verkeer omleiden dat wordt verzonden naar `https://www.contoso.com/foo/bar` naar. `https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F` 
+U kunt ook de query reeks parameters in de omgeleide URL vervangen. Als u een bestaande query reeks wilt vervangen door de URL van de inkomende aanvraag, stelt u dit veld in op vervangen en stelt u vervolgens de juiste waarde in. Als dat niet het geval is, kunt u de oorspronkelijke reeks query reeksen behouden door het veld in te stellen op ' behouden '. Met dit veld kunt u bijvoorbeeld alle verkeer omleiden dat wordt verzonden naar `https://www.contoso.com/foo/bar` naar `https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F` . 
 
 ## <a name="destination-fragment"></a>Doel fragment
 Het doel fragment is het deel van de URL na ' # ', dat doorgaans door browsers wordt gebruikt om op een specifieke sectie op een pagina te worden gegrond. U kunt dit veld instellen om een fragment toe te voegen aan de omleidings-URL.

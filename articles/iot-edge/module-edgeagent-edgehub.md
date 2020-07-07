@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: f2d6603c264c9da3f2700f460a8c61b24681fac6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80546193"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>Eigenschappen van de IoT Edge agent en IoT Edge hub-module apparaatdubbels
@@ -52,9 +52,9 @@ De module voor de IoT Edge-agent wordt aangeroepen `$edgeAgent` en coördineert 
 | systemModules.edgeHub.configuration.id | De ID van de implementatie die deze module heeft geïmplementeerd. | IoT Hub stelt deze eigenschap in wanneer het manifest wordt toegepast met behulp van een implementatie. Maakt geen deel uit van een implementatie manifest. |
 | modules. {moduleId}. versie | Een door de gebruiker gedefinieerde teken reeks die de versie van deze module voor stelt. | Ja |
 | modules. {moduleId}. type | Moet ' docker ' zijn | Ja |
-| modules. {moduleId}. status | {"wordt \| gestopt"} | Ja |
-| modules. {moduleId}. restartPolicy | {"Never" \| "bij fout \| \| " "altijd" "always"} | Ja |
-| modules. {moduleId}. imagePullPolicy | {"op het maken van \| " "nooit"} | Nee |
+| modules. {moduleId}. status | {"uitvoeren" \| "gestopt"} | Ja |
+| modules. {moduleId}. restartPolicy | {"Never" \| "on-failure" \| " \| " altijd "} | Ja |
+| modules. {moduleId}. imagePullPolicy | {"on-Create" \| ' Never '} | Nee |
 | modules. {moduleId}. env | Een lijst met omgevings variabelen die moeten worden door gegeven aan de module. Neemt de indeling`"<name>": {"value": "<value>"}` | Nee |
 | modules. {moduleId}. settings. image | De URI naar de module afbeelding. | Ja |
 | modules. {moduleId}. settings. createOptions | Een stringified-JSON met de opties voor het maken van de module container. [Opties voor het maken van docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nee |
@@ -78,22 +78,22 @@ De volgende tabel bevat niet de informatie die uit de gewenste eigenschappen is 
 | Eigenschap | Beschrijving |
 | -------- | ----------- |
 | lastDesiredVersion | Dit geheel getal verwijst naar de laatste versie van de gewenste eigenschappen die worden verwerkt door de IoT Edge agent. |
-| lastDesiredStatus. code | Deze status code verwijst naar de laatste gewenste eigenschappen die worden weer gegeven door de IoT Edge agent. Toegestane waarden: `200` geslaagd, `400` ongeldige configuratie, `412` ongeldige schema versie, `417` de gewenste eigenschappen zijn leeg, `500` mislukt |
+| lastDesiredStatus. code | Deze status code verwijst naar de laatste gewenste eigenschappen die worden weer gegeven door de IoT Edge agent. Toegestane waarden: `200` geslaagd, `400` Ongeldige configuratie, `412` Ongeldige schema versie, `417` de gewenste eigenschappen zijn leeg, `500` mislukt |
 | lastDesiredStatus. Description | Tekst beschrijving van de status |
 | deviceHealth | `healthy`Als de runtime status van alle modules ofwel `running` of `stopped` `unhealthy` anders is |
-| configurationHealth. {deploymentId}. status | `healthy`Als de runtime status van alle modules die zijn ingesteld door de implementatie {deploymentId} `running` , `stopped` `unhealthy` of anders |
+| configurationHealth. {deploymentId}. status | `healthy`Als de runtime status van alle modules die zijn ingesteld door de implementatie {deploymentId} `running` `stopped` , of `unhealthy` anders |
 | runtime. platform. OS | Melden van het besturings systeem dat op het apparaat wordt uitgevoerd |
 | runtime. platform. Architecture | Rapportage van de architectuur van de CPU op het apparaat |
-| systemModules.edgeAgent.runtimeStatus | De gerapporteerde status van de IoT Edge-agent: \| {"wordt uitgevoerd" "is beschadigd"} |
+| systemModules.edgeAgent.runtimeStatus | De gerapporteerde status van de IoT Edge-agent: {"wordt uitgevoerd" \| "is beschadigd"} |
 | systemModules.edgeAgent.statusDescription | De tekst beschrijving van de gerapporteerde status van de IoT Edge agent. |
-| systemModules.edgeHub.runtimeStatus | Status van IoT Edge hub: {" \| uitvoeren gestopt \| " "" uitstel " \| \| " Failed "} |
+| systemModules.edgeHub.runtimeStatus | Status van IoT Edge hub: {"uitvoeren gestopt" "" \| \| uitstel "" Failed " \| \| } |
 | systemModules.edgeHub.statusDescription | De tekst beschrijving van de status van IoT Edge hub als deze beschadigd is. |
 | systemModules. edgeHub. exitCode | De afsluit code die wordt gerapporteerd door de IoT Edge hub-container als de container wordt afgesloten |
 | systemModules.edgeHub.startTimeUtc | Tijdstip waarop IoT Edge hub voor het laatst is gestart |
 | systemModules.edgeHub.lastExitTimeUtc | Tijdstip waarop IoT Edge hub voor het laatst is afgesloten |
 | systemModules.edgeHub.lastRestartTimeUtc | Tijdstip waarop IoT Edge hub voor het laatst opnieuw is opgestart |
 | systemModules.edgeHub.restartCount | Aantal keer dat deze module opnieuw is opgestart als onderdeel van het beleid voor opnieuw opstarten. |
-| modules. {moduleId}. runtimeStatus | Status van de module: {"" wordt \| gestopt \| "" is mislukt " \| " uitstel " \| " is beschadigd "} |
+| modules. {moduleId}. runtimeStatus | Status van de module: {"" wordt \| gestopt "" \| is mislukt "" \| uitstel "" is \| beschadigd "} |
 | modules. {moduleId}. statusDescription | De tekst beschrijving van de status van de module indien beschadigd. |
 | modules. {moduleId}. exitCode | De afsluit code die wordt gerapporteerd door de module container als de container wordt afgesloten |
 | modules. {moduleId}. startTimeUtc | Tijdstip waarop de module voor het laatst is gestart |
@@ -116,9 +116,9 @@ De module voor de IoT Edge hub wordt aangeroepen `$edgeHub` en coördineert de c
 | Eigenschap | Beschrijving |
 | -------- | ----------- |
 | lastDesiredVersion | Dit geheel getal verwijst naar de laatste versie van de gewenste eigenschappen die worden verwerkt door de IoT Edge hub. |
-| lastDesiredStatus. code | De status code verwijst naar de laatste gewenste eigenschappen die worden weer gegeven door de IoT Edge hub. Toegestane waarden: `200` geslaagd, `400` ongeldige configuratie, `500` mislukt |
+| lastDesiredStatus. code | De status code verwijst naar de laatste gewenste eigenschappen die worden weer gegeven door de IoT Edge hub. Toegestane waarden: `200` geslaagd, `400` Ongeldige configuratie, `500` mislukt |
 | lastDesiredStatus. Description | De tekst beschrijving van de status. |
-| clients. {apparaat of moduleId}. status | De connectiviteits status van dit apparaat of deze module. Mogelijke waarden {"Connected \| " "Connected"}. Alleen module-identiteiten kunnen de status verbroken hebben. Downstream-apparaten die verbinding maken met IoT Edge hub worden alleen weer gegeven wanneer ze zijn verbonden. |
+| clients. {apparaat of moduleId}. status | De connectiviteits status van dit apparaat of deze module. Mogelijke waarden {"Connected" \| "Connected"}. Alleen module-identiteiten kunnen de status verbroken hebben. Downstream-apparaten die verbinding maken met IoT Edge hub worden alleen weer gegeven wanneer ze zijn verbonden. |
 | clients. {apparaat of moduleId}. lastConnectTime | De laatste keer dat het apparaat of de module is verbonden. |
 | clients. {apparaat of moduleId}. lastDisconnectTime | De laatste keer dat het apparaat of de module is losgekoppeld. |
 

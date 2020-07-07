@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 6a4b90d8b6fe67de26c8e652e0dc5b62cc27023f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80545630"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Meer informatie over het implementeren van modules en het vaststellen van routes naar IoT Edge
@@ -36,7 +36,7 @@ In de Azure IoT Edge zelf studies maakt u een implementatie manifest door een wi
 
 Op hoog niveau is een implementatie manifest een lijst met module apparaatdubbels die zijn geconfigureerd met de gewenste eigenschappen. Een implementatie manifest vertelt een IoT Edge apparaat (of een groep apparaten) welke modules moeten worden geïnstalleerd en hoe ze moeten worden geconfigureerd. Implementatie manifesten bevatten de *gewenste eigenschappen* voor elke module dubbele. IoT Edge-apparaten melden de *gerapporteerde eigenschappen* voor elke module terug.
 
-In elk implementatie manifest zijn twee modules vereist: `$edgeAgent`, en `$edgeHub`. Deze modules maken deel uit van de IoT Edge runtime waarmee het IoT Edge apparaat en de modules worden beheerd die erop worden uitgevoerd. Zie voor meer informatie over deze modules [inzicht in de runtime van IOT Edge en de bijbehorende architectuur](iot-edge-runtime.md).
+In elk implementatie manifest zijn twee modules vereist: `$edgeAgent` , en `$edgeHub` . Deze modules maken deel uit van de IoT Edge runtime waarmee het IoT Edge apparaat en de modules worden beheerd die erop worden uitgevoerd. Zie voor meer informatie over deze modules [inzicht in de runtime van IOT Edge en de bijbehorende architectuur](iot-edge-runtime.md).
 
 Naast de twee runtime modules kunt u Maxi maal 20 modules van uw eigen toevoegen om te worden uitgevoerd op een IoT Edge apparaat.
 
@@ -184,7 +184,7 @@ De eigenschap Sink kan een van de volgende waarden hebben:
 
 IoT Edge biedt ten minste één keer garanties. De IoT Edge hub slaat berichten lokaal op als een route het bericht niet aan de Sink kan verzenden. Bijvoorbeeld, als de IoT Edge hub geen verbinding kan maken met IoT Hub of de doel module niet is verbonden.
 
-IoT Edge hub worden de berichten opgeslagen tot de tijd die is opgegeven `storeAndForwardConfiguration.timeToLiveSecs` in de eigenschap van de [gewenste eigenschappen van de IOT Edge hub](module-edgeagent-edgehub.md).
+IoT Edge hub worden de berichten opgeslagen tot de tijd die is opgegeven in de `storeAndForwardConfiguration.timeToLiveSecs` eigenschap van de [gewenste eigenschappen van de IOT Edge hub](module-edgeagent-edgehub.md).
 
 ## <a name="define-or-update-desired-properties"></a>Gewenste eigenschappen definiëren of bijwerken
 

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 35e23d4d5babccb4507473826237997afec5f2cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335498"
 ---
 # <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>De prijs categorie van uw Azure Maps account beheren
@@ -25,13 +25,13 @@ Meer informatie over [het kiezen van de juiste prijs categorie in azure Maps](ht
 
 Als u de gekozen prijs categorie wilt weer geven, gaat u naar de optie **prijs categorie** in het menu instellingen.
 
-[![Gekozen prijs categorie](./media/how-to-manage-pricing-tier/view-pricing-tier.png) weer geven](./media/how-to-manage-pricing-tier/view-pricing-tier.png#lightbox)
+[![Gekozen prijs categorie ](./media/how-to-manage-pricing-tier/view-pricing-tier.png) weer geven](./media/how-to-manage-pricing-tier/view-pricing-tier.png#lightbox)
 
 ## <a name="change-a-pricing-tier"></a>Een prijs categorie wijzigen
 
 Nadat u uw Azure Maps-account hebt gemaakt, kunt u de prijs categorie voor uw Azure Maps-account bijwerken of verlagen. Als u een upgrade of downgrade wilt uitvoeren, gaat u naar de optie **prijs categorie** in het menu instellingen. Selecteer de prijs categorie die niet is gemarkeerd. Selecteer de knop **Opslaan** om de gekozen prijs categorie optie op te slaan.
 
-[![Een prijs categorie](./media/how-to-manage-pricing-tier/change-pricing-tier.png) wijzigen](./media/how-to-manage-pricing-tier/change-pricing-tier.png#lightbox)
+[![Een prijs categorie ](./media/how-to-manage-pricing-tier/change-pricing-tier.png) wijzigen](./media/how-to-manage-pricing-tier/change-pricing-tier.png#lightbox)
 
 > [!NOTE]
 > U hoeft geen nieuwe abonnements sleutels of client-ID te genereren (voor Azure AD-verificatie) als u de prijs categorie voor uw Azure Maps-account bijwerkt of downgradet.

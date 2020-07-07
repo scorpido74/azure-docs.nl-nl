@@ -14,10 +14,10 @@ ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582201"
 ---
 # <a name="manage-assets"></a>Assets beheren
@@ -43,9 +43,9 @@ Controleer het volgende voordat u begint met ontwikkelen:
 
 Nadat de digitale bestanden zijn geüpload naar de opslag en zijn gekoppeld aan een Asset, kunnen ze worden gebruikt in de Media Services versleuteling, streaming en analyse van inhouds werk stromen. Een van de algemene Media Services werk stromen is het uploaden, coderen en streamen van een bestand. In deze sectie vindt u een overzicht van de algemene stappen.
 
-1. Gebruik de API van Media Services v3 om een asset voor nieuwe 'invoer' te maken. Met deze bewerking wordt een container gemaakt in het opslagaccount dat aan uw Media Services-account is gekoppeld. De API retourneert de naam van de container (bijvoorbeeld `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"`).
+1. Gebruik de API van Media Services v3 om een asset voor nieuwe 'invoer' te maken. Met deze bewerking wordt een container gemaakt in het opslagaccount dat aan uw Media Services-account is gekoppeld. De API retourneert de naam van de container (bijvoorbeeld `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"` ).
 
-    Als u al een BLOB-container hebt die u aan een Asset wilt koppelen, kunt u de naam van de container opgeven tijdens het maken van de Asset. Media Services ondersteunt momenteel alleen blobs in de hoofdmap van de container en geen mappen met paden in de bestandsnaam. Dus het werkt voor een container met de bestandsnaam 'input.mp4'. Een container met de bestands naam ' Video's/invoer/invoer. MP4 ' werkt echter niet.
+    Als u al een BLOB-container hebt die u aan een Asset wilt koppelen, kunt u de naam van de container opgeven tijdens het maken van de Asset. Media Services ondersteunt momenteel alleen blobs in de hoofdmap van de container en geen mappen met paden in de bestandsnaam. Dus het werkt voor een container met de bestandsnaam 'input.mp4'. Een container met de bestands naam ' Video's/invoer/input.mp4 ' werkt echter niet.
 
     U kunt de Azure CLI gebruiken om bestanden rechtstreeks in een opslagaccount en container te uploaden waarvoor u rechten hebt in uw abonnement.
 
@@ -58,14 +58,14 @@ Nadat de digitale bestanden zijn geüpload naar de opslag en zijn gekoppeld aan 
 
     U kunt de Media Services-API gebruiken voor het [vermelden van de URL's voor de asset-container](https://docs.microsoft.com/rest/api/media/assets/listcontainersas).
 
-    **AssetContainerSas. listContainerSas** haalt een [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) -para meter op die `expiryTime`u hebt ingesteld. De tijd moet worden ingesteld op < 24 uur.
+    **AssetContainerSas. listContainerSas** haalt een [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) -para meter op die u hebt ingesteld `expiryTime` . De tijd moet worden ingesteld op < 24 uur.
 
     [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) retourneert meerdere SAS-url's als er twee opslag account sleutels voor elk opslag account zijn. Een opslag account heeft twee sleutels, omdat het een failover en naadloze rotatie van de sleutels van een opslag account biedt. De eerste SAS-URL vertegenwoordigt de eerste sleutel voor het opslag account en de tweede SAS-URL staat voor de tweede sleutel.
 3. Gebruik de Azure Storage Api's of Sdk's (bijvoorbeeld de [Storage rest API](../../storage/common/storage-rest-api-auth.md) of [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) om bestanden te uploaden naar de-container van de Asset.
 4. Gebruik Media Services v3-API's om een transformatie en een taak te maken om uw 'invoer'-asset te verwerken. Zie [trans formaties en jobs](transform-concept.md)voor meer informatie.
 5. De inhoud van de Asset ' output ' streamen.
 
-### <a name="create-a-new-asset"></a>Nieuwe asset maken
+### <a name="create-a-new-asset"></a>Een nieuwe Asset maken
 
 > [!NOTE]
 > De eigenschappen van een Asset van het type datetime zijn altijd in UTC-indeling.

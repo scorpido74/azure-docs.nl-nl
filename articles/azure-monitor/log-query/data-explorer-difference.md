@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 04/01/2020
 ms.openlocfilehash: 265179909c8ae4a6fa630b835bc9993f042d6460
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80585700"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Verschillen in de query taal van Azure Monitor-logboek
@@ -25,7 +25,7 @@ In de volgende secties worden elementen beschreven van de Kusto-query taal die n
 ### <a name="statements-not-supported-in-azure-monitor"></a>Instructies worden niet ondersteund in Azure Monitor
 
 * [Toe](/azure/kusto/query/aliasstatement)
-* [Queryparameters](/azure/kusto/query/queryparametersstatement)
+* [Query parameters](/azure/kusto/query/queryparametersstatement)
 
 ### <a name="functions-not-supported-in-azure-monitor"></a>Functies die niet worden ondersteund in Azure Monitor
 
@@ -33,7 +33,7 @@ In de volgende secties worden elementen beschreven van de Kusto-query taal die n
 * [cursor_after()](/azure/kusto/query/cursorafterfunction)
 * [cursor_before_or_at()](/azure/kusto/query/cursorbeforeoratfunction)
 * [cursor_current (), current_cursor ()](/azure/kusto/query/cursorcurrent)
-* [database()](/azure/kusto/query/databasefunction)
+* [Data Base ()](/azure/kusto/query/databasefunction)
 * [current_principal()](/azure/kusto/query/current-principalfunction)
 * [extent_id()](/azure/kusto/query/extentidfunction)
 * [extent_tags()](/azure/kusto/query/extenttagsfunction)
@@ -45,7 +45,7 @@ In de volgende secties worden elementen beschreven van de Kusto-query taal die n
 ### <a name="plugins-not-supported-in-azure-monitor"></a>Invoeg toepassingen die niet worden ondersteund in Azure Monitor
 
 * [Python-invoeg toepassing](/azure/kusto/query/pythonplugin)
-* [sql_request-invoeg toepassing](/azure/kusto/query/sqlrequestplugin)
+* [Invoegtoepassing voor sql_request](/azure/kusto/query/sqlrequestplugin)
 
 
 ## <a name="additional-operators-in-azure-monitor"></a>Extra Opera tors in Azure Monitor

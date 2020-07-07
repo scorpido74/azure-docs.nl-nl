@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: e8a9fbe6072f3628d755ad3ad5aa5a623fc3ab23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80519949"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-google-login"></a>Uw App Service-of Azure Functions-app configureren voor het gebruik van Google-aanmelding
@@ -25,8 +25,8 @@ Als u de procedure in dit onderwerp wilt volt ooien, moet u een Google-account h
 ## <a name="register-your-application-with-google"></a><a name="register"> </a>Uw toepassing registreren bij Google
 
 1. Volg de Google-documentatie bij [Google-aanmelding voor apps aan de server zijde](https://developers.google.com/identity/sign-in/web/server-side-flow) om een client-id en client geheim te maken. U hoeft geen code wijzigingen aan te brengen. Gebruik hiervoor de volgende informatie:
-    - Voor **geautoriseerde java script**- `https://<app-name>.azurewebsites.net` oorsprong gebruikt u de naam van uw app in * \<de app-naam>*.
-    - Gebruik `https://<app-name>.azurewebsites.net/.auth/login/google/callback`voor **geautoriseerde omleidings-URI**.
+    - Gebruik met de naam van uw app in voor **geautoriseerde java script-oorsprong** `https://<app-name>.azurewebsites.net` *\<app-name>* .
+    - Gebruik voor **geautoriseerde omleidings-URI** `https://<app-name>.azurewebsites.net/.auth/login/google/callback` .
 1. Kopieer de App-ID en de geheime waarden van de app.
 
     > [!IMPORTANT]
@@ -35,7 +35,7 @@ Als u de procedure in dit onderwerp wilt volt ooien, moet u een Google-account h
 ## <a name="add-google-information-to-your-application"></a><a name="secrets"> </a>Google-gegevens toevoegen aan uw toepassing
 
 1. Ga in het [Azure Portal]naar uw app service-app.
-1. Selecteer **instellingen** > **verificatie/autorisatie**en zorg ervoor dat **app service-verificatie** is **ingeschakeld**.
+1. Selecteer **instellingen**  >  **verificatie/autorisatie**en zorg ervoor dat **app service-verificatie** is **ingeschakeld**.
 1. Selecteer **Google**en plak de waarden van de App-ID en het app-geheim die u eerder hebt verkregen. Schakel de scopes in die nodig zijn voor uw toepassing.
 1. Selecteer **OK**.
 
@@ -65,5 +65,5 @@ U bent nu klaar om Google te gebruiken voor verificatie in uw app.
 
 [Google apis]: https://go.microsoft.com/fwlink/p/?LinkId=268303
 
-[Azure Portal]: https://portal.azure.com/
+[Azure-portal]: https://portal.azure.com/
 

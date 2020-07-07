@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
 ms.openlocfilehash: d29b2b7c2b9194f20afe4c74d117847f0e343b12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80422606"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Externe hulpprogram ma's gebruiken voor het oplossen van problemen met Azure VM
@@ -39,7 +39,7 @@ psexec \\<computer>-u user -s cmd
 
 >[!NOTE]
 >* De opdracht moet worden uitgevoerd op een computer die zich in hetzelfde virtuele netwerk bevindt.
->* DIP of hostnaam kan worden gebruikt om computer \<> te vervangen.
+>* DIP of hostnaam kan worden gebruikt om te vervangen \<computer> .
 >* De para meter-s zorgt ervoor dat de opdracht wordt aangeroepen met behulp van systeem account (Administrator-machtiging).
 >* PsExec maakt gebruik van TCP-poorten 135 en 445. Als gevolg hiervan moeten de twee poorten open zijn op de firewall.
 
@@ -125,7 +125,7 @@ Set-AzVMCustomScriptExtension -Name "CustomScriptExtension" -ResourceGroupName $
 >[!NOTE]
 >TCP-poort 5986 (HTTPS) moet zijn geopend, zodat u deze optie kunt gebruiken.
 >
->Voor Azure Resource Manager Vm's moet u poort 5986 openen voor de netwerk beveiligings groep (NSG). Zie beveiligings groepen voor meer informatie. 
+>Voor Azure Resource Manager Vm's moet u poort 5986 openen voor de netwerk beveiligings groep (NSG). Zie Beveiligingsgroepen voor meer informatie. 
 >
 >Voor virtuele machines van RDFE moet u een eind punt hebben met een particuliere poort (5986) en een open bare poort. Daarna moet u die open bare poort ook openen op de NSG.
 
@@ -208,13 +208,13 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 >[!NOTE]
 >TCP-poort 135 of 445 moet geopend zijn om deze optie te kunnen gebruiken.
 >
->Voor Azure Resource Manager Vm's moet u poort 5986 openen op de NSG. Zie beveiligings groepen voor meer informatie. 
+>Voor Azure Resource Manager Vm's moet u poort 5986 openen op de NSG. Zie Beveiligingsgroepen voor meer informatie. 
 >
 >Voor virtuele machines van RDFE moet u een eind punt hebben met een particuliere poort 5986 en een open bare poort. U moet deze open bare poort ook openen op de NSG.
 
-1. Open de REGI ster-editor (Regedit. exe) vanaf een andere VM in hetzelfde virtuele netwerk.
+1. Open de REGI ster-editor (regedit.exe) van een andere VM in hetzelfde virtuele netwerk.
 
-2. Selecteer **bestand** > **Connect netwerk Registry**.
+2. Selecteer **bestand**  >  **Connect netwerk Registry**.
 
    ![REGI ster-editor](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 
@@ -231,7 +231,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 >[!NOTE]
 >TCP-poorten 135 of 445 moeten zijn geopend om deze optie te kunnen gebruiken.
 >
->Voor Azure Resource Manager Vm's moet u poort 5986 openen op de NSG. Zie beveiligings groepen voor meer informatie. 
+>Voor Azure Resource Manager Vm's moet u poort 5986 openen op de NSG. Zie Beveiligingsgroepen voor meer informatie. 
 >
 >Voor virtuele machines van RDFE moet u een eind punt hebben met een particuliere poort 5986 en een open bare poort. U moet deze open bare poort ook openen op de NSG.
 

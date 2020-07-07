@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 3032585c6f0a5cc6143eee06b12b6def50cd7cd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80297710"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000-serie software, hoge Beschik baarheid en netwerk vereisten
@@ -122,7 +122,7 @@ We raden u aan om de firewall regels voor uitgaand verkeer, op basis van StorSim
 
 Een routerings metriek is gekoppeld aan de interfaces en de gateway die de gegevens naar de opgegeven netwerken routeren. De metrische gegevens van de route ring worden gebruikt door het routerings protocol om het beste pad naar een bepaalde bestemming te berekenen, als er meerdere paden naar hetzelfde doel zijn. Hoe lager de routerings metriek, des te hoger de voor keur.
 
-Als meerdere netwerk interfaces en gateways zijn geconfigureerd voor kanaal verkeer, worden de metrische gegevens van de route ring in de context van StorSimple afgespeeld om de relatieve volg orde te bepalen waarin de interfaces zullen worden gebruikt. De metrische gegevens van de route ring kunnen niet worden gewijzigd door de gebruiker. U kunt de `Get-HcsRoutingTable` cmdlet echter gebruiken om de routerings tabel (en meet waarden) op uw StorSimple-apparaat af te drukken. Meer informatie over de cmdlet Get-HcsRoutingTable bij het [oplossen van problemen met StorSimple-implementatie](storsimple-troubleshoot-deployment.md).
+Als meerdere netwerk interfaces en gateways zijn geconfigureerd voor kanaal verkeer, worden de metrische gegevens van de route ring in de context van StorSimple afgespeeld om de relatieve volg orde te bepalen waarin de interfaces zullen worden gebruikt. De metrische gegevens van de route ring kunnen niet worden gewijzigd door de gebruiker. U kunt de cmdlet echter gebruiken `Get-HcsRoutingTable` om de routerings tabel (en meet waarden) op uw StorSimple-apparaat af te drukken. Meer informatie over de cmdlet Get-HcsRoutingTable bij het [oplossen van problemen met StorSimple-implementatie](storsimple-troubleshoot-deployment.md).
 
 De Routing metric-algoritme die wordt gebruikt voor update 2 en latere versies kunnen als volgt worden uitgelegd.
 
@@ -233,7 +233,7 @@ StorSimple device model 8600 bevat naast de primaire behuizing ook een EBOD-behu
 * Zorg ervoor dat zowel de EBOD Enclosure controller-modules, zowel SAS-kabels als alle harde schijven altijd zijn geïnstalleerd.
 * Als er een storing optreedt in een module van een EBOD Enclosure controller, moet u onmiddellijk een vervanging aanvragen.
 * Als er een fout optreedt in een module van een EBOD Enclosure controller, moet u ervoor zorgen dat de andere controller module actief is voordat u de defecte module vervangt. Als u wilt controleren of een controller actief is, gaat u naar [de actieve controller op het apparaat identificeren](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device).
-* Tijdens een vervanging van een EBOD-controller module controleert u voortdurend de status van het onderdeel in de StorSimple-Apparaatbeheer-service door de**Hardware-status**te **controleren** > .
+* Tijdens een vervanging van een EBOD-controller module controleert u voortdurend de status van het onderdeel in de StorSimple-Apparaatbeheer-service door de hardware-status te **controleren**  >  **Hardware health**.
 * Als een SAS-kabel uitvalt of moet worden vervangen (Microsoft Ondersteuning moet worden betrokken bij een dergelijke bepaling), moet u ervoor zorgen dat u alleen de SAS-kabel verwijdert die moet worden vervangen.
 * Verwijder beide SAS-kabels niet gelijktijdig van het systeem op een bepaald moment.
 

@@ -9,10 +9,10 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.openlocfilehash: fb3484d013314897ea2e9157b642d8f2b85dcd60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80437633"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Enterprise Security Package clusters maken en configureren in azure HDInsight
@@ -49,7 +49,7 @@ In deze sectie gebruikt u een Azure Quick Start-implementatie sjabloon voor het 
     |Resourcegroep|Selecteer **nieuwe maken**en voer de naam in`OnPremADVRG`|
     |Locatie|Selecteer een locatie.|
     |Gebruikers naam beheerder|`HDIFabrikamAdmin`|
-    |Beheerderswachtwoord|Voer een wacht woord in.|
+    |Beheerderswachtwoord|Voer een wachtwoord in.|
     |Domeinnaam|`HDIFabrikam.com`|
     |DNS-voor voegsel|`hdifabrikam`|
 
@@ -65,36 +65,36 @@ In deze sectie gebruikt u een Azure Quick Start-implementatie sjabloon voor het 
 In deze sectie maakt u de gebruikers die toegang hebben tot het HDInsight-cluster aan het einde van deze hand leiding.
 
 1. Maak verbinding met de domein controller met behulp van Extern bureaublad.
-    1. Navigeer vanuit het Azure Portal naar **resource groepen** > **OnPremADVRG** > **adVM** > **Connect**.
+    1. Navigeer vanuit het Azure Portal naar **resource groepen**  >  **OnPremADVRG**  >  **adVM**  >  **Connect**.
     1. Selecteer in de vervolg keuzelijst **IP-adres** het open bare IP-adres.
     1. Selecteer **RDP-bestand downloaden**en open vervolgens het bestand.
     1. Gebruik `HDIFabrikam\HDIFabrikamAdmin` als de gebruikers naam.
     1. Voer het wacht woord in dat u hebt gekozen voor het beheerders account.
     1. Selecteer **OK**.
 
-1. Navigeer op de domein controller **Serverbeheer** dash board naar **hulpprogram ma's** > **Active Directory gebruikers en computers**.
+1. Navigeer op de domein controller **Serverbeheer** dash board naar **hulpprogram ma's**  >  **Active Directory gebruikers en computers**.
 
     ![Open Active Directory Management op het Serverbeheer-dash board](./media/apache-domain-joined-create-configure-enterprise-security-cluster/server-manager-active-directory-screen.png)
 
 1. Maak twee nieuwe gebruikers: **HDIAdmin** en **HDIUser**. Deze twee gebruikers worden aangemeld bij HDInsight-clusters.
 
-    1. Klik op de pagina **Active Directory gebruikers en computers** met de rechter `HDIFabrikam.com`muisknop op en navigeer naar **nieuwe** > **gebruiker**.
+    1. Klik op de pagina **Active Directory gebruikers en computers** met de rechter muisknop op `HDIFabrikam.com` en navigeer naar **nieuwe**  >  **gebruiker**.
 
         ![Een nieuwe Active Directory gebruiker maken](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-user.png)
 
-    1. Op de pagina **Nieuw object-gebruiker** voert `HDIUser` u voor de voor **naam** en **aanmeldings naam**van de gebruiker in. De overige velden worden automatisch ingevuld. Selecteer **volgende**.
+    1. Op de pagina **Nieuw object-gebruiker** voert u `HDIUser` voor de voor **naam** en **aanmeldings naam**van de gebruiker in. De overige velden worden automatisch ingevuld. Selecteer vervolgens **Volgende**.
 
         ![Het eerste gebruikers object voor de beheerder maken](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0020.png)
 
     1. Voer in het pop-upvenster dat wordt weer gegeven een wacht woord voor het nieuwe account in. Selecteer **wacht woord verloopt nooit**en klik vervolgens op **OK** in het pop-upbericht.
     1. Klik op **volgende**en vervolgens op **volt ooien** om het nieuwe account te maken.
-    1. Herhaal de bovenstaande stappen voor het maken van `HDIAdmin`de gebruiker.
+    1. Herhaal de bovenstaande stappen voor het maken van de gebruiker `HDIAdmin` .
 
         ![Een tweede gebruikers object voor de beheerder maken](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0024.png)
 
 1. Een globale beveiligings groep maken.
 
-    1. Klik met de rechter muisknop op `HDIFabrikam.com` **Active Directory gebruikers en computers**en navigeer vervolgens naar **nieuwe** > **groep**.
+    1. Klik met de rechter muisknop op **Active Directory gebruikers en computers** `HDIFabrikam.com` en navigeer vervolgens naar **nieuwe**  >  **groep**.
 
     1. Voer `HDIUserGroup` in het tekstvak **groeps naam** in.
 
@@ -107,7 +107,7 @@ In deze sectie maakt u de gebruikers die toegang hebben tot het HDInsight-cluste
 1. Leden toevoegen aan **HDIUserGroup**.
 
     1. Klik met de rechter muisknop op **HDIUser** en selecteer **toevoegen aan groep...**.
-    1. Typ `HDIUserGroup`in het tekstvak **Geef de object namen op** . Selecteer **OK**en **Klik nogmaals op** de pop-up.
+    1. Typ in het tekstvak **Geef de object namen op** `HDIUserGroup` . Selecteer **OK**en **Klik nogmaals op** de pop-up.
     1. Herhaal de vorige stappen voor het **HDIAdmin** -account.
 
         ![Voeg de leden HDIUser toe aan de groep HDIUserGroup](./media/apache-domain-joined-create-configure-enterprise-security-cluster/active-directory-add-users-to-group.png)
@@ -119,9 +119,9 @@ De gebruikers worden gesynchroniseerd met Azure AD.
 ### <a name="create-an-azure-ad-directory"></a>Een Azure AD-Directory maken
 
 1. Meld u aan bij Azure Portal.
-1. Selecteer **een resource maken** en type `directory`. Selecteer **Azure Active Directory** > **maken**.
-1. Voer `HDIFabrikam`onder **organisatie naam**in.
-1. Voer `HDIFabrikamoutlook`bij **initiële domein naam**in.
+1. Selecteer **een resource maken** en type `directory` . Selecteer **Azure Active Directory**  >  **maken**.
+1. Voer onder **organisatie naam**in `HDIFabrikam` .
+1. Voer bij **initiële domein naam**in `HDIFabrikamoutlook` .
 1. Selecteer **Maken**.
 
     ![Een Azure AD-Directory maken](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-new-directory.png)
@@ -130,7 +130,7 @@ De gebruikers worden gesynchroniseerd met Azure AD.
 
 1. Selecteer in uw nieuwe **Azure Active Directory**onder **beheren**de optie **aangepaste domein namen**.
 1. Selecteer **+ aangepast domein toevoegen**.
-1. Voer `HDIFabrikam.com`onder **aangepaste domein naam**, en selecteer vervolgens **domein toevoegen**.
+1. Voer onder **aangepaste domein naam**, `HDIFabrikam.com` en selecteer vervolgens **domein toevoegen**.
 1. Voeg vervolgens [uw DNS-gegevens toe aan de registratie van het domein](../../active-directory/fundamentals/add-custom-domain.md#add-your-dns-information-to-the-domain-registrar).
 
 ![Een aangepast domein maken](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-custom-domain.png)
@@ -139,7 +139,7 @@ De gebruikers worden gesynchroniseerd met Azure AD.
 
 1. Selecteer in uw nieuwe **Azure Active Directory**onder **beheren**de optie **groepen**.
 1. Selecteer **+ nieuwe groep**.
-1. Voer `AAD DC Administrators`in het tekstvak **groeps naam** in.
+1. Voer in het tekstvak **groeps naam** in `AAD DC Administrators` .
 1. Selecteer **Maken**.
 
 ## <a name="configure-your-azure-ad-tenant"></a>Uw Azure AD-Tenant configureren
@@ -150,7 +150,7 @@ Maak een Active Directory-Tenant beheerder.
 
 1. Meld u aan bij de Azure Portal en selecteer uw Azure AD-Tenant, **HDIFabrikam**.
 
-1. Navigeren om **Manage** > **gebruikers** > te beheren**nieuwe gebruiker**.
+1. Navigeren om gebruikers te **beheren**  >  **Users**  >  **nieuwe gebruiker**.
 
 1. Voer de volgende gegevens in voor de nieuwe gebruiker:
 
@@ -159,7 +159,7 @@ Maak een Active Directory-Tenant beheerder.
     |Eigenschap |Beschrijving |
     |---|---|
     |Gebruikersnaam|Voer `fabrikamazureadmin` in het tekstvak in. Selecteer in de vervolg keuzelijst domein naam de optie`hdifabrikam.com`|
-    |Naam| Voer `fabrikamazureadmin` in.|
+    |Name| Voer `fabrikamazureadmin` in.|
 
     **Wachtwoord**
     1. Selecteer **Ik wil het wacht woord maken**.
@@ -190,11 +190,11 @@ Maak een Active Directory-Tenant beheerder.
 
 1. Selecteer **Express-instellingen gebruiken**.
 
-1. Voer op de pagina **verbinding maken met Azure AD** de gebruikers naam en het wacht woord in van de globale beheerder voor Azure AD. Gebruik de gebruikers `fabrikamazureadmin@hdifabrikam.com` naam die u hebt gemaakt tijdens het configureren van uw Active Directory-Tenant. Selecteer **volgende**.
+1. Voer op de pagina **verbinding maken met Azure AD** de gebruikers naam en het wacht woord in van de globale beheerder voor Azure AD. Gebruik de gebruikers naam `fabrikamazureadmin@hdifabrikam.com` die u hebt gemaakt tijdens het configureren van uw Active Directory-Tenant. Selecteer vervolgens **Volgende**.
 
     ![De pagina verbinding maken met Azure AD](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0058.png)
 
-1. Voer op de pagina **verbinding maken met Active Directory Domain Services** de gebruikers naam en het wacht woord in voor een ondernemings Administrator-account. Gebruik de gebruikers `HDIFabrikam\HDIFabrikamAdmin` naam en het wacht woord dat u eerder hebt gemaakt. Selecteer **volgende**.
+1. Voer op de pagina **verbinding maken met Active Directory Domain Services** de gebruikers naam en het wacht woord in voor een ondernemings Administrator-account. Gebruik de gebruikers naam `HDIFabrikam\HDIFabrikamAdmin` en het wacht woord dat u eerder hebt gemaakt. Selecteer vervolgens **Volgende**.
 
    ![De pagina verbinding maken met Azure AD](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0060.png)
 1. Selecteer **volgende**op de pagina **aanmeldings configuratie van Azure AD** .
@@ -204,22 +204,22 @@ Maak een Active Directory-Tenant beheerder.
 
    ![De pagina gereed om te configureren](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0064.png)
 
-1. Selecteer op de pagina **configuratie voltooid** de optie **Afsluiten**.
+1. Selecteer de pagina **Configuratie voltooid** op **Afsluiten**.
    ![De pagina configuratie voltooid](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0078.png)
 
 1. Nadat de synchronisatie is voltooid, controleert u of de gebruikers die u hebt gemaakt in de map IaaS, worden gesynchroniseerd met Azure AD.
    1. Meld u aan bij Azure Portal.
-   1. Selecteer **Azure Active Directory** > **HDIFabrikam** > -**gebruikers**.
+   1. Selecteer **Azure Active Directory**  >  **HDIFabrikam**-  >  **gebruikers**.
 
 ### <a name="create-a-user-assigned-managed-identity"></a>Een door de gebruiker toegewezen beheerde identiteit maken
 
 Maak een door de gebruiker toegewezen beheerde identiteit die u kunt gebruiken om Azure AD Domain Services (Azure AD DS) te configureren. Zie een [rol maken, weer geven, verwijderen of toewijzen aan een door de gebruiker toegewezen beheerde identiteit met behulp van de Azure Portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)voor meer informatie.
 
 1. Meld u aan bij Azure Portal.
-1. Selecteer **een resource maken** en type `managed identity`. Selecteer door de **gebruiker toegewezen beheerde identiteit** > **maken**.
-1. Voer `HDIFabrikamManagedIdentity`in voor de **resource naam**.
+1. Selecteer **een resource maken** en type `managed identity` . Selecteer door de **gebruiker toegewezen beheerde identiteit**  >  **maken**.
+1. Voer in voor de **resource naam** `HDIFabrikamManagedIdentity` .
 1. Selecteer uw abonnement.
-1. Onder **resource groep**selecteert u **nieuwe maken** en invoeren `HDIFabrikam-CentralUS`.
+1. Onder **resource groep**selecteert u **nieuwe maken** en invoeren `HDIFabrikam-CentralUS` .
 1. Onder **locatie**selecteert u **Centraal VS**.
 1. Selecteer **Maken**.
 
@@ -248,7 +248,7 @@ Volg deze stappen om Azure AD DS in te scha kelen. Zie [Azure AD DS inschakelen 
     ```
 
 1. Meld u aan bij Azure Portal.
-1. Selecteer **resource maken**, invoeren `Domain services`en selecteer **Azure AD Domain Services** > **maken**.
+1. Selecteer **resource maken**, invoeren `Domain services` en selecteer **Azure AD Domain Services**  >  **maken**.
 1. Op de pagina **basis beginselen** :
     1. Selecteer bij **mapnaam**de Azure AD-map die u hebt gemaakt: **HDIFabrikam**.
     1. Voer voor **DNS-domein naam** *HDIFabrikam.com*in.
@@ -265,7 +265,7 @@ Volg deze stappen om Azure AD DS in te scha kelen. Zie [Azure AD DS inschakelen 
 
     ![De Azure AD-Beheerders groep weer geven](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0088.png)
 
-1. Schakel volledige synchronisatie in op de pagina **synchronisatie** door **alle** > **OK**te selecteren.
+1. Schakel volledige synchronisatie in op de pagina **synchronisatie** door **alle**  >  **OK**te selecteren.
 
     ![Azure AD DS-synchronisatie inschakelen](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0090.png)
 
@@ -316,13 +316,13 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 ```
 
 > [!NOTE]  
-> Elk hulp programma of een toepassing die een geldige PKCS 10-aanvraag (Public \#Key Cryptography Standards) maakt, kan worden gebruikt om de TLS/SSL-certificaat aanvraag te vormen.
+> Elk hulp programma of een toepassing die een geldige PKCS 10-aanvraag (Public Key Cryptography Standards) maakt, \# kan worden gebruikt om de TLS/SSL-certificaat aanvraag te vormen.
 
 Controleer of het certificaat is geïnstalleerd in het **persoonlijke** archief van de computer:
 
 1. Start micro soft Management Console (MMC).
 1. Voeg de module **certificaten** toe waarmee certificaten op de lokale computer worden beheerd.
-1. Vouw **certificaten (lokale computer)** > **persoonlijke** > **certificaten**uit. Er moet een nieuw certificaat bestaan in het **persoonlijke** archief. Dit certificaat wordt uitgegeven aan de volledig gekwalificeerde hostnaam.
+1. Vouw **Certificaten (lokale computer)**  > **Persoonlijk** > **Certificaten** uit. Er moet een nieuw certificaat bestaan in het **persoonlijke** archief. Dit certificaat wordt uitgegeven aan de volledig gekwalificeerde hostnaam.
 
     ![Lokale certificaten maken verifiëren](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0102.png)
 
@@ -333,10 +333,10 @@ Controleer of het certificaat is geïnstalleerd in het **persoonlijke** archief 
     ![De pagina persoonlijke sleutel exporteren van de wizard Certificaat exporteren](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0103.png)
 
 1. Behoud op de pagina **bestands indeling voor export** de standaard instellingen en selecteer **volgende**.
-1. Typ een wacht woord voor de persoonlijke sleutel op de pagina **wacht woord** . Voor **versleuteling**selecteert u **TripleDES-SHA1**. Selecteer **volgende**.
+1. Typ een wacht woord voor de persoonlijke sleutel op de pagina **wacht woord** . Voor **versleuteling**selecteert u **TripleDES-SHA1**. Selecteer vervolgens **Volgende**.
 1. Typ het pad en de naam voor het geëxporteerde certificaat bestand op de pagina **te exporteren bestand** en selecteer vervolgens **volgende**. De bestands naam moet de extensie. pfx hebben. Dit bestand wordt geconfigureerd in de Azure Portal om een beveiligde verbinding tot stand te brengen.
 1. Schakel LDAPS in voor een beheerd domein van Azure AD DS.
-    1. Selecteer het domein `HDIFabrikam.com`uit de Azure Portal.
+    1. Selecteer het domein uit de Azure Portal `HDIFabrikam.com` .
     1. Selecteer onder **beheren**de optie **secure LDAP**.
     1. Selecteer op de pagina **secure LDAP** onder **secure LDAP**de optie **inschakelen**.
     1. Blader naar het. pfx-certificaat bestand dat u hebt geëxporteerd op uw computer.
@@ -346,7 +346,7 @@ Controleer of het certificaat is geïnstalleerd in het **persoonlijke** archief 
 
 1. Nu u LDAPS hebt ingeschakeld, moet u ervoor zorgen dat deze bereikbaar is door poort 636 in te scha kelen.
     1. Selecteer in de resource groep **HDIFabrikam-centralus** de netwerk beveiligings groep **AADDS-HDIFabrikam.com-NSG**.
-    1. Selecteer onder **instellingen**de optie **regels** > voor inkomende beveiliging**toevoegen**.
+    1. Selecteer onder **instellingen**de optie **regels voor inkomende beveiliging**  >  **toevoegen**.
     1. Voer op de pagina **inkomende beveiligings regel toevoegen** de volgende eigenschappen in en selecteer **toevoegen**:
 
         | Eigenschap | Waarde |
@@ -357,8 +357,8 @@ Controleer of het certificaat is geïnstalleerd in het **persoonlijke** archief 
         | Poortbereik van doel | 636 |
         | Protocol | Alle |
         | Bewerking | Toestaan |
-        | Prioriteit | \<Gewenst getal> |
-        | Naam | Port_LDAP_636 |
+        | Prioriteit | \<Desired number> |
+        | Name | Port_LDAP_636 |
 
     ![Het dialoog venster "binnenkomende beveiligings regel toevoegen"](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 
@@ -379,7 +379,7 @@ Voor deze stap zijn de volgende vereisten vereist:
     $virtualNetwork | Set-AzVirtualNetwork
     ```
 
-1. Maak een peer-relatie tussen het virtuele netwerk dat als host fungeert`HDIFabrikam-AADDSVNET`voor Azure AD DS () en het virtuele netwerk dat het HDInsight-cluster met`HDIFabrikam-HDIVNet`ESP-functionaliteit () moet hosten. Gebruik de volgende Power shell-code voor de peering van de twee virtuele netwerken.
+1. Maak een peer-relatie tussen het virtuele netwerk dat als host fungeert voor Azure AD DS ( `HDIFabrikam-AADDSVNET` ) en het virtuele netwerk dat het HDInsight-cluster met ESP-functionaliteit () moet hosten `HDIFabrikam-HDIVNet` . Gebruik de volgende Power shell-code voor de peering van de twee virtuele netwerken.
 
     ```powershell
     Add-AzVirtualNetworkPeering -Name 'HDIVNet-AADDSVNet' -RemoteVirtualNetworkId (Get-AzVirtualNetwork -ResourceGroupName 'HDIFabrikam-CentralUS').Id -VirtualNetwork (Get-AzVirtualNetwork -ResourceGroupName 'HDIFabrikam-WestUS')
@@ -390,7 +390,7 @@ Voor deze stap zijn de volgende vereisten vereist:
 1. Maak een nieuw Azure Data Lake Storage Gen2 account met de naam **Hdigen2store**. Configureer het account met de door de gebruiker beheerde identiteit **HDIFabrikamManagedIdentity**. Zie [Azure data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](../hdinsight-hadoop-use-data-lake-storage-gen2.md)voor meer informatie.
 
 1. Stel aangepaste DNS in op het virtuele netwerk **HDIFabrikam-AADDSVNET** .
-    1. Ga naar het Azure Portal > **resource groepen** > **OnPremADVRG** > **HDIFabrikam-AADDSVNET** > **DNS-servers**.
+    1. Ga naar het Azure Portal > **resource groepen**  >  **OnPremADVRG**  >  **HDIFabrikam-AADDSVNET**  >  **DNS-servers**.
     1. Selecteer **aangepast** en voer *10.0.0.4* en *10.0.0.5*in.
     1. Selecteer **Opslaan**.
 
@@ -402,14 +402,14 @@ Voor deze stap zijn de volgende vereisten vereist:
 
     1. Voor **beveiliging en netwerken** (sectie 2) vult u de volgende gegevens in:
         * Selecteer onder **Enterprise Security Package** **ingeschakeld**.
-        * Selecteer **gebruiker cluster beheerder** en selecteer het **HDIAdmin** -account dat u hebt gemaakt als de on-premises beheer gebruiker. Klik op **selecteren**.
-        * Selecteer **cluster toegangs groep** > **HDIUserGroup**. Alle gebruikers die u in de toekomst aan deze groep toevoegt, hebben toegang tot HDInsight-clusters.
+        * Selecteer **gebruiker cluster beheerder** en selecteer het **HDIAdmin** -account dat u hebt gemaakt als de on-premises beheer gebruiker. Klik op **Selecteren**.
+        * Selecteer **cluster toegangs groep**  >  **HDIUserGroup**. Alle gebruikers die u in de toekomst aan deze groep toevoegt, hebben toegang tot HDInsight-clusters.
 
             ![Selecteer de cluster toegangs groep HDIUserGroup](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0129.jpg)
 
     1. Voer de overige stappen van de cluster configuratie uit en controleer de details van de **cluster samenvatting**. Selecteer **Maken**.
 
-1. Meld u aan bij de Ambari-gebruikers interface voor het zojuist `https://CLUSTERNAME.azurehdinsight.net`gemaakte cluster op. Gebruik de gebruikers naam `hdiadmin@hdifabrikam.com` van uw beheerder en het bijbehorende wacht woord.
+1. Meld u aan bij de Ambari-gebruikers interface voor het zojuist gemaakte cluster op `https://CLUSTERNAME.azurehdinsight.net` . Gebruik de gebruikers naam van uw beheerder `hdiadmin@hdifabrikam.com` en het bijbehorende wacht woord.
 
     ![Het aanmeldings venster van de Apache Ambari-gebruikers interface](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0135.jpg)
 

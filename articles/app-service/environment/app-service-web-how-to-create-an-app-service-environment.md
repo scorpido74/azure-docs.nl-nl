@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 89dc96370f65ff20d7f8be38ff78d6c1664305d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80477793"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>Een App Service Environment v1 maken 
@@ -36,7 +36,7 @@ Het is belang rijk dat u op de hoogte bent van de dingen die u niet kunt wijzige
 Bij het kiezen van een VNet en het opgeven van een subnet, moet u ervoor zorgen dat het groot genoeg is voor toekomstige groei. 
 
 ### <a name="creating-an-app-service-environment-v1"></a>Een App Service Environment v1 maken
-Als u een app service Environment v1 wilt maken, kunt u in de Azure Marketplace zoeken naar ***app service Environment v1***of door gaan met het **maken van een resource** -> **Web en mobiel** -> **app service Environment**. Een ASEv1 maken:
+Als u een app service Environment v1 wilt maken, kunt u in de Azure Marketplace zoeken naar ***app service Environment v1***of door gaan met het **maken van een resource**  ->  **Web en mobiel**  ->  **app service Environment**. Een ASEv1 maken:
 
 1. Geef de naam van uw ASE op. De naam die u opgeeft voor de ASE wordt gebruikt voor de apps die zijn gemaakt in de ASE. Als de naam van de ASE appsvcenvdemo is, is de naam van het subdomein: *appsvcenvdemo.p.azurewebsites.net*. Als u een app hebt gemaakt met de naam *mytestapp*, is deze beschikbaar op *mytestapp.appsvcenvdemo.p.azurewebsites.net*. U kunt geen witruimte gebruiken in de naam van uw ASE. Als u hoofd letters in de naam gebruikt, wordt de domein naam de totale kleine letters versie van die naam. Als u een ILB gebruikt, wordt uw ASE-naam niet gebruikt in uw subdomein, maar wordt in plaats daarvan expliciet aangegeven tijdens het maken van ASE.
    

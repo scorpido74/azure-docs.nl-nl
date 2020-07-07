@@ -13,17 +13,17 @@ ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
 ms.openlocfilehash: f4622e44c795182ee68c617f335c9e1651d3adcc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80294391"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Verbinding met extern bureaublad inschakelen voor een rol in azure Cloud Services met behulp van Visual Studio
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
-> * [Zo](cloud-services-role-enable-remote-desktop-powershell.md)
+> * [Azure-portal](cloud-services-role-enable-remote-desktop-new-portal.md)
+> * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
 Met Extern bureaublad kunt u toegang krijgen tot het bureau blad van een rol die wordt uitgevoerd in Azure. U kunt een Extern bureaublad verbinding gebruiken om problemen met uw toepassing op te lossen en te onderzoeken terwijl deze wordt uitgevoerd.
@@ -47,13 +47,13 @@ Wanneer u Visual Studio 2017 versie 15,4 en eerder gebruikt, kunt u de optie **e
    > [!Note]
    > De certificaten die u nodig hebt voor een verbinding met een extern bureau blad, wijken af van de certificaten die u voor andere Azure-bewerkingen gebruikt. Het RAS-certificaat moet een persoonlijke sleutel hebben.
 
-5. Selecteer een certificaat in de lijst of kies ** &lt;maken... &gt;**. Als u een nieuw certificaat maakt, geeft u een beschrijvende naam op voor het nieuwe certificaat wanneer u hierom wordt gevraagd en selecteert u **OK**. Het nieuwe certificaat wordt weer gegeven in de vervolg keuzelijst.
+5. Selecteer een certificaat in de lijst of kies ** &lt; maken... &gt; **. Als u een nieuw certificaat maakt, geeft u een beschrijvende naam op voor het nieuwe certificaat wanneer u hierom wordt gevraagd en selecteert u **OK**. Het nieuwe certificaat wordt weer gegeven in de vervolg keuzelijst.
 
 6. Geef een gebruikers naam en wacht woord op. U kunt geen bestaand account gebruiken. Gebruik ' Administrator ' niet als de gebruikers naam voor het nieuwe account.
 
 7. Kies een datum waarop het account verloopt en waarna Extern bureaublad verbindingen worden geblokkeerd.
 
-8. Nadat u alle vereiste gegevens hebt opgegeven, selecteert u **OK**. Visual Studio voegt de Extern bureaublad-instellingen toe aan uw `.cscfg` project `.csdef` en bestanden, met inbegrip van het wacht woord dat is versleuteld met behulp van het gekozen certificaat.
+8. Nadat u alle vereiste gegevens hebt opgegeven, selecteert u **OK**. Visual Studio voegt de Extern bureaublad-instellingen toe aan uw project `.cscfg` en `.csdef` bestanden, met inbegrip van het wacht woord dat is versleuteld met behulp van het gekozen certificaat.
 
 9. Voltooi alle resterende stappen met behulp van de **volgende** knop en selecteer vervolgens **publiceren** wanneer u klaar bent om uw Cloud service te publiceren. Als u nog niet klaar bent om te publiceren, selecteert u **Annuleren** en antwoordt u op **Ja** wanneer u wordt gevraagd wijzigingen op te slaan. U kunt uw Cloud service later met deze instellingen publiceren.
 
@@ -146,6 +146,6 @@ Nadat u uw Cloud service op Azure hebt gepubliceerd en Extern bureaublad hebt in
 
 3. Voer de gebruikers naam en het wacht woord in die u eerder hebt gemaakt. U bent nu aangemeld bij uw externe sessie.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
 [Cloud Services configureren](cloud-services-how-to-configure-portal.md)

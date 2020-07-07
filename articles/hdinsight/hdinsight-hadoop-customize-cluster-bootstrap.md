@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
 ms.openlocfilehash: 796dbc53d1adf310028e06dea319b9a60d5cf54b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80529349"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>HDInsight-clusters aanpassen met Boots trap
@@ -27,21 +27,21 @@ Er zijn drie benaderingen om instellingen van het configuratie bestand in te ste
 
 Met deze programmatische methoden kunt u bijvoorbeeld opties in deze bestanden configureren:
 
-* clusterIdentity. XML
-* bestand core-site. XML
-* gateway. XML
-* hbase-env. XML
-* hbase-site. XML
-* hdfs-site. XML
-* Hive-env. XML
-* Hive-site. XML
+* clusterIdentity.xml
+* core-site.xml
+* gateway.xml
+* hbase-env.xml
+* hbase-site.xml
+* hdfs-site.xml
+* hive-env.xml
+* hive-site.xml
 * mapred-site
-* oozie-site. XML
-* oozie-env. XML
-* Storm-site. XML
-* TEZ-site. XML
-* webhcat-site. XML
-* yarn-site. XML
+* oozie-site.xml
+* oozie-env.xml
+* storm-site.xml
+* tez-site.xml
+* webhcat-site.xml
+* yarn-site.xml
 * server. Properties (Kafka-Broker-configuratie)
 
 Zie [HDInsight-clusters aanpassen met script Action (Linux)](hdinsight-hadoop-customize-cluster-linux.md)voor meer informatie over het installeren van extra onderdelen in het HDInsight-cluster tijdens de aanmaak tijd.
@@ -55,7 +55,7 @@ Zie [HDInsight-clusters aanpassen met script Action (Linux)](hdinsight-hadoop-cu
 Met de volgende Power shell-code wordt een [Apache Hive](https://hive.apache.org/) configuratie aangepast:
 
 > [!IMPORTANT]  
-> De para `Spark2Defaults` meter moet mogelijk worden gebruikt met [add-AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue). U kunt lege waarden door geven aan de para meter, zoals wordt weer gegeven in het code voorbeeld hieronder.
+> De para meter `Spark2Defaults` moet mogelijk worden gebruikt met [add-AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue). U kunt lege waarden door geven aan de para meter, zoals wordt weer gegeven in het code voorbeeld hieronder.
 
 ```powershell
 # hive-site.xml configuration
@@ -85,8 +85,8 @@ Een volledig werkend Power shell-script vindt u in [bijlage](#appendix-powershel
 
 **De wijziging controleren:**
 
-1. Ga naar `https://CLUSTERNAME.azurehdinsight.net/` de `CLUSTERNAME` locatie waar de naam van het cluster zich bevindt.
-1. Navigeer in het linkermenu naar **Hive** > **configes** > **Advanced**.
+1. Ga naar `https://CLUSTERNAME.azurehdinsight.net/` de locatie waar `CLUSTERNAME` de naam van het cluster zich bevindt.
+1. Navigeer in het linkermenu naar **Hive**  >  **configes**  >  **Advanced**.
 1. Vouw **Geavanceerde Hive-site**uit.
 1. Zoek **Hive. MailStore. client. socket. timeout** en bevestig dat de waarde **90s**is.
 
@@ -147,7 +147,7 @@ Voor beeld van een resource manager-sjabloon fragment om te scha kelen tussen co
 
 ## <a name="appendix-powershell-sample"></a>Bijlage: Power shell-voor beeld
 
-Met dit Power shell-script maakt u een HDInsight-cluster en past u een Hive-instelling aan. Zorg ervoor dat u waarden opgeeft `$nameToken`voor `$httpPassword`,, `$sshPassword`en.
+Met dit Power shell-script maakt u een HDInsight-cluster en past u een Hive-instelling aan. Zorg ervoor dat u waarden opgeeft voor `$nameToken` , `$httpPassword` , en `$sshPassword` .
 
 ```powershell
 ####################################

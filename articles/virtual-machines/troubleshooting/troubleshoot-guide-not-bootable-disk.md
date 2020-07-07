@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 9f0c6350b89dcfecefcadcc166f7af35abc4b128
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80300977"
 ---
 # <a name="boot-error--this-is-not-a-bootable-disk"></a>Opstart fout: dit is geen opstart bare schijf
@@ -59,7 +59,7 @@ Dit fout bericht betekent dat het opstart proces van het besturings systeem kan 
 
 Virtuele machines van de eerste generatie moeten eerst verifiëren dat de besturingssysteem partitie, die het BCD-archief bevat, is gemarkeerd als *actief*. Als u een virtuele machine van de tweede generatie hebt, gaat u verder met het [herstellen van de schijf partitie](#fix-the-disk-partition), omdat de *status* markering is afgeschaft tijdens de volgende generatie.
 
-1. Open een opdracht prompt met verhoogde bevoegdheid *(cmd. exe)*.
+1. Open een opdracht prompt met verhoogde bevoegdheden *(cmd.exe)*.
 2. Voer *Disk Part* in om het hulp programma Disk Part te starten.
 3. Voer een *lijst schijf* in om de schijven op het systeem weer te geven en de gekoppelde VHD van het station te identificeren.
 4. Zodra de gekoppelde VHD van het besturings systeem is gevonden, voert u de *Sel-schijf #* in om de schijf te selecteren.  Zie afbeelding 2, waarbij schijf 1 de gekoppelde VHD van het besturings systeem is.
@@ -96,12 +96,12 @@ Virtuele machines van de eerste generatie moeten eerst verifiëren dat de bestur
 
 ### <a name="fix-the-disk-partition"></a>De schijf partitie herstellen
 
-1. Open een opdracht prompt met verhoogde bevoegdheid (cmd. exe).
+1. Open een opdracht prompt met verhoogde bevoegdheden (cmd.exe).
 2. Gebruik de volgende opdracht om *chkdsk* op de schijven uit te voeren en fouten op te lossen:
 
    `chkdsk <DRIVE LETTER>: /f`
 
-   Als u de opdracht optie/f toevoegt, worden eventuele fouten op de schijf hersteld. Zorg ervoor dat u <DRIVE LETTER> vervangt door de letter van de gekoppelde VHD van het besturings systeem.
+   Als u de opdracht optie/f toevoegt, worden eventuele fouten op de schijf hersteld. Zorg ervoor dat u vervangt door <DRIVE LETTER> de letter van de gekoppelde VHD van het besturings systeem.
 
 ### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>Aanbevolen: voordat u de virtuele machine opnieuw bouwt, schakelt u seriële console-en geheugen dump verzameling in
 

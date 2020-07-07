@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 20b699f0672b49dd2f947e0cf00d0ffcef7961e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80295312"
 ---
 # <a name="common-conditional-access-policies"></a>Algemeen beleid voor voorwaardelijke toegang
@@ -44,7 +44,7 @@ Meer informatie over accounts voor toegang in nood gevallen en waarom ze belang 
 
 * [Op risico's gebaseerde voorwaardelijke toegang (vereist Azure AD Premium P2)](howto-conditional-access-policy-risk.md)
 * [Vertrouwde locatie vereisen voor MFA-registratie](howto-conditional-access-policy-registration.md)
-* [Toegang per locatie blokkeren](howto-conditional-access-policy-location.md)
+* [Toegang op locatie blok keren](howto-conditional-access-policy-location.md)
 * [Compatibel apparaat vereisen](howto-conditional-access-policy-compliant-device.md)
 * [Toegang blok keren met uitzonde ring van specifieke apps](howto-conditional-access-policy-block-access.md)
 

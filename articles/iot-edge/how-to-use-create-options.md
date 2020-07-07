@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c07e161042a497a232cbd5e3f11128893a095381
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80550342"
 ---
 # <a name="how-to-configure-container-create-options-for-iot-edge-modules"></a>Opties voor het maken van containers configureren voor IoT Edge modules
@@ -52,15 +52,15 @@ Het IoT Edge-implementatie manifest accepteert Create-opties die zijn opgemaakt 
 
 In dit edgeHub-voor beeld wordt de para meter **HostConfig. PortBindings** gebruikt om weer gegeven poorten in de container toe te wijzen aan een poort op het hostapparaat.
 
-Als u de uitbrei dingen van Azure IoT-Hulpprogram Ma's voor Visual Studio of Visual Studio code gebruikt, kunt u de Create-opties in JSON-indeling schrijven in het bestand **Deployment. sjabloon. json** . Wanneer u de extensie gebruikt om de IoT Edge oplossing te bouwen of het implementatie manifest te genereren, wordt de JSON voor u stringify in de indeling die de IoT Edge runtime verwacht. Bijvoorbeeld:
+Als u de Azure IoT-Hulpprogram Ma's uitbrei dingen voor Visual Studio of Visual Studio code gebruikt, kunt u de Create-opties in JSON-indeling schrijven in de **deployment.template.jsin** het bestand. Wanneer u de extensie gebruikt om de IoT Edge oplossing te bouwen of het implementatie manifest te genereren, wordt de JSON voor u stringify in de indeling die de IoT Edge runtime verwacht. Bijvoorbeeld:
 
 ```json
 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
 ```
 
-Een tip voor het maken van schrijf opties is het `docker inspect` gebruik van de opdracht. Als onderdeel van uw ontwikkelings proces voert u de module lokaal `docker run <container name>`uit met behulp van. Wanneer de module op de gewenste manier werkt, voert u uit `docker inspect <container name>`. Met deze opdracht worden de module details in JSON-indeling uitgevoerd. Zoek de para meters die u hebt geconfigureerd en kopieer de JSON. Bijvoorbeeld:
+Een tip voor het maken van schrijf opties is het gebruik van de `docker inspect` opdracht. Als onderdeel van uw ontwikkelings proces voert u de module lokaal uit met behulp van `docker run <container name>` . Wanneer de module op de gewenste manier werkt, voert u uit `docker inspect <container name>` . Met deze opdracht worden de module details in JSON-indeling uitgevoerd. Zoek de para meters die u hebt geconfigureerd en kopieer de JSON. Bijvoorbeeld:
 
-[![Resultaten van docker inspecte edgeHub](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png)](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
+[![Resultaten van docker inspecte edgeHub ](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png)](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
 
 ## <a name="common-scenarios"></a>Algemene scenario's
 
@@ -75,11 +75,11 @@ De opties voor het maken van een container bieden veel scenario's, maar hier zij
 Als uw module moet communiceren met een service buiten de IoT Edge-oplossing, en hiervoor geen bericht routering gebruikt, moet u een host poort toewijzen aan een module poort.
 
 >[!TIP]
->Deze poort toewijzing is niet vereist voor de communicatie van module-naar-module op hetzelfde apparaat. Als module A een query moet uitvoeren op een API die wordt gehost op module B, kan deze zonder poort toewijzing worden uitgevoerd. Module B moet een poort beschikbaar maken in de dockerfile, bijvoorbeeld: `EXPOSE 8080`. Vervolgens kan module A een query uitvoeren op de API met behulp van de naam `http://ModuleB:8080/api`van module B, bijvoorbeeld:.
+>Deze poort toewijzing is niet vereist voor de communicatie van module-naar-module op hetzelfde apparaat. Als module A een query moet uitvoeren op een API die wordt gehost op module B, kan deze zonder poort toewijzing worden uitgevoerd. Module B moet een poort beschikbaar maken in de dockerfile, bijvoorbeeld: `EXPOSE 8080` . Vervolgens kan module A een query uitvoeren op de API met behulp van de naam van module B, bijvoorbeeld: `http://ModuleB:8080/api` .
 
 Zorg er eerst voor dat een poort in de module wordt weer gegeven om te Luis teren naar verbindingen. U kunt dit doen met behulp van een [openbare](https://docs.docker.com/engine/reference/builder/#expose) instructie in de dockerfile. Bijvoorbeeld `EXPOSE 8080`. De standaard instelling voor het weer geven van het TCP-protocol is niet opgegeven, of u kunt UDP opgeven.
 
-Vervolgens gebruikt u de instelling **PortBindings** in de groep **HostConfig** van de [docker-container maken](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) om de weer gegeven poort in de module toe te wijzen aan een poort op het hostapparaat. Als u bijvoorbeeld poort 8080 in de module hebt weer gegeven en wilt toewijzen aan poort 80 van het hostapparaat, zijn de opties in het bestand sjabloon. json er als volgt uit te zien:
+Vervolgens gebruikt u de instelling **PortBindings** in de groep **HostConfig** van de [docker-container maken](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) om de weer gegeven poort in de module toe te wijzen aan een poort op het hostapparaat. Als u bijvoorbeeld poort 8080 in de module hebt weer gegeven en wilt toewijzen aan poort 80 van het hostapparaat, zien de opties in de template.jsin het bestand er als volgt uit:
 
 ```json
 "createOptions": {
@@ -109,7 +109,7 @@ U kunt declareren welk deel van de host-resources een module kan gebruiken. Dit 
 * **Memory**: totale geheugen limiet (geheugen + wisseling). Bijvoorbeeld 536870912 bytes = 512 MB
 * **CpuPeriod**: de lengte van een CPU-periode in micro seconden. De standaard waarde is 100000, dus als een waarde van 25000, wordt een container beperkt tot 25% van de CPU-resources.
 
-In de indeling template. json ziet u dat deze waarden eruitzien zoals in het volgende voor beeld:
+In de notatie template.jsop worden deze waarden weer geven als in het volgende voor beeld:
 
 ```json
 "createOptions": {

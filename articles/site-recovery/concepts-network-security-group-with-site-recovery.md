@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: eb5ba99133f5726c44164b0ba45b7ab5d94e292f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80292366"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>Netwerk beveiligings groepen met Azure Site Recovery
@@ -72,7 +72,7 @@ Overwegend het [voorbeeld scenario](concepts-network-security-group-with-site-re
 Zodra de Nsg's zijn gemaakt en geconfigureerd, wordt u aangeraden [een testfailover uit](azure-to-azure-tutorial-dr-drill.md) te voeren om de NSG-koppelingen in het script te verifiëren en om na te gaan of de VM-verbinding na de failover.
 
 ## <a name="next-steps"></a>Volgende stappen
--    Meer informatie over [netwerk beveiligings groepen](../virtual-network/security-overview.md#network-security-groups).
+-    Meer informatie over [Netwerkbeveiligingsgroepen](../virtual-network/security-overview.md#network-security-groups).
 -    Meer informatie over NSG- [beveiligings regels](../virtual-network/security-overview.md#security-rules).
 -    Meer informatie over de [juiste beveiligings regels](../virtual-network/diagnose-network-traffic-filter-problem.md) voor een NSG.
 -    Meer informatie over [herstel plannen](site-recovery-create-recovery-plans.md) voor het automatiseren van de failover van de toepassing.

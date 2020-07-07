@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: 41b2d0ad1e072fb2bf5860ae80f8f25f886b37f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582681"
 ---
 # <a name="streaming-locators"></a>Streaming-locators
@@ -26,9 +26,9 @@ Het proces van het maken van een **streaming-locator** wordt publiceren genoemd.
 
 Wanneer u een **streaming-Locator**maakt, moet u een **assetnaam** en een naam voor het **streaming-beleid** opgeven. Zie de volgende onderwerpen voor meer informatie:
 
-* [Activa](assets-concept.md)
-* [Beleid voor streaming](streaming-policy-concept.md)
-* [Beleid voor inhoudssleutels](content-key-policy-concept.md)
+* [Assets](assets-concept.md)
+* [Streaming-beleid](streaming-policy-concept.md)
+* [Beleid voor inhouds sleutels](content-key-policy-concept.md)
 
 U kunt ook de start-en eind tijd opgeven op uw streaming-Locator, zodat uw gebruiker de inhoud niet kan afspelen tussen deze tijden (bijvoorbeeld tussen 5/1/2019 en 5/5/2019).  
 
@@ -76,7 +76,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 Als u de HLS-stroom ook wilt versleutelen met CBCS (FairPlay), gebruikt u Predefined_MultiDrmStreaming.
 
 > [!NOTE]
-> Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+> Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
 
 ## <a name="associate-filters-with-streaming-locators"></a>Filters koppelen aan streaming-Locators
 
@@ -100,9 +100,9 @@ Als u stroomsgewijze Locators wilt ophalen op basis van de gekoppelde Asset-naam
 
 ## <a name="see-also"></a>Zie ook
 
-* [Activa](assets-concept.md)
-* [Beleid voor streaming](streaming-policy-concept.md)
-* [Beleid voor inhoudssleutels](content-key-policy-concept.md)
+* [Assets](assets-concept.md)
+* [Streaming-beleid](streaming-policy-concept.md)
+* [Beleid voor inhouds sleutels](content-key-policy-concept.md)
 * [Zelf studie: Video's uploaden, coderen en streamen met behulp van .NET](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>Volgende stappen

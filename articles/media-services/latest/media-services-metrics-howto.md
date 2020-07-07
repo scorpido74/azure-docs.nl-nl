@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
 ms.openlocfilehash: c230e1e950bb924631032940642a6202acf4ade8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80382933"
 ---
 # <a name="monitor-media-services-metrics"></a>Metrische gegevens voor Media Services controleren
@@ -28,7 +28,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Een Media Services-account maken](create-account-cli-how-to.md)
+- [Een Azure Media Services-account maken](create-account-cli-how-to.md)
 - Controleren [Media Services metrische gegevens en Diagnostische logboeken](media-services-metrics-diagnostic-logs.md)
 
 ## <a name="view-metrics-in-azure-portal"></a>Metrische gegevens weer geven in Azure Portal
@@ -40,7 +40,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
     Het venster **een resource selecteren** wordt weer gegeven aan de rechter kant met de lijst met beschik bare resources. In dit geval ziet u:
 
     * &lt;Media Services-account naam&gt;
-    * &lt;Naam van Media Services&gt;/&lt;account naam van streaming-eind punt&gt;
+    * &lt;Naam van Media Services account naam van &gt; / &lt; streaming-eind punt&gt;
     * &lt;naam van opslag account&gt;
 
     Selecteer de resource en druk op **Toep assen**. Zie [Media Services metrische gegevens controleren](media-services-metrics-diagnostic-logs.md)voor meer informatie over ondersteunde bronnen en metrische gegevens.
@@ -57,7 +57,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 
 ## <a name="view-metrics-with-azure-cli"></a>Metrische gegevens weer geven met Azure CLI
 
-Voer de volgende `az monitor metrics` opdracht uit om de metrische gegevens van ' uitgang ' met Azure CLI te verkrijgen:
+Voer de volgende opdracht uit om de metrische gegevens van ' uitgang ' met Azure CLI te verkrijgen `az monitor metrics` :
 
 ```azurecli-interactive
 az monitor metrics list --resource \

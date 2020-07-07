@@ -17,10 +17,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f0c6484f46731e0ff2d16d00cb0038202511d193
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80331082"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Veelgestelde vragen over Azure AD Connect Health
@@ -107,7 +107,7 @@ Meer informatie over het [configureren van HTTP-proxy voor Health-Agents](how-to
 
 Als u een proxy moet configureren tijdens de registratie van de agent, moet u mogelijk de proxy-instellingen van Internet Explorer vooraf wijzigen.
 
-1. Internet Explorer openen > **instellingen** > **Internet opties** > **verbindingen** > **LAN-instellingen**.
+1. Internet Explorer openen > **instellingen**  >  **Internet opties**  >  **verbindingen**  >  **LAN-instellingen**.
 2. Selecteer **een proxy server voor uw LAN gebruiken**.
 3. Selecteer **Geavanceerd** als u verschillende proxy poorten voor http en HTTPS/Secure hebt.
 
@@ -192,7 +192,7 @@ CheckForMS17-010
 
 **V: Waarom worden er geen ADFS-controles gegenereerd?**
 
-Gebruik de Power shell-cmdlet <i>Get-AdfsProperties-audit level</i> om te controleren of de controle logboeken niet zijn uitgeschakeld. Lees meer over [AD FS-controle logboeken](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Als er geavanceerde controle-instellingen zijn gepusht naar de ADFS-server, worden alle wijzigingen met Auditpol. exe overschreven (gebeurtenis als de toepassing is gegenereerd, is niet geconfigureerd). In dit geval stelt u het lokale beveiligings beleid in op het vastleggen van gegenereerde fouten en geslaagde toepassingen.
+Gebruik de Power shell-cmdlet <i>Get-AdfsProperties-audit level</i> om te controleren of de controle logboeken niet zijn uitgeschakeld. Lees meer over [AD FS-controle logboeken](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Als er geavanceerde controle-instellingen zijn gepusht naar de ADFS-server, worden wijzigingen met auditpol.exe overschreven (gebeurtenis als de toepassing is gegenereerd, is niet geconfigureerd). In dit geval stelt u het lokale beveiligings beleid in op het vastleggen van gegenereerde fouten en geslaagde toepassingen.
 
 **V: wanneer wordt het agent certificaat automatisch vernieuwd voordat het verloopt?**
 De agent certificering wordt automatisch verlengd **6 maanden** voor de verval datum. Als deze niet wordt vernieuwd, zorgt u ervoor dat de netwerk verbinding van de agent stabiel is. Het probleem kan ook worden opgelost door de agent services opnieuw te starten of naar de nieuwste versie bij te werken.
