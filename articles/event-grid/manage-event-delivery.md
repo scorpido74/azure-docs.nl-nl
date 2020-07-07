@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: spelluru
 ms.openlocfilehash: caed3c077b4df5da5fd8541b2f7e85ef119604b0
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72794041"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Onbestelbare letter en beleid voor opnieuw proberen
@@ -26,7 +26,7 @@ Als u een locatie met een onbestelbare letter wilt instellen, hebt u een opslag 
 
 > [!NOTE]
 > - Maak een opslag account en een BLOB-container in de opslag voordat u de opdrachten in dit artikel uitvoert.
-> - De Event Grid-Service maakt blobs in deze container. De namen van de blobs hebben de naam van het Event Grid-abonnement met alle letters in hoofd letters. Als bijvoorbeeld de naam van het abonnement mijn-BLOB-abonnement is, hebben de namen van de onbestelbare letter-blobs de volgende BLOB-abonnement (myblobcontainer/MY-BLOB-SUBSCRIPTION/2019/8/8/5/111111111-1111-1111-1111 -111111111111. json). Dit gedrag is om te beschermen tegen verschillen bij het verwerken van het hoofdletter gebruik tussen Azure-Services.
+> - De Event Grid-Service maakt blobs in deze container. De namen van de blobs hebben de naam van het Event Grid-abonnement met alle letters in hoofd letters. Als bijvoorbeeld de naam van het abonnement mijn-BLOB-abonnement is, hebben de namen van de onbestelbare letter-blobs de volgende BLOB-abonnement (myblobcontainer/MY-BLOB-SUBSCRIPTION/2019/8/8/5/111111111-1111-1111-1111-111111111111.json). Dit gedrag is om te beschermen tegen verschillen bij het verwerken van het hoofdletter gebruik tussen Azure-Services.
 
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -44,7 +44,7 @@ az eventgrid event-subscription create \
   --deadletter-endpoint $storageid/blobServices/default/containers/$containername
 ```
 
-Als u onbestelbare berichten wilt uitschakelen, voert u de opdracht opnieuw uit om het gebeurtenis abonnement te maken, `deadletter-endpoint`maar geeft u geen waarde op voor. U hoeft het gebeurtenis abonnement niet te verwijderen.
+Als u onbestelbare berichten wilt uitschakelen, voert u de opdracht opnieuw uit om het gebeurtenis abonnement te maken, maar geeft u geen waarde op voor `deadletter-endpoint` . U hoeft het gebeurtenis abonnement niet te verwijderen.
 
 > [!NOTE]
 > Als u werkt met Azure CLI op uw lokale computer, gebruikt u Azure CLI versie 2.0.56 of hoger. Zie [De Azure CLI installeren](/cli/azure/install-azure-cli) voor instructies over het installeren van de meest recente versie van Azure CLI.
@@ -64,7 +64,7 @@ New-AzEventGridSubscription `
   -DeadLetterEndpoint "$storageid/blobServices/default/containers/$containername"
 ```
 
-Als u onbestelbare berichten wilt uitschakelen, voert u de opdracht opnieuw uit om het gebeurtenis abonnement te maken, `DeadLetterEndpoint`maar geeft u geen waarde op voor. U hoeft het gebeurtenis abonnement niet te verwijderen.
+Als u onbestelbare berichten wilt uitschakelen, voert u de opdracht opnieuw uit om het gebeurtenis abonnement te maken, maar geeft u geen waarde op voor `DeadLetterEndpoint` . U hoeft het gebeurtenis abonnement niet te verwijderen.
 
 > [!NOTE]
 > Als u Azure Poweshell gebruikt op uw lokale computer, gebruikt u Azure PowerShell versie 1.1.0 of hoger. Down load en installeer de nieuwste Azure PowerShell van [Azure down loads](https://azure.microsoft.com/downloads/).
@@ -99,7 +99,7 @@ az eventgrid event-subscription create \
   --max-delivery-attempts 18
 ```
 
-Als u zowel `event-ttl` als als `max-deliver-attempts`hebt ingesteld, gebruikt Event grid de eerste om te verloopt om te bepalen wanneer de gebeurtenis levering moet worden gestopt.
+Als u zowel als `event-ttl` als hebt ingesteld `max-deliver-attempts` , gebruikt Event grid de eerste om te verloopt om te bepalen wanneer de gebeurtenis levering moet worden gestopt.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -127,7 +127,7 @@ New-AzEventGridSubscription `
   -MaxDeliveryAttempt 18
 ```
 
-Als u zowel `EventTtl` als als `MaxDeliveryAttempt`hebt ingesteld, gebruikt Event grid de eerste om te verloopt om te bepalen wanneer de gebeurtenis levering moet worden gestopt.
+Als u zowel als `EventTtl` als hebt ingesteld `MaxDeliveryAttempt` , gebruikt Event grid de eerste om te verloopt om te bepalen wanneer de gebeurtenis levering moet worden gestopt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

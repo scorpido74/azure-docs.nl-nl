@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 6f104fc6513874bfef5f4bf9fe7f536c3e3d69cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71057551"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>VM-extensie voor Windows voor diagnostische gegevens over Azure-prestaties
@@ -69,7 +69,7 @@ De volgende JSON toont het schema voor de VM-extensie Azure prestatie diagnostie
 |   **Naam**   |**Waarde/voor beeld**|       **Beschrijving**      |
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|De versie van de API.
-|uitgever|Micro soft. Azure. performance. Diagnostics|De naam ruimte van de uitgever voor de extensie.
+|publisher|Micro soft. Azure. performance. Diagnostics|De naam ruimte van de uitgever voor de extensie.
 |type|AzurePerformanceDiagnostics|Het type van de VM-extensie.
 |typeHandlerVersion|1.0|De versie van de extensie-handler.
 |performanceScenario|hoofd|Het prestatie scenario waarvoor gegevens moeten worden vastgelegd. Geldige waarden zijn: **Basic**, **vmslow**, **Azure files**en **Custom**.
@@ -88,7 +88,7 @@ De volgende JSON toont het schema voor de VM-extensie Azure prestatie diagnostie
 
 Volg deze instructies voor het installeren van de uitbrei ding op virtuele Windows-machines:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer de virtuele machine waarop u deze extensie wilt installeren.
 
     ![Scherm opname van Azure Portal, waarbij virtuele machines zijn gemarkeerd](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
@@ -233,18 +233,18 @@ Het hulp programma PerfInsights verzamelt diverse logboeken, configuratie en dia
 
 ## <a name="view-and-share-the-results"></a>De resultaten weer geven en delen
 
-Uitvoer van de uitbrei ding kan worden gevonden in een zip-bestand dat is geüpload naar het opslag account dat is opgegeven tijdens de installatie en wordt 30 dagen gedeeld met behulp van [Shared Access signatures (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md). Dit zip-bestand bevat Diagnostische logboeken en een rapport met bevindingen en aanbevelingen. Een SAS-koppeling naar het zip-uitvoer bestand kan worden gevonden in een tekst bestand met de naam *zipfilename*_saslink. txt onder de map **\\\<C:\Packages\Plugins\Microsoft.Azure.performance.Diagnostics.AzurePerformanceDiagnostics versie>**. Iedereen met deze koppeling kan het zip-bestand downloaden.
+Uitvoer van de uitbrei ding kan worden gevonden in een zip-bestand dat is geüpload naar het opslag account dat is opgegeven tijdens de installatie en wordt 30 dagen gedeeld met behulp van [Shared Access signatures (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md). Dit zip-bestand bevat Diagnostische logboeken en een rapport met bevindingen en aanbevelingen. Een SAS-koppeling naar het zip-uitvoer bestand kan worden gevonden in een tekst bestand met de naam *zipfilename*_saslink.txt onder de map **C:\Packages\Plugins\Microsoft.Azure.performance.Diagnostics.AzurePerformanceDiagnostics \\ \<version> **. Iedereen met deze koppeling kan het zip-bestand downloaden.
 
 Micro soft kan deze SAS-koppeling gebruiken om de diagnostische gegevens te downloaden om de ondersteunings technicus te helpen werken aan uw ondersteunings ticket.
 
-Als u het rapport wilt weer geven, pakt u het zip-bestand uit en opent u het bestand **PerfInsights Report. html** .
+Als u het rapport wilt weer geven, pakt u het zip-bestand uit en opent u het bestand **PerfInsights Report.html** .
 
 Ook kunt u het zip-bestand rechtstreeks vanuit de portal downloaden door de extensie te selecteren.
 
 ![Scherm opname van de gedetailleerde status van diagnostische gegevens](media/performance-diagnostics-vm-extension/view-detailed-status.png)
 
 > [!NOTE]
-> De SAS-koppeling die in de portal wordt weer gegeven, werkt mogelijk niet soms. Dit kan worden veroorzaakt door een onjuist ingedeelde URL tijdens het coderen en decoderen. U kunt de koppeling in plaats daarvan rechtstreeks vanuit het * _saslink. txt-bestand van de VM ophalen.
+> De SAS-koppeling die in de portal wordt weer gegeven, werkt mogelijk niet soms. Dit kan worden veroorzaakt door een onjuist ingedeelde URL tijdens het coderen en decoderen. U kunt de koppeling in plaats daarvan rechtstreeks vanuit het * _saslink.txt-bestand van de VM ophalen.
 
 ## <a name="troubleshoot-and-support"></a>Problemen oplossen en ondersteuning
 

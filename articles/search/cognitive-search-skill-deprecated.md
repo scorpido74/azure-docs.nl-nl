@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 5f3587e4398be28cbaa2372be720258196bb48ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72792023"
 ---
 # <a name="deprecated-cognitive-skills-in-azure-cognitive-search"></a>Afgeschafte cognitieve vaardig heden in azure Cognitive Search
 
 In dit document worden cognitieve vaardig heden beschreven die als afgeschaft worden beschouwd. Gebruik de volgende hand leiding voor de inhoud:
 
-* Vaardigheids naam: de naam van de vaardigheid die wordt afgeschaft, die wordt toegewezen @odata.type aan het kenmerk.
+* Vaardigheids naam: de naam van de vaardigheid die wordt afgeschaft, die wordt toegewezen aan het @odata.type kenmerk.
 * Laatst beschik bare API-versie: de laatste versie van de Azure Cognitive Search open bare API waarmee vaardig heden met de bijbehorende afgeschafte vaardig heden kunnen worden gemaakt/bijgewerkt.
 * Einde van de ondersteuning: de laatste dag waarna de bijbehorende vaardigheid als niet-ondersteund wordt beschouwd. Eerder gemaakte vaardig heden moet nog steeds blijven functioneren, maar gebruikers worden aanbevolen een gedeprecieerde vaardigheid te migreren.
 * Aanbevelingen: migratie traject vooruit om een ondersteunde vaardigheid te gebruiken. Gebruikers wordt aangeraden de aanbevelingen te volgen om ondersteuning te blijven ontvangen.
@@ -43,11 +43,11 @@ Als u wilt migreren naar de [kwalificatie voor entiteits herkenning](cognitive-s
 > [!NOTE]
 > Momenteel wordt de betrouwbaarheids score als concept niet ondersteund. De `minimumPrecision` para meter bevindt zich op de `EntityRecognitionSkill` voor toekomstig gebruik en voor achterwaartse compatibiliteit.
 
-1. *(Vereist)* Wijzig de `@odata.type` van `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` in `"#Microsoft.Skills.Text.EntityRecognitionSkill"`.
+1. *(Vereist)* Wijzig de `@odata.type` van `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` in `"#Microsoft.Skills.Text.EntityRecognitionSkill"` .
 
-2. *(Optioneel)* Als u de `entities` uitvoer maakt, gebruikt u de `namedEntities` complexe verzamelings uitvoer van de `EntityRecognitionSkill` in plaats daarvan. U kunt de `targetName` in de vaardigheids definitie gebruiken om deze toe te wijzen aan een `entities`aantekening met de naam.
+2. *(Optioneel)* Als u de `entities` uitvoer maakt, gebruikt u de `namedEntities` complexe verzamelings uitvoer van de `EntityRecognitionSkill` in plaats daarvan. U kunt de `targetName` in de vaardigheids definitie gebruiken om deze toe te wijzen aan een aantekening met de naam `entities` .
 
-3. *(Optioneel)* Als u de `categories`niet expliciet opgeeft, kan de `EntityRecognitionSkill` retour waarde van een ander type categorieën worden geretourneerd, behalve die van `NamedEntityRecognitionSkill`de. Als dit gedrag niet gewenst is, moet u de `categories` para meter expliciet instellen op `["Person", "Location", "Organization"]`.
+3. *(Optioneel)* Als u de niet expliciet opgeeft `categories` , kan de `EntityRecognitionSkill` retour waarde van een ander type categorieën worden geretourneerd, behalve die van de `NamedEntityRecognitionSkill` . Als dit gedrag niet gewenst is, moet u de `categories` para meter expliciet instellen op `["Person", "Location", "Organization"]` .
 
     _Voor beelden van migratie definities_
 

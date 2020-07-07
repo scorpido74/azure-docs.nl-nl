@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/22/2019
 ms.author: raynew
 ms.openlocfilehash: 55842d36cddb2a7851ff5bd7002c20e9873158f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73512728"
 ---
 # <a name="delete-an-azure-migrate-project"></a>Een Azure Migrate-project verwijderen
@@ -26,7 +26,7 @@ Voordat u een project verwijdert:
 - Als u een Log Analytics-werk ruimte hebt gekoppeld aan het hulp programma voor Server evaluatie voor afhankelijkheids analyse, moet u beslissen of u de werk ruimte wilt verwijderen. 
     - De werk ruimte wordt niet automatisch verwijderd. Verwijder deze hand matig.
     - Controleer wat er voor een werk ruimte wordt gebruikt voordat u deze verwijdert. Dezelfde Log Analytics-werk ruimte kan voor meerdere scenario's worden gebruikt.
-    - Voordat u het project verwijdert, kunt u een koppeling naar de werk ruimte vinden in de evaluatie van **Azure migrate-servers** > **Azure migrate-server**, onder **OMS-werk ruimte**.
+    - Voordat u het project verwijdert, kunt u een koppeling naar de werk ruimte vinden in de evaluatie van **Azure migrate-servers**  >  **Azure migrate-server**, onder **OMS-werk ruimte**.
     - Als u een werk ruimte wilt verwijderen nadat u een project hebt verwijderd, gaat u naar de werk ruimte in de relevante resource groep en volgt u [deze instructies](../azure-monitor/platform/delete-workspace.md).
 
 

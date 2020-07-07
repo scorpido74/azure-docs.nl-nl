@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
 ms.openlocfilehash: 0650fcc5023ac57b193fa23b0dedf65113fd64e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71672897"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>U-SQL-taken plannen met behulp van SQL Server Integration Services (SSIS)
@@ -77,11 +77,11 @@ Voeg in de ontwerp weergave SSIS-pakket een **Azure data Lake Store-bestandsbehe
 
 2. Stel **map** onder **configuratie groep enumerator** in op de tijdelijke map met de gedownloade U-SQL-scripts.
 
-3. Stel **bestanden** onder **configuratie** van enumerator `*.usql` in op zodat de lus-container alleen de bestanden onderschept die `.usql`eindigen op.
+3. Stel **bestanden** onder **configuratie van enumerator** in op `*.usql` zodat de lus-container alleen de bestanden onderschept die eindigen op `.usql` .
 
     ![Foreach-lus-container configureren](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
 
-4. Voeg op de pagina **variabelen toewijzingen** een door de gebruiker gedefinieerde variabele toe om de bestands naam voor elk U-SQL-bestand op te halen. Stel de **index** in op 0 om de bestands naam op te halen. In dit voor beeld definieert u een variabele `User::FileName`met de naam. Deze variabele wordt gebruikt voor het dynamisch ophalen van een U-SQL-script bestand verbinding en het instellen van een U-SQL-taak naam in Azure Data Lake Analytics taak.
+4. Voeg op de pagina **variabelen toewijzingen** een door de gebruiker gedefinieerde variabele toe om de bestands naam voor elk U-SQL-bestand op te halen. Stel de **index** in op 0 om de bestands naam op te halen. In dit voor beeld definieert u een variabele met de naam `User::FileName` . Deze variabele wordt gebruikt voor het dynamisch ophalen van een U-SQL-script bestand verbinding en het instellen van een U-SQL-taak naam in Azure Data Lake Analytics taak.
 
     ![Foreach-lus-container configureren om bestands naam op te halen](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-variable-mapping.png)
 
@@ -93,14 +93,14 @@ Voeg in de ontwerp weergave SSIS-pakket een **Azure data Lake Store-bestandsbehe
     
     Deze bestands verbinding maken:
 
-   1. Kies ** \<nieuwe verbinding... >** in de instelling FileConnection.
+   1. Kies de **\<New Connection...>** instelling in FileConnection.
    2. Stel het **gebruiks type** in op het **bestaande bestand**en stel het **bestand** in op het bestandspad van een bestaand bestand.
 
        ![Foreach-lus-container configureren](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
    3. Klik in de weer gave **verbindings beheer** met de rechter muisknop op de bestands verbinding die nu zojuist is gemaakt en kies **Eigenschappen**.
 
-   4. Vouw in het venster **Eigenschappen** de optie **expressies**uit en stel **Connections Tring** in op de variabele die is gedefinieerd in de `@[User::FileName]`foreach-lus-container, bijvoorbeeld.
+   4. Vouw in het venster **Eigenschappen** de optie **expressies**uit en stel **Connections Tring** in op de variabele die is gedefinieerd in de foreach-lus-container, bijvoorbeeld `@[User::FileName]` .
 
        ![Foreach-lus-container configureren](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
@@ -111,7 +111,7 @@ Voeg in de ontwerp weergave SSIS-pakket een **Azure data Lake Store-bestandsbehe
 5. **Expressies** gebruiken om u-SQL-taak naam dynamisch in te stellen:
 
     1. Voeg op de pagina **expressies** een nieuw expressie sleutel-waardepaar voor **JobName**toe.
-    2. Stel de waarde voor JobName in op de variabele die is gedefinieerd in de foreach-lus `@[User::FileName]`-container, bijvoorbeeld.
+    2. Stel de waarde voor JobName in op de variabele die is gedefinieerd in de foreach-lus-container, bijvoorbeeld `@[User::FileName]` .
     
         ![SSIS-expressie configureren voor de U-SQL-taak naam](./media/data-lake-analytics-schedule-jobs-ssis/configure-expression-for-u-sql-job-name.png)
 

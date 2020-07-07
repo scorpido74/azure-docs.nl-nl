@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
 ms.openlocfilehash: 467d9cee74567fc0d19031773415675ae7c51818
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71066757"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Geavanceerde aanvraagbeperking met Azure API Management
@@ -30,7 +30,7 @@ Tot nu toe zijn de snelheids beperkings mogelijkheden beperkt tot het bereik van
 ## <a name="custom-key-based-throttling"></a>Aangepaste beperking op basis van sleutels
 
 > [!NOTE]
-> De `rate-limit-by-key` beleids `quota-by-key` regels en zijn niet beschikbaar in de laag verbruik van Azure API management. 
+> De `rate-limit-by-key` `quota-by-key` beleids regels en zijn niet beschikbaar in de laag verbruik van Azure API management. 
 
 De nieuwe beleids regels voor de [frequentie limiet per sleutel](/azure/api-management/api-management-access-restriction-policies#LimitCallRateByKey) en [quotum per sleutel](/azure/api-management/api-management-access-restriction-policies#SetUsageQuotaByKey) bieden een flexibele oplossing voor verkeers beheer. Met deze nieuwe beleids regels kunt u expressies definiëren om de sleutels te identificeren die worden gebruikt voor het bijhouden van het gebruik van verkeer. De manier waarop dit werkt, is eenvoudig te demonstreren met een voor beeld. 
 
@@ -48,7 +48,7 @@ De volgende beleids regels beperken één IP-adres van een client tot slechts 10
           counter-key="@(context.Request.IpAddress)" />
 ```
 
-Als alle clients op internet een uniek IP-adres gebruiken, kan dit een efficiënte manier zijn om het gebruik door de gebruiker te beperken. Het is echter waarschijnlijk dat meerdere gebruikers een enkel openbaar IP-adres delen als gevolg van de toegang tot internet via een NAT-apparaat. Als dit niet mogelijk is, is de `IpAddress` beste optie voor api's die niet-geverifieerde toegang toestaan.
+Als alle clients op internet een uniek IP-adres gebruiken, kan dit een efficiënte manier zijn om het gebruik door de gebruiker te beperken. Het is echter waarschijnlijk dat meerdere gebruikers een enkel openbaar IP-adres delen als gevolg van de toegang tot internet via een NAT-apparaat. Als dit niet mogelijk is, is de beste optie voor Api's die niet-geverifieerde toegang toestaan `IpAddress` .
 
 ## <a name="user-identity-throttling"></a>Beperking van gebruikers identiteit
 Als een eind gebruiker is geverifieerd, kan een beperkings sleutel worden gegenereerd op basis van gegevens die een unieke identificatie van die gebruiker zijn.
@@ -59,7 +59,7 @@ Als een eind gebruiker is geverifieerd, kan een beperkings sleutel worden gegene
     counter-key="@(context.Request.Headers.GetValueOrDefault("Authorization","").AsJwt()?.Subject)" />
 ```
 
-In dit voor beeld ziet u hoe u de autorisatie-header uitpakt, converteert naar `JWT` een object en het onderwerp van het token gebruikt om de gebruiker te identificeren en die als de frequentie beperkings sleutel te gebruiken. Als de identiteit van de gebruiker wordt opgeslagen `JWT` in de als een van de andere claims, zou die waarde kunnen worden gebruikt in plaats daarvan.
+In dit voor beeld ziet u hoe u de autorisatie-header uitpakt, converteert naar een `JWT` object en het onderwerp van het token gebruikt om de gebruiker te identificeren en die als de frequentie beperkings sleutel te gebruiken. Als de identiteit van de gebruiker wordt opgeslagen in de `JWT` als een van de andere claims, zou die waarde kunnen worden gebruikt in plaats daarvan.
 
 ## <a name="combined-policies"></a>Gecombineerd beleid
 Hoewel het nieuwe beperkings beleid meer controle biedt dan het bestaande beperkings beleid, is er nog steeds waarden die beide mogelijkheden combi neren. Beperking per product abonnements sleutel ([oproep snelheid per abonnement beperken](/azure/api-management/api-management-access-restriction-policies#LimitCallRate) en [gebruiks quotum per abonnement instellen](/azure/api-management/api-management-access-restriction-policies#SetUsageQuota)) is een uitstekende manier om inkomsten van een API in te stellen op basis van gebruiks niveaus. De nauw keurige controle over het beperken van de beperking door de gebruiker is complementair en voor komt dat het gedrag van een gebruiker de ervaring van een ander kan verlagen. 

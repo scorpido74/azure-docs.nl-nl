@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
 ms.openlocfilehash: 2fd2efa9de3deff1fcf983ac0fa45e412357d312
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71057271"
 ---
 # <a name="troubleshoot-rdp-issues"></a>Problemen met RDP oplossen
@@ -41,7 +41,7 @@ In deze sectie komen de volgende problemen met het maken van een RDP-verbinding 
 - [Een RDP-fout in de VM oplossen die verband houdt met het statische IP-adres](troubleshoot-rdp-static-ip.md)
 - [Een RDP-fout in de VM oplossen die verband houdt met een uitgeschakelde NIC](troubleshoot-rdp-nic-disabled.md)
 - [Een RDP-fout oplossen die verband houdt met de veilige modus](troubleshoot-rdp-safe-mode.md)
-- [De firewall van het gastbesturingssysteem uitschakelen in Azure VM](disable-guest-os-firewall-windows.md)
+- [De firewall van het gastbesturingssysteem uitschakelen in de virtuele Azure-machine](disable-guest-os-firewall-windows.md)
 - [Een firewallregel in een gastbesturingssysteem in- of uitschakelen](enable-disable-firewall-rule-guest-os.md)
 - [Firewall van gastbesturingssysteem blokkeert inkomend verkeer](guest-os-firewall-blocking-inbound-traffic.md)
 - [Firewall van gastbesturingssysteem is onjuist geconfigureerd](guest-os-firewall-misconfigured.md) 

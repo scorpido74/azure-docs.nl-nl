@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
 ms.openlocfilehash: 47ee66393e3e1678576b12a70b767f35cb3bc635
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73044771"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Aan de slag met een Apache Hadoop sandbox, een emulator op een virtuele machine
@@ -44,14 +44,14 @@ Als u een oudere sandbox van de HDP-versie wilt downloaden, raadpleegt u de kopp
 
     ![normale start van VirtualBox Manager](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
 
-1. Open een webbrowser en navigeer naar de weer gegeven URL (meestal `http://127.0.0.1:8888`).
+1. Open een webbrowser en navigeer naar de weer gegeven URL (meestal `http://127.0.0.1:8888` ).
 
 ## <a name="set-sandbox-passwords"></a>Sandbox-wacht woorden instellen
 
 1. Selecteer in de stap **aan de slag** van de sandbox Hortonworks-pagina **Geavanceerde opties weer geven**. Gebruik de informatie op deze pagina om u aan te melden bij de sandbox met SSH. Gebruik de opgegeven naam en het wacht woord.
 
    > [!NOTE]
-   > Als er geen SSH-client is geïnstalleerd, kunt u de op het web gebaseerde SSH gebruiken die is verschaft door de virtuele machine **http://localhost:4200/** op.
+   > Als er geen SSH-client is geïnstalleerd, kunt u de op het web gebaseerde SSH gebruiken die is verschaft door de virtuele machine op **http://localhost:4200/** .
 
     De eerste keer dat u verbinding maakt via SSH, wordt u gevraagd het wacht woord voor het hoofd account te wijzigen. Voer een nieuw wacht woord in dat u gebruikt wanneer u zich aanmeldt met SSH.
 
@@ -69,7 +69,7 @@ Als u een oudere sandbox van de HDP-versie wilt downloaden, raadpleegt u de kopp
 2. Zodra de shell is gestart, gebruikt u het volgende om de tabellen weer te geven die bij de sandbox worden meegeleverd:
 
         show tables;
-3. Gebruik het volgende om 10 rijen uit de `sample_07` tabel op te halen:
+3. Gebruik het volgende om 10 rijen uit de tabel op te halen `sample_07` :
 
         select * from sample_07 limit 10;
 

@@ -1,6 +1,6 @@
 ---
-title: Problemen oplossen met een probleem met netvsc. sys wanneer u extern verbinding maakt met een virtuele machine met Windows 10 of Windows Server 2016 in azure | Microsoft Docs
-description: Informatie over het oplossen van problemen met een Netsvc. sys-gerelateerd RDP-probleem wanneer u verbinding maakt met een virtuele machine met Windows 10 of Windows Server 2016 in Azure.
+title: Problemen oplossen met een netvsc.sys probleem wanneer u extern verbinding maakt met een virtuele machine met Windows 10 of Windows Server 2016 in azure | Microsoft Docs
+description: Informatie over het oplossen van problemen met een netsvc.sys-gerelateerd RDP wanneer u verbinding maakt met een virtuele machine met Windows 10 of Windows Server 2016 in Azure.
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,13 +13,13 @@ ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
 ms.openlocfilehash: 4c10a2dcd55c1605cfafe6c67cfefd9d8a3c5f9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71057992"
 ---
-# <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>Kan niet extern verbinding maken met een virtuele machine met Windows 10 of Windows Server 2016 in azure vanwege netvsc. sys
+# <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>Kan niet extern verbinding maken met een virtuele machine met Windows 10 of Windows Server 2016 in azure vanwege netvsc.sys
 
 In dit artikel wordt uitgelegd hoe u een probleem oplost waarbij geen netwerk verbinding wordt weer gegeven wanneer u verbinding maakt met een virtuele machine (VM) van Windows 10 of Windows 2016 Server Data Center op een Hyper-V Server 2016-host.
 
@@ -31,7 +31,7 @@ Dit probleem treedt doorgaans op in Windows [build 14393](https://support.micros
 
 ## <a name="cause"></a>Oorzaak
 
-Dit probleem kan optreden als de versie van het geïnstalleerde netvsc. sys-systeem bestand **10.0.14393.594** of **10.0.15063.0**is. Deze versies van netvsc. sys kunnen verhinderen dat het systeem communiceert met het Azure-platform.
+Dit probleem kan optreden als de versie van het geïnstalleerde netvsc.sys-systeem bestand **10.0.14393.594** of **10.0.15063.0**is. Deze versies van netvsc.sys kunnen verhinderen dat het systeem communiceert met het Azure-platform.
 
 
 ## <a name="solution"></a>Oplossing
@@ -54,7 +54,7 @@ Maak verbinding met [de seriële console, open een Power shell-exemplaar](serial
 
 2. Down load de juiste update naar een nieuwe of bestaande gegevens schijf die is gekoppeld aan een werkende VM uit dezelfde regio:
 
-   - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) of een latere update
+   - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562)   of een latere update
    - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) of een latere update
 
 3. Ontkoppel de schijf van het hulp programma van de werkende VM en koppel deze vervolgens aan de beschadigde virtuele machine.
@@ -77,9 +77,9 @@ Maak verbinding met [de seriële console, open een Power shell-exemplaar](serial
 
 4. Maak een kopie van de map **\Windows\System32\Config** als u de wijzigingen ongedaan wilt maken.
 
-5. Start de REGI ster-editor (Regedit. exe) op de virtuele machine voor herstel.
+5. Start de REGI ster-editor (regedit.exe) op de virtuele machine voor herstel.
 
-6. Selecteer de sleutel **HKEY_LOCAL_MACHINE** en selecteer vervolgens component **bestand** > **laden** in het menu.
+6. Selecteer de sleutel **HKEY_LOCAL_MACHINE** en selecteer vervolgens component **bestand**  >  **laden** in het menu.
 
 7. Zoek het systeem bestand in de map **\Windows\System32\Config** .
 
@@ -97,7 +97,7 @@ Maak verbinding met [de seriële console, open een Power shell-exemplaar](serial
 
 12. Down load de juiste update:
 
-    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) of een latere update
+    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562)   of een latere update
     - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) of een latere update
 
 13. Koppel de systeem schijf als een gegevens schijf op een herstel-VM waarop u de update kunt downloaden.

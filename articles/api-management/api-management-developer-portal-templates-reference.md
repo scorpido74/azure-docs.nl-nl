@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73176785"
 ---
 # <a name="developer-portal-templates"></a>Sjablonen voor ontwikkelaars Portal
@@ -37,16 +37,16 @@ Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](
     -   [Bewerking](api-management-api-templates.md#Product)  
     -   [Codevoorbeelden](api-management-api-templates.md#CodeSamples)  
         -   [Ezelsoor](api-management-api-templates.md#Curl)  
-        -   [G #](api-management-api-templates.md#CSharp)  
+        -   [C#](api-management-api-templates.md#CSharp)  
         -   [Java](api-management-api-templates.md#Stub)  
-        -   [Javascript](api-management-api-templates.md#JavaScript)  
+        -   [JavaScript](api-management-api-templates.md#JavaScript)  
         -   [Doel stelling C](api-management-api-templates.md#ObjectiveC)  
         -   [PHP](api-management-api-templates.md#PHP)  
         -   [Python](api-management-api-templates.md#Python)  
         -   [Ruby](api-management-api-templates.md#Ruby)  
 -   [Producten](api-management-product-templates.md)  
     -   [Product lijst](api-management-product-templates.md#ProductList)  
-    -   [Voortplant](api-management-product-templates.md#Product)  
+    -   [Product](api-management-product-templates.md#Product)  
 -   [Toepassingen](api-management-application-templates.md)  
     -   [Lijst met toepassingen](api-management-application-templates.md#ProductList)  
     -   [Toepassing](api-management-application-templates.md#Application)  

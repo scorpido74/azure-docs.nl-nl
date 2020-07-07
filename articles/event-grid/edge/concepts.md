@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 73309e10e88c11e639e6ac6fd3bb061e1b5c685b
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72992546"
 ---
 # <a name="event-grid-concepts"></a>Concepten binnen Event Grid
@@ -50,7 +50,7 @@ Zie [rest API documentatie](api.md) over het beheren van abonnementen in Event g
 
 ## <a name="event-handlers"></a>Event Handlers
 
-Vanuit een Event Grid perspectief is een gebeurtenis-handler het punt waar de gebeurtenis wordt verzonden. De handler moet verdere actie ondernemen om de gebeurtenis te verwerken. Event Grid ondersteunt verschillende typen handlers. U kunt een ondersteunde Azure-service of uw eigen webhook gebruiken als handler. Afhankelijk van het type handler, worden Event Grid verschillende mechanismen gevolgd om de levering van de gebeurtenis te garanderen. Als de doel gebeurtenis-handler een HTTP-webhook is, wordt de gebeurtenis opnieuw geprobeerd wanneer de handler de status code `200 – OK`retourneert van. Als de gebeurtenis wordt geleverd zonder uitzonde ring, wordt de hub als geslaagd beschouwd.
+Vanuit een Event Grid perspectief is een gebeurtenis-handler het punt waar de gebeurtenis wordt verzonden. De handler moet verdere actie ondernemen om de gebeurtenis te verwerken. Event Grid ondersteunt verschillende typen handlers. U kunt een ondersteunde Azure-service of uw eigen webhook gebruiken als handler. Afhankelijk van het type handler, worden Event Grid verschillende mechanismen gevolgd om de levering van de gebeurtenis te garanderen. Als de doel gebeurtenis-handler een HTTP-webhook is, wordt de gebeurtenis opnieuw geprobeerd wanneer de handler de status code retourneert van `200 – OK` . Als de gebeurtenis wordt geleverd zonder uitzonde ring, wordt de hub als geslaagd beschouwd.
 
 ## <a name="security"></a>Beveiliging
 

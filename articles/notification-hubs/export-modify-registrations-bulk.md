@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/18/2019
 ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71212396"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Azure Notification Hubs-registraties bulksgewijs exporteren en importeren
@@ -115,7 +115,7 @@ while (i > 0 && job.Status != NotificationHubJobStatus.Completed)
 }
 ```
 
-Naast de invoer-en uitvoer-Url's maakt dit voor beeld een `NotificationHubJob` -object dat een `JobType` object bevat. Dit kan een van de volgende typen zijn:
+Naast de invoer-en uitvoer-Url's maakt dit voor beeld een- `NotificationHubJob` object dat een object bevat. dit `JobType` kan een van de volgende typen zijn:
 
 - `ImportCreateRegistrations`
 - `ImportUpdateRegistrations`
@@ -128,7 +128,7 @@ Wanneer de taak is voltooid, kunt u de resultaten controleren door de volgende b
 - `/<hub>/<jobid>/Failed.txt`
 - `/<hub>/<jobid>/Output.txt`
 
-Deze bestanden bevatten de lijst met geslaagde en mislukte bewerkingen van de batch. De bestands indeling is `.cvs`, waarin elke rij het regel nummer van het oorspronkelijke invoer bestand bevat en de uitvoer van de bewerking (doorgaans de gemaakte of bijgewerkte registratie beschrijving).
+Deze bestanden bevatten de lijst met geslaagde en mislukte bewerkingen van de batch. De bestands indeling is `.cvs` , waarin elke rij het regel nummer van het oorspronkelijke invoer bestand bevat en de uitvoer van de bewerking (doorgaans de gemaakte of bijgewerkte registratie beschrijving).
 
 ### <a name="full-sample-code"></a>Volledige voorbeeld code
 Met de volgende voorbeeld code worden registraties in een notification hub geïmporteerd.

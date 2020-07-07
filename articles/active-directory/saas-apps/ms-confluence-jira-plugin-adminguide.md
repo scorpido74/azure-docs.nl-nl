@@ -16,10 +16,10 @@ ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8679f9a03fded546db68f058bca716ba053aa0fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73161209"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian Jira en confluence-beheer handleiding voor Azure Active Directory
@@ -28,7 +28,7 @@ ms.locfileid: "73161209"
 
 Met de Azure Active Directory-invoeg toepassing (Azure AD) eenmalige aanmelding (SSO) kunnen Microsoft Azure AD klanten hun werk-of school account gebruiken om zich aan te melden bij Atlassian Jira en confluence server-gebaseerde producten. Het implementeert SSO op basis van SAML 2,0.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 
 Wanneer gebruikers zich willen aanmelden bij de Atlassian Jira of confluence-toepassing, zien ze de knop **Aanmelden met Azure AD** op de aanmeldings pagina. Wanneer deze optie is geselecteerd, moeten ze zich aanmelden met behulp van de aanmeldings pagina van de Azure AD-organisatie (dat wil zeggen, hun werk-of school account).
 
@@ -45,7 +45,7 @@ Gebruikers kunnen via mijn apps onder het werk-of school account ook toegang kri
 
 Jira-en confluence-beheerders kunnen de-invoeg toepassing gebruiken om SSO in te scha kelen met behulp van Azure AD.
 
-## <a name="assumptions"></a>Veronderstellingen
+## <a name="assumptions"></a>Aannames
 
 * Voor Jira-en confluence-exemplaren is HTTPS ingeschakeld.
 * Er zijn al gebruikers gemaakt in Jira of confluence.
@@ -72,7 +72,7 @@ De invoeg toepassing ondersteunt de volgende versies van Jira en confluence:
 * Jira core en software: 6,0 tot 7,12
 * Jira Service Desk: 3.0.0 to 3.5.0
 * JIRA ondersteunt ook 5.2. Klik voor meer informatie op [Microsoft Azure Active Directory-eenmalige aanmelding voor JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
-* Confluence: 5,0 tot 5,10
+* Confluence: 5.0 t/m 5.10
 * Confluence: 6.0.1
 * Confluence: 6.1.1
 * Confluence: 6.2.1
@@ -87,7 +87,7 @@ De invoeg toepassing ondersteunt de volgende versies van Jira en confluence:
 * Confluence: 6.11.0
 * Confluence: 6.12.0
 
-## <a name="installation"></a>Installeren
+## <a name="installation"></a>Installatie
 
 Als u de invoeg toepassing wilt installeren, voert u de volgende stappen uit:
 
@@ -95,7 +95,7 @@ Als u de invoeg toepassing wilt installeren, voert u de volgende stappen uit:
 
 2. Ga naar de beheer console van Jira/confluence en selecteer **invoeg toepassingen**.
 
-3. Down load de [micro soft SAML SSO-invoeg toepassing voor Jira](https://www.microsoft.com/download/details.aspx?id=56506)/ [micro soft SAML SSO-invoeg toepassing voor confluence](https://www.microsoft.com/download/details.aspx?id=56503)in het micro soft Download centrum.
+3. Down load de [micro soft SAML SSO-invoeg toepassing voor Jira](https://www.microsoft.com/download/details.aspx?id=56506) /  [micro soft SAML SSO-invoeg toepassing voor confluence](https://www.microsoft.com/download/details.aspx?id=56503)in het micro soft Download centrum.
 
    De juiste versie van de invoeg toepassing wordt weer gegeven in de zoek resultaten.
 
@@ -113,11 +113,11 @@ In de volgende afbeelding ziet u het configuratie scherm in zowel Jira als confl
 
 * **Meta gegevens-URL**: de URL voor het ophalen van federatieve meta gegevens uit Azure AD.
 
-* **Id's**: de URL die door Azure AD wordt gebruikt om de bron van de aanvraag te valideren. Het wordt toegewezen aan het **id** -element in azure AD. Deze URL wordt door de invoeg toepassing automatisch als https://*\<-domein afgeleid: poort>*/.
+* **Id's**: de URL die door Azure AD wordt gebruikt om de bron van de aanvraag te valideren. Het wordt toegewezen aan het **id** -element in azure AD. Deze URL wordt door de invoeg toepassing automatisch afgeleid van https:// *\<domain:port>* /.
 
-* **Antwoord-URL**: de antwoord-URL in uw ID-provider (IDP) die de SAML-aanmelding initieert. Het wordt toegewezen aan het **antwoord-URL** -element in azure AD. Deze URL wordt door de invoeg toepassing automatisch als https://*\<-domein afgeleid: poort>*/plugins/servlet/SAML/auth.
+* **Antwoord-URL**: de antwoord-URL in uw ID-provider (IDP) die de SAML-aanmelding initieert. Het wordt toegewezen aan het **antwoord-URL** -element in azure AD. Deze URL wordt door de invoeg toepassing automatisch afgeleid van https:// *\<domain:port>* /plugins/servlet/SAML/auth.
 
-* **Aanmeldings-URL**: de AANMELDINGS-URL in uw IDP waarmee de SAML-aanmelding wordt gestart. Het wordt toegewezen aan het **aanmeldings** element in azure AD. Deze URL wordt door de invoeg toepassing automatisch als https://*\<-domein afgeleid: poort>*/plugins/servlet/SAML/auth.
+* **Aanmeldings-URL**: de AANMELDINGS-URL in uw IDP waarmee de SAML-aanmelding wordt gestart. Het wordt toegewezen aan het **aanmeldings** element in azure AD. Deze URL wordt door de invoeg toepassing automatisch afgeleid van https:// *\<domain:port>* /plugins/servlet/SAML/auth.
 
 * **IDP-entiteit-id**: de entiteit-id die uw IDP gebruikt. Dit vak wordt ingevuld wanneer de meta gegevens-URL is opgelost.
 
@@ -190,7 +190,7 @@ De invoeg toepassing ondersteunt de volgende versies:
 * Jira core en software: 6,0 tot 7,12
 * Jira Service Desk: 3.0.0 to 3.5.0
 * JIRA ondersteunt ook 5.2. Klik voor meer informatie op [Microsoft Azure Active Directory-eenmalige aanmelding voor JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
-* Confluence: 5,0 tot 5,10
+* Confluence: 5.0 t/m 5.10
 * Confluence: 6.0.1
 * Confluence: 6.1.1
 * Confluence: 6.2.1

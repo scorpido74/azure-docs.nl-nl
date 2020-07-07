@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 619d40ab56715b4444d8e5649c7fb3401b3f57ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71937289"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Media Services gebeurtenissen maken en bewaken met Event Grid met behulp van de Azure CLI
@@ -26,12 +26,12 @@ In dit artikel gebruikt u de Azure CLI om u te abonneren op gebeurtenissen voor 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een actief Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
+- Een actief Azure-abonnement. Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
 - Installeer en gebruik de CLI lokaal. Voor dit artikel dient u gebruik te maken van Azure CLI, versie 2.0 of hoger. Voer `az --version` uit om te zien welke versie u hebt. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). 
 
     Momenteel werken niet alle [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref)-opdrachten in Azure Cloud Shell. U wordt aangeraden de CLI lokaal te gebruiken.
 
-- [Een Azure Media Services-account maken](create-account-cli-how-to.md).
+- [Maak een Media Services-account](create-account-cli-how-to.md).
 
     Vergeet niet de waarden die u hebt gebruikt voor de namen van de resourcegroep en het Media Services-account.
 
@@ -61,7 +61,7 @@ az account set --subscription mySubscriptionId
 
 U abonneert u op een artikel om Event Grid welke gebeurtenissen u wilt bijhouden. In het volgende voor beeld wordt een abonnement genomen op het Media Services-account dat u hebt gemaakt en wordt de URL door gegeven van de website die u hebt gemaakt als eind punt voor gebeurtenis meldingen. 
 
-Vervang `<event_subscription_name>` door een unieke naam voor uw gebeurtenis abonnement. Gebruik `<resource_group_name>` voor `<ams_account_name>`en de waarden die u hebt gebruikt bij het maken van het Media Services-account. Geef voor `<endpoint_URL>`de de URL van uw web-app op en `api/updates` Voeg deze toe aan de URL van de start pagina. Door het eind punt op te geven bij het abonneren, wordt Event Grid de route ring van gebeurtenissen naar dat eind punt verwerkt. 
+Vervang door `<event_subscription_name>` een unieke naam voor uw gebeurtenis abonnement. `<resource_group_name>`Gebruik voor en `<ams_account_name>` de waarden die u hebt gebruikt bij het maken van het Media Services-account. Geef voor de de `<endpoint_URL>` URL van uw web-app op en voeg deze toe `api/updates` aan de URL van de start pagina. Door het eind punt op te geven bij het abonneren, wordt Event Grid de route ring van gebeurtenissen naar dat eind punt verwerkt. 
 
 1. De resource-id ophalen
 
@@ -99,7 +99,7 @@ Nu gaan we gebeurtenissen activeren om te zien hoe Event Grid het bericht distri
 
 U kunt gebeurtenissen voor het Media Services-account activeren door een coderings taak uit te voeren. U kunt [deze Snelstartgids](stream-files-dotnet-quickstart.md) volgen om een bestand te coderen en te beginnen met het verzenden van gebeurtenissen. 
 
-Bekijk opnieuw uw web-app en u zult zien dat er een validatiegebeurtenis voor een abonnement naartoe is verzonden. Via Event Grid wordt de validatiegebeurtenis verzonden zodat het eindpunt kan controleren of de gebeurtenisgegevens in aanmerking komen om ontvangen te worden. Het eind punt moet worden `validationResponse` ingesteld `validationCode`op. Zie [Event grid beveiliging en verificatie](../../event-grid/security-authentication.md)voor meer informatie. U kunt de code van de web-app bekijken om te zien hoe het abonnement wordt gevalideerd.
+Bekijk opnieuw uw web-app en u zult zien dat er een validatiegebeurtenis voor een abonnement naartoe is verzonden. Via Event Grid wordt de validatiegebeurtenis verzonden zodat het eindpunt kan controleren of de gebeurtenisgegevens in aanmerking komen om ontvangen te worden. Het eind punt moet worden ingesteld `validationResponse` op `validationCode` . Zie [Event grid beveiliging en verificatie](../../event-grid/security-authentication.md)voor meer informatie. U kunt de code van de web-app bekijken om te zien hoe het abonnement wordt gevalideerd.
 
 > [!TIP]
 > Selecteer het oogpictogram om de gebeurtenisgegevens uit te breiden. Vernieuw de pagina niet als u alle gebeurtenissen wilt weer geven.

@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 890a25ed2cf11d657cad930815d78dbf968cc9f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71203649"
 ---
 # <a name="manage-the-opc-vault-certificate-service"></a>De OPC-kluis certificaat service beheren
@@ -25,11 +25,11 @@ Nadat de OPC-kluis is geïmplementeerd, moet u het basis-CA-certificaat maken. Z
 > [!IMPORTANT]
 > De beheerdersrol is vereist om het CA-certificaat van de verlener te maken of te vernieuwen.
 
-1. Open uw certificaat service op `https://myResourceGroup-app.azurewebsites.net`en meld u aan.
+1. Open uw certificaat service op `https://myResourceGroup-app.azurewebsites.net` en meld u aan.
 2. Ga naar **certificaat groepen**.
-3. Er wordt één standaard certificaat groep vermeld. Selecteer **bewerken**.
+3. Er wordt één standaard certificaat groep vermeld. Selecteer **Bewerken**.
 4. In **Details van certificaat groep bewerken**kunt u de onderwerpnaam en de levens duur van uw CA-en toepassings certificaten wijzigen. Het onderwerp en de levens duur mogen slechts eenmaal worden ingesteld voordat het eerste CA-certificaat wordt uitgegeven. Wijzigingen in de levens duur tijdens bewerkingen kunnen leiden tot inconsistente levens duur van uitgegeven certificaten en Crl's.
-5. Voer een geldig onderwerp in (bijvoorbeeld `CN=My CA Root, O=MyCompany, OU=MyDepartment`).<br>
+5. Voer een geldig onderwerp in (bijvoorbeeld `CN=My CA Root, O=MyCompany, OU=MyDepartment` ).<br>
    > [!IMPORTANT]
    > Als u het onderwerp wijzigt, moet u het certificaat van de verlener vernieuwen of kunnen toepassings certificaten niet worden ondertekend door de service. Het onderwerp van de configuratie wordt gecontroleerd op basis van het onderwerp van het actieve certificaat van de certificerings instantie. Als de onderwerpen niet overeenkomen, wordt het ondertekenen van certificaten geweigerd.
 6. Selecteer **Opslaan**.
@@ -51,7 +51,7 @@ In de volgende werk stroom worden alle certificaat aanvragen in de verwijderde s
 > [!IMPORTANT]
 > De beheerdersrol is vereist voor het vernieuwen van de CRL van de verlener.
 
-1. Open uw certificaat service op `https://myResourceGroup.azurewebsites.net`en meld u aan.
+1. Open uw certificaat service op `https://myResourceGroup.azurewebsites.net` en meld u aan.
 2. Ga naar de pagina **certificaat groepen** .
 3. Selecteer **Details**. Hier worden het huidige certificaat en de CRL-informatie weer gegeven.
 4. Selecteer **Update CRL-intrekkings lijst (CRL)** om een bijgewerkte CRL uit te geven voor alle actieve certificaat verlener in de OPC-kluis opslag.
@@ -66,8 +66,8 @@ Standaard kan een geverifieerde gebruiker in de Tenant zich als lezer aanmelden 
 ### <a name="add-user"></a>Gebruiker toevoegen
 
 1. Open Azure Portal.
-2. Ga naar **Azure Active Directory** > **Enter prise-toepassingen**.
-3. De registratie van de OPC-kluis micro service (standaard uw `resourceGroupName-service`) kiezen.
+2. Ga naar **Azure Active Directory**  >  **Enter prise-toepassingen**.
+3. De registratie van de OPC-kluis micro service (standaard uw) kiezen `resourceGroupName-service` .
 4. Ga naar **gebruikers en groepen**.
 5. Selecteer **gebruiker toevoegen**.
 6. De gebruiker selecteren of uitnodigen voor toewijzing aan een specifieke rol.
@@ -78,8 +78,8 @@ Standaard kan een geverifieerde gebruiker in de Tenant zich als lezer aanmelden 
 ### <a name="remove-user"></a>Gebruiker verwijderen
 
 1. Open Azure Portal.
-2. Ga naar **Azure Active Directory** > **Enter prise-toepassingen**.
-3. De registratie van de OPC-kluis micro service (standaard uw `resourceGroupName-service`) kiezen.
+2. Ga naar **Azure Active Directory**  >  **Enter prise-toepassingen**.
+3. De registratie van de OPC-kluis micro service (standaard uw) kiezen `resourceGroupName-service` .
 4. Ga naar **gebruikers en groepen**.
 5. Selecteer een gebruiker met een rol die u wilt verwijderen en selecteer vervolgens **verwijderen**.
 6. Voor verwijderde gebruikers in de rol beheerder of goed keurder verwijdert u deze ook uit Azure Key Vault beleid.
@@ -93,8 +93,8 @@ De service-identiteit heeft standaard slechts beperkte machtigingen voor toegang
 #### <a name="for-an-approver-role-the-following-permissions-must-be-added-to-key-vault"></a>Voor een rol van goed keurder moeten de volgende machtigingen worden toegevoegd aan Key Vault
 
 1. Open Azure Portal.
-2. Ga naar uw OPC- `resourceGroupName`kluis die wordt gebruikt tijdens de implementatie.
-3. Ga naar de Key Vault `resourceGroupName-xxxxx`.
+2. Ga naar uw OPC `resourceGroupName` -kluis die wordt gebruikt tijdens de implementatie.
+3. Ga naar de Key Vault `resourceGroupName-xxxxx` .
 4. Ga naar **toegangs beleid**.
 5. Selecteer **Nieuw toevoegen**.
 6. Sla de sjabloon over. Er is geen sjabloon die voldoet aan de vereisten.
@@ -107,8 +107,8 @@ De service-identiteit heeft standaard slechts beperkte machtigingen voor toegang
 #### <a name="for-an-administrator-role-the-following-permissions-must-be-added-to-key-vault"></a>Voor een beheerdersrol moeten de volgende machtigingen worden toegevoegd aan Key Vault
 
 1. Open Azure Portal.
-2. Ga naar uw OPC- `resourceGroupName`kluis die wordt gebruikt tijdens de implementatie.
-3. Ga naar de Key Vault `resourceGroupName-xxxxx`.
+2. Ga naar uw OPC `resourceGroupName` -kluis die wordt gebruikt tijdens de implementatie.
+3. Ga naar de Key Vault `resourceGroupName-xxxxx` .
 4. Ga naar **toegangs beleid**.
 5. Selecteer **Nieuw toevoegen**.
 6. Sla de sjabloon over. Er is geen sjabloon die voldoet aan de vereisten.
@@ -121,8 +121,8 @@ De service-identiteit heeft standaard slechts beperkte machtigingen voor toegang
 ### <a name="remove-user-access-policy-from-azure-key-vault"></a>Gebruikers toegangs beleid verwijderen uit Azure Key Vault
 
 1. Open Azure Portal.
-2. Ga naar uw OPC- `resourceGroupName`kluis die wordt gebruikt tijdens de implementatie.
-3. Ga naar de Key Vault `resourceGroupName-xxxxx`.
+2. Ga naar uw OPC `resourceGroupName` -kluis die wordt gebruikt tijdens de implementatie.
+3. Ga naar de Key Vault `resourceGroupName-xxxxx` .
 4. Ga naar **toegangs beleid**.
 5. Zoek de gebruiker die u wilt verwijderen en selecteer **verwijderen**.
 

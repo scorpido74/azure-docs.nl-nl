@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: sideeksh
 ms.openlocfilehash: d8c896bc655339fbd7d51f738fb629450e8c12ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72376220"
 ---
 # <a name="support-for-using-site-recovery-with-azure-backup"></a>Ondersteuning voor het gebruik van Site Recovery met Azure Backup
 
 In dit artikel wordt een overzicht gegeven van de ondersteuning voor het gebruik van de [site Recovery-service](site-recovery-overview.md) samen met de [Azure backup-service](https://docs.microsoft.com/azure/backup/backup-overview).
 
-**Actie** | **Ondersteuning voor Site Recovery** | **Nadere**
+**Actie** | **Ondersteuning voor Site Recovery** | **Details**
 --- | --- | ---
 **Services samen implementeren** | Ondersteund | Services zijn interoperabel en kunnen samen worden geconfigureerd.
 **Back-up/herstellen van bestanden** | Ondersteund | Als back-up en replicatie zijn ingeschakeld voor een virtuele machine en er back-ups worden gemaakt, is er geen probleem bij het herstellen van bestanden op de bron-en-groep Vm's. Replicatie wordt voortgezet zoals gebruikelijk zonder wijzigingen in de replicatie status.

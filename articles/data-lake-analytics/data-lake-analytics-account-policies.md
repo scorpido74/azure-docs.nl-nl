@@ -10,10 +10,10 @@ ms.assetid: 0a6102d1-7554-4df2-b487-4dae9a7287b6
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.openlocfilehash: 4689714073047e383a53a04bd0069a8a27afdf9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72966435"
 ---
 # <a name="manage-azure-data-lake-analytics-using-account-policies"></a>Azure Data Lake Analytics beheren met account beleid
@@ -96,7 +96,7 @@ Er is een standaard beleid ingesteld voor elk account. Het standaard beleid is v
 1. Ga in het Azure Portal naar uw Data Lake Analytics-account.
 2. Klik op **limieten en beleids regels**.
 3. Zoek onder **limieten voor taak inzending**het beleid dat u wilt bewerken.
-4.  Als u de opties voor **verwijderen** en **bewerken** wilt zien, klikt u in de kolom uiterst `...`rechts van de tabel op.
+4.  Als u de opties voor **verwijderen** en **bewerken** wilt zien, klikt u in de kolom uiterst rechts van de tabel op `...` .
 
 ## <a name="additional-resources-for-job-policies"></a>Aanvullende bronnen voor taak beleid
 * [Blog bericht over beleids overzicht](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-overview/)

@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
 ms.openlocfilehash: deb1ea8c7b41ad48bddebfbed1b15c667ee0071a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73483952"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
@@ -106,7 +106,7 @@ Met uw MXChip IoT DevKit verbonden met uw computer:
 ![Voorbeeld test procedure](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> U kunt onbewerkte gegevens van het apparaat dubbele in azure Portal bekijken\> : IOT hub-\> IOT-apparaten- * \<uw apparaat\> *  - \> -apparaat dubbele.
+> U kunt onbewerkte gegevens van het apparaat dubbele in azure Portal bekijken: IOT hub- \> IOT-apparaten- \> *\<your device\>*  - \> apparaat-twee.
 
 ## <a name="next-steps"></a>Volgende stappen
 

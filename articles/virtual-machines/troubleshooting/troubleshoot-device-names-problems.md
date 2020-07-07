@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 7d8a7e7e88837214042fb8f1c109c0b93bfe771b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71058209"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>Naam wijzigingen van Linux VM-apparaat oplossen
@@ -42,7 +42,7 @@ Het probleem treedt op omdat het scannen van apparaten in Linux wordt gepland do
 
 U kunt dit probleem oplossen door permanente naamgeving te gebruiken. Er zijn vier manieren om permanente naamgeving te gebruiken: op bestandssysteem label, op UUID, op ID of op pad. U kunt het beste het bestandssysteem label of de UUID voor virtuele Azure Linux-machines gebruiken.
 
-`fstab` **De meeste** distributies bieden de **nobootwait** -para meters. Met deze para meters kan een systeem worden opgestart wanneer de schijf niet kan worden gekoppeld bij het opstarten. Raadpleeg uw distributie documentatie voor meer informatie over deze para meters. Zie [verbinding maken met de Linux-VM voor het koppelen van de nieuwe schijf](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk)voor meer informatie over het configureren van een virtuele Linux-machine voor het gebruik van een UUID wanneer u een gegevens schijf toevoegt.
+De meeste distributies bieden de `fstab` **nofail** **nobootwait** -para meters. Met deze para meters kan een systeem worden opgestart wanneer de schijf niet kan worden gekoppeld bij het opstarten. Raadpleeg uw distributie documentatie voor meer informatie over deze para meters. Zie [verbinding maken met de Linux-VM voor het koppelen van de nieuwe schijf](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk)voor meer informatie over het configureren van een virtuele Linux-machine voor het gebruik van een UUID wanneer u een gegevens schijf toevoegt.
 
 Wanneer de Azure Linux-agent is geïnstalleerd op een virtuele machine, gebruikt de agent udev-regels voor het samen stellen van een set symbolische koppelingen onder het pad/dev/disk/Azure. Toepassingen en scripts gebruiken udev-regels voor het identificeren van schijven die zijn gekoppeld aan de virtuele machine, samen met het schijf type en schijf-Lun's.
 
@@ -113,7 +113,7 @@ De gast-LUN-informatie wordt gebruikt met meta gegevens van het Azure-abonnement
 
 ### <a name="discover-filesystem-uuids-by-using-blkid"></a>Bestandssysteem-UUID detecteren met behulp van blkid
 
-Toepassingen en scripts lezen de uitvoer van `blkid`of soort gelijke informatie bronnen om symbolische koppelingen te maken in het pad/dev. In de uitvoer ziet u de UUID van alle schijven die zijn gekoppeld aan de virtuele machine en het bijbehorende apparaatbestand:
+Toepassingen en scripts lezen de uitvoer van `blkid` of soort gelijke informatie bronnen om symbolische koppelingen te maken in het pad/dev. In de uitvoer ziet u de UUID van alle schijven die zijn gekoppeld aan de virtuele machine en het bijbehorende apparaatbestand:
 
     $ sudo blkid -s UUID
 

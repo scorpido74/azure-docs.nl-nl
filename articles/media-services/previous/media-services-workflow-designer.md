@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
 ms.openlocfilehash: 4dceb558532305c6d2e84563e25ab05508423090
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72801952"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Geavanceerde encoding-werkstromen maken met Workflow Designer  
@@ -37,7 +37,7 @@ Voor beelden van werk stromen die u kunt maken zijn:
 Dit hulp programma kan ook worden gebruikt om een van onze [gepubliceerde werk stromen](media-services-workflow-designer.md#existing_workflows)te wijzigen. 
 
 > [!NOTE]
-> Neem contact op mepd@microsoft.commet om uw exemplaar van het Workflow Designer-hulp programma te verkrijgen.
+> Neem contact op met om uw exemplaar van het Workflow Designer-hulp programma te verkrijgen mepd@microsoft.com .
 
 Zodra een werk stroom bestand is gemaakt, kan het worden geüpload als een Asset en vervolgens worden gebruikt voor het coderen van media bestanden. Zie [geavanceerde code ring met Media Encoder Premium workflow](media-services-encode-with-premium-workflow.md)voor meer informatie over het coderen met **Media Encoder Premium workflow** met behulp van **.net**.
 
@@ -79,7 +79,7 @@ Video over dag 3:
 > 
 > 
 
-## <a name="need-help"></a>Hebt u hulp nodig?
+## <a name="need-help"></a>Hulp nodig?
 
 U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 

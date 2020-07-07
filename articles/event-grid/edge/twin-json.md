@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 5c23b9ef280a4a4e3458d279ecf060d2e3d50295
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72992143"
 ---
 # <a name="module-twin-json-schema"></a>Module dubbele JSON-schema
@@ -27,7 +27,7 @@ Event Grid op IoT Edge integreert met het IoT Edge ecosysteem en ondersteunt het
 
 * De waarde van elk sleutel-waardepaar in het gedeelte topics heeft precies hetzelfde JSON-schema dat wordt gebruikt voor `Topic.Properties` de API bij het maken van onderwerpen.
 * De waarde van elk sleutel-waardepaar in het gedeelte **EventSubscriptions** heeft precies hetzelfde JSON-schema dat wordt gebruikt voor `EventSubscription.Properties` de API bij het maken van onderwerpen.
-* Als u een onderwerp wilt verwijderen, stelt u `null` de waarde in op in de gewenste eigenschappen.
+* Als u een onderwerp wilt verwijderen, stelt u de waarde `null` in op in de gewenste eigenschappen.
 * Het verwijderen van gebeurtenis abonnementen via gewenste eigenschappen wordt niet ondersteund.
 
 ```json
