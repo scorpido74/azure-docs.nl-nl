@@ -4,10 +4,10 @@ description: Krijg antwoorden op veelgestelde vragen over de Azure Migrate-servi
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: 9b71888b284fd9cc125def4758d1e3800a92acf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81530314"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: algemene vragen
@@ -53,7 +53,7 @@ Kies uw hulp programma op basis van wat u wilt doen:
 
 ## <a name="which-geographies-are-supported"></a>Welke geografische gebieden worden ondersteund?
 
-Bekijk de ondersteunde geographs voor [open bare](migrate-support-matrix.md#supported-geographies-public-cloud) en [overheids Clouds](migrate-support-matrix.md#supported-geographies-azure-government).
+Bekijk de ondersteunde geografische regio's voor [openbare](migrate-support-matrix.md#supported-geographies-public-cloud) clouds en [overheidsclouds](migrate-support-matrix.md#supported-geographies-azure-government).
 
 ## <a name="how-do-i-get-started"></a>Hoe ga ik aan de slag?
 

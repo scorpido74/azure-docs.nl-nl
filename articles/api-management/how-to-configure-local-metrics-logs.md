@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
 ms.openlocfilehash: dd49680da6f52e32ddb52dbdb23ad5e8f627a91e
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205064"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Lokale metrische gegevens en logboeken voor Azure API Management zelf-hostende gateway configureren
@@ -122,7 +122,7 @@ spec:
     app: sputnik-metrics
 ```
 
-Sla de configuraties op in een bestand `metrics.yaml` met de naam en gebruik de onderstaande opdracht om alles op het cluster te implementeren:
+Sla de configuraties op in een bestand met `metrics.yaml` de naam en gebruik de onderstaande opdracht om alles op het cluster te implementeren:
 
 ```console
 kubectl apply -f metrics.yaml
@@ -136,7 +136,7 @@ NAME                                   READY   STATUS    RESTARTS   AGE
 sputnik-metrics-f6d97548f-4xnb7        2/2     Running   0          1m
 ```
 
-Voer de onderstaande opdracht uit om te controleren of de services worden uitgevoerd. Noteer de `CLUSTER-IP` en `PORT` de service met statistieken. Dit zou later nodig zijn. U kunt het Prometheus-dash board bezoeken `EXTERNAL-IP` met `PORT`de en.
+Voer de onderstaande opdracht uit om te controleren of de services worden uitgevoerd. Noteer de `CLUSTER-IP` en `PORT` de service met statistieken. Dit zou later nodig zijn. U kunt het Prometheus-dash board bezoeken met de `EXTERNAL-IP` en `PORT` .
 
 ```console
 kubectl get services
@@ -147,14 +147,14 @@ sputnik-metrics-statsd       NodePort       10.0.41.179   <none>          8125:3
 
 ### <a name="configure-the-self-hosted-gateway-to-emit-metrics"></a>De zelf-hostende gateway configureren voor het verzenden van metrische gegevens
 
-Nu zowel de statistieken als de Prometheus zijn geïmplementeerd, kunnen we de configuraties van de zelf-hostende gateway bijwerken om het verzenden van metrische gegevens via een statief te starten. De functie kan worden ingeschakeld of uitgeschakeld met behulp van de `telemetry.metrics.local` sleutel in de ConfigMap van de zelf-hostende gateway-implementatie met extra opties. Hieronder vindt u een uitsplitsing van de beschik bare opties:
+Nu zowel de statistieken als de Prometheus zijn geïmplementeerd, kunnen we de configuraties van de zelf-hostende gateway bijwerken om het verzenden van metrische gegevens via een statief te starten. De functie kan worden ingeschakeld of uitgeschakeld met behulp `telemetry.metrics.local` van de sleutel in de ConfigMap van de zelf-hostende gateway-implementatie met extra opties. Hieronder vindt u een uitsplitsing van de beschik bare opties:
 
 | Veld  | Standaard | Beschrijving |
 | ------------- | ------------- | ------------- |
-| telemetrie. Metrics. local  | `none` | Hiermee schakelt u de logboek registratie in via statistieken. Waarde kan zijn `none`, `statsd`. |
+| telemetrie. Metrics. local  | `none` | Hiermee schakelt u de logboek registratie in via statistieken. Waarde kan zijn `none` , `statsd` . |
 | telemetrie. Metrics. local. stats. restated. Endpoint  | N.v.t. | Hiermee geeft u het getunnelde eind punt op. |
 | telemetrie. Metrics. local. statd. samples. sampling  | N.v.t. | Geeft de sampling frequentie van metrische gegevens aan. De waarde kan tussen 0 en 1 liggen. bijvoorbeeld,`0.5`|
-| telemetrie. Metrics. local. stats. tag-Format  | N.v.t. | Indeling van de [code ring](https://github.com/prometheus/statsd_exporter#tagging-extensions)van het export model met statistieken. Waarde kan zijn `none`, `librato`, `dogStatsD`, `influxDB`. |
+| telemetrie. Metrics. local. stats. tag-Format  | N.v.t. | Indeling van de [code ring](https://github.com/prometheus/statsd_exporter#tagging-extensions)van het export model met statistieken. Waarde kan zijn `none` , `librato` , `dogStatsD` , `influxDB` . |
 
 Hier volgt een voor beeld van een configuratie:
 
@@ -185,11 +185,11 @@ kubectl rollout restart deployment/<deployment-name>
 
 ### <a name="view-the-metrics"></a>De metrische gegevens weer geven
 
-Nu alles is geïmplementeerd en geconfigureerd, moet de zelf-hostende gateway metrische gegevens rapporteren via statistieken. Met Prometheus worden de metrische gegevens opgehaald uit de statistieken. Ga naar het Prometheus-dash board `EXTERNAL-IP` met `PORT` behulp van de en van de Prometheus-service. 
+Nu alles is geïmplementeerd en geconfigureerd, moet de zelf-hostende gateway metrische gegevens rapporteren via statistieken. Met Prometheus worden de metrische gegevens opgehaald uit de statistieken. Ga naar het Prometheus-dash board met behulp `EXTERNAL-IP` van de en `PORT` van de Prometheus-service. 
 
 Maak een aantal API-aanroepen via de zelf-hostende gateway als alles correct is geconfigureerd, kunt u de onderstaande metrische gegevens weer geven:
 
-| Gegevens  | Beschrijving |
+| Metrisch  | Beschrijving |
 | ------------- | ------------- |
 | Aanvragen  | Aantal API-aanvragen in de periode |
 | DurationInMS | Aantal milliseconden vanaf het moment dat de gateway de aanvraag ontving tot het moment dat het antwoord volledig werd verzonden |
@@ -198,20 +198,20 @@ Maak een aantal API-aanroepen via de zelf-hostende gateway als alles correct is 
 
 ## <a name="logs"></a>Logboeken
 
-De zelf-hostende Gateway levert standaard `stdout` logboeken `stderr` naar en. U kunt de Logboeken eenvoudig weer geven met de volgende opdracht:
+De zelf-hostende Gateway levert standaard logboeken naar `stdout` en `stderr` . U kunt de Logboeken eenvoudig weer geven met de volgende opdracht:
 
 ```console
 kubectl logs <pod-name>
 ```
 
-Als uw zelf-hostende gateway is geïmplementeerd in de Azure Kubernetes-service, kunt u [Azure monitor voor containers](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) `stdout` inschakelen `stderr` en van uw workloads verzamelen en de logboeken in log Analytics weer geven. 
+Als uw zelf-hostende gateway is geïmplementeerd in de Azure Kubernetes-service, kunt u [Azure monitor voor containers](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) inschakelen `stdout` en `stderr` van uw workloads verzamelen en de logboeken in log Analytics weer geven. 
 
-De zelf-hostende gateway biedt ook ondersteuning voor een aantal `localsyslog`protocollen `rfc5424`, waaronder `journal`, en. De onderstaande tabel bevat een overzicht van alle ondersteunde opties. 
+De zelf-hostende gateway biedt ook ondersteuning voor een aantal protocollen `localsyslog` , waaronder, `rfc5424` en `journal` . De onderstaande tabel bevat een overzicht van alle ondersteunde opties. 
 
 | Veld  | Standaard | Beschrijving |
 | ------------- | ------------- | ------------- |
-| telemetrie. logs. std  | `text` | Hiermee schakelt u de logboek registratie in voor standaard stromen. Waarde kan zijn `none`, `text`,`json` |
-| telemetrie. logs. lokaal  | `none` | Lokale logboek registratie inschakelen. Waarde kan `none`, `auto` `localsyslog`,,, `rfc5424``journal`  |
+| telemetrie. logs. std  | `text` | Hiermee schakelt u de logboek registratie in voor standaard stromen. Waarde kan zijn `none` , `text` ,`json` |
+| telemetrie. logs. lokaal  | `none` | Lokale logboek registratie inschakelen. Waarde kan `none` ,, `auto` , `localsyslog` `rfc5424` ,`journal`  |
 | telemetrie. logs. local. localsyslog. eind punt  | N.v.t. | Hiermee wordt het localsyslog-eind punt opgegeven.  |
 | telemetrie. logs. local. localsyslog. Facility  | N.v.t. | Hiermee wordt localsyslog [faciliteit code](https://en.wikipedia.org/wiki/Syslog#Facility)opgegeven. bijvoorbeeld,`7` 
 | telemetrie. logs. local. rfc5424. eind punt  | N.v.t. | Hiermee wordt het rfc5424-eind punt opgegeven.  |

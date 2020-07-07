@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.openlocfilehash: 0a31c6cf32222277e033aacf7d04622c54aef9ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80437019"
 ---
 # <a name="migrate-apache-kafka-workloads-to-azure-hdinsight-40"></a>Apache Kafka workloads migreren naar Azure HDInsight 4,0
@@ -54,7 +54,7 @@ Zie [Apache Kafka 2,0 release opmerkingen](https://archive.apache.org/dist/kafka
 
 ## <a name="kafka-client-compatibility"></a>Kafka-client compatibiliteit
 
-Nieuwe Kafka-Brokers ondersteunen oudere clients. [Kip-35-het ophalen van een Protocol versie](https://cwiki.apache.org/confluence/display/KAFKA/KIP-35+-+Retrieving+protocol+version) heeft een mechanisme geïntroduceerd voor het dynamisch bepalen van de functionaliteit van een Kafka Broker en [kip-97: verbeterd Kafka client RPC-compatibiliteits beleid](https://cwiki.apache.org/confluence/display/KAFKA/KIP-97%3A+Improved+Kafka+Client+RPC+Compatibility+Policy) heeft een nieuw compatibiliteits beleid en garanties voor de Java-client geïntroduceerd. Voorheen moest een Kafka-client communiceren met een Broker van dezelfde versie of een nieuwere versie. Nieuwere versies van de Java-clients en andere clients die ondersteuning bieden voor KIP-35 zoals `librdkafka` , kunnen terugvallen op oudere aanvraag typen of geschikte fouten genereren als de functionaliteit niet beschikbaar is.
+Nieuwe Kafka-Brokers ondersteunen oudere clients. [Kip-35-het ophalen van een Protocol versie](https://cwiki.apache.org/confluence/display/KAFKA/KIP-35+-+Retrieving+protocol+version) heeft een mechanisme geïntroduceerd voor het dynamisch bepalen van de functionaliteit van een Kafka Broker en [kip-97: verbeterd Kafka client RPC-compatibiliteits beleid](https://cwiki.apache.org/confluence/display/KAFKA/KIP-97%3A+Improved+Kafka+Client+RPC+Compatibility+Policy) heeft een nieuw compatibiliteits beleid en garanties voor de Java-client geïntroduceerd. Voorheen moest een Kafka-client communiceren met een Broker van dezelfde versie of een nieuwere versie. Nieuwere versies van de Java-clients en andere clients die ondersteuning bieden voor KIP-35 zoals, `librdkafka` kunnen terugvallen op oudere aanvraag typen of geschikte fouten genereren als de functionaliteit niet beschikbaar is.
 
 ![Upgrade uitvoeren voor Kafka-client compatibiliteit](./media/upgrade-threesix-to-four/apache-kafka-client-compatibility.png)
 

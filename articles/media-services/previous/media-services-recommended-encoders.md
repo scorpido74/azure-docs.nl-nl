@@ -10,10 +10,10 @@ ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 3c42070525fc60e45b976620513929c3d5a32341
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81535091"
 ---
 # <a name="recommended-on-premises-encoders"></a>Aanbevolen on-premises coderingsprogramma's
@@ -94,4 +94,4 @@ Duurzaamheids verificatie
 7. De live-gebeurtenis stoppen
 8. Registreer de Asset-ID, de gepubliceerde streaming-URL voor het Live Archief en de instellingen en versie die worden gebruikt vanuit uw Live coderings programma
 
-Verzend ten slotte uw vastgelegde instellingen en de para meters van uw live amsstreaming@microsoft.com-archief naar Media Services door e-mail berichten. Na ontvangst voert Media Services verificatie tests uit op de voor beelden van uw Live coderings programma. U kunt contact opnemen met de Media Services met vragen over dit proces.
+Verzend ten slotte uw vastgelegde instellingen en de para meters van uw live-archief naar Media Services door e-mail berichten amsstreaming@microsoft.com . Na ontvangst voert Media Services verificatie tests uit op de voor beelden van uw Live coderings programma. U kunt contact opnemen met de Media Services met vragen over dit proces.

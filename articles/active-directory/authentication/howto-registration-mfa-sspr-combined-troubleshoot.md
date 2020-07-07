@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c840df2c53554519f62a3d1d7a7d8b305187ffb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81450935"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>Problemen met het registreren van gecombineerde beveiligings gegevens oplossen
@@ -60,7 +60,7 @@ Wanneer een gebruiker een telefoon nummer en/of mobiele app registreert in de ni
 
 Als een beheerder de preview-versie inschakelt, kunnen gebruikers zich registreren via de nieuwe ervaring. vervolgens schakelt de beheerder de preview-versie uit, kunnen gebruikers ook onbekend worden geregistreerd voor Multi-Factor Authentication.
 
-Als een gebruiker die de gecombineerde registratie heeft voltooid, naar de huidige SSPR-registratie pagina (self-service voor [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)wachtwoord herstel) gaat, wordt de gebruiker gevraagd om multi-factor Authentication uit te voeren voordat deze toegang tot de pagina heeft. Deze stap wordt verwacht van een technisch standpunt, maar is nieuw voor gebruikers die eerder zijn geregistreerd voor SSPR. Hoewel deze extra stap de beveiligings postuur van de gebruiker verbetert door een ander beveiligings niveau te bieden, kunnen beheerders mogelijk hun gebruikers terugdraaien zodat ze niet meer Multi-Factor Authentication kunnen uitvoeren.  
+Als een gebruiker die de gecombineerde registratie heeft voltooid, naar de huidige SSPR-registratie pagina (self-service voor wachtwoord herstel) gaat [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) , wordt de gebruiker gevraagd om multi-factor Authentication uit te voeren voordat deze toegang tot de pagina heeft. Deze stap wordt verwacht van een technisch standpunt, maar is nieuw voor gebruikers die eerder zijn geregistreerd voor SSPR. Hoewel deze extra stap de beveiligings postuur van de gebruiker verbetert door een ander beveiligings niveau te bieden, kunnen beheerders mogelijk hun gebruikers terugdraaien zodat ze niet meer Multi-Factor Authentication kunnen uitvoeren.  
 
 ### <a name="how-to-roll-back-users"></a>Gebruikers terugdraaien
 
@@ -150,7 +150,7 @@ Voer in een Power shell-venster de volgende opdracht uit, waarbij u het script e
 Voer de volgende stappen uit om de bijgewerkte ervaring voor uw gebruikers uit te scha kelen:
 
 1. Meld u aan bij de Azure Portal als een gebruikers beheerder.
-2. Ga naar **Azure Active Directory** > **gebruikers instellingen** > **instellingen voor de preview-functies van het toegangs venster beheren**.
+2. Ga naar **Azure Active Directory**  >  **gebruikers instellingen**  >  **instellingen voor de preview-functies van het toegangs venster beheren**.
 3. Onder **gebruikers kunnen preview-functies gebruiken voor het registreren en beheren van beveiligings gegevens**, de selector instellen op **geen**en vervolgens **Opslaan**selecteren.
 
 Gebruikers worden niet langer gevraagd om zich te registreren met behulp van de bijgewerkte ervaring.

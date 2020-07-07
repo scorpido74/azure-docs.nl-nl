@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 082575a67ea43d62f322e177cff087e5bd572c27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72792899"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Een facet filter maken in azure Cognitive Search 
@@ -36,21 +36,21 @@ Nieuw in facet navigatie en wilt u meer details? Zie [facet navigatie implemente
 
 Facetten kunnen worden berekend op basis van velden met één waarde en verzamelingen. Velden die het beste in facet navigatie werken, hebben een laag kardinaliteit: een klein aantal afzonderlijke waarden die in documenten in uw zoek verzameling worden herhaald (bijvoorbeeld een lijst met kleuren, landen/regio's of merk namen). 
 
-Facetatie is ingeschakeld voor een veld per veld wanneer u de index maakt door het `facetable` kenmerk in te stellen op. `true` Normaal gesp roken moet u het `filterable` kenmerk ook `true` instellen op voor dergelijke velden, zodat de zoek toepassing kan filteren op deze velden op basis van facetten die de eind gebruiker selecteert. 
+Facetatie is ingeschakeld voor een veld per veld wanneer u de index maakt door het `facetable` kenmerk in te stellen op `true` . Normaal gesp roken moet u het `filterable` kenmerk ook instellen op `true` voor dergelijke velden, zodat de zoek toepassing kan filteren op deze velden op basis van facetten die de eind gebruiker selecteert. 
 
-Wanneer u een index maakt met behulp van de REST API, wordt elk [veld type](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) dat mogelijk in facet navigatie kan `facetable` worden gebruikt, standaard als volgt gemarkeerd:
+Wanneer u een index maakt met behulp van de REST API, wordt elk [veld type](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) dat mogelijk in facet navigatie kan worden gebruikt, `facetable` standaard als volgt gemarkeerd:
 
 + `Edm.String`
 + `Edm.DateTimeOffset`
 + `Edm.Boolean`
-+ Numerieke veld typen: `Edm.Int32`, `Edm.Int64`,`Edm.Double`
-+ Verzamelingen van de bovenstaande typen (bijvoorbeeld `Collection(Edm.String)` of) `Collection(Edm.Double)`
++ Numerieke veld typen: `Edm.Int32` , `Edm.Int64` ,`Edm.Double`
++ Verzamelingen van de bovenstaande typen (bijvoorbeeld `Collection(Edm.String)` of `Collection(Edm.Double)` )
 
 U kunt geen `Edm.GeographyPoint` `Collection(Edm.GeographyPoint)` velden gebruiken in facet navigatie. Facetten werken het beste bij velden met een lage kardinaliteit. Als gevolg van de omzetting van geo-coördinaten, komt het zelden voor dat twee sets van co-niveaus gelijk zijn aan een bepaalde gegevensset. Als zodanig worden facetten niet ondersteund voor geo-coördinaten. U hebt een veld plaats of regio nodig om te facetten per locatie.
 
 ## <a name="set-attributes"></a>Kenmerken instellen
 
-Index kenmerken die bepalen hoe een veld wordt gebruikt, worden toegevoegd aan afzonderlijke veld definities in de index. In het volgende voor beeld zijn velden met een lage kardinaliteit, die nuttig zijn voor facetten `category` , bestaan uit: (Hotel, Motel `tags`, Hostel `rating`), en. In deze velden zijn `filterable` de `facetable` en-kenmerken expliciet ingesteld in het volgende voor beeld voor illustratie doeleinden. 
+Index kenmerken die bepalen hoe een veld wordt gebruikt, worden toegevoegd aan afzonderlijke veld definities in de index. In het volgende voor beeld zijn velden met een lage kardinaliteit, die nuttig zijn voor facetten, bestaan uit: `category` (Hotel, Motel, Hostel), `tags` en `rating` . In deze velden zijn de `filterable` en- `facetable` kenmerken expliciet ingesteld in het volgende voor beeld voor illustratie doeleinden. 
 
 > [!Tip]
 > Als best practice voor de prestaties en Optima Lise ring van de opslag kunt u facetatie uitschakelen voor velden die nooit als een facet moeten worden gebruikt. In het bijzonder moeten teken reeks velden voor unieke waarden, zoals een ID of product naam, worden ingesteld op `"facetable": false` om te voor komen dat ze per ongeluk (en oneffectief) gebruikmaken van facet navigatie.
@@ -77,7 +77,7 @@ Index kenmerken die bepalen hoe een veld wordt gebruikt, worden toegevoegd aan a
 ```
 
 > [!Note]
-> Deze index definitie wordt gekopieerd van [een Azure Cognitive search-index maken met behulp van de rest API](https://docs.microsoft.com/azure/search/search-create-index-rest-api). Het is identiek, met uitzonde ring van de Opper vlakke verschillen in de veld definities. De `filterable` kenmerken `facetable` en worden expliciet toegevoegd aan `category`de `tags`velden `parkingIncluded`, `smokingAllowed`,, `rating` en. In de praktijk `filterable` en `facetable` standaard ingeschakeld op deze velden wanneer u de rest API gebruikt. Wanneer u de .NET SDK gebruikt, moeten deze kenmerken expliciet worden ingeschakeld.
+> Deze index definitie wordt gekopieerd van [een Azure Cognitive search-index maken met behulp van de rest API](https://docs.microsoft.com/azure/search/search-create-index-rest-api). Het is identiek, met uitzonde ring van de Opper vlakke verschillen in de veld definities. De `filterable` `facetable` kenmerken en worden expliciet toegevoegd aan `category` de `tags` velden,,, `parkingIncluded` `smokingAllowed` en `rating` . In de praktijk `filterable` en `facetable` standaard ingeschakeld op deze velden wanneer u de rest API gebruikt. Wanneer u de .NET SDK gebruikt, moeten deze kenmerken expliciet worden ingeschakeld.
 
 ## <a name="build-and-load-an-index"></a>Een index maken en laden
 
@@ -98,7 +98,7 @@ var sp = new SearchParameters()
 
 ### <a name="return-filtered-results-on-click-events"></a>Gefilterde resultaten retour neren bij gebeurtenissen klikken
 
-Wanneer de eind gebruiker op een facet waarde klikt, moet de handler voor de gebeurtenis Click een filter expressie gebruiken om de intentie van de gebruiker te realiseren. Op basis `category` van een facet wordt het klikken op de categorie Motel geïmplementeerd met `$filter` een expressie die de accommodaties van dat type selecteert. Wanneer een gebruiker op ' Motel ' klikt om aan te geven dat alleen motels moeten worden weer gegeven, wordt de volgende `$filter=category eq 'motel'`query die de toepassing verzendt, opgenomen.
+Wanneer de eind gebruiker op een facet waarde klikt, moet de handler voor de gebeurtenis Click een filter expressie gebruiken om de intentie van de gebruiker te realiseren. Op basis `category` van een facet wordt het klikken op de categorie Motel geïmplementeerd met een `$filter` expressie die de accommodaties van dat type selecteert. Wanneer een gebruiker op ' Motel ' klikt om aan te geven dat alleen motels moeten worden weer gegeven, wordt de volgende query die de toepassing verzendt, opgenomen `$filter=category eq 'motel'` .
 
 Met het volgende code fragment wordt een categorie aan het filter toegevoegd als een gebruiker een waarde uit het facet van de categorie selecteert.
 
@@ -107,7 +107,7 @@ if (!String.IsNullOrEmpty(categoryFacet))
     filter = $"category eq '{categoryFacet}'";
 ```
 
-Als de gebruiker klikt op een facet waarde voor een veld verzameling als `tags`bijvoorbeeld de waarde pool, moet uw toepassing de volgende filter syntaxis gebruiken:`$filter=tags/any(t: t eq 'pool')`
+Als de gebruiker klikt op een facet waarde voor een veld verzameling als `tags` bijvoorbeeld de waarde pool, moet uw toepassing de volgende filter syntaxis gebruiken:`$filter=tags/any(t: t eq 'pool')`
 
 ## <a name="tips-and-workarounds"></a>Tips en tijdelijke oplossingen
 

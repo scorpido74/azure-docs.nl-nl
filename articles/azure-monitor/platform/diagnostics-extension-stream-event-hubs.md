@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
 ms.openlocfilehash: 979535b1f9a237f6975908178fb1e5ed819181b0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233462"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Gegevens verzenden van de Windows Azure Diagnostics-extensie naar Azure Event Hubs
@@ -39,7 +39,7 @@ Azure Diagnostics stuurt altijd logboeken en metrische gegevens naar een Azure S
 | Eigenschap | Beschrijving |
 |:---|:---|
 | Naam | Beschrijvende naam voor de sink. Wordt gebruikt in de configuratie om op te geven welke gegevens bronnen moeten worden verzonden naar de sink. |
-| URL  | De URL van de Event Hub in de \<vorm van de gebeurtenis-\>hubs-\<namespace. servicebus.Windows.net/-gebeurtenis\>-hub-naam.          |
+| URL  | De URL van de Event Hub in de vorm \<event-hubs-namespace\> . servicebus.Windows.net/ \<event-hub-name\> .          |
 | SharedAccessKeyName | De naam van een gedeeld toegangs beleid voor de Event Hub die ten minste een **Verzend** instantie heeft. |
 | SharedAccessKey     | Primaire of secundaire sleutel van het beleid voor gedeelde toegang voor de Event Hub. |
 
@@ -176,7 +176,7 @@ U kunt verschillende methoden gebruiken om te valideren dat gegevens naar de Eve
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Overzicht van Event Hubs](../../event-hubs/event-hubs-about.md)
+* [Event Hubs-overzicht](../../event-hubs/event-hubs-about.md)
 * [Een Event Hub maken](../../event-hubs/event-hubs-create.md)
 * [Veelgestelde vragen over Event Hubs](../../event-hubs/event-hubs-faq.md)
 

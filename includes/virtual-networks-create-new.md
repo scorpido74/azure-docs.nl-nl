@@ -9,10 +9,10 @@ ms.date: 03/01/2020
 ms.author: allensu
 ms.custom: include file
 ms.openlocfilehash: 81db46b52c9b4fe800f2fbfeadad966995d66e12
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78244986"
 ---
 ## <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
@@ -26,11 +26,11 @@ In deze sectie maakt u een virtueel netwerk en een subnet.
     | **Instelling**          | **Waarde**                                                           |
     |------------------|-----------------------------------------------------------------|
     | **Project Details**  |                                                                 |
-    | Abonnement     | selecteer uw Azure-abonnement                                  |
-    | Resourcegroep   | Selecteer **Nieuw maken**, Voer ** \<de naam van de resource groep>** in, selecteer OK of selecteer een bestaande ** \<resource-group-name>** op basis van para meters. |
-    | **Exemplaar Details** |                                                                 |
-    | Naam             | Voer de naam van het ** \<virtuele netwerk>**                                    |
-    | Regio           | ** \<Regio-naam>selecteren** |
+    | Abonnement     | Selecteer uw Azure-abonnement                                  |
+    | Resourcegroep   | Selecteer **nieuwe maken**, Voer in **\<resource-group-name>** en selecteer OK of selecteer een bestaand op **\<resource-group-name>** basis van para meters. |
+    | **Exemplaardetails** |                                                                 |
+    | Name             | Voer**\<virtual-network-name>**                                    |
+    | Regio           | Uitgeschakeld**\<region-name>** |
 
 3. Selecteer het tabblad **IP-adressen** of selecteer de knop **volgende: IP-adressen** aan de onderkant van de pagina.
 
@@ -38,7 +38,7 @@ In deze sectie maakt u een virtueel netwerk en een subnet.
 
     | Instelling            | Waarde                      |
     |--------------------|----------------------------|
-    | IPv4-adres ruimte | Voer ** \<de IPv4-adres ruimte>in** |
+    | IPv4-adres ruimte | Voer**\<IPv4-address-space>** |
 
 5. Selecteer bij **subnetnaam**het woord **standaard**.
 
@@ -46,8 +46,8 @@ In deze sectie maakt u een virtueel netwerk en een subnet.
 
     | Instelling            | Waarde                      |
     |--------------------|----------------------------|
-    | Subnetnaam | Voer ** \<de subnet naam>** |
-    | Subnetadresbereik | Voer het>van het ** \<subnet-adres bereik in**
+    | Subnetnaam | Voer**\<subnet-name>** |
+    | Subnetadresbereik | Voer**\<subnet-address-range>**
 
 7. Selecteer **Opslaan**.
 

@@ -20,22 +20,22 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 06eb29f2f3245d3f4fd047fb86b2b57fb1f0989e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72793355"
 ---
-# <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>OData-functies voor zoeken in volledige tekst in azure `search.ismatch` Cognitive Search-en`search.ismatchscoring`
+# <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>OData-functies voor zoeken in volledige tekst in azure Cognitive Search- `search.ismatch` en`search.ismatchscoring`
 
-Azure Cognitive Search ondersteunt zoeken in volledige tekst in de context van [OData-filter expressies](query-odata-filter-orderby-syntax.md) via `search.ismatch` de `search.ismatchscoring` functies en. Met deze functies kunt u Zoek opdrachten in volledige tekst combi neren met strikte Booleaanse filtering op manieren die niet mogelijk zijn alleen met behulp `search` van de para meter op het hoogste niveau van de [zoek-API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Azure Cognitive Search ondersteunt zoeken in volledige tekst in de context van [OData-filter expressies](query-odata-filter-orderby-syntax.md) via `search.ismatch` de `search.ismatchscoring` functies en. Met deze functies kunt u Zoek opdrachten in volledige tekst combi neren met strikte Booleaanse filtering op manieren die niet mogelijk zijn alleen met behulp van de para meter op het hoogste niveau `search` van de [zoek-API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
 > [!NOTE]
-> De `search.ismatch` functies `search.ismatchscoring` en worden alleen ondersteund in filters in de [zoek-API](https://docs.microsoft.com/rest/api/searchservice/search-documents). Ze worden niet ondersteund in de api's [suggesties](https://docs.microsoft.com/rest/api/searchservice/suggestions) of [automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) .
+> De `search.ismatch` `search.ismatchscoring` functies en worden alleen ondersteund in filters in de [zoek-API](https://docs.microsoft.com/rest/api/searchservice/search-documents). Ze worden niet ondersteund in de api's [suggesties](https://docs.microsoft.com/rest/api/searchservice/suggestions) of [automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) .
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
-De volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van de `search.ismatch` functies `search.ismatchscoring` en:
+De volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van de `search.ismatch` `search.ismatchscoring` functies en:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -72,31 +72,31 @@ De para meters worden gedefinieerd in de volgende tabel:
 | Parameternaam | Type | Beschrijving |
 | --- | --- | --- |
 | `search` | `Edm.String` | De zoek query (in een [eenvoudige](query-simple-syntax.md) of [volledige](query-lucene-syntax.md) lucene-query syntaxis). |
-| `searchFields` | `Edm.String` | Een door komma's gescheiden lijst met Doorzoek bare velden waarnaar moet worden gezocht; wordt standaard ingesteld op alle Doorzoek bare velden in de index. Bij gebruik van een [Zoek opdracht](query-lucene-syntax.md#bkmk_fields) in `search` de para meter, overschrijven de veld aanduidingen in de Lucene-query alle velden die zijn opgegeven in deze para meter. |
-| `queryType` | `Edm.String` | `'simple'`of `'full'`; wordt standaard `'simple'`ingesteld op. Hiermee geeft u op welke query taal in `search` de para meter is gebruikt. |
-| `searchMode` | `Edm.String` | `'any'`of `'all'`is standaard ingesteld `'any'`op. Hiermee wordt aangegeven of een of meer zoek termen in de `search` para meter moeten worden afgestemd om het document als een overeenkomst te tellen. Wanneer u de [lucene Booleaanse Opera tors](query-lucene-syntax.md#bkmk_boolean) in `search` de para meter gebruikt, hebben ze prioriteit boven deze para meter. |
+| `searchFields` | `Edm.String` | Een door komma's gescheiden lijst met Doorzoek bare velden waarnaar moet worden gezocht; wordt standaard ingesteld op alle Doorzoek bare velden in de index. Bij gebruik van een [Zoek opdracht](query-lucene-syntax.md#bkmk_fields) in de `search` para meter, overschrijven de veld aanduidingen in de Lucene-query alle velden die zijn opgegeven in deze para meter. |
+| `queryType` | `Edm.String` | `'simple'`of `'full'` ; standaard ingesteld op `'simple'` . Hiermee geeft u op welke query taal in de `search` para meter is gebruikt. |
+| `searchMode` | `Edm.String` | `'any'`of `'all'` is standaard ingesteld op `'any'` . Hiermee wordt aangegeven of een of meer zoek termen in de `search` para meter moeten worden afgestemd om het document als een overeenkomst te tellen. Wanneer u de [lucene Booleaanse Opera tors](query-lucene-syntax.md#bkmk_boolean) in de `search` para meter gebruikt, hebben ze prioriteit boven deze para meter. |
 
 Alle bovenstaande para meters zijn gelijk aan de overeenkomstige [para meters voor zoek aanvragen in de zoek-API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
-De `search.ismatch` functie retourneert een waarde van het `Edm.Boolean`type, zodat u deze kunt samen stellen met andere filter subexpressies met behulp van de [logische booleaanse Opera tors](search-query-odata-logical-operators.md).
+De `search.ismatch` functie retourneert een waarde van het type `Edm.Boolean` , zodat u deze kunt samen stellen met andere filter subexpressies met behulp van de [logische booleaanse Opera tors](search-query-odata-logical-operators.md).
 
 > [!NOTE]
-> Azure Cognitive Search biedt geen ondersteuning voor `search.ismatch` het `search.ismatchscoring` gebruik van of binnen lambda-expressies. Dit betekent dat het niet mogelijk is om filters te schrijven over verzamelingen objecten die kunnen correleren met Zoek opdrachten in volledige tekst met strikte filter overeenkomsten voor hetzelfde object. Zie [problemen met verzamelings filters in Azure Cognitive Search oplossen](search-query-troubleshoot-collection-filters.md)voor meer informatie over deze beperking en voor beelden. Zie voor meer informatie over de reden voor het bestaan van de begrensde [verzamelings filters in Azure Cognitive Search](search-query-understand-collection-filters.md).
+> Azure Cognitive Search biedt geen ondersteuning voor het gebruik van `search.ismatch` of `search.ismatchscoring` binnen lambda-expressies. Dit betekent dat het niet mogelijk is om filters te schrijven over verzamelingen objecten die kunnen correleren met Zoek opdrachten in volledige tekst met strikte filter overeenkomsten voor hetzelfde object. Zie [problemen met verzamelings filters in Azure Cognitive Search oplossen](search-query-troubleshoot-collection-filters.md)voor meer informatie over deze beperking en voor beelden. Zie voor meer informatie over de reden voor het bestaan van de begrensde [verzamelings filters in Azure Cognitive Search](search-query-understand-collection-filters.md).
 
 
 ### <a name="searchismatchscoring"></a>Search. ismatchscoring
 
-De `search.ismatchscoring` functie, zoals de `search.ismatch` functie, retourneert `true` voor documenten die overeenkomen met de query voor zoeken in volledige tekst, door gegeven als een para meter. Het verschil ertussen is dat de relevantie Score van documenten die overeenkomen `search.ismatchscoring` met de query, bijdraagt aan de totale document Score, in het `search.ismatch`geval van, de document score niet wordt gewijzigd. De volgende overbelastingen van deze functie zijn beschikbaar met para meters die identiek `search.ismatch`zijn aan die van:
+De `search.ismatchscoring` functie, zoals de `search.ismatch` functie, retourneert `true` voor documenten die overeenkomen met de query voor zoeken in volledige tekst, door gegeven als een para meter. Het verschil ertussen is dat de relevantie Score van documenten die overeenkomen met de `search.ismatchscoring` query, bijdraagt aan de totale document Score, in het geval van `search.ismatch` , de document score niet wordt gewijzigd. De volgende overbelastingen van deze functie zijn beschikbaar met para meters die identiek zijn aan die van `search.ismatch` :
 
 - `search.ismatchscoring(search)`
 - `search.ismatchscoring(search, searchFields)`
 - `search.ismatchscoring(search, searchFields, queryType, searchMode)`
 
-Zowel de `search.ismatch` als `search.ismatchscoring` -functies kunnen in dezelfde filter expressie worden gebruikt.
+Zowel de `search.ismatch` als- `search.ismatchscoring` functies kunnen in dezelfde filter expressie worden gebruikt.
 
 ## <a name="examples"></a>Voorbeelden
 
-Vind documenten met het woord ' afgebakend '. Deze filter query is identiek aan een [Zoek opdracht](https://docs.microsoft.com/rest/api/searchservice/search-documents) met `search=waterfront`.
+Vind documenten met het woord ' afgebakend '. Deze filter query is identiek aan een [Zoek opdracht](https://docs.microsoft.com/rest/api/searchservice/search-documents) met `search=waterfront` .
 
     search.ismatchscoring('waterfront')
 
@@ -108,9 +108,9 @@ Documenten zonder het woord "luxe" zoeken.
 
     not search.ismatch('luxury')
 
-Documenten zoeken met de woord weer gave ' Oceaan ' of de classificatie gelijk aan 5. De `search.ismatchscoring` query wordt alleen uitgevoerd op velden `HotelName` en. `Rooms/Description`
+Documenten zoeken met de woord weer gave ' Oceaan ' of de classificatie gelijk aan 5. De `search.ismatchscoring` query wordt alleen uitgevoerd op velden `HotelName` en `Rooms/Description` .
 
-Documenten die overeenkomen met alleen de tweede component van de schei ding, retour neren te veel- `Rating` Hotels met een waarde die gelijk is aan 5. Om het duidelijk te maken dat deze documenten niet overeenkomen met een van de gescoorde delen van de expressie, worden deze geretourneerd met een score die gelijk is aan nul.
+Documenten die overeenkomen met alleen de tweede component van de schei ding, retour neren te veel-hotels met een waarde die `Rating` gelijk is aan 5. Om het duidelijk te maken dat deze documenten niet overeenkomen met een van de gescoorde delen van de expressie, worden deze geretourneerd met een score die gelijk is aan nul.
 
     search.ismatchscoring('"ocean view"', 'Rooms/Description,HotelName') or Rating eq 5
 

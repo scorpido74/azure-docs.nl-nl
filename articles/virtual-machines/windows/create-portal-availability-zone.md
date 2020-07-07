@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
 ms.openlocfilehash: b8a5f6543bc265605361b7875fad5232d428e27e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82208989"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Een virtuele Windows-machine maken in een beschikbaarheids zone met de Azure Portal
@@ -28,7 +28,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="create-virtual-machine"></a>Virtuele machine maken
 
-1. Klik op **een resource maken** in de linkerbovenhoek van de Azure Portal.
+1. Klik in de linkerbovenhoek van Azure Portal op **Een resource maken**.
 
 2. Selecteer **Compute** en vervolgens **Windows Server 2016 Datacenter**. 
 
@@ -40,7 +40,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
     ![Een VM-grootte selecteren](./media/create-portal-availability-zone/create-windows-vm-portal-sizes.png)  
 
-5. Selecteer onder **instellingen** > **hoge Beschik baarheid**een van de genummerde zones in de vervolg keuzelijst **beschikbaarheids zone** , behoud de resterende standaard waarden en klik op **OK**.
+5. Selecteer onder **instellingen**  >  **hoge Beschik baarheid**een van de genummerde zones in de vervolg keuzelijst **beschikbaarheids zone** , behoud de resterende standaard waarden en klik op **OK**.
 
     ![Een beschikbaarheids zone selecteren](./media/create-portal-availability-zone/create-windows-vm-portal-availability-zone.png)
 

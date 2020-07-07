@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/24/2017
 ms.author: mimckitt
 ms.openlocfilehash: 9ae486ee522982b116af58cfb7cbfbca66a7ef4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81458740"
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli"></a>Key Vault instellen voor virtuele machines met de Azure CLI
@@ -22,21 +22,21 @@ In de Azure Resource Manager stack worden geheimen/certificaten gemodelleerd als
 Als u deze stappen wilt uitvoeren, moet u de nieuwste [Azure cli](/cli/azure/install-az-cli2) installeren en u aanmelden bij een Azure-account met [AZ login](/cli/azure/reference-index).
 
 ## <a name="create-a-key-vault"></a>Een sleutelkluis maken
-Maak een sleutel kluis en wijs het implementatie beleid toe met [AZ Key kluis Create](/cli/azure/keyvault). In het volgende voor beeld wordt een sleutel `myKeyVault` kluis gemaakt `myResourceGroup` met de naam in de resource groep:
+Maak een sleutel kluis en wijs het implementatie beleid toe met [AZ Key kluis Create](/cli/azure/keyvault). In het volgende voor beeld wordt een sleutel kluis gemaakt `myKeyVault` met de naam in de `myResourceGroup` resource groep:
 
 ```azurecli
 az keyvault create -l westus -n myKeyVault -g myResourceGroup --enabled-for-deployment true
 ```
 
 ## <a name="update-a-key-vault-for-use-with-vms"></a>Een Key Vault bijwerken voor gebruik met Vm's
-Stel het implementatie beleid in op een bestaande sleutel kluis met [AZ Key kluis update](/cli/azure/keyvault). In het volgende wordt de sleutel kluis `myKeyVault` met de `myResourceGroup` naam in de resource groep bijgewerkt:
+Stel het implementatie beleid in op een bestaande sleutel kluis met [AZ Key kluis update](/cli/azure/keyvault). In het volgende wordt de sleutel kluis `myKeyVault` met de naam in de `myResourceGroup` resource groep bijgewerkt:
 
 ```azurecli
 az keyvault update -n myKeyVault -g myResourceGroup --set properties.enabledForDeployment=true
 ```
 
 ## <a name="use-templates-to-set-up-key-vault"></a>Sjablonen gebruiken om Key Vault in te stellen
-Wanneer u een sjabloon gebruikt, moet u de `enabledForDeployment` eigenschap instellen op `true` voor de Key Vault resource als volgt:
+Wanneer u een sjabloon gebruikt, moet u de eigenschap instellen `enabledForDeployment` op `true` voor de Key Vault resource als volgt:
 
 ```json
 {

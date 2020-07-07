@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: b6aad323c0d6fa8f59c9fad203640c477b162503
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80519962"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-facebook-login"></a>Uw App Service of Azure Functions app configureren voor het gebruik van Facebook-aanmelding
@@ -27,7 +27,7 @@ Voor het volt ooien van de procedure in dit artikel hebt u een Facebook-account 
 1. Ga naar de website van [Facebook-ontwikkel aars] en meld u aan met de referenties van uw Facebook-account.
 
    Als u geen Facebook-account voor ontwikkel aars hebt, selecteert u **aan de slag** en volgt u de registratie stappen.
-1. **Mijn apps** > selecteren**nieuwe app toevoegen**.
+1. **Mijn apps**selecteren  >  **nieuwe app toevoegen**.
 1. In het veld **weergave naam** :
    1. Typ een unieke naam voor uw app.
    1. Geef uw **contact-e-mail**.
@@ -35,11 +35,11 @@ Voor het volt ooien van de procedure in dit artikel hebt u een Facebook-account 
    1. Voltooi de beveiligings controle.
 
    Het dash board voor ontwikkel aars voor uw nieuwe Facebook-app wordt geopend.
-1. Selecteer het **dash board** > **Facebook-aanmelding** > **instellen** > **Web**.
+1. Selecteer het **dash board**  >  **Facebook-aanmelding**  >  **instellen**  >  **Web**.
 1. Selecteer in het navigatie venster links onder **Facebook-aanmelding**de optie **instellingen**.
-1. Voer `https://<app-name>.azurewebsites.net/.auth/login/facebook/callback`in het veld **geldige OAuth omleidings-uri's** in. Vergeet niet door `<app-name>` de naam van uw Azure app service-app te vervangen.
-1. Selecteer **Save changes**.
-1. Selecteer in het linkerdeel venster **instellingen** > **basis**. 
+1. Voer in het veld **geldige OAuth omleidings-uri's** in `https://<app-name>.azurewebsites.net/.auth/login/facebook/callback` . Vergeet niet door `<app-name>` de naam van uw Azure app service-app te vervangen.
+1. Selecteer **wijzigingen opslaan**.
+1. Selecteer in het linkerdeel venster **instellingen**  >  **basis**. 
 1. In het veld **app-geheim** selecteert u **weer geven**. Kopieer de waarden van de **App-ID** en het **app-geheim**. U kunt deze later gebruiken om uw App Service-app te configureren in Azure.
 
    > [!IMPORTANT]
@@ -48,12 +48,12 @@ Voor het volt ooien van de procedure in dit artikel hebt u een Facebook-account 
 
 1. Het Facebook-account dat u hebt gebruikt om de toepassing te registreren, is een beheerder van de app. Op dit moment kunnen alleen beheerders zich aanmelden bij deze toepassing.
 
-   Als u andere Facebook-accounts wilt verifiëren, selecteert u **app controleren** en schakelt u ** \<uw app-naam> openbaar** in om het grote publiek toegang tot de app te geven met behulp van Facebook-verificatie.
+   Als u andere Facebook-accounts wilt verifiëren, selecteert u **app controleren** en schakelt u ** \<your-app-name> openbaar maken** in om het algemene publiek toegang tot de app te geven met behulp van Facebook-verificatie.
 
 ## <a name="add-facebook-information-to-your-application"></a><a name="secrets"> </a>Facebook-gegevens toevoegen aan uw toepassing
 
 1. Meld u aan bij de [Azure Portal] en navigeer naar uw app service-app.
-1. Selecteer **instellingen** > **verificatie/autorisatie**en zorg ervoor dat **app service-verificatie** is **ingeschakeld**.
+1. Selecteer **instellingen**  >  **verificatie/autorisatie**en zorg ervoor dat **app service-verificatie** is **ingeschakeld**.
 1. Selecteer **Facebook**en plak vervolgens de waarden voor app-id en app-geheim die u eerder hebt verkregen. Schakel de scopes in die nodig zijn voor uw toepassing.
 1. Selecteer **OK**.
 
@@ -80,4 +80,4 @@ U bent nu klaar om Facebook te gebruiken voor verificatie in uw app.
 [Facebook-ontwikkel aars]: https://go.microsoft.com/fwlink/p/?LinkId=268286
 [facebook.com]: https://go.microsoft.com/fwlink/p/?LinkId=268285
 [Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet/
-[Azure Portal]: https://portal.azure.com/
+[Azure-portal]: https://portal.azure.com/

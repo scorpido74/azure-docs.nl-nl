@@ -8,22 +8,22 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 944a84405bd7e03b72b2610278f9f0e4d3cfaf38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81454234"
 ---
 # <a name="manage-server-administrators"></a>Serverbeheerders beheren
 
 Server beheerders moeten een geldige gebruiker of beveiligings groep zijn in de Azure Active Directory (Azure AD) voor de Tenant waarin de server zich bevindt. U kunt **Analysis Services beheerders** voor uw server gebruiken in azure Portal, Server eigenschappen in SSMS, Power shell of rest API voor het beheren van Server beheerders. 
 
-Gebruik wanneer u `obj:groupid@tenantid`een **beveiligings groep**toevoegt.
+Gebruik wanneer u een **beveiligings groep**toevoegt `obj:groupid@tenantid` .
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>Server beheerders toevoegen met behulp van Azure Portal
 
 1. Klik in de portal, voor uw server, op **Analysis Services beheerders**.
-2. Klik in ** \<server naam>-Analysis Services beheerders**op **toevoegen**.
+2. Klik in ** \<servername> -Analysis Services-Administrators**op **toevoegen**.
 3. Selecteer in **Server beheerders toevoegen**de optie gebruikers accounts uit uw Azure AD of externe gebruikers uitnodigen op e-mail adres.
 
     ![Server beheerders in Azure Portal](./media/analysis-services-server-admins/aas-manage-users-admins.png)

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
 ms.openlocfilehash: 47daf4ecd034c390a1460610e78d4fffd9277ac7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81535703"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Aangepaste domeinnaam voor Azure App Service kopen
@@ -20,7 +20,7 @@ Zie [app service domein toewijzen aan Azure VM of Azure Storage](https://azure.g
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten om deze zelfstudie te voltooien:
+Vereisten voor het voltooien van deze zelfstudie:
 
 * [Maak een App Service-app](/azure/app-service/), of gebruik een app die u hebt gemaakt voor een andere zelfstudie.
 * [Verwijder de bestedings limiet voor uw abonnement](../cost-management-billing/manage/spending-limit.md#remove). U kunt geen App Service domeinen kopen met gratis abonnements tegoeden.
@@ -91,7 +91,7 @@ Klik op de pagina **aangepaste domeinen** op **domein kopen**.
 
 ### <a name="configure-the-domain-purchase"></a>De domein aankoop configureren
 
-Typ op de pagina **app service domein** in het vak **zoeken naar domein** de naam van het domein dat u wilt kopen en typ `Enter`. De voorgestelde beschik bare domeinen worden precies onder het tekstvak weer gegeven. Selecteer een of meer domeinen die u wilt kopen.
+Typ op de pagina **app service domein** in het vak **zoeken naar domein** de naam van het domein dat u wilt kopen en typ `Enter` . De voorgestelde beschik bare domeinen worden precies onder het tekstvak weer gegeven. Selecteer een of meer domeinen die u wilt kopen.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
@@ -140,7 +140,7 @@ U ziet ook de geselecteerde hostnamen op de pagina **aangepaste domeinen** , in 
 > Een **niet-beveiligd** label voor uw aangepaste domein betekent dat het nog niet is gebonden aan een TLS/SSL-certificaat en dat een HTTPS-aanvraag van een browser naar uw aangepaste domein een fout of waarschuwing krijgt, afhankelijk van de browser. Zie [een aangepaste DNS-naam met een TLS/SSL-binding in azure app service beveiligen](configure-ssl-bindings.md)voor het configureren van TLS-binding.
 >
 
-Als u de hostnamen wilt testen, gaat u naar de vermelde hostnamen in de browser. In het voor beeld in de vorige scherm afbeelding gaat u naar _kontoso.net_ en _www\.kontoso.net_.
+Als u de hostnamen wilt testen, gaat u naar de vermelde hostnamen in de browser. In het voor beeld in de vorige scherm afbeelding gaat u naar _kontoso.net_ en _www \. kontoso.net_.
 
 ## <a name="assign-hostnames-to-app"></a>Hostnamen toewijzen aan de app
 
@@ -171,7 +171,7 @@ Selecteer **Hostnaam toevoegen**.
 Typ in het dialoog venster **hostname toevoegen** de Fully Qualified Domain name van uw app service domein of een subdomein. Bijvoorbeeld:
 
 - kontoso.net
-- www\.-kontoso.net
+- www- \. kontoso.net
 - abc.kontoso.net
 
 Wanneer u klaar bent, selecteert u **valideren**. Het hostname-record type wordt automatisch voor u geselecteerd.
@@ -235,7 +235,7 @@ In Azure worden DNS-records voor een App Service domein beheerd met behulp van [
 
 ### <a name="open-app-service-domain"></a>App Service domein openen
 
-Selecteer in het menu Azure Portal in het linkermenu **alle services** > **app service domeinen**.
+Selecteer in het menu Azure Portal in het linkermenu **alle services**  >  **app service domeinen**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
@@ -255,7 +255,7 @@ Nadat u het App Service-domein hebt aangeschaft, hebt u vijf dagen de aankoop vo
 
 ### <a name="open-app-service-domain"></a>App Service domein openen
 
-Selecteer in het menu Azure Portal in het linkermenu **alle services** > **app service domeinen**.
+Selecteer in het menu Azure Portal in het linkermenu **alle services**  >  **app service domeinen**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
@@ -287,4 +287,4 @@ Nadat de bewerking is voltooid, wordt het domein vrijgegeven uit uw abonnement e
 
 ## <a name="direct-default-url-to-a-custom-directory"></a>Standaard-URL naar een aangepaste map omleiden
 
-Standaard stuurt App Service webaanvragen naar de hoofdmap van uw app-code. Als u ze wilt omleiden naar een submap, `public`Zie [de standaard-URL naar een aangepaste map](app-service-web-tutorial-custom-domain.md#virtualdir).
+Standaard stuurt App Service webaanvragen naar de hoofdmap van uw app-code. Als u ze wilt omleiden naar een submap, `public` Zie [de standaard-URL naar een aangepaste map](app-service-web-tutorial-custom-domain.md#virtualdir).

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
 ms.openlocfilehash: c5f01a00d70869882d3d3398607ecfebbfd54417
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82209074"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Poorten die worden gebruikt door Apache Hadoop Services in HDInsight
@@ -170,4 +170,4 @@ Voorbeelden:
 
 Voorbeelden:
 
-* Livy: `curl -u admin -G "http://10.0.0.11:8998/"`. In dit voor beeld `10.0.0.11` is het IP-adres van de hoofd knooppunt die als host fungeert voor de livy-service.
+* Livy: `curl -u admin -G "http://10.0.0.11:8998/"` . In dit voor beeld `10.0.0.11` is het IP-adres van de hoofd knooppunt die als host fungeert voor de livy-service.

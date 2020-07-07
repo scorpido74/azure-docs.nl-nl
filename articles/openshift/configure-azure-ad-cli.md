@@ -9,15 +9,15 @@ ms.author: asabbour
 keywords: Aro, open Shift, AZ Aro, Red Hat, cli
 ms.custom: mvc
 ms.openlocfilehash: 45da3034891e5a82fb8423adb6bcd5e867f9d4e2
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82204999"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>Azure Active Directory authenticatie configureren voor een Azure Red Hat open Shift 4-cluster (CLI)
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.0.75 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.0.75 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 Haal de cluster-specifieke Url's op die u wilt gebruiken om de Azure Active Directory-toepassing te configureren.
 
@@ -36,7 +36,7 @@ oauthCallbackURL=https://oauth-openshift.apps.$domain.$location.aroapp.io/oauth2
 
 ## <a name="create-an-azure-active-directory-application-for-authentication"></a>Een Azure Active Directory-toepassing maken voor verificatie
 
-Maak een Azure Active Directory-toepassing en haal de gemaakte toepassings-id op. Vervang ** \<ClientSecret>** door een beveiligd wacht woord.
+Maak een Azure Active Directory-toepassing en haal de gemaakte toepassings-id op. Vervang door **\<ClientSecret>** een beveiligd wacht woord.
 
 ```azurecli-interactive
 az ad app create \
@@ -74,9 +74,9 @@ U kunt optionele claims gebruiken voor het volgende:
 - Wijzig het gedrag van bepaalde claims die Azure AD retourneert in tokens.
 - Aangepaste claims toevoegen en openen voor uw toepassing.
 
-We configureren open Shift om de `email` claim te gebruiken en terug te `upn` vallen op om de voorkeurs gebruikersnaam in te stellen `upn` door het toevoegen van het id-token dat wordt geretourneerd door Azure Active Directory.
+We configureren open Shift om de claim te gebruiken `email` en terug te vallen op `upn` om de voorkeurs gebruikersnaam in te stellen door het toevoegen `upn` van het id-token dat wordt geretourneerd door Azure Active Directory.
 
-Maak een bestand **manifest. json** om de Azure Active Directory-toepassing te configureren.
+Maak een **manifest.jsvoor** het bestand om de Azure Active Directory toepassing te configureren.
 
 ```bash
 cat > manifest.json<< EOF
@@ -97,7 +97,7 @@ EOF
 
 ## <a name="update-the-azure-active-directory-applications-optionalclaims-with-a-manifest"></a>De optionalClaims van de Azure Active Directory-toepassing bijwerken met een manifest
 
-Vervang ** \<AppID>** door de id die u eerder hebt ontvangen.
+Vervang door **\<AppID>** de id die u eerder hebt ontvangen.
 
 ```azurecli-interactive
 az ad app update \
@@ -109,7 +109,7 @@ az ad app update \
 
 Om de gebruikers gegevens van Azure Active Directory te kunnen lezen, moeten we de juiste bereiken definiëren.
 
-Vervang ** \<AppID>** door de id die u eerder hebt ontvangen.
+Vervang door **\<AppID>** de id die u eerder hebt ontvangen.
 
 Voeg een machtiging toe voor het bereik van de **Azure Active Directory Graph. User. Read** om aanmelden en gebruikers profiel lezen in te scha kelen.
 
@@ -131,7 +131,7 @@ Volg de instructies in de Azure Active Directory-documentatie om [gebruikers en 
 
 ## <a name="configure-openshift-openid-authentication"></a>Open Shift OpenID Connect-verificatie configureren
 
-De `kubeadmin` referenties ophalen. Voer de volgende opdracht uit om het wacht woord voor `kubeadmin` de gebruiker te zoeken.
+De `kubeadmin` referenties ophalen. Voer de volgende opdracht uit om het wacht woord voor de gebruiker te zoeken `kubeadmin` .
 
 ```azurecli-interactive
 az aro list-credentials \
@@ -139,7 +139,7 @@ az aro list-credentials \
   --resource-group aro-rg
 ```
 
-In de volgende voorbeeld uitvoer ziet u dat het wacht `kubeadminPassword`woord in wordt weer gegeven.
+In de volgende voorbeeld uitvoer ziet u dat het wacht woord in wordt weer gegeven `kubeadminPassword` .
 
 ```json
 {
@@ -148,13 +148,13 @@ In de volgende voorbeeld uitvoer ziet u dat het wacht `kubeadminPassword`woord i
 }
 ```
 
-Meld u aan bij de API-server van het open Shift-cluster met behulp van de volgende opdracht. De `$apiServer` variabele is [eerder]()ingesteld. Vervang ** \<kubeadmin Password>** door het wacht woord dat u hebt opgehaald.
+Meld u aan bij de API-server van het open Shift-cluster met behulp van de volgende opdracht. De `$apiServer` variabele is [eerder]()ingesteld. Vervang door **\<kubeadmin password>** het wacht woord dat u hebt opgehaald.
 
 ```azurecli-interactive
 oc login $apiServer -u kubeadmin -p <kubeadmin password>
 ```
 
-Maak een open Shift-geheim om het Azure Active Directory toepassings geheim op te slaan en vervang ** \<ClientSecret>** door het geheim dat u eerder hebt opgehaald.
+Maak een open Shift-geheim om het Azure Active Directory toepassings geheim op te slaan, vervangen **\<ClientSecret>** door het geheim dat u eerder hebt opgehaald.
 
 ```azurecli-interactive
 oc create secret generic openid-client-secret-azuread \
@@ -162,7 +162,7 @@ oc create secret generic openid-client-secret-azuread \
   --from-literal=clientSecret=<ClientSecret>
 ```    
 
-Maak een **oidc. yaml** -bestand om Openshift OpenID Connect-verificatie te configureren tegen Azure Active Directory. Vervang ** \<AppID>** en ** \<TenantId>** door de waarden die u eerder hebt opgehaald.
+Maak een **oidc. yaml** -bestand om Openshift OpenID Connect-verificatie te configureren tegen Azure Active Directory. Vervang **\<AppID>** en **\<TenantId>** door de waarden die u eerder hebt opgehaald.
 
 ```bash
 cat > oidc.yaml<< EOF

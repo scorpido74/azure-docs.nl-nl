@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f3422fd10e062ae87bc165491e0d01ac2b4943d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72793239"
 ---
 # <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Naslag informatie voor de syntaxis van OData-expressies voor Azure Cognitive Search
 
-Azure Cognitive Search gebruikt [OData-expressies](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) als para meters in de API. OData-expressies worden meestal gebruikt voor de `$orderby` para meters en. `$filter` Deze expressies kunnen complex zijn, met meerdere componenten, functies en Opera tors. Zelfs eenvoudige OData-expressies zoals eigenschaps paden worden gebruikt in veel onderdelen van de Azure Cognitive Search REST API. Paden worden bijvoorbeeld gebruikt om te verwijzen naar subvelden van complexe velden overal in de API, zoals bij het weer geven van subvelden in een [suggestie](index-add-suggesters.md), een [Score functie](index-add-scoring-profiles.md), de `$select` para meter of zelfs [geveldeerde zoek opdracht in lucene-query's](query-lucene-syntax.md).
+Azure Cognitive Search gebruikt [OData-expressies](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) als para meters in de API. OData-expressies worden meestal gebruikt voor de `$orderby` `$filter` para meters en. Deze expressies kunnen complex zijn, met meerdere componenten, functies en Opera tors. Zelfs eenvoudige OData-expressies zoals eigenschaps paden worden gebruikt in veel onderdelen van de Azure Cognitive Search REST API. Paden worden bijvoorbeeld gebruikt om te verwijzen naar subvelden van complexe velden overal in de API, zoals bij het weer geven van subvelden in een [suggestie](index-add-suggesters.md), een [Score functie](index-add-scoring-profiles.md), de `$select` para meter of zelfs [geveldeerde zoek opdracht in lucene-query's](query-lucene-syntax.md).
 
 In dit artikel worden al deze vormen van OData-expressies met een formele grammatica beschreven. Er is ook een [interactief diagram](#syntax-diagram) waarmee u de grammatica visueel kunt verkennen.
 

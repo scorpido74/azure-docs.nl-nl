@@ -4,10 +4,10 @@ description: Beheerde identiteiten gebruiken in azure Service Fabric toepassings
 ms.topic: article
 ms.date: 10/09/2019
 ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81461562"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>De beheerde identiteit van een Service Fabric-toepassing gebruiken voor toegang tot Azure-Services
@@ -52,8 +52,8 @@ Hierbij
 | ------- | ----------- |
 | `GET` | De HTTP-term waarmee wordt aangegeven dat u gegevens wilt ophalen uit het eind punt. In dit geval een OAuth-toegangs token. | 
 | `https://localhost:2377/metadata/identity/oauth2/token` | Het beheerde identiteits eindpunt voor Service Fabric toepassingen, dat wordt gegeven via de IDENTITY_ENDPOINT omgevings variabele. |
-| `api-version` | Een query reeks parameter, waarmee de API-versie van de beheerde identiteits token service wordt opgegeven. Momenteel is `2019-07-01-preview`de enige geaccepteerde waarde en deze kan worden gewijzigd. |
-| `resource` | Een query teken reeks parameter, waarmee de App-ID-URI van de doel resource wordt aangegeven. Dit wordt weer gegeven als de `aud` claim (publiek) van het uitgegeven token. In dit voor beeld wordt een token aangevraagd voor toegang tot Azure Key Vault, waarvan de URI van\/de App-ID https:/Vault.Azure.net/is. |
+| `api-version` | Een query reeks parameter, waarmee de API-versie van de beheerde identiteits token service wordt opgegeven. Momenteel is de enige geaccepteerde waarde `2019-07-01-preview` en deze kan worden gewijzigd. |
+| `resource` | Een query teken reeks parameter, waarmee de App-ID-URI van de doel resource wordt aangegeven. Dit wordt weer gegeven als de `aud` claim (publiek) van het uitgegeven token. In dit voor beeld wordt een token aangevraagd voor toegang tot Azure Key Vault, waarvan de URI van de App-ID https: \/ /Vault.Azure.net/is. |
 | `Secret` | Een veld voor de HTTP-aanvraag header, dat wordt vereist door de Service Fabric Managed Identity token service voor Service Fabric Services om de oproepende functie te verifiëren. Deze waarde wordt verschaft door de SF runtime via IDENTITY_HEADER omgevings variabele. |
 
 
@@ -73,9 +73,9 @@ Hierbij
 | Element | Beschrijving |
 | ------- | ----------- |
 | `token_type` | Het type token; in dit geval is het toegangs token ' Bearer ', wat betekent dat de presentator (' Bearer ') van dit token het beoogde onderwerp van het token is. |
-| `access_token` | Het aangevraagde toegangs token. Wanneer u een beveiligd REST API aanroept, wordt het token in `Authorization` het veld aanvraag header Inge sloten als een Bearer-token, waardoor de API de aanroeper kan verifiëren. | 
-| `expires_on` | De tijds tempel van de verval datum van het toegangs token; wordt weer gegeven als het aantal seconden van "1970-01-01T0:0: 0Z UTC" en komt overeen met de `exp` claim van het token. In dit geval verloopt het token op 2019-08-08T06:10:11 + 00:00 (in RFC 3339)|
-| `resource` | De resource waarvoor het toegangs token is uitgegeven, opgegeven via de `resource` query teken reeks parameter van de aanvraag; komt overeen met de claim ' AUD ' van het token. |
+| `access_token` | Het aangevraagde toegangs token. Wanneer u een beveiligd REST API aanroept, wordt het token in het `Authorization` veld aanvraag header Inge sloten als een Bearer-token, waardoor de API de aanroeper kan verifiëren. | 
+| `expires_on` | De tijds tempel van de verval datum van het toegangs token; wordt weer gegeven als het aantal seconden van "1970-01-01T0:0: 0Z UTC" en komt overeen met de claim van het token `exp` . In dit geval verloopt het token op 2019-08-08T06:10:11 + 00:00 (in RFC 3339)|
+| `resource` | De resource waarvoor het toegangs token is uitgegeven, opgegeven via de `resource` query teken reeks parameter van de aanvraag, komt overeen met de claim ' AUD ' van de token. |
 
 
 ## <a name="acquiring-an-access-token-using-c"></a>Een toegangs token verkrijgen met C #

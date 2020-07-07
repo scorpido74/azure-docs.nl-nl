@@ -3,7 +3,7 @@ title: Azure CLI-voorbeeldscript
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Azure CLI-voorbeeldscript voor het maken en beheren van Azure SQL Database en beheerde exemplaren voor Azure SQL
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: service
 ms.custom: overview-samples, mvc, sqldbrb=2
 ms.devlang: azurecli
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: 1f63b8adfabb9de427fd19a992f913d032aa9d8b
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: cc762c3c10c087a8c0db5bd17f9c38b8f9d26134
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85251507"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982754"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>Azure CLI-voorbeelden voor Azure SQL Database en beheerde SQL-exemplaren 
  
@@ -35,7 +35,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 De volgende tabel bevat links naar Azure CLI-voorbeeldscript voor het beheren van individuele en gegroepeerde databases in Azure SQL Database. 
 
-| | |
+|Onderwerp|Beschrijving|
 |---|---|
 |**Databases maken in Azure SQL Database**||
 | [Een individuele database maken en een firewallregel configureren](scripts/create-and-configure-database-cli.md) | Hiermee maakt u een SQL-database en configureert u een firewallregel op serverniveau. |
@@ -63,7 +63,7 @@ Meer informatie over de [Single Database Azure CLI API](single-database-manage.m
 
 De volgende tabel bevat koppelingen naar Azure CLI-scriptvoorbeelden voor beheerde exemplaren voor Azure SQL.
 
-| | |
+|Onderwerp|Beschrijving|
 |---|---|
 | **Een door SQL beheerd exemplaar maken**||
 | [Een door SQL beheerd exemplaar maken](../../sql-database/scripts/sql-database-create-configure-managed-instance-cli.md)| Hiermee maakt u een door SQL beheerd exemplaar. |

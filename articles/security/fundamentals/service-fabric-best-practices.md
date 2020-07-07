@@ -8,10 +8,10 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81461647"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Best practices voor Azure Service Fabric-beveiliging
@@ -87,7 +87,7 @@ Als u een [cluster certificaat](../../service-fabric/service-fabric-windows-clus
 
 Daarnaast volgt u deze procedures:
 -   Maak de certificaten voor productie clusters met behulp van een correct geconfigureerde Windows Server-certificaat service. U kunt de certificaten ook verkrijgen bij een goedgekeurde certificerings instantie (CA).
--   Gebruik nooit een tijdelijk of test certificaat voor productie clusters als het certificaat is gemaakt met behulp van MakeCert. exe of een vergelijkbaar hulp programma.
+-   Gebruik nooit een tijdelijk of test certificaat voor productie clusters als het certificaat is gemaakt met behulp van MakeCert.exe of een vergelijkbaar hulp programma.
 -   Gebruik een zelfondertekend certificaat voor test clusters, maar niet voor productie clusters.
 
 Als het cluster niet is beveiligd, kan iedereen anoniem verbinding maken met het cluster en beheer bewerkingen uitvoeren. Daarom moet u altijd productie clusters beveiligen met behulp van X. 509-certificaten of Windows-beveiliging.
@@ -99,7 +99,7 @@ Service Fabric beveiligt ook de resources die worden gebruikt door toepassingen.
 
 -   Een Active Directory domein groep of-gebruiker gebruiken: Voer de service uit onder de referenties voor een Active Directory gebruiker of groeps account. Zorg ervoor dat u Active Directory on-premises binnen uw domein gebruikt en niet Azure Active Directory. Toegang krijgen tot andere bronnen in het domein waaraan machtigingen zijn verleend met behulp van een domein gebruiker of-groep. Bijvoorbeeld bronnen zoals bestands shares.
 
--   Een beleid voor beveiligings toegang toewijzen voor HTTP-en HTTPS-eind punten: Geef de eigenschap **SecurityAccessPolicy** op om een **runas** -beleid toe te passen op een service wanneer het service manifest eindpunt resources declareert met http. Poorten die zijn toegewezen aan de HTTP-eind punten, hebben de juiste toegangs beheer lijsten voor het runas-gebruikers account dat de service uitvoert. Wanneer het beleid niet is ingesteld, heeft http. sys geen toegang meer tot de service en kunnen er fouten optreden met aanroepen van de client.
+-   Een beleid voor beveiligings toegang toewijzen voor HTTP-en HTTPS-eind punten: Geef de eigenschap **SecurityAccessPolicy** op om een **runas** -beleid toe te passen op een service wanneer het service manifest eindpunt resources declareert met http. Poorten die zijn toegewezen aan de HTTP-eind punten, hebben de juiste toegangs beheer lijsten voor het runas-gebruikers account dat de service uitvoert. Wanneer het beleid niet is ingesteld, heeft http.sys geen toegang tot de service en kunnen er fouten optreden met aanroepen van de client.
 
 Zie [beveiligings beleid voor uw toepassing configureren](../../service-fabric/service-fabric-application-runas-security.md)voor meer informatie over het gebruik van beveiligings beleid in een service Fabric cluster.
 

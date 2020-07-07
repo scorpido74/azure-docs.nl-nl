@@ -14,19 +14,19 @@ ms.date: 03/24/2020
 ms.author: angrobe
 ms.custom: mvc
 ms.openlocfilehash: 7db4fa2a780a3a1f53ecd73a40c247583cb6a79a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233824"
 ---
-# <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>Een CI/CD-pijp lijn maken in azure-pijp lijnen voor node. js met Azure DevOps starter
+# <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>Een CI/CD-pijp lijn maken in azure-pijp lijnen voor Node.js met Azure DevOps starter
 
 In deze Quick Start maakt u een NodeJS progressieve web-app (PWA) met behulp van [GatsbyJS](https://www.gatsbyjs.org/) en de vereenvoudigde ervaring voor het maken van Azure DevOps. Wanneer u klaar bent, hebt u een pijp lijn voor continue integratie (CI) en continue levering (CD) voor uw PWA in azure-pijp lijnen. Azure DevOps starter definieert wat u nodig hebt voor het ontwikkelen, implementeren en bewaken.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
+- Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) 
 - Een [Azure DevOps](https://azure.microsoft.com/services/devops/) -organisatie.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
@@ -45,11 +45,11 @@ DevOps Starter maakt een CI/CD-pijp lijn in azure-pijp lijnen. U kunt een nieuwe
 
 1. Selecteer de Node.js-voorbeeldtoepassing.   
 
-    ![Het voor beeld van node. js selecteren](_img/azure-devops-project-nodejs/select-nodejs.png) 
+    ![Het Node.js-voor beeld selecteren](_img/azure-devops-project-nodejs/select-nodejs.png) 
 
-1. Het standaardvoorbeeldframework is **Express.js**. Wijzig de selectie in **eenvoudige node. js-app** en selecteer **volgende**. 
+1. Het standaardvoorbeeldframework is **Express.js**. Wijzig de selectie in **eenvoudige Node.js app** en selecteer **volgende**. 
 
-    ![De eenvoudige node. js-app selecteren](_img/azure-devops-project-nodejs/select-nodejs-framework.png) 
+    ![De app eenvoudige Node.js selecteren](_img/azure-devops-project-nodejs/select-nodejs-framework.png) 
 
 1. De beschik bare implementatie doelen in deze stap worden bepaald door het toepassings raamwerk dat u hebt geselecteerd in stap 2. In dit voor beeld is **Windows Web app** het standaard implementatie doel. Verlaat **Web App for containers** instellen en selecteer **volgende**.
 
@@ -73,7 +73,7 @@ DevOps Starter maakt een CI/CD-pijp lijn in azure-pijp lijnen. U kunt een nieuwe
 
     ![Azure DevOps-dash board](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
 
-1. Vanuit uw Azure DevOps-project kunt u team leden uitnodigen om samen te werken en een Kanbanbord te maken om te beginnen met het bijhouden van uw werk. Zie [hier](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops?view=azure-devops)voor meer informatie.
+1. Vanuit uw Azure DevOps-project kunt u team leden uitnodigen om samen te werken en een Kanbanbord te maken om te beginnen met het bijhouden van uw werk. Klik [hier](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops?view=azure-devops) voor meer informatie.
 
 ![Overzicht van Azure DevOps](_img/azure-devops-project-nodejs/azure-devops-overview.png)
 
@@ -108,7 +108,7 @@ DevOps Starter maakt een Git-opslag plaats in azure opslag plaatsen of GitHub. I
     rmdir Application
     ```
 
-1. Gebruik de Gatsby CLI om een voor beeld-PWA te genereren. Voer `gatsby new` uit vanaf de terminal om de PWA-wizard te `gatsby-starter-blog` starten en selecteer voor uw start sjabloon. Dit moet eruitzien als dit voor beeld:
+1. Gebruik de Gatsby CLI om een voor beeld-PWA te genereren. Voer `gatsby new` uit vanaf de terminal om de PWA-wizard te starten en selecteer `gatsby-starter-blog` voor uw start sjabloon. Dit moet eruitzien als dit voor beeld:
 
     ```powershell
     c:\myproject> gatsby new
@@ -120,16 +120,16 @@ DevOps Starter maakt een Git-opslag plaats in azure opslag plaatsen of GitHub. I
         (Use a different starter)
     ```
     
-1. U hebt nu een map met `my-gatsby-project`de naam. Wijzig de `Dockerfile` naam `Application` ervan in en kopieer deze naar het bestand.
+1. U hebt nu een map met de naam `my-gatsby-project` . Wijzig de naam ervan in en kopieer deze naar het `Application` `Dockerfile` bestand.
     
     ```powershell
     mv my-gatsby-project Application
     mv Dockerfile Application
     ```
     
-1. Open de Dockerfile in uw favoriete editor en wijzig de eerste regel van `FROM node:8` in. `FROM node:12` Met deze wijziging wordt ervoor gezorgd dat de container de node. js-versie 12. x gebruikt in plaats van versie 8. x. GatsbyJS vereist meer moderne versies van node. js.
+1. Open de Dockerfile in uw favoriete editor en wijzig de eerste regel van `FROM node:8` in `FROM node:12` . Met deze wijziging wordt ervoor gezorgd dat de container gebruikmaakt van Node.js versie 12. x in plaats van versie 8. x. GatsbyJS vereist meer moderne versies van Node.js.
 
-1. Open vervolgens het bestand Package. json in de toepassingsmap en bewerk het [veld scripts](https://docs.npmjs.com/files/package.json#scripts) om ervoor te zorgen dat uw ontwikkel-en productie servers op alle beschik bare netwerk interfaces (bijvoorbeeld 0.0.0.0) en poort 80 Luis teren. Zonder deze instellingen kan de container app service geen verkeer door sturen naar uw node. js-app die in de container wordt uitgevoerd. Het `scripts` veld moet er als volgt uitzien. In het bijzonder wilt u de `develop`standaard instellingen `serve`, en `start` doelen wijzigen.
+1. Open vervolgens de package.jsin het bestand in de toepassingsmap en bewerk het [veld scripts](https://docs.npmjs.com/files/package.json#scripts) om ervoor te zorgen dat uw ontwikkel-en productie servers op alle beschik bare netwerk interfaces (bijvoorbeeld 0.0.0.0) en poort 80 Luis teren. Zonder deze instellingen kan de container app service geen verkeer door sturen naar uw Node.js-app die in de container wordt uitgevoerd. Het `scripts` veld moet er als volgt uitzien. In het bijzonder wilt u de `develop` `serve` standaard instellingen, en `start` doelen wijzigen.
 
     ```json
       "scripts": {
@@ -145,9 +145,9 @@ DevOps Starter maakt een Git-opslag plaats in azure opslag plaatsen of GitHub. I
     
 ## <a name="edit-your-cicd-pipelines"></a>Uw CI/CD-pijp lijnen bewerken
 
-1. Voordat u de code in de vorige sectie doorvoert, brengt u enkele wijzigingen aan in uw build-en release pijplijnen. Bewerk uw build-pijp lijn en werk de knooppunt taak bij voor het gebruik van node. js versie 12. x. Stel het veld **taak versie** in op 1. x en het veld **versie** in op 12. x.
+1. Voordat u de code in de vorige sectie doorvoert, brengt u enkele wijzigingen aan in uw build-en release pijplijnen. Bewerk uw build-pijp lijn en werk de knooppunt taak bij om Node.js versie 12. x te gebruiken. Stel het veld **taak versie** in op 1. x en het veld **versie** in op 12. x.
 
-    ![Knoop punt. js bijwerken naar 12. x](_img/azure-devops-project-nodejs/build-pipeline-update-node.png)
+    ![Node.js bijwerken naar 12. x](_img/azure-devops-project-nodejs/build-pipeline-update-node.png)
 
 1. In deze Snelstartgids worden er geen eenheids tests gemaakt en worden de stappen in onze build-pijp lijn uitgeschakeld. Wanneer u tests schrijft, kunt u deze stappen opnieuw inschakelen. Klik met de rechter muisknop om de taken te selecteren **afhankelijkheden voor installatie testen** en **Voer eenheids tests uit** en schakel ze uit.
 

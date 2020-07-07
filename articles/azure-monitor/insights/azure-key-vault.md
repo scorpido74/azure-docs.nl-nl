@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
 ms.openlocfilehash: 7da2fa2ddfbd9c71563dd8bd2e17b14c6dee62b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81455441"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Key Vault Analytics-oplossing in Azure Monitor
@@ -50,7 +50,7 @@ Gebruik de volgende instructies voor het installeren en configureren van de Azur
 8. Klik op *Opslaan* om de logboek registratie van diagnostische gegevens in log Analytics werk ruimte in te scha kelen.
 
 ### <a name="enable-key-vault-diagnostics-using-powershell"></a>Diagnostische gegevens van Key Vault inschakelen met behulp van Power shell
-Het volgende Power shell-script bevat een voor beeld van `Set-AzDiagnosticSetting` het gebruik van het inschakelen van bron logboek registratie voor Key Vault:
+Het volgende Power shell-script bevat een voor beeld van het gebruik van het `Set-AzDiagnosticSetting` inschakelen van bron logboek registratie voor Key Vault:
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -132,10 +132,10 @@ De bijgewerkte oplossing gebruiken:
 2. Schakel de Azure Key Vault-oplossing in met behulp van het proces dat wordt beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](../../azure-monitor/insights/solutions.md)
 3. Alle opgeslagen query's, Dash boards of waarschuwingen bijwerken voor gebruik van het nieuwe gegevens type
    + Type is gewijzigd van: AzureDiagnostics. U kunt het resource type gebruiken om te filteren op Logboeken Key Vault.
-   + Gebruik in plaats `KeyVaults`van:`AzureDiagnostics | where ResourceType'=="VAULTS"`
+   + Gebruik in plaats van: `KeyVaults``AzureDiagnostics | where ResourceType'=="VAULTS"`
    + Velden: (veld namen zijn hoofdletter gevoelig)
-   + Voor elk veld met een achtervoegsel van \_s, \_d of \_g in de naam, wijzigt u het eerste teken in kleine letters
-   + Voor een veld met het achtervoegsel \_o in naam, worden de gegevens gesplitst in afzonderlijke velden op basis van de geneste veld namen. De UPN van de oproepende functie wordt bijvoorbeeld opgeslagen in een veld`identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
+   + Voor elk veld met een achtervoegsel van \_ s, \_ d of \_ g in de naam, wijzigt u het eerste teken in kleine letters
+   + Voor een veld met het achtervoegsel \_ o in naam, worden de gegevens gesplitst in afzonderlijke velden op basis van de geneste veld namen. De UPN van de oproepende functie wordt bijvoorbeeld opgeslagen in een veld`identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
    + Veld CallerIpAddress gewijzigd in CallerIPAddress
    + Het veld RemoteIPCountry is niet meer aanwezig
 4. Verwijder de oplossing *Key Vault-analyse (afgeschaft)* . Als u Power shell gebruikt, gebruikt u`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`

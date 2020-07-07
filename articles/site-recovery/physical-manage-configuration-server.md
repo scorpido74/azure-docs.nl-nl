@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: eb7e891c031be5ac01295905d5c3304dc6818737
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80478965"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>De configuratie server voor herstel na nood gevallen voor fysieke servers beheren
@@ -24,7 +24,7 @@ U stelt een on-premises configuratie server in wanneer u de [Azure site Recovery
 
 De tabel bevat een overzicht van de vereisten voor het implementeren van de on-premises configuratie server machine.
 
-| **Component** | **Vereiste** |
+| **Onderdeel** | **Vereiste** |
 | --- |---|
 | CPU-kernen| 8 |
 | RAM | 16 GB|
@@ -47,7 +47,7 @@ De tabel bevat een overzicht van de vereisten voor het implementeren van de on-p
 De meest recente versie van het installatie bestand van de configuratie server is beschikbaar in de Site Recovery Portal. Daarnaast kan het rechtstreeks vanuit het [micro soft Download centrum](https://aka.ms/unifiedsetup)worden gedownload.
 
 1. Meld u aan bij de Azure Portal en blader naar uw Recovery Services kluis.
-2. Blader naar **site Recovery infrastructuur** > **configuratie servers** (onder voor VMware & fysieke machines).
+2. Blader naar **site Recovery infrastructuur**  >  **configuratie servers** (onder voor VMware & fysieke machines).
 3. Klik op de knop **+ servers** .
 4. Klik op de pagina **server toevoegen** op de knop downloaden om de registratie sleutel te downloaden. U hebt deze sleutel nodig tijdens de installatie van de configuratie server om deze te registreren bij Azure Site Recovery service.
 5. Klik op de koppeling **down load Microsoft Azure site Recovery Unified Setup** om de nieuwste versie van de configuratie server te downloaden.
@@ -87,7 +87,7 @@ De meest recente versie van het installatie bestand van de configuratie server i
 11. Lees de informatie bij **Samenvatting** en klik op **Installeren**. Wanneer de installatie is voltooid, wordt er een wachtwoordzin gegenereerd. U hebt deze nodig bij het inschakelen van de replicatie. Kopieer de wachtwoordzin daarom en bewaar deze op een veilige locatie.
 
 
-Nadat de registratie is voltooid, wordt de server weer gegeven op de Blade **instellingen** > **servers** in de kluis.
+Nadat de registratie is voltooid, wordt de server weer gegeven op de Blade **instellingen**  >  **servers** in de kluis.
 
 
 ## <a name="install-from-the-command-line"></a>Installeren vanaf de opdracht regel
@@ -151,7 +151,7 @@ ProxyPassword="Password"
 U kunt de proxy-instellingen voor de configuratie Server computer als volgt wijzigen:
 
 1. Meld u aan bij de configuratie server.
-2. Start cspsconfigtool. exe met behulp van de snelkoppeling op het bureau blad.
+2. Start de cspsconfigtool.exe met behulp van de snelkoppeling op het bureau blad.
 3. Klik op het tabblad **kluis registratie** .
 4. Down load een nieuw kluis registratie bestand vanuit de portal en geef het op als invoer voor het hulp programma.
 
@@ -172,7 +172,7 @@ U kunt de proxy-instellingen voor de configuratie Server computer als volgt wijz
 
 ## <a name="reregister-a-configuration-server-with-the-same-vault"></a>Een configuratie server opnieuw registreren met dezelfde kluis
 1. Meld u aan bij uw configuratie server.
-2. Start cspsconfigtool. exe met behulp van de snelkoppeling op het bureau blad.
+2. Start de cspsconfigtool.exe met behulp van de snelkoppeling op het bureau blad.
 3. Klik op het tabblad **kluis registratie** .
 4. Down load een nieuw registratie bestand vanuit de portal en geef dit op als invoer voor het hulp programma.
       ![REGI ster-configuratie-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
@@ -202,7 +202,7 @@ U kunt de proxy-instellingen voor de configuratie Server computer als volgt wijz
     reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
     net stop dra
     ```
-3. Start cspsconfigtool. exe met behulp van de snelkoppeling op het bureau blad.
+3. Start de cspsconfigtool.exe met behulp van de snelkoppeling op het bureau blad.
 4. Klik op het tabblad **kluis registratie** .
 5. Down load een nieuw registratie bestand vanuit de portal en geef dit op als invoer voor het hulp programma.
 6. Geef de proxyserver gegevens op en klik op de knop **registreren** .  
@@ -242,7 +242,7 @@ Voer als volgt een upgrade uit voor de server:
 
 
 ### <a name="delete-the-configuration-server-from-azure-portal"></a>De configuratie server verwijderen uit Azure Portal
-1. Ga in azure Portal naar **site Recovery infrastructuur** > **configuratie servers** in het menu kluis.
+1. Ga in azure Portal naar **site Recovery infrastructuur**  >  **configuratie servers** in het menu kluis.
 2. Klik op de configuratie server die u buiten gebruik wilt stellen.
 3. Op de pagina Details van de configuratie server klikt u op de knop **verwijderen** .
 4. Klik op **Ja** om het verwijderen van de server te bevestigen.
@@ -303,7 +303,7 @@ Voor implementaties van de configuratie server vóór 2016 mei is certificaat ve
 
 ### <a name="renew-the-certificate"></a>Het certificaat vernieuwen
 
-1. Open **site Recovery-infrastructuur** > **Configuratie server**in de kluis en klik op de vereiste configuratie server.
+1. Open **site Recovery-infrastructuur**  >  **Configuratie server**in de kluis en klik op de vereiste configuratie server.
 2. De verval datum wordt weer gegeven onder status van de **Configuratie server**
 3. Klik op **certificaten vernieuwen**. 
 

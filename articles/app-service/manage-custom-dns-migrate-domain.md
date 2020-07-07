@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: 5c1760c746aca439e19ab5727e5be02f6dbad3cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81535686"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Een actieve DNS-naam migreren naar Azure App Service
@@ -40,9 +40,9 @@ Wanneer u ten slotte uw aangepaste DNS-naam migreert van de oude-site naar de Ap
 
 ### <a name="create-domain-verification-record"></a>Domein verificatie record maken
 
-Voeg een TXT-record toe om het domein eigendom te controleren. De TXT-record wordt toegewezen vanuit _awverify.&lt; subdomein>_ op _ &lt;appName>. azurewebsites.net_. 
+Voeg een TXT-record toe om het domein eigendom te controleren. De TXT-record wordt toegewezen vanuit _awverify. &lt; subdomein>_ op _ &lt; appname>. azurewebsites.net_. 
 
-De TXT-record die u nodig hebt, is afhankelijk van de DNS-record die u wilt migreren. Zie de volgende tabel (`@` dit is meestal het hoofd domein) voor voor beelden:
+De TXT-record die u nodig hebt, is afhankelijk van de DNS-record die u wilt migreren. Zie de volgende tabel ( `@` Dit is meestal het hoofd domein) voor voor beelden:
 
 | Voor beeld van DNS-record | TXT-host | TXT-waarde |
 | - | - | - |
@@ -56,7 +56,7 @@ Noteer op de pagina DNS-records het record type van de DNS-naam die u wilt migre
 > Voor bepaalde providers, zoals CloudFlare, `awverify.*` is geen geldige record. Gebruik `*` in plaats daarvan.
 
 > [!NOTE]
-> Met `*` Joker records worden subdomeinen met een bestaande CNAME-record niet gevalideerd. U moet mogelijk expliciet een TXT-record maken voor elk subdomein.
+> `*`Met Joker records worden subdomeinen met een bestaande CNAME-record niet gevalideerd. U moet mogelijk expliciet een TXT-record maken voor elk subdomein.
 
 
 ### <a name="enable-the-domain-for-your-app"></a>Het domein voor uw app inschakelen
@@ -69,7 +69,7 @@ Selecteer op de pagina **aangepaste domeinen** het **+** pictogram naast **hostn
 
 ![Hostnaam toevoegen](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Typ de Fully Qualified Domain Name waarvoor u de TXT-record hebt toegevoegd, zoals `www.contoso.com`. Voor een Joker teken domein ( \*zoals. contoso.com) kunt u een DNS-naam gebruiken die overeenkomt met het Joker teken domein. 
+Typ de Fully Qualified Domain Name waarvoor u de TXT-record hebt toegevoegd, zoals `www.contoso.com` . Voor een Joker teken domein (zoals \* . contoso.com) kunt u een DNS-naam gebruiken die overeenkomt met het Joker teken domein. 
 
 Selecteer **Valideren**.
 
@@ -114,7 +114,7 @@ Voor het `contoso.com` voor beeld van het hoofd domein wijst u de A-of CNAME-rec
 | FQDN-voor beeld | Recordtype | Host | Waarde |
 | - | - | - | - |
 | contoso.com (root) | A | `@` | IP-adres uit [Het IP-adres van de app kopiëren](#info) |
-| www\.-contoso.com (sub) | CNAME | `www` | _&lt;appName>. azurewebsites.net_ |
+| www \. -contoso.com (sub) | CNAME | `www` | _&lt;appName>. azurewebsites.net_ |
 | \*. contoso.com (Joker teken) | CNAME | _\*_ | _&lt;appName>. azurewebsites.net_ |
 
 Sla uw wijzigingen op.
@@ -125,7 +125,7 @@ DNS-query's moeten meteen beginnen met het oplossen van problemen met de App Ser
 
 U kunt een actief aangepast domein migreren in azure, tussen abonnementen of binnen hetzelfde abonnement. Een dergelijke migratie zonder downtime vereist echter dat de bron-app en de doel-app op een bepaald moment hetzelfde aangepaste domein toewijzen. Daarom moet u ervoor zorgen dat de twee apps niet zijn geïmplementeerd in dezelfde implementatie-eenheid (intern bekend als een webruimte). Een domein naam kan slechts aan één app in elke implementatie-eenheid worden toegewezen.
 
-U kunt de implementatie-eenheid voor uw app vinden door te kijken naar de domein naam van de FTP/ `<deployment-unit>.ftp.azurewebsites.windows.net`S-URL. Controleer of de implementatie-eenheid verschilt van de bron-app en de doel-app. De implementatie-eenheid van een app wordt bepaald door het [app service plan](overview-hosting-plans.md) waarin het zich bevindt. Het wordt wille keurig door Azure geselecteerd wanneer u het plan maakt en kan niet worden gewijzigd. Azure zorgt er alleen voor dat twee plannen zich in dezelfde implementatie-eenheid bevinden wanneer u [ze in dezelfde resource groep *en* dezelfde regio maakt](app-service-plan-manage.md#create-an-app-service-plan), maar er is geen logica om ervoor te zorgen dat plannen zich in verschillende implementatie-eenheden bevinden. De enige manier om een plan in een andere implementatie-eenheid te maken, is door te blijven maken van een plan in een nieuwe resource groep of regio, totdat u een andere implementatie-eenheid krijgt.
+U kunt de implementatie-eenheid voor uw app vinden door te kijken naar de domein naam van de FTP/S-URL `<deployment-unit>.ftp.azurewebsites.windows.net` . Controleer of de implementatie-eenheid verschilt van de bron-app en de doel-app. De implementatie-eenheid van een app wordt bepaald door het [app service plan](overview-hosting-plans.md) waarin het zich bevindt. Het wordt wille keurig door Azure geselecteerd wanneer u het plan maakt en kan niet worden gewijzigd. Azure zorgt er alleen voor dat twee plannen zich in dezelfde implementatie-eenheid bevinden wanneer u [ze in dezelfde resource groep *en* dezelfde regio maakt](app-service-plan-manage.md#create-an-app-service-plan), maar er is geen logica om ervoor te zorgen dat plannen zich in verschillende implementatie-eenheden bevinden. De enige manier om een plan in een andere implementatie-eenheid te maken, is door te blijven maken van een plan in een nieuwe resource groep of regio, totdat u een andere implementatie-eenheid krijgt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

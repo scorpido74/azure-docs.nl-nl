@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 33e3bc13e67e268b82bf517033b4b1c7c51c361f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81430888"
 ---
 # <a name="authentication-requests-and-responses"></a>Verificatie, vragen en antwoorden
@@ -45,7 +45,7 @@ In dit onderwerp worden de Details voor de Azure Key Vault-service beschreven. Z
 
  Azure Key Vault-protocol versies volgen een schema voor datum nummering met behulp van een {jjjj}. {MM}. Indeling van {DD}.  
 
-## <a name="request-body"></a>Aanvraagtekst  
+## <a name="request-body"></a>Aanvraagbody  
  Volgens de HTTP-specificatie moeten GET-bewerkingen geen aanvraag tekst hebben en moeten POST-en PUT-bewerkingen een aanvraag tekst hebben. De hoofd tekst in DELETE-bewerkingen is optioneel in HTTP.  
 
  Tenzij anders vermeld in de beschrijving van de bewerking, moet het inhouds type van de aanvraag hoofdtekst application/json zijn en moet het een geserialiseerd JSON-object bevatten dat voldoet aan het inhouds type.  
@@ -113,5 +113,5 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 -   autorisatie: het adres van de OAuth2-autorisatie service dat kan worden gebruikt om een toegangs token voor de aanvraag te verkrijgen.  
 
--   resource: de naam van de resource (`https://vault.azure.net`) die in de autorisatie aanvraag moet worden gebruikt.  
+-   resource: de naam van de resource ( `https://vault.azure.net` ) die in de autorisatie aanvraag moet worden gebruikt.  
 

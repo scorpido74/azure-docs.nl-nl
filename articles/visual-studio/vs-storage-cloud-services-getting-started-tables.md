@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 5c42d65b5e2c46fcdbe1b0725f2ebce881722db3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72299987"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Aan de slag met aan Azure Table Storage en Visual Studio verbonden services (cloudserviceprojecten)
@@ -28,7 +28,7 @@ In dit artikel wordt beschreven hoe u aan de slag gaat met Azure Table Storage i
 
 Met de Azure Table Storage-service kunt u grote hoeveel heden gestructureerde gegevens opslaan. De service is een NoSQL-gegevens opslag die geverifieerde aanroepen binnen en buiten de Azure-Cloud accepteert. Azure-tabellen zijn ideaal voor het opslaan van gestructureerde, niet-relationele gegevens.
 
-Als u aan de slag wilt gaan, moet u eerst een tabel maken in uw opslag account. We laten u zien hoe u een Azure-tabel in code maakt en hoe u ook eenvoudige tabel-en entiteits bewerkingen uitvoert, zoals het toevoegen, wijzigen, lezen en lezen van tabel entiteiten. De voor beelden zijn geschreven in\# C-code en gebruiken de [Microsoft Azure Storage-client bibliotheek voor .net](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+Als u aan de slag wilt gaan, moet u eerst een tabel maken in uw opslag account. We laten u zien hoe u een Azure-tabel in code maakt en hoe u ook eenvoudige tabel-en entiteits bewerkingen uitvoert, zoals het toevoegen, wijzigen, lezen en lezen van tabel entiteiten. De voor beelden zijn geschreven in C- \# code en gebruiken de [Microsoft Azure Storage-client bibliotheek voor .net](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
 **Opmerking:** Sommige Api's die aanroepen naar Azure Storage, zijn asynchroon. Zie [asynchrone programmering met async en wacht](https://msdn.microsoft.com/library/hh191443.aspx) op voor meer informatie. In de onderstaande code wordt ervan uitgegaan dat er asynchrone programmeer methoden worden gebruikt.
 
@@ -89,7 +89,7 @@ Als u een entiteit wilt toevoegen aan een tabel, maakt u een klasse die de eigen
         public string PhoneNumber { get; set; }
     }
 
-Tabel bewerkingen waarbij entiteiten worden gebruikt, worden uitgevoerd met behulp van het **CloudTable** -object dat u eerder hebt gemaakt in ' Access tables in code '. Het **TableOperation** -object vertegenwoordigt de bewerking die moet worden uitgevoerd. In het volgende code voorbeeld ziet u hoe u een **CloudTable** -object en een **CustomerEntity** -object maakt. Om de bewerking voor te bereiden, wordt er een **TableOperation** gemaakt om de klant entiteit in de tabel in te voegen. Ten slotte wordt de bewerking uitgevoerd door het aanroepen van **CloudTable. ExecuteAsync**.
+Tabel bewerkingen waarbij entiteiten worden gebruikt, worden uitgevoerd met behulp van het **CloudTable** -object dat u eerder hebt gemaakt in ' Access tables in code '. Het **TableOperation** -object vertegenwoordigt de bewerking die moet worden uitgevoerd. In het volgende code voorbeeld ziet u hoe u een **CloudTable** -object en een **CustomerEntity** -object maakt. Om de bewerking voor te bereiden, wordt er een **TableOperation** gemaakt om de klant entiteit in de tabel in te voegen. Ten slotte wordt de bewerking uitgevoerd door het aanroepen van **CloudTable.ExecuteAsync**.
 
     // Create a new customer entity.
     CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
@@ -104,7 +104,7 @@ Tabel bewerkingen waarbij entiteiten worden gebruikt, worden uitgevoerd met behu
 
 
 ## <a name="insert-a-batch-of-entities"></a>Een batch entiteiten invoegen
-U kunt in één schrijf bewerking meerdere entiteiten invoegen in een tabel. Het volgende code voorbeeld maakt twee entiteits objecten ("Jeff Smith" en "ben Smith"), voegt deze toe aan een **TableBatchOperation** -object met de methode Insert en start de bewerking door **CloudTable. ExecuteBatchAsync**aan te roepen.
+U kunt in één schrijf bewerking meerdere entiteiten invoegen in een tabel. Het volgende code voorbeeld maakt twee entiteits objecten ("Jeff Smith" en "ben Smith"), voegt deze toe aan een **TableBatchOperation** -object met de methode Insert en start de bewerking door het aanroepen van **CloudTable.ExecuteBatchAsync**.
 
     // Create the batch operation.
     TableBatchOperation batchOperation = new TableBatchOperation();

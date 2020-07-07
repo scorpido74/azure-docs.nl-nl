@@ -4,10 +4,10 @@ description: Beschrijft de declaratieve JSON-syntaxis voor Azure Resource Manage
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.openlocfilehash: baddedae1b918502e579d2ed230e0779960f45e7
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82203825"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Syntaxis en expressies in Azure Resource Manager sjablonen
@@ -29,7 +29,7 @@ Azure Resource Manager biedt [functies](template-functions.md) die u in een sjab
 },
 ```
 
-Binnen de expressie roept de syntaxis `resourceGroup()` een van de functies aan die Resource Manager biedt voor gebruik in een sjabloon. In dit geval is het de functie [resourceGroup](template-functions-resource.md#resourcegroup) . Net als in Java script worden functie aanroepen opgemaakt `functionName(arg1,arg2,arg3)`als. De syntaxis `.location` haalt één eigenschap op uit het object dat door die functie wordt geretourneerd.
+Binnen de expressie roept de syntaxis `resourceGroup()` een van de functies aan die Resource Manager biedt voor gebruik in een sjabloon. In dit geval is het de functie [resourceGroup](template-functions-resource.md#resourcegroup) . Net als in Java script worden functie aanroepen opgemaakt als `functionName(arg1,arg2,arg3)` . De syntaxis `.location` haalt één eigenschap op uit het object dat door die functie wordt geretourneerd.
 
 Sjabloon functies en de bijbehorende para meters zijn niet hoofdletter gevoelig. Met Resource Manager worden bijvoorbeeld **variabelen (' var1 ')** en **variabelen (' var1 ')** als hetzelfde omgezet. Als de functie wordt geëvalueerd, wordt de-functie in de gevallen bewaard, tenzij deze expliciet een hoofdletter gebruik wijzigt (zoals toUpper of toLower). Bepaalde resource typen kunnen Case vereisten hebben die gescheiden zijn van de manier waarop functies worden geëvalueerd.
 
@@ -47,13 +47,13 @@ De meeste functies werken hetzelfde, ongeacht of deze zijn geïmplementeerd in e
 
 ## <a name="escape-characters"></a>Escape tekens
 
-Als u een letterlijke teken reeks begint met een `[` haakje en eindigend met een `]`haakje sluiten, maar niet als een expressie, voegt u een extra beugel toe om de teken reeks `[[`te starten met. Bijvoorbeeld de variabele:
+Als u een letterlijke teken reeks begint met een haakje `[` en eindigend met een haakje sluiten `]` , maar niet als een expressie, voegt u een extra beugel toe om de teken reeks te starten met `[[` . Bijvoorbeeld de variabele:
 
 ```json
 "demoVar1": "[[test value]"
 ```
 
-Wordt omgezet in `[test value]`.
+Wordt omgezet in `[test value]` .
 
 Als de letterlijke teken reeks niet eindigt met een haakje, hoeft u de eerste vier Kante haak niet te sluiten. Bijvoorbeeld de variabele:
 
@@ -61,7 +61,7 @@ Als de letterlijke teken reeks niet eindigt met een haakje, hoeft u de eerste vi
 "demoVar2": "[test] value"
 ```
 
-Wordt omgezet in `[test] value`.
+Wordt omgezet in `[test] value` .
 
 Gebruik de back slash om dubbele aanhalings tekens in een expressie te escapen, zoals het toevoegen van een JSON-object in de sjabloon.
 
@@ -93,7 +93,7 @@ Wanneer para meter waarden worden door gegeven, is het gebruik van escape tekens
 }
 ```
 
-Als u de standaard waarde gebruikt, wordt de sjabloon `[test value]`geretourneerd.
+Als u de standaard waarde gebruikt, wordt de sjabloon geretourneerd `[test value]` .
 
 Als u echter een parameter waarde doorgeeft via de opdracht regel, worden de tekens letterlijk geïnterpreteerd. De vorige sjabloon implementeren met:
 
@@ -101,13 +101,13 @@ Als u echter een parameter waarde doorgeeft via de opdracht regel, worden de tek
 New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azuredeploy.json -demoParam1 "[[test value]"
 ```
 
-Retourneert `[[test value]`. Gebruik in plaats daarvan:
+Retourneert `[[test value]` . Gebruik in plaats daarvan:
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azuredeploy.json -demoParam1 "[test value]"
 ```
 
-Dezelfde opmaak wordt toegepast bij het door geven van waarden in vanuit een parameter bestand. De tekens worden letterlijk geïnterpreteerd. Bij gebruik in combi natie met de voor gaande sjabloon retourneert `[test value]`het volgende parameter bestand:
+Dezelfde opmaak wordt toegepast bij het door geven van waarden in vanuit een parameter bestand. De tekens worden letterlijk geïnterpreteerd. Bij gebruik in combi natie met de voor gaande sjabloon retourneert het volgende parameter bestand `[test value]` :
 
 ```json
 {

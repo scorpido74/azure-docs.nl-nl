@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
 ms.openlocfilehash: 436b9c1569d7c33f79a126cd4d0513bac9385d8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81431915"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2,0-opmerkingen bij de release en de migratie handleiding
@@ -49,12 +49,12 @@ Key Vault certificaten x509-certificaten beheren en ondersteunt het volgende ged
 
 * Het *geheim* is gewijzigd in *SecretBundle*
 * *Woorden lijst* gewijzigd in *IDictionary*
-* *Lijst\<T>, string []* gewijzigd in *IList\<T>*
+* *Lijst \<T> , teken reeks []* gewijzigd *in \<T> IList*
 * *NextList* is gewijzigd in *NextPageLink*
 
 ## <a name="return-types"></a>Retour typen
 
-* De **lijst** met **SecretList** en de waarde van de functie *IPage\<T>* in plaats van *ListKeysResponseMessage*
+* De **lijst** met **SecretList** en de *IPage \<T> * retourneert nu in plaats van *ListKeysResponseMessage*
 * De gegenereerde **BackupKeyAsync** retourneert nu *BackupKeyResult*, met de *waarde* (back-upblob). Voorheen werd de methode ingepakt en alleen de waarde geretourneerd.
 
 ## <a name="exceptions"></a>Uitzonderingen

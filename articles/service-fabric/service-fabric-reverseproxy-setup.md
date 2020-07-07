@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
 ms.openlocfilehash: 6e3edb0fe238dcaddb7d99cc68660591f081581c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80476670"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Een omgekeerde proxy instellen en configureren in azure Service Fabric
@@ -154,7 +154,7 @@ Nadat u een resource manager-sjabloon hebt, kunt u de reverse proxy inschakelen 
 
 ## <a name="enable-reverse-proxy-on-standalone-clusters"></a>Omgekeerde proxy inschakelen op zelfstandige clusters
 
-Voor zelfstandige clusters schakelt u omgekeerde proxy in het bestand ClusterConfig. json in. U kunt omgekeerde proxy inschakelen bij het maken van een cluster of door de configuratie van een bestaand cluster bij te werken. Zie [zelfstandige cluster instellingen](./service-fabric-cluster-manifest.md)voor meer informatie over de instellingen die beschikbaar zijn in ClusterConfig. json-bestanden.
+Voor zelfstandige clusters schakelt u omgekeerde proxy in de ClusterConfig.jsin. U kunt omgekeerde proxy inschakelen bij het maken van een cluster of door de configuratie van een bestaand cluster bij te werken. Zie [zelfstandige cluster instellingen](./service-fabric-cluster-manifest.md)voor meer informatie over de instellingen die beschikbaar zijn in ClusterConfig.jsop bestanden.
 
 In de volgende stappen ziet u de instellingen die u moet gebruiken voor het inschakelen van omgekeerde proxy en, optioneel, voor het beveiligen van de omgekeerde proxy met een X. 509-certificaat. 
 
@@ -221,7 +221,7 @@ In de volgende stappen ziet u de instellingen die u moet gebruiken voor het insc
 
    Zie voor meer informatie over het configureren en beheren van certificaten voor een zelfstandig cluster, en meer details over het configureren van certificaten die worden gebruikt voor het beveiligen van reverse proxy, de [beveiliging op basis van x509-certificaten](./service-fabric-windows-cluster-x509-security.md).
 
-Nadat u het bestand ClusterConfig. json hebt gewijzigd om omgekeerde proxy in te scha kelen, volgt u de instructies in [een upgrade van de cluster configuratie](service-fabric-cluster-config-upgrade-windows-server.md) om de wijzigingen in uw cluster te pushen.
+Nadat u uw ClusterConfig.jsin het bestand hebt gewijzigd om omgekeerde proxy in te scha kelen, volgt u de instructies in [een upgrade van de cluster configuratie](service-fabric-cluster-config-upgrade-windows-server.md) om de wijzigingen in uw cluster te pushen.
 
 
 ## <a name="expose-reverse-proxy-on-a-public-port-through-azure-load-balancer"></a>Reverse proxy beschikbaar maken op een open bare poort via Azure Load Balancer
@@ -300,7 +300,7 @@ De volgende JSON verwijst naar dezelfde sjabloon die wordt gebruikt bij het insc
 
 ## <a name="customize-reverse-proxy-behavior-using-fabric-settings"></a>Het gedrag van omgekeerde proxy's aanpassen met behulp van infrastructuur instellingen
 
-U kunt het gedrag van omgekeerde proxy aanpassen via infrastructuur instellingen in de Resource Manager-sjabloon voor clusters die worden gehost in azure of in het bestand ClusterConfig. json voor zelfstandige clusters. Instellingen voor het beheer van het gedrag van omgekeerde proxy's bevinden zich in de [**toepassings Gateway/http-**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) sectie in de sectie **fabricSettings** van het gedeelte cluster **Eigenschappen** . 
+U kunt het gedrag van reverse proxy aanpassen via infrastructuur instellingen in de Resource Manager-sjabloon voor clusters die worden gehost in azure of in het ClusterConfig.jsbestand voor zelfstandige clusters. Instellingen voor het beheer van het gedrag van omgekeerde proxy's bevinden zich in de [**toepassings Gateway/http-**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) sectie in de sectie **fabricSettings** van het gedeelte cluster **Eigenschappen** . 
 
 U kunt bijvoorbeeld de waarde van **DefaultHttpRequestTimeout** instellen om de time-out voor aanvragen voor de omgekeerde proxy in te stellen op 180 seconden, zoals in de volgende JSON:
 
