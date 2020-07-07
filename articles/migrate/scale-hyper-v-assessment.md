@@ -8,17 +8,16 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: raynew
 ms.openlocfilehash: c1ae3a9ed8a775161aaf85ab2c91b1e43113d2e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70279442"
 ---
 # <a name="assess-large-numbers-of-hyper-v-vms-for-migration-to-azure"></a>Een groot aantal virtuele Hyper-V-machines beoordelen voor migratie naar Azure
 
 In dit artikel wordt beschreven hoe u een groot aantal on-premises virtuele Hyper-V-machines kunt beoordelen voor migratie naar Azure, met behulp van het hulp programma Azure Migrate server Assessment.
 
-[Azure migrate](migrate-services-overview.md) biedt een hub aan hulpprogram ma's waarmee u apps, infra structuur en werk belastingen op Microsoft Azure kunt detecteren, evalueren en migreren. De hub bevat Azure Migrate-hulpprogram ma's en ISV-aanbiedingen (Independent Software Vendor) van derden. 
+[Azure Migrate](migrate-services-overview.md) biedt een hub aan hulpprogramma's waarmee u apps, infrastructuur en workloads op Microsoft Azure kunt detecteren, evalueren en migreren. De hub bevat Azure Migrate-hulpprogramma's en externe aanbiedingen van onafhankelijke softwareleveranciers (ISV’s). 
 
 
 In dit artikel leert u het volgende:
@@ -48,7 +47,7 @@ Gebruik de limieten in deze tabel voor de planning.
 --- | --- 
 **Azure Migrate projecten** | Evalueer Maxi maal 35.000 Vm's in een project.
 **Azure Migrate-apparaat** | Een apparaat kan Maxi maal 5000 Vm's detecteren.<br/> Een apparaat kan verbinding maken met Maxi maal 300 Hyper-V-hosts.<br/> Een apparaat kan alleen worden gekoppeld aan één Azure Migrate project.<br/> Een wille keurig aantal apparaten kan worden gekoppeld aan één Azure Migrate project. <br/><br/> 
-**Groep** | U kunt Maxi maal 35.000 Vm's toevoegen aan één groep.
+**Gegroepeerd** | U kunt Maxi maal 35.000 Vm's toevoegen aan één groep.
 **Azure Migrate beoordeling** | U kunt Maxi maal 35.000 Vm's in één evaluatie evalueren.
 
 
