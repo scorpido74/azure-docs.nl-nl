@@ -7,10 +7,10 @@ ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
 ms.openlocfilehash: 3833b27e9f90cbffa2320c84877d4eb5bb6520f7
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82613265"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Historische telemetriegegevens opnemen
@@ -27,7 +27,7 @@ Voordat u verder gaat met dit artikel, moet u ervoor zorgen dat u FarmBeats hebt
 
 U moet de partner integratie inschakelen voor uw Azure FarmBeats-exemplaar. Met deze stap maakt u een client die toegang heeft tot uw Azure FarmBeats-exemplaar als uw apparaat-partner en biedt u de volgende waarden die vereist zijn in de volgende stappen:
 
-- API-eind punt: dit is de Datahub-URL, bijvoorbeeld\<https://Datahub>. azurewebsites.net
+- API-eind punt: dit is de Datahub-URL, bijvoorbeeld https:// \<datahub> . azurewebsites.net
 - Tenant-id
 - Client-id
 - Clientgeheim
@@ -42,7 +42,7 @@ Volg deze stappen:
 
 2. **Als u FarmBeats-versie 1.2.7 of hoger hebt, slaat u stap a, b en c over en gaat u naar stap 3.** U kunt de FarmBeats-versie controleren door het pictogram **instellingen** te selecteren in de rechter bovenhoek van de FarmBeats-gebruikers interface.
 
-      a.  Ga naar **Azure Active Directory** > **app-registraties** voor Azure Active Directory
+      a.  Ga naar **Azure Active Directory**  >  **app-registraties** voor Azure Active Directory
 
       b. Selecteer de **app-registratie** die is gemaakt als onderdeel van uw FarmBeats-implementatie. Deze heeft dezelfde naam als uw FarmBeats-datahub.
 
@@ -70,7 +70,7 @@ Volg deze stappen:
 
     ```
 
-7. Voer het volgende script uit. Het script vraagt om de Tenant-id, die kan worden verkregen van **Azure Active Directory** > **overzichts** pagina.
+7. Voer het volgende script uit. Het script vraagt om de Tenant-id, die kan worden verkregen van **Azure Active Directory**  >  **overzichts** pagina.
 
     ```azurepowershell-interactive 
 
@@ -140,7 +140,7 @@ Zie [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)voor meer informatie over o
 
 ### <a name="api-request-to-create-metadata"></a>API-aanvraag voor het maken van meta gegevens
 
-Als u een API-aanvraag wilt maken, combineert u de HTTP-methode (POST), de URL naar de API-service en de URI naar een resource om een query uit te voeren, gegevens te verzenden naar, te maken of te verwijderen. Vervolgens voegt u een of meer HTTP-aanvraag headers toe. De URL van de API-service is het API-eind punt, dat wil zeggen, de\<DATAHUB-url (https://yourdatahub>. azurewebsites.net).
+Als u een API-aanvraag wilt maken, combineert u de HTTP-methode (POST), de URL naar de API-service en de URI naar een resource om een query uit te voeren, gegevens te verzenden naar, te maken of te verwijderen. Vervolgens voegt u een of meer HTTP-aanvraag headers toe. De URL van de API-service is het API-eind punt, dat wil zeggen, de Datahub-URL (https:// \<yourdatahub> . azurewebsites.net).
 
 ### <a name="authentication"></a>Verificatie
 
@@ -421,7 +421,7 @@ Hier volgt een voor beeld van een telemetrie-bericht:
 }
 ```
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 
 ### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Er kunnen geen telemetriegegevens worden weer gegeven na het opnemen van historische/streaming-gegevens van uw Sens oren
 

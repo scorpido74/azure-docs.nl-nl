@@ -9,16 +9,16 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 74f2e22bcc9d75070e4f7af304f92d9c5640ca7a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82615277"
 ---
 # <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>Problemen met virtuele Windows 7-machines in Windows Virtual Desktop oplossen
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de najaar 2019-release die geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows.
+>Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten.
 
 Gebruik dit artikel voor het oplossen van problemen die zich voordoen bij het configureren van de virtuele machines (Vm's) voor virtuele bureau blad-sessies van Windows.
 
@@ -46,7 +46,7 @@ U kunt deze fout oplossen door de gebruiker toe te voegen aan de Extern bureaubl
 1. Open Azure Portal.
 2. Selecteer de virtuele machine waarop u het fout bericht hebt gezien.
 3. Selecteer **een opdracht uitvoeren**.
-4. Voer de volgende opdracht uit `<username>` met vervangen door de naam van de gebruiker die u wilt toevoegen:
+4. Voer de volgende opdracht uit met `<username>` vervangen door de naam van de gebruiker die u wilt toevoegen:
    
    ```cmd
    net localgroup "Remote Desktop Users" <username> /add

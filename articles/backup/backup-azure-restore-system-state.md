@@ -5,10 +5,10 @@ ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.openlocfilehash: 39cac84c4a33c1da209d0a0cc7b0f8ac8ee390a0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82610782"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Systeem status herstellen naar Windows Server
@@ -33,7 +33,7 @@ In de volgende stappen wordt uitgelegd hoe u de configuratie van uw Windows-Serv
 
     ![Gegevens herstellen](./media/backup-azure-restore-windows-server/recover.png)
 
-3. Selecteer in het deel venster **aan** de slag de optie **deze server`<server name>`()** en klik op **volgende**om de gegevens op dezelfde server of computer te herstellen.
+3. Selecteer in het deel venster **aan** de slag de optie **deze server ( `<server name>` )** en klik op **volgende**om de gegevens op dezelfde server of computer te herstellen.
 
     ![Selecteer deze optie voor de server om de gegevens op dezelfde computer te herstellen](./media/backup-azure-restore-system-state/samemachine.png)
 
@@ -107,7 +107,7 @@ De terminologie die in deze stappen wordt gebruikt, omvat:
 
     ![Klik op de knop herstellen om het herstel proces te bevestigen](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
-12. Kopieer de *WindowsImageBackup* -map naar een niet-kritiek volume van de server (bijvoorbeeld D:\). Normaal gesp roken is het volume van het Windows-besturings systeem het essentiële volume.
+12. Kopieer de *WindowsImageBackup* -map naar een niet-kritiek volume van de server (bijvoorbeeld D: \) . Normaal gesp roken is het volume van het Windows-besturings systeem het essentiële volume.
 
 13. Om het herstel proces te volt ooien, gebruikt u de volgende sectie om [de herstelde systeem status bestanden toe te passen op een Windows-Server](#apply-restored-system-state-on-a-windows-server).
 

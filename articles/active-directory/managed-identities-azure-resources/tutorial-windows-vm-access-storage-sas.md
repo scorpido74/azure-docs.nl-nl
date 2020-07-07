@@ -1,5 +1,5 @@
 ---
-title: Zelf`:` studie een beheerde identiteit gebruiken om toegang te krijgen tot Azure Storage met behulp van SAS-referenties-Azure AD
+title: Zelf studie een `:` beheerde identiteit gebruiken om toegang te krijgen tot Azure Storage met behulp van SAS-referenties-Azure AD
 description: Een zelf studie waarin wordt uitgelegd hoe u een door een Windows-VM systeem toegewezen beheerde identiteit gebruikt om toegang te krijgen tot Azure Storage, met een SAS-referentie in plaats van een toegangs sleutel voor een opslag account.
 services: active-directory
 documentationcenter: ''
@@ -9,18 +9,18 @@ editor: daveba
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/24/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c344c25a696500182030ff849a001ad586c92032
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: c1ed86db85de8d4665c9eecfbde96b0909b12362
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74232161"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608310"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Zelf studie: een door een Windows-VM-systeem toegewezen beheerde identiteit gebruiken om toegang te krijgen tot Azure Storage via een SAS-referentie
 
@@ -50,7 +50,7 @@ Als u nog geen opslagaccount hebt, maakt u er nu een. U kunt deze stap ook overs
 3. Voer een naam voor het opslagaccount in. U gaat deze gegevens later gebruiken.  
 4. **Implementatiemodel** en **Soort account** moeten respectievelijk worden ingesteld op Resource Manager en Algemeen gebruik. 
 5. Zorg ervoor dat de waarden van **Abonnement** en **Resourcegroep** overeenkomen met de waarden die u hebt opgegeven bij het maken van de virtuele machine in de vorige stap.
-6. Klik op **maken**.
+6. Klik op **Create**.
 
     ![Nieuw opslagaccount maken](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -126,7 +126,7 @@ Voor deze aanvraag gebruiken we de volgende HTTP-aanvraagparameters voor het mak
 
 Deze parameters worden opgenomen in de tekst van de POST-aanvraag voor de SAS-referentie. Zie de [naslaginformatie over REST voor het weergeven van service-SAS](/rest/api/storagerp/storageaccounts/listservicesas) voor meer informatie over de parameters voor het maken van een SAS-referentie.
 
-Converteer eerst de para meters naar JSON en roep vervolgens het `listServiceSas` opslag eindpunt aan om de SAS-referentie te maken:
+Converteer eerst de para meters naar JSON en roep vervolgens het opslag `listServiceSas` eindpunt aan om de SAS-referentie te maken:
 
 ```powershell
 $params = @{canonicalizedResource="/blob/<STORAGE-ACCOUNT-NAME>/<CONTAINER-NAME>";signedResource="c";signedPermission="rcw";signedProtocol="https";signedExpiry="2017-09-23T00:00:00Z"}
@@ -153,7 +153,7 @@ PS C:\> $sasCred
 sv=2015-04-05&sr=c&spr=https&se=2017-09-23T00%3A00%3A00Z&sp=rcw&sig=JVhIWG48nmxqhTIuN0uiFBppdzhwHdehdYan1W%2F4O0E%3D
 ```
 
-Vervolgens maken we een bestand met de naam test.txt. Gebruik vervolgens de SAS-referentie voor verificatie met `New-AzStorageContent` de cmdlet, upload het bestand naar de BLOB-container en down load het bestand.
+Vervolgens maken we een bestand met de naam test.txt. Gebruik vervolgens de SAS-referentie voor verificatie met de `New-AzStorageContent` cmdlet, upload het bestand naar de BLOB-container en down load het bestand.
 
 ```bash
 echo "This is a test text file." > test.txt

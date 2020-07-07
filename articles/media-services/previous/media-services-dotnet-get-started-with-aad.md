@@ -15,10 +15,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref
 ms.openlocfilehash: 8fbe8e0cbf2768af973a0ccc9e237fb770b27a74
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82612296"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Azure AD-verificatie gebruiken om toegang te krijgen tot Azure Media Services-API met .NET
@@ -56,7 +56,7 @@ U kunt ook de standaard implementatie van de **AzureAdTokenProvider** vervangen 
 ## <a name="install-and-configure-azure-media-services-net-sdk"></a>Azure Media Services .NET SDK installeren en configureren
 
 >[!NOTE]
->Als u Azure AD-verificatie wilt gebruiken met de Media Services .NET SDK, hebt u het meest recente [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) -pakket nodig. Voeg ook een verwijzing naar de assembly **micro soft. Identity model. clients. ActiveDirectory** toe. Als u een bestaande app gebruikt, neemt u de assembly **micro soft. WindowsAzure. Media Services. client. common. Authentication. dll** op.
+>Als u Azure AD-verificatie wilt gebruiken met de Media Services .NET SDK, hebt u het meest recente [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) -pakket nodig. Voeg ook een verwijzing naar de assembly **micro soft. Identity model. clients. ActiveDirectory** toe. Als u een bestaande app gebruikt, neemt u de **Microsoft.WindowsAzure.MediaServices.Client.Common.Authentication.dll** -assembly op.
 
 1. Maak in Visual Studio een nieuwe C#-consoletoepassing.
 2. Gebruik het [windowsazure. Media Services](https://www.nuget.org/packages/windowsazure.mediaservices) NuGet-pakket om **Azure Media Services .NET SDK**te installeren.

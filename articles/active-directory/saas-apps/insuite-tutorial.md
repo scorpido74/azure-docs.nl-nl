@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8b2af6ff99db384586dad359285a08ad187bd5d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b15dcb403b1caac1f317f840f15cd89a3b496705
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662121"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85798473"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-insuite"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met insuite
 
@@ -84,19 +84,19 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met een van de volgende notaties:
 
-    | | |
-    |-|-|
-    | `https://<CUSTOMER_NAME>.m.diol.jp/cgi-bin/saml_sso.cgi`|
-    | `https://<CUSTOMER_NAME>.dacl.jp/cgi-bin/saml_sso.cgi`|
+    ```http
+    https://<CUSTOMER_NAME>.m.diol.jp/cgi-bin/saml_sso.cgi
+    https://<CUSTOMER_NAME>.dacl.jp/cgi-bin/saml_sso.cgi
+    ```
 
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `DreamArts_insuite_TENANTNAME`
 
     c. In het tekstvak **Antwoord-URL** typt u een URL met een van de volgende notaties:
 
-    | | |
-    |-|-|
-    | `https://<CUSTOMER_NAME>.m.diol.jp/cgi-bin/saml_sso.cgi`|
-    | `https://<CUSTOMER_NAME>.dacl.jp/cgi-bin/saml_sso.cgi`|
+    ```http
+    https://<CUSTOMER_NAME>.m.diol.jp/cgi-bin/saml_sso.cgi
+    https://<CUSTOMER_NAME>.dacl.jp/cgi-bin/saml_sso.cgi
+    ```
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL, id en antwoord-URL. Neem contact op met het [Ondersteuningsteam voor insuite](mailto:e-support@dreamarts.co.jp) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.

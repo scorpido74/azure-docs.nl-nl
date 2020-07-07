@@ -14,13 +14,13 @@ ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev, has-adal-ref
 ms.openlocfilehash: e706c0eeb848b6cd14a3c14de821ca59a9c52ee9
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82611361"
 ---
-# <a name="azure-active-directory-consent-framework"></a>Azure Active Directory-instemming raamwerk
+# <a name="azure-active-directory-consent-framework"></a>Raamwerk Azure Active Directory-toestemming
 
 Met het toestemming raamwerk van Azure Active Directory (Azure AD) kunt u eenvoudig multi tenant-webtoepassingen en native client toepassingen ontwikkelen. Met deze toepassingen kunt u zich aanmelden via gebruikers accounts van een Azure AD-Tenant die afwijkt van het item waarin de toepassing is geregistreerd. Daarnaast moeten ze ook toegang hebben tot Web-Api's, zoals de Microsoft Graph-API (voor toegang tot Azure AD, intune en services in Office 365) en andere Api's van micro soft-Services, naast uw eigen web-Api's.
 
@@ -38,9 +38,9 @@ In de volgende stappen ziet u hoe de bestemmings ervaring werkt voor zowel de on
 
     ![Machtigingen voor andere toepassingen](./media/consent-framework/permissions.png)
 
-1. Houd er rekening mee dat de machtigingen van uw toepassing zijn bijgewerkt, dat de toepassing wordt uitgevoerd en dat een gebruiker deze voor de eerste keer gebruikt. Ten eerste moet de toepassing een autorisatie code verkrijgen van het `/authorize` eind punt van Azure AD. De autorisatiecode kan vervolgens worden gebruikt bij het verkrijgen van een nieuw token voor toegang en vernieuwen.
+1. Houd er rekening mee dat de machtigingen van uw toepassing zijn bijgewerkt, dat de toepassing wordt uitgevoerd en dat een gebruiker deze voor de eerste keer gebruikt. Ten eerste moet de toepassing een autorisatie code verkrijgen van het eind punt van Azure AD `/authorize` . De autorisatiecode kan vervolgens worden gebruikt bij het verkrijgen van een nieuw token voor toegang en vernieuwen.
 
-1. Als de gebruiker nog niet is geverifieerd, wordt de gebruiker `/authorize` door het eind punt van Azure AD gevraagd zich aan te melden.
+1. Als de gebruiker nog niet is geverifieerd, wordt de gebruiker door het eind punt van Azure AD `/authorize` gevraagd zich aan te melden.
 
     ![Gebruiker of beheerder meldt zich aan bij Azure AD](./media/consent-framework/usersignin.png)
 
@@ -60,7 +60,7 @@ In de volgende stappen ziet u hoe de bestemmings ervaring werkt voor zowel de on
       ![Machtigingen verlenen voor expliciete beheerders toestemming](./media/consent-framework/grant-consent.png)
 
    > [!IMPORTANT]
-   > Het verlenen van expliciete toestemming met de knop **machtigingen verlenen** is momenteel vereist voor toepassingen met één pagina (Spa) die gebruikmaken van ADAL. js. Als dit niet gebeurt, treedt er een fout op in de toepassing wanneer het toegangstoken wordt aangevraagd.
+   > Het verlenen van expliciete toestemming met de knop **machtigingen verlenen** is momenteel vereist voor toepassingen met één pagina (Spa) die gebruikmaken van ADAL.js. Als dit niet gebeurt, treedt er een fout op in de toepassing wanneer het toegangstoken wordt aangevraagd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

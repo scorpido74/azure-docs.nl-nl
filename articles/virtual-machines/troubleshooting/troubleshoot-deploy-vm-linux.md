@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: cf8fb383625ec2752264d6e5a70d8625f06689fc
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628296"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>Problemen bij het implementeren van virtuele Linux-machines in Azure oplossen
@@ -31,7 +31,11 @@ Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen 
 [!INCLUDE [virtual-machines-linux-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-linux-troubleshoot-deploy-vm-top.md)]
 
 ## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>Het cluster kan de aangevraagde VM-grootte niet ondersteunen
-\<Properties supportTopicIds = "123456789" resource Tags = "Windows" productPesIds = "1234, 5678"/>
+\<properties
+supportTopicIds="123456789"
+resourceTags="windows"
+productPesIds="1234, 5678"
+/>
 - Voer de aanvraag opnieuw uit met een kleinere VM-grootte.
 - Als de grootte van de aangevraagde virtuele machine niet kan worden gewijzigd:
     - Stop alle virtuele machines in de beschikbaarheidsset. Klik op **resource groepen** > de resource groep > **resources** > uw beschikbaarheidsset > **virtual machines** > uw virtuele machine > **gestopt**.
@@ -40,7 +44,11 @@ Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen 
 
 
 ## <a name="the-cluster-does-not-have-free-resources"></a>Het cluster heeft geen vrije resources
-\<Properties supportTopicIds = "123456789" resource Tags = "Windows" productPesIds = "1234, 5678"/>
+\<properties
+supportTopicIds="123456789"
+resourceTags="windows"
+productPesIds="1234, 5678"
+/>
 - Voer de aanvraag later opnieuw uit.
 - Als de nieuwe VM deel kan uitmaken van een andere beschikbaarheidsset
     - Maak een virtuele machine in een andere beschikbaarheidsset (in dezelfde regio).

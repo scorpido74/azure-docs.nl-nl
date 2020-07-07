@@ -7,10 +7,10 @@ ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
 ms.openlocfilehash: 430907f43fb40f0ee24505bdc366a98a49f23b47
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82613282"
 ---
 # <a name="imagery-partner-integration"></a>Partnerintegratie voor afbeeldingen
@@ -91,7 +91,7 @@ Hier volgen de meest voorkomende aanvraag headers die moeten worden opgegeven wa
 
 **Journaalkop** | **Beschrijving en voor beeld**
 --- | ---
-Content-Type  | De aanvraag indeling (content-type: Application/<format>). Voor FarmBeats Datahub-Api's is de indeling JSON. Content-type: Application/JSON
+Content-Type  | De aanvraag indeling (content-type: Application/ <format> ). Voor FarmBeats Datahub-Api's is de indeling JSON. Content-type: Application/JSON
 Autorisatie | Hiermee geeft u het toegangs token op dat vereist is om een API-aanroep te maken. Autorisatie: Bearer <Access-token>
 Accepteren  | De antwoord indeling. Voor FarmBeats Datahub-Api's is de indeling JSON. Accepteren: toepassing/JSON
 

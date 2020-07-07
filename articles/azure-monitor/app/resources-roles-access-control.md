@@ -4,10 +4,10 @@ description: Eigen aren, mede werkers en lezers van de inzichten van uw organisa
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.openlocfilehash: ee14fee66e3aa6f4e8d999f6f98debe361387515
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628228"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Resources, rollen en toegangs beheer in Application Insights
@@ -84,7 +84,7 @@ Waar van toepassing, gaan we een koppeling naar de bijbehorende officiële refer
 | [De uitgever van metrische gegevens controleren](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Hiermee schakelt u de metrische gegevens voor publicatie in op Azure-resources. |
 | [Bewakings lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | Kan alle controle gegevens lezen. |
 | Inzender voor resource beleid (preview-versie) | Alsnog gebruikers van EA, met rechten voor het maken/wijzigen van het resource beleid, het maken van een ondersteunings ticket en het lezen van resources/hiërarchie.  |
-| [Beheerder voor gebruikerstoegang](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) | Hiermee kan een gebruiker de toegang tot Azure-resources beheren voor andere gebruikers.|
+| [Beheerder van gebruikerstoegang](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) | Hiermee kan een gebruiker de toegang tot Azure-resources beheren voor andere gebruikers.|
 | [Website bijdrager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#website-contributor) | Hiermee kunt u websites beheren (niet Webabonnementen), maar niet de toegang tot de sites.|
 
 ' Bewerken ' omvat het maken, verwijderen en bijwerken:

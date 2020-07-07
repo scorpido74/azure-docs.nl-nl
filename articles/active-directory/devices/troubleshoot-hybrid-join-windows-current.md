@@ -1,5 +1,5 @@
 ---
-title: Problemen oplossen met hybride Azure Active Directory gekoppelde apparaten
+title: Problemen met hybride Azure Active Directory-gekoppelde apparaten oplossen
 description: Problemen met hybride Azure Active Directory oplossen die zijn toegevoegd aan Windows 10-en Windows Server 2016-apparaten.
 services: active-directory
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 08f083fe60076c80b5b7d60f555daac499974254
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82611310"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Problemen oplossen met hybride Azure Active Directory gekoppelde apparaten
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Problemen met hybride Azure Active Directory-gekoppelde apparaten oplossen
 
 De inhoud van dit artikel is van toepassing op apparaten met Windows 10 of Windows Server 2016.
 
@@ -132,7 +132,7 @@ In het veld ' fout fase ' wordt de fase van de fout bij het samen voegen aangege
 
 Gebruik Logboeken Logboeken om de fase en fout code voor het samen voegen van fouten te vinden.
 
-1. Open de gebeurtenis logboeken voor **registratie van gebruikers apparaten** in Logboeken. Deze bevindt zich onder **toepassingen en services** > registratie van**micro soft** > **Windows** > -**gebruikers apparaten**
+1. Open de gebeurtenis logboeken voor **registratie van gebruikers apparaten** in Logboeken. Deze bevindt zich onder **toepassingen en services**  >  registratie van**micro soft**  >  **Windows**-  >  **gebruikers apparaten**
 2. Zoek naar gebeurtenissen met de volgende eventIDs 304, 305, 307.
 
 ![Fout logboek gebeurtenis](./media/troubleshoot-hybrid-join-windows-current/1.png)
@@ -156,10 +156,10 @@ Mogelijke oorzaken voor fout:
    - Een geldig SCP-object is vereist in het AD-forest waartoe het apparaat behoort, dat verwijst naar een geverifieerde domein naam in azure AD.
    - Meer informatie vindt u in de sectie [een service verbindings punt configureren](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join).
 - Kan geen verbinding maken met de meta gegevens van de detectie en ophalen van het detectie-eind punt.
-   - Het apparaat moet in de systeem context `https://enterpriseregistration.windows.net`toegang hebben om de registratie-en autorisatie-eind punten te kunnen detecteren.
+   - Het apparaat moet `https://enterpriseregistration.windows.net` in de systeem context toegang hebben om de registratie-en autorisatie-eind punten te kunnen detecteren.
    - Als de on-premises omgeving een uitgaande proxy vereist, moet de IT-beheerder ervoor zorgen dat het computer account van het apparaat kan detecteren en op de achtergrond kan worden geverifieerd bij de uitgaande proxy.
 - Kan geen verbinding maken met het gebruikers realm-eind punt en voert realm-detectie uit. (Alleen Windows 10 versie 1809 en hoger)
-   - Het apparaat moet in de systeem context `https://login.microsoftonline.com`toegang hebben om realm-detectie uit te voeren voor het geverifieerde domein en het domein type (beheerd/federatief) te bepalen.
+   - Het apparaat moet `https://login.microsoftonline.com` in de systeem context toegang hebben om realm-detectie uit te voeren voor het geverifieerde domein en het domein type (beheerd/federatief) te bepalen.
    - Als de on-premises omgeving een uitgaande proxy vereist, moet de IT-beheerder ervoor zorgen dat de systeem context op het apparaat kan detecteren en op de achtergrond kan worden geverifieerd bij de uitgaande proxy.
 
 **Algemene fout codes:**
@@ -172,7 +172,7 @@ Mogelijke oorzaken voor fout:
    - Oplossing: Zoek hieronder de subfout op om verder te onderzoeken.
 - **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT** (0x801c001f/-2145648609)
    - Reden: er is een time-out opgetreden tijdens de bewerking tijdens het detecteren.
-   - Oplossing: Zorg ervoor `https://enterpriseregistration.windows.net` dat deze toegankelijk is in de systeem context. Zie de sectie [netwerk connectiviteit vereisten](hybrid-azuread-join-managed-domains.md#prerequisites)voor meer informatie.
+   - Oplossing: Zorg ervoor dat deze `https://enterpriseregistration.windows.net` toegankelijk is in de systeem context. Zie de sectie [netwerk connectiviteit vereisten](hybrid-azuread-join-managed-domains.md#prerequisites)voor meer informatie.
 - **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** (0x801c0021/-2145648611)
    - Reden: algemene realm-detectie fout. Kan het domein type (beheerd/Federatie) niet bepalen vanuit de STS.
    - Oplossing: Zoek hieronder de subfout op om verder te onderzoeken.
@@ -207,7 +207,7 @@ Zoek naar ' DRS Discovery test ' in de sectie ' Diagnostische gegevens ' van de 
 
 Gebruik Logboeken Logboeken om de fase en fout code voor het samen voegen van fouten te vinden.
 
-1. Open de gebeurtenis logboeken voor **registratie van gebruikers apparaten** in Logboeken. Deze bevindt zich onder **toepassingen en services** > registratie van**micro soft** > **Windows** > -**gebruikers apparaten**
+1. Open de gebeurtenis logboeken voor **registratie van gebruikers apparaten** in Logboeken. Deze bevindt zich onder **toepassingen en services**  >  registratie van**micro soft**  >  **Windows**-  >  **gebruikers apparaten**
 2. Zoek naar gebeurtenissen met de volgende eventIDs 201
 
 ![Fout logboek gebeurtenis](./media/troubleshoot-hybrid-join-windows-current/5.png)
@@ -252,7 +252,7 @@ Redenen voor fout:
 
 Gebruik Logboeken Logboeken om de fout code, subfout code, fout code voor de server en het fout bericht van de server te vinden.
 
-1. Open de gebeurtenis logboeken voor **registratie van gebruikers apparaten** in Logboeken. Deze bevindt zich onder **toepassingen en services** > registratie van**micro soft** > **Windows** > -**gebruikers apparaten**
+1. Open de gebeurtenis logboeken voor **registratie van gebruikers apparaten** in Logboeken. Deze bevindt zich onder **toepassingen en services**  >  registratie van**micro soft**  >  **Windows**-  >  **gebruikers apparaten**
 2. Zoek naar gebeurtenissen met de volgende gebeurtenis-305
 
 ![Fout logboek gebeurtenis](./media/troubleshoot-hybrid-join-windows-current/3.png)
@@ -273,7 +273,7 @@ Gebruik Logboeken Logboeken om de fout code, subfout code, fout code voor de ser
 
 - **ERROR_ADAL_INTERNET_TIMEOUT** (0xcaa82ee2/-894947614)
    - Reden: algemene time-out in het netwerk.
-   - Oplossing: Zorg ervoor `https://login.microsoftonline.com` dat deze toegankelijk is in de systeem context. Zorg ervoor dat de on-premises ID-provider toegankelijk is in de systeem context. Zie [vereisten voor netwerk connectiviteit](hybrid-azuread-join-managed-domains.md#prerequisites)voor meer informatie.
+   - Oplossing: Zorg ervoor dat deze `https://login.microsoftonline.com` toegankelijk is in de systeem context. Zorg ervoor dat de on-premises ID-provider toegankelijk is in de systeem context. Zie [vereisten voor netwerk connectiviteit](hybrid-azuread-join-managed-domains.md#prerequisites)voor meer informatie.
 - **ERROR_ADAL_INTERNET_CONNECTION_ABORTED** (0xcaa82efe/-894947586)
    - Reden: verbinding met het verificatie-eind punt is afgebroken.
    - Oplossing: Probeer het over enige tijd opnieuw of probeer te koppelen vanaf een andere stabiele netwerk locatie.
@@ -281,8 +281,8 @@ Gebruik Logboeken Logboeken om de fout code, subfout code, fout code voor de ser
    - Reden: de Transport Layer Security (TLS), voorheen bekend als Secure Sockets Layer (SSL), certificaat dat door de server is verzonden, kan niet worden gevalideerd.
    - Oplossing: Controleer de client tijd scheefheid. Probeer het later opnieuw of probeer te koppelen vanaf een andere stabiele netwerk locatie.
 - **ERROR_ADAL_INTERNET_CANNOT_CONNECT** (0xcaa82efd/-894947587)
-   - Reden: de poging om verbinding te `https://login.microsoftonline.com` maken met is mislukt.
-   - Oplossing: Controleer de netwerk verbinding `https://login.microsoftonline.com`met.
+   - Reden: de poging om verbinding te maken met `https://login.microsoftonline.com` is mislukt.
+   - Oplossing: Controleer de netwerk verbinding met `https://login.microsoftonline.com` .
 
 ##### <a name="other-errors"></a>Andere fouten
 
@@ -327,7 +327,7 @@ Het veld registratie type geeft het type samen voeging aan dat wordt uitgevoerd.
 
 Gebruik Logboeken Logboeken om de fase en fout code voor het samen voegen van fouten te vinden.
 
-1. Open de gebeurtenis logboeken voor **registratie van gebruikers apparaten** in Logboeken. Deze bevindt zich onder **toepassingen en services** > registratie van**micro soft** > **Windows** > -**gebruikers apparaten**
+1. Open de gebeurtenis logboeken voor **registratie van gebruikers apparaten** in Logboeken. Deze bevindt zich onder **toepassingen en services**  >  registratie van**micro soft**  >  **Windows**-  >  **gebruikers apparaten**
 2. Zoek naar gebeurtenissen met de volgende eventIDs 204
 
 ![Fout logboek gebeurtenis](./media/troubleshoot-hybrid-join-windows-current/4.png)
@@ -363,10 +363,10 @@ Gebruik Logboeken Logboeken om de fase en fout code voor het samen voegen van fo
 
 - **WININET_E_TIMEOUT** (0x80072ee2/-2147012894)
    - Reden: time-out bij algemeen netwerk bij het registreren van het apparaat bij DRS
-   - Oplossing: Controleer de netwerk verbinding `https://enterpriseregistration.windows.net`met.
+   - Oplossing: Controleer de netwerk verbinding met `https://enterpriseregistration.windows.net` .
 - **WININET_E_NAME_NOT_RESOLVED** (0x80072EE7/-2147012889)
    - Reden: de server naam of het adres kan niet worden omgezet.
-   - Oplossing: Controleer de netwerk verbinding `https://enterpriseregistration.windows.net`met. Zorg ervoor dat de DNS-omzetting voor de hostnaam nauw keurig is in de n/w en op het apparaat.
+   - Oplossing: Controleer de netwerk verbinding met `https://enterpriseregistration.windows.net` . Zorg ervoor dat de DNS-omzetting voor de hostnaam nauw keurig is in de n/w en op het apparaat.
 - **WININET_E_CONNECTION_ABORTED** (0x80072efe/-2147012866)
    - Reden: de verbinding met de server is abnormaal beëindigd.
    - Oplossing: Probeer het over enige tijd opnieuw of probeer te koppelen vanaf een andere stabiele netwerk locatie.
@@ -381,15 +381,15 @@ Gebruik Logboeken Logboeken om de fase en fout code voor het samen voegen van fo
 
 | Fout code server | Fout bericht server | Mogelijke redenen | Oplossing |
 | --- | --- | --- | --- |
-| Directory fout | AADSTS90002: de <UUID> Tenant is niet gevonden. Deze fout kan optreden als er geen actieve abonnementen voor de Tenant zijn. Neem contact op met de beheerder van uw abonnement. | De Tenant-ID in het SCP-object is onjuist | Zorg ervoor dat het SCP-object is geconfigureerd met de juiste Azure AD-Tenant-ID en actieve abonnementen en aanwezig is in de Tenant. |
+| Directory fout | AADSTS90002: de Tenant is <UUID> niet gevonden. Deze fout kan optreden als er geen actieve abonnementen voor de Tenant zijn. Neem contact op met de beheerder van uw abonnement. | De Tenant-ID in het SCP-object is onjuist | Zorg ervoor dat het SCP-object is geconfigureerd met de juiste Azure AD-Tenant-ID en actieve abonnementen en aanwezig is in de Tenant. |
 | Directory fout | Het apparaatobject met de opgegeven ID is niet gevonden. | Verwachte fout voor Sync-koppeling. Het apparaatobject is niet gesynchroniseerd van AD naar Azure AD | Wacht tot de Azure AD Connect synchronisatie is voltooid en de volgende stap na het synchroniseren van de synchronisatie het probleem heeft opgelost |
 | AuthenticationError | De verificatie van de SID van de doel computer | Het certificaat op het Azure AD-apparaat komt niet overeen met het certificaat dat wordt gebruikt voor het ondertekenen van de BLOB tijdens de synchronisatie koppeling. Deze fout betekent meestal dat de synchronisatie nog niet is voltooid. |  Wacht tot de Azure AD Connect synchronisatie is voltooid en de volgende stap na het synchroniseren van de synchronisatie het probleem heeft opgelost |
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>Stap 5: Logboeken verzamelen en contact opnemen met Microsoft Ondersteuning
 
-Down load het bestand auth. zip van[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
+Down load het bestand Auth.zip van[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
 
-1. Pak de bestanden uit en wijzig de naam van de bestanden **Start-auth. txt** en **Stop-auth. txt** in **Start-auth. cmd** en **Stop-auth. cmd**.
+1. Pak de bestanden uit en wijzig de naam van de Inge sloten bestanden **start-auth.txt** en **stop-auth.txt** in **Start-auth. cmd** en **Stop-auth. cmd**.
 1. Voer **Start-auth. cmd**uit vanaf een opdracht prompt met verhoogde bevoegdheid.
 1. Gebruik een ander account om met de probleem gebruiker over te scha kelen naar een andere sessie.
 1. Reproduceer het probleem.

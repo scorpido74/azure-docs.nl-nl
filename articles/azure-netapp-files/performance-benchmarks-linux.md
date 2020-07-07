@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: b-juche
 ms.openlocfilehash: b763a734866dd5fed5bf0500d4d52b9324c92a79
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82614588"
 ---
 # <a name="azure-netapp-files-performance-benchmarks-for-linux"></a>Azure NetApp Files prestatie benchmarks voor Linux
@@ -47,31 +47,31 @@ In deze grafiek ziet u minder dan 10% per keer, van zuivere Lees bewerking tot z
 
 ## <a name="linux-scale-up"></a>Linux-schaalbaar  
 
-Linux 5,3 kernel maakt scale-out netwerken met één client mogelijk voor NFS`nconnect`. In de grafieken in deze sectie worden de resultaten van de validatie tests voor de koppel optie aan client zijde weer gegeven met NFSv3. De functie is beschikbaar op SUSE (te beginnen met SLES12SP4) en Ubuntu (te beginnen met de 19,10-versie). Het is vergelijkbaar met het concept van SMB meerdere kanalen en Oracle direct NFS.
+Linux 5,3 kernel maakt scale-out netwerken met één client mogelijk voor NFS `nconnect` . In de grafieken in deze sectie worden de resultaten van de validatie tests voor de koppel optie aan client zijde weer gegeven met NFSv3. De functie is beschikbaar op SUSE (te beginnen met SLES12SP4) en Ubuntu (te beginnen met de 19,10-versie). Het is vergelijkbaar met het concept van SMB meerdere kanalen en Oracle direct NFS.
 
-De grafieken vergelijken de voor delen `nconnect` van aan een niet-verbonden gekoppeld volume. In de grafieken heeft FIO de werk belasting van een enkele D32s_v3-instantie gegenereerd in de Azure-regio US-west2.
+De grafieken vergelijken de voor delen van `nconnect` aan een niet-verbonden gekoppeld volume. In de grafieken heeft FIO de werk belasting van een enkele D32s_v3-instantie gegenereerd in de Azure-regio US-west2.
 
 ### <a name="linux-read-throughput"></a>Lees doorvoer voor Linux  
 
-In de volgende grafieken worden de opeenvolgende Lees bewerkingen van de ~ 3.500 MiB `nconnect`/s weer gegeven met,`nconnect`ongeveer 2,3 x niet.
+In de volgende grafieken worden de opeenvolgende Lees bewerkingen van de ~ 3.500 MiB/s weer gegeven met `nconnect` , ongeveer 2,3 x niet `nconnect` .
 
 ![Lees doorvoer voor Linux](../media/azure-netapp-files/performance-benchmarks-linux-read-throughput.png)  
 
 ### <a name="linux-write-throughput"></a>Linux-schrijf doorvoer  
 
-In de volgende grafieken worden sequentiële Schrijf bewerkingen weer gegeven. Ze geven aan `nconnect` dat er geen merkbaar voor deel is voor opeenvolgende schrijf bewerkingen. 1.500 MiB/s is ongeveer de bovengrens van het sequentiële Schrijf volume en de limiet van het D32s_v3-exemplaar.
+In de volgende grafieken worden sequentiële Schrijf bewerkingen weer gegeven. Ze geven aan dat `nconnect` er geen merkbaar voor deel is voor opeenvolgende schrijf bewerkingen. 1.500 MiB/s is ongeveer de bovengrens van het sequentiële Schrijf volume en de limiet van het D32s_v3-exemplaar.
 
 ![Linux-schrijf doorvoer](../media/azure-netapp-files/performance-benchmarks-linux-write-throughput.png)  
 
 ### <a name="linux-read-iops"></a>Door Linux gelezen IOPS  
 
-In de volgende grafieken ziet u wille keurige Lees bewerkingen `nconnect`van ~ 200.000 Read IOPS`nconnect`met, ongeveer 3x niet-.
+In de volgende grafieken ziet u wille keurige Lees bewerkingen van ~ 200.000 Read IOPS met `nconnect` , ongeveer 3x niet- `nconnect` .
 
 ![Door Linux gelezen IOPS](../media/azure-netapp-files/performance-benchmarks-linux-read-iops.png)  
 
 ### <a name="linux-write-iops"></a>Linux write IOPS  
 
-In de volgende grafieken ziet u wille keurige schrijf bewerkingen `nconnect`van ~ 135.000 write IOPS`nconnect`met, ongeveer 3x niet-.
+In de volgende grafieken ziet u wille keurige schrijf bewerkingen van ~ 135.000 write IOPS met `nconnect` , ongeveer 3x niet- `nconnect` .
 
 ![Linux write IOPS](../media/azure-netapp-files/performance-benchmarks-linux-write-iops.png)  
 

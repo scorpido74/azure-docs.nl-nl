@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
 ms.openlocfilehash: b27fe2abc50396b527e61487acf9797db59c1cce
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82627582"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>SQL Server Agent-taken migreren naar ADF met SSMS
@@ -33,9 +33,9 @@ Over het algemeen kunt u voor geselecteerde SQL-Agent taken met de betreffende t
 
 |SQL Agent-taak object  |ADF-resource  |Opmerkingen|
 |---------|---------|---------|
-|SQL-Agent taak|pijp lijn     |De naam van de pijp lijn wordt *gegenereerd voor \<de taak naam>*. <br> <br> Ingebouwde Agent taken zijn niet van toepassing: <li> Onderhouds taak voor SSIS-server <li> syspolicy_purge_history <li> collection_set_ * <li> mdw_purge_data_ * <li> sysutility_ *|
-|SSIS-taak stap|SSIS-pakket activiteit uitvoeren|<li> De naam van de activiteit wordt \<stap naam>. <li> Het proxy account dat in de taak stap wordt gebruikt, wordt gemigreerd als Windows-verificatie van deze activiteit. <li> *Uitvoerings opties* , met uitzonde ring van de *32-bits runtime* die is gedefinieerd in de taak stap, worden genegeerd tijdens de migratie. <li> De *verificatie* die in taak stap is gedefinieerd, wordt genegeerd tijdens de migratie.|
-|schedule      |trigger voor schema        |De naam van de schema trigger wordt *gegenereerd voor \<de schema naam>*. <br> <br> De onderstaande opties in de SQL Agent-taak planning worden genegeerd tijdens de migratie: <li> Interval van het tweede niveau. <li> *Automatisch starten wanneer SQL Server Agent wordt gestart* <li> *Starten wanneer de Cpu's inactief worden* <li> dag van de *week* en het *weekend*<time zone> <br> Hieronder vindt u de verschillen nadat het taak schema van de SQL-Agent is gemigreerd naar een ADF-schema trigger: <li> De automatische uitvoering van de ADF-schema-trigger is onafhankelijk van de uitvoerings status van de door de voorafgaande trigger geactiveerde uitvoering. <li> De terugkeer patroon configuratie van de ADF-trigger wijkt af van de dagelijkse frequentie in de SQL-Agent taak.|
+|SQL-Agent taak|pijp lijn     |De naam van de pijp lijn die wordt *gegenereerd \<job name> voor *. <br> <br> Ingebouwde Agent taken zijn niet van toepassing: <li> Onderhouds taak voor SSIS-server <li> syspolicy_purge_history <li> collection_set_ * <li> mdw_purge_data_ * <li> sysutility_ *|
+|SSIS-taak stap|SSIS-pakket activiteit uitvoeren|<li> De naam van de activiteit wordt \<step name> . <li> Het proxy account dat in de taak stap wordt gebruikt, wordt gemigreerd als Windows-verificatie van deze activiteit. <li> *Uitvoerings opties* , met uitzonde ring van de *32-bits runtime* die is gedefinieerd in de taak stap, worden genegeerd tijdens de migratie. <li> De *verificatie* die in taak stap is gedefinieerd, wordt genegeerd tijdens de migratie.|
+|schedule      |trigger voor schema        |De naam van de schema trigger wordt *gegenereerd voor \<schedule name> *. <br> <br> De onderstaande opties in de SQL Agent-taak planning worden genegeerd tijdens de migratie: <li> Interval van het tweede niveau. <li> *Automatisch starten wanneer SQL Server Agent wordt gestart* <li> *Starten wanneer de Cpu's inactief worden* <li> dag van de *week* en het *weekend*<time zone> <br> Hieronder vindt u de verschillen nadat het taak schema van de SQL-Agent is gemigreerd naar een ADF-schema trigger: <li> De automatische uitvoering van de ADF-schema-trigger is onafhankelijk van de uitvoerings status van de door de voorafgaande trigger geactiveerde uitvoering. <li> De terugkeer patroon configuratie van de ADF-trigger wijkt af van de dagelijkse frequentie in de SQL-Agent taak.|
 
 - Genereer Azure Resource Manager sjablonen (ARM) in een lokale uitvoermap en implementeer direct of later hand matig naar data factory. Zie [resource typen micro soft. DataFactory](https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions)voor meer informatie over ADF-Resource Manager-sjablonen.
 
@@ -57,8 +57,8 @@ Voor de functie die in dit artikel wordt beschreven, is SQL Server Management St
     1. Pad naar de bronmap bijwerken. Geldige paden zijn mappaden of paden van bovenliggende mappen van pakketten.
     1. Het pad naar de doelmap bijwerken. De standaard waarde is een relatief pad naar het standaard opslag account dat is geselecteerd in stap 1.
     1. Een geselecteerde toewijzing verwijderen via **toewijzing verwijderen**.
-![step2](media/how-to-migrate-ssis-job-ssms/step2.png)
-![step2-1](media/how-to-migrate-ssis-job-ssms/step2-1.png)
+![step2 ](media/how-to-migrate-ssis-job-ssms/step2.png)
+ ![ step2-1](media/how-to-migrate-ssis-job-ssms/step2-1.png)
 
 1. Selecteer de van toepassing zijnde taken die moeten worden gemigreerd en configureer de instellingen van de bijbehorende *uitgevoerde SSIS-pakket activiteit*.
 

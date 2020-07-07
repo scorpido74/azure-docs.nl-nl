@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
 ms.openlocfilehash: 182d314b24ce082d996cb692e2a7bb35265abcfe
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628037"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Zelf studie: SAManage configureren voor automatische gebruikers inrichting
@@ -101,7 +101,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Selecteer in de sectie **beheerders referenties** de `https://api.samanage.com` invoer in de **Tenant-URL**.  Voer de geheime token waarde in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met SAManage. Als de verbinding mislukt, zorg er dan voor dat uw SAManage-account beheerders machtigingen heeft en probeer het opnieuw
+5. Selecteer in de sectie **beheerders referenties** de invoer `https://api.samanage.com` in de Tenant- **URL**.  Voer de geheime token waarde in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met SAManage. Als de verbinding mislukt, zorg er dan voor dat uw SAManage-account beheerders machtigingen heeft en probeer het opnieuw
 
     ![inrichtings](./media/samanage-provisioning-tutorial/provisioning.png)
 

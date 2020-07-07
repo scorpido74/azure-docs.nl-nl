@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5d947c9f3f5aedd419662936c7007fc45a57b087
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 751fa9daabaaef05abb5df8229e84975b87cffc1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262987"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563833"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---table-api"></a>Voorbeelden van Azure PowerShell voor Azure Cosmos DB - Table-API
 
@@ -20,7 +20,7 @@ De volgende tabel bevat koppelingen naar Azure PowerShell-voorbeeldscripts voor 
 > [!NOTE]
 > In de voorbeelden wordt gebruikgemaakt van beheer-cmdlets voor [AZ. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb). Controleer regelmatig of er updates zijn van `Az.CosmosDB`.
 
-| | |
+|Taak | Beschrijving |
 |---|---|
 |[Een account en een tabel maken](scripts/powershell/table/ps-table-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hiermee wordt een Azure Cosmos-account en -tabel gemaakt. |
 |[Tabellen weergeven of ophalen](scripts/powershell/table/ps-table-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Geef tabellen weer of haal deze op. |
@@ -30,5 +30,5 @@ De volgende tabel bevat koppelingen naar Azure PowerShell-voorbeeldscripts voor 
 |[Failoverprioriteit wijzigen of failover activeren](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Wijzig de prioriteit van de regionale failover van een Azure Cosmos-account of activeer een handmatige failover. |
 |[Accountsleutels of verbindingsreeksen](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Haal de primaire en secundaire sleutels en verbindingsreeksen op of genereer opnieuw een accountsleutel van een Azure Cosmos-account. |
 |[Een Cosmos-account maken met een IP-firewall](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Maak een Azure Cosmos-account waarvoor IP-firewall is ingeschakeld. |
-|[Resources vergrendelen tegen verwijdering](scripts/powershell/table/powershell-table-lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Voor komen dat resources worden verwijderd met resource vergrendelingen. |
+|[Resources vergrendelen tegen verwijdering](scripts/powershell/table/powershell-table-lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Voorkomen dat resources worden verwijderd met een resourcevergrendeling. |
 |||
