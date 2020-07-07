@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0429cfb62c319675806d76b4759b776a7b32dbcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81407226"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>De elementen van het e-mail adres uitnodiging voor B2B-samen werking-Azure Active Directory
@@ -36,11 +36,11 @@ Laten we eens kijken naar enkele elementen van het e-mail bericht, zodat u weet 
 
 Het onderwerp van het e-mail bericht volgt dit patroon:
 
-&lt;gebruikers&gt; naam heeft u uitgenodigd om toegang te krijgen tot toepassingen binnen hun organisatie.
+&lt;gebruikers naam &gt; heeft u uitgenodigd om toegang te krijgen tot toepassingen binnen hun organisatie.
 
 ### <a name="from-address"></a>Van-adres
 
-We gebruiken een LinkedIn-like-patroon voor het adres van. Dit patroon moet duidelijk maken dat het e-mail bericht invites@microsoft.comafkomstig is van een andere organisatie. De indeling is: micro soft <invites@microsoft.com> -uitnodigingen of uitnodigingen&gt; <invites@microsoft.com>van micro soft namens &lt;Tenant naam. 
+We gebruiken een LinkedIn-like-patroon voor het adres van. Dit patroon moet duidelijk maken dat het e-mail bericht afkomstig invites@microsoft.com is van een andere organisatie. De indeling is: micro soft-uitnodigingen  <invites@microsoft.com> of uitnodigingen van micro soft namens &lt; Tenant naam &gt;  <invites@microsoft.com> . 
 
 ### <a name="reply-to"></a>Beantwoorden
 

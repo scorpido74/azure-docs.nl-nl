@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: 314445275f99898913bd91eb8abc2a5acdab098a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81381026"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Zelf studie: Blink configureren voor automatische gebruikers inrichting
@@ -54,7 +54,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 ## <a name="setup-blink-for-provisioning"></a>Setup-knip peren voor inrichting
 
-1. Een [ondersteunings Case](https://support.joinblink.com) of **ondersteuning** voor e support@joinblink.com -mail berichten in het logboek vastleggen om een scim-token aan te vragen. .
+1. Een [ondersteunings Case](https://support.joinblink.com) of **ondersteuning** voor e-mail berichten in het logboek vastleggen support@joinblink.com om een scim-token aan te vragen. .
 
 2.  Kopieer het **scim-verificatie token**. Deze waarde wordt ingevoerd in het veld geheime token op het tabblad inrichting van uw Blink-toepassing in de Azure Portal.
 
@@ -68,7 +68,7 @@ Voordat u met Azure AD de functie voor het automatisch inrichten van gebruikers 
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+2. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -89,7 +89,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-blink-in-azure-ad"></a>Automatische gebruikers inrichting voor Blink in azure AD configureren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -105,7 +105,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Selecteer in de sectie **beheerders referenties** de `https://api.joinblink.com/scim` invoer in de **Tenant-URL**. Voer de waarde voor het **scim-verificatie token** in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Blink. Als de verbinding mislukt, zorg er dan voor dat uw Blink-account beheerders machtigingen heeft en probeer het opnieuw.
+5. Selecteer in de sectie **beheerders referenties** de invoer `https://api.joinblink.com/scim` in de Tenant- **URL**. Voer de waarde voor het **scim-verificatie token** in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Blink. Als de verbinding mislukt, zorg er dan voor dat uw Blink-account beheerders machtigingen heeft en probeer het opnieuw.
 
     ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -141,10 +141,10 @@ Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers di
 
 Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

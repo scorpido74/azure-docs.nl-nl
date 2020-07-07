@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/25/2019
 ms.openlocfilehash: bbb4aed8ca10fcf7c15e7442ee7067b2e3f8087d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81410710"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-mysql-using-azure-data-factory"></a>Gegevens kopiëren van en naar Azure Database for MySQL met behulp van Azure Data Factory
@@ -53,14 +53,14 @@ De volgende eigenschappen worden ondersteund voor Azure Database for MySQL gekop
 | Verbindings | Geef de gegevens op die nodig zijn om verbinding te maken met het Azure Database for MySQL exemplaar. <br/> U kunt ook wacht woord in Azure Key Vault plaatsen en de `password` configuratie uit de Connection String halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Ja |
 | connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt Azure Integration Runtime of zelf-hostende Integration Runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
-Een typische connection string is `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`. Meer eigenschappen die u per case kunt instellen:
+Een typische connection string is `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>` . Meer eigenschappen die u per case kunt instellen:
 
 | Eigenschap | Beschrijving | Opties | Vereist |
 |:--- |:--- |:--- |:--- |
 | SSLMode | Met deze optie geeft u op of het stuur programma TLS-versleuteling en verificatie gebruikt bij het verbinden met MySQL. Bijvoorbeeld `SSLMode=<0/1/2/3/4>`| UITGESCHAKELD (0)/voor keur (1) **(standaard)** /vereist (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | Nee |
 | UseSystemTrustStore | Met deze optie geeft u aan of u een CA-certificaat wilt gebruiken uit het archief van het systeem vertrouwen of van een opgegeven PEM-bestand. Bijvoorbeeld `UseSystemTrustStore=<0/1>;`| Ingeschakeld (1)/uitgeschakeld (0) **(standaard)** | Nee |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -147,7 +147,7 @@ Als u gegevens wilt kopiëren uit Azure Database for MySQL, worden de volgende e
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 | queryCommandTimeout | De wacht tijd voordat de query aanvraag een time-out heeft. De standaard waarde is 120 minuten (02:00:00) | Nee |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[
@@ -190,7 +190,7 @@ Als u gegevens wilt kopiëren naar Azure Database for MySQL, worden de volgende 
 | writeBatchSize | Hiermee worden gegevens in de Azure Database for MySQL tabel ingevoegd wanneer de buffer grootte writeBatchSize bereikt.<br>De toegestane waarde is een geheel getal dat het aantal rijen vertegenwoordigt. | Nee (de standaard waarde is 10.000) |
 | writeBatchTimeout | Wacht tijd voordat de batch INSERT-bewerking is voltooid voordat er een time-out optreedt.<br>Toegestane waarden zijn time span. Een voor beeld is 00:30:00 (30 minuten). | Nee (de standaard waarde is 00:00:30) |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: fd34595d5ea942602efc920904ff326fc203c088
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81380695"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Gegevens retentie in Azure Time Series Insights begrijpen
@@ -90,7 +90,7 @@ In de betrokken Event Hubs kunt u overwegen om de eigenschap voor het **bewaren 
 
 [![Bewaren van Event hub-berichten.](media/time-series-insights-concepts-retention/event-hub-retention.png)](media/time-series-insights-concepts-retention/event-hub-retention.png#lightbox)
 
-Als er geen eigenschappen zijn geconfigureerd voor de gebeurtenis`timeStampPropertyName`bron (), time series Insights standaard ingesteld op de tijds tempel van de aankomst bij Event hub als de X-as. Als `timeStampPropertyName` is geconfigureerd om iets anders te zijn, zoekt de omgeving naar de `timeStampPropertyName` geconfigureerde waarde in het gegevens pakket wanneer gebeurtenissen worden geparseerd.
+Als er geen eigenschappen zijn geconfigureerd voor de gebeurtenis bron ( `timeStampPropertyName` ), time series Insights standaard ingesteld op de tijds tempel van de aankomst bij Event hub als de X-as. Als `timeStampPropertyName` is geconfigureerd om iets anders te zijn, zoekt de omgeving naar de geconfigureerde `timeStampPropertyName` waarde in het gegevens pakket wanneer gebeurtenissen worden geparseerd.
 
 Lees [hoe u uw time series Insights omgeving kunt schalen](time-series-insights-how-to-scale-your-environment.md) om uw omgeving te schalen, zodat u meer capaciteit hebt of de Bewaar periode kunt verg Roten.
 

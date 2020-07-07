@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: aece7278d134145e00b027c184f3817d5566e1e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81408365"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>Beveiligings beheer: inventarisatie en activa beheer
@@ -94,7 +94,7 @@ Gebruik Azure virtual machine Inventory om het verzamelen van informatie over al
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 6.7 | 2,5 | Klant |
+| 6.7 | 2.5 | Klant |
 
 Gebruik Azure Security Center File Integrity Monitoring (Wijzigingen bijhouden) en virtual machine Inventory om alle software te identificeren die op Virtual Machines is geïnstalleerd. U kunt uw eigen proces voor het verwijderen van onbevoegde software implementeren. U kunt ook een oplossing van derden gebruiken om niet-goedgekeurde software te identificeren.
 

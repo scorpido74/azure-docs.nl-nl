@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: mlottner
 ms.openlocfilehash: e41b7222ca89976674973e1eb700d62765b306f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311332"
 ---
 # <a name="tutorial-configure-security-agents"></a>Zelf studie: beveiligings agenten configureren
@@ -119,7 +119,7 @@ De volgende tabel bevat de eigenschappen van Azure Security Center voor IoT-beve
 
 Standaard waarden zijn beschikbaar in het juiste schema in [github](https\://aka.ms/iot-security-module-default).
 
-| Naam| Status | Geldige waarden| Standaardwaarden| Beschrijving |
+| Name| Status | Geldige waarden| Standaardwaarden| Beschrijving |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |highPriorityMessageFrequency|Vereist: onwaar |Geldige waarden: duration in ISO 8601-indeling |Standaard waarde: PT7M |Het maximale tijds interval voor berichten met een hoge prioriteit worden verzonden.|
 |lowPriorityMessageFrequency |Vereist: onwaar|Geldige waarden: duration in ISO 8601-indeling |Standaard waarde: PT5H |Maximale tijd waarna berichten met een lage prioriteit worden verzonden.|
@@ -132,7 +132,7 @@ Standaard waarden zijn beschikbaar in het juiste schema in [github](https\://aka
 
 |Gebeurtenis naam| PropertyName | Standaardwaarde| Momentopname gebeurtenis| Status Details  |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|Diagnostische gebeurtenis|eventPriorityDiagnostic| Uit| False| Aan een agent gerelateerde diagnostische gebeurtenissen. Gebruik deze gebeurtenis voor uitgebreide logboek registratie.|
+|Diagnostische gebeurtenis|eventPriorityDiagnostic| Aan| False| Aan een agent gerelateerde diagnostische gebeurtenissen. Gebruik deze gebeurtenis voor uitgebreide logboek registratie.|
 |Configuratie fout |eventPriorityConfigurationError |Laag |False |Agent kan de configuratie niet parseren. Controleer de configuratie op basis van het schema.|
 |Statistieken voor verwijderde gebeurtenissen |eventPriorityDroppedEventsStatistics |Laag |True|Gerelateerde gebeurtenis statistieken voor de agent. |
 |Verbonden hardware|eventPriorityConnectedHardware |Laag |True |Moment opname van alle hardware die is aangesloten op het apparaat.|

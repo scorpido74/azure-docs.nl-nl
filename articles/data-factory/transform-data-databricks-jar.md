@@ -12,16 +12,16 @@ author: nabhishek
 manager: shwang
 ms.date: 03/15/2018
 ms.openlocfilehash: 6b010000a674e351051c664dd5eeacd40e802439
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81414614"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Gegevens transformeren door een jar-activiteit uit te voeren in Azure Databricks
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-De Azure Databricks jar-activiteit in een [Data Factory pijp lijn](concepts-pipelines-activities.md) voert een Spark jar in uw Azure Databricks-cluster uit. In dit artikel vindt u een overzicht van het artikel over de [activiteiten](transform-data.md) voor gegevens transformatie, dat een algemene informatie bevat over de gegevens transformatie en de ondersteunde transformatie activiteiten.Azure Databricks is een beheerd platform voor het uitvoeren van Apache Spark.
+De Azure Databricks jar-activiteit in een [Data Factory pijp lijn](concepts-pipelines-activities.md) voert een Spark jar in uw Azure Databricks-cluster uit. In dit artikel vindt u een overzicht van het artikel over de [activiteiten voor gegevens transformatie](transform-data.md)   , dat een algemene informatie bevat over de gegevens transformatie en de ondersteunde transformatie activiteiten.Azure Databricks is een beheerd platform voor het uitvoeren van Apache Spark.
 
 Bekijk de volgende video voor een inleiding en demonstratie van deze functie van 11 minuten:
 
@@ -58,10 +58,10 @@ In de volgende tabel worden de JSON-eigenschappen beschreven die in de JSON-defi
 
 |Eigenschap|Beschrijving|Vereist|
 |:--|---|:-:|
-|name|De naam van de activiteit in de pijp lijn.|Ja|
+|naam|De naam van de activiteit in de pijp lijn.|Ja|
 |description|Tekst die beschrijft wat de activiteit doet.|Nee|
 |type|Voor Databricks jar-activiteit is het type activiteit DatabricksSparkJar.|Ja|
-|linkedServiceName|De naam van de gekoppelde Databricks-service waarop de jar-activiteit wordt uitgevoerd. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service.|Ja|
+|linkedServiceName|De naam van de gekoppelde Databricks-service waarop de jar-activiteit wordt uitgevoerd. Zie het artikel [Compute linked Services](compute-linked-services.md)(Engelstalig) voor meer informatie over deze gekoppelde service   .|Ja|
 |mainClassName|De volledige naam van de klasse die de hoofd methode bevat die moet worden uitgevoerd. Deze klasse moet zich bevinden in een JAR die als bibliotheek is opgenomen.|Ja|
 |parameters|Para meters die worden door gegeven aan de methode Main.  Dit is een matrix met teken reeksen.|Nee|
 |bibliotheken|Een lijst met bibliotheken die op het cluster moeten worden geïnstalleerd waarmee de taak wordt uitgevoerd. Dit kan een matrix zijn met <teken reeks, object>|Ja (ten minste één met de methode mainClassName)|

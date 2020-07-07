@@ -7,10 +7,10 @@ ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
 ms.openlocfilehash: 95039573c607f516755f08f1ebad8b968416ec8b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80631476"
 ---
 # <a name="using-openfaas-on-aks"></a>OpenFaaS gebruiken op AKS
@@ -58,7 +58,7 @@ kubectl -n openfaas create secret generic basic-auth \
 --from-literal=basic-auth-password="$PASSWORD"
 ```
 
-U kunt de waarde van het geheim ophalen met `echo $PASSWORD`.
+U kunt de waarde van het geheim ophalen met `echo $PASSWORD` .
 
 Het wacht woord dat u hier maakt, wordt gebruikt door de helm-grafiek om basis verificatie in te scha kelen op de OpenFaaS-gateway, die wordt blootgesteld aan Internet via een Cloud-LoadBalancer.
 
@@ -108,7 +108,7 @@ gateway            ClusterIP      10.0.156.194   <none>         8080/TCP        
 gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP   7m
 ```
 
-Als u het OpenFaaS-systeem wilt testen, bladert u naar het externe IP `http://52.186.64.52:8080` -adres op poort 8080, in dit voor beeld. U wordt gevraagd om u aan te melden. Voer `echo $PASSWORD`in om uw wacht woord op te halen.
+Als u het OpenFaaS-systeem wilt testen, bladert u naar het externe IP-adres op poort 8080, `http://52.186.64.52:8080` in dit voor beeld. U wordt gevraagd om u aan te melden. Voer in om uw wacht woord op te halen `echo $PASSWORD` .
 
 ![OpenFaaS-gebruikers interface](media/container-service-serverless/openfaas.png)
 
@@ -162,7 +162,7 @@ Maak eerst een nieuwe resource groep voor de Cosmos DB.
 az group create --name serverless-backing --location eastus
 ```
 
-Implementeer een CosmosDB-exemplaar van `MongoDB`de soort. Het exemplaar heeft een unieke naam nodig en `openfaas-cosmos` moet worden bijgewerkt naar iets dat uniek is voor uw omgeving.
+Implementeer een CosmosDB-exemplaar van de soort `MongoDB` . Het exemplaar heeft een unieke naam nodig en `openfaas-cosmos` moet worden bijgewerkt naar iets dat uniek is voor uw omgeving.
 
 ```azurecli-interactive
 az cosmosdb create --resource-group serverless-backing --name openfaas-cosmos --kind MongoDB
@@ -180,7 +180,7 @@ COSMOS=$(az cosmosdb list-connection-strings \
   --output tsv)
 ```
 
-Vul nu de Cosmos DB in met test gegevens. Maak een bestand met `plans.json` de naam en kopie in de volgende JSON.
+Vul nu de Cosmos DB in met test gegevens. Maak een bestand `plans.json` met de naam en kopie in de volgende JSON.
 
 ```json
 {

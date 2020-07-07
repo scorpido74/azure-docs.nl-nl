@@ -12,10 +12,10 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.openlocfilehash: dce7fb87ee49aefdedf5653243fa5729eee34519
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81414331"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>SQL Server Integration Services-pakketten uitvoeren met het Azure-hulp programma dtexec
@@ -36,7 +36,7 @@ AzureDTExec kan via SSMS worden geconfigureerd om een Azure Active Directory-toe
 Als u AzureDTExec wilt gebruiken, downloadt en installeert u de meest recente versie van SSMS. Dit is versie 18,3 of hoger. Down load deze van [deze website](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
 
 ## <a name="configure-the-azuredtexec-utility"></a>Het hulp programma AzureDTExec configureren
-Als u SSMS op uw lokale computer installeert, wordt ook AzureDTExec geïnstalleerd. Als u de instellingen wilt configureren, start u SSMS met de optie **als administrator uitvoeren** . Selecteer vervolgens **hulpprogram ma's** > **migreren naar Azure** > **Azure-DTExec configureren**.
+Als u SSMS op uw lokale computer installeert, wordt ook AzureDTExec geïnstalleerd. Als u de instellingen wilt configureren, start u SSMS met de optie **als administrator uitvoeren** . Selecteer vervolgens **hulpprogram ma's**  >  **migreren naar Azure**  >  **Azure-DTExec configureren**.
 
 ![Het dtexec-menu voor Azure ingeschakeld configureren](media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-menu.png)
 
@@ -70,7 +70,7 @@ Om te voor komen dat gevoelige waarden worden weer gegeven in het bestand *Azure
 ## <a name="invoke-the-azuredtexec-utility"></a>Het hulp programma AzureDTExec aanroepen
 U kunt AzureDTExec aanroepen bij de opdracht regel prompt en de relevante waarden opgeven voor specifieke opties in uw gebruiks scenario.
 
-Het hulp programma wordt geïnstalleerd `{SSMS Folder}\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn`op. U kunt het pad toevoegen aan de omgevings variabele PATH zodat het kan worden aangeroepen vanaf elke locatie.
+Het hulp programma wordt geïnstalleerd op `{SSMS Folder}\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn` . U kunt het pad toevoegen aan de omgevings variabele PATH zodat het kan worden aangeroepen vanaf elke locatie.
 
 ```dos
 > cd "C:\Program Files (x86)\Microsoft SQL Server Management Studio 18\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn"
@@ -86,9 +86,9 @@ Het aanroepen van AzureDTExec biedt vergelijk bare opties als het aanroepen van 
 
 - **/F [estand]**: laadt een pakket dat is opgeslagen in bestands systeem, bestands share of Azure files. Als de waarde voor deze optie kunt u het UNC-pad opgeven voor het pakket bestand in bestands systeem, bestands share of Azure Files met de extensie. dtsx. Als het UNC-pad is opgegeven, plaatst u aanhalings tekens rond het hele pad.
 - **/Conf [igFile]**: Hiermee geeft u een configuratie bestand op waaruit waarden moeten worden opgehaald. Met deze optie kunt u een runtime-configuratie voor uw pakket instellen die afwijkt van de versie die tijdens de ontwerp fase is opgegeven. U kunt verschillende instellingen in een XML-configuratie bestand opslaan en deze vervolgens laden vóór de uitvoering van het pakket. Zie [SSIS-pakket configuraties](https://docs.microsoft.com/sql/integration-services/packages/package-configurations?view=sql-server-2017)voor meer informatie. Als u de waarde voor deze optie wilt opgeven, gebruikt u het UNC-pad voor uw configuratie bestand in bestands systeem, bestands share of Azure Files met de dtsConfig-extensie. Als het UNC-pad is opgegeven, plaatst u aanhalings tekens rond het hele pad.
-- **/Conn [eveiliging]**: Hiermee geeft u de verbindings reeksen voor bestaande verbindings beheer in uw pakket op. Met deze optie kunt u run-time verbindings reeksen instellen voor bestaande verbindings beheer in uw pakket dat verschilt van het aantal dat tijdens de ontwerp fase is opgegeven. Geef als volgt de waarde voor deze optie op `connection_manager_name_or_id;connection_string [[;connection_manager_name_or_id;connection_string]...]`:.
-- **/Set**: onderdrukt de configuratie van een para meter, variabele, eigenschap, container, logboek provider, foreach-enumerator of verbinding in uw pakket. Deze optie kan meerdere keren worden opgegeven. Geef als volgt de waarde voor deze optie op `property_path;value`:. De waarde van `\package.variables[counter].Value;1` `counter` de variabele wordt bijvoorbeeld vervangen door 1. Met de wizard **pakket configuratie** kunt u de waarde van `property_path` items in uw pakket zoeken, kopiëren en plakken waarvan u de waarde wilt overschrijven. Zie de [wizard pakket configureren](https://docs.microsoft.com/sql/integration-services/package-configuration-wizard-ui-reference?view=sql-server-2014)voor meer informatie.
-- **/De [crypt]**: Hiermee stelt u het wacht woord voor ontsleuteling in voor uw pakket dat is geconfigureerd met het beveiligings niveau **EncryptAllWithPassword**/**EncryptSensitiveWithPassword** .
+- **/Conn [eveiliging]**: Hiermee geeft u de verbindings reeksen voor bestaande verbindings beheer in uw pakket op. Met deze optie kunt u run-time verbindings reeksen instellen voor bestaande verbindings beheer in uw pakket dat verschilt van het aantal dat tijdens de ontwerp fase is opgegeven. Geef als volgt de waarde voor deze optie op: `connection_manager_name_or_id;connection_string [[;connection_manager_name_or_id;connection_string]...]` .
+- **/Set**: onderdrukt de configuratie van een para meter, variabele, eigenschap, container, logboek provider, foreach-enumerator of verbinding in uw pakket. Deze optie kan meerdere keren worden opgegeven. Geef als volgt de waarde voor deze optie op: `property_path;value` . `\package.variables[counter].Value;1`De waarde van de variabele wordt bijvoorbeeld vervangen door `counter` 1. Met de wizard **pakket configuratie** kunt u de waarde van items in uw pakket zoeken, kopiëren en plakken `property_path` waarvan u de waarde wilt overschrijven. Zie de [wizard pakket configureren](https://docs.microsoft.com/sql/integration-services/package-configuration-wizard-ui-reference?view=sql-server-2014)voor meer informatie.
+- **/De [crypt]**: Hiermee stelt u het wacht woord voor ontsleuteling in voor uw pakket dat is geconfigureerd met het beveiligings niveau **EncryptAllWithPassword** / **EncryptSensitiveWithPassword** .
 
 > [!NOTE]
 > Als AzureDTExec wordt aangeroepen met nieuwe waarden voor de opties, wordt een nieuwe pijp lijn gegenereerd, met uitzonde ring van de optie **/de [script]**.

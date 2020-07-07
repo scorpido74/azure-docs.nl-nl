@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: ac968271685c66c8fab8d7723d994a446f49e85f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81410320"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Gegevens uit het vier kant kopiëren met behulp van Azure Data Factory (preview-versie)
@@ -55,12 +55,12 @@ De volgende eigenschappen worden ondersteund voor een vier Kante gekoppelde serv
 | host | De URL van het vier Kante exemplaar. (bijvoorbeeld mystore.mysquare.com)  | Ja |
 | clientId | De client-ID die aan uw kwadraat toepassing is gekoppeld.  | Ja |
 | clientSecret | Het client geheim dat aan uw kwadraat toepassing is gekoppeld. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
-| redirectUri | De omleidings-URL die is toegewezen in het kwadraat toepassings dashboard. (http:\//localhost: 2500)  | Ja |
+| redirectUri | De omleidings-URL die is toegewezen in het kwadraat toepassings dashboard. (http: \/ /localhost: 2500)  | Ja |
 | useEncryptedEndpoints | Hiermee geeft u op of de eind punten van de gegevens bron moeten worden versleuteld met HTTPS. De standaardwaarde is waar.  | Nee |
 | useHostVerification | Hiermee geeft u op of de hostnaam in het certificaat van de server moet overeenkomen met de hostnaam van de server bij het maken van verbinding via TLS. De standaardwaarde is waar.  | Nee |
 | usePeerVerification | Hiermee wordt aangegeven of de identiteit van de server moet worden gecontroleerd wanneer er verbinding wordt gemaakt via TLS. De standaardwaarde is waar.  | Nee |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -121,7 +121,7 @@ Als u gegevens wilt kopiëren van het kwadraat, stelt u het bron type in de Kopi
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **SquareSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM Business"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[

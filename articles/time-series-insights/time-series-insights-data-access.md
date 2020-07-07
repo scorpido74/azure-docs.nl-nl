@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1735daf66483df496141a642ac6633973aa0abf0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81407549"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Gegevens toegang verlenen tot een omgeving
@@ -27,7 +27,7 @@ In dit artikel worden de twee typen Azure Time Series Insights preview-toegangs 
 
 ## <a name="sign-in-to-time-series-insights"></a>Aanmelden bij Time Series Insights
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Zoek uw Time Series Insights omgeving. Typ `Time Series` in het **zoekvak** . Selecteer de **Time Series-omgevingen** in de zoek resultaten.
 1. Selecteer uw Time Series Insights-omgeving in de lijst.
 

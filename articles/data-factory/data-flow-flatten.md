@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: a0e75957a0ab49394dab56f2b7fb847dee4b43cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81413682"
 ---
 # <a name="flatten-transformation-in-mapping-data-flow"></a>Trans formatie afvlakken bij toewijzing van gegevens stroom
@@ -68,7 +68,7 @@ Raadpleeg het volgende JSON-object voor de onderstaande voor beelden van de afvl
 
 | Uitrollen | Hoofdmap uitrollen | Projectie |
 | --------- | ----------- | ---------- |
-| goederen. klanten | Geen | name <br> klant = goederen. klant |
+| goederen. klanten | Geen | naam <br> klant = goederen. klant |
 
 #### <a name="output"></a>Uitvoer
 
@@ -86,7 +86,7 @@ Raadpleeg het volgende JSON-object voor de onderstaande voor beelden van de afvl
 
 | Uitrollen | Hoofdmap uitrollen | Projectie |
 | --------- | ----------- | ---------- |
-| goederen. orders. verzonden. orderItems | Geen | name <br> orderId = goederen. orders. orderId <br> ItemName = goederen. orders. verzonden. orderItems. ItemName <br> itemQty = goederen. orders. verzonden. orderItems. itemQty <br> locatie = locatie |
+| goederen. orders. verzonden. orderItems | Geen | naam <br> orderId = goederen. orders. orderId <br> ItemName = goederen. orders. verzonden. orderItems. ItemName <br> itemQty = goederen. orders. verzonden. orderItems. itemQty <br> locatie = locatie |
 
 #### <a name="output"></a>Uitvoer
 
@@ -107,7 +107,7 @@ Raadpleeg het volgende JSON-object voor de onderstaande voor beelden van de afvl
 
 | Uitrollen | Hoofdmap uitrollen | Projectie |
 | --------- | ----------- | ---------- |
-| goederen. orders | goederen. orders | name <br> goederen. orders. verzonden. orderItems. ItemName <br> goederen. klanten <br> location |
+| goederen. orders | goederen. orders | naam <br> goederen. orders. verzonden. orderItems. ItemName <br> goederen. klanten <br> location |
 
 #### <a name="output"></a>Uitvoer
 
@@ -123,7 +123,7 @@ Raadpleeg het volgende JSON-object voor de onderstaande voor beelden van de afvl
 
 | Uitrollen | Hoofdmap uitrollen | Projectie |
 | --------- | ----------- | ---------- |
-| goederen. orders. verzonden. orderItem | goederen. orders |name <br> orderId = goederen. orders. orderId <br> ItemName = goederen. orders. verzonden. orderItems. ItemName <br> itemQty = goederen. orders. verzonden. orderItems. itemQty <br> locatie = locatie |
+| goederen. orders. verzonden. orderItem | goederen. orders |naam <br> orderId = goederen. orders. orderId <br> ItemName = goederen. orders. verzonden. orderItems. ItemName <br> itemQty = goederen. orders. verzonden. orderItems. itemQty <br> locatie = locatie |
 
 #### <a name="output"></a>Uitvoer
 
@@ -141,7 +141,7 @@ Raadpleeg het volgende JSON-object voor de onderstaande voor beelden van de afvl
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 
-### <a name="syntax"></a>Syntaxis
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream>

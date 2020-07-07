@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: 2bbb02df782439d934e96e7c16f28b9c11cc01fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81408627"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Virtuele machines die met Azure Disk Encryption zijn ingeschakeld repliceren naar een andere Azure-regio
@@ -42,7 +42,7 @@ De gebruiker heeft de volgende machtigingen nodig voor de **bron-en doel regio**
 
 Als u machtigingen wilt beheren, gaat u naar de resource van de sleutel kluis in de portal. Voeg de vereiste machtigingen voor de gebruiker toe. In het volgende voor beeld ziet u hoe u machtigingen inschakelt voor de sleutel kluis *ContosoWeb2Keyvault*die zich in de bron regio bevindt.
 
-1. Ga naar **Home** > -ContosoWeb2KeyVault-**kluizen** > **> toegangs beleid**.
+1. Ga naar **Home**-ContosoWeb2KeyVault-  >  **kluizen**  >  **> toegangs beleid**.
 
    ![Het venster sleutel kluis machtigingen](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-1.png)
 
@@ -60,9 +60,9 @@ Raadpleeg de [belang rijke problemen met machtigingen voor sleutel kluis](#trust
 ## <a name="copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script"></a>Schijf versleutelings sleutels kopiëren naar de DR-regio met behulp van het Power shell-script
 
 1. [Open de onbewerkte script code ' CopyKeys '](https://aka.ms/ade-asr-copy-keys-code).
-2. Kopieer het script naar een bestand en geef het de naam **copy-Keys. ps1**.
+2. Kopieer het script naar een bestand en geef het de naam **Copy-keys.ps1**.
 3. Open de Windows Power shell-toepassing en ga naar de map waarin u het bestand hebt opgeslagen.
-4. Voer Copy-Keys. ps1 uit.
+4. Voer Copy-keys.ps1 uit.
 5. Geef Azure-referenties op om u aan te melden.
 6. Selecteer het **Azure-abonnement** van uw vm's.
 7. Wacht tot de resource groepen zijn geladen en selecteer vervolgens de **resource groep** van uw vm's.
@@ -86,7 +86,7 @@ Voor dit voor beeld is de primaire Azure-regio Azië-oost en is de secundaire re
     - **Bron abonnement**: het abonnement waartoe de virtuele bron machines behoren. Dit kan elk abonnement zijn dat zich in dezelfde Azure Active Directory Tenant bevindt als de Recovery Services-kluis.
     - **Resource groep**: de resource groep waartoe de virtuele bron machine behoort. Alle virtuele machines in de geselecteerde resource groep worden in de volgende stap weer gegeven voor beveiliging.
 
-3. Selecteer in **virtual machines** > **virtuele machines selecteren**de VM die u wilt repliceren. U kunt alleen machines selecteren waarvoor replicatie kan worden ingeschakeld. Selecteer vervolgens **OK**.
+3. Selecteer in **virtual machines**  >  **virtuele machines selecteren**de VM die u wilt repliceren. U kunt alleen machines selecteren waarvoor replicatie kan worden ingeschakeld. Selecteer vervolgens **OK**.
 
 4. In **instellingen**kunt u de volgende instellingen voor de doel site configureren.
 
@@ -118,7 +118,7 @@ Volg deze stappen om de Site Recovery standaard doel instellingen te wijzigen.
    - Selecteer voor de **doel schijf versleutelings sleutel**kluis de doel schijf versleutelings sleutel kluis in de lijst met sleutel kluizen op de doel locatie van het abonnement.
    - Selecteer de sleutel kluis van **de doel sleutel**versleutelen in de lijst met sleutel kluizen op de doel locatie van het abonnement.
 
-3. Selecteer **doel bron** > maken**replicatie inschakelen**.
+3. Selecteer **doel bron maken**  >  **replicatie inschakelen**.
 4. Nadat de Vm's zijn ingeschakeld voor replicatie, kunt u de status van de virtuele machines controleren onder **gerepliceerde items**.
 
 >[!NOTE]
@@ -129,7 +129,7 @@ In de volgende scenario's moet u de versleutelings instellingen voor de doel-VM 
   - U hebt Site Recovery replicatie ingeschakeld op de VM. Later hebt u schijf versleuteling ingeschakeld op de bron-VM.
   - U hebt Site Recovery replicatie ingeschakeld op de VM. Later hebt u de schijf versleutelings sleutel of sleutel versleutelings sleutel gewijzigd op de bron-VM.
 
-U kunt [een script](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script) gebruiken om de versleutelings sleutels te kopiëren naar de doel regio en vervolgens de instellingen voor doel versleuteling bij te werken in de **Recovery Services-kluis** > *gerepliceerd item* > **Eigenschappen** > **Compute en netwerk**.
+U kunt [een script](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script) gebruiken om de versleutelings sleutels te kopiëren naar de doel regio en vervolgens de instellingen voor doel versleuteling bij te werken in de **Recovery Services-kluis**  >  *gerepliceerd item*  >  **Eigenschappen**  >  **Compute en netwerk**.
 
 ![Dialoog venster ADE-instellingen bijwerken](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
 
@@ -141,7 +141,7 @@ Azure Site Recovery moet ten minste lees machtigingen hebben voor de bron regio 
 **Oplossen:** Ongeacht of u een abonnements beheerder bent of niet, is het belang rijk dat u de machtiging verkrijgen voor de sleutel kluis hebt.
 
 1. Ga naar de bron regio sleutel kluis die in dit voor beeld ' ContososourceKeyvault ' is > **toegangs beleid** 
-2. Onder **Principal selecteren** uw gebruikers naam toevoegen bijvoorbeeld:dradmin@contoso.com
+2. Onder **Principal selecteren** uw gebruikers naam toevoegen bijvoorbeeld: dradmin@contoso.com
 3. Selecteer bij **sleutel machtigingen** Get 
 4. Selecteer onder **geheime machtigingen** ophalen 
 5. Het toegangs beleid opslaan
@@ -153,7 +153,7 @@ U hebt alle machtigingen voor de sleutel kluis van de bron regio. Maar tijdens d
 
 Machtiging vereist voor de [doel sleutel kluis](#required-user-permissions)
 
-**Oplossen:** Ga naar **Home** > **Keyvaults** > -**ContosotargetKeyvault** > -**toegangs beleid** en voeg de juiste machtigingen toe.
+**Oplossen:** Ga naar **Home**-  >  **Keyvaults**  >  **ContosotargetKeyvault**-  >  **toegangs beleid** en voeg de juiste machtigingen toe.
 
 ## <a name="next-steps"></a>Volgende stappen
 

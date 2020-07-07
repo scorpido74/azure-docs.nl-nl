@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
 ms.openlocfilehash: 213595ac69efc90ec855b2891641e1f00bd1ba92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311549"
 ---
 # <a name="security-recommendations"></a>Aanbevelingen voor beveiliging
@@ -35,11 +35,11 @@ Aanbevelingen voor apparaten bieden inzichten en suggesties voor het verbeteren 
 
 | Severity | Naam                                                      | Gegevensbron | Beschrijving                                                                                                                                                                                           |
 |----------|-----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Middelgroot   | Poorten op het apparaat openen                                      | Agent       | Er is een luisterend eind punt gevonden op het apparaat.                                                                                                                                                        |
-| Middelgroot   | Permissief firewall beleid gevonden in een van de ketens. | Agent       | Toegestaan firewall beleid gevonden (invoer/uitvoer). Het firewall beleid moet standaard al het verkeer weigeren en regels definiëren om de benodigde communicatie met/van het apparaat mogelijk te maken.                               |
-| Middelgroot   | Er is een strikte firewall regel in de invoer keten gevonden     | Agent       | Er is een regel in de firewall gevonden die een soepel patroon bevat voor een breed scala aan IP-adressen of poorten.                                                                                    |
-| Middelgroot   | Er is een strikte firewall regel in de uitvoer keten gevonden    | Agent       | Er is een regel in de firewall gevonden die een soepel patroon bevat voor een breed scala aan IP-adressen of poorten.                                                                                   |
-| Middelgroot   | Validatie van de basislijn planning van het besturings systeem is mislukt           | Agent       | Het apparaat voldoet niet aan de [CIS Linux-Benchmarks](https://www.cisecurity.org/cis-benchmarks/).                                                                                                        |
+| Normaal   | Poorten op het apparaat openen                                      | Agent       | Er is een luisterend eind punt gevonden op het apparaat.                                                                                                                                                        |
+| Normaal   | Permissief firewall beleid gevonden in een van de ketens. | Agent       | Toegestaan firewall beleid gevonden (invoer/uitvoer). Het firewall beleid moet standaard al het verkeer weigeren en regels definiëren om de benodigde communicatie met/van het apparaat mogelijk te maken.                               |
+| Normaal   | Er is een strikte firewall regel in de invoer keten gevonden     | Agent       | Er is een regel in de firewall gevonden die een soepel patroon bevat voor een breed scala aan IP-adressen of poorten.                                                                                    |
+| Normaal   | Er is een strikte firewall regel in de uitvoer keten gevonden    | Agent       | Er is een regel in de firewall gevonden die een soepel patroon bevat voor een breed scala aan IP-adressen of poorten.                                                                                   |
+| Normaal   | Validatie van de basislijn planning van het besturings systeem is mislukt           | Agent       | Het apparaat voldoet niet aan de [CIS Linux-Benchmarks](https://www.cisecurity.org/cis-benchmarks/).                                                                                                        |
 
 ### <a name="operational-recommendations-for-iot-devices"></a>Operationele aanbevelingen voor IoT-apparaten
 
@@ -59,8 +59,8 @@ Aanbevelings waarschuwingen bieden inzicht en suggesties voor acties om de bevei
 | Severity | Naam                                                     | Gegevensbron | Beschrijving                                                                                                                                                                                                             |
 |----------|----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Hoog     | Identieke verificatie referenties die worden gebruikt door meerdere apparaten | IoT Hub     | IoT Hub authenticatie referenties worden gebruikt door meerdere apparaten. Dit kan duiden op een illegitimate-apparaat dat een legitiem apparaat imiteert. Dubbel referentie gebruik verhoogt het risico van imitatie van apparaten door een schadelijke actor. |
-| Middelgroot   | Het standaard IP-filter beleid moet worden geweigerd                  | IoT Hub     | Voor de configuratie van de IP-filter moeten regels worden gedefinieerd voor het toegestane verkeer, en standaard moeten alle andere verkeer standaard worden geweigerd.                                                                                                     |
-| Middelgroot   | De IP-filter regel bevat een groot IP-bereik                   | IoT Hub     | Een IP-adres bereik van de bron filter regel toestaan is te groot. Over de regel matig strikte regels kunnen uw IoT-hub beschikbaar maken voor kwaad aardige actors.                                                                                       |
+| Normaal   | Het standaard IP-filter beleid moet worden geweigerd                  | IoT Hub     | Voor de configuratie van de IP-filter moeten regels worden gedefinieerd voor het toegestane verkeer, en standaard moeten alle andere verkeer standaard worden geweigerd.                                                                                                     |
+| Normaal   | De IP-filter regel bevat een groot IP-bereik                   | IoT Hub     | Een IP-adres bereik van de bron filter regel toestaan is te groot. Over de regel matig strikte regels kunnen uw IoT-hub beschikbaar maken voor kwaad aardige actors.                                                                                       |
 | Laag      | Diagnostische logboeken inschakelen in IoT Hub                       | IoT Hub     | Logboeken inschakelen en ze tot een jaar bewaren. Door Logboeken te behouden, kunt u de activiteiten sporen voor onderzoek doeleinden opnieuw maken wanneer er een beveiligings incident optreedt of uw netwerk is aangetast.                                       |
 |
 

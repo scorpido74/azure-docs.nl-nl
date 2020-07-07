@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
 ms.openlocfilehash: 2657f1998e3ca908bc52166154ac3353e1e5a66b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415034"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Gegevens kopiëren van een REST-eind punt met behulp van Azure Data Factory
@@ -107,7 +107,7 @@ Stel de eigenschap **authenticationType** in op **AadServicePrincipal**. Naast d
 | servicePrincipalId | Geef de client-ID van de Azure Active Directory toepassing op. | Ja |
 | servicePrincipalKey | Geef de sleutel van de Azure Active Directory toepassing op. Markeer dit veld als **SecureString** om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | tenant | Geef de Tenant gegevens op (domein naam of Tenant-ID) waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Ja |
-| aadResourceId | Geef de AAD-resource op die u aanvraagt voor `https://management.core.windows.net`autorisatie, bijvoorbeeld.| Ja |
+| aadResourceId | Geef de AAD-resource op die u aanvraagt voor autorisatie, bijvoorbeeld `https://management.core.windows.net` .| Ja |
 
 **Voorbeeld**
 
@@ -141,7 +141,7 @@ Stel de eigenschap **authenticationType** in op **ManagedServiceIdentity**. Naas
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| aadResourceId | Geef de AAD-resource op die u aanvraagt voor `https://management.core.windows.net`autorisatie, bijvoorbeeld.| Ja |
+| aadResourceId | Geef de AAD-resource op die u aanvraagt voor autorisatie, bijvoorbeeld `https://management.core.windows.net` .| Ja |
 
 **Voorbeeld**
 
@@ -174,11 +174,11 @@ Als u gegevens wilt kopiëren uit REST, worden de volgende eigenschappen onderst
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap **type** van de DataSet moet worden ingesteld op **RestResource**. | Ja |
-| relativeUrl | Een relatieve URL naar de resource die de gegevens bevat. Als deze eigenschap niet is opgegeven, wordt alleen de URL gebruikt die in de definitie van de gekoppelde service is opgegeven. De HTTP-connector kopieert gegevens van de gecombineerde URL `[URL specified in linked service]/[relative URL specified in dataset]`:. | Nee |
+| relativeUrl | Een relatieve URL naar de resource die de gegevens bevat. Als deze eigenschap niet is opgegeven, wordt alleen de URL gebruikt die in de definitie van de gekoppelde service is opgegeven. De HTTP-connector kopieert gegevens van de gecombineerde URL: `[URL specified in linked service]/[relative URL specified in dataset]` . | Nee |
 
-`requestMethod`Als u instelt `additionalHeaders`,, `requestBody` en `paginationRules` in DataSet, wordt deze nog steeds ondersteund als-is, terwijl u het nieuwe model in activiteit bron gaat gebruiken.
+Als u instelt `requestMethod` , `additionalHeaders` , `requestBody` en `paginationRules` in DataSet, wordt deze nog steeds ondersteund als-is, terwijl u het nieuwe model in activiteit bron gaat gebruiken.
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -218,7 +218,7 @@ De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopiee
 | requestInterval | De tijd die moet worden gewacht voordat de aanvraag wordt verzonden naar de volgende pagina. De standaard waarde is **00:00:01** |  Nee |
 
 >[!NOTE]
->De header ' Accept ' die is opgegeven in `additionalHeaders`, wordt door de rest-connector genegeerd. Als REST-connector alleen ondersteuning biedt voor een reactie in JSON, wordt er automatisch `Accept: application/json`een header van gegenereerd.
+>De header ' Accept ' die is opgegeven in, wordt door de REST-connector genegeerd `additionalHeaders` . Als REST-connector alleen ondersteuning biedt voor een reactie in JSON, wordt er automatisch een header van gegenereerd `Accept: application/json` .
 
 **Voor beeld 1: de methode Get gebruiken met paginering**
 
@@ -322,7 +322,7 @@ Deze algemene REST-connector ondersteunt de volgende paginerings patronen:
 | Koppen. *response_header* OF headers [' response_header '] | "response_header" is door de gebruiker gedefinieerd en verwijst naar één header naam in het huidige HTTP-antwoord, waarvan de waarde wordt gebruikt om de volgende aanvraag uit te geven. |
 | Een JSONPath-expressie die begint met ' $ ' (die de hoofdmap van de antwoord tekst vertegenwoordigt) | De antwoord tekst mag slechts één JSON-object bevatten. De JSONPath-expressie moet één primitieve waarde Retour neren, die wordt gebruikt voor het uitgeven van de volgende aanvraag. |
 
-**Hierbij**
+**Voorbeeld:**
 
 Facebook Graph API retourneert een antwoord in de volgende structuur, in dat geval de URL van de volgende pagina wordt weer gegeven in ***paginering. volgende***:
 
@@ -356,7 +356,7 @@ Facebook Graph API retourneert een antwoord in de volgende structuur, in dat gev
 }
 ```
 
-De bijbehorende bron configuratie van de REST Copy- `paginationRules` activiteit met name de is als volgt:
+De bijbehorende bron configuratie van de REST Copy-activiteit met name de `paginationRules` is als volgt:
 
 ```json
 "typeProperties": {
@@ -403,7 +403,7 @@ De sjabloon definieert twee para meters:
 3. Selecteer **deze sjabloon gebruiken**.
     ![Deze sjabloon gebruiken](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
 
-4. U ziet de pijp lijn die u hebt gemaakt, zoals wordt weer gegeven ![in het volgende voor beeld: pijp lijn](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+4. U ziet de pijp lijn die u hebt gemaakt, zoals wordt weer gegeven in het volgende voor beeld: ![ pijp lijn](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
 
 5. Selecteer **Web** webactiviteit. Geef in **instellingen**de corresponderende **URL**, **methode**, **headers**en **hoofd tekst** op om een OAUTH Bearer-token op te halen uit de API voor aanmelden van de service waarvan u gegevens wilt kopiëren. In de tijdelijke aanduiding in de sjabloon wordt een voor beeld van een Azure Active Directory (AAD) OAuth gedemonstreerd. Opmerking AAD-verificatie wordt systeem eigen ondersteund door REST connector. Dit is slechts een voor beeld van een OAuth-stroom. 
 
@@ -411,7 +411,7 @@ De sjabloon definieert twee para meters:
     |:--- |:--- |:--- |
     | URL |Geef de URL op waarvoor het OAuth Bearer-token moet worden opgehaald. bijvoorbeeld in het voor beeld is dithttps://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
     | Methode | De HTTP-methode. Toegestane waarden zijn **post** en **Get**. | 
-    | Headers | De header is door de gebruiker gedefinieerd, die verwijst naar één header naam in de HTTP-aanvraag. | 
+    | Kopteksten | De header is door de gebruiker gedefinieerd, die verwijst naar één header naam in de HTTP-aanvraag. | 
     | Hoofdtekst | De hoofd tekst van de HTTP-aanvraag. | 
 
     ![Pijplijn](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
@@ -426,9 +426,9 @@ De sjabloon definieert twee para meters:
    ![Bron verificatie kopiëren](media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png)
 
 7. Selecteer **debug**, voer de **para meters**in en selecteer **volt ooien**.
-   ![Pijplijn uitvoering](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
+   ![Pijplijnuitvoering](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
 
-8. Wanneer de uitvoering van de pijp lijn is voltooid, ziet u het resultaat dat lijkt op het volgende voor ![beeld: resultaat van pijplijn uitvoering](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
+8. Wanneer de uitvoering van de pijp lijn is voltooid, ziet u het resultaat dat lijkt op het volgende voor beeld: ![ resultaat van pijplijn uitvoering](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
 
 9. Klik op het pictogram uitvoer van webactiviteit in de kolom **acties** , maar u ziet de access_token die door de service is geretourneerd.
 

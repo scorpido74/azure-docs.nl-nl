@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 16c8eed3377c2191b4345ec59ec1eba8be01369d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80633955"
 ---
 # <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>De VM reageert niet met de fout ' C01A001D ' bij het Toep assen van Windows Update
@@ -81,7 +81,7 @@ Als de schijf niet al 1 TB is, moet u het formaat ervan wijzigen. Zodra de schij
     ```
 3. Zorg ervoor dat de beschik bare ruimte op de besturingssysteem schijf ten minste gelijk is aan de grootte van het VM-geheugen (RAM).
 
-    Als er onvoldoende ruimte beschikbaar is op de besturingssysteem schijf, wijzigt u de locatie waar het geheugen dump bestand wordt gemaakt en verwijst u het naar een gegevens schijf die is gekoppeld aan de virtuele machine en met voldoende vrije ruimte. Als u de locatie wilt wijzigen `%SystemRoot%` , vervangt u door de stationsletter (bijvoorbeeld ' F: ') van de gegevens schijf in de onderstaande opdrachten:
+    Als er onvoldoende ruimte beschikbaar is op de besturingssysteem schijf, wijzigt u de locatie waar het geheugen dump bestand wordt gemaakt en verwijst u het naar een gegevens schijf die is gekoppeld aan de virtuele machine en met voldoende vrije ruimte. Als u de locatie wilt wijzigen, vervangt u door `%SystemRoot%` de stationsletter (bijvoorbeeld ' F: ') van de gegevens schijf in de onderstaande opdrachten:
 
     **Voorgestelde configuratie van OS-dump inschakelen:**
 

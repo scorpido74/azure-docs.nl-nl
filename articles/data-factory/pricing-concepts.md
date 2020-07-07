@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.openlocfilehash: 9d96e3f7d127f4839592e766537cbdb07cc697dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81414941"
 ---
-# <a name="understanding-data-factory-pricing-through-examples"></a>Data Factory prijzen door middel van voor beelden
+# <a name="understanding-data-factory-pricing-through-examples"></a>Data Factory-prijzen leren begrijpen met voorbeelden
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -53,10 +53,10 @@ Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende i
 **Totaal prijs scenario: $0,16811**
 
 - Data Factory bewerkingen = **$0,0001**
-  - Lezen/schrijven = 10\*00001 = $0,0001 [1 R/W = $0,50/50.000 = 0,00001]
-  - Bewaking = 2\*000005 = $0,00001 [1 bewaking = $0,25/50.000 = 0,000005]
-- &amp; Uitvoering van pipeline-orchestration = **$0,168**
-  - Uitvoeringen van activiteit\*= 001 2 = 0,002 [1 run = $1/1000 = 0,001]
+  - Lezen/schrijven = 10 \* 00001 = $0,0001 [1 R/W = $0,50/50.000 = 0,00001]
+  - Bewaking = 2 \* 000005 = $0,00001 [1 bewaking = $0,25/50.000 = 0,000005]
+- Uitvoering van pipeline-Orchestration &amp; = **$0,168**
+  - Uitvoeringen van activiteit = 001 \* 2 = 0,002 [1 run = $1/1000 = 0,001]
   - Activiteiten voor gegevens verplaatsing = $0,166 (in verhouding tot 10 minuten voor de uitvoerings tijd). $0,25/uur op Azure Integration Runtime)
 
 ## <a name="copy-data-and-transform-with-azure-databricks-hourly"></a>Gegevens en trans formatie met Azure Databricks per uur kopiëren
@@ -85,10 +85,10 @@ Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende i
 **Totaal prijs scenario: $0,16916**
 
 - Data Factory bewerkingen = **$0,00012**
-  - Lezen/schrijven = 11\*00001 = $0,00011 [1 R/W = $0,50/50.000 = 0,00001]
-  - Bewaking = 3\*000005 = $0,00001 [1 bewaking = $0,25/50.000 = 0,000005]
-- &amp; Uitvoering van pipeline-orchestration = **$0,16904**
-  - Uitvoeringen van activiteit\*= 001 3 = 0,003 [1 run = $1/1000 = 0,001]
+  - Lezen/schrijven = 11 \* 00001 = $0,00011 [1 R/W = $0,50/50.000 = 0,00001]
+  - Bewaking = 3 \* 000005 = $0,00001 [1 bewaking = $0,25/50.000 = 0,000005]
+- Uitvoering van pipeline-Orchestration &amp; = **$0,16904**
+  - Uitvoeringen van activiteit = 001 \* 3 = 0,003 [1 run = $1/1000 = 0,001]
   - Activiteiten voor gegevens verplaatsing = $0,166 (in verhouding tot 10 minuten voor de uitvoerings tijd). $0,25/uur op Azure Integration Runtime)
   - Externe pijplijn activiteit = $0,000041 (in verhouding tot 10 minuten van uitvoerings tijd. $0.00025/uur op Azure Integration Runtime)
 
@@ -120,10 +120,10 @@ Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende i
 **Totaal prijs scenario: $0,17020**
 
 - Data Factory bewerkingen = **$0,00013**
-  - Lezen/schrijven = 11\*00001 = $0,00011 [1 R/W = $0,50/50.000 = 0,00001]
-  - Bewaking = 4\*000005 = $0,00002 [1 bewaking = $0,25/50.000 = 0,000005]
-- &amp; Uitvoering van pipeline-orchestration = **$0,17007**
-  - Uitvoeringen van activiteit\*= 001 4 = 0,004 [1 run = $1/1000 = 0,001]
+  - Lezen/schrijven = 11 \* 00001 = $0,00011 [1 R/W = $0,50/50.000 = 0,00001]
+  - Bewaking = 4 \* 000005 = $0,00002 [1 bewaking = $0,25/50.000 = 0,000005]
+- Uitvoering van pipeline-Orchestration &amp; = **$0,17007**
+  - Uitvoeringen van activiteit = 001 \* 4 = 0,004 [1 run = $1/1000 = 0,001]
   - Activiteiten voor gegevens verplaatsing = $0,166 (in verhouding tot 10 minuten voor de uitvoerings tijd). $0,25/uur op Azure Integration Runtime)
   - Pijplijn activiteit = $0,00003 (voor 1 minuut van uitvoer tijd). $0.002/uur op Azure Integration Runtime)
   - Externe pijplijn activiteit = $0,000041 (in verhouding tot 10 minuten van uitvoerings tijd. $0.00025/uur op Azure Integration Runtime)
@@ -161,10 +161,10 @@ Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende i
 **Totaal prijs scenario: $1,4631**
 
 - Data Factory bewerkingen = **$0,0001**
-  - Lezen/schrijven = 10\*00001 = $0,0001 [1 R/W = $0,50/50.000 = 0,00001]
-  - Bewaking = 2\*000005 = $0,00001 [1 bewaking = $0,25/50.000 = 0,000005]
-- &amp; Uitvoering van pipeline-orchestration = **$1,463**
-  - Uitvoeringen van activiteit\*= 001 2 = 0,002 [1 run = $1/1000 = 0,001]
+  - Lezen/schrijven = 10 \* 00001 = $0,0001 [1 R/W = $0,50/50.000 = 0,00001]
+  - Bewaking = 2 \* 000005 = $0,00001 [1 bewaking = $0,25/50.000 = 0,000005]
+- Uitvoering van pipeline-Orchestration &amp; = **$1,463**
+  - Uitvoeringen van activiteit = 001 \* 2 = 0,002 [1 run = $1/1000 = 0,001]
   - Data flow-activiteiten = $1,461 naar verhouding van 20 minuten (10 minuten uitvoerings tijd + 10 minuten TTL). $0.274/uur op Azure Integration Runtime met een algemene reken kracht van 16 kernen
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -7,10 +7,10 @@ ms.author: sujie
 ms.date: 4/11/2020
 ms.topic: conceptual
 ms.openlocfilehash: 25ece3174cd65df9c665888d913cf6b9029904b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81394395"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>IntelliSense in Azure Stream Analytics-hulpprogram ma's voor Visual Studio code
@@ -23,7 +23,7 @@ IntelliSense is beschikbaar voor [Stream Analytics-query taal](https://docs.micr
 
 De IntelliSense-functies in Stream Analytics-hulpprogram ma's voor VS code worden aangedreven door een taal service. Een taal service analyseert uw bron code en biedt intelligente code voltooiingen op basis van taal semantiek. Als een taal service mogelijke afrondingen kent, kunnen IntelliSense-suggesties worden gemaakt terwijl u typt. Als u doorgaat met typen, wordt een lijst met leden, zoals variabelen en methoden, gefilterd zodat alleen leden worden opgenomen die de door u getypte tekens bevatten. Wanneer u op de `Tab` of `Enter` toetsen drukt, voegt IntelliSense het door u geselecteerde lid in.
 
-U kunt IntelliSense in elk editor venster activeren door een trigger teken, zoals het punt teken `.`, te typen.
+U kunt IntelliSense in elk editor venster activeren door een trigger teken, zoals het punt teken, te typen `.` .
 
 ![automatisch aanvullen IntelliSense](./media/vs-code-intellisense/auto-completion.gif)
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: spelluru
 ms.openlocfilehash: d5d50bbde927efd4aee0cedd69486a52ab8c328b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81394330"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>Azure Media Services als Event Grid bron
@@ -47,7 +47,7 @@ Een taak kan meerdere taak uitvoer bevatten (als u de trans formatie hebt geconf
 
 Elke **taak** gaat op een hoger niveau dan **JobOutput**. Daarom worden taak uitvoer gebeurtenissen binnen een bijbehorende taak geactiveerd. 
 
-De fout berichten in `JobFinished`, `JobCanceled`, `JobError` uitvoer de cumulatieve resultaten voor elke taak uitvoer, wanneer deze allemaal zijn voltooid. Overwegende dat de uitvoer gebeurtenissen van de taak worden gestart terwijl elke taak is voltooid. Als u bijvoorbeeld een uitvoer code ring hebt, gevolgd door een video Analytics-uitvoer, worden er twee gebeurtenissen weer gegeven die worden gestart als taak uitvoer gebeurtenissen voordat de laatste JobFinished-gebeurtenis wordt geactiveerd met de geaggregeerde gegevens.
+De fout berichten in `JobFinished` , `JobCanceled` , `JobError` uitvoer de cumulatieve resultaten voor elke taak uitvoer, wanneer deze allemaal zijn voltooid. Overwegende dat de uitvoer gebeurtenissen van de taak worden gestart terwijl elke taak is voltooid. Als u bijvoorbeeld een uitvoer code ring hebt, gevolgd door een video Analytics-uitvoer, worden er twee gebeurtenissen weer gegeven die worden gestart als taak uitvoer gebeurtenissen voordat de laatste JobFinished-gebeurtenis wordt geactiveerd met de geaggregeerde gegevens.
 
 | Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
@@ -656,10 +656,10 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Het onderwerp EventGrid. Deze eigenschap heeft de resource-ID voor het Media Services-account. |
 | Onderwerp | tekenreeks | Het bronpad voor het Media Services kanaal onder het Media Services-account. Als u het onderwerp en onderwerp samenvoegt, geeft u de resource-ID voor de taak. |
-| eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. Bijvoorbeeld ' micro soft. media. JobStateChange '. |
+| Type | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. Bijvoorbeeld ' micro soft. media. JobStateChange '. |
 | eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | id | tekenreeks | De unieke id voor de gebeurtenis. |
-| data | object | Media Services gebeurtenis gegevens. |
+| gegevens | object | Media Services gebeurtenis gegevens. |
 | dataVersion | tekenreeks | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
 | metadataVersion | tekenreeks | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
 
@@ -671,4 +671,4 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
 - [EventGrid .NET SDK die media service-gebeurtenissen bevat](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Definities van Media Services gebeurtenissen](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
-- [Foutcodes voor Live-gebeurtenissen](../media-services/latest/live-event-error-codes.md)
+- [Fout codes voor Live-gebeurtenissen](../media-services/latest/live-event-error-codes.md)

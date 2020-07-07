@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
 ms.openlocfilehash: 5608d0cd83e506bc6b30337db5148f344f59f80e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81410859"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>NSG-service tags voor Azure HDInsight
@@ -30,7 +30,7 @@ U hebt twee opties voor het gebruik van service tags in uw netwerk beveiligings 
 
 ## <a name="use-a-single-global-hdinsight-service-tag"></a>Eén algemeen HDInsight-service label gebruiken
 
-De eenvoudigste manier om te beginnen met het gebruik van service tags met uw HDInsight-cluster is `HDInsight` het toevoegen van de algemene tag aan een NSG-regel.
+De eenvoudigste manier om te beginnen met het gebruik van service tags met uw HDInsight-cluster is het toevoegen van de algemene tag `HDInsight` aan een NSG-regel.
 
 1. Selecteer uw netwerk beveiligings groep in het [Azure Portal](https://portal.azure.com/).
 
@@ -74,7 +74,7 @@ Als uw cluster zich bevindt in een regio die in deze tabel wordt vermeld, hoeft 
 | Frankrijk | Frankrijk - centraal| HDInsight. FranceCentral |
 | VK | Verenigd Koninkrijk Zuid | HDInsight. UKSouth |
 | Azure Government | USDoD-centraal | HDInsight. USDoDCentral |
-| &nbsp; | USGov - Texas | HDInsight. USGovTexas |
+| &nbsp; | USGov Texas | HDInsight. USGovTexas |
 | &nbsp; | UsDoD-Oost | HDInsight. USDoDEast |
 | &nbsp; | USGov Arizona | HDInsight. USGovArizona |
 
@@ -86,9 +86,9 @@ De overige regio's worden onderverdeeld in groepen op basis van de regionale ser
 
 #### <a name="group-1"></a>Groep 1
 
-Als uw cluster wordt gemaakt in een van de regio's in de volgende tabel, kunt u de service `HDInsight.WestUS` tags `HDInsight.EastUS`en toestaan. Ook de regionale servicetag wordt vermeld. Voor regio's in deze sectie zijn drie service Tags vereist.
+Als uw cluster wordt gemaakt in een van de regio's in de volgende tabel, kunt u de service tags `HDInsight.WestUS` en toestaan `HDInsight.EastUS` . Ook de regionale servicetag wordt vermeld. Voor regio's in deze sectie zijn drie service Tags vereist.
 
-Als uw cluster bijvoorbeeld in de `East US 2` regio wordt gemaakt, moet u de volgende service Tags toevoegen aan de netwerk beveiligings groep:
+Als uw cluster bijvoorbeeld in de regio wordt gemaakt `East US 2` , moet u de volgende service Tags toevoegen aan de netwerk beveiligings groep:
 
 - `HDInsight.EastUS2`
 - `HDInsight.WestUS`
@@ -111,15 +111,15 @@ Als uw cluster bijvoorbeeld in de `East US 2` regio wordt gemaakt, moet u de vol
 
 #### <a name="group-2"></a>Groep 2
 
-Clusters in de regio's van *China-Noord* en *China-Oost* twee service Tags toestaan: `HDInsight.ChinaNorth` en. `HDInsight.ChinaEast`
+Clusters in de regio's van *China-Noord* en *China-Oost* twee service Tags toestaan: `HDInsight.ChinaNorth` en `HDInsight.ChinaEast` .
 
 #### <a name="group-3"></a>Groep 3
 
-Clusters in de regio's van *US gov-Iowa* en *US gov-Virginia* twee service Tags toestaan: `HDInsight.USGovIowa` en. `HDInsight.USGovVirginia`
+Clusters in de regio's van *US gov-Iowa* en *US gov-Virginia* twee service Tags toestaan: `HDInsight.USGovIowa` en `HDInsight.USGovVirginia` .
 
 #### <a name="group-4"></a>Groep 4
 
-Clusters in de regio's van *Duitsland-centraal* en *Duitsland-Noordoost* twee service Tags toestaan: `HDInsight.GermanyCentral` en. `HDInsight.GermanyNortheast`
+Clusters in de regio's van *Duitsland-centraal* en *Duitsland-Noordoost* twee service Tags toestaan: `HDInsight.GermanyCentral` en `HDInsight.GermanyNortheast` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

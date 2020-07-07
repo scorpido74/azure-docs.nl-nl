@@ -11,10 +11,10 @@ ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
 ms.openlocfilehash: dcf86deda32069bf9711dbeb733dc9361e22a771
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80631775"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>VPN-doorvoer naar een virtueel netwerk valideren
@@ -67,7 +67,7 @@ Down load [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Zi
  > [!NOTE]
  > De producten van derden die in dit artikel worden besproken, worden geproduceerd door bedrijven die onafhankelijk zijn van micro soft. Micro soft biedt geen enkele garantie, impliciet noch anderszins, over de prestaties of betrouw baarheid van deze producten.
 
-### <a name="run-iperf-iperf3exe"></a>IPerf uitvoeren (iperf3. exe)
+### <a name="run-iperf-iperf3exe"></a>IPerf uitvoeren (iperf3.exe)
 
 1. Schakel een NSG/ACL-regel in die het verkeer toestaat (voor het testen van het open bare IP-adres op de VM van Azure).
 
@@ -85,9 +85,9 @@ Down load [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Zi
    netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
    ```
 
-   **Azure Linux:** Azure Linux-installatie kopieën hebben een strikte firewall. Als er een toepassing luistert op een poort, wordt het verkeer toegestaan via. Voor aangepaste installatie kopieën die zijn beveiligd, zijn mogelijk poorten expliciet geopend. Algemene firewalls voor Linux-besturings `iptables`systemen `ufw`bevatten, `firewalld`, of.
+   **Azure Linux:** Azure Linux-installatie kopieën hebben een strikte firewall. Als er een toepassing luistert op een poort, wordt het verkeer toegestaan via. Voor aangepaste installatie kopieën die zijn beveiligd, zijn mogelijk poorten expliciet geopend. Algemene firewalls voor Linux-besturings systemen bevatten `iptables` , `ufw` , of `firewalld` .
 
-1. Ga naar de map waarin iperf3. exe is geëxtraheerd op het server knooppunt. Voer vervolgens iPerf uit in de server modus en stel deze in op poort 5001 als de volgende opdrachten:
+1. Ga naar de map waarin iperf3.exe wordt geëxtraheerd op het server knooppunt. Voer vervolgens iPerf uit in de server modus en stel deze in op poort 5001 als de volgende opdrachten:
 
    ```CMD
    cd c:\iperf-3.1.2-win65
@@ -123,27 +123,27 @@ Down load [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Zi
 
 ## <a name="test-vms-running-windows"></a>Vm's met Windows testen
 
-### <a name="load-latteexe-onto-the-vms"></a>Latte. exe laden op de Vm's
+### <a name="load-latteexe-onto-the-vms"></a>Latte.exe op Vm's laden
 
-De meest recente versie van [latte. exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b) downloaden
+De nieuwste versie van [Latte.exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b) downloaden
 
-Overweeg om latte. exe in een afzonderlijke map te plaatsen, zoals`c:\tools`
+Overweeg Latte.exe in een afzonderlijke map te plaatsen, zoals`c:\tools`
 
-### <a name="allow-latteexe-through-the-windows-firewall"></a>Latte. exe toestaan via de Windows Firewall
+### <a name="allow-latteexe-through-the-windows-firewall"></a>Latte.exe via de Windows Firewall toestaan
 
-Maak op de ontvanger een regel voor toestaan op de Windows Firewall zodat het latte. exe-verkeer kan binnenkomen. Het is eenvoudig om het hele latte. exe-programma op naam toe te staan in plaats van specifieke TCP-poorten toestaan.
+Maak op de ontvanger een regel voor toestaan op de Windows Firewall zodat het Latte.exe verkeer kan binnenkomen. Het is eenvoudig om het hele Latte.exe-programma toe te staan op naam in plaats van specifieke TCP-poorten toestaan.
 
-### <a name="allow-latteexe-through-the-windows-firewall-like-this"></a>Latte. exe toestaan via de Windows Firewall als volgt
+### <a name="allow-latteexe-through-the-windows-firewall-like-this"></a>Latte.exe via Windows Firewall als volgt toestaan
 
 `netsh advfirewall firewall add rule program=<PATH>\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
-Als u bijvoorbeeld latte. exe hebt gekopieerd naar de map ' c:\Tools ', is dit de opdracht
+Als u bijvoorbeeld latte.exe hebt gekopieerd naar de map ' c:\Tools ', is dit de opdracht
 
 `netsh advfirewall firewall add rule program=c:\tools\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
 ### <a name="run-latency-tests"></a>Latentie tests uitvoeren
 
-Start latte. exe op de ontvanger (uitvoeren vanuit CMD, niet vanuit Power shell):
+latte.exe starten op de ontvanger (uitvoeren vanuit CMD, niet vanuit Power shell):
 
 `latte -a <Receiver IP address>:<port> -i <iterations>`
 
@@ -155,7 +155,7 @@ Als de virtuele machine een IP-adres heeft van 10.0.0.4, ziet deze er als volgt 
 
 `latte -c -a 10.0.0.4:5005 -i 65100`
 
-Latte. exe starten op de afzender (uitvoeren vanuit CMD, niet vanuit Power shell)
+latte.exe op de afzender starten (uitvoeren vanuit CMD, niet vanuit Power shell)
 
 `latte -c -a <Receiver IP address>:<port> -i <iterations>`
 
@@ -225,7 +225,7 @@ Met name de analyse van pakket Capture-traceringen (wireshark/Network Monitor) d
 
 Zelfs als de algemene door Voer die is beoordeeld met de vorige stappen (iPERF/NTTTCP/etc..) goed was, kunt u trage bestands omgaan ervaren wanneer u Windows Verkenner gebruikt, of door middel van het slepen en neerzetten via een RDP-sessie. Dit probleem wordt meestal veroorzaakt door een van de volgende factoren:
 
-* Voor het kopiëren van bestanden, zoals Windows Verkenner en RDP, worden niet meerdere threads gebruikt tijdens het kopiëren. Gebruik voor betere prestaties een multi-threaded Copy-toepassing zoals [RichCopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) om bestanden te kopiëren met behulp van 16-of 32-threads. Als u het thread nummer voor het kopiëren van bestanden in RichCopy wilt wijzigen, klikt u op **actie** > **kopiëren opties** > **bestand kopiëren**.
+* Voor het kopiëren van bestanden, zoals Windows Verkenner en RDP, worden niet meerdere threads gebruikt tijdens het kopiëren. Gebruik voor betere prestaties een multi-threaded Copy-toepassing zoals [RichCopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) om bestanden te kopiëren met behulp van 16-of 32-threads. Als u het thread nummer voor het kopiëren van bestanden in RichCopy wilt wijzigen, klikt u op **actie**  >  **kopiëren opties**  >  **bestand kopiëren**.
 
    ![Problemen bij het kopiëren van bestanden vertragen](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 

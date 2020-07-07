@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: c433fc5d919a57476097257cac1b7176a9da598d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81410692"
 ---
 # <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>Gegevens kopiëren van Azure Database for MariaDB met behulp van Azure Data Factory 
@@ -51,7 +51,7 @@ De volgende eigenschappen worden ondersteund voor Azure Database for MariaDB gek
 | Verbindings | Een connection string om verbinding te maken met Azure Database for MariaDB. U kunt dit vinden in de Azure Portal-> uw Azure Database for MariaDB-> verbindings reeksen-> ADO.NET één. <br/> U kunt ook wacht woord in Azure Key Vault plaatsen en de `pwd` configuratie uit de Connection String halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Ja |
 | connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -136,7 +136,7 @@ Als u gegevens wilt kopiëren uit Azure Database for MariaDB, worden de volgende
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **AzureMariaDBSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[

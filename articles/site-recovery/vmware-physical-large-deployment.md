@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: a3a2317554f02dc1f1198d8019bbfdb50e3cc71c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81409774"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Herstel na nood geval op schaal instellen voor virtuele VMware-machines/fysieke servers
@@ -64,7 +64,7 @@ Voer de planner vervolgens als volgt uit:
 5. Analyseer de [aanbevelingen](site-recovery-vmware-deployment-planner-analyze-report.md) van het rapport en de [kosten ramingen](site-recovery-vmware-deployment-planner-cost-estimation.md).
 
 >[!NOTE]
-> Het hulp programma is standaard geconfigureerd voor het profiel en genereert een rapport voor Maxi maal 1000 Vm's. U kunt deze limiet wijzigen door de sleutel waarde MaxVMsSupported in het bestand ASRDeploymentPlanner. exe. config te verhogen.
+> Het hulp programma is standaard geconfigureerd voor het profiel en genereert een rapport voor Maxi maal 1000 Vm's. U kunt deze limiet wijzigen door de sleutel waarde MaxVMsSupported in het ASRDeploymentPlanner.exe.config-bestand te verhogen.
 
 ## <a name="plan-target-azure-requirements-and-capacity"></a>Vereisten en capaciteit van doel (Azure) plannen
 
@@ -83,7 +83,7 @@ U kunt deze aanbevelingen gebruiken om Azure-resources, netwerk bandbreedte en V
 
 We willen er zeker van zijn dat beschik bare quota's in het doel abonnement voldoende zijn voor het verwerken van de failover.
 
-**Taak** | **Nadere** | **Actie**
+**Taak** | **Details** | **Actie**
 --- | --- | ---
 **Kern geheugens controleren** | Als de kernen in het beschik bare quotum niet gelijk zijn aan of groter zijn dan het totale aantal doelen op het moment van failover, mislukken failovers. | Voor virtuele VMware-machines controleert u of er voldoende kern geheugens zijn in het doel abonnement om te voldoen aan de Deployment Planner core-aanbeveling.<br/><br/> Controleer voor fysieke servers of Azure-kernen voldoen aan uw hand matige schattingen.<br/><br/> Als u quota's wilt controleren, klikt u in het Azure Portal >- **abonnement**op **gebruik en quota's**.<br/><br/> Meer [informatie](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) over het verhogen van quota's.
 **Failover-limieten controleren** | Het aantal failovers mag overschrijdt Site Recovery failover-limieten. |  Als failovers de limieten overschrijden, kunt u abonnementen toevoegen en failover uitvoeren naar meerdere abonnementen of het quotum verhogen voor een abonnement. 
@@ -127,7 +127,7 @@ Het is belang rijk dat u voldoende configuratie servers en scale-out proces serv
  
 De capaciteit van de configuratie server wordt beïnvloed door het aantal computers dat repliceert, en niet op basis van het verloop tempo van gegevens. Als u wilt weten of u aanvullende configuratie servers nodig hebt, gebruikt u deze gedefinieerde VM-limieten.
 
-**VERBRUIK** | **Geheugen** | **Cache schijf** | **Limiet van gerepliceerde machines**
+**CPU** | **Geheugen** | **Cache schijf** | **Limiet van gerepliceerde machines**
  --- | --- | --- | ---
 8 Vcpu's<br> 2 sockets * 4 kernen @ 2,5 GHz | 16 GB | 600 GB | Maxi maal 550 computers<br> Er wordt van uitgegaan dat elke machine drie schijven van 100 GB elk heeft.
 
@@ -153,7 +153,7 @@ De capaciteit van de proces server wordt beïnvloed door de gegevens verloop tar
 - U wordt aangeraden een server met de hoogste specificatie toe te voegen. 
 
 
-**VERBRUIK** | **Geheugen** | **Cache schijf** | **Verloop frequentie**
+**CPU** | **Geheugen** | **Cache schijf** | **Verloop frequentie**
  --- | --- | --- | --- 
 12 Vcpu's<br> 2 sockets * 6 kernen @ 2,5 GHz | 24 GB | 1 GB | Tot 2 TB per dag
 

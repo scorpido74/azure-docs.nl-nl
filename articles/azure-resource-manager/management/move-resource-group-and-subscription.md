@@ -4,10 +4,10 @@ description: Gebruik Azure Resource Manager om resources te verplaatsen naar een
 ms.topic: conceptual
 ms.date: 03/02/2020
 ms.openlocfilehash: ffb5f8be81d3628084d127db404ab994d4d5b938
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80631508"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement
@@ -156,7 +156,7 @@ GET <location-url>
 Authorization: Bearer <access-token>
 ```
 
-Terwijl de bewerking nog steeds wordt uitgevoerd, blijft de 202-status code ontvangen. Wacht het aantal seconden dat is opgegeven in `retry-after` de waarde voordat u het opnieuw probeert. Als de verplaatsings bewerking correct wordt gevalideerd, ontvangt u de 204-status code. Als de verplaatsing niet kan worden gevalideerd, wordt er een fout bericht weer gegeven, zoals:
+Terwijl de bewerking nog steeds wordt uitgevoerd, blijft de 202-status code ontvangen. Wacht het aantal seconden dat is opgegeven in de `retry-after` waarde voordat u het opnieuw probeert. Als de verplaatsings bewerking correct wordt gevalideerd, ontvangt u de 204-status code. Als de verplaatsing niet kan worden gevalideerd, wordt er een fout bericht weer gegeven, zoals:
 
 ```json
 {"error":{"code":"ResourceMoveProviderValidationFailed","message":"<message>"...}}
@@ -194,13 +194,13 @@ $plan = Get-AzResource -ResourceGroupName OldRG -ResourceName ExamplePlan
 Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
 ```
 
-Als u wilt overstappen op een nieuw abonnement, neemt `DestinationSubscriptionId` u een waarde op voor de para meter.
+Als u wilt overstappen op een nieuw abonnement, neemt u een waarde op voor de `DestinationSubscriptionId` para meter.
 
 Als er een fout optreedt, raadpleegt u [problemen met het verplaatsen van Azure-resources naar een nieuwe resource groep of een nieuw abonnement](troubleshoot-move.md).
 
 ## <a name="use-azure-cli"></a>Azure CLI gebruiken
 
-Als u bestaande resources wilt verplaatsen naar een andere resource groep of een ander abonnement, gebruikt u de opdracht [AZ resource Move](/cli/azure/resource?view=azure-cli-latest#az-resource-move) . Geef de resource-Id's op van de resources die moeten worden verplaatst. In het volgende voor beeld ziet u hoe u verschillende resources kunt verplaatsen naar een nieuwe resource groep. Geef in `--ids` de para meter een door spaties gescheiden lijst op met de resource-id's die u wilt verplaatsen.
+Als u bestaande resources wilt verplaatsen naar een andere resource groep of een ander abonnement, gebruikt u de opdracht [AZ resource Move](/cli/azure/resource?view=azure-cli-latest#az-resource-move) . Geef de resource-Id's op van de resources die moeten worden verplaatst. In het volgende voor beeld ziet u hoe u verschillende resources kunt verplaatsen naar een nieuwe resource groep. Geef in de `--ids` para meter een door spaties gescheiden lijst op met de resource-id's die u wilt verplaatsen.
 
 ```azurecli
 webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
@@ -208,7 +208,7 @@ plan=$(az resource show -g OldRG -n ExamplePlan --resource-type "Microsoft.Web/s
 az resource move --destination-group newgroup --ids $webapp $plan
 ```
 
-Als u wilt overstappen op een nieuw `--destination-subscription-id` abonnement, geeft u de para meter op.
+Als u wilt overstappen op een nieuw abonnement, geeft u de `--destination-subscription-id` para meter op.
 
 Als er een fout optreedt, raadpleegt u [problemen met het verplaatsen van Azure-resources naar een nieuwe resource groep of een nieuw abonnement](troubleshoot-move.md).
 

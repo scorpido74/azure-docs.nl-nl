@@ -4,10 +4,10 @@ description: Service Fabric stateful services bieden betrouw bare verzamelingen 
 ms.topic: conceptual
 ms.date: 3/10/2020
 ms.openlocfilehash: 78ecc57a4da43bf416839226253e6d0e2f4c1651
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81398434"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Inleiding tot betrouw bare verzamelingen in azure Service Fabric stateful Services
@@ -35,7 +35,7 @@ Om ervoor te zorgen dat de consistentie zwakkerer is, kunnen toepassingen terugs
 De betrouw bare verzamelingen-Api's zijn een evolutie van gelijktijdige verzamelingen Api's (gevonden in de naam ruimte **System. Collections. gelijktijdige** ):
 
 * Asynchroon: retourneert een taak omdat de bewerkingen, in tegens telling tot gelijktijdige verzamelingen, worden gerepliceerd en bewaard.
-* Geen para meters: `ConditionalValue<T>` gebruikt om een `bool` en een waarde te retour neren in plaats van out-para meters. `ConditionalValue<T>`is net `Nullable<T>` als geen struct vereist.
+* Geen para meters: gebruikt `ConditionalValue<T>` om een `bool` en een waarde te retour neren in plaats van out-para meters. `ConditionalValue<T>`is net als geen `Nullable<T>` struct vereist.
 * Trans acties: een transactie object wordt gebruikt om de gebruiker in staat te stellen acties op meerdere betrouw bare verzamelingen in een trans actie te groeperen.
 
 Vandaag, **micro soft. ServiceFabric. data. Collections** bevat drie verzamelingen:

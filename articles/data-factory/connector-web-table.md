@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 0eb4d37342685c13027a69bb6cb85f618fa63f20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81410217"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Gegevens uit een webtabel kopiëren met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](v1/data-factory-web-table-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](v1/data-factory-web-table-connector.md)
 > * [Huidige versie](connector-web-table.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -64,7 +64,7 @@ De volgende eigenschappen worden ondersteund voor gekoppelde webtabelgegevens:
 | authenticationType | Toegestane waarde is: **anoniem**. |Ja |
 | connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Een zelf-hostende Integration Runtime is vereist zoals vermeld in de [vereisten](#prerequisites). |Ja |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -95,7 +95,7 @@ Als u gegevens wilt kopiëren uit een webtabel, stelt u de eigenschap type van d
 | path |Een relatieve URL naar de resource die de tabel bevat. |Nee. Wanneer pad niet is opgegeven, wordt alleen de URL gebruikt die is opgegeven in de definitie van de gekoppelde service. |
 | TabIndex |De index van de tabel in de resource. Zie [index ophalen van een tabel in een sectie met een HTML-pagina](#get-index-of-a-table-in-an-html-page) voor de stappen voor het ophalen van index van een tabel in een HTML-pagina. |Ja |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -123,7 +123,7 @@ Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledi
 
 Als u gegevens wilt kopiëren uit een webtabel, stelt u het bron type in de Kopieer activiteit in op **webbron**. er worden geen aanvullende eigenschappen ondersteund.
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[
@@ -162,7 +162,7 @@ Als u de index wilt ophalen van een tabel die u in de [Eigenschappen](#dataset-p
 2. Klik op **nieuwe query** op de werk balk, wijs **vanuit andere bronnen** naar en klik op **van web**.
 
     ![Menu Power Query](./media/copy-data-from-web-table/PowerQuery-Menu.png)
-3. Voer in het dialoog venster **van het web** de **URL** in die u in de gekoppelde service-JSON zou gebruiken https://en.wikipedia.org/wiki/) (bijvoorbeeld: samen met het pad dat u opgeeft voor de gegevensset (bijvoorbeeld: AFI% 27s_100_Years... 100_Movies) en klik op **OK**.
+3. Voer in het dialoog venster **van het web** de **URL** in die u in de gekoppelde service-JSON zou gebruiken (bijvoorbeeld: https://en.wikipedia.org/wiki/) samen met het pad dat u opgeeft voor de gegevensset (bijvoorbeeld: AFI% 27s_100_Years... 100_Movies) en klik op **OK**.
 
     ![Vanuit het dialoog venster Web](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
 

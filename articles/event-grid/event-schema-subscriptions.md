@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: fa88fe4e05ac968588a65d67a2f075bcae48ba7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81393231"
 ---
 # <a name="azure-subscription-as-an-event-grid-source"></a>Azure-abonnement als een Event Grid bron
@@ -20,11 +20,11 @@ In dit artikel vindt u de eigenschappen en het schema voor Azure-abonnements geb
 
 Azure-abonnementen en-resource groepen verzenden dezelfde gebeurtenis typen. De gebeurtenis typen zijn gerelateerd aan wijzigingen of acties van resources. Het belangrijkste verschil is dat resource groepen gebeurtenissen verzenden voor resources binnen de resource groep en Azure-abonnementen die gebeurtenissen verzenden voor bronnen in het abonnement.
 
-Resource gebeurtenissen worden gemaakt voor PUT-, PATCH-, POST-en DELETE-bewerkingen die `management.azure.com`worden verzonden naar. Bij GET-bewerkingen worden geen gebeurtenissen gemaakt. Bewerkingen die worden verzonden naar het gegevens vlak `myaccount.blob.core.windows.net`(zoals), maken geen gebeurtenissen. De actie gebeurtenissen bieden gebeurtenis gegevens voor bewerkingen, zoals het weer geven van de sleutels voor een resource.
+Resource gebeurtenissen worden gemaakt voor PUT-, PATCH-, POST-en DELETE-bewerkingen die worden verzonden naar `management.azure.com` . Bij GET-bewerkingen worden geen gebeurtenissen gemaakt. Bewerkingen die worden verzonden naar het gegevens vlak (zoals `myaccount.blob.core.windows.net` ), maken geen gebeurtenissen. De actie gebeurtenissen bieden gebeurtenis gegevens voor bewerkingen, zoals het weer geven van de sleutels voor een resource.
 
 Wanneer u zich abonneert op gebeurtenissen voor een Azure-abonnement, ontvangt uw eind punt alle gebeurtenissen voor dat abonnement. De gebeurtenissen kunnen gebeurtenissen bevatten die u wilt zien, zoals het bijwerken van een virtuele machine, maar ook gebeurtenissen die mogelijk niet belang rijk voor u zijn, zoals het schrijven van een nieuwe vermelding in de implementatie geschiedenis. U kunt alle gebeurtenissen op uw eind punt ontvangen en code schrijven waarmee de gebeurtenissen worden verwerkt die u wilt verwerken. U kunt ook een filter instellen bij het maken van het gebeurtenis abonnement.
 
-Als u gebeurtenissen op een programmatische manier wilt afhandelen, kunt `operationName` u gebeurtenissen sorteren door de waarde te bekijken. Uw gebeurtenis eindpunt kan bijvoorbeeld alleen gebeurtenissen verwerken voor bewerkingen die gelijk zijn aan `Microsoft.Compute/virtualMachines/write` of. `Microsoft.Storage/storageAccounts/write`
+Als u gebeurtenissen op een programmatische manier wilt afhandelen, kunt u gebeurtenissen sorteren door de waarde te bekijken `operationName` . Uw gebeurtenis eindpunt kan bijvoorbeeld alleen gebeurtenissen verwerken voor bewerkingen die gelijk zijn aan `Microsoft.Compute/virtualMachines/write` of `Microsoft.Storage/storageAccounts/write` .
 
 Het gebeurtenis onderwerp is de resource-ID van de resource die het doel van de bewerking is. Als u gebeurtenissen voor een resource wilt filteren, geeft u deze resource-ID op bij het maken van het gebeurtenis abonnement. Als u wilt filteren op een resource type, gebruikt u een waarde in de volgende notatie:`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
@@ -49,7 +49,7 @@ Azure-abonnementen die beheer gebeurtenissen van Azure Resource Manager verzende
 
 ### <a name="example-event"></a>Voorbeeld gebeurtenis
 
-In het volgende voor beeld ziet u het schema voor een **ResourceWriteSuccess** -gebeurtenis. Hetzelfde schema wordt gebruikt voor **ResourceWriteFailure** -en **ResourceWriteCancel** -gebeurtenissen met verschillende waarden `eventType`voor.
+In het volgende voor beeld ziet u het schema voor een **ResourceWriteSuccess** -gebeurtenis. Hetzelfde schema wordt gebruikt voor **ResourceWriteFailure** -en **ResourceWriteCancel** -gebeurtenissen met verschillende waarden voor `eventType` .
 
 ```json
 [{
@@ -109,7 +109,7 @@ In het volgende voor beeld ziet u het schema voor een **ResourceWriteSuccess** -
 }]
 ```
 
-In het volgende voor beeld ziet u het schema voor een **ResourceDeleteSuccess** -gebeurtenis. Hetzelfde schema wordt gebruikt voor **ResourceDeleteFailure** -en **ResourceDeleteCancel** -gebeurtenissen met verschillende waarden `eventType`voor.
+In het volgende voor beeld ziet u het schema voor een **ResourceDeleteSuccess** -gebeurtenis. Hetzelfde schema wordt gebruikt voor **ResourceDeleteFailure** -en **ResourceDeleteCancel** -gebeurtenissen met verschillende waarden voor `eventType` .
 
 ```json
 [{
@@ -175,7 +175,7 @@ In het volgende voor beeld ziet u het schema voor een **ResourceDeleteSuccess** 
 }]
 ```
 
-In het volgende voor beeld ziet u het schema voor een **ResourceActionSuccess** -gebeurtenis. Hetzelfde schema wordt gebruikt voor **ResourceActionFailure** -en **ResourceActionCancel** -gebeurtenissen met verschillende waarden `eventType`voor.
+In het volgende voor beeld ziet u het schema voor een **ResourceActionSuccess** -gebeurtenis. Hetzelfde schema wordt gebruikt voor **ResourceActionFailure** -en **ResourceActionCancel** -gebeurtenissen met verschillende waarden voor `eventType` .
 
 ```json
 [{   
@@ -239,10 +239,10 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld is niet beschrijfbaar. Event Grid biedt deze waarde. |
 | Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
-| eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
+| Type | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
 | eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | id | tekenreeks | De unieke id voor de gebeurtenis. |
-| data | object | Gebeurtenis gegevens van abonnement. |
+| gegevens | object | Gebeurtenis gegevens van abonnement. |
 | dataVersion | tekenreeks | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
 | metadataVersion | tekenreeks | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
 

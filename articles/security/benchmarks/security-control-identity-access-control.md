@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 473fe838f53df0a874a2c793792533e01b7c069a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81408537"
 ---
 # <a name="security-control-identity-and-access-control"></a>Beveiligings beheer: identiteit en Access Control
@@ -34,7 +34,7 @@ Azure AD heeft ingebouwde rollen die expliciet moeten worden toegewezen en waaro
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 3,2 | 4.2 | Klant |
+| 3.2 | 4.2 | Klant |
 
 Azure AD heeft niet het concept van standaard wachtwoorden. Andere Azure-resources die een wacht woord vereisen, moeten een wacht woord afdwingen voor het maken van complexiteits vereisten en een minimale wachtwoord lengte, die afhankelijk is van de service. U bent verantwoordelijk voor toepassingen van derden en Marketplace-services die standaard wachtwoorden kunnen gebruiken.
 
@@ -42,7 +42,7 @@ Azure AD heeft niet het concept van standaard wachtwoorden. Andere Azure-resourc
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 3,3 | 4.3 | Klant |
+| 3.3 | 4.3 | Klant |
 
 Maak standaard procedures voor het gebruik van specifieke beheerders accounts. Gebruik Azure Security Center identiteits-en toegangs beheer om het aantal beheerders accounts te bewaken.
 

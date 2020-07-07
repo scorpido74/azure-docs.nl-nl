@@ -8,17 +8,17 @@ ms.service: web-application-firewall
 ms.date: 04/14/2020
 ms.author: victorh
 ms.openlocfilehash: c0f802f5113e38e811c110ee913099e76fa7be0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81383817"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Aangepaste regels voor Web Application firewall v2 op Azure-toepassing gateway
 
 De Azure-toepassing gateway Web Application firewall (WAF) v2 wordt geleverd met een vooraf geconfigureerde, door een platform beheerde ruleset die bescherming biedt tegen een groot aantal verschillende soorten aanvallen. Deze aanvallen omvatten cross-site scripting, SQL-injectie en andere. Als u een WAF-beheerder bent, kunt u uw eigen regels schrijven om de regels voor basisregel sets (CRS) te verbeteren. Uw regels kunnen het aangevraagde verkeer blok keren of toestaan op basis van de overeenkomende criteria.
 
-Met aangepaste regels kunt u uw eigen regels maken die worden geëvalueerd voor elke aanvraag die via de WAF wordt door gegeven. Deze regels bevatten een hogere prioriteit dan de rest van de regels in de beheerde regel sets. De aangepaste regels bevatten de naam van de regel, de prioriteit van de regel en een matrix met overeenkomende voor waarden. Als aan deze voor waarden wordt voldaan, wordt er een actie ondernomen (om toe te staan of te blok keren).
+Met aangepaste regels kunt u uw eigen regels maken die worden geëvalueerd voor elke aanvraag die via de WAF wordt door gegeven. Deze regels hebben een hogere prioriteit dan de rest van de regels in de beheerde regelsets. De aangepaste regels bevatten de naam van de regel, de prioriteit van de regel en een matrix met overeenkomende voor waarden. Als aan deze voor waarden wordt voldaan, wordt er een actie ondernomen (om toe te staan of te blok keren).
 
 U kunt bijvoorbeeld alle aanvragen van een IP-adres in het bereik 192.168.5.4/24 blok keren. In deze regel is de operator *IPMatch*, het matchValues is het IP-adres bereik (192.168.5.4/24) en de actie om het verkeer te blok keren. U kunt ook de naam en prioriteit van de regel instellen.
 
@@ -37,7 +37,7 @@ Reguliere expressies worden ook ondersteund in aangepaste regels, net als in de 
 
 Het toestaan en blok keren van verkeer is eenvoudig met aangepaste regels. U kunt bijvoorbeeld al het verkeer dat afkomstig is van een bereik van IP-adressen blok keren. U kunt een andere regel maken om verkeer toe te staan als de aanvraag afkomstig is van een specifieke browser.
 
-Als u iets wilt toestaan, moet `-Action` u ervoor zorgen dat de para meter is ingesteld op **toestaan**. Als u iets wilt blok keren, `-Action` controleert u of de para meter is ingesteld op **blok keren**.
+Als u iets wilt toestaan, moet u ervoor zorgen dat de `-Action` para meter is ingesteld op **toestaan**. Als u iets wilt blok keren, controleert u of de `-Action` para meter is ingesteld op **blok keren**.
 
 ```azurepowershell
 $AllowRule = New-AzApplicationGatewayFirewallCustomRule `
@@ -55,7 +55,7 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-In het `$BlockRule` vorige voor gaande wordt de volgende aangepaste regel in azure Resource Manager:
+In het vorige voor gaande wordt `$BlockRule` de volgende aangepaste regel in azure Resource Manager:
 
 ```json
 "customRules": [

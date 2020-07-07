@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
 ms.openlocfilehash: 23d799f84cb3ac3ca911a5669041b0a25394a7ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81414762"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Gegevens migreren van Amazon S3 naar Azure Data Lake Storage Gen2
@@ -50,7 +50,7 @@ De sjabloon bevat twee para meters:
 
 ### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Voor de sjabloon alleen gewijzigde bestanden van Amazon S3 naar Azure Data Lake Storage Gen2 kopiëren
 
-Deze sjabloon (*sjabloon naam: verschil gegevens kopiëren van AWS S3 naar Azure data Lake Storage Gen2*) gebruikt LastModifiedTime van elk bestand om de nieuwe of bijgewerkte bestanden alleen van AWS S3 naar Azure te kopiëren. Houd rekening met het volgende: als uw bestanden of mappen al zijn gepartitioneerd met timeslice-informatie als onderdeel van de bestands-of mapnaam op AWS S3 (bijvoorbeeld/yyyy/mm/dd/file.CSV), kunt u naar deze [zelf studie](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) gaan om de meer uitgebreide benadering te verkrijgen voor het stapsgewijs laden van nieuwe bestanden. Bij deze sjabloon wordt ervan uitgegaan dat u een partitie lijst hebt geschreven in een externe beheer tabel in Azure SQL Database. Daarom wordt er een *opzoek* activiteit gebruikt om de partitie lijst op te halen uit de tabel voor externe controle, een herhaalde failover van elke partitie uit te voeren en elke taak voor het kopiëren van de ADF één partitie per keer te kopiëren. Wanneer elke Kopieer taak begint met het kopiëren van de bestanden van AWS S3, is het afhankelijk van de eigenschap LastModifiedTime om de nieuwe of bijgewerkte bestanden te identificeren en te kopiëren. Zodra een Kopieer taak is voltooid, gebruikt deze een *opgeslagen procedure* activiteit om de status van het kopiëren van elke partitie in de controle tabel bij te werken.
+Deze sjabloon (*sjabloon naam: verschil gegevens kopiëren van AWS S3 naar Azure data Lake Storage Gen2*) gebruikt LastModifiedTime van elk bestand om de nieuwe of bijgewerkte bestanden alleen van AWS S3 naar Azure te kopiëren. Houd rekening met het volgende als uw bestanden of mappen al zijn gepartitioneerd met timeslice-informatie als onderdeel van de bestands-of mapnaam op AWS S3 (bijvoorbeeld/yyyy/mm/dd/file.csv), u kunt naar deze [zelf studie](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) gaan om de meer uitgebreide benadering te verkrijgen voor het stapsgewijs laden van nieuwe bestanden. Bij deze sjabloon wordt ervan uitgegaan dat u een partitie lijst hebt geschreven in een externe beheer tabel in Azure SQL Database. Daarom wordt er een *opzoek* activiteit gebruikt om de partitie lijst op te halen uit de tabel voor externe controle, een herhaalde failover van elke partitie uit te voeren en elke taak voor het kopiëren van de ADF één partitie per keer te kopiëren. Wanneer elke Kopieer taak begint met het kopiëren van de bestanden van AWS S3, is het afhankelijk van de eigenschap LastModifiedTime om de nieuwe of bijgewerkte bestanden te identificeren en te kopiëren. Zodra een Kopieer taak is voltooid, gebruikt deze een *opgeslagen procedure* activiteit om de status van het kopiëren van elke partitie in de controle tabel bij te werken.
 
 De sjabloon bevat zeven activiteiten:
 - Met **lookup** worden de partities opgehaald uit een externe beheer tabel. De tabel naam is *s3_partition_delta_control_table* en de query voor het laden van gegevens uit de tabel is *' Select distinct PartitionPrefix from s3_partition_delta_control_table '*.

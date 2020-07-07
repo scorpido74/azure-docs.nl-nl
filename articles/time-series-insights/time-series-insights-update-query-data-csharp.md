@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: fbc2cbc29cb23a21e7d3713091fc22f01bb1b15a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81379816"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>Gegevens uit de Azure Time Series Insights-voorbeeld omgeving opvragen met C #
@@ -23,7 +23,7 @@ ms.locfileid: "81379816"
 Dit C#-voor beeld laat zien hoe u gegevens kunt opvragen uit de [Preview-Api's voor gegevens toegang](https://docs.microsoft.com/rest/api/time-series-insights/preview) in azure time series Insights-voorbeeld omgevingen.
 
 > [!TIP]
-> Bekijk preview C#-voorbeeld code [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample)op.
+> Bekijk preview C#-voorbeeld code op [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample) .
 
 ## <a name="summary"></a>Samenvatting
 
@@ -31,7 +31,7 @@ De voorbeeld code hieronder bevat de volgende functies:
 
 * Ondersteuning voor het automatisch genereren van de SDK vanuit [Azure auto rest](https://github.com/Azure/AutoRest).
 * Een toegangs token verkrijgen via Azure Active Directory met behulp van [micro soft. Identity model. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).
-* Het aangeschafte toegangs token door geven in `Authorization` de koptekst van volgende API-aanvragen voor Data Access. 
+* Het aangeschafte toegangs token door geven in de `Authorization` koptekst van volgende API-aanvragen voor Data Access. 
 * Het voor beeld biedt een console interface waarin wordt uitgelegd hoe HTTP-aanvragen worden gedaan:
 
     * [Voor beeld van omgevingen-API](https://docs.microsoft.com/rest/api/time-series-insights/preview#preview-environments-apis)
@@ -50,9 +50,9 @@ Voer de volgende stappen uit voordat u de voorbeeld code compileert en uitvoert:
 
 1. [Richt een preview-Azure time series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-how-to-manage#create-the-environment) omgeving in.
 1. Configureer uw Azure Time Series Insights-omgeving voor Azure Active Directory zoals beschreven in [verificatie en autorisatie](time-series-insights-authentication-and-authorization.md). 
-1. Voer [GenerateCode. bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat) uit zoals opgegeven in de [Readme.md](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md) om de time series Insights preview-client afhankelijkheden te genereren.
+1. Voer de [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat) uit zoals opgegeven in de [Readme.md](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md) om de time series Insights preview-client afhankelijkheden te genereren.
 1. Open de `TSIPreviewDataPlaneclient.sln` oplossing en stel `DataPlaneClientSampleApp` deze in als het standaard project in Visual Studio.
-1. Installeer de vereiste project afhankelijkheden met behulp van de stappen die [hieronder](#project-dependencies) worden beschreven en `.exe` Compileer het voor beeld naar een uitvoerbaar bestand.
+1. Installeer de vereiste project afhankelijkheden met behulp van de stappen die [hieronder](#project-dependencies) worden beschreven en compileer het voor beeld naar een uitvoerbaar `.exe` bestand.
 1. Voer het `.exe` bestand uit door erop te dubbel klikken.
 
 ## <a name="project-dependencies"></a>Projectafhankelijkheden
@@ -61,9 +61,9 @@ Het is raadzaam om de nieuwste versie van Visual Studio te gebruiken:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) -versie 16.4.2 +
 
-De voorbeeld code bevat verschillende vereiste afhankelijkheden die kunnen worden weer gegeven in het bestand [packages. config](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClientSampleApp/packages.config) .
+De voorbeeld code bevat verschillende vereiste afhankelijkheden die in het [packages.config](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClientSampleApp/packages.config) bestand kunnen worden weer gegeven.
 
-Down load de pakketten in Visual Studio 2019 **door de** > optie build**Build Solution** te selecteren. 
+Down load de pakketten in Visual Studio 2019 **door de**  >  optie build**Build Solution** te selecteren. 
 
 U kunt ook elk pakket toevoegen met behulp van [NuGet 2.12 +](https://www.nuget.org/). Bijvoorbeeld:
 
