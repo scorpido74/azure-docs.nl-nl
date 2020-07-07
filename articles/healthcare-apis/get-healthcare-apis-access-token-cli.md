@@ -8,11 +8,11 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: mihansen
-ms.openlocfilehash: 291b2fa696fff6f78c76bdc57d5c90daa78afc17
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 4eb4c10a6c98aa847c9fa6c239aacde891db5aae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84871894"
 ---
 # <a name="get-access-token-for-azure-api-for-fhir-using-azure-cli"></a>Toegangs token voor Azure API voor FHIR ophalen met behulp van Azure CLI
@@ -39,13 +39,13 @@ token=$(az account get-access-token --resource=https://<FHIR ACCOUNT NAME>.azure
 
 ## <a name="use-with-azure-api-for-fhir"></a>Gebruiken met Azure API voor FHIR
 
-```console
+```azurecli-interactive
 curl -X GET --header "Authorization: Bearer $token" https://<FHIR ACCOUNT NAME>.azurehealthcareapis.com/Patient
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u een toegangs token kunt verkrijgen voor de Azure API voor FHIR met behulp van de Azure CLI. Als u wilt weten hoe u de FHIR-API kunt openen met behulp van Postman, gaat u verder met de zelf studie voor postman.
+In dit artikel hebt u geleerd hoe u een toegangs token kunt verkrijgen voor de Azure API voor FHIR met behulp van de Azure CLI. Als u wilt weten hoe u de FHIR-API kunt openen met behulp van Postman, gaat u verder met de zelfstudie Postman.
 
 >[!div class="nextstepaction"]
->[Toegang tot FHIR-API met behulp van postman](access-fhir-postman-tutorial.md)
+>[Toegang tot FHIR-API met Postman](access-fhir-postman-tutorial.md)
