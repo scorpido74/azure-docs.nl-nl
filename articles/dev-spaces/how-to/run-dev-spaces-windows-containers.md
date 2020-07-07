@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Meer informatie over het uitvoeren van Azure-ontwikkel ruimten op een bestaand cluster met Windows-containers
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, Windows-containers
 ms.openlocfilehash: 0b3f221c9e62343a02ba8742e4cf988c7cf26c12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80240490"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Interactie met Windows-containers met behulp van Azure dev Spaces
@@ -20,7 +20,7 @@ U kunt Azure dev Spaces inschakelen voor zowel nieuwe als bestaande Kubernetes-n
 
 In dit artikel wordt ervan uitgegaan dat u al een cluster hebt met zowel Linux-als Windows-knooppunt groepen. Als u een cluster met Linux-en Windows-knooppunt groepen wilt maken, kunt u de instructies [hier][windows-container-cli]volgen.
 
-Maak verbinding met uw cluster met behulp van [kubectl][kubectl], de Kubernetes-opdracht regel-client. Gebruik de opdracht [az aks get-credentials][az-aks-get-credentials] om `kubectl` te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. Bij deze opdracht worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties.
+Maak verbinding met uw cluster met behulp van [kubectl][kubectl], de Kubernetes-opdracht regel-client. Gebruik de opdracht [az aks get-credentials][az-aks-get-credentials] om `kubectl` zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. Bij deze opdracht worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -91,7 +91,7 @@ az aks use-dev-spaces -g myResourceGroup -n myAKSCluster --space dev --yes
 
 ## <a name="update-your-windows-service-for-dev-spaces"></a>Uw Windows-service bijwerken voor ontwikkel ruimten
 
-Wanneer u ontwikkelings ruimten voor een bestaande naam ruimte met containers die al worden uitgevoerd, inschakelt, worden in ontwikkel ruimten standaard de nieuwe containers die in die naam ruimte worden uitgevoerd. Dev Spaces proberen ook nieuwe containers te maken die zijn gemaakt voor de service die al wordt uitgevoerd in de naam ruimte. Als u wilt voor komen dat ontwikkel ruimten een container die wordt uitgevoerd in uw naam ruimte, voegt u de header `deployment.yaml` *no-proxy* toe aan de.
+Wanneer u ontwikkelings ruimten voor een bestaande naam ruimte met containers die al worden uitgevoerd, inschakelt, worden in ontwikkel ruimten standaard de nieuwe containers die in die naam ruimte worden uitgevoerd. Dev Spaces proberen ook nieuwe containers te maken die zijn gemaakt voor de service die al wordt uitgevoerd in de naam ruimte. Als u wilt voor komen dat ontwikkel ruimten een container die wordt uitgevoerd in uw naam ruimte, voegt u de header *no-proxy* toe aan de `deployment.yaml` .
 
 Toevoegen `azds.io/no-proxy: "true"` aan het `existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml` bestand:
 
@@ -120,17 +120,17 @@ NAME              REVISION  UPDATED                     STATUS      CHART       
 windows-service 1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
 ```
 
-In het bovenstaande voor beeld is de naam van uw implementatie *Windows-service*. Werk uw Windows-service bij met de nieuwe `helm upgrade`configuratie met behulp van:
+In het bovenstaande voor beeld is de naam van uw implementatie *Windows-service*. Werk uw Windows-service bij met de nieuwe configuratie met behulp van `helm upgrade` :
 
 ```cmd
 helm upgrade windows-service . --namespace dev
 ```
 
-Sinds u uw `deployment.yaml`hebt bijgewerkt, zullen ontwikkel ruimten uw service niet proberen en instrumenteren.
+Sinds u uw hebt bijgewerkt `deployment.yaml` , zullen ontwikkel ruimten uw service niet proberen en instrumenteren.
 
 ## <a name="run-your-linux-application-with-azure-dev-spaces"></a>Uw Linux-toepassing uitvoeren met Azure dev Spaces
 
-Ga naar de `webfrontend` map en gebruik de `azds prep` opdrachten `azds up` en om uw Linux-toepassing op uw cluster uit te voeren.
+Ga naar de `webfrontend` map en gebruik de `azds prep` `azds up` opdrachten en om uw Linux-toepassing op uw cluster uit te voeren.
 
 ```console
 cd ../../webfrontend-linux/
@@ -161,7 +161,7 @@ Service 'webfrontend' port 'http' is available at http://dev.webfrontend.abcdef0
 Service 'webfrontend' port 80 (http) is available via port forwarding at http://localhost:57648
 ```
 
-U ziet de service die wordt uitgevoerd door de open bare URL te openen, die wordt weer gegeven in de uitvoer van de azds omhoog-opdracht. In dit voor beeld is `http://dev.webfrontend.abcdef0123.eus.azds.io/`de open bare URL. Ga naar de service in een browser en klik bovenaan op *info* . Controleer of er een bericht wordt weer gegeven van de *mywebapi* -service met de versie van Windows die in de container wordt gebruikt.
+U ziet de service die wordt uitgevoerd door de open bare URL te openen, die wordt weer gegeven in de uitvoer van de azds omhoog-opdracht. In dit voor beeld is de open bare URL `http://dev.webfrontend.abcdef0123.eus.azds.io/` . Ga naar de service in een browser en klik bovenaan op *info* . Controleer of er een bericht wordt weer gegeven van de *mywebapi* -service met de versie van Windows die in de container wordt gebruikt.
 
 ![Voor beeld-app met Windows-versie van mywebapi](../media/run-dev-spaces-windows-containers/sample-app.png)
 

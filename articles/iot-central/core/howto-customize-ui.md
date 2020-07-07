@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 8f76f143b6c6a26b88b78e20d8d5d8ae1ae48553
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80157981"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>De Azure IoT Central-gebruikers interface aanpassen
@@ -49,7 +49,7 @@ Een PNG-afbeelding, niet groter dan 32 x 32 pixels, met een transparante achterg
 
 ### <a name="browser-colors"></a>Browser kleuren
 
-U kunt de kleur van de paginakop tekst en de kleur die wordt gebruikt voor accent knoppen en andere hooglichten wijzigen. Gebruik een hexadecimale kleur waarde van zes tekens in `##ff6347`de notatie. Zie [HTML-kleuren](https://www.w3schools.com/html/html_colors.asp)voor meer informatie over de kleur notatie **hex-waarde** .
+U kunt de kleur van de paginakop tekst en de kleur die wordt gebruikt voor accent knoppen en andere hooglichten wijzigen. Gebruik een hexadecimale kleur waarde van zes tekens in de notatie `##ff6347` . Zie [HTML-kleuren](https://www.w3schools.com/html/html_colors.asp)voor meer informatie over de kleur notatie **hex-waarde** .
 
 > [!NOTE]
 > Op de pagina **uw toepassing aanpassen** kunt u altijd terugkeren naar de standaard opties.

@@ -7,17 +7,17 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: ba75daa47ca1f77cd5828d13877238a64deeeb41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80062467"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Een bestaande Azure App Service koppelen aan Azure Database for MySQL server
 In dit onderwerp wordt uitgelegd hoe u een bestaande Azure App Service kunt verbinden met uw Azure Database for MySQL-server.
 
 ## <a name="before-you-begin"></a>Voordat u begint
-Meld u aan bij de [Azure-portal](https://portal.azure.com). Een Azure Database for MySQL-server maken. Raadpleeg voor meer informatie [hoe u Azure database for mysql server maakt vanuit de portal](quickstart-create-mysql-server-database-using-azure-portal.md) of [hoe u Azure database for mysql server maakt met behulp van CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
+Meld u aan bij [Azure Portal](https://portal.azure.com). Een Azure Database for MySQL-server maken. Raadpleeg voor meer informatie [hoe u Azure database for mysql server maakt vanuit de portal](quickstart-create-mysql-server-database-using-azure-portal.md) of [hoe u Azure database for mysql server maakt met behulp van CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
 
 Er zijn momenteel twee oplossingen voor het inschakelen van toegang vanaf een Azure App Service naar een Azure Database for MySQL. Beide oplossingen moeten firewall regels op server niveau instellen.
 

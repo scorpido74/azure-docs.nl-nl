@@ -1,17 +1,17 @@
 ---
 title: Toegang tot Azure Functions via privésite inschakelen
 description: Meer informatie over het instellen van toegang tot de privésite van Azure Virtual Network voor Azure Functions.
-author: mcollier
-ms.author: mcollier
+author: craigshoemaker
+ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 930b691019d5cb56e487c58e3ca01c4f7ee4ef98
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 8e37876e0e9666097c3cf16589e64929c670b14a
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261129"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390275"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Zelfstudie: Toegang tot privésite van Azure Functions tot stand brengen
 

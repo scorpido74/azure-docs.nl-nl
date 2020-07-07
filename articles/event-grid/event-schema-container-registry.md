@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: 7e33feb04edf42f1e2a32b9b8c8e2fd214692f31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81393363"
 ---
 # <a name="azure-container-registry-as-an-event-grid-source"></a>Azure Container Registry als Event Grid bron
@@ -161,10 +161,10 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde. |
 | Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
-| eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
+| Type | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
 | eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | id | tekenreeks | De unieke id voor de gebeurtenis. |
-| data | object | Gebeurtenis gegevens van Blob-opslag. |
+| gegevens | object | Gebeurtenis gegevens van Blob-opslag. |
 | dataVersion | tekenreeks | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
 | metadataVersion | tekenreeks | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
 
@@ -188,12 +188,12 @@ Het doel object heeft de volgende eigenschappen:
 | lengte | geheel getal | Het aantal bytes van de inhoud. Gelijk aan het veld grootte. |
 | opslag plaats | tekenreeks | De naam van de opslag plaats. |
 | tag | tekenreeks | De naam van de tag. |
-| name | tekenreeks | De naam van de grafiek. |
+| naam | tekenreeks | De naam van de grafiek. |
 | versie | tekenreeks | De grafiek versie. |
 
 Het object Request heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | id | tekenreeks | De ID van de aanvraag die de gebeurtenis heeft gestart. |
 | addr | tekenreeks | Het IP-adres of de hostnaam en mogelijk poort van de client verbinding die de gebeurtenis heeft gestart. Deze waarde is de RemoteAddr van de standaard-HTTP-aanvraag. |

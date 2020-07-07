@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 09/16/2019
 ms.openlocfilehash: 7b7fff913c177703f959bfa103c8e310d01059e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81391828"
 ---
 # <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Definitie artefact voor aangepaste rollen in Azure Managed Applications
@@ -20,11 +20,11 @@ Dit artikel bevat een overzicht van het definitie artefact van aangepaste rollen
 
 ## <a name="custom-role-definition-artifact"></a>Definitie artefact van aangepaste rol
 
-U moet de aangepaste functie definitie artefact customRoleDefinition. json noemen. Plaats het op hetzelfde niveau als createUiDefinition. json en mainTemplate. json in het zip-pakket dat een definitie van een beheerde toepassing maakt. Zie [een definitie van een beheerde toepassing publiceren](publish-service-catalog-app.md) voor meer informatie over het maken van een zip-pakket en het publiceren van een definitie van een beheerde toepassing.
+U moet de aangepaste functie definitie artefact customRoleDefinition.jsop een naam hebben. Plaats het op hetzelfde niveau als createUiDefinition.jsop en mainTemplate.jsin het zip-pakket dat een definitie van een beheerde toepassing maakt. Zie [een definitie van een beheerde toepassing publiceren](publish-service-catalog-app.md) voor meer informatie over het maken van een zip-pakket en het publiceren van een definitie van een beheerde toepassing.
 
 ## <a name="custom-role-definition-schema"></a>Definitie schema voor aangepaste rol
 
-Het bestand customRoleDefinition. json heeft een eigenschap op het `roles` hoogste niveau die een matrix met rollen is. Deze rollen zijn de machtigingen die door de beheerde toepassing moeten worden gebruikt. Op dit moment zijn alleen ingebouwde rollen toegestaan, maar u kunt meerdere rollen opgeven. Naar een rol kan worden verwezen met de ID van de roldefinitie of met de rolnaam.
+De customRoleDefinition.jsin het bestand heeft een eigenschap op het hoogste niveau `roles` die een matrix met rollen is. Deze rollen zijn de machtigingen die door de beheerde toepassing moeten worden gebruikt. Op dit moment zijn alleen ingebouwde rollen toegestaan, maar u kunt meerdere rollen opgeven. Naar een rol kan worden verwezen met de ID van de roldefinitie of met de rolnaam.
 
 Voor beeld-JSON voor aangepaste roldefinitie:
 
@@ -49,7 +49,7 @@ Voor beeld-JSON voor aangepaste roldefinitie:
 
 ## <a name="roles"></a>Rollen
 
-Een rol bestaat uit een `$.properties.roleName` of een: `id`
+Een rol bestaat uit een of een `$.properties.roleName` `id` :
 
 ```json
 {
@@ -61,7 +61,7 @@ Een rol bestaat uit een `$.properties.roleName` of een: `id`
 ```
 
 > [!NOTE]
-> U kunt ofwel het `id` veld or `roleName` gebruiken. Er is slechts één vereist. Deze velden worden gebruikt voor het opzoeken van de roldefinitie die moet worden toegepast. Als beide zijn opgegeven, wordt `id` het veld gebruikt.
+> U kunt ofwel het `id` veld or gebruiken `roleName` . Er is slechts één vereist. Deze velden worden gebruikt voor het opzoeken van de roldefinitie die moet worden toegepast. Als beide zijn opgegeven, `id` wordt het veld gebruikt.
 
 |Eigenschap|Vereist?|Beschrijving|
 |---------|---------|---------|

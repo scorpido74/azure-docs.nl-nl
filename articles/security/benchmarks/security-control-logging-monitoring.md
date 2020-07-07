@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: e58df0997c62a131a3c9987369f8e076a62d6654
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81408347"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Beveiligings beheer: logboek registratie en controle
@@ -34,7 +34,7 @@ Micro soft onderhoudt tijd bronnen voor Azure-resources, maar u hebt de mogelijk
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 2,2 | 6,5, 6,6 | Klant |
+| 2.2 | 6,5, 6,6 | Klant |
 
 Opname logboeken via Azure Monitor voor het verzamelen van beveiligings gegevens die zijn gegenereerd door eindpunt apparaten, netwerk bronnen en andere beveiligings systemen. In Azure Monitor kunt u Log Analytics werk ruimte (n) gebruiken om een query uit te voeren en een Analytics-account te gebruiken, en Azure Storage accounts voor lange termijn/archiverings opslag.
 
@@ -64,7 +64,7 @@ Diagnostische instellingen op Azure-resources inschakelen voor toegang tot contr
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 2.4 | 6,2, 6,3 | Klant |
+| 2,4 | 6,2, 6,3 | Klant |
 
 Als de reken resource eigendom is van micro soft, is micro soft verantwoordelijk voor het bewaken van de bron. Als de reken resource eigendom is van uw organisatie, is het uw verantwoordelijkheid om deze te controleren. U kunt Azure Security Center gebruiken om het besturings systeem te bewaken. Gegevens die worden verzameld door Security Center van het besturings systeem zijn onder andere besturingssysteem type en-versie, besturings systeem (Windows-gebeurtenis Logboeken), actieve processen, computer naam, IP-adressen en aangemelde gebruiker. De Log Analytics-agent verzamelt ook crash dump bestanden.
 
@@ -76,7 +76,7 @@ Als de reken resource eigendom is van micro soft, is micro soft verantwoordelijk
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 2,5 | 6.4 | Klant |
+| 2.5 | 6.4 | Klant |
 
 Stel binnen Azure Monitor uw Bewaar periode voor Log Analytics werk ruimte in volgens de nalevings voorschriften van uw organisatie. Gebruik Azure Storage-accounts voor lange termijn/archiverings opslag.
 

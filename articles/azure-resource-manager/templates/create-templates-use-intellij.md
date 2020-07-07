@@ -5,10 +5,10 @@ ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.openlocfilehash: a5015a018f905b4353afd6bf25a48a2d942b3b97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80153349"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>ARM-sjablonen maken en implementeren met behulp van het IntelliJ-idee
@@ -19,7 +19,7 @@ Leer hoe u een Azure Resource Manager-sjabloon (ARM) implementeert in azure met 
 
 Na het voltooien van de zelfstudie implementeert u een Azure Storage-account. Hetzelfde proces kan worden gebruikt voor het implementeren van andere Azure-resources.
 
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -33,13 +33,13 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
 In plaats van een sjabloon helemaal opnieuw te maken, opent u een sjabloon in [Azure-snelstartsjablonen](https://azure.microsoft.com/resources/templates/). Quick Start-sjablonen van Azure is een opslag plaats voor ARM-sjablonen. De sjabloon die in dit artikel wordt gebruikt, wordt [een standaard-opslag account maken](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/)genoemd. Hiermee wordt een Azure Storage-account resource gedefinieerd.
 
-1. Klik met de rechter muisknop en [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) Sla [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) de en op uw lokale computer op.
+1. Klik met de rechter muisknop en sla de [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) en [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) op uw lokale computer op.
 
 1. Als uw Azure-Toolkit correct is geïnstalleerd en aangemeld, ziet u Azure Explorer in de zijbalk van uw IntelliJ-idee. Klik met de rechter muisknop op het **resource beheer** en selecteer **implementatie maken**.
 
     ![Resource Manager-sjabloon met de rechter muisknop om implementatie te maken](./media/create-templates-use-intellij/resource-manager-create-deployment-right-click.png)
 
-1. Configuratie van de **implementatie naam**, het **abonnement**, de **resource groep**en de **regio**. Hier implementeren we de sjabloon in een nieuwe resource groep `testRG`. Selecteer vervolgens pad voor **resource sjabloon** als `azuredeploy.json` en **resource parameters** tijdens `azuredeploy.parameters.json` het downloaden.
+1. Configuratie van de **implementatie naam**, het **abonnement**, de **resource groep**en de **regio**. Hier implementeren we de sjabloon in een nieuwe resource groep `testRG` . Selecteer vervolgens pad voor **resource sjabloon** als `azuredeploy.json` en **resource parameters** tijdens `azuredeploy.parameters.json` het downloaden.
 
     ![Resource Manager-sjabloon bestanden selecteren om implementatie te maken](./media/create-templates-use-intellij/resource-manager-create-deployment-select-files.png)
 
@@ -63,11 +63,11 @@ In plaats van een sjabloon helemaal opnieuw te maken, opent u een sjabloon in [A
 
     ![Resource Manager-sjabloon implementatie bewerken](./media/create-templates-use-intellij/resource-manager-edit-deployment.png)
 
-1. U kunt de twee bestanden op deze pagina bewerken en de wijzigingen in azure implementeren. Hier wijzigen we de waarde van **storageAccountType** in parameter bestanden van `Standard_LRS` tot. `Standard_GRS` Klik op **Update-implementatie** onder en bevestig de update.
+1. U kunt de twee bestanden op deze pagina bewerken en de wijzigingen in azure implementeren. Hier wijzigen we de waarde van **storageAccountType** in parameter bestanden van `Standard_LRS` tot `Standard_GRS` . Klik op **Update-implementatie** onder en bevestig de update.
 
     ![Resource Manager-sjabloon implementatie bewerken](./media/create-templates-use-intellij/resource-manager-edit-deployment-update.png)
 
-1. Nadat de update-implementatie is voltooid, kunt u controleren op de portal waar het gemaakte opslag account `Standard_GRS`is gewijzigd.
+1. Nadat de update-implementatie is voltooid, kunt u controleren op de portal waar het gemaakte opslag account is gewijzigd `Standard_GRS` .
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

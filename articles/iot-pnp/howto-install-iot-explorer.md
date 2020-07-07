@@ -9,10 +9,10 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 963421fa1ef06599448c9a4197f0d7a6ad2e142d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80159180"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Azure IoT Explorer installeren en gebruiken
@@ -28,7 +28,7 @@ In dit artikel leest u informatie over:
 
 Als u het hulp programma Azure IoT Explorer wilt gebruiken, hebt u het volgende nodig:
 
-- Een Azure IoT hub. Er zijn veel manieren om een IoT-hub toe te voegen aan uw Azure-abonnement, zoals [het maken van een IOT-hub met behulp van de Azure cli](../iot-hub/iot-hub-create-using-cli.md). U hebt de IoT hub-connection string nodig om het hulp programma Azure IoT Explorer uit te voeren. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+- Een Azure IoT hub. Er zijn veel manieren om een IoT-hub toe te voegen aan uw Azure-abonnement, zoals [het maken van een IOT-hub met behulp van de Azure cli](../iot-hub/iot-hub-create-using-cli.md). U hebt de IoT hub-connection string nodig om het hulp programma Azure IoT Explorer uit te voeren. Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 - Een apparaat dat is geregistreerd in uw IoT-hub. U kunt de volgende Azure CLI-opdracht gebruiken om een apparaat te registreren. Zorg ervoor dat u de `{YourIoTHubName}` `{YourDeviceID}` tijdelijke aanduidingen vervangt door de waarden:
 
     ```azurecli-interactive
@@ -73,7 +73,7 @@ Op de pagina met **apparaten** lijst kunt u het volgende doen:
 
 - Selecteer **toevoegen** om een nieuw apparaat bij uw hub te registreren. Voer vervolgens een apparaat-ID in. Gebruik de standaard instellingen om automatisch verificatie sleutels te genereren en de verbinding met uw hub in te scha kelen.
 - Selecteer een apparaat en selecteer vervolgens **verwijderen** om een apparaat-id te verwijderen. Controleer de details van het apparaat voordat u deze actie voltooit, zodat u zeker weet dat u de juiste apparaat-id wilt verwijderen.
-- Query's uitvoeren `capabilityID` door `interfaceID`en. Voeg uw `capabilityID` of `interfaceID` als een para meter toe om een query op uw apparaten uit te kunnen zetten.
+- Query's uitvoeren door `capabilityID` en `interfaceID` . Voeg uw `capabilityID` of `interfaceID` als een para meter toe om een query op uw apparaten uit te kunnen zetten.
 
 ## <a name="interact-with-a-device"></a>Interactie met een apparaat
 

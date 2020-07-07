@@ -4,10 +4,10 @@ description: Resources implementeren in azure met een Azure Resource Manager sja
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.openlocfilehash: 42eaae316d4fd0575102323933f849a3058228a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80156392"
 ---
 # <a name="deploy-private-arm-template-with-sas-token"></a>Een persoonlijke ARM-sjabloon met SAS-token implementeren
@@ -18,7 +18,7 @@ Wanneer uw Azure Resource Manager-sjabloon (ARM) zich in een opslag account bevi
 
 Met het volgende script maakt u een opslag account en een container waarvoor open bare toegang is uitgeschakeld.
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -65,7 +65,7 @@ az storage container create \
 
 U bent nu klaar om uw sjabloon te uploaden naar het opslag account. Geef het pad op naar de sjabloon die u wilt gebruiken.
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Set-AzStorageBlobContent `
@@ -93,7 +93,7 @@ Als u een persoonlijke sjabloon in een opslag account wilt implementeren, genere
 > De blob die de sjabloon bevat, is alleen toegankelijk voor de eigenaar van het account. Wanneer u echter een SAS-token voor de BLOB maakt, is de BLOB toegankelijk voor iedereen met die URI. Als een andere gebruiker de URI onderschept, kan die gebruiker toegang krijgen tot de sjabloon. Een SAS-token is een goede manier om de toegang tot uw sjablonen te beperken, maar u mag geen gevoelige gegevens zoals wacht woorden rechtstreeks in de sjabloon toevoegen.
 >
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 # get the URI with the SAS token

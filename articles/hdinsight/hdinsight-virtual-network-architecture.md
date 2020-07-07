@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: ad0e0250b32f2bdef4944e6e148be3215f3822f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81390210"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight Virtual Network-architectuur
@@ -36,7 +36,7 @@ Azure HDInsight-clusters hebben verschillende typen virtuele machines of knoop p
 
 Gebruik FQDN-namen (FULLy Qualified Domain names) bij het adresseren van knoop punten in uw cluster. U kunt de FQDN-namen voor verschillende knooppunt typen in uw cluster ophalen met behulp van de [Ambari-API](hdinsight-hadoop-manage-ambari-rest-api.md).
 
-Deze FQDN-namen hebben het formulier `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net`.
+Deze FQDN-namen hebben het formulier `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net` .
 
 De `<node-type-prefix>` wordt *HN* voor hoofd knooppunten, *wn* voor worker-knoop punten en *Zn* voor Zookeeper-knoop punten.
 
@@ -71,16 +71,16 @@ De volgende netwerk bronnen worden automatisch gemaakt in het virtuele netwerk d
 
 U kunt op drie manieren toegang krijgen tot uw HDInsight-cluster:
 
-- Een HTTPS-eind punt buiten het virtuele netwerk `CLUSTERNAME.azurehdinsight.net`op.
-- Een SSH-eind punt voor rechtstreekse verbinding met de `CLUSTERNAME-ssh.azurehdinsight.net`hoofd knooppunt op.
-- Een HTTPS-eind punt in het `CLUSTERNAME-int.azurehdinsight.net`virtuele netwerk. Let op de`-int`"" in deze URL. Dit eind punt wordt omgezet naar een privé-IP-adres in dat virtuele netwerk en is niet toegankelijk via het open bare Internet.
+- Een HTTPS-eind punt buiten het virtuele netwerk op `CLUSTERNAME.azurehdinsight.net` .
+- Een SSH-eind punt voor rechtstreekse verbinding met de hoofd knooppunt op `CLUSTERNAME-ssh.azurehdinsight.net` .
+- Een HTTPS-eind punt in het virtuele netwerk `CLUSTERNAME-int.azurehdinsight.net` . Let op de " `-int` " in deze URL. Dit eind punt wordt omgezet naar een privé-IP-adres in dat virtuele netwerk en is niet toegankelijk via het open bare Internet.
 
 Deze drie eind punten krijgen elk een load balancer.
 
 Open bare IP-adressen worden ook gegeven aan de twee eind punten die de verbinding van buiten het virtuele netwerk toestaan.
 
-1. Er wordt één openbaar IP-adres toegewezen aan de load balancer voor de Fully Qualified Domain Name (FQDN) die moet worden gebruikt om verbinding te `CLUSTERNAME.azurehdinsight.net`maken met het cluster via internet.
-1. Het tweede open bare IP-adres wordt gebruikt voor de domein naam `CLUSTERNAME-ssh.azurehdinsight.net`SSH only.
+1. Er wordt één openbaar IP-adres toegewezen aan de load balancer voor de Fully Qualified Domain Name (FQDN) die moet worden gebruikt om verbinding te maken met het cluster via internet `CLUSTERNAME.azurehdinsight.net` .
+1. Het tweede open bare IP-adres wordt gebruikt voor de domein naam SSH only `CLUSTERNAME-ssh.azurehdinsight.net` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -4,10 +4,10 @@ description: Wanneer u Azure delegated resource management gebruikt, is het bela
 ms.date: 03/24/2020
 ms.topic: conceptual
 ms.openlocfilehash: d9b806aaf988fedfde6ce468f3eff948aa8ce344
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80246905"
 ---
 # <a name="recommended-security-practices"></a>Aanbevolen beveiligingsprocedures
@@ -46,4 +46,4 @@ Houd er rekening mee dat bij het opheffen van [klanten via een openbaar beheerd 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Azure multi-factor Authentication implementeren](../../active-directory/authentication/howto-mfa-getstarted.md).
-- Meer informatie over de [ervaring op het beheer van cross-tenants](cross-tenant-management-experience.md).
+- Meer informatie over [beheerervaring in meerdere tenants](cross-tenant-management-experience.md).

@@ -10,10 +10,10 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: e349aadfd629202b1c8cdb5c53a88e0a6c2e06de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80159214"
 ---
 # <a name="connect-to-and-interact-with-an-iot-plug-and-play-preview-device"></a>Verbinding maken met en interactie met een IoT Plug en Play preview-apparaat
@@ -30,21 +30,21 @@ npm install
 
 ## <a name="run-the-service-samples"></a>De service voorbeelden uitvoeren
 
-Gebruik de volgende voor beelden om de mogelijkheden van de node. js Service-SDK te verkennen. Zorg ervoor dat de `IOTHUB_CONNECTION_STRING` omgevings variabele is ingesteld in de shell die u gebruikt:
+Gebruik de volgende voor beelden om de mogelijkheden van de Node.js Service-SDK te verkennen. Zorg ervoor dat de `IOTHUB_CONNECTION_STRING` omgevings variabele is ingesteld in de shell die u gebruikt:
 
 ### <a name="retrieve-a-digital-twin-and-list-the-interfaces"></a>Een digitale dubbele en een lijst met de interfaces ophalen
 
-**get_digital_twin. js** krijgt de digitale verbinding die is gekoppeld aan uw apparaat en het onderdeel wordt op de opdracht regel afgedrukt. U hoeft geen voor beeld van een actief apparaat te laten slagen.
+**get_digital_twin.js** haalt het digitale element op dat is gekoppeld aan het apparaat en drukt het onderdeel af op de opdracht regel. U hoeft geen voor beeld van een actief apparaat te laten slagen.
 
-**get_digital_twin_interface_instance. js** krijgt een enkel interface-exemplaar van digitaal, dat is gekoppeld aan uw apparaat en wordt afgedrukt op de opdracht regel. Het is niet nodig om het voor beeld van het apparaat uit te voeren.
+**get_digital_twin_interface_instance.js** haalt een exemplaar van een enkele interface op dat digitaal is gekoppeld aan uw apparaat en afdrukt op de opdracht regel. Het is niet nodig om het voor beeld van het apparaat uit te voeren.
 
 ### <a name="get-and-set-properties-using-the-node-service-sdk"></a>Eigenschappen ophalen en instellen met behulp van de node-Service-SDK
 
-**update_digital_twin. js** werkt een Beschrijf bare eigenschap op uw apparaat digitaal, met behulp van een volledige patch. Als u wilt, kunt u meerdere eigenschappen op meerdere interfaces bijwerken. Hiervoor moet het voor beeld van het apparaat op hetzelfde moment worden uitgevoerd. Geslaagd lijkt op het voor beeld van een apparaat het bijwerken van een eigenschap. met het voor beeld van de service wordt een bijgewerkt digitaal twee in de Terminal afgedrukt.
+**update_digital_twin.js** een schrijf bare eigenschap op uw apparaat digitaal, met behulp van een volledige patch, bijgewerkt. Als u wilt, kunt u meerdere eigenschappen op meerdere interfaces bijwerken. Hiervoor moet het voor beeld van het apparaat op hetzelfde moment worden uitgevoerd. Geslaagd lijkt op het voor beeld van een apparaat het bijwerken van een eigenschap. met het voor beeld van de service wordt een bijgewerkt digitaal twee in de Terminal afgedrukt.
 
 ### <a name="send-a-command-and-retrieve-the-response-using-the-node-service-sdk"></a>Een opdracht verzenden en de reactie ophalen met behulp van de node Service-SDK
 
-**invoke_command. js** roept een synchrone opdracht op uw apparaat in digitale twee. Hiervoor moet het voor beeld van het apparaat op hetzelfde moment worden uitgevoerd. Geslaagd lijkt op het voor beeld van een apparaat om een opdracht te bevestigen en de service-client het resultaat van de opdracht in de Terminal af te drukken.
+**invoke_command.js** roept een synchrone opdracht op uw apparaat op digitale twee. Hiervoor moet het voor beeld van het apparaat op hetzelfde moment worden uitgevoerd. Geslaagd lijkt op het voor beeld van een apparaat om een opdracht te bevestigen en de service-client het resultaat van de opdracht in de Terminal af te drukken.
 
 ### <a name="connect-to-the-public-repository-and-retrieve-a-model-definition-using-the-node-service-sdk"></a>Verbinding maken met de open bare opslag plaats en een model definitie ophalen met behulp van de node Service SDK
 

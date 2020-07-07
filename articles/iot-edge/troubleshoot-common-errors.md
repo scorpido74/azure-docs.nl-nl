@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ed93d24bc06a6622a8ace2b0ab6b44582da001c0
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82783745"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Veelvoorkomende problemen en oplossingen voor Azure IoT Edge
@@ -43,7 +43,7 @@ Een netwerk configuratie op het doelnet werk verhindert dat de IoT Edge agent he
 
 De IoT Edge-runtime stelt een netwerk in voor elk van de modules waarmee moet worden gecommuniceerd. In Linux is dit netwerk een brugnetwerk. In Windows wordt NAT gebruikt. Dit probleem komt vaker voor op Windows-apparaten die gebruikmaken van Windows-containers die het NAT-netwerk gebruiken.
 
-**Opgelost**
+**Oplossing:**
 
 Zorg ervoor dat er een route naar internet is voor de IP-adressen die aan deze brug/dit NAT-netwerk zijn toegewezen. Soms heeft een VPN-configuratie op de host voorrang op het IoT Edge-netwerk.
 
@@ -57,7 +57,7 @@ Een container kan niet worden uitgevoerd, en in de edgeAgent-Logboeken wordt een
 
 De IoT Edge-agent heeft geen machtigingen voor toegang tot de installatie kopie van een module.
 
-**Opgelost**
+**Oplossing:**
 
 Zorg ervoor dat uw register referenties correct zijn opgegeven in het implementatie manifest.
 
@@ -71,7 +71,7 @@ Het apparaat heeft geen problemen met het starten van modules die in de implemen
 
 Standaard worden modules IoT Edge in hun eigen geïsoleerde container netwerk gestart. Het apparaat heeft mogelijk problemen met de DNS-naam omzetting binnen dit particuliere netwerk.
 
-**Opgelost**
+**Oplossing:**
 
 **Optie 1: DNS-server instellen in container Engine-instellingen**
 
@@ -143,13 +143,13 @@ warn: edgelet_utils::logging --     caused by: failed to create endpoint edgeHub
 
 Een ander proces op de hostcomputer heeft een poort gebonden aan het koppelen van de edgeHub-module. De IoT Edge hub wijst poorten 443, 5671 en 8883 toe voor gebruik in Gateway scenario's. De module kan niet worden gestart als een ander proces al een van deze poorten heeft gebonden.
 
-**Opgelost**
+**Oplossing:**
 
 U kunt dit probleem op twee manieren oplossen:
 
 Als het IoT Edge-apparaat als een gateway apparaat fungeert, moet u het proces dat poort 443, 5671 of 8883 gebruikt, vinden en stoppen. Een fout voor poort 443 betekent meestal dat het andere proces een webserver is.
 
-Als u het IoT Edge apparaat niet als gateway hoeft te gebruiken, kunt u de poort bindingen verwijderen uit de module voor het maken van edgeHub. U kunt de opties voor het maken van wijzigingen in de Azure Portal of rechtstreeks in het bestand Deployment. json wijzigen.
+Als u het IoT Edge apparaat niet als gateway hoeft te gebruiken, kunt u de poort bindingen verwijderen uit de module voor het maken van edgeHub. U kunt de opties voor het maken van wijzigingen in de Azure Portal of rechtstreeks in de deployment.jsin het bestand wijzigen.
 
 In Azure Portal:
 
@@ -165,9 +165,9 @@ In Azure Portal:
 
 6. Sla de wijzigingen op en maak de implementatie.
 
-In het bestand Deployment. json:
+In het bestand deployment.js:
 
-1. Open het bestand Deployment. json dat u hebt toegepast op uw IoT Edge-apparaat.
+1. Open de deployment.jsop het bestand dat u op uw IoT Edge apparaat hebt toegepast.
 
 2. Zoek de `edgeHub` instellingen in de sectie gewenste eigenschappen edgeAgent:
 
@@ -212,7 +212,7 @@ Error parsing user input data: invalid hostname. Hostname cannot be empty or gre
 
 De runtime van IoT Edge kan alleen hostnamen ondersteunen die korter zijn dan 64 tekens. Fysieke machines hebben doorgaans geen lange hostnamen, maar het probleem komt vaker voor op een virtuele machine. De automatisch gegenereerde hostnamen voor virtuele Windows-machines die worden gehost in azure, met name meestal lang.
 
-**Opgelost**
+**Oplossing:**
 
 Wanneer u deze fout ziet, kunt u deze oplossen door de DNS-naam van de virtuele machine te configureren en vervolgens de DNS-naam als hostnaam in te stellen in de installatie opdracht.
 
@@ -222,7 +222,7 @@ Wanneer u deze fout ziet, kunt u deze oplossen door de DNS-naam van de virtuele 
    ![De DNS-naam van de virtuele machine configureren](./media/troubleshoot/configure-dns.png)
 
 3. Geef een waarde op voor het label voor de **DNS-naam** en selecteer **Opslaan**.
-4. Kopieer de nieuwe DNS-naam met de indeling ** \<DNSnamelabel\>.\< vmlocation\>. cloudapp.Azure.com**.
+4. Kopieer de nieuwe DNS-naam, die de indeling moet hebben ** \<DNSnamelabel\> . \<vmlocation\> .. cloudapp.azure.com**.
 5. Gebruik in de virtuele machine de volgende opdracht om de IoT Edge runtime in te stellen met uw DNS-naam:
 
    * Op Linux:
@@ -245,11 +245,11 @@ U krijgt een EventLogException wanneer u `Get-WinEvent` op Windows gebruikt.
 
 **Hoofd oorzaak:**
 
-De `Get-WinEvent` Power shell-opdracht is afhankelijk van een register vermelding die aanwezig moet zijn om logboeken `ProviderName`te zoeken op basis van een specifieke.
+De `Get-WinEvent` Power shell-opdracht is afhankelijk van een register vermelding die aanwezig moet zijn om logboeken te zoeken op basis van een specifieke `ProviderName` .
 
-**Opgelost**
+**Oplossing:**
 
-Stel een register vermelding voor de IoT Edge-daemon in. Maak een **iotedge. reg** -bestand met de volgende inhoud en importeer het in het Windows-REGI ster door erop te dubbel klikken of `reg import iotedge.reg` door de opdracht te gebruiken:
+Stel een register vermelding voor de IoT Edge-daemon in. Maak een **iotedge. reg** -bestand met de volgende inhoud en importeer het in het Windows-REGI ster door erop te dubbel klikken of door de opdracht te gebruiken `reg import iotedge.reg` :
 
 ```reg
 Windows Registry Editor Version 5.00
@@ -270,13 +270,13 @@ U kunt stabiliteits problemen ondervinden op apparaten die zijn beperkt tot een 
 
 De IoT Edge hub, die deel uitmaakt van de IoT Edge runtime, is standaard geoptimaliseerd voor prestaties en probeert grote delen van geheugen toe te wijzen. Deze optimalisatie is niet ideaal voor beperkte edge-apparaten en kan stabiliteits problemen veroorzaken.
 
-**Opgelost**
+**Oplossing:**
 
 Stel voor de IoT Edge hub een omgevings variabele **OptimizeForPerformance** in op **False**. Er zijn twee manieren om omgevings variabelen in te stellen:
 
 In Azure Portal:
 
-Selecteer in uw IOT hub uw IOT edge-apparaat en op de pagina Details van apparaat en selecteer > **runtime-instellingen**voor **modules instellen**. Maak een omgevings variabele voor de IoT Edge hub-module met de naam *OptimizeForPerformance* die is ingesteld op *False*.
+Selecteer in uw IOT hub uw IOT edge-apparaat en op de pagina Details van apparaat en selecteer runtime-instellingen voor **modules instellen**  >  **Runtime Settings**. Maak een omgevings variabele voor de IoT Edge hub-module met de naam *OptimizeForPerformance* die is ingesteld op *False*.
 
 ![OptimizeForPerformance ingesteld op False](./media/troubleshoot/optimizeforperformance-false.png)
 
@@ -300,7 +300,7 @@ In het implementatie manifest:
 
 **Waargenomen gedrag:**
 
-Een aangepaste IoT Edge module kan geen bericht verzenden naar de IoT Edge hub met een 404 `Module not found` -fout. De IoT Edge-daemon drukt het volgende bericht in de logboeken af:
+Een aangepaste IoT Edge module kan geen bericht verzenden naar de IoT Edge hub met een 404- `Module not found` fout. De IoT Edge-daemon drukt het volgende bericht in de logboeken af:
 
 ```output
 Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 )
@@ -310,11 +310,11 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 
 De IoT Edge-daemon dwingt proces identificatie af voor alle modules die om veiligheids redenen verbinding maken met de edgeHub. Hiermee wordt gecontroleerd of alle berichten die worden verzonden door een module afkomstig zijn van de hoofd proces-ID van de module. Als een bericht wordt verzonden door een module van een andere proces-ID dan oorspronkelijk tot stand is gebracht, wordt het bericht met een 404-fout bericht geweigerd.
 
-**Opgelost**
+**Oplossing:**
 
 Vanaf versie 1.0.7 zijn alle module processen gemachtigd om verbinding te maken. Zie [1.0.7 release wijzigingen logboek](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1)voor meer informatie.
 
-Als u een upgrade naar 1.0.7 niet mogelijk hebt, voert u de volgende stappen uit. Zorg ervoor dat dezelfde proces-ID altijd wordt gebruikt door de aangepaste IoT Edge module om berichten naar de edgeHub te verzenden. Zorg er bijvoorbeeld voor dat u `ENTRYPOINT` in plaats `CMD` van de opdracht in het docker-bestand. De `CMD` opdracht leidt naar één proces-id voor de module en een andere proces-id voor de opdracht bash, die het `ENTRYPOINT` hoofd programma uitvoert, maar leidt tot één proces-id.
+Als u een upgrade naar 1.0.7 niet mogelijk hebt, voert u de volgende stappen uit. Zorg ervoor dat dezelfde proces-ID altijd wordt gebruikt door de aangepaste IoT Edge module om berichten naar de edgeHub te verzenden. Zorg er bijvoorbeeld voor dat u in `ENTRYPOINT` plaats van `CMD` de opdracht in het docker-bestand. De `CMD` opdracht leidt naar één proces-id voor de module en een andere proces-id voor de opdracht bash, die het hoofd programma uitvoert, maar `ENTRYPOINT` leidt tot één proces-id.
 
 ## <a name="iot-edge-module-deploys-successfully-then-disappears-from-device"></a>IoT Edge module is geïmplementeerd, verdwijnt vervolgens van apparaat
 
@@ -326,7 +326,7 @@ Nadat u modules voor een IoT Edge apparaat hebt ingesteld, worden de modules ge�
 
 Als een automatische implementatie gericht is op een apparaat, heeft dit prioriteit boven het hand matig instellen van de modules voor één apparaat. De functionaliteit voor het **instellen van modules** in azure portal of het **maken van implementatie voor** de functionaliteit van één apparaat in Visual Studio code zal even duren. U ziet de modules die u hebt gedefinieerd, gestart op het apparaat. Vervolgens wordt de prioriteit van de automatische implementatie in en worden de gewenste eigenschappen van het apparaat overschreven.
 
-**Opgelost**
+**Oplossing:**
 
 Gebruik slechts één type implementatie mechanisme per apparaat, hetzij een automatische implementatie als implementatie van een afzonderlijk apparaat. Als u meerdere automatische implementaties hebt die gericht zijn op een apparaat, kunt u prioriteits-of doel beschrijvingen wijzigen om ervoor te zorgen dat de juiste van toepassing is op een bepaald apparaat. U kunt het apparaat ook bijwerken tussen en niet langer overeenkomen met de doel beschrijving van de automatische implementatie.
 

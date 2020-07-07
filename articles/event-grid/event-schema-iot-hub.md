@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: f9bf807884ab5592fa320532f3ca10a223081263
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81393328"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure IoT Hub als Event Grid bron
@@ -151,9 +151,9 @@ Alle gebeurtenissen bevatten dezelfde gegevens op het hoogste niveau:
 | id | tekenreeks | De unieke id voor de gebeurtenis. |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde. |
 | Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
-| eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
+| Type | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
 | eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
-| data | object | IoT Hub gebeurtenis gegevens.  |
+| gegevens | object | IoT Hub gebeurtenis gegevens.  |
 | dataVersion | tekenreeks | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
 | metadataVersion | tekenreeks | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
 
@@ -162,7 +162,7 @@ Voor alle IoT Hub gebeurtenissen bevat het gegevens object de volgende eigenscha
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | hubName | tekenreeks | De naam van de IoT Hub waarop het apparaat is gemaakt of verwijderd. |
-| deviceId | tekenreeks | De unieke id van het apparaat. Deze hoofdletter gevoelige teken reeks kan Maxi maal 128 tekens lang zijn, en ondersteunt ASCII 7-bits alfanumerieke tekens plus de volgende speciale tekens `- : . + % _ # * ? ! ( ) , = @ ; $ '`:. |
+| deviceId | tekenreeks | De unieke id van het apparaat. Deze hoofdletter gevoelige teken reeks kan Maxi maal 128 tekens lang zijn, en ondersteunt ASCII 7-bits alfanumerieke tekens plus de volgende speciale tekens: `- : . + % _ # * ? ! ( ) , = @ ; $ '` . |
 
 De inhoud van het gegevens object verschilt voor elke uitgever van de gebeurtenis. 
 
@@ -170,7 +170,7 @@ Het gegevens object bevat de volgende eigenschappen voor **apparaten die zijn ve
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| moduleId | tekenreeks | De unieke id van de module. Dit veld wordt alleen uitgevoerd voor module apparaten. Deze hoofdletter gevoelige teken reeks kan Maxi maal 128 tekens lang zijn, en ondersteunt ASCII 7-bits alfanumerieke tekens plus de volgende speciale tekens `- : . + % _ # * ? ! ( ) , = @ ; $ '`:. |
+| moduleId | tekenreeks | De unieke id van de module. Dit veld wordt alleen uitgevoerd voor module apparaten. Deze hoofdletter gevoelige teken reeks kan Maxi maal 128 tekens lang zijn, en ondersteunt ASCII 7-bits alfanumerieke tekens plus de volgende speciale tekens: `- : . + % _ # * ? ! ( ) , = @ ; $ '` . |
 | deviceConnectionStateEventInfo | object | Informatie over de gebeurtenis van de verbindings status van het apparaat
 | sequenceNumber | tekenreeks | Een getal waarmee u de volg orde kunt bepalen van gebeurtenissen die zijn verbonden met het apparaat of de verbinding met het apparaat. De meest recente gebeurtenis heeft een Volg nummer dat hoger is dan de vorige gebeurtenis. Dit aantal kan worden gewijzigd door meer dan 1, maar is strikt toeneemt. Zie een [Volg nummer gebruiken](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
 
@@ -184,7 +184,7 @@ Voor de **telemetrie** van het apparaat IOT hub gebeurtenis bevat het gegevens o
 
 Het gegevens object van het apparaat dat is **gemaakt** en het **apparaat is verwijderd** IOT hub gebeurtenissen bevat de volgende eigenschappen:
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | dubbel | object | Informatie over het apparaat, namelijk de Cloud representatie van meta gegevens van toepassings apparaten. | 
 | deviceID | tekenreeks | De unieke id van het apparaat dubbele. | 
@@ -195,7 +195,7 @@ Het gegevens object van het apparaat dat is **gemaakt** en het **apparaat is ver
 | connectionState | tekenreeks | Hiermee wordt aangegeven of het apparaat is verbonden of verbroken. | 
 | lastActivityTime | tekenreeks | De ISO8601-tijds tempel van de laatste activiteit. | 
 | cloudToDeviceMessageCount | geheel getal | Aantal berichten van de Cloud naar het apparaat dat naar dit apparaat wordt verzonden. | 
-| authenticationType | tekenreeks | Verificatie type dat wordt gebruikt voor dit apparaat `SAS`: `SelfSigned`ofwel, `CertificateAuthority`of. |
+| authenticationType | tekenreeks | Verificatie type dat wordt gebruikt voor dit apparaat: ofwel `SAS` , `SelfSigned` of `CertificateAuthority` . |
 | x509Thumbprint | tekenreeks | De vinger afdruk is een unieke waarde voor het x509-certificaat, die vaak wordt gebruikt om een bepaald certificaat te vinden in een certificaat archief. De vinger afdruk wordt dynamisch gegenereerd met het SHA1-algoritme en bestaat niet fysiek in het certificaat. | 
 | primaryThumbprint | tekenreeks | Primaire vinger afdruk voor het x509-certificaat. |
 | secondaryThumbprint | tekenreeks | Secundaire vinger afdruk voor het x509-certificaat. | 

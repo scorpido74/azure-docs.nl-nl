@@ -10,10 +10,10 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 754c106db42f3f0695ad023e736993bee82e9757
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82133921"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure IoT Edge modules implementeren vanuit de Azure Portal
@@ -43,7 +43,7 @@ De Azure Portal bevat een wizard die u helpt bij het maken van het implementatie
 1. Selecteer in de sectie **IOT Edge-modules** van de pagina de optie **toevoegen**.
 1. Bekijk de typen modules in de vervolg keuzelijst:
 
-   * **Module IOT Edge** : u geeft de module naam en URI van de container installatie kopie op. De afbeeldings-URI voor de voor beeld-SimulatedTemperatureSensor- `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`module is bijvoorbeeld. Als de module installatie kopie is opgeslagen in een persoonlijk container register, voegt u de referenties op deze pagina toe om de installatie kopie te openen.
+   * **Module IOT Edge** : u geeft de module naam en URI van de container installatie kopie op. De afbeeldings-URI voor de voor beeld-SimulatedTemperatureSensor-module is bijvoorbeeld `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0` . Als de module installatie kopie is opgeslagen in een persoonlijk container register, voegt u de referenties op deze pagina toe om de installatie kopie te openen.
    * **Marketplace-module** : modules die worden gehost op de Azure Marketplace. Voor sommige Marketplace-modules is aanvullende configuratie vereist. Controleer dus de module gegevens in de lijst met [IOT Edge modules van Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) .
    * **Azure stream Analytics module** : modules die zijn gegenereerd op basis van een Azure stream Analytics workload.
 
@@ -53,7 +53,7 @@ De Azure Portal bevat een wizard die u helpt bij het maken van het implementatie
 
 ### <a name="specify-routes"></a>Routes opgeven
 
-Op het tabblad **routes** definieert u hoe berichten worden door gegeven tussen modules en de IOT hub. Berichten worden gemaakt met behulp van naam/waarde-paren. Een route wordt standaard **route ring** genoemd en gedefinieerd als **van/messages/\* in $upstream**. Dit betekent dat alle berichten die door modules worden uitgevoerd, worden verzonden naar uw IOT-hub.  
+Op het tabblad **Routes** definieert u hoe berichten tussen modules en de IoT Hub worden uitgewisseld. Berichten worden gemaakt met behulp van naam/waarde-paren. Een route wordt standaard **route ring** genoemd en gedefinieerd als **van/messages/ \* in $upstream**. Dit betekent dat alle berichten die door modules worden uitgevoerd, worden verzonden naar uw IOT-hub.  
 
 Voeg de routes toe of werk deze bij met informatie van [Declareer routes](module-composition.md#declare-routes)en selecteer vervolgens **volgende: controleren + maken** om door te gaan naar de volgende stap van de wizard.
 

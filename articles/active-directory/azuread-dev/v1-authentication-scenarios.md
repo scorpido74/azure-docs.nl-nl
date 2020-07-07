@@ -15,10 +15,10 @@ ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 36b39f3706db615e40ebfadebf36be4d8b29c33e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154726"
 ---
 # <a name="what-is-authentication"></a>Wat is verificatie?
@@ -71,7 +71,7 @@ Afhankelijk van hoe uw client is gebouwd, kunnen er één (of meerdere) verifica
 |[Namens-stroom](v1-oauth2-on-behalf-of-flow.md) | toegangs token| x| x| x| |
 |[Clientreferenties](v1-oauth2-client-creds-grant-flow.md) | | | x (alleen app)| | |
 
-Tokens die zijn uitgegeven via de impliciete modus, hebben een beperkte lengte omdat ze via de URL worden teruggestuurd naar `response_mode` de `query` browser `fragment`(waarbij of).  Voor sommige browsers geldt een limiet voor de grootte van de URL die in de browser balk kan worden geplaatst en die kan worden uitgevoerd als deze te lang is.  Daarom hebben `groups` deze tokens geen `wids` claims. 
+Tokens die zijn uitgegeven via de impliciete modus, hebben een beperkte lengte omdat ze via de URL worden teruggestuurd naar de browser (waarbij `response_mode` `query` of `fragment` ).  Voor sommige browsers geldt een limiet voor de grootte van de URL die in de browser balk kan worden geplaatst en die kan worden uitgevoerd als deze te lang is.  Daarom hebben deze tokens geen `groups` `wids` claims. 
 
 Nu u bekend bent met de basisinformatie, kunt u verder lezen voor inzicht in het identiteit-app-model en de bijbehorende API, voor meer informatie over inrichten in Azure AD en voor koppelingen naar gedetailleerde informatie over algemene scenario's waar Azure AD ondersteuning voor biedt.
 
@@ -132,14 +132,14 @@ In de onderstaande tabel staat een korte beschrijving van elk type claim dat doo
 | Uitgegeven om | Registreert de tijd waarop het token is uitgegeven (vaak gebruikt om te controleren hoe nieuw het token is). |
 | Verlener | Identificeert de beveiligingstokenservice die het token heeft uitgegeven en de Azure AD-tenant. |
 | Achternaam | Biedt de achternaam van de gebruiker, zoals ingesteld in Azure AD. |
-| Naam | Biedt een voor mensen leesbare waarde waarmee het onderwerp van het token wordt geïdentificeerd. |
+| Name | Biedt een voor mensen leesbare waarde waarmee het onderwerp van het token wordt geïdentificeerd. |
 | Object-id | Bevat een onveranderbare, unieke id voor het onderwerp in Azure AD. |
 | Rollen | Bevat beschrijvende namen voor de Azure AD-toepassingsrollen die zijn toegewezen aan de gebruiker. |
 | Bereik | Geeft aan welke machtigingen zijn verleend aan de clienttoepassing. |
 | Onderwerp | Geeft aan over welke principal het token informatie bevat. |
 | Tenant-id | Bevat een onveranderbare, unieke id voor de directorytenant die het token heeft uitgegeven. |
 | Levensduur van token | Definieert gedurende welke periode een token geldig is. |
-| User principal name | Bevat de user principal name van het onderwerp. |
+| User Principal Name | Bevat de user principal name van het onderwerp. |
 | Versie | Bevat het versienummer van het token. |
 
 ## <a name="next-steps"></a>Volgende stappen

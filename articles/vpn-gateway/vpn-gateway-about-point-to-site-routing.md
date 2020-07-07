@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: anzaman
 ms.openlocfilehash: 4821f2eb694a36cf0570008b3e62ce39999c58d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80239755"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Over point-to-site-VPN-routering
@@ -44,7 +44,7 @@ De punt-naar-site-VPN-gateway verbinding in dit voor beeld is voor een VNet dat 
 
 * Routes die zijn toegevoegd aan niet-Windows-clients: 10.1.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Toegang
+### <a name="access"></a>Access
 
 * Windows-clients hebben toegang tot VNet1
 
@@ -74,7 +74,7 @@ Clients die Windows gebruiken, hebben toegang tot rechtstreeks peered VNets, maa
 
 * Routes die zijn toegevoegd aan niet-Windows-clients: 10.1.0.0/16, 10.2.0.0/16, 10.4.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Toegang
+### <a name="access"></a>Access
 
 * Windows-clients hebben toegang tot VNet1, VNet2 en en vnet4, maar de VPN-client moet opnieuw worden gedownload om de topologie wijzigingen van kracht te laten worden.
 
@@ -102,7 +102,7 @@ Clients die gebruikmaken van Windows of een ander ondersteund besturings systeem
 
 * Routes die zijn toegevoegd aan niet-Windows-clients: 10.1.0.0/16, 10.2.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Toegang
+### <a name="access"></a>Access
 
 * Windows-clients hebben alleen toegang tot VNet1
 
@@ -130,7 +130,7 @@ Clients die gebruikmaken van Windows of een ander ondersteund besturings systeem
 
 * Routes die zijn toegevoegd aan niet-Windows-clients: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Toegang
+### <a name="access"></a>Access
 
 * Windows-clients hebben toegang tot VNet1, VNet2 en VNet3, maar routes naar VNet2 en VNet3 moeten hand matig worden toegevoegd.
 
@@ -156,7 +156,7 @@ Windows-en niet-Windows-clients hebben alleen toegang tot VNet1.
 
 * Routes die zijn toegevoegd aan niet-Windows-clients: 10.1.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Toegang
+### <a name="access"></a>Access
 
 * Windows-clients hebben alleen toegang tot VNet1
 
@@ -182,7 +182,7 @@ Windows-clients hebben toegang tot het VNet en het filiaal (site1), maar de rout
 
 * Routes die zijn toegevoegd aan niet-Windows-clients: 10.1.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Toegang
+### <a name="access"></a>Access
 
 * Windows-clients hebben toegang tot VNet1 en site1, maar routes naar site1 moeten hand matig worden toegevoegd.
 
@@ -213,7 +213,7 @@ Alle clients hebben alleen toegang tot VNet1.
 
 * Routes die zijn toegevoegd aan niet-Windows-clients: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Toegang
+### <a name="access"></a>Access
 
 * De Windows-clients hebben alleen toegang tot VNet1
 
@@ -243,7 +243,7 @@ Clients die Windows gebruiken, hebben toegang tot VNets en sites die zijn verbon
 
 * Routes die zijn toegevoegd aan niet-Windows-clients: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Toegang
+### <a name="access"></a>Access
 
 * De Windows-clients hebben toegang tot VNet1, VNet2, VNet3 en site1, maar routes naar VNet2, VNet3 en site1 moeten hand matig worden toegevoegd aan de client.
 

@@ -6,12 +6,12 @@ ms.author: t-trtr
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: f13872352e8b4da89d2dcf955440bc54be0fe000
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 7acdee98e5e433567a3d177400ee4e7043d0895c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817339"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921575"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Zelfstudie: De Azure Key Vault-provider voor het stuurprogramma voor het Secrets Store CSI-stuurprogramma configureren en uitvoeren op Kubernetes
 
@@ -280,27 +280,27 @@ kubectl apply -f podIdentityAndBinding.yaml
 Vervolgens implementeert u de pod. De volgende code is het YAML-implementatiebestand, dat gebruikmaakt van de pod-id-binding uit de vorige stap. Sla dit bestand op als *podBindingDeployment.yaml*.
 
 ```yml
-kind: Pod
 apiVersion: v1
+kind: Pod
 metadata:
-    name: nginx-secrets-store-inline
-    labels:
+  name: nginx-secrets-store-inline
+  labels:
     aadpodidbinding: azure-pod-identity-binding-selector
 spec:
-    containers:
+  containers:
     - name: nginx
-        image: nginx
-        volumeMounts:
+      image: nginx
+      volumeMounts:
         - name: secrets-store-inline
-        mountPath: "/mnt/secrets-store"
-        readOnly: true
-    volumes:
+          mountPath: "/mnt/secrets-store"
+          readOnly: true
+  volumes:
     - name: secrets-store-inline
-        csi:
+      csi:
         driver: secrets-store.csi.k8s.io
         readOnly: true
         volumeAttributes:
-            secretProviderClass: azure-kvname
+          secretProviderClass: azure-kvname
 ```
 
 Voer de volgende opdracht uit om de pod te implementeren:
@@ -343,4 +343,4 @@ Controleer of de inhoud van het geheim wordt weergegeven.
 
 Om ervoor te zorgen dat uw sleutelkluis kan worden hersteld, raadpleegt u:
 > [!div class="nextstepaction"]
-> [Voorlopig verwijderen inschakelen](https://docs.microsoft.com/azure/key-vault/general/soft-delete-clid)
+> [Voorlopig verwijderen inschakelen](https://docs.microsoft.com/azure/key-vault/general/soft-delete-cli)

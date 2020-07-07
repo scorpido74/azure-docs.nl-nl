@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: ejarvi
 ms.openlocfilehash: e975e1757b77b4aab52a59d1f0709ef9cadae94e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066870"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption voor Windows (micro soft. Azure. Security. AzureDiskEncryption)
@@ -40,7 +40,7 @@ Er zijn twee versies van het uitbreidings schema voor Azure Disk Encryption (ADE
 - v 2.2-een nieuwer aanbevolen schema dat geen eigenschappen van Azure Active Directory (AAD) gebruikt.
 - v 1.1-een ouder schema dat eigenschappen van Azure Active Directory (AAD) vereist. 
 
-Als u een doel schema wilt selecteren `typeHandlerVersion` , moet de eigenschap zijn ingesteld op de versie van het schema dat u wilt gebruiken.
+Als u een doel schema wilt selecteren, `typeHandlerVersion` moet de eigenschap zijn ingesteld op de versie van het schema dat u wilt gebruiken.
 
 ### <a name="schema-v22-no-aad-recommended"></a>Schema v 2.2: geen AAD (aanbevolen)
 
@@ -74,9 +74,9 @@ Het v 2.2-schema wordt aanbevolen voor alle nieuwe virtuele machines en vereist 
 
 ### <a name="schema-v11-with-aad"></a>Schema v 1.1: met AAD 
 
-Het 1,1-schema `aadClientID` vereist en `aadClientSecret` `AADClientCertificate` wordt niet aanbevolen voor nieuwe vm's.
+Het 1,1-schema vereist `aadClientID` en `aadClientSecret` `AADClientCertificate` wordt niet aanbevolen voor nieuwe vm's.
 
-Gebruiken `aadClientSecret`:
+Gebruiken `aadClientSecret` :
 
 ```json
 {
@@ -106,7 +106,7 @@ Gebruiken `aadClientSecret`:
 }
 ```
 
-Gebruiken `AADClientCertificate`:
+Gebruiken `AADClientCertificate` :
 
 ```json
 {
@@ -139,10 +139,10 @@ Gebruiken `AADClientCertificate`:
 
 ### <a name="property-values"></a>Eigenschaps waarden
 
-| Naam | Waarde/voor beeld | Gegevenstype |
+| Name | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| uitgever | Micro soft. Azure. Security | tekenreeks |
+| publisher | Micro soft. Azure. Security | tekenreeks |
 | type | AzureDiskEncryption | tekenreeks |
 | typeHandlerVersion | 2,2, 1,1 | tekenreeks |
 | (1,1-schema) AADClientID | XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX | guid | 

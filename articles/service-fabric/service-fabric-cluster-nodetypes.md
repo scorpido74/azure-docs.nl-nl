@@ -6,10 +6,10 @@ ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
 ms.openlocfilehash: 03076a711041812f7587aa1c388b0889b49725d2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82787130"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric-knooppunt typen en schaal sets voor virtuele machines
@@ -30,7 +30,7 @@ Wanneer u een schaalset uitbreidt, wordt er een nieuw exemplaar gemaakt. De nieu
 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Load balancers instellen voor de kaart schaal voor knooppunt typen en schaal sets
 
-Als u uw cluster in de Azure Portal hebt geïmplementeerd of de voor beeld-Azure Resource Manager sjabloon hebt gebruikt, worden alle resources onder een resource groep weer gegeven. U kunt de load balancers voor elke schaalset of elk knooppunt type bekijken. De naam van de load balancer gebruikt de volgende indeling: **naam&lt;&gt;van het lb-knooppunt type**. Een voor beeld is LB-sfcluster4doc-0, zoals wordt weer gegeven in de volgende afbeelding:
+Als u uw cluster in de Azure Portal hebt geïmplementeerd of de voor beeld-Azure Resource Manager sjabloon hebt gebruikt, worden alle resources onder een resource groep weer gegeven. U kunt de load balancers voor elke schaalset of elk knooppunt type bekijken. De naam van de load balancer gebruikt de volgende indeling: ** &lt; naam &gt; van het lb-knooppunt type**. Een voor beeld is LB-sfcluster4doc-0, zoals wordt weer gegeven in de volgende afbeelding:
 
 ![Resources][Resources]
 
@@ -74,7 +74,7 @@ Hier volgen de eigenschaps beschrijvingen:
 
 | **Naam** | **Toegestane waarden** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
-| name | tekenreeks | Unieke naam voor extensie |
+| naam | tekenreeks | Unieke naam voor extensie |
 | type | "ServiceFabricLinuxNode" of "ServiceFabricWindowsNode" | Geeft aan dat het besturings systeem Service Fabric Boots trapt |
 | autoUpgradeMinorVersion | waar of onwaar | Automatische upgrade van secundaire versies van SF runtime inschakelen |
 | publisher | Micro soft. Azure. ServiceFabric | De naam van de uitgever van de Service Fabric extensie |

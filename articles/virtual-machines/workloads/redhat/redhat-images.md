@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
 ms.openlocfilehash: f06c4304be67fbc2f3116375dae33b10228723a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80239876"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Overzicht van Red Hat Enterprise Linux installatie kopieën
@@ -45,7 +45,7 @@ az vm image list --publisher RedHat --all
 
 VM-installatie kopieën in azure zijn ingedeeld op uitgever, aanbieding, SKU en versie. De combi natie van Publisher: aanbieding: SKU: version is de afbeelding URN en identificeert de afbeelding die moet worden gebruikt.
 
-`RedHat:RHEL:8-LVM:8.1.20200318` Verwijst bijvoorbeeld naar een RHEL 8,1 LVM-gepartitioneerde afbeelding die is gebouwd op 18 maart 2020.
+`RedHat:RHEL:8-LVM:8.1.20200318`Verwijst bijvoorbeeld naar een RHEL 8,1 LVM-gepartitioneerde afbeelding die is gebouwd op 18 maart 2020.
 
 Hier wordt een voor beeld gegeven van het maken van een RHEL 8,1 VM.
 
@@ -57,7 +57,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:8.1
 
 De Azure REST API staat het gebruik van de moniker ' laatste ' toe voor de versie in plaats van de specifieke versie. De meest recente beschik bare installatie kopie voor de opgegeven Uitgever, aanbieding en SKU wordt met ' meest recent ' ingericht.
 
-`RedHat:RHEL:8-LVM:latest` Verwijst bijvoorbeeld naar de meest recente LVM-gepartitioneerde afbeelding van RHEL 8 Family.
+`RedHat:RHEL:8-LVM:latest`Verwijst bijvoorbeeld naar de meest recente LVM-gepartitioneerde afbeelding van RHEL 8 Family.
 
 ```azurecli-interactive
 az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:latest --no-wait
@@ -71,7 +71,7 @@ Deze vergelijking van de afbeeldings versie wordt uitgevoerd door de waarden te 
 
 Voor RHEL 6. x-installatie kopieën worden de afbeeldings typen weer gegeven in de volgende tabel.
 
-|Uitgever | Aanbieding | SKU-waarde | Versie | Details
+|Publisher | Aanbieding | SKU-waarde | Versie | Details
 |----------|-------|-----------|---------|--------
 |RedHat | RHEL | Secundaire versie (bijvoorbeeld 6,9) | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 6.9.2018010506) | Alle Standard RHEL 6. x-installatie kopieën volgen deze Conventie.
 |RedHat | RHEL-BYOS | RHEL-raw69 | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 6.9.20181023) | Deze installatie kopie is een RHEL 6,9 BYOS-installatie kopie.
@@ -80,12 +80,12 @@ Voor RHEL 6. x-installatie kopieën worden de afbeeldings typen weer gegeven in 
 
 ## <a name="rhel-7-image-types"></a>RHEL 7-afbeeldings typen
 
-Voor RHEL 7. x-installatie kopieën zijn er een aantal verschillende typen installatie kopieën. In de volgende tabel ziet u de verschillende sets met installatie kopieën die wij bieden. Als u een volledige lijst wilt weer geven, gebruikt u `az vm image list --publisher redhat --all`de Azure cli-opdracht.
+Voor RHEL 7. x-installatie kopieën zijn er een aantal verschillende typen installatie kopieën. In de volgende tabel ziet u de verschillende sets met installatie kopieën die wij bieden. Als u een volledige lijst wilt weer geven, gebruikt u de Azure CLI-opdracht `az vm image list --publisher redhat --all` .
 
 >[!NOTE]
 > Tenzij anders aangegeven, worden alle installatie kopieën LVM gepartitioneerd en wordt er verbinding gemaakt met gewone RHEL-opslag plaatsen. Dat wil zeggen dat de opslag plaatsen geen uitgebreide update ondersteuning (EUS) en geen Update Services voor SAP (E4S) zijn. We gaan nu door met het publiceren van alleen LVM-gepartitioneerde installatie kopieën, maar zijn geopend voor feedback over deze beslissing. Zie [Red Hat Enterprise Linux levens cyclus](https://access.redhat.com/support/policy/updates/errata)voor meer informatie over ondersteuning voor uitgebreide updates en Update Services voor SAP.
 
-|Uitgever | Aanbieding | SKU-waarde | Versie | Details
+|Publisher | Aanbieding | SKU-waarde | Versie | Details
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | Secundaire versie (bijvoorbeeld 7,6) | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 7.6.2019102813) | Afbeeldingen die vóór april 2019 zijn gepubliceerd, zijn gekoppeld aan standaard RHEL-opslag plaatsen. Installatie kopieën die zijn gepubliceerd na april 2019 zijn gekoppeld aan de EUS-opslag plaatsen van Red Hat zodat een specifieke secundaire versie kan worden vergrendeld. Klanten die normale opslag plaatsen willen, moeten de installatie kopieën gebruiken die 7-LVM of 7-RAW bevatten in de SKU-waarde (Details volgen). RHEL 7,7 en latere installatie kopieën van LVM worden gepartitioneerd. Alle andere installatie kopieën in deze categorie worden gepartitioneerd.
 |RedHat | RHEL | 7-RAW | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 7.6.2019102813) | Deze installatie kopieën worden gepartitioneerd (er zijn bijvoorbeeld geen logische volumes toegevoegd).
@@ -102,7 +102,7 @@ Voor RHEL 7. x-installatie kopieën zijn er een aantal verschillende typen insta
 
 Details voor RHEL 8-afbeeldings typen vindt u hieronder.
 
-|Uitgever | Aanbieding | SKU-waarde | Versie | Details
+|Publisher | Aanbieding | SKU-waarde | Versie | Details
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 8.0.20191023) | Deze installatie kopieën zijn RHEL 8 gepartitioneerde installatie kopieën die zijn verbonden met standaard Red Hat-opslag plaatsen.
 |RedHat | RHEL | 8-Gen2 | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 8.0.20191024) | Deze installatie kopieën zijn Hyper-V-generatie 2 RHEL 8 gepartitioneerde installatie kopieën die zijn verbonden met Standard Red Hat-opslag plaatsen. Zie [ondersteuning voor virtuele machines van de tweede generatie op Azure](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)voor meer informatie over virtuele machines van de tweede generatie in Azure.
@@ -129,7 +129,7 @@ RedHat:RHEL:7-LVM:7.6.2019062414
 RedHat:RHEL:7.6:7.6.2019102813
 ```
 
-In dit geval wordt `RedHat:RHEL:7.6:7.6.2019102813` standaard gekoppeld aan Eus-opslag plaatsen. De SKU-waarde is 7,4. En `RedHat:RHEL:7-LVM:7.6.2019062414` is standaard gekoppeld aan niet-Eus-opslag plaatsen. De SKU-waarde is 7-LVM.
+In dit geval `RedHat:RHEL:7.6:7.6.2019102813` wordt standaard gekoppeld aan Eus-opslag plaatsen. De SKU-waarde is 7,4. En `RedHat:RHEL:7-LVM:7.6.2019062414` is standaard gekoppeld aan niet-Eus-opslag plaatsen. De SKU-waarde is 7-LVM.
 
 Als u normale (niet-EUS) opslag plaatsen wilt gebruiken, gebruikt u een installatie kopie die geen secundair versie nummer in de SKU bevat.
 

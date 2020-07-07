@@ -8,10 +8,10 @@ ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: f0a8b1758571a9473402d11a4d5141a11f76504d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80245817"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Veelgestelde vragen over Azure App Service on Linux
@@ -32,8 +32,8 @@ U kunt alle docker-bestanden vinden op [github](https://github.com/azure-app-ser
 
 | Stack           | Verwachte waarde                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
-| Java SE         | de opdracht voor het starten van uw JAR-app ( `java -jar /home/site/wwwroot/app.jar --server.port=80`bijvoorbeeld) |
-| Tomcat          | de locatie van een script om de benodigde configuraties uit te voeren (bijvoorbeeld `/home/site/deployments/tools/startup_script.sh`)          |
+| Java SE         | de opdracht voor het starten van uw JAR-app (bijvoorbeeld `java -jar /home/site/wwwroot/app.jar --server.port=80` ) |
+| Tomcat          | de locatie van een script om de benodigde configuraties uit te voeren (bijvoorbeeld `/home/site/deployments/tools/startup_script.sh` )          |
 | Node.js         | het PM2-configuratie bestand of het script bestand                                |
 | .NET Core       | de gecompileerde DLL-naam als`dotnet <myapp>.dll`                                 |
 | Ruby            | het ruby-script dat u uw app wilt initialiseren met                     |
@@ -84,13 +84,13 @@ Als de Git-implementatie niet kan worden uitgevoerd in uw Linux-web-app, kiest u
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
    ```
 
-   Als er een fout bericht wordt weer `curl` gegeven dat de opdracht niet wordt gevonden, moet u een krul `apt-get install curl` installeren door te gebruiken voordat `curl` u de vorige opdracht uitvoert.
+   Als er een fout bericht wordt weer gegeven dat de `curl` opdracht niet wordt gevonden, moet u een krul installeren door te gebruiken `apt-get install curl` voordat u de vorige `curl` opdracht uitvoert.
 
 ## <a name="language-support"></a>Taalondersteuning
 
-**Ik wil Web Sockets gebruiken in mijn node. js-toepassing, alle speciale instellingen of configuraties die moeten worden ingesteld?**
+**Ik wil websockets gebruiken in mijn Node.js-toepassing, alle speciale instellingen of configuraties die moeten worden ingesteld?**
 
-Ja, Schakel `perMessageDeflate` in uw node. js-code op de server in. Als u bijvoorbeeld socket.io gebruikt, gebruikt u de volgende code:
+Ja, Schakel `perMessageDeflate` de Node.js code van de server in. Als u bijvoorbeeld socket.io gebruikt, gebruikt u de volgende code:
 
 ```nodejs
 const io = require('socket.io')(server,{
@@ -108,21 +108,21 @@ Ja, tijdens een Git-implementatie moet kudu detecteert dat u een PHP-toepassing 
 
 ## <a name="custom-containers"></a>Aangepaste containers
 
-**Ik gebruik mijn eigen aangepaste container. Ik wil dat het platform een SMB-share koppelt `/home/` aan de Directory.**
+**Ik gebruik mijn eigen aangepaste container. Ik wil dat het platform een SMB-share koppelt aan de `/home/` Directory.**
 
-Als `WEBSITES_ENABLE_APP_SERVICE_STORAGE` de instelling niet is **opgegeven** of is *true*ingesteld op True `/home/` , **wordt** de map gedeeld door schaal instanties en worden de bestanden die zijn geschreven, **bewaard** tijdens het opnieuw opstarten. Als u `WEBSITES_ENABLE_APP_SERVICE_STORAGE` expliciet instelt op *False* , wordt de koppeling uitgeschakeld.
+Als `WEBSITES_ENABLE_APP_SERVICE_STORAGE` de instelling niet is **opgegeven** of is ingesteld op *True*, `/home/` wordt de map **gedeeld** door schaal instanties en worden de bestanden die zijn geschreven, **bewaard** tijdens het opnieuw opstarten. `WEBSITES_ENABLE_APP_SERVICE_STORAGE`Als u expliciet instelt op *False* , wordt de koppeling uitgeschakeld.
 
 **Het starten van mijn aangepaste container duurt lang en het platform start de container opnieuw op voordat deze is gestart.**
 
-U kunt de hoeveelheid tijd configureren die het platform moet wachten voordat de container opnieuw wordt opgestart. Als u dit wilt doen, `WEBSITES_CONTAINER_START_TIME_LIMIT` stelt u de app-instelling in op de gewenste waarde. De standaard waarde is 230 seconden en de maximum waarde is 1800 seconden.
+U kunt de hoeveelheid tijd configureren die het platform moet wachten voordat de container opnieuw wordt opgestart. Als u dit wilt doen, stelt `WEBSITES_CONTAINER_START_TIME_LIMIT` u de app-instelling in op de gewenste waarde. De standaard waarde is 230 seconden en de maximum waarde is 1800 seconden.
 
 **Wat is de indeling voor de URL van de persoonlijke register server?**
 
-Geef de volledige register-URL op `http://` , `https://`inclusief of.
+Geef de volledige register-URL op, inclusief `http://` of `https://` .
 
 **Wat is de indeling voor de naam van de installatie kopie in de optie persoonlijk REGI ster?**
 
-Voeg de volledige naam van de installatie kopie toe, met inbegrip van de URL van het persoonlijke REGI ster (bijvoorbeeld myacr.azurecr.io/dotnet:latest). Namen van installatie kopieën die gebruikmaken van een aangepaste poort, [kunnen niet via de portal worden ingevoerd](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Gebruik het `docker-custom-image-name` [ `az` opdracht regel programma](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)om in te stellen.
+Voeg de volledige naam van de installatie kopie toe, met inbegrip van de URL van het persoonlijke REGI ster (bijvoorbeeld myacr.azurecr.io/dotnet:latest). Namen van installatie kopieën die gebruikmaken van een aangepaste poort, [kunnen niet via de portal worden ingevoerd](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). `docker-custom-image-name`Gebruik het [ `az` opdracht regel programma](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)om in te stellen.
 
 **Kan ik meer dan één poort op mijn aangepaste container installatie kopie beschikbaar maken?**
 
@@ -153,7 +153,7 @@ Als u ACR met meerdere containers wilt gebruiken, moeten **alle container instal
 Maak de volgende toepassings instellingen:
 
 - DOCKER_REGISTRY_SERVER_USERNAME
-- DOCKER_REGISTRY_SERVER_URL (volledige URL, bijvoorbeeld: `https://<server-name>.azurecr.io`)
+- DOCKER_REGISTRY_SERVER_URL (volledige URL, bijvoorbeeld: `https://<server-name>.azurecr.io` )
 - DOCKER_REGISTRY_SERVER_PASSWORD (beheerders toegang inschakelen in ACR-instellingen)
 
 In het configuratie bestand verwijzen we naar uw ACR-installatie kopie, zoals in het volgende voor beeld:

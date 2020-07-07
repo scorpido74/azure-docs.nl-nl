@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: anzaman
 ms.openlocfilehash: 79c3a7934e9152a4908f895c20ee6fbdc0f360cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80127996"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Een Brands model aanpassen met de Video Indexer-API
@@ -30,7 +30,7 @@ U kunt de Video Indexer-Api's gebruiken om aangepaste Brands modellen te maken, 
 Met de [Create a brand](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand) API maakt u een nieuw aangepast merk en voegt u dit toe aan het aangepaste merk model voor het opgegeven account.
 
 > [!NOTE]
-> Met `enabled` de instelling (in de hoofd tekst) op waar wordt het merk in de lijst met *insluitingen* voor video indexer gedetecteerd. Als `enabled` deze instelling is ingesteld op False, wordt het merk in de *uitsluitings* lijst geplaatst, zodat video indexer dit niet detecteert.
+> Met de instelling `enabled` (in de hoofd tekst) op waar wordt het merk in de lijst met *insluitingen* voor video indexer gedetecteerd. `enabled`Als deze instelling is ingesteld op False, wordt het merk in de *uitsluitings* lijst geplaatst, zodat video indexer dit niet detecteert.
 
 Enkele andere para meters die u in de hoofd tekst kunt instellen:
 
@@ -94,7 +94,7 @@ Het antwoord bevat informatie over het merk dat u hebt gezocht (met behulp van m
 ```
 
 > [!NOTE]
-> `enabled`wordt ingesteld om `true` aan *te geven dat* het merk zich in de lijst met insluitingen bevindt voor video indexer om te detecteren, en `enabled` False geeft aan dat het merk zich in de *uitsluitings* lijst bevindt, zodat dit niet door video indexer wordt gedetecteerd.
+> `enabled`wordt ingesteld om aan te `true` geven dat het merk zich in de lijst met *insluitingen* bevindt voor video indexer om te detecteren, en False geeft aan `enabled` dat het merk zich in de *uitsluitings* lijst bevindt, zodat dit niet door video indexer wordt gedetecteerd.
 
 ## <a name="update-a-specific-brand"></a>Een specifiek merk bijwerken
 
@@ -178,13 +178,13 @@ In het antwoord wordt weer gegeven of Bing Brands is ingeschakeld volgens de ind
 ```
 
 > [!NOTE]
-> `useBuiltIn`Als wordt ingesteld op True, wordt het Bing-merk ingeschakeld. Als `useBuiltin` de waarde False is, zijn Bing-merken uitgeschakeld. De `state` waarde kan worden genegeerd omdat deze is afgeschaft.
+> `useBuiltIn`Als wordt ingesteld op True, wordt het Bing-merk ingeschakeld. Als de waarde `useBuiltin` False is, zijn Bing-merken uitgeschakeld. De `state` waarde kan worden genegeerd omdat deze is afgeschaft.
 
 ## <a name="update-brands-model-settings"></a>Model instellingen voor update Brands bijwerken
 
 De [Update brandss](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?) -API werkt de instellingen van het merk model bij in het opgegeven account. De instellingen van het merk model geven aan of detectie van de Bing Brands-data base is ingeschakeld. Als Bing-merken niet zijn ingeschakeld, detecteert Video Indexer alleen Brands van het aangepaste merk model van het opgegeven account.
 
-De `useBuiltIn` vlag ingesteld op True betekent dat Bing-merken zijn ingeschakeld. Als `useBuiltin` de waarde False is, zijn Bing-merken uitgeschakeld.
+De `useBuiltIn` vlag ingesteld op True betekent dat Bing-merken zijn ingeschakeld. Als de waarde `useBuiltin` False is, zijn Bing-merken uitgeschakeld.
 
 ### <a name="response"></a>Antwoord
 

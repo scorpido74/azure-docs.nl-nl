@@ -4,10 +4,10 @@ description: Krijg antwoorden op veelgestelde vragen over het gebruik van Azure 
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 0cfe23b4e544040fc3ab69796988ca34b1bdcdbf
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82744329"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Migratie van Azure Migrate server: veelgestelde vragen
@@ -21,7 +21,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over de Azure Migrate: 
 
 ## <a name="what-geographies-are-supported-for-migration-with-azure-migrate"></a>Welke geografische gebieden worden ondersteund voor migratie met Azure Migrate?
 
-Bekijk de ondersteunde geographs voor [open bare](migrate-support-matrix.md#supported-geographies-public-cloud) en [overheids Clouds](migrate-support-matrix.md#supported-geographies-azure-government).
+Bekijk de ondersteunde geografische regio's voor [openbare](migrate-support-matrix.md#supported-geographies-public-cloud) clouds en [overheidsclouds](migrate-support-matrix.md#supported-geographies-azure-government).
 
 ## <a name="how-does-agentless-vmware-replication-work"></a>Hoe werkt VMware-replicatie zonder agent?
 
@@ -83,9 +83,9 @@ Op dit moment kunt u 100 Vm's per exemplaar van vCenter Server tegelijk migreren
 
 U kunt dit beperken met behulp van NetQosPolicy. Bijvoorbeeld:
 
-De AppNamePrefix die in de NetQosPolicy moet worden gebruikt, is "GatewayWindowsService. exe". U kunt een beleid maken op het Azure Migrate apparaat om het replicatie verkeer van het apparaat te beperken door een beleid te maken, bijvoorbeeld:
+De AppNamePrefix die in de NetQosPolicy moet worden gebruikt, is "GatewayWindowsService.exe". U kunt een beleid maken op het Azure Migrate apparaat om het replicatie verkeer van het apparaat te beperken door een beleid te maken, bijvoorbeeld:
  
-New-NetQosPolicy-name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWindowsService. exe"-ThrottleRateActionBitsPerSecond 1MB
+New-NetQosPolicy-name "ThrottleReplication"-AppPathNameMatchCondition GatewayWindowsService.exe "-ThrottleRateActionBitsPerSecond 1MB
 
 ## <a name="can-i-migrate-vms-that-are-already-being-replicated-to-azure"></a>Kan ik virtuele machines migreren die al naar Azure worden gerepliceerd? 
 
@@ -93,7 +93,7 @@ Als Vm's al een andere manier worden gerepliceerd naar Azure, kunt u deze machin
 
 ## <a name="when-do-i-migrate-machines-as-physical-servers"></a>Wanneer kan ik machines migreren als fysieke servers?
 
-Computers migreren door ze te behandelen als fysieke servers is handig in een aantal scenario's:
+Machines migreren door ze te behandelen als fysieke servers is handig in een aantal scenario's:
 
 - Wanneer u on-premises fysieke servers migreert.
 - Als u virtuele machines migreert die zijn gevirtualiseerd door platforms zoals xen, KVM.

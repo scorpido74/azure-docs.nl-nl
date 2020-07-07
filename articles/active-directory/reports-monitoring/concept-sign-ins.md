@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2910933e2c57a8bc80a220726462b02915c4a8eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80246514"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Aanmeldactiviteitenrapporten in Azure Active Directory Portal
@@ -30,7 +30,7 @@ De rapportage architectuur in Azure Active Directory (Azure AD) bestaat uit de v
 
 - **Activiteit** 
     - **Aanmeldingen** : informatie over het gebruik van beheerde toepassingen en aanmeldings activiteiten voor gebruikers.
-    - **Audit logboeken** - [audit logboeken](concept-audit-logs.md) bevatten informatie over de systeem activiteit van gebruikers en groeps beheer, beheerde toepassingen en Directory-activiteiten.
+    - **Audit logboeken**  -  [Audit logboeken](concept-audit-logs.md) bevatten informatie over de systeem activiteit van gebruikers en groeps beheer, beheerde toepassingen en Directory-activiteiten.
 - **Beveiliging** 
     - **Risk ante aanmeldingen** : een [Risk ante aanmelding](concept-risky-sign-ins.md) is een indicator voor een aanmeldings poging door iemand die niet de rechtmatige eigenaar van een gebruikers account is.
     - **Gebruikers die zijn gemarkeerd voor risico** : een [Risk ante gebruiker](concept-user-at-risk.md) is een indicator voor een gebruikers account dat mogelijk is aangetast.
@@ -198,7 +198,7 @@ De **locatie** -de locatie van de verbinding vanaf:
 
 Klik op de **Download** optie om een CSV-of JSON-bestand te maken van de meest recente 250.000 records. Begin met [het downloaden van de gegevens van de aanmeldingen](quickstart-download-sign-in-report.md) als u wilt werken buiten de Azure Portal.  
 
-![Downloaden](./media/concept-sign-ins/71.png "Download")
+![Downloaden](./media/concept-sign-ins/71.png "Downloaden")
 
 > [!IMPORTANT]
 > Het aantal records dat u kunt downloaden, is beperkt door het [Bewaar beleid](reference-reports-data-retention.md)voor de Azure Active Directory-rapport.  
@@ -230,7 +230,7 @@ Elke rij in de lijst met aanmeldingsactiviteiten geeft het volgende weer:
 
 Door op een item te klikken, krijgt u meer informatie over de aanmelding:
 
-- Gebruikers-ID
+- Gebruikers-id
 - Gebruiker
 - Gebruikersnaam
 - Toepassings-id
@@ -238,7 +238,7 @@ Door op een item te klikken, krijgt u meer informatie over de aanmelding:
 - Client
 - Locatie
 - IP-adres
-- Date
+- Datum
 - MFA vereist
 - Aanmeldingsstatus
 
@@ -267,7 +267,7 @@ De grafieken voor het gebruik van de app en wekelijkse aggregaties van aanmeldin
 
 Als u wilt, kunt u de focus instellen op een specifieke toepassing.
 
-![Rapporten](./media/concept-sign-ins/single-app-usage-graph.png "Rapporten")
+![Rapportage](./media/concept-sign-ins/single-app-usage-graph.png "Rapportage")
 
 Als u op een dag in de appgebruikgrafiek klikt, ziet u een gedetailleerd overzicht van de aanmeldactiviteiten.
 

@@ -1,32 +1,28 @@
 ---
 title: 'Zelfstudie: Het voorraadassortiment van een detailhandelsbedrijf bijwerken via het publiceren van/abonneren op kanalen en via onderwerpfilters met Azure PowerShell | Microsoft Docs'
 description: In deze zelfstudie leert u hoe u berichten naar een onderwerp en abonnement kunt versturen en ervan kunt ontvangen, en hoe u filterregels kunt gebruiken en toevoegen met behulp van Azure PowerShell.
-services: service-bus-messaging
 author: spelluru
-manager: timlt
 ms.author: spelluru
-ms.date: 09/22/2018
+ms.date: 06/23/2020
 ms.topic: tutorial
-ms.service: service-bus-messaging
-ms.custom: mvc
-ms.openlocfilehash: 3d1e1491ad045eba88ca7bbe54a1acb38199f7d7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: b1c6390d66d01bbe91500fc3878ad138eea208cc
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "65987919"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341620"
 ---
-# <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>Zelfstudie: voorraad bijwerken met behulp van PowerShell en onderwerpen/abonnementen
+# <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>Zelfstudie: Voorraad bijwerken met PowerShell en onderwerpen/abonnementen
 
-Microsoft Azure Service Bus is een berichtenservice in de cloud met meerdere tenants die informatie tussen toepassingen en services verzendt. Met asynchrone bewerkingen krijgt u flexibele Brokered Messaging, samen met gestructureerde FIFO-messaging (first in, first out) en mogelijkheden voor publiceren/abonneren. 
+Microsoft Azure Service Bus is een multitenant-cloudberichtenservice waarmee u gegevens kunt versturen tussen toepassingen en services. Asynchrone bewerkingen bieden flexibele, Brokered Messaging, samen met gestructureerde FIFO-berichtenuitwisseling (first in, first out) en mogelijkheden voor publiceren/abonneren. 
 
-In deze snelstartgids wordt beschreven hoe u berichten naar een Service Bus-wachtrij verzendt en van de wachtrij ontvangt. U gebruikt daarbij PowerShell om een berichtennaamruimte te maken en binnen deze naamruimte een wachtrij te maken. Ook wordt beschreven hoe u de autorisatiereferenties binnen die naamruimte kunt verkrijgen. De procedure laat vervolgens zien hoe u berichten naar deze wachtrij kunt verzenden en hoe u ze ervan kunt ontvangen met behulp van de [.NET Standard-bibliotheek](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
+In deze snelstartgids wordt beschreven hoe u berichten naar een Service Bus-wachtrij verzendt en van de wachtrij ontvangt. U gebruikt daarbij PowerShell om een berichtennaamruimte te maken en binnen deze naamruimte een wachtrij te maken. Ook wordt beschreven hoe u de autorisatiereferenties binnen die naamruimte kunt verkrijgen. De procedure laat vervolgens zien hoe u berichten naar deze wachtrij verzendt en van de wachtrij ontvangt met behulp van de [.NET Standard-bibliotheek](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
 > * Een Service Bus-onderwerp en een of meer abonnementen op dat onderwerp maken met Azure PowerShell
 > * Onderwerpfilters toevoegen met Azure PowerShell
-> * Twee berichten met verschillende inhoud maken.
+> * Twee berichten met verschillende inhoud maken
 > * De berichten verzenden en controleren of ze zijn ontvangen in de verwachte abonnementen
 > * Berichten ontvangen van de abonnementen
 
@@ -43,7 +39,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account][] aan voo
 
 Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 
-1. [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of later.
+1. [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of hoger.
 2. [NET Core SDK](https://www.microsoft.com/net/download/windows), versie 2.0 of later.
 
 Voor deze zelfstudie hebt u de nieuwste versie van Azure PowerShell nodig. Als u Azure PowerShell wilt installeren of upgraden, raadpleegt u [Azure PowerShell installeren en configureren][].
@@ -91,11 +87,11 @@ New-AzServiceBusQueue -ResourceGroupName my-resourcegroup -NamespaceName namespa
 Get-AzServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-name -Name RootManageSharedAccessKey
 ```
 
-Zodra de cmdlet `Get-AzServiceBusKey` is uitgevoerd, kopieert en plakt u de verbindingsreeks en de naam van de wachtrij die u hebt geselecteerd naar een tijdelijke locatie, zoals Kladblok. U hebt deze nodig in de volgende stap.
+Zodra de cmdlet `Get-AzServiceBusKey` is uitgevoerd, kopieert en plakt u de verbindingsreeks en de naam van de wachtrij die u hebt geselecteerd naar een tijdelijke locatie, zoals Kladblok. U hebt deze gegevens nodig in de volgende stap.
 
 ## <a name="send-and-receive-messages"></a>Berichten verzenden en ontvangen
 
-Wanneer de naamruimte en wachtrij zijn gemaakt en u over de benodigde referenties beschikt, kunt u berichten gaan verzenden en ontvangen. U kunt de code controleren in [deze GitHub-voorbeeldmap](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart).
+Wanneer de naamruimte en wachtrij zijn gemaakt en u over de benodigde referenties beschikt, kunt u berichten gaan verzenden en ontvangen. U kunt de code in [deze GitHub-voorbeeldmap](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart) bestuderen.
 
 Ga als volgt te werk om de code uit te voeren:
 
@@ -271,14 +267,14 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 ```
 
 > [!NOTE]
-> U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus naam ruimte en de Messa ging-entiteiten op een eenvoudige manier beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerp, wacht rijen, abonnementen, relay-Services, Notification hubs en Events hubs te testen. 
+> U kunt resources van Service Bus beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus-naamruimte en berichtenentiteiten op een eenvoudige manier beheren. Het hulpprogramma biedt geavanceerde functies zoals functionaliteit voor importeren/exporteren of de mogelijkheid van het testen van onderwerpen, wachtrijen, abonnementen, relay-services, Notification Hubs en Event Hubs. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie hebt u resources ingericht met behulp van Azure PowerShell en vervolgens berichten verzonden en ontvangen van een Service Bus-onderwerp en de daarbij behorende abonnementen. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * Een Service Bus-onderwerp en een of meer abonnementen op dat onderwerp kunt maken met Azure Portal.
+> * Een Service Bus-onderwerp en een of meer abonnementen voor dat onderwerp maken met Azure Portal
 > * Onderwerpfilters toevoegen met .NET-code
 > * Twee berichten met verschillende inhoud maken.
 > * De berichten verzenden en controleren of ze zijn ontvangen in de verwachte abonnementen
@@ -289,7 +285,7 @@ Meer voorbeelden voor het verzenden en ontvangen van berichten vindt u in [de Se
 Ga naar de volgende zelfstudie voor meer informatie over het gebruik van de mogelijkheden voor publiceren/abonneren van Service Bus.
 
 > [!div class="nextstepaction"]
-> [Voorraad bijwerken met PowerShell en onderwerpen/abonnementen](service-bus-tutorial-topics-subscriptions-cli.md)
+> [Voorraad bijwerken met behulp van PowerShell en onderwerpen/abonnementen](service-bus-tutorial-topics-subscriptions-cli.md)
 
 [gratis account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Azure PowerShell installeren en configureren]: /powershell/azure/install-Az-ps

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: Zhchia
 ms.openlocfilehash: 5aa33529a1957b6e7728b3a87bacf6bb91d987ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81378949"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>Zelf studie: Oracle Cloud Infrastructure console configureren voor automatische gebruikers inrichting
@@ -44,7 +44,7 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 * Een Oracle Cloud Infrastructure control- [Tenant](https://www.oracle.com/cloud/sign-in.html?intcmp=OcomFreeTier&source=:ow:o:p:nav:0916BCButton).
 * Een gebruikers account in Oracle Cloud Infrastructure Control met beheerders machtigingen.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>Step 1. Uw inrichtings implementatie plannen
+## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Uw inrichtings implementatie plannen
 1. Meer informatie over [de werking van de inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 2. Bepaal wie binnen het [bereik van de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)valt.
 3. Bepaal welke gegevens moeten worden [toegewezen tussen Azure AD en Oracle Cloud Infrastructure console](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
@@ -94,7 +94,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-oracle-cloud-infrastructure-console-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor de Oracle Cloud Infrastructure-console in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -110,7 +110,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Geef in de sectie **beheerders referenties** de **Tenant-URL** op in de `https://<IdP ID>.identity.oraclecloud.com/admin/v1` indeling. Bijvoorbeeld `https://idcs-0bfd023ff2xx4a98a760fa2c31k92b1d.identity.oraclecloud.com/admin/v1`. Voer de geheime token waarde in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met de Oracle Cloud Infrastructure-console. Als de verbinding mislukt, zorg er dan voor dat het account van de Oracle Cloud Infrastructure-console beheerders machtigingen heeft en probeer het opnieuw.
+5. Geef in de sectie **beheerders referenties** de **Tenant-URL** op in de indeling `https://<IdP ID>.identity.oraclecloud.com/admin/v1` . Bijvoorbeeld `https://idcs-0bfd023ff2xx4a98a760fa2c31k92b1d.identity.oraclecloud.com/admin/v1`. Voer de geheime token waarde in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met de Oracle Cloud Infrastructure-console. Als de verbinding mislukt, zorg er dan voor dat het account van de Oracle Cloud Infrastructure-console beheerders machtigingen heeft en probeer het opnieuw.
 
     ![inrichtings](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/provisioning.png)
 
@@ -128,7 +128,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
       |---|---|
       |displayName|Tekenreeks|
       |userName|Tekenreeks|
-      |actief|Booleaans|
+      |actief|Boolean-waarde|
       |titel|Tekenreeks|
       |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|
       |preferredLanguage|Tekenreeks|
@@ -146,8 +146,8 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
       |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: deling|Tekenreeks|
       |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager|Naslaginformatie|
       |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: organisatie|Tekenreeks|
-      |urn: IETF: params: scim: schemas: Oracle: IDCS: extension: gebruiker: gebruiker: bypassNotification|Booleaans|
-      |urn: IETF: params: scim: schemas: Oracle: IDCS: extension: gebruiker: gebruiker: isFederatedUser|Booleaans|
+      |urn: IETF: params: scim: schemas: Oracle: IDCS: extension: gebruiker: gebruiker: bypassNotification|Boolean-waarde|
+      |urn: IETF: params: scim: schemas: Oracle: IDCS: extension: gebruiker: gebruiker: isFederatedUser|Boolean-waarde|
 
 10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met Oracle Cloud Infrastructure console**.
 
@@ -182,10 +182,10 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
 * Controleer de [voortgangs balk](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtings cyclus te bekijken en te bepalen hoe dicht deze is voltooid
 * Als de inrichtings configuratie een slechte status heeft, gaat de toepassing in quarantaine. Meer informatie over de quarantaine statussen [vindt u hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

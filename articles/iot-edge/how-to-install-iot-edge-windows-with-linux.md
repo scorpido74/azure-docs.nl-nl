@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
 ms.openlocfilehash: 8a4579e092bbc4fd58954f1ce1f1dad3a8ddbbba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80133166"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Gebruik IoT Edge in Windows om Linux-containers uit te voeren
@@ -57,7 +57,7 @@ U vindt meer informatie over de verschillende installatie opties en-para meters 
 
 1. Als u dit nog niet hebt gedaan, registreert u een nieuw IoT Edge apparaat en haalt u het apparaat connection string op. Kopieer de connection string voor gebruik verderop in deze sectie. U kunt deze stap volt ooien met behulp van de volgende hulpprogram ma's:
 
-   * [Azure Portal](how-to-register-device.md#register-in-the-azure-portal)
+   * [Azure-portal](how-to-register-device.md#register-in-the-azure-portal)
    * [Azure-CLI](how-to-register-device.md#register-with-the-azure-cli)
    * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 

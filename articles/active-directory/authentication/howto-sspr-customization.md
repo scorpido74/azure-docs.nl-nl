@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54a45602b80db965e3cc79d188dd40034a320b79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81394252"
 ---
 # <a name="customize-the-user-experience-for-azure-active-directory-self-service-password-reset"></a>De gebruikers ervaring voor Azure Active Directory self-service voor wachtwoord herstel aanpassen
@@ -56,8 +56,8 @@ Zie [beheerders rollen toewijzen in azure Active Directory](../users-groups-role
 
 Als uw organisatie geen beheerders wil waarschuwen over aanvragen voor het opnieuw instellen van wacht woorden, kunnen de volgende configuratie opties worden gebruikt:
 
-* De Help Desk aanpassen om een web-URL of mailto:-adres op te geven dat gebruikers kunnen gebruiken om hulp te krijgen. Deze optie wordt onder **wacht woord opnieuw instellen** > **aanpassen** > **aangepaste Help Desk e-mail of URL**.
-* Schakel selfservice voor wacht woord opnieuw instellen voor alle gebruikers in. Deze optie bevindt zich onder**instellingen**voor **wacht woord opnieuw instellen** > . Als u niet wilt dat gebruikers hun eigen wacht woord opnieuw instellen, kunt u de toegang tot een lege groep bereiken. *Deze optie wordt niet aanbevolen.*
+* De Help Desk aanpassen om een web-URL of mailto:-adres op te geven dat gebruikers kunnen gebruiken om hulp te krijgen. Deze optie wordt onder **wacht woord opnieuw instellen**  >  **aanpassen**  >  **aangepaste Help Desk e-mail of URL**.
+* Schakel selfservice voor wacht woord opnieuw instellen voor alle gebruikers in. Deze optie bevindt zich onder instellingen voor **wacht woord opnieuw instellen**  >  **Properties**. Als u niet wilt dat gebruikers hun eigen wacht woord opnieuw instellen, kunt u de toegang tot een lege groep bereiken. *Deze optie wordt niet aanbevolen.*
 
 ## <a name="customize-the-sign-in-page-and-access-panel"></a>De aanmeldings pagina en het toegangs venster aanpassen
 
@@ -72,7 +72,7 @@ De afbeeldingen die u kiest, worden in de volgende omstandigheden weer gegeven:
 
 ### <a name="directory-name"></a>Mapnaam
 
-Om ervoor te zorgen dat dingen meer gebruikers vriendelijk zijn, kunt u de naam van de organisatie wijzigen in de portal en in automatische communicatie. Als u het kenmerk van de mapnaam wilt wijzigen in de Azure Portal, bladert u naar **Azure Active Directory** > **Eigenschappen**. Deze beschrijvende organisatie naam optie is het meest zichtbaar in automatische e-mail berichten, zoals in de volgende voor beelden:
+Om ervoor te zorgen dat dingen meer gebruikers vriendelijk zijn, kunt u de naam van de organisatie wijzigen in de portal en in automatische communicatie. Als u het kenmerk van de mapnaam wilt wijzigen in de Azure Portal, bladert u naar **Azure Active Directory**  >  **Eigenschappen**. Deze beschrijvende organisatie naam optie is het meest zichtbaar in automatische e-mail berichten, zoals in de volgende voor beelden:
 
 * De beschrijvende naam in het e-mail bericht, bijvoorbeeld '*micro soft*namens de CONTOSO-demo '
 * De regel onderwerp in het e-mail bericht, bijvoorbeeld '*CONTOSO-demo account e-mail verificatie code*'
@@ -81,7 +81,7 @@ Om ervoor te zorgen dat dingen meer gebruikers vriendelijk zijn, kunt u de naam 
 
 Als u Active Directory Federation Services (AD FS) gebruikt voor aanmeldings gebeurtenissen voor gebruikers, kunt u een koppeling toevoegen aan de aanmeldings pagina met behulp van de richt lijnen in het artikel om een beschrijving van de [aanmeldings pagina toe te voegen](/windows-server/identity/ad-fs/operations/add-sign-in-page-description).
 
-Gebruikers een koppeling naar de pagina geven om ze de SSPR-werk stroom in te voeren, *https://passwordreset.microsoftonline.com*zoals. Als u een koppeling naar de aanmeldings pagina van AD FS wilt toevoegen, gebruikt u de volgende opdracht op uw AD FS server:
+Gebruikers een koppeling naar de pagina geven om ze de SSPR-werk stroom in te voeren, zoals *https://passwordreset.microsoftonline.com* . Als u een koppeling naar de aanmeldings pagina van AD FS wilt toevoegen, gebruikt u de volgende opdracht op uw AD FS server:
 
 ``` powershell
 Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><a href='https://passwordreset.microsoftonline.com' target='_blank'>Can't access your account?</a></p>"

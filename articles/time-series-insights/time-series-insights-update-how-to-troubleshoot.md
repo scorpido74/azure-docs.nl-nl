@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: 667dee6365f38ae058e91c61c24838d8912df26a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80152643"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>Een voorbeeld omgeving diagnosticeren en problemen oplossen
@@ -92,9 +92,9 @@ Selecteer de bron (nen) van de gebeurtenis waarvan de opname is gestopt, plak de
 Zorg ervoor dat de naam en de waarde voldoen aan de volgende regels:
 
 * De naam van de tijds tempel eigenschap is hoofdletter gevoelig.
-* De waarde van de tijds tempel eigenschap die afkomstig is van uw gebeurtenis bron als JSON- `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`teken reeks heeft de indeling. Een voor beeld van een dergelijke teken `“2008-04-12T12:53Z”`reeks is.
+* De waarde van de tijds tempel eigenschap die afkomstig is van uw gebeurtenis bron als JSON-teken reeks heeft de indeling `yyyy-MM-ddTHH:mm:ss.FFFFFFFK` . Een voor beeld van een dergelijke teken reeks is `“2008-04-12T12:53Z”` .
 
-De eenvoudigste manier om ervoor te zorgen dat de naam van de tijds tempel eigenschap wordt vastgelegd en correct werkt, is door de Time Series Insights preview Explorer te gebruiken. Gebruik in de Time Series Insights preview Explorer de grafiek om een periode te selecteren nadat u de naam van de tijds tempel eigenschap hebt ingesteld. Klik met de rechter muisknop op de selectie en selecteer de optie **gebeurtenissen verkennen** . De eerste kolomkop is de naam van de eigenschap time stamp. Dit moet naast `($ts)` het woord `Timestamp`staan, in plaats van:
+De eenvoudigste manier om ervoor te zorgen dat de naam van de tijds tempel eigenschap wordt vastgelegd en correct werkt, is door de Time Series Insights preview Explorer te gebruiken. Gebruik in de Time Series Insights preview Explorer de grafiek om een periode te selecteren nadat u de naam van de tijds tempel eigenschap hebt ingesteld. Klik met de rechter muisknop op de selectie en selecteer de optie **gebeurtenissen verkennen** . De eerste kolomkop is de naam van de eigenschap time stamp. Dit moet `($ts)` naast het woord staan `Timestamp` , in plaats van:
 
 * `(abc)`. Dit geeft aan dat Time Series Insights de gegevens waarden als teken reeksen leest.
 * Het **kalender** pictogram, waarmee wordt aangegeven dat Time Series Insights de gegevens waarde als datum/tijd leest.

@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 8725a822c575ce80b9810d56bfd072241ded4c86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80157939"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Apparaten beheren in uw Azure IoT Central-toepassing
@@ -51,7 +51,7 @@ Een apparaat toevoegen aan uw Azure IoT Central-toepassing:
 
 1. Schakel de **gesimuleerde** wissel knop **in of** **uit**. Een echt apparaat is voor een fysiek apparaat waarmee u verbinding maakt met uw Azure IoT Central-toepassing. Voor een gesimuleerd apparaat zijn voorbeeld gegevens gegenereerd door Azure IoT Central.
 
-1. Klik op **maken**.
+1. Klik op **Create**.
 
 1. Dit apparaat wordt nu weer gegeven in de lijst met apparaten voor deze sjabloon. Selecteer het apparaat om de detail pagina van het apparaat weer te geven die alle weer gaven voor het apparaat bevat.
 
@@ -71,7 +71,7 @@ Apparaten in uw toepassing bulksgewijs registreren:
     > [!NOTE]
     > Als u nog geen sjabloon voor het apparaat hebt, kunt u apparaten onder **alle apparaten** importeren en ze zonder een sjabloon registreren. Nadat de apparaten zijn geïmporteerd, kunt u deze migreren naar een sjabloon.
 
-1. Selecteer **importeren**.
+1. Selecteer **Importeren**.
 
     ![Import actie](./media/howto-manage-devices/bulkimport1a.png)
 

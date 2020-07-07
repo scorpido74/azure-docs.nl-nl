@@ -1,25 +1,14 @@
 ---
 title: Een lab-account met Azure Lab Services instellen | Microsoft Docs
 description: Meer informatie over het instellen van een lab-account met Azure Lab Services, het toevoegen van een labmaker en het specificeren van Marketplace-afbeelding die door labs in het lab-account worden gebruikt.
-services: devtest-lab, lab-services, virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.custom: mvc
-ms.date: 05/15/2020
-ms.author: spelluru
-ms.openlocfilehash: d344b055659e8efcfa9836c942aacb384bbdec4c
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: fba4dbc5386407bd796606d86a5b7bdc7c10fd61
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84889441"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445063"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Zelfstudie: Een lab-account instellen met Azure Lab Services
 In Azure Lab Services fungeert een lab-account als het centrale account waarin alle labs in uw organisatie worden beheerd. In uw lab-account machtigt u anderen om labs te maken en stelt u beleidsregels in die van toepassing zijn op alle labs in het lab-account. In deze zelfstudie leert u hoe u een lab-account maakt. 

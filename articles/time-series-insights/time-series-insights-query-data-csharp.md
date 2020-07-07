@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: 754d1b80236d138693987cccee7a218ccd96b16b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81383888"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>Gegevens opvragen uit de Azure Time Series Insights GA-omgeving met C #
@@ -23,7 +23,7 @@ ms.locfileid: "81383888"
 Dit C#-voor beeld laat zien hoe u de [Ga query-api's](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) kunt gebruiken om gegevens uit Azure time series Insights ga-omgevingen op te vragen.
 
 > [!TIP]
-> GA C#-code voorbeelden weer [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)geven op.
+> GA C#-code voorbeelden weer geven op [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) .
 
 ## <a name="summary"></a>Samenvatting
 
@@ -64,9 +64,9 @@ Het is raadzaam om de nieuwste versie van Visual Studio te gebruiken:
 De voorbeeld code bevat twee vereiste afhankelijkheden:
 
 * Het pakket [micro soft. Identity model. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) -3.13.9.
-* [Newton soft. json](https://www.nuget.org/packages/Newtonsoft.Json) -9.0.1-pakket.
+* [Newtonsoft.Js](https://www.nuget.org/packages/Newtonsoft.Json) een 9.0.1-pakket.
 
-Down load de pakketten in Visual Studio 2019 **door de** > optie build**Build Solution** te selecteren.
+Down load de pakketten in Visual Studio 2019 **door de**  >  optie build**Build Solution** te selecteren.
 
 U kunt de pakketten ook toevoegen met behulp van [NuGet 2.12 +](https://www.nuget.org/):
 

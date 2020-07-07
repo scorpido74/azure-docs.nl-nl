@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.openlocfilehash: 097fe2c394cb48a13fbc9cb253ef4df9c9959713
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80277053"
 ---
 # <a name="co-sell-country-and-region-codes"></a>Land-en regio codes voor co-verkoop
@@ -99,7 +99,7 @@ Als een contact persoon meer dan één land/regio omvat, voert u elk van de twee
 | Estland                             | EE        |
 | eSwatini                            | SZ        |
 | Ethiopië                            | ET        |
-| Faeröer                       | FO        |
+| Faröer                       | FO        |
 | Fiji                                | FJ        |
 | Finland                             | FI        |
 | Frankrijk                              | FR        |
@@ -122,7 +122,7 @@ Als een contact persoon meer dan één land/regio omvat, voert u elk van de twee
 | Guinee                              | GN        |
 | Guinee-Bissau                       | GW        |
 | Guyana                              | GY        |
-| Haiti                               | HT        |
+| Haïti                               | HT        |
 | Heard Island en McDonald eilanden   | HM        |
 | Honduras                            | HN        |
 | Hongkong SAR                       | HK        |
@@ -145,7 +145,7 @@ Als een contact persoon meer dan één land/regio omvat, voert u elk van de twee
 | Kiribati                            | KI        |
 | Korea (Zuid)                       | KR        |
 | Koeweit                              | KW        |
-| Kirgizië                          | KG        |
+| Kirgistan                          | KG        |
 | Laos                                | LA        |
 | Letland                              | LV        |
 | Libanon                             | LB        |
@@ -156,7 +156,7 @@ Als een contact persoon meer dan één land/regio omvat, voert u elk van de twee
 | Litouwen                           | LT        |
 | Luxemburg                          | LU        |
 | Macau SAR                           | MO        |
-| Madagascar                          | MG        |
+| Madagaskar                          | MG        |
 | Malawi                              | MW        |
 | Maleisië                            | MY        |
 | Maldiven                            | MV        |
@@ -164,7 +164,7 @@ Als een contact persoon meer dan één land/regio omvat, voert u elk van de twee
 | Malta                               | MT        |
 | Marshalleilanden                    | MH        |
 | Martinique                          | MQ        |
-| Mauretanië                          | MR        |
+| Mauritanië                          | MR        |
 | Mauritius                           | MU        |
 | Mayotte                             | YT        |
 | Mexico                              | MX        |
@@ -177,7 +177,7 @@ Als een contact persoon meer dan één land/regio omvat, voert u elk van de twee
 | Marokko                             | MA        |
 | Mozambique                          | MZ        |
 | Myanmar                             | MM        |
-| Namibië                             | N.v.t.        |
+| Namibië                             | NA        |
 | Nauru                               | NR        |
 | Nepal                               | NP        |
 | Nederland                         | NL        |
@@ -254,7 +254,7 @@ Als een contact persoon meer dan één land/regio omvat, voert u elk van de twee
 | Tunesië                             | TN        |
 | Turkije                              | TR        |
 | Turkmenistan                        | TM        |
-| Turks- en Caicoseilanden            | TC        |
+| Turks- en Caicos-eilanden            | TC        |
 | Tuvalu                              | TV        |
 | Oeganda                              | UG        |
 | Oekraïne                             | UA        |
@@ -262,11 +262,11 @@ Als een contact persoon meer dan één land/regio omvat, voert u elk van de twee
 | Verenigd Koninkrijk                      | GB        |
 | Verenigde Staten                       | VS        |
 | Uruguay                             | UY        |
-| Amerikaanse ondergeschikte afgelegen eilanden               | UM        |
+|  Kleine afgelegen eilanden van de Verenigde Staten               | UM        |
 | Amerikaanse Maagden eilanden                 | VI        |
 | Oezbekistan                          | UZ        |
 | Vanuatu                             | VU        |
-| Vaticaan stad                        | VA        |
+| Vaticaanstad                        | VA        |
 | Venezuela                           | VE        |
 | Vietnam                             | VN        |
 | Wallis en Futuna                   | WF        |
