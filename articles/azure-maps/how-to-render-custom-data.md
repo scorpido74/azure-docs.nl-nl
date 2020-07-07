@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: b8d47b69b4aba14c86fb09176b662aee7d5482d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335518"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Aangepaste gegevens op een raster kaart weer geven
@@ -29,7 +29,7 @@ Als u aangepaste markerings punten, labels en geometrie-overlays wilt weer geven
 
 ### <a name="create-an-azure-maps-account"></a>Een Azure Maps-account maken
 
-Als u de procedures in dit artikel wilt uitvoeren, moet u eerst een Azure Maps account maken en de sleutel van uw Maps-account ophalen. Volg de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) voor het maken van een abonnement op een Azure Maps-account en volg de stappen in de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
+Als u de procedures in dit artikel wilt uitvoeren, moet u eerst een Azure Maps account maken en de sleutel van uw Maps-account ophalen. Volg de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) voor het maken van een abonnement op een Azure Maps-account en volg de stappen in de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [Verificatie beheren in Azure Maps](./how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
 
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Markerings punten met labels en een aangepaste installatie kopie weer geven
@@ -37,7 +37,7 @@ Als u de procedures in dit artikel wilt uitvoeren, moet u eerst een Azure Maps a
 > [!Note]
 > Voor de procedure in deze sectie is een Azure Maps-account vereist in de prijs categorie S0 of S1.
 
-De S0-laag van het Azure Maps account ondersteunt slechts één exemplaar `pins` van de para meter. U kunt Maxi maal vijf markerings punten weer geven, opgegeven in de URL-aanvraag, met een aangepaste installatie kopie.
+De S0-laag van het Azure Maps account ondersteunt slechts één exemplaar van de `pins` para meter. U kunt Maxi maal vijf markerings punten weer geven, opgegeven in de URL-aanvraag, met een aangepaste installatie kopie.
 
 Voer de volgende stappen uit om de markerings punten met labels en een aangepaste installatie kopie te genereren:
 
@@ -192,7 +192,7 @@ U kunt het uiterlijk van een veelhoek wijzigen met behulp van stijl wijzigingen 
 > Voor de procedure in deze sectie is een Azure Maps-account vereist in de prijs categorie S1.
 
 
-U kunt de weer gave van de pincodes wijzigen door aanpassings opties voor stijlen toe te voegen. Als u bijvoorbeeld markerings punten en de labels groter of kleiner wilt maken, `sc` gebruikt u de aanpassings functie ' schaal stijl '. Deze modificator heeft een waarde die groter is dan nul. Een waarde van 1 is de standaard schaal. Waarden die groter zijn dan 1 maken de pincodes groter en waarden kleiner dan 1 maken deze kleiner. Zie [para meters voor statisch installatie kopie-pad](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters)voor meer informatie over stijl parameters.
+U kunt de weer gave van de pincodes wijzigen door aanpassings opties voor stijlen toe te voegen. Als u bijvoorbeeld markerings punten en de labels groter of kleiner wilt maken, gebruikt u de `sc` aanpassings functie ' schaal stijl '. Deze modificator heeft een waarde die groter is dan nul. Een waarde van 1 is de standaard schaal. Waarden die groter zijn dan 1 maken de pincodes groter en waarden kleiner dan 1 maken deze kleiner. Zie [para meters voor statisch installatie kopie-pad](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters)voor meer informatie over stijl parameters.
 
 
 Volg deze stappen om een cirkel en markerings punten met aangepaste labels weer te geven:
@@ -207,7 +207,7 @@ Volg deze stappen om een cirkel en markerings punten met aangepaste labels weer 
 
     ![Een cirkel met aangepaste markerings punten weer geven](./media/how-to-render-custom-data/circle-custom-pins.png)
 
-2. Als u de kleur van de markerings punten van de laatste stap wilt wijzigen, wijzigt u de stijl co. `pins=default|la15+50|al0.66|lc003C62|co002D62|`De huidige kleur wordt weer gegeven als #002D62 in CSS. Stel dat u deze wilt wijzigen in #41d42a. Schrijf de nieuwe kleur waarde na de specificatie ' co ', bijvoorbeeld: `pins=default|la15+50|al0.66|lc003C62|co41D42A|`. Een nieuwe GET-aanvraag maken:
+2. Als u de kleur van de markerings punten van de laatste stap wilt wijzigen, wijzigt u de stijl co. `pins=default|la15+50|al0.66|lc003C62|co002D62|`De huidige kleur wordt weer gegeven als #002D62 in CSS. Stel dat u deze wilt wijzigen in #41d42a. Schrijf de nieuwe kleur waarde na de specificatie ' co ', bijvoorbeeld: `pins=default|la15+50|al0.66|lc003C62|co41D42A|` . Een nieuwe GET-aanvraag maken:
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&zoom=14&height=700&Width=700&center=-122.13230609893799,47.64599069048016&path=lcFF0000|lw2|la0.60|ra1000||-122.13230609893799 47.64599069048016&pins=default|la15+50|al0.66|lc003C62|co41D42A||'Microsoft Corporate Headquarters'-122.14131832122801  47.64690503939462|'Microsoft Visitor Center'-122.136828 47.642224|'Microsoft Conference Center'-122.12552547454833 47.642940335653996|'Microsoft The Commons'-122.13687658309935  47.64452336193245&subscription-key={subscription-key}

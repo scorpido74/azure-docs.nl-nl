@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
 ms.openlocfilehash: aba987ba232a29ffc240f72039b1e24bb87a2ed4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80345912"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>Een taak invoer maken op basis van een lokaal bestand
@@ -24,7 +24,7 @@ Wanneer u in Media Services v3 taken verzendt voor het verwerken van uw video's,
 
 ## <a name="prerequisites"></a>Vereisten 
 
-* [Een Azure Media Services-account maken](create-account-cli-how-to.md).
+* [Maak een Media Services-account](create-account-cli-how-to.md).
 * [Beheer assets](manage-asset-concept.md)controleren.
 
 ## <a name="net-sample"></a>.NET-voor beeld

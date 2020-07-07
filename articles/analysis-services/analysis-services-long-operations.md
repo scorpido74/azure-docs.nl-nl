@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: owend
 ms.openlocfilehash: 3f6b2194cc422a827bbc7a15c012173b3f814b52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81428106"
 ---
-# <a name="best-practices-for-long-running-operations"></a>Aanbevolen procedures voor langlopende bewerkingen
+# <a name="best-practices-for-long-running-operations"></a>Best practices voor langlopende bewerkingen
 
 In Azure Analysis Services vertegenwoordigt een *knoop punt* een virtuele host-machine waarop een server bron wordt uitgevoerd. Sommige bewerkingen, zoals langlopende query's, vernieuwings bewerkingen en de synchronisatie van de query scale-out kunnen mislukken als een server bron naar een ander knoop punt wordt verplaatst. Veelvoorkomende fout berichten in dit scenario zijn:
 
 - ' Er is een fout opgetreden tijdens het zoeken naar een langdurige XMLA-aanvraag. De aanvraag is mogelijk onderbroken door de service-upgrade of het opnieuw opstarten van de server.
-- De taak met de ID<guid>voor het model<database>is geannuleerd vanwege een service fout (inactiviteit) met het bericht de vernieuwings aanvraag annuleren omdat deze is vastgelopen zonder dat er updates zijn. Dit is een intern service probleem. Verzend de taak opnieuw of voer een ticket in om hulp te krijgen als dit probleem zich blijft voordoen. "
+- De taak met de ID <guid> voor het model <database> is geannuleerd vanwege een service fout (inactiviteit) met het bericht de vernieuwings aanvraag annuleren omdat deze is vastgelopen zonder dat er updates zijn. Dit is een intern service probleem. Verzend de taak opnieuw of voer een ticket in om hulp te krijgen als dit probleem zich blijft voordoen. "
 
 Er zijn verschillende redenen waarom langlopende bewerkingen kunnen worden onderbroken. Bijvoorbeeld updates in azure, zoals: 
 - Patches voor besturings systeem 

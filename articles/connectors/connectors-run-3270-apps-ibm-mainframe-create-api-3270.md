@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
 ms.openlocfilehash: 808eef5424d678559ae94ffd04e41eacd0f16aee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80371106"
 ---
-# <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Op het scherm gestuurde apps op IBM-mainframes 3270 integreren met Azure met behulp van Azure Logic Apps en IBM 3270-connector
+# <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Door 3270-schermen gestuurde apps op IBM-mainframes integreren met Azure met behulp van Azure Logic Apps en de IBM 3270-connector
 
 > [!NOTE]
 > Deze connector bevindt zich in de [*open bare preview*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
-Met Azure Logic Apps en de IBM 3270-connector kunt u IBM mainframe-apps benaderen en uitvoeren die u doorgaans hebt gebranden door te navigeren via de schermen van 3270-emulator. Op die manier kunt u uw IBM mainframe-apps integreren met Azure, micro soft en andere apps, services en systemen door automatische werk stromen te maken met Azure Logic Apps. De connector communiceert met IBM-mainframes met behulp van het TN3270-protocol en is beschikbaar in alle Azure Logic Apps regio's, met uitzonde ring van Azure Government en Azure China 21Vianet. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md)
+Met Azure Logic Apps en de IBM 3270-connector kunt u IBM mainframe-apps openen en uitvoeren waar u doorgaans komt via emulatorschermen van 3270. Op die manier kunt u uw IBM mainframe-apps integreren met Azure-, Microsoft- en andere apps, services en systemen door geautomatiseerde werkstromen te maken met Azure Logic Apps. De connector communiceert met IBM-mainframes met behulp van het TN3270-protocol en is beschikbaar in alle Azure Logic Apps-regio's, met uitzondering van Azure Government en Azure China 21Vianet. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 In dit artikel worden de volgende aspecten beschreven voor het gebruik van de 3270-connector: 
 
@@ -81,7 +81,7 @@ In een 3270 scherm-app zijn de schermen en gegevens velden uniek voor uw scenari
 
 * **Navigatie**: in deze modus geeft u het plan of pad op voor het navigeren door de schermen van uw mainframe-app voor de specifieke taak.
 
-* **Methoden**: in deze modus definieert u de methode, bijvoorbeeld `GetBalance`, die het pad naar het scherm navigatie beschrijft. U kiest ook de velden op elk scherm die de invoer-en uitvoer parameters van de methode worden.
+* **Methoden**: in deze modus definieert u de methode, bijvoorbeeld, `GetBalance` die het pad naar het scherm navigatie beschrijft. U kiest ook de velden op elk scherm die de invoer-en uitvoer parameters van de methode worden.
 
 ### <a name="unsupported-elements"></a>Niet-ondersteunde elementen
 
@@ -151,7 +151,7 @@ Zie het [Navigatie plan voor het voor beeld](#example-plan) verderop in dit onde
 
 ## <a name="define-navigation-plans"></a>Navigatie plannen definiëren
 
-In deze modus definieert u de stroom of stappen voor het navigeren door de schermen van uw mainframe-app voor uw specifieke taak. Het kan bijvoorbeeld voor komen dat u meer dan één pad hebt dat uw app kan ondernemen, waarbij de ene pad het juiste resultaat geeft, terwijl het andere pad een fout veroorzaakt. Geef voor elk scherm de toetsaanslagen op die nodig zijn voor het verplaatsen naar het volgende scherm, `CICSPROD <enter>`zoals.
+In deze modus definieert u de stroom of stappen voor het navigeren door de schermen van uw mainframe-app voor uw specifieke taak. Het kan bijvoorbeeld voor komen dat u meer dan één pad hebt dat uw app kan ondernemen, waarbij de ene pad het juiste resultaat geeft, terwijl het andere pad een fout veroorzaakt. Geef voor elk scherm de toetsaanslagen op die nodig zijn voor het verplaatsen naar het volgende scherm, zoals `CICSPROD <enter>` .
 
 > [!TIP]
 > Als u verschillende taken automatiseert die gebruikmaken van hetzelfde scherm verbinding maken en verbinding verbreken, biedt het ontwerp programma speciale plan typen voor verbinding maken en verbinding verbreken. Wanneer u deze plannen definieert, kunt u ze toevoegen aan het begin en het einde van het navigatie plan.
@@ -185,7 +185,7 @@ In deze modus definieert u de stroom of stappen voor het navigeren door de scher
    | Type abonnement | Beschrijving |
    |-----------|-------------|
    | **Proces** | Voor zelfstandige of gecombineerde abonnementen |
-   | **Verbinden** | Voor Connect-Abonnementen |
+   | **Verbinding maken** | Voor Connect-Abonnementen |
    | **Verbinding verbreken** | Voor het verbreken van abonnementen |
    |||
 
@@ -290,9 +290,9 @@ In deze modus definieert u een methode die is gekoppeld aan uw navigatie plan. V
 
    | Naam van eigenschap | Mogelijke waarden | 
    |---------------|-----------------|
-   | **Gegevenstype** | Byte, datum en tijd, decimaal, int, lang, kort, teken reeks |
+   | **Gegevens type** | Byte, datum en tijd, decimaal, int, lang, kort, teken reeks |
    | **De techniek voor veld opvulling** | Para meters ondersteunen deze typen opvullingen, waarbij zo nodig lege waarden worden gevuld: <p><p>- **Type**: Voer tekens opeenvolgend in het veld in. <p>- **Fill**: Vervang de inhoud van het veld door tekens en vul zo nodig lege waarden in. <p>- **EraseEofType**: wis het veld en voer de tekens vervolgens opeenvolgend in het veld in. |
-   | **Teken reeks voor opmaak** | Sommige parameter gegevens typen gebruiken een indelings teken reeks, die de 3270-connector informeert de conversie van tekst van het scherm naar een .NET-gegevens type: <p><p>- **Datum tijd**: de notatie teken reeks voor [datum en tijd volgt de notatie teken reeksen voor .net-aangepaste datums en tijden](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). De datum `06/30/2019` gebruikt bijvoorbeeld de notatie teken reeks `MM/dd/yyyy`. <p>- **Decimaal**: de teken reeks voor decimale notatie maakt gebruik van de [COBOL-component Picture](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html). Het getal `100.35` gebruikt bijvoorbeeld de notatie teken reeks `999V99`. |
+   | **Teken reeks voor opmaak** | Sommige parameter gegevens typen gebruiken een indelings teken reeks, die de 3270-connector informeert de conversie van tekst van het scherm naar een .NET-gegevens type: <p><p>- **Datum tijd**: de notatie teken reeks voor [datum en tijd volgt de notatie teken reeksen voor .net-aangepaste datums en tijden](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). De datum `06/30/2019` gebruikt bijvoorbeeld de notatie teken reeks `MM/dd/yyyy` . <p>- **Decimaal**: de teken reeks voor decimale notatie maakt gebruik van de [COBOL-component Picture](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html). Het getal `100.35` gebruikt bijvoorbeeld de notatie teken reeks `999V99` . |
    |||
 
 ## <a name="save-and-view-metadata"></a>Meta gegevens opslaan en weer geven
@@ -354,19 +354,19 @@ Wanneer u al deze stappen hebt voltooid, kunt u de actie die u in uw logische ap
    ![Actie 3270 selecteren](./media/connectors-create-api-3270/select-3270-action.png)
 
    Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. 
-   Kies het plus teken (**+**) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+   Kies het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
 1. Als er nog geen verbinding bestaat, geeft u de benodigde informatie voor de verbinding op en kiest u **maken**.
 
    | Eigenschap | Vereist | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
-   | **Verbindings naam** | Ja | <*verbindings naam*> | De naam voor de verbinding |
+   | **Verbindingsnaam** | Ja | <*verbindings naam*> | De naam voor de verbinding |
    | **Integratie account-ID** | Ja | <*integratie-account-naam*> | De naam van uw integratie account |
    | **SAS-URL van integratie account** | Ja | <*integratie-account-SAS-URL*> | De URL van de Shared Access Signature (SAS) van uw integratie account, die u kunt genereren op basis van de instellingen van uw integratie account in de Azure Portal. <p>1. Selecteer in het menu van het integratie account onder **instellingen**de optie **URL voor terugbellen**. <br>2. Kopieer in het rechterdeel venster de waarde voor de **gegenereerde call back-URL** . |
    | **Server** | Ja | <*TN3270-Server naam*> | De server naam voor uw TN3270-service |
-   | **Importeer** | Nee | <*TN3270-Server-poort*> | De poort die wordt gebruikt door uw TN3270-Server. Als dit veld leeg blijft, wordt `23` de connector als de standaard waarde gebruikt. |
+   | **Poort** | Nee | <*TN3270-Server-poort*> | De poort die wordt gebruikt door uw TN3270-Server. Als dit veld leeg blijft, wordt de connector `23` als de standaard waarde gebruikt. |
    | **Apparaattype** | Nee | <*IBM-Terminal model*> | De naam of het nummer van het model voor de IBM-Terminal dat moet worden geëmuleerd. Als dit veld leeg blijft, gebruikt de connector standaard waarden. |
-   | **Codepagina** | Nee | <*code-pagina nummer*> | Het nummer van de code pagina voor de host. Als dit veld leeg blijft, wordt `37` de connector als de standaard waarde gebruikt. |
+   | **Codepagina** | Nee | <*code-pagina nummer*> | Het nummer van de code pagina voor de host. Als dit veld leeg blijft, wordt de connector `37` als de standaard waarde gebruikt. |
    | **Naam van logische eenheid** | Nee | <*naam van logische eenheid*> | De naam van de specifieke logische eenheid die moet worden aangevraagd vanaf de host |
    | **SSL inschakelen?** | Nee | In-of uitschakelen | Schakel TLS-code ring in of uit. |
    | **SSL-certificaat van host valideren?** | Nee | In-of uitschakelen | De validatie van het server certificaat in-of uitschakelen. |

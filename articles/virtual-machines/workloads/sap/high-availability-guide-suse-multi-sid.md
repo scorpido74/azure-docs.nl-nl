@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
 ms.openlocfilehash: 793851780e1154b6b6a21c88ea8cae063a277790
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80350059"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server voor de multi-SID-hand leiding voor SAP-toepassingen
@@ -112,18 +112,18 @@ De volgende lijst bevat de configuratie van de (A) SCS-en ERS-load balancer voor
   * IP-adres voor NW2:10.3.1.16
   * IP-adres voor NW3:10.3.1.13
 * Poorten testen
-  * Poort 620<strong>&lt;nr&gt;</strong>, daarom voor NW1-, NW2-en NW3-test poorten 620**00**, 620**10** en 620**20**
+  * Poort 620<strong> &lt; Nr &gt; </strong>, daarom voor NW1-, NW2-en NW3-test poorten 620**00**, 620**10** en 620**20**
 * Taakverdelings regels- 
 * Maak een voor elk exemplaar, dat wil zeggen, NW1/ASCS, NW2/ASCS en NW3/ASCS.
   * Als u Standard Load Balancer gebruikt, selecteert u **ha-poorten**
   * Als u basis Load Balancer gebruikt, maakt u regels voor taak verdeling voor de volgende poorten
-    * 32<strong>&lt;nr&gt; </strong> TCP
-    * 36<strong>&lt;nr&gt; </strong> TCP
-    * 39<strong>&lt;nr&gt; </strong> TCP
-    * 81<strong>&lt;nr&gt; </strong> TCP
-    * 5<strong>&lt;nr&gt;</strong>. 13 TCP
-    * 5<strong>&lt;nr&gt;</strong>. 14 TCP
-    * 5<strong>&lt;nr&gt;</strong>. 16 TCP
+    * 32<strong> &lt; Nr &gt; </strong> TCP
+    * 36<strong> &lt; Nr &gt; </strong> TCP
+    * 39<strong> &lt; Nr &gt; </strong> TCP
+    * 81<strong> &lt; Nr &gt; </strong> TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 13 TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 14 TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 16 TCP
 
 ### <a name="ers"></a>ERS
 
@@ -132,15 +132,15 @@ De volgende lijst bevat de configuratie van de (A) SCS-en ERS-load balancer voor
   * IP-adres voor NW2 10.3.1.17
   * IP-adres voor NW3 10.3.1.19
 * Test poort
-  * Poort 621<strong>&lt;nr&gt;</strong>, daarom voor NW1, NW2 en N # test poorten 621**02**, 621**12** en 621**22**
+  * Poort 621<strong> &lt; Nr &gt; </strong>, daarom voor NW1, NW2 en N # test poorten 621**02**, 621**12** en 621**22**
 * Regels voor taak verdeling: Maak een regel voor elk exemplaar, dat wil zeggen, NW1/ERS, NW2/ERS en NW3/ERS.
   * Als u Standard Load Balancer gebruikt, selecteert u **ha-poorten**
   * Als u basis Load Balancer gebruikt, maakt u regels voor taak verdeling voor de volgende poorten
-    * 32<strong>&lt;nr&gt; </strong> TCP
-    * 33<strong>&lt;nr&gt; </strong> TCP
-    * 5<strong>&lt;nr&gt;</strong>. 13 TCP
-    * 5<strong>&lt;nr&gt;</strong>. 14 TCP
-    * 5<strong>&lt;nr&gt;</strong>. 16 TCP
+    * 32<strong> &lt; Nr &gt; </strong> TCP
+    * 33<strong> &lt; Nr &gt; </strong> TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 13 TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 14 TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 16 TCP
 
 * Back-end-configuratie
   * Verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van het (A) SCS/ERS-cluster
@@ -191,7 +191,7 @@ In deze documentatie wordt ervan uitgegaan dat:
 
 1. Voeg configuratie toe voor het zojuist geïmplementeerde systeem ( **NW2**, **NW3**) aan de bestaande Azure Load Balancer, gevolgd door de instructies om [Azure Load Balancer hand matig te implementeren via Azure Portal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files#deploy-azure-load-balancer-manually-via-azure-portal). Pas de IP-adressen, de status test poorten en de taakverdelings regels voor uw configuratie aan.  
 
-2. **[A]** naam omzetting instellen voor de extra SAP-systemen. U kunt de DNS-server gebruiken of `/etc/hosts` wijzigen op alle knoop punten. In dit voor beeld ziet u hoe `/etc/hosts` u het bestand gebruikt.  Pas de IP-adressen en de hostnamen aan uw omgeving aan. 
+2. **[A]** naam omzetting instellen voor de extra SAP-systemen. U kunt de DNS-server gebruiken of wijzigen `/etc/hosts` op alle knoop punten. In dit voor beeld ziet u hoe u het `/etc/hosts` bestand gebruikt.  Pas de IP-adressen en de hostnamen aan uw omgeving aan. 
 
     ```
     sudo vi /etc/hosts
@@ -232,14 +232,14 @@ In deze documentatie wordt ervan uitgegaan dat:
     sudo chattr +i /usr/sap/NW3/ERS22
    ```
 
-4. **[A]** configureren `autofs` om de/sapmnt/sid-en/usr/sap/sid/sys-bestands systemen te koppelen voor de extra SAP-systemen die u op het cluster implementeert. In dit voor beeld **NW2** en **NW3**.  
+4. **[A]** configureren `autofs` om de/Sapmnt/sid-en/usr/sap/sid/sys-bestands systemen te koppelen voor de extra SAP-systemen die u op het cluster implementeert. In dit voor beeld **NW2** en **NW3**.  
 
    Update bestand `/etc/auto.direct` met de bestands systemen voor de extra SAP-systemen die u naar het cluster implementeert.  
 
    * Als u NFS-Bestands server gebruikt, volgt u de instructies [hier](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#prepare-for-sap-netweaver-installation)
    * Als u Azure NetApp Files gebruikt, volgt u de instructies [hier](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files#prepare-for-sap-netweaver-installation) 
 
-   U moet de `autofs` service opnieuw starten om de zojuist toegevoegde shares te koppelen.  
+   U moet de service opnieuw starten `autofs` om de zojuist toegevoegde shares te koppelen.  
 
 ### <a name="install-ascs--ers"></a>ASCS/ERS installeren
 
@@ -330,7 +330,7 @@ In deze documentatie wordt ervan uitgegaan dat:
 
    Bij het maken van de resources kunnen ze worden toegewezen aan verschillende cluster knooppunten. Wanneer u deze groepeert, worden deze gemigreerd naar een van de cluster knooppunten. Zorg ervoor dat de cluster status OK is en dat alle resources worden gestart.  
 
-   Zorg er vervolgens voor dat de resources van de zojuist gemaakte ERS-groep worden uitgevoerd op het cluster knooppunt, tegengesteld aan het cluster knooppunt waar het ASCS-exemplaar voor hetzelfde SAP-systeem is geïnstalleerd.  Als bijvoorbeeld NW2 ASCS is geïnstalleerd op `slesmsscl1`, moet u ervoor zorgen dat de groep NW2 ers wordt uitgevoerd. `slesmsscl2`  U kunt de groep NW2 ERS migreren naar `slesmsscl2` door de volgende opdracht uit te voeren: 
+   Zorg er vervolgens voor dat de resources van de zojuist gemaakte ERS-groep worden uitgevoerd op het cluster knooppunt, tegengesteld aan het cluster knooppunt waar het ASCS-exemplaar voor hetzelfde SAP-systeem is geïnstalleerd.  Als bijvoorbeeld NW2 ASCS is geïnstalleerd op `slesmsscl1` , moet u ervoor zorgen dat de groep NW2 ers wordt uitgevoerd `slesmsscl2` .  U kunt de groep NW2 ERS migreren naar `slesmsscl2` door de volgende opdracht uit te voeren: 
 
     ```
       crm resource migrate g-NW2_ERS slesmsscl2 force
@@ -402,7 +402,7 @@ In deze documentatie wordt ervan uitgegaan dat:
    sudo usermod -aG haclient nw3adm
    ```
 
-7. Voeg de ASCS-en ERS SAP-services voor het zojuist geïnstalleerde SAP- `sapservice` systeem toe aan het bestand. Het voor beeld hieronder wordt weer gegeven voor SAP-systemen **NW2** en **NW3**.  
+7. Voeg de ASCS-en ERS SAP-services voor het zojuist geïnstalleerde SAP-systeem toe aan het `sapservice` bestand. Het voor beeld hieronder wordt weer gegeven voor SAP-systemen **NW2** en **NW3**.  
 
    Voeg de ASCS-service vermelding toe aan het tweede knoop punt en kopieer de vermelding van de ERS-service naar het eerste knoop punt. Voer de opdrachten voor elk SAP-systeem uit op het knoop punt, waar het ASCS-exemplaar voor het SAP-systeem is geïnstalleerd.  
 
@@ -578,7 +578,7 @@ De tests die worden weer gegeven, bevinden zich in een twee knoop punt, multi-SI
 
 1. HAGetFailoverConfig en HACheckFailoverConfig testen
 
-   Voer de volgende opdrachten uit <sapsid>als adm op het knoop punt waar het ASCS-exemplaar op dit moment wordt uitgevoerd. Als de opdrachten mislukken met een fout: onvoldoende geheugen, kan dit worden veroorzaakt door streepjes in uw hostnaam. Dit is een bekend probleem en wordt opgelost door SUSE in het pakket SAP-SuSE-cluster-connector.
+   Voer de volgende opdrachten uit als <sapsid> adm op het knoop punt waar het ASCS-exemplaar op dit moment wordt uitgevoerd. Als de opdrachten mislukken met een fout: onvoldoende geheugen, kan dit worden veroorzaakt door streepjes in uw hostnaam. Dit is een bekend probleem en wordt opgelost door SUSE in het pakket SAP-SuSE-cluster-connector.
 
    ```
     slesmsscl1:nw1adm 57> sapcontrol -nr 00 -function HAGetFailoverConfig
@@ -857,7 +857,7 @@ De tests die worden weer gegeven, bevinden zich in een twee knoop punt, multi-SI
          rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl1
    ```
 
-   Voer de volgende opdracht uit als root op het knoop punt waarop ten minste één ASCS-exemplaar wordt uitgevoerd. In dit voor beeld hebben we de opdracht uitgevoerd `slesmsscl2`op, waar de ASCS-instanties voor NW1 en NW3 worden uitgevoerd.  
+   Voer de volgende opdracht uit als root op het knoop punt waarop ten minste één ASCS-exemplaar wordt uitgevoerd. In dit voor beeld hebben we de opdracht uitgevoerd op `slesmsscl2` , waar de ASCS-instanties voor NW1 en NW3 worden uitgevoerd.  
 
    ```
     slesmsscl2:~ # echo b > /proc/sysrq-trigger

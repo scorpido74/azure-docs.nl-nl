@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: tyao
 ms.openlocfilehash: 077f127648688b25d45b433fa2bc94ee011b3f2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80336079"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>Een IP-beperkings regel configureren met een Web Application Firewall voor Azure front deur
@@ -37,7 +37,7 @@ Maak een Azure front deur-profiel door de instructies te volgen die worden besch
    |Instelling  |Waarde  |
    |---------|---------|
    |Beleid voor     |Globale WAF (front-deur)|
-   |Abonnement     |Selecteer uw abonnement|
+   |Abonnement     |Uw abonnement selecteren|
    |Resourcegroep     |Selecteer de resource groep waar uw voor deur zich bevindt.|
    |Beleidsnaam     |Voer een naam in voor het beleid|
    |Beleidsstatus     |Ingeschakeld|
@@ -68,7 +68,7 @@ Maak een Azure front deur-profiel door de instructies te volgen die worden besch
 6. Selecteer **volgende: koppeling**.
 7. Selecteer **frontend-host toevoegen**.
 8. Selecteer voor **frontend-host**de frontend-host en selecteer **toevoegen**.
-9. Selecteer **controleren + maken**.
+9. Selecteer **Controleren + maken**.
 10. Nadat de beleids validatie is geslaagd, selecteert u **maken**.
 
 ### <a name="test-your-waf-policy"></a>Uw WAF-beleid testen
@@ -87,8 +87,8 @@ Maak een Azure front deur-profiel door de instructies te volgen die worden besch
 Voordat u begint met het configureren van een IP-beperkings beleid, moet u uw CLI-omgeving instellen en een Azure front deur-profiel maken.
 
 #### <a name="set-up-the-azure-cli-environment"></a>De Azure CLI-omgeving instellen
-1. Installeer de [Azure cli](/cli/azure/install-azure-cli)of gebruik Azure Cloud shell. Azure Cloud Shell is een gratis Bash-shell die u rechtstreeks in Azure Portal kunt uitvoeren. In deze shell is de Azure CLI vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Selecteer de knop **try it** in de CLI-opdrachten die volgen en meld u vervolgens aan bij uw Azure-account in de Cloud shell-sessie die wordt geopend. Nadat de sessie is gestart, `az extension add --name front-door` voert u in om de Azure front-deur uitbreiding toe te voegen.
- 2. Als u de CLI lokaal gebruikt in bash, meldt u zich aan bij Azure `az login`met behulp van.
+1. Installeer de [Azure cli](/cli/azure/install-azure-cli)of gebruik Azure Cloud shell. Azure Cloud Shell is een gratis Bash-shell die u rechtstreeks in Azure Portal kunt uitvoeren. In deze shell is de Azure CLI vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Selecteer de knop **try it** in de CLI-opdrachten die volgen en meld u vervolgens aan bij uw Azure-account in de Cloud shell-sessie die wordt geopend. Nadat de sessie is gestart, voert `az extension add --name front-door` u in om de Azure front-deur uitbreiding toe te voegen.
+ 2. Als u de CLI lokaal gebruikt in bash, meldt u zich aan bij Azure met behulp van `az login` .
 
 #### <a name="create-an-azure-front-door-profile"></a>Een Azure front deur-profiel maken
 Maak een Azure front deur-profiel door de instructies te volgen die worden beschreven in [Quick Start: een front deur maken voor een Maxi maal beschik bare, wereld wijde webtoepassing](../../frontdoor/quickstart-create-front-door.md).
@@ -212,7 +212,7 @@ $IPAllowRule = New-AzFrontDoorWafCustomRuleObject `
 ```
 
 ### <a name="configure-a-waf-policy"></a>Een WAF-beleid configureren
-Zoek de naam van de resource groep die het Azure front-deur profiel bevat met `Get-AzResourceGroup`behulp van. Configureer vervolgens een WAF-beleid met de IP-regel met behulp van [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
+Zoek de naam van de resource groep die het Azure front-deur profiel bevat met behulp van `Get-AzResourceGroup` . Configureer vervolgens een WAF-beleid met de IP-regel met behulp van [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
 
 ```azurepowershell
   $IPAllowPolicyExamplePS = New-AzFrontDoorWafPolicy `

@@ -15,17 +15,17 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/14/2019
 ms.openlocfilehash: 8a4b05c0ee76aca07fd740a16a76a634727504e9
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71213026"
 ---
 # <a name="azure-notification-hubs-sdks"></a>Azure Notification Hubs Sdk's
 
 Micro soft en derden publiceren Sdk's voor Azure Notification Hubs. De micro soft-opslag plaatsen voor Android, iOS en .NET bevatten ook voor beelden van apps voor elk doel platform.
 
-| SDK            | Uitgever      |
+| SDK            | Publisher      |
 | -------------- | -------------- |
 | [.NET-Server](https://github.com/Azure/azure-notificationhubs-dotnet) | Microsoft |
 | [Android](https://github.com/Azure/azure-notificationhubs-android)  |Microsoft |

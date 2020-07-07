@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 9836bd35b16c4c308b7c9d096b104c0cec68a34c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335652"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Geocoderings dekking Azure Maps
@@ -58,7 +58,7 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Guam                                                |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Guatemala                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Guyana                                              |                |             |           |      ✓     |                 |
-| Haiti                                               |                 |                |       ✓      |      ✓     |          ✓         |
+| Haïti                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Honduras                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Jamaica                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Martinique                                          |                 |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -139,7 +139,7 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Thailand                                            |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Tokelau                                             |                 |                |              |      ✓     |          ✓         |
 | Tonga                                               |                 |                |              |      ✓     |          ✓         |
-| Turks- en Caicoseilanden                            |                 |                |              |      ✓     |          ✓         |
+| Turks- en Caicos-eilanden                            |                 |                |              |      ✓     |          ✓         |
 | Tuvalu                                              |                 |                |              |      ✓     |          ✓         |
 | Vanuatu                                             |                 |                |              |      ✓     |          ✓         |
 | Vietnam                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -160,10 +160,10 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Belarus                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kroatië                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Cyprus                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Tsjechië                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Tsjechische Republiek                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Denemarken                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Estland                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Faeröer                                       |                 |                |              |      ✓     |          ✓         |
+| Faröer                                       |                 |                |              |      ✓     |          ✓         |
 | Finland                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Frankrijk                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Georgië                                             |        ✓        |        ✓       |              |      ✓     |          ✓         |
@@ -181,7 +181,7 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Jersey                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kazachstan                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kosovo                                              |                 |                |       ✓      |      ✓     |          ✓         |
-| Kirgizië                                          |                 |                |              |      ✓     |          ✓         |
+| Kirgistan                                          |                 |                |              |      ✓     |          ✓         |
 | Letland                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Liechtenstein                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Litouwen                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -212,7 +212,7 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Oekraïne                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Verenigd Koninkrijk                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Oezbekistan                                          |                 |                |              |      ✓     |          ✓         |
-| Vaticaan stad                                        |                 |                |       ✓      |      ✓     |          ✓         |
+| Vaticaanstad                                        |                 |                |       ✓      |      ✓     |          ✓         |
 
 
 ## <a name="middle-east-and-africa"></a>Midden-Oosten en Afrika
@@ -256,12 +256,12 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Lesotho                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Liberia                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Libië                                               |                 |                |       ✓      |      ✓     |          ✓         |
-| Madagascar                                          |                 |                |       ✓      |      ✓     |          ✓         |
+| Madagaskar                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Malawi                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Maldiven                                            |                 |                |              |      ✓     |          ✓         |
 | Mali                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Marshalleilanden                                    |                 |                |              |      ✓     |          ✓         |
-| Mauretanië                                          |                 |                |       ✓      |      ✓     |          ✓         |
+| Mauritanië                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Mauritius                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Mayotte                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Marokko                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |

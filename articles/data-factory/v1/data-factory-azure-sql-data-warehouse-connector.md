@@ -13,15 +13,15 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 4335763269f4a39b4893d9022f4789296b178e92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81419320"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Gegevens kopiëren van en naar Azure SQL Data Warehouse met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-azure-sql-data-warehouse-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](data-factory-azure-sql-data-warehouse-connector.md)
 > * [Versie 2 (huidige versie)](../connector-azure-sql-data-warehouse.md)
 
 > [!NOTE]
@@ -169,7 +169,7 @@ Het gebruik van **[poly base](https://docs.microsoft.com/sql/relational-database
 * Als uw bron gegevens zich in **Azure Blob of Azure data Lake Store**bevindt en de indeling compatibel is met poly Base, kunt u rechtstreeks naar Azure SQL Data Warehouse kopiëren met poly base. Zie **[direct kopiëren met poly base](#direct-copy-using-polybase)** met details.
 * Als uw brongegevens archief en-indeling niet oorspronkelijk worden ondersteund door poly Base, kunt u in plaats daarvan de **[gefaseerde kopie gebruiken met](#staged-copy-using-polybase)** de functie voor het maken van een poly base. Het biedt ook een betere door voer door de gegevens automatisch te converteren naar een indeling die compatibel is met poly base en de gegevens op te slaan in Azure Blob Storage. Vervolgens worden gegevens geladen in SQL Data Warehouse.
 
-Stel de `allowPolyBase` eigenschap in op **True (waar** ), zoals wordt weer gegeven in het volgende voor beeld voor Azure Data Factory om met poly base gegevens te kopiëren naar Azure SQL Data Warehouse. Wanneer u allowPolyBase instelt op True, kunt u polybase-specifieke eigenschappen opgeven met `polyBaseSettings` behulp van de eigenschappen groep. Zie de sectie [SqlDWSink](#sqldwsink) voor meer informatie over eigenschappen die u kunt gebruiken met polyBaseSettings.
+Stel de `allowPolyBase` eigenschap in op **True (waar** ), zoals wordt weer gegeven in het volgende voor beeld voor Azure Data Factory om met poly base gegevens te kopiëren naar Azure SQL Data Warehouse. Wanneer u allowPolyBase instelt op True, kunt u polybase-specifieke eigenschappen opgeven met behulp van de `polyBaseSettings` Eigenschappen groep. Zie de sectie [SqlDWSink](#sqldwsink) voor meer informatie over eigenschappen die u kunt gebruiken met polyBaseSettings.
 
 ```JSON
 "sink": {
@@ -194,12 +194,12 @@ SQL Data Warehouse poly Base biedt rechtstreeks ondersteuning voor Azure-Blob en
 Als niet aan de vereisten wordt voldaan, worden de instellingen door Azure Data Factory gecontroleerd en wordt automatisch teruggeleid naar het BULKINSERT-mechanisme voor het verplaatsen van gegevens.
 
 1. De **gekoppelde bron service** is van het type: **opslag** of **AzureDataLakeStore met Service-Principal-verificatie**.
-2. De **invoer-gegevensset** is van het type: **AzureBlob** of **AzureDataLakeStore**, en de notatie `type` type onder eigenschappen is **OrcFormat**, **ParquetFormat**of **TextFormat** met de volgende configuraties:
+2. De **invoer-gegevensset** is van het type: **AzureBlob** of **AzureDataLakeStore**, en de notatie type onder `type` Eigenschappen is **OrcFormat**, **ParquetFormat**of **TextFormat** met de volgende configuraties:
 
    1. `rowDelimiter`moet **\n**zijn.
-   2. `nullValue`is ingesteld op een **lege teken reeks** ("") `treatEmptyAsNull` of is ingesteld op **True**.
+   2. `nullValue`is ingesteld op een **lege teken reeks** ("") of `treatEmptyAsNull` is ingesteld op **True**.
    3. `encodingName`is ingesteld op **UTF-8**, de **standaard** waarde.
-   4. `escapeChar`, `quoteChar`, `firstRowAsHeader`en `skipLineCount` zijn niet opgegeven.
+   4. `escapeChar`, `quoteChar` , `firstRowAsHeader` en `skipLineCount` zijn niet opgegeven.
    5. `compression`kan **geen compressie**, **gzip**of **Deflate**zijn.
 
       ```JSON
@@ -220,7 +220,7 @@ Als niet aan de vereisten wordt voldaan, worden de instellingen door Azure Data 
       ```
 
 3. Er is geen `skipHeaderLineCount` instelling onder **BlobSource** of **AzureDataLakeStore** voor de Kopieer activiteit in de pijp lijn.
-4. Er is geen `sliceIdentifierColumnName` instelling onder **SqlDWSink** voor de Kopieer activiteit in de pijp lijn. (Poly base garandeert dat alle gegevens worden bijgewerkt of er niets wordt bijgewerkt in één run. U kunt voor **Herhaal baarheid**gebruikmaken `sqlWriterCleanupScript`van).
+4. Er is geen `sliceIdentifierColumnName` instelling onder **SqlDWSink** voor de Kopieer activiteit in de pijp lijn. (Poly base garandeert dat alle gegevens worden bijgewerkt of er niets wordt bijgewerkt in één run. U kunt voor **Herhaal baarheid**gebruikmaken van `sqlWriterCleanupScript` ).
 5. Er wordt geen `columnMapping` gebruik gemaakt van de koppeling in de Kopieer activiteit.
 
 ### <a name="staged-copy-using-polybase"></a>Gefaseerde kopie met poly base
@@ -230,7 +230,7 @@ Als uw bron gegevens niet voldoen aan de criteria die in de vorige sectie zijn g
 > Bij het kopiëren van gegevens uit een on-premises gegevens opslag naar Azure SQL Data Warehouse met poly base en fase ring, als uw Data Management Gateway versie onder 2,4, JRE (Java Runtime Environment) is vereist op de gateway computer die wordt gebruikt om de bron gegevens in de juiste indeling te zetten. U kunt het beste een upgrade uitvoeren van uw gateway naar de nieuwste om deze afhankelijkheid te voor komen.
 >
 
-Als u deze functie wilt gebruiken, moet u een [Azure Storage gekoppelde service](data-factory-azure-blob-connector.md#azure-storage-linked-service) maken die verwijst naar het Azure Storage-account met de tussenliggende BLOB- `enableStaging` opslag `stagingSettings` . vervolgens geeft u de eigenschappen en op voor de Kopieer activiteit, zoals wordt weer gegeven in de volgende code:
+Als u deze functie wilt gebruiken, moet u een [Azure Storage gekoppelde service](data-factory-azure-blob-connector.md#azure-storage-linked-service) maken die verwijst naar het Azure Storage-account met de tussenliggende Blob-opslag. vervolgens geeft u de `enableStaging` `stagingSettings` Eigenschappen en op voor de Kopieer activiteit, zoals wordt weer gegeven in de volgende code:
 
 ```json
 "activities":[
@@ -308,16 +308,16 @@ Data Factory maakt de tabel in het doel archief met dezelfde tabel naam in de ge
 | Bitmask | Bitmask |
 | Decimal | Decimal |
 | Numeriek | Decimal |
-| Drijvend | Drijvend |
+| Float | Float |
 | Money | Money |
 | Realistische | Realistische |
 | SmallMoney | SmallMoney |
 | Binair | Binair |
 | Varbinary | Varbinary (Maxi maal 8000) |
-| Date | Date |
+| Datum | Date |
 | DateTime | DateTime |
 | DateTime2 | DateTime2 |
-| Time | Time |
+| Tijd | Tijd |
 | Date time offset | Date time offset |
 | SmallDateTime | SmallDateTime |
 | Tekst | Varchar (Maxi maal 8000) |
@@ -346,7 +346,7 @@ De toewijzing is hetzelfde als de [SQL Server gegevens type toewijzing voor ADO.
 | --- | --- |
 | bigint |Int64 |
 | binair |Byte [] |
-| bit |Booleaans |
+| bit |Boolean-waarde |
 | char |Teken reeks, char [] |
 | date |DateTime |
 | Datum/tijd |DateTime |
@@ -354,15 +354,15 @@ De toewijzing is hetzelfde als de [SQL Server gegevens type toewijzing voor ADO.
 | Date time offset |Date time offset |
 | Decimal |Decimal |
 | FILESTREAM-kenmerk (varbinary (max)) |Byte [] |
-| Drijvend |Double |
-| installatiekopie |Byte [] |
+| Float |Dubbel |
+| image |Byte [] |
 | int |Int32 |
-| financieel |Decimal |
+| money |Decimal |
 | nchar |Teken reeks, char [] |
 | ntext |Teken reeks, char [] |
 | numeriek |Decimal |
 | nvarchar |Teken reeks, char [] |
-| werkelijk |Enkel |
+| werkelijk |Enkelvoudig |
 | rowversion |Byte [] |
 | smalldatetime |DateTime |
 | smallint |Int16 |

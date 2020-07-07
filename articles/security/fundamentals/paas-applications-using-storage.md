@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
 ms.openlocfilehash: 675e10101d01d831aad7652c70cbfcf320085a3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70999173"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Aanbevolen procedures voor het beveiligen van PaaS web-en mobiele toepassingen met Azure Storage
@@ -66,7 +66,7 @@ Zie voor meer informatie over RBAC:
 
 - [Toegang beheren met op rollen gebaseerd toegangsbeheer en Azure Portal](/azure/role-based-access-control/role-assignments-portal)
 - [Ingebouwde rollen voor Azure-resources](/azure/role-based-access-control/built-in-roles)
-- [Veiligheidsgids voor Azure Storage](/azure/storage/common/storage-security-guide) 
+- [Azure Storage-beveiligingshandleiding](/azure/storage/common/storage-security-guide) 
 
 ## <a name="use-client-side-encryption-for-high-value-data"></a>Versleuteling aan client zijde gebruiken voor gegevens met hoge waarde
 Met versleuteling aan de client zijde kunt u gegevens in transit programmatisch versleutelen voordat u deze uploadt naar Azure Storage, en gegevens programmatisch ontsleutelen bij het ophalen. Dit zorgt voor versleuteling van gegevens tijdens de overdracht, maar biedt ook versleuteling van gegevens in rust. Versleuteling aan de client zijde is de veiligste methode voor het versleutelen van uw gegevens, maar hiervoor moet u programmatisch wijzigingen aanbrengen in uw toepassing en de belangrijkste beheer processen plaatsen.

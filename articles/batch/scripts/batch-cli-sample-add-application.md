@@ -3,12 +3,12 @@ title: Azure CLI-voorbeeldscript - een toepassing toevoegen in Batch
 description: Dit voorbeeldscript laat zien hoe u een toepassing kunt toevoegen voor gebruik met een Azure Batch-groep of een taak.
 ms.topic: sample
 ms.date: 01/29/2018
-ms.openlocfilehash: 792af55be17551d1635b6821456c6e8e53e9daea
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 305b6473b4fa149c378e01229b4ad3eea2dbaef4
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681930"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964084"
 ---
 # <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>CLI-voorbeeld: Een toepassing toevoegen aan een Azure Batch-account
 
@@ -48,4 +48,4 @@ Elke opdracht in de tabel is een koppeling naar opdracht-specifieke documentatie
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.

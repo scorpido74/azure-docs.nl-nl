@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: b06deadae15a8176a49bed88a53884df2b71e473
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82189459"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Problemen met & beperkingen van Azure Cloud Shell oplossen
@@ -31,8 +31,8 @@ Bekende oplossingen voor het oplossen van problemen in Azure Cloud Shell zijn on
 
 ### <a name="error-running-azuread-cmdlets-in-powershell"></a>Fout bij het uitvoeren van AzureAD-cmdlets in Power shell
 
-- **Details**: wanneer u AzureAD-cmdlets uitvoert `Get-AzureADUser` , zoals in Cloud shell, ziet u mogelijk een `You must call the Connect-AzureAD cmdlet before calling any other cmdlets`fout bericht:. 
-- **Oplossing**: Voer de `Connect-AzureAD` cmdlet uit. Voorheen heeft Cloud Shell deze cmdlet automatisch uitgevoerd tijdens het opstarten van Power shell. De cmdlet wordt niet meer automatisch uitgevoerd om de start tijd te versnellen. U kunt ervoor kiezen om het vorige gedrag te herstellen `Connect-AzureAD` door toe te voegen aan het $profile-bestand in Power shell.
+- **Details**: wanneer u AzureAD-cmdlets uitvoert `Get-AzureADUser` , zoals in Cloud shell, ziet u mogelijk een fout bericht: `You must call the Connect-AzureAD cmdlet before calling any other cmdlets` . 
+- **Oplossing**: Voer de `Connect-AzureAD` cmdlet uit. Voorheen heeft Cloud Shell deze cmdlet automatisch uitgevoerd tijdens het opstarten van Power shell. De cmdlet wordt niet meer automatisch uitgevoerd om de start tijd te versnellen. U kunt ervoor kiezen om het vorige gedrag te herstellen door toe te voegen `Connect-AzureAD` aan het $profile-bestand in Power shell.
 
 ### <a name="early-timeouts-in-firefox"></a>Vroege time-outs in FireFox
 
@@ -41,8 +41,8 @@ Bekende oplossingen voor het oplossen van problemen in Azure Cloud Shell zijn on
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>Cloud Shell uitschakelen in een vergrendelde netwerk omgeving
 
-- **Details**: beheerders kunnen de toegang tot Cloud shell voor hun gebruikers uitschakelen. Cloud Shell maakt gebruik van toegang tot `ux.console.azure.com` het domein, dat kan worden geweigerd, waardoor alle toegang tot de entrypoints van Cloud shell, waaronder portal.azure.com, shell.Azure.com, Visual Studio code Azure-account extensie en docs.Microsoft.com, wordt gestopt. Het ingangs punt in de cloud van de `ux.console.azure.us`Amerikaanse overheid is; Er is geen bijbehorende shell.azure.us.
-- **Oplossing**: Beperk de `ux.console.azure.com` toegang `ux.console.azure.us` tot of via netwerk instellingen tot uw omgeving. Het Cloud Shell pictogram blijft aanwezig in de Azure Portal, maar er wordt geen verbinding gemaakt met de service.
+- **Details**: beheerders kunnen de toegang tot Cloud shell voor hun gebruikers uitschakelen. Cloud Shell maakt gebruik van toegang tot het `ux.console.azure.com` domein, dat kan worden geweigerd, waardoor alle toegang tot de entrypoints van Cloud shell, waaronder Portal.Azure.com, shell.Azure.com, Visual Studio code Azure-account extensie en docs.Microsoft.com, wordt gestopt. Het ingangs punt in de cloud van de Amerikaanse overheid is `ux.console.azure.us` ; Er is geen bijbehorende shell.Azure.us.
+- **Oplossing**: Beperk de toegang tot `ux.console.azure.com` of `ux.console.azure.us` via netwerk instellingen tot uw omgeving. Het Cloud Shell pictogram blijft aanwezig in de Azure Portal, maar er wordt geen verbinding gemaakt met de service.
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Opslag dialoogvenster-fout: 403 RequestDisallowedByPolicy
 
@@ -81,12 +81,12 @@ Bekende oplossingen voor het oplossen van problemen in Azure Cloud Shell zijn on
 > Virtuele Azure-machines moeten een openbaar gericht IP-adres hebben.
 
 - **Details**: vanwege de standaard Windows Firewall-instellingen voor WinRM, kan de gebruiker de volgende fout zien:`Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- **Oplossing**: Voer `Enable-AzVMPSRemoting` uit om alle aspecten van externe communicatie van Power shell op de doel computer in te scha kelen.
+- **Oplossing**: Voer uit `Enable-AzVMPSRemoting` om alle aspecten van externe communicatie van Power shell op de doel computer in te scha kelen.
 
 ### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir`werkt het resultaat niet bij in azure drive
 
 - **Details**: standaard wordt voor het optimaliseren van de gebruikers ervaring de resultaten van `dir` in de cache opgeslagen in het Azure-station.
-- **Oplossing**: nadat u een Azure-resource hebt gemaakt, bijgewerkt of verwijderd `dir -force` , voert u uit om de resultaten in het Azure-station bij te werken.
+- **Oplossing**: nadat u een Azure-resource hebt gemaakt, bijgewerkt of verwijderd, voert `dir -force` u uit om de resultaten in het Azure-station bij te werken.
 
 ## <a name="general-limitations"></a>Algemene beperkingen
 
@@ -104,7 +104,7 @@ De computer die uw Cloud Shell-sessie levert, is tijdelijk en wordt gerecycled n
 
 - Bij gekoppelde opslag worden alleen wijzigingen in de `clouddrive` Directory bewaard. In bash wordt uw `$HOME` Directory ook bewaard.
 - Azure-bestands shares kunnen alleen worden gekoppeld vanuit uw [toegewezen regio](persisting-shell-storage.md#mount-a-new-clouddrive).
-  - Voer `env` in bash de opdracht uit om uw regio in `ACC_LOCATION`te stellen als.
+  - Voer in bash `env` de opdracht uit om uw regio in te stellen als `ACC_LOCATION` .
 - Azure Files ondersteunt alleen lokaal redundante opslag en geografisch redundante opslag accounts.
 
 ### <a name="browser-support"></a>Browserondersteuning
@@ -140,7 +140,7 @@ Wees voorzichtig bij het bewerken van. bashrc. Dit kan leiden tot onverwachte fo
 
 ### <a name="preview-version-of-azuread-module"></a>Preview-versie van de AzureAD-module
 
-`AzureAD.Standard.Preview`Momenteel is er een preview-versie van .NET Standard-based module beschikbaar. Deze module biedt dezelfde functionaliteit als `AzureAD`.
+Momenteel `AzureAD.Standard.Preview` is er een preview-versie van .NET Standard-based module beschikbaar. Deze module biedt dezelfde functionaliteit als `AzureAD` .
 
 ### <a name="sqlserver-module-functionality"></a>`SqlServer`module functionaliteit
 
@@ -148,7 +148,7 @@ De `SqlServer` module die is opgenomen in Cloud Shell heeft alleen ondersteuning
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>Standaard bestands locatie wanneer deze wordt gemaakt vanuit een Azure-station
 
-Met behulp van Power shell-cmdlets kunnen gebruikers geen bestanden maken onder het Azure-station. Wanneer gebruikers nieuwe bestanden maken met andere hulpprogram ma's, zoals vim of nano, worden de bestanden standaard opgeslagen op `$HOME` de.
+Met behulp van Power shell-cmdlets kunnen gebruikers geen bestanden maken onder het Azure-station. Wanneer gebruikers nieuwe bestanden maken met andere hulpprogram ma's, zoals vim of nano, worden de bestanden standaard opgeslagen op de `$HOME` .
 
 ### <a name="tab-completion-can-throw-psreadline-exception"></a>Door tabs volt ooien kan uitzonde ring genereren PSReadline
 
@@ -156,11 +156,11 @@ Als de PSReadline-EditMode van de gebruiker is ingesteld op emacs, probeert de g
 
 ### <a name="large-gap-after-displaying-progress-bar"></a>Grote tussen ruimte na het weer geven van de voortgangs balk
 
-Als een opdracht of gebruikers actie een voortgangs balk weergeeft, zoals een tab die in het `Azure:` station is voltooid, is het mogelijk dat de cursor niet op de juiste wijze is ingesteld en dat er een lege ruimte wordt weer gegeven waarin de voortgangs balk zich eerder bevond.
+Als een opdracht of gebruikers actie een voortgangs balk weergeeft, zoals een tab die in het station is voltooid `Azure:` , is het mogelijk dat de cursor niet op de juiste wijze is ingesteld en dat er een lege ruimte wordt weer gegeven waarin de voortgangs balk zich eerder bevond.
 
 ### <a name="random-characters-appear-inline"></a>Wille keurige tekens worden inline weer gegeven
 
-De cursor positie reeks codes kunnen bijvoorbeeld `5;13R`worden weer gegeven in de gebruikers invoer. De tekens kunnen hand matig worden verwijderd.
+De cursor positie reeks codes `5;13R` kunnen bijvoorbeeld worden weer gegeven in de gebruikers invoer. De tekens kunnen hand matig worden verwijderd.
 
 ## <a name="personal-data-in-cloud-shell"></a>Persoonlijke gegevens in Cloud Shell
 

@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: c00f9d8baa55ef0d0cf6322ee71f22e739e6acdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80365501"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>Gebruikers en rollen beheren in uw IoT Central-toepassing
@@ -159,7 +159,7 @@ Wanneer u een aangepaste rol definieert, kiest u de set machtigingen die een geb
 | ---- | -------- |
 | Weergave | Geen     |
 | Bijwerken | Weergave   |
-| Exemplaar | Weergave <br/> Andere afhankelijkheden: Device-sjablonen weer geven, instanties van apparaten, apparaatgroepen, Dash boards, gegevens exporteren, huis stijl, Help-koppelingen, aangepaste rollen, regels |
+| Kopiëren | Weergave <br/> Andere afhankelijkheden: Device-sjablonen weer geven, instanties van apparaten, apparaatgroepen, Dash boards, gegevens exporteren, huis stijl, Help-koppelingen, aangepaste rollen, regels |
 | Verwijderen | Weergave   |
 | Volledig beheer | Weer geven, bijwerken, kopiëren, verwijderen <br/> Andere afhankelijkheden: Device-sjablonen weer geven, apparaatgroepen, toepassings dashboards, gegevens exporteren, huis stijl, Help-koppelingen, aangepaste rollen, regels |
 

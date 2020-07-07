@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
 ms.openlocfilehash: 4dce0a675f5841591da00a322b72718964d382ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80348877"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Hoge Beschik baarheid voor NFS op Azure Vm's op SUSE Linux Enterprise Server
@@ -120,15 +120,15 @@ U kunt een van de Quick Start-sjablonen op GitHub gebruiken voor het implementer
    4. Gebruikers naam en beheerders wachtwoord voor beheerder  
       Er wordt een nieuwe gebruiker gemaakt die kan worden gebruikt om u aan te melden bij de computer.
    5. Subnet-ID  
-      Als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de ID van het specifieke subnet benoemen. De id ziet er meestal uit als/Subscriptions/**&lt;-abonnements-&gt;id**/resourceGroups/**&lt;naam&gt;van de resource groep**/providers/Microsoft.Network/virtualNetworks/**&lt;naam&gt;van het virtuele netwerk**/subnets/**&lt;subnet naam&gt; **
+      Als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de ID van het specifieke subnet benoemen. De ID ziet er meestal uit als/Subscriptions/** &lt; -abonnements &gt; -id**/resourceGroups/naam** &lt; &gt; van de resource groep**/providers/Microsoft.Network/virtualNetworks/naam** &lt; &gt; van het virtuele netwerk**/subnets/** &lt; subnet naam &gt; **
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Linux hand matig implementeren via Azure Portal
 
 U moet eerst de virtuele machines voor dit NFS-cluster maken. Daarna maakt u een load balancer en gebruikt u de virtuele machines in de back-endservers.
 
 1. Een resourcegroep maken
-1. Een virtueel netwerk maken
-1. Een Beschikbaarheidsset maken  
+1. Een Virtual Network maken
+1. Een beschikbaarheidsset maken  
    Maximum aantal update domeinen instellen
 1. Virtuele machine 1 maken gebruik ten minste SLES4SAP 12 SP3, in dit voor beeld wordt de SLES4SAP 12 SP3 BYOS image SLES for SAP-toepassingen 12 SP3 (BYOS) gebruikt  
    Selecteer een Beschikbaarheidsset die u eerder hebt gemaakt  

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: f98598bd1307bb1b46ff23814780c5f809b9ac90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335567"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Een tegel laag aan een kaart toevoegen met behulp van de Azure Maps Android SDK
@@ -23,18 +23,18 @@ Een tegel laag wordt in tegels van een server geladen. Deze installatie kopieën
 
 * X, Y, zoom notatie: gebaseerd op het zoom niveau, x is de kolom en Y de rijpositie van de tegel in het tegel raster.
 * Quadkey notatie: combi natie x, y en zoom informatie in een enkele teken reeks waarde die een unieke id voor een tegel is.
-* Omsluitende Box-coördinaten kunnen worden gebruikt om een afbeelding op te geven in de indeling `{west},{south},{east},{north}` die wordt gebruikt door [Web MAPPING Services (WMS)](https://www.opengeospatial.org/standards/wms).
+* Omsluitende Box-coördinaten kunnen worden gebruikt om een afbeelding op te geven in de indeling `{west},{south},{east},{north}` die wordt gebruikt door [Web Mapping Services (WMS)](https://www.opengeospatial.org/standards/wms).
 
 > [!TIP]
 > Een TileLayer is een uitstekende manier om grote gegevens sets op de kaart te visualiseren. U kunt niet alleen een tegel laag genereren op basis van een afbeelding, maar u kunt ook vector gegevens weer geven als een tegel laag. Door vector gegevens als een tegel laag te renderen, hoeft het kaart besturings element alleen de tegels te laden die veel kleiner kunnen zijn dan de vector gegevens die ze vertegenwoordigen. Deze techniek wordt gebruikt door veel die miljoenen rijen met gegevens op de kaart moeten weer geven.
 
 De tegel-URL die wordt door gegeven aan een tegel laag moet een HTTP/HTTPS-URL zijn naar een TileJSON-resource of een tegel-URL-sjabloon die gebruikmaakt van de volgende para meters: 
 
-* `{x}`-X-positie van de tegel. Ook nodig `{y}` en `{z}`.
-* `{y}`-Y-positie van de tegel. Ook nodig `{x}` en `{z}`.
-* `{z}`-Zoom niveau van de tegel. Ook nodig `{x}` en `{y}`.
+* `{x}`-X-positie van de tegel. Ook nodig `{y}` en `{z}` .
+* `{y}`-Y-positie van de tegel. Ook nodig `{x}` en `{z}` .
+* `{z}`-Zoom niveau van de tegel. Ook nodig `{x}` en `{y}` .
 * `{quadkey}`-Tegel quadkey-id gebaseerd op de naam Conventie voor Bing Maps-tegel systeem.
-* `{bbox-epsg-3857}`-Een teken reeks voor selectie kader met de `{west},{south},{east},{north}` indeling in het EPSG 3857 Spatial Reference System.
+* `{bbox-epsg-3857}`-Een teken reeks voor selectie kader met de indeling `{west},{south},{east},{north}` in het EPSG 3857 Spatial Reference System.
 * `{subdomain}`-Een tijdelijke aanduiding voor de waarden van het subdomein als de subdomeinwaarde is opgegeven.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -48,7 +48,7 @@ Om het proces in dit artikel te volt ooien, moet u [Azure Maps ANDROID SDK](http
 
 U kunt een tegel laag toevoegen aan de kaart door de volgende stappen uit te voeren.
 
-1. Bewerk de **indeling res > > activity_main. XML** , zodat deze er als volgt uitziet:
+1. Wijzig de **indeling van res > > activity_main.xml** zodat deze er als volgt uitziet:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -84,9 +84,9 @@ U kunt een tegel laag toevoegen aan de kaart door de volgende stappen uit te voe
     });
     ```
     
-    In het bovenstaande code fragment wordt eerst een exemplaar van Azure Maps kaart besturings element opgehaald met de call back methode **onReady ()** . Vervolgens wordt een `TileLayer` -object gemaakt en wordt een geopmaakde **xyz** - `tileUrl` tegel-URL in de optie door gegeven. De dekking van de laag is ingesteld op `0.8` en sinds de tegels van de tegel service die wordt gebruikt, zijn 256 pixel tegels, wordt `tileSize` deze informatie door gegeven aan de optie. De laag van de tegel wordt vervolgens door gegeven aan de Maps Layer Manager.
+    In het bovenstaande code fragment wordt eerst een exemplaar van Azure Maps kaart besturings element opgehaald met de call back methode **onReady ()** . Vervolgens wordt een- `TileLayer` object gemaakt en wordt een geopmaakde **xyz** -tegel-URL in de optie door gegeven `tileUrl` . De dekking van de laag is ingesteld op `0.8` en sinds de tegels van de tegel service die wordt gebruikt, zijn 256 pixel tegels, wordt deze informatie door gegeven aan de `tileSize` optie. De laag van de tegel wordt vervolgens door gegeven aan de Maps Layer Manager.
 
-    Nadat u het code fragment hierboven hebt toegevoegd `MainActivity.java` , ziet uw er als volgt uit:
+    Nadat u het code fragment hierboven hebt toegevoegd, `MainActivity.java` ziet uw er als volgt uit:
     
     ```Java
     package com.example.myapplication;

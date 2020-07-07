@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: b1c5d9b5cd2b6b9bfecf8a0af79699061003eec1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335693"
 ---
 # <a name="change-the-style-of-the-map"></a>Stijl van de kaart wijzigen
 
-De kaart ondersteunt diverse verschillende [stijl opties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) die kunnen worden ingesteld wanneer de kaart wordt geïnitialiseerd of later met de functie Maps `setStyle` . In dit artikel wordt uitgelegd hoe u deze stijl opties kunt gebruiken om de weer gave van kaarten aan te passen. Meer informatie over het instellen van een stijl bij het laden van een kaart en informatie over het instellen van een nieuwe kaart stijl met het besturings element stijl kiezer.
+De kaart ondersteunt diverse verschillende [stijl opties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) die kunnen worden ingesteld wanneer de kaart wordt geïnitialiseerd of later met de `setStyle` functie Maps. In dit artikel wordt uitgelegd hoe u deze stijl opties kunt gebruiken om de weer gave van kaarten aan te passen. Meer informatie over het instellen van een stijl bij het laden van een kaart en informatie over het instellen van een nieuwe kaart stijl met het besturings element stijl kiezer.
 
 ## <a name="set-the-style-options"></a>De stijl opties instellen 
 
-Stijl opties kunnen worden door gegeven aan de kaart wanneer deze later wordt geïnitialiseerd of bijgewerkt met de functie `setStyle` Maps.
+Stijl opties kunnen worden door gegeven aan de kaart wanneer deze later wordt geïnitialiseerd of bijgewerkt met de `setStyle` functie Maps.
 
 ```javascript
 //Set the style options when creating the map.
@@ -44,7 +44,7 @@ Het volgende hulp programma laat zien hoe de verschillende stijl opties wijzigen
 <br/>
 
 <iframe height="700" style="width: 100%;" scrolling="no" title="Opties voor kaart stijl" src="https://codepen.io/azuremaps/embed/eYNMjPb?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zie de opties voor de <a href='https://codepen.io/azuremaps/pen/eYNMjPb'>kaart stijl</a> van de<a href='https://codepen.io/azuremaps'>@azuremaps</a>pen op Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+Zie de opties voor de <a href='https://codepen.io/azuremaps/pen/eYNMjPb'>kaart stijl</a> van de Pen op Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="choose-a-base-map-style"></a>Een Basiskaart stijl kiezen
@@ -54,7 +54,7 @@ Een van de meest gang bare kaart stijl opties wordt gebruikt voor het wijzigen v
 ### <a name="set-base-map-style-on-map-load"></a>Stijl van basis kaart instellen voor toewijzen van kaart
 
 
-De kaart stijl kan worden opgegeven bij het initialiseren van de kaart door `style` de optie in te stellen. In de volgende code is de `style` optie van de kaart ingesteld op `grayscale_dark` bij initialisatie.
+De kaart stijl kan worden opgegeven bij het initialiseren van de kaart door de optie in te stellen `style` . In de volgende code is de `style` optie van de kaart ingesteld op `grayscale_dark` bij initialisatie.
 
 ```javascript
 var map = new atlas.Map('map', {
@@ -66,12 +66,12 @@ var map = new atlas.Map('map', {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Stijl instellen voor toewijzings belasting' src='//codepen.io/azuremaps/embed/WKOQRq/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/WKOQRq/'>instellen van de stijl van de kaart belasting</a> door<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Stijl instellen voor toewijzings belasting' src='//codepen.io/azuremaps/embed/WKOQRq/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/WKOQRq/'>instellen van de stijl van de kaart belasting</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ### <a name="update-the-base-map-style"></a>De stijl van het basis overzicht bijwerken
 
- De kaart stijl kan worden bijgewerkt met behulp van de `setStyle` functie `style` en de optie voor de gewenste kaart stijl instellen.
+ De kaart stijl kan worden bijgewerkt met behulp van de `setStyle` functie en de `style` optie voor de gewenste kaart stijl instellen.
 
 ```javascript
 map.setStyle({ style: 'satellite' });
@@ -81,18 +81,18 @@ In de volgende code, nadat een kaart exemplaar is geladen, wordt de kaart stijl 
 
 <br/>
 
-<iframe height='500' scrolling='no' title='De stijl bijwerken' src='//codepen.io/azuremaps/embed/yqXYzY/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/yqXYzY/'>het profiel bijwerken</a> met Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='De stijl bijwerken' src='//codepen.io/azuremaps/embed/yqXYzY/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/yqXYzY/'>het profiel bijwerken</a> met Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ### <a name="add-the-style-picker"></a>De stijl kiezer toevoegen
 
-Het besturings element stijl kiezer biedt een gemakkelijk te gebruiken knop met het deel venster flyout dat door de eind gebruiker kan worden gebruikt om de kaart stijl te wijzigen. De stijl kiezer heeft twee verschillende indelings opties. De stijl kiezer maakt standaard gebruik van `icons` de indeling en geeft alle kaart stijlen weer als een horizontale rij pictogrammen. 
+Het besturings element stijl kiezer biedt een gemakkelijk te gebruiken knop met het deel venster flyout dat door de eind gebruiker kan worden gebruikt om de kaart stijl te wijzigen. De stijl kiezer heeft twee verschillende indelings opties. De stijl kiezer maakt standaard gebruik van de `icons` indeling en geeft alle kaart stijlen weer als een horizontale rij pictogrammen. 
 
 <center>
 
 ![Pictogram indeling stijl kiezer](media/choose-map-style/style-picker-icon-layout.png)</center>
 
-De tweede indelings optie wordt `list` opgeroepen en geeft een lijst weer met kaart stijlen.  
+De tweede indelings optie wordt opgeroepen `list` en geeft een lijst weer met kaart stijlen.  
 
 <center>
 
@@ -115,11 +115,11 @@ Met de volgende code wordt een besturings element stijl kiezer met de standaard 
 
 <br/>
 
-<iframe height='500' scrolling='no' title='De stijl kiezer toevoegen' src='//codepen.io/azuremaps/embed/OwgyvG/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/OwgyvG/'>de stijl kiezer toevoegen</a> door Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='De stijl kiezer toevoegen' src='//codepen.io/azuremaps/embed/OwgyvG/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/OwgyvG/'>de stijl kiezer toevoegen</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 > [!TIP]
-> Wanneer u de prijs categorie S0 van Azure Maps gebruikt, wordt in het besturings element stijl kiezer standaard alle beschik bare stijlen vermeld. Als u het aantal stijlen in deze lijst wilt beperken, geeft u een matrix van de stijlen die u wilt weer geven in de lijst in de `mapStyle` optie van de stijl kiezer. Als u S1 gebruikt en alle beschik bare stijlen wilt weer geven, stelt u `mapStyles` de optie van de stijl kiezer `"all"`in op.
+> Wanneer u de prijs categorie S0 van Azure Maps gebruikt, wordt in het besturings element stijl kiezer standaard alle beschik bare stijlen vermeld. Als u het aantal stijlen in deze lijst wilt beperken, geeft u een matrix van de stijlen die u wilt weer geven in de lijst in de `mapStyle` optie van de stijl kiezer. Als u S1 gebruikt en alle beschik bare stijlen wilt weer geven, stelt u de `mapStyles` optie van de stijl kiezer in op `"all"` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

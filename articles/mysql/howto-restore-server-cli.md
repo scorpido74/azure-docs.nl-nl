@@ -8,10 +8,10 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.openlocfilehash: a2a9efceed84c4c57d1ad2cae47dd4440fd4eb42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80373014"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Een back-up maken en herstellen van een server in Azure Database for MySQL met behulp van de Azure CLI
@@ -25,7 +25,7 @@ U hebt het volgende nodig om deze hand leiding te volt ooien:
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Voor deze hand leiding moet u Azure CLI versie 2,0 of hoger gebruiken. Als u de versie wilt bevestigen, typt `az --version`u bij de opdracht prompt van Azure cli. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren]( /cli/azure/install-azure-cli).
+> Voor deze hand leiding moet u Azure CLI versie 2,0 of hoger gebruiken. Als u de versie wilt bevestigen, typt u bij de opdracht prompt van Azure CLI `az --version` . Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u CLI wilt installeren of upgraden.
 
 ## <a name="set-backup-configuration"></a>Back-upconfiguratie instellen
 
@@ -35,9 +35,9 @@ U kunt kiezen tussen het configureren van uw server voor lokaal redundante back-
 > Nadat een server is gemaakt, is het soort redundantie die het heeft, geografisch redundant versus lokaal redundant, niet overgeschakeld.
 >
 
-Tijdens het maken van een server `az mysql server create` via de opdracht `--geo-redundant-backup` , bepaalt de para meter de optie voor de redundantie van back-ups. Als `Enabled`er geo redundante back-ups worden gemaakt. Of als `Disabled` er lokaal redundante back-ups worden gemaakt. 
+Tijdens het maken van een server via de `az mysql server create` opdracht, `--geo-redundant-backup` bepaalt de para meter de optie voor de redundantie van back-ups. Als er `Enabled` geo redundante back-ups worden gemaakt. Of als er `Disabled` lokaal redundante back-ups worden gemaakt. 
 
-De Bewaar periode voor back-ups is ingesteld met de `--backup-retention`para meter. 
+De Bewaar periode voor back-ups is ingesteld met de para meter `--backup-retention` . 
 
 Zie de [Snelstartgids voor Azure database for mysql server cli](quickstart-create-mysql-server-database-using-azure-cli.md)voor meer informatie over het instellen van deze waarden tijdens het maken.
 
@@ -56,7 +56,7 @@ U kunt de server herstellen naar een eerder tijdstip. De herstelde gegevens word
 
 Als u de server wilt herstellen, gebruikt u de Azure CLI [AZ mysql server herstellen](/cli/azure/mysql/server#az-mysql-server-restore) opdracht.
 
-### <a name="run-the-restore-command"></a>Voer de opdracht herstellen uit
+### <a name="run-the-restore-command"></a>De herstelopdracht uitvoeren
 
 Als u de server wilt herstellen, voert u bij de opdracht prompt van Azure CLI de volgende opdracht in:
 
@@ -64,27 +64,27 @@ Als u de server wilt herstellen, voert u bij de opdracht prompt van Azure CLI de
 az mysql server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time 2018-03-13T13:59:00Z --source-server mydemoserver
 ```
 
-Voor `az mysql server restore` de opdracht zijn de volgende para meters vereist:
+Voor de `az mysql server restore` opdracht zijn de volgende para meters vereist:
 
 | Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  De resource groep waar de bron server zich bevindt.  |
-| name | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
-| restore-point-in-time | 2018-03-13T13:59:00Z | Selecteer een punt in de tijd waarnaar u wilt herstellen. Deze datum en tijd moet binnen de back-upretentieperiode van de bronserver vallen. Gebruik de ISO8601 datum-en tijd notatie. U kunt bijvoorbeeld uw eigen lokale tijd zone gebruiken, zoals `2018-03-13T05:59:00-08:00`. U kunt ook de notatie UTC-Zulu gebruiken, bijvoorbeeld `2018-03-13T13:59:00Z`. |
+| naam | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
+| restore-point-in-time | 2018-03-13T13:59:00Z | Selecteer een punt in de tijd waarnaar u wilt herstellen. Deze datum en tijd moet binnen de back-upretentieperiode van de bronserver vallen. Gebruik de ISO8601 datum-en tijd notatie. U kunt bijvoorbeeld uw eigen lokale tijd zone gebruiken, zoals `2018-03-13T05:59:00-08:00` . U kunt ook de notatie UTC-Zulu gebruiken, bijvoorbeeld `2018-03-13T13:59:00Z` . |
 | source-server | mydemoserver | De naam of ID van de bronserver voor het herstellen. |
 
 Wanneer u een server herstelt naar een eerder tijdstip, wordt er een nieuwe server gemaakt. De oorspronkelijke server en de bijbehorende data bases vanaf het opgegeven tijdstip worden gekopieerd naar de nieuwe server.
 
-De waarden voor de locatie en de prijs categorie voor de herstelde server blijven hetzelfde als de oorspronkelijke server. 
+De locatie en prijscategorie van de herstelde server zijn hetzelfde als die van de oorspronkelijke server. 
 
-Nadat het herstel proces is voltooid, zoekt u de nieuwe server en controleert u of de gegevens correct zijn hersteld. De nieuwe server heeft dezelfde aanmeldings naam en hetzelfde wacht woord voor de server beheerder als die van de bestaande server op het moment dat de herstel bewerking werd gestart. Het wacht woord kan worden gewijzigd op de pagina **overzicht** van de nieuwe server.
+Nadat het herstelproces is voltooid, zoekt u de nieuwe server en controleert u of de gegevens correct zijn hersteld. De nieuwe server heeft dezelfde aanmeldings naam en hetzelfde wacht woord voor de server beheerder als die van de bestaande server op het moment dat de herstel bewerking werd gestart. Het wachtwoord kan worden gewijzigd op de pagina **Overzicht** van de nieuwe server.
 
-De nieuwe server die tijdens het herstellen is gemaakt, heeft geen VNet-service-eind punten die bestonden op de oorspronkelijke server. Deze regels moeten afzonderlijk worden ingesteld voor deze nieuwe server. Firewall regels van de oorspronkelijke server worden hersteld.
+De nieuwe server die is gemaakt tijdens een herstelbewerking, bevat niet de VNet-service-eindpunten die bestonden op de oorspronkelijke server. Deze regels moeten afzonderlijk worden ingesteld voor deze nieuwe server. Firewallregels van de oorspronkelijke server worden hersteld.
 
 ## <a name="geo-restore"></a>Geo-herstel
 Als u uw server voor geografisch redundante back-ups hebt geconfigureerd, kan een nieuwe server worden gemaakt op basis van de back-up van die bestaande server. Deze nieuwe server kan worden gemaakt in elke regio die Azure Database for MySQL beschikbaar is.  
 
-Als u een server wilt maken met behulp van een geo-redundante back-up, gebruikt u de Azure CLI `az mysql server georestore` -opdracht.
+Als u een server wilt maken met behulp van een geo-redundante back-up, gebruikt u de Azure CLI- `az mysql server georestore` opdracht.
 
 > [!NOTE]
 > Wanneer een server voor het eerst wordt gemaakt, is deze mogelijk niet onmiddellijk beschikbaar voor geo Restore. Het kan enkele uren duren voordat de benodigde meta gegevens zijn gevuld.
@@ -104,21 +104,21 @@ az mysql server georestore --resource-group newresourcegroup --name mydemoserver
 
 ```
 
-Voor `az mysql server georestore` de opdracht zijn de volgende para meters vereist:
+Voor de `az mysql server georestore` opdracht zijn de volgende para meters vereist:
 
 | Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
 |resource-group| myResourceGroup | De naam van de resource groep waar de nieuwe server deel van uitmaakt.|
-|name | mydemoserver-geoterugzet bewerking | De naam van de nieuwe server. |
+|naam | mydemoserver-geoterugzet bewerking | De naam van de nieuwe server. |
 |source-server | mydemoserver | De naam van de bestaande server waarvoor geo redundante back-ups worden gebruikt. |
 |location | eastus | De locatie van de nieuwe server. |
 |sku-name| GP_Gen5_8 | Met deze para meter worden de prijs categorie, generatie van Compute en het aantal vCores van de nieuwe server ingesteld. GP_Gen5_8 is toegewezen aan een Algemeen, Gen 5-server met 8 vCores.|
 
 Wanneer u een nieuwe server maakt door een geo-terugzet bewerking, neemt deze dezelfde opslag grootte en prijs categorie over als de bron server. Deze waarden kunnen niet worden gewijzigd tijdens het maken. Nadat de nieuwe server is gemaakt, kan de opslag grootte worden uitgebreid.
 
-Nadat het herstel proces is voltooid, zoekt u de nieuwe server en controleert u of de gegevens correct zijn hersteld. De nieuwe server heeft dezelfde aanmeldings naam en hetzelfde wacht woord voor de server beheerder als die van de bestaande server op het moment dat de herstel bewerking werd gestart. Het wacht woord kan worden gewijzigd op de pagina **overzicht** van de nieuwe server.
+Nadat het herstelproces is voltooid, zoekt u de nieuwe server en controleert u of de gegevens correct zijn hersteld. De nieuwe server heeft dezelfde aanmeldings naam en hetzelfde wacht woord voor de server beheerder als die van de bestaande server op het moment dat de herstel bewerking werd gestart. Het wachtwoord kan worden gewijzigd op de pagina **Overzicht** van de nieuwe server.
 
-De nieuwe server die tijdens het herstellen is gemaakt, heeft geen VNet-service-eind punten die bestonden op de oorspronkelijke server. Deze regels moeten afzonderlijk worden ingesteld voor deze nieuwe server. Firewall regels van de oorspronkelijke server worden hersteld.
+De nieuwe server die is gemaakt tijdens een herstelbewerking, bevat niet de VNet-service-eindpunten die bestonden op de oorspronkelijke server. Deze regels moeten afzonderlijk worden ingesteld voor deze nieuwe server. Firewallregels van de oorspronkelijke server worden hersteld.
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over de [back-ups](concepts-backup.md) van de service

@@ -8,10 +8,10 @@ ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
 ms.openlocfilehash: 2731693667d2129a72da72455c6bbdd74c277697
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80366483"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Voor beeld: Meld u aan bij een virtuele Linux-machine in azure met Azure Active Directory-verificatie
@@ -21,7 +21,7 @@ Als u de beveiliging van virtuele Linux-machines (Vm's) in azure wilt verbeteren
 
 > [!IMPORTANT]
 > Azure Active Directory-verificatie is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 > Gebruik deze functie op een virtuele test machine die u na het testen naar verwachting wilt verwijderen.
 >
 
@@ -61,7 +61,7 @@ De volgende Azure-regio's worden momenteel ondersteund tijdens de preview-versie
 > Het wordt niet ondersteund voor het gebruik van deze uitbrei ding op Azure Kubernetes Service-clusters (AKS). Zie het [ondersteunings beleid voor AKS](../../aks/support-policies.md)voor meer informatie.
 
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelf studie gebruikmaken van de Azure CLI-versie 2.0.31 of hoger. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.31 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="network-requirements"></a>Netwerkvereisten
 
@@ -69,10 +69,10 @@ Als u Azure AD-verificatie wilt inschakelen voor uw virtuele Linux-machines in a
 
 * https:\//login.microsoftonline.com
 * https:\//login.windows.net
-* https:\//device.login.microsoftonline.com
-* https:\//pas.Windows.net
+* https: \/ /device.login.microsoftonline.com
+* https: \/ /pas.Windows.net
 * https:\//management.azure.com
-* https:\//packages.Microsoft.com
+* https: \/ /packages.Microsoft.com
 
 > [!NOTE]
 > Momenteel kunnen Azure-netwerk beveiligings groepen niet worden geconfigureerd voor Vm's die zijn ingeschakeld met Azure AD-verificatie.
@@ -148,13 +148,13 @@ Bekijk eerst het open bare IP-adres van uw virtuele machine met [AZ VM show](/cl
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Meld u aan bij de virtuele machine van Azure Linux met uw Azure AD-referenties. Met `-l` de para meter kunt u uw eigen Azure ad-account adres opgeven. Vervang het voorbeeld account door eigen. De account adressen moeten in alle kleine letters worden ingevoerd. Vervang het voor beeld-IP-adres door het open bare IP-adres van uw virtuele machine uit de vorige opdracht.
+Meld u aan bij de virtuele machine van Azure Linux met uw Azure AD-referenties. Met de `-l` para meter kunt u uw eigen Azure ad-account adres opgeven. Vervang het voorbeeld account door eigen. De account adressen moeten in alle kleine letters worden ingevoerd. Vervang het voor beeld-IP-adres door het open bare IP-adres van uw virtuele machine uit de vorige opdracht.
 
 ```console
 ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 ```
 
-U wordt gevraagd om u aan te melden bij Azure AD met een code voor eenmalig gebruik [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)op. Kopieer de code voor eenmalig gebruik en plak deze in de aanmeldings pagina van het apparaat.
+U wordt gevraagd om u aan te melden bij Azure AD met een code voor eenmalig gebruik op [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) . Kopieer de code voor eenmalig gebruik en plak deze in de aanmeldings pagina van het apparaat.
 
 Wanneer u hierom wordt gevraagd, voert u uw Azure AD-aanmeldings referenties in op de aanmeldings pagina. 
 
@@ -162,11 +162,11 @@ Het volgende bericht wordt weer gegeven in de webbrowser wanneer u de verificati
 
 Sluit het browser venster, ga terug naar de SSH-prompt en druk op **Enter** . 
 
-U bent nu aangemeld bij de virtuele machine van Azure Linux met de rolmachtigingen zoals toegewezen, zoals de *VM-gebruiker* of de *VM-beheerder*. Als aan uw gebruikers account de rol van de beheerder van de *virtuele machine* is toegewezen `sudo` , kunt u gebruiken om opdrachten uit te voeren waarvoor hoofd bevoegdheden zijn vereist.
+U bent nu aangemeld bij de virtuele machine van Azure Linux met de rolmachtigingen zoals toegewezen, zoals de *VM-gebruiker* of de *VM-beheerder*. Als aan uw gebruikers account de rol van de beheerder van de *virtuele machine* is toegewezen, kunt u gebruiken `sudo` om opdrachten uit te voeren waarvoor hoofd bevoegdheden zijn vereist.
 
 ## <a name="sudo-and-aad-login"></a>Sudo en AAD-aanmelding
 
-De eerste keer dat u sudo uitvoert, wordt u gevraagd om een tweede keer te verifiëren. Als u niet opnieuw wilt verifiëren om sudo uit te voeren, kunt u het sudo-bestand `/etc/sudoers.d/aad_admins` bewerken en deze regel vervangen:
+De eerste keer dat u sudo uitvoert, wordt u gevraagd om een tweede keer te verifiëren. Als u niet opnieuw wilt verifiëren om sudo uit te voeren, kunt u het sudo-bestand bewerken `/etc/sudoers.d/aad_admins` en deze regel vervangen:
 
 ```bash
 %aad_admins ALL=(ALL) ALL
@@ -200,9 +200,9 @@ Access denied
 
 Als u de verificatie stap in een webbrowser hebt voltooid, wordt u mogelijk onmiddellijk gevraagd om u opnieuw aan te melden met een nieuwe code. Deze fout wordt meestal veroorzaakt door een conflict tussen de aanmeldings naam die u hebt opgegeven bij de SSH-prompt en het account waarmee u zich hebt aangemeld bij Azure AD. U kunt dit probleem als volgt oplossen:
 
-- Controleer of de aanmeldings naam die u hebt opgegeven bij de SSH-prompt juist is. Een type fout in de aanmeldings naam kan ertoe leiden dat de aanmeldings naam die u hebt opgegeven bij de SSH-prompt en het account waarmee u zich hebt aangemeld bij Azure AD overeenkomen. U hebt bijvoorbeeld *azuresuer\@contoso.onmicrosoft.com* in plaats van *azureuser\@contoso.onmicrosoft.com*getypt.
+- Controleer of de aanmeldings naam die u hebt opgegeven bij de SSH-prompt juist is. Een type fout in de aanmeldings naam kan ertoe leiden dat de aanmeldings naam die u hebt opgegeven bij de SSH-prompt en het account waarmee u zich hebt aangemeld bij Azure AD overeenkomen. U hebt bijvoorbeeld *azuresuer \@ contoso.onmicrosoft.com* in plaats van *azureuser \@ contoso.onmicrosoft.com*getypt.
 - Als u meerdere gebruikers accounts hebt, moet u ervoor zorgen dat u in het browser venster geen ander gebruikers account opgeeft wanneer u zich aanmeldt bij Azure AD.
-- Linux is een hoofdletter gevoelig besturings systeem. Er is een verschil tussen 'Azureuser@contoso.onmicrosoft.com' en 'azureuser@contoso.onmicrosoft.com', wat kan leiden tot een niet-overeenkomend. Zorg ervoor dat u de UPN opgeeft met de juiste hoofdletter gevoeligheid bij de SSH-prompt.
+- Linux is een hoofdletter gevoelig besturings systeem. Er is een verschil tussen ' Azureuser@contoso.onmicrosoft.com ' en ' azureuser@contoso.onmicrosoft.com ', wat kan leiden tot een niet-overeenkomend. Zorg ervoor dat u de UPN opgeeft met de juiste hoofdletter gevoeligheid bij de SSH-prompt.
 
 ### <a name="other-limitations"></a>Andere beperkingen
 

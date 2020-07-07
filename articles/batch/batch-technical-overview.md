@@ -3,12 +3,12 @@ title: Met Azure Batch worden grootschalige parallelle jobs uitgevoerd in de clo
 description: Meer informatie over het gebruik van de Azure Batch-service voor grootschalige parallelle en HPC-workloads
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: c78aec238664520c8c8c02a793298cdc1d3ac7e1
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.openlocfilehash: 134706622655029c6673aea5dd04a9284155be6f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779569"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965073"
 ---
 # <a name="what-is-azure-batch"></a>Wat is Azure Batch?
 
@@ -18,7 +18,7 @@ Ontwikkelaars kunnen Batch gebruiken als een platformservice voor het bouwen van
 
 Er worden geen extra kosten berekend voor het gebruik van Batch. U betaalt alleen voor bijbehorende verbruikte resources, zoals de virtuele machines, opslag en netwerken.
 
-Zie [High Performance Computing (HPC) in Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) voor een vergelijking tussen Batch en andere HPC-oplossingsopties in Azure.
+Zie [High Performance Computing (HPC) in Azure](/azure/architecture/topics/high-performance-computing/) voor een vergelijking tussen Batch en andere HPC-oplossingsopties in Azure.
 
 ## <a name="run-parallel-workloads"></a>Uitvoeren van parallelle workloads
 Batch is bijzonder geschikt voor intrinsiek parallelle (ook wel bekend als ‘perfect parallelle’) workloads. Bij intrinsiek parallelle workloads kunnen de toepassingen onafhankelijk worden uitgevoerd en voltooit elke instantie een deel van het werk. Wanneer de toepassingen worden uitgevoerd, kunnen ze toegang krijgen tot een aantal algemene gegevens, maar ze communiceren niet met andere instanties van de toepassing. Intrinsiek parallelle workloads kunnen daarom op grote schaal worden uitgevoerd. Dit wordt bepaald door de hoeveelheid rekenresources die beschikbaar zijn voor toepassingen die tegelijkertijd worden uitgevoerd.
@@ -34,7 +34,7 @@ Enkele voorbeelden van intrinsiek parallelle workloads die u kunt overbrengen na
 * Gegevensopname, -verwerking en ETL-bewerkingen
 * Software-testuitvoering
 
-U kunt met Batch ook [nauw gekoppelde workloads uitvoeren](batch-mpi.md); dit zijn wo waar de toepassingen die u uitvoert met elkaar moeten communiceren, in tegenstelling tot wanneer ze onafhankelijk van elkaar worden uitgevoerd. Nauw gekoppelde toepassingen gebruiken normaal gesproken de Message Passing Interface (MPI) API. U kunt uw nauw gekoppelde workloads met Batch uitvoeren met behulp van [Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) of Intel MPI. Toepassingsprestaties verbeteren met gespecialiseerde [HPC](../virtual-machines/linux/sizes-hpc.md) en [GPU-geoptimaliseerde](../virtual-machines/linux/sizes-gpu.md) VM-grootten.
+U kunt met Batch ook [nauw gekoppelde workloads uitvoeren](batch-mpi.md); dit zijn wo waar de toepassingen die u uitvoert met elkaar moeten communiceren, in tegenstelling tot wanneer ze onafhankelijk van elkaar worden uitgevoerd. Nauw gekoppelde toepassingen gebruiken normaal gesproken de Message Passing Interface (MPI) API. U kunt uw nauw gekoppelde workloads met Batch uitvoeren met behulp van [Microsoft MPI](/message-passing-interface/microsoft-mpi) of Intel MPI. Toepassingsprestaties verbeteren met gespecialiseerde [HPC](../virtual-machines/linux/sizes-hpc.md) en [GPU-geoptimaliseerde](../virtual-machines/linux/sizes-gpu.md) VM-grootten.
 
 Enkele voorbeelden van nauw gekoppelde workloads:
 * Beperkte elementanalyse
