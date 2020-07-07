@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: aac2641913331095550c0e19cc587257a996fcce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79537020"
 ---
 # <a name="security-in-azure-database-for-mysql"></a>Beveiliging in Azure Database for MySQL
@@ -31,7 +31,7 @@ Verbindingen met een Azure Database for MySQL-server worden eerst gerouteerd via
 
 Een nieuw gemaakte Azure Database for MySQL server heeft een firewall waarmee alle externe verbindingen worden geblokkeerd. Hoewel ze de gateway bereiken, zijn ze niet gemachtigd om verbinding te maken met de server. 
 
-### <a name="ip-firewall-rules"></a>IP-firewall regels
+### <a name="ip-firewall-rules"></a>IP-firewallregels
 IP-firewall regels verlenen toegang tot servers op basis van het oorspronkelijke IP-adres van elke aanvraag. Zie het [overzicht van firewall regels](concepts-firewall-rules.md) voor meer informatie.
 
 ### <a name="virtual-network-firewall-rules"></a>Firewallregels voor virtueel netwerk

@@ -4,10 +4,10 @@ description: Container installatie kopieën importeren in een Azure container Re
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: caf7a47ac8f7ff0e72d2e049a7013542d274a225
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80051927"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Container installatie kopieën importeren in een container register
@@ -28,7 +28,7 @@ Het importeren van afbeeldingen in een Azure container Registry heeft de volgend
 
 * Bij het importeren van installatie kopieën met meerdere architecturen (zoals officiële docker-installatie kopieën), worden installatie kopieën voor alle architecturen en platformen die zijn opgegeven in de manifest lijst gekopieerd.
 
-Als u container installatie kopieën wilt importeren, moet u de Azure CLI in Azure Cloud Shell of lokaal uitvoeren (versie 2.0.55 of hoger aanbevolen). Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli].
+Als u container installatie kopieën wilt importeren, moet u de Azure CLI in Azure Cloud Shell of lokaal uitvoeren (versie 2.0.55 of hoger aanbevolen). Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 > [!NOTE]
 > Als u identieke container installatie kopieën wilt distribueren over meerdere Azure-regio's, ondersteunt Azure Container Registry ook [geo-replicatie](container-registry-geo-replication.md). Door Geo-replicatie van een REGI ster (Premium-servicelaag vereist), kunt u meerdere regio's met identieke installatie kopieën en label namen uit één REGI ster gebruiken.
@@ -44,7 +44,7 @@ Als u een installatie kopie naar een Azure container Registry wilt importeren, m
 
 ### <a name="import-from-docker-hub"></a>Importeren uit docker hub
 
-Gebruik bijvoorbeeld de opdracht [AZ ACR import][az-acr-import] om de installatie kopie met meerdere architecturen `hello-world:latest` te importeren vanuit docker hub naar een REGI ster met de naam *myregistry*. Omdat `hello-world` een officiële installatie kopie van docker hub is, bevindt deze installatie `library` kopie zich in de standaard opslagplaats. Neem de naam van de opslag plaats en eventueel een tag op in de `--source` waarde van de para meter image. (U kunt een installatie kopie eventueel identificeren met de samen vatting van het manifest in plaats van met een tag, waarmee een bepaalde versie van een installatie kopie wordt gegarandeerd.)
+Gebruik bijvoorbeeld de opdracht [AZ ACR import][az-acr-import] om de installatie kopie met meerdere architecturen te importeren `hello-world:latest` vanuit docker hub naar een REGI ster met de naam *myregistry*. Omdat `hello-world` een officiële installatie kopie van docker hub is, bevindt deze installatie kopie zich in de standaard `library` opslagplaats. Neem de naam van de opslag plaats en eventueel een tag op in de waarde van de `--source` para meter image. (U kunt een installatie kopie eventueel identificeren met de samen vatting van het manifest in plaats van met een tag, waarmee een bepaalde versie van een installatie kopie wordt gegarandeerd.)
  
 ```azurecli
 az acr import \
@@ -53,7 +53,7 @@ az acr import \
   --image hello-world:latest
 ```
 
-U kunt controleren of er meerdere manifesten zijn gekoppeld aan deze installatie kopie door `az acr repository show-manifests` de opdracht uit te voeren:
+U kunt controleren of er meerdere manifesten zijn gekoppeld aan deze installatie kopie door de opdracht uit te voeren `az acr repository show-manifests` :
 
 ```azurecli
 az acr repository show-manifests \
@@ -61,7 +61,7 @@ az acr repository show-manifests \
   --repository hello-world
 ```
 
-In het volgende voor beeld wordt een open bare `tensorflow` installatie kopie uit de opslag plaats in docker hub geïmporteerd:
+In het volgende voor beeld wordt een open bare installatie kopie uit de `tensorflow` opslag plaats in docker hub geïmporteerd:
 
 ```azurecli
 az acr import \
@@ -72,7 +72,7 @@ az acr import \
 
 ### <a name="import-from-microsoft-container-registry"></a>Importeren uit micro soft Container Registry
 
-U kunt bijvoorbeeld de meest recente installatie kopie van Windows Server importeren `windows` uit de opslag plaats in micro soft container Registry.
+U kunt bijvoorbeeld de meest recente installatie kopie van Windows Server importeren uit de `windows` opslag plaats in micro soft container Registry.
 
 ```azurecli
 az acr import \
@@ -100,7 +100,7 @@ az acr import \
   --image aci-helloworld:latest
 ```
 
-In het volgende voor beeld wordt een installatie kopie geïmporteerd door de manifest Digest (SHA- `sha256:...`256-Hash, weer gegeven als) in plaats van op label:
+In het volgende voor beeld wordt een installatie kopie geïmporteerd door de manifest Digest (SHA-256-Hash, weer gegeven als `sha256:...` ) in plaats van op label:
 
 ```azurecli
 az acr import \
@@ -110,7 +110,7 @@ az acr import \
 
 ### <a name="import-from-a-registry-in-a-different-subscription"></a>Importeren uit een REGI ster in een ander abonnement
 
-In het volgende voor beeld bevindt *mysourceregistry* zich in een ander abonnement dan *myregistry* in dezelfde Active Directory Tenant. Geef de bron-ID van het bron register op `--registry` met de para meter. U ziet dat `--source` de para meter alleen de bron opslagplaats en-tag opgeeft, niet de naam van de aanmeldings server van het REGI ster.
+In het volgende voor beeld bevindt *mysourceregistry* zich in een ander abonnement dan *myregistry* in dezelfde Active Directory Tenant. Geef de bron-ID van het bron register op met de `--registry` para meter. U ziet dat de `--source` para meter alleen de bron opslagplaats en-tag opgeeft, niet de naam van de aanmeldings server van het REGI ster.
 
 ```azurecli
 az acr import \

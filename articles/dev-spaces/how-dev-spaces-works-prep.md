@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Hierin wordt beschreven hoe u uw project voorbereidt met Azure dev Spaces werkt
 keywords: azds. yaml, Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
 ms.openlocfilehash: 24a54fffdc8e94493d2a4a9aeb1c5f02dcd192b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80241632"
 ---
 # <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Hoe u een project voorbereidt voor Azure dev Spaces werkt
@@ -20,7 +20,7 @@ In dit artikel wordt beschreven wat u kunt doen om uw project voor te bereiden o
 
 ## <a name="prepare-your-code"></a>Uw code voorbereiden
 
-Als u uw toepassing wilt uitvoeren in een dev-ruimte, moet deze worden containerd en moet u definiëren hoe deze moet worden geïmplementeerd in Kubernetes. Als u uw toepassing wilt container plaatsen, hebt u een Dockerfile nodig. Als u wilt definiëren hoe uw toepassing wordt geïmplementeerd naar Kubernetes, hebt u een [helm-grafiek](https://docs.helm.sh/)nodig. Om u te helpen bij het maken van de Dockerfile-en helm-grafiek voor uw toepassing, biedt de `prep` client-side tools de volgende opdracht:
+Als u uw toepassing wilt uitvoeren in een dev-ruimte, moet deze worden containerd en moet u definiëren hoe deze moet worden geïmplementeerd in Kubernetes. Als u uw toepassing wilt container plaatsen, hebt u een Dockerfile nodig. Als u wilt definiëren hoe uw toepassing wordt geïmplementeerd naar Kubernetes, hebt u een [helm-grafiek](https://docs.helm.sh/)nodig. Om u te helpen bij het maken van de Dockerfile-en helm-grafiek voor uw toepassing, biedt de client-side tools de `prep` volgende opdracht:
 
 ```cmd
 azds prep --enable-ingress
@@ -32,18 +32,18 @@ De `prep` opdracht gaat naar de bestanden in uw project en probeert de Dockerfil
 * Node.js
 * .NET Core
 
-U *moet* de opdracht `prep` uitvoeren vanuit een map met de bron code. Door de `prep` opdracht uit te voeren vanuit de juiste map, kan het programma aan de client zijde de taal identificeren en een geschikte Dockerfile maken om uw toepassing te container plaatsen. U kunt de `prep` opdracht ook uitvoeren vanuit een map die een *pom. XML-* bestand voor Java-projecten bevat.
+U *moet* de `prep` opdracht uitvoeren vanuit een map met de bron code. Door de `prep` opdracht uit te voeren vanuit de juiste map, kan het programma aan de client zijde de taal identificeren en een geschikte Dockerfile maken om uw toepassing te container plaatsen. U kunt de opdracht ook uitvoeren `prep` vanuit een map die een *pom.xml* bestand bevat voor Java-projecten.
 
 Als u de `prep` opdracht uitvoert vanuit een map die geen bron code bevat, wordt door het hulp programma aan de client zijde geen Dockerfile gegenereerd. Er wordt ook een fout weer gegeven met de melding: *Dockerfile kan niet worden gegenereerd als gevolg*van een niet-ondersteunde taal. Deze fout treedt ook op als het project type niet wordt herkend door het programma aan de client zijde.
 
-Wanneer u de `prep` opdracht uitvoert, hebt u de optie om de `--enable-ingress` vlag op te geven. Met deze markering wordt aan de controller aangegeven dat er een eind punt voor Internet toegang moet worden gemaakt voor deze service. Als u deze vlag niet opgeeft, is de service alleen toegankelijk vanuit het cluster of met behulp van de localhost-tunnel die is gemaakt door het programma aan de client zijde. U kunt dit gedrag in-of uitschakelen nadat de `prep` opdracht is uitgevoerd door de gegenereerde helm-grafiek bij te werken.
+Wanneer u de `prep` opdracht uitvoert, hebt u de optie om de vlag op te geven `--enable-ingress` . Met deze markering wordt aan de controller aangegeven dat er een eind punt voor Internet toegang moet worden gemaakt voor deze service. Als u deze vlag niet opgeeft, is de service alleen toegankelijk vanuit het cluster of met behulp van de localhost-tunnel die is gemaakt door het programma aan de client zijde. U kunt dit gedrag in-of uitschakelen nadat de `prep` opdracht is uitgevoerd door de gegenereerde helm-grafiek bij te werken.
 
-Met `prep` de opdracht worden geen bestaande Dockerfiles-of helm-grafieken vervangen in uw project. Als een bestaande Dockerfile-of helm-grafiek dezelfde naam conventie gebruikt als de bestanden die door `prep` de opdracht worden `prep` gegenereerd, slaat de opdracht deze bestanden over. Anders wordt met `prep` de opdracht een eigen Dockerfile-of helm-grafiek gegenereerd naast de bestaande bestanden.
+`prep`Met de opdracht worden geen bestaande Dockerfiles-of helm-grafieken vervangen in uw project. Als een bestaande Dockerfile-of helm-grafiek dezelfde naam conventie gebruikt als de bestanden die door de opdracht worden gegenereerd `prep` , `prep` slaat de opdracht deze bestanden over. Anders wordt met de `prep` opdracht een eigen Dockerfile-of helm-grafiek gegenereerd naast de bestaande bestanden.
 
 > [!IMPORTANT]
 > Azure dev Spaces maakt gebruik van de Dockerfile-en helm-grafiek voor uw project om uw code te bouwen en uit te voeren, maar u kunt deze bestanden aanpassen als u wilt wijzigen hoe het project wordt gemaakt en uitgevoerd.
 
-Met `prep` deze opdracht wordt ook een `azds.yaml` bestand gegenereerd in de hoofdmap van uw project. Azure dev Spaces gebruiken dit bestand om uw toepassing te bouwen, te installeren, te configureren en uit te voeren. Dit configuratie bestand bevat een lijst met de locatie van uw Dockerfile-en helm-grafiek en biedt ook aanvullende configuratie boven deze artefacten.
+Met deze `prep` opdracht wordt ook een `azds.yaml` bestand gegenereerd in de hoofdmap van uw project. Azure dev Spaces gebruiken dit bestand om uw toepassing te bouwen, te installeren, te configureren en uit te voeren. Dit configuratie bestand bevat een lijst met de locatie van uw Dockerfile-en helm-grafiek en biedt ook aanvullende configuratie boven deze artefacten.
 
 Hier volgt een voor beeld van een azds. yaml-bestand dat is gemaakt met behulp van [.net core-voorbeeld toepassing](https://github.com/Azure/dev-spaces/tree/master/samples/dotnetcore/getting-started/webfrontend):
 
@@ -92,7 +92,7 @@ configurations:
         - [dotnet, build, --no-restore, -c, "${BUILD_CONFIGURATION:-Debug}"]
 ```
 
-Het `azds.yaml` bestand dat door de `prep` opdracht wordt gegenereerd, is bedoeld om te werken met een eenvoudig scenario voor het ontwikkelen van één project. Als uw specifieke project meer complexiteit heeft, moet u dit bestand mogelijk bijwerken nadat u de `prep` opdracht hebt uitgevoerd. Het is bijvoorbeeld mogelijk dat uw project enkele wijzigingen in uw bouw-of start proces vereist op basis van uw ontwikkelings-of fout opsporings behoeften. Het is ook mogelijk dat er meerdere toepassingen in uw project zijn, waarvoor meerdere bouw processen of een andere build-inhoud zijn vereist.
+Het `azds.yaml` bestand dat door de `prep` opdracht wordt gegenereerd, is bedoeld om te werken met een eenvoudig scenario voor het ontwikkelen van één project. Als uw specifieke project meer complexiteit heeft, moet u dit bestand mogelijk bijwerken nadat u de opdracht hebt uitgevoerd `prep` . Het is bijvoorbeeld mogelijk dat uw project enkele wijzigingen in uw bouw-of start proces vereist op basis van uw ontwikkelings-of fout opsporings behoeften. Het is ook mogelijk dat er meerdere toepassingen in uw project zijn, waarvoor meerdere bouw processen of een andere build-inhoud zijn vereist.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -102,7 +102,7 @@ Raadpleeg de volgende Quick starts om aan de slag te gaan met Azure dev Spaces o
 
 * [Snel herhalen en fouten opsporen met Visual Studio code en Java][quickstart-java]
 * [Snel herhalen en fouten opsporen met Visual Studio code en .NET][quickstart-netcore]
-* [Snel herhalen en fouten opsporen met Visual Studio code en node. js][quickstart-node]
+* [Snel herhalen en fouten opsporen met Visual Studio code en Node.js][quickstart-node]
 * [Snel herhalen en fouten opsporen met Visual Studio en .NET core][quickstart-vs]
 * [De CLI gebruiken om een toepassing te ontwikkelen op Kubernetes][quickstart-cli]
 

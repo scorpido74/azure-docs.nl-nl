@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
 ms.openlocfilehash: f221a0bdf579dbbf42ecf64e18803decfb718456
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80060668"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Het oplossen van problemen met SSH-verbindingen naar een virtuele Azure Linux-machine waarop zich fouten voordoen, die afsluit vanwege fouten of die wordt geweigerd
@@ -60,10 +60,10 @@ Selecteer uw virtuele machine in de Azure Portal om te beginnen. Schuif omlaag n
 ![De SSH-configuratie of referenties opnieuw instellen in de Azure Portal](./media/troubleshoot-ssh-connection/reset-credentials-using-portal.png)
 
 ### <a name="reset-the-ssh-configuration"></a><a id="reset-config" />De SSH-configuratie opnieuw instellen
-Als u de SSH-configuratie opnieuw `Reset configuration only` wilt instellen, selecteert u in de sectie **modus** zoals in de vorige scherm afbeelding en selecteert u vervolgens **bijwerken**. Zodra deze actie is voltooid, probeert u opnieuw toegang te krijgen tot uw VM.
+Als u de SSH-configuratie opnieuw wilt instellen, selecteert u `Reset configuration only` in de sectie **modus** zoals in de vorige scherm afbeelding en selecteert u vervolgens **bijwerken**. Zodra deze actie is voltooid, probeert u opnieuw toegang te krijgen tot uw VM.
 
 ### <a name="reset-ssh-credentials-for-a-user"></a><a id="reset-credentials" />SSH-referenties voor een gebruiker opnieuw instellen
-Als u de referenties van een bestaande gebruiker opnieuw wilt instellen `Reset SSH public key` , `Reset password` selecteert u of in de sectie **modus** , zoals in de vorige scherm afbeelding. Geef de gebruikers naam en een SSH-sleutel of nieuw wacht woord op en selecteer vervolgens **bijwerken**.
+Als u de referenties van een bestaande gebruiker opnieuw wilt instellen, selecteert u `Reset SSH public key` of `Reset password` in de sectie **modus** , zoals in de vorige scherm afbeelding. Geef de gebruikers naam en een SSH-sleutel of nieuw wacht woord op en selecteer vervolgens **bijwerken**.
 
 Vanuit dit menu kunt u ook een gebruiker met sudo-bevoegdheden op de VM maken. Geef een nieuwe gebruikers naam en een bijbehorend wacht woord of SSH-sleutel op en selecteer vervolgens **bijwerken**.
 
@@ -108,21 +108,21 @@ Als u een aangepaste Linux-schijf kopie hebt gemaakt en geüpload, controleert u
 
 ### <a name="reset-ssh-configuration"></a>SSH-configuratie opnieuw instellen
 U kunt in eerste instantie de SSH-configuratie opnieuw instellen op de standaard waarden en de SSH-server opnieuw opstarten op de VM. Hiermee worden de naam, het wacht woord of de SSH-sleutels van het gebruikers account niet gewijzigd.
-In het volgende voor beeld wordt [AZ VM User reset-SSH](/cli/azure/vm/user) gebruikt om de SSH-configuratie opnieuw `myVM` in `myResourceGroup`te stellen op de virtuele machine met de naam in. Gebruik uw eigen waarden als volgt:
+In het volgende voor beeld wordt [AZ VM User reset-SSH](/cli/azure/vm/user) gebruikt om de SSH-configuratie opnieuw in te stellen op de virtuele machine met de naam `myVM` in `myResourceGroup` . Gebruik uw eigen waarden als volgt:
 
 ```azurecli
 az vm user reset-ssh --resource-group myResourceGroup --name myVM
 ```
 
 ### <a name="reset-ssh-credentials-for-a-user"></a>SSH-referenties voor een gebruiker opnieuw instellen
-In het volgende voor beeld wordt [AZ VM user update](/cli/azure/vm/user) gebruikt om de `myUsername` referenties opnieuw in te stellen `myPassword`op de waarde die is `myVM` opgegeven `myResourceGroup`in, op de virtuele machine met de naam. Gebruik uw eigen waarden als volgt:
+In het volgende voor beeld wordt [AZ VM user update](/cli/azure/vm/user) gebruikt om de referenties opnieuw in te stellen op de `myUsername` waarde die is opgegeven in `myPassword` , op de virtuele machine met de naam `myVM` `myResourceGroup` . Gebruik uw eigen waarden als volgt:
 
 ```azurecli
 az vm user update --resource-group myResourceGroup --name myVM \
      --username myUsername --password myPassword
 ```
 
-Als u SSH-sleutel verificatie gebruikt, kunt u de SSH-sleutel voor een bepaalde gebruiker opnieuw instellen. In het volgende voor beeld wordt **AZ VM Access set-Linux-User** gebruikt voor het bijwerken van `~/.ssh/id_rsa.pub` de SSH-sleutel `myUsername`die is opgeslagen in voor `myVM` de `myResourceGroup`gebruiker met de naam, op de VM met de naam in. Gebruik uw eigen waarden als volgt:
+Als u SSH-sleutel verificatie gebruikt, kunt u de SSH-sleutel voor een bepaalde gebruiker opnieuw instellen. In het volgende voor beeld wordt **AZ VM Access set-Linux-User** gebruikt voor het bijwerken van de SSH-sleutel die is opgeslagen in `~/.ssh/id_rsa.pub` voor de gebruiker met de naam `myUsername` , op de VM met de naam `myVM` in `myResourceGroup` . Gebruik uw eigen waarden als volgt:
 
 ```azurecli
 az vm user update --resource-group myResourceGroup --name myVM \
@@ -133,7 +133,7 @@ az vm user update --resource-group myResourceGroup --name myVM \
 De VM-toegangs uitbreiding voor Linux leest in een JSON-bestand waarin de acties worden gedefinieerd die moeten worden uitgevoerd. Deze acties omvatten het opnieuw instellen van SSHD, het opnieuw instellen van een SSH-sleutel of het toevoegen van een gebruiker. U gebruikt de Azure CLI nog steeds om de VMAccess-extensie aan te roepen, maar u kunt desgewenst de json-bestanden op meerdere Vm's opnieuw gebruiken. Met deze aanpak kunt u een opslag plaats maken van json-bestanden die vervolgens kunnen worden aangeroepen voor bepaalde scenario's.
 
 ### <a name="reset-sshd"></a>SSHD opnieuw instellen
-Maak een bestand met `settings.json` de naam met de volgende inhoud:
+Maak een bestand `settings.json` met de naam met de volgende inhoud:
 
 ```json
 {
@@ -141,7 +141,7 @@ Maak een bestand met `settings.json` de naam met de volgende inhoud:
 }
 ```
 
-Met de Azure CLI kunt u de `VMAccessForLinux` uitbrei ding aanroepen om de SSHD-verbinding opnieuw in te stellen door het JSON-bestand op te geven. In het volgende voor beeld wordt [AZ VM extension set ingesteld](/cli/azure/vm/extension) op het opnieuw instellen `myVM` van `myResourceGroup`SSHD op de virtuele machine met de naam in. Gebruik uw eigen waarden als volgt:
+Met de Azure CLI kunt u de `VMAccessForLinux` uitbrei ding aanroepen om de SSHD-verbinding opnieuw in te stellen door het JSON-bestand op te geven. In het volgende voor beeld wordt [AZ VM extension set ingesteld](/cli/azure/vm/extension) op het opnieuw instellen van SSHD op de virtuele machine met de naam `myVM` in `myResourceGroup` . Gebruik uw eigen waarden als volgt:
 
 ```azurecli
 az vm extension set --resource-group philmea --vm-name Ubuntu \
@@ -149,7 +149,7 @@ az vm extension set --resource-group philmea --vm-name Ubuntu \
 ```
 
 ### <a name="reset-ssh-credentials-for-a-user"></a>SSH-referenties voor een gebruiker opnieuw instellen
-Als SSHD lijkt goed te werken, kunt u de referenties voor een gebruiker van de gebruikers teller opnieuw instellen. Als u het wacht woord voor een gebruiker opnieuw wilt instellen, `settings.json`maakt u een bestand met de naam. In het volgende voor beeld `myUsername` worden de referenties opnieuw ingesteld op de `myPassword`waarde die is opgegeven in. Voer de volgende regels in het `settings.json` bestand in met uw eigen waarden:
+Als SSHD lijkt goed te werken, kunt u de referenties voor een gebruiker van de gebruikers teller opnieuw instellen. Als u het wacht woord voor een gebruiker opnieuw wilt instellen, maakt u een bestand met de naam `settings.json` . In het volgende voor beeld worden de referenties opnieuw ingesteld `myUsername` op de waarde die is opgegeven in `myPassword` . Voer de volgende regels in het `settings.json` bestand in met uw eigen waarden:
 
 ```json
 {
@@ -157,7 +157,7 @@ Als SSHD lijkt goed te werken, kunt u de referenties voor een gebruiker van de g
 }
 ```
 
-Of om de SSH-sleutel voor een gebruiker opnieuw in te stellen, maakt `settings.json`u eerst een bestand met de naam. In het volgende `myUsername` voor beeld worden de referenties opnieuw ingesteld op de `myPassword`waarde die is opgegeven in `myVM` , `myResourceGroup`op de virtuele machine met de naam in. Voer de volgende regels in het `settings.json` bestand in met uw eigen waarden:
+Of om de SSH-sleutel voor een gebruiker opnieuw in te stellen, maakt u eerst een bestand met de naam `settings.json` . In het volgende voor beeld worden de referenties opnieuw ingesteld op `myUsername` de waarde die is opgegeven in `myPassword` , op de virtuele machine met de naam `myVM` in `myResourceGroup` . Voer de volgende regels in het `settings.json` bestand in met uw eigen waarden:
 
 ```json
 {
@@ -165,7 +165,7 @@ Of om de SSH-sleutel voor een gebruiker opnieuw in te stellen, maakt `settings.j
 }
 ```
 
-Nadat u het JSON-bestand hebt gemaakt, gebruikt u de Azure `VMAccessForLinux` CLI om de extensie aan te roepen om uw SSH-gebruikers referenties opnieuw in te stellen door het JSON-bestand op te geven. In het volgende voor beeld worden de referenties opnieuw `myVM` ingesteld `myResourceGroup`op de virtuele machine met de naam in. Gebruik uw eigen waarden als volgt:
+Nadat u het JSON-bestand hebt gemaakt, gebruikt u de Azure CLI om de `VMAccessForLinux` extensie aan te roepen om uw SSH-gebruikers referenties opnieuw in te stellen door het JSON-bestand op te geven. In het volgende voor beeld worden de referenties opnieuw ingesteld op de virtuele machine met de naam `myVM` in `myResourceGroup` . Gebruik uw eigen waarden als volgt:
 
 ```azurecli
 az vm extension set --resource-group philmea --vm-name Ubuntu \
@@ -184,7 +184,7 @@ Als u een aangepaste Linux-schijf kopie hebt gemaakt en geüpload, controleert u
 ### <a name="reset-ssh-configuration"></a>SSH-configuratie opnieuw instellen
 De SSHD-configuratie zelf is mogelijk onjuist geconfigureerd of er is een fout opgetreden in de service. U kunt SSHD opnieuw instellen om er zeker van te zijn dat de SSH-configuratie zelf geldig is. Het opnieuw instellen van SSHD moet de eerste stap voor het oplossen van problemen zijn.
 
-`myVM` In het volgende voor beeld wordt SSHD opnieuw ingesteld op een virtuele machine met `myResourceGroup`de naam in de resource groep met de naam. Gebruik uw eigen naam voor de VM en de resource groep als volgt:
+In het volgende voor beeld wordt SSHD opnieuw ingesteld op een virtuele machine `myVM` met de naam in de resource groep met de naam `myResourceGroup` . Gebruik uw eigen naam voor de VM en de resource groep als volgt:
 
 ```azurecli
 azure vm reset-access --resource-group myResourceGroup --name myVM \
@@ -192,14 +192,14 @@ azure vm reset-access --resource-group myResourceGroup --name myVM \
 ```
 
 ### <a name="reset-ssh-credentials-for-a-user"></a>SSH-referenties voor een gebruiker opnieuw instellen
-Als SSHD lijkt te werken, kunt u het wacht woord opnieuw instellen voor een gebruiker van de gebruikers naam. In het volgende `myUsername` voor beeld worden de referenties opnieuw ingesteld op de `myPassword`waarde die is opgegeven in `myVM` , `myResourceGroup`op de virtuele machine met de naam in. Gebruik uw eigen waarden als volgt:
+Als SSHD lijkt te werken, kunt u het wacht woord opnieuw instellen voor een gebruiker van de gebruikers naam. In het volgende voor beeld worden de referenties opnieuw ingesteld op `myUsername` de waarde die is opgegeven in `myPassword` , op de virtuele machine met de naam `myVM` in `myResourceGroup` . Gebruik uw eigen waarden als volgt:
 
 ```azurecli
 azure vm reset-access --resource-group myResourceGroup --name myVM \
      --user-name myUsername --password myPassword
 ```
 
-Als u SSH-sleutel verificatie gebruikt, kunt u de SSH-sleutel voor een bepaalde gebruiker opnieuw instellen. In het volgende voor beeld wordt de SSH- `~/.ssh/id_rsa.pub` sleutel die is opgeslagen `myUsername`in voor de gebruiker met `myVM` de `myResourceGroup`naam, bijgewerkt op de virtuele machine met de naam in. Gebruik uw eigen waarden als volgt:
+Als u SSH-sleutel verificatie gebruikt, kunt u de SSH-sleutel voor een bepaalde gebruiker opnieuw instellen. In het volgende voor beeld wordt de SSH-sleutel die is opgeslagen in `~/.ssh/id_rsa.pub` voor de gebruiker met de naam `myUsername` , bijgewerkt op de virtuele machine met de naam `myVM` in `myResourceGroup` . Gebruik uw eigen waarden als volgt:
 
 ```azurecli
 azure vm reset-access --resource-group myResourceGroup --name myVM \
@@ -215,7 +215,7 @@ Als u een virtuele machine opnieuw wilt opstarten met behulp van de Azure Portal
 ![Een virtuele machine opnieuw opstarten in de Azure Portal](./media/troubleshoot-ssh-connection/restart-vm-using-portal.png)
 
 ### <a name="azure-cli"></a>Azure CLI
-In het volgende voor beeld wordt [AZ VM restart opnieuw](/cli/azure/vm) gestart voor het opnieuw opstarten van de VM met de naam in de resource groep met de naam. `myResourceGroup` `myVM` Gebruik uw eigen waarden als volgt:
+In het volgende voor beeld wordt [AZ VM restart opnieuw](/cli/azure/vm) gestart voor het opnieuw opstarten van de VM met `myVM` de naam in de resource groep met de naam `myResourceGroup` . Gebruik uw eigen waarden als volgt:
 
 ```azurecli
 az vm restart --resource-group myResourceGroup --name myVM
@@ -225,7 +225,7 @@ az vm restart --resource-group myResourceGroup --name myVM
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-`myVM` In het volgende voor beeld wordt de virtuele machine met de naam in de `myResourceGroup`resource groep met de naam opnieuw gestart. Gebruik uw eigen waarden als volgt:
+In het volgende voor beeld wordt de virtuele machine `myVM` met de naam in de resource groep met de naam opnieuw gestart `myResourceGroup` . Gebruik uw eigen waarden als volgt:
 
 ```console
 azure vm restart --resource-group myResourceGroup --name myVM
@@ -245,7 +245,7 @@ Als u een virtuele machine opnieuw wilt implementeren met behulp van de Azure Po
 ![Een virtuele machine opnieuw implementeren in de Azure Portal](./media/troubleshoot-ssh-connection/redeploy-vm-using-portal.png)
 
 ### <a name="azure-cli"></a>Azure CLI
-In het volgende voor beeld wordt [AZ VM redeploy](/cli/azure/vm) gebruikt voor het opnieuw implementeren van de VM met de naam in de resource groep met de naam `myResourceGroup` `myVM` Gebruik uw eigen waarden als volgt:
+In het volgende voor beeld wordt [AZ VM redeploy](/cli/azure/vm) gebruikt voor het opnieuw implementeren van de VM met `myVM` de naam in de resource groep met de naam `myResourceGroup` . Gebruik uw eigen waarden als volgt:
 
 ```azurecli
 az vm redeploy --resource-group myResourceGroup --name myVM
@@ -253,7 +253,7 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 
 ### <a name="azure-classic-cli"></a>Klassieke versie van Azure CLI
 
-`myVM` In het volgende voor beeld wordt de virtuele machine met de naam in de `myResourceGroup`resource groep met de naam opnieuw geïmplementeerd. Gebruik uw eigen waarden als volgt:
+In het volgende voor beeld wordt de virtuele machine `myVM` met de naam in de resource groep met de naam opnieuw geïmplementeerd `myResourceGroup` . Gebruik uw eigen waarden als volgt:
 
 ```console
 azure vm redeploy --resource-group myResourceGroup --name myVM
@@ -277,9 +277,9 @@ Voer de volgende stappen uit om de meest voorkomende SSH-verbindings fouten op t
   * Maak een *sudo* -gebruikers account.
   * Stel de SSH-configuratie opnieuw in.
 * Controleer de resource status van de VM voor problemen met het platform.<br>
-     Selecteer de VM en blader door de **instellingen** > **status controleren**.
+     Selecteer de VM en blader door de **instellingen**  >  **status controleren**.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 * Als u nog steeds niet kunt overstappen op uw virtuele machine na de volgende stappen, raadpleegt u [meer gedetailleerde stappen voor probleem oplossing](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) om uw probleem op te lossen.
 * Zie [problemen oplossen met toegang tot een toepassing die wordt uitgevoerd op een virtuele machine van Azure](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) voor meer informatie over het oplossen van toepassings toegang
 * Voor meer informatie over het oplossen van problemen met virtuele machines die zijn gemaakt met behulp van het klassieke implementatie model raadpleegt [u een wacht woord of ssh opnieuw instellen voor op Linux gebaseerde virtuele machines](../linux/classic/reset-access-classic.md).

@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: a0cee198f028fd90e04dac15e98d7cd33aee9201
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79532345"
 ---
 # <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>MariaDB-Stuur Programma's en-beheer hulpprogramma's die compatibel zijn met Azure Database for MariaDB
@@ -23,7 +23,7 @@ Azure Database for MariaDB maakt gebruik van de Community Edition van MariaDB se
 
 Het doel is het ondersteunen van de drie meest recente versies van MariaDB-Stuur Programma's en inspanningen met schrijvers van de open source-community om de functionaliteit en de bruikbaarheid van MariaDB-Stuur Programma's voortdurend te verbeteren. In de volgende tabel vindt u een lijst met stuur Programma's die zijn getest en die compatibel zijn met Azure Database for MariaDB 10,2:
 
-**Stuurprogramma** | **Links** | **Compatibele versies** | **Incompatibele versies** | **Opmerkingen**
+**Stuurprogramma** | **Koppelingen** | **Compatibele versies** | **Incompatibele versies** | **Opmerkingen**
 ---|---|---|---|---
 PHP | https://secure.php.net/downloads.php | 5,5, 5,6, 7. x | 5.3 | Voeg MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT toe aan de connection string voor PHP 7,0-verbinding met SSL-MySQLi. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> Bob ingesteld: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` optie op ONWAAR.
 .NET | [MySqlConnector op GitHub](https://github.com/mysql-net/MySqlConnector) <br> [Installatie pakket van Nuget](https://www.nuget.org/packages/MySqlConnector/) | 0,27 en na | 0.26.5 en vóór |
@@ -33,7 +33,7 @@ GO | https://github.com/go-sql-driver/mysql/releases | 1,3, 1,4 | 1,2 en vóór 
 Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3, 2,0, 2,1, 2,2 | 1.2.2 en voor |
 Java | https://downloads.mariadb.org/connector-java/ | 2,1, 2,0, 1,6 | 1.5.5 en vóór |
 
-## <a name="management-tools"></a>Beheerhulpprogramma's
+## <a name="management-tools"></a>Beheerprogramma's
 
 Het compatibiliteits voordeel kan ook worden uitgebreid naar beheer hulpprogramma's voor data bases. De bestaande hulpprogram ma's moeten blijven werken met Azure Database for MariaDB, zolang de data base is gemanipuleerd binnen de gebruikers machtigingen. De volgende tabel bevat drie algemene hulpprogram ma's voor database beheer die zijn getest en compatibel zijn met Azure Database for MariaDB 10,2:
 

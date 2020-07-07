@@ -8,10 +8,10 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 11aa4a80deba4df14c239e69910ea38bac1b9c55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80063516"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Azure Database for MySQL firewall regels maken en beheren met behulp van de Azure CLI
@@ -42,7 +42,7 @@ Maak veilig verbinding met Azure CLI met uw Azure-account met behulp van de opdr
     ```
    Met deze opdracht voert u een code uit die in de volgende stap wordt gebruikt.
 
-2. Gebruik een webbrowser om de pagina [https://aka.ms/devicelogin](https://aka.ms/devicelogin)te openen en voer vervolgens de code in.
+2. Gebruik een webbrowser om de pagina te openen [https://aka.ms/devicelogin](https://aka.ms/devicelogin) en voer vervolgens de code in.
 
 3. Meld u aan met uw Azure-referenties bij de prompt.
 

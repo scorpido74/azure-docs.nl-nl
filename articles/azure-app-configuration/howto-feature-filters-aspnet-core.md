@@ -8,10 +8,10 @@ ms.author: lcozzens
 ms.topic: conceptual
 ms.date: 3/9/2020
 ms.openlocfilehash: 181c97615985283011834dcf9145810b1563fb4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80056999"
 ---
 # <a name="use-feature-filters-to-enable-a-feature-for-a-subset-of-users"></a>Functie filters gebruiken om een functie in te scha kelen voor een subset van gebruikers
@@ -29,7 +29,7 @@ U kunt ook uw eigen functie filter maken waarmee de [Interface micro soft. Featu
 
 ## <a name="registering-a-feature-filter"></a>Een functie filter registreren
 
-U registreert een functie filter door de `AddFeatureFilter` methode aan te roepen en de naam van het functie filter op te geven. De volgende code wordt bijvoorbeeld geregistreerd `PercentageFilter`:
+U registreert een functie filter door de `AddFeatureFilter` methode aan te roepen en de naam van het functie filter op te geven. De volgende code wordt bijvoorbeeld geregistreerd `PercentageFilter` :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -41,7 +41,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="configuring-a-feature-filter-in-azure-app-configuration"></a>Een functie filter configureren in Azure-app configuratie
 
-Sommige functie filters hebben aanvullende instellingen. U kunt `PercentageFilter` bijvoorbeeld een functie activeren op basis van een percentage. Het heeft een instelling die het te gebruiken percentage definieert.
+Sommige functie filters hebben aanvullende instellingen. U kunt bijvoorbeeld `PercentageFilter` een functie activeren op basis van een percentage. Het heeft een instelling die het te gebruiken percentage definieert.
 
 U kunt deze instellingen configureren voor functie vlaggen die zijn gedefinieerd in Azure-app configuratie. Voer de volgende stappen uit om `PercentageFilter` de functie vlag in te scha kelen voor 50% van aanvragen voor een web-app:
 

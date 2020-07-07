@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
 ms.openlocfilehash: 94251dfa2d9fa732912ed20d825e64f542d79188
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80055416"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>De omgeving optimaliseren met behulp van System Center Operations Manager-statuscontrole (preview)
@@ -82,7 +82,7 @@ Het run as-account moet voldoen aan de volgende vereisten voordat u doorgaat:
 4. Selecteer op de pagina **algemene eigenschappen** de optie **Windows** in het **Run as-account type:** list.
 5. Typ een weergave naam in het tekstvak **weergave naam** en typ eventueel een beschrijving in het vak **Beschrijving** en klik vervolgens op **volgende**.
 6. Selecteer op de pagina **distributie beveiliging** de optie **veiliger**.
-7. Klik op **maken**.  
+7. Klik op **Create**.  
 
 Nu het run as-account is gemaakt, moet het worden ingesteld op beheerser vers in de beheer groep en zijn gekoppeld aan een vooraf gedefinieerd run as-profiel zodat werk stromen met de referenties worden uitgevoerd.  
 
@@ -153,7 +153,7 @@ De regel voor het uitvoeren van de status controle van micro soft System Center 
 
 1. Zoek in de werk ruimte **ontwerpen** van de Operations Manager Operations-console naar de regel *micro soft System Center Operations Manager uitvoerings status controle regel* in het deel venster **regels** .
 2. Selecteer in de zoek resultaten de versie die het tekst *type: beheer server*bevat.
-3. Klik met de rechter muisknop op de regel en klik vervolgens op **onderdrukkingen** > **voor een specifiek object van klasse: beheer server**.
+3. Klik met de rechter muisknop op de regel en klik vervolgens op **onderdrukkingen**  >  **voor een specifiek object van klasse: beheer server**.
 4.  Selecteer in de lijst beschik bare beheerser vers de beheer server waarop de regel moet worden uitgevoerd.  Dit moet dezelfde beheer server zijn die u eerder hebt geconfigureerd om het uitvoeren als-account aan te koppelen.
 5.  Zorg ervoor dat u de onderdrukkings waarde wijzigt in **True** voor de **ingeschakelde** parameter waarde.<br><br> ![onderdrukkings parameter](./media/scom-assessment/rule.png)
 
@@ -165,7 +165,7 @@ De evaluatie is zo geconfigureerd dat deze standaard elke 10.080 minuten (of zev
 
 1. Zoek in de werk ruimte **ontwerpen** van de Operations Manager-console naar de regel *micro soft System Center Operations Manager uitvoerings status controle regel* in de sectie **regels** .
 2. Selecteer in de zoek resultaten de versie die het tekst *type: beheer server*bevat.
-3. Klik met de rechter muisknop op de regel en klik vervolgens op **onderdrukking van de regel** > **voor alle objecten van klasse: beheer server**.
+3. Klik met de rechter muisknop op de regel en klik vervolgens op **onderdrukking van de regel**  >  **voor alle objecten van klasse: beheer server**.
 4. Wijzig de waarde van de para meter **interval** in de gewenste interval waarde. In het onderstaande voor beeld is de waarde ingesteld op 1440 minuten (één dag).<br><br> ![interval parameter](./media/scom-assessment/interval.png)<br>  
 
     Als de waarde is ingesteld op minder dan 1440 minuten, wordt de regel uitgevoerd op een interval van één dag. In dit voor beeld negeert de regel de interval waarde en wordt uitgevoerd met een frequentie van één dag.
@@ -208,7 +208,7 @@ Voordat u een health check-oplossing in Log Analytics kunt gebruiken, moet u de 
 Bekijk de samen vatting van de nalevings evaluaties voor uw infra structuur en vervolgens inzoomen op aanbevelingen.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Aanbevelingen voor een focus gebied weer geven en corrigerende actie ondernemen
-1. Meld u aan bij de Azure Portal [https://portal.azure.com](https://portal.azure.com)op.
+1. Meld u aan bij de Azure-portal op [https://portal.azure.com](https://portal.azure.com).
 2. Klik in Azure Portal op **Meer services** in de linkerbenedenhoek. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Log Analytics**.
 3. Selecteer in het deel venster abonnementen Log Analytics een werk ruimte en klik vervolgens op het menu-item **werkruimte samenvatting** .  
 4. Klik op de pagina **overzicht** op de tegel **System Center Operations Manager-statuscontrole** .
@@ -237,9 +237,9 @@ Als u aanbevelingen hebt die u wilt negeren, kunt u een tekst bestand maken dat 
 
 3. Kies de aanbevelingen die u wilt negeren. In de volgende procedure gebruikt u de waarden voor RecommendationId.
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Een IgnoreRecommendations. txt-tekst bestand maken en gebruiken
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Een IgnoreRecommendations.txt tekst bestand maken en gebruiken
 
-1. Maak een bestand met de naam IgnoreRecommendations. txt.
+1. Maak een bestand met de naam IgnoreRecommendations.txt.
 2. Plak of typ elke RecommendationId voor elke aanbeveling die Log Analytics wilt negeren op een afzonderlijke regel en sla het bestand op en sluit het.
 3. Plaats het bestand in de volgende map op elke computer waar u wilt dat Log Analytics aanbevelingen negeert.
 4. Op de Operations Manager-beheer server- *System Drive*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server.
@@ -258,7 +258,7 @@ Als u aanbevelingen hebt die u wilt negeren, kunt u een tekst bestand maken dat 
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
-3. Als u later besluit dat u genegeerde aanbevelingen wilt zien, verwijdert u de IgnoreRecommendations. txt-bestanden of verwijdert u RecommendationIDs van de andere.
+3. Als u later besluit dat u genegeerde aanbevelingen wilt zien, verwijdert u eventuele IgnoreRecommendations.txt-bestanden of verwijdert u de RecommendationIDs uit deze.
 
 ## <a name="system-center-operations-manager-health-check-solution-faq"></a>Veelgestelde vragen over de oplossing van System Center Operations Manager-statuscontrole
 
@@ -272,9 +272,9 @@ Als u aanbevelingen hebt die u wilt negeren, kunt u een tekst bestand maken dat 
 
 *Als er een andere server wordt gedetecteerd nadat ik de System Center Operations Manager-statuscontrole oplossing heb toegevoegd, wordt deze gecontroleerd?* Ja, nadat de detectie is ingeschakeld, wordt deze standaard elke zeven dagen gecontroleerd.
 
-*Wat is de naam van het proces dat het verzamelen van gegevens doet?* AdvisorAssessment. exe
+*Wat is de naam van het proces dat het verzamelen van gegevens doet?* AdvisorAssessment.exe
 
-*Waar wordt het proces AdvisorAssessment. exe uitgevoerd?* AdvisorAssessment. exe wordt uitgevoerd onder het HealthService-proces van de beheer server waarop de status controle regel is ingeschakeld. Met dit proces wordt de detectie van uw hele omgeving gerealiseerd via het verzamelen van externe gegevens.
+*Waar wordt het AdvisorAssessment.exe proces uitgevoerd?* AdvisorAssessment.exe wordt uitgevoerd onder het HealthService-proces van de beheer server waarop de status controle regel is ingeschakeld. Met dit proces wordt de detectie van uw hele omgeving gerealiseerd via het verzamelen van externe gegevens.
 
 *Hoe lang duurt het om gegevens te verzamelen?* Het verzamelen van gegevens op de server duurt ongeveer één uur. Dit kan langer duren in omgevingen met veel Operations Manager exemplaren of data bases.
 
@@ -282,7 +282,7 @@ Als u aanbevelingen hebt die u wilt negeren, kunt u een tekst bestand maken dat 
 
 *Hoe weet ik of er problemen zijn met de vereisten?* Als de status controle is uitgevoerd en u geen resultaten ziet, is het waarschijnlijk dat sommige van de vereisten voor de controle zijn mislukt. U kunt query's uitvoeren: `Operation Solution=SCOMAssessment` en `SCOMAssessmentRecommendation FocusArea=Prerequisites` in zoeken in Logboeken om de mislukte vereisten weer te geven.
 
-*Er is een `Failed to connect to the SQL Instance (….).` bericht in de vereiste fouten. Wat is het probleem?* AdvisorAssessment. exe, het proces dat gegevens verzamelt, wordt uitgevoerd onder het HealthService-proces op de-beheer server. Als onderdeel van de status controle probeert het proces verbinding te maken met de SQL Server waarop de Operations Manager-Data Base aanwezig is. Deze fout kan optreden wanneer Firewall regels de verbinding met het SQL Server-exemplaar blok keren.
+*Er is een `Failed to connect to the SQL Instance (….).` bericht in de vereiste fouten. Wat is het probleem?* AdvisorAssessment.exe, het proces waarmee gegevens worden verzameld, wordt uitgevoerd onder het HealthService-proces op de-beheer server. Als onderdeel van de status controle probeert het proces verbinding te maken met de SQL Server waarop de Operations Manager-Data Base aanwezig is. Deze fout kan optreden wanneer Firewall regels de verbinding met het SQL Server-exemplaar blok keren.
 
 *Welk type gegevens worden verzameld?* De volgende typen gegevens worden verzameld:-WMI gegevens-REGI ster gegevens gegevens Operations Manager gegevens via Windows Power shell, SQL-Query's en File Information Collector.
 

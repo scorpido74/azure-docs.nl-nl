@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: guybo
 ms.openlocfilehash: d54f7a11d929c31fee29a788eb3a2ae2cc8f2703
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066717"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Een Debian-VHD voorbereiden voor Azure
@@ -25,7 +25,7 @@ In deze sectie wordt ervan uitgegaan dat u al een Debian Linux-besturings systee
 * Alle Vhd's op Azure moeten een virtuele grootte hebben die is afgestemd op 1 MB. Wanneer u van een onbewerkte schijf naar VHD converteert, moet u ervoor zorgen dat de onbewerkte schijf grootte een meervoud van 1MB is vóór de conversie. Zie [installatie notities voor Linux](create-upload-generic.md#general-linux-installation-notes)voor meer informatie.
 
 ## <a name="use-azure-manage-to-create-debian-vhds"></a>Azure-Manage gebruiken om Debian-Vhd's te maken
-Er zijn hulpprogram ma's beschikbaar voor het genereren van Debian-Vhd's voor Azure, zoals de [Azure-beheer](https://github.com/credativ/azure-manage) scripts van [Credativ](https://www.credativ.com/). Dit is de aanbevolen benadering en een volledig nieuwe installatie kopie maken. Als u bijvoorbeeld een Debian 8-VHD wilt maken, voert u de volgende opdrachten `azure-manage` uit om het hulp programma (en de `azure_build_image` afhankelijkheden) te downloaden en het script uit te voeren:
+Er zijn hulpprogram ma's beschikbaar voor het genereren van Debian-Vhd's voor Azure, zoals de [Azure-beheer](https://github.com/credativ/azure-manage) scripts van [Credativ](https://www.credativ.com/). Dit is de aanbevolen benadering en een volledig nieuwe installatie kopie maken. Als u bijvoorbeeld een Debian 8-VHD wilt maken, voert u de volgende opdrachten uit om het `azure-manage` hulp programma (en de afhankelijkheden) te downloaden en het script uit te voeren `azure_build_image` :
 
     # sudo apt-get update
     # sudo apt-get install git qemu-utils mbr kpartx debootstrap
@@ -42,7 +42,7 @@ Er zijn hulpprogram ma's beschikbaar voor het genereren van Debian-Vhd's voor Az
 ## <a name="manually-prepare-a-debian-vhd"></a>Een Debian-VHD hand matig voorbereiden
 1. Selecteer de virtuele machine in Hyper-V-beheer.
 2. Klik op **verbinding maken** om een console venster voor de virtuele machine te openen.
-3. Als u het besturings systeem hebt geïnstalleerd met behulp van een ISO, kunt u een`deb cdrom`wille `/etc/apt/source.list`keurige regel met betrekking tot "" in een opmerking plaatsen.
+3. Als u het besturings systeem hebt geïnstalleerd met behulp van een ISO, kunt u een wille keurige regel met betrekking tot "" in een opmerking plaatsen `deb cdrom` `/etc/apt/source.list` .
 
 4. Bewerk het `/etc/default/grub` bestand en wijzig de para meter **GRUB_CMDLINE_LINUX** als volgt, zodat u aanvullende kernel-para meters voor Azure kunt gebruiken.
    

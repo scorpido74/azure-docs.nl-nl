@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.openlocfilehash: 725876594a7e7c5f3b3a02802f487dc5fdfb64dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79535932"
 ---
 # <a name="optimize-reads-and-writes-cost-in-azure-cosmos-db"></a>De kosten voor lees-en schrijf bewerkingen optimaliseren in Azure Cosmos DB
@@ -34,7 +34,7 @@ Het lezen van een item met een grootte van 1 KB per RU. Een item schrijven dat 1
 
 Wanneer u schrijf bewerkingen uitvoert, moet u voldoende capaciteit inrichten ter ondersteuning van het aantal schrijf bewerkingen dat nodig is per seconde. U kunt de ingerichte door Voer verhogen met behulp van SDK, portal, CLI voordat u de schrijf bewerkingen uitvoert en de door Voer verminderen nadat de schrijf bewerkingen zijn voltooid. Uw door Voer voor de schrijf periode is de minimale door Voer die nodig is voor de gegeven gegevens, plus de door Voer die vereist is voor het invoegen van de werk belasting, uitgaande van andere werk belastingen. 
 
-Als u andere werk belastingen gelijktijdig uitvoert, bijvoorbeeld query/lezen/bijwerken/verwijderen, moet u ook de extra aanvraag eenheden toevoegen die vereist zijn voor deze bewerkingen. Als de schrijf bewerkingen de frequentie beperkt zijn, kunt u het beleid voor opnieuw proberen of uitstel aanpassen met behulp van Azure Cosmos DB Sdk's. U kunt bijvoorbeeld de belasting verg Roten tot een klein aantal aanvragen een beperkt aantal wordt. Als er sprake is van frequentie limiet, moet de client toepassing een back-up maken van aanvragen met een frequentie beperking voor het opgegeven interval voor nieuwe pogingen. Voordat u opnieuw probeert te schrijven, moet u een minimale hoeveelheid tijd tussen nieuwe pogingen hebben. Ondersteuning voor het beleid voor opnieuw proberen is opgenomen in SQL .NET-, Java-, node. js-en python-Sdk's en alle ondersteunde versies van de .NET core-Sdk's. 
+Als u andere werk belastingen gelijktijdig uitvoert, bijvoorbeeld query/lezen/bijwerken/verwijderen, moet u ook de extra aanvraag eenheden toevoegen die vereist zijn voor deze bewerkingen. Als de schrijf bewerkingen de frequentie beperkt zijn, kunt u het beleid voor opnieuw proberen of uitstel aanpassen met behulp van Azure Cosmos DB Sdk's. U kunt bijvoorbeeld de belasting verg Roten tot een klein aantal aanvragen een beperkt aantal wordt. Als er sprake is van frequentie limiet, moet de client toepassing een back-up maken van aanvragen met een frequentie beperking voor het opgegeven interval voor nieuwe pogingen. Voordat u opnieuw probeert te schrijven, moet u een minimale hoeveelheid tijd tussen nieuwe pogingen hebben. Ondersteuning voor het beleid voor opnieuw proberen is opgenomen in SQL .NET-, Java-, Node.js-en python-Sdk's en alle ondersteunde versies van de .NET core Sdk's. 
 
 U kunt ook bulksgewijs gegevens invoegen in Azure Cosmos DB of gegevens uit een ondersteund bron gegevens archief naar Azure Cosmos DB kopiëren met behulp van [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md). Azure Data Factory systeem eigen integreert met de Azure Cosmos DB bulk-API om de beste prestaties te bieden, wanneer u gegevens schrijft.
 

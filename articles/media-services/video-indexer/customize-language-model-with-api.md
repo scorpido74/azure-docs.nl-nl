@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/04/2020
 ms.author: anzaman
 ms.openlocfilehash: 19067bbbaf93c9abc9a9220b09dd482ce9115655
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80127982"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-api"></a>Een taal model aanpassen met de Video Indexer-API
@@ -105,7 +105,7 @@ Het antwoord geeft de meta gegevens van het zojuist getrainde taal model samen m
 }
 ```
 
-`id` De geretourneerde is een unieke id die wordt gebruikt om onderscheid te maken `languageModelId` tussen taal modellen en wordt gebruikt voor het [uploaden van een video om](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) een video-api's te indexeren en `linguisticModelId` opnieuw te [indexeren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) (ook wel bekend als in video indexer-api's voor uploaden/opnieuw indexeren).
+De geretourneerde `id` is een unieke id die wordt gebruikt om onderscheid te maken tussen taal modellen en `languageModelId` wordt gebruikt voor het [uploaden van een video om](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) een video-api's te indexeren en opnieuw te [indexeren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) (ook wel bekend als `linguisticModelId` in video indexer-api's voor uploaden/opnieuw indexeren).
 
 ## <a name="delete-a-language-model"></a>Een taal model verwijderen
 

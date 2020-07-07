@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: guybo
 ms.openlocfilehash: 1ad1a66d67be7aefe4d9a7acae993e8788cbb193
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066748"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Een OpenBSD-schijf kopie maken en uploaden naar Azure
@@ -47,7 +47,7 @@ Voer de volgende procedures uit op de virtuele machine waarop u het OpenBSD-best
     echo "https://ftp.openbsd.org/pub/OpenBSD" > /etc/installurl
     ```
    
-4. De `root` gebruiker is standaard uitgeschakeld op virtuele machines in Azure. Gebruikers kunnen opdrachten uitvoeren met verhoogde bevoegdheden met behulp van `doas` de opdracht op OpenBSD VM. DOAS is standaard ingeschakeld. Zie [DOAS. conf](https://man.openbsd.org/doas.conf.5)voor meer informatie. 
+4. De `root` gebruiker is standaard uitgeschakeld op virtuele machines in Azure. Gebruikers kunnen opdrachten uitvoeren met verhoogde bevoegdheden met behulp van de `doas` opdracht op OPENBSD VM. DOAS is standaard ingeschakeld. Zie [DOAS. conf](https://man.openbsd.org/doas.conf.5)voor meer informatie. 
 
 5. Installeer en configureer de vereisten voor de Azure-agent als volgt:
 
@@ -94,7 +94,7 @@ Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed
 ```
 
 ## <a name="create-storage-resources-and-upload"></a>Opslag resources maken en uploaden
-Maak eerst een resourcegroep met [az group create](/cli/azure/group). In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
+Maak eerst een resourcegroep met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -140,7 +140,7 @@ az storage blob upload \
 
 
 ## <a name="create-vm-from-your-vhd"></a>Een VM maken op basis van uw VHD
-U kunt een virtuele machine maken met een [voorbeeld script](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) of rechtstreeks met [AZ VM Create](/cli/azure/vm). Als u de OpenBSD-VHD die u hebt geüpload `--image` wilt opgeven, gebruikt u de para meter als volgt:
+U kunt een virtuele machine maken met een [voorbeeld script](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) of rechtstreeks met [AZ VM Create](/cli/azure/vm). Als u de OpenBSD-VHD die u hebt geüpload wilt opgeven, gebruikt u de `--image` para meter als volgt:
 
 ```azurecli
 az vm create \

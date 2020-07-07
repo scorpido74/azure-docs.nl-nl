@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/06/2019
 ms.openlocfilehash: e16531484505f055c1383aff5adb40518719d98a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80054583"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>Problemen met de Log Analytics VM-extensie in Azure Monitor oplossen
@@ -18,8 +18,8 @@ Dit artikel biedt hulp bij het oplossen van problemen die u mogelijk ondervindt 
 
 Als u de status van de uitbrei ding wilt controleren, voert u de volgende stappen uit vanaf de Azure Portal.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
-2. Klik in de Azure Portal op **alle services**. Typ **virtuele machines**in de lijst met resources. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Virtuele machines**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+2. Klik in Azure Portal op **Alle services**. Typ **virtuele machines**in de lijst met resources. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Virtuele machines**.
 3. Zoek en selecteer deze in de lijst met virtuele machines.
 3. Klik op de virtuele machine op **uitbrei dingen**.
 4. Controleer in de lijst of de uitbrei ding van de Log Analytics is ingeschakeld.  Voor Linux wordt de agent vermeld als **OMSAgentforLinux** en voor Windows, de agent wordt vermeld als **MicrosoftMonitoringAgent**.

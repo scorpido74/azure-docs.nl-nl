@@ -14,10 +14,10 @@ ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, n
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 67a54a2cd4fa071fd47bcebb9aa53fd11fefd61e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154913"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Waarom bijwerken naar Microsoft Identity Platform (v2.0)?
@@ -33,7 +33,7 @@ Wanneer u een nieuwe toepassing ontwikkelt, is het belang rijk dat u weet wat de
 
 * Met het eind punt v 1.0 kunnen alleen werk-en school accounts worden aangemeld bij uw toepassing (Azure AD)
 * Met het micro soft Identity platform-eind punt kunnen werk-en school accounts van Azure AD en persoonlijke micro soft-accounts (MSA), zoals hotmail.com, outlook.com en msn.com, worden aangemeld.
-* Beide eind punten accepteren ook aanmeldingen van *[gast gebruikers](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* van een Azure AD-Directory voor toepassingen die zijn geconfigureerd als *[single tenant](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* of voor *multi tenant* -toepassingen die zijn geconfigureerd om naar het Tenant-`https://login.microsoftonline.com/{TenantId_or_Name}`specifieke eind punt () te verwijzen.
+* Beide eind punten accepteren ook aanmeldingen van *[gast gebruikers](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* van een Azure AD-Directory voor toepassingen die zijn geconfigureerd als *[single tenant](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* of voor *multi tenant* -toepassingen die zijn geconfigureerd om naar het Tenant-specifieke eind punt () te verwijzen `https://login.microsoftonline.com/{TenantId_or_Name}` .
 
 Met het micro soft Identity platform-eind punt kunt u apps schrijven die aanmeldingen accepteren van persoonlijke micro soft-accounts en werk-en school accounts. Dit biedt u de mogelijkheid om uw app volledig account-neutraal te schrijven. Als uw app bijvoorbeeld de [Microsoft Graph](https://graph.microsoft.io)aanroept, zijn er extra functies en gegevens beschikbaar voor werk accounts, zoals hun share point-sites of Directory gegevens. Maar voor veel acties, zoals het [lezen van de e-mail van een gebruiker](https://docs.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0), heeft dezelfde code toegang tot het e-mail bericht voor zowel privé-als werk-en school accounts.
 
@@ -51,9 +51,9 @@ De machtigingen die rechtstreeks op de registratie van de toepassing zijn ingest
 
 * In de app moeten alle resources worden genoteerd die voorheen eerder toegang zouden hebben. Het is lastig om apps te maken die een wille keurig aantal resources kunnen benaderen.
 
-Met het micro soft Identity platform-eind punt kunt u de statische machtigingen die zijn gedefinieerd in de gegevens van de app-registratie in het Azure Portal negeren en de machtigingen in plaats daarvan stapsgewijs aanvragen. Dit houdt in dat u een bare minimumset machtigingen vooraf en meer tijd krijgt als de klant extra app-functies gebruikt. Hiervoor kunt u de bereiken die uw app nodig heeft op elk gewenst moment opgeven door de nieuwe scopes in de `scope` para meter op te nemen bij het aanvragen van een toegangs token, zonder dat u deze hoeft vooraf in te stellen in de registratie gegevens van de toepassing. Als de gebruiker nog niet is gemachtigd om nieuwe scopes toe te voegen aan de aanvraag, wordt u gevraagd om alleen toestemming te geven aan de nieuwe machtigingen. Zie [machtigingen, toestemming en bereiken](../develop/v2-permissions-and-consent.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)voor meer informatie.
+Met het micro soft Identity platform-eind punt kunt u de statische machtigingen die zijn gedefinieerd in de gegevens van de app-registratie in het Azure Portal negeren en de machtigingen in plaats daarvan stapsgewijs aanvragen. Dit houdt in dat u een bare minimumset machtigingen vooraf en meer tijd krijgt als de klant extra app-functies gebruikt. Hiervoor kunt u de bereiken die uw app nodig heeft op elk gewenst moment opgeven door de nieuwe scopes in de para meter op te nemen `scope` bij het aanvragen van een toegangs token, zonder dat u deze hoeft vooraf in te stellen in de registratie gegevens van de toepassing. Als de gebruiker nog niet is gemachtigd om nieuwe scopes toe te voegen aan de aanvraag, wordt u gevraagd om alleen toestemming te geven aan de nieuwe machtigingen. Zie [machtigingen, toestemming en bereiken](../develop/v2-permissions-and-consent.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)voor meer informatie.
 
-Het toestaan van een app om machtigingen dynamisch aan `scope` te vragen via de para meter geeft ontwikkel aars de volledige controle over de ervaring van uw gebruikers. U kunt ook de voor keur geven aan de bestemmings ervaring en vragen om alle machtigingen in één initiële autorisatie aanvraag. Als uw app een groot aantal machtigingen vereist, kunt u de machtigingen van de gebruiker stapsgewijs verzamelen, omdat ze gedurende een periode proberen bepaalde functies van de app te gebruiken.
+Het toestaan van een app om machtigingen dynamisch aan te vragen via de `scope` para meter geeft ontwikkel aars de volledige controle over de ervaring van uw gebruikers. U kunt ook de voor keur geven aan de bestemmings ervaring en vragen om alle machtigingen in één initiële autorisatie aanvraag. Als uw app een groot aantal machtigingen vereist, kunt u de machtigingen van de gebruiker stapsgewijs verzamelen, omdat ze gedurende een periode proberen bepaalde functies van de app te gebruiken.
 
 Toestemming van de beheerder die namens een organisatie wordt uitgevoerd, vereist nog steeds de statische machtigingen die voor de app zijn geregistreerd. Daarom moet u deze machtigingen voor apps in de app-registratie Portal instellen als u een beheerder nodig hebt om toestemming te geven namens de hele organisatie. Dit reduceert de cycli die de organisatie beheerder nodig heeft om de toepassing in te stellen.
 
@@ -61,8 +61,8 @@ Toestemming van de beheerder die namens een organisatie wordt uitgevoerd, vereis
 
 Voor apps die gebruikmaken van het v 1.0-eind punt kan een app zich gedragen als een **resource**of een ontvanger van tokens. Een resource kan een aantal **bereiken** of **oAuth2Permissions** definiëren die het begrijpt, zodat client-apps tokens van die bron kunnen aanvragen voor een bepaalde reeks bereiken. Denk eens aan de Microsoft Graph-API als voor beeld van een resource:
 
-* Resource-id of `AppID URI`:`https://graph.microsoft.com/`
-* Bereiken, of `oAuth2Permissions`: `Directory.Read`, `Directory.Write`, enzovoort.
+* Resource-id of `AppID URI` :`https://graph.microsoft.com/`
+* Bereiken, of `oAuth2Permissions` : `Directory.Read` ,, enzovoort `Directory.Write` .
 
 Dit geldt voor het micro soft Identity platform-eind punt. Een app kan zich nog steeds gedragen als een resource, scopes definiëren en worden geïdentificeerd met een URI. Client-apps kunnen nog steeds toegang tot deze bereiken aanvragen. De manier waarop een client die machtigingen aanvraagt, is echter gewijzigd.
 
@@ -92,19 +92,19 @@ Hier geeft de **bereik** parameter aan welke resource en machtigingen de app aut
 
 ### <a name="offline-access"></a>Offline toegang
 
-Apps die gebruikmaken van het micro soft Identity platform-eind punt, kunnen het gebruik van een nieuwe goed bekende machtiging `offline_access` voor apps vereisen. het bereik. Alle apps moeten deze machtiging aanvragen als ze voor een langdurige periode toegang moeten krijgen tot bronnen namens een gebruiker, zelfs wanneer de gebruiker de app niet actief mag gebruiken. Het `offline_access` bereik wordt weer gegeven aan de gebruiker in dialoog vensters met toestemming als **toegang tot uw gegevens op elk gewenst moment**, waar de gebruiker mee moet instemmen. Als u `offline_access` de machtiging aanvraagt, kan uw web-app OAuth 2,0 refresh_tokens ontvangen van het micro soft Identity platform-eind punt. Vernieuwings tokens worden lang bewaard en kunnen worden uitgewisseld voor nieuwe OAuth 2,0-toegangs tokens voor langere Peri Oden van toegang.
+Apps die gebruikmaken van het micro soft Identity platform-eind punt, kunnen het gebruik van een nieuwe goed bekende machtiging voor apps vereisen `offline_access` . het bereik. Alle apps moeten deze machtiging aanvragen als ze voor een langdurige periode toegang moeten krijgen tot bronnen namens een gebruiker, zelfs wanneer de gebruiker de app niet actief mag gebruiken. Het `offline_access` bereik wordt weer gegeven aan de gebruiker in dialoog vensters met toestemming als **toegang tot uw gegevens op elk gewenst moment**, waar de gebruiker mee moet instemmen. Als u de machtiging aanvraagt `offline_access` , kan uw web-app OAuth 2,0 refresh_tokens ontvangen van het micro soft Identity platform-eind punt. Vernieuwings tokens worden lang bewaard en kunnen worden uitgewisseld voor nieuwe OAuth 2,0-toegangs tokens voor langere Peri Oden van toegang.
 
-Als uw app het `offline_access` bereik niet opvraagt, ontvangt deze geen vernieuwings tokens. Dit betekent dat wanneer u een autorisatie code inwisselt in de OAuth 2,0-autorisatie code stroom, u alleen een toegangs token van het `/token` eind punt ontvangt. Dat toegangs token blijft geldig gedurende een korte periode (meestal één uur), maar zal uiteindelijk verlopen. Op dat moment moet uw app de gebruiker weer omleiden naar het `/authorize` eind punt om een nieuwe autorisatie code op te halen. Tijdens deze omleiding is het mogelijk dat de gebruiker de referenties niet opnieuw moet invoeren of dat er toestemming moet worden gegeven voor machtigingen, afhankelijk van het type app.
+Als uw app het bereik niet opvraagt `offline_access` , ontvangt deze geen vernieuwings tokens. Dit betekent dat wanneer u een autorisatie code inwisselt in de OAuth 2,0-autorisatie code stroom, u alleen een toegangs token van het `/token` eind punt ontvangt. Dat toegangs token blijft geldig gedurende een korte periode (meestal één uur), maar zal uiteindelijk verlopen. Op dat moment moet uw app de gebruiker weer omleiden naar het `/authorize` eind punt om een nieuwe autorisatie code op te halen. Tijdens deze omleiding is het mogelijk dat de gebruiker de referenties niet opnieuw moet invoeren of dat er toestemming moet worden gegeven voor machtigingen, afhankelijk van het type app.
 
-Voor meer informatie over OAuth 2,0, `refresh_tokens`en `access_tokens`raadpleegt u de naslag informatie voor het [micro soft Identity platform-protocol](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
+Voor meer informatie over OAuth 2,0, `refresh_tokens` en `access_tokens` raadpleegt u de naslag informatie voor het [micro soft Identity platform-protocol](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 
 ### <a name="openid-profile-and-email"></a>OpenID Connect, profile en e-mail
 
 De meest eenvoudige OpenID Connect voor verbinding maken met micro soft Identity platform bieden in de resulterende *id_token*veel informatie over de gebruiker. De claims in een id_token kunnen de naam van de gebruiker, de voorkeurs gebruikersnaam, het e-mail adres, de object-ID en meer bevatten.
 
-De gegevens die door `openid` de scope worden geboden, hebben nu beperkte toegang tot de app. De `openid` Scope staat alleen toe dat uw app zich aanmeldt bij de gebruiker en een app-specifieke id voor de gebruiker ontvangt. Als u persoonlijke gegevens over de gebruiker in uw app wilt ophalen, moet uw app aanvullende machtigingen voor de gebruiker aanvragen. Met twee nieuwe bereiken `email` en `profile`kunt u aanvullende machtigingen aanvragen.
+De gegevens die door de `openid` scope worden geboden, hebben nu beperkte toegang tot de app. De `openid` Scope staat alleen toe dat uw app zich aanmeldt bij de gebruiker en een app-specifieke id voor de gebruiker ontvangt. Als u persoonlijke gegevens over de gebruiker in uw app wilt ophalen, moet uw app aanvullende machtigingen voor de gebruiker aanvragen. Met twee nieuwe bereiken `email` en `profile` kunt u aanvullende machtigingen aanvragen.
 
-* Met `email` de scope kan uw app toegang krijgen tot het primaire e-mail adres `email` van de gebruiker via de claim in het id_token, ervan uitgaande dat de gebruiker een adresseerbaar e-mail adres heeft.
+* Met de `email` Scope kan uw app toegang krijgen tot het primaire e-mail adres van de gebruiker via de `email` claim in het id_token, ervan uitgaande dat de gebruiker een adresseerbaar e-mail adres heeft.
 * Het `profile` bereik biedt uw app toegang tot alle andere basis informatie over de gebruiker, zoals de naam, de voorkeurs gebruikersnaam, de object-id, enzovoort, in de id_token.
 
 Deze bereiken bieden u de mogelijkheid om uw app in een minimale verschaffings modus in te stellen, zodat u alleen de gebruiker kunt vragen voor de set informatie die uw app nodig heeft om de taak uit te voeren. Zie voor meer informatie over deze bereiken [de referentie voor het micro soft Identity platform-bereik](../develop/v2-permissions-and-consent.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
@@ -141,7 +141,7 @@ App-registraties die ondersteuning bieden voor werk-en school accounts en persoo
 
 ### <a name="restrictions-on-redirect-urls"></a>Beperkingen voor omleidings-Url's
 
-Apps die zijn geregistreerd voor het micro soft-identiteits platform, zijn beperkt tot een beperkt aantal omleidings-URL-waarden. De omleidings-URL voor web-apps en-services `https`moet beginnen met het schema en alle omleidings-URL-waarden moeten één DNS-domein delen.  Het registratie systeem vergelijkt de volledige DNS-naam van de bestaande omleidings-URL naar de DNS-naam van de omleidings-URL die u wilt toevoegen. `http://localhost`wordt ook ondersteund als een omleidings-URL.  
+Apps die zijn geregistreerd voor het micro soft-identiteits platform, zijn beperkt tot een beperkt aantal omleidings-URL-waarden. De omleidings-URL voor web-apps en-services moet beginnen met het schema `https` en alle omleidings-URL-waarden moeten één DNS-domein delen.  Het registratie systeem vergelijkt de volledige DNS-naam van de bestaande omleidings-URL naar de DNS-naam van de omleidings-URL die u wilt toevoegen. `http://localhost`wordt ook ondersteund als een omleidings-URL.  
 
 De aanvraag voor het toevoegen van de DNS-naam mislukt als aan een van de volgende voorwaarden wordt voldaan:  
 
@@ -150,7 +150,7 @@ De aanvraag voor het toevoegen van de DNS-naam mislukt als aan een van de volgen
 
 #### <a name="example-1"></a>Voorbeeld 1
 
-Als de app een omleidings- `https://login.contoso.com`URL van heeft, kunt u een omleidings-URL toevoegen waarbij de DNS-naam precies overeenkomt, zoals wordt weer gegeven in het volgende voor beeld:
+Als de app een omleidings-URL van heeft `https://login.contoso.com` , kunt u een omleidings-URL toevoegen waarbij de DNS-naam precies overeenkomt, zoals wordt weer gegeven in het volgende voor beeld:
 
 `https://login.contoso.com/new`
 
@@ -176,18 +176,18 @@ Zie [een app registreren met de nieuwe app-registraties-ervaring](../develop/qui
 
 Momenteel is de ondersteuning van tape wisselaars voor het micro soft Identity platform-eind punt beperkt. Als u het micro soft Identity platform-eind punt in een productie toepassing wilt gebruiken, hebt u de volgende opties:
 
-* Als u een webtoepassing bouwt, kunt u veilig de algemeen beschik bare middleware aan de server zijde gebruiken om u aan te melden en de validatie van tokens te valideren. Dit zijn onder andere de OWIN OpenID Connect Connect middleware voor ASP.NET en de node. js Pass Port-invoeg toepassing. Voor code voorbeelden die gebruikmaken van micro soft middleware, zie de sectie [micro soft Identity platform Getting Started](../develop/v2-overview.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#getting-started) .
+* Als u een webtoepassing bouwt, kunt u veilig de algemeen beschik bare middleware aan de server zijde gebruiken om u aan te melden en de validatie van tokens te valideren. Dit zijn onder andere de OWIN OpenID Connect Connect middleware voor ASP.NET en de Pass Port-invoeg toepassing van Node.js. Voor code voorbeelden die gebruikmaken van micro soft middleware, zie de sectie [micro soft Identity platform Getting Started](../develop/v2-overview.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#getting-started) .
 * Als u een desktop-of mobiele toepassing bouwt, kunt u een van de micro soft-verificatie bibliotheken (MSAL) gebruiken. Deze bibliotheken zijn algemeen beschikbaar of worden ondersteund in een preview-versie, zodat u ze veilig kunt gebruiken in productie toepassingen. U vindt meer informatie over de voor waarden van de preview-versie en de beschik bare bibliotheken in [verificatie bibliotheken](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 * Voor platforms die niet onder micro soft-bibliotheken vallen, kunt u integreren met het micro soft Identity platform-eind punt door rechtstreeks protocol berichten te verzenden en ontvangen in de code van uw toepassing. De OpenID Connect Connect-en OAuth-protocollen [zijn expliciet gedocumenteerd](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) om u een dergelijke integratie te bieden.
 * Ten slotte kunt u open-source OpenID Connect Connect en OAuth-bibliotheken gebruiken om te integreren met het micro soft Identity platform-eind punt. Het micro soft Identity platform-eind punt moet compatibel zijn met veel open-source protocol bibliotheken zonder wijzigingen. De beschik baarheid van dit soort bibliotheken is afhankelijk van de taal en het platform. De [OpenID Connect Connect](https://openid.net/connect/) -en [OAuth 2,0](https://oauth.net/2/) -websites onderhouden een lijst met populaire implementaties. Zie voor meer informatie [micro soft Identity-platform en verificatie bibliotheken](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)en de lijst met open source-client bibliotheken en-voor beelden die zijn getest met het micro soft Identity platform-eind punt.
-* Ter referentie: het `.well-known` eind punt voor het micro soft Identity platform common `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`-eind punt is. Vervang `common` door uw Tenant-id om gegevens op te halen die specifiek zijn voor uw Tenant.  
+* Ter referentie: het `.well-known` eind punt voor het micro soft Identity platform common-eind punt is `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` . Vervang door `common` uw Tenant-id om gegevens op te halen die specifiek zijn voor uw Tenant.  
 
 ### <a name="protocol-changes"></a>Protocol wijzigingen
 
 Het micro soft Identity platform-eind punt biedt geen ondersteuning voor SAML of WS-Federation. OpenID Connect Connect en OAuth 2,0 worden alleen ondersteund.  De belangrijkste wijzigingen in de OAuth 2,0-protocollen van het eind punt van de v 1.0 zijn: 
 
 * De `email` claim wordt geretourneerd als een optionele claim is geconfigureerd **of** Scope = e-mail is opgegeven in de aanvraag. 
-* De `scope` para meter wordt nu ondersteund in plaats van `resource` de para meter.  
+* De `scope` para meter wordt nu ondersteund in plaats van de `resource` para meter.  
 * Veel reacties zijn gewijzigd om ze beter te laten voldoen aan de OAuth 2,0-specificatie, bijvoorbeeld correct retourneert `expires_in` als een int in plaats van een teken reeks.  
 
 Zie [OpenID Connect Connect and OAuth 2,0 protocol Reference](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)(Engelstalig) voor meer informatie over het bereik van de protocol functionaliteit die wordt ondersteund in het micro soft Identity platform-eind punt.

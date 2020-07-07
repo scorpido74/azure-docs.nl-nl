@@ -4,10 +4,10 @@ description: Dit artikel bevat een overzicht van de configuratie, het proces en 
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.openlocfilehash: cd5ded18d1a8f1f5fd96212d37725bb5db13002f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80062094"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>Over Site Recovery-onderdelen (configuratie, proces, hoofd doel)
@@ -18,10 +18,10 @@ In dit artikel worden de configuratie, het proces en de hoofddoel servers beschr
 
 Voor herstel na nood gevallen van on-premises virtuele VMware-machines en fysieke servers implementeert u een on-premises Site Recovery configuratie server.
 
-**Instelling** | **Nadere** | **Links**
+**Instelling** | **Details** | **Koppelingen**
 --- | --- | ---
 **Onderdelen**  | Op de computer met de configuratie server worden alle on-premises Site Recovery onderdelen uitgevoerd, waaronder de configuratie server, de proces server en de hoofddoel server.<br/><br/> Wanneer u de configuratie server instelt, worden alle onderdelen automatisch geïnstalleerd. | [Lees](vmware-azure-common-questions.md#configuration-server) de veelgestelde vragen over de configuratie server.
-**Rol** | De configuratieserver coördineert de communicatie tussen on-premises en Azure, en beheert de gegevensreplicatie. | Meer informatie over de architectuur voor de nood herstel van [VMware](vmware-azure-architecture.md) en [fysieke servers](physical-azure-architecture.md) naar Azure.
+**Role** | De configuratieserver coördineert de communicatie tussen on-premises en Azure, en beheert de gegevensreplicatie. | Meer informatie over de architectuur voor de nood herstel van [VMware](vmware-azure-architecture.md) en [fysieke servers](physical-azure-architecture.md) naar Azure.
 **VMware-vereisten** | Voor herstel na nood gevallen van on-premises virtuele VMware-machines moet u de configuratie server installeren en uitvoeren als een on-premises, Maxi maal beschik bare VMware VM. | [Meer informatie over](vmware-azure-deploy-configuration-server.md#prerequisites) de vereisten.
 **VMware-implementatie** | We raden u aan de configuratie server te implementeren met behulp van een gedownloade eicellen-sjabloon. Deze methode biedt een eenvoudige manier om een configuratie server in te stellen die voldoet aan alle vereisten en voor waarden.<br/><br/> Als u om een of andere reden geen virtuele VMware-machine kunt implementeren met behulp van een sjabloon van de eicellen, stelt u de configuratie Server-computers hand matig in, zoals hieronder wordt beschreven voor nood herstel van een fysieke machine. | [Implementeren](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template) met een eicellen-sjabloon.
 **Vereisten voor fysieke servers** | Voor herstel na nood gevallen op fysieke servers op locatie, implementeert u de configuratie server hand matig. | [Meer informatie over](physical-azure-set-up-source.md#prerequisites) de vereisten.
@@ -31,7 +31,7 @@ Voor herstel na nood gevallen van on-premises virtuele VMware-machines en fysiek
 
 Een proces server verwerkt replicatie gegevens tijdens failover en failback, en installeert de Mobility-service voor on-premises virtuele VMware-machines en fysieke servers.
 
-**Instelling** | **Nadere** | **Links**
+**Instelling** | **Details** | **Koppelingen**
 --- | --- | ---
 **Implementatie**  | Wanneer de configuratie server wordt geïmplementeerd, wordt standaard de installatie van de proces server geïnstalleerd. <br/><br/> Er is een on-premises proces server nodig voor herstel na nood gevallen en replicatie van on-premises virtuele VMware-machines en fysieke servers. | [Meer informatie](vmware-azure-architecture.md#architectural-components).
 **Rol (on-premises**) | Ontvangt replicatie gegevens van machines die zijn ingeschakeld voor replicatie. <br/><br/> Optimaliseert replicatie gegevens met caching, compressie en versleuteling, en verzendt deze naar Azure Storage. <br/><br/> Voert een push-installatie van de Site Recovery Mobility-service uit op on-premises VMware-Vm's en fysieke servers die u wilt repliceren. <br/><br/> Voert automatische detectie van on-premises machines uit. | [Meer informatie](vmware-azure-enable-replication.md).

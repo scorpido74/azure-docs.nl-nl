@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
 ms.openlocfilehash: 2680304bd73bdbae35b29b89f38ae2665615f5e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80239923"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Apache Hadoop clusters maken met behulp van de Azure-REST API
@@ -24,13 +24,13 @@ Meer informatie over het maken van een HDInsight-cluster met behulp van een Azur
 Met Azure REST API kunt u beheer bewerkingen uitvoeren op Services die worden gehost op het Azure-platform, inclusief het maken van nieuwe resources zoals HDInsight-clusters.
 
 > [!NOTE]  
-> De stappen in dit document gebruiken het [krul (https://curl.haxx.se/) ](https://curl.haxx.se/) hulp programma om te communiceren met de Azure rest API.
+> De stappen in dit document gebruiken het [krul ( https://curl.haxx.se/) ](https://curl.haxx.se/) hulp programma om te communiceren met de Azure rest API.
 
 ## <a name="create-a-template"></a>Een sjabloon maken
 
 Azure Resource Manager sjablonen zijn JSON-documenten waarmee een **resource groep** en alle resources erin worden beschreven (zoals HDInsight.) Met deze op sjablonen gebaseerde benadering kunt u de resources definiëren die u nodig hebt voor HDInsight in één sjabloon.
 
-Het volgende JSON-document is een fusie van de sjabloon en de parameter [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password)bestanden van, die een Linux-cluster maakt met behulp van een wacht woord voor het beveiligen van het SSH-gebruikers account.
+Het volgende JSON-document is een fusie van de sjabloon en de parameter bestanden van [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password) , die een Linux-cluster maakt met behulp van een wacht woord voor het beveiligen van het SSH-gebruikers account.
 
    ```json
    {
@@ -212,9 +212,9 @@ Dit voor beeld wordt gebruikt in de stappen in dit document. Vervang de voorbeel
 >
 > Zie [Prijsdetails voor Azure HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/) voor meer informatie over knooppuntgrootten en de bijbehorende kosten.
 
-## <a name="sign-in-to-your-azure-subscription"></a>Meld u aan bij uw Azure-abonnement
+## <a name="sign-in-to-your-azure-subscription"></a>Aanmelden bij uw Azure-abonnement
 
-Volg de stappen in [aan de slag met Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) en maak verbinding met uw abonnement met `az login` behulp van de opdracht.
+Volg de stappen in [aan de slag met Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) en maak verbinding met uw abonnement met behulp van de `az login` opdracht.
 
 ## <a name="create-a-service-principal"></a>Een service-principal maken
 
@@ -235,10 +235,10 @@ Volg de stappen in [aan de slag met Azure cli](https://docs.microsoft.com/cli/az
    az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
    ```
 
-    Vervang de waarden voor de `--display-name`, `--homepage`en `--identifier-uris` door uw eigen waarden. Geef een wacht woord op voor de nieuwe Active Directory vermelding.
+    Vervang de waarden voor de `--display-name` , `--homepage` en door `--identifier-uris` uw eigen waarden. Geef een wacht woord op voor de nieuwe Active Directory vermelding.
 
    > [!NOTE]  
-   > De `--home-page` waarden `--identifier-uris` en hoeven niet te verwijzen naar een daad werkelijke webpagina die wordt gehost op internet. Ze moeten unieke Uri's zijn.
+   > De `--home-page` `--identifier-uris` waarden en hoeven niet te verwijzen naar een daad werkelijke webpagina die wordt gehost op internet. Ze moeten unieke Uri's zijn.
 
    De waarde die door deze opdracht wordt geretourneerd, is de __App-ID__ voor de nieuwe toepassing. Sla deze waarde op.
 
@@ -270,7 +270,7 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 --data-urlencode "resource=https://management.azure.com/"
 ```
 
-Stel `$TENANTID`, `$APPID`, en `$PASSWORD` op de waarden die u eerder hebt verkregen of gebruikt.
+Stel `$TENANTID` , `$APPID` , en `$PASSWORD` op de waarden die u eerder hebt verkregen of gebruikt.
 
 Als deze aanvraag is voltooid, ontvangt u een respons van 200-series en bevat de antwoord tekst een JSON-document.
 
@@ -292,7 +292,7 @@ Gebruik het volgende om een resource groep te maken.
 
 * Ingesteld `$SUBSCRIPTIONID` op de abonnements-id die is ontvangen tijdens het maken van de Service-Principal.
 * Instellen `$ACCESSTOKEN` op het toegangs token dat u in de vorige stap hebt ontvangen.
-* Vervang `DATACENTERLOCATION` door het Data Center waarin u de resource groep en de resources wilt maken. Bijvoorbeeld ' Zuid-Centraal VS '.
+* Vervang door `DATACENTERLOCATION` het Data Center waarin u de resource groep en de resources wilt maken. Bijvoorbeeld ' Zuid-Centraal VS '.
 * Stel `$RESOURCEGROUPNAME` in op de naam die u wilt gebruiken voor deze groep:
 
 ```bash
@@ -304,7 +304,7 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 }'
 ```
 
-Als deze aanvraag is voltooid, ontvangt u een respons van 200-series en bevat de antwoord tekst een JSON-document met informatie over de groep. Het `"provisioningState"` element bevat een waarde van `"Succeeded"`.
+Als deze aanvraag is voltooid, ontvangt u een respons van 200-series en bevat de antwoord tekst een JSON-document met informatie over de groep. Het `"provisioningState"` element bevat een waarde van `"Succeeded"` .
 
 ## <a name="create-a-deployment"></a>Een implementatie maken
 
@@ -320,7 +320,7 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 ```
 
 > [!NOTE]  
-> Als u de sjabloon hebt opgeslagen in een bestand, kunt u de volgende opdracht gebruiken in `-d "{ template and parameters}"`plaats van:
+> Als u de sjabloon hebt opgeslagen in een bestand, kunt u de volgende opdracht gebruiken in plaats van `-d "{ template and parameters}"` :
 >
 > `--data-binary "@/path/to/file.json"`
 
@@ -339,7 +339,7 @@ curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 -H "Content-Type: application/json"
 ```
 
-Met deze opdracht wordt een JSON-document geretourneerd dat informatie bevat over de implementatie bewerking. Het `"provisioningState"` element bevat de status van de implementatie. Als dit element een waarde bevat `"Succeeded"`, is de implementatie voltooid.
+Met deze opdracht wordt een JSON-document geretourneerd dat informatie bevat over de implementatie bewerking. Het `"provisioningState"` element bevat de status van de implementatie. Als dit element een waarde bevat `"Succeeded"` , is de implementatie voltooid.
 
 ## <a name="troubleshoot"></a>Problemen oplossen
 

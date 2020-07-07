@@ -15,10 +15,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 9cf5a9c81ca1d7a42a5a8e342dee55f335656c3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154420"
 ---
 # <a name="web-api"></a>Web-API
@@ -56,7 +56,7 @@ De identiteits typen toepassings identiteit en gedelegeerde gebruiker worden in 
 
 1. Een gebruiker is al aangemeld bij een webtoepassing, waarvan het verificatie mechanisme onafhankelijk is van Azure AD.
 1. De webtoepassing vereist een autorisatie code voor het verkrijgen van een toegangs token, waardoor een aanvraag via de browser wordt uitgegeven in het autorisatie-eind punt van Azure AD, waarbij de toepassings-ID en omleidings-URI voor de webtoepassing worden opgegeven nadat de verificatie is geslaagd. De gebruiker meldt zich aan bij Azure AD.
-1. Als de gebruiker van de webtoepassing nog niet heeft ingestemd, zodat de webtoepassing de Web-API namens u kan aanroepen, moet de gebruiker toestemming geven. De toepassing geeft de benodigde machtigingen weer en als een van deze machtigingen op beheerders niveau is, kan een normale gebruiker in de Directory geen toestemming geven. Deze toestemming geldt voor zowel één als multi tenant-toepassing. In het geval van één Tenant kan een beheerder toestemming geven om namens hun gebruikers toestemming te geven voor de beheerder. U kunt dit doen met behulp van de `Grant Permissions` knop in de [Azure Portal](https://portal.azure.com). 
+1. Als de gebruiker van de webtoepassing nog niet heeft ingestemd, zodat de webtoepassing de Web-API namens u kan aanroepen, moet de gebruiker toestemming geven. De toepassing geeft de benodigde machtigingen weer en als een van deze machtigingen op beheerders niveau is, kan een normale gebruiker in de Directory geen toestemming geven. Deze toestemming geldt voor zowel één als multi tenant-toepassing. In het geval van één Tenant kan een beheerder toestemming geven om namens hun gebruikers toestemming te geven voor de beheerder. U kunt dit doen met behulp `Grant Permissions` van de knop in de [Azure Portal](https://portal.azure.com). 
 1. Nadat de gebruiker heeft ingestemd, ontvangt de webtoepassing de autorisatie code die nodig is om een toegangs token te verkrijgen.
 1. Met de autorisatie code die is uitgegeven door Azure AD, verzendt de webtoepassing een aanvraag naar het token-eind punt van Azure AD met daarin de autorisatie code, Details over de client toepassing (toepassings-ID en omleidings-URI) en de gewenste resource (ID van de toepassings-URI voor de Web-API).
 1. De autorisatie code en informatie over de webtoepassing en Web-API worden gevalideerd door Azure AD. Bij een geslaagde validatie retourneert Azure AD twee tokens: een JWT-toegangs token en een JWT-vernieuwings token.

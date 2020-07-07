@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 92c3e0d77a26db406e24d6d2fa07e96349613634
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80050821"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Veelgestelde vragen over Azure Active Directory B2B-samen werking
@@ -24,7 +24,7 @@ ms.locfileid: "80050821"
 Deze veelgestelde vragen (FAQ) over de samen werking tussen Azure Active Directory (Azure AD) met Business-to-Business (B2B) worden regel matig bijgewerkt, zodat er nieuwe onderwerpen worden toegevoegd.
 
    > [!IMPORTANT]
-   > **Vanaf 31 maart 2021**biedt micro soft geen ondersteuning meer voor de terugbetaling van uitnodigingen door het maken van niet-beheerde Azure AD-accounts en-tenants voor B2B-samenwerkings scenario's. In de voor bereiding raden wij klanten aan om te kiezen voor [verificatie via een eenmalige wachtwoord code](one-time-passcode.md). We hebben uw feedback over deze open bare preview-functie en zijn enthousiast om nog meer manieren te maken om samen te werken.
+   > **Vanaf 31 maart 2021** heeft Microsoft geen ondersteuning meer voor het aflossen van uitnodigingen door het maken van niet-beheerde Azure AD-accounts en -tenants voor B2B-samenwerkingsscenario's. In de voorbereiding raden wij klanten aan om te kiezen voor de [verificatie van de eenmalige wachtwoordcode e-mailen](one-time-passcode.md). We waarderen uw feedback over deze openbare preview-functie en willen graag nog meer manieren te maken om samen te werken.
 
 ### <a name="can-we-customize-our-sign-in-page-so-its-more-intuitive-for-our-b2b-collaboration-guest-users"></a>Kunnen we onze aanmeldings pagina aanpassen zodat deze meer intuïtief is voor onze B2B-samenwerkings gast gebruikers?
 Rechthebbend! Bekijk onze [blog post over deze functie](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/). Voor meer informatie over het aanpassen van de aanmeldings pagina van uw organisatie, Zie [bedrijfs huisstijl toevoegen om u aan te melden en de pagina's van het toegangs venster](../fundamentals/customize-branding.md).
@@ -64,13 +64,13 @@ Tenzij aan een gebruiker de rol van beperkte beheerder is toegewezen, is voor B2
 Ja. U kunt een beleid voor voorwaardelijke toegang maken waarmee wordt voor komen dat alle gasten en externe gebruikers toegang krijgen tot de Azure Portal. Wanneer u dit beleid configureert, moet u voorzichtig zijn om te voor komen dat de toegang tot leden en beheerders per ongeluk wordt geblokkeerd.
 
 1. Meld u aan bij uw [Azure Portal](https://portal.azure.com/) als een beveiligings beheerder of een beheerder voor voorwaardelijke toegang.
-2. Selecteer in de Azure-portal **Azure Active Directory**. 
+2. Selecteer **Azure Active Directory**In het Azure Portal. 
 3. Selecteer onder **beheren**de optie **beveiliging**.
 4. Onder **beveiligen**selecteert u **voorwaardelijke toegang**. Selecteer **Nieuw beleid**.
 5. Voer op de pagina **Nieuw** in het tekstvak **naam** een naam in voor het beleid (bijvoorbeeld ' gasten blok keren voor toegang tot de portal ').
 6. Onder **Toewijzingen** selecteert u **Gebruikers en groepen**.
 7. Klik op het tabblad **include** op **gebruikers en groepen selecteren**en selecteer vervolgens **alle gast en externe gebruikers (preview-versie)**.
-9. Selecteer **Done**.
+9. Selecteer **Voltooid**.
 10. Selecteer op de pagina **Nieuw** in de sectie **toewijzingen** de optie **Cloud-apps of-acties**.
 11. Kies op de pagina **Cloud-apps of acties** de optie **apps selecteren**en kies vervolgens **selecteren**.
 12. Kies op de pagina **Selecteren** de optie **Microsoft Azure Management** en kies vervolgens **Selecteren**.
@@ -82,8 +82,8 @@ Ja. Multi-factor Authentication-en consumenten-e-mail accounts worden beide onde
 ### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Ondersteunt u het opnieuw instellen van wacht woorden voor Azure AD B2B-samenwerkings gebruikers?
 Als uw Azure AD-Tenant de basis directory voor een gebruiker is, kunt u [het wacht woord van de gebruiker opnieuw instellen](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal) via de Azure Portal. Maar u kunt een wacht woord niet rechtstreeks opnieuw instellen voor een gast gebruiker die zich aanmeldt met een account dat wordt beheerd door een andere Azure AD-adres lijst of een externe ID-provider. Alleen de gast gebruiker of een beheerder in de basismap van de gebruiker kan het wacht woord opnieuw instellen. Hier volgen enkele voor beelden van hoe het opnieuw instellen van wacht woorden werkt voor gast gebruikers:
  
-* Gast gebruikers die zich aanmelden met een Microsoft-account (bijvoorbeeld guestuser@live.com) kunnen hun eigen wacht woorden opnieuw instellen met behulp van Microsoft-account self-service voor wachtwoord herstel (SSPR). Lees [hoe u uw Microsoft-account wacht woord opnieuw instelt](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).
-* Gast gebruikers die zich aanmelden met een Google-account of een andere externe ID-provider kunnen hun eigen wacht woord opnieuw instellen met behulp van de SSPR-methode van de identiteits provider. Een gast gebruiker met het Google-account guestuser@gmail.com kan bijvoorbeeld het wacht woord opnieuw instellen door de instructies te volgen in [uw wacht woord wijzigen of opnieuw instellen](https://support.google.com/accounts/answer/41078).
+* Gast gebruikers die zich aanmelden met een Microsoft-account (bijvoorbeeld guestuser@live.com ) kunnen hun eigen wacht woorden opnieuw instellen met behulp van Microsoft-account self-service voor wachtwoord herstel (SSPR). Lees [hoe u uw Microsoft-account wacht woord opnieuw instelt](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).
+* Gast gebruikers die zich aanmelden met een Google-account of een andere externe ID-provider kunnen hun eigen wacht woord opnieuw instellen met behulp van de SSPR-methode van de identiteits provider. Een gast gebruiker met het Google-account kan bijvoorbeeld guestuser@gmail.com het wacht woord opnieuw instellen door de instructies te volgen in [uw wacht woord wijzigen of opnieuw instellen](https://support.google.com/accounts/answer/41078).
 * Als de identiteits Tenant een just-in-time-Tenant (JIT) of ' virale ' is (wat betekent dat het een afzonderlijke, niet-beheerde Azure-Tenant is), kan alleen de gast gebruiker het wacht woord opnieuw instellen. Soms neemt een organisatie het [beheer van virale tenants over](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) die worden gemaakt wanneer werk nemers hun werk-e-mail adressen gebruiken om zich aan te melden voor services. Nadat de organisatie een virale Tenant heeft overgenomen, kan alleen een beheerder in die organisatie het wacht woord van de gebruiker opnieuw instellen of SSPR inschakelen. Als dat nodig is, kunt u, als de uitnodigende organisatie, het gast gebruikers account uit uw Directory verwijderen en een uitnodiging opnieuw verzenden.
 
 * Als de basismap van de gast gebruiker uw Azure AD-Tenant is, kunt u het wacht woord van de gebruiker opnieuw instellen. U hebt bijvoorbeeld een gebruiker gemaakt of een gebruiker gesynchroniseerd vanaf uw on-premises Active Directory en de User type ingesteld op gast. Omdat deze gebruiker zich in uw directory bevindt, kunt u het wacht woord opnieuw instellen via de Azure Portal.

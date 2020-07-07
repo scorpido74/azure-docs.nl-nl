@@ -14,10 +14,10 @@ ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: c290cbf36fd53d5afb5fd805cda896fb6879bb4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154947"
 ---
 # <a name="application-types-in-v10"></a>Toepassings typen in v 1.0
@@ -72,7 +72,7 @@ Het inrichten wordt duidelijker wanneer u begrijpt dat er twee categorieën toep
 
 ### <a name="additional-considerations-when-developing-single-tenant-or-multi-tenant-apps"></a>Aanvullende overwegingen bij het ontwikkelen van één Tenant of multi tenant-apps
 
-Er zijn enkele aanvullende overwegingen bij het ontwikkelen van een toepassing met meerdere tenants in plaats van één Tenant toepassing. Als u uw toepassing bijvoorbeeld beschikbaar maakt voor gebruikers in meerdere directory's, hebt u een mechanisme nodig om te bepalen in welke Tenant ze zich bevinden. Een enkele Tenant toepassing hoeft alleen in een eigen map te zoeken voor een gebruiker, terwijl een multi tenant-toepassing een specifieke gebruiker moet identificeren uit alle directory's in azure AD. Voor het uitvoeren van deze taak biedt Azure AD een gemeen schappelijk verificatie-eind punt waarbij een multi tenant-toepassing kan worden gebruikt om aanmeldings aanvragen te sturen, in plaats van een Tenant-specifiek eind punt. Dit eind punt `https://login.microsoftonline.com/common` is voor alle Directory's in azure AD, terwijl een Tenant-specifiek eind punt `https://login.microsoftonline.com/contoso.onmicrosoft.com`mogelijk is. Het gemeen schappelijke eind punt is vooral belang rijk bij het ontwikkelen van uw toepassing, omdat u de benodigde logica nodig hebt voor het verwerken van meerdere tenants tijdens het aanmelden, afmelden en validatie van tokens.
+Er zijn enkele aanvullende overwegingen bij het ontwikkelen van een toepassing met meerdere tenants in plaats van één Tenant toepassing. Als u uw toepassing bijvoorbeeld beschikbaar maakt voor gebruikers in meerdere directory's, hebt u een mechanisme nodig om te bepalen in welke Tenant ze zich bevinden. Een enkele Tenant toepassing hoeft alleen in een eigen map te zoeken voor een gebruiker, terwijl een multi tenant-toepassing een specifieke gebruiker moet identificeren uit alle directory's in azure AD. Voor het uitvoeren van deze taak biedt Azure AD een gemeen schappelijk verificatie-eind punt waarbij een multi tenant-toepassing kan worden gebruikt om aanmeldings aanvragen te sturen, in plaats van een Tenant-specifiek eind punt. Dit eind punt is `https://login.microsoftonline.com/common` voor alle directory's in azure AD, terwijl een Tenant-specifiek eind punt mogelijk is `https://login.microsoftonline.com/contoso.onmicrosoft.com` . Het gemeen schappelijke eind punt is vooral belang rijk bij het ontwikkelen van uw toepassing, omdat u de benodigde logica nodig hebt voor het verwerken van meerdere tenants tijdens het aanmelden, afmelden en validatie van tokens.
 
 Als u momenteel één Tenant toepassing ontwikkelt, maar deze beschikbaar wilt maken voor veel organisaties, kunt u eenvoudig wijzigingen aanbrengen in de toepassing en de configuratie in azure AD om multi-tenant compatibel te maken. Bovendien gebruikt Azure AD dezelfde ondertekeningssleutel voor alle tokens in alle directory's, ongeacht of u verificatie in één Tenant of multi tenant-toepassing opgeeft.
 

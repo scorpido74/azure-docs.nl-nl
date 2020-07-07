@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 6c8ceeaf49d8ebfa15a83118e8b518190f6ff85e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80241059"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC dubbele module en afhankelijkheden helemaal zelf implementeren
@@ -111,9 +111,9 @@ De eenvoudigste manier om de modules op een Azure IoT Edge gateway-apparaat te i
 
 ### <a name="prerequisites"></a>Vereisten
 
-1. Implementeer de OPC-dubbele [afhankelijkheden](howto-opc-twin-deploy-dependencies.md) en haal `.env` het resulterende bestand op. Houd er rekening `hub name` mee dat `PCS_IOTHUBREACT_HUB_NAME` de variabele in het `.env` resulterende bestand is geïmplementeerd.
+1. Implementeer de OPC-dubbele [afhankelijkheden](howto-opc-twin-deploy-dependencies.md) en haal het resulterende `.env` bestand op. Houd er rekening mee `hub name` dat de `PCS_IOTHUBREACT_HUB_NAME` variabele in het resulterende bestand is geïmplementeerd `.env` .
 
-2. Registreer en start een [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) -of [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IOT Edge gateway en noteer `device id`deze.
+2. Registreer en start een [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) -of [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IOT Edge gateway en noteer deze `device id` .
 
 ### <a name="deploy-to-an-edge-device"></a>Implementeren op een edge-apparaat
 
@@ -127,7 +127,7 @@ De eenvoudigste manier om de modules op een Azure IoT Edge gateway-apparaat te i
 
 5. Selecteer in de sectie **implementatie modules** van de pagina de module **toevoegen** en **IOT Edge.**
 
-6. In het dialoog venster **aangepaste Module IOT Edge** gebruikt u `opctwin` de naam voor de module en geeft u vervolgens de URI van de container *installatie kopie* op als
+6. In het dialoog venster **aangepaste Module IOT Edge** gebruikt u de `opctwin` naam voor de module en geeft u vervolgens de URI van de container *installatie kopie* op als
 
    ```bash
    mcr.microsoft.com/iotedge/opc-twin:latest
@@ -143,7 +143,7 @@ De eenvoudigste manier om de modules op een Azure IoT Edge gateway-apparaat te i
 
 7. Selecteer **Opslaan** en herhaal stap **5**.  
 
-8. Gebruik `opcpublisher` in het dialoog venster aangepaste module IOT Edge als naam voor de module en de URI van de container *installatie kopie* als 
+8. Gebruik in het dialoog venster aangepaste module IoT Edge `opcpublisher` als naam voor de module en de URI van de container *installatie kopie* als 
 
    ```bash
    mcr.microsoft.com/iotedge/opc-publisher:latest
@@ -180,9 +180,9 @@ De eenvoudigste manier om de modules op een Azure IoT Edge gateway-apparaat te i
 
 1. Installeer [hier](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)de nieuwste versie van de [Azure-opdracht regel interface (AZ)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) .
 
-### <a name="quickstart"></a>Snelstartgids
+### <a name="quickstart"></a>Snelstart
 
-1. Sla het bovenstaande implementatie manifest op in `deployment.json` een bestand.  
+1. Sla het bovenstaande implementatie manifest op in een `deployment.json` bestand.  
 
 2. Gebruik de volgende opdracht om de configuratie toe te passen op een IoT Edge apparaat:
 

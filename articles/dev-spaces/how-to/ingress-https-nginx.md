@@ -4,12 +4,12 @@ services: azure-dev-spaces
 ms.date: 12/10/2019
 ms.topic: conceptual
 description: Meer informatie over het configureren van Azure dev Spaces voor het gebruik van een aangepaste NGINX ingress-controller en het configureren van HTTPS met deze ingangs controller
-keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s
 ms.openlocfilehash: 0fe9fec263b72ac06839b58fdc5b0142a724718c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80155444"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Een aangepaste NGINX ingangs controller gebruiken en HTTPS configureren
@@ -27,7 +27,7 @@ In dit artikel leest u hoe u Azure dev Spaces configureert voor het gebruik van 
 
 ## <a name="configure-a-custom-nginx-ingress-controller"></a>Een aangepaste NGINX ingress-controller configureren
 
-Maak verbinding met uw cluster met behulp van [kubectl][kubectl], de Kubernetes-opdracht regel-client. Gebruik de opdracht [az aks get-credentials][az-aks-get-credentials] om `kubectl` te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. Bij deze opdracht worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties.
+Maak verbinding met uw cluster met behulp van [kubectl][kubectl], de Kubernetes-opdracht regel-client. Gebruik de opdracht [az aks get-credentials][az-aks-get-credentials] om `kubectl` zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. Bij deze opdracht worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties.
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKS
@@ -47,7 +47,7 @@ Voeg de [officiële stabiele helm-opslag plaats][helm-stable-repo]toe, die de he
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 
-Maak een Kubernetes-naam ruimte voor de NGINX ingangs controller en Installeer `helm`deze met behulp van.
+Maak een Kubernetes-naam ruimte voor de NGINX ingangs controller en installeer deze met behulp van `helm` .
 
 ```console
 kubectl create ns nginx
@@ -55,7 +55,7 @@ helm install nginx stable/nginx-ingress --namespace nginx --version 1.27.0
 ```
 
 > [!NOTE]
-> In het bovenstaande voor beeld wordt een openbaar eind punt gemaakt voor uw ingangs controller. Als u in plaats daarvan een persoonlijk eind punt voor uw ingangs controller moet gebruiken, voegt u de *--set controller. service. annotaties toe. service\\. beta\\. kubernetes\\. io/Azure-Load-Balancer-internal "= True* para meter voor de *installatie opdracht helm* . Bijvoorbeeld:
+> In het bovenstaande voor beeld wordt een openbaar eind punt gemaakt voor uw ingangs controller. Als u in plaats daarvan een persoonlijk eind punt voor uw ingangs controller moet gebruiken, voegt u de *--set controller. service. annotaties toe. service \\ . beta \\ . kubernetes \\ . io/Azure-Load-Balancer-internal "= True* para meter voor de *installatie opdracht helm* . Bijvoorbeeld:
 > ```console
 > helm install nginx stable/nginx-ingress --namespace nginx --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.27.0
 > ```
@@ -100,7 +100,7 @@ Open [Values. yaml][values-yaml] en voer de volgende updates uit:
 * Alle exemplaren van *<REPLACE_ME_WITH_HOST_SUFFIX>* vervangen door *nginx. MY_CUSTOM_DOMAIN* uw domein gebruiken voor *MY_CUSTOM_DOMAIN*. 
 * Vervang *kubernetes.io/ingress.class: traefik-azds # dev Spaces-specifiek* met *kubernetes.io/ingress.class: nginx # aangepaste*inkomend verkeer. 
 
-Hieronder ziet u een voor beeld van `values.yaml` een bijgewerkt bestand:
+Hieronder ziet u een voor beeld van een bijgewerkt `values.yaml` bestand:
 
 ```yaml
 # This is a YAML-formatted file.
@@ -123,13 +123,13 @@ gateway:
 
 Sla de wijzigingen op en sluit het bestand.
 
-Maak de *ontwikkelings* ruimte met uw voorbeeld toepassing `azds space select`met behulp van.
+Maak de *ontwikkelings* ruimte met uw voorbeeld toepassing met behulp van `azds space select` .
 
 ```console
 azds space select -n dev -y
 ```
 
-Implementeer de voorbeeld toepassing met `helm install`behulp van.
+Implementeer de voorbeeld toepassing met behulp van `helm install` .
 
 ```console
 helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
@@ -137,13 +137,13 @@ helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
 
 In het bovenstaande voor beeld wordt de voorbeeld toepassing geïmplementeerd in de naam ruimte voor *ontwikkel aars* .
 
-De Url's weer geven voor toegang tot de voorbeeld `azds list-uris`toepassing met behulp van.
+De Url's weer geven voor toegang tot de voorbeeld toepassing met behulp van `azds list-uris` .
 
 ```console
 azds list-uris
 ```
 
-In de onderstaande uitvoer ziet u de voor `azds list-uris`beeld-url's van.
+In de onderstaande uitvoer ziet u de voor beeld-Url's van `azds list-uris` .
 
 ```console
 Uri                                                  Status
@@ -152,7 +152,7 @@ http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/  Available
 http://dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Ga naar de *bikesharingweb* -service door de open bare URL te `azds list-uris` openen via de opdracht. In het bovenstaande voor beeld is `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/`de open bare URL voor de *bikesharingweb* -service.
+Ga naar de *bikesharingweb* -service door de open bare URL te openen via de `azds list-uris` opdracht. In het bovenstaande voor beeld is de open bare URL voor de *bikesharingweb* -service `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` .
 
 > [!NOTE]
 > Als er een fout pagina wordt weer geven in plaats van de *bikesharingweb* -service, controleert u of u **zowel** de *kubernetes.io/ingress.class* aantekening als de host in het bestand *Values. yaml* hebt bijgewerkt.
@@ -164,7 +164,7 @@ azds space select -n dev/azureuser1 -y
 azds list-uris
 ```
 
-De onderstaande uitvoer toont de voor beeld- `azds list-uris` url's van om toegang te krijgen tot de voorbeeld toepassing in de *azureuser1* onderliggende ontwikkel ruimte.
+De onderstaande uitvoer toont de voor beeld-Url's van `azds list-uris` om toegang te krijgen tot de voorbeeld toepassing in de *azureuser1* onderliggende ontwikkel ruimte.
 
 ```console
 Uri                                                  Status
@@ -173,7 +173,7 @@ http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/  Available
 http://azureuser1.s.dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Ga naar de *bikesharingweb* -service in de *azureuser1* -onderliggende ontwikkel ruimte door de open bare URL `azds list-uris` te openen via de opdracht. In het bovenstaande voor beeld is `http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/`de open bare URL voor de *bikesharingweb* -service in de *azureuser1* -ruimte voor de onderliggende ontwikkel aars.
+Ga naar de *bikesharingweb* -service in de *azureuser1* -onderliggende ontwikkel ruimte door de open bare URL te openen via de `azds list-uris` opdracht. In het bovenstaande voor beeld is de open bare URL voor de *bikesharingweb* -service in de *azureuser1* -ruimte voor de onderliggende ontwikkel aars `http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` .
 
 ## <a name="configure-the-nginx-ingress-controller-to-use-https"></a>De NGINX ingress-controller configureren voor het gebruik van HTTPS
 
@@ -209,13 +209,13 @@ spec:
 > [!NOTE]
 > Voor het testen kunt u ook een [staging-server][letsencrypt-staging-issuer] gebruiken voor uw *ClusterIssuer*.
 
-Gebruiken `kubectl` om toe `letsencrypt-clusterissuer.yaml`te passen.
+Gebruiken `kubectl` om toe te passen `letsencrypt-clusterissuer.yaml` .
 
 ```console
 kubectl apply -f letsencrypt-clusterissuer.yaml --namespace nginx
 ```
 
-Update [Values. yaml][values-yaml] om de Details voor het gebruik van *CERT-beheer* en HTTPS op te neemt. Hieronder ziet u een voor beeld van `values.yaml` een bijgewerkt bestand:
+Update [Values. yaml][values-yaml] om de Details voor het gebruik van *CERT-beheer* en HTTPS op te neemt. Hieronder ziet u een voor beeld van een bijgewerkt `values.yaml` bestand:
 
 ```yaml
 # This is a YAML-formatted file.
@@ -246,7 +246,7 @@ gateway:
       secretName: dev-gateway-secret
 ```
 
-Voer een upgrade uit voor `helm`de voorbeeld toepassing met:
+Voer een upgrade uit voor de voorbeeld toepassing met `helm` :
 
 ```console
 helm upgrade bikesharingsampleapp . --namespace dev --atomic
@@ -276,7 +276,7 @@ U kunt deze fout oplossen door [BikeSharingWeb/azds. yaml][azds-yaml] zoals hier
 ...
 ```
 
-Werk [BikeSharingWeb/package. json][package-json] bij met een afhankelijkheid van het *URL* -pakket.
+[BikeSharingWeb/package.js][package-json] bijwerken met een afhankelijkheid van het *URL* -pakket.
 
 ```json
 {
@@ -288,7 +288,7 @@ Werk [BikeSharingWeb/package. json][package-json] bij met een afhankelijkheid va
 ...
 ```
 
-Werk de methode *getApiHostAsync* in [BikeSharingWeb/lib/helpers. js][helpers-js] bij om HTTPS te gebruiken:
+Werk de methode *getApiHostAsync* in [BikeSharingWeb/lib/helpers.js][helpers-js] bij voor het gebruik van https:
 
 ```javascript
 ...

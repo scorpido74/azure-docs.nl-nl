@@ -7,23 +7,23 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 02ce6b00b6555f849d162b9f3b381c0ab358d712
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79532838"
 ---
 # <a name="application-development-overview-for-azure-database-for-mysql"></a>Overzicht van toepassings ontwikkeling voor Azure Database for MySQL 
 In dit artikel worden ontwerp overwegingen beschreven die een ontwikkelaar moet volgen bij het schrijven van toepassings code om verbinding te maken met Azure Database for MySQL. 
 
 > [!TIP]
-> Zie [uw eerste Azure database for MySQL data base ontwerpen](tutorial-design-database-using-portal.md) voor een zelf studie waarin wordt beschreven hoe u een server maakt, een firewall op de server maakt, eigenschappen van de server bekijkt, een Data Base maakt en verbinding maakt met behulp van Workbench en MySQL. exe.
+> Voor een zelf studie waarin wordt beschreven hoe u een server maakt, een server-gebaseerde firewall maakt, eigenschappen van de server bekijkt, een Data Base maakt en verbinding maakt met behulp van Workbench en mysql.exe, raadpleegt u [uw eerste Azure database for MySQL-data base ontwerpen](tutorial-design-database-using-portal.md)
 
 ## <a name="language-and-platform"></a>Taal en platform
 Er zijn codevoorbeelden beschikbaar voor verschillende programmeertalen en platforms. U vindt koppelingen naar de code voorbeelden op: [connectiviteits bibliotheken die worden gebruikt om verbinding te maken met Azure database for MySQL](concepts-connection-libraries.md)
 
 ## <a name="tools"></a>Hulpprogramma's
-Azure Database for MySQL maakt gebruik van de MySQL-Community-versie die compatibel is met de algemene beheer hulpprogramma's van MySQL, zoals Workbench of MySQL-hulpprogram ma's zoals MySQL. exe, [phpMyAdmin](https://www.phpmyadmin.net/), [Navicat](https://www.navicat.com/products/navicat-for-mysql)en anderen. U kunt ook de Azure Portal, Azure CLI en REST-Api's gebruiken om te communiceren met de database service.
+Azure Database for MySQL maakt gebruik van de MySQL-Community-versie die compatibel is met de algemene beheer hulpprogramma's van MySQL, zoals Workbench of MySQL-hulpprogram ma's zoals mysql.exe, [phpMyAdmin](https://www.phpmyadmin.net/), [Navicat](https://www.navicat.com/products/navicat-for-mysql)en anderen. U kunt ook de Azure Portal, Azure CLI en REST-Api's gebruiken om te communiceren met de database service.
 
 ## <a name="resource-limitations"></a>Resourcebeperkingen
 Azure Database for MySQL beheert de bronnen die beschikbaar zijn voor een server met behulp van twee verschillende mechanismen: 

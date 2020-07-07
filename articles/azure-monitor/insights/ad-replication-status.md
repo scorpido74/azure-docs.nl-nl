@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
 ms.openlocfilehash: 30b0c7c87f6d55586b931be1445b175ce58565d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80055906"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Active Directory replicatie status controleren met Azure Monitor
@@ -41,10 +41,10 @@ Als u niet rechtstreeks verbinding wilt maken met een van uw domein controllers 
 
 1. Controleer of de computer lid is van het domein dat u wilt bewaken met behulp van de AD-replicatiestatus-oplossing.
 2. [Verbind de Windows-computer met Azure monitor](../../azure-monitor/platform/om-agents.md) of [Maak verbinding met uw bestaande Operations Manager omgeving om Azure monitor](../../azure-monitor/platform/om-agents.md)als deze nog niet is verbonden.
-3. Stel op die computer de volgende register sleutel in:<br>Sleutel: **HKEY_LOCAL_MACHINE \System\currentcontrolset\services\healthservice\parameters\management groups\<ManagementGroupName> \solutions\adreplication**<br>Waarde: **IsTarget**<br>Waardegegevens: **True**
+3. Stel op die computer de volgende register sleutel in:<br>Sleutel: **HKEY_LOCAL_MACHINE \System\currentcontrolset\services\healthservice\parameters\management groups \<ManagementGroupName> \Solutions\ADReplication**<br>Waarde: **IsTarget**<br>Waardegegevens: **True**
 
    > [!NOTE]
-   > Deze wijzigingen worden pas van kracht nadat u de micro soft Monitoring Agent-service (HealthService. exe) opnieuw hebt gestart.
+   > Deze wijzigingen worden pas van kracht nadat u de micro soft Monitoring Agent-service (HealthService.exe) opnieuw hebt gestart.
    > ### <a name="install-solution"></a>Oplossing installeren
    > Volg het proces dat wordt beschreven in [een bewakings oplossing installeren](solutions.md#install-a-monitoring-solution) om de **Active Directory-replicatiestatus** oplossing toe te voegen aan uw log Analytics-werk ruimte. Er is geen verdere configuratie nodig.
 
@@ -135,7 +135,7 @@ A: Nee, er moet slechts één domein controller worden toegevoegd. Als u meerder
 A: Ja. U kunt de waarde van een register sleutel instellen om deze in te scha kelen. Zie [niet-domein controller inschakelen](#enable-non-domain-controller).
 
 **V: wat is de naam van het proces dat het verzamelen van gegevens doet?**
-A: AdvisorAssessment. exe
+A: AdvisorAssessment.exe
 
 **V: hoe lang duurt het voordat gegevens worden verzameld?**
 A: de tijd voor het verzamelen van gegevens is afhankelijk van de grootte van de Active Directory omgeving, maar duurt meestal minder dan 15 minuten.

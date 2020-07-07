@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: 501ca51a9542229a14e98a56679837950a82891e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80258291"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>De oplossings versneller voor externe controle implementeren met behulp van de CLI
@@ -25,7 +25,7 @@ Voor het implementeren van de oplossings versneller voor externe controle hebt u
 
 Als u geen account hebt, kunt u binnen een paar minuten een account voor de gratis proefversie maken. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie.
 
-Als u de CLI wilt uitvoeren, moet [node. js](https://nodejs.org/) op uw lokale computer zijn geïnstalleerd.
+Als u de CLI wilt uitvoeren, moet [Node.js](https://nodejs.org/) op uw lokale computer zijn geïnstalleerd.
 
 ## <a name="install-the-cli"></a>De CLI installeren
 
@@ -103,7 +103,7 @@ Bij een standaard implementatie worden de volgende services in uw Azure-abonneme
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 eenheid              | Opslag voor berichten gegevens en maakt diep gaande telemetrie-analyse mogelijk |
 
 > [!NOTE]
-> U kunt de prijs informatie voor deze services vinden [https://azure.microsoft.com/pricing](https://azure.microsoft.com/pricing)op. U kunt het gebruik en de facturerings gegevens voor uw abonnement vinden in [Azure Portal](https://portal.azure.com/).
+> U kunt de prijs informatie voor deze services vinden op [https://azure.microsoft.com/pricing](https://azure.microsoft.com/pricing) . U kunt het gebruik en de facturerings gegevens voor uw abonnement vinden in [Azure Portal](https://portal.azure.com/).
 
 ## <a name="deploy-the-solution-accelerator"></a>De oplossingsversnellers implementeren
 
@@ -134,7 +134,7 @@ Wanneer u de `pcs` opdracht uitvoert om een oplossing te implementeren, wordt u 
 - Een locatie.
 - Referenties voor de virtuele machines die fungeren als host voor de micro Services. U kunt deze referenties gebruiken om toegang te krijgen tot de virtuele machines om problemen op te lossen.
 
-Wanneer de `pcs` opdracht is voltooid, wordt de URL van uw nieuwe oplossings versneller weer gegeven. Met `pcs` deze opdracht wordt ook een `{deployment-name}-output.json` bestand gemaakt dat informatie bevat, zoals de naam van de IOT hub die het heeft gemaakt.
+Wanneer de `pcs` opdracht is voltooid, wordt de URL van uw nieuwe oplossings versneller weer gegeven. Met deze `pcs` opdracht wordt ook een bestand gemaakt `{deployment-name}-output.json` dat informatie bevat, zoals de naam van de IOT hub die het heeft gemaakt.
 
 Voer het volgende uit voor meer informatie over de opdracht regel parameters:
 

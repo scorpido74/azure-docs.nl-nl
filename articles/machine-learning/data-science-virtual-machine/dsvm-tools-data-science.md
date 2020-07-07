@@ -11,10 +11,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: c414087270558e21340e50114c0563ff7e50064c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80282304"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Machine learning-en data Science-hulpprogram ma's op Azure data Science Virtual Machines
@@ -32,9 +32,9 @@ Zie de volledige referentie voor de [Azure machine learning SDK voor python](htt
 | Ondersteunde versies     | Windows (Conda-omgeving: AzureML), Linux (Conda-omgeving: py36)    |
 | Typische toepassingen      | Algemeen machine learning-platform      |
 | Hoe wordt het geconfigureerd of geïnstalleerd?      |  Geïnstalleerd met GPU-ondersteuning   |
-| Het gebruik of uitvoeren van het programma      | Als een python-SDK en in de Azure CLI. Activeer de Conda-omgeving `AzureML` op de Windows-editie `py36` *of* op de Linux-editie.      |
-| Koppeling naar voor beelden      | Voor beelden van Jupyter-notebooks `AzureML` zijn opgenomen in de directory onder notebooks.  |
-| Gerelateerde hulpprogram ma's      | Visual Studio code, Jupyter   |
+| Het gebruik of uitvoeren van het programma      | Als een python-SDK en in de Azure CLI. Activeer de Conda-omgeving `AzureML` op de Windows-editie *of* op de `py36` Linux-editie.      |
+| Koppeling naar voor beelden      | Voor beelden van Jupyter-notebooks zijn opgenomen in de `AzureML` Directory onder notebooks.  |
+| Verwante hulpprogramma's      | Visual Studio code, Jupyter   |
 
 ## <a name="h2o"></a>H2O
 
@@ -43,10 +43,10 @@ Zie de volledige referentie voor de [Azure machine learning SDK voor python](htt
 | Wat is het?   | Een open-source AI-platform dat ondersteuning biedt voor in-Memory, gedistribueerde, snelle en schaal bare machine learning.  |
 | Ondersteunde versies      | Linux   |
 | Typische toepassingen      | Gedistribueerde, schaal bare machine learning voor algemeen gebruik   |
-| Hoe wordt het geconfigureerd of geïnstalleerd?      | H2O is geïnstalleerd in `/dsvm/tools/h2o`.      |
-| Het gebruik of uitvoeren van het programma      | Maak verbinding met de virtuele machine met behulp van X2Go. Start een nieuwe terminal en voer uit `java -jar /dsvm/tools/h2o/current/h2o.jar`. Start vervolgens een webbrowser en maak verbinding met `http://localhost:54321`.      |
-| Koppeling naar voor beelden      | Voor beelden zijn beschikbaar op de virtuele machine in Jupyter `h2o` in de Directory.      |
-| Gerelateerde hulpprogram ma's      | Apache Spark, MXNet, XGBoost, mousserend water, diep water    |
+| Hoe wordt het geconfigureerd of geïnstalleerd?      | H2O is geïnstalleerd in `/dsvm/tools/h2o` .      |
+| Het gebruik of uitvoeren van het programma      | Maak verbinding met de virtuele machine met behulp van X2Go. Start een nieuwe terminal en voer uit `java -jar /dsvm/tools/h2o/current/h2o.jar` . Start vervolgens een webbrowser en maak verbinding met `http://localhost:54321` .      |
+| Koppeling naar voor beelden      | Voor beelden zijn beschikbaar op de virtuele machine in Jupyter in de `h2o` Directory.      |
+| Verwante hulpprogramma's      | Apache Spark, MXNet, XGBoost, mousserend water, diep water    |
 
 Er zijn verschillende andere machine learning-bibliotheken op Dsvm, zoals het populaire `scikit-learn` pakket dat deel uitmaakt van de Anaconda python-distributie voor dsvm. Als u de lijst met beschik bare pakketten in Python, R en Julia wilt bekijken, voert u de respectieve pakket beheerders uit.
 
@@ -57,9 +57,9 @@ Er zijn verschillende andere machine learning-bibliotheken op Dsvm, zoals het po
 | Wat is het?   | Een snel, gedistribueerd verloop van de kleur overgang-Boosting (GBDT, GBRT, GBM of MART Framework) op basis van de beslissings structuur-algoritmen. Dit wordt gebruikt voor classificatie, classificatie en veel andere taken voor machine learning.    |
 | Ondersteunde versies      | Windows, Linux    |
 | Typische toepassingen      | Algemeen gebruik van kleur overgang-Boosting Framework      |
-| Hoe wordt het geconfigureerd of geïnstalleerd?      | In Windows wordt LightGBM geïnstalleerd als een python-pakket. Op Linux is het opdracht regel programma in `/opt/LightGBM/lightgbm`, het R-pakket geïnstalleerd en Python-pakketten zijn geïnstalleerd.     |
+| Hoe wordt het geconfigureerd of geïnstalleerd?      | In Windows wordt LightGBM geïnstalleerd als een python-pakket. Op Linux is het opdracht regel programma in `/opt/LightGBM/lightgbm` , het R-pakket geïnstalleerd en Python-pakketten zijn geïnstalleerd.     |
 | Koppeling naar voor beelden      | [LightGBM-hand leiding](https://github.com/Microsoft/LightGBM/tree/master/examples/python-guide)   |
-| Gerelateerde hulpprogram ma's      | MXNet, XgBoost  |
+| Verwante hulpprogramma's      | MXNet, XgBoost  |
 
 ## <a name="rattle"></a>Rattle
 |    |           |
@@ -67,9 +67,9 @@ Er zijn verschillende andere machine learning-bibliotheken op Dsvm, zoals het po
 | Wat is het?   |   Een Graphical User Interface voor gegevens analyse met behulp van R.   |
 | Ondersteunde versies     | Windows, Linux     |
 | Typische toepassingen      | Algemeen UI-hulp programma voor gegevens analyse voor R    |
-| Het gebruik of uitvoeren van het programma      | Als een hulp programma voor de gebruikers interface. Start in Windows een opdracht prompt, voer R uit en voer `rattle()`vervolgens in r uit. Op Linux maakt u verbinding met X2Go, start u een Terminal, voert u R uit en voert u `rattle()`vervolgens in r uit. |
+| Het gebruik of uitvoeren van het programma      | Als een hulp programma voor de gebruikers interface. Start in Windows een opdracht prompt, voer R uit en voer vervolgens in R uit `rattle()` . Op Linux maakt u verbinding met X2Go, start u een Terminal, voert u R uit en voert u vervolgens in R uit `rattle()` . |
 | Koppeling naar voor beelden      | [Rattle](https://togaware.com/onepager/) |
-| Gerelateerde hulpprogram ma's      |LightGBM, Fridge, XGBoost   |
+| Verwante hulpprogramma's      |LightGBM, Fridge, XGBoost   |
 
 ## <a name="vowpal-wabbit"></a>Vowpal Wabbit
 |    |           |
@@ -78,9 +78,9 @@ Er zijn verschillende andere machine learning-bibliotheken op Dsvm, zoals het po
 | Ondersteunde versies     | Windows, Linux     |
 | Typische toepassingen      | Algemene machine-learning-bibliotheek      |
 | Hoe wordt het geconfigureerd of geïnstalleerd?      |  Windows: MSI-installatie programma<br/>Linux: apt-get |
-| Het gebruik of uitvoeren van het programma      | Als een opdracht regel programma op het pad (`C:\Program Files\VowpalWabbit\vw.exe` in Windows `/usr/bin/vw` op Linux)    |
+| Het gebruik of uitvoeren van het programma      | Als een opdracht regel programma op het pad (in `C:\Program Files\VowpalWabbit\vw.exe` Windows `/usr/bin/vw` op Linux)    |
 | Koppeling naar voor beelden      | [VowPal Wabbit-voor beelden](https://github.com/JohnLangford/vowpal_wabbit/wiki/Examples) |
-| Gerelateerde hulpprogram ma's      |LightGBM, MXNet, XGBoost   |
+| Verwante hulpprogramma's      |LightGBM, MXNet, XGBoost   |
 
 
 ## <a name="weka"></a>Weka
@@ -89,9 +89,9 @@ Er zijn verschillende andere machine learning-bibliotheken op Dsvm, zoals het po
 | Wat is het?   |  Een verzameling machine learning-algoritmen voor gegevens analyse taken. De algoritmen kunnen rechtstreeks worden toegepast op een gegevensset of worden aangeroepen vanuit uw eigen Java-code. Fridge bevat hulpprogram ma's voor het vooraf verwerken van gegevens, classificatie, regressie, Clustering, koppelings regels en visualisatie. |
 | Ondersteunde versies     | Windows, Linux     |
 | Typische toepassingen      | Algemeen hulp programma voor machine learning     |
-| Het gebruik of uitvoeren van het programma      | Zoek in Windows naar Fridge in het menu **Start** . Meld u aan bij Linux met X2Go en ga vervolgens naar **toepassingen** > **Development** > **Fridge**. |
+| Het gebruik of uitvoeren van het programma      | Zoek in Windows naar Fridge in het menu **Start** . Meld u aan bij Linux met X2Go en ga vervolgens naar **toepassingen**  >  **Development**  >  **Fridge**. |
 | Koppeling naar voor beelden      | [Fridge-voor beelden](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
-| Gerelateerde hulpprogram ma's      |LightGBM, Rattle, XGBoost   |
+| Verwante hulpprogramma's      |LightGBM, Rattle, XGBoost   |
 
 ## <a name="xgboost"></a>XGBoost 
 |    |           |
@@ -100,16 +100,16 @@ Er zijn verschillende andere machine learning-bibliotheken op Dsvm, zoals het po
 | Ondersteunde versies     | Windows, Linux     |
 | Typische toepassingen      | Algemene machine-learning-bibliotheek      |
 | Hoe wordt het geconfigureerd of geïnstalleerd?      |  Geïnstalleerd met GPU-ondersteuning   |
-| Het gebruik of uitvoeren van het programma      | Als een python-bibliotheek (2,7 en 3,5), R-pakket en het opdracht regel programma op het pad`C:\dsvm\tools\xgboost\bin\xgboost.exe` (voor Windows `/dsvm/tools/xgboost/xgboost` en voor Linux)    |
-| Koppelingen naar voor beelden      | Voor beelden zijn beschikbaar op de virtuele machine `/dsvm/tools/xgboost/demo` , in op Linux `C:\dsvm\tools\xgboost\demo` en in Windows.   |
-| Gerelateerde hulpprogram ma's      | LightGBM, MXNet   |
+| Het gebruik of uitvoeren van het programma      | Als een python-bibliotheek (2,7 en 3,5), R-pakket en het opdracht regel programma op het pad ( `C:\dsvm\tools\xgboost\bin\xgboost.exe` voor Windows en `/dsvm/tools/xgboost/xgboost` voor Linux)    |
+| Koppelingen naar voor beelden      | Voor beelden zijn beschikbaar op de virtuele machine, in `/dsvm/tools/xgboost/demo` op Linux en in `C:\dsvm\tools\xgboost\demo` Windows.   |
+| Verwante hulpprogramma's      | LightGBM, MXNet   |
 
 ## <a name="apache-drill"></a>Apache Drill
 |    |           |
 | ------------- | ------------- |
 | Wat is het?   | Open-Source SQL-query-engine op big data    |
 | Ondersteunde DSVM-versies      | Windows 2019, Linux  |
-| Hoe wordt het geconfigureerd en geïnstalleerd op de DSVM?      |  Alleen geïnstalleerd `/dsvm/tools/drill*` in de Inge sloten modus   |
+| Hoe wordt het geconfigureerd en geïnstalleerd op de DSVM?      |  Alleen geïnstalleerd in de `/dsvm/tools/drill*` Inge sloten modus   |
 | Typische toepassingen      |  Voor in-place gegevens onderzoek zonder extra heren, transformeren, laden (ETL). Query's uitvoeren op verschillende gegevens bronnen en indelingen, waaronder CSV, JSON, relationele tabellen en Hadoop.     |
 | Hoe gebruiken en uitvoeren      | Snelkoppeling bureau blad  <br/> [Aan de slag met boren in 10 minuten](https://drill.apache.org/docs/drill-in-10-minutes/)  |
 | Gerelateerde hulpprogram ma's op de DSVM      |   Rattle, Fridge, SQL Server Management Studio      |

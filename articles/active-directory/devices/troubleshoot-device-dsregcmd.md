@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2cd782cdab625934fe60617142e5ac0baf756398
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80128761"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Problemen met apparaten oplossen met behulp van de dsregcmd-opdracht
@@ -29,7 +29,7 @@ In deze sectie vindt u de para meters voor de status van de apparaten. In de vol
 | AzureAdJoined | EnterpriseJoined | DomainJoined | Apparaatstatus |
 | ---   | ---   | ---   | ---   |
 | JA | NO | NO | Toegevoegd aan Azure AD |
-| NO | NO | JA | Lid van domein |
+| NO | NO | JA | Domein toegevoegd |
 | JA | NO | JA | Lid van hybride AD |
 | NO | JA | JA | On-premises DRS toegevoegd |
 
@@ -136,7 +136,7 @@ In deze sectie vindt u de status van de verschillende kenmerken van de gebruiker
 - **WorkplaceJoined:** -stel deze waarde in op Ja als er geregistreerde Azure AD-accounts zijn toegevoegd aan het apparaat in de huidige Ntuser-context.
 - **WamDefaultSet:** -stel deze waarde in op Ja als er een WAM-standaard webaccount is gemaakt voor de aangemelde gebruiker. Dit veld kan een fout weer geven als dsreg/status wordt uitgevoerd vanaf een opdracht prompt met verhoogde bevoegdheid. 
 - **WamDefaultAuthority:** -ingesteld op ' organisaties ' voor Azure AD.
-- **WamDefaultId:** -alwayshttps://login.microsoft.com"" voor Azure AD.
+- **WamDefaultId:** -always " https://login.microsoft.com " voor Azure AD.
 - **WamDefaultGUID:** -de GUID van de WAM-provider (Azure AD/Microsoft-account) voor het standaard WAM-webaccount. 
 
 ### <a name="sample-user-state-output"></a>Voorbeeld uitvoer van gebruikers status

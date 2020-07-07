@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: 0e161cf83662df671b8cfb100ddc12c3b3e7359f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80158143"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Azure IoT Central uitbreiden met aangepaste regels met behulp van Stream Analytics, Azure Functions en SendGrid
@@ -34,7 +34,7 @@ In deze hand leiding leert u het volgende:
 
 Als u de stappen in deze hand leiding wilt uitvoeren, hebt u een actief Azure-abonnement nodig.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ### <a name="iot-central-application"></a>IoT Central toepassing
 
@@ -90,7 +90,7 @@ Gebruik de [Azure Portal om een functie-app te maken](https://portal.azure.com/#
 
 | Instelling | Waarde |
 | ------- | ----- |
-| Naam van app    | De naam van de functie-app kiezen |
+| App-naam    | De naam van de functie-app kiezen |
 | Abonnement | Uw abonnement |
 | Resourcegroep | DetectStoppedDevices |
 | OS | Windows |
@@ -144,7 +144,7 @@ De functie-app heeft een SendGrid API-sleutel nodig om e-mail berichten te verze
 Deze oplossing maakt gebruik van een Azure Functions-app om een e-mail bericht te verzenden wanneer de Stream Analytics-taak een gestopt apparaat detecteert. De functie-app maken:
 
 1. Ga in het Azure Portal naar de **app service** instantie in de resource groep **DetectStoppedDevices** .
-1. Selecteer **+** deze optie om een nieuwe functie te maken.
+1. Selecteer deze optie **+** om een nieuwe functie te maken.
 1. Kies op de pagina **een ontwikkel omgeving kiezen** de optie **in-portal** en selecteer vervolgens **door gaan**.
 1. Kies op de pagina **een functie maken** de optie **webhook + API** en selecteer vervolgens **maken**.
 
@@ -159,7 +159,7 @@ Als u e-mail berichten met SendGrid wilt verzenden, moet u de bindingen voor uw 
 1. Selecteer **integreren**, kies de uitvoer **http ($Return)** en selecteer vervolgens **verwijderen**.
 1. Kies **+ nieuwe uitvoer**, kies **SendGrid**en kies vervolgens **selecteren**. Kies **installeren** om de SendGrid-extensie te installeren.
 1. Wanneer de installatie is voltooid, selecteert **u functie retour waarde gebruiken**. Voeg een geldig **adres toe** aan om e-mail meldingen te ontvangen.  Voeg een geldig **afzender adres** toe voor gebruik als de afzender van het e-mail bericht.
-1. Selecteer **Nieuw** naast **SendGrid API Key app setting**. Voer **SendGridAPIKey** in als de sleutel en de SENDGRID-API-sleutel die u eerder hebt genoteerd als waarde. Selecteer vervolgens **maken**.
+1. Selecteer **Nieuw** naast **SendGrid API Key app setting**. Voer **SendGridAPIKey** in als de sleutel en de SENDGRID-API-sleutel die u eerder hebt genoteerd als waarde. Selecteer vervolgens **Maken**.
 1. Kies **Opslaan** om de SendGrid-bindingen voor uw functie op te slaan.
 
 De instellingen voor integreren zien eruit als in de volgende scherm afbeelding:
@@ -317,12 +317,12 @@ Ga op de website van [Azure IOT Central Application Manager](https://aka.ms/iotc
     | Instelling | Waarde |
     | ------- | ----- |
     | Weergavenaam | Exporteren naar Event Hubs |
-    | Ingeschakeld | Aan |
+    | Ingeschakeld | Uit |
     | Event Hubs-naamruimte | De naam van uw Event Hubs-naam ruimte |
     | Event Hub | centralexport |
-    | Metingen | Aan |
-    | Apparaten | Uit |
-    | Apparaatsjablonen | Uit |
+    | Metingen | Uit |
+    | Apparaten | Aan |
+    | Apparaatsjablonen | Aan |
 
 ![Configuratie continue gegevens export](media/howto-create-custom-rules/cde-configuration.png)
 

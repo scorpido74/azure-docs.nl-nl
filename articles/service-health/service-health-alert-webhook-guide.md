@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.service: service-health
 ms.date: 3/27/2018
 ms.openlocfilehash: 2609a267bd151354f83482ab16c4b9345aa88cc4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80062858"
 ---
 # <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>Een webhook gebruiken voor het configureren van status meldingen voor probleem beheersystemen
@@ -33,7 +33,7 @@ Als u uw eigen aangepaste integratie van webhook wilt instellen, moet u de JSON-
 
 Bekijk [een voor beeld van een nettolading voor](../azure-monitor/platform/activity-log-alerts-webhook.md) `ServiceHealth` webhooks.
 
-U kunt controleren of het een service status waarschuwing is door te kijken `context.eventSource == "ServiceHealth"`naar. De volgende eigenschappen zijn het meest relevant:
+U kunt controleren of het een service status waarschuwing is door te kijken naar `context.eventSource == "ServiceHealth"` . De volgende eigenschappen zijn het meest relevant:
 - **data. context. activityLog. status**
 - **data. context. activityLog. level**
 - **data. context. activityLog. subscriptionId**
@@ -46,17 +46,17 @@ U kunt controleren of het een service status waarschuwing is door te kijken `con
 ## <a name="create-a-link-to-the-service-health-dashboard-for-an-incident"></a>Een koppeling naar het dash board van Service Health maken voor een incident
 U kunt een directe koppeling naar uw Service Health dash board maken op een bureau blad of mobiel apparaat door een speciale URL te genereren. Gebruik de *trackingId* en de eerste drie en de laatste drie cijfers van uw *subscriptionId* met de volgende indeling:
 
-https<i></i>://app.Azure.com/h/*&lt;trackingId&gt;*/*eerste drie en laatste drie&gt; &lt;cijfers subscriptionId*
+https <i></i> ://app.Azure.com/h/* &lt; trackingId &gt; * / * &lt; eerste drie en laatste drie cijfers subscriptionId &gt; *
 
 Als uw *subscriptionId* bijvoorbeeld bba14129-e895-429b-8809-278e836ecdb3 is en uw *TRACKINGID* 0DET-Urb is, is uw service Health URL:
 
-https<i></i>://app.Azure.com/h/0DET-Urb/bbadb3
+https <i></i> ://app.Azure.com/h/0DET-Urb/bbadb3
 
 ## <a name="use-the-level-to-detect-the-severity-of-the-issue"></a>Het niveau gebruiken om de ernst van het probleem te detecteren
 Van laag tot hoogste urgentie kan de eigenschap **Level** in de payload *informatie*, *waarschuwing*, *fout*of *kritiek*zijn.
 
 ## <a name="parse-the-impacted-services-to-determine-the-incident-scope"></a>De betrokken Services parseren om het incident bereik te bepalen
-Service Health waarschuwingen kunnen u informeren over problemen in meerdere regio's en services. Als u meer informatie wilt, moet u de waarde van `impactedServices`weer parseren.
+Service Health waarschuwingen kunnen u informeren over problemen in meerdere regio's en services. Als u meer informatie wilt, moet u de waarde van weer parseren `impactedServices` .
 
 De inhoud die zich in bevindt, is een geescapede [JSON](https://json.org/) -teken reeks die, wanneer unesc, een ander JSON-object bevat dat regel matig kan worden geparseerd. Bijvoorbeeld:
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/09/2018
 ms.openlocfilehash: 96c64f6a0167b678f14bf0199069ecd6b4c8d57a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80055113"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Een gegevens pijplijn maken met de Data Collector-API
@@ -61,7 +61,7 @@ Logic Apps vandaag heeft geen ingebouwde mogelijkheden voor het eenvoudig transf
 In dit voor beeld parseren we een CSV-bestand, maar elk ander bestands type kunnen op dezelfde manier worden verwerkt. Wijzig het deserialisatie gedeelte van de Azure-functie om de juiste logica voor uw specifieke gegevens type weer te geven.
 
 1.  Maak een nieuwe Azure-functie met behulp van de functie runtime v1 en het verbruik, wanneer u hierom wordt gevraagd.  Selecteer de **http-trigger** sjabloon waarop C# is gericht als uitgangs punt waarmee uw bindingen worden geconfigureerd. 
-2.  Maak vanuit het tabblad **bestanden weer geven** in het rechterdeel venster een nieuw bestand met de naam **project. json** en plak de volgende code in NuGet-pakketten die worden gebruikt:
+2.  Maak een nieuw bestand met de naam **project.jsop** het tabblad **bestanden weer geven** in het rechterdeel venster en plak de volgende code in NuGet-pakketten die worden gebruikt:
 
     ![Azure Functions voorbeeld project](./media/create-pipeline-datacollector-api/functions-example-project-01.png)
     

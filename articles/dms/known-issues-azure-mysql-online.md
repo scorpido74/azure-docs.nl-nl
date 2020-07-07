@@ -15,10 +15,10 @@ ms.custom:
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 8c3de28ea934302086a5b14e61482e6a4ab9a7ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80235280"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Online migratie problemen & beperkingen voor Azure DB voor MySQL met Azure Database Migration Service
@@ -33,9 +33,9 @@ Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van MyS
   - MySQL-Community-editie
   - InnoDB-engine
 - Migratie van dezelfde versie. Het migreren van MySQL 5,6 naar Azure Database for MySQL 5,7 wordt niet ondersteund.
-- Binaire logboek registratie inschakelen in my. ini (Windows) of my. cnf (UNIX)
+- Binaire logboek registratie inschakelen in my.ini (Windows) of my. cnf (UNIX)
   - Stel Server_id in op een wille keurig getal dat groter is dan of gelijk is aan 1, bijvoorbeeld Server_id = 1 (alleen voor MySQL 5,6)
-  - Log-bin = \<pad> instellen (alleen voor MySQL 5,6)
+  - Log-bin instellen = \<path> (alleen voor MySQL 5,6)
   - Binlog_format instellen = rij
   - Expire_logs_days = 5 (alleen aanbevolen voor MySQL 5,6)
 - De gebruiker moet de rol ReplicationAdmin hebben.
@@ -93,7 +93,7 @@ Large Object LOB-kolommen zijn kolommen die groot kunnen worden uitgebreid. Voor
 
 Wanneer u probeert een online migratie uit te voeren vanaf AWS RDS MySQL naar Azure Database for MySQL, kunt u de volgende fouten tegen komen.
 
-- **Fout:** {0}De data base heeft een refererende sleutel (s) op het doel. Corrigeer het doel en start een nieuwe gegevensmigratie. Uitvoeren onder script op doel om de refererende sleutel (s) weer te geven
+- **Fout:** De Data Base {0} heeft een refererende sleutel (s) op het doel. Corrigeer het doel en start een nieuwe gegevensmigratie. Uitvoeren onder script op doel om de refererende sleutel (s) weer te geven
 
   **Beperking**: als u een refererende sleutel in uw schema hebt, zullen de initiële belasting en continue synchronisatie van de migratie mislukken.
   **Tijdelijke oplossing**: Voer het volgende script uit in MySQL Workbench om het neerzetten van refererende sleutel script uit te pakken en refererende-sleutel script toe te voegen:
@@ -102,7 +102,7 @@ Wanneer u probeert een online migratie uit te voeren vanaf AWS RDS MySQL naar Az
   SET group_concat_max_len = 8192; SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery FROM (SELECT KCU.REFERENCED_TABLE_SCHEMA as SchemaName, KCU.TABLE_NAME, KCU.COLUMN_NAME, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' DROP FOREIGN KEY ', KCU.CONSTRAINT_NAME) AS DropQuery, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' ADD CONSTRAINT ', KCU.CONSTRAINT_NAME, ' FOREIGN KEY (`', KCU.COLUMN_NAME, '`) REFERENCES `', KCU.REFERENCED_TABLE_NAME, '` (`', KCU.REFERENCED_COLUMN_NAME, '`) ON UPDATE ',RC.UPDATE_RULE, ' ON DELETE ',RC.DELETE_RULE) AS AddQuery FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU, information_schema.REFERENTIAL_CONSTRAINTS RC WHERE KCU.CONSTRAINT_NAME = RC.CONSTRAINT_NAME AND KCU.REFERENCED_TABLE_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA AND KCU.REFERENCED_TABLE_SCHEMA = 'SchemaName') Queries GROUP BY SchemaName;
   ```
 
-- **Fout:** {0}De data base bestaat niet op de server. Opgegeven MySQL-bronserver is hoofdlettergevoelig. Controleer de databasenaam.
+- **Fout:** De Data Base {0} bestaat niet op de server. Opgegeven MySQL-bronserver is hoofdlettergevoelig. Controleer de databasenaam.
 
   **Beperking**: bij het migreren van een MySQL-data base naar Azure met behulp van de opdracht regel interface (CLI), kunnen gebruikers deze fout aanraken. De service kan de data base niet vinden op de bron server, omdat u mogelijk een onjuiste database naam hebt opgegeven of omdat de data base niet aanwezig is op de vermelde server. Opmerking database namen zijn hoofdletter gevoelig.
 

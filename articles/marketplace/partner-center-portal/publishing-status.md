@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.openlocfilehash: 012a574887d9980e0c71c3af84ff70ca8d31312c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80275676"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Controleer de publicatie status van uw aanbieding voor commerciële Marketplace
@@ -25,7 +25,7 @@ Voor elke aanbieding moet een van de volgende status indicatoren worden weer geg
 | **Concept** | Het aanbod is gemaakt maar wordt niet gepubliceerd. |
 | **Publicatie wordt uitgevoerd** | De aanbieding/het plan werkt in de stappen van het publicatie proces. |
 | **Aandacht vereist** | Er is een kritiek probleem ontdekt tijdens de certificering door micro soft of een van de publicatie stappen. |
-| **Voorbeeld** | De aanbieding is gecertificeerd door micro soft en wacht nu op een definitieve verificatie door de uitgever. Selecteer Live gaan om de aanbieding Live te maken. |
+| **Preview** | De aanbieding is gecertificeerd door micro soft en wacht nu op een definitieve verificatie door de uitgever. Selecteer Live gaan om de aanbieding Live te maken. |
 | **Live** | De aanbieding is live op Marketplace en kan worden gezien en verworven door klanten. |
 | **Verkopen in behandeling voor stoppen** | De uitgever heeft ' stoppen met verkopen ' in de aanbieding of het abonnement geselecteerd, maar de actie is nog niet voltooid. |
 | **Niet beschikbaar in Marketplace** | Een eerder gepubliceerde aanbieding/plan in Marketplace is verwijderd. |

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
 ms.openlocfilehash: 45501fee9ae6ff47643a1ed197a07c4ba598e981
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80047733"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>IP-adressen van Azure API Management
@@ -61,7 +61,7 @@ In [meerdere regionale implementaties](api-management-howto-deploy-multi-region.
 
 Als uw API Management-service zich in een virtueel netwerk bevindt, heeft deze twee typen IP-adressen: openbaar en privé.
 
-Open bare IP-adressen worden gebruikt voor interne communicatie `3443` op poort-voor het beheren van de configuratie (bijvoorbeeld via Azure Resource Manager). In de externe VNet-configuratie worden ze ook gebruikt voor runtime-API-verkeer. Wanneer een aanvraag wordt verzonden van API Management naar een open bare back-end (Internet Facing), is een openbaar IP-adres zichtbaar als de oorsprong van de aanvraag.
+Open bare IP-adressen worden gebruikt voor interne communicatie op poort `3443` -voor het beheren van de configuratie (bijvoorbeeld via Azure Resource Manager). In de externe VNet-configuratie worden ze ook gebruikt voor runtime-API-verkeer. Wanneer een aanvraag wordt verzonden van API Management naar een open bare back-end (Internet Facing), is een openbaar IP-adres zichtbaar als de oorsprong van de aanvraag.
 
 Privé-IP-adressen (VIP), **alleen** beschikbaar in de [interne VNet-modus](api-management-using-with-internal-vnet.md), worden gebruikt om vanuit het netwerk verbinding te maken met API Management eind punten-gateways, de ontwikkelaars Portal en het beheer vlak voor directe API-toegang. U kunt deze gebruiken voor het instellen van DNS-records in het netwerk.
 

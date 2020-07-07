@@ -7,10 +7,10 @@ author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
 ms.openlocfilehash: 126cca9d3606b378e59e4f4e1c5b52d985d19d94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80055692"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Netwerkprestatiemeter oplossing: prestatie bewaking
@@ -94,7 +94,7 @@ Houd rekening met de volgende informatie voordat u een protocol kiest:
 
 Als u ervoor kiest om ICMP te gebruiken tijdens de implementatie, kunt u op elk gewenst moment overstappen op TCP door de standaard regel voor bewaking te bewerken.
 
-1. Ga naar de **netwerk prestatie** > **meter** > **Configure** > **monitor**configureren. Selecteer vervolgens **standaard regel**. 
+1. Ga naar de **netwerk prestatie**   >  **meter**   >  **Configure**   >  **monitor**configureren. Selecteer vervolgens **standaard regel**. 
 2. Ga naar de sectie **protocol** en selecteer het protocol dat u wilt gebruiken. 
 3. Selecteer **Opslaan** om de instelling toe te passen. 
 

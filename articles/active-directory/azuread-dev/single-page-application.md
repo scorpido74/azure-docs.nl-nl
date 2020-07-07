@@ -14,10 +14,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: adf3c5b5cd40a9ea3f07ba9c92cfc4544ca60f1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154743"
 ---
 # <a name="single-page-applications"></a>Toepassingen met één pagina
@@ -26,7 +26,7 @@ ms.locfileid: "80154743"
 
 Toepassingen met één pagina (SPAs) zijn doorgaans gestructureerd als een Java script-presentatielaag (front-end) die wordt uitgevoerd in de browser, en een web-API-back-end die wordt uitgevoerd op een server en die de bedrijfs logica van de toepassing implementeert. Zie [inzicht krijgen in de OAuth2 impliciete toekennings stroom in azure Active Directory](v1-oauth2-implicit-grant-flow.md)voor meer informatie over de impliciete autorisatie toekenning en om te bepalen of deze geschikt is voor uw toepassings scenario.
 
-Als de gebruiker zich aanmeldt in dit scenario, gebruikt de front-end Java script [Active Directory Authentication Library voor Java script (ADAL. JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js) en de impliciete autorisatie toekenning om een ID-token (id_token) van Azure ad te verkrijgen. Het token wordt in de cache opgeslagen en de client koppelt dit aan de aanvraag als het Bearer-token bij het aanroepen van de back-end van de Web-API, die wordt beveiligd met behulp van de OWIN-middleware.
+Als de gebruiker zich aanmeldt in dit scenario, gebruikt de front-end Java script [Active Directory Authentication Library voor Java script (ADAL.JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js) en de impliciete autorisatie toekenning om een id-token (id_token) te verkrijgen van Azure AD. Het token wordt in de cache opgeslagen en de client koppelt dit aan de aanvraag als het Bearer-token bij het aanroepen van de back-end van de Web-API, die wordt beveiligd met behulp van de OWIN-middleware.
 
 ## <a name="diagram"></a>Diagram
 
@@ -56,12 +56,12 @@ Nadat de toepassing is geregistreerd, moet deze worden geconfigureerd voor het g
 
 ## <a name="token-expiration"></a>Token verloop tijd
 
-Het gebruik van ADAL. js helpt bij het volgende:
+Met ADAL.js kunt u het volgende doen:
 
 * Een verlopen token vernieuwen
 * Een toegangs token aanvragen om een web-API-resource aan te roepen
 
-Na een geslaagde verificatie schrijft Azure AD een cookie in de browser van de gebruiker om een sessie tot stand te brengen. Houd er rekening mee dat de sessie bestaat tussen de gebruiker en Azure AD (niet tussen de gebruiker en de webtoepassing). Wanneer een token verloopt, gebruikt ADAL. js deze sessie om een melding te krijgen van een ander token. ADAL. js gebruikt een verborgen iFrame om de aanvraag te verzenden en te ontvangen via het OAuth-granting-protocol. ADAL. js kan dit mechanisme ook gebruiken voor het op de achtergrond verkrijgen van toegangs tokens voor andere web API-resources. de toepassing wordt aangeroepen zolang deze resources ondersteuning bieden voor het delen van meerdere oorsprong (CORS), worden geregistreerd in de map van de gebruiker en de vereiste toestemming is gegeven door de gebruiker tijdens het aanmelden.
+Na een geslaagde verificatie schrijft Azure AD een cookie in de browser van de gebruiker om een sessie tot stand te brengen. Houd er rekening mee dat de sessie bestaat tussen de gebruiker en Azure AD (niet tussen de gebruiker en de webtoepassing). Wanneer een token verloopt, ADAL.js deze sessie gebruiken om een andere token op de achtergrond te verkrijgen. ADAL.js gebruikt een verborgen iFrame om de aanvraag te verzenden en te ontvangen via het OAuth-granting-protocol. ADAL.js kan hetzelfde mechanisme ook gebruiken om toegangs tokens op de achtergrond te verkrijgen voor andere web API-resources. de toepassing wordt aangeroepen zolang deze resources ondersteuning bieden voor het delen van meerdere oorsprong (CORS), worden geregistreerd in de map van de gebruiker en de vereiste toestemming is gegeven door de gebruiker tijdens het aanmelden.
 
 ## <a name="next-steps"></a>Volgende stappen
 

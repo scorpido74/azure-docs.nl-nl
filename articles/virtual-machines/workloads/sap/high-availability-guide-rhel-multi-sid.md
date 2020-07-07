@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/24/2020
 ms.author: radeltch
 ms.openlocfilehash: 4f1bfd58e27f0cd677980ff9351d32d91a68e3e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80247432"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op Red Hat Enterprise Linux voor de multi-SID-hand leiding voor SAP-toepassingen
@@ -128,17 +128,17 @@ De volgende lijst bevat de configuratie van de (A) SCS-en ERS-load balancer voor
   * IP-adres voor NW3:10.3.1.54
 
 * Poorten testen
-  * Poort 620<strong>&lt;nr&gt;</strong>, daarom voor NW1-, NW2-en NW3-test poorten 620**00**, 620**10** en 620**20**
+  * Poort 620<strong> &lt; Nr &gt; </strong>, daarom voor NW1-, NW2-en NW3-test poorten 620**00**, 620**10** en 620**20**
 * Regels voor taak verdeling: Maak een regel voor elk exemplaar, dat wil zeggen, NW1/ASCS, NW2/ASCS en NW3/ASCS.
   * Als u Standard Load Balancer gebruikt, selecteert u **ha-poorten**
   * Als u basis Load Balancer gebruikt, maakt u regels voor taak verdeling voor de volgende poorten
-    * 32<strong>&lt;nr&gt; </strong> TCP
-    * 36<strong>&lt;nr&gt; </strong> TCP
-    * 39<strong>&lt;nr&gt; </strong> TCP
-    * 81<strong>&lt;nr&gt; </strong> TCP
-    * 5<strong>&lt;nr&gt;</strong>. 13 TCP
-    * 5<strong>&lt;nr&gt;</strong>. 14 TCP
-    * 5<strong>&lt;nr&gt;</strong>. 16 TCP
+    * 32<strong> &lt; Nr &gt; </strong> TCP
+    * 36<strong> &lt; Nr &gt; </strong> TCP
+    * 39<strong> &lt; Nr &gt; </strong> TCP
+    * 81<strong> &lt; Nr &gt; </strong> TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 13 TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 14 TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 16 TCP
 
 ### <a name="ers"></a>ERS
 
@@ -148,15 +148,15 @@ De volgende lijst bevat de configuratie van de (A) SCS-en ERS-load balancer voor
   * IP-adres voor NW3 10.3.1.55
 
 * Test poort
-  * Poort 621<strong>&lt;nr&gt;</strong>, daarom voor NW1-, NW2-en N3-test poorten 621**02**, 621**12** en 621**22**
+  * Poort 621<strong> &lt; Nr &gt; </strong>, daarom voor NW1-, NW2-en N3-test poorten 621**02**, 621**12** en 621**22**
 * Regels voor taak verdeling: Maak een regel voor elk exemplaar, dat wil zeggen, NW1/ERS, NW2/ERS en NW3/ERS.
   * Als u Standard Load Balancer gebruikt, selecteert u **ha-poorten**
   * Als u basis Load Balancer gebruikt, maakt u regels voor taak verdeling voor de volgende poorten
-    * 32<strong>&lt;nr&gt; </strong> TCP
-    * 33<strong>&lt;nr&gt; </strong> TCP
-    * 5<strong>&lt;nr&gt;</strong>. 13 TCP
-    * 5<strong>&lt;nr&gt;</strong>. 14 TCP
-    * 5<strong>&lt;nr&gt;</strong>. 16 TCP
+    * 32<strong> &lt; Nr &gt; </strong> TCP
+    * 33<strong> &lt; Nr &gt; </strong> TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 13 TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 14 TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 16 TCP
 
 * Back-end-configuratie
   * Verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van het (A) SCS/ERS-cluster
@@ -206,7 +206,7 @@ In deze documentatie wordt ervan uitgegaan dat:
 
 1. Voeg configuratie toe voor het zojuist geïmplementeerde systeem ( **NW2**, **NW3**) aan de bestaande Azure Load Balancer, gevolgd door de instructies om [Azure Load Balancer hand matig te implementeren via Azure Portal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#deploy-linux-manually-via-azure-portal). Pas de IP-adressen, de status test poorten en de taakverdelings regels voor uw configuratie aan.  
 
-2. **[A]** naam omzetting voor de extra SAP-systemen. U kunt de DNS-server gebruiken of `/etc/hosts` wijzigen op alle knoop punten. In dit voor beeld ziet u hoe `/etc/hosts` u het bestand gebruikt.  Pas de IP-adressen en de hostnamen aan uw omgeving aan. 
+2. **[A]** naam omzetting voor de extra SAP-systemen. U kunt de DNS-server gebruiken of wijzigen `/etc/hosts` op alle knoop punten. In dit voor beeld ziet u hoe u het `/etc/hosts` bestand gebruikt.  Pas de IP-adressen en de hostnamen aan uw omgeving aan. 
 
     ```
     sudo vi /etc/hosts
@@ -326,7 +326,7 @@ In deze documentatie wordt ervan uitgegaan dat:
 
    Zorg ervoor dat de cluster status OK is en dat alle resources worden gestart.  
 
-   Zorg er vervolgens voor dat de resources van de zojuist gemaakte ERS-groep worden uitgevoerd op het cluster knooppunt, tegengesteld aan het cluster knooppunt waar het ASCS-exemplaar voor hetzelfde SAP-systeem is geïnstalleerd.  Als bijvoorbeeld NW2 ASCS is geïnstalleerd op `rhelmsscl1`, moet u ervoor zorgen dat de groep NW2 ers wordt uitgevoerd. `rhelmsscl2`  U kunt de NW2 ERS-groep migreren `rhelmsscl2` naar door de volgende opdracht uit te voeren voor een van de cluster bronnen in de groep: 
+   Zorg er vervolgens voor dat de resources van de zojuist gemaakte ERS-groep worden uitgevoerd op het cluster knooppunt, tegengesteld aan het cluster knooppunt waar het ASCS-exemplaar voor hetzelfde SAP-systeem is geïnstalleerd.  Als bijvoorbeeld NW2 ASCS is geïnstalleerd op `rhelmsscl1` , moet u ervoor zorgen dat de groep NW2 ers wordt uitgevoerd `rhelmsscl2` .  U kunt de NW2 ERS-groep migreren naar `rhelmsscl2` door de volgende opdracht uit te voeren voor een van de cluster bronnen in de groep: 
 
     ```
       pcs resource move fs_NW2_AERS rhelmsscl2
@@ -386,7 +386,7 @@ In deze documentatie wordt ervan uitgegaan dat:
 
 6. **[A]** het/usr/sap/sapservices-bestand bijwerken
 
-   Om het starten van de instanties door het opstart script van sapinit te voor komen, moeten alle instanties die worden beheerd door `/usr/sap/sapservices` pacemaker, een opmerking van het bestand maken.  Het voor beeld hieronder wordt weer gegeven voor SAP-systemen **NW2** en **NW3**.  
+   Om het starten van de instanties door het opstart script van sapinit te voor komen, moeten alle instanties die worden beheerd door pacemaker, een opmerking van het `/usr/sap/sapservices` bestand maken.  Het voor beeld hieronder wordt weer gegeven voor SAP-systemen **NW2** en **NW3**.  
 
    ```
     # On the node where ASCS was installed, comment out the line for the ASCS instacnes
@@ -612,7 +612,7 @@ Voltooi uw SAP-installatie door:
 De volgende tests zijn een subset van de test cases in de best practices-richt lijnen van Red Hat. Ze zijn opgenomen voor uw gemak. Raadpleeg de volgende documentatie voor een volledige lijst met cluster tests:
 
 * Als u Azure NetApp Files NFS-volumes gebruikt, volgt u [Azure-vm's hoge Beschik baarheid voor SAP NetWeaver op RHEL met Azure NetApp files voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
-* Als u Maxi maal `GlusterFS`beschikbaar wilt gebruiken, volgt u [Azure-vm's hoge Beschik baarheid voor SAP NetWeaver op RHEL voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel).  
+* Als u Maxi maal beschikbaar `GlusterFS` wilt gebruiken, volgt u [Azure-vm's hoge beschik BAARHEID voor SAP NetWeaver op RHEL voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel).  
 
 Lees altijd de hand leidingen voor de best practices voor Red Hat en voer alle extra tests uit die mogelijk zijn toegevoegd.  
 De tests die worden weer gegeven, bevinden zich in een twee knoop punt, multi-SID-cluster waarop drie SAP-systemen zijn geïnstalleerd.  
@@ -752,7 +752,7 @@ De tests die worden weer gegeven, bevinden zich in een twee knoop punt, multi-SI
         rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started rhelmsscl2
    ```
 
-   Voer de volgende opdracht uit als basis op een knoop punt, waarbij ten minste één ASCS-exemplaar wordt uitgevoerd. In dit voor beeld hebben we de opdracht uitgevoerd `rhelmsscl1`op, waar de ASCS-instanties voor NW1, NW2 en NW3 worden uitgevoerd.  
+   Voer de volgende opdracht uit als basis op een knoop punt, waarbij ten minste één ASCS-exemplaar wordt uitgevoerd. In dit voor beeld hebben we de opdracht uitgevoerd op `rhelmsscl1` , waar de ASCS-instanties voor NW1, NW2 en NW3 worden uitgevoerd.  
 
    ```
    echo c > /proc/sysrq-trigger

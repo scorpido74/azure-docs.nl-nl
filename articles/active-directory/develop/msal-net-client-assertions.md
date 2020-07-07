@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8c97387bfd2a362d3bf5a6b8a3252242f061da31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80050292"
 ---
 # <a name="confidential-client-assertions"></a>Verklaringen van vertrouwelijke client
@@ -35,7 +35,7 @@ MSAL.NET heeft vier methoden om referenties of beweringen te verstrekken aan de 
 - `.WithClientClaims()`
 
 > [!NOTE]
-> Hoewel het mogelijk is om de `WithClientAssertion()` API te gebruiken voor het verkrijgen van tokens voor de vertrouwelijke client, raden we u aan deze niet standaard te gebruiken, omdat het geavanceerder is en is ontworpen voor het afhandelen van zeer specifieke scenario's die niet gebruikelijk zijn. Met behulp van de `.WithCertificate()` API kan MSAL.net dit voor u afhandelen. Deze API biedt u de mogelijkheid om uw verificatie aanvraag zo nodig aan te passen, maar de standaard bevestiging `.WithCertificate()` die is gemaakt door, is voldoende voor de meeste verificatie scenario's. Deze API kan ook worden gebruikt als tijdelijke oplossing in sommige scenario's waarbij MSAL.NET de ondertekening bewerking niet intern kan uitvoeren.
+> Hoewel het mogelijk is om de `WithClientAssertion()` API te gebruiken voor het verkrijgen van tokens voor de vertrouwelijke client, raden we u aan deze niet standaard te gebruiken, omdat het geavanceerder is en is ontworpen voor het afhandelen van zeer specifieke scenario's die niet gebruikelijk zijn. Met behulp `.WithCertificate()` van de API kan MSAL.net dit voor u afhandelen. Deze API biedt u de mogelijkheid om uw verificatie aanvraag zo nodig aan te passen, maar de standaard bevestiging die is gemaakt door `.WithCertificate()` , is voldoende voor de meeste verificatie scenario's. Deze API kan ook worden gebruikt als tijdelijke oplossing in sommige scenario's waarbij MSAL.NET de ondertekening bewerking niet intern kan uitvoeren.
 
 ### <a name="signed-assertions"></a>Ondertekende verklaringen
 
@@ -135,7 +135,7 @@ string GetSignedClientAssertion()
 
 ### <a name="alternative-method"></a>Alternatieve methode
 
-U kunt ook [micro soft. Identity model. JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) gebruiken om de bevestigingen voor u te maken. De code wordt weer gegeven in het volgende voor beeld:
+U hebt ook de mogelijkheid om [Microsoft.IdentityModel.JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) te gebruiken om de bewering voor u te maken. De code wordt weer gegeven in het volgende voor beeld:
 
 ```csharp
         string GetSignedClientAssertion()
@@ -196,4 +196,4 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Als een van de claims in de door u opgegeven woorden lijst hetzelfde is als een van de verplichte claims, wordt de waarde van de extra claim in rekening gebracht. Hiermee worden de claims overschreven die worden berekend door MSAL.NET.
 
-Als u uw eigen claims wilt opgeven, met inbegrip `false` van de verplichte claims die door Azure AD worden verwacht, `mergeWithDefaultClaims` geeft u de para meter door.
+Als u uw eigen claims wilt opgeven, met inbegrip van de verplichte claims die door Azure AD worden verwacht, geeft u `false` de `mergeWithDefaultClaims` para meter door.

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
 ms.openlocfilehash: 4ed8ada306720b7a8b44ddd59cefe399238c906a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80128056"
 ---
 # <a name="stream-content-with-cdn-integration"></a>Inhoud streamen met CDN-integratie
@@ -58,7 +58,7 @@ Azure Media Services integratie met Azure CDN is geïmplementeerd op **Azure CDN
 
 ## <a name="determine-if-a-dns-change-was-made"></a>Bepalen of een DNS-wijziging is doorgevoerd
 
-U kunt bepalen of de DNS-wijziging is doorgevoerd in een streaming-eind punt (het verkeer wordt omgeleid naar <https://www.digwebinterface.com>de Azure CDN) met behulp van. Als u azureedge.net-domein namen in de resultaten ziet, wordt het verkeer nu naar het CDN gewijsd.
+U kunt bepalen of de DNS-wijziging is doorgevoerd in een streaming-eind punt (het verkeer wordt omgeleid naar de Azure CDN) met behulp van <https://www.digwebinterface.com> . Als u azureedge.net-domein namen in de resultaten ziet, wordt het verkeer nu naar het CDN gewijsd.
 
 ## <a name="origin-assist-cdn-prefetch"></a>Oorsprong-door CDN-prefetch
 
@@ -82,11 +82,11 @@ De voor delen van de functie voor *CDN-prefetch van oorsprong-assistentie zijn* 
 > [!NOTE]
 > Deze functie is nog niet van toepassing op het Akamai CDN dat is geïntegreerd met Media Services streaming-eind punt. Het is echter wel beschikbaar voor Media Services klanten die een reeds bestaand Akamai-contract hebben en aangepaste integratie vereisen tussen Akamai CDN en de Media Services oorsprong.
 
-### <a name="how-it-works"></a>Hoe werkt het?
+### <a name="how-it-works"></a>Uitleg
 
-CDN-ondersteuning voor `Origin-Assist CDN-Prefetch` de headers (voor Live en video on-demand streaming) is beschikbaar voor klanten die een direct-contract met Akamai CDN hebben. De functie omvat de volgende HTTP-header-uitwisselingen tussen Akamai CDN en de Media Services Origin:
+CDN-ondersteuning voor de `Origin-Assist CDN-Prefetch` headers (voor Live en video on-demand streaming) is beschikbaar voor klanten die een direct-contract met AKAMAI CDN hebben. De functie omvat de volgende HTTP-header-uitwisselingen tussen Akamai CDN en de Media Services Origin:
 
-|HTTP-header|Waarden|Afzender|Ontvanger|Doel|
+|HTTP-header|Waarden|Afzender|Ontvanger|Functie|
 | ---- | ---- | ---- | ---- | ----- |
 |`CDN-Origin-Assist-Prefetch-Enabled` | 1 (standaard) of 0 |CDN|Oorsprong|Om aan te geven dat CDN is ingeschakeld.|
 |`CDN-Origin-Assist-Prefetch-Path`| Voorbeeld: <br/>Fragmenten (video = 1400000000, Format = mpd-time-CMAF)|Oorsprong|CDN|Om het prefetch-pad naar CDN op te geven.|
@@ -94,7 +94,7 @@ CDN-ondersteuning voor `Origin-Assist CDN-Prefetch` de headers (voor Live en vid
 
 Als u een deel van de koptekst uitwisseling in actie wilt zien, kunt u de volgende stappen uitvoeren:
 
-1. Gebruik postman of krul om een aanvraag uit te geven aan de Media Services oorsprong van een audio-of video segment of fragment. Zorg ervoor dat u de header `CDN-Origin-Assist-Prefetch-Enabled: 1` toevoegt in de aanvraag.
+1. Gebruik postman of krul om een aanvraag uit te geven aan de Media Services oorsprong van een audio-of video segment of fragment. Zorg ervoor dat u de header toevoegt `CDN-Origin-Assist-Prefetch-Enabled: 1` in de aanvraag.
 2. In het antwoord ziet u de koptekst `CDN-Origin-Assist-Prefetch-Path` met een relatief pad als waarde.
 
 ### <a name="supported-streaming-protocols"></a>Ondersteunde streaming protocollen
@@ -124,7 +124,7 @@ De `Origin-Assist CDN-Prefetch` functie ondersteunt de volgende streaming-protoc
 
 * Wat gebeurt er met live streamen als het volgende segment of fragment nog niet beschikbaar is?
 
-    In dit geval bieden `CDN-Origin-Assist-Prefetch-Path` de Media Services oorsprong geen header en kan CDN-prefetch niet worden uitgevoerd.
+    In dit geval bieden de Media Services oorsprong `CDN-Origin-Assist-Prefetch-Path` geen header en kan CDN-prefetch niet worden uitgevoerd.
 
 * Hoe `Origin-Assist CDN-Prefetch` werkt het met dynamische manifest filters?
 
