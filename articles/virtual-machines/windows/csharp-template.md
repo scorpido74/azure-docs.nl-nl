@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
 ms.openlocfilehash: dfcc0c550af9df6c884c8cd864ed90daf5f78e2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82082914"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Een virtuele machine van Azure implementeren met behulp van C# en een resource manager-sjabloon
@@ -28,14 +28,14 @@ Het duurt ongeveer 10 minuten om deze stappen uit te voeren.
 In deze stap zorgt u ervoor dat Visual Studio is geïnstalleerd en dat u een console toepassing maakt die wordt gebruikt voor het implementeren van de sjabloon.
 
 1. Als u dat nog niet hebt gedaan, installeert u [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Selecteer **.net desktop Development** op de pagina workloads en klik vervolgens op **installeren**. In de samen vatting ziet u dat **.NET Framework 4-4,6-ontwikkel Programma's** automatisch voor u worden geselecteerd. Als u Visual Studio al hebt geïnstalleerd, kunt u de .NET-workload toevoegen met behulp van de Visual Studio Launcher.
-2. Klik in Visual Studio op **bestand** > **Nieuw** > **project**.
-3. In **sjablonen** > **Visual C#** selecteert u **console-app (.NET Framework)**, voert u *myDotnetProject* in voor de naam van het project, selecteert u de locatie van het project en klikt u vervolgens op **OK**.
+2. Klik in Visual Studio op **File** > **New** > **Project**.
+3. In **sjablonen**  >  **Visual C#** selecteert u **console-app (.NET Framework)**, voert u *myDotnetProject* in voor de naam van het project, selecteert u de locatie van het project en klikt u vervolgens op **OK**.
 
 ## <a name="install-the-packages"></a>De pakketten installeren
 
 NuGet-pakketten zijn de eenvoudigste manier om de bibliotheken te installeren die u nodig hebt om deze stappen te volt ooien. Ga als volgt te werk om de bibliotheken te verkrijgen die u nodig hebt in Visual Studio:
 
-1. Klik op **extra** > **Nuget package manager**en klik vervolgens op **Package Manager-console**.
+1. Klik op **extra**  >  **Nuget package manager**en klik vervolgens op **Package Manager-console**.
 2. Typ deze opdrachten in de-console:
 
     ```powershell
@@ -49,7 +49,7 @@ In deze stap maakt u een sjabloon bestand dat de resources en een parameter best
 
 ### <a name="create-the-template-file"></a>Het sjabloon bestand maken
 
-1. Klik in Solution Explorer met de rechter muisknop op *myDotnetProject* > **Add** > **Nieuw item**toevoegen en selecteer vervolgens **tekst bestand** in *Visual C#-items*. Geef het bestand de naam *CreateVMTemplate. json*en klik vervolgens op **toevoegen**.
+1. Klik in Solution Explorer met de rechter muisknop op *myDotnetProject*  >  **Add**  >  **Nieuw item**toevoegen en selecteer vervolgens **tekst bestand** in *Visual C#-items*. Noem het bestand *CreateVMTemplate.jsop*en klik vervolgens op **toevoegen**.
 2. Voeg deze JSON-code toe aan het bestand dat u hebt gemaakt:
 
     ```json
@@ -155,13 +155,13 @@ In deze stap maakt u een sjabloon bestand dat de resources en een parameter best
     }
     ```
 
-3. Sla het bestand CreateVMTemplate. json op.
+3. Sla de CreateVMTemplate.jsop in het bestand.
 
 ### <a name="create-the-parameters-file"></a>Het parameter bestand maken
 
 Als u waarden wilt opgeven voor de resource parameters in de sjabloon, maakt u een bestand met para meters dat de waarden bevat.
 
-1. Klik in Solution Explorer met de rechter muisknop op *myDotnetProject* > **Add** > **Nieuw item**toevoegen en selecteer vervolgens **tekst bestand** in *Visual C#-items*. Noem de file- *para meters. json*en klik vervolgens op **toevoegen**.
+1. Klik in Solution Explorer met de rechter muisknop op *myDotnetProject*  >  **Add**  >  **Nieuw item**toevoegen en selecteer vervolgens **tekst bestand** in *Visual C#-items*. Noem het bestand *Parameters.jsop*en klik vervolgens op **toevoegen**.
 2. Voeg deze JSON-code toe aan het bestand dat u hebt gemaakt:
 
     ```json
@@ -175,13 +175,13 @@ Als u waarden wilt opgeven voor de resource parameters in de sjabloon, maakt u e
     }
     ```
 
-4. Sla het bestand para meters. json op.
+4. Sla de Parameters.jsop in het bestand.
 
 ### <a name="create-the-authorization-file"></a>Het autorisatie bestand maken
 
 Voordat u een sjabloon kunt implementeren, moet u ervoor zorgen dat u toegang hebt tot een [Active Directory Service-Principal](../../active-directory/develop/howto-authenticate-service-principal-powershell.md). Vanuit de Service-Principal krijgt u een token voor het verifiëren van aanvragen voor het Azure Resource Manager. Noteer ook de toepassings-ID, de verificatie sleutel en de Tenant-ID die u nodig hebt in het autorisatie bestand.
 
-1. Klik in Solution Explorer met de rechter muisknop op *myDotnetProject* > **Add** > **Nieuw item**toevoegen en selecteer vervolgens **tekst bestand** in *Visual C#-items*. Noem het bestand *azureauth. Properties*en klik vervolgens op **toevoegen**.
+1. Klik in Solution Explorer met de rechter muisknop op *myDotnetProject*  >  **Add**  >  **Nieuw item**toevoegen en selecteer vervolgens **tekst bestand** in *Visual C#-items*. Noem het bestand *azureauth. Properties*en klik vervolgens op **toevoegen**.
 2. Voeg deze autorisatie-eigenschappen toe:
 
     ```
@@ -195,7 +195,7 @@ Voordat u een sjabloon kunt implementeren, moet u ervoor zorgen dat u toegang he
     graphURL=https://graph.microsoft.com/
     ```
 
-    Vervang ** &lt;abonnement-id&gt; ** door uw abonnements-id, ** &lt;toepassings-&gt; id** met de Active Directory toepassings-id, ** &lt;verificatie&gt; sleutel** met de toepassings sleutel en ** &lt;Tenant-id&gt; ** met de Tenant-id.
+    Vervang ** &lt; abonnement-id &gt; ** door uw abonnements-id, ** &lt; toepassings- &gt; id** met de Active Directory toepassings-id, ** &lt; verificatie &gt; sleutel** met de toepassings sleutel en ** &lt; Tenant-id &gt; ** met de Tenant-id.
 
 3. Sla het bestand azureauth. Properties op.
 4. Stel een omgevings variabele in Windows met de naam AZURE_AUTH_LOCATION met het volledige pad naar het autorisatie bestand dat u hebt gemaakt. u kunt bijvoorbeeld de volgende Power shell-opdracht gebruiken:

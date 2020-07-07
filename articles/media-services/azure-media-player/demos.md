@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: article
 ms.date: 04/24/2020
 ms.openlocfilehash: 584748b23f526e6f03b543b8298927e3f202f743
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82139301"
 ---
 # <a name="azure-media-player-demos"></a>Demo’s voor Azure Media Player
@@ -25,7 +25,7 @@ Hier volgt een lijst met koppelingen naar demo's van de Azure Media Player. U ku
 | Bron instellen | [Dynamics](https://amp.azure.net/libs/amp/latest/samples/dynamic_setsource.html) | [Statisch](https://amp.azure.net/libs/amp/latest/samples/videotag_setsource.html) |Niet-beveiligde inhoud afspelen.|
 | Functies |
 | VOD AD-invoeging-groot | [Dynamics](https://amp.azure.net/libs/amp/latest/samples/dynamic_vast_ads_vod.html) | N.v.t. | Voeg vooraf geposte en verdeelde vaste advertenties toe aan een VOD-Asset. |
-| Afspeel snelheid | [Dynamics](https://amp.azure.net/libs/amp/latest/samples/dynamic_playback_speed.html)| N.v.t. | Hiermee kunnen viewers bepalen op welke snelheid ze hun video bekijken. |
+| Afspeelsnelheid | [Dynamics](https://amp.azure.net/libs/amp/latest/samples/dynamic_playback_speed.html)| N.v.t. | Hiermee kunnen viewers bepalen op welke snelheid ze hun video bekijken. |
 | Leegmaak weergave AMP | [Dynamics](https://amp.azure.net/libs/amp/latest/samples/dynamic_flush_skin.html) | [Statisch](https://amp.azure.net/libs/amp/latest/samples/videotag_flush_skin.html) | Hiermee schakelt u de nieuwe AMP-weer gave. **Opmerking:** Flush-leegmaak bewerkingen worden alleen ondersteund in AMP-versies 2.1.0 + |
 | Bijschriften en ondertitels | [Dynamics](https://amp.azure.net/libs/amp/latest/samples/dynamic_webvtt.html) | [Statisch](https://amp.azure.net/libs/amp/latest/samples/videotag_webvtt.html) | Afspelen met WebVTT-ondertiteling.
 | Live CEA 708-bijschriften | [Dynamics](https://amp.azure.net/libs/amp/latest/samples/dynamic_live_captions.html) | N.v.t. | Afspelen met de inkomende ondertitels van Live CEA 708 met de bijschriften links uitgelijnd. |
@@ -68,4 +68,4 @@ Opties om weer te geven hoe het menu audio tracks moet worden weer gegeven op de
 ## <a name="next-steps"></a>Volgende stappen
 
 <!---Some context for the following links goes here--->
-- [Snelstartgids Azure Media Player](azure-media-player-quickstart.md)
+- [Quickstart voor Azure Media Player](azure-media-player-quickstart.md)

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
 ms.openlocfilehash: 9a5e2c1e36a742115ed2f5c690c81a186a86dee7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82129102"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migreren naar Azure Kubernetes service (AKS)
@@ -94,7 +94,7 @@ Zie [Azure-abonnement en service limieten](https://docs.microsoft.com/azure/azur
 
 Als uw toepassing downtime niet kan verwerken, moet u aanbevolen procedures volgen voor migratie scenario's met hoge Beschik baarheid.  Best practices voor het plannen van complexe bedrijfs continuïteit, herstel na nood gevallen en maximale uptime van het bedrijf vallen buiten het bereik van dit document.  Lees meer over de [Aanbevolen procedures voor bedrijfs continuïteit en herstel na nood gevallen in azure Kubernetes service (AKS)](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region) voor meer informatie.
 
-Voor complexe toepassingen migreert u doorgaans over tijd in plaats van allemaal tegelijk. Dit betekent dat de oude en nieuwe omgevingen mogelijk moeten communiceren via het netwerk. Toepassingen waarvoor eerder Services `ClusterIP` zijn gebruikt om te communiceren, moeten mogelijk worden weer `LoadBalancer` gegeven als type en moeten op de juiste manier worden beveiligd.
+Voor complexe toepassingen migreert u doorgaans over tijd in plaats van allemaal tegelijk. Dit betekent dat de oude en nieuwe omgevingen mogelijk moeten communiceren via het netwerk. Toepassingen waarvoor eerder `ClusterIP` Services zijn gebruikt om te communiceren, moeten mogelijk worden weer gegeven als type `LoadBalancer` en moeten op de juiste manier worden beveiligd.
 
 Als u de migratie wilt volt ooien, moet u clients verwijzen naar de nieuwe services die worden uitgevoerd op AKS. We raden aan dat u verkeer omleidt door DNS te laten verwijzen naar de Load Balancer die zich vóór uw AKS-cluster bevindt.
 
@@ -158,7 +158,7 @@ Sommige open source-hulpprogram ma's kunnen u helpen bij het maken van beheerde 
 
 ### <a name="deployment-of-your-cluster-configuration"></a>Implementatie van uw cluster configuratie
 
-We raden u aan om uw bestaande, doorlopende integratie (CI) en continue Delivery (CD)-pijp lijn te gebruiken voor het implementeren van een bekende, goede configuratie op AKS. U kunt Azure-pijp lijnen gebruiken om [uw toepassingen te bouwen en te implementeren in AKS](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops). Kloon uw bestaande implementatie taken en zorg ervoor `kubeconfig` dat u naar het nieuwe AKS-cluster verwijst.
+We raden u aan om uw bestaande, doorlopende integratie (CI) en continue Delivery (CD)-pijp lijn te gebruiken voor het implementeren van een bekende, goede configuratie op AKS. U kunt Azure-pijp lijnen gebruiken om [uw toepassingen te bouwen en te implementeren in AKS](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops). Kloon uw bestaande implementatie taken en zorg ervoor dat `kubeconfig` u naar het nieuwe AKS-cluster verwijst.
 
 Als dat niet mogelijk is, kunt u resource definities uit uw bestaande Kubernetes-cluster exporteren en vervolgens Toep assen op AKS. U kunt gebruiken `kubectl` om objecten te exporteren.
 

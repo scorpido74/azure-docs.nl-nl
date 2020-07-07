@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/17/2019
 ms.author: guybo
 ms.openlocfilehash: 4140f9f07a0fd653c8e0370d017cbae7effd0a07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82084308"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Een op Red Hat gebaseerde virtuele machine voor Azure voorbereiden
@@ -72,11 +72,11 @@ In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand hebt verkregen van
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Het WALinuxAgent-pakket `WALinuxAgent-<version>`,, is gepusht naar de Red Hat extras-opslag plaats. Schakel de extra's-opslag plaats in door de volgende opdracht uit te voeren:
+1. Het WALinuxAgent-pakket, `WALinuxAgent-<version>` , is gepusht naar de Red Hat extras-opslag plaats. Schakel de extra's-opslag plaats in door de volgende opdracht uit te voeren:
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-1. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u deze wijziging wilt door `/boot/grub/menu.lst` voeren, opent u in een tekst editor en zorgt u ervoor dat de standaard-kernel de volgende para meters bevat:
+1. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u deze wijziging wilt door voeren, opent u `/boot/grub/menu.lst` in een tekst editor en zorgt u ervoor dat de standaard-kernel de volgende para meters bevat:
     
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     
@@ -125,7 +125,7 @@ In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand hebt verkregen van
 
         # logout
 
-1. Klik op **actie** > **Afsluiten** in Hyper-V-beheer. Uw Linux-VHD is nu gereed om te worden ge√ºpload naar Azure.
+1. Klik op **actie**  >  **Afsluiten** in Hyper-V-beheer. Uw Linux-VHD is nu gereed om te worden ge√ºpload naar Azure.
 
 
 ### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>Een virtuele machine met RHEL 7 voorbereiden vanuit Hyper-V-beheer
@@ -158,7 +158,7 @@ In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand hebt verkregen van
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u deze wijziging wilt door `/etc/default/grub` voeren, opent u in een tekst editor `GRUB_CMDLINE_LINUX` en bewerkt u de para meter. Bijvoorbeeld:
+1. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u deze wijziging wilt door voeren, opent u `/etc/default/grub` in een tekst editor en bewerkt u de `GRUB_CMDLINE_LINUX` para meter. Bijvoorbeeld:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -168,7 +168,7 @@ In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand hebt verkregen van
    
     Grafisch en stil opstarten zijn niet handig in een cloud omgeving waar alle logboeken moeten worden verzonden naar de seri√´le poort. U kunt de `crashkernel` optie zo nodig laten configureren. Houd er rekening mee dat deze para meter de hoeveelheid beschikbaar geheugen in de virtuele machine met 128 MB of meer reduceert. Dit kan problemen opleveren bij kleinere VM-grootten.
 
-1. Wanneer u klaar bent met `/etc/default/grub`bewerken, voert u de volgende opdracht uit om de configuratie van grub opnieuw samen te stellen:
+1. Wanneer u klaar bent `/etc/default/grub` met bewerken, voert u de volgende opdracht uit om de configuratie van grub opnieuw samen te stellen:
 
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
@@ -176,7 +176,7 @@ In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand hebt verkregen van
 
         ClientAliveInterval 180
 
-1. Het WALinuxAgent-pakket `WALinuxAgent-<version>`,, is gepusht naar de Red Hat extras-opslag plaats. Schakel de extra's-opslag plaats in door de volgende opdracht uit te voeren:
+1. Het WALinuxAgent-pakket, `WALinuxAgent-<version>` , is gepusht naar de Red Hat extras-opslag plaats. Schakel de extra's-opslag plaats in door de volgende opdracht uit te voeren:
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
@@ -188,7 +188,7 @@ In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand hebt verkregen van
 
 1. Maak geen wissel ruimte op de schijf met het besturings systeem.
 
-    De Azure Linux-agent kan automatisch wissel ruimte configureren door gebruik te maken van de lokale bron schijf die is gekoppeld aan de virtuele machine nadat de virtuele machine is ingericht op Azure. Houd er rekening mee dat de lokale bron schijf een tijdelijke schijf is en kan worden leeg gemaakt als de inrichting van de virtuele machine wordt opheffen. Nadat u de Azure Linux-agent in de vorige stap hebt ge√Ønstalleerd, wijzigt u de `/etc/waagent.conf` volgende para meters op de juiste manier:
+    De Azure Linux-agent kan automatisch wissel ruimte configureren door gebruik te maken van de lokale bron schijf die is gekoppeld aan de virtuele machine nadat de virtuele machine is ingericht op Azure. Houd er rekening mee dat de lokale bron schijf een tijdelijke schijf is en kan worden leeg gemaakt als de inrichting van de virtuele machine wordt opheffen. Nadat u de Azure Linux-agent in de vorige stap hebt ge√Ønstalleerd, wijzigt u de volgende para meters op de `/etc/waagent.conf` juiste manier:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -210,7 +210,7 @@ In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand hebt verkregen van
 
         # logout
 
-1. Klik op **actie** > **Afsluiten** in Hyper-V-beheer. Uw Linux-VHD is nu gereed om te worden ge√ºpload naar Azure.
+1. Klik op **actie**  >  **Afsluiten** in Hyper-V-beheer. Uw Linux-VHD is nu gereed om te worden ge√ºpload naar Azure.
 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>Een op Red Hat gebaseerde virtuele machine voorbereiden op basis van KVM
@@ -266,7 +266,7 @@ In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand hebt verkregen van
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u deze configuratie wilt uitvoeren `/boot/grub/menu.lst` , opent u in een tekst editor en zorgt u ervoor dat de standaard-kernel de volgende para meters bevat:
+1. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u deze configuratie wilt uitvoeren, opent u `/boot/grub/menu.lst` in een tekst editor en zorgt u ervoor dat de standaard-kernel de volgende para meters bevat:
     
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     
@@ -281,7 +281,7 @@ In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand hebt verkregen van
 
 1. Hyper-V-modules toevoegen aan initramfs:  
 
-    Bewerk `/etc/dracut.conf`en voeg de volgende inhoud toe:
+    Bewerk `/etc/dracut.conf` en voeg de volgende inhoud toe:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
@@ -302,7 +302,7 @@ In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand hebt verkregen van
         PasswordAuthentication yes
         ClientAliveInterval 180
 
-1. Het WALinuxAgent-pakket `WALinuxAgent-<version>`,, is gepusht naar de Red Hat extras-opslag plaats. Schakel de extra's-opslag plaats in door de volgende opdracht uit te voeren:
+1. Het WALinuxAgent-pakket, `WALinuxAgent-<version>` , is gepusht naar de Red Hat extras-opslag plaats. Schakel de extra's-opslag plaats in door de volgende opdracht uit te voeren:
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
@@ -339,7 +339,7 @@ In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand hebt verkregen van
 1. Converteer de qcow2-afbeelding naar de VHD-indeling.
 
 > [!NOTE]
-> Er is een bekende fout in qemu-img-versies >= 2.2.1 dat resulteert in een VHD met een onjuiste indeling. Het probleem is opgelost in QEMU 2,6. U kunt het beste een qemu-img 2.2.0 of lager gebruiken of bijwerken naar 2,6 of hoger. Verwijzing: https://bugs.launchpad.net/qemu/+bug/1490611.
+> Er is een bekende fout in qemu-img-versies >= 2.2.1 dat resulteert in een VHD met een onjuiste indeling. Het probleem is opgelost in QEMU 2,6. U kunt het beste een qemu-img 2.2.0 of lager gebruiken of bijwerken naar 2,6 of hoger. Naslaginformatie: https://bugs.launchpad.net/qemu/+bug/1490611.
 >
 
 
@@ -412,7 +412,7 @@ In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand hebt verkregen van
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u deze configuratie wilt uitvoeren `/etc/default/grub` , opent u in een tekst editor en `GRUB_CMDLINE_LINUX` bewerkt u de para meter. Bijvoorbeeld:
+1. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u deze configuratie wilt uitvoeren, opent u `/etc/default/grub` in een tekst editor en bewerkt u de `GRUB_CMDLINE_LINUX` para meter. Bijvoorbeeld:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -422,13 +422,13 @@ In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand hebt verkregen van
    
     Grafisch en stil opstarten zijn niet handig in een cloud omgeving waar alle logboeken moeten worden verzonden naar de seri√´le poort. U kunt de `crashkernel` optie zo nodig laten configureren. Houd er rekening mee dat deze para meter de hoeveelheid beschikbaar geheugen in de virtuele machine met 128 MB of meer reduceert. Dit kan problemen opleveren bij kleinere VM-grootten.
 
-1. Wanneer u klaar bent met `/etc/default/grub`bewerken, voert u de volgende opdracht uit om de configuratie van grub opnieuw samen te stellen:
+1. Wanneer u klaar bent `/etc/default/grub` met bewerken, voert u de volgende opdracht uit om de configuratie van grub opnieuw samen te stellen:
 
         # grub2-mkconfig -o /boot/grub2/grub.cfg
 
 1. Voeg Hyper-V-modules toe aan initramfs.
 
-    Inhoud `/etc/dracut.conf` bewerken en toevoegen:
+    `/etc/dracut.conf`Inhoud bewerken en toevoegen:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
@@ -449,7 +449,7 @@ In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand hebt verkregen van
         PasswordAuthentication yes
         ClientAliveInterval 180
 
-1. Het WALinuxAgent-pakket `WALinuxAgent-<version>`,, is gepusht naar de Red Hat extras-opslag plaats. Schakel de extra's-opslag plaats in door de volgende opdracht uit te voeren:
+1. Het WALinuxAgent-pakket, `WALinuxAgent-<version>` , is gepusht naar de Red Hat extras-opslag plaats. Schakel de extra's-opslag plaats in door de volgende opdracht uit te voeren:
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
@@ -463,7 +463,7 @@ In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand hebt verkregen van
 
 1. Maak geen wissel ruimte op de schijf met het besturings systeem.
 
-    De Azure Linux-agent kan automatisch wissel ruimte configureren door gebruik te maken van de lokale bron schijf die is gekoppeld aan de virtuele machine nadat de virtuele machine is ingericht op Azure. Houd er rekening mee dat de lokale bron schijf een tijdelijke schijf is en kan worden leeg gemaakt als de inrichting van de virtuele machine wordt opheffen. Nadat u de Azure Linux-agent in de vorige stap hebt ge√Ønstalleerd, wijzigt u de `/etc/waagent.conf` volgende para meters op de juiste manier:
+    De Azure Linux-agent kan automatisch wissel ruimte configureren door gebruik te maken van de lokale bron schijf die is gekoppeld aan de virtuele machine nadat de virtuele machine is ingericht op Azure. Houd er rekening mee dat de lokale bron schijf een tijdelijke schijf is en kan worden leeg gemaakt als de inrichting van de virtuele machine wordt opheffen. Nadat u de Azure Linux-agent in de vorige stap hebt ge√Ønstalleerd, wijzigt u de volgende para meters op de `/etc/waagent.conf` juiste manier:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -490,7 +490,7 @@ In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand hebt verkregen van
 1. Converteer de qcow2-afbeelding naar de VHD-indeling.
 
 > [!NOTE]
-> Er is een bekende fout in qemu-img-versies >= 2.2.1 dat resulteert in een VHD met een onjuiste indeling. Het probleem is opgelost in QEMU 2,6. U kunt het beste een qemu-img 2.2.0 of lager gebruiken of bijwerken naar 2,6 of hoger. Verwijzing: https://bugs.launchpad.net/qemu/+bug/1490611.
+> Er is een bekende fout in qemu-img-versies >= 2.2.1 dat resulteert in een VHD met een onjuiste indeling. Het probleem is opgelost in QEMU 2,6. U kunt het beste een qemu-img 2.2.0 of lager gebruiken of bijwerken naar 2,6 of hoger. Naslaginformatie: https://bugs.launchpad.net/qemu/+bug/1490611.
 >
 
 
@@ -558,11 +558,11 @@ In deze sectie wordt ervan uitgegaan dat u al een RHEL virtuele machine hebt ge√
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Het WALinuxAgent-pakket `WALinuxAgent-<version>`,, is gepusht naar de Red Hat extras-opslag plaats. Schakel de extra's-opslag plaats in door de volgende opdracht uit te voeren:
+1. Het WALinuxAgent-pakket, `WALinuxAgent-<version>` , is gepusht naar de Red Hat extras-opslag plaats. Schakel de extra's-opslag plaats in door de volgende opdracht uit te voeren:
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-1. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u dit wilt doen `/etc/default/grub` , opent u in een tekst editor en `GRUB_CMDLINE_LINUX` bewerkt u de para meter. Bijvoorbeeld:
+1. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u dit wilt doen, opent u `/etc/default/grub` in een tekst editor en bewerkt u de `GRUB_CMDLINE_LINUX` para meter. Bijvoorbeeld:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
    
@@ -574,7 +574,7 @@ In deze sectie wordt ervan uitgegaan dat u al een RHEL virtuele machine hebt ge√
 
 1. Hyper-V-modules toevoegen aan initramfs:
 
-    Bewerk `/etc/dracut.conf`en voeg de volgende inhoud toe:
+    Bewerk `/etc/dracut.conf` en voeg de volgende inhoud toe:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
@@ -594,7 +594,7 @@ In deze sectie wordt ervan uitgegaan dat u al een RHEL virtuele machine hebt ge√
 
 1. Maak geen wissel ruimte op de schijf met het besturings systeem.
 
-    De Azure Linux-agent kan automatisch wissel ruimte configureren door gebruik te maken van de lokale bron schijf die is gekoppeld aan de virtuele machine nadat de virtuele machine is ingericht op Azure. Houd er rekening mee dat de lokale bron schijf een tijdelijke schijf is en kan worden leeg gemaakt als de inrichting van de virtuele machine wordt opheffen. Nadat u de Azure Linux-agent in de vorige stap hebt ge√Ønstalleerd, wijzigt u de `/etc/waagent.conf` volgende para meters op de juiste manier:
+    De Azure Linux-agent kan automatisch wissel ruimte configureren door gebruik te maken van de lokale bron schijf die is gekoppeld aan de virtuele machine nadat de virtuele machine is ingericht op Azure. Houd er rekening mee dat de lokale bron schijf een tijdelijke schijf is en kan worden leeg gemaakt als de inrichting van de virtuele machine wordt opheffen. Nadat u de Azure Linux-agent in de vorige stap hebt ge√Ønstalleerd, wijzigt u de volgende para meters op de `/etc/waagent.conf` juiste manier:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -619,7 +619,7 @@ In deze sectie wordt ervan uitgegaan dat u al een RHEL virtuele machine hebt ge√
 1. Sluit de virtuele machine af en converteer het VMDK-bestand naar een VHD-bestand.
 
 > [!NOTE]
-> Er is een bekende fout in qemu-img-versies >= 2.2.1 dat resulteert in een VHD met een onjuiste indeling. Het probleem is opgelost in QEMU 2,6. U kunt het beste een qemu-img 2.2.0 of lager gebruiken of bijwerken naar 2,6 of hoger. Verwijzing: https://bugs.launchpad.net/qemu/+bug/1490611.
+> Er is een bekende fout in qemu-img-versies >= 2.2.1 dat resulteert in een VHD met een onjuiste indeling. Het probleem is opgelost in QEMU 2,6. U kunt het beste een qemu-img 2.2.0 of lager gebruiken of bijwerken naar 2,6 of hoger. Naslaginformatie: https://bugs.launchpad.net/qemu/+bug/1490611.
 >
 
 
@@ -670,7 +670,7 @@ In deze sectie wordt ervan uitgegaan dat u al een RHEL virtuele machine hebt ge√
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u deze wijziging wilt door `/etc/default/grub` voeren, opent u in een tekst editor `GRUB_CMDLINE_LINUX` en bewerkt u de para meter. Bijvoorbeeld:
+1. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u deze wijziging wilt door voeren, opent u `/etc/default/grub` in een tekst editor en bewerkt u de `GRUB_CMDLINE_LINUX` para meter. Bijvoorbeeld:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -680,13 +680,13 @@ In deze sectie wordt ervan uitgegaan dat u al een RHEL virtuele machine hebt ge√
    
     Grafisch en stil opstarten zijn niet handig in een cloud omgeving waar alle logboeken moeten worden verzonden naar de seri√´le poort. U kunt de `crashkernel` optie zo nodig laten configureren. Houd er rekening mee dat deze para meter de hoeveelheid beschikbaar geheugen in de virtuele machine met 128 MB of meer reduceert. Dit kan problemen opleveren bij kleinere VM-grootten.
 
-1. Wanneer u klaar bent met `/etc/default/grub`bewerken, voert u de volgende opdracht uit om de configuratie van grub opnieuw samen te stellen:
+1. Wanneer u klaar bent `/etc/default/grub` met bewerken, voert u de volgende opdracht uit om de configuratie van grub opnieuw samen te stellen:
 
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 1. Voeg Hyper-V-modules toe aan initramfs.
 
-    Bewerken `/etc/dracut.conf`, inhoud toevoegen:
+    Bewerken `/etc/dracut.conf` , inhoud toevoegen:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
@@ -698,7 +698,7 @@ In deze sectie wordt ervan uitgegaan dat u al een RHEL virtuele machine hebt ge√
 
         ClientAliveInterval 180
 
-1. Het WALinuxAgent-pakket `WALinuxAgent-<version>`,, is gepusht naar de Red Hat extras-opslag plaats. Schakel de extra's-opslag plaats in door de volgende opdracht uit te voeren:
+1. Het WALinuxAgent-pakket, `WALinuxAgent-<version>` , is gepusht naar de Red Hat extras-opslag plaats. Schakel de extra's-opslag plaats in door de volgende opdracht uit te voeren:
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
@@ -710,7 +710,7 @@ In deze sectie wordt ervan uitgegaan dat u al een RHEL virtuele machine hebt ge√
 
 1. Maak geen wissel ruimte op de schijf met het besturings systeem.
 
-    De Azure Linux-agent kan automatisch wissel ruimte configureren door gebruik te maken van de lokale bron schijf die is gekoppeld aan de virtuele machine nadat de virtuele machine is ingericht op Azure. Houd er rekening mee dat de lokale bron schijf een tijdelijke schijf is en kan worden leeg gemaakt als de inrichting van de virtuele machine wordt opheffen. Nadat u de Azure Linux-agent in de vorige stap hebt ge√Ønstalleerd, wijzigt u de `/etc/waagent.conf` volgende para meters op de juiste manier:
+    De Azure Linux-agent kan automatisch wissel ruimte configureren door gebruik te maken van de lokale bron schijf die is gekoppeld aan de virtuele machine nadat de virtuele machine is ingericht op Azure. Houd er rekening mee dat de lokale bron schijf een tijdelijke schijf is en kan worden leeg gemaakt als de inrichting van de virtuele machine wordt opheffen. Nadat u de Azure Linux-agent in de vorige stap hebt ge√Ønstalleerd, wijzigt u de volgende para meters op de `/etc/waagent.conf` juiste manier:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -735,7 +735,7 @@ In deze sectie wordt ervan uitgegaan dat u al een RHEL virtuele machine hebt ge√
 1. Sluit de virtuele machine af en converteer het VMDK-bestand naar de VHD-indeling.
 
 > [!NOTE]
-> Er is een bekende fout in qemu-img-versies >= 2.2.1 dat resulteert in een VHD met een onjuiste indeling. Het probleem is opgelost in QEMU 2,6. U kunt het beste een qemu-img 2.2.0 of lager gebruiken of bijwerken naar 2,6 of hoger. Verwijzing: https://bugs.launchpad.net/qemu/+bug/1490611.
+> Er is een bekende fout in qemu-img-versies >= 2.2.1 dat resulteert in een VHD met een onjuiste indeling. Het probleem is opgelost in QEMU 2,6. U kunt het beste een qemu-img 2.2.0 of lager gebruiken of bijwerken naar 2,6 of hoger. Naslaginformatie: https://bugs.launchpad.net/qemu/+bug/1490611.
 >
 
 
@@ -911,7 +911,7 @@ Wanneer u een ander virtualisatie systeem gebruikt (dat wil zeggen, VirtualBox, 
 
 U kunt dit probleem oplossen door Hyper-V-modules toe te voegen aan initramfs en deze opnieuw te bouwen:
 
-Bewerk `/etc/dracut.conf`en voeg de volgende inhoud toe:
+Bewerk `/etc/dracut.conf` en voeg de volgende inhoud toe:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 

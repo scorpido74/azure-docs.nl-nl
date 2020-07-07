@@ -10,10 +10,10 @@ ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.openlocfilehash: 46a2badbbe957f6a8a6af7f5a40633ea24cadcd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82083362"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Windows-VM-installatiekopieën zoeken in de Azure Marketplace met Azure PowerShell
@@ -30,7 +30,7 @@ U kunt ook bladeren in beschik bare installatie kopieën en aanbiedingen met beh
 
 In deze tabel ziet u een subset van beschik bare Sku's voor de aangegeven uitgevers en aanbiedingen.
 
-| Uitgever | Aanbieding | Sku |
+| Publisher | Aanbieding | Sku |
 |:--- |:--- |:--- |
 | MicrosoftWindowsServer |WindowsServer |2019-Data Center |
 | MicrosoftWindowsServer |WindowsServer |2019-Data Center-core |
@@ -170,17 +170,17 @@ $skuName="2019-Datacenter"
 Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
 ```
 
-Nu kunt u de geselecteerde Uitgever, aanbieding, SKU en versie combi neren in een URN (waarden gescheiden door:). Geef deze URN door met `--image` de para meter bij het maken van een virtuele machine met de cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) . U kunt het versie nummer in de URN eventueel vervangen door de nieuwste versie van de installatie kopie.
+Nu kunt u de geselecteerde Uitgever, aanbieding, SKU en versie combi neren in een URN (waarden gescheiden door:). Geef deze URN door met de `--image` para meter bij het maken van een virtuele machine met de cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) . U kunt het versie nummer in de URN eventueel vervangen door de nieuwste versie van de installatie kopie.
 
-Als u een virtuele machine implementeert met een resource manager-sjabloon, stelt u de installatie kopie parameters afzonderlijk `imageReference` in de eigenschappen in. Zie de [sjabloonverwijzing](/azure/templates/microsoft.compute/virtualmachines).
+Als u een virtuele machine implementeert met een resource manager-sjabloon, stelt u de installatie kopie parameters afzonderlijk in de `imageReference` Eigenschappen in. Zie de [sjabloonverwijzing](/azure/templates/microsoft.compute/virtualmachines).
 
 [!INCLUDE [virtual-machines-common-marketplace-plan](../../../includes/virtual-machines-common-marketplace-plan.md)]
 
 ### <a name="view-plan-properties"></a>Plan eigenschappen weer geven
 
-Voer de cmdlet uit om de `Get-AzVMImage` gegevens van het aankoop plan van een afbeelding weer te geven. Als de `PurchasePlan` eigenschap in de uitvoer niet `null`is, heeft de installatie kopie de voor waarden die u moet accepteren voordat u een programmatische implementatie uitvoert.  
+Voer de cmdlet uit om de gegevens van het aankoop plan van een afbeelding weer te geven `Get-AzVMImage` . Als de `PurchasePlan` eigenschap in de uitvoer niet is `null` , heeft de installatie kopie de voor waarden die u moet accepteren voordat u een programmatische implementatie uitvoert.  
 
-De Data Center-installatie kopie van *Windows Server 2016* heeft bijvoorbeeld geen aanvullende voor waarden `PurchasePlan` , dus `null`is de informatie:
+De Data Center-installatie kopie van *Windows Server 2016* heeft bijvoorbeeld geen aanvullende voor waarden, dus `PurchasePlan` is de informatie `null` :
 
 ```powershell
 $version = "2016.127.20170406"
@@ -206,7 +206,7 @@ DataDiskImages   : []
 
 ```
 
-In het onderstaande voor beeld ziet u een vergelijk bare opdracht voor de *Data Science Virtual Machine-Windows 2016-* installatie `PurchasePlan` kopie, `name`die `product`de volgende `publisher`eigenschappen heeft:, en. Sommige installatie kopieën hebben ook `promotion code` een eigenschap. Als u deze installatie kopie wilt implementeren, raadpleegt u de volgende secties om de voor waarden te accepteren en om programmatische implementatie mogelijk te maken.
+In het onderstaande voor beeld ziet u een vergelijk bare opdracht voor de *Data Science Virtual Machine-Windows 2016-* installatie kopie, die de volgende `PurchasePlan` eigenschappen heeft: `name` , `product` en `publisher` . Sommige installatie kopieën hebben ook een `promotion code` eigenschap. Als u deze installatie kopie wilt implementeren, raadpleegt u de volgende secties om de voor waarden te accepteren en om programmatische implementatie mogelijk te maken.
 
 ```powershell
 Get-AzVMImage -Location "westus" -PublisherName "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "0.2.02"
@@ -312,11 +312,11 @@ $version = "19.01.14"
 $vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Offer $offerName -Skus $skuName -Version $version
 ...
 ```
-Vervolgens geeft u de VM-configuratie samen met de netwerk configuratie objecten door `New-AzVM` aan de cmdlet.
+Vervolgens geeft u de VM-configuratie samen met de netwerk configuratie objecten door aan de `New-AzVM` cmdlet.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie `New-AzVM` [een virtuele Windows-machine maken met Power shell](quick-create-powershell.md)om snel een virtuele machine met de cmdlet te maken met behulp van basis informatie over de installatie kopie.
+`New-AzVM`Zie [een virtuele Windows-machine maken met Power shell](quick-create-powershell.md)om snel een virtuele machine met de cmdlet te maken met behulp van basis informatie over de installatie kopie.
 
 
 Bekijk een voor beeld van een Power shell-script om [een volledig geconfigureerde virtuele machine te maken](../scripts/virtual-machines-windows-powershell-sample-create-vm.md).

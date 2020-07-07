@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 8278d9f2129ab8b213cf1b561f4b82b56dffc8da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82131043"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Een gesimuleerd IoT Edge-apparaat maken en inrichten met een virtuele TPM in Windows
@@ -65,7 +65,7 @@ Wanneer u de afzonderlijke inschrijving maakt, selecteert u **waar** om te decla
 
 Gesimuleerd apparaat en afzonderlijke registratie handleidingen:
 
-* [G](../iot-dps/quick-create-simulated-device.md)
+* [C](../iot-dps/quick-create-simulated-device.md)
 * [Java](../iot-dps/quick-create-simulated-device-tpm-java.md)
 * [C#](../iot-dps/quick-create-simulated-device-tpm-csharp.md)
 * [Node.js](../iot-dps/quick-create-simulated-device-tpm-node.md)
@@ -102,7 +102,7 @@ Zie [install the Azure IOT Edge runtime on Windows](how-to-install-iot-edge-wind
 
 1. De **initialisatie-IoTEdge-** opdracht configureert de IOT Edge runtime op de computer. De opdracht wordt standaard ingesteld op hand matig inrichten met Windows-containers. Gebruik de `-Dps` markering om de Device Provisioning Service te gebruiken in plaats van hand matig inrichten.
 
-   Vervang de waarden van de `{scope_id}` tijdelijke `{registration_id}` aanduidingen voor en door de gegevens die u eerder hebt verzameld.
+   Vervang de waarden van de tijdelijke aanduidingen voor `{scope_id}` en `{registration_id}` door de gegevens die u eerder hebt verzameld.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `

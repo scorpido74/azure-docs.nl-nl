@@ -10,10 +10,10 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: fbd0d65624852737c424128e9125b8370b870d4d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82133946"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Azure IoT Edge-modules implementeren met Azure CLI
@@ -112,7 +112,7 @@ Hier volgt een basis implementatie manifest met een module als voor beeld:
 
 U implementeert modules op uw apparaat door het implementatie manifest toe te passen dat u met de module gegevens hebt geconfigureerd.
 
-Wijzig de mappen in de map waarin uw implementatie manifest is opgeslagen. Als u een van de VS code IoT Edge sjablonen hebt gebruikt, gebruikt `deployment.json` u het bestand in de map **config** van uw map met oplossingen `deployment.template.json` en niet in het bestand.
+Wijzig de mappen in de map waarin uw implementatie manifest is opgeslagen. Als u een van de VS code IoT Edge sjablonen hebt gebruikt, gebruikt u het `deployment.json` bestand in de map **config** van uw map met oplossingen en niet in het `deployment.template.json` bestand.
 
 Gebruik de volgende opdracht om de configuratie toe te passen op een IoT Edge apparaat:
 

@@ -9,15 +9,15 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: cee97fddc619840de821ebb70d32e0cab1bbe040
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82106522"
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>EDIFACT-berichten coderen voor Azure Logic Apps met Enterprise Integration Pack
 
-Met de code ring EDIFACT Message connector kunt u EDI-en partner-specifieke eigenschappen valideren, een XML-document voor elke transactieset genereren en technische bevestiging, functionele bevestiging of beide aanvragen.
+Met Coderen EDIFACT berichtenconnector kunt u EDI- en partner-specifieke eigenschappen valideren, een XML-document voor elke transactieset genereren en technische bevestiging, functionele bevestiging of beide aanvragen.
 Als u deze connector wilt gebruiken, moet u de connector toevoegen aan een bestaande trigger in uw logische app.
 
 ## <a name="before-you-start"></a>Voordat u begint
@@ -74,7 +74,7 @@ Als u ervoor kiest om EDIFACT-berichten te coderen op identiteiten, voert u de k
 
 ![Identiteiten opgeven voor de afzender en ontvanger, het XML-bericht selecteren dat moet worden gecodeerd](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage7.png)
 
-## <a name="edifact-encode-details"></a>Details van EDIFACT-code ring
+## <a name="edifact-encode-details"></a>Details van EDIFACT-codering
 
 De EDIFACT-connector voor code ring voert de volgende taken uit: 
 

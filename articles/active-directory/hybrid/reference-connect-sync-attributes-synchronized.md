@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab51030ad39e1360cabc7d63390af7c1654d2891
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82082115"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect-synchronisatie: kenmerken die zijn gesynchroniseerd met Azure Active Directory
@@ -39,7 +39,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 >
 
 ## <a name="office-365-proplus"></a>Office 365 ProPlus
-| Kenmerk naam | Gebruiker | Opmerking |
+| Kenmerknaam | Gebruiker | Opmerking |
 | --- |:---:| --- |
 | accountEnabled |X |Hiermee wordt bepaald of een account is ingeschakeld. |
 | genoemd |X | |
@@ -52,7 +52,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | userPrincipalName |X |UPN is de aanmeldings-ID voor de gebruiker. Meestal hetzelfde als de waarde [mail]. |
 
 ## <a name="exchange-online"></a>Exchange Online
-| Kenmerk naam | Gebruiker | Contactpersoon | Groep | Opmerking |
+| Kenmerknaam | Gebruiker | Contactpersoon | Groep | Opmerking |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Hiermee wordt bepaald of een account is ingeschakeld. |
 | assistent |X |X | | |
@@ -60,7 +60,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | authOrig |X |X |X | |
 | c |X |X | | |
 | genoemd |X | |X | |
-| collega's |X |X | | |
+| co |X |X | | |
 | bedrijf |X |X | | |
 | countryCode |X |X | | |
 | department |X |X | | |
@@ -175,13 +175,13 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | wWWHomePage |X |X | | |
 
 ## <a name="sharepoint-online"></a>SharePoint Online
-| Kenmerk naam | Gebruiker | Contactpersoon | Groep | Opmerking |
+| Kenmerknaam | Gebruiker | Contactpersoon | Groep | Opmerking |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Hiermee wordt bepaald of een account is ingeschakeld. |
 | authOrig |X |X |X | |
 | c |X |X | | |
 | genoemd |X | |X | |
-| collega's |X |X | | |
+| co |X |X | | |
 | bedrijf |X |X | | |
 | countryCode |X |X | | |
 | department |X |X | | |
@@ -257,12 +257,12 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | wWWHomePage |X |X | | |
 
 ## <a name="teams-and-skype-for-business-online"></a>Teams en Skype voor bedrijven online
-| Kenmerk naam | Gebruiker | Contactpersoon | Groep | Opmerking |
+| Kenmerknaam | Gebruiker | Contactpersoon | Groep | Opmerking |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Hiermee wordt bepaald of een account is ingeschakeld. |
 | c |X |X | | |
 | genoemd |X | |X | |
-| collega's |X |X | | |
+| co |X |X | | |
 | bedrijf |X |X | | |
 | department |X |X | | |
 | description |X |X |X | |
@@ -305,7 +305,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | wWWHomePage |X |X | | |
 
 ## <a name="azure-rms"></a>Azure RMS
-| Kenmerk naam | Gebruiker | Contactpersoon | Groep | Opmerking |
+| Kenmerknaam | Gebruiker | Contactpersoon | Groep | Opmerking |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Hiermee wordt bepaald of een account is ingeschakeld. |
 | genoemd |X | |X |Algemene naam of alias. Meestal het voor voegsel van de waarde [mail]. |
@@ -320,7 +320,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | userPrincipalName |X | | |Deze UPN is de aanmeldings-ID voor de gebruiker. Meestal hetzelfde als de waarde [mail]. |
 
 ## <a name="intune"></a>Intune
-| Kenmerk naam | Gebruiker | Contactpersoon | Groep | Opmerking |
+| Kenmerknaam | Gebruiker | Contactpersoon | Groep | Opmerking |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Hiermee wordt bepaald of een account is ingeschakeld. |
 | c |X |X | | |
@@ -338,12 +338,12 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | userPrincipalName |X | | |UPN is de aanmeldings-ID voor de gebruiker. Meestal hetzelfde als de waarde [mail]. |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
-| Kenmerk naam | Gebruiker | Contactpersoon | Groep | Opmerking |
+| Kenmerknaam | Gebruiker | Contactpersoon | Groep | Opmerking |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Hiermee wordt bepaald of een account is ingeschakeld. |
 | c |X |X | | |
 | genoemd |X | |X | |
-| collega's |X |X | | |
+| co |X |X | | |
 | bedrijf |X |X | | |
 | countryCode |X |X | | |
 | description |X |X |X | |
@@ -377,7 +377,7 @@ Deze groep is een set kenmerken die wordt gebruikt als de minimale kenmerken die
 
 Deze groep is een set kenmerken die kan worden gebruikt als de Azure AD-Directory niet wordt gebruikt ter ondersteuning van Office 365, Dynamics of intune. Het bevat een kleine set kern kenmerken. Houd er rekening mee dat eenmalige aanmelding of inrichting van sommige toepassingen van derden een synchronisatie van kenmerken moet configureren naast de kenmerken die hier worden beschreven. Toepassings vereisten worden beschreven in de [zelf studie](../saas-apps/tutorial-list.md) over de SaaS-app voor elke toepassing.
 
-| Kenmerk naam | Gebruiker | Contactpersoon | Groep | Opmerking |
+| Kenmerknaam | Gebruiker | Contactpersoon | Groep | Opmerking |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Hiermee wordt bepaald of een account is ingeschakeld. |
 | genoemd |X | |X | |
@@ -399,7 +399,7 @@ Deze groep is een set kenmerken die kan worden gebruikt als de Azure AD-Director
 ## <a name="windows-10"></a>Windows 10
 Een computer met Windows 10 die lid is van een domein (apparaat) synchroniseert enkele kenmerken met Azure AD. Zie [apparaten koppelen aan Azure AD voor Windows 10](../active-directory-azureadjoin-devices-group-policy.md)voor meer informatie over de scenario's. Deze kenmerken worden altijd gesynchroniseerd en Windows 10 wordt niet weer gegeven als een app. u kunt de selectie opheffen. Een computer die lid is van een domein in Windows 10 wordt geïdentificeerd door het kenmerk userCertificate te hebben ingevuld.
 
-| Kenmerk naam | Apparaat | Opmerking |
+| Kenmerknaam | Apparaat | Opmerking |
 | --- |:---:| --- |
 | accountEnabled |X | |
 | deviceTrustType |X |Hardcoded waarde voor computers die lid zijn van een domein. |
@@ -413,7 +413,7 @@ Een computer met Windows 10 die lid is van een domein (apparaat) synchroniseert 
 
 Deze kenmerken voor de **gebruiker** zijn naast de andere apps die u hebt geselecteerd.  
 
-| Kenmerk naam | Gebruiker | Opmerking |
+| Kenmerknaam | Gebruiker | Opmerking |
 | --- |:---:| --- |
 | domainFQDN |X |Ook wel DNS genoemd. Bijvoorbeeld contoso.com. |
 | domainNetBios |X |Ook wel NetBIOS-naam genoemd. Bijvoorbeeld CONTOSO. |
@@ -437,7 +437,7 @@ Deze kenmerken worden teruggeschreven van Azure AD naar on-premises Active Direc
 ## <a name="exchange-mail-public-folder"></a>Open bare map voor Exchange-e-mail
 Deze kenmerken worden gesynchroniseerd van on-premises Active Directory naar Azure AD wanneer u de **open bare map voor Exchange-e-mail**inschakelt.
 
-| Kenmerk naam | PublicFolder | Opmerking |
+| Kenmerknaam | PublicFolder | Opmerking |
 | --- | :---:| --- |
 | displayName | X |  |
 | mail | X |  |
@@ -449,7 +449,7 @@ Deze kenmerken worden gesynchroniseerd van on-premises Active Directory naar Azu
 ## <a name="device-writeback"></a>Apparaat terugschrijven
 Device-objecten worden gemaakt in Active Directory. Deze objecten kunnen apparaten zijn gekoppeld aan Azure AD of Windows 10-computers die lid zijn van een domein.
 
-| Kenmerk naam | Apparaat | Opmerking |
+| Kenmerknaam | Apparaat | Opmerking |
 | --- |:---:| --- |
 | altSecurityIdentities |X | |
 | displayName |X | |

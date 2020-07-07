@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: e5e0a970df680df43a7bd303636b3d81bda3e141
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82085702"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Voorbeeldscripts voor Azure Disk Encryption 
@@ -69,7 +69,7 @@ In de volgende tabel ziet u welke para meters kunnen worden gebruikt in het Powe
 De volgende secties zijn nodig om een vooraf versleutelde Windows VHD voor te bereiden voor implementatie als een versleutelde VHD in azure IaaS. Gebruik de informatie om een nieuwe virtuele Windows-machine (VHD) voor te bereiden en op te starten op Azure Site Recovery of Azure. Zie [een gegeneraliseerde VHD uploaden en deze gebruiken om nieuwe virtuele machines in azure te maken](upload-generalized-managed.md)voor meer informatie over het voorbereiden en uploaden van een VHD.
 
 ### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>Groeps beleid bijwerken om niet-TPM voor beveiliging van het besturings systeem toe te staan
-Configureer de instelling van de BitLocker-groepsbeleid **BitLocker-stationsversleuteling**, die u vindt onder**computer configuratie** > van **lokaal computer beleid** > **Beheersjablonen** > **Windows-onderdelen**. Voor het wijzigen van deze instelling op > stations van het **besturings systeem**is voor het > **opstarten van BitLocker extra verificatie vereist****zonder compatibele TPM**, zoals wordt weer gegeven in de volgende afbeelding:
+Configureer de instelling van de BitLocker-groepsbeleid **BitLocker-stationsversleuteling**, die u vindt onder computer configuratie van **lokaal computer beleid**  >  **Computer Configuration**  >  **Beheersjablonen**  >  **Windows-onderdelen**. Voor het wijzigen van deze instelling op stations van het **besturings systeem**  >  **is voor het opstarten van BitLocker extra verificatie vereist**  >  **zonder compatibele TPM**, zoals wordt weer gegeven in de volgende afbeelding:
 
 ![Microsoft Antimalware in Azure](../media/disk-encryption/disk-encryption-fig8.png)
 
@@ -142,7 +142,7 @@ Als u het geheim in uw sleutel kluis wilt instellen, gebruikt u [set-AzKeyVaultS
 Gebruik de `$secretUrl` in de volgende stap voor [het koppelen van de besturingssysteem schijf zonder gebruik te maken van KEK](#without-using-a-kek).
 
 ### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>Het geheim voor schijf versleuteling is versleuteld met een KEK
-Voordat u het geheim uploadt naar de sleutel kluis, kunt u dit eventueel versleutelen met behulp van een sleutel versleutelings sleutel. Gebruik de omloop- [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) om het geheim eerst te versleutelen met behulp van de coderings sleutel sleutel. De uitvoer van deze terugloop bewerking is een met base64 gecodeerde URL-teken reeks, die u vervolgens als geheim kunt uploaden met [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) behulp van de-cmdlet.
+Voordat u het geheim uploadt naar de sleutel kluis, kunt u dit eventueel versleutelen met behulp van een sleutel versleutelings sleutel. Gebruik de omloop- [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) om het geheim eerst te versleutelen met behulp van de coderings sleutel sleutel. De uitvoer van deze terugloop bewerking is een met base64 gecodeerde URL-teken reeks, die u vervolgens als geheim kunt uploaden met behulp van de- [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) cmdlet.
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation
@@ -237,7 +237,7 @@ Gebruik `$KeyEncryptionKey` en `$secretUrl` in de volgende stap voor [het koppel
 ##  <a name="specify-a-secret-url-when-you-attach-an-os-disk"></a>Geef een geheime URL op wanneer u een besturingssysteem schijf koppelt
 
 ###  <a name="without-using-a-kek"></a>Zonder gebruik te maken van een KEK
-Wanneer u de besturingssysteem schijf koppelt, moet u door `$secretUrl`gaan. De URL is gegenereerd in het gedeelte ' schijf versleutelings geheim is niet versleuteld met een KEK '.
+Wanneer u de besturingssysteem schijf koppelt, moet u door gaan `$secretUrl` . De URL is gegenereerd in het gedeelte ' schijf versleutelings geheim is niet versleuteld met een KEK '.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `
@@ -250,7 +250,7 @@ Wanneer u de besturingssysteem schijf koppelt, moet u door `$secretUrl`gaan. De 
             -DiskEncryptionKeyUrl $SecretUrl
 ```
 ### <a name="using-a-kek"></a>Een KEK gebruiken
-Wanneer u de besturingssysteem schijf koppelt, `$KeyEncryptionKey` geeft `$secretUrl`u het door en. De URL is gegenereerd in het gedeelte ' schijf versleutelings geheim versleuteld met een KEK-onderdeel.
+Wanneer u de besturingssysteem schijf koppelt, geeft u het door `$KeyEncryptionKey` en `$secretUrl` . De URL is gegenereerd in het gedeelte ' schijf versleutelings geheim versleuteld met een KEK-onderdeel.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `

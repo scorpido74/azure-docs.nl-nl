@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c6c2067526850ba972f002dc40bbd5d4cb24c9ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82131016"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Een IoT Edge apparaat maken en inrichten met behulp van symmetrische sleutel attest
@@ -43,7 +43,7 @@ Nadat u de Device Provisioning Service hebt uitgevoerd, kopieert u de waarde van
 
 Er moet een unieke registratie-ID worden gedefinieerd om elk apparaat te identificeren. U kunt het MAC-adres, serie nummer of unieke informatie van het apparaat gebruiken.
 
-In dit voor beeld gebruiken we een combi natie van een MAC-adres en serie nummer met de volgende teken reeks voor een registratie `sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6`-id:.
+In dit voor beeld gebruiken we een combi natie van een MAC-adres en serie nummer met de volgende teken reeks voor een registratie-ID: `sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6` .
 
 Maak een unieke registratie-ID voor uw apparaat. Geldige tekens zijn kleine letters en streepjes ('-').
 
@@ -185,7 +185,7 @@ provisioning:
       symmetric_key: "<SYMMETRIC_KEY>"
 ```
 
-Vervang de waarden van de `<SCOPE_ID>`tijdelijke `<REGISTRATION_ID>`aanduidingen `<SYMMETRIC_KEY>` voor, en met de gegevens die u eerder hebt verzameld. Zorg ervoor dat het **inrichten:** de regel heeft geen voorafgaande spatie en dat geneste items met twee spaties worden inge sprongen.
+Vervang de waarden van de tijdelijke aanduidingen voor `<SCOPE_ID>` , `<REGISTRATION_ID>` en `<SYMMETRIC_KEY>` met de gegevens die u eerder hebt verzameld. Zorg ervoor dat het **inrichten:** de regel heeft geen voorafgaande spatie en dat geneste items met twee spaties worden inge sprongen.
 
 ### <a name="windows-device"></a>Windows-apparaat
 
@@ -204,9 +204,9 @@ Zie [install the Azure IOT Edge runtime on Windows](how-to-install-iot-edge-wind
 
 1. Op dit moment kunnen IoT-kern apparaten automatisch opnieuw worden opgestart. Op andere Windows 10-of Windows Server-apparaten wordt u mogelijk gevraagd om opnieuw op te starten. Als dit het geval is, start u het apparaat nu opnieuw op. Zodra het apparaat klaar is, voert u Power shell als beheerder opnieuw uit.
 
-1. De **initialisatie-IoTEdge-** opdracht configureert de IOT Edge runtime op de computer. De opdracht wordt standaard ingesteld op hand matig inrichten met Windows-containers, `-Dps` tenzij u de vlag gebruikt om automatische inrichting te gebruiken.
+1. De **initialisatie-IoTEdge-** opdracht configureert de IOT Edge runtime op de computer. De opdracht wordt standaard ingesteld op hand matig inrichten met Windows-containers, tenzij u de `-Dps` vlag gebruikt om automatische inrichting te gebruiken.
 
-   Vervang de waarden van de `{scope_id}`tijdelijke `{registration_id}`aanduidingen `{symmetric_key}` voor, en met de gegevens die u eerder hebt verzameld.
+   Vervang de waarden van de tijdelijke aanduidingen voor `{scope_id}` , `{registration_id}` en `{symmetric_key}` met de gegevens die u eerder hebt verzameld.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 2ebeb7f6fee77c43c9da97b922fc215d75196145
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82117566"
 ---
 # <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>Relationele SQL-gegevens model leren voor importeren en indexeren in azure Cognitive Search
@@ -84,7 +84,7 @@ De oplossing is het vastleggen van de ruimte Details als geneste JSON en de JSON
     GO
     ```
 
-2. Een weer gave maken die bestaat uit alle velden in de bovenliggende`SELECT * from dbo.Hotels$`tabel (), met toevoeging van een nieuw veld *ruimten* die de uitvoer van een geneste query bevat. Een **for JSON auto** -component `SELECT * from dbo.Rooms$` voor de structuur van de uitvoer als JSON. 
+2. Een weer gave maken die bestaat uit alle velden in de bovenliggende tabel ( `SELECT * from dbo.Hotels$` ), met toevoeging van een nieuw veld *ruimten* die de uitvoer van een geneste query bevat. Een **for JSON auto** -component voor `SELECT * from dbo.Rooms$` de structuur van de uitvoer als JSON. 
 
      ```sql
    CREATE VIEW [dbo].[HotelRooms]

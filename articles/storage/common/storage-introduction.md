@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 81ee07eb41df6d8d663510913572b829feffd995
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82133784"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Inleiding tot de kern Azure Storage services
@@ -23,7 +23,7 @@ Het Azure Storage platform is de oplossing voor de Cloud opslag van micro soft v
 - **Beveiligd.** Alle gegevens die naar een Azure Storage-account worden geschreven, worden versleuteld door de service. Azure Storage biedt u gedetailleerde controle over wie toegang tot uw gegevens heeft.
 - **Aanpas.** Azure Storage is in hoge mate schaalbaar om te voldoen aan de gegevensopslag- en prestatiebehoeften van de huidige toepassingen.
 - **Bijgehouden.** Azure verwerkt onderhoud van hardware, updates en kritieke problemen voor u.
-- **Toegankelijk.** Gegevens in Azure Storage zijn overal ter wereld toegankelijk via HTTP of HTTPS. Micro soft biedt client bibliotheken voor Azure Storage in verschillende talen, waaronder .NET, Java, node. js, Python, PHP, Ruby, Go en anderen, evenals een rijp REST API. Azure Storage ondersteunt scripts in Azure PowerShell of Azure CLI. En Azure Portal en Azure Storage Explorer bieden handige visuele oplossingen voor het werken met uw gegevens.  
+- **Toegankelijk.** Gegevens in Azure Storage zijn overal ter wereld toegankelijk via HTTP of HTTPS. Micro soft biedt client bibliotheken voor Azure Storage in verschillende talen, waaronder .NET, Java, Node.js, Python, PHP, Ruby, Go en anderen, en een rijp REST API. Azure Storage ondersteunt scripts in Azure PowerShell of Azure CLI. En Azure Portal en Azure Storage Explorer bieden handige visuele oplossingen voor het werken met uw gegevens.  
 
 ## <a name="core-storage-services"></a>Kern opslag Services
 
@@ -46,7 +46,7 @@ In de volgende tabel worden de bestanden, blobs, schijven, wacht rijen en tabell
 | **Azure Files** |Biedt volledig beheerde Cloud bestands shares waar u overal toegang toe hebt via het industrie standaard SMB-protocol (Server Message Block).<br><br>U kunt Azure-bestands shares koppelen vanuit Cloud-of on-premises implementaties van Windows, Linux en macOS. | U wilt een toepassing "lift en verschuiving" verplaatsen naar de cloud die al gebruikmaakt van de systeem eigen Api's van het systeem voor het delen van gegevens tussen IT en andere toepassingen die worden uitgevoerd in Azure.<br/><br/>U wilt on-premises bestands servers of NAS-apparaten vervangen of aanvullen.<br><br> U wilt hulpprogram ma's voor ontwikkeling en fout opsporing opslaan die toegankelijk moeten zijn vanaf een groot aantal virtuele machines. |
 | **Azure-blobs** | Hiermee kunnen ongestructureerde gegevens worden opgeslagen en geopend op een enorme schaal in blok-blobs.<br/><br/>Biedt ook ondersteuning voor [Azure data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md) voor oplossingen voor enter prise Big Data Analytics. | U wilt dat uw toepassing streaming en wille keurige toegangs scenario's ondersteunt.<br/><br/>U wilt vanaf elke locatie toegang hebben tot toepassings gegevens.<br/><br/>U wilt een Enter prise data Lake bouwen op Azure en big data Analytics uitvoeren. |
 | **Azure-schijven** | Hiermee staat u toe dat gegevens permanent worden opgeslagen en toegankelijk vanaf een gekoppelde virtuele harde schijf. | U wilt ' lift-en Shift-toepassingen die gebruikmaken van systeem eigen Api's voor bestands systemen, om gegevens te lezen en te schrijven naar permanente schijven.<br/><br/>U wilt gegevens opslaan die niet nodig zijn voor toegang tot de virtuele machine waarop de schijf is aangesloten. |
-| **Azure-wacht rijen** | Hiermee wordt asynchrone berichten wachtrij tussen toepassings onderdelen toegestaan. | U wilt toepassings onderdelen loskoppelen en asynchrone berichten gebruiken om onderling te communiceren.<br><br>Voor hulp bij het gebruik van wachtrij opslag versus Service Bus wachtrijen, Zie [opslag wachtrijen en service bus wacht rijen-vergeleken en daarentegen](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted). |
+| **Azure-wachtrijen** | Hiermee wordt asynchrone berichten wachtrij tussen toepassings onderdelen toegestaan. | U wilt toepassings onderdelen loskoppelen en asynchrone berichten gebruiken om onderling te communiceren.<br><br>Voor hulp bij het gebruik van wachtrij opslag versus Service Bus wachtrijen, Zie [opslag wachtrijen en service bus wacht rijen-vergeleken en daarentegen](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted). |
 | **Azure-tabellen** | Bieden u de mogelijkheid om gestructureerde NoSQL-gegevens op te slaan in de Cloud, met een sleutel/kenmerk opslag met een schemaloos ontwerp. | U wilt flexibele gegevens sets, zoals gebruikers gegevens, opslaan voor webtoepassingen, adres boeken, apparaatgegevens of andere soorten meta gegevens die uw service nodig heeft. <br/><br/>Zie [ontwikkelen met Azure Cosmos DB Table-API en Azure Table Storage](../../cosmos-db/table-support.md)voor meer informatie over het gebruik van tabel opslag versus de Azure Cosmos db table-API. |
 
 ## <a name="blob-storage"></a>Blob Storage
@@ -150,7 +150,7 @@ U kunt toegang krijgen tot bronnen in een opslag account op basis van elke taal 
 - [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/)
 - [Azure Storage-client bibliotheek voor .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 - [Azure Storage-client bibliotheek voor Java/Android](https://docs.microsoft.com/java/api/overview/azure/storage)
-- [Azure Storage-client bibliotheek voor node. js](https://docs.microsoft.com/javascript/api/overview/azure/storage-overview)
+- [Client bibliotheek Azure Storage voor Node.js](https://docs.microsoft.com/javascript/api/overview/azure/storage-overview)
 - [Client bibliotheek voor python Azure Storage](https://github.com/Azure/azure-storage-python)
 - [Client bibliotheek voor PHP Azure Storage](https://github.com/Azure/azure-storage-php)
 - [Azure Storage-client bibliotheek voor ruby](https://github.com/Azure/azure-storage-ruby)

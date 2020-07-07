@@ -4,10 +4,10 @@ description: Hierin wordt beschreven hoe u doorlopende integratie in azure-pijp 
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.openlocfilehash: d8eff1c7efae319106eb8a85af7823a820a0da39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82084648"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>ARM-sjablonen integreren met Azure-pijp lijnen
@@ -16,7 +16,7 @@ Visual Studio biedt het project van de Azure-resource groep voor het maken van A
 
 Er zijn twee manieren om sjablonen met Azure-pijp lijnen te implementeren:
 
-* **Voeg een taak toe die een Azure PowerShell script uitvoert**. Deze optie biedt het voor deel dat u binnen de levens cyclus van de ontwikkeling consistentie kunt bieden, omdat u hetzelfde script gebruikt dat is opgenomen in het Visual Studio-project (Deploy-AzureResourceGroup. ps1). Het script faseert artefacten van uw project naar een opslag account dat door Resource Manager kan worden geopend. Artefacten zijn items in uw project, zoals gekoppelde sjablonen, scripts en binaire bestanden voor toepassingen. Vervolgens implementeert het script de sjabloon.
+* **Voeg een taak toe die een Azure PowerShell script uitvoert**. Deze optie biedt het voor deel dat u binnen de levens cyclus van de ontwikkeling consistentie kunt bieden, omdat u hetzelfde script gebruikt dat is opgenomen in het Visual Studio-project (Deploy-AzureResourceGroup.ps1). Het script faseert artefacten van uw project naar een opslag account dat door Resource Manager kan worden geopend. Artefacten zijn items in uw project, zoals gekoppelde sjablonen, scripts en binaire bestanden voor toepassingen. Vervolgens implementeert het script de sjabloon.
 
 * **Voeg taken toe om taken te kopiëren en te implementeren**. Deze optie biedt een handig alternatief voor het project script. U configureert twee taken in de pijp lijn. Met een taak worden de artefacten en de andere taak in de sjabloon geïmplementeerd.
 
@@ -72,21 +72,21 @@ steps:
     azurePowerShellVersion: LatestVersion
 ```
 
-Wanneer u de taak instelt op `AzurePowerShell@3`, gebruikt de pijp lijn opdrachten uit de AzureRM-module om de verbinding te verifiëren. Het Power shell-script in het Visual Studio-project maakt standaard gebruik van de AzureRM-module. Als u uw script hebt bijgewerkt voor het gebruik van de [AZ-module](/powershell/azure/new-azureps-module-az), stelt `AzurePowerShell@4`u de taak in op.
+Wanneer u de taak instelt op `AzurePowerShell@3` , gebruikt de pijp lijn opdrachten uit de AzureRM-module om de verbinding te verifiëren. Het Power shell-script in het Visual Studio-project maakt standaard gebruik van de AzureRM-module. Als u uw script hebt bijgewerkt voor het gebruik van de [AZ-module](/powershell/azure/new-azureps-module-az), stelt u de taak in op `AzurePowerShell@4` .
 
 ```yaml
 steps:
 - task: AzurePowerShell@4
 ```
 
-Geef `azureSubscription`voor de naam op van de service verbinding die u hebt gemaakt.
+`azureSubscription`Geef voor de naam op van de service verbinding die u hebt gemaakt.
 
 ```yaml
 inputs:
     azureSubscription: '<your-connection-name>'
 ```
 
-Geef `scriptPath`voor het relatieve pad van het pijplijn bestand naar het script op. U kunt het pad bekijken in uw opslag plaats.
+`scriptPath`Geef voor het relatieve pad van het pijplijn bestand naar het script op. U kunt het pad bekijken in uw opslag plaats.
 
 ```yaml
 ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
@@ -154,13 +154,13 @@ In de volgende YAML wordt de [Azure File Copy-taak](/azure/devops/pipelines/task
     sasTokenTimeOutInMinutes: '240'
 ```
 
-Er zijn verschillende onderdelen van deze taak voor het herzien van uw omgeving. `SourcePath` Hiermee wordt de locatie van de artefacten ten opzichte van het pijplijn bestand aangegeven. In dit voor beeld bestaan de bestanden in een map `AzureResourceGroup1` met de naam.
+Er zijn verschillende onderdelen van deze taak voor het herzien van uw omgeving. `SourcePath`Hiermee wordt de locatie van de artefacten ten opzichte van het pijplijn bestand aangegeven. In dit voor beeld bestaan de bestanden in een map met `AzureResourceGroup1` de naam.
 
 ```yaml
 SourcePath: '<path-to-artifacts>'
 ```
 
-Geef `azureSubscription`voor de naam op van de service verbinding die u hebt gemaakt.
+`azureSubscription`Geef voor de naam op van de service verbinding die u hebt gemaakt.
 
 ```yaml
 azureSubscription: '<your-connection-name>'
@@ -194,7 +194,7 @@ De volgende YAML toont de [implementatie taak voor de Azure Resource Manager sja
 
 Er zijn verschillende onderdelen van deze taak voor het herzien van uw omgeving.
 
-- `deploymentScope`: Selecteer het implementatie bereik in de opties: `Management Group`, `Subscription` en. `Resource Group` Gebruik de **resource groep** in deze stapsgewijze instructies. Zie [implementatie bereiken](deploy-rest.md#deployment-scope)voor meer informatie over de scopes.
+- `deploymentScope`: Selecteer het implementatie bereik in de opties: `Management Group` , `Subscription` en `Resource Group` . Gebruik de **resource groep** in deze stapsgewijze instructies. Zie [implementatie bereiken](deploy-rest.md#deployment-scope)voor meer informatie over de scopes.
 
 - `ConnectedServiceName`: Geef de naam op van de service verbinding die u hebt gemaakt.
 
@@ -204,14 +204,14 @@ Er zijn verschillende onderdelen van deze taak voor het herzien van uw omgeving.
 
 - `subscriptionName`: Geef de ID van het doel abonnement op. Deze eigenschap is alleen van toepassing op het implementatie bereik van de resource groep en het implementatie bereik van het abonnement.
 
-- `resourceGroupName`en `location`: Geef de naam en de locatie op van de resource groep die u wilt implementeren. Met de taak wordt de resource groep gemaakt als deze nog niet bestaat.
+- `resourceGroupName`en `location` : Geef de naam en de locatie op van de resource groep die u wilt implementeren. Met de taak wordt de resource groep gemaakt als deze nog niet bestaat.
 
     ```yaml
     resourceGroupName: '<resource-group-name>'
     location: '<location>'
     ```
 
-De implementatie taak is gekoppeld aan een sjabloon `WebSite.json` met de naam en een para meters-bestand, genaamd website. para meters. json. Gebruik de namen van uw sjabloon en parameter bestanden.
+De implementatie taak is gekoppeld aan een sjabloon met de naam `WebSite.json` en een para meters-bestand genaamd WebSite.parameters.jsop. Gebruik de namen van uw sjabloon en parameter bestanden.
 
 Nu u begrijpt hoe u de taken maakt, gaan we de stappen door lopen om de pijp lijn te bewerken.
 

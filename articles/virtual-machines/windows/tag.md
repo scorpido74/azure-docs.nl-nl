@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
 ms.openlocfilehash: 6ecf0f047fe353d94ca901118d1f434e33e9c8d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100563"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Een virtuele Windows-machine coderen in azure
@@ -37,9 +37,9 @@ Als uw virtuele machine al Tags bevat, ziet u alle tags in uw resource:
                 "Environment": "Production"
                }
 
-Als u tags wilt toevoegen via Power shell, kunt u de `Set-AzResource` opdracht gebruiken. Opmerking bij het bijwerken van Tags via Power shell worden Tags bijgewerkt als geheel. Als u bijvoorbeeld één tag toevoegt aan een resource die al Tags heeft, moet u alle labels opnemen die u op de resource wilt plaatsen. Hieronder ziet u een voor beeld van het toevoegen van extra tags aan een resource via Power shell-cmdlets.
+Als u tags wilt toevoegen via Power shell, kunt u de opdracht gebruiken `Set-AzResource` . Opmerking bij het bijwerken van Tags via Power shell worden Tags bijgewerkt als geheel. Als u bijvoorbeeld één tag toevoegt aan een resource die al Tags heeft, moet u alle labels opnemen die u op de resource wilt plaatsen. Hieronder ziet u een voor beeld van het toevoegen van extra tags aan een resource via Power shell-cmdlets.
 
-Met deze eerste cmdlet worden alle tags die op *MyTestVM* zijn geplaatst, ingesteld op de variabele *$Tags* , met behulp van de `Get-AzResource` -en `Tags` -eigenschap.
+Met deze eerste cmdlet worden alle tags die op *MyTestVM* zijn geplaatst, ingesteld op de variabele *$Tags* , met behulp van de- `Get-AzResource` en- `Tags` eigenschap.
 
         PS C:\> $tags = (Get-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
 
@@ -56,7 +56,7 @@ Met de tweede opdracht worden de labels voor de opgegeven variabele weer gegeven
     Environment   Production
 ```
 
-De derde opdracht voegt een extra tag toe aan de variabele *$Tags* . Let op het gebruik van **+=** de om de nieuwe sleutel/waarde-paar toe te voegen aan de *$Tags* lijst.
+De derde opdracht voegt een extra tag toe aan de variabele *$Tags* . Let op het gebruik van de **+=** om de nieuwe sleutel/waarde-paar toe te voegen aan de *$Tags* lijst.
 
         PS C:\> $tags += @{Location="MyLocation"}
 

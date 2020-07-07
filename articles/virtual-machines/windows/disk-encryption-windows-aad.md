@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 8677fa2620c1edc646dcffe120938f03fd13a0e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82085618"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>Azure Disk Encryption met Azure AD voor Windows-Vm's (vorige versie)
@@ -63,7 +63,7 @@ De volgende tabel bevat de para meters voor de Resource Manager-sjabloon voor ni
 | subnetName | Naam van het subnet in het VNet waarvan de VM-NIC deel moet uitmaken. |
 | AADClientID | De client-ID van de Azure AD-toepassing met machtigingen voor het schrijven van geheimen naar uw sleutel kluis. |
 | AADClientSecret | Client geheim van de Azure AD-toepassing met machtigingen voor het schrijven van geheimen naar uw sleutel kluis. |
-| keyVaultURL | URL van de sleutel kluis waarnaar de BitLocker-sleutel moet worden geüpload. U kunt deze ophalen met behulp van `(Get-AzKeyVault -VaultName "MyKeyVault" -ResourceGroupName "MyKeyVaultResourceGroupName").VaultURI` de cmdlet of de Azure cli`az keyvault show --name "MySecureVault" --query properties.vaultUri` |
+| keyVaultURL | URL van de sleutel kluis waarnaar de BitLocker-sleutel moet worden geüpload. U kunt deze ophalen met behulp van de cmdlet `(Get-AzKeyVault -VaultName "MyKeyVault" -ResourceGroupName "MyKeyVaultResourceGroupName").VaultURI` of de Azure cli`az keyvault show --name "MySecureVault" --query properties.vaultUri` |
 | keyEncryptionKeyURL | De URL voor de sleutel versleutelings sleutel die wordt gebruikt voor het versleutelen van de gegenereerde BitLocker-sleutel (optioneel). </br> </br>KeyEncryptionKeyURL is een optionele para meter. U kunt uw eigen KEK om de gegevens versleutelings sleutel (geheim wachtwoordzin) in uw sleutel kluis verder te beveiligen. |
 | keyVaultResourceGroup | De resource groep van de sleutel kluis. |
 | vmName | De naam van de virtuele machine waarop de versleutelings bewerking moet worden uitgevoerd. |
@@ -166,7 +166,7 @@ De volgende tabel bevat de para meters van Resource Manager-sjablonen voor besta
 | --- | --- |
 | AADClientID | De client-ID van de Azure AD-toepassing met machtigingen voor het schrijven van geheimen naar de sleutel kluis. |
 | AADClientSecret | Client geheim van de Azure AD-toepassing met machtigingen voor het schrijven van geheimen naar de sleutel kluis. |
-| keyVaultName | De naam van de sleutel kluis waarnaar de BitLocker-sleutel moet worden geüpload. U kunt deze ophalen met behulp van `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` de cmdlet of de Azure cli-opdracht`az keyvault list --resource-group "MySecureGroup"`|
+| keyVaultName | De naam van de sleutel kluis waarnaar de BitLocker-sleutel moet worden geüpload. U kunt deze ophalen met behulp van de cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` of de Azure cli-opdracht`az keyvault list --resource-group "MySecureGroup"`|
 |  keyEncryptionKeyURL | De URL van de sleutel coderings sleutel die wordt gebruikt om de gegenereerde BitLocker-sleutel te versleutelen. Deze para meter is optioneel als u **nokek** selecteert in de vervolg keuzelijst UseExistingKek. Als u **Kek** selecteert in de vervolg keuzelijst UseExistingKek, moet u de _keyEncryptionKeyURL_ -waarde invoeren. |
 | volumeType | Type volume waarop de versleutelings bewerking wordt uitgevoerd. Geldige waarden zijn _besturings systeem_, _gegevens_en _alle_. |
 | sequenceVersion | Sequentie versie van de BitLocker-bewerking. Verhoog dit versie nummer elke keer dat er een schijf versleutelings bewerking wordt uitgevoerd op dezelfde VM. |

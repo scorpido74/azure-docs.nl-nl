@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.openlocfilehash: 59d1bf08c0680d222710b55c6d6bdb4d5745da56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82084512"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Een Windows-VM verplaatsen van Amazon Web Services (AWS) naar een virtuele machine van Azure
@@ -40,7 +40,7 @@ U kunt zowel gegeneraliseerde als gespecialiseerde Vhd's uploaden naar Azure. El
 
 Exporteer het EC2-exemplaar naar een VHD in een Amazon S3-Bucket. Volg de stappen in het artikel in de Amazon-documentatie om [een exemplaar te exporteren als een virtuele machine met behulp van import/export van de VM](https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) en voer de opdracht [Create-instance-export-Task](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) uit om het EC2-exemplaar te exporteren naar een VHD-bestand. 
 
-Het geëxporteerde VHD-bestand wordt opgeslagen in de Amazon S3-Bucket die u opgeeft. De basis syntaxis voor het exporteren van de VHD vindt u hieronder. Vervang de tekst \<van de tijdelijke aanduiding tussen vier Kante haken> met uw gegevens.
+Het geëxporteerde VHD-bestand wordt opgeslagen in de Amazon S3-Bucket die u opgeeft. De basis syntaxis voor het exporteren van de VHD vindt u hieronder. Vervang alleen de tijdelijke aanduiding voor tekst in \<brackets> met uw gegevens.
 
 ```
 aws ec2 create-instance-export-task --instance-id <instanceID> --target-environment Microsoft \

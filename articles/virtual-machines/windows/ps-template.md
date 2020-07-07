@@ -8,10 +8,10 @@ ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cafe28be1d7c08c24b728de2476cb2210c6e5bd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82098319"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Een virtuele Windows-machine maken op basis van een resource manager-sjabloon
@@ -56,7 +56,7 @@ In het vorige voor beeld hebt u een sjabloon opgegeven die is opgeslagen in GitH
 
 Hier volgen enkele aanvullende bronnen:
 
-- Zie [Azure Resource Manager-documentatie](/azure/azure-resource-manager/)voor meer informatie over het ontwikkelen van Resource Manager-sjablonen.
+- Raadpleeg [Azure Resource Manager-documentatie](/azure/azure-resource-manager/) voor meer informatie over het ontwikkelen van Resource Manager-sjablonen.
 - Zie [Naslag informatie over Azure-sjablonen](/azure/templates/microsoft.compute/allversions)voor een overzicht van de Azure virtual machine-schema's.
 - Zie [Azure Quick](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular)start-sjablonen voor meer voor beelden van virtuele-machine sjablonen.
 
@@ -71,7 +71,7 @@ In de laatste Power shell-opdracht uit het vorige script ziet u de naam van de v
 
 Voor meer informatie over het maken van sjablonen bekijkt u de JSON-syntaxis en de eigenschappen voor de typen resources die u hebt geïmplementeerd:
 
-- [Micro soft. Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
-- [Micro soft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-- [Micro soft. Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
+- [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+- [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+- [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
 - [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)

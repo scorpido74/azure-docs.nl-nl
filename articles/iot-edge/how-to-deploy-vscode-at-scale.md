@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 92540c57179ae0198f78b588681167fe48097362
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82134362"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>IoT Edge-modules op schaal implementeren met behulp van Visual Studio code
@@ -28,7 +28,7 @@ In dit artikel stelt u Visual Studio code en de IoT-uitbrei ding in. Vervolgens 
 
 * Een [IOT-hub](../iot-hub/iot-hub-create-through-portal.md) in uw Azure-abonnement.
 * Een [IOT edge apparaat](how-to-register-device.md#register-with-visual-studio-code) waarop de IOT Edge-runtime is geïnstalleerd.
-* [Visual Studio code](https://code.visualstudio.com/).
+* [Visual Studio Code](https://code.visualstudio.com/).
 * [Azure IOT-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview) voor Visual Studio code.
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>Meld u aan voor toegang tot uw IoT-hub
@@ -145,7 +145,7 @@ U configureert labels op het apparaat dubbele. Hier volgt een voor beeld van een
 }
 ```
 
-Dit apparaat ontvangt een implementatie als de doel voorwaarde voor de implementatie een expressie bevat die overeenkomt met een van de waarden van de tag, `tag.location.building = '20'`zoals.
+Dit apparaat ontvangt een implementatie als de doel voorwaarde voor de implementatie een expressie bevat die overeenkomt met een van de waarden van de tag, zoals `tag.location.building = '20'` .
 
 Als u een specifiek apparaat wilt richten, ongeacht de labels of andere waarden, geeft u alleen de `deviceId` voor waarde voor het doel op.
 
@@ -222,8 +222,8 @@ Nadat u het implementatie manifest en de geconfigureerde labels op het apparaat 
 
   | Parameter | Beschrijving |
   | --- | --- |
-  | Implementatie-ID | De naam van de implementatie die wordt gemaakt in de IoT-hub. Geef uw implementatie een unieke naam van Maxi maal 128 kleine letters. Vermijd spaties en de volgende ongeldige tekens: `& ^ [ ] { } \ | " < > /`. |
-  | Doel voorwaarde | Geef een doel voorwaarde op om te bepalen welke apparaten worden bedoeld voor deze implementatie.De voor waarde is gebaseerd op apparaatspecifieke Tags of dubbele gerapporteerde eigenschappen van het apparaat en moet overeenkomen met de indeling van de expressie.Bijvoorbeeld `tags.environment='test' and properties.reported.devicemodel='4000x'`. |
+  | Implementatie-ID | De naam van de implementatie die wordt gemaakt in de IoT-hub. Geef uw implementatie een unieke naam van Maxi maal 128 kleine letters. Vermijd spaties en de volgende ongeldige tekens: `& ^ [ ] { } \ | " < > /` . |
+  | Doel voorwaarde | Geef een doel voorwaarde op om te bepalen welke apparaten worden bedoeld voor deze implementatie.De voor waarde is gebaseerd op apparaatspecifieke Tags of dubbele gerapporteerde eigenschappen van het apparaat en moet overeenkomen met de indeling van de expressie.Bijvoorbeeld `tags.environment='test' and properties.reported.devicemodel='4000x'` . |
   | Prioriteit |  Een positief geheel getal. Als twee of meer implementaties op hetzelfde apparaat zijn gericht, is de implementatie met de hoogste numerieke waarde voor prioriteit van toepassing. |
 
   Nadat u de prioriteit hebt opgegeven, moet de Terminal de uitvoer weer geven die lijkt op de volgende voors telling:

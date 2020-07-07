@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
 ms.openlocfilehash: 7e987c56c3a125a03e3a90540313ace1f8adf47a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82086569"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Beveiliging in Azure Data Lake Storage Gen1
@@ -21,7 +21,7 @@ Veel bedrijven maken gebruik van big data Analytics voor zakelijke inzichten om 
 * Verificatie
 * Autorisatie
 * Netwerkisolatie
-* Gegevensbeveiliging
+* Gegevensbescherming
 * Controleren
 
 ## <a name="authentication-and-identity-management"></a>Verificatie en identiteits beheer
@@ -76,7 +76,7 @@ Gebruik Data Lake Storage Gen1 om de toegang tot uw gegevens archief op netwerk 
 
 Azure Virtual Networks (VNet) Support service tags voor Data Lake gen 1. Een servicetag vertegenwoordigt een groep IP-adres voorvoegsels van een bepaalde Azure-service. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag van de service en werkt de servicetag automatisch bij met gewijzigde adressen. Zie overzicht van Azure- [service Tags](../virtual-network/service-tags-overview.md)voor meer informatie.
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 Data Lake Storage Gen1 beschermt uw gegevens gedurende de hele levens cyclus. Voor gegevens die onderweg zijn, gebruikt Data Lake Storage Gen1 het Protocol van de industrie norm Transport Layer Security (TLS 1,2) om gegevens via het netwerk te beveiligen.
 

@@ -8,10 +8,10 @@ ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
 ms.openlocfilehash: 3f3bf83d8155383757cc87749281c688bd281a4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82099594"
 ---
 # <a name="monitoring-scheduled-events"></a>Bewakings Scheduled Events
@@ -58,7 +58,7 @@ New-AzVm `
 
 Down load het zip-bestand van de installatie van het project vanuit [github](https://github.com/microsoft/AzureScheduledEventsService/archive/master.zip).
 
-Maak verbinding met **myCollectorVM** en kopieer het zip-bestand naar de virtuele machine en pak alle bestanden uit. Open een Power shell-prompt op de virtuele machine. Verplaats de prompt naar de map met `SchService.ps1`, bijvoorbeeld: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`, en stel de service in.
+Maak verbinding met **myCollectorVM** en kopieer het zip-bestand naar de virtuele machine en pak alle bestanden uit. Open een Power shell-prompt op de virtuele machine. Verplaats de prompt naar de map met `SchService.ps1` , bijvoorbeeld: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>` , en stel de service in.
 
 ```powershell
 .\SchService.ps1 -Setup
@@ -78,7 +78,7 @@ Valideer de status van de service en zorg ervoor dat deze wordt uitgevoerd.
 .\SchService.ps1 -status  
 ```
 
-Dit moet worden `Running`geretourneerd.
+Dit moet worden geretourneerd `Running` .
 
 De service begint nu elke 10 seconden te pollen voor geplande gebeurtenissen en keurt de gebeurtenissen goed om het onderhoud te versnellen.  Bevriezen, opnieuw opstarten, opnieuw implementeren en voor rang nemen gebeurtenissen vastgelegd door het plannen van gebeurtenissen. U kunt het script uitbreiden om enkele oplossingen te activeren voordat u de gebeurtenis goedkeurt.
 
@@ -95,7 +95,7 @@ Wanneer gebeurtenissen worden vastgelegd door de Schedule Event-service, wordt h
 >
 > Voor onze installatie hebt u Windows gekozen, maar u kunt een vergelijk bare oplossing voor Linux ontwerpen.
 
-U kunt de geplande gebeurtenis service op elk gewenst moment stoppen/verwijderen met behulp `–stop` van `–remove`de Schakel opties en.
+U kunt de geplande gebeurtenis service op elk gewenst moment stoppen/verwijderen met behulp van de Schakel opties `–stop` en `–remove` .
 
 ## <a name="connect-to-the-workspace"></a>Verbinding maken met de werk ruimte
 
@@ -155,8 +155,8 @@ Zodra de gebeurtenissen naar Log Analytics zijn gepusht, kunt u de volgende [que
     ![De query opslaan](./media/notifications/save-query.png)
 
 1. Selecteer **Nieuwe waarschuwingsregel**. 
-1. Op de pagina **regel maken** , gaat `collectorworkspace` u naar de **resource**.
-1. Onder **voor waarde**selecteert u de vermelding *wanneer het zoeken naar <login undefined>logboeken van de klant *. De pagina **signaal logica configureren** wordt geopend.
+1. Op de pagina **regel maken** , gaat u `collectorworkspace` naar de **resource**.
+1. Onder **voor waarde**selecteert u de vermelding *wanneer het <login undefined> zoeken naar Logboeken van de klant *. De pagina **signaal logica configureren** wordt geopend.
 1. Voer bij **drempel waarde** *0* in en selecteer vervolgens **gereed**.
 1. Onder **acties**, selecteer **actie groep maken**. De pagina **actie groep toevoegen** wordt geopend.
 1. Typ *myActionGroup*in de naam van de **actie groep**.

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/18/2019
 ms.author: cynthn
 ms.openlocfilehash: d360ac5a57fe72b092a6694721905c066527bba3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82086450"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Een virtuele machine maken op basis van een VHD met behulp van de Azure Portal
@@ -67,7 +67,7 @@ Nadat u de virtuele harde schijf hebt die u wilt gebruiken, kunt u de virtuele m
 8. Op de pagina **netwerk** kunt u de portal alle nieuwe resources laten maken of u kunt een bestaand **virtueel netwerk** en een **netwerk beveiligings groep**selecteren. De portal maakt altijd een nieuwe netwerk interface en een openbaar IP-adres voor de nieuwe virtuele machine. 
 9. Breng wijzigingen aan in de bewakings opties op de pagina **beheer** .
 10. Voeg op de pagina **gast configuratie** alle gewenste uitbrei dingen toe.
-11. Wanneer u klaar bent, selecteert u **controleren + maken**. 
+11. Selecteer als u klaar bent de optie **Beoordelen en maken**. 
 12. Als de VM-configuratie wordt gevalideerd, selecteert u **maken** om de implementatie te starten.
 
 

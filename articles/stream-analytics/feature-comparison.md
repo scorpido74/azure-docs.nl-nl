@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: b169a067f05de422b714e18a4d7ebb9c9e7f0428
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82133503"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Vergelijking van Azure Stream Analytics-functies
@@ -43,7 +43,7 @@ Met Azure Stream Analytics kunt u streaming-oplossingen maken in de Cloud en op 
 |Aangepaste bericht eigenschappen     |Ja         |Ja         |Nee       |
 |Aangepaste C#-code functie en deserializer|Alleen-lezen modus|Ja|Nee|
 |Java script UDF en UDA     |Ja         |Ja         |Alleen op Windows         |
-|Machine Learning-service     |Ja        |Ja         |Nee         |
+|Machine Learning Service     |Ja        |Ja         |Nee         |
 |Machine Learning Studio     |Ja, maar de query kan niet worden getest        |Ja |Nee         |
 |Compatibiliteitsniveau     |1.0</br>1.1</br>1,2 (standaard)         |1.0</br>1.1</br>1,2 (standaard)           |1.0</br>1.1</br>1,2 (standaard)           |
 |Ingebouwde op ML gebaseerde anomalie detectie functies     |Ja         |Ja         |Ja         |

@@ -15,10 +15,10 @@ ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev
 ms.openlocfilehash: 7729a30acb1b191378960887164bb4b32e225c36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82128011"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Migratie handleiding voor ADAL naar MSAL voor Java
@@ -43,13 +43,13 @@ Als u met het eind punt (en ADAL4J) van Azure AD voor ontwikkel aars (v 1.0) heb
 
 ADAL4J schaft tokens aan voor resources, terwijl MSAL voor Java tokens ophaalt voor scopes. Een aantal MSAL voor Java-klassen vereist een scope-para meter. Deze para meter is een lijst met teken reeksen die de gewenste machtigingen en benodigde bronnen declareren. Bekijk [de bereiken van Microsoft Graph](https://docs.microsoft.com/graph/permissions-reference) om voorbeeld bereik te bekijken.
 
-U kunt het `/.default` bereik achtervoegsel toevoegen aan de resource om uw apps van het v 1.0-eind punt (ADAL) te migreren naar het micro soft Identity platform-eind punt (MSAL). Bijvoorbeeld: voor de resource waarde van `https://graph.microsoft.com`is `https://graph.microsoft.com/.default`de equivalente bereik waarde.  Als de bron zich niet in het URL-formulier bevindt, maar een resource `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX`-id van het formulier, kunt u de `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default`waarde van bereik nog steeds gebruiken als.
+U kunt het `/.default` bereik achtervoegsel toevoegen aan de resource om uw apps van het v 1.0-eind punt (ADAL) te migreren naar het micro soft Identity platform-eind punt (MSAL). Bijvoorbeeld: voor de resource waarde van `https://graph.microsoft.com` is de equivalente bereik waarde `https://graph.microsoft.com/.default` .  Als de bron zich niet in het URL-formulier bevindt, maar een resource-ID van het formulier `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , kunt u de waarde van bereik nog steeds gebruiken als `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
 
 Voor meer informatie over de verschillende typen bereiken, verwijzen wij u naar [machtigingen en toestemming in het micro soft-identiteits platform](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent) en de [scopes voor een web API die v 1.0-tokens accepteert](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes) .
 
 ## <a name="core-classes"></a>Kern klassen
 
-In ADAL4J vertegenwoordigt de `AuthenticationContext` klasse uw verbinding met de beveiligings token service (STS) of autorisatie server via een-instantie. MSAL voor Java is echter ontworpen rond client toepassingen. Het biedt twee afzonderlijke klassen: `PublicClientApplication` en `ConfidentialClientApplication` om client toepassingen weer te geven.  De laatste, `ConfidentialClientApplication`, vertegenwoordigt een toepassing die is ontworpen om veilig een geheim te onderhouden, zoals een toepassings-id voor een daemon-app.
+In ADAL4J vertegenwoordigt de `AuthenticationContext` klasse uw verbinding met de beveiligings token service (STS) of autorisatie server via een-instantie. MSAL voor Java is echter ontworpen rond client toepassingen. Het biedt twee afzonderlijke klassen: `PublicClientApplication` en `ConfidentialClientApplication` om client toepassingen weer te geven.  De laatste, `ConfidentialClientApplication` , vertegenwoordigt een toepassing die is ontworpen om veilig een geheim te onderhouden, zoals een toepassings-id voor een daemon-app.
 
 De volgende tabel laat zien hoe ADAL4J-functies worden toegewezen aan de nieuwe MSAL voor Java-functies:
 
@@ -69,7 +69,7 @@ De volgende tabel laat zien hoe ADAL4J-functies worden toegewezen aan de nieuwe 
 
 Gemanipuleerde gebruikers ADAL4J. Hoewel een gebruiker één persoon of software-agent vertegenwoordigt, kan deze een of meer accounts hebben in het micro soft-identiteits systeem. Een gebruiker kan bijvoorbeeld meerdere Azure AD-, Azure AD B2C-of micro soft-accounts hebben.
 
-MSAL voor Java definieert het concept van het account via `IAccount` de interface. Dit is een belang rijke wijziging ten opzichte van ADAL4J, maar het is wel een goed idee omdat er wordt vastgelegd dat dezelfde gebruiker meerdere accounts kan hebben, en zelfs in verschillende Azure AD-directory's. MSAL voor Java biedt betere informatie in gast scenario's, omdat informatie over het privé-account wordt verstrekt.
+MSAL voor Java definieert het concept van het account via de `IAccount` interface. Dit is een belang rijke wijziging ten opzichte van ADAL4J, maar het is wel een goed idee omdat er wordt vastgelegd dat dezelfde gebruiker meerdere accounts kan hebben, en zelfs in verschillende Azure AD-directory's. MSAL voor Java biedt betere informatie in gast scenario's, omdat informatie over het privé-account wordt verstrekt.
 
 ## <a name="cache-persistence"></a>Cache persistentie
 
@@ -78,9 +78,9 @@ MSAL voor Java voegt een [token cache](msal-acquire-cache-tokens.md) toe om het 
 
 ## <a name="common-authority"></a>Algemene instantie
 
-Als u in v 1.0 de `https://login.microsoftonline.com/common` bevoegdheid gebruikt, kunnen gebruikers zich aanmelden met een Azure Active Directory (Aad)-account (voor elke organisatie).
+Als u in v 1.0 de bevoegdheid gebruikt `https://login.microsoftonline.com/common` , kunnen gebruikers zich aanmelden met een Azure Active Directory (Aad)-account (voor elke organisatie).
 
-Als u de `https://login.microsoftonline.com/common` instantie in v 2.0 gebruikt, kunnen gebruikers zich aanmelden met een Aad-organisatie of zelfs een persoonlijk micro soft-account (MSA). Als u de aanmelding voor een AAD-account wilt beperken, moet u in MSAL voor Java de `https://login.microsoftonline.com/organizations` -instantie (hetzelfde gedrag als met ADAL4J) gebruiken. Als u een instantie wilt opgeven, `authority` stelt u de para meter in de methode [PublicClientApplication. Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) in wanneer u de `PublicClientApplication` klasse maakt.
+Als u de `https://login.microsoftonline.com/common` instantie in v 2.0 gebruikt, kunnen gebruikers zich aanmelden met een Aad-organisatie of zelfs een persoonlijk micro soft-account (MSA). Als u de aanmelding voor een AAD-account wilt beperken, moet u in MSAL voor Java de- `https://login.microsoftonline.com/organizations` instantie (hetzelfde gedrag als met ADAL4J) gebruiken. Als u een instantie wilt opgeven, stelt `authority` u de para meter in de methode [PublicClientApplication. Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) in wanneer u de `PublicClientApplication` klasse maakt.
 
 ## <a name="v10-and-v20-tokens"></a>v 1.0 en v 2.0-tokens
 
@@ -92,7 +92,7 @@ Zie voor meer informatie over de tokens v 1.0 en v 2.0 [Azure Active Directory t
 
 ## <a name="adal-to-msal-migration"></a>Migratie van ADAL naar MSAL
 
-In ADAL4J zijn de vernieuwings tokens weer gegeven, waardoor ontwikkel aars deze in de cache kunnen opslaan. Ze worden gebruikt `AcquireTokenByRefreshToken()` om oplossingen in te scha kelen, zoals het implementeren van langlopende services die Dash boards vernieuwen namens de gebruiker wanneer de gebruiker niet meer is verbonden.
+In ADAL4J zijn de vernieuwings tokens weer gegeven, waardoor ontwikkel aars deze in de cache kunnen opslaan. Ze `AcquireTokenByRefreshToken()` worden gebruikt om oplossingen in te scha kelen, zoals het implementeren van langlopende services die Dash boards vernieuwen namens de gebruiker wanneer de gebruiker niet meer is verbonden.
 
 MSAL voor Java maakt geen vernieuwings tokens om veiligheids redenen. In plaats daarvan zorgt MSAL voor het vernieuwen van tokens voor u.
 
@@ -113,7 +113,7 @@ PublicClientApplication app = PublicClientApplication.builder(CLIENT_ID) // Clie
 IAuthenticationResult result = app.acquireToken(parameters);
 ```
 
-Het `IAuthenticationResult` retourneert een toegangs token en id-token, terwijl uw nieuwe vernieuwings token in de cache wordt opgeslagen.
+Het `IAuthenticationResult` retourneert een toegangs token en ID-token, terwijl uw nieuwe vernieuwings token in de cache wordt opgeslagen.
 De toepassing bevat nu ook een IAccount:
 
 ```java

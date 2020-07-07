@@ -9,10 +9,10 @@ ms.date: 01/27/2020
 ms.author: cynthn
 ms.reviewer: zivr
 ms.openlocfilehash: 2401e8c160fd1c2ee3a734f374f1d4409c52ed16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82098523"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Vm's implementeren op proximity-plaatsings groepen met Power shell
@@ -49,7 +49,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-vm"></a>Een virtuele machine maken
 
-Maak een virtuele machine in de plaatsings groep `-ProximityPlacementGroup $ppg.Id` van nabij met om te verwijzen naar de Proximity-groeps-id bij gebruik van [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) om de virtuele machine te maken.
+Maak een virtuele machine in de plaatsings groep van nabij met `-ProximityPlacementGroup $ppg.Id` om te verwijzen naar de Proximity-groeps-id bij gebruik van [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) om de virtuele machine te maken.
 
 ```azurepowershell-interactive
 $vmName = "myVM"
@@ -96,7 +96,7 @@ Start-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
 
 
 ## <a name="availability-sets"></a>Beschikbaarheidssets
-U kunt ook een beschikbaarheidsset maken in de plaatsings groep voor proximity. Gebruik dezelfde `-ProximityPlacementGroup` para meter met de cmdlet [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) voor het maken van een Beschikbaarheidsset en alle virtuele machines die zijn gemaakt in de beschikbaarheidsset, worden ook gemaakt in dezelfde plaatsings groep.
+U kunt ook een beschikbaarheidsset maken in de plaatsings groep voor proximity. Gebruik dezelfde `-ProximityPlacementGroup` para meter met de cmdlet [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) voor het maken van een beschikbaarheidsset en alle virtuele machines die zijn gemaakt in de beschikbaarheidsset, worden ook gemaakt in dezelfde plaatsings groep.
 
 Als u een bestaande beschikbaarheidsset wilt toevoegen aan of verwijderen uit een proximity-plaatsings groep, moet u eerst alle virtuele machines in de beschikbaarheidsset stoppen. 
 

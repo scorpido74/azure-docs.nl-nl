@@ -9,10 +9,10 @@ ms.author: glenga
 ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
 ms.openlocfilehash: 028551f04b2e44e9456e2f7343159ad9b52fd25f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82085141"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Achtergrond taken uitvoeren met webjobs in Azure App Service
@@ -51,7 +51,7 @@ De volgende bestandstypen worden ondersteund:
 * . sh (met behulp van bash)
 * . php (met PHP)
 * . py (met python)
-* . js (met behulp van node. js)
+* . js (met behulp van Node.js)
 * . jar (met behulp van Java)
 
 ## <a name="create-a-continuous-webjob"></a><a name="CreateContinuous"></a>Een doorlopende Webtaak maken
@@ -78,7 +78,7 @@ when making changes in one don't forget the other two.
    | Instelling      | Voorbeeldwaarde   | Beschrijving  |
    | ------------ | ----------------- | ------------ |
    | **Naam** | myContinuousWebJob | Een naam die uniek is binnen een App Service-app. Moet beginnen met een letter of een cijfer en mag geen speciale tekens bevatten, behalve '-' en ' _ '. |
-   | **Bestand uploaden** | ConsoleApp. zip | Een *zip* -bestand dat uw uitvoer bare bestand of script bestanden bevat, evenals alle ondersteunende bestanden die nodig zijn om het programma of script uit te voeren. De ondersteunde typen uitvoer bare bestanden of scripts worden vermeld in de sectie [ondersteunde bestands typen](#acceptablefiles) . |
+   | **Bestand uploaden** | ConsoleApp.zip | Een *zip* -bestand dat uw uitvoer bare bestand of script bestanden bevat, evenals alle ondersteunende bestanden die nodig zijn om het programma of script uit te voeren. De ondersteunde typen uitvoer bare bestanden of scripts worden vermeld in de sectie [ondersteunde bestands typen](#acceptablefiles) . |
    | **Type** | Continu | De [typen Webtaaks](#webjob-types) worden eerder in dit artikel beschreven. |
    | **Schalen** | Meerdere exemplaren | Alleen beschikbaar voor doorlopende webjobs. Hiermee wordt bepaald of het programma of script wordt uitgevoerd op alle exemplaren of op slechts één exemplaar. De optie voor het uitvoeren van meerdere exemplaren is niet van toepassing op de [prijs categorieën](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)gratis of gedeeld. | 
 
@@ -116,7 +116,7 @@ when making changes in one don't forget the other two.
    | Instelling      | Voorbeeldwaarde   | Beschrijving  |
    | ------------ | ----------------- | ------------ |
    | **Naam** | myTriggeredWebJob | Een naam die uniek is binnen een App Service-app. Moet beginnen met een letter of een cijfer en mag geen speciale tekens bevatten, behalve '-' en ' _ '.|
-   | **Bestand uploaden** | ConsoleApp. zip | Een *zip* -bestand dat uw uitvoer bare bestand of script bestanden bevat, evenals alle ondersteunende bestanden die nodig zijn om het programma of script uit te voeren. De ondersteunde typen uitvoer bare bestanden of scripts worden vermeld in de sectie [ondersteunde bestands typen](#acceptablefiles) . |
+   | **Bestand uploaden** | ConsoleApp.zip | Een *zip* -bestand dat uw uitvoer bare bestand of script bestanden bevat, evenals alle ondersteunende bestanden die nodig zijn om het programma of script uit te voeren. De ondersteunde typen uitvoer bare bestanden of scripts worden vermeld in de sectie [ondersteunde bestands typen](#acceptablefiles) . |
    | **Type** | Geactiveerd | De [typen Webtaaks](#webjob-types) worden eerder in dit artikel beschreven. |
    | **Triggers** | Handmatig | |
 
@@ -154,7 +154,7 @@ when making changes in one don't forget the other two.
    | Instelling      | Voorbeeldwaarde   | Beschrijving  |
    | ------------ | ----------------- | ------------ |
    | **Naam** | myScheduledWebJob | Een naam die uniek is binnen een App Service-app. Moet beginnen met een letter of een cijfer en mag geen speciale tekens bevatten, behalve '-' en ' _ '. |
-   | **Bestand uploaden** | ConsoleApp. zip | Een *zip* -bestand dat uw uitvoer bare bestand of script bestanden bevat, evenals alle ondersteunende bestanden die nodig zijn om het programma of script uit te voeren. De ondersteunde typen uitvoer bare bestanden of scripts worden vermeld in de sectie [ondersteunde bestands typen](#acceptablefiles) . |
+   | **Bestand uploaden** | ConsoleApp.zip | Een *zip* -bestand dat uw uitvoer bare bestand of script bestanden bevat, evenals alle ondersteunende bestanden die nodig zijn om het programma of script uit te voeren. De ondersteunde typen uitvoer bare bestanden of scripts worden vermeld in de sectie [ondersteunde bestands typen](#acceptablefiles) . |
    | **Type** | Geactiveerd | De [typen Webtaaks](#webjob-types) worden eerder in dit artikel beschreven. |
    | **Triggers** | Gepland | Schakel de functie altijd on in om de planning betrouwbaar te laten werken. Always on is alleen beschikbaar in de prijs categorieën Basic, Standard en Premium.|
    | **CRON-expressie** | 0 0/20 * * * * | [Cron-expressies](#ncrontab-expressions) worden beschreven in de volgende sectie. |

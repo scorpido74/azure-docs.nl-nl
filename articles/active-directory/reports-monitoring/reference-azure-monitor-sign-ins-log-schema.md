@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d7c9713f27643e792ea381e1a2419cbc4b67a99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82129202"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Het schema voor logboek registraties van Azure AD interpreteren in Azure Monitor
@@ -145,7 +145,7 @@ In dit artikel wordt het Azure Active Directory (Azure AD)-aanmeldings logboek s
 
 | Veldnaam | Beschrijving |
 |------------|-------------|
-| Time | De datum en tijd, in UTC. |
+| Tijd | De datum en tijd, in UTC. |
 | ResourceId | Deze waarde is niet-toegewezen en u kunt dit veld veilig negeren.  |
 | OperationName | Voor aanmeldingen is deze waarde altijd *aanmeldings activiteit*. |
 | OperationVersion | De REST API versie die door de client is aangevraagd. |
@@ -154,11 +154,11 @@ In dit artikel wordt het Azure Active Directory (Azure AD)-aanmeldings logboek s
 | ResultType | Het resultaat van de aanmeldings bewerking kan *slagen* of *mislukken*. | 
 | ResultSignature | Bevat de fout code, indien aanwezig, voor de aanmeldings bewerking. |
 | ResultDescription | Bevat de fout beschrijving voor de aanmeldings bewerking. |
-| riskDetail | riskDetail | Biedt de ' reason ' achter een specifieke status van een Risk ante gebruiker, aanmelding of een risico detectie. De mogelijke waarden zijn: `none`, `adminGeneratedTemporaryPassword`, `userPerformedSecuredPasswordChange`, `userPerformedSecuredPasswordReset`, `adminConfirmedSigninSafe`, `aiConfirmedSigninSafe`, `userPassedMFADrivenByRiskBasedPolicy`, `adminDismissedAllRiskForUser`, `adminConfirmedSigninCompromised`, `unknownFutureValue`. De waarde `none` betekent dat er geen actie is uitgevoerd voor de gebruiker of zich tot nu toe heeft aangemeld. <br>**Opmerking:** Voor de details van deze eigenschap is een Azure AD Premium P2-licentie vereist. Andere licenties retour neren de `hidden`waarde. |
-| riskEventTypes | riskEventTypes | Typen risico detectie die zijn gekoppeld aan de aanmelding. De mogelijke waarden zijn: `unlikelyTravel`, `anonymizedIPAddress`, `maliciousIPAddress`, `unfamiliarFeatures`, `malwareInfectedIPAddress`, `suspiciousIPAddress`, `leakedCredentials`, `investigationsThreatIntelligence`, `generic`en `unknownFutureValue`. |
-| riskLevelAggregated | riskLevel | Samengevoegd risico niveau. De mogelijke waarden zijn: `none`, `low`, `medium`, `high` `hidden`, en `unknownFutureValue`. De waarde `hidden` betekent dat de gebruiker of aanmelding niet is ingeschakeld voor Azure AD Identity Protection. **Opmerking:** De Details voor deze eigenschap zijn alleen beschikbaar voor klanten met een Azure AD Premium P2. Alle andere klanten worden geretourneerd `hidden`. |
-| riskLevelDuringSignIn | riskLevel | Risico niveau tijdens het aanmelden. De mogelijke waarden zijn: `none`, `low`, `medium`, `high` `hidden`, en `unknownFutureValue`. De waarde `hidden` betekent dat de gebruiker of aanmelding niet is ingeschakeld voor Azure AD Identity Protection. **Opmerking:** De Details voor deze eigenschap zijn alleen beschikbaar voor klanten met een Azure AD Premium P2. Alle andere klanten worden geretourneerd `hidden`. |
-| riskState | riskState | Hiermee wordt de status van de Risk ante gebruiker, het aanmelden of een risico detectie gerapporteerd. De mogelijke waarden zijn: `none`, `confirmedSafe`, `remediated`, `dismissed`, `atRisk`, `confirmedCompromised`, `unknownFutureValue`. |
+| riskDetail | riskDetail | Biedt de ' reason ' achter een specifieke status van een Risk ante gebruiker, aanmelding of een risico detectie. De mogelijke waarden zijn: `none` , `adminGeneratedTemporaryPassword` , `userPerformedSecuredPasswordChange` , `userPerformedSecuredPasswordReset` , `adminConfirmedSigninSafe` , `aiConfirmedSigninSafe` , `userPassedMFADrivenByRiskBasedPolicy` , `adminDismissedAllRiskForUser` , `adminConfirmedSigninCompromised` , `unknownFutureValue` . De waarde `none` betekent dat er geen actie is uitgevoerd voor de gebruiker of zich tot nu toe heeft aangemeld. <br>**Opmerking:** Voor de details van deze eigenschap is een Azure AD Premium P2-licentie vereist. Andere licenties retour neren de waarde `hidden` . |
+| riskEventTypes | riskEventTypes | Typen risico detectie die zijn gekoppeld aan de aanmelding. De mogelijke waarden zijn: `unlikelyTravel` , `anonymizedIPAddress` , `maliciousIPAddress` , `unfamiliarFeatures` , `malwareInfectedIPAddress` , `suspiciousIPAddress` , `leakedCredentials` , `investigationsThreatIntelligence` , `generic` en `unknownFutureValue` . |
+| riskLevelAggregated | riskLevel | Samengevoegd risico niveau. De mogelijke waarden zijn: `none` , `low` , `medium` , `high` , `hidden` en `unknownFutureValue` . De waarde `hidden` betekent dat de gebruiker of aanmelding niet is ingeschakeld voor Azure AD Identity Protection. **Opmerking:** De Details voor deze eigenschap zijn alleen beschikbaar voor klanten met een Azure AD Premium P2. Alle andere klanten worden geretourneerd `hidden` . |
+| riskLevelDuringSignIn | riskLevel | Risico niveau tijdens het aanmelden. De mogelijke waarden zijn: `none` , `low` , `medium` , `high` , `hidden` en `unknownFutureValue` . De waarde `hidden` betekent dat de gebruiker of aanmelding niet is ingeschakeld voor Azure AD Identity Protection. **Opmerking:** De Details voor deze eigenschap zijn alleen beschikbaar voor klanten met een Azure AD Premium P2. Alle andere klanten worden geretourneerd `hidden` . |
+| riskState | riskState | Hiermee wordt de status van de Risk ante gebruiker, het aanmelden of een risico detectie gerapporteerd. De mogelijke waarden zijn: `none` , `confirmedSafe` , `remediated` , `dismissed` , `atRisk` , `confirmedCompromised` , `unknownFutureValue` . |
 | DurationMs |  Deze waarde is niet-toegewezen en u kunt dit veld veilig negeren. |
 | CallerIpAddress | Het IP-adres van de client die de aanvraag heeft ingediend. | 
 | CorrelationId | De optionele GUID die door de client wordt door gegeven. Deze waarde kan bijdragen aan de activiteiten aan de client zijde met bewerkingen aan de server zijde en is handig wanneer u Logboeken traceert die services omvatten. |

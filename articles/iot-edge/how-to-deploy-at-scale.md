@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: e55d3f704c76d2783c3e442a90c829448129a4d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82134414"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>Implementeer IoT Edge modules op schaal met behulp van de Azure Portal
@@ -55,7 +55,7 @@ Er zijn vijf stappen voor het maken van een implementatie. In de volgende sectie
 
 ### <a name="step-1-name-and-label"></a>Stap 1: naam en label
 
-1. Geef uw implementatie een unieke naam van Maxi maal 128 kleine letters. Vermijd spaties en de volgende ongeldige tekens: `& ^ [ ] { } \ | " < > /`.
+1. Geef uw implementatie een unieke naam van Maxi maal 128 kleine letters. Vermijd spaties en de volgende ongeldige tekens: `& ^ [ ] { } \ | " < > /` .
 1. U kunt labels toevoegen als sleutel-waardeparen om uw implementaties bij te houden. Bijvoorbeeld **HostPlatform** en **Linux**, of **versie** en **3.0.1**.
 1. Selecteer **volgende: modules** om door te gaan naar stap 2.
 
@@ -115,7 +115,7 @@ Voer de volgende stappen uit om een module van Azure Stream Analytics toe te voe
 
 Nadat u een module aan een implementatie hebt toegevoegd, kunt u de naam ervan selecteren om de pagina **IOT Edge module bijwerken** te openen. Op deze pagina kunt u de module-instellingen, omgevings variabelen, Create-opties en module twee bewerken. Als u een module van de Marketplace hebt toegevoegd, is het mogelijk dat sommige van deze para meters al zijn ingevuld.
 
-Als u een gelaagde implementatie maakt, kunt u een module configureren die zich in andere implementaties bevindt die gericht zijn op dezelfde apparaten. Open het tabblad **dubbele instellingen** voor de module om de module te updaten zonder andere versies te overschrijven. Maak een nieuwe **module dubbele eigenschap** met een unieke naam voor een Subsectie binnen de gewenste eigenschappen van de module `properties.desired.settings`. Als u eigenschappen binnen het `properties.desired` veld definieert, worden de gewenste eigenschappen overschreven voor de module die is gedefinieerd in een implementatie met lagere prioriteit.
+Als u een gelaagde implementatie maakt, kunt u een module configureren die zich in andere implementaties bevindt die gericht zijn op dezelfde apparaten. Open het tabblad **dubbele instellingen** voor de module om de module te updaten zonder andere versies te overschrijven. Maak een nieuwe **module dubbele eigenschap** met een unieke naam voor een Subsectie binnen de gewenste eigenschappen van de module `properties.desired.settings` . Als u eigenschappen binnen het veld definieert `properties.desired` , worden de gewenste eigenschappen overschreven voor de module die is gedefinieerd in een implementatie met lagere prioriteit.
 
 ![Module dubbele eigenschap instellen voor gelaagde implementatie](./media/how-to-deploy-monitor/module-twin-property.png)
 
@@ -125,7 +125,7 @@ Zodra u alle modules voor een implementatie hebt geconfigureerd, selecteert u **
 
 ### <a name="step-3-routes"></a>Stap 3: routes
 
-Routes bepalen hoe modules met elkaar communiceren binnen een implementatie. De wizard geeft standaard een route met de naam **upstream** en die is gedefinieerd als **van/messages/\* naar $upstream**. Dit betekent dat alle berichten die door modules worden uitgevoerd, worden verzonden naar uw IOT-hub.  
+Routes bepalen hoe modules met elkaar communiceren binnen een implementatie. De wizard geeft standaard een route met de naam **upstream** en die is gedefinieerd als **van/messages/ \* naar $upstream**. Dit betekent dat alle berichten die door modules worden uitgevoerd, worden verzonden naar uw IOT-hub.  
 
 Voeg de routes toe of werk deze bij met informatie van de [Declareer routes](module-composition.md#declare-routes)en selecteer vervolgens **volgende** om door te gaan naar de sectie beoordeling.
 
@@ -208,7 +208,7 @@ Wanneer u een implementatie verwijdert, nemen alle geïmplementeerde apparaten d
    ![IoT Edge-implementaties weer geven](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. Gebruik het selectie vakje om de implementatie te selecteren die u wilt verwijderen.
-1. Selecteer **verwijderen**.
+1. Selecteer **Verwijderen**.
 1. Er wordt een prompt weer gegeven waarin wordt vermeld dat deze implementatie wordt verwijderd en teruggezet naar de vorige status voor alle apparaten.Een implementatie met een lagere prioriteit is van toepassing.Als er geen andere implementatie is gericht, worden er geen modules verwijderd. Als u alle modules van uw apparaat wilt verwijderen, maakt u een implementatie met nul modules en implementeert u deze op dezelfde apparaten.Selecteer **Ja** om door te gaan.
 
 ## <a name="next-steps"></a>Volgende stappen

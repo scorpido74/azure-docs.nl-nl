@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: d746b942f624fc83515ba29b0a092c2e592f1f25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82137617"
 ---
 # <a name="two-class-logistic-regression-module"></a>Logistiek regressie module met twee klassen
@@ -55,7 +55,7 @@ De kolom Label kan bijvoorbeeld [gestemd] zijn met mogelijke waarden ' Yes ' of 
   
     -   In tegens telling tot L2-regularisatie is de voor keur voor gegevens die niet sparse zijn.  
   
-     Dit algoritme ondersteunt een lineaire combi natie van L1-en L2-regularisatie-waarden: <code>x = L1</code> dat <code>y = L2</code>wil zeggen <code>ax + by = c</code> , als en en vervolgens de lineaire lijn van de regularisatie-voor waarden definieert.  
+     Dit algoritme ondersteunt een lineaire combi natie van L1-en L2-regularisatie-waarden: dat wil zeggen, als <code>x = L1</code> en en <code>y = L2</code> vervolgens <code>ax + by = c</code> de lineaire lijn van de regularisatie-voor waarden definieert.  
   
     > [!NOTE]
     >  Wilt u meer informatie over L1 en L2-regularisatie? In het volgende artikel wordt uitgelegd hoe L1 en L2 regularisatie verschillend zijn en hoe deze van invloed zijn op model fitting, met code voorbeelden voor logistiek-regressie en Neural-netwerk modellen: [L1 en L2 regularisatie voor machine learning](https://msdn.microsoft.com/magazine/dn904675.aspx)  

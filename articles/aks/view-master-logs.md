@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.openlocfilehash: 504d6a5216f3345f22a601c4ae084488aeb97c8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82128957"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Logboeken van Kubernetes-hoofdknooppunten inschakelen en controleren in AKS (Azure Kubernetes Service)
@@ -107,8 +107,8 @@ De volgende tabel bevat informatie over het schema dat wordt gebruikt voor elke 
 | Veldnaam               | Beschrijving |
 |--------------------------|-------------|
 | *resourceId*             | Azure-resource die het logboek heeft geproduceerd |
-| *tegelijk*                   | Tijds tempel van het moment waarop het logboek is geüpload |
-| *rubriek*               | Naam van container/onderdeel voor het genereren van het logboek |
+| *time*                   | Tijds tempel van het moment waarop het logboek is geüpload |
+| *category*               | Naam van container/onderdeel voor het genereren van het logboek |
 | *operationName*          | Altijd *micro soft. container service/managedClusters/diagnosticLogs/lezen* |
 | *Eigenschappen. log*         | Volledige tekst van het logboek van het onderdeel |
 | *Eigenschappen. Stream*      | *stderr* of *stdout* |

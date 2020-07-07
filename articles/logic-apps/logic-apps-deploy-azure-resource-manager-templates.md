@@ -7,21 +7,21 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
 ms.openlocfilehash: 432e22879ce0eba89f04a1084e2d4a93a487dd45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82086433"
 ---
-# <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Resource Manager sjablonen voor Azure Logic Apps implementeren
+# <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Resource Manager-sjablonen inzetten voor Azure Logic Apps
 
 Nadat u een Azure Resource Manager sjabloon voor uw logische app hebt gemaakt, kunt u uw sjabloon op de volgende manieren implementeren:
 
-* [Azure Portal](#portal)
+* [Azure-portal](#portal)
 * [Visual Studio](#visual-studio)
 * [Azure PowerShell](#powershell)
 * [Azure-CLI](#cli)
-* [Azure Resource Manager REST API](../azure-resource-manager/templates/deploy-rest.md)
+* [Azure Resource Manager REST API's](../azure-resource-manager/templates/deploy-rest.md)
 * [Azure DevOps](#azure-pipelines)
 
 <a name="portal"></a>
@@ -41,7 +41,7 @@ U wordt bijvoorbeeld gevraagd naar de volgende informatie nadat u zich hebt aang
 * Een test-URI
 * Acceptatie van de opgegeven voor waarden
 
-Zie deze onderwerpen voor meer informatie:
+Raadpleeg de volgende onderwerpen voor meer informatie:
 
 * [Overzicht: de implementatie voor logische apps met Azure Resource Manager sjablonen automatiseren](logic-apps-azure-resource-manager-templates-overview.md)
 * [Resources implementeren met Azure Resource Manager sjablonen en de Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
@@ -62,7 +62,7 @@ Als u wilt implementeren in een specifieke *Azure-resource groep*, gebruikt u de
 New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
 ```
 
-Zie deze onderwerpen voor meer informatie:
+Raadpleeg de volgende onderwerpen voor meer informatie:
 
 * [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
 * [`New-AzResourceGroupDeployment`](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment)
@@ -77,7 +77,7 @@ Als u wilt implementeren in een specifieke *Azure-resource groep*, gebruikt u de
 az group deployment create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
 ```
 
-Zie deze onderwerpen voor meer informatie:
+Raadpleeg de volgende onderwerpen voor meer informatie:
 
 * [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
 * [`az group deployment create`](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)

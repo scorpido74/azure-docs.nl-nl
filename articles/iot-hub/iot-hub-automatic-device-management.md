@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: robinsh
 ms.openlocfilehash: 276f115f579fbd1ab077722b220a4a0c6c571850
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82025064"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Automatische IoT-apparaat-en module beheer met de Azure Portal
@@ -34,7 +34,7 @@ Automatische configuraties worden voor de eerste keer uitgevoerd, kort nadat de 
 
 ## <a name="implement-twins"></a>Apparaatdubbels implementeren
 
-Voor automatische apparaatconfiguratie is het gebruik van apparaatdubbels vereist om de status van de Cloud en de apparaten te synchroniseren.  Zie voor meer informatie [apparaat Apparaatdubbels begrijpen en gebruiken in IOT hub](iot-hub-devguide-device-twins.md).
+Voor automatische apparaatconfiguratie is het gebruik van apparaatdubbels vereist om de status van de Cloud en de apparaten te synchroniseren.  Zie [Apparaatdubbels begrijpen en gebruiken in IoT Hub](iot-hub-devguide-device-twins.md) voor meer informatie.
 
 Voor automatische module configuraties moet module apparaatdubbels worden gebruikt om de status van de Cloud en modules te synchroniseren. Zie voor meer informatie de [module Apparaatdubbels begrijpen en gebruiken in IOT hub](iot-hub-devguide-module-twins.md).
 
@@ -65,7 +65,7 @@ Er zijn vijf stappen voor het maken van een configuratie. In de volgende secties
 
 ### <a name="name-and-label"></a>Naam en label
 
-1. Geef uw configuratie een unieke naam van Maxi maal 128 kleine letters. Vermijd spaties en de volgende ongeldige tekens: `& ^ [ ] { } \ | " < > /`.
+1. Geef uw configuratie een unieke naam van Maxi maal 128 kleine letters. Vermijd spaties en de volgende ongeldige tekens: `& ^ [ ] { } \ | " < > /` .
 
 2. Voeg labels toe om uw configuraties bij te houden. Labels zijn **naam**- **, waardeparen die** uw configuratie beschrijven. Bijvoorbeeld `HostPlatform, Linux` of `Version, 3.0.1`.
 
@@ -87,11 +87,11 @@ U kunt bijvoorbeeld het dubbele pad instellen op `properties.desired.chiller-wat
 ![Het dubbele pad en de inhoud instellen](./media/iot-hub-automatic-device-management/module-config-twin-settings.png)
 
 
-U kunt ook afzonderlijke instellingen instellen door het hele dubbele pad op te geven en de waarde zonder haken te geven. Stel bijvoorbeeld met het dubbele pad `properties.desired.chiller-water.temperature`de inhoud in op. `66` Maak vervolgens een nieuwe dubbele instelling voor de druk eigenschap. 
+U kunt ook afzonderlijke instellingen instellen door het hele dubbele pad op te geven en de waarde zonder haken te geven. Stel bijvoorbeeld met het dubbele pad `properties.desired.chiller-water.temperature` de inhoud in op `66` . Maak vervolgens een nieuwe dubbele instelling voor de druk eigenschap. 
 
 Als twee of meer configuraties gericht zijn op hetzelfde dubbele pad, wordt de inhoud van de configuratie met de hoogste prioriteit toegepast (prioriteit is gedefinieerd in stap 4).
 
-Als u een bestaande eigenschap wilt verwijderen, geeft u de waarde van de `null`eigenschap op.
+Als u een bestaande eigenschap wilt verwijderen, geeft u de waarde van de eigenschap op `null` .
 
 U kunt extra instellingen toevoegen door het selectie vakje **dubbele apparaat-instelling toevoegen** of **module dubbele instelling toevoegen**te selecteren.
 
@@ -120,7 +120,7 @@ SELECT deviceId FROM devices
   WHERE configurations.[[yourconfigname]].status='Applied'
 ```
 
-Als u een metriek bouwt om te rapporteren over geconfigureerde modules, `moduleId` selecteert `devices.modules`u uit. Bijvoorbeeld:
+Als u een metriek bouwt om te rapporteren over geconfigureerde modules, selecteert u `moduleId` uit `devices.modules` . Bijvoorbeeld:
 
 ```sql
 SELECT deviceId, moduleId FROM devices.modules
@@ -224,7 +224,7 @@ Wanneer u een configuratie verwijdert, nemen alle apparaatdubbels van het appara
 
 3. Gebruik het selectie vakje om de configuratie te selecteren die u wilt verwijderen. 
 
-4. Selecteer **verwijderen**.
+4. Selecteer **Verwijderen**.
 
 5. U wordt gevraagd om te bevestigen.
 

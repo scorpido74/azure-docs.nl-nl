@@ -6,10 +6,10 @@ author: tugup
 ms.author: tugup
 ms.date: 3/12/2020
 ms.openlocfilehash: 07a1b836ca7ea79244e303f54654dfcaa6e5fcb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82137583"
 ---
 # <a name="liveness-probe"></a>Test voor de duur van de liveiteit
@@ -40,15 +40,15 @@ Daarnaast genereren Service Fabric de volgende test [status rapporten][health-in
 
 * `OK`: De test slaagt voor de waarde die is ingesteld in **successThreshold**.
 
-* `Error`: De test **failureCount** ==  **failureThreshold**voordat de container opnieuw wordt opgestart.
+* `Error`: De test **failureCount**  ==   **failureThreshold**voordat de container opnieuw wordt opgestart.
 
 * `Warning`: 
-    * De test is mislukt en **failureCount** < **failureThreshold**. Dit status rapport blijft totdat **failureCount** de waarde die is ingesteld in **failureThreshold** of **successThreshold**bereikt.
+    * De test is mislukt en **failureCount**  <  **failureThreshold**. Dit status rapport blijft totdat **failureCount** de waarde die is ingesteld in **failureThreshold** of **successThreshold**bereikt.
     * Als de fout is opgetreden, blijft de waarschuwing aanwezig, maar worden opeenvolgende geslaagde successen bijgewerkt.
 
 ## <a name="specifying-a-liveness-probe"></a>Een test voor een liveiteit opgeven
 
-U kunt een test opgeven in het bestand ApplicationManifest. XML onder **ServiceManifestImport**.
+U kunt een sonde opgeven in het ApplicationManifest.xml bestand onder **ServiceManifestImport**.
 
 De test kan een van de volgende zijn:
 

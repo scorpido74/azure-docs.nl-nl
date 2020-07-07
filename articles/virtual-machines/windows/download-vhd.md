@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/13/2019
 ms.author: cynthn
 ms.openlocfilehash: e87f2436f69abed4c0d0ee415226f99b52f2e804
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82085362"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Een Windows-VHD downloaden vanuit Azure
@@ -29,7 +29,7 @@ Als u de VHD als een installatie kopie wilt gebruiken om andere Vm's te maken, g
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) als u dat nog niet hebt gedaan.
 2. [Maak verbinding met de virtuele machine](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 3. Open het opdracht prompt venster op de virtuele machine als beheerder.
-4. Wijzig de Directory in *%windir%\system32\sysprep* en voer Sysprep. exe uit.
+4. Wijzig de Directory in *%windir%\system32\sysprep* en voer sysprep.exe uit.
 5. Selecteer in het dialoog venster hulp programma voor systeem voorbereiding de optie **systeem out-of-Box Experience (OOBE) opgeven**en zorg ervoor dat **generaliseren** is geselecteerd.
 6. Selecteer in afsluit opties de optie **Afsluiten**en klik vervolgens op **OK**. 
 
