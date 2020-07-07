@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: seodec18
 ms.openlocfilehash: b33aeeee03fa57d87a60fd4c1904d5e4a86dd004
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80067092"
 ---
 # <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Sentiment-analyse uitvoeren met Azure Stream Analytics en Azure Machine Learning Studio (klassiek)
@@ -55,19 +55,19 @@ Op hoog niveau kunt u het volgende doen om de taken uit te voeren die in dit art
 ## <a name="create-a-storage-container-and-upload-the-csv-input-file"></a>Een opslag container maken en het CSV-invoer bestand uploaden
 Voor deze stap kunt u elk CSV-bestand gebruiken, zoals de versie die beschikbaar is via GitHub.
 
-1. Klik in de Azure Portal op een opslag**account**voor > **opslag** > van **een resource maken**.
+1. Klik in de Azure Portal op een opslag account voor opslag van **een resource maken**  >  **Storage**  >  **Storage account**.
 
-2. Geef een naam op`samldemo` (in het voor beeld). De naam mag alleen kleine letters en cijfers bevatten en moet uniek zijn binnen Azure. 
+2. Geef een naam `samldemo` op (in het voor beeld). De naam mag alleen kleine letters en cijfers bevatten en moet uniek zijn binnen Azure. 
 
 3. Geef een bestaande resource groep op en geef een locatie op. Voor de locatie is het raadzaam dat alle resources die in deze zelf studie worden gemaakt dezelfde locatie gebruiken.
 
     ![Details van opslag account opgeven](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
 
-4. Selecteer in de Azure Portal het opslag account. Klik op de Blade opslag account op **containers** en klik vervolgens op ** + &nbsp;container** om Blob-opslag te maken.
+4. Selecteer in de Azure Portal het opslag account. Klik op de Blade opslag account op **containers** en klik vervolgens op ** + &nbsp; container** om Blob-opslag te maken.
 
     ![BLOB storage-container maken voor invoer](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account2.png)
 
-5. Geef een naam op voor de container`azuresamldemoblob` (in het voor beeld) en controleer of het **toegangs type** is ingesteld op **BLOB**. Wanneer u klaar bent, klikt u op **OK**.
+5. Geef een naam op voor de container ( `azuresamldemoblob` in het voor beeld) en controleer of het **toegangs type** is ingesteld op **BLOB**. Wanneer u klaar bent, klikt u op **OK**.
 
     ![Details van BLOB-container opgeven](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account3.png)
 
@@ -77,7 +77,7 @@ Voor deze stap kunt u elk CSV-bestand gebruiken, zoals de versie die beschikbaar
 
     ![De knop uploaden voor een container](./media/stream-analytics-machine-learning-integration-tutorial/create-sa-upload-button.png)
 
-8. Upload het **sampleinput. CSV** -bestand dat u eerder hebt gedownload op de Blade **BLOB uploaden** . Selecteer voor **BLOB-type**de optie blok- **BLOB** en stel de blok grootte in op 4 MB. Dit is voldoende voor deze zelf studie.
+8. Upload in de Blade **BLOB uploaden** het **sampleinput.csv** bestand dat u eerder hebt gedownload. Selecteer voor **BLOB-type**de optie blok- **BLOB** en stel de blok grootte in op 4 MB. Dit is voldoende voor deze zelf studie.
 
 9. Klik op de knop **uploaden** onder aan de Blade.
 
@@ -122,9 +122,9 @@ U kunt nu een Stream Analytics-taak maken die de voorbeeld tweets leest uit het 
 
 1. Ga naar de [Azure Portal](https://portal.azure.com).  
 
-2. Klik op **een resource** > maken**Internet of Things** > **Stream Analytics taak**. 
+2. Klik op **een resource maken**  >  **Internet of Things**  >  **Stream Analytics taak**. 
 
-3. Noem de taak `azure-sa-ml-demo`, geef een abonnement op, geef een bestaande resource groep op of maak een nieuwe, en selecteer de locatie voor de taak.
+3. Noem de taak `azure-sa-ml-demo` , geef een abonnement op, geef een bestaande resource groep op of maak een nieuwe, en selecteer de locatie voor de taak.
 
    ![instellingen voor nieuwe Stream Analytics taak opgeven](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-job-1.png)
    
@@ -134,16 +134,16 @@ De taak haalt de invoer op uit het CSV-bestand dat u eerder hebt geüpload naar 
 
 1. Nadat de taak is gemaakt, klikt u onder **taak topologie** op de Blade taak op de optie **invoer** .    
 
-2. Klik op de Blade **ingangen** op **Stream-invoer** >toevoegen**Blob-opslag**
+2. Klik op de Blade **ingangen** op **Stream-invoer toevoegen**  > **Blob-opslag**
 
 3. Vul de **Blob Storage** Blade in met de volgende waarden:
 
    
    |Veld  |Waarde  |
    |---------|---------|
-   |**Invoer alias** | Gebruik de naam `datainput` en selecteer **Blob Storage selecteren bij uw abonnement**       |
-   |**Storage-account**  |  Selecteer het opslagaccount dat u eerder hebt gemaakt.  |
-   |**Verpakking**  | Selecteer de container die u eerder hebt`azuresamldemoblob`gemaakt ()        |
+   |**Invoeralias** | Gebruik de naam `datainput` en selecteer **Blob Storage selecteren bij uw abonnement**       |
+   |**Opslagaccount**  |  Selecteer het opslagaccount dat u eerder hebt gemaakt.  |
+   |**Container**  | Selecteer de container die u eerder hebt gemaakt ( `azuresamldemoblob` )        |
    |**Serialisatie-indeling voor gebeurtenissen**  |  **CSV** selecteren       |
 
    ![Instellingen voor nieuwe Stream Analytics taak invoer](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
@@ -155,15 +155,15 @@ De taak verzendt resultaten naar dezelfde Blob-opslag waar de invoer wordt ingev
 
 1. Klik onder **taak topologie** op de Blade taak op de optie **uitvoer** .  
 
-2. Klik op de Blade **uitvoer** op **Add** >**Blob-opslag**toevoegen en voeg vervolgens een uitvoer met de alias `datamloutput`toe. 
+2. Klik op de Blade **uitvoer** op **Add**  > **Blob-opslag**toevoegen en voeg vervolgens een uitvoer met de alias toe `datamloutput` . 
 
 3. Vul de **Blob Storage** Blade in met de volgende waarden:
 
    |Veld  |Waarde  |
    |---------|---------|
-   |**Uitvoer alias** | Gebruik de naam `datamloutput` en selecteer **Blob Storage selecteren bij uw abonnement**       |
-   |**Storage-account**  |  Selecteer het opslagaccount dat u eerder hebt gemaakt.  |
-   |**Verpakking**  | Selecteer de container die u eerder hebt`azuresamldemoblob`gemaakt ()        |
+   |**Uitvoeralias** | Gebruik de naam `datamloutput` en selecteer **Blob Storage selecteren bij uw abonnement**       |
+   |**Opslagaccount**  |  Selecteer het opslagaccount dat u eerder hebt gemaakt.  |
+   |**Container**  | Selecteer de container die u eerder hebt gemaakt ( `azuresamldemoblob` )        |
    |**Serialisatie-indeling voor gebeurtenissen**  |  **CSV** selecteren       |
 
    ![Instellingen voor nieuwe Stream Analytics taak uitvoer](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-output.png) 
@@ -172,19 +172,19 @@ De taak verzendt resultaten naar dezelfde Blob-opslag waar de invoer wordt ingev
 
 
 ### <a name="add-the-machine-learning-function"></a>De functie Machine Learning toevoegen 
-Eerder hebt u een Machine Learning model gepubliceerd op een webservice. Als in dit scenario de stroom analyse taak wordt uitgevoerd, verzendt deze elke voorbeeld Tweet van de invoer naar de webservice voor sentiment analyse. De machine learning-webservice retourneert een sentiment (`positive`, `neutral`of `negative`) en een kans dat de Tweet positief is. 
+Eerder hebt u een Machine Learning model gepubliceerd op een webservice. Als in dit scenario de stroom analyse taak wordt uitgevoerd, verzendt deze elke voorbeeld Tweet van de invoer naar de webservice voor sentiment analyse. De Machine Learning-webservice retourneert een sentiment ( `positive` , `neutral` of `negative` ) en een kans dat de Tweet positief is. 
 
 In deze sectie van de zelf studie definieert u een functie in de analyse taak voor streams. De functie kan worden aangeroepen om een Tweet te verzenden naar de webservice en de reactie terug te halen. 
 
 1. Zorg ervoor dat u de URL en API-sleutel van de webservice hebt die u eerder in de Excel-werkmap hebt gedownload.
 
-2. Navigeer naar uw taak blad > **functies** > **+** > **AzureML** toevoegen
+2. Navigeer naar uw taak blad > **functies**  >  **+**  >  **AzureML** toevoegen
 
 3. Vul de Blade **functie Azure machine learning** in met de volgende waarden:
 
    |Veld  |Waarde  |
    |---------|---------|
-   | **Functie alias** | Gebruik de naam `sentiment` en selecteer **Azure machine learning functie-instellingen hand matig opgeven** , waarmee u de URL en de sleutel kunt invoeren.      |
+   | **Functiealias** | Gebruik de naam `sentiment` en selecteer **Azure machine learning functie-instellingen hand matig opgeven** , waarmee u de URL en de sleutel kunt invoeren.      |
    | **URL**| Plak de URL van de webservice.|
    |**Sleutel** | Plak de API-sleutel. |
   
@@ -213,7 +213,7 @@ Stream Analytics maakt gebruik van een declaratieve SQL-query om de invoer te co
     FROM sentiment  
     ```    
 
-    Met de query wordt de functie aangeroepen die u eerder`sentiment`hebt gemaakt () om sentiment analyse te kunnen uitvoeren op elke tweet in de invoer. 
+    Met de query wordt de functie aangeroepen die u eerder hebt gemaakt ( `sentiment` ) om sentiment analyse te kunnen uitvoeren op elke tweet in de invoer. 
 
 4. Klik op **Save** om de query op te slaan.
 
@@ -233,7 +233,7 @@ U kunt nu de Stream Analytics-taak starten.
 ### <a name="check-the-output"></a>De uitvoer controleren
 1. Laat de taak enkele minuten uitvoeren totdat u de activiteit in het vak **controle** ziet. 
 
-2. Als u een hulp programma hebt dat u normaal gesp roken gebruikt om de inhoud van de Blob-opslag te controleren, `azuresamldemoblob` gebruikt u dat hulp programma om de container te onderzoeken. U kunt ook de volgende stappen uitvoeren in de Azure Portal:
+2. Als u een hulp programma hebt dat u normaal gesp roken gebruikt om de inhoud van de Blob-opslag te controleren, gebruikt u dat hulp programma om de container te onderzoeken `azuresamldemoblob` . U kunt ook de volgende stappen uitvoeren in de Azure Portal:
 
     1. Zoek in de portal naar het `samldemo` opslag account en ga binnen het account naar de `azuresamldemoblob` container. U ziet twee bestanden in de container: het bestand met het voor beeld-tweets en een CSV-bestand dat door de Stream Analytics-taak wordt gegenereerd.
     2. Klik met de rechter muisknop op het gegenereerde bestand en selecteer vervolgens **downloaden**. 

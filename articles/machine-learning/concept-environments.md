@@ -10,10 +10,10 @@ ms.author: trbye
 author: trevorbye
 ms.date: 03/18/2020
 ms.openlocfilehash: 50ddbffd00e0cbbd0641089613aaa40d03658c9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80064198"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Wat zijn Azure Machine Learning omgevingen?
@@ -26,7 +26,7 @@ U kunt een `Environment` object op uw lokale Compute gebruiken om het volgende t
 * Gebruik dezelfde omgeving op Azure Machine Learning Compute for model-training op schaal.
 * Implementeer uw model met diezelfde omgeving.
 
-In het volgende diagram ziet u hoe u één enkel `Environment` object kunt gebruiken in de configuratie van de uitvoering, voor training en uw detrain-en implementatie configuratie voor webservice-implementaties.
+In het volgende diagram ziet u hoe u één enkel object kunt gebruiken `Environment` in de configuratie van de uitvoering, voor training en uw detrain-en implementatie configuratie voor webservice-implementaties.
 
 ![Diagram van een omgeving in machine learning werk stroom](./media/concept-environments/ml-environment.png)
 
@@ -36,7 +36,7 @@ Omgevingen kunnen breed worden onderverdeeld in drie categorieën: met *curator*
 
 Gehoste omgevingen worden verzorgd door Azure Machine Learning en zijn standaard beschikbaar in uw werk ruimte. Ze bevatten verzamelingen van Python-pakketten en instellingen waarmee u aan de slag kunt met diverse machine learning frameworks. 
 
-In door gebruikers beheerde omgevingen bent u verantwoordelijk voor het instellen van uw omgeving en het installeren van elk pakket dat uw trainings script nodig heeft voor het Compute-doel. Conda controleert uw omgeving niet en installeert niets voor u. Als u uw eigen omgeving definieert, moet u de versie `azureml-defaults` `>= 1.0.45` als een PIP-afhankelijkheid vermelden. Dit pakket bevat de functionaliteit die nodig is om het model als een webservice te hosten.
+In door gebruikers beheerde omgevingen bent u verantwoordelijk voor het instellen van uw omgeving en het installeren van elk pakket dat uw trainings script nodig heeft voor het Compute-doel. Conda controleert uw omgeving niet en installeert niets voor u. Als u uw eigen omgeving definieert, moet u de `azureml-defaults` versie `>= 1.0.45` als een PIP-afhankelijkheid vermelden. Dit pakket bevat de functionaliteit die nodig is om het model als een webservice te hosten.
 
 U gebruikt door het systeem beheerde omgevingen als u wilt dat [Conda](https://conda.io/docs/) de python-omgeving en de script afhankelijkheden voor u beheert. De service gaat ervan uit dat type omgeving standaard, vanwege de bruikbaarheid op externe Compute-doelen die niet hand matig kunnen worden geconfigureerd.
 
@@ -93,9 +93,9 @@ Zie het volgende diagram waarin drie omgevings definities worden weer gegeven. T
 ![Diagram van het opslaan van omgevingen in de cache als docker-installatie kopieën](./media/concept-environments/environment-caching.png)
 
 >[!IMPORTANT]
-> Als u een omgeving met een niet-vastgemaakte pakket afhankelijkheid ```numpy```maakt, blijft die omgeving de pakket versie gebruiken die is geïnstalleerd _op het moment dat de omgeving wordt gemaakt_. Daarnaast blijft de oude versie van alle toekomstige omgevingen met de overeenkomende definitie bewaard. 
+> Als u een omgeving met een niet-vastgemaakte pakket afhankelijkheid maakt, blijft ```numpy``` die omgeving de pakket versie gebruiken die is geïnstalleerd _op het moment dat de omgeving wordt gemaakt_. Daarnaast blijft de oude versie van alle toekomstige omgevingen met de overeenkomende definitie bewaard. 
 
-Als u het pakket wilt bijwerken, moet u een versie nummer opgeven om het opnieuw samen ```numpy==1.18.1```stellen van de installatie kopie af te dwingen. Houd er rekening mee dat er nieuwe afhankelijkheden, inclusief geneste items, worden geïnstalleerd die een eerder werkend scenario kunnen verstoren.
+Als u het pakket wilt bijwerken, moet u een versie nummer opgeven om het opnieuw samen stellen van de installatie kopie af te dwingen ```numpy==1.18.1``` . Houd er rekening mee dat er nieuwe afhankelijkheden, inclusief geneste items, worden geïnstalleerd die een eerder werkend scenario kunnen verstoren.
 
 > [!WARNING]
 >  Met de methode [environment. build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-workspace--image-build-compute-none-) wordt de installatie kopie in de cache opnieuw opgebouwd, met mogelijk neven effect van het bijwerken van losgemaakte pakketten en het verbreken van de reproduceer baarheid voor alle omgevings definities die overeenkomen met die in de cache opgeslagen afbeelding.

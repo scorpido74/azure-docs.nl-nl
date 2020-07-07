@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.openlocfilehash: b0ebbbb64e173e1501f08f8385b14c365759a804
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82116278"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Filteren op taal in azure Cognitive Search 
@@ -21,7 +21,7 @@ Een belang rijke vereiste in een meertalige Zoek toepassing is de mogelijkheid o
 
 Query parameters op de aanvraag worden gebruikt om de zoek bewerking te bereiken en de resultaten te verkorten van alle velden die geen inhoud bieden die compatibel is met de zoek ervaring die u wilt leveren.
 
-| Parameters | Doel |
+| Parameters | Functie |
 |-----------|--------------|
 | **searchFields** | Hiermee beperkt u het zoeken in volledige tekst in de lijst met benoemde velden. |
 | **$select** | Hiermee verkleint u het antwoord op alleen de velden die u opgeeft. Standaard worden alle ophaalbaar velden geretourneerd. Met de para meter **$Select** kunt u kiezen welke items u wilt retour neren. |

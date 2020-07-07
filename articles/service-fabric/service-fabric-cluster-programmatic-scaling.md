@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
 ms.openlocfilehash: bd7c57f3089115e4da861fc8fd20331ab92bc33e
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82787104"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Een Service Fabric cluster via een programma schalen 
@@ -24,12 +24,12 @@ Een uitdaging voor het schrijven van een service voor het afhandelen van schalen
 
 U kunt een service-principal maken met de volgende stappen:
 
-1. Meld u aan bij de Azure CLI`az login`() als gebruiker met toegang tot de schaalset voor virtuele machines
+1. Meld u aan bij de Azure CLI ( `az login` ) als gebruiker met toegang tot de schaalset voor virtuele machines
 2. De service-principal maken met`az ad sp create-for-rbac`
     1. Noteer de appId (client-ID elders genoemd), de naam, het wacht woord en de Tenant voor later gebruik.
     2. U hebt ook uw abonnements-ID nodig, die kan worden weer gegeven met`az account list`
 
-De Fluent Compute-bibliotheek kan als volgt worden aangemeld met deze referenties (Houd er rekening mee dat `IAzure` de belangrijkste Fluent Azure-typen zoals zijn in het [micro soft. Azure. Management. Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) -pakket):
+De Fluent Compute-bibliotheek kan als volgt worden aangemeld met deze referenties (Houd er rekening mee dat de belangrijkste Fluent Azure-typen zoals `IAzure` zijn in het [micro soft. Azure. Management. Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) -pakket):
 
 ```csharp
 var credentials = new AzureCredentials(new ServicePrincipalLoginInformation {
@@ -48,7 +48,7 @@ else
 }
 ```
 
-Na het aanmelden kan het aantal exemplaren van de schaalset worden opgevraagd `AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId).Capacity`via.
+Na het aanmelden kan het aantal exemplaren van de schaalset worden opgevraagd via `AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId).Capacity` .
 
 ## <a name="scaling-out"></a>Uitschalen
 Met behulp van de Fluent Azure Compute SDK kunnen instanties worden toegevoegd aan de schaalset voor virtuele machines met slechts enkele aanroepen:
@@ -59,7 +59,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-U kunt ook de grootte van de schaalset voor virtuele machines beheren met Power shell-cmdlets. [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss)kan het object voor de virtuele-machine schaalset ophalen. De huidige capaciteit is beschikbaar via de `.sku.capacity` eigenschap. Nadat u de capaciteit hebt gewijzigd in de gewenste waarde, kan de schaalset voor virtuele machines in Azure worden [`Update-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) bijgewerkt met de opdracht.
+U kunt ook de grootte van de schaalset voor virtuele machines beheren met Power shell-cmdlets. [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss)kan het object voor de virtuele-machine schaalset ophalen. De huidige capaciteit is beschikbaar via de `.sku.capacity` eigenschap. Nadat u de capaciteit hebt gewijzigd in de gewenste waarde, kan de schaalset voor virtuele machines in Azure worden bijgewerkt met de [`Update-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) opdracht.
 
 Net als bij het hand matig toevoegen van een knoop punt, moet u een instantie van een schaalset toevoegen die nodig is om een nieuw Service Fabric knoop punt te starten omdat de sjabloon voor de schaalset extensies bevat om automatisch nieuwe exemplaren toe te voegen aan het Service Fabric cluster. 
 
@@ -84,7 +84,7 @@ using (var client = new FabricClient())
         .FirstOrDefault();
 ```
 
-Nadat het knoop punt dat moet worden verwijderd, is gevonden, kan het worden gedeactiveerd en worden verwijderd met `FabricClient` hetzelfde exemplaar en `IAzure` het vorige exemplaar.
+Nadat het knoop punt dat moet worden verwijderd, is gevonden, kan het worden gedeactiveerd en worden verwijderd met hetzelfde `FabricClient` exemplaar en het `IAzure` vorige exemplaar.
 
 ```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);

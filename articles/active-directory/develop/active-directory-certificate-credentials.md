@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 47a35f70251622674205a28af9b7cc64132d0530
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82690290"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Referenties voor verificatie certificaat voor micro soft-identiteits platform
@@ -29,7 +29,7 @@ Een van de referenties die een toepassing voor verificatie kan gebruiken is een 
 ## <a name="assertion-format"></a>Bevestigings indeling
 Micro soft Identity platform om de bewering te berekenen, kunt u een van de vele [JSON Web token](https://jwt.ms/) bibliotheken gebruiken in de taal van uw keuze. De gegevens die door het token worden uitgevoerd, zijn als volgt:
 
-### <a name="header"></a>Header
+### <a name="header"></a>Koptekst
 
 | Parameter |  Opmerkingen |
 | --- | --- |
@@ -46,7 +46,7 @@ Micro soft Identity platform om de bewering te berekenen, kunt u een van de vele
 | `iss` | Verlener: moet de client_id (toepassings-ID van de client service) |
 | `jti` | GUID: de JWT-ID |
 | `nbf` | Niet vóór: de datum waarop het token niet kan worden gebruikt. De tijd wordt weer gegeven als het aantal seconden van 1 januari 1970 (1970-01-01T0:0: 0Z) UTC tot het moment dat het token is uitgegeven. |
-| `sub` | Onderwerp: als voor `iss`, moet de Client_id (toepassings-id van de client service) |
+| `sub` | Onderwerp: als voor `iss` , moet de client_id (toepassings-id van de client service) |
 
 ### <a name="signature"></a>Handtekening
 
@@ -94,7 +94,7 @@ U kunt de certificaat referentie koppelen aan de client toepassing in het micro 
 In de registratie van de Azure-app voor de client toepassing:
 1. Selecteer **certificaten & geheimen**.
 2. Klik op **certificaat uploaden** en selecteer het certificaat bestand dat u wilt uploaden.
-3. Klik op **Toevoegen**.
+3. Klik op **Add**.
   Zodra het certificaat is geüpload, worden de vinger afdruk, de start datum en de verval waarden weer gegeven.
 
 ### <a name="updating-the-application-manifest"></a>Het toepassings manifest bijwerken
@@ -104,7 +104,7 @@ Als u een certificaat hebt, moet u het volgende berekenen:
 - `$base64Thumbprint`, dit is de base64-code ring van de certificaat-hash
 - `$base64Value`, dit is de base64-code ring van de onbewerkte gegevens van het certificaat
 
-U moet ook een GUID opgeven om de sleutel te identificeren in het manifest van de`$keyId`toepassing ().
+U moet ook een GUID opgeven om de sleutel te identificeren in het manifest van de toepassing ( `$keyId` ).
 
 In de registratie van de Azure-app voor de client toepassing:
 1. Selecteer **manifest** om het toepassings manifest te openen.
@@ -128,6 +128,6 @@ In de registratie van de Azure-app voor de client toepassing:
 ## <a name="code-sample"></a>Codevoorbeeld
 
 > [!NOTE]
-> U moet de X5T-header berekenen door deze te converteren naar een basis teken reeks van 64 met de hash van het certificaat. De code die u wilt uitvoeren in C# `System.Convert.ToBase64String(cert.GetCertHash());`is.
+> U moet de X5T-header berekenen door deze te converteren naar een basis teken reeks van 64 met de hash van het certificaat. De code die u wilt uitvoeren in C# is `System.Convert.ToBase64String(cert.GetCertHash());` .
 
-De voorbeeld code van een [.net core daemon-console toepassing met behulp van micro soft Identity platform](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) laat zien hoe een toepassing eigen referenties voor verificatie gebruikt. Ook wordt uitgelegd hoe u [een zelfondertekend certificaat kunt maken](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) met behulp van `New-SelfSignedCertificate` de Power shell-opdracht. U kunt ook gebruikmaken van de scripts voor het maken van de [app](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) voor het maken van de certificaten, het berekenen van de vinger afdruk, enzovoort.
+De voorbeeld code van een [.net core daemon-console toepassing met behulp van micro soft Identity platform](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) laat zien hoe een toepassing eigen referenties voor verificatie gebruikt. Ook wordt uitgelegd hoe u [een zelfondertekend certificaat kunt maken](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) met behulp van de `New-SelfSignedCertificate` Power shell-opdracht. U kunt ook gebruikmaken van de scripts voor het maken van de [app](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) voor het maken van de certificaten, het berekenen van de vinger afdruk, enzovoort.

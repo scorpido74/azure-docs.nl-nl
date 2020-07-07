@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 5527a27ab94c350a345bb916206057069c3d16da
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82723166"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>De beschik baarheid van een cluster bewaken met Azure Monitor-Logboeken in HDInsight
@@ -122,5 +122,5 @@ Als u een Ernst groep selecteert (dat wil zeggen **Ernst 1,** zoals hierboven is
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Beschik baarheid cluster-Apache Ambari](./hdinsight-cluster-availability.md)
-* [Azure Monitor-logboeken gebruiken](hdinsight-hadoop-oms-log-analytics-tutorial.md)
+* [Clusterbeschikbaarheid - Apache Ambari](./hdinsight-cluster-availability.md)
+* [Azure Monitor-Logboeken gebruiken](hdinsight-hadoop-oms-log-analytics-tutorial.md)

@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/09/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0a42763ff47cccfa506acbbbd95d20d41eb0827f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72965378"
 ---
 # <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>Een IoT Edge apparaat toevoegen aan de oplossings versneller voor externe controle
@@ -28,7 +28,7 @@ Als u een IoT Edge-apparaat wilt toevoegen aan de verbetering voor de externe be
 
 Kies **IOT edge apparaat**in het deel venster **nieuw apparaat** . Voor de overige instellingen kunt u de standaardwaarden gebruiken. Klik vervolgens op **Toep assen**:
 
-![IoT Edge apparaat toevoegen](media/iot-accelerators-remote-monitoring-add-edge-device/addedgedevice.png)
+![IoT Edge-apparaat toevoegen](media/iot-accelerators-remote-monitoring-add-edge-device/addedgedevice.png)
 
 ### <a name="alternative-ways-to-add-an-iot-edge-device"></a>Alternatieve manieren om een IoT Edge apparaat toe te voegen
 

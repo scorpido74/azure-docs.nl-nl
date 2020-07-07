@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 4ee89f4bba70bb5e81eef21247d556f65a2a1f16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80065197"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Data Management Gateway-hoge Beschik baarheid en schaal baarheid (preview-versie)
@@ -238,15 +238,15 @@ Wanneer het beschik bare geheugen en de CPU niet goed worden gebruikt, maar de n
 
 ## <a name="known-issuesbreaking-changes"></a>Bekende problemen/verbrekings wijzigingen
 
-- Op dit moment kunt u Maxi maal vier fysieke gateway knooppunten hebben voor één logische gateway. Als u meer dan vier knoop punten nodig hebt om prestatie redenen, stuurt u [DMGHelp@microsoft.com](mailto:DMGHelp@microsoft.com)een e-mail naar.
+- Op dit moment kunt u Maxi maal vier fysieke gateway knooppunten hebben voor één logische gateway. Als u meer dan vier knoop punten nodig hebt om prestatie redenen, stuurt u een e-mail naar [DMGHelp@microsoft.com](mailto:DMGHelp@microsoft.com) .
 - U kunt een gateway knooppunt met de verificatie sleutel van een andere logische gateway niet opnieuw registreren om over te scha kelen van de huidige logische gateway. Als u zich opnieuw wilt registreren, verwijdert u de gateway uit het knoop punt, installeert u de gateway opnieuw en registreert u deze met de verificatie sleutel voor de andere logische gateway. 
-- Als HTTP-proxy is vereist voor alle gateway knooppunten, stelt u de proxy in diahost. exe. config en diawp. exe. config in en gebruikt u Server beheer om ervoor te zorgen dat alle knoop punten dezelfde diahost. exe. config en diawip. exe. config hebben. Zie de sectie [proxy-instellingen configureren](data-factory-data-management-gateway.md#configure-proxy-server-settings) voor meer informatie. 
+- Als HTTP-proxy is vereist voor alle gateway knooppunten, stelt u de proxy in diahost.exe.config en diawp.exe.config en gebruikt u Server beheer om ervoor te zorgen dat alle knoop punten dezelfde diahost.exe.config en diawip.exe.config hebben. Zie de sectie [proxy-instellingen configureren](data-factory-data-management-gateway.md#configure-proxy-server-settings) voor meer informatie. 
 - Als u de versleutelings modus voor communicatie tussen knoop punten in de gateway Configuration Manager wilt wijzigen, verwijdert u alle knoop punten in de portal, met uitzonde ring van één. Voeg vervolgens de knoop punten terug nadat u de versleutelings modus hebt gewijzigd.
 - Gebruik een officieel TLS-certificaat als u ervoor kiest het communicatie kanaal tussen knoop punten te versleutelen. Zelfondertekend certificaat kan verbindings problemen veroorzaken omdat hetzelfde certificaat mogelijk niet wordt vertrouwd in de certificerings instantie lijst op andere computers. 
 - U kunt een gateway knooppunt niet registreren bij een logische gateway wanneer de versie van het knoop punt lager is dan de versie van de logische gateway. Verwijder alle knoop punten van de logische gateway uit de portal, zodat u een lagere versie van het knoop punt (downgrade) kunt registreren. Als u alle knoop punten van een logische Gateway verwijdert, installeert en registreert u de nieuwe knoop punten hand matig op die logische gateway. Snelle installatie wordt in dit geval niet ondersteund.
 - U kunt geen snelle installatie gebruiken om knoop punten te installeren op een bestaande logische gateway, die nog steeds Cloud referenties gebruikt. U kunt controleren waar de referenties worden opgeslagen vanaf de gateway Configuration Manager op het tabblad instellingen.
 - U kunt geen snelle installatie gebruiken om knoop punten te installeren op een bestaande logische gateway, waarvoor versleuteling van knoop punt naar knoop punt is ingeschakeld. Als het instellen van de versleutelings modus hand matig certificaten moet toevoegen, is snelle installatie niet meer een optie. 
-- Voor het kopiëren van bestanden vanuit een on-premises omgeving moet u \\geen localhost of C:\files meer gebruiken, omdat localhost of lokaal station mogelijk niet toegankelijk is via alle knoop punten. Gebruik \\in plaats daarvan ServerName\files om de locatie van de bestanden op te geven.
+- Voor het kopiëren van bestanden vanuit een on-premises omgeving moet u geen \\ localhost of C:\files meer gebruiken, omdat localhost of lokaal station mogelijk niet toegankelijk is via alle knoop punten. Gebruik in plaats daarvan \\ ServerName\files om de locatie van de bestanden op te geven.
 
 
 ## <a name="rolling-back-from-the-preview"></a>Terugdraaien vanuit de preview 

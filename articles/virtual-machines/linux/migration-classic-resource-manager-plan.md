@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: ff829e9ffbd6d6ae0766998e62634ac873afc748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066663"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planning voor de migratie van IaaS-resources van het klassieke implementatiemodel naar Azure Resource Manager
@@ -146,7 +146,7 @@ De volgende problemen zijn in veel van de grotere migraties ontdekt. Dit is geen
 
 - **RoleStateUnknown-VM-status** : als de migratie wordt gestopt als gevolg van een **onbekende functie status** , controleert u de virtuele machine met behulp van de portal en controleert u of deze actief is. Deze fout wordt doorgaans na een paar minuten verwijderd (zonder herstel is vereist) en is vaak een tijdelijk type dat vaak wordt weer gegeven tijdens het **starten**, **stoppen**en **opnieuw starten** van een virtuele machine. **Aanbevolen procedure:** Voer de migratie na een paar minuten opnieuw uit.
 
-- Het **infrastructuur cluster bestaat niet** . in sommige gevallen kunnen bepaalde vm's niet om verschillende oneven redenen worden gemigreerd. Een van deze bekende gevallen is als de virtuele machine onlangs is gemaakt (in de afgelopen week of dus) en is opgetreden in een Azure-cluster dat nog niet is ingericht voor Azure Resource Manager workloads.  Er wordt een fout bericht weer geven met de melding dat het **Fabric-cluster niet bestaat** en de virtuele machine niet kan worden gemigreerd. Als er een aantal dagen wordt gewacht, wordt dit probleem doorgaans opgelost als het cluster binnenkort Azure Resource Manager ingeschakeld. Er is echter een onmiddellijke tijdelijke oplossing `stop-deallocate` naar de virtuele machine. Ga vervolgens verder met de migratie en start de VM in azure Resource Manager na de migratie.
+- Het **infrastructuur cluster bestaat niet** . in sommige gevallen kunnen bepaalde vm's niet om verschillende oneven redenen worden gemigreerd. Een van deze bekende gevallen is als de virtuele machine onlangs is gemaakt (in de afgelopen week of dus) en is opgetreden in een Azure-cluster dat nog niet is ingericht voor Azure Resource Manager workloads.  Er wordt een fout bericht weer geven met de melding dat het **Fabric-cluster niet bestaat** en de virtuele machine niet kan worden gemigreerd. Als er een aantal dagen wordt gewacht, wordt dit probleem doorgaans opgelost als het cluster binnenkort Azure Resource Manager ingeschakeld. Er is echter een onmiddellijke tijdelijke oplossing naar `stop-deallocate` de virtuele machine. Ga vervolgens verder met de migratie en start de VM in azure Resource Manager na de migratie.
 
 ### <a name="pitfalls-to-avoid"></a>Valk uilen om te voor komen
 

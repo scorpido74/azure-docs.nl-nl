@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: ccd8d383db265826d8644ee89d7300128fc3a350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82131311"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Een IoT Edge apparaat maken en inrichten met X. 509-certificaten
@@ -137,7 +137,7 @@ Wanneer u een registratie groep maakt, hebt u de mogelijkheid om een geverifieer
 
 1. Voer een beschrijvende naam in voor het certificaat en blader vervolgens naar het CER-of PEM-bestand dat het open bare deel van het X. 509-certificaat vertegenwoordigt.
 
-   Als u de demo certificaten gebruikt, uploadt u `<wrkdir>/certs/azure-iot-test-only.root.ca.cert.pem` het certificaat.
+   Als u de demo certificaten gebruikt, uploadt u het `<wrkdir>/certs/azure-iot-test-only.root.ca.cert.pem` certificaat.
 
 1. Selecteer **Opslaan**.
 
@@ -241,7 +241,7 @@ provisioning:
     identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
 ```
 
-Vervang de tijdelijke aanduidingen `scope_id`voor `identity_cert`, `identity_pk` , door de bereik-id van uw DPS-instantie en de uri's van de certificaat keten en de sleutel bestands locaties op het apparaat. Geef een `registration_id` voor het apparaat op als u wilt, of verlaat deze regel om het apparaat te registreren met de CN-naam van het identiteits certificaat.
+Vervang de tijdelijke aanduidingen voor `scope_id` , `identity_cert` , door `identity_pk` de bereik-id van uw DPS-instantie en de uri's van de certificaat keten en de sleutel bestands locaties op het apparaat. Geef een `registration_id` voor het apparaat op als u wilt, of verlaat deze regel om het apparaat te registreren met de CN-naam van het identiteits certificaat.
 
 De beveiligings-daemon altijd opnieuw opstarten na het bijwerken van het bestand config. yaml.
 
@@ -266,9 +266,9 @@ Zie [install the Azure IOT Edge runtime on Windows](how-to-install-iot-edge-wind
 
 1. Op dit moment kunnen IoT-kern apparaten automatisch opnieuw worden opgestart. Op andere Windows 10-of Windows Server-apparaten wordt u mogelijk gevraagd om opnieuw op te starten. Als dit het geval is, start u het apparaat nu opnieuw op. Zodra het apparaat klaar is, voert u Power shell als beheerder opnieuw uit.
 
-1. De **initialisatie-IoTEdge-** opdracht configureert de IOT Edge runtime op de computer. De opdracht wordt standaard ingesteld op hand matig inrichten tenzij u `-Dps` de vlag gebruikt om automatische inrichting te gebruiken.
+1. De **initialisatie-IoTEdge-** opdracht configureert de IOT Edge runtime op de computer. De opdracht wordt standaard ingesteld op hand matig inrichten tenzij u de `-Dps` vlag gebruikt om automatische inrichting te gebruiken.
 
-   Vervang de tijdelijke aanduidingen `{scope_id}`voor `{identity cert chain path}`,, `{identity key path}` en door de juiste waarden van uw DPS-exemplaar en de bestands paden op het apparaat. Als u de registratie-ID wilt opgeven, `-RegistrationId {registration_id}` moet u ook de tijdelijke aanduiding vervangen.
+   Vervang de tijdelijke aanduidingen voor `{scope_id}` , `{identity cert chain path}` , en `{identity key path}` door de juiste waarden van uw DPS-exemplaar en de bestands paden op het apparaat. Als u de registratie-ID wilt opgeven, moet u `-RegistrationId {registration_id}` ook de tijdelijke aanduiding vervangen.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: 165e7984c21b74fa7730fc02756b9e75b4b33aa7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82131243"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Controle logboek registratie in Azure Database for PostgreSQL-één server
@@ -30,7 +30,7 @@ U kunt ook alle logboeken zo configureren dat deze naar Azure Monitor logboek ar
 
 Als pgAudit wordt ingeschakeld, wordt er een groot aantal logboekregistraties op een server gegenereerd. Dit heeft gevolgen voor de prestaties en de logboekopslag. U wordt aangeraden Azure Monitor-logboeken te gebruiken, die opslag opties voor langere termijn bieden, evenals analyse-en waarschuwings functies. U wordt aangeraden de standaard logboekregistratie uit te schakelen om de impact van prestaties van extra logboekregistratie te verminderen:
 
-   1. Stel de para `logging_collector` meter in op uit. 
+   1. Stel de para meter `logging_collector` in op uit. 
    2. Start de server opnieuw op om deze wijziging toe te passen.
 
 Ga naar de sectie resource logs van het [artikel server logboeken](concepts-server-logs.md)voor meer informatie over het instellen van logboek registratie voor Azure Storage, Event Hubs of Azure monitor Logboeken.
@@ -53,7 +53,7 @@ Met behulp van de [Azure Portal](https://portal.azure.com):
       ```
 
 > [!TIP]
-> Als er een fout optreedt, controleert u of u de server opnieuw hebt `shared_preload_libraries`opgestart na het opslaan.
+> Als er een fout optreedt, controleert u of u de server opnieuw hebt opgestart na het opslaan `shared_preload_libraries` .
 
 ## <a name="pgaudit-settings"></a>pgAudit-instellingen
 
@@ -74,16 +74,16 @@ Nadat u [pgAudit hebt geïnstalleerd](#installing-pgaudit), kunt u de para meter
 ### <a name="audit-log-format"></a>Indeling van auditlogboek
 Elke controle vermelding wordt aan `AUDIT:` het begin van de logboek regel aangeduid. De indeling van de rest van de vermelding wordt beschreven in de [pgAudit-documentatie](https://github.com/pgaudit/pgaudit/blob/master/README.md#format).
 
-Als u andere velden nodig hebt om te voldoen aan uw audit vereisten, gebruikt u `log_line_prefix`de para meter post gres. `log_line_prefix`is een teken reeks die aan het begin van elke post gres-logboek regel wordt uitgevoerd. De volgende `log_line_prefix` instelling bevat bijvoorbeeld tijds tempel, gebruikers naam, database naam en proces-id:
+Als u andere velden nodig hebt om te voldoen aan uw audit vereisten, gebruikt u de para meter post gres `log_line_prefix` . `log_line_prefix`is een teken reeks die aan het begin van elke post gres-logboek regel wordt uitgevoerd. De volgende `log_line_prefix` instelling bevat bijvoorbeeld tijds tempel, gebruikers naam, database naam en proces-id:
 
 ```
 t=%m u=%u db=%d pid=[%p]:
 ```
 
-Ga voor meer informatie `log_line_prefix`naar de [postgresql-documentatie](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX).
+Ga voor meer informatie naar `log_line_prefix` de [postgresql-documentatie](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX).
 
 ### <a name="getting-started"></a>Aan de slag
-Als u snel aan de slag `pgaudit.log` wilt `WRITE`gaan, stelt u in en opent u de logboeken om de uitvoer te controleren. 
+Als u snel aan de slag wilt gaan, stelt `pgaudit.log` u in `WRITE` en opent u de logboeken om de uitvoer te controleren. 
 
 ## <a name="viewing-audit-logs"></a>Audit logboeken weer geven
 Als u. log-bestanden gebruikt, worden uw audit Logboeken in hetzelfde bestand opgenomen als uw PostgreSQL-fout Logboeken. U kunt logboek bestanden downloaden via de Azure- [Portal](howto-configure-server-logs-in-portal.md) of [cli](howto-configure-server-logs-using-cli.md). 

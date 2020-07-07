@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
 ms.openlocfilehash: ab846eeb09c4f3d2db71abf58ef5d55dc74962a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82112045"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>De Azure Linux-agent op een virtuele machine bijwerken
@@ -352,7 +352,7 @@ sudo systemctl restart walinuxagent.service
 
 ## <a name="oracle-linux-6-and-oracle-linux-7"></a>Oracle Linux 6 en Oracle Linux 7
 
-Zorg ervoor dat de `Addons` opslag plaats is ingeschakeld voor Oracle Linux. Kies voor het bewerken van `/etc/yum.repos.d/public-yum-ol6.repo`het bestand (Oracle Linux 6 `/etc/yum.repos.d/public-yum-ol7.repo`) of (Oracle Linux) en wijzig de `enabled=0` regel `enabled=1` in onder **[ol6_addons]** of **[ol7_addons]** in dit bestand.
+Zorg ervoor dat de `Addons` opslag plaats is ingeschakeld voor Oracle Linux. Kies voor het bewerken van het bestand `/etc/yum.repos.d/public-yum-ol6.repo` (Oracle Linux 6) of `/etc/yum.repos.d/public-yum-ol7.repo` (Oracle Linux) en wijzig de regel in `enabled=0` `enabled=1` onder **[ol6_addons]** of **[ol7_addons]** in dit bestand.
 
 Als u de nieuwste versie van de Azure Linux-agent wilt installeren, typt u:
 
@@ -390,7 +390,7 @@ Typ vervolgens:
 sudo yum update WALinuxAgent
 ```
 
-Normaal gesp roken hoeft u alleen maar de volgende stappen uit https://github.com te voeren als u deze om een bepaalde reden rechtstreeks wilt installeren.
+Normaal gesp roken hoeft u alleen maar de volgende stappen uit te voeren als u deze om een bepaalde reden rechtstreeks wilt installeren https://github.com .
 
 
 ## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>De Linux-agent bijwerken wanneer er geen agent pakket bestaat voor distributie
@@ -398,7 +398,7 @@ Normaal gesp roken hoeft u alleen maar de volgende stappen uit https://github.co
 Wget installeren (er zijn enkele distributies die niet standaard worden geïnstalleerd, zoals Red Hat, CentOS en Oracle Linux versie 6,4 en 6,5) door te typen `sudo yum install wget` op de opdracht regel.
 
 ### <a name="1-download-the-latest-version"></a>1. down load de nieuwste versie
-Open [de release van de Azure Linux-agent in github](https://github.com/Azure/WALinuxAgent/releases) op een webpagina en ontdek het meest recente versie nummer. (U kunt uw huidige versie vinden door te `waagent --version`typen.)
+Open [de release van de Azure Linux-agent in github](https://github.com/Azure/WALinuxAgent/releases) op een webpagina en ontdek het meest recente versie nummer. (U kunt uw huidige versie vinden door te typen `waagent --version` .)
 
 #### <a name="for-version-22x-or-later-type"></a>Voor versie 2.2. x of hoger typt u:
 ```bash

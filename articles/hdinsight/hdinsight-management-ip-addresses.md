@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/03/2020
 ms.openlocfilehash: f1a539096ac1a154ca37bbe6703f820787f927fb
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82778257"
 ---
-# <a name="hdinsight-management-ip-addresses"></a>IP-adressen van HDInsight-beheer
+# <a name="hdinsight-management-ip-addresses"></a>IP-adressen beheren met HDInsight
 
 > [!Important]
 > In de meeste gevallen kunt u nu de functie [service code](hdinsight-service-tags.md) gebruiken voor netwerk beveiligings groepen, in plaats van het hand matig toevoegen van IP-adressen. Nieuwe regio's worden alleen toegevoegd voor service tags en de statische IP-adressen zullen uiteindelijk worden afgeschaft.

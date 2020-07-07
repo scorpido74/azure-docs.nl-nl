@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: ca4dc888af414ede270118eff72652f098d3306c
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82779039"
 ---
 # <a name="localization"></a>Lokalisatie #
@@ -31,8 +31,8 @@ Azure Media Player ondersteunt momenteel de volgende talen met de bijbehorende t
 | Engels {standaard}   | nl   | Kroatisch                | uur     | Roemeens                | Roll           |
 | Arabisch              | p.a.   | Hongaars               | hu     | Slowaaks                  | SK           |
 | Bulgaars           | bg   | Indonesisch              | id     | Slovene                 | lineaire           |
-| Catalaans             | certificering   | IJslands               | is     | Servisch-cyrillisch      | SR-Cyrl-CS   |
-| Tsjechisch               | Support   | Italiaans                 | it     | Servisch-Latijn         | sr-latn-rs   |
+| Catalaans             | certificering   | IJslands               | is     | Servisch - Cyrillisch      | SR-Cyrl-CS   |
+| Tsjechisch               | Support   | Italiaans                 | it     | Servisch - Latijn         | sr-latn-rs   |
 | Deens              | da   | Japans                | ja     | Russisch                 | ru           |
 | Duits              | de   | Kazachs                  | kk     | Zweeds                 | sv           |
 | Grieks               | ei   | Koreaans                  | ko     | Thai                    | e           |
@@ -52,4 +52,4 @@ Azure Media Player ondersteunt momenteel de volgende talen met de bijbehorende t
 
 ## <a name="next-steps"></a>Volgende stappen ##
 
-- [Snelstartgids Azure Media Player](azure-media-player-quickstart.md)
+- [Quickstart voor Azure Media Player](azure-media-player-quickstart.md)

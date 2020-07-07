@@ -11,10 +11,10 @@ ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100903"
 ---
 # <a name="troubleshooting-guide"></a>Handleiding voor het oplossen van problemen
@@ -27,7 +27,7 @@ Hier volgen enkele tips voor het oplossen van problemen die u kunt tegen komen w
 U vindt de fout berichten die zijn gekoppeld aan de werk stroom door:
 
 1. Gebruik de opdracht regel en typ in`msgen status`
-2. De inhoud van Standard output. txt wordt onderzocht.
+2. De inhoud van standardoutput.txt te controleren.
 
 ### <a name="1-using-the-command-line-msgen-status"></a>1. met behulp van de opdracht regel`msgen status`
 
@@ -46,7 +46,7 @@ Er zijn drie vereiste argumenten:
 
   
 * ID: de werk stroom-ID
-    * Om uw werk stroom-ID- `msgen list` type in opdracht te vinden. Ervan uitgaande dat uw configuratie bestand de URL en de toegangs sleutels bevat en zich op dezelfde locatie bevindt als uw msgen exe, ziet de opdracht er als volgt uit: 
+    * Om uw werk stroom-ID-type in opdracht te vinden `msgen list` . Ervan uitgaande dat uw configuratie bestand de URL en de toegangs sleutels bevat en zich op dezelfde locatie bevindt als uw msgen exe, ziet de opdracht er als volgt uit: 
         
         ```bash
         msgen list -f "config.txt"
@@ -75,21 +75,21 @@ Er zijn drie vereiste argumenten:
   > [!NOTE]
   >  U kunt ook het pad naar het configuratie bestand toevoegen in plaats van de URL en sleutel rechtstreeks in te voeren. Als u deze argumenten opneemt in de opdracht regel, evenals het configuratie bestand, hebben de opdracht regel argumenten prioriteit.  
 
-De opdracht ziet er als volgt uit: de werk stroom-ID 1001 en het config. txt-bestand dat is opgeslagen in hetzelfde pad als het uitvoer bare msgen
+De opdracht ziet er als volgt uit als werk stroom-ID 1001 en config.txt bestand dat in hetzelfde pad wordt geplaatst als het uitvoer bare msgen:
 
 ```bash
 msgen status -w 1001 -f "config.txt"
 ```
 
-### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. Controleer de inhoud van Standard output. txt 
+### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. Controleer de inhoud van standardoutput.txt 
 Zoek de uitvoer container voor de betreffende werk stroom. MSGEN maakt een, `[workflowfilename].logs.zip` map na elke uitvoering van de werk stroom. Pak de map uit om de inhoud ervan weer te geven:
 
-* outputFileList. txt: een lijst met de uitvoer bestanden die zijn geproduceerd tijdens de werk stroom
-* Standard error. txt: dit bestand is leeg.
-* Standard output. txt: registreert alle status berichten op het hoogste niveau, inclusief fouten, die zijn opgetreden tijdens het uitvoeren van de werk stroom.
-* GATK-logboek bestanden: alle andere bestanden in `logs` de map
+* outputFileList.txt: een lijst met de uitvoer bestanden die zijn geproduceerd tijdens de werk stroom
+* standarderror.txt-dit bestand is leeg.
+* standardoutput.txt: Hiermee worden alle status berichten op het hoogste niveau vastgelegd, inclusief fouten die zijn opgetreden tijdens het uitvoeren van de werk stroom.
+* GATK-logboek bestanden: alle andere bestanden in de `logs` map
 
-Bekijk de inhoud van Standard output. txt voor probleem oplossing en noteer eventuele fout berichten die worden weer gegeven.
+Bekijk de inhoud van standardoutput.txt en noteer eventuele fout berichten die worden weer gegeven voor het oplossen van problemen.
 
 
 ## <a name="step-2-try-recommended-steps-for-common-errors"></a>Stap 2: Probeer de aanbevolen stappen voor veelvoorkomende fouten

@@ -4,10 +4,10 @@ description: Meer informatie over de vergrendelings opties in azure blauw drukke
 ms.date: 03/25/2020
 ms.topic: conceptual
 ms.openlocfilehash: 94ed8efd0d6c654cba129dfc69fbfe5add7a0824
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81383598"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Meer informatie over het vergren delen van resources in azure-blauw drukken
@@ -47,7 +47,7 @@ Als u de blauw druk wilt toewijzen aan een beheer groep in plaats van een abonne
 PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{assignmentMG}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}?api-version=2018-11-01-preview
 ```
 
-De beheer groep die is `{assignmentMG}` gedefinieerd door, moet zich binnen de beheer groeps hiërarchie bevindt of dezelfde beheer groep zijn waar de blauw druk-definitie wordt opgeslagen.
+De beheer groep die is gedefinieerd door, `{assignmentMG}` moet zich binnen de beheer groeps hiërarchie bevindt of dezelfde beheer groep zijn waar de blauw druk-definitie wordt opgeslagen.
 
 De aanvraag tekst van de blauw druk-toewijzing ziet er als volgt uit:
 

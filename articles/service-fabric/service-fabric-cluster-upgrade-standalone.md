@@ -4,10 +4,10 @@ description: Meer informatie over het bijwerken van de versie of configuratie va
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: ac3e80aae440c6709057e4211f7a4f6a1beea058
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82790640"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Een Service Fabric zelfstandige cluster bijwerken en bijwerken
@@ -21,7 +21,7 @@ U kunt uw cluster zo instellen dat automatische infrastructuur upgrades worden o
 
 ## <a name="customize-configuration-settings"></a>Configuratie-instellingen aanpassen
 
-Er kunnen veel verschillende [configuratie-instellingen](service-fabric-cluster-manifest.md) worden ingesteld in het bestand *ClusterConfig. json* , zoals het betrouwbaarheids niveau van het cluster en de knooppunt eigenschappen.  Lees voor meer informatie [de configuratie van een zelfstandig cluster bijwerken](service-fabric-cluster-config-upgrade-windows-server.md).  Veel andere, geavanceerdere instellingen kunnen ook worden aangepast.  Lees [service Fabric cluster Fabric-instellingen](service-fabric-cluster-fabric-settings.md)voor meer informatie.
+Er kunnen veel verschillende [configuratie-instellingen](service-fabric-cluster-manifest.md) worden ingesteld in de *ClusterConfig.jsvoor* het bestand, zoals het betrouwbaarheids niveau van het cluster en de knooppunt eigenschappen.  Lees voor meer informatie [de configuratie van een zelfstandig cluster bijwerken](service-fabric-cluster-config-upgrade-windows-server.md).  Veel andere, geavanceerdere instellingen kunnen ook worden aangepast.  Lees [service Fabric cluster Fabric-instellingen](service-fabric-cluster-fabric-settings.md)voor meer informatie.
 
 ## <a name="define-node-properties"></a>Knooppunt eigenschappen definiëren
 Soms wilt u ervoor zorgen dat bepaalde werk belastingen alleen worden uitgevoerd op bepaalde typen knoop punten in het cluster. Een voor beeld: een bepaalde werk belasting kan Gpu's of Ssd's vereisen, terwijl anderen dat niet mogelijk is. Voor elk van de knooppunt typen in een cluster kunt u aangepaste knooppunt eigenschappen toevoegen aan cluster knooppunten. Plaatsings beperkingen zijn de instructies die zijn gekoppeld aan afzonderlijke services die worden geselecteerd voor een of meer knooppunt eigenschappen. Plaatsings beperkingen bepalen waar services moeten worden uitgevoerd.

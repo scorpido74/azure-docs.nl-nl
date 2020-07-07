@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/04/2020
 ms.openlocfilehash: e2db6d1d60026a00fa8e766fbaa1c72975fa2e99
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82786611"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Een virtueel netwerk voor Azure HDInsight plannen
@@ -71,7 +71,7 @@ Volg de stappen in deze sectie om te ontdekken hoe u een nieuwe HDInsight kunt t
 
     * Netwerkbeveiligingsgroepen
 
-        Vervang `RESOURCEGROUP` door de naam van de resource groep die het virtuele netwerk bevat en voer de volgende opdracht in:
+        Vervang door `RESOURCEGROUP` de naam van de resource groep die het virtuele netwerk bevat en voer de volgende opdracht in:
 
         ```powershell
         Get-AzNetworkSecurityGroup -ResourceGroupName  "RESOURCEGROUP"
@@ -88,7 +88,7 @@ Volg de stappen in deze sectie om te ontdekken hoe u een nieuwe HDInsight kunt t
 
     * Door de gebruiker gedefinieerde routes
 
-        Vervang `RESOURCEGROUP` door de naam van de resource groep die het virtuele netwerk bevat en voer de volgende opdracht in:
+        Vervang door `RESOURCEGROUP` de naam van de resource groep die het virtuele netwerk bevat en voer de volgende opdracht in:
 
         ```powershell
         Get-AzRouteTable -ResourceGroupName "RESOURCEGROUP"
@@ -136,7 +136,7 @@ Voor het inschakelen van naam omzetting tussen het virtuele netwerk en bronnen i
 
 2. Configureer het virtuele netwerk voor gebruik van de aangepaste DNS-server.
 
-3. Zoek het aan Azure toegewezen DNS-achtervoegsel voor het virtuele netwerk. Deze waarde is vergelijkbaar met `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net`. Zie voor meer informatie over het vinden van het DNS-achtervoegsel het gedeelte [voor beeld: aangepaste DNS](hdinsight-create-virtual-network.md#example-dns) .
+3. Zoek het aan Azure toegewezen DNS-achtervoegsel voor het virtuele netwerk. Deze waarde is vergelijkbaar met `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` . Zie voor meer informatie over het vinden van het DNS-achtervoegsel het gedeelte [voor beeld: aangepaste DNS](hdinsight-create-virtual-network.md#example-dns) .
 
 4. Het door sturen van de DNS-servers configureren. De configuratie is afhankelijk van het type extern netwerk.
 
@@ -168,13 +168,13 @@ Zie voor meer informatie de [naam omzetting voor vm's en rollen instanties](../v
 
 ## <a name="directly-connect-to-apache-hadoop-services"></a>Rechtstreeks verbinding maken met Apache Hadoop Services
 
-U kunt verbinding maken met het cluster `https://CLUSTERNAME.azurehdinsight.net`op. Dit adres maakt gebruik van een openbaar IP, die mogelijk niet bereikbaar is als u Nsg's hebt gebruikt om het inkomende verkeer van Internet te beperken. Wanneer u het cluster in een VNet implementeert, kunt u dit ook openen via het persoonlijke `https://CLUSTERNAME-int.azurehdinsight.net`eind punt. Dit eind punt wordt omgezet in een persoonlijk IP-adres in het VNet voor toegang tot het cluster.
+U kunt verbinding maken met het cluster op `https://CLUSTERNAME.azurehdinsight.net` . Dit adres maakt gebruik van een openbaar IP, die mogelijk niet bereikbaar is als u Nsg's hebt gebruikt om het inkomende verkeer van Internet te beperken. Wanneer u het cluster in een VNet implementeert, kunt u dit ook openen via het persoonlijke eind punt `https://CLUSTERNAME-int.azurehdinsight.net` . Dit eind punt wordt omgezet in een persoonlijk IP-adres in het VNet voor toegang tot het cluster.
 
 Als u verbinding wilt maken met Apache Ambari en andere webpagina's via het virtuele netwerk, gebruikt u de volgende stappen:
 
 1. Gebruik een van de volgende methoden om de interne volledig gekwalificeerde domein namen (FQDN) van de HDInsight-cluster knooppunten te detecteren:
 
-    Vervang `RESOURCEGROUP` door de naam van de resource groep die het virtuele netwerk bevat en voer de volgende opdracht in:
+    Vervang door `RESOURCEGROUP` de naam van de resource groep die het virtuele netwerk bevat en voer de volgende opdracht in:
 
     ```powershell
     $clusterNICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP" | where-object {$_.Name -like "*node*"}

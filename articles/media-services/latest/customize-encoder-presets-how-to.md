@@ -13,10 +13,10 @@ ms.date: 05/03/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: ebe701032e6416b3e007a28db62f5a8235bb1bb1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80068035"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>Coderen met een aangepaste trans formatie-.NET
@@ -32,7 +32,7 @@ Bij het maken van aangepaste voor instellingen gelden de volgende overwegingen:
 
 ## <a name="prerequisites"></a>Vereisten 
 
-[Een Media Services-account maken](create-account-cli-how-to.md)
+[Een Azure Media Services-account maken](create-account-cli-how-to.md)
 
 ## <a name="download-the-sample"></a>Het voorbeeld downloaden
 

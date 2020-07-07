@@ -7,10 +7,10 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: f6c4fb5caf746650f95872d50afe31e5693422be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81382918"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory integratie voor Azure Red Hat open Shift
@@ -23,19 +23,19 @@ Microsoft Azure Red Hat open Shift moet machtigingen hebben om namens uw cluster
 
 Zorg er in de [Azure Portal](https://portal.azure.com)voor dat uw Tenant wordt weer gegeven onder uw gebruikers naam in de rechter bovenhoek van de portal:
 
-![Scherm afbeelding van de portal met Tenant rechtsboven](./media/howto-create-tenant/tenant-callout.png) als de verkeerde Tenant wordt weer gegeven, klikt u in de rechter bovenhoek op uw gebruikers naam, klikt u op **Active Directory**en selecteert u de juiste Tenant in de lijst **alle directory's** .
+![Scherm afbeelding van de portal met Tenant rechtsboven ](./media/howto-create-tenant/tenant-callout.png) als de verkeerde Tenant wordt weer gegeven, klikt u in de rechter bovenhoek op uw gebruikers naam, klikt u op **Active Directory**en selecteert u de juiste Tenant in de lijst **alle directory's** .
 
 Maak een nieuwe Azure Active Directory eigenaar van de gebruiker om u aan te melden bij uw Azure Red Hat open Shift-cluster.
 
 1. Ga naar de Blade [gebruikers-alle gebruikers](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) .
 2. Klik op **+ nieuwe gebruiker** om het deel venster **gebruiker** te openen.
 3. Voer een **naam** in voor deze gebruiker.
-4. Maak een **gebruikers naam** op basis van de naam van de Tenant die u hebt `.onmicrosoft.com` gemaakt, die aan het einde is toegevoegd. Bijvoorbeeld `yourUserName@yourTenantName.onmicrosoft.com`. Noteer deze gebruikers naam. U hebt deze nodig om u aan te melden bij uw cluster.
+4. Maak een **gebruikers naam** op basis van de naam van de Tenant die u hebt gemaakt, die `.onmicrosoft.com` aan het einde is toegevoegd. Bijvoorbeeld `yourUserName@yourTenantName.onmicrosoft.com`. Noteer deze gebruikers naam. U hebt deze nodig om u aan te melden bij uw cluster.
 5. Klik op **Directory functie** om het deel venster Directory-rollen te openen, selecteer **eigenaar** en klik onder aan het deel venster op **OK** .
 6. Klik in het deel venster **gebruiker** op **wacht woord weer geven** en het tijdelijke wacht woord vastleggen. Nadat u zich de eerste keer hebt aangemeld, wordt u gevraagd om deze opnieuw in te stellen.
 7. Klik onder aan het deel venster op **maken** om de gebruiker te maken.
 
-## <a name="create-an-azure-ad-security-group"></a>Een Azure AD-beveiligings groep maken
+## <a name="create-an-azure-ad-security-group"></a>Een Azure AD-beveiligingsgroep maken
 
 Als u de toegang tot cluster beheer wilt verlenen, worden de lidmaatschappen in een Azure AD-beveiligings groep gesynchroniseerd met de open Shift-groep OSA-Customer-Administrators. Als u niets opgeeft, wordt er geen cluster beheer toegang verleend.
 
@@ -61,7 +61,7 @@ Als u de toegang tot cluster beheer wilt verlenen, worden de lidmaatschappen in 
 
 ## <a name="create-an-azure-ad-app-registration"></a>Een Azure AD-App-registratie maken
 
-U kunt automatisch een app-registratie-client voor Azure Active Directory (Azure AD) maken als onderdeel van het maken van het `--aad-client-app-id` cluster door de `az openshift create` vlag te weglaten aan de opdracht. In deze zelf studie leert u hoe u de Azure AD-App-registratie voor volledigheid maakt.
+U kunt automatisch een app-registratie-client voor Azure Active Directory (Azure AD) maken als onderdeel van het maken van het cluster door de `--aad-client-app-id` vlag te weglaten aan de `az openshift create` opdracht. In deze zelf studie leert u hoe u de Azure AD-App-registratie voor volledigheid maakt.
 
 Als uw organisatie nog geen app-registratie voor Azure Active Directory (Azure AD) heeft om als service-principal te gebruiken, volgt u deze instructies om er een te maken.
 
@@ -73,7 +73,7 @@ Als uw organisatie nog geen app-registratie voor Azure Active Directory (Azure A
 
 ![Scherm afbeelding van de pagina met app-objecten](./media/howto-create-tenant/get-app-id.png)
 
-### <a name="create-a-client-secret"></a>Een client geheim maken
+### <a name="create-a-client-secret"></a>Een clientgeheim maken
 
 Genereer een client geheim om uw app te verifiëren voor Azure Active Directory.
 

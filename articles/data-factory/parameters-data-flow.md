@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 8e88e5e8a9fbe1881959c5183dc01b11ac681bdf
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82780369"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>Toewijzingsgegevensstromen parameteriseren
@@ -64,14 +64,14 @@ Wanneer u een para meter voor een pijplijn expressie van het type teken reeks to
 
 ![Een para meter voor een gegevens stroom instellen](media/data-flow/string-parameter.png "Een para meter voor een gegevens stroom instellen")
 
-Als de para meter `stringParam` data flow verwijst naar een pijplijn parameter `upper(column1)`met een waarde. 
+Als de para meter data flow `stringParam` verwijst naar een pijplijn parameter met een waarde `upper(column1)` . 
 
 - Als expressie is ingeschakeld, `$stringParam` evalueert de waarde van Kolom1 alle hoofd letters.
 - Als expressie niet is ingeschakeld (standaard gedrag), `$stringParam` evalueert naar`'upper(column1)'`
 
 #### <a name="passing-in-timestamps"></a>Door geven van tijds tempels
 
-In de taal van de pipeline-expressie, systeem `pipeline().TriggerTime` variabelen zoals en `utcNow()` functions, zoals retour tempels als teken reeksen in de notatie JJJJ\'-\'mm-dd T uu: mm: SS. SSSSSSZ'. Als u deze wilt converteren naar de gegevensstroom parameters van het type Time Stamp, gebruikt u interpolatie van teken reeksen `toTimestamp()` om de gewenste tijds tempel in een functie op te genomen. U kunt bijvoorbeeld gebruiken `toTimestamp(left('@{pipeline().TriggerTime}', 23), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS')`om de trigger tijd van de pijp lijn om te zetten in een para meter voor de gegevens stroom. 
+In de taal van de pipeline-expressie, systeem variabelen zoals `pipeline().TriggerTime` en functions, zoals `utcNow()` retour tempels als teken reeksen in de notatie jjjj-mm-dd \' T \' uu: mm: SS. SSSSSSZ'. Als u deze wilt converteren naar de gegevensstroom parameters van het type Time Stamp, gebruikt u interpolatie van teken reeksen om de gewenste tijds tempel in een functie op te genomen `toTimestamp()` . U kunt bijvoorbeeld gebruiken om de trigger tijd van de pijp lijn om te zetten in een para meter voor de gegevens stroom `toTimestamp(left('@{pipeline().TriggerTime}', 23), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS')` . 
 
 ![Een para meter voor een gegevens stroom instellen](media/data-flow/parameter-timestamp.png "Een para meter voor een gegevens stroom instellen")
 
@@ -80,15 +80,15 @@ In de taal van de pipeline-expressie, systeem `pipeline().TriggerTime` variabele
 
 #### <a name="pipeline-parameter-example"></a>Voor beeld van pijplijn parameter
 
-Stel dat u een integer- `intParam` para meter hebt die verwijst naar een pijplijn parameter van het type `@pipeline.parameters.pipelineParam`teken reeks,. 
+Stel dat u een integer-para meter hebt `intParam` die verwijst naar een pijplijn parameter van het type teken reeks, `@pipeline.parameters.pipelineParam` . 
 
 ![Een para meter voor een gegevens stroom instellen](media/data-flow/parameter-pipeline-2.png "Een para meter voor een gegevens stroom instellen")
 
-`@pipeline.parameters.pipelineParam`wordt tijdens runtime een waarde `abs(1)` van toegewezen.
+`@pipeline.parameters.pipelineParam`wordt tijdens runtime een waarde van toegewezen `abs(1)` .
 
 ![Een para meter voor een gegevens stroom instellen](media/data-flow/parameter-pipeline-4.png "Een para meter voor een gegevens stroom instellen")
 
-Wanneer `$intParam` wordt verwezen in een expressie, zoals een afgeleide kolom, wordt Return `abs(1)` `1`geëvalueerd. 
+Wanneer `$intParam` wordt verwezen in een expressie, zoals een afgeleide kolom, wordt `abs(1)` return geëvalueerd `1` . 
 
 ![Een para meter voor een gegevens stroom instellen](media/data-flow/parameter-pipeline-3.png "Een para meter voor een gegevens stroom instellen")
 
@@ -102,9 +102,9 @@ Met de **expressie gegevens stroom** selecteren wordt de opbouw functie voor de 
 
 ### <a name="passing-in-a-column-name-as-a-parameter"></a>Het door geven van een kolom naam als para meter
 
-Een gemeen schappelijk patroon is het door geven van een kolom naam als een parameter waarde. Als de kolom is gedefinieerd in het schema van de gegevens stroom, kunt u deze rechtstreeks als een teken reeks expressie verwijzen. Als de kolom niet in het schema is gedefinieerd, gebruikt `byName()` u de functie. Vergeet niet om de kolom naar het juiste type te casten met een cast `toString()`-functie zoals.
+Een gemeen schappelijk patroon is het door geven van een kolom naam als een parameter waarde. Als de kolom is gedefinieerd in het schema van de gegevens stroom, kunt u deze rechtstreeks als een teken reeks expressie verwijzen. Als de kolom niet in het schema is gedefinieerd, gebruikt u de `byName()` functie. Vergeet niet om de kolom naar het juiste type te casten met een cast-functie zoals `toString()` .
 
-Als u bijvoorbeeld een teken reeks kolom wilt toewijzen op basis van een para meter `columnName`, kunt u een afgeleide kolom transformatie toevoegen `toString(byName($columnName))`gelijk aan.
+Als u bijvoorbeeld een teken reeks kolom wilt toewijzen op basis van een para meter `columnName` , kunt u een afgeleide kolom transformatie toevoegen gelijk aan `toString(byName($columnName))` .
 
 ![Het door geven van een kolom naam als para meter](media/data-flow/parameterize-column-name.png "Het door geven van een kolom naam als para meter")
 

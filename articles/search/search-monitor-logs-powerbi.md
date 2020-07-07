@@ -8,10 +8,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.openlocfilehash: e01ac332e61f51909ff1617f1716cd719b67c319
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82127875"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Azure Cognitive Search-logboeken en-metrische gegevens visualiseren met Power BI
@@ -33,7 +33,7 @@ U vindt de Power BI sjabloon app **Azure Cognitive Search: Analyseer logboeken e
     1. Controleer het **Archief op een opslag account**, geef de gegevens van uw opslag account op en controleer **OperationLogs** en **AllMetrics**
 
         ![](media/search-monitor-logs-powerbi/add-diagnostic-setting.png)
-    1. Selecteer **Opslaan**
+    1. Selecteer **Opslaan**.
 
 1. Nadat logboek registratie is ingeschakeld, gebruikt u uw zoek service om logboeken en metrische gegevens te genereren. Het duurt Maxi maal een uur voordat de containers in Blob Storage met deze logboeken worden weer gegeven. U ziet de container **Insights-logs-operationlogs** voor het zoeken naar verkeers logboeken en een **pt1m** -container voor metrische gegevens.
 

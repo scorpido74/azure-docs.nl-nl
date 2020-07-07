@@ -12,10 +12,10 @@ ms.date: 05/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 235fd429707a418fa193e986b95c9b38fa6c8101
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85385022"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Zelf studie: de interface van gebruikers ervaringen aanpassen in Azure Active Directory B2C
@@ -43,7 +43,7 @@ U maakt een Azure Storage-account en een container en plaatst vervolgens de basi
 
 Hoewel u uw bestanden op veel verschillende manieren kunt opslaan, slaat u deze op in [Azure Blob-opslag](../storage/blobs/storage-blobs-introduction.md).
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Zorg ervoor dat u de map gebruikt die uw Azure-abonnement bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw abonnement bevat. Deze map wijkt af van de directory die uw Azure B2C-Tenant bevat.
 3. Kies alle services in de linkerbovenhoek van het Azure Portal, zoek en selecteer **opslag accounts**.
 4. Selecteer **Toevoegen**.

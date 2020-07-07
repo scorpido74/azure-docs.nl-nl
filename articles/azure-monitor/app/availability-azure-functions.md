@@ -6,10 +6,10 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/04/2020
 ms.openlocfilehash: 81040adf6cfbb8820ec7f306c7d614830e3a2613
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791103"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Aangepaste beschikbaarheids tests maken en uitvoeren met behulp van Azure Functions
@@ -45,7 +45,7 @@ Kopieer de onderstaande code naar het bestand run. CSX (de vooraf bestaande code
 >![Azure function run. CSX in Azure Portal](media/availability-azure-functions/runcsx.png)
 
 > [!NOTE]
-> Voor het eindpunt adres gebruikt u: `EndpointAddress= https://dc.services.visualstudio.com/v2/track`. Tenzij uw resource zich in een regio bevindt als Azure Government of Azure China in dat geval raadpleegt u dit artikel over [het overschrijven van de standaard eindpunten](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification) en het juiste eind punt van het telemetrie-kanaal voor uw regio selecteren.
+> Voor het eindpunt adres gebruikt u: `EndpointAddress= https://dc.services.visualstudio.com/v2/track` . Tenzij uw resource zich in een regio bevindt als Azure Government of Azure China in dat geval raadpleegt u dit artikel over [het overschrijven van de standaard eindpunten](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification) en het juiste eind punt van het telemetrie-kanaal voor uw regio selecteren.
 
 ```C#
 #load "runAvailabilityTest.csx"
@@ -160,7 +160,7 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 Om ervoor te zorgen dat alles werkt, kunt u de grafiek bekijken op het tabblad Beschik baarheid van uw Application Insights-resource.
 
 > [!NOTE]
-> Als u uw eigen bedrijfs logica in runAvailabilityTest. CSX hebt geïmplementeerd, ziet u succes volle resultaten als in de onderstaande scherm afbeeldingen. als dat niet het geval is, ziet u niet de resultaten. Tests die zijn `TrackAvailability()` gemaakt met, worden weer gegeven met **aangepaste** naast de naam van de test.
+> Als u uw eigen bedrijfs logica in runAvailabilityTest. CSX hebt geïmplementeerd, ziet u succes volle resultaten als in de onderstaande scherm afbeeldingen. als dat niet het geval is, ziet u niet de resultaten. Tests die zijn gemaakt met `TrackAvailability()` , worden weer gegeven met **aangepaste** naast de naam van de test.
 
 >[!div class="mx-imgBorder"]
 >![Tabblad Beschik baarheid met succes volle resultaten](media/availability-azure-functions/availability-custom.png)

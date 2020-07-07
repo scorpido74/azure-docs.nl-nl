@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: a8a5914b51b56fbe8b4b7b7ba331f58ec451f975
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82731880"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>Vooruitbetalen voor Azure Database for MySQL Compute-resources met gereserveerde capaciteit
@@ -37,8 +37,8 @@ Stel bijvoorbeeld dat u een algemeen doel, GEN5-32 vCore MySQL-data base uitvoer
 
 ## <a name="buy-azure-database-for-mysql-reserved-capacity"></a>Azure Database for MySQL gereserveerde capaciteit kopen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2. Selecteer **alle services** > -**reserve ringen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+2. Selecteer **Alle services** > **Reserveringen**.
 3. Selecteer **toevoegen** en selecteer vervolgens in het deel venster reserve ringen **Azure database for MySQL** om een nieuwe reserve ring voor uw MySQL-data bases aan te schaffen.
 4. Vul de vereiste velden in. Bestaande of nieuwe data bases die overeenkomen met de kenmerken die u selecteert, komen in aanmerking voor de korting op gereserveerde capaciteit. Het werkelijke aantal Azure Database for MySQL servers dat de korting krijgt, is afhankelijk van het bereik en de geselecteerde hoeveelheid.
 
@@ -58,9 +58,9 @@ In de volgende tabel worden de vereiste velden beschreven.
 | Termijn | Één jaar
 | Aantal | De hoeveelheid reken resources die worden aangeschaft in de Azure Database for MySQL gereserveerde capaciteits reservering. De hoeveelheid is een aantal vCores in de geselecteerde Azure-regio en-prestatie-laag die worden gereserveerd en de facturerings korting krijgt. Als u bijvoorbeeld werkt met of plant om een Azure Database for MySQL servers uit te voeren met de totale reken capaciteit van GEN5 16 vCores in de regio VS-Oost, zou u de hoeveelheid instellen op 16 om het voor deel van alle servers te maximaliseren.
 
-## <a name="cancel-exchange-or-refund-reservations"></a>Annulering, omwisseling of terugbetaling van reserveringen
+## <a name="cancel-exchange-or-refund-reservations"></a>Reserveringen annuleren, ruilen of terugbetalen
 
-Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [self-service-uitwisseling en terugbetalingen voor Azure Reservations](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)voor meer informatie.
+Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund) voor meer informatie.
 
 ## <a name="vcore-size-flexibility"></a>flexibiliteit van vCore-grootte
 

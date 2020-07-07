@@ -14,16 +14,16 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 7125559dd39e1626634dae7c45b0744bfff57d8c
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652661"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>Overwegingen voor het gebruik van Xamarin iOS met MSAL.NET
 Wanneer u micro soft Authentication Library voor .NET (MSAL.NET) op Xamarin iOS gebruikt, moet u het volgende doen: 
 
-- De `OpenUrl` functie overschrijven en implementeren in `AppDelegate`.
+- De functie overschrijven en implementeren `OpenUrl` in `AppDelegate` .
 - Sleutel hanger groepen inschakelen.
 - Het delen van token cache inschakelen.
 - Toegang tot sleutel hanger inschakelen.
@@ -31,7 +31,7 @@ Wanneer u micro soft Authentication Library voor .NET (MSAL.NET) op Xamarin iOS 
 
 ## <a name="implement-openurl"></a>OpenUrl implementeren
 
-Overschrijf `OpenUrl` de methode van `FormsApplicationDelegate` de afgeleide `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs`klasse en de aanroep. Hier volgt een voorbeeld:
+Overschrijf de `OpenUrl` methode van de `FormsApplicationDelegate` afgeleide klasse en de aanroep `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs` . Hier volgt een voorbeeld:
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
@@ -49,7 +49,7 @@ Voer ook de volgende taken uit:
 
 ### <a name="enable-keychain-access"></a>Sleutel hanger toegang inschakelen
 
-Als u de toegang tot sleutel keten wilt inschakelen, moet u ervoor zorgen dat uw toepassing een toegangs groep voor de sleutel hanger heeft. U kunt de toegangs groep voor de sleutel hanger instellen wanneer u uw toepassing `WithIosKeychainSecurityGroup()` maakt met behulp van de API.
+Als u de toegang tot sleutel keten wilt inschakelen, moet u ervoor zorgen dat uw toepassing een toegangs groep voor de sleutel hanger heeft. U kunt de toegangs groep voor de sleutel hanger instellen wanneer u uw toepassing maakt met behulp van de `WithIosKeychainSecurityGroup()` API.
 
 Stel de toegangs groep voor de sleutel hanger in voor al uw toepassingen om te profiteren van de cache en eenmalige aanmelding (SSO).
 
@@ -61,7 +61,7 @@ var builder = PublicClientApplicationBuilder
      .Build();
 ```
 
-Schakel ook de toegang tot sleutel `Entitlements.plist` hanger in het bestand in. Gebruik de volgende toegangs groep of uw eigen toegangs groep.
+Schakel ook de toegang tot sleutel hanger in het `Entitlements.plist` bestand in. Gebruik de volgende toegangs groep of uw eigen toegangs groep.
 
 ```xml
 <dict>
@@ -72,7 +72,7 @@ Schakel ook de toegang tot sleutel `Entitlements.plist` hanger in het bestand in
 </dict>
 ```
 
-Wanneer u de `WithIosKeychainSecurityGroup()` API gebruikt, voegt MSAL automatisch uw beveiligings groep toe aan het einde van de *Team-ID* (`AppIdentifierPrefix`) van de toepassing. MSAL voegt uw beveiligings groep toe omdat wanneer u uw toepassing in Xcode bouwt, dit hetzelfde doet. Daarom moeten de rechten in het `Entitlements.plist` bestand worden vermeld `$(AppIdentifierPrefix)` vóór de toegangs groep voor de sleutel hanger.
+Wanneer u de `WithIosKeychainSecurityGroup()` API gebruikt, voegt MSAL automatisch uw beveiligings groep toe aan het einde van de *Team-ID* () van de toepassing `AppIdentifierPrefix` . MSAL voegt uw beveiligings groep toe omdat wanneer u uw toepassing in Xcode bouwt, dit hetzelfde doet. Daarom moeten de rechten in het `Entitlements.plist` bestand worden vermeld `$(AppIdentifierPrefix)` vóór de toegangs groep voor de sleutel hanger.
 
 Zie de documentatie voor IOS- [rechten](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps)voor meer informatie. 
 
@@ -82,16 +82,16 @@ Vanaf MSAL 2. x kunt u een toegangs groep voor de sleutel hanger opgeven om de t
 
 Door de token cache te delen, kunt u eenmalige aanmelding (SSO) toestaan voor alle toepassingen die gebruikmaken van de toegangs groep voor de sleutel hanger.
 
-Als u deze cache wilt delen, gebruikt `WithIosKeychainSecurityGroup()` u de methode om de toegangs groep voor de sleutel hanger in te stellen op dezelfde waarde in alle toepassingen die dezelfde cache delen. In het eerste code voorbeeld in dit artikel ziet u hoe u de-methode gebruikt.
+Als u deze cache wilt delen, gebruikt u de `WithIosKeychainSecurityGroup()` methode om de toegangs groep voor de sleutel hanger in te stellen op dezelfde waarde in alle toepassingen die dezelfde cache delen. In het eerste code voorbeeld in dit artikel ziet u hoe u de-methode gebruikt.
 
-Eerder in dit artikel hebt u geleerd dat MSAL toegevoegd `$(AppIdentifierPrefix)` wanneer u de `WithIosKeychainSecurityGroup()` API gebruikt. MSAL voegt dit element toe omdat de team `AppIdentifierPrefix` -id ervoor zorgt dat alleen toepassingen die door dezelfde uitgever zijn gemaakt, de sleutel hanger toegang kunnen delen.
+Eerder in dit artikel hebt u geleerd dat MSAL toegevoegd `$(AppIdentifierPrefix)` Wanneer u de `WithIosKeychainSecurityGroup()` API gebruikt. MSAL voegt dit element toe omdat de team-ID `AppIdentifierPrefix` ervoor zorgt dat alleen toepassingen die door dezelfde uitgever zijn gemaakt, de sleutel hanger toegang kunnen delen.
 
 > [!NOTE]
 > De `KeychainSecurityGroup` eigenschap is afgeschaft.
 > 
-> Vanaf MSAL 2. x werden ontwikkel aars gedwongen het `TeamId` voor voegsel toe te voegen tijdens het `KeychainSecurityGroup` gebruik van de eigenschap. Maar vanaf MSAL 2.7. x, wanneer u de nieuwe `iOSKeychainSecurityGroup` eigenschap gebruikt, verhelpt MSAL het `TeamId` voor voegsel tijdens runtime. Wanneer u deze eigenschap gebruikt, neemt u het `TeamId` voor voegsel niet op in de waarde. Het voor voegsel is niet vereist.
+> Vanaf MSAL 2. x werden ontwikkel aars gedwongen het voor voegsel toe te voegen `TeamId` tijdens het gebruik van de `KeychainSecurityGroup` eigenschap. Maar vanaf MSAL 2.7. x, wanneer u de nieuwe eigenschap gebruikt `iOSKeychainSecurityGroup` , verhelpt MSAL het `TeamId` voor voegsel tijdens runtime. Wanneer u deze eigenschap gebruikt, neemt u het `TeamId` voor voegsel niet op in de waarde. Het voor voegsel is niet vereist.
 >
-> Omdat de `KeychainSecurityGroup` eigenschap verouderd is, gebruikt `iOSKeychainSecurityGroup` u de eigenschap.
+> Omdat de `KeychainSecurityGroup` eigenschap verouderd is, gebruikt u de `iOSKeychainSecurityGroup` eigenschap.
 
 ### <a name="use-microsoft-authenticator"></a>Microsoft Authenticator gebruiken
 

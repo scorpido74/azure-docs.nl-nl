@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 9883065993f35054338079c8b9647a8420574414
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82738062"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Failover van virtuele Azure-machines naar de primaire regio opnieuw beveiligen
@@ -29,7 +29,7 @@ Wanneer u virtuele Azure-machines van de ene regio naar de andere gebruikt via [
 
 ## <a name="reprotect-a-vm"></a>Een virtuele machine opnieuw beveiligen
 
-1. Klik in **kluis** > **gerepliceerde items**met de rechter muisknop op de virtuele machine waarvoor een failover is uitgevoerd en selecteer **opnieuw beveiligen**. De richting voor opnieuw beveiligen moet van secundair naar primair worden weer gegeven.
+1. Klik in **kluis**  >  **gerepliceerde items**met de rechter muisknop op de virtuele machine waarvoor een failover is uitgevoerd en selecteer **opnieuw beveiligen**. De richting voor opnieuw beveiligen moet van secundair naar primair worden weer gegeven.
 
    ![Opnieuw beveiligen](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
@@ -58,7 +58,7 @@ U kunt de volgende eigenschappen van de doel-VM aanpassen tijdens het opnieuw be
 Standaard gebeurt het volgende:
 
 1. Er wordt een cache-opslag account gemaakt in de regio waarin de virtuele machine waarvoor een failover is uitgevoerd, is gestart.
-1. Als het doel-opslag account (het oorspronkelijke opslag account in de primaire regio) niet bestaat, wordt er een nieuwe gemaakt. De naam van het toegewezen opslag account is de naam van het opslag account dat wordt gebruikt door de secundaire virtuele `asr`machine, met als achtervoegsel.
+1. Als het doel-opslag account (het oorspronkelijke opslag account in de primaire regio) niet bestaat, wordt er een nieuwe gemaakt. De naam van het toegewezen opslag account is de naam van het opslag account dat wordt gebruikt door de secundaire virtuele machine, met als achtervoegsel `asr` .
 1. Als uw virtuele machine beheerde schijven gebruikt, worden beheerde replica schijven in de primaire regio gemaakt voor het opslaan van de gegevens die worden gerepliceerd vanaf de schijven van de secundaire virtuele machine.
 1. Als de beschik baarheid van de doel groep niet bestaat, wordt er een nieuwe gemaakt als onderdeel van de taak voor opnieuw beveiligen, indien nodig. Als u de instellingen voor opnieuw beveiligen hebt aangepast, wordt de geselecteerde set gebruikt.
 
@@ -72,7 +72,7 @@ Wanneer u een taak voor opnieuw beveiligen start en de doel-VM bestaat, gebeurt 
 
 Wanneer u een taak voor opnieuw beveiligen start en de doel-VM en schijven niet bestaan, gebeurt het volgende:
 
-1. Als de virtuele machine gebruikmaakt van beheerde schijven, worden replica-schijven `-ASRReplica` gemaakt met het achtervoegsel. De `-ASRReplica` kopieën worden gebruikt voor replicatie.
+1. Als de virtuele machine gebruikmaakt van beheerde schijven, worden replica-schijven gemaakt met het `-ASRReplica` achtervoegsel. De `-ASRReplica` kopieën worden gebruikt voor replicatie.
 1. Als de virtuele machine gebruikmaakt van niet-beheerde schijven, worden er replica schijven gemaakt in het doel-opslag account.
 1. De gehele schijven worden gekopieerd van de regio waarvoor een failover is uitgevoerd naar de nieuwe doel regio.
 1. Nadat de synchronisatie is voltooid, wordt de Delta replicatie gestart en wordt er een herstel punt gemaakt in overeenstemming met het replicatie beleid.

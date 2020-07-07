@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 9717c76b42a63479c77f862057bfb141954eacff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0381418f20e126f94060b9f495fe1fe8b54e713b
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673404"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85378415"
 ---
 ## <a name="create-a-device-template"></a>Een apparaatsjabloon maken
 
@@ -21,7 +21,7 @@ Maak de map `environmental-sensor` op uw lokale machine.
 
 Download het JSON-bestand [Environmental Sensor Capability Model](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/9004219bff1e958b7cd6ff2a52209f4b7ae19396/samples/EnvironmentalSensorInline.capabilitymodel.json) en sla het op in de map `environmental-sensor`.
 
-Gebruik een teksteditor om de twee exemplaren van `{YOUR_COMPANY_NAME_HERE}` te vervangen door de naam van uw bedrijf in het bestand `EnvironmentalSensorInline.capabilitymodel.json` dat u hebt gedownload.
+Gebruik een teksteditor om de twee exemplaren van `{YOUR_COMPANY_NAME_HERE}` te vervangen door de naam van uw bedrijf in het bestand `EnvironmentalSensorInline.capabilitymodel.json` dat u hebt gedownload. Gebruik alleen de tekens a-z, A-Z, 0-9 en onderstrepingstekens.
 
 Maak in uw Azure IoT Central-toepassing een sjabloon met de naam *Environmental sensor* door het bestand met het capaciteitsmodel `EnvironmentalSensorInline.capabilitymodel.json` te importeren:
 

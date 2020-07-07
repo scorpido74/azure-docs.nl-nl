@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: guybo
 ms.openlocfilehash: f700dec6486bad9e7024d7c908a70dd0ff2b342c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066762"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informatie over niet-goedgekeurde distributies
@@ -28,7 +28,7 @@ U wordt aangeraden te beginnen met een van de [Linux in azure goedgekeurde distr
 * **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[SLES & openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[SLES en OpenSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
 Dit artikel richt zich op algemene richt lijnen voor het uitvoeren van uw Linux-distributie op Azure.
@@ -39,14 +39,14 @@ Dit artikel richt zich op algemene richt lijnen voor het uitvoeren van uw Linux-
 * De maximale grootte die is toegestaan voor de VHD is 1.023 GB.
 * Bij de installatie van het Linux-systeem raden we u aan om standaard partities te gebruiken in plaats van Logical Volume Manager (LVM). Dit is de standaard instelling voor veel installaties. Het gebruik van standaard partities voor komt dat LVM naam strijdig is met gekloonde Vm's, met name als een besturingssysteem schijf ooit is gekoppeld aan een andere identieke virtuele machine voor het oplossen van problemen. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) of [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) kan worden gebruikt op gegevens schijven.
 * Kernel-ondersteuning voor het koppelen van UDF-bestands systemen is nood zakelijk. Bij de eerste keer opstarten in azure wordt de inrichtings configuratie door gegeven aan de Linux-VM met behulp van UDF-geformatteerde media die aan de gast zijn gekoppeld. De Azure Linux-agent moet het UDF-bestands systeem koppelen om de configuratie te lezen en de virtuele machine in te richten.
-* Linux-kernel-versies ouder dan 2.6.37 bieden geen ondersteuning voor NUMA op Hyper-V met grotere VM-grootten. Dit probleem heeft voornamelijk betrekking op oudere distributies met behulp van de upstream Red Hat 2.6.32 kernel en is opgelost in Red Hat Enterprise Linux (RHEL) 6,6 (kernel-2.6.32-504). Systemen met aangepaste kernels die ouder zijn dan 2.6.37 of op RHEL gebaseerde kernels die ouder zijn dan 2.6.32-504, moeten `numa=off` de opstart parameter instellen op de kernel-opdracht regel in grub. conf. Zie [Red Hat KB 436883](https://access.redhat.com/solutions/436883)voor meer informatie.
+* Linux-kernel-versies ouder dan 2.6.37 bieden geen ondersteuning voor NUMA op Hyper-V met grotere VM-grootten. Dit probleem heeft voornamelijk betrekking op oudere distributies met behulp van de upstream Red Hat 2.6.32 kernel en is opgelost in Red Hat Enterprise Linux (RHEL) 6,6 (kernel-2.6.32-504). Systemen met aangepaste kernels die ouder zijn dan 2.6.37 of op RHEL gebaseerde kernels die ouder zijn dan 2.6.32-504, moeten de opstart parameter instellen `numa=off` op de kernel-opdracht regel in grub. conf. Zie [Red Hat KB 436883](https://access.redhat.com/solutions/436883)voor meer informatie.
 * Configureer geen swap partitie op de besturingssysteem schijf. De Linux-agent kan worden geconfigureerd voor het maken van een wissel bestand op de tijdelijke bron schijf, zoals wordt beschreven in de volgende stappen.
 * Alle Vhd's op Azure moeten een virtuele grootte hebben die is afgestemd op 1 MB. Wanneer u van een onbewerkte schijf naar VHD converteert, moet u ervoor zorgen dat de onbewerkte schijf grootte een meervoud van 1 MB vóór de conversie is, zoals wordt beschreven in de volgende stappen.
 
 ### <a name="installing-kernel-modules-without-hyper-v"></a>Kernel-modules installeren zonder Hyper-V
 Azure wordt uitgevoerd op de Hyper-V-Hyper Visor, daarom vereist Linux bepaalde kernel-modules om uit te voeren in Azure. Als u een virtuele machine hebt die buiten Hyper-V is gemaakt, bevatten de Linux-installatie Programma's mogelijk niet de drivers voor Hyper-V in de oorspronkelijke ramdisk (initrd of initramfs), tenzij de virtuele machine detecteert dat deze wordt uitgevoerd op een Hyper-V-omgeving. Wanneer u een ander virtualisatie systeem (zoals VirtualBox, KVM, enzovoort) gebruikt om de Linux-installatie kopie voor te bereiden, moet u mogelijk de initrd opnieuw bouwen zodat ten minste de hv_vmbus en hv_storvsc kernel-modules beschikbaar zijn op de eerste ramdisk.  Dit bekende probleem doet zich voor op systemen die zijn gebaseerd op de upstream-implementatie van Red Hat en mogelijk andere.
 
-Het mechanisme voor het opnieuw samen stellen van de initrd-of initramfs-installatie kopie kan variëren, afhankelijk van de verdeling. Raadpleeg de documentatie of ondersteuning van uw distributie voor de juiste procedure.  Hier volgt een voor beeld voor het opnieuw samen stellen van de `mkinitrd` initrd met het hulp programma:
+Het mechanisme voor het opnieuw samen stellen van de initrd-of initramfs-installatie kopie kan variëren, afhankelijk van de verdeling. Raadpleeg de documentatie of ondersteuning van uw distributie voor de juiste procedure.  Hier volgt een voor beeld voor het opnieuw samen stellen van de initrd met het `mkinitrd` hulp programma:
 
 1. Maak een back-up van de bestaande initrd-installatie kopie:
 
@@ -64,12 +64,12 @@ Het mechanisme voor het opnieuw samen stellen van de initrd-of initramfs-install
 ### <a name="resizing-vhds"></a>Grootte van Vhd's wijzigen
 VHD-installatie kopieën in azure moeten een virtuele grootte hebben die is afgestemd op 1 MB.  Normaal gesp roken worden Vhd's die zijn gemaakt met Hyper-V correct uitgelijnd.  Als de VHD niet correct is uitgelijnd, wordt mogelijk een fout bericht van de volgende strekking weer gegeven wanneer u een installatie kopie probeert te maken op basis van uw VHD.
 
-* De VHD http:\//\<mystorageaccount>. blob.core.Windows.net/VHDs/MyLinuxVM.VHD heeft een niet-ondersteunde virtuele grootte van 21475270656 bytes. De grootte moet een geheel getal zijn (in MB).
+* De VHD http: \/ / \<mystorageaccount> . blob.core.Windows.net/VHDs/MyLinuxVM.VHD heeft een niet-ondersteunde virtuele grootte van 21475270656 bytes. De grootte moet een geheel getal zijn (in MB).
 
-In dit geval kunt u de grootte van de virtuele machine wijzigen met de Hyper-V-beheer console of met de Power shell [-cmdlet resize-VHD](https://technet.microsoft.com/library/hh848535.aspx) .  Als u niet in een Windows-omgeving wordt uitgevoerd, raden `qemu-img` we u aan om (indien nodig) te converteren en de grootte van de VHD te wijzigen.
+In dit geval kunt u de grootte van de virtuele machine wijzigen met de Hyper-V-beheer console of met de Power shell [-cmdlet resize-VHD](https://technet.microsoft.com/library/hh848535.aspx) .  Als u niet in een Windows-omgeving wordt uitgevoerd, raden we u `qemu-img` aan om (indien nodig) te converteren en de grootte van de VHD te wijzigen.
 
 > [!NOTE]
-> Er is een [bekende fout in qemu-img-](https://bugs.launchpad.net/qemu/+bug/1490611) versies >= 2.2.1 dat resulteert in een VHD met een onjuiste indeling. Het probleem is opgelost in QEMU 2,6. We raden u aan `qemu-img` om 2.2.0 of lager of 2,6 of hoger te gebruiken.
+> Er is een [bekende fout in qemu-img-](https://bugs.launchpad.net/qemu/+bug/1490611) versies >= 2.2.1 dat resulteert in een VHD met een onjuiste indeling. Het probleem is opgelost in QEMU 2,6. We raden u `qemu-img` aan om 2.2.0 of lager of 2,6 of hoger te gebruiken.
 > 
 
 1. Het formaat van de VHD rechtstreeks wijzigen met behulp van hulpprogram ma's zoals `qemu-img` of `vbox-manage` kan leiden tot een niet-opstartbaar VHD.  U wordt aangeraden eerst de VHD te converteren naar een onbewerkte schijf installatie kopie.  Als de VM-installatie kopie is gemaakt als een onbewerkte schijf installatie kopie (de standaard instelling voor sommige Hyper visors zoals KVM), kunt u deze stap overs Laan.
@@ -78,7 +78,7 @@ In dit geval kunt u de grootte van de virtuele machine wijzigen met de Hyper-V-b
     qemu-img convert -f vpc -O raw MyLinuxVM.vhd MyLinuxVM.raw
     ```
 
-1. Bereken de vereiste grootte van de schijf installatie kopie zodat de virtuele grootte wordt uitgelijnd op 1 MB.  Het volgende bash-shell script `qemu-img info` gebruikt om de virtuele grootte van de schijf installatie kopie te bepalen, waarna de grootte wordt berekend op de volgende 1 MB.
+1. Bereken de vereiste grootte van de schijf installatie kopie zodat de virtuele grootte wordt uitgelijnd op 1 MB.  Het volgende bash-shell script gebruikt `qemu-img info` om de virtuele grootte van de schijf installatie kopie te bepalen, waarna de grootte wordt berekend op de volgende 1 MB.
 
     ```bash
     rawdisk="MyLinuxVM.raw"
@@ -93,7 +93,7 @@ In dit geval kunt u de grootte van de virtuele machine wijzigen met de Hyper-V-b
     echo "Rounded Size = $rounded_size"
     ```
 
-3. Wijzig de grootte van de `$rounded_size` onbewerkte schijf met de bovenstaande set.
+3. Wijzig de grootte van de onbewerkte schijf met de `$rounded_size` bovenstaande set.
 
     ```bash
     qemu-img resize MyLinuxVM.raw $rounded_size
@@ -186,7 +186,7 @@ De [Azure Linux-agent](../extensions/agent-linux.md) `waagent` richt zich op een
      logout
      ```  
    > [!NOTE]
-   > Op VirtualBox ziet u mogelijk de volgende fout na het `waagent -force -deprovision` uitvoeren van `[Errno 5] Input/output error`de tekst. Dit fout bericht is niet kritiek en kan worden genegeerd.
+   > Op VirtualBox ziet u mogelijk de volgende fout na het uitvoeren van de `waagent -force -deprovision` tekst `[Errno 5] Input/output error` . Dit fout bericht is niet kritiek en kan worden genegeerd.
 
 * Sluit de virtuele machine af en upload de VHD naar Azure.
 

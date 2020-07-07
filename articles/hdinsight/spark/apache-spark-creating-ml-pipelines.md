@@ -9,32 +9,32 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.openlocfilehash: b0de9103fd022dc74e7c75017a602eb6701686fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73494662"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>Een machine learning-pijplijn in Apache Spark maken
 
-Met de schaal bare machine learning-bibliotheek van Apache Spark (MLlib) worden model functies naar een gedistribueerde omgeving gebracht. Het Spark- [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) pakket is een set api's op hoog niveau die is gebouwd op DataFrames. Met deze Api's kunt u praktische pijp lijnen voor machine learning maken en afstemmen.  *Spark machine learning* verwijst naar deze MLlib data frame-API, niet op de oudere rdd-API voor pijp lijnen.
+Met de schaal bare machine learning-bibliotheek van Apache Spark (MLlib) worden model functies naar een gedistribueerde omgeving gebracht. Het Spark-pakket [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) is een set api's op hoog niveau die is gebouwd op DataFrames. Met deze Api's kunt u praktische pijp lijnen voor machine learning maken en afstemmen.  *Spark machine learning* verwijst naar deze MLlib data frame-API, niet op de oudere rdd-API voor pijp lijnen.
 
 Een machine learning (ML) pijp lijn is een volledige werk stroom waarmee meerdere machine learning algoritmen samen worden gecombineerd. Er kunnen veel stappen worden uitgevoerd voor het verwerken en leren van gegevens, waardoor een reeks algoritmen vereist is. Met pijp lijnen worden de fasen en de volg orde van een machine learning proces gedefinieerd. In MLlib worden fasen van een pijp lijn vertegenwoordigd door een specifieke reeks PipelineStages, waarbij een transformator en een Estimator elke taak uitvoeren.
 
-Een transformator is een algoritme waarmee een data frame met behulp van de `transform()` -methode wordt omgezet in een andere. Een functie transformator kan bijvoorbeeld één kolom van een data frame lezen, deze toewijzen aan een andere kolom en een nieuwe data frame uitvoer met de toegewezen kolom eraan toe te voegen.
+Een transformator is een algoritme waarmee een data frame met behulp van de-methode wordt omgezet in een andere `transform()` . Een functie transformator kan bijvoorbeeld één kolom van een data frame lezen, deze toewijzen aan een andere kolom en een nieuwe data frame uitvoer met de toegewezen kolom eraan toe te voegen.
 
-Een Estimator is een abstractie van leer algoritmen en is verantwoordelijk voor het aanpassen of trainen van een gegevensset om een transformator te maken. Een Estimator implementeert een methode met `fit()`de naam, die een data frame accepteert en een data frame, een transformator, produceert.
+Een Estimator is een abstractie van leer algoritmen en is verantwoordelijk voor het aanpassen of trainen van een gegevensset om een transformator te maken. Een Estimator implementeert een methode met de naam `fit()` , die een data frame accepteert en een data frame, een transformator, produceert.
 
 Elk stateless exemplaar van een transformator of een Estimator heeft een eigen unieke id, die wordt gebruikt bij het opgeven van para meters. Beide gebruiken een uniforme API voor het opgeven van deze para meters.
 
 ## <a name="pipeline-example"></a>Voor beeld van pijp lijn
 
-Om een praktisch gebruik van een ML-pijp lijn te demonstreren, gebruikt dit `HVAC.csv` voor beeld het voorbeeld gegevensbestand dat vooraf is geladen in de standaard opslag voor uw HDInsight-cluster, hetzij Azure Storage als data Lake Storage. Als u de inhoud van het bestand wilt bekijken, gaat `/HdiSamples/HdiSamples/SensorSampleData/hvac` u naar de map. `HVAC.csv`bevat een set keer met zowel doel-als werkelijke Tempe raturen voor systemen voor airco (*Verwarming, ventilatie en airconditioning*) in verschillende gebouwen. Het doel is om het model op de gegevens te trainen en een prognose temperatuur te maken voor een bepaald gebouw.
+Om een praktisch gebruik van een ML-pijp lijn te demonstreren, gebruikt dit voor beeld het voorbeeld `HVAC.csv` gegevensbestand dat vooraf is geladen in de standaard opslag voor uw HDInsight-cluster, hetzij Azure Storage als data Lake Storage. Als u de inhoud van het bestand wilt bekijken, gaat u naar de `/HdiSamples/HdiSamples/SensorSampleData/hvac` map. `HVAC.csv`bevat een set keer met zowel doel-als werkelijke Tempe raturen voor systemen voor airco (*Verwarming, ventilatie en airconditioning*) in verschillende gebouwen. Het doel is om het model op de gegevens te trainen en een prognose temperatuur te maken voor een bepaald gebouw.
 
 De volgende code:
 
-1. Hiermee definieert `LabeledDocument`u een, waarin `BuildingID`de `SystemInfo` , (de id en leeftijd van het systeem) en `label` een (1,0 als het gebouw te warm is, 0,0 anders) wordt opgeslagen.
-2. Hiermee maakt u een aangepaste `parseDocument` parser-functie die een regel (rij) van gegevens neemt en bepaalt of het gebouw ' hot ' is door de doel temperatuur te vergelijken met de werkelijke Tempe ratuur.
+1. Hiermee definieert u een `LabeledDocument` , waarin de `BuildingID` , `SystemInfo` (de id en leeftijd van het systeem) en een `label` (1,0 als het gebouw te warm is, 0,0 anders) wordt opgeslagen.
+2. Hiermee maakt u een aangepaste parser `parseDocument` -functie die een regel (rij) van gegevens neemt en bepaalt of het gebouw ' hot ' is door de doel temperatuur te vergelijken met de werkelijke Tempe ratuur.
 3. Past de parser toe bij het uitpakken van de bron gegevens.
 4. Maakt trainings gegevens.
 
@@ -78,11 +78,11 @@ documents = data.filter(lambda s: "Date" not in s).map(parseDocument)
 training = documents.toDF()
 ```
 
-Deze voorbeeld pijplijn heeft drie fasen: `Tokenizer` en `HashingTF` (beide trans formats) en `Logistic Regression` (een Estimator).  De geëxtraheerde en geparseerde gegevens in `training` de data frame stromen via de pijp lijn `pipeline.fit(training)` wanneer deze wordt aangeroepen.
+Deze voorbeeld pijplijn heeft drie fasen: `Tokenizer` en `HashingTF` (beide trans formats) en `Logistic Regression` (een Estimator).  De geëxtraheerde en geparseerde gegevens in de `training` Data frame stromen via de pijp lijn wanneer deze `pipeline.fit(training)` wordt aangeroepen.
 
-1. De eerste fase, `Tokenizer`, splitst de `SystemInfo` invoer kolom (die bestaat uit de systeem-id en de leeftijds waarden) `words` in een uitvoer kolom. Deze nieuwe `words` kolom wordt toegevoegd aan de data frame. 
-2. De tweede fase, `HashingTF`, converteert de nieuwe `words` kolom naar functie vectoren. Deze nieuwe `features` kolom wordt toegevoegd aan de data frame. Deze eerste twee fasen zijn trans formats. 
-3. De derde fase, `LogisticRegression`, is een Estimator, en de pijp lijn roept de methode `LogisticRegression.fit()` voor het maken van `LogisticRegressionModel`een aan. 
+1. De eerste fase, `Tokenizer` , splitst de `SystemInfo` invoer kolom (die bestaat uit de systeem-id en de leeftijds waarden) in een `words` uitvoer kolom. Deze nieuwe `words` kolom wordt toegevoegd aan de data frame. 
+2. De tweede fase, `HashingTF` , converteert de nieuwe `words` kolom naar functie vectoren. Deze nieuwe `features` kolom wordt toegevoegd aan de data frame. Deze eerste twee fasen zijn trans formats. 
+3. De derde fase, `LogisticRegression` , is een Estimator, en de pijp lijn roept de `LogisticRegression.fit()` methode voor het maken van een aan `LogisticRegressionModel` . 
 
 ```python
 tokenizer = Tokenizer(inputCol="SystemInfo", outputCol="words")
@@ -95,7 +95,7 @@ pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
 model = pipeline.fit(training)
 ```
 
-Als u de nieuwe `words` en `features` kolommen wilt zien die `Tokenizer` zijn `HashingTF` toegevoegd door de-en-trans formaties `LogisticRegression` en een voor beeld `PipelineModel.transform()` van de Estimator, voert u een methode uit op de oorspronkelijke data frame. In productie code moet de volgende stap worden door gegeven in een test data frame om de training te valideren.
+Als u de nieuwe `words` en kolommen wilt zien die `features` zijn toegevoegd door de `Tokenizer` `HashingTF` -en-trans formaties en een voor beeld van de `LogisticRegression` Estimator, voert u een `PipelineModel.transform()` methode uit op de oorspronkelijke data frame. In productie code moet de volgende stap worden door gegeven in een test data frame om de training te valideren.
 
 ```python
 peek = model.transform(training)

@@ -9,18 +9,18 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/27/2020
 ms.openlocfilehash: 545c1720ef379ec74bd2e7c0bc68f6a2fcbba789
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82115496"
 ---
-# <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange AS2-berichten voor B2B Enter prise integration in Azure Logic Apps met Enterprise Integration Pack
+# <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>AS2-berichten voor B2B Enterprise-integratie in Azure Logic Apps uitwisselen met Enterprise Integration Pack
 
 > [!IMPORTANT]
 > De oorspronkelijke AS2-connector wordt afgeschaft, dus zorg ervoor dat u in plaats daarvan de **AS2 (v2)** -connector gebruikt. Deze versie biedt dezelfde functionaliteit als de oorspronkelijke versie, is standaard voor de runtime van de Logic Apps en biedt aanzienlijke prestatie verbeteringen in de voor waarden voor door Voer en bericht grootte. Daarnaast hoeft de systeem eigen v2-connector geen verbinding te maken met uw integratie account. In plaats daarvan moet u, zoals beschreven in de vereisten, ervoor zorgen dat u uw integratie account koppelt aan de logische app waar u van plan bent om de connector te gebruiken.
 
-Als u wilt werken met AS2-berichten in Azure Logic Apps, kunt u de AS2-connector gebruiken. Deze bevat triggers en acties voor het beheren van AS2-communicatie. Als u bijvoorbeeld beveiliging en betrouw baarheid tijdens het verzenden van berichten wilt instellen, kunt u deze acties gebruiken:
+Als u wilt werken met AS2-berichten in Azure Logic Apps, kunt u de AS2-connector gebruiken. Deze levert triggers en acties voor het beheren van AS2-communicatie. Als u bijvoorbeeld beveiliging en betrouw baarheid tijdens het verzenden van berichten wilt instellen, kunt u deze acties gebruiken:
 
 * [ **AS2 Codeer** actie](#encode) voor het leveren van versleuteling, digitale ondertekening en bevestigingen via bericht beschikkings meldingen (MDN), die ondersteuning bieden voor niet-afwijzing. Deze actie past bijvoorbeeld AS2/HTTP-headers toe en voert deze taken uit wanneer deze zijn geconfigureerd:
 
@@ -75,7 +75,7 @@ In dit artikel wordt uitgelegd hoe u de AS2-code ring en decodeer acties kunt to
 
 1. Voeg in de ontwerp functie een nieuwe actie toe aan uw logische app.
 
-1. Onder **Kies een actie** en het zoekvak, selecteert u **alle**. Voer in het zoekvak ' AS2 encode ' in en zorg ervoor dat u de actie AS2 (v2) selecteert: **AS2 Encode**
+1. Selecteer onder **Kies een actie** en het zoekvak de optie **Alle**. Voer in het zoekvak ' AS2 encode ' in en zorg ervoor dat u de actie AS2 (v2) selecteert: **AS2 Encode**
 
    ![Selecteer ' AS2 encode '](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
 
@@ -103,7 +103,7 @@ In dit artikel wordt uitgelegd hoe u de AS2-code ring en decodeer acties kunt to
 
 1. Voeg in de ontwerp functie een nieuwe actie toe aan uw logische app.
 
-1. Onder **Kies een actie** en het zoekvak, selecteert u **alle**. Voer in het zoekvak ' AS2 decode ' in en zorg ervoor dat u de actie AS2 (v2) selecteert: **AS2 decoderen**
+1. Selecteer onder **Kies een actie** en het zoekvak de optie **Alle**. Voer in het zoekvak ' AS2 decode ' in en zorg ervoor dat u de actie AS2 (v2) selecteert: **AS2 decoderen**
 
    ![Selecteer ' AS2 decoderen '](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
 

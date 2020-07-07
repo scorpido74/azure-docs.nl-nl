@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 0d9d51292c3cae9634af917819b558cdfd2fa04b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311520"
 ---
 # <a name="security-agent-authentication-methods"></a>Verificatie methoden voor beveiligings agenten
@@ -77,7 +77,7 @@ Als u verificatie methoden na de implementatie wilt wijzigen, is hand matig bewe
 
 ### <a name="c-based-security-agent"></a>Beveiligings agent op basis van C#
 
-Bewerk _Authentication. config_ met de volgende para meters:
+Bewerk _Authentication.config_ met de volgende para meters:
 
 ```xml
 <Authentication>
@@ -92,7 +92,7 @@ Bewerk _Authentication. config_ met de volgende para meters:
 
 ### <a name="c-based-security-agent"></a>Op C gebaseerde beveiligings agent
 
-Bewerk _LocalConfiguration. json_ met de volgende para meters:
+Bewerk _LocalConfiguration.js_ met de volgende para meters:
 
 ```json
 "Authentication" : {
