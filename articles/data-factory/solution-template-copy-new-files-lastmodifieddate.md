@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
 ms.openlocfilehash: 363af1012b327a55703cc6e35a02dc1f27869bd0
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82629062"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Nieuwe en gewijzigde bestanden kopiëren met behulp van LastModifiedDate met Azure Data Factory
@@ -84,12 +84,12 @@ De sjabloon definieert zes para meters:
     ![Trigger maken](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
     
 10. Stel de waarde voor de **trigger run-para meters** als volgt in en selecteer **volt ooien**.
-    - **FolderPath_Source** = **sourcefolder**.  U kunt vervangen door de map in de gegevens opslag van de bron.
-    - **Directory_Source** = **submap**.  U kunt vervangen door de submap in de gegevens opslag van de bron.
-    - **FolderPath_Destination** = **destinationfolder**.  U kunt vervangen door de map in het doel gegevens archief.
-    - **Directory_Destination** = **submap**.  U kunt vervangen door de submap in het doel gegevens archief.
-    - **LastModified_From** =  **LastModified_From\@trigger (). outputs. windowStartTime**.  Het is een systeem variabele van de trigger voor het bepalen van de tijd waarop de pijp lijn de laatste keer is geactiveerd.
-    - **LastModified_To** = **LastModified_To\@trigger (). outputs. windowEndTime**.  Het is een systeem variabele van de trigger die de tijd bepaalt wanneer de pijp lijn deze keer wordt geactiveerd.
+    - **FolderPath_Source**  =  **sourcefolder**.  U kunt vervangen door de map in de gegevens opslag van de bron.
+    - **Directory_Source**  =  **submap**.  U kunt vervangen door de submap in de gegevens opslag van de bron.
+    - **FolderPath_Destination**  =  **destinationfolder**.  U kunt vervangen door de map in het doel gegevens archief.
+    - **Directory_Destination**  =  **submap**.  U kunt vervangen door de submap in het doel gegevens archief.
+    - **LastModified_From**  =   ** \@ trigger (). outputs. windowStartTime**.  Het is een systeem variabele van de trigger voor het bepalen van de tijd waarop de pijp lijn de laatste keer is geactiveerd.
+    - **LastModified_To**  =  ** \@ trigger (). outputs. windowEndTime**.  Het is een systeem variabele van de trigger die de tijd bepaalt wanneer de pijp lijn deze keer wordt geactiveerd.
     
     ![Invoer parameters](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     

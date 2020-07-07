@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: f24b3c9256f759b87c705aae9b93c2d6bc74d30c
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652647"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Mobiele apps registreren die web-Api's aanroepen
@@ -50,7 +50,7 @@ Met deze ervaring wordt uw app in staat stellen om eenmalige aanmelding (SSO) te
 
 De portal voor app-registratie biedt een preview-ervaring waarmee u de brokered antwoord-URI voor iOS-en Android-toepassingen kunt berekenen:
 
-1. Selecteer in de app-registratie Portal de optie **verificatie** > **proberen de nieuwe ervaring**.
+1. Selecteer in de app-registratie Portal de optie **verificatie**  >  **proberen de nieuwe ervaring**.
 
    ![De Blade verificatie, waar u een nieuwe ervaring kiest](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
@@ -73,7 +73,7 @@ Wanneer u de stappen hebt voltooid, wordt de omleidings-URI voor u berekend, zoa
 Als u de omleidings-URI liever hand matig wilt configureren, kunt u dit doen via het manifest van de toepassing. Dit is de aanbevolen indeling voor het manifest:
 
 - **IOS**:`msauth.<BUNDLE_ID>://auth` 
-  - Voer bijvoorbeeld`msauth.com.yourcompany.appName://auth`
+  - Voer bijvoorbeeld in: `msauth.com.yourcompany.appName://auth`
 - **Android**:`msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
   - U kunt de Android-handtekening-hash genereren met behulp van de release sleutel of de debug-toets via de opdracht van het hulp programma.
 

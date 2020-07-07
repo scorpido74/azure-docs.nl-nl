@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 3565af1f3e0a002cf3852faef9c2853ff88d46e9
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82691730"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Azure Data Lake Storage Gen1 en Azure Blob Storage vergelijken
@@ -21,8 +21,8 @@ De tabel in dit artikel bevat een overzicht van de verschillen tussen Azure Data
 
 |  | Azure Data Lake Storage Gen1 | Azure Blob Storage |
 | --- | --- | --- |
-| Doel |Geoptimaliseerde opslag voor big data Analytics-workloads |Object opslag voor algemeen gebruik voor een groot aantal verschillende opslag scenario's, waaronder big data Analytics |
-| Use cases |Batch-, interactieve, streaming-analyses en machine learning gegevens, zoals logboek bestanden, IoT-gegevens, klikken op streams, grote gegevens sets |Elk type tekst of binaire gegevens, zoals back-end van de toepassing, back-upgegevens, media opslag voor gegevens van streaming en algemeen gebruik. Daarnaast is volledige ondersteuning voor analytische werk belastingen; batch-, interactieve, streaming-analyses en machine learning gegevens, zoals logboek bestanden, IoT-gegevens, klikken op streams, grote gegevens sets |
+| Functie |Geoptimaliseerde opslag voor big data Analytics-workloads |Object opslag voor algemeen gebruik voor een groot aantal verschillende opslag scenario's, waaronder big data Analytics |
+| Gebruiksscenario's |Batch-, interactieve, streaming-analyses en machine learning gegevens, zoals logboek bestanden, IoT-gegevens, klikken op streams, grote gegevens sets |Elk type tekst of binaire gegevens, zoals back-end van de toepassing, back-upgegevens, media opslag voor gegevens van streaming en algemeen gebruik. Daarnaast is volledige ondersteuning voor analytische werk belastingen; batch-, interactieve, streaming-analyses en machine learning gegevens, zoals logboek bestanden, IoT-gegevens, klikken op streams, grote gegevens sets |
 | Belangrijkste concepten |Data Lake Storage Gen1 account bevat mappen, die op zijn beurt gegevens bevat die als bestanden zijn opgeslagen |Het opslag account heeft containers, die op zijn beurt gegevens hebben in de vorm van blobs |
 | Structuur |Hiërarchisch bestands systeem |Object archief met platte naam ruimte |
 | API |REST API via HTTPS |REST API via HTTP/HTTPS |
@@ -34,7 +34,7 @@ De tabel in dit artikel bevat een overzicht van de verschillen tussen Azure Data
 | Gegevens bewerkingen-controleren |Beschikken. Zie [hier](data-lake-store-diagnostic-logs.md) voor meer informatie. |Beschikbaar |
 | Versleutelen van gegevens in rust |<ul><li>Transparant, aan de server zijde</li> <ul><li>Met door service beheerde sleutels</li><li>Met door de klant beheerde sleutels in azure-sleutel kluis</li></ul></ul> |<ul><li>Transparant, aan de server zijde</li> <ul><li>Met door service beheerde sleutels</li><li>Met door de klant beheerde sleutels in azure-sleutel kluis (preview-versie)</li></ul><li>Clientversleuteling</li></ul> |
 | Beheer bewerkingen (bijvoorbeeld account maken) |[Op rollen gebaseerd toegangs beheer](../role-based-access-control/overview.md) (RBAC) van Azure voor account beheer |[Op rollen gebaseerd toegangs beheer](../role-based-access-control/overview.md) (RBAC) van Azure voor account beheer |
-| Sdk's van ontwikkel aars |.NET, Java, Python, node. js |.NET, Java, Python, node. js, C++, Ruby, PHP, go, Android, iOS |
+| Sdk's van ontwikkel aars |.NET, Java, Python, Node.js |.NET, Java, Python, Node.js, C++, Ruby, PHP, go, Android, iOS |
 | Prestaties van de analysewerk belasting |Geoptimaliseerde prestaties voor de werk belastingen van parallelle analyses. Hoge door Voer en IOPS. |Geoptimaliseerde prestaties voor de werk belastingen van parallelle analyses. |
 | Grootte limieten |Geen limieten voor de grootte van het account, de bestands grootte of het aantal bestanden |Zie [schaalbaarheids doelen voor standaard opslag accounts](../storage/common/scalability-targets-standard-account.md) en [schaal baarheid en prestatie doelen voor Blob Storage](../storage/blobs/scalability-targets.md)voor specifieke limieten. Grotere account limieten beschikbaar door contact op te nemen met de [ondersteuning van Azure](https://azure.microsoft.com/support/faq/) |
 | Geo-redundantie |Lokaal redundant (meerdere kopieën van gegevens in één Azure-regio) |Lokaal redundant (LRS), zone redundante (ZRS), wereld wijd redundante (GRS), lees toegang wereld wijd redundante (RA-GRS). Zie [hier](../storage/common/storage-redundancy.md) voor meer informatie |

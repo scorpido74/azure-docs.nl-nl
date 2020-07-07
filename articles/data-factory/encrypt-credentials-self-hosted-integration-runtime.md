@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
 ms.openlocfilehash: cd775c5a3bf367600a4537a9409a9bb8f902f588
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628977"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Referenties voor on-premises gegevens archieven in Azure Data Factory versleutelen
@@ -29,9 +29,9 @@ U kunt referenties voor uw on-premises gegevens archieven (gekoppelde services m
 U geeft een JSON-definitie bestand met referenties door aan de <br/>De cmdlet [**New-AzDataFactoryV2LinkedServiceEncryptedCredential**](/powershell/module/az.datafactory/New-AzDataFactoryV2LinkedServiceEncryptedCredential) voor het maken van een JSON-uitvoer bestand met de versleutelde referenties. Gebruik vervolgens de bijgewerkte JSON-definitie om de gekoppelde services te maken.
 
 ## <a name="author-sql-server-linked-service"></a>SQL Server gekoppelde service maken
-Maak een JSON-bestand met de naam **SqlServerLinkedService. json** in een wille keurige map met de volgende inhoud:  
+Maak een JSON-bestand met de naam **SqlServerLinkedService.js** in een wille keurige map met de volgende inhoud:  
 
-Vervang `<servername>`, `<databasename>` `<username>`, en `<password>` door de waarden voor uw SQL Server voordat u het bestand opslaat. En vervang `<integration runtime name>` door de naam van uw Integration runtime. 
+Vervang `<servername>` , `<databasename>` , `<username>` en `<password>` door de waarden voor uw SQL Server voordat u het bestand opslaat. En vervang door `<integration runtime name>` de naam van uw Integration runtime. 
 
 ```json
 {
@@ -50,7 +50,7 @@ Vervang `<servername>`, `<databasename>` `<username>`, en `<password>` door de w
 ```
 
 ## <a name="encrypt-credentials"></a>Referenties versleutelen
-Als u de gevoelige gegevens van de JSON-nettolading wilt versleutelen op een on-premises zelf-hostende Integration runtime, voert u **New-AzDataFactoryV2LinkedServiceEncryptedCredential**uit en geeft u de JSON-nettolading door. Deze cmdlet zorgt ervoor dat de referenties worden versleuteld met DPAPI en lokaal worden opgeslagen op het zelf-hostende Integration runtime-knoop punt. De uitvoer lading met de versleutelde verwijzing naar de referentie kan worden omgeleid naar een ander JSON-bestand (in dit geval ' encryptedLinkedService. json ').
+Als u de gevoelige gegevens van de JSON-nettolading wilt versleutelen op een on-premises zelf-hostende Integration runtime, voert u **New-AzDataFactoryV2LinkedServiceEncryptedCredential**uit en geeft u de JSON-nettolading door. Deze cmdlet zorgt ervoor dat de referenties worden versleuteld met DPAPI en lokaal worden opgeslagen op het zelf-hostende Integration runtime-knoop punt. De uitvoer lading met de versleutelde verwijzing naar de referentie kan worden omgeleid naar een ander JSON-bestand (in dit geval encryptedLinkedService.jsop).
 
 ```powershell
 New-AzDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "SqlServerLinkedService" -DefinitionFile ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json

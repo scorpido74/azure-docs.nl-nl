@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
 ms.openlocfilehash: 73560c49e10ab96c934d4dd3cea9395093a26420
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82629045"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Bestanden van meerdere containers met Azure Data Factory kopiëren
@@ -37,10 +37,10 @@ De sjabloon bevat drie activiteiten:
 - **Copy** kopieert elke container uit het opslag archief van de bron naar het doel archief.
 
 De sjabloon definieert de volgende para meters:
-- *SourceFileFolder* is het mappad van de gegevens bron opslag, waar u een lijst van de containers kunt ophalen. Het pad is de hoofdmap die meerdere container mappen bevat. De standaard waarde van deze para meter `sourcefolder`is.
-- *SourceFileDirectory* is het pad naar de submap onder de hoofdmap van uw gegevens bron archief. De standaard waarde van deze para meter `subfolder`is.
-- *DestinationFileFolder* is het mappad waarnaar de bestanden worden gekopieerd in uw doel archief. De standaard waarde van deze para meter `destinationfolder`is.
-- *DestinationFileDirectory* is het pad naar de submap waarnaar de bestanden worden gekopieerd in uw doel archief. De standaard waarde van deze para meter `subfolder`is.
+- *SourceFileFolder* is het mappad van de gegevens bron opslag, waar u een lijst van de containers kunt ophalen. Het pad is de hoofdmap die meerdere container mappen bevat. De standaard waarde van deze para meter is `sourcefolder` .
+- *SourceFileDirectory* is het pad naar de submap onder de hoofdmap van uw gegevens bron archief. De standaard waarde van deze para meter is `subfolder` .
+- *DestinationFileFolder* is het mappad waarnaar de bestanden worden gekopieerd in uw doel archief. De standaard waarde van deze para meter is `destinationfolder` .
+- *DestinationFileDirectory* is het pad naar de submap waarnaar de bestanden worden gekopieerd in uw doel archief. De standaard waarde van deze para meter is `subfolder` .
 
 ## <a name="how-to-use-this-solution-template"></a>Deze oplossings sjabloon gebruiken
 

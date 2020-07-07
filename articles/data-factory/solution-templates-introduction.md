@@ -12,10 +12,10 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
 ms.openlocfilehash: b5e4512030431b6d2e5d0f849e82a281c882b177
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628943"
 ---
 # <a name="templates"></a>Sjablonen
@@ -32,7 +32,7 @@ U kunt op de volgende twee manieren aan de slag gaan met het maken van een Data 
 
     ![Open de sjabloon galerie op de pagina overzicht](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  Selecteer op het tabblad auteur in resource Explorer de **+** optie en vervolgens **pijp lijn van sjabloon** om de sjabloon galerie te openen.
+1.  Selecteer op het tabblad auteur in resource Explorer de optie **+** en vervolgens **pijp lijn van sjabloon** om de sjabloon galerie te openen.
 
     ![Open de sjabloon galerie op het tabblad Auteur](media/solution-templates-introduction/templates-intro-image2.png)
 
@@ -56,7 +56,7 @@ Data Factory gebruikt Azure Resource Manager sjablonen voor het opslaan van data
 
     -   [Delta kopie van data base](solution-template-delta-copy-with-control-table.md)
 
-    -   Kopiëren van \<bron\> naar \<doel\>
+    -   Kopiëren van \<source\> naar\<destination\>
 
         -   [Van Amazon S3 naar Azure Data Lake Store gen 2](solution-template-migration-s3-azure.md)
 
