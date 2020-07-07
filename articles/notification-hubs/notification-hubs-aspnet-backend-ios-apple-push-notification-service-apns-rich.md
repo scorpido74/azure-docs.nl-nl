@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 9da629929ca88f406dc503710477104be94c47e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71212203"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs Rich push
@@ -105,7 +105,7 @@ Op hoog niveau:
    > [!NOTE]
    > Beschrijving Raadpleeg [over het insluiten en openen van bronnen met behulp van Visual C#](https://support.microsoft.com/kb/319292) voor meer informatie over het toevoegen en verkrijgen van project bronnen.
 
-7. In `NotificationsController.cs`wordt ' Notifications controller met de volgende fragmenten opnieuw gedefinieerd. Hiermee wordt een eerste meldings-id op de achtergrond verzonden naar het apparaat en kan de installatie kopie aan de client zijde worden opgehaald:
+7. In `NotificationsController.cs` wordt ' Notifications controller met de volgende fragmenten opnieuw gedefinieerd. Hiermee wordt een eerste meldings-id op de achtergrond verzonden naar het apparaat en kan de installatie kopie aan de client zijde worden opgehaald:
 
     ```csharp
     // Return http response with image binary
@@ -147,7 +147,7 @@ Nu u de back-end van uw app hebt gewijzigd om alleen de *id* van een melding te 
 2. Klik op **mogelijkheden**, Schakel **achtergrond modi**in en schakel het selectie vakje **externe meldingen** in.
 
     ![][IOS3]
-3. Open `Main.storyboard`, en zorg ervoor dat u een weergave controller (Home view-controller in deze zelf studie genoemd) hebt, van de gebruiker zelf studie [waarschuwen](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) .
+3. Open `Main.storyboard` , en zorg ervoor dat u een weergave controller (Home view-controller in deze zelf studie genoemd) hebt, van de gebruiker zelf studie [waarschuwen](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) .
 4. Voeg een **Navigatie controller** toe aan het Story Board en houd Control ingedrukt en sleep naar de besturing van de start weergave om de **hoofd weergave** van de navigatie te maken. Zorg ervoor dat de controller van de **eerste weer gave** in kenmerken controle alleen is geselecteerd voor de navigatie controller.
 5. Een **weergave controller** toevoegen aan het Story Board en een **afbeeldings weergave**toevoegen. Dit is de pagina die gebruikers te zien krijgen wanneer ze kiezen om meer te weten te komen door te klikken op de melding. Het Story Board moet er als volgt uitzien:
 
@@ -161,13 +161,13 @@ Nu u de back-end van uw app hebt gewijzigd om alleen de *id* van een melding te 
     @property (weak, nonatomic) IBOutlet UIImageView *myImage;
     @property (strong) UIImage* imagePayload;
     ```
-10. Voeg `imageViewController.m`in het volgende toe aan het einde van `viewDidload`:
+10. `imageViewController.m`Voeg in het volgende toe aan het einde van `viewDidload` :
 
     ```objc
     // Display the UI Image in UI Image View
     [self.myImage setImage:self.imagePayload];
     ```
-11. Importeer `AppDelegate.m`in de installatie kopie-controller die u hebt gemaakt:
+11. `AppDelegate.m`Importeer in de installatie kopie-controller die u hebt gemaakt:
 
     ```objc
     #import "imageViewController.h"
@@ -189,7 +189,7 @@ Nu u de back-end van uw app hebt gewijzigd om alleen de *id* van een melding te 
 
     @end
     ```
-13. Zorg `AppDelegate`ervoor dat uw app wordt geregistreerd voor meldingen in `application: didFinishLaunchingWithOptions`:
+13. `AppDelegate`Zorg ervoor dat uw app wordt geregistreerd voor meldingen in `application: didFinishLaunchingWithOptions` :
 
     ```objc
     // Software version
@@ -242,7 +242,7 @@ Nu u de back-end van uw app hebt gewijzigd om alleen de *id* van een melding te 
     homeViewController *hvc = (homeViewController *)[nc.viewControllers objectAtIndex:0];
     hvc.deviceToken = deviceToken;
     ```
-15. Voeg vervolgens de volgende methoden toe om `AppDelegate.m` de installatie kopie van uw eind punt op te halen en een lokale melding te verzenden wanneer het ophalen is voltooid. Zorg ervoor dat u de tijdelijke `{backend endpoint}` aanduiding vervangt door het back-end-eind punt:
+15. Voeg vervolgens de volgende methoden toe om `AppDelegate.m` de installatie kopie van uw eind punt op te halen en een lokale melding te verzenden wanneer het ophalen is voltooid. Zorg ervoor dat u de tijdelijke aanduiding vervangt `{backend endpoint}` door het back-end-eind punt:
 
     ```objc
     NSString *const GetNotificationEndpoint = @"{backend endpoint}/api/notifications";
@@ -323,7 +323,7 @@ Nu u de back-end van uw app hebt gewijzigd om alleen de *id* van een melding te 
         // Add "else if" here to handle more types of rich content such as url, sound files, etc.
     }
     ```
-16. Als u de bovenstaande lokale melding wilt afhandelen, opent u `AppDelegate.m` de afbeeldings weergave controller met de volgende methoden:
+16. Als u de bovenstaande lokale melding wilt afhandelen, opent u de afbeeldings weergave controller `AppDelegate.m` met de volgende methoden:
 
     ```objc
     // Helper: redirect users to image view controller

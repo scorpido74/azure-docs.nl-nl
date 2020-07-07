@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: cawa
 ms.openlocfilehash: bcacd5d2ed9e325383ec7ae75002ae0a6213111c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81429757"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Instellingen voor geheime toepassingen veilig opslaan voor een webtoepassing
@@ -22,7 +22,7 @@ ms.locfileid: "81429757"
 ## <a name="overview"></a>Overzicht
 In dit artikel wordt beschreven hoe u veilig configuratie-instellingen voor een geheime toepassing opslaat voor Azure-toepassingen.
 
-Doorgaans worden alle configuratie-instellingen van de webtoepassing opgeslagen in configuratie bestanden zoals web. config. Deze praktijk leidt ertoe dat geheime instellingen, zoals Cloud referenties, in de open bare broncode beheer systemen zoals GitHub, worden gecontroleerd. Ondertussen kan het lastig zijn om de beveiliging te volgen best practice vanwege de overhead die nodig is om de bron code te wijzigen en de ontwikkelings instellingen opnieuw te configureren.
+Doorgaans worden alle configuratie-instellingen voor webtoepassingen opgeslagen in configuratie bestanden zoals Web.config. Deze praktijk leidt ertoe dat geheime instellingen, zoals Cloud referenties, in de open bare broncode beheer systemen zoals GitHub, worden gecontroleerd. Ondertussen kan het lastig zijn om de beveiliging te volgen best practice vanwege de overhead die nodig is om de bron code te wijzigen en de ontwikkelings instellingen opnieuw te configureren.
 
 Om ervoor te zorgen dat het ontwikkel proces veilig is, worden hulp middelen en Framework bibliotheken gemaakt om de instellingen voor toepassings geheim veilig op te slaan met minimale of geen bron code wijziging.
 
@@ -87,7 +87,7 @@ Als u uw web-app al hebt gemaakt, verleent u de web-app toegang tot de Key Vault
 
         private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT");
     ```
-6. Voeg uw Key Vault URL toe aan het bestand launchsettings. json. De naam van de omgevings variabele *KEYVAULT_ENDPOINT* is gedefinieerd in de code die u in stap 6 hebt toegevoegd.
+6. Voeg uw Key Vault URL toe aan launchsettings.jsin het bestand. De naam van de omgevings variabele *KEYVAULT_ENDPOINT* is gedefinieerd in de code die u in stap 6 hebt toegevoegd.
 
     ![Key Vault URL toevoegen als een project omgevings variabele](../media/vs-secure-secret-appsettings/add-keyvault-url.png)
 
@@ -117,7 +117,7 @@ Als u een snel prototype schrijft en Azure-resources niet wilt inrichten, gaat u
     </root>
     ```
 
-3. Definieer het geheime bestand als Configuration builder in het bestand Web. config. Plaats deze sectie voor de sectie *appSettings* .
+3. Definieer het geheime bestand als Configuration builder in uw Web.config-bestand. Plaats deze sectie voor de sectie *appSettings* .
 
     ```xml
     <configBuilders>
@@ -151,7 +151,7 @@ Volg de instructies in de sectie ASP.NET-kern om een Key Vault voor uw project t
    Microsoft.Configuration.ConfigurationBuilders.UserSecrets
    ```
 
-2. Definieer Key Vault Configuration builder in web. config. Plaats deze sectie voor de sectie *appSettings* . Vervang de *kluisnaam* door de Key Vault naam als uw Key Vault zich in open bare Azure of volledige URI bevindt als u een soevereine Cloud gebruikt.
+2. Definieer Key Vault Configuration builder in Web.config. Plaats deze sectie voor de sectie *appSettings* . Vervang de *kluisnaam* door de Key Vault naam als uw Key Vault zich in open bare Azure of volledige URI bevindt als u een soevereine Cloud gebruikt.
 
     ```xml
     <configSections>

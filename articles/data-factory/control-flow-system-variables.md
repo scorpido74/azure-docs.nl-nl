@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.openlocfilehash: 2690ded0ac45719cb1082c85ab535c91ad491172
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417960"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Systeem variabelen die door Azure Data Factory worden ondersteund
@@ -41,8 +41,8 @@ Naar deze systeem variabelen kan overal in de JSON van de trigger worden verweze
 
 | Naam variabele | Beschrijving |
 | --- | --- |
-| @trigger().scheduledTime |Tijdstip waarop de trigger is gepland voor het aanroepen van de pijplijn uitvoering. Bijvoorbeeld, voor een trigger die elke vijf minuten wordt geactiveerd, retourneert `2017-06-01T22:20:00Z` `2017-06-01T22:25:00Z`deze variabele `2017-06-01T22:30:00Z` respectievelijk.|
-| @trigger(). startTime |Tijdstip waarop de trigger **daad werkelijk** is gestart om de pijplijn uitvoering aan te roepen. Voor een trigger die elke vijf minuten wordt geactiveerd, kan deze variabele bijvoorbeeld als volgt `2017-06-01T22:20:00.4061448Z`worden `2017-06-01T22:25:00.7958577Z` `2017-06-01T22:30:00.9935483Z` geretourneerd. (Opmerking: de tijds tempel is standaard in ISO 8601-indeling)|
+| @trigger().scheduledTime |Tijdstip waarop de trigger is gepland voor het aanroepen van de pijplijn uitvoering. Bijvoorbeeld, voor een trigger die elke vijf minuten wordt geactiveerd, retourneert deze variabele `2017-06-01T22:20:00Z` `2017-06-01T22:25:00Z` `2017-06-01T22:30:00Z` respectievelijk.|
+| @trigger(). startTime |Tijdstip waarop de trigger **daad werkelijk** is gestart om de pijplijn uitvoering aan te roepen. Voor een trigger die elke vijf minuten wordt geactiveerd, kan deze variabele bijvoorbeeld als volgt `2017-06-01T22:20:00.4061448Z` worden geretourneerd `2017-06-01T22:25:00.7958577Z` `2017-06-01T22:30:00.9935483Z` . (Opmerking: de tijds tempel is standaard in ISO 8601-indeling)|
 
 ## <a name="tumbling-window-trigger-scope"></a>Tumblingvenstertriggers-venster trigger bereik
 Naar deze systeem variabelen kan overal in de JSON van de trigger worden verwezen als de trigger van het volgende type is: "TumblingWindowTrigger."

@@ -14,10 +14,10 @@ ms.date: 03/24/2020
 author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 55c6cbc18e37368dd47c47227041024b13987c47
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233207"
 ---
 # <a name="create-a-cicd-pipeline-for-github-repo-using-azure-devops-starter"></a>Een CI/CD-pijp lijn maken voor GitHub opslag plaats met behulp van Azure DevOps starter
@@ -37,13 +37,13 @@ U gaat het volgende doen:
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. U kunt er een gratis krijgen via [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
-* Toegang tot een GitHub of externe Git-opslag plaats die .NET, Java, PHP, node. js, python of static web code bevat.
+* Toegang tot een GitHub of externe Git-opslag plaats die .NET, Java, PHP, Node.js, python of statische webcode bevat.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
 Azure DevOps Starter maakt een CI/CD-pijp lijn in azure-pijp lijnen. U kunt een nieuwe Azure DevOps-organisatie maken of een bestaande organisatie gebruiken. Azure DevOps Starter maakt ook Azure-resources in het Azure-abonnement van uw keuze.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Typ **DevOps starter**in het zoekvak en selecteer. Klik op **toevoegen** om een nieuw item te maken.
 
@@ -97,7 +97,7 @@ Azure DevOps starter configureert automatisch een CI/CD-pijp lijn in azure-pijp 
 
    ![Pagina met builds van Azure-pijp lijnen](_img/azure-devops-project-github/pipelinesbuildpage.png)
 
-1. In de rechter bovenhoek van de pagina **builds** kunt u **bewerken** selecteren om de huidige build te wijzigen, een **wachtrij** te maken om een nieuwe build toe te voegen of de knop met verticale beletsel tekens (**&#8942;**) om een menu met meer opties te openen. Selecteer **bewerken**.
+1. In de rechter bovenhoek van de pagina **builds** kunt u **bewerken** selecteren om de huidige build te wijzigen, een **wachtrij** te maken om een nieuwe build toe te voegen of de knop met verticale beletsel tekens (**&#8942;**) om een menu met meer opties te openen. Selecteer **Bewerken**.
 
 1. De build voert diverse taken uit, zoals het ophalen van bronnen uit de opslag plaats, het herstellen van afhankelijkheden en het publiceren van uitvoer voor implementaties. Wijzig aan de rechter kant onder **naam**de naam van de build-pijp lijn in iets meer beschrijvende. Selecteer **& wachtrij opslaan**en selecteer vervolgens **Opslaan**. Voer een opmerking in en selecteer vervolgens **Opslaan** opnieuw.
 

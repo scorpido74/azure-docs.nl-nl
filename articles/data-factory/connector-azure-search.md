@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/13/2019
 ms.openlocfilehash: dfa1ad318ccc9e891b646ec050f6a0776e108206
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418232"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Gegevens kopiëren naar een Azure Cognitive Search-index met behulp van Azure Data Factory
 
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](v1/data-factory-azure-search-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](v1/data-factory-azure-search-connector.md)
 > * [Huidige versie](connector-azure-search.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -52,7 +52,7 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde Azure Cognitive 
 > [!IMPORTANT]
 > Wanneer u gegevens uit een gegevens archief in de Cloud naar de zoek index kopieert, moet u in azure Cognitive Search gekoppelde service een Azure Integration Runtime met een expliciete regio in connactVia. Stel de regio in op de locatie waar uw zoek service zich bevindt. Meer informatie vindt u in [Azure Integration runtime](concepts-integration-runtime.md#azure-integration-runtime).
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -85,7 +85,7 @@ De volgende eigenschappen worden ondersteund voor het kopiëren van gegevens naa
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **AzureSearchIndex** | Ja |
 | indexName | De naam van de zoek index. Data Factory maakt de index niet. De index moet bestaan in azure Cognitive Search. | Ja |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -133,7 +133,7 @@ Het standaard gedrag is **samen voegen**.
 
 Azure Cognitive Search service ondersteunt het schrijven van documenten als een batch. Een batch kan 1 tot 1.000 acties bevatten. Een actie behandelt één document om de upload/samenvoeg bewerking uit te voeren.
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[
@@ -174,8 +174,8 @@ In de volgende tabel wordt aangegeven of een Azure Cognitive Search-gegevens typ
 | Tekenreeks | J |
 | Int32 | J |
 | Int64 | J |
-| Double | J |
-| Booleaans | J |
+| Dubbel | J |
+| Boolean-waarde | J |
 | DataTimeOffset | J |
 | Teken reeks matrix | N |
 | GeographyPoint | N |

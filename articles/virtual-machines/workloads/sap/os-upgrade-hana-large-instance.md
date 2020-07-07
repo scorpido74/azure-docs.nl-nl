@@ -14,10 +14,10 @@ ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8485f3474da18e052bc0eab6c053be084ef884a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82192413"
 ---
 # <a name="operating-system-upgrade"></a>Upgrade van besturings systeem
@@ -94,9 +94,9 @@ SAP on Azure HANA grote instanties (type I) kunnen na de upgrade een niet-opstar
 #### <a name="execution-steps"></a>Uitvoerings stappen
 
 
-*   Opdracht `multipath -ll` uitvoeren.
+*   `multipath -ll`Opdracht uitvoeren.
 *   Haal de LUN-ID op waarvan de grootte ongeveer 50G is of gebruik de opdracht:`fdisk -l | grep mapper`
-*   Bestand `/etc/default/grub_installdevice` bijwerken met regel `/dev/mapper/<LUN ID>`. Voor beeld:/dev/mapper/3600a09803830372f483f495242534a56
+*   `/etc/default/grub_installdevice`Bestand bijwerken met regel `/dev/mapper/<LUN ID>` . Voor beeld:/dev/mapper/3600a09803830372f483f495242534a56
 >[!NOTE]
 >LUN-ID varieert van server naar server.
 
@@ -115,11 +115,11 @@ lsmod | grep -i edac
 blacklist sb_edac
 blacklist edac_core
 ```
-De computer moet opnieuw worden opgestart om wijzigingen te kunnen aanbrengen. Opdracht `lsmod` uitvoeren en controleren of de module niet aanwezig is in de uitvoer.
+De computer moet opnieuw worden opgestart om wijzigingen te kunnen aanbrengen. `lsmod`Opdracht uitvoeren en controleren of de module niet aanwezig is in de uitvoer.
 
 
 ### <a name="kernel-parameters"></a>Kernel-para meters
-   Zorg ervoor dat de juiste instelling `transparent_hugepage`voor `numa_balancing`, `processor.max_cstate`, `ignore_ce` en `intel_idle.max_cstate` wordt toegepast.
+   Zorg ervoor dat de juiste instelling `transparent_hugepage` voor `numa_balancing` , `processor.max_cstate` , `ignore_ce` en `intel_idle.max_cstate` wordt toegepast.
 
 * intel_idle. max_cstate = 1
 * processor. max_cstate = 1
@@ -130,7 +130,7 @@ De computer moet opnieuw worden opgestart om wijzigingen te kunnen aanbrengen. O
 
 #### <a name="execution-steps"></a>Uitvoerings stappen
 
-* Deze para meters toevoegen `GRB_CMDLINE_LINUX` aan de regel in het bestand`/etc/default/grub`
+* Deze para meters toevoegen aan de `GRB_CMDLINE_LINUX` regel in het bestand`/etc/default/grub`
 ```
 intel_idle.max_cstate=1 processor.max_cstate=1 transparent_hugepage=never numa_balancing=disable mce=ignore_ce
 ```

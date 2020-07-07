@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 88b795b52955a6bd323e7a900c0cd62dab1dd2d4
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 7536a2e3fc32aeb330aad52625a5946e856d6646
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262936"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556050"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-mongodb-api"></a>Voorbeelden van Azure CLI voor Azure Cosmos DB MongoDB API
 
@@ -21,7 +21,7 @@ De volgende tabel bevat koppelingen naar Azure CLI-voorbeeldscripts voor Azure C
 > [!NOTE]
 > Op dit moment kunt u alleen de 3.2-versie maken (dat wil zeggen, accounts die gebruikmaken van het eindpunt in de indeling `*.documents.azure.com`) van de Azure Cosmos DB-API voor MongoDB-accounts met behulp van PowerShell, CLI en Resource Manager-sjablonen. Als u de 3.6-versie van accounts wilt maken, gebruikt u in plaats daarvan Azure Portal.
 
-| |  |
+|Taak | Beschrijving |
 |---|---|
 | [Een Azure Cosmos-account, -database en -verzameling maken](scripts/cli/mongodb/create.md?toc=%2fcli%2fazure%2ftoc.json)| Hiermee maakt u een Azure Cosmos DB MongoDB-API-account, -database en -verzameling voor MongoDB-API. |
 | [Doorvoer wijzigen](scripts/cli/mongodb/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | RU/s bijwerken voor een database en verzameling.|

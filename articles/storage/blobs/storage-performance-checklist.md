@@ -9,10 +9,10 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: b94725d4d3eb9fd6f13a39d00486b4ab085b9ef9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80473932"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Controle lijst voor prestaties en schaal baarheid voor Blob Storage
@@ -143,7 +143,7 @@ Gebruik een Content Delivery Network, zoals Azure CDN, voor een brede distributi
 
 Stel dat u code moet machtigen zoals Java script dat wordt uitgevoerd in de webbrowser van een gebruiker of in een mobiele telefoon-app om toegang te krijgen tot gegevens in Azure Storage. Een manier is om een service toepassing te bouwen die fungeert als een proxy. Het apparaat van de gebruiker wordt geverifieerd bij de service, die op zijn beurt toegang tot Azure Storage bronnen verleent. Op deze manier kunt u voor komen dat u de sleutels van uw opslag account op onveilige apparaten weergeeft. Met deze benadering wordt echter een aanzienlijke overhead op de service toepassing geplaatst, omdat alle gegevens die worden overgedragen tussen het apparaat van de gebruiker en Azure Storage door de service toepassing moeten worden door gegeven.
 
-U kunt voor komen dat een service toepassing wordt gebruikt als proxy voor Azure Storage met behulp van Shared Access signatures (SAS). Met SAS kunt u het apparaat van uw gebruiker in staat stellen om aanvragen rechtstreeks naar Azure Storage te brengen met behulp van een beperkt toegangs token. Als een gebruiker bijvoorbeeld een foto wil uploaden naar uw toepassing, kan uw service toepassing een SAS genereren en deze verzenden naar het apparaat van de gebruiker. Het SAS-token kan toestemming geven om te schrijven naar een Azure Storage resource gedurende een opgegeven tijds interval, waarna de SAS-token verloopt. Zie voor meer informatie over SA'S [beperkte toegang verlenen tot Azure storage-resources met behulp van Shared Access signatures (SAS)](../common/storage-sas-overview.md).  
+U kunt voor komen dat een service toepassing wordt gebruikt als proxy voor Azure Storage met behulp van Shared Access signatures (SAS). Met SAS kunt u het apparaat van uw gebruiker in staat stellen om aanvragen rechtstreeks naar Azure Storage te brengen met behulp van een beperkt toegangs token. Als een gebruiker bijvoorbeeld een foto wil uploaden naar uw toepassing, kan uw service toepassing een SAS genereren en deze verzenden naar het apparaat van de gebruiker. Het SAS-token kan toestemming geven om te schrijven naar een Azure Storage resource gedurende een opgegeven tijds interval, waarna de SAS-token verloopt. Zie [Beperkte toegang verlenen tot Azure Storage-resources via SAS (Shared Access Signatures)](../common/storage-sas-overview.md) voor meer informatie over SAS.  
 
 Normaal gesp roken staat een webbrowser geen Java script toe op een pagina die wordt gehost door een website op het ene domein om bepaalde bewerkingen, zoals schrijf bewerkingen, uit te voeren op een ander domein. Op basis van dit beleid wordt voor komen dat een schadelijk script op één pagina de toegang tot gegevens op een andere webpagina kan verkrijgen. Hetzelfde-Origin-beleid kan echter een beperking zijn bij het bouwen van een oplossing in de Cloud. Cross-Origin Resource Sharing (CORS) is een browser functie waarmee het doel domein kan communiceren met de browser waarmee aanvragen worden vertrouwd die afkomstig zijn van het bron domein.
 
@@ -236,7 +236,7 @@ Azure Storage biedt een aantal oplossingen voor het kopiëren en verplaatsen van
 
 ### <a name="blob-copy-apis"></a>BLOB Copy-Api's
 
-Als u blobs wilt kopiëren tussen opslag accounts, gebruikt u de bewerking [blok keren vanaf URL](/rest/api/storageservices/put-block-from-url) . Met deze bewerking worden gegevens synchroon gekopieerd van een URL-bron naar een blok-blob. Het gebruik `Put Block from URL` van de bewerking kan de vereiste band breedte aanzienlijk verminderen wanneer u gegevens migreert tussen opslag accounts. Omdat de Kopieer bewerking plaatsvindt aan de kant van de service, hoeft u de gegevens niet te downloaden en opnieuw te uploaden.
+Als u blobs wilt kopiëren tussen opslag accounts, gebruikt u de bewerking [blok keren vanaf URL](/rest/api/storageservices/put-block-from-url) . Met deze bewerking worden gegevens synchroon gekopieerd van een URL-bron naar een blok-blob. Het gebruik van de `Put Block from URL` bewerking kan de vereiste band breedte aanzienlijk verminderen wanneer u gegevens migreert tussen opslag accounts. Omdat de Kopieer bewerking plaatsvindt aan de kant van de service, hoeft u de gegevens niet te downloaden en opnieuw te uploaden.
 
 Als u gegevens wilt kopiëren binnen hetzelfde opslag account, gebruikt u de bewerking [BLOB kopiëren](/rest/api/storageservices/Copy-Blob) . Het kopiëren van gegevens binnen hetzelfde opslag account wordt meestal snel voltooid.  
 

@@ -14,10 +14,10 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: f3bb4dd1c564e5f6c4a8ee1bb5bf7424a74a339e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81533986"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>MSAL gebruiken in een nationale cloud omgeving
@@ -64,9 +64,9 @@ De volgende zelf studies laten zien hoe u een .NET Core 2,2 MVC-Web-app bouwt. D
 - Als u gebruikers wilt aanmelden en tokens wilt verkrijgen, volgt u deze zelf studie: [een ASP.net core web-app maken in soevereine Clouds met het micro soft Identity-platform](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-4-Sovereign#build-an-aspnet-core-web-app-signing-in-users-in-sovereign-clouds-with-the-microsoft-identity-platform).
 - Volg deze zelf studie om de Microsoft Graph-API aan te roepen: [met behulp van het micro soft-identiteits platform kunt u de Microsoft Graph-API vanuit een ASP.net Core 2. x-web-app aanroepen namens een gebruiker die zich aanmeldt met hun werk-en school account in micro soft National Cloud](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-4-Sovereign-Call-MSGraph#using-the-microsoft-identity-platform-to-call-the-microsoft-graph-api-from-an-an-aspnet-core-2x-web-app-on-behalf-of-a-user-signing-in-using-their-work-and-school-account-in-microsoft-national-cloud).
 
-## <a name="javascript"></a>[Javascript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Uw MSAL. js-toepassing voor soevereine Clouds inschakelen:
+Uw MSAL.js-toepassing voor soevereine Clouds inschakelen:
 
 ### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 
@@ -81,8 +81,8 @@ Uw MSAL. js-toepassing voor soevereine Clouds inschakelen:
 1. Selecteer in de sectie de **omleidings-URI** het **webplatform en** Stel de waarde in op de URL van de toepassing op basis van de webserver. Zie de volgende secties voor instructies over het instellen en verkrijgen van de omleidings-URL in Visual Studio en het knoop punt.
 1. Selecteer **Registreren**.
 1. Noteer de waarde **Toepassings-id (client)** op de app-pagina **Overzicht**.
-1. Voor deze zelf studie moet u de [impliciete toekennings stroom](v2-oauth2-implicit-grant-flow.md)inschakelen. Selecteer in het linkerdeel venster van de geregistreerde toepassing **verificatie**.
-1. Selecteer in **Geavanceerde instellingen**onder **impliciete toekenning**de selectie vakjes **id-tokens** en **toegangs tokens** . ID-tokens en toegangs tokens zijn vereist omdat deze app gebruikers moet aanmelden en een API kan aanroepen.
+1. Voor deze zelf studie moet u de [impliciete toekennings stroom](v2-oauth2-implicit-grant-flow.md)inschakelen. Selecteer in het linkerdeelvenster van de geregistreerde toepassing de optie **Verificatie**.
+1. Schakel in **Geavanceerde instellingen**, onder **Impliciete toekenning**, de selectievakjes **Id-tokens** en **Toegangstokens** in. ID-tokens en toegangs tokens zijn vereist omdat deze app gebruikers moet aanmelden en een API kan aanroepen.
 1. Selecteer **Opslaan**.
 
 ### <a name="step-2--set-up-your-web-server-or-project"></a>Stap 2: de webserver of het project instellen
@@ -101,7 +101,7 @@ Volg de stappen in de [Java script-zelf studie](tutorial-v2-javascript-spa.md#cr
 
 ### <a name="step-4-configure-your-javascript-spa"></a>Stap 4: uw Java script-SPA configureren
 
-Voeg in `index.html` het bestand dat tijdens de installatie van project is gemaakt de registratie gegevens voor de toepassing toe. Voeg boven aan de `<script></script>` Tags in de hoofd tekst van het `index.html` bestand de volgende code toe:
+Voeg in het `index.html` bestand dat tijdens de installatie van project is gemaakt de registratie gegevens voor de toepassing toe. Voeg boven aan de `<script></script>` Tags in de hoofd tekst van het bestand de volgende code toe `index.html` :
 
 ```javascript
 const msalConfig = {
@@ -123,9 +123,9 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 In die code:
 
 - `Enter_the_Application_Id_here`is de waarde van de **toepassings-id** voor de toepassing die u hebt geregistreerd.
-- `Enter_the_Tenant_Info_Here`is ingesteld op een van de volgende opties:
+- `Enter_the_Tenant_Info_Here` is ingesteld op een van de volgende opties:
     - Als uw toepassing **accounts in deze organisatie Directory**ondersteunt, vervangt u deze waarde door de Tenant-id of Tenant naam (bijvoorbeeld contoso.Microsoft.com).
-    - Als uw toepassing **accounts in een organisatorische Directory**ondersteunt, vervangt u deze waarde `organizations`door.
+    - Als uw toepassing **accounts in een organisatorische Directory**ondersteunt, vervangt u deze waarde door `organizations` .
 
     Zie [Azure AD-verificatie-eind punten](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints)voor het vinden van verificatie-eind punten voor alle nationale Clouds.
 
@@ -184,7 +184,7 @@ Hier volgt een voor beeld van een eind punt van een grafiek, met bereik:
 
 ## <a name="objective-c"></a>[Objective-C](#tab/objc)
 
-MSAL voor iOS en macOS kunnen worden gebruikt voor het verkrijgen van tokens in nationale Clouds, maar er is aanvullende `MSALPublicClientApplication`configuratie vereist bij het maken van.
+MSAL voor iOS en macOS kunnen worden gebruikt voor het verkrijgen van tokens in nationale Clouds, maar er is aanvullende configuratie vereist bij het maken van `MSALPublicClientApplication` .
 
 Als u bijvoorbeeld wilt dat uw toepassing een multi tenant toepassing in een nationale Cloud (hier de Amerikaanse overheid) is, kunt u het volgende schrijven:
 
@@ -207,7 +207,7 @@ MSALPublicClientApplication *application =
 
 ## <a name="swift"></a>[Swift](#tab/swift)
 
-MSAL voor iOS en macOS kunnen worden gebruikt voor het verkrijgen van tokens in nationale Clouds, maar er is aanvullende `MSALPublicClientApplication`configuratie vereist bij het maken van.
+MSAL voor iOS en macOS kunnen worden gebruikt voor het verkrijgen van tokens in nationale Clouds, maar er is aanvullende configuratie vereist bij het maken van `MSALPublicClientApplication` .
 
 Als u bijvoorbeeld wilt dat uw toepassing een multi tenant toepassing in een nationale Cloud (hier de Amerikaanse overheid) is, kunt u het volgende schrijven:
 

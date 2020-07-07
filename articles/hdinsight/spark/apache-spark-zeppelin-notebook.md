@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 931114a56d774c506b0b33fe4f4fc39e564c06c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195091"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Apache Zeppelin-notebooks gebruiken met Apache Spark-cluster in Azure HDInsight
@@ -22,7 +22,7 @@ HDInsight Spark-clusters zijn [Apache Zeppelin](https://zeppelin.apache.org/) -n
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Apache Spark-cluster in HDInsight. Zie [Apache Spark-clusters maken in Azure HDInsight](apache-spark-jupyter-spark-sql.md) voor instructies.
-* Het URI-schema voor de primaire opslag van uw clusters. Het schema is `wasb://` voor Azure Blob Storage, `abfs://` voor Azure data Lake Storage Gen2 of `adl://` voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Blob Storage, zou de URI zijn `wasbs://`.  Zie [veilige overdracht vereisen in azure Storage](../../storage/common/storage-require-secure-transfer.md) voor meer informatie.
+* Het URI-schema voor de primaire opslag van uw clusters. Het schema is `wasb://` voor Azure Blob Storage, `abfs://` voor Azure data Lake Storage Gen2 of `adl://` voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Blob Storage, zou de URI zijn `wasbs://` .  Zie [veilige overdracht vereisen in azure Storage](../../storage/common/storage-require-secure-transfer.md) voor meer informatie.
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Een Apache Zeppelin-notebook starten
 
@@ -33,7 +33,7 @@ HDInsight Spark-clusters zijn [Apache Zeppelin](https://zeppelin.apache.org/) -n
    >
    > `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
 
-2. Maak een nieuwe notebook. Ga in het deel venster koptekst naar **notitie blok** > **nieuwe notitie maken**.
+2. Maak een nieuwe notebook. Ga in het deel venster koptekst naar **notitie blok**  >  **nieuwe notitie maken**.
 
     ![Een nieuwe Zeppelin-notebook maken](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "Een nieuwe Zeppelin-notebook maken")
 
@@ -43,7 +43,7 @@ HDInsight Spark-clusters zijn [Apache Zeppelin](https://zeppelin.apache.org/) -n
 
     ![Status van Zeppelin-notebook](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png "Status van Zeppelin-notebook")
 
-4. Laad voorbeeldgegevens in een tijdelijke tabel. Wanneer u een Spark-cluster in HDInsight maakt, wordt het voorbeeld gegevensbestand `hvac.csv`,, gekopieerd naar het bijbehorende opslag account onder `\HdiSamples\SensorSampleData\hvac`.
+4. Laad voorbeeldgegevens in een tijdelijke tabel. Wanneer u een Spark-cluster in HDInsight maakt, wordt het voorbeeld gegevensbestand, `hvac.csv` , gekopieerd naar het bijbehorende opslag account onder `\HdiSamples\SensorSampleData\hvac` .
 
     Plak het volgende fragment in de lege alinea die standaard wordt gemaakt in het nieuwe notitie blok.
 
@@ -80,7 +80,7 @@ HDInsight Spark-clusters zijn [Apache Zeppelin](https://zeppelin.apache.org/) -n
     > [!NOTE]  
     > % spark2-interpreter wordt niet ondersteund in Zeppelin-notebooks voor alle HDInsight-versies en% sh-interpreter wordt niet ondersteund vanaf HDInsight 4,0.
 
-5. U kunt nu Spark SQL-instructies uitvoeren op `hvac` de tabel. Plak de volgende query in een nieuwe alinea. De query haalt de gebouw-ID op. Ook het verschil tussen het doel en de werkelijke Tempe ratuur voor elk gebouw op een bepaalde datum. Druk op **SHIFT + ENTER**.
+5. U kunt nu Spark SQL-instructies uitvoeren op de `hvac` tabel. Plak de volgende query in een nieuwe alinea. De query haalt de gebouw-ID op. Ook het verschil tussen het doel en de werkelijke Tempe ratuur voor elk gebouw op een bepaalde datum. Druk op **Shift+Enter**.
 
     ```sql
     %sql
@@ -93,7 +93,7 @@ HDInsight Spark-clusters zijn [Apache Zeppelin](https://zeppelin.apache.org/) -n
 
     ![Een Spark SQL-instructie uitvoeren met behulp van de notebook1](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Een Spark SQL-instructie uitvoeren met behulp van de notebook1")
 
-7. U kunt ook Spark SQL-instructies uitvoeren met behulp van variabelen in de query. Het volgende code fragment laat zien hoe u een variabele `Temp`definieert, in de query met de mogelijke waarden waarmee u een query wilt uitvoeren. Wanneer u de query voor het eerst uitvoert, wordt een vervolg keuzelijst automatisch gevuld met de waarden die u hebt opgegeven voor de variabele.
+7. U kunt ook Spark SQL-instructies uitvoeren met behulp van variabelen in de query. Het volgende code fragment laat zien hoe u een variabele definieert, `Temp` in de query met de mogelijke waarden waarmee u een query wilt uitvoeren. Wanneer u de query voor het eerst uitvoert, wordt een vervolg keuzelijst automatisch gevuld met de waarden die u hebt opgegeven voor de variabele.
 
     ```sql
     %sql  
@@ -125,7 +125,7 @@ In dit artikel ziet u hoe u het [Spark-CSV-](https://search.maven.org/#artifactd
 
     ![Settings1 van interpreter wijzigen](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "Settings1 van interpreter wijzigen")
 
-3. Navigeer naar Key `livy.spark.jars.packages`en stel de waarde in de notatie `group:id:version`in. Als u het [Spark-CSV-](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) pakket wilt gebruiken, moet u dus de waarde van de sleutel instellen op `com.databricks:spark-csv_2.10:1.4.0`.
+3. Navigeer naar Key `livy.spark.jars.packages` en stel de waarde in de notatie in `group:id:version` . Als u het [Spark-CSV-](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) pakket wilt gebruiken, moet u dus de waarde van de sleutel instellen op `com.databricks:spark-csv_2.10:1.4.0` .
 
     ![Settings2 van interpreter wijzigen](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "Settings2 van interpreter wijzigen")
 
@@ -153,18 +153,18 @@ Met deze actie wordt het notitie blok opgeslagen als een JSON-bestand in de down
 
 ## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>Gebruiken `Shiro` voor het configureren van toegang tot Zeppelin-tolken in Enterprise Security Package (ESP)-clusters
 
-Zoals hierboven vermeld, wordt `%sh` de interpreter niet ondersteund vanaf HDInsight 4,0. Bovendien is er `%sh` , aangezien de interpreter mogelijke beveiligings problemen introduceert, zoals het openen van de tabtoets met shell-opdrachten, ook verwijderd uit de ESP-clusters van HDInsight 3,6. Dit betekent `%sh` dat interpreter niet beschikbaar is als u standaard op **nieuwe notitie maken** of in de interpreter-gebruikers interface klikt.
+Zoals hierboven vermeld, `%sh` wordt de interpreter niet ondersteund vanaf HDInsight 4,0. Bovendien is er, aangezien de `%sh` interpreter mogelijke beveiligings problemen introduceert, zoals het openen van de tabtoets met shell-opdrachten, ook verwijderd uit de ESP-clusters van HDInsight 3,6. Dit betekent dat `%sh` interpreter niet beschikbaar is als u standaard op **nieuwe notitie maken** of in de interpreter-gebruikers interface klikt.
 
-Geprivilegieerde domein gebruikers kunnen het `Shiro.ini` bestand gebruiken om de toegang tot de gebruikers interface van de interpreter te beheren. Alleen deze gebruikers kunnen nieuwe `%sh` interpreters maken en machtigingen instellen voor `%sh` elke nieuwe interpreter. Gebruik de volgende stappen om `shiro.ini` de toegang te beheren met het bestand:
+Geprivilegieerde domein gebruikers kunnen het `Shiro.ini` bestand gebruiken om de toegang tot de gebruikers interface van de interpreter te beheren. Alleen deze gebruikers kunnen nieuwe `%sh` interpreters maken en machtigingen instellen voor elke nieuwe `%sh` interpreter. Gebruik de volgende stappen om de toegang te beheren met het `shiro.ini` bestand:
 
-1. Definieer een nieuwe rol met behulp van de naam van een bestaande domein groep. In het volgende voor beeld `adminGroupName` is een groep bevoegde gebruikers in Aad. Gebruik geen speciale tekens of spaties in de groeps naam. De tekens nadat `=` u de machtigingen voor deze rol hebt toegewezen. `*`betekent dat de groep volledige machtigingen heeft.
+1. Definieer een nieuwe rol met behulp van de naam van een bestaande domein groep. In het volgende voor beeld `adminGroupName` is een groep bevoegde gebruikers in Aad. Gebruik geen speciale tekens of spaties in de groeps naam. De tekens nadat u `=` de machtigingen voor deze rol hebt toegewezen. `*`betekent dat de groep volledige machtigingen heeft.
 
     ```
     [roles]
     adminGroupName = *
     ```
 
-2. Voeg de nieuwe rol toe voor toegang tot Zeppelin-interpreters. In het volgende voor beeld krijgen alle gebruikers `adminGroupName` in toegang tot Zeppelin-tolken en kunnen nieuwe interpreters worden gemaakt. U kunt meerdere rollen tussen de vier Kante haken `roles[]`plaatsen, gescheiden door komma's. Gebruikers die de benodigde machtigingen hebben, hebben dan toegang tot Zeppelin-interpreters.
+2. Voeg de nieuwe rol toe voor toegang tot Zeppelin-interpreters. In het volgende voor beeld krijgen alle gebruikers in `adminGroupName` toegang tot Zeppelin-tolken en kunnen nieuwe interpreters worden gemaakt. U kunt meerdere rollen tussen de vier Kante haken plaatsen `roles[]` , gescheiden door komma's. Gebruikers die de benodigde machtigingen hebben, hebben dan toegang tot Zeppelin-interpreters.
 
     ```
     [urls]
@@ -191,9 +191,9 @@ In dat geval moet u de volgende stappen uitvoeren voordat u taken kunt uitvoeren
 
 ### <a name="validate-service"></a>Service valideren
 
-Als u de service van Ambari wilt valideren, `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` gaat u naar de naam van het cluster.
+Als u de service van Ambari wilt valideren, gaat u naar `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` de naam van het cluster.
 
-Als u de service vanaf een opdracht regel wilt valideren, moet u SSH naar het hoofd knooppunt. Schakel de gebruiker over naar Zeppelin `sudo su zeppelin`met behulp van de opdracht. Status opdrachten:
+Als u de service vanaf een opdracht regel wilt valideren, moet u SSH naar het hoofd knooppunt. Schakel de gebruiker over naar Zeppelin met behulp van de opdracht `sudo su zeppelin` . Status opdrachten:
 
 |Opdracht |Beschrijving |
 |---|---|
@@ -207,18 +207,18 @@ Als u de service vanaf een opdracht regel wilt valideren, moet u SSH naar het ho
 |---|---|
 |Zeppelin-server|/usr/hdp/current/zeppelin-server/|
 |Serverlogboeken|/var/log/zeppelin|
-|Configuratie-interpreter `Shiro`,, site. XML, Log4J|/usr/HDP/Current/Zeppelin-server/conf of/etc/Zeppelin/conf|
+|Configuratie-Interpreter, `Shiro` , site.xml, Log4J|/usr/HDP/Current/Zeppelin-server/conf of/etc/Zeppelin/conf|
 |PID-map|/var/run/zeppelin|
 
 ### <a name="enable-debug-logging"></a>Logboek registratie voor fout opsporing inschakelen
 
 1. Navigeer naar `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` de naam van het cluster.
 
-1. Navigeer naar **configs** > **Advanced Zeppelin-log4j-Properties** > **log4j_properties_content**.
+1. Navigeer naar **configs**  >  **Advanced Zeppelin-log4j-Properties**  >  **log4j_properties_content**.
 
-1. Wijzigen `log4j.appender.dailyfile.Threshold = INFO` in `log4j.appender.dailyfile.Threshold = DEBUG`.
+1. Wijzigen `log4j.appender.dailyfile.Threshold = INFO` in `log4j.appender.dailyfile.Threshold = DEBUG` .
 
-1. Toevoegen `log4j.logger.org.apache.zeppelin.realm=DEBUG`.
+1. Toevoegen `log4j.logger.org.apache.zeppelin.realm=DEBUG` .
 
 1. Sla de wijzigingen op en start de service opnieuw.
 

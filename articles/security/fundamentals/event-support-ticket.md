@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/13/2017
 ms.author: terrylan
 ms.openlocfilehash: fc5899fe5aca4bbaa9250cf41b240816e2cbedb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80548594"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>Een ondersteuningsticket voor een beveiligingsgebeurtenis maken
@@ -32,7 +32,7 @@ ms.locfileid: "80548594"
 
     i. Wat is het probleem en/of het beveiligings probleem?
 
-    ii. Geef voor beveiligings problemen de CVE (mitre.org) of de ingevulde CVSS3 v3 Calculator (https://www.first.org/cvss/calculator/3.0).
+    ii. Geef voor beveiligings problemen de CVE (mitre.org) of de ingevulde CVSS3 v3 Calculator ( https://www.first.org/cvss/calculator/3.0) .
 
     iii. Is er een oplossing of beperking? Zo ja, dan moet u de herstels tappen opgeven.
 

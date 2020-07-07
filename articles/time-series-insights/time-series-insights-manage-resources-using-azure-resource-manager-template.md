@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: a670e32058794daeaa233464ba7d054f45ef25e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81536315"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Time Series Insights-resources maken met behulp van Azure Resource Manager sjablonen
@@ -64,8 +64,8 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
      | eventHubNamespaceName | De naam ruimte van de bron Event Hub. |
      | eventHubName | De naam van de bron Event Hub. |
      | consumerGroupName | De naam van de Consumer groep die door de Time Series Insights-service wordt gebruikt om de gegevens van de Event Hub te lezen. **Opmerking:** Om bron conflicten te voor komen, moet deze Consumer groep worden toegewezen aan de Time Series Insights-service en niet worden gedeeld met andere lezers. |
-     | environmentName | De naam van de omgeving. De naam mag niet de `<`volgende `>`tekens `%`bevatten `&`: `:`, `\\`, `?`, `/`,,,,, en alle Stuur codes. Alle andere tekens zijn toegestaan.|
-     | eventSourceName | De naam van de onderliggende bron van de gebeurtenis bron. De naam mag niet de `<`volgende `>`tekens `%`bevatten `&`: `:`, `\\`, `?`, `/`,,,,, en alle Stuur codes. Alle andere tekens zijn toegestaan. |
+     | environmentName | De naam van de omgeving. De naam mag niet de volgende tekens bevatten: `<` ,,,,,,,, `>` `%` `&` `:` `\\` `?` `/` en alle Stuur codes. Alle andere tekens zijn toegestaan.|
+     | eventSourceName | De naam van de onderliggende bron van de gebeurtenis bron. De naam mag niet de volgende tekens bevatten: `<` ,,,,,,,, `>` `%` `&` `:` `\\` `?` `/` en alle Stuur codes. Alle andere tekens zijn toegestaan. |
 
     <div id="optional-parameters"></div>
 
@@ -140,7 +140,7 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
       Get-AzSubscription
       ```
 
-    * Met deze opdracht wordt een lijst met beschik bare Azure-abonnementen geretourneerd. Kies een abonnement voor de huidige sessie door de volgende opdracht uit te voeren. Vervang `<YourSubscriptionId>` door de GUID voor het Azure-abonnement dat u wilt gebruiken:
+    * Met deze opdracht wordt een lijst met beschik bare Azure-abonnementen geretourneerd. Kies een abonnement voor de huidige sessie door de volgende opdracht uit te voeren. Vervang door `<YourSubscriptionId>` de GUID voor het Azure-abonnement dat u wilt gebruiken:
 
       ```powershell
       Set-AzContext -SubscriptionID <YourSubscriptionId>
@@ -166,7 +166,7 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
 
 1. De implementatie testen.
 
-   * Valideer uw implementatie door de `Test-AzResourceGroupDeployment` cmdlet uit te voeren. Wanneer u de implementatie test, geeft u de para meters op exact dezelfde manier op als bij het uitvoeren van de implementatie.
+   * Valideer uw implementatie door de cmdlet uit te voeren `Test-AzResourceGroupDeployment` . Wanneer u de implementatie test, geeft u de para meters op exact dezelfde manier op als bij het uitvoeren van de implementatie.
 
      ```powershell
      Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
@@ -174,7 +174,7 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
 
 1. De implementatie maken
 
-    * Als u de nieuwe implementatie wilt maken, `New-AzResourceGroupDeployment` voert u de cmdlet uit en geeft u de benodigde para meters op wanneer u hierom wordt gevraagd. De para meters bevatten een naam voor uw implementatie, de naam van uw resource groep en het pad of de URL naar het sjabloon bestand. Als de **modus** parameter niet is opgegeven, wordt de standaard waarde **Incrementeel** gebruikt. Lees [incrementele en volledige implementaties](../azure-resource-manager/templates/deployment-modes.md)voor meer informatie.
+    * Als u de nieuwe implementatie wilt maken, voert u de `New-AzResourceGroupDeployment` cmdlet uit en geeft u de benodigde para meters op wanneer u hierom wordt gevraagd. De para meters bevatten een naam voor uw implementatie, de naam van uw resource groep en het pad of de URL naar het sjabloon bestand. Als de **modus** parameter niet is opgegeven, wordt de standaard waarde **Incrementeel** gebruikt. Lees [incrementele en volledige implementaties](../azure-resource-manager/templates/deployment-modes.md)voor meer informatie.
 
     * Met de volgende opdracht wordt u gevraagd om de vijf vereiste para meters in het Power shell-venster:
 

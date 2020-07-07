@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: cce99b7d9de09134fd01afb36c41bce3966e8536
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80518176"
 ---
 # <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>Preview-limieten, quota's en gashendel voor IoT Plug en Play
@@ -29,7 +29,7 @@ Voor de open bare preview zijn de volgende limieten en quota van toepassing op e
 | Maximum aantal DCMs dat per apparaat kan worden geregistreerd | 1 ||
 | Maximale grootte van interface/DCM-bestand | 512 kB ||
 | Maximale grootte van een interface naam | 256 tekens ||
-| Maximale grootte van een eigenschaps naam  | 64 bytes, 7 niveaus diep (en het eerste niveau is gereserveerd voor `$iotin`) | Toegestane tekens: a-z, A-Z, 0-9 (niet als het eerste teken) en onderstrepings teken. |
+| Maximale grootte van een eigenschaps naam  | 64 bytes, 7 niveaus diep (en het eerste niveau is gereserveerd voor `$iotin` ) | Toegestane tekens: a-z, A-Z, 0-9 (niet als het eerste teken) en onderstrepings teken. |
 | Maximale grootte van een eigenschaps waarde | 512 bytes ||
 | Maximale grootte van een opdracht naam | 100 bytes ||
 | Dubbele grootte van apparaat | Hetzelfde als [IOT hub limieten](../iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) ||

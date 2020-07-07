@@ -7,10 +7,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.openlocfilehash: e6de10ed712688e4ee9dccc22176e81ad5e574ca
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71315854"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>Aanbevolen procedures voor het beheren van U-SQL-assembly's in een CI/CD-pijp lijn
@@ -30,12 +30,12 @@ Gebruik de volgende opties voor het beheren van de C#-bron code en de DDL-U-SQL-
 Een U-SQL database project kan verwijzen naar een klassen bibliotheek (voor een U-SQL-toepassing). U kunt assembly's die zijn geregistreerd in de U-SQL database maken met behulp van C#-bron code waarnaar wordt verwezen in deze klassen bibliotheek (voor U-SQL-toepassing).
 
 Volg deze stappen om projecten te maken en verwijzingen toe te voegen.
-1. Maak een klassen bibliotheek (voor U-SQL-toepassing) door **bestand** > **Nieuw** > **project**te selecteren. Het project bevindt zich onder het **Azure Data Lake > U-SQL-** knoop punt.
+1. Maak een klassen bibliotheek (voor U-SQL-toepassing) door **bestand**  >  **Nieuw**  >  **project**te selecteren. Het project bevindt zich onder het **Azure Data Lake > U-SQL-** knoop punt.
 
    ![Data Lake-Hulpprogram Ma's voor Visual Studio: C#-klassen bibliotheek project maken](./media/data-lake-analytics-cicd-manage-assemblies/create-c-sharp-class-library-project.png)
 1. Voeg uw door de gebruiker gedefinieerde C#-code toe aan het-project van de klassen bibliotheek (voor U-SQL-toepassing).
 
-1. Een U-SQL-project maken door **bestand** > **Nieuw** > **project**te selecteren. Het project bevindt zich onder het knoop punt **Azure data Lake** > **U-SQL** .
+1. Een U-SQL-project maken door **bestand**  >  **Nieuw**  >  **project**te selecteren. Het project bevindt zich onder het knoop punt **Azure data Lake**  >  **U-SQL** .
 
    ![Data Lake-Hulpprogram Ma's voor Visual Studio--een U-SQL database-project maken](media/data-lake-analytics-cicd-manage-assemblies/create-u-sql-database-project.png)
 1. Voeg een verwijzing toe naar het C#-klassen bibliotheek project voor het U-SQL database-project.
@@ -54,11 +54,11 @@ Volg deze stappen om projecten te maken en verwijzingen toe te voegen.
 
 7. Voeg **beheerde afhankelijkheden** en **extra bestanden**toe, indien aanwezig. Wanneer u extra bestanden toevoegt, gebruikt het hulp programma het relatieve pad om ervoor te zorgen dat de assembly's op uw lokale machine en op de build-machine later kunnen worden gevonden.
 
-_DeployTempDirectory in het editor venster onderaan is een vooraf gedefinieerde variabele die het hulp programma naar de uitvoermap build verwijst. ** \@** In de map build-uitvoer heeft elke assembly een submap met de naam van de assembly. Alle Dll's en extra bestanden bevinden zich in die submap.
+** \@ _DeployTempDirectory** in het editor venster onderaan is een vooraf gedefinieerde variabele die het hulp programma naar de uitvoermap build verwijst. In de map build-uitvoer heeft elke assembly een submap met de naam van de assembly. Alle Dll's en extra bestanden bevinden zich in die submap.
 
 ## <a name="build-a-u-sql-database-project"></a>Een U-SQL database-project bouwen
 
-Het build-uitvoer voor een U-SQL database project is een U-SQL database implementatie pakket. Deze heet met het achtervoegsel `.usqldbpack`. Het `.usqldbpack` pakket is een zip-bestand dat alle DDL-instructies bevat in één U-SQL-script in de DDL-map. Alle ingebouwde DLL-bestanden en aanvullende bestanden voor assembly's bevinden zich in de map Temp.
+Het build-uitvoer voor een U-SQL database project is een U-SQL database implementatie pakket. Deze heet met het achtervoegsel `.usqldbpack` . Het `.usqldbpack` pakket is een zip-bestand dat alle DDL-instructies bevat in één U-SQL-script in de DDL-map. Alle ingebouwde DLL-bestanden en aanvullende bestanden voor assembly's bevinden zich in de map Temp.
 
 ## <a name="deploy-a-u-sql-database"></a>Een U-SQL database implementeren
 
@@ -66,7 +66,7 @@ Het `.usqldbpack` pakket kan worden geïmplementeerd naar een lokaal account of 
 
 ### <a name="deploy-a-u-sql-database-in-visual-studio"></a>Een U-SQL database implementeren in Visual Studio
 
-U kunt een U-SQL database implementeren met behulp van een U-SQL database- `.usqldbpack` project of een-pakket in Visual Studio.
+U kunt een U-SQL database implementeren met behulp van een U-SQL database-project of een- `.usqldbpack` pakket in Visual Studio.
 
 #### <a name="deploy-by-using-a-u-sql-database-project"></a>Implementeren met behulp van een U-SQL database project
 
@@ -82,7 +82,7 @@ U kunt een U-SQL database implementeren met behulp van een U-SQL database- `.usq
 
 ### <a name="deploy-a-u-sql-database-in-azure-devops"></a>Een U-SQL database implementeren in azure DevOps
 
-`PackageDeploymentTool.exe`biedt de programmeer-en opdracht regel interfaces die U helpen bij het implementeren van U-SQL-data bases. De SDK is opgenomen in het [U-SQL SDK Nuget-pakket](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), dat `build/runtime/PackageDeploymentTool.exe`zich bevindt in.
+`PackageDeploymentTool.exe`biedt de programmeer-en opdracht regel interfaces die U helpen bij het implementeren van U-SQL-data bases. De SDK is opgenomen in het [U-SQL SDK Nuget-pakket](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), dat zich bevindt in `build/runtime/PackageDeploymentTool.exe` .
 
 In azure DevOps kunt u een opdracht regel taak en deze SDK gebruiken om een Automation-pijp lijn in te stellen voor de U-SQL database vernieuwen. Meer [informatie over de SDK en het instellen van een CI/cd-pijp lijn voor U-SQL database-implementatie](data-lake-analytics-cicd-overview.md#deploy-u-sql-database-through-azure-pipelines).
 

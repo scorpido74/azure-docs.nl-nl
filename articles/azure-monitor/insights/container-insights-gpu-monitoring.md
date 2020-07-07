@@ -4,10 +4,10 @@ description: In dit artikel wordt beschreven hoe u bewakings Kubernetes-clusters
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.openlocfilehash: 958f5ab33edcd280f5673391eba907728f1153c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80373308"
 ---
 # <a name="configure-gpu-monitoring-with-azure-monitor-for-containers"></a>GPU-bewaking configureren met Azure Monitor voor containers
@@ -24,7 +24,7 @@ Azure Monitor voor containers ondersteunt bewaking van GPU-clusters van de volge
 
 Azure Monitor voor containers worden het GPU-gebruik automatisch op knoop punten gestart en GPU die een Peul en werk belasting aanvraagt door de volgende metrische gegevens op 60sec intervallen te verzamelen en op te slaan in de tabel **InsightMetrics** :
 
-|Naam van meetwaarde |Metrische dimensie (Tags) |Beschrijving |
+|Naam van metrische gegevens |Metrische dimensie (Tags) |Beschrijving |
 |------------|------------------------|------------|
 |containerGpuDutyCycle |container.azm.ms/clusterId, container.azm.ms/clusterName, containerName, gpuId, gpuModel, gpuVendor|Het percentage tijd in de afgelopen sample periode (60 seconden) gedurende welke GPU bezig was/actief werd verwerkt voor een container. Taak cyclus is een getal tussen 1 en 100. |
 |containerGpuLimits |container.azm.ms/clusterId, container.azm.ms/clusterName, containerName |Elke container kan limieten als een of meer Gpu's opgeven. Het is niet mogelijk een fractie van een GPU aan te vragen of te beperken. |

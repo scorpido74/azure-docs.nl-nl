@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
 ms.openlocfilehash: 7d3a85e6fcc5b9d1c5ca1511cd7edd05ff5d9ae4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582690"
 ---
 # <a name="streaming-endpoint-origin-errors"></a>Fouten van streaming-eind punt (oorsprong) 
@@ -34,7 +34,7 @@ De aanvraag bevat ongeldige gegevens en wordt geweigerd met deze fout codes en o
 |MPE_ENC_ENCRYPTION_NOT_SPECIFIED_IN_URL |0x8088024C|De aanvraag heeft geen versleutelings code in de URL. CMAF-aanvragen vereisen een versleutelings code in de URL. Andere protocollen die zijn geconfigureerd met meer dan één versleutelings type, hebben ook de versleutelings code voor ondubbelzinnige configuratie nodig. |
 |MPE_STORAGE_BAD_URL_SYNTAX |0x808900E9|De aanvraag voor opslag om te voldoen aan de aanvraag is mislukt met een onjuiste aanvraag fout. |
 
-## <a name="403-forbidden"></a>403 verboden
+## <a name="403-forbidden"></a>403 Verboden
 
 De aanvraag is niet toegestaan vanwege een van de volgende redenen:
 

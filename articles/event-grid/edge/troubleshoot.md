@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 95181d0eb23d5956b2c6af52c77f85714b107345
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73100159"
 ---
 # <a name="common-issues"></a>Algemene problemen
@@ -42,7 +42,7 @@ sudo docker logs eventgridmodule
 
 * Als de communicatie van module naar module is, zorgt u ervoor dat u de aanroep op poort **4438** en de naam van de module overeenkomt met wat er wordt geïmplementeerd. 
 
-  Als Event Grid module bijvoorbeeld is geïmplementeerd met de naam **eventgridmodule** , moet uw URL zijn **https://eventgridmodule:4438**. Controleer of het hoofdletter gebruik en het poort nummer juist zijn.
+  Als Event Grid module bijvoorbeeld is geïmplementeerd met de naam **eventgridmodule** , moet uw URL zijn **https://eventgridmodule:4438** . Controleer of het hoofdletter gebruik en het poort nummer juist zijn.
     
 * Als het vanuit de niet-IoT-module is, moet u ervoor zorgen dat Event Grid poort wordt toegewezen aan de host-machine tijdens de implementatie, bijvoorbeeld
 
@@ -64,7 +64,7 @@ sudo docker logs eventgridmodule
 
 * Als de communicatie van module naar module is, zorgt u ervoor dat u de aanroep op poort **5888** en de naam van de module overeenkomt met wat er wordt geïmplementeerd. 
 
-  Als Event Grid module bijvoorbeeld is geïmplementeerd met de naam **eventgridmodule** , moet uw URL zijn **http://eventgridmodule:5888**. Controleer of het hoofdletter gebruik en het poort nummer juist zijn.
+  Als Event Grid module bijvoorbeeld is geïmplementeerd met de naam **eventgridmodule** , moet uw URL zijn **http://eventgridmodule:5888** . Controleer of het hoofdletter gebruik en het poort nummer juist zijn.
     
 * Als het vanuit de niet-IoT-module is, moet u ervoor zorgen dat Event Grid poort wordt toegewezen aan de host-machine tijdens de implementatie, bijvoorbeeld
 
@@ -84,7 +84,7 @@ sudo docker logs eventgridmodule
 
 Event Grid module is standaard geconfigureerd voor het verifiëren van clients met een certificaat dat is uitgegeven door de IoT Edge Security daemon. Zorg ervoor dat de client een certificaat presenteert dat is geroot naar deze keten.
 
-**IoTSecurity** De klasse IoTSecurity [https://github.com/Azure/event-grid-iot-edge](https://github.com/Azure/event-grid-iot-edge) in laat zien hoe u certificaten kunt ophalen uit IOT Edge-beveiligings-daemon en hoe u uitgaande oproepen kunt configureren.
+De klasse **IoTSecurity** in [https://github.com/Azure/event-grid-iot-edge](https://github.com/Azure/event-grid-iot-edge) laat zien hoe u certificaten kunt ophalen uit IOT Edge-beveiligings-daemon en hoe u uitgaande oproepen kunt configureren.
 
 Als het een niet-productie-omgeving is, hebt u de mogelijkheid om client verificatie uit te scha kelen. Raadpleeg [beveiliging en verificatie](security-authentication.md) voor meer informatie over hoe u dit doet.
 
@@ -108,4 +108,4 @@ Veelvoorkomende oorzaken hiervoor zijn:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meld alle problemen en suggesties voor het gebruik van Event Grid op [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues)IOT Edge op.
+Meld alle problemen en suggesties voor het gebruik van Event Grid op IoT Edge op [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues) .

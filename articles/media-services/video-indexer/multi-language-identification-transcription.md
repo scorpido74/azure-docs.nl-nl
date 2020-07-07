@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
 ms.openlocfilehash: f0dede42891069bb5d01ddc33f3797c20c5493d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72968744"
 ---
 # <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>Meerdere talen inhoud automatisch identificeren en transcriberen (preview-versie)
@@ -39,7 +39,7 @@ U kunt de **meertalige detectie** kiezen bij het uploaden en indexeren van uw vi
 
 ## <a name="choosing-multilingual-identification-on-indexing-with-api"></a>Meertalige identificatie voor indexering met API kiezen
 
-Wanneer u een video indexeert of opnieuw [indexeert](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) met behulp van `multi-language detection` de API, `sourceLanguage` kiest u de optie in de para meter.
+Wanneer u een video indexeert of opnieuw [indexeert](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) met behulp van de API, kiest u de `multi-language detection` optie in de `sourceLanguage` para meter.
 
 ### <a name="model-output"></a>Uitvoer van model
 

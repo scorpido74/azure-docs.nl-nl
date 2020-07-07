@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: dfed398124ca20771e169f6f9e7d08d4d799ee1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80478285"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Herstel na nood geval instellen voor een IIS-webtoepassing met meerdere lagen
@@ -63,13 +63,13 @@ Scenario | Op een secundaire site | In Azure
 Hyper-V | Ja | Ja
 VMware | Ja | Ja
 Fysieke server | Nee | Ja
-Azure|N.v.t.|Ja
+Azure|NA|Ja
 
 ## <a name="replicate-virtual-machines"></a>Virtuele machines repliceren
 
 Als u alle virtuele IIS-webfarms wilt repliceren naar Azure, volgt u de instructies in [testfailover naar Azure in site Recovery](site-recovery-test-failover-to-azure.md).
 
-Als u een statisch IP-adres gebruikt, kunt u het IP-adres opgeven dat u wilt dat de virtuele machine moet overnemen. Als u het IP-adres wilt instellen, gaat u naar **reken-en netwerk instellingen** > **doel-IP**.
+Als u een statisch IP-adres gebruikt, kunt u het IP-adres opgeven dat u wilt dat de virtuele machine moet overnemen. Als u het IP-adres wilt instellen, gaat u naar **reken-en netwerk instellingen**  >  **doel-IP**.
 
 ![Scherm afbeelding die laat zien hoe u het doel-IP kunt instellen in het deel venster Site Recovery Compute en netwerk](./media/site-recovery-active-directory/dns-target-ip.png)
 
@@ -97,7 +97,7 @@ Voor een juiste werking van de IIS-webfarm moet u mogelijk bepaalde bewerkingen 
 #### <a name="dns-update"></a>DNS-update
 Als DNS is geconfigureerd voor dynamische DNS-updates, werkt virtuele machines de DNS doorgaans bij met het nieuwe IP-adres wanneer ze worden gestart. Als u een expliciete stap wilt toevoegen om DNS bij te werken met de nieuwe IP-adressen van de virtuele machines, voegt u een [script toe om IP in DNS bij te werken](https://aka.ms/asr-dns-update) als een actie na een failover voor herstel plan groepen.  
 
-#### <a name="connection-string-in-an-applications-webconfig"></a>Verbindings reeks in de web. config van een toepassing
+#### <a name="connection-string-in-an-applications-webconfig"></a>Verbindings reeks in de web.config van een toepassing
 Met de connection string geeft u de Data Base op waarmee de website communiceert. Als de connection string de naam van de virtuele machine van de Data Base bevat, zijn er geen verdere stappen nodig na de failover. De toepassing kan automatisch communiceren met de data base. Als het IP-adres voor de virtuele machine van de data base wordt bewaard, hoeft de connection string ook niet te worden bijgewerkt. 
 
 Als de connection string verwijst naar de virtuele machine van de data base met behulp van een IP-adres, moet deze na de failover worden bijgewerkt. De volgende connection string verwijst bijvoorbeeld naar de data base met het IP-adres 127.0.1.2:

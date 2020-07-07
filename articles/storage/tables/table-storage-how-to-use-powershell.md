@@ -8,10 +8,10 @@ ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: tables
 ms.openlocfilehash: 746044aa835df52e61c234c8b5ca61164fffbbc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80545952"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Azure Table Storage-bewerkingen uitvoeren met Azure PowerShell 
@@ -19,7 +19,7 @@ ms.locfileid: "80545952"
 
 Azure Table Storage is een NoSQL-gegevens opslag die u kunt gebruiken om grote sets gestructureerde, niet-relationele gegevens op te slaan en op te vragen. De belangrijkste onderdelen van de service zijn tabellen, entiteiten en eigenschappen. Een tabel is een verzameling entiteiten. Een entiteit is een set eigenschappen. Elke entiteit kan Maxi maal 252 eigenschappen hebben, die alle naam/waarde-paren zijn. In dit artikel wordt ervan uitgegaan dat u al bekend bent met de Azure Table Storage service-concepten. Zie voor gedetailleerde informatie [over het Table service-gegevens model](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) en [aan de slag met Azure Table Storage met behulp van .net](../../cosmos-db/table-storage-how-to-use-dotnet.md).
 
-In dit artikel wordt beschreven hoe algemene Azure Table Storage-bewerkingen worden uitgevoerd. Procedures voor: 
+In dit artikel wordt beschreven hoe algemene Azure Table Storage-bewerkingen worden uitgevoerd. In deze zelfstudie leert u procedures om het volgende te doen: 
 
 > [!div class="checklist"]
 > * Een tabel maken
@@ -31,10 +31,10 @@ In dit artikel wordt beschreven hoe algemene Azure Table Storage-bewerkingen wor
 
 In dit artikel wordt uitgelegd hoe u een nieuw Azure Storage account maakt in een nieuwe resource groep, zodat u het eenvoudig kunt verwijderen wanneer u klaar bent. Als u liever een bestaand opslag account wilt gebruiken, kunt u dat doen in plaats daarvan.
 
-Voor de voor beelden zijn AZ `Az.Storage (1.1.0 or greater)` Power `Az.Resources (1.2.0 or greater)`shell-modules en vereist. Voer in een Power shell- `Get-Module -ListAvailable Az*` venster uit om de versie te vinden. Als niets wordt weer gegeven of als u een upgrade wilt uitvoeren, raadpleegt u [Azure PowerShell-module installeren](/powershell/azure/install-az-ps).
+Voor de voor beelden zijn AZ Power shell-modules `Az.Storage (1.1.0 or greater)` en vereist `Az.Resources (1.2.0 or greater)` . Voer in een Power shell-venster uit `Get-Module -ListAvailable Az*` om de versie te vinden. Als niets wordt weer gegeven of als u een upgrade wilt uitvoeren, raadpleegt u [Azure PowerShell-module installeren](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
-> Als u deze Azure-functie vanuit Power shell wilt gebruiken `Az` , moet u de module hebben geïnstalleerd. De huidige versie van `AzTable` is niet compatibel met de oudere AzureRM-module.
+> Als u deze Azure-functie vanuit Power shell wilt gebruiken, moet u de `Az` module hebben geïnstalleerd. De huidige versie van `AzTable` is niet compatibel met de oudere AzureRM-module.
 > Volg de [meest recente installatie-instructies voor het installeren van AZ module](/powershell/azure/install-az-ps) , indien nodig.
 
 Nadat Azure PowerShell is geïnstalleerd of bijgewerkt, moet u de module **AzTable**installeren. Deze bevat de opdrachten voor het beheren van de entiteiten. Als u deze module wilt installeren, voert u Power shell uit als beheerder en gebruikt u de opdracht **install-module** .
@@ -91,7 +91,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-new-table"></a>Een nieuwe tabel maken
 
-Als u een tabel wilt maken, gebruikt u de cmdlet [New-AzStorageTable](/powershell/module/az.storage/New-AzStorageTable) . In dit voor beeld wordt de tabel genoemd `pshtesttable`.
+Als u een tabel wilt maken, gebruikt u de cmdlet [New-AzStorageTable](/powershell/module/az.storage/New-AzStorageTable) . In dit voor beeld wordt de tabel genoemd `pshtesttable` .
 
 ```powershell
 $tableName = "pshtesttable"
