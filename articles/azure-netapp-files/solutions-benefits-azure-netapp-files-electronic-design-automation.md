@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: b-juche
 ms.openlocfilehash: fcede16619e8488796adc6f4c60af30643c1aadf
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82160150"
 ---
-# <a name="benefits-of-using-azure-netapp-files-for-electronic-design-automation"></a>Voor delen van het gebruik van Azure NetApp Files voor elektronische ontwerp automatisering
+# <a name="benefits-of-using-azure-netapp-files-for-electronic-design-automation"></a>Voordelen van het gebruik van Azure NetApp Files voor electronic design automation
 
 Time-to-Market (TTM) is een belang rijke overweging voor de design-industrie van halfgeleider en chip. De branche heeft een hoge band breedte en een lage latentie vereist voor opslag. In dit artikel wordt uitgelegd wat de oplossing Azure NetApp Files biedt om tegemoet te komen aan de behoeften van de branche. Er wordt gebruikgemaakt van test scenario's voor het uitvoeren van een standaard industrie benchmark voor Electronic Design Automation (EDA) met behulp van Azure NetApp Files. 
 

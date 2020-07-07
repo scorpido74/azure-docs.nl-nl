@@ -5,15 +5,15 @@ ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
 ms.openlocfilehash: 24dc108ce4d9c991b1e062c0435b38a63899a249
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186767"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Beveiligings functies voor het beveiligen van hybride back-ups die gebruikmaken van Azure Backup
 
-Problemen met betrekking tot beveiligings problemen, zoals malware, Ransomware en indringing, worden verhoogd. Deze beveiligings problemen kunnen kostbaar zijn, zowel voor geld als voor gegevens. Azure Backup biedt nu beveiligings functies waarmee hybride back-ups kunnen worden beveiligd tegen dergelijke aanvallen. In dit artikel wordt beschreven hoe u deze functies kunt inschakelen en gebruiken met behulp van een Azure Recovery Services-agent en Azure Backup Server. Deze functies omvatten onder andere:
+Problemen met betrekking tot beveiligings problemen, zoals malware, Ransomware en indringing, worden verhoogd. Deze beveiligings problemen kunnen kostbaar zijn, zowel voor geld als voor gegevens. Azure Backup biedt nu beveiligings functies waarmee hybride back-ups kunnen worden beveiligd tegen dergelijke aanvallen. In dit artikel wordt beschreven hoe u deze functies kunt inschakelen en gebruiken met behulp van een Azure Recovery Services-agent en Azure Backup Server. Het gaat om de volgende functies:
 
 - **Preventie**. Er wordt een extra beveiligingslaag toegevoegd wanneer een kritieke bewerking wordt uitgevoerd, zoals het wijzigen van een wachtwoordzin. Deze validatie is om ervoor te zorgen dat dergelijke bewerkingen alleen kunnen worden uitgevoerd door gebruikers die geldige Azure-referenties hebben.
 - **Waarschuwing**. Er wordt een e-mail melding verzonden naar de abonnements beheerder wanneer er een kritieke bewerking wordt uitgevoerd, zoals het verwijderen van back-upgegevens. Dit e-mail bericht zorgt ervoor dat de gebruiker snel op de hoogte wordt gebracht van dergelijke acties.
@@ -30,7 +30,7 @@ Problemen met betrekking tot beveiligings problemen, zoals malware, Ransomware e
 > Deze functies zijn alleen beschikbaar voor Recovery Services kluis. Voor alle nieuw gemaakte Recovery Services-kluizen zijn deze functies standaard ingeschakeld. Voor bestaande Recovery Services kluizen kunnen gebruikers deze functies inschakelen met behulp van de stappen die in de volgende sectie worden beschreven. Nadat de functies zijn ingeschakeld, zijn deze van toepassing op alle Recovery Services agent computers, Azure Backup Server instanties en Data Protection Manager servers die zijn geregistreerd bij de kluis. Het inschakelen van deze instelling is een eenmalige actie en u kunt deze functies niet uitschakelen nadat ze zijn ingeschakeld.
 >
 
-## <a name="enable-security-features"></a>Beveiligingsfuncties in te schakelen
+## <a name="enable-security-features"></a>Beveiligingsfuncties inschakelen
 
 Als u een Recovery Services kluis maakt, kunt u alle beveiligings functies gebruiken. Als u met een bestaande kluis werkt, schakelt u de beveiligings functies in door de volgende stappen uit te voeren:
 
@@ -89,7 +89,7 @@ Als onderdeel van het toevoegen van een extra verificatie niveau voor kritieke b
 Deze pincode ontvangen:
 
 1. Meld u aan bij Azure Portal.
-2. Blader naar **Recovery Services** > **Settings** > **Eigenschappen**van de kluis instellingen.
+2. Blader naar **Recovery Services**eigenschappen van de kluis  >  **instellingen**  >  **Properties**.
 3. Klik onder **BEVEILIGINGS pincode**op **genereren**. Hiermee opent u een Blade die de pincode bevat die moet worden ingevoerd in de gebruikers interface van de Azure Recovery Services-agent.
     Deze pincode is slechts vijf minuten geldig en wordt na die periode automatisch gegenereerd.
 
@@ -112,9 +112,9 @@ De beveiligings functies die in dit artikel worden vermeld, bieden verdedigings 
 
 | Bewerking | Foutdetails | Oplossing |
 | --- | --- | --- |
-| Beleids wijziging |Het back-upbeleid kan niet worden gewijzigd. Fout: de huidige bewerking is mislukt vanwege een interne service fout [0x29834]. Voer de bewerking na enige tijd opnieuw uit. Neem contact op met Microsoft Ondersteuning als het probleem zich blijft voordoen. |**Oorzaak:**<br/>Deze fout wordt weer gegeven wanneer de beveiligings instellingen zijn ingeschakeld, kunt u de Bewaar termijn verlagen onder de hierboven vermelde minimum waarden en u een niet-ondersteunde versie (ondersteunde versies zijn opgegeven in de eerste opmerking van dit artikel). <br/>**Aanbevolen actie:**<br/> In dit geval moet u de Bewaar periode instellen boven de minimale Bewaar periode (zeven dagen voor dagelijks, vier weken voor wekelijks, drie weken voor maandelijks of één jaar voor jaarlijks) om door te gaan met beleids updates. De aanbevolen benadering is om de back-upagent, Azure Backup Server en/of de DPM-UR bij te werken om alle beveiligings updates te benutten. |
-| Wachtwoordzin wijzigen |De ingevoerde beveiligings pincode is onjuist. (ID: 100130) Geef de juiste beveiligings pincode op om deze bewerking te volt ooien. |**Oorzaak:**<br/> Deze fout treedt op wanneer u een ongeldige of verlopen beveiligings pincode invoert tijdens het uitvoeren van een kritieke bewerking (zoals wachtwoordzin wijzigen). <br/>**Aanbevolen actie:**<br/> Als u de bewerking wilt volt ooien, moet u een geldige beveiligings pincode opgeven. Als u de pincode wilt ontvangen, meldt u zich aan bij Azure Portal en navigeert u naar Recovery Services kluis > instellingen > eigenschappen > beveiligings pincode genereren. Gebruik deze pincode om de wachtwoordzin te wijzigen. |
-| Wachtwoordzin wijzigen |De bewerking is mislukt. ID: 120002 |**Oorzaak:**<br/>Deze fout wordt weer gegeven wanneer beveiligings instellingen zijn ingeschakeld, probeert u de wachtwoordzin te wijzigen en hebt u een niet-ondersteunde versie (geldige versies die zijn opgegeven in de eerste opmerking van dit artikel).<br/>**Aanbevolen actie:**<br/> Als u de wachtwoordzin wilt wijzigen, moet u eerst de back-upagent bijwerken naar mini maal minimale versie 2.0.9052, Azure Backup Server naar minimale update 1 en/of DPM ten minste DPM 2012 R2 UR12 of DPM 2016 UR2 (onderstaande koppelingen downloaden) en vervolgens een geldige beveiligings pincode invoeren. Als u de pincode wilt ontvangen, meldt u zich aan bij Azure Portal en navigeert u naar Recovery Services kluis > instellingen > eigenschappen > beveiligings pincode genereren. Gebruik deze pincode om de wachtwoordzin te wijzigen. |
+| Beleids wijziging |Het back-upbeleid kan niet worden gewijzigd. Fout: de huidige bewerking is mislukt vanwege een interne service fout [0x29834]. Voer de bewerking na enige tijd opnieuw uit. Neem contact op met Microsoft Ondersteuning als het probleem zich blijft voordoen. |**Wordt**<br/>Deze fout wordt weer gegeven wanneer de beveiligings instellingen zijn ingeschakeld, kunt u de Bewaar termijn verlagen onder de hierboven vermelde minimum waarden en u een niet-ondersteunde versie (ondersteunde versies zijn opgegeven in de eerste opmerking van dit artikel). <br/>**Aanbevolen actie:**<br/> In dit geval moet u de Bewaar periode instellen boven de minimale Bewaar periode (zeven dagen voor dagelijks, vier weken voor wekelijks, drie weken voor maandelijks of één jaar voor jaarlijks) om door te gaan met beleids updates. De aanbevolen benadering is om de back-upagent, Azure Backup Server en/of de DPM-UR bij te werken om alle beveiligings updates te benutten. |
+| Wachtwoordzin wijzigen |De ingevoerde beveiligings pincode is onjuist. (ID: 100130) Geef de juiste beveiligings pincode op om deze bewerking te volt ooien. |**Wordt**<br/> Deze fout treedt op wanneer u een ongeldige of verlopen beveiligings pincode invoert tijdens het uitvoeren van een kritieke bewerking (zoals wachtwoordzin wijzigen). <br/>**Aanbevolen actie:**<br/> Als u de bewerking wilt volt ooien, moet u een geldige beveiligings pincode opgeven. Als u de pincode wilt ontvangen, meldt u zich aan bij Azure Portal en navigeert u naar Recovery Services kluis > instellingen > eigenschappen > beveiligings pincode genereren. Gebruik deze pincode om de wachtwoordzin te wijzigen. |
+| Wachtwoordzin wijzigen |De bewerking is mislukt. ID: 120002 |**Wordt**<br/>Deze fout wordt weer gegeven wanneer beveiligings instellingen zijn ingeschakeld, probeert u de wachtwoordzin te wijzigen en hebt u een niet-ondersteunde versie (geldige versies die zijn opgegeven in de eerste opmerking van dit artikel).<br/>**Aanbevolen actie:**<br/> Als u de wachtwoordzin wilt wijzigen, moet u eerst de back-upagent bijwerken naar mini maal minimale versie 2.0.9052, Azure Backup Server naar minimale update 1 en/of DPM ten minste DPM 2012 R2 UR12 of DPM 2016 UR2 (onderstaande koppelingen downloaden) en vervolgens een geldige beveiligings pincode invoeren. Als u de pincode wilt ontvangen, meldt u zich aan bij Azure Portal en navigeert u naar Recovery Services kluis > instellingen > eigenschappen > beveiligings pincode genereren. Gebruik deze pincode om de wachtwoordzin te wijzigen. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

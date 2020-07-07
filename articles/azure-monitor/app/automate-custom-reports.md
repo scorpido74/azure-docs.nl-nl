@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
 ms.openlocfilehash: cf251d63645efc70ee93e84827db47ae3055ae33
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82161451"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Aangepaste rapporten automatiseren met Azure-toepassing Insights-gegevens
@@ -91,11 +91,11 @@ availabilityResults
 
    ![Scherm opname van functie-instellingen](./media/automate-custom-reports/scheduled-digest.png)
 
-6. Selecteer de**configuratie**van de **functie-app** > **platform onderdelen** > .
+6. Selecteer de configuratie van de **functie-app**  >  **platform onderdelen**  >  **Configuration**.
 
     ![Scherm opname van de Azure function-toepassings instellingen](./media/automate-custom-reports/config.png)
 
-7. Maak drie nieuwe toepassings instellingen met de juiste ``AI_APP_ID``corresponderende ``AI_APP_KEY``waarden, ``SendGridAPI``en. Selecteer **Opslaan**.
+7. Maak drie nieuwe toepassings instellingen met de juiste corresponderende waarden ``AI_APP_ID`` , ``AI_APP_KEY`` en ``SendGridAPI`` . Selecteer **Opslaan**.
 
      ![Scherm opname van de functie integratie interface](./media/automate-custom-reports/app-settings.png)
     
@@ -136,7 +136,7 @@ Deze stappen zijn alleen van toepassing als u nog geen SendGrid-account hebt gec
 
      ![Scherm opname van API-sleutel instellingen](./media/automate-custom-reports/sendgrid-manage.png)
 
-3. Hiermee wordt de site van SendGrid gestart. Selecteer **instellingen** > **API-sleutels**.
+3. Hiermee wordt de site van SendGrid gestart. Selecteer **instellingen**  >  **API-sleutels**.
 
      ![Scherm opname van API-sleutel toepassing maken en weer geven](./media/automate-custom-reports/function-app-15.png)
 

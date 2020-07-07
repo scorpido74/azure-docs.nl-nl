@@ -8,10 +8,10 @@ ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: c60c1d33954b5e12038fd66787225f4d0aeba62d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82184704"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Azure-beveiligings basislijn voor Event Hubs
@@ -32,13 +32,13 @@ Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure
 
 Nadat het service-eind punt van ten minste één subnet van een virtueel netwerk is gebonden, accepteert de respectieve Event Hubs naam ruimte geen verkeer meer vanaf een wille keurige locatie, maar gemachtigd subnetten in virtuele netwerken. Vanuit het perspectief van het virtuele netwerk moet uw Event Hubs naam ruimte binden aan een service-eind punt een geïsoleerde netwerk tunnel van het subnet van het virtuele netwerk naar de berichten service configureren. 
 
-U kunt ook een persoonlijk eind punt maken. Dit is een netwerk interface die u privé en veilig met Azure Event Hubs service verbindt met behulp van de persoonlijke koppelings service van Azure. Het persoonlijke eind punt maakt gebruik van een privé-IP-adres uit uw VNet, waardoor de service effectief in uw VNet wordt gezet. Al het verkeer naar de service kan worden gerouteerd via het persoonlijke eind punt, zodat er geen gateways, NAT-apparaten, ExpressRoute of VPN-verbindingen of open bare IP-adressen nodig zijn. 
+U kunt ook een persoonlijk eind punt maken. Dit is een netwerk interface die u privé en veilig met Azure Event Hubs service verbindt met behulp van de persoonlijke koppelings service van Azure. Het privé-eindpunt maakt gebruik van een privé-IP-adres van uw VNet, waardoor de service feitelijk in uw VNet wordt geplaatst. Al het verkeer naar de service kan worden gerouteerd via het privé-eindpunt, zodat er geen gateways, NAT-apparaten, ExpressRoute of VPN-verbindingen of openbare IP-adressen nodig zijn. 
 
 U kunt uw Azure Event Hubs-naam ruimte ook beveiligen met behulp van firewalls. Azure Event Hubs ondersteunt toegangs beheer op basis van IP voor binnenkomende firewall ondersteuning. U kunt Firewall regels instellen met behulp van de Azure Portal, Azure Resource Manager sjablonen of via de Azure CLI of Azure PowerShell.
 
 Service-eind punten voor virtuele netwerken gebruiken met Azure Event Hubs:https://docs.microsoft.com/azure/event-hubs/event-hubs-service-endpoints
 
-Zie Azure Event Hubs integreren met persoonlijke Azure-koppeling voor meer informatie: https://docs.microsoft.com/azure/event-hubs/private-link-service.
+Zie Azure Event Hubs integreren met persoonlijke Azure-koppeling voor meer informatie: https://docs.microsoft.com/azure/event-hubs/private-link-service .
 
 Integratie van virtuele netwerken en firewalls inschakelen op Event Hubs naam ruimte:https://docs.microsoft.com/azure/event-hubs/event-hubs-tutorial-virtual-networks-firewalls
 
@@ -319,11 +319,11 @@ Informatie over gedeelde toegangs handtekeningen voor Event Hubs:https://docs.mi
 
 Daarnaast kunt u aanbevelingen van Azure Security Center of ingebouwde Azure-beleids regels gebruiken om u te helpen bij het bijhouden van specifieke beheerders accounts, zoals:
 
-- Er moet meer dan één eigenaar aan uw abonnement zijn toegewezen
+- Er moet meer dan één eigenaar zijn toegewezen aan uw abonnement
 
-- Afgeschafte accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement
+- Afgeschafte accounts met eigenaarsmachtigingen moeten worden verwijderd uit uw abonnement
 
-- Externe accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement
+- Externe accounts met eigenaarsmachtigingen moeten worden verwijderd uit uw abonnement
 
 Azure Security Center gebruiken om identiteit en toegang te bewaken (preview):https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
@@ -335,7 +335,7 @@ Azure Policy gebruiken:https://docs.microsoft.com/azure/governance/policy/tutori
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: eenmalige aanmelding (SSO) met Azure Active Directory gebruiken
 
-**Hulp**: Microsoft Azure biedt geïntegreerd beheer van toegangs beheer voor bronnen en toepassingen op basis van Azure Active Directory (AD). Een belang rijk voor deel van het gebruik van Azure AD met Azure Event Hubs is dat u uw referenties niet meer hoeft op te slaan in de code. In plaats daarvan kunt u een OAuth 2,0-toegangs token aanvragen bij het micro soft Identity-platform. De resource naam voor het aanvragen van een token is\/https:/eventhubs.Azure.net/. Azure AD verifieert de beveiligingsprincipal (een gebruiker, groep of Service-Principal) die de toepassing uitvoert. Als de verificatie slaagt, retourneert Azure AD een toegangs token voor de toepassing en kan de toepassing vervolgens het toegangs token gebruiken om een aanvraag voor Azure Event Hubs-resources te autoriseren.
+**Hulp**: Microsoft Azure biedt geïntegreerd beheer van toegangs beheer voor bronnen en toepassingen op basis van Azure Active Directory (AD). Een belang rijk voor deel van het gebruik van Azure AD met Azure Event Hubs is dat u uw referenties niet meer hoeft op te slaan in de code. In plaats daarvan kunt u een OAuth 2,0-toegangs token aanvragen bij het micro soft Identity-platform. De resource naam voor het aanvragen van een token is https: \/ /eventhubs.Azure.net/. Azure AD verifieert de beveiligingsprincipal (een gebruiker, groep of Service-Principal) die de toepassing uitvoert. Als de verificatie slaagt, retourneert Azure AD een toegangs token voor de toepassing en kan de toepassing vervolgens het toegangs token gebruiken om een aanvraag voor Azure Event Hubs-resources te autoriseren.
 
 Een toepassing verifiëren met Azure AD voor toegang tot Event Hubs resources:https://docs.microsoft.com/azure/event-hubs/authenticate-application
 
@@ -773,9 +773,9 @@ Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te
 
 **Hulp**: Definieer en implementeer standaard beveiligings configuraties voor uw Azure Event hubs-implementaties. Gebruik Azure Policy aliassen in de naam ruimte ' micro soft. EventHub ' om aangepaste beleids regels te maken om configuraties te controleren of af te dwingen. U kunt ook gebruik maken van ingebouwde beleids definities voor Azure Event Hubs, zoals:
 
-- Diagnostische logboeken in Event hub moeten worden ingeschakeld
+- Diagnostische logboeken in Event Hub moeten zijn ingeschakeld
 
-- Event hub moet een service-eind punt voor een virtueel netwerk gebruiken
+- Event Hub moet gebruikmaken van een service-eindpunt voor een virtueel netwerk
 
 Ingebouwd beleid voor Azure voor Event Hubs naam ruimte:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
 
@@ -1078,7 +1078,7 @@ Werk stroom automatisering en Logic Apps configureren:https://docs.microsoft.com
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: voert regel matig indringings tests van uw Azure-resources uit en zorgt voor herstel van alle essentiële beveiligings resultaten binnen 60 dagen
 
-**Richt lijnen**: Volg de micro soft-regels om ervoor te zorgen dat de indringings tests niet worden geschonden door https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1het micro soft-beleid:.
+**Richt lijnen**: Volg de micro soft-regels om ervoor te zorgen dat de indringings tests niet worden geschonden door het micro soft-beleid: https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 .
 U vindt hier meer informatie over de strategie van micro soft en de uitvoering van Red Teaming en live site indringings tests ten opzichte van micro soft Managed Cloud Infrastructure, services en toepassingen, hier:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Azure Security Center bewaking**: Ja

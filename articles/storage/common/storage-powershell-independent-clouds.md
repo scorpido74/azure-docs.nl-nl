@@ -10,10 +10,10 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 0bc8da02a523479c3c543eff28a376136e29098f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82176206"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Opslag beheren in de onafhankelijke Azure-Clouds met behulp van Power shell
@@ -34,7 +34,7 @@ Als u Azure Storage wilt gebruiken in een van de onafhankelijke Clouds, maakt u 
 * U kunt de beschik bare regio's bepalen en gebruiken.
 * U gebruikt het juiste eindpunt achtervoegsel, wat afwijkt van Azure public.
 
-Voor de voor beelden is Azure PowerShell module AZ versie 0,7 of hoger vereist. Voer in een Power shell- `Get-Module -ListAvailable Az` venster uit om de versie te vinden. Als niets wordt vermeld of als u een upgrade wilt uitvoeren, raadpleegt u [Azure PowerShell-module installeren](/powershell/azure/install-Az-ps).
+Voor de voor beelden is Azure PowerShell module AZ versie 0,7 of hoger vereist. Voer in een Power shell-venster uit `Get-Module -ListAvailable Az` om de versie te vinden. Als niets wordt vermeld of als u een upgrade wilt uitvoeren, raadpleegt u [Azure PowerShell-module installeren](/powershell/azure/install-Az-ps).
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 

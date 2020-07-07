@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 4936f765052d6993e5a372bde6336e00b19a24f6
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82509258"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Advanced Threat Protection voor Azure Database for MySQL
@@ -27,7 +27,7 @@ Advanced Threat Protection maakt deel uit van de Advanced Data Security-aanbiedi
 > Deze functie is beschikbaar in alle regio's van Azure waar Azure Database for MySQL wordt geïmplementeerd voor Algemeen en servers die zijn geoptimaliseerd voor geheugen.
 
 ## <a name="set-up-threat-detection"></a>Detectie van bedreigingen instellen
-1. Start de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
+1. Start de Azure Portal op [https://portal.azure.com](https://portal.azure.com) .
 2. Ga naar de configuratie pagina van de Azure Database for MySQL-server die u wilt beveiligen. Selecteer in de beveiligings instellingen **Advanced Threat Protection (preview)**.
 3. Op de configuratie pagina **Advanced Threat Protection (preview)** :
 

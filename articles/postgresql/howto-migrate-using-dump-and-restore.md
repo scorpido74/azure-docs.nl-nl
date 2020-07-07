@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.openlocfilehash: 90a014e44c728c1881c1fd3d9e189554ed8f44da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82146334"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Uw PostgreSQL-database migreren met dumpen en herstel
@@ -42,9 +42,9 @@ pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user@ser
 Met de para meter--no-owner worden alle objecten die zijn gemaakt tijdens het herstellen, het eigendom van de gebruiker die is opgegeven met--username. Zie de officiële PostgreSQL-documentatie over [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html)voor meer informatie.
 
 > [!NOTE]
-> Als uw PostgreSQL-server TLS/SSL-verbindingen (standaard op Azure Database for PostgreSQL servers) vereist, stelt u een omgevings variabele `PGSSLMODE=require` in, zodat het hulp programma pg_restore verbinding maakt met TLS. Zonder TLS kan de fout worden gelezen`FATAL:  SSL connection is required. Please specify SSL options and retry.`
+> Als uw PostgreSQL-server TLS/SSL-verbindingen (standaard op Azure Database for PostgreSQL servers) vereist, stelt u een omgevings variabele in, `PGSSLMODE=require` zodat het hulp programma pg_restore verbinding maakt met TLS. Zonder TLS kan de fout worden gelezen`FATAL:  SSL connection is required. Please specify SSL options and retry.`
 >
-> Voer in de Windows-opdracht regel de opdracht `SET PGSSLMODE=require` uit voordat u de opdracht pg_restore uitvoert. Voer in Linux of bash de opdracht `export PGSSLMODE=require` uit voordat u de opdracht pg_restore uitvoert.
+> Voer in de Windows-opdracht regel de opdracht uit `SET PGSSLMODE=require` voordat u de opdracht pg_restore uitvoert. Voer in Linux of bash de opdracht uit `export PGSSLMODE=require` voordat u de opdracht pg_restore uitvoert.
 >
 
 In dit voor beeld herstelt u de gegevens uit het dump bestand **testdb. dump** in de Data Base **mypgsqldb** op de doel server **mydemoserver.postgres.database.Azure.com**. 
@@ -72,7 +72,7 @@ Een manier om uw bestaande PostgreSQL-data base te migreren naar Azure Database 
 
 - Deze moet standaard al worden uitgevoerd, maar open het dump bestand om te controleren of de instructies Create Index na het invoegen van de gegevens zijn. Als dat niet het geval is, verplaatst u de instructies Create Index nadat de gegevens zijn ingevoegd.
 
-- Herstel met de switches-FC en- *#* j om parallelliseren te herstellen. *#* is het aantal kernen op de doel server. U kunt ook proberen *#* het aantal kernen van de doel server twee maal op te geven om de impact te bekijken. Bijvoorbeeld:
+- Herstel met de switches-FC en-j *#* om parallelliseren te herstellen. *#* is het aantal kernen op de doel server. U kunt ook proberen het *#* aantal kernen van de doel server twee maal op te geven om de impact te bekijken. Bijvoorbeeld:
 
     ```
     pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump

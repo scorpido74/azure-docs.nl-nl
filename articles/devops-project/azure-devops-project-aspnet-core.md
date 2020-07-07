@@ -16,10 +16,10 @@ ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 3f0d937737cb261fb81dc4cdad3579ee593b5981
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233296"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>Een CI/CD-pijp lijn maken voor .NET met Azure DevOps starter
@@ -88,7 +88,7 @@ In de vorige stap heeft Azure DevOps starter automatisch een volledige CI/CD-pij
 
 1. Selecteer het beletsel teken (...).  Met deze actie opent u een menu waarin u verschillende activiteiten kunt starten, zoals het in de wachtrij plaatsen van een nieuwe build, het onderbreken van een build en het bewerken van de build-pijp lijn.
 
-1. Selecteer **bewerken**.
+1. Selecteer **Bewerken**.
 
     ![Build-pipeline](_img/azure-devops-project-aspnet-core/builddef.png)
 

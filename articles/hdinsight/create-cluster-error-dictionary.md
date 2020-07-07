@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
 ms.openlocfilehash: 39179c9b6d02d810561485f6a4af0102711ad0ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186631"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: fouten bij het maken van een cluster
@@ -26,7 +26,7 @@ In dit artikel worden oplossingen beschreven voor fouten die u kunt tegen komen 
 
 ### <a name="error"></a>Fout
 
-"Locatie van script actie kan geen toegang krijgen\<tot URI:\>script actie-URL"
+"Locatie van de script actie kan geen toegang krijgen tot URI: \<SCRIPT ACTION URL\> "
 
 #### <a name="error-message"></a>Foutbericht
 
@@ -48,11 +48,11 @@ De HDInsight-service heeft geen toegang tot de script actie-URL die u hebt gegev
 
 ### <a name="error"></a>Fout
 
-"Locatie van script actie kan geen toegang krijgen \<tot\>URI: SCRIPT_ACTION_URL"
+"Locatie van de script actie kan geen toegang krijgen tot URI: \<SCRIPT_ACTION_URL\> "
 
 #### <a name="error-message"></a>Foutbericht
 
-"De opgegeven URI \<van het\> script SCRIPT_URI bevindt zich in ADLS, maar dit cluster heeft geen data Lake Storage-Principal"
+"De opgegeven script-URI \<SCRIPT_URI\> bevindt zich in ADLS, maar dit cluster heeft geen data Lake Storage-Principal"
 
 ### <a name="cause"></a>Oorzaak
 
@@ -68,7 +68,7 @@ Voeg het bijbehorende Azure Data Lake Storage gen 1-account toe aan het cluster.
 
 ### <a name="error"></a>Fout
 
-"De VM-\<grootte\>CUSTOMER_SPECIFIED_VM_SIZE die in de aanvraag is gegeven, is ongeldig of wordt niet\<ondersteund\>voor de rol Role. Geldige waarden zijn: \<VALID_VM_SIZE_FOR_ROLE\>.
+De VM-grootte \<CUSTOMER_SPECIFIED_VM_SIZE\> die in de aanvraag is gegeven, is ongeldig of wordt niet ondersteund voor de rol \<ROLE\> . Geldige waarden zijn: \<VALID_VM_SIZE_FOR_ROLE\> . "
 
 ### <a name="cause"></a>Oorzaak
 
@@ -84,7 +84,7 @@ In het fout bericht worden de geldige waarden voor de VM-grootte weer gegeven. S
 
 ### <a name="error"></a>Fout
 
-De VirtualNetworkId is niet geldig. VirtualNetworkId '\<USER_VIRTUALNETWORKID\>' * '
+De VirtualNetworkId is niet geldig. VirtualNetworkId ' \<USER_VIRTUALNETWORKID\> ' * '
 
 ### <a name="cause"></a>Oorzaak
 
@@ -108,11 +108,11 @@ Hier volgt een voor beeld van een virtuele netwerk-ID:
 
 ### <a name="error"></a>Fout
 
-' De cluster implementatie is mislukt vanwege een fout in de aangepaste script actie. Mislukte acties: \<SCRIPT_NAME\>, ga naar de Ambari-gebruikers interface om de fout op te lossen.
+' De cluster implementatie is mislukt vanwege een fout in de aangepaste script actie. Mislukte acties: \<SCRIPT_NAME\> , ga naar de Ambari-gebruikers interface om de fout op te lossen.
 
 ### <a name="cause"></a>Oorzaak
 
-Het aangepaste script dat u hebt gegeven tijdens de aanvraag voor het maken van een cluster wordt uitgevoerd nadat het cluster is geïmplementeerd. Deze fout code geeft aan dat er een fout is opgetreden tijdens het uitvoeren \<van\>het aangepaste script met de naam SCRIPT_NAME.
+Het aangepaste script dat u hebt gegeven tijdens de aanvraag voor het maken van een cluster wordt uitgevoerd nadat het cluster is geïmplementeerd. Deze fout code geeft aan dat er een fout is opgetreden tijdens het uitvoeren van het aangepaste script met de naam \<SCRIPT_NAME\> .
 
 ### <a name="resolution"></a>Oplossing
 
@@ -124,7 +124,7 @@ Omdat het script het aangepaste script is, raden we u aan het probleem op te los
 
 ### <a name="error"></a>Fout
 
-"De \<versie\> \<\> METASTORE_MAJOR_VERSION van het META_STORE_TYPE-meta Store \<-\> schema in de data base database_name \<is\>niet compatibel met de Cluster versie CLUSTER_VERSION"
+"De \<META_STORE_TYPE\> versie van het meta Store-schema \<METASTORE_MAJOR_VERSION\> in de Data Base \<DATABASE_NAME\> is incompatibel met de Cluster versie \<CLUSTER_VERSION\> "
 
 ### <a name="cause"></a>Oorzaak
 
@@ -161,7 +161,7 @@ Als u van plan bent om netwerk beveiligings groepen te gebruiken om netwerk verk
 
 ### <a name="error"></a>Fout
 
-"De beheerde identiteit heeft geen machtigingen voor het opslag account. Controleer of de rol Storage BLOB data owner is toegewezen aan de beheerde identiteit voor het opslag account. Opslag:/Subscriptions/ \<-abonnements\> -\< id/ResourceGroups/resource\> groep \<naam/providers/Microsoft.Storage/storageAccounts/opslag\>accountnaam, beheerde identiteit \<:/Subscriptions/\> abonnements-\< id/resourceGroups//\> resource \<groep naam/providers/Microsoft.ManagedIdentity/userAssignedIdentities/door\>gebruiker beheerde identiteits naam "
+"De beheerde identiteit heeft geen machtigingen voor het opslag account. Controleer of de rol Storage BLOB data owner is toegewezen aan de beheerde identiteit voor het opslag account. Opslag:/Subscriptions/ \<Subscription ID\> /ResourceGroups/ \< Resource Group Name\> /providers/Microsoft.Storage/storageAccounts/ \<Storage Account Name\> , beheerde identiteit:/Subscriptions/ \<Subscription ID\> /resourceGroups// \< Resource Group Name\> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/ \<User Managed Identity Name\> "
 
 ### <a name="cause"></a>Oorzaak
 
@@ -182,7 +182,7 @@ Zie [machtigingen voor de beheerde identiteit instellen op het data Lake Storage
 
 ### <a name="error"></a>Fout
 
-"De beveiligings regels in de netwerk beveiligings groep/Subscriptions/\<SubscriptionID\>/resourceGroups/<resource groep naam\> standaard/providers/micro soft. netwerk/networkSecurityGroups\</netwerk beveiligings groep\> naam die is geconfigureerd\<met\>subnet\</Subscriptions/SubscriptionID/ResourceGroups/\> resource groep naam RG-westeurope-vnet-TomTom-default/providers/micro soft.\<netwerk/\>virtualNetworks\</Virtual Network\> naam/subnets/-subnet naam staat de vereiste binnenkomende en/of uitgaande connectiviteit niet toe. Ga voor meer informatie naar [een virtueel netwerk voor Azure HDInsight plannen](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)of neem contact op met de ondersteuning.
+"De beveiligings regels in de netwerk beveiligings groep/Subscriptions/ \<SubscriptionID\> /resourceGroups/<naam van de resource groep \> standaard/providers/micro soft. Network/networkSecurityGroups/ \<Network Security Group Name\> geconfigureerd met subnet/Subscriptions/ \<SubscriptionID\> /resourceGroups/ \<Resource Group name\> RG-westeurope-vnet-TomTom-default/providers/micro soft. Network/virtualNetworks/ \<Virtual Network Name\> /subnets/ \<Subnet Name\> staat geen vereiste binnenkomende en/of uitgaande connectiviteit toe. Ga voor meer informatie naar [een virtueel netwerk voor Azure HDInsight plannen](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)of neem contact op met de ondersteuning.
 
 ### <a name="cause"></a>Oorzaak
 
@@ -230,7 +230,7 @@ Als u aangepaste VNet-netwerk beveiligings groep (Nsg's) en door de gebruiker ge
 
 ---
 
-## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Fout code: implementaties zijn mislukt vanwege beleids overtreding: ' resource<Resource URI>' ' is niet toegestaan door beleid. Beleids-id's: [{"policyAssignment": {"naam": "<Policy Name> ", "ID": "/providers/Microsoft.Management/managementgroups/.<Management Group Name> providers/micro soft. Authorization/policyAssignments<Policy Name>/"}, "policyDefinition":<Policy Definition>
+## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Fout code: implementaties zijn mislukt vanwege beleids overtreding: ' resource ' <Resource URI> ' is niet toegestaan door beleid. Beleids-id's: [{"policyAssignment": {"naam": " <Policy Name> ", "ID": "/providers/Microsoft.Management/managementgroups/. <Management Group Name> providers/micro soft. Authorization/policyAssignments/ <Policy Name> "}, "policyDefinition":<Policy Definition>
 
 ### <a name="cause"></a>Oorzaak
 

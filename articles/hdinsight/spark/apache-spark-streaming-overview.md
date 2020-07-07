@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 0ccb87017f962650f099d506e1d200ab408316d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195142"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Overzicht van Apache Spark streaming
 
-[Apache Spark](https://spark.apache.org/) Streaming biedt verwerking van gegevens stromen in HDInsight Spark-clusters. Met een garantie dat elke invoer gebeurtenis precies één keer wordt verwerkt, zelfs als er een storing in een knoop punt optreedt. Een Spark-stroom is een langlopende taak waarmee invoer gegevens worden ontvangen van een groot aantal verschillende bronnen, waaronder Azure Event Hubs. Ook: Azure IoT Hub, Apache Kafka, Apache Flume, Twitter, `ZeroMQ`, onbewerkte TCP-sockets of bewaken Apache Hadoop garen bestands systeem. In tegens telling tot een enkel gebeurtenis gerichte proces, voert een Spark-stream batches invoer gegevens uit in tijd Vensters. Zoals een segment van twee seconden, en transformeert elke batch met gegevens met behulp van de bewerkingen kaart, verminderen, samen voegen en extra heren. De Spark-stroom schrijft vervolgens de getransformeerde gegevens uit naar bestands systeem, data bases, Dash boards en de-console.
+[Apache Spark](https://spark.apache.org/) Streaming biedt verwerking van gegevens stromen in HDInsight Spark-clusters. Met een garantie dat elke invoer gebeurtenis precies één keer wordt verwerkt, zelfs als er een storing in een knoop punt optreedt. Een Spark-stroom is een langlopende taak waarmee invoer gegevens worden ontvangen van een groot aantal verschillende bronnen, waaronder Azure Event Hubs. Ook: Azure IoT Hub, Apache Kafka, Apache Flume, Twitter, `ZeroMQ` , onbewerkte TCP-sockets of bewaken Apache HADOOP garen bestands systeem. In tegens telling tot een enkel gebeurtenis gerichte proces, voert een Spark-stream batches invoer gegevens uit in tijd Vensters. Zoals een segment van twee seconden, en transformeert elke batch met gegevens met behulp van de bewerkingen kaart, verminderen, samen voegen en extra heren. De Spark-stroom schrijft vervolgens de getransformeerde gegevens uit naar bestands systeem, data bases, Dash boards en de-console.
 
 ![Stroom verwerking met HDInsight en Spark-streaming](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
 
-Spark-streaming-toepassingen moeten een fractie van een seconde wachten op `micro-batch` het verzamelen van alle gebeurtenissen voordat deze batch wordt verzonden voor verwerking. Daarentegen wordt elke gebeurtenis direct verwerkt door een gebeurtenis gerichte toepassing. De latentie van Spark-streaming is doorgaans een paar seconden. De voor delen van de micro batch-benadering zijn een efficiëntere verwerking van gegevens en complexe berekeningen.
+Spark-streaming-toepassingen moeten een fractie van een seconde wachten op het verzamelen `micro-batch` van alle gebeurtenissen voordat deze batch wordt verzonden voor verwerking. Daarentegen wordt elke gebeurtenis direct verwerkt door een gebeurtenis gerichte toepassing. De latentie van Spark-streaming is doorgaans een paar seconden. De voor delen van de micro batch-benadering zijn een efficiëntere verwerking van gegevens en complexe berekeningen.
 
 ## <a name="introducing-the-dstream"></a>Introductie van de DStream
 
@@ -167,7 +167,7 @@ Er zijn zes waarden, omdat de DummySource elke vijf seconden een waarde maakt en
 
 ## <a name="sliding-windows"></a>Vensters verschuiven
 
-Als u statistische berekeningen wilt uitvoeren op uw DStream over een bepaalde periode, bijvoorbeeld om de gemiddelde Tempe ratuur voor de laatste twee seconden te krijgen `sliding window` , gebruikt u de bewerkingen die zijn opgenomen in Spark streaming. Een sliding window heeft een duur (de lengte van het venster) en het interval waarmee de inhoud van het venster wordt geëvalueerd (het interval van de dia).
+Als u statistische berekeningen wilt uitvoeren op uw DStream over een bepaalde periode, bijvoorbeeld om de gemiddelde Tempe ratuur voor de laatste twee seconden te krijgen, gebruikt u de `sliding window` bewerkingen die zijn opgenomen in Spark streaming. Een sliding window heeft een duur (de lengte van het venster) en het interval waarmee de inhoud van het venster wordt geëvalueerd (het interval van de dia).
 
 Schuif vensters kunnen elkaar overlappen, maar u kunt bijvoorbeeld een venster met een lengte van twee seconden definiëren dat elke seconde een dia bevat. Deze actie betekent elke keer dat u een aggregatie berekening uitvoert, het venster bevat gegevens van de laatste één seconde van het vorige venster. En nieuwe gegevens in de volgende seconde.
 

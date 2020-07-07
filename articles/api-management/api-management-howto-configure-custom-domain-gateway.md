@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
 ms.openlocfilehash: dacf1329d35117c65bcc48a82ac27a767ebd2b3b
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82203179"
 ---
 # <a name="configure-a-custom-domain-name"></a>Een aangepaste domeinnaam configureren
@@ -52,7 +52,7 @@ Voor het uitvoeren van de stappen die in dit artikel worden beschreven, hebt u h
 1. Selecteer de **gateways** onder **instellingen**.
 2. Selecteer de zelf-hostende gateway waarvoor u de domein naam wilt configureren.
 3. Selecteer **hostnamen** onder **instellingen**.
-4. Selecteer **+ toevoegen**
+4. Selecteer **+ Toevoegen**
 5. Voer de resource naam voor de hostnaam in het veld **naam** in.
 6. Voer de domein naam in het veld **hostnaam** in.
 7. Selecteer een certificaat in de vervolg keuzelijst **certificaat** .

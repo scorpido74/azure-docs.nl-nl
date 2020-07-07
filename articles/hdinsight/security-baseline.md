@@ -8,10 +8,10 @@ ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 62188aefffd05af49bb00c242b266e808b991c84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188171"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>Azure-beveiligings basislijn voor HDInsight
@@ -28,7 +28,7 @@ Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Beveilig bronnen met behulp van netwerk beveiligings groepen of Azure Firewall op de Virtual Network
 
-**Richt lijnen**: de beveiliging van een perimeter netwerk in azure HDInsight wordt bereikt via virtuele netwerken. Een Enter prise-beheerder kan een cluster maken in een virtueel netwerk en een netwerk beveiligings groep (NSG) gebruiken om de toegang tot het virtuele netwerk te beperken. Alleen de toegestane IP-adressen in de regels voor binnenkomende netwerk beveiligings groepen kunnen communiceren met het Azure HDInsight-cluster. Deze configuratie biedt een perimeter beveiliging. Alle clusters die in een virtueel netwerk zijn geïmplementeerd, hebben ook een persoonlijk eind punt dat wordt omgezet in een privé-IP-adres in de Virtual Network voor persoonlijke HTTP-toegang tot de cluster gateways.
+**Richt lijnen**: de beveiliging van een perimeter netwerk in azure HDInsight wordt bereikt via virtuele netwerken. Een Enter prise-beheerder kan een cluster maken in een virtueel netwerk en een netwerk beveiligings groep (NSG) gebruiken om de toegang tot het virtuele netwerk te beperken. Alleen de toegestane IP-adressen in de regels voor binnenkomende netwerk beveiligings groepen kunnen communiceren met het Azure HDInsight-cluster. Deze configuratie biedt een perimeterbeveiliging. Alle clusters die in een virtueel netwerk zijn geïmplementeerd, hebben ook een persoonlijk eind punt dat wordt omgezet in een privé-IP-adres in de Virtual Network voor persoonlijke HTTP-toegang tot de cluster gateways.
 
 Om het risico van gegevens verlies via exfiltration te verminderen, beperkt u het uitgaande netwerk verkeer voor Azure HDInsight-clusters met behulp van Azure Firewall.
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/22/2020
 ms.openlocfilehash: 388f59f5090be43469acfde5197a658942e817f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82182443"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Excel verbinden met Apache Hadoop in Azure HDIsight met behulp van het Hive ODBC-stuurprogramma van Microsoft
@@ -82,7 +82,7 @@ In de volgende stappen wordt beschreven hoe u gegevens uit een Hive-tabel import
 
 1. Open een nieuwe of bestaande werkmap in Excel.
 
-2. Ga op het tabblad **gegevens** naar **gegevens** > ophalen**uit andere bronnen** > **van ODBC** om het venster **van ODBC** te starten.
+2. Ga op het tabblad **gegevens** naar **gegevens ophalen**  >  **uit andere bronnen**  >  **van ODBC** om het venster **van ODBC** te starten.
 
     ![Wizard Excel-gegevens verbinding openen](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Wizard Excel-gegevens verbinding openen")
 
@@ -90,7 +90,7 @@ In de volgende stappen wordt beschreven hoe u gegevens uit een Hive-tabel import
 
 4. Voor het eerste gebruik wordt het dialoog venster **ODBC-stuur programma** geopend. Selecteer **Windows** in het menu links. Selecteer vervolgens **verbinding maken** om het **Navigator** venster te openen.
 
-5. Navigeer **vanuit Navigator**naar **Hive** > **default** > **hivesampletable**en selecteer **Load**. Het duurt enkele minuten voordat de gegevens in Excel worden geïmporteerd.
+5. Navigeer vanuit **Navigator**naar **Hive**  >  **default**  >  **hivesampletable**en selecteer **Load**. Het duurt enkele minuten voordat de gegevens in Excel worden geïmporteerd.
 
     ![ODBC-Navigator Excel-Hive van HDInsight](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "ODBC-Navigator Excel-Hive van HDInsight")
 

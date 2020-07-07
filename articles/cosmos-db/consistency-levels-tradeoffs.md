@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 4de696e2538bf1fa4823aafe30f931b7852535a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82191733"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Compromissen tussen consistentie, beschikbaarheid en prestaties
@@ -67,10 +67,10 @@ In de onderstaande tabel wordt de relatie tussen consistentie model en gegevens 
 |---------|---------|---------|---------|---------|
 |1|Eén of meerdere masters|Elk consistentie niveau|< 240 minuten|<1 week|
 |>1|Eén Master|Sessie, consistent voor voegsel, uiteindelijk|< 15 minuten|< 15 minuten|
-|>1|Eén Master|Gebonden veroudering|*K* & *T*|< 15 minuten|
+|>1|Eén Master|Gebonden veroudering|*K*  &  *T*|< 15 minuten|
 |>1|Eén Master|Sterk|0|< 15 minuten|
 |>1|Multi-Master|Sessie, consistent voor voegsel, uiteindelijk|< 15 minuten|0|
-|>1|Multi-Master|Gebonden veroudering|*K* & *T*|0|
+|>1|Multi-Master|Gebonden veroudering|*K*  &  *T*|0|
 
 *K* = het aantal *"K"* versies (bijvoorbeeld updates) van een item.
 

@@ -7,16 +7,16 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 52391ffc8eb6b6879e5fd90df26d9ccacbfacebb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188923"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler configureren
 
 ## <a name="updated-profiler-agent"></a>Profilerings agent bijgewerkt
-De trigger functies werken alleen met versie 2,6 of hoger van de Profiler-agent. Als u een Azure App Service uitvoert, wordt uw agent automatisch bijgewerkt. U kunt zien welke versie van de agent u uitvoert als u naar de kudu-URL voor uw website gaat en \DiagnosticServices aan het eind ervan toevoegt, bijvoorbeeld: `https://yourwebsite.scm.azurewebsites.net/diagnosticservices`. De Application Insights Profiler Webtaak moet versie 2,6 of nieuwer hebben. U kunt een upgrade afdwingen door de web-app opnieuw te starten. 
+De trigger functies werken alleen met versie 2,6 of hoger van de Profiler-agent. Als u een Azure App Service uitvoert, wordt uw agent automatisch bijgewerkt. U kunt zien welke versie van de agent u uitvoert als u naar de kudu-URL voor uw website gaat en \DiagnosticServices aan het eind ervan toevoegt, bijvoorbeeld: `https://yourwebsite.scm.azurewebsites.net/diagnosticservices` . De Application Insights Profiler Webtaak moet versie 2,6 of nieuwer hebben. U kunt een upgrade afdwingen door de web-app opnieuw te starten. 
 
 Als u de Profiler uitvoert op een VM of Cloud service, moet u 16.0.4 of hoger van de WAD-extensie (Windows Azure Diagnostics) hebben geïnstalleerd. U kunt de versie van WAD controleren door u aan te melden bij uw virtuele machine en deze map te zoeken: C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4. De naam van de map is de versie van WAD die is geïnstalleerd. De Azure VM-agent werkt WAD automatisch bij wanneer er nieuwe versies beschikbaar zijn.
 
@@ -78,7 +78,7 @@ In de volgende secties ziet u hoe dit scenario werkt:
 
 Als uw web-app al inkomend verkeer heeft of als u alleen hand matig verkeer wilt genereren, slaat u deze sectie over en gaat u verder met stap 2.
 
-1. Selecteer in de Application Insights Portal de optie**prestatie testen** **configureren** > . 
+1. Selecteer in de Application Insights Portal de **Configure**optie  >  **prestatie testen**configureren. 
 
 1. Selecteer de knop **Nieuw** om een nieuwe prestatie test te starten.
 

@@ -8,10 +8,10 @@ ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
 ms.openlocfilehash: c3b1cf01cbaa8de8ec33bbf9c19ee991ae898d58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82182749"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Conflicttypen en oplossingsbeleid
@@ -35,7 +35,7 @@ Azure Cosmos DB biedt een flexibel mechanisme op basis van beleid om schrijf con
   Als er twee of meer items conflicteren bij het invoegen of vervangen van bewerkingen, wordt het item met de hoogste waarde voor het pad naar het oplossen van conflicten de winnaar. Het systeem bepaalt de winnaar als meerdere items dezelfde numerieke waarde hebben voor het pad van de conflict oplossing. Alle regio's zijn gegarandeerd een enkele winnaar te convergeren en eindigen op dezelfde versie van het doorgevoerde item. Wanneer er sprake is van conflicterende verwijderingen, wint de verwijderde versie altijd WINS over het invoegen of vervangen van conflicten. Dit resultaat is, ongeacht de waarde van het pad voor het oplossen van conflicten.
 
   > [!NOTE]
-  > De laatste schrijf-WINS is het standaard beleid voor conflict oplossing `_ts` en gebruikt tijds tempel voor de volgende API'S: SQL, MongoDb, Cassandra, Gremlin en Table. De aangepaste numerieke eigenschap is alleen beschikbaar voor SQL-API.
+  > De laatste schrijf-WINS is het standaard beleid voor conflict oplossing en gebruikt tijds tempel `_ts` voor de volgende api's: SQL, MongoDb, Cassandra, Gremlin en Table. De aangepaste numerieke eigenschap is alleen beschikbaar voor SQL-API.
 
   Voor meer informatie, Zie [voor beelden die gebruikmaken van LWW-conflictoplossings beleid](how-to-manage-conflicts.md).
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/02/2020
 ms.author: ganesr
 ms.openlocfilehash: 90e796c244950d6d374a02757b608099c229c1ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82146947"
 ---
 # <a name="about-azure-edge-zone-preview"></a>Voor beeld van Azure Edge zone
@@ -30,13 +30,13 @@ Typische gebruiks scenario's voor rand zones zijn onder andere:
 
 Er zijn drie typen Azure Edge-zones:
 
-- Azure Edge-zones
+- Azure Edge Zones
 - Azure Edge-zones met een transporteur
 - Azure-zones met persoonlijke randen
 
-## <a name="azure-edge-zones"></a><a name="edge-zones"></a>Azure Edge-zones
+## <a name="azure-edge-zones"></a><a name="edge-zones"></a>Azure Edge Zones
 
-![Azure Edge-zones](./media/edge-zones-overview/edge-zones.png "Azure Edge-zones")
+![Azure Edge Zones](./media/edge-zones-overview/edge-zones.png "Azure Edge Zones")
 
 Azure Edge-zones zijn kleinschalige uitbrei dingen van Azure in populatie Centers die ver weg zijn in azure-regio's. Azure Edge-zones ondersteunen Vm's, containers en een geselecteerde set Azure-Services die u in staat stellen om latentie gevoelige en door Voer intensieve toepassingen dicht bij eind gebruikers te laten lopen. Azure Edge-zones maken deel uit van het wereld wijde netwerk van micro soft. Ze bieden een veilige, betrouw bare verbinding met hoge band breedte tussen toepassingen die worden uitgevoerd in de zone met de rand, dicht bij de gebruiker. En ze bieden de volledige set Azure-Services die worden uitgevoerd in azure-regio's. Azure Edge-zones zijn eigendom van en worden beheerd door micro soft. U kunt dezelfde set Azure-hulpprogram ma's en dezelfde portal gebruiken voor het beheren en implementeren van services in Edge-zones.
 

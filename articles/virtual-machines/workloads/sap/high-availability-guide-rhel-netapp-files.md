@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
 ms.openlocfilehash: 601194d3a8cc789c51b8e127001ab2367dceeee7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82148222"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux met Azure NetApp Files voor SAP-toepassingen
@@ -102,30 +102,30 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS en de SAP HANA-Data Bas
 * Front-end configuratie
   * IP-adres 192.168.14.9
 * Test poort
-  * Poort 620<strong>&lt;nr&gt;</strong>
+  * Poort 620<strong> &lt; Nr &gt; </strong>
 * Taakverdelings regels
   * Als u Standard Load Balancer gebruikt, selecteert u **ha-poorten**
-  * 32<strong>&lt;nr&gt; </strong> TCP
-  * 36<strong>&lt;nr&gt; </strong> TCP
-  * 39<strong>&lt;nr&gt; </strong> TCP
-  * 81<strong>&lt;nr&gt; </strong> TCP
-  * 5<strong>&lt;nr&gt;</strong>. 13 TCP
-  * 5<strong>&lt;nr&gt;</strong>. 14 TCP
-  * 5<strong>&lt;nr&gt;</strong>. 16 TCP
+  * 32<strong> &lt; Nr &gt; </strong> TCP
+  * 36<strong> &lt; Nr &gt; </strong> TCP
+  * 39<strong> &lt; Nr &gt; </strong> TCP
+  * 81<strong> &lt; Nr &gt; </strong> TCP
+  * 5<strong> &lt; Nr &gt; </strong>. 13 TCP
+  * 5<strong> &lt; Nr &gt; </strong>. 14 TCP
+  * 5<strong> &lt; Nr &gt; </strong>. 16 TCP
 
 ### <a name="ers"></a>ERS
 
 * Front-end configuratie
   * IP-adres 192.168.14.10
 * Test poort
-  * Poort 621<strong>&lt;nr&gt;</strong>
+  * Poort 621<strong> &lt; Nr &gt; </strong>
 * Taakverdelings regels
   * Als u Standard Load Balancer gebruikt, selecteert u **ha-poorten**
-  * 32<strong>&lt;nr&gt; </strong> TCP
-  * 33<strong>&lt;nr&gt; </strong> TCP
-  * 5<strong>&lt;nr&gt;</strong>. 13 TCP
-  * 5<strong>&lt;nr&gt;</strong>. 14 TCP
-  * 5<strong>&lt;nr&gt;</strong>. 16 TCP
+  * 32<strong> &lt; Nr &gt; </strong> TCP
+  * 33<strong> &lt; Nr &gt; </strong> TCP
+  * 5<strong> &lt; Nr &gt; </strong>. 13 TCP
+  * 5<strong> &lt; Nr &gt; </strong>. 14 TCP
+  * 5<strong> &lt; Nr &gt; </strong>. 16 TCP
 
 * Back-end-configuratie
   * Verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van het (A) SCS/ERS-cluster
@@ -263,7 +263,7 @@ De instructies in deze sectie zijn alleen van toepassing op het gebruik van Azur
 1. Controleer de instelling van het NFS-domein. Zorg ervoor dat het domein is geconfigureerd als standaard Azure NetApp Files domein, dat wil zeggen **`defaultv4iddomain.com`** en dat de toewijzing is ingesteld op **niemand**.  
 
     > [!IMPORTANT]
-    > Zorg ervoor dat u het NFS-domein `/etc/idmapd.conf` in op de VM instelt op de standaard domein configuratie op Azure NetApp files **`defaultv4iddomain.com`**:. Als er een verschil is tussen de domein configuratie op de NFS-client (de virtuele machine) en de NFS-server, dat wil zeggen de Azure NetApp-configuratie, worden de machtigingen voor bestanden op Azure NetApp-volumes die zijn gekoppeld op de Vm's `nobody`weer gegeven als.  
+    > Zorg ervoor dat u het NFS-domein in `/etc/idmapd.conf` op de VM instelt op de standaard domein configuratie op Azure NetApp files: **`defaultv4iddomain.com`** . Als er een verschil is tussen de domein configuratie op de NFS-client (de virtuele machine) en de NFS-server, dat wil zeggen de Azure NetApp-configuratie, worden de machtigingen voor bestanden op Azure NetApp-volumes die zijn gekoppeld op de Vm's weer gegeven als `nobody` .  
 
     <pre><code>
     sudo cat /etc/idmapd.conf
@@ -275,7 +275,7 @@ De instructies in deze sectie zijn alleen van toepassing op het gebruik van Azur
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** controleren `nfs4_disable_idmapping`. Deze moet worden ingesteld op **Y**. Als u de mapstructuur wilt maken `nfs4_disable_idmapping` waar zich bevindt, voert u de koppeling-opdracht uit. U kunt de map niet hand matig maken onder/sys/modules, omdat de toegang is gereserveerd voor de kernel/Stuur Programma's.  
+4. **[A]** controleren `nfs4_disable_idmapping` . Deze moet worden ingesteld op **Y**. Als u de mapstructuur wilt maken waar `nfs4_disable_idmapping` zich bevindt, voert u de koppeling-opdracht uit. U kunt de map niet hand matig maken onder/sys/modules, omdat de toegang is gereserveerd voor de kernel/Stuur Programma's.  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -289,7 +289,7 @@ De instructies in deze sectie zijn alleen van toepassing op het gebruik van Azur
     echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
     </code></pre>
 
-   Zie https://access.redhat.com/solutions/1749883voor meer informatie over het wijzigen `nfs4_disable_idmapping` van para meters.
+   Zie voor meer informatie over het wijzigen van `nfs4_disable_idmapping` para meters https://access.redhat.com/solutions/1749883 .
 
 ### <a name="create-pacemaker-cluster"></a>Een pacemaker-cluster maken
 
@@ -891,7 +891,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
 
 ## <a name="install-database"></a>Database installeren
 
-In dit voor beeld is SAP NetWeaver geïnstalleerd op SAP HANA. U kunt elke ondersteunde Data Base voor deze installatie gebruiken. Zie voor meer informatie over het installeren van SAP HANA in azure [hoge Beschik baarheid van SAP Hana op virtuele Azure-machines in Red Hat Enterprise Linux][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
+In dit voor beeld is SAP NetWeaver geïnstalleerd op SAP HANA. U kunt elke ondersteunde Data Base voor deze installatie gebruiken. Zie voor meer informatie over het installeren van SAP HANA in azure [hoge Beschik baarheid van SAP Hana op virtuele Azure-machines in Red Hat Enterprise Linux][sap-hana-ha] . For a list of supported databases, see [SAP Note 1928533][1928533] .
 
 1. De installatie van het SAP-data base-exemplaar uitvoeren
 
@@ -925,7 +925,7 @@ Volg deze stappen om een SAP-toepassings server te installeren.
 
    Werk het beveiligde archief van SAP HANA bij zodat dit verwijst naar de virtuele naam van de installatie van de SAP HANA systeem replicatie.
 
-   Voer de volgende opdracht uit om de vermeldingen weer \<te geven als sapsid>adm
+   Voer de volgende opdracht uit om de vermeldingen weer te geven als \<sapsid> adm
 
    ```
    hdbuserstore List
@@ -1089,7 +1089,7 @@ Volg deze stappen om een SAP-toepassings server te installeren.
    [root@anftstsapcl1 ~]# pgrep ms.sapQAS | xargs kill -9
    ```
 
-   Als u de berichten server alleen eenmaal beëindigt, wordt deze opnieuw opgestart `sapstart`door. Als u deze regel matig beëindigt, wordt de ASCS-instantie uiteindelijk door pacemaker naar het andere knoop punt verplaatst. Voer de volgende opdrachten uit als root om de resource status van het ASCS-en ERS-exemplaar na de test op te schonen.
+   Als u de berichten server alleen eenmaal beëindigt, wordt deze opnieuw opgestart door `sapstart` . Als u deze regel matig beëindigt, wordt de ASCS-instantie uiteindelijk door pacemaker naar het andere knoop punt verplaatst. Voer de volgende opdrachten uit als root om de resource status van het ASCS-en ERS-exemplaar na de test op te schonen.
 
    ```
    [root@anftstsapcl1 ~]# pcs resource cleanup rsc_sap_QAS_ASCS00

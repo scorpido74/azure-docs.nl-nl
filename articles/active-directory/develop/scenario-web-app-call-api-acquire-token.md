@@ -12,17 +12,17 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 40e788099a159e1f60c0af02deccd7e3bef82744
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82181729"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Een web-app die web-Api's aanroept: een Token ophalen voor de app
 
 U hebt uw client toepassings object gemaakt. Nu gebruikt u het om een token te verkrijgen om een web-API aan te roepen. In ASP.NET of ASP.NET Core wordt het aanroepen van een web-API uitgevoerd in de controller:
 
-- Een Token ophalen voor de Web-API met behulp van de token cache. Als u dit token wilt ophalen, roept u `AcquireTokenSilent` de methode MSAL aan (of het equivalent in micro soft. Identity. web).
+- Een Token ophalen voor de Web-API met behulp van de token cache. Als u dit token wilt ophalen, roept u de methode MSAL aan `AcquireTokenSilent` (of het equivalent in micro soft. Identity. web).
 - Roep de beveiligde API aan, waarbij het toegangs token wordt door gegeven als para meter.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
@@ -47,7 +47,7 @@ public class HomeController : Controller
 
 De `ITokenAcquisition` service wordt geïnjecteerd door ASP.net met behulp van afhankelijkheids injectie.
 
-Hier volgt een vereenvoudigde code voor de actie van `HomeController`, waarmee een token wordt opgehaald om Microsoft Graph aan te roepen:
+Hier volgt een vereenvoudigde code voor de actie van `HomeController` , waarmee een token wordt opgehaald om Microsoft Graph aan te roepen:
 
 ```csharp
 public async Task<IActionResult> Profile()
@@ -76,15 +76,15 @@ Deze geavanceerde stappen zijn opgenomen in hoofd stuk 3 van de zelf studie [3-w
 
 De code voor ASP.NET is vergelijkbaar met de code die wordt weer gegeven voor ASP.NET Core:
 
-- Een controller actie, beveiligd door het kenmerk [autoriseren], extraheert de Tenant-ID en de gebruikers `ClaimsPrincipal` -id van het lid van de controller. (ASP.NET gebruikt `HttpContext.User`.)
-- Van daaruit bouwt het een MSAL.NET `IConfidentialClientApplication` -object.
+- Een controller actie, beveiligd door het kenmerk [autoriseren], extraheert de Tenant-ID en de gebruikers-ID van het `ClaimsPrincipal` lid van de controller. (ASP.NET gebruikt `HttpContext.User` .)
+- Van daaruit bouwt het een MSAL.NET- `IConfidentialClientApplication` object.
 - Ten slotte wordt de `AcquireTokenSilent` methode van de vertrouwelijke client toepassing aangeroepen.
 
 # <a name="java"></a>[Java](#tab/java)
 
 In het Java-voor beeld bevindt de code waarmee een API wordt aangeroepen zich in de methode getUsersFromGraph in [AuthPageController. java # L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62).
 
-De methode probeert aan te `getAuthResultBySilentFlow`roepen. Als de gebruiker moet toestemming geven voor meer bereiken, verwerkt de code het `MsalInteractionRequiredException` object om de gebruiker te vragen.
+De methode probeert aan te roepen `getAuthResultBySilentFlow` . Als de gebruiker moet toestemming geven voor meer bereiken, verwerkt de code het `MsalInteractionRequiredException` object om de gebruiker te vragen.
 
 ```java
 @RequestMapping("/msal4jsample/graph/me")

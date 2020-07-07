@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
 ms.openlocfilehash: 219681351159de6ac6bb48ff979cc68aa4ee18d3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233479"
 ---
 # <a name="azure-api-management-faqs"></a>Veelgestelde vragen over Azure API Management
@@ -49,7 +49,7 @@ Krijg antwoorden op veelgestelde vragen, patronen en aanbevolen procedures voor 
 Wanneer een functie in preview is, betekent dit dat er actief feedback wordt gegeven over de manier waarop de functie werkt. Een functie in preview is functioneel voltooid, maar het is mogelijk dat we een belang rijke wijziging aanbrengen in reactie op feedback van klanten. Het is raadzaam dat u niet afhankelijk bent van een functie die in uw productie omgeving wordt weer gegeven.
 
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>Hoe kan ik de verbinding tussen de API Management-gateway en mijn back-endservices beveiligen?
-U hebt verschillende opties om de verbinding tussen de API Management Gateway en uw back-end-services te beveiligen. U kunt het volgende doen:
+U hebt verschillende opties om de verbinding tussen de API Management Gateway en uw back-end-services te beveiligen. U kunt:
 
 * Gebruik HTTP-basis verificatie. Zie [uw eerste API importeren en publiceren](import-and-publish.md)voor meer informatie.
 * Gebruik verificatie op basis van TLS, zoals beschreven in [How to Secure back-end services met behulp van client certificaat authenticatie in Azure API Management](api-management-howto-mutual-certificates.md).
@@ -57,7 +57,7 @@ U hebt verschillende opties om de verbinding tussen de API Management Gateway en
 * Verbind uw API Management-exemplaar met een Azure Virtual Network.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>How do I copy my API Management service instance to a new instance? (Hoe kopieer ik mijn exemplaar van de API Management service naar een nieuw exemplaar?)
-U hebt verschillende opties als u een API Management exemplaar wilt kopiëren naar een nieuw exemplaar. U kunt het volgende doen:
+U hebt verschillende opties als u een API Management exemplaar wilt kopiëren naar een nieuw exemplaar. U kunt:
 
 * Gebruik de functie back-up en herstellen in API Management. Zie herstel [na nood gevallen implementeren met behulp van service back-up en herstellen in Azure API Management](api-management-howto-disaster-recovery-backup-restore.md)voor meer informatie.
 * Maak uw eigen functie voor back-up en herstel met behulp van de [API Management rest API](/rest/api/apimanagement/). Gebruik de REST API om de entiteiten van het gewenste service-exemplaar op te slaan en te herstellen.
@@ -73,22 +73,22 @@ Ja, u kunt API Management programmatisch beheren met behulp van:
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Hoe voeg ik een gebruiker toe aan de groep Beheerders?
 U kunt als volgt een gebruiker toevoegen aan de groep Administrators:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Ga naar de resource groep met de API Management instantie die u wilt bijwerken.
 3. Wijs in API Management de rol van **API Management-service Inzender** toe aan de gebruiker.
 
 De zojuist toegevoegde mede werker kan nu Azure PowerShell- [cmdlets](https://docs.microsoft.com/powershell/azure/overview)gebruiken. U kunt als volgt aanmelden als beheerder:
 
 1. Gebruik de `Connect-AzAccount` cmdlet om u aan te melden.
-2. Stel de context in op het abonnement dat de service heeft met `Set-AzContext -SubscriptionID <subscriptionGUID>`behulp van.
-3. Een URL voor eenmalige aanmelding ophalen met behulp `Get-AzApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>`van.
+2. Stel de context in op het abonnement dat de service heeft met behulp van `Set-AzContext -SubscriptionID <subscriptionGUID>` .
+3. Een URL voor eenmalige aanmelding ophalen met behulp van `Get-AzApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>` .
 4. Gebruik de URL voor toegang tot de beheer Portal.
 
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>Waarom is het beleid dat ik wil toevoegen, niet beschikbaar in de beleids editor?
 Als het beleid dat u wilt toevoegen lichter gekleurd of grijs wordt weer gegeven in de beleids editor, moet u ervoor zorgen dat u het juiste bereik voor het beleid hebt. Elke beleids instructie is ontworpen voor gebruik in specifieke bereiken en beleids secties. Zie de sectie gebruik van het beleid in [API management-beleid](/azure/api-management/api-management-policies)voor het controleren van de beleids secties en-bereiken voor een beleid.
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Hoe kan ik meerdere omgevingen in één API in te stellen?
-Als u meerdere omgevingen, bijvoorbeeld een test omgeving en een productie omgeving, in één API wilt instellen, hebt u twee opties. U kunt het volgende doen:
+Als u meerdere omgevingen, bijvoorbeeld een test omgeving en een productie omgeving, in één API wilt instellen, hebt u twee opties. U kunt:
 
 * Host verschillende Api's op dezelfde Tenant.
 * Host dezelfde Api's op verschillende tenants.
@@ -109,7 +109,7 @@ Ja. Bekijk de Quick Start-sjablonen voor [Azure API Management service](https://
 Ja. Dit kan worden gedaan via Power shell of door rechtstreeks naar de API te verzenden. Hiermee wordt validatie van de certificaat keten uitgeschakeld en kunt u zelfondertekende of privé-ondertekende certificaten gebruiken bij de communicatie van API Management naar de back-end-services.
 
 #### <a name="powershell-method"></a>Power shell-methode ####
-Gebruik de [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (voor nieuwe back-end) [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) of (voor bestaande back-end) Power shell-cmdlets en stel de `-SkipCertificateChainValidation` para meter in op `True`.
+Gebruik de [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (voor nieuwe back-end) of [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (voor bestaande back-end) Power shell-cmdlets en stel de `-SkipCertificateChainValidation` para meter in op `True` .
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'

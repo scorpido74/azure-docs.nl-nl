@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 726cf362e62f0ef914dfaea090a08c224bd5d8d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82192498"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Toegang tot Apache Hadoop GARENs van toepassings logboeken op HDInsight op basis van Linux
@@ -21,7 +21,7 @@ Meer informatie over toegang tot de logboeken voor [Apache HADOOP garens](https:
 
 ## <a name="what-is-apache-yarn"></a>Wat is Apache GARENs?
 
-GARENs ondersteunt meerdere programmeer modellen (Apache Hadoop MapReduce zijn) door het ontkoppelen van resource beheer vanuit toepassings planning/-bewaking. GARENs maakt gebruik *`ResourceManager`* van een Global (RM), per worker-knoop punt *NodeManagers* (NMs) en per toepassing *ApplicationMasters* (AMS). De per-toepassing onderhandelt bronnen (CPU, geheugen, schijf, netwerk) voor het uitvoeren van uw toepassing met de RM. De RM werkt met NMs voor het verlenen van deze resources, die als *containers*worden verleend. De AM is verantwoordelijk voor het volgen van de voortgang van de containers die hieraan zijn toegewezen door de RM. Een toepassing kan veel containers vereisen, afhankelijk van de aard van de toepassing.
+GARENs ondersteunt meerdere programmeer modellen (Apache Hadoop MapReduce zijn) door het ontkoppelen van resource beheer vanuit toepassings planning/-bewaking. GARENs maakt gebruik van een Global *`ResourceManager`* (RM), per worker-knoop punt *NodeManagers* (NMs) en per toepassing *ApplicationMasters* (AMS). De per-toepassing onderhandelt bronnen (CPU, geheugen, schijf, netwerk) voor het uitvoeren van uw toepassing met de RM. De RM werkt met NMs voor het verlenen van deze resources, die als *containers*worden verleend. De AM is verantwoordelijk voor het volgen van de voortgang van de containers die hieraan zijn toegewezen door de RM. Een toepassing kan veel containers vereisen, afhankelijk van de aard van de toepassing.
 
 Elke toepassing kan bestaan uit meerdere *toepassings pogingen*. Als een toepassing mislukt, wordt deze mogelijk opnieuw geprobeerd als een nieuwe poging. Elke poging wordt uitgevoerd in een container. In een zin bevat een container de context voor de basis eenheid van het werk dat door een garen toepassing wordt uitgevoerd. Alle werkzaamheden die in de context van een container worden uitgevoerd, worden uitgevoerd op het knoop punt voor één werk nemer waarop de container is opgegeven. Zie [Hadoop: garens schrijven](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)of [Apache Hadoop garens](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) voor meer informatie.
 
@@ -54,11 +54,11 @@ De geaggregeerde logboeken zijn niet direct leesbaar, omdat ze zijn geschreven i
 
 ## <a name="yarn-logs-in-an-esp-cluster"></a>Garens Logboeken in een ESP-cluster
 
-Er moeten twee configuraties worden toegevoegd aan de `mapred-site` aangepaste Ambari.
+Er moeten twee configuraties worden toegevoegd aan de aangepaste `mapred-site` Ambari.
 
-1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net`, waarbij `CLUSTERNAME` de naam van het cluster is.
+1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net` , waarbij `CLUSTERNAME` de naam van het cluster is.
 
-1. Ga in de Ambari-gebruikers interface naar **MapReduce2** > **configs** > **Advanced** > **Custom mapred-site**.
+1. Ga in de Ambari-gebruikers interface naar **MapReduce2**  >  **configs**  >  **Advanced**  >  **Custom mapred-site**.
 
 1. Voeg *een* van de volgende sets eigenschappen toe:
 
@@ -91,7 +91,7 @@ Er moeten twee configuraties worden toegevoegd aan de `mapred-site` aangepaste A
     yarn top
     ```
 
-    Noteer de toepassings-ID uit `APPLICATIONID` de kolom waarvan de logboeken moeten worden gedownload.
+    Noteer de toepassings-ID uit de `APPLICATIONID` kolom waarvan de logboeken moeten worden gedownload.
 
     ```output
     YARN top - 18:00:07, up 19d, 0:14, 0 active users, queue(s): root
@@ -113,7 +113,7 @@ Er moeten twee configuraties worden toegevoegd aan de `mapred-site` aangepaste A
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
     ```
 
-    Geef de &lt;applicationId>, &lt;gebruiker-who-started-application>, &lt;containerId> en &lt;work-node-Address> informatie op wanneer u deze opdrachten uitvoert.
+    Geef de &lt; applicationId>, &lt; gebruiker-who-started-Application>, &lt; containerId> en &lt; work-node-Address> informatie op wanneer u deze opdrachten uitvoert.
 
 ### <a name="other-sample-commands"></a>Andere voorbeeld opdrachten
 
@@ -149,15 +149,15 @@ Er moeten twee configuraties worden toegevoegd aan de `mapred-site` aangepaste A
 
 ## <a name="yarn-resourcemanager-ui"></a>GAREN `ResourceManager` gebruikers interface
 
-De garen `ResourceManager` -UI wordt uitgevoerd op de cluster-hoofd knooppunt. Het is toegankelijk via de Ambari-webgebruikersinterface. Voer de volgende stappen uit om de GARENs-logboeken weer te geven:
+De garen- `ResourceManager` UI wordt uitgevoerd op de cluster-hoofd knooppunt. Het is toegankelijk via de Ambari-webgebruikersinterface. Voer de volgende stappen uit om de GARENs-logboeken weer te geven:
 
-1. Navigeer in uw webbrowser naar `https://CLUSTERNAME.azurehdinsight.net`. Vervang CLUSTERNAME door de naam van uw HDInsight-cluster.
+1. Navigeer in uw webbrowser naar `https://CLUSTERNAME.azurehdinsight.net` . Vervang CLUSTERNAME door de naam van uw HDInsight-cluster.
 
 2. Selecteer in de lijst met services aan de linkerkant de optie **garens**.
 
     ![Apache Ambari garen-service geselecteerd](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
 
-3. Selecteer in de vervolg keuzelijst **snelle koppelingen** een van de cluster hoofd knooppunten en selecteer **`ResourceManager Log`**.
+3. Selecteer in de vervolg keuzelijst **snelle koppelingen** een van de cluster hoofd knooppunten en selecteer **`ResourceManager Log`** .
 
     ![Snelle koppelingen voor Apache Ambari-garens](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
 

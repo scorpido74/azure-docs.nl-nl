@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: dc39ef8f3d72b2b8fc5aa55aacb2e2503b052023
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82160219"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services concepten 
@@ -28,7 +28,7 @@ ms.locfileid: "82160219"
 In dit onderwerp vindt u een overzicht van de belangrijkste Media Services concepten.
 
 ## <a name="assets-and-storage"></a><a id="assets"/>Activa en opslag
-### <a name="assets"></a>Activa
+### <a name="assets"></a>Assets
 Een [Asset](https://docs.microsoft.com/rest/api/media/operations/asset) bevat digitale bestanden (inclusief video, audio, afbeeldingen, miniatuur verzamelingen, tekst sporen en ondertitelings bestanden) en de meta gegevens over deze bestanden. Nadat de digitale bestanden zijn geüpload naar een Asset, kunnen ze worden gebruikt in de Media Services encoding-en streaming-werk stromen.
 
 Een Asset wordt toegewezen aan een BLOB-container in het Azure Storage-account en de bestanden in de Asset worden opgeslagen als blok-blobs in die container. Pagina-blobs worden niet ondersteund door Azure Media Services.
@@ -86,7 +86,7 @@ Media Services ondersteunt twee typen Locators: OnDemandOrigin-Locators, die wor
 ### <a name="storage-account"></a>Storage-account
 Alle toegang tot Azure Storage wordt uitgevoerd via een opslag account. Een media service-account kan worden gekoppeld aan een of meer opslag accounts. Een account kan een onbeperkt aantal containers bevatten, zolang de totale grootte ervan onder 500TB per opslag account is.  Media Services biedt hulp middelen op het niveau van de SDK waarmee u meerdere opslag accounts kunt beheren en taak verdeling kunt Toep assen op de distributie van uw assets tijdens het uploaden naar deze accounts op basis van metrische gegevens of wille keurige distributie. Zie werken met [Azure Storage](https://msdn.microsoft.com/library/azure/dn767951.aspx)voor meer informatie. 
 
-## <a name="jobs-and-tasks"></a>Taken en taken
+## <a name="jobs-and-tasks"></a>Taken
 Een [taak](https://docs.microsoft.com/rest/api/media/operations/job) wordt meestal gebruikt voor het verwerken van een audio-of video presentatie (bijvoorbeeld index of code ring). Als u meerdere Video's verwerkt, maakt u een taak voor elke video die moet worden gecodeerd.
 
 Een taak bevat meta gegevens over de verwerking die moet worden uitgevoerd. Elke taak bevat een of meer [taken](https://docs.microsoft.com/rest/api/media/operations/task)die een Atomic-verwerkings taak opgeven, de invoer assets, uitvoer assets, een media processor en de bijbehorende instellingen. Taken in een taak kunnen samen worden gekoppeld, waarbij het uitvoer activum van een taak wordt gegeven als het invoer activum voor de volgende taak. Op deze manier kan één taak alle benodigde bewerkingen voor een media presentatie bevatten.
@@ -208,29 +208,29 @@ In de volgende lijst worden verschillende streaming-indelingen beschreven en vin
 
 {streaming-eindpuntnaam-media services-accountnaam}.streaming.mediaservices.windows.net/{locator-id}/{bestandsnaam}.ism/Manifest
 
-http:\//testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest
+http: \/ /testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest
 
 * MPEG DASH
 
 {streaming-eindpuntnaam-media services-accountnaam}.streaming.mediaservices.windows.net/{locator-id}/{bestandsnaam}.ism/Manifest(format=mpd-time-csf)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = mpd-time-KVP)
+http: \/ /testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = mpd-time-KVP)
 
 * Apple HTTP Live Streaming (HLS) v4
 
 {streaming-eindpuntnaam-media services-accountnaam}.streaming.mediaservices.windows.net/{locator-id}/{bestandsnaam}.ism/Manifest(format=m3u8-aapl)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL)
+http: \/ /testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL)
 
 * Apple HTTP Live Streaming (HLS) v3
 
 {streaming-eindpunt naam-Media Services-account naam}. streaming. Media Services. Windows. net/{Locator-ID} bestands (Format = M3U8-AAPL-v3)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL-v3)
+http: \/ /testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL-v3)
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

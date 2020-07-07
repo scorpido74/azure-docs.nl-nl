@@ -4,10 +4,10 @@ description: Gebruik Azure Backup Server om een back-up te maken van uw systeem 
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: bab55ca607e0641ea0cc597de686f3abbb387598
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82192362"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>Maak een back-up van de systeem status en herstel op bare-metal computers met behulp van Azure Backup Server
@@ -43,18 +43,18 @@ De volgende tabel bevat een overzicht van waar u een back-up kunt maken en herst
 
 ## <a name="how-system-state-backup-works"></a>Hoe een systeemstatusback-up werkt
 
-Wanneer een systeem status back-up wordt uitgevoerd, communiceert de back-upserver met Windows Server Back-up om een back-up van de systeem status van de server aan te vragen. Standaard maakt de back-upserver en Windows Server Back-up gebruik van het station met de meeste beschik bare vrije ruimte. Informatie over dit station wordt opgeslagen in het bestand *bestand psdatasourceconfig. XML* .
+Wanneer een systeem status back-up wordt uitgevoerd, communiceert de back-upserver met Windows Server Back-up om een back-up van de systeem status van de server aan te vragen. Standaard maakt de back-upserver en Windows Server Back-up gebruik van het station met de meeste beschik bare vrije ruimte. Informatie over dit station wordt opgeslagen in het *PSDataSourceConfig.xml* -bestand.
 
 U kunt het station dat door de back-upserver wordt gebruikt voor de systeem status back-up aanpassen:
 
 1. Ga op de beveiligde server naar *C:\Program Files\Microsoft Data Protection Manager\MABS\Datasources*.
-1. Open het bestand *bestand psdatasourceconfig. XML* om het te bewerken.
-1. Wijzig de \<FilesToProtect\> -waarde voor de stationsletter.
+1. Open het *PSDataSourceConfig.xml* bestand om het te bewerken.
+1. Wijzig de waarde \<FilesToProtect\> voor de stationsletter.
 1. Sla het bestand op en sluit het.
 
 Als een beveiligings groep is ingesteld om de systeem status van de computer te beveiligen, voert u een consistentie controle uit. Als er een waarschuwing wordt gegenereerd, selecteert u **beveiligings groep wijzigen** in de waarschuwing en voltooit u de pagina's in de wizard. Voer vervolgens nog een consistentiecontrole uit.
 
-Als de beveiligings server zich in een cluster bevindt, kan er een cluster station worden geselecteerd als het station met de meeste vrije ruimte. Als het eigendom van het station is overgeschakeld naar een ander knoop punt en een systeem status back-up wordt uitgevoerd, is het station niet beschikbaar en mislukt de back-up. In dit scenario wijzigt u *bestand psdatasourceconfig. XML* zodat deze verwijst naar een lokaal station.
+Als de beveiligings server zich in een cluster bevindt, kan er een cluster station worden geselecteerd als het station met de meeste vrije ruimte. Als het eigendom van het station is overgeschakeld naar een ander knoop punt en een systeem status back-up wordt uitgevoerd, is het station niet beschikbaar en mislukt de back-up. In dit scenario wijzigt u *PSDataSourceConfig.xml* zodat deze verwijst naar een lokaal station.
 
 Windows Server Back-up maakt vervolgens een map met de naam *WindowsImageBackup* in de hoofdmap van de map Restore. Als Windows Server Back-up de back-up maakt, worden alle gegevens in deze map geplaatst. Wanneer de back-up is voltooid, wordt het bestand overgebracht naar de back-upserver computer. Let op de volgende informatie:
 
@@ -109,7 +109,7 @@ Wanneer de back-up is voltooid, wordt het bestand overgebracht naar de back-upse
 
 Back-ups maken van de systeem status en Bare Metal:
 
-1. Als u de wizard nieuwe beveiligingsgroep maken wilt openen, selecteert u in de Administrator-console van de back-upserver de optie **beveiligings** > **acties** > **beveiligings groep maken**.
+1. Als u de wizard nieuwe beveiligingsgroep maken wilt openen, selecteert u in de Administrator-console van de back-upserver de optie **beveiligings**  >  **acties**  >  **beveiligings groep maken**.
 
 1. Selecteer op de pagina **type beveiligings groep selecteren** de optie **servers**en selecteer vervolgens **volgende**.
 
@@ -203,7 +203,7 @@ Het systeem herstellen:
 
 1. Selecteer op de pagina **Opties voor systeem herstel** **de optie uw computer herstellen met een systeem installatie kopie die u eerder hebt gemaakt**.
 
-1. Selecteer op de pagina **Selecteer een systeem kopie back-up** de optie **Selecteer een systeem** > kopie**Geavanceerd** > **zoeken naar een systeem installatie kopie op het netwerk**. Als er een waarschuwing wordt weer gegeven, selecteert u **Ja**. Ga naar het pad naar de share, voer de referenties in en selecteer het herstel punt. Het systeem zoekt naar specifieke back-ups die in dat herstel punt beschikbaar zijn. Selecteer het herstel punt dat u wilt gebruiken.
+1. Selecteer op de pagina **Selecteer een systeem kopie back-up** de optie **Selecteer een systeem**kopie  >  **Geavanceerd**  >  **zoeken naar een systeem installatie kopie op het netwerk**. Als er een waarschuwing wordt weer gegeven, selecteert u **Ja**. Ga naar het pad naar de share, voer de referenties in en selecteer het herstel punt. Het systeem zoekt naar specifieke back-ups die in dat herstel punt beschikbaar zijn. Selecteer het herstel punt dat u wilt gebruiken.
 
 1. Selecteer op de pagina **Kies hoe u de back-upbewerking wilt herstellen de** optie **schijven Format teren en opnieuw partitioneren**. Controleer de instellingen op de volgende pagina.
 
@@ -233,7 +233,7 @@ Herstel uitvoeren op de back-upserver:
 
 Windows Server Back-up uitvoeren:
 
-1. Selecteer **acties** > **Recover** > **deze**server > herstellen**volgende**.
+1. Selecteer **acties**  >  **Recover**  >  **deze server**herstellen  >  **volgende**.
 
 1. Selecteer **een andere server**, selecteer de pagina **type locatie opgeven** en selecteer vervolgens **externe gedeelde map**. Geef het pad op naar de map die het herstel punt bevat.
 

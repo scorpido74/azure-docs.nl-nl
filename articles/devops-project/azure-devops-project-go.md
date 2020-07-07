@@ -14,10 +14,10 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 02304758ef89ff7c94d1c3d8f98f6931ab7fd8dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233122"
 ---
 # <a name="create-a-cicd-pipeline-for-go-using-azure-devops-starter"></a>Een CI/CD-pijp lijn maken voor Go met behulp van Azure DevOps starter
@@ -30,7 +30,7 @@ Als u geen Azure-abonnement hebt, kunt u er gratis een krijgen via [Visual Studi
 
 DevOps Starter maakt een CI/CD-pijp lijn in azure-pijp lijnen. U kunt een nieuwe Azure DevOps-organisatie maken of een bestaande organisatie gebruiken. DevOps Starter maakt ook Azure-resources in het Azure-abonnement van uw keuze.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Typ **DevOps starter**in het zoekvak en selecteer. Klik op **toevoegen** om een nieuw item te maken.
 
@@ -40,7 +40,7 @@ DevOps Starter maakt een CI/CD-pijp lijn in azure-pijp lijnen. U kunt een nieuwe
 
 1. Selecteer de **Go**-voorbeeld-app en selecteer vervolgens **Volgende**.  
     
-1. **Eenvoudige Go-app** is het standaardframework. Selecteer **Next**.  Het app-framework dat u eerder hebt gekozen, bepaalt welk type implementatiedoelen voor de Azure-service hier beschikbaar is voor implementeren. 
+1. **Eenvoudige Go-app** is het standaardframework. Selecteer **Volgende**.  Het app-framework dat u eerder hebt gekozen, bepaalt welk type implementatiedoelen voor de Azure-service hier beschikbaar is voor implementeren. 
     
 1. Verlaat de Azure-standaardservice en selecteer **Volgende**.
 
@@ -82,7 +82,7 @@ DevOps starter configureert automatisch een volledige CI/CD-pijp lijn in azure o
 
 1. Wijs het veld **status** aan en selecteer vervolgens het weglatings teken (...). In een menu worden verschillende opties weer gegeven, zoals het in de wachtrij plaatsen van een nieuwe build, het onderbreken van een build en het bewerken van de build-pijp lijn.
 
-1. Selecteer **bewerken**.
+1. Selecteer **Bewerken**.
 
 1. In dit deelvenster kunt u de verschillende taken voor uw build-pijplijn onderzoeken. In de build worden verschillende taken uitgevoerd, zoals het ophalen van bronnen uit de Git-opslagplaats, het herstellen van afhankelijkheden, en het publiceren van uitvoergegevens die worden gebruikt voor implementaties.
 

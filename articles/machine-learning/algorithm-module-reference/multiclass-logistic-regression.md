@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 2c62dd2591ca9ccfc4266862578279573598d0c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82137770"
 ---
 # <a name="multiclass-logistic-regression-module"></a>Module logistiek-regressie voor multi klasse
@@ -48,7 +48,7 @@ In een logistiek-regressie met meerdere klassen kan de classificatie worden gebr
 
     Regularisatie is een methode voor het voor komen van overmontage door het bestraffen van modellen met extreme coëfficiënt waarden. Regularisatie werkt door de sanctie toe te voegen die is gekoppeld aan coëfficiënt waarden voor de fout van de hypo these. Een nauw keurig model met extreme coëfficiënt waarden wordt meer bestraft, maar een minder nauw keurig model met meer conservatieve waarden zou minder worden bestraft.
 
-     L1 en L2-regularisatie hebben verschillende effecten en worden gebruikt. L1 kan worden toegepast op sparse modellen, wat handig is bij het werken met zeer dimensionale gegevens. In tegens telling tot L2-regularisatie is de voor keur voor gegevens die niet sparse zijn.  Dit algoritme ondersteunt een lineaire combi natie van L1-en L2-regularisatie-waarden: `x = L1` dat `y = L2`wil `ax + by = c` zeggen, als en, de lineaire reeks van de regularisatie-voor waarden definieert.
+     L1 en L2-regularisatie hebben verschillende effecten en worden gebruikt. L1 kan worden toegepast op sparse modellen, wat handig is bij het werken met zeer dimensionale gegevens. In tegens telling tot L2-regularisatie is de voor keur voor gegevens die niet sparse zijn.  Dit algoritme ondersteunt een lineaire combi natie van L1-en L2-regularisatie-waarden: dat wil zeggen, als `x = L1` en `y = L2` , `ax + by = c` de lineaire reeks van de regularisatie-voor waarden definieert.
 
      Er zijn verschillende lineaire combi Naties van L1-en L2-termen ontwikkeld voor logistieke regressie modellen, zoals [elastische net regularisatie](https://wikipedia.org/wiki/Elastic_net_regularization).
 

@@ -15,10 +15,10 @@ ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
 ms.openlocfilehash: 3c5c13b3aae33b098de79a3429a299cc33f1c4f6
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82202873"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Beveiligd-wachtwoord verificatie beveiligen met OAuth 2,0, Azure Active Directory B2C en Azure API Management
@@ -68,7 +68,7 @@ Open de Blade Azure AD B2C in de portal en voer de volgende stappen uit.
    * Beschrijving Het API Management ontwikkelaars Portal (tenzij u Azure API Management uitvoert in de laag verbruik, verderop in dit scenario).
 1. Stel WebApp/Web API in voor alle drie toepassingen en stel impliciete stroom toestaan in op Ja voor alleen de frontend-client.
 1. Stel nu de App-ID-URI in, kies iets uniek en relevant voor de service die wordt gemaakt.
-1. Tijdelijke aanduidingen voor de antwoord https://localhost-url's gebruiken, bijvoorbeeld, zullen deze url's later worden bijgewerkt.
+1. Tijdelijke aanduidingen voor de antwoord-url's gebruiken, bijvoorbeeld https://localhost , zullen deze url's later worden bijgewerkt.
 1. Klik op maken en herhaal stap 2-5 voor elk van de drie bovenstaande apps, noteer de AppID-URI, naam en toepassings-ID voor later gebruik voor alle drie de apps.
 1. Open de API Management ontwikkelaars Portal-toepassing in de lijst met toepassingen en selecteer het tabblad *sleutels* (onder algemeen) en klik vervolgens op sleutel genereren om een verificatie sleutel te genereren.
 1. Nadat u op Opslaan hebt geklikt, noteert u de sleutel ergens veilig voor later gebruik: Houd er rekening mee dat deze locatie de enige kans is om deze sleutel weer te geven en te kopiëren.
@@ -148,12 +148,12 @@ Open de Blade Azure AD B2C in de portal en voer de volgende stappen uit.
 5. Ga terug naar het tabblad HttpTrigger1, klik op functie-URL ophalen en kopieer de URL die wordt weer gegeven.
 
    > [!NOTE]
-   > Met de bindingen die u zojuist hebt gemaakt, wordt gereageerd op anonieme HTTP GET-aanvragen naar de URL die u zojuist hebt gekopieerd. (`https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey`) We hebben nu een schaal bare serverloze https API, waarmee een zeer eenvoudige nettolading kan worden geretourneerd.
+   > Met de bindingen die u zojuist hebt gemaakt, wordt gereageerd op anonieme HTTP GET-aanvragen naar de URL die u zojuist hebt gekopieerd. ( `https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey` ) We hebben nu een schaal bare serverloze https API, waarmee een zeer eenvoudige nettolading kan worden geretourneerd.
    > U kunt nu de aanroep van deze API vanuit een webbrowser met behulp van de bovenstaande URL testen. u kunt ook het geheime deel van de URL verwijderen en bewijzen dat Azure Functions een 401-fout retourneert.
 
 ## <a name="configure-and-secure-the-function-api"></a>De functie-API configureren en beveiligen
 1. Twee extra gebieden in de functie-app moeten worden geconfigureerd (verificatie en netwerk beperkingen).
-1. Laten we eerst verificatie/autorisatie configureren, dus klik op de naam van de functie-app (naast het &lt;pictogram&gt; Z-functies) om de pagina overzicht weer te geven.
+1. Laten we eerst verificatie/autorisatie configureren, dus klik op de naam van de functie-app (naast het &lt; &gt; pictogram Z-functies) om de pagina overzicht weer te geven.
 1. Selecteer vervolgens het tabblad platform functies en selecteer verificatie/autorisatie.
 1. Schakel de functie voor App Service verificatie in.
 1. Kies bij verificatie providers de optie Azure Active Directory en kies Geavanceerd in de schakel optie voor de beheer modus.
@@ -257,7 +257,7 @@ U moet de met CIDR opgemaakte blokken met adressen toevoegen aan het paneel IP-b
 1. Open de Blade Azure AD B2C en ga naar de registratie van de toepassing voor de ontwikkelaars Portal
 1. Stel de antwoord-URL in op het item dat u hebt genoteerd toen u de redirect_uri van de autorisatie code toekenning in API Management eerder hebt geconfigureerd.
 
-   Nu de OAuth 2,0-gebruikers autorisatie is ingeschakeld op de `Echo API`, haalt de ontwikkelaars console een toegangs token voor de gebruiker op voordat de API wordt aangeroepen.
+   Nu de OAuth 2,0-gebruikers autorisatie is ingeschakeld op de `Echo API` , haalt de ontwikkelaars console een toegangs token voor de gebruiker op voordat de API wordt aangeroepen.
 
 1. Blader naar een wille keurige bewerking onder `Echo API` in de ontwikkelaars Portal en selecteer **proberen** de ontwikkelaars console te openen.
 1. Noteer een nieuw item in het gedeelte **autorisatie** , dat overeenkomt met de autorisatie server die u zojuist hebt toegevoegd.
@@ -283,7 +283,7 @@ U moet de met CIDR opgemaakte blokken met adressen toevoegen aan het paneel IP-b
 ## <a name="build-the-javascript-spa-to-consume-the-api"></a>De Java script-beveiligd-wachtwoord verificatie maken om de API te gebruiken
 1. Open de Blade opslag accounts in de Azure Portal 
 1. Selecteer het account dat u hebt gemaakt en selecteer de Blade ' statische website ' in de sectie instellingen (als u geen optie voor een statische website ziet, controleert u of u een v2-account hebt gemaakt).
-1. Stel de functie voor statische webhosting in op ingeschakeld en stel de naam van het index document in op index. html en klik vervolgens op opslaan.
+1. Stel de functie voor statische webhosting in op ingeschakeld en stel de naam van het index document in op index.html en klik vervolgens op opslaan.
 1. Noteer de inhoud van het primaire eind punt, aangezien deze locatie waar de front-end-site wordt gehost. 
 
    > [!NOTE]
@@ -291,7 +291,7 @@ U moet de met CIDR opgemaakte blokken met adressen toevoegen aan het paneel IP-b
 
 ## <a name="upload-the-js-spa-sample"></a>Het JS-beveiligd-wachtwoord verificatie-voor beeld uploaden
 1. Selecteer op de Blade opslag account de Blade ' blobs ' in de sectie BLOB-service en klik op de $web container die wordt weer gegeven in het rechterdeel venster.
-1. Sla de onderstaande code op in een lokaal bestand op uw computer als index. html en upload het bestand index. html vervolgens naar de container $web.
+1. Sla de onderstaande code op in een lokaal bestand op uw computer als index.html en upload het bestand index.html naar de $web container.
 
    ```html
    <!doctype html>
@@ -415,7 +415,7 @@ U moet de met CIDR opgemaakte blokken met adressen toevoegen aan het paneel IP-b
 
 ## <a name="configure-the-js-spa-for-azure-ad-b2c"></a>De JS-beveiligd-wachtwoord verificatie voor Azure AD B2C configureren
 1. Nu weten we wat alles is: we kunnen het beveiligd-wachtwoord verificatie configureren met het juiste API Management API-adres en de juiste Azure AD B2C toepassing/client-Id's
-1. Ga terug naar de Blade Azure Portal opslag en klik op index. html en kies vervolgens BLOB bewerken 
+1. Ga terug naar de Blade Azure Portal opslag en klik op index.html en kies vervolgens BLOB bewerken 
 1. Werk de verificatie gegevens bij zodat deze overeenkomen met de front-end-toepassing die u eerder hebt geregistreerd in B2C. Let op dat de waarden van de b2cScopes voor de API-back-end zijn.
 1. De webApi-sleutel en API-URL vindt u in het deel venster API Management test voor de API-bewerking.
 1. Maak een APIM-abonnements sleutel per kop naar het API Management terug naar de Blade API Management, selecteer abonnementen en klik vervolgens op abonnement toevoegen en sla de record op. Als u op het weglatings teken (...) naast de gemaakte rij klikt, kunt u de sleutels weer geven zodat u de primaire sleutel kan kopiëren.

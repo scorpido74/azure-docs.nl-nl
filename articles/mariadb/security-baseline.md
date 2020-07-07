@@ -8,10 +8,10 @@ ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 2d78a7e0eaed27fec7f813fa3e6bffaffe5a6540
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186166"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Azure-beveiligings basislijn voor Azure Database for MariaDB
@@ -28,7 +28,7 @@ Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Beveilig bronnen met behulp van netwerk beveiligings groepen of Azure Firewall op de Virtual Network
 
-**Hulp**bij het configureren van een persoonlijke koppeling voor Azure database for MariaDB met privé-eind punten. Met persoonlijke koppeling kunt u via een persoonlijk eind punt verbinding maken met verschillende PaaS-Services in Azure. Met Azure private link worden Azure-Services binnen uw persoonlijke Virtual Network (VNet) geplaatst. Verkeer tussen uw virtuele netwerk en MariaDB-exemplaar wordt het micro soft-backbone-netwerk verplaatst.
+**Hulp**bij het configureren van een persoonlijke koppeling voor Azure database for MariaDB met privé-eind punten. Met een Private Link kunt u via een privé-eindpunt verbinding maken met verschillende PaaS-services in Azure. Met Azure private link worden Azure-Services binnen uw persoonlijke Virtual Network (VNet) geplaatst. Verkeer tussen uw virtuele netwerk en MariaDB-exemplaar wordt het micro soft-backbone-netwerk verplaatst.
 
 U kunt ook Virtual Network Service-eind punten gebruiken om de netwerk toegang tot uw Azure Database for MariaDB-implementaties te beveiligen en te beperken. Regels voor virtuele netwerken zijn één firewall beveiligings functie waarmee wordt bepaald of uw Azure Database for MariaDB communicatie accepteert die wordt verzonden vanuit bepaalde subnetten in virtuele netwerken.
 
@@ -118,7 +118,7 @@ Geavanceerde beveiliging tegen bedreigingen configureren voor Azure Database for
 **Richt lijnen**: voor bronnen die toegang nodig hebben tot uw Azure database for MariaDB-instanties, gebruikt u de tags voor het virtuele netwerk om netwerk toegangs beheer te definiëren voor netwerk beveiligings groepen of Azure firewall. U kunt servicetags gebruiken in plaats van specifieke IP-adressen wanneer u beveiligingsregels maakt. Door de servicetag naam op te geven (bijvoorbeeld SQL. Westus) in het juiste bron-of doel veld van een regel kunt u het verkeer voor de bijbehorende service toestaan of weigeren. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag van de service en werkt de servicetag automatisch bij met gewijzigde adressen.
 Opmerking: Azure Database for MariaDB gebruikt het service label ' micro soft. SQL '.
 
-Meer informatie over het gebruik van service tags https://docs.microsoft.com/azure/virtual-network/service-tags-overview : informatie over het gebruik van de service code voor Azure database for MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet#terminology-and-description
+Meer informatie over het gebruik van service Tags: informatie over het https://docs.microsoft.com/azure/virtual-network/service-tags-overview gebruik van de service code voor Azure database for MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet#terminology-and-description
 
 
 
@@ -130,11 +130,11 @@ Meer informatie over het gebruik van service tags https://docs.microsoft.com/azu
 
 **Hulp**: Definieer en implementeer standaard beveiligings configuraties voor netwerk instellingen en netwerk resources die zijn gekoppeld aan uw Azure database for MariaDB-instanties met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimten ' micro soft. DBforMariaDB ' en ' micro soft. Network ' om aangepaste beleids regels te maken om de netwerk configuratie van uw Azure Database for MariaDB instanties te controleren of af te dwingen. U kunt ook gebruikmaken van ingebouwde beleids definities met betrekking tot netwerken of uw Azure Database for MariaDB-instanties, zoals:
 
-- DDoS Protection standaard moet zijn ingeschakeld
+- De DDoS Protection-standaard moet zijn ingeschakeld
 
-- Het persoonlijke eind punt moet zijn ingeschakeld voor MariaDB-servers
+- Het privé-eindpunt moet worden ingeschakeld voor MariaDB-servers
 
-- MariaDB-server moet een service-eind punt van een virtueel netwerk gebruiken
+- De MariaDB-server moet gebruikmaken van een service-eindpunt voor een virtueel netwerk
 
 Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -164,7 +164,7 @@ Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: gebruik automatische hulpprogram ma's om netwerk bron configuraties te bewaken en wijzigingen te detecteren
 
 **Hulp**: Azure-activiteiten logboek gebruiken om netwerk resource configuraties te bewaken en wijzigingen te detecteren voor netwerk bronnen die betrekking hebben op uw Azure database for MariaDB exemplaren. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen in kritieke netwerk bronnen plaatsvinden.
-Gebeurtenissen in het activiteiten logboek van Azure bekijken en ophalen https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view : waarschuwingen maken in azure monitor:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Gebeurtenissen in het activiteiten logboek van Azure bekijken en ophalen: https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view waarschuwingen maken in azure monitor:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 
 
@@ -190,7 +190,7 @@ Gebeurtenissen in het activiteiten logboek van Azure bekijken en ophalen https:/
 **Richt lijnen**: Diagnostische instellingen en server logboeken en opname logboeken inschakelen voor het verzamelen van beveiligings gegevens die door uw Azure database for MariaDB-instanties zijn gegenereerd. In Azure Monitor kunt u Log Analytics werk ruimte (n) gebruiken om een query uit te voeren en een Analytics-account te gebruiken, en Azure Storage accounts voor lange termijn/archiverings opslag. U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derden.
 Server logboeken configureren en openen voor Azure Database for MariaDB:https://docs.microsoft.com/azure/mariadb/concepts-server-logs
 
-Controle logboeken configureren en openen voor Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal een onboarding van Azure-Sentinel uitvoeren:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Controle logboeken configureren en openen voor Azure Database for MariaDB: een https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal onboarding van Azure-Sentinel uitvoeren:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 
 
@@ -772,7 +772,7 @@ Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te
 
 **Richt lijnen**: standaard beveiligings configuraties voor uw Azure database for MariaDB-instanties definiëren en implementeren met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimte ' micro soft. DBforMariaDB ' om aangepaste beleids regels te maken om de netwerk configuratie van uw Azure Database for MariaDB servers te controleren of af te dwingen. U kunt ook gebruikmaken van ingebouwde beleids definities die betrekking hebben op uw Azure Database for MariaDB-servers, zoals:
 
-- De geo-redundante back-up moet zijn ingeschakeld voor Azure Database for MariaDB
+- Geografisch redundante back-up moet zijn ingeschakeld voor Azure Database for MariaDB
 
 Beschik bare Azure Policy aliassen weer geven:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
@@ -896,7 +896,7 @@ Key Vault verificatie bieden met een beheerde identiteit:https://docs.microsoft.
 
 Voor Azure Virtual Machines of webtoepassingen die worden uitgevoerd op Azure App Service wordt gebruikt om toegang te krijgen tot uw Azure Database for MariaDB server, gebruikt u Managed Service Identity in combi natie met Azure Key Vault om referenties op te slaan en op te halen voor Azure Database for MariaDB-server.  Zorg ervoor Key Vault zacht verwijderen is ingeschakeld.
 
-Gebruik beheerde identiteiten om Azure-Services te voorzien van een automatisch beheerde identiteit in Azure Active Directory (AD). Met beheerde identiteiten kunt u zich verifiëren bij elke service die ondersteuning biedt voor Azure AD-verificatie, met inbegrip van Key Vault, zonder enige referenties in uw code. Beheerde identiteiten configureren: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm. Integratie met Azure Managed Identities: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity.
+Gebruik beheerde identiteiten om Azure-Services te voorzien van een automatisch beheerde identiteit in Azure Active Directory (AD). Met beheerde identiteiten kunt u zich verifiëren bij elke service die ondersteuning biedt voor Azure AD-verificatie, met inbegrip van Key Vault, zonder enige referenties in uw code. Beheerde identiteiten configureren: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm . Integratie met Azure Managed Identities: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity .
 
 
 

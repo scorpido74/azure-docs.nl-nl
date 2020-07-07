@@ -9,10 +9,10 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: d44d5a8eeba749572980f79a90bcf5893a9c1fbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82144344"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Berichten verzenden, ontvangen en verwerken in Azure Logic Apps
@@ -37,7 +37,7 @@ U kunt [zich ook registreren voor een abonnement met betalen per gebruik](https:
 * Een e-mail account met een [e-mail provider die door Azure Logic apps wordt ondersteund](../connectors/apis-list.md)
 
   > [!IMPORTANT]
-  > Als u de Gmail-connector wilt gebruiken, kunnen alleen zakelijke accounts van G-Suite deze connector gebruiken zonder beperkingen in Logic apps. Als u een Gmail-Consumer-account hebt, kunt u deze connector gebruiken met alleen specifieke door Google goedgekeurde Services, of u kunt [een Google-client-app maken die voor verificatie met uw Gmail-connector wordt gebruikt](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Zie voor meer informatie [beleid voor gegevens beveiliging en privacybeleid voor Google connectors in azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
+  > Als u de Gmail-connector wilt gebruiken, kunnen alleen bedrijfsaccounts van G Suite deze connector zonder beperking in logische apps gebruiken. Als u een Gmail-consumentenaccount hebt, kunt u deze connector alleen gebruiken met specifieke door Google goedgekeurde services, of u kunt [een Google-client-app maken voor verificatie bij uw Gmail-connector](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Zie [Beleid voor gegevensbeveiliging en privacybeleid voor Google-connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md) voor meer informatie.
 
 * Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -64,7 +64,7 @@ Voordat u berichten naar een batch kunt verzenden, moet deze batch eerst bestaan
    | **Release criteria** | Is alleen van toepassing op de **inline** batch modus en selecteert de criteria om te voldoen aan de verwerking van elke batch: <p>- **Telling van berichten op basis**van: de batch vrijgeven op basis van het aantal berichten dat door de batch is verzameld. <br>- **Grootte gebaseerd**: de batch vrijgeven op basis van de totale grootte in bytes voor alle berichten die door die batch worden verzameld. <br>- **Planning**: de batch vrijgeven op basis van een herhalings schema, waarmee een interval en frequentie worden opgegeven. In de geavanceerde opties kunt u ook een tijd zone selecteren en een begin datum en-tijd opgeven. <br>- **Alles selecteren**: alle opgegeven criteria gebruiken. | 
    | **Aantal berichten** | Het aantal berichten dat in de batch moet worden verzameld, bijvoorbeeld 10 berichten. De limiet voor een batch is 8.000 berichten. | 
    | **Batch grootte** | De totale grootte in bytes die in de batch moet worden verzameld, bijvoorbeeld 10 MB. De maximale grootte van een batch is 80 MB. | 
-   | **Planning** | Het interval en de frequentie tussen batch releases, bijvoorbeeld 10 minuten. De minimale terugkeer patroon is 60 seconden of 1 minuut. Gedeeltelijke minuten worden effectief afgerond tot 1 minuut. Kies **Geavanceerde opties weer geven**om een tijd zone of een start datum en-tijd op te geven. | 
+   | **Schema** | Het interval en de frequentie tussen batch releases, bijvoorbeeld 10 minuten. De minimale terugkeer patroon is 60 seconden of 1 minuut. Gedeeltelijke minuten worden effectief afgerond tot 1 minuut. Kies **Geavanceerde opties weer geven**om een tijd zone of een start datum en-tijd op te geven. | 
    ||| 
 
    > [!NOTE]
@@ -85,7 +85,7 @@ Voordat u berichten naar een batch kunt verzenden, moet deze batch eerst bestaan
    2. Voer 'e-mail verzenden' als filter in het zoekvak in.
    Selecteer een e-mail connector op basis van uw e-mail provider.
 
-      Als u bijvoorbeeld een persoonlijk account hebt, zoals @outlook.com of @hotmail.com, selecteert u de Outlook.com-connector. In dit voor beeld wordt de Office 365 Outlook-Connector gebruikt.
+      Als u bijvoorbeeld een persoonlijk account hebt, zoals @outlook.com of @hotmail.com , selecteert u de Outlook.com-connector. In dit voor beeld wordt de Office 365 Outlook-Connector gebruikt.
 
    3. Selecteer deze actie: **e-mail *provider* > voor e-mail <verzenden**
 
@@ -180,7 +180,7 @@ Maak nu een of meer logische apps voor batch Sender die berichten verzenden naar
 
    2. Wanneer de lijst met dynamische inhoud wordt weer gegeven, kiest u **expressie**. 
 
-   3. Voer de expressie `utcnow()`in en klik vervolgens op **OK**. 
+   3. Voer de expressie in `utcnow()` en klik vervolgens op **OK**. 
 
       ![Kies in ' bericht inhoud ' expressie ', voer ' utcnow () ' in en kies OK.](./media/logic-apps-batch-process-send-receive-messages/batch-sender-details.png)
 
@@ -198,7 +198,7 @@ Maak nu een of meer logische apps voor batch Sender die berichten verzenden naar
 
    2. Kies in de lijst met dynamische inhoud voor **Expressie**.
    
-   3. Voer de expressie `rand(1,6)`in en klik vervolgens op **OK**.
+   3. Voer de expressie in `rand(1,6)` en klik vervolgens op **OK**.
 
       ![Een partitie voor de doel batch instellen](./media/logic-apps-batch-process-send-receive-messages/batch-sender-partition-advanced-options.png)
 

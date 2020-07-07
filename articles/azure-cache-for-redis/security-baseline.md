@@ -8,10 +8,10 @@ ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: b9568d352b22d9c48789f2648489be0444823fff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195983"
 ---
 # <a name="azure-security-baseline-for-azure-cache-for-redis"></a>Azure-beveiligings basislijn voor Azure cache voor redis
@@ -104,7 +104,7 @@ https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: op netwerk gebaseerde inbreuk detectie/indringings systemen (ID'S/IP-adressen) implementeren
 
-**Richt lijnen**: wanneer u Azure cache gebruikt voor redis met uw webtoepassingen die worden uitgevoerd op Azure app service-of COMPUTE-instanties, implementeert u alle resources in een Azure Virtual Network (VNet) en kunt u beveiligen met een Azure Web Application firewall (WAF) op Internet Application Gateway. Configureer de WAF om uit te voeren in de modus preventie. In de modus voor preventie worden indringing en aanvallen die door de regels worden gedetecteerd geblokkeerd. De aanvaller ontvangt een uitzonde ring "403 niet-geautoriseerde toegang" en de verbinding is gesloten. Met preventie modus worden dergelijke aanvallen in de WAF-logboeken vastgelegd.
+**Richt lijnen**: wanneer u Azure cache gebruikt voor redis met uw webtoepassingen die worden uitgevoerd op Azure app service-of COMPUTE-instanties, implementeert u alle resources in een Azure Virtual Network (VNet) en kunt u beveiligen met een Azure Web Application firewall (WAF) op Internet Application Gateway. Configureer de WAF om uit te voeren in de modus preventie. In de modus voor preventie worden indringing en aanvallen die door de regels worden gedetecteerd geblokkeerd. De aanvaller krijgt een uitzondering '403 onbevoegde toegang' en de verbinding wordt verbroken. In de preventiemodus worden dergelijke aanvallen vastgelegd in de WAF-logboeken.
 
 U kunt ook een aanbieding uit de Azure Marketplace selecteren die ondersteuning biedt voor ID'S/IP-adressen met Payload-inspectie en/of anomalie detectie mogelijkheden.
 
@@ -154,9 +154,9 @@ https://docs.microsoft.com/azure/virtual-network/security-overview#application-s
 
 **Hulp**: Definieer en implementeer standaard beveiligings configuraties voor netwerk bronnen die betrekking hebben op uw Azure-cache voor redis-instanties met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimten ' micro soft. cache ' en ' micro soft. Network ' om aangepaste beleids regels te maken om de netwerk configuratie van uw Azure-cache te controleren of af te dwingen voor redis-exemplaren. U kunt ook gebruik maken van ingebouwde beleids definities zoals:
 
-Alleen beveiligde verbindingen met uw Redis Cache moeten worden ingeschakeld
+Alleen beveiligde verbindingen met uw Redis Cache moeten zijn ingeschakeld
 
-DDoS Protection standaard moet zijn ingeschakeld
+De DDoS Protection-standaard moet zijn ingeschakeld
 
 U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager ARM-sjablonen, op rollen gebaseerd toegangs beheer (RBAC) en beleids regels, in één definitie van de blauw druk. Pas de blauw druk toe op nieuwe abonnementen en omgevingen en Verfijn de controle en het beheer via versies.
 
@@ -342,11 +342,11 @@ Azure-cache opnieuw genereren voor de toegangs sleutels voor redis:https://docs.
 
 Daarnaast kunt u aanbevelingen van Azure Security Center of ingebouwde Azure-beleids regels gebruiken om u te helpen bij het bijhouden van specifieke beheerders accounts, zoals:
 
-- Er moet meer dan één eigenaar aan uw abonnement zijn toegewezen
+- Er moet meer dan één eigenaar zijn toegewezen aan uw abonnement
 
-- Afgeschafte accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement
+- Afgeschafte accounts met eigenaarsmachtigingen moeten worden verwijderd uit uw abonnement
 
-- Externe accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement
+- Externe accounts met eigenaarsmachtigingen moeten worden verwijderd uit uw abonnement
 
 Azure Security Center gebruiken om identiteit en toegang te bewaken (preview):https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
@@ -843,7 +843,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 **Hulp**: Definieer en implementeer standaard beveiligings configuraties voor uw Azure-cache voor redis-instanties met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimte ' micro soft. cache ' om aangepaste beleids regels te maken om de configuratie van uw Azure-cache voor redis-instanties te controleren of af te dwingen. U kunt ook gebruikmaken van ingebouwde beleids definities die betrekking hebben op uw Azure-cache voor redis-instanties, zoals:
 
-Alleen beveiligde verbindingen met uw Redis Cache moeten worden ingeschakeld
+Alleen beveiligde verbindingen met uw Redis Cache moeten zijn ingeschakeld
 
 Beschik bare Azure Policy aliassen weer geven:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 

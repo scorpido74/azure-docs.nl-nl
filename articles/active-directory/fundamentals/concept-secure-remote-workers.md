@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 713afb7b277fba65dc4c860e8bdd6b62b4e0147d
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82204947"
 ---
-# <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Snel reageren op beveiligde identiteiten met Azure AD
+# <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Snel op beveiligde identiteiten reageren met Azure AD
 
 Het lijkt erop dat u uw werk nemers in de hedendaagse wereld kunt beveiligen, met name wanneer u snel moet reageren en tegelijkertijd toegang tot veel services moet bieden. Dit artikel is bedoeld om een beknopt overzicht te geven van alle acties die u moet uitvoeren, zodat u kunt bepalen welke volg orde de Azure AD-functies moeten implementeren op basis van het licentie type dat u hebt. Azure AD biedt veel functies en biedt veel beveiliging voor uw identiteiten, waardoor u kunt navigeren welke functie relevant is. Veel organisaties bevinden zich al in de Cloud of verplaatsen snel naar de Cloud. dit document is bedoeld om u snel services te laten implementeren, waarbij uw identiteiten worden beveiligd als primaire overweging. 
 

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: abf7e6d7032e7e5dc35b2f4397a5630d45d762de
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205116"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>Implementeren naar Azure Kubernetes Service
@@ -37,7 +37,7 @@ Dit artikel bevat de stappen voor het implementeren van een zelf-hostend gateway
 6. Selecteer **<gateway naam>. yml-** bestands koppeling naast **implementatie** om het bestand te downloaden.
 7. Pas de poort toewijzingen en de container naam in het yml-bestand naar wens aan.
 8. Afhankelijk van uw scenario moet u het [Service type](https://docs.microsoft.com/azure/aks/concepts-network#services)mogelijk wijzigen. De standaardwaarde is `NodePort`.
-9. Selecteer het **Kopieer** pictogram dat zich aan de rechter kant van het tekstvak **implementeren** bevindt `kubectl` om de opdracht op het klem bord op te slaan.
+9. Selecteer het **Kopieer** pictogram dat zich aan de rechter kant van het tekstvak **implementeren** bevindt om de `kubectl` opdracht op het klem bord op te slaan.
 10. Plak de opdracht in het venster Terminal (of Command). Houd er rekening mee dat de opdracht verwacht dat het gedownloade omgevings bestand aanwezig is in de huidige map.
 ```console
     kubectl apply -f <gateway-name>.yaml

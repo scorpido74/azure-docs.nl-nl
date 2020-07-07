@@ -4,10 +4,10 @@ description: Meer informatie over het herstellen van Key Vault sleutel en geheim
 ms.topic: conceptual
 ms.date: 08/28/2017
 ms.openlocfilehash: 826b3917fda820ed02cde425ca5a394bffec0df1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186818"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Key Vault-sleutel en -geheim voor versleutelde virtuele machines terugzetten met Azure Backup
@@ -92,7 +92,7 @@ Restore-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -InputFile $sec
 
 > [!NOTE]
 >
-> * De waarde voor $secretname kan worden verkregen door te verwijzen naar de uitvoer van $encryptionObject. OsDiskKeyAndSecretDetails. SecretUrl en met behulp van tekst na geheimen/bijv. `https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163` de URL voor uitvoer geheim is en de geheime naam is B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
+> * De waarde voor $secretname kan worden verkregen door te verwijzen naar de uitvoer van $encryptionObject. OsDiskKeyAndSecretDetails. SecretUrl en met behulp van tekst na geheimen/bijv. de URL voor uitvoer geheim is `https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163` en de geheime naam is B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
 > * De waarde van de tag DiskEncryptionKeyFileName is hetzelfde als de geheime naam.
 >
 >
@@ -128,7 +128,7 @@ Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -
 
 > [!NOTE]
 >
-> * De waarde voor $secretname kan worden verkregen door te verwijzen naar de uitvoer van $rp 1. KeyAndSecretDetails. SecretUrl en het gebruik van tekst na geheimen/bijv. de URL `https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163` voor uitvoer geheim is en de geheime naam is B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
+> * De waarde voor $secretname kan worden verkregen door te verwijzen naar de uitvoer van $rp 1. KeyAndSecretDetails. SecretUrl en het gebruik van tekst na geheimen/bijv. de URL voor uitvoer geheim is `https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163` en de geheime naam is B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
 > * De waarde van de tag DiskEncryptionKeyFileName is hetzelfde als de geheime naam.
 > * De waarde voor DiskEncryptionKeyEncryptionKeyURL kan worden verkregen uit de sleutel kluis nadat de sleutels terug zijn hersteld en de cmdlet [Get-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/get-azurekeyvaultkey) wordt gebruikt
 >

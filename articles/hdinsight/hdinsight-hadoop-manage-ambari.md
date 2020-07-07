@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
 ms.openlocfilehash: 2c0e95b71ec21b384f17a44ebf5cfd4f33b45f0f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82232850"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight-clusters beheren met behulp van de Apache Ambari-webinterface
@@ -29,7 +29,7 @@ In dit document leert u hoe u de Ambari-webgebruikersinterface kunt gebruiken me
 
 ## <a name="connectivity"></a>Connectiviteit
 
-De Ambari-webgebruikersinterface is beschikbaar op uw HDInsight- `https://CLUSTERNAME.azurehdinsight.net`cluster op `CLUSTERNAME` , waar de naam van uw cluster is.
+De Ambari-webgebruikersinterface is beschikbaar op uw HDInsight-cluster op `https://CLUSTERNAME.azurehdinsight.net` , waar `CLUSTERNAME` de naam van uw cluster is.
 
 > [!IMPORTANT]  
 > Voor het maken van verbinding met Ambari op HDInsight is HTTPS vereist. Wanneer u om verificatie wordt gevraagd, gebruikt u de account naam en het wacht woord van de beheerder die u hebt opgegeven toen het cluster werd gemaakt. Als u niet wordt gevraagd om referenties, controleert u uw netwerk instellingen om te bevestigen dat er geen connectiviteits problemen zijn tussen de client en de Azure HDInsight-clusters.
@@ -61,7 +61,7 @@ Wanneer de pagina wordt geopend, ziet u de balk aan de bovenkant. Deze balk beva
 |Beheerder|Software stack/services die zijn geïnstalleerd op het cluster, informatie over service accounts en Kerberos-beveiliging.|
 |Knop beheer|Ambari-beheer, gebruikers instellingen en afmelden.|
 
-## <a name="monitoring"></a>Bewaking
+## <a name="monitoring"></a>Controleren
 
 ### <a name="alerts"></a>Waarschuwingen
 
@@ -70,7 +70,7 @@ De volgende lijst bevat de algemene statussen van waarschuwingen die worden gebr
 * **OK**
 * **Waarschuwing**
 * **KRITIEKE**
-* **HERKEND**
+* **UNKNOWN**
 
 Bij andere waarschuwingen dan **OK** wordt **het aantal waarschuwingen aan** de bovenkant van de pagina weer gegeven. Als u dit item selecteert, worden de waarschuwingen en hun status weer gegeven.
 
@@ -161,7 +161,7 @@ Op de pagina **hosts** worden alle hosts in het cluster weer gegeven. Voer de vo
     |Onderhouds modus inschakelen|Onderdrukt waarschuwingen voor de host. Deze modus moet zijn ingeschakeld als u acties uitvoert waarmee waarschuwingen worden gegenereerd. Bijvoorbeeld, het stoppen en starten van een service.|
     |Onderhouds modus uitschakelen|Retourneert de host naar normale waarschuwingen.|
     |Stoppen|Stopt DataNode of NodeManagers op de host.|
-    |Starten|Start DataNode of NodeManagers op de host.|
+    |start|Start DataNode of NodeManagers op de host.|
     |Opnieuw starten|Stopt en start DataNode of NodeManagers op de host.|
     |Uit bedrijf nemen|Hiermee verwijdert u een host uit het cluster. **Gebruik deze actie niet op HDInsight-clusters.**|
     |Opnieuw provisie|Voegt een eerder buiten gebruik gestelde host toe aan het cluster. **Gebruik deze actie niet op HDInsight-clusters.**|

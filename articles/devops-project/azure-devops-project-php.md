@@ -14,10 +14,10 @@ ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 3e4913c4be0d59bc37e3da2358c4f8ec302a26e5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233785"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-starter"></a>Een CI/CD-pijp lijn maken voor PHP met Azure DevOps starter
@@ -84,7 +84,7 @@ Als u geen Azure-abonnement hebt, kunt u er gratis een krijgen via [Visual Studi
 
 1. Wijs het veld **status** aan en selecteer vervolgens het **weglatings teken** (...). In een menu worden verschillende opties weer gegeven, zoals het in de wachtrij plaatsen van een nieuwe build, het onderbreken van een build en het bewerken van de build-pijp lijn.
 
-1. Selecteer **bewerken**.
+1. Selecteer **Bewerken**.
 
 1. In dit deelvenster kunt u de verschillende taken voor uw build-pijplijn onderzoeken. In de build worden verschillende taken uitgevoerd, zoals het ophalen van bronnen uit de Git-opslagplaats, het herstellen van afhankelijkheden, en het publiceren van uitvoergegevens die worden gebruikt voor implementaties.
 

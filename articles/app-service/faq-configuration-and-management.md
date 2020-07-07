@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 867c011cb3086cab736d17501e72bc477d0d2889
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82159997"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Veelgestelde vragen over configuratie en beheer voor Web Apps in azure
@@ -105,7 +105,7 @@ Een veelvoorkomende oorzaak van het mislukken van de back-up is dat sommige best
 
 ## <a name="how-do-i-remove-a-header-from-the-http-response"></a>Hoe kan ik een header uit het HTTP-antwoord verwijderen?
 
-Als u de kopteksten van het HTTP-antwoord wilt verwijderen, moet u het bestand Web. config van uw site bijwerken. Zie [standaard server headers op uw Azure-websites verwijderen](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)voor meer informatie.
+Als u de kopteksten van het HTTP-antwoord wilt verwijderen, moet u het web.config-bestand van de site bijwerken. Zie [standaard server headers op uw Azure-websites verwijderen](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)voor meer informatie.
 
 ## <a name="is-app-service-compliant-with-pci-standard-30-and-31"></a>Is App Service compatibel met de PCI-standaard 3,0 en 3,1?
 
@@ -125,7 +125,7 @@ Zie [een faserings omgeving instellen in app service](deploy-staging-slots.md)vo
 
 Webtaaks logboeken bekijken:
 
-1. Meld u aan bij uw **kudu** -`https://*yourwebsitename*.scm.azurewebsites.net`website ().
+1. Meld u aan bij uw **kudu-website** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
 2. Selecteer de Webtaak.
 3. Selecteer de knop **uitvoer in-/uitschakelen** .
 4. Selecteer de **Download** koppeling om het uitvoer bestand te downloaden.
@@ -147,7 +147,7 @@ De uitzonde ring is veroorzaakt door een probleem met de Hybrid Connection Manag
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>Hoe kan ik een regel voor het opnieuw schrijven van een URL toevoegen?
 
-Als u een regel voor het herschrijven van een URL wilt toevoegen, maakt u een web. config-bestand met de relevante configuratie vermeldingen in de map **wwwroot** . Zie [Azure-app Services: informatie over het herschrijven van url's](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)voor meer informatie.
+Als u een regel voor het herschrijven van een URL wilt toevoegen, maakt u een web.config bestand met de relevante configuratie vermeldingen in de map **wwwroot** . Zie [Azure-app Services: informatie over het herschrijven van url's](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)voor meer informatie.
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>Hoe kan ik inkomend verkeer naar App Service beheren?
 
@@ -302,7 +302,7 @@ Als geen van deze voor waarden van toepassing is en het probleem zich blijft voo
 
 ## <a name="how-do-i-turn-on-http-compression-for-my-content"></a>Hoe kan ik HTTP-compressie voor mijn inhoud inschakelen?
 
-Als u compressie wilt inschakelen voor statische en dynamische inhouds typen, voegt u de volgende code toe aan het bestand Web. config op toepassings niveau:
+Als u compressie wilt inschakelen voor statische en dynamische inhouds typen, voegt u de volgende code toe aan het web.config-bestand op toepassings niveau:
 
 ```xml
 <system.webServer>

@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: b7dce0181987b7e61b243a7eb0e13b7ed687eb08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82185690"
 ---
 # <a name="use-azure-application-gateway-with-vmware-virtual-machines-in-the-cloudsimple-private-cloud-environment"></a>Azure-toepassing gateway gebruiken met virtuele VMware-machines in de CloudSimple-Privécloud
@@ -71,7 +71,7 @@ De gedetailleerde instructies hiervoor zijn beschikbaar in [een toepassings gate
 
 1. Maak een virtueel netwerk in uw abonnement en resource groep.
 2. Maak een subnet (dat moet worden gebruikt als het toegewezen subnet) in het virtuele netwerk.
-3. Een standaard Application Gateway maken (optioneel WAF inschakelen): Klik vanuit de Azure Portal-start pagina op **resource** > **netwerken** > **Application Gateway** in de linkerbovenhoek van het venster. Selecteer de standaard-SKU en-grootte en geef een Azure-abonnement, resource groep en locatie-informatie op. Als dat nodig is, maakt u een nieuw openbaar IP-adres voor deze toepassings gateway en geeft u informatie op over het virtuele netwerk en het toegewezen subnet voor de toepassings gateway.
+3. Een standaard Application Gateway maken (optioneel WAF inschakelen): Klik vanuit de Azure Portal-start pagina op **resource**  >  **netwerken**  >  **Application Gateway** in de linkerbovenhoek van het venster. Selecteer de standaard-SKU en-grootte en geef een Azure-abonnement, resource groep en locatie-informatie op. Als dat nodig is, maakt u een nieuw openbaar IP-adres voor deze toepassings gateway en geeft u informatie op over het virtuele netwerk en het toegewezen subnet voor de toepassings gateway.
 4. Voeg een back-end-groep met virtuele machines toe en voeg deze toe aan uw toepassings gateway.
 
 ## <a name="4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud"></a>4. een virtuele-machine groep voor een webserver maken en configureren in uw Privécloud

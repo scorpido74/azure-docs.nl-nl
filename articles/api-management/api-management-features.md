@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: apimpm
 ms.openlocfilehash: c0cabab6f867df918c4ac86d035918c483e12da9
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82203165"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Vergelijking op basis van functies van de Azure API Management-lagen
@@ -39,7 +39,7 @@ Elke API Management [prijs categorie](https://aka.ms/apimpricing) biedt een afzo
 | [TLS-instellingen](api-management-howto-manage-protocols-ciphers.md)                             | Ja         | Ja       | Ja   | Ja      | Ja     |
 | [Externe cache](https://aka.ms/apimbyoc)                                                    | Ja         | Ja       | Ja   | Ja      | Ja     |
 | [Verificatie van client certificaten](api-management-howto-mutual-certificates-for-clients.md) | Ja         | Ja       | Ja   | Ja      | Ja     |
-| [Back-ups en herstellen](api-management-howto-disaster-recovery-backup-restore.md)               | Nee          | Ja       | Ja   | Ja      | Ja     |
+| [Back-up en herstel](api-management-howto-disaster-recovery-backup-restore.md)               | Nee          | Ja       | Ja   | Ja      | Ja     |
 | [Beheer via git](api-management-configuration-repository-git.md)                        | Nee          | Ja       | Ja   | Ja      | Ja     |
 | API voor direct beheer                                                                        | Nee          | Ja       | Ja   | Ja      | Ja     |
 | Logboeken en metrische gegevens Azure Monitor                                                               | Nee          | Ja       | Ja   | Ja      | Ja     |

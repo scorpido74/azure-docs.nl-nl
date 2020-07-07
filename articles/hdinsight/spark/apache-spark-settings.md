@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: cdef21c69e8f05924097d57bbe78b86d38497b86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188154"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark-instellingen configureren
@@ -36,9 +36,9 @@ Wanneer u een nieuw cluster maakt, zijn er meerdere Spark-versies waaruit u kunt
 
 Apache Spark heeft drie systeem configuratie locaties:
 
-* Spark-eigenschappen bepalen de meeste toepassings parameters en kunnen worden ingesteld met `SparkConf` behulp van een-object of via Java-systeem eigenschappen.
-* Omgevings variabelen kunnen worden gebruikt voor het instellen van instellingen per computer, zoals het IP-adres, `conf/spark-env.sh` door het script op elk knoop punt.
-* Logboek registratie kan worden geconfigureerd `log4j.properties`via.
+* Spark-eigenschappen bepalen de meeste toepassings parameters en kunnen worden ingesteld met behulp van een `SparkConf` -object of via Java-systeem eigenschappen.
+* Omgevings variabelen kunnen worden gebruikt voor het instellen van instellingen per computer, zoals het IP-adres, door het `conf/spark-env.sh` script op elk knoop punt.
+* Logboek registratie kan worden geconfigureerd via `log4j.properties` .
 
 Wanneer u een bepaalde versie van Spark selecteert, bevat uw cluster de standaard configuratie-instellingen.  U kunt de standaard Spark-configuratie waarden wijzigen met behulp van een aangepast Spark-configuratie bestand.  Hieronder kunt u een voorbeeld bekijken.
 
@@ -60,7 +60,7 @@ Controleer de huidige configuratie-instellingen voor het HDInsight-cluster voord
 
 De Apache Ambari-webgebruikersinterface wordt weer gegeven, met een dash board met belang rijke gegevens over het resource gebruik van het cluster.  Het Ambari-dash board toont u de Apache Spark configuratie en andere geïnstalleerde services. Het dash board bevat een tabblad van de **configuratie geschiedenis** , waar u informatie bekijkt voor geïnstalleerde services, waaronder Spark.
 
-Als u de configuratie waarden voor Apache Spark wilt bekijken, selecteert u **configuratie geschiedenis**en selecteert u **Spark2**.  Selecteer het tabblad **configuraties** en selecteer vervolgens de `Spark` koppeling ( `Spark2`of, afhankelijk van uw versie) in de lijst met Services.  U ziet een lijst met configuratie waarden voor het cluster:
+Als u de configuratie waarden voor Apache Spark wilt bekijken, selecteert u **configuratie geschiedenis**en selecteert u **Spark2**.  Selecteer het tabblad **configuraties** en selecteer vervolgens de `Spark` koppeling (of `Spark2` , afhankelijk van uw versie) in de lijst met Services.  U ziet een lijst met configuratie waarden voor het cluster:
 
 ![Spark-configuraties](./media/apache-spark-settings/spark-configurations.png)
 
@@ -85,7 +85,7 @@ Het volgende diagram toont de belangrijkste Spark-objecten: het stuur programma 
 
 Spark-taken gebruiken werk resources, met name geheugen, zodat het gebruikelijk is om Spark-configuratie waarden aan te passen voor uitvoerder van worker-knoop punten.
 
-Drie belang rijke para meters die vaak worden aangepast aan het afstemmen van Spark `spark.executor.instances`- `spark.executor.cores`configuraties om `spark.executor.memory`de toepassings vereisten te verbeteren, zijn, en. Een uitvoerder is een proces dat wordt gestart voor een Spark-toepassing. Een uitvoerder wordt uitgevoerd op het worker-knoop punt en is verantwoordelijk voor de taken voor de toepassing. Het aantal worker-knoop punten en de grootte van het worker-knoop punt bepaalt het aantal uitvoerende schijven en de uitvoerings grootte. Deze waarden worden opgeslagen in `spark-defaults.conf` op de hoofd knooppunten van het cluster.  U kunt deze waarden bewerken in een cluster dat wordt uitgevoerd door **aangepaste Spark-standaard waarden** te selecteren in de Ambari-webgebruikersinterface.  Nadat u wijzigingen hebt aangebracht, wordt u door de gebruikers interface gevraagd om alle betrokken services opnieuw op te **starten** .
+Drie belang rijke para meters die vaak worden aangepast aan het afstemmen van Spark-configuraties om de toepassings vereisten te verbeteren, zijn, `spark.executor.instances` `spark.executor.cores` en `spark.executor.memory` . Een uitvoerder is een proces dat wordt gestart voor een Spark-toepassing. Een uitvoerder wordt uitgevoerd op het worker-knoop punt en is verantwoordelijk voor de taken voor de toepassing. Het aantal worker-knoop punten en de grootte van het worker-knoop punt bepaalt het aantal uitvoerende schijven en de uitvoerings grootte. Deze waarden worden opgeslagen in `spark-defaults.conf` op de hoofd knooppunten van het cluster.  U kunt deze waarden bewerken in een cluster dat wordt uitgevoerd door **aangepaste Spark-standaard waarden** te selecteren in de Ambari-webgebruikersinterface.  Nadat u wijzigingen hebt aangebracht, wordt u door de gebruikers interface gevraagd om alle betrokken services opnieuw op te **starten** .
 
 > [!NOTE]  
 > Deze drie configuratie parameters kunnen worden geconfigureerd op cluster niveau (voor alle toepassingen die in het cluster worden uitgevoerd) en ook zijn opgegeven voor elke afzonderlijke toepassing.
@@ -112,14 +112,14 @@ In de volgende lijst ziet u de para meters voor Key Spark-bewerkings geheugen.
 
 |Parameter |Beschrijving|
 |---|---|
-|Spark. uitvoerbaar geheugen|Hiermee definieert u de totale hoeveelheid geheugen die beschikbaar is voor een uitvoerder.|
+|spark.executor. Memory|Hiermee definieert u de totale hoeveelheid geheugen die beschikbaar is voor een uitvoerder.|
 |Spark. storage. memoryFraction|(standaard ~ 60%) Hiermee definieert u de hoeveelheid geheugen die beschikbaar is voor het opslaan van persistente Rdd's.|
 |Spark. wille keurige. memoryFraction|(standaard ~ 20%) Hiermee definieert u de hoeveelheid geheugen die is gereserveerd voor wille keurige volg orde.|
 |Spark. storage. unrollFraction en Spark. storage. safetyFraction|(totaal ongeveer 30% van het totale geheugen): deze waarden worden intern gebruikt door Spark en mogen niet worden gewijzigd.|
 
 GAREN beheert de maximale hoeveelheid geheugen die wordt gebruikt door de containers op elk Spark-knoop punt. In het volgende diagram ziet u de relaties per knoop punt tussen garen configuratie objecten en Spark-objecten.
 
-![Vonk geheugen beheer van garen](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
+![Geheugenbeheer met YARN Spark](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
 
 ## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Para meters wijzigen voor een toepassing die wordt uitgevoerd in Jupyter notebook
 
@@ -133,10 +133,10 @@ Spark-clusters in HDInsight bevatten standaard een aantal onderdelen. Elk van de
 |Jupyter-en Apache Zeppelin-notebooks|Interactieve gebruikers interface voor interactie met uw Spark-cluster.|
 |ODBC-stuurprogramma|Verbindt Spark-clusters in HDInsight-naar-business intelligence-hulpprogram ma's (BI), zoals micro soft Power BI en tableau.|
 
-Voor toepassingen die worden uitgevoerd in de Jupyter-notebook `%%configure` , gebruikt u de opdracht om configuratie wijzigingen aan te brengen in het notitie blok zelf. Deze configuratie wijzigingen worden toegepast op de Spark-taken die worden uitgevoerd vanuit uw notebook-exemplaar. Breng deze wijzigingen aan het begin van de toepassing aan voordat u de eerste code-cel uitvoert. De gewijzigde configuratie wordt toegepast op de livy-sessie wanneer deze wordt gemaakt.
+Voor toepassingen die worden uitgevoerd in de Jupyter-notebook, gebruikt u de `%%configure` opdracht om configuratie wijzigingen aan te brengen in het notitie blok zelf. Deze configuratie wijzigingen worden toegepast op de Spark-taken die worden uitgevoerd vanuit uw notebook-exemplaar. Breng deze wijzigingen aan het begin van de toepassing aan voordat u de eerste code-cel uitvoert. De gewijzigde configuratie wordt toegepast op de livy-sessie wanneer deze wordt gemaakt.
 
 > [!NOTE]  
-> Als u de configuratie in een later stadium in de toepassing wilt wijzigen, `-f` gebruikt u de para meter (Force). De voortgang van de toepassing gaat echter verloren.
+> Als u de configuratie in een later stadium in de toepassing wilt wijzigen, gebruikt u de `-f` para meter (Force). De voortgang van de toepassing gaat echter verloren.
 
 De volgende code laat zien hoe u de configuratie wijzigt voor een toepassing die wordt uitgevoerd in een Jupyter-notebook.
 

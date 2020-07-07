@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: tamram
 ms.openlocfilehash: 4ade2c2e60373298eecf4e85df7fffeae4f45207
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82176618"
 ---
 # <a name="manage-storage-account-access-keys"></a>Toegangs sleutels voor opslag accounts beheren
@@ -42,7 +42,7 @@ De toegangs sleutels of connection string van uw opslag account weer geven en ko
 
 Roep de [Get-AzStorageAccountKey-](/powershell/module/az.Storage/Get-azStorageAccountKey) opdracht aan om de toegangs sleutels van uw account op te halen met Power shell.
 
-In het volgende voor beeld wordt de eerste sleutel opgehaald. Als u de tweede sleutel wilt ophalen `Value[1]` , gebruikt `Value[0]`u in plaats van. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden.
+In het volgende voor beeld wordt de eerste sleutel opgehaald. Als u de tweede sleutel wilt ophalen, gebruikt u `Value[1]` in plaats van `Value[0]` . Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden.
 
 ```powershell
 $storageAccountKey = `
@@ -108,7 +108,7 @@ De toegangs sleutels van uw opslag account met Power shell draaien:
     ```
 
 1. Werk de verbindingsreeksen in uw code bij, zodat deze verwijzen naar de nieuwe primaire toegangssleutel.
-1. Genereer de secundaire toegangssleutel op dezelfde manier opnieuw. Als u de secundaire sleutel opnieuw wilt genereren `key2` , gebruikt u als sleutel naam `key1`in plaats van.
+1. Genereer de secundaire toegangssleutel op dezelfde manier opnieuw. Als u de secundaire sleutel opnieuw wilt genereren, gebruikt u `key2` als sleutel naam in plaats van `key1` .
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
@@ -125,7 +125,7 @@ De toegangs sleutels van uw opslag account met Azure CLI draaien:
     ```
 
 1. Werk de verbindingsreeksen in uw code bij, zodat deze verwijzen naar de nieuwe primaire toegangssleutel.
-1. Genereer de secundaire toegangssleutel op dezelfde manier opnieuw. Als u de secundaire sleutel opnieuw wilt genereren `key2` , gebruikt u als sleutel naam `key1`in plaats van.
+1. Genereer de secundaire toegangssleutel op dezelfde manier opnieuw. Als u de secundaire sleutel opnieuw wilt genereren, gebruikt u `key2` als sleutel naam in plaats van `key1` .
 
 ---
 
@@ -137,4 +137,4 @@ Als u de toegangs sleutels van een account wilt draaien, moet de gebruiker een s
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Overzicht van Azure Storage-account](storage-account-overview.md)
-- [Create a storage account](storage-account-create.md)
+- [Een opslagaccount maken](storage-account-create.md)

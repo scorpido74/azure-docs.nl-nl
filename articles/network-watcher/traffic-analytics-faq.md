@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
 ms.openlocfilehash: 2402e72d2ef9fcda46f2f40bff48759262ee30e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82189042"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Veelgestelde vragen over Traffic Analytics
@@ -330,25 +330,25 @@ De pagina GeoMap bevat twee hoofd secties:
 ### <a name="keyboard-navigation-on-the-banner"></a>Toetsenbord navigatie op de banner
     
 - Standaard is de selectie op de pagina GeoMap voor de banner het filter ' Azure DCs '.
-- Als u wilt overstappen op een ander `Tab` filter, `Right arrow` gebruikt u de of de-sleutel. Als u naar achteren wilt gaan `Shift+Tab` , gebruikt `Left arrow` u de of de-sleutel. Forward navigatie is van links naar rechts, gevolgd door boven naar beneden.
-- Druk `Enter` op de `Down` pijl toets om het geselecteerde filter toe te passen. Op basis van filter selectie en-implementatie worden een of meer knoop punten onder de kaart sectie gemarkeerd.
-- Als u wilt scha kelen tussen banners `Ctrl+F6`en kaarten, drukt u op.
+- Als u wilt overstappen op een ander filter, gebruikt u de `Tab` of de- `Right arrow` sleutel. Als u naar achteren wilt gaan, gebruikt u de `Shift+Tab` of de- `Left arrow` sleutel. Forward navigatie is van links naar rechts, gevolgd door boven naar beneden.
+- Druk op `Enter` de `Down` pijl toets om het geselecteerde filter toe te passen. Op basis van filter selectie en-implementatie worden een of meer knoop punten onder de kaart sectie gemarkeerd.
+- Als u wilt scha kelen tussen banners en kaarten, drukt u op `Ctrl+F6` .
         
 ### <a name="keyboard-navigation-on-the-map"></a>Toetsenbord navigatie op de kaart
     
-- Nadat u een filter op de banner hebt geselecteerd en erop `Ctrl+F6`hebt geklikt, wordt de focus verplaatst naar een van de gemarkeerde knoop punten (**Azure Data Center** of **land/regio**) in de kaart weergave.
-- Als u wilt overstappen op andere gemarkeerde knoop `Tab` punten in `Right arrow` de kaart, gebruikt u of de sleutel voor voorwaartse verplaatsing. Gebruik `Shift+Tab` of de `Left arrow` sleutel voor achterwaartse verplaatsing.
-- Als u een gemarkeerd knoop punt in de kaart wilt selecteren `Enter` , `Down arrow` gebruikt u de of-sleutel.
-- Wanneer u een van deze knoop punten selecteert, wordt de focus verplaatst naar het **vak informatie** van het knoop punt. De focus wordt standaard verplaatst naar de knop gesloten in het **dialoog venster informatie**. Als u verder wilt gaan in de weer gave `Right arrow` van `Left arrow` het **vak** , gebruikt u en de toetsen om respectievelijk vooruit en achteruit te gaan. Wanneer `Enter` u op hetzelfde effect klikt, wordt de knop prioriteit geselecteerd in het **dialoog venster informatie**.
-- Wanneer u op `Tab` de **knop info**klikt terwijl de focus is, wordt de focus verplaatst naar de eind punten in hetzelfde continent als het geselecteerde knoop punt. Gebruik de `Right arrow` - `Left arrow` en-sleutels om deze eind punten te door lopen.
-- Als u wilt overstappen op andere flow-eind punten `Tab` of continenten clusters `Shift+Tab` , gebruikt u voor voorwaartse verplaatsing en voor achterwaartse verplaatsing.
-- Wanneer de focus zich op **continent-clusters**bevindt, gebruikt u de `Enter` of `Down` de pijl toetsen om de eind punten in het continent-cluster te markeren. Als u de eind punten wilt door lopen en de knop Sluiten in het vak informatie van het continent-cluster `Right arrow` , `Left arrow` gebruikt u respectievelijk de of-sleutel voor voorwaartse en achterwaartse verplaatsing. Op elk eind punt kunt u gebruiken `Shift+L` om over te scha kelen naar de verbindings lijn van het geselecteerde knoop punt naar het eind punt. U kunt opnieuw `Shift+L` op het geselecteerde eind punt drukken om door te gaan.
+- Nadat u een filter op de banner hebt geselecteerd en erop hebt geklikt `Ctrl+F6` , wordt de focus verplaatst naar een van de gemarkeerde knoop punten (**Azure Data Center** of **land/regio**) in de kaart weergave.
+- Als u wilt overstappen op andere gemarkeerde knoop punten in de kaart, gebruikt u `Tab` of de `Right arrow` sleutel voor voorwaartse verplaatsing. Gebruik `Shift+Tab` of de `Left arrow` sleutel voor achterwaartse verplaatsing.
+- Als u een gemarkeerd knoop punt in de kaart wilt selecteren, gebruikt u de `Enter` of- `Down arrow` sleutel.
+- Wanneer u een van deze knoop punten selecteert, wordt de focus verplaatst naar het **vak informatie** van het knoop punt. De focus wordt standaard verplaatst naar de knop gesloten in het **dialoog venster informatie**. Als u verder wilt gaan in de weer gave van het **vak** , gebruikt u `Right arrow` en de `Left arrow` toetsen om respectievelijk vooruit en achteruit te gaan. Wanneer `Enter` u op hetzelfde effect klikt, wordt de knop prioriteit geselecteerd in het **dialoog venster informatie**.
+- Wanneer u op de `Tab` **knop info**klikt terwijl de focus is, wordt de focus verplaatst naar de eind punten in hetzelfde continent als het geselecteerde knoop punt. Gebruik de- `Right arrow` en- `Left arrow` sleutels om deze eind punten te door lopen.
+- Als u wilt overstappen op andere flow-eind punten of continenten clusters, gebruikt u `Tab` voor voorwaartse verplaatsing en `Shift+Tab` voor achterwaartse verplaatsing.
+- Wanneer de focus zich op **continent-clusters**bevindt, gebruikt u de `Enter` of de `Down` pijl toetsen om de eind punten in het continent-cluster te markeren. Als u de eind punten wilt door lopen en de knop Sluiten in het vak informatie van het continent-cluster, gebruikt u `Right arrow` respectievelijk de of `Left arrow` -sleutel voor voorwaartse en achterwaartse verplaatsing. Op elk eind punt kunt u gebruiken `Shift+L` om over te scha kelen naar de verbindings lijn van het geselecteerde knoop punt naar het eind punt. U kunt `Shift+L` opnieuw op het geselecteerde eind punt drukken om door te gaan.
         
 ### <a name="keyboard-navigation-at-any-stage"></a>Toetsenbord navigatie in elk stadium
     
 - `Esc`Hiermee wordt de uitgevouwen selectie samengevouwen.
-- De `Up arrow` sleutel voert dezelfde actie uit als `Esc`. De `Down arrow` sleutel voert dezelfde actie uit als `Enter`.
-- Gebruiken `Shift+Plus` om in te zoomen `Shift+Minus` en uit te zoomen.
+- De `Up arrow` sleutel voert dezelfde actie uit als `Esc` . De `Down arrow` sleutel voert dezelfde actie uit als `Enter` .
+- Gebruiken `Shift+Plus` om in te zoomen en `Shift+Minus` uit te zoomen.
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-virtual-network-topology-view"></a>Hoe kan ik navigeren met behulp van het toetsen bord in de topologie weergave van het virtuele netwerk?
 
@@ -360,16 +360,16 @@ De pagina topologie virtuele netwerken bevat twee hoofd secties:
 ### <a name="keyboard-navigation-on-the-banner"></a>Toetsenbord navigatie op de banner
     
 - De selectie op de topologie pagina met virtuele netwerken voor de banner is standaard het filter ' verbonden VNets '.
-- Als u wilt overstappen op een `Tab` ander filter, gebruikt u de sleutel om door te gaan. Gebruik de `Shift+Tab` sleutel om terug te gaan. Forward navigatie is van links naar rechts, gevolgd door boven naar beneden.
-- Druk `Enter` op om het geselecteerde filter toe te passen. Op basis van de filter selectie en-implementatie worden een of meer knoop punten (virtueel netwerk) onder de sectie topologie gemarkeerd.
-- Als u wilt scha kelen tussen de banner en de `Ctrl+F6`topologie, drukt u op.
+- Als u wilt overstappen op een ander filter, gebruikt u de `Tab` sleutel om door te gaan. Gebruik de sleutel om terug te gaan `Shift+Tab` . Forward navigatie is van links naar rechts, gevolgd door boven naar beneden.
+- Druk op `Enter` om het geselecteerde filter toe te passen. Op basis van de filter selectie en-implementatie worden een of meer knoop punten (virtueel netwerk) onder de sectie topologie gemarkeerd.
+- Als u wilt scha kelen tussen de banner en de topologie, drukt u op `Ctrl+F6` .
         
 ### <a name="keyboard-navigation-on-the-topology"></a>Toetsenbord navigatie op de topologie
     
-- Nadat u een filter op de banner hebt geselecteerd en erop `Ctrl+F6`hebt geklikt, wordt de focus verplaatst naar een van de gemarkeerde knoop punten (**VNet**) in de weer gave topologie.
-- Als u wilt overstappen op andere gemarkeerde knoop punten `Shift+Right arrow` in de topologie weergave, gebruikt u de sleutel voor voorwaarts verplaatsen. 
-- Focus wordt op gemarkeerde knoop punten verplaatst naar het **vak informatie** van het knoop punt. Focus gaat standaard naar de knop **meer details** in het **dialoog venster informatie**. Als u verder wilt verplaatsen in de weer gave van `Right arrow` het `Left arrow` **vak** , gebruikt u de-en-sleutels om respectievelijk vooruit en achteruit te gaan. Wanneer `Enter` u op hetzelfde effect klikt, wordt de knop prioriteit geselecteerd in het **dialoog venster informatie**.
-- Wanneer u een van deze knoop punten selecteert, kunt u alle verbindingen met één voor één bekijken door op de `Shift+Left arrow` toets te drukken. Focus wordt verplaatst naar het **vak informatie** van deze verbinding. De focus kan op elk gewenst moment worden teruggedraaid naar het knoop punt door opnieuw `Shift+Right arrow` op te drukken.
+- Nadat u een filter op de banner hebt geselecteerd en erop hebt geklikt `Ctrl+F6` , wordt de focus verplaatst naar een van de gemarkeerde knoop punten (**VNet**) in de weer gave topologie.
+- Als u wilt overstappen op andere gemarkeerde knoop punten in de topologie weergave, gebruikt u de `Shift+Right arrow` sleutel voor voorwaarts verplaatsen. 
+- Focus wordt op gemarkeerde knoop punten verplaatst naar het **vak informatie** van het knoop punt. Focus gaat standaard naar de knop **meer details** in het **dialoog venster informatie**. Als u verder wilt verplaatsen in de weer gave van het **vak** , gebruikt `Right arrow` u de `Left arrow` -en-sleutels om respectievelijk vooruit en achteruit te gaan. Wanneer `Enter` u op hetzelfde effect klikt, wordt de knop prioriteit geselecteerd in het **dialoog venster informatie**.
+- Wanneer u een van deze knoop punten selecteert, kunt u alle verbindingen met één voor één bekijken door op de `Shift+Left arrow` toets te drukken. Focus wordt verplaatst naar het **vak informatie** van deze verbinding. De focus kan op elk gewenst moment worden teruggedraaid naar het knoop punt door opnieuw op te drukken `Shift+Right arrow` .
     
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-subnet-topology-view"></a>Hoe kan ik navigeren met behulp van het toetsen bord in de weer gave van de subnet-topologie?
@@ -382,14 +382,14 @@ De pagina topologie virtuele subnetwerken bevat twee hoofd secties:
 ### <a name="keyboard-navigation-on-the-banner"></a>Toetsenbord navigatie op de banner
     
 - De selectie op de topologie pagina virtuele subnetwerken voor de banner is standaard het filter subnetten.
-- Als u wilt overstappen op een `Tab` ander filter, gebruikt u de sleutel om door te gaan. Gebruik de `Shift+Tab` sleutel om terug te gaan. Forward navigatie is van links naar rechts, gevolgd door boven naar beneden.
-- Druk `Enter` op om het geselecteerde filter toe te passen. Op basis van filter selectie en-implementatie worden een of meer knoop punten (subnet) onder de sectie topologie gemarkeerd.
-- Als u wilt scha kelen tussen de banner en de `Ctrl+F6`topologie, drukt u op.
+- Als u wilt overstappen op een ander filter, gebruikt u de `Tab` sleutel om door te gaan. Gebruik de sleutel om terug te gaan `Shift+Tab` . Forward navigatie is van links naar rechts, gevolgd door boven naar beneden.
+- Druk op `Enter` om het geselecteerde filter toe te passen. Op basis van filter selectie en-implementatie worden een of meer knoop punten (subnet) onder de sectie topologie gemarkeerd.
+- Als u wilt scha kelen tussen de banner en de topologie, drukt u op `Ctrl+F6` .
         
 ### <a name="keyboard-navigation-on-the-topology"></a>Toetsenbord navigatie op de topologie
     
-- Nadat u een filter op de banner hebt geselecteerd en erop `Ctrl+F6`hebt geklikt, wordt de focus verplaatst naar een van de gemarkeerde knoop punten (**subnet**) in de weer gave topologie.
-- Als u wilt overstappen op andere gemarkeerde knoop punten `Shift+Right arrow` in de topologie weergave, gebruikt u de sleutel voor voorwaarts verplaatsen. 
-- Focus wordt op gemarkeerde knoop punten verplaatst naar het **vak informatie** van het knoop punt. Focus gaat standaard naar de knop **meer details** in het **dialoog venster informatie**. Als u verder wilt gaan in de weer gave `Right arrow` van `Left arrow` het **vak** , gebruikt u en de toetsen om respectievelijk vooruit en achteruit te gaan. Wanneer `Enter` u op hetzelfde effect klikt, wordt de knop prioriteit geselecteerd in het **dialoog venster informatie**.
-- Wanneer u een van deze knoop punten selecteert, kunt u alle verbindingen met één voor één bekijken door op `Shift+Left arrow` de toets te drukken. Focus wordt verplaatst naar het **vak informatie** van deze verbinding. De focus kan op elk gewenst moment worden teruggedraaid naar het knoop punt door opnieuw `Shift+Right arrow` op te drukken.    
+- Nadat u een filter op de banner hebt geselecteerd en erop hebt geklikt `Ctrl+F6` , wordt de focus verplaatst naar een van de gemarkeerde knoop punten (**subnet**) in de weer gave topologie.
+- Als u wilt overstappen op andere gemarkeerde knoop punten in de topologie weergave, gebruikt u de `Shift+Right arrow` sleutel voor voorwaarts verplaatsen. 
+- Focus wordt op gemarkeerde knoop punten verplaatst naar het **vak informatie** van het knoop punt. Focus gaat standaard naar de knop **meer details** in het **dialoog venster informatie**. Als u verder wilt gaan in de weer gave van het **vak** , gebruikt u `Right arrow` en de `Left arrow` toetsen om respectievelijk vooruit en achteruit te gaan. Wanneer `Enter` u op hetzelfde effect klikt, wordt de knop prioriteit geselecteerd in het **dialoog venster informatie**.
+- Wanneer u een van deze knoop punten selecteert, kunt u alle verbindingen met één voor één bekijken door op de toets te drukken `Shift+Left arrow` . Focus wordt verplaatst naar het **vak informatie** van deze verbinding. De focus kan op elk gewenst moment worden teruggedraaid naar het knoop punt door opnieuw op te drukken `Shift+Right arrow` .    
 

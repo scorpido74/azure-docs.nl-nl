@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
 ms.openlocfilehash: 4601a7f5da8d6e4eda2ee433fe52d08a6341ce6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186013"
 ---
 # <a name="plan-virtual-networks"></a>Virtuele netwerken plannen
@@ -35,7 +35,7 @@ Alle Azure-resources worden gemaakt in een Azure-regio en-abonnement. Een resour
 - Hebt u de vereisten voor gegevens locatie, soevereiniteit, naleving of tolerantie? Als dit het geval is, kiest u de regio die aan de vereisten voldoet. Zie [Azure-geografi](https://azure.microsoft.com/global-infrastructure/geographies/)(Engelstalig) voor meer informatie.
 - Hebt u tolerantie nodig over Azure-beschikbaarheidszones in dezelfde Azure-regio voor de resources die u implementeert? U kunt resources, zoals virtuele machines (VM), implementeren in verschillende beschikbaarheids zones binnen hetzelfde virtuele netwerk. Niet alle Azure-regio's ondersteunen echter beschikbaarheids zones. Zie [beschikbaarheids zones](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over beschikbaarheids zones en de regio's die deze ondersteunen.
 
-## <a name="subscriptions"></a>Subscriptions
+## <a name="subscriptions"></a>Abonnementen
 
 U kunt zoveel virtuele netwerken implementeren als vereist in elk abonnement, tot aan de [limiet](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Sommige organisaties hebben bijvoorbeeld verschillende abonnementen voor verschillende afdelingen. Zie voor meer informatie en overwegingen met betrekking tot abonnementen het beheer van [abonnementen](/azure/cloud-adoption-framework/reference/migration-with-enterprise-scaffold#define-your-hierarchy).
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: 5abc3395152e03520eaff14b02d150892abf0e22
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82184211"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>JSON-documenten verwerken en analyseren met behulp van Apache Hive in azure HDInsight
@@ -56,7 +56,7 @@ Meer informatie over het verwerken en analyseren van JavaScript Object Notation 
 }
 ```
 
-Het bestand bevindt zich `wasb://processjson@hditutorialdata.blob.core.windows.net/`op. Zie voor meer informatie over het gebruik van Azure Blob Storage met HDInsight [gebruik van HDFS-compatibele Azure Blob Storage met Apache Hadoop in HDInsight](../hdinsight-hadoop-use-blob-storage.md). U kunt het bestand kopiëren naar de standaard container van uw cluster.
+Het bestand bevindt zich op `wasb://processjson@hditutorialdata.blob.core.windows.net/` . Zie voor meer informatie over het gebruik van Azure Blob Storage met HDInsight [gebruik van HDFS-compatibele Azure Blob Storage met Apache Hadoop in HDInsight](../hdinsight-hadoop-use-blob-storage.md). U kunt het bestand kopiëren naar de standaard container van uw cluster.
 
 In dit artikel gebruikt u de Apache Hive-console. Zie [Apache Ambari-Hive View gebruiken met Apache Hadoop in HDInsight](apache-hadoop-use-hive-ambari-view.md)voor instructies over het openen van de Hive-console.
 
@@ -86,7 +86,7 @@ SELECT CONCAT_WS(' ',COLLECT_LIST(textcol)) AS singlelineJSON
 SELECT * FROM StudentsOneLine
 ```
 
-Het onbewerkte JSON-bestand `wasb://processjson@hditutorialdata.blob.core.windows.net/`bevindt zich op. De **StudentsRaw** -Hive-tabel verwijst naar het onbewerkte JSON-document dat niet wordt afgevlakt.
+Het onbewerkte JSON-bestand bevindt zich op `wasb://processjson@hditutorialdata.blob.core.windows.net/` . De **StudentsRaw** -Hive-tabel verwijst naar het onbewerkte JSON-document dat niet wordt afgevlakt.
 
 De **StudentsOneLine** -Hive-tabel slaat de gegevens op in het standaard bestands systeem HDInsight onder het pad **/JSON/Students/** .
 
@@ -127,7 +127,7 @@ Dit is de uitvoer wanneer u deze query uitvoert in het console venster:
 Er gelden beperkingen voor de get_json_object UDF:
 
 * Omdat voor elk veld in de query de query opnieuw moet worden geparseerd, heeft dit invloed op de prestaties.
-* **GET\_JSON_OBJECT ()** retourneert de teken reeks representatie van een matrix. Als u deze matrix wilt omzetten in een Hive-matrix, moet u reguliere expressies gebruiken om de vier Kante haken "[" en "]" te vervangen. vervolgens moet u split aanroepen om de matrix op te halen.
+* **Ophalen \_ JSON_OBJECT ()** retourneert de teken reeks weergave van een matrix. Als u deze matrix wilt omzetten in een Hive-matrix, moet u reguliere expressies gebruiken om de vier Kante haken "[" en "]" te vervangen. vervolgens moet u split aanroepen om de matrix op te halen.
 
 Deze conversie is de reden waarom de Hive-wiki adviseert om **json_tuple**te gebruiken.  
 
@@ -146,7 +146,7 @@ De uitvoer van dit script in de Hive-console:
 
 ![Apache Hive JSON-query resultaten](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
-De `json_tuple` UDF maakt gebruik van de syntaxis voor de [zijdelingse weer gave](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) in Hive, waarmee JSON\_tuple een virtuele tabel kan maken door de UDT-functie toe te passen op elke rij van de oorspronkelijke tabel. Complexe JSONs zijn te moeilijk geworden vanwege het herhaalde gebruik van een **laterere weer gave**. Bovendien kunnen geneste JSONs niet worden verwerkt met **JSON_TUPLE** .
+De `json_tuple` UDF maakt gebruik van de syntaxis voor de [zijdelingse weer gave](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) in Hive, waarmee JSON \_ tuple een virtuele tabel kan maken door de UDT-functie toe te passen op elke rij van de oorspronkelijke tabel. Complexe JSONs zijn te moeilijk geworden vanwege het herhaalde gebruik van een **laterere weer gave**. Bovendien kunnen geneste JSONs niet worden verwerkt met **JSON_TUPLE** .
 
 ### <a name="use-a-custom-serde"></a>Een aangepaste SerDe gebruiken
 

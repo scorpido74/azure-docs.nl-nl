@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seodec18,seoapr2020
 ms.date: 04/17/2020
 ms.openlocfilehash: 2b4756990162817087b0904a764b97526c3545d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186648"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>Enterprise Security Package configuraties met Azure Active Directory Domain Services in HDInsight
@@ -43,7 +43,7 @@ U kunt ervoor kiezen om alleen de groepen te synchroniseren die toegang nodig he
 
 Wanneer u beveiligd LDAP inschakelt, plaatst u de domein naam in de onderwerpnaam. En de alternatieve naam voor het onderwerp in het certificaat. Als uw domein naam *contoso100.onmicrosoft.com*is, moet u ervoor zorgen dat de exacte naam bestaat in de onderwerpnaam van het certificaat en de alternatieve naam voor het onderwerp. Zie [Configure secure LDAP for a Azure AD DS Managed Domain](../../active-directory-domain-services/tutorial-configure-ldaps.md)(Engelstalig) voor meer informatie.
 
-In het volgende voor beeld wordt een zelfondertekend certificaat gemaakt. De domein naam *contoso100.onmicrosoft.com* bevindt `Subject` zich in beide (object `DnsName` naam) en (alternatieve naam voor onderwerp).
+In het volgende voor beeld wordt een zelfondertekend certificaat gemaakt. De domein naam *contoso100.onmicrosoft.com* bevindt zich in beide `Subject` (object naam) en `DnsName` (alternatieve naam voor onderwerp).
 
 ```powershell
 $lifetime=Get-Date
@@ -64,13 +64,13 @@ Gebruik een door de *gebruiker toegewezen beheerde identiteit* voor het vereenvo
 
 Bepaalde Domain Services-bewerkingen, zoals het maken van organisatie-eenheden en service-principals, zijn vereist voor HDInsight-Enterprise Security Package. U kunt in elk abonnement beheerde identiteiten maken. Zie [beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie over beheerde identiteiten in het algemeen. Zie [beheerde identiteiten in azure hdinsight](../hdinsight-managed-identities.md)voor meer informatie over de werking van beheerde identiteiten in azure hdinsight.
 
-Als u ESP-clusters wilt instellen, moet u een door de gebruiker toegewezen beheerde identiteit maken als u er nog geen hebt. Zie [`Create, list, delete, or assign a role to a user-assigned managed identity by using the Azure portal`](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
+Als u ESP-clusters wilt instellen, moet u een door de gebruiker toegewezen beheerde identiteit maken als u er nog geen hebt. Zie [`Create, list, delete, or assign a role to a user-assigned managed identity by using the Azure portal`](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) .
 
 Wijs vervolgens de rol van **HDInsight Domain Services-Inzender** toe aan de beheerde identiteit in **toegangs beheer** voor Azure AD DS. U hebt Azure AD DS-beheerders bevoegdheden nodig om deze roltoewijzing te kunnen maken.
 
 ![Toegangs beheer Azure Active Directory Domain Services](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-configure-managed-identity.png)
 
-Als u de functie voor het toewijzen van de **HDInsight Domain Services** -Inzender`on behalf of`hebt, zorgt u ervoor dat deze identiteit over de juiste () toegang beschikt voor de bewerkingen van domein Services op het Azure AD DS domein. Deze bewerkingen zijn onder andere het maken en verwijderen van organisatie-eenheden.
+Als u de functie voor het toewijzen van de **HDInsight Domain Services-Inzender** hebt, zorgt u ervoor dat deze identiteit `on behalf of` over de juiste () toegang beschikt voor de bewerkingen van domein Services op het Azure AD DS domein. Deze bewerkingen zijn onder andere het maken en verwijderen van organisatie-eenheden.
 
 Wanneer de beheerde identiteit de rol krijgt, beheert de Azure AD DS-beheerder wie deze gebruikt. Eerst selecteert de beheerder de beheerde identiteit in de portal. Selecteert vervolgens **Access Control (IAM)** onder **overzicht**. De beheerder wijst de rol **Managed Identity-operator** toe aan gebruikers of groepen die ESP-clusters willen maken.
 
@@ -93,13 +93,13 @@ Wijzig de configuratie van de DNS-servers in het virtuele netwerk van Azure AD D
 
 Het is eenvoudiger om zowel het Azure AD DS-exemplaar als het HDInsight-cluster in hetzelfde virtuele Azure-netwerk te plaatsen. Als u andere virtuele netwerken wilt gebruiken, moet u deze virtuele netwerken koppelen zodat de domein controller zichtbaar is voor HDInsight Vm's. Zie [peering van virtuele netwerken](../../virtual-network/virtual-network-peering-overview.md)voor meer informatie.
 
-Nadat de virtuele netwerken zijn gekoppeld, configureert u het virtuele HDInsight-netwerk voor het gebruik van een aangepaste DNS-server. En voer de Azure AD DS privé Ip's in als de DNS-server adressen. Als beide virtuele netwerken dezelfde DNS-servers gebruiken, wordt uw aangepaste domein naam omgezet in het juiste IP-adres en is deze bereikbaar vanaf HDInsight. Als uw domein naam bijvoorbeeld is `contoso.com`, `ping contoso.com` moet na deze stap worden omgezet naar het juiste Azure AD DS IP-adres.
+Nadat de virtuele netwerken zijn gekoppeld, configureert u het virtuele HDInsight-netwerk voor het gebruik van een aangepaste DNS-server. En voer de Azure AD DS privé Ip's in als de DNS-server adressen. Als beide virtuele netwerken dezelfde DNS-servers gebruiken, wordt uw aangepaste domein naam omgezet in het juiste IP-adres en is deze bereikbaar vanaf HDInsight. Als uw domein naam bijvoorbeeld is `contoso.com` , moet na deze stap `ping contoso.com` worden omgezet naar het juiste Azure AD DS IP-adres.
 
 ![Aangepaste DNS-servers configureren voor een gekoppeld virtueel netwerk](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
 Als u regels voor netwerk beveiligings groepen (NSG) in uw HDInsight-subnet gebruikt, moet u de [vereiste ip's](../hdinsight-management-ip-addresses.md) toestaan voor zowel binnenkomend als uitgaand verkeer.
 
-Als u de netwerk installatie wilt testen, voegt u een virtuele Windows-machine toe aan het HDInsight-netwerk/subnet en pingt u de domein naam. (Het moet worden omgezet in een IP-adres.) Voer **Ldp. exe** uit om toegang te krijgen tot het Azure AD DS-domein. Voeg deze Windows-VM vervolgens toe aan het domein om te bevestigen dat alle vereiste RPC-aanroepen tussen de client en de server zijn geslaagd.
+Als u de netwerk installatie wilt testen, voegt u een virtuele Windows-machine toe aan het HDInsight-netwerk/subnet en pingt u de domein naam. (Het moet worden omgezet in een IP-adres.) Voer **ldp.exe** uit voor toegang tot het Azure AD DS-domein. Voeg deze Windows-VM vervolgens toe aan het domein om te bevestigen dat alle vereiste RPC-aanroepen tussen de client en de server zijn geslaagd.
 
 Gebruik **nslookup** om de netwerk toegang tot uw opslag account te bevestigen. Of een externe data base die u mogelijk gebruikt (bijvoorbeeld externe Hive-metastore of zwerver DB). Zorg ervoor dat de [vereiste poorten](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) zijn toegestaan in de NSG-regels van het Azure AD DS-subnet als een NSG Azure AD DS beveiligt. Als het domein dat lid is van deze Windows-VM is voltooid, kunt u door gaan met de volgende stap en ESP-clusters maken.
 
@@ -124,7 +124,7 @@ Wanneer u een HDInsight-cluster met ESP maakt, moet u de volgende para meters op
 
 * **Cluster toegangs groepen**: de beveiligings groepen waarvan u de gebruikers wilt synchroniseren en die toegang hebben tot het cluster, moeten beschikbaar zijn in azure AD DS. Een voor beeld is de groep HiveUsers. Zie [een groep maken en leden toevoegen in azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)voor meer informatie.
 
-* **URL van LDAPS**: een voor `ldaps://contoso.com:636`beeld is.
+* **URL van LDAPS**: een voor beeld is `ldaps://contoso.com:636` .
 
 De beheerde identiteit die u hebt gemaakt, kan worden gekozen in de vervolg keuzelijst door de **gebruiker toegewezen beheerde identiteit** wanneer u een nieuw cluster maakt.
 

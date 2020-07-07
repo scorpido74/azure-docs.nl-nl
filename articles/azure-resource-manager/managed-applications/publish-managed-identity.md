@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
 ms.openlocfilehash: 277faa2d47df9fddd1762d90d9aa2fb5bf00d4df
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82508123"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>Door Azure beheerde toepassing met beheerde identiteit
@@ -46,11 +46,11 @@ Voor het maken van een beheerde toepassing met een beheerde identiteit moet een 
 }
 ```
 
-Er zijn twee algemene manieren om een beheerde toepassing te maken met **identiteit**: [CreateUIDefinition. json](./create-uidefinition-overview.md) en [Azure Resource Manager sjablonen](../templates/template-syntax.md). Voor eenvoudige enkelvoudige scenario's moet CreateUIDefinition worden gebruikt om beheerde identiteit in te scha kelen, omdat het een rijkere ervaring biedt. Bij het verwerken van geavanceerde of complexe systemen waarvoor geautomatiseerde of meerdere beheerde toepassings implementaties zijn vereist, kunnen sjablonen echter worden gebruikt.
+Er zijn twee algemene manieren om een beheerde toepassing te maken met **identiteit**: [CreateUIDefinition.jsop](./create-uidefinition-overview.md) en [Azure Resource Manager sjablonen](../templates/template-syntax.md). Voor eenvoudige enkelvoudige scenario's moet CreateUIDefinition worden gebruikt om beheerde identiteit in te scha kelen, omdat het een rijkere ervaring biedt. Bij het verwerken van geavanceerde of complexe systemen waarvoor geautomatiseerde of meerdere beheerde toepassings implementaties zijn vereist, kunnen sjablonen echter worden gebruikt.
 
 ### <a name="using-createuidefinition"></a>CreateUIDefinition gebruiken
 
-Een beheerde toepassing kan met beheerde identiteit worden geconfigureerd via de [CreateUIDefinition. json](./create-uidefinition-overview.md). In de [sectie outputs](./create-uidefinition-overview.md#outputs)kan de sleutel `managedIdentity` worden gebruikt om de eigenschap Identity van de sjabloon beheerde toepassing te overschrijven. Met de voor beeld-onderstaande wordt de door het **systeem toegewezen** identiteit ingeschakeld voor de beheerde toepassing. Complexere identiteits objecten kunnen worden gevormd met behulp van CreateUIDefinition-elementen om de gebruiker te vragen om invoer. Deze invoer kan worden gebruikt om beheerde toepassingen te bouwen met door de **gebruiker toegewezen identiteit**.
+Een beheerde toepassing kan met beheerde identiteit worden geconfigureerd via de [CreateUIDefinition.jsop](./create-uidefinition-overview.md). In de [sectie outputs](./create-uidefinition-overview.md#outputs)kan de sleutel `managedIdentity` worden gebruikt om de eigenschap Identity van de sjabloon beheerde toepassing te overschrijven. Met de voor beeld-onderstaande wordt de door het **systeem toegewezen** identiteit ingeschakeld voor de beheerde toepassing. Complexere identiteits objecten kunnen worden gevormd met behulp van CreateUIDefinition-elementen om de gebruiker te vragen om invoer. Deze invoer kan worden gebruikt om beheerde toepassingen te bouwen met door de **gebruiker toegewezen identiteit**.
 
 ```json
 "outputs": {
@@ -260,7 +260,7 @@ Wanneer u de implementatie van de beheerde toepassing koppelt aan bestaande reso
 }
 ```
 
-Met deze CreateUIDefinition. json wordt een gebruikers ervaring gemaakt met twee velden. In het eerste veld kan de gebruiker de Azure-Resource-ID invoeren voor de resource die wordt gekoppeld aan de implementatie van de beheerde toepassing. De tweede is voor een consument dat de door de **gebruiker toegewezen identiteit** Azure-resource-id wordt ingevoerd die toegang heeft tot de gekoppelde Azure-resource. De gegenereerde ervaring ziet er als volgt uit:
+Deze CreateUIDefinition.jsop het genereren van een gebruikers ervaring met twee velden. In het eerste veld kan de gebruiker de Azure-Resource-ID invoeren voor de resource die wordt gekoppeld aan de implementatie van de beheerde toepassing. De tweede is voor een consument dat de door de **gebruiker toegewezen identiteit** Azure-resource-id wordt ingevoerd die toegang heeft tot de gekoppelde Azure-resource. De gegenereerde ervaring ziet er als volgt uit:
 
 ![Voor beeld van CreateUIDefinition met twee invoer: een resource-ID van een netwerk interface en een door de gebruiker toegewezen id Resource-ID](./media/publish-managed-identity/network-interface-cuid.png)
 
@@ -327,8 +327,8 @@ Para meters van aanvraag hoofdtekst:
 
 Parameter | Vereist | Beschrijving
 ---|---|---
-authorizationAudience | *geen* | De App-ID-URI van de doel resource. Het is ook de `aud` claim (doel groep) van het uitgegeven token. De standaard waarde is "https://management.azure.com/"
-userAssignedIdentities | *geen* | De lijst met door de gebruiker toegewezen beheerde identiteiten voor het ophalen van een token voor. Als u niets opgeeft `listTokens` , wordt het token geretourneerd voor de door het systeem toegewezen beheerde identiteit.
+authorizationAudience | *geen* | De App-ID-URI van de doel resource. Het is ook de `aud` claim (doel groep) van het uitgegeven token. De standaard waarde is " https://management.azure.com/ "
+userAssignedIdentities | *geen* | De lijst met door de gebruiker toegewezen beheerde identiteiten voor het ophalen van een token voor. Als u niets opgeeft, `listTokens` wordt het token geretourneerd voor de door het systeem toegewezen beheerde identiteit.
 
 
 Een voor beeld van een antwoord kan er als volgt uitzien:

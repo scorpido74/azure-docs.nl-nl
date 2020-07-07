@@ -1,6 +1,6 @@
 ---
 title: Automatisch maken van een onderwerp in Apache Kafka-Azure HDInsight inschakelen
-description: Meer informatie over het configureren van Apache Kafka op HDInsight om automatisch onderwerpen te maken. U kunt Kafka configureren door in `auto.create.topics.enable` te stellen op True via Ambari. Of tijdens het maken van een cluster via Power shell of Resource Manager-sjablonen.
+description: Meer informatie over het configureren van Apache Kafka op HDInsight om automatisch onderwerpen te maken. U kunt Kafka configureren door `auto.create.topics.enable` in te stellen op True via Ambari. Of tijdens het maken van een cluster via Power shell of Resource Manager-sjablonen.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
 ms.openlocfilehash: 88dc3e4d761f9b4df63dfa07a24298398f7b0187
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82231268"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Apache Kafka op HDInsight configureren om automatisch onderwerpen te maken
@@ -29,7 +29,7 @@ Gebruik de volgende stappen om het automatisch maken van een onderwerp in een be
 
     ![Afbeelding van de portal waarop het cluster dashboard is geselecteerd](./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png)
 
-    Verifieer, wanneer u hierom wordt gevraagd, met behulp van de aanmeldings referenties (admin) voor het cluster. In plaats daarvan kunt u rechtstreeks verbinding maken met `https://CLUSTERNAME.azurehdinsight.net/` Amabri `CLUSTERNAME` vanuit waar de naam van uw Kafka-cluster is.
+    Verifieer, wanneer u hierom wordt gevraagd, met behulp van de aanmeldings referenties (admin) voor het cluster. In plaats daarvan kunt u rechtstreeks verbinding maken met Amabri vanuit `https://CLUSTERNAME.azurehdinsight.net/` waar `CLUSTERNAME` de naam van uw Kafka-cluster is.
 
 1. Selecteer de Kafka-service in de lijst aan de linkerkant van de pagina.
 
@@ -39,13 +39,13 @@ Gebruik de volgende stappen om het automatisch maken van een onderwerp in een be
 
     ![Tabblad Apache Ambari service-configuratie](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
 
-1. Voer in het veld Filter een waarde van `auto.create`in.
+1. Voer in het veld Filter een waarde van in `auto.create` .
 
     ![Veld Apache Ambari search filter](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
 
-    Met deze instelling wordt de lijst met eigenschappen gefilterd en wordt de `auto.create.topics.enable` instelling weer gegeven.
+    Met deze instelling wordt de lijst met eigenschappen gefilterd en wordt de instelling weer gegeven `auto.create.topics.enable` .
 
-1. Wijzig de waarde van `auto.create.topics.enable` in `true`en selecteer vervolgens **Opslaan**. Voeg een notitie toe en selecteer vervolgens **Opslaan** opnieuw.
+1. Wijzig de waarde van `auto.create.topics.enable` in `true` en selecteer vervolgens **Opslaan**. Voeg een notitie toe en selecteer vervolgens **Opslaan** opnieuw.
 
     ![Afbeelding van het bestand auto. Create. topics. enable entry](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
 
@@ -58,7 +58,7 @@ Gebruik de volgende stappen om het automatisch maken van een onderwerp in een be
 
 ## <a name="resource-manager-templates"></a>Resource Manager-sjablonen
 
-Wanneer u een Kafka-cluster maakt met behulp van een Azure Resource Manager- `auto.create.topics.enable` sjabloon, kunt u dit `kafka-broker`rechtstreeks instellen door het te voegen in een. In het volgende JSON-code fragment ziet u hoe u deze `true`waarde instelt op:
+Wanneer u een Kafka-cluster maakt met behulp van een Azure Resource Manager-sjabloon, kunt u dit rechtstreeks instellen `auto.create.topics.enable` door het te voegen in een `kafka-broker` . In het volgende JSON-code fragment ziet u hoe u deze waarde instelt op `true` :
 
 ```json
 "clusterDefinition": {

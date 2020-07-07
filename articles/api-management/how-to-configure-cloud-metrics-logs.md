@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
 ms.openlocfilehash: d0fbdcb877e91a703306f15fdc7507fd19d534f4
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205129"
 ---
 # <a name="configure-cloud-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Metrische gegevens en logboeken voor de Cloud configureren voor Azure API Management zelf-hostende gateway
@@ -28,11 +28,11 @@ De zelf-hostende gateway moet worden gekoppeld aan een API Management-service en
 ## <a name="metrics"></a>Metrische gegevens
 De zelf-hostende Gateway verzendt standaard een aantal metrische gegevens via [Azure monitor](https://azure.microsoft.com/services/monitor/), hetzelfde als de beheerde gateway [in de Cloud](api-management-howto-use-azure-monitor.md). 
 
-De functie kan worden ingeschakeld of uitgeschakeld met behulp van de `telemetry.metrics.cloud` sleutel in de ConfigMap van de gateway-implementatie. Hieronder vindt u een uitsplitsing van de beschik bare configuraties:
+De functie kan worden ingeschakeld of uitgeschakeld met behulp `telemetry.metrics.cloud` van de sleutel in de ConfigMap van de gateway-implementatie. Hieronder vindt u een uitsplitsing van de beschik bare configuraties:
 
 | Veld  | Standaard | Beschrijving |
 | ------------- | ------------- | ------------- |
-| telemetrie. Metrics. Cloud  | `true` | Hiermee schakelt u logboek registratie via Azure Monitor in. Waarde kan zijn `true`, `false`. |
+| telemetrie. Metrics. Cloud  | `true` | Hiermee schakelt u logboek registratie via Azure Monitor in. Waarde kan zijn `true` , `false` . |
 
 
 Hier volgt een voor beeld van een configuratie:
@@ -49,7 +49,7 @@ Hier volgt een voor beeld van een configuratie:
 
 De zelf-hostende Gateway verzendt momenteel de volgende metrische gegevens via Azure Monitor:
 
-| Gegevens  | Beschrijving |
+| Metrisch  | Beschrijving |
 | ------------- | ------------- |
 | Aanvragen  | Aantal API-aanvragen in de periode |
 | Duur van gateway aanvragen | Aantal milliseconden vanaf het moment dat de gateway de aanvraag ontving tot het moment dat het antwoord volledig werd verzonden |

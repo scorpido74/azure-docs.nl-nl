@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: 87350bae282d9d0dccef9cb2121000f7a0473762
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195482"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Query uitvoeren op Apache Hive via het JDBC-stuurprogramma in HDInsight
@@ -65,7 +65,7 @@ SQuirreL SQL is een JDBC-client die kan worden gebruikt om Hive-query's op afsta
 
 1. Maak een map die bepaalde bestanden bevat die uit uw cluster moeten worden gekopieerd.
 
-2. Vervang `sshuser` in het volgende script door de naam van het SSH-gebruikers account voor het cluster.  Vervang `CLUSTERNAME` door de naam van het HDInsight-cluster.  Wijzig vanaf een opdracht regel uw werkmap naar de map die is gemaakt in de vorige stap en voer de volgende opdracht in om bestanden te kopiëren vanuit een HDInsight-cluster:
+2. Vervang in het volgende script door `sshuser` de naam van het SSH-gebruikers account voor het cluster.  Vervang door `CLUSTERNAME` de naam van het HDInsight-cluster.  Wijzig vanaf een opdracht regel uw werkmap naar de map die is gemaakt in de vorige stap en voer de volgende opdracht in om bestanden te kopiëren vanuit een HDInsight-cluster:
 
     ```cmd
     scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/{hadoop-auth.jar,hadoop-common.jar,lib/log4j-*.jar,lib/slf4j-*.jar,lib/curator-*.jar} .
@@ -129,7 +129,7 @@ SQuirreL SQL is een JDBC-client die kan worden gebruikt om Hive-query's op afsta
 
 ## <a name="connect-from-an-example-java-application"></a>Verbinding maken via een Java-voorbeeld toepassing
 
-Een voor beeld van het gebruik van een Java-client naar een query op [https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc)HDInsight is beschikbaar op. Volg de instructies in de opslag plaats om het voor beeld te bouwen en uit te voeren.
+Een voor beeld van het gebruik van een Java-client naar een query op HDInsight is beschikbaar op [https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc) . Volg de instructies in de opslag plaats om het voor beeld te bouwen en uit te voeren.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
@@ -147,7 +147,7 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 **Oplossing**: gebruik de volgende stappen om deze fout op te lossen:
 
-1. Sluit SQuirreL af en ga naar de map waarin SQuirreL op uw systeem is geïnstalleerd, mogelijk `C:\Program Files\squirrel-sql-4.0.0\lib`. Vervang in de map SquirreL, in `lib` de map, het bestaande Commons-codec. jar door de naam van het HDInsight-cluster dat u hebt gedownload.
+1. Sluit SQuirreL af en ga naar de map waarin SQuirreL op uw systeem is geïnstalleerd, mogelijk `C:\Program Files\squirrel-sql-4.0.0\lib` . Vervang in de map SquirreL, in de `lib` map, het bestaande Commons-codec. jar door de naam van het HDInsight-cluster dat u hebt gedownload.
 
 1. Start SQuirreL opnieuw. De fout mag niet langer optreden wanneer u verbinding maakt met hive op HDInsight.
 

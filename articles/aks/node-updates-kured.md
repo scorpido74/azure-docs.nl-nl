@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 02/28/2019
 ms.openlocfilehash: 955e5323769a7b9bf80413c045aaa3d55547eb02
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82208071"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Beveiligings-en kernel-updates Toep assen op Linux-knoop punten in azure Kubernetes service (AKS)
@@ -37,7 +37,7 @@ In een AKS-cluster worden de Kubernetes-knoop punten uitgevoerd als Azure virtua
 
 Voor sommige beveiligings updates, zoals kernel-updates, moet een knoop punt opnieuw worden opgestart om het proces te volt ooien. Voor een Linux-knoop punt dat opnieuw moet worden opgestart, wordt een bestand met de naam */var/run/reboot-required*gemaakt. Het opnieuw opstarten wordt niet automatisch uitgevoerd.
 
-U kunt uw eigen werk stromen en processen gebruiken om het opnieuw opstarten van knoop punten af `kured` te handelen of om het proces te organiseren. Met `kured`is een [daemonset][DaemonSet] geïmplementeerd waarbij een pod wordt uitgevoerd op elk Linux-knoop punt in het cluster. Deze peuling in de Daemonset-horloge voor aanwezigheid van het */var/run/reboot-required* -bestand en initieert vervolgens een proces om de knoop punten opnieuw op te starten.
+U kunt uw eigen werk stromen en processen gebruiken om het opnieuw opstarten van knoop punten af te handelen of `kured` om het proces te organiseren. Met `kured` is een [daemonset][DaemonSet] geïmplementeerd waarbij een pod wordt uitgevoerd op elk Linux-knoop punt in het cluster. Deze peuling in de Daemonset-horloge voor aanwezigheid van het */var/run/reboot-required* -bestand en initieert vervolgens een proces om de knoop punten opnieuw op te starten.
 
 ### <a name="node-upgrades"></a>Knooppunt upgrades
 
@@ -52,7 +52,7 @@ Tijdens een upgrade gebeurtenis kunt u niet op dezelfde Kubernetes-versie blijve
 
 ## <a name="deploy-kured-in-an-aks-cluster"></a>Kured implementeren in een AKS-cluster
 
-Als u de `kured` daemonset wilt implementeren, installeert u de volgende officiële Kured helm-grafiek. Hiermee maakt u een rol en cluster functie, bindingen en een service account en implementeert vervolgens de Daemonset met `kured`.
+Als u de `kured` daemonset wilt implementeren, installeert u de volgende officiële Kured helm-grafiek. Hiermee maakt u een rol en cluster functie, bindingen en een service account en implementeert vervolgens de Daemonset met `kured` .
 
 ```console
 # Add the stable Helm repository
@@ -68,11 +68,11 @@ kubectl create namespace kured
 helm install kured stable/kured --namespace kured --set nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-U kunt ook aanvullende para meters `kured`voor configureren, zoals integratie met Prometheus of toegestane vertraging. Zie de [Kured helm-grafiek][kured-install]voor meer informatie over aanvullende configuratie parameters.
+U kunt ook aanvullende para meters voor configureren `kured` , zoals integratie met Prometheus of toegestane vertraging. Zie de [Kured helm-grafiek][kured-install]voor meer informatie over aanvullende configuratie parameters.
 
 ## <a name="update-cluster-nodes"></a>Cluster knooppunten bijwerken
 
-Linux-knoop punten in AKS controleren standaard elke avond op updates. Als u niet wilt wachten, kunt u hand matig een update uitvoeren om te controleren `kured` of deze correct wordt uitgevoerd. Volg eerst de stappen voor [SSH naar een van uw AKS-knoop punten][aks-ssh]. Zodra u een SSH-verbinding met het Linux-knoop punt hebt, controleert u of er updates zijn en past u deze als volgt toe:
+Linux-knoop punten in AKS controleren standaard elke avond op updates. Als u niet wilt wachten, kunt u hand matig een update uitvoeren om te controleren of deze `kured` correct wordt uitgevoerd. Volg eerst de stappen voor [SSH naar een van uw AKS-knoop punten][aks-ssh]. Zodra u een SSH-verbinding met het Linux-knoop punt hebt, controleert u of er updates zijn en past u deze als volgt toe:
 
 ```console
 sudo apt-get update && sudo apt-get upgrade -y
@@ -91,7 +91,7 @@ NAME                       STATUS                     ROLES     AGE       VERSIO
 aks-nodepool1-28993262-0   Ready,SchedulingDisabled   agent     1h        v1.11.7
 ```
 
-Zodra het update proces is voltooid, kunt u de status van de knoop punten weer geven met behulp van de kubectl `--output wide` -opdracht [knoop punten ophalen][kubectl-get-nodes] met de para meter. Met deze aanvullende uitvoer ziet u een verschil in de *kernel-versie* van de onderliggende knoop punten, zoals wordt weer gegeven in de volgende voorbeeld uitvoer. De *AKS-nodepool1-28993262-0* is in een vorige stap bijgewerkt en toont de kernel *-versie 4.15.0-1039-Azure*. Het knoop punt *AKS-nodepool1-28993262-1* dat niet is bijgewerkt, toont de kernel *-versie 4.15.0-1037-Azure*.
+Zodra het update proces is voltooid, kunt u de status van de knoop punten weer geven met behulp van de kubectl-opdracht [knoop punten ophalen][kubectl-get-nodes] met de `--output wide` para meter. Met deze aanvullende uitvoer ziet u een verschil in de *kernel-versie* van de onderliggende knoop punten, zoals wordt weer gegeven in de volgende voorbeeld uitvoer. De *AKS-nodepool1-28993262-0* is in een vorige stap bijgewerkt en toont de kernel *-versie 4.15.0-1039-Azure*. Het knoop punt *AKS-nodepool1-28993262-1* dat niet is bijgewerkt, toont de kernel *-versie 4.15.0-1037-Azure*.
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
@@ -101,7 +101,7 @@ aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5   
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel wordt beschreven hoe `kured` u Linux-knoop punten automatisch opnieuw kunt opstarten als onderdeel van het beveiligings update proces. Als u een upgrade wilt uitvoeren naar de nieuwste versie van Kubernetes, kunt u [uw AKS-cluster bijwerken][aks-upgrade].
+In dit artikel wordt beschreven hoe u `kured` Linux-knoop punten automatisch opnieuw kunt opstarten als onderdeel van het beveiligings update proces. Als u een upgrade wilt uitvoeren naar de nieuwste versie van Kubernetes, kunt u [uw AKS-cluster bijwerken][aks-upgrade].
 
 Zie [een knooppunt groep bijwerken in AKS][nodepool-upgrade]voor AKS-clusters die gebruikmaken van Windows Server-knoop punten.
 

@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.openlocfilehash: 32e9da592d4c8f3997d5b1844065bf550d7d7d48
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82207510"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Hand matig een volume maken en gebruiken met Azure-schijven in azure Kubernetes service (AKS)
@@ -28,9 +28,9 @@ Ook moet de Azure CLI-versie 2.0.59 of hoger zijn geïnstalleerd en geconfiguree
 
 ## <a name="create-an-azure-disk"></a>Een Azure-schijf maken
 
-Wanneer u een Azure-schijf maakt voor gebruik met AKS, kunt u de schijf resource in de **knooppunt** resource groep maken. Met deze methode kan het AKS-cluster toegang krijgen tot de schijf bron en deze beheren. Als u in plaats daarvan de schijf in een afzonderlijke resource groep maakt, moet u de service-principal van de Azure Kubernetes-service (AKS `Contributor` ) voor uw cluster de rol toekennen aan de resource groep van de schijf. U kunt ook de door het systeem toegewezen beheerde identiteit voor machtigingen gebruiken in plaats van de Service-Principal. Zie [beheerde identiteiten gebruiken](use-managed-identity.md)voor meer informatie.
+Wanneer u een Azure-schijf maakt voor gebruik met AKS, kunt u de schijf resource in de **knooppunt** resource groep maken. Met deze methode kan het AKS-cluster toegang krijgen tot de schijf bron en deze beheren. Als u in plaats daarvan de schijf in een afzonderlijke resource groep maakt, moet u de service-principal van de Azure Kubernetes-service (AKS) voor uw cluster de `Contributor` rol toekennen aan de resource groep van de schijf. U kunt ook de door het systeem toegewezen beheerde identiteit voor machtigingen gebruiken in plaats van de Service-Principal. Zie [beheerde identiteiten gebruiken](use-managed-identity.md)voor meer informatie.
 
-Voor dit artikel maakt u de schijf in de knooppunt resource groep. Haal eerst de naam van de resource groep op met de opdracht [AZ AKS show][az-aks-show] en `--query nodeResourceGroup` Voeg de query parameter toe. In het volgende voor beeld wordt de resource groep node opgehaald voor de AKS-cluster naam *myAKSCluster* in de naam van de resource groep *myResourceGroup*:
+Voor dit artikel maakt u de schijf in de knooppunt resource groep. Haal eerst de naam van de resource groep op met de opdracht [AZ AKS show][az-aks-show] en voeg de `--query nodeResourceGroup` query parameter toe. In het volgende voor beeld wordt de resource groep node opgehaald voor de AKS-cluster naam *myAKSCluster* in de naam van de resource groep *myResourceGroup*:
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -38,7 +38,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Maak nu een schijf met behulp van de opdracht [AZ Disk Create][az-disk-create] . Geef de naam op van de resource groep van het knoop punt die u hebt verkregen in de vorige opdracht en vervolgens een naam voor de schijf bron, zoals *myAKSDisk*. In het volgende voor beeld *wordt een GiB*-schijf gemaakt en wordt de id van de schijf uitgevoerd nadat deze is gemaakt. Als u een schijf moet maken voor gebruik met Windows Server-containers, voegt u `--os-type windows` de para meter toe om de schijf correct te Format teren.
+Maak nu een schijf met behulp van de opdracht [AZ Disk Create][az-disk-create] . Geef de naam op van de resource groep van het knoop punt die u hebt verkregen in de vorige opdracht en vervolgens een naam voor de schijf bron, zoals *myAKSDisk*. In het volgende voor beeld *wordt een GiB*-schijf gemaakt en wordt de id van de schijf uitgevoerd nadat deze is gemaakt. Als u een schijf moet maken voor gebruik met Windows Server-containers, voegt u de `--os-type windows` para meter toe om de schijf correct te Format teren.
 
 ```azurecli-interactive
 az disk create \
@@ -59,7 +59,7 @@ De bron-ID van de schijf wordt weer gegeven zodra de opdracht is voltooid, zoals
 
 ## <a name="mount-disk-as-volume"></a>Schijf koppelen als volume
 
-Als u de Azure-schijf wilt koppelen aan uw Pod, configureert u het volume in de container specificatie. Maak `azure-disk-pod.yaml` een nieuw bestand met de naam met de volgende inhoud. Werk `diskName` bij met de naam van de schijf die u in de vorige stap `diskURI` hebt gemaakt en met de schijf-id die wordt weer gegeven in de uitvoer van de opdracht schijf maken. Indien gewenst, werkt u `mountPath`de, die het pad is naar de Azure-schijf, in het pod. Voor Windows Server-containers geeft u een *mountPath* op met behulp van de Windows Path-Conventie, zoals *":"*.
+Als u de Azure-schijf wilt koppelen aan uw Pod, configureert u het volume in de container specificatie. Maak een nieuw bestand `azure-disk-pod.yaml` met de naam met de volgende inhoud. Werk `diskName` bij met de naam van de schijf die u in de vorige stap hebt gemaakt en `diskURI` met de schijf-id die wordt weer gegeven in de uitvoer van de opdracht schijf maken. Indien gewenst, werkt u de `mountPath` , die het pad is naar de Azure-schijf, in het pod. Voor Windows Server-containers geeft u een *mountPath* op met behulp van de Windows Path-Conventie, zoals *":"*.
 
 ```yaml
 apiVersion: v1
@@ -94,7 +94,7 @@ Gebruik de `kubectl` opdracht om de Pod te maken.
 kubectl apply -f azure-disk-pod.yaml
 ```
 
-U hebt nu een actieve pod met een Azure-schijf die `/mnt/azure`is gekoppeld aan. U kunt gebruiken `kubectl describe pod mypod` om te controleren of de schijf is gekoppeld. De volgende gecomprimeerde voorbeeld uitvoer toont het volume dat in de container is gekoppeld:
+U hebt nu een actieve pod met een Azure-schijf die is gekoppeld aan `/mnt/azure` . U kunt gebruiken `kubectl describe pod mypod` om te controleren of de schijf is gekoppeld. De volgende gecomprimeerde voorbeeld uitvoer toont het volume dat in de container is gekoppeld:
 
 ```
 [...]

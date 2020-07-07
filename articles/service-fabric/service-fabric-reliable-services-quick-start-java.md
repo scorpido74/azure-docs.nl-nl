@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: suhuruli
 ms.openlocfilehash: 7855b92c90a9ccd208a25080c260437e6808d1b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82184143"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>Aan de slag met Reliable Services in Java
@@ -28,7 +28,7 @@ Als u deze wilt instellen, gaat u naar aan de [slag met Mac](service-fabric-get-
 ## <a name="basic-concepts"></a>Basisbegrippen
 Om aan de slag te gaan met Reliable Services hoeft u slechts enkele basis concepten te begrijpen:
 
-* **Service type**: dit is de service-implementatie. Het wordt gedefinieerd door de klasse die u schrijft, `StatelessService` en alle andere code of afhankelijkheden die erin worden gebruikt, samen met een naam en versie nummer.
+* **Service type**: dit is de service-implementatie. Het wordt gedefinieerd door de klasse die u schrijft `StatelessService` , en alle andere code of afhankelijkheden die erin worden gebruikt, samen met een naam en versie nummer.
 * **Benoemd service-exemplaar**: als u uw service wilt uitvoeren, maakt u benoemde instanties van uw service type, net zoals u object instanties van een klassetype maakt. Service-exemplaren bevinden zich in feite object instanties van uw service klasse die u schrijft.
 * **Servicehost: de**benoemde service-exemplaren die u maakt, moeten binnen een host worden uitgevoerd. De servicehost is slechts een proces waarbij exemplaren van uw service kunnen worden uitgevoerd.
 * **Service registratie**: registratie brengt alles samen. Het Service type moet worden geregistreerd bij de Service Fabric runtime in een servicehost om Service Fabric toe te staan dat er exemplaren van worden gemaakt om te worden uitgevoerd.  
@@ -40,7 +40,7 @@ Maak eerst een Service Fabric-toepassing. De Service Fabric SDK voor Linux bevat
 $ yo azuresfjava
 ```
 
-Volg de instructies voor het maken van een **betrouw bare stateless service**. Voor deze zelf studie moet u de toepassing "HelloWorldApplication" en de service "HelloWorld" noemen. Het resultaat bevat mappen voor de `HelloWorldApplication` en `HelloWorld`.
+Volg de instructies voor het maken van een **betrouw bare stateless service**. Voor deze zelf studie moet u de toepassing "HelloWorldApplication" en de service "HelloWorld" noemen. Het resultaat bevat mappen voor de `HelloWorldApplication` en `HelloWorld` .
 
 ```bash
 HelloWorldApplication/
@@ -67,7 +67,7 @@ HelloWorldApplication/
 └── uninstall.sh
 ```
 ### <a name="service-registration"></a>Service registratie
-Service typen moeten zijn geregistreerd bij de Service Fabric-runtime. Het Service type wordt gedefinieerd in de `ServiceManifest.xml` en uw service klasse die wordt geïmplementeerd `StatelessService`. Service registratie wordt uitgevoerd in het hoofd toegangs punt van het proces. In dit voor beeld is `HelloWorldServiceHost.java`het hoofd toegangs punt van het proces:
+Service typen moeten zijn geregistreerd bij de Service Fabric-runtime. Het Service type wordt gedefinieerd in de `ServiceManifest.xml` en uw service klasse die wordt geïmplementeerd `StatelessService` . Service registratie wordt uitgevoerd in het hoofd toegangs punt van het proces. In dit voor beeld is het hoofd toegangs punt van het proces `HelloWorldServiceHost.java` :
 
 ```java
 public static void main(String[] args) throws Exception {
@@ -87,7 +87,7 @@ public static void main(String[] args) throws Exception {
 
 Open **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService. java**. Deze klasse definieert het Service type en kan elke wille keurige code uitvoeren. De service-API biedt twee toegangs punten voor uw code:
 
-* Een open-geëindigd methode voor het ingangs `runAsync()`punt, die wordt aangeroepen, waar u werk belastingen kunt uitvoeren, inclusief langlopende Compute-workloads.
+* Een open-geëindigd methode voor het ingangs punt, `runAsync()` die wordt aangeroepen, waar u werk belastingen kunt uitvoeren, inclusief langlopende Compute-workloads.
 
 ```java
 @Override
@@ -105,7 +105,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 }
 ```
 
-Deze zelf studie is gericht `runAsync()` op de methode van het toegangs punt. Hier kunt u direct beginnen met het uitvoeren van uw code.
+Deze zelf studie is gericht op de methode van het `runAsync()` toegangs punt. Hier kunt u direct beginnen met het uitvoeren van uw code.
 
 ### <a name="runasync"></a>RunAsync
 Het platform roept deze methode aan wanneer een exemplaar van een service wordt geplaatst en gereed is om te worden uitgevoerd. Voor een stateless service betekent dat wanneer het service-exemplaar wordt geopend. Er wordt een annulerings token gegeven om te coördineren wanneer uw service-exemplaar moet worden gesloten. In Service Fabric kan deze open/close-cyclus van een service-exemplaar veel keren voor komen gedurende de levens duur van de service als geheel. Dit kan verschillende oorzaken hebben, waaronder:
@@ -120,7 +120,7 @@ Deze indeling wordt beheerd door Service Fabric om ervoor te zorgen dat uw servi
 `runAsync()`moet synchroon niet worden geblokkeerd. Uw implementatie van runAsync moet een CompletableFuture retour neren zodat de runtime kan door gaan. Als uw werk belasting een langlopende taak moet implementeren die in de CompletableFuture moet worden uitgevoerd.
 
 #### <a name="cancellation"></a>Opzegging
-Het annuleren van uw werk belasting is een gezamenlijke inspanning die wordt georganiseerd door het door gegeven annulerings token. Het systeem wacht tot de taak is voltooid (door voltooiing, annulering of fout) voordat deze wordt verplaatst. Het is belang rijk om het annulerings token te voldoen, werk te volt `runAsync()` ooien en zo snel mogelijk af te sluiten wanneer de systeem aanvragen worden geannuleerd. In het volgende voor beeld ziet u hoe u een annulerings gebeurtenis kunt afhandelen:
+Het annuleren van uw werk belasting is een gezamenlijke inspanning die wordt georganiseerd door het door gegeven annulerings token. Het systeem wacht tot de taak is voltooid (door voltooiing, annulering of fout) voordat deze wordt verplaatst. Het is belang rijk om het annulerings token te voldoen, werk te volt ooien en `runAsync()` zo snel mogelijk af te sluiten wanneer de systeem aanvragen worden geannuleerd. In het volgende voor beeld ziet u hoe u een annulerings gebeurtenis kunt afhandelen:
 
 ```java
 @Override
@@ -151,7 +151,7 @@ Service Fabric introduceert een nieuwe soort service die stateful is. Een statef
 
 Als u een item waarde wilt converteren van stateless naar Maxi maal beschikbaar en permanent, zelfs wanneer de service wordt verplaatst of opnieuw wordt opgestart, hebt u een stateful service nodig.
 
-In dezelfde map als de HelloWorld-toepassing kunt u een nieuwe service toevoegen door de `yo azuresfjava:AddService` opdracht uit te voeren. Kies de ' betrouw bare stateful service ' voor uw Framework en noem de service ' HelloWorldStateful '. 
+In dezelfde map als de HelloWorld-toepassing kunt u een nieuwe service toevoegen door de opdracht uit te voeren `yo azuresfjava:AddService` . Kies de ' betrouw bare stateful service ' voor uw Framework en noem de service ' HelloWorldStateful '. 
 
 Uw toepassing moet nu twee services hebben: de stateless service HelloWorld en de stateful service-HelloWorldStateful.
 
@@ -183,7 +183,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ```
 
 ### <a name="runasync"></a>RunAsync
-`RunAsync()`werkt op dezelfde manier als stateful en stateless Services. In een stateful service voert het platform echter namens u extra werkzaamheden uit voordat het wordt uitgevoerd `RunAsync()`. Dit werk kan erop kunnen toezien dat de betrouw bare status Manager en de betrouw bare verzamelingen klaar zijn voor gebruik.
+`RunAsync()`werkt op dezelfde manier als stateful en stateless Services. In een stateful service voert het platform echter namens u extra werkzaamheden uit voordat het wordt uitgevoerd `RunAsync()` . Dit werk kan erop kunnen toezien dat de betrouw bare status Manager en de betrouw bare verzamelingen klaar zijn voor gebruik.
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Betrouw bare verzamelingen en de betrouw bare status Manager
 ```java

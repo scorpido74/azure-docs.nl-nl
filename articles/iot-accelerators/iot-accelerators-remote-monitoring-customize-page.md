@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: c90f4166bf88a8df18a93e84903c93461b904d2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82187259"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Een aangepaste pagina toevoegen aan de gebruikers interface van de oplossings versneller voor externe controle
@@ -51,11 +51,11 @@ Als u een pagina wilt toevoegen aan de webgebruikersinterface, moet u de bron be
 
 Om aan de slag te gaan, bevat de map **src/walkthrough/onderdelen/pages/basicPage** vier bestanden die een eenvoudige pagina definiëren:
 
-**basicPage. container. js**
+**basicPage.container.js**
 
 [!code-javascript[Page container source](~/remote-monitoring-webui/src/walkthrough/components/pages/basicPage/basicPage.container.js?name=container "Page container source")]
 
-**basicPage. js**
+**basicPage.js**
 
 [!code-javascript[Basic page](~/remote-monitoring-webui/src/walkthrough/components/pages/basicPage/basicPage.js?name=page "Basic page")]
 
@@ -63,7 +63,7 @@ Om aan de slag te gaan, bevat de map **src/walkthrough/onderdelen/pages/basicPag
 
 [!code-javascript[Page styling](~/remote-monitoring-webui/src/walkthrough/components/pages/basicPage/basicPage.scss?name=styles "Page styling")]
 
-**basicPage. test. js**
+**basicPage.test.js**
 
 [!code-javascript[Test code for basic page](~/remote-monitoring-webui/src/walkthrough/components/pages/basicPage/basicPage.test.js?name=test "Test code for basic page")]
 
@@ -73,7 +73,7 @@ Maak een nieuwe map **brondoc/onderdelen/pagina's/voor beeld** en kopieer deze v
 
 Als u de nieuwe pagina wilt toevoegen aan de Web-UI, moet u de volgende wijzigingen aanbrengen in bestaande bestanden:
 
-1. Voeg de nieuwe pagina container toe aan het bestand **src/Components/pages/index. js** :
+1. Voeg de nieuwe pagina container toe aan het bestand **bron/onderdelen/pagina's/index.js** :
 
     ```js
     export * from './example/basicPage.container';
@@ -81,7 +81,7 @@ Als u de nieuwe pagina wilt toevoegen aan de Web-UI, moet u de volgende wijzigin
 
 1. Beschrijving  Voeg een SVG-pictogram toe voor de nieuwe pagina. Zie [webui/src/Utilities/README. MD](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/utilities/README.md)(Engelstalig) voor meer informatie. U kunt een bestaand SVG-bestand gebruiken.
 
-1. Voeg de pagina naam toe aan het Vertaal bestand, **open bare/land instellingen/en/of-vertalingen. json**. De Web-UI maakt gebruik van [i18next](https://www.i18next.com/) voor verschillende talen.
+1. Voeg de pagina naam toe aan het Vertaal bestand, **open bare/land instellingen/en/translations.jsop**. De Web-UI maakt gebruik van [i18next](https://www.i18next.com/) voor verschillende talen.
 
     ```json
     "tabs": {
@@ -89,7 +89,7 @@ Als u de nieuwe pagina wilt toevoegen aan de Web-UI, moet u de volgende wijzigin
     },
     ```
 
-1. Open het bestand **src/Components/app. js** waarmee de toepassings pagina op het hoogste niveau wordt gedefinieerd. Voeg de nieuwe pagina toe aan de lijst met import bewerkingen:
+1. Open het bestand **src/Components/app.js** waarmee de toepassings pagina op het hoogste niveau wordt gedefinieerd. Voeg de nieuwe pagina toe aan de lijst met import bewerkingen:
 
     ```javascript
     // Page Components
@@ -99,7 +99,7 @@ Als u de nieuwe pagina wilt toevoegen aan de Web-UI, moet u de volgende wijzigin
     } from './pages';
     ```
 
-1. Voeg in hetzelfde bestand de nieuwe pagina toe aan de `pagesConfig` matrix. Stel het `to` adres voor de route in, wijs het SVG-pictogram en de gemaakte vertalingen eerder toe `component` en stel de in op de container van de pagina:
+1. Voeg in hetzelfde bestand de nieuwe pagina toe aan de `pagesConfig` matrix. Stel het `to` adres voor de route in, wijs het SVG-pictogram en de gemaakte vertalingen eerder toe en stel de `component` in op de container van de pagina:
 
     ```js
     const pagesConfig = [
@@ -115,7 +115,7 @@ Als u de nieuwe pagina wilt toevoegen aan de Web-UI, moet u de volgende wijzigin
     ];
     ```
 
-1. Voeg nieuwe brood kruimels toe aan `crumbsConfig` de matrix:
+1. Voeg nieuwe brood kruimels toe aan de `crumbsConfig` matrix:
 
     ```js
     const crumbsConfig = [
@@ -142,7 +142,7 @@ npm install
 npm start
 ```
 
-Met de vorige opdracht wordt de gebruikers interface `http://localhost:3000/dashboard`lokaal uitgevoerd op.
+Met de vorige opdracht wordt de gebruikers interface lokaal uitgevoerd op `http://localhost:3000/dashboard` .
 
 Zonder dat u uw lokale exemplaar van de Web-UI verbindt met een geïmplementeerd exemplaar van de oplossings versneller, worden er fouten weer geven op het dash board. Deze fouten hebben geen invloed op de mogelijkheid om uw nieuwe pagina te testen.
 

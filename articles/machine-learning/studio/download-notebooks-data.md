@@ -9,10 +9,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/15/2020
 ms.openlocfilehash: 8a1de4ceb42ac86d8f945ec973eaa52d6ddec736
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82208462"
 ---
 # <a name="download-notebookspreview-data"></a>Notitie blokken downloaden (preview)-gegevens
@@ -25,9 +25,9 @@ In dit artikel vindt u stapsgewijze instructies voor het downloaden van notitie 
     ![Navigeer naar het tabblad notebooks.](./media/download-notebooks/notebooks-list.png)
 
 1. Selecteer het notitie blok dat u wilt downloaden. Deze wordt geopend in Jupyter.
-    ![Een notitie blok](./media/download-notebooks/select-notebook.png) selecteren dat meerdere notitie blokken tegelijk downloadt, wordt niet ondersteund.
+    ![Een notitie Blok selecteren dat ](./media/download-notebooks/select-notebook.png) meerdere notitie blokken tegelijk downloadt, wordt niet ondersteund.
 
-1. Ga naar **bestanden** -> **downloaden als**en selecteer een optie voor de indeling.
+1. Ga naar **bestanden**  ->  **downloaden als**en selecteer een optie voor de indeling.
     ![Opties voor het downloaden van notitie blokken](./media/download-notebooks/download-options.PNG)
 
 1. Nadat u een optie hebt geselecteerd, wordt het notebook-bestand gedownload. Alle 500-of 502-fouten negeren die worden weer gegeven, zijn niet van invloed op uw down load.

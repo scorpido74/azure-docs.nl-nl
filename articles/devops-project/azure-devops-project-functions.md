@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.openlocfilehash: 6f68fede0257086cc3a23fe6f7a0a3cc9466ad1b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233152"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>Implementeren naar Azure Functions met DevOps starter
@@ -36,7 +36,7 @@ In deze zelfstudie leert u het volgende:
 >* Wijzigingen doorvoeren in Git en automatisch implementeren naar Azure
 >* Resources opschonen
 
-Momenteel zijn de ondersteunde Runtimes voor-functies **.net** en **node. js**. We gebruiken. NET runtime voor deze zelf studie om te implementeren in Azure Functions. 
+Momenteel zijn de ondersteunde Runtimes voor-functies **.net** en **Node.js**. We gebruiken. NET runtime voor deze zelf studie om te implementeren in Azure Functions. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -46,7 +46,7 @@ Momenteel zijn de ondersteunde Runtimes voor-functies **.net** en **node. js**. 
 
 DevOps Starter maakt een CI/CD-pijp lijn in azure-pijp lijnen. U kunt een nieuwe Azure DevOps-organisatie maken of een bestaande organisatie gebruiken. DevOps Projects maakt ook Azure-resources, zoals een IoTHub, in het Azure-abonnement van uw keuze.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)
+1. Meld u aan bij [Azure Portal](https://portal.azure.com)
 
 1. Typ **DevOps starter**in het zoekvak en selecteer. Klik op **toevoegen** om een nieuw item te maken.
 
@@ -96,7 +96,7 @@ DevOps starter configureert automatisch een CI/CD-pijp lijn in uw Azure DevOps-o
 
     ![Ontwikkelen](_img/azure-devops-project-functions/build.png)
 
-1. Selecteer **bewerken**. In dit deelvenster kunt u de verschillende taken voor uw build-pijplijn onderzoeken. De build voert diverse taken uit, zoals het ophalen van de bron code uit de Git-opslag plaats, het bouwen van de toepassing, het uitvoeren van eenheids tests en het publiceren van uitvoer die worden gebruikt voor implementaties.
+1. Selecteer **Bewerken**. In dit deelvenster kunt u de verschillende taken voor uw build-pijplijn onderzoeken. De build voert diverse taken uit, zoals het ophalen van de bron code uit de Git-opslag plaats, het bouwen van de toepassing, het uitvoeren van eenheids tests en het publiceren van uitvoer die worden gebruikt voor implementaties.
 
 1. Selecteer **Triggers**. DevOps Starter maakt automatisch een CI-trigger en elke door voering aan de opslag plaats start een nieuwe build. Desgewenst kunt u kiezen of u vertakkingen van het CI-proces wilt opnemen of uitsluiten.
 

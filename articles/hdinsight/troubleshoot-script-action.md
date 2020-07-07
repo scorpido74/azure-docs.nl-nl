@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: e2a2f6abfd6b7c644e95649f3c9832e4cc986037
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188443"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Problemen met script acties in azure HDInsight oplossen
@@ -25,13 +25,13 @@ U kunt de Web-UI van Apache Ambari gebruiken om informatie te bekijken die is va
 
 ### <a name="apache-ambari-web-ui"></a>Apache Ambari-webgebruikersinterface
 
-1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net`, waarbij `CLUSTERNAME` de naam van het cluster is.
+1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net` , waarbij `CLUSTERNAME` de naam van het cluster is.
 
 1. Selecteer de **OPS** -vermelding in de balk boven aan de pagina. Er wordt een lijst weer gegeven met de huidige en vorige bewerkingen die op het cluster zijn uitgevoerd via Ambari.
 
     ![Ambari Web UI-balk met OPS geselecteerd](./media/troubleshoot-script-action/hdi-apache-ambari-nav.png)
 
-1. Zoek de vermeldingen met **\_customscriptaction** uit in de kolom **bewerkingen** . Deze vermeldingen worden gemaakt wanneer de script acties worden uitgevoerd.
+1. Zoek de vermeldingen met ** \_ customscriptaction** uit in de kolom **bewerkingen** . Deze vermeldingen worden gemaakt wanneer de script acties worden uitgevoerd.
 
     ![Acties voor Apache Ambari-script actie](./media/troubleshoot-script-action/ambari-script-action.png)
 
@@ -41,7 +41,7 @@ U kunt de Web-UI van Apache Ambari gebruiken om informatie te bekijken die is va
 
 Als het maken van een cluster mislukt vanwege een script fout, worden de logboeken bewaard in het cluster-opslag account.
 
-* De opslag logboeken zijn beschikbaar `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE`op.
+* De opslag logboeken zijn beschikbaar op `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE` .
 
     ![Script actie logboeken](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
 
@@ -53,7 +53,7 @@ Als het maken van een cluster mislukt vanwege een script fout, worden de logboek
 
     * **Zookeeper-knoop punt**:`<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
 
-* Alle **stdout** en **stderr** van de bijbehorende host worden geüpload naar het opslag account. Er zijn één **uitvoer-\*. txt** en **fouten-\*. txt** voor elke script actie. Het **output-*. txt** -bestand bevat informatie over de URI van het script dat op de host is uitgevoerd. De volgende tekst is een voor beeld van deze informatie:
+* Alle **stdout** en **stderr** van de bijbehorende host worden geüpload naar het opslag account. Er zijn één **uitvoer- \* . txt** en **fouten- \* . txt** voor elke script actie. Het **output-*. txt** -bestand bevat informatie over de URI van het script dat op de host is uitgevoerd. De volgende tekst is een voor beeld van deze informatie:
 
         'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
 
@@ -84,7 +84,7 @@ ImportError: cannot import name BlobService
 
 __Oorzaak__. Deze fout treedt op als u de python Azure Storage-client bijwerkt die is opgenomen in het HDInsight-cluster. HDInsight verwacht Azure Storage client 0.20.0.
 
-__Oplossing__. Om deze fout op te lossen, moet u hand matig verbinding `ssh`maken met elk cluster knooppunt met behulp van. Voer de volgende opdracht uit om de juiste Storage-client versie opnieuw te installeren:
+__Oplossing__. Om deze fout op te lossen, moet u hand matig verbinding maken met elk cluster knooppunt met behulp van `ssh` . Voer de volgende opdracht uit om de juiste Storage-client versie opnieuw te installeren:
 
 ```bash
 sudo pip install azure-storage==0.20.0
@@ -112,6 +112,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
 * Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

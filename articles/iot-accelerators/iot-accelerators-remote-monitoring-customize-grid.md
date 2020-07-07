@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/04/2018
 ms.topic: conceptual
 ms.openlocfilehash: e27c1c4303129467c0bd05152570e26f129585a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186285"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Een aangepast raster toevoegen aan de webgebruikersinterface van de oplossings versneller voor externe controle
@@ -46,11 +46,11 @@ Als u een raster wilt toevoegen aan de webgebruikersinterface, moet u de bron be
 
 Om aan de slag te gaan, de map **src/walkthrough/onderdelen/pages/pageWithGrid/exampleGrid** bevat de bestanden die een raster definiëren:
 
-**exampleGrid. js**
+**exampleGrid.js**
 
 [!code-javascript[Example grid](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithGrid/exampleGrid/exampleGrid.js?name=grid "Example grid")]
 
-**exampleGridConfig. js**
+**exampleGridConfig.js**
 
 [!code-javascript[Example grid configuration](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithGrid/exampleGrid/exampleGridConfig.js?name=gridconfig "Example grid configuration")]
 
@@ -58,7 +58,7 @@ Kopieer de map **src/walkthrough/onderdelen/pages/pageWithGrid/exampleGrid** naa
 
 ### <a name="add-the-grid-to-the-page"></a>Het raster toevoegen aan de pagina
 
-Wijzig de volgende stappen om de service definities te importeren met de opties **src/Components, pages, example/basicPage. container. js** :
+Wijzig de **bron/onderdelen/pagina's/voor beeld/basicPage.container.js** als volgt om de service definities te importeren:
 
 ```js
 import { connect } from 'react-redux';
@@ -89,7 +89,7 @@ const mapDispatchToProps = dispatch => ({
 export const BasicPageContainer = translate()(connect(mapStateToProps, mapDispatchToProps)(BasicPage));
 ```
 
-Wijzig de volgende stappen om het raster toe te voegen: **brondoc/onderdelen/pagina's/voor beeld/basicPage. js.**
+Wijzig de **bron/onderdelen/pagina's/voor beeld/basicPage.js** als volgt om het raster toe te voegen:
 
 ```js
 // Copyright (c) Microsoft. All rights reserved.
@@ -144,7 +144,7 @@ export class BasicPage extends Component {
 }
 ```
 
-Wijzig de tests **src/Components/pages/basicPage. test. js** als volgt om de testen bij te werken:
+Wijzig **basicPage.test.js** de volgende stappen om de tests bij te werken als volgt:
 
 ```js
 // Copyright (c) Microsoft. All rights reserved.
@@ -182,7 +182,7 @@ Als de Web-UI niet al lokaal wordt uitgevoerd, voert u de volgende opdracht uit 
 npm start
 ```
 
-Met de vorige opdracht wordt de gebruikers interface `http://localhost:3000/dashboard`lokaal uitgevoerd op. Ga naar de **voorbeeld** pagina om het raster weer te geven gegevens van de service.
+Met de vorige opdracht wordt de gebruikers interface lokaal uitgevoerd op `http://localhost:3000/dashboard` . Ga naar de **voorbeeld** pagina om het raster weer te geven gegevens van de service.
 
 ## <a name="select-rows"></a>Rijen selecteren
 
@@ -247,7 +247,7 @@ Als een gebruiker op hetzelfde moment op meerdere rijen moet handelen, gebruikt 
 
 Als de gebruiker alleen op één rij moet reageren, configureert u een tijdelijke koppeling voor een of meer kolommen in de **columnDefs**.
 
-1. Voeg in **exampleGridConfig. js** **SoftSelectLinkRenderer** toe als de **cellRendererFramework** voor een **columnDef**.
+1. Voeg **SoftSelectLinkRenderer** in **exampleGridConfig.js**toe als de **cellRendererFramework** voor een **columnDef**.
 
     ```js
     export const exampleColumnDefs = {

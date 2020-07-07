@@ -4,10 +4,10 @@ description: In dit artikel wordt uitgelegd hoe u een Service Fabric toepassing 
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d277df6959ea3e7985514f81faed520f163c6012
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195881"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Upgrade van toepassing Service Fabric met behulp van Power shell
@@ -29,20 +29,20 @@ Met Service Fabric bewaakte rolling upgrades kan de toepassings beheerder het st
 Bouw en publiceer de toepassing door met de rechter muisknop te klikken op het toepassings project **VisualObjectsApplication** en de opdracht **Publish** te selecteren.  Zie [service Fabric-zelf studie](service-fabric-application-upgrade-tutorial.md)over de upgrade van toepassingen voor meer informatie.  U kunt ook Power shell gebruiken om uw toepassing te implementeren.
 
 > [!NOTE]
-> Voordat een van de Service Fabric-opdrachten in Power shell kan worden gebruikt, moet u eerst verbinding maken met het cluster met `Connect-ServiceFabricCluster` behulp van de-cmdlet. Ook wordt ervan uitgegaan dat het cluster al is ingesteld op uw lokale machine. Zie het artikel over het [instellen van uw service Fabric-ontwikkel omgeving](service-fabric-get-started.md).
+> Voordat een van de Service Fabric-opdrachten in Power shell kan worden gebruikt, moet u eerst verbinding maken met het cluster met behulp van de- `Connect-ServiceFabricCluster` cmdlet. Ook wordt ervan uitgegaan dat het cluster al is ingesteld op uw lokale machine. Zie het artikel over het [instellen van uw service Fabric-ontwikkel omgeving](service-fabric-get-started.md).
 > 
 > 
 
 Na het maken van het project in Visual Studio kunt u de Power shell [-opdracht copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) gebruiken om het toepassings pakket te kopiëren naar de installatie kopie opslag. Als u het app-pakket lokaal wilt controleren, gebruikt u de cmdlet [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) . De volgende stap bestaat uit het registreren van de toepassing bij de Service Fabric-runtime met de cmdlet [REGI ster-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) . De volgende stap is het starten van een exemplaar van de toepassing met behulp van de cmdlet [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) .  Deze drie stappen zijn vergelijkbaar met het menu-item **implementeren** in Visual Studio.  Zodra de inrichting is voltooid, moet u het gekopieerde toepassings pakket opschonen in de archief kopie om de verbruikte resources te verminderen.  Als een toepassings type niet meer vereist is, moet het worden verwijderd om dezelfde reden. Zie [toepassingen implementeren en verwijderen met behulp van Power shell](service-fabric-application-upgrade-tutorial-powershell.md) voor meer informatie.
 
-Nu kunt u Service Fabric Explorer gebruiken [om het cluster en de toepassing weer te geven](service-fabric-visualizing-your-cluster.md). De toepassing heeft een webservice waarmee kan worden genavigeerd naar Internet Explorer door in de `http://localhost:8081/visualobjects` adres balk te typen.  In het scherm moeten enkele zwevende visuele objecten worden weer gegeven.  Daarnaast kunt u [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) gebruiken om de status van de toepassing te controleren.
+Nu kunt u Service Fabric Explorer gebruiken [om het cluster en de toepassing weer te geven](service-fabric-visualizing-your-cluster.md). De toepassing heeft een webservice waarmee kan worden genavigeerd naar Internet Explorer door `http://localhost:8081/visualobjects` in de adres balk te typen.  In het scherm moeten enkele zwevende visuele objecten worden weer gegeven.  Daarnaast kunt u [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) gebruiken om de status van de toepassing te controleren.
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>Stap 2: het voor beeld van Visual Objects bijwerken
 U zult kunnen merken dat met de versie die is geïmplementeerd in stap 1, de visuele objecten niet draaien. We gaan deze toepassing upgraden naar een waar ook de visuele objecten draaien.
 
-Selecteer het project VisualObjects. ActorService in de VisualObjects-oplossing en open het StatefulVisualObjectActor.cs-bestand. Ga in dat bestand naar de methode `MoveObject`, commentaar uit `this.State.Move()`en verwijder de opmerking. `this.State.Move(true)` Deze wijziging roteert de objecten nadat de service is bijgewerkt.
+Selecteer het project VisualObjects. ActorService in de VisualObjects-oplossing en open het StatefulVisualObjectActor.cs-bestand. Ga in dat bestand naar de methode `MoveObject` , commentaar uit `this.State.Move()` en verwijder de opmerking `this.State.Move(true)` . Deze wijziging roteert de objecten nadat de service is bijgewerkt.
 
-We moeten ook het bestand *ServiceManifest. XML* (onder PackageRoot) van het project **VisualObjects. ActorService**bijwerken. Werk de *code package* en de service versie bij naar 2,0 en de bijbehorende regels in het bestand *ServiceManifest. XML* .
+Daarnaast moeten we het *ServiceManifest.xml* bestand (onder PackageRoot) van het project **VisualObjects. ActorService**bijwerken. Werk de *code package* en de service versie bij naar 2,0 en de bijbehorende regels in het *ServiceManifest.xml* -bestand.
 U kunt de optie *manifest bestanden* Visual Studio bewerken gebruiken nadat u met de rechter muisknop op de oplossing hebt geklikt om het manifest bestand te wijzigen.
 
 Nadat de wijzigingen zijn aangebracht, moet het Manifest er als volgt uitzien (gemarkeerde gedeelten worden de wijzigingen weer gegeven):
@@ -53,7 +53,7 @@ Nadat de wijzigingen zijn aangebracht, moet het Manifest er als volgt uitzien (g
 <CodePackageName="Code" Version="2.0">
 ```
 
-Nu wordt het bestand *ApplicationManifest. XML* (gevonden onder het **VisualObjects** -project onder de **VisualObjects** -oplossing) bijgewerkt naar versie 2,0 van het project **VisualObjects. ActorService** . Daarnaast wordt de versie van de toepassing bijgewerkt naar 2.0.0.0 van 1.0.0.0. *ApplicationManifest. XML* moet eruitzien als in het volgende code fragment:
+Nu is het *ApplicationManifest.xml* bestand (gevonden onder het **VisualObjects** -project onder de **VisualObjects** -oplossing) bijgewerkt naar versie 2,0 van het project **VisualObjects. ActorService** . Daarnaast wordt de versie van de toepassing bijgewerkt naar 2.0.0.0 van 1.0.0.0. De *ApplicationManifest.xml* moet eruitzien als in het volgende code fragment:
 
 ```xml
 <ApplicationManifestxmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VisualObjects" ApplicationTypeVersion="2.0.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -83,7 +83,7 @@ De toepassing is nu gebouwd en klaar om te worden bijgewerkt. Als u een Power sh
 
 Het toepassings pakket wordt opgeslagen in het volgende relatieve pad waar u de Service Fabric SDK- *Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug*hebt gedecomprimeerd. U moet een map "package" in die map vinden waarin het toepassings pakket wordt opgeslagen. Controleer de tijds tempels om er zeker van te zijn dat het de meest recente build is (mogelijk moet u ook de juiste paden aanpassen).
 
-Nu gaan we het bijgewerkte toepassings pakket kopiëren naar de Service Fabric installatie kopie opslag (waar de toepassings pakketten worden opgeslagen door Service Fabric). De para meter *ApplicationPackagePathInImageStore* informeert service Fabric waar het toepassings pakket kan worden gevonden. We hebben de bijgewerkte toepassing in ' VisualObjects\_v2 ' geplaatst met de volgende opdracht (mogelijk moet u de paden op de juiste manier aanpassen).
+Nu gaan we het bijgewerkte toepassings pakket kopiëren naar de Service Fabric installatie kopie opslag (waar de toepassings pakketten worden opgeslagen door Service Fabric). De para meter *ApplicationPackagePathInImageStore* informeert service Fabric waar het toepassings pakket kan worden gevonden. We hebben de bijgewerkte toepassing in ' VisualObjects \_ v2 ' geplaatst met de volgende opdracht (mogelijk moet u de paden op de juiste manier aanpassen).
 
 ```powershell
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug\Package -ApplicationPackagePathInImageStore "VisualObjects\_V2"
@@ -111,7 +111,7 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 ```
 
 
-De naam van de toepassing is hetzelfde als beschreven in het bestand *ApplicationManifest. XML* . Service Fabric gebruikt deze naam om te bepalen welke toepassing wordt bijgewerkt. Als u instelt dat de time-outs te kort zijn, wordt er mogelijk een fout bericht met de melding dat het probleem zich voordoet. Raadpleeg de sectie probleem oplossing of verg root de time-outs.
+De naam van de toepassing is hetzelfde als die in het *ApplicationManifest.xml* bestand is beschreven. Service Fabric gebruikt deze naam om te bepalen welke toepassing wordt bijgewerkt. Als u instelt dat de time-outs te kort zijn, wordt er mogelijk een fout bericht met de melding dat het probleem zich voordoet. Raadpleeg de sectie probleem oplossing of verg root de time-outs.
 
 Als de upgrade van de toepassing wordt uitgevoerd, kunt u deze controleren met behulp van Service Fabric Explorer of met behulp van de Power shell [-opdracht Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) : 
 

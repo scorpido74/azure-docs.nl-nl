@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.openlocfilehash: 18831832f82cdbc8cec69e368f006f7acd4836c1
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205259"
 ---
 # <a name="troubleshoot-apache-oozie-in-azure-hdinsight"></a>Problemen met Apache Oozie in azure HDInsight oplossen
@@ -36,7 +36,7 @@ De taak status wordt gewijzigd in **opgeschort**. Details voor de taak geven de 
 
 ### <a name="cause"></a>Oorzaak
 
-De Azure Blob-opslag adressen die worden gebruikt in het bestand **Job. XML** bevatten niet de opslag container of de naam van het opslag account. De indeling van het Blob-opslag `wasbs://containername@storageaccountname.blob.core.windows.net`adres moet zijn.
+De Azure Blob-opslag adressen die in het **job.xml** bestand worden gebruikt, bevatten niet de opslag container of de naam van het opslag account. De indeling van het Blob-opslag adres moet zijn `wasbs://containername@storageaccountname.blob.core.windows.net` .
 
 ### <a name="resolution"></a>Oplossing
 
@@ -44,7 +44,7 @@ Wijzig de Blob Storage-adressen die de taak gebruikt.
 
 ---
 
-## <a name="ja002-oozie-isnt-allowed-to-impersonate-ltusergt"></a>JA002: Oozie is niet toegestaan om de &lt;gebruiker te imiteren&gt;
+## <a name="ja002-oozie-isnt-allowed-to-impersonate-ltusergt"></a>JA002: Oozie is niet toegestaan om de gebruiker te imiteren &lt;&gt;
 
 ### <a name="issue"></a>Probleem
 
@@ -58,7 +58,7 @@ De huidige machtigings instellingen staan niet toe dat Oozie het opgegeven gebru
 
 ### <a name="resolution"></a>Oplossing
 
-Oozie kunnen gebruikers in de **`users`** groep imiteren. Gebruik de `groups USERNAME` om de groepen weer te geven waarvan het gebruikers account lid is. Als de gebruiker geen lid is van de **`users`** groep, gebruikt u de volgende opdracht om de gebruiker toe te voegen aan de groep:
+Oozie kunnen gebruikers in de groep imiteren **`users`** . Gebruik de `groups USERNAME` om de groepen weer te geven waarvan het gebruikers account lid is. Als de gebruiker geen lid is van de **`users`** groep, gebruikt u de volgende opdracht om de gebruiker toe te voegen aan de groep:
 
     sudo adduser USERNAME users
 
@@ -81,7 +81,7 @@ Sqoop kan het database stuur programma dat is vereist voor toegang tot de data b
 
 ### <a name="resolution"></a>Oplossing
 
-Wanneer u Sqoop van een Oozie-taak gebruikt, moet u het database stuur programma toevoegen aan de andere resources, zoals de werk stroom. XML, die door de taak wordt gebruikt. U kunt ook verwijzen naar het archief dat het database stuur programma `<sqoop>...</sqoop>` bevat vanuit de sectie van de werk stroom. XML.
+Wanneer u Sqoop van een Oozie-taak gebruikt, moet u het database stuur programma toevoegen aan de andere resources, zoals de workflow.xml, de taak gebruikt. U kunt ook verwijzen naar het archief dat het database stuur programma bevat uit de `<sqoop>...</sqoop>` sectie van de workflow.xml.
 
 U kunt bijvoorbeeld voor het taak voorbeeld [Hadoop Oozie-werk stromen](hdinsight-use-oozie-linux-mac.md)gebruiken door de volgende stappen uit te voeren:
 
@@ -91,7 +91,7 @@ U kunt bijvoorbeeld voor het taak voorbeeld [Hadoop Oozie-werk stromen](hdinsigh
     hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc-7.0.0.jre8.jar /tutorials/useoozie/mssql-jdbc-7.0.0.jre8.jar
     ```
 
-2. Wijzig de `workflow.xml` om de volgende XML toe te voegen op een `</sqoop>`nieuwe regel:
+2. Wijzig de `workflow.xml` om de volgende XML toe te voegen op een nieuwe regel `</sqoop>` :
 
     ```xml
     <archive>mssql-jdbc-7.0.0.jre8.jar</archive>
@@ -103,6 +103,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
 * Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

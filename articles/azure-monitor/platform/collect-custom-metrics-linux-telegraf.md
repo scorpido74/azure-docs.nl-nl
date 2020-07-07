@@ -8,10 +8,10 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 06c344130156ae5f72f6e65baa519c11adff2bae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186438"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Aangepaste metrische gegevens verzamelen voor een virtuele Linux-machine met de InfluxData-Telegraf-agent
@@ -31,7 +31,7 @@ U kunt met behulp van Azure Monitor aangepaste metrische gegevens verzamelen via
 
 Voor deze zelf studie implementeren we een virtuele Linux-machine waarop het Ubuntu 16,04 LTS-besturings systeem wordt uitgevoerd. De telegrafie-agent wordt ondersteund voor de meeste Linux-besturings systemen. Zowel de Debian-als de RPM-pakketten zijn beschikbaar in combi natie met niet-verpakkende Linux-bestanden op de [InfluxData-Download Portal](https://portal.influxdata.com/downloads). Zie deze [telegrafi-installatie handleiding](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) voor aanvullende installatie-instructies en-opties. 
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com).
+Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 > [!NOTE]  
 > Als u de klassieke waarschuwings regels wilt migreren en een bestaande virtuele Linux-machine wilt gebruiken, moet u ervoor zorgen dat aan de virtueel-machine een **door**het systeem toegewezen identiteit is ingesteld op on.
@@ -52,7 +52,7 @@ Een nieuwe virtuele Linux-machine maken:
 
     ![Overzicht van de televirtual machine-grootte Telegraaf agent](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
 
-1. Selecteer op de pagina **instellingen** in de**beveiligings groep** >  **netwerk** > netwerk**open bare binnenkomende poorten**, selecteer **http** en **SSH (22)**. Laat de overige standaardwaarden staan en selecteer **OK**. 
+1. Selecteer op de pagina **instellingen** in de **Network**  >  **beveiligings groep netwerk netwerk**  >  **open bare binnenkomende poorten**, selecteer **http** en **SSH (22)**. Laat de overige standaardwaarden staan en selecteer **OK**. 
 
 1. Selecteer **Maken** op de overzichtspagina om de implementatie van de VM te starten. 
 

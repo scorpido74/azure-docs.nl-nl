@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: nipavlo
 ms.openlocfilehash: 7f571a851e4da147240c524b742bcd652bc54181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82183110"
 ---
 # <a name="balancing-of-subclustered-metrics"></a>Verdeling van geclusterde metrische gegevens
@@ -103,7 +103,7 @@ Het gedrag van Resource Manager over subclustering kan worden gewijzigd door de 
 * SubclusteringEnabled-para meter bepaalt of resource manager in aanmerking komt voor subclusteren bij het uitvoeren van de taak verdeling. Als deze para meter is uitgeschakeld, wordt subclustering in Resource Manager genegeerd en wordt het optimale saldo op een globaal niveau bereikt. De standaard waarde van deze para meter is onwaar.
 * SubclusteringReportingPolicy: bepaalt hoe Resource Manager status rapporten voor hiërarchische en gedeeltelijke overlappende subclustering zal genereren. Een waarde van nul betekent dat status rapporten over subclusteren worden uitgeschakeld. "1" betekent dat er waarschuwings status rapporten worden gemaakt voor suboptimale subclusterings situaties en de waarde ' 2 ' resulteert in status rapporten ' OK '. De standaard waarde voor deze para meter is 1.
 
-ClusterManifest. XML:
+ClusterManifest.xml:
 
 ``` xml
         <Section Name="PlacementAndLoadBalancing">
@@ -112,7 +112,7 @@ ClusterManifest. XML:
         </Section>
 ```
 
-via ClusterConfig. json voor zelfstandige implementaties of sjabloon. json voor door Azure gehoste clusters:
+via ClusterConfig.jsop voor zelfstandige implementaties of Template.jsop voor door Azure gehoste clusters:
 
 ```json
 "fabricSettings": [

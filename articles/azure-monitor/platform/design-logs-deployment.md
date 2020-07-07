@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
 ms.openlocfilehash: 7cc2b7871c7141a0e466bf8620351c5beed0c684
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82165685"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>De implementatie van uw Azure Monitor-logboeken ontwerpen
@@ -114,7 +114,7 @@ De *Access Control-modus* is een instelling voor elke werk ruimte die definieert
 
     Dit is de standaard instelling voor alle werk ruimten die zijn gemaakt vóór 2019 maart.
 
-* **Resource-of werkruimte machtigingen gebruiken**: deze besturings modus maakt granulaire RBAC mogelijk. Gebruikers kunnen toegang krijgen tot gegevens die zijn gekoppeld aan resources die ze kunnen weer geven door `read` de Azure-machtiging toe te wijzen. 
+* **Resource-of werkruimte machtigingen gebruiken**: deze besturings modus maakt granulaire RBAC mogelijk. Gebruikers kunnen toegang krijgen tot gegevens die zijn gekoppeld aan resources die ze kunnen weer geven door de Azure-machtiging toe te wijzen `read` . 
 
     Wanneer een gebruiker toegang heeft tot de werk ruimte in de werk ruimte-context modus, zijn werkruimte machtigingen van toepassing. Wanneer een gebruiker de werk ruimte in de resource context modus opent, worden alleen resource machtigingen gecontroleerd en worden de machtigingen voor de werk ruimte genegeerd. Schakel RBAC voor een gebruiker in door deze uit de werkruimte machtigingen te verwijderen en de machtigingen van de resource te herkennen.
 
@@ -129,7 +129,7 @@ Zie de [modus toegangs beheer configureren](manage-access.md#configure-access-co
 
 Azure Monitor is een grootschalige gegevens service waarmee duizenden klanten elke maand terabytes aan gegevens verzenden in een groei tempo. De standaard drempel voor opname snelheden is ingesteld op **6 GB/min** per werk ruimte. Dit is een geschatte waarde, omdat de werkelijke grootte kan variëren, afhankelijk van de logboek lengte en de compressie ratio van de gegevens typen. Deze limiet geldt niet voor gegevens die worden verzonden door agents of de [Data Collector-API](data-collector-api.md).
 
-Als u gegevens met een hoger snelheid naar één werk ruimte verzendt, worden sommige gegevens verwijderd en wordt er om de 6 uur een gebeurtenis verzonden naar de *bewerkings* tabel in uw werk ruimte, terwijl de drempel waarde blijft overschreden. Als uw opname volume de frequentie limiet blijft overschrijden of als u verwacht dat deze kort te bereiken, kunt u een verhoging van uw werk ruimte aanvragen door een e-mail te verzenden LAIngestionRate@microsoft.com naar of een ondersteunings aanvraag te openen.
+Als u gegevens met een hoger snelheid naar één werk ruimte verzendt, worden sommige gegevens verwijderd en wordt er om de 6 uur een gebeurtenis verzonden naar de *bewerkings* tabel in uw werk ruimte, terwijl de drempel waarde blijft overschreden. Als uw opname volume de frequentie limiet blijft overschrijden of als u verwacht dat deze kort te bereiken, kunt u een verhoging van uw werk ruimte aanvragen door een e-mail te verzenden naar LAIngestionRate@microsoft.com of een ondersteunings aanvraag te openen.
  
 Als u een melding wilt ontvangen over een dergelijke gebeurtenis in uw werk ruimte, maakt u een [waarschuwings regel](alerts-log.md) voor het logboek met behulp van de volgende query met de logica van een waarschuwing op basis van het aantal resultaten dat is gelukt dan nul.
 

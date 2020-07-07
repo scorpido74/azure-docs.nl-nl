@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: zarhoads
 ms.openlocfilehash: 1f67605918e093e9ab28aa88be777d27acd831ef
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82169565"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Snelstartgids: ontwikkelen op Azure Kubernetes service (AKS) met helm
@@ -21,7 +21,7 @@ In dit artikel leest u hoe u helm kunt gebruiken om een toepassing te verpakken 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free)maken.
+* Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 * [Azure CLI geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest).
 * Docker is geïnstalleerd en geconfigureerd. Docker biedt pakketten voor de configuratie van Docker op een [Mac][docker-for-mac]-, [Windows][docker-for-windows]- of [Linux][docker-for-linux]-systeem.
 * [Helm v3 geïnstalleerd][helm-install].
@@ -66,7 +66,7 @@ az acr login --name MyHelmACR
 
 De opdracht retourneert een bericht dat de *aanmelding is* voltooid.
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Een Azure Kubernetes service-cluster maken
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Een upgrade maken van een Azure Kubernetes Service-cluster
 
 Maak een AKS-cluster. Met de onderstaande opdracht maakt u een AKS-cluster met de naam MyAKS en koppelt u MyHelmACR.
 
@@ -86,7 +86,7 @@ Als u Azure Cloud Shell gebruikt, is `kubectl` al geïnstalleerd. Als u het loka
 az aks install-cli
 ```
 
-Gebruik de opdracht [az aks get-credentials][] om `kubectl` te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. In het volgende voor beeld worden referenties opgehaald voor het AKS-cluster met de naam *MyAKS* in de *MyResourceGroup*:
+Gebruik de opdracht [az aks get-credentials][] om `kubectl` zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. In het volgende voor beeld worden referenties opgehaald voor het AKS-cluster met de naam *MyAKS* in de *MyResourceGroup*:
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKS
@@ -94,7 +94,7 @@ az aks get-credentials --resource-group MyResourceGroup --name MyAKS
 
 ## <a name="download-the-sample-application"></a>De voorbeeldtoepassing downloaden
 
-In deze Snelstartgids wordt gebruikgemaakt [van een node. js-toepassing in de voor beeld-opslag plaats van Azure dev Spaces][example-nodejs]. Kloon de toepassing van GitHub en navigeer naar de `dev-spaces/samples/nodejs/getting-started/webfrontend` map.
+Deze Snelstartgids maakt gebruik [van een voor beeld Node.js toepassing uit de opslag plaats voor de voor beelden van Azure dev Spaces][example-nodejs]. Kloon de toepassing van GitHub en navigeer naar de `dev-spaces/samples/nodejs/getting-started/webfrontend` map.
 
 ```console
 git clone https://github.com/Azure/dev-spaces
@@ -138,7 +138,7 @@ docker push <acrLoginServer>/webfrontend:v1
 
 ## <a name="create-your-helm-chart"></a>Uw helm-grafiek maken
 
-Genereer uw helm-grafiek `helm create` met behulp van de opdracht.
+Genereer uw helm-grafiek met behulp van de `helm create` opdracht.
 
 ```console
 helm create webfrontend
@@ -187,7 +187,7 @@ Gebruik de `helm install` opdracht voor het installeren van uw toepassing met be
 helm install webfrontend webfrontend/
 ```
 
-Het duurt enkele minuten voordat de service een openbaar IP-adres heeft geretourneerd. Als u de voortgang wilt bewaken `kubectl get service` , gebruikt u de opdracht met de para meter *Watch* :
+Het duurt enkele minuten voordat de service een openbaar IP-adres heeft geretourneerd. Als u de voortgang wilt bewaken, gebruikt u de `kubectl get service` opdracht met de para meter *Watch* :
 
 ```console
 $ kubectl get service --watch
@@ -209,7 +209,7 @@ az group delete --name MyResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Wanneer u het cluster verwijdert, wordt de Azure Active Directory-service-principal die door het AKS-cluster wordt gebruikt niet verwijderd. Zie [Overwegingen voor en verwijdering van AKS service-principal][sp-delete] voor stappen voor het verwijderen van de service-principal. Als u een beheerde identiteit hebt gebruikt, wordt de identiteit beheerd door het platform en hoeft niet te worden verwijderd.
+> Wanneer u het cluster verwijdert, wordt de Azure Active Directory-service-principal die door het AKS-cluster wordt gebruikt niet verwijderd. Zie [Overwegingen voor en verwijdering van AKS service-principal][sp-delete] voor stappen voor het verwijderen van de service-principal. Als u een beheerde identiteit hebt gebruikt, wordt de identiteit beheerd door het platform en hoeft deze niet te worden verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: 947dd125cf9c5f5874eed380b3d69cff11509e31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82187242"
 ---
 # <a name="azure-data-lake-storage-gen1-overview-in-hdinsight"></a>Azure Data Lake Storage Gen1 overzicht in HDInsight
@@ -73,7 +73,7 @@ Data Lake Storage Gen1 is compatibel met de meeste open source-onderdelen in de 
 
 ## <a name="data-lake-storage-gen1-file-system-adl"></a>Data Lake Storage Gen1-bestands systeem (adl://)
 
-In Hadoop-omgevingen kunt u toegang krijgen tot Data Lake Storage Gen1 via het nieuwe bestands systeem, de AzureDataLakeFilesystem (adl://). De prestaties van toepassingen en services die worden `adl://` gebruikt, kunnen worden geoptimaliseerd op manieren die momenteel niet beschikbaar zijn in WebHDFS. Als gevolg hiervan beschikt u over de flexibiliteit om de beste prestaties te behalen met behulp van de aanbevolen adl://. Of u kunt bestaande code hand haven door de WebHDFS-API rechtstreeks te gebruiken. Azure HDInsight maakt optimaal gebruik van de AzureDataLakeFilesystem om de beste prestaties op Data Lake Storage Gen1 te bieden.
+In Hadoop-omgevingen kunt u toegang krijgen tot Data Lake Storage Gen1 via het nieuwe bestands systeem, de AzureDataLakeFilesystem (adl://). De prestaties van toepassingen en services die worden gebruikt, `adl://` kunnen worden geoptimaliseerd op manieren die momenteel niet beschikbaar zijn in WebHDFS. Als gevolg hiervan beschikt u over de flexibiliteit om de beste prestaties te behalen met behulp van de aanbevolen adl://. Of u kunt bestaande code hand haven door de WebHDFS-API rechtstreeks te gebruiken. Azure HDInsight maakt optimaal gebruik van de AzureDataLakeFilesystem om de beste prestaties op Data Lake Storage Gen1 te bieden.
 
 Toegang tot uw gegevens in Data Lake Storage Gen1 met behulp van de volgende URI:
 
@@ -83,6 +83,6 @@ Zie [acties die beschikbaar zijn voor de opgeslagen gegevens](../data-lake-store
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Inleiding tot Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)
+* [Inleiding in Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)
 * [Kennismaking met Azure Storage](../storage/common/storage-introduction.md)
 * [Azure Data Lake Storage Gen2-overzicht](./overview-data-lake-storage-gen2.md)

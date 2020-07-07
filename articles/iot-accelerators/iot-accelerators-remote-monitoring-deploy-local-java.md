@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
 ms.openlocfilehash: b201200ebf6807d7301dfd8c52e3137a29784eb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82187208"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>De externe controle oplossings versneller implementeren lokaal-IntelliJ
@@ -41,9 +41,9 @@ Als u de lokale implementatie wilt volt ooien, moet u de volgende hulpprogram ma
 * [IntelliJ SBT-invoeg toepassing](https://plugins.jetbrains.com/plugin/5007-sbt)
 * [IntelliJ SBT uitvoerder-invoeg toepassing](https://plugins.jetbrains.com/plugin/7247-sbt-executor)
 * [Nginx](https://nginx.org/en/download.html)
-* [Node. js V8](https://nodejs.org/)
+* [Node.js V8](https://nodejs.org/)
 
-Node. js V8 is een vereiste voor de PC'S CLI die de scripts gebruiken om Azure-resources te maken. Gebruik node. js V10 toevoegen niet.
+Node.js V8 is een vereiste voor de PC'S CLI die de scripts gebruiken om Azure-resources te maken. Gebruik Node.js V10 toevoegen niet.
 
 > [!NOTE]
 > IntelliJ IDE is beschikbaar voor Windows en Mac.
@@ -98,7 +98,7 @@ Als u de vereiste Azure-resources nog niet hebt gemaakt, voert u de volgende sta
    Het script voegt ook een set omgevings variabelen toe aan uw lokale machine. De naam van elke variabele heeft de voor voegsel- **pc's**. Deze omgevings variabelen bieden Details waarmee externe controle de configuratie waarden van een Azure Key Vault bron kan lezen.
 
    > [!TIP]
-   > Wanneer het script is voltooid, worden de omgevings variabelen opgeslagen in een bestand met ** \<de naam\>\\basismap.\\\<PC-\>oplossing naam. env**. U kunt deze gebruiken voor toekomstige implementaties van oplossings versnelling. Houd er rekening mee dat alle omgevings variabelen die op uw lokale computer zijn ingesteld, de waarden in het **lokale\\. env\\\\** -bestand van Services-scripts overschrijven wanneer u **docker-opstellen**uitvoert.
+   > Wanneer het script is voltooid, worden de omgevings variabelen opgeslagen in een bestand met de naam ** \<your home folder\> \\ . PCs \\ \<solution name\> . env**. U kunt deze gebruiken voor toekomstige implementaties van oplossings versnelling. Houd er rekening mee dat alle omgevings variabelen die op uw lokale computer zijn ingesteld, de waarden in het ** \\ \\ lokale \\ . env** -bestand van Services-scripts overschrijven wanneer u **docker-opstellen**uitvoert.
 
 1. Sluit uw opdracht regel omgeving.
 
@@ -109,7 +109,7 @@ Als u de vereiste Azure-resources al hebt gemaakt, stelt u de bijbehorende omgev
 * **PCS_AAD_APPID**: de Azure Active Directory-toepassings-id (Azure AD).
 * **PCS_AAD_APPSECRET**: het Azure AD-toepassings geheim.
 
-Configuratie waarden worden gelezen uit deze Key Vault bron. Deze omgevings variabelen kunnen worden opgeslagen in het ** \<bestand uw\>\\basismap.\\\<PC Solution\>naam. env** van de implementatie. Houd er rekening mee dat omgevings variabelen die op uw lokale computer zijn ingesteld, waarden in het bestand **Local\\\\. env van Services-scripts\\** worden vervangen wanneer u **docker-opstellen**uitvoert.
+Configuratie waarden worden gelezen uit deze Key Vault bron. Deze omgevings variabelen kunnen worden opgeslagen in het bestand ** \<your home folder\> \\ . pc's \\ \<solution name\> . env** van de implementatie. Houd er rekening mee dat omgevings variabelen die op uw lokale computer zijn ingesteld, waarden in het bestand ** \\ \\ Local \\ . env van Services-scripts** worden vervangen wanneer u **docker-opstellen**uitvoert.
 
 Een deel van de configuratie die nodig is voor de micro service, wordt opgeslagen in een exemplaar van Key Vault dat is gemaakt tijdens de eerste implementatie. De bijbehorende variabelen in de sleutel kluis moeten naar behoefte worden gewijzigd.
 
@@ -159,11 +159,11 @@ De volgende stappen laten zien hoe u micro Services voor externe controle uitvoe
 
 #### <a name="create-run-configurations"></a>Uitvoerings configuraties maken
 
-1. Selecteer **Run** > **bewerkings configuraties**uitvoeren.
-1. Selecteer **nieuwe configuratie** > **SBT taak**toevoegen.
+1. Selecteer **Run**  >  **bewerkings configuraties**uitvoeren.
+1. Selecteer **nieuwe configuratie**  >  **SBT taak**toevoegen.
 1. Voer een **naam**in en voer vervolgens **taken** in als **Run**.
 1. Selecteer de **werkmap** op basis van de service die u wilt uitvoeren.
-1. Selecteer**OK** **Toep assen** > om uw keuzes op te slaan.
+1. Selecteer **OK Toep assen**  >  **OK** om uw keuzes op te slaan.
 1. Uitvoerings configuraties maken voor de volgende webservices:
     * WebService (services\config)
     * WebService (services\device-Telemetry)
@@ -176,9 +176,9 @@ In de volgende afbeelding ziet u een voor beeld van het toevoegen van een config
 
 #### <a name="create-a-compound-configuration"></a>Een samengestelde configuratie maken
 
-1. Als u alle services tegelijk wilt uitvoeren, selecteert u **nieuwe configuratie** > **verbinding**toevoegen.
+1. Als u alle services tegelijk wilt uitvoeren, selecteert u **nieuwe configuratie**  >  **verbinding**toevoegen.
 1. Voer een **naam**in en selecteer vervolgens **SBT-taken toevoegen**.
-1. Selecteer**OK** **Toep assen** > om uw keuzes op te slaan.
+1. Selecteer **OK Toep assen**  >  **OK** om uw keuzes op te slaan.
 
 De volgende afbeelding laat bijvoorbeeld zien hoe u alle SBT-taken aan één configuratie toevoegt:
 
@@ -213,7 +213,7 @@ npm install
 npm start
 ```
 
-Wanneer de **Start** opdracht is voltooid, wordt de pagina op het adres `http://localhost:3000/dashboard`weer gegeven in de browser. De fouten op deze pagina worden verwacht. Voer de volgende stappen uit om de toepassing zonder fouten weer te geven.
+Wanneer de **Start** opdracht is voltooid, wordt de pagina op het adres weer gegeven in de browser `http://localhost:3000/dashboard` . De fouten op deze pagina worden verwacht. Voer de volgende stappen uit om de toepassing zonder fouten weer te geven.
 
 ### <a name="configure-and-run-nginx"></a>Nginx configureren en uitvoeren
 
@@ -226,7 +226,7 @@ Zie [nginx voor Windows](https://nginx.org/en/docs/windows.html)voor meer inform
 
 ### <a name="connect-to-the-dashboard"></a>Verbinding maken met het dash board
 
-Ga naar `http://localhost:9000` in uw browser om toegang te krijgen tot het dash board van de oplossing voor externe controle.
+Ga naar in uw browser om toegang te krijgen tot het dash board van de oplossing voor externe controle `http://localhost:9000` .
 
 ## <a name="clean-up"></a>Opruimen
 

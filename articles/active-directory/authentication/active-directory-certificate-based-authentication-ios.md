@@ -11,10 +11,10 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ede7ddb81bae69d92983e787e779ee9d410bd87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82144069"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Op certificaten gebaseerde verificatie op iOS Azure Active Directory
@@ -40,7 +40,7 @@ In dit artikel vindt u informatie over de vereisten en de ondersteunde scenario'
 | OneDrive |![Vinkje voor ondersteuning voor deze toepassing][1] |
 | Outlook |![Vinkje voor ondersteuning voor deze toepassing][1] |
 | Power BI |![Vinkje voor ondersteuning voor deze toepassing][1] |
-| Skype voor Bedrijven |![Vinkje voor ondersteuning voor deze toepassing][1] |
+| Skype voor bedrijven |![Vinkje voor ondersteuning voor deze toepassing][1] |
 | Word/Excel/Power Point |![Vinkje voor ondersteuning voor deze toepassing][1] |
 | Yammer |![Vinkje voor ondersteuning voor deze toepassing][1] |
 
@@ -73,7 +73,7 @@ Zie [de AD FS-aanmeldings pagina aanpassen](https://technet.microsoft.com/librar
 
 ## <a name="use-modern-authentication-with-office-apps"></a>Moderne verificatie gebruiken met Office-apps
 
-Sommige Office-apps waarvoor moderne verificatie is `prompt=login` ingeschakeld, worden in hun aanvraag verzonden naar Azure AD. Azure AD `prompt=login` vertaalt standaard de aanvraag naar ADFS als `wauth=usernamepassworduri` (vraagt ADFS om u/P-auth te maken) en `wfresh=0` (vraagt ADFS om SSO-status te negeren en een nieuwe verificatie uit te voeren). Als u verificatie op basis van certificaten voor deze apps wilt inschakelen, wijzigt u het standaard gedrag van Azure AD.
+Sommige Office-apps waarvoor moderne verificatie is ingeschakeld, `prompt=login` worden in hun aanvraag verzonden naar Azure AD. Azure AD vertaalt standaard `prompt=login` de aanvraag naar ADFS als `wauth=usernamepassworduri` (vraagt ADFS om u/P-auth te maken) en `wfresh=0` (vraagt ADFS om SSO-status te negeren en een nieuwe verificatie uit te voeren). Als u verificatie op basis van certificaten voor deze apps wilt inschakelen, wijzigt u het standaard gedrag van Azure AD.
 
 Als u het standaard gedrag wilt bijwerken, stelt u de*PromptLoginBehavior*in uw federatieve domein instellingen in op *uitgeschakeld*. U kunt de [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) -cmdlet gebruiken om deze taak uit te voeren, zoals wordt weer gegeven in het volgende voor beeld:
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
 ms.openlocfilehash: 7f3b928e657b5c061e624281e1d5a8805283a657
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186421"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Gegevens verzamelen van verzamelde op Linux-agents in Azure Monitor
@@ -45,12 +45,12 @@ Als u een versie van verzamelde vóór 5,5 gebruikt, moet u ook de volgende conf
        </URL>
     </Plugin>
 
-De verzamelde-configuratie maakt gebruik`write_http` van de standaard-invoeg toepassing voor het verzenden van metrische gegevens over de prestaties via poort 26000 naar log Analytics-agent voor Linux. 
+De verzamelde-configuratie maakt gebruik van de standaard- `write_http` invoeg toepassing voor het verzenden van metrische gegevens over de prestaties via poort 26000 naar log Analytics-agent voor Linux. 
 
 > [!NOTE]
 > Deze poort kan zo nodig worden geconfigureerd voor een aangepaste poort.
 
-De Log Analytics-agent voor Linux luistert ook naar poort 26000 voor metrische gegevens over verzamelde en converteert deze vervolgens naar Azure Monitor schema-metrische gegevens. Hieronder vindt u de configuratie `collectd.conf`van de log Analytics-agent voor Linux.
+De Log Analytics-agent voor Linux luistert ook naar poort 26000 voor metrische gegevens over verzamelde en converteert deze vervolgens naar Azure Monitor schema-metrische gegevens. Hieronder vindt u de configuratie van de Log Analytics-agent voor Linux `collectd.conf` .
 
     <source>
       type http
@@ -79,7 +79,7 @@ Hieronder volgen de basis stappen voor het configureren van het verzamelen van v
 
 ### <a name="configure-collectd-to-forward-data"></a>Verzamelde configureren voor het door sturen van gegevens 
 
-1. Als u verzamelde-gegevens naar de Log Analytics-agent voor `oms.conf` Linux wilt routeren, moet u deze toevoegen aan de configuratiemap van verzamelde. Het doel van dit bestand is afhankelijk van de Linux-distributie van uw computer.
+1. Als u verzamelde-gegevens naar de Log Analytics-agent voor Linux wilt routeren, `oms.conf` moet u deze toevoegen aan de configuratiemap van verzamelde. Het doel van dit bestand is afhankelijk van de Linux-distributie van uw computer.
 
     Als uw map verzamelde config zich in/etc/collectd.d/bevindt:
 

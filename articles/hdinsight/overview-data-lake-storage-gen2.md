@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: a7ae1a0f77d0d19fc48695ddc5cc3d3a14d65ab9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195125"
 ---
 # <a name="azure-data-lake-storage-gen2-overview-in-hdinsight"></a>Azure Data Lake Storage Gen2 overzicht in HDInsight
@@ -63,7 +63,7 @@ Het URI-schema biedt met SSL versleutelde toegang.
 
 `<PATH>`is de naam van het bestand of de map HDFS-pad.
 
-Als waarden voor `<FILE_SYSTEM_NAME>` en `<ACCOUNT_NAME>` niet worden opgegeven, wordt het standaard bestandssysteem gebruikt. Voor de bestanden in het standaard bestandssysteem gebruikt u een relatief pad of een absoluut pad. U kunt bijvoorbeeld een `hadoop-mapreduce-examples.jar` van de volgende paden naar het bestand met HDInsight-clusters verwijzen:
+Als waarden voor `<FILE_SYSTEM_NAME>` en `<ACCOUNT_NAME>` niet worden opgegeven, wordt het standaard bestandssysteem gebruikt. Voor de bestanden in het standaard bestandssysteem gebruikt u een relatief pad of een absoluut pad. U `hadoop-mapreduce-examples.jar` kunt bijvoorbeeld een van de volgende paden naar het bestand met HDInsight-clusters verwijzen:
 
 ```
 abfs://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
@@ -71,12 +71,12 @@ abfs:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduc
 ```
 
 > [!NOTE]
-> De bestands naam bevindt zich `hadoop-examples.jar` in de HDInsight-versies 2,1 en 1,6. Wanneer u werkt met bestanden buiten HDInsight, zult u zien dat de meeste hulpprogram ma's de ABFS-indeling niet herkennen, maar verwacht u in plaats daarvan een elementaire `example/jars/hadoop-mapreduce-examples.jar`pad-indeling, zoals.
+> De bestands naam bevindt zich `hadoop-examples.jar` in de HDInsight-versies 2,1 en 1,6. Wanneer u werkt met bestanden buiten HDInsight, zult u zien dat de meeste hulpprogram ma's de ABFS-indeling niet herkennen, maar verwacht u in plaats daarvan een elementaire pad-indeling, zoals `example/jars/hadoop-mapreduce-examples.jar` .
 
 Zie [de Azure data Lake Storage GEN2 URI gebruiken](../storage/blobs/data-lake-storage-introduction-abfs-uri.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Inleiding tot Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)
+* [Inleiding in Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)
 * [Kennismaking met Azure Storage](../storage/common/storage-introduction.md)
 * [Azure Data Lake Storage Gen1-overzicht](./overview-data-lake-storage-gen1.md)

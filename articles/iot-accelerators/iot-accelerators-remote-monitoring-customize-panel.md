@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
 ms.openlocfilehash: 694cc83ffce20a8744d7452a8f6d67c9ce23641c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82187225"
 ---
 # <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>Een aangepast paneel toevoegen aan het dash board in de Web-UI van de oplossing voor externe bewaking
@@ -43,13 +43,13 @@ Als u een paneel wilt toevoegen aan de gebruikers interface, moet u de bron best
 
 Om aan de slag te gaan, bevat de map **src/walkthrough/onderdelen/pages/dash board/panels/examplePanel** de bestanden waarmee een paneel wordt gedefinieerd, waaronder:
 
-**examplePanel. js**
+**examplePanel.js**
 
 [!code-javascript[Example panel](~/remote-monitoring-webui/src/walkthrough/components/pages/dashboard/panels/examplePanel/examplePanel.js?name=panel "Example panel")]
 
 Kopieer de map **src/walkthrough/onderdelen/pages/dash board/panels/examplePanel** naar de map **src/Components/pages/dash board/panels** .
 
-Voeg de volgende export toe aan het bestand **src/walkthrough/Components/pages/dash board/panels/index. js** :
+Voeg de volgende export toe aan de **bron/walkthrough/onderdelen/pagina's/dash board/deel Vensters/index.js** bestand:
 
 ```js
 export * from './examplePanel';
@@ -57,7 +57,7 @@ export * from './examplePanel';
 
 ### <a name="add-the-panel-to-the-dashboard"></a>Het deel venster toevoegen aan het dash board
 
-Wijzig de **src/Components/pages/dash board/dash board. js** om het deel venster toe te voegen.
+Wijzig het paneel **src/Components/pages/dash board/dashboard.js** om het deel venster toe te voegen.
 
 Voeg het deel venster voor beeld toe aan de lijst met invoer uit de deel Vensters:
 
@@ -90,7 +90,7 @@ Als de Web-UI niet al lokaal wordt uitgevoerd, voert u de volgende opdracht uit 
 npm start
 ```
 
-Met de vorige opdracht wordt de gebruikers interface `http://localhost:3000/dashboard`lokaal uitgevoerd op. Navigeer naar de pagina **dash board** om het nieuwe deel venster weer te geven.
+Met de vorige opdracht wordt de gebruikers interface lokaal uitgevoerd op `http://localhost:3000/dashboard` . Navigeer naar de pagina **dash board** om het nieuwe deel venster weer te geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 

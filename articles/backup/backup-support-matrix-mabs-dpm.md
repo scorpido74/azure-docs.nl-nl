@@ -4,10 +4,10 @@ description: Dit artikel bevat een overzicht van Azure Backup ondersteuning wann
 ms.date: 02/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 2d3b9dbf0440809578fca113ee6674b79a5d7fb1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82193272"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Ondersteunings matrix voor back-up met Microsoft Azure Backup Server of System Center DPM
@@ -50,7 +50,7 @@ Voor meer informatie:
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
 
-**Scenario** | **Agent** | **Locatie**
+**Scenario** | **Tussen** | **Locatie**
 --- | --- | ---
 **Back-ups maken van on-premises machines/werk belastingen** | De DPM/MABS Protection-agent wordt uitgevoerd op de computers waarvan u een back-up wilt maken.<br/><br/> De MARS-agent op de DPM-MABS-server.<br/> De minimale versie van de Microsoft Azure Recovery Services agent, of Azure Backup Agent, die vereist is om deze functie in te scha kelen, is 2.0.8719.0.  | DPM-MABS moeten on-premises worden uitgevoerd.
 
@@ -58,7 +58,7 @@ Voor meer informatie:
 
 DPM/MABS kan worden geïmplementeerd, zoals in de volgende tabel wordt samenvatten.
 
-**Implementatie** | **Ondersteuning** | **Nadere**
+**Implementatie** | **Ondersteuning** | **Details**
 --- | --- | ---
 **On-premises geïmplementeerd** | Fysieke server<br/><br/>Hyper-V VM<br/><br/> VMware-VM | Als DPM/MABS is geïnstalleerd als een VMware-VM, wordt alleen een back-up gemaakt van virtuele VMware-machines en workloads die worden uitgevoerd op deze Vm's.
 **Geïmplementeerd als een Azure Stack VM** | Alleen MABS | DPM kan niet worden gebruikt om back-ups te maken van Azure Stack Vm's.
@@ -80,10 +80,10 @@ Azure Backup kunt een back-up maken van DPM-MABS-exemplaren waarop een van de vo
 
 ## <a name="management-support"></a>Beheer ondersteuning
 
-**Probleem** | **Nadere**
+**Probleem** | **Details**
 --- | ---
 **Installatie** | Installeer DPM-MABS op een computer met één doel.<br/><br/> Installeer DPM/MABS niet op een domein controller, op een computer met de installatie van de functie toepassings server op een computer waarop micro soft Exchange Server of System Center Operations Manager, of op een cluster knooppunt.<br/><br/> [Controleer alle DPM-systeem vereisten](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).
-**Domain** | DPM/MABS moet lid zijn van een domein. Installeer eerst en voeg vervolgens DPM-MABS toe aan een domein. Het verplaatsen van DPM-MABS naar een nieuw domein na implementatie wordt niet ondersteund.
+**Domein** | DPM/MABS moet lid zijn van een domein. Installeer eerst en voeg vervolgens DPM-MABS toe aan een domein. Het verplaatsen van DPM-MABS naar een nieuw domein na implementatie wordt niet ondersteund.
 **Storage** | Moderne back-upopslag (MBS) wordt ondersteund vanuit DPM 2016/MABS v2 en hoger. Het is niet beschikbaar voor MABS v1.
 **MABS-upgrade** | U kunt MABS v3 rechtstreeks installeren of een upgrade uitvoeren naar MABS v3 vanuit MABS v2. [Meer informatie](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
 **MABS verplaatsen** | Het is niet mogelijk om MABS naar een nieuwe server te verplaatsen terwijl de opslag wordt behouden als u MBS gebruikt.<br/><br/> De server moet dezelfde naam hebben als de oorspronkelijke. U kunt de naam niet wijzigen als u dezelfde opslag groep wilt bewaren en dezelfde MABS-Data Base wilt gebruiken om gegevens herstel punten op te slaan.<br/><br/> U hebt een back-up van de MABS-data base nodig, omdat u deze moet herstellen.
@@ -92,7 +92,7 @@ Azure Backup kunt een back-up maken van DPM-MABS-exemplaren waarop een van de vo
 
 U kunt MABS implementeren op een Azure Stack virtuele machine, zodat u een back-up van Azure Stack Vm's en workloads vanaf één locatie kunt beheren.
 
-**Component** | **Nadere**
+**Onderdeel** | **Details**
 --- | ---
 **MABS op Azure Stack VM** | Ten minste a2. U kunt het beste beginnen met een installatie kopie van Windows Server 2012 R2 of Windows Server 2016 vanuit Azure Marketplace.<br/><br/> Installeer niets anders op de MABS-VM.
 **MABS-opslag** | Gebruik een afzonderlijk opslag account voor de MABS-VM. De MARS-agent die wordt uitgevoerd op MABS, heeft tijdelijke opslag nodig voor een cache locatie en voor het bewaren van gegevens die zijn hersteld vanuit de Cloud.
@@ -157,7 +157,7 @@ Geen connectiviteit langer dan 15 dagen | Verlopen/niet-ingericht | Geen back-up
 
 Gegevens waarvan een back-up is gemaakt naar DPM/MABS, worden opgeslagen op de lokale schijf opslag.
 
-**Storage** | **Nadere**
+**Storage** | **Details**
 --- | ---
 **MB'S** | Moderne back-upopslag (MBS) wordt ondersteund vanuit DPM 2016/MABS v2 en hoger. Het is niet beschikbaar voor MABS v1.
 **MABS-opslag op Azure VM** | Gegevens worden opgeslagen op Azure-schijven die zijn gekoppeld aan de DPM/MABS-VM en die worden beheerd in DPM/MABS. Het aantal schijven dat kan worden gebruikt voor de DPM/MABS-opslag groep wordt beperkt door de grootte van de virtuele machine.<br/><br/> A2 VM: 4 schijven; A3 VM: 8 schijven; A4 VM: 16 schijven, met een maximale grootte van 1 TB voor elke schijf. Hiermee bepaalt u de totale beschik bare back-upopslaggroep.<br/><br/> De hoeveelheid gegevens waarvan u een back-up kunt maken, is afhankelijk van het aantal en de grootte van de gekoppelde schijven.
