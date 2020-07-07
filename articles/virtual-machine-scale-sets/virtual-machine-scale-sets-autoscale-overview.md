@@ -6,15 +6,15 @@ ms.author: avverma
 ms.topic: overview
 ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.date: 05/29/2018
+ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 90777b8303f2d31168e489c8e2a7ca3a779a11e6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 11207dceb29c779c081c140ee8cd362d8a217acf
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124955"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856743"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Overzicht van automatisch schalen met virtuele-machineschaalsets van Azure
 Met een virtuele-machineschaalset van Azure kunt u automatisch het aantal VM-exemplaren vergroten of verkleinen waarop uw toepassing wordt uitgevoerd. Dit geautomatiseerde en elastische gedrag vermindert de overhead die nodig is voor het controleren en optimaliseren van de prestaties van uw toepassing. U stelt regels op die de aanvaardbare prestaties bepalen voor een positieve klantervaring. Wanneer deze gedefinieerde drempelwaarden worden bereikt, worden op basis van de regels voor automatisch schalen acties ondernomen om de capaciteit van de schaalset aan te passen. U kunt ook gebeurtenissen plannen om de capaciteit van een schaalset op vaste tijden automatisch te vergroten of verkleinen. In dit artikel vindt u een overzicht van de metrische gegevens over prestaties die beschikbaar zijn en welke acties u met automatisch schalen kunt uitvoeren.
