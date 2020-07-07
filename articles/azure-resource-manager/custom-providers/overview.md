@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 68b8bd187d58cd71778b8a922684cc3817a0715d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80398463"
 ---
 # <a name="azure-custom-resource-providers-overview"></a>Overzicht van aangepaste Azure-resource providers
@@ -25,7 +25,7 @@ Aangepaste Azure-resource providers is een uitbreidbaar platform voor Azure. Hie
 > [!IMPORTANT]
 > Aangepaste providers zijn momenteel beschikbaar als open bare preview.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="what-can-custom-resource-providers-do"></a>Wat kunnen aangepaste resource providers doen
 
@@ -55,7 +55,7 @@ Voor beeld-eind punt:
 
 Eigenschap | Vereist | Beschrijving
 ---|---|---
-name | *klikt* | De naam van de eindpunt definitie. Azure geeft deze naam beschikbaar via de API onder/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}'
+naam | *klikt* | De naam van de eindpunt definitie. Azure geeft deze naam beschikbaar via de API onder/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}'
 routingType | *geen* | Bepaalt het contract type met het **eind punt**. Als u niets opgeeft, wordt het standaard ingesteld op proxy.
 endpoint | *klikt* | Het eind punt waarnaar de aanvragen worden gerouteerd. Hiermee worden de reactie en eventuele neven effecten van de aanvraag verwerkt.
 
@@ -118,7 +118,7 @@ POST | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>pr
 
 ## <a name="looking-for-help"></a>Zoeken naar Help
 
-Als u vragen hebt over de ontwikkeling van de aangepaste Azure-resource provider, kunt u de vragen stellen op [stack overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Er is mogelijk al een vergelijk bare vraag gesteld en beantwoord, dus controleer eerst vóór het boeken. Voeg de tag ```azure-custom-providers``` toe om een snel antwoord te krijgen.
+Als u vragen hebt over de ontwikkeling van de aangepaste Azure-resource provider, kunt u de vragen stellen op [stack overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Er is mogelijk al een vergelijk bare vraag gesteld en beantwoord, dus controleer eerst vóór het boeken. Voeg de tag toe ```azure-custom-providers``` om een snel antwoord te krijgen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

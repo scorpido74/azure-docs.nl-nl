@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 64cb864b50f44f70bb9ceccc9983641970116cc7
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 0e6759837519feccf6069e805e3fe0f72562fb7b
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261440"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85559014"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Zelfstudie: JSON-blobs vanuit Azure Storage indexeren met behulp van REST
 
@@ -112,13 +112,13 @@ Stel bij Headers de optie Inhoudstype in op `application/json` en stel `api-key`
 
   ![URL en header voor Postman-aanvraag](media/search-get-started-postman/postman-url.png "URL en header voor Postman-aanvraag")
 
-Met behulp van URI's moet een API-versie worden opgegeven en elke aanroep moet **201 - Gemaakt** retourneren. De algemeen beschikbare API-versie voor het gebruik van JSON-matrices is `2019-05-06`.
+Met behulp van URI's moet een API-versie worden opgegeven en elke aanroep moet **201 - Gemaakt** retourneren. De algemeen beschikbare API-versie voor het gebruik van JSON-matrices is `2020-06-30`.
 
 ## <a name="3---create-a-data-source"></a>3 - Een gegevensbron maken
 
 Met de [Create Data Source-API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) wordt een Azure Cognitive Search-object gemaakt waarmee wordt aangegeven welke gegevens moeten worden geïndexeerd.
 
-1. Stel het eindpunt van deze aanroep in op `https://[service name].search.windows.net/datasources?api-version=2019-05-06`. Vervang `[service name]` door de naam van uw zoekservice. 
+1. Stel het eindpunt van deze aanroep in op `https://[service name].search.windows.net/datasources?api-version=2020-06-30`. Vervang `[service name]` door de naam van uw zoekservice. 
 
 1. Kopieer de volgende JSON naar de aanvraagbody.
 
@@ -161,7 +161,7 @@ Met de [Create Data Source-API](https://docs.microsoft.com/rest/api/searchservic
     
 De tweede aanroep is [Create Index-API](https://docs.microsoft.com/rest/api/searchservice/create-index), waarmee een Azure Cognitive Search-index wordt gemaakt waarin alle doorzoekbare gegevens worden opgeslagen. Een index geeft alle parameters en hun kenmerken op.
 
-1. Stel het eindpunt van deze aanroep in op `https://[service name].search.windows.net/indexes?api-version=2019-05-06`. Vervang `[service name]` door de naam van uw zoekservice.
+1. Stel het eindpunt van deze aanroep in op `https://[service name].search.windows.net/indexes?api-version=2020-06-30`. Vervang `[service name]` door de naam van uw zoekservice.
 
 1. Kopieer de volgende JSON naar de aanvraagbody.
 
@@ -236,7 +236,7 @@ De tweede aanroep is [Create Index-API](https://docs.microsoft.com/rest/api/sear
 
 Een indexeerfunctie maakt verbinding met de gegevensbron, importeert gegevens in de doelzoekindex en biedt optioneel een schema om het vernieuwen van de gegevens te automatiseren. De REST API is [Create Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
-1. Stel de URI voor deze aanroep in op `https://[service name].search.windows.net/indexers?api-version=2019-05-06`. Vervang `[service name]` door de naam van uw zoekservice.
+1. Stel de URI voor deze aanroep in op `https://[service name].search.windows.net/indexers?api-version=2020-06-30`. Vervang `[service name]` door de naam van uw zoekservice.
 
 1. Kopieer de volgende JSON naar de aanvraagbody.
 
@@ -281,7 +281,7 @@ Zodra het eerste document is geladen, kunt u meteen beginnen met zoeken.
 
 1. Wijzig de bewerking in **GET**.
 
-1. Stel de URI voor deze aanroep in op `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2019-05-06&$count=true`. Vervang `[service name]` door de naam van uw zoekservice.
+1. Stel de URI voor deze aanroep in op `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2020-06-30&$count=true`. Vervang `[service name]` door de naam van uw zoekservice.
 
 1. Verzend de aanvraag. Dit is een niet-opgegeven query voor zoeken op volledige tekst waarmee alle velden worden opgehaald die als Kan worden opgehaald zijn gemarkeerd in de index, samen met het aantal documenten. Het antwoord moet er als volgt uitzien:
 
@@ -313,7 +313,7 @@ Zodra het eerste document is geladen, kunt u meteen beginnen met zoeken.
             . . . 
     ```
 
-1. Voeg de queryparameter `$select` toe om de resultaten te beperken tot een kleiner aantal velden: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2019-05-06&$count=true`.  Voor deze query komen 100 documenten overeen, maar standaard worden met Azure Cognitive Search niet meer dan 50 documenten in de resultaten geretourneerd.
+1. Voeg de queryparameter `$select` toe om de resultaten te beperken tot een kleiner aantal velden: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2020-06-30&$count=true`.  Voor deze query komen 100 documenten overeen, maar standaard worden met Azure Cognitive Search niet meer dan 50 documenten in de resultaten geretourneerd.
 
    ![Geparameteriseerde query](media/search-semi-structured-data/lastquery.png "Geparameteriseerde query")
 
@@ -333,7 +333,7 @@ In de eerste experimentele fasen van ontwikkeling, is de meest praktische aanpak
 U kunt de portal gebruiken om indexen, indexeerfuncties en gegevensbronnen te verwijderen. Of gebruik **DELETE** en geef voor elk object een URL op. Met de volgende opdracht wordt een indexeerfunctie verwijderd.
 
 ```http
-DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/clinical-trials-json-indexer?api-version=2019-05-06
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/clinical-trials-json-indexer?api-version=2020-06-30
 ```
 
 De statuscode 204 wordt na verwijdering geretourneerd.

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 113ab07af8ada16c0779da510c5f5b1f1f5a290b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80398240"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Sensor gegevens ophalen van sensor partners
@@ -46,7 +46,7 @@ Volg de onderstaande stappen om de bovenstaande gegevens te genereren:
 
 2. **Als u FarmBeats-versie 1.2.7 of hoger hebt, slaat u stap a, b en c over en gaat u naar stap 3.** U kunt de FarmBeats-versie controleren door het pictogram **instellingen** te selecteren in de rechter bovenhoek van de FarmBeats-gebruikers interface.
 
-      a.  Ga naar **Azure Active Directory** > **app-registraties** voor Azure Active Directory
+      a.  Ga naar **Azure Active Directory**  >  **app-registraties** voor Azure Active Directory
 
       b. Selecteer de **app-registratie** die is gemaakt als onderdeel van uw FarmBeats-implementatie. Deze heeft dezelfde naam als uw FarmBeats-datahub.
 
@@ -74,7 +74,7 @@ Volg de onderstaande stappen om de bovenstaande gegevens te genereren:
 
     ```
 
-7. Voer het volgende script uit. Het script vraagt om de Tenant-id, die kan worden verkregen van **Azure Active Directory** > **overzichts** pagina.
+7. Voer het volgende script uit. Het script vraagt om de Tenant-id, die kan worden verkregen van **Azure Active Directory**  >  **overzichts** pagina.
 
     ```azurepowershell-interactive 
 

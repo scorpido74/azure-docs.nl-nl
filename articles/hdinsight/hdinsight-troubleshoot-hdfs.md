@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.custom: seodec18
 ms.openlocfilehash: 6de9e31c3e79f6d704ef8b4749d41329dcc0bddb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82190674"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Problemen met Apache Hive HDFS oplossen met behulp van Azure HDInsight
@@ -25,9 +25,9 @@ Meer informatie over de belangrijkste problemen en oplossingen bij het werken me
 
 Open de lokale HDFS via de opdracht regel en toepassings code in plaats van met behulp van Azure Blob-opslag of Azure Data Lake Storage vanuit het HDInsight-cluster.
 
-### <a name="resolution-steps"></a>Oplossingen
+### <a name="resolution-steps"></a>Stappen om het probleem op te lossen
 
-1. Gebruik `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` in de opdracht prompt letterlijk, zoals in de volgende opdracht:
+1. Gebruik in de opdracht prompt `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` letterlijk, zoals in de volgende opdracht:
 
     ```output
     hdfs dfs -D "fs.default.name=hdfs://mycluster/" -ls /
@@ -62,7 +62,7 @@ Open de lokale HDFS via de opdracht regel en toepassings code in plaats van met 
     }
     ```
 
-3. Voer het gecompileerde jar-bestand (bijvoorbeeld een bestand met de `java-unit-tests-1.0.jar`naam) uit op het HDInsight-cluster met de volgende opdracht:
+3. Voer het gecompileerde jar-bestand (bijvoorbeeld een bestand met de naam `java-unit-tests-1.0.jar` ) uit op het HDInsight-cluster met de volgende opdracht:
 
     ```apache
     hadoop jar java-unit-tests-1.0.jar JavaUnitTests
@@ -76,7 +76,7 @@ Open de lokale HDFS via de opdracht regel en toepassings code in plaats van met 
 
 ### <a name="issue"></a>Probleem
 
-Wanneer u de `hadoop` opdrachten `hdfs dfs` of gebruikt om bestanden te schrijven die ~ 12 GB of groter zijn op een HBase-cluster, kunt u het volgende fout bericht over:
+Wanneer u de `hadoop` opdrachten of gebruikt `hdfs dfs` om bestanden te schrijven die ~ 12 GB of groter zijn op een HBase-cluster, kunt u het volgende fout bericht over:
 
 ```error
 ERROR azure.NativeAzureFileSystem: Encountered Storage Exception for write on Blob : example/test_large_file.bin._COPYING_ Exception details: null Error Code : RequestBodyTooLarge
@@ -102,21 +102,21 @@ Caused by: com.microsoft.azure.storage.StorageException: The request body is too
 
 ### <a name="cause"></a>Oorzaak
 
-HBase op HDInsight-clusters worden standaard ingesteld op een blok grootte van 256 KB bij het schrijven naar Azure Storage. Hoewel het werkt voor HBase-Api's of REST-Api's, resulteert dit in een fout bij `hadoop` het `hdfs dfs` gebruik van de opdracht regel Programma's of.
+HBase op HDInsight-clusters worden standaard ingesteld op een blok grootte van 256 KB bij het schrijven naar Azure Storage. Hoewel het werkt voor HBase-Api's of REST-Api's, resulteert dit in een fout bij het gebruik van de `hadoop` `hdfs dfs` opdracht regel Programma's of.
 
 ### <a name="resolution"></a>Oplossing
 
-Gebruiken `fs.azure.write.request.size` om een grotere blok grootte op te geven. U kunt deze wijziging per gebruik uitvoeren met behulp van de `-D` para meter. De volgende opdracht is een voor beeld van het gebruik van `hadoop` deze para meter met de opdracht:
+Gebruiken `fs.azure.write.request.size` om een grotere blok grootte op te geven. U kunt deze wijziging per gebruik uitvoeren met behulp van de `-D` para meter. De volgende opdracht is een voor beeld van het gebruik van deze para meter met de `hadoop` opdracht:
 
 ```bash
 hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file.bin /example/data
 ```
 
-U kunt ook de waarde `fs.azure.write.request.size` globaal verhogen door Apache Ambari te gebruiken. De volgende stappen kunnen worden gebruikt om de waarde in de Ambari-webgebruikersinterface te wijzigen:
+U kunt ook de waarde globaal verhogen `fs.azure.write.request.size` door Apache Ambari te gebruiken. De volgende stappen kunnen worden gebruikt om de waarde in de Ambari-webgebruikersinterface te wijzigen:
 
-1. Ga in uw browser naar de Ambari-webgebruikersinterface voor uw cluster. De URL is `https://CLUSTERNAME.azurehdinsight.net`, waarbij `CLUSTERNAME` de naam van het cluster is. Wanneer u hierom wordt gevraagd, voert u de naam en het wacht woord van de beheerder voor het cluster in.
+1. Ga in uw browser naar de Ambari-webgebruikersinterface voor uw cluster. De URL is `https://CLUSTERNAME.azurehdinsight.net` , waarbij `CLUSTERNAME` de naam van het cluster is. Wanneer u hierom wordt gevraagd, voert u de naam en het wacht woord van de beheerder voor het cluster in.
 2. Klik aan de linkerkant van het scherm op **HDFS**en selecteer vervolgens het tabblad **configuratie** .
-3. Voer `fs.azure.write.request.size`in het veld **filter...** in.
+3. Voer in het veld **filter...** in `fs.azure.write.request.size` .
 4. Wijzig de waarde van 262144 (256 KB) in de nieuwe waarde. Bijvoorbeeld 4194304 (4 MB).
 
     ![Afbeelding van het wijzigen van de waarde via Ambari Web UI](./media/hdinsight-troubleshoot-hdfs/hbase-change-block-write-size.png)
@@ -125,10 +125,10 @@ Zie [HDInsight-clusters beheren met behulp van de Apache Ambari-webgebruikersint
 
 ## <a name="du"></a>du
 
-Met [`-du`](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#du) de opdracht worden de grootte van bestanden en mappen in de opgegeven map of de lengte van een bestand weer gegeven als dit een bestand is.
+[`-du`](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#du)Met de opdracht worden de grootte van bestanden en mappen in de opgegeven map of de lengte van een bestand weer gegeven als dit een bestand is.
 
 De `-s` optie produceert een statistische samen vatting van de bestands lengten die worden weer gegeven.  
-Met `-h` de optie wordt de bestands grootte opgemaakt.
+Met de `-h` optie wordt de bestands grootte opgemaakt.
 
 Voorbeeld:
 
@@ -153,6 +153,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
 * Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

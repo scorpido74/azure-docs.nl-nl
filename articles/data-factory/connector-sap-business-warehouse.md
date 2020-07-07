@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 2f8406038be10ba3bdc207bf447fecb86a376fe8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418062"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Gegevens van SAP Business Warehouse kopiëren met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](v1/data-factory-sap-business-warehouse-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](v1/data-factory-sap-business-warehouse-connector.md)
 > * [Huidige versie](connector-sap-business-warehouse.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -54,7 +54,7 @@ Als u deze SAP Business Warehouse-connector wilt gebruiken, moet u het volgende 
 
 >[!TIP]
 >Als u verbindings problemen wilt oplossen met SAP BW, controleert u het volgende:
->- Alle afhankelijkheids bibliotheken die zijn geëxtraheerd uit de coweaver RFC SDK zijn aanwezig in de map%windir%\System32. Normaal gesp roken heeft het icudt34. dll, icuin34. dll, icuuc34. dll, libicudecnumber. dll, librfc32. dll, libsapucum. dll, sapcrypto. dll, sapcryto_old. dll, sapnwrfc. dll.
+>- Alle afhankelijkheids bibliotheken die zijn geëxtraheerd uit de coweaver RFC SDK zijn aanwezig in de map%windir%\System32. Normaal gesp roken heeft het icudt34.dll, icuin34.dll, icuuc34.dll, libicudecnumber.dll, librfc32.dll, libsapucum.dll, sapcrypto.dll, sapcryto_old.dll, sapnwrfc.dll.
 >- De benodigde poorten die worden gebruikt om verbinding te maken met SAP server worden ingeschakeld op de zelf-hostende IR-computer, die meestal poort 3300 en 3201 is.
 
 ## <a name="getting-started"></a>Aan de slag
@@ -77,7 +77,7 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service SAP Busi
 | wachtwoord | Het wachtwoord voor de gebruiker. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Een zelf-hostende Integration Runtime is vereist zoals vermeld in de [vereisten](#prerequisites). |Ja |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -108,7 +108,7 @@ Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een v
 
 Als u gegevens wilt kopiëren uit SAP BW, stelt u de eigenschap type van de gegevensset in op **SapBwCube**. Hoewel er geen type-specifieke eigenschappen worden ondersteund voor de SAP BW-gegevensset van het type RelationalTable.
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -125,7 +125,7 @@ Als u gegevens wilt kopiëren uit SAP BW, stelt u de eigenschap type van de gege
 }
 ```
 
-Als u getypte gegevensset gebruikt `RelationalTable` , wordt deze nog steeds ondersteund als-is, terwijl u wordt geadviseerd om het nieuwe item te gebruiken.
+Als u `RelationalTable` getypte gegevensset gebruikt, wordt deze nog steeds ondersteund als-is, terwijl u wordt geadviseerd om het nieuwe item te gebruiken.
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
@@ -140,7 +140,7 @@ Als u gegevens wilt kopiëren uit SAP BW, worden de volgende eigenschappen onder
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **SapBwSource** | Ja |
 | query | Hiermee geeft u de MDX-query op die gegevens uit het SAP BW exemplaar moet lezen. | Ja |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[
@@ -172,7 +172,7 @@ Als u gegevens wilt kopiëren uit SAP BW, worden de volgende eigenschappen onder
 ]
 ```
 
-Als u getypte bron gebruikt `RelationalSource` , wordt deze nog steeds ondersteund als-is, terwijl u wordt geadviseerd om het nieuwe item te gebruiken.
+Als u `RelationalSource` getypte bron gebruikt, wordt deze nog steeds ondersteund als-is, terwijl u wordt geadviseerd om het nieuwe item te gebruiken.
 
 ## <a name="data-type-mapping-for-sap-bw"></a>Toewijzing van gegevens type voor SAP BW
 
@@ -186,7 +186,7 @@ Bij het kopiëren van gegevens uit SAP BW worden de volgende toewijzingen gebrui
 | LOPEN | Decimal |
 | CUKY | Tekenreeks |
 | DEC | Decimal |
-| FLTP | Double |
+| FLTP | Dubbel |
 | INT1 | Byte |
 | INT2 | Int16 |
 | INT4 | Int |

@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
 ms.openlocfilehash: 5dd57a87658554bf59acf5cee1b6daf67b8692b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71162152"
 ---
 #    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Werk stroom van de klassieke Windows Azure-VM-architectuur 
@@ -39,7 +39,7 @@ Het volgende diagram toont de architectuur van Azure-resources.
 
 **C**. De Hosta Gent bevindt zich op het hostbesturingssysteem en is verantwoordelijk voor het instellen van het gast besturingssysteem en het communiceren met de gast agent (WindowsAzureGuestAgent) om de rol bij te werken naar een beoogde doel status en heartbeat-controles uit te voeren met de gast agent. Als de Hosta Gent gedurende tien minuten geen heartbeat-antwoord ontvangt, wordt het gast besturingssysteem door de host-agent opnieuw gestart.
 
-**C2**. WaAppAgent is verantwoordelijk voor het installeren, configureren en bijwerken van WindowsAzureGuestAgent. exe.
+**C2**. WaAppAgent is verantwoordelijk voor het installeren, configureren en bijwerken van WindowsAzureGuestAgent.exe.
 
 **D**.  WindowsAzureGuestAgent is verantwoordelijk voor het volgende:
 
@@ -69,11 +69,11 @@ Het volgende diagram toont de architectuur van Azure-resources.
 
 **I**. WaWorkerHost is het standaard hostproces voor normale werk rollen. Dit hostproces host alle Dll's van de rol en de code van het toegangs punt, zoals onstart en run.
 
-**J**. WaWebHost is het standaard hostproces voor webrollen als deze zijn geconfigureerd voor het gebruik van de SDK 1,2-compatibel Hostable Web core (HWC). Rollen kunnen de HWC-modus inschakelen door het element uit de service definitie (csdef) te verwijderen. In deze modus worden alle code en Dll's van de service uitgevoerd vanuit het WaWebHost-proces. IIS (w3wp) wordt niet gebruikt en er zijn geen AppPools geconfigureerd in IIS-beheer omdat IIS wordt gehost in WaWebHost. exe.
+**J**. WaWebHost is het standaard hostproces voor webrollen als deze zijn geconfigureerd voor het gebruik van de SDK 1,2-compatibel Hostable Web core (HWC). Rollen kunnen de HWC-modus inschakelen door het element uit de service definitie (csdef) te verwijderen. In deze modus worden alle code en Dll's van de service uitgevoerd vanuit het WaWebHost-proces. IIS (w3wp) wordt niet gebruikt en er zijn geen AppPools geconfigureerd in IIS-beheer omdat IIS wordt gehost in WaWebHost.exe.
 
 **K**. WaIISHost is het hostproces voor de functie-invoer punt code voor webrollen die gebruikmaken van volledige IIS. Dit proces laadt de eerste gevonden DLL die de klasse **RoleEntryPoint** gebruikt en voert de code uit deze klasse uit (onstart, run, OnStop). Alle **RoleEnvironment** -gebeurtenissen (zoals StatusCheck en gewijzigd) die in de RoleEntryPoint-klasse zijn gemaakt, worden in dit proces gegenereerd.
 
-**L**. W3WP is het standaard-IIS-werk proces dat wordt gebruikt als de rol is geconfigureerd voor het gebruik van volledige IIS. Hiermee wordt de AppPool uitgevoerd die is geconfigureerd vanuit IISConfigurator. Alle RoleEnvironment-gebeurtenissen (zoals StatusCheck en gewijzigd) die hier worden gemaakt, worden in dit proces gegenereerd. Houd er rekening mee dat RoleEnvironment-gebeurtenissen worden gestart op beide locaties (WaIISHost en W3wp. exe) als u zich abonneert op gebeurtenissen in beide processen.
+**L**. W3WP is het standaard-IIS-werk proces dat wordt gebruikt als de rol is geconfigureerd voor het gebruik van volledige IIS. Hiermee wordt de AppPool uitgevoerd die is geconfigureerd vanuit IISConfigurator. Alle RoleEnvironment-gebeurtenissen (zoals StatusCheck en gewijzigd) die hier worden gemaakt, worden in dit proces gegenereerd. Houd er rekening mee dat RoleEnvironment-gebeurtenissen worden gestart op beide locaties (WaIISHost en w3wp.exe) als u zich abonneert op gebeurtenissen in beide processen.
 
 ## <a name="workflow-processes"></a>Werk stroom processen
 
@@ -83,11 +83,11 @@ Het volgende diagram toont de architectuur van Azure-resources.
 4. De Hosta Gent start het gast besturingssysteem en communiceert met de gast agent (WindowsAzureGuestAgent). De host verzendt heartbeats naar de gast om er zeker van te zijn dat de rol werkt naar de doel status.
 5. WindowsAzureGuestAgent stelt het gast besturingssysteem (firewall, Acl's, LocalStorage, enzovoort) in, kopieert een nieuw XML-configuratie bestand naar c:\Config en start vervolgens het WaHostBootstrapper proces.
 6. Voor volledige IIS-webfuncties start WaHostBootstrapper IISConfigurator en geeft het aan dat alle bestaande AppPools voor de webrole uit IIS moeten worden verwijderd.
-7. WaHostBootstrapper leest de **opstart** taken van E:\RoleModel.XML en begint met het uitvoeren van opstart taken. WaHostBootstrapper wacht totdat alle eenvoudige opstart taken zijn voltooid en het bericht ' geslaagd ' heeft geretourneerd.
-8. Voor volledige IIS-webfuncties vertelt WaHostBootstrapper IISConfigurator het configureren van de IIS-AppPool en wijst `E:\Sitesroot\<index>`de site `<index>` naar, waarbij een 0-index is in `<Sites>` het aantal elementen dat is gedefinieerd voor de service.
+7. WaHostBootstrapper leest de **opstart** taken van E:\RoleModel.xml en begint met het uitvoeren van opstart taken. WaHostBootstrapper wacht totdat alle eenvoudige opstart taken zijn voltooid en het bericht ' geslaagd ' heeft geretourneerd.
+8. Voor volledige IIS-webfuncties vertelt WaHostBootstrapper IISConfigurator het configureren van de IIS-AppPool en wijst de site naar `E:\Sitesroot\<index>` , waarbij `<index>` een 0-index is in het aantal elementen dat is `<Sites>` gedefinieerd voor de service.
 9. WaHostBootstrapper start het host proces, afhankelijk van het type rol:
-    1. **Worker-rol**: WaWorkerHost. exe is gestart. WaHostBootstrapper voert de methode onstart () uit. Nadat deze is geretourneerd, begint WaHostBootstrapper met het uitvoeren van de methode Run () en wordt de functie vervolgens gelijktijdig gemarkeerd als gereed en wordt deze in de load balancer draaiing geplaatst (als InputEndpoints zijn gedefinieerd). WaHostBootsrapper gaat vervolgens naar een lus voor het controleren van de functie status.
-    1. **SDK 1,2 HWC-webrol**: WaWebHost is gestart. WaHostBootstrapper voert de methode onstart () uit. Nadat deze is geretourneerd, begint WaHostBootstrapper met het uitvoeren van de methode Run () en markeert de functie vervolgens gelijktijdig als gereed en wordt deze in de load balancer draaiing geplaatst. WaWebHost geeft een opwarm-aanvraag (GET/do. rd_runtime_init). Alle webaanvragen worden verzonden naar WaWebHost. exe. WaHostBootsrapper gaat vervolgens naar een lus voor het controleren van de functie status.
+    1. **Worker-rol**: WaWorkerHost.exe is gestart. WaHostBootstrapper voert de methode onstart () uit. Nadat deze is geretourneerd, begint WaHostBootstrapper met het uitvoeren van de methode Run () en wordt de functie vervolgens gelijktijdig gemarkeerd als gereed en wordt deze in de load balancer draaiing geplaatst (als InputEndpoints zijn gedefinieerd). WaHostBootsrapper gaat vervolgens naar een lus voor het controleren van de functie status.
+    1. **SDK 1,2 HWC-webrol**: WaWebHost is gestart. WaHostBootstrapper voert de methode onstart () uit. Nadat deze is geretourneerd, begint WaHostBootstrapper met het uitvoeren van de methode Run () en markeert de functie vervolgens gelijktijdig als gereed en wordt deze in de load balancer draaiing geplaatst. WaWebHost geeft een opwarm-aanvraag (GET/do. rd_runtime_init). Alle webaanvragen worden naar WaWebHost.exe verzonden. WaHostBootsrapper gaat vervolgens naar een lus voor het controleren van de functie status.
     1. **Volledige IIS-webrole**: aIISHost is gestart. WaHostBootstrapper voert de methode onstart () uit. Nadat deze is geretourneerd, wordt de methode Run () gestart en wordt de functie vervolgens gelijktijdig gemarkeerd als gereed en wordt deze in de load balancer draaiing geplaatst. WaHostBootsrapper gaat vervolgens naar een lus voor het controleren van de functie status.
 10. Binnenkomende webaanvragen voor een volledige IIS-webfunctie activeert IIS om het W3WP-proces te starten en de aanvraag te behandelen, op dezelfde manier als in een on-premises IIS-omgeving.
 

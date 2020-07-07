@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 1b80fc997a4b3d2b472717b1ec2f379a4e958d8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80422561"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>De firewall van het Azure VM-gast besturingssysteem blokkeert het inkomende verkeer
@@ -53,7 +53,7 @@ Maak verbinding met de [seriële console en open vervolgens een Power shell-exem
 
 #### <a name="mitigation-1"></a>Risico beperking 1
 
-1.  Als Azure agent is geïnstalleerd en correct werkt op de virtuele machine, kunt u de optie ' configuratie alleen opnieuw instellen ' onder **ondersteuning en probleem oplossing** > voor het**opnieuw instellen van het wacht woord** in het VM-menu gebruiken.
+1.  Als Azure agent is geïnstalleerd en correct werkt op de virtuele machine, kunt u de optie ' configuratie alleen opnieuw instellen ' onder **ondersteuning en probleem oplossing**  >  voor het**opnieuw instellen van het wacht woord** in het VM-menu gebruiken.
 
 2.  Als u deze herstel optie uitvoert, gebeurt het volgende:
 

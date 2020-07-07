@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
 ms.openlocfilehash: 5a273ccad0d30ede3f0ed4ee532d61161074d304
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188290"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Problemen oplossen: Azure Point-to-site-verbindings problemen
@@ -44,7 +44,7 @@ Voer de volgende stappen uit om dit probleem op te lossen:
     | Client. pfx  | Huidige Gebruiker\persoonlijk\certificaten |
     | AzureRoot. CER    | Lokale Computer\Trusted basis certificerings instanties|
 
-3. Ga naar C:\Users\<username> \appdata\roaming\microsoft\network\connections\cm\<GUID>, installeer het certificaat (CER-bestand) hand matig op de opslag van de gebruiker en de computer.
+3. Ga naar C:\Users \<UserName> \AppData\Roaming\Microsoft\Network\Connections\Cm \<GUID> , installeer het certificaat (*. cer-bestand) hand matig op de opslag van de gebruiker en de computer.
 
 Zie [certificaten voor punt-naar-site-verbindingen genereren en exporteren](vpn-gateway-certificates-point-to-site.md)voor meer informatie over het installeren van het client certificaat.
 
@@ -71,7 +71,7 @@ Windows 10 of Server 2016 voorbereiden voor IKEv2:
 
 1. Installeer de update.
 
-   | Versie van het besturingssysteem | Date | Aantal/koppeling |
+   | Besturingssysteemversie | Datum | Aantal/koppeling |
    |---|---|---|---|
    | Windows Server 2016<br>Windows 10 versie 1607 | 17 januari 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 versie 1703 | 17 januari 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
@@ -165,10 +165,10 @@ Er is een aanvullend certificaat vereist om de VPN-gateway voor uw virtuele netw
 
 Pak het configuratie pakket voor de VPN-client uit en zoek het CER-bestand. Voer de volgende stappen uit om het certificaat te installeren:
 
-1. Open MMC. exe.
+1. Open mmc.exe.
 2. Voeg de module **certificaten** toe.
 3. Selecteer het **computer** account voor de lokale computer.
-4. Klik met de rechter muisknop op het knoop punt **vertrouwde basis certificerings instanties** . Klik op **alle taken** > **importeren**en blader naar het CER-bestand dat u hebt geëxtraheerd uit het configuratie pakket voor de VPN-client.
+4. Klik met de rechter muisknop op het knoop punt **vertrouwde basis certificerings instanties** . Klik op **alle taken**  >  **importeren**en blader naar het CER-bestand dat u hebt geëxtraheerd uit het configuratie pakket voor de VPN-client.
 5. Start de computer opnieuw op. 
 6. Probeer de VPN-client te installeren.
 
@@ -178,7 +178,7 @@ Pak het configuratie pakket voor de VPN-client uit en zoek het CER-bestand. Voer
 
 Wanneer u probeert de wijzigingen voor de VPN-gateway op te slaan in de Azure Portal, wordt het volgende fout bericht weer gegeven:
 
-**Kan de gateway &lt; *naam*&gt;van de virtuele netwerk gateway niet opslaan. De gegevens voor &lt;de certificaat *certificaat-id* &gt; zijn ongeldig.**
+**Kan de gateway naam van de virtuele netwerk gateway niet opslaan &lt; *gateway name* &gt; . De gegevens voor de certificaat &lt; *certificaat-id* &gt; zijn ongeldig.**
 
 ### <a name="cause"></a>Oorzaak 
 
@@ -213,7 +213,7 @@ Zorg ervoor dat de gegevens in het certificaat geen ongeldige tekens bevatten, z
 
 Wanneer u probeert de wijzigingen voor de VPN-gateway op te slaan in de Azure Portal, wordt het volgende fout bericht weer gegeven: 
 
-**Kan de gateway &lt; *naam*&gt;van de virtuele netwerk gateway niet opslaan. De naam &lt;van het resource naam *certificaat dat u wilt uploaden* &gt; , is ongeldig**.
+Kan de gateway naam van de **virtuele netwerk gateway niet opslaan &lt; *gateway name* &gt; . De naam van het resource naam &lt; *certificaat dat u wilt uploaden* &gt; , is ongeldig**.
 
 ### <a name="cause"></a>Oorzaak
 
@@ -272,7 +272,7 @@ U verwijdert de punt-naar-site-VPN-verbinding en installeert vervolgens de VPN-c
 
 ### <a name="solution"></a>Oplossing
 
-Om het probleem op te lossen, verwijdert u de oude VPN-client configuratie bestanden van **\<C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections VirtualNetworkId>** en voert u het installatie programma voor de VPN-client opnieuw uit.
+Om het probleem op te lossen, verwijdert u de oude VPN-client configuratie bestanden van **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections \<VirtualNetworkId> **en voert u het installatie programma voor de VPN-client opnieuw uit.
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>Punt-naar-site-VPN-client kan de FQDN van de bronnen in het lokale domein niet omzetten
 
@@ -301,11 +301,11 @@ U kunt dit probleem oplossen door de [Azure VPN-gateway opnieuw](vpn-gateway-res
 ## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Fout: de intrekkings functie kan het intrekken niet controleren omdat de intrekkings server offline is. (Fout 0x80092013) "
 
 ### <a name="causes"></a>Oorzaken
-Dit fout bericht wordt weer gegeven als de client http://crl3.digicert.com/ssca-sha2-g1.crl geen http://crl4.digicert.com/ssca-sha2-g1.crltoegang heeft tot en.  Voor de intrekkings controle is toegang tot deze twee sites vereist.  Dit probleem doet zich meestal voor op de client waarop proxy server is geconfigureerd. Als de aanvragen van de proxy server niet worden door lopen, wordt deze in sommige omgevingen geweigerd op de Edge-firewall.
+Dit fout bericht wordt weer gegeven als de client geen toegang heeft tot http://crl3.digicert.com/ssca-sha2-g1.crl en http://crl4.digicert.com/ssca-sha2-g1.crl .  Voor de intrekkings controle is toegang tot deze twee sites vereist.  Dit probleem doet zich meestal voor op de client waarop proxy server is geconfigureerd. Als de aanvragen van de proxy server niet worden door lopen, wordt deze in sommige omgevingen geweigerd op de Edge-firewall.
 
 ### <a name="solution"></a>Oplossing
 
-Controleer de instellingen van de proxy server, zorg ervoor dat de- http://crl3.digicert.com/ssca-sha2-g1.crl client http://crl4.digicert.com/ssca-sha2-g1.crltoegang heeft tot en.
+Controleer de instellingen van de proxy server, zorg ervoor dat de-client toegang heeft tot http://crl3.digicert.com/ssca-sha2-g1.crl en http://crl4.digicert.com/ssca-sha2-g1.crl .
 
 ## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>VPN-client fout: de verbinding is vanwege een beleids instelling op uw RAS/VPN-server niet geconfigureerd. (Fout 812)
 
@@ -339,9 +339,9 @@ Het NIC-stuur programma bijwerken:
 4.  Als Windows geen nieuw stuurprogramma kan vinden, kunt u ernaar zoeken op de website van de fabrikant van het apparaat en de aanwijzingen aldaar opvolgen.
 5. Start de computer opnieuw op en voer de verbinding opnieuw uit.
 
-## <a name="vpn-client-error-dialing-vpn-connection-vpn-connection-name-status--vpn-platform-did-not-trigger-connection"></a>VPN-client fout: VPN-verbinding <VPN Connection Name>wordt gebeld, status = VPN-platform heeft geen verbinding geactiveerd
+## <a name="vpn-client-error-dialing-vpn-connection-vpn-connection-name-status--vpn-platform-did-not-trigger-connection"></a>VPN-client fout: VPN-verbinding <VPN Connection Name> wordt gebeld, status = VPN-platform heeft geen verbinding geactiveerd
 
-Mogelijk ziet u ook de volgende fout in Logboeken van RasClient: ' de gebruiker <User> heeft een verbinding gekozen met <VPN Connection Name> de naam die is mislukt. De fout code die wordt geretourneerd bij de fout is 1460.
+Mogelijk ziet u ook de volgende fout in Logboeken van RasClient: ' de gebruiker <User> heeft een verbinding gekozen met de naam <VPN Connection Name> die is mislukt. De fout code die wordt geretourneerd bij de fout is 1460.
 
 ### <a name="cause"></a>Oorzaak
 
@@ -370,7 +370,7 @@ Dit probleem kan worden veroorzaakt door de vorige VPN-client installaties.
 
 ### <a name="solution"></a>Oplossing
 
-Verwijder de oude VPN-client configuratie bestanden **van\<C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections VirtualNetworkId>** en voer het installatie programma voor de VPN-client opnieuw uit. 
+Verwijder de oude configuratie bestanden voor de VPN-client van **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections \<VirtualNetworkId> ** en voer het installatie programma voor de VPN-client opnieuw uit. 
 
 ## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>De VPN-client wordt na enige tijd in de slaap stand gezet
 

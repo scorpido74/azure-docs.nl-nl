@@ -10,10 +10,10 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 07/14/2017
 ms.openlocfilehash: e51b5640163546c673a1b0f61da47ccd992f27ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72030037"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>U-SQL en lokaal fouten opsporen in Visual Studio code
@@ -32,11 +32,11 @@ Alleen Windows-installaties van de Azure Data Lake-Hulpprogram Ma's voor Visual 
 
    ![De afhankelijkheids pakketten zoeken](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/LocateDependencyPath.png)
 
-   2,1 als u de **build-versie**wilt installeren, klikt u op visualcppbuildtools_full. exe in de map LocalRunDependency en volgt u de instructies in de wizard.   
+   2,1 als u de **build-versie**wilt installeren, klikt u op visualcppbuildtools_full.exe in de map LocalRunDependency en volgt u de instructies in de wizard.   
 
     ![Build-versie installeren](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallBuildTools.png)
 
-   2,2 om **Win10SDK 10240**te installeren, klikt u op sdksetup. exe in de map LocalRunDependency/Win10SDK_10.0.10240 _2 en volgt u de instructies in de wizard.  
+   2,2 om **Win10SDK 10240**te installeren, klikt u op sdksetup.exe in de map LocalRunDependency/Win10SDK_10.0.10240 _2 en volgt u de instructies in de wizard.  
 
     ![Win10SDK 10240 installeren](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallWin10SDK.png)
 
@@ -59,8 +59,8 @@ Gebruik **ADL: lokaal run package downloaden** om lokale run-pakketten te downlo
    ![Data Lake-Hulpprogram Ma's voor Visual Studio code lokale selecteren](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-select-local.png)
 5. Nadat u de taak hebt verzonden, kunt u de details van de verzen ding bekijken. Selecteer **jobUrl** in het venster **uitvoer** om de details van de verzen ding weer te geven. U kunt ook de status van de taak inzending bekijken vanuit de cmd-console. Voer **7** in de cmd-console in als u meer taak details wilt weten.
 
-   ![Data Lake tools for Visual Studio code Local run uitvoer](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-result.png)
-   ![data Lake tools for Visual Studio code Local run CMD status](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-localrun-cmd-status.png) 
+   ![Data Lake tools for Visual Studio code Local run uitvoer ](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-result.png)
+    ![ Data Lake tools for Visual Studio code Local run CMD status](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-localrun-cmd-status.png) 
 
 
 ## <a name="start-a-local-debug-for-the-u-sql-job"></a>Een lokale fout opsporing starten voor de U-SQL-taak  

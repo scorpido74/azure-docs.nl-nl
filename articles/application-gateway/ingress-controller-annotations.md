@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: f54381ddcd11a2e4a24d30d812468da85b5403de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335828"
 ---
 # <a name="annotations-for-application-gateway-ingress-controller"></a>Aantekeningen voor de Application Gateway ingangs controller 
@@ -22,7 +22,7 @@ De Kubernetes ingress-resource kan worden voorzien van aantekeningen met wille k
 
 ## <a name="list-of-supported-annotations"></a>Lijst met ondersteunde aantekeningen
 
-Voor een ingangs resource die wordt waargenomen door AGIC, moet er een **Opmerking worden** toegevoegd `kubernetes.io/ingress.class: azure/application-gateway`. AGIC werkt alleen met de ingangs bron in kwestie.
+Voor een ingangs resource die wordt waargenomen door AGIC, moet er een **Opmerking worden** toegevoegd `kubernetes.io/ingress.class: azure/application-gateway` . AGIC werkt alleen met de ingangs bron in kwestie.
 
 | Aantekening sleutel | Waardetype | Standaardwaarde | Toegestane waarden
 | -- | -- | -- | -- |
@@ -65,14 +65,14 @@ spec:
           serviceName: go-server-service
           servicePort: 80
 ```
-In het bovenstaande voor beeld hebben we een ingangs resource gedefinieerd met `go-server-ingress-bkprefix` de naam met een `appgw.ingress.kubernetes.io/backend-path-prefix: "/test/"` aantekening. De aantekening vertelt toepassings gateway voor het maken van een HTTP-instelling, die een overschrijving voor het `/hello` pad `/test/`voor het pad naar bevat.
+In het bovenstaande voor beeld hebben we een ingangs resource gedefinieerd `go-server-ingress-bkprefix` met de naam met een aantekening `appgw.ingress.kubernetes.io/backend-path-prefix: "/test/"` . De aantekening vertelt toepassings gateway voor het maken van een HTTP-instelling, die een overschrijving voor het pad voor het pad `/hello` naar bevat `/test/` .
 
 > [!NOTE] 
 > In het bovenstaande voor beeld is slechts één regel gedefinieerd. De aantekeningen zijn echter wel van toepassing op de volledige ingangs bron, dus als een gebruiker meerdere regels heeft gedefinieerd, zou het voor voegsel van de back-end voor elk van de opgegeven paden worden ingesteld. Dus als een gebruiker andere regels met verschillende paden voor voegsels wil (zelfs voor dezelfde service), moeten ze verschillende bronnen voor binnenkomend verkeer definiëren.
 
 ## <a name="tls-redirect"></a>TLS-omleiding
 
-Application Gateway [kunnen worden geconfigureerd](https://docs.microsoft.com/azure/application-gateway/application-gateway-redirect-overview) om http-url's automatisch om te leiden naar hun HTTPS-equivalenten. Als deze aantekening aanwezig is en TLS op de juiste wijze is geconfigureerd, maakt Kubernetes ingangs controller een [routerings regel met een omleidings configuratie](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal#add-a-routing-rule-with-a-redirection-configuration) en worden de wijzigingen toegepast op uw Application Gateway. De omleiding die u hebt `301 Moved Permanently`gemaakt, is http.
+Application Gateway [kunnen worden geconfigureerd](https://docs.microsoft.com/azure/application-gateway/application-gateway-redirect-overview) om http-url's automatisch om te leiden naar hun HTTPS-equivalenten. Als deze aantekening aanwezig is en TLS op de juiste wijze is geconfigureerd, maakt Kubernetes ingangs controller een [routerings regel met een omleidings configuratie](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal#add-a-routing-rule-with-a-redirection-configuration) en worden de wijzigingen toegepast op uw Application Gateway. De omleiding die u hebt gemaakt, is HTTP `301 Moved Permanently` .
 
 ### <a name="usage"></a>Gebruik
 
@@ -206,8 +206,8 @@ spec:
 Met deze aantekening kan ons opgeven of dit eind punt op privé-IP van Application Gateway wordt weer gegeven.
 
 > [!NOTE]
-> * Application Gateway biedt geen ondersteuning voor meerdere IP-adressen op dezelfde poort (bijvoorbeeld: 80/443). Met inkomend verkeer `appgw.ingress.kubernetes.io/use-private-ip: "false"` met aantekening en een andere met `appgw.ingress.kubernetes.io/use-private-ip: "true"` on `HTTP` kan AGIC de Application Gateway niet bijwerken.
-> * Voor Application Gateway die geen persoonlijk IP-adres heeft, wordt `appgw.ingress.kubernetes.io/use-private-ip: "true"` Ingresses met genegeerd. Dit wordt weer gegeven in de controller logboeken en ingangs gebeurtenissen voor deze `NoPrivateIP` ingresses met een waarschuwing.
+> * Application Gateway biedt geen ondersteuning voor meerdere IP-adressen op dezelfde poort (bijvoorbeeld: 80/443). Met inkomend verkeer met aantekening `appgw.ingress.kubernetes.io/use-private-ip: "false"` en een andere met `appgw.ingress.kubernetes.io/use-private-ip: "true"` on kan `HTTP` AGIC de Application Gateway niet bijwerken.
+> * Voor Application Gateway die geen persoonlijk IP-adres heeft, wordt Ingresses met `appgw.ingress.kubernetes.io/use-private-ip: "true"` genegeerd. Dit wordt weer gegeven in de controller logboeken en ingangs gebeurtenissen voor deze ingresses met een `NoPrivateIP` waarschuwing.
 
 
 ### <a name="usage"></a>Gebruik
@@ -237,7 +237,7 @@ spec:
 
 ## <a name="backend-protocol"></a>Back-end-protocol
 
-Met deze aantekening kunnen we het protocol opgeven dat Application Gateway moet gebruiken terwijl u met het Peule praat. Ondersteunde protocollen: `http`,`https`
+Met deze aantekening kunnen we het protocol opgeven dat Application Gateway moet gebruiken terwijl u met het Peule praat. Ondersteunde protocollen: `http` ,`https`
 
 > [!NOTE]
 > * Hoewel zelfondertekende certificaten op Application Gateway worden ondersteund, wordt momenteel AGIC alleen ondersteund `https` wanneer het een certificaat gebruikt dat is ondertekend door een bekende certificerings instantie.

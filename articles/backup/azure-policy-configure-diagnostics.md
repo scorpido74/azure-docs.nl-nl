@@ -4,10 +4,10 @@ description: Log Analytics Diagnostische instellingen configureren voor alle klu
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: e6ba8eb98ca1d6af9fc745d9baf3840ccd1ac224
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195703"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Diagnostische instellingen voor de kluis op schaal configureren
@@ -18,7 +18,7 @@ Vaak is het toevoegen van een diagnostische instelling hand matig per kluis een 
 
 Azure Backup biedt een ingebouwde [Azure Policy](https://docs.microsoft.com/azure/governance/policy/)om het maken van diagnostische instellingen op schaal te vereenvoudigen (met La als doel). Dit beleid voegt een instelling voor diagnostische gegevens van LA toe aan alle kluizen in een bepaald abonnement of resource groep. De volgende secties bevatten instructies over het gebruik van dit beleid.
 
-## <a name="supported-scenarios"></a>Ondersteunde scenario 's
+## <a name="supported-scenarios"></a>Ondersteunde scenario's
 
 * Het beleid kan in één keer worden toegepast op alle Recovery Services kluizen in een bepaald abonnement (of op een resource groep in het abonnement). De gebruiker die het beleid toewijst, moet de toegang ' eigenaar ' hebben voor het abonnement waaraan het beleid is toegewezen.
 

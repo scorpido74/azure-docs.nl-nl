@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f2002414836dcb77a09f633f30ec0fcbb7981de
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 77b1794f5dde4d7e346e45c2da5d24195d69b50e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84760521"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555197"
 ---
 # <a name="add-a-gallery-app-to-your-azure-ad-organization"></a>Een galerie-app toevoegen aan uw Azure AD-organisatie
 
@@ -30,44 +30,44 @@ Azure Active Directory (Azure AD) bevat een galerie met duizenden vooraf geïnte
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan als globale beheerder van uw Azure AD-tenant, als beheerder van cloudtoepassingen of als toepassingsbeheerder.
 
-1. In de [Azure Portal](https://portal.azure.com), in het navigatie venster aan de linkerkant, selecteert u **Azure Active Directory**.
+1. Selecteer **Azure Active Directory** in [Azure Portal](https://portal.azure.com) in het navigatiepaneel aan de linkerkant.
 
-1. Selecteer in **Azure Active Directory** het deel venster Azure Active Directory **bedrijfs toepassingen**.
+1. Selecteer **Bedrijfstoepassingen** in het deelvenster **Azure Active Directory**.
 
     ![Bedrijfstoepassingen openen](media/add-gallery-app/open-enterprise-apps.png)
 
 
-3. Selecteer **nieuwe toepassing**om een galerie-app toe te voegen aan uw Tenant.
+3. Selecteer **Nieuwe toepassing** om een app uit de galerie toe te voegen aan uw tenant.
 
-    ![Selecteer nieuwe toepassing om een galerie-app toe te voegen aan uw Tenant](media/add-gallery-app/new-application.png)
+    ![Selecteer Nieuwe toepassing om een galerietoepassing toe te voegen aan uw tenant](media/add-gallery-app/new-application.png)
 
- 4. Overschakelen naar de nieuwe preview-versie van de galerie: Selecteer in de banner boven aan de **pagina een toepassing toevoegen**de koppeling die **hier klikt om de nieuwe en verbeterde app-galerie uit te proberen**.
+ 4. Schakel over naar de nieuwe preview-ervaring voor de galerie: Selecteer in de banner bovenaan de **pagina Een toepassing toevoegen** de koppeling **Klik hier om de nieuwe en verbeterde app-galerie te proberen**.
 
-5. Het deel venster **Bladeren in azure AD galerie** wordt geopend en toont tegels voor Cloud platforms, on-premises toepassingen en aanbevolen toepassingen. Houd er rekening mee dat de toepassingen die worden vermeld in de sectie **Aanbevolen toepassingen** pictogrammen bevatten die aangeven of ze federatieve eenmalige aanmelding (SSO) en het inrichten ondersteunen.
+5. Het deel venster **Bladeren in azure AD galerie** wordt geopend en toont tegels voor Cloud platforms, on-premises toepassingen en aanbevolen toepassingen. Houd er rekening mee dat de toepassingen die in de sectie **Aanbevolen toepassingen** staan pictogrammen bevatten die aangeven of federatieve eenmalige aanmelding (SSO) en inrichting worden ondersteund.
 
-    ![Zoeken naar een app op naam of categorie](media/add-gallery-app/browse-gallery.png)
+    ![Een app zoeken op naam of categorie](media/add-gallery-app/browse-gallery.png)
 
-6. Blader door de galerie voor de toepassing die u wilt toevoegen of zoek naar de toepassing door de naam in het zoekvak in te voeren. Selecteer vervolgens de toepassing uit de resultaten. Beschrijving In het formulier kunt u de naam van de toepassing bewerken zodat deze overeenkomt met de behoeften van uw organisatie.
+6. Blader door de galerie voor de toepassing die u wilt toevoegen of zoek naar de toepassing door de naam in het zoekvak in te voeren. Selecteer vervolgens de toepassing in de resultaten. Beschrijving In het formulier kunt u de naam van de toepassing bewerken zodat deze overeenkomt met de behoeften van uw organisatie.
 
-    ![Laat zien hoe u een toepassing kunt toevoegen vanuit de galerie](media/add-gallery-app/create-application.png)
+    ![Geeft weer hoe u een toepassing kunt toevoegen vanuit de galerie](media/add-gallery-app/create-application.png)
 
 7. Selecteer **Maken**. Er wordt nu een pagina Aan de slag weergegeven met de opties voor het configureren van de toepassing voor uw organisatie.
 
 ## <a name="configure-user-sign-in-properties"></a>Eigenschappen voor gebruikersaanmelding configureren
 
-1. Selecteer **Eigenschappen** om het deel venster Eigenschappen te openen om het te bewerken.
+1. Selecteer **Eigenschappen** om het deelvenster Eigenschappen te openen voor bewerken.
 
     ![Eigenschappen venster bewerken](media/add-gallery-app/edit-properties.png)
 
 1. Stel de volgende opties in om te bepalen hoe gebruikers die zijn toegewezen aan of niet zijn toegewezen aan de toepassing, zich kunnen aanmelden bij de toepassing en of een gebruiker de toepassing kan zien in het toegangs venster.
 
-    - Met **Ingeschakeld voor gebruikers voor aanmelden** wordt bepaald of gebruikers die zijn toegewezen aan de toepassing, zich kunnen aanmelden.
+    - **Ingeschakeld voor gebruikers om zich aan te melden,** wordt bepaald of gebruikers die zijn toegewezen aan de toepassing zich kunnen aanmelden.
     - **Gebruikers toewijzing vereist** bepaalt of gebruikers die niet zijn toegewezen aan de toepassing zich kunnen aanmelden.
     - Met **Zichtbaar voor gebruiker** wordt bepaald of gebruikers die zijn toegewezen aan een app, deze kunnen zien in het toegangsvenster en het startprogramma voor O365.
 
       Gedrag voor **toegewezen** gebruikers:
 
-       | Instellingen voor toepassingseigenschappen | | | Toegewezen gebruikerservaring | |
+       | Toepassings eigenschap | Toepassings eigenschap | Toepassings eigenschap | Toegewezen gebruikerservaring | Toegewezen gebruikerservaring |
        |---|---|---|---|---|
        | Ingeschakeld voor gebruikers voor aanmelden? | Gebruikerstoewijzing vereist? | Zichtbaar voor gebruiker? | Kunnen toegewezen gebruikers zich aanmelden? | Kunnen toegewezen gebruikers de toepassing zien?* |
        | ja | ja | ja | ja | ja  |
@@ -83,7 +83,7 @@ Azure Active Directory (Azure AD) bevat een galerie met duizenden vooraf geïnte
 
        | Instellingen voor toepassingseigenschappen | | | Niet-toegewezen gebruikerservaring | |
        |---|---|---|---|---|
-       | Ingeschakeld voor gebruikers om zich aan te melden? | Gebruikerstoewijzing vereist? | Zichtbaar voor gebruiker? | Kunnen niet-toegewezen gebruikers zich aanmelden? | Kunnen niet-toegewezen gebruikers de toepassing zien?* |
+       | Ingeschakeld voor gebruikers voor aanmelden? | Gebruikerstoewijzing vereist? | Zichtbaar voor gebruiker? | Kunnen niet-toegewezen gebruikers zich aanmelden? | Kunnen niet-toegewezen gebruikers de toepassing zien?* |
        | ja | ja | ja | nee  | nee   |
        | ja | ja | nee  | nee  | nee   |
        | ja | nee  | ja | ja | nee   |
@@ -99,13 +99,13 @@ Azure Active Directory (Azure AD) bevat een galerie met duizenden vooraf geïnte
 
     ![Het logo wijzigen](media/add-gallery-app/change-logo.png)
 
-1. Wanneer u klaar bent, selecteert u **Opslaan**.
+1. Selecteer **Opslaan** wanneer u klaar bent.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de toepassing aan uw Azure AD-organisatie hebt toegevoegd, [kiest u de methode voor eenmalige aanmelding](what-is-single-sign-on.md#choosing-a-single-sign-on-method) die u wilt gebruiken en raadpleegt u het juiste artikel hieronder:
+Nu u de toepassing aan uw Azure AD-organisatie hebt toegevoegd, [kiest u de methode voor eenmalige aanmelding](what-is-single-sign-on.md#choosing-a-single-sign-on-method) die u wilt gebruiken. Raadpleeg hieronder het relevante artikel:
 
 - [Eenmalige aanmelding op basis van SAML configureren](configure-single-sign-on-non-gallery-applications.md)
-- [Eenmalige aanmelding met een wacht woord configureren](configure-password-single-sign-on-non-gallery-applications.md)
+- [Eenmalige aanmelding op basis van wachtwoord configureren](configure-password-single-sign-on-non-gallery-applications.md)
 - [Gekoppelde aanmelding configureren](configure-linked-sign-on.md)
 

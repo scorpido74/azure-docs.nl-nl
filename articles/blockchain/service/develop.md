@@ -5,10 +5,10 @@ ms.date: 03/26/2020
 ms.topic: conceptual
 ms.reviewer: janders
 ms.openlocfilehash: 4a98e5ea025894303bc5c77bba0c6154a08315f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80348383"
 ---
 # <a name="azure-blockchain-service-development-overview"></a>Overzicht van de ontwikkeling van Azure Block Chain Service
@@ -66,4 +66,4 @@ Omdat Block Chain wordt gebruikt in meer bedrijfs scenario's, is de snelheid van
 Probeer een Snelstartgids met Azure Block Chain Development Kit voor Ethereum om aan een consortium te koppelen op de Azure Block Chain-service.
 
 > [!div class="nextstepaction"]
-> [Visual Studio code gebruiken om verbinding te maken met de Azure Block Chain-Service](connect-vscode.md)
+> [Visual Studio Code gebruiken om verbinding te maken met Azure Blockchain Service](connect-vscode.md)

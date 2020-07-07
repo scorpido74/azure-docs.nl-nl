@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: 25187fd055f40e8b32d840ead2a9c54882446b88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80348793"
 ---
 # <a name="azure-app-configuration-faq"></a>Veelgestelde vragen over Azure-app configuratie
@@ -107,7 +107,7 @@ Wanneer de limiet van een Store is bereikt, wordt de HTTP-status code 429 gereto
 
 Als uw toepassing regel matig HTTP-status code 429 reacties ondervindt, kunt u deze het beste opnieuw ontwerpen om het aantal aanvragen te verminderen. Zie [aanvragen beperken tot app-configuratie](./howto-best-practices.md#reduce-requests-made-to-app-configuration) voor meer informatie.
 
-## <a name="my-application-receives-http-status-code-429-responses-why"></a>Mijn toepassing ontvangt HTTP-status code 429-reacties. Hoe komt dat?
+## <a name="my-application-receives-http-status-code-429-responses-why"></a>Mijn toepassing ontvangt HTTP-status code 429-reacties. Hoe kan dat?
 
 In deze gevallen ontvangt u een HTTP-status code van 429:
 

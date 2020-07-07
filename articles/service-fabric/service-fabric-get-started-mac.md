@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/17/2017
 ms.author: suhuruli
 ms.openlocfilehash: c7e2d556c4fb8bebc0b75bdf9d4c209c27f86971
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82193391"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Uw ontwikkelomgeving instellen in Mac OS X
@@ -48,7 +48,7 @@ Als u een lokale Docker-container wilt instellen en daarop een Service Fabric-cl
     
     >[!NOTE]
     >
-    >Het is raadzaam om de daemon rechtstreeks in docker aan te passen omdat de locatie van het bestand daemon. json kan variëren van computer naar machine. Bijvoorbeeld, ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
+    >Het is raadzaam om de daemon rechtstreeks in docker aan te passen omdat de locatie van de daemon.jsin het bestand kan variëren van machine tot computer. Bijvoorbeeld, ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
     >
 
     >[!TIP]
@@ -101,7 +101,7 @@ Als u een lokale Docker-container wilt instellen en daarop een Service Fabric-cl
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
     >
 
-5. Het kan even duren voordat het cluster is gestart. Wanneer deze wordt uitgevoerd, kunt u logboeken weer geven met behulp van de volgende opdracht of naar het dash board `http://localhost:19080`gaan om de status van het cluster weer te geven:
+5. Het kan even duren voordat het cluster is gestart. Wanneer deze wordt uitgevoerd, kunt u logboeken weer geven met behulp van de volgende opdracht of naar het dash board gaan om de status van het cluster weer te geven `http://localhost:19080` :
 
     ```bash 
     docker logs sftestcluster
@@ -166,7 +166,7 @@ Service Fabric biedt hulpprogramma's waarmee u vanuit de terminal een Service Fa
     ```
 
     > [!IMPORTANT]
-    > De huidige versies `brew cask install java` van kunnen een recentere versie van de JDK installeren.
+    > De huidige versies van `brew cask install java` kunnen een recentere versie van de JDK installeren.
     > Zorg ervoor dat u JDK 8 installeert.
 
 ## <a name="deploy-your-application-on-your-mac-from-the-terminal"></a>Toepassingen implementeren op uw Mac vanuit de terminal

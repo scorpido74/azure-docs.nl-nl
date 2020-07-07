@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 832caaed0816e3dd7d177f634209dea42e5312c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82192677"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Apache Ambari Hive-weergave gebruiken met Apache Hadoop in HDInsight
@@ -29,7 +29,7 @@ Een Hadoop-cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](./apac
 
 1. Selecteer uw cluster in de [Azure Portal](https://portal.azure.com/).  Zie een [lijst en clusters weer geven](../hdinsight-administer-use-portal-linux.md#showClusters) voor instructies. Het cluster wordt geopend in een nieuwe portal weergave.
 
-1. Selecteer **Ambari-weer gaven**in **cluster dashboards**. Wanneer u wordt gevraagd om te verifiëren, gebruikt u de `admin`account naam en het wacht woord voor de cluster aanmelding (standaard) die u hebt opgegeven tijdens het maken van het cluster. U kunt ook naar `https://CLUSTERNAME.azurehdinsight.net/#/main/views` in uw browser navigeren, `CLUSTERNAME` waarbij de naam van uw cluster is.
+1. Selecteer **Ambari-weer gaven**in **cluster dashboards**. Wanneer u wordt gevraagd om te verifiëren, gebruikt u de account naam en het wacht woord voor de cluster aanmelding (standaard `admin` ) die u hebt opgegeven tijdens het maken van het cluster. U kunt ook naar `https://CLUSTERNAME.azurehdinsight.net/#/main/views` in uw browser navigeren `CLUSTERNAME` , waarbij de naam van uw cluster is.
 
 1. Selecteer in de lijst met weer gaven de __Hive-weer gave__.
 
@@ -63,7 +63,7 @@ Een Hadoop-cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](./apac
     |Rekeningen | Beschrijving |
     |---|---|
     |TABEL NEERZETTEN|Hiermee verwijdert u de tabel en het gegevens bestand, voor het geval de tabel al bestaat.|
-    |EXTERNE TABEL MAKEN|Hiermee maakt u een nieuwe tabel ' External ' in de component. Externe tabellen slaan alleen de tabel definitie in Hive op. De gegevens blijven op de oorspronkelijke locatie.|
+    |CREATE EXTERNAL TABLE|Hiermee maakt u een nieuwe tabel ' External ' in de component. Externe tabellen slaan alleen de tabel definitie in Hive op. De gegevens blijven op de oorspronkelijke locatie.|
     |RIJ-INDELING|Laat zien hoe de gegevens worden opgemaakt. In dit geval worden de velden in elk logboek gescheiden door een spatie.|
     |OPGESLAGEN ALS TEXTFILE-LOCATIE|Hier wordt weer gegeven waar de gegevens worden opgeslagen en dat deze worden opgeslagen als tekst.|
     |SELECT|Hiermee wordt het aantal rijen geselecteerd waarin de kolom T4 de waarde [ERROR] bevat.|
@@ -115,7 +115,7 @@ Op het tabblad **query** kunt u desgewenst query's opslaan. Nadat u een query he
 ![Tabblad opgeslagen query's in Apache Hive weer gaven](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
-> Opgeslagen query's worden opgeslagen in de standaard cluster opslag. U kunt de opgeslagen query's vinden in het pad `/user/<username>/hive/scripts`. Deze worden opgeslagen als bestanden met tekst `.hql` zonder opmaak.
+> Opgeslagen query's worden opgeslagen in de standaard cluster opslag. U kunt de opgeslagen query's vinden in het pad `/user/<username>/hive/scripts` . Deze worden opgeslagen als bestanden met tekst zonder opmaak `.hql` .
 >
 > Als u het cluster verwijdert, maar de opslag gebruikt, kunt u een hulp programma zoals [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) of Data Lake Storage Verkenner (vanuit de [Azure-Portal](https://portal.azure.com)) gebruiken om de query's op te halen.
 

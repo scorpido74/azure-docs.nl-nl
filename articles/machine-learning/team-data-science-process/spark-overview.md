@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 64caa1228cd073358bef496721c22b17554031d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82189280"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Overzicht van data Science met behulp van Spark in azure HDInsight
@@ -108,7 +108,7 @@ De NYC-gegevens over de taxi zijn ongeveer 20 GB aan gecomprimeerde bestanden me
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-We hebben een voor beeld van een 0,1% van deze bestanden genomen en\_zijn samengevoegd met\_de reis gegevens en de CVS-bestanden van het reis tarief in één gegevensset om te gebruiken als de invoer gegevensset voor deze walkthrough. De unieke sleutel voor deelname aan\_reis gegevens en\_reis tarief bestaat uit de velden: Medallion, Hack\_-licentie en\_datum/tijd van ophalen. Elke record van de gegevensset bevat de volgende kenmerken die een NYC-taxi retour vertegenwoordigen:
+We hebben een voor beeld van een 0,1% van deze bestanden genomen en zijn samengevoegd met de reis \_ gegevens en de \_ CVS-bestanden van het reis tarief in één gegevensset om te gebruiken als de invoer gegevensset voor deze walkthrough. De unieke sleutel voor deelname aan reis \_ gegevens en reis \_ tarief bestaat uit de velden: Medallion, Hack- \_ licentie en \_ datum/tijd van ophalen. Elke record van de gegevensset bevat de volgende kenmerken die een NYC-taxi retour vertegenwoordigen:
 
 | Veld | Korte beschrijving |
 | --- | --- |
@@ -141,7 +141,7 @@ We hebben een voor beeld van een 0,1% van deze bestanden genomen en\_zijn sameng
 | tip_class |Tip-klasse (0: $0, 1: $0-5, 2: $6-10, 3: $11-20, 4: > $20) |
 
 ## <a name="execute-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Code uitvoeren vanuit een Jupyter-notebook in het Spark-cluster
-U kunt de Jupyter Notebook vanuit de Azure Portal starten. Zoek uw Spark-cluster op uw dash board en klik hierop om de beheer pagina voor uw cluster in te voeren. Als u het notitie blok wilt openen dat is gekoppeld aan het Spark-cluster, klikt u op **cluster dashboards** -> **Jupyter notebook**.
+U kunt de Jupyter Notebook vanuit de Azure Portal starten. Zoek uw Spark-cluster op uw dash board en klik hierop om de beheer pagina voor uw cluster in te voeren. Als u het notitie blok wilt openen dat is gekoppeld aan het Spark-cluster, klikt u op **cluster dashboards**  ->  **Jupyter notebook**.
 
 ![Cluster dashboards](./media/spark-overview/spark-jupyter-on-portal.png)
 
@@ -164,7 +164,7 @@ U kunt nu:
 
 * Zie de code door te klikken op het notitie blok.
 * Voer elke cel uit door op **SHIFT + ENTER**te drukken.
-* Voer het hele notitie blok uit door te klikken op de knop voor het**uitvoeren**van de **cel** -> .
+* Voer het hele notitie blok uit door te klikken op de knop voor het uitvoeren van de **cel**  ->  **Run**.
 * Gebruik de automatische visualisatie van query's.
 
 > [!TIP]

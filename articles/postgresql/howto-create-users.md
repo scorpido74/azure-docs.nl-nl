@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2019
 ms.openlocfilehash: 127d484d6cfc35368803069f9c3d602e787baa56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80384344"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>Gebruikers maken in Azure Database for PostgreSQL-één server
@@ -58,7 +58,7 @@ De gebruikers account van de server beheerder kan worden gebruikt om extra gebru
 
 2. Gebruik het beheerders account en-wacht woord om verbinding te maken met uw database server. Gebruik het client hulpprogramma van uw voor keur, zoals pgAdmin of psql.
 
-3. Bewerk de volgende SQL-code en voer deze uit. Vervang de waarde `<db_user>` van de tijdelijke aanduiding door de gewenste nieuwe gebruikers naam en `<newdb>` de tijdelijke aanduiding voor de naam van uw eigen data base. Vervang het wacht woord voor de tijdelijke aanduiding door uw eigen sterke wacht woord.
+3. Bewerk de volgende SQL-code en voer deze uit. Vervang de waarde van de tijdelijke aanduiding door `<db_user>` de gewenste nieuwe gebruikers naam en de tijdelijke aanduiding voor de `<newdb>` naam van uw eigen data base. Vervang het wacht woord voor de tijdelijke aanduiding door uw eigen sterke wacht woord.
 
    Met deze SQL-code syntaxis maakt u een nieuwe Data Base met de naam testdb, bijvoorbeeld als doel. Vervolgens wordt er een nieuwe gebruiker in de PostgreSQL-service gemaakt en worden er verbindings rechten verleend aan de nieuwe Data Base voor die gebruiker.
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
 ms.openlocfilehash: 73b958149d9d6d907785fe1c2c56b8198bb91f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80351090"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux
@@ -91,32 +91,32 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS en de SAP HANA-Data Bas
 * Front-end configuratie
   * IP-adres 10.0.0.7
 * Test poort
-  * Poort 620<strong>&lt;nr&gt;</strong>
+  * Poort 620<strong> &lt; Nr &gt; </strong>
 * Taakverdelings regels
   * Als u Standard Load Balancer gebruikt, selecteert u **ha-poorten**
   * Als u basis Load Balancer gebruikt, maakt u regels voor taak verdeling voor de volgende poorten
-    * 32<strong>&lt;nr&gt; </strong> TCP
-    * 36<strong>&lt;nr&gt; </strong> TCP
-    * 39<strong>&lt;nr&gt; </strong> TCP
-    * 81<strong>&lt;nr&gt; </strong> TCP
-    * 5<strong>&lt;nr&gt;</strong>. 13 TCP
-    * 5<strong>&lt;nr&gt;</strong>. 14 TCP
-    * 5<strong>&lt;nr&gt;</strong>. 16 TCP
+    * 32<strong> &lt; Nr &gt; </strong> TCP
+    * 36<strong> &lt; Nr &gt; </strong> TCP
+    * 39<strong> &lt; Nr &gt; </strong> TCP
+    * 81<strong> &lt; Nr &gt; </strong> TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 13 TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 14 TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 16 TCP
 
 ### <a name="ers"></a>ERS
 
 * Front-end configuratie
   * IP-adres 10.0.0.8
 * Test poort
-  * Poort 621<strong>&lt;nr&gt;</strong>
+  * Poort 621<strong> &lt; Nr &gt; </strong>
 * Taakverdelings regels
   * Als u Standard Load Balancer gebruikt, selecteert u **ha-poorten**
   * Als u basis Load Balancer gebruikt, maakt u regels voor taak verdeling voor de volgende poorten
-    * 32<strong>&lt;nr&gt; </strong> TCP
-    * 33<strong>&lt;nr&gt; </strong> TCP
-    * 5<strong>&lt;nr&gt;</strong>. 13 TCP
-    * 5<strong>&lt;nr&gt;</strong>. 14 TCP
-    * 5<strong>&lt;nr&gt;</strong>. 16 TCP
+    * 32<strong> &lt; Nr &gt; </strong> TCP
+    * 33<strong> &lt; Nr &gt; </strong> TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 13 TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 14 TCP
+    * 5<strong> &lt; Nr &gt; </strong>. 16 TCP
 
 * Back-end-configuratie
   * Verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van het (A) SCS/ERS-cluster
@@ -150,15 +150,15 @@ De Azure Marketplace bevat een installatie kopie voor Red Hat Enterprise Linux d
    1. Beheerders naam, beheerders wachtwoord of SSH-sleutel  
       Er wordt een nieuwe gebruiker gemaakt die kan worden gebruikt om u aan te melden bij de computer.
    1. Subnet-ID  
-   Als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de ID van het specifieke subnet benoemen. De id ziet er meestal uit als/Subscriptions/**&lt;-abonnements-&gt;id**/resourceGroups/**&lt;naam&gt;van de resource groep**/providers/Microsoft.Network/virtualNetworks/**&lt;naam&gt;van het virtuele netwerk**/subnets/**&lt;subnet naam&gt; **
+   Als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de ID van het specifieke subnet benoemen. De ID ziet er meestal uit als/Subscriptions/** &lt; -abonnements &gt; -id**/resourceGroups/naam** &lt; &gt; van de resource groep**/providers/Microsoft.Network/virtualNetworks/naam** &lt; &gt; van het virtuele netwerk**/subnets/** &lt; subnet naam &gt; **
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Linux hand matig implementeren via Azure Portal
 
 U moet eerst de virtuele machines voor dit cluster maken. Daarna maakt u een load balancer en gebruikt u de virtuele machines in de back-end-pool.
 
 1. Een resourcegroep maken
-1. Een virtueel netwerk maken
-1. Een Beschikbaarheidsset maken  
+1. Een Virtual Network maken
+1. Een beschikbaarheidsset maken  
    Maximum aantal update domeinen instellen
 1. Virtuele machine 1 maken  
    Gebruik ten minste RHEL 7, in dit voor beeld de installatie kopie van Red Hat Enterprise Linux 7,4<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
@@ -167,7 +167,7 @@ U moet eerst de virtuele machines voor dit cluster maken. Daarna maakt u een loa
    Gebruik ten minste RHEL 7, in dit voor beeld de installatie kopie van Red Hat Enterprise Linux 7,4<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    Selecteer een Beschikbaarheidsset die u eerder hebt gemaakt  
 1. Voeg ten minste één gegevens schijf toe aan beide virtuele machines  
-   De gegevens schijven worden gebruikt voor de/usr/sap/`<SAPSID` -> Directory
+   De gegevens schijven worden gebruikt voor de/usr/sap/- `<SAPSID`> Directory
 1. Load balancer maken (intern, standaard):  
    1. De frontend-IP-adressen maken
       1. IP-adres 10.0.0.7 voor de ASCS
@@ -708,7 +708,7 @@ In de stappen onderstaande wordt ervan uitgegaan dat u de toepassings server ins
 
 ## <a name="install-database"></a>Database installeren
 
-In dit voor beeld is SAP NetWeaver geïnstalleerd op SAP HANA. U kunt elke ondersteunde Data Base voor deze installatie gebruiken. Zie voor meer informatie over het installeren van SAP HANA in azure [hoge Beschik baarheid van SAP Hana op virtuele Azure-machines in Red Hat Enterprise Linux][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
+In dit voor beeld is SAP NetWeaver geïnstalleerd op SAP HANA. U kunt elke ondersteunde Data Base voor deze installatie gebruiken. Zie voor meer informatie over het installeren van SAP HANA in azure [hoge Beschik baarheid van SAP Hana op virtuele Azure-machines in Red Hat Enterprise Linux][sap-hana-ha] . For a list of supported databases, see [SAP Note 1928533][1928533] .
 
 1. De installatie van het SAP-data base-exemplaar uitvoeren
 
@@ -742,7 +742,7 @@ Volg deze stappen om een SAP-toepassings server te installeren.
 
    Werk het beveiligde archief van SAP HANA bij zodat dit verwijst naar de virtuele naam van de installatie van de SAP HANA systeem replicatie.
 
-   Voer de volgende opdracht uit om de vermeldingen weer \<te geven als sapsid>adm
+   Voer de volgende opdracht uit om de vermeldingen weer te geven als \<sapsid> adm
 
    <pre><code>hdbuserstore List
    </code></pre>
@@ -895,7 +895,7 @@ Volg deze stappen om een SAP-toepassings server te installeren.
    <pre><code>[root@nw1-cl-0 ~]# pgrep ms.sapNW1 | xargs kill -9
    </code></pre>
 
-   Als u de berichten server alleen eenmaal beëindigt, wordt deze opnieuw opgestart `sapstart`door. Als u deze regel matig beëindigt, wordt de ASCS-instantie uiteindelijk door pacemaker naar het andere knoop punt verplaatst. Voer de volgende opdrachten uit als root om de resource status van het ASCS-en ERS-exemplaar na de test op te schonen.
+   Als u de berichten server alleen eenmaal beëindigt, wordt deze opnieuw opgestart door `sapstart` . Als u deze regel matig beëindigt, wordt de ASCS-instantie uiteindelijk door pacemaker naar het andere knoop punt verplaatst. Voer de volgende opdrachten uit als root om de resource status van het ASCS-en ERS-exemplaar na de test op te schonen.
 
    <pre><code>[root@nw1-cl-0 ~]# pcs resource cleanup rsc_sap_NW1_ASCS00
    [root@nw1-cl-0 ~]# pcs resource cleanup rsc_sap_NW1_ERS02

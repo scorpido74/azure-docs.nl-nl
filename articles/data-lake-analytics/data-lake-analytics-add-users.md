@@ -10,18 +10,18 @@ ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.openlocfilehash: 16c503fe2d584d5f8256c65bfc49825b300f6a36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71672731"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Een gebruiker toevoegen in de Azure-portal
 
 ## <a name="start-the-add-user-wizard"></a>De wizard gebruiker toevoegen starten
-1. Open uw Azure Data Lake Analytics via https://portal.azure.com.
+1. Open uw Azure Data Lake Analytics via https://portal.azure.com .
 2. Klik op **wizard gebruiker toevoegen**.
-3. Zoek in de stap **gebruiker selecteren** de gebruiker die u wilt toevoegen. Klik op **selecteren**.
+3. Zoek in de stap **gebruiker selecteren** de gebruiker die u wilt toevoegen. Klik op **Selecteren**.
 4. de stap **functie selecteren** , kies **Data Lake Analytics ontwikkel aars**. Deze rol heeft de minimale set machtigingen die nodig zijn om U-SQL-taken te verzenden/controleren/beheren. Toewijzen aan deze rol als de groep niet is bedoeld voor het beheren van Azure-Services.
 5. Selecteer in de stap **machtigingen voor catalogus selecteren** de aanvullende data bases waartoe de gebruiker toegang moet hebben. Lees-en schrijf toegang tot de hoofd database is vereist voor het verzenden van taken. Wanneer u klaar bent, klikt u op **OK**.
 6. Bekijk in de laatste stap de naam **Assign selected permissions** de wijzigingen die door de wizard worden aangebracht. Klik op **OK**.
@@ -43,7 +43,7 @@ Ken ' R-X ' of ' LSU ', indien nodig, toe aan mappen met invoer gegevens en uitv
 ## <a name="adding-a-user-using-powershell"></a>Een gebruiker toevoegen met Power shell
 
 1. Volg de instructies in deze hand leiding: een [Azure PowerShell installeren en configureren](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
-2. Down load het Power shell-script [add-AdlaJobUser. ps1](https://github.com/Azure/AzureDataLake/blob/master/Samples/PowerShell/ADLAUsers/Add-AdlaJobUser.ps1) .
+2. Down load het Power shell-script voor [Add-AdlaJobUser.ps1](https://github.com/Azure/AzureDataLake/blob/master/Samples/PowerShell/ADLAUsers/Add-AdlaJobUser.ps1) .
 3. Voer het Power shell-script uit. 
 
 De voorbeeld opdracht om gebruikers toegang te geven tot het verzenden van taken, het weer geven van de meta gegevens van nieuwe taken en het weer geven van oude meta gegevens is:

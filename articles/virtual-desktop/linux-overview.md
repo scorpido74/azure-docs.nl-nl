@@ -9,10 +9,10 @@ ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 8c5de43ed29856451ad67e02a426b07cc34a0d54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80422417"
 ---
 # <a name="linux-support"></a>Linux Support
@@ -69,7 +69,7 @@ Voordat u een Linux-client voor Windows virtueel bureau blad kunt ontwikkelen, m
 
 Bekijk onze documentatie voor de volgende clients:
 
-- [Windows-bureaubladclient](connect-windows-7-and-10.md)
+- [Windows Desktop-client](connect-windows-7-and-10.md)
 - [Webclient](connect-web.md)
 - [Android-client](connect-android.md)
 - [macOS-client](connect-macos.md)

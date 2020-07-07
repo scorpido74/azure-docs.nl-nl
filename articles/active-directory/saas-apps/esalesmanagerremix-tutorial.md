@@ -17,10 +17,10 @@ ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 167d682bb5ce1266ba6b677f6223c38dd34af9bb
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82202393"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory integreren met E Sales Manager Remix
@@ -65,7 +65,7 @@ Als u de integratie van Azure AD wilt configureren met E Sales Manager Remix, vo
 
     ![De knop Azure Active Directory][1]
 
-1. Selecteer**alle toepassingen**in **bedrijfs toepassingen** > .
+1. Selecteer **Enterprise applications**  >  **alle toepassingen**in bedrijfs toepassingen.
 
     ![Het venster bedrijfs toepassingen][2]
     
@@ -101,9 +101,9 @@ Schakel eenmalige aanmelding voor Azure AD in het Azure Portal en configureer ee
 
     ![E-Remix-domein en Url's voor de eenmalige aanmelding van de verkoop Manager](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
 
-    a. Typ in het vak **AANMELD URL** een URL in de volgende indeling: *https://\<Server-based-URL>/\<subdomein>/esales-PC*.
+    a. Typ in het vak **aanmeld-URL** een URL in de volgende indeling: *https:// \<Server-Based-URL> / \<sub-domain> /esales-PC*.
 
-    b. Typ in het vak **id** een URL in de volgende indeling: *\<https://Server-based-URL>/\<subdomein>/*.
+    b. Typ in het vak **id** een URL in de volgende indeling: *https:// \<Server-Based-URL> / \<sub-domain> / *.
 
     c. Noteer de **id** -waarde voor later gebruik in deze zelf studie.
     
@@ -120,7 +120,7 @@ Schakel eenmalige aanmelding voor Azure AD in het Azure Portal en configureer ee
 
     Het venster **kenmerk bewerken** wordt geopend.
 
-1. Kopieer de waarden van de **naam ruimte** en de **naam** . Genereer de waarde in de patroon * \<naam ruimte\<>/naam>* en sla deze op voor later gebruik in deze zelf studie.
+1. Kopieer de waarden van de **naam ruimte** en de **naam** . Genereer de waarde in het patroon *\<Namespace>/\<Name>* en sla deze op voor later gebruik in deze zelf studie.
 
     ![Het venster kenmerk bewerken](./media/esalesmanagerremix-tutorial/configure2.png)
 
@@ -142,7 +142,7 @@ Schakel eenmalige aanmelding voor Azure AD in het Azure Portal en configureer ee
 
     ![De opdracht ' aan beheerder menu '](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. Selecteer in het linkerdeel venster de optie **systeem instellingen** > **samen werking met het externe systeem**.
+1. Selecteer in het linkerdeel venster de optie **systeem instellingen**  >  **samen werking met het externe systeem**.
 
     ![De koppelingen systeem instellingen en samen werking met extern systeem](./media/esalesmanagerremix-tutorial/configure5.png)
     
@@ -158,7 +158,7 @@ Schakel eenmalige aanmelding voor Azure AD in het Azure Portal en configureer ee
     
     b. Selecteer in de vervolg keuzelijst van het onderdeel **samen werking** de optie **e-mail**.
 
-    c. Plak in het vak **samenwerkings item** de claim waarde die u eerder hebt gekopieerd uit de Azure Portal (dat wil zeggen **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`**).
+    c. Plak in het vak **samenwerkings item** de claim waarde die u eerder hebt gekopieerd uit de Azure Portal (dat wil zeggen **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** ).
 
     d. Plak in het vak **verlener (Entiteits-ID)** de id-waarde die u eerder hebt gekopieerd uit de sectie **E-Remix domein en Url's** van de e-mail van de Azure Portal.
 
@@ -166,12 +166,12 @@ Schakel eenmalige aanmelding voor Azure AD in het Azure Portal en configureer ee
 
     f. Plak in het vak **ID-provider aanmeldings-URL** de service-URL voor eenmalige SAML-aanmelding die u eerder hebt gekopieerd in de Azure Portal.
 
-    g. Plak in het vak **Afmeldings-URL van de identiteits provider** de waarde voor de afmeldings-URL die u eerder hebt gekopieerd in de Azure Portal.
+    bijvoorbeeld Plak in het vak **Afmeldings-URL van de identiteits provider** de waarde voor de afmeldings-URL die u eerder hebt gekopieerd in de Azure Portal.
 
     h. Selecteer **instelling voltooid**.
 
 > [!TIP]
-> Wanneer u de app instelt, kunt u een beknopte versie van de voor gaande instructies in de [Azure Portal](https://portal.azure.com)lezen. Nadat u de app hebt toegevoegd in de sectie **Active Directory** > **Enter prise-toepassingen** , selecteert u het tabblad **eenmalige aanmelding** en opent u de Inge sloten documentatie in de sectie **configuratie** onderaan. Zie voor meer informatie over de Inge sloten documentatie functie [Azure AD embedded-documentatie]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Wanneer u de app instelt, kunt u een beknopte versie van de voor gaande instructies in de [Azure Portal](https://portal.azure.com)lezen. Nadat u de app hebt toegevoegd in de sectie **Active Directory**  >  **Enter prise-toepassingen** , selecteert u het tabblad **eenmalige aanmelding** en opent u de Inge sloten documentatie in de sectie **configuratie** onderaan. Zie voor meer informatie over de Inge sloten documentatie functie [Azure AD embedded-documentatie]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
@@ -184,7 +184,7 @@ In deze sectie maakt u een test gebruiker Julia Simon in de Azure Portal door he
 
     ![De Azure Active Directory koppeling](./media/paloaltoadmin-tutorial/create_aaduser_01.png)
 
-1. Als u een lijst met huidige gebruikers wilt weer geven, selecteert u **gebruikers en groepen** > **alle gebruikers**.
+1. Als u een lijst met huidige gebruikers wilt weer geven, selecteert u **gebruikers en groepen**  >  **alle gebruikers**.
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
 
@@ -214,7 +214,7 @@ In deze sectie maakt u een test gebruiker Julia Simon in de Azure Portal door he
 
     ![E Remix-configuratie voor verkoop Manager](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. Selecteer **de instellingen** > van het bedrijf**onderhoud van afdelingen en werk nemers**en selecteer vervolgens **werk nemers geregistreerd**.
+1. Selecteer de **instellingen van het bedrijf**  >  **onderhoud van afdelingen en werk nemers**en selecteer vervolgens **werk nemers geregistreerd**.
 
     ![Het tabblad "geregistreerde mede werkers"](./media/esalesmanagerremix-tutorial/user1.png)
 
@@ -240,7 +240,7 @@ In deze sectie schakelt u gebruiker Julia Simon in om eenmalige aanmelding van A
 
 ![De gebruikersrol toewijzen][200] 
 
-1. Open in de Azure Portal de weer gave **toepassingen** , ga **naar de mapweergave** en selecteer vervolgens**alle toepassingen**in **bedrijfs toepassingen** > .
+1. Open in de Azure Portal de weer gave **toepassingen** , ga **naar de mapweergave** en selecteer vervolgens alle toepassingen in **bedrijfs toepassingen**  >  **All applications**.
 
     ![De koppelingen bedrijfs toepassingen en alle toepassingen][201] 
 
@@ -273,7 +273,7 @@ Zie [Introduction to the Access Panel](../user-help/active-directory-saas-access
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Lijst met zelf studies over het integreren van SaaS-apps met Azure Active Directory](tutorial-list.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 <!--Image references-->
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
 ms.openlocfilehash: 94c261da0c935cb7a41dde768069099b4e5ed251
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80384072"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Zelf studie: zoomen configureren voor automatische gebruikers inrichting
@@ -43,7 +43,7 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 * [Een zoom-Tenant](https://zoom.us/pricing).
 * Een gebruikers account in-/uitzoomen met beheerders machtigingen.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>Step 1. Uw inrichtings implementatie plannen
+## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Uw inrichtings implementatie plannen
 1. Meer informatie over [de werking van de inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 2. Bepaal wie binnen het [bereik van de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)valt.
 3. Bepaal welke gegevens moeten worden [toegewezen tussen Azure AD en zoom](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
@@ -89,7 +89,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-zoom-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor inzoomen in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -105,7 +105,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Voer `https://api.zoom.us/scim` in het gedeelte **beheerders referenties** de URL van de **Tenant**in. Voer de **JWT-token** waarde in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Inzoomen. Als de verbinding mislukt, zorg er dan voor dat uw zoom account beheerders machtigingen heeft en probeer het opnieuw.
+5. Voer in het gedeelte **beheerders referenties** de `https://api.zoom.us/scim` URL van de **Tenant**in. Voer de **JWT-token** waarde in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Inzoomen. Als de verbinding mislukt, zorg er dan voor dat uw zoom account beheerders machtigingen heeft en probeer het opnieuw.
 
     ![Inzoom inrichting](./media/zoom-provisioning-tutorial/provisioning.png)
 
@@ -122,7 +122,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |Kenmerk|Type|
    |---|---|
    |userName|Tekenreeks|
-   |actief|Booleaans|
+   |actief|Boolean-waarde|
    |name. naam|Tekenreeks|
    |naam. familielid|Tekenreeks|
    |e-mail berichten [type EQ "werk]|Tekenreeks|
@@ -154,10 +154,10 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
 ## <a name="connector-limitations"></a>Connector beperkingen
 * Als u inzoomt, worden er momenteel Maxi maal 9.999 basis gebruikers toegestaan.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

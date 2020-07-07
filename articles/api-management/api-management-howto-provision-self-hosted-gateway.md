@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
 ms.openlocfilehash: 2870a654faad4e760a9d022488cb2c4c406cbeab
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82203128"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Een zelf-hostende gateway inrichten in azure API Management
@@ -38,9 +38,9 @@ Voer de volgende Snelstartgids uit: [een Azure API Management-exemplaar maken](g
 > **Regio** specificeert de beoogde locatie van de gateway knooppunten die aan deze gateway bron worden gekoppeld. Het is semantisch gelijk aan een vergelijk bare eigenschap die is gekoppeld aan een Azure-resource, maar er kan een wille keurige teken reeks waarde aan worden toegewezen.
 
 4. Voer desgewenst een **Beschrijving** in van de gateway resource.
-5. Selecteer **+** desgewenst onder **api's** om een of meer api's aan deze gateway bron te koppelen.
+5. Selecteer desgewenst **+** onder **api's** om een of meer api's aan deze gateway bron te koppelen.
 > [!IMPORTANT]
-> Standaard wordt geen van de bestaande Api's gekoppeld aan de nieuwe gateway resource. Daarom zullen pogingen om deze via de nieuwe gateway aan te roepen, `404 Resource Not Found` leiden tot antwoorden.
+> Standaard wordt geen van de bestaande Api's gekoppeld aan de nieuwe gateway resource. Daarom zullen pogingen om deze via de nieuwe gateway aan te roepen, leiden tot `404 Resource Not Found` antwoorden.
 
 6. Klik op **Add**.
 

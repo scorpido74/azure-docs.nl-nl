@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
 ms.openlocfilehash: 580ec443dc087f270e30856c336a5699bbf1ae71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71058446"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Extern bureaublad-services of het beheerders wachtwoord opnieuw instellen in een Windows-VM
@@ -77,14 +77,14 @@ Controleer eerst of de [meest recente Power shell-module is geïnstalleerd en ge
 
 ### <a name="reset-the-remote-desktop-services-configuration"></a>**De configuratie van de Extern bureaublad-services opnieuw instellen**
 
-1. Externe toegang tot uw virtuele machine opnieuw instellen met de Power shell [-cmdlet Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) . In het volgende voor beeld wordt de toegangs `myVMAccess` extensie opnieuw ingesteld op de naam `myResourceGroup` van de virtuele machine in de resource groep: `myVM`
+1. Externe toegang tot uw virtuele machine opnieuw instellen met de Power shell [-cmdlet Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) . In het volgende voor beeld wordt de toegangs extensie opnieuw ingesteld `myVMAccess` op de naam van de virtuele machine `myVM` in de `myResourceGroup` resource groep:
 
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -typeHandlerVersion "2.0" -ForceRerun
     ```
 
     > [!TIP]
-    > Een virtuele machine kan op elk gewenst moment slechts één VM-toegangs agent hebben. Gebruik de `-ForceRerun` optie om de eigenschappen van de VM-toegangs agent in te stellen. Wanneer u gebruikt `-ForceRerun`, moet u ervoor zorgen dat u dezelfde naam gebruikt als voor de VM-toegangs agent die u mogelijk in een van de vorige opdrachten hebt gebruikt.
+    > Een virtuele machine kan op elk gewenst moment slechts één VM-toegangs agent hebben. Gebruik de optie om de eigenschappen van de VM-toegangs agent in te stellen `-ForceRerun` . Wanneer u gebruikt `-ForceRerun` , moet u ervoor zorgen dat u dezelfde naam gebruikt als voor de VM-toegangs agent die u mogelijk in een van de vorige opdrachten hebt gebruikt.
 
 1. Als u nog steeds geen externe verbinding met uw virtuele machine kunt maken, raadpleegt u [problemen met extern bureaublad verbindingen met een virtuele Windows-machine voor Azure oplossen](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Als u de verbinding met de Windows-domein controller kwijtraakt, moet u deze herstellen vanaf een back-up van een domein controller.
 

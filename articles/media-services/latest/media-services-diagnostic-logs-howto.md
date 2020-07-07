@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
 ms.openlocfilehash: 4d4587c701a054828fc34785e2ae680fef47625d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80382916"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Diagnostische logboeken van Media Services controleren
@@ -28,7 +28,7 @@ In dit artikel wordt beschreven hoe u gegevens naar het opslag account rondstuur
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Een Azure Media Services-account maken](create-account-cli-how-to.md).
+- [Maak een Media Services-account](create-account-cli-how-to.md).
 - Controleren [Media Services metrische gegevens en Diagnostische logboeken](media-services-metrics-diagnostic-logs.md).
 
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>Gegevens naar het opslag account routeren met behulp van de portal
@@ -55,7 +55,7 @@ Bewakingsgegevens uit uw resource worden nu doorgestuurd naar het opslagaccount.
 
 ## <a name="route-data-to-the-storage-account-using-the-azure-cli"></a>Gegevens naar het opslag account routeren met behulp van de Azure CLI
 
-Als u de opslag van Diagnostische logboeken in een opslag account wilt inschakelen, `az monitor diagnostic-settings` voert u de volgende Azure cli-opdracht uit:
+Als u de opslag van Diagnostische logboeken in een opslag account wilt inschakelen, voert u de volgende `az monitor diagnostic-settings` Azure cli-opdracht uit:
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -96,7 +96,7 @@ Wellicht moet u vijf minuten wachten voordat de gebeurtenis in het opslagaccount
 
  U kunt nu de JSON-gebeurtenis zien die in het opslagaccount werd opgeslagen.
 
-### <a name="examples-of-pt1hjson"></a>Voor beelden van PT1H. json
+### <a name="examples-of-pt1hjson"></a>Voor beelden van PT1H.jsop
 
 #### <a name="clear-key-delivery-log"></a>Sleutel leverings logboek wissen
 
@@ -176,7 +176,7 @@ Wellicht moet u vijf minuten wachten voordat de gebeurtenis in het opslagaccount
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
 
 ## <a name="see-also"></a>Zie ook
 

@@ -9,10 +9,10 @@ ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.openlocfilehash: 9722c7dec3a066d8f776424cb599be0d463416d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80384854"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio 2019 gebruiken voor het ontwikkelen en opsporen van fouten in modules voor Azure IoT Edge
@@ -98,21 +98,21 @@ Met de sjabloon Azure IoT Edge project in Visual Studio maakt u een project dat 
 
    ![Nieuw project maken](./media/how-to-visual-studio-develop-csharp-module/create-new.png)
 
-1. Selecteer in het venster **IOT Edge toepassing en module toevoegen** de optie **C#-module** of **C-module** en geef vervolgens de module naam en module-afbeeldings opslagplaats op. Visual Studio vult de module naam automatisch in met **localhost: 5000/<uw module naam\>**. Vervang deze door uw eigen register gegevens. Als u een lokaal docker-REGI ster gebruikt voor het testen, is **localhost** prima. Als u Azure Container Registry gebruikt, gebruikt u de aanmeldings server uit de instellingen van het REGI ster. De aanmeldings server ziet eruit als ** _ \<register\>naam_. azurecr.io**. Vervang alleen het gedeelte **localhost: 5000** van de teken reeks, zodat het uiteindelijke resultaat eruitziet als ** \< *register naam*\>. azurecr.io/_\<de\>naam van uw module_**. De standaard module naam is **IotEdgeModule1**
+1. Selecteer in het venster **IOT Edge toepassing en module toevoegen** de optie **C#-module** of **C-module** en geef vervolgens de module naam en module-afbeeldings opslagplaats op. Visual Studio vult de module naam automatisch in met **localhost: 5000/<uw module naam \> **. Vervang deze door uw eigen register gegevens. Als u een lokaal docker-REGI ster gebruikt voor het testen, is **localhost** prima. Als u Azure Container Registry gebruikt, gebruikt u de aanmeldings server uit de instellingen van het REGI ster. De aanmeldings server ziet eruit als ** _\<registry name\>_ . azurecr.io**. Vervang alleen het gedeelte **localhost: 5000** van de teken reeks, zodat het uiteindelijke resultaat eruitziet als ** \<*registry name*\> . azurecr.io/ _\<your module name\>_ **. De standaard module naam is **IotEdgeModule1**
 
    ![Toepassing en module toevoegen](./media/how-to-visual-studio-develop-csharp-module/add-application-and-module.png)
 
 1. Selecteer **OK** om de Azure IOT EDGE-oplossing te maken met een module die gebruikmaakt van C# of C.
 
-U hebt nu het project **AzureIoTEdgeApp1. Linux. amd64** of het project **AzureIoTEdgeApp1. Windows. amd64** en ook een **IotEdgeModule1** -project in uw oplossing. Elk **AzureIoTEdgeApp1** -project bevat `deployment.template.json` een bestand waarin de modules worden gedefinieerd die u wilt bouwen en implementeren voor uw IOT EDGE-oplossing. ook worden de routes tussen modules gedefinieerd. De standaard oplossing heeft een **SimulatedTemperatureSensor** -module en een **IotEdgeModule1** -module. De **SimulatedTemperatureSensor** -module genereert gesimuleerde gegevens in de **IotEdgeModule1** -module, terwijl de standaard code in de module **IotEdgeModule1** berichten direct pipet ontvangen op Azure IOT hub.
+U hebt nu het project **AzureIoTEdgeApp1. Linux. amd64** of het project **AzureIoTEdgeApp1. Windows. amd64** en ook een **IotEdgeModule1** -project in uw oplossing. Elk **AzureIoTEdgeApp1** -project bevat een `deployment.template.json` bestand waarin de modules worden gedefinieerd die u wilt bouwen en implementeren voor uw IOT EDGE-oplossing. ook worden de routes tussen modules gedefinieerd. De standaard oplossing heeft een **SimulatedTemperatureSensor** -module en een **IotEdgeModule1** -module. De **SimulatedTemperatureSensor** -module genereert gesimuleerde gegevens in de **IotEdgeModule1** -module, terwijl de standaard code in de module **IotEdgeModule1** berichten direct pipet ontvangen op Azure IOT hub.
 
 Als u wilt zien hoe de gesimuleerde temperatuur sensor werkt, bekijkt u de [bron code SimulatedTemperatureSensor. csproj](https://github.com/Azure/iotedge/tree/master/edge-modules/SimulatedTemperatureSensor).
 
-Het **IotEdgeModule1** -project is een .net Core 2,1-console toepassing als dit een C#-module is. Het bevat vereiste docker-bestanden die u nodig hebt voor uw IoT Edge-apparaat dat wordt uitgevoerd met een Windows-container of een Linux-container. In `module.json` het bestand worden de meta gegevens van een module beschreven. De daad werkelijke module code, waarmee de Azure IoT Device SDK als afhankelijkheid wordt gebruikt, is `Program.cs` te `main.c` vinden in het bestand of.
+Het **IotEdgeModule1** -project is een .net Core 2,1-console toepassing als dit een C#-module is. Het bevat vereiste docker-bestanden die u nodig hebt voor uw IoT Edge-apparaat dat wordt uitgevoerd met een Windows-container of een Linux-container. `module.json`In het bestand worden de meta gegevens van een module beschreven. De daad werkelijke module code, waarmee de Azure IoT Device SDK als afhankelijkheid wordt gebruikt, is te vinden in het `Program.cs` `main.c` bestand of.
 
 ## <a name="develop-your-module"></a>Uw module ontwikkelen
 
-De standaard module code die wordt geleverd bij de oplossing bevindt zich op **IotEdgeModule1** > **Program.cs** (voor C#) of **Main. c** (c). De module en het `deployment.template.json` bestand zijn zo ingesteld dat u de oplossing kunt bouwen, deze naar het container register pusht en deze implementeert op een apparaat om te testen zonder dat u code hoeft te gebruiken. De module is gebouwd om invoer van een bron (in dit geval de **SimulatedTemperatureSensor** -module die gegevens simuleert) te maken en deze naar Azure IOT hub te door sluizen.
+De standaard module code die wordt geleverd bij de oplossing bevindt zich op **IotEdgeModule1**  >  **Program.cs** (voor C#) of **Main. c** (c). De module en het `deployment.template.json` bestand zijn zo ingesteld dat u de oplossing kunt bouwen, deze naar het container register pusht en deze implementeert op een apparaat om te testen zonder dat u code hoeft te gebruiken. De module is gebouwd om invoer van een bron (in dit geval de **SimulatedTemperatureSensor** -module die gegevens simuleert) te maken en deze naar Azure IOT hub te door sluizen.
 
 Wanneer u klaar bent om de module sjabloon aan te passen met uw eigen code, gebruikt u de [Azure IOT hub sdk's](../iot-hub/iot-hub-devguide-sdks.md) om modules te bouwen die voldoen aan de belangrijkste behoeften van IOT-oplossingen, zoals beveiliging, Apparaatbeheer en betrouw baarheid.
 
@@ -122,7 +122,7 @@ Wanneer u klaar bent om de module sjabloon aan te passen met uw eigen code, gebr
 
    ![Verbindings reeks voor apparaat voor rand kopiëren](./media/how-to-visual-studio-develop-csharp-module/copy-edge-conn-string.png)
 
-1. Selecteer in het menu **extra** het **Azure IOT Edge tools** > **Setup IOT Edge Simulator**, plak de Connection String en klik op **OK**.
+1. Selecteer in het menu **extra** het **Azure IOT Edge tools**  >  **Setup IOT Edge Simulator**, plak de Connection String en klik op **OK**.
 
    ![Venster met set-rand verbindings reeks openen](./media/how-to-visual-studio-develop-csharp-module/set-edge-conn-string.png)
 
@@ -139,7 +139,7 @@ Normaal gesp roken wilt u elke module testen en fouten opsporen voordat u deze u
 
    ![Opstart project instellen](./media/how-to-visual-studio-develop-csharp-module/module-start-up-project.png)
 
-1. Druk op **F5** of klik op de onderstaande knop om de module uit te voeren. de eerste keer dat&ndash;u dit doet, kan het 10 20 seconden duren voordat u dit doet.
+1. Druk op **F5** of klik op de onderstaande knop om de module uit te voeren. &ndash;de eerste keer dat u dit doet, kan het 10 20 seconden duren voordat u dit doet.
 
    ![Module uitvoeren](./media/how-to-visual-studio-develop-csharp-module/run-module.png)
 
@@ -147,7 +147,7 @@ Normaal gesp roken wilt u elke module testen en fouten opsporen voordat u deze u
 
    ![Module wordt uitgevoerd](./media/how-to-visual-studio-develop-csharp-module/single-module-run.png)
 
-1. Stel bij het ontwikkelen in C# een onderbrekings punt `PipeMessage()` in voor de functie in **Program.cs**. Als u C gebruikt, stelt u een onderbrekings punt in met de `InputQueue1Callback()` functie in **Main. C**. U kunt dit testen door een bericht te verzenden door de volgende opdracht uit te voeren in een **Git-Bash** of **WSL bash** -shell. (U kunt de `curl` opdracht niet uitvoeren vanuit een Power shell of opdracht prompt.)
+1. Stel bij het ontwikkelen in C# een onderbrekings punt in voor de `PipeMessage()` functie in **Program.cs**; als u C gebruikt, stelt u een onderbrekings punt in voor de `InputQueue1Callback()` functie in **Main. C**. U kunt dit testen door een bericht te verzenden door de volgende opdracht uit te voeren in een **Git-Bash** of **WSL bash** -shell. (U kunt de opdracht niet uitvoeren `curl` vanuit een Power shell of opdracht prompt.)
 
     ```bash
     curl --header "Content-Type: application/json" --request POST --data '{"inputName": "input1","data":"hello world"}' http://localhost:53000/api/v1/messages
@@ -158,7 +158,7 @@ Normaal gesp roken wilt u elke module testen en fouten opsporen voordat u deze u
     Het onderbrekings punt moet worden geactiveerd. U kunt variabelen bekijken in het Visual Studio **lokalen** -venster.
 
    > [!TIP]
-   > U kunt ook [postman](https://www.getpostman.com/) of andere API-hulpprogram ma's gebruiken om berichten te `curl`verzenden in plaats van.
+   > U kunt ook [postman](https://www.getpostman.com/) of andere API-hulpprogram ma's gebruiken om berichten te verzenden in plaats van `curl` .
 
 1. Druk op **CTRL + F5** of klik op de knop stoppen om de fout opsporing te stoppen.
 
@@ -166,7 +166,7 @@ Normaal gesp roken wilt u elke module testen en fouten opsporen voordat u deze u
 
 Wanneer u klaar bent met het ontwikkelen van een enkele module, wilt u mogelijk een volledige oplossing met meerdere modules uitvoeren en fouten opsporen.
 
-1. Voeg in **Solution Explorer**een tweede module aan de oplossing toe door met de rechter muisknop op **AzureIoTEdgeApp1** te klikken en**nieuwe IOT Edge module** **toevoegen** > te selecteren. De standaard naam van de tweede module is **IotEdgeModule2** en zal fungeren als een andere pipe-module.
+1. Voeg in **Solution Explorer**een tweede module aan de oplossing toe door met de rechter muisknop op **AzureIoTEdgeApp1** te klikken en **Add**  >  **nieuwe IOT Edge module**toevoegen te selecteren. De standaard naam van de tweede module is **IotEdgeModule2** en zal fungeren als een andere pipe-module.
 
 1. Open het bestand `deployment.template.json` en u ziet dat **IotEdgeModule2** is toegevoegd in de sectie **modules** . Vervang de sectie **routes** door het volgende. Als u de module namen hebt aangepast, moet u deze namen bijwerken zodat deze overeenkomen.
 
@@ -192,7 +192,7 @@ Wanneer u klaar bent met het ontwikkelen van een enkele module, wilt u mogelijk 
 1. Zorg ervoor dat **AzureIoTEdgeApp1** het start project is. Selecteer **fout opsporing** of **versie** als de configuratie die u wilt bouwen voor uw module installatie kopieën.
 
     > [!NOTE]
-    > Bij het kiezen van **debug**, Visual `Dockerfile.(amd64|windows-amd64).debug` Studio wordt gebruikt voor het bouwen van docker-installatie kopieën. Dit omvat het .NET core-opdracht regel programma voor fout opsporing VSDBG in de container installatie kopie tijdens het maken van het bestand. Voor productie klare IoT Edge modules wordt u aangeraden de **release** configuratie te gebruiken, die zonder VSDBG `Dockerfile.(amd64|windows-amd64)` wordt gebruikt.
+    > Bij het kiezen van **debug**, Visual Studio wordt gebruikt `Dockerfile.(amd64|windows-amd64).debug` voor het bouwen van docker-installatie kopieën. Dit omvat het .NET core-opdracht regel programma voor fout opsporing VSDBG in de container installatie kopie tijdens het maken van het bestand. Voor productie klare IoT Edge modules wordt u aangeraden de **release** configuratie te gebruiken, die `Dockerfile.(amd64|windows-amd64)` zonder VSDBG wordt gebruikt.
 
 1. Als u een persoonlijk REGI ster gebruikt, zoals Azure Container Registry (ACR), gebruikt u de volgende docker-opdracht om u aan te melden.  U kunt de gebruikers naam en het wacht woord ophalen van de pagina **toegangs sleutels** van het REGI ster in de Azure Portal. Als u lokaal REGI ster gebruikt, kunt u [een lokaal REGI ster uitvoeren](https://docs.docker.com/registry/deploying/#run-a-local-registry).
 
@@ -200,7 +200,7 @@ Wanneer u klaar bent met het ontwikkelen van een enkele module, wilt u mogelijk 
     docker login -u <ACR username> -p <ACR password> <ACR login server>
     ```
 
-1. Als u een persoonlijk REGI ster gebruikt, zoals Azure Container Registry, moet u de aanmeldings gegevens van uw REGI ster toevoegen aan de runtime-instellingen `deployment.template.json`die in het bestand zijn gevonden. Vervang de tijdelijke aanduidingen door de werkelijke ACR-gebruikers naam, het wacht woord en de register naam.
+1. Als u een persoonlijk REGI ster gebruikt, zoals Azure Container Registry, moet u de aanmeldings gegevens van uw REGI ster toevoegen aan de runtime-instellingen die in het bestand zijn gevonden `deployment.template.json` . Vervang de tijdelijke aanduidingen door de werkelijke ACR-gebruikers naam, het wacht woord en de register naam.
 
     ```json
           "settings": {
@@ -220,13 +220,13 @@ Wanneer u klaar bent met het ontwikkelen van een enkele module, wilt u mogelijk 
 
 ## <a name="deploy-the-solution"></a>De oplossing implementeren
 
-In dit snelstartartikel voor het instellen van uw IoT Edge-apparaat hebt u een module geïmplementeerd met behulp van de Azure-portal. U kunt modules ook implementeren met behulp van de Cloud Explorer voor Visual Studio. U hebt al een implementatie manifest voor bereid voor uw scenario, `deployment.json` het bestand en alles wat u hoeft te doen, selecteert u een apparaat om de implementatie te ontvangen.
+In dit snelstartartikel voor het instellen van uw IoT Edge-apparaat hebt u een module geïmplementeerd met behulp van de Azure-portal. U kunt modules ook implementeren met behulp van de Cloud Explorer voor Visual Studio. U hebt al een implementatie manifest voor bereid voor uw scenario, het `deployment.json` bestand en alles wat u hoeft te doen, selecteert u een apparaat om de implementatie te ontvangen.
 
-1. Open **Cloud Explorer** door te klikken op**Cloud Explorer** **weer geven** > . Zorg ervoor dat u bent aangemeld bij Visual Studio 2019.
+1. Open **Cloud Explorer** door te klikken op **View**  >  **Cloud Explorer**weer geven. Zorg ervoor dat u bent aangemeld bij Visual Studio 2019.
 
 1. Vouw in **Cloud Explorer**uw abonnement uit, Zoek uw Azure-IOT hub en het Azure IOT edge-apparaat dat u wilt implementeren.
 
-1. Klik met de rechter muisknop op het IoT Edge apparaat om een implementatie voor te maken. Ga naar het implementatie manifest dat is geconfigureerd voor uw platform in de map **config** in uw Visual Studio-oplossing, `deployment.arm32v7.json`zoals.
+1. Klik met de rechter muisknop op het IoT Edge apparaat om een implementatie voor te maken. Ga naar het implementatie manifest dat is geconfigureerd voor uw platform in de map **config** in uw Visual Studio-oplossing, zoals `deployment.arm32v7.json` .
 
 1. Klik op de knop Vernieuwen om de nieuwe modules samen met de **SimulatedTemperatureSensor** -module en **$edgeAgent** en **$edgeHub**weer te geven.
 

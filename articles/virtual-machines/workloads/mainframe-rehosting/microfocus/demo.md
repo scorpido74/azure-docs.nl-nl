@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: db9d6bab2f383102434512aa63d7566cff1f579b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80411072"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Micro Focus CICS BankDemo instellen voor micro focus Enter prise Developer 4,0 op Azure
@@ -78,7 +78,7 @@ Nadat u Enter prise Developer 4,0 hebt geïnstalleerd op de VM, moet u het exemp
 
 8. Wanneer u alle opties hebt geselecteerd, klikt u op **volgende** om te installeren.
 
-9. Na de Windows-functies gaat u naar **configuratie \> scherm systeem- \> en beveiligings beheer Programma's**en selecteert u **Services**. Schuif omlaag en controleer of de volgende services worden uitgevoerd en stel deze in op **automatisch**:
+9. Na de Windows-functies gaat u naar **configuratie scherm \> systeem-en beveiligings \> beheer Programma's**en selecteert u **Services**. Schuif omlaag en controleer of de volgende services worden uitgevoerd en stel deze in op **automatisch**:
 
     - **NetTcpPortSharing**
     - **Listener-adapter net. pipe**
@@ -98,7 +98,7 @@ Sommige ondernemings server processen moeten kunnen worden aangemeld SQL Server 
 
 2. Vouw aan de linkerkant de map **beveiliging** uit en selecteer **aanmeldingen**.
 
-3. Selecteer **NT Authority\\System** en selecteer **Eigenschappen**.
+3. Selecteer **NT Authority \\ System** en selecteer **Eigenschappen**.
 
 4. Selecteer **Server functies** en controleer **sysadmin**.
 
@@ -106,7 +106,7 @@ Sommige ondernemings server processen moeten kunnen worden aangemeld SQL Server 
 
 ## <a name="create-the-bankdemo-database-and-all-its-objects"></a>De BankDemo-data base en alle bijbehorende objecten maken
 
-1. Open **Windows Verkenner** en ga naar **C:\\gebruikers\\public\\-\\documenten micro\\focus Enter\\prise\\Developer\\samples\\,\\mainframe CICS\\DotNet BankDemo SQL**.
+1. Open **Windows Verkenner** en ga naar **C: \\ gebruikers \\ Public- \\ documenten \\ micro focus \\ Enter prise Developer \\ samples, \\ mainframe \\ CICS \\ DotNet \\ BankDemo \\ SQL**.
 
 2. Kopieer de inhoud van het bestand **BankDemoCreateAll. SQL** naar het klem bord.
 
@@ -132,7 +132,7 @@ De query moet zonder fouten worden uitgevoerd. Wanneer deze is voltooid, hebt u 
 
 1. Open Visual Studio en meld u aan.
 
-2. Selecteer in het menu **bestand** de optie **project/oplossing openen**, ga naar **C:\\gebruikers\\open\\bare\\documenten micro\\focus Enter\\prise\\Developer\\samples mainframe CICS\\DotNet\\BankDemo**en selecteer het **SLN** -bestand.
+2. Selecteer in het menu **bestand** de optie **project/oplossing openen**, ga naar **C: \\ gebruikers \\ open bare \\ documenten \\ micro focus \\ Enter prise Developer \\ samples \\ mainframe \\ CICS \\ DotNet \\ BankDemo**en selecteer het **SLN** -bestand.
 
 3. Neem even de tijd om de objecten te onderzoeken. COBOL-Program ma's worden weer gegeven in Solution Explorer met de CBL-extensie samen met CopyBooks (CPY) en JCL.
 
@@ -154,7 +154,7 @@ De query moet zonder fouten worden uitgevoerd. Wanneer deze is voltooid, hebt u 
 
 1. Open een Enter prise Developer-opdracht prompt (64-bits) als Administrator.
 
-2. Navigeer naar het **% Public%\\Documents\\micro focus\\Enter prise\\Developer\\samples\\mainframe\\\\CICS DotNet BankDemo**.
+2. Navigeer naar het **% Public% \\ Documents \\ micro focus \\ Enter prise Developer \\ samples \\ mainframe \\ CICS \\ DotNet \\ BankDemo**.
 
 3. Voer bij de opdracht prompt **bankdemodbdeploy** uit en neem de para meter voor de Data Base op die u wilt implementeren, bijvoorbeeld:
 
@@ -163,7 +163,7 @@ De query moet zonder fouten worden uitgevoerd. Wanneer deze is voltooid, hebt u 
     ```
 
 > [!NOTE]
-> Zorg ervoor dat u een slash (/) gebruikt als geen back slash (\\). Dit script wordt enige tijd uitgevoerd.
+> Zorg ervoor dat u een slash (/) gebruikt als geen back slash ( \\ ). Dit script wordt enige tijd uitgevoerd.
 
 ![Beheer: Enter prise Developer-opdracht prompt venster](media/06-demo-cmd.png)
 
@@ -171,7 +171,7 @@ De query moet zonder fouten worden uitgevoerd. Wanneer deze is voltooid, hebt u 
 
 1. Open de gebruikers interface **van de Enter prise-server voor .net-beheer** .
 
-2. Als u de MMC-module wilt starten, klikt u in het menu **Start** van Windows op **micro \> focus \> Enter prise Developer Configuration Enter prise server voor .net admin**. (Voor Windows Server kiest u **micro focus Enter prise \> Developer Enter prise server voor .net-beheer**).
+2. Als u de MMC-module wilt starten, klikt u in het menu **Start** van Windows op **micro focus Enter prise Developer \> Configuration \> Enter prise server voor .net admin**. (Voor Windows Server kiest u **micro focus Enter prise Developer \> Enter prise server voor .net-beheer**).
 
 3. Vouw de container **regio's** in het linkerdeel venster uit en klik vervolgens met de rechter muisknop op **CICS**.
 
@@ -181,7 +181,7 @@ De query moet zonder fouten worden uitgevoerd. Wanneer deze is voltooid, hebt u 
 
      ![Het dialoog venster regio definiëren](media/07-demo-cics.png)
 
-6. Als u het definitie bestand van de regio wilt selecteren voor de data base met meerdere regio's, zoekt u **\_regio bankdemo\_db. config** in **C\\:\\\\\\\\\\\\gebruikers\\\\\\public documents micro focus Enter prise Developer Samples, mainframe CICS DotNet bankdemo**.
+6. Als u het definitie bestand van de regio wilt selecteren voor de data base met meerdere regio's, zoekt u **regio \_ bankdemo \_db.config** in **C: \\ gebruikers \\ Public- \\ documenten \\ micro focus \\ Enter prise Developer \\ samples \\ mainframe \\ CICS \\ DotNet \\ bankdemo**.
 
      ![Regio-regio naam definiëren: BANKDEMO](media/08-demo-cics.png)
 
@@ -195,13 +195,13 @@ De query moet zonder fouten worden uitgevoerd. Wanneer deze is voltooid, hebt u 
 
 3. Selecteer in de vervolg keuzelijst **Data Base service-exemplaar**. Dit is de lokale computer SQLEXPRESS.
 
-4. Selecteer het exemplaar in de container **XA-resource definities (MachineName\\)** en klik op **toevoegen**.
+4. Selecteer het exemplaar in de container **XA-resource definities (MachineName \\ )** en klik op **toevoegen**.
 
 5. Selecteer de **Data Base XA-resource definitie** en typ **BANKDEMO** voor de **naam** en **regio**.
 
      ![Het scherm nieuwe data base XA-resource definitie](media/09-demo-xa.png)
 
-6. Klik op de weglatings tekens (**...**) om de wizard verbindings reeks te openen. Typ **(lokaal)\\SQLEXPRESS**voor **Server naam**. Selecteer voor **Aanmelden** **Windows-verificatie**. Typ **BANKDEMO** voor database naam
+6. Klik op de weglatings tekens (**...**) om de wizard verbindings reeks te openen. Typ **(lokaal) \\ SQLEXPRESS**voor **Server naam**. Selecteer voor **Aanmelden** **Windows-verificatie**. Typ **BANKDEMO** voor database naam
 
      ![Scherm verbindings reeks bewerken](media/10-demo-string.png)
 
@@ -230,7 +230,7 @@ Maak een listener voor de TN3270-sessies die toegang hebben tot de BankDemo-toep
 
 1. Vouw in het linkerdeel venster **configuratie-editors** uit en selecteer **listener**.
 
-2. Klik op het pictogram **bestand openen** en selecteer het bestand **seelistener. exe. config** . Dit bestand wordt bewerkt en wordt geladen elke keer dat de Enter prise-server wordt gestart.
+2. Klik op het pictogram **bestand openen** en selecteer het **seelistener.exe.config** bestand. Dit bestand wordt bewerkt en wordt geladen elke keer dat de Enter prise-server wordt gestart.
 
 3. Let op de twee eerder gedefinieerde regio's (ESDEMO en JCLDEMO).
 
@@ -265,15 +265,15 @@ Het laatste wat u moet doen, is het configureren van een 3270-sessie met behulp 
 
 6. Voor gebruikers-ID typt u **B0001** en voert u een wille keurig wacht woord in. Het eerste scherm BANK20 wordt geopend.
 
-![Mainframe weer geven welkomst](media/14-demo.png)
-![scherm-weer gave-Rumba-subsysteem demonstratie scherm](media/15-demo.png)
+![Mainframe weer geven welkomst scherm ](media/14-demo.png)
+ ![ -weer gave-Rumba-subsysteem demonstratie scherm](media/15-demo.png)
 
-Gefeliciteerd! U voert nu een CICS-toepassing uit in azure met micro focus Enter prise server.
+Gefeliciteerd U voert nu een CICS-toepassing uit in azure met micro focus Enter prise server.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Enter prise server uitvoeren in docker-containers in azure](run-enterprise-server-container.md)
 - [Mainframe-migratie-Portal](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
-- [Virtuele machines](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
+- [Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
 - [Problemen oplossen](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
 - [Ontrafelen mainframe naar Azure-migratie](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

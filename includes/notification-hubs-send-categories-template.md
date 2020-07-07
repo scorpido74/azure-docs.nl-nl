@@ -9,21 +9,21 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: 48907713082ebb1008ad963121671b36af7f2731
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74228156"
 ---
 In deze sectie verzendt u het laatste nieuws als gelabelde sjabloonmeldingen vanuit een .NET-console-app.
 
 1. Maak in Visual Studio een nieuwe Visual C#-consoletoepassing:
-    1. Selecteer in het menu **bestand** > **Nieuw** > **project**.
+    1. Selecteer in het menu **bestand**  >  **Nieuw**  >  **project**.
     1. Selecteer in **een nieuw project maken**de optie **console-app (.NET Framework)** voor C# in de lijst met sjablonen en selecteer **volgende**.
     1. voer een naam voor de app in.
     1. Voor **oplossing**kiest **u toevoegen aan oplossing**en selecteert u **maken** om het project te maken.
 
-1. Selecteer **extra** > **NuGet package manager** > **package** Manager-console en voer vervolgens in het console venster de volgende opdracht uit:
+1. Selecteer **extra**  >  **NuGet package manager**  >  **package** Manager-console en voer vervolgens in het console venster de volgende opdracht uit:
 
    ```powershell
    Install-Package Microsoft.Azure.NotificationHubs
@@ -69,7 +69,7 @@ In deze sectie verzendt u het laatste nieuws als gelabelde sjabloonmeldingen van
 
 1. Vervang in de voorgaande code de tijdelijke aanduidingen `<hub name>` en `<connection string with full access>` door de naam van de meldingenhub en de verbindingsreeks voor *DefaultFullSharedAccessSignature* uit het dashboard van de meldingenhub.
 
-1. Voeg in `Main()` de-methode de volgende regels toe:
+1. Voeg in de `Main()` -methode de volgende regels toe:
 
    ```csharp
     SendTemplateNotificationAsync();

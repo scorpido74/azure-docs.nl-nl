@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
 ms.openlocfilehash: 3820b34a9c79f3b514327fa45a05eebaf8a2a1ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82193170"
 ---
 # <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Een aangepaste flyout toevoegen aan de Web-UI van de externe bewakings oplossing
@@ -47,11 +47,11 @@ Als u een flyout wilt toevoegen aan de webgebruikersinterface, moet u de bron be
 
 Om aan de slag te gaan, bevat de map **src/walkthrough/onderdelen/pages/pageWithFlyout/vervolg menu's/exampleFlyout** de bestanden die een flyout definiëren:
 
-**exampleFlyout. container. js**
+**exampleFlyout.container.js**
 
 [!code-javascript[Example flyout container](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.container.js?name=flyoutcontainer "Example flyout container")]
 
-**exampleFlyout. js**
+**exampleFlyout.js**
 
 [!code-javascript[Example flyout](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.js?name=flyout "Example flyout")]
 
@@ -59,7 +59,7 @@ Kopieer de map **src/walkthrough/onderdelen/pages/pageWithFlyout/flyouts** naar 
 
 ### <a name="add-the-flyout-to-the-page"></a>De flyout toevoegen aan de pagina
 
-Wijzig de **elementen src/Components, pages, example/basicPage. js** om de flyout toe te voegen.
+Wijzig de **elementen src/Components, pages/basicPage.js** om de flyout toe te voegen.
 
 Voeg **btn** toe aan de import bewerkingen uit **componenten/gedeeld** en voeg import bewerkingen toe voor **svgs** en **ExampleFlyoutContainer**:
 
@@ -133,7 +133,7 @@ Als de Web-UI niet al lokaal wordt uitgevoerd, voert u de volgende opdracht uit 
 npm start
 ```
 
-Met de vorige opdracht wordt de gebruikers interface `http://localhost:3000/dashboard`lokaal uitgevoerd op. Ga naar de **voorbeeld** pagina en klik op **flyout openen**.
+Met de vorige opdracht wordt de gebruikers interface lokaal uitgevoerd op `http://localhost:3000/dashboard` . Ga naar de **voorbeeld** pagina en klik op **flyout openen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,10 +8,10 @@ ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: e5c57ba56ce236bcf07478e1784eec6d4c632d1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195244"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Azure-beveiligings basislijn voor Cosmos DB
@@ -131,11 +131,11 @@ Meer informatie over het gebruik van service Tags:https://docs.microsoft.com/azu
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: standaard beveiligings configuraties voor netwerk apparaten onderhouden
 
-**Richt lijnen**: standaard beveiligings configuraties voor netwerk bronnen definiëren en implementeren met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimten ' micro soft. DocumentDB ' en ' micro soft. Network ' om aangepaste beleids regels te maken om de netwerk configuratie van uw Azure Cosmos DB instanties te controleren of af te dwingen. U kunt ook gebruik maken van ingebouwde beleids definities voor Azure Cosmos DB, zoals:
+**Richt lijnen**: standaard beveiligings configuraties voor netwerk bronnen definiëren en implementeren met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimten ' Microsoft.DocumentDB ' en ' micro soft. Network ' om aangepaste beleids regels te maken om de netwerk configuratie van uw Azure Cosmos DB instanties te controleren of af te dwingen. U kunt ook gebruik maken van ingebouwde beleids definities voor Azure Cosmos DB, zoals:
 
-- Geavanceerde beveiliging tegen bedreigingen implementeren voor Cosmos DB accounts
+- Advanced Threat Protection implementeren voor Cosmos DB-accounts
 
-- Cosmos DB moet een service-eind punt van een virtueel netwerk gebruiken
+- Cosmos DB moet gebruikmaken van een service-eindpunt voor een virtueel netwerk
 
 U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, op rollen gebaseerd toegangs beheer (RBAC) en beleids regels in één blauw druk-definitie. U kunt de blauw druk eenvoudig Toep assen op nieuwe abonnementen, omgevingen en het beheer en de verwerkings mogelijkheden van versies.
 
@@ -294,7 +294,7 @@ Daarnaast kunnen sommige acties in Azure Cosmos DB worden beheerd met Azure Acti
 
 Meer informatie over op rollen gebaseerd toegangs beheer in Azure Cosmos DB:https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
-Bouw uw eigen aangepaste rollen met behulp van Azure Cosmos DB acties (micro soft. DocumentDB-naam ruimte):https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb
+Bouw uw eigen aangepaste rollen met behulp van Azure Cosmos DB acties (Microsoft.DocumentDB naam ruimte):https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb
 
 Een nieuwe rol maken in Azure Active Directory:https://docs.microsoft.com/azure/role-based-access-control/custom-roles
 
@@ -504,7 +504,7 @@ Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsof
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: alle gevoelige gegevens in de overdracht versleutelen
 
-**Hulp**: alle verbindingen met Azure Cosmos DB ondersteuning voor HTTPS. Azure Cosmos DB ondersteunt ook TLS 1.2. Het is mogelijk om een minimale TLS-versie aan de server zijde af te dwingen. Als u dit wilt doen, [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)neemt u contact op met.
+**Hulp**: alle verbindingen met Azure Cosmos DB ondersteuning voor HTTPS. Azure Cosmos DB ondersteunt ook TLS 1.2. Het is mogelijk om een minimale TLS-versie aan de server zijde af te dwingen. Als u dit wilt doen, neemt u contact op met [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com) .
 
 Overzicht van Cosmos DB beveiliging:https://docs.microsoft.com/azure/cosmos-db/database-security
 
@@ -518,7 +518,7 @@ Overzicht van Cosmos DB beveiliging:https://docs.microsoft.com/azure/cosmos-db/d
 
 Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt micro soft alle inhoud van de klant als gevoelig en gaat u naar een fantastische lengte om te beschermen tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden.
 
-Index Azure Cosmos DB gegevens met Azure Cognitive Search: https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json&amp; BC =/Azure/Cosmos-DB/breadcrumb/TOC.json
+Index Azure Cosmos DB gegevens met Azure Cognitive Search: https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json&amp ; BC =/azure/cosmos-db/breadcrumb/toc.jsop
 
 Informatie over de beveiliging van klant gegevens in Azure:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
@@ -786,11 +786,11 @@ Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: veilige configuraties instellen voor alle Azure-resources
 
-**Richt lijnen**: standaard beveiligings configuraties voor uw Cosmos DB-instanties definiëren en implementeren met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimte ' micro soft. DocumentDB ' om aangepaste beleids regels te maken om de configuratie van uw Cosmos DB instanties te controleren of af te dwingen. U kunt ook gebruik maken van ingebouwde beleids definities voor Azure Cosmos DB, zoals:
+**Richt lijnen**: standaard beveiligings configuraties voor uw Cosmos DB-instanties definiëren en implementeren met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimte ' Microsoft.DocumentDB ' om aangepaste beleids regels te maken om de configuratie van uw Cosmos DB exemplaren te controleren of af te dwingen. U kunt ook gebruik maken van ingebouwde beleids definities voor Azure Cosmos DB, zoals:
 
-- Geavanceerde beveiliging tegen bedreigingen implementeren voor Cosmos DB accounts
+- Advanced Threat Protection implementeren voor Cosmos DB-accounts
 
-- Cosmos DB moet een service-eind punt van een virtueel netwerk gebruiken
+- Cosmos DB moet gebruikmaken van een service-eindpunt voor een virtueel netwerk
 
 Beschik bare Azure Policy aliassen weer geven:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
@@ -834,7 +834,7 @@ Azure Policy effecten begrijpen:https://docs.microsoft.com/azure/governance/poli
 
 **Richt lijnen**: als u aangepaste Azure Policy definities gebruikt voor uw Cosmos DB of gerelateerde resources, gebruikt u Azure opslag plaatsen om uw code veilig op te slaan en te beheren.
 
-Documentatie voor Azure opslag plaatsen https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops :https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Documentatie voor Azure opslag plaatsen: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devopshttps://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -850,7 +850,7 @@ Documentatie voor Azure opslag plaatsen https://docs.microsoft.com/azure/devops/
 
 ### <a name="77-deploy-system-configuration-management-tools"></a>7,7: hulpprogram ma's voor het beheer van systeem configuratie implementeren
 
-**Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. DocumentDB ' om aangepaste beleids regels te maken om systeem configuraties te Signa lering, te controleren en af te dwingen. Ontwikkel bovendien een proces en pijp lijn voor het beheren van beleids uitzonderingen.
+**Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' Microsoft.DocumentDB ' om aangepaste beleids regels te maken om systeem configuraties te Signa lering, te controleren en af te dwingen. Ontwikkel bovendien een proces en pijp lijn voor het beheren van beleids uitzonderingen.
 
 Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -868,7 +868,7 @@ Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: geautomatiseerde configuratie bewaking voor Azure-Services implementeren
 
-**Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. DocumentDB ' om aangepaste beleids regels te maken om systeem configuraties te Signa lering, te controleren en af te dwingen. Gebruik Azure Policy [audit], [deny] en [implementeren indien niet aanwezig] om automatisch configuraties af te dwingen voor uw Azure Cosmos DB instanties en gerelateerde bronnen. 
+**Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' Microsoft.DocumentDB ' om aangepaste beleids regels te maken om systeem configuraties te Signa lering, te controleren en af te dwingen. Gebruik Azure Policy [audit], [deny] en [implementeren indien niet aanwezig] om automatisch configuraties af te dwingen voor uw Azure Cosmos DB instanties en gerelateerde bronnen. 
 
 Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 

@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.openlocfilehash: 4f839de6e276727fa910f91eccc34601cf34f85c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418011"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Activiteit in Azure Data Factory scha kelen
@@ -22,7 +22,7 @@ ms.locfileid: "81418011"
 
 De switch-activiteit biedt dezelfde functionaliteit als een switch-instructie in programmeer talen. Er wordt een reeks activiteiten geëvalueerd die overeenkomen met een aanvraag die overeenkomt met de evaluatie van de voor waarde.
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 
@@ -69,7 +69,7 @@ De switch-activiteit biedt dezelfde functionaliteit als een switch-instructie in
 
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-name | De naam van de switch activiteit. | Tekenreeks | Ja
+naam | De naam van de switch activiteit. | Tekenreeks | Ja
 type | Moet worden ingesteld op *Switch** | Tekenreeks | Ja
 expressie | Expressie die moet worden geëvalueerd als teken reeks waarde | Expressie met teken reeks resultaat type | Ja
 meldingen | Set cases die een waarde en een set activiteiten bevatten die moeten worden uitgevoerd wanneer de waarde overeenkomt met de evaluatie van de expressie. U moet ten minste één geval opgeven. Er is een maximum limiet van 25 gevallen. | Reeks Case-objecten | Ja
@@ -82,7 +82,7 @@ Met de pijp lijn in dit voor beeld worden gegevens van een uitvoermap naar een u
 > [!NOTE]
 > Deze sectie bevat JSON-definities en voor beelden van Power shell-opdrachten voor het uitvoeren van de pijp lijn. Zie [zelf studie: een Data Factory maken met behulp van Azure PowerShell](quickstart-create-data-factory-powershell.md)voor een overzicht met stapsgewijze instructies voor het maken van een Data Factory pijp lijn met behulp van Azure PowerShell-en JSON-definities.
 
-### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>Pijp lijn met switch-activiteit (Adfv2QuickStartPipeline. json)
+### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>Pijp lijn met switch-activiteit (Adfv2QuickStartPipeline.jsaan)
 
 ```json
 {
@@ -230,7 +230,7 @@ Met de pijp lijn in dit voor beeld worden gegevens van een uitvoermap naar een u
 
 ```
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Storage gekoppelde service (AzureStorageLinkedService. json)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Storage gekoppelde service (AzureStorageLinkedService.jsop)
 
 ```json
 {
@@ -244,7 +244,7 @@ Met de pijp lijn in dit voor beeld worden gegevens van een uitvoermap naar een u
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Geparametriseerde Azure Blob-gegevensset met para meters (BlobDataset. json)
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Geparametriseerde Azure Blob-gegevensset (BlobDataset.jsop)
 
 De pijp lijn stelt de **FolderPath** in op de waarde van de para meter **outputPath1** of **outputPath2** van de pijp lijn. 
 
@@ -272,7 +272,7 @@ De pijp lijn stelt de **FolderPath** in op de waarde van de para meter **outputP
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>JSON-para meter (PipelineParameters. json)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>JSON-para meter (PipelineParameters.js)
 
 ```json
 {
@@ -338,4 +338,4 @@ Zie andere controle stroom activiteiten die door Data Factory worden ondersteund
 - [Voor elke activiteit](control-flow-for-each-activity.md)
 - [Activiteit ophalen van metagegevens](control-flow-get-metadata-activity.md)
 - [Opzoekactiviteit](control-flow-lookup-activity.md)
-- [Web Activity](control-flow-web-activity.md)
+- [Webactiviteit](control-flow-web-activity.md)
