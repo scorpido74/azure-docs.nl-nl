@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: juliako
 ms.openlocfilehash: 44095cb85c62fd40032263d96ad678bdeb5effc0
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82159400"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>Hybride ontwerp van DRM-subsystemen 
@@ -93,7 +93,7 @@ Via de configuratie van een leverings beleid voor assets kunt u de volgende kenm
 
 ## <a name="scenarios-and-samples"></a>Scenario's en voor beelden
 
-Op basis van de uitleg in de vorige sectie gebruiken de volgende vijf hybride scenario's de verschillende configuratie combinaties voor het**leverings beleid** voor de **inhouds sleutel**-. de voor beelden in de laatste kolom volgen de tabel.
+Op basis van de uitleg in de vorige sectie gebruiken de volgende vijf hybride scenario's de **Content key**verschillende configuratie combinaties voor het - **leverings beleid** voor de inhouds sleutel. de voor beelden in de laatste kolom volgen de tabel.
 
 |**Inhoud hosten & oorsprong**|**DRM-versleuteling**|**Levering van DRM-licentie**|**Inhouds sleutel configureren**|**Leverings beleid voor assets configureren**|**Voorbeeld**|
 |---|---|---|---|---|---|
@@ -129,7 +129,7 @@ In de voor beelden werkt PlayReady Protection voor zowel het streepje als het sm
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
 
 ## <a name="summary"></a>Samenvatting
 

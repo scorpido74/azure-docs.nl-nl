@@ -13,10 +13,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: e25af1f629ea6fa7db14ce89dfffaa340486a989
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82689787"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Micro soft Identity platform en de OAuth 2,0-client referenties stroom
@@ -46,9 +46,9 @@ Deze twee methoden worden het meest gebruikt in azure AD en wij raden ze aan voo
 
 ### <a name="access-control-lists"></a>Toegangsbeheerlijsten
 
-Een resource provider kan een autorisatie controle afdwingen op basis van een lijst met toepassings-Id's die het kent en verleent een specifiek toegangs niveau voor. Wanneer de resource een token van het micro soft Identity platform-eind punt ontvangt, kan het token worden ontsleuteld en kan de toepassings `appid` - `iss` id van de client worden opgehaald uit de en claims. Vervolgens wordt de toepassing vergeleken met een toegangs beheer lijst (ACL) die het onderhoudt. De granulatie en methode van de toegangs beheer lijst kan aanzienlijk verschillen tussen resources.
+Een resource provider kan een autorisatie controle afdwingen op basis van een lijst met toepassings-Id's die het kent en verleent een specifiek toegangs niveau voor. Wanneer de resource een token van het micro soft Identity platform-eind punt ontvangt, kan het token worden ontsleuteld en kan de toepassings-ID van de client worden opgehaald uit de `appid` en `iss` claims. Vervolgens wordt de toepassing vergeleken met een toegangs beheer lijst (ACL) die het onderhoudt. De granulatie en methode van de toegangs beheer lijst kan aanzienlijk verschillen tussen resources.
 
-Een veelvoorkomende use-case is het gebruik van een ACL voor het uitvoeren van tests voor een webtoepassing of voor een web-API. De Web-API kan slechts een subset van volledige machtigingen verlenen aan een specifieke client. Als u end-to-end-tests wilt uitvoeren op de API, maakt u een test-client die tokens ophaalt uit het micro soft Identity platform-eind punt en verzendt deze vervolgens naar de API. De API controleert vervolgens de ACL voor de toepassings-ID van de test client voor volledige toegang tot de volledige functionaliteit van de API. Als u dit type toegangs beheer lijst gebruikt, moet u ervoor zorgen dat u niet alleen de `appid` waarde van de beller valideert, maar ook te controleren of de `iss` waarde van het token vertrouwd is.
+Een veelvoorkomende use-case is het gebruik van een ACL voor het uitvoeren van tests voor een webtoepassing of voor een web-API. De Web-API kan slechts een subset van volledige machtigingen verlenen aan een specifieke client. Als u end-to-end-tests wilt uitvoeren op de API, maakt u een test-client die tokens ophaalt uit het micro soft Identity platform-eind punt en verzendt deze vervolgens naar de API. De API controleert vervolgens de ACL voor de toepassings-ID van de test client voor volledige toegang tot de volledige functionaliteit van de API. Als u dit type toegangs beheer lijst gebruikt, moet u ervoor zorgen dat u niet alleen de waarde van de beller valideert, `appid` maar ook te controleren of de `iss` waarde van het token vertrouwd is.
 
 Dit type autorisatie is gebruikelijk voor daemons en service accounts die toegang nodig hebben tot gegevens die eigendom zijn van consumenten gebruikers met persoonlijke micro soft-accounts. Voor gegevens die eigendom zijn van organisaties, raden we u aan de vereiste autorisatie te verkrijgen via toepassings machtigingen.
 
@@ -88,7 +88,7 @@ Als u de gebruiker aan uw app ondertekent, kunt u de organisatie waartoe de gebr
 Wanneer u klaar bent om machtigingen aan te vragen bij de beheerder van de organisatie, kunt u de gebruiker omleiden naar het micro soft Identity platform *Administrator toestemmings eindpunt*.
 
 > [!TIP]
-> Probeer deze aanvraag uit te voeren in postman! (Gebruik uw eigen App-ID voor de beste resultaten: de zelfstudie toepassing vraagt geen nuttige machtigingen aan.) [Probeer deze aanvraag uit te voeren in postman ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Probeer deze aanvraag uit te voeren in postman! (Gebruik uw eigen App-ID voor de beste resultaten: de zelfstudie toepassing vraagt geen nuttige machtigingen aan.) [ ![ Probeer deze aanvraag uit te voeren in postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```HTTP
 // Line breaks are for legibility only.
@@ -107,7 +107,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 | Parameter | Voorwaarde | Beschrijving |
 | --- | --- | --- |
-| `tenant` | Vereist | De Directory-Tenant waarvan u toestemming wilt aanvragen. Dit kan een GUID of beschrijvende naam zijn. Als u niet weet op welke Tenant de gebruiker zich bevindt en u zich wilt aanmelden met een Tenant, gebruikt `common`u. |
+| `tenant` | Vereist | De Directory-Tenant waarvan u toestemming wilt aanvragen. Dit kan een GUID of beschrijvende naam zijn. Als u niet weet op welke Tenant de gebruiker zich bevindt en u zich wilt aanmelden met een Tenant, gebruikt u `common` . |
 | `client_id` | Vereist | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
 | `redirect_uri` | Vereist | De omleidings-URI waar u het antwoord voor uw app wilt laten afhandelen. De waarde moet exact overeenkomen met een van de omleidings-Uri's die u in de portal hebt geregistreerd, behalve dat deze URL moet worden gecodeerd en dat er extra padsegmenten kunnen zijn. |
 | `state` | Aanbevolen | Een waarde die is opgenomen in de aanvraag die ook wordt geretourneerd in de token reactie. Dit kan een teken reeks zijn van elke gewenste inhoud. De status wordt gebruikt voor het coderen van informatie over de status van de gebruiker in de app voordat de verificatie aanvraag is uitgevoerd, zoals de pagina of weer gave waarin ze zich bevonden. |
@@ -145,10 +145,10 @@ Nadat u een geslaagde reactie van het app-inrichtings eindpunt hebt ontvangen, h
 
 ## <a name="get-a-token"></a>Een Token ophalen
 
-Nadat u de benodigde autorisatie voor uw toepassing hebt verkregen, gaat u verder met het verkrijgen van toegangs tokens voor Api's. Als u een token wilt ophalen met behulp van de client referenties toekenning, verzendt u `/token` een post-aanvraag naar het micro soft Identity platform-eind punt:
+Nadat u de benodigde autorisatie voor uw toepassing hebt verkregen, gaat u verder met het verkrijgen van toegangs tokens voor Api's. Als u een token wilt ophalen met behulp van de client referenties toekenning, verzendt u een POST-aanvraag naar het `/token` micro soft Identity platform-eind punt:
 
 > [!TIP]
-> Probeer deze aanvraag uit te voeren in postman! (Gebruik uw eigen App-ID voor de beste resultaten: de zelfstudie toepassing vraagt geen nuttige machtigingen aan.) [Probeer deze aanvraag uit te voeren in postman ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Probeer deze aanvraag uit te voeren in postman! (Gebruik uw eigen App-ID voor de beste resultaten: de zelfstudie toepassing vraagt geen nuttige machtigingen aan.) [ ![ Probeer deze aanvraag uit te voeren in postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>Eerste case: toegangs token aanvraag met een gedeeld geheim
 
@@ -172,9 +172,9 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 | --- | --- | --- |
 | `tenant` | Vereist | De Directory-Tenant waarmee de toepassing moet worden uitgevoerd, in GUID of domeinnaam indeling. |
 | `client_id` | Vereist | De toepassings-ID die is toegewezen aan uw app. U kunt deze informatie vinden in de portal waar u uw app hebt geregistreerd. |
-| `scope` | Vereist | De waarde die is door `scope` gegeven voor de para meter in deze aanvraag moet de resource-ID (id van de toepassings-URI) zijn van de `.default` resource die u wilt, met het achtervoegsel. Voor het Microsoft Graph-voor beeld is `https://graph.microsoft.com/.default`de waarde. <br/>Deze waarde vertelt het micro soft Identity platform-eind punt van alle directe toepassings machtigingen die u hebt geconfigureerd voor uw app. het eind punt moet een token uitgeven voor de resources die zijn gekoppeld aan de resource die u wilt gebruiken. Zie de documentatie van de `/.default` [toestemming](v2-permissions-and-consent.md#the-default-scope)voor meer informatie over het bereik. |
+| `scope` | Vereist | De waarde die is door gegeven voor de `scope` para meter in deze aanvraag moet de resource-id (id van de toepassings-URI) zijn van de resource die u wilt, met het `.default` achtervoegsel. Voor het Microsoft Graph-voor beeld is de waarde `https://graph.microsoft.com/.default` . <br/>Deze waarde vertelt het micro soft Identity platform-eind punt van alle directe toepassings machtigingen die u hebt geconfigureerd voor uw app. het eind punt moet een token uitgeven voor de resources die zijn gekoppeld aan de resource die u wilt gebruiken. `/.default`Zie de documentatie van de [toestemming](v2-permissions-and-consent.md#the-default-scope)voor meer informatie over het bereik. |
 | `client_secret` | Vereist | Het client geheim dat u hebt gegenereerd voor uw app in de app-registratie Portal. Het client geheim moet URL-gecodeerd zijn voordat het wordt verzonden. |
-| `grant_type` | Vereist | Moet worden ingesteld op `client_credentials`. |
+| `grant_type` | Vereist | Moet worden ingesteld op `client_credentials` . |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Tweede geval: toegangs token aanvraag met een certificaat
 
@@ -194,10 +194,10 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | --- | --- | --- |
 | `tenant` | Vereist | De Directory-Tenant waarmee de toepassing moet worden uitgevoerd, in GUID of domeinnaam indeling. |
 | `client_id` | Vereist |De client-ID van de toepassing die is toegewezen aan uw app. |
-| `scope` | Vereist | De waarde die is door `scope` gegeven voor de para meter in deze aanvraag moet de resource-ID (id van de toepassings-URI) zijn van de `.default` resource die u wilt, met het achtervoegsel. Voor het Microsoft Graph-voor beeld is `https://graph.microsoft.com/.default`de waarde. <br/>Met deze waarde wordt het micro soft Identity platform-eind punt geïnformeerd over alle directe toepassings machtigingen die u hebt geconfigureerd voor uw app. het moet een token uitgeven voor de resources die zijn gekoppeld aan de resource die u wilt gebruiken. Zie de documentatie van de `/.default` [toestemming](v2-permissions-and-consent.md#the-default-scope)voor meer informatie over het bereik. |
-| `client_assertion_type` | Vereist | De waarde moet worden ingesteld op `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
+| `scope` | Vereist | De waarde die is door gegeven voor de `scope` para meter in deze aanvraag moet de resource-id (id van de toepassings-URI) zijn van de resource die u wilt, met het `.default` achtervoegsel. Voor het Microsoft Graph-voor beeld is de waarde `https://graph.microsoft.com/.default` . <br/>Met deze waarde wordt het micro soft Identity platform-eind punt geïnformeerd over alle directe toepassings machtigingen die u hebt geconfigureerd voor uw app. het moet een token uitgeven voor de resources die zijn gekoppeld aan de resource die u wilt gebruiken. `/.default`Zie de documentatie van de [toestemming](v2-permissions-and-consent.md#the-default-scope)voor meer informatie over het bereik. |
+| `client_assertion_type` | Vereist | De waarde moet worden ingesteld op `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` . |
 | `client_assertion` | Vereist | Een verklaring (een JSON-webtoken) die u moet maken en ondertekenen met het certificaat dat u hebt geregistreerd als referenties voor uw toepassing. Lees de informatie over [certificaat referenties](active-directory-certificate-credentials.md) voor meer informatie over het registreren van uw certificaat en de indeling van de verklaring.|
-| `grant_type` | Vereist | Moet worden ingesteld op `client_credentials`. |
+| `grant_type` | Vereist | Moet worden ingesteld op `client_credentials` . |
 
 U ziet dat de para meters bijna hetzelfde zijn als in het geval van de aanvraag van het gedeelde geheim, behalve dat de para meter client_secret wordt vervangen door twee para meters: een client_assertion_type en client_assertion.
 
@@ -216,7 +216,7 @@ Een geslaagd antwoord ziet er zo uit:
 | Parameter | Beschrijving |
 | --- | --- |
 | `access_token` | Het aangevraagde toegangs token. De app kan dit token gebruiken om te verifiëren bij de beveiligde bron, zoals bij een web-API. |
-| `token_type` | Geeft de waarde van het token type aan. Het enige type dat door micro soft Identity platform `bearer`wordt ondersteund, is. |
+| `token_type` | Geeft de waarde van het token type aan. Het enige type dat door micro soft Identity platform wordt ondersteund, is `bearer` . |
 | `expires_in` | De hoeveelheid tijd die een toegangs token geldig is (in seconden). |
 
 ### <a name="error-response"></a>Fout bericht
@@ -247,7 +247,7 @@ Een fout bericht ziet er als volgt uit:
 
 ## <a name="use-a-token"></a>Een token gebruiken
 
-Nu u een token hebt verkregen, gebruikt u het token om aanvragen voor de resource te maken. Wanneer het token verloopt, herhaalt u de aanvraag `/token` voor het eind punt om een nieuw toegangs token op te halen.
+Nu u een token hebt verkregen, gebruikt u het token om aanvragen voor de resource te maken. Wanneer het token verloopt, herhaalt u de aanvraag voor het `/token` eind punt om een nieuw toegangs token op te halen.
 
 ```HTTP
 GET /v1.0/me/messages

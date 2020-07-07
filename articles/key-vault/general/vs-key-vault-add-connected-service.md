@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
 ms.openlocfilehash: af0065db087595167ca71bb79b968cc4ad339acd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82116839"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault toevoegen aan uw web-app met behulp van Visual Studio Connected Services
@@ -33,7 +33,7 @@ Voor meer informatie over de wijzigingen die verbonden services in uw project ma
 
 Voordat u begint, moet u ervoor zorgen dat u bent aangemeld bij Visual Studio. Meld u aan met hetzelfde account dat u gebruikt voor uw Azure-abonnement. Open vervolgens een ASP.NET-4.7.1 of hoger of ASP.NET Core 2,0-webproject en voer de volgende stappen uit:
 
-1. Klik in **Solution Explorer**met de rechter muisknop op het project waaraan u de Key Vault ondersteuning wilt toevoegen en kies**verbonden service** **toevoegen** > .
+1. Klik in **Solution Explorer**met de rechter muisknop op het project waaraan u de Key Vault ondersteuning wilt toevoegen en kies **Add**  >  **verbonden service**toevoegen.
    De Connected Service-pagina wordt weergegeven met services die u aan uw project kunt toevoegen.
 1. Kies in het menu met beschik bare Services **beveiligde geheimen met Azure Key Vault**.
 
@@ -41,7 +41,7 @@ Voordat u begint, moet u ervoor zorgen dat u bent aangemeld bij Visual Studio. M
 
 1. Selecteer het abonnement dat u wilt gebruiken en kies vervolgens een nieuwe of bestaande Key Vault. Als u de nieuwe Key Vault selecteert, wordt een koppeling **bewerken** weer gegeven. Selecteer deze optie om uw nieuwe Key Vault te configureren.
 
-   ![Selecteer uw abonnement](../media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
+   ![Uw abonnement selecteren](../media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
 
 1. In **Azure Key Vault bewerken**voert u de naam in die u wilt gebruiken voor de Key Vault.
 
@@ -67,7 +67,7 @@ Nu kunt u toegang krijgen tot uw geheimen in code. De volgende stappen verschill
 
 1. Klik in Solution Explorer met de rechter muisknop op uw project en selecteer **NuGet-pakketten beheren**. Op het tabblad **Bladeren** zoekt en installeert u deze twee NuGet-pakketten: [micro soft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) en voor .net Core 2, voegt u [micro soft. Azure.](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) de sleutel kluis of voor .net Core 3 toe. Voeg[micro soft. Azure.-kluis. core](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core)toe.
 
-1. Voor .NET Core 2 selecteert u het `Program.cs` tabblad en wijzigt u `BuildWebHost` de definitie in de programma klasse in het volgende:
+1. Voor .NET Core 2 selecteert u het `Program.cs` tabblad en wijzigt `BuildWebHost` u de definitie in de programma klasse in het volgende:
 
    ```csharp
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -116,7 +116,7 @@ Nu kunt u toegang krijgen tot uw geheimen in code. De volgende stappen verschill
     ```
 
 1. Open vervolgens een van de pagina bestanden, zoals *index.cshtml.cs* en schrijf de volgende code:
-   1. Voeg een verwijzing toe `Microsoft.Extensions.Configuration` naar met behulp van de instructie:
+   1. Voeg een verwijzing toe naar met `Microsoft.Extensions.Configuration` behulp van de instructie:
 
        ```csharp
        using Microsoft.Extensions.Configuration;
@@ -146,7 +146,7 @@ Nu kunt u toegang krijgen tot uw geheimen in code. De volgende stappen verschill
        }
        ```
 
-   1. Als u de waarde tijdens runtime wilt bevestigen, voegt u `ViewData["Message"]` code toe om weer te geven in het *cshtml* -bestand om het geheim in een bericht weer te geven.
+   1. Als u de waarde tijdens runtime wilt bevestigen, voegt u code toe om weer te geven `ViewData["Message"]` in het *cshtml* -bestand om het geheim in een bericht weer te geven.
 
       ```cshtml
           <p>@ViewData["Message"]</p>
@@ -156,9 +156,9 @@ U kunt de app lokaal uitvoeren om te controleren of het geheim van de Key Vault 
 
 ## <a name="access-your-secrets-aspnet"></a>Toegang tot uw geheimen (ASP.NET)
 
-U kunt de configuratie zo instellen dat het web. config-bestand een dummy waarde heeft in het `appSettings` element dat tijdens runtime wordt vervangen door de waarde waar. U kunt dit vervolgens openen via de `ConfigurationManager.AppSettings` gegevens structuur.
+U kunt de configuratie zo instellen dat het web.config-bestand een dummy waarde heeft in het `appSettings` element dat tijdens runtime wordt vervangen door de waarde waar. U kunt dit vervolgens openen via de `ConfigurationManager.AppSettings` gegevens structuur.
 
-1. Bewerk het bestand Web. config.  Zoek de tag appSettings, voeg een kenmerk `configBuilders="AzureKeyVault"`toe en voeg een regel toe:
+1. Bewerk het web.config-bestand.  Zoek de tag appSettings, voeg een kenmerk toe `configBuilders="AzureKeyVault"` en voeg een regel toe:
 
    ```xml
       <add key="mysecret" value="dummy"/>
@@ -190,10 +190,10 @@ Als uw Key Vault wordt uitgevoerd op een ander Microsoft-account dan het account
 
 1. Kies **toegangs beleid**, vervolgens **toegangs beleid toevoegen**en kies het account waarmee u bent aangemeld als principal.
 
-1. Kies in Visual Studio de instellingen voor het **Bestands** > **account**.
+1. Kies in Visual Studio de instellingen voor het **Bestands**  >  **account**.
 Selecteer **een account toevoegen** in het gedeelte **alle accounts** . Meld u aan met het account dat u hebt gekozen als principal van uw toegangs beleid.
 
-1. Kies **extra** > **Opties**en zoek naar **Azure-service verificatie**. Selecteer vervolgens het account dat u zojuist hebt toegevoegd aan Visual Studio.
+1. Kies **extra**  >  **Opties**en zoek naar **Azure-service verificatie**. Selecteer vervolgens het account dat u zojuist hebt toegevoegd aan Visual Studio.
 
 Wanneer u nu fouten opspoort in uw toepassing, maakt Visual Studio verbinding met het account waarop uw Key Vault zich bevindt.
 
@@ -215,9 +215,9 @@ Van invloed op het project bestand .NET-verwijzingen en NuGet-pakket verwijzinge
 
 ### <a name="project-file-changes-for-aspnet-core"></a>Wijzigingen in het project bestand voor ASP.NET Core
 
-- Het ItemGroup en `ConnectedServices.json` het bestand van de verbonden services zijn toegevoegd.
+- Het ItemGroup en het bestand van de verbonden services zijn toegevoegd `ConnectedServices.json` .
 
-### <a name="launchsettingsjson-changes-for-aspnet-core"></a>wijzigingen in launchsettings. json voor ASP.NET Core
+### <a name="launchsettingsjson-changes-for-aspnet-core"></a>launchsettings.jswijzigingen voor ASP.NET Core
 
 - De volgende omgevings variabele-vermeldingen zijn toegevoegd aan het IIS Express profiel en het profiel dat overeenkomt met de naam van uw webproject:
 
@@ -254,10 +254,10 @@ Heeft betrekking op het project bestand .NET `packages.config` -verwijzingen en 
 
 ### <a name="project-file-changes-for-aspnet-framework"></a>Wijzigingen in het project bestand voor ASP.NET Framework
 
-- Het Connected Services ItemGroup-en ConnectedServices. JSON-bestand zijn toegevoegd.
+- De verbonden services ItemGroup en ConnectedServices.jstoegevoegd aan het bestand.
 - Verwijzingen naar de .NET-assembly's die worden beschreven in de sectie [toegevoegde verwijzingen](#added-references-for-aspnet-framework) .
 
-### <a name="webconfig-or-appconfig-changes"></a>wijzigingen in web. config of app. config
+### <a name="webconfig-or-appconfig-changes"></a>Wijzigingen web.config of app.config
 
 - De volgende configuratie vermeldingen zijn toegevoegd:
 

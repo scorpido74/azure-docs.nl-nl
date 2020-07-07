@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
 ms.openlocfilehash: 68480f5b3b52d2347369f878802c71672213940a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82146879"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Gegevens kopiëren van en naar Sales Force met behulp van Azure Data Factory
 
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](v1/data-factory-salesforce-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](v1/data-factory-salesforce-connector.md)
 > * [Huidige versie](connector-salesforce.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -42,7 +42,7 @@ Met name deze Sales Force-connector ondersteunt:
 - Edities van Sales Force Developer, Professional, Enter prise of Unlimited.
 - Gegevens kopiëren van en naar Sales Force-productie, sandbox en aangepast domein.
 
-De Sales Force-connector is gebouwd op de REST/bulk API Sales Force (de connector kiest automatisch een voor betere prestaties). De connector gebruikt standaard [V45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) om gegevens uit Sales Force te kopiëren en maakt gebruik van [V40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) om gegevens te kopiëren naar Sales Force. U kunt ook expliciet de API-versie instellen die wordt gebruikt om gegevens te [ `apiVersion` ](#linked-service-properties) lezen/schrijven via de eigenschap in de gekoppelde service.
+De Sales Force-connector is gebouwd op de REST/bulk API Sales Force (de connector kiest automatisch een voor betere prestaties). De connector gebruikt standaard [V45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) om gegevens uit Sales Force te kopiëren en maakt gebruik van [V40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) om gegevens te kopiëren naar Sales Force. U kunt ook expliciet de API-versie instellen die wordt gebruikt om gegevens te lezen/schrijven via de [ `apiVersion` eigenschap](#linked-service-properties) in de gekoppelde service.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -70,11 +70,11 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service Sales Fo
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type |De eigenschap type moet worden ingesteld op **Sales Force**. |Ja |
-| environmentUrl | Geef de URL van het Sales Force-exemplaar op. <br> -Standaard is `"https://login.salesforce.com"`. <br> -Als u gegevens wilt kopiëren uit de `"https://test.salesforce.com"`sandbox, geeft u op. <br> -Als u gegevens wilt kopiëren uit een aangepast domein, geeft u `"https://[domain].my.salesforce.com"`bijvoorbeeld op. |Nee |
+| environmentUrl | Geef de URL van het Sales Force-exemplaar op. <br> -Standaard is `"https://login.salesforce.com"` . <br> -Als u gegevens wilt kopiëren uit de sandbox, geeft u op `"https://test.salesforce.com"` . <br> -Als u gegevens wilt kopiëren uit een aangepast domein, geeft u bijvoorbeeld op `"https://[domain].my.salesforce.com"` . |Nee |
 | gebruikersnaam |Geef een gebruikers naam op voor het gebruikers account. |Ja |
 | wachtwoord |Geef een wacht woord op voor het gebruikers account.<br/><br/>Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). |Ja |
 | Security |Geef een beveiligings token op voor het gebruikers account. <br/><br/>Zie [beveiliging en de API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)voor meer informatie over beveiligings tokens in het algemeen. Het beveiligings token kan alleen worden overgeslagen als u het IP-adres van de Integration Runtime toevoegt aan de [lijst met vertrouwde IP-adressen](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/security_networkaccess.htm) in Sales Force. Als u Azure IR gebruikt, raadpleegt u [Azure Integration runtime IP-adressen](azure-integration-runtime-ip-addresses.md).<br/><br/>Zie [een beveiligings Token ophalen](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)voor instructies over het ophalen en opnieuw instellen van een beveiligings token. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). |Nee |
-| apiVersion | Geef de Sales Force-API-versie op die u wilt gebruiken `48.0`, bijvoorbeeld. De connector gebruikt standaard [V45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) om gegevens uit Sales Force te kopiëren en maakt gebruik van [V40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) om gegevens te kopiëren naar Sales Force. | Nee |
+| apiVersion | Geef de Sales Force-API-versie op die u wilt gebruiken, bijvoorbeeld `48.0` . De connector gebruikt standaard [V45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) om gegevens uit Sales Force te kopiëren en maakt gebruik van [V40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) om gegevens te kopiëren naar Sales Force. | Nee |
 | connectVia | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. | Nee voor bron, ja voor Sink als de gekoppelde bron service geen Integration runtime heeft |
 
 >[!IMPORTANT]
@@ -156,7 +156,7 @@ Als u gegevens wilt kopiëren van en naar Sales Force, stelt u de eigenschap typ
 
 ![Naam van Data Factory Sales Force-API](media/copy-data-from-salesforce/data-factory-salesforce-api-name.png)
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -202,7 +202,7 @@ Als u gegevens wilt kopiëren uit Sales Force, stelt u het bron type in de Kopie
 
 ![Lijst met namen van Data Factory Sales Force-API](media/copy-data-from-salesforce/data-factory-salesforce-api-name-2.png)
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[
@@ -288,24 +288,24 @@ Als u gegevens wilt kopiëren naar Sales Force, stelt u het sink-type in de Kopi
 
 ### <a name="retrieve-data-from-a-salesforce-report"></a>Gegevens ophalen uit een Sales Force-rapport
 
-U kunt gegevens ophalen uit Sales Force-rapporten door een query `{call "<report name>"}`op te geven als. Een voorbeeld is `"query": "{call \"TestReport\"}"`.
+U kunt gegevens ophalen uit Sales Force-rapporten door een query op te geven als `{call "<report name>"}` . Een voorbeeld is `"query": "{call \"TestReport\"}"`.
 
 ### <a name="retrieve-deleted-records-from-the-salesforce-recycle-bin"></a>Verwijderde records uit de Prullenbak voor Sales Force ophalen
 
-Als u de voorlopig verwijderde records uit de Prullenbak voor Sales Force wilt opvragen, kunt `readBehavior` u `queryAll`als opgeven. 
+Als u de voorlopig verwijderde records uit de Prullenbak voor Sales Force wilt opvragen, kunt u `readBehavior` als opgeven `queryAll` . 
 
 ### <a name="difference-between-soql-and-sql-query-syntax"></a>Verschil tussen de SOQL-en SQL-query syntaxis
 
 Bij het kopiëren van gegevens uit Sales Force kunt u de SOQL-query of SQL-query gebruiken. Houd er rekening mee dat deze twee verschillende syntaxis-en functionaliteits ondersteuning hebben, maar niet kunnen combi neren. U wordt aangeraden de SOQL-query te gebruiken die standaard wordt ondersteund door Sales Force. De volgende tabel bevat de belangrijkste verschillen:
 
-| Syntaxis | SOQL-modus | SQL-modus |
+| Syntax | SOQL-modus | SQL-modus |
 |:--- |:--- |:--- |
 | Kolom selectie | U moet de velden opsommen die moeten worden gekopieerd in de query, bijvoorbeeld`SELECT field1, filed2 FROM objectname` | `SELECT *`wordt ondersteund naast kolom selectie. |
 | Aanhalings tekens | Gearchiveerde/object namen kunnen niet worden opgenomen in een aanhalings teken. | De namen van velden/objecten kunnen worden opgenomen in een aanhalings teken, bijvoorbeeld`SELECT "id" FROM "Account"` |
 | Datum notatie |  Raadpleeg [hier](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm) de details en voor beelden in de volgende sectie. | Raadpleeg [hier](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017) de details en voor beelden in de volgende sectie. |
-| Booleaanse waarden | Wordt weer `False` gegeven `True`als en, `SELECT … WHERE IsDeleted=True`bijvoorbeeld | Wordt weer gegeven als 0 of 1, `SELECT … WHERE IsDeleted=1`bijvoorbeeld. |
-| Kolom naam wijzigen | Wordt niet ondersteund. | Ondersteund, bijvoorbeeld: `SELECT a AS b FROM …`. |
-| Relatie | Ondersteund, bijvoorbeeld `Account_vod__r.nvs_Country__c`. | Wordt niet ondersteund. |
+| Booleaanse waarden | Wordt weer gegeven als `False` en `True` , bijvoorbeeld `SELECT … WHERE IsDeleted=True` | Wordt weer gegeven als 0 of 1, bijvoorbeeld `SELECT … WHERE IsDeleted=1` . |
+| Kolom naam wijzigen | Niet ondersteund. | Ondersteund, bijvoorbeeld: `SELECT a AS b FROM …` . |
+| Relatie | Ondersteund, bijvoorbeeld `Account_vod__r.nvs_Country__c` . | Niet ondersteund. |
 
 ### <a name="retrieve-data-by-using-a-where-clause-on-the-datetime-column"></a>Gegevens ophalen met behulp van een WHERE-component in de datum/tijd-kolom
 
@@ -325,10 +325,10 @@ Wanneer u gegevens uit Sales Force kopieert, worden de volgende toewijzingen geb
 | Sales Force-gegevens type | Data Factory tussentijds gegevens type |
 |:--- |:--- |
 | Automatisch nummer |Tekenreeks |
-| Checkbox |Booleaans |
+| Checkbox |Boolean-waarde |
 | Valuta |Decimal |
 | Date |DateTime |
-| Datum/tijd |DateTime |
+| Datum en tijd |DateTime |
 | E-mail |Tekenreeks |
 | Id |Tekenreeks |
 | Opzoek relatie |Tekenreeks |

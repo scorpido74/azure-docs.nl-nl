@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: a0677603f02b429c269c0f93ef348b2b1d717a9f
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82689767"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Micro soft Identity platform en de OAuth 2,0-autorisatie voor het weigeren van apparaten
@@ -34,7 +34,7 @@ De gehele apparaatcode stroom ziet er ongeveer uit als in het volgende diagram. 
 
 ## <a name="device-authorization-request"></a>Autorisatie aanvraag voor apparaat
 
-De client moet eerst controleren met de verificatie server voor een apparaat en gebruikers code die wordt gebruikt om verificatie te initiëren. De client verzamelt deze aanvraag van het `/devicecode` eind punt. In deze aanvraag moet de client ook de machtigingen bevatten die nodig zijn voor het verkrijgen van de gebruiker. Vanaf het moment dat deze aanvraag wordt verzonden, heeft de gebruiker slechts 15 minuten om zich aan te melden (de `expires_in`normale waarde voor), dus deze aanvraag alleen als de gebruiker heeft aangegeven dat deze klaar is om zich aan te melden.
+De client moet eerst controleren met de verificatie server voor een apparaat en gebruikers code die wordt gebruikt om verificatie te initiëren. De client verzamelt deze aanvraag van het `/devicecode` eind punt. In deze aanvraag moet de client ook de machtigingen bevatten die nodig zijn voor het verkrijgen van de gebruiker. Vanaf het moment dat deze aanvraag wordt verzonden, heeft de gebruiker slechts 15 minuten om zich aan te melden (de normale waarde voor `expires_in` ), dus deze aanvraag alleen als de gebruiker heeft aangegeven dat deze klaar is om zich aan te melden.
 
 > [!TIP]
 > Probeer deze aanvraag uit te voeren in postman!
@@ -65,21 +65,21 @@ Een geslaagde reactie is een JSON-object met de vereiste gegevens om de gebruike
 | ---              | --- | --- |
 |`device_code`     | Tekenreeks | Een lange teken reeks die wordt gebruikt om de sessie tussen de client en de autorisatie server te controleren. De client gebruikt deze para meter om het toegangs token van de autorisatie server aan te vragen. |
 |`user_code`       | Tekenreeks | Een korte teken reeks die wordt weer gegeven aan de gebruiker die wordt gebruikt om de sessie op een secundair apparaat te identificeren.|
-|`verification_uri`| URI | De URI waarnaar de gebruiker moet gaan met de `user_code` om zich aan te melden. |
-|`expires_in`      | int | Het aantal seconden voor de en `device_code` `user_code` de verval datum. |
+|`verification_uri`| URI | De URI waarnaar de gebruiker moet gaan met de om `user_code` zich aan te melden. |
+|`expires_in`      | int | Het aantal seconden voor de `device_code` en de `user_code` verval datum. |
 |`interval`        | int | Het aantal seconden dat de client moet wachten tussen polling aanvragen. |
-| `message`        | Tekenreeks | Een teken reeks met lees bare tekst met instructies voor de gebruiker. Dit kan worden gelokaliseerd door een **query parameter** op te nemen in de aanvraag `?mkt=xx-XX`van het formulier en de juiste taal cultuur code in te vullen. |
+| `message`        | Tekenreeks | Een teken reeks met lees bare tekst met instructies voor de gebruiker. Dit kan worden gelokaliseerd door een **query parameter** op te nemen in de aanvraag van het formulier `?mkt=xx-XX` en de juiste taal cultuur code in te vullen. |
 
 > [!NOTE]
 > Het `verification_uri_complete` antwoord veld wordt op dit moment niet opgenomen of ondersteund.  Dit wordt vermeld omdat u de [standaard](https://tools.ietf.org/html/rfc8628) ziet die `verification_uri_complete` wordt weer gegeven als een optioneel onderdeel van de apparaatcode flow-standaard.
 
 ## <a name="authenticating-the-user"></a>Verificatie van de gebruiker
 
-Na ontvangst van `user_code` de `verification_uri`en, wordt deze door de client weer gegeven aan de gebruiker en wordt hen gevraagd zich aan te melden met hun mobiele telefoon of PC-browser.
+Na ontvangst `user_code` van de en `verification_uri` , wordt deze door de client weer gegeven aan de gebruiker en wordt hen gevraagd zich aan te melden met hun mobiele telefoon of PC-browser.
 
 Als de gebruiker zich verifieert met een persoonlijk account (op/veelvoorkomende of/consumers), wordt u gevraagd om u opnieuw aan te melden om de verificatie status naar het apparaat te verzenden.  Ze worden ook gevraagd toestemming te geven om ervoor te zorgen dat ze op de hoogte zijn van de machtigingen die worden verleend.  Dit is niet van toepassing op werk-of school accounts die worden gebruikt voor verificatie.
 
-Terwijl de gebruiker zich aanmeldt `verification_uri`, moet de client het `/token` eind punt voor het aangevraagde token pollen `device_code`met behulp van de.
+Terwijl de gebruiker zich aanmeldt `verification_uri` , moet de client het `/token` eind punt voor het aangevraagde token pollen met behulp van de `device_code` .
 
 ```HTTP
 POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
@@ -94,7 +94,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 | -------- | -------- | ---------- |
 | `tenant`  | Vereist | Dezelfde Tenant of Tenant alias die in de eerste aanvraag wordt gebruikt. |
 | `grant_type` | Vereist | Moet`urn:ietf:params:oauth:grant-type:device_code`|
-| `client_id`  | Vereist | Moet overeenkomen `client_id` met het gebruik in de eerste aanvraag. |
+| `client_id`  | Vereist | Moet overeenkomen met het `client_id` gebruik in de eerste aanvraag. |
 | `device_code`| Vereist | De `device_code` geretourneerde in de autorisatie aanvraag voor het apparaat.  |
 
 ### <a name="expected-errors"></a>Verwachte fouten
@@ -106,7 +106,7 @@ De code stroom van het apparaat is een polling-protocol, zodat uw client fouten 
 | `authorization_pending` | De gebruiker heeft de verificatie nog niet voltooid, maar de stroom is niet geannuleerd. | Herhaal de aanvraag na minstens `interval` seconden. |
 | `authorization_declined` | De eind gebruiker heeft de autorisatie aanvraag geweigerd.| Stop polling en herstel naar een niet-geverifieerde status.  |
 | `bad_verification_code`| De `device_code` verzonden naar het `/token` eind punt is niet herkend. | Controleer of de client de juiste `device_code` in de aanvraag verzendt. |
-| `expired_token` | Er zijn `expires_in` ten minste seconden verstreken en verificatie is niet meer mogelijk `device_code`. | Stop polling en terugkeren naar een niet-geverifieerde status. |
+| `expired_token` | Er zijn ten minste `expires_in` seconden verstreken en verificatie is niet meer mogelijk `device_code` . | Stop polling en terugkeren naar een niet-geverifieerde status. |
 
 ### <a name="successful-authentication-response"></a>Geslaagde verificatie reactie
 
@@ -130,6 +130,6 @@ Een geslaagd token antwoord ziet er als volgt uit:
 | `expires_in`| int | Aantal seconden voordat het opgenomen toegangs token geldig is. |
 | `access_token`| Dekkende teken reeks | Uitgegeven voor de aangevraagde [bereiken](v2-permissions-and-consent.md) .  |
 | `id_token`   | JWT | Uitgegeven als de oorspronkelijke `scope` para meter het `openid` bereik bevat.  |
-| `refresh_token` | Dekkende teken reeks | Verleend als de oorspronkelijke `scope` para meter `offline_access`is opgenomen.  |
+| `refresh_token` | Dekkende teken reeks | Verleend als de oorspronkelijke `scope` para meter is opgenomen `offline_access` .  |
 
 U kunt het vernieuwings token gebruiken om nieuwe toegangs tokens te verkrijgen en tokens te vernieuwen met behulp van dezelfde stroom die wordt beschreven in de [documentatie over de OAuth-code stroom](v2-oauth2-auth-code-flow.md#refresh-the-access-token).

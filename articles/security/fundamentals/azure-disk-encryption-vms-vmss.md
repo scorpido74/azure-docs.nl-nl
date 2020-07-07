@@ -8,10 +8,10 @@ ms.author: mbaldwin
 ms.date: 10/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: c881b2b9743766e4d35e6cb05f6f3469803850bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80062127"
 ---
 # <a name="azure-disk-encryption-for-virtual-machines-and-virtual-machine-scale-sets"></a>Azure Disk Encryption voor virtuele machines en virtuele-machine schaal sets
@@ -27,7 +27,7 @@ De volgende artikelen bevatten richt lijnen voor het versleutelen van virtuele L
 - [Overzicht van Azure Disk Encryption voor Linux-VM's](../../virtual-machines/linux/disk-encryption-overview.md)
 - [Azure Disk Encryption-scenario's voor Linux-VM's](../../virtual-machines/linux/disk-encryption-linux.md)
 - [Een Linux-VM maken en versleutelen met behulp van Azure CLI](../../virtual-machines/linux/disk-encryption-cli-quickstart.md)
-- [Een Linux-VM maken en versleutelen met behulp van Azure PowerShell](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
+- [Een virtuele Linux-machine maken en versleutelen met Azure PowerShell](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 - [Een Linux-VM maken en versleutelen met behulp van Azure Portal](../../virtual-machines/linux/disk-encryption-portal-quickstart.md)
 - [Azure Disk Encryption extensie schema voor Linux](../../virtual-machines/extensions/azure-disk-enc-linux.md)
 - [Een sleutelkluis voor Azure Disk Encryption maken en configureren](../../virtual-machines/linux/disk-encryption-key-vault.md)
@@ -69,11 +69,11 @@ De volgende artikelen bevatten richt lijnen voor het versleutelen van virtuele W
 De volgende artikelen bevatten richt lijnen voor het versleutelen van virtuele-machine schaal sets.
 
 - [Overzicht van Azure Disk Encryption voor schaal sets voor virtuele machines](../../virtual-machine-scale-sets/disk-encryption-overview.md) 
-- [Een schaalset voor virtuele machines versleutelen met behulp van Azure CLI](../../virtual-machine-scale-sets/disk-encryption-cli.md) 
+- [ Een virtuele-machineschaalset versleutelen met de Azure CLI](../../virtual-machine-scale-sets/disk-encryption-cli.md) 
 - [Een schaalset voor virtuele machines versleutelen met behulp van Azure Power shell](../../virtual-machine-scale-sets/disk-encryption-powershell.md).
 - [Een schaal sets voor virtuele machines versleutelen met behulp van de Azure Resource Manager](../../virtual-machine-scale-sets/disk-encryption-azure-resource-manager.md)
-- [Een sleutel kluis maken en configureren voor Azure Disk Encryption](../../virtual-machine-scale-sets/disk-encryption-key-vault.md)
-- [Azure Disk Encryption gebruiken met uitbreidings reeksen voor de schaalset voor virtuele machines](../../virtual-machine-scale-sets/disk-encryption-extension-sequencing.md)
+- [Een sleutelkluis voor Azure Disk Encryption maken en configureren](../../virtual-machine-scale-sets/disk-encryption-key-vault.md)
+- [Azure Disk Encryption gebruiken met extensiereeksen voor virtuele-machineschaalsets](../../virtual-machine-scale-sets/disk-encryption-extension-sequencing.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/01/2020
 ms.openlocfilehash: 4b26128b794a6a667edc578f56ad0bc9fb8303a7
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82691157"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-in-azure-hdinsight"></a>De beschik baarheid van clusters bewaken met Apache Ambari in azure HDInsight
@@ -80,7 +80,7 @@ U kunt desgewenst ook e-mail meldingen configureren voor Ambari-waarschuwingen. 
 
 ![Actie Ambari beheren](media/hdinsight-cluster-availability/ambari-manage-notifications.png)
 
-Er wordt een dialoog venster geopend voor het beheren van waarschuwings meldingen. Selecteer de **+** aan de onderkant van het dialoog venster en vul de vereiste velden in om Ambari te bieden met de details van de e-mail server waaruit e-mails kunnen worden verzonden.
+Er wordt een dialoog venster geopend voor het beheren van waarschuwings meldingen. Selecteer de aan **+** de onderkant van het dialoog venster en vul de vereiste velden in om Ambari te bieden met de details van de e-mail server waaruit e-mails kunnen worden verzonden.
 
 > [!TIP]
 > Het instellen van Ambari-e-mail meldingen kan een goede manier zijn om waarschuwingen op één plek te ontvangen bij het beheren van veel HDInsight-clusters.
@@ -88,6 +88,6 @@ Er wordt een dialoog venster geopend voor het beheren van waarschuwings meldinge
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Beschik baarheid en betrouw baarheid van Apache Hadoop clusters in HDInsight](hdinsight-high-availability-linux.md)
-- [Beschik baarheid van cluster-Azure Monitor logboeken](./cluster-availability-monitor-logs.md)
-- [Azure Monitor-logboeken gebruiken](hdinsight-hadoop-oms-log-analytics-tutorial.md)
+- [Clusterbeschikbaarheid - Azure Monitor-logboeken](./cluster-availability-monitor-logs.md)
+- [Azure Monitor-Logboeken gebruiken](hdinsight-hadoop-oms-log-analytics-tutorial.md)
 - [E-mailmeldingen voor Apache Ambari](apache-ambari-email.md)

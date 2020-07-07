@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/16/2016
 ms.author: mimckitt
 ms.openlocfilehash: 75fa2071f2ad54292e1cff6856de2091b74d3187
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82101532"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>WinRM-toegang instellen voor Virtual Machines in Azure Resource Manager
@@ -76,7 +76,7 @@ Set-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValu
 De resource provider micro soft. Compute heeft een URL nodig voor het geheim in het Key Vault tijdens het inrichten van de virtuele machine. Hierdoor kan de resource provider micro soft. Compute het geheim downloaden en het gelijkwaardige certificaat maken op de VM.
 
 > [!NOTE]
-> De URL van het geheim moet ook de versie bevatten. Een voor beeld van een URL ziet er\/als volgt uit:/contosovault.Vault.Azure.net:443/Secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
+> De URL van het geheim moet ook de versie bevatten. Een voor beeld van een URL ziet er als volgt uit: \/ /contosovault.Vault.Azure.net:443/Secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
 
 #### <a name="templates"></a>Sjablonen
 U kunt de koppeling naar de URL in de sjabloon ophalen met behulp van de onderstaande code

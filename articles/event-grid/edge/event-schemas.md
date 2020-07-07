@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ba261aeedf6574f69d3c05f8fd005c912dcc59d1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73242461"
 ---
 # <a name="event-schemas"></a>Gebeurtenisschema's
@@ -56,14 +56,14 @@ Alle gebeurtenissen hebben de volgende gegevens op het hoogste niveau:
 
 | Eigenschap | Type | Vereist | Beschrijving |
 | -------- | ---- | ----------- |-----------
-| onderwerp | tekenreeks | Nee | Moet overeenkomen met het onderwerp waarop het wordt gepubliceerd. Event Grid vult het met de naam van het onderwerp dat wordt gepubliceerd als niet opgegeven. |
+| onderwerp | tekenreeks | No | Moet overeenkomen met het onderwerp waarop het wordt gepubliceerd. Event Grid vult het met de naam van het onderwerp dat wordt gepubliceerd als niet opgegeven. |
 | Onderwerp | tekenreeks | Ja | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
-| eventType | tekenreeks | Ja | Gebeurtenis type voor deze gebeurtenis bron, bijvoorbeeld BlobCreated. |
+| Type | tekenreeks | Ja | Gebeurtenis type voor deze gebeurtenis bron, bijvoorbeeld BlobCreated. |
 | eventTime | tekenreeks | Ja | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
-| Id | tekenreeks | Nee | De unieke id voor de gebeurtenis. |
-| data | object | Nee | Wordt gebruikt om gebeurtenis gegevens vast te leggen die specifiek zijn voor de publicatie-entiteit. |
+| Id | tekenreeks | No | De unieke id voor de gebeurtenis. |
+| gegevens | object | Nee | Wordt gebruikt om gebeurtenis gegevens vast te leggen die specifiek zijn voor de publicatie-entiteit. |
 | dataVersion | tekenreeks | Ja | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
-| metadataVersion | tekenreeks | Nee | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
+| metadataVersion | tekenreeks | No | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
 
 ### <a name="example--eventgrid-schema-event"></a>Voor beeld: EventGrid-schema gebeurtenis
 

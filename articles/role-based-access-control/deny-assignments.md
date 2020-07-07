@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: a5f17f009caa9306631debf511f2c890f8f2a450
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82733768"
 ---
 # <a name="understand-azure-deny-assignments"></a>Meer informatie over Azure deny-toewijzingen
@@ -39,7 +39,7 @@ Geweigerde toewijzingen worden door Azure gemaakt en beheerd om resources te bev
 
 Het weigeren van toewijzingen volgt een vergelijkbaar patroon als roltoewijzingen, maar er zijn ook enkele verschillen.
 
-| Mogelijkheid | Nieuwe roltoewijzing | Toewijzing weigeren |
+| Mogelijkheid | Roltoewijzing | Toewijzing weigeren |
 | --- | --- | --- |
 | Toegang verlenen | :heavy_check_mark: |  |
 | Toegang weigeren |  | :heavy_check_mark: |
@@ -64,7 +64,7 @@ Het weigeren van toewijzingen volgt een vergelijkbaar patroon als roltoewijzinge
 > | `Permissions.NotDataActions` | Nee | Teken reeks [] | Een matrix met teken reeksen waarmee de gegevens bewerkingen worden opgegeven die moeten worden uitgesloten van de weigerings toewijzing. |
 > | `Scope` | Nee | Tekenreeks | Een teken reeks die het bereik opgeeft waarop de weigerings toewijzing van toepassing is. |
 > | `DoNotApplyToChildScopes` | Nee | Boolean-waarde | Hiermee geeft u op of de weigerings toewijzing van toepassing is op onderliggende bereiken. De standaard waarde is False. |
-> | `Principals[i].Id` | Ja | Teken reeks [] | Een matrix van Azure AD Principal-object-Id's (gebruiker, groep, Service-Principal of beheerde identiteit) waarop de weigerings toewijzing van toepassing is. Stel in op een lege `00000000-0000-0000-0000-000000000000` GUID om alle principals weer te geven. |
+> | `Principals[i].Id` | Ja | Teken reeks [] | Een matrix van Azure AD Principal-object-Id's (gebruiker, groep, Service-Principal of beheerde identiteit) waarop de weigerings toewijzing van toepassing is. Stel in op een lege GUID `00000000-0000-0000-0000-000000000000` om alle principals weer te geven. |
 > | `Principals[i].Type` | Nee | Teken reeks [] | Een matrix van object typen vertegenwoordigd door principals [i]. id. Stel in `SystemDefined` om alle principals weer te geven. |
 > | `ExcludePrincipals[i].Id` | Nee | Teken reeks [] | Een matrix van Azure AD Principal-object-Id's (gebruiker, groep, Service-Principal of beheerde identiteit) waarop de weigerings toewijzing niet van toepassing is. |
 > | `ExcludePrincipals[i].Type` | Nee | Teken reeks [] | Een matrix met object typen vertegenwoordigd door ExcludePrincipals [i]. id. |
@@ -72,7 +72,7 @@ Het weigeren van toewijzingen volgt een vergelijkbaar patroon als roltoewijzinge
 
 ## <a name="the-all-principals-principal"></a>De principal alle principals
 
-Voor het ondersteunen van weigerings toewijzingen is een door het systeem gedefinieerde principal met *de naam alle principals* geïntroduceerd. Deze principal vertegenwoordigt alle gebruikers, groepen, service-principals en beheerde identiteiten in een Azure AD-adres lijst. Als de principal-ID een nul- `00000000-0000-0000-0000-000000000000` GUID is en het Principal `SystemDefined`-type is, vertegenwoordigt de principal alle principals. In Azure PowerShell uitvoer ziet u dat alle principals er als volgt uitzien:
+Voor het ondersteunen van weigerings toewijzingen is een door het systeem gedefinieerde principal met *de naam alle principals* geïntroduceerd. Deze principal vertegenwoordigt alle gebruikers, groepen, service-principals en beheerde identiteiten in een Azure AD-adres lijst. Als de principal-ID een nul-GUID is `00000000-0000-0000-0000-000000000000` en het Principal-type is `SystemDefined` , vertegenwoordigt de principal alle principals. In Azure PowerShell uitvoer ziet u dat alle principals er als volgt uitzien:
 
 ```azurepowershell
 Principals              : {
@@ -84,8 +84,8 @@ Principals              : {
 
 Alle principals kunnen worden gecombineerd met `ExcludePrincipals` om alle principals te weigeren, met uitzonde ring van sommige gebruikers. Voor alle principals gelden de volgende beperkingen:
 
-- Kan alleen worden gebruikt in `Principals` en kan niet worden gebruikt `ExcludePrincipals`in.
-- `Principals[i].Type`moet worden ingesteld op `SystemDefined`.
+- Kan alleen worden gebruikt in `Principals` en kan niet worden gebruikt in `ExcludePrincipals` .
+- `Principals[i].Type`moet worden ingesteld op `SystemDefined` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

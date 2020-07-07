@@ -14,21 +14,21 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 0654bce86cf5fb0b5bd117e444721e95f137dd47
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652696"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>Overwegingen voor het gebruik van Universeel Windows-platform met MSAL.NET
 Ontwikkel aars van toepassingen die gebruikmaken van Universeel Windows-platform (UWP) met MSAL.NET, moeten rekening houden met de concepten in dit artikel.
 
 ## <a name="the-usecorporatenetwork-property"></a>De eigenschap UseCorporateNetwork
-Op het Windows Runtime (WinRT)-platform `PublicClientApplication` heeft de Booleaanse eigenschap `UseCorporateNetwork`. Met deze eigenschap kunnen Windows 8,1-toepassingen en UWP-toepassingen profiteren van geïntegreerde Windows-authenticatie (IWA) als de gebruiker is aangemeld bij een account met een federatieve Azure Active Directory-Tenant (Azure AD). Gebruikers die zijn aangemeld bij het besturings systeem, kunnen ook gebruikmaken van eenmalige aanmelding (SSO). Wanneer u de `UseCorporateNetwork` eigenschap instelt, maakt MSAL.net gebruik van een Web authentication BROKER (WAB).
+Op het Windows Runtime (WinRT)-platform `PublicClientApplication` heeft de Booleaanse eigenschap `UseCorporateNetwork` . Met deze eigenschap kunnen Windows 8,1-toepassingen en UWP-toepassingen profiteren van geïntegreerde Windows-authenticatie (IWA) als de gebruiker is aangemeld bij een account met een federatieve Azure Active Directory-Tenant (Azure AD). Gebruikers die zijn aangemeld bij het besturings systeem, kunnen ook gebruikmaken van eenmalige aanmelding (SSO). Wanneer u de `UseCorporateNetwork` eigenschap instelt, maakt MSAL.net gebruik van een Web authentication Broker (WAB).
 
 > [!IMPORTANT]
-> Als u `UseCorporateNetwork` de eigenschap instelt op True, wordt ervan uitgegaan dat de ontwikkelaar van de toepassing IWA in de toepassing heeft ingeschakeld. IWA inschakelen:
-> - Schakel op het tabblad `Package.appxmanifest` **mogelijkheden** van uw UWP-toepassing de volgende mogelijkheden in:
+> `UseCorporateNetwork`Als u de eigenschap instelt op True, wordt ervan uitgegaan dat de ontwikkelaar van de toepassing IWA in de toepassing heeft ingeschakeld. IWA inschakelen:
+> - `Package.appxmanifest`Schakel op het tabblad **mogelijkheden** van uw UWP-toepassing de volgende mogelijkheden in:
 >   - **Ondernemings verificatie**
 >   - **Particuliere netwerken (client & server)**
 >   - **Gedeeld gebruikers certificaat**

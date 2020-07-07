@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 869453d92f536a62aacc2be52598223158566ae0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71122735"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Problemen met Cloud service rollen oplossen die niet worden gestart
@@ -42,13 +42,13 @@ Wanneer u navigeert naar een website die is geïmplementeerd in een webrole, en 
 ![Server fout in/-toepassing.](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503388.png)
 
 ## <a name="diagnose-issues-by-turning-off-custom-errors"></a>Problemen vaststellen door aangepaste fouten uit te scha kelen
-Meer informatie over de fout kan worden weer gegeven door Web. config voor de webfunctie te configureren om de aangepaste fout modus in te stellen op uit en de service opnieuw te implementeren.
+Meer informatie over de fout kan worden weer gegeven door de web.config voor de webfunctie te configureren om de aangepaste fout modus in te stellen op uit en de service opnieuw te implementeren.
 
 Meer volledige fouten weer geven zonder Extern bureaublad te gebruiken:
 
 1. Open de oplossing in micro soft Visual Studio.
-2. Ga in het **Solution Explorer**naar het bestand Web. config en open het.
-3. Zoek in het bestand Web. config de sectie System. Web en voeg de volgende regel toe:
+2. Zoek in het **Solution Explorer**het web.config bestand en open het.
+3. Zoek in het web.config-bestand de sectie System. Web en voeg de volgende regel toe:
 
     ```xml
     <customErrors mode="Off" />
@@ -82,7 +82,7 @@ Bijvoorbeeld:
 ![Expliciete server fout in/-toepassing](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 
 ## <a name="diagnose-issues-by-using-the-compute-emulator"></a>Problemen vaststellen met behulp van de compute-emulator
-U kunt de Microsoft Azure Compute emulator gebruiken om problemen met ontbrekende afhankelijkheden en web. config-fouten op te sporen en op te lossen.
+U kunt de Microsoft Azure Compute emulator gebruiken om problemen met ontbrekende afhankelijkheden en web.config fouten op te sporen en op te lossen.
 
 Voor de beste resultaten bij het gebruik van deze diagnose methode moet u een computer of virtuele machine gebruiken die een schone installatie van Windows heeft. Gebruik Windows Server 2008 R2 x64 om de Azure-omgeving het beste te simuleren.
 
@@ -90,8 +90,8 @@ Voor de beste resultaten bij het gebruik van deze diagnose methode moet u een co
 2. Bouw het Cloud service project op de ontwikkel machine.
 3. Navigeer in Windows Verkenner naar de map bin\debug van het Cloud service-project.
 4. Kopieer de CSX-map en het cscfg-bestand naar de computer die u gebruikt om de problemen op te lossen.
-5. Open op de schone computer een Azure SDK-opdracht prompt venster en typ `csrun.exe /devstore:start`.
-6. Typ `run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser`bij de opdracht prompt.
+5. Open op de schone computer een Azure SDK-opdracht prompt venster en typ `csrun.exe /devstore:start` .
+6. Typ bij de opdracht prompt `run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser` .
 7. Wanneer de rol wordt gestart, worden gedetailleerde fout gegevens weer geven in Internet Explorer. U kunt ook de standaard hulpprogram ma's voor probleem oplossing van Windows gebruiken om het probleem verder te onderzoeken.
 
 ## <a name="diagnose-issues-by-using-intellitrace"></a>Problemen vaststellen met behulp van IntelliTrace
@@ -102,7 +102,7 @@ Voer de volgende stappen uit om de service te implementeren met IntelliTrace ing
 1. Controleer of Azure SDK 1,3 of hoger is geïnstalleerd.
 2. Implementeer de oplossing met behulp van Visual Studio. Schakel tijdens de implementatie het selectie vakje **IntelliTrace inschakelen voor .net 4-rollen** in.
 3. Zodra het exemplaar is gestart, opent u het **Server Explorer**.
-4. Vouw het knoop punt **Azure\\Cloud Services** uit en zoek de implementatie.
+4. Vouw het knoop punt **Azure \\ Cloud Services** uit en zoek de implementatie.
 5. Vouw de implementatie uit totdat u de rolinstanties ziet. Klik met de rechter muisknop op een van de exemplaren.
 6. Kies **IntelliTrace-logboeken weer geven**. De **IntelliTrace-samen vatting** wordt geopend.
 7. Zoek de sectie uitzonde ringen van de samen vatting. Als er uitzonde ringen zijn, wordt de sectie **uitzonderings gegevens**genoemd.

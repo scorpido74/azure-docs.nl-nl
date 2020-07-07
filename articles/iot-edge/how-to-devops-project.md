@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c7598aafea85e91f28233645d3d71bf85bf45425
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82130979"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects"></a>Een CI/CD-pijp lijn maken voor IoT Edge met Azure DevOps Projects
@@ -32,7 +32,7 @@ DevOps Projects maakt een CI/CD-pijplijn in Azure DevOps. U kunt een nieuwe Azur
 
 ## <a name="create-a-new-application-pipeline"></a>Een nieuwe toepassings pijplijn maken
 
-1. Uw Azure IOT Edge module (s) kunnen worden geschreven in [C#](tutorial-csharp-module.md), [node. js](tutorial-node-module.md), [python](tutorial-python-module.md), [C](tutorial-c-module.md) en [Java](tutorial-java-module.md). Selecteer uw voorkeurs taal om een nieuwe toepassing te starten: **.net**, **node. js**, **python**, **C**of **Java**. Selecteer **Volgende** om door te gaan.
+1. Uw Azure IOT Edge module (s) kunnen worden geschreven in [C#](tutorial-csharp-module.md), [Node.js](tutorial-node-module.md), [python](tutorial-python-module.md), [C](tutorial-c-module.md) en [Java](tutorial-java-module.md). Selecteer de taal van uw voor keur om een nieuwe toepassing te starten: **.net**, **Node.js**, **python**, **C**of **Java**. Selecteer **Volgende** om door te gaan.
 
    ![Taal selecteren voor het maken van een nieuwe toepassing](./media/how-to-devops-project/select-language.png)
 
@@ -76,9 +76,9 @@ DevOps Projects een Git-opslag plaats voor uw project gemaakt in azure opslag pl
 
 2. In de volgende stappen wordt uitgelegd hoe u de webbrowser gebruikt om code wijzigingen aan te brengen. Als u uw opslag plaats lokaal wilt klonen, selecteert u **klonen** in de rechter bovenhoek van het venster. Gebruik de meegeleverde URL om uw Git-opslag plaats te klonen in Visual Studio code of uw favoriete ontwikkel programma.
 
-3. De opslag plaats bevat al code voor een module met de naam **FilterModule** op basis van de toepassings taal die u hebt gekozen tijdens het maken van het proces. Open het bestand **modules/FilterModule/module. json** .
+3. De opslag plaats bevat al code voor een module met de naam **FilterModule** op basis van de toepassings taal die u hebt gekozen tijdens het maken van het proces. Open de **modules/FilterModule/module.jsin** het bestand.
 
-   ![Open het bestand module. json in azure opslag plaatsen](./media/how-to-devops-project/open-module-json.png)
+   ![module.jsopenen voor een bestand in azure opslag plaatsen](./media/how-to-devops-project/open-module-json.png)
 
 4. U ziet dat in dit bestand [Azure DevOps build-variabelen](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables) worden gebruikt in de **versie** parameter. Deze configuratie zorgt ervoor dat er een nieuwe versie van de module wordt gemaakt telkens wanneer een nieuwe build wordt uitgevoerd.
 
@@ -90,7 +90,7 @@ In de vorige secties Azure DevOps Projects automatisch een volledige CI/CD-pijp 
 
    ![Build-pijp lijnen weer geven in azure-pijp lijnen](./media/how-to-devops-project/view-build-pipelines.png)
 
-2. Selecteer **bewerken**.
+2. Selecteer **Bewerken**.
 
     ![Build-pijp lijn bewerken](media/how-to-devops-project/click-edit-button.png)
 

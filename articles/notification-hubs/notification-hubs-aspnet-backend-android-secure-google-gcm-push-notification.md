@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 419a9f9b5ce698c7516edd55856cbea9891ba029
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71212178"
 ---
 # <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Beveiligde push meldingen verzenden met Azure Notification Hubs
@@ -71,7 +71,7 @@ Wijzig nu de *aanmeldings* stroom om de waarde van de verificatie header op te s
     public static final String NOTIFY_USERS_PROPERTIES = "NotifyUsersProperties";
     public static final String AUTHORIZATION_HEADER_PROPERTY = "AuthorizationHeader";
     ```
-2. Werk de `getAuthorizationHeader()` methode `MainActivity` die zich nog in de klasse bevinden, bij met de volgende code:
+2. `MainActivity`Werk de methode die zich nog in de klasse `getAuthorizationHeader()` bevinden, bij met de volgende code:
 
     ```java
     private String getAuthorizationHeader() throws UnsupportedEncodingException {
@@ -86,7 +86,7 @@ Wijzig nu de *aanmeldings* stroom om de waarde van de verificatie header op te s
         return basicAuthHeader;
     }
     ```
-3. Voeg boven aan `import` het `MainActivity` bestand de volgende-instructies toe:
+3. Voeg `import` boven aan het bestand de volgende-instructies toe `MainActivity` :
 
     ```java
     import android.content.SharedPreferences;
@@ -94,7 +94,7 @@ Wijzig nu de *aanmeldings* stroom om de waarde van de verificatie header op te s
 
 Wijzig nu de handler die wordt aangeroepen wanneer de melding wordt ontvangen.
 
-1. Wijzig in `MyHandler` de klasse de `OnReceive()` methode die moet worden opgenomen:
+1. Wijzig in de `MyHandler` klasse de `OnReceive()` methode die moet worden opgenomen:
 
     ```java
     public void onReceive(Context context, Bundle bundle) {
@@ -103,7 +103,7 @@ Wijzig nu de handler die wordt aangeroepen wanneer de melding wordt ontvangen.
         retrieveNotification(secureMessageId);
     }
     ```
-2. Voeg vervolgens de `retrieveNotification()` -methode toe, waarbij `{back-end endpoint}` u de tijdelijke aanduiding vervangt door het back-end-eind punt dat is verkregen tijdens het implementeren van uw back-end:
+2. Voeg vervolgens de `retrieveNotification()` -methode toe, waarbij u de tijdelijke aanduiding vervangt `{back-end endpoint}` door het back-end-eind punt dat is verkregen tijdens het implementeren van uw back-end:
 
     ```java
     private void retrieveNotification(final String secureMessageId) {

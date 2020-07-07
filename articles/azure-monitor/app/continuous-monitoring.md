@@ -4,10 +4,10 @@ description: Biedt instructies voor het snel instellen van doorlopende bewaking 
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 0d47fb1eccdfcfc7b2719825575f06dc85e62452
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652752"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Doorlopende bewaking aan uw release pijplijn toevoegen
@@ -20,7 +20,7 @@ Met continue bewaking kunnen release pijplijnen bewakings gegevens omvatten van 
 
 1. Selecteer een organisatie en project in [Azure DevOps](https://dev.azure.com).
    
-1. Selecteer in het menu links van de pagina project **pijp lijnen** > -**releases**. 
+1. Selecteer in het menu links van de pagina project **pijp lijnen**-  >  **releases**. 
    
 1. Vervolg de pijl naast **Nieuw** en selecteer **nieuwe release pijplijn**. Als u nog geen pijp lijn hebt, selecteert u **nieuwe pijp lijn** op de pagina die wordt weer gegeven.
    

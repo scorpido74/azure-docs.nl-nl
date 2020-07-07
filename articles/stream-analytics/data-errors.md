@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.openlocfilehash: 5c5da26935e489a1b9489f63b83af176921c3a5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82133808"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure Stream Analytics gegevens fouten
@@ -48,7 +48,7 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
 * Logboek Details
    * Invoer bericht-id. Voor Event hub is de id het PartitionId-, offset-en sequence-nummer.
 
-**Fout bericht**
+**Foutbericht**
 
 ```json
 "BriefMessage": "Unable to decompress events from resource 'https:\\/\\/exampleBlob.blob.core.windows.net\\/inputfolder\\/csv.txt'. Please ensure compression setting fits the data being processed."
@@ -64,7 +64,7 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
    * Invoer bericht-id. 
    * De werkelijke Payload tot slechts enkele kilo bytes.
 
-**Fout bericht**
+**Foutbericht**
 
 ```json
 "BriefMessage": "Invalid CSV Header for resource 'https:\\/\\/exampleBlob.blob.core.windows.net\\/inputfolder\\/csv.txt'. Please make sure there are no duplicate field names."
@@ -81,7 +81,7 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
    * De namen van de ontbrekende kolommen. 
    * De werkelijke Payload tot een aantal kilo bytes.
 
-**Fout berichten**
+**Foutberichten**
 
 ```json
 "BriefMessage": "Could not deserialize the input event(s) from resource 'https:\\/\\/exampleBlob.blob.core.windows.net\\/inputfolder\\/csv.txt' as Csv. Some possible reasons: 1) Malformed events 2) Input source configured with incorrect serialization format" 
@@ -101,7 +101,7 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
    * Invoer bericht-id. 
    * De naam van de kolom en het verwachte type.
 
-**Fout berichten**
+**Foutberichten**
 
 ```json
 "BriefMessage": "Could not deserialize the input event(s) from resource '''https:\\/\\/exampleBlob.blob.core.windows.net\\/inputfolder\\/csv.txt ' as Csv. Some possible reasons: 1) Malformed events 2) Input source configured with incorrect serialization format" 
@@ -121,7 +121,7 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
    * Invoer bericht-id. 
    * De werkelijke Payload tot slechts enkele kilo bytes.
 
-**Fout berichten**
+**Foutberichten**
 
 ```json
 "BriefMessage": "Json input stream should either be an array of objects or line separated objects. Found token type: String"
@@ -142,7 +142,7 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
    * Fout bericht. 
    * De werkelijke Payload tot slechts enkele kilo bytes.
 
-**Fout bericht**
+**Foutbericht**
 
 ```json
 "BriefMessage": "Unable to get timestamp for resource 'https:\\/\\/exampleBlob.blob.core.windows.net\\/inputfolder\\/csv.txt ' due to error 'Cannot convert string to datetime'"
@@ -157,7 +157,7 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
 * Logboek Details
    * De werkelijke Payload tot slechts enkele kilo bytes.
 
-**Fout bericht**
+**Foutbericht**
 
 ```json
 "BriefMessage": "Unable to get value of TIMESTAMP BY OVER COLUMN"
@@ -173,7 +173,7 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
    * Tijd van de toepassing en aankomst tijd. 
    * De werkelijke Payload tot slechts enkele kilo bytes.
 
-**Fout bericht**
+**Foutbericht**
 
 ```json
 "BriefMessage": "Input event with application timestamp '2019-01-01' and arrival time '2019-01-02' was sent later than configured tolerance."
@@ -189,7 +189,7 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
    * Tijd van de toepassing en aankomst tijd. 
    * De werkelijke Payload tot slechts enkele kilo bytes.
 
-**Fout bericht**
+**Foutbericht**
 
 ```json
 "BriefMessage": "Input event arrival time '2019-01-01' is earlier than input event application timestamp '2019-01-02' by more than 5 minutes."
@@ -204,7 +204,7 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
 * Logboek Details
    * De werkelijke Payload tot slechts enkele kilo bytes.
 
-**Fout bericht**
+**Foutbericht**
 
 ```json
 "Message": "Out of order event(s) received."
@@ -221,7 +221,7 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
 * Logboek Details
    * De naam van de kolom en de record-id of een deel van de record.
 
-**Fout bericht**
+**Foutbericht**
 
 ```json
 "Message": "The output record does not contain primary key property: [deviceId] Ensure the query output contains the column [deviceId] with a unique non-empty string less than '255' characters."
@@ -236,7 +236,7 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
 * Logboek Details
    * De naam van de kolom en ofwel de record-id of het deel van de record.
 
-**Fout bericht**
+**Foutbericht**
 
 ```json
 "Message": "Invalid property name #deviceIdValue. Please refer MSDN for Azure table property naming convention."
@@ -252,7 +252,7 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
    * De naam van de kolom.
    * De record-id of een deel van de record.
 
-**Fout bericht**
+**Foutbericht**
 
 ```json
 "Message": "The column [id] value null or its type is invalid. Ensure to provide a unique non-empty string less than '255' characters."
@@ -267,7 +267,7 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
 * Logboek Details
    * De record-id of een deel van de record.
 
-**Fout bericht**
+**Foutbericht**
 
 ```json
 "BriefMessage": "Single output event exceeds the maximum message size limit allowed (262144 bytes) by Event Hub."

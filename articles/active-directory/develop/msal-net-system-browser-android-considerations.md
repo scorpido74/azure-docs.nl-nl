@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8e37d443d75dccae8704bc1ff7856e1d24131766
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652704"
 ---
 #  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>Xamarin Android-systeem browser overwegingen voor het gebruik van MSAL.NET
@@ -67,7 +67,7 @@ De volgende tabel geeft een lijst van de apparaten en browsers die zijn getest v
 Als de gebruiker geen browser op het apparaat heeft ingeschakeld, wordt door MSAL.NET een `AndroidActivityNotFound` uitzonde ring gegenereerd.  
   - **Risico beperking**: vraag de gebruiker een browser op het apparaat in te scha kelen. U kunt het beste een browser aanbevelen die aangepaste tabbladen ondersteunt.
 
-Als verificatie mislukt (bijvoorbeeld als verificatie wordt gestart met DuckDuckGo), wordt door MSAL.NET geretourneerd `AuthenticationCanceled MsalClientException`. 
+Als verificatie mislukt (bijvoorbeeld als verificatie wordt gestart met DuckDuckGo), wordt door MSAL.NET geretourneerd `AuthenticationCanceled MsalClientException` . 
   - **Hoofd probleem**: een browser die ondersteuning biedt voor aangepaste tabbladen is niet ingeschakeld op het apparaat. Verificatie gestart met een browser die de verificatie niet kan volt ooien. 
   - **Risico beperking**: vraag de gebruiker een browser op het apparaat in te scha kelen. U kunt het beste een browser aanbevelen die aangepaste tabbladen ondersteunt.
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 6fc5b4c901254decdb2d34281a10ababd4d79d45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82127857"
 ---
 # <a name="security-controls-for-azure-vpn-gateway"></a>Beveiligings controles voor Azure VPN Gateway
@@ -34,7 +34,7 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Ondersteuning voor Azure-bewaking (log Analytics, app Insights, enz.)| Ja | Zie [Azure monitor waarschuwing voor logboek registratie](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md) & [Azure monitor metrische gegevens](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).  |
+| Ondersteuning voor Azure-bewaking (log Analytics, app Insights, enz.)| Ja | Zie [Azure monitor waarschuwing voor logboek registratie](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)  &  [Azure monitor metrische gegevens](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).  |
 | Logboek registratie en controle op het vlak van controle en beheer| Ja | Azure Resource Manager activiteiten logboek. |
 | Logboek registratie en controle van het gegevens vlak | Ja | [Azure monitor activiteiten logboeken](../azure-resource-manager/management/view-activity-logs.md) voor logboek registratie en controle van de VPN-verbinding. |
 
@@ -45,7 +45,7 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 | Verificatie| Ja | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) voor het beheren van de service en het configureren van de Azure VPN-gateway. |
 | Autorisatie| Ja | Ondersteuning voor autorisatie via [RBAC](../role-based-access-control/overview.md). |
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen |
 |---|---|--|

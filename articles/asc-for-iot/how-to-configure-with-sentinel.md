@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: mlottner
 ms.openlocfilehash: fe8e4c1b08f96e5f6b2fc7649f7a4361616b7c87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311304"
 ---
 # <a name="connect-your-data-from-azure-security-center-for-iot-to-azure-sentinel-preview"></a>Uw gegevens verbinden met Azure Security Center voor IoT naar Azure Sentinel (preview)
@@ -25,7 +25,7 @@ ms.locfileid: "81311304"
 > [!IMPORTANT]
 > De Azure Security Center voor IoT Data Connector in azure Sentinel is momenteel beschikbaar als open bare preview.
 > Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 In deze hand leiding vindt u informatie over het verbinden van uw Azure Security Center voor IoT-gegevens naar Azure Sentinel.
 
@@ -52,7 +52,7 @@ Verbinding maken met waarschuwingen van Azure Security Center voor IoT en deze r
 1. Klik onder aan het rechterdeel venster op **connector pagina openen**.
 1. Klik op **verbinding maken**naast elk IOT hub abonnement waarvan u de waarschuwingen en de waarschuwingen van apparaten wilt streamen naar Azure Sentinel.
     - Als Azure Security Center voor IoT niet op die hub is ingeschakeld, wordt er een waarschuwings bericht weer gegeven. Klik op de koppeling **inschakelen** om de service te starten en in te scha kelen.
-1. U kunt beslissen of u de waarschuwingen van Azure Security Center voor IoT automatisch incidenten wilt genereren in azure Sentinel. Selecteer onder **incidenten maken**de optie **inschakelen** om de regel in te scha kelen om automatisch incidenten te maken op basis van de gegenereerde waarschuwingen.  Deze regel kan worden gewijzigd of bewerkt onder **Analytics** > **actieve** regels voor analyse.
+1. U kunt beslissen of u de waarschuwingen van Azure Security Center voor IoT automatisch incidenten wilt genereren in azure Sentinel. Selecteer onder **incidenten maken**de optie **inschakelen** om de regel in te scha kelen om automatisch incidenten te maken op basis van de gegenereerde waarschuwingen.  Deze regel kan worden gewijzigd of bewerkt onder **Analytics**  >  **actieve** regels voor analyse.
 
 > [!NOTE]
 >Het kan 10 seconden of langer duren om de hub-lijst te vernieuwen nadat de verbinding is gewijzigd.
@@ -61,7 +61,7 @@ Verbinding maken met waarschuwingen van Azure Security Center voor IoT en deze r
 
 Als u het relevante schema in Log Analytics wilt gebruiken om de Azure Security Center voor IoT-waarschuwingen weer te geven:
 
-1. Open **Logboeken** > **SecurityInsights** > **SecurityAlert**of zoek naar **SecurityAlert**.
+1. Open **Logboeken**  >  **SecurityInsights**  >  **SecurityAlert**of zoek naar **SecurityAlert**.
 1. Filter om alleen Azure Security Center voor IoT-waarschuwingen weer te geven met behulp van het volgende kql-filter:
 
 ```kusto

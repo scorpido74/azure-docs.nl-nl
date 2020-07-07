@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
 ms.openlocfilehash: bbb2ddaa1fb84590f9dec1c84ac4bc87a8e03022
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82738113"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Replicatie fouten van Azure naar Azure-VM oplossen
@@ -63,7 +63,7 @@ Voor een virtuele machine waarop het Windows-besturings systeem wordt uitgevoerd
 - Als u zich in een niet-verbonden omgeving bevindt, volgt u het standaard Windows Update-proces in uw organisatie om de certificaten op te halen.
 - Als de vereiste certificaten niet aanwezig zijn op de virtuele machine, zijn de aanroepen naar de Site Recovery-service om veiligheids redenen mislukt.
 
-Ga `login.microsoftonline.com` naar in een browser in uw virtuele machine om te controleren of het probleem is opgelost.
+Ga naar in `login.microsoftonline.com` een browser in uw virtuele machine om te controleren of het probleem is opgelost.
 
 Zie [vertrouwde hoofd mappen en niet-toegestane certificaten configureren](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn265983(v=ws.11))voor meer informatie.
 
@@ -73,7 +73,7 @@ Volg de richt lijnen van de Distributor van de versie van uw Linux-besturings sy
 
 Omdat SUSE Linux symbolische koppelingen of symlinks gebruikt om een certificaat lijst te onderhouden, volgt u deze stappen:
 
-1. Meld u aan als **hoofd** gebruiker. Het hash-symbool`#`() is de standaard opdracht prompt.
+1. Meld u aan als **hoofd** gebruiker. Het hash-symbool ( `#` ) is de standaard opdracht prompt.
 
 1. Als u de map wilt wijzigen, voert u deze opdracht uit:
 
@@ -222,7 +222,7 @@ De aangepaste proxy instellingen zijn ongeldig en de Mobility Service-agent heef
 
 #### <a name="fix-the-problem"></a>Het probleem oplossen
 
-1. De Mobility Service-agent detecteert de proxy-instellingen van Internet `/etc/environment` Explorer in Windows en op Linux.
+1. De Mobility Service-agent detecteert de proxy-instellingen van Internet Explorer in Windows en `/etc/environment` op Linux.
 1. Als u liever proxy alleen voor de Mobility-service wilt instellen, kunt u de proxy gegevens opgeven in _ProxyInfo. conf_ op:
 
    - **Linux**:`/usr/local/InMage/config/`
@@ -278,14 +278,14 @@ Als u de replicatie status van de virtuele machine weer in orde wilt maken, kunt
 
 #### <a name="to-protect-the-disks"></a>De schijven beveiligen
 
-1. Ga naar **gerepliceerde items** > _VM-naam_ > **schijven**.
+1. Ga naar **gerepliceerde items**  >  _VM-naam_  >  **schijven**.
 1. Selecteer de niet-beveiligde schijf en selecteer vervolgens **replicatie inschakelen**:
 
    :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="Schakel replicatie in op VM-schijven.":::
 
 #### <a name="to-dismiss-the-warning"></a>De waarschuwing negeren
 
-1. Ga naar de_VM-naam_van de **gerepliceerde items** > .
+1. Ga naar de VM-naam van de **gerepliceerde items**  >  _VM name_.
 1. Selecteer de waarschuwing in het gedeelte **overzicht** en selecteer vervolgens **OK**.
 
    :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="Waarschuwing nieuwe schijf negeren.":::
@@ -300,19 +300,19 @@ U kunt deze waarschuwing negeren als u deze virtuele machine nooit opnieuw wilt 
 > Als u het opschonen niet doet:
 >
 > - Wanneer u replicatie inschakelt met behulp van de Recovery Services kluis, wordt de virtuele machine niet weer gegeven.
-> - Als u de **virtuele machine** > probeert te beveiligen met behulp van de**instellingen** > voor**herstel na nood**geval, mislukt de bewerking met de bericht **replicatie kan niet worden ingeschakeld vanwege de bestaande verlopen bron koppelingen op de VM**.
+> - Als u de **virtuele machine**probeert te beveiligen met behulp van de  >  **instellingen**voor  >  **herstel na nood**geval, mislukt de bewerking met de bericht **replicatie kan niet worden ingeschakeld vanwege de bestaande verlopen bron koppelingen op de VM**.
 
 ### <a name="fix-the-problem"></a>Het probleem oplossen
 
 > [!NOTE]
 > Site Recovery de virtuele bron machine niet verwijdert of op enigerlei wijze beïnvloed tijdens het uitvoeren van deze stappen.
 
-1. Verwijder de vergren deling van de virtuele machine of VM-resource groep. In de volgende afbeelding moet de resource vergrendeling op de VM met de naam `MoveDemo` bijvoorbeeld worden verwijderd:
+1. Verwijder de vergren deling van de virtuele machine of VM-resource groep. In de volgende afbeelding moet de resource vergrendeling op de VM met de naam bijvoorbeeld `MoveDemo` worden verwijderd:
 
    :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Vergren deling van virtuele machine verwijderen.":::
 
 1. Down load het script om [een verouderde site Recovery configuratie te verwijderen](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
-1. Voer het script _Cleanup-stale-ASR-config-Azure-VM. ps1_uit. Geef de **abonnements-id**, **VM-resource groep**en **VM-naam** op als para meters.
+1. Voer het script uit, _Cleanup-stale-asr-config-Azure-VM.ps1_. Geef de **abonnements-id**, **VM-resource groep**en **VM-naam** op als para meters.
 1. Als u wordt gevraagd om Azure-referenties, geeft u deze op. Controleer vervolgens of het script zonder storingen wordt uitgevoerd.
 
 ## <a name="replication-not-enabled-on-vm-with-stale-resources-error-code-150226"></a>Replicatie is niet ingeschakeld op de virtuele machine met verouderde resources (fout code 150226)
@@ -332,12 +332,12 @@ Een verouderde configuratie kan optreden op een Azure-VM als u replicatie voor d
 > [!NOTE]
 > Site Recovery de virtuele bron machine niet verwijdert of op enigerlei wijze beïnvloed tijdens het uitvoeren van deze stappen.
 
-1. Verwijder de vergren deling van de virtuele machine of VM-resource groep. In de volgende afbeelding moet de resource vergrendeling op de VM met de naam `MoveDemo` bijvoorbeeld worden verwijderd:
+1. Verwijder de vergren deling van de virtuele machine of VM-resource groep. In de volgende afbeelding moet de resource vergrendeling op de VM met de naam bijvoorbeeld `MoveDemo` worden verwijderd:
 
    :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Vergren deling van virtuele machine verwijderen.":::
 
 1. Down load het script om [een verouderde site Recovery configuratie te verwijderen](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
-1. Voer het script _Cleanup-stale-ASR-config-Azure-VM. ps1_uit. Geef de **abonnements-id**, **VM-resource groep**en **VM-naam** op als para meters.
+1. Voer het script uit, _Cleanup-stale-asr-config-Azure-VM.ps1_. Geef de **abonnements-id**, **VM-resource groep**en **VM-naam** op als para meters.
 1. Als u wordt gevraagd om Azure-referenties, geeft u deze op. Controleer vervolgens of het script zonder storingen wordt uitgevoerd.
 
 ## <a name="cant-select-vm-or-resource-group-in-enable-replication-job"></a>VM of resource groep kan niet worden geselecteerd in replicatie taak inschakelen
@@ -346,7 +346,7 @@ Een verouderde configuratie kan optreden op een Azure-VM als u replicatie voor d
 
 Site Recovery moeten de resource groep en de virtuele machines van de bron regio momenteel op dezelfde locatie zijn. Als dat niet het geval is, kunt u de virtuele machine of resource groep niet vinden wanneer u probeert beveiliging toe te passen.
 
-Als tijdelijke oplossing kunt u de replicatie van de virtuele machine inschakelen in plaats van de Recovery Services kluis. Ga naar de**Eigenschappen** > van de **bron-VM** > **nood herstel** en schakel de replicatie in.
+Als tijdelijke oplossing kunt u de replicatie van de virtuele machine inschakelen in plaats van de Recovery Services kluis. Ga naar de eigenschappen van de **bron-VM**  >  **Properties**  >  **nood herstel** en schakel de replicatie in.
 
 ### <a name="issue-2-the-resource-group-isnt-part-of-the-selected-subscription"></a>Probleem 2: de resource groep maakt geen deel uit van het geselecteerde abonnement
 
@@ -363,14 +363,14 @@ Mogelijk ziet u de virtuele machine die u wilt inschakelen voor replicatie als e
 ### <a name="fix-the-problem"></a>Het probleem oplossen
 
 > [!NOTE]
-> Zorg ervoor dat u de `AzureRM.Resources` module bijwerkt voordat u het script gebruikt dat in deze sectie wordt genoemd. Site Recovery de virtuele bron machine niet verwijdert of op enigerlei wijze beïnvloed tijdens het uitvoeren van deze stappen.
+> Zorg ervoor dat u de module bijwerkt `AzureRM.Resources` voordat u het script gebruikt dat in deze sectie wordt genoemd. Site Recovery de virtuele bron machine niet verwijdert of op enigerlei wijze beïnvloed tijdens het uitvoeren van deze stappen.
 
-1. Verwijder de vergren deling, indien van toepassing, van de virtuele machine of VM-resource groep. In de volgende afbeelding moet de resource vergrendeling op de VM met de naam `MoveDemo` bijvoorbeeld worden verwijderd:
+1. Verwijder de vergren deling, indien van toepassing, van de virtuele machine of VM-resource groep. In de volgende afbeelding moet de resource vergrendeling op de VM met de naam bijvoorbeeld `MoveDemo` worden verwijderd:
 
    :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Vergren deling van virtuele machine verwijderen.":::
 
 1. Down load het script om [een verouderde site Recovery configuratie te verwijderen](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
-1. Voer het script _Cleanup-stale-ASR-config-Azure-VM. ps1_uit. Geef de **abonnements-id**, **VM-resource groep**en **VM-naam** op als para meters.
+1. Voer het script uit, _Cleanup-stale-asr-config-Azure-VM.ps1_. Geef de **abonnements-id**, **VM-resource groep**en **VM-naam** op als para meters.
 1. Als u wordt gevraagd om Azure-referenties, geeft u deze op. Controleer vervolgens of het script zonder storingen wordt uitgevoerd.
 
 ## <a name="unable-to-select-a-vm-for-protection"></a>Kan geen virtuele machine selecteren voor beveiliging
@@ -381,7 +381,7 @@ De virtuele machine heeft een uitbrei ding die is geïnstalleerd met een mislukt
 
 ### <a name="fix-the-problem"></a>Het probleem oplossen
 
-Ga naar**extensies** voor **virtuele machines** > -**instellingen** > en controleer op uitbrei dingen met de status mislukt. Verwijder een mislukte uitbrei ding en probeer het opnieuw om de virtuele machine te beveiligen.
+Ga naar extensies voor **virtuele machines**-  >  **instellingen**  >  **Extensions** en controleer op uitbrei dingen met de status mislukt. Verwijder een mislukte uitbrei ding en probeer het opnieuw om de virtuele machine te beveiligen.
 
 ## <a name="vm-provisioning-state-isnt-valid-error-code-150019"></a>De inrichtings status van de virtuele machine is niet geldig (fout code 150019)
 
@@ -408,7 +408,7 @@ Als de bron-VM deel uitmaakt van een virtueel netwerk en er al een andere virtue
 
 ### <a name="issue-2-you-previously-protected-the-vm-and-then-you-disabled-the-replication"></a>Probleem 2: u hebt de virtuele machine eerder beveiligd en vervolgens de replicatie uitgeschakeld
 
-Als u de replicatie van een virtuele machine uitschakelt, wordt de netwerk toewijzing niet verwijderd. De toewijzing moet worden verwijderd uit de Recovery Services kluis waar de virtuele machine is beveiligd. Selecteer de **Recovery Services kluis** en ga naar **Manage** > **site Recovery-infra structuur** > beheren voor**netwerk toewijzing****van virtuele Azure-machines** > .
+Als u de replicatie van een virtuele machine uitschakelt, wordt de netwerk toewijzing niet verwijderd. De toewijzing moet worden verwijderd uit de Recovery Services kluis waar de virtuele machine is beveiligd. Selecteer de **Recovery Services kluis** en ga naar **Manage**  >  **site Recovery-infra structuur**beheren  >  **voor netwerk toewijzing van virtuele Azure-machines**  >  **Network Mapping**.
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="Netwerk toewijzing verwijderen.":::
 
@@ -459,7 +459,7 @@ Zorg ervoor dat de schijf grootte binnen het ondersteunde bereik ligt en voer de
 
 ### <a name="possible-causes"></a>Mogelijke oorzaken
 
-De configuratie bestanden (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/boot/grub2/grub.cfg_of _/etc/default/grub_) van de linux-grub (Unified Bootloader) kunnen de werkelijke apparaatnamen opgeven in plaats van de UUID-waarden (Universally Unique Identifier `root` ) `resume` voor de para meters en. Site Recovery vereist UUID, omdat de apparaatnamen kunnen veranderen. Bij het opnieuw opstarten is het mogelijk dat een virtuele machine niet dezelfde naam heeft als de failover, waardoor er problemen ontstaan.
+De configuratie bestanden (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/boot/grub2/grub.cfg_of _/etc/default/grub_) van de linux-grub (Unified Bootloader) kunnen de werkelijke apparaatnamen opgeven in plaats van de UUID-waarden (Universally Unique Identifier) voor de `root` `resume` para meters en. Site Recovery vereist UUID, omdat de apparaatnamen kunnen veranderen. Bij het opnieuw opstarten is het mogelijk dat een virtuele machine niet dezelfde naam heeft als de failover, waardoor er problemen ontstaan.
 
 De volgende voor beelden zijn regels uit GRUB-bestanden waarbij apparaatnamen worden weer gegeven in plaats van de vereiste UUID:
 
@@ -475,7 +475,7 @@ De volgende voor beelden zijn regels uit GRUB-bestanden waarbij apparaatnamen wo
 
 Vervang elke naam van het apparaat door de bijbehorende UUID:
 
-1. Zoek de UUID van het apparaat door de opdracht `blkid <device name>`uit te voeren. Bijvoorbeeld:
+1. Zoek de UUID van het apparaat door de opdracht uit te voeren `blkid <device name>` . Bijvoorbeeld:
 
    ```shell
    blkid /dev/sda1
@@ -484,7 +484,7 @@ Vervang elke naam van het apparaat door de bijbehorende UUID:
    /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```
 
-1. Vervang de naam van het apparaat door de bijbehorende UUID in `root=UUID=<UUID>` de `resume=UUID=<UUID>`indelingen en. De regel van _/boot/grub/menu.lst_ ziet er bijvoorbeeld als volgt uit:
+1. Vervang de naam van het apparaat door de bijbehorende UUID in de indelingen `root=UUID=<UUID>` en `resume=UUID=<UUID>` . De regel van _/boot/grub/menu.lst_ ziet er bijvoorbeeld als volgt uit:
 
    `kernel /boot/vmlinuz-3.0.101-63-default root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4 resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b splash=silent crashkernel=256M-:128M showopts vga=0x314`
 
@@ -494,7 +494,7 @@ Vervang elke naam van het apparaat door de bijbehorende UUID:
 
 ### <a name="possible-cause"></a>Mogelijke oorzaak
 
-De GRUB-configuratie bestanden (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/boot/grub2/grub.cfg_of _/etc/default/grub_) kunnen de para meters `rd.lvm.lv` bevatten of `rd_LVM_LV`. Met deze para meters worden de LVM-apparaten (Logical Volume Manager) geïdentificeerd die tijdens de opstart tijd moeten worden gedetecteerd. Als deze LVM-apparaten niet bestaan, wordt het beveiligde systeem zelf niet gestart en blijft het in het opstart proces zitten. Hetzelfde probleem wordt ook weer gegeven met de failover-VM. Hier volgen enkele voor beelden:
+De GRUB-configuratie bestanden (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/boot/grub2/grub.cfg_of _/etc/default/grub_) kunnen de para meters bevatten `rd.lvm.lv` of `rd_LVM_LV` . Met deze para meters worden de LVM-apparaten (Logical Volume Manager) geïdentificeerd die tijdens de opstart tijd moeten worden gedetecteerd. Als deze LVM-apparaten niet bestaan, wordt het beveiligde systeem zelf niet gestart en blijft het in het opstart proces zitten. Hetzelfde probleem wordt ook weer gegeven met de failover-VM. Hier volgen enkele voor beelden:
 
 - Bestand: _/boot/grub2/grub.cfg_ op RHEL7:
 
@@ -508,7 +508,7 @@ De GRUB-configuratie bestanden (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/
 
   `kernel /vmlinuz-2.6.32-754.el6.x86_64 ro root=UUID=36dd8b45-e90d-40d6-81ac-ad0d0725d69e rd_NO_LUKS LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto rd_LVM_LV=rootvg/lv_root  KEYBOARDTYPE=pc KEYTABLE=us rd_LVM_LV=rootvg/lv_swap rd_NO_DM rhgb quiet`
 
-In elk voor beeld moet GRUB twee LVM-apparaten detecteren met de namen `root` en `swap` van de volume groep `rootvg`.
+In elk voor beeld moet GRUB twee LVM-apparaten detecteren met de namen `root` en `swap` van de volume groep `rootvg` .
 
 ### <a name="fix-the-problem"></a>Het probleem oplossen
 

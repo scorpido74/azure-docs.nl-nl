@@ -10,15 +10,15 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
 ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72248589"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>Een werkstroom indienen aan Microsoft Genomics met behulp van een SAS in plaats van een opslagaccountsleutel 
 
-In dit artikel wordt beschreven hoe u een werk stroom verzendt naar de Microsoft Genomics-service met behulp van een config. txt-bestand dat [gedeelde toegangs handtekeningen (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) bevat in plaats van de sleutel van het opslag account. Deze mogelijkheid kan handig zijn als er de zichtbaarheid van een opslagaccountsleutel in het bestand config.txt uit veiligheidsoogpunt niet wenselijk is. 
+In dit artikel wordt beschreven hoe u een werk stroom verzendt naar de Microsoft Genomics-service met behulp van een config.txt-bestand met [Shared Access signatures (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) in plaats van de sleutel van het opslag account. Deze mogelijkheid kan handig zijn als er de zichtbaarheid van een opslagaccountsleutel in het bestand config.txt uit veiligheidsoogpunt niet wenselijk is. 
 
 In dit artikel wordt ervan uitgegaan dat u de `msgen`-client al hebt geïnstalleerd en uitgevoerd, en dat u bekend bent met het gebruik van Azure Storage. Als u een werk stroom met de opgegeven voorbeeld gegevens hebt verzonden, kunt u door gaan met dit artikel. 
 

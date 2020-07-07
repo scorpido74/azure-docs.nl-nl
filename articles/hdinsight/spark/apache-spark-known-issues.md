@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
 ms.openlocfilehash: 2c153d818136c5d8804dae72004dfaf17fd1bf7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73494531"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Bekende problemen met Apache Spark cluster op HDInsight
@@ -32,7 +32,7 @@ Gebruik de volgende procedure om het probleem te omzeilen:
 
         yarn application –list
 
-    De standaard taak namen worden livy als de taken zijn gestart met een interactieve livy-sessie waarvoor geen expliciete namen zijn opgegeven. Voor de livy-sessie die is gestart door [Jupyter notebook](https://jupyter.org/), begint de `remotesparkmagics_*`taak naam met.
+    De standaard taak namen worden livy als de taken zijn gestart met een interactieve livy-sessie waarvoor geen expliciete namen zijn opgegeven. Voor de livy-sessie die is gestart door [Jupyter notebook](https://jupyter.org/), begint de taak naam met `remotesparkmagics_*` .
 
 3. Voer de volgende opdracht uit om deze taken af te breken.
 
@@ -81,17 +81,17 @@ Gebruik geen niet-ASCII-tekens in Jupyter notebook-bestands namen. Als u probeer
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Fout tijdens het laden van notitie blokken met een grotere grootte
 
-Mogelijk wordt er een fout **`Error loading notebook`** bericht weer geven wanneer u notitie blokken laadt die groter zijn.  
+Mogelijk wordt er een fout bericht weer geven **`Error loading notebook`** Wanneer u notitie blokken laadt die groter zijn.  
 
 **Risico beperking**
 
-Als deze fout wordt weer gegeven, betekent dit niet dat uw gegevens beschadigd of verloren zijn gegaan.  Uw Notebooks bevinden zich nog `/var/lib/jupyter`in de schijf en u kunt deze in het cluster gebruiken om ze te openen. Zie [SSH-sleutels gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md) voor informatie.
+Als deze fout wordt weer gegeven, betekent dit niet dat uw gegevens beschadigd of verloren zijn gegaan.  Uw Notebooks bevinden zich nog in `/var/lib/jupyter` de schijf en u kunt deze in het cluster gebruiken om ze te openen. Zie [SSH-sleutels gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md) voor informatie.
 
 Zodra u met SSH verbinding hebt gemaakt met het cluster, kunt u uw notitie blokken vanuit uw cluster naar uw lokale computer (met SCP of WinSCP) kopiëren als back-up om te voor komen dat belang rijke gegevens in het notitie blok verloren gaan. U kunt vervolgens SSH-tunnels in uw hoofd knooppunt op poort 8001 gebruiken om toegang te krijgen tot Jupyter zonder de gateway te passeren.  Hier kunt u de uitvoer van uw notitie blok wissen en opnieuw opslaan om de grootte van het notitie blok te minimaliseren.
 
 U moet een aantal aanbevolen procedures volgen om te voor komen dat deze fout zich voordoet in de toekomst:
 
-* Het is belang rijk dat u de notitieblok grootte beperkt blijft. Elke uitvoer van uw Spark-taken die wordt teruggestuurd naar Jupyter, wordt persistent gemaakt in het notitie blok.  Het is een best practice met Jupyter in het algemeen om te `.collect()` voor komen dat een grote rdd of dataframes wordt uitgevoerd. Als u in plaats daarvan de inhoud van een RDD wilt bekijken, kunt u `.take()` overwegen `.sample()` om uit te voeren of de uitvoer niet te groot is.
+* Het is belang rijk dat u de notitieblok grootte beperkt blijft. Elke uitvoer van uw Spark-taken die wordt teruggestuurd naar Jupyter, wordt persistent gemaakt in het notitie blok.  Het is een best practice met Jupyter in het algemeen om te voor komen dat het wordt uitgevoerd `.collect()` op grote rdd of dataframes; in plaats daarvan kunt u, als u de inhoud van een rdd wilt bekijken, overwegen `.take()` of u de uitvoer wilt verkorten `.sample()` .
 * Wanneer u een notitie blok opslaat, wist u ook alle uitvoer cellen om de grootte te verkleinen.
 
 ### <a name="notebook-initial-startup-takes-longer-than-expected"></a>Het eerste keer opstarten van de notebook duurt langer dan verwacht

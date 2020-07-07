@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: tisande
 ms.openlocfilehash: 8ef41edb687a5df39243880c897d12e83c008ec9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80063560"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Opera tors in Azure Cosmos DB
@@ -21,19 +21,19 @@ In dit artikel vindt u meer informatie over de verschillende Opera tors die door
 
 In de volgende tabel ziet het resultaat van gelijkheidsvergelijkingen in de SQL-API voor elk paar JSON-typen.
 
-| **Op** | **Undefined** | **Null** | **Booleaans** | **Telwoord** | **Tekenreeks** | **Object** | **Array** |
+| **Op** | **Undefined** | **Null** | **Boolean-waarde** | **Number** | **Tekenreeks** | **Object** | **Matrix** |
 |---|---|---|---|---|---|---|---|
 | **Undefined** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
 | **Null** | Undefined | **OK** | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **Booleaans** | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined | Undefined |
-| **Telwoord** | Undefined | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined |
+| **Boolean-waarde** | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined | Undefined |
+| **Number** | Undefined | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined |
 | **Tekenreeks** | Undefined | Undefined | Undefined | Undefined | **OK** | Undefined | Undefined |
 | **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **OK** | Undefined |
-| **Array** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **OK** |
+| **Matrix** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **OK** |
 
-Voor vergelijkings operatoren `>`zoals `>=`, `!=` `<`,, en `<=`wordt vergelijking tussen typen of tussen twee objecten of matrices gegenereerd `Undefined`.  
+Voor vergelijkings operatoren zoals,,, `>` `>=` `!=` `<` en `<=` wordt vergelijking tussen typen of tussen twee objecten of matrices gegenereerd `Undefined` .  
 
-Als het resultaat van de scalaire expressie `Undefined`is, wordt het item niet opgenomen in het resultaat `Undefined` omdat het `true`niet gelijk is aan.
+Als het resultaat van de scalaire expressie is `Undefined` , wordt het item niet opgenomen in het resultaat omdat het `Undefined` niet gelijk is aan `true` .
 
 ## <a name="logical-and-or-and-not-operators"></a>Logische operatoren (EN, OF en NIET)
 
@@ -41,22 +41,22 @@ Logische operatoren worden uitgevoerd op Booleaanse waarden. In de volgende tabe
 
 **Operator OF**
 
-Retourneert `true` wanneer een van de voor waarden `true`is.
+Retourneert `true` Wanneer een van de voor waarden is `true` .
 
-|  | **True** | **False** | **Undefined** |
+|  | **True** | **Terecht** | **Undefined** |
 | --- | --- | --- | --- |
 | **True** |True |True |True |
-| **False** |True |False |Undefined |
+| **Terecht** |True |False |Undefined |
 | **Undefined** |True |Undefined |Undefined |
 
 **Operator EN**
 
-Retourneert `true` wanneer beide expressies zijn `true`.
+Retourneert `true` wanneer beide expressies zijn `true` .
 
-|  | **True** | **False** | **Undefined** |
+|  | **True** | **Terecht** | **Undefined** |
 | --- | --- | --- | --- |
 | **True** |True |False |Undefined |
-| **False** |False |False |False |
+| **Terecht** |False |False |False |
 | **Undefined** |Undefined |False |Undefined |
 
 **Operator NIET**
@@ -66,14 +66,14 @@ Keert de waarde van een booleaanse expressie om.
 |  | **TEN** |
 | --- | --- |
 | **True** |False |
-| **False** |True |
+| **Terecht** |True |
 | **Undefined** |Undefined |
 
 **Operator prioriteit**
 
-De logische Opera `OR`tors `AND`, en `NOT` hebben het prioriteits niveau dat hieronder wordt weer gegeven:
+De logische Opera tors `OR` , `AND` en `NOT` hebben het prioriteits niveau dat hieronder wordt weer gegeven:
 
-| **And** | **Prioriteiten** |
+| **Operator** | **Priority** |
 | --- | --- |
 | **TEN** |1 |
 | **MAAR** |2 |
@@ -81,13 +81,13 @@ De logische Opera `OR`tors `AND`, en `NOT` hebben het prioriteits niveau dat hie
 
 ## <a name="-operator"></a>*-operator
 
-De speciale operator * projecteert het hele item in de vorm van. Als u deze operator gebruikt, moet dit het enige geprojecteerde veld zijn. Een query zoals `SELECT * FROM Families f` is geldig, maar `SELECT VALUE * FROM Families f` `SELECT *, f.id FROM Families f` is niet geldig.
+De speciale operator * projecteert het hele item in de vorm van. Als u deze operator gebruikt, moet dit het enige geprojecteerde veld zijn. Een query zoals `SELECT * FROM Families f` is geldig, maar `SELECT VALUE * FROM Families f` is `SELECT *, f.id FROM Families f` niet geldig.
 
 ## <a name="-and--operators"></a>? en?? operatoren
 
 U kunt de Opera tors van ternaire (?) en Coalesce (?) gebruiken om voorwaardelijke expressies te maken, zoals in programmeer talen zoals C# en Java script.
 
-U kunt de ? operator voor het maken van nieuwe JSON-eigenschappen. Met de volgende query worden bijvoorbeeld de classificatie niveaus geclassificeerd in `elementary` of: `other`
+U kunt de ? operator voor het maken van nieuwe JSON-eigenschappen. Met de volgende query worden bijvoorbeeld de classificatie niveaus geclassificeerd in `elementary` of `other` :
 
 ```sql
      SELECT (c.grade < 5)? "elementary": "other" AS gradeLevel
@@ -103,7 +103,7 @@ U kunt ook aanroepen nesten naar de? , zoals in de volgende query:
 
 Net als bij andere query operators, de? de operator sluit items uit als de eigenschappen van de verwijzing ontbreken of de typen die worden vergeleken, verschillen.
 
-Gebruikt u de? operator om efficiënt te controleren op een eigenschap in een item bij het uitvoeren van query's op semi-gestructureerde of gegevens van een gemengd type. De volgende query retourneert bijvoorbeeld, indien `lastName` aanwezig, of `surname` als `lastName` deze niet aanwezig is.
+Gebruikt u de? operator om efficiënt te controleren op een eigenschap in een item bij het uitvoeren van query's op semi-gestructureerde of gegevens van een gemengd type. De volgende query retourneert bijvoorbeeld `lastName` , indien aanwezig, of `surname` als deze `lastName` niet aanwezig is.
 
 ```sql
     SELECT f.lastName ?? f.surname AS familyName

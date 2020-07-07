@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.reviewer: dx@sendgrid.com
 ms.openlocfilehash: 33df6b5c8c5c16a6eb896944de05068affc2b407
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80062202"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>E-mail verzenden met SendGrid met Azure
 ## <a name="overview"></a>Overzicht
-In deze hand leiding wordt gedemonstreerd hoe u algemene programmeer taken uitvoert met de SendGrid-e-mail service op Azure. De voor beelden zijn geschreven in\# C en ondersteunen .net Standard 1,3. De volgende scenario's omvatten het samen stellen van e-mail, het verzenden van e-mail, het toevoegen van bijlagen en het inschakelen van verschillende e-mail-en tracerings instellingen. Zie de sectie [volgende stappen][Next steps] voor meer informatie over het SendGrid en verzenden van e-mail.
+In deze hand leiding wordt gedemonstreerd hoe u algemene programmeer taken uitvoert met de SendGrid-e-mail service op Azure. De voor beelden zijn geschreven in C \# en ondersteunen .NET Standard 1,3. De volgende scenario's omvatten het samen stellen van e-mail, het verzenden van e-mail, het toevoegen van bijlagen en het inschakelen van verschillende e-mail-en tracerings instellingen. Zie de sectie [volgende stappen][Next steps] voor meer informatie over het SendGrid en verzenden van e-mail.
 
 ## <a name="what-is-the-sendgrid-email-service"></a>Wat is de SendGrid-e-mail service?
 SendGrid is een [cloud-gebaseerde e-mail service] die betrouw bare [transactionele e-mail levering], schaal baarheid en real-time analyse biedt, samen met flexibele api's die eenvoudig aangepaste integratie maken. Veelvoorkomende SendGrid-use-cases zijn:
@@ -43,7 +43,7 @@ Bezoek [https://sendgrid.com](https://sendgrid.com) of SendGrid [C# Library][sen
 Het [SendGrid NuGet-pakket](https://www.nuget.org/packages/Sendgrid) is de eenvoudigste manier om de SENDGRID-API op te halen en om uw toepassing te configureren met alle afhankelijkheden. NuGet is een Visual Studio-extensie die is opgenomen in micro soft Visual Studio 2015 en hoger, waarmee u eenvoudig bibliotheken en hulpprogram ma's kunt installeren en bijwerken.
 
 > [!NOTE]
-> Als u NuGet wilt installeren als u een versie van Visual Studio gebruikt die ouder is dan Visual Studio [https://www.nuget.org](https://www.nuget.org)2015, gaat u naar en klikt u op de knop **NuGet installeren** .
+> Als u NuGet wilt installeren als u een versie van Visual Studio gebruikt die ouder is dan Visual Studio 2015, gaat u naar [https://www.nuget.org](https://www.nuget.org) en klikt u op de knop **NuGet installeren** .
 >
 >
 
@@ -144,11 +144,11 @@ In de volgende voor beelden ziet u hoe u een e-mail bericht verzendt met behulp 
     
 ## <a name="how-to-send-email-from-asp-net-core-api-using-mailhelper-class"></a>Procedure: e-mail verzenden vanuit ASP .NET core API met behulp van de klasse mail helper
 
-Het onderstaande voor beeld kan worden gebruikt om één e-mail bericht te verzenden naar meerdere personen uit de ASP .NET `MailHelper` core API `SendGrid.Helpers.Mail` met behulp van de klasse van naam ruimte. Voor dit voor beeld gebruiken we ASP .NET Core 1,0. 
+Het onderstaande voor beeld kan worden gebruikt om één e-mail bericht te verzenden naar meerdere personen uit de ASP .NET core API met behulp `MailHelper` van de klasse van `SendGrid.Helpers.Mail` naam ruimte. Voor dit voor beeld gebruiken we ASP .NET Core 1,0. 
 
 In dit voor beeld is de API-sleutel opgeslagen in het `appsettings.json` bestand dat kan worden overschreven van de Azure Portal zoals weer gegeven in de bovenstaande voor beelden.
 
-De inhoud van `appsettings.json` het bestand moet er ongeveer als volgt uitzien:
+De inhoud van het `appsettings.json` bestand moet er ongeveer als volgt uitzien:
 
     {
        "Logging": {
@@ -162,7 +162,7 @@ De inhoud van `appsettings.json` het bestand moet er ongeveer als volgt uitzien:
      "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     }
 
-Eerst moet u de onderstaande code toevoegen in het `Startup.cs` bestand van het .net core API-project. Dit is vereist om toegang te krijgen tot de `SENDGRID_API_KEY` vanuit het `appsettings.json` bestand met behulp van AFHANKELIJKHEIDS injectie in de API-controller. De `IConfiguration` interface kan worden ingevoegd bij de constructor van de controller nadat deze is toegevoegd in de `ConfigureServices` onderstaande methode. De inhoud van `Startup.cs` het bestand ziet er ongeveer als volgt uit nadat u de vereiste code hebt toegevoegd:
+Eerst moet u de onderstaande code toevoegen in het `Startup.cs` bestand van het .net core API-project. Dit is vereist om toegang te krijgen tot de `SENDGRID_API_KEY` vanuit het `appsettings.json` bestand met behulp van afhankelijkheids injectie in de API-controller. De `IConfiguration` interface kan worden ingevoegd bij de constructor van de controller nadat deze is toegevoegd in de `ConfigureServices` onderstaande methode. De inhoud van het `Startup.cs` bestand ziet er ongeveer als volgt uit nadat u de vereiste code hebt toegevoegd:
 
         public IConfigurationRoot Configuration { get; }
 
@@ -173,7 +173,7 @@ Eerst moet u de onderstaande code toevoegen in het `Startup.cs` bestand van het 
             services.AddSingleton<IConfiguration>(Configuration);
         }
 
-Na het injecteren van de `IConfiguration` interface kunt u op de controller de `CreateSingleEmailToMultipleRecipients` methode van de `MailHelper` -klasse gebruiken om één e-mail bericht naar meerdere ontvangers te verzenden. De methode accepteert een extra Booleaanse para meter `showAllRecipients`met de naam. Deze para meter kan worden gebruikt om te bepalen of e-mail ontvangers elk ander e-mail adres kunnen zien in het gedeelte aan van de koptekst van een e-mail. De voorbeeld code voor de controller moet er als volgt uitzien 
+Na het injecteren van de interface kunt u op de controller `IConfiguration` de `CreateSingleEmailToMultipleRecipients` methode van de `MailHelper` -klasse gebruiken om één e-mail bericht naar meerdere ontvangers te verzenden. De methode accepteert een extra Booleaanse para meter met de naam `showAllRecipients` . Deze para meter kan worden gebruikt om te bepalen of e-mail ontvangers elk ander e-mail adres kunnen zien in het gedeelte aan van de koptekst van een e-mail. De voorbeeld code voor de controller moet er als volgt uitzien 
 
     using System;
     using System.Collections.Generic;
@@ -253,7 +253,7 @@ SendGrid biedt verschillende Api's en webhooks die u kunt gebruiken om gebruik t
 ## <a name="next-steps"></a>Volgende stappen
 Nu u de basis principes van de SendGrid-e-mail service hebt geleerd, volgt u deze koppelingen voor meer informatie.
 
-* SendGrid C\# Library opslag plaats: [SendGrid-csharp][sendgrid-csharp]
+* SendGrid C \# Library opslag plaats: [SendGrid-csharp][sendgrid-csharp]
 * SendGrid API-documentatie:<https://sendgrid.com/docs>
 
 [Next steps]: #next-steps

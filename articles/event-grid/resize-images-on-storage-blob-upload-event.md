@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 92962c376e2b800a327f44c4cad5cd9fdd4cab8d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: e46aa28d770cf561df40a0f4b40ef39a70e35687
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560525"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367934"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Zelfstudie: Formaat van geüploade afbeeldingen automatisch wijzigen met Event Grid
 
@@ -62,7 +62,11 @@ Als u Cloud Shell niet gebruikt, moet u eerst zich aanmelden met `az login`.
 
 Als u de Event Grid-resourceprovider nog niet hebt geregistreerd in uw abonnement, doet u dat eerst.
 
-```azurecli-interactive
+```bash
+az provider register --namespace Microsoft.EventGrid
+```
+
+```powershell
 az provider register --namespace Microsoft.EventGrid
 ```
 
@@ -72,22 +76,43 @@ Voor Azure Functions is een algemeen opslagaccount vereist. Naast het Blob-opsla
 
 1. Stel een variabele in om daarin de naam op te nemen van de resourcegroep die u in de vorige zelfstudie hebt gemaakt.
 
-    ```azurecli-interactive
+    ```bash
     resourceGroupName="myResourceGroup"
     ```
-2. Stel een variabele in die de locatie moet bevatten voor de resources die moeten worden gemaakt. 
 
-    ```azurecli-interactive
+    ```powershell
+    $resourceGroupName="myResourceGroup"
+    ```
+
+1. Stel een variabele in die de locatie moet bevatten voor de resources die moeten worden gemaakt. 
+
+    ```bash
     location="eastus"
-    ```    
-3. Stel een variabele in voor de naam van het nieuwe opslagaccount dat voor Azure Functions vereist is.
-    ```azurecli-interactive
+    ```
+
+    ```powershell
+    $location="eastus"
+    ```
+
+1. Stel een variabele in voor de naam van het nieuwe opslagaccount dat voor Azure Functions vereist is.
+
+    ```bash
     functionstorage="<name of the storage account to be used by the function>"
     ```
-4. Maak het opslagaccount voor de Azure-functie.
 
-    ```azurecli-interactive
+    ```powershell
+    $functionstorage="<name of the storage account to be used by the function>"
+    ```
+
+1. Maak het opslagaccount voor de Azure-functie.
+
+    ```bash
     az storage account create --name $functionstorage --location $location \
+    --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
+    ```
+
+    ```powershell
+    az storage account create --name $functionstorage --location $location `
     --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
     ```
 
@@ -99,14 +124,25 @@ Geef de naam van uw eigen unieke functie-app op in de volgende opdracht. De naam
 
 1. Geef een naam op voor de functie-app die moet worden gemaakt.
 
-    ```azurecli-interactive
+    ```bash
     functionapp="<name of the function app>"
     ```
-2. Maak de Azure-functie.
 
-    ```azurecli-interactive
+    ```powershell
+    $functionapp="<name of the function app>"
+    ```
+
+1. Maak de Azure-functie.
+
+    ```bash
     az functionapp create --name $functionapp --storage-account $functionstorage \
       --resource-group $resourceGroupName --consumption-plan-location $location \
+      --functions-version 2
+    ```
+
+    ```powershell
+    az functionapp create --name $functionapp --storage-account $functionstorage `
+      --resource-group $resourceGroupName --consumption-plan-location $location `
       --functions-version 2
     ```
 
@@ -118,7 +154,7 @@ De functie vereist referenties voor het Blob-opslagaccount, die worden toegevoeg
 
 # <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
-```azurecli-interactive
+```bash
 storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
   --name $blobStorageAccount --query connectionString --output tsv)
 
@@ -127,9 +163,18 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
   THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
 ```
 
+```powershell
+$storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName `
+  --name $blobStorageAccount --query connectionString --output tsv)
+
+az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName `
+  --settings AzureWebJobsStorage=$storageConnectionString THUMBNAIL_CONTAINER_NAME=thumbnails `
+  THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
+```
+
 # <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-```azurecli-interactive
+```bash
 blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName \
   -n $blobStorageAccount --query [0].value --output tsv)
 
@@ -140,6 +185,20 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
   --settings FUNCTIONS_EXTENSION_VERSION=~2 BLOB_CONTAINER_NAME=thumbnails \
   AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount \
   AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey \
+  AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
+```
+
+```powershell
+$blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName `
+  -n $blobStorageAccount --query [0].value --output tsv)
+
+$storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName `
+  --name $blobStorageAccount --query connectionString --output tsv)
+
+az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName `
+  --settings FUNCTIONS_EXTENSION_VERSION=~2 BLOB_CONTAINER_NAME=thumbnails `
+  AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount `
+  AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey `
   AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
 ```
 
@@ -155,9 +214,15 @@ U kunt nu een codeproject van Functions implementeren naar deze functie-app.
 
 De C#-voorbeeldfunctie van resize is beschikbaar op [GitHub](https://github.com/Azure-Samples/function-image-upload-resize). Implementeer dit codeproject naar de functie-app met behulp van de opdracht [az functionapp deployment source config](/cli/azure/functionapp/deployment/source).
 
-```azurecli-interactive
+```bash
 az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName \
   --branch master --manual-integration \
+  --repo-url https://github.com/Azure-Samples/function-image-upload-resize
+```
+
+```powershell
+az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName `
+  --branch master --manual-integration `
   --repo-url https://github.com/Azure-Samples/function-image-upload-resize
 ```
 
@@ -165,11 +230,18 @@ az functionapp deployment source config --name $functionapp --resource-group $re
 
 Het voorbeeld van de resize-functie van Node.js is beschikbaar op [GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10). Implementeer dit codeproject van Functions naar de functie-app met behulp van de opdracht [az functionapp deployment source config](/cli/azure/functionapp/deployment/source).
 
-```azurecli-interactive
+```bash
 az functionapp deployment source config --name $functionapp \
   --resource-group $resourceGroupName --branch master --manual-integration \
   --repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node-v10
 ```
+
+```powershell
+az functionapp deployment source config --name $functionapp `
+  --resource-group $resourceGroupName --branch master --manual-integration `
+  --repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node-v10
+```
+
 ---
 
 De functie om afbeeldingen in grootte aan te passen wordt geactiveerd door HTTP-aanvragen die vanaf de Event Grid-service worden verzonden. U kunt Event Grid laten weten dat u deze meldingen bij de URL van uw functie wilt ontvangen door een gebeurtenisabonnement te maken. Voor deze zelfstudie abonneert u zich op gebeurtenissen die door een blob zijn gemaakt.
@@ -220,7 +292,7 @@ Een gebeurtenisabonnement geeft aan welke door de provider gegenereerde gebeurte
 
 1. Open het tabblad **Filters** en voer de volgende acties uit:
     1. Selecteer de optie **Filteren van onderwerpen inschakelen**.
-    2. Voor **Onderwerp begint met** voert u de volgende waarde in: **/blobServices/default/containers/images/blobs/** .
+    1. Voor **Onderwerp begint met** voert u de volgende waarde in: **/blobServices/default/containers/images/blobs/** .
 
         ![Een filter opgeven voor het gebeurtenisabonnement](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png)
 

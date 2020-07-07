@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: bb7ebee67d65ab37dc037437b7c35d8c19c53096
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82137022"
 ---
 # <a name="decision-forest-regression-module"></a>Regressie-module voor beslissings structuur
@@ -24,7 +24,7 @@ Gebruik deze module om een regressie model te maken op basis van een ensemble va
 
 Nadat u het model hebt geconfigureerd, moet u het model trainen met een gegevensset met een label en de module [Train model](./train-model.md) . Het getrainde model kan vervolgens worden gebruikt voor het maken van voor spellingen. 
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 
 Beslissings structuren zijn niet-parametrische modellen die een reeks eenvoudige tests voor elk exemplaar uitvoeren, waarbij een gegevens structuur van een binaire structuur wordt doorzocht totdat een Leaf-knoop punt (beslissing) is bereikt.
 

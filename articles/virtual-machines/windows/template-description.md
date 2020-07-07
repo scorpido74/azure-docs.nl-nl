@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
 ms.openlocfilehash: 04dba192488744d1b54b0a0e2d885c0b1766bdc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100529"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuele machines in een Azure Resource Manager sjabloon
@@ -367,7 +367,7 @@ U kunt eventueel ook gegevens schijven toevoegen aan de Vm's. Het [aantal schijv
 ],
 ```
 
-## <a name="extensions"></a>Uitbreidingen
+## <a name="extensions"></a>Extensies
 
 Hoewel [uitbrei dingen](extensions-features.md) een afzonderlijke resource zijn, zijn ze nauw verbonden met vm's. Extensies kunnen worden toegevoegd als een onderliggende resource van de virtuele machine of als een afzonderlijke resource. In het voor beeld ziet u de [uitbrei ding van diagnostische gegevens](extensions-diagnostics-template.md) die wordt toegevoegd aan de vm's:
 
@@ -404,7 +404,7 @@ Hoewel [uitbrei dingen](extensions-features.md) een afzonderlijke resource zijn,
 
 Deze extensie resource gebruikt de variabele storagenaam en de diagnostische variabelen om waarden op te geven. Als u de gegevens wilt wijzigen die door deze uitbrei ding worden verzameld, kunt u meer prestatie meter items toevoegen aan de variabele wadperfcounters. U kunt er ook voor kiezen om de diagnostische gegevens in een ander opslag account te plaatsen dan waar de VM-schijven worden opgeslagen.
 
-Er zijn veel uitbrei dingen die u op een virtuele machine kunt installeren, maar de handigste is waarschijnlijk de [aangepaste script extensie](extensions-customscript.md). In het voor beeld wordt een Power shell-script met de naam start. ps1 uitgevoerd op elke virtuele machine wanneer deze voor het eerst wordt gestart:
+Er zijn veel uitbrei dingen die u op een virtuele machine kunt installeren, maar de handigste is waarschijnlijk de [aangepaste script extensie](extensions-customscript.md). In het voor beeld wordt een Power shell-script met de naam start.ps1 uitgevoerd op elke virtuele machine wanneer deze voor het eerst wordt gestart:
 
 ```json
 {
@@ -431,7 +431,7 @@ Er zijn veel uitbrei dingen die u op een virtuele machine kunt installeren, maar
 }
 ```
 
-Het script start. ps1 kan veel configuratie taken uitvoeren. De gegevens schijven die zijn toegevoegd aan de virtuele machines in het voor beeld, worden bijvoorbeeld niet geïnitialiseerd. u kunt een aangepast script gebruiken om ze te initialiseren. Als u meerdere opstart taken hebt, kunt u het bestand start. ps1 gebruiken om andere Power shell-scripts in azure Storage aan te roepen. In het voor beeld wordt Power shell gebruikt, maar u kunt elke script methode gebruiken die beschikbaar is in het besturings systeem dat u gebruikt.
+Het start.ps1 script kan veel configuratie taken uitvoeren. De gegevens schijven die zijn toegevoegd aan de virtuele machines in het voor beeld, worden bijvoorbeeld niet geïnitialiseerd. u kunt een aangepast script gebruiken om ze te initialiseren. Als u meerdere opstart taken hebt, kunt u het start.ps1-bestand gebruiken om andere Power shell-scripts in azure Storage aan te roepen. In het voor beeld wordt Power shell gebruikt, maar u kunt elke script methode gebruiken die beschikbaar is in het besturings systeem dat u gebruikt.
 
 U kunt de status van de geïnstalleerde uitbrei dingen bekijken via de uitbrei dingen in de portal:
 

@@ -4,10 +4,10 @@ description: Meer informatie over het inschakelen van een beheerde identiteit in
 ms.topic: article
 ms.date: 04/15/2020
 ms.openlocfilehash: 31dc198bfb2023684f3a9022bec5a5f50f0d9a72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82115717"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Beheerde identiteiten gebruiken met Azure Container Instances
@@ -47,7 +47,7 @@ Als u een beheerde identiteit wilt gebruiken, moet aan de identiteit toegang wor
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.0.49 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.0.49 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="create-an-azure-key-vault"></a>Een Azure-sleutel kluis maken
 
@@ -121,7 +121,7 @@ Voer de volgende [AZ-set-Policy](/cli/azure/keyvault?view=azure-cli-latest) opdr
 
 ### <a name="enable-user-assigned-identity-on-a-container-group"></a>Door de gebruiker toegewezen identiteit inschakelen voor een container groep
 
-Voer de volgende opdracht [AZ container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) uit om een container exemplaar te maken op basis `azure-cli` van de installatie kopie van micro soft. Dit voor beeld bevat een groep met één container die u interactief kunt gebruiken om de Azure CLI uit te voeren voor toegang tot andere Azure-Services. In deze sectie wordt alleen het basis besturingssysteem gebruikt. Zie voor een voor beeld van het gebruik van de Azure CLI in de container de door [het systeem toegewezen identiteit inschakelen voor een container groep](#enable-system-assigned-identity-on-a-container-group). 
+Voer de volgende opdracht [AZ container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) uit om een container exemplaar te maken op basis van de installatie kopie van micro soft `azure-cli` . Dit voor beeld bevat een groep met één container die u interactief kunt gebruiken om de Azure CLI uit te voeren voor toegang tot andere Azure-Services. In deze sectie wordt alleen het basis besturingssysteem gebruikt. Zie voor een voor beeld van het gebruik van de Azure CLI in de container de door [het systeem toegewezen identiteit inschakelen voor een container groep](#enable-system-assigned-identity-on-a-container-group). 
 
 De `--assign-identity` para meter geeft uw door de gebruiker toegewezen beheerde identiteit door aan de groep. De langlopende opdracht zorgt ervoor dat de container wordt uitgevoerd. In dit voor beeld wordt dezelfde resource groep gebruikt als voor het maken van de sleutel kluis, maar u kunt een andere naam opgeven.
 
@@ -190,7 +190,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-Gebruik nu het toegangs token om te verifiëren bij de sleutel kluis en lees een geheim. Zorg ervoor dat u de naam van de sleutel kluis in de URL (*https:\//mykeyvault.Vault.Azure.net/...*) vervangt:
+Gebruik nu het toegangs token om te verifiëren bij de sleutel kluis en lees een geheim. Zorg ervoor dat u de naam van de sleutel kluis in de URL (*https: \/ /mykeyvault.Vault.Azure.net/...*) vervangt:
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"
@@ -206,9 +206,9 @@ Het antwoord ziet er ongeveer als volgt uit, waarin het geheim wordt weer gegeve
 
 ### <a name="enable-system-assigned-identity-on-a-container-group"></a>Door het systeem toegewezen identiteit inschakelen voor een container groep
 
-Voer de volgende opdracht [AZ container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) uit om een container exemplaar te maken op basis `azure-cli` van de installatie kopie van micro soft. Dit voor beeld bevat een groep met één container die u interactief kunt gebruiken om de Azure CLI uit te voeren voor toegang tot andere Azure-Services. 
+Voer de volgende opdracht [AZ container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) uit om een container exemplaar te maken op basis van de installatie kopie van micro soft `azure-cli` . Dit voor beeld bevat een groep met één container die u interactief kunt gebruiken om de Azure CLI uit te voeren voor toegang tot andere Azure-Services. 
 
-Met `--assign-identity` de para meter zonder extra waarde kan een door het systeem toegewezen beheerde identiteit voor de groep worden ingeschakeld. De identiteit ligt binnen het bereik van de resource groep van de container groep. De langlopende opdracht zorgt ervoor dat de container wordt uitgevoerd. In dit voor beeld wordt dezelfde resource groep gebruikt voor het maken van de sleutel kluis die zich binnen het bereik van de identiteit bevindt.
+`--assign-identity`Met de para meter zonder extra waarde kan een door het systeem toegewezen beheerde identiteit voor de groep worden ingeschakeld. De identiteit ligt binnen het bereik van de resource groep van de container groep. De langlopende opdracht zorgt ervoor dat de container wordt uitgevoerd. In dit voor beeld wordt dezelfde resource groep gebruikt voor het maken van de sleutel kluis die zich binnen het bereik van de identiteit bevindt.
 
 ```azurecli-interactive
 # Get the resource ID of the resource group
@@ -244,7 +244,7 @@ De `identity` sectie in de uitvoer ziet er ongeveer als volgt uit, waarin wordt 
 [...]
 ```
 
-Stel een variabele in op de waarde `principalId` van (de Service-Principal-id) van de identiteit, die u in latere stappen moet gebruiken.
+Stel een variabele in op de waarde van `principalId` (de Service-Principal-id) van de identiteit, die u in latere stappen moet gebruiken.
 
 ```azurecli-interactive
 spID=$(az container show \
@@ -298,7 +298,7 @@ De waarde van het geheim wordt opgehaald:
 
 ## <a name="enable-managed-identity-using-resource-manager-template"></a>Beheerde identiteit inschakelen met Resource Manager-sjabloon
 
-Als u een beheerde identiteit in een container groep wilt inschakelen met een [Resource Manager](container-instances-multi-container-group.md)-sjabloon `identity` , stelt u `Microsoft.ContainerInstance/containerGroups` de eigenschap van `ContainerGroupIdentity` het object in met een-object. De volgende fragmenten bevatten de eigenschap `identity` die voor verschillende scenario's is geconfigureerd. Zie de [Naslag informatie voor Resource Manager-sjablonen](/azure/templates/microsoft.containerinstance/containergroups). Geef een minimum `apiVersion` van `2018-10-01`op.
+Als u een beheerde identiteit in een container groep wilt inschakelen met een [Resource Manager-sjabloon](container-instances-multi-container-group.md), stelt u de `identity` eigenschap van het `Microsoft.ContainerInstance/containerGroups` object in met een- `ContainerGroupIdentity` object. De volgende fragmenten bevatten de `identity` eigenschap die voor verschillende scenario's is geconfigureerd. Zie de [Naslag informatie voor Resource Manager-sjablonen](/azure/templates/microsoft.containerinstance/containergroups). Geef een minimum `apiVersion` van op `2018-10-01` .
 
 ### <a name="user-assigned-identity"></a>Door gebruiker toegewezen identiteit
 
@@ -346,7 +346,7 @@ In een container groep kunt u een door het systeem toegewezen identiteit en een 
 ## <a name="enable-managed-identity-using-yaml-file"></a>Beheerde identiteit inschakelen met YAML-bestand
 
 Als u een beheerde identiteit wilt inschakelen in een container groep die is geïmplementeerd met behulp van een [yaml-bestand](container-instances-multi-container-yaml.md), neemt u de volgende YAML op.
-Geef een minimum `apiVersion` van `2018-10-01`op.
+Geef een minimum `apiVersion` van op `2018-10-01` .
 
 ### <a name="user-assigned-identity"></a>Door gebruiker toegewezen identiteit
 

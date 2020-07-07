@@ -8,10 +8,10 @@ ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: conceptual
 ms.date: 08/02/2017
 ms.openlocfilehash: 2d33a6ec5ff6b687913914e9433b85765aaa7aec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71309936"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Taakbrowser en taakweergave gebruiken voor Azure Data Lake Analytics
@@ -160,7 +160,7 @@ Taak Details toont gedetailleerde informatie over de taak, waaronder script, res
     Het U-SQL-script van de taak wordt opgeslagen in het query archief. U kunt het oorspronkelijke U-SQL-script weer geven en het indien nodig opnieuw verzenden.
 * Resources
   
-    U kunt de uitvoer van de taak compilaties vinden die in de query-Store zijn opgeslagen via resources. U kunt bijvoorbeeld ' algebra. XML ' vinden, die wordt gebruikt voor het weer geven van de taak grafiek, de assembly's die u hebt geregistreerd, enzovoort.
+    U kunt de uitvoer van de taak compilaties vinden die in de query-Store zijn opgeslagen via resources. U kunt bijvoorbeeld ' algebra.xml ' vinden, dat wordt gebruikt om de taak grafiek, de assembly's die u hebt geregistreerd, enzovoort weer te geven.
 * Uitvoerings weergave van vertex
   
     De details van de uitvoerings hoek van vertices worden weer gegeven. Het taak profiel archiveert elk uitvoerings logboek voor vertexen, zoals het totale aantal gelezen/geschreven gegevens, runtime, status, enzovoort. In deze weer gave kunt u meer informatie krijgen over hoe een taak is uitgevoerd. Zie [de weer gave vertex Execution gebruiken in data Lake-Hulpprogram ma's voor Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)voor meer informatie.

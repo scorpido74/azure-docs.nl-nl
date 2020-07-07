@@ -4,10 +4,10 @@ description: Meer informatie over hoe u Azure Data Box kunt gebruiken om grote i
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: e45b8e26d332019b03ac41c3993e311480494040
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82160952"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Offline back-up Azure Backup met behulp van Azure Data Box
@@ -25,7 +25,7 @@ In dit artikel wordt uitgelegd hoe u Azure Data Box kunt gebruiken om grote init
 
 Het proces voor het seeden van gegevens van de MARS-agent met behulp van Azure Data Box wordt ondersteund op de volgende Windows-Sku's.
 
-| **Besturingssysteem**                                 | **SKU**                                                      |
+| **OS**                                 | **SKU**                                                      |
 | -------------------------------------- | ------------------------------------------------------------ |
 | **Werkstation**                        |                                                              |
 | Windows 10 64-bits                     | Enterprise, Pro, Home                                       |
@@ -51,7 +51,7 @@ Het proces voor het seeden van gegevens van de MARS-agent met behulp van Azure D
 | >7,2 TB en <= 80 TB * *                                      | [Azure Data Box (100 TB)](https://docs.microsoft.com/azure/databox/data-box-overview) |
 
 * Typische compressie tarieven variëren tussen 10% en 20%. <br>
-* * Als u verwacht meer dan 80 TB aan eerste back-upgegevens voor één MARS-server, neemt [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com)u contact op met.
+* * Als u verwacht meer dan 80 TB aan eerste back-upgegevens voor één MARS-server, neemt u contact op met [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
 
 >[!IMPORTANT]
 >De eerste back-upgegevens van één server moeten zich in één Azure Data Box exemplaar of Azure Data Box schijf bevinden en kunnen niet worden gedeeld tussen meerdere apparaten van dezelfde of verschillende Sku's. Een Azure Data Box apparaat kan echter eerste back-ups van meerdere servers bevatten.
@@ -124,7 +124,7 @@ Het offline back-upproces met MARS en Azure Data Box vereist dat de Data Box app
 
 1. Zorg ervoor dat u eerdere installaties van de MARS-agent verwijdert.
 1. Down load de nieuwste MARS-agent van [deze website](https://aka.ms/azurebackup_agent).
-1. Voer *MARSAgentInstaller. exe*uit en voer *alleen* de stappen uit om [de agent te installeren en registreren](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) bij de Recovery Services kluis waar u uw back-ups wilt opslaan.
+1. Voer *MARSAgentInstaller.exe*uit en voer *alleen* de stappen uit om [de agent te installeren en te registreren](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) bij de Recovery Services kluis waar u uw back-ups wilt opslaan.
 
    > [!NOTE]
    > De Recovery Services kluis moet zich in hetzelfde abonnement benemen als de Azure Data Box taak.
@@ -153,8 +153,8 @@ De MARS-agent wordt uitgevoerd in de context van het lokale systeem, zodat hierv
 Om ervoor te zorgen dat u uw Data Box-apparaat als lokaal systeem kunt koppelen met behulp van het NFS-protocol:
 
 1. Schakel de client in voor de NFS-functie op de Windows-Server waarop de MARS-agent is geïnstalleerd. Geef de alternatieve bron- *Wim op: D: \Sources\Install.Wim: 4*.
-1. Down load PSExec <https://download.sysinternals.com/files/PSTools.zip> van naar de server waarop de Mars-agent is geïnstalleerd.
-1. Open een opdracht prompt met verhoogde bevoegdheid en voer de volgende opdracht uit met de map die *PSExec. exe* bevat als de huidige map.
+1. Down load PSExec van <https://download.sysinternals.com/files/PSTools.zip> naar de server waarop de Mars-agent is geïnstalleerd.
+1. Open een opdracht prompt met verhoogde bevoegdheid en voer de volgende opdracht uit met de map die *PSExec.exe* als de huidige map bevat.
 
     ```cmd
     psexec.exe  -s  -i  cmd.exe
@@ -195,7 +195,7 @@ Om ervoor te zorgen dat u uw Data Box-apparaat als lokaal systeem kunt koppelen 
 
     ![Data Box-taken voor abonnements-ID ophalen](./media/offline-backup-azure-data-box/fetching-databox-jobs.png)
 
-1. Selecteer de juiste Data Box order waarvoor u de Data Box schijf hebt uitgepakt, verbonden en ontgrendeld. Selecteer **Next**.
+1. Selecteer de juiste Data Box order waarvoor u de Data Box schijf hebt uitgepakt, verbonden en ontgrendeld. Selecteer **Volgende**.
 
     ![Data Box orders selecteren](./media/offline-backup-azure-data-box/select-databox-order.png)
 
@@ -212,9 +212,9 @@ Om ervoor te zorgen dat u uw Data Box-apparaat als lokaal systeem kunt koppelen 
     >
     >![Hoofdmap van Azure Data Box schijf](./media/offline-backup-azure-data-box/root-directory.png)
     >
-    >Als het `\\mydomain\myserver\disk1\` pad van de schijf en *Disk1* bijvoorbeeld een map bevat met de naam *PageBlob*, is `\\mydomain\myserver\disk1\`het pad dat u op de wizard pagina van de Mars-agent hebt ingevoerd.
+    >Als het pad van de schijf `\\mydomain\myserver\disk1\` en *Disk1* bijvoorbeeld een map bevat met de naam *PageBlob*, is het pad dat u op de wizard pagina van de Mars-agent hebt ingevoerd `\\mydomain\myserver\disk1\` .
     >
-    >Als u [een apparaat met een Azure Data Box 100-TB instelt](#set-up-azure-data-box-devices), `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` voert u het netwerkpad naar het apparaat in.
+    >Als u [een apparaat met een Azure Data Box 100-TB instelt](#set-up-azure-data-box-devices), voert u `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` het netwerkpad naar het apparaat in.
 
 1. Selecteer **volgende**en selecteer **volt ooien** op de volgende pagina om het back-up-en bewaar beleid met de configuratie van offline back-up op te slaan met behulp van Azure data box.
 
@@ -269,7 +269,7 @@ Controleer of het volgende fout bericht wordt weer gegeven in de MAB-console wan
 
 1. Open de map **temp** in het installatiepad. Het standaardpad voor de tijdelijke map is *C:\Program Files\Microsoft Azure Recovery Services Agent\Temp*. Zoek naar het *CBUICurr* -bestand en open het bestand.
 
-1. Ga in het *CBUICurr* -bestand naar de laatste regel en controleer of het probleem hetzelfde is als in dit fout bericht: `Unable to create an Azure AD application credential in customer's account. Exception: Update to existing credential with KeyId <some guid> is not allowed`.
+1. Ga in het *CBUICurr* -bestand naar de laatste regel en controleer of het probleem hetzelfde is als in dit fout bericht: `Unable to create an Azure AD application credential in customer's account. Exception: Update to existing credential with KeyId <some guid> is not allowed` .
 
 ### <a name="workaround"></a>Tijdelijke oplossing
 
@@ -281,10 +281,10 @@ Meld u aan bij Power shell die wordt weer gegeven in de gebruikers interface van
 
 #### <a name="step-2"></a>Stap 2
 
-Als voor geen enkele andere server offline seeding is geconfigureerd en er geen andere server afhankelijk `AzureOfflineBackup_<Azure User Id>` is van de toepassing, moet u deze toepassing verwijderen. Selecteer **Azure Portal** > **Azure Active Directory** > **app-registraties**.
+Als voor geen enkele andere server offline seeding is geconfigureerd en er geen andere server afhankelijk is van de `AzureOfflineBackup_<Azure User Id>` toepassing, moet u deze toepassing verwijderen. Selecteer **Azure Portal**  >  **Azure Active Directory**  >  **app-registraties**.
 
 >[!NOTE]
-> Controleer of de `AzureOfflineBackup_<Azure User Id>` toepassing geen andere offline seeding heeft geconfigureerd en of er geen andere server afhankelijk is van deze toepassing. Ga naar **instellingen** > **sleutels** onder de sectie **open bare sleutels** . Er mogen geen andere open bare sleutels worden toegevoegd. Zie de volgende scherm afbeelding voor naslag informatie.
+> Controleer of de toepassing geen `AzureOfflineBackup_<Azure User Id>` andere offline seeding heeft geconfigureerd en of er geen andere server afhankelijk is van deze toepassing. Ga naar **instellingen**  >  **sleutels** onder de sectie **open bare sleutels** . Er mogen geen andere open bare sleutels worden toegevoegd. Zie de volgende scherm afbeelding voor naslag informatie.
 >
 >![Open bare sleutels](./media/offline-backup-azure-data-box/public-keys.png)
 
@@ -292,22 +292,22 @@ Als voor geen enkele andere server offline seeding is geconfigureerd en er geen 
 
 Voer de volgende acties uit vanaf de-server die u wilt configureren voor offline back-ups.
 
-1. Ga naar**het tabblad** `CB_AzureADCertforOfflineSeeding_<ResourceId>` **computer certificaat toepassing** > beheren en zoek naar het certificaat met de naam.
+1. Ga naar het tabblad **computer certificaat toepassing beheren**  >  **Personal** en zoek naar het certificaat met de naam `CB_AzureADCertforOfflineSeeding_<ResourceId>` .
 
 2. Selecteer het certificaat, klik met de rechter muisknop op **alle taken**en selecteer **exporteren** zonder persoonlijke sleutel in de. CER-indeling.
 
-3. Ga naar de Azure offline back-uptoepassing die u in stap 2 hebt genoemd. **Instellingen** > **Keys**sleutels > selecteren**open bare sleutel uploaden**. Upload het certificaat dat u in de vorige stap hebt geëxporteerd.
+3. Ga naar de Azure offline back-uptoepassing die u in stap 2 hebt genoemd. **Instellingen**  >  **sleutels**selecteren  >  **open bare sleutel uploaden**. Upload het certificaat dat u in de vorige stap hebt geëxporteerd.
 
     ![Open bare sleutel uploaden](./media/offline-backup-azure-data-box/upload-public-key.png)
 
 4. Open het REGI ster in de-server door in het venster uitvoeren **regedit** in te voeren.
 
-5. Ga naar de register *computer \ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config\CloudBackupProvider.* Klik met de rechter muisknop op **CloudBackupProvider**en voeg een nieuwe teken reeks waarde `AzureADAppCertThumbprint_<Azure User Id>`toe met de naam.
+5. Ga naar de register *computer \ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config\CloudBackupProvider.* Klik met de rechter muisknop op **CloudBackupProvider**en voeg een nieuwe teken reeks waarde toe met de naam `AzureADAppCertThumbprint_<Azure User Id>` .
 
     >[!NOTE]
     > Voer een van de volgende acties uit om de gebruikers-ID van Azure op te halen:
     >
-    >- Voer de `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` opdracht uit vanuit de met Azure verbonden Power shell.
+    >- Voer de opdracht uit vanuit de met Azure verbonden Power shell `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` .
     > - Ga naar het registerpad `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` met de naam *CurrentUserId*.
 
 6. Klik met de rechter muisknop op de teken reeks die u in de vorige stap hebt toegevoegd en selecteer **wijzigen**. Geef in de waarde de vinger afdruk op van het certificaat dat u in stap 2 hebt geëxporteerd. Selecteer **OK**.
@@ -318,4 +318,4 @@ Voer de volgende acties uit vanaf de-server die u wilt configureren voor offline
 
 ## <a name="questions"></a>Vragen
 
-Neem contact op met [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com)de voor vragen of informatie over problemen die u ondervindt.
+Neem contact op met de voor vragen of informatie over problemen die u ondervindt [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .

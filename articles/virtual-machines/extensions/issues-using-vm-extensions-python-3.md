@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.assetid: 3cd520fd-eaf7-4ef9-b4d3-4827057e5028
 ms.openlocfilehash: 944abc62f25473ea52836af7dc1fdcd1e16d9269
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82120780"
 ---
 # <a name="issues-using-vm-extensions-in-python-3-enabled-linux-azure-virtual-machines-systems"></a>Problemen met het gebruik van VM-extensies in Python 3-Linux Azure Virtual Machines-systemen
@@ -31,9 +31,9 @@ ms.locfileid: "82120780"
 Sommige Linux-distributies zijn overgegaan naar python 3,8 en het oude `/usr/bin/python` ingangs punt voor python zijn verwijderd. Deze overgang is van invloed op de out-of-the-box, geautomatiseerde implementatie van bepaalde VM-uitbrei dingen (virtuele machine) met de volgende voor waarden:
 
 - Uitbrei dingen die nog steeds overschakelen naar python 3. x-ondersteuning
-- Uitbrei dingen die gebruikmaken `/usr/bin/python` van het verouderde ingangs punt
+- Uitbrei dingen die gebruikmaken van het verouderde `/usr/bin/python` ingangs punt
 
-Linux-distributie gebruikers die zijn overgestapt op **python 3. x** , moeten ervoor zorgen `/usr/bin/python` dat het verouderde ingangs punt bestaat voordat deze uitbrei dingen worden geïmplementeerd op hun vm's. Anders kan de implementatie van de uitbrei ding mislukken. 
+Linux-distributie gebruikers die zijn overgestapt op **python 3. x** , moeten ervoor zorgen dat het verouderde `/usr/bin/python` ingangs punt bestaat voordat deze uitbrei dingen worden geïmplementeerd op hun vm's. Anders kan de implementatie van de uitbrei ding mislukken. 
 
 - De onderschreven Linux-distributies die worden beïnvloed, zijn **Ubuntu Server 20,04 LTS** en **Ubuntu Pro 20,04 LTS**.
 
@@ -45,7 +45,7 @@ In-place Upgrades, zoals het upgraden van **Ubuntu 18,04 LTS** naar **Ubuntu 20,
 
 Houd rekening met de volgende algemene aanbevelingen voordat u extensies implementeert in de scenario's met bekende problemen die eerder in de samen vatting zijn beschreven:
 
-1.  Voordat u de uitbrei ding implementeert, moet u de `/usr/bin/python` symlink opnieuw invoeren met behulp van de door de leverancier van Linux-distributie.
+1.  Voordat u de uitbrei ding implementeert, moet u de symlink opnieuw invoeren met `/usr/bin/python` behulp van de door de leverancier van Linux-distributie.
 
     - Gebruik bijvoorbeeld voor **Python 2,7**:`sudo apt update && sudo apt install python-is-python2`
 

@@ -10,10 +10,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 021e680a2ca5f7c00f113c4a17421b2648ca6230
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82159980"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Veelgestelde vragen over toepassings prestaties voor Web Apps in azure
@@ -46,20 +46,20 @@ U kunt Power shell-cmdlets gebruiken om App Service web-apps te beheren en te on
 
 De gebeurtenis logboeken van uw web-app weer geven:
 
-1. Meld u aan bij uw **kudu** -`https://*yourwebsitename*.scm.azurewebsites.net`website ().
-2. Selecteer in het menu **fout opsporing console** > -**cmd**.
+1. Meld u aan bij uw **kudu-website** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
+2. Selecteer in het menu **fout opsporing console**-  >  **cmd**.
 3. Selecteer de map **logfiles** .
-4. Als u gebeurtenis logboeken wilt weer geven, selecteert u het potlood pictogram naast **eventlog. XML**.
-5. Voer de Power shell-cmdlet `Save-AzureWebSiteLog -Name webappname`uit om de logboeken te downloaden.
+4. Als u gebeurtenis logboeken wilt weer geven, selecteert u het potlood pictogram naast **eventlog.xml**.
+5. Voer de Power shell-cmdlet uit om de logboeken te downloaden `Save-AzureWebSiteLog -Name webappname` .
 
 ## <a name="how-do-i-capture-a-user-mode-memory-dump-of-my-web-app"></a>Hoe kan ik een gebruikers modus geheugen dump van mijn web-app vastleggen?
 
 Een gebruikers modus geheugen dump van uw web-app vastleggen:
 
-1. Meld u aan bij uw **kudu** -`https://*yourwebsitename*.scm.azurewebsites.net`website ().
+1. Meld u aan bij uw **kudu-website** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
 2. Selecteer het menu van het **proces Verkenner** .
-3. Klik met de rechter muisknop op het proces **W3wp. exe** of uw webtaakproces.
-4. Selecteer **Download Memory Dump** > **volledige dump**voor het downloaden van geheugen.
+3. Klik met de rechter muisknop op het **w3wp.exe** proces of uw webprocesproces.
+4. Selecteer **Download Memory Dump**  >  **volledige dump**voor het downloaden van geheugen.
 
 ## <a name="how-do-i-view-process-level-info-for-my-web-app"></a>Hoe kan ik gegevens op proces niveau voor mijn web-app weer geven?
 
@@ -67,11 +67,11 @@ U hebt twee opties voor het weer geven van informatie op proces niveau voor uw w
 
 *   In Azure Portal:
     1. Open de **proces Verkenner** voor de web-app.
-    2. Als u de details wilt weer geven, selecteert u het proces **W3wp. exe** .
+    2. Als u de details wilt weer geven, selecteert u het **w3wp.exe** proces.
 *   In de kudu-console:
-    1. Meld u aan bij uw **kudu** -`https://*yourwebsitename*.scm.azurewebsites.net`website ().
+    1. Meld u aan bij uw **kudu-website** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
     2. Selecteer het menu van het **proces Verkenner** .
-    3. Voor het proces **W3wp. exe** selecteert u **Eigenschappen**.
+    3. Voor het **w3wp.exe** proces selecteert u **Eigenschappen**.
 
 ## <a name="when-i-browse-to-my-app-i-see-error-403---this-web-app-is-stopped-how-do-i-resolve-this"></a>Als ik naar mijn app Blader, zie ik ' fout 403-deze web-app is gestopt '. Hoe los ik dit op?
 
@@ -101,14 +101,14 @@ Web-apps worden standaard uit het geheugen verwijderd als ze gedurende een bepaa
 Tracering van mislukte aanvragen inschakelen:
 
 1. Ga in het Azure Portal naar uw web-app.
-3. Selecteer **alle instellingen** > **Diagnostische logboeken**.
+3. Selecteer **alle instellingen**  >  **Diagnostische logboeken**.
 4. Selecteer **aan**voor **tracering van mislukte aanvragen**.
 5. Selecteer **Opslaan**.
 6. Selecteer op de Blade Web-App de optie **extra**.
 7. Selecteer **Visual Studio online**.
 8. Als de instelling niet is **ingeschakeld**, selecteert u **aan**.
 9. Selecteer **Go**.
-10. Selecteer **Web. config**.
+10. Selecteer **Web.config**.
 11. Voeg in System. webserver deze configuratie toe (voor het vastleggen van een specifieke URL):
 
     ```xml
@@ -142,8 +142,8 @@ Tracering van mislukte aanvragen inschakelen:
     </tracing>
     ```
 13. Als u de traceringen van mislukte aanvragen wilt downloaden, gaat u in de [Portal](https://portal.azure.com)naar uw website.
-15. Selecteer **extra** > **kudu** > **Go**.
-18. Selecteer in het menu **fout opsporing console** > -**cmd**.
+15. Selecteer **extra**  >  **kudu**  >  **Go**.
+18. Selecteer in het menu **fout opsporing console**-  >  **cmd**.
 19. Selecteer de map **logfiles** en selecteer vervolgens de map met een naam die begint met **W3SVC**.
 20. Als u het XML-bestand wilt weer geven, selecteert u het potlood pictogram.
 
@@ -174,7 +174,7 @@ Dit probleem is opgelost in Kestrel-versie 1.0.2. Deze versie is opgenomen in de
 
 Als u de functie lokale cache van App Service gebruikt, heeft dit gevolgen voor de mapstructuur van de logboek bestanden en gegevens mappen voor uw App Service exemplaar. Wanneer lokale cache wordt gebruikt, worden submappen gemaakt in de opslag logboeken en gegevens mappen. De submappen gebruiken het naam patroon ' unieke id ' + tijds tempel. Elke submap komt overeen met een VM-exemplaar waarin de web-app wordt uitgevoerd of is uitgevoerd.
 
-Controleer het tabblad App Service **Toepassings instellingen** om te bepalen of u lokale cache gebruikt. Als de lokale cache wordt gebruikt, is de app `WEBSITE_LOCAL_CACHE_OPTION` -instelling ingesteld `Always`op.
+Controleer het tabblad App Service **Toepassings instellingen** om te bepalen of u lokale cache gebruikt. Als de lokale cache wordt gebruikt, is de app-instelling `WEBSITE_LOCAL_CACHE_OPTION` ingesteld op `Always` .
 
 Als u geen lokale cache gebruikt en dit probleem ondervindt, dient u een ondersteunings aanvraag in.
 

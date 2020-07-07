@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
 ms.openlocfilehash: c85eef1a5d035e23c7e63632ac92c21440b15cae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82101549"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Windows 10 implementeren op Azure met multi tenant-hosting rechten 
@@ -55,7 +55,7 @@ Voor meer informatie:
 
 
 ## <a name="deploying-windows-10-with-multitenant-hosting-rights"></a>Implementatie van Windows 10 met multi tenant-hosting rechten
-Zorg ervoor dat u [de nieuwste Azure PowerShell hebt geïnstalleerd en geconfigureerd](/powershell/azure/overview). Nadat u uw VHD hebt voor bereid, uploadt u de VHD naar uw Azure Storage `Add-AzVhd` -account met de cmdlet als volgt:
+Zorg ervoor dat u [de nieuwste Azure PowerShell hebt geïnstalleerd en geconfigureerd](/powershell/azure/overview). Nadat u uw VHD hebt voor bereid, uploadt u de VHD naar uw Azure Storage-account met de `Add-AzVhd` cmdlet als volgt:
 
 ```powershell
 Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.vhd" `
@@ -63,7 +63,7 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 ```
 
 
-**Implementeren met behulp van Azure Resource Manager-sjabloon implementatie** In uw Resource Manager-sjablonen kunt u een extra `licenseType` para meter voor opgeven. U kunt meer lezen over het [ontwerpen van Azure Resource Manager sjablonen](../../resource-group-authoring-templates.md). Wanneer u uw VHD hebt geüpload naar Azure, bewerkt u de Resource Manager-sjabloon zodanig dat het licentie type wordt opgenomen als onderdeel van de compute-provider en uw sjabloon als normaal implementeren:
+**Implementeren met behulp van Azure Resource Manager-sjabloon implementatie** In uw Resource Manager-sjablonen kunt u een extra para meter voor `licenseType` opgeven. U kunt meer lezen over het [ontwerpen van Azure Resource Manager sjablonen](../../resource-group-authoring-templates.md). Wanneer u uw VHD hebt geüpload naar Azure, bewerkt u de Resource Manager-sjabloon zodanig dat het licentie type wordt opgenomen als onderdeel van de compute-provider en uw sjabloon als normaal implementeren:
 ```json
 "properties": {
     "licenseType": "Windows_Client",
@@ -72,13 +72,13 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
     }
 ```
 
-**Implementeren via Power shell** Wanneer u uw Windows Server-VM implementeert via Power shell, hebt u `-LicenseType`een extra para meter voor. Zodra u uw VHD hebt geüpload naar Azure, maakt u een VM met `New-AzVM` en geeft u het type licentie als volgt op:
+**Implementeren via Power shell** Wanneer u uw Windows Server-VM implementeert via Power shell, hebt u een extra para meter voor `-LicenseType` . Zodra u uw VHD hebt geüpload naar Azure, maakt u een VM met `New-AzVM` en geeft u het type licentie als volgt op:
 ```powershell
 New-AzVM -ResourceGroupName "myResourceGroup" -Location "West US" -VM $vm -LicenseType "Windows_Client"
 ```
 
 ## <a name="verify-your-vm-is-utilizing-the-licensing-benefit"></a>Controleren of uw virtuele machine gebruikmaakt van het voor deel van de licentie
-Nadat u uw virtuele machine hebt geïmplementeerd met de implementatie methode Power shell of Resource Manager, controleert u het licentie `Get-AzVM` type als volgt:
+Nadat u uw virtuele machine hebt geïmplementeerd met de implementatie methode Power shell of Resource Manager, controleert u het licentie type `Get-AzVM` als volgt:
 ```powershell
 Get-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
 ```
