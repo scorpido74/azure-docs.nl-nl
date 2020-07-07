@@ -10,10 +10,10 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
 ms.openlocfilehash: f3603bf8afdcd990144897113f4e8506629f60a3
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84429746"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Zelf studie: een model trainen en implementeren vanuit de CLI
@@ -27,7 +27,7 @@ U leert hoe u de volgende acties uitvoert:
 
 > [!div class="checklist"]
 > * De machine learning-extensie installeren
-> * Een Azure Machine Learning-werk ruimte maken
+> * Een Azure Machine Learning-werkruimte maken
 > * De reken resource maken die wordt gebruikt om het model te trainen
 > * De gegevensset definiëren en registreren die wordt gebruikt om het model te trainen
 > * Een trainings uitvoering starten
@@ -37,7 +37,7 @@ U leert hoe u de volgende acties uitvoert:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
+* Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 
 * Als u de CLI-opdrachten in dit document vanuit uw **lokale omgeving**wilt gebruiken, hebt u de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)nodig.
 
@@ -300,7 +300,7 @@ Het runconfig-bestand bevat ook informatie over het configureren van de omgeving
 > [!TIP]
 > Hoewel het mogelijk is om hand matig een runconfig-bestand te maken, is de oplossing in dit voor beeld gemaakt met behulp van het bestand dat is `generate-runconfig.py` opgenomen in de opslag plaats. Met dit bestand wordt een verwijzing naar de geregistreerde gegevensset opgehaald, wordt een uitvoeren van de configuratie programmatisch gemaakt en vervolgens opgeslagen in een bestand.
 
-Zie [Compute-doelen voor model training instellen en gebruiken](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli)voor meer informatie over het uitvoeren van configuratie bestanden. Zie [runconfigschema. json](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)voor een volledige JSON-verwijzing.
+Zie [Compute-doelen voor model training instellen en gebruiken](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli)voor meer informatie over het uitvoeren van configuratie bestanden. Zie de [runconfigschema.jsop](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)voor een volledige JSON-verwijzing.
 
 ## <a name="submit-the-training-run"></a>De trainings uitvoering verzenden
 
@@ -477,7 +477,7 @@ In deze Azure Machine Learning zelf studie hebt u de machine learning CLI gebrui
 
 > [!div class="checklist"]
 > * De machine learning-extensie installeren
-> * Een Azure Machine Learning-werk ruimte maken
+> * Een Azure Machine Learning-werkruimte maken
 > * De reken resource maken die wordt gebruikt om het model te trainen
 > * De gegevensset definiëren en registreren die wordt gebruikt om het model te trainen
 > * Een trainings uitvoering starten

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 182c5b4059874b6e03092481c68b39cf55bc7e62
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: b2293c0dd74903921abb58037afd8eb5db3659d9
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253933"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513263"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Gegevens met Azure Data Factory kopiëren van Azure Blob Storage naar SQL Database
 
@@ -44,7 +44,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](htt
 * *Azure SQL-database*. U gebruikt de database als *sink*-gegevensopslag. Als u geen database in Azure SQL Database hebt, raadpleegt u het artikel [Een database in Azure SQL Database maken](../azure-sql/database/single-database-create-quickstart.md).
 * *Visual Studio*. De procedures in dit artikel zijn gebaseerd op Visual Studio 2019.
 * *[Azure-SDK voor .NET](/dotnet/azure/dotnet-tools)* .
-* *Azure Active Directory-toepassing*. Als u geen Azure Active Directory-toepassing hebt, raadpleegt u de sectie [Een Azure Active Directory-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) van [Procedure: De portal gebruiken om een Azure AD-toepassing te maken](../active-directory/develop/howto-create-service-principal-portal.md). Kopieer de volgende waarden voor gebruik in latere stappen: **Toepassings-id (client-id)** , **Verificatiesleutel** en **Map-id (tenant-id)** . Wijs de toepassing toe aan de rol **Inzender** door de instructies in hetzelfde artikel te volgen.
+* *Azure Active Directory-toepassing*. Als u geen Azure Active Directory-toepassing hebt, raadpleegt u de sectie [Een Azure Active Directory-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) van [Procedure: De portal gebruiken om een Azure AD-toepassing te maken](../active-directory/develop/howto-create-service-principal-portal.md). Kopieer de volgende waarden voor gebruik in latere stappen: **Toepassings-id (client-id)** , **Verificatiesleutel** en **Map-id (tenant-id)** . Wijs de toepassing toe aan de rol **Inzender** door de instructies in hetzelfde artikel te volgen.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Een blob en een SQL-tabel maken
 

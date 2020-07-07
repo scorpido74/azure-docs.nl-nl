@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c9a2ab4b1ebc1c958be9dc4bd07a010f7fef8afc
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82610503"
 ---
-# <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Problemen met aanmelden oplossen met voorwaardelijke toegang
+# <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Problemen met aanmelden met behulp van voorwaardelijke toegang oplossen
 
 De informatie in dit artikel kan worden gebruikt om problemen met onverwachte aanmeldings resultaten te verhelpen die betrekking hebben op voorwaardelijke toegang met behulp van fout berichten en logboeken van Azure AD-aanmeldingen.
 
@@ -41,7 +41,7 @@ Meer informatie over het probleem vindt u door in de eerste fout pagina op **mee
 Ga als volgt te werk om te ontdekken welk beleid of beleid voor voorwaardelijke toegang wordt toegepast en waarom het volgende geldt.
 
 1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of globale lezer.
-1. Blader naar **Azure Active Directory** > **aanmeldingen**.
+1. Blader naar **Azure Active Directory**  >  **aanmeldingen**.
 1. Zoek de gebeurtenis voor de aanmelding om te controleren. Filters en kolommen toevoegen of verwijderen om overbodige gegevens te filteren.
    1. Filters toevoegen om het bereik te beperken:
       1. **Correlatie-id** wanneer u een specifieke gebeurtenis hebt die moet worden onderzocht.
@@ -79,6 +79,6 @@ Wanneer u het incident verzendt, geeft u de aanvraag-ID en het tijdstip en de da
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Aanmeldactiviteitenrapporten in Azure Active Directory Portal](../reports-monitoring/concept-sign-ins.md)
+- [Aanmeldactiviteitenrapporten in de Azure Active Directory-portal](../reports-monitoring/concept-sign-ins.md)
 - [Problemen met voorwaardelijke toegang oplossen met het What If-hulp programma](troubleshoot-conditional-access-what-if.md)
 - Aanbevolen procedures voor [voorwaardelijke toegang in azure Active Directory](best-practices.md)

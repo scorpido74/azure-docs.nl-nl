@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 7e5f6b7fa505890dc6bc818d1bd2578e5d974ff0
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594862"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Advertenties invoegen aan de client zijde
@@ -96,7 +96,7 @@ Een VAST bestand geeft aan welke AD of advertenties moeten worden weer gegeven. 
 
 De lineaire advertentie wordt beschreven in het element <**lineaire**>. Hiermee geeft u de duur van de AD op, gevolgd door gebeurtenissen, klikt u op bijhouden en een aantal **MediaFile** -elementen. Tracerings gebeurtenissen worden opgegeven in het **TrackingEvents**>-element van <en kunnen een ad-server bij het volgen van verschillende gebeurtenissen die optreden tijdens het weer geven van de AD. In dit geval worden de gebeurtenissen start, midden, volt ooien en uitvouwen bijgehouden. De gebeurtenis starten vindt plaats wanneer de AD wordt weer gegeven. De punt gebeurtenis treedt op wanneer ten minste 50% van de tijd lijn van de advertentie is bekeken. De gebeurtenis complete vindt plaats wanneer de AD aan het eind is uitgevoerd. De gebeurtenis Expand treedt op wanneer de gebruiker de video speler uitbreidt naar het volledige scherm. Clickthroughs worden opgegeven met **een <door** klikken> element binnen een <**VideoClicks** -element> en geeft een URI aan een resource die moet worden weer gegeven wanneer de gebruiker op de AD klikt. ClickTracking is opgegeven in een <**ClickTracking**>-element, ook binnen het element <**VideoClicks**> en geeft een tracerings resource op die de speler kan aanvragen wanneer de gebruiker op de AD klikt. De <**MediaFile**> elementen geven informatie op over een specifieke code ring van een ad-advertentie. Wanneer er meer dan één <**MediaFile**> element, kan de video speler de beste code ring voor het platform kiezen.
 
-Lineaire advertenties kunnen in een opgegeven volg orde worden weer gegeven. U doet dit door extra `<Ad>` elementen toe te voegen aan het bestand vast en de volg orde op te geven met behulp van het Sequence-kenmerk. Het volgende voorbeeld illustreert dit:
+Lineaire advertenties kunnen in een opgegeven volg orde worden weer gegeven. U doet dit door extra elementen toe te voegen `<Ad>` aan het bestand vast en de volg orde op te geven met behulp van het Sequence-kenmerk. Het volgende voorbeeld illustreert dit:
 
 ```xml
     <VAST version="2.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
@@ -143,7 +143,7 @@ Lineaire advertenties kunnen in een opgegeven volg orde worden weer gegeven. U d
     </VAST>
 ```
 
-Er zijn ook niet-lineaire advertenties `<Creative>` opgegeven in een-element. In het volgende voor beeld `<Creative>` ziet u een-element dat een niet-lineaire AD beschrijft.
+Er zijn ook niet-lineaire advertenties opgegeven in een- `<Creative>` element. In het volgende voor beeld ziet u een- `<Creative>` element dat een niet-lineaire AD beschrijft.
 
 ```xml
     <Creative id="video" sequence="1" AdID="">
@@ -160,7 +160,7 @@ Er zijn ook niet-lineaire advertenties `<Creative>` opgegeven in een-element. In
     </Creative>
 ```
 
-Het element <**NonLinearAds**> kan een of meer <niet- **lineaire**> elementen bevatten, die elk een niet-lineaire advertentie kunnen beschrijven. Met het element <niet- **lineaire**> geeft u de resource voor de niet-lineaire AD op. De resource kan een <**StaticResource**>, een <**IFrameResource**> of een <**HTMLResource** ->. \<**StaticResource**> beschrijft een niet-HTML-resource en definieert een creativeType-kenmerk dat aangeeft hoe de resource wordt weer gegeven:
+Het element <**NonLinearAds**> kan een of meer <niet- **lineaire**> elementen bevatten, die elk een niet-lineaire advertentie kunnen beschrijven. Met het element <niet- **lineaire**> geeft u de resource voor de niet-lineaire AD op. De resource kan een <**StaticResource**>, een <**IFrameResource**> of een <**HTMLResource** ->. \<**StaticResource**>beschrijft een niet-HTML-resource en definieert een creativeType-kenmerk dat aangeeft hoe de resource wordt weer gegeven:
 
 Afbeelding/GIF, afbeelding/JPEG, afbeelding/PNG: de resource wordt weer gegeven in een HTML-<**img**>-tag.
 
@@ -170,7 +170,7 @@ Application/x-Shock Wave-Flash: de resource wordt weer gegeven in een Flash Play
 
 **IFrameResource** beschrijft een HTML-resource die kan worden weer gegeven in een IFRAME. **HTMLResource** beschrijft een stukje HTML-code dat in een webpagina kan worden ingevoegd. **TrackingEvents** geven tracerings gebeurtenissen en de URI op die moeten worden aangevraagd wanneer de gebeurtenis optreedt. In dit voor beeld worden de gebeurtenissen acceptInvitation en samen vouwen bijgehouden. Zie IAB.NET/VAST voor meer informatie over het **NonLinearAds** -element en de bijbehorende onderliggende elementen. Houd er rekening mee dat het element **TrackingEvents** zich in het element **NonLinearAds** bevindt in plaats van het niet- **lineaire** element.
 
-Companion-advertenties worden gedefinieerd in `<CompanionAds>` een-element. Het `<CompanionAds>` element kan een of meer `<Companion>` elementen bevatten. Elk `<Companion>` element beschrijft een aanvullende AD en kan een `<StaticResource>`, bevatten `<IFrameResource>`of `<HTMLResource>` worden opgegeven op dezelfde manier als in een niet-lineaire ad-advertentie. Een VAST bestand kan meerdere Companion-advertenties bevatten en de toepassing van de speler kan de meest geschikte AD kiezen om weer te geven. Zie voor meer informatie over vaste [3,0](https://www.iab.net/media/file/VASTv3.0.pdf).
+Companion-advertenties worden gedefinieerd in een- `<CompanionAds>` element. Het `<CompanionAds>` element kan een of meer `<Companion>` elementen bevatten. Elk `<Companion>` element beschrijft een aanvullende AD en kan een `<StaticResource>` , bevatten `<IFrameResource>` of `<HTMLResource>` worden opgegeven op dezelfde manier als in een niet-lineaire ad-advertentie. Een VAST bestand kan meerdere Companion-advertenties bevatten en de toepassing van de speler kan de meest geschikte AD kiezen om weer te geven. Zie voor meer informatie over vaste [3,0](https://www.iab.net/media/file/VASTv3.0.pdf).
 
 ### <a name="using-a-digital-video-multiple-ad-playlist-vmap-file"></a>Een VMAP-bestand (Digital Video multiple AD Play List) gebruiken
 Met een VMAP-bestand kunt u opgeven wanneer er sprake is van AD-onderbrekingen, hoe lang elke onderbreking is, hoeveel advertenties kunnen worden weer gegeven binnen een pauze en welke soorten advertenties tijdens een onderbreking kunnen worden weer gegeven. Het volgende in een voor beeld van een VMAP-bestand dat één AD-afbreek punt definieert:
@@ -224,7 +224,7 @@ Met een VMAP-bestand kunt u opgeven wanneer er sprake is van AD-onderbrekingen, 
     </vmap:VMAP>
 ```
 
-Een VMAP-bestand begint met `<VMAP>` een-element dat een of `<AdBreak>` meer elementen bevat, waarbij elk een AD-afbreek proces definieert. Elke AD-afbreek periode geeft een type en een Verbreek nummer en een tijd-offset. Het kenmerk breakType geeft het type aan van de AD die tijdens het onderbreken kan worden afgespeeld: lineair, niet-lineair of weer gave. Geef een Ads-toewijzing weer voor een grote Companion-advertentie. Er kan meer dan één AD-type worden opgegeven in een door komma's gescheiden lijst (geen spaties). De breakID is een optionele id voor de AD. De timeOffset geeft aan wanneer de AD moet worden weer gegeven. Dit kan op een van de volgende manieren worden opgegeven:
+Een VMAP-bestand begint met een `<VMAP>` -element dat een of meer `<AdBreak>` elementen bevat, waarbij elk een AD-afbreek proces definieert. Elke AD-afbreek periode geeft een type en een Verbreek nummer en een tijd-offset. Het kenmerk breakType geeft het type aan van de AD die tijdens het onderbreken kan worden afgespeeld: lineair, niet-lineair of weer gave. Geef een Ads-toewijzing weer voor een grote Companion-advertentie. Er kan meer dan één AD-type worden opgegeven in een door komma's gescheiden lijst (geen spaties). De breakID is een optionele id voor de AD. De timeOffset geeft aan wanneer de AD moet worden weer gegeven. Dit kan op een van de volgende manieren worden opgegeven:
 
 1. Time: in de notatie uu: mm: SS of uu: mm: SS. mmm waarbij. mmm de milliseconden is. De waarde van dit kenmerk geeft de tijd aan vanaf het begin van de video tijdlijn tot het begin van de AD-einde.
 2. Percentage – in n% notatie waarbij n het percentage van de video tijdlijn dat moet worden afgespeeld voordat de AD wordt afgespeeld
@@ -243,7 +243,7 @@ Het **AdSource** -element van de <-> biedt de speler een inline AD-antwoord of e
 * `<AdTagURI>`een URI die verwijst naar een reactie van een AD van een ander systeem
 * `<CustomAdData>`-een wille keurige teken reeks die een niet-enorme reactie vertegenwoordigt
 
-In dit voor beeld wordt een in line AD-antwoord opgegeven met een `<VASTAdData>` -element dat een vast antwoord op ad bevat. Zie [VMAP](https://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap)voor meer informatie over de andere elementen.
+In dit voor beeld wordt een in line AD-antwoord opgegeven met een- `<VASTAdData>` element dat een vast antwoord op ad bevat. Zie [VMAP](https://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap)voor meer informatie over de andere elementen.
 
 Het element <**AdBreak**> kan ook een <**TrackingEvents** -> element bevatten. Met het element <**TrackingEvents**> kunt u het begin of einde van een AD-einde bijhouden of er is een fout opgetreden tijdens de AD-einde. Het element <**TrackingEvents**> bevat een of meer <**Tracking**> elementen, die elk een tracerings gebeurtenis en een tracerings-URI opgeven. De mogelijke tracking gebeurtenissen zijn:
 
@@ -327,14 +327,14 @@ Met een MAST-bestand kunt u triggers opgeven die bepalen wanneer een AD wordt we
 
 Een MAST-bestand begint met een **MAST** -element dat één **Triggers** -element bevat. Het `<triggers>` element bevat een of meer **trigger** -elementen die bepalen wanneer een AD moet worden afgespeeld.
 
-Het **trigger** -element bevat een **startConditions** -element dat aangeeft wanneer een AD moet beginnen te spelen. Het **startConditions** -element bevat een of `<condition>` meer elementen. Wanneer elk `<condition>` wordt geëvalueerd als waar, wordt een trigger geïnitieerd of ingetrokken, afhankelijk van het feit `<condition>` of de zich in respectievelijk een **startConditions** -of **endConditions** -element bevindt. Als er `<condition>` meerdere elementen aanwezig zijn, worden deze behandeld als impliciet of wordt de trigger gestart als een voor waarde die wordt geëvalueerd als waar. `<condition>`elementen kunnen worden genest. Wanneer onderliggende `<condition>` elementen vooraf worden ingesteld, worden deze behandeld als impliciet en moeten alle voor waarden worden geëvalueerd als waar om de trigger te initiëren. Het `<condition>` element bevat de volgende kenmerken die de voor waarde definiëren:
+Het **trigger** -element bevat een **startConditions** -element dat aangeeft wanneer een AD moet beginnen te spelen. Het **startConditions** -element bevat een of meer `<condition>` elementen. Wanneer elk `<condition>` wordt geëvalueerd als waar, wordt een trigger geïnitieerd of ingetrokken, afhankelijk van het feit of de `<condition>` zich in respectievelijk een **StartConditions** -of **endConditions** -element bevindt. Als `<condition>` er meerdere elementen aanwezig zijn, worden deze behandeld als impliciet of wordt de trigger gestart als een voor waarde die wordt geëvalueerd als waar. `<condition>`elementen kunnen worden genest. Wanneer onderliggende `<condition>` elementen vooraf worden ingesteld, worden deze behandeld als impliciet en moeten alle voor waarden worden geëvalueerd als waar om de trigger te initiëren. Het `<condition>` element bevat de volgende kenmerken die de voor waarde definiëren:
 
 1. **type** : Hiermee geeft u het type voor waarde, gebeurtenis of eigenschap op
 2. **naam** : de naam van de eigenschap of gebeurtenis die tijdens de evaluatie moet worden gebruikt
 3. **waarde** : de waarde die een eigenschap moet worden geëvalueerd
 4. **operator** – de bewerking die moet worden gebruikt tijdens de evaluatie: EQ (gelijk), NEQ (niet gelijk aan), GTR (groter), GEQ (groter of gelijk aan), lt (kleiner dan), LEQ (kleiner dan of gelijk aan), mod (modulo)
 
-**endConditions** bevatten `<condition>` ook elementen. Wanneer een voor waarde wordt geëvalueerd als waar, wordt de trigger opnieuw ingesteld. Het `<trigger>` element bevat ook een `<sources>` element dat een of meer `<source>` elementen bevat. De `<source>` elementen definiëren de URI voor het antwoord van de AD en het type van het AD-antwoord. In dit voor beeld krijgt een URI een enorme reactie.
+**endConditions** bevatten ook `<condition>` elementen. Wanneer een voor waarde wordt geëvalueerd als waar, wordt de trigger opnieuw ingesteld. Het `<trigger>` element bevat ook een `<sources>` element dat een of meer `<source>` elementen bevat. De `<source>` elementen definiëren de URI voor het antwoord van de AD en het type van het AD-antwoord. In dit voor beeld krijgt een URI een enorme reactie.
 
 ```xml
     <trigger id="postroll" description="postroll"  >
@@ -352,7 +352,7 @@ Het **trigger** -element bevat een **startConditions** -element dat aangeeft wan
 ### <a name="using-video-player-ad-interface-definition-vpaid"></a>Video speler gebruiken-AD-interface definitie (VPAID)
 VPAID is een API voor het inschakelen van uitvoer bare ad-eenheden om te communiceren met een video speler. Hierdoor kunnen zeer interactieve AD-ervaringen worden geboden. De gebruiker kan communiceren met de AD en de AD kan reageren op acties die door de viewer worden uitgevoerd. Een AD kan bijvoorbeeld knoppen weer geven waarmee de gebruiker meer informatie of een langere versie van de AD kan weer geven. De video speler moet ondersteuning bieden voor de VPAID-API en de uitvoer bare AD moet de API implementeren. Wanneer een speler een AD-bericht van een ad-server aanvraagt, kan de server reageren met een grote reactie die een VPAID AD bevat.
 
-Een uitvoer bare AD wordt gemaakt in code die moet worden uitgevoerd in een runtime-omgeving zoals Adobe Flash™ of Java script dat in een webbrowser kan worden uitgevoerd. Wanneer een ad-server een VAST antwoord retourneert dat een VPAID AD bevat, moet de waarde van het kenmerk `<MediaFile>` apiFramework in het element ' VPAID ' zijn. Dit kenmerk geeft aan dat de Inge sloten AD een VPAID uitvoerbaar AD-bestand is. Het kenmerk type moet worden ingesteld op het MIME-type van het uitvoer bare bestand, zoals ' Application/x-Shock Wave-Flash ' of ' Application/x-java script '. Het volgende XML-fragment toont `<MediaFile>` het-element van een enorme reactie met een VPAID-uitvoerbaar bestand.
+Een uitvoer bare AD wordt gemaakt in code die moet worden uitgevoerd in een runtime-omgeving zoals Adobe Flash™ of Java script dat in een webbrowser kan worden uitgevoerd. Wanneer een ad-server een VAST antwoord retourneert dat een VPAID AD bevat, moet de waarde van het kenmerk apiFramework in het `<MediaFile>` element ' VPAID ' zijn. Dit kenmerk geeft aan dat de Inge sloten AD een VPAID uitvoerbaar AD-bestand is. Het kenmerk type moet worden ingesteld op het MIME-type van het uitvoer bare bestand, zoals ' Application/x-Shock Wave-Flash ' of ' Application/x-java script '. Het volgende XML-fragment toont het- `<MediaFile>` element van een enorme reactie met een VPAID-uitvoerbaar bestand.
 
 ```xml
     <MediaFiles>
@@ -363,7 +363,7 @@ Een uitvoer bare AD wordt gemaakt in code die moet worden uitgevoerd in een runt
     </MediaFiles>
 ```
 
-Een uitvoer bare AD kan worden geïnitialiseerd met behulp van `<AdParameters>` het `<Linear>` - `<NonLinear>` element binnen de or-elementen in een enorme reactie. Zie voor meer informatie over `<AdParameters>` het element [vaste 3,0](https://www.iab.net/media/file/VASTv3.0.pdf). Zie [VPAID 2,0](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)voor meer informatie over de VPAID-API.
+Een uitvoer bare AD kan worden geïnitialiseerd met behulp van het- `<AdParameters>` element binnen de `<Linear>` or- `<NonLinear>` elementen in een enorme reactie. Zie voor meer informatie over het `<AdParameters>` element [vaste 3,0](https://www.iab.net/media/file/VASTv3.0.pdf). Zie [VPAID 2,0](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)voor meer informatie over de VPAID-API.
 
 ## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>Een Windows-of Windows Phone 8-Player implementeren met AD-ondersteuning
 Het micro soft media platform: Player Framework voor Windows 8 en Windows Phone 8 bevat een verzameling voorbeeld toepassingen die laten zien hoe u een video speler-toepassing kunt implementeren met behulp van het Framework. U kunt het Framework van de speler en de voor beelden van [Player Framework voor Windows 8 en Windows Phone 8](https://playerframework.codeplex.com)downloaden.
@@ -383,7 +383,7 @@ Wanneer u de oplossing micro soft. PlayerFramework. xaml. samples opent, ziet u 
 In elk van deze voor beelden wordt de Media Player-klasse gebruikt die door het Player-Framework is gedefinieerd. De meeste voor beelden gebruiken invoeg toepassingen die ondersteuning voor verschillende indelingen van AD-antwoorden toevoegen. Het ProgrammaticAdPage-voor beeld werkt programmatisch samen met een Media Player-exemplaar.
 
 ### <a name="adpodpage-sample"></a>AdPodPage-voor beeld
-In dit voor beeld wordt de AdSchedulerPlugin gebruikt om te definiëren wanneer een AD wordt weer gegeven. In dit voor beeld wordt een mid-Rolling aankondiging gepland om na vijf seconden te worden afgespeeld. De AD-pod (een groep advertenties die in volg orde worden weer gegeven) is opgegeven in een VAST bestand dat door een ad-server wordt geretourneerd. De URI naar het enorme bestand is opgegeven in het `<RemoteAdSource>` -element.
+In dit voor beeld wordt de AdSchedulerPlugin gebruikt om te definiëren wanneer een AD wordt weer gegeven. In dit voor beeld wordt een mid-Rolling aankondiging gepland om na vijf seconden te worden afgespeeld. De AD-pod (een groep advertenties die in volg orde worden weer gegeven) is opgegeven in een VAST bestand dat door een ad-server wordt geretourneerd. De URI naar het enorme bestand is opgegeven in het- `<RemoteAdSource>` element.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -408,7 +408,7 @@ In dit voor beeld wordt de AdSchedulerPlugin gebruikt om te definiëren wanneer 
 Zie voor meer informatie over de AdSchedulerPlugin [reclame in het Framework van Windows 8 en Windows Phone 8](https://playerframework.codeplex.com/wikipage?title=Advertising&referringTitle=Windows%208%20Player%20Documentation)
 
 ### <a name="adschedulingpage"></a>AdSchedulingPage
-In dit voor beeld wordt ook gebruikgemaakt van de AdSchedulerPlugin. Het plant drie advertenties, een Preroll-advertentie, een Mid-Roll AD en een advertentie met de advertentie. De URI naar de enorme voor elke AD is opgegeven in een `<RemoteAdSource>` -element.
+In dit voor beeld wordt ook gebruikgemaakt van de AdSchedulerPlugin. Het plant drie advertenties, een Preroll-advertentie, een Mid-Roll AD en een advertentie met de advertentie. De URI naar de enorme voor elke AD is opgegeven in een- `<RemoteAdSource>` element.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -552,7 +552,7 @@ In dit voor beeld ziet u hoe u AdSchedulerPlugin kunt gebruiken om een mid-Rolli
 ```
 
 ### <a name="vastlinearnonlinearpage"></a>VastLinearNonLinearPage
-In dit voor beeld wordt de AdSchedulerPlugin gebruikt om een lineaire en een niet-lineaire advertentie te plannen. De vaste bestands locatie wordt opgegeven met het `<RemoteAdSource>` -element.
+In dit voor beeld wordt de AdSchedulerPlugin gebruikt om een lineaire en een niet-lineaire advertentie te plannen. De vaste bestands locatie wordt opgegeven met het- `<RemoteAdSource>` element.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -574,7 +574,7 @@ In dit voor beeld wordt de AdSchedulerPlugin gebruikt om een lineaire en een nie
 ```
 
 ### <a name="vmappage"></a>VMAPPage
-In dit voor beeld wordt VmapSchedulerPlugin gebruikt om advertenties te plannen met behulp van een VMAP-bestand. De URI naar het VMAP-bestand is opgegeven in het bron kenmerk van `<VmapSchedulerPlugin>` het element.
+In dit voor beeld wordt VmapSchedulerPlugin gebruikt om advertenties te plannen met behulp van een VMAP-bestand. De URI naar het VMAP-bestand is opgegeven in het bron kenmerk van het `<VmapSchedulerPlugin>` element.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">

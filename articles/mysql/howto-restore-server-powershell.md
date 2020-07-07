@@ -8,10 +8,10 @@ ms.devlang: azurepowershel
 ms.topic: conceptual
 ms.date: 4/28/2020
 ms.openlocfilehash: 871b1ba81f672459378b23705ad5b96213667a73
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82609060"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>Een back-up maken van een Azure Database for MySQL-server en deze herstellen met Power shell
@@ -26,7 +26,7 @@ U hebt het volgende nodig om deze hand leiding te volt ooien:
 - Een [Azure database for mysql server](quickstart-create-mysql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
-> Hoewel de AZ. MySql Power shell-module in preview is, moet u deze afzonderlijk van de AZ Power shell-module installeren met `Install-Module -Name Az.MySql -AllowPrerelease`behulp van de volgende opdracht:.
+> Hoewel de AZ. MySql Power shell-module in preview is, moet u deze afzonderlijk van de AZ Power shell-module installeren met behulp van de volgende opdracht: `Install-Module -Name Az.MySql -AllowPrerelease` .
 > Zodra de AZ. MySql Power shell-module algemeen beschikbaar is, wordt het onderdeel van toekomstige AZ Power shell-module releases en is deze systeem eigen beschikbaar vanuit Azure Cloud Shell.
 
 Als u Power shell lokaal wilt gebruiken, maakt u verbinding met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) .
@@ -40,7 +40,7 @@ Bij het maken van de server maakt u de keuze tussen het configureren van uw serv
 > [!NOTE]
 > Nadat een server is gemaakt, is het soort redundantie die het heeft, geografisch redundant versus lokaal redundant en kan niet worden gewijzigd.
 
-Tijdens het maken van een server `New-AzMySqlServer` via de opdracht, bepaalt de para meter **GeoRedundantBackup** de optie voor de redundantie van back-ups. Als deze functie is **ingeschakeld**, worden er geo redundante back-ups gemaakt. Als deze functie is **uitgeschakeld**, worden er lokaal redundante back-ups gemaakt.
+Tijdens het maken van een server via de `New-AzMySqlServer` opdracht, bepaalt de para meter **GeoRedundantBackup** de optie voor de redundantie van back-ups. Als deze functie is **ingeschakeld**, worden er geo redundante back-ups gemaakt. Als deze functie is **uitgeschakeld**, worden er lokaal redundante back-ups gemaakt.
 
 De Bewaar periode voor back-ups is ingesteld met de para meter **BackupRetentionDay** .
 
@@ -58,13 +58,13 @@ De Bewaar periode voor back-ups bepaalt hoe ver terug een herstel naar een bepaa
 
 ## <a name="server-point-in-time-restore"></a>Server herstel naar een bepaald tijdstip
 
-U kunt de server naar een eerder tijdstip herstellen. De herstelde gegevens worden gekopieerd naar een nieuwe server en de bestaande server blijft ongewijzigd. Als een tabel bijvoorbeeld per ongeluk wordt verwijderd, kunt u de herstel bewerking op het tijdstip herstellen. Vervolgens kunt u de ontbrekende tabel en gegevens ophalen van de herstelde kopie van de server.
+U kunt de server naar een eerder tijdstip herstellen. De herstelde gegevens worden gekopieerd naar een nieuwe server. De bestaande server blijft ongewijzigd. Als een tabel bijvoorbeeld per ongeluk wordt verwijderd, kunt u de server herstellen naar een tijdstip net voordat de tabel werd verwijderd. Vervolgens kunt u de ontbrekende tabel en gegevens ophalen van de herstelde kopie van de server.
 
-Als u de server wilt herstellen, `Restore-AzMySqlServer` gebruikt u de Power shell-cmdlet.
+Als u de server wilt herstellen, gebruikt u de PowerShell-cmdlet `Restore-AzMySqlServer`.
 
-### <a name="run-the-restore-command"></a>Voer de opdracht herstellen uit
+### <a name="run-the-restore-command"></a>De herstelopdracht uitvoeren
 
-Voer het volgende voor beeld uit in Power shell om de server te herstellen.
+Voer het volgende voorbeeld uit in PowerShell uit om de server te herstellen.
 
 ```azurepowershell-interactive
 $restorePointInTime = (Get-Date).AddMinutes(-10)
@@ -72,7 +72,7 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzMySqlServer -Name mydemoserver-restored -ResourceGroupName myresourcegroup -RestorePointInTime $restorePointInTime -UsePointInTimeRestore
 ```
 
-De **PointInTimeRestore** para meters set PointInTimeRestore `Restore-AzMySqlServer` van de cmdlet vereist de volgende para meters:
+De para meters set **PointInTimeRestore** van de `Restore-AzMySqlServer` cmdlet vereist de volgende para meters:
 
 | Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
@@ -81,19 +81,19 @@ De **PointInTimeRestore** para meters set PointInTimeRestore `Restore-AzMySqlSer
 | RestorePointInTime | 2020-03-13T13:59:00Z | Selecteer een punt in de tijd om te herstellen. Deze datum en tijd moet binnen de back-upretentieperiode van de bronserver vallen. Gebruik de ISO8601 datum-en tijd notatie. U kunt bijvoorbeeld uw eigen lokale tijd zone gebruiken, zoals **2020-03-13T05:59:00-08:00**. U kunt ook de UTC Zulu-indeling gebruiken, bijvoorbeeld **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | Gebruik de punt-in-time-modus om te herstellen. |
 
-Wanneer u een server naar een eerder tijdstip herstelt, wordt er een nieuwe server gemaakt. De oorspronkelijke server en de bijbehorende data bases van het opgegeven tijdstip worden naar de nieuwe server gekopieerd.
+Wanneer u een server naar een eerder tijdstip herstelt, wordt er een nieuwe server gemaakt. De oorspronkelijke server en de bijbehorende databases van het opgegeven tijdstip worden naar de nieuwe server gekopieerd.
 
-De waarden voor de locatie en de prijs categorie voor de herstelde server blijven hetzelfde als de oorspronkelijke server.
+De locatie en prijscategorie van de herstelde server zijn hetzelfde als die van de oorspronkelijke server.
 
-Nadat het herstel proces is voltooid, zoekt u de nieuwe server en controleert u of de gegevens correct zijn hersteld. De nieuwe server heeft dezelfde aanmeldings naam en hetzelfde wacht woord voor de server beheerder op het moment dat de herstel bewerking werd gestart. Het wacht woord kan worden gewijzigd op de pagina **overzicht** van de nieuwe server.
+Nadat het herstelproces is voltooid, zoekt u de nieuwe server en controleert u of de gegevens correct zijn hersteld. De aanmeldingsnaam en het wachtwoord voor de nieuwe server zijn hetzelfde als voor de bestaande server op het moment dat de herstelbewerking werd gestart. Het wachtwoord kan worden gewijzigd op de pagina **Overzicht** van de nieuwe server.
 
-De nieuwe server die tijdens het herstellen is gemaakt, heeft geen VNet-service-eind punten die bestonden op de oorspronkelijke server. Deze regels moeten afzonderlijk worden ingesteld voor de nieuwe server. Firewall regels van de oorspronkelijke server worden hersteld.
+De nieuwe server die is gemaakt tijdens een herstelbewerking, bevat niet de VNet-service-eindpunten die bestonden op de oorspronkelijke server. Deze regels moeten afzonderlijk worden ingesteld voor de nieuwe server. Firewallregels van de oorspronkelijke server worden hersteld.
 
 ## <a name="geo-restore"></a>Geo-herstel
 
 Als u uw server voor geografisch redundante back-ups hebt geconfigureerd, kan een nieuwe server worden gemaakt op basis van de back-up van de bestaande server. Deze nieuwe server kan worden gemaakt in elke regio die Azure Database for MySQL beschikbaar is.
 
-Als u een server wilt maken met behulp van een geo `Restore-AzMySqlServer` -redundante back-up, gebruikt u de opdracht met de para meter **UseGeoRestore** .
+Als u een server wilt maken met behulp van een geo-redundante back-up, gebruikt u de `Restore-AzMySqlServer` opdracht met de para meter **UseGeoRestore** .
 
 > [!NOTE]
 > Wanneer een server voor het eerst wordt gemaakt, is deze mogelijk niet onmiddellijk beschikbaar voor geo Restore. Het kan enkele uren duren voordat de benodigde meta gegevens zijn gevuld.
@@ -114,7 +114,7 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzMySqlServer -Name mydemoserver-georestored -ResourceGroupName newresourcegroup -Location eastus -Sku GP_Gen5_8 -UseGeoRestore
 ```
 
-Voor de para meters set Restore van de **GeoRestore** `Restore-AzMySqlServer` cmdlet zijn de volgende para meters vereist:
+Voor de para meters set **Restore** van de `Restore-AzMySqlServer` cmdlet zijn de volgende para meters vereist:
 
 | Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
@@ -125,9 +125,9 @@ Voor de para meters set Restore van de **GeoRestore** `Restore-AzMySqlServer` cm
 
 Wanneer u een nieuwe server maakt met behulp van geo Restore, neemt deze dezelfde opslag grootte en prijs categorie als de bron server op, tenzij de **SKU** -para meter is opgegeven.
 
-Nadat het herstel proces is voltooid, zoekt u de nieuwe server en controleert u of de gegevens correct zijn hersteld. De nieuwe server heeft dezelfde aanmeldings naam en hetzelfde wacht woord voor de server beheerder op het moment dat de herstel bewerking werd gestart. Het wacht woord kan worden gewijzigd op de pagina **overzicht** van de nieuwe server.
+Nadat het herstelproces is voltooid, zoekt u de nieuwe server en controleert u of de gegevens correct zijn hersteld. De aanmeldingsnaam en het wachtwoord voor de nieuwe server zijn hetzelfde als voor de bestaande server op het moment dat de herstelbewerking werd gestart. Het wachtwoord kan worden gewijzigd op de pagina **Overzicht** van de nieuwe server.
 
-De nieuwe server die tijdens het herstellen is gemaakt, heeft geen VNet-service-eind punten die bestonden op de oorspronkelijke server. Deze regels moeten afzonderlijk worden ingesteld voor deze nieuwe server. Firewall regels van de oorspronkelijke server worden hersteld.
+De nieuwe server die is gemaakt tijdens een herstelbewerking, bevat niet de VNet-service-eindpunten die bestonden op de oorspronkelijke server. Deze regels moeten afzonderlijk worden ingesteld voor deze nieuwe server. Firewallregels van de oorspronkelijke server worden hersteld.
 
 ## <a name="next-steps"></a>Volgende stappen
 

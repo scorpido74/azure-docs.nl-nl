@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
 ms.openlocfilehash: 545dbcfb1db5595ff5b2047ec44afa8a065d816d
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594845"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Video Indexer widgets insluiten in uw apps
 
 In dit artikel wordt uitgelegd hoe u Video Indexer widgets kunt insluiten in uw apps. Video Indexer ondersteunt het insluiten van drie typen objecten in uw apps: *cognitieve inzichten*, *speler*en *Redacteur*.
 
-Vanaf versie 2 bevat de basis-URL van de widget de regio van het opgegeven account. Een account in de regio vs-West genereert bijvoorbeeld het volgende `https://www.videoindexer.ai/embed/insights/.../?location=westus2`:.
+Vanaf versie 2 bevat de basis-URL van de widget de regio van het opgegeven account. Een account in de regio vs-West genereert bijvoorbeeld het volgende: `https://www.videoindexer.ai/embed/insights/.../?location=westus2` .
 
 ## <a name="widget-types"></a>Typen widget
 
@@ -31,12 +31,12 @@ De widget Inzichten bevat alle visuele inzichten die tijdens het indexeringsproc
 
 |Naam|Definitie|Beschrijving|
 |---|---|---|
-|`widgets` | Tekenreeksen gescheiden door komma's | Hiermee kunt u de inzichten bepalen die u wilt weer geven.<br/>Voor beeld `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` : alleen personen en tref woorden weer geven UI Insights.<br/>Beschik bare opties: personen, animatedCharacters, tref woorden, labels, gevoel, emoties, onderwerpen, keyframes, transcripten, OCR, sprekers, scènes en namedEntities.|
-|`controls`|Tekenreeksen gescheiden door komma's|Hiermee kunt u de besturings elementen beheren die u wilt weer geven.<br/>Voor beeld `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` : Hiermee wordt alleen de zoek optie en de download knop weer gegeven.<br/>Beschik bare opties: zoeken, downloaden, voor instellingen en taal.|
+|`widgets` | Tekenreeksen gescheiden door komma's | Hiermee kunt u de inzichten bepalen die u wilt weer geven.<br/>Voor beeld: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` alleen personen en tref woorden weer geven UI Insights.<br/>Beschik bare opties: personen, animatedCharacters, tref woorden, labels, gevoel, emoties, onderwerpen, keyframes, transcripten, OCR, sprekers, scènes en namedEntities.|
+|`controls`|Tekenreeksen gescheiden door komma's|Hiermee kunt u de besturings elementen beheren die u wilt weer geven.<br/>Voor beeld: Hiermee wordt `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` alleen de zoek optie en de download knop weer gegeven.<br/>Beschik bare opties: zoeken, downloaden, voor instellingen en taal.|
 |`language`|Een korte taal code (taal naam)|Programmeer taal voor besturings elementen.<br/>Voorbeeld: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>of`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
 |`locale` | Een korte taal code | Hiermee bepaalt u de taal van de gebruikers interface. De standaardwaarde is `en`. <br/>Bijvoorbeeld: `locale=de`.|
-|`tab` | Het standaard geselecteerde tabblad | Hiermee bepaalt u het tabblad **inzichten** dat standaard wordt weer gegeven. <br/>Voor beeld `tab=timeline` : Hiermee wordt de inzichten weer gegeven op het tabblad **tijd lijn** geselecteerd.|
-|`location` ||De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, moet `trial` het worden gebruikt voor de locatie waarde. `trial`is de standaard waarde voor de `location` para meter.| 
+|`tab` | Het standaard geselecteerde tabblad | Hiermee bepaalt u het tabblad **inzichten** dat standaard wordt weer gegeven. <br/>Voor beeld: Hiermee wordt `tab=timeline` de inzichten weer gegeven op het tabblad **tijd lijn** geselecteerd.|
+|`location` ||De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, `trial` moet het worden gebruikt voor de locatie waarde. `trial`is de standaard waarde voor de `location` para meter.| 
 
 ### <a name="player-widget"></a>Widget Speler
 
@@ -50,7 +50,7 @@ U kunt de Player-widget gebruiken om video te streamen met behulp van adaptieve 
 |`type`| | Hiermee wordt een audio speler-weer gave geactiveerd (het video onderdeel wordt verwijderd).<br/> Bijvoorbeeld: `type=audio`. |
 |`autoplay` | Een Booleaanse waarde | Hiermee wordt aangegeven of de speler de video moet starten wanneer deze wordt geladen. De standaardwaarde is `true`.<br/> Bijvoorbeeld: `autoplay=false`. |
 |`language`/`locale` | Een taal code | Hiermee bepaalt u de taal van de speler. De standaardwaarde is `en-US`.<br/>Bijvoorbeeld: `language=de-DE`.|
-|`location` ||De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, moet `trial` het worden gebruikt voor de locatie waarde. `trial`is de standaard waarde voor de `location` para meter.| 
+|`location` ||De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, `trial` moet het worden gebruikt voor de locatie waarde. `trial`is de standaard waarde voor de `location` para meter.| 
 
 ### <a name="editor-widget"></a>Editor-widget
 
@@ -58,10 +58,10 @@ U kunt de editor-widget gebruiken om nieuwe projecten te maken en de inzichten v
 
 |Naam|Definitie|Beschrijving|
 |---|---|---|
-|`accessToken`<sup>*</sup> | Tekenreeks | Biedt toegang tot Video's die alleen voor komen in het account dat wordt gebruikt om de widget in te sluiten.<br> De editor-widget vereist `accessToken` de para meter. |
+|`accessToken`<sup>*</sup> | Tekenreeks | Biedt toegang tot Video's die alleen voor komen in het account dat wordt gebruikt om de widget in te sluiten.<br> De editor-widget vereist de `accessToken` para meter. |
 |`language` | Een taal code | Hiermee bepaalt u de taal van de speler. De standaardwaarde is `en-US`.<br/>Bijvoorbeeld: `language=de-DE`. |
 |`locale` | Een korte taal code | Hiermee bepaalt u de inzichten taal. De standaardwaarde is `en`.<br/>Bijvoorbeeld: `language=de`. |
-|`location` ||De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, moet `trial` het worden gebruikt voor de locatie waarde. `trial`is de standaard waarde voor de `location` paramete.| 
+|`location` ||De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, `trial` moet het worden gebruikt voor de locatie waarde. `trial`is de standaard waarde voor de `location` paramete.| 
 
 <sup>*</sup>De eigenaar moet `accessToken` voorzichtig zijn.
 
@@ -69,7 +69,7 @@ U kunt de editor-widget gebruiken om nieuwe projecten te maken en de inzichten v
 
 In deze sectie wordt beschreven hoe u de open bare en persoonlijke inhoud insluit in apps.
 
-De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, moet `trial` het worden gebruikt voor de locatie waarde. `trial`is de standaard waarde voor de `location` paramete. Bijvoorbeeld: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
+De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, `trial` moet het worden gebruikt voor de locatie waarde. `trial`is de standaard waarde voor de `location` paramete. Bijvoorbeeld: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
 > [!IMPORTANT]
 > Het delen van een koppeling voor de **Media Player** of **Insights** -widget bevat het toegangs token en verleen de alleen-lezen machtigingen voor uw account.
@@ -79,22 +79,22 @@ De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zi
 1. Meld u aan bij de [video indexer](https://www.videoindexer.ai/) -website.
 1. Selecteer de video waarmee u wilt werken en druk op **Play**.
 1. Selecteer het gewenste type widget (**cognitieve inzichten**, **speler**of **Redacteur**).
-1. Klik ** &lt; / op &gt; insluiten**.
+1. Klik op ** &lt; / &gt; insluiten**.
 5. Kopieer de insluit code (wordt weer gegeven in **de Inge sloten code kopiëren** in het dialoog venster **share & insluiten** ).
 6. Voeg de code toe aan uw app.
 
 ### <a name="private-content"></a>Persoonlijke inhoud
 
-Als u een privé video wilt insluiten, moet u een toegangs token in `src` het kenmerk van het iframe door geven:
+Als u een privé video wilt insluiten, moet u een toegangs token in het `src` kenmerk van het iframe door geven:
 
 `https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
     
 Gebruik een van de volgende methoden om de inhoud van de cognitieve Insights-widget op te halen:
 
 - De API voor het [verkrijgen van inzichten-widget](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) .<br/>
-- Het [token voor video toegang ophalen](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?). Voeg het als een query parameter toe aan de URL. Geef deze URL op als `src` de waarde voor de iframe, zoals eerder is weer gegeven.
+- Het [token voor video toegang ophalen](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?). Voeg het als een query parameter toe aan de URL. Geef deze URL op als de `src` waarde voor de iframe, zoals eerder is weer gegeven.
 
-Als u de mogelijkheden voor het bewerken van inzichten in uw Inge sloten object wilt bieden, moet u een toegangs token door geven dat bewerkings machtigingen bevat. Gebruik het [object Insights ophalen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) of het [token video toegang ophalen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) met `&allowEdit=true`.
+Als u de mogelijkheden voor het bewerken van inzichten in uw Inge sloten object wilt bieden, moet u een toegangs token door geven dat bewerkings machtigingen bevat. Gebruik het [object Insights ophalen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) of het [token video toegang ophalen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) met `&allowEdit=true` .
 
 ## <a name="widgets-interaction"></a>Interactie van widgets
 
@@ -106,7 +106,7 @@ De widget cognitieve Insights kan communiceren met een video in uw app. In deze 
 
 Om Video Indexer widgets te laten communiceren met andere onderdelen, de Video Indexer-service:
 
-- Maakt gebruik van de cross-Origin communicatie `postMessage`HTML5-methode.
+- Maakt gebruik van de cross-Origin communicatie HTML5-methode `postMessage` .
 - Het bericht wordt gevalideerd op basis van de bron VideoIndexer.ai.
 
 Als u uw eigen Player-code implementeert en integreert met cognitieve Insights-widgets, is het uw verantwoordelijkheid om de oorsprong van het bericht te valideren dat afkomstig is van VideoIndexer.ai.
@@ -228,21 +228,21 @@ Zie de [demo over Azure Media Player en VI](https://codepen.io/videoindexer/pen/
 
 ## <a name="adding-subtitles"></a>Ondertiteling toevoegen
 
-Als u Video Indexer Insights insluit met uw eigen [Azure Media Player](https://aka.ms/azuremediaplayer), kunt u de `GetVttUrl` methode gebruiken om ondertiteling (ondertiteling) te verkrijgen. U kunt ook een Java script `getSubtitlesUrl` -methode aanroepen vanuit de video indexer amp-invoeg toepassing (zoals eerder weer gegeven).
+Als u Video Indexer Insights insluit met uw eigen [Azure Media Player](https://aka.ms/azuremediaplayer), kunt u de methode gebruiken om ondertiteling `GetVttUrl` (ondertiteling) te verkrijgen. U kunt ook een Java script-methode aanroepen vanuit de Video Indexer AMP-invoeg toepassing `getSubtitlesUrl` (zoals eerder weer gegeven).
 
 ## <a name="customizing-embeddable-widgets"></a>Insluitbare widgets aanpassen
 
 ### <a name="cognitive-insights-widget"></a>Widget Inzichten
 
-U kunt kiezen welke typen inzichten u wilt. Als u dit wilt doen, geeft u deze op als waarde voor de volgende URL-para meter die wordt toegevoegd aan de Inge sloten code die u ontvangt (van de API of `&widgets=<list of wanted widgets>`van de web-app):.
+U kunt kiezen welke typen inzichten u wilt. Als u dit wilt doen, geeft u deze op als waarde voor de volgende URL-para meter die wordt toegevoegd aan de Inge sloten code die u ontvangt (van de API of van de web-app): `&widgets=<list of wanted widgets>` .
 
-De mogelijke waarden zijn: `people`, `animatedCharacters` , `keywords`, `labels`, `sentiments`, `emotions`, `topics`, `keyframes`, `transcript` `ocr` `speakers` `scenes`,,, en `namedEntities`.
+De mogelijke waarden zijn: `people` , `animatedCharacters` , `keywords` , `labels` , `sentiments` , `emotions` , `topics` , `keyframes` , `transcript` ,,, `ocr` `speakers` `scenes` en `namedEntities` .
 
 Als u bijvoorbeeld een widget wilt insluiten die alleen de inzichten van personen en tref woorden bevat, ziet de iframe-Inge sloten URL er als volgt uit:
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`
 
-De titel van het iframe-venster kan ook worden aangepast door `&title=<YourTitle>` de URL van de iframe op te geven. (De HTML- `<title>` waarde wordt aangepast).
+De titel van het iframe-venster kan ook worden aangepast door `&title=<YourTitle>` de URL van de iframe op te geven. (De HTML-waarde wordt aangepast `<title>` ).
    
 Als u bijvoorbeeld het iframe-venster de titel ' MyInsights ' wilt geven, ziet de URL er als volgt uit:
 

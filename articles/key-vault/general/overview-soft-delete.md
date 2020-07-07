@@ -9,17 +9,17 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
 ms.openlocfilehash: 347f8a4cf1fb95849bcf1008e91d17878f3d01f8
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598512"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault: overzicht van voorlopig verwijderen
 
 Met de functie voor zacht verwijderen van Key Vault kunt u de verwijderde kluizen en kluis objecten herstellen, ook wel zacht verwijderen genoemd. We behandelen vooral de volgende scenario's:
 
-- Ondersteuning voor herstel bare verwijdering van een sleutel kluis
+- Ondersteuning voor herstelbare verwijdering van een sleutelkluis
 - Ondersteuning voor herstel bare verwijdering van sleutel kluis-objecten (bijvoorbeeld sleutels, geheimen, certificaten)
 
 ## <a name="supporting-interfaces"></a>Ondersteunende interfaces
@@ -40,7 +40,7 @@ Als de functie voor voorlopig verwijderen is ingeschakeld, worden de resources d
 
 Bij het maken van een nieuwe sleutel kluis is voorlopig verwijderen standaard ingeschakeld. U kunt een sleutel kluis maken zonder zacht te verwijderen via de [Azure cli](soft-delete-cli.md) of [Azure PowerShell](soft-delete-powershell.md). Wanneer de functie voor het voorlopig verwijderen van een sleutel kluis is ingeschakeld, kan deze niet worden uitgeschakeld
 
-De standaard retentie periode is 90 dagen, maar tijdens het maken van de sleutel kluis is het mogelijk om het interval voor het Bewaar beleid in te stellen op een waarde tussen 7 en 90 dagen via de Azure Portal. Het retentie beleid voor het leegmaken van de beveiliging gebruikt hetzelfde interval. Eenmaal ingesteld, kan het interval voor het Bewaar beleid niet worden gewijzigd.
+De standaard retentie periode is 90 dagen, maar tijdens het maken van de sleutel kluis is het mogelijk om het interval voor het Bewaar beleid in te stellen op een waarde tussen 7 en 90 dagen via de Azure Portal. Het bewaarbeleid voor de beveiliging tegen opschonen gebruikt hetzelfde interval. Zodra het is ingesteld, kan het interval voor het bewaarbeleid niet worden gewijzigd.
 
 U kunt de naam van een sleutel kluis die zacht is verwijderd, niet opnieuw gebruiken totdat de Bewaar periode is verstreken.
 

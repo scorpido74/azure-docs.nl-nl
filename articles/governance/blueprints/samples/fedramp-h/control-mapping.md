@@ -3,12 +3,12 @@ title: Beheeropties voor blauwdrukvoorbeeld FedRAMP High
 description: Beheeropties toewijzen aan het blauwdrukvoorbeeld FedRAMP High. Elke beheeroptie wordt toegewezen aan een of meer Azure-beleidsregels die helpt bij de evaluatie.
 ms.date: 05/12/2020
 ms.topic: sample
-ms.openlocfilehash: f57f753c405e736a4c83dd6f10b6f38184ce74b6
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: cf9db71a18654f973306637831ae1bcdf8dbef9e
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168876"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517198"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>Beheeropties toewijzen aan het blauwdrukvoorbeeld FedRAMP High
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
 ms.openlocfilehash: 05d057be76a1b468f892b3123080e32a948153ae
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598495"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Apache Hadoop clusters in HDInsight beheren door gebruik te maken van de Azure Portal
@@ -60,14 +60,14 @@ Selecteer de naam van uw cluster op de pagina [**HDInsight-clusters**](#showClus
     |Toegangsbeheer (IAM)|Roltoewijzingen gebruiken.  Zie [roltoewijzingen gebruiken voor het beheren van toegang tot de resources van uw Azure-abonnement](../role-based-access-control/role-assignments-portal.md).|
     |Tags|Hiermee stelt u sleutel/waarde-paren in om een aangepaste taxonomie van uw Cloud Services te definiëren. U kunt bijvoorbeeld een sleutel met de naam **project**maken en vervolgens een algemene waarde gebruiken voor alle services die aan een specifiek project zijn gekoppeld.|
     |Problemen vaststellen en oplossen|Informatie over probleem oplossing weer geven.|
-    |Snelstartgids|Geeft informatie weer waarmee u aan de slag kunt gaan met HDInsight.|
+    |Snelstart|Geeft informatie weer waarmee u aan de slag kunt gaan met HDInsight.|
     |Hulpprogramma's|Help-informatie voor aan HDInsight gerelateerde hulpprogram ma's.|
 
   - **Menu Instellingen**  
 
     | Item| Beschrijving |
     |---|---|
-    |Cluster grootte|Controleer, verhoog en verklein het aantal cluster worker-knoop punten. Zie [clusters schalen](hdinsight-administer-use-portal-linux.md#scale-clusters).|
+    |Grootte van cluster|Controleer, verhoog en verklein het aantal cluster worker-knoop punten. Zie [clusters schalen](hdinsight-administer-use-portal-linux.md#scale-clusters).|
     |Quotum limieten|De gebruikte en beschik bare kernen voor uw abonnement weer geven.|
     |Aanmelden bij SSH en cluster|Toont de instructies voor het maken van verbinding met het cluster met behulp van SSH-verbinding (Secure Shell). Zie [SSH gebruiken met HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)voor meer informatie.|
     |Data Lake Storage Gen1|Configureer de toegangs Data Lake Storage Gen1.  Zie [Quick Start: clusters instellen in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).|
@@ -94,7 +94,7 @@ Selecteer de naam van uw cluster op de pagina [**HDInsight-clusters**](#showClus
     | Item| Beschrijving |
     |---|---|
     |Status van resources|Zie [overzicht van Azure resource Health](../service-health/resource-health-overview.md).|
-    |Nieuw ondersteuningsverzoek|Hiermee kunt u een ondersteunings ticket maken met micro soft ondersteuning.|
+    |Nieuwe ondersteuningsaanvraag|Hiermee kunt u een ondersteunings ticket maken met micro soft ondersteuning.|
 
 ## <a name="cluster-properties"></a><a name="properties"></a>Cluster eigenschappen
 
@@ -152,8 +152,8 @@ Zie [HDInsight-clusters schalen](./hdinsight-scaling-best-practices.md) voor vol
 
 ## <a name="pauseshut-down-clusters"></a>Onderbreken/afsluiten van clusters
 
-De meeste Hadoop-taken zijn batch-taken die slechts af en toe worden uitgevoerd. Voor de meeste Hadoop-clusters zijn er grote Peri Oden waarin het cluster niet wordt gebruikt voor verwerking. Met HDInsight worden uw gegevens opgeslagen in Azure Storage, zodat u een cluster veilig kunt verwijderen wanneer deze niet in gebruik is.
-U betaalt ook voor een HDInsight-cluster, zelfs wanneer het niet in gebruik is. Omdat de kosten voor het cluster veel keren meer zijn dan de kosten voor opslag, is het economisch zinvol om clusters te verwijderen wanneer ze niet worden gebruikt.
+De meeste Hadoop-taken zijn batch-taken die slechts af en toe worden uitgevoerd. Voor de meeste Hadoop-clusters zijn er grote Peri Oden waarin het cluster niet wordt gebruikt voor verwerking. Met HDInsight worden uw gegevens opgeslagen in Azure Storage zodat u een cluster veilig kunt verwijderen wanneer deze niet wordt gebruikt.
+Voor een HDInsight-cluster worden ook kosten in rekening gebracht, zelfs wanneer het niet wordt gebruikt. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt.
 
 U kunt het proces op verschillende manieren Program meren:
 
@@ -252,7 +252,7 @@ HDInsight-clusters gebruiken een Azure Storage account of Azure Data Lake Storag
 
 Zie [HDInsight-clusters beheren met de Web-UI van Apache Ambari](hdinsight-hadoop-manage-ambari.md#monitoring).
 
-## <a name="cluster-size"></a>Cluster grootte
+## <a name="cluster-size"></a>Grootte van cluster
 
 Op de tegel **cluster grootte** van de [Start pagina](#homePage) van het cluster wordt het aantal kern geheugens weer gegeven dat aan het cluster is toegewezen en hoe deze worden toegewezen voor de knoop punten in dit cluster.
 

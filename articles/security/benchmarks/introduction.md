@@ -9,10 +9,10 @@ ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 883042c94576014c3bdeabd38516d9531c8fd3dc
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82606854"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Inleiding tot Azure Security Bench Mark
@@ -34,7 +34,7 @@ De termen "besturings element", "bench Mark" en "baseline" worden vaak gebruikt 
 
 | Termijn | Beschrijving | Voorbeeld |
 |--|--|--|
-| Beheer | Een **besturings element** is een hoog niveau van een functie of activiteit die moet worden geadresseerd en niet specifiek is voor een technologie of implementatie. | Gegevens beveiliging is een van de beveiligings besturings elementen. Dit besturings element bevat specifieke acties die moeten worden geadresseerd om ervoor te zorgen dat gegevens beveiligd zijn. |
+| Controle | Een **besturings element** is een hoog niveau van een functie of activiteit die moet worden geadresseerd en niet specifiek is voor een technologie of implementatie. | Gegevens beveiliging is een van de beveiligings besturings elementen. Dit besturings element bevat specifieke acties die moeten worden geadresseerd om ervoor te zorgen dat gegevens beveiligd zijn. |
 | Benchmark | Een **Bench Mark** bevat beveiligings aanbevelingen voor een specifieke technologie, zoals Azure. De aanbevelingen worden gecategoriseerd door het besturings element waarvan ze deel uitmaken. | De Security Bench Mark van Azure bestaat uit de beveiligings aanbevelingen die specifiek zijn voor het Azure-platform  |
 | Basislijn | Een **basis lijn** is de beveiligings vereisten voor een organisatie. De beveiligings vereisten zijn gebaseerd op benchmark aanbevelingen. Elke organisatie bepaalt welke Bench Mark-aanbevelingen in hun basis lijn moeten worden meegenomen. | Het bedrijf contoso maakt de beveiligings basislijn door te kiezen voor specifieke aanbevelingen in de Azure Security-Bench Mark. |
 

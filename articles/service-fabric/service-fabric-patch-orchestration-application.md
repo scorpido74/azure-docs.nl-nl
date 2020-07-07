@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
 ms.openlocfilehash: 5a5ffdf217483c60836f67213c20ff3afd9043d5
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82608912"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Het Windows-besturings systeem in uw Service Fabric cluster bijwerken
@@ -86,7 +86,7 @@ U kunt ook het [Azure Resource Manager-implementatie model](https://docs.microso
 
 Ga als volgt te werk om de Repair Manager-service in te scha kelen met behulp van de [Azure Resource Manager-implementatie model sjabloon](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm):
 
-1. Controleer of het `apiVersion` is ingesteld op *2017-07-01-preview* voor de resource *micro soft. ServiceFabric/clusters* . Als dat niet het geval is, moet u `apiVersion` bijwerken naar *2017-07-01-preview* of hoger:
+1. Controleer of `apiVersion` het is ingesteld op *2017-07-01-preview* voor de resource *micro soft. ServiceFabric/clusters* . Als dat niet het geval is, moet u bijwerken `apiVersion` naar *2017-07-01-preview* of hoger:
 
     ```json
     {
@@ -98,7 +98,7 @@ Ga als volgt te werk om de Repair Manager-service in te scha kelen met behulp va
     }
     ```
 
-1. Schakel de Repair Manager-service in door de `addonFeatures` volgende sectie toe `fabricSettings` te voegen na de sectie:
+1. Schakel de Repair Manager-service in door de volgende sectie toe te voegen `addonFeatures` na de `fabricSettings` sectie:
 
     ```json
     "fabricSettings": [
@@ -117,7 +117,7 @@ Als u de Repair Manager-service wilt inschakelen op een nieuw of bestaand Servic
 
 De Repair Manager-service inschakelen:
 
-1. Controleer of [algemene cluster configuraties](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest#general-cluster-configurations) is ingesteld op 04-2017 of hoger, zoals hier wordt weer gegeven: *04-2017* `apiVersion`
+1. Controleer `apiVersion` of [algemene cluster configuraties](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest#general-cluster-configurations) is ingesteld op *04-2017* of hoger, zoals hier wordt weer gegeven:
 
     ```json
     {
@@ -128,7 +128,7 @@ De Repair Manager-service inschakelen:
     }
     ```
 
-1. Schakel de Repair Manager-service in door de `addonFeatures` volgende sectie toe `fabricSettings` te voegen na de sectie, zoals hier wordt weer gegeven:
+1. Schakel de Repair Manager-service in door de volgende sectie toe te voegen `addonFeatures` na de `fabricSettings` sectie, zoals hier wordt weer gegeven:
 
     ```json
     "fabricSettings": [
@@ -153,7 +153,7 @@ Als u het toepassings pakket wilt downloaden, gaat u naar de [pagina patch Orche
 
 ## <a name="configure-poa-behavior"></a>POA-gedrag configureren
 
-U kunt POA-gedrag configureren om te voldoen aan uw behoeften. De standaard waarden onderdrukken door door gegeven in de toepassings parameter tijdens het maken of bijwerken van de toepassing. U kunt toepassings parameters opgeven door `ApplicationParameter` in te stellen `Start-ServiceFabricApplicationUpgrade` op `New-ServiceFabricApplication` de cmdlets.
+U kunt POA-gedrag configureren om te voldoen aan uw behoeften. De standaard waarden onderdrukken door door gegeven in de toepassings parameter tijdens het maken of bijwerken van de toepassing. U kunt toepassings parameters opgeven door `ApplicationParameter` in te stellen op de `Start-ServiceFabricApplicationUpgrade` `New-ServiceFabricApplication` cmdlets.
 
 | Parameter        | Type                          | Details |
 |:-|-|-|
@@ -169,16 +169,16 @@ U kunt POA-gedrag configureren om te voldoen aan uw behoeften. De standaard waar
 | AcceptWindowsUpdateEula | Boolean-waarde <br>(Standaard: *True*) | Door deze vlag in te stellen, accepteert de toepassing de gebruiksrecht overeenkomst voor Windows Update namens de eigenaar van de computer.              |
 
 > [!TIP]
-> Als u wilt dat Windows-updates onmiddellijk worden uitgevoerd `WUFrequency` , stelt u in ten opzichte van de implementatie tijd van de toepassing. Stel dat u een test cluster met vijf knoop punten hebt en u de app op ongeveer 5:00 uur UTC wilt implementeren. Als u ervan uitgaat dat de upgrade of implementatie van de toepassing 30 minuten Maxi maal duurt, stelt u de WUFrequency als dagelijks in op *17:30:00*.
+> Als u wilt dat Windows-updates onmiddellijk worden uitgevoerd, stelt u `WUFrequency` in ten opzichte van de implementatie tijd van de toepassing. Stel dat u een test cluster met vijf knoop punten hebt en u de app op ongeveer 5:00 uur UTC wilt implementeren. Als u ervan uitgaat dat de upgrade of implementatie van de toepassing 30 minuten Maxi maal duurt, stelt u de WUFrequency als dagelijks in op *17:30:00*.
 
 ## <a name="deploy-poa"></a>POA implementeren
 
 1. Alle vereiste stappen volt ooien om het cluster voor te bereiden.
 1. Implementeer POA zoals andere Service Fabric-apps. Zie [toepassingen implementeren en verwijderen met](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications)behulp van Power shell om deze te implementeren met behulp van Power shell.
-1. Als u de toepassing op het tijdstip van de implementatie wilt configureren `ApplicationParameter` , geeft `New-ServiceFabricApplication` u de door aan de cmdlet. Voor uw gemak hebben we het script Deploy. ps1 samen met de toepassing voorzien. Het script gebruiken:
+1. Als u de toepassing op het tijdstip van de implementatie wilt configureren, geeft u de door `ApplicationParameter` aan de `New-ServiceFabricApplication` cmdlet. Voor uw gemak hebben we het script Deploy.ps1 samen met de toepassing. Het script gebruiken:
 
-    - Verbinding maken met een Service Fabric cluster met `Connect-ServiceFabricCluster`behulp van.
-    - Voer het Power shell-script Deploy. ps1 uit `ApplicationParameter` met de juiste waarde.
+    - Verbinding maken met een Service Fabric cluster met behulp van `Connect-ServiceFabricCluster` .
+    - Voer het Power shell-script Deploy.ps1 uit met de juiste `ApplicationParameter` waarde.
 
 > [!NOTE]
 > Bewaar het script en de toepassingsmap *PatchOrchestrationApplication* in dezelfde map.
@@ -191,10 +191,10 @@ Volg de instructies in [service Fabric toepassing bijwerken met behulp van Power
 
 Als u de toepassing wilt verwijderen, volgt u de instructies in [toepassingen implementeren en verwijderen met behulp van Power shell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications).
 
-Voor uw gemak hebben we het PS1-script undeploy en de toepassing voorzien. Het script gebruiken:
+Voor uw gemak hebben we het Undeploy.ps1-script in combi natie met de toepassing voorzien. Het script gebruiken:
 
-  - Verbinding maken met een Service Fabric cluster met ```Connect-ServiceFabricCluster```behulp van.
-  - Voer het Power shell-script undeploy. ps1 uit.
+  - Verbinding maken met een Service Fabric cluster met behulp van ```Connect-ServiceFabricCluster``` .
+  - Voer de Power shell-script Undeploy.ps1 uit.
 
 > [!NOTE]
 > Bewaar het script en de toepassingsmap *PatchOrchestrationApplication* in dezelfde map.
@@ -248,15 +248,15 @@ HResult | 0-geslaagd<br> overige-fout| Hiermee wordt de reden aangegeven voor he
 
 Als er nog geen update is gepland, is de JSON van het resultaat leeg.
 
-Meld u aan bij het cluster om Windows Update resultaten op te vragen. Zoek het IP-adres van de replica voor het primaire adres van de coördinator-service en open de volgende URL vanuit de browser&lt;: http://replica&gt;-&lt;IP&gt;: ApplicationPort/PatchOrchestrationApplication/v1/GetWindowsUpdateResults.
+Meld u aan bij het cluster om Windows Update resultaten op te vragen. Zoek het IP-adres van de replica voor het primaire adres van de coördinator-service en open de volgende URL vanuit de browser: http:// &lt; replica-IP &gt; : &lt; ApplicationPort &gt; /PatchOrchestrationApplication/v1/GetWindowsUpdateResults.
 
-Het REST-eind punt voor de coördinator service heeft een dynamische poort. Als u de exacte URL wilt controleren, raadpleegt u Service Fabric Explorer. De resultaten zijn bijvoorbeeld beschikbaar op *http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults*.
+Het REST-eind punt voor de coördinator service heeft een dynamische poort. Als u de exacte URL wilt controleren, raadpleegt u Service Fabric Explorer. De resultaten zijn bijvoorbeeld beschikbaar op *http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults* .
 
 ![Afbeelding van het REST-eind punt](media/service-fabric-patch-orchestration-application/Rest_Endpoint.png)
 
 Als de omgekeerde proxy is ingeschakeld op het cluster, kunt u ook toegang krijgen tot de URL van buiten het cluster.
 
-Het eind punt waarop u moet drukken, *is&lt;http://&gt;SERVERURL&lt;:&gt;REVERSEPROXYPORT/PatchOrchestrationApplication/CoordinatorService/v1/GetWindowsUpdateResults*.
+Het eind punt waarop u moet drukken, is *http:// &lt; SERVERURL &gt; : &lt; REVERSEPROXYPORT &gt; /PatchOrchestrationApplication/CoordinatorService/v1/GetWindowsUpdateResults*.
 
 Als u de omgekeerde proxy op het cluster wilt inschakelen, volgt u de instructies in [reverse proxy in Azure service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy). 
 
@@ -277,7 +277,7 @@ Ga als volgt te werk om inzicht te krijgen in hoe updates worden uitgevoerd op e
 
 1. NodeAgentNTService wordt uitgevoerd op elk knoop punt en zoekt naar beschik bare Windows-updates op het geplande tijdstip. Als er updates beschikbaar zijn, worden deze gedownload op het knoop punt.
 
-1. Nadat de updates zijn gedownload, maakt de NTService van de knooppunt agent een bijbehorende herstel taak voor het knoop punt met de naam *\<POS___ unique_id>*. U kunt deze herstel taken weer geven met behulp van de cmdlet [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) of met behulp van sfx in de sectie knooppunt Details. Nadat de herstel taak is gemaakt, wordt deze snel verplaatst naar de [status *geclaimd* ](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet).
+1. Nadat de updates zijn gedownload, maakt de NTService van de knooppunt agent een bijbehorende herstel taak voor het knoop punt met de naam *POS___ \<unique_id> *. U kunt deze herstel taken weer geven met behulp van de cmdlet [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) of met behulp van sfx in de sectie knooppunt Details. Nadat de herstel taak is gemaakt, wordt deze snel verplaatst naar de [status *geclaimd* ](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet).
 
 1. De coördinator service zoekt regel matig naar herstel taken *in de* aangegeven status en werkt deze vervolgens bij om de status op basis van TaskApprovalPolicy te *voorbereiden* . Als TaskApprovalPolicy is geconfigureerd om te worden NodeWise, wordt een herstel taak die overeenkomt met een knoop punt alleen voor bereid als er momenteel geen andere herstel taak is voor het *voorbereiden*, *goed keuren*, *uitvoeren*of *herstellen* van de status. 
 
@@ -294,7 +294,7 @@ Ga als volgt te werk om inzicht te krijgen in hoe updates worden uitgevoerd op e
 
 1. Wanneer de herstel taak de status *bezig met uitvoeren* heeft, begint de installatie van de patch op dat knoop punt. Nadat de patch is geïnstalleerd, is het mogelijk dat het knoop punt niet opnieuw wordt opgestart, afhankelijk van de patch. Vervolgens wordt de herstel taak verplaatst naar *herstel* status, waarmee het knoop punt opnieuw wordt ingeschakeld. De herstel taak wordt vervolgens als voltooid gemarkeerd.
 
-   In POA-versies 1.4.0 en hoger kunt u de status van de update vinden door de status gebeurtenissen op NodeAgentService te bekijken met de WUOperationStatus\<-nodenaam> eigenschap. De gemarkeerde secties in de volgende installatie kopieën tonen de status van Windows-updates op knoop punten *poanode_0* en *poanode_2*:
+   In POA-versies 1.4.0 en hoger kunt u de status van de update vinden door de status gebeurtenissen op NodeAgentService te bekijken met de WUOperationStatus- \<NodeName> eigenschap. De gemarkeerde secties in de volgende installatie kopieën tonen de status van Windows-updates op knoop punten *poanode_0* en *poanode_2*:
 
    [![Afbeelding van Windows Update bewerkings status](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
 

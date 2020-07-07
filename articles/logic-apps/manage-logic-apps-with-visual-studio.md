@@ -8,10 +8,10 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 04/29/2020
 ms.openlocfilehash: 62807ef25fe6ee70844e72c90751eb383d0ece7c
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598433"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Logische apps beheren met Visual Studio
@@ -115,7 +115,7 @@ U kunt Logic apps downloaden van de [Azure Portal](https://portal.azure.com) en 
 
 1. Wanneer u wordt gevraagd om een locatie, bladert u naar die locatie en slaat u de Resource Manager-sjabloon voor de definitie van de logische app op in de JSON-bestands indeling (. json).
 
-   De definitie van de logische app wordt `resources` weer gegeven in de Subsectie in de Resource Manager-sjabloon. U kunt nu de definitie van de logische app en de Resource Manager-sjabloon bewerken met Visual Studio. U kunt de sjabloon ook als een [Azure-resource groeps project](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) toevoegen aan een Visual Studio-oplossing. Meer informatie over [Azure-resource groeps projecten voor Logic apps in Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+   De definitie van de logische app wordt weer gegeven in de `resources` Subsectie in de Resource Manager-sjabloon. U kunt nu de definitie van de logische app en de Resource Manager-sjabloon bewerken met Visual Studio. U kunt de sjabloon ook als een [Azure-resource groeps project](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) toevoegen aan een Visual Studio-oplossing. Meer informatie over [Azure-resource groeps projecten voor Logic apps in Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
 <a name="link-integration-account"></a>
 
@@ -125,7 +125,7 @@ Als u Logic apps voor Business-to-Business (B2B) wilt bouwen, kunt u uw logische
 
 1. Open in Visual Studio het Azure-resource groep-project dat uw logische app bevat.
 
-1. Open in Solution Explorer het snelmenu **<Logic-app-name>. json** -bestand en selecteer **openen met Logic app Designer**. (Toetsen bord: CTRL + L)
+1. Open in Solution Explorer het snelmenu **<Logic-app-name # C1.jsin** het menu bestand en selecteer **openen met Logic app Designer**. (Toetsen bord: CTRL + L)
 
    ![Het JSON-bestand van de logische app openen met Logic app Designer](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
@@ -160,7 +160,7 @@ Als u het locatie type of de locatie van uw logische app wilt wijzigen, moet u h
 
 1. Open in Visual Studio het Azure-resource groep-project dat uw logische app bevat.
 
-1. Open in Solution Explorer het snelmenu `<logic-app-name>.json` van het bestand en selecteer **openen met Logic app Designer**. (Toetsen bord: CTRL + L)
+1. Open in Solution Explorer het `<logic-app-name>.json` snelmenu van het bestand en selecteer **openen met Logic app Designer**. (Toetsen bord: CTRL + L)
 
    ![Het JSON-bestand van de logische app openen met Logic app Designer](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
 

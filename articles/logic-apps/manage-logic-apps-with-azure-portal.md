@@ -10,10 +10,10 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 04/29/2020
 ms.openlocfilehash: d80972cd200b8f85e14d316c4c06a38f88ac81b5
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598161"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>Logische apps beheren in de Azure Portal
@@ -32,11 +32,11 @@ U kunt logische apps beheren met behulp van de [Azure Portal](https://portal.azu
 
 Voer de volgende stappen uit om uw logische app te zoeken en te openen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met uw Azure-account.
+1. Meld u met uw Azure-account aan bij [Azure Portal](https://portal.azure.com).
 
-1. Voer `logic apps`in de zoek balk van Azure het selectie vakje **Logic apps**in.
+1. Voer in de zoek balk van Azure het `logic apps` selectie vakje **Logic apps**in.
 
-   ![Zoek en selecteer ' Logic Apps '](./media/manage-logic-apps-with-azure-portal/find-select-logic-apps.png)
+   ![Zoek en selecteer 'Logic Apps'](./media/manage-logic-apps-with-azure-portal/find-select-logic-apps.png)
 
 1. Zoek en selecteer op de pagina **Logic apps** de logische app die u wilt beheren.
 
@@ -176,7 +176,7 @@ Het verwijderen van uw logische app heeft invloed op uw werk stroom exemplaren o
 
    ![Meerdere Logic apps verwijderen](./media/manage-logic-apps-with-azure-portal/delete-multiple-logic-apps.png)
 
-1. Wanneer het bevestigings venster wordt weer gegeven `yes`, voert u in en selecteert u **verwijderen**.
+1. Wanneer het bevestigings venster wordt weer gegeven, voert `yes` u in en selecteert u **verwijderen**.
 
    ![Bevestigen om uw Logic apps te verwijderen](./media/manage-logic-apps-with-azure-portal/delete-confirmation-multiple-logic-apps.png)
 

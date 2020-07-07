@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: fd006e836432ce775be8cbbefea6d9219e8b13b3
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 0330e72ad74726f97bfdfd78ef8d5f9b24a5d172
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253457"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513316"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Activiteiten vertakken en koppelen in een Data Factory-pijplijn
 
@@ -54,7 +54,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Zie [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/) voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is. De gegevensopslag en berekeningen kunnen zich in andere regio’s bevinden. De opslag bevat Azure Storage en Azure SQL Database. De berekeningen bevatten HDInsight, die Data Factory gebruikt.
 
-Maak een toepassing zoals beschreven in [Een Azure Active Directory-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Wijs de toepassing toe aan de rol **Inzender** door de instructies in hetzelfde artikel te volgen. U hebt verschillende waarden nodig voor latere onderdelen van deze zelfstudie, zoals **Toepassings-id (client)** en **Directory-id (tenant)** .
+Maak een toepassing zoals beschreven in [Een Azure Active Directory-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Wijs de toepassing toe aan de rol **Inzender** door de instructies in hetzelfde artikel te volgen. U hebt verschillende waarden nodig voor latere onderdelen van deze zelfstudie, zoals **Toepassings-id (client)** en **Directory-id (tenant)** .
 
 ### <a name="create-a-blob-table"></a>Een blobtabel maken
 

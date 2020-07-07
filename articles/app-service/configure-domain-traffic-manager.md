@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
 ms.openlocfilehash: 5ae68a8871bc2894191644e4ab183be4b469bf16
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82610238"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Een aangepaste domein naam configureren in Azure App Service met Traffic Manager-integratie
@@ -19,7 +19,7 @@ ms.locfileid: "82610238"
 > [!NOTE]
 > Zie voor Cloud Services [een aangepaste domein naam configureren voor een Azure-Cloud service](../cloud-services/cloud-services-custom-domain-name.md).
 
-Wanneer u [Azure Traffic Manager](/azure/traffic-manager/) gebruikt om verkeer te verdelen naar [Azure app service](overview.md), is de app service-app toegankelijk via ** \<Traffic-Manager-endpoint>. trafficmanager.net**. U kunt een aangepaste domein naam, zoals www\.contoso.com, toewijzen met uw app service-app om een herken bare domein naam voor uw gebruikers te bieden.
+Wanneer u [Azure Traffic Manager](/azure/traffic-manager/) gebruikt om verkeer te verdelen naar [Azure app service](overview.md), is de app service-App toegankelijk via ** \<traffic-manager-endpoint> . trafficmanager.net**. U kunt een aangepaste domein naam, zoals www \. contoso.com, toewijzen met uw app service-app om een herken bare domein naam voor uw gebruikers te bieden.
 
 In dit artikel wordt beschreven hoe u een aangepaste domein naam configureert met een App Service-app die is geïntegreerd met [Traffic Manager](../traffic-manager/traffic-manager-overview.md).
 
@@ -35,7 +35,7 @@ Als u een aangepaste DNS-naam wilt toewijzen aan een app die is geïntegreerd me
 
 Zoek in het [Azure Portal](https://portal.azure.com)naar en selecteer **app Services**.
 
-Selecteer op de pagina **app Services** de naam van uw Azure-app.
+Selecteer op de pagina **App Services** de naam van uw Azure-app.
 
 ![Navigatie naar Azure-app in de portal](./media/app-service-web-tutorial-custom-domain/select-app.png)
 
@@ -69,7 +69,7 @@ Zodra uw App Service-app een ondersteunde prijs categorie heeft, wordt deze weer
 Hoewel de specifieke kenmerken van elke domein provider verschillen, kunt u toewijzen *vanuit* een [niet-root aangepaste domein naam](#what-about-root-domains) (zoals **www.contoso.com**) *aan* de Traffic Manager domein naam (**contoso.trafficmanager.net**) die is geïntegreerd met uw app. 
 
 > [!NOTE]
-> Als er al een record wordt gebruikt en u uw apps aan het preventief moet koppelen, kunt u een extra CNAME-record maken. Als u bijvoorbeeld preventief **www\.contoso.com** wilt binden aan uw app, maakt u een CNAME-record van **awverify. www** in **contoso.trafficmanager.net**. U kunt vervolgens ' www\.contoso.com ' aan uw app toevoegen zonder dat u de ' www ' CNAME-record hoeft te wijzigen. Zie [een actieve DNS-naam migreren naar Azure app service](manage-custom-dns-migrate-domain.md)voor meer informatie.
+> Als er al een record wordt gebruikt en u uw apps aan het preventief moet koppelen, kunt u een extra CNAME-record maken. Als u bijvoorbeeld preventief **www \. contoso.com** wilt binden aan uw app, maakt u een CNAME-record van **awverify. www** in **contoso.trafficmanager.net**. U kunt vervolgens ' www \. contoso.com ' aan uw app toevoegen zonder dat u de ' www ' CNAME-record hoeft te wijzigen. Zie [een actieve DNS-naam migreren naar Azure app service](manage-custom-dns-migrate-domain.md)voor meer informatie.
 
 Zodra u klaar bent met het toevoegen of wijzigen van DNS-records bij uw domein provider, slaat u de wijzigingen op.
 
@@ -83,14 +83,14 @@ Voor scenario's met een hoge Beschik baarheid kunt u een fout tolerante DNS-inst
 Nadat de records voor uw domein naam zijn door gegeven, gebruikt u de browser om te controleren of uw aangepaste domein naam wordt omgezet in uw App Service-app.
 
 > [!NOTE]
-> Het kan enige tijd duren voordat uw CNAME door het DNS-systeem wordt door gegeven. U kunt een service gebruiken, <a href="https://www.digwebinterface.com/">https://www.digwebinterface.com/</a> bijvoorbeeld om te controleren of de CNAME beschikbaar is.
+> Het kan enige tijd duren voordat uw CNAME door het DNS-systeem wordt door gegeven. U kunt een service gebruiken, bijvoorbeeld <a href="https://www.digwebinterface.com/">https://www.digwebinterface.com/</a> om te controleren of de CNAME beschikbaar is.
 > 
 > 
 
 1. Zodra de domein omzetting is gelukt, gaat u terug naar de app-pagina in [Azure Portal](https://portal.azure.com)
-2. Selecteer in de linkernavigatiebalk **aangepaste domeinen** > **hostnaam toevoegen**.
+2. Selecteer in de linkernavigatiebalk **aangepaste domeinen**  >  **hostnaam toevoegen**.
 4. Typ de aangepaste domein naam die u eerder hebt toegewezen en selecteer **valideren**.
-5. Zorg ervoor dat het **hostnaam-record type** is ingesteld op **CNAME\.(www example.com of een ander subdomein)**.
+5. Zorg ervoor dat het **hostnaam-record type** is ingesteld op **CNAME (www \. example.com of een ander subdomein)**.
 
 6. Omdat de App App Service nu is geïntegreerd met een Traffic Manager-eind punt, ziet u de Traffic Manager domein naam onder **CNAME-configuratie**. Selecteer deze en klik op **aangepast domein toevoegen**.
 

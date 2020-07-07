@@ -12,10 +12,10 @@ ms.date: 06/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
 ms.openlocfilehash: d3761977d3234e19f0df24aec45451b234a569e8
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84332015"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Met Spark gegevens verkennen en modelleren
@@ -707,7 +707,7 @@ Hier volgt de code voor het maken van voor spellingen en het uitzetten van de RO
 
 **UITVOER**
 
-![Logistiek regressie, bocht. png](./media/spark-data-exploration-modeling/logistic-regression-roc-curve.png)
+![curve.png van logistiek regressie ROC](./media/spark-data-exploration-modeling/logistic-regression-roc-curve.png)
 
 ### <a name="random-forest-classification"></a>Wille keurige forest-classificatie
 
