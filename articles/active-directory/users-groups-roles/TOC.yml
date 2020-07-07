@@ -58,6 +58,8 @@
           href: /azure/active-directory/fundamentals/active-directory-users-restore?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Gebruikers bulksgewijs herstellen
           href: users-bulk-restore.md
+        - name: De toegang van een gebruiker intrekken
+          href: users-revoke-access.md
         - name: Een account in een niet-beheerde directory sluiten
           href: users-close-account.md
         - name: B2B-gebruikers toevoegen

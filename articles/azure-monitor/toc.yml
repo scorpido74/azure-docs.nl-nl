@@ -389,6 +389,8 @@
               href: log-query/unify-app-resource-data.md
         - name: Voorbeelden en richtlijnen
           items:
+            - name: Voorbeelden van query's
+              href: log-query/saved-queries.md
             - name: Voorbeelden van logboekquery's
               href: log-query/examples.md
             - name: Voorbeelden van slimme analyses
@@ -1125,6 +1127,8 @@
               href: learn/tutorial-logs-dashboards.md
             - name: Dashboard gebruiken met toepassingsgegevens
               href: learn/tutorial-app-dashboards.md
+            - name: Log Analytics-dashboards upgraden
+              href: log-query/dashboard-upgrade.md
         - name: Gegevens naar Grafana verzenden
           href: platform/grafana-plugin.md
     - name: Aangepaste gegevens verzamelen en analyseren
@@ -1200,6 +1204,10 @@
           href: app/custom-endpoints.md
         - name: Azure Functions
           href: app/azure-functions-supported-features.md
+        - name: Releaseopmerkingen
+          items:
+            - name: Web-appuitbreiding
+              href: app/web-app-extension-release-notes.md
         - name: Gegevensmodel
           items:
             - name: Overzicht

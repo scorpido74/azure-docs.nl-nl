@@ -15,7 +15,7 @@
           href: search-create-service-portal.md
         - name: Een index maken
           href: search-get-started-portal.md
-        - name: Een app maken
+        - name: Een demo-app maken
           href: search-create-app-portal.md
         - name: Een set vaardigheden maken
           href: cognitive-search-quickstart-blob.md

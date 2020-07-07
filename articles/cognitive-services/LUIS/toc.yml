@@ -60,6 +60,8 @@
           href: luis-nodejs-tutorial-bf-v4.md
 - name: Concepten
   items:
+    - name: Kunstmatige intelligentie
+      href: artificial-intelligence.md
     - name: Levenscyclus van ontwikkeling
       href: luis-concept-app-iteration.md
     - name: Uw app plannen

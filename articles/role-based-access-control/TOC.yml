@@ -101,6 +101,8 @@
       href: elevate-access-global-admin.md
     - name: Klassieke beheerders
       href: classic-administrators.md
+    - name: Een abonnement overdragen naar een andere directory (preview)
+      href: transfer-subscription.md
     - name: Problemen oplossen
       href: troubleshooting.md
 - name: Naslaginformatie

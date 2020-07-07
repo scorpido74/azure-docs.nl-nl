@@ -99,6 +99,10 @@
     - name: Virtuele machines met gastconfiguratie controleren
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
+    - name: Beveiliging
+      items:
+        - name: Beveiligingsbasislijn voor Azure Security Benchmark
+          href: ./concepts/azure-security-benchmark-baseline.md
 - name: Instructiegidsen
   items:
     - name: Azure Policy-extensie voor VS code

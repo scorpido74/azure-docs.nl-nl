@@ -7,10 +7,16 @@
       href: what-is-application-management.md
 - name: Snelstartgidsen
   items:
-    - name: Uw bedrijfstoepassingen bekijken
+    - name: Uw apps weergeven
       href: view-applications-portal.md
-    - name: Een cloud-app uit de galerie toevoegen
+    - name: Een app toevoegen
       href: add-application-portal.md
+    - name: Een app configureren
+      href: add-application-portal-configure.md
+    - name: Eenmalige aanmelding instellen
+      href: add-application-portal-setup-sso.md
+    - name: Een app verwijderen
+      href: delete-application-portal.md
 - name: Zelfstudies
   items:
     - name: 'Geïntegreerde galerie-apps (bijvoorbeeld ServiceNow, Salesforce, Dropbox)'

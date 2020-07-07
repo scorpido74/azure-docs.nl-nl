@@ -16,6 +16,8 @@
       href: quickstart-migrate-local-jupyter-notebook.md
     - name: Een aangepaste omgeving gebruiken
       href: quickstart-create-jupyter-notebook-project-environment.md
+    - name: Uw project exporteren
+      href: quickstart-export-jupyter-notebook-project.md
 - name: Zelfstudies
   items:
     - name: Een notebook maken en uitvoeren

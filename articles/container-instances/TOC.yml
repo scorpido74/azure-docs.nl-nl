@@ -86,6 +86,8 @@
           href: container-instances-start-command.md
         - name: Een opdracht uitvoeren (exec)
           href: container-instances-exec.md
+        - name: Een installatiecontainer uitvoeren (init)
+          href: container-instances-init-container.md
         - name: Een beheerde identiteit gebruiken (preview)
           href: container-instances-managed-identity.md
         - name: GPU-resources gebruiken (preview)

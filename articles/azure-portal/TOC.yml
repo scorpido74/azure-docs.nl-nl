@@ -43,8 +43,8 @@
       items:
         - name: Een Azure-ondersteuningsaanvraag maken
           href: supportability/how-to-create-azure-support-request.md
-        - name: Bestanden uploaden voor een ondersteuningsaanvraag
-          href: supportability/how-to-use-file-uploader.md
+        - name: Een Azure-ondersteuningsaanvraag beheren
+          href: supportability/how-to-manage-azure-support-request.md
         - name: Verhogingen van quotum aanvragen
           items:
             - name: vCPU-limieten voor berekening verhogen

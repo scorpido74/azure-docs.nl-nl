@@ -208,14 +208,14 @@
       items:
         - name: Wat is SQL Database?
           href: database/sql-database-paas-overview.md
+        - name: Wat is nieuw?
+          href: database/doc-changes-updates-release-notes.md?&tabs=single-database
         - name: Individuele databases
           href: database/single-database-overview.md
         - name: Pools voor Elastic Database
           href: database/elastic-pool-overview.md
         - name: Logische SQL-servers
           href: database/logical-servers.md
-        - name: Releaseopmerkingen
-          href: database/doc-changes-updates-release-notes.md?&tabs=single-database
         - name: Servicelagen
           items:
             - name: Serverloos
@@ -654,13 +654,13 @@
       items:
         - name: Wat is SQL Managed Instance?
           href: managed-instance/sql-managed-instance-paas-overview.md
+        - name: Wat is nieuw?
+          href: database/doc-changes-updates-release-notes.md?&tabs=managed-instance
         - name: Exemplaargroepen
           href: managed-instance/instance-pools-overview.md
         - name: Veelgestelde vragen
           displayName: faq
           href: managed-instance/frequently-asked-questions-faq.md
-        - name: Releaseopmerkingen
-          href: database/doc-changes-updates-release-notes.md?&tabs=managed-instance
     - name: Snelstartgidsen
       href: managed-instance/quickstart-content-reference-guide.md
       items:
@@ -883,92 +883,99 @@
           items:
             - name: Wat is een SQL Server-VM?
               href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
-            - name: Documentwijzigingen
+            - name: Wat is nieuw?
               href: virtual-machines/windows/doc-changes-updates-release-notes.md
         - name: Snelstartgidsen
           items:
-            - name: Een virtuele SQL-machine maken - Portal
+            - name: Een virtuele SQL-machine maken
+              items: null
+            - name: Portal
               href: virtual-machines/windows/sql-vm-create-portal-quickstart.md
-            - name: Een virtuele SQL-machine maken - PowerShell
+            - name: PowerShell
               href: virtual-machines/windows/sql-vm-create-powershell-quickstart.md
+            - name: ARM-sjabloon
+              href: virtual-machines/windows/create-sql-vm-resource-manager-template.md
         - name: Concepten
           items:
-            - name: Aanbevolen procedures
-              items:
-                - name: Aanbevolen procedures voor prestaties
-                  href: virtual-machines/windows/performance-guidelines-best-practices.md
-                - name: Beveiligingsoverwegingen
-                  href: virtual-machines/windows/security-considerations-best-practices.md
-                - name: Toepassingspatronen
-                  href: virtual-machines/windows/application-patterns-development-strategies.md
             - name: Bedrijfscontinuïteit
               items:
-                - name: Opties voor hoge beschikbaarheid
+                - name: Overzicht
                   href: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
-                - name: AlwaysOn-beschikbaarheidsgroep
-                  href: virtual-machines/windows/availability-group-overview.md
                 - name: Back-ups en herstellen
                   href: virtual-machines/windows/backup-restore.md
-                - name: Automatische back-up voor SQL Server 2014+
-                  href: virtual-machines/windows/automated-backup-sql-2014.md
-                - name: Automatische back-up voor SQL Server 2016+
-                  href: virtual-machines/windows/automated-backup.md
+                - name: Azure Storage voor back-up
+                  href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
+                - name: AlwaysOn-beschikbaarheidsgroep
+                  href: virtual-machines/windows/availability-group-overview.md
+                - name: Failover-clusterexemplaar
+                  href: virtual-machines/windows/failover-cluster-instance-overview.md
+            - name: Aanbevolen procedures
+              items:
+                - name: Prestaties
+                  href: virtual-machines/windows/performance-guidelines-best-practices.md
+                - name: Beveiliging
+                  href: virtual-machines/windows/security-considerations-best-practices.md
+                - name: Clusterconfiguratie
+                  href: virtual-machines/windows/hadr-cluster-best-practices.md
+                - name: Toepassingspatronen
+                  href: virtual-machines/windows/application-patterns-development-strategies.md
             - name: Beheer
               items:
                 - name: Toegewezen host
                   href: virtual-machines/windows/dedicated-host.md
-                - name: Met de Azure Portal
-                  href: virtual-machines/windows/manage-sql-vm-portal.md
                 - name: Ondersteuning voor SQL 2008 en R2 verlengen
                   href: virtual-machines/windows/sql-server-2008-extend-end-of-support.md
-                - name: Verbinding maken met een VM
-                  href: virtual-machines/windows/ways-to-connect-to-sql.md
-                - name: Opslag configureren
-                  href: virtual-machines/windows/storage-configuration.md
-                - name: Beheertaken automatiseren
-                  items:
-                    - name: De SQL Server IaaS Agent-extensie gebruiken
-                      href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
-                    - name: Automatisch patchen
-                      href: virtual-machines/windows/automated-patching.md
-                    - name: Azure Key Vault-integratie configureren
-                      href: virtual-machines/windows/azure-key-vault-integration-configure.md
         - name: Instructiegidsen
           items:
-            - name: Een virtuele SQL-machine maken
+            - name: Verbinding maken met SQL Server-VM
+              href: virtual-machines/windows/ways-to-connect-to-sql.md
+            - name: Een SQL Server-VM maken
               items:
                 - name: Gebruik de portal
                   href: virtual-machines/windows/create-sql-vm-portal.md
                 - name: Azure PowerShell gebruiken
                   href: virtual-machines/windows/create-sql-vm-powershell.md
-            - name: Registreren met SQL-VM RP
-              displayName: 'resource provider, registration'
-              items:
-                - name: Eén VM
-                  href: virtual-machines/windows/sql-vm-resource-provider-register.md
-                - name: Meerdere VM's bulksgewijs registreren
-                  href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
             - name: Beheren
               items:
+                - name: Met de Azure Portal
+                  href: virtual-machines/windows/manage-sql-vm-portal.md
                 - name: Licentiemodel
                   displayName: 'ahb, ahub, payg, change, modify, update'
                   href: virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md
                 - name: Editie
                   displayName: 'change, modify, update'
                   href: virtual-machines/windows/change-sql-server-edition.md
-                - name: Versie
-                  displayName: 'change, modify, update'
-                  href: virtual-machines/windows/change-sql-server-version.md
-                - name: Azure Storage voor back-up en herstel
-                  href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
+                - name: Storage
+                  href: virtual-machines/windows/storage-configuration.md
+                - name: Integratie van Azure Sleutelkluis
+                  href: virtual-machines/windows/azure-key-vault-integration-configure.md
+                - name: Registreren met SQL-VM RP
+                  displayName: 'resource provider, registration'
+                  items:
+                    - name: Eén VM
+                      href: virtual-machines/windows/sql-vm-resource-provider-register.md
+                    - name: Meerdere VM's bulksgewijs registreren
+                      href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
+                - name: Beheertaken automatiseren
+                  items:
+                    - name: De SQL Server IaaS Agent-extensie gebruiken
+                      href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
+                    - name: Automatisch patchen
+                      href: virtual-machines/windows/automated-patching.md
             - name: Migreren
               items:
                 - name: SQL Server-database naar VM
                   href: virtual-machines/windows/migrate-to-vm-from-sql-server.md
                 - name: VM naar een nieuwe regio
                   href: virtual-machines/windows/move-sql-vm-different-region.md
-            - name: Hoge beschikbaarheid configureren
+            - name: Bedrijfscontinuïteit
               items:
+                - name: Back-ups en herstellen
+                  items:
+                    - name: Automatische back-up (SQL 2016+)
+                      href: virtual-machines/windows/automated-backup.md
+                    - name: Automatische back-up (SQL 2014)
+                      href: virtual-machines/windows/automated-backup-sql-2014.md
                 - name: AlwaysOn-beschikbaarheidsgroep
                   items:
                     - name: CLI voor Azure SQL-VM
@@ -989,12 +996,30 @@
                           href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
                         - name: Load balancer - Azure PowerShell
                           href: virtual-machines/windows/availability-group-listener-powershell-configure.md
-                - name: Failover-clusterexemplaar
+                - name: Failover-clusterexemplaar (FCI)
                   items:
-                    - name: Met Storage Spaces Direct
-                      href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
-                    - name: Met Premium-bestandsshare
-                      href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
+                    - name: De virtuele machine voorbereiden voor FCI
+                      href: virtual-machines/windows/failover-cluster-instance-prepare-vm.md
+                    - name: FCI maken met
+                      items:
+                        - name: Gedeelde Azure-schijven (SQL2019+)
+                          href: virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md
+                        - name: Storage Spaces Direct-cluster (Win2016+)
+                          href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
+                        - name: Premium-bestandsshare (Win2012+)
+                          href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
+                    - name: Gedistribueerde netwerknaam (DNN)
+                      items:
+                        - name: DNN maken voor FCI
+                          href: virtual-machines/windows/hadr-distributed-network-name-dnn-configure.md
+                        - name: Functie-interoperabiliteit met DNN
+                          href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
+                        - name: FCI DNN en SQL Server-functies
+                          href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
+                - name: Connectiviteit configureren
+                  items:
+                    - name: Naam van virtueel netwerk (VNN)
+                      href: virtual-machines/windows/hadr-vnn-azure-load-balancer-configure.md
         - name: Naslaginformatie
           items:
             - name: Azure PowerShell

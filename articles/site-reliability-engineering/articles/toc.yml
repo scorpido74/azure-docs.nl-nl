@@ -3,5 +3,7 @@
 - name: Veelgestelde vragen
   expanded: true
   items:
+    - name: SRE en codering
+      href: code.md
     - name: SRE en DevOps
       href: devops.md

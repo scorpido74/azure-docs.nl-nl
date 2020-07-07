@@ -7,10 +7,14 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: Service maken - Portal
-      href: quickstart-create-data-migration-service-portal.md
-    - name: Service in hybride modus maken - Portal
-      href: quickstart-create-data-migration-service-hybrid-portal.md
+    - name: Service maken
+      items:
+        - name: Portal
+          href: quickstart-create-data-migration-service-portal.md
+        - name: ARM-sjabloon
+          href: create-dms-resource-manager-template.md
+        - name: in hybride modus (Portal)
+          href: quickstart-create-data-migration-service-hybrid-portal.md
 - name: Concepten
   items:
     - name: Vereisten

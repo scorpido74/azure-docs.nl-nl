@@ -146,6 +146,10 @@
       href: preprocess-text.md
     - name: Latente Dirichlet-toewijzing
       href: latent-dirichlet-allocation.md
+    - name: Vowpal Wabbit-model scoren
+      href: score-vowpal-wabbit-model.md
+    - name: Vowpal Wabbit-model trainen
+      href: train-vowpal-wabbit-model.md
 - name: Computer Vision
   items:
     - name: Afbeeldingstransformatie toepassen

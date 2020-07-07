@@ -165,7 +165,7 @@
               href: service-fabric-concepts-partitioning.md
             - name: Stateful services opnieuw configureren
               href: service-fabric-concepts-reconfiguration.md
-            - name: 'Levenscyclus van Reliable Services - C#'
+            - name: Levenscyclus van Reliable Services - C#
               href: service-fabric-reliable-services-lifecycle.md
             - name: Levenscyclus van Reliable Services - Java
               href: service-fabric-reliable-services-lifecycle-java.md
@@ -222,6 +222,8 @@
               href: service-fabric-manifest-example-container-app.md
         - name: Hostingmodel
           href: service-fabric-hosting-model.md
+        - name: Geavanceerde onderwerpen over het activeren en deactiveren van levenscycli
+          href: service-fabric-hosting-lifecycle.md
         - name: Toepassingsbeveiliging
           href: service-fabric-application-and-service-security.md
         - name: Servicestatus
@@ -404,13 +406,13 @@
           href: service-fabric-get-started-containers.md
         - name: Linux-containertoepassing
           href: service-fabric-get-started-containers-linux.md
-        - name: 'C# Reliable Services-toepassing in Windows'
+        - name: C# Reliable Services-toepassing in Windows
           href: service-fabric-reliable-services-quick-start.md
         - name: Java Reliable Services-toepassing in Linux
           href: service-fabric-reliable-services-quick-start-java.md
-        - name: 'C# Reliable Services-toepassing in Linux'
+        - name: C# Reliable Services-toepassing in Linux
           href: service-fabric-create-your-first-linux-application-with-csharp.md
-        - name: 'C# Reliable Actors-toepassing in Windows'
+        - name: C# Reliable Actors-toepassing in Windows
           href: service-fabric-reliable-actors-get-started.md
         - name: Java Reliable Actors-toepassing in Linux
           href: service-fabric-create-your-first-linux-application-with-java.md
@@ -448,13 +450,13 @@
               items:
                 - name: Communiceren via Reliable Services
                   href: service-fabric-reliable-services-communication.md
-                - name: 'Service voor externe toegang - C#'
+                - name: Service voor externe toegang - C#
                   href: service-fabric-reliable-services-communication-remoting.md
                 - name: Service voor externe toegang - Java
                   href: service-fabric-reliable-services-communication-remoting-java.md
                 - name: WCF
                   href: service-fabric-reliable-services-communication-wcf.md
-                - name: 'Beveiligde communicatie - C#'
+                - name: Beveiligde communicatie - C#
                   href: service-fabric-reliable-services-secure-communication.md
                 - name: Beveiligde communicatie - Java
                   href: service-fabric-reliable-services-secure-communication-java.md
@@ -561,7 +563,7 @@
           items:
             - name: Aan de slag met VS-code
               href: service-fabric-get-started-vs-code.md
-            - name: 'C# Service Fabric-toepassingen ontwikkelen met VS Code'
+            - name: C# Service Fabric-toepassingen ontwikkelen met VS Code
               href: service-fabric-develop-csharp-applications-with-vs-code.md
             - name: Java Service Fabric-toepassingen ontwikkelen met VS Code
               href: service-fabric-develop-java-applications-with-vs-code.md
