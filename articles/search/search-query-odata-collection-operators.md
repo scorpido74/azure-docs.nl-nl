@@ -20,19 +20,18 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 54ddc8222816831b5b436297bbb1b40d03230f0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113231"
 ---
-# <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>OData-verzamelings operators in `any` Azure Cognitive Search-en`all`
+# <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>OData-verzamelings operators in azure Cognitive Search- `any` en`all`
 
-Wanneer u een [OData-filter expressie](query-odata-filter-orderby-syntax.md) schrijft om te gebruiken met Azure Cognitive Search, is het vaak handig om te filteren op verzamelings velden. U kunt dit doen met behulp van de `any` Opera tors en `all` .
+Wanneer u een [OData-filter expressie](query-odata-filter-orderby-syntax.md) schrijft om te gebruiken met Azure Cognitive Search, is het vaak handig om te filteren op verzamelings velden. U kunt dit doen met behulp van de `any` `all` Opera tors en.
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
-De volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van een OData-expressie die `any` gebruikmaakt `all`van of.
+De volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van een OData-expressie die gebruikmaakt van `any` of `all` .
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -56,9 +55,9 @@ Er is ook een interactief syntaxis diagram beschikbaar:
 Er zijn drie soorten expressies waarmee verzamelingen worden gefilterd.
 
 - De eerste twee herhaalde iteratie van een verzamelings veld, waarbij een predikaat wordt toegepast dat is opgegeven in de vorm van een lambda-expressie voor elk element van de verzameling.
-  - Een expressie die `all` gebruikmaakt `true` van retourneert als het predicaat True is voor elk element van de verzameling.
-  - Een expressie die `any` gebruikmaakt `true` van retourneert als het predicaat True is voor ten minste één element van de verzameling.
-- Het derde formulier van het verzamelings `any` filter gebruikt zonder een lambda-expressie om te testen of een veld in de verzameling leeg is. Als de verzameling elementen bevat, wordt deze geretourneerd `true`. Als de verzameling leeg is, wordt geretourneerd `false`.
+  - Een expressie die gebruikmaakt van `all` retourneert `true` als het predicaat True is voor elk element van de verzameling.
+  - Een expressie die gebruikmaakt van `any` retourneert `true` als het predicaat True is voor ten minste één element van de verzameling.
+- Het derde formulier van het verzamelings filter gebruikt `any` zonder een lambda-expressie om te testen of een veld in de verzameling leeg is. Als de verzameling elementen bevat, wordt deze geretourneerd `true` . Als de verzameling leeg is, wordt geretourneerd `false` .
 
 Een **lambda-expressie** in een verzamelings filter is net als de hoofd tekst van een lus in een programmeer taal. Hiermee wordt een variabele gedefinieerd, de **variabele Range**genoemd, die het huidige element van de verzameling tijdens iteratie bevat. Er wordt ook een andere booleaanse expressie gedefinieerd die de filter criteria is die moeten worden toegepast op de bereik variabele voor elk element van de verzameling.
 
@@ -68,11 +67,11 @@ Overeenkomende documenten waarvan `tags` het veld precies de teken reeks ' WiFi 
 
     tags/any(t: t eq 'wifi')
 
-Vergelijkt documenten waarbij elk element `ratings` van het veld tussen 3 en 5 ligt:
+Vergelijkt documenten waarbij elk element van het `ratings` veld tussen 3 en 5 ligt:
 
     ratings/all(r: r ge 3 and r le 5)
 
-Vergelijkt documenten waarbij een van de geo- `locations` coördinaten in het veld binnen de opgegeven veelhoek ligt:
+Vergelijkt documenten waarbij een van de geo-coördinaten in het `locations` veld binnen de opgegeven veelhoek ligt:
 
     locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
 
@@ -80,7 +79,7 @@ Overeenkomende documenten waarbij het `rooms` veld leeg is:
 
     not rooms/any()
 
-Documenten die voor alle ruimten overeenkomen, `rooms/amenities` het veld bevat ' TV ' `rooms/baseRate` en is kleiner dan 100:
+Documenten die voor alle ruimten overeenkomen, het `rooms/amenities` veld bevat ' TV ' en `rooms/baseRate` is kleiner dan 100:
 
     rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
 

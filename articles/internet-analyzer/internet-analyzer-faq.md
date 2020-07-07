@@ -8,10 +8,9 @@ ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74184257"
 ---
 # <a name="azure-internet-analyzer-faq-preview"></a>Veelgestelde vragen over Azure Internet Analyzer (preview-versie)
@@ -22,7 +21,7 @@ Dit is de veelgestelde vragen voor Azure Internet Analyzer: als u meer vragen he
 
 De preview-versie is beschikbaar om klanten te selecteren. Ga als volgt te werk als u wilt deel nemen aan de preview-versie:
 
-1. Meld u aan bij de [Azure-portal](https://ms.portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://ms.portal.azure.com).
 2. Navigeer naar de pagina **abonnementen** .
 3. Klik op het Azure-abonnement dat u wilt gebruiken Internet Analyzer met.
 4. Ga naar de instellingen van de **resource providers** voor het abonnement.

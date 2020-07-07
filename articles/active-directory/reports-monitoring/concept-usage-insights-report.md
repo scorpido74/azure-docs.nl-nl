@@ -17,10 +17,9 @@ ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: b3db86137207ae726c7befc393f62590fd1456d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74008270"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Het rapport gebruik en inzichten in de Azure Active Directory Portal
@@ -41,7 +40,7 @@ Voor toegang tot de gegevens in het rapport gebruik en inzichten hebt u het volg
 
 ## <a name="access-the-usage-and-insights-report"></a>Het rapport gebruik en inzichten openen
 
-1. Navigeer naar het [Azure Portal](https://portal.azure.com).
+1. Navigeer naar [Azure Portal](https://portal.azure.com).
 2. Selecteer de juiste map, selecteer **Azure Active Directory** en kies **bedrijfs toepassingen**.
 3. Selecteer in de sectie **activiteit** **gebruik & inzichten** om het rapport te openen. 
 

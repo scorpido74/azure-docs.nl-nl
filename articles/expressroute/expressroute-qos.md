@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: cherylmc
 ms.openlocfilehash: debc5d91478d0a5c3cc16c7b09f5713ba09b467e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74080105"
 ---
 # <a name="expressroute-qos-requirements"></a>QoS-vereisten voor ExpressRoute
@@ -31,7 +30,7 @@ De volgende tabel bevat een lijst met DSCP-markeringen die worden gebruikt door 
 | **Spraak** |EF (46) |Skype/micro soft teams/Lync Voice |
 | **SBSI** |AF41 (34) |Video, VBSS |
 | |AF21 (18) |Apps delen | 
-| **Prijs** |AF11 (10) |Bestandsoverdracht |
+| **Standaard** |AF11 (10) |Bestandsoverdracht |
 | |CS0 (0) |Overige |
 
 * U moet de workloads classificeren en de juiste DSCP-waarden markeren. Volg [deze](https://docs.microsoft.com/SkypeForBusiness/manage/network-management/qos/configuring-port-ranges-for-your-skype-clients#configure-quality-of-service-policies-for-clients-running-on-windows-10) richtlijnen over het instellen van DSCP-markeringen in uw netwerk.

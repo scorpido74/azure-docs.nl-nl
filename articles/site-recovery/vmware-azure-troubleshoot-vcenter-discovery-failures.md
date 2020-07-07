@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
 ms.openlocfilehash: f00c7b12accde9df9a5708a2b8b378d70428318d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74091242"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>Problemen met vCenter Server detectie oplossen
@@ -20,7 +19,7 @@ Dit artikel helpt u bij het oplossen van problemen die zich voordoen als gevolg 
 
 ## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>Niet-numerieke waarden in de eigenschap maxSnapShots
 
-Op eerdere versies dan 9,20 wordt de verbinding met vCenter verbroken wanneer het een niet-numerieke waarde voor de eigenschap `snapshot.maxSnapShots` Property op een virtuele machine ophaalt.
+Op eerdere versies dan 9,20 wordt de verbinding met vCenter verbroken wanneer het een niet-numerieke waarde voor de eigenschap property `snapshot.maxSnapShots` op een virtuele machine ophaalt.
 
 Dit probleem wordt geïdentificeerd aan de hand van fout-ID 95126.
 
@@ -30,7 +29,7 @@ Dit probleem wordt geïdentificeerd aan de hand van fout-ID 95126.
        at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
        at VMware.VSphere.Management.InfraContracts.VirtualMachineInfo.get_MaxSnapshots()
     
-Om het probleem op te lossen:
+Het probleem oplossen:
 
 - Identificeer de virtuele machine en stel de waarde in op een numerieke waarde (VM-instellingen bewerken in vCenter).
 
@@ -46,11 +45,11 @@ In het algemeen wordt de proxy gebruikt om te communiceren met open bare netwerk
 
 De volgende situaties treden op wanneer dit probleem zich voordoet:
 
-- Het vCenter- \<> van de vCenter-Server is niet bereikbaar vanwege de volgende fout: de externe server heeft een fout geretourneerd: (503) server niet beschikbaar
-- Het vCenter- \<> van de vCenter-Server is niet bereikbaar vanwege de volgende fout: de externe server heeft een fout geretourneerd: kan geen verbinding maken met de externe server.
+- De vCenter-Server \<vCenter> is niet bereikbaar vanwege de volgende fout: de externe server heeft een fout geretourneerd: (503) server niet beschikbaar
+- De vCenter-Server \<vCenter> is niet bereikbaar vanwege de volgende fout: de externe server heeft een fout geretourneerd: er kan geen verbinding worden gemaakt met de externe server.
 - Kan geen verbinding maken met de vCenter/ESXi-server.
 
-Om het probleem op te lossen:
+Het probleem oplossen:
 
 Down load het [PsExec-hulp programma](https://aka.ms/PsExec). 
 
@@ -73,7 +72,7 @@ Voor DRA-proxy configuratie:
 
 3. Voer de volgende opdracht uit vanaf de opdracht prompt.
    
-   **DRCONFIGURATOR. EXE/configure/AddBypassUrls [IP-adres/FQDN van vCenter Server beschikbaar op het moment van vCenter toevoegen]**
+   **DRCONFIGURATOR.EXE/configure/AddBypassUrls [IP-adres/FQDN van vCenter Server die is beschikbaar op het moment van het toevoegen van vCenter]**
 
 4. Start de DRA-Provider service opnieuw.
 

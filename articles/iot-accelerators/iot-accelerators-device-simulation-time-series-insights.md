@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 2bbd7911a40d6a256d478e2533ad2469b8fd6973
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73889333"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Time Series Insights gebruiken om telemetrie te visualiseren die wordt verzonden vanuit de apparaat simulatie oplossings versneller
@@ -55,9 +54,9 @@ In de volgende stappen wordt de Azure CLI in de Azure Cloud Shell gebruikt voor 
 
 [Azure time series Insights](../../articles/time-series-insights/time-series-insights-overview.md) is een volledig beheerde analyse-, opslag-en visualisatie service voor het beheren van gegevens in de Cloud voor de tijd reeks van IOT-schaal. Een nieuwe Time Series Insights omgeving maken:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-1. Selecteer **een resource** > **maken internet of Things** > **Time Series Insights**:
+1. Selecteer **een resource maken**  >  **Internet of Things**  >  **Time Series Insights**:
 
     ![Nieuwe Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights.png)
 
@@ -77,7 +76,7 @@ In de volgende stappen wordt de Azure CLI in de Azure Cloud Shell gebruikt voor 
     > [!NOTE]
     > Als u de Time Series Insights-omgeving toevoegt aan dezelfde resource groep als de oplossings versneller, wordt deze verwijderd wanneer u de oplossings versneller verwijdert.
 
-1. Klik op **maken**. Het kan enkele minuten duren voordat de omgeving is gemaakt.
+1. Klik op **Create**. Het kan enkele minuten duren voordat de omgeving is gemaakt.
 
 ## <a name="create-event-source"></a>Gebeurtenisbron maken
 
@@ -110,7 +109,7 @@ Maak een nieuwe gebeurtenis bron om verbinding te maken met uw IoT-hub. Gebruik 
 
     ![Gebeurtenis bron maken](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-source-create.png)
 
-1. Klik op **maken**.
+1. Klik op **Create**.
 
 > [!NOTE]
 > U kunt [aanvullende gebruikers toegang verlenen](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access) tot de time series Insights Explorer.

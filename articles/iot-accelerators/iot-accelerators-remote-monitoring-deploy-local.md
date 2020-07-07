@@ -9,10 +9,9 @@ services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: a1eba1fceb959bd475d205176c2c53f6409fdc77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73890890"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>De externe controle oplossings versneller implementeren lokaal-Visual Studio
@@ -37,7 +36,7 @@ Als u de lokale implementatie wilt volt ooien, moet u de volgende hulpprogram ma
 * [Docker](https://www.docker.com)
 * [Visual Studio](https://visualstudio.microsoft.com/)
 * [Nginx](https://nginx.org/en/download.html)
-* [Node. js V8](https://nodejs.org/) : deze software is een vereiste voor de pc's cli die de scripts gebruiken om Azure-resources te maken. Gebruik node. js V10 toevoegen niet.
+* [Node.js V8](https://nodejs.org/) : deze software is een vereiste voor de pc's cli die de scripts gebruiken om Azure-resources te maken. Gebruik Node.js V10 toevoegen niet.
 
 > [!NOTE]
 > Visual Studio is beschikbaar voor Windows en Mac.
@@ -82,7 +81,7 @@ Elke webservice opent een opdracht prompt en webbrowser venster. Bij de opdracht
 
 Volg deze stappen om de Stream Analytics taak te starten:
 
-1. Navigeer naar het [Azure Portal](https://portal.azure.com).
+1. Navigeer naar [Azure Portal](https://portal.azure.com).
 1. Navigeer naar de **resource groep** die is gemaakt voor uw oplossing. De naam van de resource groep is de naam die u voor uw oplossing hebt gekozen toen u het script **Start. cmd** hebt uitgevoerd.
 1. Klik op de **taak stream Analytics** in de lijst met resources.
 1. Klik op de pagina **overzicht** van stream Analytics op de knop **starten** . Klik vervolgens op **Start** om de taak nu te starten.
@@ -96,7 +95,7 @@ npm install
 npm start
 ```
 
-Wanneer het starten is voltooid, wordt in uw browser de pagina **http\/:/localhost: 3000/dash board**weer gegeven. De fouten op deze pagina worden verwacht. Als u de toepassing zonder fouten wilt weer geven, voert u de volgende stap uit.
+Wanneer het starten is voltooid, wordt in uw browser de pagina **http: \/ /localhost: 3000/dash board**weer gegeven. De fouten op deze pagina worden verwacht. Als u de toepassing zonder fouten wilt weer geven, voert u de volgende stap uit.
 
 ### <a name="configure-and-run-nginx"></a>NGINX configureren en uitvoeren
 
@@ -109,7 +108,7 @@ Zie [nginx voor Windows](https://nginx.org/en/docs/windows.html)voor meer inform
 
 ### <a name="connect-to-the-dashboard"></a>Verbinding maken met het dash board
 
-Om toegang te krijgen tot het dash board van de oplossing voor\/externe controle, gaat u naar http:/localhost: 9000 in uw browser.
+Om toegang te krijgen tot het dash board van de oplossing voor externe controle, gaat u naar http: \/ /localhost: 9000 in uw browser.
 
 ## <a name="clean-up"></a>Opruimen
 

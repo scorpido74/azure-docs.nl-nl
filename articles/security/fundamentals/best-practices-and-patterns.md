@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
 ms.openlocfilehash: 0bf9b4d3aa1926343ad25000a05762a31d49617d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73889844"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Aanbevolen procedures en patronen voor Azure-beveiliging
@@ -30,9 +29,9 @@ De aanbevolen procedures zijn bedoeld als resource voor IT-professionals. Dit ka
 
 * [Best practices voor beveiliging van Azure-grenzen](/azure/security/fundamentals/network-best-practices#adopt-a-zero-trust-approach)
 * [Best practices voor Azure-databasebeveiliging](database-best-practices.md)
-* [Aanbevolen procedures voor Azure-gegevens beveiliging en-versleuteling](data-encryption-best-practices.md)
-* [Aanbevolen procedures voor de beveiliging van Azure Identity Management en Access Control](identity-management-best-practices.md)
-* [Aanbevolen procedures voor Azure-netwerk beveiliging](network-best-practices.md)
+* [Best practices voor gegevensbeveiliging en -versleuteling in Azure](data-encryption-best-practices.md)
+* [Best practices voor beveiliging voor identiteitsbeheer en toegangsbeheer in Azure](identity-management-best-practices.md)
+* [Best practices voor Azure-netwerkbeveiliging](network-best-practices.md)
 * [Best practices voor operationele Azure-beveiliging](operational-best-practices.md)
 * [Best practices voor Azure PaaS](paas-deployments.md)
 * [Best practices voor Azure Service Fabric-beveiliging](service-fabric-best-practices.md)

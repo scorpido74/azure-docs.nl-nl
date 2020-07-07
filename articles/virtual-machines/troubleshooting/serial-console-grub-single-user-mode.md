@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
 ms.openlocfilehash: 06cb3fe5d551ddfc95fcbd37cd9620adebd825c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70883924"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Seriële console gebruiken om toegang te krijgen tot de GRUB en de modus voor één gebruiker
@@ -53,8 +52,8 @@ Als de virtuele machine niet kan worden opgestart, worden de distributies vaak a
 
 ### <a name="use-single-user-mode-to-reset-or-add-a-password"></a>Gebruik de modus voor één gebruiker om een wacht woord opnieuw in te stellen of toe te voegen
 Nadat u zich in de modus voor één gebruiker bevindt, kunt u als volgt een nieuwe gebruiker met sudo-bevoegdheden toevoegen:
-1. Voer `useradd <username>` uit om een gebruiker toe te voegen.
-1. Voer `sudo usermod -a -G sudo <username>` uit om de nieuwe gebruikers hoofd bevoegdheden te verlenen.
+1. Voer uit `useradd <username>` om een gebruiker toe te voegen.
+1. Voer uit `sudo usermod -a -G sudo <username>` om de nieuwe gebruikers hoofd bevoegdheden te verlenen.
 1. Gebruiken `passwd <username>` om het wacht woord voor de nieuwe gebruiker in te stellen. U kunt zich vervolgens aanmelden als de nieuwe gebruiker.
 
 
@@ -62,7 +61,7 @@ Nadat u zich in de modus voor één gebruiker bevindt, kunt u als volgt een nieu
 Als RHEL niet normaal kan worden opgestart, wordt u automatisch naar de modus voor één gebruiker verzonden. Als u echter geen hoofd toegang hebt ingesteld voor de modus voor één gebruiker, hebt u geen hoofd wachtwoord en kunt u zich niet aanmelden. Er is een tijdelijke oplossing (Zie de sectie ' hand matig een modus voor één gebruiker opgeven in RHEL '), maar we raden u echter aan om in eerste instantie hoofd toegang in te stellen.
 
 ### <a name="grub-access-in-rhel"></a>GRUB-toegang in RHEL
-RHEL wordt geleverd met GRUB ingeschakeld. Als u GRUB wilt invoeren, start u de `sudo reboot`VM opnieuw op door uit te voeren en drukt u op een wille keurige toets. Het deel venster GRUB moet worden weer gegeven. Als dat niet het geval is, moet u ervoor zorgen dat de volgende regels aanwezig`/etc/default/grub`zijn in uw grub-bestand ():
+RHEL wordt geleverd met GRUB ingeschakeld. Als u GRUB wilt invoeren, start u de VM opnieuw op door uit te voeren `sudo reboot` en drukt u op een wille keurige toets. Het deel venster GRUB moet worden weer gegeven. Als dat niet het geval is, moet u ervoor zorgen dat de volgende regels aanwezig zijn in uw GRUB-bestand ( `/etc/default/grub` ):
 
 **Voor RHEL 8**
 
@@ -91,7 +90,7 @@ De hoofd gebruiker is standaard uitgeschakeld. Voor de modus voor één gebruike
 1. Schakel het wacht woord voor de hoofd gebruiker in door het volgende te doen:
     * Uitvoeren `passwd root` (Stel een sterk hoofd wachtwoord in).
 1. Zorg ervoor dat de hoofd gebruiker zich alleen kan aanmelden via ttyS0 door het volgende te doen:  
-    a. Voer `edit /etc/ssh/sshd_config`uit en zorg ervoor dat PermitRootLogIn is ingesteld `no`op.  
+    a. Voer uit `edit /etc/ssh/sshd_config` en zorg ervoor dat PermitRootLogIn is ingesteld op `no` .  
     b. Voer `edit /etc/securetty file` alleen uit om de aanmelding via ttyS0 toe te staan.
 
 Als het systeem nu wordt opgestart in de modus voor één gebruiker, kunt u zich aanmelden met het hoofd wachtwoord.
@@ -127,26 +126,26 @@ Als u de hoofd gebruiker niet hebt ingeschakeld door de eerdere instructies te v
 1. Zoek de kernel-regel. In azure begint deze met *linux16*.
 1. Voeg aan het einde van de regel *rd. Store* toe aan het einde van de regel. Plaats een spatie tussen de kernel-regel en *rd. Restore*.
 
-    Met deze actie wordt het opstart proces onderbroken voordat het besturings element `initramfs` wordt `systemd`door gegeven van naar, zoals beschreven in de [Red Hat-documentatie](https://aka.ms/rhel7rootpassword).
+    Met deze actie wordt het opstart proces onderbroken voordat het besturings element wordt door gegeven van `initramfs` naar `systemd` , zoals beschreven in de [Red Hat-documentatie](https://aka.ms/rhel7rootpassword).
 1. Druk op CTRL + X om af te sluiten en opnieuw op te starten met de toegepaste instellingen.
 
    Nadat u opnieuw hebt opgestart, wordt u in de nood herstel modus met een alleen-lezen bestands systeem verwijderd. 
    
-1. Voer `mount -o remount,rw /sysroot` in de shell het hoofd bestands systeem opnieuw koppelen aan de machtigingen lezen/schrijven.
-1. Nadat u de modus voor één gebruiker hebt opgestart, `chroot /sysroot` voert u in om `sysroot` over te scha kelen naar de jailbroken.
-1. U bent nu het hoofd. U kunt het wacht woord opnieuw instellen door `passwd` in te voeren en vervolgens de voor gaande instructies gebruiken om de modus voor één gebruiker in te voeren. 
-1. Wanneer u klaar bent, voert `reboot -f` u deze in om opnieuw op te starten.
+1. Voer in de shell `mount -o remount,rw /sysroot` het hoofd bestands systeem opnieuw koppelen aan de machtigingen lezen/schrijven.
+1. Nadat u de modus voor één gebruiker hebt opgestart, voert u in `chroot /sysroot` om over te scha kelen naar de `sysroot` jailbroken.
+1. U bent nu het hoofd. U kunt het wacht woord opnieuw instellen door in te voeren `passwd` en vervolgens de voor gaande instructies gebruiken om de modus voor één gebruiker in te voeren. 
+1. Wanneer u klaar bent, voert u deze `reboot -f` in om opnieuw op te starten.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > [!NOTE]
-> Door de voor gaande instructies uit te voeren, gaat u naar de nood shell, zodat u ook taken zoals `fstab`bewerken kunt uitvoeren. Normaal gesp roken wordt u echter aangeraden om uw basis wachtwoord opnieuw in te stellen en dit te gebruiken om de modus voor één gebruiker in te voeren.
+> Door de voor gaande instructies uit te voeren, gaat u naar de nood shell, zodat u ook taken zoals bewerken kunt uitvoeren `fstab` . Normaal gesp roken wordt u echter aangeraden om uw basis wachtwoord opnieuw in te stellen en dit te gebruiken om de modus voor één gebruiker in te voeren.
 
 ## <a name="access-for-centos"></a>Toegang voor CentOS
 Net als Red Hat Enterprise Linux vereist de modus voor één gebruiker in CentOS GRUB en de hoofd gebruiker om in te scha kelen.
 
 ### <a name="grub-access-in-centos"></a>GRUB-toegang in CentOS
-CentOS wordt geleverd met GRUB ingeschakeld. Als u GRUB wilt invoeren, start u de `sudo reboot`VM opnieuw op door in te voeren en drukt u op een wille keurige toets. Met deze actie wordt het deel venster GRUB weer gegeven.
+CentOS wordt geleverd met GRUB ingeschakeld. Als u GRUB wilt invoeren, start u de VM opnieuw op door in te voeren `sudo reboot` en drukt u op een wille keurige toets. Met deze actie wordt het deel venster GRUB weer gegeven.
 
 ### <a name="single-user-mode-in-centos"></a>Modus voor één gebruiker in CentOS
 Als u de modus voor één gebruiker in CentOS wilt inschakelen, volgt u de eerdere instructies voor RHEL.
@@ -175,14 +174,14 @@ Als Ubuntu niet normaal kan worden opgestart, wordt u automatisch naar de modus 
 1. Druk op CTRL + X om opnieuw op te starten met deze instellingen en de modus voor één gebruiker in te voeren.
 
 ### <a name="use-grub-to-invoke-bash-in-ubuntu"></a>GRUB gebruiken om bash aan te roepen in Ubuntu
-Nadat u de voor gaande instructies hebt uitgevoerd, is er mogelijk een situatie (zoals een verg eten basis wachtwoord) waar u nog steeds geen toegang hebt tot de modus voor één gebruiker in uw Ubuntu-VM. U kunt ook aangeven dat de kernel moet `/bin/bash` worden uitgevoerd als init, in plaats van het systeem init. Deze actie geeft u een bash-shell en maakt systeem onderhoud mogelijk. Gebruik de volgende instructies:
+Nadat u de voor gaande instructies hebt uitgevoerd, is er mogelijk een situatie (zoals een verg eten basis wachtwoord) waar u nog steeds geen toegang hebt tot de modus voor één gebruiker in uw Ubuntu-VM. U kunt ook aangeven dat de kernel moet worden uitgevoerd `/bin/bash` als init, in plaats van het systeem init. Deze actie geeft u een bash-shell en maakt systeem onderhoud mogelijk. Gebruik de volgende instructies:
 
 1. Druk in GRUB op E om de opstart vermelding (de Ubuntu-vermelding) te bewerken.
 
 1. Zoek naar de regel die begint met *Linux*en zoek vervolgens naar *ro*.
 1. Vervang *ro* door *rw init =/bin/bash*.
 
-    Met deze actie wordt uw bestands systeem gekoppeld aan de lees-en `/bin/bash` schrijf bewerkingen en wordt het gebruikt als het init-proces.
+    Met deze actie wordt uw bestands systeem gekoppeld aan de lees-en schrijf bewerkingen en wordt `/bin/bash` het gebruikt als het init-proces.
 1. Druk op CTRL + X om opnieuw op te starten met deze instellingen.
 
 ## <a name="access-for-coreos"></a>Toegang voor CoreOS
@@ -206,7 +205,7 @@ Nieuwere installatie kopieën van SLES 12 SP3 + bieden toegang via de seriële c
 ### <a name="grub-access-in-suse-sles"></a>GRUB-toegang in SUSE SLES
 GRUB-toegang in SLES vereist een configuratie van de bootloader via YaST. Ga als volgt te werk om de configuratie te maken:
 
-1. Gebruik SSH om u aan te melden bij uw SLES-VM en `sudo yast bootloader`Voer vervolgens uit. Druk op tab, druk op ENTER en gebruik vervolgens de pijl toetsen om door het menu te navigeren.
+1. Gebruik SSH om u aan te melden bij uw SLES-VM en voer vervolgens uit `sudo yast bootloader` . Druk op tab, druk op ENTER en gebruik vervolgens de pijl toetsen om door het menu te navigeren.
 
 1. Ga naar **kernel-para meters**en schakel het selectie vakje **seriële console gebruiken** in.
 1. Toevoegen `serial --unit=0 --speed=9600 --parity=no` aan de- **console** argumenten.
@@ -227,13 +226,13 @@ Als SLES niet normaal kan worden opgestart, wordt u automatisch verwijderd naar 
 1. Druk op CTRL + X om opnieuw op te starten met deze instellingen en voer de nood situatie in.
 
    > [!NOTE]
-   > Met deze actie wordt u naar de nood situatie met een alleen-lezen bestands systeem verzonden. Als u bestanden wilt bewerken, moet u het bestands systeem opnieuw koppelen met de machtigingen lezen/schrijven. Als u dit wilt doen `mount -o remount,rw /` , voert u in de shell in.
+   > Met deze actie wordt u naar de nood situatie met een alleen-lezen bestands systeem verzonden. Als u bestanden wilt bewerken, moet u het bestands systeem opnieuw koppelen met de machtigingen lezen/schrijven. Als u dit wilt doen, voert u `mount -o remount,rw /` in de shell in.
 
 ## <a name="access-for-oracle-linux"></a>Toegang voor Oracle Linux
 Net als Red Hat Enterprise Linux, is voor de modus voor één gebruiker in Oracle Linux GRUB vereist en moet de hoofd gebruiker worden ingeschakeld.
 
 ### <a name="grub-access-in-oracle-linux"></a>GRUB toegang in Oracle Linux
-Oracle Linux is GRUB ingeschakeld. Als u GRUB wilt invoeren, start u de `sudo reboot`VM opnieuw op door uit te voeren en drukt u vervolgens op ESC. Met deze actie wordt het deel venster GRUB weer gegeven. Als het deel venster GRUB niet wordt weer gegeven, controleert u of `GRUB_TERMINAL` de waarde van de regel een *seriële console* bevat (dat wil zeggen `GRUB_TERMINAL="serial console"`). Maak GRUB opnieuw met `grub2-mkconfig -o /boot/grub/grub.cfg`.
+Oracle Linux is GRUB ingeschakeld. Als u GRUB wilt invoeren, start u de VM opnieuw op door uit te voeren `sudo reboot` en drukt u vervolgens op ESC. Met deze actie wordt het deel venster GRUB weer gegeven. Als het deel venster GRUB niet wordt weer gegeven, controleert u of de waarde van de `GRUB_TERMINAL` regel een *seriële console* bevat (dat wil zeggen `GRUB_TERMINAL="serial console"` ). Maak GRUB opnieuw met `grub2-mkconfig -o /boot/grub/grub.cfg` .
 
 ### <a name="single-user-mode-in-oracle-linux"></a>Modus voor één gebruiker in Oracle Linux
 Volg de eerdere instructies voor RHEL om de modus voor één gebruiker in Oracle Linux in te scha kelen.

@@ -9,10 +9,9 @@ services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
 ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74168359"
 ---
 # <a name="add-an-email-action"></a>Een e-mail actie toevoegen
@@ -96,7 +95,7 @@ Voordat u begint, moet u een Outlook-account maken dat u kunt gebruiken om e-mai
 
 De volgende stappen laten zien hoe u de e-mail acties hand matig kunt instellen en verifiëren:
 
-1. Navigeer naar het [Azure Portal](https://portal.azure.com).
+1. Navigeer naar [Azure Portal](https://portal.azure.com).
 
 1. Navigeer naar de resource groep voor uw oplossings versneller.
 
@@ -160,9 +159,9 @@ De volgende stappen laten zien hoe u de HTML-e-mail sjabloon kunt bewerken. U ku
 
     Bijvoorbeeld in de Java-code:`this.emailTemplate.replace("${subject}", emailAction.GetSubject());`
 
-1. De para meters in de sjabloon hebben `${...}`de vorm van. Als u een para meter wilt verwijderen, moet u de vereiste regel verwijderen. Als u een para meter wilt toevoegen, voegt u een regel toe met de waarde die u wilt invoegen.
+1. De para meters in de sjabloon hebben de vorm van `${...}` . Als u een para meter wilt verwijderen, moet u de vereiste regel verwijderen. Als u een para meter wilt toevoegen, voegt u een regel toe met de waarde die u wilt invoegen.
 
-1. Als u afbeeldingen of aangepaste tekst wilt toevoegen, moet u het bestand email template. HTML rechtstreeks bijwerken.
+1. Als u afbeeldingen of aangepaste tekst wilt toevoegen, moet u het bestand EmailTemplate.HTML rechtstreeks bijwerken.
 
 ## <a name="throttling"></a>Beperking
 

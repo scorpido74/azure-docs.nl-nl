@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
 ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73663176"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Test resultaten voor Hyper-V-replicatie naar een secundaire site
@@ -175,10 +174,10 @@ De tabel bevat een overzicht van de prestatie gegevens en prestatie meter items 
 | CPU |\Processor(_Total)\% Processor Time |
 | Beschikbaar geheugen |\Memory\Available mega bytes |
 | IOPS |\PhysicalDisk (_Total) \Gelezen-overdrachten per seconde |
-| Gelezen VM-bewerkingen (IOPS) per seconde |\Hyper-V virtuele-opslag apparaat\<(VHD>) \Read bewerkingen per seconde |
-| Bewerkingen voor het schrijven van VM'S (IOPS) per seconde |\Hyper-V virtuele-opslag apparaat\<(VHD>) \Write-bewerkingen/S |
-| Lees doorvoer van VM |\Hyper-V (\<VHD>) \Read bytes per seconde |
-| Schrijf doorvoer VM |\Hyper-V (\<VHD>) \Write bytes per seconde |
+| Gelezen VM-bewerkingen (IOPS) per seconde |\Hyper-V ( \<VHD> ) \Read-bewerkingen per seconde |
+| Bewerkingen voor het schrijven van VM'S (IOPS) per seconde |\Hyper-V ( \<VHD> ) \Write-bewerkingen/S |
+| Lees doorvoer van VM |\Hyper-V ( \<VHD> ) \Read bytes per seconde |
+| Schrijf doorvoer VM |\Hyper-V ( \<VHD> ) \Write bytes per seconde |
 
 ## <a name="next-steps"></a>Volgende stappen
 

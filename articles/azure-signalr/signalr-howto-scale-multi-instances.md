@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: zhshang
 ms.openlocfilehash: 43d703312cbc1fc067a2d51d5623ed028ba01405
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74158154"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Hoe kan de signaal service met meerdere exemplaren schalen?
@@ -20,9 +19,9 @@ De nieuwste signalerings Service-SDK ondersteunt meerdere eind punten voor de se
 
 ### <a name="how-to-add-multiple-endpoints-from-config"></a>Hoe kan ik meerdere eind punten toevoegen vanuit de configuratie?
 
-Config met Key `Azure:SignalR:ConnectionString` of `Azure:SignalR:ConnectionString:` voor de signa lering-Service Connection String.
+Config met Key `Azure:SignalR:ConnectionString` of `Azure:SignalR:ConnectionString:` voor de Signa lering-Service Connection String.
 
-Als de sleutel begint met `Azure:SignalR:ConnectionString:`, moet `Azure:SignalR:ConnectionString:{Name}:{EndpointType}`deze de indeling hebben, waar `Name` en `EndpointType` eigenschappen van het `ServiceEndpoint` object zijn en toegankelijk zijn vanuit code.
+Als de sleutel begint met `Azure:SignalR:ConnectionString:` , moet deze de indeling hebben `Azure:SignalR:ConnectionString:{Name}:{EndpointType}` , waar `Name` en `EndpointType` Eigenschappen van het object zijn en `ServiceEndpoint` toegankelijk zijn vanuit code.
 
 U kunt meerdere teken reeksen voor instanties toevoegen met behulp van de volgende `dotnet` opdrachten:
 
@@ -60,7 +59,7 @@ De SDK gebruikt standaard de [DefaultEndpointRouter](https://github.com/Azure/az
 #### <a name="default-behavior"></a>Standaardgedrag 
 1. Route ring van client aanvragen
 
-    Wanneer de `/negotiate` client met de app-server. Standaard **selecteert** SDK één eind punt uit de set beschik bare service-eind punten.
+    Wanneer `/negotiate` de client met de app-server. Standaard **selecteert** SDK één eind punt uit de set beschik bare service-eind punten.
 
 2. Server bericht routering
 
@@ -69,7 +68,7 @@ De SDK gebruikt standaard de [DefaultEndpointRouter](https://github.com/Azure/az
 #### <a name="customize-routing-algorithm"></a>Routerings algoritme aanpassen
 U kunt uw eigen router maken wanneer u speciale kennis hebt om te identificeren tot welke eind punten de berichten moeten gaan.
 
-Hieronder wordt een aangepaste router gedefinieerd als voor beeld wanneer groepen beginnen met `east-` altijd naar het eind punt met `east`de naam:
+Hieronder wordt een aangepaste router gedefinieerd als voor beeld wanneer groepen beginnen met `east-` altijd naar het eind punt met de naam `east` :
 
 ```cs
 private class CustomRouter : EndpointRouterDecorator
@@ -131,11 +130,11 @@ services.AddSignalR()
 
 ### <a name="how-to-add-multiple-endpoints-from-config"></a>Hoe kan ik meerdere eind punten toevoegen vanuit de configuratie?
 
-Config met Key `Azure:SignalR:ConnectionString` of `Azure:SignalR:ConnectionString:` voor de signa lering-Service Connection String.
+Config met Key `Azure:SignalR:ConnectionString` of `Azure:SignalR:ConnectionString:` voor de Signa lering-Service Connection String.
 
-Als de sleutel begint met `Azure:SignalR:ConnectionString:`, moet `Azure:SignalR:ConnectionString:{Name}:{EndpointType}`deze de indeling hebben, waar `Name` en `EndpointType` eigenschappen van het `ServiceEndpoint` object zijn en toegankelijk zijn vanuit code.
+Als de sleutel begint met `Azure:SignalR:ConnectionString:` , moet deze de indeling hebben `Azure:SignalR:ConnectionString:{Name}:{EndpointType}` , waar `Name` en `EndpointType` Eigenschappen van het object zijn en `ServiceEndpoint` toegankelijk zijn vanuit code.
 
-U kunt meerdere exemplaar verbindings reeksen toevoegen aan `web.config`:
+U kunt meerdere exemplaar verbindings reeksen toevoegen aan `web.config` :
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -173,7 +172,7 @@ app.MapAzureSignalR(
 
 ### <a name="how-to-customize-router"></a>Hoe kan ik een router aanpassen?
 
-Het enige verschil tussen ASP.NET Signalr en ASP.NET Core Signalr is het HTTP-context type `GetNegotiateEndpoint`voor. Voor ASP.NET-Signa lering is het van het type [IOwinContext](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR.AspNet/EndpointRouters/DefaultEndpointRouter.cs#L19) .
+Het enige verschil tussen ASP.NET Signalr en ASP.NET Core Signalr is het HTTP-context type voor `GetNegotiateEndpoint` . Voor ASP.NET-Signa lering is het van het type [IOwinContext](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR.AspNet/EndpointRouters/DefaultEndpointRouter.cs#L19) .
 
 Hieronder ziet u het aangepaste voor beeld van onderhandelen voor ASP.NET-Signa lering:
 
@@ -215,15 +214,15 @@ app.MapAzureSignalR(GetType().FullName, hub, options => {
 
 ## <a name="configuration-in-cross-region-scenarios"></a>Configuratie in scenario's met meerdere regio's
 
-Het `ServiceEndpoint` object heeft een `EndpointType` eigenschap met waarde `primary` of `secondary`.
+Het `ServiceEndpoint` object heeft een `EndpointType` eigenschap met waarde `primary` of `secondary` .
 
-`primary`eind punten zijn voorkeurs eindpunten voor het ontvangen van client verkeer en worden beschouwd als een betrouwbaardere netwerk verbinding. `secondary` eind punten worden beschouwd als een minder betrouw bare netwerk verbinding en worden alleen gebruikt voor het maken van de server naar client verkeer, bijvoorbeeld het uitzenden van berichten, niet voor het nemen van client-naar-server verkeer.
+`primary`eind punten zijn voorkeurs eindpunten voor het ontvangen van client verkeer en worden beschouwd als een betrouwbaardere netwerk verbinding. `secondary`eind punten worden beschouwd als een minder betrouw bare netwerk verbinding en worden alleen gebruikt voor het maken van de server naar client verkeer, bijvoorbeeld het uitzenden van berichten, niet voor het nemen van client-naar-server verkeer.
 
-In verschillende regio's kan het netwerk Insta Biel zijn. Voor één app-server die zich in *VS-Oost*bevindt, kan het eind punt van de seingevings service die zich in dezelfde regio *VS-Oost* bevindt, worden geconfigureerd als `primary` en eind punten in andere regio's die als `secondary`zijn gemarkeerd. In deze configuratie kunnen service-eind punten in andere regio's berichten **ontvangen** van deze *VS* -server voor Amerikaanse apps, maar er zijn geen clients voor **meerdere regio's** die naar deze app-server worden doorgestuurd. De architectuur wordt weer gegeven in het onderstaande diagram:
+In verschillende regio's kan het netwerk Insta Biel zijn. Voor één app-server die zich in *VS-Oost*bevindt, kan het eind punt van de seingevings service die zich in dezelfde regio *VS-Oost* bevindt, worden geconfigureerd als `primary` en eind punten in andere regio's die als zijn gemarkeerd `secondary` . In deze configuratie kunnen service-eind punten in andere regio's berichten **ontvangen** van deze *VS* -server voor Amerikaanse apps, maar er zijn geen clients voor **meerdere regio's** die naar deze app-server worden doorgestuurd. De architectuur wordt weer gegeven in het onderstaande diagram:
 
 ![Kruis geografische infra](./media/signalr-howto-scale-multi-instances/cross_geo_infra.png)
 
-Wanneer een client met `/negotiate` de app-server probeert, met de standaard router, **selecteert** SDK één eind punt uit de set beschik `primary` bare eind punten. Wanneer het primaire eind punt niet beschikbaar is, **selecteert SDK wille keurig** uit alle `secondary` beschik bare eind punten. Het eind punt is gemarkeerd als **beschikbaar** wanneer de verbinding tussen de server en het service-eind punt actief is.
+Wanneer een client `/negotiate` met de app-server probeert, met de standaard router, **selecteert** SDK één eind punt uit de set beschik bare `primary` eind punten. Wanneer het primaire eind punt niet beschikbaar is, **selecteert SDK wille keurig** uit alle beschik bare `secondary` eind punten. Het eind punt is gemarkeerd als **beschikbaar** wanneer de verbinding tussen de server en het service-eind punt actief is.
 
 Wanneer een client `/negotiate` met de app-server in *VS-Oost*wordt gehost, wordt het `primary` eind punt dat zich in dezelfde regio bevindt, standaard altijd in het scenario voor meerdere regio's weer gegeven. Wanneer alle *VS-Oost* -eind punten niet beschikbaar zijn, wordt de client omgeleid naar eind punten in andere regio's. In het gedeelte failover over wordt het scenario in detail beschreven.
 
@@ -231,7 +230,7 @@ Wanneer een client `/negotiate` met de app-server in *VS-Oost*wordt gehost, word
 
 ## <a name="fail-over"></a>Failover
 
-Wanneer alle `primary` eind punten niet beschikbaar zijn, worden de `/negotiate` keuze van de client van `secondary` de beschik bare eind punten. Voor dit failover-mechanisme moet elk eind punt fungeren als `primary` een eind punt naar ten minste één app-server.
+Wanneer alle `primary` eind punten niet beschikbaar zijn, worden `/negotiate` de keuze van de client van de beschik bare `secondary` eind punten. Voor dit failover-mechanisme moet elk eind punt fungeren als een `primary` eind punt naar ten minste één app-server.
 
 ![Failover](./media/signalr-howto-scale-multi-instances/failover_negotiate.png)
 

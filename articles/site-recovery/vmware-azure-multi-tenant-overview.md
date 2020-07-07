@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 840049265d3b6e4d2fddd794646bfd5691aab9a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74083996"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Overzicht van ondersteuning voor meerdere tenants voor VMware-nood herstel naar Azure met CSP
@@ -120,7 +119,7 @@ Als u herstel bewerkingen voor nood gevallen wilt beperken tot alleen failover (
 
 1. In de Azure Portal, in de kluis die u eerder hebt gemaakt, registreert u de vCenter-Server bij de configuratie server met behulp van het vCenter-account dat u hebt gemaakt.
 2. Voltooi het proces voor het voorbereiden van de infra structuur voor Site Recovery volgens het gebruikelijke proces.
-3. De virtuele machines zijn nu klaar om te worden gerepliceerd. Controleer of alleen de vm's van de Tenant worden weer gegeven bij **repliceren** > **selecteren virtuele machines**.
+3. De virtuele machines zijn nu klaar om te worden gerepliceerd. Controleer of alleen de vm's van de Tenant worden weer gegeven bij **repliceren**  >  **selecteren virtuele machines**.
 
 ## <a name="dedicated-hosting-solution"></a>Toegewezen hosting oplossing
 

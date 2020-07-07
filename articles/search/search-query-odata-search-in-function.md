@@ -20,29 +20,28 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: b43c46599cbacaf40bc9583e364d088fa27a3ac9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113119"
 ---
-# <a name="odata-searchin-function-in-azure-cognitive-search"></a>OData `search.in` -functie in azure Cognitive Search
+# <a name="odata-searchin-function-in-azure-cognitive-search"></a>OData- `search.in` functie in Azure Cognitive Search
 
 Een veelvoorkomend scenario in [OData-filter expressies](query-odata-filter-orderby-syntax.md) is om te controleren of één veld in elk document gelijk is aan een van de vele mogelijke waarden. Dit is bijvoorbeeld hoe sommige toepassingen [beveiliging](search-security-trimming-for-azure-search.md) kunnen beperken, door een veld met een of meer Principal-id's te controleren op basis van een lijst met Principal-id's die de gebruiker die de query heeft uitgegeven. Een manier om een query als volgt te schrijven, is door [`eq`](search-query-odata-comparison-operators.md) de [`or`](search-query-odata-logical-operators.md) Opera tors en te gebruiken:
 
     group_ids/any(g: g eq '123' or g eq '456' or g eq '789')
 
-Er is echter een kortere manier om dit te schrijven, met `search.in` behulp van de functie:
+Er is echter een kortere manier om dit te schrijven, met behulp van de `search.in` functie:
 
     group_ids/any(g: search.in(g, '123, 456, 789'))
 
 > [!IMPORTANT]
-> U `search.in` kunt niet alleen korter en eenvoudiger te lezen, maar ook [prestatie voordelen](#bkmk_performance) en voor komen dat bepaalde [beperkingen van filters worden beperkt](search-query-odata-filter.md#bkmk_limits) wanneer er honderden of zelfs duizenden waarden zijn die in het filter moeten worden meegenomen. Daarom raden we u ten zeerste aan `search.in` om te gebruiken in plaats van een complexere schei ding van gelijkheids expressies.
+> U kunt niet alleen korter en eenvoudiger te lezen, `search.in` maar ook [prestatie voordelen](#bkmk_performance) en voor komen dat bepaalde [beperkingen van filters worden beperkt](search-query-odata-filter.md#bkmk_limits) wanneer er honderden of zelfs duizenden waarden zijn die in het filter moeten worden meegenomen. Daarom raden we u ten zeerste aan om te gebruiken `search.in` in plaats van een complexere schei ding van gelijkheids expressies.
 
 > [!NOTE]
-> Versie 4,01 van de OData-standaard heeft onlangs de [ `in` operator](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230)geïntroduceerd. deze heeft hetzelfde gedrag als `search.in` de functie in azure Cognitive Search. Azure Cognitive Search biedt echter geen ondersteuning voor deze operator, dus u moet de `search.in` functie gebruiken.
+> Versie 4,01 van de OData-standaard heeft onlangs de [ `in` operator](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230)geïntroduceerd. deze heeft hetzelfde gedrag als de `search.in` functie in azure Cognitive Search. Azure Cognitive Search biedt echter geen ondersteuning voor deze operator, dus u moet de `search.in` functie gebruiken.
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
 De volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van de `search.in` functie:
 
@@ -61,7 +60,7 @@ Er is ook een interactief syntaxis diagram beschikbaar:
 > [!NOTE]
 > Zie [OData-expressie syntaxis referentie voor Azure Cognitive Search](search-query-odata-syntax-reference.md) voor de volledige ebnf.
 
-De `search.in` functie test of een opgegeven teken reeks veld of bereik variabele gelijk is aan een van een bepaalde lijst met waarden. De gelijkheid tussen de variabele en elke waarde in de lijst wordt op een hoofdletter gevoelige manier bepaald, op dezelfde manier als voor de `eq` operator. Een expressie lijkt `search.in(myfield, 'a, b, c')` daarom gelijk aan `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`, behalve dat `search.in` er veel betere prestaties worden verkregen.
+De `search.in` functie test of een opgegeven teken reeks veld of bereik variabele gelijk is aan een van een bepaalde lijst met waarden. De gelijkheid tussen de variabele en elke waarde in de lijst wordt op een hoofdletter gevoelige manier bepaald, op dezelfde manier als voor de `eq` operator. Een expressie lijkt daarom `search.in(myfield, 'a, b, c')` gelijk aan `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'` , behalve dat er `search.in` veel betere prestaties worden verkregen.
 
 Er zijn twee Overloads van de `search.in` functie:
 
@@ -70,17 +69,17 @@ Er zijn twee Overloads van de `search.in` functie:
 
 De para meters worden gedefinieerd in de volgende tabel:
 
-| Parameternaam | Type | Beschrijving |
+| Parameternaam | Type | Description |
 | --- | --- | --- |
-| `variable` | `Edm.String` | Een verwijzing naar een teken reeks veld (of een bereik variabele over een teken reeks verzamelings `search.in` veld in het geval `any` waarin `all` binnen een or-expressie wordt gebruikt). |
-| `valueList` | `Edm.String` | Een teken reeks met een gescheiden lijst met waarden die moet overeenkomen `variable` met de para meter. Als de `delimiters` para meter niet is opgegeven, zijn de standaard scheidings tekens spatie en komma. |
-| `delimiters` | `Edm.String` | Een teken reeks waarbij elk teken wordt behandeld als een schei ding `valueList` bij het parseren van de para meter. De standaard waarde van deze para meter `' ,'` is wat betekent dat alle waarden met spaties en/of komma's ertussen van elkaar worden gescheiden. Als u andere scheidings tekens dan spaties en komma's wilt gebruiken omdat uw waarden de teken reeks bevatten, kunt u alternatieve afscheiders opgeven, zoals `'|'` in deze para meter. |
+| `variable` | `Edm.String` | Een verwijzing naar een teken reeks veld (of een bereik variabele over een teken reeks verzamelings veld in het geval waarin `search.in` binnen een `any` or `all` -expressie wordt gebruikt). |
+| `valueList` | `Edm.String` | Een teken reeks met een gescheiden lijst met waarden die moet overeenkomen met de `variable` para meter. Als de `delimiters` para meter niet is opgegeven, zijn de standaard scheidings tekens spatie en komma. |
+| `delimiters` | `Edm.String` | Een teken reeks waarbij elk teken wordt behandeld als een schei ding bij het parseren van de `valueList` para meter. De standaard waarde van deze para meter is `' ,'` wat betekent dat alle waarden met spaties en/of komma's ertussen van elkaar worden gescheiden. Als u andere scheidings tekens dan spaties en komma's wilt gebruiken omdat uw waarden de teken reeks bevatten, kunt u alternatieve afscheiders opgeven, zoals `'|'` in deze para meter. |
 
 <a name="bkmk_performance"></a>
 
 ### <a name="performance-of-searchin"></a>Prestaties van`search.in`
 
-Als u gebruikt `search.in`, kunt u een sub-Second-reactie tijd verwachten wanneer de tweede para meter een lijst met honderden of duizenden waarden bevat. Er is geen expliciete limiet voor het aantal items dat u kunt door `search.in`geven, hoewel u nog steeds beperkt bent door de maximum grootte van de aanvraag. De latentie neemt echter toe naarmate het aantal waarden toeneemt.
+Als u gebruikt `search.in` , kunt u een sub-Second-reactie tijd verwachten wanneer de tweede para meter een lijst met honderden of duizenden waarden bevat. Er is geen expliciete limiet voor het aantal items dat u kunt door geven `search.in` , hoewel u nog steeds beperkt bent door de maximum grootte van de aanvraag. De latentie neemt echter toe naarmate het aantal waarden toeneemt.
 
 ## <a name="examples"></a>Voorbeelden
 

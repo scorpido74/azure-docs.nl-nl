@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: juliako
 ms.openlocfilehash: ab99b974aed6f8cd5e1da2ee9b427f593b405889
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73571241"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>Trans formaties en taken in Media Services
@@ -114,9 +113,9 @@ Zie [Media verwerking schalen met CLI](media-reserved-units-cli-how-to.md)voor m
 
 Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
-* [Foutcodes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
+* [Fout codes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
 * [Filteren, ordenen, paginering van Media Services entiteiten](entities-overview.md)
 
 ## <a name="next-steps"></a>Volgende stappen

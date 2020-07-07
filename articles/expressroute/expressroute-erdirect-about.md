@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jaredro
 ms.openlocfilehash: f26fdd75e0a6c6228d329a8b9be4743072ae54c1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74083591"
 ---
 # <a name="about-expressroute-direct"></a>Over ExpressRoute Direct
@@ -26,7 +25,7 @@ De belangrijkste functies die ExpressRoute direct biedt, zijn inclusief, maar zi
 
 ## <a name="onboard-to-expressroute-direct"></a>Onboarding naar ExpressRoute direct
 
-Voordat u ExpressRoute direct gebruikt, moet u uw abonnement eerst registreren. Als u zich wilt inschrijven, stuurt <ExpressRouteDirect@microsoft.com> u een e-mail naar met uw abonnements-id, met inbegrip van de volgende gegevens:
+Voordat u ExpressRoute direct gebruikt, moet u uw abonnement eerst registreren. Als u zich wilt inschrijven, stuurt u een E-mail naar <ExpressRouteDirect@microsoft.com> met uw abonnements-id, met inbegrip van de volgende gegevens:
 
 * Scenario's die u wilt uitvoeren met **ExpressRoute direct**
 * Locatie voorkeuren: Zie [partners en peering-locaties](expressroute-locations-providers.md) voor een volledige lijst met alle locaties

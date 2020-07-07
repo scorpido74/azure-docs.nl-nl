@@ -16,10 +16,9 @@ ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5f22fbd77069488e7aaf490f93f42cde747444a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74073858"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Meer informatie over het gebruik van de Azure Linux-agent
@@ -33,27 +32,27 @@ De Microsoft Azure Linux-agent (waagent) beheert Linux & FreeBSD-inrichting en V
 
 * **Installatie kopie inrichten**
   
-  * Een gebruikers account maken
-  * SSH-verificatie typen configureren
-  * Implementatie van open bare SSH-sleutels en sleutel paren
+  * Een gebruikersaccount maken
+  * SSH-verificatietypen configureren
+  * Implementatie van openbare SSH-sleutels en sleutelparen
   * De hostnaam instellen
   * De hostnaam publiceren naar het platform-DNS
-  * De vinger afdruk van de SSH-hostwaarde rapporteren aan het platform
-  * Bron schijf beheer
-  * De bron schijf Format teren en koppelen
+  * De vingerafdruk van de SSH-hostwaarde rapporteren aan het platform
+  * Resourceschijven beheren
+  * De resourceschijf formatteren en koppelen
   * Wissel ruimte configureren
 * **Netwerken**
   
-  * Beheert routes om de compatibiliteit met DHCP-platform servers te verbeteren
-  * Zorgt voor de stabiliteit van de netwerk interface naam
+  * Beheert routes om de compatibiliteit met DHCP-platformservers te verbeteren
+  * Zorgt voor de stabiliteit van de naam van de netwerkinterface
 * **Kernel**
   
-  * Hiermee configureert u virtuele NUMA (uitschakelen voor kernel `2.6.37`<)
+  * Hiermee configureert u virtuele NUMA (uitschakelen voor kernel <`2.6.37`)
   * Gebruikt Hyper-V entropie voor/dev/random
-  * Hiermee configureert u SCSI-time-outs voor het hoofd apparaat (dit kan extern zijn)
-* **Diagnostiek**
+  * Hiermee configureert u SCSI-time-outs voor het hoofdapparaat (dit kan extern zijn)
+* **Diagnostics**
   
-  * Console omleiding naar de seriële poort
+  * Console-omleiding naar de seriële poort
 * **SCVMM-implementaties**
   
   * Detecteert en Boots trapt de VMM-agent voor Linux wanneer deze wordt uitgevoerd in een System Center Virtual Machine Manager 2012 R2-omgeving
@@ -63,9 +62,9 @@ De Microsoft Azure Linux-agent (waagent) beheert Linux & FreeBSD-inrichting en V
   * VM-extensie referentie-implementatie op[https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>Communicatie
-De informatie stroom van het platform naar de agent vindt plaats via twee kanalen:
+De informatiestroom van het platform naar de agent vindt plaats via twee kanalen:
 
-* Een DVD die is gekoppeld aan het opstart tijdstip voor IaaS-implementaties. Deze DVD bevat een OVF-compatibel configuratie bestand dat alle inrichtings gegevens bevat, behalve de daad werkelijke SSH-sleutel paars.
+* Een DVD die is gekoppeld aan het opstarttijdstip voor IaaS-implementaties. Deze DVD bevat een OVF-compatibel configuratie bestand dat alle inrichtings gegevens bevat, behalve de daad werkelijke SSH-sleutel paars.
 * Een TCP-eind punt geeft een REST API die wordt gebruikt voor het verkrijgen van implementatie-en topologie configuratie.
 
 ## <a name="requirements"></a>Vereisten
@@ -91,16 +90,16 @@ Andere ondersteunde systemen:
 
 De Linux-agent is afhankelijk van sommige systeem pakketten om goed te kunnen functioneren:
 
-* Python 2.6 +
-* OpenSSL 1.0 +
-* OpenSSH 5.3 +
+* Python 2.6 of later
+* OpenSSL 1.0 of later
+* OpenSSH 5.3 of later
 * Bestandssysteem hulpprogramma's: sfdisk, fdisk, mkfs, opgenomen
-* Wachtwoord hulpprogramma's: chpasswd, sudo
-* Hulp middelen voor tekst verwerking: sed, grep
-* Netwerk hulpprogramma's: IP-route
-* Kernel-ondersteuning voor het koppelen van UDF-bestandssysteem.
+* Hulpmiddelen voor wachtwoord: chpasswd, sudo
+* Hulpmiddelen voor tekstverwerking: sed, grep
+* Hulpprogramma's voor netwerk: ip-route
+* Kernelondersteuning voor het koppelen van UDF-bestandssysteem.
 
-## <a name="installation"></a>Installeren
+## <a name="installation"></a>Installatie
 Installatie met behulp van een RPM-of een DEB-pakket uit de opslag plaats van uw distributie pakket is de voorkeurs methode voor het installeren en upgraden van de Azure Linux-agent. Alle [gewaarmerkte distributie providers](../linux/endorsed-distros.md) integreren het Azure Linux-agent pakket in hun installatie kopieën en opslag plaatsen.
 
 Raadpleeg de documentatie in de [Azure Linux-agent opslag plaats op github](https://github.com/Azure/WALinuxAgent) voor geavanceerde installatie opties, zoals het installeren van bron of naar aangepaste locaties of voor voegsels.
@@ -195,7 +194,7 @@ Het versleutelings type voor het nieuwe sleutel paar kan worden geconfigureerd d
 Type: String  
 Default: rsa
 ```
-Dit kan worden ingesteld op een type versleutelings algoritme dat wordt ondersteund door de SSH-daemon op de virtuele machine. De doorgaans ondersteunde waarden zijn ' RSA ', ' DSA ' en ' ECDSA '. ' putty. exe ' biedt geen ondersteuning voor ' ECDSA '. Als u putty. exe in Windows wilt gebruiken om verbinding te maken met een Linux-implementatie, gebruikt u daarom ' RSA ' of ' DSA '.
+Dit kan worden ingesteld op een type versleutelings algoritme dat wordt ondersteund door de SSH-daemon op de virtuele machine. De doorgaans ondersteunde waarden zijn ' RSA ', ' DSA ' en ' ECDSA '. ' putty.exe ' op Windows biedt geen ondersteuning voor ' ECDSA '. Als u van plan bent om putty.exe in Windows te gebruiken om verbinding te maken met een Linux-implementatie, gebruikt u ' RSA ' of ' DSA '.
 
 **Provisioning. MonitorHostName:**  
 ```
@@ -211,7 +210,7 @@ Default: n
 ```
 Indien ingesteld, waagent decodeert CustomData uit base64.
 
-**Provisioning. ExecuteCustomData**  
+**Provisioning.ExecuteCustomData**  
 ```
 Type: Boolean  
 Default: n

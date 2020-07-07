@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 08/30/2019
 ms.openlocfilehash: d568a267952a22d2e7a6b7acb6d54cf41f803367
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70913965"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>Uw Azure Data Lake Analytics-code testen
@@ -41,7 +40,7 @@ Wanneer u u-SQL-scripts test, moet u invoer bestanden testen. Als u de test gege
 
 ![Data Lake-Hulpprogram Ma's voor Visual Studio--test gegevens bron project configureren](./media/data-lake-analytics-cicd-test/data-lake-tools-configure-project-test-data-source.png)
 
-Wanneer u de `Initialize()` interface aanroept in de U-SQL test-SDK, wordt er een tijdelijke lokale hoofdmap voor gegevens gemaakt in de werkmap van het test project. Alle bestanden en mappen in de bronmap test gegevens worden gekopieerd naar de tijdelijke lokale data root-map voordat u de U-SQL-script test uitvoert. U kunt meer mappen voor de gegevens bron testen toevoegen door het pad naar de map met test gegevens te splitsen met een punt komma.
+Wanneer u de interface aanroept `Initialize()` in de U-SQL test-SDK, wordt er een tijdelijke lokale hoofdmap voor gegevens gemaakt in de werkmap van het test project. Alle bestanden en mappen in de bronmap test gegevens worden gekopieerd naar de tijdelijke lokale data root-map voordat u de U-SQL-script test uitvoert. U kunt meer mappen voor de gegevens bron testen toevoegen door het pad naar de map met test gegevens te splitsen met een punt komma.
 
 ### <a name="manage-the-database-environment-for-testing"></a>De database omgeving voor het testen beheren
 
@@ -55,7 +54,7 @@ De `Run()` interface retourneert een resultaat van de taak uitvoering. *0* betek
 
 ### <a name="run-test-cases-in-visual-studio"></a>Test cases uitvoeren in Visual Studio
 
-Een U-SQL-script test project is gebouwd op basis van een C#-eenheids test-framework. Nadat u het project hebt gemaakt, selecteert u test**Verkenner**van**Windows** >  **testen** > . U kunt test cases uitvoeren vanuit **test Explorer**. U kunt ook met de rechter muisknop op het. CS-bestand in de eenheids test klikken en **tests uitvoeren**selecteren.
+Een U-SQL-script test project is gebouwd op basis van een C#-eenheids test-framework. Nadat u het project hebt gemaakt, **Test**selecteert u test Verkenner van  >  **Windows**testen  >  **Test Explorer**. U kunt test cases uitvoeren vanuit **test Explorer**. U kunt ook met de rechter muisknop op het. CS-bestand in de eenheids test klikken en **tests uitvoeren**selecteren.
 
 ## <a name="test-c-udos"></a>C# Udo's testen
 
@@ -108,7 +107,7 @@ Nadat u de UDO-functies hebt aangeroepen, kunt u de resultaten controleren via d
 
 ### <a name="run-test-cases-in-visual-studio"></a>Test cases uitvoeren in Visual Studio
 
-Nadat u het project hebt gemaakt, selecteert u test**Verkenner**van**Windows** >  **testen** > . U kunt test cases uitvoeren vanuit **test Explorer**. U kunt ook met de rechter muisknop op het. CS-bestand in de eenheids test klikken en **tests uitvoeren**selecteren.
+Nadat u het project hebt gemaakt, **Test**selecteert u test Verkenner van  >  **Windows**testen  >  **Test Explorer**. U kunt test cases uitvoeren vanuit **test Explorer**. U kunt ook met de rechter muisknop op het. CS-bestand in de eenheids test klikken en **tests uitvoeren**selecteren.
 
 ## <a name="run-test-cases-in-azure-pipelines"></a>Test cases uitvoeren in azure-pijp lijnen<a name="run-test-cases-in-azure-devops"></a>
 
@@ -116,7 +115,7 @@ Zowel **U-SQL-script test projecten** als **c# Udo test-projecten** nemen c#-een
 
 ### <a name="run-u-sql-test-cases-in-azure-pipelines"></a>U-SQL-test cases uitvoeren in azure-pijp lijnen
 
-Zorg ervoor dat u voor een U-SQL-test `CPPSDK` de belasting op de computer bouwt en geef het `CPPSDK` pad door `USqlScriptTestRunner(cppSdkFolderFullPath: @"")`aan.
+Zorg ervoor dat u voor een U-SQL-test `CPPSDK` de belasting op de computer bouwt en geef het `CPPSDK` pad door aan `USqlScriptTestRunner(cppSdkFolderFullPath: @"")` .
 
 #### <a name="what-is-cppsdk"></a>Wat is CPPSDK?
 
@@ -132,7 +131,7 @@ De meest voorkomende manier om de CPPSDK-afhankelijkheid in azure-pijp lijnen vo
 
 1. Zip-map die de CPPSDK-bibliotheken bevat.
 
-1. Check het zip-bestand in op uw broncode beheer systeem. Het zip-bestand zorgt ervoor dat u alle bibliotheken in de map CPPSDK incheckt, zodat bestanden niet worden genegeerd `.gitignore` vanwege een bestand.
+1. Check het zip-bestand in op uw broncode beheer systeem. Het zip-bestand zorgt ervoor dat u alle bibliotheken in de map CPPSDK incheckt, zodat bestanden niet worden genegeerd vanwege een `.gitignore` bestand.
 
 1. Pak het zip-bestand uit in de build-pijp lijn.
 

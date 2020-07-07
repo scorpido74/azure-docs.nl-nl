@@ -7,17 +7,16 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
 ms.openlocfilehash: 8bca88fc63a7fc04a22d2a68adbe59259b07f50e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74185879"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Hoe werkt Hyper-V-replicatie?
 
 Dit artikel bevat een overzicht van de architectuur en processen die worden gebruikt wanneer u virtuele Hyper-V-machines migreert met het hulp programma voor migratie van Azure Migrate-server.
 
-[Azure migrate](migrate-services-overview.md) biedt een centrale hub voor het bijhouden van de detectie, beoordeling en migratie van uw on-premises apps en workloads, en persoonlijke/open bare Cloud-Vm's naar Azure. De hub biedt Azure Migrate-hulpprogram ma's voor evaluatie en migratie, evenals onafhankelijke ISV'S-aanbiedingen (Independent Software Vendor) van derden.
+[Azure Migrate](migrate-services-overview.md) biedt een centrale hub om de detectie, evaluatie en migratie van on-premises apps en workloads en openbare en privécloud-VM's bij te houden via Azure. De hub biedt Azure Migrate-hulpprogramma's voor evaluatie en migratie, evenals externe onafhankelijke hulpprogramma's van onafhankelijke softwareverkopers (ISV's).
 
 ## <a name="agentless-migration"></a>Migratie zonder agent
 
@@ -34,7 +33,7 @@ Azure Migrate server migratie is een hulp programma voor het migreren van on-pre
 
 
 
-**Component** | **Implementatie** | 
+**Onderdeel** | **Implementatie** | 
 --- | --- 
 **Replicatie provider** | De Microsoft Azure Site Recovery provider is geïnstalleerd op Hyper-V-hosts en is geregistreerd bij de migratie van de Azure-migratie server.<br/> De provider organiseert de replicatie voor virtuele Hyper-V-machines.
 **Recovery Services-agent** | De agent voor de Microsoft Azure Recovery-service verwerkt de gegevens replicatie. Het werkt met de provider om gegevens van virtuele Hyper-V-machines te repliceren naar Azure.<br/> De gerepliceerde gegevens worden geüpload naar een opslag account in uw Azure-abonnement. Het hulp programma voor server migratie de verwerkt de gerepliceerde gegevens en past deze toe op replica schijven in het abonnement. De replica schijven worden gebruikt voor het maken van de virtuele Azure-machines wanneer u migreert.

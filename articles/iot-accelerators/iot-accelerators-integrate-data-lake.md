@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 0a684151e01b298c60ff17ef1470e0648a425850
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73889240"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>De oplossing voor bewaking op afstand met Azure Data Lake Store integreren
@@ -67,7 +66,7 @@ Maak een Azure Stream Analytics taak om de gegevens van uw IoT-hub naar uw Azure
 
 1. Zorg ervoor dat u de hosting omgeving als de standaard- **Cloud**verlaat.
 
-1. Klik op **maken**.
+1. Klik op **Create**.
 
     ![Stream Analytics-taak maken](./media/iot-accelerators-integrate-data-lake/create-stream-analytics-job.png)
 

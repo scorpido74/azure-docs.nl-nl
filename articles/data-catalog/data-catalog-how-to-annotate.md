@@ -7,10 +7,9 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: c1e022591ce1aee073330055744fbd78d97c0b1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68950264"
 ---
 # <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>Aantekeningen toevoegen aan gegevens bronnen in Azure Data Catalog
@@ -34,12 +33,12 @@ Elk van deze perspectieven is waardevol en Data Catalog maakt gebruik van een cr
 ## <a name="different-types-of-annotations"></a>Verschillende typen aantekeningen
 Data Catalog ondersteunt de volgende typen aantekeningen:
 
-| Aantekening | Opmerkingen |
+| Aantekening | Notities |
 | --- | --- |
 | Beschrijvende naam |Er kunnen beschrijvende namen worden opgegeven op het niveau van de gegevens Asset, zodat de gegevens activa eenvoudiger kunnen worden begrepen. Beschrijvende namen zijn het handigst wanneer de onderliggende object naam cryptisch, afgekort of anderszins niet relevant is voor gebruikers. |
-| Beschrijving |Beschrijvingen kunnen worden opgegeven op het niveau van de gegevens Asset en het kenmerk/kolom. Beschrijvingen zijn vrije tekst aantekeningen met een korte vorm die het perspectief van de gebruiker voor de gegevens Asset of het gebruik beschrijven. |
+| Description |Beschrijvingen kunnen worden opgegeven op het niveau van de gegevens Asset en het kenmerk/kolom. Beschrijvingen zijn vrije tekst aantekeningen met een korte vorm die het perspectief van de gebruiker voor de gegevens Asset of het gebruik beschrijven. |
 | Tags (gebruikers codes) |Labels kunnen worden opgegeven op het niveau van de gegevens Asset en het kenmerk/kolom. Gebruikers codes zijn door de gebruiker gedefinieerde labels die kunnen worden gebruikt om gegevensassets of kenmerken te categoriseren. |
-| Tags (woordenlijst Tags) |Labels kunnen worden opgegeven op het niveau van de gegevens Asset en het kenmerk/kolom. Woordenlijst Tags zijn centraal gedefinieerde woorden lijst termen die kunnen worden gebruikt om gegevensassets of kenmerken te categoriseren met behulp van een algemene bedrijfs taxonomie. Zie voor meer informatie [De zakelijke woordenlijst instellen voor Governed Tagging](data-catalog-how-to-business-glossary.md) |
+| Tags (woordenlijst Tags) |Labels kunnen worden opgegeven op het niveau van de gegevens Asset en het kenmerk/kolom. Woordenlijst Tags zijn centraal gedefinieerde woorden lijst termen die kunnen worden gebruikt om gegevensassets of kenmerken te categoriseren met behulp van een algemene bedrijfs taxonomie. Zie voor meer informatie [de zakelijke woorden lijst instellen voor het bepalen van geregeld labelen](data-catalog-how-to-business-glossary.md) |
 | Degenen |Experts kunnen worden verstrekt op het niveau van de gegevens Asset. Experts identificeren gebruikers of groepen met deskundig perspectieven voor de gegevens en kunnen dienen als contact punten voor gebruikers die de geregistreerde gegevens bronnen detecteren en vragen hebben die niet door de bestaande aantekeningen worden beantwoord. |
 | Toegang aanvragen |Informatie over de aanvraag toegang kan worden opgegeven op het niveau van de gegevens Asset. Deze informatie is voor gebruikers die een gegevens bron detecteren waarvoor ze nog geen toegangs rechten hebben. Gebruikers kunnen het e-mail adres invoeren van de gebruiker of groep die toegang verleent, de URL van het proces of hulp programma die gebruikers nodig hebben om toegang te krijgen of het proces zelf als tekst in te voeren. |
 | Documentatie |Documentatie kan worden verstrekt op het niveau van de gegevens Asset. Asset-documentatie is informatie over RTF-tekst die koppelingen en installatie kopieën kan bevatten en die informatie kan geven die niet wordt overgebracht via beschrijvingen en tags. |
@@ -60,5 +59,5 @@ Net zoals de meta gegevens die zijn geëxtraheerd uit de gegevens bron tijdens d
 ## <a name="summary"></a>Samenvatting
 Als u een gegevens bron registreert met Data Catalog, kunnen de gegevens worden gedetecteerd door structurele en beschrijvende meta gegevens te kopiëren van de gegevens bron naar de catalogus service. Nadat een gegevens bron is geregistreerd, kunnen gebruikers aantekeningen opgeven zodat ze gemakkelijker te ontdekken en inzicht hebben in de Data Catalog Portal.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 * [Aan de slag met Azure Data Catalog](data-catalog-get-started.md) -zelf studie voor stapsgewijze Details over het aantekeningen maken van gegevens bronnen.

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 68cad32be177fa20794399157fca89e87c2f8f59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74157663"
 ---
 # <a name="performance-guide-for-azure-signalr-service"></a>Prestatierichtlijnen voor Azure SignalR Service
@@ -122,14 +121,14 @@ De gemarkeerde waarden in de volgende twee tabellen mogen *niet* worden overschr
 
 |       Echo                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen                       | 1000 | 2.000 | 5.000 | 10.000 | 20.000 | 50,000 | 100.000 |
+| Verbindingen                       | 1000 | 2.000 | 5\.000 | 10.000 | 20.000 | 50,000 | 100.000 |
 | **Inkomende band breedte** | **2 Mbps**    | **4 Mbps**    | **10 Mbps**   | **20 MBps**    | **40 MBps**    | **100 MBps**   | **200 MBps**    |
 | Uitgaande band breedte | 2 Mbps   | 4 Mbps   | 10 Mbps  | 20 MBps   | 40 MBps   | 100 MBps  | 200 MBps   |
 
 
 |     Uitzenden             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Verbindingen               | 1000 | 2.000 | 5.000  | 10.000 | 20.000 | 50,000  | 100.000 |
+| Verbindingen               | 1000 | 2.000 | 5\.000  | 10.000 | 20.000 | 50,000  | 100.000 |
 | Inkomende band breedte  | 4 KBps   | 4 KBps   | 4 KBps    | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps    |
 | **Uitgaande band breedte** | **4 Mbps**    | **8 MBps**    | **20 MBps**    | **40 MBps**    | **80 MBps**    | **200 MBps**    | **400 MBps**   |
 
@@ -213,8 +212,8 @@ Het gedrag van **echo** bepaalt dat de maximale binnenkomende band breedte gelij
 
 |       Echo                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen                       | 1000 | 2.000 | 5.000 | 10.000 | 20.000 | 50,000 | 100.000 |
-| Inkomende/uitgaande berichten per seconde | 1000 | 2.000 | 5.000 | 10.000 | 20.000 | 50,000 | 100.000 |
+| Verbindingen                       | 1000 | 2.000 | 5\.000 | 10.000 | 20.000 | 50,000 | 100.000 |
+| Inkomende/uitgaande berichten per seconde | 1000 | 2.000 | 5\.000 | 10.000 | 20.000 | 50,000 | 100.000 |
 | Inkomende/uitgaande band breedte | 2 Mbps   | 4 Mbps   | 10 Mbps  | 20 MBps   | 40 MBps   | 100 MBps  | 200 MBps   |
 
 In dit geval roept elke client de hub aan die is gedefinieerd in de app-server. De hub roept alleen de methode aan die is gedefinieerd in de oorspronkelijke client zijde. Deze hub is de meest licht gewicht hub voor **echo's**.
@@ -231,7 +230,7 @@ Zelfs voor deze eenvoudige hub is de verkeers druk op de app-server prominent, o
 
 |    Echo          | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2.000 | 5.000 | 10.000 | 20.000 | 50,000 | 100.000 |
+| Verbindingen      | 1000 | 2.000 | 5\.000 | 10.000 | 20.000 | 50,000 | 100.000 |
 | Aantal app-servers | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
@@ -249,7 +248,7 @@ De volgende tabel bevat een overzicht van de maximale client verbindingen, het i
 
 |     Uitzenden             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Verbindingen               | 1000 | 2.000 | 5.000  | 10.000 | 20.000 | 50,000  | 100.000 |
+| Verbindingen               | 1000 | 2.000 | 5\.000  | 10.000 | 20.000 | 50,000  | 100.000 |
 | Inkomende berichten per seconde  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
 | Uitgaande berichten per seconde | 2.000 | 4000 | 10.000 | 20.000 | 40,000 | 100.000 | 200.000 |
 | Inkomende band breedte  | 4 KBps   | 4 KBps   | 4 KBps    | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps     |
@@ -259,7 +258,7 @@ De omroep clients die berichten posten, zijn niet meer dan vier. Ze hebben minde
 
 |   Uitzenden      | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2.000 | 5.000 | 10.000 | 20.000 | 50,000 | 100.000 |
+| Verbindingen      | 1000 | 2.000 | 5\.000 | 10.000 | 20.000 | 50,000 | 100.000 |
 | Aantal app-servers | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 > [!NOTE]
@@ -287,9 +286,9 @@ De bewerkings kosten zijn belang rijk voor het verzenden van berichten naar een 
 
 |   Naar kleine groep verzenden     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50 | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|--------|---------|
-| Verbindingen               | 1000 | 2.000 | 5.000  | 10.000 | 20.000 | 50,000 | 100.000
+| Verbindingen               | 1000 | 2.000 | 5\.000  | 10.000 | 20.000 | 50,000 | 100.000
 | Groepslid aantal leden        | 10    | 10    | 10     | 10     | 10     | 10     | 10 
-| Aantal groepen               | 100   | 200   | 500    | 1000  | 2.000  | 5.000  | 10.000 
+| Aantal groepen               | 100   | 200   | 500    | 1000  | 2.000  | 5\.000  | 10.000 
 | Inkomende berichten per seconde  | 200   | 400   | 1000  | 2500  | 4000  | 7.000  | 7.000   |
 | Inkomende band breedte  | 400 KBps  | 800 KBps  | 2 Mbps     | 5 Mbps     | 8 MBps     | 14 MBps    | 14 MBps     |
 | Uitgaande berichten per seconde | 2.000 | 4000 | 10.000 | 25,000 | 40,000 | 70.000 | 70.000  |
@@ -299,7 +298,7 @@ Veel client verbindingen bellen de hub, waardoor het nummer van de app-server oo
 
 |  Naar kleine groep verzenden   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2.000 | 5.000 | 10.000 | 20.000 | 50,000 | 100.000 |
+| Verbindingen      | 1000 | 2.000 | 5\.000 | 10.000 | 20.000 | 50,000 | 100.000 |
 | Aantal app-servers | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
@@ -311,8 +310,8 @@ Voor de **groep verzenden naar Big**wordt de uitgaande band breedte het knel pun
 
 |    Naar grote groep verzenden      | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Verbindingen               | 1000 | 2.000 | 5.000  | 10.000 | 20.000 | 50,000  | 100.000
-| Groepslid aantal leden        | 100   | 200   | 500    | 1000  | 2.000  | 5.000   | 10.000 
+| Verbindingen               | 1000 | 2.000 | 5\.000  | 10.000 | 20.000 | 50,000  | 100.000
+| Groepslid aantal leden        | 100   | 200   | 500    | 1000  | 2.000  | 5\.000   | 10.000 
 | Aantal groepen               | 10    | 10    | 10     | 10     | 10     | 10      | 10
 | Inkomende berichten per seconde  | 20    | 20    | 20     | 20     | 20     | 20      | 20      |
 | Inkomende band breedte  | 80 KBps   | 40 KBps   | 40 KBps    | 20 KBps    | 40 KBps    | 40 KBps     | 40 KBps     |
@@ -323,7 +322,7 @@ Het aantal verzonden verbindingen is niet groter dan 40. De belasting op de app-
 
 |  Naar grote groep verzenden  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2.000 | 5.000 | 10.000 | 20.000 | 50,000 | 100.000 |
+| Verbindingen      | 1000 | 2.000 | 5\.000 | 10.000 | 20.000 | 50,000 | 100.000 |
 | Aantal app-servers | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 > [!NOTE]
@@ -345,15 +344,15 @@ De volgende tabel is een statistische samen vatting na veel rondingen van het ui
 
 |   Verzenden naar verbinding   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50          | Unit100         |
 |------------------------------------|-------|-------|-------|--------|--------|-----------------|-----------------|
-| Verbindingen                        | 1000 | 2.000 | 5.000 | 10.000 | 20.000 | 50,000          | 100.000         |
-| Inkomende/uitgaande berichten per seconde | 1000 | 2.000 | 5.000 | 8,000  | 9000  | 20.000 | 20.000 |
+| Verbindingen                        | 1000 | 2.000 | 5\.000 | 10.000 | 20.000 | 50,000          | 100.000         |
+| Inkomende/uitgaande berichten per seconde | 1000 | 2.000 | 5\.000 | 8,000  | 9000  | 20.000 | 20.000 |
 | Inkomende/uitgaande band breedte | 2 Mbps    | 4 Mbps    | 10 Mbps   | 16 MBps    | 18 MBps    | 40 MBps       | 40 MBps       |
 
 Voor deze use-case moet hoge belasting aan de kant van de app-server worden gebruikt. Zie het aantal voorgestelde app-servers in de volgende tabel.
 
 |  Verzenden naar verbinding  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2.000 | 5.000 | 10.000 | 20.000 | 50,000 | 100.000 |
+| Verbindingen      | 1000 | 2.000 | 5\.000 | 10.000 | 20.000 | 50,000 | 100.000 |
 | Aantal app-servers | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
@@ -369,21 +368,21 @@ In de volgende tabel ziet u het aantal voorgestelde web-apps voor ASP.NET signal
 
 |   Echo           | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2.000 | 5.000 | 10.000 | 20.000 | 50,000 | 100.000 |
+| Verbindingen      | 1000 | 2.000 | 5\.000 | 10.000 | 20.000 | 50,000 | 100.000 |
 | Aantal app-servers | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
 In de volgende tabel ziet u het aantal voorgestelde web-apps voor ASP.NET signalerings **broadcast**.
 
 |  Uitzenden       | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2.000 | 5.000 | 10.000 | 20.000 | 50,000 | 100.000 |
+| Verbindingen      | 1000 | 2.000 | 5\.000 | 10.000 | 20.000 | 50,000 | 100.000 |
 | Aantal app-servers | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 In de volgende tabel ziet u het aantal voorgestelde web-apps voor ASP.NET signalering **verzenden naar een kleine groep**.
 
 |  Naar kleine groep verzenden     | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2.000 | 5.000 | 10.000 | 20.000 | 50,000 | 100.000 |
+| Verbindingen      | 1000 | 2.000 | 5\.000 | 10.000 | 20.000 | 50,000 | 100.000 |
 | Aantal app-servers | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
 ### <a name="serverless-mode"></a>Serverloze modus
@@ -397,7 +396,7 @@ Alle clients maken WebSocket-verbindingen met de Azure signalerings service. Ver
 
 |   Uitzenden via REST API     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Verbindingen               | 1000 | 2.000 | 5.000  | 10.000 | 20.000 | 50,000  | 100.000 |
+| Verbindingen               | 1000 | 2.000 | 5\.000  | 10.000 | 20.000 | 50,000  | 100.000 |
 | Inkomende berichten per seconde  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
 | Uitgaande berichten per seconde | 2.000 | 4000 | 10.000 | 20.000 | 40,000 | 100.000 | 200.000 |
 | Inkomende band breedte  | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps     | 4 KBps     | 4 KBps      | 4 KBps      |
@@ -408,7 +407,7 @@ De Bench Mark wijst gebruikers namen toe aan alle clients voordat ze verbinding 
 
 |   Naar gebruiker verzenden via REST API | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Verbindingen               | 1000 | 2.000 | 5.000  | 10.000 | 20.000 | 50,000  | 100.000 |
+| Verbindingen               | 1000 | 2.000 | 5\.000  | 10.000 | 20.000 | 50,000  | 100.000 |
 | Inkomende berichten per seconde  | 300   | 600   | 900    | 1.300  | 2.000  | 10.000  | 18.000  |
 | Uitgaande berichten per seconde | 300   | 600   | 900    | 1.300  | 2.000  | 10.000  | 18.000 |
 | Inkomende band breedte  | 600 KBps  | 1,2 MBps  | 1,8 MBps   | 2,6 MBps   | 4 Mbps     | 10 Mbps     | 36 MBps    |

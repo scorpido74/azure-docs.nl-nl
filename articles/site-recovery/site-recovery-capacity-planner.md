@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 843d5da26d6791cea880e5dfb654fe27b74f5d9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73936048"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Capaciteit plannen voor herstel na nood gevallen voor Hyper-V-VM'S 
@@ -61,7 +60,7 @@ U kunt het hulp programma uitvoeren in twee modi:
 
    e. In het **aantal uren waarin de initiële replicatie voor de batch van virtuele machines moet worden voltooid** en het **aantal virtuele machines per initiële replicatie batch**, voert u de instellingen in die worden gebruikt voor het berekenen van de initiële replicatie vereisten. Wanneer Site Recovery is geïmplementeerd, wordt de volledige initiële gegevensset geüpload.
 
-   ![Invoer](./media/site-recovery-capacity-planner/inputs.png)
+   ![Invoerwaarden](./media/site-recovery-capacity-planner/inputs.png)
 
 4. Nadat u de waarden voor de bron omgeving hebt opgegeven, bevat de weer gegeven uitvoer:
 
@@ -101,7 +100,7 @@ U kunt het hulp programma uitvoeren in twee modi:
 
    f. Geef het gemiddelde gebruik op in **schijf capaciteits gebruik (%)**.
 
-   g. In **dagelijkse gegevens wijzigings percentage (%)** geeft u de dagelijkse gegevens wijzigings frequentie van een bron server op.
+   bijvoorbeeld In **dagelijkse gegevens wijzigings percentage (%)** geeft u de dagelijkse gegevens wijzigings frequentie van een bron server op.
 
    h. Voer in **Azure VM-grootte toewijzen**de Azure VM-grootte in die u wilt toewijzen. Als u dit niet hand matig wilt doen, selecteert u **Compute IaaS vm's**. Als u een hand matige instelling invoert en vervolgens **Compute IaaS vm's**selecteert, kan de hand matige instelling worden overschreven. Het reken proces identificeert automatisch de beste overeenkomst op de Azure VM-grootte.
 

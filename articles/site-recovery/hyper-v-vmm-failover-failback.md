@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: d31355bcb0ce42874c19988738ba06138c7a0b7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74082588"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Failover en failback uitvoeren van Hyper-V-Vm's die zijn gerepliceerd naar uw secundaire on-premises site
@@ -52,8 +51,8 @@ U kunt een regel matige of geplande failover uitvoeren voor virtuele Hyper-V-mac
   In deze procedure wordt beschreven hoe u een regel matige failover uitvoert.
 
 
-1. Klik in **instellingen** > **gerepliceerde items** op de virtuele machine > **failover**.
-1. Selecteer **computer afsluiten voordat u de failover uitvoert** als u wilt dat site Recovery probeert om een afsluiting van de bron-vm's uit te voeren voordat de failover wordt geactiveerd. Site Recovery probeert ook on-premises gegevens te synchroniseren die nog niet zijn verzonden naar de secundaire site voordat de failover wordt geactiveerd. De failover wordt voortgezet, zelfs als het afsluiten mislukt. U kunt de voortgang van de failover op de pagina **taken** volgen.
+1. Klik in **instellingen**  >  **gerepliceerde items** op de virtuele machine > **failover**.
+1. Selecteer **computer afsluiten voordat u de failover uitvoert** als u wilt dat site Recovery probeert om een afsluiting van de bron-vm's uit te voeren voordat de failover wordt geactiveerd. Site Recovery probeert ook on-premises gegevens te synchroniseren die nog niet zijn verzonden naar de secundaire site voordat de failover wordt geactiveerd. De failover wordt voortgezet, zelfs als het afsluiten mislukt. U kunt de voortgang van de failover volgen op de pagina **Taken**.
 2. Nu moet u de virtuele machine in de secundaire VMM-Cloud kunnen zien.
 3. Nadat u de virtuele machine hebt gecontroleerd, voert u de failover **door** . Hiermee verwijdert u alle beschikbare herstelpunten.
 

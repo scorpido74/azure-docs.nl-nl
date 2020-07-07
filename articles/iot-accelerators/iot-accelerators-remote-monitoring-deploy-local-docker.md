@@ -9,10 +9,9 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: 32b47d9d6d45ff471961f55f8159dbe85eae2dce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73888823"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>De externe controle oplossings versneller implementeren lokaal-docker
@@ -36,7 +35,7 @@ Als u de lokale implementatie wilt volt ooien, moet u de volgende hulpprogram ma
 * [Git](https://git-scm.com/)
 * [Docker](https://www.docker.com)
 * [Visual Studio](https://visualstudio.microsoft.com/) : als u van plan bent om wijzigingen aan te brengen in de micro Services.
-* [Node. js V8](https://nodejs.org/) : deze software is een vereiste voor de pc's cli die de scripts gebruiken om Azure-resources te maken. Gebruik node. js V10 toevoegen niet.
+* [Node.js V8](https://nodejs.org/) : deze software is een vereiste voor de pc's cli die de scripts gebruiken om Azure-resources te maken. Gebruik Node.js V10 toevoegen niet.
 
 > [!NOTE]
 > Deze hulpprogram ma's zijn beschikbaar op verschillende platforms, waaronder Windows, Linux en iOS.
@@ -63,14 +62,14 @@ De micro services die worden uitgevoerd in de lokale docker-containers, moeten t
 docker run --rm -ti library/alpine ping google.com
 ```
 
-Als u de oplossings versneller wilt uitvoeren, gaat u naar de **lokale map Services\\-scripts\\** in uw opdracht regel omgeving en voert u de volgende opdracht uit:
+Als u de oplossings versneller wilt uitvoeren, gaat u naar de ** \\ \\ lokale map Services-scripts** in uw opdracht regel omgeving en voert u de volgende opdracht uit:
 
 ```cmd/sh
 docker-compose up
 ```
 
 > [!NOTE] 
-> Zorg ervoor dat u [een lokaal station deelt](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115) met docker voordat u `docker-compose up`uitvoert.
+> Zorg ervoor dat u [een lokaal station deelt](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115) met docker voordat u uitvoert `docker-compose up` .
 
 De eerste keer dat u deze opdracht uitvoert, downloadt docker de installatie kopieën van micro service uit docker hub om de containers lokaal te bouwen. Op de volgende plaatsen voert docker de containers onmiddellijk uit.
 
@@ -83,20 +82,20 @@ docker rm <list_of_containers>
 docker rmi <list_of_images>
 ```
 
-U kunt een afzonderlijke shell gebruiken om de logboeken van de container weer te geven. Zoek eerst de container-ID met `docker ps` behulp van de opdracht. Gebruik `docker logs {container-id} --tail 1000` vervolgens om de laatste 1000 vermeldingen voor de opgegeven container weer te geven.
+U kunt een afzonderlijke shell gebruiken om de logboeken van de container weer te geven. Zoek eerst de container-ID met behulp van de `docker ps` opdracht. Gebruik vervolgens `docker logs {container-id} --tail 1000` om de laatste 1000 vermeldingen voor de opgegeven container weer te geven.
 
 ### <a name="start-the-stream-analytics-job"></a>De Stream Analytics-taak starten
 
 Volg deze stappen om de Stream Analytics taak te starten:
 
-1. Navigeer naar het [Azure Portal](https://portal.azure.com).
+1. Navigeer naar [Azure Portal](https://portal.azure.com).
 1. Navigeer naar de **resource groep** die is gemaakt voor uw oplossing. De naam van de resource groep is de naam die u voor uw oplossing hebt gekozen toen u het script **Start. cmd** hebt uitgevoerd.
 1. Klik op de **taak stream Analytics** in de lijst met resources.
 1. Klik op de pagina **overzicht** van stream Analytics op de knop **starten** . Klik vervolgens op **Start** om de taak nu te starten.
 
 ### <a name="connect-to-the-dashboard"></a>Verbinding maken met het dash board
 
-Ga naar `http://localhost:8080` in uw browser om toegang te krijgen tot het dash board van de oplossing voor externe controle. U kunt nu de Web-UI en de lokale micro Services gebruiken.
+Ga naar in uw browser om toegang te krijgen tot het dash board van de oplossing voor externe controle `http://localhost:8080` . U kunt nu de Web-UI en de lokale micro Services gebruiken.
 
 ## <a name="clean-up"></a>Opruimen
 

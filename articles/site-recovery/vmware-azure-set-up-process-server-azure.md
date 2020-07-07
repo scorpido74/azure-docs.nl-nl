@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: ramamill
 ms.openlocfilehash: 16214fa07b14c8db2f32fa2c69739b7fa3dc1907
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74083954"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>Een processerver voor failback in Azure instellen
@@ -28,7 +27,7 @@ Meer informatie over het proces voor opnieuw [beveiligen](vmware-azure-reprotect
 
 ## <a name="deploy-a-process-server-in-azure"></a>Een proces server in azure implementeren
 
-1. Selecteer de configuratie server in de kluis > **site Recovery-infra structuur**> **Manage** > **configuratie servers**beheren.
+1. Selecteer de configuratie server in de kluis > **site Recovery-infra structuur** >  **Manage**  >  **configuratie servers**beheren.
 2. Klik op de pagina Server op **+ proces server**
 3. Op de pagina **proces server toevoegen** en selecteer om de proces server in azure te implementeren.
 4. Geef de Azure-instellingen op, waaronder het abonnement dat wordt gebruikt voor failover, een resource groep, de Azure-regio die wordt gebruikt voor failover en het virtuele netwerk waarin de Azure-Vm's zich bevinden. Als u meerdere Azure-netwerken hebt gebruikt, hebt u een proces server in elk bestand nodig.

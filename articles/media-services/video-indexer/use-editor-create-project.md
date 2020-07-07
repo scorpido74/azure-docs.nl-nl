@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
 ms.openlocfilehash: 9f16ab34dc9b37806f9c58b22a3f02afe839632e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73839168"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>De Video Indexer editor gebruiken om projecten te maken
@@ -109,7 +108,7 @@ Vergeet niet om uw project op te slaan wanneer u wijzigingen aanbrengt door **pr
 
     ![Opslaan](./media/video-indexer-view-edit/save.png)
 
-    Er wordt een pop-upvenster weer gegeven waarin wordt aangegeven dat video indexer een bestand weergeeft en de download koppeling naar uw e-mail bericht wordt verzonden. Selecteer door gaan. 
+    Er wordt een pop-upvenster weer gegeven waarin wordt aangegeven dat video indexer een bestand weergeeft en de download koppeling naar uw e-mail bericht wordt verzonden. Selecteer Doorgaan. 
     
     U ziet ook een melding dat het project boven op de pagina wordt weer gegeven. Zodra de bewerking is uitgevoerd, wordt er een nieuwe melding weer gegeven dat het project is gegenereerd. Klik op de melding om het project te downloaden. Het project wordt gedownload in de indeling MP4.
 
@@ -130,7 +129,7 @@ U kunt rechtstreeks een nieuw project maken op basis van een video in uw account
 
     Hiermee gaat u naar de pagina die u hebt gebruikt om een nieuw project te maken. In tegens telling tot het nieuwe project ziet u de getimede Insights-segmenten van de video, die u eerder hebt bewerkt.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 [Overzicht van Video Indexer](video-indexer-overview.md)
 

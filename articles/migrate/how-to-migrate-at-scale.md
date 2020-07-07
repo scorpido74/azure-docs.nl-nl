@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
 ms.openlocfilehash: 317b6e8aa799b7982e9897c6a504d6092491c7ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74196367"
 ---
 # <a name="scale-migration-of-vms"></a>Migratie van Vm's schalen 
@@ -54,15 +53,15 @@ Zodra het CSV is voltooid, kunt u de volgende stappen uitvoeren om de migratie v
 
 **Wizardstap #** | **Script naam** | **Beschrijving**
 --- | --- | ---
-1 | asr_startmigration. ps1 | Replicatie inschakelen voor alle virtuele machines die worden vermeld in het CSV-bestand, maakt het script een CSV-uitvoer met de taak Details voor elke VM
-2 | asr_replicationstatus. ps1 | Controleer de status van de replicatie, het script maakt een CSV met de status voor elke VM
-3 | asr_updateproperties. ps1 | Zodra de Vm's zijn gerepliceerd/beveiligd, gebruikt u dit script om de doel eigenschappen van de virtuele machine bij te werken (reken-en netwerk eigenschappen)
-4 | asr_propertiescheck. ps1 | Controleren of de eigenschappen op de juiste manier zijn bijgewerkt
-5 | asr_testmigration. ps1 |  Start de testfailover van de virtuele machines die worden vermeld in het CSV-bestand. het script maakt een CSV-uitvoer met de taak Details voor elke VM
-6 | asr_cleanuptestmigration. ps1 | Wanneer u de virtuele machines die zijn getest van een geslaagd hand matig hebt gevalideerd, kunt u dit script gebruiken om de Vm's voor de testfailover op te schonen
-7 | asr_migration. ps1 | Een niet-geplande failover uitvoeren voor de Vm's die worden vermeld in het CSV-bestand, maakt het script een CSV-uitvoer met de taak Details voor elke virtuele machine. Het script sluit de on-premises Vm's niet af voordat de failover wordt geactiveerd. voor toepassings consistentie wordt aanbevolen dat u de virtuele machines hand matig afsluit voordat u het script uitvoert.
-8 | asr_completemigration. ps1 | Voer de doorvoer bewerking op de Vm's uit en verwijder de Azure Site Recovery entiteiten
-9 | asr_postmigration. ps1 | Als u van plan bent om netwerk beveiligings groepen toe te wijzen aan de Nic's na failover, kunt u dit script hiervoor gebruiken. Er wordt een NSG toegewezen aan een NIC in de doel-VM.
+1 | asr_startmigration.ps1 | Replicatie inschakelen voor alle virtuele machines die worden vermeld in het CSV-bestand, maakt het script een CSV-uitvoer met de taak Details voor elke VM
+2 | asr_replicationstatus.ps1 | Controleer de status van de replicatie, het script maakt een CSV met de status voor elke VM
+3 | asr_updateproperties.ps1 | Zodra de Vm's zijn gerepliceerd/beveiligd, gebruikt u dit script om de doel eigenschappen van de virtuele machine bij te werken (reken-en netwerk eigenschappen)
+4 | asr_propertiescheck.ps1 | Controleren of de eigenschappen op de juiste manier zijn bijgewerkt
+5 | asr_testmigration.ps1 |  Start de testfailover van de virtuele machines die worden vermeld in het CSV-bestand. het script maakt een CSV-uitvoer met de taak Details voor elke VM
+6 | asr_cleanuptestmigration.ps1 | Wanneer u de virtuele machines die zijn getest van een geslaagd hand matig hebt gevalideerd, kunt u dit script gebruiken om de Vm's voor de testfailover op te schonen
+7 | asr_migration.ps1 | Een niet-geplande failover uitvoeren voor de Vm's die worden vermeld in het CSV-bestand, maakt het script een CSV-uitvoer met de taak Details voor elke virtuele machine. Het script sluit de on-premises Vm's niet af voordat de failover wordt geactiveerd. voor toepassings consistentie wordt aanbevolen dat u de virtuele machines hand matig afsluit voordat u het script uitvoert.
+8 | asr_completemigration.ps1 | Voer de doorvoer bewerking op de Vm's uit en verwijder de Azure Site Recovery entiteiten
+9 | asr_postmigration.ps1 | Als u van plan bent om netwerk beveiligings groepen toe te wijzen aan de Nic's na failover, kunt u dit script hiervoor gebruiken. Er wordt een NSG toegewezen aan een NIC in de doel-VM.
 
 ## <a name="how-to-migrate-to-managed-disks"></a>Hoe kan ik migreren naar Managed disks?
 Met het script worden standaard de virtuele machines gemigreerd naar beheerde schijven in Azure. Als het beschik bare doel opslag account een Premium-opslag account is, worden Premium-beheerde schijven gemaakt na migratie. Het cache-opslag account kan nog steeds een standaard account zijn. Als het doel opslag account een Standard-opslag account is, worden standaard schijven gemaakt na migratie. 

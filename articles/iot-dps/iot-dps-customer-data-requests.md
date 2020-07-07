@@ -8,13 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 1dcf1b9f62f94b8f75ef2fe77f3e237a387c53eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73890655"
 ---
-# <a name="summary-of-customer-data-request-features"></a>Samen vatting van functies voor klant gegevens aanvragen
+# <a name="summary-of-customer-data-request-features"></a>Samenvatting van functies voor gegevensaanvragen van klanten
 
 Azure IoT Hub Device Provisioning Service is een op REST API gebaseerde Cloud service gericht op zakelijke klanten die naadloze, automatische Zero-Touch inrichting van apparaten aan Azure IoT Hub mogelijk maken met beveiliging die op het apparaat begint en eindigt met de Cloud.
 
@@ -62,6 +61,6 @@ Het is ook mogelijk om export bewerkingen uit te voeren voor inschrijvingen en r
 
 ## <a name="links-to-additional-documentation"></a>Koppelingen naar aanvullende documentatie
 
-Volledige documentatie voor Device Provisioning Service-Api's bevindt zich op [https://docs.microsoft.com/rest/api/iot-dps](https://docs.microsoft.com/rest/api/iot-dps).
+Volledige documentatie voor Device Provisioning Service-Api's bevindt zich op [https://docs.microsoft.com/rest/api/iot-dps](https://docs.microsoft.com/rest/api/iot-dps) .
 
 Azure IoT Hub- [functies voor gegevens aanvragen](../iot-hub/iot-hub-customer-data-requests.md)van de klant.

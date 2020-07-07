@@ -10,10 +10,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.openlocfilehash: a21e8d6c76c93b3084619c09f6a7664a25c1929c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73682210"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>De juiste VM-grootte voor uw Azure HDInsight-cluster selecteren
@@ -38,7 +37,7 @@ De grootte en het type van de virtuele machine zijn afhankelijk van CPU-verwerki
 
 Virtuele-machine families in azure zijn geoptimaliseerd voor verschillende use cases. In de onderstaande tabel vindt u enkele van de populairste use cases en de VM-families die overeenkomen.
 
-| Type                     | Grootten           |    Beschrijving       |
+| Type                     | Grootten           |    Description       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Instap niveau](../virtual-machines/linux/sizes-general.md)          | A, Av2  | Beschikken over CPU-prestaties en geheugen configuraties die het meest geschikt zijn voor workloads op instap niveau, zoals ontwikkelen en testen. Ze zijn voordelig en bieden een goedkope optie om aan de slag te gaan met Azure. |
 | [Algemeen doel](../virtual-machines/linux/sizes-general.md)          | D, DSv2, dv2  | Evenwichtige CPU-geheugen verhouding. Dit is ideaal voor testen en ontwikkelen, voor kleine tot middelgrote databases, en webservers met weinig tot gemiddeld verkeer. |
@@ -55,10 +54,10 @@ De volgende tabel beschrijft de cluster typen en knooppunt typen die kunnen word
 
 | Clustertype | Versie | Worker-knoop punt | Hoofd knooppunt | Zookeeper-knoop punt |
 |---|---|---|---|---|
-| Spark | Alle | F4 en hoger | nee | nee |
-| Hadoop | Alle | F4 en hoger | nee | nee |
-| Kafka | Alle | F4 en hoger | nee | nee |
-| HBase | Alle | F4 en hoger | nee | nee |
+| Spark | Alles | F4 en hoger | nee | nee |
+| Hadoop | Alles | F4 en hoger | nee | nee |
+| Kafka | Alles | F4 en hoger | nee | nee |
+| HBase | Alles | F4 en hoger | nee | nee |
 | LLAP | geblokkeerd | nee | nee | nee |
 | Storm | geblokkeerd | nee | nee | nee |
 | ML-service | ALLEEN HDI 3,6 | F4 en hoger | nee | nee |

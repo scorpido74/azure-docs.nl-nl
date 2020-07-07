@@ -13,10 +13,9 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 536ef62acad900090924598edfa45450b2a8c951
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70882245"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Hoge Beschik baarheid van exclusieve HSM voor Azure
@@ -40,6 +39,6 @@ Meer onderwerpen over het concept niveau:
 * [Fysieke beveiliging](physical-security.md)
 * [Netwerken](networking.md)
 * [Ondersteuning](supportability.md)
-* [Bewaking](monitoring.md)
+* [Controle](monitoring.md)
 
 Voor specifieke informatie over het configureren van HSM-apparaten voor maximale Beschik baarheid raadpleegt u de Gemalto-portal voor klanten ondersteuning voor de beheerders handleidingen en raadpleegt u sectie 6.

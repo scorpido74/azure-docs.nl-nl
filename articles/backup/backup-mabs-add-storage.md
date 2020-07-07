@@ -4,10 +4,9 @@ description: Meer informatie over de nieuwe functies in Azure Backup Server. In 
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: c6346d7b0275a00271c1787b378a63b8365edf2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74172377"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Opslag toevoegen aan Azure Backup Server
@@ -36,7 +35,7 @@ Back-upserver v2 of hoger accepteert opslag volumes. Wanneer u een volume toevoe
 
 Als u back-upserver v2 of nieuwer gebruikt met volumes als schijf opslag, kunt u de controle over de opslag behouden. Een volume kan één schijf zijn. Als u de opslag in de toekomst echter wilt uitbreiden, maakt u een volume uit een schijf die is gemaakt met behulp van opslag ruimten. Dit kan handig zijn als u het volume wilt uitbreiden voor back-upopslag. In deze sectie vindt u aanbevolen procedures voor het maken van een volume met deze installatie.
 
-1. Selecteer in Serverbeheer **Bestands-en opslag Services** > **volumes** > **opslag groepen**. Onder **fysieke schijven**selecteert u **nieuwe opslag groep**.
+1. Selecteer in Serverbeheer **Bestands-en opslag Services**  >  **volumes**  >  **opslag groepen**. Onder **fysieke schijven**selecteert u **nieuwe opslag groep**.
 
     ![Een nieuwe opslag groep maken](./media/backup-mabs-add-storage/mabs-add-storage-1.png)
 
@@ -56,7 +55,7 @@ Als u back-upserver v2 of nieuwer gebruikt met volumes als schijf opslag, kunt u
 
     ![Een nieuw volume maken](./media/backup-mabs-add-storage/mabs-add-storage-5.png)
 
-6. Selecteer de server en de nieuwe schijf in het dialoog venster **Server en schijf selecteren** . Selecteer vervolgens **volgende**.
+6. Selecteer de server en de nieuwe schijf in het dialoog venster **Server en schijf selecteren** . Selecteer vervolgens **Volgende**.
 
     ![De server en schijf selecteren](./media/backup-mabs-add-storage/mabs-add-storage-6.png)
 
@@ -119,7 +118,7 @@ Als u verouderde opslag met een back-upserver wilt gebruiken, moet u mogelijk sc
 
 Schijfopslag toevoegen:
 
-1. Selecteer **beheer** > **Disk Storage** > **toevoegen**in de Administrator-console.
+1. Selecteer **beheer**  >  **Disk Storage**  >  **toevoegen**in de Administrator-console.
 
     ![Dialoog venster Disk Storage toevoegen](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 

@@ -20,23 +20,22 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 2d3952f7d2adc26892cbebcd962f2ea25b86de7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113180"
 ---
-# <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Logische OData-Opera tors in azure `and`Cognitive Search `or`-,,`not`
+# <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Logische OData-Opera tors in azure Cognitive Search- `and` , `or` ,`not`
 
-[OData-filter expressies](query-odata-filter-orderby-syntax.md) in azure Cognitive Search zijn Booleaanse expressies die de `true` waarde `false`van of bepalen. U kunt een complex filter schrijven door een reeks [eenvoudiger filters](search-query-odata-comparison-operators.md) te schrijven en deze samen te stellen met behulp van de logische Opera tors van [Boole algebra](https://en.wikipedia.org/wiki/Boolean_algebra):
+[OData-filter expressies](query-odata-filter-orderby-syntax.md) in azure Cognitive Search zijn Booleaanse expressies die de waarde van `true` of bepalen `false` . U kunt een complex filter schrijven door een reeks [eenvoudiger filters](search-query-odata-comparison-operators.md) te schrijven en deze samen te stellen met behulp van de logische Opera tors van [Boole algebra](https://en.wikipedia.org/wiki/Boolean_algebra):
 
-- `and`: Een binaire operator waarmee wordt geëvalueerd `true` of de linker-en rechter-sub-expressies worden `true`geëvalueerd.
-- `or`: Een binaire operator die evalueert `true` of een van de linker-of rechter-sub-expressies resulteert in. `true`
-- `not`: Een unaire operator die evalueert `true` of de sub-expressie resulteert in `false`, en omgekeerd.
+- `and`: Een binaire operator waarmee wordt geëvalueerd `true` of de linker-en rechter-sub-expressies worden geëvalueerd `true` .
+- `or`: Een binaire operator die evalueert of een `true` van de linker-of rechter-sub-expressies resulteert in `true` .
+- `not`: Een unaire operator die evalueert `true` of de sub-expressie resulteert in `false` , en omgekeerd.
 
 Met deze combi natie van de [verzamelings operators `any` en `all` ](search-query-odata-collection-operators.md)kunt u filters maken die zeer complexe zoek criteria kunnen uitdrukken.
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
 De volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van een OData-expressie die gebruikmaakt van de logische Opera tors.
 
@@ -56,23 +55,23 @@ Er is ook een interactief syntaxis diagram beschikbaar:
 > [!NOTE]
 > Zie [OData-expressie syntaxis referentie voor Azure Cognitive Search](search-query-odata-syntax-reference.md) voor de volledige ebnf.
 
-Er zijn twee soorten logische`and`/`or`expressies: binary (), waar er twee subexpressies en Unair (`not`) zijn, waarbij er slechts één wordt. De subexpressies kunnen Booleaanse expressies van elk soort zijn:
+Er zijn twee soorten logische expressies: binary ( `and` / `or` ), waar er twee subexpressies en Unair ( `not` ) zijn, waarbij er slechts één wordt. De subexpressies kunnen Booleaanse expressies van elk soort zijn:
 
 - Velden of bereik variabelen van het type`Edm.Boolean`
-- Functies die waarden van het type `Edm.Boolean`retour neren, `geo.intersects` zoals of`search.ismatch`
+- Functies die waarden van het type retour neren `Edm.Boolean` , zoals `geo.intersects` of`search.ismatch`
 - [Vergelijkings expressies](search-query-odata-comparison-operators.md), zoals`rating gt 4`
 - [Verzamelings expressies](search-query-odata-collection-operators.md), zoals`Rooms/any(room: room/Type eq 'Deluxe Room')`
-- De letterlijke Boole `true` - `false`waarden of.
-- Andere logische expressies die zijn `and`gemaakt `or`met, `not`en.
+- De letterlijke Boole-waarden `true` of `false` .
+- Andere logische expressies die zijn gemaakt met `and` , `or` en `not` .
 
 > [!IMPORTANT]
-> Er zijn enkele situaties waarin niet alle soorten Subexpressies kunnen worden gebruikt met `and` / `or`, met name binnen lambda-expressies. Zie [OData-verzamelings operatoren in Azure Cognitive Search](search-query-odata-collection-operators.md#limitations) voor meer informatie.
+> Er zijn enkele situaties waarin niet alle soorten Subexpressies kunnen worden gebruikt met, met `and` / `or` name binnen lambda-expressies. Zie [OData-verzamelings operatoren in Azure Cognitive Search](search-query-odata-collection-operators.md#limitations) voor meer informatie.
 
 ### <a name="logical-operators-and-null"></a>Logische Opera tors en`null`
 
-De meeste Booleaanse expressies zoals functies en vergelijkingen kunnen geen waarden `null` produceren en de logische Opera tors kunnen niet rechtstreeks op de `null` letterlijke waarde worden toegepast ( `x and null` bijvoorbeeld is niet toegestaan). Boole-velden kunnen echter wel `null`zijn, dus u moet weten hoe de `and`Opera Tors, `or`en `not` zich gedragen in de aanwezigheid van Null. Dit wordt in de volgende tabel samenvatten, `b` waarbij een veld van het `Edm.Boolean`type is:
+De meeste Booleaanse expressies zoals functies en vergelijkingen kunnen geen `null` waarden produceren en de logische Opera tors kunnen niet rechtstreeks op de `null` letterlijke waarde worden toegepast (bijvoorbeeld `x and null` is niet toegestaan). Boole-velden kunnen echter wel zijn `null` , dus u moet weten hoe de `and` `or` `not` Opera Tors, en zich gedragen in de aanwezigheid van Null. Dit wordt in de volgende tabel samenvatten, waarbij `b` een veld van het type is `Edm.Boolean` :
 
-| Expressie | Resultaat wanneer `b` is`null` |
+| Expression | Resultaat wanneer `b` is`null` |
 | --- | --- |
 | `b` | `false` |
 | `not b` | `true` |
@@ -87,7 +86,7 @@ De meeste Booleaanse expressies zoals functies en vergelijkingen kunnen geen waa
 | `b or true` | `true` |
 | `b or false` | `false` |
 
-Wanneer een Boole- `b` veld in een filter expressie wordt weer gegeven, wordt gereageerd alsof het is geschreven `b eq true` `b` `false`. als dat het `null`geval is, wordt de expressie geëvalueerd. Dit `not b` werkt op dezelfde manier `not (b eq true)`als, zodat deze kan worden `true`geëvalueerd. Op deze manier werken `null` velden hetzelfde als `false`. Dit is consistent met de manier waarop ze zich gedragen wanneer ze worden gecombineerd `and` met `or`andere expressies die gebruikmaken van en, zoals wordt weer gegeven in de bovenstaande tabel. Ondanks dit geldt dat er nog steeds `false` een`b eq false`directe vergelijking naar () `false`wordt geëvalueerd. Met andere woorden, `null` is niet gelijk aan `false`, hoewel het zich gedraagt als in Boole-expressies.
+Wanneer een Boole-veld `b` in een filter expressie wordt weer gegeven, wordt gereageerd alsof het is geschreven `b eq true` . als dat `b` het geval is `null` , wordt de expressie geëvalueerd `false` . Dit werkt op dezelfde manier `not b` als `not (b eq true)` , zodat deze kan worden geëvalueerd `true` . Op deze manier `null` werken velden hetzelfde als `false` . Dit is consistent met de manier waarop ze zich gedragen wanneer ze worden gecombineerd met andere expressies die gebruikmaken van `and` en `or` , zoals wordt weer gegeven in de bovenstaande tabel. Ondanks dit geldt dat er nog steeds een directe vergelijking naar `false` ( `b eq false` ) wordt geëvalueerd `false` . Met andere woorden, `null` is niet gelijk aan `false` , hoewel het zich gedraagt als in Boole-expressies.
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -99,7 +98,7 @@ Overeenkomende documenten waarbij alle elementen van het `ratings` veld kleiner 
 
     ratings/all(r: r lt 3 or r gt 5)
 
-Vergelijkt documenten `location` waarbij het veld binnen de gegeven veelhoek ligt en het document niet de term ' openbaar ' bevat.
+Vergelijkt documenten waarbij het `location` veld binnen de gegeven veelhoek ligt en het document niet de term ' openbaar ' bevat.
 
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))') and not search.ismatch('public')
 

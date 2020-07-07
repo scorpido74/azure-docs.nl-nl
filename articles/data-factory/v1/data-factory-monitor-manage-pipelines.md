@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.openlocfilehash: 44aadecfa80524345932c03abb51e8ebd040a902
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73666970"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Data Factory pijp lijnen bewaken en beheren met behulp van de Azure Portal en Power shell
@@ -46,7 +45,7 @@ Met behulp van de Azure Portal kunt u het volgende doen:
 In deze sectie wordt ook beschreven hoe een segment overgang van een status naar een andere status.   
 
 ### <a name="navigate-to-your-data-factory"></a>Ga naar uw data factory
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Klik op **gegevens fabrieken** in het menu aan de linkerkant. Als u dit niet ziet, klikt u op **meer services >** en klikt u vervolgens op **gegevens fabrieken** onder de categorie **Intelligence en analyse** .
 
    ![Door alle >-gegevens fabrieken bladeren](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
@@ -87,7 +86,7 @@ De segmenten van de gegevensset in de data factory kunnen een van de volgende st
 
 <table>
 <tr>
-    <th align="left">Status</th><th align="left">Substatus</th><th align="left">Beschrijving</th>
+    <th align="left">Status</th><th align="left">Substatus</th><th align="left">Description</th>
 </tr>
 <tr>
     <td rowspan="8">Wachten</td><td>ScheduleTime</td><td>De tijd voor het uitvoeren van het segment is niet beschikbaar.</td>
@@ -115,13 +114,13 @@ De segmenten van de gegevensset in de data factory kunnen een van de volgende st
 </tr>
 <tr>
 <tr>
-<td rowspan="2">InProgress</td><td>Valideren</td><td>De validatie wordt uitgevoerd.</td>
+<td rowspan="2">Wordt uitgevoerd</td><td>Valideren</td><td>De validatie wordt uitgevoerd.</td>
 </tr>
 <td>-</td>
 <td>Het segment wordt verwerkt.</td>
 </tr>
 <tr>
-<td rowspan="4">Mislukt</td><td>Out</td><td>De uitvoering van de activiteit duurde langer dan is toegestaan door de activiteit.</td>
+<td rowspan="4">Mislukt</td><td>Verlopen</td><td>De uitvoering van de activiteit duurde langer dan is toegestaan door de activiteit.</td>
 </tr>
 <tr>
 <td>Geannuleerd</td><td>Het segment is geannuleerd door de gebruiker.</td>
@@ -216,7 +215,7 @@ Als de uitvoering van de activiteit in een pijp lijn mislukt, heeft de gegevenss
    ![Blade Details uitvoering van activiteit met fout](./media/data-factory-monitor-manage-pipelines/activity-run-details-with-error.png)     
 
 #### <a name="use-powershell-to-debug-an-error"></a>Power shell gebruiken om een fout op te lossen
-1. Start **Power shell**.
+1. Start **PowerShell**.
 2. Voer de opdracht **Get-AzDataFactorySlice** uit om de segmenten en hun status weer te geven. Als het goed is, ziet u een segment met de status **mislukt**.        
 
     ```powershell   
@@ -290,7 +289,7 @@ Als de validatie van het segment is mislukt vanwege een beleids fout (bijvoorbee
 ### <a name="use-azure-powershell"></a>Azure PowerShell gebruiken
 U kunt fouten opnieuw uitvoeren met behulp van de cmdlet **set-AzDataFactorySliceStatus** . Zie het onderwerp [set-AzDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryslicestatus) voor de syntaxis en andere informatie over de cmdlet.
 
-**Hierbij**
+**Voorbeeld:**
 
 In het volgende voor beeld wordt de status van alle segmenten voor de tabel DAWikiAggregatedData ingesteld op wachtend in azure data factory ' WikiADF '.
 

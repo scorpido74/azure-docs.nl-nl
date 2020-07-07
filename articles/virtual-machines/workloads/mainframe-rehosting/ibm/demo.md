@@ -13,10 +13,9 @@ ms.date: 02/22/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: 66f80c79219090c27da37dfc1d9149df5604961f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68841386"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Een toepassings ontwikkelaars ADCD (Controlled Distribution) instellen in IBM zD&T v1
@@ -29,7 +28,7 @@ Net zoals zD&T, zijn ADCDs alleen beschikbaar voor klanten en partners van IBM e
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement. Als u er nog geen hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+- Een Azure-abonnement. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 - De [zD&T-omgeving][ibm-install-z] is eerder ingesteld op Azure. In dit artikel wordt ervan uitgegaan dat u dezelfde Ubuntu 16,04 VM-installatie kopie gebruikt die u eerder hebt gemaakt.
 
@@ -83,7 +82,7 @@ Nu u de pakket (en) hebt, moet u deze uploaden naar uw VM in Azure.
 6. Start de upload naar de Azure VM-map die u hebt gemaakt, die de installatie kopie voor zD&T wordt.
 
     > [!NOTE]
-    > Zorg ervoor dat **ADCDTOOLS. XML** is opgenomen in de upload naar de map **Home/MYUSERID/ZDT/adcd/nov2017** . U hebt dit later nodig.
+    > Zorg ervoor dat **ADCDTOOLS.XML** is opgenomen in de upload naar de map **Home/MyUserID/ZDT/adcd/nov2017** . U hebt dit later nodig.
 
 7. Wacht tot de bestanden zijn geüpload. Dit kan enige tijd duren, afhankelijk van uw verbinding met Azure.
 
@@ -105,7 +104,7 @@ De volgende stap is het configureren van zD&T voor het gebruik van de geüploade
         /opt/ibm/zDT/bin/startServer
     ```
 2. Noteer de URL-uitvoer van de opdracht en gebruik deze URL voor toegang tot de webserver. Dit ziet er ongeveer als volgt uit:
-     > https://(uw VM-naam of IP-adres): 9443/ZDTMC/index. html
+     > https://(uw VM-naam of IP-adres): 9443/ZDTMC/index.html
      >
      > Vergeet niet dat uw webtoegang gebruikmaakt van poort 9443. Gebruik deze om u aan te melden bij de webserver. De gebruikers-ID voor ZD&T is **zdtadmin** en het wacht woord is **wacht woord**.
 
@@ -184,9 +183,9 @@ Uw installatie kopie kan nu worden geïmplementeerd en kan worden gekoppeld door
 > [!NOTE]
 > Als er een fout bericht wordt weer gegeven met de melding dat er onvoldoende schijf ruimte is, moet u er rekening mee houden dat de regio 151 GB vereist.
 
-Gefeliciteerd! U voert nu een IBM mainframe-omgeving uit op Azure.
+Gefeliciteerd U voert nu een IBM mainframe-omgeving uit op Azure.
 
-## <a name="learn-more"></a>Meer informatie
+## <a name="learn-more"></a>Lees meer
 
 - [Mainframe migratie: mythen en feiten](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [IBM DB2 pureScale op Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)

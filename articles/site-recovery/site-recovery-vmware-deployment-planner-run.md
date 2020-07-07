@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: mayg
 ms.openlocfilehash: 044e5c5df8e0af67e4717b864de1e31fc2520408
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73953288"
 ---
 # <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>De Deployment Planner voor nood herstel van VMware uitvoeren
@@ -95,7 +94,7 @@ Het hulp programma is standaard geconfigureerd voor het profiel en genereren van
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
 ```
-Met de standaardinstellingen worden er twee VMList.txt-bestanden gemaakt om bijvoorbeeld 1500 VM's te profileren. Een met 1000 VM's en een ander met 500 VM's. Voer de twee exemplaren van Azure Site Recovery Deployment Planner uit, een met VMList1. txt en een andere met VMList2. txt. U kunt hetzelfde directorypad gebruiken om de geprofileerde gegevens van beide VMList-VM's op te slaan.
+Met de standaardinstellingen worden er twee VMList.txt-bestanden gemaakt om bijvoorbeeld 1500 VM's te profileren. Een met 1000 VM's en een ander met 500 VM's. Voer de twee exemplaren van Azure Site Recovery Deployment Planner uit, een met VMList1.txt en andere met VMList2.txt. U kunt hetzelfde directorypad gebruiken om de geprofileerde gegevens van beide VMList-VM's op te slaan.
 
 Op basis van de hardwareconfiguratie hebben we gezien dat de bewerking kan mislukken vanwege onvoldoende geheugen, met name wat de omvang betreft van het RAM van de server waarop het hulpprogramma wordt uitgevoerd om het rapport te genereren. Als u goede hardware hebt, kunt u de waarde MaxVMsSupported verhogen.  
 
@@ -136,7 +135,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 
 
 ## <a name="generate-report"></a>Rapport genereren
-Het hulpprogramma genereert een Microsoft Excel-bestand met ingeschakelde macro's (XLSM-bestand) als de rapportuitvoer, met daarin een overzicht van alle aanbevelingen voor de implementatie. Het rapport heeft de `DeploymentPlannerReport_<unique numeric identifier>.xlsm` naam en wordt in de opgegeven directory geplaatst.
+Het hulpprogramma genereert een Microsoft Excel-bestand met ingeschakelde macro's (XLSM-bestand) als de rapportuitvoer, met daarin een overzicht van alle aanbevelingen voor de implementatie. Het rapport heeft de naam `DeploymentPlannerReport_<unique numeric identifier>.xlsm` en wordt in de opgegeven directory geplaatst.
 
 >[!NOTE]
 >Voor het genereren van het rapport is een Windows-PC of Windows-Server met Excel 2013 of hoger vereist. Het decimaal teken op deze computer moet worden geconfigureerd als '. ' om de kosten ramingen te produceren. Als u ', ' als decimaal teken hebt ingesteld, gaat u naar ' datum-, tijd-of getalnotaties wijzigen ' in het configuratie scherm en gaat u naar ' aanvullende instellingen ' om het decimaal teken te wijzigen in '. '.

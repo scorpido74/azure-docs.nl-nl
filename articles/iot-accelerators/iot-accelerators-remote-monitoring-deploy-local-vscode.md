@@ -9,10 +9,9 @@ services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8f1d20e9a6a78d99a23fe4b98aeb4f3eb8359da7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73890960"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>De externe bewaking Solution Accelerator Local-Visual Studio code implementeren
@@ -37,7 +36,7 @@ Als u de lokale implementatie wilt volt ooien, moet u de volgende hulpprogram ma
 * [Nginx](https://nginx.org/en/download.html)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [De C#-extensie van VS code](https://code.visualstudio.com/docs/languages/csharp)
-* [Node. js V8](https://nodejs.org/) : deze software is een vereiste voor de pc's cli die de scripts gebruiken om Azure-resources te maken. Gebruik node. js V10 toevoegen niet
+* [Node.js V8](https://nodejs.org/) : deze software is een vereiste voor de pc's cli die de scripts gebruiken om Azure-resources te maken. Gebruik Node.js V10 toevoegen niet
 
 > [!NOTE]
 > Visual Studio code is beschikbaar voor Windows, Mac en Ubuntu.
@@ -64,7 +63,7 @@ De volgende stappen laten zien hoe u micro Services voor externe controle in Vis
 1. Start Visual Studio Code.
 1. Open in VS code de map **Azure-IOT-pc's-externe bewaking-DotNet** .
 1. Maak een nieuwe map met de naam **. vscode** in de map **Azure-IOT-PCs-externe bewaking-DotNet** .
-1. Kopieer de bestanden **Launch. json** en **Tasks. json** van services\scripts\local\launch\idesettings\vscode naar de map **. vscode** die u zojuist hebt gemaakt.
+1. Kopieer de bestanden **launch.jsop** en **tasks.jsop** van services\scripts\local\launch\idesettings\vscode naar de map **. vscode** die u zojuist hebt gemaakt.
 1. Open het **deel venster fout opsporing** in VS code en voer de configuratie **alle micro Services uitvoeren** uit. Deze configuratie voert de Device simulatie micro service uit in docker en voert de andere micro services uit in het fout opsporingsprogramma.
 
 De uitvoer van het uitvoeren van **alle microsoervices** in de console fout opsporing ziet er ongeveer als volgt uit:
@@ -80,7 +79,7 @@ npm install
 npm start
 ```
 
-Wanneer het starten is voltooid, wordt in uw browser de pagina **http\/:/localhost: 3000/dash board**weer gegeven. De fouten op deze pagina worden verwacht. Als u de toepassing zonder fouten wilt weer geven, voert u de volgende stap uit.
+Wanneer het starten is voltooid, wordt in uw browser de pagina **http: \/ /localhost: 3000/dash board**weer gegeven. De fouten op deze pagina worden verwacht. Als u de toepassing zonder fouten wilt weer geven, voert u de volgende stap uit.
 
 ### <a name="configure-and-run-nginx"></a>NGINX configureren en uitvoeren
 
@@ -93,7 +92,7 @@ Zie [nginx voor Windows](https://nginx.org/en/docs/windows.html)voor meer inform
 
 ### <a name="connect-to-the-dashboard"></a>Verbinding maken met het dash board
 
-Om toegang te krijgen tot het dash board van de oplossing voor\/externe controle, gaat u naar http:/localhost: 9000 in uw browser.
+Om toegang te krijgen tot het dash board van de oplossing voor externe controle, gaat u naar http: \/ /localhost: 9000 in uw browser.
 
 ## <a name="clean-up"></a>Opruimen
 

@@ -15,15 +15,14 @@ ms.reviewer: jroth
 manager: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 465338bb793ad7b4fc406e9d1c073b9dc0dc06c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74034016"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Transparent Data Encryption (TDE) inschakelen voor Stretch Database in azure
 > [!div class="op_single_selector"]
-> * [Azure Portal](sql-server-stretch-database-encryption-tde.md)
+> * [Azure-portal](sql-server-stretch-database-encryption-tde.md)
 > * [TSQL](sql-server-stretch-database-tde-tsql.md)
 >
 >
@@ -50,7 +49,7 @@ Ga als volgt te werk om TDE uit te scha kelen voor een Azure-Data Base waarin de
 4. Selecteer de instelling **uit** en selecteer vervolgens **Opslaan** .
 
 <!--Anchors-->
-[Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
+[TDE (Transparent Data Encryption)]: https://msdn.microsoft.com/library/bb934049.aspx
 
 
 <!--Image references-->

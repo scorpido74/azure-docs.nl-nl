@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: robinsh
 ms.openlocfilehash: ff738e56226f7cbb720a754573a9d8607e0e3247
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73890458"
 ---
 # <a name="iot-hub-device-streams-preview"></a>Streams van IoT Hub-apparaten (preview-versie)
@@ -82,7 +81,7 @@ Zowel het apparaat als de service zijde van een apparaatgegevens moeten in staat
 
 !["Stream-eind punten van apparaat"](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
-De gegevens van de eind punten kunnen ook worden opgehaald met behulp van Azure CLI onder de sectie eigenschappen van de hub `property.hostname` , `property.deviceStreams` met name en de sleutels.
+De gegevens van de eind punten kunnen ook worden opgehaald met behulp van Azure CLI onder de sectie eigenschappen van de hub, met name `property.hostname` en de `property.deviceStreams` sleutels.
 
 ```azurecli-interactive
 az iot hub devicestream show --name <YourIoTHubName>
@@ -106,7 +105,7 @@ De uitvoer is een JSON-object van alle eind punten die het apparaat en de servic
 
 Zoals vermeld aan het begin van dit artikel, maakt het apparaat een uitgaande verbinding naar IoT Hub streaming-eind punt tijdens het initiëren van het apparaat. De firewalls op het apparaat of het netwerk moeten uitgaande verbindingen met de streaming-gateway via poort 443 toestaan (Houd er rekening mee dat communicatie plaatsvindt via een WebSocket-verbinding die is versleuteld met behulp van TLS).
 
-De hostnaam van het eind punt van Device streaming bevindt zich op het tabblad Overzicht van de ![Azure IOT hub-Portal. "Stream-eind punten van apparaat"](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
+De hostnaam van het eind punt van Device streaming vindt u op het tabblad Overzicht van de Azure IoT Hub ![ Portal. Eind punten van het apparaat streamen "](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
 U kunt deze informatie ook vinden met behulp van Azure CLI:
 
@@ -132,7 +131,7 @@ Volg de onderstaande stappen om Azure Monitor logboeken te configureren voor de 
 
     !["Device streams logboeken inschakelen"](./media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png)
 
-3. U hebt nu toegang tot uw stream-logboeken voor apparaten op het tabblad *Logboeken* in de portal van uw IOT hub. Activiteiten logboeken voor Device stream worden weer `AzureDiagnostics` gegeven in de `Category=DeviceStreams`tabel en hebben.
+3. U hebt nu toegang tot uw stream-logboeken voor apparaten op het tabblad *Logboeken* in de portal van uw IOT hub. Activiteiten logboeken voor Device stream worden weer gegeven in de `AzureDiagnostics` tabel en hebben `Category=DeviceStreams` .
 
    Zoals hieronder wordt weer gegeven, is de identiteit van het doel apparaat en het resultaat van de bewerking ook beschikbaar in de logboeken.
 
@@ -168,7 +167,7 @@ Dit zijn de voor beelden van echo's:
 
 * [C#-service en-service programma](quickstart-device-streams-echo-csharp.md)
 
-* [Node. js-service programma](quickstart-device-streams-echo-nodejs.md)
+* [Node.js-service programma](quickstart-device-streams-echo-nodejs.md)
 
 * [C Device-programma](quickstart-device-streams-echo-c.md)
 
@@ -190,7 +189,7 @@ De installatie maakt gebruik van twee *lokale proxy* Programma's die worden weer
 
 4. De service-Local proxy luistert op een aangewezen poort, in afwachting van nieuwe SSH-verbindingen van de gebruiker (poort 2222 gebruikt in het voor beeld, maar dit kan worden geconfigureerd voor elke andere beschik bare poort). De gebruiker wijst de SSH-client naar de service-lokale Proxy poort op localhost.
 
-### <a name="notes"></a>Opmerkingen
+### <a name="notes"></a>Notities
 
 * De bovenstaande stappen volt ooien een end-to-end-tunnel tussen de SSH-client (rechts) naar de SSH-daemon (aan de linkerkant). Onderdeel van deze end-to-end-connectiviteit is het verzenden van verkeer via een apparaat stroom naar IoT Hub.
 
@@ -204,7 +203,7 @@ Gebruik de onderstaande koppelingen voor instructies over het uitvoeren van de l
 
 * [C#-service en-service programma](quickstart-device-streams-proxy-csharp.md)
 
-* [Node. js-service programma](quickstart-device-streams-proxy-nodejs.md)
+* [Node.js-service programma](quickstart-device-streams-proxy-nodejs.md)
 
 * [C Device-programma](quickstart-device-streams-proxy-c.md)
 

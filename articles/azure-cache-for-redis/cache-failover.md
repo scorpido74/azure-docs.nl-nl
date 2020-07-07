@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: adsasine
 ms.openlocfilehash: 6ff33bd594181aabc4fd7d55ce33f780a0d06086
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74122201"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Failover en Patching voor Azure cache voor redis
@@ -59,13 +58,13 @@ Omdat volledige gegevens synchronisatie plaatsvindt voordat het proces wordt her
 
 ## <a name="additional-cache-load"></a>Extra cache belasting
 
-Wanneer een failover optreedt, moeten de standaard-en Premium-caches gegevens repliceren van het ene knoop punt naar het andere. Deze replicatie veroorzaakt een aantal belasting verhogingen in het server geheugen en de CPU. Als het cache-exemplaar al zwaar is geladen, kunnen client toepassingen de latentie verhogen. In uitzonderlijke gevallen kunnen client toepassingen time-outuitzonderingen ontvangen. [Configureer](cache-configure.md#memory-policies) de `maxmemory-reserved` instelling van de cache om de impact van deze extra belasting te verminderen.
+Wanneer een failover optreedt, moeten de standaard-en Premium-caches gegevens repliceren van het ene knoop punt naar het andere. Deze replicatie veroorzaakt een aantal belasting verhogingen in het server geheugen en de CPU. Als het cache-exemplaar al zwaar is geladen, kunnen client toepassingen de latentie verhogen. In uitzonderlijke gevallen kunnen client toepassingen time-outuitzonderingen ontvangen. [Configureer](cache-configure.md#memory-policies) de instelling van de cache om de impact van deze extra belasting te verminderen `maxmemory-reserved` .
 
 ## <a name="how-does-a-failover-affect-my-client-application"></a>Wat is de invloed van een failover op mijn client toepassing?
 
 Het aantal fouten dat door de client toepassing wordt weer gegeven, is afhankelijk van het aantal bewerkingen dat in die verbinding in behandeling was op het moment van de failover. Alle verbindingen die via het knoop punt zijn gerouteerd en waarmee de verbindingen zijn verbroken, krijgen fouten te zien. Veel client bibliotheken kunnen verschillende typen fouten genereren wanneer er verbindingen worden verbroken, inclusief time-outuitzonderingen, verbindings uitzonderingen of socket-uitzonde ringen. Het aantal en type uitzonde ringen is afhankelijk van waar in het codepad de aanvraag zich bevindt wanneer de cache de verbindingen sluit. Een bewerking die bijvoorbeeld een aanvraag verzendt, maar geen antwoord heeft ontvangen wanneer de failover optreedt, kan een time-outuitzondering opleveren. Nieuwe aanvragen voor het gesloten verbindings object ontvangen verbindings uitzonderingen totdat de verbinding is hersteld.
 
-De meeste client bibliotheken proberen opnieuw verbinding te maken met de cache als deze zijn geconfigureerd. Onvoorziene fouten kunnen echter af en toe de bibliotheek objecten in een onherstelbare status plaatsen. Als fouten blijven bestaan gedurende een vooraf geconfigureerde hoeveelheid tijd, moet het verbindings object opnieuw worden gemaakt. In Microsoft.NET en andere object georiënteerde talen moet u de verbinding opnieuw maken zonder dat de toepassing opnieuw hoeft te worden opgestart met behulp van [een\<Lazy T\> -patroon](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern).
+De meeste client bibliotheken proberen opnieuw verbinding te maken met de cache als deze zijn geconfigureerd. Onvoorziene fouten kunnen echter af en toe de bibliotheek objecten in een onherstelbare status plaatsen. Als fouten blijven bestaan gedurende een vooraf geconfigureerde hoeveelheid tijd, moet het verbindings object opnieuw worden gemaakt. In Microsoft.NET en andere object gerichte talen kunt u de verbinding opnieuw maken zonder dat de toepassing opnieuw hoeft te worden opgestart met behulp van [een luie \<T\> patroon](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern).
 
 ### <a name="how-do-i-make-my-application-resilient"></a>Hoe kan ik mijn toepassing robuust maken?
 

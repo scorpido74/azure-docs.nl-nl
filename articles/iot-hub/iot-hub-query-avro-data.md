@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
 ms.openlocfilehash: 92fc5bb88ff5efd8fe1a8cd61be833b3984b673a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73605624"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Query's uitvoeren op Avro-gegevens met behulp van Azure Data Lake Analytics
@@ -56,7 +55,7 @@ In deze sectie gaat u een query uitvoeren op Avro-gegevens en deze exporteren na
 
 6. Maak in Visual Studio een U-SQL-project.
 
-   ! Een U-SQL-project maken] (./Media/IOT-hub-query-Avro-data/query-Avro-data-6.png)
+   ! Een U-SQL-project maken] (./Media/IOT-hub-query-Avro-data/query-avro-data-6.png)
 
 7. Plak de inhoud van het volgende script in het bestand dat u zojuist hebt gemaakt. Wijzig de drie gemarkeerde secties: uw Data Lake Analytics-account, de bijbehorende DLL-bestands paden en het juiste pad voor uw opslag account.
 
@@ -163,7 +162,7 @@ In deze sectie gaat u een query uitvoeren op Avro-gegevens en deze exporteren na
         OUTPUT @cnt TO @output_file USING Outputters.Text();
     ```
 
-    In de uitvoer wordt een kolom voor elk item in `SELECT` de opdracht weer gegeven.
+    In de uitvoer wordt een kolom voor elk item in de opdracht weer gegeven `SELECT` .
 
     ![Uitvoer met een kolom voor elk item](./media/iot-hub-query-avro-data/query-avro-data-8.png)
 

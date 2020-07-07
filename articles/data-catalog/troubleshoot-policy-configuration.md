@@ -7,10 +7,9 @@ ms.service: data-catalog
 ms.topic: troubleshooting
 ms.date: 08/01/2019
 ms.openlocfilehash: 84bd14f8ae18527b4f6e9d8509a12555baec8771
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68879541"
 ---
 # <a name="troubleshooting-azure-data-catalog"></a>Problemen met Azure Data Catalog oplossen
@@ -21,7 +20,7 @@ In dit artikel worden veelvoorkomende problemen met het oplossen van Azure Data 
 
 Bij het gebruik van Azure Data Catalog is de volgende functionaliteit beperkt:
 
-- Accounts met de **rol gast** worden niet ondersteund. U kunt geen gast accounts toevoegen als gebruikers van Azure Data Catalog en gast gebruikers kunnen de portal niet gebruiken [https://www.azuredatacatalog.com](https://www.azuredatacatalog.com)in.
+- Accounts met de **rol gast** worden niet ondersteund. U kunt geen gast accounts toevoegen als gebruikers van Azure Data Catalog en gast gebruikers kunnen de portal niet gebruiken in [https://www.azuredatacatalog.com](https://www.azuredatacatalog.com) .
 
 - Het maken van Azure Data Catalog-resources met behulp van Azure Resource Manager sjablonen of Azure PowerShell opdrachten worden niet ondersteund.
 

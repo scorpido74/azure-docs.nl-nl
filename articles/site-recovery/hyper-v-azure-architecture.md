@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 022d6edad1e907173dfde3481e60d2523be087a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74082672"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Architectuur van herstel na noodgevallen van Hyper-V naar Azure
@@ -27,7 +26,7 @@ Hyper-V-hosts kunnen eventueel worden beheerd in persoonlijke Clouds van System 
 
 De volgende tabel en afbeelding bieden een weer gave op hoog niveau van de onderdelen die worden gebruikt voor Hyper-V-replicatie naar Azure, wanneer Hyper-V-hosts niet door VMM worden beheerd.
 
-**Component** | **Vereiste** | **Nadere**
+**Onderdeel** | **Vereiste** | **Details**
 --- | --- | ---
 **Azure** | Een Azure-abonnement, een Azure-opslag account en een Azure-netwerk. | Gerepliceerde gegevens van on-premises VM-workloads worden opgeslagen in het opslag account. Virtuele Azure-machines worden gemaakt met de gegevens van de gerepliceerde werk belasting wanneer een failover vanaf uw on-premises site plaatsvindt.<br/><br/> De Azure-VM's maken verbinding met het virtuele Azure-netwerk wanneer ze worden gemaakt.
 **Hyper-V** | Tijdens de Site Recovery-implementatie verzamelt u Hyper-V-hosts en-clusters in Hyper-V-sites. U installeert de Azure Site Recovery provider en Recovery Services agent op elke zelfstandige Hyper-V-host of op elk Hyper-V-cluster knooppunt. | De provider coördineert de replicatie met Site Recovery via internet. De Recovery Services-agent handelt de gegevensreplicatie af.<br/><br/> De communicatie vanuit zowel de Provider als de agent is beveiligd en versleuteld. De gerepliceerde gegevens in de Azure-opslag zijn eveneens versleuteld.
@@ -43,7 +42,7 @@ De volgende tabel en afbeelding bieden een weer gave op hoog niveau van de onder
 
 De volgende tabel en afbeelding bieden een weer gave op hoog niveau van de onderdelen die worden gebruikt voor Hyper-V-replicatie naar Azure, wanneer Hyper-V-hosts worden beheerd in VMM-Clouds.
 
-**Component** | **Vereiste** | **Nadere**
+**Onderdeel** | **Vereiste** | **Details**
 --- | --- | ---
 **Azure** | Een Azure-abonnement, een Azure-opslag account en een Azure-netwerk. | Gerepliceerde gegevens van on-premises VM-workloads worden opgeslagen in het opslag account. Virtuele Azure-machines worden gemaakt met de gerepliceerde gegevens wanneer een failover vanaf uw on-premises site plaatsvindt.<br/><br/> De Azure-VM's maken verbinding met het virtuele Azure-netwerk wanneer ze worden gemaakt.
 **VMM-server** | De VMM-server heeft een of meer clouds met Hyper-V-hosts. | U installeert de Site Recovery provider op de VMM-server om de replicatie met Site Recovery te organiseren en de server in de Recovery Services kluis te registreren.
@@ -69,7 +68,7 @@ De volgende tabel en afbeelding bieden een weer gave op hoog niveau van de onder
 1. Nadat u de beveiliging voor een Hyper-V-VM in Azure Portal of on-premises hebt ingeschakeld, start **Beveiliging inschakelen**.
 2. Met deze taak wordt gecontroleerd of de machine voldoet aan de vereisten. Hierna wordt [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) aangeroepen om replicatie in te stellen op basis van de instellingen die u hebt geconfigureerd.
 3. De taak start initiële replicatie door de methode [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) aan te roepen om een volledige VM-replicatie te initialiseren en de virtuele schijven van de virtuele machine naar Azure te versturen.
-4. U kunt de taak controleren op het tabblad **taken** .      ![Taken lijst](media/hyper-v-azure-architecture/image1.png) ![beveiliging inzoomen inschakelen](media/hyper-v-azure-architecture/image2.png)
+4. U kunt de taak controleren op het tabblad **taken** .      ![Taken lijst ](media/hyper-v-azure-architecture/image1.png) ![ Inzoomen op beveiliging inschakelen](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>Initiële gegevens replicatie
@@ -113,7 +112,7 @@ De volgende tabel en afbeelding bieden een weer gave op hoog niveau van de onder
 
 Als er een replicatiefout optreedt, wordt de replicatie automatisch opnieuw geprobeerd. Nieuwe poging is geclassificeerd zoals beschreven in de tabel.
 
-**Categorie** | **Nadere**
+**Categorie** | **Details**
 --- | ---
 **Niet-herstelbare fouten** | Er wordt geen nieuwe poging gedaan. De status van de virtuele machine is **Kritiek** en tussenkomst van de beheerder is vereist.<br/><br/> Voor beelden van deze fouten zijn een verbroken VHD-keten, een ongeldige status voor de replica-VM, fout in netwerk verificatie, autorisatie fouten en niet-gevonden virtuele machines (voor zelfstandige Hyper-V-servers).
 **Herstelbare fouten** | Nieuwe pogingen worden elk replicatie-interval uitgevoerd met behulp van een exponentiële uitstelbewerking die het interval voor nieuwe pogingen vanaf het begin van de eerste poging met 1, 2, 4, 8 en 10 minuten verhoogt. Als een fout zich blijft voordoen, probeert u het om de 30 minuten opnieuw. Voor beelden hiervan zijn netwerk fouten, lage schijf fouten en weinig geheugen.

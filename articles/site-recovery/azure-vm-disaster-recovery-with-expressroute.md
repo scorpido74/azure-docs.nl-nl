@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: bf12a5b7850a56d945e1082be6c522c31738669c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73954089"
 ---
 # <a name="integrate-expressroute-with-disaster-recovery-for-azure-vms"></a>ExpressRoute integreren met nood herstel voor Azure-Vm's
@@ -104,7 +103,7 @@ Bedrijfs implementaties hebben doorgaans werk belastingen gesplitst over meerder
 
 #### <a name="spoke-to-hub"></a>Spoke naar hub
 
-**Draaien** | **Instelling** | **Overheids**
+**Richting** | **Instelling** | **Status**
 --- | --- | ---
 Spoke naar hub | Virtueel netwerk adres toestaan | Ingeschakeld
 Spoke naar hub | Doorgestuurd verkeer toestaan | Ingeschakeld
@@ -115,7 +114,7 @@ Spoke naar hub | Gateways verwijderen gebruiken | Ingeschakeld
 
 #### <a name="hub-to-spoke"></a>Hub naar spoke
 
-**Draaien** | **Instelling** | **Overheids**
+**Richting** | **Instelling** | **Status**
 --- | --- | ---
 Hub naar spoke | Virtueel netwerk adres toestaan | Ingeschakeld
 Hub naar spoke | Doorgestuurd verkeer toestaan | Ingeschakeld

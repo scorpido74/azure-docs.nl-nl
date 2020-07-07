@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 0661503dce7ac2707065f60c3952da866ce9dcf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73827420"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>Overzicht van de oplossingsversneller Voorspeld onderhoud
@@ -73,11 +72,11 @@ De **gebeurtenisprocessorhost** wordt uitgevoerd in een Azure-webtaak. De **gebe
 ## <a name="machine-learning"></a>Machine Learning
 Het Machine Learning-onderdeel maakt gebruikt van een model dat is afgeleid van gegevens die zijn verzameld bij echte vliegtuigmotoren. U kunt naar de Machine Learning-werk ruimte navigeren vanaf de tegel van uw oplossing op de pagina [azureiotsolutions.com][lnk-azureiotsolutions] . De tegel is beschikbaar wanneer de oplossing de status **Gereed** heeft.
 
-Het Machine Learning model is beschikbaar als sjabloon die laat zien hoe u met de telemetrie kunt werken die is verzameld via IoT Solution Accelerator Services. Micro soft heeft een [regressie model][lnk_regression_model] van een vliegtuig motor ontwikkeld op basis van openbaar beschik bare gegevens<sup>\[1\]</sup>en stapsgewijze richt lijnen voor het gebruik van het model.
+Het Machine Learning model is beschikbaar als sjabloon die laat zien hoe u met de telemetrie kunt werken die is verzameld via IoT Solution Accelerator Services. Micro soft heeft een [regressie model][lnk_regression_model] van een vliegtuig motor ontwikkeld op basis van openbaar beschik bare gegevens<sup> \[ 1 \] </sup>en stapsgewijze richt lijnen voor het gebruik van het model.
 
 De Azure IoT-oplossingsversneller Voorspeld onderhoud maakt gebruik van het regressiemodel dat op basis van deze sjabloon is gemaakt. Het model wordt geïmplementeerd in uw Azure-abonnement en beschikbaar gesteld via een automatisch gegenereerde API. De oplossing omvat een subset van de test gegevens voor 4 (van 100 totaal) motoren en de 4 (van 21 totale) gegevens stromen van sensors. Deze gegevens leveren een accuraat resultaat op van het getrainde model.
 
-*\[1\] A. Saxena en K. Goebel (2008). ' Turbofan engine-simulatie gegevensset voor het degraderen van gegevens ', NASA Ameshttps://c3.nasa.gov/dashlink/resources/139/)Prognostics data repository (, NASA Ames Research Center, Moffett Field, ca*
+*\[1 \] A. Saxena en K. Goebel (2008). ' Turbofan engine-simulatie gegevensset voor het degraderen van gegevens ', NASA Ames Prognostics data repository ( https://c3.nasa.gov/dashlink/resources/139/) , NASA Ames Research Center, Moffett Field, ca*
 
 ## <a name="next-steps"></a>Volgende stappen
 Nu u de belangrijke onderdelen van de oplossingsversneller Voorspeld onderhoud hebt gezien, wilt u deze misschien aanpassen.

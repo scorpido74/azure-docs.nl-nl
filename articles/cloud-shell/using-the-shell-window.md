@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: damaerte
 ms.openlocfilehash: 3435d958049012750e775e2a17f43f463a0cc358
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70860316"
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>Het Azure Cloud Shell venster gebruiken
@@ -48,7 +47,7 @@ Klik op het pictogram instellingen in de linkerbovenhoek van het venster, beweeg
 Klik op het pictogram bestanden uploaden/downloaden in de linkerbovenhoek van het venster en selecteer vervolgens uploaden of downloaden.  
 ![Bestanden uploaden/downloaden](media/using-the-shell-window/uploaddownload.png)
 * Voor het uploaden van bestanden gebruikt u de pop-up om naar het bestand op uw lokale computer te bladeren, selecteert u het gewenste bestand en klikt u op de knop openen.  Het bestand wordt geüpload naar de `/home/user` map.
-* Voor het downloaden van het bestand voert u het volledig gekwalificeerde bestandspad in het pop-upvenster in (dat wil zeggen, in `/home/user` principe een pad in de map die standaard wordt weer gegeven) en selecteert u de knop downloaden.  
+* Voor het downloaden van het bestand voert u het volledig gekwalificeerde bestandspad in het pop-upvenster in (dat wil zeggen, in principe een pad in de `/home/user` map die standaard wordt weer gegeven) en selecteert u de knop downloaden.  
 > [!NOTE] 
 > Bestanden en bestands paden zijn hoofdletter gevoelig in Cloud Shell. Controleer uw behuizing in het bestandspad.
 
@@ -84,7 +83,7 @@ Klik en sleep de bovenrand van de werk balk omhoog of omlaag om het formaat van 
 Schuif door de muis of touchpad om Terminal tekst te verplaatsen.
 
 ## <a name="exit-command"></a>Opdracht Afsluiten
-De `exit` actieve sessie wordt beëindigd. Dit gedrag treedt standaard na 20 minuten zonder interactie op.
+`exit`De actieve sessie wordt beëindigd. Dit gedrag treedt standaard na 20 minuten zonder interactie op.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 2994c55b39d30ff16a0ca135e93a116784feb201
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113817"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Voor beeld: een aangepaste vaardigheid maken met behulp van de Bing Entiteiten zoeken-API
@@ -33,9 +32,9 @@ Hoewel in dit voor beeld een Azure-functie wordt gebruikt om een web-API te host
 
 ### <a name="create-a-function-app"></a>Een functie-app maken
 
-1. Selecteer in Visual Studio **Nieuw** > **project** in het menu bestand.
+1. Selecteer in Visual Studio **Nieuw**  >  **project** in het menu bestand.
 
-1. Selecteer in het dialoog venster Nieuw project **geïnstalleerd**, vouw **Visual C#** > **Cloud**uit, selecteer **Azure functions**, typ een naam voor uw project en selecteer **OK**. De naam van de functie-app moet geldig zijn als C#-naam ruimte, dus geen onderstrepings tekens, afbreek streepjes of andere niet-alfanumerieke karakters gebruiken.
+1. Selecteer in het dialoog venster Nieuw project **geïnstalleerd**, vouw **Visual C#**  >  **Cloud**uit, selecteer **Azure functions**, typ een naam voor uw project en selecteer **OK**. De naam van de functie-app moet geldig zijn als C#-naam ruimte, dus geen onderstrepings tekens, afbreek streepjes of andere niet-alfanumerieke karakters gebruiken.
 
 1. Selecteer **Azure functions v2 (.net core)**. U kunt dit ook doen met versie 1, maar de hieronder geschreven code is gebaseerd op de v2-sjabloon.
 
@@ -315,7 +314,7 @@ Zorg ervoor dat u uw eigen *sleutel* waarde in de `key` constante invoert op bas
 
 Dit voor beeld bevat alle benodigde code in één bestand voor het gemak. U kunt een iets meer gestructureerde versie van dezelfde vaardigheid vinden in [de Power skills-opslag plaats](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch).
 
-U kunt de naam van het bestand natuurlijk wijzigen `Function1.cs` van `BingEntitySearch.cs`in.
+U kunt de naam van het bestand natuurlijk wijzigen van `Function1.cs` in `BingEntitySearch.cs` .
 
 ## <a name="test-the-function-from-visual-studio"></a>De functie testen vanuit Visual Studio
 
@@ -375,7 +374,7 @@ Er wordt een antwoord weer gegeven dat vergelijkbaar is met het volgende voor be
 
 Wanneer u tevreden bent met het functie gedrag, kunt u het publiceren.
 
-1. Klik in **Solution Explorer** met de rechtermuisknop op het project en selecteer **Publiceren**. Kies **nieuwe** > **publicatie**maken.
+1. Klik in **Solution Explorer** met de rechtermuisknop op het project en selecteer **Publiceren**. Kies **nieuwe**  >  **publicatie**maken.
 
 1. Als u Visual Studio nog niet hebt verbonden met uw Azure-account, selecteert u **een account toevoegen....**
 
@@ -393,7 +392,7 @@ Nu u de standaardhostcode hebt, moet u de functie als volgt testen:
 POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?code=[enter default host key here]
 ```
 
-### <a name="request-body"></a>Aanvraagtekst
+### <a name="request-body"></a>Aanvraagbody
 ```json
 {
     "values": [
@@ -418,7 +417,7 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
 In dit voor beeld moet u hetzelfde resultaat opleveren dat u eerder hebt gezien bij het uitvoeren van de functie in de lokale omgeving.
 
 ## <a name="connect-to-your-pipeline"></a>Verbinding maken met uw pijp lijn
-Nu u een nieuwe aangepaste vaardigheid hebt, kunt u deze toevoegen aan uw vaardig heden. In het onderstaande voor beeld ziet u hoe u de vaardigheid aanroept om beschrijvingen toe te voegen aan organisaties in het document (dit kan worden uitgebreid om ook te werken met locaties en personen). Vervang `[your-entity-search-app-name]` door de naam van uw app.
+Nu u een nieuwe aangepaste vaardigheid hebt, kunt u deze toevoegen aan uw vaardig heden. In het onderstaande voor beeld ziet u hoe u de vaardigheid aanroept om beschrijvingen toe te voegen aan organisaties in het document (dit kan worden uitgebreid om ook te werken met locaties en personen). Vervang door `[your-entity-search-app-name]` de naam van uw app.
 
 ```json
 {
@@ -476,7 +475,7 @@ Hier tellen we hoe de ingebouwde [vaardigheid van entiteits herkenning](cognitiv
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Gefeliciteerd! U hebt uw eerste aangepaste vaardigheid gemaakt. U kunt nu hetzelfde patroon volgen om uw eigen aangepaste functionaliteit toe te voegen. Klik op de volgende koppelingen voor meer informatie.
+Gefeliciteerd U hebt uw eerste aangepaste vaardigheid gemaakt. U kunt nu hetzelfde patroon volgen om uw eigen aangepaste functionaliteit toe te voegen. Klik op de volgende koppelingen voor meer informatie.
 
 + [Power vaardig heden: een opslag plaats met aangepaste vaardig heden](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Een aangepaste vaardigheid toevoegen aan een AI-verrijkings pijplijn](cognitive-search-custom-skill-interface.md)

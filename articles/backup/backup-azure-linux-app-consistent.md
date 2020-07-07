@@ -5,10 +5,9 @@ ms.reviewer: anuragm
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: 36eeb9f63c67a01bf37412101e23be035596de94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74173009"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Toepassings consistente back-up van virtuele Azure Linux-machines
@@ -25,13 +24,13 @@ Pre-scripts aanroepen systeem eigen toepassings-Api's, die de IOs stil leggen en
 
 1. Meld u aan als hoofd gebruiker voor de virtuele Linux-machine waarvan u een back-up wilt maken.
 
-2. Down load **VMSnapshotScriptPluginConfig. json** in [github](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig)en kopieer deze naar de map **/etc/Azure** voor alle virtuele machines waarvan u een back-up wilt maken. Als de map **/etc/Azure** niet bestaat, maakt u deze.
+2. In [github](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig)downloadt u **VMSnapshotScriptPluginConfig.js** en kopieert u deze naar de map **/etc/Azure** voor alle vm's waarvan u een back-up wilt maken. Als de map **/etc/Azure** niet bestaat, maakt u deze.
 
-3. Kopieer het pre-script en post-script voor uw toepassing op alle Vm's waarvan u een back-up wilt maken. U kunt de scripts kopiëren naar elke locatie op de virtuele machine. Zorg ervoor dat u het volledige pad van de script bestanden in het bestand **VMSnapshotScriptPluginConfig. json** bijwerkt.
+3. Kopieer het pre-script en post-script voor uw toepassing op alle Vm's waarvan u een back-up wilt maken. U kunt de scripts kopiëren naar elke locatie op de virtuele machine. Zorg ervoor dat u het volledige pad van de script bestanden in de **VMSnapshotScriptPluginConfig.js** in het bestand bijwerkt.
 
 4. Zorg ervoor dat u de volgende machtigingen voor deze bestanden hebt:
 
-   - **VMSnapshotScriptPluginConfig. json**: machtiging "600". Alleen ' root '-gebruikers moeten bijvoorbeeld ' Lees-en schrijf machtigingen ' hebben voor dit bestand en geen enkele gebruiker machtigingen voor ' uitvoeren ' moet hebben.
+   - **VMSnapshotScriptPluginConfig.jsop**: machtiging ' 600 '. Alleen ' root '-gebruikers moeten bijvoorbeeld ' Lees-en schrijf machtigingen ' hebben voor dit bestand en geen enkele gebruiker machtigingen voor ' uitvoeren ' moet hebben.
 
    - **Pre-script bestand**: machtiging "700".  Alleen de ' root '-gebruiker moet bijvoorbeeld de machtigingen lezen, schrijven en uitvoeren hebben voor dit bestand.
 
@@ -42,7 +41,7 @@ Pre-scripts aanroepen systeem eigen toepassings-Api's, die de IOs stil leggen en
    > Als niet aan de vereisten wordt voldaan, wordt het script niet uitgevoerd, wat resulteert in een crash van het bestands systeem en inconsistente back-up.
    >
 
-5. Configureer **VMSnapshotScriptPluginConfig. json** zoals hier wordt beschreven:
+5. Configureer **VMSnapshotScriptPluginConfig.jsop** zoals hier wordt beschreven:
     - **invoegtoepassing**: verlaat dit veld niet, of uw scripts werken mogelijk niet zoals verwacht.
 
     - **preScriptLocation**: Geef het volledige pad op van het pre-script op de virtuele machine waarvan u een back-up wilt maken.
@@ -75,14 +74,14 @@ Zorg ervoor dat u de juiste logboek registratie toevoegt tijdens het schrijven v
 | ------------------------ | -------------- | ------------------ |
 | Pre-ScriptExecutionFailed |Het pre-script heeft een fout geretourneerd, waardoor de back-up mogelijk niet toepassings consistent is.| Bekijk de fout logboeken voor het script om het probleem op te lossen.|  
 |Post-ScriptExecutionFailed |Het post script retourneert een fout die van invloed kan zijn op de toepassings status. |Bekijk de fouten logboeken voor het script om het probleem op te lossen en controleer de toepassings status. |
-| Pre-ScriptNotFound |Het pre-script is niet gevonden op de locatie die is opgegeven in het configuratie bestand **VMSnapshotScriptPluginConfig. json** . |Zorg ervoor dat het pre-script aanwezig is in het pad dat is opgegeven in het configuratie bestand om te zorgen voor toepassings consistente back-up.|
-| Post-ScriptNotFound |Het post script is niet gevonden op de locatie die is opgegeven in het configuratie bestand **VMSnapshotScriptPluginConfig. json** . |Zorg ervoor dat het post script aanwezig is op het pad dat is opgegeven in het configuratie bestand om te zorgen voor toepassings consistente back-up.|
+| Pre-ScriptNotFound |Het pre-script is niet gevonden op de locatie die is opgegeven in het **VMSnapshotScriptPluginConfig.js** in het configuratie bestand. |Zorg ervoor dat het pre-script aanwezig is in het pad dat is opgegeven in het configuratie bestand om te zorgen voor toepassings consistente back-up.|
+| Post-ScriptNotFound |Het post script is niet gevonden op de locatie die is opgegeven in het **VMSnapshotScriptPluginConfig.jsin** het configuratie bestand. |Zorg ervoor dat het post script aanwezig is op het pad dat is opgegeven in het configuratie bestand om te zorgen voor toepassings consistente back-up.|
 | IncorrectPluginhostFile |Het **Pluginhost** -bestand, dat wordt meegeleverd met de uitbrei ding VmSnapshotLinux, is beschadigd, dus pre-script en post-script kan niet worden uitgevoerd en de back-up is niet toepassings consistent.| Verwijder de **VmSnapshotLinux** -extensie en wordt deze automatisch opnieuw geïnstalleerd met de volgende back-up om het probleem op te lossen. |
-| IncorrectJSONConfigFile | Het bestand **VMSnapshotScriptPluginConfig. json** is onjuist, dus pre-script en post-script kan niet worden uitgevoerd en de back-up is niet toepassings consistent. | Down load het exemplaar van [github](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) en configureer het opnieuw. |
+| IncorrectJSONConfigFile | De **VMSnapshotScriptPluginConfig.jsin** het bestand is onjuist, dus het script kan niet worden uitgevoerd en het script is niet consistent. | Down load het exemplaar van [github](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) en configureer het opnieuw. |
 | InsufficientPermissionforPre-script | Voor het uitvoeren van scripts moet de hoofd gebruiker de eigenaar van het bestand zijn en moet het bestand ' 700 ' machtigingen hebben (dat wil zeggen dat alleen ' eigenaar ' de machtigingen lezen, schrijven en uitvoeren heeft). | Zorg ervoor dat ' root ' gebruiker de ' eigenaar ' van het script bestand is en dat alleen ' eigenaar ' de machtigingen lezen, schrijven en uitvoeren heeft. |
 | InsufficientPermissionforPost-script | Voor het uitvoeren van scripts moet de hoofd gebruiker de eigenaar van het bestand zijn en moet het bestand ' 700 ' machtigingen hebben (dat wil zeggen dat alleen ' eigenaar ' de machtigingen lezen, schrijven en uitvoeren heeft). | Zorg ervoor dat ' root ' gebruiker de ' eigenaar ' van het script bestand is en dat alleen ' eigenaar ' de machtigingen lezen, schrijven en uitvoeren heeft. |
-| Pre-ScriptTimeout | Er is een time-out opgetreden tijdens het uitvoeren van de toepassings consistente back-up. | Controleer het script en verhoog de time-out in het bestand **VMSnapshotScriptPluginConfig. json** dat zich op **/etc/Azure**bevindt. |
-| Post-ScriptTimeout | Er is een time-out opgetreden tijdens het uitvoeren van de toepassings consistente back-up. | Controleer het script en verhoog de time-out in het bestand **VMSnapshotScriptPluginConfig. json** dat zich op **/etc/Azure**bevindt. |
+| Pre-ScriptTimeout | Er is een time-out opgetreden tijdens het uitvoeren van de toepassings consistente back-up. | Controleer het script en verhoog de time-out in de **VMSnapshotScriptPluginConfig.jsop** het bestand dat zich op **/etc/Azure**bevindt. |
+| Post-ScriptTimeout | Er is een time-out opgetreden tijdens het uitvoeren van de toepassings consistente back-up. | Controleer het script en verhoog de time-out in de **VMSnapshotScriptPluginConfig.jsop** het bestand dat zich op **/etc/Azure**bevindt. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

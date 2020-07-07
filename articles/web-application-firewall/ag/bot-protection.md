@@ -8,20 +8,19 @@ ms.service: web-application-firewall
 ms.date: 10/31/2019
 ms.author: victorh
 ms.openlocfilehash: 89c863e85d9eab27a47bc1bf7b98cd1c8d89e900
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73516862"
 ---
 # <a name="configure-bot-protection-for-web-application-firewall-on-azure-application-gateway-preview"></a>Bot-beveiliging configureren voor Web Application firewall op Azure-toepassing gateway (preview-versie)
 
 In dit artikel wordt beschreven hoe u een bot-beveiligings regel configureert in azure Web Application firewall (WAF) voor Application Gateway met behulp van de Azure Portal. 
 
-U kunt een set beheerde bot-beveiliging inschakelen voor uw WAF om aanvragen van bekende schadelijke IP-adressen te blok keren of te registreren. De IP-adressen worden vanuit de micro soft Threat Intelligence-feed gebrond. Intelligent Security Graph voorziet in micro soft Threat Intelligence en wordt gebruikt door meerdere services, waaronder Azure Security Center.
+U kunt een set beheerde bot-beveiliging inschakelen voor uw WAF om aanvragen van bekende schadelijke IP-adressen te blok keren of te registreren. De IP-adressen zijn afkomstig uit de feed Bedreigingsinformatie van Microsoft. Intelligent Security Graph voorziet de feed van gegevens en wordt gebruikt door verschillende services, waaronder Azure Security Center.
 
 > [!NOTE]
-> De set bot Protection-regelset bevindt zich momenteel in een open bare preview en wordt weer gegeven met een preview-service level agreement. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Zie de [aanvullende gebruiks voorwaarden voor Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) -voor beelden voor meer informatie.
+> De set bot Protection-regelset bevindt zich momenteel in een open bare preview en wordt weer gegeven met een preview-service level agreement. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Zie de [aanvullende gebruiks voorwaarden voor Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)-   voor beelden voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -31,7 +30,7 @@ Maak een basis WAF-beleid voor Application Gateway door de instructies te volgen
 
 1. Selecteer op de pagina **basis** beleid dat u eerder hebt gemaakt onder **instellingen**de optie **regels**.  
 
-2. Schakel op de pagina Details onder de sectie **regels** beheren in het vervolg keuzemenu het selectie vakje voor de bot-beveiligings regel in en selecteer vervolgens **Opslaan**.
+2. Schakel op de pagina Details onder de sectie **regels beheren**in   het vervolg keuzemenu het selectie vakje voor de bot-beveiligings regel in en selecteer vervolgens **Opslaan**.
 
 > [!div class="mx-imgBorder"]
 > ![Bot-bescherming](../media/bot-protection/bot-protection.png)

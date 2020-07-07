@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: d5b84a9d216457720e9bd4e17b002d6ab9490f9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73888603"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Bestanden uploaden naar een Media Services-account met REST  
@@ -35,7 +34,7 @@ In deze zelf studie leert u hoe u een bestand en een andere bewerking die eraan 
 > * Postman instellen voor alle upload bewerkingen
 > * Verbinding met Media Services maken 
 > * Een toegangs beleid maken met schrijf machtiging
-> * Een Asset maken
+> * Een asset maken
 > * Een SAS-Locator maken en de upload-URL maken
 > * Een bestand uploaden naar Blob Storage met behulp van de upload-URL
 > * Een meta gegevens maken in de Asset voor het Media bestand dat u hebt geüpload
@@ -72,8 +71,8 @@ Zie voor meer informatie over het instellen van Postman voor deze zelf studie [p
     ![Bestand uploaden](./media/media-services-rest-upload-files/postman-import-env.png)
 2. Geef de waarde op voor de omgevings variabele **MediaFileName** .
 
-    Geef de bestands naam op van de media die u wilt uploaden. In dit voor beeld gaan we de BigBuckBunny. MP4 uploaden. 
-3. Controleer het bestand **AzureMediaServices. postman_environment. json** . U ziet dat bijna alle bewerkingen in de verzameling een test script uitvoeren. De scripts hebben een aantal waarden die worden geretourneerd door het antwoord en stellen geschikte omgevings variabelen in.
+    Geef de bestands naam op van de media die u wilt uploaden. In dit voor beeld gaan we de BigBuckBunny.mp4 uploaden. 
+3. Controleer de **AzureMediaServices.postman_environment.jsin** het bestand. U ziet dat bijna alle bewerkingen in de verzameling een test script uitvoeren. De scripts hebben een aantal waarden die worden geretourneerd door het antwoord en stellen geschikte omgevings variabelen in.
 
     Met de eerste bewerking wordt bijvoorbeeld een toegangs token opgehaald en ingesteld op de omgevings variabele **AccessToken** die wordt gebruikt in alle andere bewerkingen.
 
@@ -87,7 +86,7 @@ Zie voor meer informatie over het instellen van Postman voor deze zelf studie [p
         ]
     }
     ```
-4. Klik aan de linkerkant van het venster **postman** op **1. ** -> Token voor Aad-verificatie ophalen het**Azure AD-Token ophalen voor de Service-Principal**.
+4. Klik aan de linkerkant van het venster **postman** op **1. Token voor Aad-verificatie ophalen**het  ->  **Azure AD-Token ophalen voor de Service-Principal**.
 
     Het URL-gedeelte wordt gevuld met de omgevings variabele **AzureADSTSEndpoint** (eerder in de zelf studie stelt u de waarden van omgevings variabelen in die ondersteuning bieden voor de verzameling).
 
@@ -110,14 +109,14 @@ Voordat u bestanden naar Blob Storage uploadt, stelt u de rechten voor het toega
 
 ### <a name="create-an-access-policy"></a>Een toegangs beleid maken
 
-1. Selecteer **AccessPolicy** -> **maken om AccessPolicy te uploaden**.
+1. Selecteer **AccessPolicy**  ->  **maken om AccessPolicy te uploaden**.
 2. Druk op **Verzenden**.
 
     ![Bestand uploaden](./media/media-services-rest-upload-files/postman-access-policy.png)
 
     Het script ' test ' haalt de AccessPolicy-id op en stelt de juiste omgevings variabele in.
 
-## <a name="create-an-asset"></a>Een Asset maken
+## <a name="create-an-asset"></a>Een asset maken
 
 ### <a name="overview"></a>Overzicht
 
@@ -129,9 +128,9 @@ Als uw asset is versleuteld, moet u een **ContentKey** maken en koppelen aan uw 
 
 In dit voor beeld maken we een niet-versleutelde Asset. 
 
-### <a name="create-an-asset"></a>Een Asset maken
+### <a name="create-an-asset"></a>Een asset maken
 
-1.  -> Selecteer **activa****maken activa**.
+1. Selecteer **activa**  ->  **maken activa**.
 2. Druk op **Verzenden**.
 
     ![Bestand uploaden](./media/media-services-rest-upload-files/postman-create-asset.png)
@@ -162,7 +161,7 @@ Hierbij geldt het volgende:
 
 ### <a name="create-a-sas-locator"></a>Een SAS-Locator maken
 
-1. Selecteer een **Locator** -> **maken SAS-Locator**.
+1. Selecteer een **Locator**  ->  **maken SAS-Locator**.
 2. Druk op **Verzenden**.
 
     Met het script ' test ' wordt de ' upload-URL ' gemaakt op basis van de media bestands naam die u hebt opgegeven en de SAS-locatorgegevens en wordt de juiste omgevings variabele ingesteld.
@@ -186,7 +185,7 @@ Als voor beeld gebruiken we postman om een klein MP4-bestand te uploaden. Er is 
 De upload aanvraag maakt geen deel uit van de **Media** -verzameling. 
 
 Een nieuwe aanvraag maken en instellen:
-1. Klik **+** op om een nieuw tabblad aanvraag te maken.
+1. Klik op **+** om een nieuw tabblad aanvraag te maken.
 2. Selecteer **put** -bewerking en plak **{{UploadURL}}** in de URL.
 2. Laat het tabblad **autorisatie** ongewijzigd (niet instellen op het **Bearer-token**).
 3. Geef op het tabblad **headers** : **Key**: "x-MS-BLOB-type" en **waarde**: "BlockBlob" op.
@@ -200,7 +199,7 @@ Een nieuwe aanvraag maken en instellen:
 
 Zodra het bestand is geüpload, moet u een meta gegevens maken in de Asset voor het Media bestand dat u hebt geüpload naar de Blob-opslag die is gekoppeld aan uw asset.
 
-1. Selecteer **AssetFiles** -> **CreateFileInfos**.
+1. Selecteer **AssetFiles**  ->  **CreateFileInfos**.
 2. Druk op **Verzenden**.
 
     ![Bestand uploaden](./media/media-services-rest-upload-files/postman-create-file-info.png)
@@ -211,7 +210,7 @@ Het bestand moet worden geüpload en de meta gegevens zijn ingesteld.
 
 Als u wilt controleren of het bestand is geüpload, wilt u mogelijk een query uitvoeren op de [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) en de **ContentFileSize** (of andere details) vergelijken met wat u verwacht te zien in de nieuwe Asset. 
 
-De volgende **Get** -bewerking brengt bijvoorbeeld bestands gegevens voor uw asset-bestand (in of geval het bestand BigBuckBunny. MP4). De query gebruikt de [omgevings variabelen](postman-environment.md) die u eerder hebt ingesteld.
+Met de volgende **Get** -bewerking worden bijvoorbeeld bestands gegevens voor uw asset-bestand (in of geval het BigBuckBunny.mp4-bestand) geplaatst. De query gebruikt de [omgevings variabelen](postman-environment.md) die u eerder hebt ingesteld.
 
     {{RESTAPIEndpoint}}/Assets('{{LastAssetId}}')/Files
 

@@ -20,15 +20,14 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f6e8ed5baef9b8594bb1fe03942e831fd8264a56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113065"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Meer informatie over OData-verzamelings filters in azure Cognitive Search
 
-Als u wilt [filteren](query-odata-filter-orderby-syntax.md) op verzamelings velden in azure Cognitive Search, kunt u de [ `any` Opera tors `all` en](search-query-odata-collection-operators.md) gebruiken in combi natie met **lambda-expressies**. Lambda-expressies zijn Booleaanse expressies die verwijzen naar een **bereik variabele**. De `any` Opera `all` tors en zijn vergelijkbaar met `for` een lus in de meeste programmeer talen, waarbij de variabele Range de rol van de lus-variabele maakt en de lambda-expressie als hoofd tekst van de lus. De bereik variabele neemt de ' huidige ' waarde van de verzameling tijdens de herhaling van de lus.
+Als u wilt [filteren](query-odata-filter-orderby-syntax.md) op verzamelings velden in azure Cognitive Search, kunt u de [ `any` `all` Opera tors en](search-query-odata-collection-operators.md) gebruiken in combi natie met **lambda-expressies**. Lambda-expressies zijn Booleaanse expressies die verwijzen naar een **bereik variabele**. De `any` `all` Opera tors en zijn vergelijkbaar met een `for` lus in de meeste programmeer talen, waarbij de variabele Range de rol van de lus-variabele maakt en de lambda-expressie als hoofd tekst van de lus. De bereik variabele neemt de ' huidige ' waarde van de verzameling tijdens de herhaling van de lus.
 
 Ten minste de manier waarop het concept werkt. In werkelijkheid implementeert Azure Cognitive Search filters op een zeer andere manier om te `for` werken. In het ideale geval is dit verschil onzichtbaar voor u, maar in bepaalde situaties niet. Het eind resultaat is dat er regels zijn die u moet volgen bij het schrijven van lambda-expressies.
 
@@ -40,8 +39,8 @@ Zie [problemen met OData-verzamelings filters in Azure Cognitive Search oplossen
 
 Er zijn drie onderliggende redenen waarom niet alle filter functies worden ondersteund voor alle typen verzamelingen:
 
-1. Voor bepaalde gegevens typen worden alleen bepaalde Opera tors ondersteund. Het is bijvoorbeeld niet handig om `true` de Booleaanse waarden te vergelijken en `false` te `lt` `gt`gebruiken.
-1. Azure Cognitive Search biedt geen ondersteuning voor **gecorreleerde Zoek opdrachten** voor velden van het type `Collection(Edm.ComplexType)`.
+1. Voor bepaalde gegevens typen worden alleen bepaalde Opera tors ondersteund. Het is bijvoorbeeld niet handig om de Booleaanse waarden te vergelijken `true` en `false` te gebruiken `lt` `gt` .
+1. Azure Cognitive Search biedt geen ondersteuning voor **gecorreleerde Zoek opdrachten** voor velden van het type `Collection(Edm.ComplexType)` .
 1. Azure Cognitive Search maakt gebruik van omgekeerde indexen om filters uit te voeren voor alle typen gegevens, inclusief verzamelingen.
 
 De eerste reden is slechts een gevolg van de manier waarop de OData-taal en het EDM type systeem worden gedefinieerd. De laatste twee worden uitgebreid beschreven in de rest van dit artikel.
@@ -52,13 +51,13 @@ Wanneer u meerdere filter criteria toepast op een verzameling complexe objecten,
 
     Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 100)
 
-Als filteren niet is *gecorreleerd*, kan het bovenstaande filter bijvoorbeeld Hotels retour neren waarbij één kamer de waarde Deluxe heeft en een andere kamer een basis frequentie heeft van minder dan 100. Dat zou niet zinvol zijn, omdat beide componenten van de lambda-expressie van toepassing zijn op dezelfde bereik variabele `room`, namelijk. Daarom worden deze filters gecorreleerd.
+Als filteren niet is *gecorreleerd*, kan het bovenstaande filter bijvoorbeeld Hotels retour neren waarbij één kamer de waarde Deluxe heeft en een andere kamer een basis frequentie heeft van minder dan 100. Dat zou niet zinvol zijn, omdat beide componenten van de lambda-expressie van toepassing zijn op dezelfde bereik variabele, namelijk `room` . Daarom worden deze filters gecorreleerd.
 
 Voor zoeken in volledige tekst is er echter geen manier om naar een specifieke bereik variabele te verwijzen. Als u zoeken met een zoek opdracht gebruikt om een [volledige lucene-query](query-lucene-syntax.md) uit te geven, zoals deze:
 
     Rooms/Type:deluxe AND Rooms/Description:"city view"
 
-u kunt Hotels weer geven als er één kamer is en een andere kamer vermeldt "stads weergave" in de beschrijving. Het onderstaande document `1` kan bijvoorbeeld overeenkomen `Id` met de query:
+u kunt Hotels weer geven als er één kamer is en een andere kamer vermeldt "stads weergave" in de beschrijving. Het onderstaande document `Id` `1` kan bijvoorbeeld overeenkomen met de query:
 
 ```json
 {
@@ -80,7 +79,7 @@ u kunt Hotels weer geven als er één kamer is en een andere kamer vermeldt "sta
 }
 ```
 
-De reden hiervoor is `Rooms/Type` dat naar alle geanalyseerde voor waarden van het `Rooms/Type` veld in het hele document wordt verwezen, `Rooms/Description`zoals wordt weer gegeven in de onderstaande tabellen.
+De reden hiervoor is dat naar `Rooms/Type` alle geanalyseerde voor waarden van het `Rooms/Type` veld in het hele document wordt verwezen, `Rooms/Description` zoals wordt weer gegeven in de onderstaande tabellen.
 
 Hoe `Rooms/Type` wordt opgeslagen voor zoeken in volledige tekst:
 
@@ -103,16 +102,16 @@ Hoe `Rooms/Description` wordt opgeslagen voor zoeken in volledige tekst:
 | serie | 1 |
 | weergave | 1 |
 
-In tegens telling tot het bovenstaande filter, waarin in principe "documenten vinden waarbij een `Type` kamer gelijk is aan" luxe ruimte "en **die dezelfde ruimte** heeft `BaseRate` minder dan 100" bevat de zoek query "overeenkomt `Rooms/Type` met documenten waar de term" Deluxe `Rooms/Description` "en heeft de zin" stads weergave ". Er is geen concept van afzonderlijke ruimtes waarvan de velden in het laatste geval kunnen worden gecorreleerd.
+In tegens telling tot het bovenstaande filter, waarin in principe "documenten vinden waarbij een kamer gelijk is aan `Type` " luxe ruimte "en **die dezelfde ruimte** heeft `BaseRate` minder dan 100" bevat de zoek query "overeenkomt met documenten waar `Rooms/Type` de term" Deluxe "en `Rooms/Description` heeft de zin" stads weergave ". Er is geen concept van afzonderlijke ruimtes waarvan de velden in het laatste geval kunnen worden gecorreleerd.
 
 > [!NOTE]
 > Als u ondersteuning wilt zien voor gecorreleerde Zoek opdrachten die zijn toegevoegd aan Azure Cognitive Search, kunt u stemmen voor [dit gebruikers spraak item](https://feedback.azure.com/forums/263029-azure-search/suggestions/37735060-support-correlated-search-on-complex-collections).
 
 ## <a name="inverted-indexes-and-collections"></a>Omgekeerde indexen en verzamelingen
 
-U hebt wellicht gezien dat er veel minder beperkingen zijn voor lambda-expressies over complexe verzamelingen dan voor eenvoudige verzamelingen `Collection(Edm.Int32)`, `Collection(Edm.GeographyPoint)`enzovoort. Dit komt doordat Azure-Cognitive Search complexe verzamelingen opslaat als echte verzamelingen van subdocumenten, terwijl eenvoudige verzamelingen niet worden opgeslagen als verzamelingen.
+U hebt wellicht gezien dat er veel minder beperkingen zijn voor lambda-expressies over complexe verzamelingen dan voor eenvoudige verzamelingen, enzovoort `Collection(Edm.Int32)` `Collection(Edm.GeographyPoint)` . Dit komt doordat Azure-Cognitive Search complexe verzamelingen opslaat als echte verzamelingen van subdocumenten, terwijl eenvoudige verzamelingen niet worden opgeslagen als verzamelingen.
 
-Denk bijvoorbeeld aan een veld voor een filter bare teken reeks `seasons` verzameling, zoals in een index voor een online winkel. Sommige documenten die naar deze index worden geüpload, kunnen er als volgt uitzien:
+Denk bijvoorbeeld aan een veld voor een filter bare teken reeks verzameling, zoals `seasons` in een index voor een online winkel. Sommige documenten die naar deze index worden geüpload, kunnen er als volgt uitzien:
 
 ```json
 {
@@ -145,9 +144,9 @@ De waarden van het `seasons` veld worden opgeslagen in een structuur, een **omge
 | Meld | 1, 2 |
 | winter | 2, 3 |
 
-Deze gegevens structuur is ontworpen om één vraag te beantwoorden met een fantastische snelheid: in welke documenten wordt een bepaalde term weer gegeven? Het beantwoorden van deze vraag werkt meer als een normale gelijkheids controle dan een lus voor een verzameling. In feite is dit de reden waarom een teken reeks verzamelingen, Azure Cognitive Search `eq` alleen een vergelijkings operator in een lambda `any`-expressie kan hebben voor.
+Deze gegevens structuur is ontworpen om één vraag te beantwoorden met een fantastische snelheid: in welke documenten wordt een bepaalde term weer gegeven? Het beantwoorden van deze vraag werkt meer als een normale gelijkheids controle dan een lus voor een verzameling. In feite is dit de reden waarom een teken reeks verzamelingen, Azure Cognitive Search alleen `eq` een vergelijkings operator in een lambda-expressie kan hebben voor `any` .
 
-Op basis van gelijkheid kunt u vervolgens kijken hoe u meerdere gelijkheids controles kunt combi neren voor dezelfde bereik variabele met `or`. Het werkt met algebra en [de distributieve eigenschap van Kwant oren](https://en.wikipedia.org/wiki/Existential_quantification#Negation). Deze expressie:
+Op basis van gelijkheid kunt u vervolgens kijken hoe u meerdere gelijkheids controles kunt combi neren voor dezelfde bereik variabele met `or` . Het werkt met algebra en [de distributieve eigenschap van Kwant oren](https://en.wikipedia.org/wiki/Existential_quantification#Negation). Deze expressie:
 
     seasons/any(s: s eq 'winter' or s eq 'fall')
 
@@ -163,24 +162,24 @@ is gelijk aan:
 
     not seasons/any(s: s eq 'winter' or s eq 'fall')
 
-Daarom is het mogelijk om met `all` `ne` en `and`te gebruiken.
+Daarom is het mogelijk om `all` met en te gebruiken `ne` `and` .
 
 > [!NOTE]
-> Hoewel de details zich buiten het bereik van dit document bevinden, zijn dezelfde principes ook van toepassing op [afstanden en intersectie tests voor verzamelingen van georuimtelijke punten](search-query-odata-geo-spatial-functions.md) . Daarom doet u het volgende `any`in:
+> Hoewel de details zich buiten het bereik van dit document bevinden, zijn dezelfde principes ook van toepassing op [afstanden en intersectie tests voor verzamelingen van georuimtelijke punten](search-query-odata-geo-spatial-functions.md) . Daarom doet u het `any` volgende in:
 >
 > - `geo.intersects`kan niet worden genegeerd
 > - `geo.distance`moet worden vergeleken met `lt` of`le`
-> - expressies moeten worden gecombineerd met `or`, en niet`and`
+> - expressies moeten worden gecombineerd met `or` , en niet`and`
 >
-> De omgekeerde regels zijn van `all`toepassing op.
+> De omgekeerde regels zijn van toepassing op `all` .
 
-Een groter aantal verschillende expressies is toegestaan bij het filteren op verzamelingen gegevens typen die ondersteuning bieden `lt` `Collection(Edm.Int32)` voor `gt`de `le`Opera tors `ge` ,, en, zoals bijvoorbeeld. U kunt met name ook `and` gebruiken `or` in `any`, zolang de onderliggende vergelijkings expressies worden gecombineerd in **bereik vergelijkingen** met `and`, die vervolgens verder worden gecombineerd met. `or` Deze structuur van Boole-expressies heet [disjunctive Normal form (DNF)](https://en.wikipedia.org/wiki/Disjunctive_normal_form), ook wel bekend als ' or of and '. Lambda-expressies voor `all` deze gegevens typen moeten daarentegen in [Conjunctive normaal vorm (CNF)](https://en.wikipedia.org/wiki/Conjunctive_normal_form), ook wel bekend als ' and van or ' zijn. Met Azure Cognitive Search kunnen dergelijke bereik vergelijkingen worden uitgevoerd, omdat deze met omkeer bare indexen op een efficiënte manier kan worden gebruikt, net zoals bij het zoeken naar teken reeksen.
+Een groter aantal verschillende expressies is toegestaan bij het filteren op verzamelingen gegevens typen die ondersteuning bieden `lt` `gt` voor de `le` Opera Tors,, en, `ge` zoals bijvoorbeeld `Collection(Edm.Int32)` . U kunt met name `and` ook gebruiken `or` in, zolang `any` de onderliggende vergelijkings expressies worden gecombineerd in **bereik vergelijkingen** met `and` , die vervolgens verder worden gecombineerd met `or` . Deze structuur van Boole-expressies heet [disjunctive Normal form (DNF)](https://en.wikipedia.org/wiki/Disjunctive_normal_form), ook wel bekend als ' or of and '. Lambda-expressies voor `all` deze gegevens typen moeten daarentegen in [Conjunctive normaal vorm (CNF)](https://en.wikipedia.org/wiki/Conjunctive_normal_form), ook wel bekend als ' and van or ' zijn. Met Azure Cognitive Search kunnen dergelijke bereik vergelijkingen worden uitgevoerd, omdat deze met omkeer bare indexen op een efficiënte manier kan worden gebruikt, net zoals bij het zoeken naar teken reeksen.
 
 In samen vatting vindt u de vuist regels voor wat is toegestaan in een lambda-expressie:
 
-- In `any`zijn *positieve controles* altijd toegestaan, zoals gelijkheid, bereik vergelijkingen `geo.intersects`, of `geo.distance` vergeleken met `lt` of `le` (' closed ' als een gelijke verhouding wanneer het gaat om de controle van de afstand).
-- In `any` `or` is altijd toegestaan. U kunt alleen `and` voor gegevens typen gebruiken waarmee u het bereik kunt controleren, en alleen als u or van and (DNF) gebruikt.
-- In `all`worden de regels omgekeerd: alleen *negatieve controles* zijn toegestaan. u kunt altijd gebruiken `and` en u kunt deze alleen gebruiken `or` voor bereik controles, uitgedrukt als and of or (CNF).
+- In `any` zijn *positieve controles* altijd toegestaan, zoals gelijkheid, bereik vergelijkingen, `geo.intersects` of `geo.distance` vergeleken met `lt` of `le` (' closed ' als een gelijke verhouding wanneer het gaat om de controle van de afstand).
+- In `any` `or` is altijd toegestaan. U kunt `and` alleen voor gegevens typen gebruiken waarmee u het bereik kunt controleren, en alleen als u or van and (DNF) gebruikt.
+- In `all` worden de regels omgekeerd: alleen *negatieve controles* zijn toegestaan. u kunt `and` altijd gebruiken en u kunt deze `or` alleen gebruiken voor bereik controles, uitgedrukt als and of or (CNF).
 
 In de praktijk zijn dit de typen filters die u waarschijnlijk toch kunt gebruiken. Het is nog steeds nuttig om inzicht te krijgen in de grenzen van wat mogelijk is.
 

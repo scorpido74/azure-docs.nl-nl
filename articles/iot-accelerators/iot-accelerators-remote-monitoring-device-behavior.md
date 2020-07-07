@@ -9,10 +9,9 @@ services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: c39ca0a018bd22844cf7e5350e6d3586319aac16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73890846"
 ---
 # <a name="implement-the-device-model-behavior"></a>Het gedrag van het model apparaat implementeren
@@ -61,7 +60,7 @@ In het volgende voor beeld ziet u de definitie van het object Apparaatstatus voo
 }
 ```
 
-De status van het gesimuleerde apparaat, zoals gedefinieerd in `InitialState` de sectie, wordt in het geheugen van de simulatie service bewaard. De status informatie wordt als invoer door gegeven aan `main` de functie die is gedefinieerd in **Chiller-01-State. js**. In dit voor beeld voert de simulatie service elke vijf seconden het bestand **Chiller-01-State. js** uit. Met het script kan de status van het gesimuleerde apparaat worden gewijzigd.
+De status van het gesimuleerde apparaat, zoals gedefinieerd in de `InitialState` sectie, wordt in het geheugen van de simulatie service bewaard. De status informatie wordt als invoer door gegeven aan de functie die is `main` gedefinieerd in **chiller-01-state.js**. In dit voor beeld voert de simulatie service elke vijf seconden het **chiller-01-state.js** -bestand uit. Met het script kan de status van het gesimuleerde apparaat worden gewijzigd.
 
 Hieronder ziet u het overzicht van een typische `main` functie:
 
@@ -82,9 +81,9 @@ De `context` para meter heeft de volgende eigenschappen:
 - `deviceId`, bijvoorbeeld`Simulated.Chiller.123`
 - `deviceModel`, bijvoorbeeld`Chiller`
 
-De `state` para meter bevat de status van het apparaat die wordt onderhouden door de Device simulatie service. Deze waarde is het `state` object dat `main`wordt geretourneerd door de vorige aanroep van.
+De `state` para meter bevat de status van het apparaat die wordt onderhouden door de Device simulatie service. Deze waarde is het `state` object dat wordt geretourneerd door de vorige aanroep van `main` .
 
-In het volgende voor beeld ziet u een typische `main` implementatie van de-methode voor het afhandelen van de status van het apparaat die wordt onderhouden door de simulatie service:
+In het volgende voor beeld ziet u een typische implementatie van de- `main` methode voor het afhandelen van de status van het apparaat die wordt onderhouden door de simulatie service:
 
 ```javascript
 // Default state
@@ -118,7 +117,7 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-In het volgende voor beeld ziet `main` u hoe de methode telemetrische waarden kan simuleren die gedurende een bepaalde periode variëren:
+In het volgende voor beeld ziet u hoe de `main` methode telemetrische waarden kan simuleren die gedurende een bepaalde periode variëren:
 
 ```javascript
 /**
@@ -156,7 +155,7 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-U kunt de volledige [Chiller-01-State. js](https://github.com/Azure/device-simulation-dotnet/blob/master/Services/data/devicemodels/scripts/chiller-01-state.js) weer geven op github.
+U kunt de volledige [chiller-01-state.js](https://github.com/Azure/device-simulation-dotnet/blob/master/Services/data/devicemodels/scripts/chiller-01-state.js) weer geven op github.
 
 ## <a name="method-behavior"></a>Methode gedrag
 
@@ -187,7 +186,7 @@ In het volgende voor beeld ziet u de lijst met methoden die worden ondersteund d
 
 Elke methode heeft een bijbehorend java script-bestand waarmee het gedrag van de methode wordt geïmplementeerd.
 
-De status van het gesimuleerde apparaat, zoals gedefinieerd in `InitialState` de sectie van het schema, wordt in het geheugen van de simulatie service bewaard. De status informatie wordt als invoer door gegeven aan `main` de functie die is gedefinieerd in het Java script-bestand wanneer de methode wordt aangeroepen. Met het script kan de status van het gesimuleerde apparaat worden gewijzigd.
+De status van het gesimuleerde apparaat, zoals gedefinieerd in de `InitialState` sectie van het schema, wordt in het geheugen van de simulatie service bewaard. De status informatie wordt als invoer door gegeven aan de `main` functie die is gedefinieerd in het Java script-bestand wanneer de methode wordt aangeroepen. Met het script kan de status van het gesimuleerde apparaat worden gewijzigd.
 
 Hieronder ziet u het overzicht van een typische `main` functie:
 
@@ -213,7 +212,7 @@ Er zijn drie globale functies die u kunt gebruiken om het gedrag van de-methode 
 - `updateProperty`om één apparaat-eigenschap bij te werken.
 - `sleep`om de uitvoering te onderbreken om een langlopende taak te simuleren.
 
-In het volgende voor beeld ziet u een verkorte versie van het script **IncreasePressure-method. js** dat wordt gebruikt door de gesimuleerde Chiller-apparaten:
+In het volgende voor beeld ziet u een verkorte versie van het **IncreasePressure-method.js** script dat wordt gebruikt door de gesimuleerde Chiller-apparaten:
 
 ```javascript
 function main(context, previousState, previousProperties) {
@@ -252,7 +251,7 @@ function main(context, previousState, previousProperties) {
 
 Het is niet mogelijk om een fout opsporingsprogramma te koppelen aan de Java script-interpreter die wordt gebruikt door de Device simulatie service om status-en methode scripts uit te voeren. U kunt echter gegevens in het service logboek registreren. Met de ingebouwde `log()` functie kunt u gegevens opslaan om de uitvoering van de functie bij te houden en fouten op te sporen.
 
-Als er een syntaxis fout optreedt, mislukt de interpreter en schrijft hij `Jint.Runtime.JavaScriptException` een vermelding naar het service logboek.
+Als er een syntaxis fout optreedt, mislukt de interpreter en schrijft hij een `Jint.Runtime.JavaScriptException` vermelding naar het service logboek.
 
 Het [lokaal artikel over het uitvoeren van de service](https://github.com/Azure/device-simulation-dotnet#running-the-service-locally-eg-for-development-tasks) in github laat zien hoe u de Device simulatie service lokaal uitvoert. Als u de service lokaal uitvoert, kunt u eenvoudiger fouten opsporen in uw gesimuleerde apparaten voordat u ze in de Cloud implementeert.
 

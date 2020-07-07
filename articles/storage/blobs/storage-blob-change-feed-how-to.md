@@ -9,10 +9,9 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.openlocfilehash: 75995eeb3f8255cb4c60d5be267f9c343edfea89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74111868"
 ---
 # <a name="process-change-feed-in-azure-blob-storage-preview"></a>Wijzigings feed in Azure Blob Storage verwerken (preview-versie)
@@ -26,7 +25,7 @@ Zie [Change feed in Azure Blob Storage (preview)](storage-blob-change-feed.md)vo
 
 ## <a name="get-the-blob-change-feed-processor-library"></a>De processor bibliotheek voor het wijzigen van de BLOB-feed ophalen
 
-1. Voeg in Visual Studio de URL `https://azuresdkartifacts.blob.core.windows.net/azuresdkpartnerdrops/index.json` toe aan uw NuGet-pakket bronnen. 
+1. Voeg in Visual Studio de URL toe `https://azuresdkartifacts.blob.core.windows.net/azuresdkpartnerdrops/index.json` aan uw NuGet-pakket bronnen. 
 
    Zie [pakket bronnen](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources)voor meer informatie.
 

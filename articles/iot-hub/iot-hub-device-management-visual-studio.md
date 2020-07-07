@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73953186"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Cloud Explorer gebruiken voor Visual Studio voor Azure IoT Hub Apparaatbeheer
@@ -43,7 +42,7 @@ In dit artikel voert u Cloud Explorer voor Visual Studio uit met verschillende b
 
 ## <a name="what-you-need"></a>Wat u nodig hebt
 
-U hebt de volgende vereisten nodig:
+De volgende vereisten zijn nodig:
 
 - Een actief Azure-abonnement.
 
@@ -59,7 +58,7 @@ Het onderdeel Cloud Explorer van Visual Studio Installer voor Visual Studio 2017
 
 ## <a name="sign-in-to-access-your-hub"></a>Meld u aan om toegang te krijgen tot uw hub
 
-1. Selecteer in Visual Studio**Cloud Explorer** **weer geven** > om Cloud Explorer te openen.
+1. Selecteer in Visual Studio **View**  >  **Cloud Explorer** weer geven om Cloud Explorer te openen.
 
 1. Selecteer het pictogram account beheer om uw abonnementen weer te geven.
 
@@ -89,9 +88,9 @@ Voer de volgende stappen uit om een apparaat dubbele te bewerken:
 
 1. Klik met de rechter muisknop op het apparaat en selecteer **apparaat twee bewerken**.
 
-   Een **Azure-IOT-Device-** onderliggend JSON-bestand wordt geopend met de inhoud van het apparaat dubbele.
+   Een **azure-iot-device-twin.jsin** het bestand wordt geopend met de inhoud van het apparaat dubbele.
 
-1. Breng enkele bewerkingen van **Tags** of **Eigenschappen aan. gewenste** velden voor het bestand **Azure-IOT-Device-dubbele. json** .
+1. Maak enkele bewerkingen van **Tags** of **Eigenschappen. gewenste** velden voor de **azure-iot-device-twin.jsin** het bestand.
 
 1. Druk op **CTRL + S** om het dubbele apparaat bij te werken.
 

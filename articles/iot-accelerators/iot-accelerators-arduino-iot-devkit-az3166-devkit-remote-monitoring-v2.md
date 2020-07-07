@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
 ms.openlocfilehash: 6e9f9c89cf2e5e40d37a1532e688490aae294181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73888871"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>Een IoT DevKit-apparaat verbinden met de oplossings versneller voor externe controle
@@ -51,7 +50,7 @@ IoT Hub apparaat connection string op uw DevKit-apparaat configureren:
     * Houd **de**knop ingedrukt.
     * Push de **Reset** -knop en laat deze los.
 
-1. In het scherm wordt de DevKit- `Configuration`id en weer gegeven.
+1. In het scherm wordt de DevKit-ID en weer gegeven `Configuration` .
 
     ![IoT DevKit-configuratie modus](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/devkit-configuration-mode.png)
 
@@ -63,7 +62,7 @@ IoT Hub apparaat connection string op uw DevKit-apparaat configureren:
 
 De toestel code bouwen en uploaden:
 
-1. Druk `F1` op om het opdracht palet te openen, typ en selecteer **Azure IOT Device Workbench: Upload de apparaatcode**:
+1. Druk op `F1` om het opdracht palet te openen, typ en selecteer **Azure IOT Device Workbench: Upload de apparaatcode**:
 
 1. VS code compileert en uploadt de code naar uw DevKit-apparaat:
 

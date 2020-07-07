@@ -20,23 +20,22 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 2439d4f03184f8dbb85b229b3908dff95013b4bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113136"
 ---
-# <a name="odata-searchscore-function-in-azure-cognitive-search"></a>OData `search.score` -functie in azure Cognitive Search
+# <a name="odata-searchscore-function-in-azure-cognitive-search"></a>OData- `search.score` functie in Azure Cognitive Search
 
-Wanneer u een query verzendt naar Azure Cognitive Search zonder de [para meter **$OrderBy** ](search-query-odata-orderby.md), worden de resultaten die terugkomen in aflopende volg orde gesorteerd op relevantie score. Zelfs wanneer u **$OrderBy**gebruikt, wordt de relevantie score standaard gebruikt om bindingen te verstoren. Soms is het echter handig om de relevantie score te gebruiken als eerste Sorteer criterium en enkele andere criteria als de afbreeker. Met `search.score` de functie kunt u dit doen.
+Wanneer u een query verzendt naar Azure Cognitive Search zonder de [para meter **$OrderBy** ](search-query-odata-orderby.md), worden de resultaten die terugkomen in aflopende volg orde gesorteerd op relevantie score. Zelfs wanneer u **$OrderBy**gebruikt, wordt de relevantie score standaard gebruikt om bindingen te verstoren. Soms is het echter handig om de relevantie score te gebruiken als eerste Sorteer criterium en enkele andere criteria als de afbreeker. `search.score`Met de functie kunt u dit doen.
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
-De syntaxis voor `search.score` in **$OrderBy** is `search.score()`. De functie `search.score` voert geen para meters uit. Deze kan worden gebruikt in combi `asc` natie `desc` met de specificatie of de sorteer volgorde, net als bij elke andere component in de para meter **$OrderBy** . Dit kan ergens in de lijst met Sorteer criteria worden weer gegeven.
+De syntaxis voor `search.score` in **$OrderBy** is `search.score()` . De functie `search.score` voert geen para meters uit. Deze kan worden gebruikt in combi natie met de `asc` specificatie of de `desc` sorteer volgorde, net als bij elke andere component in de para meter **$OrderBy** . Dit kan ergens in de lijst met Sorteer criteria worden weer gegeven.
 
 ## <a name="example"></a>Voorbeeld
 
-Sorteer hotels in aflopende Volg `search.score` orde `rating`op en, en vervolgens in oplopende volg orde op afstand van de opgegeven coördinaten, zodat tussen twee hotels met een identieke classificatie, het dichtstbijzijnde item bovenaan wordt weer gegeven:
+Sorteer hotels in aflopende volg orde op `search.score` en `rating` , en vervolgens in oplopende volg orde op afstand van de opgegeven coördinaten, zodat tussen twee hotels met een identieke classificatie, het dichtstbijzijnde item bovenaan wordt weer gegeven:
 
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 

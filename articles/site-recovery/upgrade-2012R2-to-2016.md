@@ -9,10 +9,9 @@ ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: rajanaki
 ms.openlocfilehash: 1d94935db542a0e64754ab8769996fe906f88b46
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73954409"
 ---
 # <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>Upgrade uitvoeren van Windows Server Server/System Center 2012 R2 VMM naar Windows Server/VMM 2016 
@@ -42,10 +41,10 @@ Let op het volgende voordat u een upgrade uitvoert:-
 
 - Als u System Center 2012 R2 VMM gebruikt, 
 
-    - Controleer de database gegevens op VMM:**algemene** -> **database verbinding** voor de**instellingen** -> van de **VMM-console** -> 
+    - Controleer de database gegevens op VMM: **VMM console**  ->  **settings**  ->  **algemene**  ->  **database verbinding** voor de instellingen van de VMM-console
     - Controleer de service accounts die worden gebruikt voor de System Center Virtual Machine Manager Agent-service
     - Zorg ervoor dat u een back-up van de VMM-Data Base hebt.
-    - Noteer de naam van de data base van de betrokken SCVMM-servers. Dit kan worden gedaan door te navigeren naar **de VMM-console** -> -**instellingen** -> **algemene** -> **database verbinding**
+    - Noteer de naam van de data base van de betrokken SCVMM-servers. Dit kan worden gedaan door te navigeren naar de **VMM-console**-  ->  **instellingen**  ->  **algemene**  ->  **database verbinding**
     - Noteer de VMM-ID van de 2012R2 primaire en herstel VMM-servers. VMM-ID kan worden gevonden in het REGI ster HKLM: \ SOFTWARE\Microsoft\Microsoft System Center Virtual Machine Manager Server\Setup.
     - Zorg ervoor dat de nieuwe SCVMMs die u aan het cluster toevoegt, dezelfde namen hebben als voorheen. 
 
@@ -75,7 +74,7 @@ Voordat u uw Windows Server 2012 R2-hosts bijwerkt, moet u de SCVMM 2012 R2 upgr
 
 1.  Verwijder de ASR-provider door te navigeren naar configuratie scherm-> Program Ma's-> Program Ma's en onderdelen->Microsoft Azure Site Recovery en klik op verwijderen
 2. [De SCVMM-data base behouden en het besturings systeem upgraden](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#back-up-and-upgrade-the-operating-system)
-3. Selecteer in **Program ma's toevoegen**de optie **VMM** > **verwijderen**. b. Selecteer **onderdelen verwijderen**en selecteer vervolgens V**mm-beheer server en VMM-console**. c. Selecteer in **database opties**de optie **Data Base behouden**. d. Controleer de samen vatting en klik op **verwijderen**.
+3. Selecteer in **Program ma's toevoegen**de optie **VMM**  >  **verwijderen**. b. Selecteer **onderdelen verwijderen**en selecteer vervolgens V**mm-beheer server en VMM-console**. c. Selecteer in **database opties**de optie **Data Base behouden**. d. Controleer de samen vatting en klik op **verwijderen**.
 
 4. [VMM 2016 installeren](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
 5. Start SCVMM en controleer de status van elke host onder het tabblad **fabrics** . Klik op **vernieuwen** om de meest recente status te krijgen. U ziet de status ' attentie vereist '. 

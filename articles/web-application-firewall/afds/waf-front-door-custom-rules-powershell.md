@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 09/05/2019
 ms.author: victorh
 ms.openlocfilehash: 493ed1a31a23366a90b80d3ab510218c8dce0e9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74186640"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Een firewall beleid voor webtoepassingen configureren met behulp van Azure PowerShell
@@ -43,12 +42,12 @@ Voordat u de Front Door-module installeert, moet u controleren of u de nieuwste 
 Install-Module PowerShellGet -Force -AllowClobber
 ``` 
 
-#### <a name="install-azfrontdoor-module"></a>De module AZ.-ingang installeren 
+#### <a name="install-azfrontdoor-module"></a>De AzureRM.FrontDoor-module installeren 
 
 ```
 Install-Module -Name Az.FrontDoor
 ```
-### <a name="create-a-front-door-profile"></a>Een voor deur profiel maken
+### <a name="create-a-front-door-profile"></a>Een Front Door-profiel maken
 
 Maak een voor deur profiel door de instructies te volgen die worden beschreven in [Quick Start: een front deur-profiel maken](../../frontdoor/quickstart-create-front-door.md)
 
@@ -86,7 +85,7 @@ $managedRules =  New-AzFrontDoorWafManagedRuleObject -Type DefaultRuleSet -Versi
 ```
 ## <a name="configure-a-security-policy"></a>Een beveiligings beleid configureren
 
-Zoek de naam van de resource groep die het voorste deur profiel bevat met `Get-AzResourceGroup`behulp van. Vervolgens configureert u een beveiligings beleid met gemaakte regels in de vorige stappen met behulp van [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) in de opgegeven resource groep die het voorste deur profiel bevat.
+Zoek de naam van de resourcegroep die het Front Door-profiel bevat met behulp van `Get-AzResourceGroup`. Vervolgens configureert u een beveiligings beleid met gemaakte regels in de vorige stappen met behulp van [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) in de opgegeven resource groep die het voorste deur profiel bevat.
 
 ```powershell-interactive
 $myWAFPolicy=New-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Customrule $AllowFromTrustedSites,$BlockPUT,$URLOver100 -ManagedRule $managedRules -EnabledState Enabled -Mode Prevention

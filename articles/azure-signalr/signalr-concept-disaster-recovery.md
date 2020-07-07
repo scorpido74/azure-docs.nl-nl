@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: kenchen
 ms.openlocfilehash: cf0f345b0fbf9fea2512f72c1996c9a1597cc0cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73747644"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Tolerantie en herstel na noodgevallen
@@ -51,7 +50,7 @@ Er zijn twee manieren waarop u dit kunt doen:
 
 ### <a name="through-config"></a>Via config
 
-U moet al weten hoe u de seingevings service kunt instellen connection string via omgevings variabelen/app-instellingen/web. cofig, in een `Azure:SignalR:ConnectionString`configuratie vermelding met de naam.
+U moet al weten hoe u de seingevings service kunt instellen connection string via omgevings variabelen/app-instellingen/web. cofig, in een configuratie vermelding met de naam `Azure:SignalR:ConnectionString` .
 Als u meerdere eindpunten hebt, kunt u ze instellen in meerdere configuratie-items, elk in de volgende indeling:
 
 ```
@@ -63,7 +62,7 @@ De naam is optioneel, maar dit is handig als u de werking van de routering tusse
 
 ### <a name="through-code"></a>Via code
 
-Als u de verbindings reeksen liever ergens anders wilt opslaan, kunt u deze ook in uw code lezen en als para meters gebruiken bij `AddAzureSignalR()` het aanroepen van ( `MapAzureSignalR()` in ASP.net core) of (in ASP.net).
+Als u de verbindings reeksen liever ergens anders wilt opslaan, kunt u deze ook in uw code lezen en als para meters gebruiken bij het aanroepen `AddAzureSignalR()` van (in ASP.net core) of `MapAzureSignalR()` (in ASP.net).
 
 Hier volgt de voorbeeldcode:
 

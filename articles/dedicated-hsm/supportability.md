@@ -13,10 +13,9 @@ ms.custom: seodec18
 ms.date: 03/27/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d83d688707baf6098d63dfde9b4181eb04fb9729
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70881018"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Exclusieve HSM-ondersteuning van Azure
@@ -41,7 +40,7 @@ Diverse software onderdelen worden gebruikt in de configuratie van HSM-apparaten
 * SDK
 * Hulpprogramma's
 
-### <a name="guidance"></a>Richtlijnen
+### <a name="guidance"></a>Hulp
 
 Gemalto maakt beschik bare beheer-en configuratie richtlijnen via de [Portal voor klant ondersteuning](https://supportportal.gemalto.com/csm/). Nadat u zich hebt aangemeld met een geldige klant-ID, zijn deze documenten beschikbaar voor downloaden. Gemalto biedt ook een reeks integratie handleidingen om klanten te helpen met verschillende scenario's en software-integraties. Zie de [Gemalto-partner site voor micro soft](https://safenet.gemalto.com/partners/microsoft/)voor meer informatie.
 

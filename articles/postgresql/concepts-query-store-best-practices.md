@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 51239f4cf49784dd47470e1272b90508eaf25e6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70764221"
 ---
 # <a name="best-practices-for-query-store"></a>Aanbevolen procedures voor query Store
@@ -24,7 +23,7 @@ Laat query Store de gegevens vastleggen die voor u belang rijk zijn.
 
 |**pg_qs. query_capture_mode** | **Scenario**|
 |---|---|
-|_Alle_  |Analyseer uw werk belasting uitgebreid met alle query's en hun uitvoerings frequenties en andere statistieken. Nieuwe query's in uw workload identificeren. Detecteren of ad hoc-query's worden gebruikt voor het identificeren van de mogelijkheden voor de gebruiker of de automatische parameterisering. _Alle_ wordt geleverd met een verhoogde resource verbruiks kosten. |
+|_Alles_  |Analyseer uw werk belasting uitgebreid met alle query's en hun uitvoerings frequenties en andere statistieken. Nieuwe query's in uw workload identificeren. Detecteren of ad hoc-query's worden gebruikt voor het identificeren van de mogelijkheden voor de gebruiker of de automatische parameterisering. _Alle_ wordt geleverd met een verhoogde resource verbruiks kosten. |
 |_Boven_  |Richt u op de belangrijkste query's die door clients worden uitgegeven.
 |_Geen_ |U hebt al een queryset en tijd venster vastgelegd die u wilt onderzoeken en u wilt de afleidingen elimineren die andere query's kunnen introduceren. _Geen_ is geschikt voor het testen en in de Bank markeren van omgevingen. _Geen_ van beide moet worden gebruikt om te zorgen dat u belang rijke nieuwe query's kunt bijhouden en optimaliseren. U kunt geen gegevens meer herstellen op dit moment Windows. |
 

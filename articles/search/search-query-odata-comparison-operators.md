@@ -20,13 +20,12 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 62c8c93e07326e776cbe089042abc481544794bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113217"
 ---
-# <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>OData-vergelijkings operatoren in `eq`Azure `ne`Cognitive Search `gt`- `lt`, `ge`,,, en`le`
+# <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>OData-vergelijkings operatoren in azure Cognitive Search-,,,, en `eq` `ne` `gt` `lt` `ge``le`
 
 De meest eenvoudige bewerking in een [OData-filter expressie](query-odata-filter-orderby-syntax.md) in azure Cognitive Search is het vergelijken van een veld met een bepaalde waarde. Er zijn twee soorten vergelijking mogelijk: gelijkheids vergelijking en bereik vergelijking. U kunt de volgende opera toren gebruiken om een veld te vergelijken met een constante waarde:
 
@@ -45,9 +44,9 @@ Bereik operatoren:
 U kunt de bereik operatoren in combi natie met de [logische Opera tors](search-query-odata-logical-operators.md) gebruiken om te testen of een veld binnen een bepaald waardebereik ligt. Zie de [voor beelden](#examples) verderop in dit artikel.
 
 > [!NOTE]
-> Als u wilt, kunt u de constante waarde aan de linkerkant van de operator en de veld naam aan de rechter kant plaatsen. Voor bereik Opera tors wordt de betekenis van de vergelijking omgekeerd. Als de constante waarde bijvoorbeeld aan de linkerkant is, `gt` wordt getest of de constante waarde groter is dan het veld. U kunt ook de vergelijkings operators gebruiken om het resultaat van een functie, `geo.distance`zoals, met een waarde te vergelijken. Voor Booleaanse functies zoals `search.ismatch`, het vergelijken van het resultaat `true` naar `false` of is optioneel.
+> Als u wilt, kunt u de constante waarde aan de linkerkant van de operator en de veld naam aan de rechter kant plaatsen. Voor bereik Opera tors wordt de betekenis van de vergelijking omgekeerd. Als de constante waarde bijvoorbeeld aan de linkerkant is, wordt `gt` getest of de constante waarde groter is dan het veld. U kunt ook de vergelijkings operators gebruiken om het resultaat van een functie, zoals `geo.distance` , met een waarde te vergelijken. Voor Booleaanse functies zoals `search.ismatch` , het vergelijken van het resultaat naar `true` of `false` is optioneel.
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
 De volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van een OData-expressie die gebruikmaakt van de vergelijkings operators.
 
@@ -75,21 +74,21 @@ Er zijn twee vormen van vergelijkings expressies. Het enige verschil tussen deze
 
 ## <a name="data-types-for-comparisons"></a>Gegevens typen voor vergelijkingen
 
-De gegevens typen aan beide zijden van een vergelijkings operator moeten compatibel zijn. Als de linkerkant bijvoorbeeld een veld van het type `Edm.DateTimeOffset`is, moet de rechter kant een datum-tijd-constante zijn. Numerieke gegevens typen zijn flexibeler. U kunt variabelen en functies van elk numeriek type vergelijken met constanten van elk ander numeriek type, met enkele beperkingen, zoals beschreven in de volgende tabel.
+De gegevens typen aan beide zijden van een vergelijkings operator moeten compatibel zijn. Als de linkerkant bijvoorbeeld een veld van het type is `Edm.DateTimeOffset` , moet de rechter kant een datum-tijd-constante zijn. Numerieke gegevens typen zijn flexibeler. U kunt variabelen en functies van elk numeriek type vergelijken met constanten van elk ander numeriek type, met enkele beperkingen, zoals beschreven in de volgende tabel.
 
 | Variabele of functie type | Type constante waarde | Beperkingen |
 | --- | --- | --- |
 | `Edm.Double` | `Edm.Double` | De vergelijking is onderhevig aan [speciale `NaN` regels voor](#special-case-nan) |
-| `Edm.Double` | `Edm.Int64` | Constante wordt geconverteerd naar `Edm.Double`, wat resulteert in een precisie verlies voor waarden van grote grootte |
+| `Edm.Double` | `Edm.Int64` | Constante wordt geconverteerd naar `Edm.Double` , wat resulteert in een precisie verlies voor waarden van grote grootte |
 | `Edm.Double` | `Edm.Int32` | N.v.t. |
-| `Edm.Int64` | `Edm.Double` | Vergelijkingen naar `NaN`, `-INF`of `INF` zijn niet toegestaan |
+| `Edm.Int64` | `Edm.Double` | Vergelijkingen naar `NaN` , `-INF` of `INF` zijn niet toegestaan |
 | `Edm.Int64` | `Edm.Int64` | N.v.t. |
 | `Edm.Int64` | `Edm.Int32` | Constante wordt geconverteerd naar `Edm.Int64` vóór vergelijking |
-| `Edm.Int32` | `Edm.Double` | Vergelijkingen naar `NaN`, `-INF`of `INF` zijn niet toegestaan |
+| `Edm.Int32` | `Edm.Double` | Vergelijkingen naar `NaN` , `-INF` of `INF` zijn niet toegestaan |
 | `Edm.Int32` | `Edm.Int64` | N.v.t. |
 | `Edm.Int32` | `Edm.Int32` | N.v.t. |
 
-Voor vergelijkingen die niet zijn toegestaan, zoals het vergelijken van een veld van het `Edm.Int64` type `NaN`naar, retourneert de Azure Cognitive Search rest API de fout ' http 400: onjuiste aanvraag '.
+Voor vergelijkingen die niet zijn toegestaan, zoals het vergelijken van een veld van `Edm.Int64` het type naar `NaN` , retourneert de Azure Cognitive Search rest API de fout ' http 400: onjuiste aanvraag '.
 
 > [!IMPORTANT]
 > Hoewel numerieke type vergelijkingen flexibel zijn, raden we u aan om vergelijkingen in filters te schrijven, zodat de constante waarde van hetzelfde gegevens type is als de variabele of functie waarmee deze wordt vergeleken. Dit is vooral belang rijk bij het combi neren van drijvende-komma-en integerwaarden, waarbij impliciete conversies die nauw keurigheid kunnen verliezen, mogelijk zijn.
@@ -98,7 +97,7 @@ Voor vergelijkingen die niet zijn toegestaan, zoals het vergelijken van een veld
 
 ### <a name="special-cases-for-null-and-nan"></a>Speciale gevallen voor `null` en`NaN`
 
-Wanneer vergelijkings operatoren worden gebruikt, is het belang rijk te weten dat alle niet-verzamelings velden in `null`Azure Cognitive Search mogelijk zijn. De volgende tabel bevat alle mogelijke resultaten voor een vergelijkings expressie waarbij beide zijden kunnen zijn `null`:
+Wanneer vergelijkings operatoren worden gebruikt, is het belang rijk te weten dat alle niet-verzamelings velden in azure Cognitive Search mogelijk zijn `null` . De volgende tabel bevat alle mogelijke resultaten voor een vergelijkings expressie waarbij beide zijden kunnen zijn `null` :
 
 | Operator | Resultaat wanneer alleen het veld of de variabele is`null` | Resultaat wanneer alleen de constante is`null` | Resultaat wanneer het veld of de variabele en de constante worden`null` |
 | --- | --- | --- | --- |
@@ -111,7 +110,7 @@ Wanneer vergelijkings operatoren worden gebruikt, is het belang rijk te weten da
 
 In samen vatting `null` is alleen gelijk aan zichzelf en is niet kleiner dan of groter dan een andere waarde.
 
-Als uw index velden van het type `Edm.Double` bevat en u `NaN` waarden naar die velden uploadt, moet u er rekening mee doen wanneer u filters schrijft. Azure Cognitive Search implementeert de IEEE 754-standaard voor `NaN` afhandelings waarden en vergelijkingen met een dergelijke waarde geven geen duidelijke resultaten, zoals wordt weer gegeven in de volgende tabel.
+Als uw index velden van het type bevat `Edm.Double` en u `NaN` waarden naar die velden uploadt, moet u er rekening mee doen wanneer u filters schrijft. Azure Cognitive Search implementeert de IEEE 754-standaard voor afhandelings `NaN` waarden en vergelijkingen met een dergelijke waarde geven geen duidelijke resultaten, zoals wordt weer gegeven in de volgende tabel.
 
 | Operator | Resultaat wanneer ten minste één operand is`NaN` |
 | --- | --- |
@@ -126,11 +125,11 @@ Samen vatting `NaN` is niet gelijk aan een wille keurige waarde, met inbegrip va
 
 ### <a name="comparing-geo-spatial-data"></a>Geografische ruimtelijke gegevens vergelijken
 
-Het is niet mogelijk om een veld van `Edm.GeographyPoint` het type rechtstreeks te vergelijken met een constante waarde, `geo.distance` maar u kunt de functie gebruiken. Deze functie retourneert een waarde van het `Edm.Double`type, zodat u deze kunt vergelijken met een numerieke constante die moet worden gefilterd op basis van de afstand van constante geo-ruimtelijke coördinaten. Zie de onderstaande [voor beelden](#examples) .
+Het is niet mogelijk om een veld van het type rechtstreeks `Edm.GeographyPoint` te vergelijken met een constante waarde, maar u kunt de `geo.distance` functie gebruiken. Deze functie retourneert een waarde van het type `Edm.Double` , zodat u deze kunt vergelijken met een numerieke constante die moet worden gefilterd op basis van de afstand van constante geo-ruimtelijke coördinaten. Zie de onderstaande [voor beelden](#examples) .
 
 ### <a name="comparing-string-data"></a>Teken reeks gegevens vergelijken
 
-Teken reeksen kunnen worden vergeleken in filters voor exacte overeenkomsten met `eq` behulp van de `ne` Opera tors. Deze vergelijkingen zijn hoofdletter gevoelig.
+Teken reeksen kunnen worden vergeleken in filters voor exacte overeenkomsten met behulp van de `eq` `ne` Opera tors. Deze vergelijkingen zijn hoofdletter gevoelig.
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -146,11 +145,11 @@ Documenten vergelijken waarbij het `LastRenovationDate` veld groter is dan of ge
 
     LastRenovationDate ge 2015-01-01T00:00:00.000Z
 
-Documenten die overeenkomen `Details/Sku` met het veld `null`:
+Documenten die overeenkomen met het `Details/Sku` veld `null` :
 
     Details/Sku ne null
 
-Vergelijkings documenten voor hotels waarbij ten minste één kamer het type ' Deluxe room ' heeft, waarbij de `Rooms/Type` teken reeks van het veld precies overeenkomt met het filter:
+Vergelijkings documenten voor hotels waarbij ten minste één kamer het type ' Deluxe room ' heeft, waarbij de teken reeks van het `Rooms/Type` veld precies overeenkomt met het filter:
 
     Rooms/any(room: room/Type eq 'Deluxe Room')
 

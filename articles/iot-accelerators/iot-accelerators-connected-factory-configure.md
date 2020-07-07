@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73820119"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>De Connected Factory Solution Accelerator configureren
@@ -61,11 +60,11 @@ Elk knoop punt in de topologie heeft een gemeen schappelijke set eigenschappen d
 
 ## <a name="topology-configuration-file"></a>Topologie configuratie bestand
 
-Voor het configureren van de eigenschappen die worden vermeld in de vorige sectie, maakt de oplossing Connected Factory gebruik van een configuratie bestand met de naam [ContosoTopologyDescription. json](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json).
+Voor het configureren van de eigenschappen die in de vorige sectie worden weer gegeven, gebruikt de oplossing Connected Factory een configuratie bestand met de naam [ContosoTopologyDescription.jsop](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json).
 
-U kunt dit bestand vinden in de bron code van de oplossing `WebApp/Contoso/Topology` in de map.
+U kunt dit bestand vinden in de bron code van de oplossing in de `WebApp/Contoso/Topology` map.
 
-Het volgende code fragment toont een overzicht van `ContosoTopologyDescription.json` het configuratie bestand:
+Het volgende code fragment toont een overzicht van het `ContosoTopologyDescription.json` configuratie bestand:
 
 ```json
 {
@@ -85,7 +84,7 @@ Het volgende code fragment toont een overzicht van `ContosoTopologyDescription.j
 }
 ```
 
-De algemene eigenschappen van `<global_configuration>`, `<factory_configuration>` `<production_line_configuration>`, en `<station_configuration>` zijn:
+De algemene eigenschappen van  `<global_configuration>` , `<factory_configuration>` , `<production_line_configuration>` en `<station_configuration>` zijn:
 
 * **Naam** (type teken reeks)
 
@@ -99,11 +98,11 @@ De algemene eigenschappen van `<global_configuration>`, `<factory_configuration
 
   Het pad naar een installatie kopie in de WebApp-oplossing die moet worden weer gegeven wanneer informatie over het topologie knooppunt wordt weer gegeven in het dash board.
 
-* **OeeOverall**, **OeePerformance**, **OeeAvailability**, **OeeQuality**, **Kpi1**, **Kpi2** (type `<performance_definition>`)
+* **OeeOverall**, **OeePerformance**, **OeeAvailability**, **OeeQuality**, **Kpi1**, **Kpi2** (type `<performance_definition>` )
 
   Met deze eigenschappen worden de minimale, doel-en maximale waarden gedefinieerd van het operationele afbeelding dat wordt gebruikt voor het genereren van waarschuwingen. Met deze eigenschappen worden ook de acties gedefinieerd die moeten worden uitgevoerd als er een waarschuwing wordt gedetecteerd.
 
-De `<factory_configuration>` items `<production_line_configuration>` en hebben de volgende eigenschap:
+De `<factory_configuration>` `<production_line_configuration>` items en hebben de volgende eigenschap:
 
 * **GUID** (type teken reeks)
 
@@ -111,7 +110,7 @@ De `<factory_configuration>` items `<production_line_configuration>` en hebben d
 
 `<factory_configuration>`heeft een eigenschap:
 
-* **Locatie** (type `<location_definition>`)
+* **Locatie** (type `<location_definition>` )
 
   Hiermee geeft u op waar de fabriek zich bevindt.
 
@@ -122,7 +121,7 @@ De `<factory_configuration>` items `<production_line_configuration>` en hebben d
   Deze eigenschap moet worden ingesteld op de OPC UA-toepassings-URI van de OPC UA-server.
   Omdat het globaal uniek moet zijn door de OPC UA-specificatie, wordt deze eigenschap gebruikt om het knoop punt van de station-topologie te identificeren.
 
-* **OpcNodes**, een matrix met OPC UA-knoop punten (type `<opc_node_description>`)
+* **OpcNodes**, een matrix met OPC UA-knoop punten (type `<opc_node_description>` )
 
 `<location_definition>`heeft eigenschappen:
 
@@ -156,11 +155,11 @@ De `<factory_configuration>` items `<production_line_configuration>` en hebben d
 
   Bovenste drempel waarde kan worden bereikt. Als de huidige waarde hoger is dan deze drempel, wordt er een waarschuwing gegenereerd.
 
-* **MinimumAlertActions** (type `<alert_action>`)
+* **MinimumAlertActions** (type `<alert_action>` )
 
   Hiermee wordt de set acties gedefinieerd die als reactie op een minimale waarschuwing kan worden beschouwd.
 
-* **MaximumAlertActions** (type `<alert_action>`)
+* **MaximumAlertActions** (type `<alert_action>` )
 
   Hiermee wordt de set acties gedefinieerd die als reactie op een maximum waarschuwing kan worden beschouwd.
 
@@ -246,11 +245,11 @@ De `<factory_configuration>` items `<production_line_configuration>` en hebben d
 
   Als de huidige waarde boven deze waarde komt, wordt er een maximum waarschuwing gegenereerd.
 
-* **MinimumAlertActions** (type `<alert_action>`)
+* **MinimumAlertActions** (type `<alert_action>` )
 
   Hiermee wordt de set acties gedefinieerd die als reactie op een minimale waarschuwing kan worden beschouwd.
 
-* **MaximumAlertActions** (type `<alert_action>`)
+* **MaximumAlertActions** (type `<alert_action>` )
 
   Hiermee wordt de set acties gedefinieerd die als reactie op een maximum waarschuwing kan worden beschouwd.
 
@@ -282,7 +281,7 @@ De OEE/KPI-cijfers voor de verbonden Factory-simulatie zijn para meters voor:
 * De waarde van het OPC UA-knoop punt dat moet worden opgenomen in de berekening.
 * Hoe de afbeelding wordt berekend op basis van de telemetrie-waarden.
 
-Verbonden Factory maakt gebruik van de OEE-formules zoals [http://www.oeefoundation.org](http://www.oeefoundation.org)gepubliceerd door de.
+Verbonden Factory maakt gebruik van de OEE-formules zoals gepubliceerd door de [http://www.oeefoundation.org](http://www.oeefoundation.org) .
 
 OPC UA-knooppunt objecten in stations maken labels mogelijk voor gebruik in de OEE/KPI-berekening. De eigenschap **relevantie** geeft aan waarvoor OEE/KPI de waarde van het OPC UA-knoop punt moet worden gebruikt. De eigenschap **opcode** definieert hoe de waarde wordt opgenomen in de berekening.
 
@@ -313,7 +312,7 @@ Zie [Wat is OPC Publisher](overview-opc-publisher.md) voor meer informatie over 
 
 De configuratie in het `ContosoTopologyDescription.json` bestand bepaalt hoe OEE/KPI-cijfers worden berekend. In het volgende voor beeld ziet u hoe de eigenschappen in dit bestand de berekening van KPI1 bepalen.
 
-In Connected Factory KPI1 wordt gebruikt om het aantal geproduceerde producten in het afgelopen uur te meten. Elk station (OPC UA-server) in de verbonden Factory-simulatie biedt een OPC UA`NodeId: "ns=2;i=385"`-knoop punt () dat de telemetrie biedt om deze KPI te berekenen.
+In Connected Factory KPI1 wordt gebruikt om het aantal geproduceerde producten in het afgelopen uur te meten. Elk station (OPC UA-server) in de verbonden Factory-simulatie biedt een OPC UA-knoop punt ( `NodeId: "ns=2;i=385"` ) dat de telemetrie biedt om deze KPI te berekenen.
 
 De configuratie voor dit OPC UA-knoop punt ziet eruit als in het volgende code fragment:
 

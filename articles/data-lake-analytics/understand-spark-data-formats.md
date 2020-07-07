@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: understand-apache-spark-data-formats
 ms.date: 01/31/2019
 ms.openlocfilehash: 36f39503ca32f1ee4b422ae7b1cf9abf48716f07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73648439"
 ---
 # <a name="understand-differences-between-u-sql-and-spark-data-formats"></a>Verschillen tussen de U-SQL-en Spark-gegevens indelingen begrijpen
@@ -43,7 +42,7 @@ Na deze trans formatie kopieert u de gegevens zoals beschreven in het hoofd stuk
 - Gegevens semantiek bij het kopiëren van bestanden vindt de kopie op het niveau van de byte. Daarom moeten dezelfde gegevens worden weer gegeven in het [Azure data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) -account. Opmerking: Spark kan echter een andere teken reeks interpreteren. Het kan bijvoorbeeld een andere standaard waarde voor een scheidings teken voor rijen in een CSV-bestand gebruiken.
     Bovendien, als u getypte gegevens kopieert (uit tabellen), kunnen Parquet en Spark een andere precisie hebben en schalen voor sommige getypte waarden (bijvoorbeeld een float) en kunnen Null-waarden anders worden behandeld. U-SQL heeft bijvoorbeeld de C#-semantiek voor Null-waarden, terwijl Spark een logische Logic-waarde heeft voor Null-waarden.
 
-- Gegevens organisatie (partitionen) U-SQL-tabellen bieden twee niveau partities. Het buitenste niveau`PARTITIONED BY`() bevindt zich op waarde en wijst voornamelijk toe aan het Hive/Spark-partitie schema met behulp van mapstructuren. U moet ervoor zorgen dat de Null-waarden worden toegewezen aan de juiste map. Het binnenste niveau`DISTRIBUTED BY`() in U-SQL biedt 4 distributie schema's: Round Robin, Range, hash en direct hash.
+- Gegevens organisatie (partitionen) U-SQL-tabellen bieden twee niveau partities. Het buitenste niveau ( `PARTITIONED BY` ) bevindt zich op waarde en wijst voornamelijk toe aan het Hive/Spark-partitie schema met behulp van mapstructuren. U moet ervoor zorgen dat de Null-waarden worden toegewezen aan de juiste map. Het binnenste niveau ( `DISTRIBUTED BY` ) in U-SQL biedt 4 distributie schema's: Round Robin, Range, hash en direct hash.
     Hive/Spark-tabellen bieden alleen ondersteuning voor het partitioneren van waarden of hash-partitionering, met een andere hash-functie dan U-SQL. Wanneer u uw U-SQL-tabel gegevens uitvoert, kunt u waarschijnlijk alleen toewijzen in de waarde partitioneren voor Spark en moet u de indeling van uw gegevens mogelijk verder afstemmen op basis van uw definitieve Spark-query's.
 
 ## <a name="next-steps"></a>Volgende stappen

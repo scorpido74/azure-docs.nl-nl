@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: 1126a85ed22ee17879767a93ca75dc76dd04b747
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74132960"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Ondersteuningsmatrix voor herstel na noodgeval van virtuele Hyper-V-machines naar een secundaire site
@@ -24,7 +23,7 @@ In dit artikel wordt een overzicht gegeven van wat er wordt ondersteund wanneer 
 
 ## <a name="host-servers"></a>Hostservers
 
-**Besturingssysteem** | **Nadere**
+**Besturingssysteem** | **Details**
 --- | ---
 Windows Server 2012 R2 | Op servers moeten de meest recente updates worden uitgevoerd.
 Windows Server 2016 |  VMM 2016-Clouds met een combi natie van Windows Server 2016-en 2012 R2-hosts worden momenteel niet ondersteund.<br/><br/> Implementaties die zijn bijgewerkt van System Center 2012 R2 VMM 2012 R2 naar System Center 2016, worden momenteel niet ondersteund.
@@ -51,16 +50,16 @@ Alleen Linux-machines met de volgende opslag kunnen worden gerepliceerd:
 
 ## <a name="network-configuration---hostguest-vm"></a>Netwerk configuratie-host/gast-VM
 
-**Configuratie** | **Geboden**  
+**Configuratie** | **Ondersteund**  
 --- | --- 
-Host-NIC-koppeling | Ja 
-Host-VLAN | Ja 
-Host-IPv4 | Ja 
-Host-IPv6 | Nee 
-Gast-VM-NIC-koppeling | Nee
-Gast-VM-IPv4 | Ja
-Gast-VM-IPv6 | Nee
-Gast-VM-Windows/Linux-statisch IP-adres | Ja
+Host-NIC-koppeling | Yes 
+Host-VLAN | Yes 
+Host-IPv4 | Yes 
+Host-IPv6 | No 
+Gast-VM-NIC-koppeling | No
+Gast-VM-IPv4 | Yes
+Gast-VM-IPv6 | No
+Gast-VM-Windows/Linux-statisch IP-adres | Yes
 Gast-VM-multi-NIC | Ja
 
 
@@ -68,39 +67,39 @@ Gast-VM-multi-NIC | Ja
 
 ### <a name="host-storage"></a>Host Storage
 
-**Opslag (host)** | **Geboden**
+**Opslag (host)** | **Ondersteund**
 --- | --- 
 NFS | N.v.t.
-SMB 3.0 |  Ja
-SAN (ISCSI) | Ja
-Meerdere paden (MPIO) | Ja
+SMB 3.0 |  Yes
+SAN (ISCSI) | Yes
+Meerdere paden (MPIO) | Yes
 
 ### <a name="guest-or-physical-server-storage"></a>Opslag van gast-of fysieke servers
 
-**Configuratie** | **Geboden**
+**Configuratie** | **Ondersteund**
 --- | --- | 
 VMDK |  N.v.t.
 VHD/VHDX | Ja (Maxi maal 16 schijven)
-VM van generatie 2 | Ja
-Gedeelde cluster schijf | Nee
-Versleutelde schijf | Nee
+VM van generatie 2 | Yes
+Gedeelde cluster schijf | No
+Versleutelde schijf | No
 UEFI| N.v.t.
-NFS | Nee
-SMB 3.0 | Nee
+NFS | No
+SMB 3.0 | No
 RDM | N.v.t.
-Schijf > 1 TB | Ja
-Volume met gestripte schijf > 1 TB<br/><br/> LVM | Ja
-Opslagruimten | Ja
-Hot toevoegen/verwijderen schijf | Nee
-Schijf uitsluiten | Ja
-Meerdere paden (MPIO) | Ja
+Schijf > 1 TB | Yes
+Volume met gestripte schijf > 1 TB<br/><br/> LVM | Yes
+Opslagruimten | Yes
+Hot toevoegen/verwijderen schijf | No
+Schijf uitsluiten | Yes
+Meerdere paden (MPIO) | Yes
 
 ## <a name="vaults"></a>Kluizen
 
-**Actie** | **Geboden**
+**Actie** | **Ondersteund**
 --- | --- 
-Kluizen verplaatsen tussen resource groepen (binnen of tussen abonnementen) |  Nee
-Opslag, netwerk, Azure-Vm's verplaatsen tussen resource groepen (binnen of tussen verschillende abonnementen) | Nee
+Kluizen verplaatsen tussen resource groepen (binnen of tussen abonnementen) |  No
+Opslag, netwerk, Azure-Vm's verplaatsen tussen resource groepen (binnen of tussen verschillende abonnementen) | No
 
 ## <a name="azure-site-recovery-provider"></a>Azure Site Recovery provider
 

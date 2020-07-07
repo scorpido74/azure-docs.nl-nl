@@ -10,10 +10,9 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: 08f0456b6a8b663f0af68fbb179de14b9e3acf79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70914090"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>Data Lake Tools voor Visual Studio installeren
@@ -48,7 +47,7 @@ Schakel de werk belasting van **Azure Development** in zoals weer gegeven:
 
 Down load en Installeer [Microsoft Azure data Lake en stream Analytics Hulpprogram ma's voor Visual Studio ](https://aka.ms/adltoolsvs). Na de installatie heeft Visual Studio de volgende wijzigingen:
 
-* Het **Server Explorer** > **Azure** -knoop punt bevat een **Data Lake Analytics** -knoop punt.
+* Het **Server Explorer**  >  **Azure** -knoop punt bevat een **Data Lake Analytics** -knoop punt.
 * Het menu **Extra** bevat een **Data Lake**-item.
 
 ## <a name="next-steps"></a>Volgende stappen
