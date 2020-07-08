@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 787336f00a83d9403e3069754787743b9be6c5b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77050009"
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>Azure Media Services inhoud publiceren met REST 
@@ -46,7 +45,7 @@ In de [volgende](#types) sectie worden de Enum-typen weer gegeven waarvan de waa
 Zie [toegang tot de Azure Media Services-API met Azure AD-verificatie](media-services-use-aad-auth-to-access-ams-api.md)voor meer informatie over het maken van een verbinding met de AMS-API. 
 
 >[!NOTE]
->Nadat u verbinding hebt https://media.windows.netgemaakt met, ontvangt u een 301-omleiding die een andere Media Services URI aangeeft. U moet volgende aanroepen naar de nieuwe URI maken.
+>Nadat u verbinding hebt gemaakt met https://media.windows.net , ontvangt u een 301-omleiding die een andere Media Services URI aangeeft. U moet volgende aanroepen naar de nieuwe URI maken.
 
 ## <a name="create-an-ondemand-streaming-locator"></a>Een OnDemand streaming-Locator maken
 Als u de OnDemand streaming-Locator wilt maken en Url's wilt ophalen, moet u het volgende doen:
@@ -193,7 +192,7 @@ voorbeeld:
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 [Overzicht van Media Services bewerkingen REST API](media-services-rest-how-to-use.md)
 
 [Leverings beleid voor assets configureren](media-services-rest-configure-asset-delivery-policy.md)

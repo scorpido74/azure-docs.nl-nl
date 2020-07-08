@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 714148815fa4ff543ecbf86ab21e8d51fe775543
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77153771"
 ---
 # <a name="select-columns-in-dataset-module"></a>Kolommen in de module gegevensset selecteren
@@ -40,7 +39,7 @@ De module bevat meerdere opties voor het kiezen van kolommen op naam:
 
     Als u een gegevensset hebt verbonden die al is gevuld, wordt een lijst met beschik bare kolommen weer gegeven. Als er geen kolommen worden weer gegeven, moet u mogelijk upstream-modules uitvoeren om de kolom lijst weer te geven.
 
-    Als u de lijst wilt filteren, typt u in het zoekvak. Als u bijvoorbeeld de letter `w` in het zoekvak typt, wordt de lijst gefilterd om de kolom namen weer te geven die de letter `w`bevatten.
+    Als u de lijst wilt filteren, typt u in het zoekvak. Als u bijvoorbeeld de letter `w` in het zoekvak typt, wordt de lijst gefilterd om de kolom namen weer te geven die de letter bevatten `w` .
 
     Selecteer kolommen en klik op de pijl naar rechts om de geselecteerde kolommen te verplaatsen naar de lijst in het rechterdeel venster.
 
@@ -79,7 +78,7 @@ MET de optie **begin met** wordt het begin punt bepaald en is het belang rijk om
 
 + Als u de optie **geen kolommen** selecteert, wordt de lijst met kolommen leeg gelaten. Vervolgens geeft u voor waarden op om kolommen toe te *voegen* aan de lijst. 
 
-    Als u meerdere regels toepast, is elke voor waarde **additief**. Stel bijvoorbeeld dat u begint met geen kolommen en voeg vervolgens een regel toe om alle numerieke kolommen op te halen. In de gegevensset voor auto Mobile-prijzen resulteert dat in 16 kolommen. Vervolgens klikt u op het **+** -teken om een nieuwe voor waarde toe te voegen en selecteert u **alle functies**toevoegen. De resulterende gegevensset bevat alle numerieke kolommen, plus alle functie kolommen, met inbegrip van sommige kolommen met teken reeks functies.
+    Als u meerdere regels toepast, is elke voor waarde **additief**. Stel bijvoorbeeld dat u begint met geen kolommen en voeg vervolgens een regel toe om alle numerieke kolommen op te halen. In de gegevensset voor auto Mobile-prijzen resulteert dat in 16 kolommen. Vervolgens klikt u op het- **+** teken om een nieuwe voor waarde toe te voegen en selecteert u **alle functies**toevoegen. De resulterende gegevensset bevat alle numerieke kolommen, plus alle functie kolommen, met inbegrip van sommige kolommen met teken reeks functies.
 
 ### <a name="choose-by-column-index"></a>Kiezen op kolom index
 
@@ -96,7 +95,7 @@ Als uw gegevensset bijvoorbeeld ten minste acht kolommen bevat, kunt u in een va
 + `1,3-8`
 + `1,3-6,4` 
 
-het laatste voor beeld resulteert niet in een fout. Er wordt echter slechts één exemplaar van de kolom `4`geretourneerd.
+het laatste voor beeld resulteert niet in een fout. Er wordt echter slechts één exemplaar van de kolom geretourneerd `4` .
 
 
 

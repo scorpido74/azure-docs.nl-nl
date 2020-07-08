@@ -12,15 +12,14 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 33b1f76dd1489e00115d0f805add8d754038df84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77185914"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>Migratie van klassiek beleid voor voorwaardelijke toegang
 
-Voorwaardelijke toegang is het hulp programma dat wordt gebruikt door Azure Active Directory om signalen samen te brengen, beslissingen te nemen en organisatie beleid af te dwingen. Voorwaardelijke toegang bevindt zich op het hart van het nieuwe op identiteits gerichte besturings vlak. Hoewel het doel nog steeds hetzelfde is, heeft de release van de nieuwe Azure Portal aanzienlijke verbeteringen geïntroduceerd in de werking van voorwaardelijke toegang.
+Voorwaardelijke toegang is de tool die door Azure Active Directory wordt gebruikt om signalen samen te brengen, beslissingen te nemen en organisatiebeleid af te dwingen. Voorwaardelijke toegang vormt de kern van het nieuwe besturingsvlak op basis van identiteiten. Hoewel het doel nog steeds hetzelfde is, heeft de release van de nieuwe Azure Portal aanzienlijke verbeteringen geïntroduceerd in de werking van voorwaardelijke toegang.
 
 U kunt de beleids regels die u niet hebt gemaakt, migreren in de Azure Portal omdat:
 
@@ -33,7 +32,7 @@ In dit artikel wordt uitgelegd wat u moet weten om uw bestaande beleids regels v
 
 ## <a name="classic-policies"></a>Klassiek beleid
 
-In de [Azure Portal](https://portal.azure.com)kunt u beleid voor voorwaardelijke toegang vinden onder **Azure Active Directory** > **Security** > **voorwaardelijke toegang**voor beveiliging. Uw organisatie heeft mogelijk ook oudere beleids regels voor voorwaardelijke toegang die niet op deze pagina zijn gemaakt. Deze beleids regels worden *klassieke beleids regels*genoemd. Klassieke beleids regels zijn beleids regels voor voorwaardelijke toegang, die u hebt gemaakt in:
+In de [Azure Portal](https://portal.azure.com)kunt u beleid voor voorwaardelijke toegang vinden onder **Azure Active Directory**  >  **Security**  >  **voorwaardelijke toegang**voor beveiliging. Uw organisatie heeft mogelijk ook oudere beleids regels voor voorwaardelijke toegang die niet op deze pagina zijn gemaakt. Deze beleids regels worden *klassieke beleids regels*genoemd. Klassieke beleids regels zijn beleids regels voor voorwaardelijke toegang, die u hebt gemaakt in:
 
 - De klassieke Azure-Portal
 - De klassieke intune-Portal

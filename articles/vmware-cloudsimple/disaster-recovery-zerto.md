@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 0e019a9229b671be2fb73e758bd39f33657bc2d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77083129"
 ---
 # <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>CloudSimple Private Cloud instellen als een nood herstel site voor on-premises VMware-workloads
@@ -51,7 +50,7 @@ In de volgende secties wordt beschreven hoe u een DR-oplossing implementeert met
 Als u virtuele Zerto-replicatie van uw on-premises omgeving naar uw Privécloud wilt inschakelen, moet u de volgende vereisten volt ooien.
 
 1. [Stel een site-naar-site-VPN-verbinding in tussen uw on-premises netwerk en uw CloudSimple-privécloud](set-up-vpn.md).
-2. [Stel de DNS-zoek opdracht zo in dat uw Private Cloud Management-onderdelen worden doorgestuurd naar DNS-servers in de privécloud](on-premises-dns-setup.md).  Als u het door sturen van DNS-lookup wilt inschakelen, maakt u een doorstuur zone vermelding in uw `*.cloudsimple.io` on-PREMISES DNS-server voor CloudSimple DNS-servers.
+2. [Stel de DNS-zoek opdracht zo in dat uw Private Cloud Management-onderdelen worden doorgestuurd naar DNS-servers in de privécloud](on-premises-dns-setup.md).  Als u het door sturen van DNS-lookup wilt inschakelen, maakt u een doorstuur zone vermelding in uw on-premises DNS-server voor `*.cloudsimple.io` CloudSimple DNS-servers.
 3. Stel de DNS-zoek opdracht zodanig in dat de on-premises vCenter-onderdelen worden doorgestuurd naar lokale DNS-servers.  De DNS-servers moeten bereikbaar zijn vanuit uw CloudSimple-Privécloud via site-naar-site-VPN. Voor hulp dient u een [ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)in te dienen, waarbij de volgende informatie wordt verstrekt.  
 
     * Naam van on-premises DNS-domein
@@ -93,6 +92,6 @@ Als u virtuele Zerto-replicatie van uw on-premises omgeving naar uw Privécloud 
 6. Pas zo nodig de netwerk instellingen voor afzonderlijke Vm's aan en maak de VPG.
 7. Testfailover wanneer de replicatie is voltooid.
 
-## <a name="reference"></a>Naslaginformatie
+## <a name="reference"></a>Verwijzing
 
 [Documentatie voor Zerto](https://www.zerto.com/myzerto/technical-documentation/)

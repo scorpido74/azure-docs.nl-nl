@@ -15,10 +15,9 @@ ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
 ms.openlocfilehash: 09501a80d6ddcbbc9fa6cc08e36f47beb13d1663
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77063219"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning-preview"></a>Zelf studie: SAP SuccessFactors configureren voor Azure AD-gebruikers inrichten (preview-versie)
@@ -110,7 +109,7 @@ Werk samen met uw SuccessFactors-beheer team of implementatie partner om een geb
 * Schuif omlaag in hetzelfde vak en selecteer de **centrale API voor werk nemers**. Voeg machtigingen toe, zoals hieronder wordt weer gegeven, voor meer informatie over het gebruik van ODATA API en Edit met de ODATA-API. Selecteer de optie bewerken als u van plan bent hetzelfde account te gebruiken voor het terugschrijven naar het SuccessFactors-scenario. 
   > [!div class="mx-imgBorder"]
   > ![Lees machtigingen voor schrijven](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
-* Klik op **gereed**. Klik op **wijzigingen opslaan**.
+* Klik op **gereed**. Klik op **Wijzigingen opslaan**.
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>Een machtigings groep maken voor de API-gebruiker
 
@@ -139,7 +138,7 @@ Werk samen met uw SuccessFactors-beheer team of implementatie partner om een geb
 * Controleer de machtigings rol verlenen aan de machtigings groep. 
   > [!div class="mx-imgBorder"]
   > ![Rol en groeps Details van machtiging](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* Klik op **wijzigingen opslaan**.
+* Klik op **Wijzigingen opslaan**.
 
 ## <a name="configuring-user-provisioning-from-successfactors-to-azure-ad"></a>Gebruikers inrichten van SuccessFactors naar Azure AD configureren
 
@@ -169,7 +168,7 @@ In deze sectie vindt u de stappen voor het inrichten van gebruikers accounts van
 
 8. Voer de sectie **beheerders referenties** als volgt uit:
 
-   * **Gebruikers naam beheerder** : Voer de gebruikers naam in van het gebruikers account van de SUCCESSFACTORS-API, waarbij de bedrijfs-id is toegevoegd. Het heeft de volgende indeling **:\@gebruikers naam companyID**
+   * **Gebruikers naam beheerder** : Voer de gebruikers naam in van het gebruikers account van de SUCCESSFACTORS-API, waarbij de bedrijfs-id is toegevoegd. Het heeft de volgende indeling: **gebruikers naam \@ companyID**
 
    * **Beheerders wachtwoord –** Voer het wacht woord van het gebruikers account van de SuccessFactors-API in. 
 
@@ -181,7 +180,7 @@ In deze sectie vindt u de stappen voor het inrichten van gebruikers accounts van
 
    * Klik op de knop **verbinding testen** . Als de verbindings test is geslaagd, klikt u bovenaan op de knop **Opslaan** . Als dit mislukt, controleert u of de SuccessFactors-referenties en-URL geldig zijn.
     >[!div class="mx-imgBorder"]
-    >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sf2aad-provisioning-creds.png)
+    >![Azure-portal](./media/sap-successfactors-inbound-provisioning/sf2aad-provisioning-creds.png)
 
    * Zodra de referenties zijn opgeslagen, wordt in de sectie **toewijzingen** de standaard toewijzing weer gegeven **SuccessFactors-gebruikers synchroniseren met Azure Active Directory**
 

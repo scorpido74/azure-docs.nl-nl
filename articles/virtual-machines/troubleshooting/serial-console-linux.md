@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
 ms.openlocfilehash: b1f7708c9bd213e201ba4eb8837a191dca68ca9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77167022"
 ---
 # <a name="azure-serial-console-for-linux"></a>Azure Serial Console voor Linux
@@ -46,7 +45,7 @@ Zie [seriële console voor Windows](../windows/serial-console.md)voor informatie
 
 - Zie [seriële console Linux-distributie Beschik baarheid](#serial-console-linux-distribution-availability)voor instellingen die specifiek zijn voor Linux-distributies.
 
-- Uw virtuele machine of exemplaar van de VM-schaalset moet worden geconfigureerd voor `ttys0`seriële uitvoer op. Dit is de standaard instelling voor Azure-installatie kopieën, maar u kunt dit ook controleren op aangepaste installatie kopieën. Details [hieronder](#custom-linux-images).
+- Uw virtuele machine of exemplaar van de VM-schaalset moet worden geconfigureerd voor seriële uitvoer op `ttys0` . Dit is de standaard instelling voor Azure-installatie kopieën, maar u kunt dit ook controleren op aangepaste installatie kopieën. Details [hieronder](#custom-linux-images).
 
 
 > [!NOTE]
@@ -70,11 +69,11 @@ SUSE        | Voor nieuwere SLES-installatie kopieën die beschikbaar zijn op Az
 Oracle Linux        | Seriële console toegang is standaard ingeschakeld.
 
 ### <a name="custom-linux-images"></a>Aangepaste Linux-installatie kopieën
-Als u de seriële console voor uw aangepaste Linux VM-installatie kopie wilt inschakelen, schakelt u */etc/inittab* toegang tot de console in het `ttyS0`bestand/etc/inittab in om een Terminal op uit te voeren. Bijvoorbeeld: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Mogelijk moet u ook een getty op ttyS0 starten. U kunt dit doen met `systemctl start serial-getty@ttyS0.service`.
+Als u de seriële console voor uw aangepaste Linux VM-installatie kopie wilt inschakelen, schakelt u toegang tot de console in het bestand */etc/inittab* in om een Terminal op uit te voeren `ttyS0` . Bijvoorbeeld: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Mogelijk moet u ook een getty op ttyS0 starten. U kunt dit doen met `systemctl start serial-getty@ttyS0.service` .
 
 U moet ook ttyS0 toevoegen als doel voor de seriële uitvoer. Voor meer informatie over het configureren van een aangepaste installatie kopie voor gebruik met de seriële console raadpleegt u de algemene systeem vereisten bij het [maken en uploaden van een Linux-VHD in azure](https://aka.ms/createuploadvhd#general-linux-system-requirements).
 
-Als u een aangepaste kernel bouwt, kunt u overwegen om deze kernel- `CONFIG_SERIAL_8250=y` vlaggen `CONFIG_MAGIC_SYSRQ_SERIAL=y`in te scha kelen: en. Het configuratie bestand bevindt zich doorgaans in het pad */boot/* .
+Als u een aangepaste kernel bouwt, kunt u overwegen om deze kernel-vlaggen in te scha kelen: `CONFIG_SERIAL_8250=y` en `CONFIG_MAGIC_SYSRQ_SERIAL=y` . Het configuratie bestand bevindt zich doorgaans in het pad */boot/* .
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>Algemene scenario's voor toegang tot de seriële console
 
@@ -108,13 +107,13 @@ Alle toegang tot de seriële console is momenteel geregistreerd in de logboeken 
 Als een gebruiker is verbonden met de seriële console en een andere gebruiker de toegang tot dezelfde virtuele machine heeft gevraagd, wordt de verbinding met de eerste gebruiker verbroken en wordt de tweede gebruiker verbonden met dezelfde sessie.
 
 > [!CAUTION]
-> Dit betekent dat een gebruiker die de verbinding is verbroken niet afmeldt. De mogelijkheid om een afmelding af te dwingen bij het verbreken van de verbinding (met behulp van SIGHUP of soortgelijk mechanisme) bevindt zich nog in het schema Voor Windows is er een automatische time-out ingeschakeld in speciale beheer console (SAC); voor Linux kunt u echter de instelling time-out terminal configureren. Als u dit wilt doen `export TMOUT=600` , voegt u het bestand *. bash_profile* of *. profile* toe aan de gebruiker die u gebruikt om u aan te melden bij de-console. Deze instelling is een time-out voor de sessie na 10 minuten.
+> Dit betekent dat een gebruiker die de verbinding is verbroken niet afmeldt. De mogelijkheid om een afmelding af te dwingen bij het verbreken van de verbinding (met behulp van SIGHUP of soortgelijk mechanisme) bevindt zich nog in het schema Voor Windows is er een automatische time-out ingeschakeld in speciale beheer console (SAC); voor Linux kunt u echter de instelling time-out terminal configureren. Als u dit wilt doen, voegt `export TMOUT=600` u het bestand *. bash_profile* of *. profile* toe aan de gebruiker die u gebruikt om u aan te melden bij de-console. Deze instelling is een time-out voor de sessie na 10 minuten.
 
 ## <a name="accessibility"></a>Toegankelijkheid
 Toegankelijkheid is een belang rijke focus voor de Azure Serial console. Daarom hebben we ervoor gezorgd dat de seriële console volledig toegankelijk is.
 
 ### <a name="keyboard-navigation"></a>Toetsenbordnavigatie
-Gebruik de **Tab** -toets op het toetsen bord om te navigeren in de interface van de seriële console van de Azure Portal. Uw locatie wordt op het scherm gemarkeerd. Als u de focus van het venster van de seriële console wilt verlaten, drukt u op **CTRL**+**F6** op het toetsen bord.
+Gebruik de **Tab** -toets op het toetsen bord om te navigeren in de interface van de seriële console van de Azure Portal. Uw locatie wordt op het scherm gemarkeerd. Als u de focus van het venster van de seriële console wilt verlaten, drukt u op **CTRL** + **F6** op het toetsen bord.
 
 ### <a name="use-serial-console-with-a-screen-reader"></a>Seriële console gebruiken met een scherm lezer
 De seriële console heeft ingebouwde ondersteuning voor scherm lezers. Door te navigeren met een ingeschakelde scherm lezer, kan de ALT-tekst voor de momenteel geselecteerde knop hardop worden gelezen door de scherm lezer.
@@ -124,21 +123,21 @@ Er zijn enkele problemen met de seriële console en het besturings systeem van d
 
 Probleem                           |   Oplossing
 :---------------------------------|:--------------------------------------------|
-Wanneer u op **Enter** drukt na de verbindings banner, wordt er geen aanmeldings prompt weer gegeven. | GRUB is mogelijk niet juist geconfigureerd. Voer de volgende opdrachten uit `grub2-mkconfig -o /etc/grub2-efi.cfg` : en/ `grub2-mkconfig -o /etc/grub2.cfg`of. Voor meer informatie, zie op ' door [voeren Enter ' niets](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Dit probleem kan optreden als u een aangepaste VM, een vrijgemaakt apparaat of een GRUB-configuratie uitvoert die ervoor zorgt dat Linux geen verbinding kan maken met de seriële poort.
-Seriële console tekst neemt een deel van de scherm grootte in beslag (vaak na het gebruik van een tekst editor). | Seriële consoles bieden geen ondersteuning voor onderhandelen over de venster grootte ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)). Dit betekent dat er geen SIGWINCH-signaal wordt verzonden naar de scherm grootte van de update en dat de virtuele machine geen kennis heeft van de grootte van uw Terminal. Installeer xterm of een soortgelijk hulp programma om u de `resize` opdracht te geven en vervolgens uit `resize`te voeren.
+Wanneer u op **Enter** drukt na de verbindings banner, wordt er geen aanmeldings prompt weer gegeven. | GRUB is mogelijk niet juist geconfigureerd. Voer de volgende opdrachten uit: `grub2-mkconfig -o /etc/grub2-efi.cfg` en/of `grub2-mkconfig -o /etc/grub2.cfg` . Voor meer informatie, zie op ' door [voeren Enter ' niets](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Dit probleem kan optreden als u een aangepaste VM, een vrijgemaakt apparaat of een GRUB-configuratie uitvoert die ervoor zorgt dat Linux geen verbinding kan maken met de seriële poort.
+Seriële console tekst neemt een deel van de scherm grootte in beslag (vaak na het gebruik van een tekst editor). | Seriële consoles bieden geen ondersteuning voor onderhandelen over de venster grootte ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)). Dit betekent dat er geen SIGWINCH-signaal wordt verzonden naar de scherm grootte van de update en dat de virtuele machine geen kennis heeft van de grootte van uw Terminal. Installeer xterm of een soortgelijk hulp programma om u de opdracht te geven `resize` en vervolgens uit te voeren `resize` .
 Het plakken van lange teken reeksen werkt niet. | De seriële console beperkt de lengte van teken reeksen die in de terminal worden geplakt tot 2048 tekens om te voor komen dat de band breedte van de seriële poort wordt overbelast.
-Er zijn geen toetsenbord invoer in SLES BYOS-installatie kopieën. Toetsenbord invoer wordt alleen sporadisch herkend. | Dit is een probleem met het Plymouth-pakket. Plymouth moet niet worden uitgevoerd in azure omdat u geen welkomst scherm nodig hebt en Plymouth de mogelijkheid biedt om de seriële console te gebruiken. Verwijder Plymouth met `sudo zypper remove plymouth` en start de computer opnieuw op. U kunt ook de kernel-regel van uw GRUB-configuratie wijzigen door `plymouth.enable=0` toe te voegen aan het einde van de regel. U kunt dit doen door [de opstart vermelding tijdens het opstarten te bewerken](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles)of door de GRUB_CMDLINE_LINUX regel in `/etc/default/grub`te bewerken, grub opnieuw te `grub2-mkconfig -o /boot/grub2/grub.cfg`maken met en vervolgens opnieuw op te starten.
+Er zijn geen toetsenbord invoer in SLES BYOS-installatie kopieën. Toetsenbord invoer wordt alleen sporadisch herkend. | Dit is een probleem met het Plymouth-pakket. Plymouth moet niet worden uitgevoerd in azure omdat u geen welkomst scherm nodig hebt en Plymouth de mogelijkheid biedt om de seriële console te gebruiken. Verwijder Plymouth met `sudo zypper remove plymouth` en start de computer opnieuw op. U kunt ook de kernel-regel van uw GRUB-configuratie wijzigen door `plymouth.enable=0` toe te voegen aan het einde van de regel. U kunt dit doen door [de opstart vermelding tijdens het opstarten te bewerken](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles)of door de GRUB_CMDLINE_LINUX regel in `/etc/default/grub` te bewerken, grub opnieuw te maken met en vervolgens opnieuw op te `grub2-mkconfig -o /boot/grub2/grub.cfg` starten.
 
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
 **V. Hoe kan ik feedback verzenden?**
 
-A. Geef feedback door het maken van een GitHub https://aka.ms/serialconsolefeedback-probleem op. Als alternatief (minder voor keur) kunt u feedback verzenden via azserialhelp@microsoft.com of in de virtuele-machine categorie https://feedback.azure.comvan.
+A. Geef feedback door het maken van een GitHub-probleem op https://aka.ms/serialconsolefeedback . Als alternatief (minder voor keur) kunt u feedback verzenden via azserialhelp@microsoft.com of in de virtuele-machine categorie van https://feedback.azure.com .
 
 **V. ondersteunt de seriële console kopiëren/plakken?**
 
-A. Ja. Gebruik **CTRL**+**SHIFT**+**C** en **CTRL**+**Shift**SHIFT+**V** om de Terminal te kopiëren en plakken.
+A. Ja. Gebruik **CTRL** + **SHIFT** + **C** en **CTRL** + **SHIFT** + **V** om de Terminal te kopiëren en plakken.
 
 **V. kan ik seriële console gebruiken in plaats van een SSH-verbinding?**
 

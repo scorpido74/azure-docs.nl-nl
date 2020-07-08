@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77087138"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>Een VPN-verbinding met uw CloudSimple-Privécloud configureren
@@ -37,7 +36,7 @@ VPN-client is nodig om vanaf uw computer verbinding te maken met CloudSimple.  D
 1. Start de CloudSimple-Portal en selecteer **netwerk**.
 2. Selecteer **VPN gateway**.
 3. Klik in de lijst met VPN-gateways op de punt-naar-site-VPN-gateway.
-4. Selecteer **Gebruikers**.
+4. Selecteer **gebruikers**.
 5. Klik op **mijn VPN-configuratie downloaden**
 
     ![VPN-configuratie downloaden](media/download-p2s-vpn-configuration.png)
@@ -57,7 +56,7 @@ Hieronder ziet u een voor beeld van het importeren van een verbinding met de **v
 
 2. Open viscositeit op uw computer.
 
-3. Klik op **+** het pictogram en selecteer **verbinding** > importeren**uit bestand**.
+3. Klik op het **+** pictogram en selecteer **verbinding importeren**  >  **uit bestand**.
 
     ![VPN-configuratie importeren uit bestand](media/import-p2s-vpn-config.png)
 
@@ -79,7 +78,7 @@ Met een punt-naar-site-VPN-verbinding worden de DNS-namen van de eerste Privécl
 
 1. Start de [CloudSimple-Portal](access-cloudsimple-portal.md).
 
-2. Navigeer naar **Resources** > **persoonlijke Clouds** van resources en selecteer de privécloud waarmee u verbinding wilt maken.
+2. Navigeer naar **Resources**  >  **persoonlijke Clouds** van resources en selecteer de privécloud waarmee u verbinding wilt maken.
 
 3. Op de pagina **samen vatting** van de privécloud kopieert u het IP-adres van de DNS-server van de Privécloud onder **basis informatie**.
 
@@ -97,7 +96,7 @@ Met een punt-naar-site-VPN-verbinding worden de DNS-namen van de eerste Privécl
 
     ![VPN-verbinding bewerken](media/viscosity-edit-connection.png)
 
-7. Klik op het tabblad **netwerken** en voer de IP-adressen van de DNS-server voor de privécloud in, gescheiden door ```cloudsimple.io```een komma of een spatie en het domein.  Selecteer **DNS-instellingen negeren die worden verzonden door de VPN-server**.
+7. Klik op het tabblad **netwerken** en voer de IP-adressen van de DNS-server voor de privécloud in, gescheiden door een komma of een spatie en het domein ```cloudsimple.io``` .  Selecteer **DNS-instellingen negeren die worden verzonden door de VPN-server**.
 
     ![VPN-netwerken](media/viscosity-edit-connection-networking.png)
 

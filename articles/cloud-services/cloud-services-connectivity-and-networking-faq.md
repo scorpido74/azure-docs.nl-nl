@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
 ms.openlocfilehash: 7caeba0e88f63106eae80f7142b5d65463f8d7a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77019397"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemen met de verbinding en het netwerk voor Azure Cloud Services: veelgestelde vragen (FAQ)
@@ -38,7 +37,7 @@ Voeg regels toe aan de NSG die verkeer toestaan op de poorten **3389** en **2000
 
 Nee, niet met behulp van het normale ' ping '/ICMP-protocol. Het ICMP-protocol is niet toegestaan via de Azure-load balancer.
 
-Als u de connectiviteit wilt testen, raden we u aan een poort ping uit te voeren. Terwijl ping. exe ICMP gebruikt, kunt u andere hulpprogram ma's, zoals PSPing, nmap en Telnet, gebruiken om de connectiviteit met een specifieke TCP-poort te testen.
+Als u de connectiviteit wilt testen, raden we u aan een poort ping uit te voeren. Hoewel Ping.exe ICMP gebruikt, kunt u andere hulpprogram ma's, zoals PSPing, nmap en Telnet, gebruiken om de connectiviteit met een specifieke TCP-poort te testen.
 
 Zie voor meer informatie [poort pingen gebruiken in plaats van ICMP om Azure VM-connectiviteit te testen](https://blogs.msdn.microsoft.com/mast/2014/06/22/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity/).
 
@@ -65,14 +64,14 @@ Het gebruikte distributie algoritme is een hash van 5-tuple (bron-IP, bron poort
 
 ## <a name="how-can-i-redirect-incoming-traffic-to-the-default-url-of-my-cloud-service-to-a-custom-url"></a>Hoe kan ik binnenkomend verkeer naar de standaard-URL van mijn Cloud service omleiden naar een aangepaste URL?
 
-De module voor het herschrijven van URL'S van IIS kan worden gebruikt om verkeer dat wordt omgeleid naar de standaard-URL voor de Cloud \*service (bijvoorbeeld. cloudapp.net), om te leiden naar een aangepaste naam/URL. Omdat de module voor het herschrijven van URL'S standaard is ingeschakeld op webrollen en de bijbehorende regels worden geconfigureerd in de web. config van de toepassing, is deze altijd beschikbaar op de virtuele machine, ongeacht het opnieuw opstarten of terugzetten van de installatie kopieën. Zie voor meer informatie:
+De module voor het herschrijven van URL'S van IIS kan worden gebruikt om verkeer dat wordt omgeleid naar de standaard-URL voor de Cloud service (bijvoorbeeld \* . cloudapp.net), om te leiden naar een aangepaste naam/URL. Omdat de module voor het herschrijven van URL'S standaard is ingeschakeld op webrollen en de bijbehorende regels worden geconfigureerd in de web.config van de toepassing, is deze altijd beschikbaar op de virtuele machine, ongeacht het opnieuw opstarten/terugzetten van installatie kopieën. Zie voor meer informatie:
 
 - [Herschrijf regels maken voor de module voor het herschrijven van URL'S](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
 - [Een standaard koppeling verwijderen](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>Hoe kan ik binnenkomend verkeer naar de standaard-URL van mijn Cloud service blok keren/uitschakelen?
 
-U kunt voor komen dat binnenkomend verkeer naar de standaard-URL/naam van uw Cloud \*service (bijvoorbeeld. cloudapp.net). Stel de host-header in op een aangepaste DNS-naam (bijvoorbeeld\.www-MyCloudService.com) onder configuratie van site binding in het bestand met de Cloud service definition (*. csdef), zoals aangegeven:
+U kunt voor komen dat binnenkomend verkeer naar de standaard-URL/naam van uw Cloud service (bijvoorbeeld \* . cloudapp.net). Stel de host-header in op een aangepaste DNS-naam (bijvoorbeeld www- \. MyCloudService.com) onder configuratie van site binding in het bestand met de Cloud service definition (*. csdef), zoals aangegeven:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

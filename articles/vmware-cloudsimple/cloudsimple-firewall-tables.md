@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 89bef6cef48f2b972aa3f931008b0db84431b832
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025041"
 ---
 # <a name="firewall-tables-overview"></a>Overzicht van Firewall tabellen
@@ -26,14 +25,14 @@ In de volgende tabel worden de para meters in een firewall regel beschreven.
 | Eigenschap | Details |
 | ---------| --------|
 | **Naam** | Een naam die een unieke identificatie vormt van de firewall regel en het doel ervan. |
-| **Prioriteiten** | Een getal tussen 100 en 4096, met 100 de hoogste prioriteit. Regels worden in volg orde van prioriteit verwerkt. Wanneer het verkeer een regel overeenkomst tegen komt, stopt de verwerking van de regel. Als gevolg hiervan worden regels met een lagere prioriteit die dezelfde kenmerken hebben als regels met hogere prioriteiten, niet verwerkt.  Wees voorzichtig om conflicterende regels te voor komen. |
+| **Priority** | Een getal tussen 100 en 4096, met 100 de hoogste prioriteit. Regels worden in volg orde van prioriteit verwerkt. Wanneer het verkeer een regel overeenkomst tegen komt, stopt de verwerking van de regel. Als gevolg hiervan worden regels met een lagere prioriteit die dezelfde kenmerken hebben als regels met hogere prioriteiten, niet verwerkt.  Wees voorzichtig om conflicterende regels te voor komen. |
 | **Status bijhouden** | Bijhouden kan stateless (Privécloud, Internet of VPN) of stateful (openbaar IP-adres) zijn.  |
-| **Protocolsubstatus** | De opties zijn onder andere TCP of UDP. Als ICMP vereist is, gebruikt u een. |
-| **Draaien** | Hiermee wordt aangegeven of de regel van toepassing is op binnenkomend of uitgaand verkeer. |
+| **Protocol** | De opties zijn onder andere TCP of UDP. Als ICMP vereist is, gebruikt u een. |
+| **Richting** | Hiermee wordt aangegeven of de regel van toepassing is op binnenkomend of uitgaand verkeer. |
 | **Actie** | Het type verkeer dat in de regel is gedefinieerd, toestaan of weigeren. |
 | **Bron** | Een IP-adres, een CIDR-blok (Classless Inter-Domain Routing) (10.0.0.0/24) of een wille keurig.  Als u een bereik, een servicetag of een toepassings beveiligings groep opgeeft, kunt u minder beveiligings regels maken. |
 | **Bron poort** | Poort van waaruit het netwerk verkeer afkomstig is.  U kunt een afzonderlijke poort of een bereik van poorten opgeven, zoals 443 of 8000-8080. Als u bereiken opgeeft, hoeft u minder beveiligingsregels te maken. |
-| **Beoogde** | Een IP-adres, een CIDR-blok (Classless Inter-Domain Routing) (10.0.0.0/24) of een wille keurig.  Als u een bereik, een servicetag of een toepassings beveiligings groep opgeeft, kunt u minder beveiligings regels maken.  |
+| **Doel** | Een IP-adres, een CIDR-blok (Classless Inter-Domain Routing) (10.0.0.0/24) of een wille keurig.  Als u een bereik, een servicetag of een toepassings beveiligings groep opgeeft, kunt u minder beveiligings regels maken.  |
 | **Doel poort** | Poort waarnaar het netwerk verkeer loopt.  U kunt een afzonderlijke poort of een bereik van poorten opgeven, zoals 443 of 8000-8080. Als u bereiken opgeeft, hoeft u minder beveiligingsregels te maken.|
 
 ### <a name="stateless"></a>Stateless
@@ -53,7 +52,7 @@ Er zijn mogelijk extra regels vereist voor de verkeers stroom in de omgekeerde r
 
 In elke firewall tabel worden de volgende standaard regels gemaakt.
 
-|Prioriteit|Naam|Status bijhouden|Richting|Verkeers type|Protocol|Bron|Bronpoort|Doel|Doelpoort|Bewerking|
+|Prioriteit|Name|Status bijhouden|Richting|Verkeers type|Protocol|Bron|Bronpoort|Doel|Doelpoort|Bewerking|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
 |65000|alles-naar-Internet toestaan|Stateful|Uitgaand|Openbaar IP-of Internet verkeer|Alle|Alle|Alle|Alle|Alle|Toestaan|
 |65001|weigeren: alle van Internet|Stateful|Inkomend|Openbaar IP-of Internet verkeer|Alle|Alle|Alle|Alle|Alle|Weigeren|

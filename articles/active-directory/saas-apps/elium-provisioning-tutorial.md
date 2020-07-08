@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: a3e1c936d46e0d9b0ad3b98dafeda7df0b4a23db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77058460"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Zelf studie: Elium configureren voor automatische gebruikers inrichting
@@ -55,7 +54,7 @@ Wanneer u een gebruiker toewijst aan Elium, moet u een geldige toepassingsspecif
 
 Voordat u Elium configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u systeem inschakelen voor SCIM-inrichting (Cross-Domain Identity Management) op Elium. Volg deze stappen:
 
-1. Meld u aan bij Elium en ga naar **Mijn profiel** > **instellingen**.
+1. Meld u aan bij Elium en ga naar **Mijn profiel**  >  **instellingen**.
 
     ![Menu-item instellingen in Elium](media/Elium-provisioning-tutorial/setting.png)
 
@@ -75,7 +74,7 @@ Als u Elium wilt configureren voor het automatisch inrichten van gebruikers met 
 
     ![Menu-item Azure Active Directory](common/select-azuread.png)
 
-1. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
 
      ![Blade Azure AD-zakelijke toepassingen](common/enterprise-applications.png)
 
@@ -112,7 +111,7 @@ Voer de volgende stappen uit om de automatische gebruikers inrichting voor Elium
 
     ![Automatische instelling voor inrichtings modus](common/provisioning-automatic.png)
 
-1. Typ **Tenant URL** **Admin Credentials** in de sectie beheerders referenties **\>tenantURL/scim/v2 in het veld Tenant-URL. \<** (De **tenantURL** is de waarde die eerder is opgehaald uit de Elium-beheer console.) Typ ook de waarde van het Elium **Secret-token** in het veld **geheime token** . Selecteer tot slot **verbinding testen** om te controleren of Azure AD verbinding kan maken met Elium. Als de verbinding mislukt, zorgt u ervoor dat uw Elium-account beheerders machtigingen heeft en probeer het opnieuw.
+1. Typ in de sectie **beheerders referenties** ** \<tenantURL\> /scim/v2** in het veld **Tenant-URL** . (De **tenantURL** is de waarde die eerder is opgehaald uit de Elium-beheer console.) Typ ook de waarde van het Elium **Secret-token** in het veld **geheime token** . Selecteer tot slot **verbinding testen** om te controleren of Azure AD verbinding kan maken met Elium. Als de verbinding mislukt, zorgt u ervoor dat uw Elium-account beheerders machtigingen heeft en probeer het opnieuw.
 
     ![Tenant-URL en geheime token velden in beheerders referenties](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -151,7 +150,7 @@ Gebruik de sectie **huidige status** om de voortgang te bewaken en koppelingen n
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * Het [inrichten van een gebruikers account voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md).
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

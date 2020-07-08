@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.openlocfilehash: 469e926932ffa11ef9f2a262b78a587ba435549e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77023987"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>Bericht interface voor het door geven van HPC instellen
@@ -120,7 +119,7 @@ Volg het installatie proces.
 
 [Down load Intel mpi](https://software.intel.com/mpi-library/choose-download).
 
-Wijzig de I_MPI_FABRICS omgevings variabele, afhankelijk van de versie. Voor Intel MPI 2018, gebruik `I_MPI_FABRICS=shm:ofa` en voor 2019, gebruikt `I_MPI_FABRICS=shm:ofi`u.
+Wijzig de I_MPI_FABRICS omgevings variabele, afhankelijk van de versie. Voor Intel MPI 2018, gebruik `I_MPI_FABRICS=shm:ofa` en voor 2019, gebruikt u `I_MPI_FABRICS=shm:ofi` .
 
 Proces vastmaken werkt standaard goed voor 15, 30 en 60 PPN.
 
@@ -141,7 +140,7 @@ CC=<mpi-install-path/bin/mpicc>CXX=<mpi-install-path/bin/mpicxx> ./configure
 make
 ```
 
-MPI-benchmarks bevinden zich in `mpi/` de map.
+MPI-benchmarks bevinden zich in de `mpi/` map.
 
 
 ## <a name="discover-partition-keys"></a>Partitie sleutels detecteren

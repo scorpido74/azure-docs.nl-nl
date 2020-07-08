@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4fb930603455ed1a5df5d357fcab669f41a0c28c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77024942"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>Overzicht van CloudSimple Private Cloud
@@ -37,7 +36,7 @@ Met deze compatibiliteit kunnen uw teams werk belastingen op de Azure-Cloud behe
 
 * Netwerk
 * Beveiliging  
-* Gegevensbeveiliging  
+* Gegevensbescherming  
 * Controleren
 
 CloudSimple beheert de infra structuur en alle benodigde netwerk-en beheer Services. Met de CloudSimple-service kan uw team zich richten op het volgende:
@@ -46,7 +45,7 @@ CloudSimple beheert de infra structuur en alle benodigde netwerk-en beheer Servi
 * Toepassingsinrichting
 * Bedrijfscontinuïteit
 * Ondersteuning
-* Beleidsafdwinging
+* Afdwingen van beleid
 
 ## <a name="private-cloud-environment-overview"></a>Overzicht van de privécloud-omgeving
 

@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
 ms.openlocfilehash: 8fcd0661e2c7cab505121cf0d4d7b4c1d29017f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77063778"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Fout oplossen: ' Azure Functions-runtime is onbereikbaar '
@@ -44,7 +43,7 @@ Als u in de vorige stap geen opslag account connection string kunt vinden, is de
 
 Zie voor meer informatie [app-instellingen naslag informatie voor Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-app-settings).
 
-### <a name="guidance"></a>Richtlijnen
+### <a name="guidance"></a>Hulp
 
 * Schakel de optie ' sleuf instelling ' niet in voor een van deze instellingen. Als u implementatie sleuven verwisselt, wordt de functie-app onderbroken.
 * Wijzig deze instellingen niet als onderdeel van automatische implementaties.
@@ -66,7 +65,7 @@ De functie-app moet toegang hebben tot het opslag account. Veelvoorkomende probl
 
 Als u een dagelijks uitvoerings quotum hebt geconfigureerd, is de functie-app tijdelijk uitgeschakeld, waardoor veel van de besturings elementen van de portal niet meer beschikbaar zijn. 
 
-Als u het quotum wilt controleren in de [Azure Portal](https://portal.azure.com), selecteert u **platform functies** > **functie-app instellingen** in uw functie-app. Als u de **dagelijkse gebruiks quota** hebt ingesteld, wordt het volgende bericht weer gegeven:
+Als u het quotum wilt controleren in de [Azure Portal](https://portal.azure.com), selecteert u **platform functies**  >  **functie-app instellingen** in uw functie-app. Als u de **dagelijkse gebruiks quota** hebt ingesteld, wordt het volgende bericht weer gegeven:
 
   > "De functie-app heeft het quotum voor dagelijks gebruik bereikt en is gestopt tot de volgende periode van 24 uur."
 

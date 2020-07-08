@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 00348d36c38fdbfdf69a2e4e80a4c720268b40c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025364"
 ---
 # <a name="manage-accounts-on-the-azure-vmware-solution-by-cloudsimple-portal"></a>Accounts in de Azure VMware-oplossing beheren via de CloudSimple-Portal
@@ -35,6 +34,6 @@ Als u een vermelding wilt verwijderen, klikt u op **X**.
 
 ## <a name="cloudsimple-operator-access"></a>Toegang tot CloudSimple-operator
 
-Met de instelling voor operator toegang kan CloudSimple u helpen bij het oplossen van problemen, waardoor een ondersteunings technicus zich kan aanmelden bij uw CloudSimple-Portal.  De instelling is standaard ingeschakeld. Alle acties die worden uitgevoerd door de ondersteunings technicus wanneer u zich aanmeldt bij uw klant account, worden geregistreerd en beschikbaar gesteld voor uw beoordeling op de pagina **activiteiten** > **controleren** .
+Met de instelling voor operator toegang kan CloudSimple u helpen bij het oplossen van problemen, waardoor een ondersteunings technicus zich kan aanmelden bij uw CloudSimple-Portal.  De instelling is standaard ingeschakeld. Alle acties die worden uitgevoerd door de ondersteunings technicus wanneer u zich aanmeldt bij uw klant account, worden geregistreerd en beschikbaar gesteld voor uw beoordeling op de pagina **activiteiten**  >  **controleren** .
 
 Klik op de **CloudSimple-operator toegang ingeschakeld** om de toegang in of uit te scha kelen.

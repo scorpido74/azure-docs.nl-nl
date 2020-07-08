@@ -20,13 +20,12 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f3a1be435e297ab4a9ba7f8bfbd5f3ce3451d8a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77153873"
 ---
-# <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Overzicht van OData- `$filter`taal `$orderby`voor, `$select` en in azure Cognitive Search
+# <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Overzicht van OData-taal voor `$filter` , `$orderby` en `$select` in azure Cognitive Search
 
 Azure Cognitive Search ondersteunt een subset van de syntaxis van de OData-expressie voor **$filter**, **$OrderBy**en **$Select** expressies. Filter expressies worden geëvalueerd tijdens het parseren van query's, het beperken van zoek opdrachten naar specifieke velden of het toevoegen van match criteria die worden gebruikt tijdens index scans. Order-by-expressies worden toegepast als een verwerkings stap van een resultaatset om de geretourneerde documenten te sorteren. Expressies selecteren bepalen welke document velden worden opgenomen in de resultatenset. De syntaxis van deze expressies verschilt van de [eenvoudige](query-simple-syntax.md) of [volledige](query-lucene-syntax.md) query syntaxis die wordt gebruikt in de **Zoek** parameter, hoewel er wel een overlap is in de syntaxis voor verwijzende velden.
 
@@ -66,26 +65,26 @@ Er is ook een interactief syntaxis diagram beschikbaar:
 
 Een pad naar een veld bestaat uit een of meer **id's** , gescheiden door slashes. Elke id is een reeks tekens die moet beginnen met een ASCII-letter of onderstrepings teken en alleen ASCII-letters, cijfers of onderstrepings tekens bevatten. De letters kunnen in het hoofd of kleine letters worden getypt.
 
-Een id kan verwijzen naar de naam van een veld of naar een **bereik variabele** in de context van een [verzamelings expressie](search-query-odata-collection-operators.md) (`any` of `all`) in een filter. Een bereik variabele is een lus-variabele die het huidige element van de verzameling weergeeft. Voor complexe verzamelingen vertegenwoordigt die variabele een object. dat is de reden waarom u veld paden kunt gebruiken om te verwijzen naar subvelden van de variabele. Dit is vergelijkbaar met punt notatie in veel programmeer talen.
+Een id kan verwijzen naar de naam van een veld of naar een **bereik variabele** in de context van een [verzamelings expressie](search-query-odata-collection-operators.md) ( `any` of `all` ) in een filter. Een bereik variabele is een lus-variabele die het huidige element van de verzameling weergeeft. Voor complexe verzamelingen vertegenwoordigt die variabele een object. dat is de reden waarom u veld paden kunt gebruiken om te verwijzen naar subvelden van de variabele. Dit is vergelijkbaar met punt notatie in veel programmeer talen.
 
 Voor beelden van veld paden worden weer gegeven in de volgende tabel:
 
-| Pad naar veld | Beschrijving |
+| Pad naar veld | Description |
 | --- | --- |
 | `HotelName` | Verwijst naar een veld op het hoogste niveau van de index |
-| `Address/City` | Verwijst naar het `City` subveld van een complex veld in de index. `Address` is van het `Edm.ComplexType` type in dit voor beeld |
-| `Rooms/Type` | Verwijst naar het `Type` subveld van een complex verzamelings veld in de index. `Rooms` is van het `Collection(Edm.ComplexType)` type in dit voor beeld |
-| `Stores/Address/Country` | Verwijst naar het `Country` subveld van het `Address` subveld van een complex verzamelings veld in de index. `Stores` is van het `Collection(Edm.ComplexType)` type `Address` en is van `Edm.ComplexType` het type in dit voor beeld |
+| `Address/City` | Verwijst naar het `City` subveld van een complex veld in de index; `Address` is van het type `Edm.ComplexType` in dit voor beeld |
+| `Rooms/Type` | Verwijst naar het `Type` subveld van een complex verzamelings veld in de index; `Rooms` is van het type `Collection(Edm.ComplexType)` in dit voor beeld |
+| `Stores/Address/Country` | Verwijst naar het `Country` subveld van het `Address` subveld van een complex verzamelings veld in de index; `Stores` is van het type `Collection(Edm.ComplexType)` en `Address` is van het type `Edm.ComplexType` in dit voor beeld |
 | `room/Type` | Verwijst naar het `Type` subveld van de `room` variabele Range, bijvoorbeeld in de filter expressie`Rooms/any(room: room/Type eq 'deluxe')` |
 | `store/Address/Country` | Verwijst naar het `Country` subveld van het `Address` subveld van de `store` bereik variabele, bijvoorbeeld in de filter expressie`Stores/any(store: store/Address/Country eq 'Canada')` |
 
 De betekenis van een pad naar een veld verschilt, afhankelijk van de context. In filters verwijst een veld pad naar de waarde van *één exemplaar* van een veld in het huidige document. In andere contexten, zoals **$OrderBy**, **$Select**of in een [Zoek opdracht in de volledige lucene-syntaxis](query-lucene-syntax.md#bkmk_fields)verwijst een pad naar het veld zelf. Dit verschil heeft een aantal gevolgen voor de manier waarop u veld paden in filters gebruikt.
 
-Overweeg het pad naar `Address/City`het veld. In een filter verwijst dit naar één plaats voor het huidige document, zoals ' San Francisco '. `Rooms/Type` Verwijst daarentegen naar het `Type` subveld voor veel kamers (zoals ' standaard ' voor de eerste kamer ' Deluxe ' voor de tweede kamer, enzovoort). Omdat `Rooms/Type` niet naar *één exemplaar* van het subveld `Type`verwijst, kan het niet rechtstreeks worden gebruikt in een filter. In plaats daarvan gebruikt u een [lambda-expressie](search-query-odata-collection-operators.md) met een bereik variabele, als u wilt filteren op room-type:
+Overweeg het pad naar het veld `Address/City` . In een filter verwijst dit naar één plaats voor het huidige document, zoals ' San Francisco '. Verwijst daarentegen `Rooms/Type` naar het `Type` subveld voor veel kamers (zoals ' standaard ' voor de eerste kamer ' Deluxe ' voor de tweede kamer, enzovoort). Omdat `Rooms/Type` niet naar *één exemplaar* van het subveld verwijst `Type` , kan het niet rechtstreeks worden gebruikt in een filter. In plaats daarvan gebruikt u een [lambda-expressie](search-query-odata-collection-operators.md) met een bereik variabele, als u wilt filteren op room-type:
 
     Rooms/any(room: room/Type eq 'deluxe')
 
-In dit voor beeld wordt de variabele `room` Range weer gegeven `room/Type` in het veld pad. Op die manier `room/Type` verwijst naar het type van de huidige ruimte in het huidige document. Dit is één exemplaar van het `Type` subveld, zodat het rechtstreeks in het filter kan worden gebruikt.
+In dit voor beeld wordt de variabele Range `room` weer gegeven in het `room/Type` veld pad. Op die manier `room/Type` verwijst naar het type van de huidige ruimte in het huidige document. Dit is één exemplaar van het `Type` subveld, zodat het rechtstreeks in het filter kan worden gebruikt.
 
 ### <a name="using-field-paths"></a>Veld paden gebruiken
 
@@ -126,7 +125,7 @@ De volgende tabel bevat voor beelden van constanten voor elk van de gegevens typ
 
 Teken reeks constanten in OData worden gescheiden door enkele aanhalings tekens. Als u een query wilt maken met een teken reeks constante die mogelijk enkele aanhalings tekens bevat, kunt u de Inge sloten aanhalings tekens sluiten door ze te verdubbelen.
 
-Een woord groep met een niet-geformatteerde apostrof zoals "Car auto" wordt bijvoorbeeld weer gegeven in OData als de teken reeks `'Alice''s car'`constante.
+Een woord groep met een niet-geformatteerde apostrof zoals "Car auto" wordt bijvoorbeeld weer gegeven in OData als de teken reeks constante `'Alice''s car'` .
 
 > [!IMPORTANT]
 > Wanneer u via een programma filters maakt, is het belang rijk om teken reeks constanten te onthouden die afkomstig zijn van gebruikers invoer. Zo kunt u de kans op [ininjectie aanvallen](https://wikipedia.org/wiki/SQL_injection)beperken, met name bij het gebruik van filters voor het implementeren van [beveiligings beperking](search-security-trimming-for-azure-search.md).
@@ -205,7 +204,7 @@ Er is ook een interactief syntaxis diagram beschikbaar:
 
 ## <a name="building-expressions-from-field-paths-and-constants"></a>Expressies maken op basis van veld paden en constanten
 
-Veld paden en constanten vormen het meest eenvoudige deel van een OData-expressie, maar ze zijn al volledige expressies zelf. In feite is de **$Select** para meter in azure Cognitive Search niets, maar een door komma's gescheiden lijst met veld paden en **$OrderBy** niet veel ingewik kelder dan **$Select**. Als u een veld van het type `Edm.Boolean` in de index wilt hebben, kunt u zelfs een filter schrijven dat niets maar het pad van dat veld is. De constanten `true` en `false` zijn ook geldige filters.
+Veld paden en constanten vormen het meest eenvoudige deel van een OData-expressie, maar ze zijn al volledige expressies zelf. In feite is de **$Select** para meter in azure Cognitive Search niets, maar een door komma's gescheiden lijst met veld paden en **$OrderBy** niet veel ingewik kelder dan **$Select**. Als u een veld van `Edm.Boolean` het type in de index wilt hebben, kunt u zelfs een filter schrijven dat niets maar het pad van dat veld is. De constanten `true` en `false` zijn ook geldige filters.
 
 In de meeste gevallen hebt u echter complexere expressies nodig die naar meer dan een veld en constante verwijzen. Deze expressies zijn op verschillende manieren gebouwd, afhankelijk van de para meter.
 
@@ -229,7 +228,7 @@ Er is ook een interactief syntaxis diagram beschikbaar:
 > [!NOTE]
 > Zie [OData-expressie syntaxis referentie voor Azure Cognitive Search](search-query-odata-syntax-reference.md) voor de volledige ebnf.
 
-De para meters **$OrderBy** en **$Select** zijn zowel door komma's gescheiden lijsten met eenvoudigere expressies. De para meter **$filter** is een booleaanse expressie die bestaat uit een eenvoudiger subexpressie. Deze subexpressies worden gecombineerd met behulp van logische Opera tors zoals [ `and`, `or`, en `not` ](search-query-odata-logical-operators.md), vergelijkings operatoren zoals [ `eq`, `lt`, `gt`,](search-query-odata-comparison-operators.md)enzovoort, en verzamelings operators, zoals [ `any` en `all` ](search-query-odata-collection-operators.md).
+De para meters **$OrderBy** en **$Select** zijn zowel door komma's gescheiden lijsten met eenvoudigere expressies. De para meter **$filter** is een booleaanse expressie die bestaat uit een eenvoudiger subexpressie. Deze subexpressies worden gecombineerd met behulp van logische Opera tors zoals [ `and` ,, `or` en `not` ](search-query-odata-logical-operators.md), vergelijkings operatoren zoals [ `eq` ,, `lt` `gt` ,](search-query-odata-comparison-operators.md)enzovoort, en verzamelings operators, zoals [ `any` en `all` ](search-query-odata-collection-operators.md).
 
 De para meters **$filter**, **$OrderBy**en **$Select** worden uitgebreid beschreven in de volgende artikelen:
 
@@ -237,7 +236,7 @@ De para meters **$filter**, **$OrderBy**en **$Select** worden uitgebreid beschre
 - [OData-$orderby syntaxis in azure Cognitive Search](search-query-odata-orderby.md)
 - [OData-$select syntaxis in azure Cognitive Search](search-query-odata-select.md)
 
-## <a name="see-also"></a>Zie ook  
+## <a name="see-also"></a>Zie tevens  
 
 - [Facet navigatie in azure Cognitive Search](search-faceted-navigation.md)
 - [Filters in azure Cognitive Search](search-filters.md)

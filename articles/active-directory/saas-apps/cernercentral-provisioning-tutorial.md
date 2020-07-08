@@ -16,10 +16,9 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ed04d8fdcc2d79c66e2ebc53c737c78664e4621
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77058313"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Zelf studie: configureren van CERN-centraal voor het automatisch inrichten van gebruikers
@@ -85,7 +84,7 @@ Als u gebruikers accounts wilt inrichten voor CERN-centraal, moet u een CERN-cen
 
    * Geproduceerdhttps://cernercentral.com/system-accounts/
 
-4. Ten slotte moet u gebruikers rooster-Id's voor de sandbox-en productie omgeving ophalen om de configuratie te volt ooien. Zie voor informatie over hoe u dit kunt verkrijgen: https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM. 
+4. Ten slotte moet u gebruikers rooster-Id's voor de sandbox-en productie omgeving ophalen om de configuratie te volt ooien. Zie voor informatie over hoe u dit kunt verkrijgen: https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM . 
 
 5. Nu kunt u Azure AD configureren om gebruikers accounts in te richten op CERN. Meld u aan bij de [Azure Portal](https://portal.azure.com)en blader naar de sectie **Azure Active Directory > Enter prise-apps > alle toepassingen** .
 
@@ -123,12 +122,12 @@ Hiermee start u de initiële synchronisatie van gebruikers en/of groepen die zij
 
 Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [CERN-centraal: identiteits gegevens publiceren met Azure AD](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
 * [Zelf studie: CERN-centraal configureren voor eenmalige aanmelding met Azure Active Directory](cernercentral-tutorial.md)
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

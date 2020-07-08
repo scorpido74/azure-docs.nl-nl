@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 12655d2ceb4a1124376d9bddf82194472c98ebb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77086652"
 ---
 # <a name="persist-state-in-linux"></a>Status persistent in Linux
@@ -25,7 +24,7 @@ Standaard worden alleen meta gegevens persistent gemaakt en gebeurtenissen worde
 Dit artikel bevat de stappen voor het implementeren van de Event Grid module met persistentie in Linux-implementaties.
 
 > [!NOTE]
->De module Event Grid wordt uitgevoerd als een gebruiker met beperkte bevoegdheden met `2000` een UID `eventgriduser`en naam.
+>De module Event Grid wordt uitgevoerd als een gebruiker met beperkte bevoegdheden met een UID `2000` en naam `eventgriduser` .
 
 ## <a name="persistence-via-volume-mount"></a>Persistentie via volume koppeling
 
@@ -170,7 +169,7 @@ Belang rijke aandachtspunten voor het aanhouden van persistente gebeurtenissen:
 * Gebeurtenis persistentie wordt tijdens het maken geconfigureerd op een gebeurtenis abonnement en kan niet worden gewijzigd nadat het gebeurtenis abonnement is gemaakt. Als u wilt overschakelen op gebeurtenis persistentie, moet u het gebeurtenis abonnement verwijderen en opnieuw maken.
 * Het persistent maken van gebeurtenissen is bijna altijd langzamer dan in geheugen bewerkingen, maar het snelheids verschil is echter zeer afhankelijk van de kenmerken van het station. De verhouding tussen snelheid en betrouw baarheid is inherent aan alle berichten systemen, maar wordt in het algemeen alleen op grote schaal in het oog.
 
-Als u gebeurtenis persistentie wilt inschakelen voor een gebeurtenis `persistencePolicy` abonnement `true`, stelt u in op:
+Als u gebeurtenis persistentie wilt inschakelen voor een gebeurtenis abonnement, stelt `persistencePolicy` u in op `true` :
 
  ```json
         {

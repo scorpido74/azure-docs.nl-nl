@@ -13,10 +13,9 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: de259daa7fd27cc4f138c294a7f347502ca482a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77185832"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>IOS-toepassingen migreren die gebruikmaken van Microsoft Authenticator van ADAL.NET naar MSAL.NET
@@ -49,7 +48,7 @@ Ze inschakelen:
 <tr><td>
 In ADAL.NET is Broker-ondersteuning ingeschakeld op basis van context per verificatie. Het is standaard uitgeschakeld. U moest een 
 
-`useBroker`vlag toevoegen aan True in `PlatformParameters` de constructor om de Broker aan te roepen:
+`useBroker`vlag toevoegen aan True in de `PlatformParameters` constructor om de Broker aan te roepen:
 
 ```csharp
 public PlatformParameters(
@@ -98,7 +97,7 @@ result = await app.AcquireTokenInteractive(scopes)
 </table>
 
 ### <a name="step-2-set-a-uiviewcontroller"></a>Stap 2: Stel een UIViewController in ()
-In ADAL.NET hebt u een UIViewController door gegeven als onderdeel van `PlatformParameters`. (Zie het voor beeld in stap 1.) In MSAL.NET wordt een object venster gebruikt om ontwikkel aars meer flexibiliteit te geven, maar dit is niet vereist in het gebruik van gewoon iOS. Als u de Broker wilt gebruiken, stelt u het object venster in om antwoorden te verzenden en te ontvangen van de Broker. 
+In ADAL.NET hebt u een UIViewController door gegeven als onderdeel van `PlatformParameters` . (Zie het voor beeld in stap 1.) In MSAL.NET wordt een object venster gebruikt om ontwikkel aars meer flexibiliteit te geven, maar dit is niet vereist in het gebruik van gewoon iOS. Als u de Broker wilt gebruiken, stelt u het object venster in om antwoorden te verzenden en te ontvangen van de Broker. 
 <table>
 <tr><td>Huidige ADAL-code:</td><td>MSAL-tegen hanger:</td></tr>
 <tr><td>
@@ -115,8 +114,8 @@ page.BrokerParameters = new PlatformParameters(
 </td><td>
 In MSAL.NET voert u twee dingen uit om het object venster voor iOS in te stellen:
 
-1. Stel `AppDelegate.cs` `App.RootViewController` in op een nieuw `UIViewController()`. Deze toewijzing zorgt ervoor dat er een UIViewController is met de aanroep naar de Broker. Als deze niet correct is ingesteld, wordt deze fout mogelijk weer geven:`"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
-1. Gebruik `.WithParentActivityOrWindow(App.RootViewController)`in de AcquireTokenInteractive-aanroep en geef in de verwijzing naar het object venster dat u gaat gebruiken.
+1. `AppDelegate.cs`Stel in `App.RootViewController` op een nieuw `UIViewController()` . Deze toewijzing zorgt ervoor dat er een UIViewController is met de aanroep naar de Broker. Als deze niet correct is ingesteld, wordt deze fout mogelijk weer geven:`"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
+1. Gebruik in de AcquireTokenInteractive-aanroep `.WithParentActivityOrWindow(App.RootViewController)` en geef in de verwijzing naar het object venster dat u gaat gebruiken.
 
 **Bijvoorbeeld:**
 
@@ -144,7 +143,7 @@ Zowel ADAL als MSAL bellen de Broker en de broker in zet de app terug naar uw to
 Er zijn hier geen wijzigingen tussen ADAL.NET en MSAL.NET.
 
 ### <a name="step-4-register-a-url-scheme"></a>Stap 4: een URL-schema registreren
-ADAL.NET en MSAL.NET gebruiken Url's om de Broker aan te roepen en retour neren de Broker respons terug naar de app. Registreer het URL-schema in `Info.plist` het bestand voor uw app als volgt:
+ADAL.NET en MSAL.NET gebruiken Url's om de Broker aan te roepen en retour neren de Broker respons terug naar de app. Registreer het URL-schema in het `Info.plist` bestand voor uw app als volgt:
 
 <table>
 <tr><td>Huidige ADAL-code:</td><td>MSAL-tegen hanger:</td></tr>

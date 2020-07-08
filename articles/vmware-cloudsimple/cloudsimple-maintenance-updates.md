@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025024"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>Onderhoud en updates voor CloudSimple
@@ -39,7 +38,7 @@ CloudSimple controleert ook de volgende taken continu voor fouten:
 * Fysieke NIC-poorten
 * Servers
 * Ventilatoren
-* Power
+* Voeding
 * Switches
 * Switch poorten
 

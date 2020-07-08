@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 ms.openlocfilehash: 64ef4dfe81e6415f1285a74962e2123507715119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77120681"
 ---
 # <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>Azure Files configureren in een Windows-container op App Service
@@ -43,7 +42,7 @@ Deze hand leiding laat zien hoe u toegang krijgt tot Azure Storage in Windows-co
 
 ## <a name="link-storage-to-your-web-app-preview"></a>Opslag koppelen aan uw web-app (preview)
 
- Als u een Azure Files share wilt koppelen aan een map in uw App Service-app, [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) gebruikt u de opdracht. Het opslag type moet Azure files zijn.
+ Als u een Azure Files share wilt koppelen aan een map in uw App Service-app, gebruikt u de [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) opdracht. Het opslag type moet Azure files zijn.
 
 ```azurecli
 az webapp config storage-account add --resource-group <group_name> --name <app_name> --custom-id <custom_id> --storage-type AzureFiles --share-name <share_name> --account-name <storage_account_name> --access-key "<access_key>" --mount-path <mount_path_directory of form c:<directory name> >

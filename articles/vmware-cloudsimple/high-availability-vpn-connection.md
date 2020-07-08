@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025262"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Een verbinding met hoge Beschik baarheid van on-premises naar CloudSimple VPN-gateway configureren
@@ -97,7 +96,7 @@ access-list ipsec-acl extended permit ip object AZ_inside object CS_inside
 
 ### <a name="5-configure-the-transform-set"></a>5. de transformatie set configureren
 
-Configureer de transformatie set (TS), die het sleutel woord ```ikev1```moet omvatten. De versleutelings-en hash-kenmerken die zijn opgegeven in de TS moeten overeenkomen met de para meters die worden vermeld in de [standaard configuratie voor CloudSimple VPN-gateways](cloudsimple-vpn-gateways.md).
+Configureer de transformatie set (TS), die het sleutel woord moet omvatten ```ikev1``` . De versleutelings-en hash-kenmerken die zijn opgegeven in de TS moeten overeenkomen met de para meters die worden vermeld in de [standaard configuratie voor CloudSimple VPN-gateways](cloudsimple-vpn-gateways.md).
 
 ```
 crypto ipsec ikev1 transform-set devtest39 esp-aes-256 esp-sha-hmac 
@@ -147,7 +146,7 @@ Voor een goede werking van het site-naar-site-VPN moet u UDP 500/4500 en ESP (IP
 
 ### <a name="1-create-primary-and-secondary-tunnel-interfaces"></a>1. primaire en secundaire tunnel interfaces maken
 
-Meld u aan bij de Palo Alto firewall, **Selecteer netwerk** > **interfaces** > **tunnel** > **toevoegen**, Configureer de volgende velden en klik op **OK**.
+Meld u aan bij de Palo Alto firewall, selecteer **netwerk**  >  **interfaces**  >  **tunnel**  >  **toevoegen**, Configureer de volgende velden en klik op **OK**.
 
 * Interface naam. Het eerste veld wordt automatisch ingevuld met het sleutel woord tunnel. Voer in het veld aangrenzend een getal in tussen 1 en 9999. Deze interface wordt gebruikt als een primaire tunnel interface om site-naar-site-verkeer tussen het on-premises Data Center en de Privécloud uit te voeren.
 * Heffen. Voer opmerkingen in om het doel van de tunnel eenvoudig te identificeren
@@ -162,7 +161,7 @@ Omdat deze configuratie voor een VPN met hoge Beschik baarheid is, zijn twee tun
 
 Routes zijn nodig om de on-premises subnetten CloudSimple Private Cloud-subnetten te bereiken.
 
-Virtuele **netwerk** > **routers** > selecteren*standaard* > **statische routes** > **toevoegen**, configureren van de volgende velden en klik op **OK**.
+Virtuele **netwerk**  >  **routers**selecteren  >  *standaard*  >  **statische routes**  >  **toevoegen**, configureren van de volgende velden en klik op **OK**.
 
 * Naam. Voer een naam in voor een eenvoudige identificatie van het doel van de route.
 * Beoogde. Geef de CloudSimple particuliere cloud subnetten op die via S2S-tunnel interfaces van on-premises moeten worden bereikt
@@ -180,7 +179,7 @@ Herhaal de vorige stappen om een andere route te maken voor particuliere cloud-s
 
 Definieer een cryptografisch profiel waarmee de protocollen en algoritmen voor identificatie, authenticatie en versleuteling worden opgegeven die moeten worden gebruikt voor het instellen van VPN-tunnels in IKEv1-fase 1.
 
-Selecteer **netwerk** > **uitbreiden netwerk profielen** > **IKE crypto** > **toevoegen**, Configureer de volgende velden en klik op **OK**.
+Selecteer **netwerk**  >  **uitbreiden netwerk profielen**  >  **IKE crypto**  >  **toevoegen**, Configureer de volgende velden en klik op **OK**.
 
 * Naam. Voer een naam in voor het IKE-crypto profiel.
 * DH-groep. Klik op **toevoegen** en selecteer de juiste DH-groep.
@@ -193,7 +192,7 @@ Selecteer **netwerk** > **uitbreiden netwerk profielen** > **IKE crypto** > **to
 
 Geef IKE-gateways op om communicatie tot stand te brengen tussen de peers aan elk einde van de VPN-tunnel.
 
-Selecteer **netwerk** > **uitvouwen netwerk profielen** > **IKE-gateways** > **toevoegen**, Configureer de volgende velden en klik op **OK**.
+Selecteer **netwerk**  >  **uitvouwen netwerk profielen**  >  **IKE-gateways**  >  **toevoegen**, Configureer de volgende velden en klik op **OK**.
 
 Tabblad Algemeen:
 
@@ -224,7 +223,7 @@ Herhaal de vorige stappen om de secundaire IKE-gateway te maken.
 
 ### <a name="5-define-ipsec-crypto-profiles"></a>5. Definieer IPSEC-crypto profielen
 
-Selecteer **netwerk** >  > netwerk**profielen uitvouwen****IPSec crypto** > **toevoegen**, Configureer de volgende velden en klik op **OK**.
+Selecteer **netwerk**netwerk  >  **profielen uitvouwen**  >  **IPSec crypto**  >  **toevoegen**, Configureer de volgende velden en klik op **OK**.
 
 * Naam. Voer een naam in voor het IPsec-crypto profiel.
 * IPsec-protocol. Selecteer **ESP**.
@@ -238,7 +237,7 @@ Herhaal de vorige stappen om een ander IPsec-crypto profiel te maken, dat wordt 
 
 ### <a name="6-define-monitor-profiles-for-tunnel-monitoring"></a>6. Monitor profielen definiëren voor tunnel bewaking
 
-Selecteer **netwerk** > **uitbreiden netwerk profielen** > **monitor** > **toevoegen**, Configureer de volgende velden en klik op **OK**.
+Selecteer **netwerk**  >  **uitbreiden netwerk profielen**  >  **monitor**  >  **toevoegen**, Configureer de volgende velden en klik op **OK**.
 
 * Naam. Voer een naam in van het monitor profiel dat moet worden gebruikt voor het controleren van de tunnel voor proactieve reactie op de fout.
 * Optreden. Selecteer **failover**.
@@ -247,7 +246,7 @@ Selecteer **netwerk** > **uitbreiden netwerk profielen** > **monitor** > **toevo
 
 ### <a name="7-set-up-primary-and-secondary-ipsec-tunnels"></a>7. primaire en secundaire IPsec-tunnels instellen.
 
-Selecteer **netwerk** > **-IPSec-tunnels** > **toevoegen**, Configureer de volgende velden en klik op **OK**.
+Selecteer **netwerk**  >  **-IPSec-tunnels**  >  **toevoegen**, Configureer de volgende velden en klik op **OK**.
 
 Tabblad Algemeen:
 
@@ -263,7 +262,7 @@ Tabblad Algemeen:
 * Doel-IP. Voer een IP-adres in dat deel uitmaakt van het CloudSimple Private Cloud-subnet dat is toegestaan via de site-naar-site-verbinding. Zorg ervoor dat de tunnel interfaces (zoals tunnel. 20-10.64.5.2/32 en tunnel. 30-10.64.6.2/32) op Palo Alto het IP-adres van de CloudSimple Privécloud kunnen bereiken via de site-naar-site-VPN. Zie de volgende configuratie voor proxy-Id's.
 * Uplinkpoortprofiel. Selecteer het monitor profiel.
 
-Tabblad Proxy-id's: Klik op **IPv4** > **toevoegen** en configureer het volgende:
+Tabblad Proxy-id's: Klik op **IPv4**  >  **toevoegen** en configureer het volgende:
 
 * Proxy-ID. Voer een naam in voor het interessante verkeer. Er kunnen meerdere proxy-Id's binnen één IPsec-tunnel worden uitgevoerd.
 * Lokale. Geef de on-premises lokale subnetten op die via de site-naar-site-VPN mogen communiceren met Privécloud-subnetten.
@@ -272,7 +271,7 @@ Tabblad Proxy-id's: Klik op **IPv4** > **toevoegen** en configureer het volgende
 
 Herhaal de vorige stappen om nog een IPsec-tunnel te maken die u voor de secundaire CloudSimple VPN-peer kunt gebruiken.
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Referenties
 
 NAT configureren op Cisco ASA:
 

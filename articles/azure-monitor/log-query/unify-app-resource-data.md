@@ -8,10 +8,9 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/02/2020
 ms.openlocfilehash: ce58aae3b1db1f0f338d353025d4f277aeb6944f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77137502"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Meerdere Azure Monitor Application Insights resources samen voegen 
@@ -24,7 +23,7 @@ In dit voor beeld ziet u hoe u meerdere Application Insights resources kunt bewa
 
 Maak een functie met behulp van de operator Union met de lijst met toepassingen en sla de query vervolgens op in uw werk ruimte als functie met de alias *applicationsScoping*. 
 
-U kunt de vermelde toepassingen op elk gewenst moment in de portal wijzigen door naar query Verkenner in uw werk ruimte te gaan en de functie te selecteren die u wilt bewerken en vervolgens `SavedSearch` op te slaan, of met de Power shell-cmdlet. 
+U kunt de vermelde toepassingen op elk gewenst moment in de portal wijzigen door naar query Verkenner in uw werk ruimte te gaan en de functie te selecteren die u wilt bewerken en vervolgens op te slaan, of met de `SavedSearch` Power shell-cmdlet. 
 
 >[!NOTE]
 >Deze methode kan niet worden gebruikt met logboek waarschuwingen omdat de toegangs validatie van de resources van de waarschuwings regel, inclusief werk ruimten en toepassingen, wordt uitgevoerd tijdens het maken van de waarschuwing. Het toevoegen van nieuwe resources aan de functie nadat het maken van de waarschuwing niet wordt ondersteund. Als u de functie voor het bereik van resources in logboek waarschuwingen wilt gebruiken, moet u de waarschuwings regel in de portal of met een resource manager-sjabloon bewerken om de resources binnen het bereik bij te werken. U kunt ook de lijst met resources opnemen in de waarschuwings query voor Logboeken.
@@ -65,7 +64,7 @@ In de volgende tabel ziet u de schema verschillen tussen Log Analytics en Applic
 | Eigenschappen van Log Analytics werk ruimte| Eigenschappen van Application Insights-bron|
 |------------|------------| 
 | AnonUserId | user_id|
-| ApplicationId | appId|
+| ApplicationID | appId|
 | ApplicationName | Toepassings|
 | ApplicationTypeVersion | application_Version |
 | AvailabilityCount | itemCount |
@@ -73,16 +72,16 @@ In de volgende tabel ziet u de schema verschillen tussen Log Analytics en Applic
 | AvailabilityMessage | message |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
-| AvailabilityTestName | name |
+| AvailabilityTestName | naam |
 | AvailabilityTimestamp | tijdstempel |
 | Browser | client_browser |
 | Plaats | client_city |
 | Client | client_IP |
 | Computer | cloud_RoleInstance | 
-| Land | client_CountryOrRegion | 
+| Land/regio | client_CountryOrRegion | 
 | CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
-| CustomEventName | name | 
+| CustomEventName | naam | 
 | DeviceModel | client_Model | 
 | DeviceType | client_Type | 
 | ExceptionCount | itemCount | 
@@ -94,12 +93,12 @@ In de volgende tabel ziet u de schema verschillen tussen Log Analytics en Applic
 | OS | client_OS | 
 | PageViewCount | itemCount |
 | PageViewDuration | duur | 
-| PageViewName | name | 
+| PageViewName | naam | 
 | ParentOperationID | operation_Id | 
 | RequestCount | itemCount | 
 | RequestDuration | duur | 
 | RequestID | id | 
-| Aanvraagnaam | name | 
+| Aanvraagnaam | naam | 
 | RequestSuccess | voltooid | 
 | ResponseCode | resultCode | 
 | Rol | cloud_RoleName |

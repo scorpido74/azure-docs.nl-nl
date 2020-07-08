@@ -17,10 +17,9 @@ ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4aa60fb565552961a3c85346c39c318a90c8adc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77061292"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>Zelf studie: MerchLogix configureren voor automatische gebruikers inrichting
@@ -48,7 +47,7 @@ Voordat u MerchLogix configureert voor het automatisch inrichten van gebruikers 
 
     ![De knop Azure Active Directory][1]
 
-2. Ga naar**alle toepassingen**in **bedrijfs toepassingen** > .
+2. Ga naar **Enterprise applications**  >  **alle toepassingen**in bedrijfs toepassingen.
 
     ![De sectie bedrijfs toepassingen][2]
 
@@ -126,7 +125,7 @@ Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-p
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

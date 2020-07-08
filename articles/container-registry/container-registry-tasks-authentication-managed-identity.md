@@ -9,17 +9,16 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
 ms.openlocfilehash: f3294698f6973437a23fab798e8daf5642cc9b49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77111761"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>Een door Azure beheerde identiteit gebruiken in ACR-taken 
 
 Een [beheerde identiteit inschakelen voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md) in een [ACR-taak](container-registry-tasks-overview.md), zodat de taak toegang kan krijgen tot andere Azure-resources, zonder dat hiervoor referenties moeten worden verstrekt of beheerd. Gebruik bijvoorbeeld een beheerde identiteit om een taak stap in te scha kelen om container installatie kopieën naar een ander REGI ster te halen of te pushen.
 
-In dit artikel leert u hoe u de Azure CLI gebruikt om een door de gebruiker toegewezen of door het systeem toegewezen beheerde identiteit in te scha kelen voor een ACR-taak. U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken. Als u het lokaal wilt gebruiken, is versie 2.0.68 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
+In dit artikel leert u hoe u de Azure CLI gebruikt om een door de gebruiker toegewezen of door het systeem toegewezen beheerde identiteit in te scha kelen voor een ACR-taak. U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken. Als u het lokaal wilt gebruiken, is versie 2.0.68 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 Voor de afbeeldings doeleinden gebruikt u de voor beeld-opdrachten in dit artikel [AZ ACR Task Create][az-acr-task-create] om een basis taak voor het bouwen van een installatie kopie te maken waarmee een beheerde identiteit wordt ingeschakeld. Zie voor voorbeeld scenario's voor toegang tot beveiligde resources van een ACR-taak met behulp van een beheerde identiteit:
 
@@ -52,7 +51,7 @@ Als u van plan bent om alleen een door het systeem toegewezen identiteit te gebr
 
 Wanneer u een ACR-taak maakt, kunt optioneel een door de gebruiker toegewezen identiteit, een door het systeem toegewezen identiteit of beide inschakelen. Geef bijvoorbeeld de `--assign-identity` para meter door als u de opdracht [AZ ACR Task Create][az-acr-task-create] uitvoert in de Azure cli.
 
-Om een door `--assign-identity` het systeem toegewezen identiteit in te scha kelen, zonder `assign-identity [system]`waarde of. Met de volgende voorbeeld opdracht wordt een Linux-taak gemaakt vanuit een open bare GitHub `hello-world` -opslag plaats die de installatie kopie bouwt en een door het systeem toegewezen beheerde identiteit mogelijk maakt:
+Om een door het systeem toegewezen identiteit in te scha kelen, `--assign-identity` zonder waarde of `assign-identity [system]` . Met de volgende voorbeeld opdracht wordt een Linux-taak gemaakt vanuit een open bare GitHub-opslag plaats die de `hello-world` installatie kopie bouwt en een door het systeem toegewezen beheerde identiteit mogelijk maakt:
 
 ```azurecli
 az acr task create \
@@ -64,7 +63,7 @@ az acr task create \
     --assign-identity
 ```
 
-Als u een door de gebruiker toegewezen identiteit wilt `--assign-identity` inschakelen, geeft u een waarde op voor de *resource-id* van de identiteit. Met de volgende voorbeeld opdracht wordt een Linux-taak gemaakt vanuit een open bare GitHub `hello-world` -opslag plaats die de installatie kopie bouwt en een door de gebruiker toegewezen beheerde identiteit maakt:
+Als u een door de gebruiker toegewezen identiteit wilt inschakelen, geeft u `--assign-identity` een waarde op voor de *resource-id* van de identiteit. Met de volgende voorbeeld opdracht wordt een Linux-taak gemaakt vanuit een open bare GitHub-opslag plaats die de `hello-world` installatie kopie bouwt en een door de gebruiker toegewezen beheerde identiteit maakt:
 
 ```azurecli
 az acr task create \
@@ -103,9 +102,9 @@ az role assignment create \
 
 ### <a name="4-optional-add-credentials-to-the-task"></a>4. (optioneel) referenties toevoegen aan de taak
 
-Als uw taak referenties nodig heeft om installatie kopieën naar een ander aangepast REGI ster te halen of te pushen of om toegang te krijgen tot andere bronnen, voegt u referenties toe aan de taak. Voer de opdracht [AZ ACR taak Credential add][az-acr-task-credential-add] uit om referenties toe te voegen `--use-identity` en geef de para meter door om aan te geven dat de identiteit toegang heeft tot de referenties. 
+Als uw taak referenties nodig heeft om installatie kopieën naar een ander aangepast REGI ster te halen of te pushen of om toegang te krijgen tot andere bronnen, voegt u referenties toe aan de taak. Voer de opdracht [AZ ACR taak Credential add][az-acr-task-credential-add] uit om referenties toe te voegen en geef de `--use-identity` para meter door om aan te geven dat de identiteit toegang heeft tot de referenties. 
 
-Als u bijvoorbeeld referenties wilt toevoegen voor een door het systeem toegewezen identiteit voor verificatie met Azure container Registry *targetregistry*, geeft `use-identity [system]`u het volgende door:
+Als u bijvoorbeeld referenties wilt toevoegen voor een door het systeem toegewezen identiteit voor verificatie met Azure container Registry *targetregistry*, geeft u het volgende door `use-identity [system]` :
 
 ```azurecli
 az acr task credential add \
@@ -115,7 +114,7 @@ az acr task credential add \
     --use-identity [system]
 ```
 
-Als u referenties wilt toevoegen voor een door de gebruiker toegewezen identiteit voor verificatie *targetregistry*met de register `use-identity` targetregistry, geeft u een waarde van de *client-id* van de identiteit door. Bijvoorbeeld:
+Als u referenties wilt toevoegen voor een door de gebruiker toegewezen identiteit voor verificatie met de register *targetregistry*, geeft u `use-identity` een waarde van de *client-id* van de identiteit door. Bijvoorbeeld:
 
 ```azurecli
 az acr task credential add \
@@ -125,7 +124,7 @@ az acr task credential add \
     --use-identity <clientID>
 ```
 
-U kunt de client-ID van de identiteit ophalen door de opdracht [AZ Identity show][az-identity-show] uit te voeren. De client-ID is een GUID van het `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`formulier.
+U kunt de client-ID van de identiteit ophalen door de opdracht [AZ Identity show][az-identity-show] uit te voeren. De client-ID is een GUID van het formulier `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` .
 
 ### <a name="5-run-the-task"></a>5. Voer de taak uit
 

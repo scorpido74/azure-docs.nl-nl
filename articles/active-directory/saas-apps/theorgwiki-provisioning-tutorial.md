@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 2b0b11ae89e1f0d150b84f49b04a8badcb44e82c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77063137"
 ---
 # <a name="tutorial-configure-theorgwiki-for-automatic-user-provisioning"></a>Zelf studie: TheOrgWiki configureren voor automatische gebruikers inrichting
@@ -85,7 +84,7 @@ Als u TheOrgWiki wilt configureren voor het automatisch inrichten van gebruikers
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+2. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -120,7 +119,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-theorgwiki-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor TheOrgWiki in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -136,7 +135,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Selecteer in de sectie **beheerders referenties** de `https://<TheOrgWiki Subdomain        value>.theorgwiki.com/api/v2/scim/v2/` invoer in de **Tenant-URL**. 
+5. Selecteer in de sectie **beheerders referenties** de invoer `https://<TheOrgWiki Subdomain        value>.theorgwiki.com/api/v2/scim/v2/` in de Tenant- **URL**. 
 
     Voorbeeld: `https://test1.theorgwiki.com/api/v2/scim/v2/`
 
@@ -182,7 +181,7 @@ U kunt de **huidige status** sectie gebruiken om de voortgang te controleren en 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * Het [inrichten van een gebruikers account voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md).
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

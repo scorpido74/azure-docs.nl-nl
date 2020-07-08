@@ -13,10 +13,9 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 89e3bf95a6b048e5e97cfb151ef9302b70eac1c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77048556"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Implementatiearchitectuur van Azure Dedicated HSM
@@ -69,8 +68,8 @@ Zodra de implementatie architectuur is vastgesteld, worden de meeste configurati
 Het wordt aanbevolen om alle belang rijke concepten van de service, zoals hoge Beschik baarheid en beveiliging, bijvoorbeeld goed te begrijpen vóór het inrichten van apparaten of het ontwerpen en implementeren van toepassingen.
 Meer onderwerpen over het concept niveau:
 
-* [Hoge beschikbaarheid](high-availability.md)
+* [Hoge Beschik baarheid](high-availability.md)
 * [Fysieke beveiliging](physical-security.md)
 * [Netwerken](networking.md)
 * [Ondersteuning](supportability.md)
-* [Bewaking](monitoring.md)
+* [Controle](monitoring.md)

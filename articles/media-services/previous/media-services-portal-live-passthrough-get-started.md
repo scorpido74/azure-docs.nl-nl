@@ -15,10 +15,9 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: a83d6ae2e3ed13f0d03e0fdc87a3b45a4119ba88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77162749"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Live streamen met on-premises encoders met behulp van Azure Portal
@@ -150,7 +149,7 @@ Zelfs na het stoppen en verwijderen van de gebeurtenis kunnen gebruikers de gear
 
 Voor het beheren van uw assets selecteert u **instelling** en klikt u op **assets**.
 
-![Activa](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
+![Assets](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 
 ## <a name="next-step"></a>Volgende stap
 Media Services-leertrajecten bekijken.

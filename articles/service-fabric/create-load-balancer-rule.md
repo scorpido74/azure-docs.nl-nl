@@ -4,10 +4,9 @@ description: Configureer een Azure Load Balancer voor het openen van poorten voo
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: f4599b2e0174381ab7df04aeeb33db7e3ee60f26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025381"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Poorten openen voor een Service Fabric-cluster
@@ -21,7 +20,7 @@ Wanneer u uw Service Fabric-cluster in azure hebt geïmplementeerd, is er automa
 
 ## <a name="configure-service-fabric"></a>Service Fabric configureren
 
-Het configuratie bestand **ServiceManifest. XML** van service Fabric toepassing definieert de eind punten die uw toepassing verwacht te gebruiken. Nadat het configuratie bestand is bijgewerkt om een eind punt te definiëren, moeten de load balancer worden bijgewerkt om die (of een andere) poort beschikbaar te maken. Zie [een eind punt instellen](service-fabric-service-manifest-resources.md)voor meer informatie over het maken van het service Fabric-eind punt.
+Het configuratie bestand van uw Service Fabric-toepassing **ServiceManifest.xml** definieert de eind punten die uw toepassing verwacht te gebruiken. Nadat het configuratie bestand is bijgewerkt om een eind punt te definiëren, moeten de load balancer worden bijgewerkt om die (of een andere) poort beschikbaar te maken. Zie [een eind punt instellen](service-fabric-service-manifest-resources.md)voor meer informatie over het maken van het service Fabric-eind punt.
 
 ## <a name="create-a-load-balancer-rule"></a>Een load balancer-regel maken
 
@@ -93,7 +92,7 @@ $lb.LoadBalancingRules.Add($lbrule)
 $lb | Set-AzLoadBalancer
 ```
 
-Met betrekking `New-AzLoadBalancerRuleConfig` tot de opdracht `-FrontendPort` vertegenwoordigt de poort de Load Balancer beschikbaar voor externe verbindingen en geeft het `-BackendPort` de poort aan waarnaar de service Fabric-app luistert.
+Met betrekking tot de `New-AzLoadBalancerRuleConfig` opdracht `-FrontendPort` vertegenwoordigt de poort de Load Balancer beschikbaar voor externe verbindingen en geeft het de `-BackendPort` poort aan waarnaar de service Fabric-app luistert.
 
 >[!NOTE]
 >Zie [een Load Balancer maken met Power shell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)voor meer informatie over het maken van een Load Balancer met Power shell.

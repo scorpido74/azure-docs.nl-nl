@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/10/2020
 ms.openlocfilehash: f8737f645df2aefbf9ce544199f0cc45ce6a3d60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77162800"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>Apache Spark uitvoeren vanuit de Spark-shell
@@ -59,7 +58,7 @@ Een interactieve [Apache Spark](https://spark.apache.org/) shell biedt een repl-
     textFile.filter(textFile.value.contains("apple")).show()
     ```
 
-1. Een query uitvoeren op een CSV-bestand. Let op de onderstaande taal voor `spark-shell` en `pyspark`.
+1. Een query uitvoeren op een CSV-bestand. Let op de onderstaande taal voor `spark-shell` en `pyspark` .
 
     ```scala
     spark.read.csv("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv").show()
@@ -101,17 +100,17 @@ Een interactieve [Apache Spark](https://spark.apache.org/) shell biedt een repl-
 
 Standaard worden instanties van SparkSession en SparkContext automatisch voor u geïnstantieerd wanneer u de Spark-shell uitvoert.
 
-Voer `spark`in om toegang te krijgen tot het SparkSession-exemplaar. Voer `sc`in om toegang te krijgen tot het SparkContext-exemplaar.
+Voer in om toegang te krijgen tot het SparkSession-exemplaar `spark` . Voer in om toegang te krijgen tot het SparkContext-exemplaar `sc` .
 
 ## <a name="important-shell-parameters"></a>Belang rijke shell parameters
 
-De Spark shell-opdracht`spark-shell`(of `pyspark`) ondersteunt veel opdracht regel parameters. Als u een volledige lijst met para meters wilt weer geven, start u `--help`de Spark-shell met de switch. Sommige van deze para meters zijn mogelijk `spark-submit`alleen van toepassing op, die in de Spark-shell worden geplaatst.
+De Spark shell-opdracht ( `spark-shell` of `pyspark` ) ondersteunt veel opdracht regel parameters. Als u een volledige lijst met para meters wilt weer geven, start u de Spark-shell met de switch `--help` . Sommige van deze para meters zijn mogelijk alleen van toepassing op `spark-submit` , die in de Spark-shell worden geplaatst.
 
 | schakelen | description | Hierbij |
 | --- | --- | --- |
-| --hoofd MASTER_URL | Hiermee geeft u de hoofd-URL op. In HDInsight is deze waarde altijd `yarn`. | `--master yarn`|
+| --hoofd MASTER_URL | Hiermee geeft u de hoofd-URL op. In HDInsight is deze waarde altijd `yarn` . | `--master yarn`|
 | --potten JAR_LIST | Een door komma's gescheiden lijst met lokale potten die moeten worden toegevoegd aan het stuur programma en de namen van de uitvoerder. In HDInsight bestaat deze lijst uit paden naar het standaard bestands systeem in Azure Storage of Data Lake Storage. | `--jars /path/to/examples.jar` |
-| --pakketten MAVEN_COORDS | Een door komma's gescheiden lijst met maven-coördinaten van potten die moeten worden vermeld op het stuur programma en de uitvoerder classpath. Doorzoekt de lokale maven opslag plaats, vervolgens maven Central, en eventuele extra externe opslag plaatsen `--repositories`die zijn opgegeven bij. De notatie voor de coördinaten is *groupid*:*artifactId*:*Version*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
+| --pakketten MAVEN_COORDS | Een door komma's gescheiden lijst met maven-coördinaten van potten die moeten worden vermeld op het stuur programma en de uitvoerder classpath. Doorzoekt de lokale maven opslag plaats, vervolgens maven Central, en eventuele extra externe opslag plaatsen die zijn opgegeven bij `--repositories` . De notatie voor de coördinaten is *groupid*:*artifactId*:*Version*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
 | --py-bestanden lijst | Alleen voor python: een door komma's gescheiden lijst met zip-, eier-of py-bestanden die op de PYTHONPATH moet worden geplaatst. | `--pyfiles "samples.py"` |
 
 ## <a name="next-steps"></a>Volgende stappen

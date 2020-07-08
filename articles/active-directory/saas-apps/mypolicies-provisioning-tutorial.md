@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 353da826b6e339d40a5d85bbf63caac5bf7094f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77061353"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Zelf studie: myPolicies configureren voor automatische gebruikers inrichting
@@ -56,7 +55,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 Voordat u myPolicies configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u SCIM inrichten inschakelen op myPolicies.
 
-1. Neem contact op met uw myPolicies- **support@mypolicies.com** vertegenwoordiger om het geheime token te verkrijgen dat nodig is voor het configureren van scim-inrichting.
+1. Neem contact op met uw myPolicies-vertegenwoordiger **support@mypolicies.com** om het geheime token te verkrijgen dat nodig is voor het configureren van scim-inrichting.
 
 2.  Sla de token waarde op die door de myPolicies-vertegenwoordiger is verschaft. Deze waarde wordt ingevoerd in het veld **geheime token** op het tabblad inrichten van uw myPolicies-toepassing in de Azure Portal.
 
@@ -70,7 +69,7 @@ Als u myPolicies wilt configureren voor het automatisch inrichten van gebruikers
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+2. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -91,7 +90,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-mypolicies-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor myPolicies in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -107,8 +106,8 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Selecteer in de sectie **beheerders referenties** de `https://<myPoliciesCustomDomain>.mypolicies.com/scim` invoer in de Tenant `<myPoliciesCustomDomain>` - **URL** waar het aangepaste domein van uw myPolicies is. U kunt uw myPolicies-klant domein ophalen uit uw URL.
-Voor beeld `<demo0-qa>`:. mypolicies.com.
+5. Selecteer in de sectie **beheerders referenties** de invoer `https://<myPoliciesCustomDomain>.mypolicies.com/scim` in de Tenant- **URL** waar `<myPoliciesCustomDomain>` het aangepaste domein van uw myPolicies is. U kunt uw myPolicies-klant domein ophalen uit uw URL.
+Voor beeld: `<demo0-qa>` . mypolicies.com.
 
 6. In een **geheim token**voert u de token waarde in die eerder is opgehaald. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met myPolicies. Als de verbinding mislukt, zorg er dan voor dat uw myPolicies-account beheerders machtigingen heeft en probeer het opnieuw.
 
@@ -154,7 +153,7 @@ Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-p
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

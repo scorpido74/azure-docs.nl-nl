@@ -10,10 +10,9 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 5782f07167f72be2ea7b148ad1b0a61d8cb710e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77048899"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps community-open-source projecten
@@ -22,7 +21,7 @@ Deze open-source, door de Community gestuurde initiatieven worden gemaakt en ond
 
 Hieronder vindt u enkele van de populairste Azure Maps open source-projecten en voor beelden.
 
-| Projectnaam | Beschrijving |
+| Projectnaam | Description |
 |-|-|
 | [Voor beelden van Azure Maps code](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Een verzameling code voorbeelden voor het gebruik van Azure Maps in op het web gebaseerde apps. |
 | [Voor beelden van gov-Cloud code Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Een verzameling code voorbeelden voor het gebruik van Azure Maps via Azure Government Cloud. |

@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 87413932acee576934ee50b59546371b03ceaf7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77064169"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Zelf studie: een Zscaler configureren voor het automatisch inrichten van gebruikers
@@ -51,7 +50,7 @@ Voer de volgende stappen uit om Zscaler één van de Marketplace toe te voegen.
 
     ![Het Azure Active Directory pictogram](common/select-azuread.png)
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+2. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -84,7 +83,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="configure-automatic-user-provisioning-for-zscaler-one-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Zscaler één in azure AD
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen** > **alle toepassingen** > **Zscaler een**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**  >  **alle toepassingen**  >  **Zscaler een**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -102,7 +101,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 5. Vul in het gedeelte **beheerders referenties** de vakken **Tenant-URL** en **geheim token** in met de instellingen voor uw Zscaler één account zoals beschreven in stap 6.
 
-6. Als u de Tenant-URL en het geheime token wilt ophalen, gaat u naar **beheer** > **verificatie-instellingen** in de Zscaler-gebruikers interface van de portal. Onder **verificatie type**selecteert u **SAML**.
+6. Als u de Tenant-URL en het geheime token wilt ophalen, gaat u naar **beheer**  >  **verificatie-instellingen** in de Zscaler-gebruikers interface van de portal. Onder **verificatie type**selecteert u **SAML**.
 
     ![Zscaler één verificatie-instellingen](./media/zscaler-one-provisioning-tutorial/secret-token-1.png)
 
@@ -161,7 +160,7 @@ Zie [rapportage over het automatisch inrichten van gebruikers accounts](../activ
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

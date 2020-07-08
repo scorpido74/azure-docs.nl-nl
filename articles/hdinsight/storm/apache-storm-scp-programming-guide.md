@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
 ms.openlocfilehash: ddf69a75a39911293277a4a4189cf4e79256e09d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77186866"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>SCP-programmeer gids voor Apache Storm in azure HDInsight
@@ -159,7 +158,7 @@ De methode **Execute** wordt aangeroepen wanneer een nieuwe tuple bij de flits a
 
 SCP.NET maakt een nieuw **ISCPBatchBolt** -object voor de verwerking van elk **StormTxAttempt** -object, net zoals bij storm in Java. Het doel van dit ontwerp is het ondersteunen van parallelle transactie verwerking. Nadat een transactie poging is voltooid, wordt het bijbehorende **ISCPBatchBolt** -object vernietigd en wordt de garbage collector verzameld.
 
-## <a name="object-model"></a>Object model
+## <a name="object-model"></a>Objectmodel
 
 SCP.NET biedt ook een eenvoudige set van belang rijke objecten waarmee ontwikkel aars kunnen Program meren. De objecten zijn **context**, **State Store**en **SCPRuntime**. Deze worden beschreven in deze sectie.
 
@@ -357,7 +356,7 @@ public void Abort();
     public T GetAttribute<T>(string key);
 ```
 
-Wanneer **simpleMode** is ingesteld op **True**, wordt met de **commit** -methode de overeenkomstige ZNode in ZooKeeper verwijderd. Anders verwijdert de methode de huidige ZNode en voegt een nieuw knoop punt toe aan het\_doorgevoerde pad.
+Wanneer **simpleMode** is ingesteld op **True**, wordt met de **commit** -methode de overeenkomstige ZNode in ZooKeeper verwijderd. Anders verwijdert de methode de huidige ZNode en voegt een nieuw knoop punt toe aan het doorgevoerde \_ pad.
 
 ### <a name="scpruntime"></a>SCPRuntime
 
@@ -434,7 +433,7 @@ U kunt topologie specificaties rechtstreeks bij een storm-cluster indienen voor 
 
 SCP.NET heeft de volgende functies toegevoegd voor het definiëren van transactionele topologieën:
 
-| Nieuwe functie | Parameters | Beschrijving |
+| Nieuwe functie | Parameters | Description |
 | --- | --- | --- |
 | **TX-topolopy** |*topologie-naam*<br />*Spout-kaart*<br />*bout-kaart* |Hiermee wordt een transactionele topologie gedefinieerd met de naam van de topologie, de spouts-definitie en de definitie toewijzing van de schicht. |
 | **SCP-TX-Spout** |*exec-naam*<br />*argumenten*<br />*bedragvelden* |Hiermee wordt een transactionele Spout gedefinieerd. De functie voert de toepassing uit die is opgegeven door *exec-name* en gebruikt *argumenten*.<br /><br />Met de para meter *Fields* geeft u de uitvoer velden voor de Spout op. |
@@ -446,7 +445,7 @@ SCP.NET heeft de volgende functies toegevoegd voor het definiëren van transacti
 
 SCP.NET definieert de volgende sleutel woorden:
 
-| Zoek | Beschrijving |
+| Zoek | Description |
 | --- | --- |
 | **: naam** |De naam van de topologie |
 | **: topologie** |De topologie met behulp van de functies in de vorige tabel en ingebouwde functies |
@@ -567,7 +566,7 @@ Als u een topologie wilt indienen die Java-spouts of-grendels bevat, moet u deze
 bin\runSpec.cmd examples\HybridTopology\HybridTopology.spec specs examples\HybridTopology\net\Target -cp examples\HybridTopology\java\target\*
 ```
 
-Hier `examples\HybridTopology\java\target\` ziet u de map met het bestand Java Spout/Schicht jar.
+Hier `examples\HybridTopology\java\target\` ziet u de map met het bestand Java Spout/SCHICHT jar.
 
 ### <a name="serialization-and-deserialization-between-java-and-c"></a>Serialisatie en deserialisatie van Java en C #
 
@@ -644,7 +643,7 @@ Geef de deserialisatie methode van de Java-zijde op in een specificatie bestand.
 )
 ```
 
-Hier `"microsoft.scp.storm.multilang.CustomizedInteropJSONDeserializer"` is de naam van de deserializer en `"microsoft.scp.example.HybridTopology.Person"` de doel klasse waarin de gegevens worden gedeserialiseerd.
+Hier `"microsoft.scp.storm.multilang.CustomizedInteropJSONDeserializer"` is de naam van de deserializer en de `"microsoft.scp.example.HybridTopology.Person"` doel klasse waarin de gegevens worden gedeserialiseerd.
 
 U kunt ook uw eigen implementatie van een C#-serialisatiefunctie en een Java-deserializer aansluiten.
 
@@ -668,7 +667,7 @@ public interface ICustomizedInteropJavaDeserializer {
 
 ## <a name="scp-host-mode"></a>SCP-host-modus
 
-In deze modus kunt u uw code als een DLL-bestand compileren en SCPHost. exe gebruiken zoals verstrekt door SCP om een topologie in te dienen. Een specificatie bestand ziet er als volgt uit:
+In deze modus kunt u uw code als een DLL-bestand compileren en SCPHost.exe gebruiken zoals wordt verstrekt door SCP om een topologie in te dienen. Een specificatie bestand ziet er als volgt uit:
 
 ```csharp
 (scp-spout
@@ -679,10 +678,10 @@ In deze modus kunt u uw code als een DLL-bestand compileren en SCPHost. exe gebr
   })
 ```
 
-Hier `"plugin.name"` wordt opgegeven als `"SCPHost.exe"`, die wordt opgegeven door de SCP-SDK. SCPHost. exe accepteert drie para meters in de volgende volg orde:
+Hier `"plugin.name"` wordt opgegeven als `"SCPHost.exe"` , die wordt opgegeven door de SCP-SDK. SCPHost.exe accepteert drie para meters in de volgende volg orde:
 
 1. De DLL-naam, die `"HelloWorld.dll"` in dit voor beeld is.
-1. De naam `"Scp.App.HelloWorld.Generator"` van de klasse, in dit voor beeld.
+1. De naam van de klasse, `"Scp.App.HelloWorld.Generator"` in dit voor beeld.
 1. De naam van een open bare statische methode die kan worden aangeroepen om een exemplaar van **ISCPPlugin**op te halen.
 
 Compileer de code in de host-modus als een DLL-bestand voor het aanroepen van het SCP-platform. Omdat het platform vervolgens volledig beheer over de gehele verwerkings logica kan krijgen, raden we u aan om de topologie in de SCP-host-modus in te dienen. Dit vereenvoudigt de ontwikkelings ervaring. Daarnaast beschikt u over meer flexibiliteit en betere achterwaartse compatibiliteit voor latere releases.
@@ -693,7 +692,7 @@ Compileer de code in de host-modus als een DLL-bestand voor het aanroepen van he
 
 In het volgende eenvoudige HelloWorld-voor beeld ziet u een smaak van SCP.NET. Er wordt gebruikgemaakt van een niet-transactionele topologie met een Spout met de naam **Generator** en twee bouten met de naam **splitter** en **Counter**. De **Generator** Spout wille keurig zinnen genereren en deze zinnen naar **splitter**verzenden. De **Splits** Schicht splitst de zinnen in woorden en verzendt deze woorden naar de **Counter** -bout. De **Counter** -bout gebruikt een woorden lijst om het exemplaar van elk woord vast te leggen.
 
-Dit voor beeld heeft twee specificatie bestanden: HelloWorld. SPEC en\_HelloWorld EnableAck. spec. Met de C#-code kunt u nagaan of er een bevestiging is `pluginConf` ingeschakeld door het object van de Java-zijde op te halen.
+Dit voor beeld heeft twee specificatie bestanden: HelloWorld. SPEC en HelloWorld \_ EnableAck. spec. Met de C#-code kunt u nagaan of er een bevestiging is ingeschakeld door het `pluginConf` object van de Java-zijde op te halen.
 
 ```csharp
 /* demo how to get pluginConf info */
@@ -728,7 +727,7 @@ public void Fail(long seqId, Dictionary<string, Object> parms)
 
 ### <a name="helloworldtx"></a>HelloWorldTx
 
-In het volgende HelloWorldTx-voor beeld ziet u hoe u transactionele topologie implementeert. Het voor beeld heeft één Spout genaamd **Generator**, een batch-Schicht met de naam **gedeeltelijke Count**en een commit-Schicht met de naam **Count-Sum**. Het voor beeld heeft ook drie bestaande tekst bestanden: DataSource0. txt, DataSource1. txt en DataSource2. txt.
+In het volgende HelloWorldTx-voor beeld ziet u hoe u transactionele topologie implementeert. Het voor beeld heeft één Spout genaamd **Generator**, een batch-Schicht met de naam **gedeeltelijke Count**en een commit-Schicht met de naam **Count-Sum**. Het voor beeld heeft ook drie bestaande tekst bestanden: DataSource0.txt, DataSource1.txt en DataSource2.txt.
 
 In elke trans actie Spout de **Generator** twee bestanden uit de bestaande drie bestanden wille keurig selecteren en worden de twee bestands namen verzonden naar de schicht van het **gedeeltelijke aantal** . De schicht van het **gedeeltelijke aantal** :
 
@@ -745,7 +744,7 @@ Voor het uitvoeren van de functie voor het **tellen van het aantal-Sum** moet wo
 public static long lastCommittedTxId = -1; 
 ```
 
-Wanneer er een **ISCPBatchBolt** -exemplaar wordt gemaakt, wordt de waarde van `txAttempt` het object opgehaald uit de invoer parameters.
+Wanneer er een **ISCPBatchBolt** -exemplaar wordt gemaakt, wordt de waarde van het `txAttempt` object opgehaald uit de invoer parameters.
 
 ```csharp
 public static CountSum Get(Context ctx, Dictionary<string, Object> parms)
@@ -783,11 +782,11 @@ public void FinishBatch(Dictionary<string, Object> parms)
 
 ### <a name="hybridtopology"></a>HybridTopology
 
-Deze topologie bevat een Java-Spout en een C#-schicht. Hierbij wordt gebruikgemaakt van de standaard implementatie van serialisatie en deserialisatie van het SCP-platform. Zie het bestand HybridTopology. spec in de HybridTopology\\-map voor beelden voor de details van het specificatie bestand. Zie ook SubmitTopology. bat voor informatie over het opgeven van het Java-klassenpad.
+Deze topologie bevat een Java-Spout en een C#-schicht. Hierbij wordt gebruikgemaakt van de standaard implementatie van serialisatie en deserialisatie van het SCP-platform. Zie het bestand HybridTopology. spec in de \\ HybridTopology-map voor beelden voor de details van het specificatie bestand. Zie ook SubmitTopology.bat voor het opgeven van het Java-klassenpad.
 
 ### <a name="scphostdemo"></a>SCPHostDemo
 
-Dit voor beeld is in essentie hetzelfde als HelloWorld. Het enige verschil is dat uw code wordt gecompileerd als een DLL-bestand en de topologie wordt verzonden met behulp van SCPHost. exe. Zie de sectie SCP-host modus voor een gedetailleerde uitleg.
+Dit voor beeld is in essentie hetzelfde als HelloWorld. Het enige verschil is dat uw code wordt gecompileerd als een DLL-bestand en de topologie wordt verzonden met behulp van SCPHost.exe. Zie de sectie SCP-host modus voor een gedetailleerde uitleg.
 
 ## <a name="next-steps"></a>Volgende stappen
 

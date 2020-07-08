@@ -15,10 +15,9 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 7d2e4274e6feaebac6536eed2f8a99d251cd5ceb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77162562"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Live streamen met Media Services om multi-bitrate streams te maken met Azure Portal  
@@ -183,7 +182,7 @@ Zelfs na het stoppen en verwijderen van de gebeurtenis kunnen gebruikers de gear
 
 Voor het beheren van uw assets selecteert u **instelling** en klikt u op **assets**.
 
-![Activa](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
+![Assets](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
 
 ## <a name="considerations"></a>Overwegingen
 * De maximum aanbevolen duur van een live gebeurtenis is momenteel acht uur. Neem contact op met amshelp@microsoft.com als u een kanaal voor langere tijd wilt uitvoeren.

@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: deef7bfdbc28d744cb81da59d3ffc13a1abee54d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77048606"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Herstel na nood geval instellen voor virtuele Hyper-V-machines naar een secundaire site met behulp van Power shell (Resource Manager)
@@ -89,7 +88,7 @@ Zorg ervoor dat u beschikt over Azure PowerShell Ready to go:
    $vault = New-AzRecoveryServicesVault -Name #vaultname -ResourceGroupName #ResourceGroupName -Location #location
    ```
 
-   U kunt het kluis object ophalen nadat u het hebt gemaakt met behulp van de `Get-AzRecoveryServicesVault` -cmdlet.
+   U kunt het kluis object ophalen nadat u het hebt gemaakt met behulp van de- `Get-AzRecoveryServicesVault` cmdlet.
 
 ## <a name="set-the-vault-context"></a>De kluis context instellen
 
@@ -210,7 +209,7 @@ Volg de stappen in [activiteit controleren](#monitor-activity)om de voltooiing v
 
 ##  <a name="configure-network-mapping"></a>Netwerktoewijzing configureren
 
-1. Gebruik deze opdracht om servers voor de huidige kluis op te halen. Met de opdracht worden de Site Recovery servers in `$Servers` de matrix variabele opgeslagen.
+1. Gebruik deze opdracht om servers voor de huidige kluis op te halen. Met de opdracht worden de Site Recovery servers in de `$Servers` matrix variabele opgeslagen.
 
    ```azurepowershell
    $Servers = Get-AzRecoveryServicesAsrFabric
@@ -227,7 +226,7 @@ Volg de stappen in [activiteit controleren](#monitor-activity)om de voltooiing v
    > [!NOTE]
    > De bron-Virtual Machine Manager-server kan het eerste of het tweede in de server matrix zijn. Controleer de namen van de Virtual Machine Manager-servers en haal de netwerken op de juiste wijze op.
 
-1. Met deze cmdlet wordt een toewijzing gemaakt tussen het primaire netwerk en het herstel netwerk. Hiermee wordt het primaire netwerk opgegeven als het eerste element `$PrimaryNetworks`van. Hiermee wordt het herstel netwerk opgegeven als het eerste element `$RecoveryNetworks`van.
+1. Met deze cmdlet wordt een toewijzing gemaakt tussen het primaire netwerk en het herstel netwerk. Hiermee wordt het primaire netwerk opgegeven als het eerste element van `$PrimaryNetworks` . Hiermee wordt het herstel netwerk opgegeven als het eerste element van `$RecoveryNetworks` .
 
    ```azurepowershell
    New-AzRecoveryServicesAsrNetworkMapping -PrimaryNetwork $PrimaryNetworks[0] -RecoveryNetwork $RecoveryNetworks[0]
@@ -260,8 +259,8 @@ Nadat de servers, Clouds en netwerken op de juiste wijze zijn geconfigureerd, sc
 >
 > 1. Failover naar beheerde schijven inschakelen door de VM-eigenschappen bij te werken
 > 1. De `Get-AzRecoveryServicesAsrReplicationProtectedItem` cmdlet gebruiken om de schijf-id op te halen voor elke schijf van het beveiligde item
-> 1. Maak een Dictionary-object `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` met behulp van de cmdlet om de toewijzing van de schijf-id aan de schijf versleuteling in te stellen. Deze schijf versleutelings sets moeten vooraf door u worden gemaakt in de doel regio.
-> 1. Werk de VM-eigenschappen `Set-AzRecoveryServicesAsrReplicationProtectedItem` bij met behulp van de cmdlet door het object Dictionary in de para meter **DiskIdToDiskEncryptionSetMap** door te geven.
+> 1. Maak een Dictionary-object met behulp `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` van de cmdlet om de toewijzing van de schijf-id aan de schijf versleuteling in te stellen. Deze schijf versleutelings sets moeten vooraf door u worden gemaakt in de doel regio.
+> 1. Werk de VM-eigenschappen bij met behulp `Set-AzRecoveryServicesAsrReplicationProtectedItem` van de cmdlet door het object Dictionary in de para meter **DiskIdToDiskEncryptionSetMap** door te geven.
 
 ## <a name="run-a-test-failover"></a>Een testfailover uitvoeren
 

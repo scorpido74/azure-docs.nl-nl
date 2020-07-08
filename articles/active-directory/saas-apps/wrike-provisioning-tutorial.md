@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: Zhchia
 ms.openlocfilehash: 5dd4f5ac6152c22b5e2a84ecc0774672bcd5590b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77064186"
 ---
 # <a name="tutorial-configure-wrike-for-automatic-user-provisioning"></a>Zelf studie: Wrike configureren voor automatische gebruikers inrichting
@@ -68,7 +67,7 @@ Voordat u Wrike configureert voor het automatisch inrichten van gebruikers met A
 
     ![Basis-URL](media/Wrike-provisioning-tutorial/Wrike-tenanturl.png)
 
-4. Selecteer **API** > **Azure scim**.
+4. Selecteer **API**  >  **Azure scim**.
 
     ![Azure-SCIM](media/Wrike-provisioning-tutorial/Wrike-add-scim.png)
 
@@ -91,7 +90,7 @@ Voer de volgende stappen uit om Wrike toe te voegen vanuit de Azure AD-toepassin
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+2. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -113,7 +112,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="configure-automatic-user-provisioning-for-wrike-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Wrike in azure AD
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer**alle toepassingen**in **bedrijfs toepassingen** > .
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise Applications**  >  **alle toepassingen**in bedrijfs toepassingen.
 
     ![Alle toepassingen](common/enterprise-applications.png)
 
@@ -168,7 +167,7 @@ U kunt de **huidige status** sectie gebruiken om de voortgang te controleren en 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

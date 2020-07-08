@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 638b60bd3612fa25350ecef0a738fea75c2f53d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77020638"
 ---
 # <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>VSAN-versleuteling configureren voor de Privécloud van CloudSimple
@@ -78,8 +77,8 @@ Als u een HyTrust-besturings cluster wilt implementeren in de Azure Resource Man
 3. Implementeer het eerste knoop punt voor besturings elementen uit de installatie kopie in azure Marketplace.  Gebruik de open bare sleutel van het sleutel paar dat is gegenereerd en selecteer **NSG-hytrust** als de netwerk beveiligings groep voor het besturings element Besturingselementbron.
 4. Converteer het persoonlijke IP-adres van de besturings elementen naar een statisch IP-adres.
 5. SSH naar de virtuele machine voor besturings elementen met behulp van het open bare IP-adres en de persoonlijke sleutel van het eerder genoemde sleutel paar.
-6. Wanneer u hierom wordt gevraagd in de SSH `No` -shell, selecteert u het knoop punt instellen als het eerste knoop punt voor het besturings element.
-7. Voeg extra Stuur knooppunten voor besturings elementen toe door stap 3-5 van deze procedure `Yes` te herhalen en te selecteren wanneer u wordt gevraagd of u wilt toevoegen aan een bestaand cluster.
+6. Wanneer u hierom wordt gevraagd in de SSH-Shell, selecteert `No` u het knoop punt instellen als het eerste knoop punt voor het besturings element.
+7. Voeg extra Stuur knooppunten voor besturings elementen toe door stap 3-5 van deze procedure te herhalen en te selecteren `Yes` Wanneer u wordt gevraagd of u wilt toevoegen aan een bestaand cluster.
 
 ### <a name="hytrust-webui-configure-the-kmip-server"></a>HyTrust WebUI: de KMIP-server configureren
 
@@ -98,7 +97,7 @@ Ga in vCenter naar **Cluster > configureren** en selecteer **algemene** optie vo
 
 ![VSAN-versleuteling inschakelen en KMS-cluster configureren in vCenter](media/vsan-config02.png)
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Referenties
 
 ### <a name="azure"></a>Azure
 

@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 565c9ad0fbd37b026a1ba555d83b9032d2efcba4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77024293"
 ---
 # <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>Open bare IP-adressen toewijzen voor een privé-cloud omgeving
@@ -30,7 +29,7 @@ Open het tabblad open bare Ip's op de pagina netwerk om open bare IP-adressen to
 6. Gebruik de schuif regelaar om, indien nodig, de time-out voor inactiviteit te wijzigen.
 7. Voer het lokale IP-adres in waarvoor u een openbaar IP-adres wilt toewijzen.
 8. Voer een bijbehorende DNS-naam in.
-9. Klik op **verzenden**.
+9. Klik op **Submit**
 
 ![Open bare IP-adressen toewijzen](media/network-public-ip-allocate.png)
 

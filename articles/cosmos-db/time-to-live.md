@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 07/26/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 5407c38f33d167ff5114cd55878e3470e7248d71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77188722"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Time to Live (TTL) configureren in Azure Cosmos DB 
@@ -24,7 +23,7 @@ Het verwijderen van verlopen items is een achtergrond taak die gebruikmaakt van 
 
 De waarde voor TTL (time to Live) wordt ingesteld in seconden en wordt geïnterpreteerd als een verschil vanaf het tijdstip waarop een item voor het laatst is gewijzigd. U kunt time to Live instellen voor een container of een item in de container:
 
-1. **Time to Live op een container** (ingesteld met `DefaultTimeToLive`):
+1. **Time to Live op een container** (ingesteld met `DefaultTimeToLive` ):
 
    - Als de waarde ontbreekt (of is ingesteld op null), worden items niet automatisch verlopen.
 
@@ -32,9 +31,9 @@ De waarde voor TTL (time to Live) wordt ingesteld in seconden en wordt geïnterp
 
    - Indien aanwezig en de waarde is ingesteld op een aantal *' n '* : items verlopen *' n '* seconden na het tijdstip waarop het voor het laatst is gewijzigd.
 
-2. **Time to Live voor een item** (ingesteld met `ttl`):
+2. **Time to Live voor een item** (ingesteld met `ttl` ):
 
-   - Deze eigenschap is alleen van toepassing `DefaultTimeToLive` als deze aanwezig is en niet is ingesteld op null voor de bovenliggende container.
+   - Deze eigenschap is alleen van toepassing als deze `DefaultTimeToLive` aanwezig is en niet is ingesteld op null voor de bovenliggende container.
 
    - Indien aanwezig, wordt de `DefaultTimeToLive` waarde van de bovenliggende container overschreven.
 

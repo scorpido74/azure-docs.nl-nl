@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
 ms.openlocfilehash: 518d86fff04a23f1c1e63c44c53485b99f30637d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057830"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Zelf studie: harnas configureren voor automatische gebruikers inrichting
@@ -29,7 +28,7 @@ In dit artikel vindt u informatie over het configureren van Azure Active Directo
 > [!NOTE]
 > In dit artikel wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie Gebruikers inrichten en de inrichting ongedaan maken voor [SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over deze service en antwoorden op veelgestelde vragen.
 >
-> Deze connector is momenteel beschikbaar als preview-versie. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Deze connector is momenteel beschikbaar als preview-versie. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -53,7 +52,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 ## <a name="set-up-harness-for-provisioning"></a>Harnas instellen voor inrichting
 
-1. Meld u aan bij uw [harnas-beheer console](https://app.harness.io/#/login)en ga vervolgens naar **continue beveiliging** > **toegangs beheer**.
+1. Meld u aan bij uw [harnas-beheer console](https://app.harness.io/#/login)en ga vervolgens naar **continue beveiliging**  >  **toegangs beheer**.
 
     ![Console voor harnas beheer](media/harness-provisioning-tutorial/admin.png)
 
@@ -86,7 +85,7 @@ Voordat u een harnas configureert voor het automatisch inrichten van gebruikers 
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-1. Selecteer**alle toepassingen**in **bedrijfs toepassingen** > .
+1. Selecteer **Enterprise applications**  >  **alle toepassingen**in bedrijfs toepassingen.
 
     ![De koppeling alle toepassingen](common/enterprise-applications.png)
 
@@ -110,7 +109,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 Ga als volgt te werk om het automatisch inrichten van gebruikers voor harnas in azure AD te configureren:
 
-1. Selecteer in [het Azure Portal](https://portal.azure.com)**alle toepassingen**in **bedrijfs toepassingen** > .
+1. Selecteer in het [Azure Portal](https://portal.azure.com)alle toepassingen in **bedrijfs toepassingen**  >  **All applications**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -130,7 +129,7 @@ Ga als volgt te werk om het automatisch inrichten van gebruikers voor harnas in 
 
     ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
  
-   a. Voer **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** in het vak **Tenant-URL** in.  
+   a. Voer in het vak **Tenant-URL** in **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** .  
    b. Voer in het vak **geheim token** de waarde voor het scim-verificatie token in dat u hebt opgeslagen in stap 6 van de sectie ' harnas instellen voor het inrichten '.  
    c. Selecteer **verbinding testen** om te controleren of Azure AD verbinding kan maken met de harnas. Als de verbinding mislukt, zorg er dan voor dat uw harnas account *beheerders* machtigingen heeft en probeer het opnieuw.
 
@@ -174,10 +173,10 @@ Met deze bewerking wordt de eerste synchronisatie gestart van de gebruikers of g
 
 Zie [rapport over automatische toewijzing van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

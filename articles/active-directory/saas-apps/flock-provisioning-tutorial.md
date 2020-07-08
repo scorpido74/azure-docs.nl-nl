@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: cd7aae05b064657c7b9072402f4bc4d4d7fef7a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057855"
 ---
 # <a name="tutorial-configure-flock-for-automatic-user-provisioning"></a>Zelf studie: koppel configureren voor automatische gebruikers inrichting
@@ -56,7 +55,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 Voordat u een koppel configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u SCIM inrichten inschakelen op het koppel.
 
-1. Meld u aan bij [koppel](https://web.flock.com/?). Klik op het **pictogram** > instellingen**Beheer uw team**.
+1. Meld u aan bij [koppel](https://web.flock.com/?). Klik op het **pictogram instellingen**  >  **Beheer uw team**.
 
     ![Flock](media/flock-provisioning-tutorial/icon.png)
 
@@ -79,7 +78,7 @@ Als u een koppel wilt configureren voor het automatisch inrichten van gebruikers
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+2. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -100,7 +99,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-flock--in-azure-ad"></a>Automatische gebruikers inrichting configureren voor een koppel in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -157,7 +156,7 @@ U kunt de **huidige status** sectie gebruiken om de voortgang te controleren en 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

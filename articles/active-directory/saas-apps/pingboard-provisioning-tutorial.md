@@ -16,10 +16,9 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c64c40d93f9b525ac6adeca276797df65f32ef3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77061272"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Zelf studie: Pingboard configureren voor automatische gebruikers inrichting
@@ -58,7 +57,7 @@ In deze sectie wordt u begeleid bij het koppelen van uw Azure AD aan de inrichti
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-pingboard-in-azure-ad"></a>Automatische toewijzing van gebruikers accounts configureren voor Pingboard in azure AD
 
-1. Ga in het [Azure Portal](https://portal.azure.com)naar de sectie **Azure Active Directory** > **Enter prise apps** > **all applications** .
+1. Ga in het [Azure Portal](https://portal.azure.com)naar de sectie **Azure Active Directory**  >  **Enter prise apps**  >  **all applications** .
 
 1. Als u Pingboard al hebt geconfigureerd voor eenmalige aanmelding, zoekt u naar uw instantie van Pingboard met behulp van het zoek veld. Als dat niet het geval is, selecteert u **toevoegen** en zoeken naar **Pingboard** in de toepassings galerie. Selecteer **Pingboard** in de zoek resultaten en voeg deze toe aan uw lijst met toepassingen.
 
@@ -70,11 +69,11 @@ In deze sectie wordt u begeleid bij het koppelen van uw Azure AD aan de inrichti
 
 1. Gebruik de volgende stappen onder de sectie **beheerders referenties** :
 
-    a. Voer **Tenant URL** `https://your_domain.pingboard.com/scim/v2`in Tenant-URL, en vervang ' your_domain ' door uw echte domein.
+    a. Voer in **Tenant-URL**, `https://your_domain.pingboard.com/scim/v2` en vervang ' your_domain ' door uw echte domein.
 
     b. Meld u aan bij [Pingboard](https://pingboard.com/) met uw beheerders account.
 
-    c. Selecteer **invoeg toepassingen** > **integraties** > **Azure Active Directory**.
+    c. Selecteer **invoeg toepassingen**  >  **integraties**  >  **Azure Active Directory**.
 
     d. Ga naar het tabblad **configureren** en selecteer **gebruikers inrichting van Azure inschakelen**.
 
@@ -101,5 +100,5 @@ Zie [rapport over automatische toewijzing van gebruikers accounts](../app-provis
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 * [Eenmalige aanmelding configureren](pingboard-tutorial.md)

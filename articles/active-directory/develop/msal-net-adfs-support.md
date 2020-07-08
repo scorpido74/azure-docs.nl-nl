@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 15af18177cea217612a4d5276d130abe02d339f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77160757"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>Ondersteuning voor Active Directory Federation Services in MSAL.NET
@@ -44,10 +43,10 @@ Wanneer u de `AcquireTokenInteractive` -methode aanroept, is de gebruikers ervar
 Ondersteunde AD FS versies in dit federatieve scenario zijn AD FS v2, AD FS v3 (Windows Server 2012 R2) en AD FS v4 (AD FS 2016).
 
 ### <a name="acquiring-a-token-using-acquiretokenbyintegratedauthentication-or-acquiretokenbyusernamepassword"></a>Een Token ophalen met behulp van AcquireTokenByIntegratedAuthentication of AcquireTokenByUsernamePassword
-Bij het ophalen van een token met `AcquireTokenByIntegratedAuthentication` behulp van de-of `AcquireTokenByUsernamePassword` -methoden haalt MSAL.net de ID-provider contact op op basis van de gebruikers naam.  MSAL.NET ontvangt een [SAML 1,1-token](reference-saml-tokens.md) na het contact opnemen met de ID-provider.  MSAL.NET levert vervolgens het SAML-token naar Azure AD als een gebruikers bevestiging (vergelijkbaar met de namens [-flow](msal-authentication-flows.md#on-behalf-of)) om een JWT-back-up te krijgen.
+Bij het ophalen van een token met behulp van de `AcquireTokenByIntegratedAuthentication` `AcquireTokenByUsernamePassword` -of-methoden haalt MSAL.net de ID-provider contact op op basis van de gebruikers naam.  MSAL.NET ontvangt een [SAML 1,1-token](reference-saml-tokens.md) na het contact opnemen met de ID-provider.  MSAL.NET levert vervolgens het SAML-token naar Azure AD als een gebruikers bevestiging (vergelijkbaar met de namens [-flow](msal-authentication-flows.md#on-behalf-of)) om een JWT-back-up te krijgen.
 
 ## <a name="msal-connects-directly-to-ad-fs"></a>MSAL maakt rechtstreeks verbinding met AD FS
-MSAL.NET biedt ondersteuning voor het verbinden met AD FS 2019, een open ID-verbinding die compatibel is en die PKCE en bereiken begrijpt. Deze ondersteuning vereist dat een Service Pack [KB 4490481](https://support.microsoft.com/en-us/help/4490481/windows-10-update-kb4490481) wordt toegepast op Windows Server. Wanneer u rechtstreeks verbinding maakt met AD FS, is de instantie die u wilt gebruiken om uw toepassing te bouwen `https://mysite.contoso.com/adfs/`, vergelijkbaar met.
+MSAL.NET biedt ondersteuning voor het verbinden met AD FS 2019, een open ID-verbinding die compatibel is en die PKCE en bereiken begrijpt. Deze ondersteuning vereist dat een Service Pack [KB 4490481](https://support.microsoft.com/en-us/help/4490481/windows-10-update-kb4490481) wordt toegepast op Windows Server. Wanneer u rechtstreeks verbinding maakt met AD FS, is de instantie die u wilt gebruiken om uw toepassing te bouwen, vergelijkbaar met `https://mysite.contoso.com/adfs/` .
 
 Er zijn momenteel geen plannen voor het ondersteunen van een rechtstreekse verbinding met:
 

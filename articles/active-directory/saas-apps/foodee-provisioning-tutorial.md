@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 2195056ec66550063aba5ce5e2b977b51a6dc5e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057803"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Zelf studie: de levens gebruiker configureren voor het automatisch inrichten van gebruikers
@@ -79,7 +78,7 @@ Ga als volgt te werk om een levens middel toe te voegen vanuit de Azure AD-toepa
 
     ![De Azure Active Directory opdracht](common/select-azuread.png)
 
-1. Selecteer**alle toepassingen**in **bedrijfs toepassingen** > .
+1. Selecteer **Enterprise applications**  >  **alle toepassingen**in bedrijfs toepassingen.
 
     ![Het deelvenster Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -100,7 +99,7 @@ In deze sectie configureert u de Azure AD-inrichtings service om gebruikers of g
 
 Configureer de automatische gebruikers inrichting voor de levensmiddelen gebruiker in azure AD door de volgende handelingen uit te voeren:
 
-1. Selecteer in [het Azure Portal](https://portal.azure.com)**alle toepassingen**in **bedrijfs toepassingen** > .
+1. Selecteer in het [Azure Portal](https://portal.azure.com)alle toepassingen in **bedrijfs toepassingen**  >  **All applications**.
 
     ![Deel venster ondernemings toepassingen](common/enterprise-applications.png)
 
@@ -118,7 +117,7 @@ Configureer de automatische gebruikers inrichting voor de levensmiddelen gebruik
 
 1. Ga als volgt te werk onder **beheerders referenties**:
 
-   a. Voer in het vak **Tenant-URL** de **https:\//Concierge.Food.ee/scim/v2-** waarde in die u eerder hebt opgehaald.
+   a. Voer in het vak **Tenant-URL** de **https: \/ /Concierge.Food.ee/scim/v2-** waarde in die u eerder hebt opgehaald.
 
    b. Voer in het vak **geheim token** de waarde van het **API-token** in die u eerder hebt opgehaald.
    
@@ -171,7 +170,7 @@ U kunt de **huidige status** sectie gebruiken om de voortgang te bewaken en kopp
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

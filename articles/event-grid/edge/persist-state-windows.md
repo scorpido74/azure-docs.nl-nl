@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: c2bae3bd268dba8efdf23ae314671b17a2c89420
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77086621"
 ---
 # <a name="persist-state-in-windows"></a>Status voor persistent in Windows
@@ -73,9 +72,9 @@ In dit artikel worden de stappen beschreven die nodig zijn om Event Grid module 
     1. Start bestanden Verkenner.
     1. Ga naar de map die is gepointt door **koppel punt**.
     1. Klik met de rechter muisknop en selecteer **Eigenschappen**.
-    1. Selecteer **beveiliging**.
+    1. Selecteer **Beveiliging**.
     1. Selecteer onder * groeps-of gebruikers namen de optie **bewerken**.
-    1. Selecteer **toevoegen**, invoeren `Users`, selecteer **Namen controleren**en selecteer **OK**.
+    1. Selecteer **toevoegen**, invoeren `Users` , selecteer **Namen controleren**en selecteer **OK**.
     1. Selecteer onder *machtigingen voor gebruikers* **wijzigen**en selecteer **OK**.
 1. Gebruik **bindingen** om dit volume te koppelen en Event grid module opnieuw te implementeren vanuit Azure Portal
 
@@ -112,7 +111,7 @@ In dit artikel worden de stappen beschreven die nodig zijn om Event Grid module 
     ```
 
    >[!IMPORTANT]
-   >Wijzig het tweede deel van de bindings waarde niet. Deze verwijst naar een specifieke locatie in de module. Voor Event grid module op Windows moet **C:\\app\\metadataDb**zijn.
+   >Wijzig het tweede deel van de bindings waarde niet. Deze verwijst naar een specifieke locatie in de module. Voor Event Grid module op Windows moet **C: \\ app \\ metadataDb**zijn.
 
 
     Bijvoorbeeld:
@@ -176,7 +175,7 @@ In plaats van een volume te koppelen, kunt u een map op het hostsysteem maken en
     ```
 
     >[!IMPORTANT]
-    >Wijzig het tweede deel van de bindings waarde niet. Deze verwijst naar een specifieke locatie in de module. Voor de module Event grid in Windows moet **C:\\app\\metadataDb**zijn.
+    >Wijzig het tweede deel van de bindings waarde niet. Deze verwijst naar een specifieke locatie in de module. Voor de module Event Grid in Windows moet **C: \\ app \\ metadataDb**zijn.
 
     Bijvoorbeeld:
 
@@ -220,7 +219,7 @@ Belang rijke aandachtspunten voor het aanhouden van persistente gebeurtenissen:
 * Gebeurtenis persistentie wordt tijdens het maken geconfigureerd op een gebeurtenis abonnement en kan niet worden gewijzigd nadat het gebeurtenis abonnement is gemaakt. Als u wilt overschakelen op gebeurtenis persistentie, moet u het gebeurtenis abonnement verwijderen en opnieuw maken.
 * Het persistent maken van gebeurtenissen is bijna altijd langzamer dan in geheugen bewerkingen, maar het snelheids verschil is echter zeer afhankelijk van de kenmerken van het station. De verhouding tussen snelheid en betrouw baarheid is inherent aan alle Messa ging-systemen, maar wordt alleen merkbaar op grote schaal.
 
-Als u gebeurtenis persistentie wilt inschakelen voor een gebeurtenis `persistencePolicy` abonnement `true`, stelt u in op:
+Als u gebeurtenis persistentie wilt inschakelen voor een gebeurtenis abonnement, stelt `persistencePolicy` u in op `true` :
 
  ```json
         {

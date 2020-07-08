@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 3262841efb9109b1de24fe501ea0a7bea0dd612d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025126"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Back-ups maken van werkbelasting Vm's op CloudSimple Privécloud met Veeam B&R
@@ -136,7 +135,7 @@ Maak firewall regels tussen het subnet van het beheer en het back-upnetwerk om n
 
 De volgende tabel bevat een lijst met poorten.
 
-| Pictogram | Beschrijving | Pictogram | Beschrijving |
+| Pictogram | Description | Pictogram | Description |
 | ------------ | ------------- | ------------ | ------------- |
 | Back-upserver  | vCenter  | HTTPS/TCP  | 443 |
 | Back-upserver <br> *Vereist voor de implementatie van Veeam backup &-replicatie onderdelen* | Back-upproxy  | TCP/UDP  | 135, 137 tot 139 en 445 |
@@ -196,7 +195,7 @@ Verbind uw virtuele netwerk met de Privécloud door de instructies in [Azure Vir
 
 1. Maak een opslag account voor algemeen gebruik (GPv2) van het standaard type en een BLOB-container zoals beschreven in de micro soft video [aan de slag met Azure Storage](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage).
 2. Maak een Azure storage-container, zoals beschreven in de verwijzing [Create container](https://docs.microsoft.com/rest/api/storageservices/create-container) .
-2. Down load `azcopy` het opdracht regel programma voor Linux van micro soft. U kunt de volgende opdrachten gebruiken in de bash-shell in CentOS 7,5.
+2. Down load het `azcopy` opdracht regel programma voor Linux van micro soft. U kunt de volgende opdrachten gebruiken in de bash-shell in CentOS 7,5.
 
     ```
     wget -O azcopy.tar.gz https://aka.ms/downloadazcopylinux64
@@ -260,11 +259,11 @@ Maak een firewall regel met om de Veeam-back-upserver toe te staan een uitgaande
 
 Als u de bevoegdheden wilt deescaleren, raadpleegt u [bevoegdheden deescaleren](escalate-private-cloud-privileges.md#de-escalate-privileges).
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Referenties
 
 ### <a name="cloudsimple-references"></a>CloudSimple-verwijzingen
 
-* [Een privécloud maken](create-private-cloud.md)
+* [Een Privécloud maken](create-private-cloud.md)
 * [VLAN'S/subnetten maken en beheren](create-vlan-subnet.md)
 * [vCenter-identiteits bronnen](set-vcenter-identity.md)
 * [DNS en DHCP-installatie van workload](dns-dhcp-setup.md)

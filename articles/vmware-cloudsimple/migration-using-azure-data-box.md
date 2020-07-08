@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 65167169248d83ebfec2c49c308673ec9315934e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77019754"
 ---
 # <a name="migrating-data-to-azure-vmware-solution-by-using-azure-data-box"></a>Gegevens migreren naar Azure VMware-oplossing met behulp van Azure Data Box
@@ -133,7 +132,7 @@ De virtuele machine wordt gemigreerd naar de NFS-gegevens opslag van Data Box. N
 
 ### <a name="clone-a-virtual-machine-or-a-virtual-machine-template-to-the-data-box-datastore"></a>Een virtuele machine of een virtuele-machine sjabloon klonen naar de Data Box gegevens opslag
 
-1. Klik met de rechter muisknop op een virtuele machine of een virtuele-machine sjabloon die u wilt klonen.  > Selecteer **kloon****klonen naar virtuele machine**.
+1. Klik met de rechter muisknop op een virtuele machine of een virtuele-machine sjabloon die u wilt klonen. Selecteer **kloon**  >  **klonen naar virtuele machine**.
 
     ![Virtuele machine klonen](media/databox-migration-vm-clone.png)
 
@@ -227,12 +226,12 @@ Kopieer eerst Blob Storage-gegevens naar een beheerde schijf op een virtuele Lin
 
 4. Installeer [AzCopy op uw virtuele Linux-machine](../storage/common/storage-use-azcopy-v10.md).
 
-5. Down load de gegevens van uw Azure Blob-opslag naar de beheerde schijf met behulp van AzCopy.  Opdracht syntaxis: `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"`.  Vervang `<storage-account-name>` door de naam van uw Azure Storage `<container-name>` -account en met de container die de gegevens bevat die zijn gekopieerd via data box.
+5. Down load de gegevens van uw Azure Blob-opslag naar de beheerde schijf met behulp van AzCopy.  Opdracht syntaxis: `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"` .  Vervang door de `<storage-account-name>` naam van uw Azure Storage-account en `<container-name>` met de container die de gegevens bevat die zijn gekopieerd via data box.
 
 6. Installeer de NFS-server op uw virtuele Linux-machine:
 
-    - Op een Ubuntu/Debian-distributie `sudo apt install nfs-kernel-server`:.
-    - Op een Enter prise Linux- `sudo yum install nfs-utils`distributie:.
+    - Op een Ubuntu/Debian-distributie: `sudo apt install nfs-kernel-server` .
+    - Op een Enter prise Linux-distributie: `sudo yum install nfs-utils` .
 
 7. Wijzig de machtiging van de map op uw beheerde schijf waar gegevens uit Azure Blob Storage zijn gekopieerd.  Wijzig de machtigingen voor alle mappen die u wilt exporteren als een NFS-share.
 
@@ -241,7 +240,7 @@ Kopieer eerst Blob Storage-gegevens naar een beheerde schijf op een virtuele Lin
     chown nfsnobody:nfsnobody /<folder>/<subfolder>
     ```
 
-8. Wijs machtigingen voor IP-adressen van clients toe om toegang te krijgen tot `/etc/exports` de NFS-share door het bestand te bewerken.
+8. Wijs machtigingen voor IP-adressen van clients toe om toegang te krijgen tot de NFS-share door het bestand te bewerken `/etc/exports` .
 
     ```bash
     sudo vi /etc/exports
@@ -256,9 +255,9 @@ Kopieer eerst Blob Storage-gegevens naar een beheerde schijf op een virtuele Lin
     .
     ```
 
-9. Exporteer de NFS-shares met `sudo exportfs -a` behulp van de opdracht.
+9. Exporteer de NFS-shares met behulp van de `sudo exportfs -a` opdracht.
 
-10. Start de NFS-kernel-server `sudo systemctl restart nfs-kernel-server` opnieuw met behulp van de opdracht.
+10. Start de NFS-kernel-server opnieuw met behulp van de `sudo systemctl restart nfs-kernel-server` opdracht.
 
 
 ### <a name="mount-the-linux-virtual-machine-nfs-share-as-a-datastore-on-a-private-cloud-vcenter-cluster-and-then-copy-data"></a>Koppel de virtuele Linux-machine met de NFS-share als een gegevens opslag op een privécloud-cluster en kopieer vervolgens gegevens

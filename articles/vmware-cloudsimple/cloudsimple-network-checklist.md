@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: bfb170036293dc9f519259dc92737f30380aa84a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025007"
 ---
 # <a name="networking-prerequisites-for-azure-vmware-solution-by-cloudsimple"></a>Netwerk vereisten voor de Azure VMware-oplossing op CloudSimple
@@ -25,7 +24,7 @@ In de tabellen in dit artikel wordt de set adresbereiken en de bijbehorende serv
 
 Tijdens het maken van een CloudSimple-service en een privécloud moet u als volgt voldoen aan de gespecificeerde CIDR-bereiken (Classless Inter-Domain Routing) van het netwerk.
 
-| Naam/gebruikt voor     | Beschrijving                                                                                                                            | Adresbereik            |
+| Naam/gebruikt voor     | Description                                                                                                                            | Adresbereik            |
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
 | Gateway-CIDR      | Vereist voor Edge-Services (VPN-gateways).  Deze CIDR is vereist tijdens het maken van de CloudSimple-service en moet afkomstig zijn uit de RFC 1918-ruimte. | /28                      |
 | vSphere/vSAN CIDR | Vereist voor VMware-beheer netwerken. Deze CIDR moet worden opgegeven tijdens het maken van een privécloud.                                    | /24 of/23 of/22 of/21 |
@@ -34,7 +33,7 @@ Tijdens het maken van een CloudSimple-service en een privécloud moet u als volg
 
 Als u verbinding maakt vanaf een [on-premises netwerk met het particuliere cloud netwerk via ExpressRoute](on-premises-connection.md) , wordt er een Global Reach verbinding tot stand gebracht.  De verbinding maakt gebruik van Border Gateway Protocol (BGP) voor het uitwisselen van routes tussen uw on-premises netwerk, uw particuliere cloud netwerk en uw Azure-netwerken.
 
-| Naam/gebruikt voor             | Beschrijving                                                                                                                                                                             | Adresbereik |
+| Naam/gebruikt voor             | Description                                                                                                                                                                             | Adresbereik |
 |---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
 | ExpressRoute-peering CIDR | Vereist wanneer u ExpressRoute-Global Reach gebruikt voor on-premises connectiviteit. Deze CIDR moet worden opgegeven wanneer een Global Reach verbindings aanvraag wordt gedaan via een ondersteunings ticket. | /29           |
 
@@ -42,7 +41,7 @@ Als u verbinding maakt vanaf een [on-premises netwerk met het particuliere cloud
 
 Voor het verbinden van een [on-premises netwerk met het particuliere cloud netwerk met behulp van site-naar-site-VPN](vpn-gateway.md) zijn de volgende IP-adressen, het on-premises netwerk en de id's vereist. 
 
-| Adres/adres bereik | Beschrijving                                                                                                                                                                                                                                                           |
+| Adres/adres bereik | Description                                                                                                                                                                                                                                                           |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Peer-IP               | Openbaar IP-adres van on-premises VPN-gateway. Vereist voor het tot stand brengen van een site-naar-site-VPN-verbinding tussen een on-premises Data Center en de CloudSimple-service regio. Dit IP-adres is vereist tijdens het maken van de site-naar-site-VPN-gateway.                                         |
 | Peer-id       | De peer-id van de on-premises VPN-gateway. Dit is meestal hetzelfde als het **IP-adres**van de peer.  Als er een unieke id is opgegeven op uw on-premises VPN-gateway, moet de id worden opgegeven.  De peer-ID is vereist tijdens het maken van de site-naar-site-VPN-gateway.   |
@@ -52,7 +51,7 @@ Voor het verbinden van een [on-premises netwerk met het particuliere cloud netwe
 
 Een punt-naar-site-VPN-verbinding maakt toegang tot het CloudSimple-netwerk vanaf een client computer mogelijk.  [Als u punt-naar-site-VPN wilt instellen](vpn-gateway.md), moet u het volgende netwerk adres bereik opgeven.
 
-| Adres/adres bereik | Beschrijving                                                                                                                                                                                                                                                                                                  |
+| Adres/adres bereik | Description                                                                                                                                                                                                                                                                                                  |
 |-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Client subnet         | DHCP-adressen worden door het client-subnet gegeven wanneer u verbinding maakt met behulp van een punt-naar-site-VPN. Dit subnet is vereist tijdens het maken van een punt-naar-site-VPN-gateway in een CloudSimple-Portal.  Het netwerk is onderverdeeld in twee subnetten. een voor de UDP-verbinding en de andere voor TCP-verbindingen. |
 

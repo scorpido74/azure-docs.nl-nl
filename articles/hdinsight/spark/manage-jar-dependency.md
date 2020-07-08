@@ -9,15 +9,14 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.openlocfilehash: da3387dd9846847f7643ded43c8cbff8ed8b166e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77135731"
 ---
 # <a name="jar-dependency-management-best-practices"></a>Best practices voor het beheer van JAR-afhankelijkheden
 
-Onderdelen die zijn geïnstalleerd op HDInsight-clusters, hebben afhankelijkheden van bibliotheken van derden. Normaal gesp roken wordt in een specifieke versie van algemene modules zoals guava naar deze ingebouwde onderdelen verwezen. Wanneer u een toepassing met de bijbehorende afhankelijkheden verzendt, kan dit een conflict veroorzaken tussen verschillende versies van dezelfde module. Als de versie van het onderdeel waarnaar u in het klassenpad verwijst, het eerste is, kunnen ingebouwde onderdelen uitzonde ringen genereren vanwege incompatibiliteit van de versie. Als ingebouwde onderdelen echter hun afhankelijkheden van het klassenpad injecteren, kan uw toepassing fouten veroorzaken zoals `NoSuchMethod`.
+Onderdelen die zijn geïnstalleerd op HDInsight-clusters, hebben afhankelijkheden van bibliotheken van derden. Normaal gesp roken wordt in een specifieke versie van algemene modules zoals guava naar deze ingebouwde onderdelen verwezen. Wanneer u een toepassing met de bijbehorende afhankelijkheden verzendt, kan dit een conflict veroorzaken tussen verschillende versies van dezelfde module. Als de versie van het onderdeel waarnaar u in het klassenpad verwijst, het eerste is, kunnen ingebouwde onderdelen uitzonde ringen genereren vanwege incompatibiliteit van de versie. Als ingebouwde onderdelen echter hun afhankelijkheden van het klassenpad injecteren, kan uw toepassing fouten veroorzaken zoals `NoSuchMethod` .
 
 Als u versie conflicten wilt voor komen, kunt u overwegen om uw toepassings afhankelijkheden te arceren.
 
@@ -32,9 +31,9 @@ Uber-jar is een enkel jar-bestand dat zowel de toepassing jar als de bijbehorend
 ### <a name="shade-package-using-maven"></a>Schaduw pakket met behulp van Maven
 Maven kan toepassingen bouwen die zijn geschreven in Java en scala. Met maven-Shade-invoeg toepassing kunt u eenvoudig een gekleurd uber-jar maken.
 
-In het onderstaande voor beeld ziet `pom.xml` u een bestand dat is bijgewerkt met een schaduw van een pakket met behulp van Maven-Shade-invoeg toepassing.  In het gedeelte `<relocation>…</relocation>` XML worden klassen van `com.google.guava` het pakket `com.google.shaded.guava` naar het pakket verplaatst door de overeenkomstige bestands vermeldingen van het jar-bestand te verplaatsen en de betreffende byte code te herschrijven.
+In het onderstaande voor beeld ziet `pom.xml` u een bestand dat is bijgewerkt met een schaduw van een pakket met behulp van Maven-Shade-invoeg toepassing.  In het gedeelte XML `<relocation>…</relocation>` worden klassen van het pakket `com.google.guava` naar het pakket verplaatst `com.google.shaded.guava` door de overeenkomstige bestands vermeldingen van het jar-bestand te verplaatsen en de betreffende byte code te herschrijven.
 
-Nadat u `pom.xml`hebt gewijzigd, kunt `mvn package` u uitvoeren om de gearceerde uber-jar te maken.
+Nadat u hebt gewijzigd `pom.xml` , kunt u uitvoeren `mvn package` om de gearceerde uber-jar te maken.
 
 ```xml
   <build>
@@ -67,7 +66,7 @@ Nadat u `pom.xml`hebt gewijzigd, kunt `mvn package` u uitvoeren om de gearceerde
 ### <a name="shade-package-using-sbt"></a>Schaduw pakket met behulp van SBT
 SBT is ook een hulp programma voor het bouwen van scala en Java. SBT heeft geen Shade-invoeg toepassing zoals Maven-Shad-plugin. U kunt een `build.sbt` bestand wijzigen in schaduw pakketten. 
 
-Als u bijvoorbeeld wilt scha `com.google.guava`duwen, kunt u de onderstaande opdracht toevoegen aan `build.sbt` het bestand:
+Als u bijvoorbeeld wilt scha duwen `com.google.guava` , kunt u de onderstaande opdracht toevoegen aan het `build.sbt` bestand:
 
 ```scala
 assemblyShadeRules in assembly := Seq(

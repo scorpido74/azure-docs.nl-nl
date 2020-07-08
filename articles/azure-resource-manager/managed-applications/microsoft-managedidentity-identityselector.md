@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tomfitz
 ms.openlocfilehash: cb66a2684e0b83f4f0cc01a07cc724f6beab4d68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77087542"
 ---
 # <a name="microsoftmanagedidentityidentityselector-ui-element"></a>Micro soft. ManagedIdentity. IdentitySelector UI-element
@@ -69,7 +68,7 @@ De geselecteerde identiteiten worden weer gegeven in de tabel. De gebruiker kan 
 
 ## <a name="remarks"></a>Opmerkingen
 
-- Gebruik **DefaultValue. systemAssignedIdentity** om een begin waarde in te stellen voor het besturings element identiteits opties die door het systeem zijn toegewezen. De standaard waarde is **uitgeschakeld**. De volgende waarden zijn toegestaan:
+- Gebruik **defaultValue.systemAssignedIdentity** om een begin waarde in te stellen voor het besturings element identiteits opties die door het systeem zijn toegewezen. De standaard waarde is **uitgeschakeld**. De volgende waarden zijn toegestaan:
   - **Aan** : een door het systeem toegewezen identiteit wordt toegewezen aan de resource.
   - **Uit** : een door het systeem toegewezen identiteit is niet toegewezen aan de resource.
   - **OnOnly** : een door het systeem toegewezen identiteit wordt toegewezen aan de resource. Gebruikers kunnen deze waarde niet bewerken tijdens de implementatie.

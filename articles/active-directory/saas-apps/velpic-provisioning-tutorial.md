@@ -17,10 +17,9 @@ ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9b7a6c2c9b7ecb0b160f7481d95f7682f3f7a109
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77064118"
 ---
 # <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Zelf studie: Velpic configureren voor automatische gebruikers inrichting
@@ -71,7 +70,7 @@ In deze sectie vindt u instructies voor het verbinden van uw Azure AD-Velpic en 
 
     ![Velpic-inrichting](./media/velpic-provisioning-tutorial/Velpic1.png)
 
-5. Geef in het gedeelte **beheerders referenties** de **Tenant-URL op&geheime token** van Velpic. (U kunt deze waarden vinden onder uw Velpic-account:**Integration** > -**invoeg toepassing** >  **beheren** > **scim**)
+5. Geef in het gedeelte **beheerders referenties** de **Tenant-URL op&geheime token** van Velpic. (U kunt deze waarden vinden onder uw Velpic-account: **beheren**  >  **Integratie**  >  **Invoeg toepassing**  >  **Scim**)
 
     ![Autorisatie waarden](./media/velpic-provisioning-tutorial/Velpic2.png)
 
@@ -96,7 +95,7 @@ Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-p
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

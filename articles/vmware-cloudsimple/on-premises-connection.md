@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 0dd5ede110255b6e53bbc397e683e66b3beffc65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77019618"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>Verbinding maken tussen on-premises en CloudSimple met behulp van ExpressRoute
@@ -61,7 +60,7 @@ Om de ExpressRoute-verbinding tot stand te brengen, moet u een autorisatie maken
     [![Kopie van ExpressRoute-circuit autorisatie](media/azure-expressroute-transit-authorization-copy.png)](media/azure-expressroute-transit-authorization-copy.png)
 
     > [!IMPORTANT]
-    > De **resource-id** moet worden gekopieerd uit de gebruikers interface en moet de ```/subscriptions/<subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/expressRouteCircuits/<express-route-circuit-name>``` indeling hebben als u deze wilt ondersteunen.
+    > De **resource-id** moet worden gekopieerd uit de gebruikers interface en moet de indeling hebben ```/subscriptions/<subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/expressRouteCircuits/<express-route-circuit-name>``` Als u deze wilt ondersteunen.
 
 6. Een ticket met <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">ondersteuning</a> voor het maken van de verbinding.
     * Probleem type: **technisch**

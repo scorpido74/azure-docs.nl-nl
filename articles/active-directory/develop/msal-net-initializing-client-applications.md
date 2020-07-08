@@ -14,16 +14,15 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 57ce6ab31421cd4016f7e204eeabce82f2f7e6a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77083986"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Client toepassingen initialiseren met MSAL.NET
 In dit artikel wordt beschreven hoe u open bare client-en vertrouwelijke client toepassingen initialiseert met behulp van micro soft Authentication Library voor .NET (MSAL.NET).  Lees het [overzicht](msal-client-applications.md)voor meer informatie over de client toepassings typen en configuratie opties voor toepassingen.
 
-Met MSAL.NET 3. x is de aanbevolen manier om een toepassing te instantiëren met behulp van de toepassings `PublicClientApplicationBuilder` bouwers: en `ConfidentialClientApplicationBuilder`. Ze bieden een krachtig mechanisme om de toepassing te configureren, hetzij vanuit de code, hetzij vanuit een configuratie bestand, of zelfs door beide benaderingen te combi neren.
+Met MSAL.NET 3. x is de aanbevolen manier om een toepassing te instantiëren met behulp van de toepassings bouwers: `PublicClientApplicationBuilder` en `ConfidentialClientApplicationBuilder` . Ze bieden een krachtig mechanisme om de toepassing te configureren, hetzij vanuit de code, hetzij vanuit een configuratie bestand, of zelfs door beide benaderingen te combi neren.
 
 ## <a name="prerequisites"></a>Vereisten
 Voordat u een toepassing initialiseert, moet u [deze eerst registreren](quickstart-register-app.md) , zodat uw app kan worden geïntegreerd met het micro soft Identity-platform.  Na de registratie hebt u mogelijk de volgende informatie nodig (die kan worden gevonden in de Azure Portal):
@@ -48,7 +47,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
 
 ### <a name="initializing-a-confidential-client-application-from-code"></a>Een vertrouwelijke client toepassing initialiseren vanuit code
 
-Op dezelfde manier maakt de volgende code een instantie van een vertrouwelijke toepassing (een web-app die `https://myapp.azurewebsites.net`zich bevindt bij) tokens van gebruikers in de Microsoft Azure open bare Cloud, met hun werk-en school accounts of hun persoonlijke micro soft-accounts. De toepassing wordt geïdentificeerd met de ID-provider door een client geheim te delen:
+Op dezelfde manier maakt de volgende code een instantie van een vertrouwelijke toepassing (een web-app die zich bevindt bij `https://myapp.azurewebsites.net` ) tokens van gebruikers in de Microsoft Azure open bare Cloud, met hun werk-en school accounts of hun persoonlijke micro soft-accounts. De toepassing wordt geïdentificeerd met de ID-provider door een client geheim te delen:
 
 ```csharp
 string redirectUri = "https://myapp.azurewebsites.net";
@@ -79,7 +78,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicat
 
 ### <a name="initializing-a-confidential-client-application-from-configuration-options"></a>Een vertrouwelijke client toepassing vanuit configuratie opties initialiseren
 
-Hetzelfde soort patroon is van toepassing op vertrouwelijke client toepassingen. U kunt ook andere para meters `.WithXXX` toevoegen met behulp van wijzigings functies (hier een certificaat).
+Hetzelfde soort patroon is van toepassing op vertrouwelijke client toepassingen. U kunt ook andere para meters toevoegen met behulp van `.WithXXX` wijzigings functies (hier een certificaat).
 
 ```csharp
 ConfidentialClientApplicationOptions options = GetOptions(); // your own method
@@ -90,21 +89,21 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
 
 ## <a name="builder-modifiers"></a>Builder-aanpassingen
 
-In de code fragmenten die gebruikmaken van toepassings bouwers, kan een `.With` aantal methoden worden toegepast als para meters (bijvoorbeeld `.WithCertificate` en `.WithRedirectUri`). 
+In de code fragmenten die gebruikmaken van toepassings bouwers, kan een aantal `.With` methoden worden toegepast als para meters (bijvoorbeeld `.WithCertificate` en `.WithRedirectUri` ). 
 
 ### <a name="modifiers-common-to-public-and-confidential-client-applications"></a>Gewijzigde opties voor open bare en vertrouwelijke client toepassingen
 
 De opties die u kunt instellen op een open bare client of de opbouw functie voor vertrouwelijke client toepassingen zijn:
 
-|Modifier | Beschrijving|
+|Modifier | Description|
 |--------- | --------- |
 |`.WithAuthority()`7 onderdrukkingen | Hiermee stelt u de standaard instantie van de toepassing in op een Azure AD-instantie, met de mogelijkheid om de Azure-Cloud, de doel groep, de Tenant (Tenant-ID of domein naam) te kiezen of rechtstreeks de CA-URI op te geven.|
 |`.WithAdfsAuthority(string)` | Hiermee stelt u de standaard instantie van de toepassing als ADFS-instantie.|
 |`.WithB2CAuthority(string)` | Hiermee stelt u de standaard instantie van de toepassing als Azure AD B2C-instantie.|
 |`.WithClientId(string)` | Hiermee wordt de client-ID overschreven.|
 |`.WithComponent(string)` | Hiermee stelt u de naam van de bibliotheek met behulp van MSAL.NET (voor de redenen van telemetrie). |
-|`.WithDebugLoggingCallback()` | Als deze wordt aangeroepen, wordt `Debug.Write` de toepassing aangeroepen om fout opsporings traceringen in te scha kelen. Zie [logboek registratie](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/logging) voor meer informatie.|
-|`.WithExtraQueryParameters(IDictionary<string,string> eqp)` | Stel de extra query parameters op toepassings niveau in die in alle verificatie aanvragen worden verzonden. Dit is Overschrijf bare op elk niveau van de methode voor het verkrijgen van `.WithExtraQueryParameters pattern`tokens (met hetzelfde).|
+|`.WithDebugLoggingCallback()` | Als deze wordt aangeroepen, wordt de toepassing aangeroepen om `Debug.Write` fout opsporings traceringen in te scha kelen. Zie [logboek registratie](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/logging) voor meer informatie.|
+|`.WithExtraQueryParameters(IDictionary<string,string> eqp)` | Stel de extra query parameters op toepassings niveau in die in alle verificatie aanvragen worden verzonden. Dit is Overschrijf bare op elk niveau van de methode voor het verkrijgen van tokens (met hetzelfde `.WithExtraQueryParameters pattern` ).|
 |`.WithHttpClientFactory(IMsalHttpClientFactory httpClientFactory)` | Hiermee schakelt u geavanceerde scenario's in, zoals het configureren van een HTTP-proxy of het afdwingen van MSAL om een bepaalde httpclient maakt te gebruiken (bijvoorbeeld in ASP.NET Core web apps/Api's).|
 |`.WithLogging()` | Als u de toepassing aanroept, wordt een call back aangeroepen met traceringen voor fout opsporing. Zie [logboek registratie](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/logging) voor meer informatie.|
 |`.WithRedirectUri(string redirectUri)` | Onderdrukt de standaard omleidings-URI. In het geval van open bare client toepassingen is dit handig voor scenario's met betrekking tot de Broker.|
@@ -115,7 +114,7 @@ De opties die u kunt instellen op een open bare client of de opbouw functie voor
 
 De opties die u kunt instellen voor een open bare-client toepassings Builder op Xamarin. iOS zijn:
 
-|Modifier | Beschrijving|
+|Modifier | Description|
 |--------- | --------- |
 |`.WithIosKeychainSecurityGroup()` | **Alleen Xamarin. IOS**: Hiermee stelt u de beveiligings groep IOS-sleutel keten in (voor de cache persistentie).|
 
@@ -123,7 +122,7 @@ De opties die u kunt instellen voor een open bare-client toepassings Builder op 
 
 De opties die u kunt instellen voor een vertrouwelijk client toepassings Builder zijn:
 
-|Modifier | Beschrijving|
+|Modifier | Description|
 |--------- | --------- |
 |`.WithCertificate(X509Certificate2 certificate)` | Hiermee stelt u het certificaat dat de toepassing identificeert met Azure AD.|
 |`.WithClientSecret(string clientSecret)` | Hiermee stelt u het client geheim (app-wacht woord) voor het identificeren van de toepassing met Azure AD.|

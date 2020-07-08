@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025058"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>Veelgestelde vragen over VMware-oplossing per CloudSimple
@@ -33,7 +32,7 @@ CloudSimple is beschikbaar in de regio's VS-Oost, VS-West en Europa-west met ext
 
 **Hoe kan ik mijn abonnement voor CloudSimple inschakelen?**
 
-U kunt contact opnemen met uw Microsoft-account [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) -vertegenwoordiger om uw abonnement voor de CloudSimple-service in te scha kelen. Geef uw abonnements-ID op in het e-mail adres waarvoor u de CloudSimple-service wilt inschakelen.  
+U kunt contact opnemen met uw Microsoft-account-vertegenwoordiger [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) om uw abonnement voor de CloudSimple-service in te scha kelen. Geef uw abonnements-ID op in het e-mail adres waarvoor u de CloudSimple-service wilt inschakelen.  
 
 **Hoe kan ik toegang tot de CloudSimple-Portal?**
 
@@ -131,7 +130,7 @@ CloudSimple bewaakt voortdurend alle hardware-onderdelen van de Privécloud.  Al
 
 **Hoe kan ik grootschalige upload-of migratie van toepassingen en gegevens van on-premises uitvoeren?**
 
-CloudSimple biedt een systeem eigen VMware vSphere oplossing.  Alle VMware-hulpprogram ma's voor het bulksgewijs migreren van gegevens kunnen worden gebruikt in combi natie met uw Privécloud.  Een aantal opties:
+CloudSimple biedt een systeem eigen VMware vSphere oplossing.  Alle VMware-hulpprogram ma's voor het bulksgewijs migreren van gegevens kunnen worden gebruikt in combi natie met uw Privécloud.  Opties zijn onder andere:
 
 * VMware HCX voor het bulksgewijs migreren van gegevens.
 * Koud migreren van gegevens met behulp van Storage vMotion van on-premises naar CloudSimple.

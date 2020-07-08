@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
 ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77121716"
 ---
 # <a name="azure-dns-faq"></a>Veelgestelde vragen over Azure DNS
@@ -42,7 +41,7 @@ Zie de [pagina Azure DNS Sla](https://azure.microsoft.com/support/legal/sla/dns)
 
 Een domein is een unieke naam in het Domain Name System. Bijvoorbeeld: contoso.com.
 
-Een DNS-zone wordt gebruikt om de DNS-records voor een bepaald domein te hosten. Het domein contoso.com kan bijvoorbeeld meerdere DNS-records bevatten. De records bevatten mogelijk mail.contoso.com voor een e-mail server\.en www-contoso.com voor een website. Deze records worden gehost in de DNS-zone contoso.com.
+Een DNS-zone wordt gebruikt om de DNS-records voor een bepaald domein te hosten. Het domein contoso.com kan bijvoorbeeld meerdere DNS-records bevatten. De records bevatten mogelijk mail.contoso.com voor een e-mail server en www- \. contoso.com voor een website. Deze records worden gehost in de DNS-zone contoso.com.
 
 Een domein naam is *slechts een naam*. Een DNS-zone is een gegevens bron die de DNS-records voor een domein naam bevat. Met Azure DNS kunt u een DNS-zone hosten en de DNS-records voor een domein in Azure beheren. Het biedt ook DNS-naam servers om DNS-query's van het Internet te beantwoorden.
 
@@ -96,7 +95,7 @@ Ja. Azure DNS ondersteunt de uitgebreide ASCII-coderings voor TXT-record sets. M
 
 U kunt bijvoorbeeld een teken reeks opgeven als de waarde voor een TXT-record met het uitgebreide ASCII-teken \ 128. Een voor beeld is ' abcd\128efgh. ' Azure DNS gebruikt de byte waarde van dit teken, 128, in interne weer gave. Op het moment van de DNS-omzetting wordt deze byte waarde geretourneerd in het antwoord. Houd er ook rekening mee dat "ABC" en "\ 097 \ 098 \ 099" elkaar verwisselbaar zijn. 
 
-We volgen de regels voor de bestands hoofd indeling van de [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) -zone voor TXT-records. U kunt `\` nu bijvoorbeeld alle gegevens per RFC vervolledigen. Als u opgeeft `A\B` als waarde voor TXT-record, wordt deze als zodanig weer gegeven `AB`en opgelost. Als u wilt dat de TXT-record `A\B` bij een oplossing komt, moet u het `\` opnieuw escape-teken. Geef `A\\B`als voor beeld op.
+We volgen de regels voor de bestands hoofd indeling van de [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) -zone voor TXT-records. U kunt nu bijvoorbeeld alle gegevens per RFC vervolledigen `\` . Als u opgeeft `A\B` als waarde voor TXT-record, wordt deze als zodanig weer gegeven en opgelost `AB` . Als u wilt dat de TXT `A\B` -record bij een oplossing komt, moet u het opnieuw escape-teken `\` . Geef als voor beeld op `A\\B` .
 
 Deze ondersteuning is momenteel niet beschikbaar voor TXT-records die zijn gemaakt op basis van de Azure Portal.
 

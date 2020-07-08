@@ -4,10 +4,9 @@ description: Dit artikel bevat een overzicht van de onderdelen en architectuur d
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 089d981284986a2b6eb0ee7f1dbd401fc7ce4fcd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77162834"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Architectuur van herstel na noodgevallen van fysieke server naar Azure
@@ -18,7 +17,7 @@ In dit artikel worden de architectuur en processen beschreven die worden gebruik
 
 De volgende tabel en afbeelding bevat een weer gave op hoog niveau van de onderdelen die worden gebruikt voor de replicatie van de fysieke server naar Azure.
 
-| **Component** | **Vereiste** | **Nadere** |
+| **Onderdeel** | **Vereiste** | **Details** |
 | --- | --- | --- |
 | **Azure** | Een Azure-abonnement en een Azure-netwerk. | Gerepliceerde gegevens van on-premises fysieke machines worden opgeslagen in azure Managed disks. Virtuele Azure-machines worden gemaakt met de gerepliceerde gegevens wanneer u een failover van on-premises naar Azure uitvoert. De Azure-VM's maken verbinding met het virtuele Azure-netwerk wanneer ze worden gemaakt. |
 | **Processerver** | Standaard geïnstalleerd in combi natie met de configuratie server. | Fungeert als replicatiegateway. Dit onderdeel ontvangt replicatiegegevens, optimaliseert de gegevens met caching, compressie en codering, en verzendt ze naar de Azure-opslag.<br/><br/> De proces server installeert ook de Mobility-service op servers die u wilt repliceren.<br/><br/> Naarmate uw implementatie groeit, kunt u extra, afzonderlijke proces servers toevoegen om grotere volumes van replicatie verkeer af te handelen. |

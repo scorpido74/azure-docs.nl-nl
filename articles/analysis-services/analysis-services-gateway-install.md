@@ -8,10 +8,9 @@ ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: f6218b32fb9574adf62384d2a6ee5a62f3788de8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77062146"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Een on-premises gegevensgateway installeren en configureren
@@ -27,7 +26,7 @@ Zie [verbinding maken met on-premises gegevens bronnen](analysis-services-gatewa
 * .NET 4.5 Framework
 * 64-bits versie van Windows 8/Windows Server 2012 R2 (of hoger)
 
-**Aanbevelingen**
+**Aanbevolen:**
 
 * 8-core CPU
 * 8 GB geheugen
@@ -44,7 +43,7 @@ Zie [verbinding maken met on-premises gegevens bronnen](analysis-services-gatewa
 * Meld u aan bij Azure met een account in azure AD voor dezelfde [Tenant](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) als het abonnement waarmee u de gateway wilt registreren. Accounts voor Azure B2B (gast) worden niet ondersteund bij het installeren en registreren van een gateway.
 * Als gegevens bronnen zich op een Azure Virtual Network (VNet) bevinden, moet u de eigenschap [AlwaysUseGateway](analysis-services-vnet-gateway.md) van de server configureren.
 
-## <a name="download"></a><a name="download"></a>Download
+## <a name="download"></a><a name="download"></a>Downloaden
 
  [De gateway downloaden](https://go.microsoft.com/fwlink/?LinkId=820925&clcid=0x409)
 

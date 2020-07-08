@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
 ms.openlocfilehash: 3feacd94558ba275c81469827993aef106ae633c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77162205"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Apache Hadoop-architectuur in HDInsight
@@ -66,7 +65,7 @@ Als u het verwijderen van een bestand uit uw opslag account ongedaan wilt maken,
 
 ## <a name="trash-purging"></a>Prullenbak verwijderen
 
-De `fs.trash.interval` eigenschap van **HDFS** > de**geavanceerde kern-site** van HDFS moet op de standaard `0` waarde blijven omdat u geen gegevens op het lokale bestands systeem hoeft op te slaan. Deze waarde heeft geen invloed op externe opslag accounts (WASB, ADLS GEN1, ABFS)
+De `fs.trash.interval` eigenschap van **HDFS**de  >  **geavanceerde kern-site** van HDFS moet op de standaard waarde blijven `0` omdat u geen gegevens op het lokale bestands systeem hoeft op te slaan. Deze waarde heeft geen invloed op externe opslag accounts (WASB, ADLS GEN1, ABFS)
 
 ## <a name="next-steps"></a>Volgende stappen
 

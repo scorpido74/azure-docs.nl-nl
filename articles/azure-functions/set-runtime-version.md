@@ -4,10 +4,9 @@ description: Azure Functions ondersteunt meerdere versies van de runtime. Meer i
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: 5a71338b1b9735d7e7494dc2667bd7addf5d4a53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77151952"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Azure Functions runtime-versies instellen
@@ -21,7 +20,7 @@ Met Azure Functions kunt u een specifieke versie van de runtime richten met behu
 Als u alleen de primaire versie opgeeft, wordt de functie-app automatisch bijgewerkt naar nieuwe secundaire versies van de runtime wanneer deze beschikbaar komen. Nieuwe secundaire versies mogen geen belang rijke wijzigingen introduceren. Als u een secundaire versie opgeeft (bijvoorbeeld ' 2.0.12345 '), wordt de functie-app vastgemaakt aan die specifieke versie totdat u deze expliciet wijzigt.
 
 > [!NOTE]
-> Als u vastmaakt aan een specifieke versie van Azure Functions en vervolgens probeert te publiceren naar Azure met Visual Studio, wordt er een dialoog venster weer gegeven waarin u wordt gevraagd om bij te werken naar de nieuwste versie of de publicatie te annuleren. U kunt dit voor komen door `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` de eigenschap in `.csproj` het bestand toe te voegen.
+> Als u vastmaakt aan een specifieke versie van Azure Functions en vervolgens probeert te publiceren naar Azure met Visual Studio, wordt er een dialoog venster weer gegeven waarin u wordt gevraagd om bij te werken naar de nieuwste versie of de publicatie te annuleren. U kunt dit voor komen door de `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` eigenschap in het bestand toe te voegen `.csproj` .
 
 Wanneer een nieuwe versie openbaar beschikbaar is, kunt u met een prompt in de portal naar de gewenste versie gaan. Nadat u naar een nieuwe versie hebt verplaatst, kunt u de `FUNCTIONS_EXTENSION_VERSION` toepassings instelling altijd gebruiken om terug te gaan naar een vorige versie.
 
@@ -54,7 +53,7 @@ U kunt de runtime versie die wordt gebruikt door uw functie-app wijzigen. U kunt
 U kunt ook de `FUNCTIONS_EXTENSION_VERSION` van de Azure cli weer geven en instellen.
 
 >[!NOTE]
->Omdat andere instellingen van invloed kunnen zijn op de runtime versie, moet u de versie in de portal wijzigen. In de portal worden de andere nood zakelijke updates automatisch uitgevoerd, zoals de node. js-versie en runtime stack, wanneer u runtime versies wijzigt.  
+>Omdat andere instellingen van invloed kunnen zijn op de runtime versie, moet u de versie in de portal wijzigen. In de portal worden de andere nood zakelijke updates automatisch uitgevoerd, zoals Node.js versie en runtime stack, wanneer u runtime versies wijzigt.  
 
 Bekijk met behulp van de Azure CLI de huidige runtime versie met de opdracht [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) .
 
@@ -63,7 +62,7 @@ az functionapp config appsettings list --name <function_app> \
 --resource-group <my_resource_group>
 ```
 
-Vervang `<function_app>` in deze code door de naam van uw functie-app. Vervang `<my_resource_group>` ook door de naam van de resource groep voor uw functie-app. 
+Vervang in deze code door `<function_app>` de naam van uw functie-app. Vervang ook door `<my_resource_group>` de naam van de resource groep voor uw functie-app. 
 
 U ziet de `FUNCTIONS_EXTENSION_VERSION` in de volgende uitvoer, die is afgekapt voor duidelijkheid:
 
@@ -98,7 +97,7 @@ az functionapp config appsettings set --name <function_app> \
 --settings FUNCTIONS_EXTENSION_VERSION=<version>
 ```
 
-Vervang `<function_app>` door de naam van uw functie-app. Vervang `<my_resource_group>` ook door de naam van de resource groep voor uw functie-app. Vervang `<version>` ook door een geldige versie van de 1. x-runtime of `~2` voor versie 2. x.
+Vervang door `<function_app>` de naam van uw functie-app. Vervang ook door `<my_resource_group>` de naam van de resource groep voor uw functie-app. Vervang ook door `<version>` een geldige versie van de 1. x-runtime of `~2` voor versie 2. x.
 
 U kunt deze opdracht uitvoeren vanuit de [Azure Cloud shell](../cloud-shell/overview.md) door deze in het voor gaande code voorbeeld **te kiezen.** U kunt de [Azure cli ook lokaal](/cli/azure/install-azure-cli) gebruiken om deze opdracht uit te voeren nadat u [AZ login](/cli/azure/reference-index#az-login) hebt uitgevoerd om u aan te melden.
 

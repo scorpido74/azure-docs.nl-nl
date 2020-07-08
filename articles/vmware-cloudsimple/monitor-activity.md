@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77019669"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>VMware-oplossing op CloudSimple-activiteit bewaken
@@ -46,15 +45,15 @@ Als u waarschuwingen wilt bevestigen en wilt verwijderen uit de lijst, selecteer
 
 De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik op **kolommen bewerken** en selecteer de kolommen die u wilt weer geven.
 
-| Kolom | Beschrijving |
+| Kolom | Description |
 ------------ | ------------- |
 | Waarschuwings type | Categorie van de waarschuwing.|
-| Time | Tijdstip waarop de waarschuwing is opgetreden. |
+| Tijd | Tijdstip waarop de waarschuwing is opgetreden. |
 | Severity | Significantie van de waarschuwing.|
 | Resourcenaam | De naam die is toegewezen aan de resource, zoals de naam van de Privécloud. |
 | Resourcetype | Categorie van resource: Privécloud, Cloud rack. |
 | Resource-id | De id van de resource. |
-| Beschrijving | Beschrijving van de trigger van de waarschuwing. |
+| Description | Beschrijving van de trigger van de waarschuwing. |
 | Bevestigd | Indicatie of de waarschuwing wordt bevestigd. |
 
 ## <a name="events"></a>Gebeurtenissen
@@ -63,14 +62,14 @@ Gebeurtenissen tonen gebruikers-en systeem activiteiten in de CloudSimple-Portal
 
 De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik op **kolommen bewerken** en selecteer de kolommen die u wilt weer geven.
 
-| Kolom | Beschrijving |
+| Kolom | Description |
 ------------ | ------------- |
-| Time | De datum en tijd waarop de gebeurtenis heeft plaatsgevonden. |
+| Tijd | De datum en tijd waarop de gebeurtenis heeft plaatsgevonden. |
 | Gebeurtenistype | Numerieke code waarmee de gebeurtenis wordt aangeduid. |
 | Severity | Ernst van gebeurtenis.|
 | Resourcenaam | De naam die is toegewezen aan de resource, zoals de naam van de Privécloud. |
 | Resourcetype | Categorie van resource: Privécloud, Cloud rack. |
-| Beschrijving | Beschrijving van de trigger van de waarschuwing. |
+| Description | Beschrijving van de trigger van de waarschuwing. |
 
 ## <a name="tasks"></a>Taken
 
@@ -78,7 +77,7 @@ Taken zijn activiteiten in particuliere Clouds waarvan wordt verwacht dat deze 3
 
 De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik op **kolommen bewerken** en selecteer de kolommen die u wilt weer geven.
 
-| Kolom | Beschrijving |
+| Kolom | Description |
 ------------ | ------------- |
 | Taak-ID | De unieke id voor de taak. |
 | Bewerking | De actie die door de taak wordt uitgevoerd. |
@@ -90,7 +89,7 @@ De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik o
 | Beëindigen | De eind tijd voor de taak. |
 | Status | Huidige taak status. |
 | Verstreken tijd | De tijd die nodig is om de taak te volt ooien (indien voltooid) of op dit moment (als deze wordt uitgevoerd). |
-| Beschrijving | Taak beschrijving. |
+| Description | Taak beschrijving. |
 
 ## <a name="audit"></a>Controleren
 
@@ -98,9 +97,9 @@ Controle logboeken houden de activiteiten van gebruikers bij. U kunt controle Lo
 
 De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik op **kolommen bewerken** en selecteer de kolommen die u wilt weer geven.
 
-| Kolom | Beschrijving |
+| Kolom | Description |
 ------------ | ------------- |
-| Time | Tijd van de controle vermelding. |
+| Tijd | Tijd van de controle vermelding. |
 | Bewerking | De actie die door de taak wordt uitgevoerd. |
 | Gebruiker | De gebruiker is toegewezen aan de taak. |
 | Resourcenaam | De naam die is toegewezen aan de resource. |
@@ -108,7 +107,7 @@ De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik o
 | Resource-id | De id van de resource. |
 | Resultaat | Resultaat van de activiteit, zoals **geslaagd**. |
 | Gebruikte tijd | Tijd om de taak te volt ooien. |
-| Beschrijving | Beschrijving van de actie. |
+| Description | Beschrijving van de actie. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

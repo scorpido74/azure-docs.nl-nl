@@ -17,10 +17,9 @@ ms.author: arvinh
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abeac030db419f7fb7d561df5dcd407684f20ca2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77058904"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Zelf studie: asana configureren voor automatische gebruikers inrichting
@@ -59,7 +58,7 @@ In deze sectie wordt u begeleid bij het verbinden van uw Azure AD to asana user 
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-asana-in-azure-ad"></a>Automatische toewijzing van gebruikers accounts configureren voor asana in azure AD
 
-1. Ga in het [Azure Portal](https://portal.azure.com)naar de sectie **Azure Active Directory** > **Enter prise apps** > **all applications** .
+1. Ga in het [Azure Portal](https://portal.azure.com)naar de sectie **Azure Active Directory**  >  **Enter prise apps**  >  **all applications** .
 
 1. Als u asana al hebt geconfigureerd voor eenmalige aanmelding, zoekt u naar uw instantie van asana met behulp van het zoek veld. Als dat niet het geval is, selecteert u **toevoegen** en zoeken naar **asana** in de toepassings galerie. Selecteer **asana** in de zoek resultaten en voeg deze toe aan uw lijst met toepassingen.
 
@@ -99,8 +98,8 @@ Nu wordt de eerste synchronisatie gestart voor alle gebruikers die zijn toegewez
 
 Zie [rapport over automatische toewijzing van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 * [Eenmalige aanmelding configureren](asana-tutorial.md)

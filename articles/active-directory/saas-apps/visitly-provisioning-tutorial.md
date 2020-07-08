@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 73cc1a58689db7902843f222aa4874a5e188be44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77063153"
 ---
 # <a name="tutorial-configure-visitly-for-automatic-user-provisioning"></a>Zelf studie: voor het automatisch inrichten van gebruikers naar een andere configuratie
@@ -56,7 +55,7 @@ Voordat u het automatisch inrichten van gebruikers configureert en inschakelt, m
 
 Voordat u voor het eerst de configuratie van automatische gebruikers met Azure AD configureert, moet u het systeem voor het inrichten van SCIM (Cross-Domain Identity Management) op een bezoek brengen.
 
-1. Meld u aan om te [bezoeken](https://app.visitly.io/login). Selecteer **integraties** > van**host-synchronisatie**.
+1. Meld u aan om te [bezoeken](https://app.visitly.io/login). Selecteer **integraties**van  >  **host-synchronisatie**.
 
     ![Host-synchronisatie](media/Visitly-provisioning-tutorial/login.png)
 
@@ -79,7 +78,7 @@ Als u een bezoek wilt toevoegen vanuit de Azure AD-toepassings galerie, voert u 
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+2. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -100,7 +99,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="configure-automatic-user-provisioning-for-visitly-in-azure-ad"></a>Automatisch gebruikers inrichten configureren voor bezoek aan Azure AD
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer**alle toepassingen**in **bedrijfs toepassingen** > .
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise Applications**  >  **alle toepassingen**in bedrijfs toepassingen.
 
     ![Alle toepassingen](common/enterprise-applications.png)
 
@@ -159,7 +158,7 @@ Biedt geen ondersteuning voor harde verwijderingen. Alles is alleen zacht verwij
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

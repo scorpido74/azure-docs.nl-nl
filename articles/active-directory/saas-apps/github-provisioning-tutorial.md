@@ -16,10 +16,9 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 82f7252f2d9cdd2c54fae593d8463bfe84bd6ce2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057648"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Zelf studie: GitHub configureren voor automatische gebruikers inrichting
@@ -77,7 +76,7 @@ In deze sectie vindt u instructies voor het verbinden van uw Azure AD-GitHub en 
 
     ![Autorisatie dialoogvenster](./media/github-provisioning-tutorial/GitHub2.png)
 
-7. Klik in de Azure Portal op de URL van de invoer **Tenant** en op **verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met uw github-app. Als de verbinding mislukt, controleert u of uw github-account beheerders machtigingen heeft en of de **Tenant-URl** correct is gegenereerd. Probeer vervolgens de stap ' autoriseren ' opnieuw (u kunt een `https://api.github.com/scim/v2/organizations/<Organization_name>`Tenant- **URl** instellen op regel:, kunt u uw organisaties vinden onder uw github-account: **instellingen** > **organisaties**).
+7. Klik in de Azure Portal op de URL van de invoer **Tenant** en op **verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met uw github-app. Als de verbinding mislukt, controleert u of uw github-account beheerders machtigingen heeft en of de **Tenant-URl** correct is gegenereerd. Probeer vervolgens de stap ' autoriseren ' opnieuw (u kunt een **Tenant-URl** instellen op regel: `https://api.github.com/scim/v2/organizations/<Organization_name>` , kunt u uw organisaties vinden onder uw github-account: **instellingen**  >  **organisaties**).
 
     ![Autorisatie dialoogvenster](./media/github-provisioning-tutorial/GitHub3.png)
 
@@ -100,7 +99,7 @@ Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-p
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 
