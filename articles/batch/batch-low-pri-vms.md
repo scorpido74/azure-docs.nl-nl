@@ -5,12 +5,11 @@ author: mscurrell
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 90cd6476992eed30abbe9faca5cc66405aa40079
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: MT
+ms.openlocfilehash: 48350a684844ca0e1624826afeca8e0b9ab36f3b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780186"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959990"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Virtuele machines met lage prioriteit met Batch gebruiken
 
@@ -23,11 +22,11 @@ Het saldo voor het gebruik van virtuele machines met lage prioriteit is dat deze
 Vm's met lage prioriteit worden aangeboden tegen een aanzienlijk gereduceerde prijs vergeleken met toegewezen Vm's. Zie [batch-prijzen](https://azure.microsoft.com/pricing/details/batch/)voor meer informatie over prijzen.
 
 > [!NOTE]
-> [Er zijn nu virtuele machines beschikbaar](https://azure.microsoft.com/pricing/spot/) voor [virtuele machines met één exemplaar](https://docs.microsoft.com/azure/virtual-machines/linux/spot-vms) en [VM-schaal sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot). Spot-Vm's zijn een evolutie van Vm's met lage prioriteit, maar verschillen in die prijzen kunnen variëren en een optionele maximum prijs kan worden ingesteld bij het toewijzen van spot-Vm's.
+> [Er zijn nu virtuele machines beschikbaar](https://azure.microsoft.com/pricing/spot/) voor [virtuele machines met één exemplaar](../virtual-machines/linux/spot-vms.md) en [VM-schaal sets](../virtual-machine-scale-sets/use-spot.md). Spot-Vm's zijn een evolutie van Vm's met lage prioriteit, maar verschillen in die prijzen kunnen variëren en een optionele maximum prijs kan worden ingesteld bij het toewijzen van spot-Vm's.
 >
-> Azure Batch-groepen beginnen met het ondersteunen van spot-Vm's binnen een paar maanden nadat ze algemeen beschikbaar zijn, met nieuwe versies van de [batch-api's en-hulpprogram ma's](https://docs.microsoft.com/azure/batch/batch-apis-tools). Zodra er ondersteuning beschikbaar is voor virtuele machines met lage prioriteit, wordt de virtuele machine met goedkope werk worden afgeschaft. deze worden gedurende ten minste 12 maanden worden ondersteund met behulp van de huidige Api's en hulpprogram ma's van het hulp programma om voldoende tijd te bieden voor de migratie naar de locatie van virtuele machines. 
+> Azure Batch-groepen beginnen met het ondersteunen van spot-Vm's binnen een paar maanden nadat ze algemeen beschikbaar zijn, met nieuwe versies van de [batch-api's en-hulpprogram ma's](./batch-apis-tools.md). Zodra er ondersteuning beschikbaar is voor virtuele machines met lage prioriteit, wordt de virtuele machine met goedkope werk worden afgeschaft. deze worden gedurende ten minste 12 maanden worden ondersteund met behulp van de huidige Api's en hulpprogram ma's van het hulp programma om voldoende tijd te bieden voor de migratie naar de locatie van virtuele machines. 
 >
-> Spot-Vm's worden niet ondersteund voor [Cloud service-configuratie](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) groepen. Als u gebruik wilt maken van spot-Vm's, moeten Cloud service groepen worden gemigreerd naar configuratie groepen van [virtuele machines](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) .
+> Spot-Vm's worden niet ondersteund voor [Cloud service-configuratie](/rest/api/batchservice/pool/add#cloudserviceconfiguration) groepen. Als u gebruik wilt maken van spot-Vm's, moeten Cloud service groepen worden gemigreerd naar configuratie groepen van [virtuele machines](/rest/api/batchservice/pool/add#virtualmachineconfiguration) .
 
 ## <a name="use-cases-for-low-priority-vms"></a>Gebruiks voorbeelden voor Vm's met een lage prioriteit
 
@@ -144,7 +143,7 @@ De formule voor het automatisch inschalen van de pool ondersteunt virtuele machi
 -   U kunt de waarde van de door de service gedefinieerde variabele ophalen **$PreemptedNodeCount**. 
     Deze variabele retourneert het aantal knoop punten met de status in afstel en u kunt het aantal toegewezen knoop punten omhoog of omlaag schalen, afhankelijk van het aantal knoop punten dat niet beschikbaar is.
 
-## <a name="jobs-and-tasks"></a>Taken en taken
+## <a name="jobs-and-tasks"></a>Taken
 
 Voor taken en taken is weinig extra configuratie vereist voor knoop punten met een lage prioriteit. de enige ondersteuning is als volgt:
 
@@ -181,6 +180,6 @@ U kunt als volgt de metrische gegevens weer geven in de Azure Portal:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over de [werk stroom van de batch-service en primaire resources](batch-service-workflow-features.md) , zoals Pools, knoop punten, taken en taken.
+* Meer informatie over de [Werkstroom van de batch-service en primaire resources](batch-service-workflow-features.md) als pools, knooppunten, jobs en taken.
 * Meer informatie over de [Batch-API's en -hulpprogramma's](batch-apis-tools.md) die beschikbaar zijn voor het bouwen van Batch-oplossingen.
 * Begin met het plannen van de overstap van Vm's met lage prioriteit om virtuele machines te plaatsen. Als u virtuele machines met lage prioriteit gebruikt met configuratie groepen voor de **Cloud service** , moet u de **configuratie van de virtuele machine configureren** .

@@ -4,12 +4,11 @@ description: Meer informatie over hoe u met Visual Studio project-sjablonen uw c
 ms.topic: how-to
 ms.date: 02/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 9332684008b45aea39e07d8225bae6450ba57de5
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: MT
+ms.openlocfilehash: c4cdc3fa7b3238a83d55113c5f7dc551d637c8e2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779519"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959769"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Visual Studio-project sjablonen gebruiken om batch-oplossingen te starten
 
@@ -90,7 +89,7 @@ Wanneer u een project maakt met behulp van de job manager-sjabloon, worden er dr
 
 Natuurlijk kunt u extra bestanden toevoegen die nodig zijn om uw job splitter-code te ondersteunen, afhankelijk van de complexiteit van de logica voor het splitsen van taken.
 
-De sjabloon genereert ook standaard-.NET-project bestanden, zoals een. csproj-bestand, app. config, packages. config, enzovoort.
+De sjabloon genereert ook standaard-.NET-project bestanden, zoals een. csproj-bestand, app.config, packages.config, enzovoort.
 
 In de rest van deze sectie worden de verschillende bestanden en hun code structuur beschreven en wordt uitgelegd wat elke klasse doet.
 
@@ -186,7 +185,7 @@ Een taak beheer taak die is geïmplementeerd met de job manager-sjabloon kan dri
 
 In het geval van taak beheer mislukt, zijn er mogelijk nog enkele taken aan de service toegevoegd voordat de fout optrad. Deze taken worden normaal uitgevoerd. Zie ' taak splitter-fout ' hierboven voor discussie over dit codepad.
 
-Alle informatie die wordt geretourneerd door uitzonde ringen, wordt geschreven naar stdout. txt en stderr. txt-bestanden. Zie voor meer informatie [fout afhandeling](error-handling.md).
+Alle informatie die wordt geretourneerd door uitzonde ringen, wordt geschreven naar stdout.txt en stderr.txt bestanden. Zie voor meer informatie [fout afhandeling](error-handling.md).
 
 ### <a name="client-considerations"></a>Overwegingen voor de client
 In deze sectie worden enkele vereisten voor client implementatie beschreven bij het aanroepen van een taak beheerder op basis van deze sjabloon. Zie [para meters en omgevings variabelen door geven uit de client code](#pass-environment-settings) voor meer informatie over het door geven van para meters en omgevings instellingen.
@@ -259,7 +258,7 @@ Wanneer u een project maakt met behulp van de taak processor sjabloon, worden er
 
 Natuurlijk kunt u extra bestanden toevoegen die nodig zijn om uw taak processor code te ondersteunen, afhankelijk van de complexiteit van de logica voor het splitsen van taken.
 
-De sjabloon genereert ook standaard-.NET-project bestanden, zoals een. csproj-bestand, app. config, packages. config, enzovoort.
+De sjabloon genereert ook standaard-.NET-project bestanden, zoals een. csproj-bestand, app.config, packages.config, enzovoort.
 
 In de rest van deze sectie worden de verschillende bestanden en hun code structuur beschreven en wordt uitgelegd wat elke klasse doet.
 
@@ -356,7 +355,7 @@ Afsluit codes en uitzonde ringen bieden een mechanisme om het resultaat van het 
 
 Een taak processor taak die is geïmplementeerd met de taak processor sjabloon kan drie mogelijke afsluit codes retour neren:
 
-| Code | Beschrijving |
+| Code | Description |
 | --- | --- |
 | [Process. ExitCode][process_exitcode] |De taak processor is voltooid. Houd er rekening mee dat dit niet impliceert dat het programma dat u hebt aangeroepen, is geslaagd: alleen dat de taak processor het heeft aangeroepen en zonder uitzonde ringen na de verwerking is uitgevoerd. De betekenis van de afsluit code is afhankelijk van het aangeroepen programma, meestal afsluit code 0 betekent dat het programma is geslaagd en andere afsluit code betekent dat het programma is mislukt. |
 | 1 |De taak processor is mislukt met een uitzonde ring in een ' verwacht ' deel van het programma. De uitzonde ring is vertaald naar een `TaskProcessorException` met diagnostische gegevens en, waar mogelijk, suggesties voor het oplossen van de fout. |
@@ -367,7 +366,7 @@ Een taak processor taak die is geïmplementeerd met de taak processor sjabloon k
 > 
 > 
 
-Alle informatie die wordt geretourneerd door uitzonde ringen, wordt geschreven naar stdout. txt en stderr. txt-bestanden. Zie fout afhandeling in de batch-documentatie voor meer informatie.
+Alle informatie die wordt geretourneerd door uitzonde ringen, wordt geschreven naar stdout.txt en stderr.txt bestanden. Zie fout afhandeling in de batch-documentatie voor meer informatie.
 
 ### <a name="client-considerations"></a>Overwegingen voor de client
 **Opslag referenties**
@@ -397,12 +396,12 @@ Een client kan gegevens door geven aan de taak van de taak beheerder in de vorm 
 * URL van het batch-account
 * Batch-account sleutel
 
-De batch-service heeft een eenvoudig mechanisme om omgevings instellingen door te geven aan een taak beheer taak met behulp van de `EnvironmentSettings` eigenschap in [micro soft. Azure. batch. JobManagerTask][net_jobmanagertask].
+De batch-service heeft een eenvoudig mechanisme voor het door geven van omgevings instellingen aan een taak beheer taak met behulp van de `EnvironmentSettings` eigenschap in [Microsoft.Azure.Batch. JobManagerTask][net_jobmanagertask].
 
 Als u bijvoorbeeld het `BatchClient` exemplaar voor een batch-account wilt ophalen, kunt u door geven als omgevings variabelen van de client code de URL en de referenties van de gedeelde sleutel voor het batch-account. Op dezelfde manier kunt u toegang krijgen tot het opslag account dat is gekoppeld aan het batch-account door de naam van het opslag account en de sleutel van het opslag account als omgevings variabelen door te geven.
 
 ### <a name="pass-parameters-to-the-job-manager-template"></a>Para meters door geven aan de job manager-sjabloon
-In veel gevallen is het handig om per taak para meters door te geven aan de taak beheer taak, hetzij om het proces voor het splitsen van taken te beheren of om de taken voor de taak te configureren. U kunt dit doen door een JSON-bestand met de naam para meters. json te uploaden als een resource bestand voor de taak taak beheer. De para meters kunnen vervolgens beschikbaar worden in het `JobSplitter._parameters` veld in de job manager-sjabloon.
+In veel gevallen is het handig om per taak para meters door te geven aan de taak beheer taak, hetzij om het proces voor het splitsen van taken te beheren of om de taken voor de taak te configureren. U kunt dit doen door een JSON-bestand met de naam parameters.jsals een resource bestand te uploaden voor de taak taak beheer. De para meters kunnen vervolgens beschikbaar worden in het `JobSplitter._parameters` veld in de job manager-sjabloon.
 
 > [!NOTE]
 > De ingebouwde para meter-handler ondersteunt alleen teken reeks-naar-teken reeks woordenlijsten. Als u complexe JSON-waarden wilt door geven als parameter waarden, moet u deze door geven als teken reeksen en ze parseren in de taak splitsing, of de methode van het Framework wijzigen `Configuration.GetJobParameters` .
@@ -412,10 +411,10 @@ In veel gevallen is het handig om per taak para meters door te geven aan de taak
 ### <a name="pass-parameters-to-the-task-processor-template"></a>Para meters door geven aan de taak processor sjabloon
 U kunt ook para meters door geven aan afzonderlijke taken die zijn geïmplementeerd met behulp van de taak verwerkings sjabloon. Net als bij de taak beheer sjabloon zoekt de taak processor sjabloon naar een bron bestand met de naam
 
-para meters. json, en als deze wordt gevonden, wordt deze geladen als de woorden lijst met para meters. Er zijn een aantal opties voor het door geven van para meters aan taak verwerkings taken:
+parameters.jsop en als deze is gevonden, wordt deze geladen als de woorden lijst met para meters. Er zijn een aantal opties voor het door geven van para meters aan taak verwerkings taken:
 
-* De JSON van de taak parameters opnieuw gebruiken. Dit werkt goed als de enige para meters voor de hele taak zijn (bijvoorbeeld een weergave hoogte en-breedte). Als u dit wilt doen, voegt u bij het maken van een CloudTask in de taak splitter een verwijzing toe naar het Resource object para meters. json van de Resource files () van de job manager-taak `JobSplitter._jobManagerTask.ResourceFiles` naar de Resource files-verzameling van CloudTask.
-* Genereer en upload een gebruikersspecifieke para meters. JSON-document als onderdeel van de uitvoering van taak splitter en referentie die Blob in de verzameling bron bestanden van de taak. Dit is nodig als verschillende taken verschillende para meters hebben. Een voor beeld hiervan is een 3D-rendering-scenario waarbij de frame-index wordt door gegeven aan de taak als een para meter.
+* De JSON van de taak parameters opnieuw gebruiken. Dit werkt goed als de enige para meters voor de hele taak zijn (bijvoorbeeld een weergave hoogte en-breedte). Als u dit wilt doen, voegt u bij het maken van een CloudTask in de taak splitter een verwijzing toe naar het parameters.jsvan het Resource File-object van de Resource files () van de job manager-taak `JobSplitter._jobManagerTask.ResourceFiles` naar de Resource files-verzameling van CloudTask.
+* Genereer en upload een Documentspecifieke parameters.jsin het document als onderdeel van de uitvoering van taak Splitser en verwijs naar die Blob in de verzameling bron bestanden van de taak. Dit is nodig als verschillende taken verschillende para meters hebben. Een voor beeld hiervan is een 3D-rendering-scenario waarbij de frame-index wordt door gegeven aan de taak als een para meter.
 
 > [!NOTE]
 > De ingebouwde para meter-handler ondersteunt alleen teken reeks-naar-teken reeks woordenlijsten. Als u complexe JSON-waarden wilt door geven als parameter waarden, moet u deze door geven als teken reeksen en ze parseren in de taak processor, of de methode van het Framework wijzigen `Configuration.GetTaskParameters` .
@@ -427,13 +426,13 @@ para meters. json, en als deze wordt gevonden, wordt deze geladen als de woorden
 Een ander handig hulp middel bij het ontwikkelen van batch oplossingen is [Azure batch bestands conventies][nuget_package]. Gebruik deze .NET-klassebibliotheek (momenteel in Preview) in uw batch .NET-toepassingen om snel taak uitvoer van en naar Azure Storage op te slaan en op te halen. [Azure batch taak en taak uitvoer blijven behouden](batch-task-output.md) , bevat een volledige bespreking van de tape wisselaar en het gebruik ervan.
 
 
-[net_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobmanagertask.aspx
+[net_jobmanagertask]: /dotnet/api/microsoft.azure.batch.jobmanagertask
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
-[process_exitcode]: https://msdn.microsoft.com/library/system.diagnostics.process.exitcode.aspx
+[process_exitcode]: /dotnet/api/system.diagnostics.process.exitcode
 [vs_gallery]: https://visualstudiogallery.msdn.microsoft.com/
 [vs_gallery_templates]: https://github.com/Azure/batch-extension-templates
-[vs_find_use_ext]: https://msdn.microsoft.com/library/dd293638.aspx
+[vs_find_use_ext]: /visualstudio/ide/finding-and-using-visual-studio-extensions
 
 [diagram01]: ./media/batch-visual-studio-templates/diagram01.png
 [solution_explorer01]: ./media/batch-visual-studio-templates/solution_explorer01.png

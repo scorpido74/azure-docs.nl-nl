@@ -7,14 +7,13 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 0f8e1be92d77dc928389dffb61da52f2db4c804d
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
-ms.translationtype: MT
+ms.openlocfilehash: 8e832f57053cb950f705875f2895a9197cc7c83e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142058"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960296"
 ---
-# <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Een aangepast domein instellen in de preview-versie van statische Web Apps van Azure
+# <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Een aangepast domein instellen in de preview-versie van Azure Static Web Apps
 
 Standaard biedt Azure static Web Apps een automatisch gegenereerde domein naam. In dit artikel wordt beschreven hoe u een aangepaste domein naam toewijst aan een statische Azure Web Apps-toepassing.
 
@@ -29,11 +28,11 @@ Bij het configureren van domein namen worden A-records gebruikt om hoofd domeine
 
 Er zijn een aantal verschillende typen DNS-configuraties beschikbaar voor een toepassing.
 
-| Als u wilt                            | Kies                                                |
-| ----------------------------------------- | --------------------------------------------------- |
-| Voor`www.example.com`                 | [Een CNAME-record toewijzen](#map-a-cname-record)           |
-| Voor`example.com`                     | [Een hoofd domein configureren](#configure-a-root-domain) |
-| Alle subdomeinen naar`www.example.com` | [Een Joker teken toewijzen](#map-a-wildcard-domain)                   |
+| Als u wilt                                 | Kies                                                |
+| -----------------------------------------------| --------------------------------------------------- |
+| Ondersteuning `www.example.com` of`blog.example.net`| [Een CNAME-record toewijzen](#map-a-cname-record)           |
+| Voor`example.com`                          | [Een hoofd domein configureren](#configure-a-root-domain) |
+| Alle subdomeinen naar`www.example.com`      | [Een Joker teken toewijzen](#map-a-wildcard-domain)            |
 
 ## <a name="map-a-cname-record"></a>Een CNAME-record toewijzen
 

@@ -9,12 +9,11 @@ ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 31c285b8130e7df549ae9f3bb7f1e30cd8a0546c
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.openlocfilehash: 12df9566dd3ddfedd1f4553ad8877258d840858c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84432668"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960211"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Naslag informatie over Azure Storage bewakings gegevens
 
@@ -34,7 +33,7 @@ Azure Storage biedt de volgende metrische gegevens over capaciteit in Azure Moni
 
 In deze tabel worden [metrische gegevens op account niveau](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccounts)weer gegeven.
 
-| Metrisch | Beschrijving |
+| Gegevens | Beschrijving |
 | ------------------- | ----------------- |
 | UsedCapacity | De hoeveelheid opslag die wordt gebruikt door het opslag account. Voor standaardopslagaccounts is dit de som van de capaciteit die wordt gebruikt door blob, table, file en queue. Voor premium-opslagaccounts en blob-opslagaccounts is dit hetzelfde als BlobCapacity. <br/><br/> Eenheid: bytes <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 
@@ -42,7 +41,7 @@ In deze tabel worden [metrische gegevens op account niveau](https://docs.microso
 
 In deze tabel worden [metrische gegevens voor Blob-opslag](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsblobservices)weer gegeven.
 
-| Metrisch | Beschrijving |
+| Gegevens | Beschrijving |
 | ------------------- | ----------------- |
 | BlobCapacity | Het totaal van de Blob-opslag die in het opslag account wordt gebruikt. <br/><br/> Eenheid: bytes <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 <br/> Dimensies: **BlobType**en **BlobTier** ([definitie](#metrics-dimensions)) |
 | BlobCount    | Het aantal BLOB-objecten dat is opgeslagen in het opslag account. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 <br/> Dimensies: **BlobType**en **BlobTier** ([definitie](#metrics-dimensions)) |
@@ -53,7 +52,7 @@ In deze tabel worden [metrische gegevens voor Blob-opslag](https://docs.microsof
 
 In deze tabel worden [metrische gegevens van tabel opslag](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountstableservices)weer gegeven.
 
-| Metrisch | Beschrijving |
+| Gegevens | Beschrijving |
 | ------------------- | ----------------- |
 | TableCapacity | De hoeveelheid tabel opslag die door het opslag account wordt gebruikt. <br/><br/> Eenheid: bytes <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 | TableCount   | Het aantal tabellen in het opslag account. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
@@ -63,17 +62,17 @@ In deze tabel worden [metrische gegevens van tabel opslag](https://docs.microsof
 
 In deze tabel worden [metrische opslag gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsfileservices)voor de wachtrij weer gegeven.
 
-| Metrisch | Beschrijving |
+| Gegevens | Beschrijving |
 | ------------------- | ----------------- |
 | QueueCapacity | De hoeveelheid wachtrij opslag die door het opslag account wordt gebruikt. <br/><br/> Eenheid: bytes <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 | QueueCount   | Het aantal wacht rijen in het opslag account. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
-| QueueMessageCount | Het aantal niet-verlopen wachtrij berichten in het opslag account. <br/><br/>Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
+| QueueMessageCount | Het geschatte aantal wachtrij berichten in de Queue-service van het opslag account. <br/><br/>Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 
 #### <a name="file-storage"></a>File Storage
 
 In deze tabel worden [metrische gegevens over bestands opslag](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsqueueservices)weer gegeven.
 
-| Metrisch | Beschrijving |
+| Gegevens | Beschrijving |
 | ------------------- | ----------------- |
 | FileCapacity | De hoeveelheid bestands opslag die door het opslag account wordt gebruikt. <br/><br/> Eenheid: bytes <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 | FileCount   | Het aantal bestanden in het opslag account. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
@@ -85,7 +84,7 @@ Metrische gegevens over trans acties worden verzonden voor elke aanvraag naar ee
 
 Azure Storage levert de volgende metrische gegevens over trans acties in Azure Monitor.
 
-| Metrisch | Beschrijving |
+| Gegevens | Beschrijving |
 | ------------------- | ----------------- |
 | Transacties | Het aantal aanvragen voor een opslagservice of de opgegeven API-bewerking. Dit is inclusief geslaagde en mislukte aanvragen, evenals aanvragen waarbij fouten zijn opgetreden. <br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Toepasselijke dimensies: ResponseType, geotype, ApiName en Authentication ([definitie](#metrics-dimensions))<br/> Waarde-voor beeld: 1024 |
 | Inkomend verkeer | De hoeveelheid inkomende gegevens. Hieronder vallen de inkomende gegevens van een externe client in Azure Storage evenals de inkomende gegevens binnen Azure. <br/><br/> Eenheid: bytes <br/> Aggregatie type: totaal <br/> Toepasselijke dimensies: geotype, ApiName en verificatie ([definitie](#metrics-dimensions)) <br/> Waarde-voor beeld: 1024 |
@@ -100,7 +99,7 @@ Azure Storage levert de volgende metrische gegevens over trans acties in Azure M
 
 Azure Storage ondersteunt de volgende dimensies voor metrische gegevens in Azure Monitor.
 
-| Dimensie naam | Beschrijving |
+| Dimensie naam | Description |
 | ------------------- | ----------------- |
 | **BlobType** | Het type BLOB voor alleen metrische gegevens van blobs. De ondersteunde waarden zijn **BlockBlob**, **PageBlob**en **Azure data Lake Storage**. Toevoeg-blob is opgenomen in BlockBlob. |
 | **BlobTier** | Azure Storage biedt verschillende toegangs lagen, waarmee u gegevens van blob-objecten op de meest rendabele manier kunt opslaan. Meer weer geven in [Azure Storage BLOB-laag](../blobs/storage-blob-storage-tiers.md). De ondersteunde waarden zijn onder andere: <br/> <li>**Warm**: warme laag</li> <li>**Cool**: cool-laag</li> <li>**Archief**: laag van archief</li> <li>**Premium**: Premium-laag voor blok-BLOB</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: laag typen voor Premium-pagina-BLOB</li> <li>**Standaard**: laag type voor de standaard pagina-BLOB</li> <li>**Ongetierd**: laag type voor algemeen gebruik v1-opslag account</li> |
@@ -140,9 +139,9 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Storage bron L
 
 | Eigenschap | Beschrijving |
 |:--- |:---|
-|**tegelijk** | De UTC-tijd (Universal Time Coordinated) wanneer de aanvraag is ontvangen door de opslag. Bijvoorbeeld: `2018/11/08 21:09:36.6900118`.|
+|**time** | De UTC-tijd (Universal Time Coordinated) wanneer de aanvraag is ontvangen door de opslag. Bijvoorbeeld: `2018/11/08 21:09:36.6900118`.|
 |**resourceId** | De resource-ID van het opslag account. Bijvoorbeeld: `/subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/`<br>`myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/storageAccounts/blobServices/default`|
-|**rubriek** | De categorie van de aangevraagde bewerking. Bijvoorbeeld: `StorageRead` , `StorageWrite` of `StorageDelete` .|
+|**category** | De categorie van de aangevraagde bewerking. Bijvoorbeeld: `StorageRead` , `StorageWrite` of `StorageDelete` .|
 |**operationName** | Het type REST bewerking dat is uitgevoerd. <br> Zie [Opslaganalyse logboeken en status berichten](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)voor een volledige lijst met bewerkingen. |
 |**operationVersion** | De versie van de opslag service die tijdens het maken van de aanvraag is opgegeven. Dit is gelijk aan de waarde van de **x-MS-version-** header. Bijvoorbeeld: `2017-04-17`.|
 |**schemaVersion** | De schema versie van het logboek. Bijvoorbeeld: `1.0`.|
@@ -273,7 +272,7 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Storage bron L
 |**smbCommandMajor uint32** | Waarde in de **SMB2_HEADER. opdracht**. Dit is momenteel een getal tussen 0 en 18, inclusief. Bijvoorbeeld: `0x6` |
 |**smbCommandMinor** | , Indien van toepassing, de subklasse van **SmbCommandMajor**. Bijvoorbeeld: `DirectoryCloseAndDelete` |
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - Zie [bewaking Azure Storage](monitor-storage.md) voor een beschrijving van de bewakings Azure Storage.
 - Zie [Azure-resources bewaken met Azure monitor](../../azure-monitor/insights/monitor-azure-resource.md) voor meer informatie over het bewaken van Azure-resources.

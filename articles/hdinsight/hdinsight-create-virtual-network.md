@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/16/2020
-ms.openlocfilehash: 0c7791d43ffbbc13ab151362c5c3026ebbdb0d34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: abe9938a3cc9466a56a3e4be24a677751e28e9ac
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81531013"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960160"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Virtuele netwerken voor Azure HDInsight-clusters maken
 
@@ -48,9 +47,9 @@ Met de volgende resource management-sjabloon wordt een virtueel netwerk gemaakt 
 Gebruik het volgende Power shell-script om een virtueel netwerk te maken waarmee inkomend verkeer wordt beperkt en verkeer van de IP-adressen voor de Europa-noord regio wordt toegestaan.
 
 > [!IMPORTANT]  
-> Wijzig de IP-adressen `hdirule1` voor `hdirule2` en in dit voor beeld zodat deze overeenkomen met de Azure-regio die u gebruikt. U vindt deze informatie over [HDInsight-beheer-IP-adressen](hdinsight-management-ip-addresses.md).
+> Wijzig de IP-adressen voor `hdirule1` en `hdirule2` in dit voor beeld zodat deze overeenkomen met de Azure-regio die u gebruikt. U vindt deze informatie over [HDInsight-beheer-IP-adressen](hdinsight-management-ip-addresses.md).
 
-```powershell
+```azurepowershell
 $vnetName = "Replace with your virtual network name"
 $resourceGroupName = "Replace with the resource group the virtual network is in"
 $subnetName = "Replace with the name of the subnet that you plan to use for HDInsight"
@@ -153,7 +152,7 @@ $vnet | Set-AzVirtualNetwork
 
 In dit voor beeld ziet u hoe u regels kunt toevoegen om binnenkomend verkeer op de vereiste IP-adressen toe te staan. Het bevat geen regel voor het beperken van de inkomende toegang vanuit andere bronnen. De volgende code laat zien hoe u SSH-toegang via internet kunt inschakelen:
 
-```powershell
+```azurepowershell
 Get-AzNetworkSecurityGroup -Name hdisecure -ResourceGroupName RESOURCEGROUP |
 Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
 ```
@@ -162,7 +161,7 @@ Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -So
 
 Gebruik de volgende stappen om een virtueel netwerk te maken dat inkomend verkeer beperkt, maar dat verkeer van de IP-adressen die worden vereist door HDInsight.
 
-1. Gebruik de volgende opdracht om een nieuwe netwerk beveiligings groep te maken `hdisecure`met de naam. Vervang `RESOURCEGROUP` door de resource groep die de Azure-Virtual Network bevat. Vervang `LOCATION` door de locatie (regio) waarin de groep is gemaakt.
+1. Gebruik de volgende opdracht om een nieuwe netwerk beveiligings groep te maken met de naam `hdisecure` . Vervang door `RESOURCEGROUP` de resource groep die de Azure-Virtual Network bevat. Vervang door `LOCATION` de locatie (regio) waarin de groep is gemaakt.
 
     ```azurecli
     az network nsg create -g RESOURCEGROUP -n hdisecure -l LOCATION
@@ -170,10 +169,10 @@ Gebruik de volgende stappen om een virtueel netwerk te maken dat inkomend verkee
 
     Zodra de groep is gemaakt, ontvangt u informatie over de nieuwe groep.
 
-2. Gebruik de volgende regel om regels toe te voegen aan de nieuwe netwerk beveiligings groep waarmee binnenkomende communicatie op poort 443 van de Azure HDInsight Health and Management-service is toegestaan. Vervang `RESOURCEGROUP` door de naam van de resource groep die de Azure-Virtual Network bevat.
+2. Gebruik de volgende regel om regels toe te voegen aan de nieuwe netwerk beveiligings groep waarmee binnenkomende communicatie op poort 443 van de Azure HDInsight Health and Management-service is toegestaan. Vervang door `RESOURCEGROUP` de naam van de resource groep die de Azure-Virtual Network bevat.
 
     > [!IMPORTANT]  
-    > Wijzig de IP-adressen `hdirule1` voor `hdirule2` en in dit voor beeld zodat deze overeenkomen met de Azure-regio die u gebruikt. U kunt deze informatie vinden in het [IP-adres van HDInsight-beheer](hdinsight-management-ip-addresses.md).
+    > Wijzig de IP-adressen voor `hdirule1` en `hdirule2` in dit voor beeld zodat deze overeenkomen met de Azure-regio die u gebruikt. U kunt deze informatie vinden in het [IP-adres van HDInsight-beheer](hdinsight-management-ip-addresses.md).
 
     ```azurecli
     az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n hdirule1 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "52.164.210.96" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 300 --direction "Inbound"
@@ -192,9 +191,11 @@ Gebruik de volgende stappen om een virtueel netwerk te maken dat inkomend verkee
 
     Met deze opdracht wordt een waarde geretourneerd die vergelijkbaar is met de volgende tekst:
 
-        "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
+    ```output
+    "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
+    ```
 
-4. Gebruik de volgende opdracht om de netwerk beveiligings groep toe te passen op een subnet. Vervang de `GUID` waarden `RESOURCEGROUP` en door het resultaat van de vorige stap. Vervang `VNETNAME` en `SUBNETNAME` door de naam van het virtuele netwerk en het subnet dat u wilt maken.
+4. Gebruik de volgende opdracht om de netwerk beveiligings groep toe te passen op een subnet. Vervang de `GUID` waarden en door `RESOURCEGROUP` het resultaat van de vorige stap. Vervang `VNETNAME` en door `SUBNETNAME` de naam van het virtuele netwerk en het subnet dat u wilt maken.
 
     ```azurecli
     az network vnet subnet update -g RESOURCEGROUP --vnet-name VNETNAME --name SUBNETNAME --set networkSecurityGroup.id="/subscriptions/GUID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
@@ -226,9 +227,9 @@ Op de aangepaste DNS-server in het virtuele netwerk:
 
 1. Gebruik Azure PowerShell of Azure CLI om het DNS-achtervoegsel van het virtuele netwerk te vinden:
 
-    Vervang `RESOURCEGROUP` door de naam van de resource groep die het virtuele netwerk bevat en voer de volgende opdracht in:
+    Vervang door `RESOURCEGROUP` de naam van de resource groep die het virtuele netwerk bevat en voer de volgende opdracht in:
 
-    ```powershell
+    ```azurepowershell
     $NICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP"
     $NICs[0].DnsSettings.InternalDomainNameSuffix
     ```
@@ -237,7 +238,7 @@ Op de aangepaste DNS-server in het virtuele netwerk:
     az network nic list --resource-group RESOURCEGROUP --query "[0].dnsSettings.internalDomainNameSuffix"
     ```
 
-1. Op de aangepaste DNS-server voor het virtuele netwerk gebruikt u de volgende tekst als de inhoud van `/etc/bind/named.conf.local` het bestand:
+1. Op de aangepaste DNS-server voor het virtuele netwerk gebruikt u de volgende tekst als de inhoud van het `/etc/bind/named.conf.local` bestand:
 
     ```
     // Forward requests for the virtual network suffix to Azure recursive resolver
@@ -251,7 +252,7 @@ Op de aangepaste DNS-server in het virtuele netwerk:
 
     Deze configuratie routeert alle DNS-aanvragen voor het DNS-achtervoegsel van het virtuele netwerk naar de recursieve resolver van Azure.
 
-1. Op de aangepaste DNS-server voor het virtuele netwerk gebruikt u de volgende tekst als de inhoud van `/etc/bind/named.conf.options` het bestand:
+1. Op de aangepaste DNS-server voor het virtuele netwerk gebruikt u de volgende tekst als de inhoud van het `/etc/bind/named.conf.options` bestand:
 
     ```
     // Clients to accept requests from
@@ -283,9 +284,9 @@ Op de aangepaste DNS-server in het virtuele netwerk:
     
     * Vervang de `10.0.0.0/16` waarde door het IP-adres bereik van het virtuele netwerk. Met deze vermelding kunnen de naam omzetting aanvragen adressen binnen dit bereik.
 
-    * Voeg het IP-adres bereik van het on-premises netwerk `acl goodclients { ... }` toe aan de sectie.  vermeldingen kunnen aanvragen voor naam omzetting van resources in het on-premises netwerk.
+    * Voeg het IP-adres bereik van het on-premises netwerk toe aan de `acl goodclients { ... }` sectie.  vermeldingen kunnen aanvragen voor naam omzetting van resources in het on-premises netwerk.
     
-    * Vervang de waarde `192.168.0.1` door het IP-adres van uw on-PREMISES DNS-server. Met deze vermelding worden alle andere DNS-aanvragen gerouteerd naar de on-premises DNS-server.
+    * Vervang de waarde `192.168.0.1` door het IP-adres van uw on-premises DNS-server. Met deze vermelding worden alle andere DNS-aanvragen gerouteerd naar de on-premises DNS-server.
 
 1. Als u de configuratie wilt gebruiken, start u BIND opnieuw. Bijvoorbeeld `sudo service bind9 restart`.
 
@@ -308,9 +309,9 @@ In dit voor beeld worden de volgende veronderstellingen gemaakt:
 
 1. Gebruik Azure PowerShell of Azure CLI om het DNS-achtervoegsel van beide virtuele netwerken te vinden:
 
-    Vervang `RESOURCEGROUP` door de naam van de resource groep die het virtuele netwerk bevat en voer de volgende opdracht in:
+    Vervang door `RESOURCEGROUP` de naam van de resource groep die het virtuele netwerk bevat en voer de volgende opdracht in:
 
-    ```powershell
+    ```azurepowershell
     $NICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP"
     $NICs[0].DnsSettings.InternalDomainNameSuffix
     ```
@@ -360,7 +361,7 @@ In dit voor beeld worden de volgende veronderstellingen gemaakt:
     };
     ```
 
-   Vervang de `10.0.0.0/16` waarden `10.1.0.0/16` en door de IP-adresbereiken van uw virtuele netwerken. Met deze vermelding kunnen resources in elk netwerk aanvragen van de DNS-servers maken.
+   Vervang de `10.0.0.0/16` waarden en door `10.1.0.0/16` de IP-adresbereiken van uw virtuele netwerken. Met deze vermelding kunnen resources in elk netwerk aanvragen van de DNS-servers maken.
 
     Aanvragen die niet voor de DNS-achtervoegsels van de virtuele netwerken (bijvoorbeeld microsoft.com) zijn, worden verwerkt door de recursieve resolver van Azure.
 
