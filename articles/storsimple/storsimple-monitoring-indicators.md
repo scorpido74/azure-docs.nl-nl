@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85512971"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>StorSimple-bewakings indicatoren gebruiken om uw apparaat te beheren
@@ -136,7 +136,7 @@ De volgende afbeelding helpt u bij het identificeren van de Led's op de primaire
 Gebruik de volgende tabel om te bepalen of de controller module goed werkt.  
 
 ### <a name="controller-indicator-leds"></a>Led's voor controller indicator
-| GELEID | Beschrijving |
+| GELEID | Description |
 | --- | --- |
 | LED voor ID (blauw) |Geeft aan dat de module wordt geïdentificeerd. Als de blauwe LED knippert op een actieve controller, is de controller de actieve controller en de andere is de standby-controller. Zie [de actieve controller op het apparaat identificeren](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)voor meer informatie. |
 | LED voor fout (geel) |Duidt op een fout in de controller. |

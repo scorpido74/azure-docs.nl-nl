@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: c9ce265707743d98f6c93d3facca33e16d1b75ea
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513501"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>De Azure Import/Export-service gebruiken voor het exporteren van gegevens uit Azure Blob-opslag
@@ -155,7 +155,7 @@ Deze *optionele* stap helpt u bij het bepalen van het aantal stations dat vereis
 
     De para meters worden in de volgende tabel beschreven:
 
-    |Opdracht regel parameter|Beschrijving|  
+    |Opdracht regel parameter|Description|  
     |--------------------------|-----------------|  
     |**/logdir:**|Optioneel. De logboekmap. Uitgebreide logboek bestanden worden naar deze map geschreven. Als dat niet is opgegeven, wordt de huidige map gebruikt als Logboekmap.|  
     |**SN**|Vereist. De naam van het opslag account voor de export taak.|  
@@ -209,7 +209,7 @@ Number of drives needed:        3
 
 De volgende tabel bevat voor beelden van geldige BLOB-paden:
 
-   | Kiezer | BLOB-pad | Beschrijving |
+   | Kiezer | BLOB-pad | Description |
    | --- | --- | --- |
    | Begint met |/ |Exporteert alle blobs in het opslag account |
    | Begint met |/$root/ |Exporteert alle blobs in de basis container |

@@ -9,10 +9,10 @@ ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 7a000ab4a465e3b19efe6f2853bcd19dca47e440
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514139"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>De status van de Import/Export-taken in Azure bekijken
@@ -28,7 +28,7 @@ U kunt de status van uw import-of export taken volgen vanuit het Azure Portal. K
 
 U ziet een van de volgende taak statussen, afhankelijk van waar uw station zich in het proces bevindt.
 
-| Taak status | Beschrijving |
+| Taak status | Description |
 |:--- |:--- |
 | Maken | Nadat een taak is gemaakt, wordt de status ingesteld op **maken**. Hoewel de taak de status **bezig met maken** heeft, wordt ervan uitgegaan dat de-import/export-service niet is verzonden naar het Data Center. Een taak kan Maxi maal twee weken in deze status blijven, waarna deze automatisch door de service wordt verwijderd. |
 | Verzenden | Nadat u het pakket hebt verzonden, moet u de tracerings gegevens in het Azure Portal bijwerken.  Hiermee wordt de **Verzend** status van de taak hersteld. De taak blijft in de **Verzend** status voor Maxi maal twee weken. 
@@ -44,7 +44,7 @@ In de volgende tabel wordt de levens cyclus van een afzonderlijk station beschre
 
 In de volgende tabel wordt elke status beschreven waarin elke schijf van een taak kan passeren.
 
-| Status van station | Beschrijving |
+| Status van station | Description |
 |:--- |:--- |
 | Opgegeven | Voor een import taak wordt de begin status voor een station **opgegeven**wanneer de taak wordt gemaakt op basis van de Azure Portal. Voor een export taak, omdat er geen station is opgegeven wanneer de taak wordt gemaakt, wordt de eerste status van het station **ontvangen**. |
 | Ontvangen | De schijf wordt overgezet naar de status **ontvangen** wanneer de import/export-service de stations heeft verwerkt die zijn ontvangen van het verzend bedrijf voor een import taak. Voor een export taak is de eerste status van het station de status **ontvangen** . |

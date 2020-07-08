@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
 ms.openlocfilehash: 6eb983eb5e36c5f3ac6b6eca049239d12bc01a0f
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514628"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>De StorSimple Apparaatbeheer-service gebruiken voor het bewaken van hardware-onderdelen en-status
@@ -79,7 +79,7 @@ Voer de volgende stappen uit om de hardware-status van een onderdeel van een app
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>Onderdelen lijst voor de primaire behuizing van het StorSimple-apparaat
 De volgende tabel bevat een overzicht van de fysieke en logische onderdelen in de primaire behuizing (aanwezig in 8100 en 8600) van uw on-premises StorSimple-apparaat.
 
-| Onderdeel | Module | Type | Locatie | De vervangable-eenheid (FRU) van het veld? | Beschrijving |
+| Onderdeel | Module | Type | Locatie | De vervangable-eenheid (FRU) van het veld? | Description |
 | --- | --- | --- | --- | --- | --- |
 | Station in sleuf [0-11] |Schijf stations |Fysiek |Gedeeld |Yes |Er wordt één regel weer gegeven voor elk van de SSD-of HDD-schijven in de primaire behuizing. |
 | Omgevings temperatuur sensor |Sluit |Fysiek |Gedeeld |No |Meet de Tempe ratuur binnen het chassis. |
@@ -120,7 +120,7 @@ De volgende tabel bevat een overzicht van de fysieke en logische onderdelen in d
 ## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>Lijst met onderdelen voor EBOD Enclosure van StorSimple-apparaat
 De volgende tabel bevat een overzicht van de fysieke en logische onderdelen in de EBOD Enclosure (alleen aanwezig in het 8600-model) van uw on-premises StorSimple-apparaat.
 
-| Onderdeel | Module | Type | Locatie | FRU? | Beschrijving |
+| Onderdeel | Module | Type | Locatie | FRU? | Description |
 | --- | --- | --- | --- | --- | --- |
 | Station in sleuf [0-11] |Schijf stations |Fysiek |Gedeeld |Yes |Er wordt één regel weer gegeven voor elk van de harde schijven in de voor zijde van de EBOD-behuizing. |
 | Omgevings temperatuur sensor |Sluit |Fysiek |Gedeeld |No |Meet de Tempe ratuur binnen het chassis. |

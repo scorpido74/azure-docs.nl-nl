@@ -8,10 +8,10 @@ ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 3a24f6c7c8339ee5e63fea4c0cd4d7edc9da2a17
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85512010"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Problemen met Azure Files in Linux oplossen
@@ -210,7 +210,7 @@ De Force Flag **f** in COPYFILE resulteert in het uitvoeren van **CP-p-f** op UN
 
 ### <a name="workaround"></a>Tijdelijke oplossing
 
-De gebruiker van het opslag account gebruiken voor het kopiëren van de bestanden:
+De gebruiker van het opslagaccount gebruiken voor het kopiëren van de bestanden:
 
 - `Useadd : [storage account name]`
 - `Passwd [storage account name]`
@@ -227,9 +227,9 @@ Wanneer u bestanden in een Azure-bestands share probeert weer te geven met behul
 ### <a name="solution"></a>Oplossing
 Voer een upgrade uit voor de Linux-kernel naar de volgende versies met een oplossing voor dit probleem:
 
-- 4.4.87 +
-- 4.9.48 +
-- 4.12.11 +
+- 4.4.87+
+- 4.9.48+
+- 4.12.11+
 - Alle versies die groter zijn dan of gelijk zijn aan 4,13
 
 ## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Kan geen symbolische koppelingen maken-ln: kan geen symbolische koppeling maken ': de bewerking wordt niet ondersteund
@@ -277,7 +277,7 @@ Dit probleem met opnieuw verbinden in de Linux-kernel is nu opgelost als onderde
 
 - [Opnieuw verbinden herstellen om de nieuwe verbinding voor de SMB3-sessie niet uit te stellen lang nadat de socket opnieuw is verbonden](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/fs/cifs?id=4fcd1813e6404dd4420c7d12fb483f9320f0bf93)
 - [Echoservice onmiddellijk aanroepen nadat de socket opnieuw is verbonden](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b8c600120fc87d53642476f48c8055b38d6e14c7)
-- [CIFS: een mogelijke geheugen beschadiging corrigeren tijdens opnieuw verbinding maken](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
+- [CIFS: Mogelijke geheugenbeschadiging herstellen tijdens opnieuw verbinden](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
 - [CIFS: een mogelijke dubbele vergren deling van mutex herstellen tijdens opnieuw verbinding maken (voor kernel v 4.9 en hoger)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 
 Deze wijzigingen zijn mogelijk nog niet doorgevoerd in alle Linux-distributies. Als u een populaire Linux-distributie gebruikt, kunt u de [Azure files met Linux](storage-how-to-use-files-linux.md) controleren om te zien welke versie van uw distributie de nood zakelijke wijzigingen in de kernel heeft.
