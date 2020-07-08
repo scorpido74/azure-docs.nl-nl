@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 47c3606b0b1ada93aeb8a107f48222fb26483a9c
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: 45f9c56fce0c843d9f1ed069abf7d1ed6e2fa604
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368274"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565897"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Service beheer voor Azure Cognitive Search in het Azure Portal
 
@@ -28,7 +28,6 @@ ms.locfileid: "85368274"
 
 Azure Cognitive Search is een volledig beheerde, op de cloud gebaseerde zoek service die wordt gebruikt voor het bouwen van een uitgebreide zoek ervaring in aangepaste apps. In dit artikel worden de Service beheer taken behandeld die u kunt uitvoeren in de [Azure Portal](https://portal.azure.com) voor een zoek service die u al hebt ingericht. Service beheer is lichter ontwerp, beperkt tot de volgende taken:
 
-* Verkrijg informatie over uw service en inhoud op de start pagina van het **overzicht** .
 * Controleer de opslag met behulp van de koppeling voor het **gebruik** van middel grote pagina's.
 * Controleer de query volumes en latentie met behulp van de **bewakings** koppeling middel grote pagina's en of aanvragen zijn beperkt.
 * Toegang beheren via de pagina **sleutels** aan de linkerkant.
@@ -87,7 +86,7 @@ In het dash board is bron bewaking beperkt tot de informatie die wordt weer gege
 
 Met de REST API van de zoek service kunt u via programma code een aantal op documenten en indexen ontvangen: 
 
-* [Index statistieken ophalen](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
+* [Indexstatistieken ophalen](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
 * [Documenten tellen](https://docs.microsoft.com/rest/api/searchservice/count-documents)
 
 ## <a name="disaster-recovery-and-service-outages"></a>Herstel na nood gevallen en service storingen

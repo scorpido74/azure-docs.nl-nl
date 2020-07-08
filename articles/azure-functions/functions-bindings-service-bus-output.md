@@ -1,5 +1,5 @@
 ---
-title: Azure Service Bus bindingen voor Azure Functions
+title: Azure Service Bus uitvoer bindingen voor Azure Functions
 description: Meer informatie over het verzenden van Azure Service Bus berichten vanuit Azure Functions.
 author: craigshoemaker
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 1d3441847fc47146418265804457c37c693bd60b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 6159ea7c9e00e822019a0d6542be2e84dbbdc335
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85297015"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603635"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus uitvoer binding voor Azure Functions
 
@@ -280,7 +280,7 @@ De `ServiceBusQueueOutput` `ServiceBusTopicOutput` aantekeningen en zijn beschik
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `ServiceBus` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.jsbij eigenschap | Kenmerk eigenschap |Description|
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op ' serviceBus '. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
 |**direction** | N.v.t. | Moet worden ingesteld op out. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
@@ -346,7 +346,7 @@ Gebruik de [Azure service bus SDK](https://docs.microsoft.com/azure/service-bus-
 
 ## <a name="exceptions-and-return-codes"></a>Uitzonde ringen en retour codes
 
-| Binding | Naslaginformatie |
+| Binding | Verwijzing |
 |---|---|
 | Service Bus | [Service Bus fout codes](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
 | Service Bus | [Service Bus limieten](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
@@ -381,13 +381,14 @@ In deze sectie worden de algemene configuratie-instellingen beschreven die besch
     }
 }
 ```
+
 Als u hebt `isSessionsEnabled` ingesteld op `true` , `sessionHandlerOptions` wordt de gehonoreerd.  Als u hebt `isSessionsEnabled` ingesteld op `false` , `messageHandlerOptions` wordt de gehonoreerd.
 
-|Eigenschap  |Standaard | Beschrijving |
+|Eigenschap  |Standaard | Description |
 |---------|---------|---------|
 |prefetchCount|0|Hiermee wordt het aantal berichten opgehaald of ingesteld dat de ontvanger van het bericht tegelijk kan aanvragen.|
 |maxAutoRenewDuration|00:05:00|De maximale duur waarbinnen de bericht vergrendeling automatisch wordt vernieuwd.|
-|Automatisch aanvullen|true|Hiermee wordt aangegeven of de trigger automatisch moet worden voltooid na de verwerking, of dat de functie code hand matig wordt aangeroepen.|
+|Automatisch aanvullen|true|Hiermee wordt aangegeven of de trigger automatisch moet worden voltooid na de verwerking, of dat de functie code hand matig wordt aangeroepen.<br><br>De instelling in `false` wordt alleen ondersteund in C#.<br><br>Als deze `true` optie is ingesteld op, wordt het bericht automatisch door de trigger voltooid als de uitvoering van de functie is voltooid en wordt het bericht anders afgebroken.<br><br>Wanneer dit is ingesteld op `false` , bent u verantwoordelijk voor het aanroepen van [MessageReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) -methoden om het bericht te volt ooien, te annuleren of deadletter. Als er een uitzonde ring wordt gegenereerd (en geen van de `MessageReceiver` methoden worden genoemd), blijft de vergren deling. Zodra de vergren deling is verlopen, wordt het bericht opnieuw in de wachtrij geplaatst `DeliveryCount` en wordt de vergren deling automatisch verlengd.<br><br>In functies zonder C # worden uitzonde ringen in de functie uitgevoerd in de runtime-aanroepen `abandonAsync` op de achtergrond. Als er geen uitzonde ring optreedt, `completeAsync` wordt deze op de achtergrond aangeroepen. |
 |maxConcurrentCalls|16|Het maximum aantal gelijktijdige aanroepen naar de call back dat de bericht pomp moet initiëren per geschaald exemplaar. De functie runtime verwerkt standaard meerdere berichten tegelijk.|
 |maxConcurrentSessions|2000|Het maximum aantal sessies dat gelijktijdig kan worden verwerkt per geschaald exemplaar.|
 

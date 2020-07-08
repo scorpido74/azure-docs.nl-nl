@@ -7,12 +7,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: pepogors
-ms.openlocfilehash: 04c6444723180c34f6605810260f5f865dff2d12
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f8d8d5ae677ea438de4baed7d6636c2087277427
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790912"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602700"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric Guardrails 
 Bij het implementeren van een Service Fabric cluster worden Guardrails geplaatst, waardoor een Azure Resource Manager implementatie in het geval van een ongeldige cluster configuratie mislukt. In de volgende secties vindt u een overzicht van algemene problemen met de cluster configuratie en de stappen die nodig zijn om deze problemen te verhelpen. 
@@ -68,12 +68,12 @@ Het oplossen van een niet-overeenkomend duurzaamheid, dat wordt aangegeven door 
 
 ## <a name="seed-node-deletion"></a>Seed-knoop punt verwijderen 
 ### <a name="overview"></a>Overzicht
-Een Service Fabric cluster heeft een eigenschap van een [betrouwbaarheids categorie](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) die wordt gebruikt om te bepalen hoeveel replica's van systeem services worden uitgevoerd op het primaire knooppunt type van het cluster. Het aantal vereiste replica's bepaalt het minimum aantal knoop punten dat moet worden onderhouden in het primaire knooppunt type van het cluster. Als het aantal knoop punten in het primaire knooppunt type onder het vereiste minimum voor de betrouwbaarheids categorie komt, wordt het cluster Insta Biel.  
+Een Service Fabric cluster heeft een eigenschap van een [betrouwbaarheids categorie](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#reliability-characteristics-of-the-cluster) die wordt gebruikt om te bepalen hoeveel replica's van systeem services worden uitgevoerd op het primaire knooppunt type van het cluster. Het aantal vereiste replica's bepaalt het minimum aantal knoop punten dat moet worden onderhouden in het primaire knooppunt type van het cluster. Als het aantal knoop punten in het primaire knooppunt type onder het vereiste minimum voor de betrouwbaarheids categorie komt, wordt het cluster Insta Biel.  
 
 ### <a name="error-messages"></a>Foutberichten 
 Er is een bewerking voor het verwijderen van een Seed-knoop punt gedetecteerd en deze wordt geweigerd. 
-* Deze bewerking zou ertoe leiden dat {0} er alleen potentiële Seed-knoop punten in het cluster {1} aanwezig blijven, terwijl het mini maal nodig is.
-* Als {0} u de Seed- {1} knoop punten verwijdert, is het cluster niet meer mogelijk vanwege het verlies van het Seed-knooppunt quorum. Het maximum aantal Seed-knoop punten dat tegelijk kan worden verwijderd is {2}.
+* Deze bewerking zou ertoe leiden {0} dat er alleen potentiële Seed-knoop punten in het cluster aanwezig blijven, terwijl het {1} Mini maal nodig is.
+* {0}Als u de Seed-knoop punten verwijdert, is {1} het cluster niet meer mogelijk vanwege het verlies van het Seed-knooppunt quorum. Het maximum aantal Seed-knoop punten dat tegelijk kan worden verwijderd is {2} .
  
 ### <a name="mitigation"></a>Oplossing 
 Zorg ervoor dat het type van het primaire knoop punt voldoende Virtual Machines heeft voor de betrouw baarheid die is opgegeven op uw cluster. U kunt een virtuele machine niet verwijderen als hiermee de Schaalset voor virtuele machines onder het minimum aantal knoop punten voor de opgegeven betrouwbaarheids categorie wordt ingesteld.

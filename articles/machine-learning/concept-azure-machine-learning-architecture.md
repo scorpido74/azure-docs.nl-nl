@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/13/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 97b13118eb0299f042bdadfebecbc1a23d1ce59f
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 8cfa7a7b251f2aa74230d8883a0335582387aa06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362591"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602513"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: architectuur en concepten
 
@@ -62,7 +62,7 @@ Gebruik deze hulpprogram ma's voor Azure Machine Learning:
             * [Configuratie uitvoeren](#run-configurations)
             * [Snapshot](#snapshots)
             * [Git-tracking](#github-tracking-and-integration)
-            * [Logboekregistratie](#logging)
+            * [Userenv](#logging)
     * [Machine learning-pijplijnen](#ml-pipelines)
     * [Modellen](#models)
         * [Omgevingen](#environments)
@@ -212,7 +212,7 @@ Als u bewaking hebt ingeschakeld, verzamelt Azure telemetriegegevens van het mod
 Azure IoT Edge zorgt ervoor dat de module wordt uitgevoerd en controleert het apparaat waarop het wordt gehost.
 
 
-### <a name="compute-instance-preview"></a><a name="compute-instance"></a>Reken instantie (preview-versie)
+### <a name="compute-instance"></a><a name="compute-instance"></a>Rekenproces
 
 Een **Azure machine learning Compute-instantie** (voorheen laptop-VM) is een volledig beheerd werk station in de Cloud met meerdere hulpprogram ma's en omgevingen die voor machine learning zijn geïnstalleerd. Reken instanties kunnen worden gebruikt als een reken doel voor trainings-en detraining-taken. Voor grote taken is het [Azure machine learning compute-clusters](how-to-set-up-training-targets.md#amlcompute) met schaal mogelijkheden voor meerdere knoop punten een betere reken doel keuze.
 
@@ -239,5 +239,5 @@ Meer informatie over de [beschik bare reken doelen voor training en implementati
 Om aan de slag te gaan met Azure Machine Learning raadpleegt u:
 
 * [Wat is Azure Machine Learning?](overview-what-is-azure-ml.md)
-* [Een Azure Machine Learning-werk ruimte maken](how-to-manage-workspace.md)
+* [Een Azure Machine Learning-werkruimte maken](how-to-manage-workspace.md)
 * [Zelf studie (deel 1): een model trainen](tutorial-train-models-with-aml.md)

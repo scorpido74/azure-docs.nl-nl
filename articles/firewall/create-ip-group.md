@@ -4,26 +4,23 @@ description: Met IP-groepen kunt u IP-adressen voor Azure Firewall regels groepe
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: conceptual
-ms.date: 02/18/2020
+ms.topic: how-to
+ms.date: 06/23/2020
 ms.author: victorh
-ms.openlocfilehash: 7e8b2350b9e85d07ce1c399ce4536703ec998cbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3ae62bf5b4f0b4796cac2e7079c8a09116d4895
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77444535"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602530"
 ---
-# <a name="create-ip-groups-preview"></a>IP-groepen maken (preview)
-
-> [!IMPORTANT]
-> Deze openbare preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar in alle Azure-locaties. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="create-ip-groups"></a>IP-groepen maken
 
 Met IP-groepen kunt u IP-adressen voor Azure Firewall regels groeperen en beheren. Ze kunnen één IP-adres, meerdere IP-adressen of een of meer IP-adresbereiken hebben.
 
 ## <a name="create-an-ip-group"></a>Een IP-groep maken
 
-1. Op de start pagina van Azure Portal selecteert u **een resource maken**.
+1. Selecteer op de startpagina van de Azure-portal **Een resource maken**.
 2. Typ **IP-groepen** in het tekstvak zoeken en selecteer vervolgens **IP-groepen**.
 3. Selecteer **Maken**.
 4. Selecteer uw abonnement.

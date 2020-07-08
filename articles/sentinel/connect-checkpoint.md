@@ -1,6 +1,6 @@
 ---
 title: Gegevens van Check Point verbinden met Azure Sentinel | Microsoft Docs
-description: Meer informatie over het verbinden van Check Point-gegevens met Azure Sentinel.
+description: Configureer uw Check Point-toestel voor het door sturen van syslog-berichten in de CEF-indeling naar uw Azure Sentinel-werk ruimte via de syslog-agent.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 70836ec557eff1be035d92e8e7db30a882e05fc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32cbdabef4d89c7fabb47a52ebf0589690b7ab33
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588413"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85566048"
 ---
 # <a name="connect-check-point-to-azure-sentinel"></a>Controle punt verbinden met Azure Sentinel
 
@@ -41,9 +41,9 @@ Configureer uw Check Point-toestel voor het door sturen van syslog-berichten in 
  
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u apparaten van Check Point verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
+In dit document hebt u geleerd hoe u apparaten van Check Point verbindt met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
 - [Connectiviteit valideren](connect-cef-verify.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+- Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
 - [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te bewaken.
 
 

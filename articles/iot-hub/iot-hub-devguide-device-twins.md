@@ -1,20 +1,20 @@
 ---
 title: Meer informatie over Azure IoT Hub Device apparaatdubbels | Microsoft Docs
 description: 'Ontwikkelaars handleiding: gebruik apparaat apparaatdubbels om status-en configuratie gegevens te synchroniseren tussen IoT Hub en uw apparaten'
-author: wesmc7777
+author: ash2017
 manager: philmea
-ms.author: wesmc
+ms.author: asrastog
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/01/2020
 ms.custom: mqtt
-ms.openlocfilehash: 3bec3d19ed68b7eb8bb50baa8f6c11135ef778cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f61748a0a0d3d999670b6129e0e58758715ba3b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731472"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601850"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Apparaat-apparaatdubbels in IoT Hub begrijpen en gebruiken
 
@@ -22,7 +22,7 @@ ms.locfileid: "81731472"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-In dit artikel wordt beschreven:
+In dit artikel wordt het volgende beschreven:
 
 * De structuur van het apparaat: *labels*, *gewenste* en *gerapporteerde eigenschappen*.
 * De bewerkingen die apps en back-ends van apparaten kunnen uitvoeren op apparaat apparaatdubbels.
@@ -59,7 +59,7 @@ Een apparaat dubbele is een JSON-document met de volgende opties:
 
 * **Gerapporteerde eigenschappen**. Wordt samen met de gewenste eigenschappen gebruikt voor het synchroniseren van apparaatconfiguratie of voor waarden. De apparaat-app kan gerapporteerde eigenschappen instellen en de back-end van de oplossing kan deze lezen en er query's op uitvoeren.
 
-* **Eigenschappen**van de apparaat-id. De hoofdmap van het apparaatonafhankelijke JSON-document van het apparaat bevat de alleen-lezen eigenschappen van de overeenkomende apparaat-id die is opgeslagen in het [identiteits register](iot-hub-devguide-identity-registry.md). Eigenschappen `connectionStateUpdatedTime` en `generationId` worden niet opgenomen.
+* **Eigenschappen**van de apparaat-id. De hoofdmap van het apparaatonafhankelijke JSON-document van het apparaat bevat de alleen-lezen eigenschappen van de overeenkomende apparaat-id die is opgeslagen in het [identiteits register](iot-hub-devguide-identity-registry.md). Eigenschappen `connectionStateUpdatedTime` en worden `generationId` niet opgenomen.
 
 ![Scherm afbeelding van dubbele eigenschappen van het apparaat](./media/iot-hub-devguide-device-twins/twin.png)
 
@@ -109,7 +109,7 @@ In het volgende voor beeld ziet u een dubbel JSON-document voor een apparaat:
 }
 ```
 
-In het hoofd object zijn de eigenschappen van de apparaat-id en container `tags` objecten voor `reported` en `desired` beide en eigenschappen. De `properties` container bevat een aantal alleen-lezen elementen`$metadata`( `$etag`, en `$version`) die worden beschreven in de secties [Dubbele meta gegevens](iot-hub-devguide-device-twins.md#device-twin-metadata) en [optimistische gelijktijdigheid](iot-hub-devguide-device-twins.md#optimistic-concurrency) van het apparaat.
+In het hoofd object zijn de eigenschappen van de apparaat-id en container objecten voor `tags` en beide `reported` en `desired` Eigenschappen. De `properties` container bevat een aantal alleen-lezen elementen ( `$metadata` , `$etag` en `$version` ) die worden beschreven in de secties [Dubbele meta gegevens](iot-hub-devguide-device-twins.md#device-twin-metadata) en [optimistische gelijktijdigheid](iot-hub-devguide-device-twins.md#optimistic-concurrency) van het apparaat.
 
 ### <a name="reported-property-example"></a>Voor beeld van een gerapporteerde eigenschap
 
@@ -120,7 +120,7 @@ In het vorige voor beeld bevat het apparaat twee een `batteryLevel` eigenschap d
 
 ### <a name="desired-property-example"></a>Voor beeld van gewenste eigenschap
 
-In het vorige voor beeld worden `telemetryConfig` het dubbele gewenste en gerapporteerde eigenschappen gebruikt door de back-end van de oplossing en de apparaat-app om de telemetrie-configuratie voor dit apparaat te synchroniseren. Bijvoorbeeld:
+In het vorige voor beeld `telemetryConfig` worden het dubbele gewenste en gerapporteerde eigenschappen gebruikt door de back-end van de oplossing en de apparaat-app om de telemetrie-configuratie voor dit apparaat te synchroniseren. Bijvoorbeeld:
 
 1. Met de back-end van de oplossing stelt u de gewenste eigenschap in op de gewenste configuratie waarde. Hier is het gedeelte van het document met de gewenste eigenschap ingesteld:
 
@@ -133,7 +133,7 @@ In het vorige voor beeld worden `telemetryConfig` het dubbele gewenste en gerapp
    },
    ```
 
-2. De apparaat-app wordt onmiddellijk op de hoogte gesteld wanneer deze is verbonden, of tijdens de eerste keer opnieuw verbinding maken. De app apparaat meldt vervolgens de bijgewerkte configuratie (of een fout voorwaarde met `status` behulp van de eigenschap). Hier volgt het gedeelte van de gerapporteerde eigenschappen:
+2. De apparaat-app wordt onmiddellijk op de hoogte gesteld wanneer deze is verbonden, of tijdens de eerste keer opnieuw verbinding maken. De app apparaat meldt vervolgens de bijgewerkte configuratie (of een fout voorwaarde met behulp van de `status` eigenschap). Hier volgt het gedeelte van de gerapporteerde eigenschappen:
 
    ```json
    "reported": {
@@ -159,7 +159,7 @@ De back-end van de oplossing werkt op het apparaat tussen het gebruik van de vol
 
 * Het **apparaat wordt opgehaald met de id**. Met deze bewerking wordt het dubbele document van het apparaat, inclusief tags en gewenste en gerapporteerde systeem eigenschappen, geretourneerd.
 
-* **Apparaat is gedeeltelijk bijgewerkt**. Met deze bewerking kan de back-end van de oplossing de labels gedeeltelijk bijwerken of de gewenste eigenschappen van een apparaat dubbele. De gedeeltelijke update wordt uitgedrukt als een JSON-document waarmee elke eigenschap wordt toegevoegd of bijgewerkt. Eigenschappen die zijn `null` ingesteld op, worden verwijderd. In het volgende voor beeld wordt een nieuwe gewenste eigenschap `{"newProperty": "newValue"}`gemaakt met de waarde, wordt de bestaande `existingProperty` waarde `"otherNewValue"`van met vervangen `otherOldProperty`en wordt deze verwijderd. Er worden geen andere wijzigingen aangebracht in de bestaande gewenste eigenschappen of Tags:
+* **Apparaat is gedeeltelijk bijgewerkt**. Met deze bewerking kan de back-end van de oplossing de labels gedeeltelijk bijwerken of de gewenste eigenschappen van een apparaat dubbele. De gedeeltelijke update wordt uitgedrukt als een JSON-document waarmee elke eigenschap wordt toegevoegd of bijgewerkt. Eigenschappen die zijn ingesteld op `null` , worden verwijderd. In het volgende voor beeld wordt een nieuwe gewenste eigenschap gemaakt met `{"newProperty": "newValue"}` de waarde, wordt de bestaande waarde van `existingProperty` met vervangen `"otherNewValue"` en wordt deze verwijderd `otherOldProperty` . Er worden geen andere wijzigingen aangebracht in de bestaande gewenste eigenschappen of Tags:
 
    ```json
    {
@@ -175,15 +175,15 @@ De back-end van de oplossing werkt op het apparaat tussen het gebruik van de vol
    }
    ```
 
-* **Gewenste eigenschappen vervangen**. Met deze bewerking wordt de back-end van de oplossing in staat gesteld alle bestaande gewenste eigenschappen volledig te overschrijven `properties/desired`en een nieuw JSON-document voor te vervangen.
+* **Gewenste eigenschappen vervangen**. Met deze bewerking wordt de back-end van de oplossing in staat gesteld alle bestaande gewenste eigenschappen volledig te overschrijven en een nieuw JSON-document voor te vervangen `properties/desired` .
 
-* **Tags vervangen**. Met deze bewerking kan de back-end van de oplossing alle bestaande Tags volledig overschrijven en vervangen door een `tags`nieuw JSON-document voor.
+* **Tags vervangen**. Met deze bewerking kan de back-end van de oplossing alle bestaande Tags volledig overschrijven en vervangen door een nieuw JSON-document voor `tags` .
 
 * **Ontvang dubbele meldingen**. Met deze bewerking kan de back-end van de oplossing worden gewaarschuwd wanneer het dubbele wordt gewijzigd. Hiervoor moet uw IoT-oplossing een route maken en de gegevens bron instellen op *twinChangeEvents*. Standaard zijn er geen routes vooraf aanwezig, waardoor er geen dubbele meldingen worden verzonden. Als de wijzigings ratio te hoog is of om andere redenen, zoals interne fouten, kan de IoT Hub slechts één melding verzenden die alle wijzigingen bevat. Als uw toepassing bijvoorbeeld betrouw bare controle en logboek registratie van alle tussenliggende statussen vereist, moet u apparaat-naar-Cloud-berichten gebruiken. Het dubbele meldings bericht bevat eigenschappen en hoofd tekst.
 
   - Eigenschappen
 
-    | Naam | Waarde |
+    | Name | Waarde |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  Tijdstip waarop de melding is verzonden |
@@ -195,7 +195,7 @@ De back-end van de oplossing werkt op het apparaat tussen het gebruik van de vol
     iothub-Message-schema | twinChangeNotification |
     opType | "replaceTwin" of "updateTwin" |
 
-    Eigenschappen van het berichten systeem worden voorafgegaan door `$` het symbool.
+    Eigenschappen van het berichten systeem worden voorafgegaan door het `$` symbool.
 
   - Hoofdtekst
         
@@ -246,7 +246,7 @@ De [sdk's van het Azure IOT-apparaat](iot-hub-devguide-sdks.md) maken het eenvou
 
 Labels, gewenste eigenschappen en gerapporteerde eigenschappen zijn JSON-objecten met de volgende beperkingen:
 
-* **Sleutels**: alle sleutels in JSON-objecten zijn UTF-8-code ring, hoofdletter gevoelig en Maxi maal 1 KB lang. Toegestane tekens bevatten Unicode-besturings tekens (segmenten C0 en C1), `.`en `$`, en SP.
+* **Sleutels**: alle sleutels in JSON-objecten zijn UTF-8-code ring, hoofdletter gevoelig en Maxi maal 1 KB lang. Toegestane tekens bevatten UNICODE-besturings tekens (segmenten C0 en C1), en, en `.` `$` sp.
 
 * **Waarden**: alle waarden in JSON-objecten kunnen van de volgende JSON-typen zijn: Boolean, Number, String, object. Matrices zijn niet toegestaan.
 
@@ -288,7 +288,7 @@ Labels, gewenste eigenschappen en gerapporteerde eigenschappen zijn JSON-objecte
 
 ## <a name="device-twin-size"></a>Dubbele grootte van apparaat
 
-IoT Hub dwingt een maximale grootte van 8 KB af voor de `tags`waarde van en een maximale grootte van 32 KB voor elke waarde `properties/desired` van `properties/reported`en. Deze totalen zijn exclusief van alleen-lezen elementen als `$etag`, `$version`en `$metadata/$lastUpdated`.
+IoT Hub dwingt een maximale grootte van 8 KB af voor de waarde van en `tags` een maximale grootte van 32 KB voor elke waarde van `properties/desired` en `properties/reported` . Deze totalen zijn exclusief van alleen-lezen elementen als `$etag` , `$version` en `$metadata/$lastUpdated` .
 
 Dubbele grootte wordt als volgt berekend:
 
@@ -302,11 +302,11 @@ Dubbele grootte wordt als volgt berekend:
 
 * Complexe eigenschaps waarden (geneste objecten) worden berekend op basis van de cumulatieve grootte van de eigenschaps sleutels en eigenschaps waarden die ze bevatten.
 
-IOT hub weigert een fout bij alle bewerkingen die de grootte van de, `tags` `properties/desired`, of `properties/reported` de documenten boven de limiet verg Roten.
+IoT Hub weigert een fout bij alle bewerkingen die de grootte van de `tags` , `properties/desired` , of de `properties/reported` documenten boven de limiet verg Roten.
 
 ## <a name="device-twin-metadata"></a>Dubbele meta gegevens van het apparaat
 
-IoT Hub onderhoudt de tijds tempel van de laatste update voor elk JSON-object in de dubbele gewenste en gerapporteerde eigenschappen van het apparaat. De tijds tempels zijn in UTC en worden gecodeerd in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) de iso8601 `YYYY-MM-DDTHH:MM:SS.mmmZ`-indeling.
+IoT Hub onderhoudt de tijds tempel van de laatste update voor elk JSON-object in de dubbele gewenste en gerapporteerde eigenschappen van het apparaat. De tijds tempels zijn in UTC en worden gecodeerd in de [iso8601](https://en.wikipedia.org/wiki/ISO_8601) -indeling `YYYY-MM-DDTHH:MM:SS.mmmZ` .
 
 Bijvoorbeeld:
 
@@ -362,7 +362,7 @@ Deze informatie wordt op elk niveau (niet alleen de bladeren van de JSON-structu
 De labels, gewenste en gerapporteerde eigenschappen bieden ondersteuning voor optimistische gelijktijdigheid.
 Labels hebben een ETag, zoals per [RFC7232](https://tools.ietf.org/html/rfc7232), die de JSON-weer gave van de tag vertegenwoordigt. U kunt ETags gebruiken in bewerkingen voor voorwaardelijke updates van de back-end van de oplossing om consistentie te garanderen.
 
-Het dubbele gewenste apparaat en de gerapporteerde eigenschappen hebben geen ETags, `$version` maar hebben een waarde die gegarandeerd incrementeel is. Net als bij een ETag kan de versie worden gebruikt door de update partij om consistentie van updates af te dwingen. Bijvoorbeeld een apparaat-app voor een gerapporteerde eigenschap of de back-end van de oplossing voor een gewenste eigenschap.
+Het dubbele gewenste apparaat en de gerapporteerde eigenschappen hebben geen ETags, maar hebben een `$version` waarde die gegarandeerd incrementeel is. Net als bij een ETag kan de versie worden gebruikt door de update partij om consistentie van updates af te dwingen. Bijvoorbeeld een apparaat-app voor een gerapporteerde eigenschap of de back-end van de oplossing voor een gewenste eigenschap.
 
 Versies zijn ook handig wanneer een waarneem bare agent (zoals de apparaat-app die de gewenste eigenschappen nadenkt), races moet afstemmen tussen het resultaat van een ophalen-bewerking en een update melding. De [sectie stroom](iot-hub-devguide-device-twins.md#device-reconnection-flow) voor het opnieuw verbinden van apparaten biedt meer informatie.
 
@@ -374,7 +374,7 @@ De gewenste eigenschappen van updates voor niet-verbonden apparaten worden niet 
 2. Apparaat-app wordt geabonneerd voor gewenste eigenschappen van meldingen bijwerken.
 3. Met Device App wordt het volledige document opgehaald voor gewenste eigenschappen.
 
-De apparaat-app kan alle meldingen negeren `$version` met minder of gelijk zijn aan de versie van het volledig opgehaalde document. Deze methode is mogelijk omdat IoT Hub garandeert dat de versies altijd worden verhoogd.
+De apparaat-app kan alle meldingen negeren met `$version` minder of gelijk zijn aan de versie van het volledig opgehaalde document. Deze methode is mogelijk omdat IoT Hub garandeert dat de versies altijd worden verhoogd.
 
 > [!NOTE]
 > Deze logica is al geïmplementeerd in de [Azure IOT-apparaat-sdk's](iot-hub-devguide-sdks.md). Deze beschrijving is alleen nuttig als de apparaat-app geen van de Azure IoT-apparaat-Sdk's kan gebruiken en de MQTT-interface rechtstreeks moet Program meren.

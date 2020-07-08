@@ -9,15 +9,15 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.date: 04/21/2020
-ms.openlocfilehash: b8869eee4e44001f5d4aeafbbdb32f93f0a7e0c8
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.date: 06/27/2020
+ms.openlocfilehash: 476f3925886a6de68b49e1861d22e6cfaf594202
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433331"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601447"
 ---
-# <a name="how-to-run-jupyter-notebooks-in-your-workspace-preview"></a>Jupyter-notebooks uitvoeren in uw werk ruimte (preview)
+# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Hoe u Jupyter-notebooks uitvoert in uw werkruimte
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Meer informatie over het rechtstreeks uitvoeren van uw Jupyter-notebook in uw werk ruimte in Azure Machine Learning Studio. Hoewel u [Jupyter](https://jupyter.org/) of [jjupyterlab](https://jupyterlab.readthedocs.io)kunt starten, kunt u uw notitie blokken ook bewerken en uitvoeren zonder de werk ruimte te verlaten.
@@ -31,8 +31,8 @@ Bekijk hoe u het volgende kunt doen:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://aka.ms/AMLFree) voordat u begint.
-* Een Machine Learning-werk ruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md).
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://aka.ms/AMLFree) aan voordat u begint.
+* Een Machine Learning-werkruimte. Raadpleeg [Een Azure Machine Learning-werkruimte maken](how-to-manage-workspace.md).
 
 ## <a name="create-notebooks"></a><a name="create"></a>Notitie blokken maken
 
@@ -51,10 +51,12 @@ Een nieuw notitie blok maken:
 1. Selecteer een bestands directory.
 1. Selecteer **Maken**.
 
-> [!TIP]
-> U kunt ook tekst bestanden maken.  Selecteer **tekst** als het bestands type en voeg de extensie toe aan de naam (bijvoorbeeld MyFile.py of MyFile. txt)  
+U kunt ook tekst bestanden maken.  Selecteer **tekst** als het bestands type en voeg de extensie toe aan de naam (bijvoorbeeld myfile.py of myfile.txt)  
 
 U kunt ook mappen en bestanden, met inbegrip van notitie blokken, uploaden met de hulp middelen boven aan de pagina met notitie blokken.  De notitie blokken en de meeste tekst bestands typen worden weer gegeven in de sectie voor beeld.  Er is geen voor beeld beschikbaar voor de meeste andere bestands typen.
+
+> [!IMPORTANT]
+> Inhoud in notitie blokken en scripts kan mogelijk gegevens van uw sessies lezen en toegang krijgen tot gegevens zonder uw organisatie in Azure.  Laad alleen bestanden van vertrouwde bronnen. Zie [Aanbevolen procedures voor veilige code](concept-secure-code-best-practice.md#azure-ml-studio-notebooks)voor meer informatie.
 
 ### <a name="clone-samples"></a>Voor beelden klonen
 
@@ -95,21 +97,43 @@ Kopieer en plak de URL om een notitie blok of bestand te delen.  Alleen andere g
 
 Als u een notitie blok wilt bewerken, opent u een notitie blok dat zich bevindt in het gedeelte **gebruikers bestanden** van uw werk ruimte. Klik op de cel die u wilt bewerken. 
 
-Wanneer er een reken instantie wordt uitgevoerd, kunt u ook de voltooiing van code gebruiken, mogelijk gemaakt door [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense), in een python-notebook.
+U kunt het notitie blok bewerken zonder verbinding te maken met een reken instantie.  Wanneer u de cellen in het notitie blok wilt uitvoeren, selecteert of maakt u een reken instantie.  Als u een gestopt Compute-exemplaar selecteert, wordt het automatisch gestart wanneer u de eerste cel uitvoert.
+
+Wanneer een reken instantie wordt uitgevoerd, kunt u ook de voltooiing van code gebruiken, mogelijk gemaakt door [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense), in een python-notebook.
 
 U kunt Jupyter of Jjupyterlab ook starten via de werk balk van het notitie blok.  Azure Machine Learning biedt geen updates en corrigeert fouten van Jupyter of Jjupyterlab, omdat deze open source-producten zijn buiten de grenzen van Microsoft Ondersteuning.
+
+### <a name="use-intellisense"></a>IntelliSense gebruiken
+
+[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) is een hulp programma voor het volt ooien van de code die een aantal functies omvat: lijst leden, parameter info, snelle informatie en volledig woord. Deze functies helpen u meer te weten te komen over de code die u gebruikt, het bijhouden van de para meters die u typt en het toevoegen van aanroepen aan eigenschappen en methoden met slechts enkele toetsaanslagen.  
+
+Wanneer u code typt, gebruikt u Ctrl + spatie om IntelliSense te activeren.
+
+### <a name="save-and-checkpoint-a-notebook"></a>Een notitie blok opslaan en controle punten
+
+Azure Machine Learning een controlepunt bestand maakt wanneer u een *ipynb*-   bestand maakt.
+
+Selecteer in de werk balk notebook het menu en vervolgens **bestand &gt; opslaan en controle punt** om het notitie blok hand matig op te slaan. er wordt dan een controlepunt bestand toegevoegd dat is gekoppeld aan het notitie blok.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Scherm opname van het hulp programma opslaan op de werk balk van notitie blok":::
+
+Elk notitie blok wordt elke 30 seconden autobespaard.Met automatisch opslaan worden alleen het eerste *ipynb*   -bestand, niet het controlepunt bestand, bijgewerkt.
+ 
+Selecteer **controle punten** in het menu van het notitie blok om een benoemd controle punt te maken en de notitie blok terug te zetten naar een opgeslagen controle punt.
+
 
 ### <a name="useful-keyboard-shortcuts"></a>Nuttige sneltoetsen
 
 |Toetsenbord  |Bewerking  |
 |---------|---------|
 |SHIFT + ENTER     |  Een cel uitvoeren       |
+|Ctrl + spatie | IntelliSense activeren |
 |CTRL + M (Windows)     |  Tabblad overvulling in notebook in-of uitschakelen.       |
 |CTRL + SHIFT + M (Mac & Linux)     |    Tabblad overvulling in notebook in-of uitschakelen.     |
 |Tabblad (wanneer tab-trap is ingeschakeld) | Een ' \t '-teken toevoegen (inspringing)
 |Tabblad (als tab-trap is uitgeschakeld) | De focus wijzigen naar het volgende focusable item (de knop cel verwijderen, de knop uitvoeren, enzovoort)
 
-## <a name="delete-a-notebook"></a>Een notitie blok verwijderen
+## <a name="delete-a-notebook"></a>Een notebook verwijderen 
 
 U *kunt* de voor **beelden** van notitie blokken niet verwijderen.  Deze notitie blokken maken deel uit van de studio en worden bijgewerkt telkens wanneer een nieuwe SDK wordt gepubliceerd.  
 

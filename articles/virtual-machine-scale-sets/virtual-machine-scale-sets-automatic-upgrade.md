@@ -6,15 +6,15 @@ ms.author: avverma
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 04/14/2020
+ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: c06ad5ab2688bd62fdf898950a8f64cd655a9fcc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: af0dea5297cca02b12aecdc8252e62030032b93e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124972"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601340"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Upgrade van Azure virtual machine-schaal sets automatische installatie kopieën van besturings systemen
 
@@ -46,11 +46,11 @@ Het upgrade proces werkt als volgt:
 De versie van het besturings systeem voor het upgraden van de schaalset controleert de algehele status van de schaalset voordat elke batch wordt geüpgraded. Tijdens het bijwerken van een batch kunnen er andere gelijktijdige geplande of niet-geplande onderhouds activiteiten optreden die van invloed kunnen zijn op de status van de instanties van uw schaalset. In dergelijke gevallen, als meer dan 20% van de instanties van de schaalset een slechte status heeft, stopt de upgrade van de schaalset aan het einde van de huidige batch.
 
 ## <a name="supported-os-images"></a>Ondersteunde installatie kopieën van besturings systemen
-Er worden momenteel alleen bepaalde installatie kopieën van besturings systemen ondersteund. Ondersteuning voor aangepaste installatie kopieën is beschikbaar als [Preview-versie](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images-preview) voor aangepaste installatie kopieën via de [Galerie met gedeelde afbeeldingen](shared-image-galleries.md).
+Er worden momenteel alleen bepaalde installatie kopieën van besturings systemen ondersteund. Aangepaste installatie kopieën [worden ondersteund](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images) als de schaalset aangepaste installatie kopieën gebruikt via de [Galerie met gedeelde afbeeldingen](shared-image-galleries.md).
 
 De volgende platform-Sku's worden momenteel ondersteund (en worden regel matig toegevoegd):
 
-| Uitgever               | OS-aanbieding      |  Sku               |
+| Publisher               | OS-aanbieding      |  Sku               |
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18,04-LTS          |
@@ -77,90 +77,25 @@ De volgende platform-Sku's worden momenteel ondersteund (en worden regel matig t
 ### <a name="service-fabric-requirements"></a>Service Fabric vereisten
 
 Als u Service Fabric gebruikt, moet u ervoor zorgen dat aan de volgende voor waarden wordt voldaan:
--   Service Fabric [duurzaamheids niveau](../service-fabric/service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) is zilver of goud en niet bronzen.
+-   Service Fabric [duurzaamheids niveau](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) is zilver of goud en niet bronzen.
 -   De Service Fabric-extensie voor de model definitie van de schaalset moet TypeHandlerVersion 1,1 of hoger hebben.
 -   Duurzaamheids niveau moet hetzelfde zijn op het Service Fabric cluster en Service Fabric extensie in de model definitie van de schaalset.
+- Een extra status test of het gebruik van de uitbrei ding van de toepassings status is niet vereist.
 
 Zorg ervoor dat de duurzaamheids instellingen niet overeenkomen met het Service Fabric cluster en de uitbrei ding Service Fabric, omdat een niet-overeenkomend resultaat is opgetreden tijdens de upgrade. Duurzaamheids niveaus kunnen worden gewijzigd volgens de richt lijnen die op [Deze pagina](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels)worden beschreven.
 
 
-## <a name="automatic-os-image-upgrade-for-custom-images-preview"></a>Automatische upgrade van de installatie kopie van het besturings systeem voor aangepaste installatie kopieën (preview-versie)
+## <a name="automatic-os-image-upgrade-for-custom-images"></a>Automatische upgrade van besturings systeem installatie kopie voor aangepaste installatie kopieën
 
-> [!IMPORTANT]
-> Automatische upgrade van besturings systeem installatie kopie voor aangepaste installatie kopieën is momenteel beschikbaar als open bare preview. Een opt-in-procedure is vereist voor het gebruik van de open bare Preview-functionaliteit die hieronder wordt beschreven.
-> Deze preview-versie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Automatische upgrade van de besturingssysteem installatie kopie is beschikbaar als preview-versie voor aangepaste installatie kopieën die zijn geïmplementeerd via de [Galerie met gedeelde afbeeldingen](shared-image-galleries.md). Andere aangepaste installatie kopieën worden niet ondersteund voor automatische upgrades van installatie kopieën van besturings systemen.
-
-Het inschakelen van de Preview-functionaliteit vereist eenmalige aanmelding voor de functie *AutomaticOSUpgradeWithGalleryImage* per abonnement, zoals hieronder wordt beschreven.
-
-### <a name="rest-api"></a>REST-API
-In het volgende voor beeld wordt beschreven hoe u de preview-versie van uw abonnement kunt inschakelen:
-
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticOSUpgradeWithGalleryImage/register?api-version=2015-12-01`
-```
-
-De registratie van onderdelen kan Maxi maal 15 minuten duren. De registratie status controleren:
-
-```
-GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticOSUpgradeWithGalleryImage?api-version=2015-12-01`
-```
-
-Zodra de functie is geregistreerd voor uw abonnement, voltooit u het aanmeldings proces door de wijziging door te geven aan de provider van de reken resource.
-
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2019-12-01`
-```
-
-### <a name="azure-powershell"></a>Azure PowerShell
-Gebruik de cmdlet [REGI ster-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) om de preview voor uw abonnement in te scha kelen.
-
-```azurepowershell-interactive
-Register-AzProviderFeature -FeatureName AutomaticOSUpgradeWithGalleryImage -ProviderNamespace Microsoft.Compute
-```
-
-De registratie van onderdelen kan Maxi maal 15 minuten duren. De registratie status controleren:
-
-```azurepowershell-interactive
-Get-AzProviderFeature -FeatureName AutomaticOSUpgradeWithGalleryImage -ProviderNamespace Microsoft.Compute
-```
-
-Zodra de functie is geregistreerd voor uw abonnement, voltooit u het aanmeldings proces door de wijziging door te geven aan de provider van de reken resource.
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
-
-### <a name="azure-cli-20"></a>Azure CLI 2.0
-Gebruik [AZ feature Regis](/cli/azure/feature#az-feature-register) om de preview voor uw abonnement in te scha kelen.
-
-```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name AutomaticOSUpgradeWithGalleryImage
-```
-
-De registratie van onderdelen kan Maxi maal 15 minuten duren. De registratie status controleren:
-
-```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name AutomaticOSUpgradeWithGalleryImage
-```
-
-Zodra de functie is geregistreerd voor uw abonnement, voltooit u het aanmeldings proces door de wijziging door te geven aan de provider van de reken resource.
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-```
+Automatische upgrade van besturings systeem installatie kopie wordt ondersteund voor aangepaste installatie kopieën die worden geïmplementeerd via de [Galerie met gedeelde afbeeldingen](shared-image-galleries.md). Andere aangepaste installatie kopieën worden niet ondersteund voor automatische upgrades van installatie kopieën van besturings systemen.
 
 ### <a name="additional-requirements-for-custom-images"></a>Aanvullende vereisten voor aangepaste installatie kopieën
-- Het hierboven beschreven aanmeldings proces moet slechts één keer per abonnement worden uitgevoerd. De opt-inschakeling na voltooiing kan automatische besturingssysteem upgrades worden ingeschakeld voor elke schaalset in dat abonnement.
-- De galerie met gedeelde afbeeldingen kan zich in elk abonnement bevindt en hoeft niet afzonderlijk te worden aangemeld. Alleen het abonnement voor de schaalset vereist de functie opt-in.
-- De upgrade van het configuratie proces voor automatische installatie kopie van het besturings systeem is hetzelfde voor alle schaal sets, zoals beschreven in de [sectie configuratie](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade) van deze pagina.
+- Het installatie-en configuratie proces voor de automatische upgrade van de installatie kopie van het besturings systeem is hetzelfde voor alle schaal sets, zoals beschreven in de [sectie configuratie](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade) van deze pagina.
 - Exemplaren van schaal sets die zijn geconfigureerd voor automatische upgrades van besturings systeem installatie kopieën worden bijgewerkt naar de nieuwste versie van de afbeelding van de galerie met gedeelde afbeeldingen wanneer een nieuwe versie van de installatie kopie wordt gepubliceerd en wordt [gerepliceerd](shared-image-galleries.md#replication) naar de regio van die schaalset. Als de nieuwe installatie kopie niet wordt gerepliceerd naar de regio waar de schaal wordt geïmplementeerd, worden de exemplaren van de schaalset niet bijgewerkt naar de meest recente versie. Met regionale afbeeldings replicatie kunt u de implementatie van de nieuwe installatie kopie voor uw schaal sets beheren.
 - De nieuwe versie van de installatie kopie mag niet worden uitgesloten van de nieuwste versie van de galerie afbeelding. Installatie kopieën die zijn uitgesloten van de meest recente versie van de galerie afbeelding, worden niet meegenomen naar de schaalset via automatische upgrade van de installatie kopie van het besturings systeem.
 
 > [!NOTE]
->Het kan tot drie uur duren voor een schaalset om de implementatie van de eerste installatie kopie te activeren nadat de schaalset is geconfigureerd voor automatische upgrades van besturings systemen. Dit is een eenmalige vertraging per schaalset. Volgende implementaties van installatie kopieën worden binnen 30 minuten geactiveerd op de schaalset.
+>Het kan tot drie uur duren voor een schaalset om de implementatie van de eerste installatie kopie te activeren nadat de schaalset voor het eerst is geconfigureerd voor automatische upgrades van besturings systemen. Dit is een eenmalige vertraging per schaalset. Volgende implementaties van installatie kopieën worden binnen 30-60 minuten geactiveerd op de schaalset.
 
 
 ## <a name="configure-automatic-os-image-upgrade"></a>Automatische upgrade van installatie kopie van besturings systeem configureren
@@ -193,11 +128,14 @@ Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" 
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Gebruik [AZ vmss update](/cli/azure/vmss#az-vmss-update) om automatische upgrades van besturings systemen te configureren voor uw schaalset. Gebruik Azure CLI 2.0.47 of hoger. In het volgende voor beeld worden automatische upgrades ingesteld voor de schaalset met de naam *myScaleSet* in de resource groep met de naam *myResourceGroup*:
+Gebruiken `[az vmss update](/cli/azure/vmss#az-vmss-update)` voor het configureren van automatische installatie kopieën van besturings systemen voor uw schaalset. Gebruik Azure CLI 2.0.47 of hoger. In het volgende voor beeld worden automatische upgrades ingesteld voor de schaalset met de naam *myScaleSet* in de resource groep met de naam *myResourceGroup*:
 
 ```azurecli-interactive
 az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
 ```
+
+> [!NOTE]
+>Na het configureren van de automatische upgrade van besturings systeem installatie kopieën voor uw schaalset, moet u ook de virtuele machines van de schaalset naar het meest recente model van de schaalset brengen als uw schaalset gebruikmaakt van het [beleid](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)' hand matig '.
 
 ## <a name="using-application-health-probes"></a>Status tests van toepassingen gebruiken
 

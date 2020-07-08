@@ -1,5 +1,5 @@
 ---
-title: Azure Service Bus bindingen voor Azure Functions
+title: Azure Service Bus trigger voor Azure Functions
 description: Meer informatie over het uitvoeren van een Azure-functie wanneer Azure Service Bus berichten worden gemaakt.
 author: craigshoemaker
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: c15fe311b331592a54c61a5cddb29d4b467ca550
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: ee4961c6c1bb8cafe25ec2c84affdf0f1789e9f2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560809"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603023"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Service Bus trigger voor Azure Functions
 
@@ -45,9 +45,9 @@ public static void Run(
 
 # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-In het volgende voor beeld ziet u een binding van Service Bus trigger in een *Function. json* -bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. Met de functie worden [meta gegevens van berichten](#message-metadata) gelezen en wordt een service bus wachtrij bericht geregistreerd.
+In het volgende voor beeld ziet u een Service Bus trigger binding in een *function.jsin* bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. Met de functie worden [meta gegevens van berichten](#message-metadata) gelezen en wordt een service bus wachtrij bericht geregistreerd.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 ```json
 {
@@ -85,9 +85,9 @@ public static void Run(string myQueueItem,
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-In het volgende voor beeld ziet u een Service Bus trigger binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. Met de functie worden [meta gegevens van berichten](#message-metadata) gelezen en wordt een service bus wachtrij bericht geregistreerd. 
+In het volgende voor beeld ziet u een Service Bus trigger binding in een *function.jsin* een bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. Met de functie worden [meta gegevens van berichten](#message-metadata) gelezen en wordt een service bus wachtrij bericht geregistreerd. 
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 ```json
 {
@@ -120,7 +120,7 @@ module.exports = function(context, myQueueItem) {
 
 In het volgende voor beeld ziet u hoe u een Service Bus wachtrij bericht kunt lezen via een trigger.
 
-Een Service Bus binding is gedefinieerd in *Function. json* waarbij *type* is ingesteld op `serviceBusTrigger` .
+Een Service Bus binding wordt gedefinieerd in *function.jsop* waar *type* is ingesteld op `serviceBusTrigger` .
 
 ```json
 {
@@ -287,9 +287,9 @@ Zie het [voor beeld](#example) van de trigger voor meer details.
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het- `ServiceBusTrigger` kenmerk.
+De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `ServiceBusTrigger` kenmerk.
 
-|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.jsbij eigenschap | Kenmerk eigenschap |Description|
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op ' serviceBusTrigger '. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
 |**direction** | N.v.t. | Moet worden ingesteld op in. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
@@ -313,6 +313,7 @@ De volgende parameter typen zijn beschikbaar voor het bericht in de wachtrij of 
 * `byte[]`-Nuttig voor binaire gegevens.
 * Een aangepast type: als het bericht JSON bevat, probeert Azure Functions de JSON-gegevens te deserialiseren.
 * `BrokeredMessage`-Geeft u het gegedeserialiseerde bericht met de methode [BrokeredMessage. GetBody \<T> ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
+* [`MessageReceiver`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet)-Wordt gebruikt voor het ontvangen en bevestigen van berichten van de bericht container (vereist wanneer [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) is ingesteld op `false` )
 
 Deze parameter typen zijn voor Azure Functions versie 1. x; voor 2. x en hoger gebruikt u [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) in plaats van `BrokeredMessage` .
 
@@ -351,13 +352,13 @@ De verwerking van verontreinigde berichten kan niet worden beheerd of geconfigur
 
 De functions-runtime ontvangt een bericht in de [modus PeekLock](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode). Het bericht wordt aangeroepen `Complete` als de functie is voltooid, of aanroepen `Abandon` als de functie mislukt. Als de functie langer dan de `PeekLock` time-out wordt uitgevoerd, wordt de vergren deling automatisch vernieuwd zolang de functie wordt uitgevoerd. 
 
-De `maxAutoRenewDuration` kan worden geconfigureerd in *host. json*, dat wordt toegewezen aan [OnMessageOptions. MaxAutoRenewDuration](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet). Het maximum aantal dat is toegestaan voor deze instelling is 5 minuten volgens de Service Bus-documentatie, terwijl u de tijds limiet van functies kunt verhogen van de standaard waarde van 5 minuten tot 10 minuten. Voor Service Bus functies wilt u dat niet doen, omdat u de Service Bus vernieuwings limiet overschrijdt.
+De `maxAutoRenewDuration` kan worden geconfigureerd in *host.jsop*, die wordt toegewezen aan [OnMessageOptions. MaxAutoRenewDuration](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet). Het maximum aantal dat is toegestaan voor deze instelling is 5 minuten volgens de Service Bus-documentatie, terwijl u de tijds limiet van functies kunt verhogen van de standaard waarde van 5 minuten tot 10 minuten. Voor Service Bus functies wilt u dat niet doen, omdat u de Service Bus vernieuwings limiet overschrijdt.
 
 ## <a name="message-metadata"></a>Meta gegevens van bericht
 
 De trigger Service Bus biedt verschillende [Eigenschappen van meta gegevens](./functions-bindings-expressions-patterns.md#trigger-metadata). Deze eigenschappen kunnen worden gebruikt als onderdeel van binding expressies in andere bindingen of als para meters in uw code. Deze eigenschappen zijn leden van de [bericht](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet) klasse.
 
-|Eigenschap|Type|Beschrijving|
+|Eigenschap|Type|Description|
 |--------|----|-----------|
 |`ContentType`|`string`|Een inhouds type-id die wordt gebruikt door de afzender en ontvanger voor toepassingsspecifieke logica.|
 |`CorrelationId`|`string`|De correlatie-ID.|

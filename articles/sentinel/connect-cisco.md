@@ -1,6 +1,6 @@
 ---
 title: Cisco-gegevens verbinden met Azure-Sentinel | Microsoft Docs
-description: Meer informatie over het verbinden van Cisco-gegevens met Azure Sentinel.
+description: Leer hoe u uw Cisco ASA-apparaat verbindt met Azure Sentinel om Dash boards te bekijken, aangepaste waarschuwingen te maken en het onderzoek te verbeteren.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 264dab4fabc890ffe03d911f8ee3c08ef51375d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8a64dd3e47384ba2bf7579f8052177252634622
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588396"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85566038"
 ---
 # <a name="connect-cisco-asa-to-azure-sentinel"></a>Cisco ASA verbinden met Azure Sentinel
 
@@ -38,7 +38,7 @@ Cisco ASA biedt geen ondersteuning voor CEF, dus de logboeken worden verzonden a
     - Stel **poort** in op 514 of de poort die u in de agent hebt ingesteld.
     - Stel **syslog_ip** in op het IP-adres van de agent.
 
-1. Als u het relevante schema in Log Analytics voor de Cisco-gebeurtenissen wilt gebruiken `CommonSecurityLog`, zoekt u naar.
+1. Als u het relevante schema in Log Analytics voor de Cisco-gebeurtenissen wilt gebruiken, zoekt u naar `CommonSecurityLog` .
 
 1. Ga door naar [stap 3: de verbinding valideren](connect-cef-verify.md).
 
@@ -46,9 +46,9 @@ Cisco ASA biedt geen ondersteuning voor CEF, dus de logboeken worden verzonden a
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u Cisco ASA-toestellen verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+In dit document hebt u geleerd hoe u Cisco ASA-toestellen verbindt met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
 - [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te bewaken.
 
 

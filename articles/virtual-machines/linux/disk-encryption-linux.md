@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f1ec7328363cf835c733a4d0c266732c6748c829
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 3fbbeaeafd8de5a38489034a13738ca3a9b934d5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84218618"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601379"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-scenario's voor Linux-VM's
 
@@ -388,23 +388,7 @@ In tegens telling tot de Power shell-syntaxis vereist de CLI niet dat de gebruik
 
 
 ## <a name="disable-encryption-for-linux-vms"></a>Versleuteling uitschakelen voor virtuele Linux-machines
-U kunt versleuteling uitschakelen met behulp van Azure PowerShell, de Azure CLI of met een resource manager-sjabloon. 
-
->[!IMPORTANT]
->Het uitschakelen van versleuteling met Azure Disk Encryption op Linux Vm's wordt alleen ondersteund voor gegevens volumes. Het wordt niet ondersteund op gegevens of besturingssysteem volumes als het volume van het besturings systeem is versleuteld.  
-
-- **Schijf versleuteling uitschakelen met Azure PowerShell:** Als u de versleuteling wilt uitschakelen, gebruikt u de cmdlet [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) . 
-     ```azurepowershell-interactive
-     Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM' [-VolumeType DATA]
-     ```
-
-- **Versleuteling uitschakelen met Azure cli:** Als u versleuteling wilt uitschakelen, gebruikt u de opdracht [AZ VM Encryption Disable](/cli/azure/vm/encryption#az-vm-encryption-disable) . 
-     ```azurecli-interactive
-     az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type DATA
-     ```
-- **Versleuteling uitschakelen met een resource manager-sjabloon:** Gebruik de sjabloon [versleuteling uitschakelen in een actieve Linux-VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) om versleuteling uit te scha kelen.
-     1. Klik op **Implementeren in Azure**.
-     2. Selecteer het abonnement, de resource groep, de locatie, de virtuele machine, de juridische voor waarden en de overeenkomst.
+[!INCLUDE [disk-encryption-disable-encryption-cli](../../../includes/disk-encryption-disable-cli.md)]
 
 ## <a name="unsupported-scenarios"></a>Niet-ondersteunde scenario's
 
@@ -412,7 +396,7 @@ Azure Disk Encryption werkt niet voor de volgende Linux-scenario's,-functies en-
 
 - Het versleutelen van de virtuele machine van de Basic-laag of de virtuele machines die zijn gemaakt met de methode klassieke VM
 - Versleuteling uitschakelen op een OS-station of gegevens station van een virtuele Linux-machine wanneer het station van het besturings systeem is versleuteld.
-- OS-station voor schaal sets van virtuele Linux-machines versleutelen.
+- Het station van het besturings systeem voor virtuele Linux-machine schaal sets versleutelen.
 - Aangepaste installatie kopieën op Linux-Vm's versleutelen.
 - Integratie met een on-premises sleutel beheersysteem.
 - Azure Files (gedeeld bestands systeem).
@@ -420,12 +404,15 @@ Azure Disk Encryption werkt niet voor de volgende Linux-scenario's,-functies en-
 - Dynamische volumes.
 - Tijdelijke OS-schijven.
 - Versleuteling van gedeelde/gedistribueerde bestands systemen zoals (maar niet beperkt tot): DFS, GFS, DRDB en CephFS.
-- Een versleutelde VM verplaatsen naar een ander abonnement.
+- Een versleutelde VM verplaatsen naar een ander abonnement of nieuwe regio.
+- Een installatie kopie of moment opname van een versleutelde virtuele machine maken en deze gebruiken voor het implementeren van extra Vm's.
 - Kernel-crash dump (kdump).
 - Oracle-ACFS (ASM-cluster bestands systeem).
 - Gen2 Vm's (zie: [ondersteuning voor virtuele machines van generatie 2 op Azure](generation-2.md#generation-1-vs-generation-2-capabilities)).
 - Vm's uit de Lsv2-serie (zie: [Lsv2-serie](../lsv2-series.md)).
 - Een virtuele machine met ' geneste koppel punten '; dat wil zeggen, meerdere koppel punten in één pad (zoals "/1stmountpoint/data/2stmountpoint").
+- Een virtuele machine met een gegevens station die boven op een map van het besturings systeem is geplaatst.
+- Vm's uit de M-serie met Write Accelerator-schijven.
 
 ## <a name="next-steps"></a>Volgende stappen
 

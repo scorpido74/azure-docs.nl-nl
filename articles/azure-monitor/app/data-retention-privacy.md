@@ -2,13 +2,13 @@
 title: Bewaren van gegevens en opslag in Azure-toepassing inzichten | Microsoft Docs
 description: Retentie en privacybeleid
 ms.topic: conceptual
-ms.date: 06/11/2020
-ms.openlocfilehash: d77eaa32c8487d1aa87626683b4c29bf1cee0e75
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.date: 06/30/2020
+ms.openlocfilehash: 848285accd7e05607bac418b6b4ae39055a5772f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718679"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601357"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Gegevens verzameling, retentie en opslag in Application Insights
 
@@ -18,8 +18,8 @@ Eerst het korte antwoord:
 
 * De standaard-telemetrie-modules die "out-of-Box" worden uitgevoerd, verzenden waarschijnlijk geen gevoelige gegevens naar de service. De telemetrie heeft betrekking op metrische gegevens over belasting, prestaties en gebruik, uitzonderings rapporten en andere diagnostische informatie. De belangrijkste gebruikers gegevens die in de diagnostische rapporten worden weer gegeven, zijn Url's. maar uw app mag in geen geval gevoelige gegevens in een URL plaatsen als tekst zonder opmaak.
 * U kunt code schrijven die aanvullende aangepaste telemetrie verstuurt om u te helpen bij het gebruik van diagnostische gegevens en bewaking. (Deze uitbreid baarheid is een uitstekende functie van Application Insights.) Het kan per ongeluk zijn om deze code te schrijven, zodat deze persoonlijke en andere gevoelige gegevens bevat. Als uw toepassing met dergelijke gegevens werkt, moet u een grondige beoordelings proces Toep assen op alle code die u schrijft.
-* Tijdens het ontwikkelen en testen van uw app is het eenvoudig om te controleren wat wordt verzonden door de SDK. De gegevens worden weer gegeven in de uitvoer van de Windows-oplossing voor fout opsporing van de IDE en browser. 
-* De gegevens worden opgeslagen in [Microsoft Azure](https://azure.com) servers in de Verenigde Staten en Europa. (Maar uw app kan overal worden uitgevoerd.) Azure heeft [sterke beveiligings processen en voldoet aan een breed scala aan nalevings standaarden](https://azure.microsoft.com/support/trust-center/). Alleen u en uw specifieke team hebben toegang tot uw gegevens. Micro soft-mede werkers kunnen beperkte toegang hebben tot alleen onder specifieke beperkte omstandigheden met uw kennis. Het is versleuteld onderweg en in rust.
+* Tijdens het ontwikkelen en testen van uw app is het eenvoudig om te controleren wat wordt verzonden door de SDK. De gegevens worden weer gegeven in de uitvoer van de Windows-oplossing voor fout opsporing van de IDE en browser.
+* U kunt de locatie selecteren wanneer u een nieuwe Application Insights resource maakt. Meer informatie over de beschik baarheid van Application Insights per regio [vindt u hier](https://azure.microsoft.com/global-infrastructure/services/?products=all).
 *   Bekijk de verzamelde gegevens, omdat dit mogelijk gegevens bevat die in bepaalde omstandigheden wel of niet aan anderen zijn toegestaan.  Een goed voor beeld hiervan is de naam van het apparaat. De apparaatnaam van een server heeft geen gevolgen voor de privacy en is nuttig, maar een apparaatnaam van een telefoon of laptop kan een privacy-impact hebben en is minder nuttig. Een SDK die voornamelijk is ontwikkeld voor doel servers, verzamelt standaard de apparaatnaam en deze moet mogelijk worden overschreven in zowel normale gebeurtenissen als uitzonde ringen.
 
 De rest van dit artikel bevat meer informatie over deze antwoorden. Het is ontworpen om op zichzelf te staan, zodat u deze kunt weer geven aan collega's die geen deel uitmaken van uw directe team.

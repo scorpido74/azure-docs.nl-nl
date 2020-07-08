@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 6b5aa4f409b8c2f5a9125ab01e8587f4ac9c4ee5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 035399924216434de85865102db8838ea3fa15a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75945170"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85570122"
 ---
 ## <a name="create-a-project-zip-file"></a>Een ZIP-bestand van het project maken
 
@@ -23,11 +23,11 @@ ms.locfileid: "75945170"
 
 Navigeer in een lokaal Terminal venster naar de hoofdmap van uw app-project. 
 
-Deze map moet het invoer bestand bevatten naar uw web-app, zoals _index. html_, _index. php_en _app. js_. Het kan ook pakket beheer bestanden bevatten zoals _project. json_, _Composer. json_, _package. json_, _Bower. json_en _Requirements. txt_.
+Deze map moet het invoer bestand bevatten naar uw web-app, zoals _index.html_, _index. php_en _app.js_. Het kan ook pakket beheer bestanden bevatten, zoals _project.jsop_, _composer.jsop_, _package.json_, _bower.json_en _requirements.txt_.
 
-Tenzij u app service de implementatie automatisering voor u wilt uitvoeren, voert u alle build-taken uit (bijvoorbeeld `npm` `bower` `gulp` `composer`,,, en `pip`) en zorgt u ervoor dat u alle bestanden hebt die u nodig hebt om de app uit te voeren. Deze stap is vereist als u [uw pakket rechtstreeks wilt uitvoeren](../articles/app-service/deploy-run-package.md).
+Tenzij u app service de implementatie automatisering voor u wilt uitvoeren, voert u alle build-taken uit (bijvoorbeeld,,, `npm` `bower` `gulp` `composer` en `pip` ) en zorgt u ervoor dat u alle bestanden hebt die u nodig hebt om de app uit te voeren. Deze stap is vereist als u [uw pakket rechtstreeks wilt uitvoeren](../articles/app-service/deploy-run-package.md).
 
-Maak een ZIP-archief van alle bestanden in uw project. De volgende opdracht maakt gebruik van het standaardhulpprogramma in de terminal:
+Maak een ZIP-archief van alle bestanden in uw project. Voor `dotnet` projecten is deze map de map uitvoermap van de `dotnet publish` opdracht. De volgende opdracht maakt gebruik van het standaardhulpprogramma in de terminal:
 
 ```
 # Bash

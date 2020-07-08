@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: b0cdff2ce71fb63194933bdfed26da16fdebcca7
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 14ecd1a35f8aae8365b7c7dc458712acdb894e62
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85361918"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602581"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Persoonlijke Azure-koppeling gebruiken om netwerken veilig te verbinden met Azure Monitor
 
@@ -33,7 +33,7 @@ Met een persoonlijke koppeling kunt u het volgende doen:
 
 Zie [belang rijke voor delen van een persoonlijke koppeling](../../private-link/private-link-overview.md#key-benefits)voor meer informatie.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 
 Azure Monitor bereik van een persoonlijke koppeling is een groeperings bron voor het verbinden van een of meer privé-eind punten (en dus de virtuele netwerken die ze bevatten) naar een of meer Azure Monitor resources. De resources bevatten Log Analytics-werk ruimten en Application Insights onderdelen.
 
@@ -123,7 +123,7 @@ Nu u resources hebt verbonden met uw AMPLS, maakt u een persoonlijk eind punt om
 
    a.    Kies het **virtuele netwerk** en het **subnet** dat u wilt verbinden met uw Azure monitor-resources. 
  
-   b.    Kies **Ja** om te **integreren met een privé-DNS-zone**en laat automatisch een nieuwe privé-DNS zone maken. 
+   b.    Kies **Ja** om te **integreren met een privé-DNS-zone**en laat automatisch een nieuwe privé-DNS zone maken. De daad werkelijke DNS-zones kunnen afwijken van wat wordt weer gegeven in de onderstaande scherm afbeelding. 
  
    c.    Klik op **Controleren + maken**.
  

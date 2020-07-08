@@ -4,14 +4,14 @@ description: In dit artikel leest u hoe u inventaris verzameling van Vm's beheer
 services: automation
 ms.subservice: change-inventory-management
 keywords: inventaris, automation, wijziging, bijhouden
-ms.date: 01/28/2020
+ms.date: 06/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: d237b016b8f3430ed0b28becd2712bd0c41d17b4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 73f5105240b8b6475bb9ebed48baadd501aec87d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830613"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603108"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>Een inventarisverzameling beheren vanuit VM's
 
@@ -24,7 +24,7 @@ Azure Automation Wijzigingen bijhouden en inventaris biedt een gebruikers interf
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/).
+Als u nog geen abonnement op Azure hebt, [maak dan een gratis account](https://azure.microsoft.com/free/).
 
 In dit artikel wordt ervan uitgegaan dat u een virtuele machine hebt om in te scha kelen met Wijzigingen bijhouden en inventaris. Als u geen Azure-VM hebt, kunt u [een virtuele machine maken](../virtual-machines/windows/quick-create-portal.md).
 
@@ -66,7 +66,7 @@ De volgende secties bevatten informatie over elke eigenschap die kan worden geco
 |Ingeschakeld     | Bepaalt of de instelling wordt toegepast        |
 |Itemnaam     | Beschrijvende naam van het bestand dat moet worden bijgehouden        |
 |Groep     | De naam van een groep voor het logisch groeperen van bestanden        |
-|Windows-registersleutel   | Het pad voor het controleren op het bestand, bijvoorbeeld: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
+|Windows-registersleutel   | Het pad voor het bestand, bijvoorbeeld: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup      |
 
 ### <a name="windows-files"></a>Windows-bestanden
 
@@ -100,7 +100,7 @@ Als u uw computer groepen wilt weer geven, selecteert u het tabblad **machine gr
 
 ![Computer groepen weer geven op de pagina inventaris](./media/automation-vm-inventory/inventory-machine-groups.png)
 
-Als u een computer groep selecteert in de lijst, wordt de pagina computer groepen geopend. Deze pagina bevat details over de computer groep. Deze details bevatten de log Analytics-query die wordt gebruikt voor het definiëren van de groep. Onder aan de pagina bevindt zich een lijst met pagina's van de computers die deel uitmaken van die groep.
+Als u een computer groep selecteert in de lijst, wordt de pagina computer groepen geopend. Deze pagina bevat details over de computer groep. Deze details omvatten de Azure Monitor logboek query die wordt gebruikt voor het definiëren van de groep. Onder aan de pagina bevindt zich een lijst met pagina's van de computers die deel uitmaken van die groep.
 
 ![Pagina computer groep weer geven](./media/automation-vm-inventory/machine-group-page.png)
 
@@ -115,15 +115,18 @@ Als u een nieuwe machine groep wilt maken, klikt u op **+ een computer groep mak
 Uw virtuele machine verwijderen uit Wijzigingen bijhouden en voorraad beheer:
 
 1. Selecteer **log Analytics**in het linkerdeel venster van de Azure Portal en selecteer vervolgens de werk ruimte die u hebt gebruikt bij het inschakelen van de virtuele machine voor wijzigingen bijhouden en inventarisatie.
-2. Open op de pagina Log Analytics het **resource** menu.
+2. Open op de pagina **log Analytics** het **resource** menu.
 3. Selecteer **virtual machines** onder **gegevens bronnen voor de werk ruimte**.
 4. Selecteer in de lijst de virtuele machine die u wilt loskoppelen. De machine heeft een groen vinkje naast **deze werk ruimte** in de kolom **OMS-verbinding** .
 
    >[!NOTE]
    >Operations Management Suite (OMS) wordt nu Azure Monitor-logboeken genoemd.
-   
+
 5. Klik boven aan de volgende pagina op **verbinding verbreken**.
 6. Klik in het bevestigings venster op **Ja** om de computer los te koppelen van beheer.
+
+>[!NOTE]
+>Machines worden nog steeds weer gegeven nadat u de registratie ervan ongedaan hebt gemaakt, omdat er een rapport wordt gemaakt over alle machines die in de afgelopen 24 uur zijn geïnventariseerd. Na het verbreken van de verbinding met de computer, moet u 24 uur wachten voordat deze niet meer worden weer gegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 

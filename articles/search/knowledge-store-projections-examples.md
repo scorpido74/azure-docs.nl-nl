@@ -2,43 +2,40 @@
 title: Projecties definiëren in een kennis archief
 titleSuffix: Azure Cognitive Search
 description: Voor beelden van algemene patronen voor het projecteren van verrijkte documenten in het kennis Archief voor gebruik met Power BI of Azure ML.
-manager: eladz
+manager: nitinme
 author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/15/2020
-ms.openlocfilehash: 23c370289669c2dde4f8969a2921018cd0abc08c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/30/2020
+ms.openlocfilehash: f030e382a5378c84df347c545e9426adee6eacb1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943680"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565999"
 ---
-# <a name="knowledge-store-projections-how-to-shape-and-export-enrichments"></a>Kennis archief-projecties: verrijkingen vorm geven en exporteren
+# <a name="how-to-shape-and-export-enrichments"></a>Verrijkingen vorm geven en exporteren
 
-> [!IMPORTANT] 
-> Het kennis archief is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen .NET SDK-ondersteuning.
+Prognoses zijn de fysieke expressie van verrijkte documenten in een kennis archief. Voor effectief gebruik van verrijkte documenten is structuur vereist. In dit artikel vindt u meer informatie over structuur en relaties, leert u hoe u projectie-eigenschappen bouwt en hoe u gegevens in de gemaakte projectie typen bijhoudt. 
 
-Prognoses zijn de fysieke expressie van verrijkte documenten in een kennis archief. Een effectief gebruik van uw verrijkte documenten vereist structuur. In dit artikel vindt u meer informatie over de structuur en relaties, leert u hoe u de projectie-eigenschappen kunt samen stellen, en hoe u gegevens kunt relateren in verschillende projectie typen die u maakt. 
+Als u een projectie wilt maken, worden de gegevens gevormd door het maken van een aangepast object of het gebruik van de [shaper](cognitive-search-skill-shaper.md) -syntaxis in een projectie definitie. 
 
-Als u een projectie wilt maken, moet u de gegevens vorm geven met behulp van een [shaper-vaardigheid](cognitive-search-skill-shaper.md) om een aangepast object te maken of de syntaxis van de inline-vorm te gebruiken in een projectie definitie. 
-
-Een gegevensshape bevat alle gegevens die u wilt projecteren, gevormd als een hiërarchie van knoop punten. In dit artikel ziet u verschillende technieken voor het vorm geven van gegevens, zodat deze kunnen worden geprojecteerd in fysieke structuren die de verwerking van rapporten, analyses of downstream verzorgen. 
+Een gegevensshape bevat alle gegevens die bedoeld zijn voor project, gevormd als een hiërarchie van knoop punten. In dit artikel ziet u verschillende technieken voor het vorm geven van gegevens, zodat deze kunnen worden geprojecteerd in fysieke structuren, waardoor rapportage, analyse of downstream-verwerking kan worden uitgevoerd. 
 
 De voor beelden die in dit artikel worden weer gegeven, vindt u in dit REST API-voor [beeld](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/projections/Projections%20Docs.postman_collection.json), dat u kunt downloaden en uitvoeren in een HTTP-client.
 
-## <a name="introduction-to-the-examples"></a>Inleiding tot de voor beelden
+## <a name="introduction-to-projection-examples"></a>Inleiding tot projectie voorbeelden
 
-Als u bekend bent met [projecties](knowledge-store-projection-overview.md), herinnert u zich dat er drie typen zijn:
+Er zijn drie soorten [projecties](knowledge-store-projection-overview.md):
 
 + Tabellen
 + Objecten
-+ Bestanden
++ Files
 
 Tabel prognoses worden opgeslagen in azure-tabel opslag. Object-en bestands projecties worden geschreven naar de Blob-opslag, waarbij object projecties worden opgeslagen als JSON-bestanden, en kan inhoud bevatten uit het bron document en eventuele vaardigheids uitvoer of verrijkingen. De verrijkings pijplijn kan ook binaire bestanden zoals afbeeldingen extra heren, maar deze binaire bestanden worden geprojecteerd als bestands projecties. Wanneer een binair object wordt geprojecteerd als een object projectie, worden alleen de meta gegevens die eraan zijn gekoppeld, opgeslagen als een JSON-blob. 
 
-Om inzicht te krijgen in het snij punt tussen data shaping en projecties, gebruiken we de volgende vaardig heden als basis voor het verkennen van verschillende configuraties. Deze vaardig heden verwerkt onbewerkte afbeeldings-en tekst inhoud. Prognoses worden gedefinieerd op basis van de inhoud van het document en de uitvoer van de vaardig heden, voor de scenario's die we willen ondersteunen.
+Om inzicht te krijgen in het snij punt tussen data shaping en projecties, gebruiken we de volgende vaardig heden als basis voor het verkennen van verschillende configuraties. Deze vaardig heden verwerkt onbewerkte afbeeldings-en tekst inhoud. De projecties worden gedefinieerd op basis van de inhoud van het document en de uitvoer van de vaardig heden, voor de gewenste scenario's.
 
 > [!IMPORTANT] 
 > Bij het experimenteren met projecties is het handig om [de eigenschap van de Indexeer functie](search-howto-incremental-index.md) in te stellen om kosten beheer te garanderen. Als u projecties bewerkt, wordt het hele document opnieuw verrijkt als de Indexeer functie cache niet is ingesteld. Als de cache is ingesteld en alleen de projecties zijn bijgewerkt, worden de vaardig heden-uitvoeringen voor eerder verrijkte documenten niet in rekening gebracht met nieuwe Cognitive Services kosten.
@@ -200,27 +197,27 @@ Om inzicht te krijgen in het snij punt tussen data shaping en projecties, gebrui
 }
 ```
 
-Met behulp van deze vaardig heden, `knowledgeStore` met de null-waarde als basis, wordt in `knowledgeStore` het eerste voor beeld het object gevuld, geconfigureerd met projecties die tabellaire gegevens structuren maken, die we in andere scenario's kunnen gebruiken. 
+Met behulp van deze vaardig heden, met de null-waarde `knowledgeStore` als basis, wordt in het eerste voor beeld het `knowledgeStore` object gevuld, geconfigureerd met projecties die tabellaire gegevens structuren maken, die we in andere scenario's kunnen gebruiken. 
 
 ## <a name="projecting-to-tables"></a>Projecteren in tabellen
 
 Projecteren op tabellen in Azure Storage is handig voor rapportage en analyse met behulp van hulpprogram ma's zoals Power BI. Power BI kunnen tabellen lezen en relaties detecteren op basis van de sleutels die tijdens de projectie worden gegenereerd. Als u een dash board probeert te maken, wordt deze taak vereenvoudigd door gerelateerde gegevens. 
 
-Stel dat we een dash board willen maken waarin we de belangrijkste woord groepen kunnen visualiseren die zijn geëxtraheerd uit documenten als een Word-Cloud. Als u de juiste gegevens structuur wilt maken, kunnen we een shaper-vaardigheid toevoegen aan de vaardig heden om een aangepaste vorm te maken die de Documentspecifieke Details en sleutel zinnen heeft. De aangepaste vorm wordt aangeroepen `pbiShape` op het `document` hoofd knooppunt.
+We gaan een dash board maken om de belangrijkste woord groepen die zijn geëxtraheerd uit documenten te visualiseren als een Word-Cloud. Als u de juiste gegevens structuur wilt maken, voegt u een shaper-vaardigheid toe aan de vaardig heden om een aangepaste vorm te maken die de Documentspecifieke Details en sleutel zinnen heeft. De aangepaste vorm wordt aangeroepen `pbiShape` op het `document` hoofd knooppunt.
 
 > [!NOTE] 
 > Tabel prognoses zijn Azure Storage tabellen, bepaald door de opslag limieten die zijn opgelegd door Azure Storage. Zie [limieten voor tabel opslag](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model)voor meer informatie. Het is handig om te weten dat de grootte van de entiteit niet groter mag zijn dan 1 MB en dat één eigenschap niet groter mag zijn dan 64 KB. Deze beperkingen maken tabellen een goede oplossing voor het opslaan van een groot aantal kleine entiteiten.
 
 ### <a name="using-a-shaper-skill-to-create-a-custom-shape"></a>Een aangepaste vorm maken met behulp van een shaper-vaardigheid
 
-Een aangepaste vorm maken die u in tabel opslag kunt projecteren. Zonder aangepaste vorm kan een projectie alleen verwijzen naar één knoop punt (één projectie per uitvoer). Door een aangepaste vorm te maken, kunt u verschillende elementen samen voegen in een nieuwe logische geheel die kan worden geprojecteerd als één tabel of worden gesegmenteerd en gedistribueerd in een verzameling tabellen. 
+Een aangepaste vorm maken die u in tabel opslag kunt projecteren. Zonder aangepaste vorm kan een projectie alleen verwijzen naar één knoop punt (één projectie per uitvoer). Bij het maken van een aangepaste vorm worden verschillende elementen geaggregeerd naar een nieuwe logische geheel die kan worden geprojecteerd als één tabel of worden gesegmenteerd en gedistribueerd in een verzameling tabellen. 
 
-In dit voor beeld worden meta gegevens en geïdentificeerde entiteiten en sleutel zinnen gecombineerd met de aangepaste vorm. Het object wordt aangeroepen `pbiShape` en is onder `/document`het bovenliggende niveau. 
+In dit voor beeld worden meta gegevens en geïdentificeerde entiteiten en sleutel zinnen gecombineerd met de aangepaste vorm. Het object wordt aangeroepen `pbiShape` en is onder het bovenliggende niveau `/document` . 
 
 > [!IMPORTANT] 
 > Eén doel van het maken van een vorm is om ervoor te zorgen dat alle verrijkings knooppunten worden uitgedrukt in een goed opgemaakte JSON, wat vereist is voor het projecteren in het kennis archief. Dit geldt met name wanneer een verrijkings structuur knoop punten bevat die geen goed gevormde JSON zijn (bijvoorbeeld wanneer een verrijking is geparenteerd naar een primitieve als een teken reeks).
 >
-> Let op `KeyPhrases` de laatste twee knoop punten `Entities`en. Deze worden verpakt in een geldig JSON-object met `sourceContext`de. Dit is vereist omdat `keyphrases` en `entities` zijn verrijkingen op primitieven en moeten worden GECONVERTEERD naar een geldige JSON voordat ze kunnen worden geprojecteerd.
+> Let op de laatste twee knoop punten `KeyPhrases` en `Entities` . Deze worden verpakt in een geldig JSON-object met de `sourceContext` . Dit is vereist omdat `keyphrases` en `entities` zijn verrijkingen op primitieven en moeten worden geconverteerd naar een geldige JSON voordat ze kunnen worden geprojecteerd.
 >
 
 
@@ -304,7 +301,7 @@ Voeg de bovenstaande shaper-vaardigheid toe aan de vaardig heden.
 }  
 ```
 
-Nu we alle gegevens hebben die nodig zijn om tabellen te projecteren, werkt u het knowledgeStore-object bij met de tabel definities. In dit voor beeld hebben we drie tabellen, die zijn gedefinieerd door `tableName`de `source` - `generatedKeyName` en-eigenschappen in te stellen.
+Nu we alle gegevens hebben die nodig zijn om tabellen te projecteren, werkt u het knowledgeStore-object bij met de tabel definities. In dit voor beeld hebben we drie tabellen, die zijn gedefinieerd door de `tableName` -en-eigenschappen in te stellen `source` `generatedKeyName` .
 
 ```json
 "knowledgeStore" : {
@@ -345,31 +342,31 @@ U kunt uw werk verwerken door de volgende stappen uit te voeren:
 
 U hebt nu een werkende projectie met drie tabellen. Het importeren van deze tabellen in Power BI moet leiden tot het Power BI automatisch detecteren van de relaties.
 
-Voordat u verdergaat met het volgende voor beeld, kunt u aspecten van de tabel projectie opnieuw bezoeken om inzicht te krijgen in de mechanismen van segmenteren en gerelateerde gegevens.
+Voordat u verdergaat met het volgende voor beeld, gaan we de aspecten van de tabel projectie opnieuw bezoeken om inzicht te krijgen in de mechanismen van segmenteren en gerelateerde gegevens.
 
 ### <a name="slicing"></a>Segmenterings 
 
 Segmenteren is een techniek waarbij een hele geconsolideerde vorm wordt onderverdeeld in samenstellende delen. De uitkomst bestaat uit afzonderlijke, maar gerelateerde tabellen die u afzonderlijk kunt gebruiken.
 
-In het voor beeld `pbiShape` is de geconsolideerde vorm (of het verrijkings knooppunt). In de projectie definitie `pbiShape` wordt gesegmenteerd in extra tabellen, waarmee u delen van de vorm kunt ophalen, ```keyPhrases``` en. ```Entities``` In Power BI is dit handig als er meerdere entiteiten en zinsdelen aan elk document zijn gekoppeld, en u krijgt meer inzicht als u entiteiten en zinsdelen als gecategoriseerde gegevens kunt zien.
+In het voor beeld `pbiShape` is de geconsolideerde vorm (of het verrijkings knooppunt). In de projectie definitie `pbiShape` wordt gesegmenteerd in extra tabellen, waarmee u delen van de vorm kunt ophalen, ```keyPhrases``` en ```Entities``` . In Power BI is dit handig als er meerdere entiteiten en zinsdelen aan elk document zijn gekoppeld, en u krijgt meer inzicht als u entiteiten en zinsdelen als gecategoriseerde gegevens kunt zien.
 
-Bij het segmenteren wordt impliciet een relatie tussen de bovenliggende en onderliggende tabellen gegenereerd, ```generatedKeyName``` met behulp van de in de bovenliggende tabel om een kolom met dezelfde naam in de onderliggende tabel te maken. 
+Bij het segmenteren wordt impliciet een relatie tussen de bovenliggende en onderliggende tabellen gegenereerd, met behulp ```generatedKeyName``` van de in de bovenliggende tabel om een kolom met dezelfde naam in de onderliggende tabel te maken. 
 
 ### <a name="naming-relationships"></a>Namen van relaties
 
-De ```generatedKeyName``` eigenschappen ```referenceKeyName``` en worden gebruikt voor het koppelen van gegevens in tabellen of zelfs in projectie typen. Elke rij in de onderliggende tabel/projectie heeft een eigenschap die terugkeert naar het bovenliggende item. De naam van de kolom of eigenschap in het onderliggende element is ```referenceKeyName``` van het bovenliggende item. Wanneer de ```referenceKeyName``` niet is ingesteld, wordt de service standaard ingesteld op ```generatedKeyName``` de van het bovenliggende item. 
+De ```generatedKeyName``` ```referenceKeyName``` Eigenschappen en worden gebruikt voor het koppelen van gegevens in tabellen of zelfs in projectie typen. Elke rij in de onderliggende tabel/projectie heeft een eigenschap die terugkeert naar het bovenliggende item. De naam van de kolom of eigenschap in het onderliggende element is ```referenceKeyName``` van het bovenliggende item. Wanneer de ```referenceKeyName``` niet is ingesteld, wordt de service standaard ingesteld op de ```generatedKeyName``` van het bovenliggende item. 
 
-Power BI is afhankelijk van deze gegenereerde sleutels om relaties in de tabellen te detecteren. Als u de kolom in de onderliggende tabel anders wilt hebben, stelt u ```referenceKeyName``` de eigenschap in voor de bovenliggende tabel. Een voor beeld hiervan is het instellen ```generatedKeyName``` van de as-id in de tabel ```referenceKeyName``` PbiDocument en de as documentID. Dit resulteert in de kolom in de pbiEntities-en pbiKeyPhrases-tabellen met de document-id met de naam DocumentID.
+Power BI is afhankelijk van deze gegenereerde sleutels om relaties in de tabellen te detecteren. Als u de kolom in de onderliggende tabel anders wilt hebben, stelt u de ```referenceKeyName``` eigenschap in voor de bovenliggende tabel. Een voor beeld hiervan is het instellen ```generatedKeyName``` van de as-id in de tabel pbiDocument en de ```referenceKeyName``` as documentID. Dit resulteert in de kolom in de pbiEntities-en pbiKeyPhrases-tabellen met de document-id met de naam DocumentID.
 
 ## <a name="projecting-to-objects"></a>Projecteren op objecten
 
-Object projecties hebben niet dezelfde beperkingen als tabel projecties en zijn beter geschikt voor het projecteren van grote documenten. In dit voor beeld projecteert u het hele document naar een object projectie. Object projecties zijn beperkt tot één projectie in een container en kunnen niet worden gesegmenteerd.
+Object projecties hebben niet dezelfde beperkingen als tabel projecties en zijn beter geschikt voor het projecteren van grote documenten. In dit voor beeld wordt het hele document als een object projectie verzonden. Object projecties zijn beperkt tot één projectie in een container en kunnen niet worden gesegmenteerd.
 
-Als u een object projectie wilt definiëren, zullen we de ```objects``` matrix gebruiken in de projecties. U kunt een nieuwe vorm genereren met behulp van de shaper-vaardigheid of de inline-vorm van de object projectie gebruiken. In het voor beeld van tabellen is de benadering van het maken van een vorm en het segmenteren gedemonstreerd, maar in dit voor beeld wordt het gebruik van inline-vorm gegeven. 
+Als u een object projectie wilt definiëren, gebruikt u de ```objects``` matrix in de projecties. U kunt een nieuwe vorm genereren met behulp van de shaper-vaardigheid of de inline-vorm van de object projectie gebruiken. In het voor beeld van tabellen is de benadering van het maken van een vorm en het segmenteren gedemonstreerd, maar in dit voor beeld wordt het gebruik van inline-vorm gegeven. 
 
-Inline-vormgeving is de mogelijkheid om een nieuwe vorm te maken in de definitie van de invoer voor een projectie. Inline-vormgeving maakt een anoniem object dat identiek is aan wat een Shapere vaardigheid produceert (in ons geval `pbiShape`). Inline-vormgeving is handig als u een vorm definieert die u niet wilt hergebruiken.
+Inline-vormgeving is de mogelijkheid om een nieuwe vorm te maken in de definitie van de invoer voor een projectie. Inline-vormgeving maakt een anoniem object dat identiek is aan wat een Shapere vaardigheid produceert (in ons geval `pbiShape` ). Inline-vormgeving is handig als u een vorm definieert die u niet wilt hergebruiken.
 
-De eigenschap projecties is een matrix. In dit voor beeld voegen we een nieuw projectie-exemplaar toe aan de matrix, waar de knowledgeStore-definitie inline-projecties bevat. Wanneer u inline-projecties gebruikt, kunt u de shaper-vaardigheid weglaten.
+De eigenschap projecties is een matrix. In dit voor beeld wordt een nieuwe projectie-instantie aan de matrix toegevoegd, waarbij de knowledgeStore-definitie inline-projecties bevat. Wanneer u inline-projecties gebruikt, kunt u de shaper-vaardigheid weglaten.
 
 ```json
 "knowledgeStore" : {
@@ -426,7 +423,7 @@ De eigenschap projecties is een matrix. In dit voor beeld voegen we een nieuw pr
 
 Bestands projecties zijn afbeeldingen die zijn geëxtraheerd uit het bron document of uitvoer van verrijking die uit het verrijkings proces kunnen worden geprojecteerd. Bestands projecties, vergelijkbaar met object projecties, worden geïmplementeerd als blobs in Azure Storage en bevatten de installatie kopie. 
 
-Als u een bestands projectie wilt genereren, gebruiken we `files` de matrix in het projectie object. In dit voor beeld worden alle afbeeldingen uit het document geëxtraheerd naar een container `samplefile`met de naam.
+Als u een bestands projectie wilt genereren, gebruikt u de `files` matrix in het projectie object. In dit voor beeld worden alle afbeeldingen uit het document geëxtraheerd naar een container met de naam `samplefile` .
 
 ```json
 "knowledgeStore" : {
@@ -450,7 +447,7 @@ Als u een bestands projectie wilt genereren, gebruiken we `files` de matrix in h
 
 Voor een complexere scenario moet u mogelijk inhoud in verschillende projectie typen projecteren. Als u bijvoorbeeld een aantal gegevens zoals sleutel zinnen en entiteiten naar tabellen wilt projecteren, slaat u de OCR-resultaten van tekst en indelings tekst op als objecten en projecteert u de afbeeldingen als bestanden. 
 
-In dit voor beeld bevatten updates voor de vaardig heden de volgende wijzigingen:
+In dit voor beeld wordt de vaardig heden bijgewerkt met de volgende wijzigingen:
 
 1. Maak een tabel met een rij voor elk document.
 1. Maak een tabel met betrekking tot de document tabel waarbij elke sleutel zin is geïdentificeerd als een rij in deze tabel.
@@ -463,7 +460,7 @@ Deze wijzigingen worden verder doorgevoerd in de knowledgeStore definitie.
 
 ### <a name="shape-data-for-cross-projection"></a>Vorm gegevens voor kruis projectie
 
-Als u de shapes wilt ophalen die we nodig hebben voor deze projecties, moet u beginnen met het toevoegen van een nieuwe `crossProjection`shaper-vaardigheid die een object vormige naam maakt. 
+Als u de shapes wilt ophalen die nodig zijn voor deze projecties, begint u met het toevoegen van een nieuwe shaper-vaardigheid die een object vormige naam maakt `crossProjection` . 
 
 ```json
 {
@@ -534,7 +531,7 @@ Als u de shapes wilt ophalen die we nodig hebben voor deze projecties, moet u be
 
 ### <a name="define-table-object-and-file-projections"></a>Tabel-, object-en bestands prognoses definiëren
 
-Vanuit het geconsolideerde crossProjection-object kunnen we het object in meerdere tabellen verdelen, de OCR-uitvoer als blobs vastleggen en de installatie kopie vervolgens opslaan als bestanden (ook in Blob Storage).
+In het geconsolideerde crossProjection-object kunt u het object in meerdere tabellen verdelen, de OCR-uitvoer als blobs vastleggen en de installatie kopie vervolgens opslaan als bestanden (ook in Blob Storage).
 
 ```json
 "knowledgeStore" : {
@@ -595,7 +592,7 @@ Voor object projecties is een container naam vereist voor elke projectie, object
 
 ### <a name="relationships-among-table-object-and-file-projections"></a>Relaties tussen tabel-, object-en bestands projectie
 
-In dit voor beeld wordt ook een andere functie van projecties gemarkeerd. Als u meerdere typen projecties in hetzelfde projectie object definieert, is er een relatie binnen en over de verschillende typen (tabellen, objecten, bestanden), zodat u met een tabelrij voor een document kunt beginnen en alle OCR-tekst kunt vinden voor de afbeeldingen in dat document in de object projectie. 
+In dit voor beeld wordt ook een andere functie van projecties gemarkeerd. Door meerdere typen projecties te definiëren binnen hetzelfde projectie object, is er een relatie die binnen en tussen de verschillende typen (tabellen, objecten, bestanden) wordt weer gegeven. Zo kunt u beginnen met een tabelrij voor een document en alle OCR-tekst voor de afbeeldingen in dat document vinden in de object projectie. 
 
 Als u niet wilt dat de gegevens zijn gerelateerd, definieert u de projecties in verschillende projectie-objecten. Het volgende code fragment resulteert bijvoorbeeld in de tabellen die aan elkaar zijn gerelateerd, maar zonder relaties tussen de tabellen en de projecties (OCR-tekst). 
 
@@ -661,9 +658,9 @@ Bij het opbouwen van projecties van verschillende typen worden eerst bestands-en
 
 Bij het definiëren van een projectie zijn er enkele veelvoorkomende problemen die kunnen leiden tot onverwachte resultaten. Controleer deze problemen als de uitvoer in het kennis archief niet de verwachte resultaten heeft.
 
-+ Teken reeks verrijkingen worden niet omgezet in een geldige JSON. Wanneer teken reeksen worden verrijkt, `merged_content` bijvoorbeeld verrijkt met sleutel zinnen, wordt de verrijkte eigenschap weer gegeven `merged_content` als een onderliggend element van binnen de verrijkings structuur. De standaard weergave is geen juist opgemaakte JSON. Op de projectie tijd moet u de verrijking transformeren naar een geldig JSON-object met een naam en een waarde.
++ Teken reeks verrijkingen worden niet omgezet in een geldige JSON. Wanneer teken reeksen worden verrijkt, bijvoorbeeld verrijkt `merged_content` met sleutel zinnen, wordt de verrijkte eigenschap weer gegeven als een onderliggend element van `merged_content` binnen de verrijkings structuur. De standaard weergave is geen juist opgemaakte JSON. Op de projectie tijd moet u de verrijking transformeren naar een geldig JSON-object met een naam en een waarde.
 
-+ De ```/*``` aan het einde van een bronpad weglaten. Als de bron van een projectie is `/document/pbiShape/keyPhrases`, wordt de matrix met sleutel zinnen geprojecteerd als één object/rij. Stel in plaats daarvan het bronpad in `/document/pbiShape/keyPhrases/*` om één rij of een object voor elk van de sleutel zinnen te leveren.
++ De ```/*``` aan het einde van een bronpad weglaten. Als de bron van een projectie is `/document/pbiShape/keyPhrases` , wordt de matrix met sleutel zinnen geprojecteerd als één object/rij. Stel in plaats daarvan het bronpad in om `/document/pbiShape/keyPhrases/*` één rij of een object voor elk van de sleutel zinnen te leveren.
 
 + Syntaxis fouten van pad. Paden selecteren zijn hoofdletter gevoelig en kunnen leiden tot ontbrekende invoer waarschuwingen als u niet de exacte Case voor de selector gebruikt.
 
