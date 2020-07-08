@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/10/2020
 ms.openlocfilehash: 543bc29adc85bd767de9479607d067fadf7b0078
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75934705"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>MapReduce gebruiken met Apache Hadoop op HDInsight met SSH
@@ -42,7 +41,7 @@ Een Apache Hadoop cluster in HDInsight. Zie [Apache Hadoop clusters maken met be
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/WordCountOutput
     ```
 
-    Met deze opdracht start `wordcount` u de klasse, die deel uitmaakt van het `hadoop-mapreduce-examples.jar` bestand. Het document wordt `/example/data/gutenberg/davinci.txt` gebruikt als invoer en de uitvoer wordt opgeslagen in `/example/data/WordCountOutput`.
+    Met deze opdracht start u de `wordcount` klasse, die deel uitmaakt van het `hadoop-mapreduce-examples.jar` bestand. Het document wordt gebruikt `/example/data/gutenberg/davinci.txt` als invoer en de uitvoer wordt opgeslagen in `/example/data/WordCountOutput` .
 
     > [!NOTE]
     > Zie [MapReduce gebruiken in Apache Hadoop op HDInsight](hdinsight-use-mapreduce.md)voor meer informatie over deze MapReduce-taak en de voorbeeld gegevens.
@@ -62,7 +61,7 @@ Een Apache Hadoop cluster in HDInsight. Zie [Apache Hadoop clusters maken met be
     hdfs dfs -ls /example/data/WordCountOutput
     ```
 
-    Met deze opdracht worden twee bestanden `_SUCCESS` weer `part-r-00000`gegeven, en. Het `part-r-00000` bestand bevat de uitvoer voor deze taak.
+    Met deze opdracht worden twee bestanden weer gegeven, `_SUCCESS` en `part-r-00000` . Het `part-r-00000` bestand bevat de uitvoer voor deze taak.
 
     > [!NOTE]  
     > Sommige MapReduce-taken kunnen de resultaten splitsen over meerdere **deel-r-# # # #** -bestanden. Als dit het geval is, gebruikt u het achtervoegsel # # # # # om de volg orde van de bestanden aan te geven.
@@ -73,7 +72,7 @@ Een Apache Hadoop cluster in HDInsight. Zie [Apache Hadoop clusters maken met be
     hdfs dfs -cat /example/data/WordCountOutput/part-r-00000
     ```
 
-    Met deze opdracht wordt een lijst weer gegeven met de woorden die zijn opgenomen in het **wasbs://example/data/Gutenberg/DaVinci.txt** -bestand en het aantal keer dat elk woord is opgetreden. De volgende tekst is een voor beeld van de gegevens die in het bestand zijn opgenomen:
+    Met deze opdracht wordt een lijst weer gegeven met de woorden die zijn opgenomen in het **wasbs://example/data/Gutenberg/-davinci.txt** bestand en het aantal keer dat elk woord is opgetreden. De volgende tekst is een voor beeld van de gegevens die in het bestand zijn opgenomen:
 
     ```output
     wreathed        3

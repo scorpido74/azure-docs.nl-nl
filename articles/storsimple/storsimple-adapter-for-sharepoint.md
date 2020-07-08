@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: twooley
 ms.openlocfilehash: a841ce8b664389ccd8fdf55de9965f09412fecf5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75930208"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>De StorSimple-adapter voor share point installeren en configureren
@@ -170,7 +169,7 @@ Nadat u de StorSimple-adapter voor share point hebt geïnstalleerd, configureert
 ## <a name="configure-garbage-collection"></a>Garbagecollection configureren
 Wanneer objecten worden verwijderd uit een share point-site, worden ze niet automatisch verwijderd uit het RBS-archief volume. In plaats daarvan worden zwevende BLOBs uit het bestands archief verwijderd met een asynchroon, onderhouds programma voor de achtergrond. Systeem beheerders kunnen dit proces plannen om periodiek uit te voeren, of ze kunnen het altijd starten als dat nodig is.
 
-Dit onderhouds programma (Microsoft. data. SqlRemoteBlobs. maintainer. exe) wordt automatisch geïnstalleerd op alle share point WFE-servers en toepassings servers wanneer u RBS inschakelt. Het programma wordt geïnstalleerd op de volgende locatie: *opstart station*: \Program Files\Microsoft SQL Remote Blob Storage 10,50 \ maintainer \
+Dit onderhouds programma (Microsoft.Data.SqlRemoteBlobs.Maintainer.exe) wordt automatisch geïnstalleerd op alle share point WFE-servers en toepassings servers wanneer u RBS inschakelt. Het programma wordt geïnstalleerd op de volgende locatie: *opstart station*: \Program Files\Microsoft SQL Remote Blob Storage 10,50 \ maintainer \
 
 Zie voor meer informatie over het configureren en gebruiken van het onderhouds programma [resource structuur onderhouden in share Point Server 2013][8].
 

@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: 777d06670238a7625d190c92f78a55cd4794d226
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75894403"
 ---
 # <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>"NativeAzureFileSystem... RequestBodyTooLarge ' worden weer gegeven in Apache Spark streaming-app-logboek in HDInsight
@@ -32,13 +31,13 @@ In Spark 2,3 genereert elke Spark-app één Spark-gebeurtenis logboek bestand. H
 
 Er zijn drie oplossingen beschikbaar voor deze fout:
 
-* Verg root de blok grootte tot 100 MB. Wijzig in de gebruikers interface van Ambari de `fs.azure.write.request.size` eigenschap HDFS Configuration (of `Custom core-site` maak deze in de sectie). Stel de eigenschap in op een hogere waarde, bijvoorbeeld: 33554432. Sla de bijgewerkte configuratie op en start de betrokken onderdelen opnieuw op.
+* Verg root de blok grootte tot 100 MB. Wijzig in de gebruikers interface van Ambari de eigenschap HDFS Configuration `fs.azure.write.request.size` (of maak deze in de `Custom core-site` sectie). Stel de eigenschap in op een hogere waarde, bijvoorbeeld: 33554432. Sla de bijgewerkte configuratie op en start de betrokken onderdelen opnieuw op.
 
 * Stop de taak Spark-streaming regel matig en verzend deze opnieuw.
 
 * Gebruik HDFS om Spark-gebeurtenis logboeken op te slaan. Het gebruik van HDFS voor opslag kan leiden tot verlies van Spark-gebeurtenis gegevens tijdens het schalen van clusters of Azure-upgrades.
 
-    1. Wijzigingen aanbrengen `spark.eventlog.dir` in `spark.history.fs.logDirectory` en via de Ambari-gebruikers interface:
+    1. Wijzigingen aanbrengen in `spark.eventlog.dir` en `spark.history.fs.logDirectory` via de Ambari-gebruikers interface:
 
         ```
         spark.eventlog.dir = hdfs://mycluster/hdp/spark2-events
@@ -62,6 +61,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
 
 * Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

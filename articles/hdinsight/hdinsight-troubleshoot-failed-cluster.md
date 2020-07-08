@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: be991b63784a2c72a51bfbdc8506f3b4695ed6c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75895321"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Problemen met een trage of niet werkende taak in een HDInsight-cluster oplossen
@@ -111,7 +110,7 @@ In de volgende secties wordt beschreven hoe u de status van elk knoop punt en va
 
 ### <a name="get-a-snapshot-of-the-cluster-health-using-the-ambari-ui-dashboard"></a>Een moment opname van de cluster status ophalen met behulp van het dash board Ambari-gebruikers interface
 
-Het [Ambari-dash board van de gebruikers interface](#view-cluster-configuration-settings-with-the-ambari-ui) (`https://<clustername>.azurehdinsight.net`) biedt een overzicht van de cluster status, zoals uptime, geheugen, netwerk-en CPU-gebruik, HDFS-schijf gebruik, enzovoort. Gebruik de sectie hosts van Ambari om resources op hostniveau weer te geven. U kunt ook services stoppen en opnieuw starten.
+Het [Ambari-dash board van de gebruikers interface](#view-cluster-configuration-settings-with-the-ambari-ui) ( `https://<clustername>.azurehdinsight.net` ) biedt een overzicht van de cluster status, zoals uptime, geheugen, netwerk-en CPU-gebruik, HDFS-schijf gebruik, enzovoort. Gebruik de sectie hosts van Ambari om resources op hostniveau weer te geven. U kunt ook services stoppen en opnieuw starten.
 
 ### <a name="check-your-webhcat-service"></a>Controleer uw WebHCat-service
 
@@ -129,26 +128,26 @@ In Ambari wordt een waarschuwing weer gegeven met de hosts waarop de WebHCat-ser
 
 ![Apache Ambari WebHCat-server opnieuw starten](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png)
 
-Als er nog geen WebHCat-server beschikbaar is, controleert u het operations-logboek op fout berichten. Controleer de en `stderr` `stdout` de bestanden waarnaar wordt verwezen in het knoop punt voor meer informatie.
+Als er nog geen WebHCat-server beschikbaar is, controleert u het operations-logboek op fout berichten. Controleer de `stderr` en de `stdout` bestanden waarnaar wordt verwezen in het knoop punt voor meer informatie.
 
 #### <a name="webhcat-times-out"></a>WebHCat time-out
 
-Als er een time-out optreedt voor An HDInsight gateway, duurt het `502 BadGateway`langer dan twee minuten om te retour neren. WebHCat queryeert garen Services voor taak statussen, en als GARENs langer dan twee minuten duren, kan de aanvraag een time-out hebben.
+Als er een time-out optreedt voor An HDInsight gateway, duurt het langer dan twee minuten om te retour neren `502 BadGateway` . WebHCat queryeert garen Services voor taak statussen, en als GARENs langer dan twee minuten duren, kan de aanvraag een time-out hebben.
 
-In dit geval raadpleegt u de volgende logboeken `/var/log/webhcat` in de map:
+In dit geval raadpleegt u de volgende logboeken in de `/var/log/webhcat` map:
 
 * **webhcat. log** is het log4j-logboek waarnaar de server logboeken schrijft
 * **webhcat-console. log** is de stdout van de server wanneer deze wordt gestart
 * **webhcat-console-error. log** is de stderr van het Server proces
 
 > [!NOTE]  
-> Elke `webhcat.log` wordt elke dag doorgevoerd, waarbij bestanden worden `webhcat.log.YYYY-MM-DD`gegenereerd met de naam. Selecteer het juiste bestand voor het tijds bereik dat u wilt onderzoeken.
+> Elke `webhcat.log` wordt elke dag doorgevoerd, waarbij bestanden worden gegenereerd met de naam `webhcat.log.YYYY-MM-DD` . Selecteer het juiste bestand voor het tijds bereik dat u wilt onderzoeken.
 
 In de volgende secties worden enkele mogelijke oorzaken voor WebHCat-outs beschreven.
 
 ##### <a name="webhcat-level-timeout"></a>WebHCat-out
 
-Wanneer WebHCat wordt geladen en er meer dan 10 open sockets zijn, duurt het langer om nieuwe socket verbindingen tot stand te brengen, wat kan leiden tot een time-out. Als u de netwerk verbindingen van en naar WebHCat wilt weer `netstat` geven, gebruikt u op de huidige actieve hoofd knooppunt:
+Wanneer WebHCat wordt geladen en er meer dan 10 open sockets zijn, duurt het langer om nieuwe socket verbindingen tot stand te brengen, wat kan leiden tot een time-out. Als u de netwerk verbindingen van en naar WebHCat wilt weer geven, gebruikt u `netstat` op de huidige actieve hoofd knooppunt:
 
 ```bash
 netstat | grep 30111
@@ -184,7 +183,7 @@ Op het niveau van de GARENs zijn er twee soorten time-outs:
 
     * Alle taken weer geven: dit is een tijdrovende oproep. Met deze aanroep worden de toepassingen van de garen-Resource Manager opgesomd en voor elke voltooide toepassing wordt de status opgehaald van het garen JobHistoryServer. Met een hoger aantal taken kan deze aanroep een time-out hebben.
 
-    * Taken weer geven die ouder zijn dan zeven dagen: het HDInsight-garen JobHistoryServer is zo geconfigureerd dat de voltooide taak`mapreduce.jobhistory.max-age-ms` gegevens zeven dagen (waarde) behouden blijven. Het opsommen van verwijderde taken resulteert in een time-out.
+    * Taken weer geven die ouder zijn dan zeven dagen: het HDInsight-garen JobHistoryServer is zo geconfigureerd dat de voltooide taak gegevens zeven dagen ( `mapreduce.jobhistory.max-age-ms` waarde) behouden blijven. Het opsommen van verwijderde taken resulteert in een time-out.
 
 U kunt deze problemen als volgt vaststellen:
 
@@ -202,7 +201,7 @@ U kunt deze problemen als volgt vaststellen:
 
     Er zijn mogelijk situaties waarin interacties met WebHCat zijn geslaagd, maar de taken mislukken.
 
-    Templeton verzamelt de taak console-uitvoer `stderr` als `statusdir`in, wat vaak handig is voor het oplossen van problemen. `stderr`bevat de toepassings-id van de GARENs van de werkelijke query.
+    Templeton verzamelt de taak console-uitvoer als `stderr` in `statusdir` , wat vaak handig is voor het oplossen van problemen. `stderr`bevat de toepassings-id van de GARENs van de werkelijke query.
 
 ## <a name="step-4-review-the-environment-stack-and-versions"></a>Stap 4: de stack en versies van de omgeving controleren
 
@@ -214,7 +213,7 @@ De pagina Ambari UI- **stack en-versie** bevat informatie over de configuratie v
 
 Er zijn veel soorten logboeken die worden gegenereerd op basis van de vele services en onderdelen waaruit een HDInsight-cluster bestaat. [WebHCat-logboek bestanden](#check-your-webhcat-service) worden eerder beschreven. Er zijn verschillende andere nuttige logboek bestanden die u kunt onderzoeken om problemen met uw cluster op te lossen, zoals wordt beschreven in de volgende secties.
 
-* HDInsight-clusters bestaan uit verschillende knoop punten, waarvan de meeste taken taken kunnen uitvoeren. Taken worden gelijktijdig uitgevoerd, maar logboek bestanden kunnen alleen lineaire resultaten weer geven. HDInsight voert nieuwe taken uit en beëindigt andere die niet eerst zijn voltooid. Al deze activiteit wordt geregistreerd bij de `stderr` - `syslog` en-bestanden.
+* HDInsight-clusters bestaan uit verschillende knoop punten, waarvan de meeste taken taken kunnen uitvoeren. Taken worden gelijktijdig uitgevoerd, maar logboek bestanden kunnen alleen lineaire resultaten weer geven. HDInsight voert nieuwe taken uit en beëindigt andere die niet eerst zijn voltooid. Al deze activiteit wordt geregistreerd bij de- `stderr` en- `syslog` bestanden.
 
 * In de script actie logboek bestanden worden fouten of onverwachte configuratie wijzigingen weer gegeven tijdens het maken van het cluster.
 
@@ -224,7 +223,7 @@ Er zijn veel soorten logboeken die worden gegenereerd op basis van de vele servi
 
 Met HDInsight- [script acties](hdinsight-hadoop-customize-cluster-linux.md) worden scripts hand matig of indien opgegeven in het cluster uitgevoerd. Script acties kunnen bijvoorbeeld worden gebruikt voor het installeren van extra software op het cluster of voor het wijzigen van de configuratie-instellingen van de standaard waarden. Het controleren van de script actie logboeken kan inzicht geven in fouten die zijn opgetreden tijdens het instellen en configureren van het cluster.  U kunt de status van een script actie weer geven door de **OPS** -knop in de Ambari-gebruikers interface te selecteren of door de logboeken te openen vanuit het standaard opslag account.
 
-De script actie logboeken bevinden `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE` zich in de map.
+De script actie logboeken bevinden zich in de `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE` map.
 
 ### <a name="view-hdinsight-logs-using-ambari-quick-links"></a>HDInsight-logboeken weer geven met Ambari-snelle koppelingen
 

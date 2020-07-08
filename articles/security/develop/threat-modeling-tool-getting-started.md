@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
 ms.openlocfilehash: 1454826095bcced9b20935405c0befd5a1ed1ddd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68728222"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Aan de slag met de Threat Modeling Tool
@@ -43,7 +42,7 @@ Wanneer u de Threat Modeling Tool start, ziet u enkele dingen, zoals in de afbee
 
 | Onderdeel                                   | Details                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Feedback, suggesties en problemen knop** | Hiermee gaat u naar het **[MSDN-forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=sdlprocess)** voor alle zaken SDL. Het biedt u de mogelijkheid om te lezen wat andere gebruikers doen, samen met tijdelijke oplossingen en aanbevelingen. Als u nog steeds niet kunt vinden wat u zoekt, kunt tmtextsupport@microsoft.com u een e-mail sturen naar ons ondersteunings team om u te helpen                                                                                                                            |
+| **Feedback, suggesties en problemen knop** | Hiermee gaat u naar het **[MSDN-forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=sdlprocess)** voor alle zaken SDL. Het biedt u de mogelijkheid om te lezen wat andere gebruikers doen, samen met tijdelijke oplossingen en aanbevelingen. Als u nog steeds niet kunt vinden wat u zoekt, kunt u een e-mail sturen tmtextsupport@microsoft.com naar ons ondersteunings team om u te helpen                                                                                                                            |
 | **Een model maken**                          | Hiermee opent u een leeg canvas om uw diagram te tekenen. Zorg ervoor dat u selecteert welke sjabloon u voor uw model wilt gebruiken                                                                                                                                                                                                                                                                                                                                                                       |
 | **Sjabloon voor nieuwe modellen**                 | Voordat u een model maakt, moet u selecteren welke sjabloon u wilt gebruiken. Onze hoofd sjabloon is de Azure Threat model-sjabloon, die Azure-specifieke stencils, bedreigingen en oplossingen bevat. Voor algemene modellen selecteert u de SDL TM-Knowledge Base in de vervolg keuzelijst. Wilt u uw eigen sjabloon maken of een nieuwe opgeven voor alle gebruikers? Bekijk onze github-pagina voor **[sjabloon opslagplaatsen](https://github.com/Microsoft/threat-modeling-templates)** voor meer informatie                              |
 | **Een model openen**                            | <p>Hiermee opent u eerder opgeslagen bedreigings modellen. De functie recent geopende modellen is handig als u uw meest recente bestanden moet openen. Wanneer u de muis aanwijzer over de selectie houdt, vindt u twee manieren om modellen te openen:</p><p><ul><li>Open op deze computer: klassieke manier om een bestand te openen met behulp van lokale opslag</li><li>Openen vanuit OneDrive: teams kunnen mappen in OneDrive gebruiken om al hun bedreigings modellen op één locatie op te slaan en te delen om de productiviteit en samen werking te verg Roten</li></ul></p> |
@@ -144,4 +143,4 @@ De aanpak van bedreigings modellen die we hier hebben gepresenteerd, is aanzienl
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Stuur uw vragen, opmerkingen en problemen naar tmtextsupport@microsoft.com. **[Down load](https://aka.ms/threatmodelingtool)** de Threat Modeling tool om aan de slag te gaan.
+Stuur uw vragen, opmerkingen en problemen naar tmtextsupport@microsoft.com . **[Down load](https://aka.ms/threatmodelingtool)** de Threat Modeling tool om aan de slag te gaan.

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: dekapur
 ms.openlocfilehash: f9bee35ee8e82070b4cf601139b471562ba5e10b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75934212"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Knooppunten toevoegen aan of verwijderen uit een zelfstandig Service Fabric-cluster dat wordt uitgevoerd op Windows Server
@@ -29,7 +28,7 @@ Nadat u [uw zelfstandige service Fabric cluster op Windows Server-computers hebt
 
 5. Voer Power shell uit met verhoogde bevoegdheden en ga naar de locatie van het uitgepakte pakket.
 
-6. Voer het script *AddNode. ps1* uit met de para meters die het nieuwe knoop punt beschrijven dat moet worden toegevoegd. In het volgende voor beeld wordt een nieuw knoop punt met de naam VM5, met het type NodeType0 en IP-adres 182.17.34.52, toegevoegd aan UD1 en FD:/DC1/R0. `ExistingClusterConnectionEndPoint`is een verbindings eindpunt voor een knoop punt dat al aanwezig is in het bestaande cluster. Dit kan het IP-adres zijn van *een wille keurig* knoop punt in het cluster. 
+6. Voer het *AddNode.ps1* script uit met de para meters die het nieuwe knoop punt beschrijven dat moet worden toegevoegd. In het volgende voor beeld wordt een nieuw knoop punt met de naam VM5, met het type NodeType0 en IP-adres 182.17.34.52, toegevoegd aan UD1 en FD:/DC1/R0. `ExistingClusterConnectionEndPoint`is een verbindings eindpunt voor een knoop punt dat al aanwezig is in het bestaande cluster. Dit kan het IP-adres zijn van *een wille keurig* knoop punt in het cluster. 
 
    Niet beveiligd (prototypen):
 
@@ -69,7 +68,7 @@ Nadat u [uw zelfstandige service Fabric cluster op Windows Server-computers hebt
    U kunt de voortgang van de upgrade op Service Fabric Explorer bewaken. U kunt ook [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)uitvoeren.
 
 ### <a name="add-nodes-to-clusters-configured-with-windows-security-using-gmsa"></a>Knoop punten toevoegen aan clusters die zijn geconfigureerd met Windows-beveiliging met behulp van gMSA
-Voor clusters die zijn geconfigureerd met een door een groep beheerd servicehttps://technet.microsoft.com/library/hh831782.aspx)account (gMSA) (kan een nieuw knoop punt worden toegevoegd met behulp van een configuratie-upgrade:
+Voor clusters die zijn geconfigureerd met een door een groep beheerd service account (gMSA) ( https://technet.microsoft.com/library/hh831782.aspx) kan een nieuw knoop punt worden toegevoegd met behulp van een configuratie-upgrade:
 1. Voer [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) uit op een van de bestaande knoop punten om het meest recente configuratie bestand op te halen en Voeg details toe over het nieuwe knoop punt dat u wilt toevoegen in de sectie ' knoop punten '. Zorg ervoor dat het nieuwe knoop punt deel uitmaakt van hetzelfde beheerde account van de groep. Dit account moet een beheerder op alle computers zijn.
 
     ```
@@ -127,7 +126,7 @@ Voeg de para meter ' NodesToBeRemoved ' toe aan de sectie ' Setup ' in de sectie
     U kunt de voortgang van de upgrade op Service Fabric Explorer bewaken. U kunt ook [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)uitvoeren.
 
 > [!NOTE]
-> Het verwijderen van knoop punten kan meerdere upgrades initiëren. Sommige knoop punten zijn gemarkeerd `IsSeedNode=”true”` met tag en kunnen worden geïdentificeerd door het cluster manifest te doorzoeken `Get-ServiceFabricClusterManifest`met. Het verwijderen van deze knoop punten kan langer duren dan andere omdat de Seed-knoop punten in dergelijke scenario's moeten worden verplaatst. Het cluster moet mini maal drie knoop punten van het primaire knooppunt type onderhouden.
+> Het verwijderen van knoop punten kan meerdere upgrades initiëren. Sommige knoop punten zijn gemarkeerd met `IsSeedNode=”true”` tag en kunnen worden geïdentificeerd door het cluster manifest te doorzoeken met `Get-ServiceFabricClusterManifest` . Het verwijderen van deze knoop punten kan langer duren dan andere omdat de Seed-knoop punten in dergelijke scenario's moeten worden verplaatst. Het cluster moet mini maal drie knoop punten van het primaire knooppunt type onderhouden.
 > 
 > 
 

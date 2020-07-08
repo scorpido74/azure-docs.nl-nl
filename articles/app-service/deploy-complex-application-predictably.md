@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: 62d0bf776b2d0c97d95b992ed6a1fd2a356e467a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75967383"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Micro services zoals verwacht inrichten en implementeren in azure
@@ -45,7 +44,7 @@ Zie [Azure PowerShell gebruiken met Azure Resource Manager](../powershell-azure-
 Met dit [Preview-programma](https://resources.azure.com) kunt u de JSON-definities van alle resource groepen in uw abonnement en de afzonderlijke resources verkennen. In het hulp programma kunt u de JSON-definities van een resource bewerken, een volledige hiërarchie van resources verwijderen en nieuwe resources maken.  De informatie die beschikbaar is in dit hulp programma is zeer nuttig voor het ontwerpen van sjablonen, omdat u kunt zien welke eigenschappen u moet instellen voor een bepaald type resource, de juiste waarden, enzovoort. U kunt zelfs uw resource groep in [Azure Portal](https://portal.azure.com/)maken en vervolgens de bijbehorende JSON-definities in het Explorer-hulp programma inspecteren om u te helpen bij het Templatize van de resource groep.
 
 ### <a name="deploy-to-azure-button"></a>De knop Implementeren in Azure
-Als u GitHub gebruikt voor broncode beheer, kunt u een [knop voor implementeren naar Azure](https://azure.microsoft.com/blog/2014/11/13/deploy-to-azure-button-for-azure-websites-2/) in uw Leesmij-bestand plaatsen. MD, waarmee de gebruikers interface voor het maken van een inschakel functie kan worden geïmplementeerd in Azure. Hoewel u dit kunt doen voor elke eenvoudige app, kunt u deze uitbreiden om het implementeren van een volledige resource groep mogelijk te maken door een azuredeploy. JSON-bestand in de hoofdmap van de opslag plaats te plaatsen. Dit JSON-bestand, dat de sjabloon resource groep bevat, wordt gebruikt door de knop implementeren naar Azure om de resource groep te maken. Zie voor een voor beeld het [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) -voor beeld, dat u in deze zelf studie gaat gebruiken.
+Als u GitHub gebruikt voor broncode beheer, kunt u een [knop voor implementeren naar Azure](https://azure.microsoft.com/blog/2014/11/13/deploy-to-azure-button-for-azure-websites-2/) in uw Leesmij-bestand plaatsen. MD, waarmee de gebruikers interface voor het maken van een inschakel functie kan worden geïmplementeerd in Azure. Hoewel u dit kunt doen voor elke eenvoudige app, kunt u deze uitbreiden om het implementeren van een hele resource groep mogelijk te maken door een azuredeploy.jsin te voegen in de hoofdmap van de opslag plaats. Dit JSON-bestand, dat de sjabloon resource groep bevat, wordt gebruikt door de knop implementeren naar Azure om de resource groep te maken. Zie voor een voor beeld het [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) -voor beeld, dat u in deze zelf studie gaat gebruiken.
 
 ## <a name="get-the-sample-resource-group-template"></a>De voorbeeld sjabloon voor de resource groep ophalen
 Nu gaan we hier meteen aan de slag.
@@ -55,7 +54,7 @@ Nu gaan we hier meteen aan de slag.
 3. U wordt naar de site [Deploy-to-Azure](https://deploy.azure.com) geleid en u hebt gevraagd om implementatie parameters in te voeren. U ziet dat de meeste velden zijn gevuld met de naam van de opslag plaats en enkele wille keurige teken reeksen. U kunt alle velden wijzigen als u wilt, maar de enige dingen die u moet invoeren zijn de SQL Server beheerders aanmelding en het wacht woord. Klik vervolgens op **volgende**.
    
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-1-deploybuttonui.png)
-4. Klik vervolgens op **implementeren** om het implementatie proces te starten. Zodra het proces is uitgevoerd om te worden voltooid http://todoapp, klikt u op de koppeling *xxxx*. azurewebsites.net om door de geïmplementeerde toepassing te bladeren. 
+4. Klik vervolgens op **implementeren** om het implementatie proces te starten. Zodra het proces is uitgevoerd om te worden voltooid, klikt u op de http://todoapp koppeling *XXXX*. azurewebsites.net om door de geïmplementeerde toepassing te bladeren. 
    
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-2-deployprogress.png)
    
@@ -71,24 +70,24 @@ Nu gaan we hier meteen aan de slag.
 Alles wat u zojuist hebt gezien in een paar korte minuten is een volledig geïmplementeerde toepassing met twee toepassingen, met alle onderdelen, afhankelijkheden, instellingen, data base en doorlopende publicatie, ingesteld met een automatische indeling in Azure Resource Manager. Dit alles is op twee dingen gedaan:
 
 * De knop implementeren naar Azure
-* azuredeploy. json in de opslag plaats root
+* azuredeploy.jsin de hoofdmap opslag plaats
 
 U kunt dezelfde toepassing tien tallen, honderden of duizenden keren implementeren en elke keer exact dezelfde configuratie hebben. De Herhaal baarheid en voorspel baarheid van deze aanpak kunt u grootschalige toepassingen implementeren met gemak en vertrouwen.
 
-## <a name="examine-or-edit-azuredeployjson"></a>Bekijk (of bewerk) AZUREDEPLOY. JSON
+## <a name="examine-or-edit-azuredeployjson"></a>AZUREDEPLOY.JSbekijken (of bewerken) op
 Laten we nu eens kijken hoe de GitHub-opslag plaats is ingesteld. U gebruikt de JSON-editor in de Azure .NET SDK, dus als u [Azure .net sdk 2,6](https://azure.microsoft.com/downloads/)nog niet hebt geïnstalleerd, doet u dat nu.
 
 1. Kloon de [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) -opslag plaats met uw favoriete Git-hulp programma. In de onderstaande scherm afbeelding ziet u dit in de team Verkenner van Visual Studio 2013.
    
    ![](./media/app-service-deploy-complex-application-predictably/examinejson-1-vsclone.png)
-2. Open in de hoofdmap van de opslag plaats azuredeploy. json in Visual Studio. Als u het deel venster JSON-overzicht niet ziet, moet u de Azure .NET SDK installeren.
+2. Open in de hoofdmap van de opslag plaats azuredeploy.jsin Visual Studio. Als u het deel venster JSON-overzicht niet ziet, moet u de Azure .NET SDK installeren.
    
    ![](./media/app-service-deploy-complex-application-predictably/examinejson-2-vsjsoneditor.png)
 
 Ik wil niet alle details van de JSON-indeling beschrijven, maar de sectie [meer resources](#resources) bevat koppelingen voor het leren van de taal van de sjabloon voor de resource groep. Hier ziet u nu de interessante functies waarmee u aan de slag kunt met het maken van uw eigen aangepaste sjabloon voor app-implementatie.
 
 ### <a name="parameters"></a>Parameters
-Bekijk het gedeelte para meters om te zien dat de meeste van deze para meters de knop **implementeren naar Azure** u vraagt om in te voeren. De site achter de knop **implementeren naar Azure** vult de gebruikers interface in met behulp van de para meters die zijn gedefinieerd in azuredeploy. json. Deze para meters worden gebruikt in de resource definities, zoals resource namen, eigenschaps waarden enzovoort.
+Bekijk het gedeelte para meters om te zien dat de meeste van deze para meters de knop **implementeren naar Azure** u vraagt om in te voeren. De site achter de knop **implementeren naar Azure** vult de gebruikers interface in met behulp van de para meters die zijn gedefinieerd in azuredeploy.jsop. Deze para meters worden gebruikt in de resource definities, zoals resource namen, eigenschaps waarden enzovoort.
 
 ### <a name="resources"></a>Resources
 In het knoop punt resources ziet u dat er vier resources op het hoogste niveau zijn gedefinieerd, met inbegrip van een SQL Server exemplaar, een App Service plan en twee apps. 
@@ -98,10 +97,10 @@ Laten we beginnen met een eenvoudige resource op hoofd niveau in de JSON. Klik i
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-3-appserviceplan.png)
 
-Houd er rekening `type` mee dat met het element de teken reeks voor een app service plan wordt opgegeven (dit is een lange, lange tijd geleden een server farm genoemd) en andere elementen en eigenschappen worden gevuld met de para meters die zijn gedefinieerd in het JSON-bestand en deze resource heeft geen geneste resources.
+Houd er rekening mee dat met het `type` element de teken reeks voor een app service plan wordt opgegeven (dit is een lange, lange tijd geleden een server farm genoemd) en andere elementen en eigenschappen worden gevuld met de para meters die zijn gedefinieerd in het JSON-bestand en deze resource heeft geen geneste resources.
 
 > [!NOTE]
-> Houd er rekening mee dat de `apiVersion` waarde van Azure aangeeft welke versie van de rest API de JSON-resource definitie moet gebruiken. Dit kan van invloed zijn op hoe de resource moet `{}`worden geformatteerd in de. 
+> Houd er rekening mee dat de waarde van `apiVersion` Azure aangeeft welke versie van de rest API de JSON-resource definitie moet gebruiken. Dit kan van invloed zijn op hoe de resource moet worden geformatteerd in de `{}` . 
 > 
 > 
 
@@ -113,11 +112,11 @@ Klik vervolgens op de SQL Server Resource met de naam **sqlserver** in de JSON-o
 Let op het volgende over de gemarkeerde JSON-code:
 
 * Het gebruik van para meters zorgt ervoor dat de gemaakte bronnen worden benoemd en geconfigureerd op een manier waardoor ze consistent zijn met elkaar.
-* De SQLServer-resource heeft twee geneste resources, waarbij elk een `type`andere waarde is voor.
-* De geneste `“resources”: […]`resources in, waarbij de data base en de firewall regels zijn gedefinieerd `dependsOn` , hebben een-element dat de resource-id van de sqlserver-resource op hoofd niveau specificeert. Dit geeft aan Azure Resource Manager, ' voordat u deze resource maakt, moet deze andere resource al bestaan. en als de andere bron in de sjabloon is gedefinieerd, moet u die eerst een maken.
+* De SQLServer-resource heeft twee geneste resources, waarbij elk een andere waarde is voor `type` .
+* De geneste resources in `“resources”: […]` , waarbij de data base en de firewall regels zijn gedefinieerd, hebben een `dependsOn` -element dat de resource-id van de sqlserver-resource op hoofd niveau specificeert. Dit geeft aan Azure Resource Manager, ' voordat u deze resource maakt, moet deze andere resource al bestaan. en als de andere bron in de sjabloon is gedefinieerd, moet u die eerst een maken.
   
   > [!NOTE]
-  > Zie [Azure Resource Manager-sjabloon functies](../azure-resource-manager/templates/template-functions-resource.md#resourceid)voor meer informatie `resourceId()` over het gebruik van de functie.
+  > `resourceId()`Zie [Azure Resource Manager-sjabloon functies](../azure-resource-manager/templates/template-functions-resource.md#resourceid)voor meer informatie over het gebruik van de functie.
   > 
   > 
 * Het effect van het `dependsOn` element is dat Azure Resource Manager kan weten welke resources parallel kunnen worden gemaakt en welke resources opeenvolgend moeten worden gemaakt. 
@@ -130,12 +129,12 @@ De app is afhankelijk van twee verschillende bronnen. Dit betekent dat Azure Res
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-5-webapproot.png)
 
-##### <a name="app-settings"></a>Instellingen voor apps
+##### <a name="app-settings"></a>App-instellingen
 De app-instellingen worden ook gedefinieerd als een geneste resource.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-6-webappsettings.png)
 
-In het `properties` element voor `config/appsettings`hebt u twee app-instellingen in de indeling `"<name>" : "<value>"`.
+In het `properties` element voor `config/appsettings` hebt u twee app-instellingen in de indeling `"<name>" : "<value>"` .
 
 * `PROJECT`is een [KUDU-instelling](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) die de Azure-implementatie vertelt die in een Visual Studio-oplossing met meerdere projecten moet worden gebruikt. Ik laat u later weten hoe broncode beheer is geconfigureerd, maar omdat de ToDoApp-code in een multi-project Visual Studio-oplossing is, is deze instelling vereist.
 * `clientUrl`is een app-instelling die wordt gebruikt door de toepassings code.
@@ -145,24 +144,24 @@ De verbindings reeksen worden ook gedefinieerd als een geneste resource.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
 
-In het `properties` element voor `config/connectionstrings`wordt elke Connection String ook gedefinieerd als een naam: waardepaar, met de specifieke indeling van `"<name>" : {"value": "…", "type": "…"}`. Voor het `type` element zijn `MySql`mogelijke waarden, `SQLServer` `SQLAzure`, en. `Custom`
+In het `properties` element voor `config/connectionstrings` wordt elke Connection String ook gedefinieerd als een naam: waardepaar, met de specifieke indeling van `"<name>" : {"value": "…", "type": "…"}` . Voor het `type` element zijn mogelijke waarden `MySql` ,, `SQLServer` `SQLAzure` en `Custom` .
 
 > [!TIP]
-> Voor een definitieve lijst van de connection string typen voert u de volgende opdracht uit in Azure PowerShell \[: Enum]:: GetNames ("micro soft. WindowsAzure. commands. Utilities. websites. Services. webentities. DatabaseType")
+> Voor een definitieve lijst van de connection string typen voert u de volgende opdracht uit in Azure PowerShell: \[ Enum]:: GetNames ("micro soft. WindowsAzure. commands. Utilities. websites. Services. webentities. DatabaseType")
 > 
 > 
 
 ##### <a name="source-control"></a>Broncodebeheer
-De instellingen voor broncode beheer worden ook gedefinieerd als een geneste resource. Azure Resource Manager maakt gebruik van deze resource om doorlopende publicatie te `IsManualIntegration` configureren (Zie aanvullende informatie over de toekomst) en om de implementatie van toepassings code automatisch uit te voeren tijdens de verwerking van het JSON-bestand.
+De instellingen voor broncode beheer worden ook gedefinieerd als een geneste resource. Azure Resource Manager maakt gebruik van deze resource om doorlopende publicatie te configureren (Zie aanvullende informatie over de `IsManualIntegration` toekomst) en om de implementatie van toepassings code automatisch uit te voeren tijdens de verwerking van het JSON-bestand.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-8-webappsourcecontrol.png)
 
 `RepoUrl`en `branch` moet goed intuïtief zijn en moet verwijzen naar de Git-opslag plaats en de naam van de vertakking waaruit u wilt publiceren. Deze worden vervolgens gedefinieerd door invoer parameters. 
 
-`dependsOn` Houd er rekening mee dat, naast de app-resource zelf, `sourcecontrols/web` ook afhankelijk is van `config/appsettings` en `config/connectionstrings`. Dit komt doordat het `sourcecontrols/web` Azure-implementatie proces automatisch probeert om de toepassings code te implementeren, te bouwen en te starten, omdat er eenmaal is geconfigureerd. Door deze afhankelijkheid in te voegen, kunt u er daarom voor zorgen dat de toepassing toegang heeft tot de vereiste app-instellingen en verbindings reeksen voordat de toepassings code wordt uitgevoerd. 
+Houd er rekening mee `dependsOn` dat, naast de app-resource zelf, `sourcecontrols/web` ook afhankelijk is van `config/appsettings` en `config/connectionstrings` . Dit komt doordat `sourcecontrols/web` het Azure-implementatie proces automatisch probeert om de toepassings code te implementeren, te bouwen en te starten, omdat er eenmaal is geconfigureerd. Door deze afhankelijkheid in te voegen, kunt u er daarom voor zorgen dat de toepassing toegang heeft tot de vereiste app-instellingen en verbindings reeksen voordat de toepassings code wordt uitgevoerd. 
 
 > [!NOTE]
-> Houd er rekening `IsManualIntegration` mee dat is `true`ingesteld op. Deze eigenschap is nodig in deze zelf studie omdat u geen eigenaar bent van de GitHub-opslag plaats en daarom geen machtiging voor Azure kunt verlenen voor het configureren van continue publicatie vanuit [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) (d.w.z. push-updates voor automatische opslag plaatsen naar Azure). U kunt de standaard waarde `false` voor de opgegeven opslag plaats alleen gebruiken als u de GitHub-referenties van de eigenaar eerder hebt geconfigureerd in de [Azure Portal](https://portal.azure.com/) . Met andere woorden, als u broncode beheer hebt ingesteld op GitHub of BitBucket voor elke app in de [Azure-Portal](https://portal.azure.com/) , met behulp van uw gebruikers referenties, onthouden Azure de referenties en gebruiken ze telkens wanneer u in de toekomst een app uit github of BitBucket implementeert. Als u dit echter nog niet hebt gedaan, mislukt de implementatie van de JSON-sjabloon wanneer Azure Resource Manager probeert de instellingen voor broncode beheer van de app te configureren, omdat deze niet kan worden aangemeld bij GitHub of BitBucket met de referenties van de opslagplaats eigenaar.
+> Houd er rekening mee dat `IsManualIntegration` is ingesteld op `true` . Deze eigenschap is nodig in deze zelf studie omdat u geen eigenaar bent van de GitHub-opslag plaats en daarom geen machtiging voor Azure kunt verlenen voor het configureren van continue publicatie vanuit [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) (d.w.z. push-updates voor automatische opslag plaatsen naar Azure). U kunt de standaard waarde `false` voor de opgegeven opslag plaats alleen gebruiken als u de GitHub-referenties van de eigenaar eerder hebt geconfigureerd in de [Azure Portal](https://portal.azure.com/) . Met andere woorden, als u broncode beheer hebt ingesteld op GitHub of BitBucket voor elke app in de [Azure-Portal](https://portal.azure.com/) , met behulp van uw gebruikers referenties, onthouden Azure de referenties en gebruiken ze telkens wanneer u in de toekomst een app uit github of BitBucket implementeert. Als u dit echter nog niet hebt gedaan, mislukt de implementatie van de JSON-sjabloon wanneer Azure Resource Manager probeert de instellingen voor broncode beheer van de app te configureren, omdat deze niet kan worden aangemeld bij GitHub of BitBucket met de referenties van de opslagplaats eigenaar.
 > 
 > 
 
@@ -180,17 +179,17 @@ Als u inzoomt op een app, kunt u de details van de app-configuratie bekijken, ve
 Opnieuw, de geneste resources moeten een hiërarchie hebben die lijkt op die in het JSON-sjabloon bestand en u ziet dat de app-instellingen, verbindings reeksen, enzovoort, goed worden weer gegeven in het JSON-deel venster. Het ontbreken van instellingen kan duiden op een probleem met uw JSON-bestand en helpt u bij het oplossen van problemen met het JSON-sjabloon bestand.
 
 ## <a name="deploy-the-resource-group-template-yourself"></a>Zelf de sjabloon voor de resource groep implementeren
-De knop **implementeren in azure** is geweldig, maar u kunt de sjabloon voor de resource groep in azuredeploy. json alleen implementeren als u azuredeploy. json al hebt gepusht naar github. De Azure .NET SDK biedt ook de hulp middelen waarmee u elk JSON-sjabloon bestand rechtstreeks vanaf uw lokale computer kunt implementeren. Volg hiervoor de volgende stappen:
+De knop **implementeren in azure** is geweldig, maar u kunt de sjabloon voor de resource groep alleen in azuredeploy.jsalleen implementeren als u al hebt gepusht azuredeploy.jsop github. De Azure .NET SDK biedt ook de hulp middelen waarmee u elk JSON-sjabloon bestand rechtstreeks vanaf uw lokale computer kunt implementeren. Volg hiervoor de volgende stappen:
 
-1. Klik in Visual Studio op **bestand** > **Nieuw** > **project**.
-2. Klik op **Visual C#** > **Cloud** > **Azure resource groep**en klik vervolgens op **OK**.
+1. Klik in Visual Studio op **File** > **New** > **Project**.
+2. Klik op **Visual C#**  >  **Cloud**  >  **Azure resource groep**en klik vervolgens op **OK**.
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
 3. Selecteer in **Azure-sjabloon selecteren**de optie **lege sjabloon** en klik op **OK**.
-4. Sleep azuredeploy. json naar de **sjabloon** map van het nieuwe project.
+4. Sleep azuredeploy.jsnaar de map met **sjablonen** van het nieuwe project.
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-2-copyjson.png)
-5. Open vanuit Solution Explorer de gekopieerde azuredeploy. json.
+5. Open in Solution Explorer de gekopieerde azuredeploy.jsop.
 6. We voegen net zo eenvoudig een aantal standaard bronnen voor toepassings inzichten toe aan het JSON-bestand door te klikken op **resource toevoegen**. Als u alleen geïnteresseerd bent in het implementeren van het JSON-bestand, gaat u verder met de stappen voor het implementeren.
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-3-newresource.png)
@@ -202,18 +201,18 @@ De knop **implementeren in azure** is geweldig, maar u kunt de sjabloon voor de 
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-5-appinsightresources.png)
 8. Klik in het JSON-overzicht op **AppInsights automatisch schalen** om de bijbehorende JSON-code te markeren. Dit is de schaal instelling voor uw App Service-abonnement.
-9. Zoek in de gemarkeerde JSON- `location` code `enabled` de eigenschappen en en stel deze in zoals hieronder wordt weer gegeven.
+9. Zoek in de gemarkeerde JSON-code de `location` Eigenschappen en en `enabled` Stel deze in zoals hieronder wordt weer gegeven.
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-6-autoscalesettings.png)
 10. Klik in het JSON-overzicht op **CPUHigh appInsights** om de bijbehorende JSON-code te markeren. Dit is een waarschuwing.
-11. Zoek de `location` eigenschappen `isEnabled` en stel deze in zoals hieronder wordt weer gegeven. Doe hetzelfde voor de andere drie waarschuwingen (paars bollen).
+11. Zoek de `location` `isEnabled` Eigenschappen en stel deze in zoals hieronder wordt weer gegeven. Doe hetzelfde voor de andere drie waarschuwingen (paars bollen).
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-7-alerts.png)
-12. U bent nu klaar om te implementeren. Klik met de rechter muisknop op het project en selecteer**nieuwe implementatie** **implementeren** > .
+12. U bent nu klaar om te implementeren. Klik met de rechter muisknop op het **Deploy**project en selecteer  >  **nieuwe implementatie**implementeren.
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
 13. Meld u aan bij uw Azure-account als u dit nog niet hebt gedaan.
-14. Selecteer een bestaande resource groep in uw abonnement of maak een nieuwe. Selecteer **azuredeploy. json**en klik vervolgens op **para meters bewerken**.
+14. Selecteer een bestaande resource groep in uw abonnement of maak een nieuwe, selecteer **azuredeploy.jsaan**en klik vervolgens op **para meters bewerken**.
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-9-deployconfig.png)
     
@@ -238,11 +237,11 @@ De stappen in deze sectie hebben voornamelijk het volgende gerealiseerd:
 2. Er is een parameter bestand gemaakt om te gaan met het sjabloon bestand
 3. Het sjabloon bestand met het parameter bestand geïmplementeerd
 
-De laatste stap is eenvoudig gedaan door een Power shell-cmdlet. Open Scripts\Deploy-AzureResourceGroup.ps1. om te zien wat Visual Studio had toen u uw toepassing implementeerde. Er is een groot aantal code, maar ik Markeer alleen de relevante code die u nodig hebt om het sjabloon bestand te implementeren met het parameter bestand.
+De laatste stap is eenvoudig gedaan door een Power shell-cmdlet. Open Scripts\Deploy-AzureResourceGroup.ps1 om te zien wat Visual Studio had toen u uw toepassing implementeerde. Er is een groot aantal code, maar ik Markeer alleen de relevante code die u nodig hebt om het sjabloon bestand te implementeren met het parameter bestand.
 
 ![](./media/app-service-deploy-complex-application-predictably/deploy-12-powershellsnippet.png)
 
-De laatste cmdlet, `New-AzureResourceGroup`, is het account waarmee de actie daad werkelijk wordt uitgevoerd. Hier ziet u dat u met de hulp van hulp middelen relatief eenvoudig de zoals verwacht van uw Cloud toepassing kunt implementeren. Telkens wanneer u de cmdlet uitvoert op dezelfde sjabloon met hetzelfde parameter bestand, krijgt u hetzelfde resultaat.
+De laatste cmdlet, `New-AzureResourceGroup` , is het account waarmee de actie daad werkelijk wordt uitgevoerd. Hier ziet u dat u met de hulp van hulp middelen relatief eenvoudig de zoals verwacht van uw Cloud toepassing kunt implementeren. Telkens wanneer u de cmdlet uitvoert op dezelfde sjabloon met hetzelfde parameter bestand, krijgt u hetzelfde resultaat.
 
 ## <a name="summary"></a>Samenvatting
 DevOps, REPEAT baarheid en voorspel baarheid zijn sleutels voor een succes volle implementatie van een grootschalige toepassing die bestaat uit micro Services. In deze zelf studie hebt u een twee-micro service-toepassing geïmplementeerd in azure als één resource groep met behulp van de Azure Resource Manager sjabloon. Hopelijk heeft de IT u de kennis die u nodig hebt om te beginnen met het converteren van uw toepassing in azure naar een sjabloon en kunt u deze zoals verwacht inrichten en implementeren. 
@@ -263,7 +262,7 @@ Zie voor meer informatie over de JSON-syntaxis en eigenschappen voor de resource
 
 * [Microsoft.Sql/servers](/azure/templates/microsoft.sql/servers)
 * [Micro soft. SQL/servers/data bases](/azure/templates/microsoft.sql/servers/databases)
-* [Micro soft. SQL/servers/firewallRules](/azure/templates/microsoft.sql/servers/firewallrules)
+* [Microsoft.Sql/servers/firewallRules](/azure/templates/microsoft.sql/servers/firewallrules)
 * [Micro soft. web/server farms](/azure/templates/microsoft.web/serverfarms)
 * [Micro soft. web/sites](/azure/templates/microsoft.web/sites)
 * [Micro soft. web/sites/sleuven](/azure/templates/microsoft.web/sites/slots)

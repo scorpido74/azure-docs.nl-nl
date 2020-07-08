@@ -8,10 +8,9 @@ services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
 ms.openlocfilehash: 08b21ccd7f7958f00546583f680ecb8cde4a20c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75932615"
 ---
 # <a name="policy-settings-for-web-application-firewall-on-azure-front-door"></a>Beleids instellingen voor Web Application firewall op de voor deur van Azure
@@ -26,7 +25,7 @@ Een WAF-beleid voor de voor deur kan een van de volgende twee statussen hebben:
 
 ## <a name="waf-mode"></a>WAF-modus
 
-Het WAF-beleid kan worden geconfigureerd om te worden uitgevoerd in de volgende twee modi:
+Een WAF-beleid kan in de volgende twee modi worden uitgevoerd:
 
 - **Detectie modus** Wanneer u de detectie modus uitvoert, neemt WAF geen andere acties dan de controle en registreert de aanvraag en de overeenkomende WAF-regel naar WAF-Logboeken. Diagnostische gegevens over logboek registratie inschakelen voor de voor deur (wanneer u Portal gebruikt, kunt u dit bereiken door naar de sectie **Diagnostische gegevens** in de Azure portal te gaan).
 

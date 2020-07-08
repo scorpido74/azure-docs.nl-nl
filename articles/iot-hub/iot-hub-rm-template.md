@@ -10,10 +10,9 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.openlocfilehash: 02e814a9da320d688fe57edf3a3fe0640b8f5a47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75976741"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Een IoT-hub maken met Azure Resource Manager-sjabloon (.NET)
@@ -74,9 +73,9 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 Gebruik een JSON-sjabloon en een parameter bestand om een IoT-hub in uw resource groep te maken. U kunt ook een Azure Resource Manager sjabloon gebruiken om wijzigingen aan te brengen in een bestaande IoT-hub.
 
-1. Klik in Solution Explorer met de rechter muisknop op uw project, klikt u op **toevoegen**en klik vervolgens op **Nieuw item**. Voeg een JSON-bestand met de naam **temp late. json** toe aan uw project.
+1. Klik in Solution Explorer met de rechter muisknop op uw project, klikt u op **toevoegen**en klik vervolgens op **Nieuw item**. Voeg een JSON-bestand met de naam **template.js** toe aan uw project.
 
-2. Als u een standaard IoT-hub wilt toevoegen aan de regio **VS-Oost** , vervangt u de inhoud van **sjabloon. json** door de volgende resource definitie. Voor de huidige lijst met regio's die ondersteuning bieden voor IoT Hub raadpleegt u de [Azure-status][lnk-status]:
+2. Als u een standaard IoT-hub wilt toevoegen aan de regio **VS-Oost** , vervangt u de inhoud van **template.js** door met de volgende resource definitie. Voor de huidige lijst met regio's die ondersteuning bieden voor IoT Hub raadpleegt u de [Azure-status][lnk-status]:
 
     ```json
     {
@@ -112,9 +111,9 @@ Gebruik een JSON-sjabloon en een parameter bestand om een IoT-hub in uw resource
     }
     ```
 
-3. Klik in Solution Explorer met de rechter muisknop op uw project, klikt u op **toevoegen**en klik vervolgens op **Nieuw item**. Voeg een JSON-bestand met de naam **para meters. json** toe aan uw project.
+3. Klik in Solution Explorer met de rechter muisknop op uw project, klikt u op **toevoegen**en klik vervolgens op **Nieuw item**. Voeg een JSON-bestand met de naam **parameters.js** toe aan uw project.
 
-4. Vervang de inhoud van **para meters. json** door de volgende parameter informatie waarmee een naam voor de nieuwe IOT-hub wordt ingesteld, zoals **{uw initialen} mynewiothub**. De naam van de IoT-hub moet globaal uniek zijn en moet uw naam of initialen bevatten:
+4. Vervang de inhoud van **parameters.js** door met de volgende parameter informatie waarmee een naam voor de nieuwe IOT-hub wordt ingesteld, zoals **{uw initialen} mynewiothub**. De naam van de IoT-hub moet globaal uniek zijn en moet uw naam of initialen bevatten:
 
     ```json
     {
@@ -129,7 +128,7 @@ Gebruik een JSON-sjabloon en een parameter bestand om een IoT-hub in uw resource
 
 5. In **Server Explorer**maakt u verbinding met uw Azure-abonnement en een container met de naam **sjablonen**in uw Azure Storage-account. Stel in het deel venster **Eigenschappen** de **open bare machtiging Lees toegang** voor de **sjablonen** container in op **BLOB**.
 
-6. Klik in **Server Explorer**met de rechter muisknop op de **sjablonen** container en vervolgens op **BLOB-container weer geven**. Klik op de knop **BLOB uploaden** , selecteer de twee bestanden, **para meters. json** en **Templates. json**, en klik vervolgens op **openen** om de json-bestanden te uploaden naar de container **sjablonen** . De Url's van de blobs met de JSON-gegevens zijn:
+6. Klik in **Server Explorer**met de rechter muisknop op de **sjablonen** container en vervolgens op **BLOB-container weer geven**. Klik op de knop **BLOB uploaden** , selecteer de twee bestanden **parameters.jsop** en **templates.jsop**en klik vervolgens op **openen** om de json-bestanden te uploaden naar de container **sjablonen** . De Url's van de blobs met de JSON-gegevens zijn:
 
     ```csharp
     https://{Your storage account name}.blob.core.windows.net/templates/parameters.json

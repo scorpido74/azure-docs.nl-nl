@@ -1,5 +1,5 @@
 ---
-title: Gegevens bronnen registreren in Azure Data Catalog
+title: Gegevensbronnen registreren in Azure Data Catalog
 description: In dit artikel wordt uitgelegd hoe u gegevens bronnen registreert in Azure Data Catalog, met inbegrip van de velden voor meta gegevens die zijn geëxtraheerd tijdens de registratie.
 author: JasonWHowell
 ms.author: jasonh
@@ -7,13 +7,12 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 0c5fdac7df41fec3a6206dbd78af74b7f1b58c7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68736323"
 ---
-# <a name="register-data-sources-in-azure-data-catalog"></a>Gegevens bronnen registreren in Azure Data Catalog
+# <a name="register-data-sources-in-azure-data-catalog"></a>Gegevensbronnen registreren in Azure Data Catalog
 ## <a name="introduction"></a>Inleiding
 Azure Data Catalog is een volledig beheerde Cloud service die fungeert als een systeem van registratie en detectie voor zakelijke gegevens bronnen. Met andere woorden, Data Catalog helpt mensen bij het ontdekken, begrijpen en gebruiken van gegevens bronnen, en het helpt organisaties meer waarde te krijgen van hun bestaande gegevens. De eerste stap voor het toegankelijk maken van een gegevens bron via Data Catalog is het registreren van die gegevens bron.
 
@@ -38,7 +37,7 @@ Wanneer u een gegevens bron registreert, haalt het registratie hulpprogramma inf
 Voor alle objecten bevat deze structurele meta gegevens de locatie van het object, zodat gebruikers die de gegevens detecteren deze informatie kunnen gebruiken om verbinding te maken met het object in de client hulpprogramma's van hun keuze. Andere structurele meta gegevens omvatten object naam en-type, en kenmerk/kolom naam en gegevens type.
 
 ## <a name="descriptive-metadata"></a>Beschrijvende meta gegevens
-Naast de kern structuur meta gegevens die zijn geëxtraheerd uit de gegevens bron, haalt het hulp programma voor registratie van gegevens bronnen beschrijvende meta gegevens op. Voor SQL Server Analysis Services en SQL Server Reporting Services worden deze meta gegevens opgehaald uit de beschrijvings eigenschappen die door deze services worden weer gegeven. Voor SQL Server worden waarden die zijn gegeven met\_de uitgebreide eigenschap MS Description geëxtraheerd. Voor Oracle Database haalt het hulp programma voor registratie van gegevens bronnen de kolom opmerkingen uit de weer\_gave\_alle tabblad opmerkingen.
+Naast de kern structuur meta gegevens die zijn geëxtraheerd uit de gegevens bron, haalt het hulp programma voor registratie van gegevens bronnen beschrijvende meta gegevens op. Voor SQL Server Analysis Services en SQL Server Reporting Services worden deze meta gegevens opgehaald uit de beschrijvings eigenschappen die door deze services worden weer gegeven. Voor SQL Server worden waarden die zijn gegeven met de \_ uitgebreide eigenschap MS Description geëxtraheerd. Voor Oracle Database haalt het hulp programma voor registratie van gegevens bronnen de kolom opmerkingen uit de \_ \_ weer gave alle tabblad opmerkingen.
 
 Naast de beschrijvende meta gegevens die uit de gegevens bron zijn geëxtraheerd, kunnen gebruikers beschrijvende meta gegevens invoeren met het hulp programma voor registratie van gegevens bronnen. Gebruikers kunnen Tags toevoegen en ze kunnen experts identificeren voor de geregistreerde objecten. Al deze beschrijvende meta gegevens worden samen met de structurele meta gegevens gekopieerd naar de Data Catalog-service.
 

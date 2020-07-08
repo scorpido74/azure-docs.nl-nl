@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
 ms.openlocfilehash: 28278f76497d6e9d0fee221bb4ef32fe6d369db0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75966655"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Richt lijnen voor herstel na nood gevallen voor avere vFXT voor Azure
@@ -83,7 +82,7 @@ Volg deze stappen om een back-up van gegevens te maken in een ander account.
 
    Noteer de naam en koppelings gegevens van de kern bestand (vermeld op de pagina **naam ruimte** in het configuratie scherm), zodat u deze kunt repliceren wanneer u de container opnieuw toevoegt na de back-up.
 
-   Gebruik het configuratie scherm van het cluster om de kern bestand te verwijderen. [Open het configuratie scherm van het cluster](avere-vfxt-cluster-gui.md) en kies **core filer** > **kern bestanden beheren**. Zoek het opslag systeem waarvan u een back-up wilt maken en gebruik de knop **verwijderen** om het te verwijderen uit het cluster.
+   Gebruik het configuratie scherm van het cluster om de kern bestand te verwijderen. [Open het configuratie scherm van het cluster](avere-vfxt-cluster-gui.md) en kies **core filer**  >  **kern bestanden beheren**. Zoek het opslag systeem waarvan u een back-up wilt maken en gebruik de knop **verwijderen** om het te verwijderen uit het cluster.
 
 1. Maak een nieuwe, lege Blob Storage-container in een ander opslag account in een andere regio.
 

@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/08/2019
 ms.openlocfilehash: fa02ac0dfe229f3e82d1c1c62d83ca06a81efca6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75887322"
 ---
 # <a name="scenario-hbase-hbck-command-returns-inconsistencies-in-azure-hdinsight"></a>Scenario: `hbase hbck` opdracht retourneert inconsistenties in azure HDInsight
@@ -43,7 +42,7 @@ Hangt.
 
 ## <a name="issue-region-is-offline"></a>Probleem: regio is offline
 
-Regio xxx is niet geïmplementeerd op een wille keurige RegionServer. Dit betekent dat de regio zich `hbase:meta`in, maar offline bevindt.
+Regio xxx is niet geïmplementeerd op een wille keurige RegionServer. Dit betekent dat de regio zich in `hbase:meta` , maar offline bevindt.
 
 ### <a name="cause"></a>Oorzaak
 
@@ -67,7 +66,7 @@ Hangt.
 
 ### <a name="resolution"></a>Oplossing
 
-Deze overlappende regio's hand matig samen voegen. Ga naar de sectie HBase HMaster Web UI Table en selecteer de tabel koppeling. Dit heeft het probleem. U ziet de start sleutel/eind sleutel van elke regio die deel uitmaakt van deze tabel. Voeg deze overlappende regio's vervolgens samen. Doe `merge_region 'xxxxxxxx','yyyyyyy', true`in HBase-shell. Bijvoorbeeld:
+Deze overlappende regio's hand matig samen voegen. Ga naar de sectie HBase HMaster Web UI Table en selecteer de tabel koppeling. Dit heeft het probleem. U ziet de start sleutel/eind sleutel van elke regio die deel uitmaakt van deze tabel. Voeg deze overlappende regio's vervolgens samen. Doe in HBase-shell `merge_region 'xxxxxxxx','yyyyyyy', true` . Bijvoorbeeld:
 
 ```
 RegionA, startkey:001, endkey:010,
@@ -83,7 +82,7 @@ In dit scenario moet u Regioa en RegionC samen voegen en met hetzelfde sleutel b
 
 ## <a name="issue-cant-load-regioninfo"></a>Probleem: kan niet laden`.regioninfo`
 
-Kan de `.regioninfo` regio `/hbase/data/default/tablex/regiony`niet laden.
+Kan de `.regioninfo` regio niet laden `/hbase/data/default/tablex/regiony` .
 
 ### <a name="cause"></a>Oorzaak
 
@@ -97,7 +96,7 @@ Deze resterende bestanden en mappen hand matig opschonen:
 
 1. Uitvoeren `hdfs dfs -rmr /hbase/data/default/tablex/regiony/filez` om alle onderliggende bestanden/mappen te verwijderen
 
-1. Voer `hdfs dfs -rmr /hbase/data/default/tablex/regiony` uit om de map Region te verwijderen.
+1. Voer uit `hdfs dfs -rmr /hbase/data/default/tablex/regiony` om de map Region te verwijderen.
 
 ---
 
@@ -107,6 +106,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
 * Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

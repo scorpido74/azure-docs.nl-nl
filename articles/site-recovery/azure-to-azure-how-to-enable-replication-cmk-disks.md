@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: mayg
 ms.openlocfilehash: 367f29237a3f2a634f209026df47b0cbd6ffc97c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75897960"
 ---
 # <a name="replicate-machines-with-customer-managed-keys-cmk-enabled-disks"></a>Computers repliceren met door de klant beheerde sleutels (CMK) ingeschakelde schijven
@@ -33,7 +32,7 @@ Voor dit voor beeld is de primaire Azure-regio Azië-oost en is de secundaire re
     - **Bron abonnement**: het abonnement waartoe de virtuele bron machines behoren. Dit kan elk abonnement zijn dat zich in dezelfde Azure Active Directory Tenant bevindt als de Recovery Services-kluis.
     - **Resource groep**: de resource groep waartoe de virtuele bron machine behoort. Alle virtuele machines in de geselecteerde resource groep worden in de volgende stap weer gegeven voor beveiliging.
 
-3. Selecteer in **virtual machines** > **virtuele machines selecteren**de VM die u wilt repliceren. U kunt alleen machines selecteren waarvoor replicatie kan worden ingeschakeld. Selecteer vervolgens **OK**.
+3. Selecteer in **virtual machines**  >  **virtuele machines selecteren**de VM die u wilt repliceren. U kunt alleen machines selecteren waarvoor replicatie kan worden ingeschakeld. Selecteer vervolgens **OK**.
 
 4. In **instellingen**kunt u de volgende instellingen voor de doel site configureren.
 
@@ -64,7 +63,7 @@ Volg deze stappen om de Site Recovery standaard doel instellingen te wijzigen.
 
 3. Selecteer **aanpassen** naast instellingen voor opslag versleuteling om de doel-des te selecteren voor elke door de klant beheerde sleutel (CMK) die beheerde bron beheert. Op het moment van de selectie kunt u ook zien aan welke doel sleutel kluis de DES is gekoppeld.
 
-4. Selecteer **doel bron** > maken**replicatie inschakelen**.
+4. Selecteer **doel bron maken**  >  **replicatie inschakelen**.
 5. Nadat de Vm's zijn ingeschakeld voor replicatie, kunt u de status van de virtuele machines controleren onder **gerepliceerde items**.
 
 ![Replicatie inschakelen voor de computer met CMK ingeschakelde schijven](./media/azure-to-azure-how-to-enable-replication-cmk-disks/cmk-customize-target-disk-properties.png)

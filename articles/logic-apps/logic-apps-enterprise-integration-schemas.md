@@ -9,10 +9,9 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: ade29318fdd1510d03ddd208534258a30b256e98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75979382"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML valideren met schema's in Azure Logic Apps met Enterprise Integration Pack
@@ -99,7 +98,7 @@ Als u grotere schema's wilt toevoegen, kunt u uw schema uploaden naar een Azure-
 
    * Als uw BLOB-container ten minste open bare toegang heeft, kiest u **Annuleren**en volgt u deze stappen verderop op deze pagina: [uploaden naar containers met open bare toegang](#public-access)
 
-     ![Open bare toegang](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
+     ![Openbare toegang](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
 
    * Als uw BLOB-container geen open bare toegang heeft, kiest u **Annuleren**en volgt u deze stappen verderop op deze pagina: [uploaden naar containers zonder open bare toegang](#public-access)
 
@@ -135,7 +134,7 @@ Nadat het schema is geüpload, wordt het schema weer gegeven in de lijst **schem
 1. Genereer een Shared Access Signature (SAS) voor uw schema nadat u klaar bent met het uploaden. 
    Selecteer in het snelmenu van het schema de optie **Shared Access Signature ophalen**.
 
-1. Selecteer in het deel venster **Shared Access Signature** de optie URI > **maken**voor **Shared Access-hand tekening op container niveau genereren**. 
+1. Selecteer in het deel venster **Shared Access Signature** de optie URI maken voor **Shared Access-hand tekening op container niveau genereren**  >  **Create**. 
    Wanneer de SAS-URL wordt gegenereerd, klikt u naast het vak **URL** op **kopiëren**.
 
 1. Ga terug naar de Azure Portal waar het deel venster **schema toevoegen** is geopend. Kies een **groot bestand**.

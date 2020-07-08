@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 2d0d5bb871612bc5e16a26eb49808c39661ffb50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75934690"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>On-premises Apache Hadoop clusters migreren naar aanbevolen procedures voor de architectuur van Azure HDInsight
@@ -38,14 +37,14 @@ In de volgende tabel ziet u de verschillende methoden die kunnen worden gebruikt
 
 |Hulpprogramma|Browser op basis|Opdrachtregel|REST-API|SDK|
 |---|---|---|---|---|
-|[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
+|[Azure-portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
 |[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
 |[Azure CLI (ver 1,0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
 |[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
 |[.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)||||X|
-|[Python-SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||X|
-|[Java-SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
+|[Python SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||X|
+|[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
 |[Azure Resource Manager-sjablonen](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
 
 Zie het artikel [cluster typen in HDInsight](../hadoop/apache-hadoop-introduction.md)voor meer informatie.
@@ -107,7 +106,7 @@ Enkele HDInsight-Hive-metastore best practices zijn als volgt:
 
 ## <a name="best-practices-for-different-workloads"></a>Aanbevolen procedures voor verschillende werk belastingen
 
-- Overweeg het gebruik van LLAP-cluster voor interactieve Hive-query's met verbeterde reactie tijd [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) is een nieuwe functie in hive 2,0 waarmee query's in het geheugen worden opgeslagen in de cache. LLAP maakt Hive-query's veel sneller, tot [26x sneller dan Hive 1. x in sommige gevallen](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
+- Overweeg het gebruik van LLAP-cluster voor interactieve Hive-query's met verbeterde reactie tijd [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP)   is een nieuwe functie in hive 2,0 waarmee query's in het geheugen worden opgeslagen in de cache. LLAP maakt Hive-query's veel sneller, tot [26x sneller dan Hive 1. x in sommige gevallen](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
 - Overweeg het gebruik van Spark-taken in plaats van Hive-taken.
 - Overweeg op Impala gebaseerde query's te vervangen door LLAP-query's.
 - Overweeg MapReduce-taken te vervangen door Spark-taken.

@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/08/2019
 ms.openlocfilehash: a7af6407191577112f936bfb9048985e85c868ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75887220"
 ---
 # <a name="scenario-storage-exception-after-connection-reset-in-azure-hdinsight"></a>Scenario: uitzonde ring voor opslag na opnieuw instellen van verbinding in azure HDInsight
@@ -26,13 +25,13 @@ Kan geen nieuwe Apache HBase-tabel maken.
 
 Tijdens het afkappen van een tabel is er een probleem met de opslag verbinding. De tabel vermelding is verwijderd uit de HBase-meta gegevens tabel. Er is maar één blob-bestand verwijderd.
 
-Er is geen map-blob met `/hbase/data/default/ThatTable` de naam in de opslag. Het WASB-stuur programma heeft vastgesteld dat het bestand het bovenliggende element bevat en dat er geen blob zou kunnen `/hbase/data/default/ThatTable` worden gemaakt, omdat er wordt ervan uitgegaan dat er voor het hoofd mappen bestaan, waardoor de tabel niet kan worden gemaakt.
+Er is geen map-BLOB `/hbase/data/default/ThatTable` met de naam in de opslag. Het WASB-stuur programma heeft vastgesteld dat het bestand het bovenliggende element bevat en dat er geen blob zou kunnen worden gemaakt `/hbase/data/default/ThatTable` , omdat er wordt ervan uitgegaan dat er voor het hoofd mappen bestaan, waardoor de tabel niet kan worden gemaakt.
 
 ## <a name="resolution"></a>Oplossing
 
 1. Start de actieve HMaster opnieuw vanuit Apache Ambari UI. Hiermee kan een van de twee stand-HMaster worden geactiveerd en wordt de gegevens tabel informatie opnieuw geladen met de nieuwe Active HMaster. Daarom ziet u de tabel niet `already-deleted` in de HMaster-gebruikers interface.
 
-1. U vindt het zwevende blob-bestand in UI-hulpprogram ma's zoals Cloud Explorer of `hdfs dfs -ls /xxxxxx/yyyyy`het uitvoeren van opdrachten zoals. Voer `hdfs dfs -rmr /xxxxx/yyyy` uit om de BLOB te verwijderen. Bijvoorbeeld `hdfs dfs -rmr /hbase/data/default/ThatTable/ThatFile`.
+1. U vindt het zwevende blob-bestand in UI-hulpprogram ma's zoals Cloud Explorer of het uitvoeren van opdrachten zoals `hdfs dfs -ls /xxxxxx/yyyyy` . Voer uit `hdfs dfs -rmr /xxxxx/yyyy` om de BLOB te verwijderen. Bijvoorbeeld `hdfs dfs -rmr /hbase/data/default/ThatTable/ThatFile`.
 
 U kunt nu een nieuwe tabel met dezelfde naam maken in HBase.
 
@@ -42,6 +41,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
 * Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

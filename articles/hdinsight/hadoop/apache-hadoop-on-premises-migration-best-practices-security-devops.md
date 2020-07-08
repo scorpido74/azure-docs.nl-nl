@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
 ms.openlocfilehash: 4ceefcbbbb53e3ae13f8ced930ae8417fb00965f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75974406"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>On-premises Apache Hadoop clusters migreren naar Azure HDInsight-beveiligings-en DevOps best practices
@@ -45,11 +44,11 @@ Gebruik de volgende stappen om het HDInsight-cluster dat is gekoppeld aan het do
     |Parameter |Beschrijving |
     |---|---|
     |Domeinnaam|De domein naam die is gekoppeld aan Azure AD DS.|
-    |Domein gebruikers naam|Het service account in het door Azure AD DS DC beheerde domein dat u in de vorige sectie hebt gemaakt, bijvoorbeeld: `hdiadmin@contoso.onmicrosoft.com`. Deze domein gebruiker is de beheerder van dit HDInsight-cluster.|
+    |Domein gebruikers naam|Het service account in het door Azure AD DS DC beheerde domein dat u in de vorige sectie hebt gemaakt, bijvoorbeeld: `hdiadmin@contoso.onmicrosoft.com` . Deze domein gebruiker is de beheerder van dit HDInsight-cluster.|
     |Domein wachtwoord|Het wacht woord van het service account.|
-    |Organisatie-eenheid|De DN-naam van de organisatie-eenheid die u wilt gebruiken met het HDInsight-cluster, `OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`bijvoorbeeld:. Als deze OE niet bestaat, probeert het HDInsight-cluster de OE te maken met behulp van de bevoegdheden van het service account.|
-    |URL VAN LDAPS|bijvoorbeeld `ldaps://contoso.onmicrosoft.com:636`.|
-    |Gebruikers groep openen|De beveiligings groepen waarvan u de gebruikers wilt synchroniseren met het cluster, bijvoorbeeld: `HiveUsers`. Als u meerdere gebruikers groepen wilt opgeven, scheidt u deze met punt komma '; '. De groep (en) moeten aanwezig zijn in de map voordat u het ESP-cluster maakt.|
+    |Organisatie-eenheid|De DN-naam van de organisatie-eenheid die u wilt gebruiken met het HDInsight-cluster, bijvoorbeeld: `OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com` . Als deze OE niet bestaat, probeert het HDInsight-cluster de OE te maken met behulp van de bevoegdheden van het service account.|
+    |URL VAN LDAPS|bijvoorbeeld `ldaps://contoso.onmicrosoft.com:636` .|
+    |Gebruikers groep openen|De beveiligings groepen waarvan u de gebruikers wilt synchroniseren met het cluster, bijvoorbeeld: `HiveUsers` . Als u meerdere gebruikers groepen wilt opgeven, scheidt u deze met punt komma '; '. De groep (en) moeten aanwezig zijn in de map voordat u het ESP-cluster maakt.|
 
 Raadpleeg voor meer informatie de volgende artikelen:
 
@@ -73,7 +72,7 @@ End-to-end Bedrijfs beveiliging kan worden bereikt met de volgende besturings el
     - Gebruik Apache zwerver om toegangs beheer beleid in te stellen voor Hive op het niveau van tabel/kolom/rij.
     - SSH-toegang tot het cluster kan alleen worden beperkt tot de beheerder.
 
-**Controleren**
+**Controle**
     - Alle toegang tot de bronnen en gegevens van het HDInsight-cluster weer geven en rapporteren.
     - Alle wijzigingen in het toegangs beheer beleid weer geven en rapporteren.
 
@@ -86,7 +85,7 @@ Raadpleeg voor meer informatie de volgende artikelen:
 - [Overzicht van Azure Virtual Networks](../../virtual-network/virtual-networks-overview.md)
 - [Overzicht van Azure-netwerk beveiligings groepen](../../virtual-network/security-overview.md)
 - [Peering van virtuele Azure-netwerken](../../virtual-network/virtual-network-peering-overview.md)
-- [Veiligheidsgids voor Azure Storage](../../storage/blobs/security-recommendations.md)
+- [Azure Storage-beveiligingshandleiding](../../storage/blobs/security-recommendations.md)
 - [Versleuteling van Azure Storage-service bij rest](../../storage/common/storage-service-encryption.md)
 
 ## <a name="use-monitoring--alerting"></a>Bewakings & waarschuwingen gebruiken

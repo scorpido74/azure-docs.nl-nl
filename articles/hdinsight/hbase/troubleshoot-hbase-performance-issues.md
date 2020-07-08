@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
 ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75887152"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Prestatieproblemen van Apache Hbase in Azure HDInsight oplossen
@@ -65,17 +64,17 @@ Als u migreert naar Azure HDInsight, moet u ervoor zorgen dat uw migratie system
 
 ## <a name="server-side-configuration-tunings"></a>Aanpassing van de configuratie aan server zijde
 
-In HDInsight HBase worden HFiles opgeslagen op externe opslag. Wanneer er een cache ontbreekt, zijn de kosten voor lees bewerkingen hoger dan on-premises systemen, omdat gegevens op on-premises systemen worden ondersteund door Local HDFS. Voor de meeste scenario's is intelligent gebruik van HBase-caches (Block cache en Bucket cache) ontworpen om dit probleem te omzeilen. In gevallen waarin het probleem niet wordt omzeild, kunt u dit probleem mogelijk oplossen met behulp van een account voor een Premium-blok-blob. Het Windows Azure Storage Blob-stuur programma is afhankelijk van bepaalde eigenschappen `fs.azure.read.request.size` , zoals het ophalen van gegevens in blokken op basis van de Lees modus (opeenvolgend versus wille keurig), zodat er mogelijk nog steeds exemplaren van hogere latenties met lees bewerkingen zijn. Door middel van empirische experimenten hebben we vastgesteld dat het instellen van de blokkerings`fs.azure.read.request.size`grootte van de Lees aanvraag () op 512 KB en het afstemmen van de blok grootte van de HBase-tabellen dezelfde grootte hebben als het beste resultaat in de praktijk.
+In HDInsight HBase worden HFiles opgeslagen op externe opslag. Wanneer er een cache ontbreekt, zijn de kosten voor lees bewerkingen hoger dan on-premises systemen, omdat gegevens op on-premises systemen worden ondersteund door Local HDFS. Voor de meeste scenario's is intelligent gebruik van HBase-caches (Block cache en Bucket cache) ontworpen om dit probleem te omzeilen. In gevallen waarin het probleem niet wordt omzeild, kunt u dit probleem mogelijk oplossen met behulp van een account voor een Premium-blok-blob. Het Windows Azure Storage Blob-stuur programma is afhankelijk van bepaalde eigenschappen `fs.azure.read.request.size` , zoals het ophalen van gegevens in blokken op basis van de Lees modus (opeenvolgend versus wille keurig), zodat er mogelijk nog steeds exemplaren van hogere latenties met lees bewerkingen zijn. Door middel van empirische experimenten hebben we vastgesteld dat het instellen van de blokkerings grootte van de Lees aanvraag ( `fs.azure.read.request.size` ) op 512 KB en het afstemmen van de blok grootte van de HBase-tabellen dezelfde grootte hebben als het beste resultaat in de praktijk.
 
-Voor de meeste clusters met een groot aantal knoop punten biedt `bucketcache` HDInsight HBase als een bestand op een lokale Premium-SSD dat is gekoppeld aan de virtuele machine, `regionservers`die wordt uitgevoerd. Het gebruik van een off-heap-cache kan in plaats daarvan enige verbeteringen opleveren. Deze tijdelijke oplossing heeft de beperking van het gebruik van het beschik bare geheugen en mogelijk kleiner dan een op bestanden gebaseerde cache, zodat het niet altijd de beste keuze is.
+Voor de meeste clusters met een groot aantal knoop punten biedt HDInsight HBase `bucketcache` als een bestand op een lokale Premium-SSD dat is gekoppeld aan de virtuele machine, die wordt uitgevoerd `regionservers` . Het gebruik van een off-heap-cache kan in plaats daarvan enige verbeteringen opleveren. Deze tijdelijke oplossing heeft de beperking van het gebruik van het beschik bare geheugen en mogelijk kleiner dan een op bestanden gebaseerde cache, zodat het niet altijd de beste keuze is.
 
 Hieronder vindt u enkele van de andere specifieke para meters die we hebben afgestemd en die u helpen bij het variëren van graden:
 
-- Verhoog `memstore` de grootte van de standaard waarde van 128 mb tot 256 MB. Normaal gesp roken wordt deze instelling aanbevolen voor zware schrijf scenario's.
+- Verhoog de `memstore` grootte van de standaard waarde van 128 MB tot 256 MB. Normaal gesp roken wordt deze instelling aanbevolen voor zware schrijf scenario's.
 
 - Verhoog het aantal threads dat is gereserveerd voor compressie, van de standaard instelling van **1** tot **4**. Deze instelling is relevant als we veelvuldige kleine compressies bekijken.
 
-- Voorkom dat `memstore` Flush wordt geblokkeerd vanwege een opslag limiet. Als u deze buffer wilt opgeven, `Hbase.hstore.blockingStoreFiles` verhoogt u de instelling in **100**.
+- Voorkom dat `memstore` Flush wordt geblokkeerd vanwege een opslag limiet. Als u deze buffer wilt opgeven, verhoogt `Hbase.hstore.blockingStoreFiles` u de instelling in **100**.
 
 - Gebruik de volgende instellingen voor het beheren van leegmaak acties:
 
@@ -104,7 +103,7 @@ Hieronder vindt u enkele van de andere specifieke para meters die we hebben afge
 - RPC-time-outs: **drie minuten**
 
    - RPC-time-outs zijn onder andere HBase RPC time-out, time-out voor HBase-client scanner en Bredae querytime-out. 
-   - Zorg ervoor dat de `hbase.client.scanner.caching` para meter is ingesteld op dezelfde waarde op zowel het server eindpunt als het einde van de client. Als ze niet hetzelfde zijn, leidt deze instelling tot client-end fouten die betrekking hebben op `OutOfOrderScannerException`. Deze instelling moet worden ingesteld op een lage waarde voor grote scans. We stellen deze waarde in op **100**.
+   - Zorg ervoor dat de `hbase.client.scanner.caching` para meter is ingesteld op dezelfde waarde op zowel het server eindpunt als het einde van de client. Als ze niet hetzelfde zijn, leidt deze instelling tot client-end fouten die betrekking hebben op `OutOfOrderScannerException` . Deze instelling moet worden ingesteld op een lage waarde voor grote scans. We stellen deze waarde in op **100**.
 
 ## <a name="other-considerations"></a>Andere overwegingen
 
@@ -122,6 +121,6 @@ Als uw probleem niet is opgelost, gaat u naar een van de volgende kanalen voor m
 
 - Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-- Verbinding maken [@AzureSupport](https://twitter.com/azuresupport)met. Dit is het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. De Azure-community wordt verbonden met de juiste resources: antwoorden, ondersteuning en experts.
+- Verbinding maken met [@AzureSupport](https://twitter.com/azuresupport) . Dit is het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. De Azure-community wordt verbonden met de juiste resources: antwoorden, ondersteuning en experts.
 
 - Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. Uw Microsoft Azure-abonnement bevat toegang tot abonnements beheer en ondersteuning voor facturering, en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: e241657186582955d21981f7dfe18856724aa692
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75894417"
 ---
 # <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>Scenario: Jupyter server 404 "niet gevonden" vanwege "het blok keren van de API voor cross-origin" in azure HDInsight
@@ -36,7 +35,7 @@ Deze fout kan worden veroorzaakt door een paar dingen:
 
 - Als u NSG-regels (netwerk beveiligings groep) hebt geconfigureerd, kunt u de toegang tot het cluster beperken. Als u de toegang met NSG-regels beperkt, kunt u nog steeds rechtstreeks toegang krijgen tot Apache Ambari en andere services met behulp van het IP-adres in plaats van de cluster naam. Wanneer u echter toegang zoekt tot Jupyter, ziet u de fout 404 ' niet gevonden '.
 
-- Als u uw HDInsight-gateway een aangepaste DNS-naam hebt opgegeven dan de `xxx.azurehdinsight.net`standaard.
+- Als u uw HDInsight-gateway een aangepaste DNS-naam hebt opgegeven dan de standaard `xxx.azurehdinsight.net` .
 
 ## <a name="resolution"></a>Oplossing
 
@@ -47,11 +46,11 @@ Deze fout kan worden veroorzaakt door een paar dingen:
     /var/lib/ambari-agent/cache/common-services/JUPYTER/1.0.0/package/scripts/jupyter.py
     ```
 
-1. Zoek de regel met de volgende `NotebookApp.allow_origin='\"https://{2}.{3}\"'` tekst: en wijzig deze `NotebookApp.allow_origin='\"*\"'`in:.
+1. Zoek de regel met de volgende tekst: `NotebookApp.allow_origin='\"https://{2}.{3}\"'` en wijzig deze in: `NotebookApp.allow_origin='\"*\"'` .
 
 1. Start de Jupyter-service van Ambari opnieuw.
 
-1. Wanneer `ps aux | grep jupyter` u op de opdracht prompt typt, ziet u dat er een URL kan worden gemaakt om er verbinding mee te maken.
+1. `ps aux | grep jupyter`Wanneer u op de opdracht prompt typt, ziet u dat er een URL kan worden gemaakt om er verbinding mee te maken.
 
 Dit is minder veilig dan de instelling die we al hebben geïmplementeerd. Maar er wordt van uitgegaan dat de toegang tot het cluster beperkt is en dat een van de buiten kant is toegestaan om verbinding te maken met het cluster als er NSG aanwezig zijn.
 
@@ -61,6 +60,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
 
 * Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

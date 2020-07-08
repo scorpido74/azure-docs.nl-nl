@@ -14,10 +14,9 @@ ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a6532558107463311c4225b9855bc4cd3f19eed9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75965609"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Probleemoplossing voor implementatieproblemen bij het opnieuw opstarten van een bestaande virtuele Windows-machine in Azure of bij het wijzigen van het formaat van die VM
@@ -41,7 +40,7 @@ De aanvraag voor het starten van de gestopte VM moet worden geprobeerd op het oo
 ### <a name="resolution"></a>Oplossing
 * Stop alle virtuele machines in de beschikbaarheidsset en start elke VM opnieuw op.
   
-  1. Klik op **resource groepen** > *uw resource groep* > **resources** > *uw beschikbaarheidsset* > **virtual machines** > *de virtuele machine* > wordt**gestopt**.
+  1. Klik op **resource groepen**  >  *uw resource groep*  >  **resources**  >  *uw beschikbaarheidsset*  >  **virtual machines**  >  *de virtuele machine*wordt  >  **gestopt**.
   2. Nadat alle virtuele machines zijn gestopt, selecteert u elk van de gestopte Vm's en klikt u op starten.
 * Probeer de aanvraag op een later tijdstip opnieuw te starten.
 
@@ -57,7 +56,7 @@ De aanvraag voor het wijzigen van de grootte van de virtuele machine moet worden
   
   1. Stop alle virtuele machines in de beschikbaarheidsset.
      
-     * Klik op **resource groepen** > *uw resource groep* > **resources** > *uw beschikbaarheidsset* > **virtual machines** > *de virtuele machine* > wordt**gestopt**.
+     * Klik op **resource groepen**  >  *uw resource groep*  >  **resources**  >  *uw beschikbaarheidsset*  >  **virtual machines**  >  *de virtuele machine*wordt  >  **gestopt**.
   2. Nadat alle virtuele machines zijn gestopt, wijzigt u het formaat van de gewenste VM in een grotere grootte.
   3. Selecteer de virtuele machine waarvan het formaat is gewijzigd en klik op **Start**en start vervolgens elk van de gestopte vm's.
 

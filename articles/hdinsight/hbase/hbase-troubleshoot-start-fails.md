@@ -8,10 +8,9 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
 ms.openlocfilehash: 290b541d9b5e86616373d2e426241fca07e780ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75887203"
 ---
 # <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Apache HBase Master (HMaster) kan niet worden gestart in azure HDInsight
@@ -32,9 +31,9 @@ HMaster voert een elementaire lijst opdracht uit in de WAL-mappen. Als er op elk
 
 ### <a name="resolution"></a>Oplossing
 
-Controleer de aanroep stack en probeer te bepalen welke map het probleem veroorzaakt (bijvoorbeeld omdat het de map WAL of de map. tmp kan zijn). Probeer vervolgens in Cloud Explorer of met HDFS-opdrachten het probleem bestand te vinden. Normaal gesp roken is dit `*-renamePending.json` een bestand. (Het `*-renamePending.json` bestand is een logboek bestand dat wordt gebruikt voor het implementeren van de Atomic-naam bewerking in het WASB-stuur programma. Als gevolg van fouten in deze implementatie kunnen deze bestanden overblijven nadat het proces is vastgelopen, enzovoort.) Force-Hiermee kunt u dit bestand in Cloud Verkenner of met HDFS-opdrachten verwijderen.
+Controleer de aanroep stack en probeer te bepalen welke map het probleem veroorzaakt (bijvoorbeeld omdat het de map WAL of de map. tmp kan zijn). Probeer vervolgens in Cloud Explorer of met HDFS-opdrachten het probleem bestand te vinden. Normaal gesp roken is dit een `*-renamePending.json` bestand. (Het `*-renamePending.json` bestand is een logboek bestand dat wordt gebruikt voor het implementeren van de Atomic-naam bewerking in het WASB-stuur programma. Als gevolg van fouten in deze implementatie kunnen deze bestanden overblijven nadat het proces is vastgelopen, enzovoort.) Force-Hiermee kunt u dit bestand in Cloud Verkenner of met HDFS-opdrachten verwijderen.
 
-Soms kan er ook een tijdelijk bestand zijn `$$$.$$$` met de naam iets op deze locatie. U moet de HDFS `ls` -opdracht gebruiken om dit bestand te bekijken. u kunt het bestand niet zien in Cloud Explorer. Als u dit bestand wilt verwijderen, gebruikt u `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`de opdracht HDFS.
+Soms kan er ook een tijdelijk bestand zijn met de naam iets `$$$.$$$` op deze locatie. U moet de HDFS- `ls` opdracht gebruiken om dit bestand te bekijken. u kunt het bestand niet zien in Cloud Explorer. Als u dit bestand wilt verwijderen, gebruikt u de opdracht HDFS `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$` .
 
 Nadat u deze opdrachten hebt uitgevoerd, moet HMaster onmiddellijk worden gestart.
 
@@ -44,7 +43,7 @@ Nadat u deze opdrachten hebt uitgevoerd, moet HMaster onmiddellijk worden gestar
 
 ### <a name="issue"></a>Probleem
 
-Mogelijk wordt er een bericht weer gegeven dat aangeeft `hbase: meta` dat de tabel niet online is. Als `hbck` u dit `hbase: meta table replicaId 0 is not found on any region.` rapport uitvoert, ziet u mogelijk het volgende bericht in de HMaster `No server address listed in hbase: meta for region hbase: backup <region name>`-logboeken:.  
+Mogelijk wordt er een bericht weer gegeven dat aangeeft dat de `hbase: meta` tabel niet online is. Als `hbck` u dit rapport uitvoert `hbase: meta table replicaId 0 is not found on any region.` , ziet u mogelijk het volgende bericht in de HMaster-logboeken: `No server address listed in hbase: meta for region hbase: backup <region name>` .  
 
 ### <a name="cause"></a>Oorzaak
 
@@ -75,7 +74,7 @@ HMaster kan niet worden geïnitialiseerd na het opnieuw opstarten van HBase.
 
 ### <a name="issue"></a>Probleem
 
-HMaster keer een time-out met een onherstelbare uitzonde ring op: `java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned`.
+HMaster keer een time-out met een onherstelbare uitzonde ring op: `java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned` .
 
 ### <a name="cause"></a>Oorzaak
 
@@ -83,7 +82,7 @@ Dit probleem kan optreden als u veel tabellen en regio's hebt die niet zijn leeg
 
 ### <a name="resolution"></a>Oplossing
 
-1. Ga vanuit de Apache Ambari-gebruikers interface naar **HBase** > -**configuraties**. Voeg in het `hbase-site.xml` aangepaste bestand de volgende instelling toe:
+1. Ga vanuit de Apache Ambari-gebruikers interface naar **HBase**-  >  **configuraties**. Voeg in het aangepaste `hbase-site.xml` bestand de volgende instelling toe:
 
     ```
     Key: hbase.master.namespace.init.timeout Value: 2400000  
@@ -107,15 +106,15 @@ Knoop punten worden periodiek opnieuw opgestart. In de regio server logboeken zi
 
 ### <a name="cause"></a>Oorzaak
 
-Lange `regionserver` JVM °c pauzeren. De onderbreking `regionserver` reageert niet meer en kan geen harte slag verzenden naar HMaster binnen de time-out van de ZK-sessie 40s. HMaster is van `regionserver` mening dat het `regionserver` inactief is en afbreekt en opnieuw wordt gestart.
+Lange `regionserver` JVM °c pauzeren. De onderbreking `regionserver` reageert niet meer en kan geen harte slag verzenden naar HMaster binnen de time-out van de ZK-sessie 40s. HMaster is van mening dat het inactief `regionserver` is en afbreekt `regionserver` en opnieuw wordt gestart.
 
 ### <a name="resolution"></a>Oplossing
 
-Wijzig de time-out van de Zookeeper `hbase-site` - `zookeeper.session.timeout` sessie, niet `zoo.cfg` alleen `maxSessionTimeout` instelling, maar ook de instelling Zookeeper moet worden gewijzigd.
+Wijzig de time-out van de Zookeeper-sessie, niet alleen `hbase-site` instelling, `zookeeper.session.timeout` maar ook de `zoo.cfg` instelling Zookeeper `maxSessionTimeout` moet worden gewijzigd.
 
 1. Open de Ambari-gebruikers interface, ga naar **HBase-> configuraties-> instellingen**in de sectie time-outs, wijzig de waarde van Zookeeper sessietime time-out.
 
-1. Toegang tot de Ambari-gebruikers interface, gaat u naar **Zookeeper-> configs-> aangepast** `zoo.cfg`, voegt u de volgende instelling toe of wijzigt u deze. Zorg ervoor dat de waarde gelijk is aan HBase `zookeeper.session.timeout`.
+1. Toegang tot de Ambari-gebruikers interface, gaat u naar **Zookeeper-> configs-> aangepast** `zoo.cfg` , voegt u de volgende instelling toe of wijzigt u deze. Zorg ervoor dat de waarde gelijk is aan HBase `zookeeper.session.timeout` .
 
     ```
     Key: maxSessionTimeout Value: 120000  
@@ -147,6 +146,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
 * Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

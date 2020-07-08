@@ -9,15 +9,14 @@ ms.date: 1/15/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: aaceee65ae91a22dc658d185a874e2040b1e0f04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75975672"
 ---
 # <a name="using-the-azure-importexport-tool-classic-deployment-model"></a>Het Azure-hulp programma voor importeren/exporteren (klassiek implementatie model) gebruiken
 
-Het Azure import/export-hulp programma (WAImportExport. exe) wordt gebruikt voor het maken en beheren van taken voor de Azure import/export-service, zodat u grote hoeveel heden gegevens kunt overdragen naar of uit Azure Blob Storage.
+Het hulp programma Azure import/export (WAImportExport.exe) wordt gebruikt voor het maken en beheren van taken voor de Azure import/export-service, zodat u grote hoeveel heden gegevens kunt overdragen naar of van Azure Blob Storage.
 
 Deze documentatie is voor het klassieke implementatie model van het Azure-hulp programma voor importeren/exporteren. Zie [het Azure import/export-hulp programma gebruiken](../storage-import-export-tool-how-to.md)voor meer informatie over het gebruik van de meest recente versie van het hulp programma.
 

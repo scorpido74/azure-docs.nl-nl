@@ -7,13 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
 ms.openlocfilehash: 0f5f01c757bf651beddaa76fc3eb8046b21b31eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75979397"
 ---
-# <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>JSON voor werk stroom definities voor logische apps maken, bewerken of uitbreiden in Azure Logic Apps
+# <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>JSON maken, bewerken of uitbreiden voor werkstroomdefinities voor logische apps in Azure Logic Apps
 
 Wanneer u oplossingen voor bedrijfs integratie met geautomatiseerde werk stromen in [Azure Logic apps](../logic-apps/logic-apps-overview.md)maakt, gebruiken de onderliggende definities van logische apps eenvoudige en declaratieve JavaScript object NOTATION (JSON) samen met het schema voor de [werk stroom definitie taal (WDL)](../logic-apps/logic-apps-workflow-definition-language.md) voor de beschrijving en validatie. Met deze indelingen kunnen definities van logische apps eenvoudiger worden gelezen en begrepen zonder dat u iets hoeft te weten over code.
 Als u het maken en implementeren van Logic Apps wilt automatiseren, kunt u logische app-definities als [Azure-resources](../azure-resource-manager/management/overview.md) in [Azure Resource Manager sjablonen](../azure-resource-manager/templates/overview.md)toevoegen.
@@ -28,7 +27,7 @@ Als u geen ervaring hebt met Logic apps, lees dan [hoe u uw eerste logische app 
 
 ## <a name="edit-json---azure-portal"></a>JSON-Azure Portal bewerken
 
-1. Meld u aan bij de <a href="https://portal.azure.com" target="_blank">Azure-portal</a>.
+1. Meld u aan bij <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
 
 2. Kies in het menu links **alle services**.
 Zoek in het zoekvak ' Logic apps ' en selecteer vervolgens de logische app in de resultaten.
@@ -46,7 +45,7 @@ In Visual Studio kunt u logische apps openen die zijn gemaakt en geïmplementeer
 
 1. Open de Visual Studio-oplossing of het project van de [Azure-resource groep](../azure-resource-manager/management/overview.md) die uw logische app bevat.
 
-2. Zoek en open de definitie van uw logische app, die standaard wordt weer gegeven in een [Resource Manager-sjabloon](../azure-resource-manager/templates/overview.md)met de naam **LogicApp. json**.
+2. Zoek en open de definitie van uw logische app, die standaard wordt weer gegeven in een [Resource Manager-sjabloon](../azure-resource-manager/templates/overview.md), met de naam **LogicApp.jsop**.
 U kunt deze sjabloon gebruiken en aanpassen voor implementatie naar andere omgevingen.
 
 3. Open het snelmenu voor de definitie en sjabloon van uw logische app.
@@ -129,16 +128,16 @@ In deze stappen wordt beschreven hoe dit voor beeld deze teken reeks verwerkt, v
 
 1. Haal de [`length()`](../logic-apps/logic-apps-workflow-definition-language.md) naam van het bedrijf op, zodat u het totale aantal tekens krijgt.
 
-2. Voor een kortere teken reeks kunt `5`u aftrekken.
+2. Voor een kortere teken reeks kunt u aftrekken `5` .
 
-3. Krijg nu een [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md).
-Begin bij index `5`en ga naar de rest van de teken reeks.
+3. Krijg nu een [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md) .
+Begin bij index `5` en ga naar de rest van de teken reeks.
 
 4. Deze subtekenreeks naar een [`base64()`](../logic-apps/logic-apps-workflow-definition-language.md) teken reeks converteren.
 
-5. Alle [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) `+` tekens zijn nu met `-` tekens.
+5. [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md)Alle tekens zijn nu `+` met `-` tekens.
 
-6. Ten slotte [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) , alle `/` tekens met `_` tekens.
+6. Ten slotte, [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) alle `/` tekens met `_` tekens.
 
 ## <a name="map-list-items-to-property-values-then-use-maps-as-parameters"></a>Wijs lijst items toe aan eigenschaps waarden en gebruik vervolgens Maps als para meters
 
@@ -228,19 +227,19 @@ Deze expressie detecteert bijvoorbeeld hoe lang de stappen van deze werk stroom 
 "expression": "@less(actions('order').startTime,addseconds(utcNow(),-1))",
 ```
 
-1. Pak de `order` `startTime`uit met de actie.
-2. De huidige tijd ophalen met `utcNow()`.
+1. Pak de uit met de `order` actie `startTime` .
+2. De huidige tijd ophalen met `utcNow()` .
 3. Eén seconde aftrekken:
 
    [`addseconds(..., -1)`](../logic-apps/logic-apps-workflow-definition-language.md)
 
-   U kunt andere tijds eenheden gebruiken, zoals `minutes` of. `hours`
+   U kunt andere tijds eenheden gebruiken, zoals `minutes` of `hours` .
 
 3. Nu kunt u deze twee waarden vergelijken.
 
    Als de eerste waarde lager is dan de tweede waarde, dan is er meer dan één seconde verstreken sinds de eerste keer dat de order is geplaatst.
 
-Als u datums wilt opmaken, kunt u teken reeks formatters gebruiken. Gebruik [`utcnow('r')`](../logic-apps/logic-apps-workflow-definition-language.md)bijvoorbeeld om de RFC1123 op te halen.
+Als u datums wilt opmaken, kunt u teken reeks formatters gebruiken. Gebruik bijvoorbeeld om de RFC1123 op te halen [`utcnow('r')`](../logic-apps/logic-apps-workflow-definition-language.md) .
 Meer informatie over [datum notaties](../logic-apps/logic-apps-workflow-definition-language.md).
 
 ``` json

@@ -9,15 +9,14 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: e186b9713c8464f8f37e1e0bf112c4118621925c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75979409"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML transformeren met kaarten in Azure Logic Apps met Enterprise Integration Pack
 
-Als u XML-gegevens wilt overdragen tussen indelingen voor scenario's voor bedrijfs integratie in Azure Logic Apps, kunt u met uw logische app gebruikmaken van kaarten of meer specifieke XSLT-kaarten (Extensible Style Sheet Language Transformations). Een kaart is een XML-document dat beschrijft hoe gegevens van een XML-document naar een andere indeling moeten worden geconverteerd. 
+Als u XML-gegevens wilt overdragen tussen indelingen voor scenario's voor bedrijfsintegratie in Azure Logic Apps, kunt u met uw logische app gebruikmaken van toewijzingen of, meer specifiek, XSLT-toewijzingen (Extensible Style Sheet Language Transformations). Een toewijzing is een XML-document dat beschrijft hoe gegevens van een XML-document naar een andere indeling moeten worden geconverteerd. 
 
 Stel bijvoorbeeld dat u regel matig B2B-orders of facturen ontvangt van een klant die de datum notatie YYYMMDD gebruikt. Uw organisatie gebruikt echter de datum notatie MMDDYYY. U kunt een kaart definiëren en gebruiken die de YYYMMDD datum notatie naar de MMDDYYY-indeling transformeert voordat u de order-of factuur details opslaat in uw data base met klant activiteiten.
 
@@ -36,11 +35,11 @@ Zie [limieten en configuratie-informatie voor Azure Logic apps](../logic-apps/lo
   * Voor assembly's hebt u een Azure Blob-container nodig waar u de assembly en de locatie van die container kunt uploaden. Op die manier kunt u deze locatie later opgeven wanneer u de assembly toevoegt aan uw integratie account. 
   Voor deze taak hebt u de volgende items nodig:
 
-    | Item | Beschrijving |
+    | Item | Description |
     |------|-------------|
     | [Azure-opslag account](../storage/common/storage-account-overview.md) | Maak in dit account een Azure Blob-container voor de assembly. Meer informatie [over het maken van een opslag account](../storage/common/storage-account-create.md). |
     | Blobcontainer | In deze container kunt u uw assembly uploaden. U hebt ook de locatie van deze container nodig wanneer u de assembly toevoegt aan uw integratie account. Meer informatie over het [maken van een BLOB-container](../storage/blobs/storage-quickstart-blobs-portal.md). |
-    | [Azure Opslagverkenner](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Met dit hulp programma kunt u opslag accounts en BLOB-containers eenvoudiger beheren. Als u Storage Explorer wilt gebruiken, moet u [Azure Storage Explorer downloaden en installeren](https://www.storageexplorer.com/). Vervolgens verbindt u Storage Explorer met uw opslag account door de stappen in aan de [slag met Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)te volgen. Zie [Quick Start: een BLOB maken in object opslag met Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)voor meer informatie. <p>U kunt ook uw opslag account zoeken en selecteren in het Azure Portal. Selecteer in het menu van uw opslag account **Storage Explorer**. |
+    | [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Met dit hulp programma kunt u opslag accounts en BLOB-containers eenvoudiger beheren. Als u Storage Explorer wilt gebruiken, moet u [Azure Storage Explorer downloaden en installeren](https://www.storageexplorer.com/). Vervolgens verbindt u Storage Explorer met uw opslag account door de stappen in aan de [slag met Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)te volgen. Zie [Quick Start: een BLOB maken in object opslag met Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)voor meer informatie. <p>U kunt ook uw opslag account zoeken en selecteren in het Azure Portal. Selecteer in het menu van uw opslag account **Storage Explorer**. |
     |||
 
   * Voor Maps kunt u op dit moment grotere kaarten toevoegen met behulp van de [Azure Logic apps-rest API-kaarten](https://docs.microsoft.com/rest/api/logic/maps/createorupdate).
@@ -113,7 +112,7 @@ Als u grotere assembly's wilt toevoegen, kunt u uw assembly uploaden naar een Az
 
    * Als uw BLOB-container ten minste open bare toegang heeft, kiest u **Annuleren**en volgt u deze stappen verderop op deze pagina: [uploaden naar containers met open bare toegang](#public-access-assemblies)
 
-     ![Open bare toegang](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
+     ![Openbare toegang](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
 
    * Als uw BLOB-container geen open bare toegang heeft, kiest u **Annuleren**en volgt u deze stappen verderop op deze pagina: [uploaden naar containers zonder open bare toegang](#no-public-access-assemblies)
 
@@ -150,7 +149,7 @@ Op de **overzichts** pagina van uw integratie account, onder **onderdelen**, bev
 1. Genereer een Shared Access Signature (SAS) voor uw assembly nadat u klaar bent met het uploaden. 
    Selecteer in het snelmenu van de assembly de optie **Shared Access Signature ophalen**.
 
-1. Selecteer in het deel venster **Shared Access Signature** de optie URI > **maken**voor **Shared Access-hand tekening op container niveau genereren**. 
+1. Selecteer in het deel venster **Shared Access Signature** de optie URI maken voor **Shared Access-hand tekening op container niveau genereren**  >  **Create**. 
    Wanneer de SAS-URL wordt gegenereerd, klikt u naast het vak **URL** op **kopiëren**.
 
 1. Ga terug naar de Azure Portal waar het deel venster **Assembly toevoegen** is geopend. 

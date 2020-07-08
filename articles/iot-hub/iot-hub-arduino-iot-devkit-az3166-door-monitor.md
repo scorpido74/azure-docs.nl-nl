@@ -9,10 +9,9 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
 ms.openlocfilehash: 6bebe8ac6b9869466938600d6267fd0062c84477
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75977305"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Monitor voor deuren: e-mail met Azure Functions en SendGrid verzenden wanneer een deur wordt geopend           
@@ -81,7 +80,7 @@ Nadat de implementatie is voltooid, klikt u erop en klikt u vervolgens op de kno
 
 ![SendGrid beheren](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-manage.png)
 
-Klik op de pagina SendGrid op **instellingen** > **API-sleutels** > **API-sleutel maken**.
+Klik op de pagina SendGrid op **instellingen**  >  **API-sleutels**  >  **API-sleutel maken**.
 
 ![SendGrid eerst API maken](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-first.png)
 
@@ -134,12 +133,12 @@ Vouw de sectie **ARDUINO-voor beelden** aan de linkerkant uit, blader naar voor 
 
 ![Mini-Solution-voor beelden](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
 
-U kunt ook de voor beeld-app openen vanuit het opdracht palet. Gebruik `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) om het opdracht palet te openen, typ **Arduino**en zoek en selecteer vervolgens **Arduino: voor beelden**.
+U kunt ook de voor beeld-app openen vanuit het opdracht palet. Gebruik `Ctrl+Shift+P` (macOS: `Cmd+Shift+P` ) om het opdracht palet te openen, typ **Arduino**en zoek en selecteer vervolgens **Arduino: voor beelden**.
 
 ### <a name="provision-azure-services"></a>Azure-Services inrichten
 
 Voer in het oplossings venster de taak Cloud inrichting uit:
-- Type `Ctrl+P` (macOS: `Cmd+P`).
+- Type `Ctrl+P` (macOS: `Cmd+P` ).
 - Typ `task cloud-provision` in het opgegeven tekstvak.
 
 In de VS code-terminal wordt u door een interactieve opdracht regel begeleid bij het inrichten van de vereiste Azure-Services. Selecteer alle items uit de lijst met vragen die u eerder hebt ingericht in [implementatie IOT hub in azure](#deploy-iot-hub-in-azure).
@@ -155,7 +154,7 @@ Upload vervolgens de code voor het apparaat.
 
 #### <a name="windows"></a>Windows
 
-1. Gebruiken `Ctrl+P` om uit `task device-upload`te voeren.
+1. Gebruiken `Ctrl+P` om uit te voeren `task device-upload` .
 
 2. De Terminal vraagt u de configuratie modus in te voeren. Als u dit wilt doen, houdt u de knop A ingedrukt en geeft u de knop opnieuw instellen op. In het scherm worden het DevKit-identificatie nummer en de woord *configuratie*weer gegeven.
 
@@ -163,7 +162,7 @@ Upload vervolgens de code voor het apparaat.
 
 1. De DevKit in de configuratie modus zetten: Houd de knop ingedrukt en druk vervolgens de knop Reset. In het scherm wordt ' configuratie ' weer gegeven.
 
-2. Klik `Cmd+P` om uit `task device-upload`te voeren.
+2. Klik `Cmd+P` om uit te voeren `task device-upload` .
 
 #### <a name="verify-upload-and-run-the-sample-app"></a>De voor beeld-app verifiëren, uploaden en uitvoeren
 
@@ -182,7 +181,7 @@ De DevKit wordt opnieuw opgestart en de code wordt gestart.
 
 Het programma wordt eerst geïnitialiseerd wanneer de DevKit zich in de aanwezigheid van een stabiel magnetisch veld bevindt.
 
-Na de initialisatie `Door closed` wordt weer gegeven op het scherm. Als er een wijziging in het magnetische veld is, wordt de status `Door opened`gewijzigd in. Telkens wanneer de status van de deur verandert, ontvangt u een e-mail melding. (Het kan vijf minuten duren voordat deze e-mail berichten zijn ontvangen.)
+Na de initialisatie `Door closed` wordt weer gegeven op het scherm. Als er een wijziging in het magnetische veld is, wordt de status gewijzigd in `Door opened` . Telkens wanneer de status van de deur verandert, ontvangt u een e-mail melding. (Het kan vijf minuten duren voordat deze e-mail berichten zijn ontvangen.)
 
 ![Magneten dicht bij de sensor: deur gesloten](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg "Magneten dicht bij de sensor: deur gesloten")
 

@@ -9,10 +9,9 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: 02247adb9852a72b386feb2ef0924b0f1b3d6277
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75895238"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Problemen met Apache Hive oplossen met behulp van Azure HDInsight
@@ -21,7 +20,7 @@ Meer informatie over de belangrijkste vragen en hun oplossingen bij het werken m
 
 ## <a name="how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster"></a>Hoe kan ik een Hive-metastore exporteren en importeren in een ander cluster?
 
-### <a name="resolution-steps"></a>Oplossingen
+### <a name="resolution-steps"></a>Stappen om het probleem op te lossen
 
 1. Maak verbinding met het HDInsight-cluster met behulp van een SSH-client (Secure Shell). Zie [aanvullende Lees bewerkingen](#additional-reading-end)voor meer informatie.
 
@@ -39,7 +38,7 @@ Meer informatie over de belangrijkste vragen en hun oplossingen bij het werken m
     hive -f alltables.sql
     ```
 
-In de code in de oplossings stappen wordt ervan uitgegaan dat de gegevens paden op het nieuwe cluster hetzelfde zijn als de gegevens paden op het oude cluster. Als de gegevens paden verschillen, kunt u het gegenereerde `alltables.sql` bestand hand matig bewerken om eventuele wijzigingen weer te geven.
+In de code in de oplossings stappen wordt ervan uitgegaan dat de gegevens paden op het nieuwe cluster hetzelfde zijn als de gegevens paden op het oude cluster. Als de gegevens paden verschillen, kunt u het gegenereerde bestand hand matig bewerken `alltables.sql` om eventuele wijzigingen weer te geven.
 
 ### <a name="additional-reading"></a>Aanvullende Lees bewerkingen
 
@@ -47,7 +46,7 @@ In de code in de oplossings stappen wordt ervan uitgegaan dat de gegevens paden 
 
 ## <a name="how-do-i-locate-hive-logs-on-a-cluster"></a>Wilt u Hive-logboeken Hoe kan ik vinden op een cluster?
 
-### <a name="resolution-steps"></a>Oplossingen
+### <a name="resolution-steps"></a>Stappen om het probleem op te lossen
 
 1. Maak verbinding met het HDInsight-cluster met behulp van SSH. Zie **aanvullende Lees bewerkingen**voor meer informatie.
 
@@ -75,7 +74,7 @@ In de code in de oplossings stappen wordt ervan uitgegaan dat de gegevens paden 
 
 ## <a name="how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster"></a>Hoe kan ik de Hive-shell starten met specifieke configuraties in een cluster?
 
-### <a name="resolution-steps"></a>Oplossingen
+### <a name="resolution-steps"></a>Stappen om het probleem op te lossen
 
 1. Geef een sleutel-waardepaar voor de configuratie op wanneer u de Hive-shell start. Zie [aanvullende Lees bewerkingen](#additional-reading-end)voor meer informatie.
 
@@ -101,7 +100,7 @@ In de code in de oplossings stappen wordt ervan uitgegaan dat de gegevens paden 
 
 ## <a name="how-do-i-analyze-apache-tez-dag-data-on-a-cluster-critical-path"></a><a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Hoe kan ik Apache TEZ DAG-gegevens op een cluster kritiek pad analyseren?
 
-### <a name="resolution-steps"></a>Oplossingen
+### <a name="resolution-steps"></a>Stappen om het probleem op te lossen
 
 1. Als u een Apache TEZ-Directed Acyclic Graph (DAG) wilt analyseren op een cluster-essentiële grafiek, maakt u verbinding met het HDInsight-cluster met behulp van SSH. Zie [aanvullende Lees bewerkingen](#additional-reading-end)voor meer informatie.
 
@@ -138,7 +137,7 @@ In de code in de oplossings stappen wordt ervan uitgegaan dat de gegevens paden 
 
 ## <a name="how-do-i-download-tez-dag-data-from-a-cluster"></a>TEZ DAG gegevens van een cluster Hoe kan ik downloaden?
 
-#### <a name="resolution-steps"></a>Oplossingen
+#### <a name="resolution-steps"></a>Stappen om het probleem op te lossen
 
 Er zijn twee manieren om de TEZ DAG-gegevens te verzamelen:
 
@@ -167,6 +166,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 - Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-- Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+- Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
 - Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
