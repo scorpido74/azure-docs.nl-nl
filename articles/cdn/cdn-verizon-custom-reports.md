@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 10/11/2017
 ms.author: allensu
 ms.openlocfilehash: cff355aeb74efc9dec2780840ae57fea4c5764cc
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84888710"
 ---
 # <a name="custom-reports-from-verizon"></a>Aangepaste rapporten van Verizon
@@ -77,7 +77,7 @@ U kunt de gegevens in Excel-indeling exporteren door rechts van de knop **Ga** o
 | Percentage cache treffers               | Hiermee wordt het percentage van cache aanvragen aangegeven dat rechtstreeks vanuit de cache naar de aanvrager is verzonden. |
 | Cachetreffers                | Hiermee wordt het totale aantal verzonden aanvragen of gegevens (MB) voor de rand-CNAME aangegeven dat resulteert in een cache treffer (bijvoorbeeld TCP_EXPIRED_HIT, TCP_HIT of TCP_PARTIAL_HIT). Er treedt een cache treffer op wanneer een versie van de aangevraagde inhoud in de cache wordt gevonden. |
 | Overgedragen gegevens (MB)     | Hiermee wordt de totale hoeveelheid verzonden gegevens (MB) van de Edge-servers naar HTTP-clients (webbrowsers) voor de Edge CNAME aangegeven. De hoeveelheid overgedragen gegevens wordt berekend door de HTTP-antwoord headers toe te voegen aan de hoofd tekst van het antwoord. Als gevolg hiervan is de hoeveelheid gegevens die voor elke Asset wordt overgedragen groter dan de werkelijke bestands grootte. |
-| Beschrijving               | Identificeert een Edge CNAME op basis van de hostnaam |
+| Description               | Identificeert een Edge CNAME op basis van de hostnaam |
 | Treffers                      | Hiermee wordt het totale aantal aanvragen voor de rand-CNAME aangegeven |
 | Missers                    | Hiermee wordt het totale aantal verzonden aanvragen of gegevens (MB) voor de rand-CNAME aangegeven dat resulteert in een Missing in een cache (bijvoorbeeld TCP_CLIENT_REFRESH_MISS, TCP_EXPIRED_MISS of TCP_MISS). Er treedt een cache-Misser op wanneer de aangevraagde inhoud niet is opgeslagen in de cache op de rand server die de aanvraag heeft geaccepteerd. | 
 | Geen cache                  | Hiermee wordt het totale aantal aanvragen of overgedragen gegevens (MB) aangegeven voor de Edge CNAME die resulteert in een CONFIG_NOCACHE cache-status code.  |
