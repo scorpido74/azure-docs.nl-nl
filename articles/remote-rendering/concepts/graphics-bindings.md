@@ -9,12 +9,12 @@ ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
-ms.openlocfilehash: 4854d5ff9d697a2bf082a788c0e761a2152b0294
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: d29500db5efd0abde4c9555fde9a7e3d5bbe070a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758704"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564985"
 ---
 # <a name="graphics-binding"></a>Afbeeldings binding
 
@@ -27,7 +27,7 @@ Zodra de afbeeldings binding is ingesteld, hebt u toegang tot verschillende func
 In eenheid wordt de volledige binding verwerkt door de struct die is `RemoteUnityClientInit` door gegeven aan `RemoteManagerUnity.InitializeManager` . Als u de grafische modus wilt instellen, moet u het `GraphicsApiType` veld instellen op de gekozen binding. Het veld wordt automatisch ingevuld, afhankelijk van of er een XRDevice aanwezig is. Het gedrag kan hand matig worden overschreven met het volgende gedrag:
 
 * **HoloLens 2**: de binding van de [Windows Mixed Reality](#windows-mixed-reality) -afbeelding wordt altijd gebruikt.
-* **Platte UWP bureau blad-app**: [simulatie](#simulation) wordt altijd gebruikt. Als u deze modus wilt gebruiken, moet u de stappen in de [zelf studie volgen: een geheel nieuw eenheids project instellen](../tutorials/unity/project-setup.md).
+* **Platte UWP bureau blad-app**: [simulatie](#simulation) wordt altijd gebruikt.
 * **Unity editor**: [simulatie](#simulation) wordt altijd gebruikt tenzij er een WMR VR-headset is verbonden in welk geval ARR wordt uitgeschakeld, zodat er fouten in de niet-ARR gerelateerde onderdelen van de toepassing kunnen worden opgespoord. Zie ook [Holographic Remoting](../how-tos/unity/holographic-remoting.md).
 
 Het enige andere relevante deel voor de eenheid heeft toegang tot de [basis binding](#access). alle andere secties hieronder kunnen worden overgeslagen.
@@ -233,4 +233,4 @@ else
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Zelf studie: een geheel nieuw eenheids project instellen](../tutorials/unity/project-setup.md)
+* [Zelf studie: externe gerenderde modellen weer geven](../tutorials/unity/view-remote-models/view-remote-models.md)

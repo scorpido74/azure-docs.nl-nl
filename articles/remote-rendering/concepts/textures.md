@@ -5,16 +5,16 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: de3f127d97803ea920d61d748a1af0c80a1a1afc
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 4b87008f4172e58440c32e4ff92a3ee1f4d5efae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759129"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565871"
 ---
 # <a name="textures"></a>Patronen
 
-Bitmappatronen zijn een onveranderbare [gedeelde bron](../concepts/lifetime.md). Bitmappatronen kunnen worden geladen vanuit [Blob Storage](../how-tos/conversion/blob-storage.md) en worden toegepast op modellen, zoals wordt geïllustreerd in [zelf studie: de omgeving en het materiaal wijzigen](../tutorials/unity/changing-environment-and-materials.md). De meeste patronen zullen echter deel uitmaken van een [geconverteerd model](../how-tos/conversion/model-conversion.md), waar ze naar worden verwezen door het bijbehorende [materiaal](materials.md).
+Bitmappatronen zijn een onveranderbare [gedeelde bron](../concepts/lifetime.md). Bitmappatronen kunnen worden geladen vanuit [Blob Storage](../how-tos/conversion/blob-storage.md) en worden toegepast op modellen, zoals wordt geïllustreerd in [zelf studie: de omgeving en het materiaal wijzigen](../tutorials/unity/materials-lighting-effects/materials-lighting-effects.md). De meeste patronen zullen echter deel uitmaken van een [geconverteerd model](../how-tos/conversion/model-conversion.md), waar ze naar worden verwezen door het bijbehorende [materiaal](materials.md).
 
 ## <a name="texture-types"></a>Typen bitmappatronen
 

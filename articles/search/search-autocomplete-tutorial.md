@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 60e9a435d705ee0fee6509e92cdcb056ac7ab609
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 004f1ea55bcda68485d8b11ed472b6cab2ca7545
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758119"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562487"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Automatisch aanvullen en suggesties aan client-apps toevoegen
 
@@ -34,7 +34,7 @@ De rest van dit artikel is gericht op query's en client code. Java script en C# 
 De elementen van een aanvraag bevatten een van de Search-as-u-type-Api's, een gedeeltelijke query en een suggestie. Het volgende script illustreert onderdelen van een aanvraag, waarbij de REST API automatisch aanvullen als voor beeld wordt gebruikt.
 
 ```http
-POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
+POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 {
   "search": "minecraf",
   "suggesterName": "sg"
@@ -68,10 +68,10 @@ Voor suggesties moet u het antwoord verder verfijnen om duplicaten te voor komen
 
 | Parameter | Gebruik |
 |-----------|-------|
-| **$select** | Als u meerdere **sourceFields** in een suggestie hebt, gebruikt u **$Select** om te kiezen welk veld waarden bijdraagt (`$select=GameTitle`). |
+| **$select** | Als u meerdere **sourceFields** in een suggestie hebt, gebruikt u **$Select** om te kiezen welk veld waarden bijdraagt ( `$select=GameTitle` ). |
 | **searchFields** | De query beperken tot specifieke velden. |
-| **$filter** | Overeenkomst criteria Toep assen op de resultatenset`$filter=Category eq 'ActionAdventure'`(). |
-| **$top** | De resultaten beperken tot een bepaald aantal (`$top=5`).|
+| **$filter** | Overeenkomst criteria Toep assen op de resultatenset ( `$filter=Category eq 'ActionAdventure'` ). |
+| **$top** | De resultaten beperken tot een bepaald aantal ( `$top=5` ).|
 
 ## <a name="add-user-interaction-code"></a>Gebruikers interactie code toevoegen
 
@@ -116,7 +116,7 @@ $(function () {
 });
 ```
 
-Hiermee `source` wordt de functie automatisch aanvullen van de jQuery-gebruikers interface aangegeven, waar de lijst met items wordt weer gegeven onder het zoekvak. Aangezien dit project een MVC-project is, wordt de functie **suggereren** aangeroepen in **HomeController.cs** die de logica bevat voor het retour neren van query suggesties. Deze functie geeft ook enkele para meters door aan het beheren van hooglichten, fuzzy matching en term. Door de JavaScript-API voor automatisch aanvullen wordt de parameter 'term' toegevoegd.
+Hiermee wordt de `source` functie automatisch aanvullen van de jQuery-gebruikers interface aangegeven, waar de lijst met items wordt weer gegeven onder het zoekvak. Aangezien dit project een MVC-project is, wordt de functie **suggereren** aangeroepen in **HomeController.cs** die de logica bevat voor het retour neren van query suggesties. Deze functie geeft ook enkele para meters door aan het beheren van hooglichten, fuzzy matching en term. Door de JavaScript-API voor automatisch aanvullen wordt de parameter 'term' toegevoegd.
 
 Hiermee `minLength: 3` wordt gegarandeerd dat aanbevelingen alleen worden weer gegeven wanneer het zoekvak ten minste drie tekens bevat.
 
@@ -140,7 +140,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 Als u gebruikmaakt van C# en een MVC-toepassing, kunt u in het **HomeController.cs** -bestand onder de map controllers een klasse maken voor de voorgestelde resultaten. In .NET is een functie Voorst Ellen gebaseerd op de [methode DocumentsOperationsExtensions. suggereren](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet).
 
-Met `InitSearch` de-methode wordt een geverifieerde http-index client naar de Azure Cognitive Search-service gemaakt. Zie [Azure Cognitive Search gebruiken vanuit een .NET-toepassing](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)voor meer informatie over de .NET SDK.
+`InitSearch`Met de-methode wordt een geverifieerde HTTP-index client naar de Azure Cognitive Search-service gemaakt. Zie [Azure Cognitive Search gebruiken vanuit een .NET-toepassing](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)voor meer informatie over de .NET SDK.
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)

@@ -6,15 +6,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: how-to
+ms.topic: troubleshooting
 ms.date: 06/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 3633a648f551d33fb9cb12021c2c07bbf1a235dc
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 7225b04908753bb7c07ac89510859bac9db5b89c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610573"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565018"
 ---
 # <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>Logboeken voor het oplossen van problemen bij het uploaden van gegevens in Azure Data Box Disk
 
@@ -156,7 +156,7 @@ De bestands niveau status bevat `BlobStatus` een beschrijving van alle acties di
 
 De fouten die worden gegenereerd bij het uploaden van de gegevens naar Azure, worden in de volgende tabel samenvatten.
 
-| Foutcode | Beschrijving                   |
+| Foutcode | Description                   |
 |-------------|------------------------------|
 |`None` |  Is voltooid.           |
 |`Renamed` | De naam van de blob is gewijzigd.   |

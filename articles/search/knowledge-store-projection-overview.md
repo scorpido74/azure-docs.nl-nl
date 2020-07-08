@@ -1,24 +1,21 @@
 ---
-title: Projectie concepten (preview-versie)
+title: Projectie concepten
 titleSuffix: Azure Cognitive Search
-description: Sla uw verrijkte gegevens op in een Data Base van de AI-verrijkings pijp lijn naar een kennis Archief voor gebruik in andere scenario's dan zoeken in volledige tekst. Dit kennisarchief is momenteel beschikbaar als openbare preview-versie.
+description: Sla uw verrijkte gegevens op in een Data Base van de AI-verrijkings pijp lijn naar een kennis Archief voor gebruik in andere scenario's dan zoeken in volledige tekst.
 manager: nitinme
 author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: 894fc6efc99eb7fcc17f2199270c08bc3cee8e8e
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.date: 06/30/2020
+ms.openlocfilehash: 22db4f95bacd926208ac7edf3306cd136d81b00e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84750320"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565194"
 ---
 # <a name="knowledge-store-projections-in-azure-cognitive-search"></a>Micro soft Knowledge Store-projecties in azure Cognitive Search
-
-> [!IMPORTANT] 
-> Dit kennisarchief is momenteel beschikbaar als openbare preview-versie. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen .NET SDK-ondersteuning.
 
 Azure Cognitive Search maakt inhouds verrijking mogelijk via ingebouwde cognitieve vaardig heden en aangepaste vaardig heden als onderdeel van het indexeren. Verrijkingen maken nieuwe informatie, waar ze nog niet aanwezig waren: het extra heren van informatie uit installatie kopieën, het detecteren van sentiment, sleutel zinnen en entiteiten uit tekst, om een paar te noemen. Verrijkingen voegen ook structuur toe aan niet-gedifferentieerde tekst. Al deze processen resulteren in documenten die het zoeken naar volledige tekst effectiever maken. In veel gevallen zijn verrijkte documenten handig voor andere scenario's dan zoeken, zoals voor kennis analyse.
 

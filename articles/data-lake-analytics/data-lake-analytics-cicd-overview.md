@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: b035be727df2dfecb613da79681affd740c69bec
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 782933550dbde51dcf6fd9fa42d7a4ac086f643f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60333866"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564936"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Een CI/CD-pijp lijn voor Azure Data Lake Analytics instellen  
 
@@ -50,7 +50,7 @@ Als dat niet het geval is, hebt u twee opties voor het migreren van het project:
 
 MSBuild biedt geen ingebouwde ondersteuning voor U-SQL-projecten. Als u deze ondersteuning wilt ontvangen, moet u een verwijzing naar uw oplossing toevoegen aan het pakket [micro soft. Azure. DataLake. USQL. SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) NuGet waarmee de vereiste taal service wordt toegevoegd.
 
-Als u de NuGet-pakket verwijzing wilt toevoegen, klikt u met de rechter muisknop op de oplossing in Visual Studio Solution Explorer en kiest u **NuGet-pakketten beheren**. U kunt ook een bestand met de `packages.config` naam in de map Solution toevoegen en de volgende inhoud in de oplossing plaatsen:
+Als u de NuGet-pakket verwijzing wilt toevoegen, klikt u met de rechter muisknop op de oplossing in Visual Studio Solution Explorer en kiest u **NuGet-pakketten beheren**. U kunt ook een bestand `packages.config` met de naam in de map Solution toevoegen en de volgende inhoud in de oplossing plaatsen:
 
 ```xml 
 <?xml version="1.0" encoding="utf-8"?>
@@ -79,11 +79,11 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
 De argumenten definitie en waarden zijn als volgt:
 
-* **USQLSDKPath =\<U-SQL Nuget package> \build\runtime**. Deze para meter verwijst naar het installatiepad van het NuGet-pakket voor de U-SQL-taal service.
+* **USQLSDKPath = \<U-SQL Nuget package> \build\runtime**. Deze para meter verwijst naar het installatiepad van het NuGet-pakket voor de U-SQL-taal service.
 * **USQLTargetType = Merge of SyntaxCheck**:
     * **Samen voegen**. In de modus samen voegen worden code-behind bestanden gecompileerd. Voor beelden zijn **. cs**-, **. py**-en **. r** -bestanden. Het geeft de resulterende door de gebruiker gedefinieerde code bibliotheek in het U-SQL-script. Voor beelden zijn een dll binaire, python-of R-code.
     * **SyntaxCheck**. In de SyntaxCheck-modus worden code-behind-bestanden eerst samengevoegd in het U-SQL-script. Vervolgens compileert het U-SQL-script om uw code te valideren.
-* **Data root =\<data root pad>**. Data root is alleen nodig voor de modus SyntaxCheck. Wanneer het script wordt gebouwd met de modus SyntaxCheck, controleert MSBuild de verwijzingen naar database objecten in het script. Voordat U bouwt, stelt U een overeenkomende lokale omgeving in die de objecten bevat waarnaar wordt verwezen vanuit de U-SQL database in de map Data root van de computer bouwen. U kunt deze database afhankelijkheden ook beheren door te [verwijzen naar een U-SQL database-project](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project). MSBuild controleert alleen database object verwijzingen, geen bestanden.
+* **Data root = \<DataRoot path> **. Data root is alleen nodig voor de modus SyntaxCheck. Wanneer het script wordt gebouwd met de modus SyntaxCheck, controleert MSBuild de verwijzingen naar database objecten in het script. Voordat U bouwt, stelt U een overeenkomende lokale omgeving in die de objecten bevat waarnaar wordt verwezen vanuit de U-SQL database in de map Data root van de computer bouwen. U kunt deze database afhankelijkheden ook beheren door te [verwijzen naar een U-SQL database-project](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project). MSBuild controleert alleen database object verwijzingen, geen bestanden.
 * **EnableDeployment = True** of **False**. EnableDeployment geeft aan of het is toegestaan om U-SQL-data bases te implementeren tijdens het bouw proces. Als u verwijst naar een U-SQL database project en de database objecten in uw U-SQL-script gebruikt, stelt u deze para meter in op **waar**.
 
 ### <a name="continuous-integration-through-azure-pipelines"></a>Continue integratie via Azure-pijp lijnen
@@ -92,7 +92,7 @@ Naast de opdracht regel kunt u ook de taak Visual Studio build of MSBuild gebrui
 
 ![MSBuild-taak voor een U-SQL-project](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
 
-1.  Voeg een NuGet-herstel taak toe voor het ophalen van het NuGet-pakket met `Azure.DataLake.USQL.SDK`oplossingen waarnaar wordt verwezen, zodat MSBuild de U-SQL-taal doelen kan vinden. Stel de **Geavanceerde** > **doelmap** in `$(Build.SourcesDirectory)/packages` op als u het voor beeld van de MSBuild-argumenten rechtstreeks in stap 2 wilt gebruiken.
+1.  Voeg een NuGet-herstel taak toe voor het ophalen van het NuGet-pakket met oplossingen waarnaar wordt verwezen `Azure.DataLake.USQL.SDK` , zodat MSBuild de U-SQL-taal doelen kan vinden. Stel de **Geavanceerde**  >  **doelmap** in op `$(Build.SourcesDirectory)/packages` Als u het voor beeld van de MSBuild-argumenten rechtstreeks in stap 2 wilt gebruiken.
 
     ![NuGet-herstel taak voor een U-SQL-project](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
@@ -106,7 +106,7 @@ Naast de opdracht regel kunt u ook de taak Visual Studio build of MSBuild gebrui
 
 ### <a name="u-sql-project-build-output"></a>Uitvoer van U-SQL-project build
 
-Nadat u een build hebt uitgevoerd, worden alle scripts in het U-SQL-project gebouwd en uitgevoerd naar een zip `USQLProjectName.usqlpack`-bestand met de naam. De mapstructuur in uw project wordt bewaard in de gezipte build-uitvoer.
+Nadat u een build hebt uitgevoerd, worden alle scripts in het U-SQL-project gebouwd en uitgevoerd naar een zip-bestand met de naam `USQLProjectName.usqlpack` . De mapstructuur in uw project wordt bewaard in de gezipte build-uitvoer.
 
 > [!NOTE]
 >
@@ -302,7 +302,7 @@ Azure Data Lake-Hulpprogram Ma's voor Visual Studio biedt u-SQL database project
 
 MSBuild biedt geen ingebouwde ondersteuning voor U-SQL database projecten. Om deze mogelijkheid te verkrijgen, moet u een verwijzing naar uw oplossing toevoegen aan het pakket [micro soft. Azure. DataLake. USQL. SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) NuGet waarmee de vereiste taal service wordt toegevoegd.
 
-Als u de NuGet-pakket verwijzing wilt toevoegen, klikt u met de rechter muisknop op de oplossing in Visual Studio Solution Explorer. Kies **NuGet-pakketten beheren**. Zoek en installeer het NuGet-pakket. U kunt ook een bestand met de naam **packages. config** toevoegen aan de map Solution en de volgende inhoud in de oplossing plaatsen:
+Als u de NuGet-pakket verwijzing wilt toevoegen, klikt u met de rechter muisknop op de oplossing in Visual Studio Solution Explorer. Kies **NuGet-pakketten beheren**. Zoek en installeer het NuGet-pakket. U kunt ook een bestand met de naam **packages.config** toevoegen aan de map Solution en de volgende inhoud in de oplossing plaatsen:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -315,7 +315,7 @@ Als u de NuGet-pakket verwijzing wilt toevoegen, klikt u met de rechter muisknop
 
 Als u uw U-SQL database project wilt maken, roept u de Standard MSBuild-opdracht regel aan en geeft U de micro soft SQL SDK NuGet-pakket verwijzing door met een extra argument. Zie het volgende voorbeeld: 
 
-```
+```console
 msbuild DatabaseProject.usqldbproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL.SDK.1.3.180615\build\runtime
 ```
 
@@ -325,24 +325,23 @@ Het argument `USQLSDKPath=<U-SQL Nuget package>\build\runtime` verwijst naar het
 
 Naast de opdracht regel kunt u Visual Studio build of een MSBuild-taak gebruiken om U-SQL database projecten in azure-pijp lijnen te maken. Als u een build-taak wilt instellen, moet u twee taken toevoegen aan de build-pijp lijn: een NuGet-herstel taak en een MSBuild-taak.
 
-   ![CI/CD MSBuild-taak voor een U-SQL-project](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
+   ![CI/CD MSBuild-taak voor een U-SQL-project](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png)
 
-
-1. Voeg een NuGet-herstel taak toe voor het ophalen van het NuGet-pakket met oplossingen `Azure.DataLake.USQL.SDK`waarnaar wordt verwezen, zodat MSBuild de U-SQL-taal doelen kan vinden. Stel de **Geavanceerde** > **doelmap** in `$(Build.SourcesDirectory)/packages` op als u het voor beeld van de MSBuild-argumenten rechtstreeks in stap 2 wilt gebruiken.
+1. Voeg een NuGet-herstel taak toe voor het ophalen van het NuGet-pakket met oplossingen waarnaar wordt verwezen, `Azure.DataLake.USQL.SDK` zodat MSBuild de U-SQL-taal doelen kan vinden. Stel de **Geavanceerde**  >  **doelmap** in op `$(Build.SourcesDirectory)/packages` Als u het voor beeld van de MSBuild-argumenten rechtstreeks in stap 2 wilt gebruiken.
 
    ![CI/CD NuGet-taak voor een U-SQL-project](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
 2. Stel MSBuild-argumenten in Visual Studio build tools of in een MSBuild-taak in, zoals wordt weer gegeven in het volgende voor beeld. U kunt ook variabelen definiëren voor deze argumenten in de pijp lijn voor het bouwen van Azure-pijp lijnen.
 
-   ![CI/CD MSBuild-variabelen definiëren voor een U-SQL database project](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables-database-project.png) 
+   ![CI/CD MSBuild-variabelen definiëren voor een U-SQL database project](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables-database-project.png)
 
-   ```
+   ```console
    /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime
    ```
- 
+
 ### <a name="u-sql-database-project-build-output"></a>U-SQL database project build-uitvoer
 
-Het build-uitvoer voor een U-SQL database project is een U-SQL database implementatie pakket met de naam met `.usqldbpack`het achtervoegsel. Het `.usqldbpack` pakket is een zip-bestand dat alle DDL-instructies bevat in één U-SQL-script in een DDL-map. Het bevat alle **. dll** -bestanden en aanvullende bestand voor assembly in een tijdelijke map.
+Het build-uitvoer voor een U-SQL database project is een U-SQL database implementatie pakket met de naam met het achtervoegsel `.usqldbpack` . Het `.usqldbpack` pakket is een zip-bestand dat alle DDL-instructies bevat in één U-SQL-script in een DDL-map. Het bevat alle **. dll** -bestanden en aanvullende bestand voor assembly in een tijdelijke map.
 
 ## <a name="test-table-valued-functions-and-stored-procedures"></a>Functies voor tabel waarden en opgeslagen procedures testen
 
@@ -354,7 +353,7 @@ Het is momenteel niet mogelijk om test cases toe te voegen voor functies met tab
 
 ## <a name="deploy-u-sql-database-through-azure-pipelines"></a>U-SQL database implementeren via Azure-pijp lijnen
 
-`PackageDeploymentTool.exe`biedt de programmeer-en opdracht regel interfaces die U helpen bij de implementatie van U-SQL database implementatie pakketten, **. usqldbpack**. De SDK is opgenomen in het [U-SQL SDK NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), dat zich bevindt op **build/runtime/PackageDeploymentTool. exe**. `PackageDeploymentTool.exe`Met kunt u u-SQL-data bases implementeren op zowel Azure data Lake Analytics als lokale accounts.
+`PackageDeploymentTool.exe`biedt de programmeer-en opdracht regel interfaces die U helpen bij de implementatie van U-SQL database implementatie pakketten, **. usqldbpack**. De SDK is opgenomen in het [U-SQL SDK NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), dat zich bevindt op **build/runtime/PackageDeploymentTool.exe**. Met `PackageDeploymentTool.exe` kunt u u-SQL-data bases implementeren op zowel Azure data Lake Analytics als lokale accounts.
 
 > [!NOTE]
 >
@@ -363,13 +362,13 @@ Het is momenteel niet mogelijk om test cases toe te voegen voor functies met tab
 
 Voer de volgende stappen uit om een implementatie taak voor een data base in te stellen in azure-pijp lijnen:
 
-1. Voeg een Power shell-script taak toe in een build of release-pijp lijn en voer het volgende Power shell-script uit. Deze taak helpt bij het ophalen van Azure SDK `PackageDeploymentTool.exe` - `PackageDeploymentTool.exe`afhankelijkheden voor en. U kunt de para meters **-AzureSDK** en **-DBDeploymentTool** instellen om de afhankelijkheden en het implementatie hulpprogramma te laden voor specifieke mappen. Geef het pad **-AzureSDK** naar `PackageDeploymentTool.exe` de para meter **-AzureSDKPath** in stap 2. 
+1. Voeg een Power shell-script taak toe in een build of release-pijp lijn en voer het volgende Power shell-script uit. Deze taak helpt bij het ophalen van Azure SDK-afhankelijkheden voor `PackageDeploymentTool.exe` en `PackageDeploymentTool.exe` . U kunt de para meters **-AzureSDK** en **-DBDeploymentTool** instellen om de afhankelijkheden en het implementatie hulpprogramma te laden voor specifieke mappen. Geef het pad **-AzureSDK** naar `PackageDeploymentTool.exe` de para meter **-AzureSDKPath** in stap 2. 
 
     ```powershell
     <#
         This script is used for getting dependencies and SDKs for U-SQL database deployment.
         PowerShell command line support for deploying U-SQL database package(.usqldbpack file) will come soon.
-        
+
         Example :
             GetUSQLDBDeploymentSDK.ps1 -AzureSDK "AzureSDKFolderPath" -DBDeploymentTool "DBDeploymentToolFolderPath"
     #>
@@ -424,7 +423,7 @@ Voer de volgende stappen uit om een implementatie taak voor een data base in te 
     copy USQLSDK\build\runtime\*.* $DBDeploymentTool
     ```
 
-2. Voeg een **opdracht regel taak** toe in een build of release-pijp lijn en vul het script in door `PackageDeploymentTool.exe`in te roepen. `PackageDeploymentTool.exe`bevindt zich onder de gedefinieerde map **$DBDeploymentTool** . Het voorbeeld script is als volgt: 
+2. Voeg een **opdracht regel taak** toe in een build of release-pijp lijn en vul het script in door in te roepen `PackageDeploymentTool.exe` . `PackageDeploymentTool.exe`bevindt zich onder de gedefinieerde map **$DBDeploymentTool** . Het voorbeeld script is als volgt: 
 
     * Een U-SQL database lokaal implementeren:
 
@@ -450,13 +449,13 @@ Voer de volgende stappen uit om een implementatie taak voor een data base in te 
         PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secrete <secrete> -CertFile <certFile>
         ```
 
-### <a name="packagedeploymenttoolexe-parameter-descriptions"></a>Beschrijvingen van de para meters van PackageDeploymentTool. exe
+### <a name="packagedeploymenttoolexe-parameter-descriptions"></a>Beschrijvingen van PackageDeploymentTool.exe-para meters
 
 #### <a name="common-parameters"></a>Algemene para meters
 
 | Parameter | Beschrijving | Standaardwaarde | Vereist |
 |---------|-----------|-------------|--------|
-|Pakket|Het pad van het U-SQL database implementatie pakket dat moet worden geïmplementeerd.|null|waar|
+|Pakket|Het pad van het U-SQL database implementatie pakket dat moet worden geïmplementeerd.|null|true|
 |Database|De naam van de data base die moet worden geïmplementeerd of gemaakt.|model|false|
 |Logbestand|Het pad van het bestand voor logboek registratie. Standaard ingesteld op standaard waarde (console).|null|false|
 |Logniveau|Logboek niveau: uitgebreid, normaal, waarschuwing of fout.|LogLevel. Normal|false|
@@ -465,17 +464,17 @@ Voer de volgende stappen uit om een implementatie taak voor een data base in te 
 
 |Parameter|Beschrijving|Standaardwaarde|Vereist|
 |---------|-----------|-------------|--------|
-|Data root|Het pad van de lokale hoofdmap van de gegevens.|null|waar|
+|Data root|Het pad van de lokale hoofdmap van de gegevens.|null|true|
 
 #### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Para meters voor Azure Data Lake Analytics implementatie
 
 |Parameter|Beschrijving|Standaardwaarde|Vereist|
 |---------|-----------|-------------|--------|
-|Account|Hiermee geeft u op met welke Azure Data Lake Analytics-account moet worden geïmplementeerd op basis van de account naam.|null|waar|
-|ResourceGroup|De naam van de Azure-resource groep voor het Azure Data Lake Analytics-account.|null|waar|
-|SubscriptionId|De Azure-abonnements-ID voor het Azure Data Lake Analytics-account.|null|waar|
-|Tenant|De naam van de Tenant is de domein naam van de Azure Active Directory (Azure AD). Zoek het op de pagina abonnements beheer in het Azure Portal.|null|waar|
-|AzureSDKPath|Het pad voor het zoeken naar afhankelijke assembly's in de Azure SDK.|null|waar|
+|Account|Hiermee geeft u op met welke Azure Data Lake Analytics-account moet worden geïmplementeerd op basis van de account naam.|null|true|
+|ResourceGroup|De naam van de Azure-resource groep voor het Azure Data Lake Analytics-account.|null|true|
+|SubscriptionId|De Azure-abonnements-ID voor het Azure Data Lake Analytics-account.|null|true|
+|Tenant|De naam van de Tenant is de domein naam van de Azure Active Directory (Azure AD). Zoek het op de pagina abonnements beheer in het Azure Portal.|null|true|
+|AzureSDKPath|Het pad voor het zoeken naar afhankelijke assembly's in de Azure SDK.|null|true|
 |Interactief|Hiermee wordt aangegeven of interactieve modus moet worden gebruikt voor verificatie.|false|false|
 |ClientId|De Azure AD-toepassings-ID die is vereist voor niet-interactieve verificatie.|null|Vereist voor niet-interactieve verificatie.|
 |Geheim|Het geheim of het wacht woord voor niet-interactieve verificatie. Deze moet alleen worden gebruikt in een vertrouwde en beveiligde omgeving.|null|Vereist voor niet-interactieve verificatie, of gebruik SecreteFile.|

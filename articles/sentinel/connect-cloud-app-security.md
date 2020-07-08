@@ -1,6 +1,6 @@
 ---
 title: Cloud App Security gegevens verbinden met Azure Sentinel | Microsoft Docs
-description: Meer informatie over het verbinden van Cloud App Security gegevens met Azure Sentinel.
+description: Meer informatie over het gebruik van de Microsoft Cloud App Security-connector (MCAS) voor het streamen van waarschuwingen en Cloud Discovery logboeken van MCAS naar Azure Sentinel. 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: b2a48b3990afc5fb4ecfb8d40738b18873846459
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 8439c8f7aa4e75abd727d2ce2e80d98e6fce5411
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374913"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563940"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Verbinding maken met gegevens van Microsoft Cloud App Security 
 

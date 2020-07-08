@@ -8,12 +8,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 46da3750e4d0ac78c5fd9df91ae37670e541302d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c78889c8d910edb5111c18b9cbb77387d2693f87
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71315761"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564774"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>Aan de slag met Azure Data Lake Analytics met het Azure-portal
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -29,7 +29,7 @@ Voordat u met deze zelfstudie begint, moet u een **Azure-abonnement** hebben. Zi
 Nu gaat u een Data Lake Analytics en een Azure Data Lake Storage Gen1 account tegelijk maken.  Deze stap is eenvoudig en duurt maar ongeveer 60 seconden om te voltooien.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Klik op **een resource** >  maken**gegevens en analyses** > **Data Lake Analytics**.
+2. Klik op **een resource maken**  >   **gegevens en analyses**  >  **Data Lake Analytics**.
 3. Selecteer waarden voor de volgende items:
    * **Naam**: geef uw Data Lake Analytics-account een naam (alleen kleine letters en cijfers zijn toegestaan).
    * **Abonnement**: kies het Azure-abonnement dat u gebruikt voor het Analytics-account.
@@ -37,14 +37,14 @@ Nu gaat u een Data Lake Analytics en een Azure Data Lake Storage Gen1 account te
    * **Locatie**. Selecteer een Azure-datacenter voor het Data Lake Analytics-account.
    * **Data Lake Storage gen1**: Volg de instructies voor het maken van een nieuwe data Lake Storage gen1-account of selecteer een bestaande. 
 4. U kunt ervoor kiezen om een prijscategorie te selecteren voor uw Data Lake Analytics-account.
-5. Klik op **maken**. 
+5. Klik op **Create**. 
 
 
 ## <a name="your-first-u-sql-script"></a>Uw eerste U-SQL-script
 
-De volgende tekst is een zeer eenvoudig U-SQL-script. Er wordt alleen een kleine gegevensset in het script gedefinieerd en deze gegevensset wordt vervolgens naar het standaard Data Lake Storage Gen1 account geschreven als een bestand met de `/data.csv`naam.
+De volgende tekst is een zeer eenvoudig U-SQL-script. Er wordt alleen een kleine gegevensset in het script gedefinieerd en deze gegevensset wordt vervolgens naar het standaard Data Lake Storage Gen1 account geschreven als een bestand met de naam `/data.csv` .
 
-```
+```usql
 @a  = 
     SELECT * FROM 
         (VALUES
@@ -63,9 +63,9 @@ OUTPUT @a
 2. Plak de tekst van het bovenstaande U-SQL-script. Geef een naam op voor de taak. 
 3. Selecteer **Submit** om de taak te starten.   
 4. Controleer de **status** van de taak en wacht totdat de taak de status **Succeeded** heeft.
-5. Selecteer het tabblad **gegevens** en selecteer vervolgens het tabblad **uitvoer** . Selecteer het uitvoer bestand met de `data.csv` naam en Bekijk de uitvoer gegevens.
+5. Selecteer het tabblad **gegevens** en selecteer vervolgens het tabblad **uitvoer** . Selecteer het uitvoer bestand met de naam `data.csv` en Bekijk de uitvoer gegevens.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * Zie [U-SQL-scripts ontwikkelen met Data Lake Tools voor Visual Studio](data-lake-analytics-data-lake-tools-get-started.md) om aan de slag te gaan met het ontwikkelen van U-SQL-toepassingen.
 * Zie [Aan de slag met de Azure Data Lake Analytics U-SQL-taal](data-lake-analytics-u-sql-get-started.md) om U-SQL te leren.

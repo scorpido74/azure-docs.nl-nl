@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: c47016d0b82a4e4ed084f5d82394d91fd2b46be1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 8916f4b9824f88361fdeb9d866f84adb71e8138e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697712"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563799"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Pull-model voor feed wijzigen in Azure Cosmos DB
 
@@ -164,13 +164,13 @@ Overweeg het gebruik van het pull-model in de volgende scenario's:
 
 Hier volgen enkele belang rijke verschillen tussen de Change feed-processor en het pull-model:
 
-|  | Verwerker van wijzigingenfeed| Pull-model |
+|Functie  | Verwerker van wijzigingenfeed| Pull-model |
 | --- | --- | --- |
 | Bijhouden van huidige punt in verwerking wijzigings feed | Lease (opgeslagen in een Azure Cosmos DB container) | Vervolg token (opgeslagen in het geheugen of hand matig bewaard) |
 | Mogelijkheid om eerdere wijzigingen opnieuw af te spelen | Ja, met push model | Ja, met pull-model|
 | Navragen voor toekomstige wijzigingen | Controleert automatisch op wijzigingen op basis van door de gebruiker opgegeven`WithPollInterval` | Handmatig |
 | Wijzigingen van de hele container verwerken | Ja, en automatisch geparallelleerd voor meerdere threads/machine die uit dezelfde container worden verbruikt| Ja, en hand matig geparallelleerd met behulp van FeedTokens |
-| Wijzigingen van slechts één partitie sleutel verwerken | Niet ondersteund | Ja|
+| Wijzigingen van slechts één partitie sleutel verwerken | Niet ondersteund | Yes|
 | Ondersteunings niveau | Algemeen verkrijgbaar | Preview |
 
 ## <a name="next-steps"></a>Volgende stappen

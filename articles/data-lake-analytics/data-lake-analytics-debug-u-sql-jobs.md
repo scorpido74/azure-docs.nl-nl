@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 72239fc1679d2ebbfd9c9b5be6b79b58efb760cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 292ceccd5a3687488c0e8b03f4a8cd351d611dce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71315802"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564907"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Fout opsporing voor door de gebruiker gedefinieerde C#-code voor mislukte U-SQL-taken
 
@@ -58,7 +58,7 @@ In het nieuwe gestarte exemplaar van Visual Studio is het mogelijk dat u de door
 
 Er zijn twee gevallen waarin de C#-bron code is vastgelegd:
 
-1. De gebruikers code wordt gedefinieerd in het code-behind-bestand ( `Script.usql.cs` meestal genoemd in een U-SQL-project).
+1. De gebruikers code wordt gedefinieerd in het code-behind-bestand (meestal genoemd `Script.usql.cs` in een U-SQL-project).
 
 2. De gebruikers code is gedefinieerd in het C#-klassen bibliotheek project voor de U-SQL-toepassing en is geregistreerd als assembly met **fout opsporingsgegevens**.
 
@@ -80,7 +80,7 @@ Als de gebruikers code niet is opgenomen in het code-behind-bestand of als u de 
 
 2. Haal het pad naar de projectmap op voor **FailedVertexDebugHost** -project. 
 
-3. Klik met de rechter muisknop op **de toegevoegde assemblage broncode project > eigenschappen**, selecteer het tabblad **samen stellen** links en plak het gekopieerde pad dat eindigt op \Bin\debug als **uitvoer > uitvoer traject**. Het laatste uitvoer traject is als `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\`volgt.
+3. Klik met de rechter muisknop op **de toegevoegde assemblage broncode project > eigenschappen**, selecteer het tabblad **samen stellen** links en plak het gekopieerde pad dat eindigt op \Bin\debug als **uitvoer > uitvoer traject**. Het laatste uitvoer traject is als volgt `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\` .
 
     ![Azure Data Lake Analytics U-SQL debug set PDB-pad instellen](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 
@@ -93,13 +93,13 @@ Na deze instellingen start u fout opsporing met **F5** en onderbrekings punten. 
 
 Wanneer de fout opsporing is voltooid, wordt het volgende bericht weer gegeven in het uitvoer venster:
 
-    The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).
+`The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).`
 
 ![Azure Data Lake Analytics U-SQL-fout opsporing geslaagd](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-succeed.png)
 
 De mislukte taak opnieuw verzenden:
 
-1. Voor taken met code-behind oplossingen kopieert u de C#-code naar het bron bestand dat achter de code `Script.usql.cs`ligt (meestal).
+1. Voor taken met code-behind oplossingen kopieert u de C#-code naar het bron bestand dat achter de code ligt (meestal `Script.usql.cs` ).
 
 2. Voor taken met assembly's klikt u met de rechter muisknop op het assemblage broncode project in de oplossing voor fout opsporing en registreert u de bijgewerkte dll-assembly's in uw Azure Data Lake catalogus.
 

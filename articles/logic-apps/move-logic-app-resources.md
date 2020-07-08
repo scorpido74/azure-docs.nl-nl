@@ -1,17 +1,17 @@
 ---
-title: Logische apps migreren tussen abonnementen, resource groepen of regio's
+title: Logische apps verplaatsen tussen abonnementen, resource groepen of regio's
 description: Logische apps of integratie accounts migreren naar andere Azure-abonnementen, resource groepen of locaties (regio's)
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 065bbc62d65d7e91728b10cd9f95b2e73ea03abc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d420f244b0d1e5ccf9a7aaa78c10f613cdbad38f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878728"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564274"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Logische app-resources verplaatsen naar andere Azure-resource groepen,-regio's of-abonnementen
 
@@ -86,7 +86,7 @@ Zie de volgende onderwerpen voor meer informatie over implementatie sjablonen vo
 * [Overzicht: de implementatie voor Azure Logic Apps automatiseren met behulp van Azure Resource Manager sjablonen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [Uw logische app zoeken, openen en downloaden van de Azure Portal in Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)
 * [Azure Resource Manager sjablonen maken voor Azure Logic Apps](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
-* [Azure Resource Manager sjablonen voor Azure Logic Apps implementeren](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
+* [Azure Resource Manager-sjablonen inzetten voor Azure Logic Apps](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
 
 ### <a name="related-resources"></a>Gerelateerde resources
 

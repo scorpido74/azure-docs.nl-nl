@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 73981cb0f124e1577690f893ead60e6375f16298
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78899f44ba6610f17d19b025f61d968a629c8ad6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133135"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565879"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Woorden lijst met IoT Hub voor waarden
 
@@ -222,7 +222,7 @@ IoT Hub is een volledig beheerde Azure-service die betrouw bare en veilige bidir
 
 ## <a name="iot-hub-query-language"></a>Query taal IoT Hub
 
-De [IOT hub query taal](iot-hub-devguide-query-language.md) is een SQL-achtige taal waarmee u een query kunt uitvoeren [](#job) op uw apparaten en apparaatdubbels.
+De [IOT hub query taal](iot-hub-devguide-query-language.md) is een SQL-achtige taal waarmee u een query kunt uitvoeren op uw [taak](#job) en apparaat apparaatdubbels.
 
 ## <a name="iot-hub-resource-rest-api"></a>IoT Hub resource REST API
 
@@ -343,7 +343,7 @@ U kunt een token service gebruiken om een verificatie mechanisme voor uw apparat
 
 ## <a name="twin-queries"></a>Dubbele query's
 
-Bij [dubbele query's voor apparaten en modules](iot-hub-devguide-query-language.md) wordt de SQL-achtige IOT hub query taal gebruikt om informatie op te halen van uw apparaat apparaatdubbels of module apparaatdubbels. U kunt dezelfde IoT Hub query taal gebruiken om informatie op te halen [](#job) over het uitvoeren van uw IOT-hub.
+Bij [dubbele query's voor apparaten en modules](iot-hub-devguide-query-language.md) wordt de SQL-achtige IOT hub query taal gebruikt om informatie op te halen van uw apparaat apparaatdubbels of module apparaatdubbels. U kunt dezelfde IoT Hub query taal gebruiken om informatie op te halen over een [taak](#job) die wordt uitgevoerd in uw IOT-hub.
 
 ## <a name="twin-synchronization"></a>Dubbele synchronisatie
 

@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/13/2020
+ms.date: 06/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: e911bf6e3736c931ca5c1563ab42f52ecb5cf3c1
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 7adeb9682336b19cc87d8c73a7f9ad8bda5e7828
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84750588"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564060"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel-for-virtual-wan"></a>Een tunnel voor altijd op VPN-apparaat configureren voor virtuele WAN
 
@@ -24,7 +24,7 @@ ms.locfileid: "84750588"
 U moet een punt-naar-site-configuratie maken en de toewijzing van de virtuele hub bewerken. Raadpleeg de volgende secties voor instructies:
 
 * [Een P2S-configuratie maken](virtual-wan-point-to-site-portal.md#p2sconfig)
-* [De hub-toewijzing bewerken](virtual-wan-point-to-site-portal.md#edit)
+* [Hub maken met P2S-gateway](virtual-wan-point-to-site-portal.md#hub)
 
 ## <a name="configure-the-device-tunnel"></a>De tunnel van het apparaat configureren
 

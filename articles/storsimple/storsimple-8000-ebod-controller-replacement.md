@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 34a02181632c301f443ce48ade0de2013e2ae86c
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: bdafb4288bf818928aba43d09f15d4dd75092b24
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85508279"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564236"
 ---
 # <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>Een EBOD-controller op uw StorSimple-apparaat vervangen
 
@@ -35,7 +35,7 @@ Houd rekening met de volgende informatie voordat u begint:
 * De EBOD-controller is hot-swappable en kan worden verwijderd of vervangen. Verwijder een defecte module pas nadat u een vervanging hebt uitgevoerd. Wanneer u het vervangings proces initieert, moet u het binnen tien minuten volt ooien.
 
 > [!IMPORTANT]
-> Voordat u een StorSimple-onderdeel probeert te verwijderen of te vervangen, controleert u of u de [veiligheids pictogrammen conventies](storsimple-safety.md#safety-icon-conventions) en andere [veiligheids maatregelen](storsimple-safety.md)bekijkt.
+> Voordat u een StorSimple-onderdeel probeert te verwijderen of te vervangen, controleert u of u de [veiligheids pictogrammen conventies](storsimple-8000-safety.md#safety-icon-conventions) en andere [veiligheids maatregelen](storsimple-8000-safety.md)bekijkt.
 
 ## <a name="remove-an-ebod-controller"></a>Een EBOD-controller verwijderen
 Voordat u de defecte EBOD-controller module in uw StorSimple-apparaat vervangt, moet u ervoor zorgen dat de andere EBOD-controller module actief is en wordt uitgevoerd. In de volgende procedure en tabel wordt uitgelegd hoe u de EBOD-controller module verwijdert.

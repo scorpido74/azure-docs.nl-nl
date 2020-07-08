@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6e32a0a876928e9430f9127299e6b7e657d7743c
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: e0a711b9239e1a76774d8e75f035e6c862218c82
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85077476"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563126"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Tabellen indexeren vanuit Azure-tabel opslag met Azure Cognitive Search
 
@@ -49,7 +49,7 @@ Voor het indexeren van tabellen moet de gegevens bron de volgende eigenschappen 
 
 Een gegevens bron maken:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -81,7 +81,7 @@ De index specificeert de velden in een document, de kenmerken en andere construc
 
 Een index maken:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -100,7 +100,7 @@ Een Indexeer functie verbindt een gegevens bron met een doel zoek index en biedt
 
 Nadat de index en gegevens bron zijn gemaakt, bent u klaar om de Indexeer functie te maken:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -121,7 +121,7 @@ Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedul
 Soms verschillen de veld namen in uw bestaande index van de eigenschaps namen in de tabel. U kunt veld toewijzingen gebruiken om de namen van eigenschappen van de tabel toe te wijzen aan de veld namen in uw zoek index. Zie voor meer informatie over veld toewijzingen [Azure Cognitive Search Indexeer functie veld Toewijzingen Bridget de verschillen tussen gegevens bronnen en zoek indexen](search-indexer-field-mappings.md).
 
 ## <a name="handle-document-keys"></a>Document sleutels verwerken
-In azure Cognitive Search is de document sleutel een unieke identificatie van een document. Elke zoek index moet precies één sleutel veld van het type bevatten `Edm.String` . Het sleutel veld is vereist voor elk document dat wordt toegevoegd aan de index. (In feite is dit het enige vereiste veld.)
+In azure Cognitive Search is de document sleutel een unieke identificatie van een document. Elke zoekindex moet precies één sleutelveld van het type `Edm.String` bevatten. Het sleutel veld is vereist voor elk document dat wordt toegevoegd aan de index. (Dit is zelfs het enige vereiste veld.)
 
 Omdat tabel rijen een samengestelde sleutel hebben, genereert Azure Cognitive Search een synthetisch veld met de naam `Key` dat een samen voeging van partitie sleutel-en rijwaarden is. Als bijvoorbeeld de PartitionKey van een rij `PK1` en RowKey is `RK1` , `Key` is de waarde van het veld `PK1RK1` .
 
@@ -135,7 +135,7 @@ Wanneer u een tabel Indexeer functie zo instelt dat deze volgens een planning wo
 
 Om aan te geven dat bepaalde documenten uit de index moeten worden verwijderd, kunt u een voorlopig verwijderings strategie gebruiken. In plaats van een rij te verwijderen, voegt u een eigenschap toe om aan te geven dat deze is verwijderd en stelt u een voorlopig detectie beleid voor het verwijderen van de gegevens bron in. Het volgende beleid is bijvoorbeeld van mening dat een rij wordt verwijderd als de rij een eigenschap heeft `IsDeleted` met de waarde `"true"` :
 
-    PUT https://[service name].search.windows.net/datasources?api-version=2019-05-06
+    PUT https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0b2ef8a944af9f80dd65ce75869bcf4e3156c63f
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 3fc44ca18f237fecd1c694e96f9ebc2d5b541757
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254902"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564465"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Micro soft teams gebruiken op het virtuele bureau blad van Windows
 
@@ -135,7 +135,7 @@ Het gebruik van teams in een gevirtualiseerde omgeving verschilt van het gebruik
 
 Voor teams bekende problemen die niet zijn gerelateerd aan gevirtualiseerde omgevingen raadpleegt [u ondersteunings teams in uw organisatie](/microsoftteams/known-issues/)
 
-## <a name="feedback"></a>Feedback
+## <a name="uservoice-site"></a>UserVoice-site
 
 Feedback geven over micro soft-teams op het virtuele Windows-bureau blad op de site van het project [UserVoice](https://microsoftteams.uservoice.com/).
 

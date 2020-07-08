@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 2cf997cbe16f7ff4bfe75f90d3797ec97e7d5069
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 2cb143e08e3901b1d0ab7181df68f06887069012
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808763"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563274"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
@@ -152,7 +152,7 @@ Als de gerenderde afbeelding er als volgt uitziet: Dambord, komt ![ ](../referen
 
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>De gerenderde afbeelding in unit is ondersteboven
 
-Zorg ervoor dat u de [hand leiding voor project-installatie](../tutorials/unity/project-setup.md) precies volgt. Een afbeelding ondersteboven geeft aan dat er een eenheid is vereist voor het maken van een niet-scherm weergave doel. Dit gedrag wordt momenteel niet ondersteund en maakt een enorme prestatie-impact op HoloLens 2.
+Zorg ervoor dat u de [eenheids handleiding volgt: Geef de externe modellen precies weer](../tutorials/unity/view-remote-models/view-remote-models.md) . Een afbeelding ondersteboven geeft aan dat er een eenheid is vereist voor het maken van een niet-scherm weergave doel. Dit gedrag wordt momenteel niet ondersteund en maakt een enorme prestatie-impact op HoloLens 2.
 
 Oorzaken van dit probleem kunnen MSAA, HDR of het inschakelen van post verwerking zijn. Zorg ervoor dat het profiel met lage kwaliteit is geselecteerd en als standaard waarde is ingesteld in de eenheid. Ga hiervoor naar *> project instellingen bewerken... > kwaliteit*.
 

@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 2a99f261e1a834705d081e8197e4ae627cf1cb9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d8d3ddffc52bd351b21351b53e8a1be5a674fe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81756646"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562864"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Een nieuw IoT-apparaattype definiëren in uw Azure IoT Central-toepassing
 
-*Dit artikel is van toepassing op oplossingen bouwers en ontwikkel aars van apparaten.*
+*Dit artikel is van toepassing op oplossingenbouwers en apparaatontwikkelaars.*
 
 Een sjabloon voor een apparaat is een blauw druk die de kenmerken en het gedrag definieert van een type apparaat dat verbinding maakt met een Azure IoT Central-toepassing.
 
@@ -36,7 +36,7 @@ Met deze apparaatprofiel kan een operator echte ventilator apparaten maken en ve
 > [!NOTE]
 > Alleen bouwers en beheerders kunnen sjablonen voor apparaten maken, bewerken en verwijderen. Elke gebruiker kan apparaten op de pagina **apparaten** maken op basis van bestaande Apparaatinstellingen.
 
-Met [IoT Plug en Play (preview)](../../iot-pnp/overview-iot-plug-and-play.md) kunnen apparaten worden geïntegreerd in IOT Central, zonder dat u de code van een Inge sloten apparaat hoeft te schrijven. De kern van IoT Plug en Play (preview) is een schema voor het capaciteits model van het apparaat dat de mogelijkheden van apparaten beschrijft. In een IoT Central-toepassing gebruiken Apparaatinstellingen deze IoT Plug en Play (preview)-mogelijkheden voor apparaten.
+Met [IoT Plug en Play (preview)](../../iot-pnp/overview-iot-plug-and-play.md) kunnen apparaten worden geïntegreerd in IOT Central, zonder dat u de code van een Inge sloten apparaat hoeft te schrijven. De kern van IoT Plug en Play (preview) is een schema voor het capaciteits model van het apparaat dat de mogelijkheden van apparaten beschrijft. In een IoT Central-toepassing gebruiken apparaatsjablonen deze apparaatfunctiemodellen van IoT Plug and Play (preview).
 
 Als opbouw functie hebt u verschillende opties voor het maken van Apparaatinstellingen:
 
@@ -66,7 +66,7 @@ Een sjabloon voor het apparaat bevat:
 Een sjabloon voor een apparaat maken in IoT Central:
 
 1. Ga naar de pagina met **Apparaatinstellingen** in uw IOT Central-toepassing.
-1. Selecteer **+ Nieuw** > **aangepast**.
+1. Selecteer **+ Nieuw**  >  **aangepast**.
 1. Voer een naam in voor de sjabloon, zoals **omgevings sensor**.
 1. Druk op **Enter**. IoT Central maakt een lege sjabloon voor het apparaat.
 
@@ -119,16 +119,16 @@ De volgende tabel bevat de configuratie-instellingen voor een telemetrie-mogelij
 | Veld | Beschrijving |
 | ----- | ----------- |
 | Weergavenaam | De weergave naam voor de telemetrie-waarde die wordt gebruikt voor dash boards en formulieren. |
-| Naam | De naam van het veld in het telemetrie-bericht. IoT Central genereert een waarde voor dit veld van de weergave naam, maar u kunt indien nodig uw eigen waarde kiezen. |
+| Name | De naam van het veld in het telemetrie-bericht. IoT Central genereert een waarde voor dit veld van de weergave naam, maar u kunt indien nodig uw eigen waarde kiezen. Dit veld moet alfanumeriek zijn. |
 | Type mogelijkheid | Telemetrie. |
 | Semantisch type | Het semantische type van de telemetrie, zoals de Tempe ratuur, de status of de gebeurtenis. De keuze van semantisch type bepaalt welke van de volgende velden beschikbaar zijn. |
 | Schema | Het gegevens type telemetrie, zoals double, String of vector. Welke opties beschikbaar zijn, wordt bepaald door het semantische type. Schema is niet beschikbaar voor de semantische typen gebeurtenis en status. |
 | Severity | Alleen beschikbaar voor het semantische gebeurtenis type. De ernst is **fout**, **informatie**of **waarschuwing**. |
 | Status waarden | Alleen beschikbaar voor het semantische type status. Definieer de mogelijke status waarden, die elk een weergave naam, naam, opsommings type en waarde hebben. |
-| Eenheid | Een eenheid voor de telemetrische waarde, zoals **mph**, **%** of ** &deg;C**. |
+| Eenheid | Een eenheid voor de telemetrische waarde, zoals **mph**, **%** of ** &deg; C**. |
 | Eenheid weer geven | Een weergave-eenheid voor gebruik in dash boards en formulieren. |
 | Opmerking | Eventuele opmerkingen over de telemetrie-mogelijkheid. |
-| Beschrijving | Een beschrijving van de telemetrie-mogelijkheid. |
+| Description | Een beschrijving van de telemetrie-mogelijkheid. |
 
 ### <a name="properties"></a>Eigenschappen
 
@@ -139,17 +139,17 @@ De volgende tabel bevat de configuratie-instellingen voor een eigenschaps mogeli
 | Veld | Beschrijving |
 | ----- | ----------- |
 | Weergavenaam | De weergave naam voor de waarde van de eigenschap die wordt gebruikt in dash boards en formulieren. |
-| Naam | De naam van de eigenschap. IoT Central genereert een waarde voor dit veld van de weergave naam, maar u kunt indien nodig uw eigen waarde kiezen. |
+| Name | De naam van de eigenschap. IoT Central genereert een waarde voor dit veld van de weergave naam, maar u kunt indien nodig uw eigen waarde kiezen. Dit veld moet alfanumeriek zijn. |
 | Type mogelijkheid | Eigenschap. |
 | Semantisch type | Het semantische type van de eigenschap, zoals de Tempe ratuur, de status of de gebeurtenis. De keuze van semantisch type bepaalt welke van de volgende velden beschikbaar zijn. |
 | Schema | Het gegevens type van de eigenschap, zoals double, String of vector. Welke opties beschikbaar zijn, wordt bepaald door het semantische type. Schema is niet beschikbaar voor de semantische typen gebeurtenis en status. |
 | Beschrijfbaar | Als de eigenschap niet schrijfbaar is, kan het apparaat eigenschaps waarden rapporteren aan IoT Central. Als de eigenschap schrijfbaar is, kan het apparaat eigenschaps waarden rapporteren aan IoT Central en IoT Central eigenschaps updates naar het apparaat verzenden.
 | Severity | Alleen beschikbaar voor het semantische gebeurtenis type. De ernst is **fout**, **informatie**of **waarschuwing**. |
 | Status waarden | Alleen beschikbaar voor het semantische type status. Definieer de mogelijke status waarden, die elk een weergave naam, naam, opsommings type en waarde hebben. |
-| Eenheid | Een eenheid voor de waarde van de eigenschap, **mph**zoals mph **%**, of ** &deg;C**. |
+| Eenheid | Een eenheid voor de waarde van de eigenschap, zoals **mph**, **%** of ** &deg; C**. |
 | Eenheid weer geven | Een weergave-eenheid voor gebruik in dash boards en formulieren. |
 | Opmerking | Eventuele opmerkingen over de eigenschaps mogelijkheid. |
-| Beschrijving | Een beschrijving van de eigenschaps mogelijkheid. |
+| Description | Een beschrijving van de eigenschaps mogelijkheid. |
 
 ### <a name="commands"></a>Opdrachten
 
@@ -160,11 +160,11 @@ De volgende tabel bevat de configuratie-instellingen voor een opdracht mogelijkh
 | Veld | Beschrijving |
 | ----- | ----------- |
 | Weergavenaam | De weergave naam voor de opdracht die wordt gebruikt voor dash boards en formulieren. |
-| Naam | De naam van de opdracht. IoT Central genereert een waarde voor dit veld van de weergave naam, maar u kunt indien nodig uw eigen waarde kiezen. |
+| Name | De naam van de opdracht. IoT Central genereert een waarde voor dit veld van de weergave naam, maar u kunt indien nodig uw eigen waarde kiezen. Dit veld moet alfanumeriek zijn. |
 | Type mogelijkheid | Cmd. |
 | Opdracht | `SynchronousExecutionType`. |
 | Opmerking | Eventuele opmerkingen over de opdracht mogelijkheid. |
-| Beschrijving | Een beschrijving van de opdracht mogelijkheid. |
+| Description | Een beschrijving van de opdracht mogelijkheid. |
 | Aanvraag | Indien ingeschakeld, een definitie van de aanvraag parameter, met inbegrip van: naam, weergave naam, schema, eenheid en weer gave-eenheid. |
 | Antwoord | Als deze optie is ingeschakeld, wordt een definitie van het opdracht antwoord gegeven, waaronder: naam, weergave naam, schema, eenheid en weer gave-eenheid. |
 
@@ -183,7 +183,7 @@ De volgende tabel bevat de configuratie-instellingen voor een Cloud eigenschap:
 | Veld | Beschrijving |
 | ----- | ----------- |
 | Weergavenaam | De weergave naam voor de waarde van de Cloud eigenschap die wordt gebruikt in dash boards en formulieren. |
-| Naam | De naam van de Cloud eigenschap. IoT Central genereert een waarde voor dit veld van de weergave naam, maar u kunt indien nodig uw eigen waarde kiezen. |
+| Name | De naam van de Cloud eigenschap. IoT Central genereert een waarde voor dit veld van de weergave naam, maar u kunt indien nodig uw eigen waarde kiezen. |
 | Semantisch type | Het semantische type van de eigenschap, zoals de Tempe ratuur, de status of de gebeurtenis. De keuze van semantisch type bepaalt welke van de volgende velden beschikbaar zijn. |
 | Schema | Het gegevens type van de Cloud eigenschap, zoals double, String of vector. Welke opties beschikbaar zijn, wordt bepaald door het semantische type. |
 

@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/10/2020
+ms.date: 06/29/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 315bab473ccb42c3ca7b481c16bf8d8fbcfaac67
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: f3861ab8839ba0483c5096e29cd09b6268bd765e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193448"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563917"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekende problemen met Azure Data Lake Storage Gen2
 
@@ -23,15 +23,15 @@ In dit artikel worden beperkingen en bekende problemen met Azure Data Lake Stora
 
 Een toenemend aantal functies voor Blob Storage werkt nu met accounts die een hiërarchische naam ruimte hebben. Zie [Blob Storage-functies die beschikbaar zijn in azure data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md)voor een volledige lijst.
 
-## <a name="supported-azure-service-integrations"></a>Ondersteunde Azure-service-integraties
+## <a name="supported-azure-service-integrations"></a>Ondersteunde integraties met Azure-services
 
-Azure Data Lake Storage Gen2 ondersteunt verschillende Azure-Services die u kunt gebruiken om gegevens op te nemen, analyses uit te voeren en visuele weer gaven te maken. Zie [Azure-Services die ondersteuning bieden voor Azure data Lake Storage Gen2](data-lake-storage-supported-azure-services.md)voor een lijst met ondersteunde Azure-Services.
+Azure Data Lake Storage Gen2 ondersteunt verschillende Azure-Services die u kunt gebruiken om gegevens op te nemen, analyses uit te voeren en visuele weer gaven te maken. Zie [Azure-services die ondersteuning bieden voor Azure Data Lake Storage Gen2](data-lake-storage-supported-azure-services.md) voor een lijst met ondersteunde Azure-services.
 
 Zie [Azure-Services die Azure data Lake Storage Gen2 ondersteunen](data-lake-storage-supported-azure-services.md).
 
 ## <a name="supported-open-source-platforms"></a>Ondersteunde open source-platforms
 
-Verschillende open source-platforms ondersteunen Data Lake Storage Gen2. Zie voor een volledige lijst [open-source platforms die Azure data Lake Storage Gen2 ondersteunen](data-lake-storage-supported-open-source-platforms.md).
+Verschillende open source-platformen ondersteunen Data Lake Storage Gen2. Zie [Open source-platformen die ondersteuning bieden voor Azure Data Lake Storage Gen2](data-lake-storage-supported-open-source-platforms.md) voor een volledig overzicht.
 
 Zie [open-source platforms die Azure data Lake Storage Gen2 ondersteunen](data-lake-storage-supported-open-source-platforms.md).
 
@@ -65,19 +65,6 @@ Niet-beheerde VM-schijven worden niet ondersteund in accounts met een hiërarchi
 ## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>Ondersteuning voor bestands systemen in Sdk's, Power shell en Azure CLI
 
 - Het ophalen en instellen van ACL-bewerkingen is momenteel niet recursief.
-
-
-## <a name="lifecycle-management-policies"></a>Levenscyclus beheer beleid
-
-Het verwijderen van BLOB-moment opnamen wordt nog niet ondersteund. 
-
-## <a name="archive-tier"></a>Laag van archief
-
-Er is momenteel een bug die van invloed is op de Access-laag voor archieven.
-
-## <a name="blobfuse"></a>Blobfuse
-
-Blobfuse wordt niet ondersteund.
 
 <a id="known-issues-tools"></a>
 

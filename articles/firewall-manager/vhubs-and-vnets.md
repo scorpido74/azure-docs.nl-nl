@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: b946a360ced05500a4ef89cda7c623d8ae16658e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a06111fbe38f167ddf3512fdb312d7de754a738
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77444574"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563575"
 ---
 # <a name="what-are-the-azure-firewall-manager-architecture-options"></a>Wat zijn de opties voor de Azure Firewall Manager-architectuur?
 
@@ -20,31 +20,32 @@ Azure Firewall Manager kan beveiligings beheer bieden voor twee typen netwerk ar
 
 - **beveiligde virtuele hub**
 
-   Een [virtuele WAN-hub van Azure](../virtual-wan/virtual-wan-about.md#resources) is een door micro soft beheerde resource waarmee u eenvoudig hub-en spoke-architecturen kunt maken. Wanneer beveiligings-en routerings beleidsregels aan een dergelijke hub zijn gekoppeld, wordt deze aangeduid als een *[beveiligde virtuele hub](secured-virtual-hub.md)*. 
+   Een [Azure Virtual WAN-hub](../virtual-wan/virtual-wan-about.md#resources) is een door Microsoft beheerde resource waarmee u eenvoudig sterarchitecturen kunt maken. Wanneer beveiligings-en routerings beleidsregels aan een dergelijke hub zijn gekoppeld, wordt deze aangeduid als een *[beveiligde virtuele hub](secured-virtual-hub.md)*. 
 - **hub-netwerk**
 
-   Dit is een standaard virtuele netwerk van Azure dat u zelf maakt en beheert. Wanneer het beveiligings beleid is gekoppeld aan een dergelijke hub, wordt het een *hub virtueel netwerk*genoemd. Op dit moment wordt alleen Azure Firewall beleid ondersteund. U kunt virtuele spoke-netwerken met uw werkbelasting servers en-services. U kunt ook firewalls beheren in zelfstandige virtuele netwerken die niet zijn gekoppeld aan een spoke.
+   Dit is een standaard virtueel Azure-netwerk dat u zelf maakt en beheert. Wanneer beveiligingsbeleidsregels met een dergelijke hub worden gekoppeld, wordt dit een *virtueel hubnetwerk* genoemd. Op dit ogenblik wordt alleen Azure Firewall-beleid ondersteund. U kunt virtuele spaaknetwerken met uw workloadservers en services via peering verbinden. U kunt ook firewalls beheren in zelfstandige virtuele netwerken die niet aan een spaak zijn gekoppeld.
 
 ## <a name="comparison"></a>Vergelijking
 
 De volgende tabel vergelijkt deze twee architectuur opties en kan u helpen beslissen welke optie geschikt is voor de beveiligings vereisten van uw organisatie:
 
 
-|  |**Hub van virtueel netwerk**|**Beveiligde virtuele hub**  |
+|  |**Virtueel hubnetwerk**|**Beveiligde virtuele hub**  |
 |---------|---------|---------|
 |**Onderliggende resource**     |Virtueel netwerk|Virtuele WAN-hub|
 |**Hub & spoke**     |Maakt gebruik van peering op virtueel netwerk|Geautomatiseerd met hub Virtual Network-verbinding|
 |**On-premises connectiviteit**     |VPN Gateway tot 10 Gbps en 30 S2S-verbindingen; ExpressRoute|Meer schaal bare VPN Gateway van 20 Gbps-en 1000 S2S-verbindingen; Express route|
 |**Automatische filiaal connectiviteit met SDWAN**      |Niet ondersteund|Ondersteund|
 |**Hubs per regio**     |Meerdere virtuele netwerken per regio|Eén virtuele hub per regio. Meerdere hubs mogelijk met meerdere virtuele Wan's|
-|**Azure Firewall: meerdere open bare IP-adressen**      |Klant|Automatisch gegenereerd. Beschikbaar zijn door GA.|
-|**Azure Firewall Beschikbaarheidszones**     |Ondersteund|Niet beschikbaar in de preview-versie. Beschikbaar zijn via GA|
-|**Geavanceerde Internet beveiliging met beveiliging van derden als service partners**     |Door de klant tot stand gebrachte en beheerde VPN-verbinding met de partner service van de keuze|Geautomatiseerd via een vertrouwde beveiligings partner stroom en partner beheer ervaring|
+|**Azure Firewall: meerdere open bare IP-adressen**      |Klant|Automatisch gegenereerd|
+|**Azure Firewall Beschikbaarheidszones**     |Ondersteund|Nog niet beschikbaar|
+|**Geavanceerde Internet beveiliging met beveiliging van derden als service partners**     |Door de klant tot stand gebrachte en beheerde VPN-verbinding met de partner service van de keuze|Geautomatiseerd via de stroom van de beveiligings partner en de partner beheer ervaring|
 |**Gecentraliseerd route beheer voor het routeren van verkeer naar de hub**     |Door de gebruiker gedefinieerde route door de klant|Ondersteund met behulp van BGP|
+|**Ondersteuning voor meerdere beveiligings providers**|Ondersteund met hand matig geconfigureerde geforceerde tunneling naar firewalls van derden|Automatische ondersteuning voor twee beveiligings providers: Azure Firewall voor het filteren van privé verkeer en van derden voor het filteren van Internet|
 |**Web Application Firewall in Application Gateway** |Ondersteund in Virtual Network|Momenteel ondersteund in spoke-netwerk|
 |**Virtueel netwerk apparaat**|Ondersteund in Virtual Network|Momenteel ondersteund in spoke-netwerk|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Overzicht van de [implementatie van Azure firewall Manager preview](deployment-overview.md) bekijken
+- Overzicht van de [implementatie van Azure firewall Manager](deployment-overview.md) controleren
 - Meer informatie over [beveiligde virtuele hubs](secured-virtual-hub.md).

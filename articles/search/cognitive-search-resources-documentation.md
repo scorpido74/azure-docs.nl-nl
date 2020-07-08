@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 6199b2a322bc22f85d6fb8b422ea49c5f35f080e
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 3399ace71d3a28ea903991e0439f1c9ddcc939d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84753012"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565389"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Documentatie bronnen voor AI-verrijking in azure Cognitive Search
 
@@ -41,7 +41,7 @@ Hier volgt een geconsolideerde lijst van de documentatie voor AI-verrijking.
 ## <a name="knowledge-stores"></a>Knowledge Stores
 
 + [Snelstartgids: een kennis archief maken in de Azure Portal](knowledge-store-create-portal.md)
-+ [Maak een kennis archief met behulp van REST en postman](knowledge-store-create-rest.md)
++ [Een kennisarchief maken met behulp van REST en Postman](knowledge-store-create-rest.md)
 + [Een kennis archief met Storage Explorer weer geven](knowledge-store-view-storage-explorer.md)
 + [Verbinding maken met een kennis archief met Power BI](knowledge-store-connect-power-bi.md)
 + [Voor beelden van projectie (verrijkingen vorm geven en exporteren)](knowledge-store-projections-examples.md)
@@ -93,10 +93,10 @@ Hier volgt een geconsolideerde lijst van de documentatie voor AI-verrijking.
 ## <a name="apis"></a>API's
 
 + [REST API](https://docs.microsoft.com/rest/api/searchservice/)
-  + [Vaardig heden maken (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-  + [Indexeer functie maken (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
+  + [Vaardig heden maken (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
+  + [Indexeer functie maken (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 + [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/)
 + [Indexeerfuncties in Azure Cognitive Search](search-indexer-overview.md)

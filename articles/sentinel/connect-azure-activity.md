@@ -1,6 +1,6 @@
 ---
 title: Azure-activiteit gegevens verbinden met Azure Sentinel | Microsoft Docs
-description: Meer informatie over het verbinden van Azure-activiteit gegevens met Azure Sentinel.
+description: Stream Azure-activiteiten meldt zich aan bij Azure Sentinel met één klik. In het activiteiten logboek worden gebeurtenissen op abonnements niveau in azure vastgelegd en weer gegeven.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 82dfcaf3394703aae531c828a1b96ad290bab798
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 88f363406ec40dfa439a52ad351501d1c64dce95
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80124990"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564494"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>Gegevens verbinden vanuit Azure-activiteiten logboek
 
@@ -41,9 +41,9 @@ U kunt Logboeken van [Azure-activiteiten logboek](../azure-monitor/platform/plat
 
 4. Klik op **verbinding maken**in het deel venster abonnement dat rechts wordt geopend.
 
-5. Als u het relevante schema in Log Analytics voor Azure-activiteiten waarschuwingen wilt `AzureActivity` gebruiken, typt u in het query venster.
+5. Als u het relevante schema in Log Analytics voor Azure-activiteiten waarschuwingen wilt gebruiken, typt u `AzureActivity` in het query venster.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u Azure-activiteiten logboek verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+In dit document hebt u geleerd hoe u Azure-activiteiten logboek verbindt met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
 - Ga aan de slag met het detecteren van bedreigingen met Azure Sentinel, met behulp [van ingebouwde](tutorial-detect-threats-built-in.md) of [aangepaste](tutorial-detect-threats-custom.md) regels.

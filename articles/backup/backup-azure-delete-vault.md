@@ -3,12 +3,12 @@ title: Een Microsoft Azure Recovery Services kluis verwijderen
 description: In dit artikel leert u hoe u afhankelijkheden kunt verwijderen en vervolgens een Azure Backup Recovery Services kluis kunt verwijderen.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 986b3c3ef5bd3903a764726281b6bd0a25ba76a4
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: e6aaab80cabbdd8a58d8adc64409bf1bcd8ebf03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85506821"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563115"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Een Azure Backup Recovery Services kluis verwijderen
 
@@ -16,10 +16,10 @@ In dit artikel wordt beschreven hoe u een [Azure Backup](backup-overview.md) Rec
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-U kunt een Recovery Services kluis met een van de volgende afhankelijkheden niet verwijderen:
+U kunt een Recovery Services-kluis met een van de volgende afhankelijkheden niet verwijderen:
 
 - U kunt geen kluis verwijderen die beveiligde gegevens bronnen bevat (bijvoorbeeld IaaS Vm's, SQL-data bases, Azure-bestands shares, enz.)  
-- U kunt geen kluis verwijderen die back-upgegevens bevat. Zodra de back-upgegevens zijn verwijderd, wordt deze naar de voorlopig verwijderde status.
+- U kunt geen kluis verwijderen die back-upgegevens bevat. Zodra de back-upgegevens zijn verwijderd, krijgt deze de status Voorlopig verwijderd.
 - U kunt geen kluis verwijderen die back-upgegevens bevat in de modus voorlopig verwijderd.
 - U kunt geen kluis verwijderen die geregistreerde opslag accounts heeft.
 
@@ -90,7 +90,7 @@ Lees eerst de sectie **[voordat u begint](#before-you-start)** om inzicht te kri
 
       - Voor MABS of DPM selecteert u **Backup-beheerser vers**. Selecteer vervolgens de server die u wilt verwijderen.
 
-          ![Selecteer voor MABS de kluis om het dash board ervan te openen.](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
+          ![Voor MABS of DPM selecteert u uw kluis om het dash board ervan te openen.](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
 3. Het deel venster **verwijderen** wordt weer gegeven met een waarschuwings bericht.
 
@@ -114,7 +114,7 @@ Lees eerst de sectie **[voordat u begint](#before-you-start)** om inzicht te kri
 Nadat dit proces is voltooid, kunt u de back-upitems uit de beheer console verwijderen:
 
 - [Back-upitems verwijderen uit de MARS-beheer console](#delete-backup-items-from-the-mars-management-console)
-- [Back-upitems verwijderen uit de MABS-beheer console](#delete-backup-items-from-the-mabs-management-console)
+- [Back-upitems verwijderen uit de MABS-of DPM-beheer console](#delete-backup-items-from-the-mabs-or-dpm-management-console)
 
 ### <a name="delete-backup-items-from-the-mars-management-console"></a>Back-upitems verwijderen uit de MARS-beheer console
 
@@ -142,12 +142,12 @@ Nadat dit proces is voltooid, kunt u de back-upitems uit de beheer console verwi
 
 Nadat u de on-premises back-upitems hebt verwijderd, voert u de volgende stappen uit in de portal.
 
-### <a name="delete-backup-items-from-the-mabs-management-console"></a>Back-upitems verwijderen uit de MABS-beheer console
+### <a name="delete-backup-items-from-the-mabs-or-dpm-management-console"></a>Back-upitems verwijderen uit de MABS-of DPM-beheer console
 
 >[!NOTE]
 >Als u de bron machine verwijdert of kwijtraakt zonder dat de back-up wordt gestopt, mislukt de volgende geplande back-up. Het oude herstel punt verloopt volgens het beleid, maar het laatste enkele herstel punt wordt altijd bewaard totdat u de back-up stopt en de gegevens verwijdert. U kunt dit doen door de stappen in [deze sectie](#delete-protected-items-on-premises)te volgen.
 
-Er zijn twee methoden die u kunt gebruiken om back-upitems te verwijderen uit de MABS-beheer console.
+Er zijn twee methoden die u kunt gebruiken om back-upitems te verwijderen uit de MABS-of DPM-beheer console.
 
 #### <a name="method-1"></a>Methode 1
 
@@ -171,7 +171,7 @@ Voer de volgende stappen uit om de beveiliging te stoppen en de back-upgegevens 
 
 #### <a name="method-2"></a>Methode 2
 
-Open de **MABS-beheer** console. Schakel onder **methode voor gegevens beveiliging selecteren**het selectie vakje **Ik wil online beveiliging** uit.
+Open de beheer console van **MABS-beheer** of **DPM** . Schakel onder **methode voor gegevens beveiliging selecteren**het selectie vakje **Ik wil online beveiliging** uit.
 
   ![Selecteer de methode voor gegevens beveiliging.](./media/backup-azure-delete-vault/data-protection-method.png)
 

@@ -9,17 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 3524f55f70ff42bd5ff800fb2bd7ab7b0e732596
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c67a5537a74e37473280fbd44fa47c65f2a37806
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664681"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563153"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity-preview"></a>Een Indexeer functie verbinding met een Cosmos DB-Data Base instellen met behulp van een beheerde identiteit (preview)
 
 > [!IMPORTANT] 
-> Ondersteuning voor het instellen van een verbinding met een gegevens bron met behulp van een beheerde identiteit bevindt zich momenteel in een open bare preview-versie. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen.
+> Ondersteuning voor het instellen van een verbinding met een gegevens bron met behulp van een beheerde identiteit bevindt zich momenteel in een open bare preview-versie. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads.
 > U kunt toegang tot de preview aanvragen door [dit formulier](https://aka.ms/azure-cognitive-search/mi-preview-request)in te vullen.
 
 Op deze pagina wordt beschreven hoe u een Indexeer functie verbinding kunt instellen met een Azure Cosmos DB-Data Base met behulp van een beheerde identiteit in plaats van referenties op te geven in het gegevens bron object connection string.
@@ -65,7 +65,7 @@ Wanneer beheerde identiteiten worden gebruikt voor verificatie bij de gegevens b
 Voor beeld van het maken van een Cosmos DB gegevens bron object met behulp van de [rest API](https://docs.microsoft.com/rest/api/searchservice/create-data-source):
 
 ```
-POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
 Content-Type: application/json
 api-key: [Search service admin key]
 
@@ -88,9 +88,9 @@ De hoofd tekst van de aanvraag bevat de definitie van de gegevens bron, die de v
 | Veld   | Beschrijving |
 |---------|-------------|
 | **naam** | Vereist. Kies een wille keurige naam voor uw gegevens bron object. |
-|**voert**| Vereist. Moet zijn `cosmosdb` . |
-|**aanmeldings** | Vereist. <br/><br/>Wanneer u verbinding maakt met behulp van een beheerde identiteit, moet de indeling van de **referenties** zijn: *Data base = [database naam]; ResourceId = [resource-id-String];(soort = [API-kind];)*<br/> <br/>De ResourceId-indeling: *ResourceID =/Subscriptions/**uw abonnements-id**/resourceGroups/**de naam van uw resource groep**/providers/Microsoft.DocumentDB/databaseAccounts/**uw Cosmos DB-account naam**/;*<br/><br/>Voor SQL-verzamelingen is voor de connection string geen soort vereist.<br/><br/>Voeg voor MongoDB-verzamelingen **soort = MongoDb** toe aan de Connection String. <br/><br/>Voor Gremlin-grafieken en Cassandra-tabellen meldt u zich aan voor de preview-versie van de [Indexeer functie](https://aka.ms/azure-cognitive-search/indexer-preview) om toegang te krijgen tot de preview-versie en informatie over het format teren van de referenties.<br/>|
-| **container** | Bevat de volgende elementen: <br/>**naam**: vereist. Geef de ID op van de database verzameling die moet worden geïndexeerd.<br/>**query**: optioneel. U kunt een query opgeven voor het afvlakken van een wille keurig JSON-document in een plat schema dat door Azure Cognitive Search kan worden geïndexeerd.<br/>Query's worden niet ondersteund voor de MongoDB-API, de Gremlin-API en de Cassandra-API. |
+|**type**| Vereist. Moet zijn `cosmosdb` . |
+|**aanmeldings** | Vereist. <br/><br/>Wanneer u verbinding maakt met behulp van een beheerde identiteit, moet de indeling van de **referenties** zijn: *Data base = [database naam]; ResourceId = [resource-id-String];(soort = [API-kind];)*<br/> <br/>De ResourceId-indeling: *ResourceID =/Subscriptions/**uw abonnements-id**/resourceGroups/**de naam van de resource groep**/providers/Microsoft.DocumentDB/databaseAccounts/**uw Cosmos DB-account naam**/;*<br/><br/>Voor SQL-verzamelingen is voor de connection string geen soort vereist.<br/><br/>Voeg voor MongoDB-verzamelingen **soort = MongoDb** toe aan de Connection String. <br/><br/>Voor Gremlin-grafieken en Cassandra-tabellen meldt u zich aan voor de preview-versie van de [Indexeer functie](https://aka.ms/azure-cognitive-search/indexer-preview) om toegang te krijgen tot de preview-versie en informatie over het format teren van de referenties.<br/>|
+| **verpakking** | Bevat de volgende elementen: <br/>**naam**: vereist. Geef de ID op van de database verzameling die moet worden geïndexeerd.<br/>**query**: optioneel. U kunt een query opgeven voor het afvlakken van een wille keurig JSON-document in een plat schema dat door Azure Cognitive Search kan worden geïndexeerd.<br/>Query's worden niet ondersteund voor de MongoDB-API, de Gremlin-API en de Cassandra-API. |
 | **dataChangeDetectionPolicy** | Aanbevolen |
 |**dataDeletionDetectionPolicy** | Optioneel |
 
@@ -103,7 +103,7 @@ De index specificeert de velden in een document, kenmerken en andere constructie
 Ga als volgt te werk om een index te maken met een doorzoekbaar `booktitle` veld:
 
 ```
-POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -126,7 +126,7 @@ Zodra de index en gegevens bron zijn gemaakt, kunt u de Indexeer functie maken.
 
 Voor beeld van de definitie van de Indexeer functie:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -143,7 +143,7 @@ Bekijk [Indexeer functie maken](https://docs.microsoft.com/rest/api/searchservic
 
 Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md)voor meer informatie over het definiëren van de planningen voor de Indexeer functie.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 Meer informatie over Cosmos DB Indexeer functies:
 * [Indexeerfunctie voor Azure Cosmos DB](search-howto-index-cosmosdb.md)

@@ -5,19 +5,16 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 06/23/2020
 ms.author: victorh
-ms.openlocfilehash: e0638cbccd5e3bc282dbdd7d3b5918e29081a12b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7bfa1ae5bd0f2ffe92fb37494f9fe589e1b2040e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80757161"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565548"
 ---
-# <a name="ip-groups-preview-in-azure-firewall"></a>IP-groepen (preview) in Azure Firewall
-
-> [!IMPORTANT]
-> Deze openbare preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar in alle Azure-locaties. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="ip-groups-in-azure-firewall"></a>IP-groepen in Azure Firewall
 
 Met IP-groepen kunt u IP-adressen voor Azure Firewall regels op de volgende manieren groeperen en beheren:
 
@@ -40,7 +37,7 @@ De volgende IPv4-adres notatie voorbeelden zijn geldig voor gebruik in IP-groepe
 
 ## <a name="create-an-ip-group"></a>Een IP-groep maken
 
-Een IP-groep kan worden gemaakt met behulp van de Azure Portal, Azure CLI of REST API. Zie [een IP-groep maken (preview)](create-ip-group.md)voor meer informatie.
+Een IP-groep kan worden gemaakt met behulp van de Azure Portal, Azure CLI of REST API. Zie [een IP-groep maken](create-ip-group.md)voor meer informatie.
 
 ## <a name="browse-ip-groups"></a>Bladeren door IP-groepen
 1. In de Azure Portal zoek balk typt u **IP-groepen** en selecteert u deze. U kunt de lijst met IP-groepen zien of u kunt **toevoegen** selecteren om een nieuwe IP-groep te maken.
@@ -64,9 +61,6 @@ U kunt alle IP-adressen in de IP-groep en de bijbehorende regels of bronnen weer
 ## <a name="use-an-ip-group"></a>Een IP-groep gebruiken
 
 U kunt nu **IP-groep** selecteren als **bron type** of **doel type** voor IP-adres (sen) wanneer u Azure firewall DNAT-, toepassings-of netwerk regels maakt.
-
-> [!NOTE]
-> IP-groepen worden niet ondersteund in firewall-beleid. Het wordt momenteel alleen ondersteund met traditionele firewall regels.
 
 ![IP-groepen in de firewall](media/ip-groups/fw-ipgroup.png)
 

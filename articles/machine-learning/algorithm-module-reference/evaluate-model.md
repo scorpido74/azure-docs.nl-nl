@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/24/2020
-ms.openlocfilehash: e522291bdf1982ff65a62f028107b15b3249898c
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 0b7ca2654fb8b7bdcca6dcb5f2fd354a138f2fcf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847409"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564348"
 ---
 # <a name="evaluate-model-module"></a>Model module evalueren
 
@@ -122,7 +122,7 @@ De volgende metrische gegevens worden gerapporteerd voor het evalueren van clust
   
      Als het aantal gegevens punten dat aan clusters is toegewezen kleiner is dan het totale aantal beschik bare gegevens punten, betekent dit dat de gegevens punten niet aan een cluster kunnen worden toegewezen.  
   
--   De scores in de kolom, de **maximale afstand tot het cluster Center**vertegenwoordigen de som van de afstanden tussen elk punt en de massa middelpunt van het cluster van dat punt.  
+-   De scores in de kolom, de **maximale afstand tot het cluster centrum**vertegenwoordigen het maximum van de afstand tussen de afzonderlijke punten en de massa middelpunt van het cluster van dat punt.  
   
      Als dit aantal hoog is, kan dit betekenen dat het cluster veel wordt verspreid. U moet deze statistiek samen met de **gemiddelde afstand tot cluster centrum** door nemen om de verspreiding van het cluster te bepalen.   
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.topic: conceptual
 ms.date: 05/09/2017
-ms.openlocfilehash: f3b9f14be4422373fb30f8c3d4909fd9c9546fdf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 22a15750a353b88d5a9bbff96f9ed080116792db
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71672849"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564179"
 ---
 # <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Aan de slag met de U-SQL-catalogus in Azure Data Lake Analytics
 
@@ -22,9 +22,9 @@ ms.locfileid: "71672849"
 
 In het vorige U-SQL-script hebt u het gebruik van EXTRACT voor het lezen van hetzelfde bron bestand herhaald. Met de U-SQL-functie voor tabel waarden (TVF) kunt u de gegevens inkapselen voor toekomstig gebruik.  
 
-Met het volgende script maakt u een `Searchlog()` TVF die wordt aangeroepen in de standaard database en het schema:
+Met het volgende script maakt u een TVF die wordt aangeroepen `Searchlog()` in de standaard database en het schema:
 
-```
+```usql
 DROP FUNCTION IF EXISTS Searchlog;
 
 CREATE FUNCTION Searchlog()
@@ -55,7 +55,7 @@ END;
 
 In het volgende script ziet u hoe u de TVF gebruikt die in het vorige script is gedefinieerd:
 
-```
+```usql
 @res =
     SELECT
         Region,
@@ -74,9 +74,9 @@ OUTPUT @res
 
 Als u één query-expressie hebt, kunt u in plaats van een TVF een U-SQL-weer gave gebruiken om die expressie te integreren.
 
-Met het volgende script maakt u een `SearchlogView` weer gave die wordt aangeroepen in de standaard database en het schema:
+Met het volgende script maakt u een weer gave die wordt aangeroepen `SearchlogView` in de standaard database en het schema:
 
-```
+```usql
 DROP VIEW IF EXISTS SearchlogView;
 
 CREATE VIEW SearchlogView AS  
@@ -93,7 +93,7 @@ USING Extractors.Tsv();
 
 Het volgende script toont het gebruik van de gedefinieerde weer gave:
 
-```
+```usql
 @res =
     SELECT
         Region,
@@ -113,7 +113,7 @@ Net als bij relationele database tabellen kunt u met U-SQL een tabel maken met e
 
 Maak een Data Base en twee tabellen met behulp van het volgende script:
 
-```
+```usql
 DROP DATABASE IF EXISTS SearchLogDb;
 CREATE DATABASE SearchLogDb;
 USE DATABASE SearchLogDb;
@@ -147,7 +147,7 @@ U kunt een query uitvoeren op tabellen, zoals die zijn gemaakt in het vorige scr
 
 Als u de tabellen wilt lezen, wijzigt u het transformatie script dat u eerder hebt gebruikt:
 
-```
+```usql
 @rs1 =
     SELECT
         Region,

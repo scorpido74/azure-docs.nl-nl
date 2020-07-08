@@ -1,28 +1,25 @@
 ---
-title: Concepten van kennis winkels (preview-versie)
+title: Concepten van kennis winkels
 titleSuffix: Azure Cognitive Search
-description: Verrijkte documenten verzenden naar Azure Storage waar u verrijkte documenten kunt weer geven, wijzigen en gebruiken in azure Cognitive Search en in andere toepassingen. Deze functie is beschikbaar voor openbare preview.
+description: Verrijkte documenten verzenden naar Azure Storage waar u verrijkte documenten kunt weer geven, wijzigen en gebruiken in azure Cognitive Search en in andere toepassingen.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: a8f7aa18598dba41b33ea4964bd2967a8c2670ac
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.date: 06/30/2020
+ms.openlocfilehash: 75ecfcca24aa801c2ec277e810f60dbc0a9167fc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84752988"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565271"
 ---
 # <a name="knowledge-store-in-azure-cognitive-search"></a>Knowledge Store in azure Cognitive Search
 
-> [!IMPORTANT] 
-> Dit kennisarchief is momenteel beschikbaar als openbare preview-versie. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen .NET SDK-ondersteuning.
+Knowledge Store is een functie van Azure Cognitive Search die de uitvoer van een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) persistent maakt voor onafhankelijke analyses of downstream-verwerking. Een *verrijkt document* is de uitvoer van een pijp lijn, gemaakt op basis van inhoud die is geëxtraheerd, gestructureerd en geanalyseerd met behulp van AI-processen. In een Standard AI-pijp lijn zijn verrijkte documenten onwaar, die alleen tijdens het indexeren worden gebruikt en vervolgens worden verwijderd. Als u kiest voor het maken van een kennis archief, kunt u de verrijkte documenten bewaren. 
 
-Knowledge Store is een functie van Azure Cognitive Search die de uitvoer van een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) persistent maakt voor onafhankelijke analyses of downstream-verwerking. Een *verrijkt document* is de uitvoer van een pijp lijn, gemaakt op basis van inhoud die is geëxtraheerd, gestructureerd en geanalyseerd met behulp van AI-processen. In een Standard AI-pijp lijn zijn verrijkte documenten onwaar, die alleen tijdens het indexeren worden gebruikt en vervolgens worden verwijderd. In het kennis archief worden verrijkte documenten bewaard. 
-
-Als u in het verleden cognitieve vaardig heden hebt gebruikt, weet u al dat *vaardig heden* een document verplaatst via een reeks verrijkingen. De uitkomst kan een zoek index zijn of (nieuw in deze preview) projecties in een kennis archief. De twee uitvoer, zoek index en kennis opslag zijn producten van dezelfde pijp lijn; afgeleid van dezelfde invoer, maar resulteert in uitvoer die is gestructureerd, opgeslagen en op zeer verschillende manieren gebruikt.
+Als u in het verleden cognitieve vaardig heden hebt gebruikt, weet u al dat *vaardig heden* een document verplaatst via een reeks verrijkingen. Het resultaat kan een zoek index of projecties in een kennis archief zijn. De twee uitvoer, zoek index en kennis opslag zijn producten van dezelfde pijp lijn; afgeleid van dezelfde invoer, maar resulteert in uitvoer die is gestructureerd, opgeslagen en op zeer verschillende manieren gebruikt.
 
 Fysiek is een kennis archief [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview), ofwel Azure Table Storage, Azure Blob Storage, of beide. Elk hulp programma of proces waarmee verbinding kan worden gemaakt met Azure Storage, kan de inhoud van een kennis archief gebruiken.
 
@@ -103,7 +100,7 @@ De [vaardig heden](cognitive-search-working-with-skillsets.md) zijn vereist. Het
 
 ## <a name="how-to-create-a-knowledge-store"></a>Een kennis archief maken
 
-Als u een kennis winkel wilt maken, gebruikt u de portal of de preview-versie REST API ( `api-version=2019-05-06-Preview` ).
+Als u een kennis winkel wilt maken, gebruikt u de portal of de REST API ( `api-version=2020-06-30` ).
 
 ### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
@@ -117,13 +114,11 @@ De wizard **gegevens importeren** bevat opties voor het maken van een kennis arc
 
 1. Voer de wizard uit. In deze laatste stap vindt extra heren, verrijking en opslag plaats.
 
-### <a name="use-create-skillset-and-the-preview-rest-api"></a>Vaardig heden maken en de preview-REST API gebruiken
+### <a name="use-create-skillset-rest-api"></a>Vaardig heden maken gebruiken (REST API)]
 
 A `knowledgeStore` wordt gedefinieerd binnen een [vaardig heden](cognitive-search-working-with-skillsets.md), die op zijn beurt wordt aangeroepen door een [Indexeer functie](search-indexer-overview.md). Tijdens verrijking maakt Azure Cognitive Search een ruimte in uw Azure Storage-account en projecteert de verrijkte documenten als blobs of in tabellen, afhankelijk van uw configuratie.
 
-Op dit moment is de preview-REST API het enige mechanisme waarmee u een kennis archief programmatisch kunt maken. Een eenvoudige manier om te verkennen, is [het maken van uw eerste kennis archief met behulp van Postman en de rest API](knowledge-store-create-rest.md).
-
-Referentie-inhoud voor deze preview-functie bevindt zich in de sectie [API-verwijzing](#kstore-rest-api) van dit artikel. 
+De REST API is één mechanisme waarmee u programmatisch een kennis archief kunt maken. Een eenvoudige manier om te verkennen, is [het maken van uw eerste kennis archief met behulp van Postman en de rest API](knowledge-store-create-rest.md).
 
 <a name="tools-and-apps"></a>
 
@@ -141,17 +136,17 @@ Zodra de verrijkingen in de opslag ruimte bestaan, kunnen alle hulp middelen of 
 
 ## <a name="api-reference"></a>API-verwijzing
 
-REST API versie `2019-05-06-Preview` biedt kennis opslag via aanvullende definities op vaardig heden. Naast de referentie raadpleegt u [een kennis archief maken met behulp van Postman](knowledge-store-create-rest.md) voor meer informatie over het aanroepen van de api's.
+REST API versie `2020-06-30` biedt kennis opslag via aanvullende definities op vaardig heden. Naast de referentie raadpleegt u [een kennis archief maken met behulp van Postman](knowledge-store-create-rest.md) voor meer informatie over het aanroepen van de api's.
 
-+ [Vaardig heden maken (API-Version = 2019-05 -06-preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-skillset) 
-+ [Update vaardig heden (API-Version = 2019-05 -06-preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) 
++ [Vaardig heden maken (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/2020-06-30/create-skillset)
++ [Vaardig heden bijwerken (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/2020-06-30/update-skillset)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Knowledge Store biedt persistentie van verrijkte documenten, handig bij het ontwerpen van een vaardig heden of het maken van nieuwe structuren en inhoud voor het gebruik door client toepassingen die toegang kunnen krijgen tot een Azure Storage-account.
 
-De eenvoudigste benadering voor het maken van verrijkte documenten is [via de portal](knowledge-store-create-portal.md), maar u kunt ook postman en rest API gebruiken, wat nuttiger is als u inzicht wilt in de manier waarop objecten worden gemaakt en waarnaar wordt verwezen.
+De eenvoudigste benadering voor het maken van verrijkte documenten is [via de portal](knowledge-store-create-portal.md), maar u kunt ook postman en de rest API gebruiken. Dit is handiger als u inzicht wilt in de manier waarop objecten worden gemaakt en waarnaar wordt verwezen.
 
 > [!div class="nextstepaction"]
 > [Een kennis archief maken met behulp van Postman en REST](knowledge-store-create-rest.md)

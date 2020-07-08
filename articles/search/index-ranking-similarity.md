@@ -8,19 +8,19 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.openlocfilehash: 1975c13162316b4132bae34659b1c5af8e416573
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c5597528d395c2c8facd4a1b916b1378b659a646
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231608"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565293"
 ---
 # <a name="ranking-algorithm-in-azure-cognitive-search"></a>Classificatie algoritme in azure Cognitive Search
 
 > [!IMPORTANT]
 > Vanaf 15 juli 2020 worden voor nieuwe zoek services automatisch de functie BM25-classificatie gebruikt, die in de meeste gevallen is bewezen om zoek acties te bieden die beter zijn afgestemd op de gebruikers verwachtingen dan de huidige standaard classificatie. Naast de superieure positie biedt BM25 ook configuratie opties voor het afstemmen van resultaten op basis van factoren zoals de document grootte.  
 >
-> Met deze wijziging worden waarschijnlijk lichte wijzigingen in de volg orde van de zoek resultaten weer geven. Voor degenen die de impact van deze wijziging willen testen, is het BM25-algoritme beschikbaar in de API-versie 2019-05-06-preview.  
+> Met deze wijziging worden waarschijnlijk lichte wijzigingen in de volg orde van de zoek resultaten weer geven. Voor degenen die de impact van deze wijziging willen testen, is het BM25-algoritme beschikbaar in de API-versie 2019-05-06-preview en in 2020-06-30.  
 
 In dit artikel wordt beschreven hoe u het nieuwe BM25-classificatie algoritme kunt gebruiken voor bestaande Zoek Services voor nieuwe indexen die worden gemaakt en opgevraagd met behulp van de preview-API.
 
@@ -30,7 +30,7 @@ In het algemeen lijkt het alsof het oudere klassieke gelijkenis algoritme BM25 d
 
 ## <a name="how-to-test-bm25-today"></a>BM25 vandaag testen
 
-Wanneer u een nieuwe index maakt, kunt u een **soort gelijke** eigenschappen instellen om het algoritme op te geven. U moet de `api-version=2019-05-06-Preview`gebruiken, zoals hieronder wordt weer gegeven.
+Wanneer u een nieuwe index maakt, kunt u een **soort gelijke** eigenschappen instellen om het algoritme op te geven. U kunt de gebruiken `api-version=2019-05-06-Preview` , zoals hieronder wordt weer gegeven, of `api-version=2020-06-30` .
 
 ```
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2019-05-06-Preview
@@ -103,9 +103,9 @@ Het algoritme voor gelijkenis kan alleen worden ingesteld tijdens het maken van 
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true
 ```
 
-## <a name="see-also"></a>Zie ook  
+## <a name="see-also"></a>Zie tevens  
 
-+ [Naslaginformatie over REST-API](https://docs.microsoft.com/rest/api/searchservice/)   
++ [REST API referentie](https://docs.microsoft.com/rest/api/searchservice/)   
 + [Score profielen toevoegen aan uw index](index-add-scoring-profiles.md)    
 + [Index-API maken](https://docs.microsoft.com/rest/api/searchservice/create-index)   
 + [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

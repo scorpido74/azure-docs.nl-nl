@@ -8,12 +8,12 @@ ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 69a48952ef273acb8cf7eb0ec5968e12b962b622
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 090945a8bedad4a3d39f3f7fb16cae83f4e3f5bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79454360"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564798"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>Azure Data Lake Analytics beheren met de Azure-opdracht regel interface (CLI)
 
@@ -22,7 +22,7 @@ ms.locfileid: "79454360"
 Meer informatie over het beheren van Azure Data Lake Analytics accounts, gegevens bronnen, gebruikers en taken met behulp van de Azure CLI. Klik op het tabblad selecteren hierboven voor een overzicht van de beheer onderwerpen met andere hulpprogram ma's.
 
 
-**Vereisten**
+## <a name="prerequisites"></a>Vereisten
 
 Voordat u met deze zelf studie begint, moet u beschikken over de volgende resources:
 
@@ -30,9 +30,9 @@ Voordat u met deze zelf studie begint, moet u beschikken over de volgende resour
 
 * Azure CLI. Zie [Azure CLI installeren en configureren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-   * Download en installeer de **pre-release** [Azure CLI-hulpprogramma’s](https://github.com/MicrosoftBigData/AzureDataLake/releases) om deze demo te voltooien.
+  * Download en installeer de **pre-release** [Azure CLI-hulpprogramma’s](https://github.com/MicrosoftBigData/AzureDataLake/releases) om deze demo te voltooien.
 
-* Verificatie met behulp `az login` van de opdracht en selecteer het abonnement dat u wilt gebruiken. Zie [Verbinding maken met een Azure-abonnement met Azure CLI](/cli/azure/authenticate-azure-cli) voor meer informatie over verificatie met een werk- of schoolaccount.
+* Verificatie met behulp van de `az login` opdracht en selecteer het abonnement dat u wilt gebruiken. Zie [Verbinding maken met een Azure-abonnement met Azure CLI](/cli/azure/authenticate-azure-cli) voor meer informatie over verificatie met een werk- of schoolaccount.
 
    ```azurecli
    az login
@@ -97,7 +97,7 @@ Wanneer u een Analytics-account maakt, moet u een Azure Data Lake Storage-accoun
 
 ### <a name="find-the-default-data-lake-store-account"></a>De standaard Data Lake Store account zoeken
 
-U kunt het standaard Data Lake Store-account weer geven dat wordt `az dla account show` gebruikt door de opdracht uit te voeren. De standaard accountnaam wordt vermeld onder de eigenschap defaultDataLakeStoreAccount.
+U kunt het standaard Data Lake Store-account weer geven dat wordt gebruikt door de opdracht uit te voeren `az dla account show` . De standaard accountnaam wordt vermeld onder de eigenschap defaultDataLakeStoreAccount.
 
    ```azurecli
    az dla account show --account "<Data Lake Analytics account name>"
@@ -111,7 +111,7 @@ U kunt het standaard Data Lake Store-account weer geven dat wordt `az dla accoun
 
 > [!NOTE]
 > Alleen de korte namen van Blob Storage worden ondersteund. Gebruik geen FQDN, bijvoorbeeld ' myblob.blob.core.windows.net '.
-> 
+>
 
 ### <a name="add-additional-data-lake-store-accounts"></a>Aanvullende Data Lake Store-accounts toevoegen
 
@@ -146,6 +146,7 @@ Het Blob Storage-account weer geven:
 ![Gegevens bron Data Lake Analytics lijst](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
 
 ### <a name="delete-data-sources"></a>Gegevens bronnen verwijderen:
+
 Een Data Lake Store account verwijderen:
 
    ```azurecli
@@ -159,6 +160,7 @@ Een Blob Storage-account verwijderen:
    ```
 
 ## <a name="manage-jobs"></a>Taken beheren
+
 U moet een Data Lake Analytics-account hebben voordat u een taak kunt maken.  Zie [Manage data Lake Analytics accounts](#manage-accounts)(Engelstalig) voor meer informatie.
 
 ### <a name="list-jobs"></a>Taken weer geven
@@ -179,7 +181,7 @@ U moet een Data Lake Analytics-account hebben voordat u een taak kunt maken.  Zi
 
 > [!NOTE]
 > De standaard prioriteit van een taak is 1000 en de standaard graad van parallellisme voor een taak is 1.
-> 
+>
 >    ```azurecli
 >    az dla job submit --account "<Data Lake Analytics account name>" --job-name "<Name of your job>" --script "<Script to submit>"
 >    ```
@@ -193,7 +195,7 @@ Gebruik de opdracht list om de taak-id te vinden en gebruik vervolgens annuleren
 
 ## <a name="pipelines-and-recurrences"></a>Pijplijnen en herhalingen
 
-**Meer informatie over pijplijnen en herhalingen**
+### <a name="get-information-about-pipelines-and-recurrences"></a>Meer informatie over pijplijnen en herhalingen
 
 Gebruik de `az dla job pipeline`-opdrachten om de pijplijngegevens te zien voor eerder verzonden taken.
 
@@ -211,9 +213,8 @@ az dla job recurrence list --account "<Data Lake Analytics Account Name>"
 az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
 ```
 
-## <a name="see-also"></a>Zie ook
+## <a name="next-steps"></a>Volgende stappen
 * [Overzicht van Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Aan de slag met Data Lake Analytics met Azure Portal](data-lake-analytics-get-started-portal.md)
 * [Azure Data Lake Analytics beheren met Azure Portal](data-lake-analytics-manage-use-portal.md)
 * [Azure Data Lake Analytics-taken bewaken en problemen oplossen met Azure Portal](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
-

@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 69b6c4e81446cf6a922fe9a1d0da8452e5ec164d
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 12ab5a9598cc0222f5a3e64985be2e2ea9e7e2fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85513197"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564292"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Een hardware-onderdeel in uw StorSimple 8000 Series-apparaat vervangen
 
@@ -28,10 +28,10 @@ ms.locfileid: "85513197"
 Met de zelf studies voor het vervangen van hardware-onderdelen worden de hardwareonderdelen van uw Microsoft Azure StorSimple 8000 Series-apparaat en de benodigde stappen voor het verwijderen en vervangen van de onderdelen beschreven. In dit artikel worden de veiligheids pictogrammen beschreven, bevat verwijzingen naar de gedetailleerde zelf studies en een lijst met de onderdelen die kunnen worden vervangen.
 
 > [!IMPORTANT]
-> Voordat u een StorSimple-onderdeel probeert te verwijderen of te vervangen, controleert u of u de [veiligheids pictogrammen conventies](#safety-icon-conventions) en andere [veiligheids maatregelen](storsimple-safety.md)bekijkt.
-
+> Voordat u een StorSimple-onderdeel probeert te verwijderen of te vervangen, controleert u of u de [veiligheids pictogrammen conventies](#safety-icon-conventions) en andere [veiligheids maatregelen](storsimple-8000-safety.md)bekijkt.
 
 ### <a name="safety-icon-conventions"></a>Conventies voor veiligheids pictogrammen
+
 In de volgende tabel worden de veiligheids pictogrammen beschreven die worden gebruikt in deze zelf studies. Let op deze veiligheids pictogrammen wanneer u de stappen doorloopt om de onderdelen van het apparaat te verwijderen en te vervangen.
 
 | Pictogram | Tekst | Aanvullende informatie |
@@ -47,7 +47,8 @@ In de volgende tabel worden de veiligheids pictogrammen beschreven die worden ge
 | ![Pictogram Tip-risico](./media/storsimple-hardware-component-replacement/TipHazard.png) |**Tip-risico** | |
 
 ### <a name="before-you-begin"></a>Voordat u begint
-Raadpleeg de veiligheids informatie over uw apparaat en veiligheids pictogrammen die in deze zelf studie worden gebruikt. Ga naar [een veilig installatie en gebruik van uw StorSimple-apparaat](storsimple-safety.md) voor volledige informatie. Controleer de [veiligheids maatregelen](storsimple-safety.md#handling-precautions) voordat u uw StorSimple-apparaat verwerkt.
+
+Raadpleeg de veiligheids informatie over uw apparaat en veiligheids pictogrammen die in deze zelf studie worden gebruikt. Ga naar [een veilig installatie en gebruik van uw StorSimple-apparaat](storsimple-8000-safety.md) voor volledige informatie. Controleer de [veiligheids maatregelen](storsimple-8000-safety.md#handling-precautions) voordat u uw StorSimple-apparaat verwerkt.
 
 Houd rekening met de volgende informatie voordat u een onderdeel probeert te vervangen.
 
@@ -61,6 +62,7 @@ Houd rekening met de volgende informatie voordat u een onderdeel probeert te ver
 Wanneer u een module vervangt, **laat u nooit een lege Bay achter de behuizing**. Verkrijg een vervangings-of lege module voordat u het probleem onderdeel verwijdert.
 
 ## <a name="hardware-component-replacement-procedures"></a>Vervangings procedures voor hardwarecomponenten
+
 Het StorSimple-apparaat van de 8000-serie bestaat uit verschillende invoeg modules in de primaire en/of EBOD-behuizingen. De 8100 heeft één primaire behuizing, terwijl 8600 een Dual Enclosure-apparaat is met een primaire behuizing en een EBOD behuizing.
 
 De belangrijkste hardwareonderdelen op het apparaat worden in de volgende tabellen samenvatten. Klik op de koppeling in de kolom **vervangings procedure** om naar de bijbehorende zelf studie te gaan.
@@ -92,7 +94,7 @@ De invoeg modules op het apparaat zijn gemarkeerd in de volgende voor-en achterz
 
 **Afbeelding 1** Voor zijde van het apparaat
 
-| Label | Beschrijving |
+| Label | Description |
 |:--- |:--- |
 | 0 - 11 |Schijf stations (in totaal 12) |
 
@@ -121,6 +123,7 @@ Zowel de primaire behuizing als de EBOD-behuizing hebben transport modules voor 
 | 4 |EBOD-controller 1 |
 
 ## <a name="field-replaceable-units"></a>Vervangende eenheden van het veld
+
 De volgende FRUs (replaceable Unit) zijn beschikbaar voor uw StorSimple-apparaat:
 
 * Chassis (inclusief het paneel voor geïntegreerde bewerkingen)
@@ -135,5 +138,5 @@ De volgende FRUs (replaceable Unit) zijn beschikbaar voor uw StorSimple-apparaat
 Neem [contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) om een van deze vervangings eenheden te best Ellen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Controleer alle [veiligheids informatie](storsimple-safety.md) voordat u een StorSimple-hardwareonderdeel gaat vervangen.
 
+Controleer alle [veiligheids informatie](storsimple-8000-safety.md) voordat u een StorSimple-hardwareonderdeel gaat vervangen.

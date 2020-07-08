@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: c7bc818133a0bd708f9f850f0ad258dccc6c02cc
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: a4faab9ac6d5e1c39c1120e09dae792b95892d60
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737985"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564401"
 ---
 # <a name="release-notes"></a>Releaseopmerkingen
 
@@ -58,6 +58,9 @@ Na de **operationele** fase wacht het cluster nog een 60 minuten voor de restere
  
 ### <a name="create-new-service-principal-through-hdinsight"></a>Nieuwe service-principal maken via HDInsight
 Voorheen kunnen klanten bij het maken van een cluster een nieuwe service-principal maken voor toegang tot het verbonden ADLS gen 1-account in Azure Portal. Vanaf 15 2020 juni kunnen klanten geen nieuwe service-principal maken in de werk stroom voor het maken van HDInsight. alleen bestaande service-principal wordt ondersteund. Zie [Service-Principal en certificaten maken met behulp van Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+
+### <a name="time-out-for-script-actions-with-cluster-creation"></a>Time-out voor script acties bij het maken van een cluster
+HDInsight ondersteunt het uitvoeren van script acties bij het maken van een cluster. Vanuit deze versie moeten alle script acties met het maken van een cluster binnen **60 minuten**worden voltooid of er een time-out optreedt. Script acties die worden verzonden naar actieve clusters, worden niet beïnvloed. Meer informatie [vindt u hier](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#script-action-in-the-cluster-creation-process).
  
 ## <a name="upcoming-changes"></a>Aanstaande wijzigingen
 Er zijn geen aanstaande Afbrekings wijzigingen die u moet aanbest Eden.
@@ -77,3 +80,7 @@ Kafka-versie wordt bijgewerkt van versie 2.1.0 naar 2.1.1.
  
 In [dit document](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions) vindt u de huidige versie van de onderdelen voor HDInsight 4,0 ad hdinsight 3,6
 
+## <a name="known-issues"></a>Bekende problemen
+
+### <a name="hive-warehouse-connector-issue"></a>Probleem met de Hive-magazijn connector
+Er is een probleem met de Hive-Warehouse connector in deze release. De oplossing wordt opgenomen in de volgende release. Bestaande clusters die zijn gemaakt voor deze release, worden niet beïnvloed. Vermijd het weghalen en opnieuw maken van het cluster, indien mogelijk. Open een ondersteunings ticket als u meer hulp nodig hebt.

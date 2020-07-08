@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 0415c0e7ee1432521c3cc2026feff5fc2a41d77e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3400d82a6aa184daabfa2ebbe6b775b8e4c1562
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681140"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565457"
 ---
 # <a name="set-up-remote-rendering-for-unity"></a>Remote Rendering voor Unity instellen
 
@@ -18,7 +18,7 @@ Voor het inschakelen van de externe rendering van Azure (ARR) in eenheid, bieden
 
 ## <a name="startup-and-shutdown"></a>Opstarten en afsluiten
 
-Gebruik `RemoteManagerUnity`om de externe rendering te initialiseren. Deze klasse maakt deel uit van `RemoteManager` het generieke, maar implementeert al unit-specifieke Details voor u. Unit maakt bijvoorbeeld gebruik van een specifiek coördinaten systeem. Wanneer u `RemoteManagerUnity.Initialize`aanroept, wordt de juiste Conventie ingesteld. Voor de aanroep moet u ook de eenheids camera opgeven die moet worden gebruikt voor het weer geven van de extern gerenderde inhoud.
+Gebruik om de externe rendering te initialiseren `RemoteManagerUnity` . Deze klasse maakt deel uit van het generieke `RemoteManager` , maar implementeert al unit-specifieke Details voor u. Unit maakt bijvoorbeeld gebruik van een specifiek coördinaten systeem. Wanneer u aanroept `RemoteManagerUnity.Initialize` , wordt de juiste Conventie ingesteld. Voor de aanroep moet u ook de eenheids camera opgeven die moet worden gebruikt voor het weer geven van de extern gerenderde inhoud.
 
 ```cs
 // initialize Azure Remote Rendering for use in Unity:
@@ -27,9 +27,9 @@ RemoteUnityClientInit clientInit = new RemoteUnityClientInit(Camera.main);
 RemoteManagerUnity.InitializeManager(clientInit);
 ```
 
-Voor het afsluiten van externe rendering, roept `RemoteManagerStatic.ShutdownRemoteRendering()`u aan.
+Voor het afsluiten van externe rendering, roept u aan `RemoteManagerStatic.ShutdownRemoteRendering()` .
 
-Nadat een `AzureSession` is gemaakt en als primaire rendering-sessie is gekozen, moet deze zijn geregistreerd bij `RemoteManagerUnity`:
+Nadat een `AzureSession` is gemaakt en als primaire rendering-sessie is gekozen, moet deze zijn geregistreerd bij `RemoteManagerUnity` :
 
 ```cs
 RemoteManagerUnity.CurrentSession = ...
@@ -70,13 +70,13 @@ RemoteManagerStatic.ShutdownRemoteRendering();
 
 ### <a name="arrserviceunity"></a>ARRServiceUnity
 
-`ARRServiceUnity`is een optioneel onderdeel voor het stroom lijnen van het instellen en beheren van sessies. Het bevat opties voor het automatisch stoppen van de sessie wanneer de toepassing wordt afgesloten of de afspeel modus wordt afgesloten in de editor, en de sessie lease automatisch vernieuwen wanneer dat nodig is. De gegevens worden in de cache opgeslagen, zoals de sessie- `LastProperties` eigenschappen (Zie de variabele), en er worden gebeurtenissen weer gegeven voor sessie status wijzigingen en sessie fouten.
+`ARRServiceUnity`is een optioneel onderdeel voor het stroom lijnen van het instellen en beheren van sessies. Het bevat opties voor het automatisch stoppen van de sessie wanneer de toepassing wordt afgesloten of de afspeel modus wordt afgesloten in de editor, en de sessie lease automatisch vernieuwen wanneer dat nodig is. De gegevens worden in de cache opgeslagen, zoals de sessie-eigenschappen (Zie de `LastProperties` variabele), en er worden gebeurtenissen weer gegeven voor sessie status wijzigingen en sessie fouten.
 
 Er mag niet meer dan één exemplaar van `ARRServiceUnity` tegelijkertijd zijn. Het is bedoeld om sneller aan de slag te gaan met het implementeren van enkele algemene functionaliteit. Voor een grotere toepassing is het mogelijk beter om deze dingen zelf te doen, maar ook.
 
-Zie `ARRServiceUnity` [zelf studie: een geheel nieuw eenheids project](../../tutorials/unity/project-setup.md)instellen voor een voor beeld van het instellen en gebruiken.
+`ARRServiceUnity`Zie [zelf studie: externe gerenderde modellen weer geven](../../tutorials/unity/view-remote-models/view-remote-models.md)voor een voor beeld van het instellen en gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Het Remote Rendering-pakket voor Unity installeren](install-remote-rendering-unity-package.md)
-* [Zelf studie: een geheel nieuw eenheids project instellen](../../tutorials/unity/project-setup.md)
+* [Zelf studie: externe gerenderde modellen weer geven](../../tutorials/unity/view-remote-models/view-remote-models.md)

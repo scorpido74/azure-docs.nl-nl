@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: how-to
+ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 48a23c483ab4338492a407b60f3a5dfc95c0e680
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 35b4b206de9c16d66387135b0ca75b6aaeb7c744
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607326"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564994"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>Logboeken gebruiken om problemen met validatie in Azure Data Box Disk op te lossen
 
@@ -21,7 +21,7 @@ Dit artikel is van toepassing op Microsoft Azure Data Box Disk. In dit artikel w
 
 ## <a name="validation-tool-log-files"></a>Validatie hulpprogramma logboek bestanden
 
-Wanneer u de gegevens op de schijven valideert met het [validatie hulpprogramma](data-box-disk-deploy-copy-data.md#validate-data), wordt er een *fout. XML* gegenereerd om eventuele fouten te registreren. Het logboek bestand bevindt zich in de `Drive:\DataBoxDiskImport\logs` map van uw station. Er wordt een koppeling naar het fouten logboek weer gegeven wanneer u validatie uitvoert.
+Wanneer u de gegevens op de schijven valideert met het [validatie hulpprogramma](data-box-disk-deploy-copy-data.md#validate-data), wordt er een *error.xml* gegenereerd om eventuele fouten te registreren. Het logboek bestand bevindt zich in de `Drive:\DataBoxDiskImport\logs` map van uw station. Er wordt een koppeling naar het fouten logboek weer gegeven wanneer u validatie uitvoert.
 
 <!--![Validation tool with link to error log](media/data-box-disk-troubleshoot/validation-tool-link-error-log.png)-->
 
@@ -71,9 +71,9 @@ Als u meerdere sessies voor validatie uitvoert, wordt er per sessie één fouten
 
 ## <a name="validation-tool-errors"></a>Validatie hulpprogramma fouten
 
-De fouten in de *fout. XML* met de bijbehorende aanbevolen acties worden in de volgende tabel weer gegeven.
+De fouten die zijn opgetreden in de *error.xml* met de bijbehorende aanbevolen acties, worden in de volgende tabel samenvatten.
 
-| Foutcode| Beschrijving                       | Aanbevolen acties               |
+| Foutcode| Description                       | Aanbevolen acties               |
 |------------|--------------------------|-----------------------------------|
 | `None` | De gegevens zijn gevalideerd. | Geen actie vereist. |
 | `InvalidXmlCharsInPath` |Kan geen manifest bestand maken omdat het bestandspad ongeldige tekens bevat. | Verwijder deze tekens om door te gaan.  |

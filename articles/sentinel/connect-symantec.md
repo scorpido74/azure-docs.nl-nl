@@ -1,6 +1,6 @@
 ---
 title: Symantec ICDx-gegevens verbinden met Azure Sentinel | Microsoft Docs
-description: Meer informatie over het verbinden van Symantec ICDx-gegevens met Azure Sentinel.
+description: Meer informatie over het gebruik van de Symantec ICDx-connector om eenvoudig al uw Symantec Security-oplossings logboeken met Azure Sentinel te verbinden.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: cac63aee5f9ebf3859b138e6444e40b1e2dd30f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67fc80b5f34cf3a98fd39ddc352cb2dd9a5e7151
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588090"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564918"
 ---
 # <a name="connect-your-symantec-icdx-appliance"></a>Verbinding maken met uw Symantec ICDx-apparaat 
 
@@ -50,7 +50,7 @@ Symantec ICDx kan Logboeken rechtstreeks integreren en exporteren naar Azure Sen
       > [!NOTE]
       > ICDx ontvanger-archieven worden afzonderlijk vermeld op naam. 
  
-    - **Filter**: een filter toevoegen waarmee de subset gebeurtenissen worden opgegeven die moeten worden doorgestuurd. Voer een van de volgende handelingen uit:
+    - **Filter**: een filter toevoegen waarmee de subset gebeurtenissen worden opgegeven die moeten worden doorgestuurd. Doe een van de volgende dingen:
         - Als u een filter voorwaarde wilt selecteren, klikt u op een type, kenmerk, operator en waarde. 
         - Controleer de filter voorwaarde in het veld Filter. U kunt deze rechtstreeks in het veld bewerken of verwijderen als dat nodig is.
         - Klik op en of of om toe te voegen aan uw filter voorwaarde.
@@ -75,9 +75,9 @@ Het kan 20 minuten duren voordat uw logboeken in Log Analytics worden weer gegev
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u Symantec ICDx verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+In dit document hebt u geleerd hoe u Symantec ICDx verbindt met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
 - [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te bewaken.
 
 

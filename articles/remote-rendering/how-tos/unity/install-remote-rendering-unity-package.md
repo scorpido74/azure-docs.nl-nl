@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 3375b28d94956d5c368db4bf3026bdf52ee2d58e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3704d1a418baeec18c3303b8203a0185790cbcc7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021140"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564312"
 ---
 # <a name="install-the-remote-rendering-package-for-unity"></a>Het Remote Rendering-pakket voor Unity installeren
 
@@ -23,6 +23,7 @@ Dit pakket bevat de volledige C# API en alle binaire bestanden voor invoeg toepa
 Het naam schema van de volgende eenheid voor pakketten wordt het pakket **com. micro soft. Azure. remote-rendering**genoemd.
 
 Het pakket maakt geen deel uit van de [opslag plaats ARR](https://github.com/Azure/azure-remote-rendering)-voor beelden en is niet beschikbaar in het interne pakket register van de eenheid. Als u het aan een project wilt toevoegen, moet u het bestand van het project hand matig bewerken `manifest.md` om het volgende toe te voegen:
+
 ```json
 {
   "scopedRegistries": [
@@ -33,21 +34,22 @@ Het pakket maakt geen deel uit van de [opslag plaats ARR](https://github.com/Azu
     }
    ],
   "dependencies": {
-    "com.microsoft.azure.remote-rendering": "0.1.11",
+    "com.microsoft.azure.remote-rendering": "0.1.31",
     ...existing dependencies...
   }
 }
 ```
+
 Zodra dit is toegevoegd, kunt u unit package manager gebruiken om te controleren of u de meest recente versie hebt.
-Meer uitgebreide instructies vindt u in de [zelf studie: een geheel nieuw eenheids project instellen](../../tutorials/unity/project-setup.md).
+Meer uitgebreide instructies vindt u in de [zelf studie: externe modellen weer geven](../../tutorials/unity/view-remote-models/view-remote-models.md).
 
 ## <a name="unity-render-pipelines"></a>Unit weergave-pijp lijnen
 
 Externe rendering werkt met zowel de **:::no-loc text="Universal render pipeline":::** als **:::no-loc text="Standard render pipeline":::** . Uit prestatie overwegingen wordt de universele rendering-pijp lijn aanbevolen.
 
-Als u het wilt gebruiken, moet het **:::no-loc text="Universal render pipeline":::** bijbehorende pakket worden geïnstalleerd in eenheid. Dit kan worden gedaan in de gebruikers interface van de **Package Manager** van Unit (pakket naam **Universal RP**, version 7.2.1 of hoger) of via het `Packages/manifest.json` bestand, zoals beschreven in de [zelf studie over unit project Setup](../../tutorials/unity/project-setup.md#configure-the-projects-manifest).
+Als u het wilt gebruiken, moet het **:::no-loc text="Universal render pipeline":::** bijbehorende pakket worden geïnstalleerd in eenheid. Dit kan worden gedaan in de gebruikers interface van de **Package Manager** van Unit (pakket naam **Universal RP**, version 7.3.1 of hoger) of via het `Packages/manifest.json` bestand, zoals beschreven in de [zelf studie over unit project Setup](../../tutorials/unity/view-remote-models/view-remote-models.md#include-the-azure-remote-rendering-package).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Unit-Game objecten en-onderdelen](objects-components.md)
-* [Zelf studie: een geheel nieuw eenheids project instellen](../../tutorials/unity/project-setup.md)
+* [Zelf studie: externe modellen weer geven](../../tutorials/unity/view-remote-models/view-remote-models.md)

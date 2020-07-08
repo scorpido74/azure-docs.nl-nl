@@ -7,92 +7,91 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: edb45eebc2c4eacc2f30d13988943f097a7190fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/30/2020
+ms.openlocfilehash: 1e5269333de27c146d4b9e2040801c4b14564125
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74112164"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562618"
 ---
 # <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>Voer een upgrade uit naar de nieuwste versie van de Azure Cognitive Search-service REST API
 
-Als u een eerdere versie van de [zoek rest API](https://docs.microsoft.com/rest/api/searchservice/)gebruikt, helpt dit artikel bij het bijwerken van uw toepassing voor het gebruik van de nieuwste, algemeen beschik bare API-versie 2019-05-06.
+Als u een eerdere versie van de [zoek rest API](https://docs.microsoft.com/rest/api/searchservice/)gebruikt, helpt dit artikel bij het bijwerken van uw toepassing voor het gebruik van de nieuwste, algemeen beschik bare API-versie 2020-06-30.
 
-Versie 2019-05-06 van de REST API bevat enkele wijzigingen ten opzichte van eerdere versies. Deze zijn vooral achterwaarts compatibel, dus als u de code wilt wijzigen, moet u slechts minimale inspanning vereisen, afhankelijk van de versie die u eerder gebruikt. [Stappen voor het bijwerken](#UpgradeSteps) van een overzicht van de code wijzigingen die zijn vereist voor het gebruik van nieuwe functies.
+Versie 2020-06-30 van de REST API bevat enkele wijzigingen ten opzichte van eerdere versies. Deze zijn vooral achterwaarts compatibel, dus als u de code wilt wijzigen, moet u slechts minimale inspanning vereisen, afhankelijk van de versie die u eerder gebruikt. [Stappen voor het bijwerken](#UpgradeSteps) van een overzicht van de code wijzigingen die zijn vereist voor het gebruik van nieuwe functies.
 
 > [!NOTE]
 > Een exemplaar van de Azure Cognitive Search-service ondersteunt een groot aantal REST API-versies, waaronder eerder. U kunt deze API-versies blijven gebruiken, maar we raden u aan uw code te migreren naar de nieuwste versie zodat u toegang hebt tot nieuwe mogelijkheden.
 
-<a name="WhatsNew"></a>
-
-## <a name="whats-new-in-version-2019-05-06"></a>Wat is er nieuw in versie 2019-05-06
-Versie 2019-05-06 is de nieuwste, algemeen beschik bare versie van de REST API. Functies die zijn overgeschakeld naar de algemeen beschik bare status in deze API-versie zijn onder andere:
-
-* [Automatisch aanvullen](index-add-suggesters.md) is een typeahead-functie waarmee een gedeeltelijk opgegeven term invoer wordt voltooid.
-
-* [Complexe typen](search-howto-complex-data-types.md) bieden systeem eigen ondersteuning voor gestructureerde object gegevens in de zoek index.
-
-* Met [JsonLines-parserings modi](search-howto-index-json-blobs.md), onderdeel van Azure Blob-indexering, wordt één Zoek document per JSON-entiteit gemaakt, gescheiden door een nieuwe regel.
-
-* [AI-verrijking](cognitive-search-concept-intro.md) biedt indexeringen die gebruikmaken van de AI-verrijkings engines van Cognitive Services.
-
-Verschillende versies van de preview-functie vallen samen met deze algemeen beschik bare update. Als u de lijst met nieuwe preview-functies wilt bekijken, raadpleegt u [Search rest API-versie 2019-05-06-preview](search-api-preview.md).
-
-## <a name="breaking-changes"></a>Wijzigingen die fouten veroorzaken
-
-Bestaande code die de volgende functionaliteit bevat, wordt onderbroken op API-Version = 2019-05-06.
-
-### <a name="indexer-for-azure-cosmos-db---datasource-is-now-type-cosmosdb"></a>Indexeer functie voor Azure Cosmos DB-Data Source is nu ' type ': ' cosmosdb '
-
-Als u een [Cosmos DB Indexeer functie](search-howto-index-cosmosdb.md )gebruikt, moet u wijzigen `"type": "documentdb"` in. `"type": "cosmosdb"`
-
-### <a name="indexer-execution-result-errors-no-longer-have-status"></a>Fouten bij de uitvoering van de indexer hebben geen status meer
-
-De fout structuur voor de uitvoering van de Indexeer functie `status` had eerder een element. Dit element is verwijderd omdat het geen bruikbare informatie verstrekt.
-
-### <a name="indexer-data-source-api-no-longer-returns-connection-strings"></a>De API voor de gegevens bron van de Indexeer functie retourneert geen verbindings reeksen meer
-
-Vanuit API-versies 2019-05-06 en 2019-05-06-preview-versie retourneert de gegevens bron-API geen verbindings reeksen meer in het antwoord op een REST-bewerking. In eerdere API-versies, voor gegevens bronnen die zijn gemaakt met behulp van POST, heeft Azure Cognitive Search geretourneerd **201** , gevolgd door het OData-antwoord, waarin de Connection String als tekst zonder opmaak is opgenomen.
-
-### <a name="named-entity-recognition-cognitive-skill-is-now-discontinued"></a>De benoemde kwalificatie voor het erkennen van entiteits herkenning is nu stopgezet
-
-Als u [naam entiteit herkennings](cognitive-search-skill-named-entity-recognition.md) kwalificatie in uw code aanroept, mislukt de aanroep. De vervangings functionaliteit is [entiteits herkenning](cognitive-search-skill-entity-recognition.md). U moet de vaardigheids verwijzing zonder andere wijzigingen kunnen vervangen. De API-hand tekening is hetzelfde voor beide versies. 
-
 <a name="UpgradeSteps"></a>
 
-## <a name="steps-to-upgrade"></a>Stappen voor het uitvoeren van een upgrade
-Als u een upgrade uitvoert van een eerdere versie van GA, 2017-11-11 of 2016-09-01, hoeft u waarschijnlijk geen wijzigingen aan te brengen in uw code, behalve om het versie nummer te wijzigen. De enige situaties waarin u mogelijk code moet wijzigen, zijn als:
+## <a name="how-to-upgrade"></a>Een upgrade uitvoeren
+
+Wanneer u een upgrade uitvoert naar nieuwe versies, hoeft u waarschijnlijk geen wijzigingen aan te brengen in uw code, behalve om het versie nummer te wijzigen. De enige situaties waarin u mogelijk code moet wijzigen, zijn als:
 
 * De code mislukt wanneer niet-herkende eigenschappen worden geretourneerd in een API-antwoord. Uw toepassing moet standaard eigenschappen negeren die deze niet begrijpt.
 
-* Uw code persistentie van API-aanvragen en probeert deze opnieuw te sturen naar de nieuwe API-versie. Dit kan bijvoorbeeld gebeuren als uw toepassing aanhoudt dat vervolg tokens worden geretourneerd door de zoek-API (Zie `@search.nextPageParameters` de naslag informatie over zoeken naar de [Zoek opdracht](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)).
+* Uw code persistentie van API-aanvragen en probeert deze opnieuw te sturen naar de nieuwe API-versie. Dit kan bijvoorbeeld gebeuren als uw toepassing aanhoudt dat vervolg tokens worden geretourneerd door de zoek-API (Zie de naslag informatie over `@search.nextPageParameters` zoeken naar de [Zoek opdracht](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)).
 
-Als een van deze situaties op u van toepassing is, moet u de code mogelijk dienovereenkomstig wijzigen. Als dat niet het geval is, hoeft u niets te wijzigen, tenzij u de [nieuwe functies](#WhatsNew) van versie 2019-05-06 wilt gaan gebruiken.
+* Uw code verwijst naar een API-versie die is voor 2019-05-06 en is onderhevig aan een of meer van de laatste wijzigingen in die release. De sectie [upgrade naar 2019-05-06](#upgrade-to-2019-05-06) bevat meer details. 
 
-Als u een upgrade uitvoert van een preview-API-versie, is de bovenstaande ook van toepassing, maar u moet er ook rekening mee houden dat sommige preview-functies niet beschikbaar zijn in versie 2019-05-06:
+Als een van deze situaties op u van toepassing is, moet u de code mogelijk dienovereenkomstig wijzigen. Als dat niet het geval is, hoeft u niets te wijzigen, tenzij u de functies die in de nieuwe versie zijn toegevoegd wilt gaan gebruiken.
 
-* [' Meer soort gelijke ' query's](search-more-like-this.md)
-* [Blob-indexering met CSV](search-howto-index-csv-blobs.md)
-* [MongoDB API-ondersteuning voor Cosmos DB Indexeer functies](search-howto-index-cosmosdb.md)
+## <a name="upgrade-to-2020-06-30"></a>Voer een upgrade uit naar 2020-06-30
 
-Als uw code gebruikmaakt van deze functies, kunt u geen upgrade uitvoeren naar API-versie 2019-05-06 zonder uw gebruik ervan te verwijderen.
+Versie 2020-06-30 is de nieuwe, algemeen beschik bare versie van de REST API. Er zijn geen wijzigingen, maar er zijn enkele gedrags verschillen. 
 
-> [!IMPORTANT]
-> Preview-Api's zijn bedoeld voor testen en evalueren en mogen niet worden gebruikt in productie omgevingen.
-> 
+Functies zijn nu algemeen beschikbaar in deze API-versie:
+
+* [Kennis archief](knowledge-store-concept-intro.md), permanente opslag van verrijkte inhoud die is gemaakt via vaardig heden, gemaakt voor downstream-analyse en verwerking via andere toepassingen. Met deze mogelijkheid kan een door de Indexeer functie opgestuurde AI-verrijkings pijplijn een kennis archief vullen naast een zoek index. Als u de preview-versie van deze functie hebt gebruikt, is deze gelijk aan de algemeen beschik bare versie. De enige vereiste code wijziging is het wijzigen van de API-versie.
+
+De volgende gedrags wijzigingen zijn van toepassing:
+
+* [BM25-classificatie algoritme](index-ranking-similarity.md) vervangt het vorige classificatie algoritme met nieuwere technologie. Nieuwe services gebruiken dit algoritme automatisch. Voor bestaande services moet u para meters instellen voor het gebruik van het nieuwe algoritme.
+
+* Geordende resultaten voor Null-waarden zijn gewijzigd in deze versie, waarbij Null-waarden eerst worden weer gegeven als de sorteer bewerking is `asc` en laatste als de sorteer bewerking is `desc` . Als u code hebt geschreven om te verwerken hoe Null-waarden worden gesorteerd, let dan op deze wijziging.
+
+## <a name="upgrade-to-2019-05-06"></a>Voer een upgrade uit naar 2019-05-06
+
+Versie 2019-05-06 is de vorige, algemeen beschik bare versie van de REST API. Functies die algemeen beschikbaar werden in deze API-versie, zijn onder andere:
+
+* [Automatisch aanvullen](index-add-suggesters.md) is een typeahead-functie waarmee een gedeeltelijk opgegeven term invoer wordt voltooid.
+* [Complexe typen](search-howto-complex-data-types.md) bieden systeem eigen ondersteuning voor gestructureerde object gegevens in de zoek index.
+* Met [JsonLines-parserings modi](search-howto-index-json-blobs.md), onderdeel van Azure Blob-indexering, wordt één Zoek document per JSON-entiteit gemaakt, gescheiden door een nieuwe regel.
+* [AI-verrijking](cognitive-search-concept-intro.md) biedt indexeringen die gebruikmaken van de AI-verrijkings engines van Cognitive Services.
+
+### <a name="breaking-changes"></a>Wijzigingen die fouten veroorzaken
+
+Bestaande code die wordt geschreven ten opzichte van eerdere API-versies, verbreekt op API-Version = 2019-05-06 als code de volgende functionaliteit bevat:
+
+#### <a name="indexer-for-azure-cosmos-db---datasource-is-now-type-cosmosdb"></a>Indexeer functie voor Azure Cosmos DB-Data Source is nu ' type ': ' cosmosdb '
+
+Als u een [Cosmos DB Indexeer functie](search-howto-index-cosmosdb.md )gebruikt, moet u wijzigen `"type": "documentdb"` in `"type": "cosmosdb"` .
+
+#### <a name="indexer-execution-result-errors-no-longer-have-status"></a>Fouten bij de uitvoering van de indexer hebben geen status meer
+
+De fout structuur voor de uitvoering van de Indexeer functie had eerder een `status` element. Dit element is verwijderd omdat het geen bruikbare informatie verstrekt.
+
+#### <a name="indexer-data-source-api-no-longer-returns-connection-strings"></a>De API voor de gegevens bron van de Indexeer functie retourneert geen verbindings reeksen meer
+
+Vanuit API-versies 2019-05-06 en 2019-05-06-preview-versie retourneert de gegevens bron-API geen verbindings reeksen meer in het antwoord op een REST-bewerking. In eerdere API-versies, voor gegevens bronnen die zijn gemaakt met behulp van POST, heeft Azure Cognitive Search geretourneerd **201** , gevolgd door het OData-antwoord, waarin de Connection String als tekst zonder opmaak is opgenomen.
+
+#### <a name="named-entity-recognition-cognitive-skill-is-now-discontinued"></a>De benoemde kwalificatie voor het erkennen van entiteits herkenning is nu stopgezet
+
+Als u de [naam entiteit herkennings](cognitive-search-skill-named-entity-recognition.md) kwalificatie in uw code noemt, mislukt de aanroep. De vervangings functionaliteit is [entiteits herkenning](cognitive-search-skill-entity-recognition.md). U moet de vaardigheids verwijzing zonder andere wijzigingen kunnen vervangen. De API-hand tekening is hetzelfde voor beide versies. 
 
 ### <a name="upgrading-complex-types"></a>Complexe typen upgraden
 
-Als uw code complexe typen gebruikt met de oudere preview-API versies 2017-11-11-preview of 2016-09-01-preview, zijn er enkele nieuwe en gewijzigde limieten in versie 2019-05-06 waarvan u op de hoogte moet zijn:
+Met API-versie 2019-05-06 is formele ondersteuning voor complexe typen toegevoegd. Als uw code eerder aanbevolen aanbevelingen voor complex type-equivalentie in 2017-11-11-preview of 2016-09-01-preview heeft geïmplementeerd, zijn er enkele nieuwe en gewijzigde limieten vanaf versie 2019-05-06 waarvan u op de hoogte moet zijn:
 
 + De beperkingen voor de diepte van subvelden en het aantal complexe verzamelingen per index zijn lager. Als u indexen hebt gemaakt die deze limieten overschrijden met behulp van de preview-API-versies, zullen pogingen om deze te wijzigen of opnieuw te maken met API-versie 2019-05-06 mislukken. Als dit van toepassing is op u, moet u uw schema opnieuw ontwerpen zodat het binnen de nieuwe limieten past en de index vervolgens opnieuw bouwt.
 
-+ Er is een nieuwe limiet in de API-versie 2019-05-06 van het aantal elementen van complexe verzamelingen per document. Als u indexen hebt gemaakt met documenten die deze limieten overschrijden met behulp van de preview-API-versies, zullen pogingen om die gegevens opnieuw te indexeren met API-versie 2019-05-06, mislukken. Als dit op u van toepassing is, moet u het aantal complexe verzamelings elementen per document verminderen voordat u de gegevens opnieuw indexeert.
++ Er is een nieuwe limiet die begint met API-versie 2019-05-06 op het aantal elementen van complexe verzamelingen per document. Als u indexen hebt gemaakt met documenten die deze limieten overschrijden met behulp van de preview-API-versies, zullen pogingen om die gegevens opnieuw te indexeren met API-versie 2019-05-06, mislukken. Als dit op u van toepassing is, moet u het aantal complexe verzamelings elementen per document verminderen voordat u de gegevens opnieuw indexeert.
 
 Zie [service limieten voor Azure Cognitive Search](search-limits-quotas-capacity.md)voor meer informatie.
 
-### <a name="how-to-upgrade-an-old-complex-type-structure"></a>Een oude, complexe type structuur bijwerken
+#### <a name="how-to-upgrade-an-old-complex-type-structure"></a>Een oude, complexe type structuur bijwerken
 
 Als uw code complexe typen gebruikt met een van de oudere versies van de preview-API, kunt u gebruikmaken van een index definitie-indeling die er als volgt uitziet:
 
@@ -148,4 +147,3 @@ Raadpleeg de documentatie over zoek REST API. Als u problemen ondervindt, vraagt
 
 > [!div class="nextstepaction"]
 > [Naslag informatie voor de Search-service REST API](https://docs.microsoft.com/rest/api/searchservice/)
-

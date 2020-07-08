@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bf600890bfed570e712a159005b8ef5267298cc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 580c6294856145530e354b6e5cced955dbaa9f9c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76122318"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565556"
 ---
 # <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Het indexeren van CSV-blobs met behulp van de delimitedText-verwerkings modus en BLOB-Indexeer functies in azure Cognitive Search
 
@@ -30,7 +30,7 @@ In dit artikel leert u hoe u CSV-blobs kunt parseren met een Azure Cognitive Sea
 > Volg de aanbevelingen voor de configuratie van de Indexeer functie in [een-op-veel-indexering](search-howto-index-one-to-many-blobs.md) om meerdere zoek documenten uit één Azure-Blob af te voeren.
 
 ## <a name="setting-up-csv-indexing"></a>CSV-indexering instellen
-Als u CSV-blobs wilt indexeren, maakt of werkt u een Indexeer `delimitedText` functie definitie met de parserings modus op een aanvraag voor het maken van een [Indexeer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) functie:
+Als u CSV-blobs wilt indexeren, maakt of werkt u een Indexeer functie definitie met de `delimitedText` parserings modus op een aanvraag voor het maken van een [Indexeer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) functie:
 
     {
       "name" : "my-csv-indexer",
@@ -43,7 +43,7 @@ Als blobs geen oorspronkelijke header regel bevatten, moeten de headers worden o
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 
 
-U kunt het scheidings teken aanpassen met `delimitedTextDelimiter` behulp van de configuratie-instelling. Bijvoorbeeld:
+U kunt het scheidings teken aanpassen met behulp van de `delimitedTextDelimiter` configuratie-instelling. Bijvoorbeeld:
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
 
@@ -60,7 +60,7 @@ Als u dit alles gebruikt, zijn hier de volledige voor beelden van payload.
 
 Bron 
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -73,7 +73,7 @@ Bron
 
 Indexeer functie
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 

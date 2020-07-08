@@ -6,18 +6,18 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: f1a093b85c832adaf5f810913dcbe8ecb46a305a
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 050da712df6dad872fc03bd6ca79bbdf2a3e1753
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298919"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563205"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Inleiding tot ingerichte door Voer in Azure Cosmos DB
 
 Met Azure Cosmos DB kunt u een ingerichte door Voer instellen voor uw data bases en containers. Er zijn twee soorten ingerichte door Voer, standaard (hand matig) of automatisch schalen. In deze artikelen vindt u een overzicht van de werking van ingerichte door voer. 
 
-Een Azure Cosmos-data base is een beheer eenheid voor een set containers. Een data base bestaat uit een set schema-neutraal containers. Een Azure Cosmos-container is de eenheid van schaal baarheid voor zowel de door Voer als de opslag. Een container is horizon taal gepartitioneerd over een set machines binnen een Azure-regio en wordt gedistribueerd in alle Azure-regio's die zijn gekoppeld aan uw Azure Cosmos-account.
+Een Azure Cosmos-database is een beheereenheid voor een set containers. Een database bestaat uit een set schema-agnostische containers. Een Azure Cosmos-container is de eenheid van schaalbaarheid voor zowel de doorvoer als de opslag. Een container is horizontaal gepartitioneerd over een set machines binnen een Azure-regio, en wordt gedistribueerd in alle Azure-regio's die zijn gekoppeld aan uw Azure Cosmos-account.
 
 Met Azure Cosmos DB kunt u de door Voer op twee nauw keurigheid inrichten:
  
@@ -67,7 +67,7 @@ Alle containers die in een Data Base zijn gemaakt met een ingerichte door Voer, 
 
 Als de werk belasting op een logische partitie meer gebruikt dan de door Voer die is toegewezen aan een specifieke logische partitie, zijn uw bewerkingen een beperkt aantal. Wanneer de snelheids beperking optreedt, kunt u de door Voer voor de gehele data base verg Roten of de bewerkingen opnieuw proberen. Zie [logische partities](partition-data.md)voor meer informatie over partitioneren.
 
-Containers in een gedeelde doorvoer database delen de door Voer (RU/s) die zijn toegewezen aan die data base. U kunt Maxi maal vier containers met mini maal 400 RU/s op de data base hebben. Bij standaard (hand matig) ingerichte door Voer is voor elke nieuwe container na de eerste vier een extra mini maal 100 RU/s vereist. Als u bijvoorbeeld een Data Base met gedeelde door Voer met acht containers hebt, is de mini maal RU/s op de data base 800 RU/s. Met de ingerichte door Voer voor automatisch schalen kunt u Maxi maal 25 containers in een Data Base met automatisch schalen Max RU/s 4000 RU/s (schalen tussen 400-4000 RU/s).
+Containers in een gedeelde doorvoerdatabase delen de doorvoer (RU/s) die zijn toegewezen aan deze database. U kunt maximaal vier containers hebben met minimaal 400 RU/s in de database. Bij standaard (hand matig) ingerichte door Voer is voor elke nieuwe container na de eerste vier een extra mini maal 100 RU/s vereist. Als u bijvoorbeeld een gedeelde doorvoerdatabase hebt met acht containers, is het minimale aantal RU/s voor de database 800 RU/s. Met de ingerichte door Voer voor automatisch schalen kunt u Maxi maal 25 containers in een Data Base hebben met automatisch schalen Max. 4000 RU/s (schalen tussen 400-4000 RU/s).
 
 > [!NOTE]
 > In februari 2020 hebben we een wijziging geïntroduceerd waarmee u Maxi maal 25 containers in een gedeelde doorvoer database kunt hebben, waardoor het delen van de door Voer via de containers beter wordt. Na de eerste 25 containers kunt u meer containers toevoegen aan de Data Base als ze zijn [ingericht met een specifieke door Voer](#set-throughput-on-a-database-and-a-container), die los is van de gedeelde door Voer van de data base.<br>

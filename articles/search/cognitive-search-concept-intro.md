@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 196562d376b8268ecf47f8133a5b1c8a122c38c5
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: cb9214dcd79e45b4c587c7ab47e425f2fdd8714c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052273"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564431"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>AI-verrijking in azure Cognitive Search
 
@@ -83,7 +83,7 @@ Intern genereert de pijp lijn een verzameling verrijkte documenten. U kunt bepal
 
 #### <a name="add-a-knowledgestore-element-to-save-enrichments"></a>Een knowledgeStore-element toevoegen om verrijkingen op te slaan
 
-[Search rest API-Version = 2019-05 -06-preview](search-api-preview.md) breidt vaardig heden uit met een `knowledgeStore` definitie die een Azure Storage-verbinding en projecties biedt die beschrijven hoe de verrijkingen worden opgeslagen. Dit is een aanvulling op uw index. In een Standard AI-pijp lijn zijn verrijkte documenten onwaar, die alleen tijdens het indexeren worden gebruikt en vervolgens worden verwijderd. In het kennis archief worden verrijkte documenten bewaard. Zie voor meer informatie [kennis archief (preview)](knowledge-store-concept-intro.md).
+[Search rest API-Version = 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) breidt vaardig heden uit met een `knowledgeStore` definitie die een Azure Storage-verbinding en projecties biedt die beschrijven hoe de verrijkingen worden opgeslagen. Dit is een aanvulling op uw index. In een Standard AI-pijp lijn zijn verrijkte documenten onwaar, die alleen tijdens het indexeren worden gebruikt en vervolgens worden verwijderd. In het kennis archief worden verrijkte documenten bewaard. Zie [Knowledge Store](knowledge-store-concept-intro.md)voor meer informatie.
 
 ### <a name="step-3-search-index-and-query-based-access"></a>Stap 3: zoek index en op query's gebaseerde toegang
 
@@ -121,6 +121,6 @@ Indexen worden gegenereerd op basis van een index schema waarmee de velden, kenm
 + [Voor beeld: een aangepaste vaardigheid maken voor AI-verrijking (C#)](cognitive-search-create-custom-skill-example.md)
 + [Quick Start: AI-verrijking in een portal door lopen](cognitive-search-quickstart-blob.md)
 + [Zelf studie: meer informatie over de AI-verrijkings Api's](cognitive-search-tutorial-blob.md)
-+ [Knowledge Store (preview)](knowledge-store-concept-intro.md)
++ [Knowledge Store](knowledge-store-concept-intro.md)
 + [Een kennis archief maken in REST](knowledge-store-create-rest.md)
 + [Tips voor probleemoplossing](cognitive-search-concept-troubleshooting.md)

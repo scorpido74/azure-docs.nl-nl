@@ -3,12 +3,12 @@ title: Overzicht van Service Health | Microsoft Docs
 description: Persoonlijke informatie over hoe uw Azure-apps worden beïnvloed door de huidige en toekomstige problemen met de Azure-service en het onderhoud.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 2d98a909a45c9dd00b3174f495a15cd18ced11f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc1d07fdbba6da3540336438973fb1cfbb0c356b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146924"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563401"
 ---
 # <a name="service-health-overview"></a>Overzicht van Service Health
 
@@ -21,7 +21,7 @@ Service Health houdt vier typen status gebeurtenissen bij die van invloed kunnen
 1. **Service problemen** : problemen in de Azure-Services die nu van invloed zijn op u. 
 2. **Gepland onderhoud** : aanstaande onderhouds werkzaamheden die in de toekomst van invloed kunnen zijn op de beschik baarheid van uw services.  
 3. **Status adviseur** -wijzigingen in Azure-Services die uw aandacht vereisen. Voor beelden hiervan zijn de afschaffing van Azure-functies of upgrade vereisten (bijvoorbeeld upgrades naar een ondersteund PHP-Framework).
-4. **Beveiligings adviezen (preview)** : beveiligings waarschuwingen die van invloed kunnen zijn op de beschik baarheid van uw Azure-Services.
+4. **Beveiligings adviezen** : beveiligings-gerelateerde meldingen of schendingen die van invloed kunnen zijn op de beschik baarheid van uw Azure-Services.
 
 > [!NOTE]
 > Voor het weer geven van Service Health gebeurtenissen moeten gebruikers [de rol van lezer krijgen](../role-based-access-control/role-assignments-portal.md) voor een abonnement.
@@ -36,11 +36,11 @@ Als u het dash board van Service Health wilt starten, selecteert u de tegel Serv
 
 In de weer gave **Service problemen** ziet u lopende problemen in Azure-Services die van invloed zijn op uw resources. U kunt begrijpen wanneer het probleem is begonnen en welke services en regio's worden beïnvloed. U kunt ook de meest recente update lezen om te begrijpen wat Azure doet om het probleem op te lossen. 
 
-![Service probleem beheren](./media/service-health-overview/azure-service-health-overview-2.png)
+[![Service probleem beheren](./media/service-health-overview/azure-service-health-overview-2.png)](./media/service-health-overview/azure-service-health-overview-2.png#lightbox)
 
 Kies het tabblad **mogelijke impact** om de specifieke lijst met resources te bekijken waarvan u de eigenaar bent die mogelijk van invloed is op het probleem. U kunt een CSV-lijst van deze resources downloaden om te delen met uw team.
 
-![Service probleem beheren-impact](./media/service-health-overview/azure-service-health-overview-4.png)
+[![Service probleem beheren-impact](./media/service-health-overview/azure-service-health-overview-4.png)](./media/service-health-overview/azure-service-health-overview-4.png#lightbox)
 
 ## <a name="see-emerging-issues-which-may-impact-your-services"></a>Bekijk opkomende problemen die van invloed kunnen zijn op uw services
 
@@ -52,7 +52,7 @@ Er zijn situaties waarin uitgebreide service problemen kunnen worden geplaatst o
 
 U kunt een koppeling voor het probleem verkrijgen om te gebruiken in uw probleem beheersysteem. U kunt een PDF-bestand en soms CSV-bestanden downloaden om te delen met personen die geen toegang hebben tot de Azure Portal.   
 
-![Service probleem beheren-probleem beheer](./media/service-health-overview/azure-service-health-overview-3.png)
+[![Service probleem beheren-probleem beheer](./media/service-health-overview/azure-service-health-overview-3.png)](./media/service-health-overview/azure-service-health-overview-3.png#lightbox)
 
 ## <a name="get-support-from-microsoft"></a>Ontvang ondersteuning van micro soft
 
@@ -62,7 +62,7 @@ Neem contact op met de ondersteuning als uw resource in een slechte staat blijft
 
 Filter Service Health om uw bedrijfs kritieke abonnementen, regio's en resource typen weer te geven. Sla het filter op en maak een aangepaste wereldkaart met statusmeldingen vast aan uw portaldashboard. 
 
-![Persoonlijke status toewijzing filteren](./media/service-health-overview/azure-service-health-overview-6a.png)
+[![Persoonlijke status toewijzing filteren](./media/service-health-overview/azure-service-health-overview-6a.png)](./media/service-health-overview/azure-service-health-overview-6a.png#lightbox)
 
 ![Een persoonlijke status kaart vastmaken](./media/service-health-overview/azure-service-health-overview-6b.png)
 

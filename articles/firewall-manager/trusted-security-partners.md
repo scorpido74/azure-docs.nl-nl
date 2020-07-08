@@ -1,31 +1,28 @@
 ---
-title: Wat zijn Azure Firewall Manager-beveiligings partner providers (preview-versie)
+title: Wat zijn Azure Firewall Manager security partner providers?
 description: Meer informatie over leveranciers van Azure Firewall Manager-beveiligings partners
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 06/15/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 3d430deae191fbc9f9ab5bbbc2b83ee4640dd831
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 34da82510f96ef7bde65ceec397b048c941e3234
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791508"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563604"
 ---
-# <a name="what-are-security-partner-providers-preview"></a>Wat zijn beveiligings partner providers (preview-versie)?
+# <a name="what-are-security-partner-providers"></a>Wat zijn beveiligingspartnerproviders?
 
-> [!IMPORTANT]
-> Deze openbare preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar in alle Azure-locaties. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Met *aanbieders van beveiligings partners* in azure firewall Manager kunt u uw vertrouwde, eersteklas SECaaS-aanbiedingen (Security as a Service) van derden gebruiken om de Internet toegang voor uw gebruikers te beveiligen.
 
-Met *aanbieders van beveiligings partners (preview)* in azure firewall Manager kunt u uw vertrouwde, eersteklas SECaaS-aanbiedingen (Security as a Service) van derden gebruiken om de Internet toegang voor uw gebruikers te beveiligen.
-
-Met een snelle configuratie kunt u een hub met een ondersteunde beveiligings partner beveiligen en Internet verkeer van uw virtuele netwerken (VNets) of vertakkings locaties binnen een regio routeren en filteren. Dit wordt gedaan met behulp van geautomatiseerde route beheer zonder door de gebruiker gedefinieerde routes (Udr's) in te stellen en te beheren.
+Met een snelle configuratie kunt u een hub met een ondersteunde beveiligings partner beveiligen en Internet verkeer van uw virtuele netwerken (VNets) of vertakkings locaties binnen een regio routeren en filteren. U kunt dit doen met geautomatiseerde route beheer zonder door de gebruiker gedefinieerde routes (Udr's) in te stellen en te beheren.
 
 U kunt beveiligde hubs implementeren die zijn geconfigureerd met de beveiligings partner van uw keuze in meerdere Azure-regio's om connectiviteit en beveiliging voor uw gebruikers overal ter wereld in deze regio's te krijgen. Met de mogelijkheid om de aanbieding van de beveiligings partner voor Internet/SaaS-toepassings verkeer te gebruiken en Azure Firewall voor privé verkeer in de beveiligde hubs, kunt u nu beginnen met het bouwen van uw beveiligings rand op Azure die dicht bij uw wereld wijd gedistribueerde gebruikers en toepassingen ligt.
 
-Voor deze preview zijn de ondersteunde beveiligings partners **ZScaler**, **Check Point**en **iboss**. Ondersteunde regio's zijn WestCentralUS, NorthCentralUS, Westus, WestUS2 en Oost-Timor.
+De ondersteunde beveiligings partners zijn **ZScaler**, **Check Point** (preview) en **iboss** (preview).
 
 ![Beveiligingspartnerproviders](media/trusted-security-partners/trusted-security-partners.png)
 
@@ -35,25 +32,15 @@ U kunt de beveiligings partners gebruiken voor het filteren van Internet verkeer
 
 - Virtual Network (VNet) naar Internet
 
-   Maak gebruik van geavanceerde gebruikers bewuste Internet bescherming voor uw Cloud werkbelastingen die worden uitgevoerd op Azure.
+   Maak gebruik van geavanceerde op de gebruiker gerichte internetbeveiliging voor uw cloudworkloads die in Azure worden uitgevoerd.
 
 - Vertakking op Internet
 
    Maak gebruik van uw Azure-connectiviteit en wereld wijde distributie om eenvoudig NSaaS-filters van derden voor branch toe te voegen aan Internet scenario's. U kunt uw wereld wijde doorvoer netwerk en beveiligings rand maken met behulp van Azure Virtual WAN.
 
 De volgende scenario's worden ondersteund:
--   VNet met Internet via een partner van derden.
--   Vertakking met Internet via een partner van een derde partij.
--   Vertakking met Internet via een partner aanbieding van derden, de rest van het privé verkeer (spoke-to-spoke, spoke-to-branches, vertakking-naar-spoke) via Azure Firewall.
-
-Het volgende scenario wordt niet ondersteund:
-
-- VNet op Internet via een partner aanbieding kan niet worden gecombineerd met Azure Firewall voor privé verkeer. Zie de volgende beperkingen.
-
-## <a name="current-limitations"></a>Huidige beperkingen
-
-- Voor VNet op internet kunt u het toevoegen van Azure Firewall niet combi neren voor privé verkeer en een partner aanbod voor Internet verkeer. U kunt Internet verkeer naar Azure Firewall of een beveiligings partner van derden verzenden in de beveiligde virtuele hub, maar niet beide. 
-- U kunt Maxi maal één beveiligings partner per virtuele hub implementeren. Als u de provider moet wijzigen, moet u de bestaande partner verwijderen en een nieuwe toevoegen.
+- VNet/vertakking met Internet via een beveiligings partner provider en het andere verkeer (spoke to spoke, spoke to Branch, Branch to spoke) via Azure Firewall.
+- VNet/vertakking naar Internet via de provider van de beveiligings partner
 
 ## <a name="best-practices-for-internet-traffic-filtering-in-secured-virtual-hubs"></a>Aanbevolen procedures voor het filteren van Internet verkeer in beveiligde virtuele hubs
 
@@ -75,8 +62,7 @@ Voor Office 365 zijn netwerk latentie en prestaties essentieel voor een succes v
 
 [Office 365-netwerk verbindings principes](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles) bellen voor belang rijke Office 365-netwerk verbindingen die lokaal worden gerouteerd van de gebruikers vertakking of het mobiele apparaat en rechtstreeks via internet naar het dichtstbijzijnde micro soft-netwerk punt.
 
-Office 365-verbindingen worden bovendien sterk versleuteld voor privacy en gebruiken efficiënte, eigen protocollen om prestatie redenen. Dit maakt het praktisch en nadelige invloed op deze verbindingen met traditionele beveiligings oplossingen op netwerk niveau. Daarom raden klanten ten zeerste aan Office 365-verkeer rechtstreeks vanuit filialen te verzenden voordat ze het rest verkeer verzenden via Azure. Micro soft heeft een partnerschap gemaakt met verschillende providers van de SD-WAN-oplossing die zijn geïntegreerd met Azure en Office 365, en maakt het eenvoudig voor klanten om Office 365 direct en lokale Internet-groepen in te scha kelen. Zie [Hoe kan ik mijn O365-beleid instellen via Virtual WAN?](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview) voor meer informatie.
-
+Office 365-verbindingen worden bovendien versleuteld voor privacy en gebruiken efficiënte, eigen protocollen om prestatie redenen. Dit maakt het praktisch en nadelige invloed op deze verbindingen met traditionele beveiligings oplossingen op netwerk niveau. Daarom raden klanten ten zeerste aan Office 365-verkeer rechtstreeks vanuit filialen te verzenden voordat ze het rest verkeer verzenden via Azure. Micro soft heeft een partnerschap gemaakt met verschillende providers van de SD-WAN-oplossing die zijn geïntegreerd met Azure en Office 365, en maakt het eenvoudig voor klanten om Office 365 direct en lokale Internet-groepen in te scha kelen. Zie [Hoe kan ik mijn O365-beleid instellen via Virtual WAN?](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

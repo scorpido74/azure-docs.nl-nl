@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: cfff2a1278bc31dc9bc130941985aed2cfb74362
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 6268bf94350699518d8d578e3a1d5a56a52ad785
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080623"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562355"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Een upgrade uitvoeren naar Azure Search .NET SDK versie 9
 
@@ -35,7 +35,7 @@ Versie 9 van de Azure Search .NET SDK bevat veel wijzigingen ten opzichte van ee
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-9"></a>Wat is er nieuw in versie 9
-Versie 9 van de Azure Search .NET SDK streeft naar de meest recente, algemeen beschik bare versie van de Azure Search REST API, met name 2019-05-06. Dit maakt het mogelijk om nieuwe functies van Azure Search van een .NET-toepassing te gebruiken, met inbegrip van het volgende:
+Versie 9 van de Azure Search .NET SDK 2019-05-06-versie van Azure Search REST API met de volgende functies:
 
 * [AI-verrijking](cognitive-search-concept-intro.md) is de mogelijkheid om tekst te extra heren uit afbeeldingen, blobs en andere ongestructureerde gegevens bronnen: de inhoud verrijken zodat deze meer doorzoekbaar is in een Azure search index.
 * Dankzij ondersteuning voor [complexe typen](search-howto-complex-data-types.md) kunt u nagenoeg elke geneste JSON-structuur in een Azure search index model leren.

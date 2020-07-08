@@ -7,25 +7,25 @@ ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: d9fc9bee98391f7272a417324b9c3a540b6adbe6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8de36cca8386ed2a8ddba5782b7b48f248192e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79474506"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564834"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>Aan de slag met Azure Data Lake Analytics met Azure CLI
+
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-In dit artikel wordt beschreven hoe u de Azure CLI-opdracht regel interface gebruikt voor het maken van Azure Data Lake Analytics accounts, het verzenden van USQL-taken en-catalogi. De taak leest een TSV-bestand (door tabs gescheiden waarden) en converteert dat naar een CSV-bestand (door komma's gescheiden waarden). 
+In dit artikel wordt beschreven hoe u de Azure CLI-opdracht regel interface gebruikt voor het maken van Azure Data Lake Analytics accounts, het verzenden van USQL-taken en-catalogi. De taak leest een TSV-bestand (door tabs gescheiden waarden) en converteert dat naar een CSV-bestand (door komma's gescheiden waarden).
 
 ## <a name="prerequisites"></a>Vereisten
+
 Voordat u begint, hebt u de volgende items nodig:
 
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
-* Voor dit artikel moet u de Azure CLI-versie 2,0 of hoger uitvoeren. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli). 
-
-
+* Voor dit artikel moet u de Azure CLI-versie 2,0 of hoger uitvoeren. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -46,6 +46,7 @@ az account set --subscription <subscription id>
 ```
 
 ## <a name="create-data-lake-analytics-account"></a>Een Data Lake Analytics-account maken
+
 U hebt een Data Lake Analytics-account nodig voordat u taken kunt uitvoeren. Geef de volgende items op om een Data Lake Analytics-account te maken:
 
 * **Azure-resource groep**. Er moet een Data Lake Analytics-account zijn gemaakt binnen een Azure-resourcegroep. Met [Azure Resource Manager](../azure-resource-manager/management/overview.md) kunt u met de resources in uw toepassing als groep gebruiken. U kunt alle resources voor uw toepassing implementeren, bijwerken of verwijderen in een enkele, gecoördineerde bewerking.  
@@ -88,10 +89,11 @@ Nadat u een account hebt gemaakt, kunt u de volgende opdrachten gebruiken om de 
 
 ```azurecli
 az dla account list
-az dla account show --account "<Data Lake Analytics Account Name>"            
+az dla account show --account "<Data Lake Analytics Account Name>"
 ```
 
 ## <a name="upload-data-to-data-lake-store"></a>Gegevens uploaden naar Data Lake Store
+
 In deze zelfstudie verwerkt u een aantal zoeklogboeken.  Het zoeklogboek kan worden opgeslagen in de Data Lake Store of Azure Blob-opslag.
 
 Azure Portal biedt een gebruikersinterface waarmee u een aantal voorbeeldbestanden kunt kopiëren naar het Data Lake Store-account, waaronder een zoeklogboekbestand. Zie [Brongegevens voorbereiden](data-lake-analytics-get-started-portal.md) om de gegevens te uploaden naar het Data Lake Store-standaardaccount.
@@ -106,19 +108,20 @@ az dls fs list --account "<Data Lake Store Account Name>" --path "<Path>"
 Data Lake Analytics heeft ook toegang tot Azure Blob-opslag.  Zie [De Azure CLI gebruiken met Azure Storage](../storage/common/storage-azure-cli.md) voor informatie over het uploaden van gegevens naar Azure Blob-opslag.
 
 ## <a name="submit-data-lake-analytics-jobs"></a>Data Lake Analytics-taken verzenden
+
 Data Lake Analytics-taken worden geschreven in de U-SQL-taal. Zie [Aan de slag met de U-SQL-taal](data-lake-analytics-u-sql-get-started.md) en [Naslaginformatie voor de U-SQL-taal](https://docs.microsoft.com/u-sql/) voor meer informatie over U-SQL.
 
-**Een Data Lake Analytics-taakscript maken**
+### <a name="to-create-a-data-lake-analytics-job-script"></a>Een Data Lake Analytics-taakscript maken
 
 Maak een tekstbestand met het volgende U-SQL-script en bewaar het tekstbestand op uw werkstation:
 
-```
-@a  = 
-    SELECT * FROM 
+```usql
+@a  =
+    SELECT * FROM
         (VALUES
             ("Contoso", 1500.0),
             ("Woodgrove", 2700.0)
-        ) AS 
+        ) AS
               D( customer, amount );
 OUTPUT @a
     TO "/data.csv"
@@ -131,22 +134,22 @@ Wijzig de twee paden niet, tenzij u het bronbestand naar een andere locatie kopi
 
 Het is eenvoudiger om relatieve paden te gebruiken voor bestanden die zijn opgeslagen in Data Lake Store-standaardaccounts. Maar u kunt ook absolute paden gebruiken.  Bijvoorbeeld:
 
-```
+```usql
 adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
 ```
 
 U moet absolute paden gebruiken om toegang te krijgen tot bestanden in gekoppelde Storage-accounts.  De syntaxis voor bestanden die zijn opgeslagen in het gekoppelde Azure Storage-account is:
 
-```
+```usql
 wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
 ```
 
 > [!NOTE]
-> Azure Blob-containers met openbare blobs worden niet ondersteund.      
-> Azure Blob-containers met openbare containers worden niet ondersteund.      
+> Azure Blob-containers met openbare blobs worden niet ondersteund.
+> Azure Blob-containers met openbare containers worden niet ondersteund.
 >
 
-**Taken verzenden**
+### <a name="to-submit-jobs"></a>Taken verzenden
 
 Gebruik de volgende syntaxis om een taak te verzenden.
 
@@ -160,14 +163,14 @@ Bijvoorbeeld:
 az dla job submit --account "myadlaaccount" --job-name "myadlajob" --script @"C:\DLA\myscript.txt"
 ```
 
-**Taken en taakdetails weergeven**
+### <a name="to-list-jobs-and-show-job-details"></a>Taken en taakdetails weergeven
 
 ```azurecli
 az dla job list --account "<Data Lake Analytics Account Name>"
 az dla job show --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"
 ```
 
-**Taken annuleren**
+### <a name="to-cancel-jobs"></a>Taken annuleren
 
 ```azurecli
 az dla job cancel --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"

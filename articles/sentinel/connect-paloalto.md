@@ -1,6 +1,6 @@
 ---
 title: Palo Alto Networks-gegevens verbinden met Azure Sentinel | Microsoft Docs
-description: Meer informatie over het verbinden van gegevens van Palo Alto-netwerken met Azure Sentinel.
+description: Meer informatie over hoe u de Palo Alto Networks Data Connector kunt gebruiken om uw Palo Alto Networks-Logboeken eenvoudig met Azure Sentinel te verbinden.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 337575a85b899b918162ad59c0bbbbaf742a83fe
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 245db436fc3216fe5c8c8f51c50c0ac03190f9eb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417460"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564567"
 ---
 # <a name="connect-palo-alto-networks-to-azure-sentinel"></a>Palo Alto Networks verbinden met Azure Sentinel
 
@@ -51,9 +51,9 @@ Configureer Palo Alto-netwerken om syslog-berichten in de CEF-indeling door te s
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u Palo Alto Networks-apparaten verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+In dit document hebt u geleerd hoe u Palo Alto Networks-apparaten verbindt met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
 - [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te bewaken.
 
 
