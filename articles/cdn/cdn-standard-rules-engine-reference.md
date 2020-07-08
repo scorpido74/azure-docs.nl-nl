@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 06/22/2020
 ms.author: allensu
-ms.openlocfilehash: 5cb053a87293a4309a393bd9e0e76bf0d881dd71
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 6260a4b78197329e020bebaa3bc08db5ad792086
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322184"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559300"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Naslaginformatie over standaardregelengine voor Azure CDN
 
@@ -35,6 +35,13 @@ Als u een regel in de regel Engine wilt definiëren, stelt u de voor waarden en 
 Elke regel kan Maxi maal tien match voorwaarden en vijf acties hebben. Elk Azure CDN-eind punt kan Maxi maal 25 regels bevatten. 
 
 Inbegrepen in deze limiet is een standaard *globale regel*. De algemene regel heeft geen overeenkomende voor waarden; acties die in een globale regel zijn gedefinieerd, worden altijd geactiveerd.
+
+## <a name="limits-and-pricing"></a>Limieten en prijzen 
+
+Elk Azure CDN-eind punt kan Maxi maal 25 regels bevatten. Elke regel kan Maxi maal tien match voorwaarden en vijf acties hebben. De prijs van de engine voor regels volgt de onderstaande dimensies: 
+- Regels: $1 per regel per maand 
+- Verwerkte aanvragen: $0,60 per miljoen requets
+- De eerste 5 regels blijven gratis
 
 ## <a name="syntax"></a>Syntax
 

@@ -4,15 +4,15 @@ description: Meer informatie over het genereren en ontvangen van leads van klant
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 6234719216c7ef40df99a26153d7677f7a747f55
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 89b73fd98ca773668d2eb53892d0c21397e9abf3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800935"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559587"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Leads van klanten van uw aanbieding voor commerciële Marketplace
 
@@ -87,10 +87,12 @@ De gegevens van de klant worden verzonden via meerdere velden. In het volgende v
 
 ## <a name="best-practices-for-lead-management"></a>Aanbevolen procedures voor het beheer van leads
 
+Hier volgen enkele aanbevelingen voor het aansturen van leads via uw verkoop cyclus:
+
 - **Proces**: Definieer een duidelijk verkoop proces met mijl palen, analyses en duidelijke team eigendom.
 - **Kwalificatie**: Definieer vereisten, die aangeven of een lead volledig is gekwalificeerd. Zorg ervoor dat verkoop-of marketing vertegenwoordigers leads goed kwalificeren voordat ze via het volledige verkoop proces door lopen.
-- **Follow-up**: Vergeet niet om te volgen. Verwacht dat de gebruikelijke trans actie 5 tot 12 opvolgings aanroepen vereist.
-- **Nurture**: nurture uw leads om u op weg te helpen met een hogere winst marge.
+- **Follow-up**: Vergeet niet binnen 24 uur om te volgen. U krijgt de lead in uw CRM-keuze onmiddellijk nadat de klant een test drive heeft geïmplementeerd. u kunt ze in een e-mail verzenden terwijl ze nog steeds warm zijn. Vraag een telefoon gesprek aan te vragen om beter te kunnen begrijpen of uw product een goede oplossing voor het probleem is. Verwacht wordt dat de gebruikelijke trans actie talloze opvolgings aanroepen vereist.
+- **Nurture**: nurture uw leads om u op weg te helpen met een hogere winst marge. Inchecken, maar niet BOMBARD. We raden u aan om ten minste een paar keer e-mail berichten te verzenden voordat u deze sluit. Geef na de eerste poging niets op. Houd er rekening mee dat deze klanten rechtstreeks samen werken met uw product en tijd hebben besteed aan een gratis proef versie. Dit zijn fantastische kandidaten.
 
 ## <a name="common-questions-about-lead-management"></a>Veelgestelde vragen over Lead beheer
 

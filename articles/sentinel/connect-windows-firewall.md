@@ -1,6 +1,6 @@
 ---
 title: Windows Firewall-gegevens verbinden met Azure Sentinel | Microsoft Docs
-description: Meer informatie over hoe u Windows Firewall-gegevens verbindt met Azure Sentinel.
+description: Schakel de Windows Firewall-connector in azure Sentinel in om eenvoudig Firewall gebeurtenissen van Windows-machines te streamen waarop Log Analytics agents zijn geïnstalleerd.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 5d2f68261143c3fc5bbcda0b739af17251eeee63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d33ba0dbb62cd7206829ed9ae580ea2aa3334bcf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588056"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559470"
 ---
 # <a name="connect-windows-firewall"></a>Verbinding maken met Windows-firewall
 
@@ -58,7 +58,7 @@ Het kan 20 minuten duren voordat uw logboeken in Log Analytics worden weer gegev
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u Windows Firewall verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+In dit document hebt u geleerd hoe u Windows Firewall verbindt met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
 

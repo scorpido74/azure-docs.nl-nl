@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: dc4ff35ff04680e8635d54c25212c8ae639ae472
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 464e2c14fa238160ca198b9f1c8a9808e70933f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60779741"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560974"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Schud, schud voor een Tweet--een Twitter-bericht ophalen met Azure Functions
 
@@ -50,13 +50,13 @@ Begin met het openen van de projectmap.
 ### <a name="open-the-arduino-examples-folder"></a>Open de map Arduino-voor beelden
 
 Vouw de sectie **ARDUINO-voor beelden** aan de linkerkant uit, blader naar voor **beelden voor MXCHIP AZ3166 > AzureIoT**en selecteer **ShakeShake**. Er wordt een nieuw versus code venster geopend met daarin de projectmap. Als u de sectie MXCHIP AZ3166 niet kunt zien, controleert u of het apparaat juist is verbonden en Start Visual Studio code opnieuw.  
-de ![mini-Solution-voor beelden](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
+de ![ Mini-Solution-voor beelden](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-U kunt het voorbeeld project ook openen vanuit het opdracht palet. Klik `Ctrl+Shift+P` op (macOS `Cmd+Shift+P`:) om het opdracht palet te openen, typ **Arduino**en zoek en selecteer vervolgens **Arduino: voor beelden**.
+U kunt het voorbeeld project ook openen vanuit het opdracht palet. Klik op `Ctrl+Shift+P` (macOS: `Cmd+Shift+P` ) om het opdracht palet te openen, typ **Arduino**en zoek en selecteer vervolgens **Arduino: voor beelden**.
 
 ## <a name="provision-azure-services"></a>Azure-Services inrichten
 
-Voer in het oplossings venster uw taak uit `Ctrl+P` (macOS: `Cmd+P`) door in `task cloud-provision`te voeren.
+Voer in het oplossings venster uw taak uit `Ctrl+P` (macOS: `Cmd+P` ) door in te voeren `task cloud-provision` .
 
 In de VS code-terminal wordt u door een interactieve opdracht regel begeleid bij het inrichten van de vereiste Azure-Services:
 
@@ -73,11 +73,11 @@ Open `ShakeShake.ino` en zoek naar deze regel code:
 static const char* iot_event = "{\"topic\":\"iot\"}";
 ```
 
-Vervang de teken `iot` reeks binnen de accolades door de gewenste hashtag. De DevKit haalt later een wille keurige Tweet op die de hashtag bevat die u in deze stap opgeeft.
+Vervang de teken reeks binnen de accolades door `iot` de gewenste hashtag. De DevKit haalt later een wille keurige Tweet op die de hashtag bevat die u in deze stap opgeeft.
 
 ## <a name="deploy-azure-functions"></a>Azure Functions implementeren
 
-Gebruik `Ctrl+P` (macOS: `Cmd+P`) om uit `task cloud-deploy` te voeren om de Azure functions code te implementeren:
+Gebruik `Ctrl+P` (macOS: `Cmd+P` ) om uit `task cloud-deploy` te voeren om de Azure functions code te implementeren:
 
 ![Cloud-implementeren](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
 
@@ -90,7 +90,7 @@ Vervolgens bouwt en uploadt u de code van het apparaat.
 
 ### <a name="windows"></a>Windows
 
-1. Gebruiken `Ctrl+P` om uit `task device-upload`te voeren.
+1. Gebruiken `Ctrl+P` om uit te voeren `task device-upload` .
 
 2. De Terminal vraagt u de configuratie modus in te voeren. Dit doet u als volgt:
 
@@ -106,7 +106,7 @@ Vervolgens bouwt en uploadt u de code van het apparaat.
 
    Houd de knop A ingedrukt en druk vervolgens de knop Reset. In het scherm wordt ' configuratie ' weer gegeven.
 
-2. Gebruik `Cmd+P` om uit `task device-upload` te voeren om de Connection String in te stellen die wordt `task cloud-provision` opgehaald uit de stap.
+2. Gebruik `Cmd+P` om uit `task device-upload` te voeren om de Connection String in te stellen die wordt opgehaald uit de `task cloud-provision` stap.
 
 ### <a name="verify-upload-and-run"></a>Controleren, uploaden en uitvoeren
 
@@ -151,7 +151,7 @@ Klik na de initialisatie van de app op knop A en laat deze los en schud vervolge
 - Druk nogmaals op de knop en schud vervolgens naar een nieuwe Tweet.
 - Druk op de knop B om door de rest van de Tweet te schuiven.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 
 ![schema](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/diagram.png)
 
@@ -185,7 +185,7 @@ Voor test doeleinden maakt dit voorbeeld project gebruik van een vooraf geconfig
 
 Problemen oplossen of feedback geven. 
 
-### <a name="problems"></a>Treden
+### <a name="problems"></a>Problemen
 
 Een probleem dat u kunt zien als het scherm ' No tweets ' weergeeft terwijl elke stap is uitgevoerd. Deze voor waarde gebeurt normaal gesp roken de eerste keer dat u het voor beeld implementeert en uitvoert, omdat de functie-app van een paar seconden tot één minuut vereist is om de app koud te starten. 
 
@@ -196,8 +196,6 @@ Of wanneer de code wordt uitgevoerd, zijn er een aantal problemen die ervoor zor
 2. Zoek in de [Azure Portal](https://portal.azure.com/)de Azure functions-app die u hebt gemaakt en start deze opnieuw op:
 
    ![Azure-functie-opnieuw opstarten](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
-
-### <a name="feedback"></a>Feedback
 
 Als u andere problemen ondervindt, raadpleegt u de [Veelgestelde vragen over IOT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) of neemt u contact met ons op met behulp van de volgende kanalen:
 

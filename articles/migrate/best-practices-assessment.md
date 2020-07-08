@@ -6,30 +6,39 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 635ea81f37e72cdee80fbae928745e49b103820e
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 1a3735180d72496d58cdd22d0aa34c8a6f88a6a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433038"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559851"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Aanbevolen procedures voor het maken van evaluaties
 
-[Azure migrate](migrate-overview.md) biedt een hub aan hulpprogram ma's waarmee u apps, infra structuur en werk belastingen op Microsoft Azure kunt detecteren, evalueren en migreren. De hub bevat Azure Migrate-hulpprogram ma's en ISV-aanbiedingen (Independent Software Vendor) van derden.
+[Azure Migrate](migrate-overview.md) biedt een hub aan hulpprogramma's waarmee u apps, infrastructuur en workloads op Microsoft Azure kunt detecteren, evalueren en migreren. De hub bevat Azure Migrate-hulpprogramma's en externe aanbiedingen van onafhankelijke softwareleveranciers (ISV’s).
 
 Dit artikel bevat een overzicht van de aanbevolen procedures voor het maken van evaluaties met behulp van het hulp programma Azure Migrate server Assessment.
 
 ## <a name="about-assessments"></a>Over evaluaties
 
-Evaluaties die u maakt met Azure Migrate server-evaluatie zijn een tijdgebonden moment opname van gegevens. Er zijn twee soorten evaluaties in Azure Migrate.
+Evaluaties die u maakt met Azure Migrate server-evaluatie zijn een tijdgebonden moment opname van gegevens. Er zijn twee soorten evaluaties die u kunt maken met behulp van Azure Migrate: Server evaluatie:
 
-**Beoordelings type** | **Details** | **Gegevens**
+**Beoordelings type** | **Details**
+--- | --- 
+**Azure VM** | Beoordelingen voor het migreren van uw on-premises servers naar Azure virtual machines. <br/><br/> U kunt uw on-premises [virtuele VMware-machines](how-to-set-up-appliance-vmware.md), [virtuele Hyper-V-machines](how-to-set-up-appliance-hyper-v.md)en [fysieke servers](how-to-set-up-appliance-physical.md) voor migratie naar Azure evalueren met dit beoordelings type. [Meer informatie](concepts-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | Beoordelingen voor het migreren van uw on-premises servers naar de [Azure VMware-oplossing (AVS)](https://docs.microsoft.com/azure/azure-vmware/introduction). <br/><br/> U kunt uw on-premises [virtuele VMware-machines](how-to-set-up-appliance-vmware.md) evalueren voor migratie naar Azure VMware-oplossing (AVS) met dit beoordelings type. [Meer informatie](concepts-azure-vmware-solution-assessment-calculation.md)
+
+
+### <a name="sizing-criteria"></a>Grootte criteria
+Server beoordeling biedt twee opties voor het aanpassen van de grootte:
+
+**Grootte criteria** | **Details** | **Gegevens**
 --- | --- | ---
-**Op basis van prestaties** | Beoordelingen die aanbevelingen doen op basis van verzamelde prestatie gegevens | Aanbeveling voor VM-grootte is gebaseerd op gegevens van CPU en geheugen gebruik.<br/><br/> De aanbeveling van het schijf type (standaard HDD/SSD of Premium-Managed disks) is gebaseerd op de IOPS en door Voer van de on-premises schijven.
-**As-is on-premises** | Evaluaties die geen gebruik maken van prestatie gegevens voor aanbevelingen. | Aanbeveling voor VM-grootte is gebaseerd op de on-premises VM-grootte<br/><br> Het aanbevolen schijf type is gebaseerd op wat u selecteert in de instelling opslag type voor de evaluatie.
+**Op basis van prestaties** | Beoordelingen die aanbevelingen doen op basis van verzamelde prestatie gegevens | **Evaluatie**van de Azure-VM: aanbeveling van de VM-grootte is gebaseerd op de gegevens van het CPU-en geheugen gebruik.<br/><br/> De aanbeveling van het schijf type (standaard HDD/SSD of Premium-Managed disks) is gebaseerd op de IOPS en door Voer van de on-premises schijven.<br/><br/> **Evaluatie van de Azure VMware-oplossing (AVS)**: de aanbeveling voor AVS-knoop punten is gebaseerd op de CPU-en geheugen gebruiks gegevens.
+**As-is on-premises** | Evaluaties die geen gebruik maken van prestatie gegevens voor aanbevelingen. | **Azure VM-evaluatie**: aanbeveling van de VM-grootte is gebaseerd op de on-PREMISes VM-grootte<br/><br> Het aanbevolen schijf type is gebaseerd op wat u selecteert in de instelling opslag type voor de evaluatie.<br/><br/> **Evaluatie van de Azure VMware-oplossing (AVS)**: de aanbeveling voor AVS-knoop punten is gebaseerd op de on-PREMISes VM-grootte.
 
-### <a name="example"></a>Voorbeeld
-Een voor beeld: als u een on-premises VM hebt met vier kernen van 20% gebruik en geheugen van 8 GB met 10% gebruik, zijn de evaluaties als volgt:
+#### <a name="example"></a>Voorbeeld
+Een voor beeld: als u een on-premises VM hebt met vier kernen van 20% gebruik en geheugen van 8 GB met 10% gebruik, is de Azure VM-evaluatie als volgt:
 
 - **Evaluatie op basis van prestaties**:
     - Identificeert effectief kernen en geheugen op basis van core (4 x 0,20 = 0,8) en geheugen (8 GB x 0,10 = 0,8) gebruik.
@@ -38,6 +47,7 @@ Een voor beeld: als u een on-premises VM hebt met vier kernen van 20% gebruik en
 
 - **As-is (zoals on-premises) evaluatie**:
     -  Raadt een VM aan met vier kernen; 8 GB geheugen.
+
 
 ## <a name="best-practices-for-creating-assessments"></a>Aanbevolen procedures voor het maken van evaluaties
 
@@ -54,6 +64,19 @@ Volg deze aanbevolen procedures voor evaluaties van servers die in Azure Migrate
 - **Evaluaties maken als-is**: u kunt de evaluatie van de as-out onmiddellijk maken zodra uw computers in de Azure migrate Portal worden weer gegeven.
 - Een **evaluatie op basis van prestaties maken**: Hiermee krijgt u een betere schatting van de kosten, met name als u lokale server capaciteit hebt overingericht. De nauw keurigheid van de analyse op basis van prestaties is echter afhankelijk van de prestatie gegevens die u voor de servers hebt opgegeven. 
 - **Evaluaties opnieuw berekenen**: aangezien beoordelingen moment opnamen zijn, worden ze niet automatisch bijgewerkt met de meest recente gegevens. Als u een evaluatie met de meest recente geïmporteerde gegevens wilt bijwerken, moet u deze opnieuw berekenen.
+ 
+### <a name="ftt-sizing-parameters-for-avs-assessments"></a>FTT-formaat parameters voor AVS-evaluaties
+
+De opslag-engine die in AVS wordt gebruikt, is vSAN. vSAN Storage policies bepalen opslag vereisten voor uw virtuele machines. Met deze beleids regels wordt het vereiste service niveau voor uw virtuele machines gegarandeerd, omdat ze bepalen hoe opslag wordt toegewezen aan de virtuele machine. Dit zijn de beschik bare FTT-RAID-combi Naties: 
+
+**Te verdragen fouten (FTT)** | **RAID-configuratie** | **Minimum aantal hosts vereist** | **Grootte van overwegingen**
+--- | --- | --- | --- 
+1 | RAID-1 (spie gelen) | 3 | Een VM van 100 GB verbruikt 200 GB.
+1 | RAID-5 (code ring verwijderen) | 4 | Een VM van 100 GB verbruikt 133.33 GB
+2 | RAID-1 (spie gelen) | 5 | Een VM van 100 GB verbruikt 300 GB.
+2 | RAID-6 (code ring verwijderen) | 6 | Een VM van 100 GB gebruikt 150 GB.
+3 | RAID-1 (spie gelen) | 7 | Een VM van 100 GB verbruikt 400 GB.
+
 
 ## <a name="best-practices-for-confidence-ratings"></a>Aanbevolen procedures voor betrouwbaarheids classificaties
 
@@ -64,7 +87,7 @@ Wanneer u evaluaties op basis van prestaties uitvoert, wordt een betrouwbaarheid
 
 Afhankelijk van het percentage beschik bare gegevens punten voor de geselecteerde duur, wordt de betrouwbaarheids classificatie voor een evaluatie gegeven, zoals beschreven in de volgende tabel.
 
-   **Beschik baarheid van gegevens punt** | **Betrouwbaarheidsclassificatie**
+   **Beschikbaarheid van gegevenspunten** | **Betrouwbaarheidsclassificatie**
    --- | ---
    0%-20% | 1 ster
    21%-40% | 2 sterren
@@ -92,7 +115,7 @@ Als er on-premises wijzigingen zijn aangebracht aan virtuele machines die zich i
 - Aantal schijven
 - Aantal netwerk adapters
 - Wijziging in de schijf grootte (GB toegewezen)
-- Bijwerken naar NIC-eigenschappen. Voor beeld: Mac-adres wijzigingen, IP-adres toevoegen etc.
+- Update van NIC-eigenschappen. Voor beeld: Mac-adres wijzigingen, IP-adres toevoegen etc.
 
 Voer de evaluatie opnieuw uit (opnieuw**berekenen**) om de wijzigingen weer te geven.
 
@@ -105,6 +128,12 @@ Een evaluatie heeft mogelijk niet alle gegevens punten om een aantal redenen:
 - Er zijn enkele VM's uitgeschakeld geweest in de periode waarover de evaluatie wordt berekend. Als bepaalde VM's gedurende een tijdje uitgeschakeld zijn geweest, kunnen er voor deze periode geen prestatiegegevens worden verzameld.
 
 - Er zijn enkele VM’s gemaakt nadat detectie in Server-evaluatie al was gestart. Als u bijvoorbeeld een evaluatie maakt voor de prestatiegeschiedenis van de laatste maand, maar er een week geleden enkele VM's in de omgeving zijn gemaakt. In dit geval zijn er voor de hele periode geen prestatiegegevens van de nieuwe VM’s beschikbaar, waardoor de betrouwbaarheidsclassificatie laag is.
+
+### <a name="migration-tool-guidance-for-avs-assessments"></a>Richt lijnen voor migratie Hulpprogramma's voor AVS-evaluaties
+
+In het Azure Readiness-rapport voor de evaluatie van Azure VMware-oplossingen (AVS) kunt u de volgende aanbevolen hulpprogram ma's zien: 
+- **VMware HCX of ENTER prise**: voor VMware-machines is de VMware Hybrid Cloud extension (HCX)-oplossing het aanbevolen migratie programma voor het migreren van uw on-premises werk belasting naar uw Azure VMware-oplossing (AVS) Private Cloud. [Meer informatie](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation).
+- **Onbekend**: voor machines die worden geïmporteerd via een CSV-bestand, is het standaard hulp programma voor migratie onbekend. Voor VMware-machines is het echter raadzaam de VMWare Hybrid Cloud extension (HCX)-oplossing te gebruiken.
 
 
 ## <a name="next-steps"></a>Volgende stappen

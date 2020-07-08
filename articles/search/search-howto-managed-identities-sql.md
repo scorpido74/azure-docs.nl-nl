@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 3e58bdafce6746d7f83dfbceeff529c6d4b5075a
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: d0933f5305007bc4a8238adb2b6b949ab0c11edf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321340"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559928"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>Een Indexeer functie verbinding instellen met Azure SQL Database met behulp van een beheerde identiteit (preview)
 
@@ -111,7 +111,7 @@ Bij het indexeren van een SQL database moet de gegevens bron de volgende vereist
 Voor beeld van het maken van een Azure SQL-gegevens bron object met behulp van de [rest API](https://docs.microsoft.com/rest/api/searchservice/create-data-source):
 
 ```
-POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -132,7 +132,7 @@ De index specificeert de velden in een document, kenmerken en andere constructie
 Ga als volgt te werk om een index te maken met een doorzoekbaar `booktitle` veld:   
 
 ```
-POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -156,7 +156,7 @@ Zodra de index en gegevens bron zijn gemaakt, kunt u de Indexeer functie maken.
 Voor beeld van een indexerings definitie voor een Azure SQL-Indexeer functie:
 
 ```
-POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -178,7 +178,7 @@ Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedul
 
 Als er een fout optreedt wanneer de Indexeer functie probeert verbinding te maken met de gegevens bron die aangeeft dat de client geen toegang heeft tot de server, bekijkt u [veelvoorkomende fouten in Indexeer functie](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting).
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 Meer informatie over de Azure SQL-Indexer:
 * [Indexeerfunctie voor Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

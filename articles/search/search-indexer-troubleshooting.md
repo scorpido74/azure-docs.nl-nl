@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 62c35eefe50643dc65dcf84305a9b4b3ee64cadb
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 79db94298d190f646393410ec73ba1a25bb48270
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85478634"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560396"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Veelvoorkomende problemen met Indexeer functies in azure Cognitive Search oplossen
 
@@ -76,7 +76,7 @@ Azure Cognitive Search heeft een impliciete afhankelijkheid van Cosmos DB indexe
 De BLOB-Indexeer [documenten die worden ondersteund door de document indelingen expliciet](search-howto-indexing-azure-blob-storage.md#SupportedFormats) Soms bevat een BLOB storage-container niet-ondersteunde documenten. Het kan zijn dat er problemen zijn met de documenten. U kunt voor komen dat uw Indexeer functie op deze documenten wordt gestopt door [configuratie opties te wijzigen](search-howto-indexing-azure-blob-storage.md#DealingWithErrors):
 
 ```
-PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -94,7 +94,7 @@ De BLOB-indexer [zoekt en extraheert tekst van blobs in een container](search-ho
 * De BLOB-indexer is zo geconfigureerd dat alleen meta gegevens worden geïndexeerd. Als u inhoud wilt extra heren, moet de BLOB-indexer worden geconfigureerd voor het [extra heren van inhoud en meta gegevens](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed):
 
 ```
-PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 

@@ -9,31 +9,31 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2edd62825de08becf22f2f953a63a7f89f55e0a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9fe61cf2a53b8e128a6cb58465cbb4785faa89d2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283054"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562047"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Complexe gegevens typen model leren in azure Cognitive Search
 
 Externe gegevens sets die worden gebruikt voor het vullen van een Azure Cognitive Search-index kunnen in veel vormen worden geleverd. Soms bevatten deze hiërarchische of geneste substructuren. Voor beelden zijn bijvoorbeeld meerdere adressen voor één klant, meerdere kleuren en grootten voor één SKU, meerdere auteurs van één boek, enzovoort. In het kader van model lering kunnen deze structuren worden aangeduid als *complexe*, *samengestelde*, *samengestelde*of *statistische* gegevens typen. De term Azure Cognitive Search gebruikt voor dit concept is een **complex type**. In azure Cognitive Search worden complexe typen gemodelleerd met behulp van **complexe velden**. Een complex veld is een veld met onderliggende elementen (subvelden) die van elk gegevens type kunnen zijn, met inbegrip van andere complexe typen. Dit werkt op een vergelijk bare manier als gestructureerde gegevens typen in een programmeer taal.
 
-Complexe velden vertegenwoordigen ofwel één object in het document of een matrix van objecten, afhankelijk van het gegevens type. Velden van het `Edm.ComplexType` type vertegenwoordigen afzonderlijke objecten, terwijl velden van `Collection(Edm.ComplexType)` het type matrices van objecten vertegenwoordigen.
+Complexe velden vertegenwoordigen ofwel één object in het document of een matrix van objecten, afhankelijk van het gegevens type. Velden van het type `Edm.ComplexType` vertegenwoordigen afzonderlijke objecten, terwijl velden van het type `Collection(Edm.ComplexType)` matrices van objecten vertegenwoordigen.
 
 Azure Cognitive Search biedt systeem eigen ondersteuning voor complexe typen en verzamelingen. Met deze typen kunt u nagenoeg elke JSON-structuur in een Azure Cognitive Search-index model leren. In eerdere versies van Azure Cognitive Search-Api's kunnen alleen samengevoegde Rijg sets worden geïmporteerd. In de nieuwste versie kan uw index nu nauw keuriger overeenkomen met de bron gegevens. Met andere woorden, als uw bron gegevens complexe typen hebben, kan uw index ook complexe typen hebben.
 
 Om aan de slag te gaan, raden we de [gegevensverzameling Hotels](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)aan, die u in de wizard **gegevens importeren** in de Azure Portal kunt laden. De wizard detecteert complexe typen in de bron en suggereert een index schema op basis van de gedetecteerde structuren.
 
 > [!Note]
-> Ondersteuning voor complexe typen is algemeen beschikbaar in `api-version=2019-05-06`. 
+> Ondersteuning voor complexe typen is algemeen verkrijgbaar vanaf `api-version=2019-05-06` . 
 >
 > Als uw zoek oplossing is gebaseerd op eerdere tijdelijke oplossingen van platte gegevens sets in een verzameling, moet u de index zodanig wijzigen dat deze complexe typen bevat zoals wordt ondersteund in de nieuwste API-versie. Zie voor meer informatie over het upgraden van API-versies [upgraden naar de nieuwste versie van rest API](search-api-migration.md) of voer een [upgrade uit naar de nieuwste versie van de .NET SDK](search-dotnet-sdk-migration-version-9.md).
 
 ## <a name="example-of-a-complex-structure"></a>Voor beeld van een complexe structuur
 
-Het volgende JSON-document bestaat uit eenvoudige velden en complexe velden. Complexe velden, zoals `Address` en `Rooms`, hebben subvelden. `Address`heeft één set waarden voor die subvelden, omdat het een enkel object in het document is. Daarentegen `Rooms` heeft meerdere waarden sets voor de subvelden, één voor elk object in de verzameling.
+Het volgende JSON-document bestaat uit eenvoudige velden en complexe velden. Complexe velden, zoals `Address` en `Rooms` , hebben subvelden. `Address`heeft één set waarden voor die subvelden, omdat het een enkel object in het document is. Daarentegen `Rooms` heeft meerdere waarden sets voor de subvelden, één voor elk object in de verzameling.
 
 ```json
 {
@@ -103,7 +103,7 @@ U ziet dat in een complex type elk subveld een type heeft en kan kenmerken hebbe
 
 ### <a name="data-updates"></a>Gegevens updates
 
-Het bijwerken van bestaande documenten in een index `upload` met de actie werkt op dezelfde manier voor complexe en eenvoudige velden. alle velden worden vervangen. `merge` (Of `mergeOrUpload` wanneer toegepast op een bestaand document) werkt echter niet in alle velden. Met name `merge` biedt geen ondersteuning voor het samen voegen van elementen binnen een verzameling. Deze beperking bestaat voor verzamelingen van primitieve typen en complexe verzamelingen. Als u een verzameling wilt bijwerken, moet u de volledige verzamelings waarde ophalen, wijzigingen aanbrengen en de nieuwe verzameling vervolgens toevoegen aan de API-aanvraag van de index.
+Het bijwerken van bestaande documenten in een index met de `upload` actie werkt op dezelfde manier voor complexe en eenvoudige velden. alle velden worden vervangen. `merge`(Of `mergeOrUpload` wanneer toegepast op een bestaand document) werkt echter niet in alle velden. Met name `merge` biedt geen ondersteuning voor het samen voegen van elementen binnen een verzameling. Deze beperking bestaat voor verzamelingen van primitieve typen en complexe verzamelingen. Als u een verzameling wilt bijwerken, moet u de volledige verzamelings waarde ophalen, wijzigingen aanbrengen en de nieuwe verzameling vervolgens toevoegen aan de API-aanvraag van de index.
 
 ## <a name="searching-complex-fields"></a>Complexe velden zoeken
 
@@ -113,15 +113,15 @@ Query's krijgen meer nuances wanneer u meerdere voor waarden en Opera tors hebt,
 
     search=Address/City:Portland AND Address/State:OR
 
-Query's zoals dit zijn niet- *gecorreleerd* voor Zoek opdrachten in volledige tekst, in tegens telling tot filters. In filters worden query's via subvelden van een complexe verzameling gecorreleerd met behulp van bereik variabelen [ `any` in `all`of ](search-query-odata-collection-operators.md). De Maine-query hierboven retourneert documenten die zowel "Port land," als "Port land, Oregon" bevatten, samen met andere steden in Oregon. Dit gebeurt omdat elke component van toepassing is op alle waarden van het veld in het hele document, waardoor er geen ' Huidig subdocument ' is. Zie [informatie over OData-verzamelings filters in Azure Cognitive Search](search-query-understand-collection-filters.md)voor meer informatie.
+Query's zoals dit zijn niet- *gecorreleerd* voor Zoek opdrachten in volledige tekst, in tegens telling tot filters. In filters worden query's via subvelden van een complexe verzameling gecorreleerd met behulp van bereik variabelen in [ `any` of `all` ](search-query-odata-collection-operators.md). De Maine-query hierboven retourneert documenten die zowel "Port land," als "Port land, Oregon" bevatten, samen met andere steden in Oregon. Dit gebeurt omdat elke component van toepassing is op alle waarden van het veld in het hele document, waardoor er geen ' Huidig subdocument ' is. Zie [informatie over OData-verzamelings filters in Azure Cognitive Search](search-query-understand-collection-filters.md)voor meer informatie.
 
 ## <a name="selecting-complex-fields"></a>Complexe velden selecteren
 
-De `$select` para meter wordt gebruikt om te kiezen welke velden worden geretourneerd in de zoek resultaten. Als u deze para meter wilt gebruiken om specifieke subvelden van een complex veld te selecteren, neemt u het bovenliggende veld en subveld op`/`, gescheiden door een schuine streep ().
+De `$select` para meter wordt gebruikt om te kiezen welke velden worden geretourneerd in de zoek resultaten. Als u deze para meter wilt gebruiken om specifieke subvelden van een complex veld te selecteren, neemt u het bovenliggende veld en subveld op, gescheiden door een schuine streep ( `/` ).
 
     $select=HotelName, Address/City, Rooms/BaseRate
 
-Velden moeten worden gemarkeerd als ophalen in de index als u deze wilt in de zoek resultaten. Alleen velden die als ophalen zijn gemarkeerd, kunnen worden gebruikt `$select` in een-instructie.
+Velden moeten worden gemarkeerd als ophalen in de index als u deze wilt in de zoek resultaten. Alleen velden die als ophalen zijn gemarkeerd, kunnen worden gebruikt in een- `$select` instructie.
 
 ## <a name="filter-facet-and-sort-complex-fields"></a>Complexe velden filteren, facetten en sorteren
 
@@ -129,15 +129,15 @@ De syntaxis van het [OData-pad](query-odata-filter-orderby-syntax.md) dat wordt 
 
 ### <a name="faceting-sub-fields"></a>Facet Subvelden
 
-Elk subveld kan worden gemarkeerd als facetbaar tenzij het van het type `Edm.GeographyPoint` of `Collection(Edm.GeographyPoint)`is.
+Elk subveld kan worden gemarkeerd als facetbaar tenzij het van het type `Edm.GeographyPoint` of is `Collection(Edm.GeographyPoint)` .
 
-Het aantal documenten dat wordt geretourneerd in de facet resultaten worden berekend voor het bovenliggende document (een hotel), niet de subdocumenten in een complexe verzameling (kamers). Stel bijvoorbeeld dat een hotel 20 kamers van het type ' Suite ' bevat. Op basis van deze `facet=Rooms/Type`facet parameter is het aantal facetten één voor het Hotel, niet 20 voor de kamers.
+Het aantal documenten dat wordt geretourneerd in de facet resultaten worden berekend voor het bovenliggende document (een hotel), niet de subdocumenten in een complexe verzameling (kamers). Stel bijvoorbeeld dat een hotel 20 kamers van het type ' Suite ' bevat. Op basis van deze facet parameter is `facet=Rooms/Type` het aantal facetten één voor het Hotel, niet 20 voor de kamers.
 
 ### <a name="sorting-complex-fields"></a>Complexe velden sorteren
 
 Sorteer bewerkingen zijn van toepassing op documenten (hotels) en geen subdocumenten (kamers). Wanneer u een verzameling complexe typen hebt, zoals kamers, is het belang rijk om te realiseren dat u niet op kamers kunt sorteren. U kunt op geen enkele verzameling sorteren.
 
-Sorteer bewerkingen werken als velden één waarde per document hebben, ongeacht of het veld een eenvoudig veld is of een subveld in een complex type. Het `Address/City` is bijvoorbeeld toegestaan om sorteerbaar te maken, omdat er maar één adres per hotel is `$orderby=Address/City` , zodat hotels per plaats worden gesorteerd.
+Sorteer bewerkingen werken als velden één waarde per document hebben, ongeacht of het veld een eenvoudig veld is of een subveld in een complex type. `Address/City`Het is bijvoorbeeld toegestaan om sorteerbaar te maken, omdat er maar één adres per hotel is, zodat `$orderby=Address/City` Hotels per plaats worden gesorteerd.
 
 ### <a name="filtering-on-complex-fields"></a>Filteren op complexe velden
 
@@ -145,7 +145,7 @@ U kunt verwijzen naar subvelden van een complex veld in een filter expressie. Ge
 
     $filter=Address/Country eq 'Canada'
 
-Als u wilt filteren op een complex verzamelings veld, kunt u een **lambda-expressie** gebruiken met de [ `any` Opera tors `all` en](search-query-odata-collection-operators.md). In dat geval is de **variabele Range** van de lambda-expressie een object met subvelden. U kunt naar deze subvelden verwijzen met de standaard syntaxis van het OData-pad. Het volgende filter retourneert bijvoorbeeld alle hotels met ten minste één luxe kamer en alle niet-roken ruimten:
+Als u wilt filteren op een complex verzamelings veld, kunt u een **lambda-expressie** gebruiken met de [ `any` `all` Opera tors en](search-query-odata-collection-operators.md). In dat geval is de **variabele Range** van de lambda-expressie een object met subvelden. U kunt naar deze subvelden verwijzen met de standaard syntaxis van het OData-pad. Het volgende filter retourneert bijvoorbeeld alle hotels met ten minste één luxe kamer en alle niet-roken ruimten:
 
     $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
 

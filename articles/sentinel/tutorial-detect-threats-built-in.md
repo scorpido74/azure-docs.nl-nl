@@ -1,6 +1,6 @@
 ---
 title: Waarschuwingen onderzoeken met Azure Sentinel | Microsoft Docs
-description: Gebruik deze zelf studie om te leren hoe u waarschuwingen met Azure Sentinel kunt onderzoeken.
+description: Meer informatie over het gebruik van out-of-the-box, ingebouwde sjablonen voor detectie van Azure Threats die u op de hoogte stelt wanneer er iets verdacht is.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: df855aa768fdeb279482b8407259be1a644322d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d1ef885ea36e2eee7fd30268fd7b1f4609a70bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77585200"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560033"
 ---
 # <a name="tutorial-detect-threats-out-of-the-box"></a>Zelf studie: bedreigingen-out-of-Box detecteren
 
@@ -27,9 +27,9 @@ ms.locfileid: "77585200"
 > [!IMPORTANT]
 > Out-of-the-box-bedreigings detectie is momenteel beschikbaar als open bare preview.
 > Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
-Nadat u [uw gegevens bronnen hebt verbonden](quickstart-onboard.md)met Azure Sentinel, wilt u een melding ontvangen wanneer er iets verdacht is. Om dit mogelijk te maken, biedt Azure Sentinel u de beschikking over out-of-the-box-sjablonen. Deze sjablonen zijn ontworpen door het team van beveiligings experts en analisten van micro soft op basis van bekende bedreigingen, veelvoorkomende aanvals vectoren en escalatie ketens van verdachte activiteiten. Nadat deze sjablonen zijn ingeschakeld, zullen ze automatisch zoeken naar activiteiten die in uw omgeving verdacht zijn. Veel sjablonen kunnen worden aangepast om activiteiten op basis van uw behoeften te zoeken of uit te filteren. De waarschuwingen die door deze sjablonen worden gegenereerd, maken incidenten die u kunt toewijzen en onderzoeken in uw omgeving.
+Nadat u [uw gegevens bronnen hebt verbonden](quickstart-onboard.md)   met Azure Sentinel, wilt u een melding ontvangen wanneer er iets verdacht is. Om dit mogelijk te maken, biedt Azure Sentinel u de beschikking over out-of-the-box-sjablonen. Deze sjablonen zijn ontworpen door het team van beveiligings experts en analisten van micro soft op basis van bekende bedreigingen, veelvoorkomende aanvals vectoren en escalatie ketens van verdachte activiteiten. Nadat deze sjablonen zijn ingeschakeld, zullen ze automatisch zoeken naar activiteiten die in uw omgeving verdacht zijn. Veel sjablonen kunnen worden aangepast om activiteiten op basis van uw behoeften te zoeken of uit te filteren. De waarschuwingen die door deze sjablonen worden gegenereerd, maken incidenten die u kunt toewijzen en onderzoeken in uw omgeving.
 
 Deze zelf studie helpt u bij het detecteren van bedreigingen met Azure Sentinel:
 
@@ -39,7 +39,7 @@ Deze zelf studie helpt u bij het detecteren van bedreigingen met Azure Sentinel:
 
 ## <a name="about-out-of-the-box-detections"></a>Over standaarddetectie
 
-Als u alle opstaande detecties wilt weer geven, gaat u naar **Analytics** en vervolgens op **regel sjablonen**. Dit tabblad bevat alle ingebouwde Azure Sentinel-regels.
+Als u alle vooraf gedefinieerde detecties wilt weergeven, gaat u naar **Analyse** en vervolgens naar **Regelsjablonen**. Dit tabblad bevat alle ingebouwde regels van Azure Sentinel.
 
    ![Ingebouwde detecties gebruiken om bedreigingen te vinden met Azure Sentinel](media/tutorial-detect-built-in/view-oob-detections.png)
 

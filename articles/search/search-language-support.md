@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ca2bc66c755da2011cc7016f37b194caa6200d9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 344b3bb30c9a92046a5fbd13c35b0efc7e6f3a23
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72793593"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560829"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Een index maken voor meerdere talen in azure Cognitive Search
 
@@ -44,7 +44,7 @@ Zodra de taal analyse voor een veld is geselecteerd, wordt het gebruikt met elke
 
 Als de taal van de agent die een query heeft uitgegeven, bekend is, kan een zoek opdracht worden toegewezen aan een specifiek veld met behulp van de **searchFields** -query parameter. De volgende query wordt alleen uitgegeven op basis van de beschrijving in Pools:
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2019-05-06`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2020-06-30`
 
 U kunt een query uitvoeren op uw index vanuit de portal, met behulp van [**Search Explorer**](search-explorer.md) om een query te plakken die vergelijkbaar is met de hierboven weer gegeven.
 
@@ -61,7 +61,7 @@ Soms is de taal van de agent waarmee een query wordt uitgegeven niet bekend. in 
       }
     ]
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2019-05-06`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2020-06-30`
 
 ## <a name="next-steps"></a>Volgende stappen
 

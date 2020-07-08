@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 29e675f3ae35df9211f58d45ad8450566d67a588
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b06f39de9f977a9f777b21a53e93ca744fccdd93
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658231"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560153"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor werkmappen
 
@@ -31,9 +31,9 @@ Werkmappen zijn momenteel compatibel met de volgende gegevens bronnen:
 * [Metrische gegevens](workbooks-data-sources.md#metrics)
 * [Azure Resource Graph](workbooks-data-sources.md#azure-resource-graph)
 * [Waarschuwingen (preview)](workbooks-data-sources.md#alerts-preview)
-* [Workload status (preview-versie)](workbooks-data-sources.md#workload-health-preview)
-* [Azure Resource Health (preview-versie)](workbooks-data-sources.md#azure-resource-health)
-* [Azure Data Explorer (preview-versie)](workbooks-data-sources.md#azure-data-explorer-preview)
+* [Werk belasting status](workbooks-data-sources.md#workload-health)
+* [Azure Resource Health](workbooks-data-sources.md#azure-resource-health)
+* [Azure Data Explorer](workbooks-data-sources.md#azure-data-explorer)
 
 ## <a name="visualizations"></a>Visualisaties
 
@@ -42,7 +42,7 @@ Werkmappen bieden een uitgebreide set mogelijkheden voor het visualiseren van uw
 * [Tekst](workbooks-visualizations.md#text)
 * [Grafieken](workbooks-visualizations.md#charts)
 * [Rasters](workbooks-visualizations.md#grids)
-* [Pagina's](workbooks-visualizations.md#tiles)
+* [Tegels](workbooks-visualizations.md#tiles)
 * [Mapstructuren](workbooks-visualizations.md#trees)
 * [Grafieken](workbooks-visualizations.md#graphs)
 

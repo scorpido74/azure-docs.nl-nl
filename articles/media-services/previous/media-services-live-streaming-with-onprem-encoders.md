@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: c0d19d68d016a47762fb5d2646ea6ccf74d3ef75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb94703a78cd2c025efc1f3c6c16e296fece206e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476555"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560000"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Werken met kanalen die een multi-bitrate live stream van on-premises encoders ontvangen
 
@@ -186,15 +186,15 @@ In de volgende tabel ziet u hoe kanaal statussen worden toegewezen aan de factur
 
 | Kanaal status | UI-indica toren van portal | Gefactureerd? |
 | --- | --- | --- |
-| **Ingang** |**Ingang** |Nee (tijdelijke status) |
-| **Wordt uitgevoerd** |**Gereed** (geen actieve Program ma's)<p><p>of<p>**Streaming** (ten minste één programma dat wordt uitgevoerd) |Ja |
+| **Starten** |**Starten** |Nee (tijdelijke status) |
+| **Wordt uitgevoerd** |**Gereed** (geen actieve Program ma's)<p><p>of<p>**Streaming** (ten minste één programma dat wordt uitgevoerd) |Yes |
 | **Stoppen** |**Stoppen** |Nee (tijdelijke status) |
-| **Gestopt** |**Gestopt** |Nee |
+| **Gestopt** |**Gestopt** |No |
 
 ## <a name="closed-captioning-and-ad-insertion"></a><a id="cc_and_ads"></a>Ondertiteling en AD-invoeging
 De volgende tabel bevat de ondersteunde standaarden voor ondertiteling en het invoegen van advertenties.
 
-| Standard | Opmerkingen |
+| Standard | Notities |
 | --- | --- |
 | CEA-708 en EIA-608 (708/608) |CEA-708 en EIA-608 zijn closed captioning-standaarden voor de Verenigde Staten en Canada.<p><p>Bijschriften worden momenteel alleen ondersteund als deze in de gecodeerde invoer stroom worden uitgevoerd. U moet een Live Media Encoder gebruiken waarmee u 608-of 708-bijschriften in de gecodeerde stroom kunt invoegen die naar Media Services worden verzonden. Media Services levert de inhoud met Inge sloten bijschriften aan uw viewers. |
 | TTML binnen. ismt (Smooth Streaming tekst sporen) |Met Media Services dynamische pakketten kunnen uw clients inhoud streamen in een van de volgende indelingen: DASH, HLS of Smooth Streaming. Als u echter gefragmenteerde MP4 (Smooth Streaming) opneemt met bijschriften in. ismt (Smooth Streaming tekst sporen), kunt u de stroom alleen aan Smooth Streaming-clients leveren. |
@@ -225,7 +225,8 @@ Hier volgen andere overwegingen met betrekking tot het werken met kanalen en ver
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="feedback"></a>Feedback
+## <a name="suggestions-and-feedback"></a>Suggesties en feedback
+
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>Verwante onderwerpen

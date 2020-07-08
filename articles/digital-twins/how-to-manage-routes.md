@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d6ecc2ddab7bc0fa739989e9cfdc2645cc1ccb27
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 923ae652872246916b2a4c5e8be95871983dbe95
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85476900"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559834"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Eind punten en routes in azure Digital Apparaatdubbels beheren
 
@@ -28,7 +28,9 @@ Zie [kiezen tussen Azure Messa ging Services](https://docs.microsoft.com/azure/e
 Eind punten en routes worden beheerd met de [**EventRoutes-api's**](how-to-use-apis-sdks.md), de [.NET-SDK (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md). Ze kunnen ook worden beheerd via de [Azure Portal](https://portal.azure.com).
 
 > [!NOTE]
-> Het beheren van gebeurtenis routes via de Azure Portal is momenteel alleen beschikbaar voor Azure-gebruikers op accounts in een bedrijfs domein. Als u gebruikmaakt van een persoonlijk [Microsoft-account (MSA)](https://account.microsoft.com/account/Account), gebruikt u de Azure Digital apparaatdubbels API'S of CLI om gebeurtenis routes te beheren, zoals beschreven in dit artikel.
+> Het beheren van gebeurtenis routes via de Azure Portal is momenteel alleen beschikbaar voor Azure-gebruikers op accounts in een bedrijfs domein. 
+>
+>Als u een persoonlijk [Microsoft-account (MSA)](https://account.microsoft.com/account/Account)gebruikt, zoals een @outlook.com account, gebruikt u de Azure Digital APPARAATDUBBELS api's of CLI om gebeurtenis routes te beheren, zoals beschreven in dit artikel.
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Een eind punt maken voor Azure Digital Apparaatdubbels
 
@@ -143,7 +145,7 @@ Als u een filter wilt toevoegen, kunt u een PUT-aanvraag naar *https://{YourHost
 
 Dit zijn de ondersteunde route filters.
 
-| Bestandsnaam | Beschrijving | Schema filteren | Ondersteunde waarden | 
+| Bestandsnaam | Description | Schema filteren | Ondersteunde waarden | 
 | --- | --- | --- | --- |
 | Type | Het [type gebeurtenis dat](./concepts-route-events.md#types-of-event-messages) door uw digitale dubbele instantie wordt doorlopend | `"filter" : "type = '<eventType>'"` | `Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
 | Bron | Naam van het Azure Digital Apparaatdubbels-exemplaar | `"filter" : "source = '<hostname>'"`|  **Voor meldingen**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **Voor telemetrie**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/digitaltwins/<twinId>`|

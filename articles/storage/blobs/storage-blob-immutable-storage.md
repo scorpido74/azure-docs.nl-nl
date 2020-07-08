@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: bb66e90f1d835a6341b47bb698cf05bc442e0ac0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69c921ba67159d28a913173cee5e90fb04dcbf0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129254"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85561041"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Bedrijfs kritieke blobgegevens opslaan met onveranderlijke opslag
 
@@ -22,11 +22,11 @@ Onveranderbare opslag voor Azure Blob-opslag stelt gebruikers in staat om bedrij
 
 Zie [Onveranderbaarheid-beleid instellen en beheren voor Blob Storage](storage-blob-immutability-policies-manage.md)voor meer informatie over het instellen en wissen van juridische bewaringen of het maken van een op tijd gebaseerd Bewaar beleid met behulp van de Azure Portal, Power shell of Azure cli.
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="about-immutable-blob-storage"></a>Over onveranderbare Blob Storage
 
-Onveranderbare opslag helpt organisaties&mdash;&mdash;in de gezondheids zorg, financiële instellingen en gerelateerde branches, met name Broker handelaars om gegevens veilig op te slaan. Onveranderbare opslag kan ook worden gebruikt in elk scenario om kritieke gegevens te beschermen tegen wijziging of verwijdering.
+Onveranderbare opslag helpt organisaties in de gezondheids zorg, financiële instellingen en gerelateerde branches, &mdash; met name Broker handelaars &mdash; om gegevens veilig op te slaan. Onveranderbare opslag kan ook worden gebruikt in elk scenario om kritieke gegevens te beschermen tegen wijziging of verwijdering.
 
 Typische toepassingen zijn onder andere:
 
@@ -48,7 +48,7 @@ Onveranderbare opslag ondersteunt de volgende functies:
 
 - **Ondersteuning voor de controle logboek registratie**: elke container bevat een beleids audit logboek. Het bevat Maxi maal zeven op tijd gebaseerde Bewaar opdrachten voor vergrendeld Bewaar beleid op basis van tijd en bevat de gebruikers-ID, het type opdracht, de tijds tempels en het Bewaar interval. Voor juridische bewaring bevat het logboek de gebruikers-id, het opdrachttype, tijdstempels en de labels voor juridische bewaring. Dit logboek wordt bewaard gedurende de levens duur van het beleid, overeenkomstig de richt lijnen van de 17a-4 (f). In het [activiteiten logboek van Azure](../../azure-monitor/platform/platform-logs-overview.md) wordt een uitgebreidere logboek van alle activiteiten van het controle vlak weer gegeven. bij het inschakelen van [Azure-resource logboeken](../../azure-monitor/platform/platform-logs-overview.md) worden de gegevenslaag bewerkingen bewaard en weer gegeven. Het is de verantwoordelijkheid van de gebruiker om deze logboeken permanent op te slaan, wat mogelijk vereist is voor andere doeleinden.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 
 Onveranderbare opslag voor Azure Blobs ondersteunt twee soorten WORM-beleidsregels of beleidsregels voor onveranderbare opslag: retentie op basis van tijd en juridische bewaring. Wanneer een Bewaar beleid op basis van tijd of wettelijk geblokkeerd wordt toegepast op een container, worden alle bestaande blobs in minder dan 30 seconden omgezet in een onveranderbare WORM status. Alle nieuwe blobs die zijn geüpload naar die beleids beveiligde container, worden ook verplaatst naar een onveranderlijke status. Zodra alle Blobs een onveranderbare status hebben, wordt het onveranderbare beleid bevestigd en kunnen de overschrijvings-of verwijderings bewerkingen in de onveranderbare container niet worden toegestaan.
 
@@ -84,9 +84,9 @@ Omdat deze instelling deel uitmaakt van een Bewaar beleid op basis van tijd, bli
 
 Stel bijvoorbeeld dat een gebruiker een Bewaar beleid op basis van tijd maakt met `allowProtectedAppendWrites` ingeschakeld en een Bewaar interval van 90 dagen. Een toevoeg-blob, _logblob1_, wordt vandaag gemaakt in de container. nieuwe logboeken worden nog steeds toegevoegd aan de toevoeg-BLOB voor de volgende 10 dagen. de meest efficiënte Bewaar periode voor de _logblob1_ is dus 100 dagen vanaf vandaag (de tijd van de laatste append + 90 dagen).
 
-Met een niet-vergrendeld op tijd gebaseerd Bewaar beleid kunt u `allowProtectedAppendWrites` de instelling op elk gewenst moment inschakelen en uitschakelen. Wanneer het Bewaar beleid op basis van tijd is vergrendeld, kan de `allowProtectedAppendWrites` instelling niet worden gewijzigd.
+Met een niet-vergrendeld op tijd gebaseerd Bewaar beleid kunt `allowProtectedAppendWrites` u de instelling op elk gewenst moment inschakelen en uitschakelen. Wanneer het Bewaar beleid op basis van tijd is vergrendeld, kan de `allowProtectedAppendWrites` instelling niet worden gewijzigd.
 
-Wettelijk Bewaar beleid kan niet `allowProtectedAppendWrites` worden ingeschakeld en de eigenschap ' allowProtectedAppendWrites ' wordt door alle juridische bewaringen opheffen. Als er een geldige blok kering wordt toegepast op een op tijd gebaseerd Bewaar beleid met `allowProtectedAppendWrites` ingeschakeld, mislukt de *AppendBlock* -API totdat de juridische bewaring is opgeheven.
+Wettelijk Bewaar beleid kan niet worden ingeschakeld `allowProtectedAppendWrites` en de eigenschap ' allowProtectedAppendWrites ' wordt door alle juridische bewaringen opheffen. Als er een geldige blok kering wordt toegepast op een op tijd gebaseerd Bewaar beleid met `allowProtectedAppendWrites` ingeschakeld, mislukt de *AppendBlock* -API totdat de juridische bewaring is opgeheven.
 
 ## <a name="legal-holds"></a>Juridische bewaring
 
@@ -112,7 +112,7 @@ De volgende tabel bevat de typen Blob Storage-bewerkingen die zijn uitgeschakeld
 
 <sup>1</sup> met de BLOB-service kunnen deze bewerkingen een nieuwe Blob maken. Alle volgende overschrijvings bewerkingen op een bestaand BLOB-pad in een onveranderbare container zijn niet toegestaan.
 
-<sup>2</sup> toevoeg blok is alleen toegestaan voor op tijd gebaseerd Bewaar beleid waarvoor de `allowProtectedAppendWrites` eigenschap is ingeschakeld. Zie de sectie [schrijf bewerkingen voor beveiligde toevoeg-blobs toestaan](#allow-protected-append-blobs-writes) voor meer informatie.
+<sup>2</sup> toevoeg blok is alleen toegestaan voor op tijd gebaseerd Bewaar beleid waarvoor de eigenschap is `allowProtectedAppendWrites` ingeschakeld. Zie de sectie [schrijf bewerkingen voor beveiligde toevoeg-blobs toestaan](#allow-protected-append-blobs-writes) voor meer informatie.
 
 ## <a name="pricing"></a>Prijzen
 

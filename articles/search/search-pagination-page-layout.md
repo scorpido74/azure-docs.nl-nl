@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 93f1da7db3962994611f70fc145d0e9b62cd4f26
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 15d2a7a2ad00f7f9b5db59d3d4803f60508b7b2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167856"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85561581"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Werken met zoek resultaten in azure Cognitive Search
 
@@ -28,7 +28,7 @@ Hoewel een zoek document kan bestaan uit een groot aantal velden, zijn er meesta
 Voor velden die het beste werken zijn dit het contrast en het onderscheid tussen documenten, waardoor er voldoende informatie is om een klik-en-antwoord op het deel van de gebruiker uit te nodigen. Op een e-commerce-site kunnen het een product naam, beschrijving, merk, kleur, grootte, prijs en classificatie zijn. Voor de hotels-voor beeld-index ingebouwde steek proef zijn dit mogelijk velden in het volgende voor beeld:
 
 ```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30 
     {  
       "search": "sandy beaches",
       "select": "HotelId, HotelName, Description, Rating, Address/City"
@@ -78,7 +78,7 @@ Voor Zoek opdrachten in volledige tekst worden de resultaten automatisch gerangs
 
 Zoek scores geven algemeen inzicht in de relevantie, waarbij de sterkte van de overeenkomst wordt weer gegeven in vergelijking met andere documenten in dezelfde resultatenset. Scores zijn niet altijd consistent met de ene query naar de volgende, dus wanneer u met query's werkt, kunnen er kleine verschillen optreden in de manier waarop Zoek documenten worden besteld. Er zijn verschillende uitleg waarom dit kan gebeuren.
 
-| Oorzaak | Beschrijving |
+| Oorzaak | Description |
 |-----------|-------------|
 | Gegevens volatiliteit | De inhoud van de index is afhankelijk van het toevoegen, wijzigen of verwijderen van documenten. De term frequenties worden gewijzigd wanneer index updates na verloop van tijd worden verwerkt, waardoor de zoek scores van overeenkomende documenten worden beïnvloed. |
 | Meerdere replica's | Voor services die gebruikmaken van meerdere replica's, worden query's op elke replica parallel verleend. De index statistieken die worden gebruikt voor het berekenen van een zoek Score worden berekend per replica, met de resultaten samengevoegd en geordend in het query-antwoord. Replica's zijn voornamelijk Spie gels van elkaar, maar statistieken kunnen verschillen als gevolg van kleine verschillen in de status. Eén replica kan bijvoorbeeld verwijderde documenten hebben die bijdragen aan hun statistieken, die uit andere replica's zijn samengevoegd. Normaal gesp roken zijn verschillen in statistieken per replica duidelijker in kleinere indexen. |
@@ -103,11 +103,11 @@ De opmaak wordt toegepast op volledige term query's. Het type opmaak wordt bepaa
 In het volgende voor beeld zijn de termen "zand", "zand", "stranden", "strand" in het veld Beschrijving gemarkeerd voor markeren. Query's die query-uitbrei ding activeren in de-engine, zoals fuzzy en zoeken met Joker tekens, hebben beperkte ondersteuning voor het markeren van treffers.
 
 ```http
-GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 
+GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2020-06-30 
 ```
 
 ```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30 
     {  
       "search": "sandy beaches",  
       "highlight": "Description"

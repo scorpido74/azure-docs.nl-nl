@@ -1,6 +1,6 @@
 ---
 title: Office 365-logboeken verbinden met Azure Sentinel | Microsoft Docs
-description: Meer informatie over het verbinden van Office 365-gegevens met Azure Sentinel.
+description: Informatie over het gebruik van de Office 365-logboek connector om informatie te krijgen over actieve gebruikers-en beheer activiteiten in Exchange en share point, waaronder OneDrive.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: yelevin
-ms.openlocfilehash: bcd00247486faeea47ef4a4a43fa1df5420321e6
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 180b25f80bd27caea20b1c17cd84fda38c172e0f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248937"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559347"
 ---
 # <a name="connect-office-365-logs-to-azure-sentinel"></a>Office 365-logboeken verbinden met Azure Sentinel
 
@@ -56,7 +56,7 @@ De [Office 365](https://docs.microsoft.com/office/) -logboek connector brengt Az
 1. Als u een query wilt uitvoeren op Office 365-logboek gegevens in Log Analytics, typt u `OfficeActivity` in de eerste regel van het query venster.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u Office 365 kunt verbinden met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
+In dit document hebt u geleerd hoe u Office 365 kunt verbinden met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
 - Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
 - Ga aan de slag met het detecteren van bedreigingen met Azure Sentinel, met behulp [van ingebouwde](tutorial-detect-threats-built-in.md) of [aangepaste](tutorial-detect-threats-custom.md) regels.
 

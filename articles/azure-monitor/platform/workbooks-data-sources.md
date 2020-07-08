@@ -8,14 +8,14 @@ manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 06/29/2020
 ms.author: mbullwin
-ms.openlocfilehash: d57910ae31d4db9be17b3dc46b5920a925ab4fcf
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 897e615234e17cfe36790778d00cd56371afd91f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84697014"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560134"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Gegevens bronnen Azure Monitor werkmappen
 
@@ -42,24 +42,30 @@ Azure-resources verzenden [metrische gegevens](data-platform-metrics.md) die via
 
 ![Scherm afbeelding van de interface voor metrische gegevens van werkmap](./media/workbooks-overview/metrics.png)
 
-## <a name="azure-resource-graph"></a>Azure Resource Graph 
+## <a name="azure-resource-graph"></a>Azure Resource Graph
 
 Werkmappen bieden ondersteuning voor het uitvoeren van query's voor resources en hun meta gegevens met behulp van Azure resource Graph (ARG). Deze functie wordt hoofd zakelijk gebruikt voor het bouwen van aangepaste query bereiken voor-rapporten. Het resource bereik wordt weer gegeven via een KQL die ARG ondersteunt, wat vaak voldoende is voor algemene use-cases.
 
 Als u een query besturings element wilt maken met deze gegevens bron, gebruikt u de vervolg keuzelijst query type om Azure resource Graph te kiezen en selecteert u de abonnementen die u wilt instellen. Gebruik het besturings element query om de ARG KQL-subset toe te voegen waarmee een interessante resource deel verzameling wordt geselecteerd.
 
-
 ![Scherm opname van KQL-query van Azure resource Graph](./media/workbooks-overview/azure-resource-graph.png)
 
-## <a name="alerts-preview"></a>Waarschuwingen (preview-versie)
+## <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Met werkmappen kunnen gebruikers de actieve waarschuwingen die betrekking hebben op hun resources visualiseren. Met deze functie kunt u rapporten maken waarmee meldings gegevens (waarschuwingen) en diagnostische informatie (metrische gegevens, Logboeken) in één rapport worden opgenomen. Deze informatie kan ook samen worden samengevoegd om uitgebreide rapporten te maken waarin inzichten over deze gegevens bronnen worden gecombineerd.
+Werkmap ondersteunt Azure Resource Manager REST-bewerkingen. Zo kunt u een query uitvoeren op management.azure.com-eind punt zonder dat u uw eigen autorisatie header-token hoeft op te geven.
 
-Als u wilt dat een query besturings element deze gegevens bron gebruikt, gebruikt u de vervolg keuzelijst query type om waarschuwingen te kiezen en selecteert u de abonnementen, resource groepen of bronnen om te richten. Gebruik de vervolg keuzelijst waarschuwings filter om een interessante subset van waarschuwingen voor uw analyse behoeften te selecteren.
+Als u een query besturings element wilt maken met deze gegevens bron, gebruikt u de vervolg keuzelijst gegevens bron om Azure Resource Manager te kiezen. Geef de juiste para meters op, zoals HTTP-methode, URL-pad, headers, URL-para meters en/of hoofd tekst.
 
-![Scherm afbeelding van waarschuwings query's](./media/workbooks-overview/alerts.png)
+> [!NOTE]
+> Alleen `GET` , `POST` en `HEAD` bewerkingen worden momenteel ondersteund.
 
-## <a name="workload-health-preview"></a>Workload status (preview-versie)
+## <a name="azure-data-explorer"></a>Azure Data Explorer
+
+Werkmappen bieden nu ondersteuning voor het uitvoeren van query's vanuit [Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/) -clusters met de krachtige [Kusto](https://docs.microsoft.com/azure/kusto/query/index) -query taal.   
+
+![Scherm opname van het Kusto-query venster](./media/workbooks-overview/data-explorer.png)
+
+## <a name="workload-health"></a>Werk belasting status
 
 Azure Monitor heeft functionaliteit waarmee de beschik baarheid en prestaties van Windows-of Linux-gast besturingssystemen proactief worden bewaakt. Azure Monitor modellen van belang rijke onderdelen en hun relaties, criteria om de status van die onderdelen te meten en welke onderdelen u waarschuwen wanneer er een onjuiste voor waarde wordt gedetecteerd. Met werkmappen kunnen gebruikers deze informatie gebruiken om uitgebreide interactieve rapporten te maken.
 
@@ -67,7 +73,7 @@ Als u een query besturings element wilt gebruiken deze gegevens bron, gebruikt u
 
 ![Scherm afbeelding van waarschuwings query's](./media/workbooks-overview/workload-health.png)
 
-## <a name="azure-resource-health"></a>Azure-resource status 
+## <a name="azure-resource-health"></a>Azure-resource status
 
 Werkmappen bieden ondersteuning voor de Azure-resource status en combi neren met andere gegevens bronnen om uitgebreide, interactieve status rapporten te maken
 
@@ -75,13 +81,37 @@ Als u een query besturings element wilt gebruiken deze gegevens bron, gebruikt u
 
 ![Scherm afbeelding van waarschuwings query's](./media/workbooks-overview/resource-health.png)
 
-## <a name="azure-data-explorer-preview"></a>Azure Data Explorer (preview-versie)
+## <a name="json"></a>JSON
 
-Werkmappen bieden nu ondersteuning voor het uitvoeren van query's vanuit [Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/) -clusters met de krachtige [Kusto](https://docs.microsoft.com/azure/kusto/query/index) -query taal.   
+Met de JSON-provider kunt u een query resultaat maken op basis van statische JSON-inhoud. Het wordt meestal gebruikt in para meters voor het maken van vervolg keuzelijst parameters van statische waarden. Eenvoudige JSON-matrices of-objecten worden automatisch geconverteerd naar raster rijen en-kolommen.  Voor meer specifiek gedrag kunt u het tabblad resultaten en JSONPath-instellingen gebruiken om kolommen te configureren.
 
-![Scherm opname van het Kusto-query venster](./media/workbooks-overview/data-explorer.png)
+## <a name="alerts-preview"></a>Waarschuwingen (preview-versie)
+
+> [!NOTE]
+> De voorgestelde manier om informatie over Azure-waarschuwingen op te vragen, is door de gegevens bron van de [Azure-resource grafiek](#azure-resource-graph) te gebruiken door een query uit te stellen op de `AlertsManagementResources` tabel.
+>
+> Zie de [Naslag informatie over de tabel van Azure resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/reference/supported-tables-resources)of de [sjabloon waarschuwingen](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Azure%20Resources/Alerts/Alerts.workbook) voor voor beelden.
+>
+> De gegevens bron van waarschuwingen blijft gedurende een bepaalde tijd beschikbaar terwijl auteurs overstappen op het gebruik van ARG. Het gebruik van deze gegevens bron in sjablonen wordt afgeraden. 
+
+Met werkmappen kunnen gebruikers de actieve waarschuwingen die betrekking hebben op hun resources visualiseren. Beperkingen: de gegevens bron voor waarschuwingen vereist Lees toegang tot het abonnement om resources te kunnen opvragen en kan geen nieuwere soorten waarschuwingen weer geven. 
+
+Om ervoor te zorgen dat een query besturings element deze gegevens bron gebruikt, gebruikt u de vervolg keuzelijst _gegevens bron_ om waarschuwingen te kiezen _(preview)_ en selecteert u de abonnementen, resource groepen of bronnen om te richten. Gebruik de vervolg keuzelijst waarschuwings filter om een interessante subset van waarschuwingen voor uw analyse behoeften te selecteren.
+
+## <a name="custom-endpoint"></a>Aangepast eind punt
+
+Werkmappen ondersteunen het ophalen van gegevens uit een externe bron. Als uw gegevens zich buiten Azure bevinden, kunt u deze naar werkmappen brengen met behulp van dit gegevens bron type.
+
+Als u een query besturings element wilt maken met deze gegevens bron, gebruikt u de vervolg keuzelijst _gegevens bron_ om een _aangepast eind punt_te kiezen. Geef de juiste para meters `Http method` op, zoals,, `url` `headers` `url parameters` en/of `body` . Zorg ervoor dat uw gegevens bron [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) ondersteunt, anders mislukt de aanvraag.
+
+Om te voor komen dat u automatisch aanroepen naar niet-vertrouwde hosts maakt wanneer u sjablonen gebruikt, moet de gebruiker de gebruikte hosts markeren als vertrouwd. U kunt dit doen door te klikken op de knop _toevoegen als vertrouwd_ of door deze toe te voegen als een vertrouwde host in de werkmap instellingen. Deze instellingen worden opgeslagen in browsers die ondersteuning bieden voor IndexDb met Web Workers, meer informatie [hier](https://caniuse.com/#feat=indexeddb).
+
+> [!NOTE]
+> Schrijf geen geheimen in een van de velden (,, `headers` `parameters` `body` , `url` ), omdat ze zichtbaar zijn voor alle gebruikers van de werkmap.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Ga](workbooks-visualizations.md) voor meer informatie over werkmappen veel uitgebreide visualisaties opties.
 * De toegang tot uw werkmap resources [beheren](workbooks-access-control.md) en delen.
+* [Tips voor het optimaliseren van query's Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization)
+* 
