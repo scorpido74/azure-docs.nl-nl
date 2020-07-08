@@ -1,6 +1,6 @@
 ---
 title: Problemen met aanmelden oplossen in Azure AD Domain Services | Microsoft Docs
-description: Meer informatie over het oplossen van veelvoorkomende problemen met gebruikers aanmelding en fouten in Azure Active Directory Domain Services.
+description: Meer informatie over het oplossen van veelvoorkomende problemen met aanmelding bij gebruikers en fouten in Azure Active Directory Domain Services.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 9b85859e6294fa24731bc13e9edd5fe2610e8fb6
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: d48c5f94de7aa663f618401e13fdc19777d42095
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733956"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039650"
 ---
 # <a name="troubleshoot-account-sign-in-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Problemen met het aanmelden van accounts oplossen met een door Azure Active Directory Domain Services beheerd domein
 
@@ -30,11 +30,11 @@ De meest voorkomende redenen voor een gebruikers account waarmee u zich niet kun
 
 ## <a name="account-isnt-synchronized-into-azure-ad-ds-yet"></a>Het account is nog niet gesynchroniseerd in azure AD DS
 
-Afhankelijk van de grootte van uw map kan het enige tijd duren voordat gebruikers accounts en referentie-hashes beschikbaar zijn in azure AD DS. Voor grote mappen kan deze eerste eenrichtings synchronisatie vanuit Azure AD enkele uren duren en Maxi maal één dag of twee. Zorg ervoor dat u lang genoeg wacht voordat u opnieuw probeert te authenticeren.
+Afhankelijk van de grootte van uw map kan het enige tijd duren voordat gebruikers accounts en referentie-hashes beschikbaar zijn in een beheerd domein. Voor grote mappen kan deze eerste eenrichtings synchronisatie vanuit Azure AD enkele uren duren en Maxi maal één dag of twee. Zorg ervoor dat u lang genoeg wacht voordat u opnieuw probeert te authenticeren.
 
 Voor hybride omgevingen die gebruikers Azure AD Connect om on-premises Directory gegevens te synchroniseren met Azure AD, moet u ervoor zorgen dat u de meest recente versie van Azure AD Connect uitvoert en [Azure AD Connect hebt geconfigureerd om een volledige synchronisatie uit te voeren nadat u Azure AD DS hebt ingeschakeld][azure-ad-connect-phs]. Als u Azure AD DS uitschakelt en vervolgens weer inschakelt, moet u deze stappen opnieuw uitvoeren.
 
-Als er problemen blijven optreden met accounts die niet zijn gesynchroniseerd via Azure AD Connect, start u de Azure AD Sync-service opnieuw. Op de computer waarop Azure AD Connect is geïnstalleerd, opent u een opdracht prompt venster en voert u de volgende opdrachten uit:
+Als er problemen blijven optreden met accounts die niet zijn gesynchroniseerd via Azure AD Connect, start u de Azure AD Sync-service opnieuw. Open op de computer waarop Azure AD Connect is geïnstalleerd een opdracht prompt venster en voer de volgende opdrachten uit:
 
 ```console
 net stop 'Microsoft Azure AD Sync'
@@ -43,11 +43,11 @@ net start 'Microsoft Azure AD Sync'
 
 ## <a name="azure-ad-ds-doesnt-have-the-password-hashes"></a>Azure AD DS heeft geen wacht woord-hashes
 
-Azure AD genereert of slaat geen wacht woord-hashes in de vereiste indeling voor NTLM-of Kerberos-authenticatie totdat u Azure AD DS voor uw Tenant inschakelt. Uit veiligheids overwegingen slaat Azure AD ook geen wachtwoord referenties op in een normale tekst vorm. Daarom kan Azure AD deze NTLM-of Kerberos-wachtwoord hashes niet automatisch genereren op basis van de bestaande referenties van gebruikers.
+Totdat u Azure AD DS voor uw tenant inschakelt, maakt of bewaart Azure AD geen wachtwoordhashes in de vereiste indeling voor NTLM- of Kerberos-verificatie. Om veiligheidsredenen slaat Azure AD ook geen wachtwoorden op in niet-gecodeerde vorm. Azure AD kan deze wachtwoordhashes voor NTLM of Kerberos niet automatisch genereren op basis van bestaande referenties van gebruikers.
 
 ### <a name="hybrid-environments-with-on-premises-synchronization"></a>Hybride omgevingen met on-premises synchronisatie
 
-Voor hybride omgevingen met Azure AD Connect om te synchroniseren vanuit een on-premises AD DS omgeving, kunt u de vereiste NTLM-of Kerberos-wachtwoord hashes lokaal genereren en synchroniseren in azure AD. Nadat u uw beheerde domein hebt gemaakt, schakelt u de [synchronisatie van wacht woord-hashen in azure Active Directory Domain Services][azure-ad-connect-phs]. Als u de synchronisatie stap voor wacht woord-hash niet hebt voltooid, kunt u zich niet aanmelden bij een account met behulp van Azure AD DS. Als u Azure AD DS uitschakelt en vervolgens weer inschakelt, moet u deze stappen opnieuw volgen.
+Voor hybride omgevingen met Azure AD Connect om te synchroniseren vanuit een on-premises AD DS omgeving, kunt u de vereiste NTLM-of Kerberos-wachtwoord hashes lokaal genereren en synchroniseren in azure AD. Nadat u uw beheerde domein hebt gemaakt, schakelt u de [synchronisatie van wacht woord-hashen in azure Active Directory Domain Services][azure-ad-connect-phs]. Als u de synchronisatie stap voor wachtwoord hash niet hebt voltooid, kunt u zich niet aanmelden bij een account met behulp van het beheerde domein. Als u Azure AD DS uitschakelt en vervolgens weer inschakelt, moet u deze stappen opnieuw volgen.
 
 Zie [hoe wacht woord-hash synchronisatie werkt voor Azure AD DS][phs-process]voor meer informatie.
 
@@ -64,7 +64,7 @@ Beheerde domeinen zonder on-premises synchronisatie, alleen accounts in azure AD
 
 ## <a name="the-account-is-locked-out"></a>Het account is vergrendeld
 
-Een gebruikers account in azure AD DS is vergrendeld wanneer aan een gedefinieerde drempel voor mislukte aanmeldings pogingen is voldaan. Dit account vergrendelings gedrag is ontworpen om u te beschermen tegen herhaalde pogingen om te voor komen dat u zich kunt aanmelden met een geautomatiseerde digitale aanval.
+Een gebruikers account in een beheerd domein wordt vergrendeld wanneer is voldaan aan een ingestelde drempel voor mislukte aanmeldings pogingen. Dit account vergrendelings gedrag is ontworpen om u te beschermen tegen herhaalde pogingen om te voor komen dat u zich kunt aanmelden met een geautomatiseerde digitale aanval.
 
 Als er gedurende twee minuten vijf mislukte wachtwoord pogingen zijn, wordt het account 30 minuten vergrendeld.
 

@@ -4,14 +4,14 @@ description: In dit artikel wordt beschreven hoe u referentie gegevens gebruikt 
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2018
-ms.openlocfilehash: 94fdddf11acb6763ed98a4b7e17304fbde0e25dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 215835bf7f1e6676adba6541da70dcb86fc3500c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75369708"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039038"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Configureer bare op drempel waarden gebaseerde regels verwerken in Azure Stream Analytics
 In dit artikel wordt beschreven hoe u referentie gegevens gebruikt voor het bezorgen van een waarschuwings oplossing die gebruikmaakt van Configureer bare regels op basis van drempel waarden in Azure Stream Analytics.
@@ -40,9 +40,9 @@ Stel dat er een Stream Analytics-taak is met een referentie gegevens invoer met 
 In dit voor beeld wordt uitgelegd hoe een regel op basis van een drempel waarde kan worden weer gegeven. Een JSON-bestand bevat de referentie gegevens en wordt opgeslagen in Azure Blob Storage en die Blob Storage-container wordt gebruikt als referentie gegevens invoer met de naam **regels**. U kunt dit JSON-bestand overschrijven en de regel configuratie vervangen wanneer de tijd verloopt, zonder de streaming-taak te stoppen of te starten.
 
 - De voorbeeld regel wordt gebruikt om een aanpas bare waarschuwing weer te geven wanneer de CPU groter is dan of gelijk is aan de waarde `90` percentage. Het `value` veld kan zo nodig worden geconfigureerd.
-- U ziet dat de regel een **operator** veld heeft, die dynamisch wordt geïnterpreteerd in de query syntaxis `AVGGREATEROREQUAL`verderop in. 
-- Met de regel worden de gegevens op een bepaalde dimensie `2` sleutel met `C1`waarde gefilterd. Andere velden zijn een lege teken reeks, waarmee wordt aangegeven dat de invoer stroom niet moet worden gefilterd op die gebeurtenis velden. U kunt extra CPU-regels instellen voor het filteren van andere overeenkomende velden als dat nodig is.
-- Niet alle kolommen moeten worden opgenomen in de uitvoer waarschuwings gebeurtenis. In dit geval is `includedDim` het sleutel `2` nummer ingeschakeld `TRUE` om aan te geven dat veld nummer 2 van gebeurtenis gegevens in de stroom wordt opgenomen in de in aanmerking komende uitvoer gebeurtenissen. De andere velden zijn niet opgenomen in de uitvoer van de waarschuwing, maar de lijst met velden kan worden aangepast.
+- U ziet dat de regel een **operator** veld heeft, die dynamisch wordt geïnterpreteerd in de query syntaxis verderop in `AVGGREATEROREQUAL` . 
+- Met de regel worden de gegevens op een bepaalde dimensie sleutel met waarde gefilterd `2` `C1` . Andere velden zijn een lege teken reeks, waarmee wordt aangegeven dat de invoer stroom niet moet worden gefilterd op die gebeurtenis velden. U kunt extra CPU-regels instellen voor het filteren van andere overeenkomende velden als dat nodig is.
+- Niet alle kolommen moeten worden opgenomen in de uitvoer waarschuwings gebeurtenis. In dit geval `includedDim` is het sleutel nummer `2` ingeschakeld `TRUE` om aan te geven dat veld nummer 2 van gebeurtenis gegevens in de stroom wordt opgenomen in de in aanmerking komende uitvoer gebeurtenissen. De andere velden zijn niet opgenomen in de uitvoer van de waarschuwing, maar de lijst met velden kan worden aangepast.
 
 
 ```json
@@ -134,11 +134,11 @@ HAVING
 ## <a name="example-streaming-input-event-data"></a>Voor beeld van gegevens stromen invoer gebeurtenissen
 In dit voor beeld wordt gebruikgemaakt van de **metrische** invoer gegevens die worden gebruikt in de bovenstaande streaming-query. 
 
-- Drie voorbeeld gebeurtenissen worden weer gegeven binnen de time span van 1 minuut `T14:50`, waarde. 
-- Alle drie hebben dezelfde `deviceId` waarde. `978648`
-- De waarden voor de CPU-waarde verschillen per `98`gebeurtenis `95`, `80` , respectievelijk. Alleen de eerste twee voorbeeld gebeurtenissen overschrijden de CPU-waarschuwings regel die in de regel is vastgelegd.
-- Het veld includeDim in de waarschuwings regel is sleutel nummer 2. Het bijbehorende veld sleutel 2 in de voorbeeld gebeurtenissen heet `NodeName`. De drie voorbeeld gebeurtenissen hebben `N024` `N024` `N014` respectievelijk waarden. In de uitvoer ziet u alleen het knoop punt `N024` , alleen de gegevens die overeenkomen met de waarschuwings criteria voor hoge CPU. `N014`voldoet niet aan de hoge CPU-drempel.
-- De waarschuwings regel is geconfigureerd met een `filter` enkel op sleutel nummer 2, die overeenkomt met `cluster` het veld in de voorbeeld gebeurtenissen. De drie voorbeeld gebeurtenissen hebben allemaal een `C1` waarde die overeenkomt met de filter criteria.
+- Drie voorbeeld gebeurtenissen worden weer gegeven binnen de time span van 1 minuut, waarde `T14:50` . 
+- Alle drie hebben dezelfde `deviceId` waarde `978648` .
+- De waarden voor de CPU-waarde verschillen per gebeurtenis, `98` , `95` `80` respectievelijk. Alleen de eerste twee voorbeeld gebeurtenissen overschrijden de CPU-waarschuwings regel die in de regel is vastgelegd.
+- Het veld includeDim in de waarschuwings regel is sleutel nummer 2. Het bijbehorende veld sleutel 2 in de voorbeeld gebeurtenissen heet `NodeName` . De drie voorbeeld gebeurtenissen hebben `N024` respectievelijk waarden `N024` `N014` . In de uitvoer ziet u alleen het knoop punt, alleen de `N024` gegevens die overeenkomen met de waarschuwings criteria voor hoge CPU. `N014`voldoet niet aan de hoge CPU-drempel.
+- De waarschuwings regel is geconfigureerd met een `filter` enkel op sleutel nummer 2, die overeenkomt met het `cluster` veld in de voorbeeld gebeurtenissen. De drie voorbeeld gebeurtenissen hebben allemaal `C1` een waarde die overeenkomt met de filter criteria.
 
 ```json
 {
@@ -282,7 +282,7 @@ In dit voor beeld wordt gebruikgemaakt van de **metrische** invoer gegevens die 
 ```
 
 ## <a name="example-output"></a>Voorbeeld uitvoer
-In dit voor beeld wordt een enkele waarschuwings gebeurtenis geproduceerd op basis van de CPU-drempel regel die is gedefinieerd in de referentie gegevens. De gebeurtenis output bevat de naam van de waarschuwing en de geaggregeerde (gemiddelde, min, Max) van de overwogen velden. De gegevens van de uitvoer gebeurtenis bevatten de waarde `NodeName` `N024` voor veld sleutel nummer 2 als gevolg van de regel configuratie. (De JSON is gewijzigd om regel einden weer te geven voor de Lees baarheid.)
+In dit voor beeld wordt een enkele waarschuwings gebeurtenis geproduceerd op basis van de CPU-drempel regel die is gedefinieerd in de referentie gegevens. De gebeurtenis output bevat de naam van de waarschuwing en de geaggregeerde (gemiddelde, min, Max) van de overwogen velden. De gegevens van de uitvoer gebeurtenis bevatten de waarde voor veld sleutel nummer 2 `NodeName` `N024` als gevolg van de regel configuratie. (De JSON is gewijzigd om regel einden weer te geven voor de Lees baarheid.)
 
 ```JSON
 {"time":"2018-05-01T02:03:00.0000000Z","deviceid":"978648","ruleid":1234,"metric":"CPU",

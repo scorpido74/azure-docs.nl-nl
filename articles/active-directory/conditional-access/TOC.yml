@@ -8,8 +8,6 @@
   items:
     - name: Vereisen dat de gebruiksvoorwaarden worden geaccepteerd
       href: require-tou.md
-    - name: Toegang blokkeren wanneer er een sessierisico wordt gedetecteerd
-      href: app-sign-in-risk.md
 - name: Zelfstudies
   items:
     - name: Azure Multi-Factor Authentication vereisen
@@ -68,8 +66,10 @@
           href: howto-conditional-access-policy-azure-management.md
         - name: MFA vereisen voor alle gebruikers
           href: howto-conditional-access-policy-all-users-mfa.md
-        - name: Voorwaardelijke toegang op basis van risico's
+        - name: Aanmelden met voorwaardelijke toegang op basis van risico's
           href: howto-conditional-access-policy-risk.md
+        - name: Voorwaardelijke gebruikerstoegang op basis van risico's
+          href: howto-conditional-access-policy-risk-user.md
         - name: Veilige registratie van beveiligingsinformatie
           href: howto-conditional-access-policy-registration.md
         - name: Toegang per locatie blokkeren

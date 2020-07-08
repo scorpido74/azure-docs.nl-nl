@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1afe92720997ede327f098b9a435d00842ae201e
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 862b3056445bddb358e6485ce5fec4de4d53eace
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322143"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039276"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Verbinding maken met Azure SQL-inhoud en deze indexeren met behulp van een Azure Cognitive Search Indexeer functie
 
@@ -62,7 +62,7 @@ Afhankelijk van verschillende factoren die betrekking hebben op uw gegevens, is 
 1. De gegevens bron maken:
 
    ```
-    POST https://myservice.search.windows.net/datasources?api-version=2019-05-06
+    POST https://myservice.search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
 
@@ -80,8 +80,8 @@ Afhankelijk van verschillende factoren die betrekking hebben op uw gegevens, is 
 
 3. Maak de Indexeer functie door deze een naam te geven en te verwijzen naar de gegevens bron en doel index:
 
-    ```
-    POST https://myservice.search.windows.net/indexers?api-version=2019-05-06
+   ```
+    POST https://myservice.search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
 
@@ -90,12 +90,14 @@ Afhankelijk van verschillende factoren die betrekking hebben op uw gegevens, is 
         "dataSourceName" : "myazuresqldatasource",
         "targetIndexName" : "target index name"
     }
-    ```
+   ```
 
 Een Indexeer functie die op deze manier is gemaakt, heeft geen planning. Het wordt automatisch uitgevoerd wanneer het wordt gemaakt. U kunt dit op elk gewenst moment opnieuw uitvoeren met behulp van een **Run indexer** -aanvraag:
 
-    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2019-05-06
+```
+    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2020-06-30
     api-key: admin-key
+```
 
 U kunt verschillende aspecten van het gedrag van de Indexeer functie aanpassen, zoals de Batch grootte en het aantal documenten dat kan worden overgeslagen voordat de uitvoering van een index mislukt. Zie [Create Indexing API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)(Engelstalig) voor meer informatie.
 
@@ -103,11 +105,14 @@ Mogelijk moet u Azure-Services toestaan verbinding te maken met uw data base. Zi
 
 Als u de Indexeer functie en uitvoerings geschiedenis wilt bewaken (aantal geïndexeerde items, fouten enz.), gebruikt u een **Indexeer functie status** aanvraag:
 
-    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2019-05-06
+```
+    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2020-06-30
     api-key: admin-key
+```
 
 Het antwoord moet er ongeveer als volgt uitzien:
 
+```
     {
         "\@odata.context":"https://myservice.search.windows.net/$metadata#Microsoft.Azure.Search.V2015_02_28.IndexerExecutionInfo",
         "status":"running",
@@ -138,6 +143,7 @@ Het antwoord moet er ongeveer als volgt uitzien:
             ... earlier history items
         ]
     }
+```
 
 De uitvoerings geschiedenis bevat tot 50 van de meest recent voltooide uitvoeringen, die in de omgekeerde chronologische volg orde worden gesorteerd (zodat de meest recente uitvoering eerst in het antwoord komt).
 Meer informatie over het antwoord vindt u in de [status van de Indexeer functie ophalen](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)
@@ -145,7 +151,8 @@ Meer informatie over het antwoord vindt u in de [status van de Indexeer functie 
 ## <a name="run-indexers-on-a-schedule"></a>Indexeer functies uitvoeren volgens een schema
 U kunt de Indexeer functie ook zo rangschikken dat deze periodiek volgens een planning wordt uitgevoerd. Als u dit wilt doen, voegt u de eigenschap **schema** toe wanneer u de Indexeer functie maakt of bijwerkt. In het onderstaande voor beeld ziet u een PUT-aanvraag om de Indexeer functie bij te werken:
 
-    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2019-05-06
+```
+    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
 
@@ -154,6 +161,7 @@ U kunt de Indexeer functie ook zo rangschikken dat deze periodiek volgens een pl
         "targetIndexName" : "target index name",
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
+```
 
 De **interval** parameter is vereist. Het interval verwijst naar de tijd tussen het begin van twee opeenvolgende indexerings uitvoeringen. Het kleinste toegestane interval is 5 minuten. de langste is één dag. Deze moet worden ingedeeld als een XSD ' dayTimeDuration-waarde (een beperkte subset van een [ISO 8601 duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) -waarde). Het patroon hiervoor is: `P(nD)(T(nH)(nM))` . Voor beelden: elke `PT15M` 2 uur voor elke 15 minuten `PT2H` .
 
@@ -181,6 +189,7 @@ Als uw SQL database het [bijhouden van wijzigingen](https://docs.microsoft.com/s
 
 Als u dit beleid wilt gebruiken, maakt of werkt u de gegevens bron als volgt bij:
 
+```
     {
         "name" : "myazuresqldatasource",
         "type" : "azuresql",
@@ -190,6 +199,7 @@ Als u dit beleid wilt gebruiken, maakt of werkt u de gegevens bron als volgt bij
            "@odata.type" : "#Microsoft.Azure.Search.SqlIntegratedChangeTrackingPolicy"
       }
     }
+```
 
 Wanneer u het geïntegreerde beleid voor het bijhouden van wijzigingen van SQL gebruikt, moet u geen afzonderlijk detectie beleid voor gegevens verwijdering opgeven. dit beleid heeft ingebouwde ondersteuning voor het identificeren van verwijderde rijen. Als de verwijderingen echter "automagiceel" worden gedetecteerd, moet de document sleutel in uw zoek index hetzelfde zijn als de primaire sleutel in de SQL-tabel. 
 
@@ -216,6 +226,7 @@ Dit beleid voor wijzigings detectie is afhankelijk van een kolom met een hoog wa
 
 Als u een beleid met een hoog water merk wilt gebruiken, maakt of werkt u de gegevens bron als volgt bij:
 
+```
     {
         "name" : "myazuresqldatasource",
         "type" : "azuresql",
@@ -226,6 +237,7 @@ Als u een beleid met een hoog water merk wilt gebruiken, maakt of werkt u de geg
            "highWaterMarkColumnName" : "[a rowversion or last_updated column name]"
       }
     }
+```
 
 > [!WARNING]
 > Als de bron tabel geen index heeft op de bovengrens kolom, kan er een time-out optreden bij query's die worden gebruikt door de SQL-Indexeer functie. In het bijzonder moet de- `ORDER BY [High Water Mark Column]` component een index efficiënt uitvoeren wanneer de tabel veel rijen bevat.
@@ -243,11 +255,13 @@ Als u een [rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversio
 
 Als u deze functie wilt inschakelen, moet u de indexer maken of bijwerken met de volgende configuratie:
 
+```
     {
       ... other indexer definition properties
      "parameters" : {
             "configuration" : { "convertHighWaterMarkToRowVersion" : true } }
     }
+```
 
 <a name="queryTimeout"></a>
 
@@ -255,11 +269,13 @@ Als u deze functie wilt inschakelen, moet u de indexer maken of bijwerken met de
 
 Als er time-outfouten optreden, kunt u de instelling van de `queryTimeout` Indexeer functie gebruiken om de querytime-out in te stellen op een waarde die hoger is dan de standaard time-out van 5 minuten. Als u de time-out bijvoorbeeld wilt instellen op 10 minuten, maakt u de Indexeer functie of werkt u deze bij met de volgende configuratie:
 
+```
     {
       ... other indexer definition properties
      "parameters" : {
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
+```
 
 <a name="disableOrderByHighWaterMarkColumn"></a>
 
@@ -267,11 +283,13 @@ Als er time-outfouten optreden, kunt u de instelling van de `queryTimeout` Index
 
 U kunt de component ook uitschakelen `ORDER BY [High Water Mark Column]` . Dit wordt echter niet aanbevolen omdat als de uitvoering van de Indexeer functie wordt onderbroken door een fout, de Indexeer functie alle rijen opnieuw moet verwerken als deze later wordt uitgevoerd, zelfs als de Indexeer functie bijna alle rijen al heeft verwerkt op het moment dat deze werd onderbroken. Als u de `ORDER BY` component wilt uitschakelen, gebruikt u de `disableOrderByHighWaterMarkColumn` instelling in de definitie van de Indexeer functie:  
 
+```
     {
      ... other indexer definition properties
      "parameters" : {
             "configuration" : { "disableOrderByHighWaterMarkColumn" : true } }
     }
+```
 
 ### <a name="soft-delete-column-deletion-detection-policy"></a>Voorlopig verwijderings beleid voor het verwijderen van kolommen
 Wanneer rijen uit de bron tabel worden verwijderd, wilt u waarschijnlijk ook deze rijen verwijderen uit de zoek index. Als u het geïntegreerde beleid voor het bijhouden van wijzigingen van SQL gebruikt, is dit van belang voor u. Het beleid voor het bijhouden van een hoog water merk biedt echter geen ondersteuning voor verwijderde rijen. Wat u moet doen?
@@ -280,6 +298,7 @@ Als de rijen fysiek uit de tabel worden verwijderd, heeft Azure Cognitive Search
 
 Wanneer u de techniek voor zacht verwijderen gebruikt, kunt u het beleid voor voorlopig verwijderen als volgt opgeven bij het maken of bijwerken van de gegevens Bron:
 
+```
     {
         …,
         "dataDeletionDetectionPolicy" : {
@@ -288,6 +307,7 @@ Wanneer u de techniek voor zacht verwijderen gebruikt, kunt u het beleid voor vo
            "softDeleteMarkerValue" : "[the value that indicates that a row is deleted]"
         }
     }
+```
 
 De **softDeleteMarkerValue** moet een teken reeks zijn: gebruik de teken reeks representatie van de werkelijke waarde. Als u bijvoorbeeld een kolom met gehele getallen hebt waarin verwijderde rijen worden gemarkeerd met de waarde 1, gebruikt u `"1"` . Als u een BIT-kolom hebt waarin verwijderde rijen worden gemarkeerd met de Booleaanse waarde True, gebruikt u de letterlijke teken reeks `True` of `true` is het hoofdletter gebruik.
 
@@ -311,18 +331,20 @@ De **softDeleteMarkerValue** moet een teken reeks zijn: gebruik de teken reeks r
 ## <a name="configuration-settings"></a>Configuratie-instellingen
 SQL Indexeer functie maakt verschillende configuratie-instellingen beschikbaar:
 
-| Instelling | Gegevenstype | Doel | Standaardwaarde |
+| Instelling | Gegevenstype | Functie | Standaardwaarde |
 | --- | --- | --- | --- |
 | queryTimeout |tekenreeks |Hiermee stelt u de time-out voor de uitvoering van SQL-query's |5 minuten ("00:05:00") |
 | disableOrderByHighWaterMarkColumn |booleaans |Zorgt ervoor dat de SQL-query die wordt gebruikt door het beleid voor hoog water merk, de component ORDER BY weglaat. Zie [beleid voor hoog water merk](#HighWaterMarkPolicy) |false |
 
 Deze instellingen worden gebruikt in het `parameters.configuration` object in de definitie van de Indexeer functie. Als u de time-out van de query bijvoorbeeld wilt instellen op 10 minuten, moet u de Indexeer functie maken of bijwerken met de volgende configuratie:
 
+```
     {
       ... other indexer definition properties
      "parameters" : {
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
+```
 
 ## <a name="faq"></a>Veelgestelde vragen
 
@@ -352,13 +374,13 @@ Dat hangt ervan af. Voor een volledige indexering van een tabel of weer gave kun
 
 Voor incrementele indexering ondersteunt Azure Cognitive Search twee beleids regels voor wijzigingen detectie: geïntegreerde wijzigingen bijhouden in SQL en hoge water merken.
 
-Bij alleen-lezen replica's ondersteunt SQL database geïntegreerde wijzigingen bijhouden niet. Daarom moet u beleid voor hoog water merk gebruiken. 
+Bij alleen-lezen replica's ondersteunt SQL Database geïntegreerde wijzigingen bijhouden niet. Daarom moet u beleid voor hoog water merk gebruiken. 
 
 Onze standaard aanbeveling is het gegevens type rowversion te gebruiken voor de kolom hoog water merk. Het gebruik van rowversion is echter afhankelijk van de `MIN_ACTIVE_ROWVERSION` functie, wat niet wordt ondersteund voor alleen-lezen replica's. Daarom moet u de Indexeer functie naar een primaire replica verwijzen als u rowversion gebruikt.
 
 Als u probeert rowversion te gebruiken op een alleen-lezen replica, ziet u de volgende fout: 
 
-    "Using a rowversion column for change tracking is not supported on secondary (read-only) availability replicas. Please update the datasource and specify a connection to the primary availability replica.Current database 'Updateability' property is 'READ_ONLY'".
+Het gebruik van een rowversion-kolom voor het bijhouden van wijzigingen wordt niet ondersteund voor secundaire (alleen-lezen) beschikbaarheids replica's. Werk de gegevens bron bij en geef een verbinding met de primaire beschikbaarheids replica op. De huidige eigenschap voor het bijwerken van de data base is READ_ONLY.
 
 **V: kan ik een alternatieve, niet-rowversion-kolom gebruiken voor het bijhouden van hoog water merk wijzigingen?**
 

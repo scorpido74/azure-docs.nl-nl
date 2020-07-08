@@ -11,12 +11,12 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: b2ae3aa77383888c320ed58e03e73b2e306feeba
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 44755ab13b95db1ffec8183d00a4054e291c5a50
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213768"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039021"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Problemen met Synapse SQL oplossen in azure Synapse Analytics
 
@@ -28,7 +28,7 @@ In dit artikel worden veelvoorkomende problemen met het oplossen van problemen i
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Aanmelding mislukt voor gebruiker 'NT AUTHORITY\ANONYMOUS LOGON'. (Microsoft SQL Server, fout: 18456) | Deze fout treedt op wanneer een Azure AD-gebruiker probeert verbinding te maken met de hoofd database, maar geen gebruiker heeft in de master-data base.  Als u dit probleem wilt corrigeren, geeft u de SQL-groep op waarmee u verbinding wilt maken op het moment van de verbinding of voegt u de gebruiker toe aan de hoofd database.  Zie het artikel over [beveiligings overzicht](sql-data-warehouse-overview-manage-security.md) voor meer informatie. |
 | De server-principal 'MijnGebruikersnaam' heeft in de huidige beveiligingscontext geen toegang tot de hoofddatabase. Kan de standaarddatabase van de gebruiker niet openen. Aanmelden mislukt. Aanmelden is mislukt voor gebruiker 'MijnGebruikersnaam'. (Microsoft SQL Server, fout: 916) | Deze fout treedt op wanneer een Azure AD-gebruiker probeert verbinding te maken met de hoofd database, maar geen gebruiker heeft in de master-data base.  Als u dit probleem wilt corrigeren, geeft u de SQL-groep op waarmee u verbinding wilt maken op het moment van de verbinding of voegt u de gebruiker toe aan de hoofd database.  Zie het artikel over [beveiligings overzicht](sql-data-warehouse-overview-manage-security.md) voor meer informatie. |
-| CTAIP-fout                                                  | Deze fout kan optreden als er een aanmelding is gemaakt op de SQL Server-hoofd database, maar niet in de SQL database.  Als deze fout optreedt, bekijkt u het artikel overzicht van de [beveiliging](sql-data-warehouse-overview-manage-security.md) .  In dit artikel wordt uitgelegd hoe u een aanmelding en gebruiker op Master maakt en hoe u een gebruiker maakt in de SQL database. |
+| CTAIP-fout                                                  | Deze fout kan optreden als er een aanmelding is gemaakt voor de SQL Database hoofd database, maar niet in de specifieke SQL database.  Als deze fout optreedt, bekijkt u het artikel overzicht van de [beveiliging](sql-data-warehouse-overview-manage-security.md) .  In dit artikel wordt uitgelegd hoe u een aanmelding en gebruiker in de hoofd database maakt en hoe u een gebruiker maakt in een SQL database. |
 | Geblokkeerd door de firewall                                          | SQL-groepen worden beveiligd door firewalls om ervoor te zorgen dat alleen bekende IP-adressen toegang hebben tot een Data Base. De firewalls zijn standaard beveiligd. Dit betekent dat u een expliciete en een IP-adres of bereik van adressen moet inschakelen voordat u verbinding kunt maken.  Als u uw firewall voor toegang wilt configureren, volgt u de stappen in de [Server firewall toegang configureren voor uw client-IP](create-data-warehouse-portal.md) in de instructies voor het [inrichten](create-data-warehouse-portal.md). |
 | Kan geen verbinding maken met het hulp programma of stuur programma                           | Synapse SQL pool raadt u aan om [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [SSDT voor Visual Studio](sql-data-warehouse-install-visual-studio.md)of [Sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) te gebruiken om uw gegevens op te vragen. Zie [Stuur Programma's voor Azure Synapse](sql-data-warehouse-connection-strings.md) en [verbinding maken met Azure Synapse](sql-data-warehouse-connect-overview.md) -artikelen voor meer informatie over Stuur Programma's en het maken van verbinding met Azure Synapse. |
 

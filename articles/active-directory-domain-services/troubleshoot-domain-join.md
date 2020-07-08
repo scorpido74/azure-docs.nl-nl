@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 07006de016ba956c02cbd5f527417df3bdc2f723
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 4a472f0d1e31faea6b62eec004543b42e6add4fe
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734041"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039684"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Problemen met domein deelname oplossen met een door Azure Active Directory Domain Services beheerd domein
 
@@ -30,16 +30,16 @@ Wanneer u probeert lid te worden van een virtuele machine (VM) of een toepassing
 
 Als de virtuele machine het beheerde domein niet kan vinden, is er meestal een netwerk verbinding of een configuratie probleem. Bekijk de volgende stappen voor probleem oplossing om het probleem op te sporen en op te lossen:
 
-1. Zorg ervoor dat de virtuele machine is verbonden met hetzelfde of een peered virtueel netwerk dat is ingeschakeld voor Azure AD DS. Als dat niet het geval is, kan de virtuele machine geen verbinding maken met het domein om lid te worden van.
+1. Zorg ervoor dat de virtuele machine is verbonden met hetzelfde of een gekoppeld virtueel netwerk als het beheerde domein. Als dat niet het geval is, kan de virtuele machine geen verbinding maken met het domein om lid te worden van.
     * Als de virtuele machine niet is verbonden met hetzelfde virtuele netwerk, controleert u of de peering of VPN-verbinding van het virtuele netwerk *actief* is of *verbinding* heeft om het verkeer goed te laten stromen.
 1. Probeer het domein te pingen met behulp van de domein naam van het beheerde domein, zoals `ping aaddscontoso.com` .
     * Als het ping-antwoord mislukt, probeert u de IP-adressen voor het domein te pingen dat wordt weer gegeven op de pagina overzicht in de portal voor uw beheerde domein, zoals `ping 10.0.0.4` .
-    * Als u het IP-adres, maar niet het domein, kunt pingen, is het mogelijk dat DNS onjuist is geconfigureerd. Zorg ervoor dat u de DNS-servers van het beheerde domein hebt geconfigureerd voor het virtuele netwerk.
+    * Als u het IP-adres, maar niet het domein, kunt pingen, is het mogelijk dat DNS onjuist is geconfigureerd. Zorg ervoor dat u [de DNS-servers van het beheerde domein hebt geconfigureerd voor het virtuele netwerk][configure-dns].
 1. Probeer de cache van de DNS-resolver te leegmaken op de virtuele machine, zoals `ipconfig /flushdns` .
 
 ### <a name="network-security-group-nsg-configuration"></a>Configuratie van de netwerk beveiligings groep (NSG)
 
-Wanneer u een beheerd domein maakt, wordt er ook een netwerk beveiligings groep gemaakt met de juiste regels voor een geslaagde domein bewerking. Als u extra regels voor netwerk beveiligings groepen bewerkt of maakt, blokkeert u mogelijk per ongeluk poorten die vereist zijn voor Azure AD DS om verbinding en verificatie services te bieden. Deze regels voor netwerk beveiligings groepen kunnen problemen veroorzaken, zoals het niet volt ooien van wachtwoord synchronisatie, gebruikers kunnen zich niet aanmelden of problemen met domein deelname.
+Wanneer u een beheerd domein maakt, wordt er ook een netwerk beveiligings groep gemaakt met de juiste regels voor een geslaagde domein bewerking. Als u extra regels voor de netwerk beveiligings groep bewerkt of maakt, blokkeert u mogelijk per ongeluk poorten die vereist zijn voor Azure AD DS om verbinding en verificatie services te bieden. Deze regels voor netwerk beveiligings groepen kunnen problemen veroorzaken, zoals het niet volt ooien van wachtwoord synchronisatie, gebruikers kunnen zich niet aanmelden of problemen met domein deelname.
 
 Als er verbindings problemen blijven bestaan, raadpleegt u de volgende stappen voor probleem oplossing:
 
@@ -53,7 +53,7 @@ Als er een dialoog venster wordt weer geven waarin wordt gevraagd om referenties
 
 Raadpleeg de volgende stappen voor probleem oplossing om problemen met betrekking tot referenties op te lossen:
 
-1. Gebruik de UPN-indeling om referenties op te geven, zoals `dee@aaddscontoso.onmicrosoft.com` . Zorg ervoor dat deze UPN juist is geconfigureerd in azure AD.
+1. Gebruik de UPN-indeling om referenties op te geven, zoals `dee@contoso.onmicrosoft.com`. Zorg ervoor dat deze UPN juist is geconfigureerd in azure AD.
     * De *SAMAccountName* voor uw account kan automatisch worden gegenereerd als er meerdere gebruikers zijn met hetzelfde UPN-voor voegsel in uw Tenant of als uw UPN-voor voegsel langer is dan lang. Daarom kan de *SAMAccountName* -indeling voor uw account afwijken van wat u verwacht of gebruikt in uw on-premises domein.
 1. Gebruik de referenties voor een gebruikers account dat deel uitmaakt van het beheerde domein om Vm's toe te voegen aan het beheerde domein.
 1. Zorg ervoor dat u [wachtwoord synchronisatie hebt ingeschakeld][enable-password-sync] en lang genoeg hebt gewacht totdat de eerste wachtwoord synchronisatie is voltooid.
@@ -68,6 +68,7 @@ Als u nog steeds problemen ondervindt met het toevoegen van uw VM aan het beheer
 [enable-password-sync]: tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds
 [network-ports]: network-considerations.md#network-security-groups-and-required-ports
 [azure-ad-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md
+[configure-dns]: tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network
 
 <!-- EXTERNAL LINKS -->
 [join-authentication-issues]: /previous-versions/windows/it-pro/windows-2000-server/cc961817(v=technet.10)

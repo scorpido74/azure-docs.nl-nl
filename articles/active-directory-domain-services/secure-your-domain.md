@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: e7b15f79d8b63c13718d309a16eb9b71648699a1
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 6c5e0779ce0dfe2730a60873316c66184e038a35
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734313"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039871"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>Zwakke versleuteling en wachtwoord-hash-synchronisatie uitschakelen om een Azure Active Directory Domain Services beheerd domein te beveiligen
 
@@ -26,20 +26,20 @@ In dit artikel leest u hoe u NTLM v1-en TLS v1-code ringen kunt uitschakelen en 
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende resources nodig om dit artikel te volt ooien:
+U hebt de volgende resources nodig om dit artikel te voltooien:
 
 * Een actief Azure-abonnement.
-    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
-    * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
-* Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
-    * Als dat nodig is, kunt [u een Azure Active Directory Domain Services beheerd domein maken en configureren][create-azure-ad-ds-instance].
+    * Als u nog geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Een Azure Active Directory-tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises map of een cloudmap.
+    * [Maak zo nodig een Azure Active Directory-tenant][create-azure-ad-tenant] of [koppel een Azure-abonnement aan uw account][associate-azure-ad-tenant].
+* Een door Azure Active Directory Domain Services beheerd domein dat in uw Azure AD-tenant is ingeschakeld en geconfigureerd.
+    * [Maak en configureer, indien nodig, een door Azure Active Directory Domain Services beheerd domein][create-azure-ad-ds-instance].
 * Installeer en configureer Azure PowerShell.
-    * Als dat nodig is, volgt u de instructies om [de Azure PowerShell-module te installeren en verbinding te maken met uw Azure-abonnement](/powershell/azure/install-az-ps).
-    * Zorg ervoor dat u zich aanmeldt bij uw Azure-abonnement met behulp van de cmdlet [Connect-AzAccount][Connect-AzAccount] .
-* Azure AD Power Shell installeren en configureren.
-    * Als dat nodig is, volgt u de instructies voor [het installeren van de Azure AD Power shell-module en verbinding maken met Azure AD](/powershell/azure/active-directory/install-adv2).
-    * Zorg ervoor dat u zich aanmeldt bij uw Azure AD-Tenant met de cmdlet [Connect-AzureAD][Connect-AzureAD] .
+    * Indien nodig, volgt u de instructies voor [installeren van de Azure PowerShell-module en verbinding maken met uw Azure-abonnement](/powershell/azure/install-az-ps).
+    * Zorg ervoor dat u zich bij uw Azure-abonnement aanmeldt met behulp van de [Connect-AzAccount][Connect-AzAccount]-cmdlet.
+* Installeer en configureer Azure AD PowerShell.
+    * Indien nodig, volgt u de instructies voor het [installeren van de Azure AD PowerShell-module en verbinding maken met Azure AD](/powershell/azure/active-directory/install-adv2).
+    * Zorg ervoor dat u zich bij de Azure-tenant aanmeldt met behulp van de [Connect-AzureAD][Connect-AzureAD]-cmdlet.
 
 ## <a name="disable-weak-ciphers-and-ntlm-password-hash-sync"></a>Zwakke code ringen en NTLM-wachtwoord-hash-synchronisatie uitschakelen
 

@@ -5,14 +5,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/03/2019
-ms.openlocfilehash: c393eb782c2ff16eb5b3e5967b39938dfe2f1534
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c03eb9d30d204cbfb7fcd8971dd84f2ba5a7737
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426469"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039174"
 ---
 # <a name="how-to-start-an-azure-stream-analytics-job"></a>Een Azure Stream Analytics taak starten
 
@@ -59,5 +59,5 @@ Voor meer informatie over de `Start-AzStreamAnalyitcsJob` cmdlet bekijkt u de [r
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Snelstart: Een Stream Analytics-taak maken via Azure Portal](stream-analytics-quick-create-portal.md)
-* [Snelstartgids: een Stream Analytics-taak maken met behulp van Azure PowerShell](stream-analytics-quick-create-powershell.md)
+* [Quickstart: Een Stream Analytics-taak maken met behulp van Azure PowerShell](stream-analytics-quick-create-powershell.md)
 * [Snelstart: Een Stream Analytics-taak maken met behulp van de Azure Stream Analytics-tools voor Visual Studio](stream-analytics-quick-create-vs.md)

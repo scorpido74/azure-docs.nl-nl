@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 9a1a652c19d624d6faf941de84bcf74dd8613152
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 10eec1527fb0ac5109822da398642613219771f6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734246"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039837"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>Hoe objecten en referenties worden gesynchroniseerd in een Azure Active Directory Domain Services beheerd domein
 
@@ -32,7 +32,7 @@ In het volgende diagram ziet u hoe synchronisatie werkt tussen Azure AD DS, Azur
 
 Gebruikers accounts, groepslid maatschappen en referentie-hashes worden op één manier gesynchroniseerd vanuit Azure AD naar Azure AD DS. Dit synchronisatie proces wordt automatisch uitgevoerd. U hoeft dit synchronisatie proces niet te configureren, te controleren of te beheren. Het kan enkele uren duren voordat de initiële synchronisatie is uitgevoerd, afhankelijk van het aantal objecten in de Azure AD-adres lijst. Wanneer de initiële synchronisatie is voltooid, worden wijzigingen die zijn aangebracht in azure AD, zoals het wijzigen van wacht woorden of kenmerken, automatisch gesynchroniseerd met Azure AD DS.
 
-Wanneer een gebruiker wordt gemaakt in azure AD, worden ze niet gesynchroniseerd met Azure AD DS totdat ze hun wacht woord in azure AD wijzigen. Door deze wachtwoord wijziging worden de wacht woord-hashes voor Kerberos-en NTLM-verificatie gegenereerd en opgeslagen in azure AD. De wacht woord-hashes zijn vereist voor het verifiëren van een gebruiker in azure AD DS.
+Wanneer een gebruiker wordt gemaakt in azure AD, worden ze niet gesynchroniseerd met Azure AD DS totdat ze hun wacht woord in azure AD wijzigen. Door deze wachtwoordwijziging worden de wachtwoordhashes voor Kerberos- en NTLM-verificatie gegenereerd en opgeslagen in Azure AD. De wacht woord-hashes zijn vereist voor het verifiëren van een gebruiker in azure AD DS.
 
 Het synchronisatie proces is een manier/unidirectioneel. Er is geen omgekeerde synchronisatie van wijzigingen van Azure AD DS terug naar Azure AD. Een beheerd domein heeft grotendeels het kenmerk alleen-lezen, met uitzonde ring van aangepaste organisatie-eenheden die u kunt maken. U kunt geen wijzigingen aanbrengen in gebruikers kenmerken, gebruikers wachtwoorden of groepslid maatschappen binnen een beheerd domein.
 
@@ -61,15 +61,17 @@ In de volgende tabel ziet u hoe specifieke kenmerken voor gebruikers objecten in
 |:--- |:--- |
 | accountEnabled |userAccountControl (Hiermee wordt de ACCOUNT_DISABLED bit ingesteld of gewist) |
 | city |l |
-| country |collega's |
+| country |co |
 | department |department |
 | displayName |displayName |
+| employeedId |employeeId |
 | facsimileTelephoneNumber |facsimileTelephoneNumber |
 | givenName |givenName |
 | jobTitle |titel |
 | mail |mail |
 | mailNickname |msDS-AzureADMailNickname |
 | mailNickname |SAMAccountName (kan soms automatisch worden gegenereerd) |
+| manager |manager |
 | mobiel |mobiel |
 | id |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |Sid |
@@ -77,6 +79,7 @@ In de volgende tabel ziet u hoe specifieke kenmerken voor gebruikers objecten in
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |
 | Code |Code |
 | preferredLanguage |preferredLanguage |
+| proxyAddresses | proxyAddresses |
 | state |st |
 | streetAddress |streetAddress |
 | surname |sn |
@@ -95,6 +98,7 @@ In de volgende tabel ziet u hoe specifieke kenmerken voor groeps objecten in azu
 | mailNickname |msDS-AzureADMailNickname |
 | id |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |Sid |
+| proxyAddresses | proxyAddresses |
 | securityEnabled |groupType |
 
 ## <a name="synchronization-from-on-premises-ad-ds-to-azure-ad-and-azure-ad-ds"></a>Synchronisatie van on-premises AD DS naar Azure AD en Azure AD DS
@@ -102,7 +106,7 @@ In de volgende tabel ziet u hoe specifieke kenmerken voor groeps objecten in azu
 Azure AD Connect wordt gebruikt voor het synchroniseren van gebruikers accounts, groepslid maatschappen en referentie-hashes van een on-premises AD DS omgeving naar Azure AD. Kenmerken van gebruikers accounts, zoals de UPN-en on-premises beveiligings-id (SID), worden gesynchroniseerd. Als u zich wilt aanmelden met Azure AD DS, worden verouderde wachtwoord-hashes die zijn vereist voor NTLM-en Kerberos-verificatie ook gesynchroniseerd met Azure AD.
 
 > [!IMPORTANT]
-> Azure AD Connect moet alleen worden geïnstalleerd en geconfigureerd voor synchronisatie met on-premises AD DS-omgevingen. Het is niet mogelijk om Azure AD Connect te installeren in een beheerd domein om objecten terug te synchroniseren naar Azure AD.
+> Azure AD Connect moet alleen worden geïnstalleerd en geconfigureerd voor synchronisatie met on-premises AD DS-omgevingen. Het installeren van Azure AD Connect in een beheerd domein om objecten weer naar Azure AD te synchroniseren, wordt niet ondersteund.
 
 Als u write-back configureert, worden wijzigingen van Azure AD weer gesynchroniseerd naar de on-premises AD DS omgeving. Als een gebruiker bijvoorbeeld het wacht woord wijzigt met behulp van Azure AD selfservice voor wachtwoord beheer, wordt het wacht woord opnieuw in de on-premises AD DS omgeving bijgewerkt.
 
