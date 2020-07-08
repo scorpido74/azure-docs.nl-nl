@@ -8,10 +8,10 @@ ms.date: 12/02/2019
 ms.author: thweiss
 ms.custom: tracking-python
 ms.openlocfilehash: 056cd77104fe73f19588f3d13e11dc06fd93c3f6
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85261542"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Unieke sleutels voor een Azure Cosmos-container definiëren
@@ -20,7 +20,7 @@ In dit artikel worden de verschillende manieren beschreven waarop u [unieke sleu
 
 ## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account) of selecteer een bestaand abonnement.
 

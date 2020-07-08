@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: srchi
 ms.openlocfilehash: d2a10d064bed3e2e2e798d16ce72ccf55c965f8d
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85262035"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Synapse-koppeling voor Azure Cosmos DB configureren en gebruiken (preview)
@@ -203,7 +203,7 @@ Raadpleeg de volgende documenten voor meer informatie:
 
 * [Azure Synapse-koppeling voor Azure Cosmos DB.](synapse-link.md)
 
-* [Overzicht van Azure Cosmos DB Analytical Store.](analytical-store-introduction.md)
+* [Overzicht van analytische opslag van Azure Cosmos DB.](analytical-store-introduction.md)
 
 * [Veelgestelde vragen over de Synapse-koppeling voor Azure Cosmos DB.](synapse-link-frequently-asked-questions.md)
 

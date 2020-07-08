@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: thweiss
 ms.openlocfilehash: 1ee468b99cddeb5f18f78a6d1298c8959bda075b
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85261627"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Een persoonlijke Azure-koppeling configureren voor een Azure Cosmos-account
@@ -40,7 +40,7 @@ Gebruik de volgende stappen om een persoonlijk eind punt te maken voor een besta
     | **Projectgegevens** | |
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer een resourcegroep.|
-    | **Exemplaar Details** |  |
+    | **Exemplaardetails** |  |
     | Name | Voer een naam in voor uw privé-eind punt. Als deze naam wordt gebruikt, maakt u er een. |
     |Regio| Selecteer de regio waar u een persoonlijke koppeling wilt implementeren. Maak het persoonlijke eind punt op de locatie waar het virtuele netwerk zich bevindt.|
     |||

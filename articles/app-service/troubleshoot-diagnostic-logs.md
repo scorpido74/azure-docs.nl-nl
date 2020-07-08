@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
 ms.openlocfilehash: 8b415c9582af2303451a8076307f07ee92ac08d0
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85261338"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnostische logboek registratie inschakelen voor apps in Azure App Service
@@ -23,7 +23,7 @@ In dit artikel wordt gebruikgemaakt van de [Azure Portal](https://portal.azure.c
 >
 >
 
-|Type|Platform|Locatie|Beschrijving|
+|Type|Platform|Locatie|Description|
 |-|-|-|-|
 | Toepassingslogboeken | Windows, Linux | App Service bestands systeem en/of Azure Storage-blobs | Registreert berichten die zijn gegenereerd door de toepassings code. De berichten kunnen worden gegenereerd door het webframework dat u kiest, of vanuit de code van uw toepassing rechtstreeks met het standaard logboek registratie patroon van uw taal. Aan elk bericht wordt een van de volgende categorieën toegewezen: **kritiek**, **fout**, **waarschuwing**, **info**, **fout opsporing**en **tracering**. U kunt selecteren hoe uitgebreid u de logboek registratie wilt maken door het Ernst niveau in te stellen wanneer u logboek registratie van toepassingen inschakelt.|
 | Logboek registratie van webserver| Windows | App Service bestands systeem of Azure Storage-blobs| Onbewerkte HTTP-aanvraag gegevens in de [uitgebreide W3C-indeling van logboek bestand](/windows/desktop/Http/w3c-logging). Elk logboek bericht bevat gegevens zoals de HTTP-methode, bron-URI, client-IP, client poort, gebruikers agent, respons code, enzovoort. |
@@ -65,7 +65,7 @@ Selecteer het **niveau**of het niveau van de details die moeten worden vastgeleg
 |**Uitgeschakeld** | Geen |
 |**Fout** | Fout, kritiek |
 |**Waarschuwing** | Waarschuwing, fout, kritiek|
-|**Gegevens** | Info, waarschuwing, fout, kritiek|
+|**Informatie** | Info, waarschuwing, fout, kritiek|
 |**Uitgebreide** | Traceren, fouten opsporen, info, waarschuwing, fout, kritiek (alle categorieën) |
 
 Wanneer u klaar bent, selecteert u **Opslaan**.
@@ -166,7 +166,7 @@ Voor Linux/container-apps bevat het ZIP-bestand console-uitvoer logboeken voor d
 
 Voor Windows-apps bevat het ZIP-bestand de inhoud van de *D:\Home\LogFiles* -map in het app service-Bestands systeem. Het heeft de volgende structuur:
 
-| Logboek type | Directory | Beschrijving |
+| Logboek type | Directory | Description |
 |-|-|-|
 | **Toepassings logboeken** |*/LogFiles/Application/* | Bevat een of meer tekst bestanden. De indeling van de logboek berichten is afhankelijk van de logboek registratie provider die u gebruikt. |
 | **Traceringen van mislukte aanvragen** | */LogFiles/W3SVC#########/* | Bevat XML-bestanden en een XSL-bestand. U kunt de opgemaakte XML-bestanden weer geven in de browser. |
@@ -185,7 +185,7 @@ Met de nieuwe [integratie van Azure monitor](https://aka.ms/appsvcblog-azmon)kun
 
 De volgende tabel bevat de ondersteunde logboek typen en beschrijvingen: 
 
-| Logboek type | Windows-ondersteuning | Linux-ondersteuning (docker) | Beschrijving |
+| Logboek type | Windows-ondersteuning | Linux-ondersteuning (docker) | Description |
 |-|-|-|
 | AppServiceConsoleLogs | TBA | Yes | Standaard uitvoer en standaard fout |
 | AppServiceHTTPLogs | Ja | Ja | Webserver logboeken |

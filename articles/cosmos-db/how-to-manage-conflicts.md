@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.openlocfilehash: ebc5ea6e39b3c4c5f7451c60fef976f6a12b1312
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85261525"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Conflictoplossingsbeleid beheren in Azure Cosmos DB
@@ -53,7 +53,7 @@ Container container = await createClient.GetDatabase(this.databaseName)
 ```
 ---
 
-### <a name="java-v4-sdk"></a><a id="create-custom-conflict-resolution-policy-lww-javav4"></a>Java v4-SDK
+### <a name="java-v4-sdk"></a><a id="create-custom-conflict-resolution-policy-lww-javav4"></a> Java V4 SDK
 
 # <a name="async"></a>[Async](#tab/api-async)
 
@@ -61,7 +61,7 @@ Container container = await createClient.GetDatabase(this.databaseName)
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConflictResolutionLWWAsync)]
 
-# <a name="sync"></a>[Sync](#tab/api-sync)
+# <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
    Java SDK V4 (Maven com.azure::azure-cosmos) Sync API
 
@@ -241,7 +241,7 @@ await container.Scripts.CreateStoredProcedureAsync(
 ```
 ---
 
-### <a name="java-v4-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-javav4"></a>Java v4-SDK
+### <a name="java-v4-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-javav4"></a> Java V4 SDK
 
 # <a name="async"></a>[Async](#tab/api-async)
 
@@ -249,7 +249,7 @@ await container.Scripts.CreateStoredProcedureAsync(
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConflictResolutionSprocAsync)]
 
-# <a name="sync"></a>[Sync](#tab/api-sync)
+# <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
    Java SDK V4 (Maven com.azure::azure-cosmos) Sync API
 
@@ -356,7 +356,7 @@ Container container = await createClient.GetDatabase(this.databaseName)
 ```
 ---
 
-### <a name="java-v4-sdk"></a><a id="create-custom-conflict-resolution-policy-javav4"></a>Java v4-SDK
+### <a name="java-v4-sdk"></a><a id="create-custom-conflict-resolution-policy-javav4"></a> Java V4 SDK
 
 # <a name="async"></a>[Async](#tab/api-async)
 
@@ -364,7 +364,7 @@ Container container = await createClient.GetDatabase(this.databaseName)
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConflictResolutionCustomAsync)]
 
-# <a name="sync"></a>[Sync](#tab/api-sync)
+# <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
    Java SDK V4 (Maven com.azure::azure-cosmos) Sync API
 

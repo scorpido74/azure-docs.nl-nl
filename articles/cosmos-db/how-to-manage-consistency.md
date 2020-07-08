@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
 ms.openlocfilehash: e6f63807eeea32a7cce7e028dab5e16114bf9643
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85261559"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Consistentieniveaus in Azure Cosmos DB beheren
@@ -92,7 +92,7 @@ var response = await client.GetContainer(databaseName, containerName)
 ```
 ---
 
-### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4-SDK
+### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
 # <a name="async"></a>[Async](#tab/api-async)
 
@@ -100,7 +100,7 @@ var response = await client.GetContainer(databaseName, containerName)
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConsistencyAsync)]
 
-# <a name="sync"></a>[Sync](#tab/api-sync)
+# <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
    Java SDK V4 (Maven com.azure::azure-cosmos) Sync API
 
@@ -126,7 +126,7 @@ AsyncDocumentClient client =
                 .withConnectionPolicy(policy).build();
 ```
 
-# <a name="sync"></a>[Sync](#tab/api-sync)
+# <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
 Synchroniseer de Java v2 SDK (maven com. micro soft. Azure:: Azure-documentdb)
 
@@ -193,7 +193,7 @@ ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(sa
 ```
 ---
 
-### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4-SDK
+### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
 # <a name="async"></a>[Async](#tab/api-async)
 
@@ -201,7 +201,7 @@ ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(sa
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConsistencySessionAsync)]
 
-# <a name="sync"></a>[Sync](#tab/api-sync)
+# <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
    Java SDK V4 (Maven com.azure::azure-cosmos) Sync API
 
@@ -235,7 +235,7 @@ requestOptions.setSessionToken(sessionToken);
 Observable<ResourceResponse<Document>> readObservable = client.readDocument(document.getSelfLink(), options);
 ```
 
-# <a name="sync"></a>[Sync](#tab/api-sync)
+# <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
 Synchroniseer de Java v2 SDK (maven com. micro soft. Azure:: Azure-documentdb)
 

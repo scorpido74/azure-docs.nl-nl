@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: lbosq
 ms.openlocfilehash: faacaf6700b14ba068d5cf0a48ea851f562e2302
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85261797"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>De stap met het uitvoeringsprofiel gebruiken om de Gremlin-query's te evalueren
@@ -155,7 +155,7 @@ Het antwoord van een executionProfile ()-functie levert een hiërarchie van JSON
     - `storeOps.count`: Dit is het aantal resultaten dat door deze opslag bewerking is geretourneerd.
     - `storeOps.size`: Vertegenwoordigt de grootte in bytes van het resultaat van een bepaalde opslag bewerking.
 
-Cosmos DB-operator Gremlin runtime|Beschrijving
+Cosmos DB-operator Gremlin runtime|Description
 ---|---
 `GetVertices`| In deze stap wordt een gegroepeerde set objecten opgehaald van de laag persistentie. 
 `GetEdges`| Met deze stap worden de randen opgehaald die grenzen aan een set hoek punten. Deze stap kan leiden tot een of meer opslag bewerkingen.

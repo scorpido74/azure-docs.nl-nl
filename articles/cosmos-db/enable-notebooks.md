@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/22/2019
 ms.author: dech
 ms.openlocfilehash: 4c485bf6b9eb34e68e399c24e51286428f47586f
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85261899"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Notebooks inschakelen voor Azure Cosmos DB accounts (preview-versie)
@@ -23,7 +23,7 @@ Met ingebouwde Jupyter-notebooks in Azure Cosmos DB kunt u uw gegevens van de Az
 ## <a name="enable-notebooks-in-a-new-cosmos-account"></a>Notitie blokken in een nieuw Cosmos-account inschakelen
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-1. Selecteer **een resource**  >  **databases**maken  >  **Azure Cosmos DB**.
+1. Selecteer **Een resource maken** > **Databases** > **Azure Cosmos DB**.
 1. Selecteer op de pagina **Azure Cosmos DB account maken** de optie **notebooks**. 
  
     :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks.png" alt-text="Selecteer de optie notebooks in Azure Cosmos DB Blade maken":::
