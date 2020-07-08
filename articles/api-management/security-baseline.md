@@ -8,10 +8,9 @@ ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: ceaa44429d105c2a6a1d0883ab29ed11b63ad497
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83736072"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Azure-beveiligings basislijn voor API Management
@@ -125,8 +124,8 @@ Let op: bij het configureren van een NSG op het subnet van API Management, moet 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: op netwerk gebaseerde inbreuk detectie/indringings systemen (ID'S/IP-adressen) implementeren
 
 **Hulp**: API Management configureren in een Virtual Network (Vnet) in de interne modus en een Azure-toepassing gateway configureren. Application Gateway is een PaaS-service. Het fungeert als een omgekeerde proxy en biedt N7-taak verdeling, route ring, Web Application Firewall (WAF) en andere services. Application Gateway WAF biedt beveiliging tegen veelvoorkomende beveiligings aanvallen en beveiligings problemen en kan in de volgende twee modi worden uitgevoerd:
-- Detectie modus: Hiermee worden alle bedreigings waarschuwingen gecontroleerd en geregistreerd. U kunt logboek registratie diagnostiek voor Application Gateway inschakelen in de sectie diagnostische gegevens. U moet ervoor zorgen dat het WAF-logboek is geselecteerd en ingeschakeld. Web Application firewall blokkeert geen binnenkomende aanvragen wanneer deze in de detectie modus wordt uitgevoerd.
-- Preventie modus: blokkeert indringingen en aanvallen die de regels detecteren. De aanvaller ontvangt een uitzonde ring "403 niet-geautoriseerde toegang" en de verbinding is gesloten. Met preventie modus worden dergelijke aanvallen in de WAF-logboeken vastgelegd.
+- Detectiemodus: Hiermee worden alle waarschuwingen voor bedreigingen gecontroleerd en vastgelegd. U kunt logboek registratie diagnostiek voor Application Gateway inschakelen in de sectie diagnostische gegevens. U moet ervoor zorgen dat het WAF-logboek is geselecteerd en ingeschakeld. In de detectiemodus worden binnenkomende verzoeken niet geblokkeerd door Web Application Firewall.
+- Preventiemodus: Blokkeert indringers en aanvallen die door de regels zijn gedetecteerd. De aanvaller krijgt een uitzondering '403 onbevoegde toegang' en de verbinding wordt verbroken. In de preventiemodus worden dergelijke aanvallen vastgelegd in de WAF-logboeken.
 
 Als u API Management die is ingericht in een intern Vnet combineert met de Application Gateway front-end, worden de volgende scenario's ingeschakeld:
 - Gebruik één API Management resource om alle Api's aan zowel interne consumenten als externe consumenten weer te geven.
@@ -160,7 +159,7 @@ Opmerking: deze functie is beschikbaar in de Premium-en Developer-laag van API M
 
 * [API Management binnen een Vnet gebruiken](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)
 
-* [Azure Web Application firewall op Azure-toepassing gateway](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview)
+* [Azure Web Application Firewall voor Azure Application Gateway](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview)
 
 * [Azure-toepassing gateway begrijpen](https://docs.microsoft.com/azure/application-gateway/overview)
 
@@ -185,7 +184,7 @@ Let op: bij het configureren van een NSG op het subnet van API Management, moet 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: standaard beveiligings configuraties voor netwerk apparaten onderhouden
 
 **Hulp**: Definieer en implementeer standaard beveiligings configuraties voor netwerk instellingen met betrekking tot uw Azure API Management-implementaties. Gebruik Azure Policy aliassen in de naam ruimten ' micro soft. ApiManagement ' en ' micro soft. Network ' om aangepast beleid te maken om de netwerk configuratie van uw Azure API Management-implementaties en gerelateerde resources te controleren of af te dwingen. U kunt ook gebruikmaken van ingebouwde beleids definities voor virtuele Azure-netwerken, zoals:
-- DDoS Protection standaard moet zijn ingeschakeld
+- De DDoS Protection-standaard moet zijn ingeschakeld
 
 U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, op rollen gebaseerd toegangs beheer (RBAC) en beleids regels in één blauw druk-definitie. U kunt de blauw druk eenvoudig Toep assen op nieuwe abonnementen, omgevingen en het beheer en de verwerkings mogelijkheden van versies.
 
@@ -404,9 +403,9 @@ Azure API Management-abonnementen, wat een manier is om de toegang tot Api's te 
 **Richt lijnen**: Maak standaard procedures voor het gebruik van specifieke beheerders accounts. Gebruik Azure Security Center identiteits-en toegangs beheer om het aantal beheerders accounts te bewaken.
 
 Daarnaast kunt u aanbevelingen van Azure Security Center of ingebouwde Azure-beleids regels gebruiken om u te helpen bij het bijhouden van specifieke beheerders accounts, zoals:
-- Er moet meer dan één eigenaar aan uw abonnement zijn toegewezen
-- Afgeschafte accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement
-- Externe accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement
+- Er moet meer dan één eigenaar zijn toegewezen aan uw abonnement
+- Afgeschafte accounts met eigenaarsmachtigingen moeten worden verwijderd uit uw abonnement
+- Externe accounts met eigenaarsmachtigingen moeten worden verwijderd uit uw abonnement
 
 * [Azure Security Center gebruiken om identiteit en toegang te bewaken (preview)](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
 
@@ -568,7 +567,7 @@ Configureer geavanceerde bewaking met API Management met behulp van het `log-to-
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 

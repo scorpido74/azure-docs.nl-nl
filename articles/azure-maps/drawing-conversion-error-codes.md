@@ -9,13 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83681989"
 ---
-# <a name="drawing-conversion-errors-and-warnings"></a>Conversie fouten en waarschuwingen voor tekenen
+# <a name="drawing-conversion-errors-and-warnings"></a>Fouten en waarschuwingen over tekenconversies
 
 Met de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conversion) kunt u geüploade teken pakketten naar kaart gegevens converteren. Teken pakketten moeten voldoen aan de vereisten voor het [teken pakket](drawing-requirements.md). Als er niet aan een of meer vereisten wordt voldaan, worden er fouten of waarschuwingen door de conversie service geretourneerd. In dit artikel vindt u een overzicht van de conversie fout-en waarschuwings codes, met aanbevelingen voor het oplossen ervan. Het bevat ook enkele voor beelden van tekeningen die ertoe kunnen leiden dat de conversie service deze codes retourneert.
 
@@ -343,14 +342,14 @@ De **dwgError** treedt op wanneer het teken pakket een DWG-bestand bevat dat nie
 
 * Een DWG-bestand is geen geldige tekening voor het maken van AutoCAD-bestands indelingen.
 * Een DWG-bestand is beschadigd.
-* Een DWG-bestand wordt vermeld in het bestand _manifest. json_ , maar ontbreekt in het zip-archief.
+* Een DWG-bestand wordt weer gegeven in de _manifest.jsop_ bestand, maar ontbreekt in het zip-archief.
 
 #### <a name="how-to-fix-dwgerror"></a>*DwgError oplossen*
 
-Als u een **dwgError**wilt herstellen, inspecteert u uw _manifest. json_ -bestand, Controleer het volgende:
+Als u een **dwgError**wilt herstellen, controleert u uw _manifest.jsop_ het volgende bestand:
 
 * Alle DWG-bestanden in uw ZIP-archief zijn geldige tekeningen van AutoCAD DWG-indeling. open er een in AutoCAD. Alle ongeldige tekeningen verwijderen of herstellen.
-* De lijst met DWG-bestanden in het _manifest. json_ komt overeen met de DWG-bestanden in het zip-archief.
+* De lijst met DWG-bestanden in de _manifest.jsop_ komt overeen met de DWG-bestanden in het zip-archief.
 
 ## <a name="manifest-errors"></a>Manifest fouten
 
@@ -358,9 +357,9 @@ Als u een **dwgError**wilt herstellen, inspecteert u uw _manifest. json_ -bestan
 
 #### <a name="description-for-invalidjsonformat"></a>Beschrijving voor invalidJsonFormat
 
-Er treedt een **invalidJsonFormat** -fout op wanneer het bestand _manifest. json_ niet kan worden gelezen.
+Er treedt een **invalidJsonFormat** -fout op wanneer de _manifest.jsin_ het bestand niet kan worden gelezen.
 
-De _manifest. json_file kan niet worden gelezen vanwege JSON-indeling of syntaxis fouten. Voor meer informatie over de JSON-indeling en syntaxis raadpleegt u [de indeling van de JavaScript object Notation (JSON)-gegevens uitwisseling](https://tools.ietf.org/html/rfc7159)
+Het _manifest.json_file kan niet worden gelezen vanwege JSON-indeling of syntaxis fouten. Voor meer informatie over de JSON-indeling en syntaxis raadpleegt u [de indeling van de JavaScript object Notation (JSON)-gegevens uitwisseling](https://tools.ietf.org/html/rfc7159)
 
 #### <a name="how-to-fix-invalidjsonformat"></a>*InvalidJsonFormat oplossen*
 
@@ -370,7 +369,7 @@ Als u een **invalidJsonFormat** -fout wilt oplossen, gebruikt u een JSON-lint om
 
 #### <a name="description-for-missingrequiredfield"></a>*Beschrijving voor missingRequiredField*
 
-Er treedt een **missingRequiredField** -fout op wanneer de vereiste gegevens ontbreken in het bestand _manifest. json_ .
+Er treedt een **missingRequiredField** -fout op wanneer de vereiste gegevens _voor demanifest.jsin_ het bestand ontbreken.
 
 #### <a name="how-to-fix-missingrequiredfield"></a>*MissingRequiredField oplossen*
 
@@ -380,23 +379,23 @@ Als u een **missingRequiredField** -fout wilt oplossen, controleert u of het man
 
 #### <a name="description-for-missingmanifest"></a>*Beschrijving voor missingManifest*
 
-De **missingManifest** -fout treedt op wanneer het bestand _manifest. json_ ontbreekt in het zip-archief.
+De **missingManifest** -fout treedt op wanneer de _manifest.jsin_ het bestand ontbreekt in het zip-archief.
 
 De **missingManifest** -fout wordt veroorzaakt door een of meer van de volgende redenen:
 
-* Het bestand _manifest. json_ is verkeerd gespeld.
-* Het _manifest. json_ ontbreekt.
-* Het bestand _manifest. json_ bevindt zich niet in de hoofdmap van het zip-archief.
+* De _manifest.jsin_ het bestand is verkeerd gespeld.
+* De _manifest.js_ ontbreekt.
+* De _manifest.jsop_ is niet in de hoofdmap van het zip-archief.
 
 #### <a name="how-to-fix-missingmanifest"></a>*MissingManifest oplossen*
 
-Als u een **missingManifest** -fout wilt oplossen, controleert u of het archief een bestand bevat met de naam _manifest. json_ op het hoofd niveau van het zip-archief.
+Als u een **missingManifest** -fout wilt oplossen, controleert u of het archief een bestand bevat met de naam _manifest.jsop_ op het hoofd niveau van het zip-archief.
 
 ### <a name="conflict"></a>**conflict**
 
 #### <a name="description-for-conflict"></a>*Beschrijving voor conflict*
 
-De **conflict** fout treedt op wanneer het bestand _manifest. json_ conflicterende gegevens bevat.
+De **conflict** fout treedt op wanneer de _manifest.jsin_ het bestand conflicterende gegevens bevat.
 
 #### <a name="example-scenario-for-conflict"></a>*Voorbeeld scenario voor conflict*
 
@@ -422,13 +421,13 @@ De conversie service retourneert een **conflict** fout wanneer er meer dan één
 
 #### <a name="how-to-fix-conflict"></a>*Conflict oplossen*
 
-Als u een **conflict** fout wilt oplossen, inspecteert u het _manifest. json_ en verwijdert u eventuele conflicterende gegevens.
+Als u een **conflict** fout wilt oplossen, controleert u uw _manifest.jsop_ en verwijdert u eventuele conflicterende gegevens.
 
 ### <a name="invalidgeoreference"></a>**invalidGeoreference**
 
 #### <a name="description-for-invalidgeoreference"></a>*Beschrijving voor invalidGeoreference*
 
-De **invalidGeoreference** -fout treedt op wanneer een _manifest. json_ -bestand een ongeldige geoverwijzing bevat.
+De **invalidGeoreference** -fout treedt op wanneer een _manifest.jsin_ het bestand een ongeldige geoverwijzing bevat.
 
 De **invalidGeoreference** -fout wordt veroorzaakt door een of meer van de volgende redenen:
 

@@ -7,10 +7,9 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2020
 ms.openlocfilehash: 7b4d00e8c0366d10fddafa66db699c1a59fd9ad7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83659783"
 ---
 # <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Aangepaste Api's implementeren en aanroepen vanuit werk stromen in Azure Logic Apps
@@ -25,7 +24,7 @@ Voordat u uw aangepaste API kunt aanroepen vanuit een logische app, implementeer
 
 1. Selecteer uw web-app of API-app in het [Azure Portal](https://portal.azure.com).
 
-2. Kies in het menu app dat wordt geopend, onder **API**de **API-definitie**. Stel de **locatie** van de API-definitie in op de URL voor uw Swagger. JSON-bestand.
+2. Kies in het menu app dat wordt geopend, onder **API**de **API-definitie**. Stel de **locatie** van de API-definitie in op de URL voor uw swagger.jsin het bestand.
 
    Normaal gesp roken wordt de URL in de volgende indeling weer gegeven:`https://{name}.azurewebsites.net/swagger/docs/v1)`
 

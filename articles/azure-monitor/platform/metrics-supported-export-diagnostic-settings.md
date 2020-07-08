@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 03/30/2020
 ms.subservice: metrics
 ms.openlocfilehash: 91fc2c4525ee622064520b0098087d54158bbe9e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83680685"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>De metrische gegevens van het Azure Monitor-platform exporteerbaar via Diagnostische instellingen
@@ -44,7 +43,7 @@ De tabel bevat de volgende kolommen.
 - Exporteerbaar via Diagnostische instellingen? 
 - Doorgevoerd door NULL/0 
 - ResourceType 
-- Metrisch 
+- Gegevens 
 - MetricDisplayName
 - Eenheid 
 - AggregationType
@@ -54,17 +53,17 @@ De tabel bevat de volgende kolommen.
 > De onderstaande tabel bevat mogelijk een horizontale schuif balk aan de onderkant. Als u van mening bent dat u de informatie ontbreekt, controleert u of de schuif balk helemaal naar links wordt weer gegeven.  
 
 
-| Exporteerbaar via Diagnostische instellingen?  | NULL-waarden al verzenden |  ResourceType  |  Metrisch  |  MetricDisplayName  |  Eenheid  |  AggregationType | 
+| Exporteerbaar via Diagnostische instellingen?  | NULL-waarden al verzenden |  ResourceType  |  Gegevens  |  MetricDisplayName  |  Eenheid  |  AggregationType | 
 |---|---| ---- | ----- | ------ | ---- | ---- | 
-| Ja * * * *  | Nee |  Micro soft. AnalysisServices/servers  |  CleanerCurrentPrice  |  Geheugen: huidige prijs opschonen  |  Count  |  Average | 
-| Ja * * * *  | Nee |  Micro soft. AnalysisServices/servers  |  CleanerMemoryNonshrinkable  |  Geheugen: Removal-geheugen kan niet worden verkleind  |  Bytes  |  Average | 
-| Ja * * * *  | Nee |  Micro soft. AnalysisServices/servers  |  CleanerMemoryShrinkable  |  Geheugen: verkleinbaar geheugen  |  Bytes  |  Average | 
-| Ja * * * *  | Nee |  Micro soft. AnalysisServices/servers  |  CommandPoolBusyThreads  |  Threads: actieve threads van opdracht pool  |  Count  |  Average | 
-| Ja * * * *  | Nee |  Micro soft. AnalysisServices/servers  |  CommandPoolIdleThreads  |  Threads: niet-actieve threads van opdracht pool  |  Count  |  Average | 
-| Ja * * * *  | Nee |  Micro soft. AnalysisServices/servers  |  CommandPoolJobQueueLength  |  Wachtrij lengte van de opdracht pool taak  |  Count  |  Average | 
-| Ja * * * *  | Nee |  Micro soft. AnalysisServices/servers  |  CurrentConnections  |  Verbinding: huidige verbindingen  |  Count  |  Average | 
-| Ja * * * *  | Nee |  Micro soft. AnalysisServices/servers  |  CurrentUserSessions  |  Huidige gebruikers sessies  |  Count  |  Average | 
-| Ja * * * *  | Nee |  Micro soft. AnalysisServices/servers  |  LongParsingBusyThreads  |  Threads: bezette threads voor lang parseren  |  Count  |  Average | 
+| Ja * * * *  | No |  Micro soft. AnalysisServices/servers  |  CleanerCurrentPrice  |  Geheugen: huidige prijs opschonen  |  Count  |  Average | 
+| Ja * * * *  | No |  Micro soft. AnalysisServices/servers  |  CleanerMemoryNonshrinkable  |  Geheugen: Removal-geheugen kan niet worden verkleind  |  Bytes  |  Average | 
+| Ja * * * *  | No |  Micro soft. AnalysisServices/servers  |  CleanerMemoryShrinkable  |  Geheugen: verkleinbaar geheugen  |  Bytes  |  Average | 
+| Ja * * * *  | No |  Micro soft. AnalysisServices/servers  |  CommandPoolBusyThreads  |  Threads: actieve threads van opdracht pool  |  Count  |  Average | 
+| Ja * * * *  | No |  Micro soft. AnalysisServices/servers  |  CommandPoolIdleThreads  |  Threads: niet-actieve threads van opdracht pool  |  Count  |  Average | 
+| Ja * * * *  | No |  Micro soft. AnalysisServices/servers  |  CommandPoolJobQueueLength  |  Wachtrij lengte van de opdracht pool taak  |  Count  |  Average | 
+| Ja * * * *  | No |  Micro soft. AnalysisServices/servers  |  CurrentConnections  |  Verbinding: huidige verbindingen  |  Count  |  Average | 
+| Ja * * * *  | No |  Micro soft. AnalysisServices/servers  |  CurrentUserSessions  |  Huidige gebruikers sessies  |  Count  |  Average | 
+| Ja * * * *  | No |  Micro soft. AnalysisServices/servers  |  LongParsingBusyThreads  |  Threads: bezette threads voor lang parseren  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. AnalysisServices/servers  |  LongParsingIdleThreads  |  Threads: niet-actieve threads voor lang parseren  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. AnalysisServices/servers  |  LongParsingJobQueueLength  |  Threads: lengte van taak wachtrij voor lang parseren  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. AnalysisServices/servers  |  mashup_engine_memory_metric  |  M-engine geheugen  |  Bytes  |  Average | 
@@ -147,67 +146,67 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. Automation/automationAccounts  |  TotalJob  |  Totaal aantal taken  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. Automation/automationAccounts  |  TotalUpdateDeploymentMachineRuns  |  Totaal aantal machine-uitvoeringen van update-implementaties  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. Automation/automationAccounts  |  TotalUpdateDeploymentRuns  |  Totaal aantal uitvoeringen van update-implementaties  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. batch/batchAccounts  |  CoreCount  |  Aantal toegewezen kernen  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. batch/batchAccounts  |  CreatingNodeCount  |  Aantal knoop punten maken  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. batch/batchAccounts  |  IdleNodeCount  |  Aantal niet-actieve knoop punten  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. batch/batchAccounts  |  JobDeleteCompleteEvent  |  Voltooide gebeurtenissen van taak verwijderen  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. batch/batchAccounts  |  JobDeleteStartEvent  |  Taak begin gebeurtenissen verwijderen  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. batch/batchAccounts  |  JobDisableCompleteEvent  |  Voltooide gebeurtenissen voor taak uitschakelen  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. batch/batchAccounts  |  JobDisableStartEvent  |  Taak start gebeurtenissen uitschakelen  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. batch/batchAccounts  |  JobStartEvent  |  Taak begin gebeurtenissen  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. batch/batchAccounts  |  JobTerminateCompleteEvent  |  Voltooide gebeurtenissen voor taak beëindigen  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. batch/batchAccounts  |  JobTerminateStartEvent  |  Taak start gebeurtenissen beëindigen  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. batch/batchAccounts  |  LeavingPoolNodeCount  |  Aantal groeps knooppunten verlaten  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. batch/batchAccounts  |  LowPriorityCoreCount  |  Aantal LowPriority kernen  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. batch/batchAccounts  |  OfflineNodeCount  |  Aantal offline knooppunten  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. batch/batchAccounts  |  PoolCreateEvent  |  Groeps gebeurtenissen maken  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. batch/batchAccounts  |  PoolDeleteCompleteEvent  |  Voltooide gebeurtenissen van groep verwijderen  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. batch/batchAccounts  |  PoolDeleteStartEvent  |  Begin gebeurtenissen groep verwijderen  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. batch/batchAccounts  |  PoolResizeCompleteEvent  |  Volledige gebeurtenissen voor het wijzigen van de pool  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. batch/batchAccounts  |  PoolResizeStartEvent  |  Begin gebeurtenissen van groeps grootte wijzigen  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. batch/batchAccounts  |  PreemptedNodeCount  |  Aantal knoop punten in herhaling  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. batch/batchAccounts  |  RebootingNodeCount  |  Aantal knoop punten opnieuw opstarten  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. batch/batchAccounts  |  ReimagingNodeCount  |  Telling van het aantal knoop punten  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. batch/batchAccounts  |  RunningNodeCount  |  Aantal actieve knoop punten  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. batch/batchAccounts  |  StartingNodeCount  |  Begin aantal knoop punten  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. batch/batchAccounts  |  StartTaskFailedNodeCount  |  Aantal mislukte knoop punten van begin taak  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. batch/batchAccounts  |  TaskCompleteEvent  |  Taak voltooid gebeurtenissen  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. batch/batchAccounts  |  TaskFailEvent  |  Taak fout gebeurtenissen  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. batch/batchAccounts  |  TaskStartEvent  |  Taak begin gebeurtenissen  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. batch/batchAccounts  |  TotalLowPriorityNodeCount  |  Aantal knoop punten met een lage prioriteit  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. batch/batchAccounts  |  TotalNodeCount  |  Aantal toegewezen knoop punten  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. batch/batchAccounts  |  UnusableNodeCount  |  Aantal niet-bruikbare knoop punten  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. batch/batchAccounts  |  WaitingForStartTaskNodeCount  |  Wachten op aantal begin taak knooppunten  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. BatchAI/werk ruimten  |  Actieve kernen  |  Actieve kernen  |  Count  |  Average | 
-| **Ja**  | Nee |  Micro soft. BatchAI/werk ruimten  |  Actieve knoop punten  |  Actieve knoop punten  |  Count  |  Average | 
-| **Ja**  | Nee |  Micro soft. BatchAI/werk ruimten  |  Niet-actieve kernen  |  Niet-actieve kernen  |  Count  |  Average | 
-| **Ja**  | Nee |  Micro soft. BatchAI/werk ruimten  |  Niet-actieve knoop punten  |  Niet-actieve knoop punten  |  Count  |  Average | 
-| **Ja**  | Nee |  Micro soft. BatchAI/werk ruimten  |  Taak is voltooid  |  Taak is voltooid  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. BatchAI/werk ruimten  |  Taak verzonden  |  Taak verzonden  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. BatchAI/werk ruimten  |  Kernen verlaten  |  Kernen verlaten  |  Count  |  Average | 
-| **Ja**  | Nee |  Micro soft. BatchAI/werk ruimten  |  Knoop punten verlaten  |  Knoop punten verlaten  |  Count  |  Average | 
-| **Ja**  | Nee |  Micro soft. BatchAI/werk ruimten  |  Afgebroken kernen  |  Afgebroken kernen  |  Count  |  Average | 
-| **Ja**  | Nee |  Micro soft. BatchAI/werk ruimten  |  Knoop punten die zijn afgebroken  |  Knoop punten die zijn afgebroken  |  Count  |  Average | 
-| **Ja**  | Nee |  Micro soft. BatchAI/werk ruimten  |  Percentage quotum gebruik  |  Percentage quotum gebruik  |  Count  |  Average | 
-| **Ja**  | Nee |  Micro soft. BatchAI/werk ruimten  |  Totaal aantal kernen  |  Totaal aantal kernen  |  Count  |  Average | 
-| **Ja**  | Nee |  Micro soft. BatchAI/werk ruimten  |  Totaal aantal knoop punten  |  Totaal aantal knoop punten  |  Count  |  Average | 
-| **Ja**  | Nee |  Micro soft. BatchAI/werk ruimten  |  Onbruikbaar aantal kern geheugens  |  Onbruikbaar aantal kern geheugens  |  Count  |  Average | 
-| **Ja**  | Nee |  Micro soft. BatchAI/werk ruimten  |  Niet-bruikbare knoop punten  |  Niet-bruikbare knoop punten  |  Count  |  Average | 
-| **Ja**  | Nee |  Micro soft. Block Chain/blockchainMembers  |  ConnectionAccepted  |  Geaccepteerde verbindingen  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Block Chain/blockchainMembers  |  ConnectionActive  |  Actieve verbindingen  |  Count  |  Average | 
-| **Ja**  | Nee |  Micro soft. Block Chain/blockchainMembers  |  ConnectionHandled  |  Afgehandelde verbindingen  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Block Chain/blockchainMembers  |  CpuUsagePercentageInDouble  |  Percentage CPU-gebruik  |  Percentage  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Block Chain/blockchainMembers  |  IOReadBytes  |  I/o gelezen bytes  |  Bytes  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Block Chain/blockchainMembers  |  IOWriteBytes  |  I/o-schrijf bytes  |  Bytes  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Block Chain/blockchainMembers  |  Memory limit  |  Geheugen limiet  |  Bytes  |  Average | 
-| **Ja**  | Nee |  Micro soft. Block Chain/blockchainMembers  |  MemoryUsage  |  Geheugengebruik  |  Bytes  |  Average | 
-| **Ja**  | Nee |  Micro soft. Block Chain/blockchainMembers  |  MemoryUsagePercentageInDouble  |  Percentage geheugen gebruik  |  Percentage  |  Average | 
-| **Ja**  | Nee |  Micro soft. Block Chain/blockchainMembers  |  PendingTransactions  |  Trans acties in behandeling  |  Count  |  Average | 
-| **Ja**  | Nee |  Micro soft. Block Chain/blockchainMembers  |  ProcessedBlocks  |  Verwerkte blokken  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Block Chain/blockchainMembers  |  ProcessedTransactions  |  Verwerkte trans acties  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Block Chain/blockchainMembers  |  QueuedTransactions  |  Trans acties in de wachtrij  |  Count  |  Average | 
-| **Ja**  | Nee |  Micro soft. Block Chain/blockchainMembers  |  RequestHandled  |  Verwerkte aanvragen  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Block Chain/blockchainMembers  |  StorageUsage  |  Opslag gebruik  |  Bytes  |  Average | 
+| Nee  | No |  Microsoft.Bat-CH/batchAccounts  |  CoreCount  |  Aantal toegewezen kernen  |  Count  |  Totaal | 
+| Nee  | No |  Microsoft.Bat-CH/batchAccounts  |  CreatingNodeCount  |  Aantal knoop punten maken  |  Count  |  Totaal | 
+| Nee  | No |  Microsoft.Bat-CH/batchAccounts  |  IdleNodeCount  |  Aantal niet-actieve knoop punten  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Bat-CH/batchAccounts  |  JobDeleteCompleteEvent  |  Voltooide gebeurtenissen van taak verwijderen  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Bat-CH/batchAccounts  |  JobDeleteStartEvent  |  Taak begin gebeurtenissen verwijderen  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Bat-CH/batchAccounts  |  JobDisableCompleteEvent  |  Voltooide gebeurtenissen voor taak uitschakelen  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Bat-CH/batchAccounts  |  JobDisableStartEvent  |  Taak start gebeurtenissen uitschakelen  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Bat-CH/batchAccounts  |  JobStartEvent  |  Taak begin gebeurtenissen  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Bat-CH/batchAccounts  |  JobTerminateCompleteEvent  |  Voltooide gebeurtenissen voor taak beëindigen  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Bat-CH/batchAccounts  |  JobTerminateStartEvent  |  Taak start gebeurtenissen beëindigen  |  Count  |  Totaal | 
+| Nee  | No |  Microsoft.Bat-CH/batchAccounts  |  LeavingPoolNodeCount  |  Aantal groeps knooppunten verlaten  |  Count  |  Totaal | 
+| Nee  | No |  Microsoft.Bat-CH/batchAccounts  |  LowPriorityCoreCount  |  Aantal LowPriority kernen  |  Count  |  Totaal | 
+| Nee  | No |  Microsoft.Bat-CH/batchAccounts  |  OfflineNodeCount  |  Aantal offline knooppunten  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Bat-CH/batchAccounts  |  PoolCreateEvent  |  Groeps gebeurtenissen maken  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Bat-CH/batchAccounts  |  PoolDeleteCompleteEvent  |  Voltooide gebeurtenissen van groep verwijderen  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Bat-CH/batchAccounts  |  PoolDeleteStartEvent  |  Begin gebeurtenissen groep verwijderen  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Bat-CH/batchAccounts  |  PoolResizeCompleteEvent  |  Volledige gebeurtenissen voor het wijzigen van de pool  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Bat-CH/batchAccounts  |  PoolResizeStartEvent  |  Begin gebeurtenissen van groeps grootte wijzigen  |  Count  |  Totaal | 
+| Nee  | No |  Microsoft.Bat-CH/batchAccounts  |  PreemptedNodeCount  |  Aantal knoop punten in herhaling  |  Count  |  Totaal | 
+| Nee  | No |  Microsoft.Bat-CH/batchAccounts  |  RebootingNodeCount  |  Aantal knoop punten opnieuw opstarten  |  Count  |  Totaal | 
+| Nee  | No |  Microsoft.Bat-CH/batchAccounts  |  ReimagingNodeCount  |  Telling van het aantal knoop punten  |  Count  |  Totaal | 
+| Nee  | No |  Microsoft.Bat-CH/batchAccounts  |  RunningNodeCount  |  Aantal actieve knoop punten  |  Count  |  Totaal | 
+| Nee  | No |  Microsoft.Bat-CH/batchAccounts  |  StartingNodeCount  |  Begin aantal knoop punten  |  Count  |  Totaal | 
+| Nee  | No |  Microsoft.Bat-CH/batchAccounts  |  StartTaskFailedNodeCount  |  Aantal mislukte knoop punten van begin taak  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Bat-CH/batchAccounts  |  TaskCompleteEvent  |  Taak voltooid gebeurtenissen  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Bat-CH/batchAccounts  |  TaskFailEvent  |  Taak fout gebeurtenissen  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Bat-CH/batchAccounts  |  TaskStartEvent  |  Taak begin gebeurtenissen  |  Count  |  Totaal | 
+| Nee  | No |  Microsoft.Bat-CH/batchAccounts  |  TotalLowPriorityNodeCount  |  Aantal knoop punten met een lage prioriteit  |  Count  |  Totaal | 
+| Nee  | No |  Microsoft.Bat-CH/batchAccounts  |  TotalNodeCount  |  Aantal toegewezen knoop punten  |  Count  |  Totaal | 
+| Nee  | No |  Microsoft.Bat-CH/batchAccounts  |  UnusableNodeCount  |  Aantal niet-bruikbare knoop punten  |  Count  |  Totaal | 
+| Nee  | No |  Microsoft.Bat-CH/batchAccounts  |  WaitingForStartTaskNodeCount  |  Wachten op aantal begin taak knooppunten  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.BatchAI/werk ruimten  |  Actieve kernen  |  Actieve kernen  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.BatchAI/werk ruimten  |  Actieve knoop punten  |  Actieve knoop punten  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.BatchAI/werk ruimten  |  Niet-actieve kernen  |  Niet-actieve kernen  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.BatchAI/werk ruimten  |  Niet-actieve knoop punten  |  Niet-actieve knoop punten  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.BatchAI/werk ruimten  |  Taak is voltooid  |  Taak is voltooid  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.BatchAI/werk ruimten  |  Taak verzonden  |  Taak verzonden  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.BatchAI/werk ruimten  |  Kernen verlaten  |  Kernen verlaten  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.BatchAI/werk ruimten  |  Knoop punten verlaten  |  Knoop punten verlaten  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.BatchAI/werk ruimten  |  Afgebroken kernen  |  Afgebroken kernen  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.BatchAI/werk ruimten  |  Knoop punten die zijn afgebroken  |  Knoop punten die zijn afgebroken  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.BatchAI/werk ruimten  |  Percentage quotum gebruik  |  Percentage quotum gebruik  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.BatchAI/werk ruimten  |  Totaal aantal kernen  |  Totaal aantal kernen  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.BatchAI/werk ruimten  |  Totaal aantal knoop punten  |  Totaal aantal knoop punten  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.BatchAI/werk ruimten  |  Onbruikbaar aantal kern geheugens  |  Onbruikbaar aantal kern geheugens  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.BatchAI/werk ruimten  |  Niet-bruikbare knoop punten  |  Niet-bruikbare knoop punten  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.Blockchain/blockchainMembers  |  ConnectionAccepted  |  Geaccepteerde verbindingen  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Blockchain/blockchainMembers  |  ConnectionActive  |  Actieve verbindingen  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.Blockchain/blockchainMembers  |  ConnectionHandled  |  Afgehandelde verbindingen  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Blockchain/blockchainMembers  |  CpuUsagePercentageInDouble  |  Percentage CPU-gebruik  |  Percentage  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Blockchain/blockchainMembers  |  IOReadBytes  |  I/o gelezen bytes  |  Bytes  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Blockchain/blockchainMembers  |  IOWriteBytes  |  I/o-schrijf bytes  |  Bytes  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Blockchain/blockchainMembers  |  Memory limit  |  Geheugen limiet  |  Bytes  |  Average | 
+| **Ja**  | Nee |  Microsoft.Blockchain/blockchainMembers  |  MemoryUsage  |  Geheugengebruik  |  Bytes  |  Average | 
+| **Ja**  | Nee |  Microsoft.Blockchain/blockchainMembers  |  MemoryUsagePercentageInDouble  |  Percentage geheugen gebruik  |  Percentage  |  Average | 
+| **Ja**  | Nee |  Microsoft.Blockchain/blockchainMembers  |  PendingTransactions  |  Trans acties in behandeling  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.Blockchain/blockchainMembers  |  ProcessedBlocks  |  Verwerkte blokken  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Blockchain/blockchainMembers  |  ProcessedTransactions  |  Verwerkte trans acties  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Blockchain/blockchainMembers  |  QueuedTransactions  |  Trans acties in de wachtrij  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.Blockchain/blockchainMembers  |  RequestHandled  |  Verwerkte aanvragen  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Blockchain/blockchainMembers  |  StorageUsage  |  Opslag gebruik  |  Bytes  |  Average | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cachehits  |  Cachetreffers  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cachehits0  |  Cache treffers (Shard 0)  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  cachehits1  |  Cache treffers (Shard 1)  |  Count  |  Totaal | 
@@ -387,17 +386,17 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. cache/redis  |  usedmemoryRss7  |  Gebruikte geheugen RSS (Shard 7)  |  Bytes  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  usedmemoryRss8  |  Gebruikt geheugen RSS (Shard 8)  |  Bytes  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. cache/redis  |  usedmemoryRss9  |  Gebruikte geheugen RSS (Shard 9)  |  Bytes  |  Maximum | 
-| Nee  | Nee |  Micro soft. ClassicCompute/domein naam/sleuven/rollen  |  Gelezen bytes per seconde  |  Schijf lezen  |  BytesPerSecond  |  Average | 
-| **Ja**  | Nee |  Micro soft. ClassicCompute/domein naam/sleuven/rollen  |  Lees bewerkingen op de schijf per seconde  |  Lees bewerkingen op de schijf per seconde  |  CountPerSecond  |  Average | 
-| Nee  | Nee |  Micro soft. ClassicCompute/domein naam/sleuven/rollen  |  Geschreven bytes per seconde  |  Schijf schrijven  |  BytesPerSecond  |  Average | 
-| **Ja**  | Nee |  Micro soft. ClassicCompute/domein naam/sleuven/rollen  |  Schrijf bewerkingen op de schijf per seconde  |  Schrijf bewerkingen op de schijf per seconde  |  CountPerSecond  |  Average | 
+| Nee  | No |  Micro soft. ClassicCompute/domein naam/sleuven/rollen  |  Gelezen bytes per seconde  |  Schijf lezen  |  BytesPerSecond  |  Average | 
+| **Ja**  | Nee |  Micro soft. ClassicCompute/domein naam/sleuven/rollen  |  Leesbewerkingen op de schijf/seconde  |  Leesbewerkingen op de schijf/seconde  |  CountPerSecond  |  Average | 
+| Nee  | No |  Micro soft. ClassicCompute/domein naam/sleuven/rollen  |  Geschreven bytes per seconde  |  Schijf schrijven  |  BytesPerSecond  |  Average | 
+| **Ja**  | Nee |  Micro soft. ClassicCompute/domein naam/sleuven/rollen  |  Schrijfbewerkingen op de schijf/seconde  |  Schrijfbewerkingen op de schijf/seconde  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Micro soft. ClassicCompute/domein naam/sleuven/rollen  |  Netwerk in  |  Netwerk in  |  Bytes  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. ClassicCompute/domein naam/sleuven/rollen  |  Netwerk uit  |  Netwerk uit  |  Bytes  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. ClassicCompute/domein naam/sleuven/rollen  |  Percentage CPU  |  Percentage CPU  |  Percentage  |  Average | 
-| Nee  | Nee |  Micro soft. ClassicCompute/informatie  |  Gelezen bytes per seconde  |  Schijf lezen  |  BytesPerSecond  |  Average | 
-| **Ja**  | Nee |  Micro soft. ClassicCompute/informatie  |  Lees bewerkingen op de schijf per seconde  |  Lees bewerkingen op de schijf per seconde  |  CountPerSecond  |  Average | 
-| Nee  | Nee |  Micro soft. ClassicCompute/informatie  |  Geschreven bytes per seconde  |  Schijf schrijven  |  BytesPerSecond  |  Average | 
-| **Ja**  | Nee |  Micro soft. ClassicCompute/informatie  |  Schrijf bewerkingen op de schijf per seconde  |  Schrijf bewerkingen op de schijf per seconde  |  CountPerSecond  |  Average | 
+| Nee  | No |  Micro soft. ClassicCompute/informatie  |  Gelezen bytes per seconde  |  Schijf lezen  |  BytesPerSecond  |  Average | 
+| **Ja**  | Nee |  Micro soft. ClassicCompute/informatie  |  Leesbewerkingen op de schijf/seconde  |  Leesbewerkingen op de schijf/seconde  |  CountPerSecond  |  Average | 
+| Nee  | No |  Micro soft. ClassicCompute/informatie  |  Geschreven bytes per seconde  |  Schijf schrijven  |  BytesPerSecond  |  Average | 
+| **Ja**  | Nee |  Micro soft. ClassicCompute/informatie  |  Schrijfbewerkingen op de schijf/seconde  |  Schrijfbewerkingen op de schijf/seconde  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Micro soft. ClassicCompute/informatie  |  Netwerk in  |  Netwerk in  |  Bytes  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. ClassicCompute/informatie  |  Netwerk uit  |  Netwerk uit  |  Bytes  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. ClassicCompute/informatie  |  Percentage CPU  |  Percentage CPU  |  Percentage  |  Average | 
@@ -407,25 +406,25 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. ClassicStorage/Storage accounts  |  SuccessE2ELatency  |  Success E2E Latency  |  Milliseconden  |  Average | 
 | **Ja**  | Nee |  Micro soft. ClassicStorage/Storage accounts  |  SuccessServerLatency  |  Geslaagde serverlatentie  |  Milliseconden  |  Average | 
 | **Ja**  | Nee |  Micro soft. ClassicStorage/Storage accounts  |  Transacties  |  Transacties  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. ClassicStorage/Storage accounts  |  UsedCapacity  |  Gebruikte capaciteit  |  Bytes  |  Average | 
+| Nee  | No |  Micro soft. ClassicStorage/Storage accounts  |  UsedCapacity  |  Gebruikte capaciteit  |  Bytes  |  Average | 
 | **Ja**  | Nee |  Micro soft. ClassicStorage/Storage accounts/blobServices  |  Beschikbaarheid  |  Beschikbaarheid  |  Percentage  |  Average | 
-| Nee  | Nee |  Micro soft. ClassicStorage/Storage accounts/blobServices  |  BlobCapacity  |  BLOB-capaciteit  |  Bytes  |  Average | 
-| Nee  | Nee |  Micro soft. ClassicStorage/Storage accounts/blobServices  |  BlobCount  |  Aantal blobs  |  Count  |  Average | 
+| Nee  | No |  Micro soft. ClassicStorage/Storage accounts/blobServices  |  BlobCapacity  |  BLOB-capaciteit  |  Bytes  |  Average | 
+| Nee  | No |  Micro soft. ClassicStorage/Storage accounts/blobServices  |  BlobCount  |  Aantal blobs  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. ClassicStorage/Storage accounts/blobServices  |  ContainerCount  |  Aantal BLOB-containers  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. ClassicStorage/Storage accounts/blobServices  |  Uitgaand verkeer  |  Uitgaand verkeer  |  Bytes  |  Totaal | 
-| Nee  | Nee |  Micro soft. ClassicStorage/Storage accounts/blobServices  |  IndexCapacity  |  Index capaciteit  |  Bytes  |  Average | 
+| Nee  | No |  Micro soft. ClassicStorage/Storage accounts/blobServices  |  IndexCapacity  |  Index capaciteit  |  Bytes  |  Average | 
 | **Ja**  | Nee |  Micro soft. ClassicStorage/Storage accounts/blobServices  |  Inkomend verkeer  |  Inkomend verkeer  |  Bytes  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. ClassicStorage/Storage accounts/blobServices  |  SuccessE2ELatency  |  Success E2E Latency  |  Milliseconden  |  Average | 
 | **Ja**  | Nee |  Micro soft. ClassicStorage/Storage accounts/blobServices  |  SuccessServerLatency  |  Geslaagde serverlatentie  |  Milliseconden  |  Average | 
 | **Ja**  | Nee |  Micro soft. ClassicStorage/Storage accounts/blobServices  |  Transacties  |  Transacties  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. ClassicStorage/Storage accounts/fileServices  |  Beschikbaarheid  |  Beschikbaarheid  |  Percentage  |  Average | 
 | **Ja**  | Nee |  Micro soft. ClassicStorage/Storage accounts/fileServices  |  Uitgaand verkeer  |  Uitgaand verkeer  |  Bytes  |  Totaal | 
-| Nee  | Nee |  Micro soft. ClassicStorage/Storage accounts/fileServices  |  FileCapacity  |  Bestands capaciteit  |  Bytes  |  Average | 
-| Nee  | Nee |  Micro soft. ClassicStorage/Storage accounts/fileServices  |  FileCount  |  Aantal bestanden  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. ClassicStorage/Storage accounts/fileServices  |  FileShareCount  |  Aantal bestands shares  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. ClassicStorage/Storage accounts/fileServices  |  FileShareQuota  |  Quota grootte van bestands share  |  Bytes  |  Average | 
-| Nee  | Nee |  Micro soft. ClassicStorage/Storage accounts/fileServices  |  FileShareSnapshotCount  |  Aantal moment opnamen van bestands shares  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. ClassicStorage/Storage accounts/fileServices  |  FileShareSnapshotSize  |  Grootte van moment opname van bestands share  |  Bytes  |  Average | 
+| Nee  | No |  Micro soft. ClassicStorage/Storage accounts/fileServices  |  FileCapacity  |  Bestands capaciteit  |  Bytes  |  Average | 
+| Nee  | No |  Micro soft. ClassicStorage/Storage accounts/fileServices  |  FileCount  |  Aantal bestanden  |  Count  |  Average | 
+| Nee  | No |  Micro soft. ClassicStorage/Storage accounts/fileServices  |  FileShareCount  |  Aantal bestands shares  |  Count  |  Average | 
+| Nee  | No |  Micro soft. ClassicStorage/Storage accounts/fileServices  |  FileShareQuota  |  Quota grootte van bestands share  |  Bytes  |  Average | 
+| Nee  | No |  Micro soft. ClassicStorage/Storage accounts/fileServices  |  FileShareSnapshotCount  |  Aantal moment opnamen van bestands shares  |  Count  |  Average | 
+| Nee  | No |  Micro soft. ClassicStorage/Storage accounts/fileServices  |  FileShareSnapshotSize  |  Grootte van moment opname van bestands share  |  Bytes  |  Average | 
 | **Ja**  | Nee |  Micro soft. ClassicStorage/Storage accounts/fileServices  |  Inkomend verkeer  |  Inkomend verkeer  |  Bytes  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. ClassicStorage/Storage accounts/fileServices  |  SuccessE2ELatency  |  Success E2E Latency  |  Milliseconden  |  Average | 
 | **Ja**  | Nee |  Micro soft. ClassicStorage/Storage accounts/fileServices  |  SuccessServerLatency  |  Geslaagde serverlatentie  |  Milliseconden  |  Average | 
@@ -462,17 +461,17 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. CognitiveServices/accounts  |  TotalErrors  |  Totaalaantal fouten  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. CognitiveServices/accounts  |  TotalTokenCalls  |  Totaal aantal token aanroepen  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. CognitiveServices/accounts  |  TotalTransactions  |  Totaal aantal trans acties  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Microsoft.Compute/virtualMachines  |  Verbruikte CPU-tegoeden  |  Verbruikte CPU-tegoeden  |  Count  |  Average | 
-| **Ja**  | Nee |  Microsoft.Compute/virtualMachines  |  Resterende CPU-tegoeden  |  Resterende CPU-tegoeden  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.Compute/virtualMachines  |  Verbruikt CPU-tegoed  |  Verbruikt CPU-tegoed  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.Compute/virtualMachines  |  Resterend CPU-tegoed  |  Resterend CPU-tegoed  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachines  |  Wachtrijlengte van gegevensschijf  |  Wachtrij diepte van gegevens schijf (preview-versie)  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachines  |  Gegevens schijf gelezen bytes per seconde  |  Gegevens schijf gelezen bytes per seconde (preview)  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachines  |  Lees bewerkingen op de gegevens schijf per seconde  |  Lees bewerkingen op de gegevens schijf per seconde (preview)  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachines  |  Geschreven bytes per seconde gegevens schijf  |  Geschreven bytes per seconde (preview) gegevens schijf  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachines  |  Schrijf bewerkingen op de gegevens schijf per seconde  |  Schrijf bewerkingen op de gegevens schijf per seconde (preview)  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachines  |  Gelezen bytes op de schijf  |  Gelezen bytes op de schijf  |  Bytes  |  Totaal | 
-| **Ja**  | Nee |  Microsoft.Compute/virtualMachines  |  Lees bewerkingen op de schijf per seconde  |  Lees bewerkingen op de schijf per seconde  |  CountPerSecond  |  Average | 
+| **Ja**  | Nee |  Microsoft.Compute/virtualMachines  |  Leesbewerkingen op de schijf/seconde  |  Leesbewerkingen op de schijf/seconde  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachines  |  Geschreven bytes op de schijf  |  Geschreven bytes op de schijf  |  Bytes  |  Totaal | 
-| **Ja**  | Nee |  Microsoft.Compute/virtualMachines  |  Schrijf bewerkingen op de schijf per seconde  |  Schrijf bewerkingen op de schijf per seconde  |  CountPerSecond  |  Average | 
+| **Ja**  | Nee |  Microsoft.Compute/virtualMachines  |  Schrijfbewerkingen op de schijf/seconde  |  Schrijfbewerkingen op de schijf/seconde  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachines  |  Binnenkomende stromen  |  Binnenkomende stromen  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachines  |  Maximum aanmaak frequentie inkomende stromen  |  Maximum aantal aanmaak snelheden inkomende stromen (preview-versie)  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachines  |  Netwerk in  |  Netwerk in Factureerbaar (afgeschaft)  |  Bytes  |  Totaal | 
@@ -501,17 +500,17 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachines  |  Lees missers cache Premium-gegevens schijf  |  Cache voor lezen van Premium-gegevens schijf (preview)  |  Percentage  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachines  |  Treffer voor Premium-besturingssysteem schijf cache lezen  |  Treffer voor het lezen van een Premium-besturingssysteem schijf cache (preview-versie)  |  Percentage  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachines  |  Leesmij voor Premium-besturingssysteem schijf cache lezen  |  Schijf cache voor Premium-Lees-missers (preview-versie)  |  Percentage  |  Average | 
-| **Ja**  | Nee |  Microsoft.Compute/virtualMachineScaleSets  |  Verbruikte CPU-tegoeden  |  Verbruikte CPU-tegoeden  |  Count  |  Average | 
-| **Ja**  | Nee |  Microsoft.Compute/virtualMachineScaleSets  |  Resterende CPU-tegoeden  |  Resterende CPU-tegoeden  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.Compute/virtualMachineScaleSets  |  Verbruikt CPU-tegoed  |  Verbruikt CPU-tegoed  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.Compute/virtualMachineScaleSets  |  Resterend CPU-tegoed  |  Resterend CPU-tegoed  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachineScaleSets  |  Wachtrijlengte van gegevensschijf  |  Wachtrij diepte van gegevens schijf (preview-versie)  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachineScaleSets  |  Gegevens schijf gelezen bytes per seconde  |  Gegevens schijf gelezen bytes per seconde (preview)  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachineScaleSets  |  Lees bewerkingen op de gegevens schijf per seconde  |  Lees bewerkingen op de gegevens schijf per seconde (preview)  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachineScaleSets  |  Geschreven bytes per seconde gegevens schijf  |  Geschreven bytes per seconde (preview) gegevens schijf  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachineScaleSets  |  Schrijf bewerkingen op de gegevens schijf per seconde  |  Schrijf bewerkingen op de gegevens schijf per seconde (preview)  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachineScaleSets  |  Gelezen bytes op de schijf  |  Gelezen bytes op de schijf  |  Bytes  |  Totaal | 
-| **Ja**  | Nee |  Microsoft.Compute/virtualMachineScaleSets  |  Lees bewerkingen op de schijf per seconde  |  Lees bewerkingen op de schijf per seconde  |  CountPerSecond  |  Average | 
+| **Ja**  | Nee |  Microsoft.Compute/virtualMachineScaleSets  |  Leesbewerkingen op de schijf/seconde  |  Leesbewerkingen op de schijf/seconde  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachineScaleSets  |  Geschreven bytes op de schijf  |  Geschreven bytes op de schijf  |  Bytes  |  Totaal | 
-| **Ja**  | Nee |  Microsoft.Compute/virtualMachineScaleSets  |  Schrijf bewerkingen op de schijf per seconde  |  Schrijf bewerkingen op de schijf per seconde  |  CountPerSecond  |  Average | 
+| **Ja**  | Nee |  Microsoft.Compute/virtualMachineScaleSets  |  Schrijfbewerkingen op de schijf/seconde  |  Schrijfbewerkingen op de schijf/seconde  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachineScaleSets  |  Binnenkomende stromen  |  Binnenkomende stromen  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachineScaleSets  |  Maximum aanmaak frequentie inkomende stromen  |  Maximum aantal aanmaak snelheden inkomende stromen (preview-versie)  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachineScaleSets  |  Netwerk in  |  Netwerk in Factureerbaar (afgeschaft)  |  Bytes  |  Totaal | 
@@ -540,17 +539,17 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachineScaleSets  |  Lees missers cache Premium-gegevens schijf  |  Cache voor lezen van Premium-gegevens schijf (preview)  |  Percentage  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachineScaleSets  |  Treffer voor Premium-besturingssysteem schijf cache lezen  |  Treffer voor het lezen van een Premium-besturingssysteem schijf cache (preview-versie)  |  Percentage  |  Average | 
 | **Ja**  | Nee |  Microsoft.Compute/virtualMachineScaleSets  |  Leesmij voor Premium-besturingssysteem schijf cache lezen  |  Schijf cache voor Premium-Lees-missers (preview-versie)  |  Percentage  |  Average | 
-| **Ja**  | Nee |  Micro soft. Compute/virtualMachineScaleSets/informatie  |  Verbruikte CPU-tegoeden  |  Verbruikte CPU-tegoeden  |  Count  |  Average | 
-| **Ja**  | Nee |  Micro soft. Compute/virtualMachineScaleSets/informatie  |  Resterende CPU-tegoeden  |  Resterende CPU-tegoeden  |  Count  |  Average | 
+| **Ja**  | Nee |  Micro soft. Compute/virtualMachineScaleSets/informatie  |  Verbruikt CPU-tegoed  |  Verbruikt CPU-tegoed  |  Count  |  Average | 
+| **Ja**  | Nee |  Micro soft. Compute/virtualMachineScaleSets/informatie  |  Resterend CPU-tegoed  |  Resterend CPU-tegoed  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. Compute/virtualMachineScaleSets/informatie  |  Wachtrijlengte van gegevensschijf  |  Wachtrij diepte van gegevens schijf (preview-versie)  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. Compute/virtualMachineScaleSets/informatie  |  Gegevens schijf gelezen bytes per seconde  |  Gegevens schijf gelezen bytes per seconde (preview)  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Micro soft. Compute/virtualMachineScaleSets/informatie  |  Lees bewerkingen op de gegevens schijf per seconde  |  Lees bewerkingen op de gegevens schijf per seconde (preview)  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Micro soft. Compute/virtualMachineScaleSets/informatie  |  Geschreven bytes per seconde gegevens schijf  |  Geschreven bytes per seconde (preview) gegevens schijf  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Micro soft. Compute/virtualMachineScaleSets/informatie  |  Schrijf bewerkingen op de gegevens schijf per seconde  |  Schrijf bewerkingen op de gegevens schijf per seconde (preview)  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Micro soft. Compute/virtualMachineScaleSets/informatie  |  Gelezen bytes op de schijf  |  Gelezen bytes op de schijf  |  Bytes  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Compute/virtualMachineScaleSets/informatie  |  Lees bewerkingen op de schijf per seconde  |  Lees bewerkingen op de schijf per seconde  |  CountPerSecond  |  Average | 
+| **Ja**  | Nee |  Micro soft. Compute/virtualMachineScaleSets/informatie  |  Leesbewerkingen op de schijf/seconde  |  Leesbewerkingen op de schijf/seconde  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Micro soft. Compute/virtualMachineScaleSets/informatie  |  Geschreven bytes op de schijf  |  Geschreven bytes op de schijf  |  Bytes  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Compute/virtualMachineScaleSets/informatie  |  Schrijf bewerkingen op de schijf per seconde  |  Schrijf bewerkingen op de schijf per seconde  |  CountPerSecond  |  Average | 
+| **Ja**  | Nee |  Micro soft. Compute/virtualMachineScaleSets/informatie  |  Schrijfbewerkingen op de schijf/seconde  |  Schrijfbewerkingen op de schijf/seconde  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Micro soft. Compute/virtualMachineScaleSets/informatie  |  Binnenkomende stromen  |  Binnenkomende stromen  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. Compute/virtualMachineScaleSets/informatie  |  Maximum aanmaak frequentie inkomende stromen  |  Maximum aantal aanmaak snelheden inkomende stromen (preview-versie)  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Micro soft. Compute/virtualMachineScaleSets/informatie  |  Netwerk in  |  Netwerk in Factureerbaar (afgeschaft)  |  Bytes  |  Totaal | 
@@ -588,11 +587,11 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. ContainerRegistry/registers  |  SuccessfulPushCount  |  Aantal geslaagde push berichten  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. ContainerRegistry/registers  |  TotalPullCount  |  Totaal aantal pull-bewerkingen  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. ContainerRegistry/registers  |  TotalPushCount  |  Totaal aantal push berichten  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. container service/managedClusters  |  kube_node_status_allocatable_cpu_cores  |  Totaal aantal beschik bare CPU-kernen in een beheerd cluster  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. container service/managedClusters  |  kube_node_status_allocatable_memory_bytes  |  Totale hoeveelheid beschikbaar geheugen in een beheerd cluster  |  Bytes  |  Average | 
-| Nee  | Nee |  Micro soft. container service/managedClusters  |  kube_node_status_condition  |  Statussen voor de verschillende knooppunt voorwaarden  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. container service/managedClusters  |  kube_pod_status_phase  |  Aantal per fase  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. container service/managedClusters  |  kube_pod_status_ready  |  Aantal in de status gereed  |  Count  |  Average | 
+| Nee  | No |  Micro soft. container service/managedClusters  |  kube_node_status_allocatable_cpu_cores  |  Totaal aantal beschik bare CPU-kernen in een beheerd cluster  |  Count  |  Average | 
+| Nee  | No |  Micro soft. container service/managedClusters  |  kube_node_status_allocatable_memory_bytes  |  Totale hoeveelheid beschikbaar geheugen in een beheerd cluster  |  Bytes  |  Average | 
+| Nee  | No |  Micro soft. container service/managedClusters  |  kube_node_status_condition  |  Statussen voor de verschillende knooppunt voorwaarden  |  Count  |  Average | 
+| Nee  | No |  Micro soft. container service/managedClusters  |  kube_pod_status_phase  |  Aantal per fase  |  Count  |  Average | 
+| Nee  | No |  Micro soft. container service/managedClusters  |  kube_pod_status_ready  |  Aantal in de status gereed  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. DataBoxEdge/dataBoxEdgeDevices  |  Availablecapacity;)  |  Beschik bare capaciteit  |  Bytes  |  Average | 
 | **Ja**  | Nee |  Micro soft. DataBoxEdge/dataBoxEdgeDevices  |  BytesUploadedToCloud  |  Geüploade Cloud bytes (apparaat)  |  Bytes  |  Average | 
 | **Ja**  | Nee |  Micro soft. DataBoxEdge/dataBoxEdgeDevices  |  BytesUploadedToCloudPerShare  |  Geüploade Cloud bytes (delen)  |  Bytes  |  Average | 
@@ -635,52 +634,52 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. data Lake Store/accounts  |  ReadRequests  |  Aanvragen lezen  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. data Lake Store/accounts  |  TotalStorage  |  Totale opslagruimte  |  Bytes  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. data Lake Store/accounts  |  WriteRequests  |  Aanvragen schrijven  |  Count  |  Totaal | 
-| **Ja**  | **Ja** |  Micro soft. DBforMariaDB/servers  |  active_connections  |  Actieve verbindingen  |  Count  |  Average | 
-| **Ja**  | **Ja** |  Micro soft. DBforMariaDB/servers  |  backup_storage_used  |  Gebruikte back-upopslag  |  Bytes  |  Average | 
-| **Ja**  | **Ja** |  Micro soft. DBforMariaDB/servers  |  connections_failed  |  Mislukte verbindingen  |  Count  |  Totaal | 
-| **Ja**  | **Ja** |  Micro soft. DBforMariaDB/servers  |  cpu_percent  |  CPU-percentage  |  Percentage  |  Average | 
-| **Ja**  | **Ja** |  Micro soft. DBforMariaDB/servers  |  io_consumption_percent  |  IO-percentage  |  Percentage  |  Average | 
-| **Ja**  | **Ja** |  Micro soft. DBforMariaDB/servers  |  memory_percent  |  Geheugen percentage  |  Percentage  |  Average | 
-| **Ja**  | **Ja** |  Micro soft. DBforMariaDB/servers  |  network_bytes_egress  |  Netwerk uit  |  Bytes  |  Totaal | 
-| **Ja**  | **Ja** |  Micro soft. DBforMariaDB/servers  |  network_bytes_ingress  |  Netwerk in  |  Bytes  |  Totaal | 
-| **Ja**  | **Ja** |  Micro soft. DBforMariaDB/servers  |  seconds_behind_master  |  Replicatie vertraging in seconden  |  Count  |  Maximum | 
-| **Ja**  | **Ja** |  Micro soft. DBforMariaDB/servers  |  serverlog_storage_limit  |  Opslag limiet voor server logboek  |  Bytes  |  Average | 
-| **Ja**  | **Ja** |  Micro soft. DBforMariaDB/servers  |  serverlog_storage_percent  |  Percentage server logboek opslag  |  Percentage  |  Average | 
-| **Ja**  | **Ja** |  Micro soft. DBforMariaDB/servers  |  serverlog_storage_usage  |  Gebruikte server logboek opslag  |  Bytes  |  Average | 
-| **Ja**  | **Ja** |  Micro soft. DBforMariaDB/servers  |  storage_limit  |  Opslag limiet  |  Bytes  |  Maximum | 
-| **Ja**  | **Ja** |  Micro soft. DBforMariaDB/servers  |  storage_percent  |  Opslag percentage  |  Percentage  |  Average | 
-| **Ja**  | **Ja** |  Micro soft. DBforMariaDB/servers  |  storage_used  |  Gebruikte opslag  |  Bytes  |  Average | 
-| **Ja**  | **Ja** |  Micro soft. DBforMySQL/servers  |  active_connections  |  Actieve verbindingen  |  Count  |  Average | 
-| **Ja**  | **Ja** |  Micro soft. DBforMySQL/servers  |  backup_storage_used  |  Gebruikte back-upopslag  |  Bytes  |  Average | 
-| **Ja**  | **Ja** |  Micro soft. DBforMySQL/servers  |  connections_failed  |  Mislukte verbindingen  |  Count  |  Totaal | 
-| **Ja**  | **Ja** |  Micro soft. DBforMySQL/servers  |  cpu_percent  |  CPU-percentage  |  Percentage  |  Average | 
-| **Ja**  | **Ja** |  Micro soft. DBforMySQL/servers  |  io_consumption_percent  |  IO-percentage  |  Percentage  |  Average | 
-| **Ja**  | **Ja** |  Micro soft. DBforMySQL/servers  |  memory_percent  |  Geheugen percentage  |  Percentage  |  Average | 
-| **Ja**  | **Ja** |  Micro soft. DBforMySQL/servers  |  network_bytes_egress  |  Netwerk uit  |  Bytes  |  Totaal | 
-| **Ja**  | **Ja** |  Micro soft. DBforMySQL/servers  |  network_bytes_ingress  |  Netwerk in  |  Bytes  |  Totaal | 
-| **Ja**  | **Ja** |  Micro soft. DBforMySQL/servers  |  seconds_behind_master  |  Replicatie vertraging in seconden  |  Count  |  Maximum | 
-| **Ja**  | **Ja** |  Micro soft. DBforMySQL/servers  |  serverlog_storage_limit  |  Opslag limiet voor server logboek  |  Bytes  |  Maximum | 
-| **Ja**  | **Ja** |  Micro soft. DBforMySQL/servers  |  serverlog_storage_percent  |  Percentage server logboek opslag  |  Percentage  |  Average | 
-| **Ja**  | **Ja** |  Micro soft. DBforMySQL/servers  |  serverlog_storage_usage  |  Gebruikte server logboek opslag  |  Bytes  |  Average | 
-| **Ja**  | **Ja** |  Micro soft. DBforMySQL/servers  |  storage_limit  |  Opslag limiet  |  Bytes  |  Maximum | 
-| **Ja**  | **Ja** |  Micro soft. DBforMySQL/servers  |  storage_percent  |  Opslag percentage  |  Percentage  |  Average | 
-| **Ja**  | **Ja** |  Micro soft. DBforMySQL/servers  |  storage_used  |  Gebruikte opslag  |  Bytes  |  Average | 
-| **Ja**  | Nee |  Micro soft. DBforPostgreSQL/servers  |  active_connections  |  Actieve verbindingen  |  Count  |  Average | 
-| **Ja**  | Nee |  Micro soft. DBforPostgreSQL/servers  |  backup_storage_used  |  Gebruikte back-upopslag  |  Bytes  |  Average | 
-| **Ja**  | Nee |  Micro soft. DBforPostgreSQL/servers  |  connections_failed  |  Mislukte verbindingen  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. DBforPostgreSQL/servers  |  cpu_percent  |  CPU-percentage  |  Percentage  |  Average | 
-| **Ja**  | Nee |  Micro soft. DBforPostgreSQL/servers  |  io_consumption_percent  |  IO-percentage  |  Percentage  |  Average | 
-| **Ja**  | Nee |  Micro soft. DBforPostgreSQL/servers  |  memory_percent  |  Geheugen percentage  |  Percentage  |  Average | 
-| **Ja**  | Nee |  Micro soft. DBforPostgreSQL/servers  |  network_bytes_egress  |  Netwerk uit  |  Bytes  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. DBforPostgreSQL/servers  |  network_bytes_ingress  |  Netwerk in  |  Bytes  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. DBforPostgreSQL/servers  |  pg_replica_log_delay_in_bytes  |  Maximale vertraging in Replica's  |  Bytes  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. DBforPostgreSQL/servers  |  pg_replica_log_delay_in_seconds  |  Replica vertraging  |  Seconden  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. DBforPostgreSQL/servers  |  serverlog_storage_limit  |  Opslag limiet voor server logboek  |  Bytes  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. DBforPostgreSQL/servers  |  serverlog_storage_percent  |  Percentage server logboek opslag  |  Percentage  |  Average | 
-| **Ja**  | Nee |  Micro soft. DBforPostgreSQL/servers  |  serverlog_storage_usage  |  Gebruikte server logboek opslag  |  Bytes  |  Average | 
-| **Ja**  | Nee |  Micro soft. DBforPostgreSQL/servers  |  storage_limit  |  Opslag limiet  |  Bytes  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. DBforPostgreSQL/servers  |  storage_percent  |  Opslag percentage  |  Percentage  |  Average | 
-| **Ja**  | Nee |  Micro soft. DBforPostgreSQL/servers  |  storage_used  |  Gebruikte opslag  |  Bytes  |  Average | 
+| **Ja**  | **Ja** |  Microsoft.DBforMariaDB/servers  |  active_connections  |  Actieve verbindingen  |  Count  |  Average | 
+| **Ja**  | **Ja** |  Microsoft.DBforMariaDB/servers  |  backup_storage_used  |  Gebruikte back-upopslag  |  Bytes  |  Average | 
+| **Ja**  | **Ja** |  Microsoft.DBforMariaDB/servers  |  connections_failed  |  Mislukte verbindingen  |  Count  |  Totaal | 
+| **Ja**  | **Ja** |  Microsoft.DBforMariaDB/servers  |  cpu_percent  |  CPU-percentage  |  Percentage  |  Average | 
+| **Ja**  | **Ja** |  Microsoft.DBforMariaDB/servers  |  io_consumption_percent  |  IO-percentage  |  Percentage  |  Average | 
+| **Ja**  | **Ja** |  Microsoft.DBforMariaDB/servers  |  memory_percent  |  Geheugen percentage  |  Percentage  |  Average | 
+| **Ja**  | **Ja** |  Microsoft.DBforMariaDB/servers  |  network_bytes_egress  |  Netwerk uit  |  Bytes  |  Totaal | 
+| **Ja**  | **Ja** |  Microsoft.DBforMariaDB/servers  |  network_bytes_ingress  |  Netwerk in  |  Bytes  |  Totaal | 
+| **Ja**  | **Ja** |  Microsoft.DBforMariaDB/servers  |  seconds_behind_master  |  Replicatie vertraging in seconden  |  Count  |  Maximum | 
+| **Ja**  | **Ja** |  Microsoft.DBforMariaDB/servers  |  serverlog_storage_limit  |  Opslag limiet voor server logboek  |  Bytes  |  Average | 
+| **Ja**  | **Ja** |  Microsoft.DBforMariaDB/servers  |  serverlog_storage_percent  |  Percentage server logboek opslag  |  Percentage  |  Average | 
+| **Ja**  | **Ja** |  Microsoft.DBforMariaDB/servers  |  serverlog_storage_usage  |  Gebruikte server logboek opslag  |  Bytes  |  Average | 
+| **Ja**  | **Ja** |  Microsoft.DBforMariaDB/servers  |  storage_limit  |  Opslag limiet  |  Bytes  |  Maximum | 
+| **Ja**  | **Ja** |  Microsoft.DBforMariaDB/servers  |  storage_percent  |  Opslag percentage  |  Percentage  |  Average | 
+| **Ja**  | **Ja** |  Microsoft.DBforMariaDB/servers  |  storage_used  |  Gebruikte opslag  |  Bytes  |  Average | 
+| **Ja**  | **Ja** |  Microsoft.DBforMySQL/servers  |  active_connections  |  Actieve verbindingen  |  Count  |  Average | 
+| **Ja**  | **Ja** |  Microsoft.DBforMySQL/servers  |  backup_storage_used  |  Gebruikte back-upopslag  |  Bytes  |  Average | 
+| **Ja**  | **Ja** |  Microsoft.DBforMySQL/servers  |  connections_failed  |  Mislukte verbindingen  |  Count  |  Totaal | 
+| **Ja**  | **Ja** |  Microsoft.DBforMySQL/servers  |  cpu_percent  |  CPU-percentage  |  Percentage  |  Average | 
+| **Ja**  | **Ja** |  Microsoft.DBforMySQL/servers  |  io_consumption_percent  |  IO-percentage  |  Percentage  |  Average | 
+| **Ja**  | **Ja** |  Microsoft.DBforMySQL/servers  |  memory_percent  |  Geheugen percentage  |  Percentage  |  Average | 
+| **Ja**  | **Ja** |  Microsoft.DBforMySQL/servers  |  network_bytes_egress  |  Netwerk uit  |  Bytes  |  Totaal | 
+| **Ja**  | **Ja** |  Microsoft.DBforMySQL/servers  |  network_bytes_ingress  |  Netwerk in  |  Bytes  |  Totaal | 
+| **Ja**  | **Ja** |  Microsoft.DBforMySQL/servers  |  seconds_behind_master  |  Replicatie vertraging in seconden  |  Count  |  Maximum | 
+| **Ja**  | **Ja** |  Microsoft.DBforMySQL/servers  |  serverlog_storage_limit  |  Opslag limiet voor server logboek  |  Bytes  |  Maximum | 
+| **Ja**  | **Ja** |  Microsoft.DBforMySQL/servers  |  serverlog_storage_percent  |  Percentage server logboek opslag  |  Percentage  |  Average | 
+| **Ja**  | **Ja** |  Microsoft.DBforMySQL/servers  |  serverlog_storage_usage  |  Gebruikte server logboek opslag  |  Bytes  |  Average | 
+| **Ja**  | **Ja** |  Microsoft.DBforMySQL/servers  |  storage_limit  |  Opslag limiet  |  Bytes  |  Maximum | 
+| **Ja**  | **Ja** |  Microsoft.DBforMySQL/servers  |  storage_percent  |  Opslag percentage  |  Percentage  |  Average | 
+| **Ja**  | **Ja** |  Microsoft.DBforMySQL/servers  |  storage_used  |  Gebruikte opslag  |  Bytes  |  Average | 
+| **Ja**  | Nee |  Microsoft.DBforPostgreSQL/servers  |  active_connections  |  Actieve verbindingen  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.DBforPostgreSQL/servers  |  backup_storage_used  |  Gebruikte back-upopslag  |  Bytes  |  Average | 
+| **Ja**  | Nee |  Microsoft.DBforPostgreSQL/servers  |  connections_failed  |  Mislukte verbindingen  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.DBforPostgreSQL/servers  |  cpu_percent  |  CPU-percentage  |  Percentage  |  Average | 
+| **Ja**  | Nee |  Microsoft.DBforPostgreSQL/servers  |  io_consumption_percent  |  IO-percentage  |  Percentage  |  Average | 
+| **Ja**  | Nee |  Microsoft.DBforPostgreSQL/servers  |  memory_percent  |  Geheugen percentage  |  Percentage  |  Average | 
+| **Ja**  | Nee |  Microsoft.DBforPostgreSQL/servers  |  network_bytes_egress  |  Netwerk uit  |  Bytes  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.DBforPostgreSQL/servers  |  network_bytes_ingress  |  Netwerk in  |  Bytes  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.DBforPostgreSQL/servers  |  pg_replica_log_delay_in_bytes  |  Maximale vertraging in Replica's  |  Bytes  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.DBforPostgreSQL/servers  |  pg_replica_log_delay_in_seconds  |  Replica vertraging  |  Seconden  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.DBforPostgreSQL/servers  |  serverlog_storage_limit  |  Opslag limiet voor server logboek  |  Bytes  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.DBforPostgreSQL/servers  |  serverlog_storage_percent  |  Percentage server logboek opslag  |  Percentage  |  Average | 
+| **Ja**  | Nee |  Microsoft.DBforPostgreSQL/servers  |  serverlog_storage_usage  |  Gebruikte server logboek opslag  |  Bytes  |  Average | 
+| **Ja**  | Nee |  Microsoft.DBforPostgreSQL/servers  |  storage_limit  |  Opslag limiet  |  Bytes  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.DBforPostgreSQL/servers  |  storage_percent  |  Opslag percentage  |  Percentage  |  Average | 
+| **Ja**  | Nee |  Microsoft.DBforPostgreSQL/servers  |  storage_used  |  Gebruikte opslag  |  Bytes  |  Average | 
 | **Ja**  | Nee |  Micro soft. DBforPostgreSQL/serversv2  |  active_connections  |  Actieve verbindingen  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. DBforPostgreSQL/serversv2  |  cpu_percent  |  CPU-percentage  |  Percentage  |  Average | 
 | **Ja**  | Nee |  Micro soft. DBforPostgreSQL/serversv2  |  IOPS  |  IOPS  |  Count  |  Average | 
@@ -751,35 +750,35 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | **Ja** |  Micro soft. devices/IotHubs  |  Jobs. listJobs. geslaagd  |  Geslaagde aanroepen naar lijst taken  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. devices/IotHubs  |  Jobs. queryJobs. failure  |  Mislukte taak query's  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. devices/IotHubs  |  Jobs. queryJobs. geslaagd  |  Geslaagde taak query's  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. devices/IotHubs  |  totalDeviceCount  |  Totaal aantal apparaten (preview-versie)  |  Count  |  Average | 
+| Nee  | No |  Micro soft. devices/IotHubs  |  totalDeviceCount  |  Totaal aantal apparaten (preview-versie)  |  Count  |  Average | 
 | **Ja**  | **Ja** |  Micro soft. devices/IotHubs  |  twinQueries. failure  |  Mislukte dubbele query's  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. devices/IotHubs  |  twinQueries.resultSize  |  Resultaat grootte van dubbele query's  |  Bytes  |  Average | 
 | **Ja**  | **Ja** |  Micro soft. devices/IotHubs  |  twinQueries. geslaagd  |  Geslaagde dubbele query's  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. devices/provisioningServices  |  AttestationAttempts  |  Attestation-pogingen  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. devices/provisioningServices  |  DeviceAssignments  |  Apparaten toegewezen  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. devices/provisioningServices  |  RegistrationAttempts  |  Registratie pogingen  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  AvailableStorage  |  Beschikbare opslag  |  Bytes  |  Totaal | 
-| Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  CassandraConnectionClosures  |  Cassandra-verbinding sluiten  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  CassandraRequestCharges  |  Kosten voor Cassandra-aanvragen  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  CassandraRequests  |  Cassandra aanvragen  |  Count  |  Count | 
-| Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  DataUsage  |  Gegevensgebruik  |  Bytes  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  DeleteVirtualNetwork  |  DeleteVirtualNetwork  |  Count  |  Count | 
-| Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  DocumentCount  |  Aantal documenten  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  DocumentQuota  |  Document quotum  |  Bytes  |  Totaal | 
-| Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  IndexUsage  |  Indexgebruik  |  Bytes  |  Totaal | 
-| Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  MetadataRequests  |  Meta gegevens aanvragen  |  Count  |  Count | 
-| **Ja**  | **Ja** |  Micro soft. DocumentDB/databaseAccounts  |  MongoRequestCharge  |  Kosten voor Mongo-aanvragen  |  Count  |  Totaal | 
-| **Ja**  | **Ja** |  Micro soft. DocumentDB/databaseAccounts  |  MongoRequests  |  Mongo aanvragen  |  Count  |  Count | 
-| Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  MongoRequestsCount  |  Frequentie van Mongo-aanvragen  |  CountPerSecond  |  Average | 
-| Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  MongoRequestsDelete  |  Aantal Mongo-aanvragen voor verwijderen  |  CountPerSecond  |  Average | 
-| Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  MongoRequestsInsert  |  Aantal Mongo invoegen  |  CountPerSecond  |  Average | 
-| Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  MongoRequestsQuery  |  Frequentie van Mongo-query aanvragen  |  CountPerSecond  |  Average | 
-| Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  MongoRequestsUpdate  |  Frequentie van Mongo-update aanvragen  |  CountPerSecond  |  Average | 
-| Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  ProvisionedThroughput  |  Ingerichte doorvoer  |  Count  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  ReplicationLatency  |  P99-replicatie latentie  |  Milliseconden  |  Average | 
-| Nee  | Nee |  Micro soft. DocumentDB/databaseAccounts  |  ServiceAvailability  |  Service beschikbaarheid  |  Percentage  |  Average | 
-| **Ja**  | **Ja** |  Micro soft. DocumentDB/databaseAccounts  |  TotalRequests  |  Totaal aantal aanvragen  |  Count  |  Count | 
-| **Ja**  | **Ja** |  Micro soft. DocumentDB/databaseAccounts  |  TotalRequestUnits  |  Totaal aantal aanvraag eenheden  |  Count  |  Totaal | 
+| Nee  | No |  Microsoft.DocumentDB/databaseAccounts  |  AvailableStorage  |  Beschikbare opslag  |  Bytes  |  Totaal | 
+| Nee  | No |  Microsoft.DocumentDB/databaseAccounts  |  CassandraConnectionClosures  |  Cassandra-verbinding sluiten  |  Count  |  Totaal | 
+| Nee  | No |  Microsoft.DocumentDB/databaseAccounts  |  CassandraRequestCharges  |  Kosten voor Cassandra-aanvragen  |  Count  |  Totaal | 
+| Nee  | No |  Microsoft.DocumentDB/databaseAccounts  |  CassandraRequests  |  Cassandra aanvragen  |  Count  |  Count | 
+| Nee  | No |  Microsoft.DocumentDB/databaseAccounts  |  DataUsage  |  Gegevensgebruik  |  Bytes  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.DocumentDB/databaseAccounts  |  DeleteVirtualNetwork  |  DeleteVirtualNetwork  |  Count  |  Count | 
+| Nee  | No |  Microsoft.DocumentDB/databaseAccounts  |  DocumentCount  |  Aantal documenten  |  Count  |  Totaal | 
+| Nee  | No |  Microsoft.DocumentDB/databaseAccounts  |  DocumentQuota  |  Document quotum  |  Bytes  |  Totaal | 
+| Nee  | No |  Microsoft.DocumentDB/databaseAccounts  |  IndexUsage  |  Indexgebruik  |  Bytes  |  Totaal | 
+| Nee  | No |  Microsoft.DocumentDB/databaseAccounts  |  MetadataRequests  |  Meta gegevens aanvragen  |  Count  |  Count | 
+| **Ja**  | **Ja** |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestCharge  |  Kosten voor Mongo-aanvragen  |  Count  |  Totaal | 
+| **Ja**  | **Ja** |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequests  |  Mongo aanvragen  |  Count  |  Count | 
+| Nee  | No |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsCount  |  Frequentie van Mongo-aanvragen  |  CountPerSecond  |  Average | 
+| Nee  | No |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsDelete  |  Aantal Mongo-aanvragen voor verwijderen  |  CountPerSecond  |  Average | 
+| Nee  | No |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsInsert  |  Aantal Mongo invoegen  |  CountPerSecond  |  Average | 
+| Nee  | No |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsQuery  |  Frequentie van Mongo-query aanvragen  |  CountPerSecond  |  Average | 
+| Nee  | No |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsUpdate  |  Frequentie van Mongo-update aanvragen  |  CountPerSecond  |  Average | 
+| Nee  | No |  Microsoft.DocumentDB/databaseAccounts  |  ProvisionedThroughput  |  Ingerichte doorvoer  |  Count  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.DocumentDB/databaseAccounts  |  ReplicationLatency  |  P99-replicatie latentie  |  Milliseconden  |  Average | 
+| Nee  | No |  Microsoft.DocumentDB/databaseAccounts  |  ServiceAvailability  |  Service beschikbaarheid  |  Percentage  |  Average | 
+| **Ja**  | **Ja** |  Microsoft.DocumentDB/databaseAccounts  |  TotalRequests  |  Totaal aantal aanvragen  |  Count  |  Count | 
+| **Ja**  | **Ja** |  Microsoft.DocumentDB/databaseAccounts  |  TotalRequestUnits  |  Totaal aantal aanvraag eenheden  |  Count  |  Totaal | 
 | Nee  | Nee |  Micro soft. EnterpriseKnowledgeGraph/Services  |  FailureCount  |  Aantal mislukte pogingen  |  Count  |  Count | 
 | Nee  | Nee |  Micro soft. EnterpriseKnowledgeGraph/Services  |  SuccessCount  |  Aantal geslaagde pogingen  |  Count  |  Count | 
 | Nee  | Nee |  Micro soft. EnterpriseKnowledgeGraph/Services  |  SuccessLatency  |  Geslaagde latentie  |  Milliseconden  |  Average | 
@@ -812,24 +811,24 @@ De tabel bevat de volgende kolommen.
 | Nee  | Nee |  Micro soft. EventHub/clusters  |  CaptureBacklog  |  Achterstand vastleggen.  |  Count  |  Totaal | 
 | Nee  | Nee |  Micro soft. EventHub/clusters  |  CapturedBytes  |  Vastgelegde bytes.  |  Bytes  |  Totaal | 
 | Nee  | Nee |  Micro soft. EventHub/clusters  |  CapturedMessages  |  Vastgelegde berichten.  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. EventHub/clusters  |  ConnectionsClosed  |  Verbindingen gesloten.  |  Count  |  Average | 
+| Nee  | Nee |  Micro soft. EventHub/clusters  |  ConnectionsClosed  |  Gesloten verbindingen.  |  Count  |  Average | 
 | Nee  | Nee |  Micro soft. EventHub/clusters  |  ConnectionsOpened  |  Geopende verbindingen.  |  Count  |  Average | 
 | Nee  | Nee |  Micro soft. EventHub/clusters  |  CPU  |  CPU  |  Percentage  |  Maximum | 
 | **Ja**  | **Ja** |  Micro soft. EventHub/clusters  |  IncomingBytes  |  Binnenkomende bytes.  |  Bytes  |  Totaal | 
-| **Ja**  | **Ja** |  Micro soft. EventHub/clusters  |  IncomingMessages  |  Inkomende berichten  |  Count  |  Totaal | 
+| **Ja**  | **Ja** |  Micro soft. EventHub/clusters  |  IncomingMessages  |  Binnenkomende berichten  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. EventHub/clusters  |  IncomingRequests  |  Binnenkomende aanvragen  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. EventHub/clusters  |  OutgoingBytes  |  Uitgaande bytes.  |  Bytes  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. EventHub/clusters  |  OutgoingMessages  |  Uitgaande berichten  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. EventHub/clusters  |  QuotaExceededErrors  |  Quota overschreden fouten.  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. EventHub/clusters  |  ServerErrors  |  Server fouten.  |  Count  |  Totaal | 
+| Nee  | Nee |  Micro soft. EventHub/clusters  |  QuotaExceededErrors  |  Fouten met overschreden quota.  |  Count  |  Totaal | 
+| Nee  | Nee |  Micro soft. EventHub/clusters  |  ServerErrors  |  Serverfouten.  |  Count  |  Totaal | 
 | Nee  | Nee |  Micro soft. EventHub/clusters  |  SuccessfulRequests  |  Geslaagde aanvragen  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. EventHub/clusters  |  ThrottledRequests  |  Vertraagde aanvragen.  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. EventHub/clusters  |  UserErrors  |  Gebruikers fouten.  |  Count  |  Totaal | 
+| Nee  | Nee |  Micro soft. EventHub/clusters  |  ThrottledRequests  |  Beperkte aanvragen.  |  Count  |  Totaal | 
+| Nee  | Nee |  Micro soft. EventHub/clusters  |  UserErrors  |  Gebruikersfouten.  |  Count  |  Totaal | 
 | Nee  | Nee |  Micro soft. EventHub/naam ruimten  |  ActiveConnections  |  ActiveConnections  |  Count  |  Average | 
 | Nee  | Nee |  Micro soft. EventHub/naam ruimten  |  CaptureBacklog  |  Achterstand vastleggen.  |  Count  |  Totaal | 
 | Nee  | Nee |  Micro soft. EventHub/naam ruimten  |  CapturedBytes  |  Vastgelegde bytes.  |  Bytes  |  Totaal | 
 | Nee  | Nee |  Micro soft. EventHub/naam ruimten  |  CapturedMessages  |  Vastgelegde berichten.  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. EventHub/naam ruimten  |  ConnectionsClosed  |  Verbindingen gesloten.  |  Count  |  Average | 
+| Nee  | Nee |  Micro soft. EventHub/naam ruimten  |  ConnectionsClosed  |  Gesloten verbindingen.  |  Count  |  Average | 
 | Nee  | Nee |  Micro soft. EventHub/naam ruimten  |  ConnectionsOpened  |  Geopende verbindingen.  |  Count  |  Average | 
 | **Ja**  | **Ja** |  Micro soft. EventHub/naam ruimten  |  EHABL  |  Achterstallige berichten archiveren (afgeschaft)  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. EventHub/naam ruimten  |  EHAMBS  |  Berichten doorvoer archiveren (afgeschaft)  |  Bytes  |  Totaal | 
@@ -842,7 +841,7 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | **Ja** |  Micro soft. EventHub/naam ruimten  |  EHOUTMSGS  |  Uitgaande berichten (afgeschaft)  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. EventHub/naam ruimten  |  FAILREQ  |  Mislukte aanvragen (afgeschaft)  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. EventHub/naam ruimten  |  IncomingBytes  |  Binnenkomende bytes.  |  Bytes  |  Totaal | 
-| **Ja**  | **Ja** |  Micro soft. EventHub/naam ruimten  |  IncomingMessages  |  Inkomende berichten  |  Count  |  Totaal | 
+| **Ja**  | **Ja** |  Micro soft. EventHub/naam ruimten  |  IncomingMessages  |  Binnenkomende berichten  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. EventHub/naam ruimten  |  IncomingRequests  |  Binnenkomende aanvragen  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. EventHub/naam ruimten  |  INMSGS  |  Binnenkomende berichten (verouderd) (afgeschaft)  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. EventHub/naam ruimten  |  INREQS  |  Binnenkomende aanvragen (afgeschaft)  |  Count  |  Totaal | 
@@ -851,14 +850,14 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | **Ja** |  Micro soft. EventHub/naam ruimten  |  OutgoingBytes  |  Uitgaande bytes.  |  Bytes  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. EventHub/naam ruimten  |  OutgoingMessages  |  Uitgaande berichten  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. EventHub/naam ruimten  |  OUTMSGS  |  Uitgaande berichten (verouderd) (afgeschaft)  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. EventHub/naam ruimten  |  QuotaExceededErrors  |  Quota overschreden fouten.  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. EventHub/naam ruimten  |  ServerErrors  |  Server fouten.  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. EventHub/naam ruimten  |  Grootte  |  Grootte  |  Bytes  |  Average | 
-| Nee  | Nee |  Micro soft. EventHub/naam ruimten  |  SuccessfulRequests  |  Geslaagde aanvragen  |  Count  |  Totaal | 
+| Nee  | No |  Micro soft. EventHub/naam ruimten  |  QuotaExceededErrors  |  Fouten met overschreden quota.  |  Count  |  Totaal | 
+| Nee  | No |  Micro soft. EventHub/naam ruimten  |  ServerErrors  |  Serverfouten.  |  Count  |  Totaal | 
+| Nee  | No |  Micro soft. EventHub/naam ruimten  |  Grootte  |  Grootte  |  Bytes  |  Average | 
+| Nee  | No |  Micro soft. EventHub/naam ruimten  |  SuccessfulRequests  |  Geslaagde aanvragen  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. EventHub/naam ruimten  |  SUCCREQ  |  Geslaagde aanvragen (afgeschaft)  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. EventHub/naam ruimten  |  SVRBSY  |  Fouten bij server bezet (afgeschaft)  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. EventHub/naam ruimten  |  ThrottledRequests  |  Vertraagde aanvragen.  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. EventHub/naam ruimten  |  UserErrors  |  Gebruikers fouten.  |  Count  |  Totaal | 
+| Nee  | No |  Micro soft. EventHub/naam ruimten  |  ThrottledRequests  |  Beperkte aanvragen.  |  Count  |  Totaal | 
+| Nee  | No |  Micro soft. EventHub/naam ruimten  |  UserErrors  |  Gebruikersfouten.  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. HDInsight/clusters  |  CategorizedGatewayRequests  |  Gecategoriseerde gateway aanvragen  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. HDInsight/clusters  |  GatewayRequests  |  Gateway aanvragen  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. HDInsight/clusters  |  NumActiveWorkers  |  Aantal actieve werk rollen  |  Count  |  Maximum | 
@@ -868,19 +867,19 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. Insights/AutoscaleSettings  |  ObservedMetricValue  |  Waargenomen metrische waarde  |  Count  |  Average | 
 | **Ja**  | **Ja** |  Micro soft. Insights/AutoscaleSettings  |  ScaleActionsInitiated  |  Schaal acties gestart  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. Insights/onderdelen  |  availabilityResults/availabilityPercentage  |  Beschikbaarheid  |  Percentage  |  Average | 
-| Nee  | Nee |  Micro soft. Insights/onderdelen  |  availabilityResults/aantal  |  Beschikbaarheidstests  |  Count  |  Count | 
+| Nee  | No |  Micro soft. Insights/onderdelen  |  availabilityResults/aantal  |  Beschikbaarheidstests  |  Count  |  Count | 
 | **Ja**  | Nee |  Micro soft. Insights/onderdelen  |  availabilityResults/duur  |  Duur beschikbaarheids test  |  Milliseconden  |  Average | 
 | **Ja**  | Nee |  Micro soft. Insights/onderdelen  |  browserTimings/networkDuration  |  Netwerk verbindings tijd voor laden van pagina  |  Milliseconden  |  Average | 
 | **Ja**  | Nee |  Micro soft. Insights/onderdelen  |  browserTimings/processingDuration  |  Verwerkings tijd van client  |  Milliseconden  |  Average | 
 | **Ja**  | Nee |  Micro soft. Insights/onderdelen  |  browserTimings/receiveDuration  |  Reactie tijd van ontvangst  |  Milliseconden  |  Average | 
 | **Ja**  | Nee |  Micro soft. Insights/onderdelen  |  browserTimings/sendDuration  |  Aanvraag tijd verzenden  |  Milliseconden  |  Average | 
 | **Ja**  | Nee |  Micro soft. Insights/onderdelen  |  browserTimings/totalDuration  |  Laad tijd van browser pagina  |  Milliseconden  |  Average | 
-| Nee  | Nee |  Micro soft. Insights/onderdelen  |  afhankelijkheden/aantal  |  Afhankelijkheids aanroepen  |  Count  |  Count | 
+| Nee  | No |  Micro soft. Insights/onderdelen  |  afhankelijkheden/aantal  |  Afhankelijkheids aanroepen  |  Count  |  Count | 
 | **Ja**  | Nee |  Micro soft. Insights/onderdelen  |  afhankelijkheden/duur  |  Duur van afhankelijkheid  |  Milliseconden  |  Average | 
-| Nee  | Nee |  Micro soft. Insights/onderdelen  |  afhankelijkheden/mislukt  |  Mislukte afhankelijkheids aanroepen  |  Count  |  Count | 
-| Nee  | Nee |  Micro soft. Insights/onderdelen  |  uitzonde ringen/browser  |  Browseruitzonderingen  |  Count  |  Count | 
+| Nee  | No |  Micro soft. Insights/onderdelen  |  afhankelijkheden/mislukt  |  Mislukte afhankelijkheids aanroepen  |  Count  |  Count | 
+| Nee  | No |  Micro soft. Insights/onderdelen  |  uitzonde ringen/browser  |  Browseruitzonderingen  |  Count  |  Count | 
 | **Ja**  | **Ja** |  Micro soft. Insights/onderdelen  |  uitzonde ringen/aantal  |  Uitzonderingen  |  Count  |  Count | 
-| Nee  | Nee |  Micro soft. Insights/onderdelen  |  uitzonde ringen/server  |  Server uitzonderingen  |  Count  |  Count | 
+| Nee  | No |  Micro soft. Insights/onderdelen  |  uitzonde ringen/server  |  Server uitzonderingen  |  Count  |  Count | 
 | **Ja**  | **Ja** |  Micro soft. Insights/onderdelen  |  Page views/aantal  |  Pagina weergaven  |  Count  |  Count | 
 | **Ja**  | Nee |  Micro soft. Insights/onderdelen  |  Page views/duur  |  Laad tijd pagina weergave  |  Milliseconden  |  Average | 
 | **Ja**  | **Ja** |  Micro soft. Insights/onderdelen  |  Performance Counters/exceptionsPerSecond  |  Uitzonderings frequentie  |  CountPerSecond  |  Average | 
@@ -892,10 +891,10 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. Insights/onderdelen  |  Performance Counters/requestExecutionTime  |  Uitvoerings tijd van de HTTP-aanvraag  |  Milliseconden  |  Average | 
 | **Ja**  | **Ja** |  Micro soft. Insights/onderdelen  |  Performance Counters/requestsInQueue  |  HTTP-aanvragen in de toepassings wachtrij  |  Count  |  Average | 
 | **Ja**  | **Ja** |  Micro soft. Insights/onderdelen  |  Performance Counters/requestsPerSecond  |  Frequentie van HTTP-aanvragen  |  CountPerSecond  |  Average | 
-| Nee  | Nee |  Micro soft. Insights/onderdelen  |  aanvragen/aantal  |  Server aanvragen  |  Count  |  Count | 
+| Nee  | No |  Micro soft. Insights/onderdelen  |  aanvragen/aantal  |  Server aanvragen  |  Count  |  Count | 
 | **Ja**  | Nee |  Micro soft. Insights/onderdelen  |  aanvragen/duur  |  Server reactietijd  |  Milliseconden  |  Average | 
-| Nee  | Nee |  Micro soft. Insights/onderdelen  |  aanvragen/mislukt  |  Mislukte aanvragen  |  Count  |  Count | 
-| Nee  | Nee |  Micro soft. Insights/onderdelen  |  aanvragen/frequentie  |  Aantal server aanvragen  |  CountPerSecond  |  Average | 
+| Nee  | No |  Micro soft. Insights/onderdelen  |  aanvragen/mislukt  |  Mislukte aanvragen  |  Count  |  Count | 
+| Nee  | No |  Micro soft. Insights/onderdelen  |  aanvragen/frequentie  |  Aantal server aanvragen  |  CountPerSecond  |  Average | 
 | **Ja**  | **Ja** |  Micro soft. Insights/onderdelen  |  traceringen/aantal  |  Traceringen  |  Count  |  Count | 
 | **Ja**  | Nee |  Micro soft.-sleutel kluis/-kluizen  |  ServiceApiHit  |  Totaal aantal treffers in de service-API  |  Count  |  Count | 
 | **Ja**  | Nee |  Micro soft.-sleutel kluis/-kluizen  |  ServiceApiLatency  |  Algehele latentie van Service-API  |  Milliseconden  |  Average | 
@@ -907,7 +906,7 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | **Ja** |  Micro soft. Kusto/clusters  |  ContinuousExportResult  |  Resultaat doorlopend exporteren  |  Count  |  Count | 
 | **Ja**  | **Ja** |  Micro soft. Kusto/clusters  |  CPU  |  CPU  |  Percentage  |  Average | 
 | **Ja**  | **Ja** |  Micro soft. Kusto/clusters  |  EventsProcessedForEventHubs  |  Verwerkte gebeurtenissen (voor gebeurtenis/IoT-hubs)  |  Count  |  Totaal | 
-| **Ja**  | **Ja** |  Micro soft. Kusto/clusters  |  ExportUtilization  |  Gebruik exporteren  |  Percentage  |  Maximum | 
+| **Ja**  | **Ja** |  Micro soft. Kusto/clusters  |  ExportUtilization  |  Exportgebruik  |  Percentage  |  Maximum | 
 | **Ja**  | **Ja** |  Micro soft. Kusto/clusters  |  IngestionLatencyInSeconds  |  Opname latentie (in seconden)  |  Seconden  |  Average | 
 | **Ja**  | **Ja** |  Micro soft. Kusto/clusters  |  IngestionResult  |  Opname resultaat  |  Count  |  Count | 
 | **Ja**  | **Ja** |  Micro soft. Kusto/clusters  |  IngestionUtilization  |  Opname gebruik  |  Percentage  |  Average | 
@@ -1009,7 +1008,7 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. MachineLearningServices/werk ruimten  |  Onbruikbaar aantal kern geheugens  |  Onbruikbaar aantal kern geheugens  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. MachineLearningServices/werk ruimten  |  Niet-bruikbare knoop punten  |  Niet-bruikbare knoop punten  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. Maps/accounts  |  Beschikbaarheid  |  Beschikbaarheid  |  Percentage  |  Average | 
-| Nee  | Nee |  Micro soft. Maps/accounts  |  Gebruik  |  Gebruik  |  Count  |  Count | 
+| Nee  | No |  Micro soft. Maps/accounts  |  Gebruik  |  Gebruik  |  Count  |  Count | 
 | **Ja**  | Nee |  Micro soft. Media/Media Services  |  AssetCount  |  Aantal assets  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. Media/Media Services  |  AssetQuota  |  Activa quotum  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. Media/Media Services  |  AssetQuotaUsedPercentage  |  Percentage gebruikt voor het activa quotum  |  Percentage  |  Average | 
@@ -1054,25 +1053,25 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. NetApp/netAppAccounts/capacityPools/volumes  |  VolumeLogicalSize  |  Logische volume grootte  |  Bytes  |  Average | 
 | **Ja**  | Nee |  Micro soft. NetApp/netAppAccounts/capacityPools/volumes  |  VolumeSnapshotSize  |  Grootte van moment opname van volume  |  Bytes  |  Average | 
 | **Ja**  | Nee |  Micro soft. NetApp/netAppAccounts/capacityPools/volumes  |  WriteIops  |  IOPS schrijven  |  CountPerSecond  |  Average | 
-| Nee  | Nee |  Micro soft. Network/applicationGateways  |  ApplicationGatewayTotalTime  |  Totale tijd van Application Gateway  |  Milliseconden  |  Average | 
-| Nee  | Nee |  Micro soft. Network/applicationGateways  |  AvgRequestCountPerHealthyHost  |  Aanvragen per minuut per gegezonde host  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. Network/applicationGateways  |  BackendConnectTime  |  Moment back-end verbinding  |  Milliseconden  |  Average | 
-| Nee  | Nee |  Micro soft. Network/applicationGateways  |  BackendFirstByteResponseTime  |  Reactie tijd eerste byte van back-end  |  Milliseconden  |  Average | 
-| Nee  | Nee |  Micro soft. Network/applicationGateways  |  BackendLastByteResponseTime  |  Reactie tijd laatste byte van back-end  |  Milliseconden  |  Average | 
+| Nee  | No |  Micro soft. Network/applicationGateways  |  ApplicationGatewayTotalTime  |  Totale tijd van Application Gateway  |  Milliseconden  |  Average | 
+| Nee  | No |  Micro soft. Network/applicationGateways  |  AvgRequestCountPerHealthyHost  |  Aanvragen per minuut per gegezonde host  |  Count  |  Average | 
+| Nee  | No |  Micro soft. Network/applicationGateways  |  BackendConnectTime  |  Moment back-end verbinding  |  Milliseconden  |  Average | 
+| Nee  | No |  Micro soft. Network/applicationGateways  |  BackendFirstByteResponseTime  |  Reactie tijd eerste byte van back-end  |  Milliseconden  |  Average | 
+| Nee  | No |  Micro soft. Network/applicationGateways  |  BackendLastByteResponseTime  |  Reactie tijd laatste byte van back-end  |  Milliseconden  |  Average | 
 | **Ja**  | Nee |  Micro soft. Network/applicationGateways  |  BackendResponseStatus  |  Reactie status van back-end  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. Network/applicationGateways  |  BlockedCount  |  Regel distributie voor door Web Application firewall geblokkeerde aanvragen  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. Network/applicationGateways  |  BlockedReqCount  |  Aantal geblokkeerde aanvragen voor Web Application firewall  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. Network/applicationGateways  |  BytesReceived  |  Ontvangen bytes  |  Bytes  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. Network/applicationGateways  |  Bytes sent  |  Verzonden bytes  |  Bytes  |  Totaal | 
-| Nee  | Nee |  Micro soft. Network/applicationGateways  |  CapacityUnits  |  Huidige capaciteits eenheden  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. Network/applicationGateways  |  ClientRtt  |  Client RTT  |  Milliseconden  |  Average | 
-| Nee  | Nee |  Micro soft. Network/applicationGateways  |  ComputeUnits  |  Huidige reken eenheden  |  Count  |  Average | 
+| Nee  | No |  Micro soft. Network/applicationGateways  |  CapacityUnits  |  Huidige capaciteits eenheden  |  Count  |  Average | 
+| Nee  | No |  Micro soft. Network/applicationGateways  |  ClientRtt  |  Client RTT  |  Milliseconden  |  Average | 
+| Nee  | No |  Micro soft. Network/applicationGateways  |  ComputeUnits  |  Huidige reken eenheden  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. Network/applicationGateways  |  CurrentConnections  |  Huidige verbindingen  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. Network/applicationGateways  |  FailedRequests  |  Mislukte aanvragen  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. Network/applicationGateways  |  HealthyHostCount  |  Aantal goede hosts  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. Network/applicationGateways  |  MatchedCount  |  Totale regel distributie Web Application firewall  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. Network/applicationGateways  |  ResponseStatus  |  Reactie status  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. Network/applicationGateways  |  Doorvoer  |  Doorvoer  |  BytesPerSecond  |  Average | 
+| Nee  | No |  Micro soft. Network/applicationGateways  |  Doorvoer  |  Doorvoer  |  BytesPerSecond  |  Average | 
 | **Ja**  | Nee |  Micro soft. Network/applicationGateways  |  TlsProtocol  |  TLS-protocol van client  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. Network/applicationGateways  |  TotalRequests  |  Totaal aantal aanvragen  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. Network/applicationGateways  |  UnhealthyHostCount  |  Aantal hosts met slechte status  |  Count  |  Average | 
@@ -1084,20 +1083,20 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. Network/Connections  |  BitsInPerSecond  |  BitsInPerSecond  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Micro soft. Network/Connections  |  BitsOutPerSecond  |  BitsOutPerSecond  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Micro soft. Network/dnszones  |  QueryVolume  |  Query volume  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. Network/dnszones  |  RecordSetCapacityUtilization  |  Capaciteits gebruik van record sets  |  Percentage  |  Maximum | 
+| Nee  | No |  Micro soft. Network/dnszones  |  RecordSetCapacityUtilization  |  Capaciteits gebruik van record sets  |  Percentage  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. Network/dnszones  |  RecordSetCount  |  Aantal record sets  |  Count  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. Network/expressRouteCircuits  |  ArpAvailability  |  ARP-Beschik baarheid  |  Percentage  |  Average | 
 | **Ja**  | Nee |  Micro soft. Network/expressRouteCircuits  |  BgpAvailability  |  BGP-Beschik baarheid  |  Percentage  |  Average | 
-| Nee  | Nee |  Micro soft. Network/expressRouteCircuits  |  BitsInPerSecond  |  BitsInPerSecond  |  CountPerSecond  |  Average | 
-| Nee  | Nee |  Micro soft. Network/expressRouteCircuits  |  BitsOutPerSecond  |  BitsOutPerSecond  |  CountPerSecond  |  Average | 
-| Nee  | Nee |  Micro soft. Network/expressRouteCircuits  |  GlobalReachBitsInPerSecond  |  GlobalReachBitsInPerSecond  |  CountPerSecond  |  Average | 
-| Nee  | Nee |  Micro soft. Network/expressRouteCircuits  |  GlobalReachBitsOutPerSecond  |  GlobalReachBitsOutPerSecond  |  CountPerSecond  |  Average | 
-| Nee  | Nee |  Micro soft. Network/expressRouteCircuits  |  QosDropBitsInPerSecond  |  DroppedInBitsPerSecond  |  CountPerSecond  |  Average | 
-| Nee  | Nee |  Micro soft. Network/expressRouteCircuits  |  QosDropBitsOutPerSecond  |  DroppedOutBitsPerSecond  |  CountPerSecond  |  Average | 
+| Nee  | No |  Micro soft. Network/expressRouteCircuits  |  BitsInPerSecond  |  BitsInPerSecond  |  CountPerSecond  |  Average | 
+| Nee  | No |  Micro soft. Network/expressRouteCircuits  |  BitsOutPerSecond  |  BitsOutPerSecond  |  CountPerSecond  |  Average | 
+| Nee  | No |  Micro soft. Network/expressRouteCircuits  |  GlobalReachBitsInPerSecond  |  GlobalReachBitsInPerSecond  |  CountPerSecond  |  Average | 
+| Nee  | No |  Micro soft. Network/expressRouteCircuits  |  GlobalReachBitsOutPerSecond  |  GlobalReachBitsOutPerSecond  |  CountPerSecond  |  Average | 
+| Nee  | No |  Micro soft. Network/expressRouteCircuits  |  QosDropBitsInPerSecond  |  DroppedInBitsPerSecond  |  CountPerSecond  |  Average | 
+| Nee  | No |  Micro soft. Network/expressRouteCircuits  |  QosDropBitsOutPerSecond  |  DroppedOutBitsPerSecond  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Micro soft. Network/expressRouteCircuits/peerings  |  BitsInPerSecond  |  BitsInPerSecond  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Micro soft. Network/expressRouteCircuits/peerings  |  BitsOutPerSecond  |  BitsOutPerSecond  |  CountPerSecond  |  Average | 
-| Nee  | Nee |  Micro soft. Network/expressRouteGateways  |  ErGatewayConnectionBitsInPerSecond  |  BitsInPerSecond  |  CountPerSecond  |  Average | 
-| Nee  | Nee |  Micro soft. Network/expressRouteGateways  |  ErGatewayConnectionBitsOutPerSecond  |  BitsOutPerSecond  |  CountPerSecond  |  Average | 
+| Nee  | No |  Micro soft. Network/expressRouteGateways  |  ErGatewayConnectionBitsInPerSecond  |  BitsInPerSecond  |  CountPerSecond  |  Average | 
+| Nee  | No |  Micro soft. Network/expressRouteGateways  |  ErGatewayConnectionBitsOutPerSecond  |  BitsOutPerSecond  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Micro soft. Network/expressRoutePorts  |  AdminState  |  AdminState  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. Network/expressRoutePorts  |  LineProtocol  |  LineProtocol  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. Network/expressRoutePorts  |  PortBitsInPerSecond  |  BitsInPerSecond  |  CountPerSecond  |  Average | 
@@ -1113,63 +1112,63 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | **Ja** |  Micro soft. Network/frontdoors  |  ResponseSize  |  Grootte van antwoord  |  Bytes  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. Network/frontdoors  |  TotalLatency  |  Totale latentie  |  Milliseconden  |  Average | 
 | **Ja**  | **Ja** |  Micro soft. Network/frontdoors  |  WebApplicationFirewallRequestCount  |  Aantal aanvragen voor Web Application firewall  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. Network/loadBalancers  |  AllocatedSnatPorts  |  Toegewezen SNAT-poorten (preview-versie)  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Network/loadBalancers  |  ByteCount  |  Aantal bytes  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Network/loadBalancers  |  DipAvailability  |  Status van Health probe  |  Count  |  Average | 
-| **Ja**  | Nee |  Micro soft. Network/loadBalancers  |  PacketCount  |  Aantal pakketten  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Network/loadBalancers  |  SnatConnectionCount  |  Aantal SNAT-verbindingen  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Network/loadBalancers  |  SYNCount  |  SYN-aantal  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. Network/loadBalancers  |  UsedSnatPorts  |  Gebruikte SNAT-poorten (preview-versie)  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Network/loadBalancers  |  VipAvailability  |  Beschik baarheid gegevenspad  |  Count  |  Average | 
-| **Ja**  | Nee |  Micro soft. Network/networkInterfaces  |  BytesReceivedRate  |  Ontvangen bytes  |  Bytes  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Network/networkInterfaces  |  BytesSentRate  |  Verzonden bytes  |  Bytes  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Network/networkInterfaces  |  PacketsReceivedRate  |  Ontvangen pakketten  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Network/networkInterfaces  |  PacketsSentRate  |  Verzonden pakketten  |  Count  |  Totaal | 
+| Nee  | No |  Microsoft.Network/loadBalancers  |  AllocatedSnatPorts  |  Toegewezen SNAT-poorten (preview-versie)  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Network/loadBalancers  |  ByteCount  |  Aantal bytes  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Network/loadBalancers  |  DipAvailability  |  Status van Health probe  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.Network/loadBalancers  |  PacketCount  |  Aantal pakketten  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Network/loadBalancers  |  SnatConnectionCount  |  Aantal SNAT-verbindingen  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Network/loadBalancers  |  SYNCount  |  SYN-aantal  |  Count  |  Totaal | 
+| Nee  | No |  Microsoft.Network/loadBalancers  |  UsedSnatPorts  |  Gebruikte SNAT-poorten (preview-versie)  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Network/loadBalancers  |  VipAvailability  |  Beschik baarheid gegevenspad  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.Network/networkInterfaces  |  BytesReceivedRate  |  Ontvangen bytes  |  Bytes  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Network/networkInterfaces  |  BytesSentRate  |  Verzonden bytes  |  Bytes  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Network/networkInterfaces  |  PacketsReceivedRate  |  Ontvangen pakketten  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Network/networkInterfaces  |  PacketsSentRate  |  Verzonden pakketten  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. Network/networkWatchers/connectionMonitors  |  AverageRoundtripMs  |  Gem. retour tijd (MS)  |  Milliseconden  |  Average | 
 | **Ja**  | Nee |  Micro soft. Network/networkWatchers/connectionMonitors  |  ChecksFailedPercent  |  Percentage mislukte controles (preview-versie)  |  Percentage  |  Average | 
 | **Ja**  | Nee |  Micro soft. Network/networkWatchers/connectionMonitors  |  ProbesFailedPercent  |  % Tests mislukt  |  Percentage  |  Average | 
 | **Ja**  | Nee |  Micro soft. Network/networkWatchers/connectionMonitors  |  RoundTripTimeMs  |  Retour tijd (MS) (preview-versie)  |  Milliseconden  |  Average | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  ByteCount  |  Aantal bytes  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  BytesDroppedDDoS  |  Binnenkomende bytes verloren DDoS  |  BytesPerSecond  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  BytesForwardedDDoS  |  Doorgestuurde binnenkomende bytes DDoS  |  BytesPerSecond  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  BytesInDDoS  |  Binnenkomende bytes DDoS  |  BytesPerSecond  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  DDoSTriggerSYNPackets  |  Inkomende SYN-pakketten om DDoS-beperking te activeren  |  CountPerSecond  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  DDoSTriggerTCPPackets  |  Binnenkomende TCP-pakketten om DDoS-beperking te activeren  |  CountPerSecond  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  DDoSTriggerUDPPackets  |  Binnenkomende UDP-pakketten om DDoS-beperking te activeren  |  CountPerSecond  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  IfUnderDDoSAttack  |  Onder DDoS-aanval of niet  |  Count  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  PacketCount  |  Aantal pakketten  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  PacketsDroppedDDoS  |  DDoS inkomende pakketten verwijderd  |  CountPerSecond  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  PacketsForwardedDDoS  |  DDoS inkomende pakketten doorgestuurd  |  CountPerSecond  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  PacketsInDDoS  |  DDoS inkomende pakketten  |  CountPerSecond  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  SynCount  |  SYN-aantal  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  TCPBytesDroppedDDoS  |  DDoS binnenkomende TCP-bytes  |  BytesPerSecond  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  TCPBytesForwardedDDoS  |  DDoS doorgestuurde binnenkomende TCP-bytes  |  BytesPerSecond  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  TCPBytesInDDoS  |  DDoS binnenkomende TCP-bytes  |  BytesPerSecond  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  TCPPacketsDroppedDDoS  |  DDoS binnenkomende TCP-pakketten  |  CountPerSecond  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  TCPPacketsForwardedDDoS  |  Doorgestuurde binnenkomende TCP-pakketten DDoS  |  CountPerSecond  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  TCPPacketsInDDoS  |  Binnenkomende TCP-pakketten DDoS  |  CountPerSecond  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  UDPBytesDroppedDDoS  |  Binnenkomend UDP-bytes verloren DDoS  |  BytesPerSecond  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  UDPBytesForwardedDDoS  |  Doorgestuurde binnenkomende UDP-bytes DDoS  |  BytesPerSecond  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  UDPBytesInDDoS  |  Binnenkomende UDP-bytes DDoS  |  BytesPerSecond  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  UDPPacketsDroppedDDoS  |  Verwijderde binnenkomende UDP-pakketten DDoS  |  CountPerSecond  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  UDPPacketsForwardedDDoS  |  Door inkomende UDP-pakketten DDoS doorgestuurd  |  CountPerSecond  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  UDPPacketsInDDoS  |  Binnenkomende UDP-pakketten DDoS  |  CountPerSecond  |  Maximum | 
-| **Ja**  | Nee |  Micro soft. Network/publicIPAddresses  |  VipAvailability  |  Beschik baarheid gegevenspad  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  ByteCount  |  Aantal bytes  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  BytesDroppedDDoS  |  Binnenkomende bytes verloren DDoS  |  BytesPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  BytesForwardedDDoS  |  Doorgestuurde binnenkomende bytes DDoS  |  BytesPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  BytesInDDoS  |  Binnenkomende bytes DDoS  |  BytesPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  DDoSTriggerSYNPackets  |  Inkomende SYN-pakketten om DDoS-beperking te activeren  |  CountPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  DDoSTriggerTCPPackets  |  Binnenkomende TCP-pakketten om DDoS-beperking te activeren  |  CountPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  DDoSTriggerUDPPackets  |  Binnenkomende UDP-pakketten om DDoS-beperking te activeren  |  CountPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  IfUnderDDoSAttack  |  Onder DDoS-aanval of niet  |  Count  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  PacketCount  |  Aantal pakketten  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  PacketsDroppedDDoS  |  DDoS inkomende pakketten verwijderd  |  CountPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  PacketsForwardedDDoS  |  DDoS inkomende pakketten doorgestuurd  |  CountPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  PacketsInDDoS  |  DDoS inkomende pakketten  |  CountPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  SynCount  |  SYN-aantal  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  TCPBytesDroppedDDoS  |  DDoS binnenkomende TCP-bytes  |  BytesPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  TCPBytesForwardedDDoS  |  DDoS doorgestuurde binnenkomende TCP-bytes  |  BytesPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  TCPBytesInDDoS  |  DDoS binnenkomende TCP-bytes  |  BytesPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  TCPPacketsDroppedDDoS  |  DDoS binnenkomende TCP-pakketten  |  CountPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  TCPPacketsForwardedDDoS  |  Doorgestuurde binnenkomende TCP-pakketten DDoS  |  CountPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  TCPPacketsInDDoS  |  Binnenkomende TCP-pakketten DDoS  |  CountPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  UDPBytesDroppedDDoS  |  Binnenkomend UDP-bytes verloren DDoS  |  BytesPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  UDPBytesForwardedDDoS  |  Doorgestuurde binnenkomende UDP-bytes DDoS  |  BytesPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  UDPBytesInDDoS  |  Binnenkomende UDP-bytes DDoS  |  BytesPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  UDPPacketsDroppedDDoS  |  Verwijderde binnenkomende UDP-pakketten DDoS  |  CountPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  UDPPacketsForwardedDDoS  |  Door inkomende UDP-pakketten DDoS doorgestuurd  |  CountPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  UDPPacketsInDDoS  |  Binnenkomende UDP-pakketten DDoS  |  CountPerSecond  |  Maximum | 
+| **Ja**  | Nee |  Microsoft.Network/publicIPAddresses  |  VipAvailability  |  Beschik baarheid gegevenspad  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. Network/trafficManagerProfiles  |  ProbeAgentCurrentEndpointStateByProfileResourceId  |  Eindpunt status op eind punt  |  Count  |  Maximum | 
 | **Ja**  | **Ja** |  Micro soft. Network/trafficManagerProfiles  |  QpsByEndpoint  |  Query's op eind punt geretourneerd  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Microsoft.Network/virtualNetworkGateways  |  AverageBandwidth  |  Gateway-S2S-band breedte  |  BytesPerSecond  |  Average | 
 | **Ja**  | Nee |  Microsoft.Network/virtualNetworkGateways  |  P2SBandwidth  |  Gateway P2S-band breedte  |  BytesPerSecond  |  Average | 
 | **Ja**  | Nee |  Microsoft.Network/virtualNetworkGateways  |  P2SConnectionCount  |  Aantal P2S-verbindingen  |  Count  |  Maximum | 
-| **Ja**  | Nee |  Microsoft.Network/virtualNetworkGateways  |  TunnelAverageBandwidth  |  Tunnel bandbreedte  |  BytesPerSecond  |  Average | 
-| **Ja**  | Nee |  Microsoft.Network/virtualNetworkGateways  |  TunnelEgressBytes  |  Bytes voor uitgaand tunnels  |  Bytes  |  Totaal | 
-| **Ja**  | Nee |  Microsoft.Network/virtualNetworkGateways  |  TunnelEgressPacketDropTSMismatch  |  Uitschakeling van niet-overeenkomende TS-pakketten door tunnel  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Microsoft.Network/virtualNetworkGateways  |  TunnelEgressPackets  |  Tunnel-uituitgangs pakketten  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Microsoft.Network/virtualNetworkGateways  |  TunnelIngressBytes  |  Bytes van de tunnel ingang  |  Bytes  |  Totaal | 
-| **Ja**  | Nee |  Microsoft.Network/virtualNetworkGateways  |  TunnelIngressPacketDropTSMismatch  |  Verloren gegane pakketten door de tunnel ingang TS komen niet overeen  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Network/virtualNetworkGateways  |  TunnelAverageBandwidth  |  Tunnelbandbreedte  |  BytesPerSecond  |  Average | 
+| **Ja**  | Nee |  Microsoft.Network/virtualNetworkGateways  |  TunnelEgressBytes  |  Uitgaande bytes in tunnel  |  Bytes  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Network/virtualNetworkGateways  |  TunnelEgressPacketDropTSMismatch  |  Uitgaande niet-overeenkomende TS-pakketten door tunnel  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Network/virtualNetworkGateways  |  TunnelEgressPackets  |  Uitgaande pakketten in tunnel  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Network/virtualNetworkGateways  |  TunnelIngressBytes  |  Totaal aantal inkomende bytes  |  Bytes  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Network/virtualNetworkGateways  |  TunnelIngressPacketDropTSMismatch  |  Inkomende niet-overeenkomende TS-pakketten door tunnel  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Microsoft.Network/virtualNetworkGateways  |  TunnelIngressPackets  |  Tunnel ingangs pakketten  |  Count  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Network/virtualNetworks  |  PingMeshAverageRoundtripMs  |  Retour tijd voor pings naar een virtuele machine  |  Milliseconden  |  Average | 
-| **Ja**  | Nee |  Micro soft. Network/virtualNetworks  |  PingMeshProbesFailedPercent  |  Pingen naar een virtuele machine is mislukt  |  Percentage  |  Average | 
-| **Ja**  | **Ja** |  Micro soft. notification hubs/naam ruimten/notification hubs  |  e-mail  |  Inkomende berichten  |  Count  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Network/virtualNetworks  |  PingMeshAverageRoundtripMs  |  Retour tijd voor pings naar een virtuele machine  |  Milliseconden  |  Average | 
+| **Ja**  | Nee |  Microsoft.Network/virtualNetworks  |  PingMeshProbesFailedPercent  |  Pingen naar een virtuele machine is mislukt  |  Percentage  |  Average | 
+| **Ja**  | **Ja** |  Micro soft. notification hubs/naam ruimten/notification hubs  |  e-mail  |  Binnenkomende berichten  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. notification hubs/naam ruimten/notification hubs  |  inkomend. alle. failedrequests  |  Alle binnenkomende mislukte aanvragen  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. notification hubs/naam ruimten/notification hubs  |  binnenkomende. alle. aanvragen  |  Alle inkomende aanvragen  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. notification hubs/naam ruimten/notification hubs  |  inkomend. gepland  |  Geplande push meldingen verzonden  |  Count  |  Totaal | 
@@ -1307,40 +1306,40 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. PowerBIDedicated/capaciteiten  |  qpu_high_utilization_metric  |  Hoog QPU-gebruik  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. PowerBIDedicated/capaciteiten  |  QueryDuration  |  Query duur (gegevens sets)  |  Milliseconden  |  Average | 
 | **Ja**  | Nee |  Micro soft. PowerBIDedicated/capaciteiten  |  QueryPoolJobQueueLength  |  Wachtrij lengte van de taak pool voor query's (gegevens sets)  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. relay/naam ruimten  |  ActiveConnections  |  ActiveConnections  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. relay/naam ruimten  |  ActiveListeners  |  ActiveListeners  |  Count  |  Totaal | 
+| Nee  | No |  Micro soft. relay/naam ruimten  |  ActiveConnections  |  ActiveConnections  |  Count  |  Totaal | 
+| Nee  | No |  Micro soft. relay/naam ruimten  |  ActiveListeners  |  ActiveListeners  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. relay/naam ruimten  |  BytesTransferred  |  BytesTransferred  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. relay/naam ruimten  |  ListenerConnections-client error  |  ListenerConnections-client error  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. relay/naam ruimten  |  ListenerConnections-server error  |  ListenerConnections-server error  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. relay/naam ruimten  |  ListenerConnections-geslaagd  |  ListenerConnections-geslaagd  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. relay/naam ruimten  |  ListenerConnections-TotalRequests  |  ListenerConnections-TotalRequests  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. relay/naam ruimten  |  ListenerDisconnects  |  ListenerDisconnects  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. relay/naam ruimten  |  SenderConnections-client error  |  SenderConnections-client error  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. relay/naam ruimten  |  SenderConnections-server error  |  SenderConnections-server error  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. relay/naam ruimten  |  SenderConnections-geslaagd  |  SenderConnections-geslaagd  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. relay/naam ruimten  |  SenderConnections-TotalRequests  |  SenderConnections-TotalRequests  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. relay/naam ruimten  |  SenderDisconnects  |  SenderDisconnects  |  Count  |  Totaal | 
+| Nee  | No |  Micro soft. relay/naam ruimten  |  ListenerConnections-client error  |  ListenerConnections-client error  |  Count  |  Totaal | 
+| Nee  | No |  Micro soft. relay/naam ruimten  |  ListenerConnections-server error  |  ListenerConnections-server error  |  Count  |  Totaal | 
+| Nee  | No |  Micro soft. relay/naam ruimten  |  ListenerConnections-geslaagd  |  ListenerConnections-geslaagd  |  Count  |  Totaal | 
+| Nee  | No |  Micro soft. relay/naam ruimten  |  ListenerConnections-TotalRequests  |  ListenerConnections-TotalRequests  |  Count  |  Totaal | 
+| Nee  | No |  Micro soft. relay/naam ruimten  |  ListenerDisconnects  |  ListenerDisconnects  |  Count  |  Totaal | 
+| Nee  | No |  Micro soft. relay/naam ruimten  |  SenderConnections-client error  |  SenderConnections-client error  |  Count  |  Totaal | 
+| Nee  | No |  Micro soft. relay/naam ruimten  |  SenderConnections-server error  |  SenderConnections-server error  |  Count  |  Totaal | 
+| Nee  | No |  Micro soft. relay/naam ruimten  |  SenderConnections-geslaagd  |  SenderConnections-geslaagd  |  Count  |  Totaal | 
+| Nee  | No |  Micro soft. relay/naam ruimten  |  SenderConnections-TotalRequests  |  SenderConnections-TotalRequests  |  Count  |  Totaal | 
+| Nee  | No |  Micro soft. relay/naam ruimten  |  SenderDisconnects  |  SenderDisconnects  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. Search/searchServices  |  SearchLatency  |  Zoek latentie  |  Seconden  |  Average | 
 | **Ja**  | Nee |  Micro soft. Search/searchServices  |  SearchQueriesPerSecond  |  Zoek query's per seconde  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Micro soft. Search/searchServices  |  ThrottledSearchQueriesPercentage  |  Percentage vertraagde Zoek query's  |  Percentage  |  Average | 
-| Nee  | Nee |  Micro soft. ServiceBus/naam ruimten  |  ActiveConnections  |  ActiveConnections  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. ServiceBus/naam ruimten  |  ActiveMessages  |  Aantal actieve berichten in een wachtrij/onderwerp.  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. ServiceBus/naam ruimten  |  ConnectionsClosed  |  Verbindingen gesloten.  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. ServiceBus/naam ruimten  |  ConnectionsOpened  |  Geopende verbindingen.  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. ServiceBus/naam ruimten  |  CPUXNS  |  CPU (afgeschaft)  |  Percentage  |  Maximum | 
-| Nee  | Nee |  Micro soft. ServiceBus/naam ruimten  |  DeadletteredMessages  |  Aantal onbestelbare berichten in een wachtrij/onderwerp.  |  Count  |  Average | 
-| **Ja**  | **Ja** |  Micro soft. ServiceBus/naam ruimten  |  IncomingMessages  |  Inkomende berichten  |  Count  |  Totaal | 
+| Nee  | No |  Micro soft. ServiceBus/naam ruimten  |  ActiveConnections  |  ActiveConnections  |  Count  |  Totaal | 
+| Nee  | No |  Micro soft. ServiceBus/naam ruimten  |  ActiveMessages  |  Aantal actieve berichten in een wachtrij/onderwerp.  |  Count  |  Average | 
+| Nee  | No |  Micro soft. ServiceBus/naam ruimten  |  ConnectionsClosed  |  Gesloten verbindingen.  |  Count  |  Average | 
+| Nee  | No |  Micro soft. ServiceBus/naam ruimten  |  ConnectionsOpened  |  Geopende verbindingen.  |  Count  |  Average | 
+| Nee  | No |  Micro soft. ServiceBus/naam ruimten  |  CPUXNS  |  CPU (afgeschaft)  |  Percentage  |  Maximum | 
+| Nee  | No |  Micro soft. ServiceBus/naam ruimten  |  DeadletteredMessages  |  Aantal onbestelbare berichten in een wachtrij/onderwerp.  |  Count  |  Average | 
+| **Ja**  | **Ja** |  Micro soft. ServiceBus/naam ruimten  |  IncomingMessages  |  Binnenkomende berichten  |  Count  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. ServiceBus/naam ruimten  |  IncomingRequests  |  Binnenkomende aanvragen  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. ServiceBus/naam ruimten  |  Berichten  |  Aantal berichten in een wachtrij/onderwerp.  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. ServiceBus/naam ruimten  |  NamespaceCpuUsage  |  CPU  |  Percentage  |  Maximum | 
-| Nee  | Nee |  Micro soft. ServiceBus/naam ruimten  |  NamespaceMemoryUsage  |  Geheugengebruik  |  Percentage  |  Maximum | 
+| Nee  | No |  Micro soft. ServiceBus/naam ruimten  |  Berichten  |  Aantal berichten in een wachtrij/onderwerp.  |  Count  |  Average | 
+| Nee  | No |  Micro soft. ServiceBus/naam ruimten  |  NamespaceCpuUsage  |  CPU  |  Percentage  |  Maximum | 
+| Nee  | No |  Micro soft. ServiceBus/naam ruimten  |  NamespaceMemoryUsage  |  Geheugengebruik  |  Percentage  |  Maximum | 
 | **Ja**  | **Ja** |  Micro soft. ServiceBus/naam ruimten  |  OutgoingMessages  |  Uitgaande berichten  |  Count  |  Totaal | 
 | Nee  | Nee |  Micro soft. ServiceBus/naam ruimten  |  ScheduledMessages  |  Aantal geplande berichten in een wachtrij/onderwerp.  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. ServiceBus/naam ruimten  |  ServerErrors  |  Server fouten.  |  Count  |  Totaal | 
+| Nee  | Nee |  Micro soft. ServiceBus/naam ruimten  |  ServerErrors  |  Serverfouten.  |  Count  |  Totaal | 
 | Nee  | Nee |  Micro soft. ServiceBus/naam ruimten  |  Grootte  |  Grootte  |  Bytes  |  Average | 
 | Nee  | Nee |  Micro soft. ServiceBus/naam ruimten  |  SuccessfulRequests  |  Geslaagde aanvragen  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. ServiceBus/naam ruimten  |  ThrottledRequests  |  Vertraagde aanvragen.  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. ServiceBus/naam ruimten  |  UserErrors  |  Gebruikers fouten.  |  Count  |  Totaal | 
+| Nee  | Nee |  Micro soft. ServiceBus/naam ruimten  |  ThrottledRequests  |  Beperkte aanvragen.  |  Count  |  Totaal | 
+| Nee  | Nee |  Micro soft. ServiceBus/naam ruimten  |  UserErrors  |  Gebruikersfouten.  |  Count  |  Totaal | 
 | Nee  | Nee |  Micro soft. ServiceBus/naam ruimten  |  WSXNS  |  Geheugen gebruik (afgeschaft)  |  Percentage  |  Maximum | 
 | Nee  | Nee |  Micro soft. ServiceFabricMesh/toepassingen  |  ActualCpu  |  ActualCpu  |  Count  |  Average | 
 | Nee  | Nee |  Micro soft. ServiceFabricMesh/toepassingen  |  ActualMemory  |  ActualMemory  |  Bytes  |  Average | 
@@ -1349,10 +1348,10 @@ De tabel bevat de volgende kolommen.
 | Nee  | Nee |  Micro soft. ServiceFabricMesh/toepassingen  |  ApplicationStatus  |  ApplicationStatus  |  Count  |  Average | 
 | Nee  | Nee |  Micro soft. ServiceFabricMesh/toepassingen  |  Container status  |  Container status  |  Count  |  Average | 
 | Nee  | Nee |  Micro soft. ServiceFabricMesh/toepassingen  |  CpuUtilization  |  CpuUtilization  |  Percentage  |  Average | 
-| Nee  | Nee |  Micro soft. ServiceFabricMesh/toepassingen  |  MemoryUtilization  |  MemoryUtilization  |  Percentage  |  Average | 
-| Nee  | Nee |  Micro soft. ServiceFabricMesh/toepassingen  |  RestartCount  |  RestartCount  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. ServiceFabricMesh/toepassingen  |  ServiceReplicaStatus  |  ServiceReplicaStatus  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. ServiceFabricMesh/toepassingen  |  ServiceStatus  |  ServiceStatus  |  Count  |  Average | 
+| Nee  | No |  Micro soft. ServiceFabricMesh/toepassingen  |  MemoryUtilization  |  MemoryUtilization  |  Percentage  |  Average | 
+| Nee  | No |  Micro soft. ServiceFabricMesh/toepassingen  |  RestartCount  |  RestartCount  |  Count  |  Average | 
+| Nee  | No |  Micro soft. ServiceFabricMesh/toepassingen  |  ServiceReplicaStatus  |  ServiceReplicaStatus  |  Count  |  Average | 
+| Nee  | No |  Micro soft. ServiceFabricMesh/toepassingen  |  ServiceStatus  |  ServiceStatus  |  Count  |  Average | 
 | **Ja**  | **Ja** |  Micro soft. SignalRService/Signa lering  |  ConnectionCount  |  Aantal verbindingen  |  Count  |  Maximum | 
 | **Ja**  | **Ja** |  Micro soft. SignalRService/Signa lering  |  InboundTraffic  |  Binnenkomend verkeer  |  Bytes  |  Totaal | 
 | **Ja**  | **Ja** |  Micro soft. SignalRService/Signa lering  |  MessageCount  |  Aantal berichten  |  Count  |  Totaal | 
@@ -1366,8 +1365,8 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. SQL/managedInstances  |  reserved_storage_mb  |  Gereserveerde opslag ruimte  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. SQL/managedInstances  |  storage_space_used_mb  |  Gebruikte opslag ruimte  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. SQL/managedInstances  |  virtual_core_count  |  Aantal virtuele kernen  |  Count  |  Average | 
-| Nee  | Nee |  Microsoft.Sql/servers  |  database_dtu_consumption_percent  |  DTU-percentage  |  Percentage  |  Average | 
-| Nee  | Nee |  Microsoft.Sql/servers  |  database_storage_used  |  Gebruikte gegevens ruimte  |  Bytes  |  Average | 
+| Nee  | No |  Microsoft.Sql/servers  |  database_dtu_consumption_percent  |  DTU-percentage  |  Percentage  |  Average | 
+| Nee  | No |  Microsoft.Sql/servers  |  database_storage_used  |  Gebruikte gegevens ruimte  |  Bytes  |  Average | 
 | **Ja**  | **Ja** |  Microsoft.Sql/servers  |  dtu_consumption_percent  |  DTU-percentage  |  Percentage  |  Average | 
 | **Ja**  | **Ja** |  Microsoft.Sql/servers  |  dtu_used  |  DTU gebruikt  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.Sql/servers  |  storage_used  |  Gebruikte gegevens ruimte  |  Bytes  |  Average | 
@@ -1395,7 +1394,7 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. SQL/servers/data bases  |  memory_usage_percent  |  Geheugen percentage  |  Percentage  |  Maximum | 
 | **Ja**  | **Ja** |  Micro soft. SQL/servers/data bases  |  physical_data_read_percent  |  Gegevens-I/O-percentage  |  Percentage  |  Average | 
 | **Ja**  | **Ja** |  Micro soft. SQL/servers/data bases  |  sessions_percent  |  Percentage sessies  |  Percentage  |  Average | 
-| **Ja**  | Nee |  Micro soft. SQL/servers/data bases  |  storage  |  Gebruikte gegevens ruimte  |  Bytes  |  Maximum | 
+| **Ja**  | Nee |  Micro soft. SQL/servers/data bases  |  opslag  |  Gebruikte gegevens ruimte  |  Bytes  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. SQL/servers/data bases  |  storage_percent  |  Percentage gebruikte gegevens ruimte  |  Percentage  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. SQL/servers/data bases  |  tempdb_data_size  |  Data File grootte van tempdb  |  Count  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. SQL/servers/data bases  |  tempdb_log_size  |  Grootte van logboek bestanden tempdb  |  Count  |  Maximum | 
@@ -1407,17 +1406,17 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. SQL/servers/elasticPools  |  cpu_limit  |  CPU-limiet  |  Count  |  Average | 
 | **Ja**  | **Ja** |  Micro soft. SQL/servers/elasticPools  |  cpu_percent  |  CPU-percentage  |  Percentage  |  Average | 
 | **Ja**  | Nee |  Micro soft. SQL/servers/elasticPools  |  cpu_used  |  CPU gebruikt  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. SQL/servers/elasticPools  |  database_allocated_data_storage  |  Toegewezen gegevens ruimte  |  Bytes  |  Average | 
-| Nee  | Nee |  Micro soft. SQL/servers/elasticPools  |  database_cpu_limit  |  CPU-limiet  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. SQL/servers/elasticPools  |  database_cpu_percent  |  CPU-percentage  |  Percentage  |  Average | 
-| Nee  | Nee |  Micro soft. SQL/servers/elasticPools  |  database_cpu_used  |  CPU gebruikt  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. SQL/servers/elasticPools  |  database_dtu_consumption_percent  |  DTU-percentage  |  Percentage  |  Average | 
-| Nee  | Nee |  Micro soft. SQL/servers/elasticPools  |  database_eDTU_used  |  eDTU gebruikt  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. SQL/servers/elasticPools  |  database_log_write_percent  |  Logboek-IO-percentage  |  Percentage  |  Average | 
-| Nee  | Nee |  Micro soft. SQL/servers/elasticPools  |  database_physical_data_read_percent  |  Gegevens-I/O-percentage  |  Percentage  |  Average | 
-| Nee  | Nee |  Micro soft. SQL/servers/elasticPools  |  database_sessions_percent  |  Percentage sessies  |  Percentage  |  Average | 
-| Nee  | Nee |  Micro soft. SQL/servers/elasticPools  |  database_storage_used  |  Gebruikte gegevens ruimte  |  Bytes  |  Average | 
-| Nee  | Nee |  Micro soft. SQL/servers/elasticPools  |  database_workers_percent  |  Percentage werk nemers  |  Percentage  |  Average | 
+| Nee  | No |  Micro soft. SQL/servers/elasticPools  |  database_allocated_data_storage  |  Toegewezen gegevens ruimte  |  Bytes  |  Average | 
+| Nee  | No |  Micro soft. SQL/servers/elasticPools  |  database_cpu_limit  |  CPU-limiet  |  Count  |  Average | 
+| Nee  | No |  Micro soft. SQL/servers/elasticPools  |  database_cpu_percent  |  CPU-percentage  |  Percentage  |  Average | 
+| Nee  | No |  Micro soft. SQL/servers/elasticPools  |  database_cpu_used  |  CPU gebruikt  |  Count  |  Average | 
+| Nee  | No |  Micro soft. SQL/servers/elasticPools  |  database_dtu_consumption_percent  |  DTU-percentage  |  Percentage  |  Average | 
+| Nee  | No |  Micro soft. SQL/servers/elasticPools  |  database_eDTU_used  |  eDTU gebruikt  |  Count  |  Average | 
+| Nee  | No |  Micro soft. SQL/servers/elasticPools  |  database_log_write_percent  |  Logboek-IO-percentage  |  Percentage  |  Average | 
+| Nee  | No |  Micro soft. SQL/servers/elasticPools  |  database_physical_data_read_percent  |  Gegevens-I/O-percentage  |  Percentage  |  Average | 
+| Nee  | No |  Micro soft. SQL/servers/elasticPools  |  database_sessions_percent  |  Percentage sessies  |  Percentage  |  Average | 
+| Nee  | No |  Micro soft. SQL/servers/elasticPools  |  database_storage_used  |  Gebruikte gegevens ruimte  |  Bytes  |  Average | 
+| Nee  | No |  Micro soft. SQL/servers/elasticPools  |  database_workers_percent  |  Percentage werk nemers  |  Percentage  |  Average | 
 | **Ja**  | **Ja** |  Micro soft. SQL/servers/elasticPools  |  dtu_consumption_percent  |  DTU-percentage  |  Percentage  |  Average | 
 | **Ja**  | Nee |  Micro soft. SQL/servers/elasticPools  |  eDTU_limit  |  eDTU-limiet  |  Count  |  Average | 
 | **Ja**  | **Ja** |  Micro soft. SQL/servers/elasticPools  |  eDTU_used  |  eDTU gebruikt  |  Count  |  Average | 
@@ -1432,31 +1431,31 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. SQL/servers/elasticPools  |  tempdb_log_used_percent  |  Percentage gebruikt TempDB-logboek  |  Percentage  |  Maximum | 
 | **Ja**  | **Ja** |  Micro soft. SQL/servers/elasticPools  |  workers_percent  |  Percentage werk nemers  |  Percentage  |  Average | 
 | **Ja**  | **Ja** |  Micro soft. SQL/servers/elasticPools  |  xtp_storage_percent  |  Percentage OLTP-opslag in het geheugen  |  Percentage  |  Average | 
-| **Ja**  | Nee |  Micro soft. Storage/Storage accounts  |  Beschikbaarheid  |  Beschikbaarheid  |  Percentage  |  Average | 
-| **Ja**  | Nee |  Micro soft. Storage/Storage accounts  |  Uitgaand verkeer  |  Uitgaand verkeer  |  Bytes  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Storage/Storage accounts  |  Inkomend verkeer  |  Inkomend verkeer  |  Bytes  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. Storage/Storage accounts  |  SuccessE2ELatency  |  Success E2E Latency  |  Milliseconden  |  Average | 
-| **Ja**  | Nee |  Micro soft. Storage/Storage accounts  |  SuccessServerLatency  |  Geslaagde serverlatentie  |  Milliseconden  |  Average | 
-| **Ja**  | Nee |  Micro soft. Storage/Storage accounts  |  Transacties  |  Transacties  |  Count  |  Totaal | 
-| Nee  | Nee |  Micro soft. Storage/Storage accounts  |  UsedCapacity  |  Gebruikte capaciteit  |  Bytes  |  Average | 
+| **Ja**  | Nee |  Microsoft.Storage/storageAccounts  |  Beschikbaarheid  |  Beschikbaarheid  |  Percentage  |  Average | 
+| **Ja**  | Nee |  Microsoft.Storage/storageAccounts  |  Uitgaand verkeer  |  Uitgaand verkeer  |  Bytes  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Storage/storageAccounts  |  Inkomend verkeer  |  Inkomend verkeer  |  Bytes  |  Totaal | 
+| **Ja**  | Nee |  Microsoft.Storage/storageAccounts  |  SuccessE2ELatency  |  Success E2E Latency  |  Milliseconden  |  Average | 
+| **Ja**  | Nee |  Microsoft.Storage/storageAccounts  |  SuccessServerLatency  |  Geslaagde serverlatentie  |  Milliseconden  |  Average | 
+| **Ja**  | Nee |  Microsoft.Storage/storageAccounts  |  Transacties  |  Transacties  |  Count  |  Totaal | 
+| Nee  | No |  Microsoft.Storage/storageAccounts  |  UsedCapacity  |  Gebruikte capaciteit  |  Bytes  |  Average | 
 | **Ja**  | Nee |  Micro soft. Storage/Storage accounts/blobServices  |  Beschikbaarheid  |  Beschikbaarheid  |  Percentage  |  Average | 
-| Nee  | Nee |  Micro soft. Storage/Storage accounts/blobServices  |  BlobCapacity  |  BLOB-capaciteit  |  Bytes  |  Average | 
-| Nee  | Nee |  Micro soft. Storage/Storage accounts/blobServices  |  BlobCount  |  Aantal blobs  |  Count  |  Average | 
+| Nee  | No |  Micro soft. Storage/Storage accounts/blobServices  |  BlobCapacity  |  BLOB-capaciteit  |  Bytes  |  Average | 
+| Nee  | No |  Micro soft. Storage/Storage accounts/blobServices  |  BlobCount  |  Aantal blobs  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. Storage/Storage accounts/blobServices  |  ContainerCount  |  Aantal BLOB-containers  |  Count  |  Average | 
 | **Ja**  | Nee |  Micro soft. Storage/Storage accounts/blobServices  |  Uitgaand verkeer  |  Uitgaand verkeer  |  Bytes  |  Totaal | 
-| Nee  | Nee |  Micro soft. Storage/Storage accounts/blobServices  |  IndexCapacity  |  Index capaciteit  |  Bytes  |  Average | 
+| Nee  | No |  Micro soft. Storage/Storage accounts/blobServices  |  IndexCapacity  |  Index capaciteit  |  Bytes  |  Average | 
 | **Ja**  | Nee |  Micro soft. Storage/Storage accounts/blobServices  |  Inkomend verkeer  |  Inkomend verkeer  |  Bytes  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. Storage/Storage accounts/blobServices  |  SuccessE2ELatency  |  Success E2E Latency  |  Milliseconden  |  Average | 
 | **Ja**  | Nee |  Micro soft. Storage/Storage accounts/blobServices  |  SuccessServerLatency  |  Geslaagde serverlatentie  |  Milliseconden  |  Average | 
 | **Ja**  | Nee |  Micro soft. Storage/Storage accounts/blobServices  |  Transacties  |  Transacties  |  Count  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. Storage/Storage accounts/fileServices  |  Beschikbaarheid  |  Beschikbaarheid  |  Percentage  |  Average | 
 | **Ja**  | Nee |  Micro soft. Storage/Storage accounts/fileServices  |  Uitgaand verkeer  |  Uitgaand verkeer  |  Bytes  |  Totaal | 
-| Nee  | Nee |  Micro soft. Storage/Storage accounts/fileServices  |  FileCapacity  |  Bestands capaciteit  |  Bytes  |  Average | 
-| Nee  | Nee |  Micro soft. Storage/Storage accounts/fileServices  |  FileCount  |  Aantal bestanden  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. Storage/Storage accounts/fileServices  |  FileShareCount  |  Aantal bestands shares  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. Storage/Storage accounts/fileServices  |  FileShareQuota  |  Quota grootte van bestands share  |  Bytes  |  Average | 
-| Nee  | Nee |  Micro soft. Storage/Storage accounts/fileServices  |  FileShareSnapshotCount  |  Aantal moment opnamen van bestands shares  |  Count  |  Average | 
-| Nee  | Nee |  Micro soft. Storage/Storage accounts/fileServices  |  FileShareSnapshotSize  |  Grootte van moment opname van bestands share  |  Bytes  |  Average | 
+| Nee  | No |  Micro soft. Storage/Storage accounts/fileServices  |  FileCapacity  |  Bestands capaciteit  |  Bytes  |  Average | 
+| Nee  | No |  Micro soft. Storage/Storage accounts/fileServices  |  FileCount  |  Aantal bestanden  |  Count  |  Average | 
+| Nee  | No |  Micro soft. Storage/Storage accounts/fileServices  |  FileShareCount  |  Aantal bestands shares  |  Count  |  Average | 
+| Nee  | No |  Micro soft. Storage/Storage accounts/fileServices  |  FileShareQuota  |  Quota grootte van bestands share  |  Bytes  |  Average | 
+| Nee  | No |  Micro soft. Storage/Storage accounts/fileServices  |  FileShareSnapshotCount  |  Aantal moment opnamen van bestands shares  |  Count  |  Average | 
+| Nee  | No |  Micro soft. Storage/Storage accounts/fileServices  |  FileShareSnapshotSize  |  Grootte van moment opname van bestands share  |  Bytes  |  Average | 
 | **Ja**  | Nee |  Micro soft. Storage/Storage accounts/fileServices  |  Inkomend verkeer  |  Inkomend verkeer  |  Bytes  |  Totaal | 
 | **Ja**  | Nee |  Micro soft. Storage/Storage accounts/fileServices  |  SuccessE2ELatency  |  Success E2E Latency  |  Milliseconden  |  Average | 
 | **Ja**  | Nee |  Micro soft. Storage/Storage accounts/fileServices  |  SuccessServerLatency  |  Geslaagde serverlatentie  |  Milliseconden  |  Average | 
@@ -1536,9 +1535,9 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. StreamAnalytics/streamingjobs  |  OutputWatermarkDelaySeconds  |  Watermerk vertraging  |  Seconden  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. StreamAnalytics/streamingjobs  |  ResourceUtilization  |  % Gebruik  |  Percentage  |  Maximum | 
 | **Ja**  | Nee |  Micro soft. VMwareCloudSimple/informatie  |  Gelezen bytes op de schijf  |  Gelezen bytes op de schijf  |  Bytes  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. VMwareCloudSimple/informatie  |  Lees bewerkingen op de schijf per seconde  |  Lees bewerkingen op de schijf per seconde  |  CountPerSecond  |  Average | 
+| **Ja**  | Nee |  Micro soft. VMwareCloudSimple/informatie  |  Leesbewerkingen op de schijf/seconde  |  Leesbewerkingen op de schijf/seconde  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Micro soft. VMwareCloudSimple/informatie  |  Geschreven bytes op de schijf  |  Geschreven bytes op de schijf  |  Bytes  |  Totaal | 
-| **Ja**  | Nee |  Micro soft. VMwareCloudSimple/informatie  |  Schrijf bewerkingen op de schijf per seconde  |  Schrijf bewerkingen op de schijf per seconde  |  CountPerSecond  |  Average | 
+| **Ja**  | Nee |  Micro soft. VMwareCloudSimple/informatie  |  Schrijfbewerkingen op de schijf/seconde  |  Schrijfbewerkingen op de schijf/seconde  |  CountPerSecond  |  Average | 
 | **Ja**  | Nee |  Micro soft. VMwareCloudSimple/informatie  |  DiskReadBytesPerSecond  |  Gelezen bytes per seconde  |  BytesPerSecond  |  Average | 
 | **Ja**  | Nee |  Micro soft. VMwareCloudSimple/informatie  |  DiskReadLatency  |  Lees latentie van schijf  |  Milliseconden  |  Average | 
 | **Ja**  | Nee |  Micro soft. VMwareCloudSimple/informatie  |  DiskReadOperations  |  Lees bewerkingen op de schijf  |  Count  |  Totaal | 

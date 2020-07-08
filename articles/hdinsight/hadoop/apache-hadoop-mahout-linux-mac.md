@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
 ms.openlocfilehash: ab4c2984bbaef84684432c660baadc78f3ef8e16
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83656326"
 ---
 # <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>Aanbevelingen genereren met Apache mahout in azure HDInsight
@@ -89,14 +88,14 @@ De gegevens in `user-ratings.txt` hebben de structuur `userID` , `movieID` , `us
 
     De eerste kolom is de `userID` . De waarden die zijn opgenomen in ' [' en '] ' zijn `movieId` : `recommendationScore` .
 
-2. U kunt de uitvoer, samen met de moviedb. txt, gebruiken om meer informatie te geven over de aanbevelingen. Kopieer eerst de bestanden lokaal met behulp van de volgende opdrachten:
+2. U kunt de uitvoer, samen met de moviedb.txt, gebruiken om meer informatie te geven over de aanbevelingen. Kopieer eerst de bestanden lokaal met behulp van de volgende opdrachten:
 
     ```bash
     hdfs dfs -get /example/data/mahoutout/part-r-00000 recommendations.txt
     hdfs dfs -get /HdiSamples/HdiSamples/MahoutMovieData/* .
     ```
 
-    Met deze opdracht worden de uitvoer gegevens gekopieerd naar een bestand met de naam **aanbevelingen. txt** in de huidige map, samen met de film gegevens bestanden.
+    Met deze opdracht worden de uitvoer gegevens gekopieerd naar een bestand met de naam **recommendations.txt** in de huidige map, samen met de film gegevens bestanden.
 
 3. Gebruik de volgende opdracht om een python-script te maken waarmee film namen worden gezocht voor de gegevens in de uitvoer van de aanbevelingen:
 
@@ -168,11 +167,11 @@ De gegevens in `user-ratings.txt` hebben de structuur `userID` , `movieID` , `us
 
     Met deze opdracht wordt gekeken naar de aanbevelingen die zijn gegenereerd voor gebruikers-ID 4.
 
-   * Het **User-ratings. txt** -bestand wordt gebruikt voor het ophalen van films die zijn geclassificeerd.
+   * Het **user-ratings.txt** bestand wordt gebruikt om films op te halen die zijn geclassificeerd.
 
-   * Het **moviedb. txt** -bestand wordt gebruikt om de namen van de films op te halen.
+   * Het **moviedb.txt** bestand wordt gebruikt om de namen van de films op te halen.
 
-   * De **aanbevelingen. txt** worden gebruikt voor het ophalen van de video aanbevelingen voor deze gebruiker.
+   * De **recommendations.txt** wordt gebruikt om de video aanbevelingen voor deze gebruiker op te halen.
 
      De uitvoer van deze opdracht is vergelijkbaar met de volgende tekst:
 

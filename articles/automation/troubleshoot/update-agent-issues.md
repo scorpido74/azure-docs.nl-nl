@@ -10,13 +10,12 @@ ms.service: automation
 ms.subservice: update-management
 manager: carmonm
 ms.openlocfilehash: ff996227e23836bf85cc3885d9184ae6d7d6c61d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83680838"
 ---
-# <a name="troubleshoot-windows-update-agent-issues"></a>Problemen met Windows Update agent oplossen
+# <a name="troubleshoot-windows-update-agent-issues"></a>Problemen met de Windows Update-agent oplossen
 
 Er kunnen verschillende redenen zijn waarom uw computer niet wordt weer gegeven als gereed (in orde) tijdens een Updatebeheer-implementatie. U kunt de status van een Windows Hybrid Runbook Worker-agent controleren om het onderliggende probleem te bepalen. Hier volgen de drie gereedheids statussen voor een machine:
 
@@ -55,7 +54,7 @@ De resultaten worden weer gegeven op de pagina wanneer ze klaar zijn. In de sect
 
 Met de controle van het besturings systeem wordt gecontroleerd of op de Hybrid Runbook Worker een van de besturings systemen wordt uitgevoerd die in de volgende tabel worden weer gegeven.
 
-|Besturingssysteem  |Opmerkingen  |
+|Besturingssysteem  |Notities  |
 |---------|---------|
 |Windows Server 2012 en hoger |.NET Framework 4,6 of hoger is vereist. ([Down load de .NET Framework](/dotnet/framework/install/guide-for-developers).)<br/> Windows Power shell 5,1 is vereist.  ([Down load Windows Management Framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616).)        |
 

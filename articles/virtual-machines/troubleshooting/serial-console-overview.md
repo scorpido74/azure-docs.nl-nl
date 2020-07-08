@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
 ms.openlocfilehash: 2b901c0d77b5bd550e7e98434cf1cba2a61e6bdb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83656480"
 ---
 # <a name="azure-serial-console"></a>Azure-seriële console
@@ -45,7 +44,7 @@ De seriële console voor Vm's en schaal sets voor virtuele machines is alleen to
 
 ### <a name="serial-console-for-virtual-machines"></a>Seriële console voor Virtual Machines
 Seriële console voor Vm's is net zo eenvoudig als klikken op **seriële console** in de sectie **ondersteuning en probleem oplossing** in de Azure Portal.
-  1. Open [Azure Portal](https://portal.azure.com).
+  1. Open de [Azure Portal](https://portal.azure.com).
 
   1. Ga naar **alle resources** en selecteer een virtuele machine. De overzichts pagina voor de VM wordt geopend.
 
@@ -55,7 +54,7 @@ Seriële console voor Vm's is net zo eenvoudig als klikken op **seriële console
 
 ### <a name="serial-console-for-virtual-machine-scale-sets"></a>Seriële console voor Virtual Machine Scale Sets
 Seriële console is beschikbaar voor schaal sets voor virtuele machines, die toegankelijk zijn voor elk exemplaar in de schaalset. U moet naar de afzonderlijke instantie van een schaalset voor virtuele machines gaan voordat u de knop **seriële console** ziet. Als voor de virtuele-machine schaal sets geen diagnostische gegevens over opstarten zijn ingeschakeld, moet u het model voor de schaalset van de virtuele machine bijwerken om diagnostische gegevens over opstarten in te scha kelen en vervolgens alle exemplaren naar het nieuwe model bijwerken om toegang te krijgen tot de seriële console.
-  1. Open [Azure Portal](https://portal.azure.com).
+  1. Open de [Azure Portal](https://portal.azure.com).
 
   1. Ga naar **alle resources** en selecteer een schaalset voor virtuele machines. De overzichts pagina voor de schaalset voor virtuele machines wordt geopend.
 

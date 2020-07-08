@@ -10,10 +10,9 @@ ms.date: 06/25/2019
 ms.author: wesmc
 ms.custom: mqtt
 ms.openlocfilehash: 63fa7481b96f8a606893b76b66f8c414a54cdb82
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83714811"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 verbinden met Azure IoT Hub
@@ -72,7 +71,7 @@ De Snelstartgids maakt gebruik van vooraf gecompileerde DevKit-firmware om de te
 
 Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan maken. In deze snelstart gebruikt u Azure Cloud Shell om een gesimuleerd apparaat te registreren.
 
-1. Voer de volgende opdracht uit in Azure Cloud Shell om de apparaat-id te maken.
+1. Voer de volgende opdrachten uit in Azure Cloud Shell om de apparaat-id te maken.
 
    **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
@@ -84,7 +83,7 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
 
    > [!NOTE]
    > Als er een fout optreedt `device-identity` , installeert u de [Azure IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md).
-   > Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI toe te voegen aan uw Cloud Shell-exemplaar. De IoT-extensie voegt opdrachten toe die specifiek zijn voor IoT Hub, IoT Edge en IoT Device Provisioning Service (DPS) aan Azure CLI.
+   > Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI aan uw Cloud Shell-instantie toe te voegen. De IoT-extensie voegt opdrachten toe die specifiek zijn voor IoT Hub, IoT Edge en IoT Device Provisioning Service (DPS) aan Azure CLI.
    > 
    > ```azurecli-interactive
    > az extension add --name azure-iot
@@ -174,7 +173,7 @@ Volg deze stappen om de ontwikkelings omgeving voor te bereiden voor de DevKit:
 
 4. Zoek naar [Azure IOT-Hulpprogram ma's](https://aka.ms/azure-iot-tools) op de uitbreidings Marketplace en installeer deze.
 
-    ![Azure IoT-Hulpprogram Ma's installeren](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
+    ![Azure IoT Tools installeren](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
 
     Of kopieer en plak deze URL in een browser venster:`vscode:extension/vsciot-vscode.azure-iot-tools`
 
@@ -185,7 +184,7 @@ Volg deze stappen om de ontwikkelings omgeving voor te bereiden voor de DevKit:
 
     Klik in Visual Studio code op **File > preferences > Settings** (op MacOS, **code > Preferences > Settings**). Klik vervolgens op het pictogram **open instellingen (JSON)** in de rechter bovenhoek van de pagina *instellingen* .
 
-    ![Azure IoT-Hulpprogram Ma's installeren](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/user-settings-arduino.png)
+    ![Azure IoT Tools installeren](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/user-settings-arduino.png)
 
     Voeg de volgende regels toe om Arduino te configureren, afhankelijk van uw platform: 
 

@@ -5,10 +5,9 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.openlocfilehash: 3d27b6d96dfd6c815cedc6194e6bb6e8a101dec2
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83735910"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Problemen met Azure Backup Server oplossen
@@ -62,7 +61,7 @@ U wordt aangeraden de onderstaande validatie uit te voeren voordat u begint met 
 
 | Bewerking | Foutdetails | Tijdelijke oplossing |
 | --- | --- | --- |
-| Agent (s) pushen naar beveiligde servers | De agent bewerking is mislukt vanwege een communicatie fout met de DPM Agent Coordinator-service op \< servername>. | **Als de aanbevolen actie die wordt weer gegeven in het product niet werkt, voert u de volgende stappen uit**: <ul><li> Als u een computer koppelt van een niet-vertrouwd domein, volgt u [deze stappen](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019). <br> OF </li><li> Als u een computer koppelt van een vertrouwd domein, kunt u het probleem oplossen met behulp van de stappen die worden beschreven in [deze blog](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726). <br>OF</li><li> Probeer anti virus uit te scha kelen als een stap voor het oplossen van problemen. Als het probleem is opgelost, wijzigt u de antivirus instellingen, zoals wordt voorgesteld in [dit artikel](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019).</li></ul> |
+| Agent (s) pushen naar beveiligde servers | De agent bewerking is mislukt vanwege een communicatie fout met de DPM Agent Coordinator-service op \<ServerName> . | **Als de aanbevolen actie die wordt weer gegeven in het product niet werkt, voert u de volgende stappen uit**: <ul><li> Als u een computer koppelt van een niet-vertrouwd domein, volgt u [deze stappen](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019). <br> OF </li><li> Als u een computer koppelt van een vertrouwd domein, kunt u het probleem oplossen met behulp van de stappen die worden beschreven in [deze blog](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726). <br>OF</li><li> Probeer anti virus uit te scha kelen als een stap voor het oplossen van problemen. Als het probleem is opgelost, wijzigt u de antivirus instellingen, zoals wordt voorgesteld in [dit artikel](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019).</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>De metagegevens van het register kunnen niet worden bijgewerkt met Setup
 

@@ -4,10 +4,9 @@ description: Hierin wordt beschreven hoe u nieuwe certificaten, rollover certifi
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 43e9c95e0fb8484f7b24c5a0c409d3aa6a68eabc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83658385"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Certificaten voor een Service Fabric-cluster in Azure toevoegen of verwijderen
@@ -46,11 +45,11 @@ Bij deze stappen wordt ervan uitgegaan dat u bekend bent met het gebruik van Res
 
 ### <a name="edit-your-resource-manager-template"></a>Uw Resource Manager-sjabloon bewerken
 
-Voor het gemak van de volgende stap, voor beeld 5-VM-1-NodeTypes-Secure_Step2. JSON bevat alle wijzigingen die we zullen door voeren. het voor beeld is beschikbaar op [Git-opslag plaats](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample).
+Om het volgende te vergemakkelijken, bevat de voorbeeld 5-VM-1-NodeTypes-Secure_Step2.JSop alle bewerkingen die we zullen door voeren. het voor beeld is beschikbaar op [Git-opslag plaats](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample).
 
 **Zorg ervoor dat u alle stappen hebt gevolgd**
 
-1. Open de Resource Manager-sjabloon die u hebt gebruikt voor het implementeren van het cluster. (Als u het voor beeld hebt gedownload van de voor gaande opslag plaats, gebruikt u vervolgens 5-VM-1-NodeTypes-Secure_Step1. JSON om een beveiligd cluster te implementeren en vervolgens de sjabloon te openen).
+1. Open de Resource Manager-sjabloon die u hebt gebruikt voor het implementeren van het cluster. (Als u het voor beeld hebt gedownload van de voor gaande opslag plaats, gebruikt u 5-VM-1-NodeTypes-Secure_Step1.JSin om een beveiligd cluster te implementeren en vervolgens de sjabloon te openen).
 
 2. Voeg **twee nieuwe para meters** ' secCertificateThumbprint ' en ' secCertificateUrlValue ' van het type ' String ' toe aan de para meter-sectie van uw sjabloon. U kunt het volgende code fragment kopiëren en toevoegen aan de sjabloon. Afhankelijk van de bron van uw sjabloon hebt u deze mogelijk al gedefinieerd. als dat het geval is, gaat u verder met de volgende stap. 
  
@@ -165,7 +164,7 @@ Voor het gemak van de volgende stap, voor beeld 5-VM-1-NodeTypes-Secure_Step2. J
 > 
 
 ### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>Bewerk uw sjabloon bestand om de nieuwe para meters weer te geven die u hierboven hebt toegevoegd
-Als u het voor beeld van het [Git-opslag plaats](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) gebruikt om samen te volgen, kunt u beginnen met het maken van wijzigingen in het voor beeld 5-VM-1-NodeTypes-Secure. PARAMETERS_STEP2. json 
+Als u het voor beeld van het [Git-opslag plaats](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) gebruikt om samen te volgen, kunt u beginnen met het maken van wijzigingen in de voorbeeld 5-VM-1-NodeTypes-Secure.parameters_Step2.JSop 
 
 Bewerk het parameter bestand voor de Resource Manager-sjabloon, voeg de twee nieuwe para meters voor secCertificateThumbprint en secCertificateUrlValue toe. 
 

@@ -5,10 +5,9 @@ ms.topic: how-to
 ms.date: 05/20/2020
 ms.custom: seodec18
 ms.openlocfilehash: b1310af2797e43659ac8859e74d1be8bdbab3c98
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83726720"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Container toepassingen uitvoeren op Azure Batch
@@ -28,7 +27,7 @@ Het gebruik van containers biedt een eenvoudige manier om batch taken uit te voe
     * Batch .NET SDK-versie 8.0.0
     * Batch python SDK-versie 4,0
     * Batch Java SDK-versie 3,0
-    * Batch node. js SDK-versie 3,0
+    * Batch Node.js SDK-versie 3,0
 
 * **Accounts**: in uw Azure-abonnement moet u een batch-account en optioneel een Azure Storage-account maken.
 

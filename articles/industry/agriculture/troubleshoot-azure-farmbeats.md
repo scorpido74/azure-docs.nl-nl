@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: b82d415d5e0cf18250123f3483e196aa040285dd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83656814"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
@@ -41,7 +40,7 @@ Zorg ervoor dat de **resource groep** zich op dezelfde locatie bevindt als de **
 Neem contact met ons op met de volgende details:
 
 - Uw abonnements-ID
-- Naam van resource groep
+- Naam resourcegroep
 - Volg de onderstaande stappen om het logboek bestand voor de implementatie fout te koppelen:
 
     1. Ga naar de **resource groep** in het Azure Portal.
@@ -110,7 +109,7 @@ Als u wilt weten hoe u Logboeken kunt downloaden, gaat u naar de sectie [Logboek
 > [!NOTE]
 > De partner-ID van de sensor partner die u wilt.
 
-3. Ga terug naar de partner-API en selecteer **Get/ \< id>**.
+3. Ga terug naar de partner-API en selecteer **ophalen/ \<ID> **.
 4. Geef de partner-ID op uit stap 3 en selecteer vervolgens **uitvoeren**.
 
    De API-reactie moet de Event Hubs connection string hebben.
@@ -205,7 +204,7 @@ Als u al toegang hebt gekregen en deze fout hebt geconstateerd, probeert u het o
 
     1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
     2. Zoek in **het zoekvak naar de resource** groep FarmBeats Datahub.
-    3. Opslag account opslag selecteren * * * * * > **containers**  >  **batch-prep-bestanden**  >  **to_vm**  >  **config. ini**
+    3. Opslag account opslag selecteren * * * * * > **containers**  >  **batch-prep-files**  >  **to_vm**  >  **config.ini**
     4. Selecteer **bewerken**
     5. De gebruikers naam in de sectie sentinel_account bijwerken
 
@@ -250,7 +249,7 @@ Dit probleem kan zich voordoen als er onderhouds activiteiten op de Sentinel-ser
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: maximum aantal verbindingen bereikt
 
-**Taak fout bericht**: het maximum aantal gelijktijdige stromen dat door de gebruiker \< username> is bereikt.
+**Taak fout bericht**: het maximum aantal gelijktijdige stromen dat door de gebruiker wordt bereikt \<username> .
 
 Dat **wil zeggen**: als een taak mislukt omdat het maximum aantal verbindingen is bereikt, wordt hetzelfde verklikker account in meerdere taken gebruikt.
 

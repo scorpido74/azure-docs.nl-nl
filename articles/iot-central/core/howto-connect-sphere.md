@@ -8,15 +8,14 @@ ms.author: sandeepu
 author: sandeeppujar
 ms.date: 04/30/2020
 ms.openlocfilehash: a42b483a5ca4b4948f14c1ccbf0b7af6e49224bb
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83715054"
 ---
 # <a name="connect-an-azure-sphere-device-to-your-azure-iot-central-application"></a>Een Azure Sphere apparaat verbinden met uw Azure IoT Central-toepassing
 
-*Dit artikel is van toepassing op ontwikkel aars van apparaten.*
+*Dit artikel is bedoeld voor ontwikkelaars van apparaten.*
 
 In dit artikel wordt beschreven hoe u een Azure Sphere apparaat (DevKit) verbindt met een Azure IoT Central-toepassing.
 

@@ -14,13 +14,12 @@ ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: v-miegge
 ms.openlocfilehash: d2f97d0b889186324aef9613847e3eddbfe1eb02
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83684841"
 ---
-# <a name="data-to-collect-when-opening-a-case-for-microsoft-azure-automation"></a>Gegevens die moeten worden verzameld bij het openen van een case voor Microsoft Azure Automation
+# <a name="data-to-collect-when-opening-a-case-for-microsoft-azure-automation"></a>Te verzamelen gegevens bij het openen van een case voor Microsoft Azure Automation
 
 In dit artikel wordt een deel van de informatie beschreven die u moet verzamelen voordat u een aanvraag voor Azure Automation opent met Microsoft Azure-ondersteuning. Deze informatie is niet vereist om de aanvraag te openen. Het kan micro soft echter helpen om uw probleem sneller op te lossen. Het is ook mogelijk dat u voor deze gegevens wordt gevraagd door de ondersteunings technicus nadat u de aanvraag hebt geopend.
 

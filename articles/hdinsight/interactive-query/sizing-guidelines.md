@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: a81eff1dcf48996c319933aa4dd46170043b943b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83664933"
 ---
 # <a name="interactive-query-cluster-sizing-guide-in-azure-hdinsight"></a>Aanpassings gids voor interactieve query clusters in azure HDInsight
@@ -39,7 +38,7 @@ De aanbevolen configuratie waarden zijn gebaseerd op het werk knooppunt van het 
 | Hive. server2. TEZ. Sessions. per. default. Queue | number_of_worker_nodes |Het aantal sessies voor elke wachtrij met de naam in de component. server2. TEZ. default. queues. Dit aantal komt overeen met het aantal query-coördinatoren (TEZ AMs). |
 | TEZ. am. resource. Memory. MB | 4096 (MB) | De hoeveelheid geheugen in MB die moet worden gebruikt door de TEZ AppMaster. |
 | component. TEZ. container. size | 4096 (MB) | Opgegeven grootte van de TEZ-container in MB. |
-| Hive. llap. daemon. num. uitvoerendes | 12 | Aantal uitvoerende webuitvoeringen per LLAP-daemon. |
+| hive.llap.daemon.num.executors | 12 | Aantal uitvoerende webuitvoeringen per LLAP-daemon. |
 | Hive. llap. io. thread pool. grootte | 12 | De grootte van de thread groep voor uitvoerender. |
 | Hive. llap. daemon. garens. container. MB | 86016 (MB) | Totaal geheugen in MB dat door afzonderlijke LLAP-daemons (geheugen per daemon) wordt gebruikt.|
 | Hive. llap. io. Memory. size | 409600 (MB) | Cache grootte in MB per LLAP-daemon die SSD-cache aanbiedt, is ingeschakeld. |
@@ -129,7 +128,7 @@ Totale LLAP-daemon-geheugen = [LLAP cache grootte] + [Heap-grootte] + [ruimte].
 
 Het is raadzaam de cache grootte en de Heap-grootte aan te passen die het meest geschikt is voor uw werk belasting.  
 
-### <a name="hivellapdaemonnumexecutors"></a>Hive. llap. daemon. num. uitvoerendes
+### <a name="hivellapdaemonnumexecutors"></a>hive.llap.daemon.num.executors
 
 Deze configuratie bepaalt het aantal uitvoerender dat taken parallel kan uitvoeren per LLAP-daemon. Deze waarde is een saldo van het aantal beschik bare VCORES, de hoeveelheid geheugen die per uitvoerder wordt gegeven en het totale beschik bare geheugen per LLAP-daemon. Normaal gesp roken moeten we deze waarde zo dicht mogelijk bij het aantal kernen bevinden.
 

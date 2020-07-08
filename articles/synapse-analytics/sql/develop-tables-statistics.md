@@ -12,10 +12,9 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: 1bc5f5f5ffe44cbefe5a131aa041e5afc2e8257f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83659231"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistieken in Synapse SQL
@@ -443,7 +442,7 @@ Er zijn verschillende systeem weergaven en-functies die u kunt gebruiken om info
 
 Deze systeem weergaven bieden informatie over statistieken:
 
-| Catalogus weergave | Beschrijving |
+| Catalogus weergave | Description |
 |:--- |:--- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |Eén rij voor elke kolom. |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |Eén rij voor elk object in de data base. |
@@ -457,7 +456,7 @@ Deze systeem weergaven bieden informatie over statistieken:
 
 Deze systeem functies zijn handig voor het werken met statistieken:
 
-| Systeem functie | Beschrijving |
+| Systeem functie | Description |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |Datum waarop het statistieken object voor het laatst is bijgewerkt. |
 | [DBCC-SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |Overzichts niveau en gedetailleerde informatie over de distributie van waarden, zoals begrepen door het statistiek object. |
@@ -652,7 +651,7 @@ Als u statistieken wilt maken voor een kolom, geeft u een query op die de kolom 
 
 Standaard, als u niet anders opgeeft, maakt SQL op aanvraag gebruik van 100% van de gegevens in de gegevensset bij het maken van statistieken.
 
-Als u bijvoorbeeld statistieken met standaard opties (FULLSCAN) wilt maken voor een kolom Year van de gegevensset, gebaseerd op het CSV-bestand van de populatie:
+Als u bijvoorbeeld statistieken met standaard opties (FULLSCAN) wilt maken voor een kolom Year van de gegevensset op basis van het population.csv bestand:
 
 ```sql
 /* make sure you have credentials for storage account access created
@@ -720,7 +719,7 @@ sys.sp_drop_file_statistics [ @stmt = ] N'statement_text'
 
 Argumenten: [ @stmt =] N ' statement_text '-Hiermee geeft u de Transact-SQL-instructie op die wordt gebruikt wanneer de statistieken zijn gemaakt.
 
-Als u de statistieken voor de kolom Year in de gegevensset, die is gebaseerd op het bestand populatie. CSV, wilt bijwerken, moet u statistieken verwijderen en maken:
+Als u de statistieken voor de kolom Year in de gegevensset, die is gebaseerd op het population.csv bestand, wilt bijwerken, moet u statistieken verwijderen en maken:
 
 ```sql
 EXEC sys.sp_drop_file_statistics N'SELECT payment_type

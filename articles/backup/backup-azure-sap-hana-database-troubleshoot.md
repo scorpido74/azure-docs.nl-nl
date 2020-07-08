@@ -4,10 +4,9 @@ description: Hierin wordt beschreven hoe u veelvoorkomende fouten oplost die zic
 ms.topic: troubleshooting
 ms.date: 11/7/2019
 ms.openlocfilehash: 5c1ad55a86e80808b9055fd1b34a2d72209464a2
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83697061"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Problemen met back-ups van SAP HANA-data bases in azure oplossen
@@ -22,7 +21,7 @@ Raadpleeg de [vereisten](tutorial-backup-sap-hana-db.md#prerequisites) en [wat h
 
 ### <a name="usererrorhanainternalrolenotpresent"></a>UserErrorHANAInternalRoleNotPresent
 
-| **Foutbericht**      | <span style="font-weight:normal">Er zijn voor Azure Backup geen vereiste roltoewijzingen voor het uitvoeren van een back-up</span>    |
+| **Fout bericht**      | <span style="font-weight:normal">Er zijn voor Azure Backup geen vereiste roltoewijzingen voor het uitvoeren van een back-up</span>    |
 | ---------------------- | ------------------------------------------------------------ |
 | **Mogelijke oorzaken**    | De rol is mogelijk overschreven.                          |
 | **Aanbevolen actie** | U kunt het probleem oplossen door het script uit te voeren in het deel venster **Discover DB** of [hier](https://aka.ms/scriptforpermsonhana)te downloaden. U kunt ook de rol ' SAP_INTERNAL_HANA_SUPPORT ' toevoegen aan de back-upgebruiker van de werk belasting (AZUREWLBACKUPHANAUSER). |

@@ -4,10 +4,9 @@ description: Meer informatie over de functies en limieten in de Basic-, Standard
 ms.topic: article
 ms.date: 05/18/2020
 ms.openlocfilehash: 35f5d4ebd4a2b427aadc6e82e265a7da9b6409f8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83683426"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Service lagen Azure Container Registry
@@ -17,7 +16,7 @@ Azure Container Registry is beschikbaar in meerdere service lagen (ook wel Sku's
 | Laag | Beschrijving |
 | --- | ----------- |
 | **Standaard** | Een rendabel toegangspunt voor ontwikkelaars die meer willen leren over Azure Container Registry. Basis registers hebben dezelfde programmatische mogelijkheden als standaard en Premium (zoals integratie van Azure Active Directory [verificatie](container-registry-authentication.md#individual-login-with-azure-ad), het [verwijderen van afbeeldingen][container-registry-delete]en [webhooks][container-registry-webhook]). De inbegrepen opslag-en afbeeldings doorvoer zijn echter het meest geschikt voor lagere gebruiks scenario's. |
-| **Standaard** | Standaard-registers bieden dezelfde mogelijkheden als basis, met meer inbegrepen opslag en de door Voer van de installatie kopie. Standard-registers moeten voldoen aan de behoeften van de meeste productiescenario's. |
+| **Standard** | Standaard-registers bieden dezelfde mogelijkheden als basis, met meer inbegrepen opslag en de door Voer van de installatie kopie. Standard-registers moeten voldoen aan de behoeften van de meeste productiescenario's. |
 | **Premium** | Premium-registers bieden de hoogste hoeveelheid inbegrepen opslag en gelijktijdige bewerkingen, waardoor scenario's met hoge volumes mogelijk zijn. Naast de hogere door Voer van een afbeelding voegt Premium functies toe, zoals [geo-replicatie][container-registry-geo-replication] voor het beheren van één REGI ster in meerdere regio's, [inhouds vertrouwen](container-registry-content-trust.md) voor het ondertekenen van installatie kopieën, [persoonlijke koppelingen met persoonlijke eind punten](container-registry-private-link.md) om de toegang tot het REGI ster te beperken. |
 
 De lagen Basic, Standard en Premium bieden allemaal dezelfde programmatische mogelijkheden. Ze profiteren ook van [installatie kopie opslag][container-registry-storage] die volledig wordt beheerd door Azure. Het kiezen van een laag op een hoger niveau biedt meer prestaties en schaal baarheid. Met meerdere service lagen kunt u aan de slag met Basic en vervolgens converteren naar Standard en Premium als uw register gebruik toeneemt.

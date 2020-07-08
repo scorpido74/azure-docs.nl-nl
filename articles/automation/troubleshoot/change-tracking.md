@@ -10,13 +10,12 @@ ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 3fe28ba0871009785b1bb8b263b42f453c2918be
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83684863"
 ---
-# <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Problemen met Wijzigingen bijhouden-en inventaris problemen oplossen
+# <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Problemen met Wijzigingen bijhouden en inventaris oplossen
 
 In dit artikel wordt beschreven hoe u problemen met Azure Automation Wijzigingen bijhouden en voorraad problemen oplost en oplost. Zie [overzicht van wijzigingen bijhouden en inventaris](../change-tracking.md)voor algemene informatie over wijzigingen bijhouden en inventarisatie.
 
@@ -55,7 +54,7 @@ Als u nog steeds hulp nodig hebt, kunt u Diagnostische gegevens verzamelen en co
 
 ##### <a name="log-analytics-agent-for-windows-not-running"></a>Log Analytics-agent voor Windows niet actief
 
-Controleer of de Log Analytics-agent voor Windows (**HealthService. exe**) wordt uitgevoerd op de computer.
+Controleer of de Log Analytics agent voor Windows (**HealthService.exe**) wordt uitgevoerd op de computer.
 
 ##### <a name="communication-to-automation-account-blocked"></a>Communicatie met Automation-account geblokkeerd
 

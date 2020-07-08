@@ -9,10 +9,9 @@ ms.author: jasondel
 keywords: Aro, open Shift, AZ Aro, Red Hat, cli
 ms.custom: mvc
 ms.openlocfilehash: 581587382c3bfd03ed329672e5c6ca065554d1c7
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83727639"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Een persoonlijk Azure Red Hat open Shift 4-cluster maken
@@ -20,23 +19,23 @@ ms.locfileid: "83727639"
 In dit artikel maakt u een voor bereiding van uw omgeving voor het maken van Azure Red Hat open Shift private-clusters waarop open Shift 4 wordt uitgevoerd. U leert het volgende:
 
 > [!div class="checklist"]
-> * Stel de vereisten in en maak het vereiste virtuele netwerk en subnetten
+> * De vereisten instellen en het vereiste virtuele netwerk en subnetten maken
 > * Een cluster met een persoonlijk API-server eindpunt en een persoonlijke ingangs controller implementeren
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelf studie gebruikmaken van de Azure CLI-versie 2.0.75 of hoger. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.75 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 ### <a name="install-the-az-aro-extension"></a>De ' AZ Aro-extensie installeren
-`az aro`Met de extensie kunt u Azure Red Hat open Shift-clusters rechtstreeks maken, openen en verwijderen vanaf de opdracht regel met behulp van de Azure cli.
+Met de `az aro`-extensie kunt u Azure Red Hat OpenShift-clusters rechtstreeks met de opdrachtregel maken, openen en verwijderen met behulp van de Azure CLI.
 
-Voer de volgende opdracht uit om de `az aro` extensie te installeren.
+Voer de volgende opdracht uit om de `az aro`-extensie te installeren.
 
 ```azurecli-interactive
 az extension add -n aro --index https://az.aroapp.io/stable
 ```
 
-Als u de uitbrei ding al hebt geïnstalleerd, kunt u bijwerken door de volgende opdracht uit te voeren.
+Als de extensie al is geïnstalleerd, kunt u deze bijwerken met de volgende opdracht.
 
 ```azurecli-interactive
 az extension update -n aro --index https://az.aroapp.io/stable
@@ -44,7 +43,7 @@ az extension update -n aro --index https://az.aroapp.io/stable
 
 ### <a name="register-the-resource-provider"></a>De resourceprovider registreren
 
-Vervolgens moet u de `Microsoft.RedHatOpenShift` resource provider registreren in uw abonnement.
+Vervolgens moet u de resourceprovider `Microsoft.RedHatOpenShift` registreren in uw abonnement.
 
 ```azurecli-interactive
 az provider register -n Microsoft.RedHatOpenShift --wait
@@ -56,7 +55,7 @@ Controleer of de extensie is geregistreerd.
 az -v
 ```
 
-  U ziet een uitvoer die er ongeveer als volgt uitziet.
+  Als het goed is, wordt ongeveer de volgende uitvoer weergegeven.
 
 ```output
 ...
@@ -67,23 +66,23 @@ aro                                1.0.0
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Een pull-geheim voor Red Hat ophalen (optioneel)
 
-Met een Red Hat pull-geheim kan uw cluster toegang krijgen tot Red Hat-container registers, samen met aanvullende inhoud. Deze stap is optioneel, maar wordt aanbevolen.
+Met een pull-geheim van Red Hat kan uw cluster toegang krijgen tot Red Hat-containerregisters en aanvullende inhoud. Deze stap is optioneel, maar wordt wel aanbevolen.
 
 1. **[Ga naar uw Red Hat open Shift cluster manager-Portal en meld u aan](https://cloud.redhat.com/openshift/install/azure/aro-provisioned) .**
 
-   U moet zich aanmelden bij uw Red Hat-account of een nieuw Red Hat-account maken met uw zakelijke e-mail adres en de voor waarden accepteren.
+   U moet zich aanmelden bij uw Red Hat-account of een nieuw Red Hat-account maken met uw zakelijke e-mailadres en de algemene voorwaarden accepteren.
 
-2. **Klik op pull Secret downloaden.**
+2. **Klik op pull-geheim downloaden.**
 
-Bewaar het opgeslagen `pull-secret.txt` bestand ergens anders. het wordt gebruikt bij het maken van een cluster.
+Bewaar het opgeslagen `pull-secret.txt`-bestand op een veilige plek; het wordt gebruikt bij het maken van elk cluster.
 
-Wanneer u de `az aro create` opdracht uitvoert, kunt u naar uw pull-geheim verwijzen met behulp van de `--pull-secret @pull-secret.txt` para meter. Voer `az aro create` uit in de map waar u het `pull-secret.txt` bestand hebt opgeslagen. Vervang anders door `@pull-secret.txt` `@<path-to-my-pull-secret-file` .
+Wanneer u de opdracht `az aro create` uitvoert, kunt u verwijzen naar uw pull-geheim met behulp van de parameter `--pull-secret @pull-secret.txt`. Voer `az aro create` uit vanuit de map waarin u het `pull-secret.txt`-bestand hebt opgeslagen. Vervang anders `@pull-secret.txt` door `@<path-to-my-pull-secret-file`.
 
-Als u uw pull-geheim kopieert of naar een ander script verwijst, moet uw pull-geheim worden geformatteerd als een geldige JSON-teken reeks.
+Als u uw pull-geheim kopieert of ernaar verwijst in andere scripts, moet uw pull-geheim worden geformatteerd als een geldige JSON-tekenreeks.
 
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>Een virtueel netwerk met twee lege subnetten maken
 
-Vervolgens maakt u een virtueel netwerk met twee lege subnetten.
+Nu gaat u een virtueel netwerk met twee lege subnetten maken.
 
 1. **Stel de volgende variabelen in.**
 
@@ -93,9 +92,9 @@ Vervolgens maakt u een virtueel netwerk met twee lege subnetten.
    CLUSTER=aro-cluster             # the name of your cluster
    ```
 
-1. **Een resource groep maken**
+1. **Een resourcegroep maken**
 
-    Een Azure-resourcegroep is een logische groep waarin Azure-resources worden geïmplementeerd en beheerd. Wanneer u een resourcegroep maakt, wordt u gevraagd een locatie op te geven. Op deze locatie worden de meta gegevens van de resource groep opgeslagen, maar ook de resources die in Azure worden uitgevoerd als u geen andere regio opgeeft tijdens het maken van resources. Maak een resource groep met de opdracht [AZ Group Create] [AZ-Group-Create].
+    Een Azure-resourcegroep is een logische groep waarin Azure-resources worden geïmplementeerd en beheerd. Wanneer u een resourcegroep maakt, wordt u gevraagd een locatie op te geven. Op deze locatie zijn de metagegevens van de resourcegroep opgeslagen. Dit is ook de locatie waar uw resources worden uitgevoerd in Azure als u tijdens het maken van de resource geen andere regio opgeeft. Maak een resourcegroep met de opdracht [az group create][az-group-create].
 
     ```azurecli-interactive
     az group create --name $RESOURCEGROUP --location $LOCATION
@@ -118,9 +117,9 @@ Vervolgens maakt u een virtueel netwerk met twee lege subnetten.
 
 2. **Maak een virtueel netwerk.**
 
-    Azure Red Hat open Shift-clusters met open Shift 4 vereisen een virtueel netwerk met twee lege subnetten voor de hoofd-en worker-knoop punten.
+    Azure Red Hat OpenShift-clusters met OpenShift 4 vereisen een virtueel netwerk met twee lege subnetten voor de hoofd- en werkknooppunten.
 
-    Maak een nieuw virtueel netwerk in dezelfde resource groep die u eerder hebt gemaakt.
+    Maak een nieuw virtueel netwerk in de resourcegroep die u eerder hebt gemaakt.
 
     ```azurecli-interactive
     az network vnet create \
@@ -129,7 +128,7 @@ Vervolgens maakt u een virtueel netwerk met twee lege subnetten.
     --address-prefixes 10.0.0.0/22
     ```
 
-    In de volgende voorbeeld uitvoer ziet u het virtuele netwerk dat is gemaakt:
+    In de volgende voorbeelduitvoer ziet u dat het virtuele netwerk is gemaakt:
 
     ```json
     {
@@ -149,7 +148,7 @@ Vervolgens maakt u een virtueel netwerk met twee lege subnetten.
     }
     ```
 
-3. **Voeg een leeg subnet toe voor de hoofd knooppunten.**
+3. **Voeg een leeg subnet toe voor de hoofdknooppunten.**
 
     ```azurecli-interactive
     az network vnet subnet create \
@@ -160,7 +159,7 @@ Vervolgens maakt u een virtueel netwerk met twee lege subnetten.
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-4. **Voeg een leeg subnet toe voor de worker-knoop punten.**
+4. **Voeg een leeg subnet toe voor de werkknooppunten.**
 
     ```azurecli-interactive
     az network vnet subnet create \
@@ -171,7 +170,7 @@ Vervolgens maakt u een virtueel netwerk met twee lege subnetten.
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-5. **[Beleid voor privé-eind punten van subnet uitschakelen](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy) op het hoofd-subnet.** Dit is vereist om verbinding te kunnen maken met het cluster en deze te beheren.
+5. **[Beleid voor privé-eindpunten van subnet uitschakelen](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy) op het hoofdsubnet.** Dit is vereist om verbinding te kunnen maken met het cluster en het te beheren.
 
     ```azurecli-interactive
     az network vnet subnet update \
@@ -183,10 +182,10 @@ Vervolgens maakt u een virtueel netwerk met twee lege subnetten.
 
 ## <a name="create-the-cluster"></a>Het cluster maken
 
-Voer de volgende opdracht uit om een cluster te maken. U kunt ook [uw Red Hat pull Secret door geven](#get-a-red-hat-pull-secret-optional) , zodat uw cluster toegang kan krijgen tot Red Hat-container registers en aanvullende inhoud.
+Voer de volgende opdracht uit om een cluster te maken. U kunt eventueel [uw pull-geheim van Red Hat doorvoeren](#get-a-red-hat-pull-secret-optional), zodat uw cluster toegang krijgt tot Red Hat-containerregisters en aanvullende inhoud.
 
 >[!NOTE]
-> Als u de opdrachten kopiëren/plakken en een van de optionele para meters gebruikt, moet u ervoor zorgen dat u de oorspronkelijke Hashtags en de achterstallige tekst van de opmerking verwijdert. U kunt ook het argument op de voor gaande regel van de opdracht sluiten met een afsluitende back slash.
+> Als u de opdrachten kopieert en plakt en een van de optionele parameters gebruikt, moet u de oorspronkelijke hashtags en de navolgende opmerkingstekst verwijderen. Sluit ook het argument op de voorgaande regel van de opdracht af met een afsluitende backslash.
 
 ```azurecli-interactive
 az aro create \
@@ -201,10 +200,10 @@ az aro create \
   # --pull-secret @pull-secret.txt # [OPTIONAL]
 ```
 
-Nadat de `az aro create` opdracht is uitgevoerd, duurt het ongeveer 35 minuten om een cluster te maken.
+Nadat de `az aro create`-opdracht is uitgevoerd, duurt het doorgaans ongeveer 35 minuten om een cluster te maken.
 
 >[!IMPORTANT]
-> Als u ervoor kiest om een aangepast domein op te geven, bijvoorbeeld **foo.example.com**, is de open Shift-console beschikbaar op een URL `https://console-openshift-console.apps.foo.example.com` , zoals in plaats van het ingebouwde domein `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
+> Als u ervoor kiest om een aangepast domein op te geven, bijvoorbeeld **foo.example.com**, is de OpenShift-console beschikbaar op een URL, zoals `https://console-openshift-console.apps.foo.example.com`, in plaats van in het ingebouwde domein `https://console-openshift-console.apps.<random>.<location>.aroapp.io`.
 >
 > Open SHIFT maakt standaard gebruik van zelfondertekende certificaten voor alle routes die zijn gemaakt op `*.apps.<random>.<location>.aroapp.io` .  Als u aangepaste DNS kiest nadat u verbinding hebt gemaakt met het cluster, moet u de open Shift-documentatie volgen om [een aangepaste certificerings instantie voor uw ingangs controller](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) en [aangepaste certificerings instantie voor uw API-server](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html)te configureren.
 
@@ -262,7 +261,7 @@ apiServer=$(az aro show -g $RESOURCEGROUP -n $CLUSTER --query apiserverProfile.u
 >[!IMPORTANT]
 > Als u verbinding wilt maken met een persoonlijk Azure Red Hat open Shift-cluster, moet u de volgende stap uitvoeren vanaf een host die zich bevindt in de Virtual Network die u hebt gemaakt of in een Virtual Network dat is gekoppeld aan de Virtual Network het [cluster is geïmplementeerd](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) .
 
-Meld u aan bij de API-server van het open Shift-cluster met de volgende opdracht. Vervang ** \< kubeadmin Password>** door het wacht woord dat u zojuist hebt opgehaald.
+Meld u aan bij de API-server van het open Shift-cluster met de volgende opdracht. Vervang door **\<kubeadmin password>** het wacht woord dat u zojuist hebt opgehaald.
 
 ```azurecli-interactive
 oc login $apiServer -u kubeadmin -p <kubeadmin password>
@@ -273,7 +272,7 @@ oc login $apiServer -u kubeadmin -p <kubeadmin password>
 In dit artikel is een Azure Red Hat open Shift-cluster met open Shift 4 geïmplementeerd. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * Stel de vereisten in en maak het vereiste virtuele netwerk en subnetten
+> * De vereisten instellen en het vereiste virtuele netwerk en subnetten maken
 > * Een cluster implementeren
 > * Verbinding maken met het cluster met behulp van de `kubeadmin` gebruiker
 

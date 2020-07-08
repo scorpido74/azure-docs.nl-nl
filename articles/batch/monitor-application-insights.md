@@ -4,10 +4,9 @@ description: Meer informatie over het instrumenteren van een Azure Batch .NET-to
 ms.topic: how-to
 ms.date: 04/05/2018
 ms.openlocfilehash: b6817ad1303e6039ebfe5fe5ae6101b9bc192eb4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83723609"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Een Azure Batch .NET-toepassing bewaken en fouten opsporen met Application Insights
@@ -48,7 +47,7 @@ Referentie Application Insights van uw .NET-toepassing met behulp van de **micro
 
 ## <a name="instrument-your-code"></a>Uw code instrumenteren
 
-Uw oplossing moet een Application Insights [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient)maken om uw code te instrumenteren. In het voor beeld wordt de configuratie van de TelemetryClient geladen uit het [ApplicationInsights. config](../azure-monitor/app/configuration-with-applicationinsights-config.md) -bestand. Zorg ervoor dat u ApplicationInsights. config in de volgende projecten bijwerkt met uw Application Insights instrumentatie sleutel: micro soft. Azure. batch. samples. TelemetryStartTask en TopNWordsSample.
+Uw oplossing moet een Application Insights [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient)maken om uw code te instrumenteren. In het voor beeld wordt de configuratie van de TelemetryClient geladen uit het [ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md) -bestand. Zorg ervoor dat u ApplicationInsights.config in de volgende projecten bijwerkt met uw Application Insights instrumentatie sleutel: Microsoft.Azure.Batch. Samples. TelemetryStartTask en TopNWordsSample.
 
 ```xml
 <InstrumentationKey>YOUR-IKEY-GOES-HERE</InstrumentationKey>
@@ -166,7 +165,7 @@ namespace Microsoft.Azure.Batch.Samples.TelemetryInitializer
 }
 ```
 
-Het ApplicationInsights. config-bestand in het TopNWordsSample-project bevat de volgende opties om de initialisatie functie voor telemetrie in te scha kelen:
+Het ApplicationInsights.config-bestand in het TopNWordsSample-project bevat de volgende opties om de initialisatie functie voor telemetrie in te scha kelen:
 
 ```xml
 <TelemetryInitializers>

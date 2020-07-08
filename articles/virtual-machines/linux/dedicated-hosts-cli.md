@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 01/09/2020
 ms.author: cynthn
 ms.openlocfilehash: dc772368de1a0f7d8a7d4f44b47ecafda70f0a70
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83714845"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Vm's implementeren op toegewezen hosts met behulp van de Azure CLI
@@ -237,7 +236,7 @@ U kunt een sjabloon exporteren als u nu een extra ontwikkel omgeving met dezelfd
 az group export --name myDHResourceGroup > myDHResourceGroup.json 
 ```
 
-Met deze opdracht maakt `myDHResourceGroup.json` u het bestand in de huidige werkmap. Wanneer u een omgeving maakt op basis van deze sjabloon, wordt u gevraagd om alle resource namen. U kunt deze namen invullen in het sjabloon bestand door de `--include-parameter-default-value` para meter toe te voegen aan de `az group export` opdracht. Bewerk de JSON-sjabloon om de resource namen op te geven of maak een JSON-bestand waarin de resource namen worden opgegeven.
+Met deze opdracht maakt `myDHResourceGroup.json` u het bestand in de huidige werkmap. Wanneer u een omgeving maakt op basis van deze sjabloon, wordt u gevraagd om alle resource namen. U kunt deze namen invullen in het sjabloon bestand door de `--include-parameter-default-value` para meter toe te voegen aan de `az group export` opdracht. Bewerk de JSON-sjabloon om de resource namen op te geven of maak een parameters.jsvoor het bestand waarin de resource namen worden opgegeven.
  
 Gebruik [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create)om een omgeving te maken op basis van uw sjabloon.
 

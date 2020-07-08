@@ -8,10 +8,9 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.openlocfilehash: 52f333a8e39dfd8f68666e6438a7d40414b6f958
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83701413"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Gegevens streamen als invoer in Stream Analytics
@@ -20,7 +19,7 @@ Stream Analytics heeft eersteklas integratie met Azure-gegevens stromen als invo
 
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) 
-- [Azure Blob-opslag](https://azure.microsoft.com/services/storage/blobs/) 
+- [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) 
 
 Deze invoer resources kunnen in hetzelfde Azure-abonnement wonen als uw Stream Analytics-taak of een ander abonnement.
 
@@ -49,16 +48,16 @@ In de volgende tabel wordt elke eigenschap in de **nieuwe invoer** pagina in het
 
 | Eigenschap | Beschrijving |
 | --- | --- |
-| **Invoer alias** |Een beschrijvende naam die u in de query van de taak gebruikt om naar deze invoer te verwijzen. |
+| **Invoeralias** |Een beschrijvende naam die u in de query van de taak gebruikt om naar deze invoer te verwijzen. |
 | **Abonnement** | Kies het abonnement waarin de Event hub-bron zich bevindt. | 
-| **Event hub-naamruimte** | De Event hub-naam ruimte is een container voor een set met bericht entiteiten. Wanneer u een nieuwe Event Hub maakt, maakt u ook de naam ruimte. |
-| **Event hub-naam** | De naam van de Event Hub die moet worden gebruikt als invoer. |
+| **Event hub-naam ruimte** | De Event hub-naam ruimte is een container voor een set met bericht entiteiten. Wanneer u een nieuwe Event Hub maakt, maakt u ook de naam ruimte. |
+| **Event Hub-naam** | De naam van de Event Hub die moet worden gebruikt als invoer. |
 | **Naam van het Event Hub-beleid** | Het beleid voor gedeelde toegang dat toegang biedt tot de Event hub. Elk gedeeld toegangs beleid heeft een naam, machtigingen die u instelt en toegangs sleutels. Deze optie wordt automatisch ingevuld, tenzij u de optie selecteert om de Event hub-instellingen hand matig op te geven.|
 | **Event hub-consumenten groep** (aanbevolen) | Het is raadzaam om voor elke Stream Analytics taak een afzonderlijke consumenten groep te gebruiken. Met deze teken reeks wordt de Consumer groep geïdentificeerd die moet worden gebruikt om gegevens op te nemen van de Event Hub. Als er geen consumenten groep is opgegeven, gebruikt de Stream Analytics-taak de $Default Consumer groep.  |
 | **Partitiesleutel** | Als uw invoer is gepartitioneerd door een eigenschap, kunt u de naam van deze eigenschap toevoegen. Partitie sleutels zijn optioneel en worden gebruikt voor het verbeteren van de prestaties van uw query als deze de component PARTITION BY of GROUP BY bevat voor deze eigenschap. |
 | **Serialisatie-indeling voor gebeurtenissen** | De serialisatie-indeling (JSON, CSV, AVRO of [Other (protobuf, XML, bedrijfs gegevens...)](custom-deserializer.md)) van de binnenkomende gegevens stroom.  Zorg ervoor dat de JSON-indeling wordt uitgelijnd met de specificatie en geen voorloop 0 voor decimale getallen bevat. |
 | **Encoding** | UTF-8 is momenteel de enige coderings indeling die wordt ondersteund. |
-| **Type gebeurtenis compressie** | Het compressie type dat wordt gebruikt voor het lezen van de binnenkomende gegevens stroom, zoals geen (standaard), GZip of Deflate. |
+| **Gebeurteniscompressietype** | Het compressie type dat wordt gebruikt voor het lezen van de binnenkomende gegevens stroom, zoals geen (standaard), GZip of Deflate. |
 
 Als uw gegevens afkomstig zijn van een event hub-stroom invoer, hebt u toegang tot de volgende meta gegevens velden in uw Stream Analytics query:
 
@@ -98,17 +97,17 @@ In de volgende tabel wordt elke eigenschap in de **nieuwe invoer** pagina in het
 
 | Eigenschap | Beschrijving |
 | --- | --- |
-| **Invoer alias** | Een beschrijvende naam die u in de query van de taak gebruikt om naar deze invoer te verwijzen.|
+| **Invoeralias** | Een beschrijvende naam die u in de query van de taak gebruikt om naar deze invoer te verwijzen.|
 | **Abonnement** | Kies het abonnement waarin de IoT Hub resource bestaat. | 
 | **IoT Hub** | De naam van de IoT Hub die moet worden gebruikt als invoer. |
-| **Endpoints** | Het eind punt voor de IoT Hub.|
+| **Eindpunt** | Het eind punt voor de IoT Hub.|
 | **Naam van het gedeelde toegangs beleid** | Het beleid voor gedeelde toegang dat toegang biedt tot de IoT Hub. Elk gedeeld toegangs beleid heeft een naam, machtigingen die u instelt en toegangs sleutels. |
 | **Sleutel voor gedeeld toegangs beleid** | De gedeelde toegangs sleutel die wordt gebruikt om toegang te verlenen tot de IoT Hub.  Deze optie wordt automatisch ingevuld tenzij u de optie selecteert om de IOT hub-instellingen hand matig op te geven. |
 | **Consumenten groep** | Het wordt ten zeerste aangeraden om voor elke Stream Analytics taak een andere consumenten groep te gebruiken. De Consumer groep wordt gebruikt om gegevens op te nemen van de IoT Hub. Stream Analytics gebruikt de $Default-Consumer groep tenzij u anders opgeeft.  |
 | **Partitiesleutel** | Als uw invoer is gepartitioneerd door een eigenschap, kunt u de naam van deze eigenschap toevoegen. Partitie sleutels zijn optioneel en worden gebruikt voor het verbeteren van de prestaties van uw query als deze de component PARTITION BY of GROUP BY bevat voor deze eigenschap. |
 | **Serialisatie-indeling voor gebeurtenissen** | De serialisatie-indeling (JSON, CSV, AVRO of [Other (protobuf, XML, bedrijfs gegevens...)](custom-deserializer.md)) van de binnenkomende gegevens stroom.  Zorg ervoor dat de JSON-indeling wordt uitgelijnd met de specificatie en geen voorloop 0 voor decimale getallen bevat. |
 | **Encoding** | UTF-8 is momenteel de enige coderings indeling die wordt ondersteund. |
-| **Type gebeurtenis compressie** | Het compressie type dat wordt gebruikt voor het lezen van de binnenkomende gegevens stroom, zoals geen (standaard), GZip of Deflate. |
+| **Gebeurteniscompressietype** | Het compressie type dat wordt gebruikt voor het lezen van de binnenkomende gegevens stroom, zoals geen (standaard), GZip of Deflate. |
 
 
 Wanneer u gegevens van streams van een IoT Hub gebruikt, hebt u toegang tot de volgende meta gegevens velden in uw Stream Analytics query:
@@ -134,7 +133,7 @@ De standaardtime Stamp van Blob Storage-gebeurtenissen in Stream Analytics is de
 
 Als een BLOB wordt geüpload naar een container voor opslag accounts op 13:00 en de Azure Stream Analytics-taak is gestart met *aangepaste tijd* op 13:00 of eerder, wordt de BLOB opgehaald als gewijzigd tijd binnen de taak uitvoerings periode valt.
 
-Als een Azure Stream Analytics taak *nu* wordt gestart op 13:00 en er een BLOB wordt geüpload naar de container van het opslag account op 13:01, wordt de blob door Azure stream Analytics opgehaald. De tijds tempel die is toegewezen aan elke blob is alleen gebaseerd op `BlobLastModifiedTime` . De map waartoe de BLOB zich bevindt, heeft geen relatie met de toegewezen tijds tempel. Als er bijvoorbeeld een BLOB *2019/10-01/00/B1. txt* met een `BlobLastModifiedTime` van 2019-11-11 is, is de tijds tempel die is toegewezen aan deze BLOB 2019-11-11.
+Als een Azure Stream Analytics taak *nu* wordt gestart op 13:00 en er een BLOB wordt geüpload naar de container van het opslag account op 13:01, wordt de blob door Azure stream Analytics opgehaald. De tijds tempel die is toegewezen aan elke blob is alleen gebaseerd op `BlobLastModifiedTime` . De map waartoe de BLOB zich bevindt, heeft geen relatie met de toegewezen tijds tempel. Als er bijvoorbeeld een BLOB *2019/10-01/00/b1.txt* is met een `BlobLastModifiedTime` van 2019-11-11, is de tijds tempel die is toegewezen aan deze BLOB 2019-11-11.
 
 Als u de gegevens wilt verwerken als een stroom met behulp van een tijds tempel in de nettolading van de gebeurtenis, moet u het sleutel woord [time stamp by](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) gebruiken. Een Stream Analytics taak haalt gegevens uit Azure Blob Storage-invoer elke seconde op als het blobbestand beschikbaar is. Als het blobbestand niet beschikbaar is, is er een exponentiële uitstel met een maximale tijds vertraging van 90 seconden.
 
@@ -151,11 +150,11 @@ In de volgende tabel wordt elke eigenschap in de **nieuwe invoer** pagina in de 
 
 | Eigenschap | Beschrijving |
 | --- | --- |
-| **Invoer alias** | Een beschrijvende naam die u in de query van de taak gebruikt om naar deze invoer te verwijzen. |
+| **Invoeralias** | Een beschrijvende naam die u in de query van de taak gebruikt om naar deze invoer te verwijzen. |
 | **Abonnement** | Kies het abonnement waarin de IoT Hub resource bestaat. | 
-| **Opslag account** | De naam van het opslag account waarin de BLOB-bestanden zich bevinden. |
+| **Opslagaccount** | De naam van het opslag account waarin de BLOB-bestanden zich bevinden. |
 | **Sleutel van het opslag account** | De geheime sleutel die is gekoppeld aan het opslag account. Deze optie wordt automatisch ingevuld tenzij u de optie selecteert om de Blob Storage-instellingen hand matig op te geven. |
-| **Verpakking** | De container voor de BLOB-invoer. Containers bieden een logische groepering voor blobs die zijn opgeslagen in de Microsoft Azure Blob service. Wanneer u een BLOB uploadt naar de Azure Blob Storage-service, moet u een container voor die BLOB opgeven. U kunt bestaande container **gebruiken** kiezen of **nieuwe maken** om een nieuwe container gemaakt te krijgen.|
+| **Container** | De container voor de BLOB-invoer. Containers bieden een logische groepering voor blobs die zijn opgeslagen in de Microsoft Azure Blob service. Wanneer u een BLOB uploadt naar de Azure Blob Storage-service, moet u een container voor die BLOB opgeven. U kunt bestaande container **gebruiken** kiezen of **nieuwe maken** om een nieuwe container gemaakt te krijgen.|
 | **Patroon van pad** (optioneel) | Het bestandspad dat wordt gebruikt om de blobs in de opgegeven container te vinden. Als u blobs wilt lezen uit de hoofdmap van de container, moet u geen patroon voor paden instellen. Binnen het pad kunt u een of meer exemplaren van de volgende drie variabelen opgeven: `{date}` , `{time}` , of`{partition}`<br/><br/>Voor beeld 1:`cluster1/logs/{date}/{time}/{partition}`<br/><br/>Voor beeld 2:`cluster1/logs/{date}`<br/><br/>Het `*` teken is geen toegestane waarde voor het voor voegsel van het pad. Alleen geldige <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure Blob-tekens</a> zijn toegestaan. Neem geen container namen of bestands namen op. |
 | **Datum notatie** (optioneel) | Als u de datum variabele in het pad gebruikt, de datum notatie waarin de bestanden zijn geordend. Voorbeeld: `YYYY/MM/DD` <br/><br/> Wanneer BLOB-invoer `{date}` een of meer `{time}` paden heeft, worden de mappen in oplopende volg orde bekeken.|
 | **Tijd notatie** (optioneel) |  Als u de time-variabele in het pad gebruikt, de tijd notatie waarin de bestanden zijn ingedeeld. Momenteel is de enige ondersteunde waarde `HH` voor uren. |

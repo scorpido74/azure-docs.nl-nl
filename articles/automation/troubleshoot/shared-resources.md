@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.openlocfilehash: 5b87a98ed38e3af315789adffc11824f2522b802
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83680884"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Problemen met gedeelde bronnen oplossen
@@ -76,15 +75,15 @@ Enkele veelvoorkomende redenen waarom een module mogelijk niet met succes kan wo
 
 Gebruik een van de volgende oplossingen om het probleem op te lossen:
 
-* Zorg ervoor dat de module de indeling: module naam. zip-> module of versie nummer-> (module naam. psm1, module naam. psd1) volgt.
+* Zorg ervoor dat de module de volgende indeling heeft: ModuleName.zip-> module of versie nummer-> (module naam. psm1, ModuleName.psd1).
 * Open het **. psd1** -bestand en controleer of de module afhankelijkheden heeft. Als dit het geval is, uploadt u deze modules naar het Automation-account.
 * Zorg ervoor dat alle **. dll** -bestanden waarnaar wordt verwezen, aanwezig zijn in de module map.
 
-### <a name="scenario-update-azuremoduleps1-suspends-when-updating-modules"></a><a name="all-modules-suspended"></a>Scenario: Update-AzureModule. ps1 wordt onderbroken bij het bijwerken van modules
+### <a name="scenario-update-azuremoduleps1-suspends-when-updating-modules"></a><a name="all-modules-suspended"></a>Scenario: Update-AzureModule.ps1 onderbroken bij het bijwerken van modules
 
 #### <a name="issue"></a>Probleem
 
-Wanneer u het runbook [Update-AzureModule. ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) gebruikt om uw Azure-modules bij te werken, wordt het update proces van de module onderbroken.
+Wanneer u het [Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) runbook gebruikt om uw Azure-modules bij te werken, wordt het update proces van de module onderbroken.
 
 #### <a name="cause"></a>Oorzaak
 
@@ -97,7 +96,7 @@ Het is niet gebruikelijk dat alle AzureRM-of AZ-modules zijn vereist in hetzelfd
 > [!NOTE]
 > Vermijd het importeren van het hele `Az.Automation` of `AzureRM.Automation` -module, waardoor alle opgenomen modules worden geïmporteerd.
 
-Als het update proces wordt onderbroken, voegt `SimultaneousModuleImportJobCount` u de para meter toe aan het script **Update-AzureModules. ps1** en geeft u een lagere waarde dan de standaard instelling van 10. Als u deze logica implementeert, kunt u beginnen met een waarde van 3 of 5. `SimultaneousModuleImportJobCount`is een para meter van het runbook **Update-AutomationAzureModulesForAccount** System dat wordt gebruikt om Azure-modules bij te werken. Als u deze aanpassing aanbrengt, wordt het update proces langer uitgevoerd, maar heeft het een grotere kans om te volt ooien. In het volgende voor beeld ziet u de para meter en waar u deze in het runbook plaatst:
+Als het update proces wordt onderbroken, voegt `SimultaneousModuleImportJobCount` u de para meter toe aan het **Update-AzureModules.ps1** script en geeft u een lagere waarde dan de standaard instelling van 10. Als u deze logica implementeert, kunt u beginnen met een waarde van 3 of 5. `SimultaneousModuleImportJobCount`is een para meter van het runbook **Update-AutomationAzureModulesForAccount** System dat wordt gebruikt om Azure-modules bij te werken. Als u deze aanpassing aanbrengt, wordt het update proces langer uitgevoerd, maar heeft het een grotere kans om te volt ooien. In het volgende voor beeld ziet u de para meter en waar u deze in het runbook plaatst:
 
  ```powershell
          $Body = @"
@@ -138,7 +137,7 @@ Als u een uitvoeren als-account wilt maken of bijwerken, moet u de juiste [macht
 
 Als het probleem wordt veroorzaakt door een vergren deling, controleert u of de vergren deling kan worden verwijderd. Ga vervolgens naar de resource die is vergrendeld in Azure Portal, klik met de rechter muisknop op de vergren deling en selecteer **verwijderen**.
 
-### <a name="scenario-you-receive-the-error-unable-to-find-an-entry-point-named-getperadapterinfo-in-dll-iplpapidll-when-executing-a-runbook"></a><a name="iphelper"></a>Scenario: u ontvangt de fout ' kan geen ingangs punt vinden met de naam ' GetPerAdapterInfo ' in DLL ' iplpapi. dll ' ' tijdens het uitvoeren van een runbook
+### <a name="scenario-you-receive-the-error-unable-to-find-an-entry-point-named-getperadapterinfo-in-dll-iplpapidll-when-executing-a-runbook"></a><a name="iphelper"></a>Scenario: u ontvangt de fout ' kan geen ingangs punt vinden met de naam ' GetPerAdapterInfo ' in DLL-iplpapi.dll ' ' tijdens het uitvoeren van een runbook
 
 #### <a name="issue"></a>Probleem
 
