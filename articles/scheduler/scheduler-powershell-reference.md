@@ -9,10 +9,9 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
 ms.openlocfilehash: 577e2128cf7e4e9f914ec5504917053acb3c19d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78898483"
 ---
 # <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>Naslag informatie over Power shell-cmdlets voor Azure scheduler
@@ -26,7 +25,7 @@ U kunt Power shell-cmdlets gebruiken om scripts te schrijven voor het maken en b
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-| Cmdlet | Beschrijving |
+| Cmdlet | Description |
 |--------|-------------|
 | [Disable-AzSchedulerJobCollection](/powershell/module/azurerm.scheduler/disable-azurermschedulerjobcollection) |Hiermee wordt een taak verzameling uitgeschakeld. |
 | [Enable-AzureRmSchedulerJobCollection](/powershell/module/azurerm.scheduler/enable-azurermschedulerjobcollection) |Hiermee schakelt u een taak verzameling in. |

@@ -8,10 +8,9 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 3596ce4bc702d5e54225d8c90db2f9563feab670
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78303984"
 ---
 # <a name="array_length-azure-cosmos-db"></a>ARRAY_LENGTH (Azure Cosmos DB)
@@ -34,7 +33,7 @@ ARRAY_LENGTH(<arr_expr>)
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voor beeld wordt aangegeven hoe u de lengte van `ARRAY_LENGTH`een matrix kunt ophalen met.  
+  In het volgende voor beeld wordt aangegeven hoe u de lengte van een matrix kunt ophalen met `ARRAY_LENGTH` .  
   
 ```sql
 SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"]) AS len  

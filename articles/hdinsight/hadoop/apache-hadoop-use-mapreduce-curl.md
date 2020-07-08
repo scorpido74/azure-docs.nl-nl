@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
 ms.openlocfilehash: abc3cc8c526e37e18f1e67b109a9a8e15ff8c989
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302709"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>MapReduce-taken uitvoeren met Apache Hadoop op HDInsight met behulp van REST
@@ -57,7 +56,7 @@ Er zijn verschillende opties:
    * **-u**: geeft de gebruikers naam en het wacht woord aan die worden gebruikt om de aanvraag te verifiëren
    * **-G**: geeft aan dat deze bewerking een GET-aanvraag is
 
-   Het begin van de URI, `https://CLUSTERNAME.azurehdinsight.net/templeton/v1`, is hetzelfde voor alle aanvragen.
+   Het begin van de URI, `https://CLUSTERNAME.azurehdinsight.net/templeton/v1` , is hetzelfde voor alle aanvragen.
 
     U ontvangt een antwoord dat vergelijkbaar is met de volgende JSON:
 
@@ -77,7 +76,7 @@ Er zijn verschillende opties:
 
     Het einde van de URI (/MapReduce/jar) vertelt WebHCat dat deze aanvraag een MapReduce-taak start vanuit een klasse in een jar-bestand. In deze opdracht worden de volgende parameters gebruikt:
 
-   * **-d**: `-G` wordt niet gebruikt, dus de aanvraag wordt standaard ingesteld op de methode post. `-d`Hiermee geeft u de gegevens waarden op die met de aanvraag worden verzonden.
+   * **-d**: wordt `-G` niet gebruikt, dus de aanvraag wordt standaard ingesteld op de methode post. `-d`Hiermee geeft u de gegevens waarden op die met de aanvraag worden verzonden.
      * **User.name**: de gebruiker die de opdracht uitvoert
      * **jar**: de locatie van het jar-bestand met de klasse die moet worden uitgevoerd
      * **klasse**: de klasse die de MapReduce Logic bevat
@@ -98,7 +97,7 @@ Er zijn verschillende opties:
 
 ### <a name="powershell"></a>PowerShell
 
-1. Stel de variabelen hieronder in om gebruiks gemak te gebruiken. Vervang `CLUSTERNAME` door de werkelijke cluster naam. Voer de opdracht uit en geef het wacht woord voor de cluster aanmelding op wanneer u hierom wordt gevraagd.
+1. Stel de variabelen hieronder in om gebruiks gemak te gebruiken. Vervang door `CLUSTERNAME` de werkelijke cluster naam. Voer de opdracht uit en geef het wacht woord voor de cluster aanmelding op wanneer u hierom wordt gevraagd.
 
     ```powershell
     $clusterName="CLUSTERNAME"
@@ -167,9 +166,9 @@ Er zijn verschillende opties:
 
 ### <a name="both-methods"></a>Beide methoden
 
-1. Als de taak is voltooid, is `SUCCEEDED`de geretourneerde status.
+1. Als de taak is voltooid, is de geretourneerde status `SUCCEEDED` .
 
-1. Wanneer de status van de taak is gewijzigd in `SUCCEEDED`, kunt u de resultaten van de taak ophalen uit Azure Blob-opslag. De `statusdir` para meter die wordt door gegeven met de query, bevat de locatie van het uitvoer bestand. In dit voor beeld is `/example/curl`de locatie. Dit adres slaat de uitvoer van de taak op in de standaard opslag voor `/example/curl`clusters op.
+1. Wanneer de status van de taak is gewijzigd in `SUCCEEDED` , kunt u de resultaten van de taak ophalen uit Azure Blob-opslag. De `statusdir` para meter die wordt door gegeven met de query, bevat de locatie van het uitvoer bestand. In dit voor beeld is de locatie `/example/curl` . Dit adres slaat de uitvoer van de taak op in de standaard opslag voor clusters op `/example/curl` .
 
 U kunt deze bestanden weer geven en downloaden met behulp van de [Azure cli](/cli/azure/install-azure-cli). Zie [Quick Start: Create, down loads en List blobs with Azure cli](../../storage/blobs/storage-quickstart-blobs-cli.md)(Engelstalig) voor meer informatie over het gebruik van Azure CLI om te werken met Azure Blob-opslag.
 

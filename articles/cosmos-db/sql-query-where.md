@@ -7,15 +7,14 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: tisande
 ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78898787"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>WHERE-component in Azure Cosmos DB
 
-De optionele WHERE-component`WHERE <filter_condition>`() geeft voor waarde (n) aan waaraan de bron-JSON-items moeten voldoen om ze in de resultaten op te vragen. Een JSON-item moet de opgegeven voor waarden `true` evalueren om in aanmerking te komen voor het resultaat. De index laag maakt gebruik van de WHERE-component om de kleinste subset van bron items te bepalen die deel kunnen uitmaken van het resultaat.
+De optionele WHERE-component ( `WHERE <filter_condition>` ) geeft voor waarde (n) aan waaraan de bron-JSON-items moeten voldoen om ze in de resultaten op te vragen. Een JSON-item moet de opgegeven voor waarden evalueren om `true` in aanmerking te komen voor het resultaat. De index laag maakt gebruik van de WHERE-component om de kleinste subset van bron items te bepalen die deel kunnen uitmaken van het resultaat.
   
 ## <a name="syntax"></a>Syntaxis
   
@@ -39,11 +38,11 @@ WHERE <filter_condition>
   
   Om het document als resultaat te retour neren moet een expressie worden geretourneerd die is opgegeven als filter voorwaarde, waarna resulteert in waar. Alleen Booleaanse waarden `true` voldoen aan de voor waarde, een andere waarde: niet gedefinieerd, null, onwaar, getal, matrix of object voldoet niet aan de voor waarde.
 
-  Als u de partitie sleutel in de `WHERE` -component opneemt als onderdeel van een gelijkheids filter, wordt de query automatisch gefilterd op de relevante partities.
+  Als u de partitie sleutel in de-component opneemt `WHERE` als onderdeel van een gelijkheids filter, wordt de query automatisch gefilterd op de relevante partities.
 
 ## <a name="examples"></a>Voorbeelden
 
-Met de volgende query worden items opgevraagd die `id` een eigenschap bevatten waarvan `AndersenFamily`de waarde is. Hiermee wordt een item uitgesloten dat geen `id` eigenschap heeft of waarvan de waarde niet overeenkomt `AndersenFamily`.
+Met de volgende query worden items opgevraagd die een `id` eigenschap bevatten waarvan de waarde is `AndersenFamily` . Hiermee wordt een item uitgesloten dat geen `id` eigenschap heeft of waarvan de waarde niet overeenkomt `AndersenFamily` .
 
 ```sql
     SELECT f.address
@@ -105,7 +104,7 @@ U kunt ook de unaire Opera Tors +,-, ~ en niet in query's gebruiken, zoals wordt
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-U kunt ook eigenschaps verwijzingen gebruiken in query's. `SELECT * FROM Families f WHERE f.isRegistered` Retourneert bijvoorbeeld het JSON-item met de eigenschap `isRegistered` met de waarde gelijk aan `true`. Elke andere waarde, zoals `false`, `null` `Undefined` `<number>` `<string>` `<object>`,,,,, of `<array>`, sluit het item uit van het resultaat.
+U kunt ook eigenschaps verwijzingen gebruiken in query's. `SELECT * FROM Families f WHERE f.isRegistered`Retourneert bijvoorbeeld het JSON-item met de eigenschap `isRegistered` met de waarde gelijk aan `true` . Elke andere waarde, zoals,,,,,, `false` `null` `Undefined` `<number>` `<string>` `<object>` of `<array>` , sluit het item uit van het resultaat.
 
 ## <a name="next-steps"></a>Volgende stappen
 

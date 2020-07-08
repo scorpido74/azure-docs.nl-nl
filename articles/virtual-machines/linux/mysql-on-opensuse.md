@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 07/11/2018
 ms.author: cynthn
 ms.openlocfilehash: 0d3f0a61da3654c31c99cfac43c86b081876f700
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78944580"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>MySQL installeren op een virtuele machine met OpenSUSE Linux in azure
@@ -22,7 +21,7 @@ ms.locfileid: "78944580"
 [MySQL](https://www.mysql.com) is een populaire open-source SQL database. In deze zelf studie wordt uitgelegd hoe u een virtuele machine met OpenSUSE Linux maakt en vervolgens MySQL installeert.
 
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, hebt u Azure CLI versie 2.0 of hoger nodig. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, hebt u Azure CLI versie 2.0 of hoger nodig. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="create-a-virtual-machine-running-opensuse-linux"></a>Een virtuele machine maken waarop OpenSUSE Linux wordt uitgevoerd
 
@@ -89,7 +88,7 @@ systemctl is-enabled mysql
 
 Dit moet als resultaat worden geretourneerd: ingeschakeld.
 
-Start de server opnieuw op.
+Start de server opnieuw.
 
 ```bash
 sudo reboot
@@ -98,7 +97,7 @@ sudo reboot
 
 ## <a name="mysql-password"></a>MySQL-wacht woord
 
-Na de installatie is het MySQL-hoofd wachtwoord standaard leeg. Voer het **script\_voor\_beveiligde installatie van MySQL** uit om MySQL te beveiligen. Het script vraagt u om het MySQL-hoofd wachtwoord te wijzigen, anonieme gebruikers accounts te verwijderen, aanmelden bij externe hoofdmap uit te scha kelen, test databases te verwijderen en de tabel met bevoegdheden opnieuw te laden. 
+Na de installatie is het MySQL-hoofd wachtwoord standaard leeg. Voer het script voor ** \_ beveiligde \_ installatie van MySQL** uit om MySQL te beveiligen. Het script vraagt u om het MySQL-hoofd wachtwoord te wijzigen, anonieme gebruikers accounts te verwijderen, aanmelden bij externe hoofdmap uit te scha kelen, test databases te verwijderen en de tabel met bevoegdheden opnieuw te laden. 
 
 Nadat de server opnieuw is opgestart, moet u opnieuw SSH naar de VM.
 

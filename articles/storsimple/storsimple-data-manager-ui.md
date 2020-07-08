@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78933749"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>De StorSimple Data Manager-service beheren in Azure Portal
@@ -48,7 +47,7 @@ Voer de volgende stappen uit om een StorSimple Data Manager-service te maken.
     
    5. Als u een koppeling naar deze service op uw dash board wilt ontvangen, selecteert **u vastmaken aan dash board**.
     
-   6. Klik op **maken**.
+   6. Klik op **Create**.
 
       ![Een StorSimple Data Manager-service maken 3](./media/storsimple-data-manager-ui/create-service-4.png)
 

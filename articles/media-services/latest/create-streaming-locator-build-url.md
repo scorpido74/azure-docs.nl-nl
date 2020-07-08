@@ -12,10 +12,9 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: 2972c60aa5874c21a6f7bce21020ad58b5f3b556
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78304561"
 ---
 # <a name="create-a-streaming-locator-and-build-urls"></a>Een streaming-locator maken en URL's bouwen
@@ -160,7 +159,7 @@ private static async Task<IList<string>> GetStreamingUrlsAsync(
 
 Bekijk het volledige code voorbeeld: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Filters maken met .NET](filters-dynamic-manifest-dotnet-howto.md)
 * [Filters maken met REST](filters-dynamic-manifest-rest-howto.md)

@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 8254d121c62a20de0a1593920b7793195f8eb50e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78926717"
 ---
 # <a name="import-the-postman-environment"></a>De Postman-omgeving importeren  
@@ -25,7 +24,7 @@ ms.locfileid: "78926717"
 Dit artikel bevat een definitie van de **postman** -omgevings variabelen die worden gebruikt de [postman-verzameling](postman-collection.md) die gegroepeerde HTTP-aanvragen bevat die Media Services rest-api's aanroepen. De omgevings-en verzamelings bestanden worden gebruikt door de zelf studie [postman configureren voor Media Services rest API](media-rest-apis-with-postman.md) .
 
 > [!NOTE]
-> De waarde van `AzureADSTSEndpoint `  =  `https://login.microsoftonline.com/{{TenantId}}/oauth2/token`. Als u uw Tenant-ID wilt ophalen, kunt u de muis aanwijzer over uw gebruikers naam in de portal (in de rechter bovenhoek) bewegen en deze bevindt zich in de map: micro soft ({{TENANTID}}).
+> De waarde van `AzureADSTSEndpoint `  =  `https://login.microsoftonline.com/{{TenantId}}/oauth2/token` . Als u uw Tenant-ID wilt ophalen, kunt u de muis aanwijzer over uw gebruikers naam in de portal (in de rechter bovenhoek) bewegen en deze bevindt zich in de map: micro soft ({{TENANTID}}).
 
 ```
 {

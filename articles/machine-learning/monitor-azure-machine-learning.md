@@ -10,10 +10,9 @@ ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
 ms.openlocfilehash: eb4f46322bec57fb4412d3ddebb345640556ca5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78399112"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Bewakings Azure Machine Learning
@@ -50,7 +49,7 @@ Alle metrische gegevens voor Azure Machine Learning bevinden zich in de naam rui
 
 ### <a name="filtering-and-splitting"></a>Filteren en splitsen
 
-Voor metrische gegevens die dimensies ondersteunen, kunt u filters toep assen met behulp van een dimensie waarde. U kunt bijvoorbeeld **actieve kernen** filteren op een **cluster naam** van `cpu-cluster`. 
+Voor metrische gegevens die dimensies ondersteunen, kunt u filters toep assen met behulp van een dimensie waarde. U kunt bijvoorbeeld **actieve kernen** filteren op een **cluster naam** van `cpu-cluster` . 
 
 U kunt ook een metriek op dimensie splitsen om te visualiseren hoe verschillende segmenten van de metrische gegevens met elkaar worden vergeleken. U kunt bijvoorbeeld het **stap type voor de pijp lijn** opsplitsen om een telling te zien van de typen stappen die worden gebruikt in de pijp lijn.
 
@@ -62,7 +61,7 @@ U krijgt toegang tot waarschuwingen voor Azure Machine Learning door **waarschuw
 
 De volgende tabel bevat algemene en aanbevolen waarschuwings regels voor metrische gegevens voor Azure Machine Learning:
 
-| Waarschuwingstype | Voorwaarde | Beschrijving |
+| Waarschuwingstype | Voorwaarde | Description |
 |:---|:---|:---|
 | Modelimplementatie is mislukt | Aggregatie type: Total, operator: groter dan, drempel waarde: 0 | Wanneer een of meer model implementaties zijn mislukt |
 | Percentage quotum gebruik | Aggregatie type: Average, operator: groter dan, drempel waarde: 90| Wanneer het percentage van het quota gebruik groter is dan 90% |
@@ -100,7 +99,7 @@ Als u Azure Monitor Log Analytics wilt gebruiken, moet u een diagnostische confi
 
 Gegevens in Azure Monitor logboeken worden opgeslagen in tabellen, waarbij elke tabel een eigen set unieke eigenschappen heeft. Azure Machine Learning slaat gegevens op in de volgende tabellen:
 
-| Tabel | Beschrijving |
+| Tabel | Description |
 |:---|:---|
 | AmlComputeClusterEvent | Gebeurtenissen van Azure Machine Learning Reken clusters. |
 | AmlComputeClusterNodeEvent | Gebeurtenissen van knoop punten binnen een Azure Machine Learning Compute-Cluster. |

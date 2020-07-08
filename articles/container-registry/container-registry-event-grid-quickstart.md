@@ -5,15 +5,14 @@ ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18
 ms.openlocfilehash: dbeba56820a520e3435eeb0c5c8dbc5aae981241
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78403238"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Quick Start: gebeurtenissen verzenden vanuit een persoonlijk container register naar Event Grid
 
-Azure Event Grid is een volledig beheerde service voor gebeurtenis routering die uniform gebeurtenis verbruik biedt met behulp van een model voor publiceren en abonneren. In deze Quick Start gebruikt u de Azure CLI om een container register te maken, u te abonneren op register gebeurtenissen en vervolgens een voor beeld-webtoepassing te implementeren om de gebeurtenissen te ontvangen. Ten slotte kunt u container installatie `push` kopie `delete` en gebeurtenissen activeren en de nettolading van de gebeurtenis in de voorbeeld toepassing bekijken.
+Azure Event Grid is een volledig beheerde service voor gebeurtenis routering die uniform gebeurtenis verbruik biedt met behulp van een model voor publiceren en abonneren. In deze Quick Start gebruikt u de Azure CLI om een container register te maken, u te abonneren op register gebeurtenissen en vervolgens een voor beeld-webtoepassing te implementeren om de gebeurtenissen te ontvangen. Ten slotte kunt u container installatie kopie `push` en `delete` gebeurtenissen activeren en de nettolading van de gebeurtenis in de voorbeeld toepassing bekijken.
 
 Nadat u de stappen in dit artikel hebt voltooid, worden gebeurtenissen die vanuit het container register naar Event Grid worden verzonden, weer gegeven in de voor beeld-web-app:
 
@@ -27,7 +26,7 @@ De Azure CLI-opdrachten in dit artikel zijn ingedeeld voor de **bash** -shell. A
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een Azure-resource groep is een logische container waarin u Azure-resources implementeert en beheert. Met de volgende opdracht [AZ Group Create][az-group-create] wordt een resource groep met de naam *myResourceGroup* gemaakt in de regio *eastus* . Als u een andere naam voor de resource groep wilt gebruiken, stelt `RESOURCE_GROUP_NAME` u deze in op een andere waarde.
+Een Azure-resource groep is een logische container waarin u Azure-resources implementeert en beheert. Met de volgende opdracht [AZ Group Create][az-group-create] wordt een resource groep met de naam *myResourceGroup* gemaakt in de regio *eastus* . Als u een andere naam voor de resource groep wilt gebruiken, stelt u deze `RESOURCE_GROUP_NAME` in op een andere waarde.
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup
@@ -73,7 +72,7 @@ Zodra het REGI ster is gemaakt, retourneert de Azure CLI uitvoer die er ongeveer
 
 In deze sectie gebruikt u een resource manager-sjabloon die zich in een GitHub-opslag plaats bevindt om een vooraf gemaakte voorbeeld webtoepassing te implementeren op Azure App Service. Later abonneert u zich op de Event Grid gebeurtenissen van uw REGI ster en geeft u deze app op als het eind punt waarnaar de gebeurtenissen worden verzonden.
 
-Als u de voor beeld-app `SITE_NAME` wilt implementeren, stelt u een unieke naam in voor de web-app en voert u de volgende opdrachten uit. De site naam moet uniek zijn binnen Azure omdat deze deel uitmaakt van de Fully Qualified Domain Name (FQDN) van de web-app. In een latere sectie gaat u naar de FQDN van de app in een webbrowser om de gebeurtenissen van het REGI ster weer te geven.
+Als u de voor beeld-app wilt implementeren, stelt `SITE_NAME` u een unieke naam in voor de web-app en voert u de volgende opdrachten uit. De site naam moet uniek zijn binnen Azure omdat deze deel uitmaakt van de Fully Qualified Domain Name (FQDN) van de web-app. In een latere sectie gaat u naar de FQDN van de app in een webbrowser om de gebeurtenissen van het REGI ster weer te geven.
 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
@@ -141,7 +140,7 @@ Nu de voor beeld-app actief is en u bent geabonneerd op uw REGI ster met Event G
 
 ### <a name="build-and-push-image"></a>Installatie kopie maken en pushen
 
-Voer de volgende Azure CLI-opdracht uit om een container installatie kopie te bouwen op basis van de inhoud van een GitHub-opslag plaats. Standaard worden met ACR-taken automatisch een installatie kopie naar het REGI ster geconstrueerd, waardoor `ImagePushed` de gebeurtenis wordt gegenereerd.
+Voer de volgende Azure CLI-opdracht uit om een container installatie kopie te bouwen op basis van de inhoud van een GitHub-opslag plaats. Standaard worden met ACR-taken automatisch een installatie kopie naar het REGI ster geconstrueerd, waardoor de gebeurtenis wordt gegenereerd `ImagePushed` .
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
@@ -196,11 +195,11 @@ Are you sure you want to continue? (y/n):
 
 U hebt nu een installatie kopie naar het REGI ster gepusht en vervolgens verwijderd. Navigeer naar uw Event Grid Viewer-web-app en u moet beide `ImageDeleted` en `ImagePushed` gebeurtenissen zien. U ziet mogelijk ook een validatie gebeurtenis voor een abonnement die wordt gegenereerd door de opdracht uit te voeren in het gedeelte [Abonneren op register gebeurtenissen](#subscribe-to-registry-events) .
 
-De volgende scherm afbeelding toont de voor beeld-app met de drie gebeurtenissen `ImageDeleted` en de gebeurtenis wordt uitgevouwen om de details ervan weer te geven.
+De volgende scherm afbeelding toont de voor beeld-app met de drie gebeurtenissen en de `ImageDeleted` gebeurtenis wordt uitgevouwen om de details ervan weer te geven.
 
 ![Webbrowser met de voor beeld-app met ImagePushed-en ImageDeleted-gebeurtenissen][sample-app-03]
 
-Gefeliciteerd! Als u de `ImagePushed` -en `ImageDeleted` -gebeurtenissen ziet, verzendt uw regi ster gebeurtenissen naar Event grid en stuurt Event grid deze gebeurtenissen door naar het eind punt van uw web-app.
+Gefeliciteerd Als u de `ImagePushed` -en `ImageDeleted` -gebeurtenissen ziet, verzendt uw REGI ster gebeurtenissen naar Event grid en stuurt Event grid deze gebeurtenissen door naar het eind punt van uw web-app.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

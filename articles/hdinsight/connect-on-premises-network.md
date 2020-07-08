@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
 ms.openlocfilehash: 2ed7a5b9c81d1b50f80f379a88688b69c49ed382
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78897927"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>HDInsight verbinden met uw on-premises netwerk
@@ -63,13 +62,13 @@ Gebruik de volgende documenten voor meer informatie over het maken van een Azure
 
 In deze stappen wordt gebruikgemaakt van de [Azure Portal](https://portal.azure.com) om een virtuele Azure-machine te maken. Zie [VM maken-Azure cli](../virtual-machines/linux/quick-create-cli.md) en [VM-Azure PowerShell maken](../virtual-machines/linux/quick-create-powershell.md)voor andere manieren om een virtuele machine te maken.  Als u een virtuele Linux-machine wilt maken die gebruikmaakt van de [BIND](https://www.isc.org/downloads/bind/) -DNS-software, gebruikt u de volgende stappen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
   
 1. Selecteer in het bovenste menu de optie **+ een resource maken**.
 
     ![Een virtuele Ubuntu-machine maken](./media/connect-on-premises-network/azure-portal-create-resource.png)
 
-1. Selecteer **Compute** > **virtuele machine** berekenen om naar de pagina **een virtuele machine maken** te gaan.
+1. Selecteer **Compute**  >  **virtuele machine** berekenen om naar de pagina **een virtuele machine maken** te gaan.
 
 1. Voer op het tabblad __basis beginselen__ de volgende gegevens in:  
   
@@ -116,7 +115,7 @@ Als de virtuele machine eenmaal is gemaakt, ontvangt u een melding over de **imp
 
 ### <a name="install-and-configure-bind-dns-software"></a>Binding installeren en configureren (DNS-software)
 
-1. Gebruik SSH om verbinding te maken met het __open bare IP-adres__ van de virtuele machine. Vervang `sshuser` door het SSH-gebruikers account dat u hebt opgegeven bij het maken van de virtuele machine. In het volgende voor beeld wordt verbinding gemaakt met een virtuele machine op 40.68.254.142:
+1. Gebruik SSH om verbinding te maken met het __open bare IP-adres__ van de virtuele machine. Vervang door `sshuser` het SSH-gebruikers account dat u hebt opgegeven bij het maken van de virtuele machine. In het volgende voor beeld wordt verbinding gemaakt met een virtuele machine op 40.68.254.142:
 
     ```bash
     ssh sshuser@40.68.254.142
@@ -129,7 +128,7 @@ Als de virtuele machine eenmaal is gemaakt, ontvangt u een melding over de **imp
     sudo apt-get install bind9 -y
     ```
 
-3. Als u BIND wilt configureren om aanvragen voor naam omzetting door te sturen naar uw on-premises DNS-server, gebruikt `/etc/bind/named.conf.options` u de volgende tekst als de inhoud van het bestand:
+3. Als u BIND wilt configureren om aanvragen voor naam omzetting door te sturen naar uw on-premises DNS-server, gebruikt u de volgende tekst als de inhoud van het `/etc/bind/named.conf.options` bestand:
 
         acl goodclients {
             10.0.0.0/16; # Replace with the IP address range of the virtual network
@@ -158,7 +157,7 @@ Als de virtuele machine eenmaal is gemaakt, ontvangt u een melding over de **imp
     > [!IMPORTANT]  
     > Vervang de waarden in de `goodclients` sectie door het IP-adres bereik van het virtuele netwerk en het on-premises netwerk. In deze sectie worden de adressen gedefinieerd waarvan deze DNS-server aanvragen accepteert.
     >
-    > Vervang de `192.168.0.1` vermelding in de `forwarders` sectie door het IP-adres van uw on-premises DNS-server. Met deze vermelding worden DNS-aanvragen naar uw on-premises DNS-server gerouteerd voor oplossing.
+    > Vervang de `192.168.0.1` vermelding in de `forwarders` sectie door het IP-adres van uw on-PREMISES DNS-server. Met deze vermelding worden DNS-aanvragen naar uw on-premises DNS-server gerouteerd voor oplossing.
 
     Als u dit bestand wilt bewerken, gebruikt u de volgende opdracht:
 
@@ -182,7 +181,7 @@ Als de virtuele machine eenmaal is gemaakt, ontvangt u een melding over de **imp
 
     De `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` tekst is het __DNS-achtervoegsel__ voor dit virtuele netwerk. Sla deze waarde op, zoals deze later wordt gebruikt.
 
-5. Als u BIND wilt configureren om DNS-namen voor resources binnen het virtuele netwerk op te lossen, gebruikt u de `/etc/bind/named.conf.local` volgende tekst als de inhoud van het bestand:
+5. Als u BIND wilt configureren om DNS-namen voor resources binnen het virtuele netwerk op te lossen, gebruikt u de volgende tekst als de inhoud van het `/etc/bind/named.conf.local` bestand:
 
         // Replace the following with the DNS suffix for your virtual network
         zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
@@ -191,7 +190,7 @@ Als de virtuele machine eenmaal is gemaakt, ontvangt u een melding over de **imp
         };
 
     > [!IMPORTANT]  
-    > U moet de `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` vervangen door het DNS-achtervoegsel dat u eerder hebt opgehaald.
+    > U moet de vervangen `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` door het DNS-achtervoegsel dat u eerder hebt opgehaald.
 
     Als u dit bestand wilt bewerken, gebruikt u de volgende opdracht:
 
@@ -215,9 +214,9 @@ Als de virtuele machine eenmaal is gemaakt, ontvangt u een melding over de **imp
     ```
 
     > [!IMPORTANT]  
-    > Vervang `dns.mynetwork.net` door de Fully QUALIFIED domain name (FQDN) van een bron in uw on-premises netwerk.
+    > Vervang door `dns.mynetwork.net` de Fully Qualified Domain Name (FQDN) van een bron in uw on-premises netwerk.
     >
-    > Vervang `10.0.0.4` door het __interne IP-adres__ van uw aangepaste DNS-server in het virtuele netwerk.
+    > Vervang door `10.0.0.4` het __interne IP-adres__ van uw aangepaste DNS-server in het virtuele netwerk.
 
     Het antwoord wordt weer gegeven zoals in de volgende tekst:
 
@@ -234,7 +233,7 @@ Als de virtuele machine eenmaal is gemaakt, ontvangt u een melding over de **imp
 
 Als u het virtuele netwerk wilt configureren voor het gebruik van de aangepaste DNS-server in plaats van de recursieve resolver van Azure, gebruikt u de volgende stappen uit de [Azure Portal](https://portal.azure.com):
 
-1. Ga in het menu links naar **alle services** > **netwerken** > **virtuele netwerken**.
+1. Ga in het menu links naar **alle services**  >  **netwerken**  >  **virtuele netwerken**.
 
 2. Selecteer het virtuele netwerk in de lijst, waarmee de standaard weergave voor uw virtuele netwerk wordt geopend.  
 
@@ -263,7 +262,7 @@ De volgende tekst is een voor beeld van een configuratie voor voorwaardelijke do
 
 Zie de documentatie van [add-DnsServerConditionalForwarderZone](https://technet.microsoft.com/itpro/powershell/windows/dnsserver/add-dnsserverconditionalforwarderzone) voor meer informatie over het gebruik van DNS op **Windows Server 2016**...
 
-Zodra u de on-premises DNS-server hebt geconfigureerd, kunt `nslookup` u gebruiken vanuit het on-premises netwerk om te controleren of u namen in het virtuele netwerk kunt omzetten. Het volgende voor beeld 
+Zodra u de on-premises DNS-server hebt geconfigureerd, kunt u gebruiken `nslookup` vanuit het on-premises netwerk om te controleren of u namen in het virtuele netwerk kunt omzetten. Het volgende voor beeld 
 
 ```bash
 nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.4
@@ -302,7 +301,7 @@ Volg de stappen in het [een hdinsight-cluster maken met behulp van het Azure Por
 
 De meeste documentatie op HDInsight veronderstelt dat u via internet toegang hebt tot het cluster. Bijvoorbeeld, dat u verbinding met het cluster kunt maken op `https://CLUSTERNAME.azurehdinsight.net`. Dit adres maakt gebruik van de open bare gateway, die niet beschikbaar is als u Nsg's of Udr's hebt gebruikt om de toegang vanaf internet te beperken.
 
-Sommige documentatie bevat ook `headnodehost` informatie over het maken van verbinding met het cluster vanuit een SSH-sessie. Dit adres is alleen beschikbaar voor knoop punten in een cluster en kan niet worden gebruikt op clients die zijn verbonden via het virtuele netwerk.
+Sommige documentatie bevat ook informatie over `headnodehost` het maken van verbinding met het cluster vanuit een SSH-sessie. Dit adres is alleen beschikbaar voor knoop punten in een cluster en kan niet worden gebruikt op clients die zijn verbonden via het virtuele netwerk.
 
 Als u rechtstreeks verbinding wilt maken met HDInsight via het virtuele netwerk, gebruikt u de volgende stappen:
 

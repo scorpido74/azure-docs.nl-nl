@@ -8,10 +8,9 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 18acbd94fa3d717fc20b9e1020b9bf7c6db7744d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302913"
 ---
 # <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (Azure Cosmos DB)
@@ -37,7 +36,7 @@ StringToArray(<str_expr>)
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voor beeld `StringToArray` ziet u hoe de verschillende typen zich gedraagt. 
+  In het volgende voor beeld ziet u hoe de `StringToArray` verschillende typen zich gedraagt. 
   
  Hier volgen enkele voor beelden met geldige invoer.
 
@@ -59,7 +58,7 @@ Dit is de resultatenset.
 Hier volgt een voor beeld van ongeldige invoer. 
    
  Enkele aanhalings tekens in de matrix zijn geen geldige JSON.
-Hoewel ze wel geldig zijn binnen een query, worden ze niet geparseerd naar geldige matrices. Teken reeksen binnen de matrix teken reeks moeten worden voorafgegaan door '\\[\\'] ' of de omliggende aanhaling moet één ' ['] ' bevatten.
+Hoewel ze wel geldig zijn binnen een query, worden ze niet geparseerd naar geldige matrices. Teken reeksen binnen de matrix teken reeks moeten worden voorafgegaan door ' [ \\ ' \\ ] ' of de omliggende aanhaling moet één ' ['] ' bevatten.
 
 ```sql
 SELECT

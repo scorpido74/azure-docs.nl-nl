@@ -4,10 +4,9 @@ description: Meer informatie over het upgraden van de Microsoft Azure Recovery S
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: 49daf438b855d19961519d93b6c3ec535de4756f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78672922"
 ---
 # <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a>De Microsoft Azure Recovery Services-agent (MARS) upgraden
@@ -60,7 +59,7 @@ Zodra u hebt vastgesteld welke servers een Azure Backup Agent update nodig hebbe
     -- | ---
     Azure-Cloud (openbaar) |   `https://login.windows.net`
     Azure China 21Vianet-Cloud   | `https://login.chinacloudapi.cn`
-    Azure-Cloud voor de Amerikaanse overheid |   `https://login.microsoftonline.us`
+    Azure-cloud van de Amerikaanse overheid |   `https://login.microsoftonline.us`
     Azure Duitse Cloud  |  `https://login.microsoftonline.de`
 
 1. Kopieer het installatie programma van de Azure backup agent-update naar de server.

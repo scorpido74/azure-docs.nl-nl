@@ -4,10 +4,9 @@ description: Inleiding tot taken met meerdere stappen, een functie van ACR-taken
 ms.topic: article
 ms.date: 03/28/2019
 ms.openlocfilehash: 0dcd38559d3f50715f982de4c9c80bfe9c6c8433
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78399693"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Meerdere stappen uitvoeren voor het bouwen, testen en patchen van taken in ACR-taken
@@ -43,9 +42,9 @@ Met taken met meerdere stappen kunt u scenario's zoals de volgende logica inscha
 
 Een taak met meerdere stappen in ACR-taken wordt gedefinieerd als een reeks stappen in een YAML-bestand. Elke stap kan afhankelijkheden opgeven op het slagen van een of meer van de vorige stappen. De volgende taak stap typen zijn beschikbaar:
 
-* [`build`](container-registry-tasks-reference-yaml.md#build): Maak een of meer container installatie kopieën met `docker build` behulp van de vertrouwde syntaxis, in serie of parallel.
+* [`build`](container-registry-tasks-reference-yaml.md#build): Maak een of meer container installatie kopieën met behulp van de vertrouwde `docker build` syntaxis, in serie of parallel.
 * [`push`](container-registry-tasks-reference-yaml.md#push): Push gemaakte installatie kopieën naar een container register. Persoonlijke registers zoals Azure Container Registry worden ondersteund, evenals de open bare docker-hub.
-* [`cmd`](container-registry-tasks-reference-yaml.md#cmd): Voer een container uit, zodat deze als functie kan worden gebruikt in de context van de actieve taak. U kunt para meters door geven aan `[ENTRYPOINT]`de container en eigenschappen zoals env, Detach en andere bekende `docker run` para meters opgeven. Met `cmd` het stap type kunnen eenheid en functionele tests worden uitgevoerd, met gelijktijdige container uitvoering.
+* [`cmd`](container-registry-tasks-reference-yaml.md#cmd): Voer een container uit, zodat deze als functie kan worden gebruikt in de context van de actieve taak. U kunt para meters door geven aan de container `[ENTRYPOINT]` en eigenschappen zoals env, Detach en andere bekende `docker run` para meters opgeven. `cmd`Met het stap type kunnen eenheid en functionele tests worden uitgevoerd, met gelijktijdige container uitvoering.
 
 De volgende code fragmenten laten zien hoe u deze taak stap typen kunt combi neren. Taken met meerdere stappen kunnen zo eenvoudig zijn als het bouwen van één installatie kopie van een Dockerfile en naar uw REGI ster pushen, met een YAML-bestand dat vergelijkbaar is met:
 
@@ -93,7 +92,7 @@ Hier volgt een voor beeld van een Azure CLI-opdracht waarmee een taak wordt uitg
 az acr run --registry <acrName> -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
 ```
 
-Wanneer u de taak uitvoert, moet de uitvoer de voortgang van elke stap weer geven die is gedefinieerd in het YAML-bestand. In de volgende uitvoer worden de stappen als `acb_step_0` en `acb_step_1`weer gegeven.
+Wanneer u de taak uitvoert, moet de uitvoer de voortgang van elke stap weer geven die is gedefinieerd in het YAML-bestand. In de volgende uitvoer worden de stappen als en weer gegeven `acb_step_0` `acb_step_1` .
 
 ```azurecli
 az acr run --registry myregistry -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -153,7 +152,7 @@ Zie voor meer informatie over geautomatiseerd builds van Git of basis installati
 U vindt hier een Naslag informatie en voor beelden voor taken in meerdere stappen:
 
 * [Taak verwijzing](container-registry-tasks-reference-yaml.md) -taak stap typen, eigenschappen en gebruik.
-* [Taak voorbeelden](container-registry-tasks-samples.md) : voor `task.yaml` beeld en docker-bestanden voor verschillende scenario's, eenvoudig naar complex.
+* [Taak voorbeelden](container-registry-tasks-samples.md) : voor beeld `task.yaml` en docker-bestanden voor verschillende scenario's, eenvoudig naar complex.
 * [Cmd opslag plaats](https://github.com/AzureCR/cmd) : een verzameling containers als opdrachten voor ACR-taken.
 
 <!-- IMAGES -->

@@ -4,10 +4,9 @@ description: Hierin wordt beschreven hoe u problemen met de SKU niet beschik bar
 ms.topic: troubleshooting
 ms.date: 02/18/2020
 ms.openlocfilehash: 3dcc26f2d74799a6d282ee4bd733d36bec7b05e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78942717"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Fouten voor een niet-beschikbare SKU oplossen
@@ -40,7 +39,7 @@ Gebruik de opdracht [Get-AzComputeResourceSku](/powershell/module/az.compute/get
 Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
 ```
 
-De resultaten omvatten een lijst met Sku's voor de locatie en eventuele beperkingen voor die SKU. U ziet dat een SKU kan worden weer `NotAvailableForSubscription`gegeven als.
+De resultaten omvatten een lijst met Sku's voor de locatie en eventuele beperkingen voor die SKU. U ziet dat een SKU kan worden weer gegeven als `NotAvailableForSubscription` .
 
 ```output
 ResourceType          Name           Locations   Zone      Restriction                      Capability           Value
@@ -62,7 +61,7 @@ Als u ' FC ' aan het einde toevoegt, worden er meer details geretourneerd.
 
 ## <a name="solution-2---azure-cli"></a>Oplossing 2-Azure CLI
 
-Gebruik de `az vm list-skus` opdracht om te bepalen welke sku's beschikbaar zijn in een regio. Gebruik de `--location` para meter voor het filteren van uitvoer naar de locatie die u gebruikt. Gebruik de `--size` para meter om te zoeken op een gedeeltelijke grootte naam.
+Gebruik de opdracht om te bepalen welke Sku's beschikbaar zijn in een regio `az vm list-skus` . Gebruik de `--location` para meter voor het filteren van uitvoer naar de locatie die u gebruikt. Gebruik de `--size` para meter om te zoeken op een gedeeltelijke grootte naam.
 
 ```azurecli-interactive
 az vm list-skus --location southcentralus --size Standard_F --output table

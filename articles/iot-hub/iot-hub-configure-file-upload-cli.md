@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
 ms.openlocfilehash: df3c8d2abf59de6c9f685ad8d93e6689738df8e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302522"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Uploads van IoT Hub-bestanden configureren met behulp van Azure CLI
@@ -27,7 +26,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 * [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-* Een Azure IoT hub. Als u geen IOT-hub hebt, kunt u de [ `az iot hub create` opdracht](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) gebruiken om een IOT-hub te maken of [met behulp van de portal](iot-hub-create-through-portal.md).
+* Een Azure IoT hub. Als u geen IoT-hub hebt, kunt u de [ `az iot hub create` opdracht](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) gebruiken om een IOT-hub te maken of [met behulp van de portal](iot-hub-create-through-portal.md).
 
 * Een Azure Storage-account. Als u geen Azure Storage account hebt, kunt u de Azure CLI gebruiken om er een te maken. Zie [Een opslagaccount maken](../storage/common/storage-create-storage-account.md) voor meer informatie.
 

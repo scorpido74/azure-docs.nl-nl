@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ad76835b0c72b691e1ef8810f2c58dedb8f597d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78672380"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Veelgestelde vragen over instellingen en gegevensroaming
@@ -76,8 +75,8 @@ In de releases van Windows 10 november 2015 of hoger wordt Enterprise State Roam
 
 Wanneer meerdere Azure AD-accounts van verschillende Azure AD-tenants zich op hetzelfde apparaat bevinden, moet u het REGI ster van het apparaat bijwerken om te communiceren met de Azure Rights Management-service voor elke Azure AD-Tenant.  
 
-1. Zoek de GUID voor elke Azure AD-Tenant. Open de Azure Portal en selecteer een Azure AD-Tenant. De GUID voor de Tenant bevindt zich op de pagina eigenschappen voor dehttps://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)geselecteerde Tenant (, label **Directory-id**). 
-2. Nadat u de GUID hebt, moet u de register sleutel **HKEY_LOCAL_MACHINE de GUID van de\<\software\microsoft\windows\settingsync\winmsipc-Tenant-id toevoegen>**.
+1. Zoek de GUID voor elke Azure AD-Tenant. Open de Azure Portal en selecteer een Azure AD-Tenant. De GUID voor de Tenant bevindt zich op de pagina eigenschappen voor de geselecteerde Tenant ( https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) , label **Directory-id**). 
+2. Nadat u de GUID hebt, moet u de register sleutel **HKEY_LOCAL_MACHINE \software\microsoft\windows\settingsync\winmsipc \<tenant ID GUID> **toevoegen.
    Maak in de GUID-sleutel van de **Tenant-id** een nieuwe waarde met meerdere teken reeksen (reg-multi-SZ) met de naam **AllowedRMSServerUrls**. Geef voor de gegevens de Url's van het Licensing-distributie punt op van de andere Azure-tenants die het apparaat heeft geopend.
 3. U kunt de Url's van het Licensing-distributie punt vinden door de cmdlet **Get-AadrmConfiguration** uit te voeren vanuit de AADRM-module. Als de waarden voor **LicensingIntranetDistributionPointUrl** en **LicensingExtranetDistributionPointUrl** verschillend zijn, moet u beide waarden opgeven. Als de waarden gelijk zijn, geeft u de waarde slechts eenmaal op.
 
@@ -112,7 +111,7 @@ In Windows 10 is er geen MDM-of groepsbeleid-instelling om roaming voor een afzo
 
 ## <a name="how-can-i-enable-or-disable-roaming"></a>Hoe kan ik roaming in-of uitschakelen?
 
-Ga in de **instellingen** -app naar **accounts** > om**uw instellingen te synchroniseren**. Op deze pagina kunt u zien welk account wordt gebruikt om instellingen te roamen, en kunt u afzonderlijke groeps instellingen inschakelen of uitschakelen.
+Ga in de **instellingen** -app naar **accounts**om  >  **uw instellingen te synchroniseren**. Op deze pagina kunt u zien welk account wordt gebruikt om instellingen te roamen, en kunt u afzonderlijke groeps instellingen inschakelen of uitschakelen.
 
 ## <a name="what-is-microsofts-recommendation-for-enabling-roaming-in-windows-10"></a>Wat is de aanbeveling van micro soft voor het inschakelen van roaming in Windows 10?
 

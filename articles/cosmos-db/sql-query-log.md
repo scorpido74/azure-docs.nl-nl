@@ -8,10 +8,9 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 9213ef03f383dec7109652246411fac154b4a7f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302505"
 ---
 # <a name="log-azure-cosmos-db"></a>LOGBOEK (Azure Cosmos DB)
@@ -57,7 +56,7 @@ SELECT LOG(10) AS log
 [{log: 2.3025850929940459}]  
 ```  
   
- In het volgende voor beeld `LOG` wordt de exponent van een getal berekend.  
+ In het volgende voor beeld wordt de `LOG` exponent van een getal berekend.  
   
 ```sql
 SELECT EXP(LOG(10)) AS expLog  

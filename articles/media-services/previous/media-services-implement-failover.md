@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: ae1371a8f025fd5e5722d483323fbe937538eb15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78939216"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Het streamen van failover met Media Services versie 2 implementeren
@@ -62,8 +61,8 @@ De volgende overwegingen zijn van toepassing:
 In deze sectie maakt en definieert u een C#-console toepassings project.
 
 1. Gebruik Visual Studio om een nieuwe oplossing te maken die het toepassings project van de C#-console bevat. Voer **HandleRedundancyForOnDemandStreaming** in als naam en klik vervolgens op **OK**.
-2. Maak de map **SupportFiles** op hetzelfde niveau als het project bestand **HandleRedundancyForOnDemandStreaming. csproj** . Maak in de map **SupportFiles** de mappen **OutputFiles** en **MP4Files** . Kopieer een MP4-bestand naar de map **MP4Files** . (In dit voor beeld wordt het bestand **Ignite. MP4** gebruikt.) 
-3. Gebruik **NuGet** om verwijzingen toe te voegen aan dll-bestanden met betrekking tot Media Services. Selecteer in **Visual Studio main-menu**de optie **tools** > **NuGet package manager** > **Package Manager console**. Typ in het console venster **installeren-package windowsazure. Media Services**en druk op ENTER.
+2. Maak de map **SupportFiles** op hetzelfde niveau als het project bestand **HandleRedundancyForOnDemandStreaming. csproj** . Maak in de map **SupportFiles** de mappen **OutputFiles** en **MP4Files** . Kopieer een MP4-bestand naar de map **MP4Files** . (In dit voor beeld wordt het **ignite.mp4** -bestand gebruikt.) 
+3. Gebruik **NuGet** om verwijzingen toe te voegen aan dll-bestanden met betrekking tot Media Services. Selecteer in **Visual Studio main-menu**de optie **tools**  >  **NuGet package manager**  >  **Package Manager console**. Typ in het console venster **installeren-package windowsazure. Media Services**en druk op ENTER.
 4. Voeg andere verwijzingen toe die vereist zijn voor dit project: System. runtime. serialisatie en System. Web.
 5. Vervang met **behulp** van-instructies die zijn toegevoegd aan het **programs.cs** -bestand standaard met de volgende:
 
@@ -752,7 +751,7 @@ In het voor beeld in dit onderwerp wordt duidelijk streaming weer gegeven. Als u
 
 Zie [AES-128 Dynamic Encryption en de key delivery-service gebruiken](media-services-protect-with-aes128.md)voor meer informatie over de beveiliging van inhoud.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 [Azure-webhooks gebruiken voor het bewaken van Media Services taak meldingen](media-services-dotnet-check-job-progress-with-webhooks.md)
 

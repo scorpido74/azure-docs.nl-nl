@@ -10,10 +10,9 @@ ms.topic: how-to
 ms.date: 02/25/2020
 ms.author: lcozzens
 ms.openlocfilehash: da64f22981cc33772783093cfe75daa3eac5cef1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78672145"
 ---
 # <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Azure-app configuratie gebeurtenissen naar een webeindpunt routeren met Azure CLI
@@ -26,7 +25,7 @@ In dit artikel leert u hoe u Azure-app configuratie gebeurtenis abonnementen kun
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de nieuwste versie van Azure CLI (2.0.70 of hoger) uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de nieuwste versie van Azure CLI (2.0.70 of hoger) uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 Als u Cloud Shell niet gebruikt, moet u zich eerst aanmelden met `az login`.
 
@@ -36,15 +35,15 @@ Event Grid-onderwerpen zijn Azure-resources en moeten in een Azure-resourcegroep
 
 Een resourcegroep maken met de opdracht [az group create](/cli/azure/group). 
 
-In het volgende voor beeld wordt een resource `<resource_group_name>` groep met de naam op de locatie *westus* gemaakt.  Vervang `<resource_group_name>` door een unieke naam voor uw resourcegroep.
+In het volgende voor beeld wordt een resource groep `<resource_group_name>` met de naam op de locatie *westus* gemaakt.  Vervang `<resource_group_name>` door een unieke naam voor uw resourcegroep.
 
 ```azurecli-interactive
 az group create --name <resource_group_name> --location westus
 ```
 
-## <a name="create-an-app-configuration-store"></a>Een app-configuratie archief maken
+## <a name="create-an-app-configuration-store"></a>Een App Configuration-archief maken
 
-Vervang `<appconfig_name>` door een unieke naam voor uw configuratie archief en `<resource_group_name>` met de resource groep die u eerder hebt gemaakt. De naam moet uniek zijn omdat deze wordt gebruikt als een DNS-naam.
+Vervang door `<appconfig_name>` een unieke naam voor uw configuratie archief en `<resource_group_name>` met de resource groep die u eerder hebt gemaakt. De naam moet uniek zijn omdat deze wordt gebruikt als een DNS-naam.
 
 ```azurecli-interactive
 az appconfig create \

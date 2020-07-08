@@ -4,10 +4,9 @@ description: Meer informatie over het effectief beheren van de register grootte 
 ms.topic: article
 ms.date: 07/31/2019
 ms.openlocfilehash: 449a1c09bf88e3e0e0aeca4d3b687371d2a6b91a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78403345"
 ---
 # <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Container installatie kopieën in Azure Container Registry verwijderen met behulp van de Azure CLI
@@ -38,7 +37,7 @@ Met de volgende Azure CLI-opdracht verwijdert u de opslag plaats ' ACR-HelloWorl
 
 U kunt afzonderlijke installatie kopieën uit een opslag plaats verwijderen door de naam en tag van de opslag plaats op te geven in de Verwijder bewerking. Wanneer u per tag verwijdert, herstelt u de opslag ruimte die wordt gebruikt door een unieke laag in de afbeelding (lagen die niet worden gedeeld door andere installatie kopieën in het REGI ster).
 
-Als u wilt verwijderen per tag, gebruikt u [AZ ACR repository delete][az-acr-repository-delete] en geeft u de `--image` naam van de installatie kopie op in de para meter. Alle lagen die uniek zijn voor de afbeelding en alle andere tags die aan de afbeelding zijn gekoppeld, worden verwijderd.
+Als u wilt verwijderen per tag, gebruikt u [AZ ACR repository delete][az-acr-repository-delete] en geeft u de naam van de installatie kopie op in de `--image` para meter. Alle lagen die uniek zijn voor de afbeelding en alle andere tags die aan de afbeelding zijn gekoppeld, worden verwijderd.
 
 U kunt bijvoorbeeld de installatie kopie ' ACR-HelloWorld: nieuwste ' verwijderen uit het REGI ster ' myregistry ':
 
@@ -114,7 +113,7 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName> 
 --orderby time_asc -o tsv --query "[?timestamp < '2019-04-05'].[digest, timestamp]"
 ```
 
-Nadat u de verouderde manifest samenvattingen hebt geïdentificeerd, kunt u het volgende bash-script uitvoeren om manifest-samen vattingen te verwijderen die ouder zijn dan een opgegeven tijds tempel. Hiervoor zijn de Azure CLI en **xargs**vereist. Standaard wordt het script niet verwijderd. Wijzig de `ENABLE_DELETE` waarde in `true` om het verwijderen van de installatie kopie in te scha kelen.
+Nadat u de verouderde manifest samenvattingen hebt geïdentificeerd, kunt u het volgende bash-script uitvoeren om manifest-samen vattingen te verwijderen die ouder zijn dan een opgegeven tijds tempel. Hiervoor zijn de Azure CLI en **xargs**vereist. Standaard wordt het script niet verwijderd. Wijzig de `ENABLE_DELETE` waarde in om het verwijderen van de `true` installatie kopie in te scha kelen.
 
 > [!WARNING]
 > Gebruik het volgende voorbeeld script met een waarschuwing: verwijderde afbeeldings gegevens zijn onherstelbaar. Als u systemen hebt die installatie kopieën pullen per manifest Digest (in plaats van de naam van de installatie kopie), moet u deze scripts niet uitvoeren. Als u de manifest-samen vattingen verwijdert, voor komt u dat deze systemen de installatie kopieën uit het REGI ster halen. In plaats van op manifest te halen, kunt u overwegen om een uniek schema voor *labels* te gebruiken, een [Aanbevolen best practice](container-registry-image-tag-version.md). 
@@ -199,7 +198,7 @@ Zoals vermeld in de sectie [manifest Digest](container-registry-concepts.md#mani
    ]
    ```
 
-Zoals u kunt zien in de uitvoer van de laatste stap in de reeks, is er nu een zwevend manifest waarvan `"tags"` de eigenschap een lege lijst is. Dit manifest bevindt zich nog in het REGI ster, samen met eventuele unieke laag gegevens waarnaar wordt verwezen. **Als u dergelijke zwevende afbeeldingen en hun laag gegevens wilt verwijderen, moet u verwijderen per manifest Digest**.
+Zoals u kunt zien in de uitvoer van de laatste stap in de reeks, is er nu een zwevend manifest waarvan de `"tags"` eigenschap een lege lijst is. Dit manifest bevindt zich nog in het REGI ster, samen met eventuele unieke laag gegevens waarnaar wordt verwezen. **Als u dergelijke zwevende afbeeldingen en hun laag gegevens wilt verwijderen, moet u verwijderen per manifest Digest**.
 
 ## <a name="delete-all-untagged-images"></a>Alle niet-gelabelde afbeeldingen verwijderen
 
@@ -216,7 +215,7 @@ Als u deze opdracht in een script gebruikt, kunt u alle niet-gelabelde afbeeldin
 
 **Azure CLI in bash**
 
-Met het volgende bash-script worden alle niet-gelabelde afbeeldingen uit een opslag plaats verwijderd. Hiervoor zijn de Azure CLI en **xargs**vereist. Standaard wordt het script niet verwijderd. Wijzig de `ENABLE_DELETE` waarde in `true` om het verwijderen van de installatie kopie in te scha kelen.
+Met het volgende bash-script worden alle niet-gelabelde afbeeldingen uit een opslag plaats verwijderd. Hiervoor zijn de Azure CLI en **xargs**vereist. Standaard wordt het script niet verwijderd. Wijzig de `ENABLE_DELETE` waarde in om het verwijderen van de `true` installatie kopie in te scha kelen.
 
 ```bash
 #!/bin/bash
@@ -246,7 +245,7 @@ fi
 
 **Azure CLI in Power shell**
 
-Met het volgende Power shell-script worden alle niet-gelabelde afbeeldingen uit een opslag plaats verwijderd. Hiervoor is Power shell en de Azure CLI vereist. Standaard wordt het script niet verwijderd. Wijzig de `$enableDelete` waarde in `$TRUE` om het verwijderen van de installatie kopie in te scha kelen.
+Met het volgende Power shell-script worden alle niet-gelabelde afbeeldingen uit een opslag plaats verwijderd. Hiervoor is Power shell en de Azure CLI vereist. Standaard wordt het script niet verwijderd. Wijzig de `$enableDelete` waarde in om het verwijderen van de `$TRUE` installatie kopie in te scha kelen.
 
 ```powershell
 # WARNING! This script deletes data!

@@ -10,10 +10,9 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.openlocfilehash: 7cc2e346a35cd1cdf1278b527dc451a903d60f89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78402819"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-integratie voor Azure Machine Learning
@@ -26,7 +25,7 @@ Bij het verzenden van een taak naar Azure Machine Learning, als bron bestanden w
 
 Omdat Azure Machine Learning gegevens van een lokale Git-opslag plaats registreert, is deze niet gekoppeld aan een specifieke centrale opslag plaats. Uw opslag plaats kan worden gekloond van GitHub, GitLab, bitbucket, Azure DevOps of een andere Git-compatibele service.
 
-## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Git-opslag plaatsen klonen in het bestands systeem van de werk ruimte
+## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Git-opslagplaatsen klonen in het bestandssysteem van de werkruimte
 Azure Machine Learning biedt een gedeeld bestands systeem voor alle gebruikers in de werk ruimte.
 Als u een Git-opslag plaats wilt klonen in deze bestands share, kunt u het beste een reken instantie maken & een Terminal te openen.
 Zodra de Terminal is geopend, hebt u toegang tot een volledige Git-client en kunt u Git klonen en gebruiken via de Git CLI-ervaring.
@@ -41,7 +40,7 @@ Lees hier hier voor een hand leiding voor het gebruik van de Git [cli.](https://
 
 Wanneer u een training verzendt die wordt uitgevoerd vanuit de python-SDK of Machine Learning CLI, worden de bestanden die nodig zijn om het model te trainen, geüpload naar uw werk ruimte. Als de `git` opdracht beschikbaar is in uw ontwikkelings omgeving, gebruikt het upload proces om te controleren of de bestanden zijn opgeslagen in een Git-opslag plaats. Als dat het geval is, worden de gegevens uit uw Git-opslag plaats ook geüpload als onderdeel van de trainings uitvoering. Deze informatie wordt opgeslagen in de volgende eigenschappen voor het uitvoeren van de training:
 
-| Eigenschap | Git-opdracht die wordt gebruikt om de waarde op te halen | Beschrijving |
+| Eigenschap | Git-opdracht die wordt gebruikt om de waarde op te halen | Description |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | De URI waaruit uw opslag plaats is gekloond. |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | De URI waaruit uw opslag plaats is gekloond. |
@@ -49,7 +48,7 @@ Wanneer u een training verzendt die wordt uitgevoerd vanuit de python-SDK of Mac
 | `mlflow.source.git.branch` | `git symbolic-ref --short HEAD` | De actieve vertakking wanneer de uitvoering is ingediend. |
 | `azureml.git.commit` | `git rev-parse HEAD` | De doorvoer-hash van de code die is ingediend voor de uitvoering. |
 | `mlflow.source.git.commit` | `git rev-parse HEAD` | De doorvoer-hash van de code die is ingediend voor de uitvoering. |
-| `azureml.git.dirty` | `git status --porcelain .` | `True`Als de vertakking/door Voer is beschadigd; anders, `false`. |
+| `azureml.git.dirty` | `git status --porcelain .` | `True`Als de vertakking/door Voer is beschadigd; anders, `false` . |
 
 Deze informatie wordt verzonden voor uitvoeringen die gebruikmaken van een Estimator, machine learning pijp lijn of script uitvoering.
 
@@ -62,7 +61,7 @@ Als uw trainings bestanden zich niet in een Git-opslag plaats in uw ontwikkeling
 > git --version
 > ```
 >
-> Als deze is geïnstalleerd en u in het pad een antwoord ontvangt dat vergelijkbaar `git version 2.4.1`is met. Zie de [Git-website](https://git-scm.com/)voor meer informatie over het installeren van git in uw ontwikkel omgeving.
+> Als deze is geïnstalleerd en u in het pad een antwoord ontvangt dat vergelijkbaar is met `git version 2.4.1` . Zie de [Git-website](https://git-scm.com/)voor meer informatie over het installeren van git in uw ontwikkel omgeving.
 
 ## <a name="view-the-logged-information"></a>De geregistreerde gegevens weer geven
 
@@ -73,7 +72,7 @@ De Git-informatie wordt opgeslagen in de eigenschappen voor een trainings uitvoe
 1. Selecteer uw werk ruimte in de [Azure Portal](https://portal.azure.com).
 1. Selecteer __experimenten__en selecteer vervolgens een van uw experimenten.
 1. Selecteer een van de uitvoeringen in de kolom __uitvoerings nummer__ .
-1. Selecteer __Logboeken__en vouw vervolgens de __Logboeken__ en __azureml__ -vermeldingen uit. Selecteer de koppeling die begint met __ ### \_Azure__.
+1. Selecteer __Logboeken__en vouw vervolgens de __Logboeken__ en __azureml__ -vermeldingen uit. Selecteer de koppeling die begint met __ ### \_ Azure__.
 
     ![De # # #_azure vermelding in de portal](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
 
@@ -106,7 +105,7 @@ run.properties['azureml.git.commit']
 
 ### <a name="cli"></a>CLI
 
-De `az ml run` cli-opdracht kan worden gebruikt om de eigenschappen op te halen uit een run. De volgende opdracht retourneert bijvoorbeeld de eigenschappen voor de laatste uitvoering in het experiment met de naam `train-on-amlcompute`:
+De `az ml run` cli-opdracht kan worden gebruikt om de eigenschappen op te halen uit een run. De volgende opdracht retourneert bijvoorbeeld de eigenschappen voor de laatste uitvoering in het experiment met de naam `train-on-amlcompute` :
 
 ```azurecli-interactive
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'

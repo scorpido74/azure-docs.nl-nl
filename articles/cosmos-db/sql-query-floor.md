@@ -8,10 +8,9 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 04dfa6a028cf7c44bf99c665b396d51d8a0f3cef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78303185"
 ---
 # <a name="floor-azure-cosmos-db"></a>FLOOR (Azure Cosmos DB)
@@ -34,7 +33,7 @@ FLOOR (<numeric_expr>)
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voor beeld worden positieve numerieke, negatieve waarden en nulwaarden `FLOOR` weer gegeven met de functie.  
+  In het volgende voor beeld worden positieve numerieke, negatieve waarden en nulwaarden weer gegeven met de `FLOOR` functie.  
   
 ```sql
 SELECT FLOOR(123.45) AS fl1, FLOOR(-123.45) AS fl2, FLOOR(0.0) AS fl3  

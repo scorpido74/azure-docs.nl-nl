@@ -9,10 +9,9 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
 ms.openlocfilehash: e821036ff4ddb5a9786bc4f4537bb81539ab2c87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78898480"
 ---
 # <a name="plans-and-billing-for-azure-scheduler"></a>Plannen en facturering voor Azure scheduler
@@ -28,7 +27,7 @@ In azure scheduler bevat een taak verzameling een specifiek aantal taken. De taa
 
 | Taak verzamelings plan | Maximum aantal taken per verzameling | Max. terugkeer patroon | Maximum aantal taak verzamelingen per abonnement | Limieten | 
 |:--- |:--- |:--- |:--- |:--- |
-| **Standaard** | 50 taken per verzameling | Eén per minuut. Kan taken niet vaker dan één per minuut uitvoeren. | Elk Azure-abonnement kan Maxi maal 100 standaard taak verzamelingen bevatten. | Toegang tot de volledige functieset van scheduler | 
+| **Standard** | 50 taken per verzameling | Eén per minuut. Kan taken niet vaker dan één per minuut uitvoeren. | Elk Azure-abonnement kan Maxi maal 100 standaard taak verzamelingen bevatten. | Toegang tot de volledige functieset van scheduler | 
 | **P10 Premium** | 50 taken per verzameling | Eén per minuut. Kan taken niet vaker dan één per minuut uitvoeren. | Elk Azure-abonnement kan Maxi maal 10.000 P10 Premium-taak verzamelingen bevatten. <a href="mailto:wapteams@microsoft.com">Neem contact met ons op</a>voor meer verzamelingen. | Toegang tot de volledige functieset van scheduler |
 | **P20 Premium** | 1000 taken per verzameling | Eén per minuut. Kan taken niet vaker dan één per minuut uitvoeren. | Elk Azure-abonnement kan Maxi maal 5.000 P20 Premium-taak verzamelingen bevatten. <a href="mailto:wapteams@microsoft.com">Neem contact met ons op</a>voor meer verzamelingen. | Toegang tot de volledige functieset van scheduler |
 |||||| 
