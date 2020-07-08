@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dekapur
-ms.openlocfilehash: 16ec0eb429ec6e8f6613490226b7cff01dff1b32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3195f1f409ab5cb87cd0520192a3dd362e188a3f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75451917"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610231"
 ---
 # <a name="scaling-service-fabric-standalone-clusters"></a>Service Fabric van zelfstandige clusters schalen
 Een Service Fabric cluster is een met het netwerk verbonden reeks virtuele of fysieke machines waarop uw micro services worden geïmplementeerd en beheerd. Een computer of virtuele machine die deel uitmaakt van een cluster, wordt een knoop punt genoemd. Clusters kunnen mogelijk duizenden knoop punten bevatten. Nadat u een Service Fabric cluster hebt gemaakt, kunt u het cluster horizon taal schalen (Wijzig het aantal knoop punten) of verticaal (Wijzig de resources van de knoop punten).  U kunt het cluster op elk gewenst moment schalen, zelfs wanneer werk belastingen op het cluster worden uitgevoerd.  Naarmate het cluster wordt geschaald, worden uw toepassingen ook automatisch geschaald.
@@ -25,10 +25,10 @@ Hiermee wijzigt u het aantal knoop punten in het cluster.  Zodra de nieuwe knoop
 
 Met zelfstandige clusters kunt u Service Fabric cluster on-premises of in de Cloud provider van uw keuze implementeren.  Knooppunt typen bestaan uit fysieke machines of virtuele machines, afhankelijk van uw implementatie. Vergeleken met clusters die worden uitgevoerd in azure, is het proces van het schalen van een zelfstandig cluster iets meer betrokken.  U moet het aantal knoop punten in het cluster hand matig wijzigen en vervolgens een upgrade van de cluster configuratie uitvoeren.
 
-Het verwijderen van knoop punten kan meerdere upgrades initiëren. Sommige knoop punten zijn gemarkeerd `IsSeedNode=”true”` met tag en kunnen worden geïdentificeerd door het cluster manifest te doorzoeken met [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest). Het verwijderen van deze knoop punten kan langer duren dan andere omdat de Seed-knoop punten in dergelijke scenario's moeten worden verplaatst. Het cluster moet mini maal drie knoop punten van het primaire knooppunt type onderhouden.
+Het verwijderen van knoop punten kan meerdere upgrades initiëren. Sommige knoop punten zijn gemarkeerd met `IsSeedNode=”true”` tag en kunnen worden geïdentificeerd door het cluster manifest te doorzoeken met [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest). Het verwijderen van deze knoop punten kan langer duren dan andere omdat de Seed-knoop punten in dergelijke scenario's moeten worden verplaatst. Het cluster moet mini maal drie knoop punten van het primaire knooppunt type onderhouden.
 
 > [!WARNING]
-> We raden u aan het aantal knoop punten te verlagen onder de [cluster grootte van de betrouwbaarheids categorie](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) voor het cluster. Dit zorgt ervoor dat de Service Fabric systeem services niet via het cluster kunnen worden gerepliceerd en het cluster kan worden overschreven of vernietigd.
+> We raden u aan het aantal knoop punten te verlagen onder de [cluster grootte van de betrouwbaarheids categorie](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) voor het cluster. Dit zorgt ervoor dat de Service Fabric systeem services niet via het cluster kunnen worden gerepliceerd en het cluster kan worden overschreven of vernietigd.
 >
 
 Houd bij het schalen van een zelfstandig cluster de volgende richt lijnen in acht:

@@ -4,15 +4,15 @@ description: U kunt een Azure Firewall integreren in een virtueel netwerk met ee
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/28/2020
 ms.author: victorh
-ms.openlocfilehash: ab9a500d9535b55702b8baff15f8cc47e6ac2c86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 008274c86944b06b168bf52ca501c655bbe78434
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78196697"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610622"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Azure Firewall integreren met Azure Standard Load Balancer
 
@@ -22,7 +22,7 @@ Het ontwerp van de voor keur is het integreren van een interne load balancer met
 
 Zie [Wat is Azure Load Balancer?](../load-balancer/load-balancer-overview.md) voor meer informatie over Azure Load Balancer.
 
-## <a name="public-load-balancer"></a>Open bare load balancer
+## <a name="public-load-balancer"></a>Openbare load balancer
 
 Met een open bare load balancer wordt de load balancer geïmplementeerd met een openbaar frontend-IP-adres.
 

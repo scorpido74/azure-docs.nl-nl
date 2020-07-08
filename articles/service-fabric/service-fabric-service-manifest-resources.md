@@ -3,16 +3,16 @@ title: Service Fabric service-eind punten opgeven
 description: Eindpunt resources beschrijven in een service manifest, inclusief het instellen van HTTPS-eind punten
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 88e71d15829e68bde635f5b4d40224b8fa914f40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 458a10ca118bbb14f22ad9b1ae127c2036573db9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417595"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610741"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Resources opgeven in een service manifest
 ## <a name="overview"></a>Overzicht
-Met het service manifest kunnen resources die door de service worden gebruikt, worden gedeclareerd of gewijzigd, zonder de gecompileerde code te wijzigen. Service Fabric ondersteunt de configuratie van eindpunt resources voor de service. De toegang tot de resources die zijn opgegeven in het service manifest kan worden beheerd via de beveiligings groep in het manifest van de toepassing. Met de declaratie van resources kunnen deze resources tijdens de implementatie worden gewijzigd, wat betekent dat de service geen nieuw configuratie mechanisme hoeft te introduceren. De schema definitie voor het bestand ServiceManifest. XML wordt geïnstalleerd met de Service Fabric SDK en hulpprogram ma's in *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.XSD*.
+Met het service manifest kunnen resources die door de service worden gebruikt, worden gedeclareerd of gewijzigd, zonder de gecompileerde code te wijzigen. Service Fabric ondersteunt de configuratie van eindpunt resources voor de service. De toegang tot de resources die zijn opgegeven in het service manifest kan worden beheerd via de beveiligings groep in het manifest van de toepassing. Met de declaratie van resources kunnen deze resources tijdens de implementatie worden gewijzigd, wat betekent dat de service geen nieuw configuratie mechanisme hoeft te introduceren. De schema definitie voor het ServiceManifest.xml bestand wordt geïnstalleerd met de Service Fabric SDK en hulpprogram ma's voor *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.XSD*.
 
 ## <a name="endpoints"></a>Eindpunten
 Wanneer een eindpunt resource is gedefinieerd in het service manifest, Service Fabric wijst poorten toe uit het gereserveerde poort bereik van de toepassing wanneer een poort niet expliciet is opgegeven. Bekijk bijvoorbeeld het eind punt *ServiceEndpoint1* dat is opgegeven in het manifest fragment dat wordt gegeven na deze alinea. Daarnaast kunnen services ook een specifieke poort aanvragen in een bron. Er kunnen verschillende poort nummers worden toegewezen aan service replica's die worden uitgevoerd op verschillende cluster knooppunten, terwijl replica's van een service die op hetzelfde knoop punt wordt uitgevoerd, de poort delen. De service replica's kunnen deze poorten vervolgens gebruiken als nodig voor replicatie en Luis teren naar client aanvragen.
@@ -48,12 +48,10 @@ Als er meerdere code pakketten aanwezig zijn in één service pakket, moet er oo
 </Resources>
 ```
 
-Raadpleeg [stateful reliable Services configureren](service-fabric-reliable-services-configuration.md) voor meer informatie over het verwijzen naar eind punten uit het bestand config package Settings (Settings. XML).
+Raadpleeg [stateful reliable Services configureren](service-fabric-reliable-services-configuration.md) voor meer informatie over het verwijzen naar eind punten uit het bestand config package settings (settings.xml).
 
 ## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Voor beeld: een HTTP-eind punt opgeven voor uw service
-Het volgende service manifest definieert één TCP-eindpunt resource en twee HTTP-eindpunt resources &lt;in&gt; het element resources.
-
-HTTP-eind punten worden automatisch door Service Fabric door de toegangs beheer lijst.
+Het volgende service manifest definieert één TCP-eindpunt resource en twee HTTP-eindpunt resources in het &lt; &gt; element resources.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -157,8 +155,10 @@ Hier volgt een voor beeld van een ApplicationManifest die de configuratie demons
 
 Voor Linux-clusters wordt **mijn** winkel standaard ingesteld op de map **/var/lib/sfcerts**.
 
+## <a name="port-acling-for-http-endpoints"></a>Poort Acl's voor voor HTTP-eind punten
+Service Fabric worden automatisch de door de HTTP (S) standaard-eind punten die zijn opgegeven, ACL'S. Er wordt **geen** automatische acl's voor uitgevoerd als aan een eind punt geen [SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) is gekoppeld en service Fabric is geconfigureerd om te worden uitgevoerd met een account met Administrator bevoegdheden.
 
-## <a name="overriding-endpoints-in-servicemanifestxml"></a>Eind punten in ServiceManifest. XML overschrijven
+## <a name="overriding-endpoints-in-servicemanifestxml"></a>Eind punten in ServiceManifest.xml overschrijven
 
 In de ApplicationManifest voegt u een ResourceOverrides-sectie toe, die deel uitmaakt van de sectie op hetzelfde niveau als ConfigOverrides. In deze sectie kunt u de overschrijving opgeven voor de sectie endpoints in het gedeelte resources dat is opgegeven in het service manifest. Het overschrijven van eind punten wordt ondersteund in runtime 5.7.217/SDK 2.7.217 en hoger.
 

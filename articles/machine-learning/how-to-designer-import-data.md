@@ -1,7 +1,7 @@
 ---
 title: Gegevens importeren
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het importeren van gegevens in Azure Machine Learning Designer vanuit verschillende gegevens bronnen.
+description: Meer informatie over het importeren van gegevens in Azure Machine Learning Designer van verschillende gegevens bronnen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
 ms.custom: designer
-ms.openlocfilehash: 386da835c239953066bf47ee670f7fb27c7b04f4
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 12473aca589f8a04dd0e09fdc2dc7f0d4e450c5a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84429531"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610945"
 ---
-# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Uw gegevens importeren in Azure Machine Learning Designer (preview)
+# <a name="import-data-into-azure-machine-learning-designer-preview"></a>Gegevens importeren in Azure Machine Learning Designer (preview-versie)
 
 In dit artikel leert u hoe u uw eigen gegevens in de ontwerp functie kunt importeren om aangepaste oplossingen te maken. Er zijn twee manieren waarop u gegevens kunt importeren in de ontwerp functie: 
 
@@ -89,6 +89,10 @@ De ontwerp functie maakt gebruik van een intern gegevens type om gegevens tussen
 ## <a name="data-constraints"></a>Gegevens beperkingen
 
 Modules in de ontwerp functie worden beperkt door de grootte van het berekenings doel. Voor grotere gegevens sets moet u een grotere Azure Machine Learning Reken Resource gebruiken. Zie [Wat zijn Compute-doelen in azure machine learning?](concept-compute-target.md#azure-machine-learning-compute-managed) voor meer informatie over Azure machine learning compute.
+
+## <a name="access-data-in-a-virtual-network"></a>Toegang tot gegevens in een virtueel netwerk
+
+Als uw werk ruimte zich in een virtueel netwerk bevindt, moet u aanvullende configuratie stappen uitvoeren om gegevens in de ontwerp functie te visualiseren. Voor meer informatie over het gebruik van data stores en gegevens sets in een virtueel netwerk, raadpleegt u [netwerk isolatie tijdens de training & afwijzen met persoonlijke virtuele netwerken](how-to-enable-virtual-network.md#machine-learning-studio).
 
 ## <a name="next-steps"></a>Volgende stappen
 

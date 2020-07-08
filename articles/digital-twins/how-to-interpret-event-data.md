@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 55264f1fe0526773db5af299c37e4ea077e6d63f
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: f6794559c2296b02ef61d0e280d29456904ae607
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483326"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609296"
 ---
 # <a name="understand-event-data"></a>Informatie over gebeurtenis gegevens
 
@@ -103,7 +103,7 @@ Meldingen over de levens cyclus worden geactiveerd wanneer:
 
 Dit zijn de velden in de hoofd tekst van een melding voor levens cyclus.
 
-| Naam | Waarde |
+| Name | Waarde |
 | --- | --- |
 | `id` | Id van de melding, zoals een UUID of een item dat door de service wordt onderhouden. `source` + `id`is uniek voor elke afzonderlijke gebeurtenis. |
 | `source` | Naam van het IoT hub-of Azure Digital Apparaatdubbels-exemplaar, zoals *myhub.Azure-devices.net* of *mydigitaltwins.westus2.azuredigitaltwins.net* |
@@ -187,7 +187,7 @@ Hier volgt nog een voor beeld van een digitale dubbele. Deze is gebaseerd op een
 
 Dit zijn de velden in de hoofd tekst van een melding voor een wijziging van de rand.
 
-| Naam    | Waarde |
+| Name    | Waarde |
 | --- | --- |
 | `id` | Id van de melding, zoals een UUID of een item dat door de service wordt onderhouden. `source` + `id`is uniek voor elke afzonderlijke gebeurtenis |
 | `source` | De naam van het Azure Digital Apparaatdubbels-exemplaar, zoals *mydigitaltwins.westus2.azuredigitaltwins.net* |
@@ -225,12 +225,11 @@ Hier volgt een voor beeld van een melding voor het maken of verwijderen van een 
 
 ```json
 {
-    "$relationshipId": "building_to_floor",
+    "$relationshipId": "device_to_device",
     "$etag": "W/\"72479873-0083-41a8-83e2-caedb932d881\"",
-    "$relationshipName": "Contains",
-    "$targetId": "floor11",
-    "ownershipUser": "user1",
-    "ownershipDepartment": "Operations"
+    "$relationshipName": "Connected",
+    "$targetId": "device2",
+    "connectionType": "WIFI"
 }
 ```
 
@@ -244,7 +243,7 @@ Er worden **digitale dubbele wijzigings meldingen** geactiveerd wanneer er een d
 
 Dit zijn de velden in de hoofd tekst van een digitale, dubbele wijzigings melding.
 
-| Naam    | Waarde |
+| Name    | Waarde |
 | --- | --- |
 | `id` | Id van de melding, zoals een UUID of een item dat door de service wordt onderhouden. `source` + `id`is uniek voor elke afzonderlijke gebeurtenis |
 | `source` | Naam van het IoT hub-of Azure Digital Apparaatdubbels-exemplaar, zoals *myhub.Azure-devices.net* of *mydigitaltwins.westus2.azuredigitaltwins.net*

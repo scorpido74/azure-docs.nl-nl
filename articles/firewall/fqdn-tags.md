@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 04/24/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: f4fcadb6d930f7863c733dad105432a64127b59b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e29e568786881f663414dcdf3eff72d4d72ab181
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232646"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610605"
 ---
 # <a name="fqdn-tags-overview"></a>Overzicht van FQDN-labels
 
@@ -28,7 +28,7 @@ In de volgende tabel ziet u de huidige FQDN-Tags die u kunt gebruiken. Micro sof
 
 ## <a name="current-fqdn-tags"></a>Huidige FQDN-Tags
 
-|FQDN-label  |Beschrijving  |
+|FQDN-label  |Description  |
 |---------|---------|
 |Windows Update     |Uitgaande toegang tot Microsoft Update toestaan, zoals beschreven in [een firewall configureren voor software-updates](https://technet.microsoft.com/library/bb693717.aspx).|
 |Windows Diagnostische gegevens|Uitgaande toegang tot alle [Windows diagnostische eind punten](https://docs.microsoft.com/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints)toestaan.|
@@ -36,7 +36,8 @@ In de volgende tabel ziet u de huidige FQDN-Tags die u kunt gebruiken. Micro sof
 |App Service Environment (ASE)|Hiermee staat u uitgaande toegang tot ASE-platform verkeer toe. Dit label geldt niet voor klantspecifieke opslag-en SQL-eind punten die zijn gemaakt door ASE. Deze moeten worden ingeschakeld via [service-eind punten](../virtual-network/tutorial-restrict-network-access-to-resources.md) of hand matig worden toegevoegd.<br><br>Zie [een app service Environment vergren delen](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)voor meer informatie over het integreren van Azure Firewall met ASE.|
 |Azure Backup|Hiermee wordt uitgaande toegang tot de Azure Backup Services toegestaan.|
 |Azure HDInsight|Hiermee staat u uitgaande toegang toe voor verkeer van HDInsight-platform. Dit label geldt niet voor klantspecifieke opslag of SQL-verkeer van HDInsight. Schakel deze optie in met [service-eind punten](../virtual-network/tutorial-restrict-network-access-to-resources.md) of voeg ze hand matig toe.|
-|WindowsVirtualDesktop (WVD)|Hiermee staat u het verkeer van een virtueel Windows-bureaublad platform toe. Dit label geldt niet voor implementatie-specifieke opslag en Service Bus eind punten die zijn gemaakt door WVD. Daarnaast zijn er regels voor DNS-en KMS-netwerken vereist. Voor meer informatie over het integreren van Azure Firewall met WVD raadpleegt [u Azure firewall gebruiken voor het beveiligen van Windows-implementaties van virtuele Bureau bladen](protect-windows-virtual-desktop.md). 
+|WindowsVirtualDesktop (WVD)|Hiermee staat u het verkeer van een virtueel Windows-bureaublad platform toe. Dit label geldt niet voor implementatie-specifieke opslag en Service Bus eind punten die zijn gemaakt door WVD. Daarnaast zijn er regels voor DNS-en KMS-netwerken vereist. Voor meer informatie over het integreren van Azure Firewall met WVD raadpleegt [u Azure firewall gebruiken voor het beveiligen van Windows-implementaties van virtuele Bureau bladen](protect-windows-virtual-desktop.md).|
+|Azure Kubernetes Service (AKS)|Hiermee staat u uitgaande toegang tot AKS toe. Zie [Azure firewall gebruiken om Azure Kubernetes service (AKS)-implementaties te beveiligen](protect-azure-kubernetes-service.md)voor meer informatie.|
 
 > [!NOTE]
 > Wanneer u de FQDN-tag in een toepassings regel selecteert, moet het veld Protocol: poort worden ingesteld op **https**.

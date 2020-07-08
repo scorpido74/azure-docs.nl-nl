@@ -11,21 +11,22 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d11be1d971922095d4a1ace1c81c763134b4e58c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 885d30305ba2b186052e17b9b455b2248bca541b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743334"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608514"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Wijzigingen in de principal-naam van gebruikers plannen en oplossen in Azure Active Directory
 
 Een UPN (User Principal Name) is een kenmerk dat een Internet communicatie standaard vormt voor gebruikers accounts. Een UPN bestaat uit een UPN-voor voegsel (de naam van het gebruikers account) en een UPN-achtervoegsel (een DNS-domein naam). Het voor voegsel wordt toegevoegd aan het achtervoegsel met het @-teken. Bijvoorbeeld someone@example.com. Een UPN moet uniek zijn voor alle SPN-objecten in een Directory-forest. 
 
-> [!NOTE]
-> Voor ontwikkel aars raden wij aan dat u de objectID van de gebruiker als de onveranderbare id gebruikt in plaats van de UPN. Als uw toepassingen momenteel gebruikmaken van UPN, wordt u aangeraden de UPN in te stellen op basis van het primaire e-mail adres van de gebruiker om de gebruikers ervaring te verbeteren.<br> **In een hybride omgeving is het belang rijk dat de UPN voor een gebruiker identiek is in de on-premises map en In Azure Active Directory**.
-
 **In dit artikel wordt ervan uitgegaan dat u UPN gebruikt als de gebruikers-id. Het behandelt het plannen van UPN-wijzigingen en het herstellen van problemen die kunnen voortvloeien uit UPN-wijzigingen.**
+
+> [!NOTE]
+> Voor ontwikkel aars raden we u aan om het objectID van de gebruiker als de onveranderbare id te gebruiken in plaats van de UPN-of e-mail adressen wanneer hun waarden kunnen veranderen.
+
 
 ## <a name="learn-about-upns-and-upn-changes"></a>Meer informatie over Upn's en UPN-wijzigingen
 Aanmeldings pagina's vragen gebruikers vaak om hun e-mail adres in te voeren wanneer de vereiste waarde daad werkelijk de UPN is. Daarom moet u de UPN van gebruikers wijzigen op het moment dat het primaire e-mail adres verandert.
@@ -47,10 +48,10 @@ U kunt een UPN wijzigen door het voor voegsel, achtervoegsel of beide te wijzige
 * **Het voor voegsel wijzigen**.
 
    *  Als de naam van een persoon bijvoorbeeld is gewijzigd, kunt u de account naam wijzigen:  
-BSimon@contoso.com omBJohnson@contoso.com
+BSimon@contoso.comomBJohnson@contoso.com
 
    * U kunt ook de bedrijfs standaard wijzigen voor voor voegsels:  
-Bsimon@contoso.com omBritta.Simon@contoso.com
+Bsimon@contoso.comomBritta.Simon@contoso.com
 
 * **Het achtervoegsel wijzigen**. <br>
 
@@ -60,7 +61,7 @@ Bsimon@contoso.com omBritta.Simon@contoso.com
      of<br>
     * Britta.Simon@corp.contoso.comAanBritta.Simon@labs.contoso.com 
 
-Wijzig de UPN van de gebruiker telkens wanneer het primaire e-mail adres voor een gebruiker wordt bijgewerkt. Ongeacht de reden voor het wijzigen van het e-mail bericht moet de UPN altijd worden bijgewerkt.
+U wordt aangeraden de UPN van gebruikers elke keer dat het primaire e-mail adres wordt bijgewerkt, te wijzigen.
 
 Zorg er tijdens de eerste synchronisatie van Active Directory naar Azure AD voor dat de e-mail berichten van de gebruikers identiek zijn aan hun Upn's.
 
@@ -77,7 +78,7 @@ U kunt bijvoorbeeld labs.contoso.com toevoegen en de Upn's en het e-mail adres v
 username@labs.contoso.com.
 
 >[!IMPORTANT]
-> Als Upn's in Active Directory en Azure Active Directory niet overeenkomen, zullen er problemen optreden. Als u [het achtervoegsel in Active Directory wijzigt](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain), moet u ervoor zorgen dat er een overeenkomende aangepaste domein naam is [toegevoegd en geverifieerd in azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain). 
+> Als u [het achtervoegsel in Active Directory wijzigt](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain), moet u ervoor zorgen dat er een overeenkomende aangepaste domein naam is [toegevoegd en geverifieerd in azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain). 
 
 ![Een scherm opname van geverifieerde domeinen](./media/howto-troubleshoot-upn-changes/custom-domains.png)
 
@@ -115,7 +116,7 @@ In de volgende secties worden mogelijke bekende problemen en tijdelijke oplossin
 **Bekend probleem**<br>
 Het wijzigen van de UPN van een gebruiker kan de relatie tussen de Azure AD-gebruiker en het gebruikers profiel dat is gemaakt op de toepassing, verstoren. Als de toepassing [just-in-time-inrichting](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)gebruikt, kan er een gloed nieuw gebruikers profiel worden gemaakt. Hiervoor moet de toepassings beheerder hand matige wijzigingen aanbrengen om deze relatie op te lossen.
 
-**Enkele**<br>
+**Tijdelijke oplossing**<br>
 Met [Azure AD Automated User Provisioning](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) kunt u automatisch uw gebruikers identiteiten maken, onderhouden en verwijderen in ondersteunde Cloud toepassingen. Door automatische gebruikers inrichting in uw toepassingen te configureren, worden de Upn's voor de toepassingen automatisch bijgewerkt. Test de toepassingen als onderdeel van de progressieve implementatie om te valideren dat ze niet worden beïnvloed door UPN-wijzigingen.
 Als u een ontwikkelaar bent, kunt u [scim-ondersteuning toevoegen aan uw toepassing](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) om automatische gebruikers inrichting van Azure Active Directory in te scha kelen. 
 
@@ -130,10 +131,14 @@ Aan Azure [ad gekoppelde](https://docs.microsoft.com/azure/active-directory/devi
 **Bekende problemen** <br>
 Gebruikers kunnen problemen ondervinden met eenmalige aanmelding met toepassingen die afhankelijk zijn van Azure AD voor verificatie.
 
-**Enkele** <br>
+**Afsluiting** <br>
+De problemen die in deze sectie worden vermeld, zijn vastgesteld op de Windows 10-update van 2020 (2004).
+
+**Tijdelijke oplossing** <br>
 Sta voldoende tijd toe om de UPN-wijziging te synchroniseren met Azure AD. Nadat u hebt gecontroleerd of de nieuwe UPN wordt weer gegeven in de Azure AD-Portal, vraagt u de gebruiker om zich aan te melden met de nieuwe UPN. U kunt ook controleren via [Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0). Nadat u zich hebt aangemeld met de nieuwe UPN, kunnen er nog steeds verwijzingen naar de oude UPN worden weer gegeven op de Windows-instelling ' toegang tot werk of school '.
 
 ![Scherm opname van geverifieerde domeinen](./media/howto-troubleshoot-upn-changes/other-user.png)
+
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>Hybride Azure AD-gekoppelde apparaten
 
@@ -149,13 +154,17 @@ Daarnaast wordt het volgende bericht weer gegeven, waarbij het na één minuut o
 
 "Uw PC wordt over één minuut automatisch opnieuw opgestart. Er is een probleem opgetreden in Windows en opnieuw moet worden opgestart. Sluit dit bericht nu en sla uw werk op.
 
-**Enkele** 
+**Afsluiting** <br>
+De problemen die in deze sectie worden vermeld, zijn vastgesteld op de Windows 10-update van 2020 (2004).
+
+**Tijdelijke oplossing** 
 
 Het apparaat moet worden ontkoppeld van Azure AD en opnieuw worden gestart. Nadat het apparaat opnieuw is opgestart, wordt automatisch opnieuw lid van Azure AD en moet de gebruiker zich aanmelden met de nieuwe UPN door de tegel ' andere gebruiker ' te selecteren. Als u een apparaat uit Azure AD wilt ontkoppelen, voert u de volgende opdracht uit vanaf een opdracht prompt:
 
 **dsregcmd /leave**
 
 Als de gebruiker wordt gebruikt, moet deze [opnieuw worden inge schreven](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-whfb-provision) voor Windows hello voor bedrijven. Windows 7-en 8,1-apparaten worden niet beïnvloed door dit probleem nadat UPN-wijzigingen zijn aangebracht.
+
 
 ## <a name="microsoft-authenticator-known-issues-and-workarounds"></a>Bekende problemen en tijdelijke oplossingen Microsoft Authenticator
 
@@ -179,7 +188,7 @@ De Microsoft Authenticator-app biedt een out-of-band-verificatie optie. In plaat
 
 Wanneer u de UPN van een gebruiker wijzigt, wordt de oude UPN nog steeds weer gegeven in het gebruikers account en kan er geen melding worden ontvangen. [Verificatie codes](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-faq) blijven werken.
 
-**Enkele**
+**Tijdelijke oplossing**
 
 Als er een melding wordt ontvangen, geeft u de gebruiker de opdracht om de melding te sluiten, de verificator-app te openen, op de optie controleren op meldingen te tikken en de MFA-prompt goed te keuren. Daarna wordt de UPN die op het account wordt weer gegeven, bijgewerkt. Opmerking: de bijgewerkte UPN kan worden weer gegeven als een nieuw account. Dit is het gevolg van een andere verificator functionaliteit die wordt gebruikt. Raadpleeg de aanvullende bekende problemen in dit artikel voor meer informatie.
 
@@ -198,7 +207,7 @@ Daarnaast kunnen toepassingen deel nemen aan meer geavanceerde functies, zoals [
 **Bekende problemen**<br>
 Er wordt een gebruiker weer gegeven met meer interactieve verificatie prompts voor nieuwe toepassingen die gebruikmaken van de door Broker ondersteunde aanmelding omdat de login_hint door gegeven door de toepassing en de UPN die is opgeslagen op de Broker.
 
-**Enkele** <br> De gebruiker moet het account hand matig verwijderen uit Microsoft Authenticator en een nieuwe aanmelding starten vanuit een toepassing met Broker ondersteuning. Het account wordt automatisch toegevoegd na de eerste verificatie.
+**Tijdelijke oplossing** <br> De gebruiker moet het account hand matig verwijderen uit Microsoft Authenticator en een nieuwe aanmelding starten vanuit een toepassing met Broker ondersteuning. Het account wordt automatisch toegevoegd na de eerste verificatie.
 
 ### <a name="device-registration"></a>Apparaatregistratie
 
@@ -213,7 +222,7 @@ De Microsoft Authenticator-app is verantwoordelijk voor het registreren van het 
 **Bekende problemen**<br>
 Wanneer u de UPN wijzigt, wordt er een nieuw account met de nieuwe UPN weer gegeven in de app Microsoft Authenticator, terwijl het account met de oude UPN nog steeds wordt weer gegeven. Daarnaast wordt de oude UPN weer gegeven in het gedeelte apparaatregistratie op de app-instellingen. Er is geen wijziging in de normale functionaliteit van apparaatregistratie of de afhankelijke scenario's.
 
-**Enkele** <br> Als u alle verwijzingen naar de oude UPN in de Microsoft Authenticator-app wilt verwijderen, geeft u de gebruiker de opdracht om de oude en nieuwe accounts hand matig te verwijderen uit Microsoft Authenticator, moet u zich opnieuw registreren voor MFA en opnieuw lid worden van het apparaat.
+**Tijdelijke oplossing** <br> Als u alle verwijzingen naar de oude UPN in de Microsoft Authenticator-app wilt verwijderen, geeft u de gebruiker de opdracht om de oude en nieuwe accounts hand matig te verwijderen uit Microsoft Authenticator, moet u zich opnieuw registreren voor MFA en opnieuw lid worden van het apparaat.
 
 ### <a name="phone-sign-in"></a>Aanmelding via de telefoon
 
@@ -222,7 +231,7 @@ Met aanmelden via de telefoon kunnen gebruikers zich zonder wacht woord aanmelde
 **Bekende problemen** <br>
 Gebruikers kunnen zich niet aanmelden via de telefoon omdat ze geen meldingen ontvangen. Als de gebruiker op controleren op meldingen tikt, wordt er een fout bericht weer geven.
 
-**Enkele**<br>
+**Tijdelijke oplossing**<br>
 De gebruiker moet de vervolg keuzelijst selecteren op het account dat is ingeschakeld voor aanmelding via de telefoon en selecteer aanmelding via de telefoon uitschakelen. Indien gewenst, kan de aanmelding van de telefoon opnieuw worden ingeschakeld.
 
 ## <a name="security-key-fido2-known-issues-and-workarounds"></a>Bekende problemen met de beveiligings sleutel (FIDO2) en tijdelijke oplossingen
@@ -230,7 +239,7 @@ De gebruiker moet de vervolg keuzelijst selecteren op het account dat is ingesch
 **Bekende problemen** <br>
 Wanneer meerdere gebruikers op dezelfde sleutel zijn geregistreerd, toont het aanmeldings scherm een pagina voor het selecteren van accounts waarop de oude UPN wordt weer gegeven. Aanmeldingen met behulp van beveiligings sleutels worden niet beïnvloed door UPN-wijzigingen.  
 
-**Enkele**<br>
+**Tijdelijke oplossing**<br>
 Als gebruikers verwijzingen naar oude Upn's wilt verwijderen, moeten ze [de beveiligings sleutel opnieuw instellen en opnieuw registreren](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key#known-issues).
 
 ## <a name="onedrive-known-issues-and-workarounds"></a>Bekende problemen met OneDrive en tijdelijke oplossingen

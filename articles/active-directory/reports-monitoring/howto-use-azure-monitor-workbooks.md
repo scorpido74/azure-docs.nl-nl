@@ -7,19 +7,19 @@ manager: daveba
 ms.assetid: 4066725c-c430-42b8-a75b-fe2360699b82
 ms.service: active-directory
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3c6b8ef04e44a68290f61ed4688e3379130231ef
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: ec492466e107eb6f4821f0e6d2caed9daa141a35
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799373"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608947"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Monitor werkmappen gebruiken voor Azure Active Directory rapporten
 
@@ -186,7 +186,7 @@ Werkmappen bevatten aanmeld logboek query's waarmee IT-beheerders de impact van 
 ### <a name="instructions"></a>Instructies 
 Als u toegang wilt krijgen tot de werkmap voor inzichten voor voorwaardelijke toegang, selecteert u de Insights-werkmap voor **voorwaardelijke toegang** in de sectie voorwaardelijke toegang. Deze werkmap toont de verwachte impact van elk beleid voor voorwaardelijke toegang in uw Tenant. Selecteer een of meer beleids regels voor voorwaardelijke toegang in de vervolg keuzelijst en Verfijn het bereik van de werkmap door de volgende filters toe te passen: 
 
-- **Tijdsbereik**
+- **Tijds bereik**
 
 - **Gebruiker**
 
@@ -231,7 +231,7 @@ In deze werkmap worden de volgende uitgeschakelde aanmeldings trends weer gegeve
 
 - Privacyverklaring vereist
 
-- Overige
+- Anders
 
 
 U kunt elke trend filteren op de volgende categorieën:

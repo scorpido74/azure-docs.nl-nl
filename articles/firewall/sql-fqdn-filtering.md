@@ -4,15 +4,15 @@ description: In dit artikel leert u hoe u SQL-FQDN-in Azure Firewall toepassings
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/18/2020
 ms.author: victorh
-ms.openlocfilehash: e7b21a4ebf18cad51898e3a83b622e518c6b391e
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: e921ea707e4a0df968d162726fe53064491cb032
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322399"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610503"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Azure Firewall toepassings regels met SQL-FQDN configureren
 

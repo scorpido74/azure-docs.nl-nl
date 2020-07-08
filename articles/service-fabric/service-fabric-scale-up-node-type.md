@@ -3,22 +3,19 @@ title: Een Azure Service Fabric-knooppunt type omhoog schalen
 description: Meer informatie over hoe u een Service Fabric cluster kunt schalen door een Schaalset voor virtuele machines toe te voegen.
 ms.topic: article
 ms.date: 02/13/2019
-ms.openlocfilehash: 5ea4f37a6c088c6f738ef05db8b5b295982c27fe
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 2d700367049e0bf9bf710aad110c850a78c26220
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674222"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610690"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Een primair knooppunttype voor Service Fabric-clusters omhoog schalen
 In dit artikel wordt beschreven hoe u het primaire knooppunt type van een Service Fabric cluster omhoog kunt schalen door de resources van de virtuele machine te verg Roten. Een Service Fabric cluster is een met het netwerk verbonden reeks virtuele of fysieke machines waarop uw micro services worden geïmplementeerd en beheerd. Een computer of virtuele machine die deel uitmaakt van een cluster, wordt een knoop punt genoemd. Virtuele-machine schaal sets vormen een Azure Compute-resource die u gebruikt om een verzameling virtuele machines als een set te implementeren en te beheren. Elk knooppunt type dat in een Azure-cluster is gedefinieerd, wordt [ingesteld als een afzonderlijke schaalset](service-fabric-cluster-nodetypes.md). Elk knooppunt type kan vervolgens afzonderlijk worden beheerd. Nadat u een Service Fabric cluster hebt gemaakt, kunt u het type van een cluster knooppunt verticaal schalen (de resources van de knoop punten wijzigen) of het besturings systeem van het knooppunt type Vm's bijwerken.  U kunt het cluster op elk gewenst moment schalen, zelfs wanneer werk belastingen op het cluster worden uitgevoerd.  Naarmate het cluster wordt geschaald, worden uw toepassingen ook automatisch geschaald.
 
 > [!WARNING]
-> Wijzig de primaire NodeType-VM-SKU niet als de status van het cluster beschadigd is. Als de status van het cluster niet in orde is, kunt u het cluster alleen verder Insta Biel doen als u de VM-SKU probeert te wijzigen.
+> Probeer niet een procedure van een primair knooppunt type scale up uit te voeren als de cluster status niet in orde is, omdat hierdoor het cluster alleen verder wordt beschadigd.
 >
-> We raden u aan de VM-SKU van een schaalset/knooppunt type alleen te wijzigen als deze wordt uitgevoerd in een [zilver duurzaamheid of hoger](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster). Het wijzigen van de SKU-grootte van de VM is een in-place infrastructuur bewerking voor het uitvoeren van gegevens. Zonder enige mogelijkheid om deze wijziging te vertragen of te bewaken, is het mogelijk dat de bewerking gegevens verlies kan veroorzaken voor stateful Services of andere onvoorziene operationele problemen veroorzaakt, zelfs voor stateless workloads. Dit betekent uw primaire knooppunt type, dat wordt uitgevoerd stateful service infrastructuur systeem services, of een type knoop punt waarop de werk belasting van de stateful-toepassing wordt uitgevoerd.
->
-
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -71,7 +68,7 @@ $parameterFilePath = "C:\Deploy-2NodeTypes-2ScaleSets.parameters.json"
 > [!NOTE]
 > Zorg ervoor dat de `certOutputFolder` locatie aanwezig is op de lokale computer voordat u de opdracht uitvoert om een nieuw service Fabric-cluster te implementeren.
 
-Open vervolgens het bestand *Deploy-2NodeTypes-2ScaleSets. para meters. json* en wijzig de waarden voor `clusterName` en, `dnsName` zodat deze overeenkomen met de dynamische waarden die u hebt ingesteld in Power shell en sla uw wijzigingen op.
+Open vervolgens de *Deploy-2NodeTypes-2ScaleSets.parameters.jsin* het bestand en wijzig de waarden voor `clusterName` en, `dnsName` zodat deze overeenkomen met de dynamische waarden die u hebt ingesteld in Power shell en sla uw wijzigingen op.
 
 Implementeer vervolgens het Service Fabric test cluster:
 
@@ -159,6 +156,8 @@ Get-ServiceFabricClusterHealth
 ## <a name="migrate-nodes-to-the-new-scale-set"></a>Knoop punten migreren naar de nieuwe schaalset
 
 U kunt nu beginnen met het uitschakelen van de knoop punten van de oorspronkelijke schaalset. Wanneer deze knoop punten worden uitgeschakeld, worden de systeem services en Seed-knoop punten gemigreerd naar de virtuele machines van de nieuwe schaalset, omdat deze ook als primair knooppunt type is gemarkeerd.
+
+Voor het omhoog schalen van niet-primaire knooppunt typen, in deze stap wijzigt u de beperking voor service plaatsing in de nieuwe virtuele-machine schaalset/knooppunt type en vermindert u vervolgens het aantal exemplaren van de oude virtuele-machine schaalset naar nul, één knoop punt tegelijk (om ervoor te zorgen dat het verwijderen van knoop punten niet van invloed is op de betrouw baarheid van het cluster).
 
 ```powershell
 # Disable the nodes in the original scale set.

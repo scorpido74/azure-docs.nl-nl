@@ -3,12 +3,12 @@ title: Vragen over detectie, evaluatie en afhankelijkheids analyse in Azure Migr
 description: Krijg antwoorden op veelgestelde vragen over detectie, evaluatie en afhankelijkheids analyse in Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: abcc84ae376e165eb0d677694acbd7d42a2efd8c
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 7d42de52d35d5a3c5e9a54673d8cd933fbee04aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079423"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610299"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Detectie, beoordeling en afhankelijkheids analyse-Veelgestelde vragen
 
@@ -29,10 +29,34 @@ Bekijk de ondersteunde geografische regio's voor [openbare](migrate-support-matr
 
 U kunt Maxi maal 10.000 VMware-Vm's, Maxi maal 5.000 virtuele Hyper-V-machines en Maxi maal 1000 fysieke servers, detecteren door één apparaat te gebruiken. Als u meer computers hebt, leest u over [het schalen van een Hyper-V-beoordeling](scale-hyper-v-assessment.md), [het schalen van een VMware-evaluatie](scale-vmware-assessment.md)of [het schalen van een fysieke server beoordeling](scale-physical-assessment.md).
 
+## <a name="how-do-i-choose-the-assessment-type"></a>Hoe kan ik het beoordelings type kiezen?
+
+- Gebruik **Azure VM-evaluaties** als u uw on-premises virtuele [VMware-machines](how-to-set-up-appliance-vmware.md), [virtuele Hyper-V-](how-to-set-up-appliance-hyper-v.md)machines en [fysieke servers](how-to-set-up-appliance-physical.md) wilt controleren op migratie naar Azure-vm's. [Meer informatie](concepts-assessment-calculation.md)
+
+- Gebruik de evaluaties van de **Azure VMware-oplossing (AVS)** als u uw on-premises [virtuele VMware-machines](how-to-set-up-appliance-vmware.md) wilt controleren op migratie naar [Azure VMware-oplossing (AVS)](https://docs.microsoft.com/azure/azure-vmware/introduction) met dit beoordelings type. [Meer informatie](concepts-azure-vmware-solution-assessment-calculation.md)
+
+- U kunt een algemene groep alleen met VMware-machines gebruiken om beide typen evaluaties uit te voeren. Als u AVS-evaluaties in Azure Migrate voor het eerst uitvoert, is het raadzaam om een nieuwe groep VMware-machines te maken.
+
+## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>Ik zie sommige groepen niet bij het maken van een evaluatie van een Azure VMware-oplossing (AVS)
+
+- AVS-evaluatie kan worden uitgevoerd voor groepen die alleen VMware-machines hebben. Verwijder alle niet-VMware-machines uit de groep als u van plan bent om een AVS-evaluatie uit te voeren.
+- Als u AVS-evaluaties in Azure Migrate voor de eerste keer uitvoert, is het raadzaam om een nieuwe groep VMware-machines te maken.
+
+## <a name="how-do-i-select-ftt-raid-level-in-avs-assessment"></a>Hoe kan ik selecteert u FTT-RAID-niveau in AVS-evaluatie?
+
+De opslag-engine die in AVS wordt gebruikt, is vSAN. vSAN Storage policies bepalen opslag vereisten voor uw virtuele machines. Met deze beleids regels wordt het vereiste service niveau voor uw virtuele machines gegarandeerd, omdat ze bepalen hoe opslag wordt toegewezen aan de virtuele machine. Dit zijn de beschik bare FTT-RAID-combi Naties: 
+
+**Te verdragen fouten (FTT)** | **RAID-configuratie** | **Minimum aantal hosts vereist** | **Grootte van overwegingen**
+--- | --- | --- | --- 
+1 | RAID-1 (spie gelen) | 3 | Een VM van 100 GB verbruikt 200 GB.
+1 | RAID-5 (code ring verwijderen) | 4 | Een VM van 100 GB verbruikt 133.33 GB
+2 | RAID-1 (spie gelen) | 5 | Een VM van 100 GB verbruikt 300 GB.
+2 | RAID-6 (code ring verwijderen) | 6 | Een VM van 100 GB gebruikt 150 GB.
+3 | RAID-1 (spie gelen) | 7 | Een VM van 100 GB verbruikt 400 GB.
+
 ## <a name="i-cant-see-some-vm-types-in-azure-government"></a>Ik zie geen enkele VM-typen in Azure Government
 
 VM-typen die voor evaluatie en migratie worden ondersteund, zijn afhankelijk van de beschik baarheid op Azure Government locatie. U kunt VM-typen [controleren en vergelijken](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines) in azure Government.
-
 
 ## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>De grootte van mijn VM is gewijzigd. Kan ik een evaluatie opnieuw uitvoeren?
 
@@ -47,7 +71,7 @@ Het Azure Migrate apparaat verzamelt voortdurend informatie over de on-premises 
 
 Ja, Azure Migrate vereist vCenter Server in een VMware-omgeving om detectie uit te voeren. Azure Migrate biedt geen ondersteuning voor detectie van ESXi-hosts die niet worden beheerd door vCenter Server.
 
-## <a name="what-are-the-sizing-options"></a>Wat zijn de opties voor het aanpassen van de grootte?
+## <a name="what-are-the-sizing-options-in-an-azure-vm-assessment"></a>Wat zijn de opties voor het aanpassen van de grootte van een Azure VM-evaluatie?
 
 Bij een on-premises grootte wordt Azure Migrate geen rekening gehouden met de prestatie gegevens van de virtuele machine voor evaluatie. Azure Migrate evalueert VM-grootten op basis van de on-premises configuratie. De grootte van de prestaties is gebaseerd op de gebruiks gegevens.
 
@@ -59,18 +83,18 @@ De schijf grootte is ook afhankelijk van de grootte criteria en het opslag type:
 - Als de grootte criteria op basis van prestaties zijn en het opslag type automatisch is, neemt Azure Migrate de IOPS-en doorvoer waarden van de schijf in rekening wanneer het type doel schijf (Standard of Premium) wordt geïdentificeerd.
 - Als de grootte criteria op basis van prestaties zijn en het opslag type Premium is, raadt Azure Migrate een Premium-schijf-SKU aan op basis van de grootte van de on-premises schijf. Dezelfde logica wordt toegepast op schijf grootte wanneer de grootte is ingesteld op on-premises en het opslag type Standard of Premium is.
 
-## <a name="does-performance-history-and-utilization-affect-sizing"></a>Is de prestatie geschiedenis en het gebruik van invloed op de grootte?
+## <a name="does-performance-history-and-utilization-affect-sizing-in-an-azure-vm-assessment"></a>Is de prestatie geschiedenis en het gebruik van invloed op de grootte van een Azure VM-evaluatie?
 
-Ja, de prestatie geschiedenis en het gebruik zijn van invloed op de grootte van Azure Migrate.
+Ja, prestatie geschiedenis en gebruik zijn van invloed op de grootte van een Azure VM-evaluatie.
 
 ### <a name="performance-history"></a>Prestatiegeschiedenis
 
 Azure Migrate verzamelt de prestatie geschiedenis van on-premises computers, en gebruikt deze vervolgens om de VM-grootte en het schijf type in azure aan te bevelen:
 
 1. Het apparaat maakt continu gebruik van de on-premises omgeving voor het verzamelen van gegevens in realtime om de 20 seconden.
-1. Het apparaat rolt de verzamelde voor beelden van 20 seconden samen en gebruikt deze voor het maken van één gegevens punt om de 15 minuten.
-1. Voor het maken van het gegevens punt selecteert het apparaat de piek waarde van alle voor beelden van 20 seconden.
-1. Het apparaat verzendt het gegevens punt naar Azure.
+2. Het apparaat rolt de verzamelde voor beelden van 20 seconden samen en gebruikt deze voor het maken van één gegevens punt om de 15 minuten.
+3. Voor het maken van het gegevens punt selecteert het apparaat de piek waarde van alle voor beelden van 20 seconden.
+4. Het apparaat verzendt het gegevens punt naar Azure.
 
 ### <a name="utilization"></a>Gebruik
 
@@ -80,11 +104,17 @@ Als u bijvoorbeeld de duur van de prestaties instelt op één dag en de percenti
 
 Het gebruik van de waarde voor het percentiel van 95e zorgt ervoor dat uitbijters worden genegeerd. Uitbijters kunnen worden opgenomen als uw Azure Migrate gebruikmaakt van het 99e percentiel. Als u het piek gebruik voor de periode wilt kiezen zonder uitbijters te missen, stelt u Azure Migrate in om het 99e percentiel te gebruiken.
 
+
 ## <a name="how-are-import-based-assessments-different-from-assessments-with-discovery-source-as-appliance"></a>Wat is het verschil tussen evaluaties op basis van een import bewerking en de detectie bron als apparaat?
 
-Evaluaties op basis van import zijn evaluaties die zijn gemaakt met machines die in Azure Migrate worden geïmporteerd met behulp van een CSV-bestand. Er zijn slechts vier velden die verplicht moeten worden geïmporteerd: Server naam, kern geheugens en besturings systeem. Hier volgen enkele dingen die u moet weten: 
+Azure VM-evaluaties op basis van import zijn evaluaties die zijn gemaakt met machines die in Azure Migrate worden geïmporteerd met behulp van een CSV-bestand. Er zijn slechts vier velden die verplicht moeten worden geïmporteerd: Server naam, kern geheugens en besturings systeem. Hier volgen enkele dingen die u moet weten: 
  - De gereedheids criteria zijn minder strikt in evaluaties op basis van een import bewerking voor de opstart type-para meter. Als het opstart type niet is opgegeven, wordt ervan uitgegaan dat de computer een BIOS-opstart type heeft en dat de machine niet als **voorwaardelijk**is gemarkeerd. In beoordelingen met detectie bron als apparaat is de gereedheid gemarkeerd als **voorwaardelijk gereed** als het opstart type ontbreekt. Dit verschil in de gereedheids berekening is omdat gebruikers mogelijk niet alle informatie over de computers in de vroege fase van de migratie planning hebben wanneer op import gebaseerde evaluaties worden uitgevoerd. 
  - Bij evaluaties op basis van de prestaties wordt gebruikgemaakt van de gebruiks waarde die door de gebruiker wordt geleverd voor het berekenen van de rechter grootte. Aangezien de gebruiks waarde wordt geleverd door de gebruiker, worden de opties voor de **prestatie geschiedenis** en het **percentiel gebruik** in de eigenschappen van de beoordeling uitgeschakeld. In beoordelingen met detectie bron als apparaat wordt de gekozen percentiel waarde opgehaald uit de prestatie gegevens die zijn verzameld door het apparaat.
+
+## <a name="why-is-the-suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Waarom is het voorgestelde migratie hulpprogramma in op import gebaseerde AVS-evaluatie gemarkeerd als onbekend?
+
+Voor machines die worden geïmporteerd via een CSV-bestand, is het standaard hulp programma voor migratie in een AVS-evaluatie onbekend. Voor VMware-machines is het echter raadzaam de VMWare Hybrid Cloud extension (HCX)-oplossing te gebruiken. [Meer informatie](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation).
+
 
 ## <a name="what-is-dependency-visualization"></a>Wat is de visualisatie van afhankelijkheden?
 
@@ -103,7 +133,7 @@ Ondersteuning | Deze optie is momenteel in Preview en is alleen beschikbaar voor
 Agent | U hoeft geen agents te installeren op computers die u wilt cross-checken. | Agents die moeten worden geïnstalleerd op elke on-premises computer die u wilt analyseren: [micro soft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)en de [dependency agent](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent). 
 Vereisten | [Bekijk](concepts-dependency-visualization.md#agentless-analysis) de vereisten en implementatie behoeften. | [Bekijk](concepts-dependency-visualization.md#agent-based-analysis) de vereisten en implementatie behoeften.
 Log Analytics | Niet vereist. | Azure Migrate gebruikt de [servicetoewijzing](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) oplossing in [Azure monitor logboeken](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) voor de visualisatie van afhankelijkheden. [Meer informatie](concepts-dependency-visualization.md#agent-based-analysis).
-Hoe werkt het? | Hiermee worden TCP-verbindings gegevens vastgelegd op computers die zijn ingeschakeld voor de visualisatie van afhankelijkheden. Na detectie verzamelt het gegevens met intervallen van vijf minuten. | Servicetoewijzing agents die op een computer zijn geïnstalleerd, verzamelen gegevens over TCP-processen en inkomende/uitgaande verbindingen voor elk proces.
+Uitleg | Hiermee worden TCP-verbindings gegevens vastgelegd op computers die zijn ingeschakeld voor de visualisatie van afhankelijkheden. Na detectie verzamelt het gegevens met intervallen van vijf minuten. | Servicetoewijzing agents die op een computer zijn geïnstalleerd, verzamelen gegevens over TCP-processen en inkomende/uitgaande verbindingen voor elk proces.
 Gegevens | Naam van de bron computer server, proces, toepassings naam.<br/><br/> Naam van de doel computer server, proces, toepassings naam en poort. | Naam van de bron computer server, proces, toepassings naam.<br/><br/> Naam van de doel computer server, proces, toepassings naam en poort.<br/><br/> Het aantal gegevens over verbindingen, latentie en gegevens overdracht wordt verzameld en beschikbaar gesteld voor Log Analytics query's. 
 Visualisatie | Afhankelijkheids toewijzing van één server kan worden weer gegeven gedurende een periode van één uur tot 30 dagen. | Afhankelijkheids toewijzing van één server.<br/><br/> De kaart kan alleen over een uur worden weer gegeven.<br/><br/> Afhankelijkheids toewijzing van een groep servers.<br/><br/> Servers in een groep toevoegen aan en verwijderen uit de kaart weergave.
 Gegevensexport | Gegevens van de afgelopen 30 dagen kunnen worden gedownload in een CSV-indeling. | Gegevens kunnen worden opgevraagd met Log Analytics.

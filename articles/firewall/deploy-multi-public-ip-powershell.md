@@ -4,22 +4,22 @@ description: In dit artikel leert u hoe u een Azure Firewall met meerdere open b
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: 178daba47acaf8ad161a0634c16b046ec330abb6
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: cbad025a0d0c4d679ea9cdc7557c81b5145798fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864424"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610673"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses-using-azure-powershell"></a>Azure Firewall met meerdere openbare IP-adressen implementeren met behulp van Azure PowerShell
 
 Deze functie biedt de volgende scenario's:
 
-- **DNAT** : u kunt meerdere exemplaren van de standaard poort naar uw back-endservers omzetten. Als u bijvoorbeeld twee open bare IP-adressen hebt, kunt u TCP-poort 3389 (RDP) voor beide IP-adressen omzetten.
-- **SNAT** : er zijn extra poorten beschikbaar voor uitgaande SNAT-verbindingen, waardoor de kans op een SNAT-poort ontstaat. Op dit moment Azure Firewall het open bare IP-adres van de bron wille keurig selecteren dat moet worden gebruikt voor een verbinding. Als u een stroomafwaarts filter op uw netwerk hebt, moet u alle open bare IP-adressen die zijn gekoppeld aan uw firewall toestaan. Overweeg het gebruik van een [openbaar IP-adres voorvoegsel](../virtual-network/public-ip-address-prefix.md) om deze configuratie te vereenvoudigen.
+- **DNAT**: u kunt meerdere exemplaren van de standaardpoort naar uw back-endservers omzetten. Als u bijvoorbeeld twee openbare IP-adressen hebt, kunt u TCP-poort 3389 (RDP) voor beide IP-adressen omzetten.
+- **SNAT**: er zijn extra poorten beschikbaar voor uitgaande SNAT-verbindingen, waardoor de kans op SNAT-poortuitputting wordt verlaagd. Op dit moment selecteert Azure Firewall op een willekeurige manier het openbare IP-adres van de bron dat moet worden gebruikt voor een verbinding. Als u een downstream-filter op uw netwerk hebt, moet u alle openbare IP-adressen toestaan die zijn gekoppeld aan uw firewall. U kunt een [openbaar IP-adresvoorvoegsel](../virtual-network/public-ip-address-prefix.md) gebruiken om deze configuratie te vereenvoudigen.
  
 Azure Firewall met meerdere open bare IP-adressen is beschikbaar via de Azure Portal, Azure PowerShell, Azure CLI, REST en sjablonen. U kunt een Azure Firewall implementeren met Maxi maal 250 open bare IP-adressen.
 
@@ -102,4 +102,4 @@ $azFw | Set-AzFirewall
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Snelstartgids: een Azure Firewall met meerdere open bare IP-adressen maken-Resource Manager-sjabloon](quick-create-multiple-ip-template.md)
+* [Quickstart: Een Azure-firewall met meerdere openbare IP-adressen maken: Resource Manager-sjabloon](quick-create-multiple-ip-template.md)

@@ -1,18 +1,18 @@
 ---
 title: Meer informatie over Azure IoT Hub module apparaatdubbels | Microsoft Docs
 description: 'Ontwikkelaars handleiding: gebruik module apparaatdubbels om status-en configuratie gegevens te synchroniseren tussen IoT Hub en uw apparaten'
-author: chrissie926
+author: ash2017
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/01/2020
-ms.author: menchi
-ms.openlocfilehash: 9d45da11b26a3c16c2be544fa449bdf36c0bcd25
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.date: 06/29/2020
+ms.author: asrastog
+ms.openlocfilehash: ef622d950595752e616608ef56d8df66b8a9813f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737730"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610146"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Module apparaatdubbels in IoT Hub begrijpen en gebruiken
 
@@ -236,35 +236,45 @@ De [sdk's van het Azure IOT-apparaat](iot-hub-devguide-sdks.md) maken het eenvou
 
 Labels, gewenste eigenschappen en gerapporteerde eigenschappen zijn JSON-objecten met de volgende beperkingen:
 
-* **Sleutels**: alle sleutels in JSON-objecten zijn hoofdletter gevoelige 64 bytes UTF-8 Unicode-teken reeksen. Toegestane tekens bevatten UNICODE-besturings tekens (segmenten C0 en C1), en `.` SP, en `$` .
+* **Sleutels**: alle sleutels in JSON-objecten zijn UTF-8-code ring, hoofdletter gevoelig en Maxi maal 1 KB lang. Toegestane tekens bevatten UNICODE-besturings tekens (segmenten C0 en C1), en, en `.` `$` sp.
 
 * **Waarden**: alle waarden in JSON-objecten kunnen van de volgende JSON-typen zijn: Boolean, Number, String, object. Matrices zijn niet toegestaan.
 
     * Gehele getallen kunnen een minimum waarde van-4503599627370496 en een maximum waarde van 4503599627370495 hebben.
 
-    * Teken reeks waarden zijn UTF-8-code ring en kunnen Maxi maal 512 bytes lang zijn.
+    * Teken reeks waarden zijn UTF-8-code ring en kunnen een maximum lengte hebben van 4 KB.
 
-* **Diepte**: alle JSON-objecten in labels, gewenste en gerapporteerde eigenschappen kunnen een maximale diepte van 5 hebben. Het volgende object is bijvoorbeeld geldig:
+* **Diepte**: de maximale diepte van JSON-objecten in Tags, gewenste eigenschappen en gerapporteerde eigenschappen is 10. Het volgende object is bijvoorbeeld geldig:
 
-    ```json
-    {
-        ...
-        "tags": {
-            "one": {
-                "two": {
-                    "three": {
-                        "four": {
-                            "five": {
-                                "property": "value"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        ...
-    }
-    ```
+   ```json
+   {
+       ...
+       "tags": {
+           "one": {
+               "two": {
+                   "three": {
+                       "four": {
+                           "five": {
+                               "six": {
+                                   "seven": {
+                                       "eight": {
+                                           "nine": {
+                                               "ten": {
+                                                   "property": "value"
+                                               }
+                                           }
+                                       }
+                                   }
+                               }
+                           }
+                       }
+                   }
+               }
+           }
+       },
+       ...
+   }
+   ```
 
 ## <a name="module-twin-size"></a>Dubbele grootte van module
 

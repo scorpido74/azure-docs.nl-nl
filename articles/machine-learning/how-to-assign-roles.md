@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/06/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: eaa78637a2a88c1fceddf5b7ac9cd928ed8a444a
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: f289be1b3432d9c62b4841c513088afa16e0e447
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261474"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609245"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Toegang tot een Azure Machine Learning-werk ruimte beheren
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -62,6 +62,11 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 > [!NOTE]
 > de opdracht AZ ml Workspace share werkt niet voor een federatief account door Azure Active Directory B2B. Gebruik de Azure UI-Portal in plaats van de opdracht.
 
+
+## <a name="azure-machine-learning-operations"></a>Azure Machine Learning bewerkingen
+
+Azure Machine Learning ingebouwde acties voor veel bewerkingen en taken. Zie [Azure resource providers-bewerkingen](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)voor een volledige lijst.
+
 ## <a name="create-custom-role"></a>Aangepast rol maken
 
 Als de ingebouwde rollen onvoldoende zijn, kunt u aangepaste rollen maken. Aangepaste rollen kunnen Lees-, schrijf-, verwijder-en reken resource machtigingen hebben in die werk ruimte. U kunt de rol beschikbaar maken op een specifiek werk ruimte niveau, op een specifiek niveau van een resource groep of op een specifiek abonnements niveau.
@@ -90,7 +95,8 @@ Als u een aangepaste rol wilt maken, maakt u eerst een JSON-bestand met een rold
 }
 ```
 
-U kunt het `AssignableScopes` veld wijzigen om het bereik van deze aangepaste rol in te stellen op abonnements niveau, op het niveau van de resource groep of op een bepaald niveau van de werk ruimte.
+> [!TIP]
+> U kunt het `AssignableScopes` veld wijzigen om het bereik van deze aangepaste rol in te stellen op abonnements niveau, op het niveau van de resource groep of op een bepaald niveau van de werk ruimte.
 
 Deze aangepaste rol kan alles in de werk ruimte doen, met uitzonde ring van de volgende acties:
 
@@ -113,9 +119,6 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 
 Zie [aangepaste rollen voor Azure-resources](/azure/role-based-access-control/custom-roles)voor meer informatie over aangepaste rollen.
 
-Zie bewerkingen voor de [resource provider](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)voor meer informatie over de bewerkingen (acties) die kunnen worden gebruikt met aangepaste rollen.
-
-
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
 
@@ -129,7 +132,7 @@ De volgende tabel bevat een overzicht van Azure Machine Learning activiteiten en
 | Nieuw reken cluster maken | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor:`workspaces/computes/write` |
 | Nieuwe VM van notebook maken | Niet vereist | Eigenaar of bijdrager | Niet mogelijk |
 | Nieuw reken exemplaar maken | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor:`workspaces/computes/write` |
-| Activiteit voor gegevens vlak zoals het verzenden van een uitvoering, toegang tot gegevens, het implementeren van een model of publicatie pijplijn | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor:`workspaces/*/write` <br/> U hebt ook een gegevens opslag die is geregistreerd in de werk ruimte, zodat MSI toegang heeft tot gegevens in uw opslag account. |
+| Data-activiteit, zoals het verzenden van een uitvoering, het openen van gegevens, het implementeren van een model of het publiceren van de pijp lijn | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor:`workspaces/*/write` <br/> U moet ook een gegevens opslag registreren die is geregistreerd in de werk ruimte om MSI toegang te geven tot gegevens in uw opslag account. |
 
 
 ### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>V. Hoe kan ik alle aangepaste rollen in mijn abonnement weer geven?
@@ -142,7 +145,7 @@ az role definition list --subscription <sub-id> --custom-role-only true
 
 ### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>V. De roldefinitie voor een rol in mijn abonnement Hoe kan ik vinden?
 
-Voer de volgende opdracht uit in de Azure CLI. Houd er rekening mee dat deze `<role-name>` in dezelfde notatie moet worden geretourneerd als de bovenstaande opdracht.
+Voer de volgende opdracht uit in de Azure CLI. De `<role-name>` notatie moet hetzelfde zijn als de indeling die wordt geretourneerd door de bovenstaande opdracht.
 
 ```azurecli-interactive
 az role definition list -n <role-name> --subscription <sub-id>
@@ -156,7 +159,7 @@ Voer de volgende opdracht uit in de Azure CLI.
 az role definition update --role-definition update_def.json --subscription <sub-id>
 ```
 
-Houd er rekening mee dat u machtigingen hebt voor het hele bereik van de nieuwe functie definitie. Als deze nieuwe rol bijvoorbeeld een bereik heeft over drie abonnementen, moet u machtigingen hebben voor alle drie de abonnementen. 
+U moet machtigingen hebben voor het hele bereik van de nieuwe roldefinitie. Als deze nieuwe rol bijvoorbeeld een bereik heeft over drie abonnementen, moet u machtigingen hebben voor alle drie de abonnementen. 
 
 > [!NOTE]
 > Het kan 15 minuten tot een uur duren voordat de functie-updates zijn toegepast op alle roltoewijzingen in dat bereik.
@@ -168,7 +171,7 @@ Ja, u kunt een rol definiëren die voor komt dat de werkruimte editie wordt bijg
 
 ### <a name="q-what-permissions-are-needed-to-perform-quota-operations-in-a-workspace"></a>V. Welke machtigingen zijn er nodig om quotum bewerkingen in een werk ruimte uit te voeren? 
 
-U hebt machtigingen op abonnements niveau nodig voor het uitvoeren van een gerelateerde bewerking op quota in de werk ruimte. Dit betekent dat het instellen van quotum op abonnements niveau of quotum voor het werkruimte niveau voor uw beheerde reken resources alleen kan optreden als u schrijf machtigingen hebt voor het abonnements bereik. 
+U hebt machtigingen op abonnements niveau nodig om aan quota gerelateerde bewerkingen in de werk ruimte uit te voeren. Dit betekent dat het instellen van quotum op abonnements niveau of quotum voor het werkruimte niveau voor uw beheerde reken resources alleen kan optreden als u schrijf machtigingen hebt voor het abonnements bereik. 
 
 
 ## <a name="next-steps"></a>Volgende stappen

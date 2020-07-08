@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: a4cbe49efd605e2104dbbc9f389a85e8fc4c468e
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 92a8e129188f2790a3e46162b207373b5d6e6ce4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449597"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611353"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Problemen met het Azure Migrate apparaat en de detectie oplossen
 
@@ -98,7 +98,7 @@ Fout 60028: detectie kan niet worden gestart wegens een fout. De bewerking is mi
 - Als er een validatie fout optreedt, raadpleegt u de richt lijnen voor herstel om de fouten op te lossen en probeert u het opnieuw met de optie **detectie opslaan en starten** .
 
 ## <a name="error-60025-azure-ad-operation-failed"></a>Fout 60025: de Azure AD-bewerking is mislukt 
-Fout 60025: er is een Azure AD-bewerking mislukt. De fout is opgetreden tijdens het maken of bijwerken van de Azure AD-toepassing "treedt op wanneer het Azure-gebruikers account dat wordt gebruikt om de detectie te initiëren, afwijkt van het account dat wordt gebruikt om het apparaat te registreren. Voer een van de volgende handelingen uit:
+Fout 60025: er is een Azure AD-bewerking mislukt. De fout is opgetreden tijdens het maken of bijwerken van de Azure AD-toepassing "treedt op wanneer het Azure-gebruikers account dat wordt gebruikt om de detectie te initiëren, afwijkt van het account dat wordt gebruikt om het apparaat te registreren. Doe een van de volgende dingen:
 
 - Zorg ervoor dat het gebruikers account dat de detectie initieert, hetzelfde is als dat waarmee het apparaat wordt geregistreerd.
 - Geef Azure Active Directory machtigingen voor toegang tot de toepassing op voor het gebruikers account waarvoor de detectie bewerking is mislukt.
@@ -144,11 +144,15 @@ Als gedetecteerde Vm's niet worden weer gegeven in de portal of als de VM-gegeve
 
 Als u Vm's verwijdert en deze nog steeds worden weer gegeven in de portal, wacht u 30 minuten. Als deze nog steeds worden weer gegeven, moet u vernieuwen zoals hierboven wordt beschreven.
 
-## <a name="error-the-file-uploaded-is-not-in-the-expected-format"></a>Fout: het geüploade bestand heeft niet de verwachte indeling
-Sommige hulpprogram ma's hebben regionale instellingen waarmee het CSV-bestand met een punt komma als scheidings teken wordt gemaakt. Wijzig de instellingen om te controleren of het scheidings teken een komma is.
+## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Ik zie geen prestatie gegevens voor sommige netwerk adapters op mijn fysieke servers
 
-## <a name="i-imported-a-csv-but-i-see-discovery-is-in-progress"></a>Ik heb een CSV geïmporteerd, maar ik zie ' detectie wordt uitgevoerd '
-Deze status wordt weer gegeven als het uploaden van CSV-bestanden is mislukt vanwege een validatie fout. Probeer het CSV-bestand opnieuw te importeren. U kunt het fouten rapport van de voor gaande upload downloaden en de herstel richtlijnen in het bestand volgen om de fouten op te lossen. Het fout rapport kan worden gedownload uit de sectie ' Details importeren ' op de pagina computers detecteren.
+Dit kan gebeuren als Hyper-V-virtualisatie is ingeschakeld op de fysieke server. Als gevolg van een product hiaat wordt de netwerk doorvoer vastgelegd op de gedetecteerde virtuele netwerk adapters.
+
+## <a name="error-the-file-uploaded-is-not-in-the-expected-format"></a>Fout: Het geüploade bestand heeft niet de verwachte indeling
+Sommige hulpprogramma's hebben regionale instellingen waardoor het CSV-bestand wordt gemaakt met een puntkomma als scheidingsteken. Wijzig de instellingen om het scheidingsteken in te stellen op een komma.
+
+## <a name="i-imported-a-csv-but-i-see-discovery-is-in-progress"></a>Ik heb een CSV geïmporteerd, maar ik zie 'Detectie wordt uitgevoerd'
+Deze status wordt weer gegeven als het uploaden van CSV-bestanden is mislukt vanwege een validatie fout. Probeer het CSV-bestand opnieuw te importeren. U kunt het foutenrapport van de vorige upload downloaden en de hersteltips in het bestand volgen om de fouten op te lossen. Het foutenrapport kan worden gedownload uit de sectie Details importeren op de pagina Computers detecteren.
 
 ## <a name="do-not-see-application-details-even-after-updating-guest-credentials"></a>Details van toepassing niet zien, zelfs na het bijwerken van gast referenties
 De detectie van de toepassing wordt elke 24 uur uitgevoerd. Als u de details onmiddellijk wilt zien, kunt u het volgende vernieuwen. Dit kan een paar minuten duren, afhankelijk van het aantal. van virtuele machines die zijn gedetecteerd.

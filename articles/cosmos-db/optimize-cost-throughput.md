@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: afbf0bee86a3d600892ed562ee939d48168ddfdc
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 548faa6c702c599ed766c7f03123dd02fb43684d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85112936"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610724"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Kosten voor ingerichte doorvoer optimaliseren in Azure Cosmos DB
 
@@ -155,7 +155,7 @@ De volgende stappen helpen u bij het gebruik van Azure Cosmos DB om uw oplossing
 
 1. Als u de ingerichte door Voer voor alle containers en data bases aanzienlijk hebt overbelast, moet u de werk belastingen die zijn ingericht versus gebruikt voor het verfijnen van de workloads controleren.  
 
-2. Een methode voor het schatten van de hoeveelheid gereserveerde door Voer die is vereist door uw toepassing is het vastleggen van de RU-kosten voor aanvraag eenheden die zijn gekoppeld aan het uitvoeren van gang bare bewerkingen voor een representatieve Azure Cosmos-container of-Data Base die wordt gebruikt door uw toepassing. vervolgens wordt een schatting gemaakt van het aantal bewerkingen dat u per seconde moet uitvoeren. Zorg ervoor dat u normale query's en hun gebruik ook bemeett en opneemt. Zie [de kosten van Query's optimaliseren](online-backup-and-restore.md)voor meer informatie over het programmatisch schatten van de kosten van query's via een programma of het gebruik van de portal. 
+2. Een methode voor het schatten van de hoeveelheid gereserveerde door Voer die is vereist door uw toepassing is het vastleggen van de RU-kosten voor aanvraag eenheden die zijn gekoppeld aan het uitvoeren van gang bare bewerkingen voor een representatieve Azure Cosmos-container of-Data Base die wordt gebruikt door uw toepassing. vervolgens wordt een schatting gemaakt van het aantal bewerkingen dat u per seconde moet uitvoeren. Zorg ervoor dat u normale query's en hun gebruik ook bemeett en opneemt. Zie [de kosten van Query's optimaliseren](optimize-cost-queries.md)voor meer informatie over het programmatisch schatten van de kosten van query's via een programma of het gebruik van de portal. 
 
 3. Een andere manier om bewerkingen en hun kosten in RUs te verkrijgen, is door Azure Monitor-Logboeken in te scha kelen, waarmee u de bewerkings-en tijds duur en de aanvraag kosten kunt opsplitsen. Azure Cosmos DB biedt voor elke bewerking een aanvraag kosten, zodat elke bewerkings kosten kunnen worden opgeslagen in het antwoord en vervolgens worden gebruikt voor analyse. 
 

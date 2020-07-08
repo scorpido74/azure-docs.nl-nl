@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: 678a605ce1585b58cfc5f9aaea3423efa8d53ad3
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: a3e78ff2936cb3dbbc1bcf432f130fbd17622d14
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296913"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610061"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Bekende problemen en probleem oplossing in Azure Machine Learning
 
@@ -46,16 +46,16 @@ Soms kan het nuttig zijn als u Diagnostische gegevens kunt opgeven wanneer u om 
 
    Dit is een bekende beperking van PIP, omdat er geen werkende afhankelijkheids conflict Oplosser is wanneer u als één regel installeert. De eerste unieke afhankelijkheid is de enige die er wordt weer gegeven. 
 
-   In de volgende code `azure-ml-datadrift` en `azureml-train-automl` worden beide geïnstalleerd met behulp van een PIP-installatie van één regel. 
+   In de volgende code `azureml-datadrift` en `azureml-train-automl` worden beide geïnstalleerd met behulp van een PIP-installatie van één regel. 
      ```
-       pip install azure-ml-datadrift, azureml-train-automl
+       pip install azureml-datadrift, azureml-train-automl
      ```
-   Voor dit voor beeld `azure-ml-datadrift` is versie > 1,0 vereist en `azureml-train-automl` is versie < 1,2 vereist. Als de meest recente versie van `azure-ml-datadrift` is 1,3, worden beide pakketten bijgewerkt naar 1,3, ongeacht de vereiste van het `azureml-train-automl` pakket voor een oudere versie. 
+   Voor dit voor beeld `azureml-datadrift` is versie > 1,0 vereist en `azureml-train-automl` is versie < 1,2 vereist. Als de meest recente versie van `azureml-datadrift` is 1,3, worden beide pakketten bijgewerkt naar 1,3, ongeacht de vereiste van het `azureml-train-automl` pakket voor een oudere versie. 
 
    Als u ervoor wilt zorgen dat de juiste versies voor uw pakketten zijn geïnstalleerd, installeert u met meerdere regels, zoals in de volgende code. Volg orde is hier geen probleem, omdat PIP expliciet downgradet als onderdeel van de volgende regel aanroep. Dit betekent dat de juiste versie afhankelijkheden worden toegepast.
     
      ```
-        pip install azure-ml-datadrift
+        pip install azureml-datadrift
         pip install azureml-train-automl 
      ```
      

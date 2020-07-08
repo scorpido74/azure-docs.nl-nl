@@ -1,17 +1,16 @@
 ---
 title: Back-up van Windows-systeem status maken in azure
 description: Meer informatie over het maken van een back-up van de systeem status van Windows Server-en/of Windows-computers naar Azure.
-ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 4089815f8f76d9868f8fa56f8b2eab3de89541d9
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 4319e03f9673baa2be01c1650ac1929204741087
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84712306"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611438"
 ---
-# <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Back-up van Windows-systeem status maken in Resource Manager-implementatie
+# <a name="back-up-windows-system-state-to-azure"></a>Back-up van Windows-systeem status maken in azure
 
 In dit artikel wordt uitgelegd hoe u een back-up maakt van de systeem status van Windows Server naar Azure. Het is bedoeld om u te helpen door de basis beginselen.
 
@@ -19,49 +18,9 @@ Als u meer wilt weten over Azure Backup, lees dan dit [overzicht](backup-overvie
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan waarmee u toegang hebt tot alle services van Azure.
 
-## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
+[!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
-Als u een back-up wilt maken van de systeem status van Windows Server, moet u een Recovery Services kluis in de regio waar u de gegevens wilt opslaan. U moet ook bepalen op welke manier u uw opslag wilt repliceren. 
-
-### <a name="to-create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
-
-1. Als u dit nog niet hebt gedaan, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/) met uw Azure-abonnement.
-2. Klik in het menu Hub op **Alle services**, typ in de lijst met resources **Recovery Services** en klik vervolgens op **Recovery Services-kluizen**.
-
-    ![Een Recovery Services-kluis maken, stap 1](./media/backup-azure-system-state/open-rs-vault-list.png)
-
-    Als er Recovery Services-kluizen in het abonnement aanwezig zijn, worden deze weergegeven.
-3. Klik in het menu **Recovery Services-kluizen** op **Toevoegen**.
-
-    ![Een Recovery Services-kluis maken, stap 2](./media/backup-try-azure-backup-in-10-mins/rs-vault-menu.png)
-
-    De blade Recovery Services-kluis wordt geopend en u wordt gevraagd een **naam**, **abonnement**, **resourcegroep** en **locatie** in te voeren.
-
-    ![Een Recovery Services-kluis maken, stap 3](./media/backup-try-azure-backup-in-10-mins/rs-vault-step-3.png)
-
-4. Voer bij **Naam** een beschrijvende naam in om de kluis aan te duiden. De naam moet uniek zijn voor het Azure-abonnement. Typ een naam die tussen 2 en 50 tekens bevat. De naam moet beginnen met een letter en mag alleen letters, cijfers en afbreekstreepjes bevatten.
-
-5. Kies het Azure-abonnement in de vervolgkeuzelijst in het gedeelte **Abonnement**. Als u slechts één abonnement hebt, wordt dit weergegeven en kunt u doorgaan met de volgende stap. Als u niet zeker weet welk abonnement u moet gebruiken, gebruikt u het standaard- (of voorgestelde) abonnement. Er zijn alleen meerdere mogelijkheden als uw organisatieaccount is gekoppeld aan meerdere Azure-abonnementen.
-
-6. In het gedeelte **Resourcegroep**:
-
-    * selecteert u **Nieuw** als u een resourcegroep wilt maken,
-    of
-    * selecteert u **Bestaande gebruiken** en klikt u op de vervolgkeuzelijst om de lijst met beschikbare resourcegroepen te zien.
-
-   Zie [Overzicht van Azure Resource Manager](../azure-resource-manager/management/overview.md) voor meer informatie over resourcegroepen.
-
-7. Klik op **Locatie** om de geografische regio voor de kluis te selecteren. Deze keuze bepaalt de geografische regio waar uw back-upgegevens naartoe worden verzonden.
-
-8. Klik onder aan de blade Recovery Services-kluis op **Maken**.
-
-    Het kan enkele minuten duren voordat de Recovery Services-kluis is gemaakt. Controleer de statusmeldingen rechtsboven in de portal. Zodra de kluis is gemaakt, wordt deze weergegeven in de lijst met Recovery Services-kluizen. Als u uw kluis na enkele minuten niet ziet, klik dan op **Vernieuwen**.
-
-    ![Op de knop Vernieuwen klikken](./media/backup-try-azure-backup-in-10-mins/refresh-button.png)</br>
-
-    Wanneer u uw kluis in de lijst met Recovery Services-kluizen ziet, kunt u de opslagredundantie instellen.
-
-### <a name="set-storage-redundancy-for-the-vault"></a>Opslagredundantie instellen voor de kluis
+## <a name="set-storage-redundancy-for-the-vault"></a>Opslagredundantie instellen voor de kluis
 
 Wanneer u een Recovery Services-kluis maakt, zorg er dan voor dat de opslagredundantie op de gewenste manier is geconfigureerd.
 

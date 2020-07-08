@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
-ms.openlocfilehash: e3c38a67b13a6b5c12767d38ecf2297d2417ebdb
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 9cdbe0630060c9155187e1f62aba3d7a40ceae98
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808409"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610469"
 ---
 # <a name="azure-spring-cloud-faq"></a>Veelgestelde vragen over Azure veer Cloud
 
@@ -21,17 +21,17 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure veer Cloud.
 
 ### <a name="why-azure-spring-cloud"></a>Waarom Azure lente Cloud?
 
-Azure lente Cloud biedt een platform als een service (PaaS) voor veer-Cloud ontwikkelaars. Azure lente-Cloud beheert uw toepassings infrastructuur zodat u zich kunt concentreren op toepassings code en bedrijfs logica. De belangrijkste functies die zijn ingebouwd in azure lente Cloud zijn onder andere Eureka, configuratie server, service register server, Pivotal build service, Blue-groen implementaties en meer. Met deze service kunnen ontwikkel aars ook hun toepassingen koppelen aan andere Azure-Services, zoals Azure Cosmos DB, Azure Database for MySQL en Azure cache voor redis.
+Azure lente Cloud biedt een platform als een service (PaaS) voor veer-Cloud ontwikkelaars. Azure lente-Cloud beheert uw toepassings infrastructuur zodat u zich kunt concentreren op toepassings code en bedrijfs logica. De belangrijkste functies die zijn ingebouwd in azure lente Cloud zijn onder andere Eureka, configuratie server, service register server, Pivotal build service, Blue-groen implementatie en meer. Met deze service kunnen ontwikkel aars ook hun toepassingen koppelen aan andere Azure-Services, zoals Azure Cosmos DB, Azure Database for MySQL en Azure cache voor redis.
 
 Azure veer Cloud verbetert de diagnostische ervaring van toepassingen voor ontwikkel aars en Opera tors door Azure Monitor, Application Insights en Log Analytics te integreren.
 
 ### <a name="how-secure-is-azure-spring-cloud"></a>Hoe veilig is Azure lente-Cloud?
 
-Beveiliging en privacy zijn een van de belangrijkste prioriteiten voor Azure-klanten en Azure lente-Cloud gebruikers. Azure zorgt ervoor dat alleen klanten toegang hebben tot toepassings gegevens,-Logboeken of-configuraties door al deze gegevens veilig te versleutelen. Alle service-exemplaren in azure lente Cloud zijn van elkaar geïsoleerd.
+Beveiliging en privacy zijn een van de belangrijkste prioriteiten voor Azure-klanten en Azure lente-Cloud gebruikers. Azure zorgt ervoor dat alleen klanten toegang hebben tot toepassings gegevens,-Logboeken of-configuraties door al deze gegevens veilig te versleutelen. 
 
-Azure lente Cloud biedt volledige TLS/SSL-en certificaat beheer.
-
-Essentiële beveiligings patches voor OpenJDK en lente-Cloud Runtimes worden zo snel mogelijk toegepast op Azure veer Cloud.
+* De service-exemplaren in azure lente Cloud zijn van elkaar geïsoleerd.
+* Azure lente Cloud biedt volledige TLS/SSL-en certificaat beheer.
+* Essentiële beveiligings patches voor OpenJDK en lente-Cloud Runtimes worden zo snel mogelijk toegepast op Azure veer Cloud.
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>In welke regio's is Azure lente-Cloud beschikbaar?
 
@@ -42,7 +42,7 @@ VS-Oost, VS-West 2, Europa-west en Zuidoost-Azië.
 Tijdens de preview-versie heeft Azure lente Cloud de volgende bekende beperkingen:
 
 * `spring.application.name`wordt overschreven door de naam van de toepassing die wordt gebruikt voor het maken van elke toepassing.
-* `server.port`is niet toegestaan in het configuratie bestand van de Git-opslag plaats. Als u het toevoegt aan het configuratie bestand, wordt uw toepassing waarschijnlijk onbereikbaar van andere toepassingen of Internet.
+* `server.port`wordt standaard ingesteld op poort 80/443. Als een andere waarde wordt toegepast, wordt deze overschreven naar 80/443.
 * De Azure Portal-en Azure Resource Manager-sjablonen bieden geen ondersteuning voor het uploaden van toepassings pakketten. U kunt toepassings pakketten alleen uploaden door de toepassing te implementeren via de Azure CLI.
 
 ### <a name="what-pricing-tiers-are-available"></a>Welke prijs categorieën zijn er beschikbaar? 
@@ -61,7 +61,7 @@ Voor de snelste manier om aan de slag te gaan met Azure lente Cloud, volgt u de 
 
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Wat Java runtime ondersteunt Azure lente-Cloud ondersteuning?
 
-Azure lente-Cloud ondersteunt Java 8 en 11.
+Azure lente-Cloud ondersteunt Java 8 en 11. Zie [Java runtime en versies van het besturings systeem](#java-runtime-and-os-versions)
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Waar kan ik de logboeken en metrische gegevens van mijn lente-Cloud weer geven?
 
@@ -75,7 +75,10 @@ Ja. Zie [zelf studie: gedistribueerde tracering gebruiken met Azure lente-Cloud]
 
 ### <a name="what-resource-types-does-service-binding-support"></a>Welke resource typen worden ondersteund door service binding?
 
-Er worden momenteel drie services ondersteund: Azure Cosmos DB, Azure Database for MySQL en Azure cache voor redis.
+Er worden momenteel drie services ondersteund:
+* Azure Cosmos DB
+* Azure Database for MySQL
+* Azure-cache voor redis.
 
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Kan ik permanente volumes weer geven, toevoegen of verplaatsen vanuit mijn toepassingen?
 
@@ -83,7 +86,52 @@ Ja.
 
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>Wanneer ik een Azure lente-Cloud service-exemplaar Verwijder/Verplaats, worden ook de bijbehorende uitbreidings resources verwijderd/verplaatst?
 
-Het hangt af van de logica van resource providers waarbij de uitbreidings bronnen horen. De extensie resources van een `Microsoft.AppPlatform` exemplaar horen niet bij dezelfde naam ruimte, waardoor het gedrag afhankelijk is van verschillende resource providers. De bewerking verwijderen/verplaatsen getrapt bijvoorbeeld niet in de resources met **Diagnostische instellingen** . Als er een nieuw Azure-exemplaar voor de Cloud wordt ingericht met dezelfde resource-ID als de verwijderde, of als het vorige exemplaar van de Azure veer Cloud wordt teruggezet, worden de vorige bronnen voor **Diagnostische gegevens** nog verder uitgebreid.
+Dit is afhankelijk van de logica van resource providers die eigenaar zijn van de uitbreidings resources. De extensie resources van een `Microsoft.AppPlatform` exemplaar horen niet bij dezelfde naam ruimte, waardoor het gedrag afhankelijk is van de resource provider. De bewerking verwijderen/verplaatsen getrapt bijvoorbeeld niet in de resources met **Diagnostische instellingen** . Als er een nieuw Azure-exemplaar voor de Cloud wordt ingericht met dezelfde resource-ID als de verwijderde, of als het vorige exemplaar van de Azure veer Cloud wordt teruggezet, worden de vorige bronnen voor **Diagnostische gegevens** nog verder uitgebreid.
+
+## <a name="java-runtime-and-os-versions"></a>Java runtime en besturingssysteem versies
+
+### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Welke versies van Java runtime worden ondersteund in azure lente-Cloud?
+
+Azure lente Cloud biedt ondersteuning voor Java LTS-versies met de meest recente builds, op dit moment 2020, Java 8 build 252 en Java 11 build 7 worden ondersteund. Zie [de JDK voor Azure en Azure stack installeren](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)
+
+### <a name="who-built-these-java-runtimes"></a>Wie heeft deze Java-Runtimes gemaakt?
+
+Azul-systemen. De Azul Zulu for Azure - Enterprise Edition JDK-builds zijn een gratis, voor meerdere platforms geschikte en productieklare distributie van de OpenJDK voor Azure en Azure Stack ondersteund door Microsoft en Azul Systems. Ze bevatten alle onderdelen voor het maken en uitvoeren van Java SE-toepassingen.
+
+### <a name="how-often-will-java-runtimes-get-updated"></a>Hoe vaak worden Java-Runtimes bijgewerkt?
+
+LTS-en MTS JDK-releases hebben een driemaandelijkse beveiligings updates, probleem oplossingen en essentiële updates en patches voor buiten band, indien nodig. Deze ondersteuning omvat backports naar Java 7 en 8 van beveiligings updates en fout oplossingen die zijn gerapporteerd in nieuwere versies van Java, zoals Java 11.
+
+### <a name="how-long-will-java-8-and-java-11-lts-versions-be-supported"></a>Hoe lang worden de versies van Java 8 en Java 11 LTS ondersteund?
+
+Zie [Java lange termijn ondersteuning voor Azure en Azure stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support).
+
+* Java 8 LTS wordt ondersteund tot december 2030.
+* Java 11 LTS wordt tot september 2027 ondersteund.
+
+### <a name="how-can-i-download-a-supported-java-runtime-for-local-development"></a>Hoe kan ik een ondersteunde Java-runtime voor lokale ontwikkeling downloaden?
+
+Zie [de JDK voor Azure en Azure stack installeren](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install).
+
+### <a name="what-is-the-retire-policy-for-older-java-runtimes"></a>Wat is het beleid voor het buiten gebruik stellen voor oudere Java-Runtimes?
+
+De open bare kennisgeving wordt om de 12 maanden verzonden voordat een oude runtime versie buiten gebruik wordt gesteld. U moet 12 maanden naar een latere versie migreren.
+
+* Abonnements beheerders ontvangen een e-mail melding wanneer we een Java-versie buiten gebruik worden gesteld.
+* De informatie over buiten gebruik stellen wordt gepubliceerd in de documentatie.
+
+### <a name="how-can-i-get-support-for-issues-at-the-java-runtime-level"></a>Hoe kan ik ondersteuning krijgen voor problemen met het Java-runtime niveau?
+
+U kunt een ondersteunings ticket openen met ondersteuning voor Azure.  Zie [een Azure-ondersteunings aanvraag maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+
+### <a name="what-is-the-operation-system-to-run-my-apps"></a>Wat is het besturings systeem voor het uitvoeren van mijn apps?
+
+De meest recente Ubuntu LTS-versie wordt gebruikt, momenteel [Ubuntu 20,04 LTS (brandpuntsafstand Fossa)](https://releases.ubuntu.com/focal/) is het standaard besturingssysteem.
+
+### <a name="how-often-will-os-security-patches-be-applied"></a>Hoe vaak worden er beveiligings patches voor het besturings systeem toegepast?
+
+Beveiligings patches die van toepassing zijn op Azure lente Cloud, worden maandelijks geïmplementeerd op productie.
+Essentiële beveiligings patches (CVE Score >= 9) die van toepassing zijn op een Azure lente-Cloud worden zo snel mogelijk uitgerold.
 
 ## <a name="deployment"></a>Implementatie
 

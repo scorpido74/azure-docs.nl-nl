@@ -3,17 +3,17 @@ title: Een Service Fabric-cluster maken in Azure Portal
 description: Meer informatie over het instellen van een beveiligd Service Fabric-cluster in azure met behulp van de Azure Portal en Azure Key Vault.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: 64a4c430cc7402419d64b77fdcc9a6389cf9de6d
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: eeadfcf24ad2448c845f3d612247686347600001
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792476"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611149"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Een Service Fabric-cluster maken in azure met behulp van de Azure Portal
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure-portal](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -30,7 +30,7 @@ Dit is een stapsgewijze hand leiding waarmee u de stappen voor het instellen van
 ## <a name="cluster-security"></a>Clusterbeveiliging 
 Er worden in Service Fabric certificaten gebruikt voor verificatie en versleuteling om verschillende aspecten van een cluster en de bijbehorende toepassingen te beveiligen. Zie [Service Fabric-clusterbeveiligingsscenario's][service-fabric-cluster-security] voor meer informatie over hoe certificaten worden gebruikt in Service Fabric.
 
-Als dit de eerste keer is dat u een service Fabric-cluster maakt of een cluster voor test werkbelastingen implementeert, kunt u door gaan naar de volgende sectie (**cluster maken in azure Portal**) en het systeem certificaten laten genereren die nodig zijn voor uw clusters waarop test werkbelastingen worden uitgevoerd. Als u een cluster instelt voor werk belastingen van de productie omgeving, kunt u door gaan met lezen.
+Als dit de eerste keer is dat u een service Fabric-cluster maakt of een cluster voor test werkbelastingen implementeert, kunt u door gaan naar de volgende sectie (**cluster maken in de Azure Portal**) en het systeem certificaten laten genereren die nodig zijn voor uw clusters waarop test werkbelastingen worden uitgevoerd. Als u een cluster instelt voor werk belastingen van de productie omgeving, kunt u door gaan met lezen.
 
 #### <a name="cluster-and-server-certificate-required"></a>Cluster-en server certificaat (vereist)
 Dit certificaat is vereist om een cluster te beveiligen en onbevoegde toegang te voor komen. Het biedt cluster beveiliging op een aantal manieren:
@@ -42,7 +42,7 @@ Om deze doel einden te kunnen gebruiken, moet het certificaat voldoen aan de vol
 
 * Het certificaat moet een persoonlijke sleutel bevatten.
 * Het certificaat moet worden gemaakt voor sleutel uitwisseling, exporteerbaar naar een pfx-bestand (Personal Information Exchange).
-* De onderwerpnaam van het certificaat **moet overeenkomen met het domein** dat wordt gebruikt voor toegang tot het service Fabric cluster. Dit is vereist om TLS te bieden voor de HTTPS-beheer eindpunten en Service Fabric Explorer van het cluster. U kunt geen TLS/SSL-certificaat verkrijgen van een certificerings instantie (CA) `.cloudapp.azure.com` voor het domein. Verkrijg een aangepaste domein naam voor uw cluster. Wanneer u een certificaat van een certificerings instantie aanvraagt, moet de onderwerpnaam van het certificaat overeenkomen met de aangepaste domein naam die voor uw cluster wordt gebruikt.
+* De onderwerpnaam van het certificaat **moet overeenkomen met het domein** dat wordt gebruikt voor toegang tot het service Fabric cluster. Dit is vereist om TLS te bieden voor de HTTPS-beheer eindpunten en Service Fabric Explorer van het cluster. U kunt geen TLS/SSL-certificaat verkrijgen van een certificerings instantie (CA) voor het `.cloudapp.azure.com` domein. Verkrijg een aangepaste domein naam voor uw cluster. Wanneer u een certificaat van een certificerings instantie aanvraagt, moet de onderwerpnaam van het certificaat overeenkomen met de aangepaste domein naam die voor uw cluster wordt gebruikt.
 
 #### <a name="client-authentication-certificates"></a>Certificaten voor client verificatie
 Aanvullende client certificaten verifiëren beheerders voor cluster beheer taken. Service Fabric heeft twee toegangs niveaus: **beheerder** en **alleen-lezen gebruiker**. Er moet mini maal één certificaat voor beheerders toegang worden gebruikt. Voor aanvullende toegang op gebruikers niveau moet er een afzonderlijk certificaat worden gegeven. Zie op [rollen gebaseerd toegangs beheer voor service Fabric-clients][service-fabric-cluster-security-roles]voor meer informatie over toegangs rollen.
@@ -107,7 +107,7 @@ Configureer uw cluster knooppunten. Knooppunt typen definiëren de VM-grootten, 
 2. De minimale **grootte** van vm's voor het primaire knooppunt type wordt bepaald door de **duurzaamheids categorie** die u voor het cluster kiest. De standaard waarde voor de duurzaamheids categorie is bronzen. Zie [How to choose the service Fabric cluster duurzaamheid][service-fabric-cluster-durability](Engelstalig) voor meer informatie over duurzaamheid.
 3. Selecteer de **grootte van de virtuele machine**. Vm's uit de D-serie hebben SSD-stations en worden ten zeerste aanbevolen voor stateful toepassingen. Gebruik geen VM-SKU met gedeeltelijke kernen of minder dan 10 GB aan beschik bare schijf capaciteit. Raadpleeg het [document plannings overweging van service Fabric-cluster][service-fabric-cluster-capacity] voor hulp bij het selecteren van de VM-grootte.
 4.  **Cluster met één knoop punt en drie knooppunt clusters** zijn uitsluitend bedoeld voor test doeleinden. Ze worden niet ondersteund voor actieve werk belastingen voor productie.
-5. Kies de **eerste capaciteit van de VM-schaalset** voor het knooppunt type. U kunt het aantal Vm's in een knooppunt type later in-of uitschalen, maar op het primaire knooppunt type is het minimum vijf voor de werk belasting van de productie. Andere knooppunt typen kunnen mini maal één virtuele machine hebben. Het minimum **aantal** vm's voor het primaire knooppunt type stuurt de **betrouw baarheid** van uw cluster.  
+5. Kies de **eerste capaciteit van de schaalset voor virtuele machines** voor het knooppunt type. U kunt het aantal Vm's in een knooppunt type later in-of uitschalen, maar op het primaire knooppunt type is het minimum vijf voor de werk belasting van de productie. Andere knooppunt typen kunnen mini maal één virtuele machine hebben. Het minimum **aantal** vm's voor het primaire knooppunt type stuurt de **betrouw baarheid** van uw cluster.  
 6. **Aangepaste eind punten**configureren. In dit veld kunt u een door komma's gescheiden lijst met poorten invoeren die u wilt weer geven via de Azure Load Balancer op het open bare Internet voor uw toepassingen. Als u bijvoorbeeld van plan bent een webtoepassing te implementeren op uw cluster, voert u ' 80 ' hier in om verkeer op poort 80 toe te staan in uw cluster. Zie [communicatie met toepassingen][service-fabric-connect-and-communicate-with-services] voor meer informatie over eind punten
 7. **Schakel omgekeerde proxy in**.  De [service Fabric reverse-proxy](service-fabric-reverseproxy.md) helpt micro services die worden uitgevoerd in een service Fabric cluster te detecteren en te communiceren met andere services met http-eind punten.
 8. Ga terug naar de Blade **cluster configuratie** , onder **+ optionele instellingen weer geven**, cluster **diagnostiek**configureren. Diagnostische gegevens zijn standaard ingeschakeld in uw cluster om te helpen bij het oplossen van problemen. Als u Diagnostische gegevens wilt uitschakelen, wijzigt u de **status** in-en **uitschakelen**. Het uitschakelen van diagnostische gegevens wordt **niet** aanbevolen. Als u Application Insights project al hebt gemaakt, geeft u de bijbehorende sleutel, zodat de toepassings traceringen ernaar worden doorgestuurd.
@@ -209,7 +209,7 @@ Op dit moment hebt u een beveiligd cluster met behulp van certificaten voor behe
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [service-fabric-cluster-security-roles]: service-fabric-cluster-security-roles.md
 [service-fabric-cluster-capacity]: service-fabric-cluster-capacity.md
-[service-fabric-cluster-durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[service-fabric-cluster-durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
 [service-fabric-connect-and-communicate-with-services]: service-fabric-connect-and-communicate-with-services.md
 [service-fabric-health-introduction]: service-fabric-health-introduction.md
 [service-fabric-reliable-services-backup-restore]: service-fabric-reliable-services-backup-restore.md

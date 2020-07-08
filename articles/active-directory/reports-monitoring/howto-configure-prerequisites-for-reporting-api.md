@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: ada19f69-665c-452a-8452-701029bf4252
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fd3580ca03fa49d428904c6da78fdf9cda202c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4702b12bea2e078af4d10fe9d709d16c361b3f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80991259"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608259"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Vereisten voor toegang tot de API voor Azure Active Directory rapportage
 
@@ -81,11 +81,11 @@ Als u uw Directory wilt configureren voor toegang tot de Azure AD Reporting-API,
 
     ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/04.png)
 
-    a. Typ `Reporting API application`in het tekstvak **naam** .
+    a. Typ in het tekstvak **naam** `Reporting API application` .
 
     b. Voor het **type ondersteunde accounts**selecteert u **alleen accounts in deze organisatie**.
 
-    c. Typ `https://localhost`in de **omleidings-URL** webtekstvak selecteren. **Web**
+    c. Typ in de **omleidings-URL** **webtekstvak selecteren** `https://localhost` .
 
     d. Selecteer **Registreren**. 
 
@@ -115,7 +115,7 @@ In de volgende sectie worden de stappen voor beide Api's vermeld. Als u geen toe
 
     ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
-3. Selecteer op de pagina **vereiste machtigingen** de optie **toepassings machtigingen**, vouw **Directory** -selectie vakje Directory **. ReadAll**.  Selecteer **machtigingen toevoegen**.
+3. Selecteer op de pagina **vereiste machtigingen** de optie **toepassings machtigingen**, vouw **Directory** -selectie vakje Directory **. ReadAll**.  Selecteer **Machtigingen toevoegen**.
 
     ![Toepassing registreren](./media/howto-configure-prerequisites-for-reporting-api/07.png)
 
@@ -184,7 +184,7 @@ U hebt deze waarden nodig bij het configureren van aanroepen naar de rapportage-
 
 5. Voeg op de pagina **een geheim van client toevoegen** toe:
 
-    a. Typ `Reporting API`in het tekstvak **Beschrijving** .
+    a. Typ in het tekstvak **Beschrijving** `Reporting API` .
 
     b. Als **verlopen**, selecteert u **in 2 jaar**.
 

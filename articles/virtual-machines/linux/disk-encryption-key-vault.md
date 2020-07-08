@@ -1,45 +1,45 @@
 ---
 title: Een sleutelkluis voor Azure Disk Encryption maken en configureren
-description: In dit artikel worden de stappen beschreven voor het maken en configureren van een sleutel kluis voor gebruik met Azure Disk Encryption
+description: In dit artikel worden de stappen beschreven voor het maken en configureren van een sleutelkluis voor gebruik met Azure Disk Encryption
 ms.service: virtual-machines-linux
 ms.topic: article
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2adb158032582dff7449c7c0fc7b13419745f36c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 543e3c5d8148632eaca33935cc15e2d2ab1c0cea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743571"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611591"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Een sleutelkluis voor Azure Disk Encryption maken en configureren
 
-Azure Disk Encryption gebruikt Azure Key Vault om sleutels en geheimen voor schijf versleuteling te beheren en te beheren.  Zie [aan de slag met Azure Key Vault](../../key-vault/key-vault-get-started.md) en [uw sleutel kluis beveiligen](../../key-vault/general/secure-your-key-vault.md)voor meer informatie over sleutel kluizen. 
+Azure Disk Encryption gebruikt Azure Key Vault om sleutels en geheimen voor schijfversleuteling te beheren.  Zie [Aan de slag met Azure Key Vault](../../key-vault/key-vault-get-started.md) en [Uw sleutelkluis beveiligen](../../key-vault/general/secure-your-key-vault.md) voor meer informatie over sleutelkluizen. 
 
 > [!WARNING]
 > - Als u eerder Azure Disk Encryption met Azure AD hebt gebruikt om een virtuele machine te versleutelen, moet u deze optie blijven gebruiken om uw virtuele machine te versleutelen. Zie [een sleutel kluis maken en configureren voor Azure Disk Encryption met Azure AD (vorige versie)](disk-encryption-key-vault-aad.md) voor meer informatie.
 
-Een sleutel kluis maken en configureren voor gebruik met Azure Disk Encryption bestaat uit drie stappen:
+Een sleutelkluis maken en configureren voor gebruik met Azure Disk Encryption bestaat uit drie stappen:
 
-1. Een resource groep maken, indien nodig.
-2. Een sleutel kluis maken. 
-3. Geavanceerd toegangs beleid voor sleutel kluis instellen.
+1. Een resourcegroep maken, indien nodig.
+2. Een sleutelkluis maken. 
+3. Geavanceerd toegangsbeleid voor sleutelkluis instellen.
 
-Deze stappen worden geïllustreerd in de volgende Quick starts:
+Deze stappen worden geïllustreerd in de volgende quickstarts:
 
 - [Een Linux-VM maken en versleutelen met behulp van Azure CLI](disk-encryption-cli-quickstart.md)
-- [Een Linux-VM maken en versleutelen met behulp van Azure PowerShell](disk-encryption-cli-quickstart.md)
+- [Een virtuele Linux-machine maken en versleutelen met Azure PowerShell](disk-encryption-powershell-quickstart.md)
 
-U kunt eventueel ook een sleutel versleutelings sleutel genereren of importeren (KEK).
+U kunt eventueel ook een sleutelversleutelingssleutel genereren of importeren (KEK).
 
 > [!Note]
 > De stappen in dit artikel zijn geautomatiseerd in het [Azure Disk Encryption vereisten CLI-script](https://github.com/ejarvi/ade-cli-getting-started) en [Azure Disk Encryption vereisten Power shell-script](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts).
 
-## <a name="install-tools-and-connect-to-azure"></a>Hulpprogram ma's installeren en verbinding maken met Azure
+## <a name="install-tools-and-connect-to-azure"></a>Hulpprogramma's installeren en verbinding maken met Azure
 
-U kunt de stappen in dit artikel uitvoeren met de [Azure cli](/cli/azure/), de [Azure PowerShell AZ-module](/powershell/azure/overview)of de [Azure Portal](https://portal.azure.com). 
+U kunt de stappen in dit artikel voltooien met de [Azure CLI](/cli/azure/), de [Azure PowerShell AZ-module](/powershell/azure/overview) of de [Azure-portal](https://portal.azure.com). 
 
 Terwijl de portal toegankelijk is via uw browser, hebben Azure CLI en Azure PowerShell lokale installatie nodig. Zie [Azure Disk Encryption voor Linux: hulpprogram Ma's installeren](disk-encryption-linux.md#install-tools-and-connect-to-azure) voor meer informatie.
 

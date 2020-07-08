@@ -6,12 +6,12 @@ manager: sridmad
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: chrpap
-ms.openlocfilehash: 330b455a61c45ccdb59e5aef8162fd1b04859a00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d9562c09fe99372a9b1106d3ae891f65663cf307
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78969410"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610095"
 ---
 # <a name="how-to-remove-a-service-fabric-node-type"></a>Een Service Fabric knooppunt type verwijderen
 In dit artikel wordt beschreven hoe u een Azure Service Fabric cluster kunt schalen door een bestaand knooppunt type uit een cluster te verwijderen. Een Service Fabric cluster is een met het netwerk verbonden reeks virtuele of fysieke machines waarop uw micro services worden geïmplementeerd en beheerd. Een computer of virtuele machine die deel uitmaakt van een cluster, wordt een knoop punt genoemd. Virtuele-machine schaal sets vormen een Azure Compute-resource die u gebruikt om een verzameling virtuele machines als een set te implementeren en te beheren. Elk knooppunt type dat in een Azure-cluster is gedefinieerd, wordt [ingesteld als een afzonderlijke schaalset](service-fabric-cluster-nodetypes.md). Elk knooppunt type kan vervolgens afzonderlijk worden beheerd. Nadat u een Service Fabric cluster hebt gemaakt, kunt u horizon taal een cluster schalen door een knooppunt type (virtuele-machine schaalset) en alle knoop punten te verwijderen.  U kunt het cluster op elk gewenst moment schalen, zelfs wanneer werk belastingen op het cluster worden uitgevoerd.  Naarmate het cluster wordt geschaald, worden uw toepassingen ook automatisch geschaald.
@@ -20,7 +20,7 @@ In dit artikel wordt beschreven hoe u een Azure Service Fabric cluster kunt scha
 > Het gebruik van deze methode voor het verwijderen van een knooppunt type uit een productie cluster wordt niet aanbevolen om regel matig te worden gebruikt. Het is een gevaarlijke opdracht, omdat hiermee de bron van de virtuele-machine schaalset wordt verwijderd achter het knooppunt type. 
 
 ## <a name="durability-characteristics"></a>Duurzaamheids kenmerken
-De veiligheid heeft de prioriteit van de snelheid bij het gebruik van Remove-AzServiceFabricNodeType. Het knooppunt type moet zilver of goud- [duurzaamheids niveau](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)zijn. de reden hiervoor is:
+De veiligheid heeft de prioriteit van de snelheid bij het gebruik van Remove-AzServiceFabricNodeType. Het knooppunt type moet zilver of goud- [duurzaamheids niveau](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster)zijn. de reden hiervoor is:
 - Bronzen geeft u geen garanties over het opslaan van status informatie.
 - Met Silver en Gold duurzaamheid worden wijzigingen in de schaalset onderschept.
 - Daarnaast biedt Gold u de controle over de updates van Azure onder de schaalset.
@@ -122,7 +122,7 @@ Bij het verwijderen van een type knoop punt dat bronzen, worden alle knoop punte
     - Zoek de Azure Resource Manager-sjabloon die wordt gebruikt voor de implementatie.
     - Zoek de sectie met betrekking tot het knooppunt type in het gedeelte Service Fabric.
     - Verwijder de sectie die overeenkomt met het knooppunt type.
-    - U kunt alleen voor Silver-en hogere duurzaamheids clusters de cluster bron in de sjabloon bijwerken en het status beleid configureren om de infra structuur te negeren `applicationDeltaHealthPolicies` :/de `properties` status van de systeem toepassing door toe te voegen onder cluster resource, zoals hieronder wordt vermeld. Het onderstaande beleid moet bestaande fouten negeren, maar geen nieuwe status fouten toestaan. 
+    - U kunt alleen voor Silver-en hogere duurzaamheids clusters de cluster bron in de sjabloon bijwerken en het status beleid configureren om de infra structuur te negeren:/de status van de systeem toepassing door toe te voegen `applicationDeltaHealthPolicies` onder cluster resource `properties` , zoals hieronder wordt vermeld. Het onderstaande beleid moet bestaande fouten negeren, maar geen nieuwe status fouten toestaan. 
  
  
      ```json
@@ -159,8 +159,8 @@ Bij het verwijderen van een type knoop punt dat bronzen, worden alle knoop punte
     ```
 
     - Implementeer de gewijzigde Azure Resource Manager sjabloon. * * Deze stap neemt enige tijd in beslag, meestal Maxi maal twee uur. Met deze upgrade worden instellingen gewijzigd in de InfrastructureService. Daarom is het opnieuw opstarten van het knoop punt vereist. In dit geval `forceRestart` wordt genegeerd. 
-    De para `upgradeReplicaSetCheckTimeout` meter bepaalt de maximale tijds duur dat service Fabric wacht tot een partitie een veilige status heeft, als deze niet al een veilige status heeft. Zodra de controle van de veiligheid is geslaagd voor alle partities op een knoop punt, wordt Service Fabric door gegeven aan de upgrade op dat knoop punt.
-    De waarde voor de para `upgradeTimeout` meter kan worden teruggebracht tot 6 uur, maar er moet een maximale beveiliging van 12 uur worden gebruikt.
+    De para meter `upgradeReplicaSetCheckTimeout` bepaalt de maximale tijds duur dat service Fabric wacht tot een partitie een veilige status heeft, als deze niet al een veilige status heeft. Zodra de controle van de veiligheid is geslaagd voor alle partities op een knoop punt, wordt Service Fabric door gegeven aan de upgrade op dat knoop punt.
+    De waarde voor de para meter `upgradeTimeout` kan worden teruggebracht tot 6 uur, maar er moet een maximale beveiliging van 12 uur worden gebruikt.
 
     Controleer vervolgens of:
     - Service Fabric resource in de portal is nu weer gegeven.
@@ -171,10 +171,10 @@ Bij het verwijderen van een type knoop punt dat bronzen, worden alle knoop punte
     - Verwijder de virtuele-machine schaalset en andere resources die zijn gerelateerd aan het knooppunt type uit de sjabloon.
     - Implementeer de wijzigingen.
 
-    Daarna kunt u het volgende doen:
+    Vervolgens:
     - Wacht tot de implementatie is voltooid.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over de [kenmerken](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)van de cluster duurzaamheid.
+- Meer informatie over de [kenmerken](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster)van de cluster duurzaamheid.
 - Meer informatie over [knooppunt typen en virtual machine Scale sets](service-fabric-cluster-nodetypes.md).
 - Meer informatie over het [schalen van service Fabric cluster](service-fabric-cluster-scaling.md).

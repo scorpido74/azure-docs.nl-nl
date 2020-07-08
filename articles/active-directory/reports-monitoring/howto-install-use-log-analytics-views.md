@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: 2290de3c-2858-4da0-b4ca-a00107702e26
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b17026e4cfbe69e36c8e459aa259fe16b1c9d80d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 116c0d5becaea1ca6d488bbf7c94674934d4f7c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74014423"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608191"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>De log Analytics-weer gaven voor Azure Active Directory installeren en gebruiken
 
@@ -35,7 +35,7 @@ Met de weer gaven van de Azure Active Directory log Analytics kunt u de Azure AD
 
 Als u de log Analytics-weer gaven wilt gebruiken, hebt u het volgende nodig:
 
-* Een Log Analytics-werk ruimte in uw Azure-abonnement. Meer informatie over het [maken van een log Analytics-werk ruimte](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
+* Een Log Analytics-werk ruimte in uw Azure-abonnement. Leer [een Log Analytics-werkruimte maken](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
 * Voer eerst de stappen uit om [de Azure AD-activiteiten logboeken te routeren naar uw log Analytics-werk ruimte](howto-integrate-activity-logs-with-log-analytics.md).
 * Down load de weer gaven van de [github-opslag plaats](https://aka.ms/AADLogAnalyticsviews) naar uw lokale computer.
 
@@ -59,7 +59,7 @@ Als u de log Analytics-weer gaven wilt gebruiken, hebt u het volgende nodig:
     ![Details](./media/howto-install-use-log-analytics-views/details.png)
 
 
-4. Selecteer **waarschuwing instellen**en selecteer vervolgens **wanneer de aangepaste zoek opdracht voor logboeken logica niet &lt;gedefinieerd&gt; is** in het gedeelte **waarschuwings criteria** . Omdat we willen waarschuwen wanneer er zich een aanmeldings fout **voordoet**, stelt u de **drempel waarde** van de standaard waarschuwings logica in op **1** en selecteert u vervolgens gereed. 
+4. Selecteer **waarschuwing instellen**en selecteer vervolgens **wanneer de aangepaste zoek opdracht voor logboeken &lt; logica niet gedefinieerd &gt; is** in het gedeelte **waarschuwings criteria** . Omdat we willen waarschuwen wanneer er zich een aanmeldings fout **voordoet**, stelt u de **drempel waarde** van de standaard waarschuwings logica in op **1** en selecteert u vervolgens gereed. 
 
     ![Signaallogica configureren](./media/howto-install-use-log-analytics-views/configure-signal-logic.png)
 

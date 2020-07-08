@@ -4,21 +4,21 @@ description: Meer informatie over het gebruik van Azure Firewall voor het beveil
 author: vhorne
 ms.service: firewall
 services: firewall
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: 86b30b644da929f10f5d7c9642d5f89fbd29a7fa
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: c725673281b564958bb081fb47fe51a0ad66bea2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864063"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611132"
 ---
-# <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Azure Firewall gebruiken voor het beveiligen van Windows-implementaties met virtuele Bureau bladen
+# <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Windows Virtual Desktop-implementaties beveiligen met Azure Firewall deployments
 
 Virtueel bureau blad van Windows is een desktop-en app Virtualization-service die wordt uitgevoerd op Azure. Wanneer een eind gebruiker verbinding maakt met een virtueel-bureaublad omgeving van Windows, wordt de sessie uitgevoerd door een hostgroep. Een hostgroep is een verzameling virtuele machines van Azure die zich registreren bij Windows Virtual Desktop als hosts voor sessies. Deze virtuele machines worden uitgevoerd in uw virtuele netwerk en zijn onderhevig aan de beveiligings controles van het virtuele netwerk. Ze hebben uitgaande internet toegang tot de virtueel bureau blad-service van Windows nodig om goed te kunnen werken en hebben mogelijk ook uitgaande internet toegang nodig voor eind gebruikers. Azure Firewall kunt u helpen uw omgeving te vergren delen en uitgaand verkeer te filteren.
 
-[![Architectuur](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png) van Windows virtueel bureau blad](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png#lightbox)
+[![Architectuur ](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png) van Windows virtueel bureau blad](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png#lightbox)
 
 Volg de richt lijnen in dit artikel om extra beveiliging te bieden voor uw Windows Virtual Desktop-hostgroep met Azure Firewall.
 

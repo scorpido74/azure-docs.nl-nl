@@ -3,12 +3,12 @@ title: Controle lijst voor productie voorbereiding van Azure Service Fabric
 description: Down load uw Service Fabric-toepassing en cluster productie gereed door de aanbevolen procedures te volgen.
 ms.topic: conceptual
 ms.date: 6/05/2019
-ms.openlocfilehash: e12e07a4446af46bc1979bd8bd4ab3987a3fd8ad
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 7011860b8e1162b35cbfee3a9e796163710b7fdc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85081055"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610027"
 ---
 # <a name="production-readiness-checklist"></a>Controlelijst voor productiegereedheid
 
@@ -22,8 +22,8 @@ Is uw toepassing en cluster klaar om productie verkeer te nemen? Het uitvoeren e
 1. Gebruik een virtuele d2v2 of hogere SKU voor het primaire knooppunt type. U kunt het beste een SKU kiezen met ten minste 50 GB aan vaste schijf capaciteit.
 1. Productie clusters moeten [veilig](service-fabric-cluster-security.md)zijn. Zie deze [cluster sjabloon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG)voor een voor beeld van het instellen van een beveiligd cluster. Gebruik algemene namen voor certificaten en Vermijd het gebruik van zelf-ondertekende certificaten.
 1. Voeg [resource beperkingen toe aan containers en services](service-fabric-resource-governance.md), zodat ze niet meer dan 75% van knooppunt bronnen gebruiken. 
-1. Begrijp en stel het [duurzaamheids niveau](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)in. Het niveau van Silver of hogere duurzaamheid wordt aanbevolen voor knooppunt typen die stateful werk belastingen uitvoeren. Voor het primaire knooppunt type moet het niveau duurzaamheid worden ingesteld op zilver of hoger.
-1. Het [betrouwbaarheids niveau](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) van het knooppunt type begrijpen en kiezen. De betrouw baarheid van zilver of hoger wordt aanbevolen.
+1. Begrijp en stel het [duurzaamheids niveau](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)in. Het niveau van Silver of hogere duurzaamheid wordt aanbevolen voor knooppunt typen die stateful werk belastingen uitvoeren. Voor het primaire knooppunt type moet het niveau duurzaamheid worden ingesteld op zilver of hoger.
+1. Het [betrouwbaarheids niveau](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) van het knooppunt type begrijpen en kiezen. De betrouw baarheid van zilver of hoger wordt aanbevolen.
 1. Laad en schaal uw workloads om de [capaciteits vereisten](service-fabric-cluster-capacity.md) voor uw cluster te bepalen. 
 1. Uw services en toepassingen worden bewaakt en toepassings logboeken worden gegenereerd en opgeslagen, met waarschuwingen. Zie bijvoorbeeld [logboek registratie toevoegen aan uw service Fabric-toepassing](service-fabric-how-to-diagnostics-log.md) en [containers controleren met Azure monitor-logboeken](service-fabric-diagnostics-oms-containers.md).
 1. Het cluster wordt bewaakt met waarschuwingen (bijvoorbeeld met [Azure monitor-logboeken](service-fabric-diagnostics-event-analysis-oms.md)). 

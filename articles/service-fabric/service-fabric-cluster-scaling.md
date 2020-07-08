@@ -4,12 +4,12 @@ description: Meer informatie over het schalen van Azure Service Fabric-clusters 
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: a21182c974d6141264c8ca0c36bfc8f6a366d6f3
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 126be55c63c625995ad52b84a51a8983e220652d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793173"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610197"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Azure Service Fabric-clusters schalen
 Een Service Fabric cluster is een met het netwerk verbonden reeks virtuele of fysieke machines waarop uw micro services worden geïmplementeerd en beheerd. Een computer of virtuele machine die deel uitmaakt van een cluster, wordt een knoop punt genoemd. Clusters kunnen mogelijk duizenden knoop punten bevatten. Nadat u een Service Fabric cluster hebt gemaakt, kunt u het cluster horizon taal schalen (Wijzig het aantal knoop punten) of verticaal (Wijzig de resources van de knoop punten).  U kunt het cluster op elk gewenst moment schalen, zelfs wanneer werk belastingen op het cluster worden uitgevoerd.  Naarmate het cluster wordt geschaald, worden uw toepassingen ook automatisch geschaald.
@@ -28,7 +28,7 @@ Houd bij het schalen van een Azure-cluster de volgende richt lijnen in acht:
 - primaire knooppunt typen die productie werkbelastingen uitvoeren, moeten altijd vijf of meer knoop punten bevatten.
 - niet-primaire knooppunt typen waarvoor stateful productie workloads worden uitgevoerd, moeten altijd vijf of meer knoop punten hebben.
 - niet-primaire knooppunt typen waarvoor stateless productie werkbelastingen worden uitgevoerd, moeten altijd twee of meer knoop punten hebben.
-- Elk knooppunt type van het [duurzaamheids niveau](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) goud of zilver moet altijd vijf of meer knoop punten bevatten.
+- Elk knooppunt type van het [duurzaamheids niveau](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) goud of zilver moet altijd vijf of meer knoop punten bevatten.
 - Verwijder geen wille keurige VM-exemplaren/knoop punten uit een knooppunt type. gebruik altijd de schaalset voor de virtuele machine in functie. Het verwijderen van wille keurige VM-instanties kan een nadelige invloed hebben op de systeem capaciteit om de taak verdeling te vervolledigen.
 - Als u regels voor automatisch schalen gebruikt, stelt u de regels zodanig in dat schalen (VM-exemplaren verwijderen) één knoop punt tegelijk wordt uitgevoerd. Het omlaag schalen van meer dan één exemplaar op een keer is niet veilig.
 
@@ -46,7 +46,7 @@ Hoe u aanpakt Service Fabric schalen, is afhankelijk van uw scenario. Als schale
 
 Er bestaan Azure-Api's waarmee toepassingen programmatisch kunnen werken met schaal sets voor virtuele machines en Service Fabric clusters. Als er geen bestaande opties voor automatisch schalen voor uw scenario werken, maken deze Api's het mogelijk om aangepaste schaal logica te implementeren. 
 
-Een van de methoden voor het implementeren van de functie voor automatische schaal aanpassing van ' Home ' is het toevoegen van een nieuwe stateless service aan de Service Fabric toepassing voor het beheren van schaal bewerkingen. Het maken van uw eigen schaal service biedt de hoogste mate van controle en aanpassings mogelijkheden over het schaal gedrag van uw toepassing. Dit kan handig zijn voor scenario's waarin nauw keurige controle is vereist of hoe een toepassing in of uit wordt geschaald. Dit besturings element wordt echter wel geleverd met een toenemende code complexiteit. Het gebruik van deze aanpak betekent dat u een eigen schaal code nodig hebt. Dit is niet-trivial. Binnen de `RunAsync` methode van de service kan een reeks Triggers bepalen of schalen is vereist (inclusief het controleren van para meters, zoals de maximale cluster grootte en het schalen van cooldowns).   
+Een van de methoden voor het implementeren van de functie voor automatische schaal aanpassing van ' Home ' is het toevoegen van een nieuwe stateless service aan de Service Fabric toepassing voor het beheren van schaal bewerkingen. Het maken van uw eigen schaal service biedt de hoogste mate van controle en aanpassings mogelijkheden over het schaal gedrag van uw toepassing. Dit kan handig zijn voor scenario's waarin nauw keurige controle is vereist of hoe een toepassing in of uit wordt geschaald. Dit besturings element wordt echter wel geleverd met een toenemende code complexiteit. Het gebruik van deze aanpak betekent dat u een eigen schaal code nodig hebt. Dit is niet-trivial. Binnen de methode van de service `RunAsync` kan een reeks Triggers bepalen of schalen is vereist (inclusief het controleren van para meters, zoals de maximale cluster grootte en het schalen van cooldowns).   
 
 De API die wordt gebruikt voor interacties van virtuele-machine schaal sets (beide om het huidige aantal exemplaren van virtuele machines te controleren en deze te wijzigen) is de [Fluent Azure Management Compute-bibliotheek](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute.Fluent/). De Fluent Compute-bibliotheek biedt een gebruiks vriendelijke API voor interactie met virtuele-machine schaal sets.  Als u wilt communiceren met het Service Fabric cluster zelf, gebruikt u [System. Fabric. FabricClient](/dotnet/api/system.fabric.fabricclient).
 
@@ -59,14 +59,10 @@ Hiermee wijzigt u de resources (CPU, geheugen of opslag) van knoop punten in het
 - Voor delen: de software-en toepassings architectuur blijft hetzelfde.
 - Nadelen: eindige schaal, omdat er een limiet is voor de hoeveelheid resources op afzonderlijke knoop punten. Uitval tijd, omdat u fysieke of virtuele machines offline moet halen om resources toe te voegen of te verwijderen.
 
-Virtuele-machine schaal sets vormen een Azure Compute-resource die u kunt gebruiken voor het implementeren en beheren van een verzameling virtuele machines als een set. Elk knooppunt type dat in een Azure-cluster is gedefinieerd, wordt [ingesteld als een afzonderlijke schaalset](service-fabric-cluster-nodetypes.md). Elk knooppunt type kan vervolgens afzonderlijk worden beheerd.  Als u een knooppunt type omhoog of omlaag wilt schalen, moet u de SKU van de virtuele-machine-exemplaren in de schaalset wijzigen. 
-
-> [!WARNING]
-> We raden u aan de VM-SKU van een schaalset/knooppunt type alleen te wijzigen als deze wordt uitgevoerd in een [zilver duurzaamheid of hoger](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster). Het wijzigen van de SKU-grootte van de VM is een in-place infrastructuur bewerking voor het uitvoeren van gegevens. Zonder enige mogelijkheid om deze wijziging te vertragen of te bewaken, is het mogelijk dat de bewerking gegevens verlies kan veroorzaken voor stateful Services of andere onvoorziene operationele problemen veroorzaakt, zelfs voor stateless workloads. 
->
+Virtuele-machine schaal sets vormen een Azure Compute-resource die u kunt gebruiken voor het implementeren en beheren van een verzameling virtuele machines als een set. Elk knooppunt type dat in een Azure-cluster is gedefinieerd, wordt [ingesteld als een afzonderlijke schaalset](service-fabric-cluster-nodetypes.md). Elk knooppunt type kan vervolgens afzonderlijk worden beheerd.  Als u een knooppunt type omhoog of omlaag wilt schalen, moet u een nieuw knooppunt type toevoegen (met een bijgewerkte VM-SKU) en het oude knooppunt type verwijderen.
 
 Houd bij het schalen van een Azure-cluster de volgende richt lijnen in acht:
-- Als u het niveau van een primair knoop punt omlaag wilt schalen, moet u het type nooit meer aanpassen dan wat de [betrouwbaarheids categorie](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) toestaat.
+- Als u het niveau van een primair knoop punt omlaag wilt schalen, moet u het type nooit meer aanpassen dan wat de [betrouwbaarheids categorie](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) toestaat.
 
 Het proces voor het omhoog of omlaag schalen van een knooppunt type verschilt, afhankelijk van of het een niet-primair of primair knooppunt type is.
 
@@ -74,9 +70,9 @@ Het proces voor het omhoog of omlaag schalen van een knooppunt type verschilt, a
 Maak een nieuw knooppunt type met de resources die u nodig hebt.  Werk de plaatsings beperkingen van actieve services bij om het nieuwe knooppunt type op te laten bevatten.  Verlaag geleidelijk (één op een keer) het aantal exemplaren van het oude knooppunt type van het aantal instanties in nul, zodat de betrouw baarheid van het cluster niet wordt beïnvloed.  Services worden geleidelijk naar het nieuwe knooppunt type gemigreerd, omdat het oude knooppunt type buiten gebruik wordt gesteld.
 
 ### <a name="scaling-the-primary-node-type"></a>Het primaire knooppunt type schalen
-We raden u aan de VM-SKU van het primaire knooppunt type niet te wijzigen. Als u meer cluster capaciteit nodig hebt, raden we u aan meer exemplaren toe te voegen. 
+Implementeer een nieuw primair knooppunt type met een bijgewerkte VM-SKU en schakel vervolgens de oorspronkelijke primaire knooppunt type exemplaren één keer uit zodat de systeem services naar de nieuwe schaalset worden gemigreerd. Controleer of het cluster en de nieuwe knoop punten in orde zijn en verwijder vervolgens de oorspronkelijke schaalset en de status van het knoop punt voor de verwijderde knoop punten.
 
-Als dat niet mogelijk is, kunt u een nieuw cluster maken en de [toepassings status](service-fabric-reliable-services-backup-restore.md) (indien van toepassing) herstellen van het oude cluster. U hoeft geen systeem service status te herstellen, ze worden opnieuw gemaakt wanneer u uw toepassingen naar het nieuwe cluster implementeert. Als u alleen stateless toepassingen op uw cluster hebt uitgevoerd, kunt u uw toepassingen ook implementeren naar het nieuwe cluster. u hoeft niets te herstellen. Als u besluit de niet-ondersteunde route te gaan en de VM-SKU wilt wijzigen, moet u wijzigingen aanbrengen in de model definitie van de virtuele-machine Scale set zodat deze overeenkomen met de nieuwe SKU. Als uw cluster slechts één knooppunt type heeft, moet u ervoor zorgen dat al uw stateful toepassingen reageren op alle [gebeurtenissen van de levens cyclus van de service replica](service-fabric-reliable-services-lifecycle.md) (zoals replica in Build is vastgelopen) en dat de duur van de herbouwing van de service replica minder is dan vijf minuten (voor het niveau van de Silver-duurzaamheid). 
+Als dat niet mogelijk is, kunt u een nieuw cluster maken en de [toepassings status](service-fabric-reliable-services-backup-restore.md) (indien van toepassing) herstellen van het oude cluster. U hoeft geen systeem service status te herstellen, ze worden opnieuw gemaakt wanneer u uw toepassingen naar het nieuwe cluster implementeert. Als u alleen stateless toepassingen op uw cluster hebt uitgevoerd, kunt u uw toepassingen ook implementeren naar het nieuwe cluster. u hoeft niets te herstellen.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over [schaal baarheid van toepassingen](service-fabric-concepts-scalability.md).

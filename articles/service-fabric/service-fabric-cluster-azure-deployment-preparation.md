@@ -3,12 +3,12 @@ title: Een Azure Service Fabric-cluster implementatie plannen
 description: Meer informatie over het plannen en voorbereiden van een productie-Service Fabric cluster implementatie naar Azure.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: ad6a7a6ea9a90bea4a3b6bc553da67a46144dc03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 462548d7f32a015701ef12e9777e8d9b1b1350f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422287"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610588"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Plannen en voorbereiden voor een cluster implementatie
 
@@ -28,7 +28,7 @@ Bij elke implementatie voor productie is capaciteitsplanning van groot belang. H
 * De betrouwbaarheid en duurzaamheid van de clusterkenmerken
 
 ### <a name="select-the-initial-number-of-node-types"></a>Het eerste aantal knooppunt typen selecteren
-Eerst moet u nagaan wat het cluster is dat u maakt, wordt gebruikt voor. Welke soorten toepassingen wilt u in dit cluster implementeren? Heeft uw toepassing meerdere services en moeten ze openbaar of Internet zijn gericht? Hebben uw services (waaruit uw toepassing bestaan) verschillende vereisten voor de infra structuur, zoals meer RAM-geheugen of hogere CPU-cycli? Een Service Fabric cluster kan bestaan uit meer dan één knooppunt type: een primair knooppunt type en een of meer niet-primaire knooppunt typen. Elk knooppunt type wordt toegewezen aan een virtuele-machine schaalset. Elk knooppunttype kan dan onafhankelijk omhoog of omlaag worden geschaald, verschillende open poorten bevatten en diverse capaciteitsstatistieken hebben. [Knooppunt eigenschappen en plaatsings beperkingen][placementconstraints] kunnen worden ingesteld om specifieke services te beperken tot specifieke knooppunt typen.  Lees voor meer informatie [het aantal knooppunt typen dat door het cluster moet worden gestart](service-fabric-cluster-capacity.md#the-number-of-node-types-your-cluster-needs-to-start-out-with).
+Eerst moet u nagaan wat het cluster is dat u maakt, wordt gebruikt voor. Welke soorten toepassingen wilt u in dit cluster implementeren? Heeft uw toepassing meerdere services en moeten ze openbaar of Internet zijn gericht? Hebben uw services (waaruit uw toepassing bestaan) verschillende vereisten voor de infra structuur, zoals meer RAM-geheugen of hogere CPU-cycli? Een Service Fabric cluster kan bestaan uit meer dan één knooppunt type: een primair knooppunt type en een of meer niet-primaire knooppunt typen. Elk knooppunt type wordt toegewezen aan een virtuele-machine schaalset. Elk knooppunttype kan dan onafhankelijk omhoog of omlaag worden geschaald, verschillende open poorten bevatten en diverse capaciteitsstatistieken hebben. [Knooppunt eigenschappen en plaatsings beperkingen][placementconstraints] kunnen worden ingesteld om specifieke services te beperken tot specifieke knooppunt typen.  Zie [service Fabric cluster capaciteit plannen](service-fabric-cluster-capacity.md)voor meer informatie.
 
 ### <a name="select-node-properties-for-each-node-type"></a>Knooppunt eigenschappen selecteren voor elk knooppunt type
 In knooppunt typen worden de SKU, het nummer en de eigenschappen van de virtuele machine van de virtuele machines in de bijbehorende schaalset gedefinieerd.
@@ -37,7 +37,7 @@ De minimale grootte van Vm's voor elk knooppunt type wordt bepaald door de [duur
 
 Het minimale aantal Vm's voor het primaire knooppunt type wordt bepaald door de gekozen [betrouwbaarheids categorie][reliability] .
 
-Zie de minimale aanbevelingen voor [primaire knooppunt typen](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance), [stateful werk belastingen op niet-primaire knooppunt](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)typen en [stateless workloads op niet-primaire knooppunt typen](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads).
+Zie de minimale aanbevelingen voor [primaire knooppunt typen](service-fabric-cluster-capacity.md#primary-node-type), [stateful werk belastingen op niet-primaire knooppunt](service-fabric-cluster-capacity.md#stateful-workloads)typen en [stateless workloads op niet-primaire knooppunt typen](service-fabric-cluster-capacity.md#stateless-workloads).
 
 Meer dan het minimum aantal knoop punten moet zijn gebaseerd op het aantal replica's van de toepassing/services dat u wilt uitvoeren in dit knooppunt type.  [Capaciteits planning voor service Fabric-toepassingen](service-fabric-capacity-planning.md) helpt u bij het schatten van de resources die u nodig hebt om uw toepassingen uit te voeren. U kunt het cluster altijd hoger of lager schalen om de werk belasting van de toepassing te wijzigen. 
 
@@ -62,14 +62,14 @@ Tijdelijke besturingssysteem schijven zijn geen specifieke Service Fabric-functi
     > [!NOTE]
     > Zorg ervoor dat u een VM-grootte selecteert met een cache grootte die gelijk is aan of groter is dan de schijf grootte van het besturings systeem van de VM zelf, anders kan uw Azure-implementatie een fout veroorzaken (zelfs als deze in eerste instantie wordt geaccepteerd).
 
-2. Een versie van een virtuele-machine schaalset`vmssApiVersion`( `2018-06-01` ) van of hoger opgeven:
+2. Een versie van een virtuele-machine schaalset ( `vmssApiVersion` ) van `2018-06-01` of hoger opgeven:
 
     ```xml
     "variables": {
         "vmssApiVersion": "2018-06-01",
     ```
 
-3. Geef `Local` in de sectie schaalset voor virtuele machines van uw implementatie sjabloon optie op `diffDiskSettings`voor:
+3. Geef in de sectie schaalset voor virtuele machines van uw implementatie sjabloon `Local` optie op voor `diffDiskSettings` :
 
     ```xml
     "apiVersion": "[variables('vmssApiVersion')]",
@@ -123,5 +123,5 @@ Is uw toepassing en cluster klaar om productie verkeer te nemen? Voordat u uw cl
 * [Een Service Fabric cluster maken waarop Linux wordt uitgevoerd](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 
 [placementconstraints]: service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster

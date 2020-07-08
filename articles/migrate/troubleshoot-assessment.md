@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 5323e54a81c7123e3e60f69d05accef9a63c7bc4
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: e5e55e3bfa5d30c74041b834483bc78875e7ce05
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737441"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611370"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Problemen met de evaluatie/afhankelijkheid oplossen
 
@@ -47,8 +47,14 @@ VM met vereiste kernen en geheugen niet gevonden | Azure kan geen geschikt VM-ty
 Kan de geschiktheid van de virtuele machine niet bepalen vanwege een interne fout | Probeer een nieuwe evaluatie voor de groep te maken.
 Kan de geschiktheid van een of meer schijven niet bepalen vanwege een interne fout | Probeer een nieuwe evaluatie voor de groep te maken.
 Kan de geschiktheid voor een of meer netwerk adapters niet bepalen vanwege een interne fout | Probeer een nieuwe evaluatie voor de groep te maken.
+Er is geen VM-grootte gevonden voor het gereserveerde exemplaar van de aanbiedings valuta | De computer is gemarkeerd als niet geschikt omdat de VM-grootte niet is gevonden voor de geselecteerde combi natie van RI, offer en Currency. Bewerk de eigenschappen van de beoordeling om de geldige combi Naties te kiezen en de beoordeling opnieuw te berekenen. 
+Voorwaardelijk gereed Internet Protocol | Alleen van toepassing op AVS-evaluaties (Azure VMware-oplossing). AVS biedt geen ondersteuning voor IPv6-Internet adressen.Neem contact op met het AVS-team voor herstel richtlijnen als uw computer wordt gedetecteerd met IPv6.
 
-## <a name="linux-vms-are-conditionally-ready"></a>Linux-Vm's zijn ' voorwaardelijk gereed '
+## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Aanbevolen migratie hulpmiddel in op import gebaseerde AVS-evaluatie is gemarkeerd als onbekend
+
+Voor machines die worden geïmporteerd via een CSV-bestand, is het standaard hulp programma voor migratie in en AVS-evaluatie onbekend. Voor VMware-machines is het echter raadzaam de VMWare Hybrid Cloud extension (HCX)-oplossing te gebruiken. [Meer informatie](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation).
+
+## <a name="linux-vms-are-conditionally-ready-in-an-azure-vm-assessment"></a>Linux-Vm's zijn ' conditioneel Ready ' in een Azure VM-evaluatie
 
 In het geval van VMware-en Hyper-V-Vm's, markeert server Assessment Linux-Vm's als ' conditioneel Ready ' vanwege een bekende tussen ruimte in Server evaluatie. 
 
@@ -61,7 +67,7 @@ In het geval van VMware-en Hyper-V-Vm's, markeert server Assessment Linux-Vm's a
 Dit gat kan worden opgelost door [toepassings detectie](https://docs.microsoft.com/azure/migrate/how-to-discover-applications) in te scha kelen op de virtuele VMware-machines. Server assessment maakt gebruik van het besturings systeem dat is gedetecteerd van de virtuele machine met behulp van de gast referenties. Deze besturingssysteem gegevens identificeren de juiste besturingssysteem gegevens in het geval van zowel Windows-als Linux-Vm's.
 
 
-## <a name="azure-skus-bigger-than-on-premises"></a>Azure-Sku's die groter zijn dan on-premises
+## <a name="azure-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure-Sku's die groter zijn dan on-premises in een Azure VM-evaluatie
 
 Azure Migrate server-evaluatie kan Azure VM Sku's aanbevelen met meer kernen en geheugen dan de huidige on-premises toewijzing op basis van het type evaluatie:
 
@@ -79,7 +85,7 @@ We hebben een on-premises VM met vier kernen en acht GB geheugen, met een CPU-ge
 - Als de evaluatie op basis van prestaties is gebaseerd op een effectief CPU-en geheugen gebruik (50% van 4 kernen * 1,3 = 2,6 kernen en 50% van 8 GB geheugen * 1,3 = 5,3-GB geheugen), wordt de goedkoopste VM-SKU van vier kernen (dichtstbijgelegen ondersteunde kernen) en acht GB aan geheugen (dichtstbijgelegen ondersteunde geheugen grootte) aanbevolen.
 - Meer [informatie](concepts-assessment-calculation.md#types-of-assessments) over de beoordelings grootte.
 
-## <a name="azure-disk-skus-bigger-than-on-premises"></a>Azure Disk Sku's groter dan on-premises
+## <a name="azure-disk-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure Disk Sku's groter dan on-premises in een Azure VM-evaluatie
 
 Azure Migrate server beoordeling kan een grotere schijf aanbevelen op basis van het type evaluatie.
 - De schijf grootte in Server analyse is afhankelijk van twee evaluatie-eigenschappen: grootte criteria en opslag type.
@@ -97,16 +103,37 @@ Server Assessment rapporteert "PercentageOfCoresUtilizedMissing" of "PercentageO
 - Als een van de prestatie meter items ontbreekt, wordt de analyse van Azure Migrate server terugvallen op de toegewezen kernen en het geheugen en wordt een bijbehorende VM-grootte aanbevolen.
 - Als alle prestatie meter items ontbreken, controleert u of aan de toegangs vereisten voor de poort voor evaluatie is voldaan. Meer informatie over de toegangs vereisten voor de poort voor [VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#port-access), [Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#port-access) en [fysieke](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical#port-access) server beoordeling.
 
-## <a name="is-the-operating-system-license-included"></a>Is de licentie voor het besturings systeem opgenomen?
+## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>Is de licentie voor het besturings systeem opgenomen in een Azure VM-evaluatie?
 
 Azure Migrate server-evaluatie beschouwt momenteel alleen de licentie kosten van het besturings systeem voor Windows-computers. De licentie kosten voor Linux-machines worden momenteel niet in overweging genomen.
 
-## <a name="how-does-performance-based-sizing-work"></a>Hoe werkt de grootte op basis van prestaties?
+## <a name="how-does-performance-based-sizing-work-in-an-azure-vm-assessment"></a>Hoe werkt de grootte van de prestaties in een Azure VM-evaluatie?
 
 Met Server Assessment worden doorlopend prestatiegegevens van on-premises machines verzameld, die vervolgens worden gebruikt om SKU's voor VM en schijf aan te bevelen in Azure. [Meer informatie over het](concepts-assessment-calculation.md#calculate-sizing-performance-based) verzamelen van gegevens op basis van prestaties.
 
 ## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>Waarom toont mijn evaluatie een waarschuwing dat deze is gemaakt met een ongeldige combi natie van gereserveerde instanties, VM-uptime en korting (%)?
 Wanneer u gereserveerde instanties selecteert, wordt de korting (%) de eigenschappen van de uptime van de VM zijn niet van toepassing. Als uw evaluatie is gemaakt met een ongeldige combi natie van deze eigenschappen, worden de knoppen bewerken en opnieuw berekenen uitgeschakeld. Maak een nieuwe evaluatie. [Meer informatie](https://go.microsoft.com/fwlink/?linkid=2131554).
+
+## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Ik zie geen prestatie gegevens voor sommige netwerk adapters op mijn fysieke servers
+
+Dit kan gebeuren als Hyper-V-virtualisatie is ingeschakeld op de fysieke server. Als gevolg van een product hiaat worden op deze servers de fysieke en virtuele netwerk adapters door Azure Migrate gedetecteerd. De netwerk doorvoer wordt alleen vastgelegd op de gedetecteerde virtuele netwerk adapters.
+
+## <a name="recommended-azure-vm-sku-for-my-physical-server-is-oversized"></a>De aanbevolen SKU van Azure VM voor mijn fysieke server is te klein
+
+Dit kan gebeuren als Hyper-V-virtualisatie is ingeschakeld op de fysieke server. Op deze servers detecteert Azure Migrate momenteel de fysieke en virtuele netwerk adapters. Daarom is het nr. van gedetecteerde netwerk adapters is hoger dan werkelijk. Als de server bepaling een Azure-VM pickt die het vereiste aantal netwerk adapters ondersteunt, kan dit leiden tot een grote VM. Meer [informatie](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#calculating-sizing) over de impact van Nee. van netwerk adapters bij grootte. Dit is een product hiaat dat vooruit gaat.
+
+## <a name="readiness-category-not-ready-for-my-physical-server"></a>De gereedheids categorie is niet gereed voor mijn fysieke server
+
+De gereedheids categorie kan onjuist zijn gemarkeerd als ' niet gereed ' in het geval van een fysieke server waarop Hyper-V-virtualisatie is ingeschakeld. Op deze servers, vanwege een product hiaat, detecteert Azure Migrate momenteel zowel de fysieke als de virtuele adapters. Daarom is het nr. van gedetecteerde netwerk adapters is hoger dan werkelijk. In zowel on-premises als op prestaties gebaseerde beoordelingen pickt server Assessment een Azure-VM die het vereiste aantal netwerk adapters ondersteunt. Als het aantal netwerk adapters wordt gedetecteerd dat deze hoger is dan 32, wordt de maximum waarde Nee. van Nic's die worden ondersteund op virtuele machines van Azure, wordt de computer gemarkeerd als ' niet gereed '.  Meer [informatie](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#calculating-sizing) over de impact van Nee. van Nic's in grootte.
+
+
+## <a name="number-of-discovered-nics-higher-than-actual-for-physical-servers"></a>Aantal gedetecteerde Nic's hoger dan werkelijk voor fysieke servers
+
+Dit kan gebeuren als Hyper-V-virtualisatie is ingeschakeld op de fysieke server. Op deze servers detecteert Azure Migrate momenteel zowel de fysieke als de virtuele adapters. Daarom is het nr. van gedetecteerde Nic's is hoger dan werkelijk.
+
+
+## <a name="low-confidence-rating-on-physical-server-assessments"></a>Beoordeling van lage betrouw baarheid bij fysieke server evaluaties
+De classificatie wordt toegewezen op basis van de beschik baarheid van gegevens punten die nodig zijn om de evaluatie te berekenen. In het geval van fysieke servers waarop Hyper-V-virtualisatie is ingeschakeld, is er sprake van een bekende product hiaat, omdat classificatie met lage betrouw baarheid mogelijk onjuist is toegewezen aan fysieke server evaluaties. Op deze servers detecteert Azure Migrate momenteel zowel de fysieke als de virtuele adapters. De netwerk doorvoer wordt vastgelegd op de gedetecteerde virtuele netwerk adapters, maar niet op de fysieke netwerk adapters. Als gevolg van het ontbreken van gegevens punten op de fysieke netwerk adapters, kan de betrouwbaarheids classificatie worden beïnvloed door een lage beoordeling. Dit is een product hiaat dat vooruit gaat.
 
 ## <a name="dependency-visualization-in-azure-government"></a>Afhankelijkheids visualisatie in Azure Government
 
@@ -159,7 +186,7 @@ In afhankelijkheids analyse zonder agent worden de proces namen op basis van de 
 
 Verzamel logboeken voor netwerk verkeer als volgt:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Druk op F12 om Ontwikkelhulpprogramma's te starten. Als dat nodig is, schakelt u de instelling **vermeldingen wissen bij navigatie** uit.
 3. Selecteer het tabblad **netwerk** en begin met het vastleggen van netwerk verkeer:
    - In Chrome selecteert u **logboek behouden**. De opname moet automatisch worden gestart. Een rode cirkel geeft aan dat verkeer wordt vastgelegd. Als de rode cirkel niet wordt weer gegeven, selecteert u de zwarte cirkel om te starten.

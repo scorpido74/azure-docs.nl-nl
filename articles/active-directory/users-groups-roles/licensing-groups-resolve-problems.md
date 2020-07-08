@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6d754b02566c3026b908ab0a3254db3113cd225
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 79552c099adfa94f3515ff1b9c78103cb82830a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84727429"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611285"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Problemen met licentie toewijzing voor een groep in Azure Active Directory identificeren en oplossen
 
@@ -120,7 +120,7 @@ Bij het bijwerken van de licentie toewijzing voor een gebruiker wordt de bereken
 ## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>LicenseAssignmentAttributeConcurrencyException in audit logboeken
 
 **Probleem:** Gebruiker heeft LicenseAssignmentAttributeConcurrencyException voor licentie toewijzing in audit Logboeken.
-Wanneer op groep gebaseerde licentie verlening probeert om gelijktijdige licentie toewijzing van dezelfde licentie voor een gebruiker te verwerken, wordt deze uitzonde ring op de gebruiker vastgelegd. Dit gebeurt meestal wanneer een gebruiker lid is van meer dan één groep met dezelfde toegewezen licentie. Er wordt door AZure AD opnieuw geprobeerd de gebruikers licentie te verwerken en het probleem op te lossen. Er is geen actie vereist van de klant om dit probleem op te lossen.
+Wanneer op groep gebaseerde licentie verlening probeert om gelijktijdige licentie toewijzing van dezelfde licentie voor een gebruiker te verwerken, wordt deze uitzonde ring op de gebruiker vastgelegd. Dit gebeurt meestal wanneer een gebruiker lid is van meer dan één groep met dezelfde toegewezen licentie. Er wordt door Azure AD opnieuw geprobeerd de gebruikers licentie te verwerken en het probleem op te lossen. Er is geen actie vereist van de klant om dit probleem op te lossen.
 
 ## <a name="more-than-one-product-license-assigned-to-a-group"></a>Meer dan één product licentie toegewezen aan een groep
 

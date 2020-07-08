@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: 4e5969b4c3a42fc8a2c4b1cd537c22a4422ca131
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 2baf2b209cae11f734494c377aebd731f69f514d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85268981"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610860"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Dangling DNS-vermeldingen voor komen en de overname van subdomeinen voor komen
 
@@ -53,11 +53,11 @@ Een veelvoorkomend scenario voor een overname van subdomeinen:
 
 
 
-## <a name="the-risks-of-dangling-dns-records"></a>De Risico's van Dangling DNS-records
+## <a name="the-risks-of-subdomain-takeover"></a>De Risico's van overname van subdomeinen
 
-Wanneer een DNS-record verwijst naar een resource die niet beschikbaar is, moet de record zelf uit de DNS-zone worden verwijderd. Als het niet is verwijderd, is het een ' Dangling DNS-record en een beveiligings risico.
+Wanneer een DNS-record verwijst naar een resource die niet beschikbaar is, moet de record zelf uit de DNS-zone worden verwijderd. Als deze niet is verwijderd, is dit een Dangling DNS-record en maakt u de mogelijkheid voor de overname van subdomeinen.
 
-Het risico voor de organisatie is dat een bedreigings actor het beheer van de bijbehorende DNS-naam kan overnemen om een schadelijke website of service te hosten. Deze schadelijke website op het subdomein van de organisatie kan resulteren in:
+Dangling DNS-vermeldingen maken het mogelijk om de bijbehorende DNS-naam in te stellen voor het hosten van een schadelijke website of service. Kwaadwillende pagina's en services op het subdomein van een organisatie kunnen resulteren in:
 
 - **Verlies van de controle over de inhoud van het subdomein** -negatief druk over het onvermogen van uw organisatie om de inhoud ervan te beveiligen, evenals het merk beschadiging en het verlies van vertrouwen.
 
@@ -65,7 +65,7 @@ Het risico voor de organisatie is dat een bedreigings actor het beheer van de bi
 
 - **Phishing campagnes** : authentiek-Zoek subdomeinen kunnen worden gebruikt in phishing-campagnes. Dit geldt voor schadelijke sites en ook voor MX-records waarmee de Threat actor e-mails kan ontvangen die zijn geadresseerd aan een legitiem subdomein van een bekend veilig merk.
 
-- **Verdere Risico's** : escaleren naar andere klassieke aanvallen, zoals XSS, csrf, CORS bypass en meer.
+- **Verdere Risico's** : schadelijke sites kunnen worden gebruikt voor het escaleren van andere klassieke aanvallen, zoals XSS, csrf, CORS bypass en meer.
 
 
 
@@ -78,7 +78,7 @@ De preventieve maat regelen die voor u beschikbaar zijn, worden hieronder weer g
 
 ### <a name="use-azure-dns-alias-records"></a>Azure DNS alias records gebruiken
 
-Door de levens cyclus van een DNS-record met een Azure-resource nauw keurig te koppelen, kan de functie [alias records](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) van Azure DNS de Dangling-verwijzingen voor komen. Denk bijvoorbeeld aan een DNS-record die is gekwalificeerd als alias record om te verwijzen naar een openbaar IP-adres of een Traffic Manager profiel. Als u deze onderliggende bronnen verwijdert, wordt de DNS-alias record een lege recordset. Er wordt niet langer verwezen naar de verwijderde resource. Het is belang rijk te weten dat er beperkingen zijn voor wat u met alias records kunt beveiligen. De lijst is nu beperkt tot:
+Door de levens cyclus van een DNS-record met een Azure-resource nauw keurig te koppelen, kunnen de [alias records](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) van Azure DNS de Dangling-verwijzingen verhinderen. Denk bijvoorbeeld aan een DNS-record die is gekwalificeerd als alias record om te verwijzen naar een openbaar IP-adres of een Traffic Manager profiel. Als u deze onderliggende bronnen verwijdert, wordt de DNS-alias record een lege recordset. Er wordt niet langer verwezen naar de verwijderde resource. Het is belang rijk te weten dat er beperkingen zijn voor wat u met alias records kunt beveiligen. De lijst is nu beperkt tot:
 
 - Azure Front Door
 - Traffic Manager-profielen
@@ -95,7 +95,7 @@ Meer [informatie](https://docs.microsoft.com/azure/dns/dns-alias#capabilities) o
 
 Maak een asuid bij het maken van DNS-vermeldingen voor Azure App Service. subdomein TXT-record met de verificatie-ID van het domein. Wanneer een dergelijke TXT-record bestaat, kan geen ander Azure-abonnement het aangepaste domein valideren. 
 
-Met deze records wordt niet voor komen dat iemand de Azure App Service maakt met dezelfde naam als in de CNAME-vermelding, maar ze kunnen geen verkeer ontvangen of de inhoud beheren, omdat ze geen eigendom van de domein naam kunnen bewijzen.
+Met deze records wordt niet voor komen dat iemand de Azure App Service maakt met dezelfde naam in de CNAME-vermelding. Zonder de mogelijkheid om eigenaar te worden van de domein naam, kunnen Threat actors geen verkeer ontvangen of de inhoud beheren.
 
 Meer [informatie](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain) over het toewijzen van een bestaande aangepaste DNS-naam aan Azure app service.
 
@@ -111,7 +111,7 @@ Het is vaak tot ontwikkel aars en operationele teams om opschoon processen uit t
 
     - Plaats ' DNS-vermelding verwijderen ' in de lijst met vereiste controles bij het buiten gebruik stellen van een service.
 
-    - Plaats [Verwijder vergrendelingen](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources) op alle resources met een aangepaste DNS-vermelding. Dit moet als indicator fungeren als de toewijzing moet worden verwijderd voordat de inrichting van de resource ongedaan wordt gemaakt. Maat staven zoals deze kunnen alleen worden gebruikt in combi natie met interne onderwijs Programma's.
+    - Plaats [Verwijder vergrendelingen](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources) op alle resources met een aangepaste DNS-vermelding. Een verwijderings vergrendeling fungeert als een indicator die de toewijzing moet verwijderen voordat de inrichting van de resource ongedaan wordt gemaakt. Maat staven zoals deze kunnen alleen worden gebruikt in combi natie met interne onderwijs Programma's.
 
 - **Procedures voor detectie maken:**
 

@@ -4,16 +4,16 @@ description: In dit artikel vindt u informatie over het implementeren en configu
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/08/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 37bb28419f23fee2c179171a2e5c0e4e851ac9a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 802df45e7434fd0cb425137964880a281f885ad8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77471751"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611166"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Azure Firewall implementeren en configureren in een hybride netwerk met Azure PowerShell
 
@@ -25,7 +25,7 @@ Voor dit artikel maakt u drie virtuele netwerken:
 
 - **VNet-Hub**: de firewall bevindt zich in dit virtuele netwerk.
 - **VNet-spoke**: het virtuele spoke-netwerk vertegenwoordigt de workload die zich bevindt in Azure.
-- **VNet-Onprem**: het on-premises virtuele netwerk vertegenwoordigt een on-premises netwerk. In een daad werkelijke implementatie kan het worden verbonden door een VPN-of ExpressRoute-verbinding. Ter vereenvoudiging maakt dit artikel gebruik van een VPN-gateway verbinding en wordt een virtueel netwerk met Azure-locatie gebruikt om een on-premises netwerk aan te duiden.
+- **VNet-Onprem**: het on-premises virtuele netwerk vertegenwoordigt een on-premises netwerk. In een daadwerkelijke implementatie kan het zijn verbonden via een VPN of een ExpressRoute-verbinding. Ter vereenvoudiging maakt dit artikel gebruik van een VPN-gateway verbinding en wordt een virtueel netwerk met Azure-locatie gebruikt om een on-premises netwerk aan te duiden.
 
 ![Firewall in een hybride netwerk](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
@@ -62,9 +62,9 @@ Er zijn drie belangrijke vereisten voor de correcte werking van dit scenario:
 Zie de sectie [routes maken](#create-the-routes) in dit artikel om te zien hoe deze routes worden gemaakt.
 
 >[!NOTE]
->Azure Firewall moet een rechtstreekse Internet verbinding hebben. Als uw AzureFirewallSubnet een standaard route naar uw on-premises netwerk via BGP leert, moet u dit overschrijven met een 0.0.0.0/0-UDR met de **NextHopType** -waarde ingesteld als **Internet** om directe Internet connectiviteit te onderhouden.
+>Azure Firewall moet een directe verbinding met internet hebben. Als uw AzureFirewallSubnet een standaardroute naar uw on-premises netwerk via BGP leert, moet u deze overschrijven met een UDR van 0.0.0.0/0 met de waarde **NextHopType** ingesteld op **Internet** om directe verbinding met internet te houden.
 >
->Azure Firewall kunnen worden geconfigureerd voor de ondersteuning van geforceerde tunneling. Zie [Azure firewall geforceerde tunneling](forced-tunneling.md)voor meer informatie.
+>Azure Firewall kan worden geconfigureerd voor ondersteuning van geforceerde tunneling. Zie [Geforceerde tunneling van Azure Firewall](forced-tunneling.md) voor meer informatie.
 
 >[!NOTE]
 >Verkeer tussen rechtstreeks gepeerde VNets wordt rechtstreeks gerouteerd, zelfs als de UDR naar Azure Firewall als standaardgateway wijst. Als u in dit scenario subnet-naar-subnet-verkeer wilt verzenden, moet een UDR het voorvoegsel van het doelsubnetwerk expliciet op beide subnetten bevatten.
@@ -464,7 +464,7 @@ Maak vanuit de Azure-portal verbinding met de virtuele machine **VM-OnPrem**.
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
-Open een webbrowser op **VM-OnPrem** en blader naar http://\<privé-IP-adres VM-spoke-01\>.
+Open een webbrowser op **VM-OnPrem** en ga naar http://\<VM-spoke-01 private IP\>.
 
 De standaardpagina van Internet Information Services moet worden weergegeven.
 
@@ -472,7 +472,7 @@ Maak vanaf **VM-Onprem** met Extern bureaublad verbinding met **VM-spoke-01** op
 
 Deze verbinding moet worden gemaakt en u moet zich kunnen aanmelden met uw gekozen gebruikersnaam en wachtwoord.
 
-Nu hebt u gecontroleerd of de firewall regels werken:
+Nu u hebt geverifieerd dat de firewallregels werken:
 
 <!---- You can ping the server on the spoke VNet.--->
 - U kunt de bladeren op de webserver in het virtuele spoke-netwerk.

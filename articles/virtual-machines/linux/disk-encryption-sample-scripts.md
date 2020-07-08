@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b54f9f3466fe5f7e2da622077f53575d6f43f72d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32d4e709036135a9a88ec36eaafaa176df33fabf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585962"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610350"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Voorbeeldscripts voor Azure Disk Encryption 
 
@@ -104,7 +104,7 @@ In de volgende tabel ziet u welke para meters kunnen worden gebruikt in het Powe
 4. Als u het besturings systeem wilt versleutelen, geeft u volumeType op als **alle** of als **besturings systeem** wanneer u versleuteling inschakelt.
 
    > [!NOTE]
-   > Alle gebruikers ruimte processen die niet worden uitgevoerd als `systemd` Services, moeten worden afgebroken met `SIGKILL`een. Start de VM opnieuw op. Wanneer u schijf versleuteling van het besturings systeem op een actieve virtuele machine inschakelt, moet u uitval tijd van de VM plannen.
+   > Alle gebruikers ruimte processen die niet worden uitgevoerd als `systemd` Services, moeten worden afgebroken met een `SIGKILL` . Start de VM opnieuw op. Wanneer u schijf versleuteling van het besturings systeem op een actieve virtuele machine inschakelt, moet u uitval tijd van de VM plannen.
 
 5. Controleer regel matig de voortgang van de versleuteling met behulp van de instructies in de [volgende sectie](#monitoring-os-encryption-progress).
 
@@ -132,7 +132,7 @@ U kunt de voortgang van de besturingssysteem versleuteling op drie manieren cont
     ```
   Nadat de VM de ' versleuteling van het besturings systeem heeft gestart ' bereikt, duurt het ongeveer 40 tot 50 minuten op een back-upvm met Premium-opslag.
 
-  Vanwege een [probleem #388](https://github.com/Azure/WALinuxAgent/issues/388) in WALinuxAgent en `OsVolumeEncrypted` `DataVolumesEncrypted` wordt weer gegeven `Unknown` in een aantal distributies. Met WALinuxAgent versie 2.1.5 en hoger wordt dit probleem automatisch opgelost. Als u in `Unknown` de uitvoer ziet, kunt u de status van de schijf versleuteling controleren met behulp van de Azure resource Explorer.
+  Vanwege een [probleem #388](https://github.com/Azure/WALinuxAgent/issues/388) in WALinuxAgent `OsVolumeEncrypted` en wordt `DataVolumesEncrypted` weer gegeven `Unknown` in een aantal distributies. Met WALinuxAgent versie 2.1.5 en hoger wordt dit probleem automatisch opgelost. Als u `Unknown` in de uitvoer ziet, kunt u de status van de schijf versleuteling controleren met behulp van de Azure resource Explorer.
 
   Ga naar [Azure resource Explorer](https://resources.azure.com/)en vouw vervolgens deze hiërarchie uit in het deel venster selectie aan de linkerkant:
 
@@ -152,7 +152,7 @@ U kunt de voortgang van de besturingssysteem versleuteling op drie manieren cont
 
   ![Weer gave van VM-instantie](./media/disk-encryption/vm-instanceview.png)
 
-* Bekijk de [Diagnostische gegevens over opstarten](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/). Berichten van de ADE-extensie moeten worden voorafgegaan door `[AzureDiskEncryption]`.
+* Bekijk de [Diagnostische gegevens over opstarten](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/). Berichten van de ADE-extensie moeten worden voorafgegaan door `[AzureDiskEncryption]` .
 
 * Meld u aan bij de virtuele machine via SSH en haal het extensie logboek op uit:
 
@@ -244,7 +244,7 @@ Configureer versleuteling om met Azure te werken door de volgende stappen uit te
     nls_utf8
     nls_iso8859-1
    ```
-6. Voer `update-initramfs -u -k all` uit om de initramfs bij te werken `keyscript` , zodat de actie kan worden doorgevoerd.
+6. Voer uit `update-initramfs -u -k all` om de initramfs bij te werken, zodat de actie kan worden doorgevoerd `keyscript` .
 
 7. Nu kunt u de inrichting van de virtuele machine ongedaan maken.
 
@@ -316,11 +316,11 @@ Als u versleuteling wilt configureren voor gebruik met Azure, voert u de volgend
     fi
     done
     ```
-5. Voer `/usr/sbin/dracut -f -v` uit om de initrd bij te werken.
+5. Voer uit `/usr/sbin/dracut -f -v` om de initrd bij te werken.
 
 6. U kunt nu de inrichting van de virtuele machine ongedaan maken en uw VHD uploaden naar Azure.
 
-### <a name="centos-7-and-rhel-81"></a>CentOS 7 en RHEL 8,1
+### <a name="centos-7-and-rhel-7"></a>CentOS 7 en RHEL 7
 
 Voer de volgende stappen uit om versleuteling te configureren tijdens de distributie-installatie:
 1. Selecteer **mijn gegevens versleutelen** bij het partitioneren van schijven.
@@ -439,7 +439,7 @@ Als u het geheim in uw sleutel kluis wilt instellen, gebruikt u [set-AzKeyVaultS
 Gebruik de `$secretUrl` in de volgende stap voor [het koppelen van de besturingssysteem schijf zonder gebruik te maken van KEK](#without-using-a-kek).
 
 ### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>Het geheim voor schijf versleuteling is versleuteld met een KEK
-Voordat u het geheim uploadt naar de sleutel kluis, kunt u dit eventueel versleutelen met behulp van een sleutel versleutelings sleutel. Gebruik de omloop- [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) om het geheim eerst te versleutelen met behulp van de coderings sleutel sleutel. De uitvoer van deze terugloop bewerking is een met base64 gecodeerde URL-teken reeks, die u vervolgens als geheim kunt uploaden met [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) behulp van de-cmdlet.
+Voordat u het geheim uploadt naar de sleutel kluis, kunt u dit eventueel versleutelen met behulp van een sleutel versleutelings sleutel. Gebruik de omloop- [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) om het geheim eerst te versleutelen met behulp van de coderings sleutel sleutel. De uitvoer van deze terugloop bewerking is een met base64 gecodeerde URL-teken reeks, die u vervolgens als geheim kunt uploaden met behulp van de- [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) cmdlet.
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation
@@ -534,7 +534,7 @@ Gebruik `$KeyEncryptionKey` en `$secretUrl` in de volgende stap voor [het koppel
 ##  <a name="specify-a-secret-url-when-you-attach-an-os-disk"></a>Geef een geheime URL op wanneer u een besturingssysteem schijf koppelt
 
 ###  <a name="without-using-a-kek"></a>Zonder gebruik te maken van een KEK
-Wanneer u de besturingssysteem schijf koppelt, moet u door `$secretUrl`gaan. De URL is gegenereerd in het gedeelte ' schijf versleutelings geheim is niet versleuteld met een KEK '.
+Wanneer u de besturingssysteem schijf koppelt, moet u door gaan `$secretUrl` . De URL is gegenereerd in het gedeelte ' schijf versleutelings geheim is niet versleuteld met een KEK '.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `
@@ -547,7 +547,7 @@ Wanneer u de besturingssysteem schijf koppelt, moet u door `$secretUrl`gaan. De 
             -DiskEncryptionKeyUrl $SecretUrl
 ```
 ### <a name="using-a-kek"></a>Een KEK gebruiken
-Wanneer u de besturingssysteem schijf koppelt, `$KeyEncryptionKey` geeft `$secretUrl`u het door en. De URL is gegenereerd in het gedeelte ' schijf versleutelings geheim versleuteld met een KEK-onderdeel.
+Wanneer u de besturingssysteem schijf koppelt, geeft u het door `$KeyEncryptionKey` en `$secretUrl` . De URL is gegenereerd in het gedeelte ' schijf versleutelings geheim versleuteld met een KEK-onderdeel.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `

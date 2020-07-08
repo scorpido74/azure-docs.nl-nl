@@ -7,19 +7,19 @@ author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d356f8c10ae3770d9f4ade100ab0496ee58d772f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33c4eeda7f7df1a8238f54fa1afd1bc069f64e96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74008217"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608208"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Activiteitenrapporten zoeken in de Azure-portal
 
@@ -29,7 +29,7 @@ In dit artikel leert u hoe u rapporten van gebruikers activiteiten van Azure Act
 
 In het rapport controle logboeken worden verschillende rapporten over toepassings activiteiten gecombineerd tot één weer gave voor rapportage op basis van context. Het rapport controle Logboeken openen:
 
-1. Navigeer naar het [Azure Portal](https://portal.azure.com).
+1. Navigeer naar [Azure Portal](https://portal.azure.com).
 2. Selecteer de map in de rechter bovenhoek en selecteer vervolgens de Blade **Azure Active Directory** in het navigatie deel venster aan de linkerkant.
 3. Selecteer **controle logboeken** in het gedeelte **activiteit** van de Blade Azure Active Directory. 
 
@@ -52,7 +52,7 @@ U kunt Geavanceerd filteren in het controle rapport gebruiken om toegang te krij
 
 Categorieën zijn onder andere:
 
-- Alle
+- Alles
 - AdministrativeUnit
 - ApplicationManagement
 - Verificatie
@@ -63,7 +63,7 @@ Categorieën zijn onder andere:
 - DirectoryManagement
 - EntitlementManagement
 - GroupManagement
-- Overige
+- Anders
 - Beleid
 - ResourceManagement
 - RoleManagement
@@ -73,7 +73,7 @@ U kunt ook filteren op een specifieke service met behulp van het vervolg filter 
 
 Services omvatten:
 
-- Alle
+- Alles
 - Toegangsbeoordelingen
 - Account inrichten 
 - SSO van de toepassing
@@ -87,7 +87,7 @@ Services omvatten:
 - PIM
 - Self-service voor groepsbeheer
 - Self-service voor wachtwoordbeheer
-- Gebruiksrechtovereenkomst
+- Gebruiksvoorwaarden
 
 ## <a name="sign-ins-report"></a>Aanmeldingenrapport 
 
@@ -95,7 +95,7 @@ De weer gave **aanmeldingen** bevat alle gebruikers aanmeldingen en het gebruiks
 
 Het rapport aanmeldingen openen:
 
-1. Navigeer naar het [Azure Portal](https://portal.azure.com).
+1. Navigeer naar [Azure Portal](https://portal.azure.com).
 2. Selecteer de map in de rechter bovenhoek en selecteer vervolgens de Blade **Azure Active Directory** in het navigatie deel venster aan de linkerkant.
 3. Selecteer **aanmeldingen** in het gedeelte **activiteit** van de Blade Azure Active Directory. 
 
@@ -147,9 +147,9 @@ U kunt rapporten over gedetecteerde risico detecties openen in het gedeelte **be
 
 #### <a name="symptoms"></a>Symptomen 
 
-Ik heb de activiteitenlogboeken (audit of aanmeldingen) gedownload en ik zie niet alle records voor de tijd die ik heb geselecteerd. Hoe komt dat? 
+Ik heb de activiteitenlogboeken (audit of aanmeldingen) gedownload en ik zie niet alle records voor de tijd die ik heb geselecteerd. Hoe kan dat? 
 
- ![Rapporten](./media/troubleshoot-missing-data-download/01.png)
+ ![Rapportage](./media/troubleshoot-missing-data-download/01.png)
  
 #### <a name="cause"></a>Oorzaak
 
@@ -165,16 +165,16 @@ U kunt gebruikmaken van [API's van Azure AD Reporting](concept-reporting-api.md)
 
 Ik heb enkele acties uitgevoerd in de Azure-portal en had verwacht de auditlogboeken voor deze acties te zien op de blade `Activity logs > Audit Logs`, maar ik kan ze niet vinden.
 
- ![Rapporten](./media/troubleshoot-missing-audit-data/01.png)
+ ![Rapportage](./media/troubleshoot-missing-audit-data/01.png)
  
 #### <a name="cause"></a>Oorzaak
 
 Acties worden niet direct weergegeven in de activiteitenlogboeken. In de onderstaande tabel ziet u de latentiewaarden voor activiteitenlogboeken. 
 
-| Rapport | &nbsp; | Latentie (P95) | Latentie (P99) |
-|--------|--------|---------------|---------------|
-| Directorycontrole | &nbsp; | 2 minuten | 5 minuten |
-| Aanmeldingsactiviteit | &nbsp; | 2 minuten | 5 minuten | 
+| Rapport | Latentie (P95) | Latentie (P99) |
+|--------|---------------|---------------|
+| Directorycontrole | 2 minuten | 5 minuten |
+| Aanmeldingsactiviteit | 2 minuten | 5 minuten |
 
 #### <a name="resolution"></a>Oplossing
 
@@ -186,16 +186,16 @@ Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het 
 
 Ik heb me onlangs aangemeld bij de Azure-portal en dan zou ik hier eigenlijk vermeldingen voor moeten zien in de logboeken op de blade `Activity logs > Sign-ins`, maar ik kan ze niet vinden.
 
- ![Rapporten](./media/troubleshoot-missing-audit-data/02.png)
+ ![Rapportage](./media/troubleshoot-missing-audit-data/02.png)
  
 #### <a name="cause"></a>Oorzaak
 
 Acties worden niet direct weergegeven in de activiteitenlogboeken. In de onderstaande tabel ziet u de latentiewaarden voor activiteitenlogboeken. 
 
-| Rapport | &nbsp; | Latentie (P95) | Latentie (P99) |
-|--------|--------|---------------|---------------|
-| Directorycontrole | &nbsp; | 2 minuten | 5 minuten |
-| Aanmeldingsactiviteit | &nbsp; | 2 minuten | 5 minuten | 
+| Rapport | Latentie (P95) | Latentie (P99) |
+|--------|---------------|---------------|
+| Directorycontrole | 2 minuten | 5 minuten |
+| Aanmeldingsactiviteit | 2 minuten | 5 minuten |
 
 #### <a name="resolution"></a>Oplossing
 
@@ -205,18 +205,18 @@ Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het 
 
 #### <a name="symptoms"></a>Symptomen
 
-Ik kan niet meer dan 30 dagen aan aanmeldings- en controlegegevens bekijken in de Azure-portal. Hoe komt dat? 
+Ik kan niet meer dan 30 dagen aan aanmeldings- en controlegegevens bekijken in de Azure-portal. Hoe kan dat? 
 
- ![Rapporten](./media/troubleshoot-missing-audit-data/03.png)
+ ![Rapportage](./media/troubleshoot-missing-audit-data/03.png)
 
 #### <a name="cause"></a>Oorzaak
 
 Afhankelijk van uw licentie bewaart Azure Active Directory Actions de activiteitenrapporten gedurende de volgende perioden:
 
-| Rapport           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
-| ---              | ----   |  ---           | ---                 | ---                 |
-| Directorycontrole  | &nbsp; |   7 dagen     | 30 dagen             | 30 dagen             |
-| Aanmeldingsactiviteit | &nbsp; | Niet beschikbaar. U kunt gedurende zeven dagen uw eigen aanmeldingsactiviteit bekijken op de blade met uw individuele gebruikersprofiel. | 30 dagen | 30 dagen             |
+| Rapport           | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| ---              | ---           | ---                 | ---
+| Directorycontrole  | 7 dagen        | 30 dagen             | 30 dagen             |
+| Aanmeldingsactiviteit | Niet beschikbaar. U kunt gedurende zeven dagen uw eigen aanmeldingsactiviteit bekijken op de blade met uw individuele gebruikersprofiel. | 30 dagen | 30 dagen             |
 
 Zie [Bewaarbeleid Azure Active Directory-rapporten](reference-reports-data-retention.md) voor meer informatie.  
 

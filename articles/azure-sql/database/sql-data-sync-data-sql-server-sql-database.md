@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: a6e7e01917ac6499b9836b460077a5513782a4ce
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 80bc254aafa9c221fcaf724331928b7f30360eac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254001"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610843"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Wat is SQL Data Sync voor Azure?
 
@@ -34,7 +34,7 @@ Bij de gegevens synchronisatie wordt gebruikgemaakt van een hub-en spoke-topolog
 
 - De **hub-data base** moet een Azure SQL database zijn.
 - De **leden databases** kunnen bestaan uit data bases in Azure SQL database of in exemplaren van SQL Server.
-- De **synchronisatie database** bevat de meta gegevens en het logboek voor de gegevens synchronisatie. De synchronisatie database moet een Azure SQL Database zijn die zich in dezelfde regio bevindt als de hub-data base. De gesynchroniseerde data base is klant gemaakt en is eigenaar van de klant.
+- De meta **gegevens database** bevat de meta gegevens en het logboek voor de gegevens synchronisatie. De meta gegevens database moet een Azure SQL Database zijn die zich in dezelfde regio bevindt als de hub-data base. De meta gegevens database voor synchronisatie is gemaakt door de klant en het eigendom van de klant. U kunt slechts één meta gegevens database synchroniseren per regio en abonnement. De meta gegevens database voor synchronisatie kan niet worden verwijderd of de naam ervan kan niet worden gewijzigd terwijl er synchronisatie groepen of synchronisatie agenten bestaan. Micro soft raadt aan om een nieuwe, lege data base te maken voor gebruik als de meta gegevens database voor synchronisatie. Gegevens synchronisatie maakt tabellen in deze data base en voert een frequente werk belasting uit.
 
 > [!NOTE]
 > Als u een on-premises Data Base als een lid-data base gebruikt, moet u [een lokale synchronisatie agent installeren en configureren](sql-data-sync-sql-server-configure.md#add-on-prem).
@@ -68,7 +68,7 @@ Gegevens synchronisatie is niet de aanbevolen oplossing voor de volgende scenari
 
 
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 
 - **Wijzigingen in de gegevens bijhouden:** Gegevens synchronisatie houdt wijzigingen bij met behulp van INSERT-, update-en delete-triggers. De wijzigingen worden vastgelegd in een tabel aan de kant van de gebruikers database. Houd er rekening mee dat BULK INSERT triggers niet standaard wordt geactiveerd. Als FIRE_TRIGGERS niet is opgegeven, worden er geen invoeg triggers uitgevoerd. Voeg de FIRE_TRIGGERS optie toe, zodat gegevens synchronisatie deze toevoegingen kan bijhouden. 
 - **Gegevens synchroniseren:** Gegevens synchronisatie is ontworpen in een hub-en spoke-model. De hub wordt met elk lid afzonderlijk gesynchroniseerd. Wijzigingen van de hub worden gedownload naar het lid en vervolgens worden wijzigingen van het lid geüpload naar de hub.
@@ -155,7 +155,7 @@ Met gegevens synchronisatie kunnen alleen-lezen of door het systeem gegenereerde
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>Beperkingen voor service-en database dimensies
 
-| **Dimensies**                                                  | **Ondergrens**              | **Enkele**              |
+| **Dimensies**                                                  | **Ondergrens**              | **Tijdelijke oplossing**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | Het maximum aantal synchronisatie groepen waarvan elke Data Base deel kan uitmaken.       | 5                      |                             |
 | Maximum aantal eind punten in één synchronisatie groep              | 30                     |                             |
@@ -236,6 +236,10 @@ Ja. SQL Data Sync sortering ondersteunt in de volgende scenario's:
 
 De Federatie hoofd database kan worden gebruikt in de SQL Data Sync-Service zonder enige beperking. U kunt het federatieve data base-eind punt niet toevoegen aan de huidige versie van SQL Data Sync.
 
+### <a name="can-i-use-data-sync-to-sync-data-exported-from-dynamics-365-using-bring-your-own-database-byod-feature"></a>Kan ik gegevens synchronisatie gebruiken om gegevens te synchroniseren die zijn geëxporteerd uit Dynamics 365 met de functie uw eigen data base (BYOD) gebruiken?
+
+Met de Dynamics 365-functie van uw eigen data base kunnen beheerders gegevens entiteiten van de toepassing exporteren naar hun eigen Microsoft Azure SQL database. Gegevens synchronisatie kan worden gebruikt om deze gegevens te synchroniseren met andere data bases als gegevens worden geëxporteerd met een **incrementele push** (volledige push wordt niet ondersteund) en **Triggers inschakelen in doel database** is ingesteld op **Ja**.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 ### <a name="update-the-schema-of-a-synced-database"></a>Het schema van een gesynchroniseerde data base bijwerken
@@ -245,7 +249,7 @@ Moet u het schema van een data base in een synchronisatie groep bijwerken? Wijzi
 - [De replicatie van schema wijzigingen automatiseren met SQL Data Sync in azure](../../sql-database/sql-database-update-sync-schema.md)
 - [PowerShell gebruiken voor het bijwerken van het synchronisatieschema in een bestaande synchronisatiegroep](scripts/update-sync-schema-in-sync-group.md)
 
-### <a name="monitor-and-troubleshoot"></a>Controleren en problemen oplossen
+### <a name="monitor-and-troubleshoot"></a>Bewaken en problemen oplossen
 
 Wordt SQL Data Sync als verwachting uitgevoerd? Raadpleeg de volgende artikelen voor informatie over het bewaken van activiteiten en het oplossen van problemen:
 
