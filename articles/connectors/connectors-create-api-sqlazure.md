@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 tags: connectors
 ms.openlocfilehash: ba8a6e5b53634850670a7d6b2fb55ef0e7b18d09
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85255497"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Werk stromen automatiseren voor een SQL database met behulp van Azure Logic Apps
@@ -71,10 +71,10 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
 
 1. Selecteer bij **verificatie type**de verificatie die vereist is en is ingeschakeld in uw data base in Azure SQL database of Azure SQL Managed instance:
 
-   | Verificatie | Beschrijving |
+   | Verificatie | Description |
    |----------------|-------------|
-   | [**Geïntegreerd met Azure AD**](../azure-sql/database/authentication-aad-overview.md) | -Ondersteunt zowel de niet-ISE als de ISE SQL Server-connector. <p><p>-Vereist een geldige identiteit in Azure Active Directory (Azure AD) die toegang heeft tot uw data base. <p>Zie deze onderwerpen voor meer informatie: <p>- [Overzicht van Azure SQL-beveiliging-verificatie](../azure-sql/database/security-overview.md#authentication) <br>- [Database toegang verlenen aan Azure SQL-verificatie en autorisatie](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL-geïntegreerde Azure AD-verificatie](../azure-sql/database/authentication-aad-overview.md) |
-   | [**SQL Server-verificatie**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Ondersteunt zowel de niet-ISE als de ISE SQL Server-connector. <p><p>-Vereist een geldige gebruikers naam en een sterk wacht woord die zijn gemaakt en opgeslagen in uw data base. <p>Zie deze onderwerpen voor meer informatie: <p>- [Overzicht van Azure SQL-beveiliging-verificatie](../azure-sql/database/security-overview.md#authentication) <br>- [Database toegang verlenen aan Azure SQL-verificatie en autorisatie](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
+   | [**Geïntegreerd met Azure AD**](../azure-sql/database/authentication-aad-overview.md) | -Ondersteunt zowel de niet-ISE als de ISE SQL Server-connector. <p><p>-Vereist een geldige identiteit in Azure Active Directory (Azure AD) die toegang heeft tot uw data base. <p>Raadpleeg de volgende onderwerpen voor meer informatie: <p>- [Overzicht van Azure SQL-beveiliging-verificatie](../azure-sql/database/security-overview.md#authentication) <br>- [Database toegang verlenen aan Azure SQL-verificatie en autorisatie](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL-geïntegreerde Azure AD-verificatie](../azure-sql/database/authentication-aad-overview.md) |
+   | [**SQL Server-verificatie**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Ondersteunt zowel de niet-ISE als de ISE SQL Server-connector. <p><p>-Vereist een geldige gebruikers naam en een sterk wacht woord die zijn gemaakt en opgeslagen in uw data base. <p>Raadpleeg de volgende onderwerpen voor meer informatie: <p>- [Overzicht van Azure SQL-beveiliging-verificatie](../azure-sql/database/security-overview.md#authentication) <br>- [Database toegang verlenen aan Azure SQL-verificatie en autorisatie](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
    |||
 
    Dit voor beeld gaat verder met **Azure AD Integrated**:
@@ -115,7 +115,7 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
 
 1. Selecteer bij **verificatie type**de verificatie die vereist is en is ingeschakeld op uw SQL Server:
 
-   | Verificatie | Beschrijving |
+   | Verificatie | Description |
    |----------------|-------------|
    | [**Windows-verificatie**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | -Ondersteunt alleen de niet-ISE SQL Server-connector, waarvoor een gegevens gateway resource is vereist die eerder in azure voor uw verbinding is gemaakt, ongeacht of u gebruikmaakt van multi tenant Azure of een ISE. <p><p>-Vereist een geldige Windows-gebruikers naam en-wacht woord om uw identiteit te bevestigen via uw Windows-account. <p>Zie [Windows-verificatie](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) voor meer informatie. |
    | [**SQL Server-verificatie**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Ondersteunt zowel de niet-ISE als de ISE SQL Server-connector. <p><p>-Vereist een geldige gebruikers naam en een sterk wacht woord die zijn gemaakt en opgeslagen in uw SQL Server. <p>Zie [SQL Server-verificatie](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)voor meer informatie. |
@@ -173,7 +173,7 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
    
    Als u de gegevens in deze rij bijvoorbeeld wilt weer geven, kunt u andere acties toevoegen waarmee een bestand wordt gemaakt dat de velden uit de geretourneerde rij bevat, en vervolgens e-mail waarschuwingen verzenden. Zie de [referentie pagina van de connector](https://docs.microsoft.com/connectors/sql/)voor meer informatie over andere beschik bare acties voor deze connector.
 
-1. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
    Hoewel met deze stap automatisch uw logische app in azure wordt ingeschakeld en gepubliceerd, is de enige actie die momenteel door uw logische app wordt uitgevoerd, het controleren van uw Data Base op basis van het opgegeven interval en de frequentie.
 
@@ -244,7 +244,7 @@ Wanneer u een opgeslagen procedure aanroept met behulp van de SQL Server-connect
    > [!NOTE]
    > Als er een fout bericht wordt weer gegeven dat Logic Apps geen schema kan genereren, controleert u of de syntaxis van de voorbeeld uitvoer correct is ingedeeld. Als u het schema nog niet kunt genereren, voert u in het vak **schema** het schema hand matig in.
 
-1. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 1. Als u wilt verwijzen naar de eigenschappen van de JSON-inhoud, klikt u in de bewerkings vakken waar u naar deze eigenschappen wilt verwijzen, zodat de lijst met dynamische inhoud wordt weer gegeven. Selecteer in de lijst onder de kop [**JSON parseren**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) de gegevens tokens voor de gewenste eigenschappen van de JSON-inhoud.
 

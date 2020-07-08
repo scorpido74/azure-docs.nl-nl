@@ -16,10 +16,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
 ms.openlocfilehash: 0fe4ae76645ec2a0ae8aae93b9db987ece9a45b9
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85255123"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Push meldingen met Azure Notification Hubs: veelgestelde vragen
@@ -151,7 +151,7 @@ Alle verbindingen, van de afzender naar de Azure-Notification Hubs naar de PNS, 
 
 Als u gevoelige nettoladingen wilt verzenden, kunt u het beste een beveiligd push patroon gebruiken. De afzender levert een ping-melding met een bericht-id aan het apparaat zonder de gevoelige nettolading. Wanneer de app op het apparaat de payload ontvangt, roept de app een beveiligde API rechtstreeks aan om de bericht gegevens op te halen. Ga voor een hand leiding voor het implementeren van dit patroon naar de pagina [veilige push-zelf studie van Notification hubs] .
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>Bewerkingen
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>Welke ondersteuning wordt geboden voor herstel na nood gevallen?
 
@@ -203,7 +203,7 @@ U kunt ook programmatisch toegang krijgen tot metrische gegevens. Raadpleeg voor
 [Azure-portal]: https://portal.azure.com
 [Notification Hubs prijzen]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
-[Notification Hubs REST-Api's]: https://msdn.microsoft.com/library/azure/dn530746.aspx
+[REST API's voor Notification Hubs]: https://msdn.microsoft.com/library/azure/dn530746.aspx
 [Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
 [Hulp bij het registreren van back-end]: https://msdn.microsoft.com/library/azure/dn743807.aspx
 [Hulp bij het registreren van back-end 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx

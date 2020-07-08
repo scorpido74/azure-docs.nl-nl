@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: absha
 ms.openlocfilehash: 46ef67e5ede1ea41469a8dcc78244e74c0bffc45
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85254324"
 ---
 # <a name="application-gateway-components"></a>Application Gateway-onderdelen
@@ -152,6 +152,6 @@ Zie [de status van uw toepassings gateway bewaken](../application-gateway/applic
 
 Een toepassings gateway maken:
 
-* [In de Azure Portal](quick-create-portal.md)
+* [In de Azure-Portal](quick-create-portal.md)
 * [Met behulp van Azure PowerShell](quick-create-powershell.md)
 * [Via de Azure CLI](quick-create-cli.md)

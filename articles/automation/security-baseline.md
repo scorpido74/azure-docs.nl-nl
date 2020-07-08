@@ -8,10 +8,10 @@ ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 718be8599db5b30aa6c98bf4dfbd3663250b9d9c
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85255967"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azure-beveiligings basislijn voor Automation
@@ -500,7 +500,7 @@ Als er echter Hybrid Runbook Workers worden gebruikt die worden ondersteund door
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -880,7 +880,7 @@ U kunt ook aanbevelingen van Azure Security Center gebruiken als een veilige con
 
 * [Beschik bare Azure Policy aliassen weer geven](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Zelf studie: beleid maken en beheren om naleving af te dwingen](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Zelfstudie: Beleidsregels voor het afdwingen van naleving maken en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
 * [Azure Policy voor beeld van ingebouwde invoeg toepassingen voor Azure Automation](https://docs.microsoft.com/azure/automation/policy-samples)
 

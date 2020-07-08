@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 43e28774625db0217dde1227bad160ba87750c8c
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85254987"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Servers en individuele data bases maken en beheren in Azure SQL Database
@@ -65,7 +65,7 @@ Gebruik de volgende Power shell-cmdlets om servers, afzonderlijke en gegroepeerd
 > [!TIP]
 > Zie Power [shell gebruiken om een Data Base te maken in SQL database en een firewall regel op server niveau te configureren](scripts/create-and-configure-database-powershell.md) en een [data base in SQL database te controleren en te schalen met behulp van Power](scripts/monitor-and-scale-database-powershell.md)shell voor voorbeeld scripts voor Power shell.
 
-| Cmdlet | Beschrijving |
+| Cmdlet | Description |
 | --- | --- |
 |[New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)|Hiermee maakt u een Data Base |
 |[Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase)|Hiermee worden een of meer data bases opgehaald|
@@ -90,7 +90,7 @@ Gebruik de volgende [Azure cli](/cli/azure/sql/db) -opdrachten om de servers, da
 > Zie [een enkele Azure SQL database maken met behulp van de Azure cli](az-cli-script-samples-content-guide.md)voor een Snelstartgids van Azure cli. Zie voor voor beelden van Azure CLI-scripts [CLI gebruiken om een Data Base te maken in Azure SQL database en een SQL database firewall regel configureren](scripts/create-and-configure-database-cli.md) en [CLI gebruiken om een data base in Azure SQL database te controleren en te schalen](scripts/monitor-and-scale-database-cli.md).
 >
 
-| Cmdlet | Beschrijving |
+| Cmdlet | Description |
 | --- | --- |
 |[az sql db create](/cli/azure/sql/db#az-sql-db-create) |Hiermee maakt u een Data Base|
 |[AZ SQL DB List](/cli/azure/sql/db#az-sql-db-list)|Een lijst met alle data bases en data warehouses in een server, of alle data bases in een elastische pool|

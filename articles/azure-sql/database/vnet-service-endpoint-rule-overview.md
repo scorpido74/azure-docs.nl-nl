@@ -12,10 +12,10 @@ ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
 ms.openlocfilehash: 51d7ae8671d4b57e1822aa1c4ee5bf30a5f24cbd
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85253984"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Virtuele netwerk service-eind punten en-regels gebruiken voor servers in Azure SQL Database
@@ -240,7 +240,7 @@ U moet al een subnet hebben dat is gelabeld met de specifieke naam van het Virtu
 
 ## <a name="azure-portal-steps"></a>Azure Portal stappen
 
-1. Meld u aan bij de [Azure-portal][http-azure-portal-link-ref-477t].
+1. Meld u aan bij [Azure Portal][http-azure-portal-link-ref-477t].
 
 2. Zoek en selecteer **SQL-servers**en selecteer vervolgens uw server. Onder **beveiliging**selecteert u **firewalls en virtuele netwerken**.
 

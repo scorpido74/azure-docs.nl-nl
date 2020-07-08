@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: jingwang
 ms.openlocfilehash: 8ca3d7475472c6980be85299046624bdcf8cae11
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85254454"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Tekst indeling met scheidings tekens in Azure Data Factory
@@ -124,7 +124,7 @@ Ondersteunde **instellingen voor het lezen van tekst met scheidings tekens** ond
 
 De volgende eigenschappen worden ondersteund in het gedeelte *** \* sink \* *** van de Kopieer activiteit.
 
-| Eigenschap       | Beschrijving                                                  | Vereist |
+| Eigenschap       | Description                                                  | Vereist |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **DelimitedTextSink**. | Yes      |
 | formatSettings | Een groep eigenschappen. Raadpleeg de onderstaande tabel voor het **schrijven van instellingen voor tekst met scheidings tekens** hieronder. |          |
@@ -132,7 +132,7 @@ De volgende eigenschappen worden ondersteund in het gedeelte *** \* sink \* *** 
 
 Ondersteunde **instellingen voor het schrijven van tekst met scheidings tekens** onder `formatSettings` :
 
-| Eigenschap      | Beschrijving                                                  | Vereist                                              |
+| Eigenschap      | Description                                                  | Vereist                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | Het type formatSettings moet zijn ingesteld op **DelimitedTextWriteSettings**. | Yes                                                   |
 | File Extension | De bestands extensie die wordt gebruikt voor het benoemen van de uitvoer bestanden, bijvoorbeeld `.csv` `.txt` . Deze moet worden opgegeven wanneer de `fileName` niet is opgegeven in de DelimitedText-gegevensset. Als de bestands naam in de uitvoer gegevensset is geconfigureerd, wordt deze gebruikt als de naam van het sink-bestand en de instelling voor de bestands extensie wordt genegeerd.  | Ja als er geen bestands naam is opgegeven in de uitvoer gegevensset |

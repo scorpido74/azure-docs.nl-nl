@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d63cb1d7e2b0086a3d9ef6e3917ebefa11c7ccba
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85253372"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Aanbevolen procedures voor voorwaardelijke toegang in Azure Active Directory
@@ -39,7 +39,7 @@ Als u uw beleid wilt laten werken, moet u het volgende configureren:
 | :--            | :--                                  | :-- |
 | **Cloud-apps** |Selecteer een of meer apps.  | Het doel van een beleid voor voorwaardelijke toegang is om u te laten bepalen hoe geautoriseerde gebruikers toegang hebben tot Cloud-apps.|
 | **Gebruikers en groepen** | Selecteer ten minste één gebruiker of groep die is gemachtigd om toegang te krijgen tot uw geselecteerde Cloud-apps. | Een beleid voor voorwaardelijke toegang waaraan geen gebruikers en groepen zijn toegewezen, wordt nooit geactiveerd. |
-| **Besturingselementen voor toegang** | Selecteer ten minste één toegangs beheer. | Als aan uw voor waarden wordt voldaan, moet uw beleids processor weten wat er moet gebeuren. |
+| **Toegangs beheer** | Selecteer ten minste één toegangs beheer. | Als aan uw voor waarden wordt voldaan, moet uw beleids processor weten wat er moet gebeuren. |
 
 ## <a name="what-you-should-know"></a>Wat u moet weten
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: aacaa8ca7e0cd15b34f29479d38d7bc8d95001de
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85253695"
 ---
 # <a name="tutorial-configure-fuze-for-automatic-user-provisioning"></a>Zelf studie: Fuze configureren voor automatische gebruikers inrichting
@@ -84,7 +84,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-fuze-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Fuze in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -120,7 +120,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |name. naam|Tekenreeks|
    |naam. familielid|Tekenreeks|
    |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|
-   |actief|Booleaans|
+   |actief|Boolean-waarde|
 
 10. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 

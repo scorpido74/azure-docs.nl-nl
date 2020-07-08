@@ -4,10 +4,10 @@ description: Gebruik Azure Portal en Azure resource Manage om uw resources te im
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: 31f80eb617820def871633dac1541c7dc3bed691
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85255259"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>Resources implementeren met ARM-sjablonen en Azure Portal

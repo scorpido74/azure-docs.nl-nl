@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: cf731b09115558fc4280fe322d7e952ccb420c03
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85254868"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Gegevens kopiëren van en naar Azure SQL Database met behulp van Azure Data Factory
@@ -638,7 +638,7 @@ Bij het verplaatsen van gegevens naar en van Azure SQL Database, worden de volge
 | --- | --- |
 | bigint |Int64 |
 | binair |Byte [] |
-| bit |Booleaans |
+| bit |Boolean-waarde |
 | char |Teken reeks, char [] |
 | date |DateTime |
 | Datum/tijd |DateTime |

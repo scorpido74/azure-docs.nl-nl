@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
 ms.openlocfilehash: 2358cf57348b82975250d489ac95d6e0b35eed0e
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85254817"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>Problemen met Azure Event Grid oplossen
@@ -36,7 +36,7 @@ Deze hand leiding bevat een lijst met Azure Event Grid fout codes, fout berichte
 | Foutcode | Foutbericht | Description | Aanbevolen actie |
 | ---------- | ------------- | ----------- | ------------------ |
 | Http status code. verboden <br/>403 | Publiceren naar {topic/Domain} door de client {IpAddress} is geweigerd vanwege IP-filter regels. | Voor het onderwerp of het domein zijn IP-firewall regels geconfigureerd en de toegang is beperkt tot geconfigureerde IP-adressen. | Voeg het IP-adres toe aan de IP-firewall regels, Zie [IP-Firewall configureren](configure-firewall.md) |
-| Http status code. verboden <br/> 403 | Publiceren naar {topic/Domain} door de client is geweigerd omdat de aanvraag afkomstig is van een persoonlijk eind punt en er geen overeenkomende persoonlijke eindpunt verbinding is gevonden voor de resource. | Het onderwerp of het domein heeft het geconfigureerde persoonlijke eind punt en de publicatie aanvraag is afkomstig van een persoonlijk eind punt dat niet is geconfigureerd/goedgekeurd. | Een persoonlijk eind punt configureren voor het onderwerp/domein. [Privé-eindpunten configureren](configure-private-endpoints.md) |
+| Http status code. verboden <br/> 403 | Publiceren naar {topic/Domain} door de client is geweigerd omdat de aanvraag afkomstig is van een persoonlijk eind punt en er geen overeenkomende persoonlijke eindpunt verbinding is gevonden voor de resource. | Het onderwerp of het domein heeft het geconfigureerde persoonlijke eind punt en de publicatie aanvraag is afkomstig van een persoonlijk eind punt dat niet is geconfigureerd/goedgekeurd. | Een persoonlijk eind punt configureren voor het onderwerp/domein. [Privé-eind punten configureren](configure-private-endpoints.md) |
 
 ## <a name="troubleshoot-event-subscription-validation"></a>Problemen met validatie van gebeurtenis abonnementen oplossen
 

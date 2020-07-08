@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
 ms.openlocfilehash: 71020453f51e5baa9172ad8902eeb537dd55763b
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85255225"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Aan de slag met Azure Cloud Services en ASP.NET
@@ -104,7 +104,7 @@ In de volgende sectie configureert u de oplossing voor het gebruik van Azure-clo
 U voert de volgende stappen uit voor het uitvoeren van de toepassing in de cloud:
 
 * Een Azure-cloudservice maken.
-* Maak een data base in Azure SQL Database.
+* Een database maken in Azure SQL Database.
 * Een Azure-opslagaccount maken.
 * Configureer de oplossing voor het gebruik van uw data base als deze wordt uitgevoerd in Azure.
 * De oplossing configureren voor het gebruik van uw Azure-opslagaccount als deze wordt uitgevoerd in Azure.

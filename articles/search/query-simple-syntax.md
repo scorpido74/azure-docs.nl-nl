@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.openlocfilehash: 5b585a903267386358552154228705c1921df619
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85255327"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Eenvoudige query syntaxis in azure Cognitive Search
@@ -114,7 +114,7 @@ Gebruik voor andere varianten van joker tekens, zoals achtervoegsel of infix dat
 
 Een term zoeken is een query voor een of meer voor waarden, waarbij een van de voor waarden als een overeenkomst wordt beschouwd. Een woordgroepen zoekopdracht is een exacte woord groep tussen aanhalings tekens `" "` . Als u bijvoorbeeld `Roach Motel` (zonder aanhalings tekens) zoekt naar documenten met `Roach` en/of `Motel` ergens in een wille keurige volg orde, `"Roach Motel"` (met aanhalings tekens), komen alleen documenten overeen met die hele woord groep samen en in die volg orde (de lexicale analyse is nog steeds van toepassing).
 
-## <a name="see-also"></a>Zie ook  
+## <a name="see-also"></a>Zie tevens  
 
 + [Hoe zoeken in de volledige tekst werkt in Azure Cognitive Search](search-lucene-query-architecture.md)
 + [Query voorbeelden voor eenvoudige Zoek opdrachten](search-query-simple-examples.md)

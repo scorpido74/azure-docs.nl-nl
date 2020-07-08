@@ -12,10 +12,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 63c7e0c9569428b55420911f253deee52ce440cb
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85255395"
 ---
 # <a name="configure-apple-push-notification-service-settings-for-a-notification-hub-in-the-azure-portal"></a>Apple Push Notification Service-instellingen configureren voor een notification hub in de Azure Portal
@@ -24,7 +24,7 @@ In dit artikel wordt beschreven hoe u Apple Push Notification Service (APNS)-ins
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u nog geen notification hub hebt gemaakt, maakt u er nu een. Zie [een Azure notification hub maken in de Azure Portal](create-notification-hub-portal.md)voor meer informatie.
+Maak nu een notification hub als u dat nog niet hebt gedaan. Zie [een Azure notification hub maken in de Azure Portal](create-notification-hub-portal.md)voor meer informatie.
 
 ## <a name="configure-apple-push-notification-service"></a>Apple Push Notification Service configureren
 
@@ -32,20 +32,20 @@ De volgende procedure bevat stappen voor het configureren van Apple Push Notific
 
 1. Selecteer in het Azure Portal op de pagina **Notification hub** **Apple (APNS)** in het menu links.
 
-1. Voor de **verificatie modus**selecteert u **certificaat** of **token**.
+1. Selecteer **Certificaat** of **Token** als **Verificatiemodus**.
 
-   - Als u **certificaat**selecteert:
-      - Selecteer het pictogram bestand en selecteer vervolgens het *. p12* -bestand dat u wilt uploaden.
-      - Voer een wacht woord in.
-      - Selecteer de modus **Sandbox**. Als u push meldingen wilt verzenden naar gebruikers die uw app uit de Store hebben gekocht, selecteert u **productie** modus.
+   - Als u **Certificaat** selecteert:
+      - Selecteer het pictogram van het bestand en selecteer het *.p12*-bestand dat u wilt uploaden.
+      - Voer een wachtwoord in.
+      - Selecteer de modus **Sandbox**. Of selecteer de modus **Productie** als u pushmeldingen wilt verzenden naar gebruikers die uw app in de Store hebben gekocht.
 
-     ![Scherm opname van een configuratie van een APNS-certificaat in de Azure Portal](./media/configure-apple-push-notification-service/notification-hubs-apple-config-cert.png)
+     ![Schermopname van een configuratie van een APNS-certificaat in de Azure Portal](./media/configure-apple-push-notification-service/notification-hubs-apple-config-cert.png)
 
-   - Als u **token**selecteert:
-      - Voer de waarden in voor de **sleutel-id**, de **bundel-id**, de **Team-ID**en het **token**.
-      - Selecteer de modus **Sandbox**. Als u push meldingen wilt verzenden naar gebruikers die uw app uit de Store hebben gekocht, selecteert u **productie** modus.
+   - Als u **Token** selecteert:
+      - Voer de waarden in voor **sleutel-id**, **bundel-id**, **team-id** en **token**.
+      - Selecteer de modus **Sandbox**. Of selecteer de modus **Productie** als u pushmeldingen wilt verzenden naar gebruikers die uw app in de Store hebben gekocht.
 
-     ![Scherm afbeelding van een configuratie van een APNS-token in de Azure Portal](./media/configure-apple-push-notification-service/notification-hubs-apple-config-token.png)
+     ![Schermafbeelding van een configuratie van een APNS-token in de Azure Portal](./media/configure-apple-push-notification-service/notification-hubs-apple-config-token.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

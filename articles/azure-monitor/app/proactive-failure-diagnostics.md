@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
 ms.openlocfilehash: 35c1769672e11cd7d1ec2f628b9d763dc8b90ac3
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85254783"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Slimme detectie-fout afwijkingen
@@ -33,7 +33,7 @@ In de details van de waarschuwing ziet u het volgende:
 ## <a name="benefits-of-smart-detection"></a>Voor delen van Slimme detectie
 Normale [metrische waarschuwingen](../../azure-monitor/platform/alerts-log.md) geven aan dat er mogelijk een probleem is. Met Slimme detectie wordt het diagnostische werk voor u gestart, waarbij veel van de analyse wordt uitgevoerd die u anders zou moeten uitvoeren. U krijgt de resultaten die u netjes kunt bundelen, zodat u snel aan de slag kunt met het probleem.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 Slimme detectie bewaakt de gegevens die van uw app zijn ontvangen, met name de uitval snelheid. Deze regel telt het aantal aanvragen waarvoor de `Successful request` eigenschap False is en het aantal afhankelijkheids aanroepen waarvoor de `Successful call` eigenschap False is. Voor aanvragen standaard `Successful request == (resultCode < 400)` (tenzij u aangepaste code hebt geschreven om uw eigen [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) -aanroepen te [filteren](../../azure-monitor/app/api-filtering-sampling.md#filtering) of te genereren). 
 
 De prestaties van uw app hebben een typisch patroon van het gedrag. Sommige aanvragen of afhankelijkheids aanroepen zijn gevoelig voor fouten dan andere. en het totale aantal fouten kan optreden naarmate de belasting toeneemt. Slimme detectie maakt gebruik van machine learning om deze afwijkingen te vinden.

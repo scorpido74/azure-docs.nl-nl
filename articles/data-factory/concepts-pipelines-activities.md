@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: c71e4120d127277e8b46f59bfef7fca403847c2e
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85253758"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pijplijnen en activiteiten in Azure Data Factory
@@ -112,7 +112,7 @@ naam | Naam van de pijplijn. Geef een naam op die staat voor de actie die de pij
 description | Voer een beschrijving in van het doel waarvoor de pijplijn wordt gebruikt. | Tekenreeks | No
 activities | De sectie **activities** kan één of meer activiteiten bevatten die zijn gedefinieerd binnen de activiteit. Zie de sectie [Activity in JSON](#activity-json) voor meer informatie over het JSON-element activities. | Matrix | Ja
 parameters | De sectie **parameters** kan één of meer parameters bevatten die zijn gedefinieerd in de pijplijn, waardoor uw pijplijn kan worden hergebruikt. | Lijst | No
-gelijktijdigheid | Het maximum aantal gelijktijdige uitvoeringen van de pijp lijn kan hebben. Standaard is er geen maximum. Als de limiet voor gelijktijdigheid is bereikt, worden extra pijplijn uitvoeringen in de wachtrij geplaatst totdat eerdere versies zijn voltooid | Getal | No 
+gelijktijdigheid | Het maximum aantal gelijktijdige uitvoeringen van de pijp lijn kan hebben. Standaard is er geen maximum. Als de limiet voor gelijktijdigheid is bereikt, worden extra pijplijn uitvoeringen in de wachtrij geplaatst totdat eerdere versies zijn voltooid | Aantal | No 
 aantekeningen | Een lijst met tags die zijn gekoppeld aan de pijp lijn | Matrix | No
 
 ## <a name="activity-json"></a>Activity in JSON
@@ -187,7 +187,7 @@ JSON-naam | Description | Toegestane waarden | Vereist
 timeout | Hiermee geeft u de time-out op voor de activiteit die moet worden uitgevoerd. | Periode | Nee. De standaardwaarde is 7 dagen.
 retry | Maximaal aantal nieuwe pogingen | Geheel getal | Nee. De standaardwaarde is 0
 retryIntervalInSeconds | De vertraging tussen nieuwe pogingen in seconden | Geheel getal | Nee. De standaard waarde is 30 seconden
-secureOutput | Als deze eigenschap is ingesteld op True, wordt de uitvoer van de activiteit beschouwd als beveiligd en niet geregistreerd voor bewaking. | Booleaans | Nee. De standaardinstelling is onwaar.
+secureOutput | Als deze eigenschap is ingesteld op True, wordt de uitvoer van de activiteit beschouwd als beveiligd en niet geregistreerd voor bewaking. | Boolean-waarde | Nee. De standaardinstelling is onwaar.
 
 ### <a name="control-activity"></a>Controleactiviteit
 Controleactiviteiten hebben de volgende structuur op het hoogste niveau:

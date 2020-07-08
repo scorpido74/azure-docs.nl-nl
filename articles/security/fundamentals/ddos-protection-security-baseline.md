@@ -1,22 +1,22 @@
 ---
-title: Azure-beveiligings basislijn voor Network Watcher
-description: Azure-beveiligings basislijn voor Network Watcher
+title: Azure-beveiligings basislijn voor Azure DDoS Protection Standard
+description: Azure-beveiligings basislijn voor Azure DDoS Protection Standard
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2a4cba847610ab7d6119c04f9e3b1c32a192d6c9
+ms.openlocfilehash: 97b0842b847db9dc7b5953b79cf5d33b11f2407a
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255936"
+ms.locfileid: "85255963"
 ---
-# <a name="azure-security-baseline-for-network-watcher"></a>Azure-beveiligings basislijn voor Network Watcher
+# <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azure-beveiligings basislijn voor Azure DDoS Protection Standard
 
-De Azure-beveiligings basislijn voor Network Watcher bevat aanbevelingen waarmee u de beveiligings postuur van uw implementatie kunt verbeteren.
+De Azure Security Baseline voor Azure DDoS Protection Standard bevat aanbevelingen waarmee u de beveiligings postuur van uw implementatie kunt verbeteren.
 
 De basis lijn voor deze service wordt opgehaald uit de [Azure Security Bench Mark-versie 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), die aanbevelingen biedt over hoe u uw cloud oplossingen kunt beveiligen in azure met onze richt lijnen voor best practices.
 
@@ -28,7 +28,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-resources in virtuele netwerken beveiligen
 
-**Richt lijnen**: niet van toepassing; Network Watcher beschikt over de mogelijkheid om de verbinding tussen een eind punt en de virtuele machine te bewaken, maar kan niet worden beveiligd door een virtueel netwerk, netwerk beveiligings groep of Azure Firewall.
+**Richt lijnen**: niet van toepassing; Azure DDoS is bedoeld om te worden ingeschakeld op virtuele netwerken die fungeren als host voor andere services, maar het is een belang rijke Azure-aanbieding en de onderliggende infra structuur, waaronder netwerken, volledig wordt beheerd door micro soft.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -36,7 +36,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: de configuratie en het verkeer van virtuele netwerken, subnetten en Nic's bewaken en vastleggen
 
-**Richt lijnen**: niet van toepassing; Azure Network Watcher beschikt over de mogelijkheid om stroom logboeken te analyseren en uitgebreide visualisaties van gegevens te bieden, maar Network Watcher zelf geen stroom Logboeken of bezorgings pakketten produceert.
+**Richt lijnen**: niet van toepassing; Azure DDoS is bedoeld om te worden ingeschakeld op virtuele netwerken die fungeren als host voor andere services, maar het is een belang rijke Azure-aanbieding en de onderliggende infra structuur, waaronder netwerken, volledig wordt beheerd door micro soft.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -52,7 +52,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: communicatie met bekende schadelijke IP-adressen weigeren
 
-**Richt lijnen**: niet van toepassing; Azure Network Watcher is geen resource met potentiële bloot stelling aan open bare netwerken die moeten worden beveiligd tegen schadelijk verkeer.
+**Richt lijnen**: niet van toepassing; Azure DDoS is bedoeld om te worden ingeschakeld op virtuele netwerken die fungeren als host voor andere services, maar het is een belang rijke Azure-aanbieding en de onderliggende infra structuur, waaronder netwerken, volledig wordt beheerd door micro soft.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -60,7 +60,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 ### <a name="15-record-network-packets"></a>1,5: netwerk pakketten opnemen
 
-**Richt lijnen**: niet van toepassing; Azure Network Watcher beschikt over de mogelijkheid om stroom logboeken te analyseren en uitgebreide visualisaties van gegevens te bieden, maar Network Watcher zelf geen stroom Logboeken of bezorgings pakketten produceert.
+**Richt lijnen**: niet van toepassing; Azure DDoS is bedoeld om te worden ingeschakeld op virtuele netwerken die fungeren als host voor andere services, maar het is een belang rijke Azure-aanbieding en de onderliggende infra structuur, waaronder netwerken, volledig wordt beheerd door micro soft.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -68,7 +68,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: op netwerk gebaseerde inbreuk detectie/indringings systemen (ID'S/IP-adressen) implementeren
 
-**Richt lijnen**: niet van toepassing; Azure Network Watcher is geen resource met potentiële bloot stelling aan open bare netwerken die moeten worden beveiligd tegen schadelijk verkeer.
+**Richt lijnen**: niet van toepassing; Azure DDoS is bedoeld om te worden ingeschakeld op virtuele netwerken die fungeren als host voor andere services, maar het is een belang rijke Azure-aanbieding en de onderliggende infra structuur, waaronder netwerken, volledig wordt beheerd door micro soft.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -76,7 +76,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1,7: verkeer naar webtoepassingen beheren
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor webtoepassingen die worden uitgevoerd op Azure App Service of reken bronnen.
+**Richt lijnen**: niet van toepassing; Azure DDoS is bedoeld om te worden ingeschakeld op virtuele netwerken die fungeren als host voor andere services, maar het is een belang rijke Azure-aanbieding en de onderliggende infra structuur, waaronder netwerken, volledig wordt beheerd door micro soft.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -84,7 +84,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: de complexiteit en administratieve overhead van netwerk beveiligings regels minimaliseren
 
-**Richt lijnen**: niet van toepassing; Azure Network Watcher beschikt over de mogelijkheid om stroom logboeken te analyseren en uitgebreide visualisaties van gegevens te bieden, maar Network Watcher zichzelf geen eind punt is waar u verkeer met Service Tags of netwerk beveiligings groepen kunt filteren of toestaan.
+**Richt lijnen**: niet van toepassing; Azure DDoS is bedoeld om te worden ingeschakeld op virtuele netwerken die fungeren als host voor andere services, maar het is een belang rijke Azure-aanbieding en de onderliggende infra structuur, waaronder netwerken, volledig wordt beheerd door micro soft.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -92,15 +92,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: standaard beveiligings configuraties voor netwerk apparaten onderhouden
 
-**Richt lijnen**: standaard beveiligings configuraties voor Azure-Network Watcher definiëren en implementeren met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimte ' micro soft. netwerk ' om aangepaste beleids regels te maken om de netwerk configuratie van uw Network Watcher instanties te controleren of af te dwingen. U kunt ook gebruik maken van ingebouwde beleids definities zoals:
-
-Network Watcher implementeren wanneer er virtuele netwerken worden gemaakt
-
-Network Watcher moet zijn ingeschakeld
-
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
-
-* [Een aangepast beleid maken met beleids aliassen](https://docs.microsoft.com/azure/governance/policy/tutorials/create-custom-policy-definition)
+**Richt lijnen**: niet van toepassing; Azure DDoS is bedoeld om te worden ingeschakeld op virtuele netwerken die fungeren als host voor andere services, maar het is een belang rijke Azure-aanbieding en de onderliggende infra structuur, waaronder netwerken, volledig wordt beheerd door micro soft.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -108,7 +100,7 @@ Network Watcher moet zijn ingeschakeld
 
 ### <a name="110-document-traffic-configuration-rules"></a>1,10: configuratie regels voor het document verkeer
 
-**Richt lijnen**: niet van toepassing; Hoewel Azure Network Watcher labels ondersteunt, bepaalt Network Watcher zelf niet de stroom van het netwerk verkeer.
+**Richt lijnen**: niet van toepassing; Azure DDoS is bedoeld om te worden ingeschakeld op virtuele netwerken die fungeren als host voor andere services, maar het is een belang rijke Azure-aanbieding en de onderliggende infra structuur, waaronder netwerken, volledig wordt beheerd door micro soft.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -116,11 +108,7 @@ Network Watcher moet zijn ingeschakeld
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: gebruik automatische hulpprogram ma's om netwerk bron configuraties te bewaken en wijzigingen te detecteren
 
-**Hulp**: Azure-activiteiten logboek gebruiken om wijzigingen in azure Network Watcher te controleren. U kunt waarschuwingen maken binnen Azure Monitor die worden geactiveerd wanneer er wijzigingen plaatsvinden.
-
-* [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
-
-* [Waarschuwingen maken in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+**Richt lijnen**: niet van toepassing; Azure DDoS is bedoeld om te worden ingeschakeld op virtuele netwerken die fungeren als host voor andere services, maar het is een belang rijke Azure-aanbieding en de onderliggende infra structuur, waaronder netwerken, volledig wordt beheerd door micro soft.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -132,7 +120,7 @@ Network Watcher moet zijn ingeschakeld
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: goedgekeurde tijd synchronisatie bronnen gebruiken
 
-**Richt lijnen**: niet van toepassing; Micro soft onderhoudt de tijd bronnen die worden gebruikt voor Azure-resources, zoals Azure Network Watcher, voor tijds tempels in de logboeken.
+**Richt lijnen**: niet van toepassing; Micro soft onderhoudt de tijd bronnen die worden gebruikt voor Azure-resources, zoals Azure DDoS Protection.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -140,11 +128,9 @@ Network Watcher moet zijn ingeschakeld
 
 ### <a name="22-configure-central-security-log-management"></a>2,2: Centraal beveiligings logboek beheer configureren
 
-**Hulp**: Azure-activiteiten logboek gebruiken om configuraties te controleren en wijzigingen voor uw Azure Network Watcher-instanties te detecteren. Behalve op het besturings vlak (bijvoorbeeld Azure Portal), genereert Network Watcher zelf geen logboeken die betrekking hebben op netwerk verkeer. Network Watcher voorziet in hulpprogram ma's voor het bewaken, vaststellen en weer geven van metrische gegevens en het in-of uitschakelen van Logboeken voor bronnen in een virtueel Azure-netwerk.
+**Hulp**: Schakel Diagnostische instellingen voor Azure-activiteiten logboek in en verzend de logboeken naar een log Analytics-werk ruimte, een Azure Event hub of een Azure-opslag account voor archivering. Activiteiten logboeken bieden inzicht in de bewerkingen die zijn uitgevoerd op uw Azure DDoS Protection plannen op het niveau van het besturings element. Met Azure-activiteiten logboek gegevens kunt u bepalen wat voor schrijf bewerkingen (PUT, POST, DELETE) die worden uitgevoerd op het niveau van de Control-instantie voor uw Azure DDoS Protection-instanties, de ' wat, wie en wanneer ' zijn.
 
-* [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
-
-* [Network Watcher begrijpen](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)
+* [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
 
 **Azure Security Center bewaking**: Ja
 
@@ -152,11 +138,13 @@ Network Watcher moet zijn ingeschakeld
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: controle logboek registratie inschakelen voor Azure-resources
 
-**Hulp**: Azure-activiteiten logboek gebruiken om configuraties te controleren en wijzigingen voor uw Azure Network Watcher-instanties te detecteren. Met uitzonde ring van het besturings vlak (bijvoorbeeld Azure Portal), genereert Network Watcher zelf geen audit Logboeken. Network Watcher voorziet in hulpprogram ma's voor het bewaken, vaststellen en weer geven van metrische gegevens en het in-of uitschakelen van Logboeken voor bronnen in een virtueel Azure-netwerk.
+**Richt lijnen**: u kunt een van de beschik bare metrische gegevens voor DDoS-beveiliging selecteren om u te waarschuwen wanneer er een actieve beperking is tijdens een aanval, met behulp van de configuratie van de Azure monitor waarschuwingen. Wanneer aan de voor waarden wordt voldaan, ontvangt het opgegeven adres een e-mail waarschuwing.
 
-* [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+Schakel Diagnostische instellingen voor Azure-activiteiten logboek in en verzend de logboeken naar een Log Analytics-werk ruimte, een Azure Event Hub of een Azure-opslag account voor archivering. Met activiteiten Logboeken kunt u inzicht krijgen in de bewerkingen die zijn uitgevoerd op uw Azure-cache voor redis-exemplaren op het niveau van het besturings vlak. Met Azure-activiteiten logboek gegevens kunt u bepalen wat voor schrijf bewerkingen (PUT, POST, DELETE) die worden uitgevoerd op het niveau van de Control-instantie voor uw Azure DDoS Protection-instanties, de ' wat, wie en wanneer ' zijn.
 
-* [Network Watcher begrijpen](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)
+* [Waarschuwingen voor DDoS Protection-metrische gegevens configureren](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection#configure-alerts-for-ddos-protection-metrics)
+
+* [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
 
 **Azure Security Center bewaking**: Ja
 
@@ -172,7 +160,7 @@ Network Watcher moet zijn ingeschakeld
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: Bewaar beveiliging van het beveiligings logboek configureren
 
-**Richt lijnen**: stel in azure monitor de Bewaar periode voor logboek registratie In voor log Analytics werk ruimten die zijn gekoppeld aan Azure Network Watcher volgens de nalevings voorschriften van uw organisatie.
+**Richt lijnen**: stel in azure monitor de Bewaar periode voor logboek registratie In voor log Analytics werk ruimten die zijn gekoppeld aan uw Azure DDoS Protection plannen volgens de nalevings voorschriften van uw organisatie.
 
 * [Para meters voor het bewaren van Logboeken instellen](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
 
@@ -182,29 +170,35 @@ Network Watcher moet zijn ingeschakeld
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: Logboeken bewaken en controleren
 
-**Hulp**: Azure-activiteiten logboek gebruiken om configuraties te controleren en wijzigingen voor uw Azure Network Watcher-instanties te detecteren. Behalve op het besturings vlak (bijvoorbeeld Azure Portal), genereert Network Watcher zelf geen logboeken die betrekking hebben op netwerk verkeer. Network Watcher voorziet in hulpprogram ma's voor het bewaken, vaststellen en weer geven van metrische gegevens en het in-of uitschakelen van Logboeken voor bronnen in een virtueel Azure-netwerk.
+**Hulp**: Schakel Diagnostische instellingen voor Azure-activiteiten logboek in en verzend de logboeken naar een log Analytics-werk ruimte. Voer query's uit in Log Analytics om zoek termen te zoeken, trends te identificeren, patronen te analyseren en veel andere inzichten te bieden op basis van de activiteiten logboek gegevens die mogelijk zijn verzameld voor Recovery Services kluizen.
 
-* [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
 
-* [Network Watcher begrijpen](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)
-
-**Azure Security Center bewaking**: niet van toepassing
-
-**Verantwoordelijkheid**: klant
-
-### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: waarschuwingen inschakelen voor afwijkende activiteiten
-
-**Richt lijnen**: u kunt configureren voor het ontvangen van waarschuwingen op basis van activiteiten logboeken die betrekking hebben op Azure Network Watcher. Met Azure Monitor kunt u een waarschuwing configureren voor het verzenden van een e-mail melding, het aanroepen van een webhook of het aanroepen van een Azure Logic-app.
-
-* [Waarschuwingen beheren in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+* [Azure-activiteiten logboeken verzamelen en analyseren in Log Analytics werk ruimte in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-collect)
 
 **Azure Security Center bewaking**: Ja
 
 **Verantwoordelijkheid**: klant
 
+### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: waarschuwingen inschakelen voor afwijkende activiteiten
+
+**Hulp**bij het configureren van waarschuwingen en aanvals analyses. Azure DDoS Protection identificeert en vermindert DDoS-aanvallen zonder tussen komst van de gebruiker.
+
+Onboarding van een Log Analytics-werk ruimte naar Azure-Sentinel, aangezien deze een via-oplossing (Security Orchestration Automated Response) biedt. Hiermee kunnen playbooks (geautomatiseerde oplossingen) worden gemaakt en gebruikt om beveiligings problemen op te lossen. Daarnaast kunt u aangepaste logboek waarschuwingen maken in uw Log Analytics-werk ruimte met behulp van Azure Monitor.
+
+* [Hoe kan ik waarschuwingen voor metrische gegevens van DDoS configureren?](https://azure.microsoft.com/blog/holiday-season-is-ddos-season/)
+
+* [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+
+* [Logboek waarschuwingen maken, weer geven en beheren met behulp van Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)
+
+**Azure Security Center bewaking**: niet van toepassing
+
+**Verantwoordelijkheid**: klant
+
 ### <a name="28-centralize-anti-malware-logging"></a>2,8: registratie van anti-malware centraliseren
 
-**Richt lijnen**: niet van toepassing; Azure Network Watcher verwerkt of produceert geen anti-malware-gerelateerde Logboeken.
+**Richt lijnen**: niet van toepassing; Azure DDoS Protection geen aan anti-malware gerelateerde logboeken verwerkt of produceert.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -212,7 +206,7 @@ Network Watcher moet zijn ingeschakeld
 
 ### <a name="29-enable-dns-query-logging"></a>2,9: DNS-query logboek registratie inschakelen
 
-**Richt lijnen**: niet van toepassing; Azure Network Watcher verwerkt of produceert geen aan DNS gerelateerde Logboeken.
+**Richt lijnen**: niet van toepassing; Azure DDoS Protection worden geen DNS-gerelateerde logboeken verwerkt of geproduceerd.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -232,13 +226,15 @@ Network Watcher moet zijn ingeschakeld
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
 
-**Hulp**: behoud een inventaris van de gebruikers accounts met beheerders toegang tot het besturings vlak (bijvoorbeeld Azure Portal) van Azure Network Watcher. Als u Network Watcher mogelijkheden wilt gebruiken, moet het account waarmee u zich aanmeldt bij Azure met, worden toegewezen aan de rol van eigenaar, bijdrager of netwerk bijdrager of worden toegewezen aan een aangepaste rol waaraan de acties worden toegewezen die worden vermeld voor specifieke Network Watcher mogelijkheden.
+**Richt lijnen**: als u wilt werken met DDoS-beveiligings plannen, moet uw account worden toegewezen aan de rol netwerk bijdrager of aan een aangepaste rol waaraan de juiste acties zijn toegewezen.
 
-U kunt het deel venster identiteits-en toegangs beheer (IAM) in de Azure Portal voor uw abonnement gebruiken voor het configureren van op rollen gebaseerd toegangs beheer (RBAC). De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Active Directory.
+Daarnaast heeft Azure Active Directory (AD) ingebouwde rollen die expliciet moeten worden toegewezen en query's kunnen worden doorzocht. Gebruik de Azure AD Power shell-module om ad hoc-query's uit te voeren om accounts te detecteren die lid zijn van beheer groepen.
 
-* [Wat is RBAC in azure?](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Meer informatie over machtigingen in azure DDoS Protection](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection#permissions)
 
-* [Op rollen gebaseerde toegangs beheer machtigingen die zijn vereist voor het gebruik van Network Watcher mogelijkheden](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)
+* [Een directory-rol verkrijgen in azure AD met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+
+* [Leden van een directory-rol in azure AD ophalen met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure Security Center bewaking**: Ja
 
@@ -271,11 +267,17 @@ Daarnaast kunt u aanbevelingen van Azure Security Center of ingebouwde Azure-bel
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: eenmalige aanmelding (SSO) met Azure Active Directory gebruiken
 
-**Richt lijnen**: niet van toepassing; eenmalige aanmelding (SSO) voegt beveiligings-en gebruiks gemak toe wanneer gebruikers zich aanmelden bij aangepaste toepassingen in Azure Active Directory (AD). Toegang tot Azure Network Watcher is al geïntegreerd met Azure Active Directory en is toegankelijk via de Azure Portal en de Azure Resource Manager REST API.
+**Richt lijnen**: gebruik een Azure-app-registratie (Service-Principal) om een token op te halen dat kan worden gebruikt om te communiceren met uw DDoS Protection-abonnementen via API-aanroepen.
+
+* [Azure REST-Api's aanroepen](https://docs.microsoft.com/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
+
+* [Uw client toepassing (Service-Principal) registreren bij Azure AD](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad)
+
+* [Informatie over Azure DDos Protection-API](https://docs.microsoft.com/rest/api/virtual-network/)
 
 **Azure Security Center bewaking**: niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: klant
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: multi-factor Authentication gebruiken voor alle op Azure Active Directory gebaseerde toegang
 
@@ -291,7 +293,7 @@ Daarnaast kunt u aanbevelingen van Azure Security Center of ingebouwde Azure-bel
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: gebruik speciale machines (privileged Access workstations) voor alle beheer taken
 
-**Richt lijnen**: gebruik een privileged Access Workstation (Paw) met Azure multi-factor Authentication (MFA) ingeschakeld om u aan te melden en uw Azure Sentinel-gerelateerde resources te configureren.
+**Hulp**: gebruik een privileged Access Workstation (Paw) met Azure multi-factor Authentication (MFA) ingeschakeld om u aan te melden en uw Azure klanten-lockbox-aanvragen te configureren.
 
 * [Privileged Access Workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
@@ -327,7 +329,7 @@ Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijk
 
 ### <a name="39-use-azure-active-directory"></a>3,9: Azure Active Directory gebruiken
 
-**Hulp**: gebruik Azure Active Directory (Azure AD) als centraal verificatie-en autorisatie systeem voor uw onderverklikker instanties van Azure. Azure AD beveiligt gegevens door gebruik te maken van sterke versleuteling voor gegevens in rust en onderweg. Azure AD bevat ook zouten, hashes en veilige gebruikers referenties.
+**Hulp**: gebruik Azure Active Directory (Azure AD) als centraal verificatie-en autorisatie systeem, indien van toepassing. Azure AD beveiligt gegevens door gebruik te maken van sterke versleuteling voor gegevens in rust en onderweg. Azure AD bevat ook zouten, hashes en veilige gebruikers referenties.
 
 * [Een Azure AD-exemplaar maken en configureren](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
@@ -337,11 +339,11 @@ Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijk
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: regel matig gebruikers toegang controleren en afstemmen
 
-**Hulp**: Azure Active Directory (AD) bevat logboeken waarmee u verouderde accounts kunt detecteren. Daarnaast kunt u Azure Identity Access revisies gebruiken om groepslid maatschappen en de toegang tot bedrijfs toepassingen en roltoewijzingen op efficiënte wijze te beheren. Gebruikers toegang kan regel matig worden gecontroleerd om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben.
+**Hulp**: Azure Active Directory (Azure AD) bevat logboeken waarmee u verouderde accounts kunt detecteren. Daarnaast kunt u Azure Identity Access revisies gebruiken om groepslid maatschappen en de toegang tot bedrijfs toepassingen en roltoewijzingen op efficiënte wijze te beheren. Gebruikers toegang kan regel matig worden gecontroleerd om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben.
 
 * [Meer informatie over Azure AD-rapportage](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
 
-* [Beoordelingen over Azure Identity Access gebruiken](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Azure AD-toegangs beoordelingen gebruiken](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
 
 **Azure Security Center bewaking**: Ja
 
@@ -349,7 +351,7 @@ Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijk
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3,11: controle pogingen om toegang te krijgen tot gedeactiveerde referenties
 
-**Hulp**: gebruik Azure Active Directory (AD) als centraal verificatie-en autorisatie systeem voor Azure Network Watcher. Azure AD beveiligt gegevens door gebruik te maken van sterke versleuteling voor gegevens in rust en onderweg. Azure AD bevat ook zouten, hashes en veilige gebruikers referenties.
+**Hulp**: gebruik Azure Active Directory (Azure AD) als centraal verificatie-en autorisatie systeem, indien van toepassing. Azure AD beveiligt gegevens door gebruik te maken van sterke versleuteling voor gegevens in rust en onderweg. Azure AD bevat ook zouten, hashes en veilige gebruikers referenties.
 
 U hebt toegang tot de Azure AD-aanmeldings activiteit, de controle-en risico gebeurtenis logboek bronnen, waarmee u kunt integreren met Azure Sentinel of een SIEM van derden.
 
@@ -379,9 +381,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: micro soft biedt toegang tot relevante klant gegevens tijdens ondersteunings scenario's
 
-**Richt lijnen**: niet van toepassing; Klanten-lockbox is niet van toepassing op Azure Network Watcher.
-
-* [Lijst met door Klanten-lockbox ondersteunde services](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+**Richt lijnen**: deze aanbeveling is niet van toepassing op Azure DDoS Protection.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -399,15 +399,11 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Azure Security Center bewaking**: niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: klant
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: systemen isoleren die gevoelige informatie opslaan of verwerken
 
-**Richt lijnen**: afzonderlijke abonnementen en/of beheer groepen implementeren voor ontwikkeling, testen en productie.
-
-* [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
-
-* [Beheergroepen maken](https://docs.microsoft.com/azure/governance/management-groups/create)
+**Richt lijnen**: niet van toepassing; uw DDoS Protection-abonnement wordt ingericht in de resource groep die u definieert. Er is geen openbaar eind punt om te beveiligen of isoleren.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -415,7 +411,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: niet-geautoriseerde overdracht van gevoelige gegevens controleren en blok keren
 
-**Hulp**: micro soft beheert de onderliggende infra structuur voor Azure Network Watcher en gerelateerde resources en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen.
+**Hulp**: micro soft beheert de onderliggende infra structuur voor Azure DDoS Protection en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen.
 
 * [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
@@ -425,19 +421,15 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: alle gevoelige gegevens in de overdracht versleutelen
 
-**Richt lijnen**: als u Azure VPN gateway gebruikt om een beveiligde verbinding te maken tussen uw on-premises netwerk en uw virtuele Azure-netwerken, moet u ervoor zorgen dat uw lokale netwerk gateway is geconfigureerd met compatibele IPSec-communicatie-en versleutelings parameters. Elke onjuiste configuratie leidt tot verlies van connectiviteit tussen het on-premises netwerk en Azure.
+**Richt lijnen**: niet van toepassing; Azure DDoS Protection houdt geen klant gegevens in rust.
 
-* [Ondersteunde IPSec-para meters voor Azure VPN Gateway](https://docs.microsoft.com/azure/network-watcher/network-watcher-diagnose-on-premises-connectivity)
+**Azure Security Center bewaking**: niet van toepassing
 
-* [Een site-naar-site-verbinding configureren in de Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)
-
-**Azure Security Center bewaking**: momenteel niet beschikbaar
-
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: niet van toepassing
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: een actief detectie hulpprogramma gebruiken om gevoelige gegevens te identificeren
 
-**Richt lijnen**: niet van toepassing; Azure Network Watcher zichzelf heeft geen klant gegevens.
+**Richt lijnen**: niet van toepassing; Azure DDoS Protection houdt geen klant gegevens in de hand.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -445,13 +437,9 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
 
-**Richt lijnen**: u kunt het deel venster identiteits-en toegangs beheer (IAM) in de Azure portal voor uw abonnement gebruiken voor het configureren van op rollen gebaseerd toegangs beheer (RBAC). De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Active Directory. U kunt ingebouwde rollen of aangepaste rollen gebruiken voor individuen en groepen.
+**Richt lijnen**: als u wilt werken met DDoS-beveiligings plannen, moet uw account worden toegewezen aan de rol netwerk bijdrager of aan een aangepaste rol waaraan specifieke acties zijn toegewezen.
 
-Als u Network Watcher mogelijkheden wilt gebruiken, moet het account waarmee u zich aanmeldt bij Azure met, worden toegewezen aan de rol van eigenaar, bijdrager of netwerk bijdrager of worden toegewezen aan een aangepaste rol waaraan de acties worden toegewezen die worden vermeld voor specifieke Network Watcher mogelijkheden.
-
-* [RBAC configureren in azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
-
-* [Informatie over RBAC-machtigingen in Network Watcher](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)
+* [Toegangs beheer op basis van rollen beheren in Azure DDoS Protection](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -459,7 +447,7 @@ Als u Network Watcher mogelijkheden wilt gebruiken, moet het account waarmee u z
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: voor komen dat gegevens verlies op basis van host wordt gebruikt voor het afdwingen van toegangs beheer
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources. Micro soft beheert de onderliggende infra structuur voor Azure Network Watcher en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen.
+**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources. Micro soft beheert de onderliggende infra structuur voor Azure DDoS Protection en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen.
 
 * [Azure-klant gegevens beveiliging](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
@@ -469,15 +457,15 @@ Als u Network Watcher mogelijkheden wilt gebruiken, moet het account waarmee u z
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: gevoelige informatie op rest versleutelen
 
-**Richt lijnen**: niet van toepassing; Azure Network Watcher zichzelf heeft geen klant gegevens. Network Watcher slaat logboeken en andere informatie op in Azure Storage waarbij gegevens in rust worden versleuteld.
+**Richt lijnen**: niet van toepassing; Azure DDoS Protection houdt geen klant gegevens vast.
 
 **Azure Security Center bewaking**: niet van toepassing
 
-**Verantwoordelijkheid**: micro soft
+**Verantwoordelijkheid**: niet van toepassing
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: wijzigingen in essentiële Azure-resources vastleggen en waarschuwen
 
-**Hulp**: gebruik Azure monitor met het Azure-activiteiten logboek om waarschuwingen te maken wanneer wijzigingen worden aangebracht in azure Network Watcher en andere essentiële of verwante resources.
+**Hulp**: gebruik Azure monitor met het Azure-activiteiten logboek om waarschuwingen te maken wanneer wijzigingen worden aangebracht in azure DDoS Protection plannen, evenals andere essentiële of gerelateerde resources.
 
 * [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
@@ -491,7 +479,7 @@ Als u Network Watcher mogelijkheden wilt gebruiken, moet het account waarmee u z
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatische hulpprogram ma's voor het scannen van beveiligings problemen uitvoeren
 
-**Richt lijnen**: niet van toepassing; Micro soft voert beveiligings beheer uit op de onderliggende systemen die ondersteuning bieden voor Azure Network Watcher.
+**Richt lijnen**: niet van toepassing; Micro soft voert beveiligings beheer uit op de onderliggende systemen die ondersteuning bieden voor Azure DDoS Protection.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -515,7 +503,7 @@ Als u Network Watcher mogelijkheden wilt gebruiken, moet het account waarmee u z
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: vergelijken van back-to-back-problemen
 
-**Richt lijnen**: niet van toepassing; Micro soft voert beveiligings beheer uit op de onderliggende systemen die ondersteuning bieden voor Azure Network Watcher.
+**Richt lijnen**: niet van toepassing; Micro soft voert beveiligings beheer uit op de onderliggende systemen die ondersteuning bieden voor Azure DDoS Protection.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -523,7 +511,7 @@ Als u Network Watcher mogelijkheden wilt gebruiken, moet het account waarmee u z
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: een risico classificatie proces gebruiken om prioriteit te geven aan het herstel van ontdekte beveiligings problemen
 
-**Richt lijnen**: niet van toepassing; Micro soft voert beveiligings beheer uit op de onderliggende systemen die ondersteuning bieden voor Azure Network Watcher.
+**Richt lijnen**: niet van toepassing; Micro soft voert beveiligings beheer uit op de onderliggende systemen die ondersteuning bieden voor Azure DDoS Protection.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -535,7 +523,7 @@ Als u Network Watcher mogelijkheden wilt gebruiken, moet het account waarmee u z
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: automatische Asset-detectie oplossing gebruiken
 
-**Hulp**: Azure resource Graph gebruiken voor het opvragen/detecteren van alle resources (zoals compute, opslag, netwerk, poorten en protocollen enz.) binnen uw abonnement (en). Zorg ervoor dat de juiste (Lees-) machtigingen voor uw Tenant en alle Azure-abonnementen en resources in uw abonnementen inventariseren.
+**Hulp**: Azure resource Graph gebruiken voor het opvragen/detecteren van alle resources (zoals compute, opslag, netwerk, poorten en protocollen enz.) binnen uw abonnementen. Zorg ervoor dat de juiste (Lees-) machtigingen voor uw Tenant en alle Azure-abonnementen en resources in uw abonnementen inventariseren.
 
 Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek, is het raadzaam om Azure Resource Manager resources te maken en te gebruiken.
 
@@ -551,13 +539,13 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek
 
 ### <a name="62-maintain-asset-metadata"></a>6,2: meta gegevens van activa onderhouden
 
-**Richt lijnen**: Tags Toep assen op Azure-resources die meta gegevens geven om ze logisch in een taxonomie te organiseren.
+**Richt lijnen**: Tags Toep assen op Azure-resources die meta gegevens geven om ze logisch te organiseren op basis van een taxonomie.
 
 * [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center bewaking**: niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: klant
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6,3: niet-geautoriseerde Azure-resources verwijderen
 
@@ -579,15 +567,15 @@ Gebruik Azure Policy bovendien om beperkingen te leggen voor het type resources 
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: een inventaris van goedgekeurde Azure-resources definiëren en onderhouden
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources.
+**Hulp**: Definieer goedgekeurde Azure-resources en goedgekeurde software voor reken resources.
 
 **Azure Security Center bewaking**: niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: klant
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitor voor niet-goedgekeurde Azure-resources
 
-**Hulp**: gebruik Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in uw abonnementen.
+**Hulp**: gebruik Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in uw abonnement (en).
 
 Gebruik Azure resource Graph om bronnen in hun abonnementen op te vragen en te detecteren. Zorg ervoor dat alle Azure-resources die aanwezig zijn in de omgeving, zijn goedgekeurd.
 
@@ -677,17 +665,15 @@ Gebruik Azure resource Graph om bronnen in hun abonnementen op te vragen en te d
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: veilige configuraties instellen voor alle Azure-resources
 
-**Richt lijnen**: standaard beveiligings configuraties voor Azure-Network Watcher definiëren en implementeren met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimte ' micro soft. netwerk ' om aangepaste beleids regels te maken om de netwerk configuratie van uw Network Watcher instanties te controleren of af te dwingen. U kunt ook gebruik maken van ingebouwde beleids definities zoals:
+**Richt lijnen**: standaard beveiligings configuraties voor Azure DDoS-beveiliging definiëren en implementeren met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimte ' micro soft. netwerk ' om aangepaste beleids regels te maken om de configuratie van uw Recovery Services kluizen te controleren of af te dwingen.
 
-* [Network Watcher implementeren wanneer er virtuele netwerken worden gemaakt](https://github.com/Azure/azure-policy/blob/master/samples/built-in-policy/deploy-network-watcher-in-vnet-regions/README.md)
+* [Beschik bare Azure Policy aliassen weer geven](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Zie ook How to configure and manage Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
-
-* [Een aangepast beleid maken met beleids aliassen](https://docs.microsoft.com/azure/governance/policy/tutorials/create-custom-policy-definition)
+* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
 **Azure Security Center bewaking**: niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: klant
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7,2: veilige configuraties van besturings systemen instellen
 
@@ -707,7 +693,7 @@ Gebruik Azure resource Graph om bronnen in hun abonnementen op te vragen en te d
 
 **Azure Security Center bewaking**: niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: klant
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: veilige configuraties van besturings systemen onderhouden
 
@@ -727,7 +713,7 @@ Gebruik Azure resource Graph om bronnen in hun abonnementen op te vragen en te d
 
 **Azure Security Center bewaking**: niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: klant
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: aangepaste installatie kopieën van een besturings systeem veilig opslaan
 
@@ -739,19 +725,13 @@ Gebruik Azure resource Graph om bronnen in hun abonnementen op te vragen en te d
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7,7: hulpprogram ma's voor configuratie beheer voor Azure-resources implementeren
 
-**Richt lijnen**: standaard beveiligings configuraties voor Azure-Network Watcher definiëren en implementeren met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimte ' micro soft. netwerk ' om aangepaste beleids regels te maken om de netwerk configuratie van uw Network Watcher instanties te controleren of af te dwingen. U kunt ook gebruik maken van ingebouwde beleids definities zoals:
-
-* [Network Watcher implementeren wanneer er virtuele netwerken worden gemaakt](https://github.com/Azure/azure-policy/blob/master/samples/built-in-policy/deploy-network-watcher-in-vnet-regions/README.md)
-
-Zie ook:
+**Hulp**: gebruik ingebouwde Azure Policy definities en Azure Policy aliassen in de naam ruimte ' micro soft. Network ' om aangepaste beleids regels te maken om systeem configuraties te Signa lering, te controleren en af te dwingen. Ontwikkel bovendien een proces en pijp lijn voor het beheren van beleids uitzonderingen.
 
 * [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
-* [Een aangepast beleid maken met beleids aliassen](https://docs.microsoft.com/azure/governance/policy/tutorials/create-custom-policy-definition)
-
 **Azure Security Center bewaking**: niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: klant
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7,8: hulpprogram ma's voor configuratie beheer voor besturings systemen implementeren
 
@@ -763,13 +743,13 @@ Zie ook:
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7,9: geautomatiseerde configuratie bewaking voor Azure-resources implementeren
 
-**Hulp**: gebruik ingebouwde Azure Policy definities en Azure Policy aliassen in de naam ruimte ' micro soft. Network ' om aangepaste Azure Policy definities te maken om systeem configuraties te Signa lering, te controleren en af te dwingen. Gebruik Azure Policy [audit], [deny] en [implementeren indien niet aanwezig] om automatisch configuraties af te dwingen voor uw Azure-resources.
+**Hulp**: gebruik ingebouwde Azure Policy definities en Azure Policy aliassen in de naam ruimte ' micro soft. Network ' om aangepaste beleids regels te maken om systeem configuraties te Signa lering, te controleren en af te dwingen. Gebruik Azure Policy [audit], [deny] en [implementeren indien niet aanwezig] om automatisch configuraties af te dwingen voor uw Azure-resources.
 
 * [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
 **Azure Security Center bewaking**: niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: klant
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: geautomatiseerde configuratie bewaking voor besturings systemen implementeren
 
@@ -781,7 +761,7 @@ Zie ook:
 
 ### <a name="711-manage-azure-secrets-securely"></a>7,11: Azure-geheimen veilig beheren
 
-**Richt lijnen**: niet van toepassing; Er zijn geen wacht woorden, geheimen of sleutels gekoppeld aan Azure Network Watcher.
+**Richt lijnen**: niet van toepassing; Als u wilt werken met DDoS Protection-abonnementen, moet uw account worden toegewezen aan de rol netwerk bijdrager of aan een aangepaste rol waaraan de juiste acties zijn toegewezen. Er zijn geen wacht woorden, geheimen of sleutels vereist voor toegang tot DDoS Protection.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -789,7 +769,7 @@ Zie ook:
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: identiteiten veilig en automatisch beheren
 
-**Richt lijnen**: niet van toepassing; Azure Network Watcher maakt geen gebruik van beheerde identiteiten.
+**Richt lijnen**: niet van toepassing; Azure DDoS Protection maakt geen gebruik van beheerde identiteiten.
 
 * [Azure-Services die beheerde identiteiten ondersteunen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
 
@@ -813,7 +793,7 @@ Zie ook:
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: centraal beheerde anti-malware-software gebruiken
 
-**Richt lijnen**: niet van toepassing; deze richt lijn is bedoeld voor reken resources. Micro soft anti-malware is ingeschakeld op de onderliggende host die ondersteuning biedt voor Azure-Services (bijvoorbeeld Azure App Service), maar wordt niet uitgevoerd op de inhoud van de klant.
+**Richt lijnen**: niet van toepassing; deze richt lijn is bedoeld voor reken resources. Micro soft anti-malware is ingeschakeld op de onderliggende host die ondersteuning biedt voor Azure-Services (bijvoorbeeld Azure DDoS Protection), maar wordt niet uitgevoerd op de inhoud van de klant.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -821,7 +801,9 @@ Zie ook:
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: scan bestanden die moeten worden geüpload naar niet-reken resources van Azure
 
-**Richt lijnen**: niet van toepassing. Network Watcher werkt niet op gegevens die door de gebruiker zijn geüpload.
+**Hulp**: micro soft anti-malware is ingeschakeld op de onderliggende host die ondersteuning biedt voor Azure-Services (bijvoorbeeld Azure DDoS Protection), maar wordt niet uitgevoerd op de inhoud van de klant.
+
+Het is uw verantwoordelijkheid om vooraf te scannen op inhoud die wordt geüpload naar niet-reken resources van Azure. Micro soft heeft geen toegang tot klant gegevens en kan daarom geen anti-malware scans uitvoeren van klant inhoud namens u.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -841,7 +823,7 @@ Zie ook:
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: controleren op regel matige automatische back-ups
 
-**Richt lijnen**: niet van toepassing; Azure Network Watcher zichzelf heeft geen klant gegevens.
+**Richt lijnen**: niet van toepassing; Azure DDoS Protection zichzelf slaat geen klant gegevens op.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -849,7 +831,7 @@ Zie ook:
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: volledige back-ups van het systeem uitvoeren en een back-up maken van door de klant beheerde sleutels
 
-**Richt lijnen**: niet van toepassing; Azure Network Watcher zichzelf heeft geen klant gegevens.
+**Richt lijnen**: niet van toepassing; Azure DDoS Protection zichzelf slaat geen klant gegevens op.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -857,7 +839,7 @@ Zie ook:
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: alle back-ups valideren, inclusief door de klant beheerde sleutels
 
-**Richt lijnen**: niet van toepassing; Azure Network Watcher zichzelf heeft geen klant gegevens.
+**Richt lijnen**: niet van toepassing; Azure DDoS Protection zichzelf slaat geen klant gegevens op.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -865,7 +847,7 @@ Zie ook:
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: zorg voor de bescherming van back-ups en door de klant beheerde sleutels
 
-**Richt lijnen**: niet van toepassing; Azure Network Watcher zichzelf heeft geen klant gegevens.
+**Richt lijnen**: niet van toepassing; Azure DDoS Protection zichzelf slaat geen klant gegevens op.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -879,13 +861,11 @@ Zie ook:
 
 **Hulp**: een antwoord gids voor incidenten maken voor uw organisatie. Zorg ervoor dat er schriftelijke incidenten abonnementen zijn die alle werk rollen definiëren, evenals fasen van incident handling/management van detectie tot een beoordeling van het incident.
 
-* [Werk stroom automatisering configureren in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
-
 * [Richt lijnen voor het bouwen van uw eigen beveiligings incident antwoord proces](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
-* [Micro soft Security Response Center anatomie van een incident](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
+* [Micro soft Security Response Center anatomie van een incident](https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/)
 
-* [Klant kan ook gebruikmaken van de hand leiding voor de verwerking van het computer beveiligings incident van het NIST om hulp te bieden bij het maken van een eigen incident respons plan](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
+* [De verwerkings handleiding voor het computer beveiligings incident van het NIST gebruiken om u te helpen bij het maken van uw eigen reactie plan voor incidenten](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -895,7 +875,11 @@ Zie ook:
 
 **Hulp**: Security Center wijst aan elke waarschuwing een Ernst toe om u te helpen bepalen welke waarschuwingen het eerst moeten worden onderzocht. De ernst is gebaseerd op de manier waarop vertrouwen Security Center is in de zoek actie of het analyse programma dat wordt gebruikt om de waarschuwing te geven, evenals het betrouwbaarheids niveau dat er schadelijke bedoelingen zijn achter de activiteit die tot de waarschuwing heeft geleid.
 
-Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld productie, niet-productie) en maak een naamgevings systeem om Azure-resources duidelijk te identificeren en te categoriseren.
+Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld productie, niet-productie) met behulp van tags en maak een naamgevings systeem om Azure-resources duidelijk te identificeren en te categoriseren, met name voor de verwerking van gevoelige gegevens. Het is uw verantwoordelijkheid om prioriteit te geven aan het herstel van waarschuwingen op basis van de ernst van de Azure-resources en-omgeving waar het incident heeft plaatsgevonden.
+
+* [Beveiligingswaarschuwingen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+
+* [Tags gebruiken om uw Azure-resources te organiseren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center bewaking**: Ja
 
@@ -903,9 +887,9 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 ### <a name="103-test-security-response-procedures"></a>10,3: procedures voor beveiligings antwoorden testen
 
-**Richt lijnen**: oefent oefeningen uit om de respons mogelijkheden van uw systeem op een gewone uitgebracht te testen. Identificeer zwakke punten en tussen ruimten en wijzig zo nodig het schema.
+**Richt lijnen**: oefent oefeningen uit om de respons mogelijkheden van uw systeem te testen op een reguliere uitgebracht om uw Azure-resources te beschermen. Identificeer zwakke punten en tussen ruimten en wijzig zo nodig het schema.
 
-* [Raadpleeg de publicatie van het NIST: hand leiding voor het testen, trainen en uitoefenen van Program Ma's voor IT-plannen en-mogelijkheden](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
+* [Publicatie van het NIST-hand leiding voor test-, trainings-en oefen Programma's voor IT-plannen en-mogelijkheden](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -913,7 +897,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: contact gegevens van het beveiligings incident opgeven en waarschuwings meldingen configureren voor beveiligings incidenten
 
-**Hulp**: contact gegevens van beveiligings incidenten worden door micro soft gebruikt om contact met u op te nemen als het micro soft Security Response Center (MSRC) detecteert dat de gegevens van de klant zijn geopend door een onrecht matige of niet-gemachtigde partij. Bekijk incidenten na het feit om te controleren of de problemen zijn opgelost.
+**Hulp**: contact gegevens van beveiligings incidenten worden door micro soft gebruikt om contact met u op te nemen als het micro soft Security Response Center (MSRC) detecteert dat uw gegevens zijn geopend door een onrecht matige of niet-gemachtigde partij. Bekijk incidenten na het feit om te controleren of de problemen zijn opgelost.
 
 * [De Azure Security Center Security-contact persoon instellen](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
 
@@ -923,7 +907,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: beveiligings waarschuwingen opnemen in uw reactie systeem van uw incident
 
-**Richt lijnen**: uw Azure Security Center waarschuwingen en aanbevelingen exporteren met de functie continue export. Met doorlopend exporteren kunt u waarschuwingen en aanbevelingen hand matig of op een doorlopende manier exporteren. U kunt de Azure Security Center Data Connector gebruiken om de Sentinel van waarschuwingen te streamen.
+**Hulp**: exporteer uw Azure Security Center waarschuwingen en aanbevelingen met behulp van de functie continue export om Risico's voor Azure-resources te identificeren. Met doorlopend exporteren kunt u waarschuwingen en aanbevelingen hand matig of op een doorlopende manier exporteren. U kunt de Azure Security Center Data Connector gebruiken om de waarschuwingen naar Azure Sentinel te streamen.
 
 * [Continue export configureren](https://docs.microsoft.com/azure/security-center/continuous-export)
 
@@ -935,7 +919,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10,6: de reactie op beveiligings waarschuwingen automatiseren
 
-**Hulp**: gebruik de functie werk stroom automatisering in azure Security Center om automatisch reacties te activeren via ' Logic apps ' in beveiligings waarschuwingen en aanbevelingen.
+**Hulp**: gebruik de functie werk stroom automatisering in azure Security Center om automatisch reacties te activeren via ' Logic apps ' in beveiligings waarschuwingen en aanbevelingen voor het beveiligen van uw Azure-resources.
 
 * [Werk stroom automatisering en Logic Apps configureren](https://docs.microsoft.com/azure/security-center/workflow-automation)
 
@@ -949,9 +933,11 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: voert regel matig indringings tests van uw Azure-resources uit en zorgt voor herbemiddeling van alle essentiële beveiligings resultaten
 
-**Richt lijnen**: * [Volg de regels van micro soft om ervoor te zorgen dat de indringings tests niet worden geschonden door het micro soft-beleid](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+**Richt lijnen**: Volg de micro soft-regels om ervoor te zorgen dat de indringings tests niet worden geschonden door het micro soft-beleid. Gebruik de strategie van micro soft en de uitvoering van de implementatie van de indringing van een live site in de Cloud, services en toepassingen die door micro soft worden beheerd.
 
-* [U vindt hier meer informatie over de strategie van micro soft en de uitvoering van Red Teaming en live site indringings tests met door micro soft beheerde Cloud infrastructuur,-services en-toepassingen.](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+* [Regels van betrokkenheid voor het testen van indringing](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+
+* [Microsoft Cloud rode teams](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure Security Center bewaking**: niet van toepassing
 

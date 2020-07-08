@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 15a623068c46109b95ce9a9300348d29f95610a3
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85254307"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Implementeer en verken een multi tenant SaaS-app die gebruikmaakt van het data base-per-Tenant patroon met Azure SQL Database
@@ -76,7 +76,7 @@ Kies uw namen nu en noteer deze.
 
 1. Als u de implementatie status wilt controleren, selecteert u **meldingen** (het klok pictogram rechts van het zoekvak). De implementatie van de SaaS-app van Wingtip tickets neemt ongeveer vijf minuten in beslag.
 
-   ![Implementatie is voltooid](./media/saas-dbpertenant-get-started-deploy/succeeded.png)
+   ![Implementatie geslaagd](./media/saas-dbpertenant-get-started-deploy/succeeded.png)
 
 ## <a name="download-and-unblock-the-wingtip-tickets-management-scripts"></a>De beheer scripts voor Wingtip tickets downloaden en deblokkeren
 
@@ -128,7 +128,7 @@ De Wingtip-toepassing maakt gebruik van [*Azure Traffic Manager*](../../traffic
 
     De delen van de voor gaande notatie worden beschreven in de volgende tabel.
 
-    | URL-onderdeel        | Beschrijving       |
+    | URL-onderdeel        | Description       |
     | :-------------- | :---------------- |
     | Events. Wingtip-dpt | De gebeurtenissen delen van de Wingtip-app.<br /><br /> *-dpt* onderscheidt de implementatie van de *Data Base-per-Tenant* van Wingtip-tickets van andere implementaties. Voor beelden zijn de implementaties van *één* app-per-Tenant (*-sa*) of *multi tenant-data base* (*-MT*). |
     | . * &lt; gebruiker &gt; * | *AF1* in het voor beeld. |
