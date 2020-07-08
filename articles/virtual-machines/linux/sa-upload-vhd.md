@@ -9,10 +9,9 @@ ms.date: 07/10/2017
 ms.author: cynthn
 ms.custom: storage accounts
 ms.openlocfilehash: 7ec9b670f8b2eb1731511deb1d01cfc7db55054f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758567"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Een virtuele Linux-machine uploaden en maken op basis van een aangepaste schijf met de Azure CLI
@@ -26,7 +25,7 @@ Als u de taak snel moet uitvoeren, wordt in de volgende sectie de basis opdracht
 
 Zorg ervoor dat u de nieuwste [Azure cli](/cli/azure/install-az-cli2) hebt geïnstalleerd en bent aangemeld bij een Azure-account met de opdracht [AZ login](/cli/azure/reference-index).
 
-Vervang in de volgende voor beelden voorbeeld parameter namen door uw eigen waarden. Voor beelden van parameter `myResourceGroup`namen `mystorageaccount`zijn opgenomen `mydisks`, en.
+Vervang in de volgende voor beelden voorbeeld parameter namen door uw eigen waarden. Voor beelden van parameter namen `myResourceGroup` zijn opgenomen, `mystorageaccount` en `mydisks` .
 
 Maak eerst een resourcegroep met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam `myResourceGroup` gemaakt op de locatie `WestUs`:
 
@@ -34,27 +33,27 @@ Maak eerst een resourcegroep met [az group create](/cli/azure/group). In het vol
 az group create --name myResourceGroup --location westus
 ```
 
-Maak een opslag account voor het opslaan van uw virtuele schijven met [AZ Storage account create](/cli/azure/storage/account). In het volgende voor beeld wordt een opslag `mystorageaccount`account gemaakt met de naam:
+Maak een opslag account voor het opslaan van uw virtuele schijven met [AZ Storage account create](/cli/azure/storage/account). In het volgende voor beeld wordt een opslag account gemaakt met de naam `mystorageaccount` :
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westus \
   --name mystorageaccount --kind Storage --sku Standard_LRS
 ```
 
-Vermeld de toegangs sleutels voor uw opslag account met [AZ Storage account Keys List](/cli/azure/storage/account/keys). Noteer het `key1`volgende:
+Vermeld de toegangs sleutels voor uw opslag account met [AZ Storage account Keys List](/cli/azure/storage/account/keys). Noteer het `key1` volgende:
 
 ```azurecli
 az storage account keys list --resource-group myResourceGroup --account-name mystorageaccount
 ```
 
-Maak een container in uw opslag account met behulp van de opslag sleutel die u hebt verkregen met [AZ storage container Create](/cli/azure/storage/container). In het volgende voor beeld wordt een `mydisks` container gemaakt met de naam van `key1`de opslag sleutel waarde van:
+Maak een container in uw opslag account met behulp van de opslag sleutel die u hebt verkregen met [AZ storage container Create](/cli/azure/storage/container). In het volgende voor beeld wordt een container gemaakt `mydisks` met de naam van de opslag sleutel waarde van `key1` :
 
 ```azurecli
 az storage container create --account-name mystorageaccount \
     --account-key key1 --name mydisks
 ```
 
-Upload ten slotte uw VHD naar de container die u hebt gemaakt met [AZ Storage BLOB upload](/cli/azure/storage/blob). Geef het lokale pad naar uw VHD op `/path/to/disk/mydisk.vhd`onder:
+Upload ten slotte uw VHD naar de container die u hebt gemaakt met [AZ Storage BLOB upload](/cli/azure/storage/blob). Geef het lokale pad naar uw VHD op onder `/path/to/disk/mydisk.vhd` :
 
 ```azurecli
 az storage blob upload --account-name mystorageaccount \
@@ -62,7 +61,7 @@ az storage blob upload --account-name mystorageaccount \
     --file /path/to/disk/mydisk.vhd --name myDisk.vhd
 ```
 
-Geef de URI op uw schijf (`--image`) op met [AZ VM Create](/cli/azure/vm). In het volgende voor beeld wordt een `myVM` virtuele machine gemaakt met de naam met de eerder geüploade virtuele schijf:
+Geef de URI op uw schijf ( `--image` ) op met [AZ VM Create](/cli/azure/vm). In het volgende voor beeld wordt een virtuele machine gemaakt `myVM` met de naam met de eerder geüploade virtuele schijf:
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
@@ -78,7 +77,7 @@ Het doel-opslag account moet hetzelfde zijn als de locatie waar u de virtuele sc
 Als u de volgende stappen wilt uitvoeren, moet u:
 
 * **Linux-besturings systeem geïnstalleerd in een VHD-bestand** : Installeer een door [Azure goedgekeurde Linux-distributie](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (of Zie [informatie over niet-goedgekeurde distributies](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) naar een virtuele schijf in de VHD-indeling. Er zijn meerdere hulpprogram ma's voor het maken van een virtuele machine en VHD:
-  * Installeer en configureer [qemu](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) of [KVM](https://www.linux-kvm.org/page/RunningKVM), waarbij u gebruik maakt van VHD als uw installatie kopie-indeling. Als dat nodig is, kunt u [een installatie kopie converteren](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) met behulp van `qemu-img convert`.
+  * Installeer en configureer [qemu](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) of [KVM](https://www.linux-kvm.org/page/RunningKVM), waarbij u gebruik maakt van VHD als uw installatie kopie-indeling. Als dat nodig is, kunt u [een installatie kopie converteren](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) met behulp van `qemu-img convert` .
   * U kunt ook Hyper-V gebruiken [in Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) of [op Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx).
 
 > [!NOTE]
@@ -92,7 +91,7 @@ Als u de volgende stappen wilt uitvoeren, moet u:
 
 Zorg ervoor dat u de nieuwste [Azure cli](/cli/azure/install-az-cli2) hebt geïnstalleerd en bent aangemeld bij een Azure-account met de opdracht [AZ login](/cli/azure/reference-index).
 
-Vervang in de volgende voor beelden voorbeeld parameter namen door uw eigen waarden. Voor beelden van parameter `myResourceGroup`namen `mystorageaccount`zijn opgenomen `mydisks`, en.
+Vervang in de volgende voor beelden voorbeeld parameter namen door uw eigen waarden. Voor beelden van parameter namen `myResourceGroup` zijn opgenomen, `mystorageaccount` en `mydisks` .
 
 <a id="prepimage"> </a>
 
@@ -103,7 +102,7 @@ Azure ondersteunt diverse Linux-distributies (Zie [goedgekeurde distributies](en
 * **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[SLES & openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[SLES en OpenSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Andere-niet-goedgekeurde distributies](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
@@ -127,7 +126,7 @@ az group create --name myResourceGroup --location westus
 
 Maak een opslag account voor uw aangepaste schijf en virtuele machines met [AZ Storage account create](/cli/azure/storage/account). Alle Vm's met niet-beheerde schijven die u maakt op basis van uw aangepaste schijf, moeten zich in hetzelfde opslag account bevindt als die schijf. 
 
-In het volgende voor beeld wordt een opslag `mystorageaccount` account gemaakt met de naam in de resource groep die eerder is gemaakt:
+In het volgende voor beeld wordt een opslag account gemaakt `mystorageaccount` met de naam in de resource groep die eerder is gemaakt:
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westus \
@@ -155,12 +154,12 @@ data:    key2  Ww0T7g4UyYLaBnLYcxIOTVziGAAHvU+wpwuPvK4ZG0CDFwu/mAxS/YYvAQGHocq1w
 info:    storage account keys list command OK
 ```
 
-Noteer `key1` wanneer u deze gebruikt om te communiceren met uw opslag account in de volgende stappen.
+Noteer `key1` Wanneer u deze gebruikt om te communiceren met uw opslag account in de volgende stappen.
 
 ## <a name="create-a-storage-container"></a>Een opslag container maken
 Op dezelfde manier als u verschillende directory's maakt om uw lokale bestands systeem logisch te organiseren, maakt u containers in een opslag account om uw schijven te organiseren. Een opslag account kan een wille keurig aantal containers bevatten. Maak een container met [AZ storage container Create](/cli/azure/storage/container).
 
-In het volgende voor beeld wordt een `mydisks`container gemaakt met de naam:
+In het volgende voor beeld wordt een container gemaakt met de naam `mydisks` :
 
 ```azurecli
 az storage container create \
@@ -180,11 +179,11 @@ az storage blob upload --account-name mystorageaccount \
 ```
 
 ## <a name="create-the-vm"></a>De virtuele machine maken
-Als u een virtuele machine met onbeheerde schijven wilt maken, geeft u de URI`--image`op uw schijf () op met [AZ VM Create](/cli/azure/vm). In het volgende voor beeld wordt een `myVM` virtuele machine gemaakt met de naam met de eerder geüploade virtuele schijf:
+Als u een virtuele machine met onbeheerde schijven wilt maken, geeft u de URI op uw schijf ( `--image` ) op met [AZ VM Create](/cli/azure/vm). In het volgende voor beeld wordt een virtuele machine gemaakt `myVM` met de naam met de eerder geüploade virtuele schijf:
 
-U geeft de `--image` para meter op met [AZ VM Create](/cli/azure/vm) om naar uw aangepaste schijf te verwijzen. Zorg ervoor `--storage-account` dat overeenkomt met het opslag account waarin uw aangepaste schijf is opgeslagen. U hoeft niet dezelfde container te gebruiken als de aangepaste schijf om uw Vm's op te slaan. Zorg ervoor dat u aanvullende containers op dezelfde manier maakt als de eerdere stappen voordat u de aangepaste schijf uploadt.
+U geeft de `--image` para meter op met [AZ VM Create](/cli/azure/vm) om naar uw aangepaste schijf te verwijzen. Zorg ervoor dat `--storage-account` overeenkomt met het opslag account waarin uw aangepaste schijf is opgeslagen. U hoeft niet dezelfde container te gebruiken als de aangepaste schijf om uw Vm's op te slaan. Zorg ervoor dat u aanvullende containers op dezelfde manier maakt als de eerdere stappen voordat u de aangepaste schijf uploadt.
 
-In het volgende voor beeld wordt een `myVM` VM gemaakt met de naam van uw aangepaste schijf:
+In het volgende voor beeld wordt een VM gemaakt met de naam `myVM` van uw aangepaste schijf:
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
@@ -200,7 +199,7 @@ U moet nog steeds vragen opgeven, of antwoord geven op alle aanvullende para met
 ## <a name="resource-manager-template"></a>Resource Manager-sjabloon
 Azure Resource Manager sjablonen zijn JavaScript Object Notation (JSON)-bestanden die de omgeving definiëren die u wilt bouwen. De sjablonen worden uitgesplitst naar verschillende resource providers, zoals Compute en netwerk. U kunt bestaande sjablonen gebruiken of uw eigen sjabloon schrijven. Lees meer over het [gebruik van Resource Manager en sjablonen](../../azure-resource-manager/management/overview.md).
 
-Binnen de `Microsoft.Compute/virtualMachines` provider van uw sjabloon hebt u een `storageProfile` knoop punt met de configuratie gegevens voor uw VM. De twee belangrijkste para meters die u `image` kunt `vhd` bewerken, zijn de en uri's die verwijzen naar uw aangepaste schijf en de virtuele schijf van de nieuwe VM. Hieronder ziet u een voor beeld van de JSON voor het gebruik van een aangepaste schijf:
+Binnen de `Microsoft.Compute/virtualMachines` provider van uw sjabloon hebt u een `storageProfile` knoop punt met de configuratie gegevens voor uw VM. De twee belangrijkste para meters die u kunt bewerken, zijn de `image` en `vhd` uri's die verwijzen naar uw aangepaste schijf en de virtuele schijf van de nieuwe VM. Hieronder ziet u een voor beeld van de JSON voor het gebruik van een aangepaste schijf:
 
 ```json
 "storageProfile": {
@@ -220,14 +219,14 @@ Binnen de `Microsoft.Compute/virtualMachines` provider van uw sjabloon hebt u ee
 
 U kunt [deze bestaande sjabloon gebruiken om een VM te maken op basis van een aangepaste installatie kopie of om](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) te lezen over [het maken van uw eigen Azure Resource Manager sjablonen](../../azure-resource-manager/templates/template-syntax.md). 
 
-Wanneer u een sjabloon hebt geconfigureerd, gebruikt u [AZ Group Deployment Create](/cli/azure/group/deployment) om uw vm's te maken. Geef de URI van de JSON-sjabloon op `--template-uri` met de para meter:
+Wanneer u een sjabloon hebt geconfigureerd, gebruikt u [AZ Group Deployment Create](/cli/azure/group/deployment) om uw vm's te maken. Geef de URI van de JSON-sjabloon op met de `--template-uri` para meter:
 
 ```azurecli
 az group deployment create --resource-group myNewResourceGroup \
   --template-uri https://uri.to.template/mytemplate.json
 ```
 
-Als een JSON-bestand lokaal op uw computer is opgeslagen, kunt u in plaats `--template-file` daarvan de para meter gebruiken:
+Als een JSON-bestand lokaal op uw computer is opgeslagen, kunt u `--template-file` in plaats daarvan de para meter gebruiken:
 
 ```azurecli
 az group deployment create --resource-group myNewResourceGroup \

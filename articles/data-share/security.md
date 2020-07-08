@@ -7,10 +7,9 @@ ms.service: data-share
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.openlocfilehash: e299f63777847c557fc13afb4d36d01c12b3b52a
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84637121"
 ---
 # <a name="security-overview-for-azure-data-share"></a>Overzicht van beveiliging voor Azure-gegevens share
@@ -27,7 +26,7 @@ Azure data share maakt gebruik van beheerde identiteiten (voorheen bekend als MS
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga door naar de zelf studie [uw gegevens delen](share-your-data.md) voor meer informatie over het delen van gegevens.
+Voor meer informatie over hoe u gegevens kunt beginnen delen, gaat u verder naar de zelfstudie [uw gegevens delen](share-your-data.md).
 
 
 

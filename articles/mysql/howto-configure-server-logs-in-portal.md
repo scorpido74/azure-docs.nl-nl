@@ -7,10 +7,9 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: 59faf63312bd7cc657f8b96ca3110707ea997c02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81273598"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Langzame query logboeken van de Azure Portal configureren en openen
@@ -23,7 +22,7 @@ Voor de stappen in dit artikel moet [Azure database for mysql server](quickstart
 ## <a name="configure-logging"></a>Logboek registratie configureren
 Configureer de toegang tot het MySQL-logboek voor langzame query's. 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 2. Selecteer uw Azure Database for MySQL-server.
 
@@ -66,7 +65,7 @@ Nadat de logboek registratie is gestart, kunt u een lijst met beschik bare langz
 
 ## <a name="set-up-diagnostic-logs"></a>Diagnostische logboeken instellen
 
-1. Selecteer in de sectie **bewaking** van de zijbalk **Diagnostische instellingen** > **Diagnostische instellingen toevoegen**.
+1. Selecteer in de sectie **bewaking** van de zijbalk **Diagnostische instellingen**  >  **Diagnostische instellingen toevoegen**.
 
    ![Scherm opname van opties voor Diagnostische instellingen](./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png)
 

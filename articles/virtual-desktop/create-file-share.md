@@ -8,12 +8,11 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: eea6f901a7228d7ed411d27296e1fb44a41d9f72
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
-ms.translationtype: MT
+ms.openlocfilehash: 7c6b37cd8c127bf3c7643b39d54bfcdb8093c58c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85361333"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027389"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Een profiel container maken met Azure Files en AD DS
 
@@ -81,12 +80,12 @@ Vervolgens moet u Active Directory (AD)-verificatie inschakelen. Als u dit belei
 
 Voor alle gebruikers die FSLogix-profielen moeten hebben die zijn opgeslagen op het opslag account moet de rol opslag bestands gegevens SMB delen worden toegewezen.
 
-Gebruikers die zich aanmelden bij de virtuele Windows-bureau blad-sessie hosts hebben Toegangs machtigingen nodig voor toegang tot uw bestands share. Het verlenen van toegang aan een Azure-bestands share omvat het configureren van machtigingen op het share niveau en op het NTFS-niveau, vergelijkbaar met een traditionele Windows-share.
+Gebruikers die zich aanmelden bij de Windows Virtual Desktop-sessiehosts, hebben toegangsmachtigingen nodig voor toegang tot uw bestandsshare. Om toegang te verlenen tot een Azure-bestandsshare moeten machtigingen op zowel shareniveau als NTFS-niveau worden geconfigureerd, net als voor een traditionele Windows-share.
 
 Als u machtigingen op share niveau wilt configureren, wijst u aan elke gebruiker een rol toe met de juiste toegangs machtigingen. Machtigingen kunnen worden toegewezen aan afzonderlijke gebruikers of een Azure AD-groep. Zie [toegangs machtigingen toewijzen aan een identiteit](../storage/files/storage-files-identity-ad-ds-assign-permissions.md)voor meer informatie.
 
 >[!NOTE]
->De accounts of groepen waaraan u machtigingen toewijst, moeten zijn gemaakt in het domein en zijn gesynchroniseerd met Azure AD. Accounts die zijn gemaakt in azure AD, werken niet.
+>De accounts of groepen waaraan u machtigingen toewijst, moeten zijn gemaakt in het domein en zijn gesynchroniseerd met Azure AD. Accounts die zijn gemaakt in Azure AD werken niet.
 
 Machtigingen voor op rollen gebaseerde toegangs beheer (RBAC) toewijzen:
 
@@ -94,15 +93,17 @@ Machtigingen voor op rollen gebaseerde toegangs beheer (RBAC) toewijzen:
 
 2. Open het opslag account dat u hebt gemaakt in [een opslag account instellen](#set-up-a-storage-account).
 
-3. Selecteer **Access Control (IAM)**.
+3. Selecteer **Bestands shares**en selecteer vervolgens de naam van de bestands share die u wilt gebruiken.
 
-4. Selecteer **een roltoewijzing toevoegen**.
+4. Selecteer **Access Control (IAM)**.
 
-5. Selecteer in het tabblad roltoewijzing **toevoegen** de optie **opslag bestands gegevens SMB-share met verhoogde bevoegdheid** voor het beheerders account.
+5. Selecteer **een roltoewijzing toevoegen**.
 
-     Volg dezelfde instructies om gebruikers machtigingen voor hun FSLogix-profielen toe te wijzen. Wanneer u echter naar stap 5 gaat, selecteert u in plaats daarvan **opslag bestands gegevens SMB delen** .
+6. Selecteer in het tabblad roltoewijzing **toevoegen** de optie **opslag bestands gegevens SMB-share met verhoogde bevoegdheid** voor het beheerders account.
 
-6. Selecteer **Opslaan**.
+     Volg dezelfde instructies om gebruikersmachtigingen toe te wijzen voor hun FSLogix-profielen. Wanneer u echter naar stap 5 gaat, selecteert u in plaats daarvan **opslag bestands gegevens SMB delen** .
+
+7. Selecteer **Opslaan**.
 
 ## <a name="assign-users-permissions-on-the-azure-file-share"></a>Gebruikers machtigingen toewijzen aan de Azure-bestands share
 
@@ -151,7 +152,7 @@ Uw NTFS-machtigingen configureren:
 
 1. Open een opdracht prompt op een VM die is gekoppeld aan een domein.
 
-2. Voer de volgende cmdlet uit om de Azure-bestands share te koppelen en een stationsletter toe te wijzen:
+2. Voer de volgende cmdlet uit om de Azure-bestandsshare te koppelen en een stationsletter toe te wijzen: 
 
      ```powershell
      net use <desired-drive-letter>: <UNC-pat> <SA-key> /user:Azure\<SA-name>
@@ -192,15 +193,15 @@ Uw NTFS-machtigingen configureren:
 
 ## <a name="configure-fslogix-on-session-host-vms"></a>FSLogix configureren op Vm's van de host van sessies
 
-In deze sectie wordt uitgelegd hoe u een virtuele machine configureert met FSLogix. U moet deze instructies volgen telkens wanneer u een sessie-host configureert. Voordat u begint met configureren, volgt u de instructies in [FSLogix downloaden en installeren](/fslogix/install-ht). Er zijn verschillende opties beschikbaar die ervoor zorgen dat de register sleutels zijn ingesteld op alle sessie-hosts. U kunt deze opties instellen in een installatie kopie of een groeps beleid configureren.
+In deze sectie wordt uitgelegd hoe u een virtuele machine configureert met FSLogix. U moet deze instructies volgen telkens wanneer u een sessiehost configureert. Voordat u begint met configureren, volgt u de instructies in [FSLogix downloaden en installeren](/fslogix/install-ht). Er zijn verschillende opties beschikbaar om ervoor te zorgen dat de registersleutels zijn ingesteld op alle sessiehosts. U kunt deze opties instellen in een installatiekopie of een groepsbeleid configureren.
 
-FSLogix configureren op de host-VM van uw sessie:
+Zo configureert u FSLogix op de VM van uw sessiehost:
 
 1. RDP van de sessiehost van de host-VM van de virtuele Windows-bureau blad-groep.
 
 2. [Down load en installeer FSLogix](/fslogix/install-ht).
 
-5. Volg de instructies in [register instellingen voor de profiel container configureren](/fslogix/configure-profile-container-tutorial#configure-profile-container-registry-settings):
+5. Volg de instructies in [Registerinstellingen voor profielcontainer configureren](/fslogix/configure-profile-container-tutorial#configure-profile-container-registry-settings):
 
     - Navigeer naar **computer**  >  **HKEY_LOCAL_MACHINE**  >  **Software**  >  **FSLogix**.
 

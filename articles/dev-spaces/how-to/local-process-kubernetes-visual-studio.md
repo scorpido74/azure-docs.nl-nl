@@ -1,18 +1,17 @@
 ---
-title: Lokaal proces gebruiken met Kubernetes met Visual Studio (preview-versie)
+title: Lokaal proces met Kubernetes gebruiken met Visual Studio (preview)
 services: azure-dev-spaces
 ms.date: 06/02/2020
 ms.topic: conceptual
 description: Meer informatie over het gebruik van een lokaal proces met Kubernetes met Visual Studio om uw ontwikkel computer te verbinden met een Kubernetes-cluster met Azure dev Spaces
 keywords: Lokaal proces met Kubernetes, Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
 ms.openlocfilehash: 8e89baeac8d9042a87685ed1268ed694db8d9455
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84316801"
 ---
-# <a name="use-local-process-with-kubernetes-with-visual-studio-preview"></a>Lokaal proces gebruiken met Kubernetes met Visual Studio (preview-versie)
+# <a name="use-local-process-with-kubernetes-with-visual-studio-preview"></a>Lokaal proces met Kubernetes gebruiken met Visual Studio (preview)
 
 Met het lokale proces met Kubernetes kunt u code op uw ontwikkel computer uitvoeren en fouten opsporen, terwijl u nog steeds met uw Kubernetes-cluster verbonden bent met de rest van uw toepassing of services. Als u bijvoorbeeld een grote micro Services-architectuur hebt met veel onderling afhankelijke services en data bases, kan het repliceren van die afhankelijkheden op uw ontwikkel computer lastig zijn. Daarnaast kan het maken en implementeren van code voor uw Kubernetes-cluster voor elke code wijziging tijdens de interne loop tijd traag, tijdrovend en moeilijk te gebruiken zijn met een fout opsporingsprogramma.
 
@@ -23,7 +22,7 @@ Lokaal proces met Kubernetes omleidt verkeer tussen uw verbonden Kubernetes-clus
 In deze hand leiding vindt u informatie over het gebruik van lokaal proces met Kubernetes om verkeer tussen uw Kubernetes-cluster en code die wordt uitgevoerd op uw ontwikkel computer, om te leiden. Deze hand leiding bevat ook een script voor het implementeren van een grote voorbeeld toepassing met meerdere micro Services op een Kubernetes-cluster.
 
 > [!IMPORTANT]
-> Deze functie is momenteel in preview. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][preview-terms]. Sommige aspecten van deze functionaliteit kunnen wijzigen voordat deze functionaliteit algemeen beschikbaar wordt.
+> Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][preview-terms]. Sommige aspecten van deze functionaliteit kunnen wijzigen voordat deze functionaliteit algemeen beschikbaar wordt.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -31,7 +30,7 @@ In deze hand leiding wordt gebruikgemaakt van de [voorbeeld toepassing voor dele
 
 ### <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free)maken.
+* Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 * [Azure CLI geïnstalleerd][azure-cli].
 * [Visual Studio 2019][visual-studio] versie 16,7 Preview 2 of hoger wordt uitgevoerd op Windows 10 met de *ASP.net-en Web Development* -en *Azure Development* -workloads geïnstalleerd.
 * [Azure dev Spaces cli geïnstalleerd][azds-cli].
@@ -44,7 +43,7 @@ Installeer ook voor .NET-console toepassingen het pakket *micro soft. Visual Stu
 
 ## <a name="create-a-kubernetes-cluster"></a>Een Kubernetes-cluster maken
 
-Maak een AKS-cluster in een [ondersteunde regio][supported-regions]. Met de onderstaande opdrachten maakt u een resource groep met de naam *MyResourceGroup* en een AKS-cluster met de naam *MyAKS*.
+Maak een AKS-cluster in een [ondersteunde regio][supported-regions]. Met de onderstaande opdrachten maakt u een resourcegroep met de naam *MyResourceGroup* en een AKS-cluster met de naam *MyAKS*.
 
 ```azurecli-interactive
 az group create \
@@ -131,7 +130,7 @@ Als uw ontwikkel computer is verbonden, wordt het verkeer omgeleid naar uw ontwi
 
 Open [BikesHelper.cs][bikeshelper-cs-breakpoint] en klik ergens op regel 26 om de cursor daar te plaatsen. Stel een onderbrekings punt in door op *F9* te klikken of op *fout opsporing* en vervolgens *onderbrekings punt*.
 
-Ga naar de voorbeeld toepassing door de open bare URL te openen. Selecteer *Aurelia Briggs (klant)* als de gebruiker en selecteer vervolgens een te huur fiets. Klik op *fiets*. Ga terug naar Visual Studio en kijk regel 26 is gemarkeerd. Het onderbrekings punt dat u instelt, heeft de service op regel 26 onderbroken. Als u de service wilt hervatten, druk op *F5* of klik op *debug* en vervolgens op *door gaan*. Ga terug naar uw browser en controleer of de pagina laat zien dat u de fiets hebt gehuurd.
+Ga naar de voorbeeld toepassing door de open bare URL te openen. Selecteer *Aurelia Briggs (klant)* als de gebruiker en selecteer vervolgens een te huur fiets. Klik op *fiets*. Ga terug naar Visual Studio en kijk regel 26 is gemarkeerd. Het onderbrekings punt dat u instelt, heeft de service op regel 26 onderbroken. Als u de service wilt hervatten, drukt u op *F5* of klikt u op *Fouten opsporen* vervolgens *Doorgaan*. Ga terug naar uw browser en controleer of de pagina laat zien dat u de fiets hebt gehuurd.
 
 Verwijder het onderbrekings punt door de cursor op regel 26 in `BikesHelper.cs` te zetten en op *F9 te drukken*.
 

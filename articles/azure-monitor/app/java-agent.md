@@ -4,10 +4,9 @@ description: Uitgebreide prestaties en gebruiks bewaking van uw Java-website met
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.openlocfilehash: b047a8dd8c67679a5cc8a45e8be82f9ab5227aa4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537539"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Afhankelijkheden, onderschepte uitzonde ringen en methode-uitvoerings tijden in Java-Web-apps bewaken
@@ -26,8 +25,8 @@ Als u [uw Java-Web-app hebt voorzien van Application Insights][java], kunt u de 
   * **Logback**
 
 * **Betere bewerkings naam:** (gebruikt voor aggregatie van aanvragen in de portal)
-  * **Lente** op basis van `@RequestMapping`.
-  * **Jax-RS** -gebaseerd op `@Path`. 
+  * **Lente** op basis van `@RequestMapping` .
+  * **Jax-RS** -gebaseerd op `@Path` . 
 
 Als u de Java-Agent wilt gebruiken, installeert u deze op uw server. Uw web-apps moeten worden beinstrumented met de [Application Insights Java SDK][java]. 
 
@@ -43,7 +42,7 @@ Als u de Java-Agent wilt gebruiken, installeert u deze op uw server. Uw web-apps
 3. Start de toepassings server opnieuw op.
 
 ## <a name="configure-the-agent"></a>De agent configureren
-Maak een bestand met `AI-Agent.xml` de naam en plaats het in dezelfde map als het jar-bestand van de agent.
+Maak een bestand `AI-Agent.xml` met de naam en plaats het in dezelfde map als het jar-bestand van de agent.
 
 Stel de inhoud van het XML-bestand in. Bewerk het volgende voor beeld om de gewenste functies toe te voegen of te weglaten.
 
@@ -89,16 +88,16 @@ Sleutel: `JAVA_OPTS` waarde:`-javaagent:D:/home/site/wwwroot/applicationinsights
 Voor de meest recente versie van de Java-agent controleert u [hier](https://github.com/Microsoft/ApplicationInsights-Java/releases
 )de releases. 
 
-De agent moet worden verpakt als een resource in uw project, zodat deze wordt beëindigd op de D:/Home/site/wwwroot/map. U kunt controleren of uw agent zich in de juiste app service Directory bevindt door te gaan naar **ontwikkel hulpprogramma's** > **Geavanceerde hulpprogram ma's** > **console voor fout opsporing** en de inhoud van de sitemap te controleren.    
+De agent moet worden verpakt als een resource in uw project, zodat deze wordt beëindigd op de D:/Home/site/wwwroot/map. U kunt controleren of uw agent zich in de juiste app service Directory bevindt door te gaan naar **ontwikkel hulpprogramma's**  >  **Geavanceerde hulpprogram ma's**  >  **console voor fout opsporing** en de inhoud van de sitemap te controleren.    
 
 * Sla de instellingen op met Opslaan en start de app opnieuw met Opnieuw opstarten. (Deze stappen zijn alleen van toepassing op App Services die worden uitgevoerd op Windows.)
 
 > [!NOTE]
-> AI-Agent. XML en het jar-bestand van de agent moeten zich in dezelfde map bevindt. Ze worden vaak samen in de `/resources` map van het project geplaatst.  
+> AI-Agent.xml en het jar-bestand van de agent moeten zich in dezelfde map bevindt. Ze worden vaak samen in de `/resources` map van het project geplaatst.  
 
 #### <a name="enable-w3c-distributed-tracing"></a>In W3C gedistribueerde tracering inschakelen
 
-Voeg het volgende toe aan AI-Agent. XML:
+Voeg het volgende toe aan AI-Agent.xml:
 
 ```xml
 <Instrumentation>

@@ -9,12 +9,11 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2774fc1374bf7fa3ed171258e8b1b51cfdb4b8b1
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: MT
+ms.openlocfilehash: e41d3b47408d29a0463eed5f23117801be107c27
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612942"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920724"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Op rollen gebaseerde toegangs beheer configureren in de oplossings versneller voor externe controle
 
@@ -29,19 +28,19 @@ Alle gebruikers in de rol **beheerder** hebben volledige toegang tot de oplossin
 | Machtiging            | Beheerder | Alleen-lezen |
 |----------------       |-------|-----------|
 | Oplossing weer geven         | Ja   | Ja       |
-| Waarschuwingen bijwerken         | Ja   | Nee        |
-| Waarschuwingen verwijderen         | Ja   | Nee        |
-| Apparaten maken        | Ja   | Nee        |
-| Apparaten bijwerken        | Ja   | Nee        |
-| Apparaten verwijderen        | Ja   | Nee        |
-| Apparaatgroepen maken  | Ja   | Nee        |
-| Apparaatgroepen bijwerken  | Ja   | Nee        |
-| Apparaatgroepen verwijderen  | Ja   | Nee        |
-| Regels maken          | Ja   | Nee        |
-| Update regels          | Ja   | Nee        |
-| Regels verwijderen          | Ja   | Nee        |
-| Taken maken           | Ja   | Nee        |
-| SIM-beheer bijwerken | Ja   | Nee        |
+| Waarschuwingen bijwerken         | Yes   | Nee        |
+| Waarschuwingen verwijderen         | Yes   | Nee        |
+| Apparaten maken        | Yes   | Nee        |
+| Apparaten bijwerken        | Yes   | Nee        |
+| Apparaten verwijderen        | Yes   | Nee        |
+| Apparaatgroepen maken  | Yes   | Nee        |
+| Apparaatgroepen bijwerken  | Yes   | Nee        |
+| Apparaatgroepen verwijderen  | Yes   | Nee        |
+| Regels maken          | Yes   | Nee        |
+| Update regels          | Yes   | Nee        |
+| Regels verwijderen          | Yes   | Nee        |
+| Taken maken           | Yes   | Nee        |
+| SIM-beheer bijwerken | Yes   | Nee        |
 
 De gebruiker die de oplossing heeft geïmplementeerd, krijgt standaard automatisch de rol **admin** toegewezen en is een Azure Active Directory eigenaar van de toepassing. Als eigenaar van een toepassing kunt u rollen toewijzen aan andere gebruikers via de Azure Portal. Als u wilt dat een andere gebruiker rollen toewijst in de oplossing, moeten deze ook worden ingesteld als eigenaar van een toepassing in de Azure Portal.
 
@@ -50,7 +49,7 @@ De gebruiker die de oplossing heeft geïmplementeerd, krijgt standaard automatis
 
 ## <a name="add-or-remove-users"></a>Gebruikers toevoegen of verwijderen
 
-Als Azure Active Directory eigenaar van de toepassing kunt u de Azure Portal gebruiken om een gebruiker toe te voegen aan of te verwijderen uit de oplossing voor externe controle. In de volgende stappen wordt gebruikgemaakt van de [Azure Active Directory Enter prise-toepassing](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application) die is gemaakt tijdens de implementatie van de oplossing voor externe controle.
+Als Azure Active Directory eigenaar van de toepassing kunt u de Azure Portal gebruiken om een gebruiker toe te voegen aan of te verwijderen uit de oplossing voor externe controle. In de volgende stappen wordt gebruikgemaakt van de [Azure Active Directory Enter prise-toepassing](../active-directory/manage-apps/view-applications-portal.md) die is gemaakt tijdens de implementatie van de oplossing voor externe controle.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
@@ -139,11 +138,11 @@ In de volgende stappen wordt beschreven hoe u een rol kunt toevoegen aan een toe
 
 ### <a name="define-a-policy-for-the-new-role"></a>Een beleid voor de nieuwe rol definiëren
 
-Nadat u de rol aan de app hebt toegevoegd in de Azure Portal, moet u een beleid definiëren in [rollen. json](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/auth/Services/data/policies/roles.json) voor de rol die de benodigde machtigingen voor het beheren van apparaten toewijst.
+Nadat u de rol aan de app hebt toegevoegd in de Azure Portal, moet u een beleid definiëren in [roles.js](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/auth/Services/data/policies/roles.json) voor de rol die de benodigde machtigingen voor het beheren van apparaten toewijst.
 
 1. Kopieer de micro Services-opslag plaats voor [externe controle](https://github.com/Azure/remote-monitoring-services-dotnet) van github naar uw lokale computer.
 
-1. Bewerk het bestand **auth/services/Data/policies/roles. json** om het beleid toe te voegen aan de **ManageDevices** -functie, zoals wordt weer gegeven in het volgende code fragment. De **id-** waarden en **rolinstellingen** moeten overeenkomen met de roldefinitie in het app-manifest uit de vorige sectie. Met de lijst met toegestane acties kan iemand in de **ManageDevices** -rol apparaten maken, bijwerken en verwijderen die zijn verbonden met de oplossing:
+1. Bewerk het bestand **auth/services/Data/policies/roles.js** om het beleid toe te voegen voor de **ManageDevices** , zoals wordt weer gegeven in het volgende code fragment. De **id-** waarden en **rolinstellingen** moeten overeenkomen met de roldefinitie in het app-manifest uit de vorige sectie. Met de lijst met toegestane acties kan iemand in de **ManageDevices** -rol apparaten maken, bijwerken en verwijderen die zijn verbonden met de oplossing:
 
     ```json
     {
@@ -185,7 +184,7 @@ Nadat u de rol aan de app hebt toegevoegd in de Azure Portal, moet u een beleid 
     }
     ```
 
-1. Wanneer u klaar bent met het bewerken van het bestand **Services/Data/policies/roles. json** , bouwt u de micro service voor verificatie en autorisatie opnieuw en implementeert u deze in uw oplossings versneller.
+1. Wanneer u klaar bent met het bewerken **van de Services/gegevens/beleids regels/roles.jsvoor** het bestand, bouwt u de micro service voor verificatie en autorisatie opnieuw en implementeert u deze in uw oplossings versneller.
 
 ### <a name="how-the-web-ui-enforces-permissions"></a>Hoe de Web-UI machtigingen afdwingt
 
@@ -213,7 +212,7 @@ Voor een gebruiker met de naam **Apparaatbeheer** in de rol **ManageDevices** be
 }
 ```
 
-In het volgende code fragment van [deviceDelete. js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/pages/devices/flyouts/deviceDelete/deviceDelete.js) in de [Web-UI](https://github.com/Azure/pcs-remote-monitoring-webui/) ziet u hoe de machtigingen declaratief worden afgedwongen:
+In het volgende code fragment van [deviceDelete.js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/pages/devices/flyouts/deviceDelete/deviceDelete.js) in de [Web-UI](https://github.com/Azure/pcs-remote-monitoring-webui/) ziet u hoe de machtigingen declaratief worden afgedwongen:
 
 ```json
 <FlyoutContent>
@@ -225,7 +224,7 @@ In het volgende code fragment van [deviceDelete. js](https://github.com/Azure/pc
 </FlyoutContent>
 ```
 
-Zie [beveiligde onderdelen](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/shared/protected/README.md)voor meer informatie. U kunt aanvullende machtigingen definiëren in het bestand [authModel. js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/services/models/authModels.js) .
+Zie [beveiligde onderdelen](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/shared/protected/README.md)voor meer informatie. U kunt aanvullende machtigingen definiëren in het [authModel.js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/services/models/authModels.js) -bestand.
 
 ### <a name="how-the-microservices-enforce-permissions"></a>De manier waarop de micro Services machtigingen afdwingen
 

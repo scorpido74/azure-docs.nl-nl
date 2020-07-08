@@ -7,15 +7,14 @@ ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
 ms.openlocfilehash: 6624cd0ff70ab359f4af36ca2f1f107d8f0b5fd9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83659266"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>On-premises gegevensgateway installeren voor Azure Logic Apps
 
-Voordat u [verbinding kunt maken met on-premises gegevens bronnen vanuit Azure Logic apps](../logic-apps/logic-apps-gateway-connection.md), downloadt en installeert u de [on-premises gegevens gateway](https://aka.ms/on-premises-data-gateway-installer) op een lokale computer. De gateway werkt als een brug die snelle gegevens overdracht en versleuteling biedt tussen gegevens bronnen on-premises en uw Logic apps. U kunt dezelfde Gateway-installatie gebruiken met andere Cloud Services, zoals Power BI, energie automatisering, Power apps en Azure Analysis Services. Zie de volgende artikelen voor meer informatie over het gebruik van de gateway met deze services:
+Voordat u [verbinding kunt maken met on-premises gegevens bronnen vanuit Azure Logic apps](../logic-apps/logic-apps-gateway-connection.md), downloadt en installeert u de [on-premises gegevens gateway](https://aka.ms/on-premises-data-gateway-installer) op een lokale computer. De gateway werkt als een brug die snelle gegevensoverdracht en versleuteling mogelijk maakt tussen on-premises gegevensbronnen en uw logische apps. U kunt dezelfde Gateway-installatie gebruiken met andere Cloud Services, zoals Power BI, energie automatisering, Power apps en Azure Analysis Services. Zie de volgende artikelen voor meer informatie over het gebruik van de gateway met deze services:
 
 * [Micro soft power on-premises gegevens gateway automatiseren](/power-automate/gateway-reference)
 * [On-premises gegevens gateway van micro soft Power BI](/power-bi/service-gateway-onprem)
@@ -141,7 +140,7 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
 
 ## <a name="check-or-adjust-communication-settings"></a>Communicatie-instellingen controleren of aanpassen
 
-De on-premises gegevens gateway is afhankelijk van [Azure service bus](../service-bus-messaging/service-bus-messaging-overview.md) voor Cloud connectiviteit en de bijbehorende uitgaande verbindingen naar de Azure-regio die aan de gateway is gekoppeld. Als uw werk omgeving vereist dat verkeer via een proxy of firewall wordt uitgevoerd om toegang te krijgen tot internet, kan deze beperking ertoe leiden dat de on-premises gegevens gateway geen verbinding kan maken met de gateway-Cloud service en Azure Service Bus. De gateway heeft verschillende communicatie-instellingen, die u kunt aanpassen. Zie deze onderwerpen voor meer informatie:
+De on-premises gegevens gateway is afhankelijk van [Azure service bus](../service-bus-messaging/service-bus-messaging-overview.md) voor Cloud connectiviteit en de bijbehorende uitgaande verbindingen naar de Azure-regio die aan de gateway is gekoppeld. Als uw werk omgeving vereist dat verkeer via een proxy of firewall wordt uitgevoerd om toegang te krijgen tot internet, kan deze beperking ertoe leiden dat de on-premises gegevens gateway geen verbinding kan maken met de gateway-Cloud service en Azure Service Bus. De gateway heeft verschillende communicatie-instellingen, die u kunt aanpassen. Raadpleeg de volgende onderwerpen voor meer informatie:
 
 * [Communicatie-instellingen voor de on-premises gegevens gateway aanpassen](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)
 * [Proxyinstellingen configureren voor de on-premises gegevensgateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)

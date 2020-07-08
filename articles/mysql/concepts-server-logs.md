@@ -7,10 +7,9 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: f834ba3355d362e59e2e44f37eca0560b9bf4d7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81271978"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Trage query Logboeken in Azure Database for MySQL
@@ -19,7 +18,7 @@ In Azure Database for MySQL is het langzame query logboek beschikbaar voor gebru
 Voor meer informatie over het MySQL-logboek voor langzame query's raadpleegt u de sectie voor het [langzame query logboek](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)van MySQL-verwijzing hand matig.
 
 ## <a name="configure-slow-query-logging"></a>Langzame query logboek registratie configureren 
-Het logboek voor langzame query's is standaard uitgeschakeld. Als u deze wilt inschakelen `slow_query_log` , stelt u in op aan. Dit kan worden ingeschakeld met behulp van de Azure Portal of Azure CLI. 
+Het logboek voor langzame query's is standaard uitgeschakeld. Als u deze wilt inschakelen, stelt `slow_query_log` u in op aan. Dit kan worden ingeschakeld met behulp van de Azure Portal of Azure CLI. 
 
 Andere para meters die u kunt aanpassen zijn onder andere:
 
@@ -27,11 +26,11 @@ Andere para meters die u kunt aanpassen zijn onder andere:
 - **log_slow_admin_statements**: als u beheer instructies zoals ALTER_TABLE en ANALYZE_TABLE in de instructies bevat die naar de slow_query_log zijn geschreven.
 - **log_queries_not_using_indexes**: bepaalt of query's die geen indexen gebruiken, worden geregistreerd in het slow_query_log
 - **log_throttle_queries_not_using_indexes**: deze para meter beperkt het aantal niet-index query's dat naar het langzame query logboek kan worden geschreven. Deze para meter wordt van kracht als log_queries_not_using_indexes is ingesteld op aan.
-- **log_output**: als ' bestand ' is, kan het langzame query logboek worden geschreven naar zowel de lokale server opslag als Azure monitor Diagnostische logboeken. Als ' geen ' is, wordt het logboek met trage query's alleen naar Azure Monitor Diagnostische logboeken geschreven. 
+- **log_output**: als ' bestand ' is, kan het langzame query logboek worden geschreven naar zowel de lokale server opslag als Azure monitor Diagnostische logboeken. Als 'None' wordt opgegeven, wordt het logboek voor trage query's alleen naar Diagnostische logboeken van Azure Monitor geschreven. 
 
 > [!IMPORTANT]
 > Als uw tabellen niet zijn geïndexeerd, worden het `log_queries_not_using_indexes` instellen `log_throttle_queries_not_using_indexes` van de para meters op in mogelijk beïnvloed door de MySQL-prestaties, omdat alle query's die worden uitgevoerd op deze niet-geïndexeerde tabellen, worden geschreven naar het logboek voor langzame query's.<br><br>
-> Als u logboek registratie van langzame query's gedurende een lange periode wilt plannen, wordt aangeraden om in `log_output` te stellen op ' geen '. Als de instelling is ingesteld op ' bestand ', worden deze logboeken naar de lokale server opslag geschreven en kunnen ze van invloed zijn op de MySQL-prestaties. 
+> Als u logboek registratie van langzame query's gedurende een lange periode wilt plannen, wordt aangeraden `log_output` om in te stellen op ' geen '. Als de instelling is ingesteld op ' bestand ', worden deze logboeken naar de lokale server opslag geschreven en kunnen ze van invloed zijn op de MySQL-prestaties. 
 
 Zie de documentatie van het MySQL- [logboek voor langzame query's](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) voor volledige beschrijvingen van de para meters van de langzame query-Logboeken.
 
@@ -84,7 +83,7 @@ In de volgende tabel wordt de inhoud van elk logboek beschreven. Afhankelijk van
 | `\_ResourceId` | Resource-URI |
 
 > [!Note]
-> Voor `sql_text`wordt het logboek afgekapt als dit langer is dan 2048 tekens.
+> Voor wordt `sql_text` het logboek afgekapt als dit langer is dan 2048 tekens.
 
 ## <a name="analyze-logs-in-azure-monitor-logs"></a>Logboeken analyseren in Azure Monitor-logboeken
 

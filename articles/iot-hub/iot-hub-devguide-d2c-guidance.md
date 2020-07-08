@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: b984ee7ed662bf089e7bcb6fc7e948fb61ed1209
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733219"
 ---
 # <a name="device-to-cloud-communications-guidance"></a>Communicatie richtlijnen voor apparaat-naar-Cloud
@@ -37,7 +36,7 @@ Hier volgt een gedetailleerde vergelijking van de verschillende opties voor appa
 | Scenario | Telemetrische time series en waarschuwingen. Bijvoorbeeld: 256-KB-sensor gegevens batches die elke vijf minuten worden verzonden. | Beschik bare mogelijkheden en voor waarden. Bijvoorbeeld de huidige connectiviteits modus voor apparaten, zoals mobiel of WiFi. Het synchroniseren van langlopende werk stromen, zoals configuratie-en software-updates. | Media bestanden. Grote (meestal gecomprimeerde) telemetrie-batches. |
 | Opslag en ophalen | Tijdelijk opgeslagen door IoT Hub, Maxi maal 7 dagen. Alleen sequentiële Lees bewerkingen. | Opgeslagen door IoT Hub op het dubbele apparaat. Kan worden opgehaald met behulp van de [IOT hub-query taal](iot-hub-devguide-query-language.md). | Opgeslagen in Azure Storage account van de gebruiker. |
 | Grootte | Maxi maal 256 KB-berichten. | De maximale grootte van de gerapporteerde eigenschappen is 32 KB. | Maximale bestands grootte die wordt ondersteund door Azure Blob Storage. |
-| Frequency | Hoog. Zie [IOT hub limieten](iot-hub-devguide-quotas-throttling.md)voor meer informatie. | Gemiddeld. Zie [IOT hub limieten](iot-hub-devguide-quotas-throttling.md)voor meer informatie. | Laag. Zie [IOT hub limieten](iot-hub-devguide-quotas-throttling.md)voor meer informatie. |
+| Frequentie | Hoog. Zie [IOT hub limieten](iot-hub-devguide-quotas-throttling.md)voor meer informatie. | Gemiddeld. Zie [IOT hub limieten](iot-hub-devguide-quotas-throttling.md)voor meer informatie. | Laag. Zie [IOT hub limieten](iot-hub-devguide-quotas-throttling.md)voor meer informatie. |
 | Protocol | Beschikbaar op alle protocollen. | Beschikbaar via MQTT of AMQP. | Beschikbaar wanneer u een protocol gebruikt, maar HTTPS vereist op het apparaat. |
 
 Een toepassing moet mogelijk gegevens verzenden als een telemetrie-tijd reeks of-waarschuwing en deze beschikbaar maken op het apparaat dubbele. In dit scenario kunt u een van de volgende opties kiezen:

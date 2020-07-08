@@ -4,10 +4,9 @@ description: Uitgebreide bewaking van de toepassings prestaties van uw Java-webs
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 62a723dad7e9f6c2bfdabde159968d507d2d5d41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537522"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>verzamelde: metrische gegevens voor Linux-prestaties in Application Insights
@@ -29,8 +28,8 @@ Op uw Linux-Server computers:
 
 1. Installeer [verzamelde](https://collectd.org/) -versie 5.4.0 of hoger.
 2. Down load de [Application Insights verzamelde Writer-invoeg toepassing](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal). Noteer het versie nummer.
-3. Kopieer de invoeg toepassing JAR `/usr/share/collectd/java`naar.
-4. Bewerken `/etc/collectd/collectd.conf`:
+3. Kopieer de invoeg toepassing JAR naar `/usr/share/collectd/java` .
+4. Bewerken `/etc/collectd/collectd.conf` :
    * Zorg ervoor dat [de Java-invoeg toepassing](https://collectd.org/wiki/index.php/Plugin:Java) is ingeschakeld.
    * Werk de JVMArg voor Java. class. Path bij om het volgende JAR op te laten. Het versie nummer bijwerken zodat dit overeenkomt met de naam die u hebt gedownload:
    * `/usr/share/collectd/java/applicationinsights-collectd-1.0.5.jar`
@@ -92,12 +91,12 @@ Standaard verzendt de Application Insights-invoeg toepassing alle gegevens die w
 Gegevens uitsluiten van specifieke invoeg toepassingen of gegevens bronnen:
 
 * Bewerk het configuratie bestand. 
-* Voeg `<Plugin ApplicationInsightsWriter>`in de regels van de richt lijnen als volgt toe:
+* `<Plugin ApplicationInsightsWriter>`Voeg in de regels van de richt lijnen als volgt toe:
 
 | Richt | Effect |
 | --- | --- |
-| `Exclude disk` |Alle gegevens uitsluiten die zijn verzameld `disk` door de invoeg toepassing |
-| `Exclude disk:read,write` |Sluit de bronnen met `read` de `write` naam en `disk` uit van de invoeg toepassing. |
+| `Exclude disk` |Alle gegevens uitsluiten die zijn verzameld door de `disk` invoeg toepassing |
+| `Exclude disk:read,write` |Sluit de bronnen met de naam `read` en `write` uit van de `disk` invoeg toepassing. |
 
 Afzonderlijke instructies met een nieuwe regel.
 
@@ -106,7 +105,7 @@ Afzonderlijke instructies met een nieuwe regel.
 
 * Open [zoeken][diagnostic] om te zien of de onbewerkte gebeurtenissen zijn aangekomen. Soms duurt het langer om weer te geven in Metrics Explorer.
 * Mogelijk moet u [firewall-uitzonde ringen voor uitgaande gegevens instellen](../../azure-monitor/app/ip-addresses.md)
-* Schakel tracering in de Application Insights-invoeg toepassing in. Deze regel toevoegen in `<Plugin ApplicationInsightsWriter>`:
+* Schakel tracering in de Application Insights-invoeg toepassing in. Deze regel toevoegen in `<Plugin ApplicationInsightsWriter>` :
   * `SDKLogger true`
 * Open een Terminal en start verzamelde in de uitgebreide modus om te zien welke problemen er worden gerapporteerd:
   * `sudo collectd -f`

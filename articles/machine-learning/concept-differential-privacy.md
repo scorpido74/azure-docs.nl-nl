@@ -10,10 +10,9 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.openlocfilehash: aa4fe715c18e582448ee7f642a6a75947356ab61
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84982659"
 ---
 # <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package"></a>Behoud de privacy van gegevens met behulp van differentiële privacy en het WhiteNoise-pakket
@@ -63,7 +62,7 @@ Het implementeren van differentiatie van een differentieel particulier systeem i
 
 De kern bibliotheek bevat de volgende privacy-mechanismen voor het implementeren van een differentiatie systeem:
 
-|Onderdeel  |Beschrijving  |
+|Onderdeel  |Description  |
 |---------|---------|
 |Analyse     | Een grafiek beschrijving van wille keurige berekeningen. |
 |Validator     | Een roest-bibliotheek met een set hulpprogram ma's voor het controleren en afleiden van de benodigde voor waarden voor een analyse die differentiatie privé is.          |
@@ -74,7 +73,7 @@ De kern bibliotheek bevat de volgende privacy-mechanismen voor het implementeren
 
 De systeem bibliotheek bevat de volgende hulpprogram ma's en services voor het werken met tabellaire en relationele gegevens:
 
-|Onderdeel  |Beschrijving  |
+|Onderdeel  |Description  |
 |---------|---------|
 |Gegevens toegang     | Bibliotheek die SQL-query's onderschept en verwerkt en rapporten produceert. Deze bibliotheek is geïmplementeerd in Python en ondersteunt de volgende ODBC-en DBAPI-gegevens bronnen:<ul><li>PostgreSQL</li><li>SQL Server</li><li>Spark</li><li>Preston</li><li>Pandas</li></ul>|
 |Service     | Uitvoerings service die een REST-eind punt biedt om aanvragen of query's te leveren aan gedeelde gegevens bronnen. De service is ontworpen om samen stelling van differentiële privacyfuncties toe te staan die wordt toegepast op aanvragen met verschillende Delta-en Epsilon-waarden, ook wel heterogene aanvragen genoemd. Deze referentie-implementatie accounts voor extra gevolgen van query's op gecorreleerde gegevens. |

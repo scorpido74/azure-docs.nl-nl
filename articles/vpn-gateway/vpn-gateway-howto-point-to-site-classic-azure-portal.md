@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: f68631771b8f86d995108112b1243ab38bf826bc
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84984796"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Een punt-naar-site-verbinding configureren met behulp van verificatie via een certificaat (klassiek)
@@ -202,7 +201,7 @@ Als u een P2S-verbinding wilt maken vanaf een andere clientcomputer dan de compu
 >
 >
 
-1. Als u verbinding wilt maken met uw VNet, gaat u op de client computer naar **VPN-verbindingen** in de Azure Portal en zoekt u de VPN-verbinding die u hebt gemaakt. De VPN-verbinding heeft dezelfde naam als het virtuele netwerk. Selecteer **Verbinden**. Als er een pop-upbericht verschijnt over het certificaat, selecteert u **Doorgaan** om verhoogde bevoegdheden te kunnen gebruiken.
+1. Als u verbinding wilt maken met uw VNet, gaat u op de client computer naar **VPN-verbindingen** in de Azure Portal en zoekt u de VPN-verbinding die u hebt gemaakt. De VPN-verbinding heeft dezelfde naam als het virtuele netwerk. Selecteer **Verbinding maken**. Als er een pop-upbericht verschijnt over het certificaat, selecteert u **Doorgaan** om verhoogde bevoegdheden te kunnen gebruiken.
 
 2. Selecteer op de pagina **Verbindingsstatus** de optie **Verbinden** om de verbinding te starten. Als het scherm **Certificaat selecteren** verschijnt, controleert u of het weergegeven clientcertificaat het juiste is. Als dat niet zo is, selecteert u het juiste certificaat in de vervolgkeuzelijst en selecteert u **OK**.
 

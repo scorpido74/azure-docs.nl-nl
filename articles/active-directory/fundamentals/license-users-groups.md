@@ -8,18 +8,17 @@ ms.assetid: f8b932bc-8b4f-42b5-a2d3-f2c076234a78
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/06/2018
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20ec1d1909a53a9de29e12be33957acfd1643698
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4c695a63705cce90bb0bf6b3cf787d9e6481b888
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128826"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603890"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Licenties toewijzen of verwijderen in de Azure Active Directory Portal
 
@@ -37,7 +36,7 @@ Er zijn verschillende licentie abonnementen beschikbaar voor de Azure AD-service
 
 Zie [welke licentie heb ik nodig](https://azure.microsoft.com/pricing/details/active-directory/)voor specifieke informatie over elk licentie plan en de bijbehorende licentie gegevens?.
 
-Niet alle micro soft-Services zijn beschikbaar op alle locaties. Voordat een licentie kan worden toegewezen aan een groep, moet u de **gebruiks locatie** opgeven voor alle leden. U kunt deze waarde instellen in het **gebied &gt; instellingen &gt; van &gt; Azure Active Directory gebruikers profiel** in azure AD. Alle gebruikers waarvan de gebruiks locatie niet is opgegeven, nemen de locatie van de Azure AD-organisatie over.
+Niet alle micro soft-Services zijn beschikbaar op alle locaties. Voordat een licentie kan worden toegewezen aan een groep, moet u de **gebruiks locatie** opgeven voor alle leden. U kunt deze waarde instellen in het gebied **instellingen van Azure Active Directory &gt; gebruikers &gt; profiel &gt; ** in azure AD. Alle gebruikers waarvan de gebruiks locatie niet is opgegeven, nemen de locatie van de Azure AD-organisatie over.
 
 ## <a name="view-license-plans-and-plan-details"></a>Licentie plannen en plan gegevens weer geven
 
@@ -82,7 +81,7 @@ Zorg ervoor dat iedereen die een gelicentieerde Azure AD-service moet gebruiken,
     De pagina **licentie toewijzen** wordt bijgewerkt om aan te geven dat een gebruiker is geselecteerd en dat de toewijzingen zijn geconfigureerd.
 
     > [!NOTE]
-    > Niet alle micro soft-Services zijn beschikbaar op alle locaties. Voordat een licentie aan een gebruiker kan worden toegewezen, moet u de **gebruiks locatie**opgeven. U kunt deze waarde instellen in het **gebied &gt; instellingen &gt; van &gt; Azure Active Directory gebruikers profiel** in azure AD. Alle gebruikers waarvan de gebruiks locatie niet is opgegeven, nemen de locatie van de Azure AD-organisatie over.
+    > Niet alle micro soft-Services zijn beschikbaar op alle locaties. Voordat een licentie aan een gebruiker kan worden toegewezen, moet u de **gebruiks locatie**opgeven. U kunt deze waarde instellen in het gebied **instellingen van Azure Active Directory &gt; gebruikers &gt; profiel &gt; ** in azure AD. Alle gebruikers waarvan de gebruiks locatie niet is opgegeven, nemen de locatie van de Azure AD-organisatie over.
 
 1. Selecteer **Toewijzen**.
 

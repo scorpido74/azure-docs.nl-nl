@@ -12,10 +12,9 @@ ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
 ms.openlocfilehash: 6abb44012035f31f970a347687964afb0c715d29
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84983372"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Release opmerkingen bij Azure Media Services v3
@@ -69,7 +68,7 @@ Media Services GA'ed in de volgende Azure Government regio's: *USGov Arizona* en
 
 CDN-ondersteuning is toegevoegd voor de *oorsprong: prefetch-* headers voor Live en video on-demand streaming; beschikbaar voor klanten die een direct-contract met Akamai CDN hebben. Origin-assisteren CDN-prefetch-functie omvat de volgende HTTP-header-uitwisselingen tussen Akamai CDN en Azure Media Services Origin:
 
-|HTTP-header|Waarden|Afzender|Ontvanger|Doel|
+|HTTP-header|Waarden|Afzender|Ontvanger|Functie|
 | ---- | ---- | ---- | ---- | ----- |
 |CDN-oorsprong-assistentie-prefetch-ingeschakeld | 1 (standaard) of 0 |CDN|Oorsprong|Om aan te geven dat CDN prefetch is ingeschakeld|
 |CDN-oorsprong-assisteren-prefetch-pad| Voorbeeld: <br/>Fragmenten (video = 1400000000, Format = mpd-time-CMAF)|Oorsprong|CDN|Het prefetch-pad naar CDN opgeven|
@@ -131,7 +130,7 @@ Er wordt een afschaffing van *Azure media indexer* en *Azure media indexer 2 Pre
 
 Zie [Migrate from Azure media indexer en Azure media indexer 2 to Azure Media Services video indexer](../previous/migrate-indexer-v1-v2.md)voor meer informatie.
 
-## <a name="august-2019"></a>Augustus 2019
+## <a name="august-2019"></a>augustus 2019
 
 ###  <a name="media-services-v3"></a>Media Services v3  
 
@@ -376,7 +375,7 @@ De volgende functies zijn aanwezig in de .NET SDK:
 
 Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 [Migratie richtlijnen voor het overstappen van Media Services versie 2 naar v3](migrate-from-v2-to-v3.md#known-issues).
 

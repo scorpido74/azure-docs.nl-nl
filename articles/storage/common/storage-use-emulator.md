@@ -8,10 +8,9 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.openlocfilehash: eb13dbb7e4cfbbb1b2ea42ea1753e7615df03a7d
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85512175"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>De Azure-opslag emulator gebruiken voor ontwikkelen en testen
@@ -179,7 +178,7 @@ Vanaf versie 3,0 wordt een console venster weer gegeven wanneer u de opslag emul
 
 Typ `/help` bij de opdrachtprompt om een lijst met opties te zien.
 
-| Optie | Beschrijving | Opdracht | Argumenten |
+| Optie | Description | Opdracht | Argumenten |
 | --- | --- | --- | --- |
 | **Begin** |Hiermee wordt de opslag emulator gestart. |`AzureStorageEmulator.exe start [-inprocess]` |*-Opnieuw verwerken*: Start de emulator in het huidige proces in plaats van een nieuw proces te maken. |
 | **Stoppen** |Hiermee stopt u de opslag emulator. |`AzureStorageEmulator.exe stop` | |

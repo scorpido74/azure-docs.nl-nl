@@ -9,10 +9,9 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: 1a6106a45f5062850ceb12205528a05ed1d494be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81756667"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Apparaatconnectiviteit bewaken met Azure CLI
@@ -25,7 +24,7 @@ Gebruik de Azure CLI IoT-extensie om berichten te bekijken die uw apparaten naar
 
 ## <a name="prerequisites"></a>Vereisten
 
-+ Azure CLI is geïnstalleerd en versie 2.0.7 of hoger. Controleer de versie van uw Azure CLI door uit `az --version`te voeren. Meer informatie over het installeren en bijwerken van de [Azure cli-documenten](https://docs.microsoft.com/cli/azure/install-azure-cli)
++ Azure CLI is geïnstalleerd en versie 2.0.7 of hoger. Controleer de versie van uw Azure CLI door uit te voeren `az --version` . Meer informatie over het installeren en bijwerken van de [Azure cli-documenten](https://docs.microsoft.com/cli/azure/install-azure-cli)
 + Een werk-of school account in azure, toegevoegd als een gebruiker in een IoT Central-toepassing.
 
 ## <a name="install-the-iot-central-extension"></a>De IoT Central-extensie installeren
@@ -50,7 +49,7 @@ az extension update --name azure-iot
 
 ## <a name="using-the-extension"></a>De uitbrei ding gebruiken
 
-In de volgende secties worden veelvoorkomende opdrachten en opties beschreven die u kunt gebruiken `az iot central`wanneer u uitvoert. Als u de volledige set met opdrachten en opties wilt weer `--help` geven `az iot central` , geeft u een of meer van de bijbehorende subopdrachten door.
+In de volgende secties worden veelvoorkomende opdrachten en opties beschreven die u kunt gebruiken wanneer u uitvoert `az iot central` . Als u de volledige set met opdrachten en opties wilt weer geven, geeft `--help` u een `az iot central` of meer van de bijbehorende subopdrachten door.
 
 ### <a name="login"></a>Aanmelden
 

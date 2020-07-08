@@ -4,10 +4,9 @@ description: Beschrijft de eigenschappen die zijn geëxporteerd uit continue exp
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: 9891bea1d52c61197fa32fa5c0764df5450b563c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81536842"
 ---
 # <a name="application-insights-export-data-model"></a>Gegevens model Application Insights exporteren
@@ -105,7 +104,7 @@ Punten om te noteren:
 ## <a name="context"></a>Context
 Alle soorten telemetrie zijn vergezeld van een context sectie. Niet al deze velden worden met elk gegevens punt verzonden.
 
-| Pad | Type | Opmerkingen |
+| Pad | Type | Notities |
 | --- | --- | --- |
 | context. custom. Dimensions [0] |object [] |Sleutel-waarde teken reeks paren die zijn ingesteld met de para meter aangepaste eigenschappen. Maximum lengte van de sleutel 100, waarden met een maximale lengte van 1024. Meer dan 100 unieke waarden, de eigenschap kan worden doorzocht, maar kan niet worden gebruikt voor segmentatie. Maxi maal 200 sleutels per iKey. |
 | context. custom. Metrics [0] |object [] |Sleutel-waardeparen ingesteld op basis van de para meter voor aangepaste metingen en door TrackMetrics. Maximum lengte van de sleutel 100, waarden kunnen numeriek zijn. |
@@ -127,13 +126,13 @@ Alle soorten telemetrie zijn vergezeld van een context sectie. Niet al deze veld
 | context. device. rolnaam |tekenreeks | |
 | context. device. screenResolution |tekenreeks | |
 | context. device. type |tekenreeks |PC, browser,... |
-| context. locatie |object |Afgeleid `clientip`. |
-| context. locatie. plaats |tekenreeks |Afgeleid van `clientip`, indien bekend |
+| context. locatie |object |Afgeleid `clientip` . |
+| context. locatie. plaats |tekenreeks |Afgeleid van `clientip` , indien bekend |
 | context. location. client |tekenreeks |De laatste Octagon is geanonimiseerd op 0. |
 | context. locatie. continent |tekenreeks | |
 | context. locatie. Country |tekenreeks | |
 | context. location. provincie |tekenreeks |Staat of provincie |
-| context.operation.id |tekenreeks |Items die hetzelfde `operation id` zijn, worden weer gegeven als verwante items in de portal. Normaal gesp `request id`roken de. |
+| context.operation.id |tekenreeks |Items die hetzelfde zijn, `operation id` worden weer gegeven als verwante items in de portal. Normaal gesp roken de `request id` . |
 | context.operation.name |tekenreeks |URL of aanvraag naam |
 | context. Operation. parentId |tekenreeks |Hiermee staat u geneste gerelateerde items toe. |
 | context.session.id |tekenreeks |`Id`van een groep bewerkingen uit dezelfde bron. Een periode van 30 minuten zonder een bewerking signaleert het einde van een sessie. |
@@ -146,15 +145,15 @@ Alle soorten telemetrie zijn vergezeld van een context sectie. Niet al deze veld
 | context. User. authId |tekenreeks | |
 | context. User. isAuthenticated |booleaans | |
 | context. User. storeRegion |tekenreeks | |
-| intern. data. documentVersion |tekenreeks | |
+| internal.data.documentVersion |tekenreeks | |
 | internal.data.id |tekenreeks | `Unique id`die wordt toegewezen wanneer een item wordt opgenomen in Application Insights |
 
 ## <a name="events"></a>Gebeurtenissen
 Aangepaste gebeurtenissen gegenereerd door [track Event ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
-| Pad | Type | Opmerkingen |
+| Pad | Type | Notities |
 | --- | --- | --- |
-| aantal gebeurtenissen [0] |geheel getal |100/([sampling](../../azure-monitor/app/sampling.md) frequentie). Bijvoorbeeld 4 =&gt; 25%. |
+| aantal gebeurtenissen [0] |geheel getal |100/([sampling](../../azure-monitor/app/sampling.md) frequentie). Bijvoorbeeld 4 = &gt; 25%. |
 | gebeurtenis [0] naam |tekenreeks |Gebeurtenis naam.  Maximale lengte van 250. |
 | gebeurtenis [0] URL |tekenreeks | |
 | gebeurtenis [0] urlData. base |tekenreeks | |
@@ -163,10 +162,10 @@ Aangepaste gebeurtenissen gegenereerd door [track Event ()](../../azure-monitor/
 ## <a name="exceptions"></a>Uitzonderingen
 Rapporteert [uitzonde ringen](../../azure-monitor/app/asp-net-exceptions.md) op de server en in de browser.
 
-| Pad | Type | Opmerkingen |
+| Pad | Type | Notities |
 | --- | --- | --- |
 | basicException [0]-Assembly |tekenreeks | |
-| aantal basicException [0] |geheel getal |100/([sampling](../../azure-monitor/app/sampling.md) frequentie). Bijvoorbeeld 4 =&gt; 25%. |
+| aantal basicException [0] |geheel getal |100/([sampling](../../azure-monitor/app/sampling.md) frequentie). Bijvoorbeeld 4 = &gt; 25%. |
 | basicException [0] exceptionGroup |tekenreeks | |
 | basicException [0] exceptionType |tekenreeks | |
 | basicException [0] failedUserCodeMethod |tekenreeks | |
@@ -192,7 +191,7 @@ Rapporteert [uitzonde ringen](../../azure-monitor/app/asp-net-exceptions.md) op 
 ## <a name="trace-messages"></a>Berichten traceren
 Verzonden door [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)en door de [logboek registratie-adapters](../../azure-monitor/app/asp-net-trace-logs.md).
 
-| Pad | Type | Opmerkingen |
+| Pad | Type | Notities |
 | --- | --- | --- |
 | bericht [0] logger logboek |tekenreeks | |
 | bericht [0] para meters |tekenreeks | |
@@ -202,12 +201,12 @@ Verzonden door [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md
 ## <a name="remote-dependency"></a>Externe afhankelijkheid
 Verzonden door TrackDependency. Wordt gebruikt voor het rapporteren van de prestaties en het gebruik van [aanroepen naar afhankelijkheden](../../azure-monitor/app/asp-net-dependencies.md) in de server en Ajax-aanroepen in de browser.
 
-| Pad | Type | Opmerkingen |
+| Pad | Type | Notities |
 | --- | --- | --- |
 | remoteDependency [0] async |booleaans | |
 | remoteDependency [0] basenaam |tekenreeks | |
 | remoteDependency [0] opdrachtnaam |tekenreeks |Bijvoorbeeld ' home/index ' |
-| aantal remoteDependency [0] |geheel getal |100/([sampling](../../azure-monitor/app/sampling.md) frequentie). Bijvoorbeeld 4 =&gt; 25%. |
+| aantal remoteDependency [0] |geheel getal |100/([sampling](../../azure-monitor/app/sampling.md) frequentie). Bijvoorbeeld 4 = &gt; 25%. |
 | remoteDependency [0] dependencyTypeName |tekenreeks |HTTP, SQL,... |
 | remoteDependency [0] durationMetric. waarde |getal |Tijd van oproep tot voltooiing van antwoord door afhankelijkheid |
 | remoteDependency [0]`id` |tekenreeks | |
@@ -223,14 +222,14 @@ Verzonden door TrackDependency. Wordt gebruikt voor het rapporteren van de prest
 ## <a name="requests"></a>Aanvragen
 Verzonden door [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest). De standaard modules gebruiken dit om de reactie tijd van de server te rapporteren, gemeten op de server.
 
-| Pad | Type | Opmerkingen |
+| Pad | Type | Notities |
 | --- | --- | --- |
-| aantal aanvragen [0] |geheel getal |100/([sampling](../../azure-monitor/app/sampling.md) frequentie). Bijvoorbeeld: 4 =&gt; 25%. |
+| aantal aanvragen [0] |geheel getal |100/([sampling](../../azure-monitor/app/sampling.md) frequentie). Bijvoorbeeld: 4 = &gt; 25%. |
 | aanvraag [0] durationMetric. waarde |getal |Tijd van aanvraag die inkomt bij antwoord. 1e7 = = 1S |
 | aanvraag [0]`id` |tekenreeks |`Operation id` |
 | naam van aanvraag [0] |tekenreeks |GET/POST + URL-basis.  Maximale lengte van 250 |
 | aanvraag [0] responseCode |geheel getal |HTTP-antwoord verzonden naar client |
-| de aanvraag [0] is voltooid |booleaans |Standaard instelling = = ( &lt; responseCode 400) |
+| de aanvraag [0] is voltooid |booleaans |Standaard instelling = = (responseCode &lt; 400) |
 | URL van aanvraag [0] |tekenreeks |Geen host |
 | aanvraag [0] urlData. base |tekenreeks | |
 | aanvraag [0] urlData. hashTag |tekenreeks | |
@@ -241,7 +240,7 @@ Verzonden door de browser. Hiermee wordt de tijd gemeten voor het verwerken van 
 
 Met context waarden wordt het client besturingssysteem en de browser versie weer gegeven.
 
-| Pad | Type | Opmerkingen |
+| Pad | Type | Notities |
 | --- | --- | --- |
 | clientPerformance [0] clientProcess. waarde |geheel getal |De tijd vanaf het moment dat de HTML wordt ontvangen om de pagina weer te geven. |
 | clientPerformance [0] naam |tekenreeks | |
@@ -258,9 +257,9 @@ Met context waarden wordt het client besturingssysteem en de browser versie weer
 ## <a name="page-views"></a>Paginaweergaven
 Verzonden door trackPageView () of [stopTrackPage](../../azure-monitor/app/api-custom-events-metrics.md#page-views)
 
-| Pad | Type | Opmerkingen |
+| Pad | Type | Notities |
 | --- | --- | --- |
-| aantal weer geven [0] |geheel getal |100/([sampling](../../azure-monitor/app/sampling.md) frequentie). Bijvoorbeeld 4 =&gt; 25%. |
+| aantal weer geven [0] |geheel getal |100/([sampling](../../azure-monitor/app/sampling.md) frequentie). Bijvoorbeeld 4 = &gt; 25%. |
 | weer gave [0] durationMetric. waarde |geheel getal |De waarde is optioneel ingesteld in trackPageView () of door startTrackPage ()-stopTrackPage (). Niet hetzelfde als clientPerformance-waarden. |
 | naam van weer gave [0] |tekenreeks |Pagina titel.  Maximale lengte van 250 |
 | URL van weer gave [0] |tekenreeks | |
@@ -271,11 +270,11 @@ Verzonden door trackPageView () of [stopTrackPage](../../azure-monitor/app/api-c
 ## <a name="availability"></a>Beschikbaarheid
 Rapporten over [Beschik baarheid van webtests](../../azure-monitor/app/monitor-web-app-availability.md).
 
-| Pad | Type | Opmerkingen |
+| Pad | Type | Notities |
 | --- | --- | --- |
 | Beschik baarheid [0] availabilityMetric.name |tekenreeks |availability |
 | Beschik baarheid [0] availabilityMetric. waarde |getal |1,0 of 0,0 |
-| aantal Beschik baarheid [0] |geheel getal |100/([sampling](../../azure-monitor/app/sampling.md) frequentie). Bijvoorbeeld 4 =&gt; 25%. |
+| aantal Beschik baarheid [0] |geheel getal |100/([sampling](../../azure-monitor/app/sampling.md) frequentie). Bijvoorbeeld 4 = &gt; 25%. |
 | Beschik baarheid [0] dataSizeMetric.name |tekenreeks | |
 | Beschik baarheid [0] dataSizeMetric. waarde |geheel getal | |
 | Beschik baarheid [0] durationMetric.name |tekenreeks | |
@@ -331,7 +330,7 @@ Metrische waarden, zowel in metrische rapporten als elders, worden gerapporteerd
         "sampledValue": 468.71603053650279
       }
 
-Dit kan al dan niet worden gewijzigd in de toekomst, `count==1` in alle waarden die zijn gerapporteerd vanuit de standaard SDK-modules `name` en `value` alleen de velden en zijn nuttig. Wanneer u uw eigen TrackMetric-aanroepen schrijft waarin u de andere para meters hebt ingesteld, is de enige andere situatie waar ze verschillend zouden zijn.
+Dit kan al dan niet worden gewijzigd in de toekomst, in alle waarden die zijn gerapporteerd vanuit de standaard SDK-modules `count==1` en alleen de `name` `value` velden en zijn nuttig. Wanneer u uw eigen TrackMetric-aanroepen schrijft waarin u de andere para meters hebt ingesteld, is de enige andere situatie waar ze verschillend zouden zijn.
 
 Het doel van de andere velden is om toe te staan dat metrische gegevens in de SDK worden geaggregeerd, om het verkeer naar de portal te verminderen. U kunt bijvoorbeeld een gemiddelde berekenen van een aantal opeenvolgende Lees bewerking voordat u elk rapport met metrische gegevens verzendt. Vervolgens berekent u de minimum-, maximum-, standaard afwijking-en aggregatie waarde (Sum of average) en stelt u het aantal lees bewerkingen in dat door het rapport wordt vertegenwoordigd.
 
@@ -342,7 +341,7 @@ In plaats van vooraf aggregatie van metrische gegevens, kunt u [steek proeven](.
 ### <a name="durations"></a>Duur
 Tenzij anders aangegeven, worden de duursen weer gegeven in tienden van een micro seconde, zodat 10000000,0 betekent 1 seconde.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md)
 * [Continue export](export-telemetry.md)
 * [Codevoorbeelden](export-telemetry.md#code-samples)

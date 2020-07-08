@@ -8,10 +8,9 @@ ms.author: aadnaik
 ms.reviewer: HDI HiveLLAP Team
 ms.date: 05/05/2020
 ms.openlocfilehash: a9b86f09ade0d437436779ef3e4a17fcdede2cf0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83664961"
 ---
 # <a name="azure-hdinsight-interactive-query-cluster-hive-llap-sizing-guide"></a>Azure HDInsight Interactive query-cluster (Hive LLAP) formaat gids
@@ -39,7 +38,7 @@ In dit document wordt de grootte van het HDInsight Interactive query-cluster (Hi
 | TEZ. am. resource. Memory. MB | 4096 (MB) | De hoeveelheid geheugen in MB die moet worden gebruikt door de TEZ AppMaster |
 | Hive. server2. TEZ. Sessions. per. default. Queue | <number_of_worker_nodes> |Het aantal sessies voor elke wachtrij met de naam in de component. server2. TEZ. default. queues. Dit aantal komt overeen met het aantal query-coördinatoren (TEZ AMs) |
 | component. TEZ. container. size | 4096 (MB) | Opgegeven TEZ-container grootte in MB |
-| Hive. llap. daemon. num. uitvoerendes | 12 | Aantal uitvoerender per LLAP-daemon | 
+| hive.llap.daemon.num.executors | 12 | Aantal uitvoerender per LLAP-daemon | 
 | Hive. llap. io. thread pool. grootte | 12 | Grootte van thread pool voor uitvoerendeers |
 | Hive. llap. daemon. garens. container. MB | 77824 (MB) | Totaal geheugen in MB dat wordt gebruikt door afzonderlijke LLAP-daemons (geheugen per daemon)
 | Hive. llap. io. Memory. size | 235520 (MB) | Cache grootte in MB per LLAP-daemon van SSD-cache is ingeschakeld |
@@ -119,9 +118,9 @@ Voor D14 v2 worker-knoop punt HDI 4,0-de aanbevolen waarde is (80 GB-4 GB)) = **
 (HDI 3,6, aanbevolen waarde is **74 GB** , omdat u extra moet reserveren ~ 2 GB voor schuifregelaar am.)  
 
 #### <a name="8-determining-number-of-executors-per-llap-daemon"></a>**8. bepalen van het aantal uitvoerender per LLAP-daemon**  
-Configuratie: ***Hive. llap. daemon. num. executers***, ***Hive. llap. io. thread pool. size***
+Configuratie: ***hive.llap.daemon.num.executors***, ***Hive. llap. io. thread pool. size***
 
-***Hive. llap. daemon. num. uitvoerendes***:   
+***hive.llap.daemon.num.executors***:   
 Deze configuratie bepaalt het aantal uitvoerender dat taken parallel kan uitvoeren per LLAP-daemon. Deze waarde is afhankelijk van het aantal vcores, de hoeveelheid geheugen die is opgegeven per uitvoerder en de hoeveelheid geheugen die beschikbaar is voor LLAP daemon. Normaal gesp roken hebben we deze waarde zo dicht mogelijk bij het aantal vcores.
 Er zijn 16 vcores op D14 v2-Vm's. Niet alle vcores kunnen echter worden uitgevoerd omdat andere services, zoals NodeManager, DataNode, metrische gegevens, ook een deel van de beschik bare vcores nodig hebben. 
 

@@ -6,12 +6,11 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: 250bb5c7bec9cb68ba3236d0cb43938566b60fa8
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.openlocfilehash: 57db2253cbffa8e16313c7613de6d2ddb2f2b0a2
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392502"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027236"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Met het ODBC-stuur programma verbinding maken met Azure Cosmos DB met behulp van BI Analytics-hulpprogram ma's
 
@@ -196,7 +195,7 @@ U kunt weer gaven definiëren en maken als onderdeel van het bemonsterings proce
 
 Als u een weer gave voor uw gegevens wilt maken, klikt u in het venster **schema-editor** in de kolom **weergave definities** op **toevoegen** op de rij van de container om een voor beeld te geven. 
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-create-view.png" alt-text="Create a view of data":::
+:::image type="content" source="./media/odbc-driver/odbc-driver-create-view.png" alt-text="Een weer gave van gegevens maken":::
 
 
 Ga vervolgens als volgt te werk in het venster **weergave definities** :
@@ -226,7 +225,7 @@ U kunt uw nieuwe DSN gebruiken om verbinding te maken met Azure Cosmos DB met al
 
 1. Selecteer in het venster **van ODBC** de naam van de gegevens bron die u hebt gemaakt en klik vervolgens op **OK**. U kunt de **Geavanceerde opties** leeg laten.
 
-    ![De naam van de gegevens bron (DSN) kiezen in Power BI gegevens ophalen](./media/odbc-driver/odbc-driver-power-bi-get-data-3.png)
+   :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-3.png" alt-text="De naam van de gegevens bron (DSN) kiezen in Power BI gegevens ophalen":::
 
 1. Selecteer in het venster **toegang tot een gegevens bron met een ODBC-stuur programma** de optie **standaard of aangepast** en klik vervolgens op **verbinding maken**. U hoeft de **referentie Connection String eigenschappen**niet op te neemen.
 
@@ -240,11 +239,14 @@ U kunt uw nieuwe DSN gebruiken om verbinding te maken met Azure Cosmos DB met al
 
 1. U kunt nu visuals maken met behulp van Power BI door te klikken op het ![ tabblad rapport rapporten in Power bi Desktop ](./media/odbc-driver/odbc-driver-report-tab.png) , op **nieuwe Visual**te klikken en vervolgens uw tegel aan te passen. Zie [visualisatie typen in Power bi](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/)voor meer informatie over het maken van visualisaties in Power bi Desktop.
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 
 Als u het volgende fout bericht ontvangt, moet u ervoor zorgen dat de **host** en de **toegangs sleutel** waarden die u hebt gekopieerd in [stap 2](#connect) de juiste Azure Portal zijn en probeer het opnieuw. Gebruik de Kopieer knoppen aan de rechter kant van de **host** en **toegangs sleutel** waarden in de Azure Portal om de fout vrije waarden te kopiëren.
 
-    [HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}`
+```output
+[HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}
+```
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -6,10 +6,9 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 02762c4b3af735eb0b4c19aaf450b2b3a416a2be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733672"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>API-naslag informatie over Azure Monitor Application Insights agent
@@ -66,8 +65,8 @@ Configuring registry for instrumentation engine...
 
 Hiermee wordt de bewaking van de IIS-apps op een doel computer gecodeerd.
 
-Met deze cmdlet wordt de IIS-functie applicationHost. config gewijzigd en worden enkele register sleutels ingesteld.
-Er wordt ook een bestand applicationinsights. iKey. config gemaakt, waarmee de instrumentatie sleutel wordt gedefinieerd die door elke app wordt gebruikt.
+Met deze cmdlet wordt de IIS-applicationHost.config gewijzigd en worden enkele register sleutels ingesteld.
+Er wordt ook een applicationinsights.ikey.config-bestand gemaakt waarin de instrumentatie sleutel wordt gedefinieerd die door elke app wordt gebruikt.
 IIS laadt de RedfieldModule bij het opstarten, waardoor de SDK van Application Insights in toepassingen wordt ingevoegd wanneer de toepassingen worden gestart.
 Start IIS opnieuw op om de wijzigingen van kracht te laten worden.
 
@@ -83,8 +82,8 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 ```
 
 #### <a name="example-with-an-instrumentation-key-map"></a>Voor beeld met een instrumentatie sleutel toewijzing
-In dit voorbeeld:
-- `MachineFilter`komt overeen met de huidige computer met `'.*'` behulp van het Joker teken.
+In dit voorbeeld geldt het volgende:
+- `MachineFilter`komt overeen met de huidige computer met behulp van het `'.*'` Joker teken.
 - `AppFilter='WebAppExclude'`biedt een `null` instrumentatie sleutel. De opgegeven app wordt niet geinstrumenteerd.
 - `AppFilter='WebAppOne'`Hiermee wijst u de opgegeven app een unieke instrumentatie sleutel toe.
 - `AppFilter='WebAppTwo'`Hiermee wijst u de opgegeven app een unieke instrumentatie sleutel toe.
@@ -108,7 +107,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 #### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
 **Vereist.** Gebruik deze para meter om meerdere instrumentatie sleutels en een toewijzing van de instrumentatie sleutels voor elke app op te geven.
-U kunt één installatie script maken voor verschillende computers door in te `MachineFilter`stellen.
+U kunt één installatie script maken voor verschillende computers door in te stellen `MachineFilter` .
 
 > [!IMPORTANT]
 > Apps komen overeen met regels in de volg orde waarin de regels worden opgegeven. Daarom moet u eerst de meest specifieke regels opgeven en de meest algemene regels als laatste.
@@ -213,7 +212,7 @@ Configuring registry for instrumentation engine...
 ## <a name="disable-applicationinsightsmonitoring"></a>Disable-ApplicationInsightsMonitoring
 
 Hiermee schakelt u de bewaking op de doel computer uit.
-Met deze cmdlet worden bewerkingen verwijderd uit IIS applicationHost. config en worden de register sleutels verwijderd.
+Met deze cmdlet worden wijzigingen in de IIS-applicationHost.config verwijderd en worden register sleutels verwijderd.
 
 ### <a name="examples"></a>Voorbeelden
 
@@ -290,7 +289,7 @@ Met deze cmdlet worden versie-informatie en informatie over de vereiste sleutel 
 
 #### <a name="example-application-status"></a>Voor beeld: toepassings status
 
-Voer de opdracht `Get-ApplicationInsightsMonitoringStatus` uit om de bewakings status van websites weer te geven.
+Voer de opdracht uit `Get-ApplicationInsightsMonitoringStatus` om de bewakings status van websites weer te geven.
 
 ```powershell
 
@@ -335,7 +334,7 @@ In dit voor beeld;
 
 #### <a name="example-powershell-module-information"></a>Voor beeld: Power shell-module gegevens
 
-Voer de opdracht `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` uit om informatie weer te geven over de huidige module:
+Voer de opdracht uit `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` om informatie weer te geven over de huidige module:
 
 ```powershell
 
@@ -392,7 +391,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime
 
 U kunt het proces op de geinstrumenteerde computer controleren om te controleren of alle Dll's zijn geladen. Als de bewaking werkt, moeten ten minste 12 Dll's worden geladen.
 
-Voer de volgende `Get-ApplicationInsightsMonitoringStatus -InspectProcess`opdracht uit:
+Voer de volgende opdracht uit `Get-ApplicationInsightsMonitoringStatus -InspectProcess` :
 
 
 ```
@@ -446,9 +445,9 @@ Ook worden er externe hulpprogram ma's gedownload om te bepalen of de benodigde 
 
 
 Als dit proces om welke reden dan ook mislukt, kunt u deze opdrachten hand matig uitvoeren:
-- IISReset. exe/status
-- [handle64. exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p W3wp | findstr/I "InstrumentationEngine AI. ApplicationInsights
-- [listdlls64. exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) W3wp | findstr/I "InstrumentationEngine AI ApplicationInsights"
+- iisreset.exe/status
+- [handle64.exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p W3wp | findstr/I "InstrumentationEngine AI. ApplicationInsights
+- [listdlls64.exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) W3wp | findstr/I "InstrumentationEngine AI ApplicationInsights"
 
 
 #### <a name="-force"></a>-Force
@@ -475,8 +474,8 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 ```
 
 #### <a name="example-with-an-instrumentation-key-map"></a>Voor beeld met een instrumentatie sleutel toewijzing
-In dit voorbeeld:
-- `MachineFilter`komt overeen met de huidige computer met `'.*'` behulp van het Joker teken.
+In dit voorbeeld geldt het volgende:
+- `MachineFilter`komt overeen met de huidige computer met behulp van het `'.*'` Joker teken.
 - `AppFilter='WebAppExclude'`biedt een `null` instrumentatie sleutel. De opgegeven app wordt niet geinstrumenteerd.
 - `AppFilter='WebAppOne'`Hiermee wijst u de opgegeven app een unieke instrumentatie sleutel toe.
 - `AppFilter='WebAppTwo'`Hiermee wijst u de opgegeven app een unieke instrumentatie sleutel toe.
@@ -498,7 +497,7 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
 
 #### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
 **Vereist.** Gebruik deze para meter om meerdere instrumentatie sleutels en een toewijzing van de instrumentatie sleutels voor elke app op te geven.
-U kunt één installatie script maken voor verschillende computers door in te `MachineFilter`stellen.
+U kunt één installatie script maken voor verschillende computers door in te stellen `MachineFilter` .
 
 > [!IMPORTANT]
 > Apps komen overeen met regels in de volg orde waarin de regels worden opgegeven. Daarom moet u eerst de meest specifieke regels opgeven en de meest algemene regels als laatste.
@@ -556,7 +555,7 @@ Verzamelt [etw-gebeurtenissen](https://docs.microsoft.com/windows/desktop/etw/ev
 
 Verzamelde gebeurtenissen worden in realtime afgedrukt op de console en opgeslagen in een ETL-bestand. Het ETL-bestand van de uitvoer kan worden geopend door [PerfView](https://github.com/microsoft/perfview) voor verder onderzoek.
 
-Deze cmdlet wordt uitgevoerd totdat de time-outperiode (standaard 5 minuten) of hand matig (`Ctrl + C`) is bereikt.
+Deze cmdlet wordt uitgevoerd totdat de time-outperiode (standaard 5 minuten) of hand matig () is bereikt `Ctrl + C` .
 
 ### <a name="examples"></a>Voorbeelden
 
@@ -567,17 +566,17 @@ Normaal gesp roken wordt u gevraagd om gebeurtenissen te verzamelen om te onderz
 Tijdens de uitvoering van het programma code koppelen worden ETW-gebeurtenissen meegeteld wanneer IIS wordt gestart en wanneer de toepassing wordt gestart.
 
 Deze gebeurtenissen verzamelen:
-1. Voer `iisreset /stop` in een cmd-console met beheerders bevoegdheden uit om IIS en alle web-apps uit te scha kelen.
+1. Voer in een cmd-console met beheerders bevoegdheden uit `iisreset /stop` om IIS en alle web-apps uit te scha kelen.
 2. Deze cmdlet uitvoeren
-3. Voer in een cmd-console met beheerders bevoegdheden `iisreset /start` uitvoeren uit om IIS te starten.
+3. Voer in een cmd-console met beheerders bevoegdheden uitvoeren uit `iisreset /start` om IIS te starten.
 4. Probeer naar uw app te bladeren.
-5. Nadat de app is geladen, kunt u deze hand matig stoppen (`Ctrl + C`) of wachten op de time-out.
+5. Nadat de app is geladen, kunt u deze hand matig stoppen ( `Ctrl + C` ) of wachten op de time-out.
 
 #### <a name="what-events-to-collect"></a>Welke gebeurtenissen moeten worden verzameld
 
 Er zijn drie opties voor het verzamelen van gebeurtenissen:
-1. Gebruik de Schakel `-CollectSdkEvents` optie voor het verzamelen van gebeurtenissen die afkomstig zijn van de Application Insights SDK.
-2. Gebruik de Schakel `-CollectRedfieldEvents` optie voor het verzamelen van gebeurtenissen die worden gegenereerd door status monitor en de Redfield-runtime. Deze logboeken zijn handig bij het vaststellen van IIS en het opstarten van toepassingen.
+1. Gebruik de schakel optie `-CollectSdkEvents` voor het verzamelen van gebeurtenissen die afkomstig zijn van de Application INSIGHTS SDK.
+2. Gebruik de schakel optie `-CollectRedfieldEvents` voor het verzamelen van gebeurtenissen die worden gegenereerd door status monitor en de Redfield-runtime. Deze logboeken zijn handig bij het vaststellen van IIS en het opstarten van toepassingen.
 3. Gebruik beide Schakel opties om beide gebeurtenis typen te verzamelen.
 4. Standaard als er geen schakelaar is opgegeven, worden beide gebeurtenis typen verzameld.
 

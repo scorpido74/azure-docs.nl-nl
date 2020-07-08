@@ -11,10 +11,9 @@ ms.date: 08/26/2019
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 620e0213733d278a28ec1bcad4b031f5764ccda9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733135"
 ---
 # <a name="get-started-with-device-twins-net"></a>Aan de slag met Device apparaatdubbels (.NET)
@@ -39,7 +38,7 @@ In deze zelf studie maakt u deze .NET-console-apps:
 
 * Een actief Azure-account. Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.
 
-* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+* Zorg ervoor dat de poort 8883 is geopend in de firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort is in sommige netwerkomgevingen van bedrijven en onderwijsinstellingen mogelijk geblokkeerd. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -59,7 +58,7 @@ In deze zelf studie maakt u deze .NET-console-apps:
 
 In deze sectie maakt u een .NET-console-app met behulp van C#, waarmee de meta gegevens van een locatie worden toegevoegd aan het apparaat dat is gekoppeld aan **myDeviceId**. Vervolgens wordt een query uitgevoerd op de apparaat-apparaatdubbels die zijn opgeslagen in de IoT-hub en de apparaten die zich in de Verenigde Staten bevinden, en vervolgens die die een mobiele verbinding hebben gerapporteerd.
 
-1. Selecteer in Visual Studio **een nieuw project maken**. Selecteer in **Nieuw project maken**de optie **console-app (.NET Framework)** en selecteer vervolgens **volgende**.
+1. Selecteer **Een nieuw project maken** in Visual Studio. Selecteer in **Nieuw project maken**de optie **console-app (.NET Framework)** en selecteer vervolgens **volgende**.
 
 1. Geef het project de naam **AddTagsAndQuery**in **uw nieuwe project configureren**.
 
@@ -79,7 +78,7 @@ In deze sectie maakt u een .NET-console-app met behulp van C#, waarmee de meta g
     using Microsoft.Azure.Devices;
     ```
 
-1. Voeg de volgende velden toe aan de klasse **Program**: Vervang `{iot hub connection string}` door de IoT Hub-Connection String die u hebt gekopieerd in [de IoT hub-Connection String ophalen](#get-the-iot-hub-connection-string).
+1. Voeg de volgende velden toe aan de klasse **Program**: Vervang door `{iot hub connection string}` de IOT hub-Connection String die u hebt gekopieerd in [de IOT Hub-Connection String ophalen](#get-the-iot-hub-connection-string).
 
     ```csharp  
     static RegistryManager registryManager;
@@ -141,7 +140,7 @@ In de volgende sectie maakt u een apparaat-app die de connectiviteits gegevens r
 
 In deze sectie maakt u een .NET-console-app die als **myDeviceId**verbinding maakt met uw hub, en vervolgens de gerapporteerde eigenschappen bijwerkt om de informatie te bevatten die is verbonden met een mobiel netwerk.
 
-1. Selecteer in Visual Studio **bestand** > **Nieuw** > **project**. In **Nieuw project maken**kiest u **console-app (.NET Framework)** en selecteert u vervolgens **volgende**.
+1. Selecteer in Visual Studio **Bestand** > **Nieuw** > **Project**. In **Nieuw project maken**kiest u **console-app (.NET Framework)** en selecteert u vervolgens **volgende**.
 
 1. Geef het project de naam **ReportConnectivity**in **uw nieuwe project configureren**. Kies voor **oplossing**de optie **toevoegen aan oplossing**en selecteer vervolgens **maken**.
 
@@ -159,7 +158,7 @@ In deze sectie maakt u een .NET-console-app die als **myDeviceId**verbinding maa
     using Newtonsoft.Json;
     ```
 
-1. Voeg de volgende velden toe aan de klasse **Program**: Vervang `{device connection string}` door het apparaat Connection String dat u hebt genoteerd in [een nieuw apparaat registreren in IOT hub](#register-a-new-device-in-the-iot-hub).
+1. Voeg de volgende velden toe aan de klasse **Program**: Vervang door `{device connection string}` het apparaat Connection String dat u hebt genoteerd in [een nieuw apparaat registreren in IOT hub](#register-a-new-device-in-the-iot-hub).
 
     ```csharp  
     static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
@@ -234,7 +233,7 @@ In deze sectie maakt u een .NET-console-app die als **myDeviceId**verbinding maa
 
 1. Klik in Solution Explorer met de rechter muisknop op uw oplossing en selecteer vervolgens **opstart projecten instellen**.
 
-1. Selecteer in **algemene eigenschappen** > **opstart project** **meerdere opstart projecten**. Selecteer voor **ReportConnectivity**de optie **Start** als **actie**. Selecteer **OK** om uw wijzigingen op te slaan.  
+1. Selecteer in **algemene eigenschappen**  >  **opstart project** **meerdere opstart projecten**. Selecteer voor **ReportConnectivity**de optie **Start** als **actie**. Selecteer **OK** om uw wijzigingen op te slaan.  
 
 1. Voer deze app uit door met de rechter muisknop op het **ReportConnectivity** -project te klikken en vervolgens **debug**te selecteren en vervolgens **nieuw exemplaar te starten**. U ziet dat de app de dubbele gegevens ophaalt en vervolgens de connectiviteit verzendt als een ***gerapporteerde eigenschap***.
 
@@ -242,7 +241,7 @@ In deze sectie maakt u een .NET-console-app die als **myDeviceId**verbinding maa
 
    Nadat het apparaat de verbindings gegevens heeft gerapporteerd, zou het in beide query's moeten worden weer gegeven.
 
-1. Klik met de rechter muisknop op het **AddTagsAndQuery** -project en selecteer **debug** > **starten nieuwe instantie** om de query's opnieuw uit te voeren. Deze keer worden **myDeviceId** weer gegeven in de query resultaten.
+1. Klik met de rechter muisknop op het **AddTagsAndQuery** -project en selecteer **debug**  >  **starten nieuwe instantie** om de query's opnieuw uit te voeren. Deze keer worden **myDeviceId** weer gegeven in de query resultaten.
 
     ![De connectiviteit van het apparaat is gerapporteerd](./media/iot-hub-csharp-csharp-twin-getstarted/tagappsuccess.png)
 

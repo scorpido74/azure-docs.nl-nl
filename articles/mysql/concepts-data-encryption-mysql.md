@@ -6,12 +6,11 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 2266046923000f3353e2fa01c183846a1b5814bc
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
-ms.translationtype: MT
+ms.openlocfilehash: e2f732a8cf51c51de1b6125717eafb672d7fff74
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483938"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027406"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Gegevens versleuteling Azure Database for MySQL met een door de klant beheerde sleutel
 
@@ -20,9 +19,6 @@ Gegevensversleuteling met door de klant beheerde sleutels voor Azure Database fo
 Gegevens versleuteling met door de klant beheerde sleutels voor Azure Database for MySQL is ingesteld op server niveau. Voor een bepaalde server wordt een door de klant beheerde sleutel, de sleutel versleutelings sleutel (KEK), gebruikt om de gegevens versleutelings sleutel (DEK) te versleutelen die door de service wordt gebruikt. De KEK is een asymmetrische sleutel die is opgeslagen in een [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) exemplaar van een klant en door de klant wordt beheerd. De sleutel versleutelings sleutel (KEK) en de gegevens versleutelings sleutel (DEK) wordt verderop in dit artikel uitvoeriger beschreven.
 
 Key Vault is een op de cloud gebaseerd extern systeem voor sleutel beheer. Het is Maxi maal beschikbaar en biedt schaal bare, veilige opslag voor RSA cryptografische sleutels, optioneel ondersteund door FIPS 140-2 level 2 gevalideerde hardware security modules (Hsm's). Het biedt geen directe toegang tot een opgeslagen sleutel, maar biedt ook services voor versleuteling en ontsleuteling naar gemachtigde entiteiten. Key Vault kunt de sleutel genereren, importeren of [laten overzetten van een on-premises HSM-apparaat](../key-vault/key-Vault-hsm-protected-keys.md).
-
-> [!NOTE]
-> Deze functie wordt momenteel wereld wijd geïmplementeerd en is binnenkort beschikbaar in alle regio's. Als u deze niet in uw regio ziet, neemt u contact op metAskAzureDBforMySQL@service.microsoft.com
 
 > [!NOTE]
 > Deze functie is beschikbaar in alle Azure-regio's waar Azure Database for MySQL de prijs categorieën ' Algemeen ' en ' geoptimaliseerd voor geheugen ' ondersteunt.
@@ -135,22 +131,13 @@ Als u problemen wilt voor komen tijdens het instellen van door de klant beheerde
 Voor Azure Database for MySQL is de ondersteuning voor het versleutelen van gegevens op rest met behulp van door de klant beheerde sleutel (CMK) beperkt-
 
 * Ondersteuning voor deze functionaliteit is beperkt tot de prijs categorie **Algemeen** en **geoptimaliseerd voor geheugen** .
-* Deze functie wordt alleen ondersteund in regio's en servers die opslag ondersteunen tot 16TB. Raadpleeg de sectie opslag [hier](concepts-pricing-tiers.md#storage) in de documentatie voor de lijst met Azure-regio's die opslag tot 16TB ondersteunen.
+* Deze functie wordt alleen ondersteund in regio's en servers die opslag ondersteunen tot 16 TB. Raadpleeg de sectie opslag [hier](concepts-pricing-tiers.md#storage) in de documentatie voor de lijst met Azure-regio's die opslag tot 16TB ondersteunen.
 
     > [!NOTE]
     > - Alle nieuwe MySQL-servers die zijn gemaakt in de hierboven vermelde regio's, ondersteuning voor versleuteling met klant Manager-sleutels is **beschikbaar**. De PITR-server (Point-in-time) is niet in aanmerking komende, of de Lees replica is niet in theorie ' nieuw '.
     > - Als u wilt valideren of uw ingerichte server Maxi maal 16TB ondersteunt, gaat u naar de Blade prijs categorie in de portal en ziet u de maximale opslag grootte die wordt ondersteund door uw ingerichte server. Als u de schuif regelaar omhoog kunt verplaatsen naar 4 TB, ondersteunt uw server mogelijk geen versleuteling met door de klant beheerde sleutels. De gegevens worden echter te allen tijde versleuteld met behulp van service beheerde sleutels. Neem contact op met AskAzureDBforMySQL@service.microsoft.com Als u vragen hebt.
 
 * Versleuteling wordt alleen ondersteund met de cryptografische sleutel RSA 2048.
-
-## <a name="infrastructure-double-encryption"></a>Infra structuur dubbele versleuteling
-Azure Database for MySQL maakt gebruik van opslag [versleuteling van gegevens op rest](concepts-security.md#at-rest) voor gegevens met behulp van de door micro soft beheerde sleutels. Gegevens, met inbegrip van back-ups, worden versleuteld op schijf en deze versleuteling is altijd ingeschakeld en kan niet worden uitgeschakeld. De versleuteling maakt gebruik van FIPS 140-2-gevalideerde cryptografische modules en een AES 256-bits code ring voor de versleuteling van Azure Storage. 
-
-Infra structuur met dubbele versleuteling wordt een tweede laag versleuteling toegevoegd met behulp van een door FIPS 140-2 gevalideerde cryptografische module en een ander versleutelings algoritme dat extra beveiligingslaag biedt voor uw gegevens in rust. De sleutel die in de infra structuur met dubbele versleuteling wordt gebruikt, wordt ook beheerd door de service. Dit is standaard niet *ingeschakeld* omdat deze invloed heeft op de prestaties vanwege de extra laag versleuteling. 
-
-   > [!NOTE]
-   > - Deze functionaliteit is nog steeds niet algemeen beschikbaar. 
-   > - Ondersteuning voor deze functionaliteit is beperkt tot de prijs categorie **Algemeen** en **geoptimaliseerd voor geheugen** .
 
 ## <a name="next-steps"></a>Volgende stappen
 

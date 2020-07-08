@@ -4,17 +4,16 @@ description: In dit artikel leest u hoe de Azure Backup-service een back-up maak
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.openlocfilehash: 9838f4993e71f2991500af0e152abee36f996050
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84322906"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Een overzicht van Azure VM backup
 
 In dit artikel wordt beschreven hoe de [Azure backup-service](backup-introduction-to-azure-backup.md) een back-up maakt van Azure virtual machines (vm's).
 
-Azure Backup biedt onafhankelijke en geïsoleerde back-ups om te beschermen tegen onbedoelde vernietiging van de gegevens op uw Vm's. Back-ups worden opgeslagen in een Recovery Services kluis met ingebouwd beheer van herstel punten. Configuratie en schalen zijn eenvoudige, back-ups worden geoptimaliseerd en u kunt zo nodig eenvoudig herstellen.
+Azure Backup biedt onafhankelijke en geïsoleerde back-ups om te beschermen tegen onbedoelde vernietiging van de gegevens op uw Vm's. Back-ups worden opgeslagen in een Recovery Services-kluis met ingebouwd beheer van herstelpunten. Configuratie en schalen zijn eenvoudige, back-ups worden geoptimaliseerd en u kunt zo nodig eenvoudig herstellen.
 
 Als onderdeel van het back-upproces [wordt er een moment opname gemaakt](#snapshot-creation)en worden de gegevens overgebracht naar de Recovery Services kluis zonder dat dit van invloed is op de werk belasting van de productie. De moment opname biedt verschillende consistentie niveaus, zoals [hier](#snapshot-consistency)wordt beschreven.
 
@@ -64,7 +63,7 @@ Er wordt ook een back-up gemaakt van BEKs. Als de BEKs verloren zijn gegaan, kun
 
 Azure Backup maakt moment opnamen volgens het back-upschema.
 
-- **Windows-vm's:** Voor Windows-Vm's coördineert de back-upservice met VSS voor het maken van een app-consistente moment opname van de VM-schijven.  Azure Backup maakt standaard gebruik van een volledige VSS-back-up (de logboeken van de toepassing worden afgekapt, zoals SQL Server op het moment van de back-up om consistente back-ups op toepassings niveau op te halen).  Als u een SQL Server-Data Base gebruikt in een back-up van Azure VM, kunt u de instelling wijzigen voor het maken van een VSS Copy-back-up (om logboeken te behouden). Raadpleeg [dit artikel](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues) voor meer informatie.
+- **Windows-vm's:** Voor Windows-Vm's coördineert de back-upservice met VSS voor het maken van een app-consistente moment opname van de VM-schijven.  Azure Backup maakt standaard gebruik van een volledige VSS-back-up (de logboeken van de toepassing worden afgekapt, zoals SQL Server op het moment van de back-up om consistente back-ups op toepassings niveau op te halen).  Als u een SQL Server-Data Base gebruikt in een back-up van Azure VM, kunt u de instelling wijzigen voor het maken van een VSS Copy-back-up (om logboeken te behouden). Zie [dit artikel](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues)voor meer informatie.
 
 - **Virtuele Linux-machines:** Als u app-consistente moment opnamen van virtuele Linux-machines wilt maken, gebruikt u het Linux pre-script en post-script-Framework om uw eigen aangepaste scripts te schrijven om consistentie te garanderen.
 
@@ -87,10 +86,10 @@ In de volgende tabel ziet u de verschillende soorten consistentie van moment opn
 **Overweging** | **Details**
 --- | ---
 **Schijf** | Back-ups van VM-schijven zijn parallel. Als een virtuele machine bijvoorbeeld vier schijven heeft, probeert de back-upservice tegelijkertijd een back-up te maken van alle vier de schijven. De back-up is incrementeel (alleen gewijzigde gegevens).
-**Planning** |  Als u het back-upverkeer wilt verminderen, maakt u op verschillende tijdstippen van de dag een back-up van verschillende Vm's en zorgt u ervoor dat de tijden niet overlappen. Als er op hetzelfde moment back-ups worden gemaakt van Vm's, loopt verkeer storingen.
-**Back-ups voorbereiden** | Houd de tijd die nodig is om de back-up voor te bereiden. De voorbereidings tijd omvat het installeren of bijwerken van de back-upextensie en het activeren van een moment opname volgens het back-upschema.
-**Gegevensoverdracht** | Bedenk de tijd die nodig is om Azure Backup de incrementele wijzigingen van de vorige back-up te identificeren.<br/><br/> In een incrementele back-up worden de wijzigingen door Azure Backup bepaald door de controlesom van het blok te berekenen. Als een blok wordt gewijzigd, wordt het gemarkeerd voor overdracht naar de kluis. De service analyseert de geïdentificeerde blokken om te proberen de hoeveelheid gegevens die moet worden overgedragen, verder te minimaliseren. Nadat alle gewijzigde blokken zijn geëvalueerd, worden de wijzigingen in de kluis Azure Backup overgedragen.<br/><br/> Er is mogelijk een vertraging tussen het maken van de moment opname en het kopiëren naar de kluis. Het kan Maxi maal acht uur duren voordat de moment opnamen worden overgebracht naar de kluis. De back-uptijd voor een virtuele machine is minder dan 24 uur voor de dagelijkse back-up.
-**Eerste back-up** | Hoewel de totale back-uptijd voor incrementele back-ups minder dan 24 uur is, is dit mogelijk niet het geval voor de eerste back-up. De tijd die nodig is om de eerste back-up te maken, is afhankelijk van de grootte van de gegevens en wanneer de back-up wordt verwerkt.
+**Planning** |  Als u het back-upverkeer wilt verminderen, maakt u op verschillende tijdstippen van de dag een back-up van verschillende Vm's en zorgt u ervoor dat de tijden niet overlappen. Als op hetzelfde moment back-ups worden gemaakt van VM's, treden er netwerkproblemen op.
+**Back-ups voorbereiden** | Houd de tijd die nodig is om de back-up voor te bereiden. De voorbereidingstijd omvat het installeren of bijwerken van de back-upextensie en het activeren van een schaduwkopie volgens het back-upschema.
+**Gegevensoverdracht** | Bedenk de tijd die nodig is om Azure Backup de incrementele wijzigingen van de vorige back-up te identificeren.<br/><br/> In een incrementele back-up worden de wijzigingen door Azure Backup bepaald door de controlesom van het blok te berekenen. Als een blok wordt gewijzigd, wordt het gemarkeerd voor overdracht naar de kluis. De service analyseert de geïdentificeerde blokken om de hoeveelheid gegevens die moet worden overgedragen, verder te minimaliseren. Nadat alle gewijzigde blokken zijn geëvalueerd, worden de wijzigingen in de kluis door Azure Backup overgedragen.<br/><br/> Er kan een vertraging optreden tussen het maken van de schaduwkopie en het kopiëren ervan naar de kluis. Het kan Maxi maal acht uur duren voordat de moment opnamen worden overgebracht naar de kluis. De back-uptijd voor een virtuele machine is minder dan 24 uur voor de dagelijkse back-up.
+**Eerste back-up** | Hoewel de totale back-uptijd voor incrementele back-ups minder dan 24 uur is, is dit mogelijk niet het geval voor de eerste back-up. De tijd die nodig is om de initiële back-up te maken, is afhankelijk van de grootte van de gegevens en wanneer de back-up wordt verwerkt.
 **Wachtrij herstellen** | Met Azure Backup worden herstel taken van meerdere opslag accounts tegelijk verwerkt en worden herstel aanvragen in een wachtrij geplaatst.
 **Kopie terugzetten** | Tijdens het herstel proces worden gegevens van de kluis naar het opslag account gekopieerd.<br/><br/> De totale herstel tijd is afhankelijk van de I/O-bewerkingen per seconde (IOPS) en de door Voer van het opslag account.<br/><br/> Als u de Kopieer tijd wilt beperken, selecteert u een opslag account dat niet is geladen met andere schrijf bewerkingen en lees bewerkingen van de toepassing.
 
@@ -105,12 +104,12 @@ Deze algemene scenario's kunnen van invloed zijn op de totale back-uptijd:
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
-Wanneer u back-ups van virtuele machines configureert, kunt u het volgende doen:
+Wanneer u back-ups van VM's configureert, wordt u aangeraden deze procedures te volgen:
 
-- Wijzig de standaard plannings tijden die in een beleid zijn ingesteld. Als de standaard tijd in het beleid bijvoorbeeld 12:00 uur is, verhoogt u de timing met enkele minuten zodat de resources optimaal worden gebruikt.
+- Wijzig de standaardplanningstijden die in een beleid zijn ingesteld. Als de standaardtijd in het beleid bijvoorbeeld 12:00 uur is, verhoogt u de timing met enkele minuten zodat de resources optimaal worden benut.
 - Als u virtuele machines herstelt vanuit één kluis, raden we u ten zeerste aan om andere [v2-opslag accounts voor algemeen](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) gebruik te gebruiken om ervoor te zorgen dat het doel-opslag account niet wordt beperkt. Elke virtuele machine moet bijvoorbeeld een ander opslag account hebben. Als er bijvoorbeeld tien Vm's zijn teruggezet, gebruikt u 10 verschillende opslag accounts.
-- Voor back-ups van virtuele machines die gebruikmaken van Premium Storage, kunt u met direct terugzetten *50%* beschik bare ruimte toewijzen aan de totale toegewezen opslag ruimte. Dit is **alleen** vereist voor de eerste back-up. De 50% beschik bare ruimte is geen vereiste voor back-ups nadat de eerste back-up is voltooid.
-- De limiet voor het aantal schijven per opslag account is relatief ten opzichte van de mate waarin de schijven worden geopend door toepassingen die worden uitgevoerd op een IaaS-VM (Infrastructure as a Service). In het algemeen is het zo dat als 5 tot 10 schijven of meer aanwezig zijn op één opslag account, de belasting kan verdelen door sommige schijven te verplaatsen naar afzonderlijke opslag accounts.
+- Voor back-ups van virtuele machines die gebruikmaken van Premium Storage, kunt u met direct terugzetten *50%* beschik bare ruimte toewijzen aan de totale toegewezen opslag ruimte. Dit is **alleen** vereist voor de eerste back-up. De 50% vrije ruimte is geen vereiste voor back-ups nadat de eerste back-up is voltooid
+- De limiet voor het aantal schijven per opslagaccount is relatief ten opzichte van de mate van toegang tot de schijven door toepassingen die worden uitgevoerd op een IaaS-VM (infrastructure as a service). Als er op één opslagaccount vijf tot tien schijven of meer aanwezig zijn, geldt als vuistregel dat de belasting kan worden verdeeld door sommige schijven naar afzonderlijke opslagaccounts te verplaatsen.
 
 ## <a name="backup-costs"></a>Back-upkosten
 

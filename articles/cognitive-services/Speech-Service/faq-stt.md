@@ -10,12 +10,11 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: c572c03936a809ce2f5ccb0071352d6c84c2ee90
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
-ms.translationtype: MT
+ms.openlocfilehash: 2c84b291aad5ec2da2946e40075b23cc4496ef65
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85561575"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921028"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Veelgestelde vragen over spraak naar tekst
 
@@ -71,7 +70,7 @@ Als u een model hebt aangepast en geïmplementeerd met basis lijn V 1.0, blijft 
 
 **V: zijn mijn aanvragen geregistreerd?**
 
-**A**: u kunt kiezen wanneer u een implementatie maakt om tracering uit te scha kelen. Op dat moment worden er geen audio-of transcripties vastgelegd. Anders worden aanvragen doorgaans vastgelegd in Azure in beveiligde opslag.
+**A**: standaard aanvragen worden niet geregistreerd (audio of transcriptie). Indien nodig kunt u *logboek inhoud van deze eindpunt* optie selecteren wanneer u [een aangepast eind punt maakt](how-to-custom-speech-deploy-model.md) om tracering in te scha kelen. Vervolgens worden aanvragen geregistreerd in Azure in beveiligde opslag.
 
 **V: mijn aanvragen worden beperkt?**
 
@@ -118,6 +117,10 @@ of
   - Kies in de weer gegeven Services de spraak service waarvoor u de gelijktijdigheid wilt verhogen,
   - de `Properties` voor deze service weer geven
   - Kopieer de volledige `Resource ID` .
+  
+**V: de limiet voor gelijktijdige overschrijdingen verhogen mijn kosten?**
+
+**A**: Nee, de kosten zijn gebaseerd op het gebruik. Het verg Roten van gelijktijdigheid leidt niet tot hogere kosten. Bekijk onze [pagina met prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) voor meer informatie over de kosten. 
   
 >[!NOTE]
 >Voor [containers](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-container-howto) zijn geen verhogingen van gelijktijdigheids limieten vereist, omdat containers alleen worden beperkt door de cpu's van de hardware waarop ze worden gehost.

@@ -4,12 +4,11 @@ description: In dit artikel vindt u informatie over het herstellen van bestanden
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 68fa3bb2b17da01004220f5876911fa3289a2e7c
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
-ms.translationtype: MT
+ms.openlocfilehash: ded26718f176629f6c53ae90abf3c7e69b4df893
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85124984"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027162"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -247,9 +246,9 @@ De toegang tot `download.microsoft.com` is vereist voor het downloaden van onder
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Bestands herstel van back-ups van virtuele machines met grote schijven
 
-In deze sectie wordt uitgelegd hoe u bestands herstel kunt uitvoeren vanaf back-ups van virtuele Azure-machines met meer dan 16 schijven en elke schijf grootte is groter dan 32 TB.
+In deze sectie wordt uitgelegd hoe u bestands herstel kunt uitvoeren vanaf back-ups van virtuele Azure-machines met meer dan 16 schijven, of dat elke schijf grootte groter is dan 4 TB.
 
-Omdat bestands herstel proces alle schijven van de back-up koppelt, worden de volgende actie punten aanbevolen wanneer een groot aantal schijven (>16) of grote schijven (> 32 TB elk) wordt gebruikt:
+Omdat bestands herstel proces alle schijven van de back-up koppelt, worden de volgende actie punten aanbevolen wanneer een groot aantal schijven (>16) of grote schijven (> 4 TB elke) worden gebruikt:
 
 - Bewaar een afzonderlijke herstel server (virtuele machines van Azure VM D2v3) voor bestands herstel. U kunt dat alleen gebruiken voor bestands herstel en het vervolgens uitschakelen wanneer dat niet vereist is. Het terugzetten op de oorspronkelijke machine wordt niet aanbevolen, omdat het aanzienlijke gevolgen heeft voor de VM zelf.
 - Voer vervolgens het script opnieuw uit om te controleren of de bestands herstel bewerking is gelukt.

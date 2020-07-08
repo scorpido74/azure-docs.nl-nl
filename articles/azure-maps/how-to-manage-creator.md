@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 579294388dbcf9f785ef41e06505c14b6767565f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83677946"
 ---
 # <a name="manage-azure-maps-creator"></a>Azure Maps Maker beheren
@@ -23,7 +22,7 @@ In dit artikel worden de stappen beschreven voor het maken en verwijderen van ee
 
 ## <a name="create-creator-resource"></a>Creator-resource maken
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)
+1. Meld u aan bij [Azure Portal](https://portal.azure.com)
 
 2. Selecteer uw Azure Maps-account. Als u uw Azure Maps-account niet kunt zien onder de **recente resources**, gaat u naar het menu Azure Portal. Selecteer **Alle resources**. Zoek en selecteer uw Azure Maps-account.
 
@@ -88,7 +87,7 @@ Inleiding tot Maker voor een binnenste toewijzing:
 > [Gegevens conversie](creator-indoor-maps.md#convert-a-drawing-package)
 
 > [!div class="nextstepaction"]
-> [Sets](creator-indoor-maps.md#datasets)
+> [Gegevensset](creator-indoor-maps.md#datasets)
 
 > [!div class="nextstepaction"]
 > [Tegelset](creator-indoor-maps.md#tilesets)

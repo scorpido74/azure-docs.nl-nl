@@ -11,10 +11,9 @@ ms.date: 07/04/2017
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 14472e84d425bf03a3c6a0c2dc558d4b8225caec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733402"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>Bestanden van uw apparaat uploaden naar de Cloud met IoT Hub (.NET)
@@ -54,7 +53,7 @@ Aan het einde van deze zelf studie voert u twee .NET-console-apps uit:
 
 * Een actief Azure-account. Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.
 
-* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+* Zorg ervoor dat de poort 8883 is geopend in de firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort is in sommige netwerkomgevingen van bedrijven en onderwijsinstellingen mogelijk geblokkeerd. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) voor meer informatie en manieren om dit probleem te omzeilen.
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
@@ -62,7 +61,7 @@ Aan het einde van deze zelf studie voert u twee .NET-console-apps uit:
 
 In deze sectie wijzigt u de apparaat-app die u hebt gemaakt in [Cloud-naar-apparaat-berichten verzenden met IOT hub](iot-hub-csharp-csharp-c2d.md) om Cloud-naar-apparaat-berichten van de IOT-hub te ontvangen.
 
-1. Klik in Visual Studio Solution Explorer met de rechter muisknop op het project **SimulatedDevice** en selecteer**bestaand item** **toevoegen** > . Zoek een afbeeldings bestand en voeg dit toe aan uw project. In deze zelf studie wordt ervan uitgegaan `image.jpg`dat de installatie kopie een naam heeft.
+1. Klik in Visual Studio Solution Explorer met de rechter muisknop op het project **SimulatedDevice** en selecteer **Add**  >  **bestaand item**toevoegen. Zoek een afbeeldings bestand en voeg dit toe aan uw project. In deze zelf studie wordt ervan uitgegaan dat de installatie kopie een naam heeft `image.jpg` .
 
 1. Klik met de rechter muisknop op de afbeelding en selecteer vervolgens **Eigenschappen**. Zorg ervoor dat de **map kopiëren naar uitvoermap** is ingesteld op **kopiëren altijd**.
 
@@ -93,9 +92,9 @@ In deze sectie wijzigt u de apparaat-app die u hebt gemaakt in [Cloud-naar-appar
     }
     ```
 
-    De `UploadToBlobAsync` -methode neemt de bestands naam en stroom bron van het bestand dat moet worden geüpload en verwerkt het uploaden naar de opslag. De console-app geeft de tijd weer die nodig is om het bestand te uploaden.
+    De- `UploadToBlobAsync` methode neemt de bestands naam en stroom bron van het bestand dat moet worden geüpload en verwerkt het uploaden naar de opslag. De console-app geeft de tijd weer die nodig is om het bestand te uploaden.
 
-1. Voeg de volgende regel toe aan de methode **Main** , rechts `Console.ReadLine()`voor:
+1. Voeg de volgende regel toe aan de methode **Main** , rechts voor `Console.ReadLine()` :
 
     ```csharp
     SendToBlobAsync();
@@ -114,7 +113,7 @@ In dit artikel maakt u een back-end-service om meldings berichten over het uploa
 
 In deze sectie schrijft u een .NET-console-app die berichten over het uploaden van bestanden van IoT Hub ontvangt.
 
-1. Selecteer in de huidige Visual Studio-oplossing **bestand** > **Nieuw** > **project**. Selecteer in **een nieuw project maken de**optie **console-app (.NET Framework)** en selecteer vervolgens **volgende**.
+1. Selecteer in de huidige Visual Studio-oplossing **bestand**  >  **Nieuw**  >  **project**. Selecteer in **een nieuw project maken de**optie **console-app (.NET Framework)** en selecteer vervolgens **volgende**.
 
 1. Geef het project de naam *ReadFileUploadNotification*. Onder **oplossing**selecteert **u toevoegen aan oplossing**. Selecteer **Maken** om het project te maken.
 
@@ -132,7 +131,7 @@ In deze sectie schrijft u een .NET-console-app die berichten over het uploaden v
     using Microsoft.Azure.Devices;
     ```
 
-1. Voeg de volgende velden toe aan de klasse **Program**: Vervang de `{iot hub connection string}` waarde van de tijdelijke aanduiding door de IOT hub-Connection String die u eerder hebt gekopieerd in [de iot hub-Connection String ophalen](#get-the-iot-hub-connection-string):
+1. Voeg de volgende velden toe aan de klasse **Program**: Vervang de `{iot hub connection string}` waarde van de tijdelijke aanduiding door de IOT hub-Connection String die u eerder hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string):
 
     ```csharp
     static ServiceClient serviceClient;
@@ -180,7 +179,7 @@ U kunt nu de toepassingen gaan uitvoeren.
 
 1. Klik in Solution Explorer met de rechter muisknop op uw oplossing en selecteer vervolgens **opstart projecten instellen**.
 
-1. Selecteer in **algemene eigenschappen** > **opstart project** **meerdere opstart projecten**en selecteer vervolgens de actie **starten** voor **ReadFileUploadNotification** en **SimulatedDevice**. Selecteer **OK** om uw wijzigingen op te slaan.
+1. Selecteer in **algemene eigenschappen**  >  **opstart project** **meerdere opstart projecten**en selecteer vervolgens de actie **starten** voor **ReadFileUploadNotification** en **SimulatedDevice**. Selecteer **OK** om uw wijzigingen op te slaan.
 
 1. Druk op **F5**. Beide toepassingen moeten worden gestart. U ziet dat de Upload voltooid is in één console-app en het bericht voor het uploaden van meldingen dat is ontvangen door de andere console-app. U kunt de Server Explorer [Azure Portal](https://portal.azure.com/) of Visual Studio gebruiken om te controleren of het geüploade bestand aanwezig is in uw Azure Storage-account.
 

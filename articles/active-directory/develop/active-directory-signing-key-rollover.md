@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.openlocfilehash: e0a38eb03df3d1da64172842fb6eca3cd762f9cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537233"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Rollover van de handtekening sleutel in Azure Active Directory
@@ -37,7 +36,7 @@ Hoe uw toepassing de sleutel rollover afhandelt, is afhankelijk van variabelen z
 * [Webtoepassingen/Api's die resources beveiligen en gebouwd met behulp van Azure-app Services](#appservices)
 * [Webtoepassingen/Api's die resources beveiligen met behulp van .NET OWIN OpenID Connect Connect, WS-InPort of WindowsAzureActiveDirectoryBearerAuthentication middleware](#owin)
 * [Webtoepassingen/Api's die resources beveiligen met behulp van .NET core OpenID Connect Connect of JwtBearerAuthentication middleware](#owincore)
-* [Webtoepassingen/Api's die resources beveiligen met behulp van node. js Pass Port-Azure-ad-module](#passport)
+* [Webtoepassingen/Api's die resources beveiligen met behulp van Node.js Pass Port-Azure-ad-module](#passport)
 * [Webtoepassingen/Api's die resources beveiligen en zijn gemaakt met Visual Studio 2015 of hoger](#vs2015)
 * [Webtoepassingen die bronnen beveiligen en maken met Visual Studio 2013](#vs2013)
 * Web-Api's die bronnen beveiligen en worden gemaakt met Visual Studio 2013
@@ -110,10 +109,10 @@ app.UseJwtBearerAuthentication(
      });
 ```
 
-### <a name="web-applications--apis-protecting-resources-using-nodejs-passport-azure-ad-module"></a><a name="passport"></a>Webtoepassingen/Api's die resources beveiligen met behulp van node. js Pass Port-Azure-ad-module
-Als uw toepassing gebruikmaakt van de node. js Pass Port-ad-module, beschikt deze al over de benodigde logica om de sleutel rollover automatisch te verwerken.
+### <a name="web-applications--apis-protecting-resources-using-nodejs-passport-azure-ad-module"></a><a name="passport"></a>Webtoepassingen/Api's die resources beveiligen met behulp van Node.js Pass Port-Azure-ad-module
+Als uw toepassing gebruikmaakt van de Node.js Pass Port-ad-module, beschikt deze al over de benodigde logica voor het automatisch verwerken van de sleutel rollover.
 
-U kunt controleren of uw toepassings-Pass Port-AD naar het volgende code fragment in de app. js van uw toepassing zoekt.
+U kunt controleren of uw toepassings-Pass Port-AD naar het volgende code fragment in de app.js van uw toepassing zoeken
 
 ```
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
@@ -129,7 +128,7 @@ Als uw toepassing is gemaakt met behulp van een sjabloon voor webtoepassingen in
 Als u hand matig verificatie aan uw oplossing hebt toegevoegd, heeft uw toepassing mogelijk niet de benodigde sleutel rollover logica. U moet zelf schrijven of u kunt de stappen in [webtoepassingen/api's gebruiken met andere bibliotheken of hand matig een van de ondersteunde protocollen implementeren](#other).
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2013"></a><a name="vs2013"></a>Webtoepassingen die bronnen beveiligen en maken met Visual Studio 2013
-Als uw toepassing is gemaakt met behulp van een sjabloon voor webtoepassingen in Visual Studio 2013 en u **organisatie accounts** hebt geselecteerd in het menu **authenticatie wijzigen** , beschikt deze al over de benodigde logica om de sleutel rollover automatisch te verwerken. Deze logica slaat de unieke id van uw organisatie en de informatie over de handtekening sleutel op in twee database tabellen die zijn gekoppeld aan het project. U kunt de connection string voor de data base vinden in het bestand Web. config van het project.
+Als uw toepassing is gemaakt met behulp van een sjabloon voor webtoepassingen in Visual Studio 2013 en u **organisatie accounts** hebt geselecteerd in het menu **authenticatie wijzigen** , beschikt deze al over de benodigde logica om de sleutel rollover automatisch te verwerken. Deze logica slaat de unieke id van uw organisatie en de informatie over de handtekening sleutel op in twee database tabellen die zijn gekoppeld aan het project. U kunt de connection string voor de data base vinden in het Web.config-bestand van het project.
 
 Als u hand matig verificatie aan uw oplossing hebt toegevoegd, heeft uw toepassing mogelijk niet de benodigde sleutel rollover logica. U moet zelf schrijven of u kunt de stappen in [Web Applications/api's gebruiken met andere bibliotheken of hand matig een van de ondersteunde protocollen implementeren.](#other)
 
@@ -239,7 +238,7 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>Webtoepassingen die bronnen beveiligen en maken met Visual Studio 2012
-Als uw toepassing is gemaakt in Visual Studio 2012, hebt u waarschijnlijk het hulp programma voor identiteits-en toegangs beheer gebruikt voor het configureren van uw toepassing. Het is ook waarschijnlijk dat u gebruikmaakt van het [valideren van de naam register van de verlener (VINR)](https://msdn.microsoft.com/library/dn205067.aspx). De VINR is verantwoordelijk voor het onderhouden van informatie over vertrouwde id-providers (Azure AD) en de sleutels die worden gebruikt om tokens te valideren die door hen worden uitgegeven. De VINR maakt het ook mogelijk om de belang rijke informatie die is opgeslagen in een web. config-bestand, automatisch bij te werken door het meest recente document met federatieve meta gegevens te downloaden dat is gekoppeld aan uw directory, te controleren of de configuratie verouderd is met het meest recente document en de toepassing zo nodig bij te werken om de nieuwe sleutel te gebruiken.
+Als uw toepassing is gemaakt in Visual Studio 2012, hebt u waarschijnlijk het hulp programma voor identiteits-en toegangs beheer gebruikt voor het configureren van uw toepassing. Het is ook waarschijnlijk dat u gebruikmaakt van het [valideren van de naam register van de verlener (VINR)](https://msdn.microsoft.com/library/dn205067.aspx). De VINR is verantwoordelijk voor het onderhouden van informatie over vertrouwde id-providers (Azure AD) en de sleutels die worden gebruikt om tokens te valideren die door hen worden uitgegeven. Met de VINR kunt u de belang rijke informatie die is opgeslagen in een Web.config bestand, ook eenvoudig bijwerken door het meest recente document met federatieve meta gegevens te downloaden dat is gekoppeld aan uw directory, te controleren of de configuratie verouderd is met het nieuwste document en de toepassing zo aan te werken dat deze de nieuwe sleutel nodig heeft.
 
 Als u uw toepassing hebt gemaakt met behulp van een van de code voorbeelden of de overzichts documentatie van micro soft, is de logica voor sleutel rollover al opgenomen in uw project. U ziet dat de onderstaande code al in uw project bestaat. Als uw toepassing deze logica nog niet heeft, volgt u de onderstaande stappen om deze toe te voegen en te controleren of deze correct werkt.
 
@@ -269,11 +268,11 @@ Als u uw toepassing hebt gemaakt met behulp van een van de code voorbeelden of d
    }
    ```
 
-Zodra u deze stappen hebt gevolgd, wordt de web. config van uw toepassing bijgewerkt met de meest recente informatie uit het federatieve meta gegevens document, inclusief de meest recente sleutels. Deze update wordt uitgevoerd telkens wanneer de groep van toepassingen wordt gerecycled in IIS. IIS wordt standaard elke 29 uur ingesteld voor het recyclen van toepassingen.
+Zodra u deze stappen hebt gevolgd, wordt de Web.config van uw toepassing bijgewerkt met de meest recente gegevens uit het federatieve meta gegevens document, met inbegrip van de meest recente sleutels. Deze update wordt uitgevoerd telkens wanneer de groep van toepassingen wordt gerecycled in IIS. IIS wordt standaard elke 29 uur ingesteld voor het recyclen van toepassingen.
 
 Volg de onderstaande stappen om te controleren of de sleutel rollover logica werkt.
 
-1. Nadat u hebt gecontroleerd of de bovenstaande code door uw toepassing wordt gebruikt, opent u het bestand **Web. config** en gaat u naar het ** \<issuerNameRegistry->** blok, dat specifiek zoekt naar de volgende regels:
+1. Nadat u hebt gecontroleerd of de bovenstaande code door uw toepassing wordt gebruikt, opent u het **Web.config** bestand en navigeert u naar het blok, en zoekt u naar de **\<issuerNameRegistry>** volgende regels:
    ```
    <issuerNameRegistry type="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry, System.IdentityModel.Tokens.ValidatingIssuerNameRegistry">
         <authority name="https://sts.windows.net/ec4187af-07da-4f01-b18f-64c2f5abecea/">
@@ -281,7 +280,7 @@ Volg de onderstaande stappen om te controleren of de sleutel rollover logica wer
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. Wijzig in de ** \<instelling vinger afdruk toevoegen = "" >** de waarde van de vinger afdruk door een ander teken te vervangen. Sla het bestand **Web. config** op.
+2. Wijzig in de **\<add thumbprint="">** instelling de waarde van de vinger afdruk door een teken te vervangen door een andere. Sla het **Web.config** bestand op.
 3. Bouw de toepassing en voer deze uit. Als u het aanmeld proces kunt volt ooien, wordt de sleutel door uw toepassing bijgewerkt door de vereiste informatie te downloaden uit het federatieve meta gegevens document van uw Directory. Als u problemen ondervindt bij het aanmelden, moet u ervoor zorgen dat de wijzigingen in uw toepassing correct zijn door het [toevoegen van een aanmelding aan uw webtoepassing met Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) -artikel of het downloaden en inspecteren van het volgende code voorbeeld: [multi tenant-Cloud toepassing voor Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2008-or-2010-and-windows-identity-foundation-wif-v10-for-net-35"></a><a name="vs2010"></a>Webtoepassingen die bronnen beveiligen en zijn gemaakt met Visual Studio 2008 of 2010 en Windows Identity Foundation (WIF) v 1.0 voor .NET 3,5

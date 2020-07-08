@@ -11,15 +11,14 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 3e6026e683d46ca9062c5c139fcd7febd7df9bd1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758243"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Een Rigado-trapsgewijs 500-gateway apparaat verbinden met uw Azure IoT Central-toepassing
 
-*Dit artikel is van toepassing op oplossingen bouwers en ontwikkel aars van apparaten.*
+*Dit artikel is van toepassing op oplossingenbouwers en apparaatontwikkelaars.*
 
 In dit artikel wordt beschreven hoe u als opbouw functie voor oplossingen een Rigado Cascade 500-gateway apparaat kunt verbinden met uw Microsoft Azure IoT Central toepassing. 
 
@@ -41,9 +40,9 @@ Als u een trapsgewijs 500-gateway apparaat wilt toevoegen aan uw Azure IoT Centr
 
 Een sjabloon voor een trapsgewijs 500-apparaat toevoegen: 
 
-1. Ga naar het tabblad ***device templates*** in het linkerdeel venster, selecteer **+ Nieuw**: ![nieuwe apparaat sjabloon maken](./media/howto-connect-rigado-cascade-500/device-template-new.png)
+1. Ga naar het tabblad ***device templates*** in het linkerdeel venster, selecteer **+ Nieuw**: ![ nieuwe apparaat sjabloon maken](./media/howto-connect-rigado-cascade-500/device-template-new.png)
 1. De pagina bevat een optie voor het ***maken van een aangepaste sjabloon*** of ***het gebruiken van een vooraf geconfigureerde apparaatprofiel***
-1. Selecteer de sjabloon C500 in de lijst met vooraf geconfigureerde Apparaatinstellingen, zoals hieronder wordt weer gegeven ![: Selecteer C500 Device Temp late](./media/howto-connect-rigado-cascade-500/device-template-preconfigured.png)
+1. Selecteer de sjabloon C500 in de lijst met vooraf geconfigureerde Apparaatinstellingen, zoals hieronder wordt weer gegeven: ![ Selecteer C500 Device Temp late](./media/howto-connect-rigado-cascade-500/device-template-preconfigured.png)
 1. Selecteer ***volgende: aanpassen*** om door te gaan naar de volgende stap. 
 1. Selecteer in het volgende scherm de optie ***maken*** om de C500-apparaatprofiel voor te bereiden in uw IOT Central-toepassing.
 
@@ -54,8 +53,8 @@ U moet nu de **scope-id** en de **primaire sleutel** voor uw Azure IOT Central-t
 1. Ga in het linkerdeel venster naar **beheer** en klik op **verbinding met apparaat**. 
 2. Noteer de **bereik-id** voor uw IOT Central-toepassing.
 ![App-bereik-ID](./media/howto-connect-rigado-cascade-500/app-scope-id.png)
-3. Klik nu op **sleutels weer geven** en noteer de primaire sleutel van de **primaire sleutel**
-![](./media/howto-connect-rigado-cascade-500/primary-key-sas.png)  
+3. Klik nu op **sleutels weer geven** en noteer de primaire sleutel van de **primaire sleutel** 
+ ![](./media/howto-connect-rigado-cascade-500/primary-key-sas.png)  
 
 ## <a name="contact-rigado-to-connect-the-gateway"></a>Contact opnemen met Rigado om verbinding te maken met de gateway 
 

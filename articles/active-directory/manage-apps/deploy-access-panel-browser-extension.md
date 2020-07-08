@@ -16,10 +16,9 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 94c434a2892060acfdd56c496a31e41597c21357
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763428"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Procedure: de uitbrei ding van het toegangs paneel voor Internet Explorer implementeren met behulp van groeps beleid
@@ -166,7 +165,7 @@ Volg de onderstaande stappen om te controleren of de implementatie van de extens
 
    ![Controleer of de uitbrei ding voor het toegangs paneel is geïnstalleerd en ingeschakeld](./media/deploy-access-panel-browser-extension/verify-install.png)
 
-## <a name="learn-more"></a>Meer informatie
+## <a name="learn-more"></a>Lees meer
 
 * [Toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](what-is-single-sign-on.md)
 * [Problemen met de uitbrei ding van het toegangs paneel voor Internet Explorer oplossen](manage-access-panel-browser-extension.md)

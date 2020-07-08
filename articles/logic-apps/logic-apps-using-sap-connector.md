@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 06/23/2020
 tags: connectors
 ms.openlocfilehash: 01c1a2b3f9455f19877f1b16b7fff5a7c2e77c76
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85323151"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Verbinding maken met SAP-systemen in Azure Logic Apps
@@ -23,7 +22,7 @@ ms.locfileid: "85323151"
 >
 > Voor Logic apps die gebruikmaken van de oudere connectors, [migreert u naar de nieuwste connector](#migrate) vóór de datum van afschaffing. Als dat niet het geval is, kunnen deze Logic apps uitvoerings fouten ondervinden en kan er geen berichten naar uw SAP-systeem worden verzonden.
 
-In dit artikel wordt beschreven hoe u met de SAP-connector toegang kunt krijgen tot uw on-premises SAP-resources vanuit een logische app. De connector werkt met de klassieke versies van SAP, zoals R/3-en ECC-systemen on-premises. De connector biedt ook integratie met de nieuwere, op HANA gebaseerde SAP-systemen van SAP, zoals S/4 HANA, of deze nu on-premises of in de cloud worden gehost. De SAP-connector ondersteunt de integratie van berichten of gegevens van en naar SAP netweave-systemen via tussenliggende documenten (IDoc), Business Application Programming Interface (BAPI) of externe functie aanroep (RFC).
+In dit artikel wordt beschreven hoe u met de SAP-connector toegang kunt krijgen tot uw on-premises SAP-resources vanuit een logische app. De connector werkt met de klassieke versies van SAP, zoals R/3-en ECC-systemen on-premises. Met de connector kan ook integratie worden gerealiseerd met de nieuwere SAP HANA-systemen, zoals S/4 HANA, ongeacht of deze on-premises of in de cloud worden gehost. De SAP-connector biedt ondersteuning voor bericht- en gegevensintegratie vanuit en naar SAP NetWeaver-systemen. Hiervoor wordt gebruikgemaakt van IDoc (Intermediate Document), BAPI (Business Application Programming Interface) of RFC (Remote Function Call).
 
 De SAP-connector maakt gebruik van de [SAP .net connector (NCo)-bibliotheek](https://support.sap.com/en/product/connectors/msnet.html) en biedt de volgende acties:
 
@@ -114,7 +113,7 @@ Deze vereisten zijn van toepassing wanneer uw Logic apps worden uitgevoerd in ee
    
    1. Plak in het deel venster **een nieuwe beheerde connector toevoegen** , in het vak **SAP package** , de URL voor het zip-bestand dat de SAP-assembly's bevat. *Zorg ervoor dat u het SAS-token opneemt.*
 
-   1. Als u gereed bent, selecteert u **Maken**.
+   1. Selecteer **Maken** als u klaar bent.
 
    Zie [ISE-connectors toevoegen](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment)voor meer informatie.
 
@@ -197,7 +196,7 @@ In dit voor beeld maakt u een logische app met een eind punt in azure, zodat u *
 
    ![HTTP-aanvraag trigger toevoegen](./media/logic-apps-using-sap-connector/add-http-trigger-logic-app.png)
 
-1. Sla de logische app nu op zodat u een eind punt-URL kunt genereren voor uw logische app. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Sla de logische app nu op zodat u een eind punt-URL kunt genereren voor uw logische app. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
    De eind punt-URL wordt nu weer gegeven in de trigger, bijvoorbeeld:
 
@@ -274,7 +273,7 @@ In Azure Logic Apps is een [actie](../logic-apps/logic-apps-overview.md#logic-ap
 
       ![De SAP-actie volt ooien](./media/logic-apps-using-sap-connector/SAP-app-server-complete-action.png)
 
-1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Sla uw logische app op. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 <a name="add-response"></a>
 
@@ -381,7 +380,7 @@ In dit voor beeld wordt een logische app gebruikt die wordt geactiveerd wanneer 
 
    Zie [bericht schema's voor IDOC-bewerkingen](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations) voor meer informatie over de SAP-actie.
 
-1. Sla de logische app nu op zodat u berichten van uw SAP-systeem kunt ontvangen. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Sla de logische app nu op zodat u berichten van uw SAP-systeem kunt ontvangen. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 Uw logische app is nu klaar om berichten te ontvangen van uw SAP-systeem.
 
@@ -649,7 +648,7 @@ Als u het aanvraag bericht wilt verzenden, gebruikt u de algemene SAP-actie **be
    ![HTTP-aanvraag trigger toevoegen](./media/logic-apps-using-sap-connector/add-http-trigger-logic-app.png)
 
 1. Sla de logische app nu op zodat u een eind punt-URL kunt genereren voor uw logische app.
-Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
    De eind punt-URL wordt nu weer gegeven in de trigger, bijvoorbeeld:
 
@@ -711,7 +710,7 @@ Selecteer **Opslaan**op de werk balk van de ontwerp functie.
 
    Zie [bericht schema's voor IDOC-bewerkingen](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)voor meer informatie over de SAP-actie.
 
-1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Sla uw logische app op. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 ### <a name="test-your-logic-app"></a>Uw logische app testen
 
@@ -754,7 +753,7 @@ U kunt de gegenereerde schema's ook downloaden of opslaan in opslag plaatsen, zo
    > }
    > ```
 
-1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Sla uw logische app op. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 ### <a name="test-your-logic-app"></a>Uw logische app testen
 

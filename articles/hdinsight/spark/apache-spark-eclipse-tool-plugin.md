@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
 ms.openlocfilehash: 5ae9190213f753f8b9440ced52e4d04626af13f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733002"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure-toolkit voor Eclipse gebruiken om Apache Spark-toepassingen voor een HDInsight-cluster te maken
@@ -45,21 +44,21 @@ Wanneer u eclips opent, detecteert HDInsight-Hulpprogram Ma's automatisch of u d
 
 ### <a name="confirm-plug-ins"></a>Invoeg toepassingen bevestigen
 
-1. Navigeren om Marketplace te **helpen interassistentie** > **...**.
+1. Navigeren om Marketplace te **helpen interassistentie**  >  **...**.
 
 1. Selecteer het tabblad **geïnstalleerd** .
 
 1. U ziet ten minste het volgende:
-    * Azure-toolkit voor Eclipse \<versie>.
-    * Scala IDE \<-versie>.
+    * Azure-toolkit voor Eclipse \<version> .
+    * Scala IDE \<version> .
 
-## <a name="sign-in-to-your-azure-subscription"></a>Meld u aan bij uw Azure-abonnement
+## <a name="sign-in-to-your-azure-subscription"></a>Aanmelden bij uw Azure-abonnement
 
 1. Start eclips IDE.
 
-1. Ga naar **venster** >  weer**gave** > **Overig...**  >  **Aanmelden..**.
+1. Ga naar **venster**weer  >   **gave**  >  **Overig...**  >  **Aanmelden..**.
 
-1. Ga in het dialoog venster **weer gave weer geven** naar **Azure** > **Azure Verkenner**en selecteer **openen**.
+1. Ga in het dialoog venster **weer gave weer geven** naar **Azure**  >  **Azure Verkenner**en selecteer **openen**.
 
    ![Apache Spark-eclips weer gave weer geven](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer1.png)
 
@@ -73,7 +72,7 @@ Wanneer u eclips opent, detecteert HDInsight-Hulpprogram Ma's automatisch of u d
 
    ![Het dialoog venster abonnementen selecteren](./media/apache-spark-eclipse-tool-plugin/Select-Subscriptions.png)
 
-1. Ga in **Azure Verkenner**naar **Azure** >  **HDInsight** om de HDInsight Spark-clusters te bekijken onder uw abonnement.
+1. Ga in **Azure Verkenner**naar **Azure**  >   **HDInsight** om de HDInsight Spark-clusters te bekijken onder uw abonnement.
 
    ![HDInsight Spark-clusters in azure Explorer3](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer3.png)
 
@@ -83,7 +82,7 @@ Wanneer u eclips opent, detecteert HDInsight-Hulpprogram Ma's automatisch of u d
 
 ## <a name="link-a-cluster"></a>Een cluster koppelen
 
-U kunt een normaal cluster koppelen met behulp van de beheerde gebruikers naam Ambari. Op dezelfde manier kunt u voor een HDInsight-cluster dat is gekoppeld aan een domein een koppeling maken met behulp `user1@contoso.com`van het domein en de gebruikers naam, zoals.
+U kunt een normaal cluster koppelen met behulp van de beheerde gebruikers naam Ambari. Op dezelfde manier kunt u voor een HDInsight-cluster dat is gekoppeld aan een domein een koppeling maken met behulp van het domein en de gebruikers naam, zoals `user1@contoso.com` .
 
 1. Klik in **Azure Verkenner**met de rechter muisknop op **HDInsight**en selecteer **koppelen van een cluster**.
 
@@ -95,7 +94,7 @@ U kunt een normaal cluster koppelen met behulp van de beheerde gebruikers naam A
 
    > [!NOTE]  
    > We gebruiken de gekoppelde opslag sleutel, gebruikers naam en wacht woord als het cluster beide zijn aangemeld bij het Azure-abonnement en een cluster heeft gekoppeld.
-   > ![Azure Explorer-opslag accounts](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
+   > ![Azure Explorer-opslagaccounts](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
    >
    > Voor de gebruiker alleen toetsen bord, wanneer de huidige focus op de **opslag sleutel**is, moet u op het volgende veld in het dialoog venster op **CTRL + TAB** zijn gericht.
 
@@ -109,9 +108,9 @@ U kunt een normaal cluster koppelen met behulp van de beheerde gebruikers naam A
 
 ## <a name="set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster"></a>Een Spark scala-project instellen voor een HDInsight Spark-cluster
 
-1. Selecteer in de werk ruimte eclips IDE de optie **bestand** > **Nieuw** > **project...**.
+1. Selecteer in de werk ruimte eclips IDE de optie **bestand**  >  **Nieuw**  >  **project...**.
 
-1. Selecteer in de wizard **Nieuw project** **HDInsight-project** > **Spark in HDInsight (scala)**. Selecteer **volgende**.
+1. Selecteer in de wizard **Nieuw project** **HDInsight-project**  >  **Spark in HDInsight (scala)**. Selecteer vervolgens **Volgende**.
 
    ![Het Spark in HDInsight-project (scala) selecteren](./media/apache-spark-eclipse-tool-plugin/create-hdi-scala-app-2.png)
 
@@ -126,9 +125,9 @@ U kunt een normaal cluster koppelen met behulp van de beheerde gebruikers naam A
 
 ## <a name="create-a-scala-application-for-an-hdinsight-spark-cluster"></a>Een scala-toepassing maken voor een HDInsight Spark-cluster
 
-1. Vouw in **pakket Verkenner**het project uit dat u eerder hebt gemaakt. Klik met de rechter muisknop op **src**, selecteer **Nieuw** > **...**.
+1. Vouw in **pakket Verkenner**het project uit dat u eerder hebt gemaakt. Klik met de rechter muisknop op **src**, selecteer **Nieuw**  >  **...**.
 
-1. Selecteer in het dialoog venster **een wizard selecteren** de optie **scala wizards** > **scala-object**. Selecteer **volgende**.
+1. Selecteer in het dialoog venster **een wizard selecteren** de optie **scala wizards**  >  **scala-object**. Selecteer vervolgens **Volgende**.
 
    ![Een wizard selecteren een scala-object maken](./media/apache-spark-eclipse-tool-plugin/create-scala-project1.png)
 
@@ -172,7 +171,7 @@ U kunt een normaal cluster koppelen met behulp van de beheerde gebruikers naam A
 
 1. Het tabblad **verzen ding Spark** moet beginnen met het weer geven van de voortgang. U kunt de toepassing stoppen door de knop rood in het venster **verzen ding Spark** te selecteren. U kunt ook de logboeken voor deze specifieke uitvoering van de toepassing weer geven door het pictogram wereldbol te selecteren (dit wordt aangegeven door het blauwe vak in de afbeelding).
 
-   ![Inzendings venster Apache Spark](./media/apache-spark-eclipse-tool-plugin/create-scala-project4.png)
+   ![Venster voor verzending van Apache Spark](./media/apache-spark-eclipse-tool-plugin/create-scala-project4.png)
 
 ## <a name="access-and-manage-hdinsight-spark-clusters-by-using-hdinsight-tools-in-azure-toolkit-for-eclipse"></a>HDInsight Spark-clusters openen en beheren met HDInsight-Hulpprogram Ma's in Azure-toolkit voor Eclipse
 
@@ -218,7 +217,7 @@ U kunt verschillende bewerkingen uitvoeren met HDInsight-Hulpprogram Ma's, waaro
 
 1. Klik in azure Verkenner met de rechter muisknop op de naam van uw Spark-cluster en selecteer vervolgens **openen Spark-gebruikers interface**. Wanneer u hierom wordt gevraagd, voert u de beheerders referenties voor het cluster in. U hebt deze opgegeven tijdens het inrichten van het cluster.
 
-1. In het Spark-geschiedenis server dashboard gebruikt u de naam van de toepassing om te zoeken naar de toepassing die u zojuist hebt uitgevoerd. In de voor gaande code stelt u de naam van de toepassing `val conf = new SparkConf().setAppName("MyClusterApp")`in met behulp van. Uw Spark-toepassings naam is dus **MyClusterApp**.
+1. In het Spark-geschiedenis server dashboard gebruikt u de naam van de toepassing om te zoeken naar de toepassing die u zojuist hebt uitgevoerd. In de voor gaande code stelt u de naam van de toepassing in met behulp van `val conf = new SparkConf().setAppName("MyClusterApp")` . Uw Spark-toepassings naam is dus **MyClusterApp**.
 
 ### <a name="start-the-apache-ambari-portal"></a>De Apache Ambari-Portal starten
 
@@ -240,15 +239,15 @@ U kunt HDInsight-Hulpprogram Ma's in Azure-toolkit voor Eclipse gebruiken om Spa
 
 ### <a name="prerequisite"></a>Vereiste
 
-Terwijl u de lokale Spark scala-toepassing uitvoert op een Windows-computer, krijgt u mogelijk een uitzonde ring zoals uitgelegd in [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). Deze uitzonde ring treedt op omdat **WinUtils. exe** ontbreekt in Windows.
+Terwijl u de lokale Spark scala-toepassing uitvoert op een Windows-computer, krijgt u mogelijk een uitzonde ring zoals uitgelegd in [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). Deze uitzonde ring treedt op omdat **WinUtils.exe** ontbreekt in Windows.
 
-Om deze fout op te lossen, hebt u [Winutils. exe](https://github.com/steveloughran/winutils) nodig voor een locatie zoals **C:\WinUtils\bin**. vervolgens voegt u de omgevings variabele **HADOOP_HOME** en stelt u de waarde van de variabele in op **C\WinUtils**.
+Om deze fout op te lossen, moet u [Winutils.exe](https://github.com/steveloughran/winutils) op een locatie zoals **C:\WinUtils\bin**, en vervolgens de omgevings variabele **HADOOP_HOME** toevoegen en de waarde van de variabele instellen op **C\WinUtils**.
 
 ### <a name="run-a-local-spark-scala-application"></a>Een lokale Spark scala-toepassing uitvoeren
 
 1. De eclips starten en een project maken. Maak in het dialoog venster **Nieuw project** de volgende opties en selecteer **volgende**.
 
-1. Selecteer in de wizard **Nieuw project** de optie **HDInsight project** > **Spark op hdinsight Local run sample (scala)**. Selecteer **volgende**.
+1. Selecteer in de wizard **Nieuw project** de optie **HDInsight project**  >  **Spark op hdinsight Local run sample (scala)**. Selecteer vervolgens **Volgende**.
 
    ![Nieuw project selecteert een wizard dialoog venster](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)
 
@@ -258,7 +257,7 @@ Om deze fout op te lossen, hebt u [Winutils. exe](https://github.com/steveloughr
 
    ![Locatie van LogQuery lokale scala-toepassing](./media/apache-spark-eclipse-tool-plugin/local-scala-application.png)
 
-1. Klik met de rechter muisknop op **LogQuery. scala** en selecteer **uitvoeren als** > **1 scala-toepassing**. Uitvoer zoals deze wordt weer gegeven op het tabblad **console** :
+1. Klik met de rechter muisknop op **LogQuery. scala** en selecteer **uitvoeren als**  >  **1 scala-toepassing**. Uitvoer zoals deze wordt weer gegeven op het tabblad **console** :
 
    ![Resultaat van lokale uitvoer van Spark-toepassing](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run-result.png)
 
@@ -327,7 +326,7 @@ Er zijn twee modi voor het verzenden van de taken. Als opslag referentie is vers
 
 ![fout bij het ophalen van de eclips als cluster bezet-garens](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png "fout bij het ophalen van de eclips als cluster bezet-garens")
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 

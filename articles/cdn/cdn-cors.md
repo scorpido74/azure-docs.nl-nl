@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 63919d7770746025189f3d6e578919b2fc2799c3
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
-ms.translationtype: MT
+ms.openlocfilehash: 89adc283fa9d6edc49536cb9459a479710c94435
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84884911"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921166"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Azure CDN gebruiken met CORS
 ## <a name="what-is-cors"></a>Wat is CORS?
 CORS (cross Origin Resource Sharing) is een HTTP-functie waarmee een webtoepassing die wordt uitgevoerd onder het ene domein toegang kan krijgen tot bronnen in een ander domein. Om de kans op cross-site scripting aanvallen te verminderen, implementeren alle moderne webbrowsers een beveiligings beperking die bekend staat als [hetzelfde-Origin-beleid](https://www.w3.org/Security/wiki/Same_Origin_Policy).  Hiermee wordt voor komen dat een webpagina Api's in een ander domein aanroept.  CORS biedt een veilige manier om één oorsprong (het oorspronkelijke domein) toe te staan om Api's in een andere oorsprong aan te roepen.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 Er zijn twee typen CORS-aanvragen, *eenvoudige aanvragen* en *complexe aanvragen.*
 
 ### <a name="for-simple-requests"></a>Voor eenvoudige aanvragen:
@@ -82,7 +81,9 @@ Er zijn twee manieren om dit te doen met de Premium-regel engine. In beide geval
 #### <a name="one-regular-expression-with-all-valid-origins"></a>Eén reguliere expressie met alle geldige oorsprongen
 In dit geval maakt u een reguliere expressie die alle oorsprongen bevat die u wilt toestaan: 
 
-    https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
+```http
+https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
+```
 
 > [!TIP]
 > **Azure CDN Premium van Verizon** gebruikt [perl-compatibele reguliere expressies](https://pcre.org/) als engine voor reguliere expressies.  U kunt een hulp programma zoals [reguliere expressies 101](https://regex101.com/) gebruiken om uw reguliere expressie te valideren.  Houd er rekening mee dat het teken '/' geldig is in reguliere expressies en niet hoeft te worden ontsnapt, maar dat het escape-teken wordt beschouwd als een best practice en wordt verwacht door sommige regex-validatie functies.

@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
 ms.openlocfilehash: 5e3501ea8bc327f0dd906a42702194abce18c5fd
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84656576"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Bekijk de Video Indexer uitvoer die door de API is geproduceerd
@@ -38,7 +37,7 @@ In dit artikel wordt de JSON-inhoud onderzocht die wordt geretourneerd door de A
 
 ## <a name="root-elements"></a>Hoofd elementen
 
-|Naam|Beschrijving|
+|Naam|Description|
 |---|---|
 |accountId|De VI-account-ID van de afspeel lijst.|
 |id|De ID van de afspeel lijst.|
@@ -98,7 +97,7 @@ In deze sectie vindt u een overzicht van de inzichten.
 
 ## <a name="videos"></a>video's
 
-|Naam|Beschrijving|
+|Naam|Description|
 |---|---|
 |accountId|De VI-account-ID van de video.|
 |id|De ID van de video.|
@@ -203,7 +202,7 @@ vaak|Een lijst met tijds bereiken van dit blok.|
 
 #### <a name="transcript"></a>verslag
 
-|Naam|Beschrijving|
+|Naam|Description|
 |---|---|
 |id|De regel-ID.|
 |tekst|De transcriptie zelf.|
@@ -317,7 +316,7 @@ Voorbeeld:
 |knownPersonId|De interne ID van een bekende persoon.|
 |referenceId|Als het een Bing-beroemdheden is, is dit de Bing-ID.|
 |Type|Op dit moment hebben we alleen Bing.|
-|title|Als het een beroemdheden is, is dit de titel (bijvoorbeeld ' micro soft CEO ').|
+|titel|Als het een beroemdheden is, is dit de titel (bijvoorbeeld ' micro soft CEO ').|
 |imageUrl|Als het een beroemdheden is, wordt de afbeeldings-URL.|
 |vaak|Dit zijn exemplaren van waar het gezicht zich in het opgegeven tijds bereik bevindt. Elk exemplaar heeft ook een thumbnailsId. |
 

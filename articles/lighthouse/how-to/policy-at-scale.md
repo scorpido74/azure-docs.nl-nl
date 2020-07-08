@@ -4,10 +4,9 @@ description: Meer informatie over hoe u met Azure delegated resource management 
 ms.date: 11/8/2019
 ms.topic: how-to
 ms.openlocfilehash: 0e3af1728b4927874fa599bad256798f39721e22
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84636526"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Azure Policy implementeren voor gedelegeerde abonnementen op de juiste schaal
@@ -91,4 +90,4 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over [Azure Policy](../../governance/policy/index.yml).
-- Meer informatie over de [ervaring op het beheer van cross-tenants](../concepts/cross-tenant-management-experience.md).
+- Meer informatie over [beheerervaring in meerdere tenants](../concepts/cross-tenant-management-experience.md).

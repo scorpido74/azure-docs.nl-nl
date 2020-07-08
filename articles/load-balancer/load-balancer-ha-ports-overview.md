@@ -13,20 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: e60d44278bb568b1aaaf416fddf35d02596a5ee2
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.openlocfilehash: da776c679d5ded6f53cd0d224828fffee058d37d
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84674649"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920616"
 ---
 # <a name="high-availability-ports-overview"></a>Overzicht van poorten met hoge Beschik baarheid
 
 Met Azure Standard Load Balancer kunt u TCP-en UDP-stromen op alle poorten tegelijk laden wanneer u een interne load balancer gebruikt. 
 
-Een regel voor Load Balancing met hoge Beschik baarheid (HA) is een variant van een taakverdelings regel, geconfigureerd op een interne Standard Load Balancer. U kunt het gebruik van een load balancer vereenvoudigen door één regel te bieden voor het verdelen van alle TCP-en UDP-stromen die binnenkomen op alle poorten van een interne Standard Load Balancer. Er wordt per stroom een beslissing voor taak verdeling gemaakt. Deze actie is gebaseerd op de volgende vijf-tuple-verbinding: bron-IP-adres, bron poort, doel-IP-adres, doel poort en protocol
+Een regel voor Load Balancing met hoge Beschik baarheid (HA) is een variant van een taakverdelings regel, geconfigureerd op een interne Standard Load Balancer. U kunt het gebruik van een load balancer vereenvoudigen door één regel te bieden voor het verdelen van alle TCP-en UDP-stromen die binnenkomen op alle poorten van een interne Standard Load Balancer. Er wordt per stroom een beslissing voor taakverdeling gemaakt. Deze actie is gebaseerd op de volgende vijf-tuple-verbinding: bron-IP-adres, bron poort, doel-IP-adres, doel poort en protocol
 
-De taakverdelings regels voor de HA-poorten helpen u bij kritieke scenario's, zoals hoge Beschik baarheid en schaal voor Nva's (Network Virtual Appliance) in virtuele netwerken. De functie kan ook helpen wanneer een groot aantal poorten taak verdeling moet hebben. 
+De taakverdelingsregels voor de HA-poorten helpen u bij kritieke scenario's, zoals hoge beschikbaarheid en schaal aanpassen voor NVA's (Network Virtual Appliance) in virtuele netwerken. De functie kan ook helpen wanneer over een groot aantal poorten taakverdeling moet worden uitgevoerd. 
 
 De taakverdelings regels voor de HA-poorten worden geconfigureerd wanneer u de front-end-en back-end-poorten instelt op **0** en het protocol voor **alle**. Met de interne load balancer resource worden vervolgens alle TCP-en UDP-stromen gebalanceerd, ongeacht het poort nummer
 
@@ -99,5 +98,5 @@ U kunt *één* open bare Standard Load Balancer bron configureren voor de back-e
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [HA-poorten configureren op een interne Standard Load Balancer](load-balancer-configure-ha-ports.md)
+- Meer informatie over het configureren van HA-poorten voor uw ILB via Portal (tutorial-Load-Balancer-Standard-Internal-Portal. MDL # Create-a-load-balancer-rule), [Power shell](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer), [cli](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)of [sjablonen](load-balancer-get-started-ilb-arm-template.md).
 - [Meer informatie over Standard Load Balancer](load-balancer-standard-overview.md)

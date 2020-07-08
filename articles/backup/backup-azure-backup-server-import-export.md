@@ -3,12 +3,11 @@ title: Offline back-ups voor DPM en Azure Backup Server
 description: Met Azure Backup kunt u gegevens van het netwerk verzenden met behulp van de Azure import/export-service. In dit artikel wordt de werk stroom voor offline back-ups voor DPM en Azure Backup Server uitgelegd.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: bb9b3599e74e74058598acd53f5156459c0b74fb
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
-ms.translationtype: MT
+ms.openlocfilehash: 0ff6198eed4e3e365b443a51e5c63534c2cf0973
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374930"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921262"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>Offline back-upwerk stroom voor DPM en Azure Backup Server (MABS)
 
@@ -102,9 +101,7 @@ De informatie in deze sectie helpt u bij het volt ooien van de werk stroom voor 
 
 ## <a name="prepare-sata-drives-and-ship-to-azure"></a>SATA-schijven voorbereiden en verzenden naar Azure
 
-Het hulp programma *AzureOfflineBackupDiskPrep* bereidt de SATA-stations voor die naar het dichtstbijzijnde Azure-Data Center worden verzonden. Dit hulp programma is beschikbaar in de installatiemap van de Azure Backup Agent (in het volgende pad):
-
-    *\Microsoft Azure Recovery Services Agent\Utils\\*
+Het hulp programma *AzureOfflineBackupDiskPrep* bereidt de SATA-stations voor die naar het dichtstbijzijnde Azure-Data Center worden verzonden. Dit hulp programma is beschikbaar in de installatiemap van de Azure Backup Agent (in het volgende pad):`*\Microsoft Azure Recovery Services Agent\Utils\\*`
 
 1. Ga naar de map en kopieer de **AzureOfflineBackupDiskPrep** -map naar een andere computer waarop de SATA-schijven zijn aangesloten. Zorg ervoor dat op de computer met de aangesloten SATA-schijven:
 
@@ -119,9 +116,9 @@ Het hulp programma *AzureOfflineBackupDiskPrep* bereidt de SATA-stations voor di
 
 1. Open een opdracht prompt met verhoogde bevoegdheid op de computer kopiëren met de map *AzureOfflineBackupDiskPrep* Utility als de huidige map. Voer de volgende opdracht uit:
 
-        ```cmd
-        .\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>
-        ```
+    ```console
+    .\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>
+    ```
 
     | Parameter | Beschrijving |
     | --- | --- |

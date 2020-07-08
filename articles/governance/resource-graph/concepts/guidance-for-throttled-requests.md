@@ -4,10 +4,9 @@ description: Meer informatie over Group, sprei ding, pagineren en query's parall
 ms.date: 05/20/2020
 ms.topic: conceptual
 ms.openlocfilehash: dbcd438f1eda4edd30deef41542beeae6d746dc2
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83682055"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Richt lijnen voor vertraagde aanvragen in azure resource Graph
@@ -27,7 +26,7 @@ In azure resource Graph wordt een quotum nummer toegewezen voor elke gebruiker o
 
 In elke query-antwoord voegt Azure-resource grafiek twee beperkings koppen toe:
 
-- `x-ms-user-quota-remaining`(int): het resterende resource quotum voor de gebruiker. Deze waarde wordt toegewezen aan het aantal query's.
+- `x-ms-user-quota-remaining` (int): Het resterende resourcequotum voor de gebruiker. Deze waarde wordt toegewezen aan het aantal query's.
 - `x-ms-user-quota-resets-after`(UU: mm: SS): de tijds duur tot het quotum verbruik van een gebruiker opnieuw wordt ingesteld.
 
 Om te laten zien hoe de headers werken, bekijken we een query-antwoord met de koptekst en de waarden van `x-ms-user-quota-remaining: 10` en `x-ms-user-quota-resets-after: 00:00:03` .
@@ -239,6 +238,6 @@ Geef de volgende gegevens op:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de taal die wordt gebruikt in [Start query's](../samples/starter.md).
-- Zie Geavanceerd gebruik in [Geavanceerde query's](../samples/advanced.md).
-- Meer informatie over hoe u [resources kunt verkennen](explore-resources.md).
+- Zie de taal die wordt gebruikt in [Starter-query's](../samples/starter.md).
+- Zie [Geavanceerde query's](../samples/advanced.md) voor geavanceerde gebruikswijzen.
+- Lees meer over het [verkennen van resources](explore-resources.md).

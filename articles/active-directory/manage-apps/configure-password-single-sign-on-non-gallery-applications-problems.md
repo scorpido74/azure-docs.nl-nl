@@ -16,10 +16,9 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9620a6ad584f20a0956e6a29c89609d79832f4d2
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763445"
 ---
 # <a name="problems-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Problemen met het configureren van eenmalige aanmelding met een wacht woord voor een toepassing buiten de galerie
@@ -42,7 +41,7 @@ Over het algemeen kunt u de optie hand matig gebruiken als het vastleggen van au
 
 Voer de volgende stappen uit om eenmalige aanmelding op basis van een wacht woord te configureren met behulp van automatische registratie van het registratie veld:
 
-1. Open [Azure Portal](https://portal.azure.com/). Meld u aan als globale beheerder of co-beheerder.
+1. Open de [Azure Portal](https://portal.azure.com/). Meld u aan als globale beheerder of co-beheerder.
 
 2. Selecteer in het navigatie deel venster aan de linkerkant **alle services** om de Azure AD-extensie te openen.
 
@@ -75,7 +74,7 @@ Zie de sectie [de browser uitbreiding van het toegangs venster installeren](#ins
 
 Voer de volgende stappen uit om SSO op basis van een wacht woord te configureren voor een app door gebruik te maken van hand matige registratie van het registratie veld:
 
-1. Open [Azure Portal](https://portal.azure.com/). Meld u aan als globale beheerder of co-beheerder.
+1. Open de [Azure Portal](https://portal.azure.com/). Meld u aan als globale beheerder of co-beheerder.
 
 2. Selecteer in het navigatie deel venster aan de linkerkant **alle services** om de Azure AD-extensie te openen.
 
@@ -142,7 +141,7 @@ Als u een van deze problemen ondervindt, doet u het volgende:
 
 - Als het hand matige vastleg proces niet meer reageert of als de aanmeldings pagina niet reageert, kunt u het hand matige vastleg proces opnieuw proberen. Maar deze keer, na het volt ooien van het proces, drukt u op de F12-toets om de ontwikkelaars console van uw browser te openen. Selecteer het tabblad **console** . Typ **Window. Location = "* &lt; de aanmeldings-URL die u hebt opgegeven bij het configureren van &gt; de app*"** en druk op ENTER. Hiermee wordt een omleiding van pagina's afgedwongen waarmee het proces wordt beëindigd en worden de opgenomen velden opgeslagen.
 
-### <a name="contact-support"></a>Contact opnemen met ondersteuning
+### <a name="contact-support"></a>Contact opnemen met de ondersteuning
 
 Als u nog steeds problemen ondervindt, opent u een aanvraag met Microsoft Ondersteuning. Beschrijf wat u hebt geprobeerd. Neem de details op die worden beschreven in de details van de [Portal-melding weer geven](#view-portal-notification-details) en [Verzend meldings gegevens naar een ondersteunings technicus om Help](#send-notification-details-to-a-support-engineer-to-get-help) -onderwerpen van dit artikel te ontvangen (indien van toepassing).
 

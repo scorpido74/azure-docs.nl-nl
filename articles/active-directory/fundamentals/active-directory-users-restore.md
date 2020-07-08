@@ -7,18 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/01/2018
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 573269da1ca6b9ee09b493f4e758e78121d6c2f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1ad71d75eb80f15c09e0a4dff4edc4a0eaae9e1b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75422864"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603924"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Een onlangs verwijderde gebruiker herstellen of verwijderen met Azure Active Directory
 Nadat u een gebruiker hebt verwijderd, blijft het account gedurende 30 dagen in een suspend-status. Tijdens deze periode van 30 dagen kan het gebruikers account worden hersteld, samen met alle eigenschappen. Nadat het venster van 30 dagen is verstreken, wordt de gebruiker automatisch en permanent verwijderd.
@@ -37,7 +36,7 @@ U moet een van de volgende rollen hebben om gebruikers te herstellen en permanen
 
 - Ondersteuning voor partner Tier2
 
-- Gebruikers beheerder
+- Gebruikersbeheerder
 
 ## <a name="view-your-restorable-users"></a>Uw herstorbare gebruikers weer geven
 U kunt alle gebruikers zien die minder dan 30 dagen geleden zijn verwijderd. Deze gebruikers kunnen worden hersteld.

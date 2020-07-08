@@ -4,17 +4,16 @@ description: Dit artikel bevat een overzicht van toegewezen Azure-Event Hubs, da
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 70061b5dc4fe72c9fd2fd60dd8c67da31b1d1e6c
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85322435"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Overzicht van Event Hubs Dedicated
 
 *Event hubs-clusters* bieden implementaties met één Tenant voor klanten met de meest veeleisende streaming behoeften. Deze aanbieding met één Tenant heeft een gegarandeerde 99,99%-SLA en is alleen beschikbaar in onze specifieke prijs categorie. Een Event Hubs cluster kan miljoenen gebeurtenissen per seconde met gegarandeerde capaciteit en een subseconde van de seconden binnenkomen. Naam ruimten en Event hubs die zijn gemaakt in het toegewezen cluster, bevatten alle functies van de Standard-aanbieding en meer, maar zonder ingangs limieten. Het bevat ook de populaire [Event hubs Capture](event-hubs-capture-overview.md) -functie zonder extra kosten, zodat u automatisch gegevens stromen naar Azure Storage of Azure data Lake kunt vastleggen. 
 
-Clusters worden ingericht en gefactureerd op basis van **capaciteits eenheden (CUs)**, een vooraf toegewezen hoeveelheid CPU-en geheugen bronnen. U kunt 1, 2, 4, 8, 12, 16 of 20 voor elk cluster aanschaffen. Hoeveel u kunt opnemen en streamen per CU, is afhankelijk van verschillende factoren, zoals het aantal producenten en consumenten, de shape nettolading, het uitgangs bedrag (Zie de onderstaande benchmark resultaten voor meer informatie). 
+Clusters worden ingericht en gefactureerd op basis van **capaciteits eenheden (CUs)**, een vooraf toegewezen hoeveelheid CPU-en geheugen bronnen. U kunt voor elk cluster 1, 2, 4, 8, 12, 16 of 20 capaciteitseenheden kopen. Hoeveel u kunt opnemen en streamen per CU, is afhankelijk van verschillende factoren, zoals het aantal producenten en consumenten, de shape nettolading, het uitgangs bedrag (Zie de onderstaande benchmark resultaten voor meer informatie). 
 
 > [!NOTE]
 > Alle Event Hubs clusters Kafka standaard ingeschakeld en ondersteunen Kafka-eind punten die kunnen worden gebruikt door uw bestaande op Kafka gebaseerde toepassingen. Als Kafka in uw cluster is ingeschakeld, heeft dit geen invloed op uw gebruik van niet-Kafka. Er is geen optie of het is niet nodig om Kafka uit te scha kelen op een cluster.

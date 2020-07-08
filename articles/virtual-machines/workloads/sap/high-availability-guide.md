@@ -16,10 +16,9 @@ ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 742e1b54499e51fc791a659baaf7072272ef43a6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84021412"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Hoge Beschik baarheid voor SAP net-Weaver op Azure-Vm's
@@ -1016,7 +1015,7 @@ Als u andere nummers wilt gebruiken voor de SAP-instanties ASCS of SCS, moet u d
 1. Selecteer in de Azure Portal ** < *sid* ->-lb-ascs Load Balancer**  >  **taakverdelings regels**.
 2. Wijzig deze waarden voor alle taakverdelings regels die horen bij het SAP ASCS-of SCS-exemplaar:
 
-   * Naam
+   * Name
    * Poort
    * Poort van back-end
 
@@ -1260,7 +1259,7 @@ Er zijn twee manieren om de .NET Framework 3,5 toe te voegen:
 
   _**Afbeelding 40:** Voortgangs balk voor installatie wanneer u de .NET Framework 3,5 installeert met behulp van de wizard functies en onderdelen toevoegen_
 
-- Gebruik het opdracht regel programma DISM. exe. Voor dit type installatie moet u toegang hebben tot de map SxS op het Windows-installatie medium. Typ het volgende bij een opdracht prompt met verhoogde bevoegdheid:
+- Gebruik het opdracht regel programma dism.exe. Voor dit type installatie moet u toegang hebben tot de map SxS op het Windows-installatie medium. Typ het volgende bij een opdracht prompt met verhoogde bevoegdheid:
 
   ```
   Dism /online /enable-feature /featurename:NetFx3 /All /Source:installation_media_drive:\sources\sxs /LimitAccess

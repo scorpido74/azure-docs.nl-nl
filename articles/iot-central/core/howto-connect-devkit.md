@@ -9,15 +9,14 @@ ms.service: iot-central
 services: iot-central
 manager: jeffya
 ms.openlocfilehash: bcf1dd2f89cf049d7da5b56170b2c13874c83ba4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81756803"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Een MXChip IoT DevKit-apparaat verbinden met uw Azure IoT Central-toepassing
 
-*Dit artikel is van toepassing op ontwikkel aars van apparaten.*
+*Dit artikel is bedoeld voor ontwikkelaars van apparaten.*
 
 In dit artikel wordt beschreven hoe u een MXChip IoT DevKit (DevKit)-apparaat verbindt met een Azure IoT Central-toepassing. Het apparaat gebruikt het Certified IoT Plug en Play (preview) model voor het DevKit-apparaat om de verbinding met IoT Central te configureren.
 
@@ -46,7 +45,7 @@ U hebt de volgende resources nodig om de stappen in dit artikel uit te voeren:
 
     ![Nieuw apparaat](media/howto-connect-devkit/new-device.png)
 
-1. Voer in het pop-upvenster de **apparaat-id** in `SampleDevKit` en de **apparaatnaam** als `MXChip IoT DevKit - Sample`. Zorg ervoor dat de **gesimuleerde** optie is uitgeschakeld. Selecteer vervolgens **maken**.
+1. Voer in het pop-upvenster de **apparaat-id** in `SampleDevKit` en de **apparaatnaam** als `MXChip IoT DevKit - Sample` . Zorg ervoor dat de **gesimuleerde** optie is uitgeschakeld. Selecteer vervolgens **Maken**.
 
     ![Apparaat-ID en naam](media/howto-connect-devkit/device-id-name.png)
 
@@ -69,7 +68,7 @@ U hebt de volgende resources nodig om de stappen in dit artikel uit te voeren:
 
 1. Op uw computer of Tablet maakt u verbinding met de Wi-Fi-netwerk naam die op het scherm van het apparaat wordt weer gegeven. Het WiFi-netwerk wordt gestart met **AZ,** gevolgd door het MAC-adres. Wanneer u verbinding met dit netwerk maakt, hebt u geen toegang tot internet. Deze status wordt verwacht en u kunt gedurende korte tijd alleen verbinding maken met dit netwerk tijdens het configureren van het apparaat.
 
-1. Open uw webbrowser en ga naar [http://192.168.0.1/](http://192.168.0.1/). De volgende webpagina wordt weer gegeven:
+1. Open uw webbrowser en ga naar [http://192.168.0.1/](http://192.168.0.1/) . De volgende webpagina wordt weer gegeven:
 
     ![Gebruikers interface configureren](media/howto-connect-devkit/config-ui.png)
 
@@ -92,7 +91,7 @@ U hebt de volgende resources nodig om de stappen in dit artikel uit te voeren:
 
 De DevKit registreert eerst een nieuw apparaat in IoT Central toepassing en begint vervolgens met het verzenden van gegevens.
 
-## <a name="view-the-telemetry"></a>De telemetrie weer geven
+## <a name="view-the-telemetry"></a>De telemetrie weergeven
 
 In deze stap bekijkt u de telemetrie in uw Azure IoT Central-toepassing.
 
