@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, kinect, SDK, down load update, nieuwste, beschikbaar, installeren
 ms.openlocfilehash: 2c23977c7e01a9137b72b44d1bdc0e1373bafa0a
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277354"
 ---
 # <a name="azure-kinect-sensor-sdk-download"></a>Azure Kinect sensor-SDK downloaden
@@ -62,4 +62,4 @@ Als u een oudere versie van de Azure Kinect sensor SDK nodig hebt, kunt u deze [
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Azure Kinect DK instellen](set-up-azure-kinect-dk.md)
+[Azure Kinect DK installeren](set-up-azure-kinect-dk.md)

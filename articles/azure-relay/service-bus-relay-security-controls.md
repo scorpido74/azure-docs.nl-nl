@@ -4,10 +4,10 @@ description: In deze artikelen vindt u een controle lijst met ingebouwde beveili
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 64abee031bb20e2bdb10bf1cc3cd77e135713550
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85316615"
 ---
 # <a name="security-controls-for-azure-relay"></a>Beveiligings controles voor Azure Relay
@@ -39,7 +39,7 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 | Verificatie| Yes | Via SAS. | [Verificatie en autorisatie Azure Relay](relay-authentication-and-authorization.md) |
 | Autorisatie|  Yes | Via SAS. | [Verificatie en autorisatie Azure Relay](relay-authentication-and-authorization.md) |
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 | Beveiligings beheer | Ja/Nee | Notities | Documentatie |
 |---|---|--|--|

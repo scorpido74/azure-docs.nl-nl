@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: article
 keywords: Azure, kinect, RGB, IR, opname, sensor, SDK, toegang, diepte, video, camera, IMU, beweging, sensor, audio, microfoon, Matroska, sensor SDK, down load, hoofd tekst, tracering, ondersteuning
 ms.openlocfilehash: 61d29284bc2ed9e574e8a19561f19ad6f4259908
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277360"
 ---
 # <a name="azure-kinect-support-options-and-resources"></a>Ondersteunings opties en-bronnen voor Azure Kinect
@@ -32,7 +32,7 @@ Er zijn meerdere manieren om een Assisted Support voor Azure Kinect te krijgen.
 
 ### <a name="microsoft-qa"></a>Microsoft Q&A
 
-Voor snelle en betrouw bare antwoorden op uw technische product vragen van micro soft-technici, Azure Most Valuable Professionals (Mvp's) of onze expert Community, kunt u contact met ons opnemen op [micro soft Q&A](https://aka.ms/azureqa), het voorkeurs doel van Azure voor ondersteuning van de community.
+Voor snelle en betrouwbare antwoorden op uw technische productvragen van Microsoft Engineers, Azure Most Valuable Professionals (MVP's) of de community van experts, neemt u contact met ons op via [Microsoft Q&A](https://aka.ms/azureqa), de voorkeurslocatie van Azure voor ondersteuning uit de community.
 
 - [Micro soft Q&A voor Azure Kinect](https://docs.microsoft.com/answers/topics/azure-kinect-dk.html), waar u vragen kunt stellen of een bestaande bibliotheek met vragen wilt doorzoeken.
 

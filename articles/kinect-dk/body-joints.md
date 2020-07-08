@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, poort, hoofd tekst, volgen, gewricht, hiërarchie, Bone, verbinding
 ms.openlocfilehash: 4cf6ac13a93d0674f9fa144abcc3153a2d7c3350
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277325"
 ---
 # <a name="azure-kinect-body-tracking-joints"></a>Hoofd tracerings gewrichten van Azure Kinect
@@ -77,4 +77,4 @@ De volgende tabel geeft een opsomming van de standaard gewrichts verbindingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Index tracering van hoofd tekst](body-index-map.md)
+[Indexkaart voor het volgen van een lichaam](body-index-map.md)

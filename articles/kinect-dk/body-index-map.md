@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, poort, hoofd tekst, volgen, index, segmentatie, kaart
 ms.openlocfilehash: 8c128e59cef515aafb4f59794f0f644b90fd625d
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277340"
 ---
 # <a name="azure-kinect-body-tracking-index-map"></a>Index toewijzing van Azure Kinect Body bijhouden
@@ -31,4 +31,4 @@ De Body-index toewijzing is opgeslagen als a `k4a_image_t` en heeft dezelfde res
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Uw eerste app voor het bijhouden van hoofd items bouwen](build-first-body-app.md)
+[Uw eerste app om een lichaam te volgen](build-first-body-app.md)

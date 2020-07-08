@@ -4,10 +4,10 @@ description: In dit artikel wordt beschreven hoe u firewall regels gebruikt om v
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: f5fca44c56982e368b762a0b9b3418f1175f7de0
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85314851"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>IP-Firewall configureren voor een Azure Relay naam ruimte
@@ -17,7 +17,7 @@ Deze functie is handig in scenario's waarin Azure Relay alleen toegankelijk moet
 
 
 > [!IMPORTANT]
-> Deze functie is momenteel beschikbaar als preview-product. 
+> Deze functie is momenteel in preview. 
 
 
 ## <a name="enable-ip-firewall-rules"></a>IP-firewall regels inschakelen

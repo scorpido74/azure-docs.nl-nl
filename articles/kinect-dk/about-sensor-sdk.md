@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: article
 keywords: Azure, kinect, RGB, IR, opname, sensor, SDK, toegang, diepte, video, camera, IMU, beweging, sensor, audio, microfoon, Matroska, sensor SDK, downloaden
 ms.openlocfilehash: 17c1b33120eacb5d0c6d3c02e692d1488ef474e6
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277318"
 ---
 # <a name="about-azure-kinect-sensor-sdk"></a>Over de Azure Kinect sensor SDK
@@ -22,13 +22,13 @@ Dit artikel bevat een overzicht van de Azure Kinect sensor Software Development 
 
 De Azure Kinect sensor-SDK biedt multi-platform toegang op laag niveau voor Azure Kinect-apparaatconfiguratie en hardware Sens oren-streams, waaronder:
 
-- Uitgebreide controle van camera toegang en-modus (een passieve IR-modus, plus brede en smalle diepte modi voor velden) 
-- Toegang tot en beheer van RGB-camera (bijvoorbeeld belichting en wit saldo) 
-- Toegang tot de bewegings sensor (gyroscope en versnellings meter) 
-- Gesynchroniseerde diepte: RGB-camera streaming met Configureer bare vertraging tussen camera's 
-- Beheer van externe apparaten synchronisatie met Configureer bare vertragings offset tussen apparaten 
-- Camera frame meta gegevens toegang voor afbeeldings resolutie, tijds tempel enz. 
-- Kalibratie van toegang tot apparaten 
+- Toegang tot dieptecamera en modusbeheer (een passieve IR-modus inclusief modi voor brede en smalle weergavediepte) 
+- Toegang tot de RGB-camera en beheer hiervan (bijvoorbeeld belichting en witbalans) 
+- Toegang tot de bewegingssensor (gyroscoop en versnellingsmeter) 
+- Gesynchroniseerde dieptecamera (RGB) die kan worden gestreamd met een configureerbare vertraging tussen camera's 
+- Beheer van externe-apparaatsynchronisatie met een configureerbare vertragings-offset tussen apparaten 
+- Toegang tot de metagegevens van het camerakader (met bijvoorbeeld de beeldresolutie, timestamp, etc.) 
+- Toegang tot kalibratiegegevens van het apparaat 
 
 ## <a name="tools"></a>Hulpprogramma's
 

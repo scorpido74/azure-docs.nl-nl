@@ -12,10 +12,10 @@ ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: e529e398b90050bf654c702ec34686bdc173c9e5
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85299327"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>business intelligence partners van Azure Synapse Analytics
@@ -23,7 +23,7 @@ ms.locfileid: "85299327"
 Als u uw volledige data warehouse-oplossing wilt maken met behulp van de Synapse SQL-groep binnen Azure Synapse, kunt u kiezen uit een groot aantal toonaangevende hulpprogram ma's.  In dit artikel worden micro soft-partner bedrijven beschreven met officiële oplossingen voor business intelligence (BI) die Azure SQL Data Warehouse ondersteunen.
 
 ## <a name="our-business-intelligence-partners"></a>Onze business intelligence partners
-| Partner | Beschrijving | Website/product koppeling |
+| Partner | Description | Website/product koppeling |
 | ------- | ----------- | -------------------- |
 | ![Birst](./media/sql-data-warehouse-partner-business-intelligence/birst_logo.png) |**Birst**<br>Birst maakt verbinding met de hele organisatie via een netwerk van ingevoerd gevirtualiseerde BI-instanties op het hoogste niveau van een gedeelde, gemeen schappelijke analytische infra structuur|[Product pagina](https://www.birst.com/)<br> |
 | ![ClearStory-gegevens](./media/sql-data-warehouse-partner-business-intelligence/clearstory_data_logo.png) |**ClearStory-gegevens (continue bedrijfs inzichten)**<br>ClearStory-gegevens maken snelle cyclus analyse mogelijk voor verschillende gegevens die zijn opgeslagen in Synapse SQL-groep. Het geïntegreerde op Spark gebaseerde platform en de analytische toepassing snelheid gegevens toegang en harmonisatie van verschillende gegevens sets. Ze bieden snelle, samenwerkings exploratie die zakelijke gebruikers ondersteunt om zichzelf te laten vertrouwen in het verkrijgen van snelle inzichten. |[Product pagina](https://www.clearstorydata.com/product/continuous-insights/)<br> |

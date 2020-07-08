@@ -12,10 +12,10 @@ ms.author: procha
 ms.reviewer: mabasile
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 43008d33d8d50911c2c97516cb7896b0d3975b06
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85299038"
 ---
 # <a name="azure-synapse-analytics-launch-partners"></a>Start partners van Azure Synapse Analytics
@@ -23,7 +23,7 @@ ms.locfileid: "85299038"
 Azure Synapse Analytics-partners worden geleverd met diep gaande integratie Programma's & bezorgings expertise in verschillende branches om onze klanten te helpen hun digitale trans formatie te versnellen met Cloud Scale Analytics. Bekijk de aanbiedingen van de volgende partners die de Lance ring van de open bare preview op 19 mei ondersteunen met sociale versterking, workshops en aanbiedingen.
 
 ## <a name="our-public-preview-launch-partners"></a>Onze open bare preview-start partners
-| Partner | Beschrijving | Website/product koppeling |
+| Partner | Description | Website/product koppeling |
 | ------- | ----------- | -------------------- |
 | ![Accenture](./media/sql-data-warehouse-partner-public-preview/accenture-logo.png) |**Accenture**<br>Met 45000 + gespecialiseerde professionals, de Accenture micro soft-bedrijfs groep, aangedreven door Avanade, kunnen ondernemingen profiteren van het grote aantal digitale onderbrekingen.|[Partner pagina](https://www.accenture.com/us-en/services/microsoft-index)<br>|
 | ![Adatis](./media/sql-data-warehouse-partner-public-preview/adatis-logo.png) |**Adatis**<br>Adatis biedt services die zijn gespecialiseerd in geavanceerde gegevens analyse, van gegevens strategie en advisering tot wereld klasse Delivery en beheerde services. |[Partner pagina](https://adatis.co.uk/)<br> |

@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, ophalen, sensor, camera, SDK, diepte, RGB, afbeeldingen, kleur, vastleg ging, oplossing, buffer
 ms.openlocfilehash: 84e678993f94c17bf58fb134234afaee4139aad5
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277203"
 ---
 # <a name="retrieve-azure-kinect-image-data"></a>Azure Kinect-installatie kopie gegevens ophalen
@@ -21,7 +21,7 @@ Voordat u een installatie kopie configureert en vastlegt, moet u het [apparaat z
 
 U kunt ook verwijzen naar het [voor beeld van SDK-streaming](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/tree/develop/examples/streaming) dat laat zien hoe u de functies in dit artikel gebruikt.
 
-De volgende functies zijn van toepassing:
+De volgende functies worden behandeld:
 
 - [`k4a_device_start_cameras()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gaad7a85e1e5471810262442fc4a8e217a.html#gaad7a85e1e5471810262442fc4a8e217a)
 - [`k4a_device_get_capture()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga4dac757a33657f4d3dbf1ae8b21c158a.html#ga4dac757a33657f4d3dbf1ae8b21c158a)
@@ -123,7 +123,7 @@ k4a_capture_release(capture);
 U weet nu hoe u de afbeeldingen van de camera's kunt vastleggen en coördineren tussen de kleur en de diepte, met behulp van uw Azure Kinect-apparaat. U kunt ook het volgende doen:
 
 >[!div class="nextstepaction"]
->[IMU-voor beelden ophalen](retrieve-imu-samples.md)
+>[IMU-voorbeelden ophalen](retrieve-imu-samples.md)
 
 >[!div class="nextstepaction"]
 >[Toegangs microfoons](access-mics.md)

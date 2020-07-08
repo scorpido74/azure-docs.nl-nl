@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, sensor, SDK, diepte, RGB, apparaat, zoeken, openen
 ms.openlocfilehash: 67fc93b924d5d663bb43098969c54d1975bd5895
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277274"
 ---
 # <a name="find-then-open-the-azure-kinect-device"></a>Zoek het Azure Kinect-apparaat en open het
@@ -20,7 +20,7 @@ In dit artikel wordt beschreven hoe u de Azure Kinect DK kunt vinden en openen. 
 
 U kunt ook verwijzen naar het [voor beeld van de SDK, waarin wordt](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/tree/develop/examples/enumerate) gedemonstreerd hoe u de functies in dit artikel gebruikt.
 
-De volgende functies zijn van toepassing:
+De volgende functies worden behandeld:
  * [`k4a_device_get_installed_count()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gaf7d19df0f73f8e4dfaa21e1b4b719ecc.html#gaf7d19df0f73f8e4dfaa21e1b4b719ecc)
  * [`k4a_device_open()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3d4eb5dfbf4d576d4978b66ea419f113.html#ga3d4eb5dfbf4d576d4978b66ea419f113)
  * [`k4a_device_get_serialnum()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga798489af207ff1c99f2285ff6b08bc22.html#ga798489af207ff1c99f2285ff6b08bc22)

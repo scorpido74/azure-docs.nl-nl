@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, kinect, sensor, viewer, visualisatie, diepte, RGB, kleur, IMU, audio, microfoon, punt-Cloud
 ms.openlocfilehash: 57cf7df831e97da4143a7f196b69a3a10609a017
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277282"
 ---
 # <a name="azure-kinect-viewer"></a>Azure Kinect viewer
@@ -56,7 +56,7 @@ Open de versie van de firmware van het apparaat in het venster Configuratie, zoa
 
 In dit geval wordt de 1.5.63 van de diepte camera bijvoorbeeld uitgevoerd op FW-out.
 
-## <a name="depth-camera"></a>Diepte camera
+## <a name="depth-camera"></a>Dieptecamera
 
 In de diepte Camera-Viewer worden twee vensters weer gegeven:
 

@@ -12,10 +12,10 @@ ms.date: 03/12/2020
 ms.topic: article
 keywords: Azure, kinect, systeem vereisten, CPU, GPU, USB, installeren, instellen, minimum, vereisten
 ms.openlocfilehash: 5cf313114b62532ee3f2b3d7a5142f79218954c9
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277352"
 ---
 # <a name="azure-kinect-sensor-sdk-system-requirements"></a>Azure Kinect sensor SDK-systeem vereisten
@@ -65,6 +65,6 @@ Er zijn bekende compatibiliteits problemen met USB-hostcontrollers. Meer informa
 
 - [Overzicht van Azure Kinect DK](about-azure-kinect-dk.md)
 
-- [Azure Kinect DK instellen](set-up-azure-kinect-dk.md)
+- [Azure Kinect DK installeren](set-up-azure-kinect-dk.md)
 
 - [Bijhouden van de hoofd tekst van Azure Kinect instellen](body-sdk-setup.md)

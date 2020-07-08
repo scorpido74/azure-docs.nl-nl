@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
 ms.openlocfilehash: 56c20c995a95058b5039b7268c7b7b1426e900fa
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85298120"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Azure Blob Storage-resources beheren met Storage Explorer
@@ -169,7 +169,7 @@ Zodra u een BLOB-container hebt gemaakt, kunt u een BLOB uploaden naar die BLOB-
 De volgende stappen laten zien hoe u de blobs (en mappen) binnen een BLOB-container beheert.
 
 1. Open Storage Explorer.
-2. Vouw in het linkerdeel venster het opslag account uit met de BLOB-container die u wilt beheren.
+2. Vouw in het linkerdeelvenster het opslagaccount uit met de blob-container die u wilt beheren.
 3. Vouw de **BLOB-containers**van het opslag account uit.
 4. Dubbel klik op de BLOB-container die u wilt weer geven.
 5. In het hoofd venster wordt de inhoud van de BLOB-container weer gegeven.

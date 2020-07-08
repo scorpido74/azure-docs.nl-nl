@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, kinect, SDK, update downloaden, nieuwste, beschikbaar, installeren, hoofd tekst, bijhouden
 ms.openlocfilehash: e3f8233d208e2a45c1af9a52a76b6064b15bfe4b
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277350"
 ---
 # <a name="download-azure-kinect-body-tracking-sdk"></a>De Azure Kinect Body tracking-SDK downloaden
@@ -118,6 +118,6 @@ Als de opdracht is geslaagd, is de SDK klaar voor gebruik.
 
 - [Overzicht van Azure Kinect DK](about-azure-kinect-dk.md)
 
-- [Azure Kinect DK instellen](set-up-azure-kinect-dk.md)
+- [Azure Kinect DK installeren](set-up-azure-kinect-dk.md)
 
 - [Bijhouden van de hoofd tekst van Azure Kinect instellen](body-sdk-setup.md)

@@ -9,17 +9,17 @@ ms.date: 06/26/2019
 ms.topic: how-to
 keywords: hoofd tekst, kader, azure, kinect, hoofd tekst, volgen, tips
 ms.openlocfilehash: be44f59cb84e99129bf526575293eee69ca64598
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277344"
 ---
-# <a name="access-data-in-body-frame"></a>Toegang tot gegevens in het hoofd frame
+# <a name="access-data-in-body-frame"></a>Gegevens in kader openen
 
 In dit artikel worden de gegevens in een hoofd frame en de functies voor toegang tot deze gegevens beschreven.
 
-De volgende functies zijn van toepassing:
+De volgende functies worden behandeld:
 
 - [k4abt_frame_get_body_id ()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_ga1d612404d133a279af847974e9359a92.html#ga1d612404d133a279af847974e9359a92)
 - [k4abt_frame_get_body_index_map ()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_ga0e4f2d0d7e330d444de7070fb1fee4f6.html#ga0e4f2d0d7e330d444de7070fb1fee4f6)
@@ -76,4 +76,4 @@ k4a_capture_release(input_capture);
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
->[Azure Kinect Body tracking SDK](https://microsoft.github.io/Azure-Kinect-Body-Tracking/)
+>[De Body Tracking-SDK van Azure Kinect](https://microsoft.github.io/Azure-Kinect-Body-Tracking/)

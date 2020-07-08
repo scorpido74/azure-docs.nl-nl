@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/26/2019
 keywords: kinect, azure, sensor, SDK, coördinaten systeem, kalibratie, project, unproject, trans formatie, RGB-d, Point-Cloud
 ms.openlocfilehash: df7f2aa13c0e9c0241494e96e720b30f3ff1d8a5
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277202"
 ---
 # <a name="use-azure-kinect-sensor-sdk-image-transformations"></a>Trans formaties van de Azure Kinect sensor SDK gebruiken
@@ -22,7 +22,7 @@ Volg de specifieke functies voor het gebruiken en transformeren van afbeeldingen
 
  Alle functies die worden voorafgegaan door *k4a_transformation* worden toegepast op hele installatie kopieën. Ze vereisen dat de transformatie ingang [k4a_transformation_t](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__transformation__t.html) verkregen via [k4a_transformation_create ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga853a1a5b6d521bbdf523a69e890c4f10.html#ga853a1a5b6d521bbdf523a69e890c4f10) en niet is toegewezen via [k4a_transformation_destroy ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga7d3ecaae66f26c1a89da9042b1bc6d44.html#ga7d3ecaae66f26c1a89da9042b1bc6d44). U kunt ook verwijzen naar het voor beeld van SDK- [trans formatie](https://github.com/Microsoft/Azure-Kinect-Sensor-SDK/tree/develop/examples/transformation) dat laat zien hoe u de drie functies in dit onderwerp kunt gebruiken.
 
-De volgende functies zijn van toepassing:
+De volgende functies worden behandeld:
 
 * [`k4a_transformation_depth_image_to_color_camera()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gafacffb5f781a9c2df30d4a16241cd514.html#gafacffb5f781a9c2df30d4a16241cd514)
 * [`k4a_transformation_depth_image_to_color_camera_custom()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gac00dd00e7612a86382e3d0a130f276bb.html#gac00dd00e7612a86382e3d0a130f276bb)

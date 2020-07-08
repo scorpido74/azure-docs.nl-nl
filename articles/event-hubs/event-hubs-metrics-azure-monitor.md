@@ -4,10 +4,10 @@ description: Dit artikel bevat informatie over het gebruik van Azure monitoring 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 76df9920c517e8370409bca26e5a6533c7253c1e
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85314594"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Metrische gegevens van Azure Event Hubs in Azure Monitor
@@ -68,7 +68,7 @@ Telt het aantal gegevens-en beheer bewerkings aanvragen.
 
 | Naam meetwaarde | Description |
 | ------------------- | ----------------- |
-|Inkomende berichten |Het aantal gebeurtenissen of berichten dat is verzonden naar Event Hubs gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
+|Binnenkomende berichten |Het aantal gebeurtenissen of berichten dat is verzonden naar Event Hubs gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
 |Uitgaande berichten |Het aantal gebeurtenissen of berichten dat is opgehaald uit Event Hubs gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
 |Binnenkomende bytes |Het aantal bytes dat is verzonden naar de Azure Event Hubs-service gedurende een opgegeven periode.<br/><br/> Eenheid: bytes <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
 |Uitgaande bytes |Het aantal bytes dat is opgehaald uit de Azure Event Hubs-service gedurende een opgegeven periode.<br/><br/> Eenheid: bytes <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
@@ -87,7 +87,7 @@ U kunt de metrische gegevens van Event Hubs vastleggen controleren wanneer u de 
 
 | Naam meetwaarde | Description |
 | ------------------- | ----------------- |
-|Achterstand vastleggen |Het aantal bytes dat nog moet worden vastgelegd voor de gekozen bestemming.<br/><br/> Eenheid: bytes <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
+|Vastgelegde achterstand |Het aantal bytes dat nog moet worden vastgelegd voor de gekozen bestemming.<br/><br/> Eenheid: bytes <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
 |Vastgelegde berichten |Het aantal berichten of gebeurtenissen dat gedurende een opgegeven periode is vastgelegd voor de gekozen bestemming.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
 |Vastgelegde bytes |Het aantal bytes dat is vastgelegd voor de gekozen bestemming gedurende een opgegeven periode.<br/><br/> Eenheid: bytes <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
 

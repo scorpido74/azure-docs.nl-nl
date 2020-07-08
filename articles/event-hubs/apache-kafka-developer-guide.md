@@ -4,10 +4,10 @@ description: Dit artikel bevat koppelingen naar artikelen waarin wordt beschreve
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: bbd173a7f81042c0839cec81838172b21f80d5cd
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85314244"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Apache Kafka ontwikkelaars handleiding voor Azure Event Hubs
@@ -45,7 +45,7 @@ Zie de volgende zelf studies op GitHub:
 | Zelfstudie | Beschrijving | 
 | ------------------------- | ----------- | 
 | [Akka](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java) | Deze zelf studie laat zien hoe u Akka-streams verbindt met Kafka ingeschakeld Event Hubs zonder uw protocol-clients of uw eigen clusters te wijzigen. Er zijn twee afzonderlijke zelf studies die gebruikmaken van **Java** -en **scala** -programmeer talen. | 
-| [Verbinden](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) | Dit document helpt u bij het integreren van Kafka Connect met Azure Event Hubs en het implementeren van basis-FileStreamSource en FileStreamSink-connectors. Hoewel deze connectors niet bestemd zijn voor productie gebruik, demonstreren ze een end-to-end Kafka Connect-scenario waarbij Azure Event Hubs maskers als een Kafka-Broker.| 
+| [Verbinding maken](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) | Dit document helpt u bij het integreren van Kafka Connect met Azure Event Hubs en het implementeren van basis-FileStreamSource en FileStreamSink-connectors. Hoewel deze connectors niet bestemd zijn voor productie gebruik, demonstreren ze een end-to-end Kafka Connect-scenario waarbij Azure Event Hubs maskers als een Kafka-Broker.| 
 | [Filebeat](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/filebeat) | In dit document wordt stapsgewijs uitgelegd hoe u Filebeat en Event Hubs integreert via de Kafka-uitvoer van Filebeat. | 
 | [Flink](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink) | In deze zelf studie wordt uitgelegd hoe u verbinding kunt maken met Apache flink met Kafka Event Hubs zonder uw protocol-clients te wijzigen of uw eigen clusters uit te voeren. | 
 | [FluentD](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/fluentd) | In dit document wordt uitgelegd hoe u gepasseerde en Event Hubs kunt integreren met behulp `out_kafka` van de uitvoer-invoeg toepassing. |

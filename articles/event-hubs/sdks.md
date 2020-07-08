@@ -4,10 +4,10 @@ description: Dit artikel bevat informatie over de client-Sdk's voor Azure Event 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 4c3557556500f2a536e20331bd3d05d84f608f0b
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85312559"
 ---
 # <a name="azure-event-hubs---client-sdks"></a>Azure Event Hubs-client-Sdk's
@@ -20,7 +20,7 @@ Dit artikel bevat de volgende informatie voor de Sdk's die worden ondersteund do
 ## <a name="client-sdks"></a>Client-SDK 's
 In de volgende tabel worden alle momenteel beschik bare Azure Event Hubs runtime-clients beschreven. Hoewel sommige van deze bibliotheken ook beperkte beheer functionaliteit bevatten, zijn er ook specifieke bibliotheken die zijn toegewezen aan beheer bewerkingen. De belangrijkste focus van deze bibliotheken is het **verzenden en ontvangen van berichten** van een event hub.
 
-| Taal | Pakket | Naslaginformatie | 
+| Taal | Pakket | Verwijzing | 
 | -------- | ------- | --------------- | 
 | . NET Standard (**meest recent** en ondersteunt zowel .net Core als .NET Framework) | [Azure. Messa ging. Event hubs](https://www.nuget.org/packages/Azure.Messaging.EventHubs/) |<ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs)</li><li>[Zelfstudie](get-started-dotnet-standard-send-v2.md)</li></ul> |
 |       | [Azure. Messa ging. Event hubs. processor](https://www.nuget.org/packages/Azure.Messaging.EventHubs.Processor/) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor)</li><li>[Zelfstudie](get-started-dotnet-standard-send-v2.md)</li></ul> |
@@ -33,13 +33,13 @@ In de volgende tabel worden alle momenteel beschik bare Azure Event Hubs runtime
 |        | [Azure-eventhub-checkpointstoreblob-AIO](https://pypi.org/project/azure-eventhub-checkpointstoreblob-aio/) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio)</li><li>[Zelfstudie](get-started-python-send-v2.md)</li></ul> |
 | Javascript | [Azure/Event-hubs](https://www.npmjs.com/package/@azure/event-hubs) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs)</li><li>[Zelfstudie](get-started-node-send-v2.md)</li></ul> |
 |            | [Azure-Event hubs-checkpointstore-BLOB](https://www.npmjs.com/package/@azure/eventhubs-checkpointstore-blob) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/eventhubs-checkpointstore-blob)</li><li>[Zelfstudie](get-started-node-send-v2.md)</li></ul> |
-| Go | [Azure-Event-hubs-go](https://github.com/Azure/azure-event-hubs-go) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-event-hubs-go)</li><li>[Zelfstudie](event-hubs-go-get-started-send.md)</li></ul> |
+| Aan de slag | [Azure-Event-hubs-go](https://github.com/Azure/azure-event-hubs-go) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-event-hubs-go)</li><li>[Zelfstudie](event-hubs-go-get-started-send.md)</li></ul> |
 | C | [Azure-Event-hubs-c](https://github.com/Azure/azure-event-hubs-c) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-event-hubs-c)</li><li>[Zelfstudie](event-hubs-c-getstarted-send.md)</li></ul> |
 
 ## <a name="management-sdks"></a>Management-Sdk's
 De volgende tabel geeft een lijst van alle momenteel beschik bare beheer bibliotheken. Geen van deze bibliotheken bevat runtime-bewerkingen en is uitsluitend bedoeld voor het **beheren van Event hubs entiteiten**.
 
-| Taal | Pakket | Naslaginformatie | 
+| Taal | Pakket | Verwijzing | 
 | -------- | ------- | --------------- | 
 | .NET Standard | [Microsoft.Azure.Management.EventHub](https://www.nuget.org/packages/Microsoft.Azure.Management.EventHub) |<ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Microsoft.Azure.Management.EventHub)</li><li>[Zelfstudie](get-started-dotnet-standard-send-v2.md)</li></ul> |
 

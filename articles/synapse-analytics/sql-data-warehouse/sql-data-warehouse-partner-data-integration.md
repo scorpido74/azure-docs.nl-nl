@@ -12,10 +12,10 @@ ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: c8ab5bc5072612edd3eaabbd13468567a92f42e4
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85296386"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure Synapse Analytics-gegevens integratie partners
@@ -24,7 +24,7 @@ Als u uw data warehouse-oplossing wilt maken met behulp van de Synapse-functie v
 
 ## <a name="data-integration-partners"></a>Gegevens integratie partners
 
-| Partner | Beschrijving | Website/product koppeling |
+| Partner | Description | Website/product koppeling |
 | ------- | ----------- | -------------------- |
 | ![Alooma](./media/sql-data-warehouse-partner-data-integration/alooma_logo.png) |**Alooma**<br> Alooma is een oplossing voor het uitpakken, transformeren en laden (ETL) waarmee gegevens teams gegevens van verschillende gegevens silo's kunnen integreren, verrijken en streamen naar een Azure Synapse-data warehouse in real-time. |[Product pagina](https://www.alooma.com/) |
 | ![Alteryx](./media/sql-data-warehouse-partner-data-integration/alteryx_logo.png) |**Alteryx**<br> Alteryx Designer biedt een Herhaal bare werk stroom voor Self-service voor gegevens analyse die leidt tot meer inzicht in uren, en niet in de weken van traditionele benaderingen. Alteryx Designer helpt gegevens analisten door het combi neren van gegevens voorbereiding, gegevens overvloeiing en analyses – predictief, statistisch en ruimtelijke, met behulp van dezelfde intuïtieve gebruikers interface. |[Product pagina](https://www.alteryx.com/partners/microsoft/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/alteryx.alteryx-designer)<br>|

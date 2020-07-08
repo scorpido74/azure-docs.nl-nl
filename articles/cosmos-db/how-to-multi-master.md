@@ -8,10 +8,10 @@ ms.date: 12/02/2019
 ms.author: mjbrown
 ms.custom: tracking-python
 ms.openlocfilehash: a07ab3f65fcdeacf37626ad05d0b95ac3f4e7e64
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85263665"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Multi-Master configureren in uw toepassingen die gebruikmaken van Azure Cosmos DB
@@ -35,7 +35,7 @@ ConnectionPolicy policy = new ConnectionPolicy
 policy.SetCurrentLocation("West US 2");
 ```
 
-## <a name="net-sdk-v3"></a><a id="netv3"></a>.NET SDK v3
+## <a name="net-sdk-v3"></a><a id="netv3"></a>.NET-SDK v3
 
 Als u meerdere masters in uw toepassing wilt inschakelen, stelt `ApplicationRegion` u de regio in waarin de toepassing wordt geïmplementeerd en waar Cosmos DB worden gerepliceerd:
 
@@ -56,7 +56,7 @@ CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder("<connection-s
 CosmosClient client = cosmosClientBuilder.Build();
 ```
 
-## <a name="java-v4-sdk"></a><a id="java4-multi-master"></a>Java v4-SDK
+## <a name="java-v4-sdk"></a><a id="java4-multi-master"></a> Java V4 SDK
 
 Als u meerdere masters in uw toepassing wilt inschakelen, roept u `.multipleWriteRegionsEnabled(true)` de client-opbouw functie op en gebruikt u deze `.preferredRegions(preferredRegions)` in `preferredRegions` een `List` container met één element. Dit is de regio waarin de toepassing wordt geïmplementeerd en waar Cosmos DB worden gerepliceerd:
 

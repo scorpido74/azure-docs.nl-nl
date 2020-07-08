@@ -9,13 +9,13 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, sensor, SDK, hoofd tekst, bijhouden, gewricht
 ms.openlocfilehash: 1b62022242144d5db51455a32ac04b67c3e5dd7a
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277342"
 ---
-# <a name="get-body-tracking-results"></a>Resultaten van het bijhouden van hoofd tekst ophalen
+# <a name="get-body-tracking-results"></a>Resultaten van het volgen van een lichaam ophalen
 
 Voor het bijhouden van de hoofd tekst van de SDK wordt een body tracker-object gebruikt voor het verwerken van Azure Kinect DK-vastleg ging en wordt het bijhouden van hoofd Daarnaast blijft de algemene status van de beheer-, verwerkings wachtrijen en de uitvoer wachtrij. Er zijn drie stappen in het gebruik van de hoofd tekst vastleggen:
 
@@ -72,7 +72,7 @@ case K4A_WAIT_RESULT_FAILED:
 
 ## <a name="enqueue-the-capture-and-pop-the-results"></a>De opname in de wachtrij plaatsen en de resultaten oproepen
 
-De tracker beheert intern een invoer wachtrij en een uitvoer wachtrij om de Azure Kinect DK-opnamen asynchroon te verwerken. Gebruik de functie [k4abt_tracker_enqueue_capture ()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_ga093becd9bb4a63f5f4d56f58097a7b1e.html#ga093becd9bb4a63f5f4d56f58097a7b1e) om een nieuwe opname toe te voegen aan de invoer wachtrij. Gebruik de functie [k4abt_tracker_pop_result ()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_gaaf446fb1579cbbe0b6af824ee0a7458b.html#gaaf446fb1579cbbe0b6af824ee0a7458b) uit de uitvoer wachtrij als resultaat. Het gebruik van de time-outwaarde is afhankelijk van de toepassing en regelt de wacht tijd voor de wachtrij.
+De tracker beheert intern een invoerwachtrij en een uitvoerwachtrij om de Azure Kinect DK-opnamen efficiënter asynchroon te verwerken. Gebruik de functie [k4abt_tracker_enqueue_capture ()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_ga093becd9bb4a63f5f4d56f58097a7b1e.html#ga093becd9bb4a63f5f4d56f58097a7b1e) om een nieuwe opname toe te voegen aan de invoer wachtrij. Gebruik de functie [k4abt_tracker_pop_result ()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_gaaf446fb1579cbbe0b6af824ee0a7458b.html#gaaf446fb1579cbbe0b6af824ee0a7458b) uit de uitvoer wachtrij als resultaat. Het gebruik van de time-outwaarde is afhankelijk van de toepassing en regelt de wacht tijd voor de wachtrij.
 
 ### <a name="real-time-processing"></a>Real-time verwerking
 Gebruik dit patroon voor toepassingen met één thread die real-time resultaten nodig hebben en verloren frames kunnen bevatten. Het `simple_3d_viewer` voor beeld bevindt zich in [github Azure-Kinect-samples](https://github.com/microsoft/Azure-Kinect-Samples) is een voor beeld van real-time verwerking.
@@ -131,4 +131,4 @@ k4abt_frame_release(body_frame); // Remember to release the body frame once you 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
->[Toegang tot gegevens in het hoofd frame](access-data-body-frame.md)
+>[Gegevens in kader openen](access-data-body-frame.md)
