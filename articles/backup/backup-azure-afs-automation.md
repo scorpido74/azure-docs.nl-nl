@@ -3,12 +3,12 @@ title: Een back-up van een Azure-bestands share maken met behulp van Power shell
 description: In dit artikel vindt u informatie over het maken van een back-up van een Azure Files bestands share met behulp van de Azure Backup-service en Power shell.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 2d391c661363a1a2bc4238cd7a976b7e13c4f0b8
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 18c03eda9d9daca3a0fa536843e32f7fc3158287
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391074"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971025"
 ---
 # <a name="back-up-an-azure-file-share-by-using-powershell"></a>Een back-up van een Azure-bestands share maken met behulp van Power shell
 
@@ -236,6 +236,8 @@ WorkloadName       Operation            Status                 StartTime        
 ------------             ---------            ------               ---------                                  -------                   -----
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
+
+Zie [dit artikel](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageshare?view=azps-4.3.0)voor meer informatie over het ophalen van een lijst met bestands shares voor een opslag account.
 
 ## <a name="important-notice-backup-item-identification"></a>Belang rijke mede deling: id van back-upitem
 

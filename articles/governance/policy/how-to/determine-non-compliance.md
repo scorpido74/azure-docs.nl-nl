@@ -1,22 +1,21 @@
 ---
 title: Oorzaken van niet-naleving bepalen
 description: Wanneer een resource niet-compatibel is, zijn er veel mogelijke redenen. Meer informatie over de oorzaak van de niet-naleving.
-ms.date: 05/20/2020
+ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 05405671900e8734ee1536cfc00fd5203a145124
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: d548f5b9db141eb6aed5984c43f00543d0228f31
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168553"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970770"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Oorzaken van niet-naleving bepalen
 
 Wanneer een Azure-resource wordt vastgesteld dat deze niet compatibel is met een beleids regel, is het handig om te begrijpen met welk gedeelte van de regel de resource niet compatibel is. Het is ook handig om te begrijpen welke wijziging een eerder compatibele resource heeft gewijzigd om deze niet-compatibel te maken. Er zijn twee manieren om deze informatie te vinden:
 
-> [!div class="checklist"]
-> - [Compatibiliteits Details](#compliance-details)
-> - [Wijzigings overzicht (preview-versie)](#change-history)
+- [Compatibiliteits Details](#compliance-details)
+- [Wijzigings overzicht (preview-versie)](#change-history)
 
 ## <a name="compliance-details"></a>Compatibiliteits Details
 
@@ -105,7 +104,7 @@ De volgende matrix wijst elke mogelijke _reden_ toe aan de verantwoordelijke [vo
 |De huidige waarde mag niet hoofdletter gevoelig overeenkomen met de doel waarde. |notMatchInsensitively of **niet** matchInsensitively |
 |Er zijn geen gerelateerde resources die overeenkomen met de effect Details in de beleids definitie. |Een resource van het type dat is gedefinieerd in **then. Details. type** en gerelateerd aan de resource die is gedefinieerd in het **als** gedeelte van de beleids regel bestaat niet. |
 
-## <a name="compliance-details-for-guest-configuration"></a>Compatibiliteits Details voor gast configuratie
+## <a name="compliance-details-for-guest-configuration"></a>Compliance-details voor gastconfiguratie
 
 Voor _auditIfNotExists_ -beleid in de categorie _gast configuratie_ kunnen er meerdere instellingen worden geëvalueerd in de virtuele machine en moet u Details per instelling weer geven. Als u bijvoorbeeld wilt controleren op een lijst met wachtwoord beleid en slechts een van de statussen _niet-compatibel_is, moet u weten welke specifieke wachtwoord beleidsregels niet voldoen aan de vereisten en waarom.
 
@@ -190,7 +189,7 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 ## <a name="change-history-preview"></a><a name="change-history"></a>Wijzigings overzicht (preview-versie)
 
-Als onderdeel van een nieuwe **open bare preview**zijn de laatste 14 dagen aan wijzigings geschiedenis beschikbaar voor alle Azure-resources die de verwijdering van de [volledige modus](../../../azure-resource-manager/templates/complete-mode-deletion.md)ondersteunen. Wijzigings overzicht bevat details over wanneer een wijziging is gedetecteerd en een _visueel verschil_ voor elke wijziging. Een wijzigings detectie wordt geactiveerd wanneer de eigenschappen van de Resource Manager worden toegevoegd, verwijderd of gewijzigd.
+Als onderdeel van een nieuwe **open bare preview**zijn de laatste 14 dagen aan wijzigings geschiedenis beschikbaar voor alle Azure-resources die de verwijdering van de [volledige modus](../../../azure-resource-manager/templates/complete-mode-deletion.md)ondersteunen. Wijzigings overzicht bevat details over wanneer een wijziging is gedetecteerd en een _visueel verschil_ voor elke wijziging. Een wijzigings detectie wordt geactiveerd wanneer de Azure Resource Manager eigenschappen worden toegevoegd, verwijderd of gewijzigd.
 
 1. Start de Azure Policy-service in Azure Portal door **Alle services** te selecteren en dan **Beleid** te zoeken en te selecteren.
 
@@ -217,5 +216,5 @@ De wijzigings geschiedenis gegevens worden door [Azure resource Graph](../../res
 - Lees [Informatie over de effecten van het beleid](../concepts/effects.md).
 - Meer informatie over het [programmatisch maken van beleids regels](programmatically-create.md).
 - Meer informatie over het [ophalen van compatibiliteits gegevens](get-compliance-data.md).
-- Meer informatie over het [oplossen van niet-compatibele resources](remediate-resources.md).
+- Ontdek hoe u [niet-compatibele resources kunt herstellen](remediate-resources.md).
 - Bekijk wat een beheer groep is met [het organiseren van uw resources met Azure-beheer groepen](../../management-groups/overview.md).

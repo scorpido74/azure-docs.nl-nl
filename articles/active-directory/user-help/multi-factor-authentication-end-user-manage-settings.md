@@ -10,14 +10,14 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 02/20/2020
+ms.date: 07/06/2020
 ms.author: curtand
-ms.openlocfilehash: c9304f4a958360d01d404d9b510feb5659e5436d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 259468d0d3b04b354e782529cefa2149974c9ca0
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746750"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983302"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>De twee ledige verificatie methode en-instellingen wijzigen
 
@@ -88,7 +88,7 @@ U kunt nieuwe telefoon nummers toevoegen of bestaande nummers bijwerken op de pa
 
 1. Werk in de sectie **Hoe wilt u reageren?** van de pagina **aanvullende beveiligings verificatie** de telefoon nummer gegevens voor uw **telefoon voor authenticatie** (uw primaire mobiele apparaat) en uw **zakelijke telefoon**.
 
-1. Schakel het selectie vakje naast de optie **alternatieve telefoon voor authenticatie** in en typ in een secundair telefoon nummer waar u tekst berichten of telefoon gesprekken kunt ontvangen als u geen toegang hebt tot uw primaire apparaat.
+1. Schakel het selectie vakje naast de optie **alternatieve telefoon voor authenticatie** in en typ in een secundair telefoon nummer waar u telefoon gesprekken kunt ontvangen als u geen toegang hebt tot uw primaire apparaat.
 
 1. Selecteer **Opslaan**.
 

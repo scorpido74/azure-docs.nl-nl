@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 253ea748462ec09cd9cf4eab14c05be678cfb82d
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 36c3515bbdd0f08063ecad2ba26fc7b92a5f0e19
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860899"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970685"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Wilt u archiveren wat er nieuw is in Azure Security Center?
 
@@ -29,9 +29,37 @@ Op deze pagina vindt u informatie over:
 - Opgeloste fouten
 - Afgeschafte functionaliteit
 
+
+## <a name="january-2020"></a>Januari 2020
+
+### <a name="enhanced-secure-score-preview"></a>Verbeterde beveiligde Score (preview-versie)
+
+Een verbeterde versie van de functie beveiligde Score van Azure Security Center is nu beschikbaar als preview. In deze versie zijn meerdere aanbevelingen onderverdeeld in beveiligings controles die beter aansluiten op uw kwets bare aanvallen (bijvoorbeeld de toegang tot beheer poorten beperken).
+
+Lees meer over de wijzigingen in de beveiligde score tijdens de preview-fase en bepaal andere herstel bewerkingen waarmee u uw omgeving verder kunt beveiligen.
+
+Meer informatie over [verbeterde beveiligde Score (preview-versie)](secure-score-security-controls.md).
+
+
+
 ## <a name="november-2019"></a>November 2019
 
-### <a name="threat-protection-for-azure-key-vault-in-public-preview-in-north-america-regions"></a>Bedreigings beveiliging voor Azure Key Vault in de open bare preview in Noord-Amerika regio's
+De updates in november zijn onder andere:
+ - [Bedreigings beveiliging voor Azure Key Vault in Noord-Amerika regio's (preview-versie)](#threat-protection-for-azure-key-vault-in-north-america-regions-preview)
+ - [Bedreigings beveiliging voor Azure Storage omvat het controleren van malware-reputatie](#threat-protection-for-azure-storage-includes-malware-reputation-screening)
+ - [Werk stroom automatisering met Logic Apps (preview-versie)](#workflow-automation-with-logic-apps-preview)
+ - [Snelle oplossing voor bulk bronnen algemeen beschikbaar](#quick-fix-for-bulk-resources-generally-available)
+ - [Container installatie kopieën scannen op beveiligings problemen (preview-versie)](#scan-container-images-for-vulnerabilities-preview)
+ - [Aanvullende normen voor naleving van regelgeving (preview-versie)](#additional-regulatory-compliance-standards-preview)
+ - [Bedreigings beveiliging voor Azure Kubernetes service (preview)](#threat-protection-for-azure-kubernetes-service-preview)
+ - [Evaluatie van beveiligings problemen met virtuele machines (preview-versie)](#virtual-machine-vulnerability-assessment-preview)
+ - [Geavanceerde gegevens beveiliging voor SQL-servers in azure Virtual Machines (preview-versie)](#advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview)
+ - [Ondersteuning voor aangepast beleid (preview-versie)](#support-for-custom-policies-preview)
+ - [Azure Security Center dekking uitbreiden met platform voor community en partners](#extending-azure-security-center-coverage-with-platform-for-community-and-partners)
+ - [Geavanceerde integraties met export van aanbevelingen en waarschuwingen (preview-versie)](#advanced-integrations-with-export-of-recommendations-and-alerts-preview)
+ - [On-premises servers onboarden naar Security Center vanuit het Windows-beheer centrum (preview-versie)](#onboard-on-prem-servers-to-security-center-from-windows-admin-center-preview)
+
+### <a name="threat-protection-for-azure-key-vault-in-north-america-regions-preview"></a>Bedreigings beveiliging voor Azure Key Vault in Noord-Amerika regio's (preview-versie)
 
 Azure Key Vault is een essentiële service voor het beveiligen van gegevens en het verbeteren van de prestaties van Cloud toepassingen door de mogelijkheid te bieden om sleutels, geheimen, cryptografische sleutels en beleids regels centraal te beheren in de Cloud. Omdat Azure Key Vault gevoelige en bedrijfskritische gegevens opslaat, is er maximale beveiliging vereist voor de sleutel kluizen en de gegevens die erin zijn opgeslagen.
 
@@ -146,6 +174,11 @@ Met deze nieuwe ervaring hebben gebruikers een WAC-server voor Azure Security Ce
 
 ## <a name="september-2019"></a>September 2019
 
+De updates in september zijn onder andere:
+
+ - [Regels beheren met verbeteringen voor besturings elementen voor adaptieve toepassingen](#managing-rules-with-adaptive-application-controls-improvements)
+ - [Aanbevelingen voor controle container beveiliging met behulp van Azure Policy](#control-container-security-recommendation-using-azure-policy)
+
 ### <a name="managing-rules-with-adaptive-application-controls-improvements"></a>Regels beheren met verbeteringen voor besturings elementen voor adaptieve toepassingen
 
 De ervaring van het beheren van regels voor virtuele machines met behulp van adaptieve toepassings besturings elementen is verbeterd. Met de adaptieve toepassings besturings elementen van Azure Security Center kunt u bepalen welke toepassingen kunnen worden uitgevoerd op uw virtuele machines. Naast een algemene verbetering van regel beheer, kunt u met een nieuw voor deel bepalen welke bestands typen worden beveiligd wanneer u een nieuwe regel toevoegt.
@@ -160,7 +193,13 @@ De aanbeveling van Azure Security Center voor het oplossen van beveiligings prob
 Als u uw ingeschakelde beveiligings beleid wilt bekijken, opent u de pagina beveiligings beleid vanuit Security Center.
 
 
-## <a name="august-2019"></a>Augustus 2019
+## <a name="august-2019"></a>augustus 2019
+
+De updates in augustus zijn onder andere:
+
+ - [Just-in-time-VM-toegang voor Azure Firewall](#just-in-time-jit-vm-access-for-azure-firewall)
+ - [Eén Klik op herbemiddeling om uw beveiligings postuur te verbeteren (preview-versie)](#single-click-remediation-to-boost-your-security-posture-preview)
+ - [Beheer in meerdere tenants](#cross-tenant-management)
 
 ### <a name="just-in-time-jit-vm-access-for-azure-firewall"></a>Just-in-time-VM-toegang voor Azure Firewall 
 

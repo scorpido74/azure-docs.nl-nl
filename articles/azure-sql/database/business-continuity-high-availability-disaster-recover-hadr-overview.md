@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Meer informatie over hoe Azure SQL Database en SQL Managed instance ondersteuning bieden voor Cloud-bedrijfs continuïteit en database herstel, en om bedrijfs kritieke Cloud toepassingen te blijven uitvoeren.
 keywords: bedrijfscontinuïteit, bedrijfscontinuïteit met de cloud, databasenoodherstel, databaseherstel
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -13,12 +13,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 8312fe1370ded990bd3523d531d168fd2cac5564
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 8ceef173e33c3603d9bc5d6ef217d54eef88609c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189765"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982469"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Overzicht van bedrijfscontinuïteit met Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -65,14 +65,14 @@ Met [groepen voor automatische failover](auto-failover-group-overview.md#termino
 
 |                                              | Geo-replicatie | Failover-groepen  |
 |:---------------------------------------------| :-------------- | :----------------|
-| Automatische failover                           |     Nee          |      Yes         |
-| Gelijktijdige failover van meerdere data bases  |     Nee          |      Yes         |
-| De gebruiker moet connection string bijwerken na een failover      |     Yes         |      Nee          |
-| Ondersteuning voor SQL Managed instance                   |     Nee          |      Yes         |
-| Kan zich in dezelfde regio bevinden als primair             |     Yes         |      Nee          |
-| Meerdere replica's                            |     Yes         |      Nee          |
-| Ondersteunt Lees-Scale                          |     Ja         |      Ja         |
-| &nbsp; | &nbsp; | &nbsp; |
+| **Automatische failover**                          |     Nee          |      Yes         |
+| **Gelijktijdige failover van meerdere data bases**  |     Nee          |      Yes         |
+| **De gebruiker moet connection string bijwerken na een failover**      |     Yes         |      Nee          |
+| **Ondersteuning voor SQL Managed instance**                   |     Nee          |      Yes         |
+| **Kan zich in dezelfde regio bevinden als primair**             |     Yes         |      Nee          |
+| **Meerdere replica's**                            |     Yes         |      Nee          |
+| **Ondersteunt Lees-Scale**                          |     Ja         |      Ja         |
+
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Een Data Base naar de bestaande server herstellen
 

@@ -7,13 +7,15 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
-ms.date: 09/20/2019
+ms.date: 06/17/2020
 ms.custom: include file
-ms.openlocfilehash: e45f3970176b6a2f12b7ad85727567e0cbc1e7c5
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: c09b8caa61b233d6af024f4517a32fb1d4019ecd
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212582"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85980342"
 ---
-U kunt optioneel Maxi maal twee branches selecteren en twee verticale, onder elke branche. Deze categorieën worden gebruikt voor het weer geven van uw aanbieding wanneer de industrie en verticale wereld worden gebruikt in zoek filters en op de winkel worden toegepast. Als uw aanbieding gericht is op een specifieke branche en/of verticaal, beschrijft u de manier waarop uw aanbod de geselecteerde branches of verticaal in de beschrijving van de aanbieding ondersteunt. Als uw aanbieding niet specifiek is voor de branche, mag u geen selectie maken en deze sectie leeg laten.
+Selecteer eventueel Maxi maal twee branches en twee verticalen onder elke branche. Deze categorieën worden gebruikt voor het weer geven van uw aanbieding wanneer de industrie en verticale wereld worden gebruikt in zoek filters en op de winkel worden toegepast. Als uw aanbieding gericht is op een specifieke branche en/of verticaal, legt u uit hoe uw aanbod de geselecteerde branches of verticaal in de beschrijving van de aanbieding ondersteunt. Als uw aanbieding niet specifiek is voor de branche, mag u geen selectie maken en deze sectie leeg laten.
+
+Bekijk de volledige lijst met branches en verticale in [Aanbevolen procedures](../../gtm-offer-listing-best-practices.md)voor aanbiedingen.

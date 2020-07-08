@@ -6,19 +6,19 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 0a247626566a4b0156d879954bf6734d248f01d8
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.date: 06/17/2020
+ms.openlocfilehash: 8a4ff5c5bce7774f805130f68d7418a73cb751f8
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85513511"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85980341"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Een Power BI-app maken voor Microsoft AppSource
 
 In dit artikel wordt beschreven hoe u een Power BI app-aanbieding maakt en publiceert naar micro soft [AppSource](https://appsource.microsoft.com/).
 
-Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) als u dit nog niet hebt gedaan. Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
+Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner Center](create-account.md) als u dit nog niet hebt gedaan. Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
 
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
@@ -55,10 +55,10 @@ Op deze pagina ziet u een visuele weer gave van de stappen die nodig zijn om dez
 
 Het bevat koppelingen voor het uitvoeren van bewerkingen op deze aanbieding op basis van de selectie die u maakt. Bijvoorbeeld:
 
-- Als de aanbieding een concept is- [concept verwijderen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- Als de aanbieding Live is: [de aanbieding wordt niet meer verkocht](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
-- Als de aanbieding in Preview- [Live](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval) staat
-- Als u Publisher-afmelding niet hebt voltooid, kunt u het [Publiceren annuleren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
+- Als de aanbieding een concept is- [concept verwijderen](update-existing-offer.md#delete-a-draft-offer)?
+- Als de aanbieding Live is- [stopt met het verkopen van de aanbieding](update-existing-offer.md#stop-selling-an-offer-or-plan))
+- Als de aanbieding in Preview- [Go-Live](publishing-status.md#publisher-approval)staat)
+- Als u Publisher-afmelding niet hebt voltooid, [Publicatie annuleren](update-existing-offer.md#cancel-publishing))
 
 ## <a name="offer-setup"></a>Installatie van aanbieding
 
@@ -68,12 +68,12 @@ Wanneer u uw aanbieding naar Marketplace publiceert met partner centrum, moet u 
 
 1. Selecteer een leadbestemming waarnaar wij de klantenleads moeten sturen. Het partner Centrum ondersteunt de volgende CRM-systemen:
 
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) voor klant betrokkenheid
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) voor klant betrokkenheid
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > Als uw CRM-systeem niet hierboven wordt vermeld, gebruikt u [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) of [https-eind punt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) om klant lead gegevens op te slaan. Exporteer de gegevens vervolgens naar uw CRM-systeem.
+    > Als uw CRM-systeem niet hierboven wordt vermeld, gebruikt u [Azure Table](commercial-marketplace-lead-management-instructions-azure-table.md) of [https-eind punt](commercial-marketplace-lead-management-instructions-https.md) om klant lead gegevens op te slaan. Exporteer de gegevens vervolgens naar uw CRM-systeem.
 
 2. Verbind uw aanbieding met de doel locatie van de lead wanneer u publiceert in het partner centrum.
 3. Controleer of de verbinding met de doel locatie juist is geconfigureerd. Nadat u het in het partner centrum hebt gepubliceerd, valideren we de verbinding en sturen we u een test lead. Wanneer u een voor beeld van de aanbieding bekijkt voordat deze live gaat, kunt u ook uw lead verbinding testen door zelf te proberen de aanbieding aan te schaffen in de preview-omgeving.
@@ -81,9 +81,9 @@ Wanneer u uw aanbieding naar Marketplace publiceert met partner centrum, moet u 
 
 Hier volgen enkele aanvullende bronnen voor het beheer van leads:
 
-- [Overzicht Lead beheer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [Veelgestelde vragen over leadmanagement](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Algemene leadconfiguratiefouten](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Overzicht Lead beheer](commercial-marketplace-get-customer-leads.md)
+- [Veelgestelde vragen over Lead beheer](../lead-management-for-cloud-marketplace.md#frequently-asked-questions))
+- [Veelvoorkomende fouten van de lead configuratie](../lead-management-for-cloud-marketplace.md#publishing-config-errors))
 - [Overzicht Lead beheer](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (zorg ervoor dat de pop-upblokkering is uitgeschakeld)
 
 Selecteer **concept opslaan** voordat u doorgaat.
@@ -94,33 +94,16 @@ Op deze pagina kunt u de categorieën en industrieën definiëren die worden geb
 
 ### <a name="category"></a>Categorie
 
-Selecteer mini maal één en Maxi maal drie categorieën. Deze categorieën worden gebruikt om uw aanbieding in de juiste Marketplace-Zoek gebieden te plaatsen en worden weer gegeven op de pagina met details van de aanbieding. In de beschrijving van de aanbieding wordt uitgelegd hoe uw aanbod deze categorieën ondersteunt.
+Selecteer categorieën en subcategorieën om uw aanbieding te plaatsen in de juiste Zoek gebieden voor Marketplace. Zorg ervoor dat u beschrijft hoe uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding. Selecteer:
+
+- Ten minste één en Maxi maal twee categorieën, met inbegrip van een primaire en secundaire categorie (optioneel).
+- Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie van toepassing is op uw aanbieding, selecteert u **niet van toepassing**.
+
+Bekijk de volledige lijst met categorieën en subcategorieën in [Aanbevolen procedures voor aanbiedingen](../gtm-offer-listing-best-practices.md).
 
 ### <a name="industry"></a>Branche
 
-Selecteer eventueel Maxi maal twee branches en twee verticalen onder elke branche. Hoewel categorieën worden gebruikt voor het weer geven van uw aanbieding, worden de industrie en de verticale wereld gebruikt in zoek filters en toegepast op de winkel. Als uw aanbieding gericht is op een specifieke branche en/of verticaal, gebruikt u de beschrijving van de aanbieding om uit te leggen hoe uw aanbod de geselecteerde branches of verticale waarden ondersteunt. Als uw aanbieding niet specifiek is voor de branche, laat u deze sectie leeg.
-
-> [!NOTE]
-> We werken samen met het introduceren van nieuwe branches en verticalen om de ervaring voor de detectie van de aanbieding te verbeteren, maar sommige branches of verticalen zijn mogelijk nog niet zichtbaar op de winkel. Branches en verticale, gemarkeerd met een (*) zijn in de toekomst beschikbaar. Alle gepubliceerde aanbiedingen kunnen worden gedetecteerd via Zoek opdrachten met tref woorden.
-<p>&nbsp;
-
-| **Branche** | **Subsector** |
-| --- | --- |
-| * Automobiel | * Automobiel |
-| Landbouw | * Overig-niet-gesegmenteerd |
-| Distributie | * Groot handel<br>Pakje en pakket verzending |
-| Onderwijs | *Hoger onderwijs <br> * Primair en secundair onderwijs/K-12<br>* Bibliotheken en musea |
-| Financiële diensten | *Bank-en kapitaal <br> markten* Polis |
-| Overheid | *Verdediging en intelligentie (wordt aangeduid met de naam National en open bare <br> veiligheid)* Open bare veiligheid en rechtvaardigheid<br>* Burger overheid |
-| Gezondheids zorg (gebruikt voor de status) | *Status betaler <br> * Health-provider<br>* Farmaceutische producten |
-| Productie en bronnen (gebruikt om productie te worden genoemd) | *Chemische en Agrochemical <br> * Discrete productie<br>* Energie |
-| Handels-en consumenten artikelen (gebruikt voor de verkoop van Retail) | *Consumenten goederen <br> * Handelaren |
-| * Media en communicatie (gebruikt voor het noemen van media en entertainment) | *Media en entertainment <br> * Telecom |
-| Professionele services | *Juridisch <br> * Partner Professional-Services |
-| * Architectuur en constructie (wordt gebruikt als architectuur techniek) | * Overig-niet-gesegmenteerd |
-| * Horeca en reizen | *Hotels en vrije <br> * tijd Reizen en Trans Port<br>* Restaurants en voedsel Services |
-| * Andere branches uit de open bare sector | *Bosbouw en visserij <br> * Profit organisaties |
-| * Onroerend goed | * Overig-niet-gesegmenteerd |
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="legal"></a>Juridisch
 
@@ -160,10 +143,10 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 7. Privacybeleid
 8. Naam van aanbieding
 9. Samenvatting
-10. Beschrijving
+10. Description
 11. Scherm afbeeldingen/Video's
 
-### <a name="name"></a>Naam
+### <a name="name"></a>Name
 
 De naam die u hier opgeeft, wordt weer gegeven als de titel van uw aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd in het vak **aanbiedings alias** wanneer u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
@@ -177,7 +160,7 @@ De naam:
 
 Geef een korte beschrijving van uw aanbieding. Dit kan Maxi maal 100 tekens lang zijn en wordt gebruikt in Zoek resultaten voor Marketplace.
 
-### <a name="description"></a>Beschrijving
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -240,7 +223,7 @@ Voeg Maxi maal vijf Video's toe die uw aanbieding aantonen. Voer de naam van de 
 
 #### <a name="additional-marketplace-listing-resources"></a>Aanvullende bronnen voor Marketplace-lijst
 
-Zie [Aanbevolen procedures](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)voor aanbieding voor meer informatie over het maken van aanbiedingen.
+Zie [Aanbevolen procedures](../gtm-offer-listing-best-practices.md)voor aanbieding voor meer informatie over het maken van aanbiedingen.
 
 ## <a name="technical-configuration"></a>Technische configuratie
 

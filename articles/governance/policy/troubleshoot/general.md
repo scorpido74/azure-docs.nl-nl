@@ -1,14 +1,14 @@
 ---
-title: Veelvoorkomende problemen oplossen
+title: Veelvoorkomende fouten oplossen
 description: Meer informatie over het oplossen van problemen met het maken van beleids definities, de verschillende SDK en de invoeg toepassing voor Kubernetes.
 ms.date: 05/22/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b1cb8ab51ecc00610f1e04532ba3063be5415607
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 868b8c53a120ebdb6a35806538e02af39e25c338
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234176"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970838"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Fouten oplossen met behulp van Azure Policy
 
@@ -28,7 +28,7 @@ De locatie van de fout Details is afhankelijk van de actie die de fout veroorzaa
 
 #### <a name="issue"></a>Probleem
 
-Azure Policy maakt gebruik van [aliassen](../concepts/definition-structure.md#aliases) om toe te wijzen aan de eigenschappen van Resource Manager.
+Azure Policy maakt gebruik van [aliassen](../concepts/definition-structure.md#aliases) om toe te wijzen aan Azure Resource Manager eigenschappen.
 
 #### <a name="cause"></a>Oorzaak
 
@@ -103,7 +103,7 @@ Het fout bericht van een beleids toewijzing voor weigeren omvat de beleids defin
 
 #### <a name="issue"></a>Probleem
 
-Azure Policy ondersteunt een aantal functies en functies van Resource Manager-sjablonen die alleen beschikbaar zijn in een beleids definitie. Resource Manager verwerkt deze functies als onderdeel van een implementatie in plaats van als onderdeel van een beleids definitie.
+Azure Policy ondersteunt een aantal Azure Resource Manager sjablonen (ARM-sjablonen) en functies die alleen beschikbaar zijn in een beleids definitie. Resource Manager verwerkt deze functies als onderdeel van een implementatie in plaats van als onderdeel van een beleids definitie.
 
 #### <a name="cause"></a>Oorzaak
 
@@ -152,6 +152,6 @@ Volg de instructies om [de Azure Policy voor de invoeg toepassing Kubernetes te 
 
 Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
 
-- Krijg antwoorden van experts via [micro soft Q&A](https://docs.microsoft.com/answers/topics/azure-policy.html).
+- Krijg antwoorden van experts via [micro soft Q&A](/answers/topics/azure-policy.html).
 - Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) – het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
 - Als u meer hulp nodig hebt, kunt u een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.

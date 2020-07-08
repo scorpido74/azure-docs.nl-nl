@@ -1,14 +1,14 @@
 ---
 title: Azure Policy-extensie voor Visual Studio code
-description: Meer informatie over het gebruik van de Azure Policy extensie voor Visual Studio code voor het opzoeken van de aliassen van Resource Manager.
+description: Meer informatie over het gebruik van de Azure Policy extensie voor Visual Studio code voor het opzoeken van Azure Resource Manager aliassen.
 ms.date: 06/16/2020
 ms.topic: how-to
-ms.openlocfilehash: 94d865e4a810fbebd8495153f97f9d1e3227e8af
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: c91d39414a376b410e52c2ba60ce15ed0c5054f6
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888510"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970753"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Azure Policy-extensie voor Visual Studio code gebruiken
 
@@ -121,14 +121,14 @@ Klanten met honderden of duizenden resources in één abonnement kunnen een Door
 
 ## <a name="discover-aliases-for-resource-properties"></a>Aliassen ontdekken voor resource-eigenschappen
 
-Wanneer een resource is geselecteerd, hetzij via de Zoek interface, hetzij door deze te selecteren in de structuur weergave, wordt met de uitbrei ding van de Azure Policy het JSON-bestand geopend dat de resource bevat en alle eigenschaps waarden van de Resource Manager.
+Wanneer een resource is geselecteerd, hetzij via de Zoek interface, hetzij door deze te selecteren in de tree view, opent de extensie Azure Policy het JSON-bestand dat de resource en alle bijbehorende Azure Resource Manager eigenschaps waarden vertegenwoordigt.
 
 Zodra een resource is geopend, wordt met de muis aanwijzer over de naam van de Resource Manager-eigenschap of de waarde de Azure Policy alias weer gegeven als er een bestaat. In dit voor beeld is de resource een `Microsoft.Compute/virtualMachines` resource type en de eigenschap **Properties. StorageProfile. imageReference. offer.** Met de muis aanwijzer worden de overeenkomende aliassen weer gegeven.
 
 :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Met de Azure Policy-extensie wordt de eigenschaps alias van een resource manager weer gegeven" border="false":::
 
 > [!NOTE]
-> De VS code-extensie beschrijft alleen eigenschappen van de modus van de Resource Manager en geeft geen eigenschappen van de modus van de [resource provider](../concepts/definition-structure.md#mode) weer.
+> De VS Code-extensie geeft alleen de eigenschappen van de Resource Manager-modus weer en geeft geen eigenschappen van de [Resource Provider-modu ](../concepts/definition-structure.md#mode) weer.
 
 ## <a name="search-for-and-view-policies-and-assignments"></a>Beleids regels en toewijzingen zoeken en weer geven
 

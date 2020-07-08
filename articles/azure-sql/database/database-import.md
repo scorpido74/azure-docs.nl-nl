@@ -2,8 +2,8 @@
 title: Een BACPAC-bestand importeren om een Data Base te maken in Azure SQL Database
 description: Maak een nieuwe data base in Azure SQL Database of Azure SQL Managed instance vanuit een BACPAC-bestand.
 services: sql-database
-ms.service: sql-database
-ms.subservice: migration
+ms.service: sql-db-mi
+ms.subservice: migrate
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 81a77e3a5fac19b4d6116a74221d3506d603bff9
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 7bca179f3140a64923af71199fe4a1db48d2065c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84218816"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982334"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Quick Start: een BACPAC-bestand importeren in een data base in Azure SQL Database of een beheerd exemplaar van Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -40,7 +40,7 @@ De [Azure Portal](https://portal.azure.com) biedt *alleen* ondersteuning voor he
 Als u een Data Base wilt migreren naar een met [Azure SQL beheerd exemplaar](../managed-instance/sql-managed-instance-paas-overview.md) vanuit een BACPAC-bestand, gebruikt u SQL Server Management Studio of SQLPackage met behulp van de Azure Portal of Azure PowerShell momenteel niet wordt ondersteund.
 
 > [!NOTE]
-> Machines voor het verwerken van import/export-aanvragen die zijn ingediend via de Azure Portal of Power shell moeten het BACPAC-bestand opslaan, evenals tijdelijke bestanden die worden gegenereerd door het Framework van de Gegevenslaagtoepassing (DacFX). De benodigde schijf ruimte varieert aanzienlijk tussen data bases met dezelfde grootte en kan Maxi maal drie keer zoveel schijf ruimte vereisen als de data base. Machines met het verzoek om te importeren/exporteren hebben 450GB lokale schijf ruimte. Als gevolg hiervan kunnen sommige aanvragen mislukken met de fout `There is not enough space on the disk` . In dit geval is de tijdelijke oplossing om sqlpackage. exe uit te voeren op een computer met voldoende lokale schijf ruimte. We raden u aan SqlPackage-data bases die groter zijn dan 150 GB te importeren/exporteren om dit probleem te voor komen.
+> Machines voor het verwerken van import/export-aanvragen die zijn ingediend via de Azure Portal of Power shell moeten het BACPAC-bestand opslaan, evenals tijdelijke bestanden die worden gegenereerd door het Framework van de Gegevenslaagtoepassing (DacFX). De benodigde schijf ruimte varieert aanzienlijk tussen data bases met dezelfde grootte en kan Maxi maal drie keer zoveel schijf ruimte vereisen als de data base. Machines met het verzoek om te importeren/exporteren hebben 450GB lokale schijf ruimte. Als gevolg hiervan kunnen sommige aanvragen mislukken met de fout `There is not enough space on the disk` . In dit geval is de tijdelijke oplossing om sqlpackage.exe uit te voeren op een computer met voldoende lokale schijf ruimte. We raden u aan SqlPackage-data bases die groter zijn dan 150 GB te importeren/exporteren om dit probleem te voor komen.
 
 1. Als u vanuit een BACPAC-bestand wilt importeren in een nieuwe Data Base met behulp van de Azure Portal, opent u de juiste server pagina en selecteert u op de werk balk de optie **Data Base importeren**.  
 
@@ -87,7 +87,7 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [Een door SQL beheerd exemplaar](../managed-instance/sql-managed-instance-paas-overview.md) biedt momenteel geen ondersteuning voor het migreren van een Data Base naar een exemplaar database vanuit een BACPAC-bestand met behulp van Azure PowerShell. Als u wilt importeren in een SQL-beheerd exemplaar, gebruikt u SQL Server Management Studio of SQLPackage.
 
 > [!NOTE]
-> Op de machines voor het verwerken van import/export-aanvragen die zijn ingediend via de portal of Power shell moet het Bacpac-bestand worden opgeslagen, evenals tijdelijke bestanden die worden gegenereerd door Application Framework (DacFX). De benodigde schijf ruimte varieert aanzienlijk van Db's met dezelfde grootte en kan Maxi maal drie keer van de grootte van de data base duren. Machines met het verzoek om te importeren/exporteren hebben 450GB lokale schijf ruimte. Als gevolg hiervan kunnen sommige aanvragen mislukken met de fout ' er is onvoldoende ruimte op de schijf '. In dit geval is de tijdelijke oplossing om sqlpackage. exe uit te voeren op een computer met voldoende lokale schijf ruimte. Bij het importeren/exporteren van data bases die groter zijn dan 150 GB, gebruikt u SqlPackage om dit probleem te voor komen.
+> Op de machines voor het verwerken van import/export-aanvragen die zijn ingediend via de portal of Power shell moet het Bacpac-bestand worden opgeslagen, evenals tijdelijke bestanden die worden gegenereerd door Application Framework (DacFX). De benodigde schijf ruimte varieert aanzienlijk van Db's met dezelfde grootte en kan Maxi maal drie keer van de grootte van de data base duren. Machines met het verzoek om te importeren/exporteren hebben 450GB lokale schijf ruimte. Als gevolg hiervan kunnen sommige aanvragen mislukken met de fout ' er is onvoldoende ruimte op de schijf '. In dit geval is de tijdelijke oplossing om sqlpackage.exe uit te voeren op een computer met voldoende lokale schijf ruimte. Bij het importeren/exporteren van data bases die groter zijn dan 150 GB, gebruikt u SqlPackage om dit probleem te voor komen.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -146,7 +146,7 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 ## <a name="limitations"></a>Beperkingen
 
 - Importeren naar een database in een elastische pool wordt niet ondersteund. U kunt gegevens importeren in één database en deze database vervolgens verplaatsen naar een elastische pool.
-- Import export service werkt niet wanneer toegang tot Azure-Services toestaan is ingesteld op uit. U kunt het probleem echter omzeilen door sqlpackage. exe hand matig uit te voeren vanuit een Azure VM of door de export rechtstreeks in uw code uit te voeren met behulp van de DACFx-API.
+- Import export service werkt niet wanneer toegang tot Azure-Services toestaan is ingesteld op uit. U kunt het probleem echter omzeilen door sqlpackage.exe hand matig uit te voeren vanaf een Azure VM of door de export rechtstreeks in uw code uit te voeren met behulp van de DACFx-API.
 
 ## <a name="import-using-wizards"></a>Importeren met behulp van wizards
 

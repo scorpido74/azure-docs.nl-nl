@@ -1,17 +1,17 @@
 ---
-title: Office 365-beheer oplossing in azure | Microsoft Docs
+title: Office 365-beheer oplossing in azure
 description: Dit artikel bevat informatie over de configuratie en het gebruik van de Office 365-oplossing in Azure.  Het bevat een gedetailleerde beschrijving van de Office 365-records die zijn gemaakt in Azure Monitor.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 2c6eb5407ec62b6e9e771ce257b66fca2a91e0a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d89c64b7ceea730dab61ffe1254d838d219b785
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82023602"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971042"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-beheer oplossing in azure (preview-versie)
 
@@ -19,7 +19,7 @@ ms.locfileid: "82023602"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>Oplossings update
-> Deze oplossing is vervangen door de oplossing voor algemene Beschik baarheid van [Office 365](../../sentinel/connect-office-365.md) in [Azure Sentinel](../../sentinel/overview.md) en de [Azure AD-oplossing voor rapportage en bewaking](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md). Ze bieden samen een bijgewerkte versie van de vorige Azure Monitor Office 365-oplossing met een verbeterde configuratie-ervaring. U kunt de bestaande oplossing blijven gebruiken tot 30 juli 2020.
+> Deze oplossing is vervangen door de oplossing voor algemene Beschik baarheid van [Office 365](../../sentinel/connect-office-365.md) in [Azure Sentinel](../../sentinel/overview.md) en de [Azure AD-oplossing voor rapportage en bewaking](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md). Ze bieden samen een bijgewerkte versie van de vorige Azure Monitor Office 365-oplossing met een verbeterde configuratie-ervaring. U kunt de bestaande oplossing blijven gebruiken tot 31 oktober 2020.
 > 
 > Azure Sentinel is een native Security Information and Event Management-oplossing in de cloud die logboeken opneemt en extra functionaliteit biedt voor SIEM, met inbegrip van detecties, onderzoeken, jacht en machine learning op basis van inzichten. Met Azure Sentinel kunt u nu opname maken van Office 365 share point-activiteiten en Exchange-beheer Logboeken.
 > 
@@ -35,8 +35,8 @@ ms.locfileid: "82023602"
 >
 > ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-july-30th"></a>V: is het mogelijk om in te boarden van Office 365 Azure Monitor oplossing tussen nu en 30 juli?
-> Nee, de Azure Monitor Office 365-oplossing voor het onboarden van scripts zijn niet meer beschikbaar. De oplossing wordt op 30 juli verwijderd.
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-october-31"></a>V: is het mogelijk om aan de slag te kunnen met Office 365 Azure Monitor oplossing van nu tot en met 31 oktober?
+> Nee, de Azure Monitor Office 365-oplossing voor het onboarden van scripts zijn niet meer beschikbaar. De oplossing wordt op 31 oktober verwijderd.
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>V: worden de tabellen en schema's gewijzigd?
 > De naam en het schema van de **OfficeActivity** -tabel blijven hetzelfde als in de huidige oplossing. U kunt dezelfde query's blijven gebruiken in de nieuwe oplossing, met uitzonde ring van query's die verwijzen naar Azure AD-gegevens.
@@ -102,11 +102,11 @@ ms.locfileid: "82023602"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>V: biedt Azure Sentinel extra connectors als onderdeel van de oplossing?
 > Ja, Zie [Azure Sentinel Connect-gegevens bronnen](../../sentinel/connect-data-sources.md).
 > 
-> ###    <a name="q-what-will-happen-on-july-30-do-i-need-to-offboard-beforehand"></a>V: wat gebeurt er dan 30 juli? Moet ik het vooraf niet meer vrijgeven?
+> ###    <a name="q-what-will-happen-on-october-31-do-i-need-to-offboard-beforehand"></a>V: wat gebeurt er dan 31 oktober? Moet ik het vooraf niet meer vrijgeven?
 > 
 > - U kunt geen gegevens ontvangen van de **Office365** -oplossing. De oplossing is niet meer beschikbaar op Marketplace
 > - Voor Azure Sentinel-klanten wordt de Log Analytics werkruimte oplossing **Office365** opgenomen in de Azure Sentinel **SecurityInsights** -oplossing.
-> - Als u uw oplossing niet hand matig niet meer vrijgeven, worden uw gegevens automatisch op 30 juli losgekoppeld.
+> - Als u uw oplossing niet hand matig niet meer vrijgeven, worden uw gegevens automatisch op 31 oktober losgekoppeld.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>V: zullen mijn gegevens worden overgedragen naar de nieuwe oplossing?
 > Ja. Wanneer u de **Office 365** -oplossing uit uw werk ruimte verwijdert, worden de bijbehorende gegevens tijdelijk niet beschikbaar omdat het schema wordt verwijderd. Wanneer u de nieuwe **Office 365** -connector inschakelt in Sentinel, wordt het schema teruggezet naar de werk ruimte en worden alle gegevens die al zijn verzameld, beschikbaar. 
@@ -125,7 +125,7 @@ Met de Office 365-beheer oplossing kunt u uw Office 365-omgeving in Azure Monito
 
 U kunt de Office 365-beheer oplossing verwijderen met behulp van het proces in [een beheer oplossing verwijderen](solutions.md#remove-a-monitoring-solution). Hierdoor worden er geen gegevens meer verzameld van Office 365 in Azure Monitor. Volg de onderstaande procedure om u af te melden bij Office 365 en stop het verzamelen van gegevens.
 
-1. Sla het volgende script op als *office365_unsubscribe. ps1*.
+1. Sla het volgende script op als *office365_unsubscribe.ps1*.
 
     ```powershell
     param (
@@ -226,7 +226,7 @@ U kunt de Office 365-beheer oplossing verwijderen met behulp van het proces in [
 
 U wordt gevraagd om referenties. Geef de referenties op voor uw Log Analytics-werk ruimte.
 
-## <a name="data-collection"></a>Gegevens verzamelen
+## <a name="data-collection"></a>Gegevensverzameling
 
 Het kan enkele uren duren voordat gegevens worden verzameld. Zodra het verzamelen begint, verzendt Office 365 een [webhook-melding](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) met gedetailleerde gegevens om Azure monitor telkens wanneer een record wordt gemaakt. Deze record is binnen een paar minuten na ontvangst beschikbaar in Azure Monitor.
 
@@ -243,7 +243,7 @@ Klik op de tegel **office 365** om het **Office 365** -dash board te openen.
 
 Het dashboard bevat de kolommen in de volgende tabel. Elke kolom bevat de bovenste tien waarschuwingen per aantal dat overeenkomt met de criteria van die kolom voor het opgegeven bereik en tijds bereik. U kunt een zoek opdracht in het logboek uitvoeren met de volledige lijst door te klikken op alles weer geven onder aan de kolom of door op de kolomkop te klikken.
 
-| Kolom | Beschrijving |
+| Kolom | Description |
 |:--|:--|
 | Bewerkingen | Bevat informatie over de actieve gebruikers uit uw alle bewaakte Office 365-abonnementen. U kunt ook het aantal activiteiten zien dat na verloop van tijd plaatsvindt.
 | Exchange | Toont de uitsplitsing van Exchange Server-activiteiten, zoals de machtiging toevoegen-postvak of set-mailbox. |
@@ -270,7 +270,7 @@ De volgende eigenschappen zijn gebruikelijk voor alle Office 365-records.
 | OrganizationId | De GUID voor de Office 365-Tenant van uw organisatie. Deze waarde is altijd hetzelfde voor uw organisatie, ongeacht de Office 365-service waarin deze zich voordoet. |
 | RecordType | Het type bewerking dat is uitgevoerd. |
 | ResultStatus | Geeft aan of de actie (opgegeven in de eigenschap Operation) al dan niet is gelukt. Mogelijke waarden zijn geslaagd, PartiallySucceeded of mislukt. Voor Exchange-beheer activiteiten is de waarde True of false. |
-| UserId | De UPN (User Principal Name) van de gebruiker die de actie heeft uitgevoerd die heeft geresulteerd in het registreren van de record. bijvoorbeeld my_name@my_domain_name. Houd er rekening mee dat records voor activiteiten die worden uitgevoerd door systeem accounts (zoals SHAREPOINT\system of NTAUTHORITY\SYSTEM) ook worden opgenomen. | 
+| UserId | De UPN (User Principal Name) van de gebruiker die de actie heeft uitgevoerd die heeft geresulteerd in het registreren van de record. bijvoorbeeld my_name@my_domain_name . Houd er rekening mee dat records voor activiteiten die worden uitgevoerd door systeem accounts (zoals SHAREPOINT\system of NTAUTHORITY\SYSTEM) ook worden opgenomen. | 
 | UserKey | Een alternatieve ID voor de gebruiker die in de eigenschap UserId is geïdentificeerd.  Deze eigenschap wordt bijvoorbeeld gevuld met de unieke Pass Port-ID (PUID) voor gebeurtenissen die worden uitgevoerd door gebruikers in share point, OneDrive voor bedrijven en Exchange. Deze eigenschap kan ook dezelfde waarde opgeven als de eigenschap UserID voor gebeurtenissen die optreden in andere services en gebeurtenissen die worden uitgevoerd door systeem accounts|
 | UserType | Het type gebruiker dat de bewerking heeft uitgevoerd.<br><br>Beheerder<br>Toepassing<br>DcAdmin<br>Standaard<br>Gereserveerd<br>ServicePrincipal<br>Systeem |
 
@@ -462,10 +462,10 @@ Deze records worden gemaakt als reactie op Bestands bewerkingen in share point.
 
 De volgende tabel bevat voorbeeld logboek query's voor update records die door deze oplossing zijn verzameld.
 
-| Query’s uitvoeren | Beschrijving |
+| Query’s uitvoeren | Description |
 | --- | --- |
 |Aantal bewerkingen voor uw Office 365-abonnement |Aantal OfficeActivity &#124;-overzicht () per bewerking |
-|Gebruik van share point-sites|OfficeActivity &#124; waarbij OfficeWorkload = ~ ' share point ' &#124; samenvattings aantal () door \| de waarde voor siteurl sorteren op aantal ASC|
+|Gebruik van share point-sites|OfficeActivity &#124; waarbij OfficeWorkload = ~ ' share point ' &#124; samenvattings aantal () door de waarde voor SiteUrl \| sorteren op aantal ASC|
 |Bestands toegangs bewerkingen op gebruikers type | OfficeActivity &#124; samenvattings aantal () door User type |
 |Externe acties op Exchange controleren|OfficeActivity &#124; waarbij OfficeWorkload = ~ "Exchange" en ExternalAccess = = True|
 

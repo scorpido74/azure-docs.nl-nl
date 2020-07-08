@@ -3,12 +3,12 @@ title: Antwoorden op veelgestelde vragen
 description: 'Antwoorden op veelgestelde vragen over de functies van Azure Backup, waaronder de Recovery Services-kluis, waarvan een back-up kan worden gemaakt, hoe het werkt, versleuteling en limieten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 4f7c83df738b72d57719de9b9ef650d119ac5dc4
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 96733ffaae101bb2cf716fda7500a8269ce8e357
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255157"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970481"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - veelgestelde vragen
 
@@ -27,7 +27,7 @@ U kunt per kluis maximaal 1000 virtuele Azure-machines registreren. Als u de Mic
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>Hoeveel gegevensbronnen/items kunnen worden beveiligd in een kluis?
 
 U kunt maximaal 2000 gegevensbronnen/items beveiligen voor alle workloads (IaaS VM, SQL, AFS, enzovoort) in een kluis.
-Als u bijvoorbeeld al 500 VM's en 400 Azure-bestandsshares in de kluis hebt beveiligd, kunt u nog maar maximaal 1100 SQL-databases in de kluis beveiligen.
+Als u bijvoorbeeld al 500 Vm's en 400 Azure Files shares in de kluis hebt beveiligd, kunt u Maxi maal 1100 SQL-data bases in het bestand beveiligen.
 
 ### <a name="how-many-policies-can-i-create-per-vault"></a>Hoeveel beleidsregels kan ik maken per kluis?
 
@@ -47,12 +47,16 @@ Nee. Back-upgegevens die zijn opgeslagen in een kluis, kunnen niet worden verpla
 
 ### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>Kan ik na een back-up overschakelen van GRS naar LRS?
 
-Nee. Opslagopties in een Recovery Services-kluis kunnen alleen worden gewijzigd vóórdat back-ups zijn opgeslagen.
+Het type opslag replicatie is standaard ingesteld op geografisch redundante opslag (GRS). Zodra u de back-up hebt geconfigureerd, is de optie om te wijzigen uitgeschakeld en kan deze niet meer worden gewijzigd.
+
+![Type opslagreplicatie](./media/backup-azure-backup-faq/storage-replication-type.png)
+
+Als u de back-up al hebt geconfigureerd en wilt overstappen van GRS naar LRS, raadpleegt u [hoe u kunt wijzigen van GRS in LRS na het configureren van de back-up](backup-create-rs-vault.md#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Kan ik herstellen op itemniveau (ILR) uitvoeren voor VM's waarvan een back-up is gemaakt in een Recovery Services-kluis?
 
 - ILR wordt ondersteund voor Azure-VM's waarvan een back-up is gemaakt met Azure VM Backup. Raadpleeg dit [artikel](backup-azure-restore-files-from-vm.md) voor meer informatie
-- ILR wordt niet ondersteund voor onlineherstelpunten van on-premises VM's waarvan een back-up is gemaakt met Azure Backup Server of System Center DPM.
+- ILR wordt niet ondersteund voor online herstel punten van on-premises Vm's waarvan een back-up wordt gemaakt door Azure backup server of System Center DPM.
 
 ## <a name="azure-backup-agent"></a>Azure Backup-agent
 
@@ -75,7 +79,7 @@ Ja.
 
 Azure Backup biedt ondersteuning voor deze besturingssystemen voor het maken van back-ups van bestanden en mappen, en apps die worden beveiligd met Azure Backup Server en SCDPM.
 
-**Besturingssysteem** | **SKU** | **Details**
+**OS** | **SKU** | **Details**
 --- | --- | ---
 Werkstation | |
 Windows 10 64-bits | Enterprise, Pro, Home | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.

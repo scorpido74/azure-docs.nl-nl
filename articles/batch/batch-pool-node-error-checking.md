@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: how-to
-ms.openlocfilehash: 5ac3991a52ab75dccd0033160d6e972d155a882b
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 519b357e4e5fde30221f7dc804bb848ecec9704c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723915"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85979914"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Controleren op groeps-en knooppunt fouten
 
@@ -24,9 +24,9 @@ In dit artikel worden de achtergrond bewerkingen besproken die kunnen optreden v
 
 ### <a name="resize-timeout-or-failure"></a>Grootte van time-out of fout wijzigen
 
-Bij het maken van een nieuwe groep of het wijzigen van de grootte van een bestaande groep, geeft u het doel aantal knoop punten op.  De bewerking maken of formaat wijzigen wordt onmiddellijk voltooid, maar de daad werkelijke toewijzing van nieuwe knoop punten of het verwijderen van bestaande knoop punten kan enkele minuten duren.  U geeft de time-out voor de grootte op in de API [Create](https://docs.microsoft.com/rest/api/batchservice/pool/add) of [Resize](https://docs.microsoft.com/rest/api/batchservice/pool/resize) . Als batch het doel aantal knoop punten niet kan verkrijgen tijdens de time-outperiode voor het wijzigen van de grootte, wordt de groep omgezet in een stabiele status en worden er fouten gerapporteerd.
+Bij het maken van een nieuwe groep of het wijzigen van de grootte van een bestaande groep, geeft u het doel aantal knoop punten op.  De bewerking maken of formaat wijzigen wordt onmiddellijk voltooid, maar de daad werkelijke toewijzing van nieuwe knoop punten of het verwijderen van bestaande knoop punten kan enkele minuten duren.  U geeft de time-out voor de grootte op in de API [Create](/rest/api/batchservice/pool/add) of [Resize](/rest/api/batchservice/pool/resize) . Als batch het doel aantal knoop punten niet kan verkrijgen tijdens de time-outperiode voor het wijzigen van de grootte, wordt de groep omgezet in een stabiele status en worden er fouten gerapporteerd.
 
-De eigenschap [ResizeError](https://docs.microsoft.com/rest/api/batchservice/pool/get#resizeerror) voor de meest recente evaluatie lijst bevat de fouten die zijn opgetreden.
+De eigenschap [ResizeError](/rest/api/batchservice/pool/get#resizeerror) voor de meest recente evaluatie lijst bevat de fouten die zijn opgetreden.
 
 Veelvoorkomende oorzaken voor het wijzigen van de grootte zijn:
 
@@ -34,31 +34,31 @@ Veelvoorkomende oorzaken voor het wijzigen van de grootte zijn:
   - In de meeste gevallen is de standaard time-out van 15 minuten lang genoeg voor het toewijzen of verwijderen van pool knooppunten.
   - Als u een groot aantal knoop punten toewijst, is het raadzaam om de time-outwaarde in te stellen op 30 minuten. Bijvoorbeeld wanneer u het formaat van een installatie kopie van een Azure Marketplace of van meer dan 300 knooppunten wijzigt in meer dan 1.000 knoop punten.
 - Onvoldoende kern quotum
-  - Een batch-account is beperkt in het aantal kernen dat kan worden toegewezen in alle groepen. Batch stopt met het toewijzen van knoop punten nadat het quotum is bereikt. U [kunt](https://docs.microsoft.com/azure/batch/batch-quota-limit) het kern quotum verhogen zodat batch meer knoop punten kan toewijzen.
-- Onvoldoende subnet-IP-adressen wanneer een [groep zich in een virtueel netwerk bevindt](https://docs.microsoft.com/azure/batch/batch-virtual-network)
+  - Een batch-account is beperkt in het aantal kernen dat kan worden toegewezen in alle groepen. Batch stopt met het toewijzen van knoop punten nadat het quotum is bereikt. U [kunt](./batch-quota-limit.md) het kern quotum verhogen zodat batch meer knoop punten kan toewijzen.
+- Onvoldoende subnet-IP-adressen wanneer een [groep zich in een virtueel netwerk bevindt](./batch-virtual-network.md)
   - Een subnet van een virtueel netwerk moet voldoende niet-toegewezen IP-adressen hebben om aan elk aangevraagde groeps knooppunt toe te wijzen. Anders kunnen de knoop punten niet worden gemaakt.
-- Onvoldoende resources wanneer een [groep zich in een virtueel netwerk bevindt](https://docs.microsoft.com/azure/batch/batch-virtual-network)
+- Onvoldoende resources wanneer een [groep zich in een virtueel netwerk bevindt](./batch-virtual-network.md)
   - U kunt resources zoals load-balancers, open bare Ip's en netwerk beveiligings groepen maken in hetzelfde abonnement als het batch-account. Controleer of de abonnements quota's voldoende zijn voor deze resources.
 - Grote Pools met aangepaste VM-installatie kopieën
   - Grote Pools die gebruikmaken van aangepaste VM-installatie kopieën, kunnen langer duren en kunnen worden gewijzigd.  Zie [een groep maken met de galerie met gedeelde afbeeldingen](batch-sig-images.md) voor aanbevelingen over limieten en configuratie.
 
 ### <a name="automatic-scaling-failures"></a>Fouten bij automatisch schalen
 
-U kunt ook Azure Batch zo instellen dat het aantal knoop punten in een pool automatisch wordt geschaald. U definieert de para meters voor de [formule voor automatisch schalen van een groep](https://docs.microsoft.com/azure/batch/batch-automatic-scaling). De batch-service gebruikt de formule om periodiek het aantal knoop punten in de pool te evalueren en een nieuw doel nummer in te stellen. De volgende typen problemen kunnen zich voordoen:
+U kunt ook Azure Batch zo instellen dat het aantal knoop punten in een pool automatisch wordt geschaald. U definieert de para meters voor de [formule voor automatisch schalen van een groep](./batch-automatic-scaling.md). De batch-service gebruikt de formule om periodiek het aantal knoop punten in de pool te evalueren en een nieuw doel nummer in te stellen. De volgende typen problemen kunnen zich voordoen:
 
 - De evaluatie van automatisch schalen mislukt.
 - De resulterende grootte kan niet worden gewijzigd en er wordt een time-out opgetreden.
 - Er is een probleem met de automatische schaal formule die leidt tot onjuiste knooppunt doel waarden. Het formaat kan worden gewijzigd of een time-out optreedt.
 
-U kunt informatie over de laatste automatische schaal aanpassing ophalen met behulp van de eigenschap [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/pool/get#autoscalerun) . Deze eigenschap rapporteert de evaluatie tijd, de waarden en het resultaat en prestatie fouten.
+U kunt informatie over de laatste automatische schaal aanpassing ophalen met behulp van de eigenschap [autoScaleRun](/rest/api/batchservice/pool/get#autoscalerun) . Deze eigenschap rapporteert de evaluatie tijd, de waarden en het resultaat en prestatie fouten.
 
-Met de gebeurtenis voor het [volt ooien van de groeps grootte](https://docs.microsoft.com/azure/batch/batch-pool-resize-complete-event) worden gegevens over alle evaluaties vastgelegd.
+Met de gebeurtenis voor het [volt ooien van de groeps grootte](./batch-pool-resize-complete-event.md) worden gegevens over alle evaluaties vastgelegd.
 
 ### <a name="delete"></a>Verwijderen
 
 Wanneer u een pool verwijdert die knoop punten bevat, worden de knoop punten door de eerste batch verwijderd. Vervolgens wordt het groeps object zelf verwijderd. Het kan enkele minuten duren voordat de groeps knooppunten zijn verwijderd.
 
-Batch stelt de [groeps status](https://docs.microsoft.com/rest/api/batchservice/pool/get#poolstate) in die tijdens het verwijderings proces moet worden **verwijderd** . De aanroepende toepassing kan detecteren of het verwijderen van de groep te lang duurt door de eigenschappen **status** en **stateTransitionTime** te gebruiken.
+Batch stelt de [groeps status](/rest/api/batchservice/pool/get#poolstate) in die tijdens het verwijderings proces moet worden **verwijderd** . De aanroepende toepassing kan detecteren of het verwijderen van de groep te lang duurt door de eigenschappen **status** en **stateTransitionTime** te gebruiken.
 
 ## <a name="pool-compute-node-errors"></a>Fouten bij het berekenen van het groeps knooppunt
 
@@ -131,7 +131,7 @@ Andere bestanden worden geschreven voor elke taak die wordt uitgevoerd op een kn
 De grootte van het tijdelijke station is afhankelijk van de grootte van de virtuele machine. Een overweging bij het kiezen van een VM-grootte is om ervoor te zorgen dat de tijdelijke schijf voldoende ruimte heeft.
 
 - In de Azure Portal wanneer u een groep toevoegt, kan de volledige lijst met VM-grootten worden weer gegeven en de kolom ' bron schijf grootte '.
-- De artikelen waarin alle VM-grootten worden beschreven, hebben tabellen met de kolom Temp Storage. voor beeld van [geoptimaliseerde VM-grootten](/azure/virtual-machines/windows/sizes-compute)
+- De artikelen waarin alle VM-grootten worden beschreven, hebben tabellen met de kolom Temp Storage. voor beeld van [geoptimaliseerde VM-grootten](../virtual-machines/sizes-compute.md)
 
 Voor bestanden die door elke taak zijn geschreven, kan een Bewaar periode worden opgegeven voor elke taak die bepaalt hoe lang de taak bestanden worden bewaard voordat ze automatisch worden opgeruimd. De retentie tijd kan worden gereduceerd om de opslag vereisten te verlagen.
 
@@ -140,17 +140,17 @@ Als de tijdelijke schijf bijna geen ruimte meer heeft (of bijna helemaal geen ru
 
 ### <a name="what-to-do-when-a-disk-is-full"></a>Wat te doen wanneer een schijf vol is
 
-Bepaal waarom de schijf vol is: als u niet zeker weet wat er ruimte is op het knoop punt, wordt het aanbevolen om het knoop punt op afstand te plaatsen en hand matig te onderzoeken waar de ruimte is verdwenen. U kunt ook de [API voor batch-lijst bestanden](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode) gebruiken om bestanden in met batch beheerde mappen te onderzoeken (bijvoorbeeld taak uitvoer). Houd er rekening mee dat deze API alleen bestanden in de door batch beheerde directory's bevat. als uw taken ergens anders zijn gemaakt, worden ze niet weer gegeven.
+Bepaal waarom de schijf vol is: als u niet zeker weet wat er ruimte is op het knoop punt, wordt het aanbevolen om het knoop punt op afstand te plaatsen en hand matig te onderzoeken waar de ruimte is verdwenen. U kunt ook de [API voor batch-lijst bestanden](/rest/api/batchservice/file/listfromcomputenode) gebruiken om bestanden in met batch beheerde mappen te onderzoeken (bijvoorbeeld taak uitvoer). Houd er rekening mee dat deze API alleen bestanden in de door batch beheerde directory's bevat. als uw taken ergens anders zijn gemaakt, worden ze niet weer gegeven.
 
 Zorg ervoor dat alle gegevens die u nodig hebt, zijn opgehaald uit het knoop punt of geüpload naar een duurzame opslag. Alle beperkingen van het probleem met de schijf-volledig hebben betrekking op het verwijderen van gegevens om ruimte vrij te maken.
 
 ### <a name="recovering-the-node"></a>Het knoop punt herstellen
 
-1. Als uw pool een [C. loudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) -groep is, kunt u het knoop punt opnieuw instellen met behulp van de API voor het [herstellen van batches](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage). Hiermee wordt de hele schijf opgeruimd. Opnieuw afbeelding wordt momenteel niet ondersteund voor [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) -groepen.
+1. Als uw pool een [C. loudServiceConfiguration](/rest/api/batchservice/pool/add#cloudserviceconfiguration) -groep is, kunt u het knoop punt opnieuw instellen met behulp van de API voor het [herstellen van batches](/rest/api/batchservice/computenode/reimage). Hiermee wordt de hele schijf opgeruimd. Opnieuw afbeelding wordt momenteel niet ondersteund voor [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration) -groepen.
 
-2. Als uw pool een [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)is, kunt u het knoop punt uit de pool verwijderen met de [API knoop punten verwijderen](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes). Vervolgens kunt u de pool opnieuw verg Roten om het ongeldige knoop punt te vervangen door een nieuwe.
+2. Als uw pool een [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration)is, kunt u het knoop punt uit de pool verwijderen met de [API knoop punten verwijderen](/rest/api/batchservice/pool/removenodes). Vervolgens kunt u de pool opnieuw verg Roten om het ongeldige knoop punt te vervangen door een nieuwe.
 
-3.  Oude voltooide taken of oude voltooide taken verwijderen waarvan de taak gegevens zich nog steeds op de knoop punten bevindt. Voor een hint van welke taken/taken-gegevens zich op de knoop punten bevindt, kunt u in de [RecentTasks-verzameling](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskinformation) op het knoop punt of op de [bestanden in het knoop punt](https://docs.microsoft.com//rest/api/batchservice/file/listfromcomputenode)kijken. Als u de taak verwijdert, worden alle taken in de taak verwijderd en worden de taken in de taak verwijderd, worden de gegevens in de taak mappen op het knoop punt dat moet worden verwijderd, geactiveerd, waardoor er ruimte vrijmaken. Zodra u voldoende ruimte hebt vrijgemaakt, start u het knoop punt opnieuw op en moet u de status ' onbruikbaar ' verplaatsen en opnieuw instellen op ' inactief '.
+3.  Oude voltooide taken of oude voltooide taken verwijderen waarvan de taak gegevens zich nog steeds op de knoop punten bevindt. Voor een hint van welke taken/taken-gegevens zich op de knoop punten bevindt, kunt u in de [RecentTasks-verzameling](/rest/api/batchservice/computenode/get#taskinformation) op het knoop punt of op de [bestanden in het knoop punt](/rest/api/batchservice/file/listfromcomputenode)kijken. Als u de taak verwijdert, worden alle taken in de taak verwijderd en worden de taken in de taak verwijderd, worden de gegevens in de taak mappen op het knoop punt dat moet worden verwijderd, geactiveerd, waardoor er ruimte vrijmaken. Zodra u voldoende ruimte hebt vrijgemaakt, start u het knoop punt opnieuw op en moet u de status ' onbruikbaar ' verplaatsen en opnieuw instellen op ' inactief '.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -3,16 +3,16 @@ title: Meer informatie over het controleren van de inhoud van virtuele machines
 description: Meer informatie over hoe Azure Policy de gast configuratie agent gebruikt om instellingen in virtuele machines te controleren.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 81c8c642eb8b5da1e45e4d9a703685acf219ca5a
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: ec2a9f53fbe2ad0201af0250b0dcfa8dc4d519f0
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362625"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971093"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Gastconfiguratie van Azure Policy begrijpen
 
-Azure Policy kunt instellingen in een computer controleren, zowel voor machines die worden uitgevoerd in azure als [met Arc verbonden computers](https://docs.microsoft.com/azure/azure-arc/servers/overview).
+Azure Policy kunt instellingen in een computer controleren, zowel voor machines die worden uitgevoerd in azure als [met Arc verbonden computers](../../../azure-arc/servers/overview.md).
 De validatie wordt uitgevoerd door de extensie en client voor gastconfiguratie. De extensie valideert, via de client, instellingen zoals:
 
 - De configuratie van het besturings systeem
@@ -35,8 +35,9 @@ Voordat u de gast configuratie kunt gebruiken, moet u de resource provider regis
 Voor het controleren van instellingen op een machine is de extensie van de [virtuele machine](../../../virtual-machines/extensions/overview.md) ingeschakeld en moet de computer een door het systeem beheerde identiteit hebben. De uitbrei ding downloadt de toepasselijke beleids toewijzing en de bijbehorende configuratie definitie. De identiteit wordt gebruikt om de computer te verifiëren tijdens het lezen en schrijven naar de gast configuratie service. De uitbrei ding is niet vereist voor met Arc verbonden computers, omdat deze is opgenomen in de Arc Connected machine agent.
 
 > [!IMPORTANT]
-> De gast configuratie-extensie en een beheerde identiteit zijn vereist voor het controleren van virtuele Azure-machines. Wijs het volgende beleids initiatief toe om de uitbrei ding op schaal te implementeren: 
->  - [Vereisten implementeren om gast configuratie beleid in te scha kelen op virtuele machines](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
+> De gast configuratie-uitbrei ding is vereist voor het uitvoeren van controles op virtuele machines van Azure. Als u de uitbrei ding op schaal wilt implementeren, wijst u de volgende beleids definities toe: 
+>  - [Vereisten voor het inschakelen van gastconfiguratiebeleid op Windows-VM's implementeren.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+>  - [Vereisten voor het inschakelen van gastenconfiguratiebeleid op Linux-VM's implementeren.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ### <a name="limits-set-on-the-extension"></a>Limieten die zijn ingesteld voor de uitbrei ding
 
@@ -48,7 +49,7 @@ In de computer gebruikt de gast configuratie-client lokale hulpprogram ma's om d
 
 De volgende tabel bevat een lijst met de lokale hulpprogram ma's die op elk ondersteund besturings systeem worden gebruikt. Voor ingebouwde inhoud verwerkt gast configuratie automatisch het laden van deze hulpprogram ma's.
 
-|Besturingssysteem|Validatie programma|Opmerkingen|
+|Besturingssysteem|Validatie programma|Notities|
 |-|-|-|
 |Windows|[Power shell desired state Configuration](/powershell/scripting/dsc/overview/overview) v2| Een kant geladen naar een map die alleen door Azure Policy wordt gebruikt. Er is geen conflict met Windows Power shell DSC. Power shell Core is niet toegevoegd aan het systeempad.|
 |Linux|[Chef-specificatie](https://www.chef.io/inspec/)| Installeert chef Inspec-versie 2.2.61 op de standaard locatie en wordt toegevoegd aan het systeempad. Afhankelijkheden voor het INSPEC-pakket, waaronder Ruby en Python, worden ook geïnstalleerd. |
@@ -62,14 +63,14 @@ De gast configuratie client controleert elke vijf minuten op nieuwe inhoud. Zodr
 Gast configuratie beleidsregels zijn inclusief nieuwe versies. Oudere versies van besturings systemen die beschikbaar zijn in azure Marketplace, worden uitgesloten als de gast configuratie agent niet compatibel is.
 In de volgende tabel ziet u een lijst met ondersteunde besturings systemen in azure-installatie kopieën:
 
-|Publisher|Naam|Versies|
+|Publisher|Name|Versies|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 en hoger|
 |Credativ|Debian|8 en hoger|
 |Microsoft|Windows Server|2012 en hoger|
 |Microsoft|Windows-client|Windows 10|
 |OpenLogic|CentOS|7,3 en hoger|
-|Red Hat|Red Hat Enterprise Linux|7,4 en hoger|
+|Red Hat|Red Hat Enterprise Linux|7,4-7,8, 9,0 en hoger|
 |SuSE|SLES|12 SP3 en hoger|
 
 Aangepaste installatie kopieën van virtuele machines worden ondersteund door gast configuratie beleidsregels, zolang ze een van de besturings systemen in de bovenstaande tabel zijn.
@@ -80,11 +81,10 @@ Voor de communicatie met de provider van de gast configuratie resource in azure,
 
 ## <a name="managed-identity-requirements"></a>Vereisten voor beheerde identiteit
 
-Beleids regels in het initiatief [voor het implementeren van vereisten om gast configuratie beleid in te scha kelen op virtuele machines](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8) , kunnen een door het systeem toegewezen beheerde identiteit inschakelen, als deze nog niet bestaat. Er zijn twee beleids definities in het initiatief die het maken van identiteiten beheren. De IF-voor waarden in de beleids definities zorgen voor het juiste gedrag op basis van de huidige status van de machine resource in Azure.
+De **DeployIfNotExists** -beleids regels die de uitbrei ding toevoegen aan virtuele machines, kunnen ook een door het systeem toegewezen beheerde identiteit inschakelen, als deze nog niet bestaat.
 
-Als de computer momenteel geen beheerde identiteiten heeft, is het effectief beleid: [ \[ voor beeld \] : een door het systeem toegewezen beheerde identiteit toevoegen om gast configuratie toewijzingen op virtuele machines zonder identiteiten in te scha kelen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
-
-Als de computer momenteel een door de gebruiker toegewezen systeem identiteit heeft, is het effectief beleid: [ \[ voor beeld: een door het \] systeem toegewezen beheerde identiteit toevoegen om gast configuratie toewijzingen op virtuele machines met een door de gebruiker toegewezen identiteit in te scha kelen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
+> [!WARNING]
+> Vermijd het inschakelen van door de gebruiker toegewezen beheerde identiteit aan virtuele machines in het bereik voor beleids regels waarmee door het systeem toegewezen beheerde identiteit wordt ingeschakeld. De door de gebruiker toegewezen identiteit wordt vervangen, waardoor de computer niet meer reageert.
 
 ## <a name="guest-configuration-definition-requirements"></a>Vereisten voor gast configuratie definitie
 
@@ -117,7 +117,7 @@ Lijn het beleid uit met uw vereisten of wijs het beleid toe aan gegevens van der
 
 Sommige para meters ondersteunen een bereik van gehele waarden. Met de instelling maximale wachtwoord duur kunt u bijvoorbeeld de instelling effectief groepsbeleid controleren. Een bereik van ' 1, 70 ' zou bevestigen dat gebruikers hun wacht woord moeten wijzigen ten minste elke 70 dagen, maar niet minder dan een dag.
 
-Als u het beleid toewijst met behulp van een Azure Resource Manager-implementatie sjabloon, gebruikt u een parameter bestand voor het beheren van uitzonde ringen. Controleer de bestanden in een versie beheersysteem, zoals git. Opmerkingen over bestands wijzigingen bieden bewijs waarom een toewijzing een uitzonde ring is op de verwachte waarde.
+Als u het beleid toewijst met behulp van een Azure Resource Manager sjabloon (ARM-sjabloon), gebruikt u een parameter bestand voor het beheren van uitzonde ringen. Controleer de bestanden in een versie beheersysteem, zoals git. Opmerkingen over bestands wijzigingen bieden bewijs waarom een toewijzing een uitzonde ring is op de verwachte waarde.
 
 #### <a name="applying-configurations-using-guest-configuration"></a>Configuraties Toep assen met behulp van gast configuratie
 

@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 07/06/2020
 ms.author: genli
-ms.openlocfilehash: 8ea85b560f35c79b3d5066d794f587345810b5d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 456aa225fa8eed47ca794c54e61b77a30c93fa9a
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77920855"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983217"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>De Azure virtual machine-agent installeren in de offline modus 
 
@@ -39,7 +39,7 @@ Gebruik de volgende stappen om de VM-agent in de offline modus te installeren.
 
 1. Maak een moment opname van de besturingssysteem schijf van de betreffende virtuele machine, maakt een schijf van de moment opname en koppel de schijf vervolgens aan een virtuele machine voor probleem oplossing. Zie [problemen met een Windows-VM oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met behulp van de Azure Portal](troubleshoot-recovery-disks-portal-windows.md)voor meer informatie. Voor de klassieke virtuele machine verwijdert u de virtuele machine en bewaart u de besturingssysteem schijf en koppelt u de besturingssysteem schijf aan de virtuele machine voor probleem oplossing.
 
-2.  Maak verbinding met de virtuele machine voor probleem oplossing. Open**schijf beheer**van **computer beheer** > . Controleer of de besturingssysteem schijf online is en of de stationsletters zijn toegewezen aan de schijf partities.
+2.  Maak verbinding met de virtuele machine voor probleem oplossing. Open **Computer management**  >  **schijf beheer**van computer beheer. Controleer of de besturingssysteem schijf online is en of de stationsletters zijn toegewezen aan de schijf partities.
 
 ### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>Stap 2: Wijzig de besturingssysteem schijf om de Azure VM-agent te installeren
 
@@ -47,9 +47,9 @@ Gebruik de volgende stappen om de VM-agent in de offline modus te installeren.
 
 2.  Blader in de virtuele machine van de probleem oplossing naar de besturingssysteem schijf die u hebt toegevoegd, open de map \Windows\System32\Config. Kopieer alle bestanden in deze map als back-up als een terugdraai actie vereist is.
 
-3.  Start de **REGI ster-editor** (Regedit. exe).
+3.  Start de **REGI ster-editor** (regedit.exe).
 
-4.  Selecteer de **HKEY_LOCAL_MACHINE** sleutel. Selecteer in het menu **bestand** > **laden component**:
+4.  Selecteer de **HKEY_LOCAL_MACHINE** sleutel. Selecteer in het menu **bestand**  >  **laden component**:
 
     ![De Hive laden](./media/install-vm-agent-offline/load-hive.png)
 
@@ -63,14 +63,12 @@ Gebruik de volgende stappen om de VM-agent in de offline modus te installeren.
 
     2. De volgende registers exporteren:
         - HKEY_LOCAL_MACHINE \BROKENSYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
-        - HKEY_LOCAL_MACHINE \BROKENSYSTEM\\ControlSet001\Services\WindowsAzureTelemetryService
         - HKEY_LOCAL_MACHINE \BROKENSYSTEM\ControlSet001\Services\RdAgent
 
 8.  Gebruik de bestaande bestanden op de virtuele machine voor probleem oplossing als opslag plaats voor de installatie van de VM-agent. Voltooi de volgende stappen:
 
     1. Exporteer de volgende subsleutels in de register indeling (. reg) van de virtuele machine voor probleem oplossing: 
         - HKEY_LOCAL_MACHINE \SYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
-        - HKEY_LOCAL_MACHINE \SYSTEM\ControlSet001\Services\WindowsAzureTelemetryService
         - HKEY_LOCAL_MACHINE \SYSTEM\ControlSet001\Services\RdAgent
 
           ![De subsleutels van het REGI ster exporteren](./media/install-vm-agent-offline/backup-reg.png)
@@ -81,9 +79,8 @@ Gebruik de volgende stappen om de VM-agent in de offline modus te installeren.
 
     3. Importeer de register bestanden in de opslag plaats door te dubbel klikken op elk register bestand.
 
-    4. Controleer of de volgende drie subsleutels zijn geïmporteerd in de **BROKENSYSTEM** -component:
+    4. Controleer of de volgende twee subsleutels zijn geïmporteerd in de **BROKENSYSTEM** -component:
         - WindowsAzureGuestAgent
-        - WindowsAzureTelemetryService
         - RdAgent
 
     5. Kopieer de installatiemap van de huidige VM-agent naar de gekoppelde besturingssysteem schijf: 
@@ -94,9 +91,9 @@ Gebruik de volgende stappen om de VM-agent in de offline modus te installeren.
 
              ![Map werken kopiëren](./media/install-vm-agent-offline/copy-files.png)
 
-9.  Selecteer **BROKENSYSTEM**. Selecteer in het menu het onderdeel **bestand** > **verwijderen**.
+9.  Selecteer **BROKENSYSTEM**. Selecteer in het menu het **File**  >  **onderdeel bestand verwijderen**.
 
-10.  Selecteer **BROKENSOFTWARE**. Selecteer in het menu het onderdeel **bestand** > **verwijderen**.
+10.  Selecteer **BROKENSOFTWARE**. Selecteer in het menu het **File**  >  **onderdeel bestand verwijderen**.
 
 11.  Ontkoppel de besturingssysteem schijf en wijzig vervolgens [de besturingssysteem schijf voor de betrokken VM](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm). Maak voor de klassieke virtuele machine een nieuwe virtuele machine met behulp van de gerepareerde besturingssysteem schijf.
 

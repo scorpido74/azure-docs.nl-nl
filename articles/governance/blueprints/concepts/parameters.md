@@ -3,16 +3,16 @@ title: Gebruik para meters voor het maken van dynamische blauw drukken
 description: Meer informatie over statische en dynamische para meters en hoe u deze kunt gebruiken om veilig en dynamisch blauw drukken te maken.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: e5953617d5fa27098380f3f0e95843c69800f823
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 831dd69f58130247518ee7465bc1059aed61b319
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458485"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970634"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Dynamische blauw drukken via para meters maken
 
-Een volledig gedefinieerde blauw druk met verschillende artefacten (zoals resource groepen, Resource Manager-sjablonen,-beleid of roltoewijzingen) biedt een snelle en consistente creatie van objecten in Azure. Azure-blauw drukken ondersteunt para meters om flexibel gebruik van deze herbruikbare ontwerp patronen en containers mogelijk te maken. De para meter maakt flexibiliteit, zowel tijdens de definitie als toewijzing, om eigenschappen te wijzigen van de artefacten die door de blauw druk worden geïmplementeerd.
+Een volledig gedefinieerde blauw druk met verschillende artefacten, zoals resource groepen, Azure Resource Manager sjablonen (ARM-sjablonen), beleids regels of roltoewijzingen, biedt het snel maken en maken van consistente objecten in Azure. Azure-blauw drukken ondersteunt para meters om flexibel gebruik van deze herbruikbare ontwerp patronen en containers mogelijk te maken. De para meter maakt flexibiliteit, zowel tijdens de definitie als toewijzing, om eigenschappen te wijzigen van de artefacten die door de blauw druk worden geïmplementeerd.
 
 Een eenvoudig voor beeld is het artefact van een resource groep. Wanneer een resource groep wordt gemaakt, heeft deze twee vereiste waarden die moeten worden opgegeven: naam en locatie. Als er geen para meters bestaan, definieert u bij het toevoegen van een resource groep aan uw blauw druk de naam en locatie voor elk gebruik van de blauw druk. Deze herhaling zou elk gebruik van de blauw druk kunnen veroorzaken om artefacten in dezelfde resource groep te maken. Resources in die resource groep worden gedupliceerd en veroorzaken een conflict.
 
@@ -28,7 +28,7 @@ Via de REST API kunnen para meters op de blauw druk zelf worden gemaakt. Deze pa
 
 ### <a name="using-securestring-and-secureobject-parameters"></a>SecureString-en secureObject-para meters gebruiken
 
-Hoewel een resource manager-sjabloon _artefact_ para meters van de typen **secureString** en **SecureObject** ondersteunt, moeten voor Azure-blauw drukken worden verbonden met een Azure Key Vault. Deze veiligheids maatregel voor komt de onveilige prak tijken van het opslaan van geheimen samen met de blauw druk en moedigt werk gelegenheid van beveiligde patronen aan. Azure-blauw drukken ondersteunt deze beveiligings maatregel en detecteert de opname van een veilige para meter in een resource manager-sjabloon _artefact_. De service vraagt vervolgens tijdens de toewijzing naar de volgende Key Vault eigenschappen per gedetecteerde beveiligde para meter:
+Hoewel een ARM-sjabloon _artefact_ para meters van de typen **secureString** en **SecureObject** ondersteunt, moeten voor Azure-blauw drukken worden verbonden met een Azure Key Vault. Deze veiligheids maatregel voor komt de onveilige prak tijken van het opslaan van geheimen samen met de blauw druk en moedigt werk gelegenheid van beveiligde patronen aan. Azure-blauw drukken ondersteunt deze beveiligings maatregel en detecteert de opname van een veilige para meter in een ARM-sjabloon _artefact_. De service vraagt vervolgens tijdens de toewijzing naar de volgende Key Vault eigenschappen per gedetecteerde beveiligde para meter:
 
 - Resource-ID Key Vault
 - Key Vault geheime naam
@@ -130,11 +130,11 @@ In het volgende REST API voor beeld wordt een functie toewijzings artefact gemaa
   }
   ```
 
-In dit voor beeld maakt de eigenschap **principalIds** gebruik van de para meter **eigen aren** blauw niveau met `[parameters('owners')]`behulp van een waarde van. Het instellen van een para meter voor een artefact met behulp van een para meter op blauw niveau is nog steeds een voor beeld van een **statische para meter**. De para meter op het niveau van de blauw druk kan niet worden ingesteld tijdens de toewijzing van blauw drukken en is dezelfde waarde als elke toewijzing.
+In dit voor beeld maakt de eigenschap **principalIds** gebruik van de para meter **eigen aren** blauw niveau met behulp van een waarde van `[parameters('owners')]` . Het instellen van een para meter voor een artefact met behulp van een para meter op blauw niveau is nog steeds een voor beeld van een **statische para meter**. De para meter op het niveau van de blauw druk kan niet worden ingesteld tijdens de toewijzing van blauw drukken en is dezelfde waarde als elke toewijzing.
 
 ##### <a name="artifact-level-parameter"></a>Para meter voor artefact niveau
 
-Het maken van **statische para meters** voor een artefact is vergelijkbaar, maar heeft een rechte waarde `parameters()` in plaats van de functie te gebruiken. In het volgende voor beeld worden twee statische para meters, **tagName** en **tagValue**gemaakt. De waarde op elk wordt rechtstreeks gegeven en gebruikt geen functie aanroep.
+Het maken van **statische para meters** voor een artefact is vergelijkbaar, maar heeft een rechte waarde in plaats van de functie te gebruiken `parameters()` . In het volgende voor beeld worden twee statische para meters, **tagName** en **tagValue**gemaakt. De waarde op elk wordt rechtstreeks gegeven en gebruikt geen functie aanroep.
 
 - REST API-URI
 
@@ -180,7 +180,7 @@ Het tegenovergestelde van een statische para meter is een **dynamische para mete
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Dynamische para meters instellen van REST API
 
-Het instellen van **dynamische para meters** tijdens de toewijzing wordt uitgevoerd door de waarde rechtstreeks in te voeren. In plaats van een functie te gebruiken, zoals [para meters ()](../reference/blueprint-functions.md#parameters), is de opgegeven waarde een juiste teken reeks. Artefacten voor een resource groep worden gedefinieerd met een sjabloon naam, **naam**en **locatie** -eigenschappen. Alle andere para meters voor opgenomen artefacten worden gedefinieerd onder **para meters** met een ** \<\> ** sleutel paar met naam en **waarde** . Als de blauw druk is geconfigureerd voor een dynamische para meter die niet wordt opgegeven tijdens de toewijzing, mislukt de toewijzing.
+Het instellen van **dynamische para meters** tijdens de toewijzing wordt uitgevoerd door de waarde rechtstreeks in te voeren. In plaats van een functie te gebruiken, zoals [para meters ()](../reference/blueprint-functions.md#parameters), is de opgegeven waarde een juiste teken reeks. Artefacten voor een resource groep worden gedefinieerd met een sjabloon naam, **naam**en **locatie** -eigenschappen. Alle andere para meters voor opgenomen artefacten worden gedefinieerd onder **para meters** met een **\<name\>** sleutel paar en een **waarde** . Als de blauw druk is geconfigureerd voor een dynamische para meter die niet wordt opgegeven tijdens de toewijzing, mislukt de toewijzing.
 
 - REST API-URI
 

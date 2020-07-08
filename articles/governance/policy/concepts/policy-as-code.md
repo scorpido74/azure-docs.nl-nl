@@ -3,18 +3,18 @@ title: Beleid ontwerpen als codewerkstromen
 description: Meer informatie over het ontwerpen van werk stromen om uw Azure Policy definities als code te implementeren en om resources automatisch te valideren.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 04ec27216a3e9d59da21ef80948ef8620234e575
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 17964459c6c06e6d7df09da4d3f0813350f209ec
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194413"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970940"
 ---
 # <a name="design-policy-as-code-workflows"></a>Beleid ontwerpen als codewerkstromen
 
 Als u de voortgang van uw reis met Cloud governance wilt, kunt u de beleids definitie hand matig beheren in de Azure Portal of via de diverse Sdk's, zodat u ze beter kunt beheren en herhalen op ondernemings schaal. Twee van de meest voorkomende benaderingen voor het beheer van systemen op schaal in de Cloud zijn:
 
-- Infra structuur als code: de manier waarop de inhoud wordt behandeld waarmee uw omgevingen worden gedefinieerd, met alles uit Resource Manager-sjablonen voor het Azure Policy van definities aan Azure-blauw drukken, als bron code.
+- Infra structuur als code: de manier waarop de inhoud wordt behandeld waarmee uw omgevingen worden gedefinieerd, met alles uit Azure Resource Manager sjablonen (ARM-sjablonen) om definities te Azure Policy aan Azure-blauw drukken, als bron code.
 - DevOps: de samen voeging van personen, processen en producten om een continue levering van de waarde aan onze eind gebruikers mogelijk te maken.
 
 Beleid als code is een combi natie van deze ideeën. Behoud in wezen uw beleids definities in broncode beheer en telkens wanneer een wijziging wordt aangebracht, test en valideer deze wijziging. Dit geldt echter niet voor de mate van beleids betrokkenheid bij de infra structuur als code of DevOps.
@@ -115,7 +115,7 @@ Nadat alle validatie-Gates zijn voltooid, werkt u de toewijzing bij om **enforce
 
 ## <a name="process-integrated-evaluations"></a>Geïntegreerde evaluaties verwerken
 
-De algemene werk stroom voor beleid als code is voor het ontwikkelen en implementeren van beleid en initiatieven voor een omgeving op schaal. Beleids evaluatie moet echter deel uitmaken van het implementatie proces voor elke werk stroom die resources implementeert of maakt in azure, zoals het implementeren van toepassingen of het uitvoeren van Resource Manager-sjablonen voor het maken van een infra structuur.
+De algemene werk stroom voor beleid als code is voor het ontwikkelen en implementeren van beleid en initiatieven voor een omgeving op schaal. Beleids evaluatie moet echter deel uitmaken van het implementatie proces voor elke werk stroom die resources implementeert of maakt in azure, zoals het implementeren van toepassingen of het uitvoeren van ARM-sjablonen voor het maken van een infra structuur.
 
 In deze gevallen moet er na de implementatie van de toepassing of infra structuur een test abonnement of resource groep worden uitgevoerd om de validatie van alle bestaande beleids regels en initiatieven te controleren. Hoewel ze kunnen worden geconfigureerd als **enforcementMode** die in een dergelijke omgeving worden _uitgeschakeld_ , is het nuttig om te weten te komen als een toepassing of infrastructuur implementatie in een vroeg stadium wordt geschonden door beleids definities. Deze beleids evaluatie moet daarom een stap zijn in deze werk stromen en er kunnen geen implementaties worden uitgevoerd die niet-compatibele resources maken.
 

@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.openlocfilehash: f214dbbc1991e64f86890687523be256c69e46d3
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.date: 06/17/2020
+ms.openlocfilehash: 3393fb6e33cbf80db68c49ac31edb54de35bae64
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374267"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85980593"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Een nieuwe SaaS-aanbieding maken in de commerciële Marketplace
 
@@ -76,7 +76,7 @@ Door te verkopen via micro soft biedt betere klant detectie en-overname, kan mic
 Als u SaaS-aanbiedingen (Software as a Service) met commerciële Marketplace op partner centrum wilt weer geven, moet aan de volgende criteria worden voldaan:
 
 - Uw aanbieding moet [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) gebruiken voor identiteits beheer en-verificatie.
-- Uw aanbieding moet [SaaS-fulfillment-api's](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) gebruiken voor integratie met Azure Marketplace.
+- Uw aanbieding moet [SaaS-fulfillment-api's](pc-saas-fulfillment-api-v2.md) gebruiken voor integratie met Azure Marketplace.
 
 #### <a name="saas-pricing-and-billing-options"></a>SaaS-prijzen en facturerings opties
 
@@ -96,10 +96,9 @@ Dit is een voor beeld van een uitsplitsing van kosten en uitbetalingen om het ag
 |Micro soft betaalt u 80% van uw licentie kosten <br>**Voor gekwalificeerde SaaS-apps betaalt micro soft 90% van uw licentie kosten*|$80,00 per maand <br>*$* 90,00 per maand *|
 
 - In dit voor beeld wordt micro soft billt $100,00 aan de klant voor uw software licentie en betaalt $80,00 de uitgever.
-- Partners die in aanmerking komen voor de **lagere kosten voor Marketplace-service** , zien een gereduceerde transactie kosten voor de SaaS-aanbiedingen van mei 2019 tot juni 2020. In dit scenario betaalt micro soft de $100,00 voor uw software licentie en wordt $90,00 op de Publisher uitgewisseld.
 
 > [!NOTE]
-> **Lagere kosten voor Marketplace-service** : voor bepaalde SaaS-aanbiedingen die u hebt gepubliceerd op onze commerciële Marketplace, verlaagt micro soft de kosten voor Marketplace-service van 20% (zoals beschreven in de overeenkomst voor micro soft Publisher) tot 10%. Om uw aanbieding in aanmerking te komen, moet u ten minste één van uw aanbiedingen hebben aangewezen door micro soft als IP-mede-verkoop gereed of IP co-sell priority. Voor het einde van elke kalender maand moet aan de geschiktheid ten minste vijf (5) werk dagen worden voldaan om dit gereduceerde service-tarief voor de maand te ontvangen.  De lagere kosten voor Marketplace-service zijn niet van toepassing op Vm's, beheerde apps of andere producten die beschikbaar worden gesteld via onze commerciële Marketplace. De lagere kosten voor Marketplace-service zijn alleen beschikbaar voor aanbiedingen met een licentie die door micro soft zijn verzameld tussen 1 mei 2019 en 30 juni 2020. Na deze periode wordt de kosten voor de Marketplace-service weer gegeven in het normale bedrag.
+> **Lagere kosten voor Marketplace-service** : voor bepaalde SaaS-aanbiedingen die u hebt gepubliceerd op de commerciële Marketplace, verlaagt micro soft de kosten voor Marketplace-service van 20% (zoals beschreven in de overeenkomst voor micro soft Publisher) tot 10%. Uw aanbieding (en) voor uw aanbieding (en) die u wilt kwalificeren, moeten zijn toegewezen door micro soft als IP-mede-verkoop gereed of IP co-sell priority. Voor het einde van elke kalender maand moet aan de geschiktheid ten minste vijf (5) werk dagen worden voldaan om de lagere kosten voor Marketplace-service voor de maand te ontvangen. De lagere kosten voor Marketplace-service zijn niet van toepassing op Vm's, beheerde apps of andere producten die beschikbaar worden gesteld via de commerciële Marketplace.
 
 ### <a name="list-through-microsoft"></a>Lijst via micro soft
 
@@ -109,11 +108,11 @@ Promoot uw bedrijf met micro soft door een Marketplace-vermelding te maken. Als 
 
 #### <a name="get-it-now-free"></a>Nu downloaden (gratis)
 
-Bied uw aanbod aan klanten gratis aan door een geldig adres op te geven (te beginnen met *http* of *https*), waar ze een proef versie met één klik kunnen krijgen met [behulp van Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials). Bijvoorbeeld `https://contoso.com/saas-app`.
+Bied uw aanbod aan klanten gratis aan door een geldig adres op te geven (te beginnen met *http* of *https*), waar ze een proef versie kunnen krijgen met [één klik op verificatie met behulp van Azure Active Directory (Azure AD)](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)). Bijvoorbeeld `https://contoso.com/saas-app`.
 
 #### <a name="free-trial-listing"></a>Gratis proef versie (lijst)
 
-Bied uw aanbieding aan klanten aan met een koppeling naar een gratis proef versie door een geldig adres op te geven (te beginnen met *http* of *https*), waar u een proef versie kunt verkrijgen met [één klik op verificatie met behulp van Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials). Bijvoorbeeld `https://contoso.com/trial/saas-app`. Gratis proef versies van aanbieding worden gemaakt, beheerd en geconfigureerd door uw service en er zijn geen abonnementen die door micro soft worden beheerd.
+Bied uw aanbieding aan klanten aan met een koppeling naar een gratis proef versie door een geldig adres op te geven (te beginnen met *http* of *https*), waar u een proef versie kunt verkrijgen met [één klik op verificatie met behulp van Azure Active Directory (Azure AD)](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)). Bijvoorbeeld `https://contoso.com/trial/saas-app`. Gratis proef versies van aanbieding worden gemaakt, beheerd en geconfigureerd door uw service en er zijn geen abonnementen die door micro soft worden beheerd.
 
 > [!NOTE]
 > De tokens die uw toepassing via uw proef koppeling ontvangt, kunnen alleen worden gebruikt voor het verkrijgen van gebruikers gegevens via Azure AD voor het automatiseren van het maken van accounts in uw app. Micro soft-accounts (MSA) worden niet ondersteund voor verificatie met behulp van dit token.
@@ -140,7 +139,7 @@ Hier volgt een voor beeld van hoe informatie over aanbiedingen wordt weer gegeve
 6. Privacybeleid
 7. Naam van aanbieding
 8. Samenvatting
-9. Beschrijving
+9. Description
 10. Scherm afbeeldingen/Video's
 11. Documenten
 
@@ -157,15 +156,15 @@ Hier volgt een voor beeld van hoe informatie over aanbiedingen wordt weer gegeve
 
 ## <a name="enable-a-test-drive"></a>Een test drive inschakelen
 
-Een test drive is een fantastische manier om uw aanbieding aan potentiële klanten te laten presen teren door hen de mogelijkheid te bieden om te kopen voordat u aan de slag gaat, wat resulteert in een verhoogde conversie en de generatie van uiterst gekwalificeerde leads. Meer [informatie over test stations](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive).
+Een test drive is een fantastische manier om uw aanbieding aan potentiële klanten te laten presen teren door hen de mogelijkheid te bieden om te kopen voordat u aan de slag gaat, wat resulteert in een verhoogde conversie en de generatie van uiterst gekwalificeerde leads. Meer [informatie over test stations](../what-is-test-drive.md).
 
 Als u een test drive voor een bepaalde periode wilt inschakelen, schakelt u het selectie vakje **een test drive inschakelen** in. Als u test drive uit uw aanbieding wilt verwijderen, schakelt u dit selectie vakje uit.
 
-Zie [Test uw aanbieding in de commerciële Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive)voor meer informatie.
+Zie [Test uw aanbieding in de commerciële Marketplace](test-drive.md)voor meer informatie.
 
 ### <a name="test-drive-resources"></a>Bronnen van schijven testen
 
-- [Best practices voor marketing](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [Wat is een test drive?](../what-is-test-drive.md)
 - [Technische best practices](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Overzicht](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF; Controleer of de pop-upblokkering is uitgeschakeld)
 
@@ -174,8 +173,8 @@ Zie [Test uw aanbieding in de commerciële Marketplace](https://docs.microsoft.c
 [!INCLUDE [Connect lead management](./includes/connect-lead-management-a.md)]
 
 #### <a name="additional-lead-management-resources"></a>Aanvullende resources voor lead beheer
-- [Veelgestelde vragen over leadmanagement](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Algemene leadconfiguratiefouten](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Veelgestelde vragen over Lead beheer](../lead-management-for-cloud-marketplace.md#frequently-asked-questions))
+- [Veelvoorkomende fouten van de lead configuratie](../lead-management-for-cloud-marketplace.md#publishing-config-errors))
 - [Overzicht Lead beheer één pager](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
 
 Selecteer **concept opslaan** voordat u doorgaat.
@@ -186,11 +185,18 @@ Op deze pagina wordt u gevraagd om de categorieën en industrieën te definiëre
 
 ### <a name="category"></a>Categorie
 
-Selecteer ten minste één en Maxi maal drie categorieën voor het groeperen van uw aanbieding in de juiste Zoek gebieden voor Marketplace. Beschrijf hoe uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding.
+Uw aanbieding wordt gepubliceerd op AppSource of Azure Marketplace, afhankelijk van de transactie mogelijkheden die zijn gekoppeld aan uw aanbieding en de selectie van uw categorie. Zie [Microsoft AppSource en Azure Marketplace vergelijken](../comparing-appsource-azure-marketplace.md) voor meer informatie. Selecteer categorieën en subcategorieën die het beste aansluiten bij uw aanbieding en uw beoogde doel groep. Selecteer:
+
+- Ten minste één en Maxi maal twee categorieën, met inbegrip van een primaire en secundaire categorie (optioneel).
+- Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie van toepassing is op uw aanbieding, selecteert u **niet van toepassing**.
+
+Bekijk de volledige lijst met categorieën en subcategorieën die van toepassing zijn op elke winkel in [Aanbevolen procedures voor aanbiedingen](../gtm-offer-listing-best-practices.md).
 
 ### <a name="industries"></a>Bedrijfstakken
 
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
+
+Branche selectie geldt alleen voor aanbiedingen die zijn gepubliceerd op AppSource.
 
 ### <a name="app-version"></a>App-versie
 
@@ -252,11 +258,11 @@ Geef de details op die in Marketplace moeten worden weer gegeven, inclusief besc
 
 - **Naam** (vereist): de naam die hier is opgegeven, wordt weer gegeven als de titel van uw aanbieding op Marketplace ('s) die u hebt gekozen. De naam wordt vooraf ingevuld op basis van uw vorige **nieuwe aanbieding** . De naam kan worden aangemerkt. Het mag geen emojis bevatten (tenzij ze de symbolen van het handels merk en copyright zijn) en moet beperkt zijn tot 50 tekens.
 - **Samen vatting** (vereist): Geef een korte beschrijving van uw aanbieding die moet worden gebruikt in de zoek resultaten voor Marketplace-aanbiedingen. In dit veld kunnen Maxi maal 100 tekens tekst worden ingevoerd.
-- **Beschrijving** (vereist): Geef een beschrijving op van uw aanbieding die moet worden weer gegeven in het overzicht van Marketplace-lijst (en). Overweeg het opnemen van een toegevoegde waarde, belang rijke voor delen, categorie-of branche koppelingen, in-app aankoop kansen, eventueel vereiste informatie en een koppeling voor meer informatie. U kunt Maxi maal 3.000 tekens in dit veld invoeren, inclusief de opmaak van de tekst. Zie [een fantastische app-beschrijving schrijven](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)voor aanvullende tips.
+- **Beschrijving** (vereist): Geef een beschrijving op van uw aanbieding die moet worden weer gegeven in het overzicht van Marketplace-lijst (en). Overweeg het opnemen van een toegevoegde waarde, belang rijke voor delen, categorie-of branche koppelingen, in-app aankoop kansen, eventueel vereiste informatie en een koppeling voor meer informatie. U kunt Maxi maal 3.000 tekens in dit veld invoeren, inclusief de opmaak van de tekst. Zie [een fantastische app-beschrijving schrijven](/windows/uwp/publish/write-a-great-app-description)voor aanvullende tips.
 - **Zoek trefwoorden** : Voer Maxi maal drie Zoek trefwoorden in die klanten kunnen gebruiken om uw aanbieding te vinden in Marketplace ('s).
 - **Aan de slag-instructies** (vereist): in dit gedeelte wordt uitgelegd hoe u uw app kunt configureren en gebruiken voor potentiële klanten.  Deze Snelstartgids kan koppelingen bevatten naar gedetailleerde online documentatie. In dit veld kunnen Maxi maal 3.000 tekens tekst worden ingevoerd.
 
-#### <a name="description"></a>Beschrijving
+#### <a name="description"></a>Description
 
 Dit veld is vereist.
 
@@ -267,7 +273,7 @@ Dit veld is vereist.
 #### <a name="links"></a>Koppelingen
 
 - **Privacybeleid** (vereist): koppeling naar het privacybeleid van uw organisatie. U bent verantwoordelijk om ervoor te zorgen dat uw app voldoet aan de wetten en voor schriften van de privacy en voor het bieden van een geldig privacybeleid
-- **Software** voor het CSP-programma (optioneel): Geef een koppeling op naar marketing materiaal als u ervoor kiest uw aanbieding uit te breiden naar het [CSP-programma (Cloud Solution Provider)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) . CSP breidt uw aanbieding uit naar een breder scala aan gekwalificeerde klanten door CSP-partners in staat te stellen om uw aanbieding te bundelen, te verhandelen en te verkopen. Deze wederverkopers moeten toegang hebben tot materialen om uw aanbieding in de handel te brengen. Zie [Go-to-Market Services](https://partner.microsoft.com/reach-customers/gtm)(Engelstalig) voor meer informatie.
+- **Software** voor het CSP-programma (optioneel): Geef een koppeling op naar marketing materiaal als u ervoor kiest uw aanbieding uit te breiden naar het [CSP-programma (Cloud Solution Provider)](../cloud-solution-providers.md) . CSP breidt uw aanbieding uit naar een breder scala aan gekwalificeerde klanten door CSP-partners in staat te stellen om uw aanbieding te bundelen, te verhandelen en te verkopen. Deze wederverkopers moeten toegang hebben tot materialen om uw aanbieding in de handel te brengen. Zie [Go-to-Market Services](https://partner.microsoft.com/reach-customers/gtm)(Engelstalig) voor meer informatie.
 - **Nuttige koppelingen** (optioneel): optionele aanvullende online documenten over uw app of gerelateerde services die worden vermeld door een **titel** en **URL**op te geven. Voeg extra nuttige koppelingen toe door op **+ een URL toevoegen**te klikken.
 
 #### <a name="contact-information"></a>Contactgegevens
@@ -296,7 +302,7 @@ Dit veld is vereist.
 
 #### <a name="additional-marketplace-listing-resources"></a>Aanvullende bronnen voor Marketplace-lijst
 
-- [Best practices voor Marketplace-aanbiedingen](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [Best practices voor Marketplace-aanbiedingen](../gtm-offer-listing-best-practices.md)
 
 Selecteer **concept opslaan** voordat u doorgaat.
 
@@ -327,11 +333,11 @@ Diagrammen en gedetailleerde uitleg die het gebruik van de verzamelde velden bes
 
 - **URL van de landings pagina** (vereist): DEFINIEER de URL van de SaaS-site (bijvoorbeeld: `https://contoso.com/signup` ) waarmee eind klanten hun aanbieding van de Marketplace kunnen binnenhalen en het configuratie proces vanuit het zojuist gemaakte SaaS-abonnement kunnen activeren.  Deze URL wordt aangeroepen met de para meter voor het kopen van id-tokens voor Marketplace waarmee de specifieke SaaS-aankoop van de eind klant wordt geïdentificeerd.  U moet dit token omruilen voor de bijbehorende details van het SaaS-abonnement met behulp van de API voor [omzetten](./pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) .  Deze details en andere personen die u wilt verzamelen, moeten worden gebruikt als onderdeel van een klant-interactieve webpagina die in uw ervaring is gebouwd om de eind klant te registreren en hun aankoop te activeren.  Op deze pagina moet de gebruiker zich aanmelden met één klik om te verifiëren met behulp van Azure Active Directory (Azure AD). <br> <br> Deze URL met Marketplace-aankoop identificatie token para meter wordt ook aangeroepen wanneer de eind klant beheerde SaaS-ervaring vanuit Azure Portal of M365-beheer centrum start. U moet beide stromen afhandelen wanneer het token de eerste keer wordt ingevoerd na aankoop voor nieuwe klanten en wanneer het wordt verschaft voor een bestaande klant die zijn SaaS beheert. <br> <br> De landings pagina die u hier configureert, moet 24/7 zijn. Dit is de enige manier waarop u wordt gewaarschuwd over nieuwe aankopen van uw SaaS-aanbiedingen op Marketplace of configuratie aanvragen van een actief abonnement op een aanbieding.
 
-- **Verbindings-webhook** (vereist): voor alle asynchrone gebeurtenissen die micro soft naar u moet sturen (bijvoorbeeld SaaS-abonnement is geannuleerd), moet u een URL voor de verbindings-webhook opgeven. Deze URL wordt gebeld om u op de hoogte te stellen van de gebeurtenis. <br> <br> De webhook die u opgeeft, moet 24/7 zijn, omdat dit de enige manier is waarop u wordt gewaarschuwd over updates van de SaaS-abonnementen van uw klanten die zijn gekocht via Marketplace.  Als u nog geen webhooksysteem hebt, is de eenvoudigste configuratie een HTTP-eindpunt logische app waarmee wordt geluisterd naar gebeurtenissen die erop worden geplaatst en deze vervolgens op de juiste wijze afhandelen (bijvoorbeeld `https://prod-1westus.logic.azure.com:443/work` ). Zie [werk stromen aanroepen, activeren of nesten met HTTP-eind punten in Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint)voor meer informatie.
+- **Verbindings-webhook** (vereist): voor alle asynchrone gebeurtenissen die micro soft naar u moet sturen (bijvoorbeeld SaaS-abonnement is geannuleerd), moet u een URL voor de verbindings-webhook opgeven. Deze URL wordt gebeld om u op de hoogte te stellen van de gebeurtenis. <br> <br> De webhook die u opgeeft, moet 24/7 zijn, omdat dit de enige manier is waarop u wordt gewaarschuwd over updates van de SaaS-abonnementen van uw klanten die zijn gekocht via Marketplace.  Als u nog geen webhooksysteem hebt, is de eenvoudigste configuratie een HTTP-eindpunt logische app waarmee wordt geluisterd naar gebeurtenissen die erop worden geplaatst en deze vervolgens op de juiste wijze afhandelen (bijvoorbeeld `https://prod-1westus.logic.azure.com:443/work` ). Zie [werk stromen aanroepen, activeren of nesten met HTTP-eind punten in Logic apps](../../logic-apps/logic-apps-http-endpoint.md)voor meer informatie.
 
-- **Azure AD-Tenant-id** (vereist): in het Azure Portal moet u [een Azure Active Directory (AD)-app maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) zodat de verbinding tussen de twee services achter een geverifieerde communicatie kan worden gevalideerd. Als u de [Tenant-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)wilt vinden, gaat u naar uw Azure Active Directory en selecteert u **Eigenschappen**. vervolgens zoekt u naar de weer gegeven **Directory-id** (zoals 50c464d3-4930-494c-963c-1e951d15360e).
+- **Azure AD-Tenant-id** (vereist): in het Azure Portal moet u [een Azure Active Directory (AD)-app maken](../../active-directory/develop/howto-create-service-principal-portal.md) zodat de verbinding tussen de twee services achter een geverifieerde communicatie kan worden gevalideerd. Als u wilt zoeken naar de [Tenant-id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)), gaat u naar uw Azure Active Directory en selecteert u **Eigenschappen**. vervolgens zoekt u naar de weer gegeven **Directory-id** (zoals 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Azure AD-App-ID** (vereist): u hebt ook uw [toepassings-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)nodig. Als u de waarde wilt ophalen, gaat u naar uw Azure Active Directory en selecteert u **app-registraties**en vervolgens zoekt u naar het id-nummer van de **toepassing** die wordt weer gegeven (bijvoorbeeld `50c464d3-4930-494c-963c-1e951d15360e` ).
+- **Azure AD-App-ID** (vereist): u hebt de [toepassings-id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)ook nodig). Als u de waarde wilt ophalen, gaat u naar uw Azure Active Directory en selecteert u **app-registraties**en vervolgens zoekt u naar het id-nummer van de **toepassing** die wordt weer gegeven (bijvoorbeeld `50c464d3-4930-494c-963c-1e951d15360e` ).
 
 >[!Note]
 >De Azure AD-App-ID is gekoppeld aan uw uitgevers-ID in uw partner centrum-account.  Zorg ervoor dat dezelfde toepassings-ID wordt gebruikt in al uw aanbiedingen.
@@ -423,7 +429,7 @@ U kunt hier een gratis proef versie configureren voor elk abonnement in uw aanbi
 >[!NOTE]
 >Zodra uw aanbieding met een gratis proef versie is gepubliceerd, kan deze niet worden uitgeschakeld voor dat abonnement. Zorg ervoor dat deze instelling juist is voor de eerste publicatie om te voor komen dat u het abonnement opnieuw moet maken.
 
-Als u informatie wilt verkrijgen over klant abonnementen die momenteel deel nemen aan een gratis proef versie, gebruikt u de nieuwe API `isFreeTrial` -eigenschap, die wordt gemarkeerd als waar of onwaar. Zie de [API voor SaaS Get-abonnementen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription)voor meer informatie.
+Als u informatie wilt verkrijgen over klant abonnementen die momenteel deel nemen aan een gratis proef versie, gebruikt u de nieuwe API `isFreeTrial` -eigenschap, die wordt gemarkeerd als waar of onwaar. Zie de [API voor SaaS Get-abonnementen](pc-saas-fulfillment-api-v2.md#get-subscription)voor meer informatie.
 
 >[!NOTE]
 >Gratis proef versies worden niet ondersteund voor abonnementen die gebruikmaken van de Marketplace-meter service.

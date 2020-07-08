@@ -3,12 +3,12 @@ title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe beleids definities worden gebruikt om conventies voor Azure-resources in uw organisatie in te richten.
 ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: a70534f91584f72ad81b71913c48062e51a324d3
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 28f4e3a99b7241711e46ce92fdfd2d7689b4527b
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052730"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971110"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -603,9 +603,9 @@ Alle [Resource Manager-sjabloon functies](../../../azure-resource-manager/templa
 > [!NOTE]
 > Deze functies zijn nog steeds beschikbaar in het `details.deployment.properties.template` gedeelte van de sjabloon implementatie in een **deployIfNotExists** -beleids definitie.
 
-De volgende functie is beschikbaar voor gebruik in een beleids regel, maar verschilt van gebruik in een Azure Resource Manager sjabloon:
+De volgende functie is beschikbaar voor gebruik in een beleids regel, maar verschilt van gebruik in een Azure Resource Manager sjabloon (ARM-sjabloon):
 
-- `utcNow()`-In tegens telling tot een resource manager-sjabloon, kan deze eigenschap buiten de _standaard waarde_worden gebruikt.
+- `utcNow()`-In tegens telling tot een ARM-sjabloon kan deze eigenschap buiten de _standaard waarde_worden gebruikt.
   - Retourneert een teken reeks die is ingesteld op de huidige datum en tijd 8601 in de indeling JJJJ-MM-DDTuu: mm: SS. fffffffZ
 
 De volgende functies zijn alleen beschikbaar in beleids regels:

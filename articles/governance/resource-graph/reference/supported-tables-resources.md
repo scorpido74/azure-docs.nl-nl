@@ -1,14 +1,15 @@
 ---
-title: Ondersteunde resource typen Resource Manager
-description: Geef een lijst op met de Resource Manager-resource typen die worden ondersteund door de Azure-resource grafiek en de wijzigings geschiedenis.
+title: Ondersteunde Azure Resource Manager resource typen
+description: Geef een lijst op met de Azure Resource Manager resource typen die worden ondersteund door de Azure-resource grafiek en de wijzigings geschiedenis.
 ms.date: 06/04/2020
 ms.topic: reference
-ms.openlocfilehash: a4679c9e1ecaef34445a7283e0d58ab78cb61ab0
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.custom: generated
+ms.openlocfilehash: 7a1890c8decb6f918ecacee99764e45817e3d38a
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424292"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970566"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Naslag informatie over de tabel en het resource type van Azure resource Graph
 
@@ -87,11 +88,11 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. baremetal/consoleconnections
 - micro soft. baremetal/crayservers
 - micro soft. baremetal/monitoringservers
-- micro soft. batch/batchaccounts
-- micro soft. batchai/clusters
-- micro soft. batchai/fileservers
-- micro soft. batchai/Jobs
-- micro soft. batchai/werk ruimten
+- microsoft.bat-CH/batchaccounts
+- microsoft.batChai/clusters
+- microsoft.batChai/fileservers
+- microsoft.batChai/Jobs
+- microsoft.batChai/werk ruimten
 - micro soft. bingmaps/mapapis
 - micro soft. biztalkservices/BizTalk
 - micro soft. Block Chain/blockchainmembers
@@ -196,7 +197,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. devtestlab/Labs/informatie
 - micro soft. devtestlab/planningen
 - micro soft. digitaltwins/digitaltwinsinstances
-- micro soft. documentdb/databaseaccounts
+- microsoft.documentdb/databaseaccounts
 - micro soft. domainregistration/domeinen
 - micro soft. enterpriseknowledgegraph/Services
 - micro soft. eventgrid/domeinen
@@ -487,6 +488,6 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [query taal](../concepts/query-language.md).
-- Meer informatie over hoe u [resources kunt verkennen](../concepts/explore-resources.md).
-- Bekijk voor beelden van [Start query's](../samples/starter.md).
+- Meer informatie over de [querytaal](../concepts/query-language.md).
+- Lees meer over het [verkennen van resources](../concepts/explore-resources.md).
+- Bekijk voorbeelden uit [Starter-query's](../samples/starter.md).

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: 99c9a9ac742981734daf107d73c9cec8777dc642
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: d394f0bb72f353e65c48a564fa7187364eae8121
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85257530"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970804"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Micro soft Defender Advanced Threat Protection met Azure Security Center
 
@@ -46,8 +46,14 @@ Door Defender ATP te integreren met Azure Security Center, kunt u ook profiteren
 
 Micro soft Defender ATP in Security Center ondersteunt detectie op Windows Server 2016, 2012 R2 en 2008 R2 SP1. Voor virtuele machines van Azure hebt u een Standard-laag abonnement en voor virtuele machines die niet van Azure zijn, hebt u alleen een Standard-laag op het niveau van de werk ruimte nodig.
 
-> [!NOTE]
-> Wanneer u Azure Security Center gebruikt voor het bewaken van servers, wordt automatisch een micro soft Defender ATP-Tenant gemaakt en worden de micro soft Defender ATP-gegevens standaard in Europa opgeslagen. Als u uw gegevens naar een andere locatie wilt verplaatsen, moet u contact opnemen met Microsoft Ondersteuning om de Tenant opnieuw in te stellen. Het gebruik van de server eindpunt bewaking die gebruikmaakt van deze integratie is uitgeschakeld voor Office 365 GCC-klanten.
+Server eindpunt bewaking met deze integratie is uitgeschakeld voor Office 365 GCC-klanten.
+
+## <a name="data-storage-location"></a>Locatie voor gegevens opslag
+
+Wanneer u Azure Security Center gebruikt voor het bewaken van servers, wordt automatisch een micro soft Defender ATP-Tenant gemaakt. Gegevens die door micro soft Defender ATP worden verzameld, worden opgeslagen in de geografische locatie van de Tenant, zoals wordt geïdentificeerd tijdens het inrichten. Klant gegevens in de vorm van een pseudoniem kunnen ook worden opgeslagen in de centrale opslag-en verwerkings systemen in de Verenigde Staten. 
+
+Na de configuratie kunt u de locatie waar uw gegevens worden opgeslagen, niet meer wijzigen. Als u uw gegevens naar een andere locatie wilt verplaatsen, neemt u contact op met Microsoft Ondersteuning om de Tenant opnieuw in te stellen.
+
 
 ## <a name="onboarding-servers-to-security-center"></a>Onboarding uitvoeren van servers voor Security Center 
 

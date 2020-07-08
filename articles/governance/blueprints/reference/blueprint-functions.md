@@ -3,16 +3,16 @@ title: Azure-blauw drukken-functies
 description: Hierin worden de functies beschreven die beschikbaar zijn voor gebruik met blauw drukken artefacten in definities en toewijzingen van Azure.
 ms.date: 05/22/2020
 ms.topic: reference
-ms.openlocfilehash: e804cc98f7bd6d3e94e6b518f0ed0575f9f8f440
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: c402075aa9f6beb52e72454179c2e96d148c271f
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834778"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970872"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Functies voor gebruik met Azure-blauw drukken
 
-Azure-blauw drukken biedt functies die een definitie van een blauw druk maken. Deze functies zijn voor gebruik met blauw drukken-definities en blauw drukken-artefacten. Een resource manager-sjabloon artefact ondersteunt het volledige gebruik van Resource Manager-functies naast het ophalen van een dynamische waarde via een blauw druk-para meter.
+Azure-blauw drukken biedt functies die een definitie van een blauw druk maken. Deze functies zijn voor gebruik met blauw drukken-definities en blauw drukken-artefacten. Een sjabloon voor Azure Resource Manager (ARM-sjabloon) ondersteunt het volledige gebruik van Resource Manager-functies naast het ophalen van een dynamische waarde via een blauw druk-para meter.
 
 De volgende functies worden ondersteund:
 
@@ -30,13 +30,13 @@ De volgende functies worden ondersteund:
 Retourneert een object met eigenschappen die zijn ingevuld met de uitvoer van de blauw druk artefacten.
 
 > [!NOTE]
-> De `artifacts()` functie kan niet vanuit een resource manager-sjabloon worden gebruikt. De functie kan alleen worden gebruikt in de JSON van de blauw druk of in de JSON van de artefact bij het beheren van de blauw druk met Azure PowerShell of REST API als onderdeel van [blauw drukken-als-code](https://github.com/Azure/azure-blueprints/blob/master/README.md).
+> De `artifacts()` functie kan niet worden gebruikt vanuit een arm-sjabloon. De functie kan alleen worden gebruikt in de JSON van de blauw druk of in de JSON van de artefact bij het beheren van de blauw druk met Azure PowerShell of REST API als onderdeel van [blauw drukken-als-code](https://github.com/Azure/azure-blueprints/blob/master/README.md).
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| artefactnaam |Ja |tekenreeks |De naam van een blauw druk artefact. |
+| artefactnaam |Yes |tekenreeks |De naam van een blauw druk artefact. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -60,9 +60,9 @@ Een object met uitvoer eigenschappen. De **uitvoer** eigenschappen zijn afhankel
 }
 ```
 
-#### <a name="resource-manager-template-artifact"></a>Resource Manager-sjabloon artefact
+#### <a name="arm-template-artifact"></a>ARM-sjabloon artefact
 
-De **uitvoer** eigenschappen van het geretourneerde object worden gedefinieerd in de Resource Manager-sjabloon en geretourneerd door de implementatie.
+De **uitvoer** eigenschappen van het geretourneerde object worden gedefinieerd in de arm-sjabloon en geretourneerd door de implementatie.
 
 #### <a name="role-assignment-artifact"></a>Rollen toewijzings artefact
 
@@ -78,7 +78,7 @@ De **uitvoer** eigenschappen van het geretourneerde object worden gedefinieerd i
 
 ### <a name="example"></a>Voorbeeld
 
-Een resource manager-sjabloon artefact met de ID _myTemplateArtifact_ die de volgende voorbeeld uitvoer eigenschap bevat:
+Een ARM-sjabloon artefact met de ID _myTemplateArtifact_ die de volgende voorbeeld uitvoer eigenschap bevat:
 
 ```json
 {
@@ -106,7 +106,7 @@ Een resource manager-sjabloon artefact met de ID _myTemplateArtifact_ die de vol
 
 Enkele voor beelden van het ophalen van gegevens uit het _myTemplateArtifact_ -voor beeld zijn:
 
-| Expressie | Type | Waarde |
+| Expression | Type | Waarde |
 |:---|:---|:---|
 |`[artifacts("myTemplateArtifact").outputs.myArray]` | Matrix | \[' First ', ' Second '\] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | Tekenreeks | instantie |
@@ -123,10 +123,10 @@ Combineert meerdere teken reeks waarden en retourneert de aaneengeschakelde teke
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| tekenreeks1 |Ja |tekenreeks |De eerste waarde voor samen voegen. |
-| aanvullende argumenten |Nee |tekenreeks |Aanvullende waarden in sequentiële volg orde voor samen voeging |
+| tekenreeks1 |Yes |tekenreeks |De eerste waarde voor samen voegen. |
+| aanvullende argumenten |No |tekenreeks |Aanvullende waarden in sequentiële volg orde voor samen voeging |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -134,7 +134,7 @@ Een teken reeks met samengevoegde waarden.
 
 ### <a name="remarks"></a>Opmerkingen
 
-De functie Azure Blueprint verschilt van de functie Azure Resource Manager sjabloon in dat deze alleen met teken reeksen werkt.
+De functie Azure Blueprint verschilt van de ARM-sjabloon functie in dat deze alleen werkt met teken reeksen.
 
 ### <a name="example"></a>Voorbeeld
 
@@ -148,9 +148,9 @@ Retourneert een waarde voor de para meter blauw druk. De opgegeven parameter naa
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ja |tekenreeks |De naam van de para meter die moet worden geretourneerd. |
+| parameterName |Yes |tekenreeks |De naam van de para meter die moet worden geretourneerd. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -158,7 +158,7 @@ De waarde van de opgegeven artefact parameter voor blauw drukken of blauw drukke
 
 ### <a name="remarks"></a>Opmerkingen
 
-De functie Azure Blueprint verschilt van de functie Azure Resource Manager sjabloon in dat deze alleen werkt met blauw drukken-para meters.
+De functie Azure Blueprint verschilt van de ARM-sjabloon functie in dat deze alleen werkt met blauw drukken-para meters.
 
 ### <a name="example"></a>Voorbeeld
 
@@ -218,7 +218,7 @@ Het geretourneerde object heeft de volgende indeling:
 
 ### <a name="remarks"></a>Opmerkingen
 
-De functie Azure Blueprint verschilt van de functie Azure Resource Manager-sjabloon. De `resourceGroup()` functie kan niet worden gebruikt in een artefact op abonnements niveau of de definitie van de blauw druk. Deze kan alleen worden gebruikt in de artefacten blauw drukken die deel uitmaken van een resource groeps artefact.
+De functie Azure Blueprint verschilt van de functie ARM-sjabloon. De `resourceGroup()` functie kan niet worden gebruikt in een artefact op abonnements niveau of de definitie van de blauw druk. Deze kan alleen worden gebruikt in de artefacten blauw drukken die deel uitmaken van een resource groeps artefact.
 
 Een veelvoorkomend gebruik van de `resourceGroup()` functie is het maken van resources op dezelfde locatie als het artefact van de resource groep.
 
@@ -269,9 +269,9 @@ Retourneert een object dat het opgegeven bron groeps artefact vertegenwoordigt. 
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| tijdelijke aanduiding |Ja |tekenreeks |De naam van de tijdelijke aanduiding van het bron groeps artefact dat moet worden geretourneerd. |
+| tijdelijke aanduiding |Yes |tekenreeks |De naam van de tijdelijke aanduiding van het bron groeps artefact dat moet worden geretourneerd. |
 
 ### <a name="return-value"></a>Retourwaarde
 

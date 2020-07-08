@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 9ef38829a18f9e43f38cbdb291a799110d710cd7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7b43105d23de516b994521ad46bb45737798717c
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834727"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971076"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Problemen oplossen bij het mislukken van een virtuele VMware-machine of fysieke machine naar Azure
 
@@ -74,6 +74,10 @@ Volg de onderstaande stappen om het opstart type van Stuur Programma's voor **Wi
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Kan geen verbinding maken/RDP/SSH met de virtuele machine waarvoor een failover is uitgevoerd omdat de knop verbinding maken op de virtuele machine grijs wordt weer gegeven
 
+Raadpleeg [de documentatie voor](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md)gedetailleerde instructies voor het oplossen van problemen met RDP.
+
+Raadpleeg [de documentatie voor](../virtual-machines/troubleshooting/troubleshoot-ssh-connection.md)gedetailleerde instructies voor het oplossen van problemen met SSH.
+
 Als de knop **verbinden** op de virtuele machine waarvoor een failover is uitgevoerd in azure grijs is en u niet met Azure bent verbonden via een snelle route of een site-naar-site-VPN-verbinding, dan,
 
 1. Ga naar **Virtual machine**  >  **netwerken**van de virtuele machine en klik op de naam van de vereiste netwerk interface.  ![netwerk interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
@@ -130,7 +134,7 @@ Dit probleem wordt aangegeven wanneer het gegevens archief in azure niet kan wor
 
 Voor meer informatie over het opnieuw beveiligen van een virtuele machine raadpleegt [u machines opnieuw beveiligen en failback naar een on-premises site na een failover naar Azure](vmware-azure-reprotect.md).
 
-Om het probleem op te lossen:
+Het probleem oplossen:
 
 Maak het hoofd doel hand matig in de vCenter die uw bron machine beheert. De gegevens opslag is beschikbaar na de volgende vCenter-bewerkingen voor het maken en vernieuwen van infrastructuur resources.
 
@@ -148,7 +152,7 @@ Deze fout wordt aangegeven door de volgende teken reeksen in het installatie log
 RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] CurlWrapper Post failed : server : 10.38.229.221, port : 443, phpUrl : request_handler.php, secure : true, ignoreCurlPartialError : false with error: [at curlwrapperlib/curlwrapper.cpp:processCurlResponse:231]   failed to post request: (35) - SSL connect error. 
 ```
 
-Om het probleem op te lossen:
+Het probleem oplossen:
  
 1. Open een opdracht prompt op de configuratie Server-VM en controleer de proxy-instellingen met behulp van de volgende opdrachten:
 

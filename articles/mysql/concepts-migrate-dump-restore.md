@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
-ms.openlocfilehash: bc3411a926e71c88f0b4e4f84fcdf083b519f46a
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: c30faa31f6f733f80d4bfd5184c09d9fdbd6f389
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323549"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971178"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Uw MySQL-database migreren naar Azure Database voor MySQL met behulp van dumpen en terugzetten
 In dit artikel worden twee algemene manieren uitgelegd voor het maken van back-ups en het herstellen van data bases in uw Azure Database for MySQL
@@ -67,7 +67,11 @@ De para meters die u moet opgeven, zijn:
 - [upbestand. SQL] de bestands naam van de back-up van de data base 
 - [--opt] De optie mysqldump 
 
-Als u bijvoorbeeld een back-up wilt maken van een Data Base met de naam ' testdb ' op de MySQL-server met de gebruikers naam ' test ' en zonder wacht woord aan een bestand testdb_backup. SQL, gebruikt u de volgende opdracht. De opdracht maakt een back-up van de `testdb` Data base in een bestand met de naam `testdb_backup.sql` , dat alle SQL-instructies bevat die nodig zijn om de data base opnieuw te maken. 
+Als u bijvoorbeeld een back-up wilt maken van een Data Base met de naam ' testdb ' op de MySQL-server met de gebruikers naam ' test ' en zonder wacht woord aan een bestand testdb_backup. SQL, gebruikt u de volgende opdracht. De opdracht maakt een back-up van de `testdb` Data base in een bestand met de naam `testdb_backup.sql` , dat alle SQL-instructies bevat die nodig zijn om de data base opnieuw te maken. Zorg ervoor dat de gebruikers naam ' test ' ten minste de bevoegdheid SELECT heeft voor tabellen die zijn gedumpt, de weer gave voor dumped weer gaven, TRIGGER voor triggers met dumping en vergren delen als de optie--single-trans actie niet wordt gebruikt.
+
+```bash
+GRANT SELECT, LOCK TABLES, SHOW VIEW ON *.* TO 'testuser'@'hostname' IDENTIFIED BY 'password';
+```
 
 ```bash
 $ mysqldump -u root -p testdb > testdb_backup.sql
@@ -96,7 +100,7 @@ Voeg de verbindings gegevens toe aan uw MySQL Workbench.
 De volgende server parameters en configuratie moeten worden gewijzigd om de doel Azure Database for MySQL server voor te bereiden voor sneller laden van gegevens.
 - max_allowed_packet: ingesteld op 1073741824 (1 GB) om te voor komen dat een overflow probleem wordt veroorzaakt door lange rijen.
 - slow_query_log: ingesteld op uit om het langzame query logboek uit te scha kelen. Hiermee elimineert u de overhead die wordt veroorzaakt door het langzaam registreren van query's tijdens het laden van gegevens.
-- query_store_capture_mode: Stel beide in op geen om het query archief uit te scha kelen. Dit elimineert de overhead die wordt veroorzaakt door steekproef activiteiten door de query Store.
+- query_store_capture_mode: Stel deze optie in op geen om het query archief uit te scha kelen. Dit elimineert de overhead die wordt veroorzaakt door steekproef activiteiten door de query Store.
 - innodb_buffer_pool_size: de server omhoog schalen naar 32 vCore geoptimaliseerd voor geheugen van de prijs categorie van de portal tijdens de migratie om de innodb_buffer_pool_size te verg Roten. Innodb_buffer_pool_size kunnen alleen worden verhoogd door de reken kracht voor Azure Database for MySQL server omhoog te schalen.
 - innodb_io_capacity & innodb_io_capacity_max-Wijzig in 9000 van de server parameters in Azure Portal om het IO-gebruik te verbeteren en te optimaliseren voor de migratie snelheid.
 - innodb_write_io_threads & innodb_write_io_threads-Wijzig in 4 van de server parameters in Azure Portal om de snelheid van de migratie te verbeteren.

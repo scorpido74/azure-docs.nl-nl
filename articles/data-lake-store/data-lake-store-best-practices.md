@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: a8ca67d1ff3100aee02ed473c9cc2180de3973b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2daa88d258e0bf761d9afce48b94e6cd6ff2fb95
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75638932"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981432"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Aanbevolen procedures voor het gebruik van Azure Data Lake Storage Gen1
 
@@ -45,7 +45,7 @@ Azure Active Directory service-principals worden doorgaans door services zoals A
 
 ### <a name="enable-the-data-lake-storage-gen1-firewall-with-azure-service-access"></a>De Data Lake Storage Gen1 firewall inschakelen met toegang tot de Azure-service
 
-Data Lake Storage Gen1 ondersteunt de mogelijkheid om een firewall in te scha kelen en de toegang alleen te beperken tot Azure-Services. dit wordt aanbevolen voor een kleinere aanvals vector van externe indringers. Firewall kan worden ingeschakeld op het data Lake Storage gen1-account in de Azure portal via **Firewall** > Firewall**firewall inschakelen (ingeschakeld)** > **toegang tot opties voor Azure-Services toestaan** .
+Data Lake Storage Gen1 ondersteunt de mogelijkheid om een firewall in te scha kelen en de toegang alleen te beperken tot Azure-Services. dit wordt aanbevolen voor een kleinere aanvals vector van externe indringers. Firewall kan worden ingeschakeld op het data Lake Storage gen1-account in de Azure portal via **firewall**  >  **firewall inschakelen (ingeschakeld)**  >  **toegang tot opties voor Azure-Services toestaan** .
 
 ![Firewall instellingen in Data Lake Storage Gen1](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "Firewall instellingen in Data Lake Storage Gen1")
 
@@ -102,7 +102,7 @@ Hieronder ziet u de belangrijkste drie aanbevolen opties voor het indelen van re
 |---------|---------|---------|---------|
 |**Schaal limieten**     | Begrensd door worker-knoop punten        | Beperkt door Max. eenheden voor gegevens verplaatsing in de Cloud        | Gebonden aan Analytics units        |
 |**Ondersteunt het kopiëren van verschillen**     |   Ja      | Nee         | Nee         |
-|**Ingebouwde indeling**     |  Nee (gebruik Oozie lucht flow of cron-taken)       | Ja        | Nee (gebruik Azure Automation of Windows Task Scheduler)         |
+|**Ingebouwde indeling**     |  Nee (gebruik Oozie lucht flow of cron-taken)       | Yes        | Nee (gebruik Azure Automation of Windows Task Scheduler)         |
 |**Ondersteunde bestands systemen**     | ADL, HDFS, WASB, S3, GS, CFS        |Talloze, Zie [connectors](../data-factory/connector-azure-blob-storage.md).         | ADL naar ADL, WASB op ADL (alleen voor dezelfde regio)        |
 |**Ondersteuning voor besturings systeem**     |Elk besturings systeem dat Hadoop uitvoert         | N.v.t.          | Windows 10         |
 
@@ -126,7 +126,9 @@ Net als Distcp moet de AdlCopy worden georganiseerd door iets als Azure Automati
 
 Data Lake Storage Gen1 biedt gedetailleerde Diagnostische logboeken en controle. Data Lake Storage Gen1 biedt een aantal elementaire metrische gegevens in de Azure Portal onder het Data Lake Storage Gen1-account en in Azure Monitor. De beschik baarheid van Data Lake Storage Gen1 wordt weer gegeven in de Azure Portal. Deze metrische gegevens worden echter om de zeven minuten vernieuwd en kunnen niet worden opgevraagd via een openbaar belichte API. Als u de meest recente Beschik baarheid van een Data Lake Storage Gen1 account wilt krijgen, moet u uw eigen synthetische tests uitvoeren om Beschik baarheid te valideren. Andere metrische gegevens, zoals het totale opslag gebruik, lees-en schrijf aanvragen en inkomend/uitgaand verkeer, kunnen tot wel 24 uur duren om te vernieuwen. Dit betekent dat meer actuele metrische gegevens hand matig moeten worden berekend via Hadoop-opdracht regel Programma's of door het samen voegen van logboek gegevens. De snelste manier om het meest recente opslag gebruik te verkrijgen, is deze HDFS-opdracht uit te voeren vanaf een Hadoop-cluster knooppunt (bijvoorbeeld hoofd knooppunt):
 
-    hdfs dfs -du -s -h adl://<adlsg1_account_name>.azuredatalakestore.net:443/
+```console
+hdfs dfs -du -s -h adl://<adlsg1_account_name>.azuredatalakestore.net:443/
+```
 
 ### <a name="export-data-lake-storage-gen1-diagnostics"></a>Data Lake Storage Gen1 diagnostische gegevens exporteren
 
@@ -136,11 +138,11 @@ Voor meer real-time waarschuwingen en meer controle over de locatie van de logbo
 
 ### <a name="turn-on-debug-level-logging-in-hdinsight"></a>Logboek registratie op fout opsporing inschakelen in HDInsight
 
-Als Data Lake Storage Gen1 logboek verzending niet is ingeschakeld, biedt Azure HDInsight ook een manier om [logboek registratie aan client zijde voor data Lake Storage gen1](data-lake-store-performance-tuning-mapreduce.md) via log4j in te scha kelen. U moet de volgende eigenschap instellen in **Ambari** > **garens** > **config** > **Advanced garens-log4j configuraties**:
+Als Data Lake Storage Gen1 logboek verzending niet is ingeschakeld, biedt Azure HDInsight ook een manier om [logboek registratie aan client zijde voor data Lake Storage gen1](data-lake-store-performance-tuning-mapreduce.md) via log4j in te scha kelen. U moet de volgende eigenschap instellen in **Ambari**  >  **garens**  >  **config**  >  **Advanced garens-log4j configuraties**:
 
-    log4j.logger.com.microsoft.azure.datalake.store=DEBUG
+`log4j.logger.com.microsoft.azure.datalake.store=DEBUG`
 
-Zodra de eigenschap is ingesteld en de knoop punten opnieuw zijn opgestart, worden Data Lake Storage Gen1 diagnostische gegevens naar de GARENs logboeken op\<de\>knoop punten (/tmp/User/Yarn.log) geschreven en worden belang rijke details, zoals fouten of beperking (http 429-fout code), gecontroleerd. Deze informatie kan ook worden bewaakt in Azure Monitor Logboeken of waar logboeken worden verzonden naar op de Blade [Diagnostische gegevens](data-lake-store-diagnostic-logs.md) van het data Lake Storage gen1-account. Het is raadzaam om ten minste logboek registratie aan client zijde in te scha kelen of gebruik te maken van de optie voor het vastleggen van logboeken met Data Lake Storage Gen1 voor operationele zicht baarheid en eenvoudiger fout opsporing.
+Zodra de eigenschap is ingesteld en de knoop punten opnieuw zijn opgestart, worden Data Lake Storage Gen1 diagnostische gegevens naar de GARENs op de knoop punten (/tmp/ \<user\> /Yarn.log) geschreven en worden belang rijke details, zoals fouten of beperking (HTTP 429-fout code), gecontroleerd. Deze informatie kan ook worden bewaakt in Azure Monitor Logboeken of waar logboeken worden verzonden naar op de Blade [Diagnostische gegevens](data-lake-store-diagnostic-logs.md) van het data Lake Storage gen1-account. Het is raadzaam om ten minste logboek registratie aan client zijde in te scha kelen of gebruik te maken van de optie voor het vastleggen van logboeken met Data Lake Storage Gen1 voor operationele zicht baarheid en eenvoudiger fout opsporing.
 
 ### <a name="run-synthetic-transactions"></a>Synthetische trans acties uitvoeren
 
@@ -154,11 +156,15 @@ Wanneer gegevens naar een Data Lake worden gelandd, is het belang rijk om de str
 
 In IoT-workloads kunnen er grote hoeveel heden gegevens in het gegevens archief worden gelandd dat over talloze producten, apparaten, organisaties en klanten kan worden verspreid. Het is belang rijk om vooraf de Directory-indeling te plannen voor de organisatie, beveiliging en efficiënte verwerking van de gegevens voor gebruikers van de andere stroom. Een algemene sjabloon waarmee u rekening moet houden, kan de volgende indeling hebben:
 
-    {Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+```console
+{Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+```
 
 Bijvoorbeeld, telemetrie voor een vliegtuig motor binnen het Verenigd Konink rijk kan er als volgt uitzien:
 
-    UK/Planes/BA1293/Engine1/2017/08/11/12/
+```console
+UK/Planes/BA1293/Engine1/2017/08/11/12/
+```
 
 Er is een belang rijke reden om de datum toe te voegen aan het einde van de mapstructuur. Als u bepaalde regio's of onderwerpen wilt vergren delen voor gebruikers/groepen, kunt u dit eenvoudig doen met de POSIX-machtigingen. Als er anders een bepaalde beveiligings groep moet worden beperkt om alleen de UK-gegevens of bepaalde abonnementen weer te geven, is de datum structuur voor een afzonderlijke machtiging vereist voor talloze mappen onder elke map uur. Als de datum structuur op de voor grond ligt, wordt het aantal mappen zo exponentieel verhoogd dat er een tijd is opgetreden.
 
@@ -168,14 +174,18 @@ Vanuit een hoog niveau is een veelgebruikte aanpak in batch verwerking het gebru
 
 Soms wordt bestands verwerking niet geslaagd als gevolg van gegevens beschadiging of onverwachte notaties. In dergelijke gevallen kan de mapstructuur van een **/Bad** -map de bestanden naar aanleiding van de nieuwe inspectie verplaatsen. De batch-taak kan ook de rapportage of melding van deze *beschadigde* bestanden verwerken voor hand matige tussen komst. Houd rekening met de volgende sjabloon structuur:
 
-    {Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+```console
+{Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
+{Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
+{Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+```
 
 Zo ontvangt een marketing bedrijf dagelijks gegevens uittreksels van klant updates van hun clients in Noord-Amerika. Het kan er voor en na het verwerken van het volgende fragment uitzien:
 
-    NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
-    NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+```console
+NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
+NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+```
 
 In het gemeen schappelijke geval van batch gegevens die rechtstreeks in data bases worden verwerkt, zoals Hive of traditionele SQL-data bases, is er geen behoefte aan een **/in** -of **/out** -map omdat de uitvoer al naar een afzonderlijke map voor de Hive-tabel of externe data base gaat. Dagelijkse uittreksels van klanten zijn bijvoorbeeld in hun respectieve mappen gelandd, en met de indeling van een probleem zoals Azure Data Factory, Apache Oozie of Apache-lucht flow wordt een dagelijkse Hive-of Spark-taak geactiveerd om de gegevens in een Hive-tabel te verwerken en te schrijven.
 
