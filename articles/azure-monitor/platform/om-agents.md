@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
 ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274344"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847405"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager verbinden met Azure Monitor
 
@@ -71,16 +71,16 @@ Hieronder vindt u de informatie over de proxy-en firewall configuratie die is ve
 
 |Resource | Poortnummer| HTTPS-controle overslaan|  
 |---------|------|-----------------------|  
-|**Agent**|||  
-|\*.ods.opinsights.azure.com| 443 |Ja|  
-|\*.oms.opinsights.azure.com| 443|Ja|  
-|\*.blob.core.windows.net| 443|Ja|  
-|\*.azure-automation.net| 443|Ja|  
+|**Tussen**|||  
+|\*.ods.opinsights.azure.com| 443 |Yes|  
+|\*.oms.opinsights.azure.com| 443|Yes|  
+|\*.blob.core.windows.net| 443|Yes|  
+|\*.azure-automation.net| 443|Yes|  
 |**Beheerserver**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| Ja|  
-|\*.ods.opinsights.azure.com| 443| Ja|  
-|*.azure-automation.net | 443| Ja|  
+|\*.blob.core.windows.net| 443| Yes|  
+|\*.ods.opinsights.azure.com| 443| Yes|  
+|*.azure-automation.net | 443| Yes|  
 |**Operations Manager-console naar Azure Monitor**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -110,7 +110,7 @@ Tijdens de eerste registratie van uw Operations Manager-beheer groep met een Log
 
     `netsh winhttp set proxy <proxy>:<port>`
 
-Na het volt ooien van de volgende stappen voor de integratie met Azure Monitor, kunt u de `netsh winhttp reset proxy` configuratie verwijderen door uit te voeren en vervolgens de optie **proxy server configureren** in de operations-console gebruiken om de proxy-of log Analytics Gateway server op te geven.
+Na het volt ooien van de volgende stappen voor de integratie met Azure Monitor, kunt u de configuratie verwijderen door uit te voeren `netsh winhttp reset proxy` en vervolgens de optie **proxy server configureren** in de operations-console gebruiken om de proxy-of log Analytics Gateway server op te geven.
 
 1. Selecteer de werkruimte **Beheer** in de Operations Manager-console.
 1. Vouw het knooppunt Operations Management Suite uit en klik op **Verbinding**.
@@ -163,14 +163,14 @@ Als voor uw proxy server verificatie is vereist, voert u de volgende stappen uit
 Nadat de verbinding is gemaakt en u configureert welke agenten logboek gegevens verzamelen en rapporteren aan Azure Monitor, wordt de volgende configuratie toegepast in de beheer groep, niet noodzakelijkerwijs in de juiste volg orde:
 
 * Het Uitvoeren als-account **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate** wordt gemaakt. Het wordt gekoppeld aan het Uitvoeren als-profiel **Microsoft System Center Advisor Run As Profile Blob** voor twee klassen: **Collection Server** (server voor verzameling) en **Operations Manager Management Group** (Operations Manager-beheergroep).
-* Er worden twee connectors gemaakt.  De eerste heeft de naam **micro soft. System Center. Advisor. DataConnector** en wordt automatisch geconfigureerd met een abonnement dat alle waarschuwingen stuurt die zijn gegenereerd door exemplaren van alle klassen in de beheer groep naar Azure monitor. De tweede connector is **Advisor connector**, die verantwoordelijk is voor de communicatie met Azure monitor en het delen van gegevens.
+* Er worden twee connectors gemaakt.  De eerste heeft de naam **Microsoft.SystemCenter. Advisor. DataConnector** en wordt automatisch geconfigureerd met een abonnement dat alle waarschuwingen stuurt die zijn gegenereerd op basis van exemplaren van alle klassen in de beheer groep naar Azure monitor. De tweede connector is **Advisor connector**, die verantwoordelijk is voor de communicatie met Azure monitor en het delen van gegevens.
 * Agents en groepen die u hebt geselecteerd voor het verzamelen van gegevens in de beheergroep, worden toegevoegd aan de **Microsoft System Center Advisor Monitoring Server-groep**.
 
 ## <a name="management-pack-updates"></a>Management pack-updates
 
 Nadat de configuratie is voltooid, brengt de Operations Manager-beheer groep een verbinding tot stand met Azure Monitor. De beheerserver wordt gesynchroniseerd met de webservice en ontvangt informatie over de bijgewerkte configuratie in de vorm van management packs voor de oplossingen die u hebt ingeschakeld en die zijn geïntegreerd met Operations Manager. Operations Manager controleert of er updates van deze Management Packs zijn en worden deze automatisch gedownload en geïmporteerd wanneer ze beschikbaar zijn. Dit gedrag wordt voornamelijk bepaald door twee regels:
 
-* **Micro soft. System Center. Advisor. MPUpdate** : Hiermee worden de Management Packs voor de basis Azure monitor bijgewerkt. Deze regel wordt standaard elke 12 uur uitgevoerd.
+* **Microsoft.SystemCenter. Advisor. MPUpdate** : Hiermee worden de Management Packs voor de basis Azure monitor bijgewerkt. Deze regel wordt standaard elke 12 uur uitgevoerd.
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** - Hiermee worden de management packs van ingeschakelde oplossingen in uw werkruimte bijgewerkt. Deze regel wordt standaard elke vijf (5) minuten uitgevoerd.
 
 U kunt deze twee regels negeren om automatisch downloaden te voor komen door ze uit te scha kelen of de frequentie te wijzigen voor hoe vaak de beheer server synchroniseert met Azure Monitor om te bepalen of er een nieuwe management pack beschikbaar is en moet worden gedownload. Volg de stappen voor het [overschrijven van een regel of controle](https://technet.microsoft.com/library/hh212869.aspx) als u de parameter **Frequency** (Frequentie) wilt bijwerken met een waarde in seconden om het synchronisatieschema te wijzigen. Wijzig de parameter **Enabled** (Ingeschakeld) als u de regels wilt uitschakelen. Configureer de overschrijvingen voor alle objecten van de klasse Operations Manager Management Group.
@@ -347,10 +347,10 @@ Als u de twee connectors Microsoft.SystemCenter.Advisor.DataConnector en Advisor
     Remove-Connector $connectorName
 ```
 
-In de toekomst moet u het `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` Management Pack bestand opnieuw importeren als u van plan bent om uw beheer groep opnieuw te verbinden met een log Analytics-werk ruimte. Afhankelijk van welke versie van System Center Operations Manager in uw omgeving is geïmplementeerd, bevindt dit bestand zich op de volgende locatie:
+In de toekomst moet u het management pack bestand opnieuw importeren als u van plan bent om uw beheer groep opnieuw te verbinden met een Log Analytics-werk ruimte `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` . Afhankelijk van welke versie van System Center Operations Manager in uw omgeving is geïmplementeerd, bevindt dit bestand zich op de volgende locatie:
 
 * Op het bronmedium in de map `\ManagementPacks` voor System Center 2016 - Operations Manager of hoger.
-* Van het meest recente updatepakket dat op de beheergroep is toegepast. Voor Operations Manager 2012 is `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` de bronmap en voor 2012 R2 aanwezig in. `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`
+* Van het meest recente updatepakket dat op de beheergroep is toegepast. Voor Operations Manager 2012 is de bronmap `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` en voor 2012 R2 aanwezig in `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

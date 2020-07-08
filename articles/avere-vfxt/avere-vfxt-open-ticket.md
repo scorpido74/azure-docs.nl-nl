@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: b3c604003f78a150067875fb2064ab5eca0600db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252556"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847340"
 ---
 # <a name="get-help-with-your-system"></a>Hulp vragen bij uw systeem
 
@@ -27,7 +27,7 @@ Als u problemen ondervindt tijdens het implementeren of gebruiken van AVERE vFXT
 
 Volg deze stappen om ervoor te zorgen dat uw ondersteunings ticket is gelabeld met een resource uit uw cluster. Als u het ticket labelt, kunnen we dit routeren naar de juiste ondersteunings resource.
 
-1. Van [https://portal.azure.com](https://portal.azure.com)selecteert u **resource groepen**. Blader naar de resource groep die het vFXT-cluster bevat waarop het probleem zich heeft voorgedaan en klik op een van de virtuele avere-cluster machines.
+1. Van [https://portal.azure.com](https://portal.azure.com) selecteert u **resource groepen**. Blader naar de resource groep die het vFXT-cluster bevat waarop het probleem zich heeft voorgedaan en klik op een van de virtuele avere-cluster machines.
 
     ![scherm afbeelding van het deel venster Overzicht van Azure Portal-resource groep met een bepaalde VM omcirkeld](media/avere-vfxt-ticket-vm.png)
 
@@ -43,7 +43,7 @@ Volg deze stappen om ervoor te zorgen dat uw ondersteunings ticket is gelabeld m
 
     ![scherm opname van een nieuw venster voor ondersteunings aanvraag in de Azure Portal. Het tabblad basis beginselen is geselecteerd. Scherm items zijn onder meer probleem type, abonnement, service, samen vatting en probleem type.](media/ticket-basics.png)
 
-   Klik op **Volgende** om verder te gaan.
+   Klik op **Volgende** om door te gaan.
 
 1. De tweede pagina van het formulier ondersteuning bevat suggesties voor het oplossen van het probleem op basis van de beschrijving van uw samen vatting. Klik op de knop **volgende** onderaan als u nog steeds een ondersteunings ticket moet maken.
 

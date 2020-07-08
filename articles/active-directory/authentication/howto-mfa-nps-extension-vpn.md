@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28467dbaabb0b84bf7da9f2ae28d6405699b2c6b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: bc2030f589185fd39c0f10b00c012db038a4e008
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845743"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848714"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Uw VPN-infra structuur integreren met Azure MFA met behulp van de Network Policy Server-extensie voor Azure
 
@@ -228,9 +228,9 @@ In deze sectie configureert u de VPN-server voor het gebruik van RADIUS-verifica
 
 2. Selecteer in Serverbeheer **extra**en selecteer vervolgens **route ring en externe toegang**.
 
-3. Klik in het venster **route ring en RAS** met de rechter muisknop op ** \< Server naam> (lokaal)** en selecteer vervolgens **Eigenschappen**.
+3. Klik in het venster **route ring en RAS** met de rechter muisknop ** \<server name> (lokaal)** en selecteer vervolgens **Eigenschappen**.
 
-4. Selecteer in het venster ** \< Eigenschappen van server naam> (lokaal)** het tabblad **beveiliging** .
+4. Selecteer in het venster ** \<server name> Eigenschappen (lokaal)** het tabblad **beveiliging** .
 
 5. Op het tabblad **beveiliging** , onder **verificatie provider**, selecteert u **RADIUS-verificatie**en selecteert **u configureren**.
 
@@ -320,19 +320,15 @@ Maak een nieuwe teken reeks waarde met de naam _REQUIRE_USER_MATCH in HKLM\SOFTW
 
 Als de waarde is ingesteld op *True* of leeg is, gelden voor alle verificatie aanvragen een MFA-Challenge. Als de waarde is ingesteld op *Onwaar*, worden MFA-uitdagingen alleen verleend aan gebruikers die zijn Inge schreven in azure multi-factor Authentication. Gebruik de instelling *Onwaar* alleen in tests of productie omgevingen tijdens een voorbereidings periode.
 
-### <a name="obtain-the-azure-active-directory-guid-id"></a>De GUID-ID van de Azure Active Directory ophalen
+### <a name="obtain-the-azure-active-directory-tenant-id"></a>De Tenant-ID van Azure Active Directory ophalen
 
-Als onderdeel van de configuratie van de NPS-extensie moet u beheerders referenties en de ID van uw Azure AD-Tenant opgeven. U verkrijgt de ID door de volgende handelingen uit te voeren:
+Als onderdeel van de configuratie van de NPS-extensie moet u beheerders referenties en de ID van uw Azure AD-Tenant opgeven. Voer de volgende stappen uit om de Tenant-ID op te halen:
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als globale beheerder van de Azure-Tenant.
+1. Selecteer in het menu Azure Portal **Azure Active Directory**of zoek en selecteer **Azure Active Directory** op een wille keurige pagina.
+1. Op de pagina **overzicht** wordt de *informatie* over de Tenant weer gegeven. Selecteer het pictogram **kopiëren** naast de *Tenant-id*, zoals wordt weer gegeven in de volgende voorbeeld scherm afbeelding:
 
-2. Selecteer in het menu Azure Portal **Azure Active Directory**of zoek en selecteer **Azure Active Directory** op een wille keurige pagina.
-
-3. Selecteer **Eigenschappen**.
-
-4. Selecteer de knop **kopiëren** om uw Azure ad-id te kopiëren.
-
-    ![Azure AD-Directory-ID in de Azure Portal](./media/howto-mfa-nps-extension-vpn/azure-active-directory-id-in-azure-portal.png)
+   ![De Tenant-ID ophalen uit de Azure Portal](./media/howto-mfa-nps-extension-vpn/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="install-the-nps-extension"></a>De NPS-extensie installeren
 
@@ -340,9 +336,9 @@ De NPS-extensie moet zijn geïnstalleerd op een server waarop de functie Service
 
 1. Down load de NPS-extensie vanuit het [micro soft Download centrum](https://aka.ms/npsmfa).
 
-2. Kopieer het uitvoer bare installatie bestand (*NpsExtnForAzureMfaInstaller. exe*) naar de NPS-server.
+2. Kopieer het uitvoer bare installatie bestand (*NpsExtnForAzureMfaInstaller.exe*) naar de NPS-server.
 
-3. Op de NPS-server dubbelklikt u op **NpsExtnForAzureMfaInstaller. exe.** als u hierom wordt gevraagd, selecteert u **uitvoeren**.
+3. Dubbel klik op de NPS-server op **NpsExtnForAzureMfaInstaller.exe** en selecteer **uitvoeren**als u hierom wordt gevraagd.
 
 4. Bekijk in het venster **NPS-extensie voor Azure MFA Setup** de licentie voorwaarden voor software, schakel het selectie vakje **Ik ga akkoord met de licentie voorwaarden** in en selecteer **installeren**.
 
@@ -372,9 +368,9 @@ Als u het script wilt gebruiken, geeft u de extensie op met uw Azure Active Dire
 
 2. Ga naar de Power shell-opdracht prompt en voer **cd "C:\Program Files\Microsoft\AzureMfa\Config"** in en selecteer ENTER.
 
-3. Voer bij de volgende opdracht prompt **.\AzureMfaNpsExtnConfigSetup.ps1**in en selecteer vervolgens ENTER. Het script controleert of de Azure AD Power shell-module is geïnstalleerd. Als deze niet is geïnstalleerd, wordt de module door het script geïnstalleerd.
+3. Typ **.\AzureMfaNpsExtnConfigSetup.ps1**bij de volgende opdracht prompt en selecteer vervolgens ENTER. Het script controleert of de Azure AD Power shell-module is geïnstalleerd. Als deze niet is geïnstalleerd, wordt de module door het script geïnstalleerd.
 
-    ![Het configuratie script AzureMfsNpsExtnConfigSetup. ps1 uitvoeren](./media/howto-mfa-nps-extension-vpn/image38.png)
+    ![Het AzureMfsNpsExtnConfigSetup.ps1-configuratie script uitvoeren](./media/howto-mfa-nps-extension-vpn/image38.png)
 
     Als er een beveiligings fout is opgetreden vanwege TLS, schakelt u TLS 1,2 in met behulp `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` van de opdracht uit de Power shell-prompt.
     
@@ -386,7 +382,7 @@ Als u het script wilt gebruiken, geeft u de extensie op met uw Azure Active Dire
 
 5. Plak de Tenant-ID die u eerder hebt gekopieerd bij de opdracht prompt en selecteer vervolgens ENTER.
 
-    ![Voer de Azure AD-adres lijst-ID in die u eerder hebt gekopieerd](./media/howto-mfa-nps-extension-vpn/image40.png)
+    ![Voer de Azure AD-Tenant-ID in die is gekopieerd vóór](./media/howto-mfa-nps-extension-vpn/image40.png)
 
     Het script maakt een zelfondertekend certificaat en voert andere configuratie wijzigingen uit. De uitvoer is vergelijkbaar met die in de volgende afbeelding:
 
@@ -412,7 +408,9 @@ Nadat u hebt geverifieerd met behulp van de secundaire methode, krijgt u toegang
 
 Als u geslaagde aanmeldings gebeurtenissen in het Windows Logboeken Logboeken wilt weer geven, voert u een query uit op het Windows-beveiligings logboek op de NPS-server door de volgende Power shell-opdracht in te voeren:
 
-    `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
+```powershell
+Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
+```
 
 ![Power shell-beveiligings Logboeken](./media/howto-mfa-nps-extension-vpn/image44.png)
 
@@ -422,7 +420,9 @@ U kunt ook het beveiligings logboek of de aangepaste weer gave voor services voo
 
 Op de server waarop u de NPS-extensie voor Azure Multi-Factor Authentication hebt geïnstalleerd, kunt u Logboeken toepassings logboeken vinden die specifiek zijn voor de uitbrei ding op het *Logs\Microsoft\AzureMfa van toepassingen en services*.
 
-    `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
+```powershell
+Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
+```
 
 ![Voor beeld van Logboeken taak venster AuthZ-logboeken](./media/howto-mfa-nps-extension-vpn/image46.png)
 

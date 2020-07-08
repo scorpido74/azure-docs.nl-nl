@@ -12,27 +12,27 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 09468272397925d9afd1d3014f4fcc1d6a222198
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 6a292201796ccb08f684d2c44a3cee71442edbfe
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611378"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848667"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Resolve error messages from the NPS extension for Azure Multi-Factor Authentication (Foutberichten van de NPS-extensie voor Azure Multi-Factor Authentication oplossen)
 
-Als u problemen ondervindt met de NPS-extensie voor Azure Multi-Factor Authentication, kunt u dit artikel gebruiken om sneller een oplossing te bereiken. NPS-extensie Logboeken vindt u in Logboeken onder **aangepaste weer gaven** > **Server rollen** > **Services voor netwerk beleid en-toegang** op de server waarop de NPS-extensie is geïnstalleerd.
+Als u problemen ondervindt met de NPS-extensie voor Azure Multi-Factor Authentication, kunt u dit artikel gebruiken om sneller een oplossing te bereiken. NPS-extensie Logboeken vindt u in Logboeken onder **aangepaste weer gaven**  >  **Server rollen**  >  **Services voor netwerk beleid en-toegang** op de server waarop de NPS-extensie is geïnstalleerd.
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>Probleemoplossings stappen voor veelvoorkomende fouten
 
 | Foutcode | Stappen voor probleemoplossing |
 | ---------- | --------------------- |
-| **CONTACT_SUPPORT** | [Neem contact op met de ondersteuning](#contact-microsoft-support)en vermeld de lijst met stappen voor het verzamelen van Logboeken. Geef zoveel informatie op als u wilt weten wat er is gebeurd vóór de fout, waaronder Tenant-id en user principal name (UPN). |
+| **CONTACT_SUPPORT** | [Neem contact op met de ondersteuning](#contact-microsoft-support)en vermeld de lijst met stappen voor het verzamelen van Logboeken. Geef zoveel informatie op als u wilt weten wat er is gebeurd vóór de fout, waaronder Tenant-ID en user principal name (UPN). |
 | **CLIENT_CERT_INSTALL_ERROR** | Er is mogelijk een probleem met de manier waarop het client certificaat is geïnstalleerd of gekoppeld aan uw Tenant. Volg de instructies in [Troubleshooting the MFA-extensie voor het](howto-mfa-nps-extension.md#troubleshooting) uitvoeren van problemen met client certificaten. |
 | **ESTS_TOKEN_ERROR** | Volg de instructies in [Troubleshooting the MFA-extensie voor het](howto-mfa-nps-extension.md#troubleshooting) uitvoeren van problemen met client certificaten en ADAL-tokens. |
 | **HTTPS_COMMUNICATION_ERROR** | De NPS-server kan geen reacties ontvangen van Azure MFA. Controleer of de firewalls zijn geopend in twee richtingen voor verkeer naar en vanhttps://adnotifications.windowsazure.com |
-| **HTTP_CONNECT_ERROR** | Op de server waarop de NPS-extensie wordt uitgevoerd, controleert u of `https://adnotifications.windowsazure.com` u `https://login.microsoftonline.com/`kunt bereiken en. Als deze sites niet worden geladen, kunt u problemen met de connectiviteit op die server oplossen. |
-| **NPS-extensie voor Azure MFA:** <br> De NPS-extensie voor Azure MFA voert alleen secundaire verificatie voor RADIUS-aanvragen uit in de AccessAccept-status. Er is een aanvraag ontvangen voor de gebruikers naam van de gebruiker met de reactie status AccessReject, aanvraag wordt genegeerd. | Deze fout weerspiegelt meestal een verificatie fout in AD of de NPS-server kan geen reacties ontvangen van Azure AD. Controleer of de firewalls zijn geopend voor verkeer naar en van en `https://adnotifications.windowsazure.com` `https://login.microsoftonline.com` met behulp van de poorten 80 en 443. Het is ook belang rijk om te controleren of op het tabblad inbel netwerk toegangs machtigingen de instelling is ingesteld op toegang beheren via NPS-netwerk beleid. Deze fout kan ook worden geactiveerd als aan de gebruiker geen licentie is toegewezen. |
+| **HTTP_CONNECT_ERROR** | Op de server waarop de NPS-extensie wordt uitgevoerd, controleert u of u kunt bereiken `https://adnotifications.windowsazure.com` en `https://login.microsoftonline.com/` . Als deze sites niet worden geladen, kunt u problemen met de connectiviteit op die server oplossen. |
+| **NPS-extensie voor Azure MFA:** <br> De NPS-extensie voor Azure MFA voert alleen secundaire verificatie voor RADIUS-aanvragen uit in de AccessAccept-status. Er is een aanvraag ontvangen voor de gebruikers naam van de gebruiker met de reactie status AccessReject, aanvraag wordt genegeerd. | Deze fout weerspiegelt meestal een verificatie fout in AD of de NPS-server kan geen reacties ontvangen van Azure AD. Controleer of de firewalls zijn geopend voor verkeer naar en van `https://adnotifications.windowsazure.com` en `https://login.microsoftonline.com` met behulp van de poorten 80 en 443. Het is ook belang rijk om te controleren of op het tabblad inbel netwerk toegangs machtigingen de instelling is ingesteld op toegang beheren via NPS-netwerk beleid. Deze fout kan ook worden geactiveerd als aan de gebruiker geen licentie is toegewezen. |
 | **REGISTRY_CONFIG_ERROR** | Er ontbreekt een sleutel in het REGI ster voor de toepassing. Dit kan zijn omdat het [Power shell-script](howto-mfa-nps-extension.md#install-the-nps-extension) niet is uitgevoerd na de installatie. Het fout bericht moet de ontbrekende sleutel bevatten. Zorg ervoor dat u de sleutel onder HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa. |
 | **REQUEST_FORMAT_ERROR** <br> Er ontbreekt een verplicht userName\Identifier kenmerk van de RADIUS-aanvraag. Controleren of NPS RADIUS-aanvragen ontvangt | Deze fout weerspiegelt meestal een installatie probleem. De NPS-extensie moet worden geïnstalleerd in NPS-servers die RADIUS-aanvragen kunnen ontvangen. NPS-servers die zijn geïnstalleerd als afhankelijkheden voor services als RDG en RRAS ontvangen geen RADIUS-aanvragen. De NPS-extensie werkt niet wanneer deze wordt geïnstalleerd via dergelijke installaties en er zijn fouten opgetreden omdat de gegevens van de verificatie aanvraag niet kunnen worden gelezen. |
 | **REQUEST_MISSING_CODE** | Zorg ervoor dat het protocol voor wachtwoord versleuteling tussen de NPS-en NAS-servers de secundaire verificatie methode ondersteunt die u gebruikt. **Pap** ondersteunt alle verificatie methoden van Azure MFA in de Cloud: telefoon oproep, tekst bericht in één richting, melding van mobiele app en verificatie code voor mobiele apps. Ondersteuning voor telefonische en **EAP** -telefoon **gesprekken en mobiele** app-meldingen. |
@@ -50,7 +50,7 @@ Als u problemen ondervindt met de NPS-extensie voor Azure Multi-Factor Authentic
 
 | Foutcode | Foutbericht | Stappen voor probleemoplossing |
 | ---------- | ------------- | --------------------- |
-| **AccessDenied** | De aanroeper-Tenant heeft geen toegangs machtigingen om verificatie voor de gebruiker uit te voeren | Controleer of het domein van de Tenant en het domein van de user principal name (UPN) hetzelfde zijn. Zorg er bijvoorbeeld voor dat user@contoso.com u probeert te verifiëren bij de contoso-Tenant. De UPN vertegenwoordigt een geldige gebruiker voor de Tenant in Azure. |
+| **AccessDenied** | De aanroeper-Tenant heeft geen toegangs machtigingen om verificatie voor de gebruiker uit te voeren | Controleer of het domein van de Tenant en het domein van de user principal name (UPN) hetzelfde zijn. Zorg er bijvoorbeeld voor dat u user@contoso.com probeert te verifiëren bij de contoso-Tenant. De UPN vertegenwoordigt een geldige gebruiker voor de Tenant in Azure. |
 | **AuthenticationMethodNotConfigured** | De opgegeven verificatie methode is niet geconfigureerd voor de gebruiker | Laat de gebruiker hun verificatie methoden toevoegen of controleren aan de hand van de instructies in [uw instellingen beheren voor verificatie in twee stappen](../user-help/multi-factor-authentication-end-user-manage-settings.md). |
 | **AuthenticationMethodNotSupported** | De opgegeven verificatie methode wordt niet ondersteund. | Verzamel alle logboeken die deze fout bevatten en [Neem contact op met de ondersteuning](#contact-microsoft-support). Wanneer u contact opneemt met ondersteuning, geeft u de gebruikers naam en de secundaire verificatie methode op die de fout heeft veroorzaakt. |
 | **BecAccessDenied** | MSODS BEC-aanroep heeft toegang geweigerd, waarschijnlijk is de gebruikers naam niet gedefinieerd in de Tenant | De gebruiker is aanwezig in Active Directory on-premises, maar wordt niet gesynchroniseerd met Azure AD via AD Connect. Of de gebruiker ontbreekt voor de Tenant. Voeg de gebruiker toe aan Azure AD en laat ze hun verificatie methoden toevoegen volgens de instructies in [uw instellingen beheren voor verificatie in twee stappen](../user-help/multi-factor-authentication-end-user-manage-settings.md). |
@@ -60,7 +60,7 @@ Als u problemen ondervindt met de NPS-extensie voor Azure Multi-Factor Authentic
 | **OathCodePinIncorrect** | Er is een onjuiste code en pincode ingevoerd. | Deze fout wordt niet verwacht in de NPS-extensie. Als uw gebruiker dit ondervindt, [neemt u contact op met de ondersteuning](#contact-microsoft-support) voor hulp bij het oplossen van problemen. |
 | **ProofDataNotFound** | Er zijn geen bewijs gegevens geconfigureerd voor de opgegeven verificatie methode. | Laat de gebruiker een andere verificatie methode proberen of Voeg een of meer nieuwe verificatie methoden toe volgens de instructies in [uw instellingen beheren voor verificatie in twee stappen](../user-help/multi-factor-authentication-end-user-manage-settings.md). [Neem contact op met de ondersteuning](#contact-microsoft-support)als de gebruiker deze fout blijft zien nadat u hebt bevestigd dat de verificatie methode juist is ingesteld. |
 | **SMSAuthFailedWrongCodePinEntered** | Er is een onjuiste code en pincode ingevoerd. (OneWaySMS) | Deze fout wordt niet verwacht in de NPS-extensie. Als uw gebruiker dit ondervindt, [neemt u contact op met de ondersteuning](#contact-microsoft-support) voor hulp bij het oplossen van problemen. |
-| **TenantIsBlocked** | Tenant is geblokkeerd | [Neem contact op](#contact-microsoft-support) met de ondersteuning met de Directory-id op de pagina Azure AD-eigenschappen in het Azure Portal. |
+| **TenantIsBlocked** | Tenant is geblokkeerd | [Neem contact op](#contact-microsoft-support) met de ondersteuning met de *Tenant-id* van de Azure AD-eigenschappen pagina in het Azure Portal. |
 | **UserNotFound** | De opgegeven gebruiker is niet gevonden | De Tenant is niet meer zichtbaar als actief in azure AD. Controleer of uw abonnement actief is en of u de vereiste apps voor de eerste partij hebt. Zorg er ook voor dat de Tenant in het certificaat onderwerp juist is, en dat het certificaat nog geldig is en is geregistreerd bij de Service-Principal. |
 
 ## <a name="messages-your-users-may-encounter-that-arent-errors"></a>Berichten die uw gebruikers kunnen tegen komen zonder fouten
@@ -81,7 +81,7 @@ Als u een van deze fouten tegen komt, raden wij u aan [contact op](#contact-micr
 | ---------- | ------------- |
 | **InvalidParameter** | Aanvraag mag niet null zijn |
 | **InvalidParameter** | ObjectId mag niet null of leeg zijn voor ReplicationScope:{0} |
-| **InvalidParameter** | De lengte van CompanyName \{0} \ is langer dan de Maxi maal toegestane lengte{1} |
+| **InvalidParameter** | De lengte van CompanyName \{ 0} \ is langer dan de Maxi maal toegestane lengte{1} |
 | **InvalidParameter** | UserPrincipalName mag niet null of leeg zijn |
 | **InvalidParameter** | De gegeven TenantId heeft niet de juiste indeling |
 | **InvalidParameter** | Sessie-id mag niet null of leeg zijn |

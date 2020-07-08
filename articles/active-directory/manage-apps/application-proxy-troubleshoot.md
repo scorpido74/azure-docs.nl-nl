@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43ac046f3480b08fdc3b8d582d9e724f4b9b93d5
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 57a77b486239f1fd49a4979d7acbbfc8f0254311
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84975432"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848461"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Problemen en foutberichten met Application Proxy oplossen
 
@@ -43,7 +43,9 @@ Als u bijvoorbeeld het pad publiceert `https://yourapp/app` terwijl de toepassin
 
 Als de registratie mislukt tijdens de installatie van de wizard connector, zijn er twee manieren om de reden voor de fout weer te geven. Kijk in het gebeurtenis logboek onder **toepassingen en services Logs\Microsoft\AadApplicationProxy\Connector\Admin**of voer de volgende Windows Power shell-opdracht uit:
 
-    Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
+```powershell
+Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
+```
 
 Wanneer u de connector fout in het gebeurtenis logboek vindt, gebruikt u deze tabel met veelvoorkomende fouten om het probleem op te lossen:
 
@@ -87,7 +89,7 @@ In deze lijst worden fouten behandeld die uw eind gebruikers kunnen tegen komen 
 
 Als u een fout of probleem ondervindt met Azure AD-toepassingsproxy dat niet wordt vermeld in deze probleemoplossings handleiding, willen we het graag hierover horen. Stuur een e-mail naar ons [feedback team](mailto:aadapfeedback@microsoft.com) met de details van de fout die u hebt aangetroffen.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 * [Toepassings proxy inschakelen voor Azure Active Directory](application-proxy-add-on-premises-application.md)
 * [Toepassingen publiceren met toepassingsproxy (Engelstalig artikel)](application-proxy-add-on-premises-application.md)
 * [Eenmalige aanmelding inschakelen](application-proxy-configure-single-sign-on-with-kcd.md)

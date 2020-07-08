@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260330"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847830"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Toegangsbeheer in Azure Data Lake Storage Gen1
 
@@ -45,7 +45,7 @@ Toegangs-ACL's en Standaard-ACL's hebben dezelfde structuur.
 
 De machtigingen voor een bestandssysteemobject zijn **Lezen**, **Schrijven** en **Uitvoeren**. Deze kunnen worden gebruikt voor bestanden en mappen zoals weergegeven in de onderstaande tabel:
 
-|            |    File     |   Map |
+|            |    Bestand     |   Map |
 |------------|-------------|----------|
 | **Lezen (L)** | Kan de inhoud van een bestand lezen | Moet worden **gelezen** en **uitgevoerd** om de inhoud van de map weer te geven|
 | **Schrijven (S)** | Kan schrijven of toevoegen aan een bestand | **Schrijven** en **Uitvoeren** zijn vereist om onderliggende items in een map te maken |
@@ -71,12 +71,12 @@ In het POSIX-stijl model dat wordt gebruikt door Data Lake Storage Gen1, worden 
 
 Hieronder volgen enkele algemene scenario's die u helpen te begrijpen welke machtigingen nodig zijn om bepaalde bewerkingen uit te voeren op een Data Lake Storage Gen1-account.
 
-| Bewerking | Object              |    /      | Den   | Port land   | Data. txt       |
+| Bewerking | Object              |    /      | Den   | Port land   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
-| Lezen      | Data. txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Toevoegen aan | Data. txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
-| Verwijderen    | Data. txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Maken    | Data. txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Lezen      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Toevoegen aan | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Verwijderen    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Maken    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Lijst      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
 | Lijst      | Den           |   `--X`   |   `R-X`    |  `---`      | `---`          |
 | Lijst      | /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
@@ -297,6 +297,6 @@ Nee, maar Standaard ACL's kunnen worden gebruikt voor het instellen van ACL's vo
 * [POSIX ACL in Ubuntu](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [ACL met behulp van toegangs beheer lijsten op Linux](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Overzicht van Azure Data Lake Storage Gen1](data-lake-store-overview.md)

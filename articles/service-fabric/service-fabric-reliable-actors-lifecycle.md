@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
 ms.openlocfilehash: b05da78091260297d94062c06cba100d01ce7e2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258315"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847876"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Actor-levens cyclus, automatische garbage collection en hand matig verwijderen
 Er wordt een actor geactiveerd wanneer een aanroep voor de eerste keer wordt uitgevoerd naar een van de methoden. Een actor wordt gedeactiveerd (garbagecollection door de actors-runtime) als deze niet wordt gebruikt voor een Configureer bare periode. Een actor en de status kunnen op elk gewenst moment hand matig worden verwijderd.
@@ -85,9 +85,9 @@ public class Program
     }
 }
 ```
-Voor elke actieve actor houdt actor runtime bij hoe lang het inactief is (d.w.z. niet gebruikt). De actor-runtime controleert elk van de actors `ScanIntervalInSeconds` om te zien of deze permanent kan worden opgeruimd en gemarkeerd als deze niet actief is geweest `IdleTimeoutInSeconds`.
+Voor elke actieve actor houdt actor runtime bij hoe lang het inactief is (d.w.z. niet gebruikt). De actor-runtime controleert elk van de actors `ScanIntervalInSeconds` om te zien of deze permanent kan worden opgeruimd en gemarkeerd als deze niet actief is geweest `IdleTimeoutInSeconds` .
 
-Telkens wanneer een actor wordt gebruikt, wordt de niet-actieve tijd opnieuw ingesteld op 0. Daarna kan de actor alleen permanent worden verzameld als deze opnieuw inactief blijft `IdleTimeoutInSeconds`. Het intrekken van een actor als een actor-interface methode of een actor-retour aanroep wordt uitgevoerd. Een actor wordt **niet** beschouwd als gebruikt als de timer-retour aanroep wordt uitgevoerd.
+Telkens wanneer een actor wordt gebruikt, wordt de niet-actieve tijd opnieuw ingesteld op 0. Daarna kan de actor alleen permanent worden verzameld als deze opnieuw inactief blijft `IdleTimeoutInSeconds` . Het intrekken van een actor als een actor-interface methode of een actor-retour aanroep wordt uitgevoerd. Een actor wordt **niet** beschouwd als gebruikt als de timer-retour aanroep wordt uitgevoerd.
 
 In het volgende diagram ziet u de levens cyclus van één actor om deze concepten te illustreren.
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5ef454871f242adb9de5e5c567c1a76e00478cc
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 21b8748cf74a5061e9dfa154047f867df4cb5428
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84789936"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848741"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Uw Extern bureaublad-gateway-infra structuur integreren met behulp van de Network Policy Server (NPS)-extensie en Azure AD
 
@@ -115,16 +115,15 @@ Volg de stappen in [Wat heeft Azure multi-factor Authentication voor mij?](../us
 
 In deze sectie vindt u instructies voor het configureren van RDS-infra structuur voor het gebruik van Azure MFA voor client verificatie met de Extern bureaublad-gateway.
 
-### <a name="acquire-azure-active-directory-guid-id"></a>Azure Active Directory GUID-ID ophalen
+### <a name="acquire-azure-active-directory-tenant-id"></a>Azure Active Directory Tenant-ID ophalen
 
-Als onderdeel van de configuratie van de NPS-extensie moet u beheerders referenties en de Azure AD-ID voor uw Azure AD-Tenant opgeven. De volgende stappen laten zien hoe u de Tenant-ID kunt ophalen.
+Als onderdeel van de configuratie van de NPS-extensie moet u beheerders referenties en de Azure AD-ID voor uw Azure AD-Tenant opgeven. Voer de volgende stappen uit om de Tenant-ID op te halen:
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als globale beheerder van de Azure-Tenant.
 1. Selecteer in het menu Azure Portal **Azure Active Directory**of zoek en selecteer **Azure Active Directory** op een wille keurige pagina.
-1. Selecteer **Eigenschappen**.
-1. Klik op de Blade eigenschappen, naast de Directory-ID, op het **kopie** pictogram, zoals hieronder wordt weer gegeven, om de id naar het klem bord te kopiëren.
+1. Op de pagina **overzicht** wordt de *informatie* over de Tenant weer gegeven. Selecteer het pictogram **kopiëren** naast de *Tenant-id*, zoals wordt weer gegeven in de volgende voorbeeld scherm afbeelding:
 
-   ![De Directory-ID ophalen uit de Azure Portal](./media/howto-mfa-nps-extension-rdg/azure-active-directory-id-in-azure-portal.png)
+   ![De Tenant-ID ophalen uit de Azure Portal](./media/howto-mfa-nps-extension-rdg/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="install-the-nps-extension"></a>De NPS-extensie installeren
 
@@ -167,9 +166,9 @@ Als u het script wilt gebruiken, geeft u de extensie op met uw Azure AD-beheerde
 
    ![Verifiëren met Azure AD in Power shell](./media/howto-mfa-nps-extension-rdg/image5.png)
 
-1. Plak, wanneer u hierom wordt gevraagd, de Directory-ID die u eerder hebt gekopieerd naar het klem bord en druk op **Enter**.
+1. Plak, wanneer u hierom wordt gevraagd, de *Tenant-id* die u eerder hebt gekopieerd naar het klem bord en druk op **Enter**.
 
-   ![De Directory-ID in Power shell invoeren](./media/howto-mfa-nps-extension-rdg/image6.png)
+   ![De Tenant-ID in Power shell invoeren](./media/howto-mfa-nps-extension-rdg/image6.png)
 
 1. Het script maakt een zelfondertekend certificaat en voert andere configuratie wijzigingen uit. De uitvoer moet lijken op de afbeelding die hieronder wordt weer gegeven.
 

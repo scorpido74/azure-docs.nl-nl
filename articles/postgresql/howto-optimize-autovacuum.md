@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 1917bd6744e100db54fe959292e29486f8a1784b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7dcc6f9ece407bee20ed344d91ee95e34f8f4c0a
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74770183"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848195"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Autoonderdruk op een Azure Database for PostgreSQL-één server optimaliseren
 In dit artikel wordt beschreven hoe u autovacuüm op een Azure Database for PostgreSQL Server effectief optimaliseert.
@@ -47,7 +47,7 @@ Hier volgt een aantal para meters voor automatische vacuüm configuratie die u o
 Parameter|Beschrijving|Standaardwaarde
 ---|---|---
 autovacuum_vacuum_threshold|Hiermee geeft u het minimale aantal bijgewerkte of verwijderde Tuples op dat nodig is om een vacuüm bewerking in een tabel te activeren. De standaard waarde is 50 Tuples. Stel deze para meter alleen in het bestand postgresql. conf of op de server opdracht regel in. Als u de instelling voor afzonderlijke tabellen wilt onderdrukken, wijzigt u de para meters voor de tabel opslag.|50
-autovacuum_vacuum_scale_factor|Hiermee geeft u een fractie van de tabel grootte op die moet worden toegevoegd aan autovacuum_vacuum_threshold bij het bepalen of een vacuüm bewerking moet worden geactiveerd. De standaard waarde is 0,2. Dit is 20 procent van de tabel grootte. Stel deze para meter alleen in het bestand postgresql. conf of op de server opdracht regel in. Als u de instelling voor afzonderlijke tabellen wilt onderdrukken, wijzigt u de para meters voor de tabel opslag.|5 procent
+autovacuum_vacuum_scale_factor|Hiermee geeft u een fractie van de tabel grootte op die moet worden toegevoegd aan autovacuum_vacuum_threshold bij het bepalen of een vacuüm bewerking moet worden geactiveerd. De standaard waarde is 0,2. Dit is 20 procent van de tabel grootte. Stel deze para meter alleen in het bestand postgresql. conf of op de server opdracht regel in. Als u de instelling voor afzonderlijke tabellen wilt onderdrukken, wijzigt u de para meters voor de tabel opslag.|0,2
 autovacuum_vacuum_cost_limit|Hiermee geeft u de kosten limiet waarde op die in automatische vacuüm bewerkingen wordt gebruikt. Als-1 is opgegeven, dat wil zeggen de standaard waarde, wordt de regel reguliere vacuum_cost_limit gebruikt. Als er meer dan één werk nemer is, wordt de waarde proportioneel verdeeld over de actieve autoonderdruk-werk rollen. De som van de limieten voor elke werk nemer overschrijdt niet de waarde van deze variabele. Stel deze para meter alleen in het bestand postgresql. conf of op de server opdracht regel in. Als u de instelling voor afzonderlijke tabellen wilt onderdrukken, wijzigt u de para meters voor de tabel opslag.|-1
 autovacuum_vacuum_cost_delay|Hiermee geeft u de waarde voor de kosten vertraging op die in automatische vacuüm bewerkingen wordt gebruikt. Als-1 is opgegeven, wordt de reguliere vacuum_cost_delay-waarde gebruikt. De standaard waarde is 20 milliseconden. Stel deze para meter alleen in het bestand postgresql. conf of op de server opdracht regel in. Als u de instelling voor afzonderlijke tabellen wilt onderdrukken, wijzigt u de para meters voor de tabel opslag.|20 MS
 autovacuum_nap_time|Hiermee geeft u de minimale vertraging tussen autovacuüm-uitvoeringen op een bepaalde data base. Bij elke afronding onderzoekt de daemon de data base en worden vacuüm-en analyse opdrachten voor tabellen in die data base onderzocht. De vertraging wordt gemeten in seconden en de standaard waarde is één minuut (1 min.). Stel deze para meter alleen in het bestand postgresql. conf of op de server opdracht regel in.|15 s

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 681b81fa7f6ce74f7e48eb518a2c951e94c4b00d
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: ca244136178c9c05f2b88a917219035451d5e391
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84789529"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848487"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Uw bestaande NPS-infrastructuur integreren met Azure Multi-Factor Authentication
 
@@ -67,15 +67,19 @@ De Microsoft Azure Active Directory-module voor Windows PowerShell is geïnstall
 
 U moet de volgende bibliotheek hand matig installeren:
 
-- [Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/download/details.aspx?id=48145)
+- [Visual C++ Redistributable voor Visual Studio 2015](https://www.microsoft.com/download/details.aspx?id=48145)
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
 Iedereen die de NPS-extensie gebruikt, moet worden gesynchroniseerd met Azure Active Directory met behulp van Azure AD Connect en moeten worden geregistreerd voor MFA.
 
-Wanneer u de uitbrei ding installeert, hebt u de map-ID en de beheerders referenties nodig voor uw Azure AD-Tenant. U kunt uw directory-ID vinden in de [Azure Portal](https://portal.azure.com). Meld u aan als beheerder. Zoek en selecteer de **Azure Active Directory**en selecteer vervolgens **Eigenschappen**. Kopieer de GUID in het vak **Directory-id** en sla deze op. U gebruikt deze GUID als Tenant-ID bij de installatie van de NPS-extensie.
+Wanneer u de uitbrei ding installeert, hebt u de *Tenant-id* en de beheerders referenties nodig voor uw Azure AD-Tenant. Voer de volgende stappen uit om de Tenant-ID op te halen:
 
-![Zoek uw directory-ID onder Azure Active Directory eigenschappen](./media/howto-mfa-nps-extension/properties-directory-id.png)
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als globale beheerder van de Azure-Tenant.
+1. Zoek en selecteer de **Azure Active Directory**.
+1. Op de pagina **overzicht** wordt de *informatie* over de Tenant weer gegeven. Selecteer het pictogram **kopiëren** naast de *Tenant-id*, zoals wordt weer gegeven in de volgende voorbeeld scherm afbeelding:
+
+   ![De Tenant-ID ophalen uit de Azure Portal](./media/howto-mfa-nps-extension/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="network-requirements"></a>Netwerkvereisten
 
@@ -206,7 +210,7 @@ Tenzij u uw eigen certificaten wilt gebruiken (in plaats van de zelfondertekende
    ```
 
 4. Meld u als beheerder aan bij Azure AD.
-5. Power shell vraagt om uw Tenant-ID. Gebruik de GUID van de Directory-ID die u hebt gekopieerd uit de Azure Portal in de sectie vereisten.
+5. Power shell vraagt om uw Tenant-ID. Gebruik de GUID van de *Tenant-id* die u hebt gekopieerd uit de Azure Portal in de sectie vereisten.
 6. Power shell toont een geslaagd bericht wanneer het script is voltooid.  
 
 Herhaal deze stappen voor alle extra NPS-servers die u wilt instellen voor taak verdeling.

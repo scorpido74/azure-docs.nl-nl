@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258744"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847859"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Cluster resource manager-integratie met Service Fabric Cluster beheer
 Het Service Fabric cluster resource manager kan geen upgrades uitvoeren in Service Fabric, maar is wel betrokken. De eerste manier waarop cluster resource Manager helpt bij het beheer, is door de gewenste status van het cluster en de services erin bij te houden. De cluster resource manager verzendt status rapporten wanneer het cluster niet in de gewenste configuratie kan worden geplaatst. Als er bijvoorbeeld onvoldoende capaciteit is, verzendt cluster resource manager status waarschuwingen en fouten die het probleem aangeven. Een ander integratie pakket heeft te maken met de werking van upgrades. Het gedrag van cluster resource manager wordt enigszins gewijzigd tijdens de upgrade.  
@@ -18,7 +18,7 @@ Het Service Fabric cluster resource manager kan geen upgrades uitvoeren in Servi
 ## <a name="health-integration"></a>Status integratie
 De regels die u hebt gedefinieerd voor het plaatsen van uw services worden door de cluster resource manager voortdurend bijgehouden. Ook wordt de resterende capaciteit bijgehouden voor elke metriek op de knoop punten en in het cluster en in het cluster als geheel. Als deze niet aan deze regels kan voldoen of als er onvoldoende capaciteit is, worden status waarschuwingen en fouten verzonden. Bijvoorbeeld, als een knoop punt over capaciteit is en de cluster resource manager probeert de situatie op te lossen door services te verplaatsen. Als de situatie niet kan worden opgelost, wordt er een status waarschuwing gegeven die aangeeft welk knoop punt de capaciteit overschrijdt, en wat de metrische gegevens zijn.
 
-Een ander voor beeld van de status waarschuwingen van Resource Manager is schendingen van plaatsings beperkingen. Als u bijvoorbeeld een plaatsings beperking hebt gedefinieerd (zoals `“NodeColor == Blue”`) en de Resource Manager een schending van die beperking detecteert, wordt er een status waarschuwing gegeven. Dit geldt voor aangepaste beperkingen en de standaard beperkingen (zoals het fout domein en de upgrade van domein beperkingen).
+Een ander voor beeld van de status waarschuwingen van Resource Manager is schendingen van plaatsings beperkingen. Als u bijvoorbeeld een plaatsings beperking hebt gedefinieerd (zoals `“NodeColor == Blue”` ) en de Resource Manager een schending van die beperking detecteert, wordt er een status waarschuwing gegeven. Dit geldt voor aangepaste beperkingen en de standaard beperkingen (zoals het fout domein en de upgrade van domein beperkingen).
 
 Hier volgt een voor beeld van een dergelijk status rapport. In dit geval is het status rapport een van de systeem service partities. In het status bericht wordt aangegeven dat de replica's van die partitie tijdelijk zijn verpakt in te weinig upgrade domeinen.
 
@@ -122,7 +122,7 @@ In geavanceerde situaties kunt u de prioriteiten van de beperking wijzigen. Stel
 
 De standaard prioriteits waarden voor de verschillende beperkingen worden opgegeven in de volgende configuratie:
 
-ClusterManifest. XML
+ClusterManifest.xml
 
 ```xml
         <Section Name="PlacementAndLoadBalancing">
@@ -135,7 +135,7 @@ ClusterManifest. XML
         </Section>
 ```
 
-via ClusterConfig. json voor zelfstandige implementaties of sjabloon. json voor door Azure gehoste clusters:
+via ClusterConfig.jsop voor zelfstandige implementaties of Template.jsop voor door Azure gehoste clusters:
 
 ```json
 "fabricSettings": [

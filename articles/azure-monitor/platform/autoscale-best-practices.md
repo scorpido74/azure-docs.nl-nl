@@ -1,15 +1,15 @@
 ---
-title: Aanbevolen procedures voor automatisch schalen
+title: Best practices voor automatische schaalaanpassing
 description: Patronen automatisch schalen in azure voor Web Apps, schaal sets voor virtuele machines en Cloud Services
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: a05cf87e660cc6c388ea2055bb174c47b99da4a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248916"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846941"
 ---
 # <a name="best-practices-for-autoscale"></a>Aanbevolen procedures voor Automatisch schalen
 Azure Monitor automatisch schalen is alleen van toepassing op [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app service-Web apps](https://azure.microsoft.com/services/app-service/web/)en [API Management Services](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
@@ -31,7 +31,7 @@ Gebruik de volgende aanbevolen procedures voor automatisch schalen.
 
 ### <a name="ensure-the-maximum-and-minimum-values-are-different-and-have-an-adequate-margin-between-them"></a>Zorg ervoor dat de maximale en minimale waarden verschillen, en dat er voldoende marge tussen deze twee zit
 
-Als u een instelling hebt met minimale = 2, maximum = 2 en het huidige aantal instanties is 2, kan er geen schaal actie optreden. Beperk een voldoende marge tussen het maximum-en minimum aantal instanties, inclusief. Automatisch schalen schaalt altijd tussen deze limieten.
+Als u een instelling hebt met minimum = 2, maximum = 2 en het huidige aantal instanties is 2, dan kan er geen schaalactie optreden. Hou voldoende marge tussen het maximum- en minimumaantal instanties, inclusief de waarden. De automatische schaalaanpassing schaalt altijd tussen deze limieten.
 
 ### <a name="manual-scaling-is-reset-by-autoscale-min-and-max"></a>Handmatig schalen wordt opnieuw ingesteld door het minimum en maximum voor automatisch schalen
 
@@ -48,8 +48,8 @@ We raden u aan om verschillende drempel waarden te kiezen voor uitschalen en sch
 
 We *raden* instellingen voor automatisch schalen, zoals de onderstaande voor beelden, niet aan met dezelfde of vergelijk bare drempel waarden voor en in voor waarden:
 
-* Instanties verhogen met 1 aantal wanneer het aantal threads >= 600
-* Exemplaren verlagen met 1 aantal wanneer het aantal threads <= 600
+* Instanties verhogen met 1 wanneer het aantal threads >= 600
+* Exemplaren verlagen met 1 wanneer het aantal threads <= 600
 
 Laten we eens kijken naar een voor beeld van wat kan leiden tot een gedrag dat verwarrend is. Houd rekening met de volgende reeks.
 

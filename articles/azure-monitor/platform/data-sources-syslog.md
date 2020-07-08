@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
 ms.openlocfilehash: 8d68a8d6d28d79c50a92cd2d18df2abab26c30ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274721"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847408"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Syslog-gegevensbronnen in Azure Monitor
 Syslog is een protocol voor gebeurtenis registratie dat algemeen is voor Linux. Toepassingen zullen berichten verzenden die kunnen worden opgeslagen op de lokale computer of worden geleverd aan een syslog-Collector. Wanneer de Log Analytics-agent voor Linux is geïnstalleerd, wordt de lokale syslog-daemon geconfigureerd voor het door sturen van berichten naar de agent. De agent verzendt het bericht vervolgens naar Azure Monitor waar een corresponderende record wordt gemaakt.  
@@ -47,7 +47,7 @@ In de Log Analytics-agent voor Linux worden alleen gebeurtenissen verzameld met 
 ### <a name="configure-syslog-in-the-azure-portal"></a>Syslog configureren in de Azure Portal
 Configureer syslog vanuit het [menu Data in geavanceerde instellingen](agent-data-sources.md#configuring-data-sources). Deze configuratie wordt op elke Linux-agent bezorgd bij het configuratie bestand.
 
-U kunt een nieuwe faciliteit toevoegen door eerst de optie **op de onderstaande configuratie Toep assen op mijn machines te** selecteren en vervolgens de naam **+** te typen en te klikken. Voor elke faciliteit worden alleen berichten met de geselecteerde Ernst verzameld.  Controleer de ernst van de specifieke faciliteit die u wilt verzamelen. U kunt geen aanvullende criteria opgeven om berichten te filteren.
+U kunt een nieuwe faciliteit toevoegen door eerst de optie **op de onderstaande configuratie Toep assen op mijn machines te** selecteren en vervolgens de naam te typen en te klikken **+** . Voor elke faciliteit worden alleen berichten met de geselecteerde Ernst verzameld.  Controleer de ernst van de specifieke faciliteit die u wilt verzamelen. U kunt geen aanvullende criteria opgeven om berichten te filteren.
 
 ![Syslog configureren](media/data-sources-syslog/configure.png)
 
@@ -170,7 +170,7 @@ U kunt het poort nummer wijzigen door twee configuratie bestanden te maken: een 
 * Voor rsyslog moet u een nieuw configuratie bestand maken in: `/etc/rsyslog.d/` en de waarde% SYSLOG_PORT% vervangen door uw aangepaste poort nummer.  
 
     > [!NOTE]
-    > Als u deze waarde in het configuratie bestand `95-omsagent.conf`wijzigt, wordt deze overschreven wanneer de agent een standaard configuratie toepast.
+    > Als u deze waarde in het configuratie bestand wijzigt `95-omsagent.conf` , wordt deze overschreven wanneer de agent een standaard configuratie toepast.
     >
 
         # OMS Syslog collection for workspace %WORKSPACE_ID%
@@ -179,7 +179,7 @@ U kunt het poort nummer wijzigen door twee configuratie bestanden te maken: een 
         daemon.warning            @127.0.0.1:%SYSLOG_PORT%
         auth.warning              @127.0.0.1:%SYSLOG_PORT%
 
-* Het syslog-ng-config moet worden gewijzigd door de hieronder weer gegeven voorbeeld configuratie te kopiëren en de aangepaste gewijzigde instellingen toe te voegen aan het einde van het syslog-ng `/etc/syslog-ng/`. conf-configuratie bestand dat zich bevindt in. Gebruik **niet** het standaard label **% WORKSPACE_ID% _oms** of **% WORKSPACE_ID_OMS**, Definieer een aangepast label om uw wijzigingen te onderscheiden.  
+* Het syslog-ng-config moet worden gewijzigd door de hieronder weer gegeven voorbeeld configuratie te kopiëren en de aangepaste gewijzigde instellingen toe te voegen aan het einde van het syslog-ng. conf-configuratie bestand dat zich bevindt in `/etc/syslog-ng/` . Gebruik **niet** het standaard label **% WORKSPACE_ID% _oms** of **% WORKSPACE_ID_OMS**, Definieer een aangepast label om uw wijzigingen te onderscheiden.  
 
     > [!NOTE]
     > Als u de standaard waarden in het configuratie bestand wijzigt, worden deze overschreven wanneer de agent een standaard configuratie toepast.
@@ -208,7 +208,7 @@ Syslog-records hebben het type **syslog** en hebben de eigenschappen in de volge
 ## <a name="log-queries-with-syslog-records"></a>Query's registreren met syslog-records
 De volgende tabel bevat verschillende voor beelden van logboek query's waarmee syslog-records worden opgehaald.
 
-| Query’s uitvoeren | Beschrijving |
+| Query’s uitvoeren | Description |
 |:--- |:--- |
 | Syslog |Alle syslogs. |
 | Syslog &#124; waarbij SeverityLevel = = "Error" |Alle syslog-records met de ernst van de fout. |

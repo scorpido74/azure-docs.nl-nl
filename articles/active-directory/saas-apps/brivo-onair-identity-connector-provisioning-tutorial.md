@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: f3c1e7337c0ce07b7fbebb9f954deeb75f0b9584
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84d14d63cd7bb96a7a4f37d2a6c29f09a50b2420
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80246650"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848686"
 ---
 # <a name="tutorial-configure-brivo-onair-identity-connector-for-automatic-user-provisioning"></a>Zelf studie: Brivo OnAir Identity connector configureren voor het automatisch inrichten van gebruikers
 
@@ -54,17 +54,17 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 ## <a name="setup-brivo-onair-identity-connector-for-provisioning"></a>Brivo OnAir-identiteits connector instellen voor inrichting
 
-1.    Meld u aan bij de [beheer console van uw Brivo OnAir-identiteits connector](https://acs.brivo.com/login/). Navigeer naar **account instellingen > account**.
+1. Meld u aan bij de [beheer console van uw Brivo OnAir-identiteits connector](https://acs.brivo.com/login/). Navigeer naar **account instellingen > account**.
 
-    ![Beheer console van Brivo OnAir Identity connector](media/brivo-onair-identity-connector-provisioning-tutorial/admin.png)
+   ![Beheer console van Brivo OnAir Identity connector](media/brivo-onair-identity-connector-provisioning-tutorial/admin.png)
 
-2.  Klik op het tabblad **Azure AD** . Op de pagina Details van **Azure AD** voert u het wacht woord van uw account voor de senior beheerder opnieuw in. Klik op **verzenden**.
+2. Klik op het tabblad **Azure AD** . Op de pagina Details van **Azure AD** voert u het wacht woord van uw account voor de senior beheerder opnieuw in. Klik op **verzenden**.
 
-    ![Brivo OnAir Identity connector Azure](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
+   ![Brivo OnAir Identity connector Azure](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
 
-3.    Klik op de knop **token kopiëren** en sla het **geheime token**op. Deze waarde wordt ingevoerd in het veld geheime token op het tabblad inrichten van uw Brivo OnAir Identity connector-toepassing in de Azure Portal.
+3. Klik op de knop **token kopiëren** en sla het **geheime token**op. Deze waarde wordt ingevoerd in het veld geheime token op het tabblad inrichten van uw Brivo OnAir Identity connector-toepassing in de Azure Portal.
 
-    ![Brivo OnAir Identity connector-token](media/brivo-onair-identity-connector-provisioning-tutorial/token.png)
+   ![Brivo OnAir Identity connector-token](media/brivo-onair-identity-connector-provisioning-tutorial/token.png)
 
 ## <a name="add-brivo-onair-identity-connector-from-the-gallery"></a>Brivo OnAir Identity connector toevoegen vanuit de galerie
 
@@ -76,7 +76,7 @@ Voordat u Brivo OnAir Identity connector configureert voor het automatisch inric
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+2. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -94,7 +94,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-brivo-onair-identity-connector-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Brivo OnAir Identity connector in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -110,7 +110,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Selecteer in de sectie **beheerders referenties** de `https://scim.brivo.com/ActiveDirectory/v2/` invoer in de **Tenant-URL**. Voer de waarde voor het **scim-verificatie token** in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Brivo OnAir Identity connector. Als de verbinding mislukt, zorg er dan voor dat uw Brivo OnAir Identity Connector-account beheerders machtigingen heeft en probeer het opnieuw.
+5. Selecteer in de sectie **beheerders referenties** de invoer `https://scim.brivo.com/ActiveDirectory/v2/` in de Tenant- **URL**. Voer de waarde voor het **scim-verificatie token** in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Brivo OnAir Identity connector. Als de verbinding mislukt, zorg er dan voor dat uw Brivo OnAir Identity Connector-account beheerders machtigingen heeft en probeer het opnieuw.
 
     ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -157,7 +157,7 @@ Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-p
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

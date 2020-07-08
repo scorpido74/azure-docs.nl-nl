@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: a686465b0006c2e9aac6e06cb4ab12d30921e8c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251139"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847079"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Activa en gerelateerde entiteiten beheren met Media Services .NET SDK
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Vanaf 1 april 2017 wordt elke taakrecord in uw account die ouder is dan 90 dagen
 
 ## <a name="prerequisites"></a>Vereisten
 
-Stel uw ontwikkel omgeving in en vul in het bestand app. config de verbindings informatie in, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
+Stel uw ontwikkel omgeving in en vul het app.config bestand in met verbindings informatie, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
 
 ## <a name="get-an-asset-reference"></a>Een Asset-verwijzing ophalen
 Een frequente taak is het ophalen van een verwijzing naar een bestaande asset in Media Services. In het volgende code voorbeeld ziet u hoe u een Asset-verwijzing kunt ophalen uit de verzameling assets op het server context object, op basis van een activa-id. In het volgende code voorbeeld wordt een LINQ-query gebruikt voor het ophalen van een verwijzing naar een bestaand IAsset-object.

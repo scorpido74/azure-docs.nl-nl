@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
 ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273096"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847240"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Inleiding tot Cloud service monitoring
 
@@ -54,13 +54,13 @@ Terwijl elke rol wordt gemaakt, voegt Visual Studio de Azure Diagnostics-extensi
 
 Als u geen **klassiek** opslag account hebt, [maakt u er eerst een](../storage/common/storage-account-create.md). Zorg ervoor dat het opslag account is gemaakt met het **klassieke implementatie model** dat is opgegeven.
 
-Ga vervolgens naar de resource van het **opslag account (klassiek)** . Selecteer **instellingen** > **toegangs sleutels** en kopieer de **primaire Connection String** waarde. U hebt deze waarde nodig voor de Cloud service. 
+Ga vervolgens naar de resource van het **opslag account (klassiek)** . Selecteer **instellingen**  >  **toegangs sleutels** en kopieer de **primaire Connection String** waarde. U hebt deze waarde nodig voor de Cloud service. 
 
 Er zijn twee configuratie bestanden die u moet wijzigen om geavanceerde diagnoses in te scha kelen: **ServiceDefinition. csdef** en **ServiceConfiguration. cscfg**.
 
 ### <a name="servicedefinitioncsdef"></a>ServiceDefinition. csdef
 
-Voeg in het bestand **ServiceDefinition. csdef** een nieuwe instelling toe met `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` de naam voor elke rol die gebruikmaakt van geavanceerde diagnoses. Visual Studio voegt deze waarde toe aan het bestand wanneer u een nieuw project maakt. Als de app ontbreekt, kunt u deze nu toevoegen. 
+Voeg in het bestand **ServiceDefinition. csdef** een nieuwe instelling toe met de naam `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` voor elke rol die gebruikmaakt van geavanceerde diagnoses. Visual Studio voegt deze waarde toe aan het bestand wanneer u een nieuw project maakt. Als de app ontbreekt, kunt u deze nu toevoegen. 
 
 ```xml
 <ServiceDefinition name="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
@@ -71,7 +71,7 @@ Voeg in het bestand **ServiceDefinition. csdef** een nieuwe instelling toe met `
 
 Hiermee definieert u een nieuwe instelling die moet worden toegevoegd aan elk **ServiceConfiguration. cscfg** -bestand. 
 
-Waarschijnlijk hebt u twee **. cscfg** -bestanden, een met de naam **ServiceConfiguration. Cloud. cscfg** voor de implementatie naar Azure, en één met de naam **ServiceConfiguration. local. cscfg** die wordt gebruikt voor lokale implementaties in de geëmuleerde omgeving. Open en wijzig elk **cscfg** -bestand. Voeg een instelling toe `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString`met de naam. Stel de waarde in op de **primaire Connection String** van het klassieke opslag account. Als u de lokale opslag op uw ontwikkel computer wilt gebruiken, gebruikt `UseDevelopmentStorage=true`u.
+Waarschijnlijk hebt u twee **. cscfg** -bestanden, een met de naam **ServiceConfiguration. Cloud. cscfg** voor de implementatie naar Azure, en één met de naam **ServiceConfiguration. local. cscfg** die wordt gebruikt voor lokale implementaties in de geëmuleerde omgeving. Open en wijzig elk **cscfg** -bestand. Voeg een instelling toe met de naam `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` . Stel de waarde in op de **primaire Connection String** van het klassieke opslag account. Als u de lokale opslag op uw ontwikkel computer wilt gebruiken, gebruikt u `UseDevelopmentStorage=true` .
 
 ```xml
 <ServiceConfiguration serviceName="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">

@@ -12,15 +12,15 @@ ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 3f78934fb11dd4f9e34bf27d565d471d47f250b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265803"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847681"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Gegevens verplaatsen van een SFTP-server met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-sftp-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](data-factory-sftp-connector.md)
 > * [Versie 2 (huidige versie)](../connector-sftp.md)
 
 > [!NOTE]
@@ -50,10 +50,10 @@ De volgende tabel bevat een beschrijving van de JSON-elementen die specifiek zij
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| type | De eigenschap type moet worden ingesteld op `Sftp`. |Ja |
-| host | Naam of IP-adres van de SFTP-server. |Ja |
-| poort |Poort waarop de SFTP-server luistert. De standaard waarde is: 21 |Nee |
-| authenticationType |Geef het verificatie type op. Toegestane waarden: **Basic**, **SshPublicKey**. <br><br> Raadpleeg de sectie [basis verificatie](#using-basic-authentication) en [verificatie van open bare SSH-sleutel](#using-ssh-public-key-authentication) voor meer informatie over de eigenschappen en JSON-voor beelden. |Ja |
+| type | De eigenschap type moet worden ingesteld op `Sftp` . |Yes |
+| host | Naam of IP-adres van de SFTP-server. |Yes |
+| poort |Poort waarop de SFTP-server luistert. De standaard waarde is: 21 |No |
+| authenticationType |Geef het verificatie type op. Toegestane waarden: **Basic**, **SshPublicKey**. <br><br> Raadpleeg de sectie [basis verificatie](#using-basic-authentication) en [verificatie van open bare SSH-sleutel](#using-ssh-public-key-authentication) voor meer informatie over de eigenschappen en JSON-voor beelden. |Yes |
 | skipHostKeyValidation | Geef op of de validatie van de host-sleutel moet worden overgeslagen. | Nee. De standaard waarde: False |
 | hostKeyFingerprint | Geef de vinger afdruk van de host-sleutel op. | Ja als de `skipHostKeyValidation` is ingesteld op false.  |
 | gatewayName |De naam van de Data Management Gateway om verbinding te maken met een on-premises SFTP-server. | Ja bij het kopiëren van gegevens van een on-premises SFTP-server. |
@@ -61,12 +61,12 @@ De volgende tabel bevat een beschrijving van de JSON-elementen die specifiek zij
 
 ### <a name="using-basic-authentication"></a>Basis verificatie gebruiken
 
-Als u basis verificatie wilt gebruiken `authenticationType` , `Basic`stelt u in op en geeft u de volgende eigenschappen op, naast de SFTP-connector generics die zijn geïntroduceerd in de laatste sectie:
+Als u basis verificatie wilt gebruiken, stelt u `authenticationType` in op `Basic` en geeft u de volgende eigenschappen op, naast de SFTP-connector generics die zijn geïntroduceerd in de laatste sectie:
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| gebruikersnaam | Gebruiker die toegang heeft tot de SFTP-server. |Ja |
-| wachtwoord | Wacht woord voor de gebruiker (gebruikers naam). | Ja |
+| gebruikersnaam | Gebruiker die toegang heeft tot de SFTP-server. |Yes |
+| wachtwoord | Wacht woord voor de gebruiker (gebruikers naam). | Yes |
 
 #### <a name="example-basic-authentication"></a>Voor beeld: basis verificatie
 ```json
@@ -111,13 +111,13 @@ Als u basis verificatie wilt gebruiken `authenticationType` , `Basic`stelt u in 
 
 ### <a name="using-ssh-public-key-authentication"></a>Verificatie met open bare SSH-sleutel gebruiken
 
-Als u verificatie met open bare SSH- `authenticationType` sleutel `SshPublicKey`wilt gebruiken, stelt u in op en geeft u de volgende eigenschappen op, naast de SFTP-connector algemeen die in de laatste sectie zijn geïntroduceerd:
+Als u verificatie met open bare SSH-sleutel wilt gebruiken, stelt u `authenticationType` in op `SshPublicKey` en geeft u de volgende eigenschappen op, naast de SFTP-connector algemeen die in de laatste sectie zijn geïntroduceerd:
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| gebruikersnaam |Gebruiker die toegang heeft tot de SFTP-server |Ja |
-| privateKeyPath | Geef een absoluut pad naar het bestand met de persoonlijke sleutel op waartoe de gateway toegang kan hebben. | Geef de `privateKeyPath` or `privateKeyContent`op. <br><br> Alleen Toep assen bij het kopiëren van gegevens van een on-premises SFTP-server. |
-| privateKeyContent | Een geserialiseerde teken reeks met de inhoud van de persoonlijke sleutel. De wizard kopiëren kan het persoonlijke sleutel bestand lezen en de inhoud van de persoonlijke sleutel automatisch extra heren. Als u een andere tool/SDK gebruikt, gebruikt u in plaats daarvan de eigenschap privateKeyPath. | Geef de `privateKeyPath` or `privateKeyContent`op. |
+| gebruikersnaam |Gebruiker die toegang heeft tot de SFTP-server |Yes |
+| privateKeyPath | Geef een absoluut pad naar het bestand met de persoonlijke sleutel op waartoe de gateway toegang kan hebben. | Geef de `privateKeyPath` or op `privateKeyContent` . <br><br> Alleen Toep assen bij het kopiëren van gegevens van een on-premises SFTP-server. |
+| privateKeyContent | Een geserialiseerde teken reeks met de inhoud van de persoonlijke sleutel. De wizard kopiëren kan het persoonlijke sleutel bestand lezen en de inhoud van de persoonlijke sleutel automatisch extra heren. Als u een andere tool/SDK gebruikt, gebruikt u in plaats daarvan de eigenschap privateKeyPath. | Geef de `privateKeyPath` or op `privateKeyContent` . |
 | Wachtzin | Geef de wachtwoordzin/het wacht woord op voor het ontsleutelen van de persoonlijke sleutel als het sleutel bestand wordt beveiligd door een wachtwoordzin. | Ja als het persoonlijke-sleutel bestand is beveiligd door een wachtwoordzin. |
 
 > [!NOTE]
@@ -171,13 +171,13 @@ De sectie **typeProperties** verschilt voor elk type gegevensset. Het bevat info
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| folderPath |Subpad van de map. Escape teken ' \ ' gebruiken voor speciale tekens in de teken reeks. Zie voor beelden van gekoppelde service en gegevensset-definities voor voor beeld.<br/><br/>U kunt deze eigenschap combi neren met **partitionBy** om mappaden te laten baseren op de begin-en eind datum van het segment. |Ja |
-| fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben: <br/><br/>`Data.<Guid>.txt`(Voor beeld: data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a. txt |Nee |
-| File filter |Geef een filter op dat moet worden gebruikt om een subset van bestanden in de folderPath in plaats van alle bestanden te selecteren.<br/><br/>Toegestane waarden zijn: `*` (meerdere tekens) en `?` (één teken).<br/><br/>Voor beelden 1:`"fileFilter": "*.log"`<br/>Voor beeld 2:`"fileFilter": 2014-1-?.txt"`<br/><br/> File filter is van toepassing op een invoer-file share-gegevensset. Deze eigenschap wordt niet ondersteund met HDFS. |Nee |
-| partitionedBy |partitionedBy kan worden gebruikt om een dynamische folderPath op te geven, filename voor time series-gegevens. Bijvoorbeeld folderPath para meters voor elk uur aan gegevens. |Nee |
-| formaat | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie voor meer informatie secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en Parquet- [indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Als u bestanden wilt **kopiëren als-zich bevindt** tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over. |Nee |
-| compressie | Geef het type en compressie niveau voor de gegevens op. Ondersteunde typen zijn: **gzip**, **Deflate**, **bzip2**en **ZipDeflate**. Ondersteunde niveaus zijn: **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
-| useBinaryTransfer |Opgeven of binaire overdrachts modus moet worden gebruikt. True voor binaire modus en ONWAAR ASCII. Standaard waarde: True. Deze eigenschap kan alleen worden gebruikt wanneer het gekoppelde type gekoppelde service van het type: FtpServer. |Nee |
+| folderPath |Subpad van de map. Escape teken ' \ ' gebruiken voor speciale tekens in de teken reeks. Zie voor beelden van gekoppelde service en gegevensset-definities voor voor beeld.<br/><br/>U kunt deze eigenschap combi neren met **partitionBy** om mappaden te laten baseren op de begin-en eind datum van het segment. |Yes |
+| fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben: <br/><br/>`Data.<Guid>.txt`(Voor beeld: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |No |
+| File filter |Geef een filter op dat moet worden gebruikt om een subset van bestanden in de folderPath in plaats van alle bestanden te selecteren.<br/><br/>Toegestane waarden zijn: `*` (meerdere tekens) en `?` (één teken).<br/><br/>Voor beelden 1:`"fileFilter": "*.log"`<br/>Voor beeld 2:`"fileFilter": 2014-1-?.txt"`<br/><br/> File filter is van toepassing op een invoer-file share-gegevensset. Deze eigenschap wordt niet ondersteund met HDFS. |No |
+| partitionedBy |partitionedBy kan worden gebruikt om een dynamische folderPath op te geven, filename voor time series-gegevens. Bijvoorbeeld folderPath para meters voor elk uur aan gegevens. |No |
+| indeling | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie voor meer informatie secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en Parquet- [indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Als u bestanden wilt **kopiëren als-zich bevindt** tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over. |No |
+| compressie | Geef het type en compressie niveau voor de gegevens op. Ondersteunde typen zijn: **gzip**, **Deflate**, **bzip2**en **ZipDeflate**. Ondersteunde niveaus zijn: **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |No |
+| useBinaryTransfer |Opgeven of binaire overdrachts modus moet worden gebruikt. True voor binaire modus en ONWAAR ASCII. Standaard waarde: True. Deze eigenschap kan alleen worden gebruikt wanneer het gekoppelde type gekoppelde service van het type: FtpServer. |No |
 
 > [!NOTE]
 > bestands naam en file filter kunnen niet tegelijkertijd worden gebruikt.
@@ -267,7 +267,7 @@ Zie de sectie met [gekoppelde FTP-services](#linked-service-properties) voor ver
     }
 }
 ```
-**Azure Storage gekoppelde service**
+**Een gekoppelde Azure Storage-service**
 
 ```JSON
 {
@@ -282,7 +282,7 @@ Zie de sectie met [gekoppelde FTP-services](#linked-service-properties) voor ver
 ```
 **SFTP-invoer-gegevensset**
 
-Deze gegevensset verwijst naar de map `mysharedfolder` en het bestand `test.csv`van SFTP. Met de pijp lijn wordt het bestand naar het doel gekopieerd.
+Deze gegevensset verwijst naar de map en het bestand van SFTP `mysharedfolder` `test.csv` . Met de pijp lijn wordt het bestand naar het doel gekopieerd.
 
 Als u ' Extern ' instelt, informeert de Data Factory-service dat de gegevensset extern is voor de data factory en wordt deze niet geproduceerd door een activiteit in de data factory.
 

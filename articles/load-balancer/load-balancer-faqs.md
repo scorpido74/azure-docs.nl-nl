@@ -7,14 +7,14 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 4ae15d0898cedb0ed17dc308584769395aa819c2
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 205a4bd119a7324c4e6524a0e29d432aa57bf315
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079473"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848215"
 ---
-# <a name="frequently-asked-questions"></a>Veelgestelde vragen
+# <a name="load-balancer-frequently-asked-questions"></a>Veelgestelde vragen over Load Balancer
 
 ## <a name="what-types-of-load-balancer-exist"></a>Welke soorten Load Balancer bestaan?
 Interne load balancers die verkeer verdelen binnen een VNET en externe load balancers die verkeer van en naar een Internet verbonden eind punt balanceren. Zie [Load Balancer typen](components.md#frontend-ip-configurations)voor meer informatie. 
@@ -36,8 +36,18 @@ NAT-regels worden gebruikt om een back-end-bron op te geven voor het routeren va
 ## <a name="what-is-ip-1686312916"></a>Wat is IP-168.63.129.16?
 Het virtuele IP-adres voor de host die als Azure-infra structuur is gelabeld Load Balancer waar de Azure Health-tests afkomstig zijn. Bij het configureren van back-end-exemplaren, moeten ze verkeer van dit IP-adres toestaan om te reageren op status controles. Deze regel communiceert niet met toegang tot uw Load Balancer frontend. Als u geen gebruik maakt van de Azure Load Balancer, kunt u deze regel onderdrukken. Meer informatie over service Tags vindt u [hier](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags).
 
-## <a name="can-i-use-global-vnet-peering-with-basic-load-blancer"></a>Kan ik globale VNET-peering gebruiken met Basic Load Blancer?
+## <a name="can-i-use-global-vnet-peering-with-basic-load-balancer"></a>Kan ik globale VNET-peering gebruiken met basis Load Balancer?
 Nee. Basis Load Balancer biedt geen ondersteuning voor globale VNET-peering. U kunt in plaats daarvan een Standard Load Balancer gebruiken. Zie de [upgrade van Basic naar Standard](upgrade-basic-standard.md) -artikel voor naadloze upgrade.
+
+## <a name="how-can-i-discover-the-public-ip-that-an-azure-vm-uses"></a>Hoe kan ik het open bare IP-adres ontdekken dat een Azure-VM gebruikt?
+
+Er zijn veel manieren om het IP-adres van de open bare bron van een uitgaande verbinding te bepalen. OpenDNS biedt een service waarmee u het open bare IP-adres van uw virtuele machine kunt weer geven.
+Met de opdracht nslookup kunt u een DNS-query voor de naam myip.opendns.com verzenden naar de OpenDNS-resolver. De service retourneert het bron-IP-adres dat is gebruikt om de query te verzenden. Wanneer u de volgende query uitvoert vanaf uw virtuele machine, is het antwoord het open bare IP-adres dat voor die virtuele machine wordt gebruikt:
+
+ ```nslookup myip.opendns.com resolver1.opendns.com```
+
+## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>Hoe werken de verbindingen met Azure Storage in dezelfde regio?
+Het is niet nodig om verbinding te maken met opslag in dezelfde regio als de virtuele machine als u uitgaande verbindingen hebt via de bovenstaande scenario's. Als u dit niet wilt, gebruikt u netwerk beveiligings groepen (Nsg's) zoals hierboven is uitgelegd. Voor connectiviteit met opslag in andere regio's is uitgaande connectiviteit vereist. Houd er rekening mee dat wanneer u verbinding maakt met de opslag van een virtuele machine in dezelfde regio, het bron-IP-adres in de logboeken voor diagnostische gegevens van de opslag locatie van de interne provider is en niet het open bare IP-adres van uw virtuele machine. Als u de toegang tot uw opslag account wilt beperken tot Vm's in een of meer Virtual Network subnetten in dezelfde regio, gebruikt u [Virtual Network Service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md) en niet uw open bare IP-adres bij het configureren van de firewall van uw opslag account. Zodra service-eind punten zijn geconfigureerd, ziet u uw Virtual Network privé-IP-adres in uw logboeken voor opslag diagnose en niet het adres van de interne provider.
 
 ## <a name="next-steps"></a>Volgende stappen
 Als uw vraag hier niet wordt vermeld, kunt u met uw vraag feedback over deze pagina sturen. Hiermee maakt u een GitHub-probleem voor het product team om ervoor te zorgen dat al onze vragen van de gewaardeerde klant worden beantwoord.

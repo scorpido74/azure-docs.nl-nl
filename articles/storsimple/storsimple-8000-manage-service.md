@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267779"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847112"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>De StorSimple Apparaatbeheer-service voor StorSimple 8000 Series-apparaten implementeren
 
@@ -77,7 +77,7 @@ Voer de volgende stappen uit om een service te verwijderen.
 
     ![Zoek service die u wilt verwijderen](./media/storsimple-8000-manage-service/deletessdevman1.png)
 
-2. Hiermee gaat u naar de Blade StorSimple Apparaatbeheer service. Klik op **verwijderen**.
+2. Hiermee gaat u naar de Blade StorSimple Apparaatbeheer service. Klik op **Verwijderen**.
 
     ![Service verwijderen](./media/storsimple-8000-manage-service/deletessdevman2.png)
 
@@ -134,7 +134,7 @@ Normaal gesp roken vraagt de beheerder aan dat de service beheerder een apparaat
 
 Deze stap wordt uitgevoerd met behulp van het script op basis van Azure Resource Manager. De service beheerder kan een apparaat selecteren dat in aanmerking komt voor autorisatie. Het apparaat wordt vervolgens geautoriseerd om het wijzigings proces voor de versleutelings sleutel van de service gegevens te starten. 
 
-Ga voor meer informatie over het gebruik van het script naar [authorize-ServiceEncryptionRollover. ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Authorize-ServiceEncryptionRollover.ps1)
+Ga voor meer informatie over het gebruik van het script naar [Authorize-ServiceEncryptionRollover.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Authorize-ServiceEncryptionRollover.ps1)
 
 #### <a name="which-devices-can-be-authorized-to-change-service-data-encryption-keys"></a>Welke apparaten kunnen worden geautoriseerd om de versleutelings sleutels voor service gegevens te wijzigen?
 Een apparaat moet voldoen aan de volgende criteria voordat het kan worden geautoriseerd om de wijzigingen in de versleutelings sleutel van de service gegevens te initiëren:
@@ -156,7 +156,7 @@ Als u de seriële console van het apparaat gebruikt om verbinding te maken met d
 
 #### <a name="to-initiate-the-service-data-encryption-key-change"></a>De wijziging van de versleutelings sleutel van de service gegevens initiëren
 1. Selecteer optie 1 om u aan te melden met volledige toegang.
-2. Typ het volgende na de opdrachtprompt:
+2. Typ in de opdrachtprompt:
    
      `Invoke-HcsmServiceDataEncryptionKeyChange`
 3. Nadat de cmdlet is voltooid, krijgt u een nieuwe versleutelings sleutel voor service gegevens. Kopieer deze sleutel en sla deze op voor gebruik in stap 3 van dit proces. Deze sleutel wordt gebruikt om alle resterende apparaten bij te werken die zijn geregistreerd bij de StorSimple Manager-service.
@@ -181,7 +181,7 @@ Voer de volgende stappen uit om de service gegevens versleuteling op uw apparaat
 3. Geef de versleutelings sleutel voor service gegevens op die u hebt verkregen in [stap 2: gebruik Windows PowerShell voor StorSimple om de wijziging van de versleutelings sleutel van de service gegevens te initiëren](#to-initiate-the-service-data-encryption-key-change).
 
 #### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>De versleutelings sleutel voor service gegevens op alle 8010/8020-Cloud apparaten bijwerken
-1. Down load en stel het Power shell-script [Update-CloudApplianceServiceEncryptionKey. ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) . 
+1. Down load en Setup [Update-CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) Power shell-script. 
 2. Open Power shell en typ bij de opdracht prompt:`Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
 
 Met dit script wordt ervoor gezorgd dat de versleutelings sleutel voor service gegevens is ingesteld op alle 8010/8020-Cloud apparaten onder Apparaatbeheer.
@@ -191,23 +191,23 @@ In de Azure Portal worden alleen de StorSimple-apparaten met Update 5,0 en hoger
 
 | Bewerking                                                                                                                       | Ondersteund      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
-| Een apparaat registreren                                                                                                               | Ja            |
-| Apparaatinstellingen configureren, zoals algemeen, netwerk en beveiliging                                                                | Ja            |
-| Updates scannen, downloaden en installeren                                                                                             | Ja            |
-| Apparaat deactiveren                                                                                                               | Ja            |
-| Apparaat verwijderen                                                                                                                   | Ja            |
-| Een volume container maken, wijzigen en verwijderen                                                                                   | Nee             |
-| Een volume maken, wijzigen en verwijderen                                                                                             | Nee             |
-| Een back-upbeleid maken, wijzigen en verwijderen                                                                                      | Nee             |
-| Een hand matige back-up maken                                                                                                            | Nee             |
+| Een apparaat registreren                                                                                                               | Yes            |
+| Apparaatinstellingen configureren, zoals algemeen, netwerk en beveiliging                                                                | Yes            |
+| Updates scannen, downloaden en installeren                                                                                             | Yes            |
+| Apparaat deactiveren                                                                                                               | Yes            |
+| Apparaat verwijderen                                                                                                                   | Yes            |
+| Een volume container maken, wijzigen en verwijderen                                                                                   | No             |
+| Een volume maken, wijzigen en verwijderen                                                                                             | No             |
+| Een back-upbeleid maken, wijzigen en verwijderen                                                                                      | No             |
+| Een hand matige back-up maken                                                                                                            | No             |
 | Een geplande back-up maken                                                                                                         | Niet van toepassing |
-| Herstellen vanuit een back-upset                                                                                                        | Nee             |
-| Klonen naar een apparaat met update 3,0 en hoger <br> Op het bron apparaat wordt versie uitgevoerd vóór het bijwerken van 3,0.                                | Ja            |
-| Klonen naar een apparaat met versies voorafgaand aan update 3,0                                                                          | Nee             |
-| Failover als bron apparaat <br> (vanaf een apparaat met versie vóór het bijwerken van 3,0 naar een apparaat met update 3,0 of hoger)                                                               | Ja            |
-| Failover als doel apparaat <br> (op een apparaat met software versie vóór update 3,0)                                                                                   | Nee             |
-| Een waarschuwing wissen                                                                                                                  | Ja            |
-| Back-upbeleid, back-upcatalogus, volumes, volume containers, bewakings grafieken, taken en waarschuwingen die zijn gemaakt in de klassieke portal weer geven | Ja            |
+| Herstellen vanuit een back-upset                                                                                                        | No             |
+| Klonen naar een apparaat met update 3,0 en hoger <br> Op het bron apparaat wordt versie uitgevoerd vóór het bijwerken van 3,0.                                | Yes            |
+| Klonen naar een apparaat met versies voorafgaand aan update 3,0                                                                          | No             |
+| Failover als bron apparaat <br> (vanaf een apparaat met versie vóór het bijwerken van 3,0 naar een apparaat met update 3,0 of hoger)                                                               | Yes            |
+| Failover als doel apparaat <br> (op een apparaat met software versie vóór update 3,0)                                                                                   | No             |
+| Een waarschuwing wissen                                                                                                                  | Yes            |
+| Back-upbeleid, back-upcatalogus, volumes, volume containers, bewakings grafieken, taken en waarschuwingen die zijn gemaakt in de klassieke portal weer geven | Yes            |
 | Apparaat-controllers in-of uitschakelen                                                                                              | Ja            |
 
 

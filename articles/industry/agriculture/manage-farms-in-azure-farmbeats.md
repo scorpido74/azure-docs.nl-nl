@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 09144c4c35ab911b60931849807123608f2c3cdd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271718"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847475"
 ---
 # <a name="manage-farms"></a>Een boerderij beheren
 
@@ -33,7 +33,7 @@ Voer de volgende stappen uit:
 
 Dit zijn de twee manieren om een farm grens te definiëren:
 
-1. **Op kaart markeren**: gebruik het kaart beheer programma om de grens van de farm te tekenen en te markeren. Als u de grenzen wilt ![markeren, project](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) Farm maten en markeert u de exacte grenzen.
+1. **Op kaart markeren**: gebruik het kaart beheer programma om de grens van de farm te tekenen en te markeren. Als u de grenzen wilt markeren, ![ project Farm maten ](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) en markeert u de exacte grenzen.
 
     ![Maten van project-Farm](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
 
