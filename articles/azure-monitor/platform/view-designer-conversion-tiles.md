@@ -7,10 +7,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: f07d15521c787dfd588c285bff57616059caa2f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658623"
 ---
 # <a name="azure-monitor-view-designer-tile-conversions"></a>Conversies van de tegel Designer Azure Monitor weer geven
@@ -23,9 +22,9 @@ ms.locfileid: "77658623"
 Het opnieuw maken van de ring & lijst tegel in werkmappen omvat twee afzonderlijke visualisaties. Voor de ring deel zijn er twee opties.
 Voor beide beginnen door **query toevoegen** te selecteren en de oorspronkelijke query in de weer gave designer in de cel te plakken.
 
-**Optie 1:** **Cirkel diagram** selecteren in de **Visualization** vervolg keuzelijst visualisatie ![: cirkel diagram, visualisatie menu](media/view-designer-conversion-tiles/pie-chart.png)
+**Optie 1:** **Cirkel diagram** selecteren in de vervolg keuzelijst **visualisatie** : ![ cirkel diagram, visualisatie menu](media/view-designer-conversion-tiles/pie-chart.png)
 
-**Optie 2:** Selecteer **instellen op query** in de vervolg keuzelijst **visualisatie** en `| render piechart` Voeg deze toe aan de query:
+**Optie 2:** Selecteer **instellen op query** in de vervolg keuzelijst **visualisatie** en voeg `| render piechart` deze toe aan de query:
 
  ![Visualisatie menu](media/view-designer-conversion-tiles/set-by-query.png)
 
@@ -75,7 +74,7 @@ Er zijn twee opties voor het visualiseren van het lijn diagram
  
  ![Menu lijn diagram](media/view-designer-conversion-tiles/line-visualization.png)
 
-**Optie 2:** Selecteer **instellen op query** in de vervolg keuzelijst **visualisatie** en `| render linechart` Voeg deze toe aan de query:
+**Optie 2:** Selecteer **instellen op query** in de vervolg keuzelijst **visualisatie** en voeg `| render linechart` deze toe aan de query:
 
  ![Visualisatie menu](media/view-designer-conversion-tiles/set-by-query.png)
 
@@ -146,9 +145,9 @@ search *
 
 Er zijn twee opties voor het visualiseren van de query als een staaf diagram:
 
-**Optie 1:** **Staaf diagram** selecteren in de **Visualization** vervolg keuzelijst visualisatie ![: Barchart-visualisatie](media/view-designer-conversion-tiles/bar-visualization.png)
+**Optie 1:** **Staaf diagram** selecteren in de vervolg keuzelijst **visualisatie** : ![ Barchart-visualisatie](media/view-designer-conversion-tiles/bar-visualization.png)
  
-**Optie 2:** Selecteer **instellen op query** in de vervolg keuzelijst **visualisatie** en `| render barchart` Voeg deze toe aan de query:
+**Optie 2:** Selecteer **instellen op query** in de vervolg keuzelijst **visualisatie** en voeg `| render barchart` deze toe aan de query:
 
  ![Visualisatie menu](media/view-designer-conversion-tiles/set-by-query.png)
 

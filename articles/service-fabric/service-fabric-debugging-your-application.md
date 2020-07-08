@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: fff8a19d5643f7ce866c9eb9c57486340b6f8a50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77624143"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Foutopsporing uitvoeren in uw Service Fabric-toepassing met behulp van Visual Studio
@@ -23,7 +22,7 @@ ms.locfileid: "77624143"
 U kunt tijd en geld besparen door uw Azure Service Fabric-toepassing te implementeren en op te sporen in een cluster voor lokale computer ontwikkeling. Visual Studio 2019 of 2015 kan de toepassing implementeren in het lokale cluster en de Debugger automatisch verbinden met alle exemplaren van uw toepassing. Visual Studio moet als beheerder worden uitgevoerd om verbinding te maken met het fout opsporingsprogramma.
 
 1. Start een lokaal ontwikkel cluster door de stappen in [uw service Fabric-ontwikkel omgeving](service-fabric-get-started.md)in te stellen.
-2. Druk op **F5** of klik op **fout** > **opsporing starten**.
+2. Druk op **F5** of klik op **fout**  >  **opsporing starten**.
    
     ![Fout opsporing in een toepassing starten][startdebugging]
 3. Stel onderbrekings punten in uw code in en door loop de toepassing door te klikken op opdrachten in het menu **fout opsporing** .
@@ -56,7 +55,7 @@ U kunt tijd en geld besparen door uw Azure Service Fabric-toepassing te implemen
 ### <a name="running-a-script-as-part-of-debugging"></a>Een script uitvoeren als onderdeel van fout opsporing
 In bepaalde scenario's moet u mogelijk een script uitvoeren als onderdeel van het starten van een foutopsporingssessie (bijvoorbeeld wanneer geen standaard services worden gebruikt).
 
-In Visual Studio kunt u een bestand met de naam **Start-service. ps1** toevoegen in de map **Scripts** van het service Fabric toepassings project (. sfproj). Dit script wordt aangeroepen nadat de toepassing is gemaakt in het lokale cluster.
+In Visual Studio kunt u een bestand met de naam **Start-Service.ps1** toevoegen in de map **Scripts** van het service Fabric toepassings project (. sfproj). Dit script wordt aangeroepen nadat de toepassing is gemaakt in het lokale cluster.
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
 ms.openlocfilehash: c076b8dcea350f9ddd66977e89ce99b81f377b17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77669043"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooks voor Azure-activiteiten logboek waarschuwingen
@@ -23,7 +22,7 @@ Zie voor meer informatie over actie groepen [actie groepen maken](../../azure-mo
 
 
 ## <a name="authenticate-the-webhook"></a>De webhook verifiëren
-De webhook kan desgewenst autorisatie op basis van tokens gebruiken voor verificatie. De webhook-URI wordt opgeslagen met een token-ID, bijvoorbeeld `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`.
+De webhook kan desgewenst autorisatie op basis van tokens gebruiken voor verificatie. De webhook-URI wordt opgeslagen met een token-ID, bijvoorbeeld `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue` .
 
 ## <a name="payload-schema"></a>Payload-schema
 De JSON-nettolading die deel uitmaakt van de POST-bewerking verschilt op basis van het veld data. context. activityLog. Event source van de payload.
@@ -254,20 +253,20 @@ Zie [service Health Notifications](../../azure-monitor/platform/service-notifica
 }
 ```
 
-| Elementnaam | Beschrijving |
+| Elementnaam | Description |
 | --- | --- |
 | status |Wordt gebruikt voor metrische waarschuwingen. Altijd ingesteld op geactiveerd voor waarschuwingen voor activiteiten Logboeken. |
 | context |De context van de gebeurtenis. |
 | resourceProviderName |De resource provider van de betrokken resource. |
 | conditionType |Altijd ' gebeurtenis '. |
-| name |De naam van de waarschuwings regel. |
+| naam |De naam van de waarschuwings regel. |
 | id |De resource-ID van de waarschuwing. |
 | description |De beschrijving van de waarschuwing wordt ingesteld wanneer de waarschuwing wordt gemaakt. |
 | subscriptionId |Azure-abonnements-ID. |
 | tijdstempel |Tijdstip waarop de gebeurtenis is gegenereerd door de Azure-service die de aanvraag heeft verwerkt. |
 | resourceId |De resource-ID van de betrokken resource. |
 | resourceGroupName |De naam van de resource groep voor de betrokken resource. |
-| properties |Set `<Key, Value>` paren (dat wil zeggen `Dictionary<String, String>`) met details over de gebeurtenis. |
+| properties |Set `<Key, Value>` paren (dat wil zeggen `Dictionary<String, String>` ) met details over de gebeurtenis. |
 | gebeurtenislog |Element dat meta gegevens bevat over de gebeurtenis. |
 | autorisatie |De op rollen gebaseerde Access Control eigenschappen van de gebeurtenis. Deze eigenschappen omvatten doorgaans de actie, de rol en het bereik. |
 | category |De categorie van de gebeurtenis. Ondersteunde waarden zijn onder andere: beheer, waarschuwing, beveiliging, ServiceHealth en aanbeveling. |

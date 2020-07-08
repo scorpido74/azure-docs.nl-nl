@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 3e7dda85f1f890d5ae0eb4722c3e028b373fdcab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658214"
 ---
 # <a name="workbook-parameters"></a>Werkmap parameters
@@ -54,7 +53,7 @@ Zo ziet de werkmap eruit als Lees modus, in de stijl "pills".
 ## <a name="referencing-a-parameter"></a>Verwijzen naar een para meter
 ### <a name="via-bindings"></a>Via bindingen
 1. Voeg een besturings element query toe aan de werkmap en selecteer een Application Insights resource.
-2. Open de vervolg keuzelijst _tijds bereik_ en selecteer in `Time Range` het gedeelte para meters onderaan de optie.
+2. Open de vervolg keuzelijst _tijds bereik_ en selecteer `Time Range` in het gedeelte para meters onderaan de optie.
 3. Hiermee wordt de tijds bereik parameter gebonden aan het tijds bereik van de grafiek. Het tijds bereik van de voorbeeld query is nu de afgelopen 24 uur.
 4. Query uitvoeren om de resultaten te bekijken
 
@@ -63,7 +62,7 @@ Zo ziet de werkmap eruit als Lees modus, in de stijl "pills".
 ### <a name="in-kql"></a>In KQL
 1. Voeg een besturings element query toe aan de werkmap en selecteer een Application Insights resource.
 2. Voer in het KQL een tijd bereik filter in met behulp van de para meter:`| where timestamp {TimeRange}`
-3. Dit wordt uitgebreid naar de evaluatie tijd van `| where timestamp > ago(1d)`de query tot, dat wil zeggen de waarde voor het tijds bereik van de para meter.
+3. Dit wordt uitgebreid naar de evaluatie tijd `| where timestamp > ago(1d)` van de query tot, dat wil zeggen de waarde voor het tijds bereik van de para meter.
 4. Query uitvoeren om de resultaten te bekijken
 
     ![Afbeelding met een tijd bereik waarnaar wordt verwezen in KQL](./media/workbooks-parameters/time-in-code.png)
@@ -75,7 +74,7 @@ Zo ziet de werkmap eruit als Lees modus, in de stijl "pills".
 4. In het tekst besturings element wordt tekst weer gegeven: _het gekozen tijds bereik is afgelopen 24 uur_
 
 ## <a name="parameter-options"></a>Parameter opties
-In de sectie _in tekst_ is `label` de para meter gebruikt in plaats van de waarde. Para meters bieden verschillende dergelijke opties, afhankelijk van het type, bijvoorbeeld het tijds bereik dat waarden, labels, query's, begin, einde en korrel toestaan.
+In de sectie _in tekst_ is de `label` para meter gebruikt in plaats van de waarde. Para meters bieden verschillende dergelijke opties, afhankelijk van het type, bijvoorbeeld het tijds bereik dat waarden, labels, query's, begin, einde en korrel toestaan.
 
 Gebruik de `Previews` sectie in het deel venster _para meter bewerken_ om de uitbreidings opties voor uw para meter te bekijken:
 

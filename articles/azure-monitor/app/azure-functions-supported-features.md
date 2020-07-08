@@ -7,10 +7,9 @@ ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: cf0c97fd65f9966bf42fa22e2c8f92263952cb7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77655647"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights voor Azure Functions ondersteunde functies
@@ -31,23 +30,23 @@ Zie [afhankelijkheden](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Lo
 | &bull;Uitzonderingen                   | Ja             | Ja               | 
 | &bull;Prestatie meter items         | Ja             | Ja               |
 | &bull;Elkaar                   |                   |                   |               
-| &nbsp;&nbsp;&nbsp;&mdash;HTTP      |                 | Ja               | 
-| &nbsp;&nbsp;&nbsp;&mdash;ServiceBus|                 | Ja               | 
-| &nbsp;&nbsp;&nbsp;&mdash;EventHub  |                 | Ja               | 
-| &nbsp;&nbsp;&nbsp;&mdash;SQL       |                 | Ja               | 
+| &nbsp;&nbsp;&nbsp;&mdash;HTTP      |                 | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash;ServiceBus|                 | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash;EventHub  |                 | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash;SQL       |                 | Yes               | 
 | | | | 
 | **Ondersteunde functies**                |                   |                   |               
 | &bull;QuickPulse/LiveMetrics       | Ja             | Ja               | 
-| &nbsp;&nbsp;&nbsp;&mdash;Kanaal voor beveiligde besturing|                 | Ja               | 
+| &nbsp;&nbsp;&nbsp;&mdash;Kanaal voor beveiligde besturing|                 | Yes               | 
 | &bull;Proef                     | Ja             | Ja               | 
-| &bull;Heartbeats                   |                 | Ja               | 
+| &bull;Heartbeats                   |                 | Yes               | 
 | | | | 
 | **Correlatie**                       |                   |                   |               
-| &bull;ServiceBus                     |                   | Ja               | 
-| &bull;EventHub                       |                   | Ja               | 
+| &bull;ServiceBus                     |                   | Yes               | 
+| &bull;EventHub                       |                   | Yes               | 
 | | | | 
 | **Configureer bare**                      |                   |                   |           
-| &bull;Volledig configureerbaar.<br/>Zie [Azure functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) voor instructies.<br/>Zie [ASP.net core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) voor alle opties.               |                   | Ja                   | 
+| &bull;Volledig configureerbaar.<br/>Zie [Azure functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) voor instructies.<br/>Zie [ASP.net core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) voor alle opties.               |                   | Yes                   | 
 
 
 ## <a name="performance-counters"></a>Prestatiemeteritems

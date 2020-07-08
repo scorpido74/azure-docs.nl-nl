@@ -7,10 +7,9 @@ ms.author: bfung
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 194a2da23c8fb405c492df8f6ee173cc97fde4ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671336"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>Snapshot Debugger voor .NET-apps in azure Service Fabric, Cloud service en Virtual Machines inschakelen
@@ -25,7 +24,7 @@ Als uw toepassing wordt uitgevoerd in azure Service Fabric, Cloud service, Virtu
 
 2. Neem het [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket op in uw app.
 
-3. Aangepaste configuratie van Snapshot Debugger toegevoegd aan [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md), indien nodig. De standaard configuratie van Snapshot Debugger is grotendeels leeg en alle instellingen zijn optioneel. Hier volgt een voor beeld van een configuratie equivalent met de standaard configuratie:
+3. Als dat nodig is, is de Snapshot Debugger configuratie aan [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)aangepast. De standaard configuratie van Snapshot Debugger is grotendeels leeg en alle instellingen zijn optioneel. Hier volgt een voor beeld van een configuratie equivalent met de standaard configuratie:
 
     ```xml
     <TelemetryProcessors>
@@ -71,19 +70,19 @@ Als uw toepassing wordt uitgevoerd in azure Service Fabric, Cloud service, Virtu
 
 2. Neem het [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket op in uw app.
 
-3. Wijzig de klasse van `Startup` uw toepassing om de telemetrie-processor van Snapshot Collector toe te voegen en te configureren.
-    1. Als [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket versie 1.3.5 of hoger wordt gebruikt, voegt u de volgende using `Startup.cs`-instructies toe aan.
+3. Wijzig de klasse van uw toepassing `Startup` om de telemetrie-processor van Snapshot Collector toe te voegen en te configureren.
+    1. Als [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket versie 1.3.5 of hoger wordt gebruikt, voegt u de volgende using-instructies toe aan `Startup.cs` .
 
        ```csharp
             using Microsoft.ApplicationInsights.SnapshotCollector;
        ```
 
-       Voeg het volgende toe aan het einde van de ConfigureServices-methode `Startup` in de `Startup.cs`-klasse in.
+       Voeg het volgende toe aan het einde van de ConfigureServices-methode in de- `Startup` klasse in `Startup.cs` .
 
        ```csharp
             services.AddSnapshotCollector((configuration) => Configuration.Bind(nameof(SnapshotCollectorConfiguration), configuration));
        ```
-    2. Als [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket versie 1.3.4 of hieronder wordt gebruikt, voegt u de volgende using `Startup.cs`-instructies toe aan.
+    2. Als [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket versie 1.3.4 of hieronder wordt gebruikt, voegt u de volgende using-instructies toe aan `Startup.cs` .
 
        ```csharp
        using Microsoft.ApplicationInsights.SnapshotCollector;
@@ -92,7 +91,7 @@ Als uw toepassing wordt uitgevoerd in azure Service Fabric, Cloud service, Virtu
        using Microsoft.ApplicationInsights.Extensibility;
        ```
     
-       Voeg de volgende `SnapshotCollectorTelemetryProcessorFactory` klasse toe `Startup` aan de klasse.
+       Voeg de volgende `SnapshotCollectorTelemetryProcessorFactory` klasse toe aan de `Startup` klasse.
     
        ```csharp
        class Startup
@@ -112,7 +111,7 @@ Als uw toepassing wordt uitgevoerd in azure Service Fabric, Cloud service, Virtu
            }
            ...
         ```
-        Voeg de `SnapshotCollectorConfiguration` Services `SnapshotCollectorTelemetryProcessorFactory` en toe aan de opstart pijplijn:
+        Voeg de `SnapshotCollectorConfiguration` Services en toe `SnapshotCollectorTelemetryProcessorFactory` aan de opstart pijplijn:
     
         ```csharp
            // This method gets called by the runtime. Use this method to add services to the container.
@@ -129,7 +128,7 @@ Als uw toepassing wordt uitgevoerd in azure Service Fabric, Cloud service, Virtu
        }
        ```
 
-4. Als dat nodig is, kunt u de Snapshot Debugger configuratie aanpassen door een sectie SnapshotCollectorConfiguration toe te voegen aan appSettings. json. Alle instellingen in de Snapshot Debugger configuratie zijn optioneel. Hier volgt een voor beeld van een configuratie equivalent met de standaard configuratie:
+4. Als dat nodig is, kunt u de Snapshot Debugger configuratie aanpassen door een sectie SnapshotCollectorConfiguration toe te voegen aan appsettings.jsop. Alle instellingen in de Snapshot Debugger configuratie zijn optioneel. Hier volgt een voor beeld van een configuratie equivalent met de standaard configuratie:
 
    ```json
    {

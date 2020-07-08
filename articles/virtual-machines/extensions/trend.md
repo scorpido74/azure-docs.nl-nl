@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
 ms.openlocfilehash: cffd2eab3a616b4d16d847d0f2e1a26655f40459
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77919920"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Trend Micro diepe Security als een service op een Windows-VM installeren en configureren
@@ -57,7 +56,7 @@ Wanneer u de Blade **instellingen** van de wizard krijgt, voert u de volgende st
 ## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>Installeer de grondige beveiligings agent op een bestaande virtuele machine
 Als u de agent wilt installeren op een bestaande virtuele machine, hebt u de volgende items nodig:
 
-* De Azure PowerShell module versie 0.8.2 of nieuwer, geïnstalleerd op uw lokale computer. U kunt de versie van Azure PowerShell die u hebt geïnstalleerd controleren met behulp van de opdracht **Get-module Azure | indeling-Table versie** . Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)voor instructies en een koppeling naar de meest recente versie. Meld u aan bij uw Azure- `Add-AzureAccount`abonnement met.
+* De Azure PowerShell module versie 0.8.2 of nieuwer, geïnstalleerd op uw lokale computer. U kunt de versie van Azure PowerShell die u hebt geïnstalleerd controleren met behulp van de opdracht **Get-module Azure | indeling-Table versie** . Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)voor instructies en een koppeling naar de meest recente versie. Meld u aan bij uw Azure-abonnement met `Add-AzureAccount` .
 * De VM-agent die is geïnstalleerd op de virtuele doel machine.
 
 Controleer eerst of de VM-agent al is geïnstalleerd. Vul de naam van de Cloud service en de virtuele machine in en voer de volgende opdrachten uit op de opdracht prompt op beheerders niveau Azure PowerShell. Vervang alles binnen de aanhalings tekens, met inbegrip van de <-en > teken.

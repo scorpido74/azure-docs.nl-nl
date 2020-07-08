@@ -17,10 +17,9 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
 ms.openlocfilehash: 1f3c16e6fe1855cf7882d83e620c70d15ce3cb92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77657531"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Problemen met verwijderde meldingen in azure Notification Hubs vaststellen
@@ -116,7 +115,7 @@ Als een Push Notification Service een melding probeert af te leveren maar het ap
 
 In elke app wordt slechts één recente melding opgeslagen. Als er meerdere meldingen worden verzonden terwijl een apparaat offline is, zorgt elke nieuwe melding ervoor dat de laatste wordt verwijderd. Het *bewaren van de* nieuwste melding heet samen voegen in APNs en *samengevouwen* in FCM. (FCM gebruikt een samenvouw sleutel.) Wanneer het apparaat lange tijd offline blijft, worden meldingen die voor het apparaat zijn opgeslagen, verwijderd. Zie [overzicht van APNs] en [informatie over FCM-berichten]voor meer informatie.
 
-Met Notification Hubs kunt u een samenvoegings sleutel door geven via een HTTP-header met behulp van de algemene SendNotification-API. U kunt bijvoorbeeld voor de .NET SDK gebruiken `SendNotificationAsync`. De SendNotification-API accepteert ook HTTP-headers die worden door gegeven aan de respectieve Push Notification Service.
+Met Notification Hubs kunt u een samenvoegings sleutel door geven via een HTTP-header met behulp van de algemene SendNotification-API. U kunt bijvoorbeeld voor de .NET SDK gebruiken `SendNotificationAsync` . De SendNotification-API accepteert ook HTTP-headers die worden door gegeven aan de respectieve Push Notification Service.
 
 ## <a name="self-diagnosis-tips"></a>Tips voor zelf diagnose
 
@@ -215,7 +214,7 @@ var result = await hub.SendWindowsNativeNotificationAsync(toast);
 Console.WriteLine(result.State);
 ```
 
-Aan het einde van de uitvoering, `result.State` staat `Enqueued`er gewoon. De resultaten bieden geen inzicht in wat er is gebeurd met uw push melding.
+Aan het einde van de uitvoering, `result.State` staat er gewoon `Enqueued` . De resultaten bieden geen inzicht in wat er is gebeurd met uw push melding.
 
 Daarna kunt u de `EnableTestSend` Booleaanse eigenschap gebruiken. Gebruik de `EnableTestSend` eigenschap terwijl u initialiseert `NotificationHubClient` om een gedetailleerde status te krijgen over Push Notification Service-fouten die optreden wanneer de melding wordt verzonden. De verzend oproep heeft extra tijd nodig om te retour neren, omdat het eerst moet Notification Hubs om de melding aan de Push Notification Service te kunnen leveren.
 
@@ -244,7 +243,7 @@ The Token obtained from the Token Provider is wrong
 Dit bericht geeft aan dat de referenties die zijn geconfigureerd in Notification Hubs ongeldig zijn of dat er een probleem is met de registraties in de hub. Verwijder deze registratie en laat de client de registratie opnieuw maken voordat het bericht wordt verzonden.
 
 > [!NOTE]
-> Het gebruik van `EnableTestSend` de eigenschap is zwaar beperkt. Gebruik deze optie alleen in een ontwikkel-en test omgeving en met een beperkt aantal registraties. Debug-meldingen worden naar slechts 10 apparaten verzonden. Er is ook een limiet voor het verwerken van debug-verzen dingen, 10 per minuut.
+> Het gebruik van de `EnableTestSend` eigenschap is zwaar beperkt. Gebruik deze optie alleen in een ontwikkel-en test omgeving en met een beperkt aantal registraties. Debug-meldingen worden naar slechts 10 apparaten verzonden. Er is ook een limiet voor het verwerken van debug-verzen dingen, 10 per minuut.
 
 ### <a name="review-telemetry"></a>Telemetrie controleren
 

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 3e4a1fc3de58b8e65ab9c7a288bdf3eb37e7bae0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671967"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Metrische telemetrie: Application Insights gegevens model
@@ -33,7 +32,7 @@ Metrische waarde waarmee systeem-en proces tellers worden weer gegeven:
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | Onderhanden werk... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | gemiddelde uitvoerings tijd van aanvragen
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | Onderhanden werk... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | aantal aanvragen dat wacht op verwerking in een wachtrij
 
-## <a name="name"></a>Naam
+## <a name="name"></a>Name
 
 De naam van de metrische gegevens die u wilt weer geven in Application Insights Portal en gebruikers interface. 
 

@@ -13,10 +13,9 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 20e64e5225987a8045e406a0e8fcae098c580c61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77913375"
 ---
 # <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Stappen voor probleemoplossing die specifiek zijn voor foutscenario's voor toewijzingen in het klassieke implementatiemodel
@@ -50,7 +49,7 @@ Upgrade_VMSizeNotSupported of GeneralError
 
 Een aanvraag om de grootte van een virtuele machine of een virtuele machine of een rolinstantie toe te voegen aan een bestaande Cloud service moet worden geprobeerd op het oorspronkelijke cluster dat als host fungeert voor de bestaande Cloud service. Als u een nieuwe Cloud service maakt, kunt u met het Azure-platform een ander cluster vinden dat gratis bronnen heeft of de door u aangevraagde VM-grootte ondersteunt.
 
-**Enkele**
+**Tijdelijke oplossing**
 
 Als de fout is Upgrade_VMSizeNotSupported *, probeert u een andere VM-grootte. Als u een andere VM-grootte gebruikt, maar als u een ander virtueel IP-adres (VIP) wilt gebruiken, moet u een nieuwe Cloud service maken om de nieuwe VM te hosten en de nieuwe Cloud service toe te voegen aan het regionale virtuele netwerk waar de bestaande virtuele machines worden uitgevoerd. Als uw bestaande Cloud service geen regionaal virtueel netwerk gebruikt, kunt u nog steeds een nieuw virtueel netwerk voor de nieuwe Cloud service maken en vervolgens uw [bestaande virtuele netwerk verbinden met het nieuwe virtuele netwerk](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Meer informatie over [regionale virtuele netwerken](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 
@@ -65,7 +64,7 @@ GeneralError*
 
 Gedeeltelijke toewijzing betekent dat u een of meer, maar niet alle virtuele machines in een Cloud service hebt gestopt (toewijzing ongedaan gemaakt). Wanneer u een virtuele machine stopt (toewijzing opheffen), worden de bijbehorende resources vrijgegeven. Het opnieuw starten van de virtuele machine is gestopt (toewijzing ongedaan gemaakt) is daarom een nieuwe aanvraag voor toewijzingen. Het opnieuw starten van Vm's in een gedeeltelijk niet-toegewezen Cloud service is gelijk aan het toevoegen van Vm's aan een bestaande Cloud service. De toewijzings aanvraag moet worden geprobeerd op het oorspronkelijke cluster dat als host fungeert voor de bestaande Cloud service. Door een andere Cloud service te maken, kan het Azure-platform een ander cluster vinden dat een gratis resource heeft of die de door u aangevraagde VM-grootte ondersteunt.
 
-**Enkele**
+**Tijdelijke oplossing**
 
 Als het acceptabel is om een andere VIP te gebruiken, verwijdert u de gestopte (gespreide) Vm's (maar behoudt u de gekoppelde schijven) en voegt u de virtuele machines weer toe via een andere Cloud service. Een regionaal virtueel netwerk gebruiken om verbinding te maken met uw Cloud Services:
 
@@ -81,7 +80,7 @@ GeneralError*
 
 Bij volledige toewijzing betekent dat u alle Vm's van een Cloud service hebt gestopt (toewijzing ongedaan gemaakt). De toewijzings aanvragen voor het opnieuw opstarten van deze Vm's moeten worden geprobeerd op het oorspronkelijke cluster dat als host fungeert voor de Cloud service. Als u een nieuwe Cloud service maakt, kunt u met het Azure-platform een ander cluster vinden dat gratis bronnen heeft of de door u aangevraagde VM-grootte ondersteunt.
 
-**Enkele**
+**Tijdelijke oplossing**
 
 Als het acceptabel is om een andere VIP te gebruiken, verwijdert u de oorspronkelijke (gespreide) Vm's (niet-toegewezen virtuele machines) en verwijdert u de bijbehorende Cloud service (de gekoppelde reken resources zijn al vrijgegeven wanneer u de Vm's hebt gestopt (toewijzing opgeheven)). Maak een nieuwe Cloud service om de Vm's weer toe te voegen.
 
@@ -94,7 +93,7 @@ New_General * of New_VMSizeNotSupported *
 
 De faserings implementatie en de productie-implementatie van een Cloud service worden gehost in hetzelfde cluster. Wanneer u de tweede implementatie toevoegt, wordt de bijbehorende toewijzings aanvraag in hetzelfde cluster die als host fungeert voor de eerste implementatie uitgevoerd.
 
-**Enkele**
+**Tijdelijke oplossing**
 
 Verwijder de eerste implementatie en de oorspronkelijke Cloud service en implementeer de Cloud service opnieuw. Deze actie kan de eerste implementatie in een cluster met voldoende beschik bare bronnen in beslag brengen voor zowel implementaties als in een cluster die ondersteuning biedt voor de VM-grootten die u hebt aangevraagd.
 
@@ -107,7 +106,7 @@ New_General * of New_VMSizeNotSupported *
 
 Alle reken resources die zijn toegewezen aan een affiniteits groep, zijn gekoppeld aan één cluster. Nieuwe reken resource-aanvragen in die affiniteits groep worden geprobeerd in hetzelfde cluster waarin de bestaande resources worden gehost. Dit is waar, ongeacht of de nieuwe resources zijn gemaakt via een nieuwe Cloud service of via een bestaande Cloud service.
 
-**Enkele**
+**Tijdelijke oplossing**
 
 Als een affiniteits groep niet nodig is, gebruik dan geen affiniteits groep of Groepeer uw reken resources in meerdere affiniteits groepen.
 
@@ -120,7 +119,7 @@ New_General * of New_VMSizeNotSupported *
 
 Voordat regionale virtuele netwerken werden geïntroduceerd, moest u een virtueel netwerk koppelen aan een affiniteits groep. Als gevolg hiervan worden reken resources die in een affiniteits groep zijn geplaatst, gebonden aan dezelfde beperkingen zoals beschreven in de sectie ' toewijzings scenario: Affiniteits groep (VM/service nabijheid) '. De reken resources zijn gekoppeld aan één cluster.
 
-**Enkele**
+**Tijdelijke oplossing**
 
 Als u geen affiniteits groep nodig hebt, maakt u een nieuw regionaal virtueel netwerk voor de nieuwe resources die u toevoegt en verbindt u vervolgens [uw bestaande virtuele netwerk met het nieuwe virtuele netwerk](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Meer informatie over [regionale virtuele netwerken](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 

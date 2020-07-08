@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
 ms.openlocfilehash: 32b482607827ee4420e39b1936586d64f9ea3139
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77651378"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Toegang tot en beheer van IBM DB2-resources met behulp van Azure Logic Apps
@@ -82,12 +81,12 @@ Als u de verbinding wilt instellen, geeft u deze verbindings Details op wanneer 
 
 | Eigenschap | Vereist | Beschrijving |
 |----------|----------|-------------|
-| **Verbinding maken via on-premises gateway** | Nee | Geldt alleen voor on-premises verbindingen. |
-| **Verbindings naam** | Ja | De naam voor de verbinding, bijvoorbeeld ' MyLogicApp-DB2-Connection ' |
-| **Server** | Ja | Het adres of de alias dubbele poort nummer voor uw DB2-Server, bijvoorbeeld ' myDB2server.cloudapp.net:50000 ' <p><p>**Opmerking**: deze waarde is een teken reeks die een TCP/IP-adres of alias vertegenwoordigt, hetzij in IPv4-of IPv6-notatie, gevolgd door een dubbele punt en een TCP/IP-poort nummer. |
-| **Enddatabase** | Ja | De naam voor uw data base <p><p>**Opmerking**: deze waarde is een teken reeks die een DRDA relationele database naam vertegenwoordigt (RDBNAM): <p>-DB2 voor z/O'S accepteert een 16-byte teken reeks waarbij de data base de locatie ' IBM DB2 for z/OS ' wordt genoemd. <br>-DB2 voor ik accepteert een teken reeks van 18 bytes waarbij de data base de relationele data base ' IBM DB2 for i ' wordt genoemd. <br>-DB2 voor LUW accepteert een 8-byte teken reeks. |
-| **Gebruikers** | Ja | Uw gebruikers naam voor de data base <p><p>**Opmerking**: deze waarde is een teken reeks waarvan de lengte is gebaseerd op de specifieke Data Base: <p><p>-DB2 voor z/O'S accepteert een 8-byte teken reeks. <br>-DB2 voor ik accepteert een teken reeks van 10 bytes. <br>-DB2 voor Linux of UNIX accepteert een 8-byte teken reeks. <br>-DB2 voor Windows accepteert een teken reeks van 30 bytes. |
-| **Wachtwoord** | Ja | Uw wacht woord voor de data base |
+| **Verbinding maken via on-premises gateway** | No | Geldt alleen voor on-premises verbindingen. |
+| **Verbindingsnaam** | Yes | De naam voor de verbinding, bijvoorbeeld ' MyLogicApp-DB2-Connection ' |
+| **Server** | Yes | Het adres of de alias dubbele poort nummer voor uw DB2-Server, bijvoorbeeld ' myDB2server.cloudapp.net:50000 ' <p><p>**Opmerking**: deze waarde is een teken reeks die een TCP/IP-adres of alias vertegenwoordigt, hetzij in IPv4-of IPv6-notatie, gevolgd door een dubbele punt en een TCP/IP-poort nummer. |
+| **Database** | Yes | De naam voor uw data base <p><p>**Opmerking**: deze waarde is een teken reeks die een DRDA relationele database naam vertegenwoordigt (RDBNAM): <p>-DB2 voor z/O'S accepteert een 16-byte teken reeks waarbij de data base de locatie ' IBM DB2 for z/OS ' wordt genoemd. <br>-DB2 voor ik accepteert een teken reeks van 18 bytes waarbij de data base de relationele data base ' IBM DB2 for i ' wordt genoemd. <br>-DB2 voor LUW accepteert een 8-byte teken reeks. |
+| **Gebruikersnaam** | Yes | Uw gebruikers naam voor de data base <p><p>**Opmerking**: deze waarde is een teken reeks waarvan de lengte is gebaseerd op de specifieke Data Base: <p><p>-DB2 voor z/O'S accepteert een 8-byte teken reeks. <br>-DB2 voor ik accepteert een teken reeks van 10 bytes. <br>-DB2 voor Linux of UNIX accepteert een 8-byte teken reeks. <br>-DB2 voor Windows accepteert een teken reeks van 30 bytes. |
+| **Wachtwoord** | Yes | Uw wacht woord voor de data base |
 ||||
 
 Bijvoorbeeld:
@@ -102,14 +101,14 @@ Voordat u een verbinding maakt, moet uw on-premises gegevens gateway al zijn ge�
 
 | Eigenschap | Vereist | Beschrijving |
 |----------|----------|-------------|
-| **Verbinding maken via on-premises gateway** | Ja | Is van toepassing wanneer u een on-premises verbinding wilt en de on-premises verbindings eigenschappen wilt weer geven. |
-| **Verbindings naam** | Ja | De naam voor de verbinding, bijvoorbeeld ' MyLogicApp-DB2-Connection ' | 
-| **Server** | Ja | Het adres of de alias dubbele poort nummer voor uw DB2-Server, bijvoorbeeld "myDB2server: 50.000" <p><p>**Opmerking**: deze waarde is een teken reeks die een TCP/IP-adres of alias vertegenwoordigt, hetzij in IPv4-of IPv6-notatie, gevolgd door een dubbele punt en een TCP/IP-poort nummer. |
-| **Enddatabase** | Ja | De naam voor uw data base <p><p>**Opmerking**: deze waarde is een teken reeks die een DRDA relationele database naam vertegenwoordigt (RDBNAM): <p>-DB2 voor z/O'S accepteert een 16-byte teken reeks waarbij de data base de locatie ' IBM DB2 for z/OS ' wordt genoemd. <br>-DB2 voor ik accepteert een teken reeks van 18 bytes waarbij de data base de relationele data base ' IBM DB2 for i ' wordt genoemd. <br>-DB2 voor LUW accepteert een 8-byte teken reeks. |
-| **Verificatie** | Ja | Het verificatie type voor de verbinding, bijvoorbeeld ' Basic ' <p><p>**Opmerking**: Selecteer deze waarde in de lijst, die basis of Windows (Kerberos) omvat. |
-| **Gebruikers** | Ja | Uw gebruikers naam voor de data base <p><p>**Opmerking**: deze waarde is een teken reeks waarvan de lengte is gebaseerd op de specifieke Data Base: <p><p>-DB2 voor z/O'S accepteert een 8-byte teken reeks. <br>-DB2 voor ik accepteert een teken reeks van 10 bytes. <br>-DB2 voor Linux of UNIX accepteert een 8-byte teken reeks. <br>-DB2 voor Windows accepteert een teken reeks van 30 bytes. |
-| **Wachtwoord** | Ja | Uw wacht woord voor de data base |
-| **#B0** | Ja | De naam voor de geïnstalleerde on-premises gegevens gateway <p><p>**Opmerking**: Selecteer deze waarde uit de lijst, die alle geïnstalleerde gegevens gateways binnen uw Azure-abonnement en resource groep bevat. |
+| **Verbinding maken via on-premises gateway** | Yes | Is van toepassing wanneer u een on-premises verbinding wilt en de on-premises verbindings eigenschappen wilt weer geven. |
+| **Verbindingsnaam** | Yes | De naam voor de verbinding, bijvoorbeeld ' MyLogicApp-DB2-Connection ' | 
+| **Server** | Yes | Het adres of de alias dubbele poort nummer voor uw DB2-Server, bijvoorbeeld "myDB2server: 50.000" <p><p>**Opmerking**: deze waarde is een teken reeks die een TCP/IP-adres of alias vertegenwoordigt, hetzij in IPv4-of IPv6-notatie, gevolgd door een dubbele punt en een TCP/IP-poort nummer. |
+| **Database** | Yes | De naam voor uw data base <p><p>**Opmerking**: deze waarde is een teken reeks die een DRDA relationele database naam vertegenwoordigt (RDBNAM): <p>-DB2 voor z/O'S accepteert een 16-byte teken reeks waarbij de data base de locatie ' IBM DB2 for z/OS ' wordt genoemd. <br>-DB2 voor ik accepteert een teken reeks van 18 bytes waarbij de data base de relationele data base ' IBM DB2 for i ' wordt genoemd. <br>-DB2 voor LUW accepteert een 8-byte teken reeks. |
+| **Verificatie** | Yes | Het verificatie type voor de verbinding, bijvoorbeeld ' Basic ' <p><p>**Opmerking**: Selecteer deze waarde in de lijst, die basis of Windows (Kerberos) omvat. |
+| **Gebruikersnaam** | Yes | Uw gebruikers naam voor de data base <p><p>**Opmerking**: deze waarde is een teken reeks waarvan de lengte is gebaseerd op de specifieke Data Base: <p><p>-DB2 voor z/O'S accepteert een 8-byte teken reeks. <br>-DB2 voor ik accepteert een teken reeks van 10 bytes. <br>-DB2 voor Linux of UNIX accepteert een 8-byte teken reeks. <br>-DB2 voor Windows accepteert een teken reeks van 30 bytes. |
+| **Wachtwoord** | Yes | Uw wacht woord voor de data base |
+| **#B0** | Yes | De naam voor de geïnstalleerde on-premises gegevens gateway <p><p>**Opmerking**: Selecteer deze waarde uit de lijst, die alle geïnstalleerde gegevens gateways binnen uw Azure-abonnement en resource groep bevat. |
 ||||
 
 Bijvoorbeeld:
@@ -141,7 +140,7 @@ Vouw de actie **tabellen ophalen** uit.
 
 ## <a name="get-row"></a>Rij ophalen
 
-Als u één record in een DB2-database tabel wilt ophalen, gebruikt u de actie **rij ophalen** in uw logische app. Met deze actie wordt een `SELECT WHERE` DB2-instructie uitgevoerd, `SELECT FROM AREA WHERE AREAID = '99999'`bijvoorbeeld.
+Als u één record in een DB2-database tabel wilt ophalen, gebruikt u de actie **rij ophalen** in uw logische app. Met deze actie wordt een DB2 `SELECT WHERE` -instructie uitgevoerd, bijvoorbeeld `SELECT FROM AREA WHERE AREAID = '99999'` .
 
 1. Als u geen DB2-acties eerder hebt gebruikt in uw logische app, leest u de stappen in de sectie [DB2-actie toevoegen-tabellen ophalen](#add-db2-action) , maar voegt u in plaats daarvan de actie **rij ophalen** toe, en keert u vervolgens terug om door te gaan.
 
@@ -153,8 +152,8 @@ Als u één record in een DB2-database tabel wilt ophalen, gebruikt u de actie *
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Tabelnaam** | Ja | De tabel met de gewenste record, zoals ' gebied ' in dit voor beeld |
-   | **Gebieds-ID** | Ja | De ID voor de record die u wilt, zoals ' 99999 ' in dit voor beeld |
+   | **Tabelnaam** | Yes | De tabel met de gewenste record, zoals ' gebied ' in dit voor beeld |
+   | **Gebieds-ID** | Yes | De ID voor de record die u wilt, zoals ' 99999 ' in dit voor beeld |
    ||||
 
    ![Tabel selecteren](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
@@ -182,7 +181,7 @@ Vouw de actie **rij ophalen** uit.
 
 ## <a name="get-rows"></a>Rijen ophalen
 
-Als u alle records in een DB2-database tabel wilt ophalen, gebruikt u de actie **rijen ophalen** in uw logische app. Met deze actie wordt een `SELECT` DB2-instructie uitgevoerd, `SELECT * FROM AREA`bijvoorbeeld.
+Als u alle records in een DB2-database tabel wilt ophalen, gebruikt u de actie **rijen ophalen** in uw logische app. Met deze actie wordt een DB2 `SELECT` -instructie uitgevoerd, bijvoorbeeld `SELECT * FROM AREA` .
 
 1. Als u geen DB2-acties eerder hebt gebruikt in uw logische app, leest u de stappen in de sectie [DB2-actie toevoegen-tabellen ophalen](#add-db2-action) , maar voegt u in plaats daarvan de actie **rijen ophalen** toe, en keert u vervolgens terug om door te gaan.
 
@@ -219,7 +218,7 @@ Vouw de actie **rijen ophalen** uit.
 
 ## <a name="insert-row"></a>Rij invoegen
 
-Als u één record wilt toevoegen aan een tabel met een DB2-Data Base, gebruikt u de actie **rij invoegen** in uw logische app. Met deze actie wordt een `INSERT` DB2-instructie uitgevoerd, `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`bijvoorbeeld.
+Als u één record wilt toevoegen aan een tabel met een DB2-Data Base, gebruikt u de actie **rij invoegen** in uw logische app. Met deze actie wordt een DB2 `INSERT` -instructie uitgevoerd, bijvoorbeeld `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)` .
 
 1. Als u geen DB2-acties eerder hebt gebruikt in uw logische app, leest u de stappen in de sectie [DB2-actie toevoegen-tabellen ophalen](#add-db2-action) , maar voegt u in plaats daarvan de actie **rij invoegen** toe en keert u vervolgens terug om door te gaan.
 
@@ -233,10 +232,10 @@ Als u één record wilt toevoegen aan een tabel met een DB2-Data Base, gebruikt 
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Tabelnaam** | Ja | De tabel waar de record moet worden toegevoegd, zoals ' gebied ' |
-   | **Gebieds-ID** | Ja | De ID voor het gebied dat moet worden toegevoegd, zoals "99999" |
-   | **Beschrijving van gebied** | Ja | De beschrijving voor het gebied dat moet worden toegevoegd, zoals ' gebied 99999 ' |
-   | **Regio-ID** | Ja | De ID voor de toe te voegen regio, bijvoorbeeld "102" |
+   | **Tabelnaam** | Yes | De tabel waar de record moet worden toegevoegd, zoals ' gebied ' |
+   | **Gebieds-ID** | Yes | De ID voor het gebied dat moet worden toegevoegd, zoals "99999" |
+   | **Beschrijving van gebied** | Yes | De beschrijving voor het gebied dat moet worden toegevoegd, zoals ' gebied 99999 ' |
+   | **Regio-ID** | Yes | De ID voor de toe te voegen regio, bijvoorbeeld "102" |
    |||| 
 
    Bijvoorbeeld:
@@ -266,7 +265,7 @@ Vouw de actie **rij invoegen** uit.
 
 ## <a name="update-row"></a>Rij bijwerken
 
-Als u één record in een DB2-database tabel wilt bijwerken, gebruikt u de actie **rij bijwerken** in uw logische app. Met deze actie wordt een `UPDATE` DB2-instructie uitgevoerd, `UPDATE AREA SET AREAID = '99999', AREADESC = 'Updated 99999', REGIONID = 102)`bijvoorbeeld.
+Als u één record in een DB2-database tabel wilt bijwerken, gebruikt u de actie **rij bijwerken** in uw logische app. Met deze actie wordt een DB2 `UPDATE` -instructie uitgevoerd, bijvoorbeeld `UPDATE AREA SET AREAID = '99999', AREADESC = 'Updated 99999', REGIONID = 102)` .
 
 1. Als u geen DB2-acties eerder hebt gebruikt in uw logische app, leest u de stappen in de sectie [DB2-actie toevoegen-tabellen ophalen](#add-db2-action) , maar voegt u in plaats daarvan de actie **rij bijwerken** toe en keert u vervolgens terug om door te gaan.
 
@@ -280,11 +279,11 @@ Als u één record in een DB2-database tabel wilt bijwerken, gebruikt u de actie
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Tabelnaam** | Ja | De tabel waar de record moet worden bijgewerkt, bijvoorbeeld ' gebied ' |
-   | **Rij-ID** | Ja | De ID voor de record die moet worden bijgewerkt, bijvoorbeeld "99999" |
-   | **Gebieds-ID** | Ja | De nieuwe gebieds-ID, zoals ' 99999 ' |
-   | **Beschrijving van gebied** | Ja | De beschrijving van het nieuwe gebied, zoals "bijgewerkt 99999" |
-   | **Regio-ID** | Ja | De nieuwe regio-ID, bijvoorbeeld "102" |
+   | **Tabelnaam** | Yes | De tabel waar de record moet worden bijgewerkt, bijvoorbeeld ' gebied ' |
+   | **Rij-ID** | Yes | De ID voor de record die moet worden bijgewerkt, bijvoorbeeld "99999" |
+   | **Gebieds-ID** | Yes | De nieuwe gebieds-ID, zoals ' 99999 ' |
+   | **Beschrijving van gebied** | Yes | De beschrijving van het nieuwe gebied, zoals "bijgewerkt 99999" |
+   | **Regio-ID** | Yes | De nieuwe regio-ID, bijvoorbeeld "102" |
    ||||
 
    Bijvoorbeeld:
@@ -314,7 +313,7 @@ Vouw de actie **rij bijwerken** uit.
 
 ## <a name="delete-row"></a>Rij verwijderen
 
-Als u één record uit een DB2-database tabel wilt verwijderen, gebruikt u de actie **rij verwijderen** in uw logische app. Met deze actie wordt een `DELETE` DB2-instructie uitgevoerd, `DELETE FROM AREA WHERE AREAID = '99999'`bijvoorbeeld.
+Als u één record uit een DB2-database tabel wilt verwijderen, gebruikt u de actie **rij verwijderen** in uw logische app. Met deze actie wordt een DB2 `DELETE` -instructie uitgevoerd, bijvoorbeeld `DELETE FROM AREA WHERE AREAID = '99999'` .
 
 1. Als u geen DB2-acties eerder hebt gebruikt in uw logische app, leest u de stappen in de sectie [DB2-actie toevoegen-tabellen ophalen](#add-db2-action) , maar voegt u in plaats daarvan de actie **rij verwijderen** toe en keert u vervolgens terug om door te gaan.
 
@@ -328,8 +327,8 @@ Als u één record uit een DB2-database tabel wilt verwijderen, gebruikt u de ac
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Tabelnaam** | Ja | De tabel waar de record moet worden verwijderd, zoals ' gebied ' |
-   | **Rij-ID** | Ja | De ID voor de record die moet worden verwijderd, bijvoorbeeld "99999" |
+   | **Tabelnaam** | Yes | De tabel waar de record moet worden verwijderd, zoals ' gebied ' |
+   | **Rij-ID** | Yes | De ID voor de record die moet worden verwijderd, bijvoorbeeld "99999" |
    ||||
 
    Bijvoorbeeld:

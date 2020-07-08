@@ -4,10 +4,9 @@ description: Een nieuwe toepassing bewaken met een nieuwe instrumentatiesleutel
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.openlocfilehash: 395e8d667985318f4a084428c6fd4c395ee8b956
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671440"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Een SharePoint-site met Application Insights bewaken
@@ -39,7 +38,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 </script>
 ```
 
-Voeg het script vlak vóór de &lt;/Head&gt; -tag van elke pagina die u wilt bijhouden. Als uw website een basis pagina heeft, kunt u het script daar plaatsen. In een ASP.NET MVC-project plaatst u deze bijvoorbeeld in View\Shared\_Layout.cshtml
+Voeg het script vlak vóór de &lt; /Head- &gt; tag van elke pagina die u wilt bijhouden. Als uw website een basis pagina heeft, kunt u het script daar plaatsen. In een ASP.NET MVC-project plaatst u deze bijvoorbeeld in View\Shared\_Layout.cshtml
 
 Het script bevat de instrumentatiesleutel die de telemetrie naar uw Application Insights-resource stuurt.
 
@@ -51,7 +50,7 @@ Bekijk de basispagina en bewerk deze met SharePoint Designer of een andere edito
 
 ![](./media/sharepoint/03-master.png)
 
-Voeg de code toe vlak voor de tag </head>. 
+Voeg de code toe vlak voor de </head> Tag. 
 
 ![](./media/sharepoint/04-code.png)
 

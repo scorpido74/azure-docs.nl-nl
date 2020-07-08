@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 02/27/2020
 ms.author: spelluru
 ms.openlocfilehash: dda2fd98c4c0d330059156a5ec00baa97ffaf627
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77921059"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Bericht bezorging Event Grid en probeer het opnieuw
@@ -117,7 +116,7 @@ Alle andere codes die zich niet in de bovenstaande set (200-204) bevinden, worde
 | ------------|----------------|
 | 400 ongeldige aanvraag | Na 5 minuten of meer opnieuw proberen (Deadletter direct bij het instellen van Deadletter) |
 | 401 niet gemachtigd | Opnieuw proberen na 5 minuten of langer |
-| 403 verboden | Opnieuw proberen na 5 minuten of langer |
+| 403 Verboden | Opnieuw proberen na 5 minuten of langer |
 | 404 Niet gevonden | Opnieuw proberen na 5 minuten of langer |
 | 408 Time-out van aanvraag | Opnieuw proberen na twee minuten of langer |
 | de 413-aanvraag entiteit is te groot | Na 10 seconden of meer opnieuw proberen (Deadletter onmiddellijk als Deadletter is ingesteld) |

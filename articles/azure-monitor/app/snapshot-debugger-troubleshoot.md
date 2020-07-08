@@ -6,10 +6,9 @@ author: brahmnes
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 485f35ed249ab7f6bbb987d8c79afe20287cd25a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671406"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a>Problemen oplossen met het inschakelen van Application Insights Snapshot Debugger of het weer geven van moment opnamen
@@ -30,7 +29,7 @@ Als het probleem hiermee niet is opgelost, raadpleegt u de volgende hand matige 
 
 ## <a name="verify-the-instrumentation-key"></a>De instrumentatie sleutel controleren
 
-Zorg ervoor dat u de juiste instrumentatie sleutel gebruikt in de gepubliceerde toepassing. Normaal gesp roken wordt de instrumentatie sleutel gelezen uit het bestand ApplicationInsights. config. Controleer of de waarde gelijk is aan de instrumentatie sleutel voor de Application Insights bron die u in de portal ziet.
+Zorg ervoor dat u de juiste instrumentatie sleutel gebruikt in de gepubliceerde toepassing. Normaal gesp roken wordt de instrumentatie sleutel gelezen uit het ApplicationInsights.config-bestand. Controleer of de waarde gelijk is aan de instrumentatie sleutel voor de Application Insights bron die u in de portal ziet.
 
 ## <a name="preview-versions-of-net-core"></a>Preview-versies van .NET core
 Als de toepassing gebruikmaakt van een preview-versie van .NET core en Snapshot Debugger is ingeschakeld via het [deel venster Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) in de portal, wordt Snapshot debugger mogelijk niet gestart. Volg de instructies in [enable snapshot debugger voor andere omgevingen](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) eerst om het [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket met de toepassing toe te voegen, naast het inschakelen ***van*** het [deel venster Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json).
@@ -42,7 +41,7 @@ Als Snapshot Debugger is ingeschakeld via het [deel venster Application Insights
 
 ## <a name="check-the-uploader-logs"></a>Raadpleeg de uploader-logboeken
 
-Nadat een moment opname is gemaakt, wordt er een mini dump bestand (. dmp) gemaakt op de schijf. Met een afzonderlijk Uploader-proces wordt dit bestand met de mini dump gemaakt en geüpload, samen met eventuele gekoppelde PDBs, om Snapshot Debugger opslag te Application Insights. Nadat het mini maal is geüpload, wordt het verwijderd van de schijf. De logboek bestanden voor het Uploader-proces worden op schijf bewaard. In een App Service omgeving kunt u deze logboeken vinden in `D:\Home\LogFiles`. Gebruik de kudu-beheer site voor App Service om deze logboek bestanden te vinden.
+Nadat een moment opname is gemaakt, wordt er een mini dump bestand (. dmp) gemaakt op de schijf. Met een afzonderlijk Uploader-proces wordt dit bestand met de mini dump gemaakt en geüpload, samen met eventuele gekoppelde PDBs, om Snapshot Debugger opslag te Application Insights. Nadat het mini maal is geüpload, wordt het verwijderd van de schijf. De logboek bestanden voor het Uploader-proces worden op schijf bewaard. In een App Service omgeving kunt u deze logboeken vinden in `D:\Home\LogFiles` . Gebruik de kudu-beheer site voor App Service om deze logboek bestanden te vinden.
 
 1. Open uw App Service-toepassing in de Azure Portal.
 2. Klik op **geavanceerde hulp middelen**of zoek naar **kudu**.
@@ -81,8 +80,8 @@ SnapshotUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c443
 > [!NOTE]
 > Het bovenstaande voor beeld is van versie 1.2.0 van het pakket micro soft. ApplicationInsights. SnapshotCollector NuGet. In eerdere versies wordt het Uploader-proces aangeroepen `MinidumpUploader.exe` en wordt het logboek minder gedetailleerd beschreven.
 
-In het vorige voor beeld is `c12a605e73c44346a984e00000000000`de instrumentatie sleutel. Deze waarde moet overeenkomen met de instrumentatie sleutel voor uw toepassing.
-Het mini dump is gekoppeld aan een moment opname met `139e411a23934dc0b9ea08a626db16c5`de id. U kunt deze ID later gebruiken om de bijbehorende telemetrie voor uitzonde ringen in Application Insights Analytics te vinden.
+In het vorige voor beeld is de instrumentatie sleutel `c12a605e73c44346a984e00000000000` . Deze waarde moet overeenkomen met de instrumentatie sleutel voor uw toepassing.
+Het mini dump is gekoppeld aan een moment opname met de ID `139e411a23934dc0b9ea08a626db16c5` . U kunt deze ID later gebruiken om de bijbehorende telemetrie voor uitzonde ringen in Application Insights Analytics te vinden.
 
 De uploader scant elke 15 minuten op nieuwe PDBs. Hier volgt een voorbeeld:
 
@@ -97,7 +96,7 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
     DateTime=2018-03-09T01:47:19.4614027Z
 ```
 
-Voor toepassingen die _niet_ in app service worden gehost, bevinden de uploader-logboeken zich in dezelfde map `%TEMP%\Dumps\<ikey>` als de `<ikey>` minidumps: (waarbij de instrumentatie sleutel is).
+Voor toepassingen die _niet_ in app service worden gehost, bevinden de uploader-logboeken zich in dezelfde map als de minidumps: `%TEMP%\Dumps\<ikey>` (waarbij `<ikey>` de instrumentatie sleutel is).
 
 ## <a name="troubleshooting-cloud-services"></a>Problemen met Cloud Services oplossen
 Voor rollen in Cloud Services is de tijdelijke standaardmap mogelijk te klein voor de mini dump bestanden, waardoor moment opnamen verloren zijn gegaan.
@@ -107,14 +106,14 @@ Maxi maal twee gelijktijdige moment opnamen toestaan.
 Als uw toepassing bijvoorbeeld gebruikmaakt van 1 GB van het totale aantal werk sets, moet u ervoor zorgen dat er ten minste 2 GB schijf ruimte is om moment opnamen op te slaan.
 Volg deze stappen om de functie van de Cloud service te configureren met een toegewezen lokale resource voor moment opnamen.
 
-1. Voeg een nieuwe lokale resource aan uw Cloud service toe door het bestand met de Cloud service definition (. csdef) te bewerken. In het volgende voor beeld wordt een `SnapshotStore` resource met de naam 5 GB gedefinieerd.
+1. Voeg een nieuwe lokale resource aan uw Cloud service toe door het bestand met de Cloud service definition (. csdef) te bewerken. In het volgende voor beeld wordt een resource met de naam `SnapshotStore` 5 GB gedefinieerd.
    ```xml
    <LocalResources>
      <LocalStorage name="SnapshotStore" cleanOnRoleRecycle="false" sizeInMB="5120" />
    </LocalResources>
    ```
 
-2. Wijzig de opstart code van uw rol om een omgevings variabele toe te voegen die verwijst naar de `SnapshotStore` lokale resource. Voor werk rollen moet de code worden toegevoegd aan de methode van `OnStart` uw rol:
+2. Wijzig de opstart code van uw rol om een omgevings variabele toe te voegen die verwijst naar de `SnapshotStore` lokale resource. Voor werk rollen moet de code worden toegevoegd aan de methode van uw rol `OnStart` :
    ```csharp
    public override bool OnStart()
    {
@@ -122,7 +121,7 @@ Volg deze stappen om de functie van de Cloud service te configureren met een toe
        return base.OnStart();
    }
    ```
-   Voor webrollen (ASP.NET) moet de code worden toegevoegd aan de methode van `Application_Start` uw webtoepassing:
+   Voor webrollen (ASP.NET) moet de code worden toegevoegd aan de methode van uw webtoepassing `Application_Start` :
    ```csharp
    using Microsoft.WindowsAzure.ServiceRuntime;
    using System;
@@ -140,7 +139,7 @@ Volg deze stappen om de functie van de Cloud service te configureren met een toe
    }
    ```
 
-3. Werk het bestand ApplicationInsights. config van uw rol bij om de locatie van de tijdelijke map te overschrijven die wordt gebruikt door`SnapshotCollector`
+3. Werk het ApplicationInsights.config-bestand van uw rol bij om de locatie van de tijdelijke map te overschrijven die wordt gebruikt door`SnapshotCollector`
    ```xml
    <TelemetryProcessors>
     <Add Type="Microsoft.ApplicationInsights.SnapshotCollector.SnapshotCollectorTelemetryProcessor, Microsoft.ApplicationInsights.SnapshotCollector">
@@ -165,11 +164,11 @@ Als een geschikte map niet kan worden gevonden, wordt door Snapshot Collector ee
 
 Als het kopiëren mislukt, Snapshot Collector een `ShadowCopyFailed` fout gemeld.
 
-Als de uploader niet kan worden gestart, meldt `UploaderCannotStartFromShadowCopy` snapshot Collector een fout. De hoofd tekst van het bericht bevat `System.UnauthorizedAccessException`vaak. Deze fout treedt meestal op omdat de toepassing wordt uitgevoerd met een account met beperkte machtigingen. Het account heeft toestemming om naar de map Shadow Copy te schrijven, maar is niet gemachtigd om code uit te voeren.
+Als de uploader niet kan worden gestart, meldt Snapshot Collector een `UploaderCannotStartFromShadowCopy` fout. De hoofd tekst van het bericht bevat vaak `System.UnauthorizedAccessException` . Deze fout treedt meestal op omdat de toepassing wordt uitgevoerd met een account met beperkte machtigingen. Het account heeft toestemming om naar de map Shadow Copy te schrijven, maar is niet gemachtigd om code uit te voeren.
 
 Omdat deze fouten doorgaans optreden tijdens het opstarten, worden ze meestal gevolgd door een `ExceptionDuringConnect` fout bericht met de melding _' Uploader is niet gestart '._
 
-Als u deze fouten wilt omzeilen, kunt u de map voor schaduw kopieën hand `ShadowCopyFolder` matig opgeven via de configuratie optie. Bijvoorbeeld met behulp van ApplicationInsights. config:
+Als u deze fouten wilt omzeilen, kunt u de map voor schaduw kopieën hand matig opgeven via de `ShadowCopyFolder` configuratie optie. Bijvoorbeeld met behulp van ApplicationInsights.config:
 
    ```xml
    <TelemetryProcessors>
@@ -181,7 +180,7 @@ Als u deze fouten wilt omzeilen, kunt u de map voor schaduw kopieën hand `Shado
    </TelemetryProcessors>
    ```
 
-Of als u gebruikmaakt van appSettings. json met een .NET core-toepassing:
+Of, als u gebruikmaakt van appsettings.jsmet een .NET core-toepassing:
 
    ```json
    {

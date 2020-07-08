@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.subservice: alerts
 ms.openlocfilehash: b75bda626f887f1224c1b0f18a80887983a2367d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77665303"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>Gedrag van SMS-waarschuwingen in actie groepen
@@ -30,7 +29,7 @@ Een SMS-ontvanger die is geconfigureerd als onderdeel van een actie groep ontvan
 * De kortenaam van de actie groep waaraan deze waarschuwing is verzonden
 * Titel van de waarschuwing
 
-| REPLY | Beschrijving |
+| REPLY | Description |
 | ----- | ----------- |
 | SCHA`<Action Group Short name>` | Schakelt verdere SM'S uit van de actie groep |
 | KUNT`<Action Group Short name>` | Hiermee schakelt u SMS opnieuw in voor de actie groep |

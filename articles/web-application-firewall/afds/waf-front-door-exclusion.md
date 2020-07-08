@@ -8,10 +8,9 @@ ms.date: 02/25/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 6ed382e88700e4ecd7f8de20a2c8da7ed3c13566
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77925928"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Web Application firewall (WAF) met uitsluitings lijsten voor de front-deur service 
@@ -20,10 +19,10 @@ Soms kan Web Application firewall (WAF) een aanvraag blok keren die u wilt toest
 ## <a name="configure-exclusion-lists-using-the-azure-portal"></a>Uitsluitings lijsten configureren met behulp van de Azure Portal
 **Uitsluitingen beheren** is toegankelijk vanuit de WAF-portal onder **beheerde regels**
 
-![Uitsluitings](../media/waf-front-door-exclusion/exclusion1.png)
-![exclusion_add beheren](../media/waf-front-door-exclusion/exclusion2.png)
+![Uitsluitings ](../media/waf-front-door-exclusion/exclusion1.png)
+ ![ exclusion_add beheren](../media/waf-front-door-exclusion/exclusion2.png)
 
- Een voor beeld van een ![uitsluitings lijst: exclusion_define beheren](../media/waf-front-door-exclusion/exclusion3.png)
+ Een voor beeld van een uitsluitings lijst: ![ exclusion_define beheren](../media/waf-front-door-exclusion/exclusion3.png)
 
 In dit voor beeld wordt de waarde in het veld voor de *gebruikers* header uitgesloten. Een geldige aanvraag kan het *gebruikers* veld bevatten dat een teken reeks bevat die een SQL-injectie regel activeert. U kunt de para meter *gebruiker* in dit geval uitsluiten, zodat de regel WAF niets in het veld evalueert.
 

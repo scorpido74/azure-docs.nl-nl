@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
 ms.openlocfilehash: 75c65cf9f76e711a3aeed764de8b92ed619bad2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77666940"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Virtuele Hyper-V-machine capaciteit plannen met de Capaciteit en prestaties oplossing (afgeschaft)
@@ -39,12 +38,12 @@ De oplossing:
 
 De volgende tabel beschrijft de verbonden bronnen die worden ondersteund door deze oplossing.
 
-| Verbonden bron | Ondersteuning | Beschrijving |
+| Verbonden bron | Ondersteuning | Description |
 |---|---|---|
-| [Windows-agents](../../azure-monitor/platform/agent-windows.md) | Ja | De oplossing verzamelt informatie over capaciteits-en prestatie gegevens van Windows-agents. |
-| [Linux-agents](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nee    | De oplossing verzamelt geen gegevens over de capaciteits-en prestatie gegevens van direct Linux-agents.|
-| [SCOM-beheer groep](../../azure-monitor/platform/om-agents.md) | Ja |De oplossing verzamelt capaciteits-en prestatie gegevens van agents in een verbonden SCOM-beheer groep. Er is geen rechtstreekse verbinding van de SCOM-agent naar Log Analytics vereist.|
-| [Azure-opslag account](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Nee | Azure Storage omvat geen capaciteits-en prestatie gegevens.|
+| [Windows-agents](../../azure-monitor/platform/agent-windows.md) | Yes | De oplossing verzamelt informatie over capaciteits-en prestatie gegevens van Windows-agents. |
+| [Linux-agents](../../azure-monitor/learn/quick-collect-linux-computer.md) | No    | De oplossing verzamelt geen gegevens over de capaciteits-en prestatie gegevens van direct Linux-agents.|
+| [SCOM-beheer groep](../../azure-monitor/platform/om-agents.md) | Yes |De oplossing verzamelt capaciteits-en prestatie gegevens van agents in een verbonden SCOM-beheer groep. Er is geen rechtstreekse verbinding van de SCOM-agent naar Log Analytics vereist.|
+| [Azure-opslag account](../../azure-monitor/platform/collect-azure-metrics-logs.md) | No | Azure Storage omvat geen capaciteits-en prestatie gegevens.|
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -88,7 +87,7 @@ Klik op de tegel Capaciteit en prestaties om het Capaciteit en prestaties dash b
 - **Hosts**
     - **CPU-gebruik** van de host Toont een grafische trend van het CPU-gebruik van hostcomputers en een lijst van hosts, op basis van de geselecteerde tijds periode. Beweeg de muis aanwijzer over het lijn diagram om details weer te geven voor een specifiek punt in de tijd. Klik op de grafiek om meer details te bekijken in zoeken in Logboeken. Klik op een hostnaam om zoeken in Logboeken te openen en Details van CPU-teller weer te geven voor gehoste Vm's.
     - **Geheugen gebruik** van de host Toont een grafische trend van het geheugen gebruik van hostcomputers en een lijst van hosts, op basis van de geselecteerde tijds periode. Beweeg de muis aanwijzer over het lijn diagram om details weer te geven voor een specifiek punt in de tijd. Klik op de grafiek om meer details te bekijken in zoeken in Logboeken. Klik op een hostnaam om zoeken in Logboeken te openen en Details van geheugen teller weer te geven voor gehoste Vm's.
-- **Virtuele machines**
+- **Virtual Machines**
     - **CPU-gebruik van VM** Toont een grafische trend van het CPU-gebruik van virtuele machines en een lijst met virtuele machines, op basis van de geselecteerde tijds periode. Beweeg de muis aanwijzer over het lijn diagram om details weer te geven voor een specifiek punt in de tijd voor de top 3 van virtuele machines. Klik op de grafiek om meer details te bekijken in zoeken in Logboeken. Klik op een VM-naam om zoeken in Logboeken te openen en Bekijk geaggregeerde CPU-teller Details voor de virtuele machine.
     - **Geheugen gebruik** van de VM Toont een grafische trend van het geheugen gebruik van virtuele machines en een lijst met virtuele machines, op basis van de geselecteerde tijds periode. Beweeg de muis aanwijzer over het lijn diagram om details weer te geven voor een specifiek punt in de tijd voor de top 3 van virtuele machines. Klik op de grafiek om meer details te bekijken in zoeken in Logboeken. Klik op een VM-naam om zoeken in Logboeken te openen en de details van het geaggregeerde geheugen item voor de virtuele machine weer te geven.
     - **Totale aantal IOPS-schijven van virtuele machine** Toont een grafische trend van de totale schijf-IOPS voor virtuele machines en een lijst met virtuele machines met de IOPS voor elke, op basis van de geselecteerde tijds periode. Beweeg de muis aanwijzer over het lijn diagram om details weer te geven voor een specifiek punt in de tijd voor de top 3 van virtuele machines. Klik op de grafiek om meer details te bekijken in zoeken in Logboeken. Klik op een VM-naam om zoeken in Logboeken te openen en Bekijk de details van de verzamelde schijf-IOPS-teller voor de virtuele machine.
@@ -117,7 +116,7 @@ Als samen vatting van de oplossing worden gegevens over capaciteit en prestaties
 De volgende tabel bevat voor beelden van zoek opdrachten in het logboek voor de capaciteits-en prestatie gegevens die door deze oplossing worden verzameld en berekend.
 
 
-| Query’s uitvoeren | Beschrijving |
+| Query’s uitvoeren | Description |
 |:--- |:--- |
 | Alle geheugen configuraties van host | Perf &#124; waarbij ObjectName = = "Capaciteit en prestaties" en CounterName = = "host assigned Memory MB" &#124; vat MB = AVG (CounterValue) door INSTANCENAME |
 | Alle VM-geheugen configuraties | Perf &#124; waarbij ObjectName = = "Capaciteit en prestaties" en CounterName = = "aan VM toegewezen geheugen MB" &#124; een samen vatting van MB = Gem (CounterValue) door INSTANCENAME |

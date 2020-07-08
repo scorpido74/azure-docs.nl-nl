@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: e5dc290a40342e0797001dde6cab90e12dd5cf39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77662175"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Geavanceerde aggregaties in Azure Monitor-logboek query's
@@ -38,9 +37,9 @@ Event
 | Computer2 | [326.105.302.301.300.102] |
 | ... | ... |
 
-`makelist`Hiermee wordt een lijst gegenereerd in de volg orde waarin er gegevens aan zijn door gegeven. Als u gebeurtenissen van oudste naar nieuwste wilt sorteren `asc` , gebruikt u in de instructie `desc`order in plaats van. 
+`makelist`Hiermee wordt een lijst gegenereerd in de volg orde waarin er gegevens aan zijn door gegeven. Als u gebeurtenissen van oudste naar nieuwste wilt sorteren, gebruikt u `asc` in de instructie order in plaats van `desc` . 
 
-Het is ook handig om een lijst met alleen unieke waarden te maken. Dit wordt een _set_ genoemd en kan worden gegenereerd met `makeset`:
+Het is ook handig om een lijst met alleen unieke waarden te maken. Dit wordt een _set_ genoemd en kan worden gegenereerd met `makeset` :
 
 ```Kusto
 Event
@@ -55,10 +54,10 @@ Event
 | Computer2 | [326.105.302.301.300.102] |
 | ... | ... |
 
-Net `makelist`als `makeset` bij beschik bare gegevens, worden ook de matrices gegenereerd op basis van de volg orde van de rijen die erin worden door gegeven.
+Net `makelist` als `makeset` bij beschik bare gegevens, worden ook de matrices gegenereerd op basis van de volg orde van de rijen die erin worden door gegeven.
 
 ## <a name="expanding-lists"></a>Lijsten uitbreiden
-De omgekeerde bewerking van `makelist` of `makeset` is `mvexpand`, die een lijst met waarden uitbreidt om rijen te scheiden. Het kan worden uitgebreid over een wille keurig aantal dynamische kolommen, zowel JSON als matrix. U kunt bijvoorbeeld de *heartbeat* -tabel controleren op oplossingen die gegevens verzenden van computers die in het afgelopen uur een heartbeat hebben verzonden:
+De omgekeerde bewerking van `makelist` of `makeset` is `mvexpand` , die een lijst met waarden uitbreidt om rijen te scheiden. Het kan worden uitgebreid over een wille keurig aantal dynamische kolommen, zowel JSON als matrix. U kunt bijvoorbeeld de *heartbeat* -tabel controleren op oplossingen die gegevens verzenden van computers die in het afgelopen uur een heartbeat hebben verzonden:
 
 ```Kusto
 Heartbeat
@@ -94,7 +93,7 @@ Heartbeat
 | ... | ... |
 
 
-U kunt vervolgens opnieuw `makelist` gebruiken om items te groeperen en deze keer zien de lijst met computers per oplossing:
+U kunt vervolgens `makelist` opnieuw gebruiken om items te groeperen en deze keer zien de lijst met computers per oplossing:
 
 ```Kusto
 Heartbeat
@@ -142,7 +141,7 @@ Heartbeat
 | Directe agent | [15, 60, 0, 55, 60, 57, 60,...] | ["2017-06-06T17:00:00.0000000 Z", "2017-06-06T18:00:00.0000000 Z", "2017-06-06T19:00:00.0000000 Z", "2017-06-06T20:00:00.0000000 Z", "2017-06-06T21:00:00.0000000 Z",...] |
 | ... | ... | ... |
 
-Het derde element van de *count_* matrix is 0 zoals verwacht, en er is een overeenkomende tijds tempel van "2017-06-06T19:00:00.0000000 z" in de _TimeGenerated_ -matrix. Het is moeilijk om deze matrix indeling te lezen. Gebruik `mvexpand` om de matrices uit te breiden en dezelfde indelings uitvoer te produceren `summarize`als gegenereerd door:
+Het derde element van de *count_* matrix is 0 zoals verwacht, en er is een overeenkomende tijds tempel van "2017-06-06T19:00:00.0000000 z" in de _TimeGenerated_ -matrix. Het is moeilijk om deze matrix indeling te lezen. Gebruik `mvexpand` om de matrices uit te breiden en dezelfde indelings uitvoer te produceren als gegenereerd door `summarize` :
 
 ```Kusto
 Heartbeat
@@ -163,7 +162,7 @@ Heartbeat
 
 
 
-## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>De resultaten beperken tot een set met elementen: `let`, `makeset`, `toscalar`,`in`
+## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>De resultaten beperken tot een set met elementen: `let` , `makeset` , `toscalar` ,`in`
 Een veelvoorkomend scenario is door de namen van bepaalde entiteiten te selecteren op basis van een set criteria en vervolgens een andere gegevensset te filteren die is ingesteld op die entiteit. U kunt bijvoorbeeld computers vinden waarvan bekend is dat deze updates bevatten en IP-adressen identificeren die op deze computers worden genoemd:
 
 

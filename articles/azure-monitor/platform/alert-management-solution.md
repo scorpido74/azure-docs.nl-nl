@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
 ms.openlocfilehash: 48a825f31a1c5f2eab2fbb71b6f030b8acb5617d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77668380"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Waarschuwingenbeheer oplossing in azure Log Analytics
@@ -41,15 +40,15 @@ Als uw System Center Operations Manager-beheer groep is verbonden met uw Log Ana
 
 Zie [Operations Manager koppelen aan Log Analytics](../../azure-monitor/platform/om-agents.md) voor meer informatie over de manier waarop uw management packs voor oplossingen worden bijgewerkt.
 
-## <a name="data-collection"></a>Gegevens verzamelen
+## <a name="data-collection"></a>Gegevensverzameling
 ### <a name="agents"></a>Agents
 De volgende tabel beschrijft de verbonden bronnen die worden ondersteund door deze oplossing.
 
-| Verbonden bron | Ondersteuning | Beschrijving |
+| Verbonden bron | Ondersteuning | Description |
 |:--- |:--- |:--- |
-| [Windows-agents](agent-windows.md) | Nee |Directe Windows-agents genereren geen waarschuwingen.  Log Analytics waarschuwingen kunnen worden gemaakt op basis van gebeurtenissen en prestatie gegevens die zijn verzameld van Windows-agents. |
-| [Linux-agents](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nee |Direct Linux-agents genereren geen waarschuwingen.  Log Analytics waarschuwingen kunnen worden gemaakt op basis van gebeurtenissen en prestatie gegevens die zijn verzameld uit Linux-agents.  Nagios-en zabbix-waarschuwingen worden verzameld van de servers waarvoor de Linux-agent is vereist. |
-| [Beheergroep System Center Operations Manager](../../azure-monitor/platform/om-agents.md) |Ja |Waarschuwingen die op Operations Manager agents worden gegenereerd, worden aan de beheer groep geleverd en vervolgens doorgestuurd naar Log Analytics.<br><br>Een directe verbinding van Operations Manager agents naar Log Analytics is niet vereist. Waarschuwings gegevens worden doorgestuurd van de beheer groep naar de Log Analytics opslag plaats. |
+| [Windows-agents](agent-windows.md) | No |Directe Windows-agents genereren geen waarschuwingen.  Log Analytics waarschuwingen kunnen worden gemaakt op basis van gebeurtenissen en prestatie gegevens die zijn verzameld van Windows-agents. |
+| [Linux-agents](../../azure-monitor/learn/quick-collect-linux-computer.md) | No |Direct Linux-agents genereren geen waarschuwingen.  Log Analytics waarschuwingen kunnen worden gemaakt op basis van gebeurtenissen en prestatie gegevens die zijn verzameld uit Linux-agents.  Nagios-en zabbix-waarschuwingen worden verzameld van de servers waarvoor de Linux-agent is vereist. |
+| [Beheergroep System Center Operations Manager](../../azure-monitor/platform/om-agents.md) |Yes |Waarschuwingen die op Operations Manager agents worden gegenereerd, worden aan de beheer groep geleverd en vervolgens doorgestuurd naar Log Analytics.<br><br>Een directe verbinding van Operations Manager agents naar Log Analytics is niet vereist. Waarschuwings gegevens worden doorgestuurd van de beheer groep naar de Log Analytics opslag plaats. |
 
 
 ### <a name="collection-frequency"></a>Verzamelingsfrequentie
@@ -63,7 +62,7 @@ Wanneer u de Waarschuwingenbeheer oplossing toevoegt aan uw Log Analytics-werk r
 
 Klik op de tegel **Waarschuwingenbeheer** om het **Waarschuwingenbeheer** dash board te openen.  Het dashboard bevat de kolommen in de volgende tabel.  Elke kolom bevat de tien belangrijkste waarschuwingen per aantal dat overeenkomt met de criteria van die kolom voor het opgegeven bereik en tijds bereik.  U kunt een zoek opdracht in het logboek uitvoeren met de volledige lijst door te klikken op **alles weer geven** onder aan de kolom of door op de kolomkop te klikken.
 
-| Kolom | Beschrijving |
+| Kolom | Description |
 |:--- |:--- |
 | Kritieke waarschuwingen |Alle waarschuwingen met de ernst kritiek gegroepeerd op waarschuwings naam.  Klik op de naam van een waarschuwing om een zoek opdracht in Logboeken uit te voeren die alle records voor die waarschuwing retourneert. |
 | Waarschuwings meldingen |Alle waarschuwingen met de ernst waarschuwing, gegroepeerd op naam van de waarschuwing.  Klik op de naam van een waarschuwing om een zoek opdracht in Logboeken uit te voeren die alle records voor die waarschuwing retourneert. |
@@ -106,7 +105,7 @@ De oplossing importeert waarschuwingen van System Center Operations Manager en m
 ## <a name="sample-log-searches"></a>Voorbeeldzoekopdrachten in logboeken
 De volgende tabel bevat voor beelden van zoek opdrachten in Logboeken voor waarschuwings records die door deze oplossing worden verzameld: 
 
-| Query’s uitvoeren | Beschrijving |
+| Query’s uitvoeren | Description |
 |:---|:---|
 | Waarschuwing &#124; waarbij hebben = = "OpsManager" en AlertSeverity = = "Error" en TimeRaised > geleden (24 uur) |Kritieke waarschuwingen die zijn opgetreden in de afgelopen 24 uur |
 | Waarschuwing &#124; waarbij AlertSeverity = = "waarschuwing" en TimeRaised > geleden (24 uur) |Waarschuwingen die in de afgelopen 24 uur zijn geactiveerd |

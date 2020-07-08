@@ -4,10 +4,9 @@ description: Log4J-of logback-traceringen zoeken in Application Insights
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.openlocfilehash: da1b76d52ab93f4d1be7196d6eb7286579481119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77657211"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Java-traceer logboeken verkennen in Application Insights
@@ -18,9 +17,9 @@ Als u logback of Log4J (v 1.2 of v 2.0) gebruikt voor tracering, kunt u uw trace
 
 ## <a name="using-the-application-insights-java-agent"></a>De Application Insights Java-Agent gebruiken
 
-Standaard legt de Application Insights Java-agent automatisch de logboek registratie vast die `WARN` op niveau en hoger wordt uitgevoerd.
+Standaard legt de Application Insights Java-agent automatisch de logboek registratie vast die op `WARN` niveau en hoger wordt uitgevoerd.
 
-U kunt de drempel waarde wijzigen van de logboek registratie die wordt `AI-Agent.xml` vastgelegd met het bestand:
+U kunt de drempel waarde wijzigen van de logboek registratie die wordt vastgelegd met het `AI-Agent.xml` bestand:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -33,7 +32,7 @@ U kunt de drempel waarde wijzigen van de logboek registratie die wordt `AI-Agent
 </ApplicationInsightsAgent>
 ```
 
-U kunt de logboek registratie van de Java Agent uitschakelen met `AI-Agent.xml` het bestand:
+U kunt de logboek registratie van de Java Agent uitschakelen met het `AI-Agent.xml` bestand:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -56,7 +55,7 @@ Volg de instructies voor het installeren [van Application INSIGHTS SDK voor Java
 *Kies de juiste methode voor uw project.*
 
 #### <a name="if-youre-using-maven"></a>Als u Maven gebruikt...
-Als uw project al is ingesteld voor het gebruik van Maven voor Build, moet u een van de volgende code fragmenten in het bestand pom. XML samen voegen.
+Als uw project al is ingesteld voor het gebruik van Maven voor Build, kunt u een van de volgende code fragmenten in uw pom.xml-bestand samen voegen.
 
 Vernieuw vervolgens de Project afhankelijkheden om de binaire bestanden te downloaden.
 
@@ -100,7 +99,7 @@ Vernieuw vervolgens de Project afhankelijkheden om de binaire bestanden te downl
 ```
 
 #### <a name="if-youre-using-gradle"></a>Als u Gradle gebruikt...
-Als uw project al is ingesteld voor het gebruik van Gradle voor Build, voegt u een van de volgende regels `dependencies` toe aan de groep in uw build. Gradle-bestand:
+Als uw project al is ingesteld voor het gebruik van Gradle voor Build, voegt u een van de volgende regels toe aan de `dependencies` groep in uw build. Gradle-bestand:
 
 Vernieuw vervolgens de Project afhankelijkheden om de binaire bestanden te downloaden.
 
@@ -126,7 +125,7 @@ Vernieuw vervolgens de Project afhankelijkheden om de binaire bestanden te downl
 #### <a name="otherwise-"></a>Of...
 Volg de richt lijnen om Application Insights Java SDK hand matig te installeren, down load het jar (nadat u op de Maven-centrale pagina hebt geklikt op de koppeling ' jar ' in de sectie downloaden) voor de juiste appender en voeg de gedownloade toevoegder jar toe aan het project.
 
-| Logger | Download | Bibliotheek |
+| Logger | Downloaden | Bibliotheek |
 | --- | --- | --- |
 | Logback |[Logback-toevoeger jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
 | Log4J v 2.0 |[Log4J v2-toevoeger jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |

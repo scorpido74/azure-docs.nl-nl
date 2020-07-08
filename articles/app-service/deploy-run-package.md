@@ -4,10 +4,9 @@ description: Implementeer het ZIP-pakket van uw app met behulp van atomisch. Ver
 ms.topic: article
 ms.date: 01/14/2020
 ms.openlocfilehash: 5cc909d79b3f5ea2b4c6a3da12bc7250addbe00c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77920719"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>Uw app rechtstreeks vanuit een ZIP-pakket uitvoeren in Azure App Service
@@ -31,7 +30,7 @@ Als u daarentegen rechtstreeks vanuit een pakket uitvoert, worden de bestanden i
 
 ## <a name="enable-running-from-package"></a>Uitvoeren vanaf pakket inschakelen
 
-Met `WEBSITE_RUN_FROM_PACKAGE` de app-instelling kan vanuit een pakket worden uitgevoerd. Als u deze wilt instellen, voert u de volgende opdracht uit met Azure CLI.
+`WEBSITE_RUN_FROM_PACKAGE`Met de app-instelling kan vanuit een pakket worden uitgevoerd. Als u deze wilt instellen, voert u de volgende opdracht uit met Azure CLI.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITE_RUN_FROM_PACKAGE="1"
@@ -47,7 +46,7 @@ De eenvoudigste manier om een pakket in uw App Service uit te voeren, is met de 
 az webapp deployment source config-zip --resource-group <group-name> --name <app-name> --src <filename>.zip
 ```
 
-Omdat de `WEBSITE_RUN_FROM_PACKAGE` app-instelling is ingesteld, wordt met deze opdracht de pakket inhoud niet uitgepakt naar de map *D:\home\site\wwwroot* van uw app. In plaats daarvan uploadt het ZIP-bestand naar *D:\home\data\SitePackages*en maakt het een *pakket naam. txt* in dezelfde map. Dit bevat onder andere het zip-pakket dat tijdens runtime moet worden geladen. Als u uw ZIP-pakket op een andere manier uploadt (zoals [FTP](deploy-ftp.md)), moet u de *D:\home\data\SitePackages* -map en het bestand *packagenaam. txt* hand matig maken.
+Omdat de `WEBSITE_RUN_FROM_PACKAGE` app-instelling is ingesteld, wordt met deze opdracht de pakket inhoud niet uitgepakt naar de map *D:\home\site\wwwroot* van uw app. In plaats daarvan uploadt het ZIP-bestand naar *D:\home\data\SitePackages*en maakt het een *packagename.txt* in dezelfde directory, die de naam bevat van het zip-pakket dat tijdens runtime wordt geladen. Als u uw ZIP-pakket op een andere manier uploadt (zoals [FTP](deploy-ftp.md)), moet u de *D:\home\data\SitePackages* -map en het *packagename.txt* bestand hand matig maken.
 
 Met deze opdracht wordt ook de app opnieuw gestart. Omdat `WEBSITE_RUN_FROM_PACKAGE` is ingesteld, app service het geüploade pakket koppelen als de alleen-lezen *wwwroot* -map en wordt de app rechtstreeks vanuit die gekoppelde map uitgevoerd.
 
@@ -55,7 +54,7 @@ Met deze opdracht wordt ook de app opnieuw gestart. Omdat `WEBSITE_RUN_FROM_PACK
 
 U kunt ook een pakket uitvoeren vanuit een externe URL, zoals Azure Blob Storage. U kunt de [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) gebruiken om pakket bestanden te uploaden naar uw Blob Storage-account. U moet een persoonlijke opslag container met een [Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) gebruiken om de app service runtime in staat te stellen om veilig toegang te krijgen tot het pakket. 
 
-Wanneer u uw bestand uploadt naar Blob-opslag en een SAS-URL voor het bestand hebt `WEBSITE_RUN_FROM_PACKAGE` , stelt u de app-instelling in op de URL. In het volgende voor beeld wordt dit gedaan met behulp van Azure CLI:
+Wanneer u uw bestand uploadt naar Blob-opslag en een SAS-URL voor het bestand hebt, stelt u de `WEBSITE_RUN_FROM_PACKAGE` app-instelling in op de URL. In het volgende voor beeld wordt dit gedaan met behulp van Azure CLI:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_RUN_FROM_PACKAGE="https://myblobstorage.blob.core.windows.net/content/SampleCoreMVCApp.zip?st=2018-02-13T09%3A48%3A00Z&se=2044-06-14T09%3A48%3A00Z&sp=rl&sv=2017-04-17&sr=b&sig=bNrVrEFzRHQB17GFJ7boEanetyJ9DGwBSV8OM3Mdh%2FM%3D"
@@ -68,7 +67,7 @@ Als u een bijgewerkt pakket met dezelfde naam naar de Blob-opslag publiceert, mo
 - Direct vanuit een pakket wordt uitgevoerd `wwwroot` , heeft het kenmerk alleen-lezen. Uw app krijgt een fout melding als wordt geprobeerd om bestanden naar deze map te schrijven.
 - TAR-en GZIP-indelingen worden niet ondersteund.
 - Deze functie is niet compatibel met de [lokale cache](overview-local-cache.md).
-- Gebruik de lokale zip-optie (`WEBSITE_RUN_FROM_PACKAGE`= 1) voor verbeterde prestaties van koud start.
+- Gebruik de lokale zip-optie (= 1) voor verbeterde prestaties van koud start `WEBSITE_RUN_FROM_PACKAGE` .
 
 ## <a name="more-resources"></a>Meer bronnen
 

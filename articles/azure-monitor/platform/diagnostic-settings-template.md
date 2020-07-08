@@ -1,5 +1,5 @@
 ---
-title: Een diagnostische instelling maken in azure met behulp van de Resource Manager-sjabloon
+title: Diagnostische instellingen in Azure maken met Resource Manager-sjabloon
 description: Diagnostische instellingen maken met een resource manager-sjabloon voor het door sturen van Azure-platform logboeken naar Azure Monitor-logboeken, Azure-opslag of Azure Event Hubs.
 author: bwren
 services: azure-monitor
@@ -8,10 +8,9 @@ ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: a2569ca3f998030680bd7dbd872d71ccd372a25d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77672426"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Diagnostische instelling maken in azure met behulp van een resource manager-sjabloon
@@ -21,7 +20,7 @@ ms.locfileid: "77672426"
 > Omdat u geen [Diagnostische instelling](diagnostic-settings.md) voor het Azure-activiteiten logboek kunt maken met behulp van Power shell of cli zoals Diagnostische instellingen voor andere Azure-resources, maakt u een resource manager-sjabloon voor het activiteiten logboek met behulp van de informatie in dit artikel en implementeert u de sjabloon met Power shell of cli.
 
 ## <a name="deployment-methods"></a>Implementatie methoden
-U kunt Resource Manager-sjablonen implementeren met een wille keurige geldige methode, waaronder Power shell en CLI. Diagnostische instellingen voor het activiteiten logboek moeten worden geïmplementeerd op `az deployment create` een abonnement met `New-AzDeployment` voor cli of voor Power shell. Diagnostische instellingen voor resource logboeken moeten worden geïmplementeerd op een `az group deployment create` resource groep met `New-AzResourceGroupDeployment` voor cli of voor Power shell.
+U kunt Resource Manager-sjablonen implementeren met een wille keurige geldige methode, waaronder Power shell en CLI. Diagnostische instellingen voor het activiteiten logboek moeten worden geïmplementeerd op een abonnement met `az deployment create` voor cli of `New-AzDeployment` voor Power shell. Diagnostische instellingen voor resource logboeken moeten worden geïmplementeerd op een resource groep met `az group deployment create` voor cli of `New-AzResourceGroupDeployment` voor Power shell.
 
 Zie [resources implementeren met Resource Manager-sjablonen en resources Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md) en [implementeren met Resource Manager-sjablonen en Azure cli](../../azure-resource-manager/templates/deploy-cli.md) voor meer informatie. 
 
@@ -144,7 +143,7 @@ Hier volgt een voor beeld van het maken van een diagnostische instelling voor ee
 ```
 
 ## <a name="activity-log"></a>Activiteitenlogboek
-Voor het Azure-activiteiten logboek voegt u een bron van `Microsoft.Insights/diagnosticSettings`het type toe. De beschik bare categorieën worden weer gegeven in [Categorieën in het activiteiten logboek](activity-log-view.md#categories-in-the-activity-log). Hieronder volgt een sjabloon waarmee alle activiteiten logboek categorieën worden verzameld voor een Log Analytics-werk ruimte, een opslag account en Event Hub.
+Voor het Azure-activiteiten logboek voegt u een bron van het type toe `Microsoft.Insights/diagnosticSettings` . De beschik bare categorieën worden weer gegeven in [Categorieën in het activiteiten logboek](activity-log-view.md#categories-in-the-activity-log). Hieronder volgt een sjabloon waarmee alle activiteiten logboek categorieën worden verzameld voor een Log Analytics-werk ruimte, een opslag account en Event Hub.
 
 
 ```json

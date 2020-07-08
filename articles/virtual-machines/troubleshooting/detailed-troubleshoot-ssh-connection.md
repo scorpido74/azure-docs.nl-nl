@@ -16,10 +16,9 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: ee6d437915f6c87ce9ef5f9c711d90793a96048c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77920124"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Gedetailleerde stappen om SSH-problemen op te lossen bij verbindingsproblemen van een Linux-VM in Azure
@@ -33,7 +32,7 @@ In het volgende diagram ziet u de onderdelen die betrokken zijn.
 De volgende stappen helpen u bij het isoleren van de oorzaak van de fout en het afnemen van oplossingen en oplossingen.
 
 1. Controleer de status van de virtuele machine in de portal.
-   Selecteer **virtuele machines** > *VM-naam*in het [Azure Portal](https://portal.azure.com).
+   Selecteer **virtuele machines**VM-naam in het [Azure Portal](https://portal.azure.com)  >  *VM name*.
 
    Het status venster voor de virtuele machine moet worden **uitgevoerd**weer gegeven. Schuif omlaag om recente activiteiten voor compute-, opslag-en netwerk bronnen weer te geven.
 
@@ -71,7 +70,7 @@ Als een van deze voor waarden van toepassing is, schakelt u de software tijdelij
 Als u verificatie via certificaat gebruikt, controleert u of u deze machtigingen hebt voor de map. ssh in uw basismap:
 
 * Chmod 700 ~/.ssh
-* Chmod 644 ~/.ssh/\*. pub
+* Chmod 644 ~/.ssh/ \* . pub
 * Chmod 600 ~/.ssh/id_rsa (of andere bestanden waarin uw persoonlijke sleutels zijn opgeslagen)
 * Chmod 644 ~/.ssh/known_hosts (bevat hosts die u via SSH hebt verbonden)
 
@@ -105,7 +104,7 @@ Als u nog geen VM in hetzelfde virtuele netwerk hebt, kunt u er eenvoudig een ma
 
 Als u een SSH-verbinding met een VM in hetzelfde virtuele netwerk kunt maken, controleert u de volgende gebieden:
 
-* **De eindpunt configuratie voor SSH-verkeer op de doel-VM.** De particuliere TCP-poort van het eind punt moet overeenkomen met de TCP-poort waarop de SSH-service op de VM luistert. (De standaard poort is 22). Controleer het SSH TCP-poort nummer in de Azure portal door **virtuele machines** > *VM naam* > **instellingen** > **eind punten**te selecteren.
+* **De eindpunt configuratie voor SSH-verkeer op de doel-VM.** De particuliere TCP-poort van het eind punt moet overeenkomen met de TCP-poort waarop de SSH-service op de VM luistert. (De standaard poort is 22). Controleer het SSH TCP-poort nummer in de Azure portal door **virtuele machines**  >  *VM naam*  >  **instellingen**  >  **eind punten**te selecteren.
 * **De ACL voor het SSH-verkeer eindpunt op de virtuele doel machine.** U kunt met een ACL het toegestane of geweigerde binnenkomende verkeer van Internet opgeven, op basis van het bron-IP-adres. Onjuist geconfigureerde Acl's kunnen binnenkomend SSH-verkeer naar het eind punt verhinderen. Controleer uw Acl's om ervoor te zorgen dat binnenkomend verkeer van de open bare IP-adressen van uw proxy of een andere Edge-Server wordt toegestaan. Zie [about Network Access Control Lists (acl's)](../../virtual-network/virtual-networks-acl.md)voor meer informatie.
 
 Als u het eind punt als een bron van het probleem wilt elimineren, verwijdert u het huidige eind punt, maakt u een ander eind punt en geeft u de SSH-naam op (TCP-poort 22 voor het open bare en particuliere poort nummer). Zie [eind punten instellen op een virtuele machine in azure](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)voor meer informatie.

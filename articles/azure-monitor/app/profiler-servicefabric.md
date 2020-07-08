@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 664d6eb377185613a1a5670daf6747b482c79d9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671610"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Live Azure Service Fabric-toepassingen met Application Insights profileren
@@ -26,11 +25,11 @@ Application Insights Profiler is opgenomen in Azure Diagnostics. U kunt de Azure
 
 Voer de volgende acties uit om uw omgeving in te stellen:
 
-1. Profiler ondersteunt .NET Framework en .net core. Als u .NET Framework gebruikt, zorg er dan voor dat u [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) of hoger gebruikt. Het is voldoende om te bevestigen dat het geïmplementeerde `Windows Server 2012 R2` besturings systeem of hoger is. Profiler ondersteunt .NET Core 2,1 en nieuwere toepassingen.
+1. Profiler ondersteunt .NET Framework en .net core. Als u .NET Framework gebruikt, zorg er dan voor dat u [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) of hoger gebruikt. Het is voldoende om te bevestigen dat het geïmplementeerde besturings systeem `Windows Server 2012 R2` of hoger is. Profiler ondersteunt .NET Core 2,1 en nieuwere toepassingen.
 
 1. Zoek naar de [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) extensie in het bestand met de implementatie sjabloon.
 
-1. Voeg de volgende `SinksConfig` sectie toe als onderliggend `WadCfg`element van. Vervang de `ApplicationInsightsProfiler` eigenschaps waarde door uw eigen Application Insights instrumentatie sleutel:  
+1. Voeg de volgende `SinksConfig` sectie toe als onderliggend element van `WadCfg` . Vervang de `ApplicationInsightsProfiler` eigenschaps waarde door uw eigen Application Insights instrumentatie sleutel:  
 
       ```json
       "SinksConfig": {

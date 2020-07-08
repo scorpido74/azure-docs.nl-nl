@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.subservice: alerts
 ms.openlocfilehash: fdf492b8f103e725046b9b1cbbd079c4d249664a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77667785"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Waarschuwings query's vastleggen in Azure Monitor
@@ -35,12 +34,12 @@ search ObjectName == "Memory"
 union * | where ObjectName == "Memory"
 ```
 
-`union` Hoewel `search` het handig is tijdens het verkennen van gegevens, het zoeken van voor waarden over het hele gegevens model, zijn ze minder efficiënt dan het gebruik van een tabel, omdat ze moeten scannen over meerdere tabellen. Omdat query's in waarschuwings regels met regel matige tussen pozen worden uitgevoerd, kan dit leiden tot buitensporige overhead bij het toevoegen van latentie aan de waarschuwing. Als gevolg van deze overhead moeten query's voor waarschuwings regels voor logboeken in azure altijd beginnen met een tabel om een duidelijk bereik te definiëren. Dit verbetert de prestaties van query's en de relevantie van de resultaten.
+Hoewel `search` `union` het handig is tijdens het verkennen van gegevens, het zoeken van voor waarden over het hele gegevens model, zijn ze minder efficiënt dan het gebruik van een tabel, omdat ze moeten scannen over meerdere tabellen. Omdat query's in waarschuwings regels met regel matige tussen pozen worden uitgevoerd, kan dit leiden tot buitensporige overhead bij het toevoegen van latentie aan de waarschuwing. Als gevolg van deze overhead moeten query's voor waarschuwings regels voor logboeken in azure altijd beginnen met een tabel om een duidelijk bereik te definiëren. Dit verbetert de prestaties van query's en de relevantie van de resultaten.
 
 ## <a name="unsupported-queries"></a>Niet-ondersteunde query's
-Vanaf 11 januari 2019, het maken of wijzigen van logboek waarschuwings regels die `search`gebruikmaken van `union` , of Opera tors worden niet ondersteund in de Azure Portal. Als u deze opera tors in een waarschuwings regel gebruikt, wordt er een fout bericht weer gegeven. Deze wijziging heeft geen invloed op bestaande waarschuwings regels en waarschuwings regels die zijn gemaakt en bewerkt met de Log Analytics-API. U moet nog steeds de waarschuwings regels wijzigen die gebruikmaken van deze typen query's om de efficiëntie te verbeteren.  
+Vanaf 11 januari 2019, het maken of wijzigen van logboek waarschuwings regels die gebruikmaken `search` van, of `union` Opera tors worden niet ondersteund in de Azure Portal. Als u deze opera tors in een waarschuwings regel gebruikt, wordt er een fout bericht weer gegeven. Deze wijziging heeft geen invloed op bestaande waarschuwings regels en waarschuwings regels die zijn gemaakt en bewerkt met de Log Analytics-API. U moet nog steeds de waarschuwings regels wijzigen die gebruikmaken van deze typen query's om de efficiëntie te verbeteren.  
 
-Het vastleggen van waarschuwings regels met behulp van [query's tussen resources](../log-query/cross-workspace-query.md) wordt niet beïnvloed door deze wijziging omdat query's `union`voor meerdere bronnen worden gebruikt, waardoor het query bereik wordt beperkt tot specifieke resources. Dit is niet gelijk aan `union *` wat niet kan worden gebruikt.  Het volgende voor beeld is geldig in een waarschuwings regel voor logboeken:
+Het vastleggen van waarschuwings regels met behulp van [query's tussen resources](../log-query/cross-workspace-query.md) wordt niet beïnvloed door deze wijziging omdat query's voor meerdere bronnen worden gebruikt `union` , waardoor het query bereik wordt beperkt tot specifieke resources. Dit is niet gelijk aan `union *` wat niet kan worden gebruikt.  Het volgende voor beeld is geldig in een waarschuwings regel voor logboeken:
 
 ```Kusto
 union 
@@ -56,7 +55,7 @@ workspace('Contoso-workspace1').Perf
 De volgende voor beelden zijn logboek query's die `search` gebruikmaken `union` van en en stappen bieden die u kunt gebruiken om deze query's te wijzigen voor gebruik met waarschuwings regels.
 
 ### <a name="example-1"></a>Voorbeeld 1
-U wilt een waarschuwings regel voor het logboek maken met behulp van de volgende query die `search`prestatie gegevens ophaalt met: 
+U wilt een waarschuwings regel voor het logboek maken met behulp van de volgende query die prestatie gegevens ophaalt met `search` : 
 
 ``` Kusto
 search * | where Type == 'Perf' and CounterName == '% Free Space' 
@@ -86,7 +85,7 @@ Perf
 
 
 ### <a name="example-2"></a>Voorbeeld 2
-U wilt een waarschuwings regel voor het logboek maken met behulp van de volgende query die `search`prestatie gegevens ophaalt met: 
+U wilt een waarschuwings regel voor het logboek maken met behulp van de volgende query die prestatie gegevens ophaalt met `search` : 
 
 ``` Kusto
 search ObjectName =="Memory" and CounterName=="% Committed Bytes In Use"  
@@ -119,7 +118,7 @@ Perf
 
 ### <a name="example-3"></a>Voorbeeld 3
 
-U wilt een waarschuwings regel voor het logboek maken met behulp van de volgende `search` query `union` waarbij zowel als informatie wordt gebruikt om prestatie gegevens op te halen: 
+U wilt een waarschuwings regel voor het logboek maken met behulp van de volgende query waarbij zowel als informatie wordt gebruikt `search` `union` om prestatie gegevens op te halen: 
 
 ``` Kusto
 search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total")  
@@ -161,7 +160,7 @@ Perf
 ``` 
 
 ### <a name="example-4"></a>Voorbeeld 4
-U wilt een waarschuwings regel voor het logboek maken met behulp van de volgende query die de resultaten `search` van twee query's samenvoegt:
+U wilt een waarschuwings regel voor het logboek maken met behulp van de volgende query die de resultaten van twee query's samenvoegt `search` :
 
 ```Kusto
 search Type == 'SecurityEvent' and EventID == '4625' 

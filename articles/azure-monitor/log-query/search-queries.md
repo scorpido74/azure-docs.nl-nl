@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/06/2018
 ms.openlocfilehash: e13f4abc37e348759e7d0b8a2f7d890c82fe0d15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77660237"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Zoek query's in Azure Monitor-logboeken
@@ -29,7 +28,7 @@ search "error"
 Hoewel ze gemakkelijk te gebruiken zijn, zijn onbereikbare query's, zoals hierboven aangegeven, niet efficiënt en kunnen ze veel irrelevante resultaten retour neren. Het is raadzaam om te zoeken in de relevante tabel of zelfs een specifieke kolom.
 
 ### <a name="table-scoping"></a>Bereik van tabel
-Als u een term in een specifieke tabel wilt doorzoeken `in (table-name)` , voegt u simpelweg toe na de **Zoek** operator:
+Als u een term in een specifieke tabel wilt doorzoeken, voegt u `in (table-name)` simpelweg toe na de **Zoek** operator:
 
 ```Kusto
 search in (Event) "error"
@@ -51,10 +50,10 @@ search in (Event) Source:"error"
 ```
 
 > [!TIP]
-> Als u in `==` plaats van `:`gebruikt, bevatten de resultaten records waarin de *bron* kolom de exacte waarde ' fout ' heeft en in dit exacte geval. Using ': ' bevat records waarbij de *bron* waarden heeft, zoals ' fout code 404 ' of ' fout '.
+> Als u `==` in plaats van gebruikt `:` , bevatten de resultaten records waarin de *bron* kolom de exacte waarde ' fout ' heeft en in dit exacte geval. Using ': ' bevat records waarbij de *bron* waarden heeft, zoals ' fout code 404 ' of ' fout '.
 
 ## <a name="case-sensitivity"></a>Hoofdletter gevoeligheid
-De term zoek opdracht is standaard hoofdletter gevoelig, dus het zoeken naar ' DNS ' kan resulteren in resultaten zoals ' DNS ', ' DNS ' of ' DNS '. Gebruik de `kind` optie voor het maken van een Zoek hoofdletter gevoelig:
+De term zoek opdracht is standaard hoofdletter gevoelig, dus het zoeken naar ' DNS ' kan resulteren in resultaten zoals ' DNS ', ' DNS ' of ' DNS '. Gebruik de optie voor het maken van een Zoek hoofdletter gevoelig `kind` :
 
 ```Kusto
 search kind=case_sensitive in (Event) "DNS"
@@ -89,7 +88,7 @@ search in (Event) "corp*.com"
 | take 100
 ```
 
-U kunt ook alles in een tabel ophalen met behulp van een Joker teken `search in (Event) *`:, maar dat is hetzelfde als het schrijven `Event`.
+U kunt ook alles in een tabel ophalen met behulp van een Joker teken: `search in (Event) *` , maar dat is hetzelfde als het schrijven `Event` .
 
 > [!TIP]
 > Hoewel u kunt gebruiken `search *` om elke kolom uit elke tabel op te halen, is het raadzaam om altijd uw query's op specifieke tabellen te bereiken. Het kan enige tijd duren voordat query's zonder bereik zijn voltooid en mogelijk te veel resultaten retour neren.

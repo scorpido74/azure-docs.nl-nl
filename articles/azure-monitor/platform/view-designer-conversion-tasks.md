@@ -7,10 +7,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 5559dac916262998d621b40757398088ec613609
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658741"
 ---
 # <a name="view-designer-to-workbooks-conversion-common-tasks"></a>Algemene taken voor de conversie van Designer naar werkmappen weer geven
@@ -40,7 +39,7 @@ Typ *time Range*in het tekstvak **parameter naam** van het menu Sidebar. Stel **
 
 Sla de para meter op in de linkerbovenhoek van het menu Sidebar. U kunt de vervolg keuzelijst standaard *uitschakelen* of een standaard waarde voor **time Range** selecteren, bijvoorbeeld *24 uur*. Selecteer **gereed bewerken**.
 
-Para meters kunnen worden gebruikt in query's door accolades {} toe te voegen rond uw parameter naam. Meer informatie over para meters vindt u in de [werkmappen-documentatie over para meters](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/Parameters/Parameters.md).
+Para meters kunnen worden gebruikt in query's door accolades toe te voegen {} rond uw parameter naam. Meer informatie over para meters vindt u in de [werkmappen-documentatie over para meters](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/Parameters/Parameters.md).
 
 ## <a name="updating-queries-with-the-timerange-parameter"></a>Query's bijwerken met de para meter time Range
 
@@ -50,7 +49,7 @@ Para meters kunnen worden gebruikt in query's door accolades {} toe te voegen ro
 
 ### <a name="option-2-update-your-log-queries"></a>Optie 2: uw logboek query's bijwerken
 
-Voeg in de query de regel toe `| where TimeGenerated {TimeRange}` : zoals in het volgende voor beeld:
+Voeg in de query de regel toe: `| where TimeGenerated {TimeRange}` zoals in het volgende voor beeld:
 
 Oorspronkelijke query
 ```KQL
@@ -118,7 +117,7 @@ Werk de vervolg keuzelijst van de **kolom renderer** naar een *Spark-gebied*.
 
 Sla de instellingen op en voer de query opnieuw uit om de tabel bij te werken zodat deze een sparkline bevat.
 
-Het resulterende raster ziet er ongeveer als volgt uit ![: voor beeld van sparkline](media/view-designer-conversion-tasks/sparkline-example.png)
+Het resulterende raster ziet er ongeveer als volgt uit: ![ voor beeld van sparkline](media/view-designer-conversion-tasks/sparkline-example.png)
 
 ## <a name="advanced-cell-settings"></a>Geavanceerde instellingen voor cellen
 Als u de weergave ontwerper wilt spie gelen, kunt u taken uitvoeren zoals het wijzigen van de grootte van werkmap cellen of het toevoegen van pincodes en externe koppelingen naar Logboeken.

@@ -4,10 +4,9 @@ description: Verminder telemetrie-verkeer door de gebeurtenissen die u niet hoef
 ms.topic: conceptual
 ms.date: 3/14/2019
 ms.openlocfilehash: 020e54132e0ca0a9f9ccf0236f94515877015637
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77659914"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Telemetrie filteren in uw Java-Web-app
@@ -27,7 +26,7 @@ De out-of-the-box filters zijn:
 
 ## <a name="setting-filters"></a>Filters instellen
 
-Voeg in ApplicationInsights. XML een `TelemetryProcessors` sectie toe, zoals in dit voor beeld:
+Voeg in ApplicationInsights.xml een sectie toe, `TelemetryProcessors` zoals in dit voor beeld:
 
 
 ```XML
@@ -190,7 +189,7 @@ Filtert logboek traceringen (geregistreerd met behulp van [TrackTrace ()](../../
 
 ### <a name="1-code-your-filter"></a>1. de code van uw filter
 
-Maak in uw code een klasse die het `TelemetryProcessor`volgende implementeert:
+Maak in uw code een klasse die het volgende implementeert `TelemetryProcessor` :
 
 ```Java
 
@@ -229,7 +228,7 @@ Maak in uw code een klasse die het `TelemetryProcessor`volgende implementeert:
 
 ### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. aanroepen van het filter in het configuratie bestand
 
-In ApplicationInsights. XML:
+In ApplicationInsights.xml:
 
 ```XML
 

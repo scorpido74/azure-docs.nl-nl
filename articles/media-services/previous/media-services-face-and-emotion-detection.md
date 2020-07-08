@@ -16,10 +16,9 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: 2d746167f993438e5fce467365844df2078c08a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77919308"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Gezichts-en Emotion detecteren met Azure Media Analytics
@@ -81,7 +80,7 @@ Wanneer u een taak met **Azure media face detector**maakt, moet u een voor inste
 ```
 
 #### <a name="attribute-descriptions"></a>Kenmerk beschrijvingen
-| Kenmerk naam | Beschrijving |
+| Kenmerk naam | Description |
 | --- | --- |
 | Modus |Snelle verwerkings snelheid, maar minder nauw keurig (standaard).|
 
@@ -156,7 +155,7 @@ Wanneer u een taak met **Azure media face detector**maakt, moet u een voor inste
 
 
 #### <a name="attribute-descriptions"></a>Kenmerk beschrijvingen
-| Kenmerk naam | Beschrijving |
+| Kenmerk naam | Description |
 | --- | --- |
 | Modus |Gezichten: alleen gezichts detectie.<br/>PerFaceEmotion: retourneert Emotion onafhankelijk voor elke gezichts detectie.<br/>AggregateEmotion: gemiddelde Emotion-waarden retour neren voor alle gezichten in het kader. |
 | AggregateEmotionWindowMs |Gebruiken als de AggregateEmotion-modus is geselecteerd. Hiermee geeft u de lengte van de video op die wordt gebruikt voor het produceren van elk samengeteld resultaat, in milliseconden. |
@@ -167,8 +166,8 @@ Hieronder vindt u de aanbevolen waarden voor het aggregatie venster en de interv
 
 || Standaard waarden (s) | Max. (n) | Min (en) |
 |--- | --- | --- | --- |
-| AggregateEmotionWindowMs |0.5 |2 |0,25|
-| AggregateEmotionIntervalMs |0.5 |1 |0,25|
+| AggregateEmotionWindowMs |0,5 |2 |0,25|
+| AggregateEmotionIntervalMs |0,5 |1 |0,25|
 
 ### <a name="json-output"></a>JSON-uitvoer
 JSON-uitvoer voor cumulatieve Emotion (afgekapt):
@@ -348,7 +347,7 @@ Het volgende programma laat zien hoe u:
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Maak en configureer een Visual Studio-project.
 
-Stel uw ontwikkel omgeving in en vul in het bestand app. config de verbindings informatie in, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
+Stel uw ontwikkel omgeving in en vul het app.config bestand in met verbindings informatie, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Voorbeeld
 

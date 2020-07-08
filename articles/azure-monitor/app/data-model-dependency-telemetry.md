@@ -5,17 +5,16 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: ba0d848904d1ba885dc53e2941953d8dfb4864cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671916"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Telemetrie van afhankelijkheid: Application Insights gegevens model
 
 Telemetrie van afhankelijkheid (in [Application Insights](../../azure-monitor/app/app-insights-overview.md)) vertegenwoordigt een interactie van het bewaakte onderdeel met een extern onderdeel, zoals SQL of een http-eind punt.
 
-## <a name="name"></a>Naam
+## <a name="name"></a>Name
 
 De naam van de opdracht die is gestart met deze afhankelijkheids aanroep. Waarde voor weinig kardinaliteit. Voor beelden zijn opgeslagen procedure naam en URL-pad sjabloon.
 
@@ -37,7 +36,7 @@ Doel site van een afhankelijkheids aanroep. Voor beelden zijn server naam, hosta
 
 ## <a name="duration"></a>Duur
 
-De duur van aanvragen in `DD.HH:MM:SS.MMMMMM`de indeling:. Moet minder dan `1000` dagen zijn.
+De duur van aanvragen in de indeling: `DD.HH:MM:SS.MMMMMM` . Moet minder dan `1000` dagen zijn.
 
 ## <a name="result-code"></a>Resultaatcode
 

@@ -4,10 +4,9 @@ description: Krijg persoonlijke meldingen over service status gebeurtenissen aan
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: def12d5e7b1b93b8370cd7be61538fca53531ae1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77654134"
 ---
 # <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Azure service Health-waarschuwingen verzenden met OpsGenie met behulp van webhooks
@@ -29,7 +28,7 @@ Dit artikel laat u zien hoe u Azure service Health-waarschuwingen kunt instellen
 
 1.  Vul de andere velden in, zoals **ontvangers**, **ingeschakeld**en **waarschuwingen onderdrukken**.
 
-1.  Kopieer de integratie- **URL**en sla deze op. deze moet `apiKey` al zijn toegevoegd aan het einde.
+1.  Kopieer de integratie- **URL**en sla deze op. deze moet al zijn `apiKey` toegevoegd aan het einde.
 
     ![De integratie-URL in OpsGenie](./media/webhook-alerts/opsgenie-integration-url.png)
 

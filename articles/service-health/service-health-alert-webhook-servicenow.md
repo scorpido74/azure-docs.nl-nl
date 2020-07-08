@@ -4,10 +4,9 @@ description: Krijg persoonlijke meldingen over service status gebeurtenissen aan
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: 3daae05aabff571010d043cf5602847e95ea29f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77654100"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Azure service Health-waarschuwingen verzenden met ServiceNow met behulp van webhooks
@@ -26,7 +25,7 @@ In dit artikel leest u hoe u Azure service Health Alerts integreert met ServiceN
  
     ![De knop Nieuw script REST API in ServiceNow](./media/webhook-alerts/servicenow-new-button.png)
 
-1.  Voeg een **naam** toe aan uw rest API en stel de **API-id** in op `azureservicehealth`.
+1.  Voeg een **naam** toe aan uw rest API en stel de **API-id** in op `azureservicehealth` .
 
 1.  Selecteer **Indienen**.
 
@@ -36,12 +35,12 @@ In dit artikel leest u hoe u Azure service Health Alerts integreert met ServiceN
 
     ![Het tabblad resource in ServiceNow](./media/webhook-alerts/servicenow-resources-tab.png)
 
-1.  **Geef** uw nieuwe resource `event` een naam en wijzig de **HTTP-methode** in `POST`.
+1.  **Geef** uw nieuwe resource een naam `event` en wijzig de **HTTP-methode** in `POST` .
 
 1.  Voeg in de sectie **script** de volgende Java script-code toe:
 
     >[!NOTE]
-    >U moet de `<secret>`waarde,`<group>`en `<email>` in het onderstaande script bijwerken.
+    >U moet de `<secret>` `<group>` waarde, en `<email>` in het onderstaande script bijwerken.
     >* `<secret>`moet een wille keurige teken reeks zijn, zoals een GUID
     >* `<group>`moet de ServiceNow-groep waaraan u het incident wilt toewijzen
     >* `<email>`moet de specifieke persoon waaraan u het incident wilt toewijzen (optioneel)
@@ -131,7 +130,7 @@ In dit artikel leest u hoe u Azure service Health Alerts integreert met ServiceN
     })(request, response);
     ```
 
-1.  Schakel op het tabblad Beveiliging het selectie vakje **verificatie vereist** en selecteer **verzenden**in. `<secret>` Met deze instelling wordt deze API beveiligd.
+1.  Schakel op het tabblad Beveiliging het selectie vakje **verificatie vereist** en selecteer **verzenden**in. Met `<secret>` deze instelling wordt deze API beveiligd.
 
     ![Het selectie vakje ' authenticatie vereist ' in ServiceNow](./media/webhook-alerts/servicenow-resource-settings.png)
 

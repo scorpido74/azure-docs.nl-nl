@@ -7,10 +7,9 @@ author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
 ms.openlocfilehash: 6ac610d7dcf9849b6b439741957684867b9d01aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77660747"
 ---
 # <a name="expressroute-monitor"></a>Monitor voor ExpressRoute
@@ -32,7 +31,7 @@ Voor de servers in azure die worden gebruikt voor bewaking via Netwerkprestatiem
 Zie [netwerk beveiligings groepen](../../virtual-network/manage-network-security-group.md)voor meer informatie over nsg's. 
 
 >[!NOTE]
-> Voordat u verdergaat met deze stap, installeert u de on-premises Server Agent en de Azure Server Agent en voert u het Power shell-script EnableRules. ps1 uit. 
+> Voordat u verdergaat met deze stap, installeert u de on-premises Server Agent en de Azure Server Agent en voert u het EnableRules.ps1 Power shell-script uit. 
 
  
 ### <a name="discover-expressroute-peering-connections"></a>ExpressRoute-peering-verbindingen detecteren 
@@ -109,7 +108,7 @@ Netwerkprestatiemeter helpt u bij het vaststellen van verschillende verbindings 
 
 U kunt de meldings codes bekijken en waarschuwingen instellen via **LogAnalytics**. Op de pagina **Diagnostische gegevens over NPM** ziet u beschrijvingen voor elk geactiveerde diagnostische berichten.
 
-| Meldings code (Logboeken) | Beschrijving |
+| Meldings code (Logboeken) | Description |
 | --- | --- |
 | 5501 | Kan niet door de secundaire verbinding van het ExpressRoute-circuit bladeren |
 | 5502 | Kan niet door de primaire verbinding van het ExpressRoute-circuit bladeren |

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
 ms.openlocfilehash: c1622ef16155206d779c6d703fc7da568d233e7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77664776"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Oplossing VMWare-bewaking (afgeschaft) in Azure Monitor
@@ -40,10 +39,10 @@ Maak een virtuele machine van het Linux-besturings systeem om alle syslog-gegeve
    ![syslog-stroom](./media/vmware/diagram.png)
 
 ### <a name="configure-syslog-collection"></a>Syslog-verzameling configureren
-1. Het door sturen van syslog instellen voor VSphere. Zie [syslog configureren op ESXi 5,0 en hoger (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)voor gedetailleerde informatie over het instellen van syslog-forwarding. Ga naar de **ESXi-configuratie** > **Software** > **Geavanceerde instellingen** > **syslog**.
+1. Het door sturen van syslog instellen voor VSphere. Zie [syslog configureren op ESXi 5,0 en hoger (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)voor gedetailleerde informatie over het instellen van syslog-forwarding. Ga naar de **ESXi-configuratie**  >  **Software**  >  **Geavanceerde instellingen**  >  **syslog**.
    ![vsphereconfig](./media/vmware/vsphere1.png)  
 1. Voeg in het veld *syslog. Global. logHost* uw Linux-server en het poort nummer *1514*toe. Bijvoorbeeld `tcp://hostname:1514` of `tcp://123.456.789.101:1514`
-1. Open de ESXi host-firewall voor syslog. **ESXi Host Configuration** > **Software** > -**beveiligings profiel** > **firewall** en open **Eigenschappen**.  
+1. Open de ESXi host-firewall voor syslog. **ESXi**  >  **Software**  >  **Beveiligings profiel**  >  **Firewall** en open **Eigenschappen**.  
 
     ![vspherefw](./media/vmware/vsphere2.png)  
 
@@ -56,15 +55,15 @@ Maak een virtuele machine van het Linux-besturings systeem om alle syslog-gegeve
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
-1. Start de Log Analytics-agent voor Linux opnieuw `sudo /opt/microsoft/omsagent/bin/service_control restart`op door uit te voeren.
-1. Test de connectiviteit tussen de Linux-server en de ESXi-host met `nc` behulp van de opdracht op de ESXi-host. Bijvoorbeeld:
+1. Start de Log Analytics-agent voor Linux opnieuw op door uit te voeren `sudo /opt/microsoft/omsagent/bin/service_control restart` .
+1. Test de connectiviteit tussen de Linux-server en de ESXi-host met behulp van de `nc` opdracht op de ESXi-host. Bijvoorbeeld:
 
     ```
     [root@ESXiHost:~] nc -z 123.456.789.101 1514
     Connection to 123.456.789.101 1514 port [tcp/*] succeeded!
     ```
 
-1. Voer in de Azure Portal een logboek query uit voor `VMware_CL`. Wanneer Azure Monitor de syslog-gegevens verzamelt, behoudt deze de indeling syslog. In de portal worden bepaalde specifieke velden vastgelegd, zoals *hostname* en *Procesnaam*.  
+1. Voer in de Azure Portal een logboek query uit voor `VMware_CL` . Wanneer Azure Monitor de syslog-gegevens verzamelt, behoudt deze de indeling syslog. In de portal worden bepaalde specifieke velden vastgelegd, zoals *hostname* en *Procesnaam*.  
 
     ![type](./media/vmware/type.png)  
 
@@ -133,7 +132,7 @@ Eén ESXi-host genereert meerdere logboeken op basis van hun processen. De VMWar
 
 U kunt verder inzoomen door te klikken op een ESXi-host of een gebeurtenis type.
 
-Wanneer u op een ESXi-hostnaam klikt, ziet u informatie van die ESXi-host. Als u de resultaten van het gebeurtenis type wilt beperken, voegt `“ProcessName_s=EVENT TYPE”` u deze toe aan uw zoek query. U kunt **proces** naam selecteren in het zoek filter. Zo beperkt u de informatie voor u.
+Wanneer u op een ESXi-hostnaam klikt, ziet u informatie van die ESXi-host. Als u de resultaten van het gebeurtenis type wilt beperken, voegt u deze toe aan `“ProcessName_s=EVENT TYPE”` uw zoek query. U kunt **proces** naam selecteren in het zoek filter. Zo beperkt u de informatie voor u.
 
 ![oefeningen](./media/vmware/eventhostdrilldown.png)
 
@@ -188,9 +187,9 @@ Er kunnen meerdere redenen zijn:
 * De virtuele machine met Log Analytics agent is niet correct ingesteld. Voer de volgende stappen uit om dit te testen:
 
   1. Log Analytics luistert naar poort 1514. Voer de volgende opdracht uit om te controleren of deze is geopend:`netstat -a | grep 1514`
-  1. U ziet dat de `1514/tcp` poort geopend is. Als dat niet het geval is, controleert u of de omsagent juist is geïnstalleerd. Als u de poort gegevens niet ziet, is de syslog-poort niet geopend op de VM.
+  1. U ziet dat de poort `1514/tcp` geopend is. Als dat niet het geval is, controleert u of de omsagent juist is geïnstalleerd. Als u de poort gegevens niet ziet, is de syslog-poort niet geopend op de VM.
 
-    a. Controleer of de Log Analytics agent wordt uitgevoerd met behulp `ps -ef | grep oms`van. Als de service niet wordt uitgevoerd, start u het proces door de opdracht uit te voeren`sudo /opt/microsoft/omsagent/bin/service_control start`
+    a. Controleer of de Log Analytics agent wordt uitgevoerd met behulp van `ps -ef | grep oms` . Als de service niet wordt uitgevoerd, start u het proces door de opdracht uit te voeren`sudo /opt/microsoft/omsagent/bin/service_control start`
 
      b. Open het `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf`-bestand.
 

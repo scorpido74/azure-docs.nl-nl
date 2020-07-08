@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: 44368ab90abd189c6a8a0792494828c87142eb20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77672392"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>Gegevens verzamelen van de Azure Diagnostics-extensie naar Azure Monitor-logboeken
@@ -19,18 +18,18 @@ Azure Diagnostics-extensie is een [agent in azure monitor](agents-overview.md) d
 > [!NOTE]
 > De Log Analytics-agent in Azure Monitor is doorgaans de voorkeurs methode voor het verzamelen van gegevens van het gast besturingssysteem in Azure Monitor Logboeken. Zie [overzicht van de Azure monitor agents](agents-overview.md) voor een gedetailleerde vergelijking van de agents.
 
-## <a name="supported-data-types"></a>Ondersteunde gegevens typen
+## <a name="supported-data-types"></a>Ondersteunde gegevenstypen
 Met de Azure Diagnostics-extensie worden gegevens opgeslagen in een Azure Storage-account. Voor Azure Monitor logboeken voor het verzamelen van deze gegevens moet het zich op de volgende locaties bevinden:
 
 | Logboek type | Resourcetype | Locatie |
 | --- | --- | --- |
-| IIS-logboeken |Virtuele machines <br> Webrollen <br> Werk rollen |wad-IIS-logboek bestanden (Blob Storage) |
-| Syslog |Virtuele machines |LinuxsyslogVer2v0 (Table Storage) |
+| IIS-logboeken |Virtual Machines <br> Webrollen <br> Werk rollen |wad-IIS-logboek bestanden (Blob Storage) |
+| Syslog |Virtual Machines |LinuxsyslogVer2v0 (Table Storage) |
 | Operationele gebeurtenissen Service Fabric |Service Fabric knooppunten |WADServiceFabricSystemEventTable |
 | Service Fabric betrouw bare actor gebeurtenissen |Service Fabric knooppunten |WADServiceFabricReliableActorEventTable |
 | Service Fabric betrouw bare service gebeurtenissen |Service Fabric knooppunten |WADServiceFabricReliableServiceEventTable |
-| Windows-gebeurtenis logboeken |Service Fabric knooppunten <br> Virtuele machines <br> Webrollen <br> Werk rollen |WADWindowsEventLogsTable (Table Storage) |
-| Windows ETW-logboeken |Service Fabric knooppunten <br> Virtuele machines <br> Webrollen <br> Werk rollen |WADETWEventTable (Table Storage) |
+| Windows-gebeurtenis logboeken |Service Fabric knooppunten <br> Virtual Machines <br> Webrollen <br> Werk rollen |WADWindowsEventLogsTable (Table Storage) |
+| Windows ETW-logboeken |Service Fabric knooppunten <br> Virtual Machines <br> Webrollen <br> Werk rollen |WADETWEventTable (Table Storage) |
 
 ## <a name="data-types-not-supported"></a>Gegevens typen worden niet ondersteund
 

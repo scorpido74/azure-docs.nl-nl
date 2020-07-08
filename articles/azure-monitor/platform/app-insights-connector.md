@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
 ms.openlocfilehash: c143d8aa24d3479f4619ea2c220d4a0c593f9cb1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77665150"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights-connector-beheer oplossing (afgeschaft)
@@ -42,12 +41,12 @@ Wanneer u de oplossing gebruikt, kunt u het volgende doen:
 
 In tegens telling tot de meeste andere Log Analytics oplossingen, worden er geen gegevens verzameld voor de Application Insights-connector door agents. Alle gegevens die door de oplossing worden gebruikt, zijn rechtstreeks afkomstig van Azure.
 
-| Verbonden bron | Ondersteund | Beschrijving |
+| Verbonden bron | Ondersteund | Description |
 | --- | --- | --- |
-| [Windows-agents](../../azure-monitor/platform/agent-windows.md) | Nee | De oplossing verzamelt geen gegevens van Windows-agents. |
-| [Linux-agents](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nee | De oplossing verzamelt geen gegevens van Linux-agents. |
-| [SCOM-beheer groep](../../azure-monitor/platform/om-agents.md) | Nee | De oplossing verzamelt geen gegevens van agents in een verbonden SCOM-beheer groep. |
-| [Azure-opslag account](collect-azure-metrics-logs.md) | Nee | De oplossing verzamelt geen gegevens uit Azure Storage. |
+| [Windows-agents](../../azure-monitor/platform/agent-windows.md) | No | De oplossing verzamelt geen gegevens van Windows-agents. |
+| [Linux-agents](../../azure-monitor/learn/quick-collect-linux-computer.md) | No | De oplossing verzamelt geen gegevens van Linux-agents. |
+| [SCOM-beheer groep](../../azure-monitor/platform/om-agents.md) | No | De oplossing verzamelt geen gegevens van agents in een verbonden SCOM-beheer groep. |
+| [Azure-opslag account](collect-azure-metrics-logs.md) | No | De oplossing verzamelt geen gegevens uit Azure Storage. |
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -95,9 +94,9 @@ Het dash board bevat de Blades die in de tabel worden weer gegeven. Elke blade b
 | Toepassingen-aantal toepassingen | Toont het aantal toepassingen in toepassings bronnen. Hierin worden ook de toepassings namen en voor elk het aantal toepassings records weer gegeven. Klik op het nummer om een zoek opdracht voor logboeken uit te voeren voor<code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  Klik op de naam van een toepassing om een logboek zoekopdracht uit te voeren voor de toepassing waarin toepassings records per host worden weer gegeven, records per type telemetrie en alle gegevens op type (op basis van de laatste dag). |
 | Gegevens volume – hosts die gegevens verzenden | Toont het aantal computers waarop de gegevens worden verzonden. Hierin worden ook de hosts en het aantal records van de computer voor elke host weer gegeven. Klik op het nummer om een zoek opdracht voor logboeken uit te voeren voor<code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> Klik op de naam van een computer om een logboek zoekopdracht uit te voeren voor de host die toepassings records per host weergeeft, records per type telemetrie en alle gegevens op type (op basis van de laatste dag). |
 | Beschik baarheid – webtest-resultaten | Toont een ring diagram voor de resultaten van webtests en geeft aan of het mislukt. Klik op de grafiek om een zoek opdracht voor logboeken uit te voeren voor<code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> <br><br> Met resultaten wordt het aantal gangen en fouten voor alle tests weer gegeven. Alle Web Apps met verkeer voor de laatste minuut worden weer gegeven. Klik op de naam van een toepassing om een zoek opdracht in logboeken weer te geven met details van mislukte webtests. |
-| Server aanvragen-aanvragen per uur | Geeft een lijn diagram weer van de server aanvragen per uur voor verschillende toepassingen. Beweeg de muis aanwijzer over een regel in de grafiek om de bovenste 3 toepassingen te zien die aanvragen voor een bepaald tijdstip ontvangen. Toont ook een lijst met de toepassingen die aanvragen ontvangen en het aantal aanvragen voor de geselecteerde periode. <br><br>Klik op de grafiek om een zoek opdracht in <code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> Logboeken uit te voeren waarin een gedetailleerd lijn diagram wordt weer gegeven van de server aanvragen per uur voor verschillende toepassingen. <br><br> Klik op een toepassing in de lijst om een logboek zoekopdracht uit <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> te voeren voor een lijst met aanvragen, grafieken voor aanvragen in de loop van de tijd en de duur van aanvragen en een lijst met antwoord codes voor aanvragen.   |
-| Fouten: mislukte aanvragen per uur | Geeft een lijn diagram weer van mislukte toepassings aanvragen per uur. Beweeg de muis aanwijzer over de grafiek om de bovenste 3 toepassingen met mislukte aanvragen voor een bepaald tijdstip weer te geven. Toont ook een lijst met toepassingen met het aantal mislukte aanvragen voor elke toepassing. Klik op de grafiek om een logboek zoekopdracht uit <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> te voeren voor een gedetailleerd lijn diagram van mislukte toepassings aanvragen. <br><br>Klik op een item in de lijst om een logboek zoekopdracht uit <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> te voeren voor het weer geven van mislukte aanvragen, grafieken voor mislukte aanvragen gedurende een bepaalde periode en een lijst met mislukte antwoord codes voor aanvragen. |
-| Uitzonde ringen: uitzonde ringen per uur | Toont een lijn diagram met uitzonde ringen per uur. Beweeg de muis aanwijzer over de grafiek om de bovenste 3 toepassingen met uitzonde ringen voor een bepaald tijdstip weer te geven. Toont ook een lijst met toepassingen met het aantal uitzonde ringen voor elk. Klik op de grafiek om een logboek zoekopdracht uit <code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> te voeren voor een gedetailleerdere koppelings grafiek met uitzonde ringen. <br><br>Klik op een item in de lijst om een logboek zoekopdracht uit <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code> te voeren voor een lijst met uitzonde ringen, grafieken voor uitzonde ringen in de loop van de tijd en mislukte aanvragen, en een lijst met uitzonderings typen.  |
+| Server aanvragen-aanvragen per uur | Geeft een lijn diagram weer van de server aanvragen per uur voor verschillende toepassingen. Beweeg de muis aanwijzer over een regel in de grafiek om de bovenste 3 toepassingen te zien die aanvragen voor een bepaald tijdstip ontvangen. Toont ook een lijst met de toepassingen die aanvragen ontvangen en het aantal aanvragen voor de geselecteerde periode. <br><br>Klik op de grafiek om een zoek opdracht in Logboeken uit te voeren <code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> waarin een gedetailleerd lijn diagram wordt weer gegeven van de server aanvragen per uur voor verschillende toepassingen. <br><br> Klik op een toepassing in de lijst om een logboek zoekopdracht uit te voeren voor <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> een lijst met aanvragen, grafieken voor aanvragen in de loop van de tijd en de duur van aanvragen en een lijst met antwoord codes voor aanvragen.   |
+| Fouten: mislukte aanvragen per uur | Geeft een lijn diagram weer van mislukte toepassings aanvragen per uur. Beweeg de muis aanwijzer over de grafiek om de bovenste 3 toepassingen met mislukte aanvragen voor een bepaald tijdstip weer te geven. Toont ook een lijst met toepassingen met het aantal mislukte aanvragen voor elke toepassing. Klik op de grafiek om een logboek zoekopdracht uit te voeren voor <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> een gedetailleerd lijn diagram van mislukte toepassings aanvragen. <br><br>Klik op een item in de lijst om een logboek zoekopdracht uit te voeren voor <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> het weer geven van mislukte aanvragen, grafieken voor mislukte aanvragen gedurende een bepaalde periode en een lijst met mislukte antwoord codes voor aanvragen. |
+| Uitzonde ringen: uitzonde ringen per uur | Toont een lijn diagram met uitzonde ringen per uur. Beweeg de muis aanwijzer over de grafiek om de bovenste 3 toepassingen met uitzonde ringen voor een bepaald tijdstip weer te geven. Toont ook een lijst met toepassingen met het aantal uitzonde ringen voor elk. Klik op de grafiek om een logboek zoekopdracht uit te voeren voor <code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> een gedetailleerdere koppelings grafiek met uitzonde ringen. <br><br>Klik op een item in de lijst om een logboek zoekopdracht uit te voeren voor <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code> een lijst met uitzonde ringen, grafieken voor uitzonde ringen in de loop van de tijd en mislukte aanvragen, en een lijst met uitzonderings typen.  |
 
 ### <a name="view-the-application-insights-perspective-with-log-search"></a>Het Application Insights perspectief weer geven met zoeken in Logboeken
 
@@ -179,18 +178,18 @@ Er wordt een record met een *type* *ApplicationInsights* gemaakt voor elk type i
 | Type | ApplicationInsights |
 | Client |   |
 | TimeGenerated | Tijd van de record |
-| ApplicationId | Instrumentatie sleutel van de Application Insights-app |
+| ApplicationID | Instrumentatie sleutel van de Application Insights-app |
 | ApplicationName | De naam van de Application Insights-app |
 | RoleInstance | ID van de server host |
 | DeviceType | Client apparaat |
 | ScreenResolution |   |
 | Continent | Continent waar de aanvraag vandaan komt |
-| Land | Land/regio waar de aanvraag vandaan komt |
+| Land/regio | Land/regio waar de aanvraag vandaan komt |
 | Staat | Provincie, provincie of land/regio waar de aanvraag vandaan komt |
 | Plaats | Plaats of stad waar de aanvraag vandaan komt |
 | isSynthetic | Geeft aan of de aanvraag is gemaakt door een gebruiker of door een automatische methode. True = geautomatiseerde methode of onwaar = door de gebruiker gegenereerd |
 | SamplingRate | Het percentage van de telemetrie dat is gegenereerd door de SDK en dat naar de portal wordt verzonden. Bereik 0.0-100,0. |
-| SampledCount | 100/(SamplingRate). Bijvoorbeeld 4 =&gt; 25% |
+| SampledCount | 100/(SamplingRate). Bijvoorbeeld 4 = &gt; 25% |
 | IsAuthenticated | Waar of onwaar |
 | OperationID | Items met dezelfde bewerkings-ID worden weer gegeven als gerelateerde items in de portal. Doorgaans de aanvraag-ID |
 | ParentOperationID | ID van de bovenliggende bewerking |
@@ -207,11 +206,11 @@ Er wordt een record met een *type* *ApplicationInsights* gemaakt voor elk type i
 | AvailabilityRunLocation | Geografische bron van de HTTP-aanvraag |
 | AvailabilityResult | Hiermee wordt het succes resultaat van de webtest aangegeven |
 | AvailabilityMessage | Het bericht dat is gekoppeld aan de webtest |
-| AvailabilityCount | 100/(sampling frequentie). Bijvoorbeeld 4 =&gt; 25% |
+| AvailabilityCount | 100/(sampling frequentie). Bijvoorbeeld 4 = &gt; 25% |
 | DataSizeMetricValue | 1,0 of 0,0 |
-| DataSizeMetricCount | 100/(sampling frequentie). Bijvoorbeeld 4 =&gt; 25% |
+| DataSizeMetricCount | 100/(sampling frequentie). Bijvoorbeeld 4 = &gt; 25% |
 | AvailabilityDuration | Tijd, in milliseconden, van de duur van de webtest |
-| AvailabilityDurationCount | 100/(sampling frequentie). Bijvoorbeeld 4 =&gt; 25% |
+| AvailabilityDurationCount | 100/(sampling frequentie). Bijvoorbeeld 4 = &gt; 25% |
 | AvailabilityValue |   |
 | AvailabilityMetricCount |   |
 | AvailabilityTestId | Unieke GUID voor de webtest |
@@ -233,7 +232,7 @@ Er wordt een record met een *type* *ApplicationInsights* gemaakt voor elk type i
 | ExceptionAssembly | Assembly bevat het Framework en de versie, evenals het open bare-sleutel token |
 | ExceptionGroup | Type uitzonde ring |
 | ExceptionHandledAt | Hiermee wordt het niveau aangegeven dat de uitzonde ring heeft afgehandeld |
-| ExceptionCount | 100/(sampling frequentie). Bijvoorbeeld 4 =&gt; 25% |
+| ExceptionCount | 100/(sampling frequentie). Bijvoorbeeld 4 = &gt; 25% |
 | ExceptionMessage | Bericht van de uitzonde ring |
 | ExceptionStack | Volledige stack van de uitzonde ring |
 | ExceptionHasStack | Waar, als uitzonde ring een stack heeft |
@@ -255,8 +254,8 @@ Er wordt een record met een *type* *ApplicationInsights* gemaakt voor elk type i
 | Host | Webserver host |
 | URLBase | Volledige URL van de aanvraag |
 | ApplicationProtocol | Type protocol dat door de toepassing wordt gebruikt |
-| RequestCount | 100/(sampling frequentie). Bijvoorbeeld 4 =&gt; 25% |
-| RequestDurationCount | 100/(sampling frequentie). Bijvoorbeeld 4 =&gt; 25% |
+| RequestCount | 100/(sampling frequentie). Bijvoorbeeld 4 = &gt; 25% |
+| RequestDurationCount | 100/(sampling frequentie). Bijvoorbeeld 4 = &gt; 25% |
 | RequestDurationMin | Voor de voorbeeld records bevat dit veld de minimale aanvraag duur (milliseconden) voor de weer gegeven gegevens punten. |
 | RequestDurationMax | Voor de voorbeeld records bevat dit veld de maximale aanvraag duur (in milliseconden) voor de weer gegeven gegevens punten |
 | RequestDurationStdDev | Voor de voorbeeld records bevat dit veld de standaard afwijking tussen alle aanvraag duur (milliseconden) voor de weer gegeven gegevens punten |

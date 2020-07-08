@@ -8,10 +8,9 @@ ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
 ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77664912"
 ---
 # <a name="application-insights-log-based-metrics"></a>Metrische gegevens op basis van het logboek Application Insights
@@ -180,9 +179,9 @@ De metrische gegevens in **fouten** tonen problemen met verwerkings aanvragen, a
 
 ### <a name="browser-exceptions-exceptionsbrowser"></a>Browser uitzonderingen (uitzonde ringen/browser)
 
-Deze metriek weerspiegelt het aantal uitzonde ringen dat is veroorzaakt door de toepassings code die in de browser wordt uitgevoerd. Alleen uitzonde ringen die worden bijgehouden ```trackException()``` met een Application INSIGHTS-API-aanroep, zijn opgenomen in de metrische gegevens.
+Deze metriek weerspiegelt het aantal uitzonde ringen dat is veroorzaakt door de toepassings code die in de browser wordt uitgevoerd. Alleen uitzonde ringen die worden bijgehouden met een ```trackException()``` Application Insights-API-aanroep, zijn opgenomen in de metrische gegevens.
 
-|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Opmerkingen|
+|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Notities|
 |---|---|---|---|
 |Count|Count|Geen|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
 
@@ -197,7 +196,7 @@ exceptions
 
 Het aantal mislukte afhankelijkheids aanroepen.
 
-|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Opmerkingen|
+|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Notities|
 |---|---|---|---|
 |Count|Count|Geen|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
 
@@ -212,7 +211,7 @@ dependencies
 
 Telkens wanneer u een uitzonde ring registreert op Application Insights, wordt er een aanroep naar de [methode trackException ()](../../azure-monitor/app/api-custom-events-metrics.md#trackexception) van de SDK. De metriek uitzonde ringen toont het aantal geregistreerde uitzonde ringen.
 
-|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Opmerkingen|
+|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Notities|
 |---|---|---|---|
 |Count|Count|Rolnaam van Cloud, instantie van Cloud-rol, apparaattype|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
 
@@ -226,7 +225,7 @@ exceptions
 
 Het aantal bijgehouden server aanvragen dat is gemarkeerd als *mislukt*. Standaard markeert de Application Insights SDK automatisch elke server aanvraag die de 5xx of 4xx van HTTP-antwoorden als een mislukte aanvraag heeft geretourneerd. U kunt deze logica aanpassen door de eigenschap *success* van het aanvraag-telemetrie in een [aangepaste telemetrie-initialisatie functie](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)te wijzigen.
 
-|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Opmerkingen|
+|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Notities|
 |---|---|---|---|
 |Count|Count|Cloud rolinstantie, naam van Cloud functie, reëel of synthetisch verkeer, prestaties aanvragen, respons code|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
 
@@ -241,7 +240,7 @@ requests
 
 Met deze metriek wordt het aantal server uitzonderingen weer gegeven.
 
-|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Opmerkingen|
+|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Notities|
 |---|---|---|---|
 |Count|Count|Rolnaam van Cloud, instantie van Cloud-rol|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
 
@@ -423,7 +422,7 @@ requests
 | render timechart
 ```
 
-## <a name="usage-metrics"></a>Metrische gebruiksgegevens
+## <a name="usage-metrics"></a>Metrische gegevens over gebruik
 
 ### <a name="page-view-load-time-pageviewsduration"></a>Laad tijd pagina weergave (page views/duur)
 

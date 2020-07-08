@@ -4,10 +4,9 @@ description: Krijg persoonlijke meldingen over service status gebeurtenissen aan
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: bb449a5279f3cea55e6aec2f72edfd11fb26227a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77654066"
 ---
 # <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>Azure service Health-waarschuwingen verzenden met PagerDuty met behulp van webhooks
@@ -27,7 +26,7 @@ Dit artikel laat u zien hoe u Azure service Health Notifications kunt instellen 
 
     a. **Integratie type**: Microsoft Azure
 
-    b. **Integratie naam**: \<naam\>
+    b. **Integratie naam**:\<Name\>
 
     ![De integratie-instellingen in PagerDuty](./media/webhook-alerts/pagerduty-integration-settings.png)
 

@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: akjosh
 ms.openlocfilehash: 63f9441d4df9551405c2ab2bf8c0c67d7de5753c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77919903"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Symantec-Endpoint Protection installeren en configureren op een Windows-VM
@@ -33,7 +32,7 @@ Als u een bestaand abonnement van Symantec hebt voor een lokale oplossing, kunt 
 ## <a name="install-symantec-endpoint-protection-on-an-existing-vm"></a>Symantec Endpoint Protection installeren op een bestaande VM
 Voordat u begint, hebt u het volgende nodig:
 
-* De Azure PowerShell module versie 0.8.2 of hoger op uw werk computer. U kunt de versie van Azure PowerShell controleren die u hebt geïnstalleerd met de opdracht **Get-module Azure | indeling-Table versie** . Zie [Azure PowerShell installeren en configureren][PS]voor instructies en een koppeling naar de meest recente versie. Meld u aan bij uw Azure- `Add-AzureAccount`abonnement met.
+* De Azure PowerShell module versie 0.8.2 of hoger op uw werk computer. U kunt de versie van Azure PowerShell controleren die u hebt geïnstalleerd met de opdracht **Get-module Azure | indeling-Table versie** . Zie [Azure PowerShell installeren en configureren][PS]voor instructies en een koppeling naar de meest recente versie. Meld u aan bij uw Azure-abonnement met `Add-AzureAccount` .
 * De VM-agent die wordt uitgevoerd op de virtuele machine van Azure.
 
 Controleer eerst of de VM-agent al is geïnstalleerd op de virtuele machine. Vul de naam van de Cloud service en de virtuele machine in en voer de volgende opdrachten uit op de opdracht prompt op beheerders niveau Azure PowerShell. Vervang alles binnen de aanhalings tekens, met inbegrip van de <-en > teken.

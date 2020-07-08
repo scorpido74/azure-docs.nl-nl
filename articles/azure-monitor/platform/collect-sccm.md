@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
 ms.openlocfilehash: 3140c0de6fbe090e3d040202cd581c455f03b6d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77655253"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager verbinden met Azure Monitor
@@ -129,7 +128,7 @@ Nadat u een Log Analytics verbinding hebt toegevoegd aan Configuration Manager e
 
 Nadat u de initiële configuratie voor het importeren van Apparaatsets vanuit uw hiërarchie hebt voltooid, worden de verzamelings gegevens om de drie uur opgehaald om het lidmaatschap actueel te laten blijven. U kunt ervoor kiezen om dit op elk gewenst moment uit te scha kelen.
 
-1. Klik in Azure Portal in de linkerbovenhoek op **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **log Analytics-werk ruimten**.
+1. Klik in Azure Portal in de linkerbovenhoek op **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Log Analytics-werkruimten**.
 2. Selecteer in de lijst met Log Analytics werk ruimten de werk ruimte Configuration Manager is geregistreerd bij.  
 3. Selecteer **Geavanceerde instellingen**.
 4. Selecteer **computer groepen** en selecteer vervolgens **SCCM**.  

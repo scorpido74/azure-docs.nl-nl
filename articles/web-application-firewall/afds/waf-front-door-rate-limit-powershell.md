@@ -8,10 +8,9 @@ services: web-application-firewall
 ms.date: 02/26/2020
 ms.author: victorh
 ms.openlocfilehash: b034159c3d12927f6425b3dc3c5b5609af9b0b76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77649361"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Een regel voor het instellen van een firewall frequentie van webtoepassingen met behulp van Azure PowerShell
@@ -38,12 +37,12 @@ Zorg ervoor dat de huidige versie van PowerShellGet is geïnstalleerd voordat u 
 Install-Module PowerShellGet -Force -AllowClobber
 ``` 
 
-#### <a name="install-azfrontdoor-module"></a>De module AZ.-ingang installeren 
+#### <a name="install-azfrontdoor-module"></a>De AzureRM.FrontDoor-module installeren 
 
 ```
 Install-Module -Name Az.FrontDoor
 ```
-### <a name="create-a-front-door-profile"></a>Een voor deur profiel maken
+### <a name="create-a-front-door-profile"></a>Een Front Door-profiel maken
 Maak een voor deur profiel door de instructies te volgen die worden beschreven in [Quick Start: een front deur-profiel maken](../../frontdoor/quickstart-create-front-door.md)
 
 ## <a name="define-url-match-conditions"></a>URL-matching voorwaarden definiëren
@@ -71,7 +70,7 @@ Stel een frequentie limiet in met behulp van [New-AzFrontDoorWafCustomRuleObject
 
 ## <a name="configure-a-security-policy"></a>Een beveiligings beleid configureren
 
-Zoek de naam van de resource groep die het voorste deur profiel bevat met `Get-AzureRmResourceGroup`behulp van. Configureer vervolgens een beveiligings beleid met een aangepaste frequentie limiet regel met [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) in de opgegeven resource groep die het voorste deur profiel bevat.
+Zoek de naam van de resourcegroep die het Front Door-profiel bevat met behulp van `Get-AzureRmResourceGroup`. Configureer vervolgens een beveiligings beleid met een aangepaste frequentie limiet regel met [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) in de opgegeven resource groep die het voorste deur profiel bevat.
 
 In het onderstaande voor beeld wordt de naam van de resource groep *myResourceGroupFD1* met de veronderstelling dat u het voorste deur profiel hebt gemaakt met behulp van de instructies in de [Quick Start: een front deur](../../frontdoor/quickstart-create-front-door.md) -artikel maken.
 

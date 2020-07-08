@@ -5,10 +5,9 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
 ms.openlocfilehash: a85dad2ba638505233e5df769e55fa5bd7b8dafd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77664997"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Waarschuwings regels in Log Analytics maken en beheren met REST API 
@@ -122,7 +121,7 @@ Gebruik de methode Delete met de actie-ID om een actie te verwijderen.
 ### <a name="alert-actions"></a>Waarschuwings acties
 Een planning moet één en slechts één waarschuwings actie hebben.  Waarschuwings acties hebben een of meer van de secties in de volgende tabel.  Deze worden hieronder beschreven.
 
-| Sectie | Beschrijving | Gebruik |
+| Sectie | Description | Gebruik |
 |:--- |:--- |:--- |
 | Drempelwaarde |Criteria voor wanneer de actie wordt uitgevoerd.| Vereist voor elke waarschuwing, vóór of na de verlenging van Azure. |
 | Severity |Label dat wordt gebruikt om een waarschuwing te classificeren wanneer deze wordt geactiveerd.| Vereist voor elke waarschuwing, vóór of na de verlenging van Azure. |
@@ -267,7 +266,7 @@ Gebruik de put-methode met een bestaande actie-ID voor het wijzigen van een acti
 Standaard worden acties gevolgd door de standaard sjabloon en-indeling voor meldingen. Maar de gebruiker kan sommige acties aanpassen, zelfs als deze worden beheerd door actie groepen. Op dit moment kunnen aanpassingen voor e-mail onderwerp en webhook Payload worden uitgevoerd.
 
 ##### <a name="customize-e-mail-subject-for-action-group"></a>E-mail onderwerp aanpassen voor actie groep
-Standaard is het e-mail onderwerp voor waarschuwingen: waarschuwings melding `<AlertName>` voor `<WorkspaceName>`. Maar dit kan worden aangepast, zodat u specifieke woorden of labels kunt gebruiken om eenvoudig filter regels in uw postvak in te maken. De details van de e-mailkop tekst moeten worden verzonden, samen met ActionGroup-Details, zoals hieronder wordt beschreven.
+Standaard is het e-mail onderwerp voor waarschuwingen: waarschuwings melding `<AlertName>` voor `<WorkspaceName>` . Maar dit kan worden aangepast, zodat u specifieke woorden of labels kunt gebruiken om eenvoudig filter regels in uw postvak in te maken. De details van de e-mailkop tekst moeten worden verzonden, samen met ActionGroup-Details, zoals hieronder wordt beschreven.
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {

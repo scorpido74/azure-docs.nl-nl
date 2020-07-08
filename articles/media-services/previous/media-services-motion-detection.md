@@ -15,10 +15,9 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: f4c021531a4d04bf16e5dbee4172952433f675d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77913001"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Bewegingen detecteren met Azure Media Analytics
@@ -45,7 +44,7 @@ Wanneer u een taak met **Azure Media Motion detector**maakt, moet u een voor ins
 ### <a name="parameters"></a>Parameters
 U kunt de volgende para meters gebruiken:
 
-| Naam | Opties | Beschrijving | Standaard |
+| Name | Opties | Description | Standaard |
 | --- | --- | --- | --- |
 | sensitivityLevel |Teken reeks: laag, gemiddeld, hoog |Hiermee stelt u het gevoeligheids niveau in waarmee bewegingen worden gerapporteerd. Stel dit in op het aanpassen van het aantal fout-positieven. |drager |
 | frameSamplingValue |Positief geheel getal |Hiermee stelt u de frequentie in waarmee algoritmen worden uitgevoerd. 1 is gelijk aan elk frame, 2 betekent elk tweede frame, enzovoort. |1 |
@@ -98,7 +97,7 @@ De bewegings detector-API biedt indica toren wanneer er objecten in beweging zij
 
 In de volgende tabel worden elementen van het JSON-uitvoer bestand beschreven.
 
-| Element | Beschrijving |
+| Element | Description |
 | --- | --- |
 | versie |Dit verwijst naar de versie van de video-API. De huidige versie is 2. |
 | lijnen |' Ticks ' per seconde van de video. |
@@ -208,7 +207,7 @@ Het volgende programma laat zien hoe u:
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Maak en configureer een Visual Studio-project.
 
-Stel uw ontwikkel omgeving in en vul in het bestand app. config de verbindings informatie in, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
+Stel uw ontwikkel omgeving in en vul het app.config bestand in met verbindings informatie, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Voorbeeld
 

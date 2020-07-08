@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 4d9f6e48722f01970a90a3a1d8d8b58b5d939774
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658265"
 ---
 # <a name="interactive-workbooks"></a>Interactieve workbooks
@@ -72,10 +71,10 @@ In de onderstaande afbeelding ziet u een meer uitgebreid interactief rapport in 
 ### <a name="exporting-the-contents-of-an-entire-row"></a>De inhoud van een hele rij exporteren
 Soms is het wenselijk om de volledige inhoud van de geselecteerde rij te exporteren in plaats van alleen een bepaalde kolom. In dergelijke gevallen moet u de `Field to export` eigenschap in stap 7,1 hierboven uitschakelen. Werkmappen exporteert de volledige celinhoud als een JSON-bestand naar de para meter. 
 
-Gebruik op het verwijzende besturings element KQL `todynamic` de functie om de JSON te parseren en toegang te krijgen tot de afzonderlijke kolommen.
+Gebruik op het verwijzende besturings element KQL de `todynamic` functie om de JSON te parseren en toegang te krijgen tot de afzonderlijke kolommen.
 
  ## <a name="grid-cell-clicks"></a>Klikken raster cellen
-Met werkmappen kunnen auteurs interactiviteit toevoegen via een speciaal type raster kolom weergave met de naam een `link renderer`. Met een koppelings weergave wordt een grid-cel omgezet in een Hyper link op basis van de inhoud van de cel. Werkmappen ondersteunen veel soorten koppelings beeldrenderings, inclusief de Blades voor het openen van resource overzichten, viewers van eigenschappen, app Insights Search, Usage, trans actie tracering, enzovoort.
+Met werkmappen kunnen auteurs interactiviteit toevoegen via een speciaal type raster kolom weergave met de naam een `link renderer` . Met een koppelings weergave wordt een grid-cel omgezet in een Hyper link op basis van de inhoud van de cel. Werkmappen ondersteunen veel soorten koppelings beeldrenderings, inclusief de Blades voor het openen van resource overzichten, viewers van eigenschappen, app Insights Search, Usage, trans actie tracering, enzovoort.
 
 ### <a name="setting-up-interactivity-using-grid-cell-clicks"></a>Interactiviteit instellen met behulp van een raster muis klik
 1. Schakel de werkmap over naar de bewerkings modus door te klikken op het item werkbalk opdracht _bewerken_ .
@@ -90,8 +89,8 @@ Met werkmappen kunnen auteurs interactiviteit toevoegen via een speciaal type ra
 5. `Run query`de resultaten weer geven
 6. Klik op _kolom instellingen_ om het deel venster instellingen te openen.
 7. Stel in het gedeelte _kolommen_ het volgende in:
-    1. Voor _beeld_ -kolom renderer `Link`:, weer geven om `Cell Details`te openen:, koppelings label:`Sample`
-    2. _Aantal_ -kolom renderer: `Bar`, kleuren palet: `Blue`, minimum waarde:`0`
+    1. Voor _beeld_ -kolom renderer: `Link` , weer geven om te openen: `Cell Details` , koppelings label:`Sample`
+    2. _Aantal_ -kolom renderer: `Bar` , kleuren palet: `Blue` , minimum waarde:`0`
     3. _Aanvraag_ -kolom weergave:`Automatic`
     4. Klik op _opslaan en sluiten_ om de wijzigingen toe te passen
 8. Klik op een van de `Sample` koppelingen in het raster. Hiermee opent u een eigenschappen venster met de details van een voor beeld van een aanvraag.
@@ -118,7 +117,7 @@ Met werkmap kunnen gebruikers bepaalde besturings elementen weer geven of verber
 ### <a name="setting-up-interactivity-using-conditional-visibility"></a>Interactiviteit instellen met behulp van voorwaardelijke zicht baarheid
 1. Volg de stappen in de `Setting up interactivity on grid row click` sectie om twee interactieve besturings elementen in te stellen.
 2. Voeg aan de bovenkant een nieuwe para meter toe:
-    1. Naam`ShowDetails`
+    1. Naam: `ShowDetails`
     2. Parameter type:`Drop down`
     3. Vereist:`checked`
     4. Gegevens ophalen uit:`JSON`
@@ -127,16 +126,16 @@ Met werkmap kunnen gebruikers bepaalde besturings elementen weer geven of verber
 3. Parameter waarde instellen op`Yes`
 4. Klik in het besturings element query met het vlak diagram op het pictogram _Geavanceerde instellingen_ (tandwiel pictogram)
 5. Controleer de instelling`Make this item conditionally visible`
-    1. Dit item wordt weer gegeven `ShowDetails` als de `equals` waarde van de para meter`Yes`
+    1. Dit item wordt weer gegeven als de `ShowDetails` waarde `equals` van de para meter`Yes`
 6. Klik op _gereed bewerken_ om wijzigingen door te voeren.
 7. Klik op _gereed bewerken_ op de werk balk van de werkmap om de Lees modus in te voeren.
-8. Schakel de waarde van para `ShowDetails` meter `No`in op. U ziet dat de onderstaande grafiek verdwijnt.
+8. Schakel de waarde van para meter `ShowDetails` in op `No` . U ziet dat de onderstaande grafiek verdwijnt.
 
-In de onderstaande afbeelding ziet u het zicht `ShowDetails` bare geval waar`Yes`
+In de onderstaande afbeelding ziet u het zicht bare `ShowDetails` geval waar`Yes`
 
 ![Afbeelding van de voorwaardelijke zicht baarheid waar de grafiek wordt weer gegeven](./media/workbooks-interactive/conditional-visibility.png)
 
-In de onderstaande afbeelding ziet u de verborgen `ShowDetails` Case waar is`No`
+In de onderstaande afbeelding ziet u de verborgen Case waar `ShowDetails` is`No`
 
 ![Afbeelding van de voorwaardelijke zicht baarheid waar de grafiek is verborgen](./media/workbooks-interactive/conditional-invisible.png)
 

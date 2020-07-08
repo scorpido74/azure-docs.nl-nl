@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: ea7c98a1b5b4059c5fea0cf1e8ea2ff5ef08d9d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77655375"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Werken met datum-en tijd waarden in Azure Monitor-logboek query's
@@ -38,7 +37,7 @@ TimeSpans worden uitgedrukt als een decimaal gevolgd door een tijds eenheid:
 |wacht | wacht  |
 |beurs        | nano seconden   |
 
-Datetimes kunnen worden gemaakt door een teken reeks te casten met behulp van de `todatetime` operator. Als u bijvoorbeeld de VM-heartbeats wilt bekijken die in een bepaalde periode zijn verzonden `between` , gebruikt u de operator om een tijds bereik op te geven.
+Datetimes kunnen worden gemaakt door een teken reeks te casten met behulp van de `todatetime` operator. Als u bijvoorbeeld de VM-heartbeats wilt bekijken die in een bepaalde periode zijn verzonden, gebruikt u de `between` operator om een tijds bereik op te geven.
 
 ```Kusto
 Heartbeat
@@ -117,7 +116,7 @@ Deze query produceert de volgende tabel:
 |2018-08-01T09:50:00.000|41|
 |2018-08-01T09:55:00.000|16|
 
-Een andere manier om buckets met resultaten te maken, is met behulp van `startofday`functies, zoals:
+Een andere manier om buckets met resultaten te maken, is met behulp van functies, zoals `startofday` :
 
 ```Kusto
 Event

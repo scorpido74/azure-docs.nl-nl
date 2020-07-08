@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 61358051a8ddc32bc01ec5e231f4c28ebfa18ee0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670029"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Beschik baarheid van alle websites bewaken
@@ -31,7 +30,7 @@ Er zijn drie soorten beschikbaarheids tests:
 
 Als u een beschikbaarheids test wilt maken, moet u eerst een Application Insights resource maken. Als u al een resource hebt gemaakt, gaat u door naar de volgende sectie om [een URL-ping-test te maken](#create-a-url-ping-test).
 
-Selecteer in de Azure Portal **een resource** > maken**Ontwikkelhulpprogramma's** > **Application Insights** en [Maak een Application Insights-resource](create-new-resource.md).
+Selecteer in de Azure Portal **een resource maken**  >  **Ontwikkelhulpprogramma's**  >  **Application Insights** en [Maak een Application Insights-resource](create-new-resource.md).
 
 ## <a name="create-a-url-ping-test"></a>Een URL-pingtest aanmaken
 
@@ -70,7 +69,7 @@ Als u uw eerste beschikbaarheids aanvraag wilt maken, opent u het deel venster B
 |----|----|----|
 |**Bijna realtime (preview-versie)** | We raden u aan bijna realtime waarschuwingen te gebruiken. Het configureren van dit type waarschuwing wordt uitgevoerd nadat de beschikbaarheids test is gemaakt.  |
 |**Klassiek** | Het gebruik van klassieke waarschuwingen voor nieuwe beschikbaarheids tests wordt niet meer aanbevolen.|
-|**Drempel waarde voor waarschuwings locatie**|We raden aan dat er mini maal 3/5 locaties zijn. De optimale relatie tussen de drempel waarde van de waarschuwings locatie en het aantal test locaties is drempel = waarde voor **waarschuwings locaties****aantal test locaties-2, met een minimum van vijf test locaties.**|
+|**Drempel waarde voor waarschuwings locatie**|We raden aan dat er mini maal 3/5 locaties zijn. De optimale relatie tussen de drempel waarde van de waarschuwings locatie en het aantal test locaties is drempel waarde voor **waarschuwings locaties**  =  **aantal test locaties-2, met een minimum van vijf test locaties.**|
 
 ## <a name="see-your-availability-test-results"></a>De resultaten van de beschikbaarheidstest bekijken
 

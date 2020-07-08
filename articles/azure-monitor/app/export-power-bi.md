@@ -4,10 +4,9 @@ description: Analytische query's kunnen worden weer gegeven in Power BI.
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.openlocfilehash: 0e17ca6e07ec76f0a7a1cb04f7aa13619fb9970c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77663994"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Feed Power BI van Application Insights
@@ -36,7 +35,7 @@ Installeer [Power bi Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 3. Kies in het menu **exporteren** de optie **Power bi (M)**. Sla het tekstbestand op.
    
     ![Scherm opname van analyse, met het menu exporteren gemarkeerd](./media/export-power-bi/analytics-export-power-bi.png)
-4. Selecteer in Power bi Desktop de optie **gegevens** > **lege query**ophalen. Selecteer vervolgens in de query-editor onder **weer gave**de optie **Geavanceerde editor**.
+4. Selecteer in Power bi Desktop de optie **gegevens**  >  **lege query**ophalen. Selecteer vervolgens in de query-editor onder **weer gave**de optie **Geavanceerde editor**.
 
     Plak het geëxporteerde M-taal script in de Geavanceerde editor.
 
@@ -61,7 +60,7 @@ Installeer [Power bi Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
    ![Scherm afbeelding van de knop Power BI](./media/export-power-bi/button.png)
 
-3. Selecteer in Power bi Desktop de optie **gegevens** > **lege query**ophalen. Selecteer vervolgens in de query-editor onder **weer gave**de optie **Geavanceerde editor**.
+3. Selecteer in Power bi Desktop de optie **gegevens**  >  **lege query**ophalen. Selecteer vervolgens in de query-editor onder **weer gave**de optie **Geavanceerde editor**.
 
    ![Scherm opname van Power BI Desktop, met lege query knop gemarkeerd](./media/export-power-bi/blankquery.png)
 
@@ -98,8 +97,8 @@ Als het verminderen van de gegevensset die afkomstig is uit de analyse query nie
 
 1. Maak een [API-sleutel](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 2. Werk het Power BI M-script dat u hebt geëxporteerd uit Analytics bij door de Azure Resource Manager URL te vervangen door de Application Insights-API.
-   * **Https:\//management.Azure.com/subscriptions/vervangen...**
-   * met, **https:\//API.applicationinsights.io/Beta/apps/...**
+   * **Https: \/ /Management.Azure.com/subscriptions/vervangen...**
+   * met, **https: \/ /API.applicationinsights.io/Beta/apps/...**
 3. Werk tot slot de referenties bij naar Basic en gebruik uw API-sleutel.
 
 **Bestaand script**
@@ -119,7 +118,7 @@ Met deze methode maakt u een volledig dash board van telemetrie. De eerste gegev
 
 ### <a name="get-the-adapter"></a>De adapter ophalen
 1. Meld u aan bij [Power BI](https://app.powerbi.com/).
-2. Open de scherm afbeelding **gegevens** ![ophalen van het pictogram GetData linksonder](./media/export-power-bi/001.png), **Services**.
+2. Open de scherm afbeelding **gegevens ophalen** ![ van het pictogram GetData linksonder ](./media/export-power-bi/001.png) , **Services**.
 
     ![Scherm opnamen van de gegevens bron ophalen uit Application Insights](./media/export-power-bi/002.png)
 

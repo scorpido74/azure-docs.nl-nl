@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 3fbeb1120e97a884135cd4622a49ef97fd43e58e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671661"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Live Azure-Cloud Services profiel met Application Insights
@@ -43,7 +42,7 @@ Application Insights Profiler is geïnstalleerd met de Azure Diagnostics extensi
 
       Als u het bestand niet kunt vinden, raadpleegt u [Diagnostische gegevens instellen voor Azure Cloud Services en virtual machines](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
-    b. Voeg de volgende `SinksConfig` sectie toe als onderliggend `WadCfg`element van:  
+    b. Voeg de volgende `SinksConfig` sectie toe als onderliggend element van `WadCfg` :  
 
       ```xml
       <WadCfg>
@@ -63,7 +62,7 @@ Application Insights Profiler is geïnstalleerd met de Azure Diagnostics extensi
     > * De sleutel die wordt gebruikt door de ApplicationInsights-sink. 
     > * De sleutel die wordt gebruikt door de ApplicationInsightsProfiler-sink. 
     >
-    > U vindt de waarde van de werkelijke instrumentatie sleutel die wordt gebruikt door `ApplicationInsights` de sink in de *ServiceConfiguration\*.. cscfg* -bestanden. 
+    > U vindt de waarde van de werkelijke instrumentatie sleutel die wordt gebruikt door de `ApplicationInsights` sink in de *ServiceConfiguration. \* . cscfg* -bestanden. 
     > Na de Visual Studio 15,5 Azure SDK-versie moeten alleen de instrumentatie sleutels die worden gebruikt door de toepassing en de ApplicationInsightsProfiler-sink, overeenkomen met elkaar.
 
 1. Implementeer uw service met de nieuwe diagnostische configuratie en Application Insights Profiler is geconfigureerd om te worden uitgevoerd op uw service.

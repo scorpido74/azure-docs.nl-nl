@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
 ms.openlocfilehash: 8a47131cb4f19cce1664eafa50c67ab1a1171e67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77919427"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Opstarten van Azure VM is vastgelopen op Windows Update
@@ -53,7 +52,7 @@ Het update proces kan enige tijd in beslag nemen, afhankelijk van het aantal upd
     Als de gekoppelde besturingssysteem schijf bijvoorbeeld station F is, voert u de volgende opdracht uit:
 
         dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
-5. Open het C:\temp\-bestand Patch_level. txt en lees het venster vanuit de onderkant. Zoek de update die in **behandeling** is of verwijder de status in **behandeling** .  Hier volgt een voor beeld van de update status:
+5. Open het C:\temp\Patch_level.txt-bestand en lees het van de onderkant. Zoek de update die in **behandeling** is of verwijder de status in **behandeling** .  Hier volgt een voor beeld van de update status:
 
      ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 11/15/2018
 ms.openlocfilehash: 3d228c62cd2d1bcb7f4515cd698186e2ebcbe929
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670284"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>Geavanceerde query's schrijven in Azure Monitor
@@ -94,7 +93,7 @@ datatable (TimeGenerated: datetime, usage_percent: double)
 | summarize avg(usage_percent) by bin(TimeGenerated, 1h)
 ```
 
-DataTable-constructies zijn ook erg handig bij het maken van een opzoek tabel. Als u bijvoorbeeld tabel gegevens wilt toewijzen, zoals gebeurtenis-Id's uit de tabel _SecurityEvent_ , naar gebeurtenis typen die elders worden vermeld, maakt u een opzoek tabel met `datatable` de gebeurtenis typen en voegt u deze DataTable samen met _SecurityEvent_ -gegevens:
+DataTable-constructies zijn ook erg handig bij het maken van een opzoek tabel. Als u bijvoorbeeld tabel gegevens wilt toewijzen, zoals gebeurtenis-Id's uit de tabel _SecurityEvent_ , naar gebeurtenis typen die elders worden vermeld, maakt u een opzoek tabel met de gebeurtenis typen `datatable` en voegt u deze DataTable samen met _SecurityEvent_ -gegevens:
 
 ```Kusto
 let eventCodes = datatable (EventID: int, EventType:string)

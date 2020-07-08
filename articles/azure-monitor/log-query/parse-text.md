@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
 ms.openlocfilehash: d7a37d51c411488231205fd036f9a287f5206ce5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77672443"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Tekst gegevens parseren in Azure Monitor logboeken
@@ -137,11 +136,11 @@ MyCustomCSVLog_CL
 Als uw gegevens zijn ingedeeld in een bekende structuur, kunt u een van de functies in de [Kusto-query taal](/azure/kusto/query/) gebruiken voor het parseren van vooraf gedefinieerde structuren:
 
 - [JSON](/azure/kusto/query/parsejsonfunction)
-- [INDELING](/azure/kusto/query/parse-xmlfunction)
+- [XML](/azure/kusto/query/parse-xmlfunction)
 - [IPv4](/azure/kusto/query/parse-ipv4function)
 - [URL](/azure/kusto/query/parseurlfunction)
 - [URL-query](/azure/kusto/query/parseurlqueryfunction)
-- [Bestandspad](/azure/kusto/query/parsepathfunction)
+- [Pad naar bestand](/azure/kusto/query/parsepathfunction)
 - [Gebruikers agent](/azure/kusto/query/parse-useragentfunction)
 - [Versie teken reeks](/azure/kusto/query/parse-versionfunction)
 

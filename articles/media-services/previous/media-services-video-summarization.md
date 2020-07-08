@@ -16,10 +16,9 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: a79e718c04f81b1552d63ab98b6dcd6bb428fb50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77918311"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Azure Media Video Thumbnails gebruiken om een video samenvatting te maken  
@@ -59,7 +58,7 @@ Wanneer u een miniatuur van een video met **Azure Media video thumbnails**maakt,
 
 Op dit moment kunt u de volgende para meters wijzigen:
 
-| Param | Beschrijving |
+| Param | Description |
 | --- | --- |
 | outputAudio |Hiermee wordt aangegeven of de resulterende video audio bevat. <br/>Toegestane waarden zijn: True of false. De standaard waarde is True. |
 | fadeInFadeOut |Hiermee wordt aangegeven of vervag overgangen tussen de afzonderlijke animatie miniaturen worden gebruikt.  <br/>Toegestane waarden zijn: True of false.  De standaard waarde is True. |
@@ -107,7 +106,7 @@ Het volgende programma laat zien hoe u:
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Maak en configureer een Visual Studio-project.
 
-Stel uw ontwikkel omgeving in en vul in het bestand app. config de verbindings informatie in, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
+Stel uw ontwikkel omgeving in en vul het app.config bestand in met verbindings informatie, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Voorbeeld
 

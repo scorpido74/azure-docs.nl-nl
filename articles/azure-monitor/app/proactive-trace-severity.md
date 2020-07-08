@@ -4,10 +4,9 @@ description: Bewaak toepassings traceringen met Azure-toepassing inzichten voor 
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.openlocfilehash: 30bdd30ac9c49bb79a3c48bae8149ec761756dd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671678"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>Degradatie van de verhouding van de ernst van de tracering (preview-versie)

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
 ms.openlocfilehash: 8ff24d508eb35c4f2a04c7d024254fa6f1875da8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77659280"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Azure Monitor logboek gegevens importeren in Power BI
@@ -29,7 +28,7 @@ Als u gegevens wilt importeren uit een [log Analytics werk ruimte](manage-access
 Maak eerst een [logboek query](../log-query/log-query-overview.md) die de gegevens retourneert die u wilt vullen met de Power bi gegevensset.  Vervolgens exporteert u die query naar de [Power query-taal (M)](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification) die kan worden gebruikt door Power bi Desktop.
 
 1. [Maak de logboek query in log Analytics](../log-query/get-started-portal.md) om de gegevens voor uw gegevensset uit te pakken.
-2. Selecteer **Export** > **Power bi query (M)** exporteren.  Hiermee exporteert u de query naar een tekst bestand met de naam **PowerBIQuery. txt**. 
+2. Selecteer **Export**  >  **Power bi query (M)** exporteren.  Hiermee exporteert u de query naar een tekst bestand met de naam **PowerBIQuery.txt**. 
 
     ![Zoek opdracht in Logboeken exporteren](media/powerbi/export-analytics.png)
 
@@ -39,7 +38,7 @@ Maak eerst een [logboek query](../log-query/log-query-overview.md) die de gegeve
 Power BI Desktop is een bureaublad toepassing waarmee u gegevens sets en rapporten kunt maken die naar Power BI kunnen worden gepubliceerd.  U kunt dit ook gebruiken om een query te maken met behulp van de Power Query-taal die is geëxporteerd vanuit Azure Monitor. 
 
 1. Installeer [Power bi Desktop](https://powerbi.microsoft.com/desktop/) als u dit nog niet hebt en open vervolgens de toepassing.
-2. Selecteer **gegevens** > **lege query** ophalen om een nieuwe query te openen.  Selecteer vervolgens **Geavanceerde editor** en plak de inhoud van het geëxporteerde bestand in de query. Klik op **Gereed**.
+2. Selecteer **gegevens**  >  **lege query** ophalen om een nieuwe query te openen.  Selecteer vervolgens **Geavanceerde editor** en plak de inhoud van het geëxporteerde bestand in de query. Klik op **Gereed**.
 
     ![Power BI Desktop query](media/powerbi/desktop-new-query.png)
 

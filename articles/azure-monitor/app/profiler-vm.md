@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 7c5dfe6ed08df01f78346c76fd5a35e7d64ab520
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671576"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Profiel Web-apps die worden uitgevoerd op een virtuele machine van Azure of een schaalset voor virtuele machines met behulp van Application Insights Profiler
@@ -65,7 +64,7 @@ In dit artikel wordt beschreven hoe u Application Insights Profiler op uw virtue
     Set-AzVMDiagnosticsExtension -ResourceGroupName "MyRG" -VMName "MyVM" -DiagnosticsConfigurationPath $ConfigFilePath
     ```
 
-1. Als de gewenste toepassing via [IIS](https://www.microsoft.com/web/downloads/platform.aspx)wordt uitgevoerd, schakelt u `IIS Http Tracing` de Windows-functie in.
+1. Als de gewenste toepassing via [IIS](https://www.microsoft.com/web/downloads/platform.aspx)wordt uitgevoerd, schakelt u de `IIS Http Tracing` Windows-functie in.
 
    a. Stel externe toegang tot de omgeving in en gebruik vervolgens het venster [Windows-onderdelen toevoegen]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) . Of voer de volgende opdracht uit in Power shell (als Administrator):  
 

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: 1b3ae6295a639c3d59643b106b920cb606572e0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670573"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>IIS-logboeken in Azure Monitor verzamelen
@@ -26,7 +25,7 @@ Azure Monitor ondersteunt alleen IIS-logboek bestanden die zijn opgeslagen in de
 Configureer IIS-logboeken in Azure Monitor vanuit het [menu Geavanceerde instellingen](agent-data-sources.md#configuring-data-sources).  Er is geen configuratie vereist, anders dan het selecteren van **IIS-logboek bestanden voor W3C-indeling verzamelen**.
 
 
-## <a name="data-collection"></a>Gegevens verzamelen
+## <a name="data-collection"></a>Gegevensverzameling
 Azure Monitor worden IIS-logboek vermeldingen van elke agent verzameld telkens wanneer de tijds tempel van het logboek wordt gewijzigd. Het logboek wordt elke **vijf minuten**gelezen. Als IIS de tijds tempel voor de rollover tijd niet bijwerkt wanneer een nieuw bestand wordt gemaakt, worden de gegevens verzameld na het maken van het nieuwe bestand. De frequentie van het maken van nieuwe bestanden wordt bepaald door de instelling voor het schema voor de **rollover van logboek bestanden** voor de IIS-site, die standaard één keer per dag wordt uitgevoerd. Als de instelling elk **uur**is, verzamelt Azure monitor elk uur het logboek. Als de instelling **dagelijks**is, verzamelt Azure monitor het logboek elke 24 uur.
 
 
@@ -43,7 +42,7 @@ IIS-logboek records hebben een type **W3CIISLog** en hebben de eigenschappen in 
 | csUserName |Naam van de geverifieerde gebruiker die toegang heeft tot de server. Anonieme gebruikers worden aangeduid met een koppelteken. |
 | csUriStem |Doel van de aanvraag, zoals een webpagina. |
 | csUriQuery |Indien van toepassing, query die de client probeerde uit te voeren. |
-| ManagementGroupName |De naam van de beheer groep voor Operations Manager agents.  Voor andere agents is dit AOI-\<werk ruimte-id\> |
+| ManagementGroupName |De naam van de beheer groep voor Operations Manager agents.  Voor andere agents is dit AOI-\<workspace ID\> |
 | RemoteIPCountry |Het land/de regio van het IP-adres van de client. |
 | RemoteIPLatitude |De breedte graad van het client-IP-adres. |
 | RemoteIPLongitude |De lengte graad van het client-IP-adres. |
@@ -60,12 +59,12 @@ IIS-logboek records hebben een type **W3CIISLog** en hebben de eigenschappen in 
 ## <a name="log-queries-with-iis-logs"></a>Query's vastleggen in Logboeken met IIS-logboeken
 De volgende tabel bevat verschillende voor beelden van logboek query's waarmee IIS-logboek records worden opgehaald.
 
-| Query’s uitvoeren | Beschrijving |
+| Query’s uitvoeren | Description |
 |:--- |:--- |
 | W3CIISLog |Alle IIS-logboek records. |
 | W3CIISLog &#124; waarbij scStatus = = 500 |Alle IIS-logboek records met de retour status 500. |
 | Aantal W3CIISLog &#124;-overzicht () door overschrijving |Aantal IIS-logboek vermeldingen op client-IP-adres. |
-| W3CIISLog &#124; waarbij csHost = = "www\.contoso.com" &#124; totaal aantal () door csUriStem |Aantal IIS-logboek vermeldingen op URL voor de www\.-contoso.com van de host. |
+| W3CIISLog &#124; waarbij csHost = = "www \. contoso.com" &#124; totaal aantal () door csUriStem |Aantal IIS-logboek vermeldingen op URL voor de www-contoso.com van de host \. . |
 | W3CIISLog &#124; samenvat Sum (csBytes) door computer &#124; 500000 |Het totale aantal bytes dat door elke IIS-computer is ontvangen. |
 
 ## <a name="next-steps"></a>Volgende stappen

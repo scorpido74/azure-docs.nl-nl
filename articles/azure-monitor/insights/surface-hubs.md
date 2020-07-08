@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
 ms.openlocfilehash: 7999735bf2d182b2811d01172adcfc89cba27dc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77662498"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Surface hubs bewaken met Azure Monitor om hun status bij te houden
@@ -40,7 +39,7 @@ U hebt de werk ruimte-ID en de werkruimte sleutel nodig voor de Log Analytics-we
 InTune is een micro soft-product waarmee u de configuratie-instellingen voor Log Analytics werk ruimte centraal kunt beheren die worden toegepast op een of meer van uw apparaten. Volg deze stappen om uw apparaten te configureren via intune:
 
 1. Meld u aan bij intune.
-2. Navigeer naar **instellingen** > **verbonden bronnen**.
+2. Navigeer naar **instellingen**  >  **verbonden bronnen**.
 3. Een beleid maken of bewerken op basis van de Surface Hub sjabloon.
 4. Ga naar de sectie Azure Operational Insights van het beleid en voeg de Log Analytics *werk ruimte-id* en de *werkruimte sleutel* toe aan het beleid.
 5. U kunt nu het beleid opslaan.
@@ -60,7 +59,7 @@ Als u intune niet gebruikt om uw omgeving te beheren, kunt u apparaten hand mati
 3. Klik op **Dit apparaat**en klik onder **bewaking**op **log Analytics instellingen configureren**.
 4. Selecteer **bewaking inschakelen**.
 5. Typ in het dialoog venster Log Analytics instellingen de Log Analytics **werk ruimte-id** en typ de **werkruimte sleutel**.  
-   ![instellingen](./media/surface-hubs/settings.png)
+   ![Instellingen](./media/surface-hubs/settings.png)
 6. Klik op **OK** om de configuratie te volt ooien.
 
 Er wordt een bevestiging weer gegeven met de melding of de configuratie is toegepast op het apparaat. Als dat het geval is, wordt er een bericht weer gegeven met de mede deling dat de agent is verbonden met Azure Monitor. Het apparaat begint vervolgens met het verzenden van gegevens naar Azure Monitor waar u deze kunt bekijken en er actie op moet ondernemen.

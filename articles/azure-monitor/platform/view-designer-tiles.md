@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
 ms.openlocfilehash: 0320be3a2cfbb96367799577a6e56bcf5da87dcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658503"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Naslag Gids voor het weer geven van ontwerp tegels in Azure Monitor
@@ -24,13 +23,13 @@ Zie voor meer informatie over de ontwerp functie voor weer gaven:
 
 De beschik bare weer gave Designer-tegels worden in de volgende tabel beschreven:  
 
-| Tegel | Beschrijving |
+| Tegel | Description |
 |:--- |:--- |
-| [Telwoord](#number-tile) |Het aantal records van een query. |
+| [Number](#number-tile) |Het aantal records van een query. |
 | [Twee getallen](#two-numbers-tile) |Het aantal records van twee verschillende query's. |
 | [Ringdiagram](#donut-tile) | Een grafiek op basis van een query, met een samenvattings waarde in het midden. |
 | Lijn diagram en bijschrift | Een lijn diagram dat is gebaseerd op een query en een toelichting met een samenvattings waarde. |
-| [Lijndiagram](#line-chart-tile) |Een lijn diagram dat is gebaseerd op een query. |
+| [Lijn diagram](#line-chart-tile) |Een lijn diagram dat is gebaseerd op een query. |
 | [Twee tijd lijnen](#two-timelines-tile) | Een kolom diagram met twee reeksen, elk op basis van een afzonderlijke query. |
 
 In de volgende secties worden de tegel typen en de bijbehorende eigenschappen uitvoerig beschreven.
@@ -46,7 +45,7 @@ Op de tegel **getal** wordt zowel het aantal records uit een logboek query als e
 | Instelling | Beschrijving |
 |:--- |:--- |
 | Naam |De tekst die boven aan de tegel wordt weer gegeven. |
-| Beschrijving |De tekst die wordt weer gegeven onder de naam van de tegel. |
+| Description |De tekst die wordt weer gegeven onder de naam van de tegel. |
 | **Tegel** | |
 | Legenda |De tekst die wordt weer gegeven onder de waarde. |
 | Query’s uitvoeren |De query die wordt uitgevoerd. Het aantal records dat door de query wordt geretourneerd, wordt weer gegeven. |
@@ -64,7 +63,7 @@ Deze tegel toont het aantal records uit twee verschillende logboek query's en ee
 | Instelling | Beschrijving |
 |:--- |:--- |
 | Naam |De tekst die boven aan de tegel wordt weer gegeven. |
-| Beschrijving |De tekst die wordt weer gegeven onder de naam van de tegel. |
+| Description |De tekst die wordt weer gegeven onder de naam van de tegel. |
 | **Eerste tegel** | |
 | Legenda |De tekst die wordt weer gegeven onder de waarde. |
 | Query’s uitvoeren |De query die wordt uitgevoerd. Het aantal records dat door de query wordt geretourneerd, wordt weer gegeven. |
@@ -85,7 +84,7 @@ De **ring** tegel geeft één getal weer dat een kolom waarde in een logboek que
 | Instelling | Beschrijving |
 |:--- |:--- |
 | Naam |De tekst die boven aan de tegel wordt weer gegeven. |
-| Beschrijving |De tekst die wordt weer gegeven onder de naam van de tegel. |
+| Description |De tekst die wordt weer gegeven onder de naam van de tegel. |
 | **Ringdiagram** | |
 | Query’s uitvoeren |De query die wordt uitgevoerd voor de ring. De eerste eigenschap is een tekst waarde en de tweede eigenschap is een numerieke waarde. Deze query gebruikt normaal gesp roken het sleutel woord *Measure* om de resultaten samen te vatten. |
 | **Ringdiagram** |**> Center** |
@@ -109,10 +108,10 @@ Deze tegel is een lijn diagram dat gedurende een bepaalde periode meerdere reeks
 | Instelling | Beschrijving |
 |:--- |:--- |
 | Naam |De tekst die boven aan de tegel wordt weer gegeven. |
-| Beschrijving |De tekst die wordt weer gegeven onder de naam van de tegel. |
-| **Lijndiagram** | |
+| Description |De tekst die wordt weer gegeven onder de naam van de tegel. |
+| **Lijn diagram** | |
 | Query’s uitvoeren |De query die wordt uitgevoerd voor het lijn diagram. De eerste eigenschap is een tekst waarde en de tweede eigenschap is een numerieke waarde. Deze query gebruikt normaal gesp roken het sleutel woord *Measure* om de resultaten samen te vatten. Als de query het gereserveerde woord *interval* gebruikt, gebruikt de x-as dit tijds interval. Als de query geen gebruik maakt van het *interval* sleutelwoord, gebruikt de x-as uur intervallen. |
-| **Lijndiagram** |**> Y-as** |
+| **Lijn diagram** |**> Y-as** |
 | Logaritmische schaal gebruiken |Selecteer deze koppeling om een logaritmische schaal voor de y-as te gebruiken. |
 | Eenheden |Geef de eenheden op voor de waarden die door de query worden geretourneerd. Deze informatie wordt gebruikt om labels in de grafiek weer te geven die de waardetypen en optioneel voor het converteren van de waarden aangeven. Het **eenheids type** specificeert de categorie van de eenheid en definieert de huidige waarden van het **type eenheid** die beschikbaar zijn. Als u een waarde selecteert in **converteren naar** , worden de numerieke waarden geconverteerd van het **huidige eenheids** type naar het type **converteren naar** . |
 | Aangepast label |De tekst die wordt weer gegeven voor de y-as naast het label voor het *eenheids* type. Als er geen label is opgegeven, wordt alleen het *eenheids* type weer gegeven. |
@@ -130,14 +129,14 @@ Deze tegel heeft een lijn diagram dat meerdere reeksen uit een logboek query in 
 | Instelling | Beschrijving |
 |:--- |:--- |
 | Naam |De tekst die boven aan de tegel wordt weer gegeven. |
-| Beschrijving |De tekst die wordt weer gegeven onder de naam van de tegel. |
-| **Lijndiagram** | |
+| Description |De tekst die wordt weer gegeven onder de naam van de tegel. |
+| **Lijn diagram** | |
 | Query’s uitvoeren |De query die wordt uitgevoerd voor het lijn diagram. De eerste eigenschap is een tekst waarde en de tweede eigenschap is een numerieke waarde. Deze query gebruikt normaal gesp roken het sleutel woord *Measure* om de resultaten samen te vatten. Als de query het gereserveerde woord *interval* gebruikt, gebruikt de x-as dit tijds interval. Als de query geen gebruik maakt van het *interval* sleutelwoord, gebruikt de x-as uur intervallen. |
-| **Lijndiagram** |**> bijschrift** |
+| **Lijn diagram** |**> bijschrift** |
 | Titel van bijschrift | De tekst die boven de waarde van de toelichting wordt weer gegeven. |
 | Reeks naam |De waarde van de reeks eigenschap die moet worden gebruikt als de waarde van de toelichting. Als er geen reeks wordt gegeven, worden alle records uit de query gebruikt. |
 | Bewerking |De bewerking die wordt uitgevoerd voor de eigenschap Value om deze samen te vatten als één waarde voor de toelichting.<ul><li>Gemiddelde: het gemiddelde van de waarden van alle records.</li><li>Aantal: het aantal records dat door de query wordt geretourneerd.</li><li>Laatste voor beeld: de waarde van het laatste interval dat is opgenomen in de grafiek.</li><li>Max: de maximum waarde van de intervallen die in de grafiek zijn opgenomen.</li><li>Min: de minimum waarde van de intervallen die in de grafiek zijn opgenomen.</li><li>Sum: de som van de waarden van alle records.</li></ul> |
-| **Lijndiagram** |**> Y-as** |
+| **Lijn diagram** |**> Y-as** |
 | Logaritmische schaal gebruiken |Selecteer deze koppeling om een logaritmische schaal voor de y-as te gebruiken. |
 | Eenheden |Geef de eenheden op voor de waarden die door de query moeten worden geretourneerd. Deze informatie wordt gebruikt om grafieklabels weer te geven die de waardetypen aangeven en, eventueel, om de waarden te converteren. Het *eenheids* type specificeert de categorie van de eenheid en definieert de beschik bare waarden van het *huidige eenheids* type. Als u een waarde selecteert in *converteren naar*, worden de numerieke waarden geconverteerd van het *huidige eenheids* type naar het type *converteren naar* . |
 | Aangepast label |De tekst die wordt weer gegeven voor de y-as naast het label voor het *eenheids* type. Als er geen label is opgegeven, wordt alleen het *eenheids* type weer gegeven. |
@@ -155,7 +154,7 @@ In de tegel **twee tijd lijnen** worden de resultaten van twee logboek query's i
 | Instelling | Beschrijving |
 |:--- |:--- |
 | Naam |De tekst die boven aan de tegel wordt weer gegeven. |
-| Beschrijving |De tekst die wordt weer gegeven onder de naam van de tegel. |
+| Description |De tekst die wordt weer gegeven onder de naam van de tegel. |
 | Eerste grafiek | |
 | Legenda |De tekst die wordt weer gegeven onder de toelichting voor de eerste reeks. |
 | Kleur |De kleur die wordt gebruikt voor de kolommen in de eerste reeks. |

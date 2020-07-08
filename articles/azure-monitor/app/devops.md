@@ -4,15 +4,14 @@ description: Hoe Application Insights past in de devOps-cyclus
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.openlocfilehash: 24095aade80022d1e1ebb38357971512bfc873c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77669689"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Diepe diagnostische gegevens voor web-apps en services met Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Waarom heb ik Application Insights nodig?
-Application Insights bewaakt uw actieve web-app. U krijgt informatie over fouten en prestatie problemen en helpt u bij het analyseren van hoe klanten uw app gebruiken. Het werkt voor apps die worden uitgevoerd op een groot aantal platformen (ASP.NET, Java EE, node. js,...) en wordt gehost in de Cloud of on-premises. 
+Application Insights bewaakt uw actieve web-app. U krijgt informatie over fouten en prestatie problemen en helpt u bij het analyseren van hoe klanten uw app gebruiken. Het werkt voor apps die worden uitgevoerd op een groot aantal platformen (ASP.NET, Java EE, Node.js,...) en wordt gehost in de Cloud of on-premises. 
 
 ![Aspecten van de complexiteit van het leveren van web-apps](./media/devops/010.png)
 
@@ -158,6 +157,6 @@ Wanneer een waarschuwing wordt gegenereerd, kan Application Insights automatisch
 Het is eenvoudig om aan de slag te gaan met Application Insights. De belangrijkste opties zijn:
 
 * [IIS-servers](../../azure-monitor/app/monitor-performance-live-website-now.md)en ook voor [Azure app service](../../azure-monitor/app/app-insights-overview.md).
-* Instrumenteer uw project tijdens de ontwikkeling. U kunt dit doen voor [ASP.net](../../azure-monitor/app/asp-net.md) -of [Java](../../azure-monitor/app/java-get-started.md) -apps, evenals [node. js](../../azure-monitor/app/nodejs.md) en een host van [andere typen](../../azure-monitor/app/platforms.md). 
+* Instrumenteer uw project tijdens de ontwikkeling. U kunt dit doen voor [ASP.net](../../azure-monitor/app/asp-net.md) -of [Java](../../azure-monitor/app/java-get-started.md) -apps, evenals [Node.js](../../azure-monitor/app/nodejs.md) en een host van [andere typen](../../azure-monitor/app/platforms.md). 
 * Een [wille keurige webpagina](../../azure-monitor/app/javascript.md) instrumenteren door een korte code fragment toe te voegen.
 

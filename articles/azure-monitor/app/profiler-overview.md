@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: ce952bd248640d03fcff43284707614577df8469
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671644"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profileer productie toepassingen in azure met Application Insights
@@ -53,19 +52,19 @@ Micro soft service Profiler maakt gebruik van een combi natie van bemonsterings 
 
 De aanroep stack die wordt weer gegeven in de tijdlijn weergave, is het resultaat van de steek proef en instrumentatie. Omdat elk voor beeld de volledige aanroep stack van de thread vastlegt, bevat het code van Microsoft .NET Framework en van andere frameworks waarnaar u verwijst.
 
-### <a name="object-allocation-clrjit_new-or-clrjit_newarr1"></a><a id="jitnewobj"></a>Object toewijzing (CLR) JIT\_nieuw of CLR! JIT\_-Newarr1)
+### <a name="object-allocation-clrjit_new-or-clrjit_newarr1"></a><a id="jitnewobj"></a>Object toewijzing (CLR) JIT \_ Nieuw of CLR! JIT \_ -Newarr1)
 
-**-! JIT\_nieuwe** en **CLR! JIT\_-Newarr1** zijn hulp functies in .NET Framework die geheugen van een beheerde heap toewijzen. **CLR! JIT\_nieuwe** wordt aangeroepen wanneer een object wordt toegewezen. **CLR! JIT\_Newarr1** wordt aangeroepen wanneer een object matrix wordt toegewezen. Deze twee functies zijn doorgaans snel en nemen relatief weinig tijd in beslag. Als **CLR! JIT\_nieuw** of **CLR! JIT\_-Newarr1** nemen veel tijd in uw tijd lijn in, maar de code kan vele objecten toewijzen en aanzienlijke hoeveel heden geheugen gebruiken.
+**CLR! JIT \_ nieuwe** en **CLR! JIT- \_ Newarr1** zijn hulp functies in .NET Framework die geheugen van een beheerde heap toewijzen. **CLR! JIT \_ nieuwe** wordt aangeroepen wanneer een object wordt toegewezen. **CLR! JIT \_ Newarr1** wordt aangeroepen wanneer een object matrix wordt toegewezen. Deze twee functies zijn doorgaans snel en nemen relatief weinig tijd in beslag. Als **CLR! JIT \_ Nieuw** of **CLR! JIT- \_ Newarr1** nemen veel tijd in uw tijd lijn in, maar de code kan vele objecten toewijzen en aanzienlijke hoeveel heden geheugen gebruiken.
 
 ### <a name="loading-code-clrtheprestub"></a><a id="theprestub"></a>De code wordt geladen (CLR! ThePreStub)
 
 **CLR! ThePreStub** is een hulp functie in .NET Framework waarmee de code wordt voor bereid voor de eerste keer wordt uitgevoerd. Deze uitvoering omvat gewoonlijk, maar is niet beperkt tot JIT-compilatie (just-in-time). Voor elke C#-methode is **CLR! ThePreStub** moet Maxi maal één keer worden aangeroepen tijdens een proces.
 
-Als **CLR! ThePreStub** neemt een lange tijd in beslag voor een aanvraag, de aanvraag is de eerste om die methode uit te voeren. De tijd voor het laden van .NET Framework de eerste methode is aanzienlijk. U kunt overwegen een opwarm-proces te gebruiken dat het gedeelte van de code uitvoert voordat uw gebruikers er toegang tot hebben, of u kunt overwegen om de systeem eigen image generator (Ngen. exe) uit te voeren in uw assembly's.
+Als **CLR! ThePreStub** neemt een lange tijd in beslag voor een aanvraag, de aanvraag is de eerste om die methode uit te voeren. De tijd voor het laden van .NET Framework de eerste methode is aanzienlijk. U kunt overwegen een opwarm-proces te gebruiken waarmee dat gedeelte van de code wordt uitgevoerd voordat uw gebruikers toegang krijgen. u kunt ook de systeem eigen image generator (ngen.exe) uitvoeren op de assembly's.
 
-### <a name="lock-contention-clrjitutil_moncontention-or-clrjitutil_monenterworker"></a><a id="lockcontention"></a>Conflicten vergren delen (CLR! JITutil\_MonContention of CLR! JITutil\_MonEnterWorker)
+### <a name="lock-contention-clrjitutil_moncontention-or-clrjitutil_monenterworker"></a><a id="lockcontention"></a>Conflicten vergren delen (CLR! JITutil \_ MonContention of CLR! JITutil \_ MonEnterWorker)
 
-**-! JITutil\_MonContention** of **CLR! JITutil\_MonEnterWorker** geeft aan dat de huidige thread wacht totdat een vergren deling wordt vrijgegeven. Deze tekst wordt vaak weer gegeven wanneer u een C# **Lock** -instructie uitvoert, de monitor aanroept **. Voer** de methode in of roep een methode aan met het kenmerk **MethodImplOptions. Synchronized** . Vergrendelings conflicten treedt doorgaans op wanneer thread _a_ een vergren deling ophaalt en thread _B_ probeert dezelfde vergren deling te verkrijgen voordat thread _a_ deze uitgeeft.
+**CLR! JITutil \_ MonContention** of **CLR! JITutil \_ MonEnterWorker** geeft aan dat de huidige thread wacht totdat een vergren deling wordt vrijgegeven. Deze tekst wordt vaak weer gegeven wanneer u een C# **Lock** -instructie uitvoert, de monitor aanroept **. Voer** de methode in of roep een methode aan met het kenmerk **MethodImplOptions. Synchronized** . Vergrendelings conflicten treedt doorgaans op wanneer thread _a_ een vergren deling ophaalt en thread _B_ probeert dezelfde vergren deling te verkrijgen voordat thread _a_ deze uitgeeft.
 
 ### <a name="loading-code-cold"></a><a id="ngencold"></a>Code laden ([koude])
 
@@ -79,11 +78,11 @@ Methoden zoals **httpclient maakt. Send** geven aan dat de code wacht tot een HT
 
 ### <a name="database-operation"></a><a id="sqlcommand"></a>Database bewerking
 
-Methoden zoals **SqlCommand. Execute** geven aan dat de code wacht tot de database bewerking is voltooid.
+Methoden als **SqlCommand.Exeschattige** geven aan dat de code wacht tot de database bewerking is voltooid.
 
-### <a name="waiting-await_time"></a><a id="await"></a>Wachten (\_tijd in afwachting)
+### <a name="waiting-await_time"></a><a id="await"></a>Wachten (tijd in afwachting \_ )
 
-**In\_afwachting van tijd** geeft aan dat de code wacht tot een andere taak is voltooid. Deze vertraging treedt meestal op met de C#-instructie **AWAIT** . Wanneer de code van een C# in **afwachting**is, wordt door de thread de besturing van de thread groep ontslagen en geretourneerd. er is geen thread die wacht **totdat de bewerking** is voltooid. De thread die de **wacht** tijd ' geblokkeerd ' had, is echter in afwachting van het volt ooien van de bewerking. De **instructie\_AWAIT time** -out geeft de geblokkeerde tijd aan die wacht totdat de taak is voltooid.
+**AWAIT \_ TIJD** geeft aan dat de code wacht tot een andere taak is voltooid. Deze vertraging treedt meestal op met de C#-instructie **AWAIT** . Wanneer de code van een C# in **afwachting**is, wordt door de thread de besturing van de thread groep ontslagen en geretourneerd. er is geen thread die wacht **totdat de bewerking** is voltooid. De thread die de **wacht** tijd ' geblokkeerd ' had, is echter in afwachting van het volt ooien van de bewerking. De instructie **AWAIT \_ time** -out geeft de geblokkeerde tijd aan die wacht totdat de taak is voltooid.
 
 ### <a name="blocked-time"></a><a id="block"></a>Geblokkeerde tijd
 

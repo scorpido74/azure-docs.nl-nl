@@ -17,10 +17,9 @@ ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
 ms.openlocfilehash: a1726e18ea8c1ba86d77d7b9ca3d50c444620361
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77657160"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Overzicht van Azure Virtual Machines-beveiliging
@@ -57,14 +56,14 @@ Meer informatie over antimalware-software om uw virtuele machines te beschermen:
 
 Voor nog krachtigere beveiliging kunt u het gebruik van [Windows Defender Advanced Threat Protection](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection)gebruiken. Met Windows Defender ATP krijgt u het volgende:
 
-* [Kwets baarheid voor aanvallen verminderen](/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
+* [Kwetsbaarheid voor aanvallen verminderen](/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
 * [Beveiliging van de volgende generatie](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)  
 * [Endpoint Protection en respons](/windows/security/threat-protection/windows-defender-atp/overview-endpoint-detection-response)
 * [Geautomatiseerd onderzoek en herstel](/windows/security/threat-protection/windows-defender-atp/automated-investigations-windows-defender-advanced-threat-protection)
 * [Beveiligingsscore](/windows/security/threat-protection/microsoft-defender-atp/configuration-score)
 * [Geavanceerde jacht](/windows/security/threat-protection/windows-defender-atp/overview-hunting-windows-defender-advanced-threat-protection)
 * [Beheer en Api's](/windows/security/threat-protection/windows-defender-atp/management-apis)
-* [Micro soft Threat Protection](/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
+* [Microsoft Threat Protection](/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
 
 Meer informatie:
 
@@ -79,7 +78,7 @@ Key Vault biedt de mogelijkheid om uw sleutels op te slaan in Hardware Security 
 
 Meer informatie:
 
-* [Wat is Azure Sleutelkluis?](/azure/key-vault/key-vault-overview)
+* [Wat is Azure Key Vault?](/azure/key-vault/key-vault-overview)
 * [Azure Key Vault blog](https://blogs.technet.microsoft.com/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>Schijf versleuteling van virtuele machine
@@ -160,7 +159,7 @@ Meer informatie:
 
 Hoewel vertrouwelijke computing geen technisch onderdeel is van de beveiliging van de virtuele machine, behoort het onderwerp van de beveiliging van de virtuele machine tot het hogere niveau van "Compute"-beveiliging. Vertrouwelijk computing behoort tot de categorie "Compute"-beveiliging.
 
-Met vertrouwelijke computing zorgt u ervoor dat wanneer gegevens ' in de heldere ' zijn, die is vereist voor een efficiënte verwerking, de gegevens worden beschermd binnen https://en.wikipedia.org/wiki/Trusted_execution_environment een vertrouwde uitvoerings omgeving (Tee, ook wel een enclave genoemd), een voor beeld van dat wordt weer gegeven in de afbeelding hieronder.  
+Met vertrouwelijke computing zorgt u ervoor dat wanneer gegevens ' in de heldere ' zijn, die is vereist voor een efficiënte verwerking, de gegevens worden beschermd binnen een vertrouwde uitvoerings omgeving https://en.wikipedia.org/wiki/Trusted_execution_environment (Tee, ook wel een enclave genoemd), een voor beeld van dat wordt weer gegeven in de afbeelding hieronder.  
 
 TEEs zorgt ervoor dat er geen manier is om gegevens of de bewerkingen in de buiten kant weer te geven, zelfs met een fout opsporingsprogramma. Ze kunnen er ook voor zorgen dat alleen geautoriseerde code toegang heeft tot gegevens. Als de code wordt gewijzigd of gewijzigd, worden de bewerkingen geweigerd en wordt de omgeving uitgeschakeld. De TEE dwingt deze beveiligingen af tijdens het uitvoeren van code in het bestand.
 

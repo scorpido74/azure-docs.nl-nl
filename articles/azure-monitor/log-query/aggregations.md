@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670301"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Aggregaties in Azure Monitor-logboek query's
@@ -63,7 +62,7 @@ Heartbeat
 | summarize dcount(Computer)
 ```
 
-Als u alleen de Linux-computers wilt tellen die heartbeats `dcountif`hebben verzonden, gebruikt u:
+Als u alleen de Linux-computers wilt tellen die heartbeats hebben verzonden, gebruikt u `dcountif` :
 
 ```Kusto
 Heartbeat 
@@ -72,7 +71,7 @@ Heartbeat
 ```
 
 ### <a name="evaluating-subgroups"></a>Subgroepen evalueren
-Als u een aantal of andere aggregaties voor subgroepen in uw gegevens wilt uitvoeren, `by` gebruikt u het sleutel woord. Als u bijvoorbeeld het aantal afzonderlijke Linux-computers wilt tellen dat in elk land/elke regio heartbeats heeft verzonden:
+Als u een aantal of andere aggregaties voor subgroepen in uw gegevens wilt uitvoeren, gebruikt u het `by` sleutel woord. Als u bijvoorbeeld het aantal afzonderlijke Linux-computers wilt tellen dat in elk land/elke regio heartbeats heeft verzonden:
 
 ```Kusto
 Heartbeat 
@@ -89,7 +88,7 @@ Heartbeat
 |Nederland      | 2                   |
 
 
-Als u nog kleinere subgroepen van uw gegevens wilt analyseren, voegt u aanvullende kolom `by` namen toe aan de sectie. U kunt bijvoorbeeld de afzonderlijke computers van elk land/elke regio per OSType tellen:
+Als u nog kleinere subgroepen van uw gegevens wilt analyseren, voegt u aanvullende kolom namen toe aan de `by` sectie. U kunt bijvoorbeeld de afzonderlijke computers van elk land/elke regio per OSType tellen:
 
 ```Kusto
 Heartbeat 
@@ -98,10 +97,10 @@ Heartbeat
 ```
 
 ## <a name="percentiles-and-variance"></a>Percentielen en variantie
-Bij het evalueren van numerieke waarden is het normaal om ze te berekenen `summarize avg(expression)`met behulp van. De gemiddelden worden beïnvloed door extreme waarden die slechts enkele gevallen kenmerkend zijn. Als u het probleem wilt oplossen, kunt u minder gevoelige functies gebruiken `median` , `variance`zoals of.
+Bij het evalueren van numerieke waarden is het normaal om ze te berekenen met behulp van `summarize avg(expression)` . De gemiddelden worden beïnvloed door extreme waarden die slechts enkele gevallen kenmerkend zijn. Als u het probleem wilt oplossen, kunt u minder gevoelige functies gebruiken, zoals `median` of `variance` .
 
 ### <a name="percentile"></a>Percentiel
-Als u de mediaan waarde wilt weten, `percentile` gebruikt u de functie met een waarde om het percentiel op te geven:
+Als u de mediaan waarde wilt weten, gebruikt u de `percentile` functie met een waarde om het percentiel op te geven:
 
 ```Kusto
 Perf

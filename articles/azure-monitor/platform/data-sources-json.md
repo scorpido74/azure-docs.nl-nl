@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: 49eb3fa22bc9afffb9e93f3152cdc00323b76d41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77662158"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Aangepaste JSON-gegevens bronnen met de Log Analytics-agent voor Linux verzamelen in Azure Monitor
@@ -26,9 +25,9 @@ Aangepaste JSON-gegevens bronnen kunnen worden verzameld in [Azure monitor](data
 
 ### <a name="configure-input-plugin"></a>Invoer-plugin configureren
 
-Als u JSON-gegevens in Azure Monitor wilt `oms.api.` verzamelen, voegt u toe aan het begin van een vloeiende tag in een invoer-invoeg toepassing.
+Als u JSON-gegevens in Azure Monitor wilt verzamelen, voegt `oms.api.` u toe aan het begin van een vloeiende tag in een invoer-invoeg toepassing.
 
-Het volgende is bijvoorbeeld een afzonderlijk configuratie bestand `exec-json.conf` in. `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`  Hierbij wordt gebruikgemaakt van de `exec` gefluente invoeg toepassing om elke 30 seconden een krul opdracht uit te voeren.  De uitvoer van deze opdracht wordt verzameld door de JSON-uitvoer-invoeg toepassing.
+Het volgende is bijvoorbeeld een afzonderlijk configuratie bestand `exec-json.conf` in `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` .  Hierbij wordt gebruikgemaakt van de gefluente invoeg toepassing `exec` om elke 30 seconden een krul opdracht uit te voeren.  De uitvoer van deze opdracht wordt verzameld door de JSON-uitvoer-invoeg toepassing.
 
 ```
 <source>
@@ -52,12 +51,12 @@ Het volgende is bijvoorbeeld een afzonderlijk configuratie bestand `exec-json.co
   retry_wait 30s
 </match>
 ```
-Het eigendom van het configuratie `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` bestand dat u hebt toegevoegd, moet zijn gewijzigd met de volgende opdracht.
+Het eigendom van het configuratie bestand `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` dat u hebt toegevoegd, moet zijn gewijzigd met de volgende opdracht.
 
 `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/exec-json.conf`
 
 ### <a name="configure-output-plugin"></a>Invoeg toepassing voor uitvoer configureren 
-Voeg de volgende configuratie voor de uitvoer-invoeg toepassing toe `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` aan de hoofd configuratie in of als een afzonderlijk configuratie bestand dat is geplaatst in`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
+Voeg de volgende configuratie voor de uitvoer-invoeg toepassing toe aan de hoofd configuratie in `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` of als een afzonderlijk configuratie bestand dat is geplaatst in`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
 
 ```
 <match oms.api.**>
@@ -80,13 +79,13 @@ Start de Log Analytics-agent voor Linux-service opnieuw met de volgende opdracht
     sudo /opt/microsoft/omsagent/bin/service_control restart 
 
 ## <a name="output"></a>Uitvoer
-De gegevens worden verzameld in Azure Monitor met een record type van `<FLUENTD_TAG>_CL`.
+De gegevens worden verzameld in Azure Monitor met een record type van `<FLUENTD_TAG>_CL` .
 
-Bijvoorbeeld de aangepaste tag `tag oms.api.tomcat` in azure monitor met het record type. `tomcat_CL`  U kunt alle records van dit type ophalen met de volgende logboek query.
+Bijvoorbeeld de aangepaste tag `tag oms.api.tomcat` in azure monitor met het record type `tomcat_CL` .  U kunt alle records van dit type ophalen met de volgende logboek query.
 
     Type=tomcat_CL
 
-Geneste JSON-gegevens bronnen worden ondersteund, maar worden geïndexeerd op basis van een van de bovenliggende velden. De volgende JSON-gegevens worden bijvoorbeeld geretourneerd van een logboek query als `tag_s : "[{ "a":"1", "b":"2" }]`.
+Geneste JSON-gegevens bronnen worden ondersteund, maar worden geïndexeerd op basis van een van de bovenliggende velden. De volgende JSON-gegevens worden bijvoorbeeld geretourneerd van een logboek query als `tag_s : "[{ "a":"1", "b":"2" }]` .
 
 ```
 {

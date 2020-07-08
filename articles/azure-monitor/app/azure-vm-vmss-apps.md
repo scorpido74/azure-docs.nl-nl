@@ -4,10 +4,9 @@ description: Bewaking van toepassings prestaties voor Azure VM en virtuele-machi
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: d75e14dccef565f0029d06583e74d5693726dd99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77661325"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>De Azure Monitor Application Insights-agent implementeren op virtuele machines van Azure en virtuele-machine schaal sets van Azure
@@ -19,7 +18,7 @@ Dit artikel helpt u bij het inschakelen van Application Insights bewaking met be
 > [!IMPORTANT]
 > Azure-toepassing Insights-agent voor .NET is momenteel beschikbaar als open bare preview.
 > Deze preview-versie is beschikbaar zonder een service overeenkomst en wij raden deze niet aan voor productie werkbelastingen. Sommige functies worden mogelijk niet ondersteund en andere hebben mogelijk beperkte mogelijkheden.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="enable-application-insights"></a>Application Insights inschakelen
 
@@ -32,7 +31,7 @@ Er zijn twee manieren om toepassings bewaking in te scha kelen voor virtuele mac
 
     * De Application Insights-agent verzamelt automatisch dezelfde afhankelijkheids signalen als de .NET-SDK. Zie de [Automatische verzameling van afhankelijkheden](https://docs.microsoft.com/azure/azure-monitor/app/auto-collect-dependencies#net) voor meer informatie.
         > [!NOTE]
-        > Momenteel worden alleen door .NET IIS gehoste toepassingen ondersteund. Gebruik een SDK om ASP.NET Core-, Java-en node. js-toepassingen te instrumenteren die worden gehost op virtuele machines van Azure en virtuele-machine schaal sets.
+        > Momenteel worden alleen door .NET IIS gehoste toepassingen ondersteund. Gebruik een SDK om ASP.NET Core-, Java-en Node.js-toepassingen te instrumenteren die worden gehost op virtuele machines van Azure en virtuele-machine schaal sets.
 
 * **Code gebaseerd** via SDK
 
@@ -168,7 +167,7 @@ Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myR
 Zoek tips voor het oplossen van problemen met de Application Insights Monitoring Agent-extensie voor .NET-toepassingen die worden uitgevoerd op virtuele machines van Azure en virtuele-machine schaal sets.
 
 > [!NOTE]
-> .NET core-, Java-en node. js-toepassingen worden alleen ondersteund op virtuele machines van Azure en virtuele-machine schaal sets van Azure via hand matige instrumentatie op basis van SDK. Daarom zijn de volgende stappen niet van toepassing op deze scenario's.
+> .NET core-, Java-en Node.js-toepassingen worden alleen ondersteund op virtuele machines van Azure en virtuele-machine schaal sets van Azure via hand matige instrumentatie op basis van SDK. Daarom zijn de volgende stappen niet van toepassing op deze scenario's.
 
 Uitvoer voor uitvoering van extensie wordt vastgelegd in bestanden die in de volgende directory's zijn gevonden:
 ```Windows

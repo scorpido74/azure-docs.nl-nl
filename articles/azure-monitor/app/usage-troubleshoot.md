@@ -7,10 +7,9 @@ ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 8d2e573f34895207a455838b5fc64f95560943d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670913"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Problemen oplossen met hulpprogram ma's voor analyse van gebruikers gedrag in Application Insights
@@ -32,22 +31,22 @@ De hulpprogram ma's voor analyse van gebruikers gedrag bieden momenteel geen ond
 ## <a name="naming-events"></a>Naamgevings gebeurtenissen
 **Mijn app heeft duizenden verschillende pagina weergaven en aangepaste gebeurtenis namen. Het is moeilijk om deze te onderscheiden en de analyse hulpprogramma's van het gebruikers gedrag worden vaak niet meer op de reactie. Hoe kan ik deze naamgevings problemen oplossen?**
 
-De pagina weergave en aangepaste gebeurtenis namen worden gebruikt in de analyse hulpprogramma's voor gebruikers gedrag. De bron van de naamgeving van gebeurtenissen is van cruciaal belang voor het verkrijgen van waarde uit deze hulpprogram ma's. Het doel is een evenwicht tussen het gebruik van te weinig, te veel generieke namen (' knop geklikt ') en er zijn teveel, specifieke namen (op de knop\/bewerken geklikt op http:/www.contoso.com/index).
+De pagina weergave en aangepaste gebeurtenis namen worden gebruikt in de analyse hulpprogramma's voor gebruikers gedrag. De bron van de naamgeving van gebeurtenissen is van cruciaal belang voor het verkrijgen van waarde uit deze hulpprogram ma's. Het doel is een evenwicht tussen het gebruik van te weinig, te veel generieke namen (' knop geklikt ') en er zijn teveel, specifieke namen (op de knop bewerken geklikt op http: \/ /www.contoso.com/index).
 
 Als u wijzigingen wilt aanbrengen in de pagina weergave en aangepaste gebeurtenis namen die uw app verzendt, moet u de bron code van uw app wijzigen en opnieuw implementeren. **Alle telemetriegegevens in Application Insights worden 90 dagen opgeslagen en kunnen niet worden verwijderd**. wijzigingen die u aanbrengt in gebeurtenis namen, worden 90 dagen in volledig manifesten. Voor de 90 dagen nadat de naam is gewijzigd, worden zowel de oude als de nieuwe namen van de gebeurtenissen in uw telemetrie weer gegeven. u kunt daarom query's en communicatie binnen uw teams aanpassen.
 
 Als uw app te veel pagina weergave namen verzendt, controleert u of deze pagina weergave namen hand matig zijn opgegeven in de code of dat ze automatisch worden verzonden door de Application Insights java script SDK:
 
-* Als de namen van de pagina weergaven hand matig worden opgegeven in code met behulp van de [ `trackPageView` API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md), wijzigt u de naam zodat deze minder specifiek is. Vermijd veelvoorkomende fouten, zoals het plaatsen van de URL in de naam van de pagina weergave. Gebruik in plaats daarvan de URL-para `trackPageView` meter van de API. Andere details van de pagina weergave naam verplaatsen naar aangepaste eigenschappen.
+* Als de namen van de pagina weergaven hand matig worden opgegeven in code met behulp van de [ `trackPageView` API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md), wijzigt u de naam zodat deze minder specifiek is. Vermijd veelvoorkomende fouten, zoals het plaatsen van de URL in de naam van de pagina weergave. Gebruik in plaats daarvan de URL-para meter van de `trackPageView` API. Andere details van de pagina weergave naam verplaatsen naar aangepaste eigenschappen.
 
-* Als de Application Insights java script SDK automatisch pagina weergave namen verzendt, kunt u de titels van uw pagina's wijzigen of overschakelen naar het hand matig verzenden van pagina weergave namen. De SDK verzendt standaard de [titel](https://developer.mozilla.org/docs/Web/HTML/Element/title) van elke pagina als de weergave naam van de pagina. U kunt uw titels zo wijzigen dat ze meer algemeen zijn, maar mindful zijn van SEO en andere gevolgen voor deze wijziging. Het hand matig opgeven van pagina weergave `trackPageView` namen met de API overschrijft de automatisch verzamelde namen, zodat u meer algemene namen in telemetrie kunt verzenden zonder pagina titels te wijzigen.   
+* Als de Application Insights java script SDK automatisch pagina weergave namen verzendt, kunt u de titels van uw pagina's wijzigen of overschakelen naar het hand matig verzenden van pagina weergave namen. De SDK verzendt standaard de [titel](https://developer.mozilla.org/docs/Web/HTML/Element/title) van elke pagina als de weergave naam van de pagina. U kunt uw titels zo wijzigen dat ze meer algemeen zijn, maar mindful zijn van SEO en andere gevolgen voor deze wijziging. Het hand matig opgeven van pagina weergave namen met de `trackPageView` API overschrijft de automatisch verzamelde namen, zodat u meer algemene namen in telemetrie kunt verzenden zonder pagina titels te wijzigen.   
 
-Als uw app te veel aangepaste gebeurtenis namen verzendt, wijzigt u de naam in de code zodat deze minder specifiek is. Vermijd het gebruik van Url's en andere gegevens per pagina of dynamische informatie rechtstreeks in de aangepaste gebeurtenis namen. Verplaats deze gegevens in plaats daarvan naar aangepaste eigenschappen van de aangepaste gebeurtenis met `trackEvent` de API. In plaats van `appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")`kunnen we bijvoorbeeld iets Voorst Ellen `appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })`als.
+Als uw app te veel aangepaste gebeurtenis namen verzendt, wijzigt u de naam in de code zodat deze minder specifiek is. Vermijd het gebruik van Url's en andere gegevens per pagina of dynamische informatie rechtstreeks in de aangepaste gebeurtenis namen. Verplaats deze gegevens in plaats daarvan naar aangepaste eigenschappen van de aangepaste gebeurtenis met de `trackEvent` API. In plaats van kunnen we bijvoorbeeld iets Voorst `appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")` Ellen als `appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })` .
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Overzicht van analyse hulpprogramma's voor gebruikers gedrag](usage-overview.md)
 
-## <a name="get-help"></a>Help opvragen
+## <a name="get-help"></a>Hulp vragen
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 

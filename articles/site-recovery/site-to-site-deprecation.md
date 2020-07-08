@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
 ms.openlocfilehash: 208177d10e9002fafe2495710da229541a11a43e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77661667"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Afschaffing van herstel na nood gevallen tussen door de klant beheerde sites (met VMM) met behulp van Azure Site Recovery
@@ -42,7 +41,7 @@ Hieronder vindt u de alternatieven die de klant kan kiezen om ervoor te zorgen d
 - Optie 2: u kunt door gaan met site-naar-site-replicatie met behulp van de onderliggende [Hyper-V-replica oplossing](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica), maar u kunt geen Dr-configuraties beheren met Azure site Recovery in de Azure Portal. 
 
 
-## <a name="remediation-steps"></a>Herstels tappen
+## <a name="remediation-steps"></a>Herstelstappen
 
 Voer de volgende stappen uit als u ervoor kiest om te gaan met optie 1:
 
@@ -57,7 +56,7 @@ Voer de volgende stappen uit als u ervoor kiest om te gaan met optie 1:
 
 Als u ervoor kiest om te gaan met optie 2 van Hyper-V replica, voert u de volgende stappen uit:
 
-1. Klik in **beveiligde items** > **gerepliceerde items**met de rechter muisknop op de machine > **Schakel replicatie uit**.
+1. Klik in **beveiligde items**  >  **gerepliceerde items**met de rechter muisknop op de machine > **Schakel replicatie uit**.
 2. Selecteer **verwijderen**in **replicatie uitschakelen**.
 
     Hiermee wordt het gerepliceerde item verwijderd uit de Azure Site Recovery (facturering wordt gestopt). De replicatie Configuratie op de on-premises virtuele machine **wordt niet** opgeschoond. 

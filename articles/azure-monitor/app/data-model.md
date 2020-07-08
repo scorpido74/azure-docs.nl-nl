@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 94013a12e1cf48a8007fce2547c200d82a657b71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671831"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights telemetrie-gegevens model
@@ -30,11 +29,11 @@ De volgende typen telemetrie worden gebruikt voor het bewaken van de uitvoering 
 
     Een **bewerking** is de threads van de uitvoering waarmee een aanvraag wordt verwerkt. U kunt ook [code schrijven](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) voor het bewaken van andere soorten bewerkingen, zoals een ' Wake up ' in een Webtaak of functie waarmee periodiek gegevens worden verwerkt.  Elke bewerking heeft een ID. Deze ID die kan worden gebruikt voor het [groeperen](../../azure-monitor/app/correlation.md) van alle telemetrie die zijn gegenereerd tijdens de verwerking van de aanvraag door uw app. Elke bewerking slaagt of mislukt en heeft een tijds duur.
 * [**Uitzonde ring**](data-model-exception-telemetry.md) -geeft meestal een uitzonde ring aan die ervoor zorgt dat een bewerking mislukt.
-* [**Afhankelijkheid**](data-model-dependency-telemetry.md) : vertegenwoordigt een aanroep van uw app naar een externe service of opslag, zoals een rest API of SQL. In ASP.NET worden afhankelijkheids aanroepen naar SQL gedefinieerd door `System.Data`. Aanroepen van HTTP-eind punten worden `System.Net`gedefinieerd door. 
+* [**Afhankelijkheid**](data-model-dependency-telemetry.md) : vertegenwoordigt een aanroep van uw app naar een externe service of opslag, zoals een rest API of SQL. In ASP.NET worden afhankelijkheids aanroepen naar SQL gedefinieerd door `System.Data` . Aanroepen van HTTP-eind punten worden gedefinieerd door `System.Net` . 
 
 Application Insights biedt drie extra gegevens typen voor aangepaste telemetrie:
 
-* [Trace](data-model-trace-telemetry.md) : wordt direct gebruikt, of via een adapter voor het implementeren van diagnostische logboek registratie met behulp van een instrumentatie raamwerk dat bekend `Log4Net` is `System.Diagnostics`bij u, zoals of.
+* [Trace](data-model-trace-telemetry.md) : wordt direct gebruikt, of via een adapter voor het implementeren van diagnostische logboek registratie met behulp van een instrumentatie raamwerk dat bekend is bij u, zoals `Log4Net` of `System.Diagnostics` .
 * [Gebeurtenis](data-model-event-telemetry.md) : wordt meestal gebruikt voor het vastleggen van gebruikers interactie met uw service, voor het analyseren van gebruiks patronen.
 * [Metrisch](data-model-metric-telemetry.md) : wordt gebruikt voor het rapporteren van periodieke scalaire metingen.
 

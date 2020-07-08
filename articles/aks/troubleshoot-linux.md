@@ -9,21 +9,20 @@ ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: aleldeib
 ms.openlocfilehash: eb6b126b4d1794adf0380432040190b91a17a675
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77925603"
 ---
 # <a name="linux-performance-troubleshooting"></a>Problemen met Linux-prestaties oplossen
 
 Bron uitputting op Linux-machines is een veelvoorkomend probleem en kan zich in een groot aantal symptomen voordoen. Dit document bevat een overzicht van de hulpprogram ma's die beschikbaar zijn om te helpen bij het vaststellen van dergelijke problemen.
 
-Veel van deze hulpprogram ma's accepteren een interval voor het produceren van uitvoer. Met deze uitvoer indeling worden herkennen patronen doorgaans veel eenvoudiger gemaakt. Wanneer u dit hebt geaccepteerd, wordt het aanroepen van het voor beeld meegenomen `[interval]`.
+Veel van deze hulpprogram ma's accepteren een interval voor het produceren van uitvoer. Met deze uitvoer indeling worden herkennen patronen doorgaans veel eenvoudiger gemaakt. Wanneer u dit hebt geaccepteerd, wordt het aanroepen van het voor beeld meegenomen `[interval]` .
 
 Veel van deze hulpprogram ma's hebben een uitgebreide geschiedenis en een breed scala aan configuratie opties. Deze pagina bevat slechts een eenvoudige subset van aanroepen om veelvoorkomende problemen te markeren. De canonieke bron van informatie is altijd de referentie documentatie voor elk bepaald hulp programma. Deze documentatie is veel uitgebreider dan u hier vindt.
 
-## <a name="guidance"></a>Richtlijnen
+## <a name="guidance"></a>Hulp
 
 Zorg voor een systematische aanpak bij het onderzoeken van prestatie problemen. Er zijn twee veelvoorkomende benaderingen (gebruik, intensiteit, fouten) en rood (frequentie, fouten, duur). ROOD wordt doorgaans gebruikt in de context van services voor bewaking op basis van aanvragen. GEBRUIK wordt meestal gebruikt voor bewakings bronnen: voor elke bron op een machine, het gebruik, de verzadiging en de fouten bewaken. De vier belangrijkste soorten resources op elke computer zijn CPU, geheugen, schijf en netwerk. Hoog gebruik, verzadiging of fout tarieven voor een van deze resources duiden op een mogelijk probleem met het systeem. Als er een probleem optreedt, onderzoekt u de hoofd oorzaak: Waarom is de schijf-i/o-latentie hoog? Zijn de schijven of de SKU van de virtuele machine beperkt? Welke processen schrijven naar de apparaten en naar welke bestanden?
 
@@ -119,11 +118,11 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
  2  0      0 43300372 545716 19691456    0    0     3    50    3    3  2  1 95  1  0
 ```
 
-`vmstat`bevat vergelijk bare `mpstat` informatie `top`en het inventariseren van het aantal processen dat wacht op CPU (r-kolom), geheugen statistieken en percentage CPU-tijd die aan elke werk status worden besteed.
+`vmstat`bevat vergelijk bare informatie `mpstat` en het `top` inventariseren van het aantal processen dat wacht op CPU (r-kolom), geheugen statistieken en percentage CPU-tijd die aan elke werk status worden besteed.
 
 ## <a name="memory"></a>Geheugen
 
-Het geheugen is zeer belang rijk en gelukkig eenvoudig, te traceren resource. Sommige hulpprogram ma's kunnen zowel de CPU als het geheugen `vmstat`rapporteren, zoals. Hulpprogram ma's, `free` zoals mogelijk, zijn nog steeds handig voor snelle fout opsporing.
+Het geheugen is zeer belang rijk en gelukkig eenvoudig, te traceren resource. Sommige hulpprogram ma's kunnen zowel de CPU als het geheugen rapporteren, zoals `vmstat` . Hulpprogram ma's, zoals `free` mogelijk, zijn nog steeds handig voor snelle fout opsporing.
 
 ### <a name="free"></a>macro's
 
@@ -157,7 +156,7 @@ sda               0.00    56.00    0.00   65.00     0.00   504.00    15.51     0
 scd0              0.00     0.00    0.00    0.00     0.00     0.00     0.00     0.00    0.00    0.00    0.00   0.00   0.00
 ```
 
-`iostat`biedt uitgebreide inzichten in het schijf gebruik. Deze aanroep geeft `-x` uitgebreide statistieken, `-y` om de eerste uitvoer van het afdruk systeem na het opstarten over te slaan, `1 1` en om op te geven dat het interval van 1 seconde moet eindigen na één uitvoer blok. 
+`iostat`biedt uitgebreide inzichten in het schijf gebruik. Deze aanroep geeft `-x` uitgebreide statistieken, `-y` om de eerste uitvoer van het afdruk systeem na het opstarten over te slaan, en `1 1` om op te geven dat het interval van 1 seconde moet eindigen na één uitvoer blok. 
 
 `iostat`beschrijft veel nuttige statistieken:
 
@@ -170,7 +169,7 @@ Op een virtuele Azure-machine:
 
 - de som van `r/s` en `w/s` voor een afzonderlijk blok apparaat mag niet hoger zijn dan de SKU-limieten van die schijf.
 - de som van `rkB/s` en `wkB/s` voor een afzonderlijk blok apparaat mag de SKU-limieten van die schijf niet overschrijden
-- de som van `r/s` en `w/s` voor alle blok apparaten overschrijdt mogelijk niet de LIMIETen voor de VM-SKU.
+- de som van `r/s` en `w/s` voor alle blok apparaten overschrijdt mogelijk niet de limieten voor de VM-SKU.
 - de som van `rkB/s` en ' wkB/s voor alle blok apparaten overschrijdt mogelijk niet de limieten voor de VM-SKU.
 
 Houd er rekening mee dat de schijf van het besturings systeem telt als een beheerde schijf van de kleinste SKU die overeenkomt met de capaciteit. Een 1024GB-besturingssysteem schijf komt bijvoorbeeld overeen met een P30-schijf. Tijdelijke besturingssysteem schijven en tijdelijke schijven hebben geen afzonderlijke schijf limieten. ze worden alleen beperkt door de volledige VM-limieten.
@@ -199,7 +198,7 @@ $ sar -n DEV [interval]
 22:36:58    azvdbf16b0b2fc      9.00     19.00      3.36      1.18      0.00      0.00      0.00      0.00
 ```
 
-`sar`is een krachtig hulp middel voor een breed scala aan analyses. Hoewel in dit voor beeld de mogelijkheid van netwerk statistieken wordt gebruikt, is deze even krachtig voor het meten van CPU-en geheugen gebruik. In dit voor beeld `sar` wordt `-n` met vlag aangeroepen om `DEV` het sleutel woord (netwerk apparaat) op te geven, waarbij de netwerk doorvoer per apparaat wordt weer gegeven.
+`sar`is een krachtig hulp middel voor een breed scala aan analyses. Hoewel in dit voor beeld de mogelijkheid van netwerk statistieken wordt gebruikt, is deze even krachtig voor het meten van CPU-en geheugen gebruik. In dit voor beeld wordt `sar` met `-n` vlag aangeroepen om het `DEV` sleutel woord (netwerk apparaat) op te geven, waarbij de netwerk doorvoer per apparaat wordt weer gegeven.
 
 - De som van `rxKb/s` en `txKb/s` is de totale door Voer voor een bepaald apparaat. Wanneer deze waarde de limiet voor de ingerichte Azure-NIC overschrijdt, hebben werk belastingen op de computer een verhoogde netwerk latentie.
 - `%ifutil`meet gebruik voor een bepaald apparaat. Omdat deze waarde 100% benadert, hebben werk belastingen een verhoogde netwerk latentie.

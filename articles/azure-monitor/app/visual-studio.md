@@ -8,10 +8,9 @@ ms.date: 07/07/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
 ms.openlocfilehash: 8905222214d58eeba24ecf50da768ffa1d65c39d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670879"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Fouten opsporen in uw toepassingen met Azure-toepassing Insights in Visual Studio
@@ -81,7 +80,7 @@ Als u wilt zoeken naar afwijkingen in uw gegevens, kiest u een van de afwijkings
 [Meer informatie over Trends](../../azure-monitor/app/visual-studio-trends.md).
 
 ## <a name="local-monitoring"></a>Lokale bewaking
-(Uit Visual Studio 2015 update 2) Als u de SDK niet hebt geconfigureerd voor het verzenden van telemetrie naar de Application Insights Portal (zodat er geen instrumentatie sleutel is in ApplicationInsights. config), wordt in het diagnose venster telemetrie van uw laatste foutopsporingssessie weer gegeven. 
+(Uit Visual Studio 2015 update 2) Als u de SDK niet hebt geconfigureerd voor het verzenden van telemetrie naar de Application Insights Portal (zodat er geen instrumentatie sleutel in ApplicationInsights.config is), wordt in het venster diagnostische gegevens telemetrie van uw nieuwste foutopsporingssessie weer gegeven. 
 
 Dit is handig als u al een eerdere versie van uw app hebt gepubliceerd. Zo voorkomt u dat de telemetrie van uw foutopsporingssessies in de Application Insights-portal wordt verward met de telemetrie over de gepubliceerde app.
 
@@ -90,7 +89,7 @@ Ook als u beschikt over [aangepaste telemetrie](../../azure-monitor/app/api-cust
 * *In eerste instantie heb ik Application Insights voor het verzenden van telemetrie naar de portal volledig geconfigureerd. Maar nu wil ik de telemetrie alleen bekijken in Visual Studio.*
   
   * De instellingen van het venster Zoeken bevat een optie om lokale diagnostische gegevens te doorzoeken, zelfs als uw app telemetrie verzendt naar de portal.
-  * Als u wilt stoppen met het verzenden van telemetrie naar de portal `<instrumentationkey>...` , gaat u naar de regel van ApplicationInsights. config. Als u klaar bent om telemetrie naar de portal te verzenden, moet u de opmerking opheffen.
+  * Als u wilt stoppen met het verzenden van telemetrie naar de portal, kunt u de regel `<instrumentationkey>...` van ApplicationInsights.config afmelden. Als u klaar bent om telemetrie naar de portal te verzenden, moet u de opmerking opheffen.
 
 
 ## <a name="next-steps"></a>Volgende stappen

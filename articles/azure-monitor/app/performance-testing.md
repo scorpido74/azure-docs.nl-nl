@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 0bfb60b876add70be6cbcd3d726fb3317a8dfcf9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77669859"
 ---
 # <a name="performance-testing"></a>Prestaties testen
@@ -22,7 +21,7 @@ Met Application Insights kunt u belasting tests voor uw websites genereren. Net 
 
 Als u een prestatie test wilt maken, moet u eerst een Application Insights resource maken. Als u al een resource hebt gemaakt, gaat u door naar de volgende sectie.
 
-Selecteer in de Azure Portal **een resource** > maken**Ontwikkelhulpprogramma's** > **Application Insights** en maak een Application Insights-resource.
+Selecteer in de Azure Portal **een resource maken**  >  **Ontwikkelhulpprogramma's**  >  **Application Insights** en maak een Application Insights-resource.
 
 ## <a name="configure-performance-testing"></a>Prestatie testen configureren
 

@@ -6,17 +6,16 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/01/2018
 ms.openlocfilehash: dd04087db32f0bbfa75dafa7e12c355e5ab7b515
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670063"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Micrometer gebruiken met Azure-toepassing Insights-Java-SDK
 Met de micrometer-toepassings bewaking worden metrische gegevens gemeten voor op JVM gebaseerde toepassings code en kunt u deze exporteren naar uw favoriete bewakings systemen. In dit artikel leert u hoe u micrometer kunt gebruiken met Application Insights voor zowel veer boot-als niet-veer boot-toepassingen.
 
 ## <a name="using-spring-boot-15x"></a>Lente boot gebruiken 1,5 x
-Voeg de volgende afhankelijkheden toe aan uw pom. XML-of build. gradle-bestand: 
+Voeg de volgende afhankelijkheden toe aan uw pom.xml-of build. gradle-bestand: 
 * [Application Insights lente-boot-starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 of hoger
 * Micrometer Azure Registry 1.1.0 of hoger
 * [Micrometer lente verouderde](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 of hoger (dit backports de AutoConfig-code in het lente-Framework).
@@ -24,7 +23,7 @@ Voeg de volgende afhankelijkheden toe aan uw pom. XML-of build. gradle-bestand:
 
 Stappen
 
-1. Werk het bestand pom. XML van de Spring boot-toepassing bij en voeg de volgende afhankelijkheden toe:
+1. Werk het pom.xml-bestand van de Spring boot-toepassing bij en voeg de volgende afhankelijkheden toe:
 
     ```XML
     <dependency>
@@ -54,7 +53,7 @@ Stappen
 
 ## <a name="using-spring-2x"></a>Met lente 2. x
 
-Voeg de volgende afhankelijkheden toe aan uw pom. XML-of build. gradle-bestand:
+Voeg de volgende afhankelijkheden toe aan uw pom.xml-of build. gradle-bestand:
 
 * Application Insights veer boot-starter 2.1.2 of hoger
 * Azure-veer-boot-metrische gegevens-starters 2.0.7 of hoger
@@ -62,7 +61,7 @@ Voeg de volgende afhankelijkheden toe aan uw pom. XML-of build. gradle-bestand:
 
 Stappen:
 
-1. Werk het pom. XML-bestand van de Spring boot-toepassing bij en voeg de volgende afhankelijkheden toe:
+1. Werk het pom.xml-bestand van de Spring boot-toepassing bij en voeg de volgende afhankelijkheden toe:
 
     ```XML
     <dependency> 
@@ -113,7 +112,7 @@ De automatische metrische gegevens verzameling uitschakelen:
 
 ## <a name="use-micrometer-with-non-spring-boot-web-applications"></a>Micrometer gebruiken met niet-veer boot-webtoepassingen
 
-Voeg de volgende afhankelijkheden toe aan uw pom. XML-of build. gradle-bestand:
+Voeg de volgende afhankelijkheden toe aan uw pom.xml-of build. gradle-bestand:
 
 * Application Insights Web auto 2.5.0 of hoger
 * Micrometer Azure Registry 1.1.0 of hoger
@@ -121,7 +120,7 @@ Voeg de volgende afhankelijkheden toe aan uw pom. XML-of build. gradle-bestand:
 
 Stappen:
 
-1. Voeg de volgende afhankelijkheden toe aan het bestand pom. XML of build. gradle:
+1. Voeg de volgende afhankelijkheden toe aan uw pom.xml-of build. gradle-bestand:
 
     ```XML
         <dependency>
@@ -137,7 +136,7 @@ Stappen:
         </dependency>
      ```
 
-2. Bestand `ApplicationInsights.xml` in de map Resources plaatsen:
+2. `ApplicationInsights.xml`Bestand in de map Resources plaatsen:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>

@@ -4,17 +4,16 @@ description: Stel kenmerken in voor een container installatie kopie of opslag pl
 ms.topic: article
 ms.date: 09/30/2019
 ms.openlocfilehash: da84767523bb6d948b71b1c1ad2ddaffb628354a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77659693"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Een container installatie kopie in een Azure container Registry vergren delen
 
 In een Azure container Registry kunt u een installatie kopie versie of een opslag plaats vergren delen zodat deze niet kan worden verwijderd of bijgewerkt. Als u een afbeelding of opslag plaats wilt vergren delen, werkt u de kenmerken bij met de Azure CLI-opdracht [AZ ACR repository update][az-acr-repository-update]. 
 
-Voor dit artikel moet u de Azure CLI in Azure Cloud Shell of lokaal uitvoeren (versie 2.0.55 of hoger aanbevolen). Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli].
+Voor dit artikel moet u de Azure CLI in Azure Cloud Shell of lokaal uitvoeren (versie 2.0.55 of hoger aanbevolen). Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 > [!IMPORTANT]
 > Dit artikel is niet van toepassing op het vergren delen van een volledig REGI ster, bijvoorbeeld met behulp van **instellingen > sloten** in de Azure Portal, of `az lock` opdrachten in de Azure cli. Het vergren delen van een register bron voor komt niet dat u gegevens in opslag plaatsen kunt maken, bijwerken of verwijderen. Het vergren delen van een REGI ster is alleen van invloed op beheer bewerkingen, zoals het toevoegen of verwijderen van replicaties of het verwijderen van het REGI ster zelf. Meer informatie over [het vergren delen van resources om onverwachte wijzigingen te voor komen](../azure-resource-manager/management/lock-resources.md).
@@ -69,7 +68,7 @@ az acr repository update \
 
 ### <a name="lock-an-image-by-manifest-digest"></a>Een installatie kopie vergren delen op Manifest Digest
 
-Als u een *myrepo/myimage-* installatie kopie wilt vergren delen die wordt geïdentificeerd door de manifest `sha256:...`digest (SHA-256-Hash, weer gegeven als), voert u de volgende opdracht uit. (Als u de manifest Digest wilt vinden die is gekoppeld aan een of meer afbeeldings codes, voert u de opdracht [AZ ACR repository show-manifests][az-acr-repository-show-manifests] uit.)
+Als u een *myrepo/myimage-* installatie kopie wilt vergren delen die wordt geïdentificeerd door de manifest Digest (SHA-256-Hash, weer gegeven als `sha256:...` ), voert u de volgende opdracht uit. (Als u de manifest Digest wilt vinden die is gekoppeld aan een of meer afbeeldings codes, voert u de opdracht [AZ ACR repository show-manifests][az-acr-repository-show-manifests] uit.)
 
 ```azurecli
 az acr repository update \

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
 ms.openlocfilehash: 7093e20473b799a3f05ddf30803721636732241e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77663252"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Status van agent oplossing in Azure Monitor
@@ -34,21 +33,21 @@ Zie [Operations Manager koppelen aan Log Analytics](../../azure-monitor/platform
 Voeg de Status van agent oplossing toe aan uw Log Analytics-werk ruimte met behulp van het proces dat wordt beschreven in [oplossingen toevoegen](solutions.md). Er is geen verdere configuratie nodig.
 
 
-## <a name="data-collection"></a>Gegevens verzamelen
+## <a name="data-collection"></a>Gegevensverzameling
 ### <a name="supported-agents"></a>Ondersteunde agents
 De volgende tabel beschrijft de verbonden bronnen die worden ondersteund door deze oplossing.
 
-| Verbonden bron | Ondersteund | Beschrijving |
+| Verbonden bron | Ondersteund | Description |
 | --- | --- | --- |
-| Windows-agents | Ja | Er worden heartbeat-gebeurtenissen verzameld van direct verbonden Windows-agents.|
-| Beheergroep System Center Operations Manager | Ja | Heartbeat-gebeurtenissen worden elke 60 seconden verzameld van agents die rapporteren aan de beheer groep en vervolgens doorgestuurd naar Azure Monitor. Een directe verbinding van Operations Manager agents naar Azure Monitor is niet vereist. Heartbeat-gebeurtenis gegevens worden doorgestuurd van de beheer groep naar de Log Analytics-werk ruimte.|
+| Windows-agents | Yes | Er worden heartbeat-gebeurtenissen verzameld van direct verbonden Windows-agents.|
+| Beheergroep System Center Operations Manager | Yes | Heartbeat-gebeurtenissen worden elke 60 seconden verzameld van agents die rapporteren aan de beheer groep en vervolgens doorgestuurd naar Azure Monitor. Een directe verbinding van Operations Manager agents naar Azure Monitor is niet vereist. Heartbeat-gebeurtenis gegevens worden doorgestuurd van de beheer groep naar de Log Analytics-werk ruimte.|
 
 ## <a name="using-the-solution"></a>De oplossing gebruiken
 Wanneer u de oplossing toevoegt aan uw Log Analytics-werk ruimte, wordt de tegel **status van agent** toegevoegd aan het dash board. Op deze tegel ziet u het totale aantal agents en het aantal agents dat de afgelopen 24 uur niet heeft gereageerd.<br><br> ![De tegel Status van agent in het dashboard](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)
 
 Klik op de tegel **Status van agent** om het **gelijknamige** dashboard te openen.  Het dashboard bevat de kolommen in de volgende tabel. Elke kolom bevat de tien belangrijkste gebeurtenissen naar aantal die overeenkomen met de criteria van die kolom voor de opgegeven periode. U kunt de volledige lijst met gebeurtenissen weergeven door linksonder elke kolom **Alles weergeven** te selecteren. Dit kan overigens ook door op de kolomkop te klikken.
 
-| Kolom | Beschrijving |
+| Kolom | Description |
 |--------|-------------|
 | Agent count over time | Een trend van het aantal agents gedurende een periode van zeven dagen voor Linux- en Windows-agents.|
 | Count of unresponsive agents | Een lijst met agents die in de afgelopen 24 uur geen heartbeat hebben verzonden.|
@@ -90,7 +89,7 @@ Elke agent die aan een Operations Manager-beheer Server rapporteert, verzendt tw
 ## <a name="sample-log-searches"></a>Voorbeeldzoekopdrachten in logboeken
 De volgende tabel bevat voorbeelden van zoekopdrachten in logboeken voor records die zijn verzameld met deze oplossing.
 
-| Query’s uitvoeren | Beschrijving |
+| Query’s uitvoeren | Description |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |Het totale aantal agents |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |Het aantal agents dat de afgelopen 24 uur niet heeft gereageerd |

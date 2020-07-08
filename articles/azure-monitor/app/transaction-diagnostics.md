@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.openlocfilehash: 39c4c51a1bc84e06efac3674b1ee5b487f9e6729
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671134"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Unified cross-component Trans Action Diagnostics
@@ -66,9 +65,9 @@ In dit samenvouw paneel worden de andere resultaten weer gegeven die voldoen aan
 
 [Application Insights Profiler](../../azure-monitor/app/profiler.md) of [snap shot debugger](snapshot-debugger.md) Help bij het op codeniveau diagnosticeren van prestatie-en fout problemen. Met deze ervaring kunt u Profiler-traceringen of-moment opnamen van elk onderdeel met één klik bekijken.
 
-Als u de Profiler niet meer kunt gebruiken, neemt u contact op met **serviceprofilerhelp\@Microsoft.com**
+Als u de Profiler niet meer kunt gebruiken, neemt u contact op met **serviceprofilerhelp \@ Microsoft.com**
 
-Als Snapshot Debugger niet kan worden weer geven, neemt u contact op met **snapshothelp\@Microsoft.com**
+Als Snapshot Debugger niet kan worden weer geven, neemt u contact op met **snapshothelp \@ Microsoft.com**
 
 ![Integratie van Profiler](media/transaction-diagnostics/profilerTraces.png)
 

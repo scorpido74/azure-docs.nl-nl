@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
 ms.openlocfilehash: c22a401a6b25f7bb2c27a10e52214fa42ac6089b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77918220"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>De verbinding met Extern bureaublad wordt regelmatig verbroken in de Azure-VM
@@ -91,7 +90,7 @@ U kunt dit probleem oplossen met behulp van serieel beheer of [de virtuele machi
 2. Nadat de besturingssysteem schijf is gekoppeld aan de herstel-VM, controleert u of de schijf is gemarkeerd als **online** in de schijf beheer-console. Noteer de stationsletter die is toegewezen aan de gekoppelde besturingssysteem schijf.
 3. Ga naar de map **\Windows\System32\Config** op de besturingssysteem schijf die u hebt gekoppeld. Kopieer alle bestanden in deze map als back-up als een terugdraai actie vereist is.
 4. Start de Register-Editor (regedit.exe).
-5. Selecteer de **HKEY_LOCAL_MACHINE** sleutel. Selecteer in het menu **bestand** > **laden component**:
+5. Selecteer de **HKEY_LOCAL_MACHINE** sleutel. Selecteer in het menu **bestand**  >  **laden component**:
 6. Blader naar de map **\windows\system32\config\SYSTEM** op de besturingssysteem schijf die u hebt toegevoegd. Voer **BROKENSYSTEM**in voor de naam van de component. De nieuwe register component wordt weer gegeven onder de sleutel **HKEY_LOCAL_MACHINE** . Laad vervolgens de software component **\windows\system32\config\SOFTWARE** onder de sleutel **HKEY_LOCAL_MACHINE** . Voer **BROKENSOFTWARE**in als de naam van de Hive-software. 
 7. Open een opdracht prompt venster met verhoogde bevoegdheid (**als administrator uitvoeren**) en voer opdrachten uit in de resterende stappen om de RDP-configuraties opnieuw in te stellen. 
 8. Verlaag de RDP-beveiligingslaag tot 0 zodat de communicatie tussen de server en de client de systeem eigen RDP-versleuteling gebruikt:

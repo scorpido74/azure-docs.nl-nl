@@ -5,10 +5,9 @@ ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 1910b3b474012365e8117f584379b2b29f8ce3de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77667615"
 ---
 # <a name="manage-alert-instances-with-unified-alerts"></a>Waarschuwings instanties met Unified Alerts beheren
@@ -22,7 +21,7 @@ Met de [geïntegreerde ervaring voor waarschuwingen](https://aka.ms/azure-alerts
 
 U kunt op de volgende manieren naar de pagina waarschuwingen gaan:
 
-- Selecteer in de [Azure Portal](https://portal.azure.com/) **controle** > **waarschuwingen**.  
+- Selecteer in de [Azure Portal](https://portal.azure.com/) **controle**  >  **waarschuwingen**.  
 
      ![Scherm afbeelding van monitor waarschuwingen](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
   

@@ -7,10 +7,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 7bfa831332451718c0c9c05023b90104d2b8b02b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658707"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-conversion-options"></a>Conversie opties Azure Monitor Designer weer geven voor werkmappen
@@ -20,12 +19,12 @@ ms.locfileid: "77658707"
 
 De weer gave Designer heeft een vaste statische stijl van de weer gave, terwijl werkmappen de vrijheid kunnen bieden om de gegevens weer te geven en te wijzigen. In de onderstaande afbeeldingen ziet u twee voor beelden van de manier waarop u werkmappen kunt ordenen tijdens het converteren van weer gaven.
 
-[Verticale werkmap](view-designer-conversion-examples.md#vertical)
-![verticaal](media/view-designer-conversion-options/view-designer-vertical.png)
+[Verticale werkmap](view-designer-conversion-examples.md#vertical) 
+ ![ Verticale](media/view-designer-conversion-options/view-designer-vertical.png)
 
-[Tabbed workbook](view-designer-conversion-examples.md#tabbed)
-![Tabblad Gegevens type verdeling](media/view-designer-conversion-options/distribution-tab.png)
-![van werkmap gegevens typen op het tabblad tijd](media/view-designer-conversion-options/over-time-tab.png)
+[Tabbed workbook](view-designer-conversion-examples.md#tabbed) 
+ Werkmap ![ met tabbladen Gegevens typen van het tabblad Gegevens type distributie ](media/view-designer-conversion-options/distribution-tab.png)
+ ![ op het tabblad tijd](media/view-designer-conversion-options/over-time-tab.png)
 
 ## <a name="tile-conversion"></a>Tegel conversie
 Weer gave Designer gebruikt de overzichts tegel functie om de algehele status weer te geven en samen te vatten. Deze worden weer gegeven in zeven tegels, variërend van getallen tot grafieken. In werkmappen kunnen gebruikers gelijksoortige visualisaties maken en deze vastzetten zodat ze lijken op de oorspronkelijke stijl van overzichts tegels. 

@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658027"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Visualisaties van Azure Monitor werkmap
@@ -138,7 +137,7 @@ Werkmap tegels bieden ondersteuning voor een titel, subtitel, grote tekst, picto
 7. Klik op de knop **tegel instellingen** om het deel venster instellingen te openen
 8. In de **velden naast elkaar**instellen:
     * Hoofd`name`
-    * Links: `Requests`, renderer: `Big Number`, kleuren palet: `Green to Red`, min-waarde:`0`
+    * Links: `Requests` , renderer: `Big Number` , kleuren palet: `Green to Red` , min-waarde:`0`
     * Minst`appName`
 9. Klik op de knop **opslaan en sluiten** onder aan het deel venster.
 
@@ -182,7 +181,7 @@ In het onderstaande voor beeld ziet u de metrische gegevens over de container st
 8. In het gedeelte _kolommen_ bovenaan, stelt u het volgende in:
     * _Id_ -kolom weergave:`Hidden`
     * _Bovenliggende id_ -kolom weergave:`Hidden`
-    * _Aanvragen_ -kolom weergave: `Bar`, kleur: `Blue`, minimum waarde:`0`
+    * _Aanvragen_ -kolom weergave: `Bar` , kleur: `Blue` , minimum waarde:`0`
 9. Klik op de knop _opslaan en sluiten_ onder aan het deel venster.    
 
 ![Scherm opname van de weer gave samen vatting van Tegel](./media/workbooks-visualizations/tree-settings.png)
@@ -243,9 +242,9 @@ In de volgende grafiek ziet u gegevens die in/uit een computer worden uitgestroo
     * `Node Color Field`: `Kind`
     * `Color palette`: `Pastel`
 10. Stel in _instellingen voor knooppunt indeling_ bovenaan het volgende in:
-    * _Bovenste inhoud_-use-kolom `Name`:, kolom weergave:`Text`
-    * _Inhoud centreren_-kolom gebruiken `Calls`:, kolom renderer `Big Number`:, kleuren palet:`None`
-    * _Onderste inhoud_-gebruik kolom: `Kind`, kolom weergave:`Text`
+    * _Bovenste inhoud_-use-kolom: `Name` , kolom weergave:`Text`
+    * _Inhoud centreren_-kolom gebruiken: `Calls` , kolom renderer: `Big Number` , kleuren palet:`None`
+    * _Onderste inhoud_-gebruik kolom: `Kind` , kolom weergave:`Text`
 10. Klik op de knop _opslaan en sluiten_ onder aan het deel venster.
 
 ![Scherm opname van de weer gave samen vatting van Tegel](./media/workbooks-visualizations/graph-settings.png)

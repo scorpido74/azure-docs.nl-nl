@@ -7,10 +7,9 @@ ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 0c552e8f3e732c49da02b2f5704fb9cf312fb3e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671083"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights cohortes
@@ -129,7 +128,7 @@ Cohort en filters verschillen. Stel dat u een cohort hebt van gebruikers uit het
 * De cohort-versie toont alle gebeurtenissen van gebruikers die een of meer gebeurtenissen van het Verenigd Konink rijk in het huidige tijds bereik hebben verzonden. Als u op land of regio splitst, ziet u waarschijnlijk veel landen en regio's.
 * De filters-versie toont alleen gebeurtenissen uit het Verenigd Konink rijk. Maar als u op land of regio splitst, ziet u alleen het Verenigd Konink rijk.
 
-## <a name="learn-more"></a>Meer informatie
+## <a name="learn-more"></a>Lees meer
 
 * [Querytaal voor analytische gegevens](https://go.microsoft.com/fwlink/?linkid=856587)
 * [Gebruikers, sessies, gebeurtenissen](usage-segmentation.md)

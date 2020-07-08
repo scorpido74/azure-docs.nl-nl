@@ -8,10 +8,9 @@ ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: 50ad9d57b24fab9ee57c2f9caae8f4c39d2681f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77669077"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Een actie groep maken met een resource manager-sjabloon
@@ -27,7 +26,7 @@ Eerst beschrijven we hoe u een resource manager-sjabloon maakt voor een actie gr
 
 ## <a name="resource-manager-templates-for-an-action-group"></a>Resource Manager-sjablonen voor een actie groep
 
-Als u een actie groep wilt maken op basis van een resource manager-sjabloon, maakt u `Microsoft.Insights/actionGroups`een resource van het type. Vervolgens vult u alle gerelateerde eigenschappen in. Hier volgen twee voorbeeld sjablonen die een actie groep maken.
+Als u een actie groep wilt maken op basis van een resource manager-sjabloon, maakt u een resource van het type `Microsoft.Insights/actionGroups` . Vervolgens vult u alle gerelateerde eigenschappen in. Hier volgen twee voorbeeld sjablonen die een actie groep maken.
 
 ```json
 {

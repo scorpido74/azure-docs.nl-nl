@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: c59cbe852a91a91c7b3adb4452328700ec718a82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671593"
 ---
 # <a name="write-code-to-track-requests-with-application-insights"></a>Code schrijven voor het bijhouden van aanvragen met Application Insights
@@ -45,7 +44,7 @@ Ga als volgt te werk om aanvragen hand matig bij te houden:
         }
         ```
 
-        Aanroepen `StartOperation<RequestTelemetry>` binnen `StartOperation<RequestTelemetry>` een ander bereik wordt niet ondersteund. U kunt in `StartOperation<DependencyTelemetry>` plaats daarvan in het geneste bereik gebruiken. Bijvoorbeeld:  
+        Aanroepen `StartOperation<RequestTelemetry>` binnen een ander `StartOperation<RequestTelemetry>` bereik wordt niet ondersteund. U kunt `StartOperation<DependencyTelemetry>` in plaats daarvan in het geneste bereik gebruiken. Bijvoorbeeld:  
         
         ```csharp
         using (var getDetailsOperation = client.StartOperation<RequestTelemetry>("GetProductDetails"))

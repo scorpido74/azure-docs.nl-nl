@@ -1,17 +1,16 @@
 ---
-title: Waarschuwingen beheren vanuit System Center Operations Manager, zabbix en nagios in Azure Monitor
-description: Waarschuwingen beheren vanuit System Center Operations Manager, zabbix en nagios in Azure Monitor
+title: Waarschuwingen beheren vanuit System Center Operations Manager, Zabbix en Nagios in Azure Monitor
+description: Waarschuwingen beheren vanuit System Center Operations Manager, Zabbix en Nagios in Azure Monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.subservice: alerts
 ms.openlocfilehash: 5ef03f522fb91302bfdec985f1e3c5cf8138ae97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77667445"
 ---
-# <a name="manage-alerts-from-system-center-operations-manager-zabbix-and-nagios-in-azure-monitor"></a>Waarschuwingen beheren vanuit System Center Operations Manager, zabbix en nagios in Azure Monitor
+# <a name="manage-alerts-from-system-center-operations-manager-zabbix-and-nagios-in-azure-monitor"></a>Waarschuwingen beheren vanuit System Center Operations Manager, Zabbix en Nagios in Azure Monitor
 
 U kunt nu uw waarschuwingen weer geven via nagios, zabbix en System Center Operations Manager in [Azure monitor](https://aka.ms/azure-alerts-overview). Deze waarschuwingen zijn afkomstig van integraties met nagios/zabbix-servers of System Center Operations Manager in Log Analytics. 
 

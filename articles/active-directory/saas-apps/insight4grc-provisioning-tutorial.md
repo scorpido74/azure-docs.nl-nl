@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 02/04/2020
 ms.author: Zhchia
 ms.openlocfilehash: 1404854e054c8fc4967ba863486969b8a87db526
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77621517"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>Zelf studie: Insight4GRC configureren voor automatische gebruikers inrichting
@@ -43,7 +42,7 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 * Een gebruikers account in azure AD met [toestemming](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) voor het configureren van inrichting (bijvoorbeeld toepassings beheerder, Cloud toepassings beheerder, eigenaar van de toepassing of globale beheerder). 
 * Een gebruikers account in Insight4GRC met beheerders machtigingen.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>Step 1. Uw inrichtings implementatie plannen
+## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Uw inrichtings implementatie plannen
 1. Meer informatie over [de werking van de inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 2. Bepaal wie binnen het [bereik van de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)valt.
 3. Bepaal welke gegevens moeten worden [toegewezen tussen Azure AD en Insight4GRC](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
@@ -74,7 +73,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-insight4grc-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Insight4GRC in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -90,7 +89,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Geef in het gedeelte **beheerders referenties** de URL van het scim-eind punt op in de **Tenant-URL**. De enpoint-URL moet de indeling `https://<Insight4GRC Domain Name>.insight4grc.com/public/api/scim/v2 ` hebben waarin **Insight4GRC domain name** de waarde is die in de vorige stappen is opgehaald. Invoer van de Bearer-token waarde die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Insight4GRC. Als de verbinding mislukt, zorg er dan voor dat uw Insight4GRC-account beheerders machtigingen heeft en probeer het opnieuw.
+5. Geef in het gedeelte **beheerders referenties** de URL van het scim-eind punt op in de **Tenant-URL**. De enpoint-URL moet de indeling hebben `https://<Insight4GRC Domain Name>.insight4grc.com/public/api/scim/v2 ` waarin **Insight4GRC domain name** de waarde is die in de vorige stappen is opgehaald. Invoer van de Bearer-token waarde die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Insight4GRC. Als de verbinding mislukt, zorg er dan voor dat uw Insight4GRC-account beheerders machtigingen heeft en probeer het opnieuw.
 
     ![inrichtings](./media/insight4grc-provisioning-tutorial/provisioning.png)
 
@@ -108,7 +107,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |---|---|
    |userName|Tekenreeks|
    |externalId|Tekenreeks|
-   |actief|Booleaans|
+   |actief|Boolean-waarde|
    |titel|Tekenreeks|
    |name. naam|Tekenreeks|
    |naam. familielid|Tekenreeks|
@@ -123,7 +122,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
       |---|---|
       |displayName|Tekenreeks|
       |externalId|Tekenreeks|
-      |leden|Naslaginformatie|
+      |leden|Verwijzing|
 
 10. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
@@ -148,10 +147,10 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
 * Controleer de [voortgangs balk](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtings cyclus weer te geven en te zien hoe sluiten deze moet worden voltooid.
 * Als de inrichtings configuratie een slechte status heeft, gaat de toepassing in quarantaine. Meer informatie over de quarantaine statussen [vindt u hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * Het [inrichten van een gebruikers account voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md).
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

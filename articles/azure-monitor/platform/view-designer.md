@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/10/2019
 ms.openlocfilehash: 9a7521f61dc59bd954629a05638c159ab0e70556
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658486"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Aangepaste weer gaven maken met behulp van de weer gave designer in Azure Monitor
@@ -28,11 +27,11 @@ Zie voor meer informatie over de ontwerp functie voor weer gaven:
 ## <a name="concepts"></a>Concepten
 Weer gaven worden weer gegeven op de pagina **overzicht** van Azure monitor in de Azure Portal. Open deze pagina in het menu **Azure monitor** door te klikken op **meer** onder het gedeelte **inzichten** . De tegels in elke aangepaste weer gave worden alfabetisch weer gegeven en de tegels voor de bewakings oplossingen worden op dezelfde werk ruimte geïnstalleerd.
 
-![Overzichts pagina](media/view-designer/overview-page.png)
+![Overzichtspagina](media/view-designer/overview-page.png)
 
 De weer gaven die u maakt met de weer gave Designer bevatten de elementen die in de volgende tabel worden beschreven:
 
-| Onderdeel | Beschrijving |
+| Onderdeel | Description |
 |:--- |:--- |
 | Tegels | Worden weer gegeven op de **overzichts** pagina van Azure monitor. Elke tegel bevat een visueel overzicht van de aangepaste weer gave die het vertegenwoordigt. Elk tegel type biedt een andere visualisatie van uw records. U selecteert een tegel om een aangepaste weer gave weer te geven. |
 | Aangepaste weer gave | Wordt weer gegeven wanneer u een tegel selecteert. Elke weer gave bevat een of meer visualisatie onderdelen. |
@@ -49,7 +48,7 @@ In weer gaven die zijn gemaakt met de weer gave Designer worden de volgende opti
 
 De opties worden beschreven in de volgende tabel:
 
-| Optie | Beschrijving |
+| Optie | Description |
 |:--|:--|
 | Vernieuwen   | Hiermee vernieuwt u de weer gave met de meest recente gegevens. | 
 | Logboeken      | Hiermee opent u de [log Analytics](../log-query/portals.md) voor het analyseren van gegevens met logboek query's. |
@@ -95,7 +94,7 @@ De opties voor het werken met weer gaven in de bewerkings modus worden beschreve
 
 ![Menu bewerken](media/view-designer/edit-menu.png)
 
-| Optie | Beschrijving |
+| Optie | Description |
 |:--|:--|
 | Opslaan        | Hiermee slaat u de wijzigingen op en sluit u de weer gave. |
 | Annuleren      | Hiermee worden de wijzigingen genegeerd en wordt de weer gave gesloten. |

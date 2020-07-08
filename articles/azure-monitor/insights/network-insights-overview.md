@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 11/07/2019
 ms.openlocfilehash: 0f5b2fbd13cb9658e255fde727e115df748aaed9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77654865"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor voor netwerken (preview-versie)
@@ -23,7 +22,7 @@ De **overzichts** pagina Azure monitor voor netwerken biedt een probleemloze man
 - Waarschuwingen 
 - Afhankelijkheids weergave
 
-![Overzichts pagina](media/network-insights-overview/overview.png)
+![Overzichtspagina](media/network-insights-overview/overview.png)
 
 ## <a name="search-and-filtering"></a>Zoeken en filteren
 De weer gave resource status en waarschuwingen kan worden aangepast met filters zoals het **abonnement**, de **resource groep** en het **resource type**. Het zoekvak biedt de mogelijkheid om de resource-eigenschappen te doorzoeken.

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
 ms.openlocfilehash: 99d5594dd3ebe3750cb0a09ea803065e2aeb5ba2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77666634"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Opnametijd van gegevens vastleggen in een logboek in Azure Monitor
@@ -60,7 +59,7 @@ Raadpleeg de documentatie voor elke oplossing om de verzamelings frequentie te b
 Zodra logboek records zijn opgenomen in de Azure Monitor-pijp lijn (zoals aangegeven in de eigenschap [_TimeReceived](log-standard-properties.md#_timereceived) ), worden ze geschreven naar tijdelijke opslag om Tenant isolatie te garanderen en ervoor te zorgen dat de gegevens niet verloren gaan. Dit proces voegt doorgaans 5-15 seconden toe. Sommige beheer oplossingen implementeren zwaarere algoritmen voor het verzamelen van gegevens en het afleiden van inzichten naarmate gegevens worden gestreamd. Zo worden met de bewaking van netwerk prestaties inkomende gegevens in intervallen van drie minuten geaggregeerd, waardoor er een latentie van drie minuten wordt toegevoegd. Een ander proces dat latentie toevoegt, is het proces waarmee aangepaste logboeken worden verwerkt. In sommige gevallen kan dit proces enkele minuten latentie toevoegen aan logboeken die worden verzameld van bestanden door de agent.
 
 ### <a name="new-custom-data-types-provisioning"></a>Nieuwe aangepaste gegevens typen inrichten
-Wanneer er een nieuw type aangepaste gegevens wordt gemaakt op basis van een [aangepast logboek](data-sources-custom-logs.md) of de [Data Collector-API](data-collector-api.md), maakt het systeem een speciale opslag container. Dit is een eenmalige overhead die alleen voor de eerste vormgeving van dit gegevens type optreedt.
+Wanneer er een nieuw type aangepaste gegevens wordt gemaakt op basis van een [aangepast logboek](data-sources-custom-logs.md) of de [Data Collector-API](data-collector-api.md), maakt het systeem een speciale opslag container. Dit is een eenmalige overhead die alleen optreedt bij de eerste keer dat dit gegevenstype wordt gebruikt.
 
 ### <a name="surge-protection"></a>Piek beveiliging
 De belangrijkste prioriteit van Azure Monitor is om ervoor te zorgen dat er geen klant gegevens verloren gaan, dus heeft het systeem ingebouwde beveiliging voor gegevens pieken. Dit omvat buffers om ervoor te zorgen dat het systeem zelfs onder een enorme belasting blijft functioneren. Onder normale belasting voegen deze besturings elementen minder dan een minuut toe, maar in extreme omstandigheden en storingen kunnen ze aanzienlijke tijd toevoegen terwijl de gegevens veilig zijn.
@@ -79,7 +78,7 @@ De opname tijd kan variëren voor verschillende bronnen onder verschillende omst
 |:---|:---|:---|
 | Record gemaakt in gegevens bron | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>Als de gegevens bron deze waarde niet instelt, wordt deze ingesteld op dezelfde tijd als _TimeReceived. |
 | Record ontvangen door Azure Monitor opname-eind punt | [_TimeReceived](log-standard-properties.md#_timereceived) | |
-| Record opgeslagen in de werk ruimte en beschikbaar voor query's | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | |
+| Record opgeslagen in de werk ruimte en beschikbaar voor query's | [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) | |
 
 ### <a name="ingestion-latency-delays"></a>Vertragingen bij opname latentie
 U kunt de latentie van een specifieke record meten door het resultaat van de functie [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) te vergelijken met de eigenschap _TimeGenerated_ . Deze gegevens kunnen met verschillende aggregaties worden gebruikt om te ontdekken hoe de latentie van opname wordt gedraagt. Bekijk een aantal percentiel van de opname tijd om inzicht te krijgen in grote hoeveel heden gegevens. 
@@ -95,7 +94,7 @@ Heartbeat
 | top 20 by percentile_E2EIngestionLatency_95 desc
 ```
 
-De voor gaande percentiel controles zijn geschikt voor het vinden van algemene trends in latentie. Als u een piek in de latentie van een korte termijn wilt identificeren,`max()`is het gebruik van het maximum () mogelijk effectiever.
+De voor gaande percentiel controles zijn geschikt voor het vinden van algemene trends in latentie. Als u een piek in de latentie van een korte termijn wilt identificeren, is het gebruik van het maximum ( `max()` ) mogelijk effectiever.
 
 Als u wilt inzoomen op de opname tijd voor een specifieke computer gedurende een bepaalde periode, gebruikt u de volgende query, waarmee ook de gegevens van de afgelopen dag in een grafiek worden gevisualiseerd: 
 

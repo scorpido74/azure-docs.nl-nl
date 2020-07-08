@@ -9,10 +9,9 @@ ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
 ms.openlocfilehash: 95c85309058911d6767eb44efd7b37ddac7a9119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77915034"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Fouten bij het verwijderen van klassieke opslag resources oplossen
@@ -97,8 +96,8 @@ Op de portal zijn er twee ervaringen, afhankelijk van de lijst met blobs die voo
 
 
 2. Als er een combi natie van ' geleasde ' en ' beschik bare ' blobs zijn geselecteerd, wordt de knop verwijderen weer gegeven. Maar de bewerking ' verwijderen ' laat achter de pagina-blobs, die een lease voor de schijf bevatten. 
-![Scherm afbeelding van de portal, met het deel venster container-BLOB weer](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_1.jpg)
-![geven scherm opname van de portal openen, met het geselecteerde deel venster verwijderen van BLOB openen](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_2.jpg)
+![Scherm afbeelding van de portal, met het deel venster container-BLOB weer geven ](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_1.jpg)
+ ![ scherm opname van de portal openen, met het geselecteerde deel venster verwijderen van BLOB openen](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_2.jpg)
 
 #### <a name="azure-powershell"></a>Azure PowerShell 
 Als de gebruiker kiest om te verwijderen met behulp van Power shell, resulteert dit in de volgende fout. 
@@ -112,9 +111,9 @@ Als de gebruiker kiest om te verwijderen met behulp van Power shell, resulteert 
 
 ### <a name="to-remove-classic-disks"></a>Klassieke schijven verwijderen
 Volg deze stappen op de Azure Portal:
-1.  Navigeer naar het [Azure Portal](https://portal.azure.com).
+1.  Navigeer naar [Azure Portal](https://portal.azure.com).
 2.  Navigeer naar de schijven (klassiek). 
-3.  Klik op het tabblad schijven ![. scherm opname van de portal, met het deel venster container-BLOB weer geven](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
+3.  Klik op het tabblad schijven. ![ Scherm afbeelding van de portal, met het deel venster container-BLOB weer geven](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
  
 4.  Selecteer de gegevensschijf en klik vervolgens op Schijf verwijderen.
  ![Scherm afbeelding van de portal, met het deel venster container-BLOB weer geven](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_delete_disk.jpg)
@@ -124,7 +123,7 @@ Volg deze stappen op de Azure Portal:
 
 ### <a name="to-remove-classic-images"></a>Klassieke installatie kopieën verwijderen   
 Volg deze stappen op de Azure Portal:
-1.  Navigeer naar het [Azure Portal](https://portal.azure.com).
+1.  Navigeer naar [Azure Portal](https://portal.azure.com).
 2.  Navigeer naar besturingssysteem installatie kopieën (klassiek).
 3.  Verwijder de installatie kopie.
 4.  Voer de Verwijder bewerking opnieuw uit die eerder is mislukt.

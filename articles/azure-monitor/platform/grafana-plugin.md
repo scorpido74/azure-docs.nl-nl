@@ -5,10 +5,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/06/2017
 ms.openlocfilehash: 142e3e19c13710963d239a75bc237b63713c29cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77672205"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Uw Azure-Services controleren in Grafana
@@ -42,7 +41,7 @@ Als u een lokale Grafana-server wilt instellen, [downloadt en installeert u Graf
 
 ## <a name="sign-in-to-grafana"></a>Aanmelden bij Grafana
 
-1. Ga met het IP-adres van uw server naar de aanmeldings pagina *op\<http://IP\>-adres: 3000* of * \<DNSName \:>3000* in uw browser. Hoewel 3000 de standaard poort is, is het mogelijk dat u tijdens de installatie een andere poort hebt geselecteerd. Er wordt een aanmeldings pagina weer geven voor de Grafana-server die u hebt gemaakt.
+1. Gebruik het IP-adres van uw server om de aanmeldings pagina te openen op *http:// \<IP address\> : 3000* of * \<DNSName> \: 3000* in uw browser. Hoewel 3000 de standaard poort is, is het mogelijk dat u tijdens de installatie een andere poort hebt geselecteerd. Er wordt een aanmeldings pagina weer geven voor de Grafana-server die u hebt gemaakt.
 
     ![Aanmeldings scherm Grafana](./media/grafana-plugin/grafana-login-screen.png)
 

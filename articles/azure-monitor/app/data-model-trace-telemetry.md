@@ -5,15 +5,14 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 31958b26cdb8a7897cf0051af6600014c07949fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671950"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>Telemetrie traceren: Application Insights gegevens model
 
-Telemetrie traceren [Application Insights](../../azure-monitor/app/app-insights-overview.md)(in Application Insights `printf` ) vertegenwoordigt opmaak overzichten die met tekst worden doorzocht. `Log4Net`, `NLog`en andere vermeldingen op basis van tekst logboek bestanden worden omgezet in exemplaren van dit type. De tracering heeft geen metingen als een uitbreid baarheid.
+Telemetrie traceren (in [Application Insights](../../azure-monitor/app/app-insights-overview.md)) vertegenwoordigt `printf` opmaak overzichten die met tekst worden doorzocht. `Log4Net`, `NLog` en andere vermeldingen op basis van tekst logboek bestanden worden omgezet in exemplaren van dit type. De tracering heeft geen metingen als een uitbreid baarheid.
 
 ## <a name="message"></a>Bericht
 
@@ -23,7 +22,7 @@ Maximale lengte: 32768 tekens
 
 ## <a name="severity-level"></a>Ernstniveau
 
-Niveau van de ernst van de tracering. `Verbose`Waarde kan `Information`, `Warning`,, `Error`,. `Critical`
+Niveau van de ernst van de tracering. Waarde kan,,, `Verbose` `Information` `Warning` `Error` , `Critical` .
 
 ## <a name="custom-properties"></a>Aangepaste eigenschappen
 

@@ -16,10 +16,9 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: ea448b87f9e6954abecead2934bfb7f4ed04a9c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77920141"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Gedetailleerde stappen voor probleemoplossing voor problemen met Extern bureaublad met Windows-VM's in Azure
@@ -114,7 +113,7 @@ Als u wilt controleren of het eind punt de oorzaak van het probleem is, verwijde
 ## <a name="source-4-network-security-groups"></a>Bron 4: netwerk beveiligings groepen
 Met netwerk beveiligings groepen kunt u meer nauw keurige controle van toegestaan binnenkomend en uitgaand verkeer. U kunt regels maken die subnetten en Cloud Services bespannen in een virtueel Azure-netwerk.
 
-Gebruik [IP-stroom controleren](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) om te bevestigen of verkeer naar of van een virtuele machine wordt geblokkeerd door een regel in een netwerkbeveiligingsgroep. U kunt ook de juiste regels voor beveiligings groepen controleren om ervoor te zorgen dat inkomende NSG regel bestaat en de prioriteit van de RDP-poort (standaard 3389) wordt weer gegeven. Zie [using effectief security rules to Troubleshooting VM Traffic Flow](../../virtual-network/diagnose-network-traffic-filter-problem.md)voor meer informatie.
+Gebruik [IP-stroom controleren](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) om te controleren of het verkeer van of naar een virtuele machine wordt geblokkeerd door een regel in een netwerk beveiligings groep. U kunt ook de juiste regels voor beveiligings groepen controleren om ervoor te zorgen dat inkomende NSG regel bestaat en de prioriteit van de RDP-poort (standaard 3389) wordt weer gegeven. Zie [using effectief security rules to Troubleshooting VM Traffic Flow](../../virtual-network/diagnose-network-traffic-filter-problem.md)voor meer informatie.
 
 ## <a name="source-5-windows-based-azure-vm"></a>Bron 5: Azure VM op basis van Windows
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_5.png)
@@ -131,11 +130,11 @@ Probeer de verbinding vanaf uw computer opnieuw. Als u nog steeds geen verbindin
 * Windows Firewall of een andere lokale firewall heeft een regel voor uitgaande verbindingen waardoor Extern bureaublad verkeer wordt voor komen.
 * Indringings detectie of netwerk bewakings software die wordt uitgevoerd op de virtuele machine van Azure, verhindert Extern bureaublad verbindingen.
 
-Voor virtuele machines die zijn gemaakt met het klassieke implementatie model, kunt u een externe Azure PowerShell-sessie gebruiken voor de virtuele machine van Azure. Eerst moet u een certificaat installeren voor de Cloud service die als host fungeert voor de virtuele machine. Ga naar [beveiligde externe Power shell-toegang configureren voor Azure virtual machines](https://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) en down load het script bestand **InstallWinRMCertAzureVM. ps1** naar de lokale computer.
+Voor virtuele machines die zijn gemaakt met het klassieke implementatie model, kunt u een externe Azure PowerShell-sessie gebruiken voor de virtuele machine van Azure. Eerst moet u een certificaat installeren voor de Cloud service die als host fungeert voor de virtuele machine. Ga naar [beveiligde externe Power shell-toegang configureren voor Azure virtual machines](https://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) en down load het **InstallWinRMCertAzureVM.ps1** script bestand op uw lokale computer.
 
 Installeer vervolgens Azure PowerShell als u dat nog niet hebt gedaan. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview).
 
-Open vervolgens een Azure PowerShell opdracht prompt en wijzig de huidige map in de locatie van het script bestand **InstallWinRMCertAzureVM. ps1** . Als u een Azure PowerShell script wilt uitvoeren, moet u het juiste uitvoerings beleid instellen. Voer de opdracht **Get-ExecutionPolicy** uit om het huidige beleids niveau te bepalen. Zie [Set-ExecutionPolicy](https://technet.microsoft.com/library/hh849812.aspx)voor meer informatie over het instellen van het juiste niveau.
+Open vervolgens een Azure PowerShell opdracht prompt en wijzig de huidige map in de locatie van het **InstallWinRMCertAzureVM.ps1** script bestand. Als u een Azure PowerShell script wilt uitvoeren, moet u het juiste uitvoerings beleid instellen. Voer de opdracht **Get-ExecutionPolicy** uit om het huidige beleids niveau te bepalen. Zie [Set-ExecutionPolicy](https://technet.microsoft.com/library/hh849812.aspx)voor meer informatie over het instellen van het juiste niveau.
 
 Vul vervolgens de naam van uw Azure-abonnement, de naam van de Cloud service en de naam van uw virtuele machine in (Verwijder de < en > tekens) en voer deze opdrachten uit.
 
