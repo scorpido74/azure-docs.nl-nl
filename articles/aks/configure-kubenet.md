@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 8a101235f8e7aaeff455732b5c048cbc81c20079
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 983005e815061f65907fc54aa6a3dfec1771b3f0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079046"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055491"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Gebruik kubenet-netwerken met uw eigen IP-adresbereiken in azure Kubernetes service (AKS)
 
@@ -40,7 +40,7 @@ U moet de Azure CLI-versie 2.0.65 of hoger hebben geïnstalleerd en geconfiguree
 
 In veel omgevingen hebt u virtuele netwerken en subnetten met toegewezen IP-adresbereiken gedefinieerd. Deze virtuele netwerk bronnen worden gebruikt ter ondersteuning van meerdere services en toepassingen. Om netwerk connectiviteit te bieden, kunnen AKS-clusters gebruikmaken van *kubenet* (Basic-netwerken) of Azure cni (*Geavanceerd netwerk*).
 
-Met *kubenet*ontvangen alleen de knoop punten een IP-adres in het subnet van het virtuele netwerk. Het is niet mogelijk om rechtstreeks met elkaar te communiceren. In plaats daarvan wordt door de gebruiker gedefinieerde route ring (UDR) en door sturen via IP gebruikt voor connectiviteit tussen verschillende knoop punten. U kunt ook peul implementeren achter een service die een toegewezen IP-adres ontvangt en verkeer voor de toepassing verdeelt. In het volgende diagram ziet u hoe de AKS-knoop punten een IP-adres in het subnet van het virtuele netwerk ontvangen, maar niet de peul:
+Met *kubenet*ontvangen alleen de knoop punten een IP-adres in het subnet van het virtuele netwerk. Het is niet mogelijk om rechtstreeks met elkaar te communiceren. In plaats daarvan wordt door de gebruiker gedefinieerde route ring (UDR) en door sturen via IP gebruikt voor connectiviteit tussen verschillende knoop punten. De Udr's-en IP-doorstuur configuratie wordt standaard gemaakt en onderhouden door de AKS-service, maar u hebt de mogelijkheid om [uw eigen route tabel voor aangepaste route beheer te plaatsen][byo-subnet-route-table]. U kunt ook peul implementeren achter een service die een toegewezen IP-adres ontvangt en verkeer voor de toepassing verdeelt. In het volgende diagram ziet u hoe de AKS-knoop punten een IP-adres in het subnet van het virtuele netwerk ontvangen, maar niet de peul:
 
 ![Kubenet-netwerk model met een AKS-cluster](media/use-kubenet/kubenet-overview.png)
 
@@ -84,7 +84,7 @@ Gebruik *Azure cni* wanneer:
 
 - U hebt beschik bare IP-adres ruimte.
 - De meeste pod-communicatie is tot resources buiten het cluster.
-- U wilt de Udr's niet beheren.
+- U wilt geen door de gebruiker gedefinieerde routes beheren voor pod-connectiviteit.
 - U hebt geavanceerde functies van AKS nodig, zoals virtuele knoop punten of Azure-netwerk beleid.  Gebruik [Calico-netwerk beleidsregels][calico-network-policies].
 
 Zie [netwerk modellen vergelijken en hun ondersteunings bereik][network-comparisons]voor meer informatie over het bepalen van het netwerk model dat moet worden gebruikt.
@@ -139,10 +139,10 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Wijs nu de service-principal voor uw AKS-cluster *Inzender* machtigingen toe aan het virtuele netwerk met behulp van de opdracht [AZ Role Assignment Create][az-role-assignment-create] . Geef uw eigen *\<appId>* op zoals wordt weer gegeven in de uitvoer van de vorige opdracht om de service-principal te maken:
+Wijs nu de service-principal voor uw AKS cluster *Network Inzender* machtigingen toe aan het virtuele netwerk met de opdracht [AZ Role Assignment Create][az-role-assignment-create] . Geef uw eigen *\<appId>* op zoals wordt weer gegeven in de uitvoer van de vorige opdracht om de service-principal te maken:
 
 ```azurecli-interactive
-az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
+az role assignment create --assignee <appId> --scope $VNET_ID --role "Network Contributor"
 ```
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Een AKS-cluster maken in het virtuele netwerk
@@ -253,6 +253,7 @@ Als er een AKS-cluster in uw bestaande subnet van het virtuele netwerk is geïmp
 [az-network-vnet-subnet-show]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[byo-subnet-route-table]: #bring-your-own-subnet-and-route-table-with-kubenet
 [develop-helm]: quickstart-helm.md
 [use-helm]: kubernetes-helm.md
 [virtual-nodes]: virtual-nodes-cli.md

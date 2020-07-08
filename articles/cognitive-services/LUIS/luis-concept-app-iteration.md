@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 07/06/2020
 ms.author: diberry
-ms.openlocfilehash: 0545be9ebe067a62b398c6c89b79a8484f0b48d4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 560a7d9106b9eaef0f82766615253715deb9238a
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683107"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057871"
 ---
 # <a name="iterative-app-design-for-luis"></a>Iteratief app-ontwerp voor LUIS
 
@@ -70,7 +70,7 @@ LUIS heeft een aantal voor beelden van uitingen in elk **doel**nodig. Het voor b
 
 Elk voor beeld-utterance moet **vereiste gegevens bevatten om te kunnen worden geëxtraheerd** en gemaakt met **entiteiten**.
 
-|Sleutel element|Doel|
+|Sleutel element|Functie|
 |--|--|
 |Intentie|**Classificeer** gebruikers uitingen in één intentie of actie. Voor beelden zijn `BookFlight` en `GetWeather` .|
 |Entiteit|**Haal** gegevens op uit utterance die nodig zijn om de bedoeling te volt ooien. Voor beelden zijn onder meer datum en tijd van reis en locatie.|
@@ -107,11 +107,22 @@ U kunt publiceren naar de stage-en/of productie-sleuven. Elke sleuf kan een ande
 
 Getrainde versies zijn niet automatisch beschikbaar op het [eind punt](luis-glossary.md#endpoint)van uw Luis-app. U moet een versie [publiceren](luis-how-to-publish-app.md) of opnieuw publiceren zodat deze beschikbaar is in uw Luis-app-eind punt. U kunt publiceren naar **fase ring** en **productie**, zodat u twee versies van de app beschikbaar hebt op het eind punt. Als er meer versies van de app op een eind punt beschikbaar moeten zijn, moet u de versie exporteren en opnieuw importeren in een nieuwe app. De nieuwe app heeft een andere app-ID.
 
-### <a name="import-and-export-a-version"></a>Een versie importeren en exporteren
+### <a name="import-a-version"></a>Een versie importeren
 
-Een versie kan worden geïmporteerd op app-niveau. Deze versie wordt de actieve versie en gebruikt de versie-ID in de `versionId` eigenschap van het app-bestand. U kunt ook op versie niveau importeren in een bestaande app. De nieuwe versie wordt de actieve versie.
+Een versie kan worden **geïmporteerd** als een nieuwe:
+* App, met een nieuwe app-ID
+* Versie van een bestaande app
 
-Een versie kan ook worden geëxporteerd op app-of versie niveau. Het enige verschil is dat de geëxporteerde versie op app-niveau de momenteel actieve versie is op versie niveau, u kunt een wille keurige versie kiezen die u wilt exporteren op de pagina **[instellingen](luis-how-to-manage-versions.md)** .
+Deze versie wordt de actieve versie en gebruikt de versie-ID in de `versionId` eigenschap van het app-bestand.
+
+### <a name="export-a-version"></a>Een versie exporteren
+
+Een versie kan vanuit de LUIS-Portal worden **geëxporteerd** op het niveau van de app of het versie niveau:
+
+* App-niveau: Selecteer app op **mijn apps** pagina en selecteer vervolgens **exporteren**
+* Versie niveau: Selecteer app-koppeling op **mijn apps** pagina, selecteer **beheren**, selecteer **versies**
+
+Het enige verschil is dat de geëxporteerde versie op app-niveau de momenteel actieve versie is op het niveau van versie, u kunt een wille keurige versie kiezen die u wilt exporteren op de pagina **[instellingen](luis-how-to-manage-versions.md)** .
 
 Het geëxporteerde bestand bevat **niet** :
 
@@ -132,7 +143,7 @@ Begin met het [klonen](luis-how-to-manage-versions.md#clone-a-version) van een b
 
 Elke auteur brengt wijzigingen aan in hun eigen versie van de app. Wanneer de auteur aan het model is voldaan, exporteert u de nieuwe versies naar JSON-bestanden.
 
-Geëxporteerde apps, JSON-of Lu-bestanden kunnen worden vergeleken voor wijzigingen. Combi neer de bestanden om één bestand van de nieuwe versie te maken. Wijzig de `versionId` eigenschap om de nieuwe samengevoegde versie aan te duiden. Importeer die versie in de oorspronkelijke app.
+Geëxporteerde apps `.json` of `.lu` bestanden kunnen worden vergeleken voor wijzigingen. Combi neer de bestanden om één bestand van de nieuwe versie te maken. Wijzig de `versionId` eigenschap om de nieuwe samengevoegde versie aan te duiden. Importeer die versie in de oorspronkelijke app.
 
 Met deze methode kunt u één actieve versie, één fase versie en één gepubliceerde versie hebben. U kunt de resultaten van de actieve versie vergelijken met een gepubliceerde versie (fase of productie) in het [interactieve test venster](luis-interactive-test.md).
 
@@ -150,4 +161,4 @@ Wanneer u klaar bent met een iteratie cyclus, kunt u het proces herhalen. Begin 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Leer concepten over [samen werking](luis-concept-keys.md).
+Leer concepten over [samen werking](luis-how-to-azure-subscription.md).

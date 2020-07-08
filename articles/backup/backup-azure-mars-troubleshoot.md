@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van problemen m
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 1d1397519b39ffbc439cdd0d3e78d9b553ea302e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb9e5cf48f960a70c6a699df1163089eb4e8bc31
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82598008"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056591"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Problemen met de Microsoft Azure Recovery Services-agent (MARS) oplossen
 
@@ -165,6 +165,25 @@ Set-ExecutionPolicy Unrestricted
 Fout | Mogelijke oorzaken | Aanbevolen acties
 --- | --- | ---
 De huidige bewerking is mislukt vanwege een interne service fout "resource niet ingericht in service Stamp". Voer de bewerking na enige tijd opnieuw uit. (ID: 230006) | De naam van de beveiligde server is gewijzigd. | <li> Wijzig de oorspronkelijke naam van de server in de kluis. <br> <li> Registreer de server opnieuw bij de kluis met de nieuwe naam.
+
+## <a name="job-could-not-be-started-as-another-job-was-in-progress"></a>De taak kan niet worden gestart omdat een andere taak werd uitgevoerd
+
+Als u een waarschuwings bericht ziet in de taak geschiedenis van de **Mars-console**, met de tekst ' de taak  >  **Job history**kan niet worden gestart omdat er een andere taak werd uitgevoerd ', kan dit worden veroorzaakt door een dubbel exemplaar van de taak die wordt geactiveerd door de taak planner.
+
+![De taak kan niet worden gestart omdat een andere taak werd uitgevoerd](./media/backup-azure-mars-troubleshoot/job-could-not-be-started.png)
+
+Ga als volgt te werk om het probleem op te lossen:
+
+1. Start de module taak planner door *taskschd. msc* te typen in het venster uitvoeren
+1. Navigeer in het linkerdeel venster naar de **bibliotheek**van  ->  **micro soft**  ->  **OnlineBackup**voor de taak planner.
+1. Voor elke taak in deze bibliotheek dubbelklikt u op de taak om eigenschappen te openen en voert u de volgende stappen uit:
+    1. Schakel over naar het tabblad **Instellingen**.
+
+         ![Tabblad Instellingen](./media/backup-azure-mars-troubleshoot/settings-tab.png)
+
+    1. Wijzig de optie voor **als de taak al wordt uitgevoerd, de volgende regel van toepassing**is. Kies **geen nieuw exemplaar starten**.
+
+         ![Wijzig de regel zodat deze geen nieuw exemplaar start](./media/backup-azure-mars-troubleshoot/change-rule.png)
 
 ## <a name="troubleshoot-restore-problems"></a>Problemen met herstellen oplossen
 

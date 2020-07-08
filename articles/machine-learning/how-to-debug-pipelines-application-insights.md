@@ -1,5 +1,5 @@
 ---
-title: Fouten opsporen en problemen met machine learning pijp lijnen oplossen in Application Insights
+title: '&verzamelen van de logboek bestanden van de pijp lijn controleren'
 titleSuffix: Azure Machine Learning
 description: Voeg logboek registratie toe aan uw training en batch Score pijplijnen en Bekijk de geregistreerde resultaten in Application Insights.
 services: machine-learning
@@ -7,18 +7,17 @@ author: sanpil
 ms.author: sanpil
 ms.service: machine-learning
 ms.subservice: core
-ms.workload: data-services
 ms.topic: how-to
 ms.date: 01/16/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: faf83ad35e6aed191d07d7a297a547ec0d9921b2
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: a87ceb5a216b05f3fae6d570bbfed1c4a622c911
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555754"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055712"
 ---
-# <a name="debug-and-troubleshoot-machine-learning-pipelines-in-application-insights"></a>Fouten opsporen en problemen met machine learning pijp lijnen oplossen in Application Insights
+# <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>machine learning pijplijn logboek bestanden verzamelen in Application Insights voor waarschuwingen en fout opsporing
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 De bibliotheek [Opentellingen](https://opencensus.io/quickstart/python/) python kan worden gebruikt om logboeken naar Application Insights te routeren vanuit uw scripts. Door Logboeken van pijplijn uitvoeringen op één plek samen te voegen, kunt u query's maken en problemen vaststellen. Met behulp van Application Insights kunt u Logboeken in de loop van de tijd bijhouden en de pijp lijn logboeken vergelijken met de verschillende uitvoeringen.

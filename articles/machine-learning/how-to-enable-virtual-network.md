@@ -9,23 +9,21 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 06/22/2020
+ms.date: 06/30/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 3189fec114ca68dfd862c0973b289b9eff25fed5
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 94a2f77326487aa4bb180dd62ec05f4e23ca6218
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445556"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057786"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Netwerk isolatie tijdens de training & afleiding met persoonlijke virtuele netwerken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel leert u hoe u uw machine learning levenscyclus kunt beveiligen door Azure Machine Learning training te isoleren en taken in een Azure-Virtual Network (vnet) af te leiden. Azure Machine Learning is afhankelijk van andere Azure-Services voor reken resources, ook wel [Compute-doelen](concept-compute-target.md)genoemd, om modellen te trainen en te implementeren. De doelen kunnen worden gemaakt in een virtueel netwerk. U kunt bijvoorbeeld Azure Machine Learning Compute gebruiken om een model te trainen en het model vervolgens implementeren in azure Kubernetes service (AKS). 
 
-Een **virtueel netwerk** fungeert als beveiligings grens en isoleert uw Azure-resources van het open bare Internet. U kunt ook een virtueel Azure-netwerk toevoegen aan uw on-premises netwerk. Door netwerken aan te koppelen, kunt u uw modellen veilig trainen en toegang verkrijgen tot uw geïmplementeerde modellen.
-
-Als uw **onderliggende opslag zich in een virtueel netwerk bevindt, kunnen gebruikers de Studio-Webervaring van Azure machine learning niet gebruiken**, met inbegrip van de ontwerp functie voor het slepen en neerzetten of de gebruikers interface voor automatische machine learning, gegevens labeling en gegevens sets of geïntegreerde notebooks.  Als u probeert, wordt er een bericht weer gegeven dat vergelijkbaar is met de volgende fout:`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
+Een __virtueel netwerk__ fungeert als beveiligings grens en isoleert uw Azure-resources van het open bare Internet. U kunt ook een virtueel Azure-netwerk toevoegen aan uw on-premises netwerk. Door netwerken aan te koppelen, kunt u uw modellen veilig trainen en toegang verkrijgen tot uw geïmplementeerde modellen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -57,16 +55,176 @@ U kunt ook [persoonlijke Azure-koppelingen inschakelen](how-to-configure-private
 > 
 
 > [!WARNING]
-> De preview-versie van Azure Machine Learning Compute-exemplaren wordt niet ondersteund in een werk ruimte waar een persoonlijke koppeling is ingeschakeld.
 > 
+> De preview-versie van Azure Machine Learning Compute-exemplaren wordt niet ondersteund in een werk ruimte waar een persoonlijke koppeling is ingeschakeld.
+>
 > Azure Machine Learning biedt geen ondersteuning voor het gebruik van een Azure Kubernetes-service waarvoor een persoonlijke koppeling is ingeschakeld. In plaats daarvan kunt u de Azure Kubernetes-service in een virtueel netwerk gebruiken. Zie voor meer informatie [beveiligd Azure ml-experimenten en de functies voor invallen binnen een Azure-Virtual Network](how-to-enable-virtual-network.md).
 
 
 <a id="amlcompute"></a>
 
+## <a name="machine-learning-studio"></a>Machine Learning Studio
+
+Als uw gegevens worden opgeslagen in een virtueel netwerk, moet u een [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) voor een werk ruimte gebruiken om de toegang tot uw gegevens te verlenen aan de Studio.
+
+Als u geen toegang tot Studio krijgt, ontvangt u deze fout `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` en schakelt u de volgende bewerkingen uit:
+
+* Bekijk de gegevens in de Studio.
+* Gegevens visualiseren in de ontwerp functie.
+* Een AutoML-experiment verzenden.
+* Een label project starten.
+
+De Studio ondersteunt het lezen van gegevens uit de volgende gegevensopslag typen in een virtueel netwerk:
+
+* Azure Blob
+* Azure Data Lake Storage Gen1
+* Azure Data Lake Storage Gen2
+* Azure SQL Database
+
+### <a name="add-resources-to-the-virtual-network"></a>Resources toevoegen aan het virtuele netwerk 
+
+Voeg uw werk ruimte en opslag account toe aan hetzelfde virtuele netwerk, zodat ze toegang hebben tot elkaar.
+
+1. Als u uw werk ruimte wilt verbinden met het virtuele netwerk, schakelt u de [persoonlijke Azure-koppeling](how-to-configure-private-link.md)in.
+
+1. Als u uw opslag account wilt verbinden met het virtuele netwerk, [configureert u de firewalls en de instellingen voor virtuele netwerken](#use-a-storage-account-for-your-workspace).
+
+### <a name="configure-a-datastore-to-use-managed-identity"></a>Een gegevens opslag configureren voor het gebruik van beheerde identiteit
+
+Nadat u uw werk ruimte-en opslag service account aan het virtuele netwerk hebt toegevoegd, moet u data stores configureren voor het gebruik van beheerde identiteit voor toegang tot uw gegevens. Met deze stappen wordt de beheerde identiteit van de werk ruimte als __lezer__ aan de opslag service toegevoegd met behulp van het Azure resource-based Access Control (RBAC). Met __Reader__ toegang kan de werk ruimte Firewall instellingen ophalen en ervoor zorgen dat gegevens het virtuele netwerk niet verlaten.
+
+1. Selecteer __gegevens opslag__in de Studio.
+
+1. Selecteer __+ Nieuw gegevens archief__als u een nieuwe gegevens opslag wilt maken. Als u een bestaand item wilt bijwerken, selecteert u het gegevens archief en selecteert u __referenties bijwerken__.
+
+1. Selecteer in de instellingen voor gegevens archief de optie __Ja__ __Als u wilt dat Azure machine learning-service toegang heeft tot de opslag met behulp van door werk ruimte beheerde identiteit__.
+
+> [!NOTE]
+> Het kan tot tien minuten duren voordat deze wijzigingen van kracht worden.
+
+### <a name="azure-blob-storage-blob-data-reader"></a>BLOB-gegevens lezer voor Azure Blob Storage
+
+Voor __Azure Blob Storage__wordt de beheerde identiteit van de werk ruimte toegevoegd als een [BLOB-gegevens lezer](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) , zodat deze gegevens uit de Blob-opslag kan lezen.
+
+
+### <a name="azure-data-lake-storage-gen2-access-control"></a>Toegangs beheer Azure Data Lake Storage Gen2
+
+U kunt zowel RBAC-als POSIX-toegangscontrole lijsten (Acl's) gebruiken om de toegang tot gegevens binnen een virtueel netwerk te beheren.
+
+Als u RBAC wilt gebruiken, voegt u de beheerde identiteit van de werk ruimte toe aan de rol [BLOB data Reader](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) . Zie [Op rollen gebaseerd toegangsbeheer](../storage/blobs/data-lake-storage-access-control.md#role-based-access-control) voor meer informatie.
+
+Als u Acl's wilt gebruiken, kunt u toegang krijgen tot de beheerde identiteit van de werk ruimte, net als bij andere beveiligings principes. Zie [toegangs beheer lijsten voor bestanden en mappen](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)voor meer informatie.
+
+
+### <a name="azure-data-lake-storage-gen1-access-control"></a>Toegangs beheer Azure Data Lake Storage Gen1
+
+Azure Data Lake Storage Gen1 ondersteunt alleen Access Control Lists in POSIX-stijl. U kunt de werk ruimte Managed Identity Access to resources net als andere beveiligings principes toewijzen. Zie [toegangs beheer in azure data Lake Storage gen1](../data-lake-store/data-lake-store-access-control.md)voor meer informatie.
+
+
+### <a name="azure-sql-database-contained-user"></a>Azure SQL Database opgenomen gebruiker
+
+Als u toegang wilt krijgen tot gegevens die zijn opgeslagen in een Azure SQL Database met behulp van beheerde identiteit, moet u een SQL-Inge sloten gebruiker maken die is gekoppeld aan de beheerde identiteit. Zie voor meer informatie over het maken van een gebruiker van een externe provider [opgenomen gebruikers maken die zijn toegewezen aan Azure AD-identiteiten](../azure-sql/database/authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities).
+
+Nadat u een SQL-Inge sloten gebruiker hebt gemaakt, moet u er machtigingen voor verlenen met behulp van de [opdracht T-SQL toewijzen](https://docs.microsoft.com/sql/t-sql/statements/grant-object-permissions-transact-sql).
+
+### <a name="connect-to-the-studio"></a>Verbinding maken met de Studio
+
+Als u de Studio opent vanuit een resource binnen een virtueel netwerk (bijvoorbeeld een reken instantie of virtuele machine), moet u uitgaand verkeer van het virtuele netwerk naar de Studio toestaan. 
+
+Als u bijvoorbeeld netwerk beveiligings groepen (NSG) gebruikt om uitgaand verkeer te beperken, voegt __u een regel__ toe aan een servicetag bestemming __AzureFrontDoor.__ front-end.
+
+## <a name="use-a-storage-account-for-your-workspace"></a>Een opslag account voor uw werk ruimte gebruiken
+
+> [!IMPORTANT]
+> U kunt het _standaard opslag account_ voor Azure machine learning of _niet-standaard opslag accounts_ in een virtueel netwerk plaatsen.
+>
+> Het standaard opslag account wordt automatisch ingericht wanneer u een werk ruimte maakt.
+>
+> Voor niet-standaard opslag accounts `storage_account` kunt u met de para meter in de [ `Workspace.create()` functie](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) een aangepast opslag account opgeven op basis van de Azure-resource-id.
+
+Als u een Azure Storage-service wilt gebruiken voor de werk ruimte in een virtueel netwerk, gebruikt u de volgende stappen:
+
+1. Maak een reken resource (bijvoorbeeld een Machine Learning Reken instantie of cluster) achter een virtueel netwerk of koppel een reken resource aan de werk ruimte (bijvoorbeeld een HDInsight-cluster, een virtuele machine of een Azure Kubernetes service-cluster). De reken resource kan zijn voor experimenten of model implementaties.
+
+   Zie de sectie [een machine learning Compute gebruiken](#amlcompute), [een virtuele machine of een HDInsight-cluster](#vmorhdi)gebruiken en [Azure Kubernetes-service](#aksvnet) in dit artikel voor meer informatie.
+
+1. Ga in het Azure Portal naar de opslag service die u wilt gebruiken in uw werk ruimte.
+
+   [![De opslag die is gekoppeld aan de Azure Machine Learning-werk ruimte](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
+
+1. Selecteer op de pagina Storage-Service account de optie __firewalls en virtuele netwerken__.
+
+   ![Het gebied firewalls en virtuele netwerken op de pagina Azure Storage in het Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
+
+1. Voer op de pagina __firewalls en virtuele netwerken__ de volgende acties uit:
+    - Selecteer __Geselecteerde netwerken__.
+    - Selecteer onder __virtuele netwerken__de koppeling __bestaande virtuele netwerk toevoegen__ . Met deze actie wordt het virtuele netwerk waar uw Compute zich bevindt, toegevoegd (zie stap 1).
+
+        > [!IMPORTANT]
+        > Het opslag account moet zich in hetzelfde virtuele netwerk en subnet bevinden als de reken instanties of clusters die worden gebruikt voor de training of de interferentie.
+
+    - Schakel het selectie vakje __vertrouwde micro soft-Services toegang geven tot dit opslag account__ in.
+
+    > [!IMPORTANT]
+    > Wanneer u werkt met de Azure Machine Learning SDK, moet uw ontwikkel omgeving verbinding kunnen maken met het Azure Storage-account. Wanneer het opslag account zich in een virtueel netwerk bevindt, moet de firewall toegang toestaan vanuit het IP-adres van de ontwikkel omgeving.
+    >
+    > Als u toegang tot het opslag account wilt inschakelen, gaat u naar de __firewalls en virtuele netwerken__ voor het opslag account *vanuit een webbrowser op de ontwikkelings-client*. Gebruik vervolgens het selectie vakje __uw client-IP-adres toevoegen__ om het IP-adres van de client toe te voegen aan het __adres bereik__. U kunt ook het veld __adres bereik__ gebruiken om hand matig het IP-adres van de ontwikkel omgeving in te voeren. Zodra het IP-adres voor de client is toegevoegd, heeft het toegang tot het opslag account met de SDK.
+
+   [![Het deel venster firewalls en virtuele netwerken in de Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
+
+## <a name="use-datastores-and-datasets"></a>Data stores en gegevens sets gebruiken
+
+In deze sectie wordt het gebruik van gegevens opslag en gegevensset voor de SDK-ervaring besproken. Zie de sectie [machine learning Studio](#machine-learning-studio)voor meer informatie over de Studio-ervaring.
+
+Azure Machine Learning voert standaard gegevens over geldigheid en referenties controles uit wanneer u gegevens probeert te openen met behulp van de SDK. Als uw gegevens zich achter een virtueel netwerk bevindt, heeft Azure Machine Learning geen toegang tot de gegevens en mislukt de controles. Om dit te voor komen, moet u data stores en gegevens sets maken die validatie overs Laan.
+
+### <a name="use-a-datastore"></a>Een gegevens opslag gebruiken
+
+ Azure Data Lake Store gen1 en Azure Data Lake Store Gen2 de validatie standaard overs Laan, dus er is geen verdere actie nodig. Voor de volgende services kunt u echter soort gelijke syntaxis gebruiken om de validatie van gegevens opslag over te slaan:
+
+- Azure Blob Storage
+- Azure-bestands share
+- PostgreSQL
+- Azure SQL Database
+
+Met het volgende code voorbeeld maakt u een nieuwe Azure Blob-gegevens opslag en-sets `skip_validation=True` .
+
+```python
+blob_datastore = Datastore.register_azure_blob_container(workspace=ws,  
+
+                                                         datastore_name=blob_datastore_name,  
+
+                                                         container_name=container_name,  
+
+                                                         account_name=account_name, 
+
+                                                         account_key=account_key, 
+
+                                                         skip_validation=True ) // Set skip_validation to true
+```
+
+### <a name="use-a-dataset"></a>Een gegevensset gebruiken
+
+De syntaxis voor het overs laan van de validatie van de gegevensset is vergelijkbaar met de volgende typen gegevens sets:
+- Bestand met scheidings tekens
+- JSON 
+- Parquet
+- SQL
+- Bestand
+
+Met de volgende code wordt een nieuwe JSON-gegevensset en-sets gemaakt `validate=False` .
+
+```python
+json_ds = Dataset.Tabular.from_json_lines_files(path=datastore_paths, 
+
+validate=False) 
+
+```
+
+
 ## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>& exemplaren van compute-clusters 
 
-Als u een [beheerd Azure machine learning **Compute-doel** ](concept-compute-target.md#azure-machine-learning-compute-managed) of een [Azure machine learning COMPUTE- **exemplaar** ](concept-compute-instance.md) in een virtueel netwerk wilt gebruiken, moet aan de volgende netwerk vereisten worden voldaan:
+Als u een [beheerd Azure machine learning __Compute-doel__ ](concept-compute-target.md#azure-machine-learning-compute-managed) of een [Azure machine learning COMPUTE- __exemplaar__ ](concept-compute-instance.md) in een virtueel netwerk wilt gebruiken, moet aan de volgende netwerk vereisten worden voldaan:
 
 > [!div class="checklist"]
 > * Het virtuele netwerk moet zich in hetzelfde abonnement en dezelfde regio bevinden als de Azure Machine Learning-werk ruimte.
@@ -246,50 +404,11 @@ except ComputeTargetException:
 
 Wanneer het maken van het proces is voltooid, traint u uw model met behulp van het cluster in een experiment. Zie voor meer informatie [een berekenings doel selecteren en gebruiken voor training](how-to-set-up-training-targets.md).
 
-## <a name="use-a-storage-account-for-your-workspace"></a>Een opslag account voor uw werk ruimte gebruiken
+### <a name="access-data-in-a-compute-instance-notebook"></a>Toegang tot gegevens in een notebook van reken instanties
 
-Als u een Azure-opslag account wilt gebruiken voor de werk ruimte in een virtueel netwerk, gebruikt u de volgende stappen:
+Als u notitie blokken op een Azure Compute-instantie gebruikt, moet u ervoor zorgen dat uw notitie blok wordt uitgevoerd op een reken resource achter hetzelfde virtuele netwerk en subnet als uw gegevens. 
 
-1. Maak een reken resource (bijvoorbeeld een Machine Learning Reken instantie of cluster) achter een virtueel netwerk of koppel een reken resource aan de werk ruimte (bijvoorbeeld een HDInsight-cluster, een virtuele machine of een Azure Kubernetes service-cluster). De reken resource kan zijn voor experimenten of model implementaties.
-
-   Zie de sectie [een machine learning Compute gebruiken](#amlcompute), [een virtuele machine of een HDInsight-cluster](#vmorhdi)gebruiken en [Azure Kubernetes-service](#aksvnet) in dit artikel voor meer informatie.
-
-1. Ga in het Azure Portal naar de opslag die is gekoppeld aan uw werk ruimte.
-
-   [![De opslag die is gekoppeld aan de Azure Machine Learning-werk ruimte](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
-
-1. Selecteer op de pagina **Azure Storage** __firewalls en virtuele netwerken__.
-
-   ![Het gebied firewalls en virtuele netwerken op de pagina Azure Storage in het Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
-
-1. Voer op de pagina __firewalls en virtuele netwerken__ de volgende acties uit:
-    - Selecteer __Geselecteerde netwerken__.
-    - Selecteer onder __virtuele netwerken__de koppeling __bestaande virtuele netwerk toevoegen__ . Met deze actie wordt het virtuele netwerk waar uw Compute zich bevindt, toegevoegd (zie stap 1).
-
-        > [!IMPORTANT]
-        > Het opslag account moet zich in hetzelfde virtuele netwerk en subnet bevinden als de reken instanties of clusters die worden gebruikt voor de training of de interferentie.
-
-    - Schakel het selectie vakje __vertrouwde micro soft-Services toegang geven tot dit opslag account__ in.
-
-    > [!IMPORTANT]
-    > Wanneer u werkt met de Azure Machine Learning SDK, moet uw ontwikkel omgeving verbinding kunnen maken met het Azure Storage-account. Wanneer het opslag account zich in een virtueel netwerk bevindt, moet de firewall toegang toestaan vanuit het IP-adres van de ontwikkel omgeving.
-    >
-    > Als u toegang tot het opslag account wilt inschakelen, gaat u naar de __firewalls en virtuele netwerken__ voor het opslag account *vanuit een webbrowser op de ontwikkelings-client*. Gebruik vervolgens het selectie vakje __uw client-IP-adres toevoegen__ om het IP-adres van de client toe te voegen aan het __adres bereik__. U kunt ook het veld __adres bereik__ gebruiken om hand matig het IP-adres van de ontwikkel omgeving in te voeren. Zodra het IP-adres voor de client is toegevoegd, heeft het toegang tot het opslag account met de SDK.
-
-   [![Het deel venster firewalls en virtuele netwerken in de Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
-
-> [!IMPORTANT]
-> U kunt het _standaard opslag account_ voor Azure machine learning of _niet-standaard opslag accounts_ in een virtueel netwerk plaatsen.
->
-> Het standaard opslag account wordt automatisch ingericht wanneer u een werk ruimte maakt.
->
-> Voor niet-standaard opslag accounts `storage_account` kunt u met de para meter in de [ `Workspace.create()` functie](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) een aangepast opslag account opgeven op basis van de Azure-resource-id.
-
-## <a name="machine-learning-studio"></a>Machine learning Studio
-
-Wanneer u de Studio opent vanuit een bron in een virtueel netwerk (bijvoorbeeld een reken instantie of virtuele machine), moet u uitgaand verkeer van het virtuele netwerk naar de Studio toestaan. 
-
-Als u bijvoorbeeld netwerk beveiligings groepen (NSG) gebruikt om uitgaand verkeer te beperken, voegt __u een regel__ toe aan een servicetag bestemming __AzureFrontDoor.__ front-end.
+U moet uw reken instantie configureren zodat deze zich in hetzelfde virtuele netwerk bevindt tijdens het maken van **Geavanceerde instellingen**  >  **virtuele netwerken configureren**. U kunt een bestaand reken exemplaar niet toevoegen aan een virtueel netwerk.
 
 <a id="aksvnet"></a>
 
@@ -361,7 +480,7 @@ Een privé-IP-adres wordt ingeschakeld door AKS te configureren voor gebruik van
 > [!IMPORTANT]
 > U kunt geen persoonlijk IP-adres inschakelen bij het maken van het Azure Kubernetes-service cluster. Het moet worden ingeschakeld als een update van een bestaand cluster.
 
-Het volgende code fragment laat zien hoe u **een nieuw AKS-cluster maakt**en het vervolgens bijwerkt voor gebruik van een privé-IP/interne Load Balancer:
+Het volgende code fragment laat zien hoe u __een nieuw AKS-cluster maakt__en het vervolgens bijwerkt voor gebruik van een privé-IP/interne Load Balancer:
 
 ```python
 import azureml.core
@@ -425,9 +544,59 @@ De inhoud van het `body.json` bestand waarnaar wordt verwezen door de opdracht, 
 } 
 ```
 
-> [!NOTE]
-> Op dit moment kunt u de load balancer niet configureren wanneer u een __toevoeg__ bewerking uitvoert op een bestaand cluster. U moet eerst het cluster koppelen en vervolgens een update bewerking uitvoeren om de load balancer te wijzigen.
+Wanneer u __een bestaand cluster koppelt__ aan uw werk ruimte, moet u wachten totdat de bewerking koppelen is geconfigureerd om de Load Balancer te configureren.
 
+Zie [een bestaand AKS-cluster koppelen](how-to-deploy-azure-kubernetes-service.md#attach-an-existing-aks-cluster)voor meer informatie over het koppelen van een cluster.
+
+Nadat u het bestaande cluster hebt gekoppeld, kunt u het cluster bijwerken voor het gebruik van een privé-IP.
+
+```python
+import azureml.core
+from azureml.core.compute.aks import AksUpdateConfiguration
+from azureml.core.compute import AksCompute
+
+# ws = workspace object. Creation not shown in this snippet
+aks_target = AksCompute(ws,"myaks")
+
+# Change to the name of the subnet that contains AKS
+subnet_name = "default"
+# Update AKS configuration to use an internal load balancer
+update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", subnet_name)
+aks_target.update(update_config)
+# Wait for the operation to complete
+aks_target.wait_for_completion(show_output = True)
+```
+
+__Rol netwerk bijdrager__
+
+> [!IMPORTANT]
+> Als u een AKS-cluster maakt of koppelt met een virtueel netwerk dat u eerder hebt gemaakt, moet u de Service-Principal (SP) of de beheerde identiteit voor uw AKS-cluster de rol _netwerk bijdrage_ verlenen aan de resource groep met het virtuele netwerk. U moet dit doen voordat u probeert de interne load balancer te wijzigen in privé-IP.
+>
+> Gebruik de volgende stappen om de identiteit als netwerkinzender toe te voegen:
+
+1. Gebruik de volgende Azure CLI-opdrachten om de service-principal of de beheerde identiteits-ID voor AKS te vinden. Vervang door `<aks-cluster-name>` de naam van het cluster. Vervang door `<resource-group-name>` de naam van de resource groep die _het AKS-cluster bevat_:
+
+    ```azurecli-interactive
+    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
+    ``` 
+
+    Als met deze opdracht een waarde wordt geretourneerd van `msi` , gebruikt u de volgende opdracht om de principal-id voor de beheerde identiteit te identificeren:
+
+    ```azurecli-interactive
+    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
+    ```
+
+1. Gebruik de volgende opdracht om de ID te vinden van de resource groep die het virtuele netwerk bevat. Vervang door `<resource-group-name>` de naam van de resource groep die _het virtuele netwerk bevat_:
+
+    ```azurecli-interactive
+    az group show -n <resource-group-name> --query id
+    ```
+
+1. Gebruik de volgende opdracht om de service-principal of beheerde identiteit als Inzender voor het netwerk toe te voegen. Vervang door `<SP-or-managed-identity>` de id die wordt geretourneerd voor de service-principal of beheerde identiteit. Vervang door `<resource-group-id>` de id die wordt geretourneerd voor de resource groep die het virtuele netwerk bevat:
+
+    ```azurecli-interactive
+    az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
+    ```
 Zie voor meer informatie over het gebruik van de interne load balancer met AKS [interne Load Balancer gebruiken met de Azure Kubernetes-service](/azure/aks/internal-lb).
 
 ## <a name="use-azure-container-instances-aci"></a>Azure Container Instances (ACI) gebruiken
@@ -435,7 +604,9 @@ Zie voor meer informatie over het gebruik van de interne load balancer met AKS [
 Azure Container Instances worden dynamisch gemaakt bij het implementeren van een model. Als u wilt dat Azure Machine Learning ACI in het virtuele netwerk maakt, moet u __subnet delegering__ inschakelen voor het subnet dat wordt gebruikt door de implementatie.
 
 > [!WARNING]
-> Als u Azure Container Instances in het virtuele netwerk wilt gebruiken, kan het Azure Container Registry (ACR) voor uw werk ruimte zich ook niet in het virtuele netwerk bevinden.
+> Als Azure Container Instances in een virtueel netwerk wordt gebruikt, moet het virtuele netwerk zich in dezelfde resource groep bevinden als uw Azure Machine Learning-werk ruimte.
+>
+> Wanneer u Azure Container Instances in het virtuele netwerk gebruikt, kan de Azure Container Registry (ACR) voor uw werk ruimte zich ook niet in het virtuele netwerk bevinden.
 
 Als u ACI wilt gebruiken in een virtueel netwerk naar uw werk ruimte, gebruikt u de volgende stappen:
 
@@ -548,22 +719,6 @@ Zie [Azure machine learning-werk ruimte gebruiken achter Azure firewall](how-to-
     ]
     }
     ```
-    
-## <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
-
-Azure Data Lake Storage gen 2 is een reeks mogelijkheden voor big data Analytics, gebouwd op Azure Blob-opslag. Het kan worden gebruikt voor het opslaan van gegevens die worden gebruikt voor het trainen van modellen met Azure Machine Learning. 
-
-Gebruik de volgende stappen om Data Lake Storage gen 2 te gebruiken in het virtuele netwerk van uw Azure Machine Learning-werk ruimte:
-
-1. Maak een Azure Data Lake Storage gen 2-account. Zie [een Azure data Lake Storage Gen2 Storage-account maken](../storage/blobs/data-lake-storage-quickstart-create-account.md)voor meer informatie.
-
-1. Volg de stappen 2-4 in de vorige sectie, [gebruik een opslag account voor uw werk ruimte](#use-a-storage-account-for-your-workspace)om het account in het virtuele netwerk te plaatsen.
-
-Gebruik de volgende richt lijnen bij het gebruik van Azure Machine Learning met Data Lake Storage gen 2 in een virtueel netwerk:
-
-* Als u de __SDK gebruikt om een gegevensset te maken__en het systeem waarop de code __wordt uitgevoerd, zich niet in het virtuele netwerk bevindt__, gebruikt u de `validate=False` para meter. Deze para meter slaat validatie over, wat mislukt als het systeem zich niet in hetzelfde virtuele netwerk bevindt als het opslag account. Zie de methode [from_files ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) voor meer informatie.
-
-* Wanneer u Azure Machine Learning Compute-instantie of COMPUTE-cluster gebruikt voor het trainen van een model met behulp van de gegevensset, moet deze zich in hetzelfde virtuele netwerk bevinden als het opslag account.
 
 ## <a name="key-vault-instance"></a>Sleutel kluis-exemplaar 
 
@@ -578,7 +733,7 @@ Als u Azure Machine Learning experimenten wilt gebruiken met Azure Key Vault ach
 
    [![De sleutel kluis die is gekoppeld aan de Azure Machine Learning-werk ruimte](./media/how-to-enable-virtual-network/workspace-key-vault.png)](./media/how-to-enable-virtual-network/workspace-key-vault.png#lightbox)
 
-1. Selecteer op de pagina **Key Vault** in het linkerdeel venster __firewalls en virtuele netwerken__.
+1. Selecteer op de pagina __Key Vault__ in het linkerdeel venster __firewalls en virtuele netwerken__.
 
    ![De sectie firewalls en virtuele netwerken in het deel venster Key Vault](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
 

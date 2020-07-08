@@ -4,18 +4,18 @@ description: In dit artikel vindt u antwoorden op veelgestelde vragen over Langu
 ms.topic: troubleshooting
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 15f2cf3c06e56656efd68d472cabd1da52c375cc
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: b45f3c43e70502b2734696a66d2a497c2213d1b9
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343537"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054828"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Veelgestelde vragen (FAQ’s) over Language Understanding
 
 In dit artikel vindt u antwoorden op veelgestelde vragen over Language Understanding (LUIS).
 
-## <a name="whats-new"></a>Nieuw
+## <a name="whats-new"></a>Nieuwe functies
 
 Meer [informatie](whats-new.md) over wat er nieuw is in language UNDERSTANDING (Luis).
 
@@ -43,7 +43,7 @@ Ja **, het is een goed** idee om uw eigen intentie te trainen met meer uitingen 
 Raadpleeg de [Bing spellingcontrole-API V7](luis-tutorial-bing-spellcheck.md) -zelf studie. LUIS dwingt limieten af die zijn opgelegd door Bing Spellingcontrole-API v7.
 
 ### <a name="how-do-i-edit-my-luis-app-programmatically"></a>Hoe kan ik mijn LUIS-app programmatisch bewerken?
-Als u de LUIS-app programmatisch wilt bewerken, gebruikt u de [ontwerp-API](https://go.microsoft.com/fwlink/?linkid=2092087). Zie [Luis authoring API aanroepen](./get-started-get-model-rest-apis.md) en [een Luis-app maken met behulp van node. js](./luis-tutorial-node-import-utterances-csv.md) voor voor beelden van het aanroepen van de ontwerp-API. De ontwerp-API vereist dat u een [ontwerp sleutel](luis-concept-keys.md#azure-resources-for-luis) gebruikt in plaats van een eindpunt sleutel. Via programmatische ontwerp kunnen Maxi maal 1.000.000 oproepen per maand en vijf trans acties per seconde worden uitgevoerd. Zie [sleutels beheren](./luis-concept-keys.md)voor meer informatie over de sleutels die u gebruikt met Luis.
+Als u de LUIS-app programmatisch wilt bewerken, gebruikt u de [ontwerp-API](https://go.microsoft.com/fwlink/?linkid=2092087). Zie [Luis-ontwerp-API aanroepen](./get-started-get-model-rest-apis.md) en [een Luis-app bouwen met behulp van Node.js](./luis-tutorial-node-import-utterances-csv.md) voor voor beelden van het aanroepen van de API voor ontwerpen. De ontwerp-API vereist dat u een [ontwerp sleutel](luis-how-to-azure-subscription.md#azure-resources-for-luis) gebruikt in plaats van een eindpunt sleutel. Via programmatische ontwerp kunnen Maxi maal 1.000.000 oproepen per maand en vijf trans acties per seconde worden uitgevoerd. Zie [sleutels beheren](./luis-how-to-azure-subscription.md)voor meer informatie over de sleutels die u gebruikt met Luis.
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Waar bevindt zich de patroon functie die een reguliere expressie in overeenstemming voorziet?
 De vorige **patroon functie** is momenteel afgeschaft, vervangen door **[patronen](luis-concept-patterns.md)**.
@@ -123,7 +123,7 @@ Bekijk de [Aanbevolen procedures](luis-concept-best-practices.md) voor andere ti
 LUIS [tokenizes](luis-glossary.md#token) de utterance op basis van de [cultuur](luis-language-support.md#tokenization). Zowel de oorspronkelijke waarde als de tokend-waarde zijn beschikbaar voor [gegevens extractie](luis-concept-data-extraction.md#tokenized-entity-returned).
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Hoe kan ik een LUIS-eindpunt sleutel maken en toewijzen?
-[Maak de eindpunt sleutel](luis-how-to-azure-subscription.md) in azure voor uw [service](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) niveau. [Wijs de sleutel toe](luis-how-to-azure-subscription.md) op de pagina **[Azure-resources](luis-how-to-azure-subscription.md)** . Er is geen bijbehorende API voor deze actie. Vervolgens moet u de HTTP-aanvraag voor het eind punt wijzigen om [de nieuwe eindpunt sleutel te gebruiken](luis-concept-keys.md).
+[Maak de eindpunt sleutel](luis-how-to-azure-subscription.md) in azure voor uw [service](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) niveau. [Wijs de sleutel toe](luis-how-to-azure-subscription.md) op de pagina **[Azure-resources](luis-how-to-azure-subscription.md)** . Er is geen bijbehorende API voor deze actie. Vervolgens moet u de HTTP-aanvraag voor het eind punt wijzigen om [de nieuwe eindpunt sleutel te gebruiken](luis-how-to-azure-subscription.md).
 
 ### <a name="how-do-i-interpret-luis-scores"></a>Hoe kan ik LUIS-scores interpreteren?
 Uw systeem moet de hoogste score intentie gebruiken, ongeacht de waarde. Bijvoorbeeld een score onder 0,5 (minder dan 50%) betekent niet noodzakelijkerwijs dat LUIS weinig vertrouwen heeft. Het leveren van meer trainings gegevens kan helpen om de [Score](luis-concept-prediction-score.md) van de meest waarschijnlijke intentie te verg Roten.
@@ -144,10 +144,10 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ```
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Mijn LUIS-app werkte gisteren, maar nu krijg ik 403 fouten. Ik heb de app niet gewijzigd. Hoe kan ik dit probleem oplossen?
-Volg deze [instructies](#how-do-i-create-and-assign-a-luis-endpoint-key) voor het maken van een Luis-eindpunt sleutel en wijs deze toe aan de app. Vervolgens moet u de HTTP-aanvraag van de client toepassing wijzigen in het eind punt om [de nieuwe eindpunt sleutel te gebruiken](luis-concept-keys.md). Als u een nieuwe resource hebt gemaakt in een andere regio, wijzigt u de regio van de aanvraag voor de HTTP-client.
+Volg deze [instructies](#how-do-i-create-and-assign-a-luis-endpoint-key) voor het maken van een Luis-eindpunt sleutel en wijs deze toe aan de app. Vervolgens moet u de HTTP-aanvraag van de client toepassing wijzigen in het eind punt om [de nieuwe eindpunt sleutel te gebruiken](luis-how-to-azure-subscription.md). Als u een nieuwe resource hebt gemaakt in een andere regio, wijzigt u de regio van de aanvraag voor de HTTP-client.
 
 ### <a name="how-do-i-secure-my-luis-endpoint"></a>Hoe kan ik mijn LUIS-eind punt beveiligen?
-Zie [het eind punt beveiligen](luis-concept-keys.md#securing-the-endpoint).
+Zie [het eind punt beveiligen](luis-how-to-azure-subscription.md#securing-the-endpoint).
 
 ## <a name="working-within-luis-limits"></a>Binnen LUIS-limieten werken
 
@@ -206,7 +206,7 @@ Als uw app bestond voordat LUIS algemeen beschikbaar is (GA), worden LUIS-eindpu
 
 ### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Hoe kan ik weet welke sleutel ik nodig heb, waar ik deze vind?
 
-Zie [ontwerp-en query Voorspellings eindpunt sleutels in Luis](luis-concept-keys.md) voor meer informatie over de verschillen tussen de ontwerp sleutel en de Voorspellings runtime sleutel.
+Zie [ontwerp-en query Voorspellings eindpunt sleutels in Luis](luis-how-to-azure-subscription.md) voor meer informatie over de verschillen tussen de ontwerp sleutel en de Voorspellings runtime sleutel.
 
 ### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Ik heb een fout melding ontvangen over het verlopen van het quotum. Hoe kan ik dit probleem oplossen?
 
@@ -301,7 +301,7 @@ Als u een LUIS-sjabloon selecteert en de knop **selecteren** in het deel venster
 
 ### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>Hoe kan ik de regio LUIS van een resource programmatisch ophalen?
 
-Gebruik het LUIS-voor beeld om de regio programmatisch te [vinden](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) met C# of node. js.
+Gebruik het LUIS-voor beeld om de regio programmatisch te [zoeken](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) met C# of Node.Js.
 
 ## <a name="luis-service"></a>LUIS-service
 

@@ -3,12 +3,12 @@ title: Overzicht van de architectuur
 description: Hierin wordt een overzicht gegeven van de architectuur, onderdelen en processen die door de Azure Backup-service worden gebruikt.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 26f10f96cac412854f4bb0f732a0aec7f595c8ae
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707920"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055253"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architectuur en onderdelen van Azure Backup
 
@@ -52,7 +52,7 @@ Recovery Services kluizen hebben de volgende kenmerken:
 
 Azure Backup biedt verschillende back-upagenten, afhankelijk van het type computer waarvan een back-up wordt gemaakt:
 
-**Agent** | **Details**
+**Tussen** | **Details**
 --- | ---
 **MARS-agent** | <ul><li>Wordt uitgevoerd op afzonderlijke on-premises Windows Server-machines om een back-up te maken van bestanden, mappen en de systeem status.</li> <li>Wordt uitgevoerd op virtuele machines van Azure om een back-up te maken van bestanden, mappen en de systeem status.</li> <li>Wordt uitgevoerd op DPM-MABS-servers om een back-up te maken van de lokale opslag schijf DPM/MABS naar Azure.</li></ul>
 **VM-extensie van Azure** | Wordt uitgevoerd op virtuele Azure-machines om een back-up te maken naar een kluis.
@@ -105,9 +105,7 @@ Back-ups maken van ontdubbelde schijven | | | ![Gedeeltelijk][yellow]<br/><br/> 
 ## <a name="backup-policy-essentials"></a>Basis beginselen van back-upbeleid
 
 - Er wordt een back-upbeleid per kluis gemaakt.
-- Er kan een back-upbeleid worden gemaakt voor het maken van een back-up van de volgende werk belastingen
-  - Azure VM
-  - SQL in azure VM
+- Er kan een back-upbeleid worden gemaakt voor het maken van een back-up van de volgende workloads: Azure-Vm's, SQL in azure-vm's, SAP HANA in azure-Vm's en Azure-bestands shares. Het beleid voor het maken van back-ups van bestanden en mappen met behulp van de MARS-agent is opgegeven in de MARS-console.
   - Azure-bestandsshare
 - Een beleid kan aan veel resources worden toegewezen. Een Azure VM-back-upbeleid kan worden gebruikt om veel virtuele Azure-machines te beveiligen.
 - Een beleid bestaat uit twee onderdelen
@@ -115,9 +113,12 @@ Back-ups maken van ontdubbelde schijven | | | ![Gedeeltelijk][yellow]<br/><br/> 
   - Bewaren: voor hoe lang elke back-up moet worden bewaard.
 - De planning kan worden gedefinieerd als dagelijks of wekelijks met een bepaald tijd punt.
 - U kunt Bewaar perioden definiëren voor ' dagelijks ', ' Wekelijks ', ' maandelijks ', ' jaarlijks ' back-uppunten.
-- ' Wekelijks ' verwijst naar een back-up op een bepaalde dag van de week, ' maandelijks ' betekent een back-up op een bepaalde dag van de maand en ' jaarlijks ' verwijst naar een back-up op een bepaalde dag van het jaar.
-- Het bewaren van ' maandelijks ', ' jaarlijks ' back-uppunten wordt ' LongTermRetention ' genoemd.
-- Wanneer een kluis wordt gemaakt, wordt er ook een beleid voor Azure VM-back-ups met de naam ' Defaultpolicy bij ' gemaakt en dit kan worden gebruikt voor het maken van back-ups van virtuele Azure-machines.
+  - ' Wekelijks ' verwijst naar een back-up op een bepaalde dag van de week
+  - ' maandelijks ' verwijst naar een back-up op een bepaalde dag van de maand
+  - ' jaarlijks ' verwijst naar een back-up op een bepaalde dag van het jaar
+- Het bewaren van ' maandelijks ', ' jaarlijks ' back-uppunten wordt aangeduid als een lange termijn retentie (LTR)
+- Wanneer een kluis wordt gemaakt, wordt er ook een ' Defaultpolicy bij ' gemaakt en kan deze worden gebruikt voor het maken van een back-up van bronnen.
+- Alle wijzigingen die zijn aangebracht in de Bewaar periode van een back-upbeleid, worden met terugwerkende kracht toegepast op alle oudere herstel punten, van de nieuwe.
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>Architectuur: ingebouwde Azure VM-back-up
 

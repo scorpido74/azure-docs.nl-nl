@@ -4,12 +4,12 @@ description: In dit artikel worden populaire algemene vragen over Azure Site Rec
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: dd3b9b8eca4f1eab66f8982b22be5941d082b229
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 9eceb9643a5e8f8eab6b68bb04b322a099b715f3
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85506171"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057429"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Algemene vragen over Azure Site Recovery
 
@@ -22,11 +22,16 @@ In dit artikel vindt u een overzicht van veelgestelde vragen over Azure Site Rec
 ## <a name="general"></a>Algemeen
 
 ### <a name="what-does-site-recovery-do"></a>Wat doet Site Recovery?
+
 Site Recovery draagt bij aan uw strategie voor bedrijfs continuïteit en herstel na nood gevallen (BCDR) door de replicatie van Azure-Vm's tussen regio's, on-premises virtuele machines en fysieke servers naar Azure en on-premises machines naar een secundair Data Center te organiseren en te automatiseren. [Meer informatie](site-recovery-overview.md).
 
 ### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>Kan ik een virtuele machine beveiligen die een docker-schijf heeft?
 
 Nee, dit is een niet-ondersteund scenario.
+
+### <a name="what-does-site-recovery-do-to-ensure-data-integrity"></a>Wat doet Site Recovery om de gegevens integriteit te waarborgen?
+
+Er zijn verschillende maat regelen door Site Recovery om gegevens integriteit te garanderen. Er wordt een beveiligde verbinding tot stand gebracht tussen alle services met behulp van het HTTPS-protocol. Dit zorgt ervoor dat alle malware of externe entiteiten de gegevens niet kunnen knoeien. Er wordt een andere meting uitgevoerd met behulp van controle sommen. De gegevens overdracht tussen de bron en het doel wordt uitgevoerd door controle sommen van gegevens ertussen te berekenen. Dit zorgt ervoor dat de overgebrachte gegevens consistent zijn.
 
 ## <a name="service-providers"></a>Service providers
 

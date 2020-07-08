@@ -3,12 +3,12 @@ title: Resource Manager en klassieke implementatie
 description: Lees hier wat de verschillen zijn tussen het implementatiemodel van Resource Manager en het klassieke implementatiemodel (of Service Management).
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.openlocfilehash: a2deddfff595feee429aa1be942e2f4651700f54
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 9e44128da9b6e180bd2857f4574c0b384fdffef2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763785"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057565"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager vergeleken met klassieke implementatie: implementatiemodellen en de status van uw resources begrijpen
 
@@ -125,7 +125,7 @@ Als u klaar bent om uw resources te migreren van de klassieke implementatie naar
 1. [Technische details over door platforms ondersteunde migratie van klassiek naar Azure Resource Manager](../../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
 2. [Platformondersteunde migratie van IaaS-resources van het klassieke implementatiemodel naar Azure Resource Manager](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)
 3. [IaaS-resources migreren van klassiek naar Azure Resource Manager met behulp van Azure PowerShell](../../virtual-machines/windows/migration-classic-resource-manager-ps.md)
-4. [IaaS-resources migreren van klassiek naar Azure Resource Manager met behulp van Azure CLI](../../virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)
+4. [IaaS-resources migreren van klassiek naar Azure Resource Manager met behulp van Azure CLI](../../virtual-machines/linux/migration-classic-resource-manager-cli.md)
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
@@ -152,4 +152,3 @@ In [Azure Resource Manager Quick](https://azure.microsoft.com/documentation/temp
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../templates/deploy-powershell.md) voor informatie over de opdrachten voor het implementeren van een sjabloon.
-

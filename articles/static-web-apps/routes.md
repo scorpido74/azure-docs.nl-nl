@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: e6c38f3bc695db0e27547e434a81f95fa556e84b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: bde0db179216426c4279e5b03b416a04176430bb
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85295995"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056783"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Routes in de preview-versie van statische Web Apps van Azure
 
@@ -157,7 +157,7 @@ Gebruikers kunnen een aantal verschillende situaties tegen komen die ertoe kunne
 
 De volgende tabel bevat een overzicht van de beschik bare platform fout onderdrukkingen:
 
-| Fout type  | HTTP-statuscode | Beschrijving |
+| Fout type  | HTTP-statuscode | Description |
 |---------|---------|---------|
 | `NotFound` | 404  | Er is geen pagina gevonden op de server. |
 | `Unauthenticated` | 401 | De gebruiker is niet aangemeld met een [verificatie provider](authentication-authorization.md). |
@@ -166,6 +166,53 @@ De volgende tabel bevat een overzicht van de beschik bare platform fout onderdru
 | `Unauthorized_MissingRoles` | 401 | De gebruiker is geen lid van een vereiste rol. |
 | `Unauthorized_TooManyUsers` | 401 | De site heeft het maximum aantal gebruikers bereikt en de server beperkt verdere toevoegingen. Deze fout wordt weer gegeven aan de client omdat er geen limiet is voor het aantal [uitnodigingen](authentication-authorization.md) dat u kunt genereren, en sommige gebruikers kunnen de uitnodiging nooit accepteren.|
 | `Unauthorized_Unknown` | 401 | Er is een onbekend probleem opgetreden bij het verifiëren van de gebruiker. Een oorzaak van deze fout is dat de gebruiker niet wordt herkend omdat deze geen toestemming voor de toepassing heeft verleend.|
+
+## <a name="custom-mime-types"></a>Aangepaste MIME-typen
+
+`mimeTypes`Met het object, dat wordt weer gegeven op hetzelfde niveau als de `routes` matrix, kunt u [MIME-typen](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types) koppelen aan bestands extensies.
+
+```json
+{
+    "routes": [],
+    "mimeTypes": {
+        "custom": "text/html"
+    }
+}
+```
+
+In het bovenstaande voor beeld worden alle bestanden met de `.custom` extensie geleverd met het `text/html` MIME-type.
+
+De volgende overwegingen zijn belang rijk bij het werken met MIME-typen:
+
+- Sleutels mogen niet null of leeg zijn, of meer dan 50 tekens bevatten
+- Waarden mogen niet null of leeg zijn, of meer dan 1000 tekens bevatten
+
+## <a name="default-headers"></a>Standaard headers
+
+Het- `defaultHeaders` object, dat wordt weer gegeven op hetzelfde niveau als de `routes` matrix, biedt u de mogelijkheid om [antwoord headers](https://developer.mozilla.org/docs/Web/HTTP/Headers)toe te voegen, te wijzigen of te verwijderen.
+
+Als u een waarde opgeeft voor een header, wordt de koptekst toegevoegd of gewijzigd. Als u een lege waarde opgeeft, wordt de koptekst verwijderd van die naar de client wordt geleverd.
+
+```json
+{
+    "routes": [],
+    "defaultHeaders": {
+      "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'",
+      "cache-control": "must-revalidate, max-age=6000",
+      "x-dns-prefetch-control": ""
+    }
+}
+```
+
+In het bovenstaande voor beeld wordt een nieuwe `content-security-policy` header toegevoegd, wordt de `cache-control` standaard waarde van de server gewijzigd en `x-dns-prefectch-control` wordt de header verwijderd.
+
+De volgende overwegingen zijn belang rijk bij het werken met kopteksten:
+
+- Sleutels mogen niet null of leeg zijn.
+- Null of lege waarden verwijderen koptekst uit verwerking.
+- Sleutels of waarden mogen niet langer zijn dan 8.000 tekens.
+- Gedefinieerde headers worden met alle aanvragen geleverd.
+- De in _routes.js_ gedefinieerde kopteksten gelden alleen voor statische inhoud. U kunt antwoord headers van een API-eind punt aanpassen in de code van de functie.
 
 ## <a name="example-route-file"></a>Voor beeld van een route bestand
 
@@ -222,24 +269,33 @@ In het volgende voor beeld ziet u hoe u route regels voor statische inhoud en Ap
       "statusCode": "302",
       "serve": "/login"
     }
-  ]
+  ],
+  "defaultHeaders": {
+    "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
+  },
+  "mimeTypes": {
+      "custom": "text/html"
+  }
 }
 ```
 
 In de volgende voor beelden wordt beschreven wat er gebeurt wanneer een aanvraag overeenkomt met een regel.
 
-|Aanvragen naar...  | Resultaat in... |
-|---------|---------|---------|
+| Aanvragen naar... | Resultaat in... |
+|--|--|--|
 | _/profile_ | Geverifieerde gebruikers worden het _/profile/index.html_ -bestand geleverd. Niet-geverifieerde gebruikers omgeleid naar _/login_. |
 | _/admin/reports_ | Geverifieerde gebruikers in de rol _Administrators_ worden het _/Admin/Reports/index.html_ -bestand geleverd. Geverifieerde gebruikers die niet voor komen _in de beheerdersrol_ , worden 401-fout<sup>2</sup>geleverd. Niet-geverifieerde gebruikers omgeleid naar _/login_. |
 | _/api/admin_ | Aanvragen van geverifieerde gebruikers in de rol _Administrators_ worden verzonden naar de API. Geverifieerde gebruikers die niet voor komen in de rol _Administrator_ en niet-geverifieerde gebruikers, krijgen een 401-fout. |
 | _/customers/contoso_ | Geverifieerde gebruikers die deel uitmaken van de _ \_ Contoso_ -rollen van de _beheerder_ of klanten, worden de _/Customers/contoso/-index.html_ -bestand<sup>2</sup>bediend. Geverifieerde gebruikers die geen toegang hebben tot de _ \_ Contoso_ -rollen van de _groep Administrators_ of klanten, worden 401-fouten geleverd. Niet-geverifieerde gebruikers omgeleid naar _/login_. |
-| _/login_     | Niet-geverifieerde gebruikers worden gevraagd om te verifiëren met GitHub. |
-| _/.auth/login/twitter_     | Autorisatie met Twitter is uitgeschakeld. De server reageert met een 404-fout. |
-| _/logout_     | Gebruikers worden afgemeld bij een verificatie provider. |
+| _/login_ | Niet-geverifieerde gebruikers worden gevraagd om te verifiëren met GitHub. |
+| _/.auth/login/twitter_ | Autorisatie met Twitter is uitgeschakeld. De server reageert met een 404-fout. |
+| _/logout_ | Gebruikers worden afgemeld bij een verificatie provider. |
 | _/calendar/2020/01_ | De browser wordt het bestand _/calendar.html_ geleverd. |
 | _/specials_ | De browser wordt omgeleid naar _/deals_. |
-| _/unknown-folder_     | Het bestand _/custom-404.html_ wordt geleverd. |
+| _/unknown-folder_ | Het bestand _/custom-404.html_ wordt geleverd. |
+| Bestanden met de `.custom` extensie | Worden geleverd met het `text/html` MIME-type |
+
+- Alle antwoorden bevatten de `content-security-policy` kopteksten met een waarde van `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'` .
 
 <sup>1</sup> route regels voor API-functies bieden alleen ondersteuning voor het [omleiden](#redirects) en [beveiligen van routes met rollen](#securing-routes-with-roles).
 

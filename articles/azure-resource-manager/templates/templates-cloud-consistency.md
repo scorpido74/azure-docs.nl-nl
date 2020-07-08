@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 459a34d104e01dca2cdf997c6aedd6f54f3adbaa
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: f7295515b75ba7e26454f8b6ce6e0d660657ec4e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677675"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055236"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>ARM-sjablonen ontwikkelen voor Cloud consistentie
 
@@ -574,7 +574,7 @@ Met dezelfde wijzigingen worden ook [gegevens schijven](../../virtual-machines/w
 
 ### <a name="verify-that-vm-extensions-are-available-in-azure-stack"></a>Controleer of er VM-extensies beschikbaar zijn in Azure Stack
 
-Een andere overweging voor Cloud consistentie is het gebruik van [extensies van virtuele machines](../../virtual-machines/windows/extensions-features.md) voor het configureren van de resources in een VM. Niet alle VM-uitbrei dingen zijn beschikbaar in Azure Stack. Met een sjabloon kunt u de resources die zijn toegewezen aan de VM-extensie opgeven, afhankelijkheden en voor waarden maken in de sjabloon.
+Een andere overweging voor Cloud consistentie is het gebruik van [extensies van virtuele machines](../../virtual-machines/extensions/features-windows.md) voor het configureren van de resources in een VM. Niet alle VM-uitbrei dingen zijn beschikbaar in Azure Stack. Met een sjabloon kunt u de resources die zijn toegewezen aan de VM-extensie opgeven, afhankelijkheden en voor waarden maken in de sjabloon.
 
 Als u bijvoorbeeld een virtuele machine met Microsoft SQL Server wilt configureren, kan de VM-extensie SQL Server als onderdeel van de sjabloon implementatie configureren. Bedenk wat er gebeurt als de implementatie sjabloon ook een toepassings server bevat die is geconfigureerd voor het maken van een Data Base op de virtuele machine met SQL Server. Naast het gebruik van een VM-extensie voor de toepassings servers, kunt u ook de afhankelijkheid van de toepassings server configureren op basis van de geslaagde retour van de SQL Server VM-extensie resource. Deze aanpak zorgt ervoor dat de virtuele machine met SQL Server is geconfigureerd en beschikbaar is wanneer de toepassings server de instructie krijgt om de data base te maken.
 

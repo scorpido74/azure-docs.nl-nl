@@ -5,19 +5,19 @@ services: active-directory
 author: CelesteDG
 manager: daveba
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 06/05/2020
 ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a82f81888828cb5edd42c37a6e8b2c2ee51fe603
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: fd24e6847dbf02bc7efe5d9e6ea02043879f720b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85339556"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054709"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>De ' aangemeld blijven? ' configureren vragen om Azure AD-accounts
 
@@ -55,7 +55,18 @@ Meer informatie over de aanmeldings fout vindt u in het voor beeld.
 
 :::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="Voor beeld van een aanmeldings logboek vermelding met de hand aangemeld bij interrupt":::
 
-U kunt voor komen dat gebruikers de interrupt zien door de **optie weer geven in te stellen op** **Nee** in de geavanceerde huisstijl instellingen.
+U kunt voor komen dat gebruikers de interrupt zien door de **optie weer geven in te stellen op** **Nee** in de geavanceerde huisstijl instellingen. Hiermee wordt de KMSI-prompt voor alle gebruikers in uw Azure AD-adres lijst uitgeschakeld.
+
+U kunt ook de permanente browser sessie besturings elementen in voorwaardelijke toegang gebruiken om te voor komen dat gebruikers de KMSI-prompt zien. Met deze optie kunt u de KMSI-prompt uitschakelen voor een geselecteerde groep gebruikers (zoals de globale beheerders) zonder dat dit van invloed is op het aanmeldings gedrag voor de resterende gebruikers in de Directory. Zie de [aanmeldings frequentie van gebruikers](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)voor meer informatie. 
+
+Om ervoor te zorgen dat de KMSI prompt alleen wordt weer gegeven wanneer deze de gebruiker kan profiteren, wordt de KMSI-prompt opzettelijk niet weer gegeven in de volgende scenario's:
+
+* Gebruiker is aangemeld via naadloze SSO en geïntegreerde Windows-authenticatie (IWA)
+* De gebruiker is aangemeld via Active Directory Federation Services en IWA
+* De gebruiker is een gast in de Tenant
+* De risico Score van de gebruiker is hoog
+* Aanmelden treedt op tijdens de overdracht van de gebruiker of beheerder
+* Permanente browser sessie beheer is geconfigureerd in een beleid voor voorwaardelijke toegang
 
 ## <a name="next-steps"></a>Volgende stappen
 

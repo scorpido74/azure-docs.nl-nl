@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: diberry
-ms.openlocfilehash: 440162d6cddd790cdb2859c119d60a6dbe28dcbf
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 338868c954df68fbf43bee9581a6afada58f7e97
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374867"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055457"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migreren naar een Azure-resource bewerkings sleutel
 
@@ -25,7 +25,7 @@ Language Understanding-ontwerp verificatie (LUIS) is gewijzigd van een e-mail ac
 
 ## <a name="what-is-migration"></a>Wat is migratie?
 
-Migratie is het proces van het wijzigen van de ontwerp verificatie van een e-mail account in een Azure-resource. Uw account wordt gekoppeld aan een Azure-abonnement en een Azure-ontwerp bron nadat u de migratie hebt gemigreerd. *Alle LUIS-gebruikers (eigen aren of mede werkers) zullen uiteindelijk moeten worden gemigreerd.* 
+Migratie is het proces van het wijzigen van de ontwerp verificatie van een e-mail account in een Azure-resource. Uw account wordt gekoppeld aan een Azure-abonnement en een Azure-ontwerp bron nadat u de migratie hebt gemigreerd. *Alle LUIS-gebruikers (eigen aren of mede werkers) zullen uiteindelijk moeten worden gemigreerd.*
 
 Migratie moet worden uitgevoerd vanuit de LUIS-Portal. Als u de ontwerp sleutels maakt met behulp van de LUIS CLI, moet u bijvoorbeeld het migratie proces in de LUIS-Portal volt ooien. U kunt na de migratie nog steeds coauteurs hebben op uw toepassingen, maar deze worden toegevoegd op het Azure-resource niveau in plaats van op toepassings niveau.
 
@@ -57,7 +57,7 @@ Migratie moet worden uitgevoerd vanuit de LUIS-Portal. Als u de ontwerp sleutels
 * Als u de eigenaar van de toepassing bent, hoeft u uw apps niet te exporteren omdat deze automatisch worden gemigreerd. We raden u aan elke lijst van de samen werker van de app op te slaan. Een e-mail sjabloon met deze lijst wordt optioneel als onderdeel van het migratie proces aangeboden.
 
 
-|Portal|Doel|
+|Portal|Functie|
 |--|--|
 |[Azure](https://azure.microsoft.com/free/)| Voorspellings-en ontwerp resources maken.<br> Mede werkers aan resources toewijzen.|
 |[LUIS](https://www.luis.ai)| Migreren naar nieuwe ontwerp resources.<br> Nieuwe ontwerp resources maken in de migratie stroom.<br> U kunt voor spellingen en het ontwerpen van resources voor apps toewijzen of verwijderen **Manage**via de  >  pagina**Azure-resources** beheren. <br> Verplaats toepassingen van de ene ontwerp bron naar een andere.  |
@@ -81,7 +81,7 @@ Migratie moet worden uitgevoerd vanuit de LUIS-Portal. Als u de ontwerp sleutels
 3. Als uw apps deel nemers hebben, wordt u gevraagd om hen een e-mail te sturen waarmee ze over de migratie kunnen weten. Dit is een optionele stap.
 
    Voor elke samen werker en app wordt de standaard e-mail toepassing geopend met een e-mail met een lichte opmaak. U kunt de e-mail bewerken voordat u deze verzendt. De e-mail sjabloon bevat de exacte App-ID en app-naam.
-   
+
    ```html
    Dear Sir/Madam,
 
@@ -89,10 +89,10 @@ Migratie moet worden uitgevoerd vanuit de LUIS-Portal. Als u de ontwerp sleutels
 
    App Id: <app-ID-omitted>
    App name: Human Resources
-      
+
    Thank you
    ```
-   
+
    > [!Note]
    > Nadat u uw account naar Azure hebt gemigreerd, zijn uw apps niet langer beschikbaar voor deel nemers.
 
@@ -162,7 +162,7 @@ In de lijst **mijn apps** worden de apps weer gegeven die zijn gemigreerd naar d
  > [!div class="mx-imgBorder"]
  > ![Vakken voor het abonnement en de ontwerp bron](./media/create-app-in-portal-select-subscription-luis-resource.png)
 
-U hoeft niet de sleutel van de ontwerp bron te weten om uw apps in de LUIS-portal te kunnen bewerken. 
+U hoeft niet de sleutel van de ontwerp bron te weten om uw apps in de LUIS-portal te kunnen bewerken.
 
 Als u van plan bent om uw apps programmatisch te bewerken, hebt u de sleutel waarden van de ontwerp functie nodig. Deze waarden worden weer gegeven op **Manage**de  >  pagina**Azure-resources** beheren in de Luis-Portal. Ze zijn ook beschikbaar in de Azure Portal op de pagina **sleutels** van de resource. U kunt ook meer ontwerp resources maken en deze toewijzen vanaf dezelfde pagina.
 
@@ -246,5 +246,5 @@ Als u de volgende fout ziet, raadpleegt u de [Aanbevolen stappen als u een samen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Bekijk [concepten over ontwerpen en runtime-sleutels](luis-concept-keys.md). 
+* Bekijk [concepten over ontwerpen en runtime-sleutels](luis-how-to-azure-subscription.md).
 * Lees hoe u [sleutels kunt toewijzen](luis-how-to-azure-subscription.md) en mede werkers kunt [toevoegen](luis-how-to-collaborate.md).

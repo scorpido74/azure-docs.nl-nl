@@ -3,12 +3,12 @@ title: Fouten bij verplaatsen oplossen
 description: Gebruik Azure Resource Manager om resources te verplaatsen naar een nieuwe resource groep of een nieuw abonnement.
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 5a65f7daa0f5e3b1c8c6ddfdbecc0ff7d53e5afd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60e4ffb2b79fcce85fa4b316e68e191eb14f8bf0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75891264"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055078"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Problemen oplossen met het verplaatsen van Azure-resources naar een nieuwe resourcegroep of een nieuw abonnement
 
@@ -18,8 +18,8 @@ Dit artikel bevat suggesties voor het oplossen van problemen bij het verplaatsen
 
 Als u een upgrade wilt uitvoeren van uw Azure-abonnement (zoals overschakelen van gratis naar betalen per gebruik), moet u uw abonnement converteren.
 
-* Als u een gratis proef versie wilt upgraden, raadpleegt u [uw gratis proef versie bijwerken of Microsoft Imagine Azure-abonnement naar betalen per](../../billing/billing-upgrade-azure-subscription.md)gebruik.
-* Als u een betalen naar gebruik-account wilt wijzigen, raadpleegt u [uw Azure betalen naar gebruik-abonnement wijzigen in een andere aanbieding](../../billing/billing-how-to-switch-azure-offer.md).
+* Als u een gratis proef versie wilt upgraden, raadpleegt u [uw gratis proef versie bijwerken of Microsoft Imagine Azure-abonnement naar betalen per](../../cost-management-billing/manage/upgrade-azure-subscription.md)gebruik.
+* Als u een betalen naar gebruik-account wilt wijzigen, raadpleegt u [uw Azure betalen naar gebruik-abonnement wijzigen in een andere aanbieding](../../cost-management-billing/manage/switch-azure-offer.md).
 
 Als u het abonnement niet kunt converteren, moet u [een Azure-ondersteunings aanvraag maken](../../azure-portal/supportability/how-to-create-azure-support-request.md). Selecteer **abonnements beheer** voor het type probleem.
 
@@ -32,7 +32,7 @@ Voor sommige services zijn aanvullende overwegingen vereist bij het verplaatsen 
 * [Klassiek implementatiemodel](./move-limitations/classic-model-move-limitations.md)
 * [Netwerken](./move-limitations/networking-move-limitations.md)
 * [Recovery Services](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
-* [Virtuele machines](./move-limitations/virtual-machines-move-limitations.md)
+* [Virtual Machines](./move-limitations/virtual-machines-move-limitations.md)
 
 ## <a name="large-requests"></a>Grote aanvragen
 

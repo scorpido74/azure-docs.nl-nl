@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: f1aed6b1c03a2b83e3b4fd91f1106614adb5a701
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: d1f534b801ec3a71e891bf654628f9e49fc04b0d
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344387"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055627"
 ---
 # <a name="add-contributors-to-your-app"></a>Inzenders toevoegen aan uw app
 
@@ -97,6 +97,6 @@ Meer informatie over Azure Active Directory-gebruikers en-toestemming:
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie [over het gebruik van versies](luis-how-to-manage-versions.md) om de levens cyclus van uw app te beheren.
-* Inzicht in de concepten, waaronder de [ontwerp resource](luis-concept-keys.md#authoring-key) en [inzenders](luis-concept-keys.md#contributions-from-other-authors) voor die bron.
+* Inzicht in de concepten, waaronder de [ontwerp resource](luis-how-to-azure-subscription.md#authoring-key) en [inzenders](luis-how-to-azure-subscription.md#contributions-from-other-authors) voor die bron.
 * Meer informatie [over het maken](luis-how-to-azure-subscription.md) van ontwerp-en runtime-resources
 * Migreren naar de nieuwe [ontwerp bron](luis-migration-authoring.md)

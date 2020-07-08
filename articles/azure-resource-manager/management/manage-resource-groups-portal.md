@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 0f01da074423a45b30e6c386852e88798e55938b
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: a6788651928b631d9298867a140f29b273f14734
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888799"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057548"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure Resource Manager resource groepen beheren met behulp van de Azure Portal
 
@@ -32,7 +32,7 @@ De resourcegroep slaat metagegevens op over de resources. Dat is de reden waarom
 
 ## <a name="create-resource-groups"></a>Resource groepen maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. **Resource groepen** selecteren
 
     ![resource groep toevoegen](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
@@ -52,7 +52,7 @@ De resourcegroep slaat metagegevens op over de resources. Dat is de reden waarom
 
 ## <a name="list-resource-groups"></a>Resource groepen weer geven
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Als u de resource groepen wilt weer geven, selecteert u **resource groepen**
 
     ![Bladeren in resource groepen](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
@@ -61,7 +61,7 @@ De resourcegroep slaat metagegevens op over de resources. Dat is de reden waarom
 
 ## <a name="open-resource-groups"></a>Resource groepen openen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **Resourcegroepen**.
 3. Selecteer de resource groep die u wilt openen.
 
@@ -111,5 +111,5 @@ Zie voor meer informatie over het exporteren van sjablonen [één en meerdere re
 
 - Zie [overzicht van Azure Resource Manager](overview.md)voor meer informatie Azure Resource Manager.
 - Zie [inzicht krijgen in de structuur en de syntaxis van Azure Resource Manager sjablonen](../templates/template-syntax.md)voor meer informatie over de syntaxis van de Resource Manager-sjabloon.
-- Zie [Stapsgewijze zelf studies](/azure/azure-resource-manager/)voor meer informatie over het ontwikkelen van sjablonen.
+- Zie [Stapsgewijze zelf studies](../index.yml)voor meer informatie over het ontwikkelen van sjablonen.
 - Zie [sjabloon verwijzing](/azure/templates/)voor het weer geven van de Azure Resource Manager sjabloon schema's.

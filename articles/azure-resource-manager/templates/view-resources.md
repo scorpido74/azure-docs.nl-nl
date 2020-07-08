@@ -3,12 +3,12 @@ title: Eigenschappen van de bron ontdekken
 description: Hierin wordt beschreven hoe u naar bron eigenschappen zoekt.
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 6e00ee875d9b0f7fadf27a44c55920872c815045
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 75c089ac9d0ca08c788fea1ac9011f018ef0195e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84668556"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057072"
 ---
 # <a name="discover-resource-properties"></a>Eigenschappen van de bron ontdekken
 
@@ -16,7 +16,7 @@ Voordat u Resource Manager-sjablonen maakt, moet u weten welke resource typen er
 
 ## <a name="find-resource-provider-namespaces"></a>Naam ruimten van resource provider zoeken
 
-Resources in een ARM-sjabloon worden gedefinieerd met de naam ruimte en het resource type van de resource provider. Bijvoorbeeld: micro soft. Storage/Storage accounts is de volledige naam van het bron type van het opslag account. Micro soft. Storage is de naam ruimte. Zie [resource providers voor Azure-Services](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-services-resource-providers)als u de naam ruimten voor de resource typen die u wilt gebruiken nog niet kent.
+Resources in een ARM-sjabloon worden gedefinieerd met de naam ruimte en het resource type van de resource provider. Bijvoorbeeld: micro soft. Storage/Storage accounts is de volledige naam van het bron type van het opslag account. Micro soft. Storage is de naam ruimte. Zie [resource providers voor Azure-Services](../management/azure-services-resource-providers.md)als u de naam ruimten voor de resource typen die u wilt gebruiken nog niet kent.
 
 ![Toewijzing van naam ruimte Resource Manager-resource provider](./media/view-resources/resource-provider-namespace-and-azure-service-mapping.png)
 
@@ -71,7 +71,7 @@ Resource Explorer is inge sloten in de Azure Portal. Voordat u deze methode gebr
 
 [![Implementeren in Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Voer in het zoekvak **resource Explorer**in en selecteer vervolgens **resource Explorer**.
 
     ![Azure Portal resource Verkenner](./media/view-resources/azure-portal-resource-explorer.png)

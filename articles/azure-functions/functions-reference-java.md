@@ -3,12 +3,12 @@ title: Naslag informatie voor Java-Ontwikkel aars voor Azure Functions
 description: Meer informatie over het ontwikkelen van functies met Java.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: b3404920dda9225b289d82013d29c35a1297ec32
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 339615ac99f231fd293a7ea15c853d43da8f998a
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340331"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057599"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java-ontwikkelaars handleiding
 
@@ -50,20 +50,6 @@ mvn archetype:generate \
 
 Zie [Java Quick](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)start om aan de slag te gaan met deze archetype. 
 
-## <a name="create-kotlin-functions-preview"></a>Kotlin-functies maken (preview)
-
-Er is ook een Maven-archetype voor het genereren van Kotlin-functies. Deze Archetype, die momenteel als preview-versie beschikbaar is, wordt gepubliceerd onder de volgende _groupid_:_artifactId_: [com. micro soft. Azure: Azure-functions-Kotlin-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/). 
-
-Met de volgende opdracht wordt een nieuw Java-functie project gegenereerd met behulp van deze Archetype:
-
-```
-mvn archetype:generate \
-    -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-kotlin-archetype
-```
-
-Ga naar de [Kotlin Quick](functions-create-first-kotlin-maven.md)start om aan de slag te gaan met deze archetype.
-
 ## <a name="folder-structure"></a>Mapstructuur
 
 Hier volgt de mapstructuur van een Azure Functions Java-project:
@@ -90,9 +76,7 @@ FunctionsProject
  | - pom.xml
 ```
 
-_* Het Kotlin-project lijkt sterk op omdat het nog steeds maven is_
-
-U kunt een gedeeld [host. json](functions-host-json.md) -bestand gebruiken om de functie-app te configureren. Elke functie heeft een eigen code bestand (. java) en een bindings configuratie bestand (function. json).
+U kunt een gedeelde [host.jsvoor](functions-host-json.md) het bestand gebruiken om de functie-app te configureren. Elke functie heeft een eigen code bestand (. java) en een bindings configuratie bestand (function.jsaan).
 
 U kunt meer dan één functie in een project opnemen. Vermijd het plaatsen van uw functies in afzonderlijke potten. De `FunctionApp` in de doelmap is wat wordt geïmplementeerd in uw functie-app in Azure.
 
@@ -103,7 +87,7 @@ U kunt meer dan één functie in een project opnemen. Vermijd het plaatsen van u
 Gebruik de Java-aantekeningen die zijn opgenomen in het pakket [com. micro soft. Azure. functions. annotatie. *](/java/api/com.microsoft.azure.functions.annotation) om invoer en uitvoer aan uw methoden te binden. Zie [Java Reference docs](/java/api/com.microsoft.azure.functions.annotation)(Engelstalig) voor meer informatie.
 
 > [!IMPORTANT] 
-> U moet een Azure Storage-account configureren in uw [lokale. settings. json](/azure/azure-functions/functions-run-local#local-settings-file) om Azure Blob-opslag, Azure Queue-opslag of Azure Table Storage lokaal uit te voeren.
+> U moet een Azure Storage-account configureren in uw [local.settings.js](/azure/azure-functions/functions-run-local#local-settings-file) om Azure Blob-opslag, Azure Queue-opslag of Azure-tabel opslag lokaal uit te voeren.
 
 Voorbeeld:
 
@@ -203,7 +187,7 @@ Voor het converteren van invoer gegevens naar POJO maakt [Azure-functions-Java-w
 
 ### <a name="binary-data"></a>Binaire gegevens
 
-BIND binaire invoer of uitvoer naar `byte[]` , door het `dataType` veld in uw function. json in te stellen op `binary` :
+BIND binaire invoer of uitvoer naar `byte[]` , door het `dataType` veld in uw function.jsin te stellen op `binary` :
 
 ```java
    @FunctionName("BlobTrigger")
@@ -465,7 +449,7 @@ Raadpleeg de volgende bronnen voor meer informatie over het ontwikkelen van Java
 
 * [Aanbevolen procedures voor Azure Functions](functions-best-practices.md)
 * [Naslaginformatie over Azure Functions voor ontwikkelaars](functions-reference.md)
-* [Azure Functions triggers en bindingen](functions-triggers-bindings.md)
+* [Azure Functions-triggers en -bindingen](functions-triggers-bindings.md)
 * Lokale ontwikkeling en fout opsporing met [Visual Studio code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md)en [eclips](functions-create-maven-eclipse.md)
 * [Java-functies voor fout opsporing op afstand met Visual Studio code](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
 * [Maven-invoeg toepassing voor Azure Functions](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-functions-maven-plugin/README.md) 

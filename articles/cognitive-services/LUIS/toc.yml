@@ -105,9 +105,6 @@
           href: luis-concept-test.md
         - name: Batchgewijs testen
           href: luis-concept-batch-test.md
-    - name: Ontwerp- en runtimesleutels
-      displayName: 'shared, transfer, ownership, author, access, import'
-      href: luis-concept-keys.md
     - name: Gegevensbeheer
       items:
         - name: Gegevens wijzigen

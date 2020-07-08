@@ -4,12 +4,12 @@ description: Waarschuwingen voor activiteiten logboeken maken met behulp van de 
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 45345d06e64194224df48a33fab1e74433a1eaac
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 242192118d59f972cebe2837d74c34310cac74aa
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744269"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056256"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Waarschuwingen voor activiteiten logboek maken, weer geven en beheren met behulp van Azure Monitor  
 
@@ -199,7 +199,12 @@ Als u een waarschuwings regel voor een activiteiten logboek wilt maken met behul
   ]
 }
 ```
-De voor gaande voor beeld-JSON kan worden opgeslagen als bijvoorbeeld sampleActivityLogAlert. json voor het doel van deze procedure en kan worden geïmplementeerd met behulp van [Azure Resource Manager in de Azure Portal](../../azure-resource-manager/templates/deploy-portal.md).
+De voor gaande voor beeld-JSON kan worden opgeslagen als bijvoorbeeld sampleActivityLogAlert.jsvoor het doel van deze procedure en kan worden geïmplementeerd met behulp van [Azure Resource Manager in de Azure Portal](../../azure-resource-manager/templates/deploy-portal.md).
+
+  > [!NOTE]
+  > 
+  > U ziet dat de waarschuwingen voor activiteiten logboek op het hoogste niveau kunnen worden gedefinieerd is een abonnement.
+  > De reden hiervoor is dat er geen waarschuwing kan worden gedefinieerd voor een aantal abonnementen. Daarom moet de definitie alert per abonnement zijn.
 
 De volgende velden zijn de opties die u kunt gebruiken in de sjabloon Azure Resource Manager voor de velden voor waarden: u ziet dat ' Resource Health ', ' Advisor ' en ' Service Health ' extra velden bevatten voor de speciale velden. 
 1. resourceId: de resource-ID van de betrokken resource in de activiteiten logboek gebeurtenis waarvoor de waarschuwing moet worden gegenereerd.
@@ -251,7 +256,7 @@ Als u Power shell wilt gebruiken om de voorbeeld sjabloon voor een resource mana
 New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActivityLogAlert.json -TemplateParameterFile sampleActivityLogAlert.parameters.json
 ```
 
-waarbij sampleActivityLogAlert. para meters. json de waarden bevat die zijn opgegeven voor de para meters die nodig zijn voor het maken van de waarschuwings regel.
+waarbij de sampleActivityLogAlert.parameters.jsop bevat de waarden die zijn opgegeven voor de para meters die nodig zijn voor het maken van de waarschuwings regel.
 
 ### <a name="use-activity-log-powershell-cmdlets"></a>Power shell-cmdlets voor het activiteiten logboek gebruiken
 

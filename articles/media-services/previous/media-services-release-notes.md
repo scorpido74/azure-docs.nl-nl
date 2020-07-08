@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: edea04e15fe5b844654f250a22a05a753f0df123
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 63b3def9c37f53ebf68642faf3f45cee6602bbe5
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836393"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057293"
 ---
 # <a name="azure-media-services-release-notes"></a>Opmerkingen bij de release Azure Media Services
 
@@ -60,7 +60,7 @@ Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](lega
 
 Zie ook [migreren van Azure media indexer en Azure media indexer 2 naar Azure Media Services video indexer](migrate-indexer-v1-v2.md).
 
-## <a name="august-2019"></a>Augustus 2019
+## <a name="august-2019"></a>augustus 2019
 
 ### <a name="deprecation-of-media-processors"></a>Afschaffing van media processors
 
@@ -176,7 +176,7 @@ Na het volt ooien van een coderings taak waarmee een of meer MP4-bestanden worde
 > 
 > 
 
-Zie [deze blog](https://blogs.msdn.microsoft.com/randomnumber/2016/07/08/encoder-changes-within-azure-media-services-now-create-ismc-file/)voor meer informatie.
+Lees [deze blog](https://blogs.msdn.microsoft.com/randomnumber/2016/07/08/encoder-changes-within-azure-media-services-now-create-ismc-file/) voor meer informatie.
 
 ### <a name="known-issues"></a>Bekende problemen
 Sommige clients kunnen een herhaald label probleem hebben in het Smooth Streaming-manifest. Zie [deze sectie](media-services-deliver-content-overview.md#known-issues)voor meer informatie.
@@ -191,12 +191,14 @@ U kunt Media Services nu gebruiken om uw HTTP Live Streaming-inhoud (HLS) dynami
 ## <a name="february-2016-release"></a><a id="feb_changes16"></a>Release van februari 2016
 De nieuwste versie van de Media Services SDK voor .NET (3.5.3) bevat een fout oplossing die betrekking heeft op Google Widevine. Het is niet mogelijk om AssetDeliveryPolicy te hergebruiken voor meerdere activa die zijn versleuteld met Widevine. Als onderdeel van deze fout oplossing is de volgende eigenschap toegevoegd aan de SDK: WidevineBaseLicenseAcquisitionUrl.
 
-    Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
-        new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
-    {
-        {AssetDeliveryPolicyConfigurationKey.WidevineBaseLicenseAcquisitionUrl,"http://testurl"},
+```csharp
+Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
+    new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
+{
+    {AssetDeliveryPolicyConfigurationKey.WidevineBaseLicenseAcquisitionUrl,"http://testurl"},
 
-    };
+};
+```
 
 ## <a name="january-2016-release"></a><a id="jan_changes_16"></a>Release van januari 2016
 Gereserveerde eenheden voor code ring zijn gewijzigd om Verwar ring met namen van code ring te verminderen.
@@ -220,9 +222,9 @@ Zie voor meer informatie:
   * **scale_encoding_units. php**: in dit php-bestand ziet u hoe u gereserveerde encoding-eenheden kunt schalen.
 
 ## <a name="november-2015-release"></a><a id="nov_changes_15"></a>Release van november 2015
- Media Services biedt nu de Widevine-licentie leverings service in de Cloud. Zie [deze blog](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)voor meer informatie. Zie ook [deze zelf studie](media-services-protect-with-playready-widevine.md) en de [github-opslag plaats](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm). 
+ Media Services biedt nu de Widevine-licentie leverings service in de Cloud. Lees [deze blog](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/) voor meer informatie. Zie ook [deze zelf studie](media-services-protect-with-playready-widevine.md) en de [github-opslag plaats](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm). 
 
-Widevine License Delivery Services van Media Services zijn beschikbaar als preview-versie. Zie [deze blog](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)voor meer informatie.
+Widevine License Delivery Services van Media Services zijn beschikbaar als preview-versie. Lees [deze blog](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/) voor meer informatie.
 
 ## <a name="october-2015-release"></a><a id="oct_changes_15"></a>Release van oktober 2015
 Media Services is nu live in de volgende data centers: Brazilië-zuid, India-West, India-Zuid en India-centraal. U kunt nu de Azure Portal gebruiken om [media service-accounts te maken](media-services-portal-create-account.md) en diverse taken uit te voeren die worden beschreven op de [webpagina van Media Services documentatie](https://azure.microsoft.com/documentation/services/media-services/). Live Encoding is niet ingeschakeld in deze data centers. Verder zijn niet alle typen gereserveerde encoding-eenheden beschikbaar in deze data centers.
@@ -236,19 +238,19 @@ Media Services biedt nu de mogelijkheid om zowel video on demand als live stream
 * [EZDRM](https://ezdrm.com/) 
 * [castLabs](https://castlabs.com/company/partners/azure/) 
 
-Zie [deze blog](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)voor meer informatie.
+Lees [deze blog](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/) voor meer informatie.
   
 U kunt de [.NET SDK van Media Services](https://www.nuget.org/packages/windowsazure.mediaservices/) (vanaf versie 3.5.1) of de REST API gebruiken om AssetDeliveryConfiguration voor het gebruik van Widevine te configureren. 
-* Media Services heeft ondersteuning toegevoegd voor Apple ProRes-Video's. U kunt nu uw QuickTime-bron Video's uploaden die gebruikmaken van Apple ProRes of andere codecs. Zie [deze blog](https://azure.microsoft.com/blog/announcing-support-for-apple-prores-videos-in-azure-media-services/)voor meer informatie.
-* U kunt nu Media Encoder Standard gebruiken om subfragmenten en het uitpakken van Live-Archief uit te voeren. Zie [deze blog](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)voor meer informatie.
+* Media Services heeft ondersteuning toegevoegd voor Apple ProRes-Video's. U kunt nu uw QuickTime-bron Video's uploaden die gebruikmaken van Apple ProRes of andere codecs. Lees [deze blog](https://azure.microsoft.com/blog/announcing-support-for-apple-prores-videos-in-azure-media-services/) voor meer informatie.
+* U kunt nu Media Encoder Standard gebruiken om subfragmenten en het uitpakken van Live-Archief uit te voeren. Lees [deze blog](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/) voor meer informatie.
 * De volgende filter-updates zijn uitgevoerd: 
   
   * U kunt nu de Apple HLS-indeling met een filter voor alleen audio gebruiken. U kunt deze update gebruiken om een audio-alleen track te verwijderen door (alleen audio = false) in de URL op te geven.
   * Wanneer u filters voor uw assets definieert, kunt u nu meerdere (Maxi maal drie) filters combi neren in één URL.
     
-    Zie [deze blog](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)voor meer informatie.
+    Lees [deze blog](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) voor meer informatie.
 * Media Services ondersteunt nu I-frames in HLS versie 4. Met de ondersteuning van I-frames optimaliseert u bewerkingen voor snel vooruitspoelen en terugspoelen. Alle uitvoer van de HLS-versie 4 bevatten standaard de I-frame-afspeel lijst (EXT-X-I-FRAME-STREAM-INF).
-Zie [deze blog](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)voor meer informatie.
+Lees [deze blog](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) voor meer informatie.
 
 ## <a name="august-2015-release"></a><a id="august_changes_15"></a>Release van augustus 2015
 * De Media Services SDK voor de 0.8.0-release van Java versie en nieuwe voor beelden zijn nu beschikbaar. Zie voor meer informatie:
@@ -295,7 +297,7 @@ De volgende nieuwe functies zijn aangekondigd:
 * Ondersteuning voor Spaanse taal is toegevoegd.
 * Er is een nieuwe configuratie voor de XML-indeling toegevoegd.
 
-Zie [deze blog](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/)voor meer informatie.
+Lees [deze blog](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/) voor meer informatie.
 
 ### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK-updates
 De Media Services .NET SDK is nu versie 3.2.0.0. De volgende updates zijn uitgevoerd:
@@ -323,7 +325,9 @@ De Media Services .NET SDK is nu versie 3.1.0.1.
 
 In deze release is de standaard micro soft. WindowsAzure. Media Services. client. ContentKeyAuthorization. TokenRestrictionTemplate constructor gemarkeerd als verouderd. De nieuwe constructor gebruikt token type als een argument.
 
-    TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
+```csharp
+TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
+```
 
 
 ## <a name="december-2014-release"></a><a id="december_changes_14"></a>Release van december 2014
@@ -502,8 +506,8 @@ De volgende wijzigingen zijn opgenomen in de releases van juni 2013 Media Servic
     * Het type micro soft. WindowsAzure. Media Services. client. IJobNotificationSubscription
     * Het type micro soft. WindowsAzure. Media Services. client. NotificationEndPointCollection
     * Het type micro soft. WindowsAzure. Media Services. client. NotificationEndPointType
-* Afhankelijkheid van de Storage client SDK 2,0 (Microsoft. WindowsAzure. StorageClient. dll)
-* Afhankelijkheid van OData 5,5 (Microsoft. data. OData. dll)
+* Afhankelijkheid van de Storage client SDK 2,0 (Microsoft.WindowsAzure.StorageClient.dll)
+* Afhankelijkheid op OData 5,5 (Microsoft.Data.OData.dll)
 
 ## <a name="december-2012-release"></a><a id="december_changes_12"></a>Release van december 2012
 ### <a name="media-services-net-sdk-changes"></a><a name="dec_12_dotnet_changes"></a>Media Services .NET SDK-wijzigingen
@@ -527,7 +531,7 @@ Oplossingen voor problemen die in de SDK van november 2012 zijn gevonden:
 ## <a name="november-2012-release"></a><a id="november_changes_12"></a>Release van november 2012
 De wijzigingen die in deze sectie worden vermeld, zijn updates opgenomen in de SDK van november 2012 (versie 2.0.0.0). Deze wijzigingen kunnen ertoe leiden dat code die is geschreven voor de preview SDK-versie van juni 2012, wordt gewijzigd of herschreven.
 
-* Activa
+* Assets
   
     * IAsset. Create (assets) is de *enige* functie voor het maken van activa. IAsset. Create uploadt geen bestanden meer als onderdeel van de methode aanroep. Gebruik IAssetFile om te uploaden.
     * De methode IAsset. publish en de opsommings waarde AssetState. publish zijn verwijderd uit de Services SDK. Alle code die afhankelijk is van deze waarde moet worden herschreven.
@@ -563,7 +567,7 @@ De volgende functionaliteit was nieuw in de release van november van de SDK:
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
 
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

@@ -14,12 +14,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: fedec6ea764394d36f5b4d7c883f7cb9f9520a29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3adbb9471cc501861b65efd0321b3b4f72b07aea
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "64869023"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057854"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Aan de slag met de SDK voor Java-clients voor Azure Media Services  
 
@@ -42,7 +42,7 @@ Voeg een verwijzing naar de huidige versie (0.9.8) van het `azure-media`-pakket 
 
 Als uw build-hulpprogramma bijvoorbeeld `gradle` is, voegt u de volgende afhankelijkheid aan uw `build.gradle`-bestand toe:
 
-    compile group: 'com.microsoft.azure', name: 'azure-media', version: '0.9.8'
+`compile group: 'com.microsoft.azure', name: 'azure-media', version: '0.9.8'`
 
 >[!IMPORTANT]
 >De SDK voegt ondersteuning toe voor AAD-verificatie (Azure Active Directory) en verwijdert ondersteuning voor Azure ACS-verificatie (Access Control Service) vanaf de `azure-media`-pakketversie `0.9.8`. We raden u aan om zo snel mogelijk naar het Azure Active Directory-verificatiemodel te migreren. Lees het artikel [Access the Azure Media Services API with Azure AD authentication](media-services-use-aad-auth-to-access-ams-api.md) (Toegang tot de API van Azure Media Services met Azure Active Directory-verificatie) voor meer informatie over migratie.

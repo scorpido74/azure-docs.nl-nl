@@ -3,12 +3,12 @@ title: Woorden lijst-LUIS
 description: In de woorden lijst worden de termen beschreven die u kunt tegen komen tijdens het werken met de LUIS API-service.
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 1513099decc21a7d219bfcb84563619640028550
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 93e3df755596f7f77d2cd11edfa616c44d1f6c16
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681615"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056375"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Taal informatie over woorden lijst met veelgestelde woorden en concepten
 In de woorden lijst Language Understanding (LUIS) worden de termen beschreven die u kunt tegen komen tijdens het werken met de LUIS-service.
@@ -38,11 +38,11 @@ Ontwerpen is de mogelijkheid om een LUIS-app te maken, te beheren en te implemen
 
 ### <a name="authoring-key"></a>Sleutel ontwerpen
 
-De [ontwerp sleutel](luis-concept-keys.md) wordt gebruikt om de app te ontwerpen. Niet gebruikt voor eindpunt query's op productie niveau. Zie [sleutel limieten](luis-limits.md#key-limits)voor meer informatie.
+De [ontwerp sleutel](luis-how-to-azure-subscription.md) wordt gebruikt om de app te ontwerpen. Niet gebruikt voor eindpunt query's op productie niveau. Zie [sleutel limieten](luis-limits.md#key-limits)voor meer informatie.
 
 ### <a name="authoring-resource"></a>Resource ontwerpen
 
-Uw LUIS- [ontwerp bron](luis-concept-keys.md#azure-resources-for-luis) is een beheerbaar item dat beschikbaar is via Azure. De resource is uw toegang tot de bijbehorende ontwerp-, trainings-en publicatie mogelijkheden van de Azure-service. De resource bevat verificatie-, autorisatie-en beveiligings informatie die u nodig hebt om toegang te krijgen tot de gekoppelde Azure-service.
+Uw LUIS- [ontwerp bron](luis-how-to-azure-subscription.md#azure-resources-for-luis) is een beheerbaar item dat beschikbaar is via Azure. De resource is uw toegang tot de bijbehorende ontwerp-, trainings-en publicatie mogelijkheden van de Azure-service. De resource bevat verificatie-, autorisatie-en beveiligings informatie die u nodig hebt om toegang te krijgen tot de gekoppelde Azure-service.
 
 De ontwerp resource heeft een ' soort ' van Azure `LUIS-Authoring` .
 
@@ -234,7 +234,7 @@ Een voor spelling is een REST-aanvraag voor de Azure LUIS prediction-service die
 
 ### <a name="prediction-key"></a>Voorspellings sleutel
 
-De [Voorspellings sleutel](luis-concept-keys.md) (voorheen bekend als de sleutel abonnement) is de sleutel die is gekoppeld aan de Luis-service die u in azure hebt gemaakt en die uw gebruik van het prediction-eind punt toestaat.
+De [Voorspellings sleutel](luis-how-to-azure-subscription.md) (voorheen bekend als de sleutel abonnement) is de sleutel die is gekoppeld aan de Luis-service die u in azure hebt gemaakt en die uw gebruik van het prediction-eind punt toestaat.
 
 Deze sleutel is niet de ontwerp sleutel. Als u een voor spelling-eindpunt sleutel hebt, moet deze worden gebruikt voor alle eindpunt aanvragen in plaats van de ontwerp sleutel. U kunt de huidige Voorspellings sleutel weer geven binnen de eind punt-URL onder aan de pagina Azure-resources in de LUIS-website. Het is de waarde van de naam/waarde-paar van het abonnement.
 
@@ -290,7 +290,7 @@ In LUIS [lijst entiteiten](reference-entity-list.md)kunt u een genormaliseerde w
 
 Het model retourneert de genormaliseerde waarde voor de entiteit wanneer er synoniemen worden weer gegeven in de invoer.
 
-## <a name="test"></a>Test
+## <a name="test"></a>Testen
 
 Als u een LUIS-app [test](luis-concept-test.md) , worden de voor spellingen van modellen weer gegeven.
 

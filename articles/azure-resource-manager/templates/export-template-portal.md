@@ -3,12 +3,12 @@ title: Sjabloon exporteren in Azure Portal
 description: Gebruik Azure Portal om een Azure Resource Manager sjabloon te exporteren vanuit resources in uw abonnement.
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 8cdba58a7a2ba998bac7fc0225ff957047cd69b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dbdcaa6e6db4a7a4a958f1be2e9977a14e092663
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273733"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057701"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Eén en meerdere resources exporteren naar een sjabloon in Azure Portal
 
@@ -72,7 +72,7 @@ Een of meer resources uit een resource groep exporteren:
 
    **Para meters zijn** standaard geselecteerd.  Als deze para meter is geselecteerd, worden alle sjabloon parameters opgenomen wanneer de sjabloon wordt gegenereerd. Als u uw eigen para meters wilt maken, schakelt u dit selectie vakje in om ze niet op te geven.
 
-## <a name="export-template-from-a-resource"></a>Sjabloon uit een resource exporteren
+## <a name="export-template-from-a-resource"></a>Sjabloon exporteren vanuit een resource
 
 Een resource exporteren:
 
@@ -111,7 +111,7 @@ U kunt de sjabloon die is gebruikt voor het implementeren van bestaande resource
 
 1. Selecteer een van de implementaties in de implementatie geschiedenis.
 
-   ![Implementatie selecteren](./media/export-template-portal/select-details.png)
+   ![Selecteer de implementatie](./media/export-template-portal/select-details.png)
 
 1. Selecteer een **sjabloon**. De sjabloon die wordt gebruikt voor deze implementatie wordt weer gegeven en kan worden gedownload.
 
@@ -121,5 +121,5 @@ U kunt de sjabloon die is gebruikt voor het implementeren van bestaande resource
 
 - Meer informatie over het exporteren van sjablonen met [Azure cli](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates), [Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)of [rest API](/rest/api/resources/resourcegroups/exporttemplate).
 - Zie [inzicht krijgen in de structuur en de syntaxis van Azure Resource Manager sjablonen](template-syntax.md)voor meer informatie over de syntaxis van de Resource Manager-sjabloon.
-- Zie [Stapsgewijze zelf studies](/azure/azure-resource-manager/)voor meer informatie over het ontwikkelen van sjablonen.
+- Zie [Stapsgewijze zelf studies](../index.yml)voor meer informatie over het ontwikkelen van sjablonen.
 - Zie [sjabloon verwijzing](/azure/templates/)voor het weer geven van de Azure Resource Manager sjabloon schema's.

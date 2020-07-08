@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c9489b9e1afe5e42121f61a3b0b50b28b2401bd3
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 4cac7a3f663d9ede966b8d6e5753c48629049dcd
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392281"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057480"
 ---
 # <a name="set-up-an-azure-digital-twins-instance"></a>Een Azure Digital Twins-instantie instellen
 
@@ -24,19 +24,19 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="set-up-an-azure-digital-twins-instance"></a>Een Azure Digital Twins-instantie instellen
 
-Voer vervolgens de volgende opdrachten uit om een nieuwe Azure-resource groep te maken voor gebruik in deze procedure en maak vervolgens een nieuw exemplaar van Azure Digital Apparaatdubbels in deze resource groep.
+Vervolgens maakt u een nieuwe Azure-resource groep voor gebruik in deze procedure. Vervolgens kunt u **een nieuw exemplaar van Azure Digital apparaatdubbels maken** binnen die resource groep. 
+
+U moet ook een naam opgeven voor uw exemplaar en een regio voor de implementatie kiezen. Als u wilt zien welke regio's Azure Digital Apparaatdubbels ondersteunen, gaat u naar [Azure-producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
+
+>[!NOTE]
+> De naam van het nieuwe exemplaar moet uniek zijn binnen de regio (wat betekent dat als een ander Azure Digital Apparaatdubbels-exemplaar in die regio al gebruikmaakt van de naam die u kiest, moet u een andere naam kiezen).
+
+Maak de resource groep en het exemplaar met de volgende opdrachten:
 
 ```azurecli
 az group create --location <region> --name <name-for-your-resource-group>
 az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-resource-group> -l <region>
 ```
-
-> [!TIP]
-> Voer deze opdracht uit om een lijst uit te voeren van Azure-regionamen die kunnen worden doorgegeven aan opdrachten in de Azure CLI:
-> ```azurecli
-> az account list-locations -o table
-> ```
-> Als u wilt zien welke regio's Azure Digital Apparaatdubbels ondersteunen, gaat u naar [Azure-producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
 
 Het resultaat van deze opdrachten ziet er ongeveer als volgt uit, zoals het uitvoeren van informatie over de resources die u hebt gemaakt:
 
@@ -55,9 +55,11 @@ Als u Azure Digital Apparaatdubbels wilt gebruiken met een client toepassing, mo
 
 #### <a name="assign-yourself-a-role"></a>Uzelf een rol toewijzen
 
-Maak een roltoewijzing voor uzelf met behulp van uw e-mail adres dat is gekoppeld aan de AAD-Tenant op uw Azure-abonnement. 
+Maak een roltoewijzing voor uzelf in het Azure Digital Apparaatdubbels-exemplaar met behulp van uw e-mail adres dat is gekoppeld aan de AAD-Tenant op uw Azure-abonnement. 
 
-Zorg er eerst voor dat u bent geclassificeerd als een eigenaar van uw Azure-abonnement. U kunt dit controleren door de `az role assignment list --assignee <your-Azure-email>` opdracht te gebruiken en te controleren of de *roleDefinitionName* - *waarde eigenaar*is. Als eigenaar van het abonnement kunt u de volgende opdracht gebruiken om uw gebruiker toe te wijzen aan een rol van eigenaar voor uw Azure Digital Apparaatdubbels-exemplaar:
+Om dit te kunnen doen, moet u worden geclassificeerd als een eigenaar van uw Azure-abonnement. U kunt dit controleren door de opdracht uit te voeren `az role assignment list --assignee <your-Azure-email>` en te controleren in de uitvoer waarvan de *roleDefinitionName* -waarde *eigenaar*is. Als u merkt dat de waarde *Inzender* is of iets anders is dan de *eigenaar*, neemt u contact op met uw abonnements beheerder met de bevoegdheid om machtigingen te verlenen in uw abonnement om uw rol uit te breiden.
+
+Als eigenaar van het abonnement kunt u de volgende opdracht gebruiken om uw gebruiker toe te wijzen aan een rol van eigenaar voor uw Azure Digital Apparaatdubbels-exemplaar:
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-AAD-email>" --role "Azure Digital Twins Owner (Preview)"

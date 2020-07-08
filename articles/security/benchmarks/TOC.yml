@@ -41,10 +41,14 @@
       href: ../../automation/security-baseline.md
     - name: Azure Cache voor Redis-beveiligingsbasislijn
       href: ../../azure-cache-for-redis/security-baseline.md
+    - name: Azure Policy-beveiligingsbasislijn
+      href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
     - name: Basislijn voor back-ups
       href: ../../backup/security-baseline.md
     - name: Basislijn voor batch-beveiliging
       href: ../../batch/security-baseline.md
+    - name: Cognitive Services-beveiligingsbasislijn
+      href: ../../cognitive-services/security-baseline.md
     - name: Container Instances-beveiligingsbasislijn
       href: ../../container-instances/security-baseline.md
     - name: Container Registry-beveiligingsbasislijn
@@ -53,7 +57,7 @@
       href: ../../cosmos-db/security-baseline.md
     - name: Customer Lockbox-beveiligingsbasislijn
       href: ../fundamentals/customer-lockbox-security-baseline.md
-    - name: Databox-beveiligingsbasislijn
+    - name: Data Box-beveiligingsbasislijn
       href: ../../databox/security-baseline.md
     - name: Basislijn voor Data Explorer-beveiliging
       href: /azure/data-explorer/security-baseline
@@ -87,3 +91,5 @@
       href: ../../stream-analytics/security-baseline.md
     - name: Basislijn voor opslagbeveiliging
       href: ../../storage/common/security-baseline.md
+    - name: Synapse Analytics-beveiligingsbasislijn
+      href: ../../synapse-analytics/security-baseline.md

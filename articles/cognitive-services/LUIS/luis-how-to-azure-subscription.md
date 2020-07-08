@@ -3,18 +3,19 @@ title: Ontwerpen en runtime-sleutels gebruiken-LUIS
 description: Wanneer u Language Understanding (LUIS) voor het eerst gebruikt, hoeft u geen ontwerp sleutel te maken. Wanneer u van plan bent om de app te publiceren, moet u het runtime-eind punt gebruiken om de runtime sleutel te maken en toe te wijzen aan de app.
 services: cognitive-services
 ms.topic: how-to
-ms.date: 06/26/2020
-ms.openlocfilehash: 5f6d62a63ea5ae0d3e4ca5913d6e7834ba07692a
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 07/07/2020
+ms.openlocfilehash: 7cc53e7105ba08ad33e02775fcfb0791c6cf1310
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560422"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055763"
 ---
 # <a name="create-luis-resources"></a>LUIS-resources maken
 
 De runtime bronnen voor het ontwerpen en opvragen van query's bieden authenticatie voor uw LUIS-app en Voorspellings eindpunt.
 
+<a name="azure-resources-for-luis"></a>
 <a name="programmatic-key" ></a>
 <a name="endpoint-key"></a>
 <a name="authoring-key"></a>
@@ -23,7 +24,7 @@ De runtime bronnen voor het ontwerpen en opvragen van query's bieden authenticat
 
 Met LUIS kunt u drie typen Azure-resources en één niet-Azure-resource maken:
 
-|Sleutel|Doel|Cognitieve service`kind`|Cognitieve service`type`|
+|Sleutel|Functie|Cognitieve service`kind`|Cognitieve service`type`|
 |--|--|--|--|
 |Sleutel ontwerpen|Toegang tot en het beheren van gegevens van toepassingen met ontwerpen, training, publicatie en testen. Maak een LUIS-ontwerp sleutel als u van plan bent om LUIS-apps programmatisch te ontwerpen.<br><br>Het doel van de `LUIS.Authoring` sleutel is om het volgende toe te staan:<br>* Language Understanding-apps en-modellen, inclusief training en publicatie, programmatisch beheren<br> * beheer machtigingen voor de ontwerp bron door personen toe te wijzen aan [de rol Inzender](#contributions-from-other-authors).|`LUIS.Authoring`|`Cognitive Services`|
 |Query Voorspellings sleutel| Query's voor Voorspellings eindpunt aanvragen. Maak een LUIS-Voorspellings sleutel voordat u de voor spellingen van de client-app voorspelde aanvragen overschrijdt met de 1.000-aanvragen van de eerste resource. |`LUIS`|`Cognitive Services`|
@@ -38,7 +39,7 @@ Het is belang rijk om LUIS-apps te schrijven in [regio's](luis-reference-regions
 
 Een Azure-resource, zoals een LUIS, is eigendom van het abonnement dat de resource bevat.
 
-Als u het eigendom van een resource wilt overdragen, kan de OE:
+Als u het eigendom van een resource wilt overdragen, kunt u het volgende doen:
 * [Eigendom](../../cost-management-billing/manage/billing-subscription-transfer.md) van uw abonnement overdragen
 * Exporteer de LUIS-app als een bestand en importeer vervolgens de app op een ander abonnement. Exporteren is beschikbaar op de pagina **mijn apps** in de Luis-Portal.
 
@@ -71,6 +72,8 @@ Voor apps die nog niet zijn gemigreerd: de sleutel wordt opnieuw ingesteld voor 
 Genereer de Azure-sleutels opnieuw vanuit de Azure Portal op de pagina **sleutels** .
 
 
+<a name="securing-the-endpoint"></a>
+
 ## <a name="app-ownership-access-and-security"></a>Eigendom van apps, toegang en beveiliging
 
 Een app wordt gedefinieerd door de Azure-resources die worden bepaald door het abonnement van de eigenaar.
@@ -99,7 +102,7 @@ Toegang tot de app vanuit de [Luis](luis-reference-regions.md#luis-website) -por
 
 De eigenaar en alle mede werkers hebben toegang tot het schrijven van de app.
 
-|Ontwerp toegang bevat|Opmerkingen|
+|Ontwerp toegang bevat|Notities|
 |--|--|
 |Eindpunt sleutels toevoegen of verwijderen||
 |Versie exporteren||
@@ -158,11 +161,10 @@ U kunt bepalen wie uw LUIS prediction runtime-eindpunt sleutel kan zien door dez
 1. Wanneer u klaar bent met het resource selectie proces, [maakt u een nieuwe app](luis-how-to-start-new-app.md#create-new-app-in-luis).
 
 
-## <a name="create-azure-resources"></a>Azure-resources maken
-
+<a name="create-azure-resources"></a>
 <a name="create-resources-in-the-azure-portal"></a>
 
-[!INCLUDE [Create LUIS resource in Azure Portal](includes/create-luis-resource.md)]
+[!INCLUDE [Create LUIS resource in Azure portal](includes/create-luis-resource.md)]
 
 ### <a name="create-resources-in-azure-cli"></a>Resources maken in azure CLI
 

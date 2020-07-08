@@ -3,12 +3,12 @@ title: Back-ups maken van bestanden en mappen-Veelgestelde vragen
 description: Behandelt Veelgestelde vragen over het maken van back-ups van bestanden en mappen met Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 6e9f265672ff15e40444a46a3e440e73a0051a5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ecff00fdfaf9b0ca494cd1c78d0a5e16b198995
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254747"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056171"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Veelgestelde vragen over het maken van back-ups van bestanden en mappen
 
@@ -112,7 +112,7 @@ De grootte van de cachemap bepaalt de hoeveelheid gegevens waarvan u een back-up
 1. Voer deze opdracht uit in een opdracht prompt met verhoogde bevoegdheid om de back-upengine te stoppen:
 
     ```Net stop obengine```
-2. Als u de systeem status back-up hebt geconfigureerd, opent u schijf beheer en ontkoppelt u de schijven met namen `"CBSSBVol_<ID>"`in de indeling.
+2. Als u de systeem status back-up hebt geconfigureerd, opent u schijf beheer en ontkoppelt u de schijven met namen in de indeling `"CBSSBVol_<ID>"` .
 3. De map Scratch bevindt zich standaard op`\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 4. Kopieer de volledige `\Scratch` map naar een ander station dat voldoende ruimte heeft. Zorg ervoor dat de inhoud wordt gekopieerd, niet verplaatst.
 5. Werk de volgende Register vermeldingen bij met het pad van de zojuist verplaatste Scratch-map.
@@ -159,7 +159,8 @@ Ja, u kunt de optie **Eigenschappen wijzigen** in de Mars-agent gebruiken om de 
 
 ### <a name="manage"></a>Beheren
 
-**Kan ik herstellen als ik mijn wachtwoordzin ben verg eten?**
+#### <a name="can-i-recover-if-i-forgot-my-passphrase"></a>Kan ik herstellen als ik mijn wachtwoordzin ben verg eten?
+
 De Azure Backup-Agent vereist een wachtwoordzin (die u hebt ingevoerd tijdens de registratie) om de back-upgegevens tijdens het herstellen te ontsleutelen. Bekijk de onderstaande scenario's om inzicht te krijgen in uw opties voor het afhandelen van een verloren wachtwoordzin:
 
 | Oorspronkelijke computer <br> *(bron machine waar back-ups zijn gemaakt)* | Wachtzin | Beschik bare opties |
@@ -177,14 +178,18 @@ Houd rekening met de volgende voorwaarden:
   * *Verschillende wachtwoordzin*, u kunt uw back-upgegevens niet herstellen.
 * Als de oorspronkelijke machine is beschadigd (voor komt dat u de wachtwoordzin opnieuw genereert via de MARS-console), maar u kunt de oorspronkelijke Scratch-map die wordt gebruikt door de MARS-agent, herstellen of openen, dan kan het zijn dat u kunt herstellen (als u het wacht woord bent verg eten). Neem contact op met de klant ondersteuning voor meer informatie.
 
-**Hoe kan ik herstellen als ik mijn oorspronkelijke machine kwijt ben (waar de back-ups zijn gemaakt)?**
+#### <a name="how-do-i-recover-if-i-lost-my-original-machine-where-backups-were-taken"></a>Hoe kan ik herstellen als ik mijn oorspronkelijke machine kwijt ben (waar de back-ups zijn gemaakt)?
 
 Als u dezelfde wachtwoordzin hebt (die u tijdens de registratie hebt ingesteld) van de oorspronkelijke computer, kunt u de gegevens waarvan een back-up is gemaakt herstellen naar een andere computer. Bekijk de onderstaande scenario's voor meer informatie over de opties voor terugzetten.
 
 | Oorspronkelijke computer | Wachtzin | Beschik bare opties |
 | --- | --- | --- |
-| Verdwenen |Beschikbaar |U kunt de MARS-agent op een andere computer installeren en registreren met dezelfde wachtwoordzin die u hebt ingevoerd tijdens de registratie van de oorspronkelijke computer. Kies **herstel optie** > **een andere locatie** om uw herstel uit te voeren. Zie dit [artikel](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)voor meer informatie.
+| Verdwenen |Beschikbaar |U kunt de MARS-agent op een andere computer installeren en registreren met dezelfde wachtwoordzin die u hebt ingevoerd tijdens de registratie van de oorspronkelijke computer. Kies **herstel optie**  >  **een andere locatie** om uw herstel uit te voeren. Zie dit [artikel](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine) voor meer informatie.
 | Verdwenen |Verdwenen |Het is niet mogelijk om de gegevens te herstellen of de gegevens zijn niet beschikbaar |
+
+### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>Mijn back-uptaken zijn in een lange periode mislukt of worden niet uitgevoerd. Ik ben de Bewaar periode verstreken. Kan ik nog steeds herstellen?
+
+Als veiligheids maatregel Azure Backup het laatste herstel punt behouden, zelfs als de retentie periode is verstreken. Zodra back-ups zijn hervat en nieuwe herstel punten beschikbaar komen, wordt het oudere herstel punt verwijderd volgens de opgegeven Bewaar periode.
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Wat gebeurt er als ik een actieve herstel taak Annuleer?
 
@@ -194,7 +199,7 @@ Als een actieve herstel taak wordt geannuleerd, wordt het herstel proces gestopt
 
 * De MARS-agent maakt een back-up van de Acl's die zijn ingesteld voor bestanden, mappen en volumes
 * Voor de herstel optie voor volume herstel biedt de MARS agent een optie voor het overs laan van het terugzetten van ACL-machtigingen naar het bestand of de map die wordt hersteld
-* Voor de afzonderlijke herstel optie voor bestanden en mappen wordt de MARS-agent teruggezet met ACL-machtigingen (er is geen optie voor het overs laan van het terugzetten van de toegangs beheer lijst).
+* Voor de afzonderlijke herstel optie voor bestanden en mappen wordt de MARS-agent teruggezet met ACL-machtigingen (er is geen optie om het terugzetten van de toegangs beheer lijst over te slaan).
 
 ## <a name="next-steps"></a>Volgende stappen
 

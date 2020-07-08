@@ -4,16 +4,16 @@ description: Hierin wordt beschreven hoe u veelvoorkomende fouten oplost wanneer
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 06/25/2020
-ms.openlocfilehash: 77a1359f81df1df9508e942ff6fa1f73ece51ca8
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 9914cf8267624cd05db860e7dd8eb8d8c5831f7e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391227"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055661"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Veelvoorkomende fouten met Azure-implementatie oplossen met Azure Resource Manager
 
-In dit artikel worden enkele veelvoorkomende problemen met Azure-implementatie beschreven en vindt u informatie over het oplossen van de fouten. Zie [fout code zoeken](#find-error-code)als u de fout code voor uw implementatie fout niet kunt vinden.
+In dit artikel worden enkele veelvoorkomende problemen met Azure-implementatie beschreven en vindt u informatie over het oplossen van de fouten. Zie [Foutcodes zoeken](#find-error-code) als u de foutcode voor uw implementatiefout niet kunt vinden.
 
 Als u op zoek bent naar informatie over een fout code en deze informatie niet in dit artikel wordt verstrekt, laat het ons dan weten. Onder aan deze pagina kunt u feedback geven. De feedback wordt bijgehouden met GitHub-problemen.
 
@@ -25,7 +25,7 @@ Als u op zoek bent naar informatie over een fout code en deze informatie niet in
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | Volg de naam beperkingen voor opslag accounts. | [Naam van opslag account oplossen](error-storage-account-name.md) |
 | AccountPropertyCannotBeSet | Controleer de beschik bare eigenschappen van het opslag account. | [Storage accounts](/azure/templates/microsoft.storage/storageaccounts) |
-| AllocationFailed | Het cluster of de regio heeft geen resources beschikbaar of kan de aangevraagde VM-grootte niet ondersteunen. Voer de aanvraag op een later tijdstip opnieuw uit of vraag een andere VM-grootte aan. | [Problemen met inrichten en toewijzen voor Linux](../../virtual-machines/linux/troubleshoot-deployment-new-vm.md), [inrichting en toewijzing van problemen voor Windows](../../virtual-machines/windows/troubleshoot-deployment-new-vm.md) en het [oplossen van toewijzings fouten](../../virtual-machines/troubleshooting/allocation-failure.md)|
+| AllocationFailed | Het cluster of de regio heeft geen resources beschikbaar of kan de aangevraagde VM-grootte niet ondersteunen. Voer de aanvraag op een later tijdstip opnieuw uit of vraag een andere VM-grootte aan. | [Problemen met inrichten en toewijzen voor Linux](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-linux.md), [inrichting en toewijzing van problemen voor Windows](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-windows.md) en het [oplossen van toewijzings fouten](../../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Wacht tot de gelijktijdige bewerking is voltooid. | |
 | AuthorizationFailed | Uw account of Service-Principal heeft onvoldoende toegangs rechten om de implementatie te volt ooien. Controleer de rol waartoe uw account behoort en de toegang tot het implementatie bereik.<br><br>Deze fout kan optreden wanneer een vereiste resource provider niet is geregistreerd. | [Access Control op basis van rollen in azure](../../role-based-access-control/role-assignments-portal.md)<br><br>[Registratie oplossen](error-register-resource-provider.md) |
 | BadRequest | U hebt implementatie waarden verzonden die niet overeenkomen met wat er wordt verwacht door Resource Manager. Controleer het binnenste status bericht voor hulp bij het oplossen van problemen. | [Sjabloon verwijzing](/azure/templates/) en [ondersteunde locaties](resource-location.md) |

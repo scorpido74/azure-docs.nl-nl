@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: xpouyat
 ms.reviewer: anilmur;juliako
-ms.openlocfilehash: 27bdf82d4515678e28eadf07fe325860fe5df063
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 4a51a67200ec411f0f9362bc92bf7926f221b1f2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84712340"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056800"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Meerdere invoer bestanden en onderdeel eigenschappen gebruiken met Premium encoder
 ## <a name="overview"></a>Overzicht
@@ -366,7 +366,7 @@ Voeg nu de **ISO MPEG-4 multiplexer** en **Bestands uitvoer** onderdelen toe en 
 
 U moet de naam van het uitvoer bestand instellen. Klik op het onderdeel **Bestands uitvoer** en bewerk de expressie voor het bestand:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_withoverlay.mp4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_withoverlay.mp4`
 
 ![Bestands uitvoer naam](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture17_filenameoutput.png)
 
@@ -466,7 +466,7 @@ Voer de volgende stappen uit om te coderen:
 
 * De gecodeerde Asset bevat audio tracks met meerdere talen en deze sporen moeten worden geselecteerd in Azure Media Player.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 * [Introductie van Premium-code ring in Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
 * [Premium-code ring gebruiken in Azure Media Services](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 * [Inhoud op aanvraag coderen met Azure Media Services](media-services-encode-asset.md#media-encoder-premium-workflow)

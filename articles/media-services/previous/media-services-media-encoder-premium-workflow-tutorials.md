@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
-ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 67d3591a22ba68c0ddb5c4e2b467e133ef20102b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84712425"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057463"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Zelfstudies voor geavanceerde Media Encoder Premium Workflow
 ## <a name="overview"></a>Overzicht
@@ -187,7 +187,7 @@ Als u wilt dat de werk stroom de naam eigenschap van het uitvoer bestand automat
 
 Met de expressie-editor kunt u elke letterlijke waarde, gecombineerd met een of meer variabelen, invoeren. Variabelen beginnen met een dollar teken. Terwijl u op de $-toets drukt, wordt in de editor een vervolg keuzelijst weer gegeven met een keuze uit de beschik bare variabelen. In ons geval gebruiken we een combi natie van de uitvoer Directory-variabele en de variabele voor de naam van het basis invoer bestand:
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}.MP4
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}.MP4`
 
 ![Expressie-editor is ingevuld](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-expression-editor.png)
 
@@ -265,16 +265,16 @@ Er zijn meer dan één bestand toegevoegd aan de uitvoer Asset. Dit biedt de noo
 
 Naamgeving van bestands uitvoer kan worden beheerd via expressies in de ontwerp functie. Open het eigenschappen venster voor een van de bestands uitvoer onderdelen en open de expressie-editor voor de bestands eigenschap. Het eerste uitvoer bestand is via de volgende expressie geconfigureerd (Zie de zelf studie voor het [uitvoeren van MXF naar een enkele bitrate MP4-uitvoer](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)):
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}.MP4`
 
 Dit betekent dat de bestands naam wordt bepaald door twee variabelen: de uitvoermap waarnaar moet worden geschreven en de basis naam van het bron bestand. De eerste wordt weer gegeven als een eigenschap op de hoofdmap van de werk stroom en de laatste wordt bepaald door het inkomende bestand. De uitvoermap is wat u gebruikt voor lokale tests; Deze eigenschap wordt overschreven door de werk stroom engine wanneer de werk stroom wordt uitgevoerd door de cloud-gebaseerde media processor in Azure Media Services.
 Als u beide uitvoer bestanden een consistente uitvoer naam wilt geven, wijzigt u de eerste expressie voor de naamgeving van bestanden in:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4`
 
 en de tweede tot:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_960x540_2.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_960x540_2.MP4`
 
 Voer een tussenliggende test uit om ervoor te zorgen dat beide MP4-uitvoer bestanden correct worden gegenereerd.
 
@@ -287,7 +287,7 @@ Zoals we later zien wanneer we een ISM-bestand genereren om te gaan met de MP4-u
 
 Maak een derde file output-component om de uitgaande stroom van de muxer uit te voeren en configureer de naamgevings expressie voor bestanden als:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_128kbps_audio.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_128kbps_audio.MP4`
 
 ![Audio-muxer voor het maken van bestands uitvoer](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-audio-muxer-creating-file-output.png)
 
@@ -319,7 +319,7 @@ Het genereren van het manifest bestand voor onze set MP4's kan worden uitgevoerd
 
 Net als bij onze andere onderdelen voor bestands uitvoer configureert u de bestands uitvoer naam. ism met een expressie:
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_manifest.ism
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_manifest.ism`
 
 Onze voltooide werk stroom ziet er als volgt uit:
 
@@ -342,11 +342,11 @@ In de vorige werk stroom hebben we een eenvoudige expressie opgegeven als basis 
 
 Bijvoorbeeld, het onderdeel voor bestands uitvoer voor het eerste video bestand is geconfigureerd met deze expressie:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4`
 
 Voor de tweede uitvoer video hebben we een expressie als:
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_960x540_2.MP4
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_960x540_2.MP4`
 
 Zou het niet duidelijk zijn, minder fout gevoelig en handiger zijn als we een deel van deze duplicatie kunnen verwijderen en in plaats daarvan meer configureerbaar moeten maken? Gelukkig we kunnen: de Expression-functies in combi natie met de mogelijkheid om aangepaste eigenschappen te maken op basis van de werk stroom, bieden een extra laag voor het gemak.
 
@@ -391,7 +391,7 @@ Als u een van deze drie waarden wijzigt, worden de waarden ook opnieuw geconfigu
 ### <a name="have-generated-output-file-names-rely-on-published-property-values"></a><a id="MXF_to__multibitrate_MP4_output_files"></a>De namen van de uitvoer bestanden hebben gegenereerd, is afhankelijk van de waarden van gepubliceerde eigenschappen
 In plaats van de namen van de gegenereerde bestanden te hardcoding, kunnen we nu de bestandsnaam expressie voor elk van de onderdelen van de bestands uitvoer wijzigen zodat deze afhankelijk is van de eigenschappen van de bitsnelheid die we hebben gepubliceerd op de basis van de grafiek. Ga vanaf onze eerste bestands uitvoer naar de bestands eigenschap en bewerk de expressie als volgt:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video1bitrate}kbps.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video1bitrate}kbps.MP4`
 
 De verschillende para meters in deze expressie zijn toegankelijk en ingevoerd door het dollar teken op het toetsen bord te gebruiken terwijl u in het expressie venster ziet. Een van de beschik bare para meters is onze eigenschap video1bitrate die we eerder hebben gepubliceerd.
 
@@ -401,11 +401,11 @@ De verschillende para meters in deze expressie zijn toegankelijk en ingevoerd do
 
 Doe hetzelfde voor de bestands uitvoer voor onze tweede video:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video2bitrate}kbps.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video2bitrate}kbps.MP4`
 
 en voor de bestands uitvoer met alleen audio:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_audio1bitrate}bps_audio.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_audio1bitrate}bps_audio.MP4`
 
 Als we de bitsnelheid voor een van de video-of audio bestanden nu wijzigen, wordt de bijbehorende Encoder opnieuw geconfigureerd en wordt de bestands naam Conventie op basis van bitsnelheid alle automatisch uitgevoerd.
 
@@ -462,11 +462,11 @@ Het JPG-coderings onderdeel maakt niet uit van onze MP4 video meer dan een besta
 
 *Introductie van de schrijver van het JPG-bestand van scène zoeken*
 
-Configureer de eigenschap pad naar de map uitvoermap met de expressie: $ {ROOT_outputWriteDirectory}
+Configureer de eigenschap pad naar de map uitvoermap met de expressie:`${ROOT_outputWriteDirectory}`
 
 en de eigenschap bestands naam voor voegsel met:
 
-    ${ROOT_sourceFileBaseName}_thumb_
+`${ROOT_sourceFileBaseName}_thumb_`
 
 Het voor voegsel bepaalt hoe de miniatuur bestanden worden genoemd. Ze zijn een achtervoegsel met een getal dat de positie van de duim in de stroom aangeeft.
 
@@ -551,11 +551,11 @@ Open nu de eigenschappen voor het verkleinen van de audio trimmer en configureer
 
 Voor de begin tijd van de audio-bijsnijden:
 
-    ${ROOT_TrimmingStartTime}
+`${ROOT_TrimmingStartTime}`
 
 en voor de eind tijd:
 
-    ${ROOT_TrimmingEndTime}
+`${ROOT_TrimmingEndTime}`
 
 ### <a name="finished-workflow"></a><a id="time_based_trim_finish"></a>Voltooide werk stroom
 ![Voltooide werk stroom](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-time-base-trimming.png)
@@ -591,7 +591,7 @@ Scripts worden geschreven in groovy, een dynamisch gecompileerde script taal voo
 
 Laten we een eenvoudig Hello World Groovy-script schrijven in de context van onze realizeScript. Voer het volgende in de editor in:
 
-    node.log("hello world");
+`node.log("hello world");`
 
 Voer nu een lokale test uit. Na deze uitvoering inspecteert u (via het tabblad systeem van het onderdeel script) de logboeken-eigenschap.
 

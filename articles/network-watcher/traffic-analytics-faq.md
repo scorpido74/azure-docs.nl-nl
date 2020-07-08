@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: 2402e72d2ef9fcda46f2f40bff48759262ee30e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87b4f0573fbcc73573c508a7f8e39acadcfa05af
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82189042"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056461"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Veelgestelde vragen over Traffic Analytics
 
@@ -264,7 +264,7 @@ Traffic Analytics biedt geen ingebouwde ondersteuning voor waarschuwingen. Omdat
 - Klik op nieuwe waarschuwings regel om de waarschuwing te maken
 - Raadpleeg de [documentatie over logboek waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) voor het maken van de waarschuwing
 
-## <a name="how-do-i-check-which-vms-are-receiving-most-on-premise-traffic"></a>Hoe kan ik controleren welke Vm's het meest lokale verkeer ontvangen
+## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>Hoe kan ik controleren welke Vm's het meest lokale verkeer ontvangen?
 
             AzureNetworkAnalytics_CL
             | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
@@ -288,7 +288,7 @@ Traffic Analytics biedt geen ingebouwde ondersteuning voor waarschuwingen. Omdat
 
 Gebruik voor tijd notatie: jjjj-mm-dd 00:00:00
 
-## <a name="how-do-i-check-standard-deviation-in-traffic-recieved-by-my-vms-from-on-premise-machines"></a>Hoe kan ik standaard afwijking controleren in verkeer dat door mijn Vm's van on-premises machines wordt ontvangen
+## <a name="how-do-i-check-standard-deviation-in-traffic-received-by-my-vms-from-on-premises-machines"></a>Hoe kan ik standaard afwijking in verkeer dat door mijn Vm's wordt ontvangen, van on-premises machines controleren?
 
             AzureNetworkAnalytics_CL
             | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
@@ -309,7 +309,7 @@ Voor IP-adressen:
             | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
             | summarize deviation = stdev(traffic)  by IP
             
-## <a name="how-do-i-check-which-ports-are-reachable-or-bocked-between-ip-pairs-with-nsg-rules"></a>Hoe kan ik controleren welke poorten bereikbaar zijn (of bocked) tussen IP-paren met NSG-regels
+## <a name="how-do-i-check-which-ports-are-reachable-or-blocked-between-ip-pairs-with-nsg-rules"></a>Hoe kan ik controleren welke poorten bereikbaar zijn (of geblokkeerd) tussen IP-paren met NSG-regels?
 
             AzureNetworkAnalytics_CL
             | where SubType_s == "FlowLog" and TimeGenerated between (startTime .. endTime)
@@ -347,7 +347,7 @@ De pagina GeoMap bevat twee hoofd secties:
 ### <a name="keyboard-navigation-at-any-stage"></a>Toetsenbord navigatie in elk stadium
     
 - `Esc`Hiermee wordt de uitgevouwen selectie samengevouwen.
-- De `Up arrow` sleutel voert dezelfde actie uit als `Esc` . De `Down arrow` sleutel voert dezelfde actie uit als `Enter` .
+- De `Up-arrow` sleutel voert dezelfde actie uit als `Esc` . De `Down arrow` sleutel voert dezelfde actie uit als `Enter` .
 - Gebruiken `Shift+Plus` om in te zoomen en `Shift+Minus` uit te zoomen.
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-virtual-network-topology-view"></a>Hoe kan ik navigeren met behulp van het toetsen bord in de topologie weergave van het virtuele netwerk?

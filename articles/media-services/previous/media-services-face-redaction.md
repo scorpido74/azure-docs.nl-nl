@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6a1b7a76ef1efda51f09ac733b3d434235ff40ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e150ec037bab0010c5505c880c4cac456118b35
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74900302"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058007"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Gezichten met Azure Media Analytics redigeren 
 ## <a name="overview"></a>Overzicht
@@ -34,11 +34,11 @@ Naast een volledig automatische modus, is er een twee richtings werk stroom, waa
 ### <a name="combined-mode"></a>Gecombineerde modus
 Dit produceert automatisch een geredigeerde MP4 zonder hand matige invoer.
 
-| Fase | Bestandsnaam | Opmerkingen |
+| Fase | Bestandsnaam | Notities |
 | --- | --- | --- |
 | Invoer Asset |Foo. Bar |Video in WMV-, MOV-of MP4-indeling |
 | Invoer configuratie |Vooraf ingestelde taak configuratie |{' version ': ' 1.0 ', ' opties ': {' mode ': ' gecombineerd '}} |
-| Uitvoer activum |foo_redacted. MP4 |Video met vervaging toegepast |
+| Uitvoer activum |foo_redacted.mp4 |Video met vervaging toegepast |
 
 #### <a name="input-example"></a>Invoer voorbeeld:
 [deze video weer geven](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fed99001d-72ee-4f91-9fc0-cd530d0adbbc%2FDancing.mp4)
@@ -49,12 +49,12 @@ Dit produceert automatisch een geredigeerde MP4 zonder hand matige invoer.
 ### <a name="analyze-mode"></a>Analyse modus
 De **analyse** fase van de werk stroom met twee slagen neemt een video-invoer en produceert een JSON-bestand met gezichts locaties en JPG-afbeeldingen van elk gedetecteerd gezicht.
 
-| Fase | Bestandsnaam | Opmerkingen |
+| Fase | Bestandsnaam | Notities |
 | --- | --- | --- |
 | Invoer Asset |Foo. Bar |Video in WMV-, MPV-of MP4-indeling |
 | Invoer configuratie |Vooraf ingestelde taak configuratie |{' version ': ' 1.0 ', ' opties ': {' mode ': ' analyse '}} |
-| Uitvoer activum |foo_annotations. json |Aantekening gegevens van gezichts locaties in JSON-indeling. Dit kan worden bewerkt door de gebruiker om de vervagings kaders te wijzigen. Zie het voor beeld hieronder. |
-| Uitvoer activum |foo_thumb %0 6 d. jpg [foo_thumb000001. jpg, foo_thumb000002. jpg] |Een bijgesneden jpg van elk gedetecteerd gezicht, waarbij het nummer de labelId van het gezicht aangeeft |
+| Uitvoer activum |foo_annotations.jsop |Aantekening gegevens van gezichts locaties in JSON-indeling. Dit kan worden bewerkt door de gebruiker om de vervagings kaders te wijzigen. Zie het voor beeld hieronder. |
+| Uitvoer activum |foo_thumb% 06d.jpg [foo_thumb000001.jpg, foo_thumb000002.jpg] |Een bijgesneden jpg van elk gedetecteerd gezicht, waarbij het nummer de labelId van het gezicht aangeeft |
 
 #### <a name="output-example"></a>Voorbeeld van uitvoer:
 
@@ -114,24 +114,26 @@ Dit omvat een lijst met Id's voor vervagen, de oorspronkelijke video en de JSON 
 
 De uitvoer van de analyse fase bevat niet de oorspronkelijke video. De video moet worden geüpload naar de invoer Asset voor de redactie modus taak en als primair bestand zijn geselecteerd.
 
-| Fase | Bestandsnaam | Opmerkingen |
+| Fase | Bestandsnaam | Notities |
 | --- | --- | --- |
 | Invoer Asset |Foo. Bar |Video in WMV-, MPV-of MP4-indeling. Dezelfde video als in stap 1. |
-| Invoer Asset |foo_annotations. json |Meta gegevensbestand van de fase één, met optionele wijzigingen. |
-| Invoer Asset |foo_IDList. txt (optioneel) |Optionele, door de nieuwe gescheiden lijst met gezichts-Id's voor redactie. Als dit veld leeg blijft, worden alle gezichten vervaagd. |
+| Invoer Asset |foo_annotations.jsop |Meta gegevensbestand van de fase één, met optionele wijzigingen. |
+| Invoer Asset |foo_IDList.txt (optioneel) |Optionele, door de nieuwe gescheiden lijst met gezichts-Id's voor redactie. Als dit veld leeg blijft, worden alle gezichten vervaagd. |
 | Invoer configuratie |Vooraf ingestelde taak configuratie |{' version ': ' 1.0 ', ' opties ': {' mode ': ' redactie '}} |
-| Uitvoer activum |foo_redacted. MP4 |Video met vervaging toegepast op basis van aantekeningen |
+| Uitvoer activum |foo_redacted.mp4 |Video met vervaging toegepast op basis van aantekeningen |
 
 #### <a name="example-output"></a>Voorbeeld uitvoer
 Dit is de uitvoer van een IDList waarvoor een ID is geselecteerd.
 
 [deze video weer geven](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fad6e24a2-4f9c-46ee-9fa7-bf05e20d19ac%2Fdance_redacted1.mp4)
 
-Voor beeld foo_IDList. txt
+Voor beeld foo_IDList.txt
  
-     1
-     2
-     3
+```output
+1
+2
+3
+```
 
 ## <a name="blur-types"></a>Vervagings typen
 
@@ -191,7 +193,7 @@ Het volgende programma laat zien hoe u:
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Maak en configureer een Visual Studio-project.
 
-Stel uw ontwikkel omgeving in en vul in het bestand app. config de verbindings informatie in, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
+Stel uw ontwikkel omgeving in en vul het app.config bestand in met verbindings informatie, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Voorbeeld
 
