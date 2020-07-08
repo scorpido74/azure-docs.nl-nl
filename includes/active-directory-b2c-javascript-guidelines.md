@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 02/11/2020
 ms.author: mimart
 ms.openlocfilehash: ef08f1adc15475cd5dd38548ed39dc57532c0ef5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78185829"
 ---
 ## <a name="guidelines-for-using-javascript"></a>Richt lijnen voor het gebruik van Java script
@@ -28,6 +28,6 @@ Volg deze richt lijnen bij het aanpassen van de interface van uw toepassing met 
     - Azure AD B2C maakt gebruik van een specifieke versie van jQuery. Neem geen andere versie van jQuery op. Als u meer dan één versie op dezelfde pagina gebruikt, worden er problemen veroorzaakt.
     - Het gebruik van RequireJS wordt niet ondersteund.
     - De meeste Java script-frameworks worden niet ondersteund door Azure AD B2C.
-- Azure AD B2C-instellingen kunnen worden gelezen door `window.SETTINGS`- `window.CONTENT` objecten, zoals de huidige taal van de gebruikers interface, aan te roepen. Wijzig de waarde van deze objecten niet.
+- Azure AD B2C-instellingen kunnen worden gelezen door `window.SETTINGS` - `window.CONTENT` objecten, zoals de huidige taal van de gebruikers interface, aan te roepen. Wijzig de waarde van deze objecten niet.
 - Als u het fout bericht Azure AD B2C wilt aanpassen, gebruikt u lokalisatie in een beleid.
 - Als er iets kan worden bereikt met behulp van een beleid, is dit doorgaans de aanbevolen manier.

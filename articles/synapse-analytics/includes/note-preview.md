@@ -6,7 +6,7 @@ ms.date: 04/15/2020
 ms.author: jrasnick
 ms.openlocfilehash: d5056d5ca44701af57e7d278899c011e3a440a9f
 ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83587868"

@@ -9,11 +9,11 @@ ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: cbd6f821326c86983ceb3ae5b90969e522c187fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80343058"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82204561"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
@@ -23,17 +23,17 @@ ms.locfileid: "80343058"
 
 ## <a name="cli"></a>CLI
 
-U een incrementele momentopname maken met de Azure CLI, u hebt de nieuwste versie van Azure CLI nodig. 
+U kunt een incrementele moment opname maken met de Azure CLI. u hebt de nieuwste versie van Azure CLI nodig. 
 
-In Windows wordt uw bestaande installatie met de volgende opdracht geïnstalleerd of bijgewerkt naar de nieuwste versie:
+In Windows wordt met de volgende opdracht de bestaande installatie geïnstalleerd of bijgewerkt naar de meest recente versie:
 ```PowerShell
 Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
 ```
-Op Linux, zal de CLI-installatie variëren afhankelijk van het besturingssysteem versie.  Zie [De Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli) voor uw specifieke Linux-versie.
+In Linux is de CLI-installatie afhankelijk van de versie van het besturings systeem.  Zie [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli) voor uw specifieke Linux-versie.
 
-Als u een incrementele momentopname wilt `--incremental` maken, gebruikt u [az-momentopname maken](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) met de parameter.
+Als u een incrementele moment opname wilt maken, gebruikt u [AZ snap shot Create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) met de `--incremental` para meter.
 
-In het volgende voorbeeld wordt `<yourDesiredSnapShotNameHere>` `<yourResourceGroupNameHere>`een`<exampleDiskName>`incrementele momentopname gemaakt, wordt het voorbeeld vervangen, vervangen , en `<exampleLocation>` met uw eigen waarden uitgevoerd:
+In het volgende voor beeld wordt een incrementele moment opname gemaakt, vervangen `<yourDesiredSnapShotNameHere>` , `<yourResourceGroupNameHere>` , `<exampleDiskName>` , en `<exampleLocation>` met uw eigen waarden, waarna u het voor beeld uitvoert:
 
 ```bash
 sourceResourceId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[id]' -o tsv)
@@ -45,13 +45,13 @@ az snapshot create -g <yourResourceGroupNameHere> \
 --incremental
 ```
 
-U incrementele momentopnamen van `SourceResourceId` dezelfde `SourceUniqueId` schijf identificeren met de eigenschappen en de eigenschappen van momentopnamen. `SourceResourceId`is de Azure Resource Manager-bron-id van de bovenliggende schijf. `SourceUniqueId`is de waarde die `UniqueId` is overgenomen van de eigenschap van de schijf. Als u een schijf verwijdert en vervolgens een nieuwe schijf met `UniqueId` dezelfde naam maakt, verandert de waarde van de eigenschap.
+U kunt incrementele moment opnamen identificeren van dezelfde schijf met de `SourceResourceId` en de `SourceUniqueId` Eigenschappen van moment opnamen. `SourceResourceId`is de Azure Resource Manager Resource-ID van de bovenliggende schijf. `SourceUniqueId`is de waarde die wordt overgenomen van de `UniqueId` eigenschap van de schijf. Als u een schijf verwijdert en vervolgens een nieuwe schijf met dezelfde naam maakt, verandert de waarde van de `UniqueId` eigenschap.
 
-U kunt `SourceResourceId` `SourceUniqueId` een lijst met alle momentopnamen die aan een bepaalde schijf zijn gekoppeld, gebruiken en maken. In het volgende voorbeeld worden alle incrementele momentopnamen vermeld die aan een bepaalde schijf zijn gekoppeld, maar deze moet enige installatie vereisen.
+U kunt `SourceResourceId` en gebruiken `SourceUniqueId` om een lijst te maken met alle moment opnamen die zijn gekoppeld aan een bepaalde schijf. In het volgende voor beeld worden alle incrementele moment opnamen vermeld die zijn gekoppeld aan een bepaalde schijf, maar er is een installatie vereist.
 
-In dit voorbeeld wordt jq gebruikt voor het opvragen van de gegevens. Als u het voorbeeld wilt uitvoeren, moet u [jq installeren.](https://stedolan.github.io/jq/download/)
+In dit voor beeld wordt JQ gebruikt voor het uitvoeren van query's op de gegevens. Als u het voor beeld wilt uitvoeren, moet u [JQ installeren](https://stedolan.github.io/jq/download/).
 
-Vervang `<yourResourceGroupNameHere>` `<exampleDiskName>` en met uw waarden, dan u het volgende voorbeeld gebruiken om uw bestaande incrementele momentopnamen weer te geven, zolang u ook jq hebt geïnstalleerd:
+Vervang `<yourResourceGroupNameHere>` en `<exampleDiskName>` door uw waarden. vervolgens kunt u het volgende voor beeld gebruiken om uw bestaande incrementele moment opnamen weer te geven, op voor waarde dat u ook JQ hebt geïnstalleerd:
 
 ```bash
 sourceUniqueId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[uniqueId]' -o tsv)
@@ -65,7 +65,7 @@ az snapshot list -g <yourResourceGroupNameHere> -o json \
 
 ## <a name="resource-manager-template"></a>Resource Manager-sjabloon
 
-U azure resource beheersjablonen ook gebruiken om een incrementele momentopname te maken. U moet ervoor zorgen dat de apiVersie is ingesteld op **2019-03-01** en dat de incrementele eigenschap ook is ingesteld op true. Het volgende fragment is een voorbeeld van het maken van een incrementele momentopname met Resource Manager-sjablonen:
+U kunt ook Azure Resource Manager sjablonen gebruiken om een incrementele moment opname te maken. U moet ervoor zorgen dat de apiVersion is ingesteld op **2019-03-01** en dat de incrementele eigenschap ook is ingesteld op True. Het volgende code fragment is een voor beeld van het maken van een incrementele moment opname met Resource Manager-sjablonen:
 
 ```json
 {
@@ -101,4 +101,4 @@ U azure resource beheersjablonen ook gebruiken om een incrementele momentopname 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure Managed Disks back-ups kopiëren naar een andere regio met differentiële mogelijkheden van incrementele momentopnamen](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)als u voorbeeldcode wilt zien die de differentiële mogelijkheid van incrementele momentopnamen weergeeft.
+Zie [Azure-Managed disks back-ups kopiëren naar een andere regio met differentiële mogelijkheden van incrementele moment opnamen](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)als u voorbeeld code wilt zien met behulp van de differentiële mogelijkheden van incrementele moment opnamen.

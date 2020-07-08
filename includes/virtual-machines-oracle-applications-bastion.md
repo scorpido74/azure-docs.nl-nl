@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 07/10/2019
 ms.author: danlep
 ms.openlocfilehash: 35f506235f698fbcf42308e6f0b0f400e925df29
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68361542"
 ---
 ### <a name="bastion-tier"></a>Bastion-laag
@@ -23,4 +23,4 @@ Hier volgt een voor beeld van het door sturen van agents:
 ssh -A -t user@BASTION_SERVER_IP ssh -A root@TARGET_SERVER_IP`
 ```
 
-Met deze opdracht maakt u verbinding met de Bastion en `ssh` wordt deze vervolgens onmiddellijk opnieuw uitgevoerd, zodat u een Terminal op het doel exemplaar krijgt. U moet mogelijk een andere gebruiker dan de hoofdmap opgeven voor het doel exemplaar als uw cluster anders is geconfigureerd. Met `-A` het argument wordt de agent verbinding doorgestuurd zodat uw persoonlijke sleutel op uw lokale computer automatisch wordt gebruikt. Het door sturen van agents is een keten, dus `ssh` de tweede opdracht `-A` omvat ook dat alle volgende ssh-verbindingen die vanuit het doel exemplaar worden gestart ook gebruikmaken van uw lokale persoonlijke sleutel.
+Met deze opdracht maakt u verbinding met de Bastion en wordt deze vervolgens onmiddellijk `ssh` opnieuw uitgevoerd, zodat u een Terminal op het doel exemplaar krijgt. U moet mogelijk een andere gebruiker dan de hoofdmap opgeven voor het doel exemplaar als uw cluster anders is geconfigureerd. `-A`Met het argument wordt de agent verbinding doorgestuurd zodat uw persoonlijke sleutel op uw lokale computer automatisch wordt gebruikt. Het door sturen van agents is een keten, dus de tweede `ssh` opdracht omvat ook `-A` dat alle volgende ssh-verbindingen die vanuit het doel exemplaar worden gestart ook gebruikmaken van uw lokale persoonlijke sleutel.

@@ -9,10 +9,10 @@ ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
 ms.openlocfilehash: 864b37c9e59786546ad2c29faf8457cfc3a21f6b
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82161166"
 ---
 **Volume en retentie van gegevens verzameling** 
@@ -33,7 +33,7 @@ ms.locfileid: "82161166"
 | Gratis laag  | 10 | Deze limiet kan niet worden verhoogd. |
 | Alle andere lagen | Geen limiet | U bent beperkt tot het aantal resources in een resource groep en het aantal resource groepen per abonnement. |
 
-**Azure Portal**
+**Azure-portal**
 
 | Categorie | Limiet | Opmerkingen |
 |:---|:---|:---|
@@ -47,7 +47,7 @@ ms.locfileid: "82161166"
 | Maximum grootte voor één bericht | 30 MB | Grotere volumes in meerdere berichten splitsen. |
 | Maximale grootte voor veld waarden  | 32 KB | Velden die langer zijn dan 32 KB worden afgebroken. |
 
-**API voor zoeken**
+**Search API**
 
 | Categorie | Limiet | Opmerkingen |
 |:---|:---|:---|
@@ -69,7 +69,7 @@ ms.locfileid: "82161166"
 
 Azure Monitor is een grootschalige gegevens service waarmee duizenden klanten elke maand terabytes aan gegevens verzenden in een groei tempo. De standaard limiet voor de frequentie van opname volumes voor gegevens die worden verzonden vanuit Azure-resources met [Diagnostische instellingen](../articles/azure-monitor/platform/diagnostic-settings.md) is ongeveer **6 GB/min** per werk ruimte. Dit is een geschatte waarde, omdat de werkelijke grootte kan variëren, afhankelijk van de logboek lengte en de compressie ratio van de gegevens typen. Deze limiet geldt niet voor gegevens die worden verzonden door agents of de [Data Collector-API](../articles/azure-monitor/platform/data-collector-api.md).
 
-Als u gegevens met een hoger snelheid naar één werk ruimte verzendt, worden sommige gegevens verwijderd en wordt er om de 6 uur een gebeurtenis verzonden naar de *bewerkings* tabel in uw werk ruimte, terwijl de drempel waarde blijft overschreden. Als uw opname volume de frequentie limiet blijft overschrijden of als u verwacht dat deze kort te bereiken, kunt u een verhoging van uw werk ruimte aanvragen door een e-mail te verzenden LAIngestionRate@microsoft.com naar of een ondersteunings aanvraag te openen.
+Als u gegevens met een hoger snelheid naar één werk ruimte verzendt, worden sommige gegevens verwijderd en wordt er om de 6 uur een gebeurtenis verzonden naar de *bewerkings* tabel in uw werk ruimte, terwijl de drempel waarde blijft overschreden. Als uw opname volume de frequentie limiet blijft overschrijden of als u verwacht dat deze kort te bereiken, kunt u een verhoging van uw werk ruimte aanvragen door een e-mail te verzenden naar LAIngestionRate@microsoft.com of een ondersteunings aanvraag te openen.
  
 Als u een melding wilt ontvangen over een dergelijke gebeurtenis in uw werk ruimte, maakt u een [waarschuwings regel](../articles/azure-monitor/platform/alerts-log.md) voor het logboek met behulp van de volgende query met de logica van een waarschuwing op basis van het aantal resultaten dat is gelukt dan nul.
 

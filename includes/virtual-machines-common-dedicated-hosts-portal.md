@@ -9,10 +9,10 @@ ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 427117fe47294a1db1fa8d3fa1e46ee1efb91b4d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79128720"
 ---
 ## <a name="limitations"></a>Beperkingen
@@ -40,7 +40,7 @@ In dit voor beeld maken we een hostgroep met 1 beschikbaarheids zone en twee fou
 1. Selecteer het abonnement dat u wilt gebruiken en selecteer vervolgens **Nieuw maken** om een nieuwe resource groep te maken.
 1. Typ *myDedicatedHostsRG* als **naam** en selecteer **OK**.
 1. Typ *myHostGroup*voor de naam van de **hostgroep**.
-1. Selecteer voor **locatie**de optie **VS Oost**.
+1. Selecteer bij **Locatie** **VS - oost**.
 1. Selecteer voor de **beschikbaarheids zone**de optie **1**.
 1. Selecteer **2**bij **aantal fout domeinen**.
 1. Selecteer **controleren + maken** en wacht vervolgens op validatie.

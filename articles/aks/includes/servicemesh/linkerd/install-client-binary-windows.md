@@ -4,10 +4,10 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 1a023475de1ce2891916807632d9ee15e382326c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81734679"
 ---
 ## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>Down load en installeer het binaire bestand voor de Linkerd Linkerd-client
@@ -23,7 +23,7 @@ $LINKERD_VERSION="stable-2.6.0"
 $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -URI "https://github.com/linkerd/linkerd2/releases/download/$LINKERD_VERSION/linkerd2-cli-$LINKERD_VERSION-windows.exe" -OutFile "linkerd2-cli-$LINKERD_VERSION-windows.exe"
 ```
 
-De `linkerd` binaire client wordt uitgevoerd op uw client computer en maakt het mogelijk om te communiceren met het Linkerd-service-net. Gebruik de volgende opdrachten om de binaire Linkerd `linkerd` -client te installeren in een Power shell-shell op Windows. Met deze opdrachten kopieert `linkerd` u het binaire bestand van de client naar een Linkerd-map en maakt u deze zowel onmiddellijk beschikbaar (in de huidige shell) als permanent (tussen `PATH`de shell opnieuw opstarten) via uw. U hebt geen verhoogde beheerders bevoegdheden nodig om deze opdrachten uit te voeren en u hoeft de shell niet opnieuw op te starten.
+De `linkerd` binaire client wordt uitgevoerd op uw client computer en maakt het mogelijk om te communiceren met het Linkerd-service-net. Gebruik de volgende opdrachten om de binaire Linkerd `linkerd` -client te installeren in een Power shell-shell op Windows. Met deze opdrachten kopieert `linkerd` u het binaire bestand van de client naar een Linkerd-map en maakt u deze zowel onmiddellijk beschikbaar (in de huidige shell) als permanent (tussen de shell opnieuw opstarten) via uw `PATH` . U hebt geen verhoogde beheerders bevoegdheden nodig om deze opdrachten uit te voeren en u hoeft de shell niet opnieuw op te starten.
 
 ```powershell
 # Copy linkerd.exe to C:\Linkerd

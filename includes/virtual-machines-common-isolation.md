@@ -9,10 +9,10 @@ ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
 ms.openlocfilehash: 033ec0f4011cae657fc464849aac5c5d9a850907
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83343317"
 ---
 Azure Compute biedt virtuele machine grootten die zijn geïsoleerd voor een specifiek hardwaretype en die zijn toegewezen aan één klant.  Deze virtuele-machine grootten zijn het meest geschikt voor werk belastingen die een hoge mate van isolatie van andere klanten vereisen voor workloads met elementen zoals naleving en regelgeving.  Klanten kunnen er ook voor kiezen om de resources van deze geïsoleerde virtuele machines verder te onderverdelen met behulp [van Azure-ondersteuning voor geneste virtuele machines](https://azure.microsoft.com/blog/nested-virtualization-in-azure/).
@@ -51,7 +51,7 @@ Als u voor de isolatie een vereiste hebt, vóór 15 mei 2020, moet u het volgend
 Zie hieronder voor meer informatie:
 
 ## <a name="timeline"></a>Tijdlijn
-| Date | Actie | 
+| Datum | Bewerking | 
 | --- | --- |
 | 18 november 2019 | Beschik baarheid van D/DS15i_v2 (PAYG, 1-jarige RI) |
 | 14 mei 2020  | Laatste dag tot aankoop D/DS15i_v2 1 jaar RI | 
@@ -86,9 +86,9 @@ Zie hieronder voor meer informatie:
 
 | RI |  Flexibiliteit van de instantie grootte | Geschiktheid voor deel |   
 | --- | --- | --- |
-|   D15_v2  |   Uit     |   D15_v2 en D15i_v2 |    
-|   D15_v2  |   Aan  |   D15_v2 reeksen en D15i_v2 ontvangen alle voor delen van de RI. |    
-|   D14_v2  |   Aan  |   D15_v2 reeksen en D15i_v2 ontvangen alle voor delen van de RI. |    
+|   D15_v2  |   Aan     |   D15_v2 en D15i_v2 |    
+|   D15_v2  |   Uit  |   D15_v2 reeksen en D15i_v2 ontvangen alle voor delen van de RI. |    
+|   D14_v2  |   Uit  |   D15_v2 reeksen en D15i_v2 ontvangen alle voor delen van de RI. |    
  
 Dit geldt ook voor de Dsv2-serie.
  
@@ -97,10 +97,10 @@ Dit geldt ook voor de Dsv2-serie.
 
 | RI |  Flexibiliteit van de instantie grootte | Geschiktheid voor deel |   
 | --- | --- | --- |
-| D15_v2 |  Uit |   Alleen D15_v2  
-| D15_v2 |  Aan |    D15_v2 serie ontvangt het voor deel van de RI. Het nieuwe D15i_v2 komt niet in aanmerking voor RI-voor deel van dit type RI. | 
-| D15i_v2 |     Uit | Alleen D15i_v2 |  
-| D15i_v2 |     Aan  | Alleen D15i_v2 | 
+| D15_v2 |  Aan |   Alleen D15_v2  
+| D15_v2 |  Uit |    D15_v2 serie ontvangt het voor deel van de RI. Het nieuwe D15i_v2 komt niet in aanmerking voor RI-voor deel van dit type RI. | 
+| D15i_v2 |     Aan | Alleen D15i_v2 |  
+| D15i_v2 |     Uit  | Alleen D15i_v2 | 
  
 De flexibiliteit van de instantie grootte kan niet worden gebruikt om te worden toegepast op andere grootten, zoals D2_v2, D4_v2 of D15_v2. Hetzelfde geldt voor de Dsv2-serie.  
  
