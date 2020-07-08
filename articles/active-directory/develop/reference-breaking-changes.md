@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 55adff17445639ee5685613b418054075c704449
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85477240"
 ---
 # <a name="whats-new-for-authentication"></a>Wat is er nieuw voor verificatie?
@@ -90,7 +90,7 @@ De gebruiker kan zich niet aanmelden omdat het wacht woord de toegestane maximum
 Wanneer een verificatie reactie vanuit login.microsoftonline.com naar een toepassing wordt verzonden via een HTTP-omleiding, wordt door de service een leeg fragment aan de antwoord-URL toegevoegd.  Dit voor komt een klasse van omleidings aanvallen door ervoor te zorgen dat de browser alle bestaande fragmenten in de verificatie aanvraag wist.  Geen enkele app moet afhankelijk zijn van dit gedrag.
 
 
-## <a name="august-2019"></a>Augustus 2019
+## <a name="august-2019"></a>augustus 2019
 
 ### <a name="post-form-semantics-will-be-enforced-more-strictly---spaces-and-quotes-will-be-ignored"></a>De semantiek van POST formulieren wordt strikt meer afgedwongen en aanhalings tekens worden genegeerd
 

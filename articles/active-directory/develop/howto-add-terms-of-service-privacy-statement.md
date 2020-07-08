@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
 ms.openlocfilehash: 517d6f7f06025b35dd27fa69d1de1b4139de6c8d
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85478005"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Procedure: Service voorwaarden en de privacyverklaring voor een app configureren
@@ -58,7 +58,7 @@ Wanneer de service voorwaarden en de privacyverklaring gereed zijn, kunt u aan d
 ### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Azure Portal gebruiken
 Volg deze stappen in de Azure Portal.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Ga naar de sectie **app-registraties** en selecteer uw app.
 3. Open het deel venster **huis stijl** .
 4. Vul de URL-velden **voor de service voorwaarden** en de **privacyverklaring** in.

@@ -4,16 +4,16 @@ description: Meer informatie over het oplossen van problemen met de virtuele mac
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b7d3f3ad34d8a5bb48607816623c67121d21d78c
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85476475"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Problemen met de virtuele machine (VM) en het maken van een omgeving oplossen in Azure DevTest Labs
 DevTest Labs geeft u waarschuwingen als een computer naam ongeldig is of als u een test beleid schendt. Soms wordt er rood weer geven `X` naast de VM of omgevings status van uw Lab, waarmee u wordt geïnformeerd dat er iets verkeerd is gegaan.  In dit artikel vindt u enkele trucs die u kunt gebruiken om het onderliggende probleem te vinden en om het probleem in de toekomst te voor komen.
 
-## <a name="portal-notifications"></a>Portal meldingen
+## <a name="portal-notifications"></a>Meldingen in portal
 Als u de Azure Portal gebruikt, is de eerste plaats om te kijken naar het **deel venster meldingen**.  Het deel venster meldingen, dat beschikbaar is op de hoofd opdracht balk door te klikken op het **klok pictogram**, vertelt u of de test-VM of-omgeving is gemaakt.  Als er een fout is opgetreden, wordt het fout bericht weer gegeven dat is gekoppeld aan het maken van een fout. De details bevatten vaak meer informatie om het probleem op te lossen. In het volgende voor beeld is het maken van de virtuele machine mislukt vanwege het uitvoeren van de kern geheugens. In het gedetailleerde bericht wordt uitgelegd hoe u het probleem kunt oplossen en een kern quotum toename aanvragen.
 
 ![Azure Portal-melding](./media/troubleshoot-vm-environment-creation-failures/portal-notification.png)

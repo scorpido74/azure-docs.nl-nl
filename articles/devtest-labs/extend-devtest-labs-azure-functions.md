@@ -4,10 +4,10 @@ description: Meer informatie over het uitbreiden van Azure DevTest Labs met behu
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: bcd12d77065d231198e992fa5c459f0fc210855a
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85476305"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>Azure Functions gebruiken om DevTest Labs uit te breiden
@@ -33,7 +33,7 @@ De bron code voor deze voorbeeld functies bevindt zich in de [github-opslag plaa
 - **UpdateInternalSupportPage**: met deze functie wordt een query uitgevoerd op DevTest Labs en wordt de interne ondersteunings pagina rechtstreeks bijgewerkt met details over de virtuele machines.
 - **ApplyWindowsUpdateArtifact**: voor een virtuele machine in een Lab is deze functie van toepassing op **Windows Update** -artefacten.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 Wanneer gebruikers de **interne ondersteunings** pagina in DevTest Labs selecteren, hebben ze een vooraf gevulde pagina met informatie over vm's, Lab-eigen aars en ondersteunings contacten.  
 
 Wanneer u de knop **selecteren om te vernieuwen** selecteert, wordt de eerste Azure-functie aangeroepen door de pagina: **UpdateInternalSupportPage**. De functie vraagt DevTest Labs naar informatie en schrijft vervolgens de **interne ondersteunings** pagina met de nieuwe informatie.

@@ -4,10 +4,10 @@ description: Meer informatie over het maken van een aangepaste installatie kopie
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 597ef49b667cf613b721c645e09f8e6dcb157011
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85476594"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>Een aangepaste installatiekopie maken vanaf een virtuele machine
@@ -18,7 +18,7 @@ ms.locfileid: "85476594"
 
 U kunt een aangepaste installatie kopie maken van een ingerichte virtuele machine en vervolgens die aangepaste installatie kopie gebruiken om identieke Vm's te maken. De volgende stappen laten zien hoe u een aangepaste installatie kopie maakt op basis van een virtuele machine:
 
-1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 

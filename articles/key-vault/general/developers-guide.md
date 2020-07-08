@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 2b5c28fccc411a8372ebd6015f796c8309146dfa
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85476764"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Gids voor Azure Key Vault-ontwikkelaars
@@ -127,7 +127,7 @@ Deze artikelen zijn over andere scenario's en services die gebruikmaken van of w
 - [Overzicht van sleutels van Key Vault Storage-account](../secrets/overview-storage-keys.md)) Hierin worden de sleutels voor de Key Vault-integratie Azure Storage-accounts beschreven.
 - [Key Vault Security-wereld](overview-security-worlds.md) beschrijft de relaties tussen regio's en beveiligings gebieden.
 
-## <a name="social"></a>Sociaal
+## <a name="social"></a>Sociaal netwerken
 
 - [Key Vault blog](https://aka.ms/kvblog)
 - [Key Vault forum](https://aka.ms/kvforum)

@@ -4,10 +4,10 @@ description: Meer informatie over het configureren van een Bewaar beleid, het op
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 115fdff215399a9a51171161191ecf5009e8e20e
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85476050"
 ---
 # <a name="set-up-retention-policy-in-azure-devtest-labs"></a>Bewaar beleid instellen in Azure DevTest Labs

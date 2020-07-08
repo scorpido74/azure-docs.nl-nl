@@ -4,10 +4,10 @@ description: Meer informatie over het maken van een Lab-account, het weer geven 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 13b477504833b8d72845735304563eef334c49ac
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85445488"
 ---
 # <a name="create-and-manage-lab-accounts"></a>Labaccounts maken en beheren
@@ -60,7 +60,7 @@ In de volgende stappen ziet u hoe u Azure Portal kunt gebruiken om een lab te ma
     ![Pagina lab-account](./media/tutorial-setup-lab-account/lab-account-page.png)
 
 ## <a name="view-lab-accounts"></a>Lab-accounts weer geven
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **alle resources** in het menu. 
 3. Selecteer een **Lab-account** voor het **type**. 
     U kunt ook filteren op abonnement, resource groep, locaties en tags. 

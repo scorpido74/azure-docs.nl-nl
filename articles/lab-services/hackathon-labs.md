@@ -4,10 +4,10 @@ description: In dit artikel wordt beschreven hoe u Azure Lab Services gebruikt v
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 8727fad6f37d1365983127a1a514e87e3a5003b9
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85445879"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>Azure Lab Services gebruiken voor uw volgende hackathon
@@ -15,7 +15,7 @@ Azure Lab Services is lichter ontworpen en eenvoudig te gebruiken, zodat u snel 
 
 Als u Lab-Services voor uw hackathon wilt gebruiken, moet u ervoor zorgen dat zowel een Lab-account als uw Lab ten minste enkele dagen vóór het begin van uw hackathon worden gemaakt. Volg ook de onderstaande instructies:
 
-## <a name="guidance"></a>Richtlijnen
+## <a name="guidance"></a>Hulp
 
 - **Maak het lab in een regio of locatie die het dichtst bij de deel nemers**ligt. 
 
