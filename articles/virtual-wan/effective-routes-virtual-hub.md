@@ -1,72 +1,68 @@
 ---
 title: 'Efficiënte routes van een virtuele hub weer geven: Azure Virtual WAN | Microsoft Docs'
-description: Efficiënte routes voor een virtuele hub in azure Virtual WAN door lopen
+description: Efficiënte routes weer geven voor een virtuele hub in azure Virtual WAN
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 06/02/2020
+ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: c7d436f2aecb021a7848ef0455a3f1c834cc38c1
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 20cdc55b474034480392f9dfb05b20ad25df6939
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84750550"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037763"
 ---
-# <a name="view-effective-routes-of-a-virtual-hub"></a>Efficiënte routes van een virtuele hub weer geven
+# <a name="view-virtual-hub-effective-routes"></a>Efficiënte routes voor virtuele hubs weergeven
 
-U kunt alle routes van uw virtuele WAN-hub weer geven in de Azure Portal. Als u de routes wilt weer geven, gaat u naar de virtuele hub en selecteert u vervolgens **route ring-> efficiënte routes weer geven**.
+U kunt alle routes van uw virtuele WAN-hub weer geven in de Azure Portal. Dit artikel begeleidt u stapsgewijs door de stappen voor het weer geven van efficiënte routes. Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor meer informatie over virtuele-hub-route ring.
 
-## <a name="understanding-routes"></a><a name="understand"></a>Over routes
+> [!NOTE]
+> Op het Azure Portal kunnen sommige van deze functies nog steeds worden geïmplementeerd en niet beschikbaar zijn tot week augustus. 
+>
 
-In het volgende voor beeld kunt u beter begrijpen hoe virtuele WAN-route ring wordt weer gegeven.
+## <a name="select-connections-or-route-tables"></a><a name="routing"></a>Verbindingen of route tabellen selecteren
 
-In dit voor beeld hebben we een virtueel WAN met drie hubs. De eerste hub bevindt zich in de regio VS-Oost, de tweede hub bevindt zich in de Europa-west regio en de derde hub bevindt zich in de regio vs-West. In een virtueel WAN zijn alle hubs onderling verbonden. In dit voor beeld gaan we ervan uit dat de VS-Oost en de Europa-west hubs verbindingen hebben van on-premises vertakkingen (spokes) en virtuele Azure-netwerken (spokes).
+1. Navigeer naar uw virtuele hub en selecteer vervolgens **route ring**. Op de pagina route ring selecteert u de **juiste routes**.
+1. In de vervolg keuzelijst kunt u **verbindings type** of **route tabel**selecteren. Als u de optie route tabel niet ziet, betekent dit dat u geen aangepaste of standaard route tabel hebt ingesteld in deze virtuele hub.
+1. In de vervolg keuzelijst voor **verbindingen/route tabellen**kunt u een keuze maken uit de volgende items:
 
-Een Azure VNet-spoke (10.4.0.0/16) met een virtueel netwerk apparaat (10.4.0.6) is verder gekoppeld aan een VNet (10.5.0.0/16). Meer [informatie vindt u verderop in](#abouthubroute) dit artikel voor meer informatie over de route tabel van de hub.
+   * Virtual Network verbinding
+   * VPN-site verbinding
+   * ExpressRoute-verbinding
+   * Punt-naar-site-verbinding
+   * Routetabel
 
-In dit voor beeld gaan we ervan uit dat de Europa-west vertakking 1 is verbonden met de VS-Oost-hub, evenals aan de Europa-west hub. Een ExpressRoute-circuit in VS-Oost verbindt vertakking 2 met de VS-Oost-hub.
+   :::image type="content" source="./media/effective-routes-virtual-hub/routing.png" alt-text="Routering":::
 
-![schema](./media/effective-routes-virtual-hub/diagram.png)
+## <a name="view-output"></a><a name="output"></a>Uitvoer weer geven
 
-## <a name="view-effective-routes"></a><a name="view"></a>Efficiënte routes weer geven
+De pagina-uitvoer bevat de volgende velden:
 
-Wanneer u ' werkelijke routes weer geven ' in de portal selecteert, wordt de uitvoer gemaakt die wordt weer gegeven in de [route tabel](#routetable) van de hub voor de VS-Oost-hub.
+* **Voor voegsel**: adres voorvoegsel bekend bij de huidige entiteit.
+* **Type volgende hop**: kan Virtual Network verbinding, VPN_S2S_Gateway, ExpressRouteGateway, externe Hub of Azure firewall zijn.
+* **Volgende hop**: dit is het IP-adres of het veld staat op koppeling om de huidige hub te impliceren.
+* **Oorsprong**: bron-id van de routerings bron.
+* **Als pad**: BGP-kenmerk as (autonoom systeem) een lijst met alle as-nummers die moeten worden gepasseerd om de locatie te bereiken waar het voor voegsel waaraan het pad is gekoppeld, wordt geadverteerd.
 
-Om dit in perspectief te brengen, impliceert de eerste regel dat de VS-hub de route van 10.20.1.0/24 (branch 1) heeft geleerd als gevolg van de VPN-verbinding van de *volgende type* (' volgende hop ' VPN gateway Instance0 IP 10.1.0.6, exemplaar1 IP 10.1.0.7). *Oorsprong van route* verwijst naar de resource-id. *As Path* geeft het as-pad voor vertakking 1 aan.
+### <a name="example"></a><a name="example"></a>Voorbeeld
 
-### <a name="hub-route-table"></a><a name="routetable"></a>Route tabel van de hub
+De waarden in de volgende voorbeeld tabel impliceren dat de virtuele-hub-verbinding of route tabel de route van 10.2.0.0/24 (een vertakkings voorvoegsel) heeft geleerd. De route is geleerd door het type volgende hop van de **VPN-** VPN_S2S_Gateway met de **volgende hop** VPN gateway resource-id. **Route oorsprong** wijst naar de resource-id van de oorspronkelijke VPN-gateway/route tabel/-verbinding. **As Path** geeft het as-pad voor de vertakking aan.
 
 Gebruik de schuif balk aan de onderkant van de tabel om het "AS-pad" weer te geven.
 
 | **Voorvoegsel** |  **Volgend hoptype** | **Volgende hop** |  **Route oorsprong** |**ALS pad** |
 | ---        | ---                | ---          | ---               | ---         |
-| 10.20.1.0/24|VPN |10.1.0.6, 10.1.0.7| /Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-gw| 20.000|
-|10.21.1.0/24 |ExpressRoute|10.1.0.10, 10.1.0.11|/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/expressRouteGateways/4444a6ac74e4d85555-eastus-gw|21000|
-|10.23.1.0/24| VPN |10.1.0.6, 10.1.0.7|/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-gw|23000|
-|10.4.0.0/16|Virtual Network verbinding| On-link |  |  |
-|10.5.0.0/16| IP-adres| 10.4.0.6|/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/virtualhubs/easthub_1/routetables/table_1| |
-|0.0.0.0/0| IP-adres| `<Azure Firewall IP>` |/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/virtualhubs/easthub_1/routetables/table_1| |
-|10.22.1.0/16| Externe hub|10.8.0.6, 10.8.0.7|/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/virtualhubs/westhub_| 4848-22000 |
-|10.9.0.0/16| Externe hub|  On-link |/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/virtualhubs/westhub_1| |
+| 10.2.0.0/24| VPN_S2S_Gateway |10.1.0.6, 10.1.0.7|/Subscriptions/ `<sub id>` /ResourceGroups/ `<resource group name>` /providers/Microsoft.Network/vpnGateways/vpngw| 20.000|
 
->[!NOTE]
-> Als het VS-Oost en de Europa-west hubs niet communiceren met elkaar in de voorbeeld topologie, is de door u geleerde route (10.9.0.0/16) niet aanwezig. Hubs adverteren alleen netwerken die rechtstreeks met hen zijn verbonden.
->
+**Tot**
 
-## <a name="additional-information"></a><a name="additional"></a>Aanvullende informatie
+* Als u 0.0.0.0/0 ziet in de uitvoer van de **meest efficiënte routes** , betekent dit dat de route bestaat in een van de route tabellen. Als deze route echter is ingesteld voor Internet, is er een extra vlag **"enableInternetSecurity": True** is vereist voor de verbinding. In de actieve route op de VM-NIC wordt de route niet weer gegeven als de vlag ' enableInternetSecurity ' voor de verbinding ' false ' is.
 
-### <a name="about-the-hub-route-table"></a><a name="abouthubroute"></a>Over de route tabel van de hub
-
-U kunt een virtuele hub-route maken en de route Toep assen op de route tabel van de virtuele hub. U kunt meerdere routes toepassen op de routetabel van de virtuele hub. Hiermee kunt u een route voor het doel-VNet instellen via een IP-adres (meestal het virtuele netwerk apparaat (NVA) in een spoke-VNet). Zie [verkeer van een virtuele hub naar een NVA routeren](virtual-wan-route-table-portal.md)voor meer informatie over nva's. Houd er rekening mee dat deze routes niet worden weer gegeven in de juiste route tabel. De tabel met actieve routes bevat alleen de voor voegsels voor lokale en externe hubs plus verbonden Virtual Network adres ruimte en routes die via BGP zijn geleerd.
-
-### <a name="about-default-route-00000"></a><a name="aboutdefaultroute"></a>Over de standaard route (0.0.0.0/0)
-
-Met een virtuele hub kunt u een geleerde standaard route door geven naar een virtueel netwerk, een site-naar-site-VPN en een ExpressRoute-verbinding als de vlag is ingeschakeld op de verbinding. Deze markering wordt weer gegeven wanneer u een virtuele netwerk verbinding, een VPN-verbinding of een ExpressRoute-verbinding bewerkt. ' EnableInternetSecurity ' is standaard altijd onwaar op hub VNet-, ExpressRoute-en VPN-verbindingen.
-
-De standaard route is niet afkomstig van de virtuele WAN-hub. De standaard route wordt door gegeven als deze al is geleerd door de virtuele WAN-hub als gevolg van het implementeren van een firewall in de hub, of als een andere verbonden site geforceerde tunneling heeft ingeschakeld.
+* Het veld **standaard route door geven** wordt weer gegeven in de Azure Virtual WAN-Portal wanneer u een virtuele netwerk verbinding, een VPN-verbinding of een ExpressRoute-verbinding bewerkt. Dit veld geeft de **enableInternetSecurity** -vlag aan, die altijd standaard is ingesteld op ' false ' voor ExpressRoute-en VPN-verbindingen, maar ' True ' voor virtuele netwerk verbindingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over Virtual WAN het [Overzicht van Virtual WAN](virtual-wan-about.md).
+* Zie voor meer informatie over Virtual WAN het [Overzicht van Virtual WAN](virtual-wan-about.md).
+* Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor meer informatie over virtuele-hub-route ring.

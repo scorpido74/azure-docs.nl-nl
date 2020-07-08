@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 4e827c5f6eedc819bc3635cb09a28f65df51312c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09056846ee3e531724f597ee35f92d812ce2c335
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75862574"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037831"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Problemen oplossen: een Azure site-naar-site-VPN-verbinding kan geen verbinding maken en werkt niet meer
 
@@ -34,7 +34,7 @@ Controleer het type van de Azure VPN-gateway.
     
     ![Overzicht van de gateway](media/vpn-gateway-troubleshoot-site-to-site-cannot-connect/gatewayoverview.png)
 
-### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>Step 1. Controleren of het on-premises VPN-apparaat is gevalideerd
+### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>Stap 1. Controleren of het on-premises VPN-apparaat is gevalideerd
 
 1. Controleer of u een [gevalideerd VPN-apparaat en de versie van het besturings systeem](vpn-gateway-about-vpn-devices.md#devicetable)gebruikt. Als het apparaat geen gevalideerd VPN-apparaat is, moet u mogelijk contact opnemen met de fabrikant van het apparaat om te controleren of er een probleem is met de compatibiliteit.
 
@@ -46,7 +46,7 @@ Vergelijk de gedeelde sleutel voor het on-premises VPN-apparaat met de Azure Vir
 
 Gebruik een van de volgende methoden om de gedeelde sleutel voor de Azure VPN-verbinding weer te geven:
 
-**Azure Portal**
+**Azure-portal**
 
 1. Ga naar de site-naar-site-verbinding van de VPN-gateway die u hebt gemaakt.
 
@@ -60,11 +60,15 @@ Gebruik een van de volgende methoden om de gedeelde sleutel voor de Azure VPN-ve
 
 Voor het Azure Resource Manager implementatie model:
 
-    Get-AzVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group name>
+```azurepowershell
+Get-AzVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group name>
+```
 
 Voor het klassieke implementatie model:
 
-    Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
+```azurepowershell
+Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
+```
 
 ### <a name="step-3-verify-the-vpn-peer-ips"></a>Stap 3. De VPN peer Ip's controleren
 

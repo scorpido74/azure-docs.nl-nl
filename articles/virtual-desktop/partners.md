@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 332ce90de334a384ee6017a12781d0ddb2ed4158
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: a0853266e4fda4393ba49fb740755e6b8bd03cf5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126141"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038052"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integratie van virtuele bureau blad-partners van Windows
 
@@ -255,7 +255,7 @@ Afdrukken is een fundamentele taak in slechts elke Office-en Small Business-omge
 
 RDPSoft is een virtueel-bureaublad partner van Windows die krachtige en goedkope bewakings-, beheer-en rapportage oplossingen biedt. Met hun Extern bureaublad Commander-aanbod kunnen IT-professionals inzicht krijgen in de status, prestaties, gebruikers activiteiten, licenties en de beveiliging van hun Windows Virtual Desktop-implementaties. 
  
-De Extern bureaublad Commander-oplossingen van RDPSoft verbeteren het beheer van virtuele Windows-Bureau bladen. Premium-beheer functies vereenvoudigen de overdracht van beheer taken voor virtuele Windows-Bureau bladen ter ondersteuning van Desk medewerkers door hulp op afstand, gebruikers sessie en proces beheer te bieden. Terzelfder tijd verzamelt de Extern bureaublad Commander Suite rijke metrische gegevens over de prestaties van de gebruiker en de belasting, gebruikers activiteit en controle, Windows Virtual Desktop-verbindings kwaliteit (latentie en band breedte), licenties en beveiliging in een centraal Azure SQL database-exemplaar voor beoordeling. Met RDPSoft zijn uitgebreide historische rapporten en uitgebreide Dash boards gewoon op weg.
+De Extern bureaublad Commander-oplossingen van RDPSoft verbeteren het beheer van virtuele Windows-Bureau bladen. Premium-beheer functies vereenvoudigen de overdracht van beheer taken voor virtuele Windows-Bureau bladen ter ondersteuning van Desk medewerkers door hulp op afstand, gebruikers sessie en proces beheer te bieden. Terzelfder tijd verzamelt de Extern bureaublad Commander Suite rijke metrische gegevens over de prestaties van de gebruiker en de belasting, gebruikers activiteit en controle, Windows Virtual Desktop-verbindings kwaliteit (latentie en band breedte), licenties en beveiliging in een centraal Azure SQL Database-exemplaar voor beoordeling. Met RDPSoft zijn uitgebreide historische rapporten en uitgebreide Dash boards gewoon op weg.
 
 - [Ga naar de website van de partner](https://www.rdpsoft.com/products/remote-desktop-commander/suite/).
 
