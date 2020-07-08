@@ -3,12 +3,12 @@ title: Een pool met opgegeven open bare IP-adressen maken
 description: Meer informatie over het maken van een batch-pool die gebruikmaakt van uw eigen open bare IP-adressen.
 ms.topic: how-to
 ms.date: 06/16/2020
-ms.openlocfilehash: 9992ae573ea5c9590f15d6cffa11da599026c0a9
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 51cb023bf3749233878fa4d544c6fd8ef4703645
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84884977"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961554"
 ---
 # <a name="create-an-azure-batch-pool-with-specified-public-ip-addresses"></a>Een Azure Batch groep met opgegeven open bare IP-adressen maken
 
@@ -16,13 +16,15 @@ Wanneer u een Azure Batch groep maakt, kunt u [de groep inrichten in een subnet 
 
 U kunt een lijst met statische open bare IP-adressen maken voor gebruik met de virtuele machines in uw pool. Hiermee kunt u de lijst met open bare IP-adressen beheren en ervoor zorgen dat ze onverwacht niet worden gewijzigd. Dit kan vooral nuttig zijn als u werkt met een externe service, zoals een Data Base, waardoor de toegang tot bepaalde IP-adressen wordt beperkt.
 
+Voor informatie over het maken van Pools zonder open bare IP-adressen, Lees [een Azure batch groep maken zonder open bare IP-adressen](./batch-pool-no-public-ip-address.md).
+
 ## <a name="prerequisites"></a>Vereisten
 
 - **Verificatie**. Als u een openbaar IP-adres wilt gebruiken, moet de batch-client-API gebruikmaken van [Azure Active Directory (AD)-verificatie](batch-aad-auth.md).
 
 - **Een Azure-VNet**. U moet een [virtueel netwerk](batch-virtual-network.md) gebruiken van hetzelfde Azure-abonnement waarin u uw pool en uw IP-adressen maakt. Alleen op Azure Resource Manager gebaseerde VNets kunnen worden gebruikt. Zorg ervoor dat het VNet voldoet aan alle [algemene vereisten](batch-virtual-network.md#vnet-requirements).
 
-- **Ten minste één openbaar IP-adres van Azure**. Als u een of meer open bare IP-adressen wilt maken, kunt u de [Azure Portal](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address), de [Azure-opdracht regel interface (CLI)](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)of [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress)gebruiken. Zorg ervoor dat u voldoet aan de vereisten die hieronder worden weer gegeven.
+- **Ten minste één openbaar IP-adres van Azure**. Als u een of meer open bare IP-adressen wilt maken, kunt u de [Azure Portal](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address), de [Azure-opdracht regel interface (CLI)](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)of [Azure PowerShell](/powershell/module/az.network/new-azpublicipaddress)gebruiken. Zorg ervoor dat u voldoet aan de vereisten die hieronder worden weer gegeven.
 
 > [!NOTE]
 > Batch wijst automatisch extra netwerk bronnen toe aan de resource groep met de open bare IP-adressen. Voor elke 100 toegewezen knoop punten wijst batch in het algemeen één netwerk beveiligings groep (NSG) en één load balancer toe. Deze resources worden beperkt door de resource quota van het abonnement. Wanneer u grotere groepen gebruikt, moet u mogelijk [een quotum toename aanvragen](batch-quota-limit.md#increase-a-quota) voor een of meer van deze resources.
@@ -43,7 +45,7 @@ Houd bij het maken van uw open bare IP-adressen de volgende vereisten in acht:
 
 ## <a name="create-a-batch-pool-with-public-ip-addresses"></a>Een batch-pool met open bare IP-adressen maken
 
-In het onderstaande voor beeld ziet u hoe u de [Azure batch-Service rest API](https://docs.microsoft.com/rest/api/batchservice/pool/add) kunt gebruiken om een groep te maken die gebruikmaakt van open bare IP-adressen.
+In het onderstaande voor beeld ziet u hoe u de [Azure batch-Service rest API](/rest/api/batchservice/pool/add) kunt gebruiken om een groep te maken die gebruikmaakt van open bare IP-adressen.
 
 ### <a name="batch-service-rest-api"></a>REST API voor Batch-service
 
@@ -95,3 +97,5 @@ Aanvraagtekst
 
 - Meer informatie over de [Werkstroom van de batch-service en primaire resources](batch-service-workflow-features.md) als pools, knooppunten, jobs en taken.
 - Meer informatie over het [maken van een pool in een subnet van een virtueel Azure-netwerk](batch-virtual-network.md).
+- Meer informatie over [het maken van een Azure batch groep zonder open bare IP-adressen](./batch-pool-no-public-ip-address.md).
+

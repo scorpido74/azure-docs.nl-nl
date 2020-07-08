@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.openlocfilehash: d4c2dc58ca341db7ba17dbaf6a5ce7c009983379
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 62d4e26d5a0d3d86cc58421dab4167d5d9d2562d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81727240"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961776"
 ---
 # <a name="azure-media-player-full-setup"></a>Volledige installatie van Azure Media Player #
 
@@ -20,20 +20,23 @@ Azure Media Player eenvoudig in te stellen. Het duurt slechts enkele ogen blikke
 
 ## <a name="step-1-include-the-javascript-and-css-files-in-the-head-of-your-page"></a>Stap 1: de Java script-en CSS-bestanden in de kop van uw pagina toevoegen ##
 
-Met Azure Media Player kunt u toegang krijgen tot de scripts van de gehoste CDN-versie. Het wordt vaak aanbevolen om Java script te plaatsen vóór het label `<body>` voor de eind code `<head>`in plaats van de, maar Azure Media Player bevat een ' HTML5-Shiv ', die in de kop moet staan voor oudere IE-versies om de video code als een geldig element te kunnen respecteren.
+Met Azure Media Player kunt u toegang krijgen tot de scripts van de gehoste CDN-versie. Het wordt vaak aanbevolen om Java script te plaatsen vóór het label voor de eind code `<body>` in plaats van de `<head>` , maar Azure Media Player bevat een ' HTML5-Shiv ', die in de kop moet staan voor oudere IE-versies om de video code als een geldig element te kunnen respecteren.
 
 > [!NOTE]
-> Als u al een HTML5-Shiv gebruikt zoals [modernisering](http://modernizr.com/) , kunt u de Azure Media Player java script overal toevoegen. Zorg echter dat uw versie van de Moderniseringr de Shiv voor video bevat.
+> Als u al een HTML5-Shiv gebruikt zoals [modernisering](https://modernizr.com/) , kunt u de Azure Media Player java script overal toevoegen. Zorg echter dat uw versie van de Moderniseringr de Shiv voor video bevat.
 
 ### <a name="cdn-version"></a>CDN-versie ###
+
+```html
     <link href="//amp.azure.net/libs/amp/latest/skins/amp-default/azuremediaplayer.min.css" rel="stylesheet">
     <script src= "//amp.azure.net/libs/amp/latest/azuremediaplayer.min.js"></script>
+```
 
 > [!IMPORTANT]
-> U moet **NOT** de `latest` versie niet gebruiken in productie, omdat dit kan worden gewijzigd op aanvraag. Vervang `latest` door een versie van Azure Media Player. Vervang `latest` bijvoorbeeld door `2.1.1`. Van Azure Media Player-versies kan [hier](azure-media-player-changelog.md)een query worden uitgevoerd.
+> U moet de versie **niet** gebruiken `latest` in productie, omdat dit kan worden gewijzigd op aanvraag. Vervang door `latest` een versie van Azure Media Player. Vervang bijvoorbeeld `latest` door `2.1.1`. Van Azure Media Player-versies kan [hier](azure-media-player-changelog.md)een query worden uitgevoerd.
 
 > [!NOTE]
-> Sinds de `1.2.0` release is het niet meer nodig om de locatie op te nemen in de technische terugval (de locatie wordt automatisch opgehaald uit het relatieve pad van het bestand azuremediaplayer. min. js). U kunt de locatie van de technische terugvals wijzigen door het volgende script toe te voegen aan de `<head>` bovenstaande scripts.
+> Sinds de `1.2.0` release is het niet meer nodig om de locatie op te nemen in de technische terugval (de locatie wordt automatisch opgehaald uit het relatieve pad van het azuremediaplayer.min.js-bestand). U kunt de locatie van de technische terugvals wijzigen door het volgende script toe te voegen aan de `<head>` bovenstaande scripts.
 
 > [!NOTE]
 > Vanwege de aard van de Flash-en Silverlight-invoeg toepassingen moeten de SWF-en XAP-bestanden worden gehost in een domein zonder gevoelige informatie of gegevens. dit wordt automatisch voor u in rekening gebracht met de Azure CDN gehoste versie.
@@ -49,7 +52,7 @@ Met Azure Media Player kunt u toegang krijgen tot de scripts van de gehoste CDN-
 
 Met Azure Media Player kunt u een HTML5-Video code gebruiken om een video in te sluiten. Azure Media Player leest vervolgens het label en maakt het werk in alle browsers, niet alleen voor de ondersteuning van HTML5-Video. Naast de basis opmaak heeft Azure Media Player een aantal extra onderdelen nodig.
 
-1. Met `<data-setup>` het kenmerk op `<video>` de Azure Media Player vertelt u automatisch de video instellen wanneer de pagina gereed is en leest u de (in JSON-indeling) van het kenmerk.
+1. Met het `<data-setup>` kenmerk op de `<video>` Azure Media Player vertelt u automatisch de video instellen wanneer de pagina gereed is en leest u de (in JSON-indeling) van het kenmerk.
 1. Het `id` kenmerk: moet worden gebruikt en uniek zijn voor elke video op dezelfde pagina.
 1. Het `class` kenmerk bevat twee klassen:
     - `azuremediaplayer`Hiermee worden stijlen toegepast die vereist zijn voor de functionaliteit van Azure Media Player-gebruikers interface
@@ -117,4 +120,4 @@ In plaats van een element-ID te gebruiken, kunt u ook een verwijzing naar het el
 
 ## <a name="next-steps"></a>Volgende stappen ##
 
-- [Snelstartgids Azure Media Player](azure-media-player-quickstart.md)
+- [Quickstart voor Azure Media Player](azure-media-player-quickstart.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: c5dfcc84530597fc41c547a78478dcee4a4ad803
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 82c203322f1a417fa006c5228d957c178a706b3a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808496"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961010"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>De distributie modus voor Azure Load Balancer configureren
 
@@ -30,9 +30,9 @@ De standaarddistributiemodus van Azure Load Balancer is een hash met vijf tuples
 
 De tuple bestaat uit het volgende:
 * **Bron-IP**
-* **Bron poort**
+* **Bronpoort**
 * **Doel-IP**
-* **Doel poort**
+* **Doelpoort**
 * **Protocol type**
 
 De hash wordt gebruikt om verkeer toe te wijzen aan de beschik bare servers. De algoritme biedt persistentie alleen binnen een transport sessie. Pakketten die zich in dezelfde sessie bevinden, worden omgeleid naar hetzelfde Data Center-IP achter het eind punt met gelijke taak verdeling. Wanneer de client een nieuwe sessie start vanuit hetzelfde bron-IP-adres, wordt de bron poort gewijzigd en wordt het verkeer naar een ander Data Center-eind punt getransporteerd.
@@ -94,25 +94,27 @@ Stel de waarde van het `LoadBalancerDistribution` element in voor de hoeveelheid
 
 Een eind punt configuratie voor load balancer distributie modus ophalen met behulp van de volgende instellingen:
 
-    PS C:\> Get-AzureVM –ServiceName MyService –Name MyVM | Get-AzureEndpoint
+```azurepowershell
+PS C:\> Get-AzureVM –ServiceName MyService –Name MyVM | Get-AzureEndpoint
 
-    VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
-    LBSetName : MyLoadBalancedSet
-    LocalPort : 80
-    Name : HTTP
-    Port : 80
-    Protocol : tcp
-    Vip : 65.52.xxx.xxx
-    ProbePath :
-    ProbePort : 80
-    ProbeProtocol : tcp
-    ProbeIntervalInSeconds : 15
-    ProbeTimeoutInSeconds : 31
-    EnableDirectServerReturn : False
-    Acl : {}
-    InternalLoadBalancerName :
-    IdleTimeoutInMinutes : 15
-    LoadBalancerDistribution : sourceIP
+VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
+LBSetName : MyLoadBalancedSet
+LocalPort : 80
+Name : HTTP
+Port : 80
+Protocol : tcp
+Vip : 65.52.xxx.xxx
+ProbePath :
+ProbePort : 80
+ProbeProtocol : tcp
+ProbeIntervalInSeconds : 15
+ProbeTimeoutInSeconds : 31
+EnableDirectServerReturn : False
+Acl : {}
+InternalLoadBalancerName :
+IdleTimeoutInMinutes : 15
+LoadBalancerDistribution : sourceIP
+```
 
 Wanneer het `LoadBalancerDistribution` element niet aanwezig is, gebruikt Azure Load Balancer het standaard algoritme van vijf Tuples.
 
@@ -158,38 +160,44 @@ Gebruik het klassieke Azure-implementatie model om een bestaande implementatie c
 
 #### <a name="request"></a>Aanvraag
 
-    POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
-    Content-Type: application/xml
+```http
+POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
+Content-Type: application/xml
+```
 
-    <LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
-      <InputEndpoint>
+```xml
+<LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
+    <InputEndpoint>
         <LoadBalancedEndpointSetName> endpoint-set-name </LoadBalancedEndpointSetName>
         <LocalPort> local-port-number </LocalPort>
         <Port> external-port-number </Port>
         <LoadBalancerProbe>
-          <Port> port-assigned-to-probe </Port>
-          <Protocol> probe-protocol </Protocol>
-          <IntervalInSeconds> interval-of-probe </IntervalInSeconds>
-          <TimeoutInSeconds> timeout-for-probe </TimeoutInSeconds>
+            <Port> port-assigned-to-probe </Port>
+            <Protocol> probe-protocol </Protocol>
+            <IntervalInSeconds> interval-of-probe </IntervalInSeconds>
+            <TimeoutInSeconds> timeout-for-probe </TimeoutInSeconds>
         </LoadBalancerProbe>
         <Protocol> endpoint-protocol </Protocol>
         <EnableDirectServerReturn> enable-direct-server-return </EnableDirectServerReturn>
         <IdleTimeoutInMinutes>idle-time-out</IdleTimeoutInMinutes>
         <LoadBalancerDistribution>sourceIP</LoadBalancerDistribution>
-      </InputEndpoint>
-    </LoadBalancedEndpointList>
+    </InputEndpoint>
+</LoadBalancedEndpointList>
+```
 
 Zoals eerder beschreven, stelt `LoadBalancerDistribution` u het element in op sourceIP voor twee-tuple-affiniteit, sourceIPProtocol voor drie-tuple-affiniteit of geen voor geen affiniteit (5-tuple-affiniteit).
 
 #### <a name="response"></a>Antwoord
 
-    HTTP/1.1 202 Accepted
-    Cache-Control: no-cache
-    Content-Length: 0
-    Server: 1.0.6198.146 (rd_rdfe_stable.141015-1306) Microsoft-HTTPAPI/2.0
-    x-ms-servedbyregion: ussouth2
-    x-ms-request-id: 9c7bda3e67c621a6b57096323069f7af
-    Date: Thu, 16 Oct 2014 22:49:21 GMT
+```http
+HTTP/1.1 202 Accepted
+Cache-Control: no-cache
+Content-Length: 0
+Server: 1.0.6198.146 (rd_rdfe_stable.141015-1306) Microsoft-HTTPAPI/2.0
+x-ms-servedbyregion: ussouth2
+x-ms-request-id: 9c7bda3e67c621a6b57096323069f7af
+Date: Thu, 16 Oct 2014 22:49:21 GMT
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

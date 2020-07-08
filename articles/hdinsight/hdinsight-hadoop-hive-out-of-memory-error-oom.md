@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: 371c00fd63f7a89f4d50ce130e89f10e2a7a38bd
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 71f9bc75bc2b84708af54ba89918cd874099a2d4
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891091"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961894"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>De fout Apache Hive onvoldoende geheugen in azure HDInsight oplossen
 
@@ -50,11 +50,14 @@ Enkele nuances van deze query:
 
 Het volt ooien van de Hive-query duurde 26 minuten in een HDInsight-cluster van 24 knoop punt a3. De klant heeft de volgende waarschuwings berichten gemerkt:
 
+```output
     Warning: Map Join MAPJOIN[428][bigTable=?] in task 'Stage-21:MAPRED' is a cross product
     Warning: Shuffle Join JOIN[8][tables = [t1933775, t1932766]] in Stage 'Stage-4:MAPRED' is a cross product
+```
 
 Door gebruik te maken van de Apache TEZ Execution Engine. Dezelfde query is 15 minuten uitgevoerd en vervolgens de volgende fout gegenereerd:
 
+```output
     Status: Failed
     Vertex failed, vertexName=Map 5, vertexId=vertex_1443634917922_0008_1_05, diagnostics=[Task failed, taskId=task_1443634917922_0008_1_05_000006, diagnostics=[TaskAttempt 0 failed, info=[Error: Failure while running task:java.lang.RuntimeException: java.lang.OutOfMemoryError: Java heap space
         at
@@ -78,6 +81,7 @@ Door gebruik te maken van de Apache TEZ Execution Engine. Dezelfde query is 15 m
         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
         at java.lang.Thread.run(Thread.java:745)
     Caused by: java.lang.OutOfMemoryError: Java heap space
+```
 
 De fout blijft actief wanneer u een grotere virtuele machine gebruikt (bijvoorbeeld D12).
 
@@ -87,7 +91,7 @@ Onze ondersteunings-en technische teams hebben een van de problemen gevonden waa
 
 "When component. auto. Convert. samen voegen. noconditionaltask = True Controleer of noconditionaltask. size wordt gecontroleerd en of de som van de grootte van de tabellen in de kaart koppeling kleiner is dan noconditionaltask. de grootte van het plan zou een toewijzings koppeling genereren, het probleem hiervan is dat de berekening geen rekening houdt met de overhead die wordt geïntroduceerd door de verschillende implementatie van de hashtabel als resultaat als de som van de invoer grootte kleiner is dan de noconditionaltask grootte door
 
-De **component. auto. Convert. joinexpressie. noconditionaltask** in het bestand Hive-site. XML is ingesteld op **True**:
+De **component. auto. Convert. join's. noconditionaltask** in het hive-site.xml-bestand is ingesteld op **True**:
 
 ```xml
 <property>
@@ -112,8 +116,10 @@ Als het blog bericht wordt voorgesteld, definieert de volgende twee geheugen ins
 
 Omdat een D12 machine 28 GB geheugen heeft, hebben we besloten een container grootte van 10 GB (10240 MB) te gebruiken en 80% toe te wijzen aan java. kiest voor:
 
-    SET hive.tez.container.size=10240
-    SET hive.tez.java.opts=-Xmx8192m
+```console
+SET hive.tez.container.size=10240
+SET hive.tez.java.opts=-Xmx8192m
+```
 
 Met de nieuwe instellingen is de query binnen tien minuten uitgevoerd.
 

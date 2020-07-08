@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 9ff961638aa170948d51793a21e86d18dd7e1d80
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 65e1fa07d2af15e9ccb5f85ce4645e3e6c287952
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "69016796"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960364"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Een Smooth Streaming Windows Store-toepassing bouwen  
 
@@ -66,13 +66,13 @@ Zie voor meer informatie over het ontwikkelen van Windows Store-toepassing [fant
 1. Klik in het menu **bestand** op **Nieuw**en klik vervolgens op **project**.
 1. Typ of Selecteer in het dialoog venster Nieuw project de volgende waarden:
 
-    | Naam | Waarde |
+    | Name | Waarde |
     | --- | --- |
     | Sjabloon groep |Geïnstalleerd/templates/Visual C#/Windows Store |
     | Template |Lege app (XAML) |
-    | Naam |SSPlayer |
+    | Name |SSPlayer |
     | Locatie |C:\SSTutorials |
-    | Oplossings naam |SSPlayer |
+    | Naam van de oplossing |SSPlayer |
     | Map maken voor oplossing |geselecteerde |
 
 1. Klik op **OK**.
@@ -82,10 +82,10 @@ Zie voor meer informatie over het ontwikkelen van Windows Store-toepassing [fant
 1. Klik in Solution Explorer met de rechter muisknop op **SSPlayer**en klik vervolgens op **verwijzing toevoegen**.
 1. Typ of selecteer de volgende waarden:
 
-    | Naam | Waarde |
+    | Name | Waarde |
     | --- | --- |
     | Verwijzings groep |Windows/uitbrei dingen |
-    | Naslaginformatie |Selecteer micro soft Smooth Streaming client SDK voor Windows 8 en micro soft Visual C++ runtime-pakket |
+    | Verwijzing |Selecteer micro soft Smooth Streaming client SDK voor Windows 8 en micro soft Visual C++ runtime-pakket |
 
 1. Klik op **OK**. 
 
@@ -94,7 +94,7 @@ Nadat u de verwijzingen hebt toegevoegd, moet u het doel platform (x64 of x86) s
 ### <a name="to-design-the-player-user-interface"></a>De gebruikers interface van de speler ontwerpen
 
 1. Dubbel klik in Solution Explorer op **MainPage. xaml** om deze te openen in de ontwerp weergave.
-2. Zoek het ** &lt;raster&gt; ** en ** &lt;/grid&gt; ** labels het XAML-bestand en plak de volgende code tussen de twee Tags:
+2. Zoek het ** &lt; raster &gt; ** en ** &lt; /grid &gt; ** labels het XAML-bestand en plak de volgende code tussen de twee Tags:
 
    ```xml
          <Grid.RowDefinitions>
@@ -151,15 +151,24 @@ Sommige gebeurtenis-handlers zijn in dit XAML-bestand gekoppeld aan de besturing
 
 1. Klik in Solution Explorer met de rechter muisknop op **MainPage. xaml**en klik vervolgens op **code weer geven**.
 2. Voeg boven aan het bestand de volgende instructie toe met behulp van:
-   
+
+    ```csharp
         using Windows.Media;
+    ```
+
 3. Voeg aan het begin van de klasse **Mainpage** het volgende gegevenslid toe:
-   
-         private MediaExtensionManager extensions = new MediaExtensionManager();
+
+    ```csharp
+        private MediaExtensionManager extensions = new MediaExtensionManager();
+    ```
+
 4. Voeg aan het einde van de **Mainpage** -constructor de volgende twee regels toe:
-   
+
+    ```csharp
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "text/xml");
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "application/vnd.ms-sstr+xml");
+    ```
+
 5. Plak de volgende code aan het einde van de **Mainpage** -klasse:
    ```csharp
          # region UI Button Click Events
@@ -253,7 +262,7 @@ Deze les bevat de volgende procedures:
          private Windows.Foundation.Collections.PropertySet propertySet = new Windows.Foundation.Collections.PropertySet();             
          private IAdaptiveSourceManager adaptiveSourceManager;
    ```
-4. Voeg de volgende code toe in de **Mainpage** -constructor **. Componenten initialiseren ();** regel en de registratie code regels die in de vorige les zijn geschreven:
+4. Voeg in de **Mainpage** -constructor de volgende code toe na de **this.Initialize-onderdelen ();** en de registratie code regels die in de vorige les zijn geschreven:
 
    ```csharp
         // Gets the default instance of AdaptiveSourceManager which manages Smooth 
@@ -552,7 +561,7 @@ Smooth Streaming is in staat om inhoud te streamen met meerdere audio sporen in 
 ### <a name="to-modify-the-xaml-file"></a>Het XAML-bestand wijzigen
 
 1. Klik vanuit Solution Explorer met de rechter muisknop op **MainPage. xaml**en klik vervolgens op **Designer weer geven**.
-2. Zoek &lt;grid. RowDefinitions&gt;en wijzig de RowDefinitions zodat ze er als volgt uitzien:
+2. Zoek &lt; grid. RowDefinitions &gt; en wijzig de RowDefinitions zodat ze er als volgt uitzien:
 
    ```xml
          <Grid.RowDefinitions>            
@@ -563,7 +572,7 @@ Smooth Streaming is in staat om inhoud te streamen met meerdere audio sporen in 
             <RowDefinition Height="50"/>
          </Grid.RowDefinitions>
    ```
-3. Voeg in &lt;het&gt;&lt;raster&gt; /grid Tags de volgende code toe om een besturings element keuze lijst te definiëren, zodat gebruikers de lijst met beschik bare streams kunnen zien en stromen selecteren:
+3. Voeg in het &lt; raster &gt; &lt; /grid &gt; Tags de volgende code toe om een besturings element keuze lijst te definiëren, zodat gebruikers de lijst met beschik bare streams kunnen zien en stromen selecteren:
 
    ```xml
          <Grid Name="gridStreamAndBitrateSelection" Grid.Row="3">
@@ -830,7 +839,7 @@ Een Smooth Streaming presentatie kan meerdere video bestanden bevatten die zijn 
 ### <a name="to-modify-the-xaml-file"></a>Het XAML-bestand wijzigen
 
 1. Klik vanuit Solution Explorer met de rechter muisknop op **MainPage. xaml**en klik vervolgens op **Designer weer geven**.
-2. Zoek de &lt;grid&gt; -tag met de naam **gridStreamAndBitrateSelection**, voeg de volgende code toe aan het einde van de tag:
+2. Zoek de &lt; grid &gt; -tag met de naam **gridStreamAndBitrateSelection**, voeg de volgende code toe aan het einde van de tag:
    ```xml
          <StackPanel Name="spBitRateSelection" Grid.Row="1" Grid.Column="1">
          <StackPanel Orientation="Horizontal">

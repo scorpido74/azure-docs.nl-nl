@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: a01c8658ff4929d07cd185dcea45393cfe3b2a17
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: e0f0f0fdb75961f3ea9ed90e1684ff5ecd2a792d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858306"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961537"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>Publicatie handleiding voor aanbiedingen van virtuele machines
 
@@ -54,7 +54,7 @@ Gebruik het type *virtuele machine* -aanbieding wanneer u een virtueel apparaat 
 | Vereiste | Details |  
 |:--- |:--- | 
 | Facturering en meting | Uw virtuele machine moet de facturering per maand BYOL of betalen naar gebruik ondersteunen. |  
-| Azure-compatibele virtuele harde schijf (VHD) | Vm's moeten zijn gebouwd op Windows of Linux. Zie voor meer informatie over het maken van een VHD: <ul> <li>[Linux-distributies die zijn goedgekeurd op Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) (voor Linux-vhd's).</li> <li>[Een met Azure compatibele VHD maken](./partner-center-portal/azure-vm-create-offer.md) (voor Windows-vhd's).</li> </ul> |  
+| Azure-compatibele virtuele harde schijf (VHD) | Vm's moeten zijn gebouwd op Windows of Linux. Zie voor meer informatie over het maken van een VHD: <ul> <li>[Linux-distributies die zijn goedgekeurd op Azure](../virtual-machines/linux/endorsed-distros.md) (voor Linux-vhd's).</li> <li>[Een met Azure compatibele VHD maken](./partner-center-portal/azure-vm-create-offer.md) (voor Windows-vhd's).</li> </ul> |  
 
 >[!Note]
 >De opt-in voor de Cloud Solution Provider (CSP)-partner kanaal is nu beschikbaar. Zie [Cloud Solution Providers](./cloud-solution-providers.md)(Engelstalig) voor meer informatie over het marketing uw aanbod via micro soft CSP-partner kanalen.

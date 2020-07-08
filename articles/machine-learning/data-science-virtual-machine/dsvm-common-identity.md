@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 44f1f7ae3b290e1dbf01877f3881e1d95a238446
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 69d6b8abc99863f29f82abcb44e18b426c5a456c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70208144"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959140"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>Stel een gemeen schappelijke identiteit in op een Data Science Virtual Machine
 
@@ -41,9 +41,9 @@ Azure AD DS maakt het eenvoudig om uw identiteiten te beheren door een volledig 
     
    1. Selecteer in **gebruikers en groepen** **alle gebruikers**en selecteer vervolgens **nieuwe gebruiker**.
    
-           The **User** pane opens:
+        Het deel venster **gebruiker** wordt geopend:
       
-      ![Het deel venster gebruiker](./media/add-user.png)
+        ![Het deel venster gebruiker](./media/add-user.png)
     
    1. Voer de details voor de gebruiker in, zoals **Naam** en **Gebruikersnaam**. Het domein naam gedeelte van de gebruikers naam moet de oorspronkelijke standaard domein naam ' [domain name]. onmicrosoft. com ' of een geverifieerde, niet-federatieve [aangepaste domein naam](../../active-directory/add-custom-domain.md) zijn, zoals ' contoso.com '.
     
@@ -70,7 +70,7 @@ Azure AD DS maakt het eenvoudig om uw identiteiten te beheren door een volledig 
    sudo mount -t cifs //[STORAGEACCT].file.core.windows.net/workspace [Your mount point] -o vers=3.0,username=[STORAGEACCT],password=[Access Key or SAS],dir_mode=0777,file_mode=0777,sec=ntlmssp
    ```
 1. Stel dat u uw Azure Files-share in/data/Workspace. hebt gekoppeld Maak nu mappen voor elk van uw gebruikers in de share:/data/Workspace/user1,/data/Workspace/user2, enzovoort. Maak een `notebooks` map in de werk ruimte van elke gebruiker. 
-1. Symbolische koppelingen maken `notebooks` voor `$HOME/userx/notebooks/remote`in.   
+1. Symbolische koppelingen maken voor `notebooks` in `$HOME/userx/notebooks/remote` .   
 
 U hebt nu de gebruikers in uw Active Directory-exemplaar dat wordt gehost in Azure. Door Active Directory referenties te gebruiken, kunnen gebruikers zich aanmelden bij elk DSVM (SSH of JupyterHub) dat is gekoppeld aan Azure AD DS. Omdat de werk ruimte van de gebruiker zich op een Azure Files share bevindt, hebben gebruikers toegang tot hun notebooks en andere werk van elke DSVM wanneer ze JupyterHub gebruiken.
 

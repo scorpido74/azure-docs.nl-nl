@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/07/2019
-ms.openlocfilehash: a4e97fc6b46127dbc6b047e897dadf0efa76c94b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c4fddcaf786801e13e962c888a154adfdffae9f8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050196"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961826"
 ---
 # <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>Prestatie meter items maken om de prestaties van Shard-toewijzings beheer bij te houden
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,7 +37,7 @@ U kunt de prestaties van een [Shard-kaart beheer](elastic-scale-shard-map-manage
 
 Als u de items wilt maken, roept u de methode CreatePerformanceCategoryAndCounters van de [klasse ShardMapManagementFactory](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory)aan. Alleen een beheerder kan de volgende methode uitvoeren:
 
-    ShardMapManagerFactory.CreatePerformanceCategoryAndCounters()  
+`ShardMapManagerFactory.CreatePerformanceCategoryAndCounters()`
 
 U kunt [Dit](https://gallery.technet.microsoft.com/scriptcenter/Elastic-DB-Tools-for-Azure-17e3d283) Power shell-script ook gebruiken om de-methode uit te voeren.
 Met de-methode worden de volgende prestatie meter items gemaakt:  
@@ -51,7 +51,7 @@ Met de-methode worden de volgende prestatie meter items gemaakt:
 
 Prestatie meter items worden gemaakt voor elke Shard-kaart in de cache per proces.  
 
-## <a name="notes"></a>Opmerkingen
+## <a name="notes"></a>Notities
 
 Met de volgende gebeurtenissen wordt het maken van de prestatie meter items geactiveerd:  
 
@@ -66,7 +66,7 @@ De prestatie meter items worden bijgewerkt door alle cache bewerkingen die worde
 * Het maken van de prestatie categorie en prestatie meter items moet slechts één keer worden uitgevoerd voordat het ShardMapManager-object wordt gemaakt. Elke uitvoering van de opdracht CreatePerformanceCategoryAndCounters () wist de vorige prestatie meter items (gegevens verlies van alle instanties) en maakt nieuwe.  
 * Instanties voor prestatie meter items worden per proces gemaakt. Het vastlopen van toepassingen of het verwijderen van een Shard-kaart uit de cache leidt ertoe dat de instanties van prestatie meter items worden verwijderd.  
 
-### <a name="see-also"></a>Zie ook
+### <a name="see-also"></a>Zie tevens
 
 [Overzicht over functies voor Elastic Database](elastic-scale-introduction.md)  
 

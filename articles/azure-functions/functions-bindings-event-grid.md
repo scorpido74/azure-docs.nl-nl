@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 21654a3b325e8b8f0a3e49ee64b7624c8540d0d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1dc1198ab9c546ef1defa1891777c4c8081171e9
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77461076"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957175"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Event Grid bindingen voor Azure Functions
 
@@ -32,13 +32,13 @@ De code in deze referentie wordt standaard ingesteld op .NET core-syntaxis, gebr
 
 ## <a name="add-to-your-functions-app"></a>Toevoegen aan uw functions-app
 
-### <a name="functions-2x-and-higher"></a>Functies 2. x en hoger
+### <a name="functions-2x-and-higher"></a>Functions 2.x en hoger
 
 Voor het werken met de trigger en bindingen moet u verwijzen naar het juiste pakket. Het NuGet-pakket wordt gebruikt voor .NET-klassen bibliotheken terwijl de uitbreidings bundel wordt gebruikt voor alle andere toepassings typen.
 
 | Taal                                        | Toevoegen door...                                   | Opmerkingen 
 |-------------------------------------------------|---------------------------------------------|-------------|
-| C#                                              | Het [NuGet-pakket]installeren, versie 3. x | |
+| C#                                              | Het [NuGet-pakket]installeren, versie 2. x | |
 | C#-script, Java, java script, Python, Power shell | De [uitbreidings bundel] registreren          | De [extensie voor Azure-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) wordt aanbevolen voor gebruik met Visual Studio code. |
 | C#-script (alleen online in Azure Portal)         | Een binding toevoegen                            | Zie [uw extensies bijwerken]om bestaande bindings extensies bij te werken zonder uw functie-app opnieuw te publiceren. |
 

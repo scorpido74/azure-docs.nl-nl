@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 5608d71c4a91c9b46b8ed7de13c9d4c06a3f195f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb99a0690e1d07f058572b188ae0b76995f48504
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194598"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961792"
 ---
 # <a name="azure-signalr-service-authentication"></a>verificatie van Azure SignalR Service
 
@@ -54,11 +54,11 @@ U hebt het volgende nodig om deze zelfstudie te voltooien:
 
 1. Open een webbrowser, ga naar `https://github.com` en meld u aan bij uw account.
 
-2. Voor uw account gaat u naar **instellingen** > **ontwikkelaars instellingen** en klikt u op **een nieuwe toepassing registreren**of **nieuwe OAuth-app** onder *OAuth-apps*.
+2. Voor uw account gaat u naar **instellingen**  >  **ontwikkelaars instellingen** en klikt u op **een nieuwe toepassing registreren**of **nieuwe OAuth-app** onder *OAuth-apps*.
 
 3. Gebruik de volgende instellingen voor de nieuwe OAuth-app en klik vervolgens op **Register application**:
 
-    | Naam van instelling | Voorgestelde waarde | Beschrijving |
+    | Instellingsnaam | Voorgestelde waarde | Beschrijving |
     | ------------ | --------------- | ----------- |
     | De naam van de toepassing | *Azure SignalR Chat* | De GitHub-gebruiker moet de app waarmee hij of zij verificatie uitvoert, kunnen herkennen en vertrouwen.   |
     | Homepage URL | `http://localhost:5000/home` | |
@@ -67,8 +67,10 @@ U hebt het volgende nodig om deze zelfstudie te voltooien:
 
 4. Zodra de registratie van de nieuwe OAuth-app is voltooid, voegt u de *Client ID* en *Client Secret* toe aan Secret Manager. Gebruik hiervoor de volgende opdrachten. Vervang *Your_GitHub_Client_Id* en *Your_GitHub_Client_Secret* door de waarden voor uw OAuth-app.
 
-        dotnet user-secrets set GitHubClientId Your_GitHub_Client_Id
-        dotnet user-secrets set GitHubClientSecret Your_GitHub_Client_Secret
+    ```dotnetcli
+    dotnet user-secrets set GitHubClientId Your_GitHub_Client_Id
+    dotnet user-secrets set GitHubClientSecret Your_GitHub_Client_Secret
+    ```
 
 ## <a name="implement-the-oauth-flow"></a>De OAuth-stroom implementeren
 
@@ -76,9 +78,11 @@ U hebt het volgende nodig om deze zelfstudie te voltooien:
 
 1. Voeg een verwijzing toe naar de meest recente pakketten van *Microsoft.AspNetCore.Authentication.Cookies* en *AspNet.Security.OAuth.GitHub* en zet alle pakketten terug.
 
-        dotnet add package Microsoft.AspNetCore.Authentication.Cookies -v 2.1.0-rc1-30656
-        dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
-        dotnet restore
+    ```dotnetcli
+    dotnet add package Microsoft.AspNetCore.Authentication.Cookies -v 2.1.0-rc1-30656
+    dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
+    dotnet restore
+    ```
 
 1. Open *Startup.cs* en voeg `using`-instructies toe voor de volgende naamruimten:
 
@@ -345,19 +349,25 @@ In dit gedeelte gaat u echte verificatie inschakelen door het kenmerk `Authorize
 
 2. Compileer de app met behulp van de .NET Core CLI door de volgende opdracht uit te voeren in de opdrachtshell:
 
-        dotnet build
+    ```dotnetcli
+    dotnet build
+    ```
 
 3. Als het compileren is voltooid, voert u de volgende opdracht uit om de web-app lokaal uit te voeren:
 
-        dotnet run
+    ```dotnetcli
+    dotnet run
+    ```
 
     De app wordt standaard lokaal gehost op poort 5000:
 
-        E:\Testing\chattest>dotnet run
-        Hosting environment: Production
-        Content root path: E:\Testing\chattest
-        Now listening on: http://localhost:5000
-        Application started. Press Ctrl+C to shut down.
+    ```output
+    E:\Testing\chattest>dotnet run
+    Hosting environment: Production
+    Content root path: E:\Testing\chattest
+    Now listening on: http://localhost:5000
+                    Application started. Press Ctrl+C to shut down.
+    ```
 
 4. Open een browservenster en ga naar `http://localhost:5000`. Klik bovenaan op de link **here** om u aan te melden bij GitHub.
 
@@ -539,7 +549,7 @@ Voer de volgende opdrachten uit in een Git-shell om uw code te implementeren.
 
 Als laatste moet u de waarden voor **Homepage URL** en **Authorization callback URL** van de GitHub OAuth-app bijwerken, zodat deze verwijzen naar de nieuwe gehoste app.
 
-1. Open [https://github.com](https://github.com) in een browser en navigeer naar de **instellingen** > van uw account**OAuth-apps**voor**ontwikkel aars** > .
+1. Open [https://github.com](https://github.com) in een browser en navigeer naar de **instellingen**van uw account OAuth-apps voor  >  **ontwikkel aars**  >  **Oauth Apps**.
 
 2. Klik op de verificatie-app en werk de waarden voor **Homepage URL** en **Authorization callback URL** bij zoals hieronder wordt weergegeven:
 
@@ -556,14 +566,14 @@ Als laatste moet u de waarden voor **Homepage URL** en **Authorization callback 
 
 Als u verder wilt gaan met de volgende zelfstudie, kunt u de resources die in deze snelstart zijn gemaakt behouden en gebruiken met de volgende zelfstudie.
 
-Als u niet verder wilt met de snelstart, kunt u de Azure-resources verwijderen die in deze snelstart zijn gemaakt om kosten te voorkomen.
+Als u niet verder wilt met de voorbeeldtoepassing uit de snelstart, kunt u de Azure-resources verwijderen die in deze snelstart zijn gemaakt om kosten te voorkomen.
 
 > [!IMPORTANT]
 > Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle bijbehorende resources worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources voor het hosten van dit voorbeeld in een bestaande resourcegroep hebt gemaakt en deze groep ook resources bevat die u wilt behouden, kunt u elke resource afzonderlijk verwijderen via hun respectievelijke blade.
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com) en klik op **Resourcegroepen**.
+Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Resourcegroepen**.
 
-Typ de naam van de resourcegroep in het tekstvak **Filteren op naam...**. In de instructies voor dit artikel is een resourcegroep met de naam *SignalRTestResources* gebruikt. Klik in de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen**.
+Typ de naam van de resourcegroep in het tekstvak **Filteren op naam...** . In de instructies voor dit artikel is een resourcegroep met de naam *SignalRTestResources* gebruikt. Klik in de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen**.
 
 ![Verwijderen](./media/signalr-concept-authenticate-oauth/signalr-delete-resource-group.png)
 

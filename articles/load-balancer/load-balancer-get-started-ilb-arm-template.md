@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: eb92e4b7eaacb5b2d18b3c33f6fdf714592bdefc
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 7e8f34f3d68a957dbd5bb13b69f751184d224e2c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84803919"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961112"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>Een interne load balancer maken met behulp van een sjabloon
 
@@ -27,8 +27,6 @@ ms.locfileid: "84803919"
 > * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > * [Azure-CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [Sjabloon](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
@@ -66,7 +64,9 @@ Volg onderstaande stappen als u de sjabloon wilt implementeren met de Azure CLI.
 
     Dit is de verwachte uitvoer voor de bovenstaande opdracht:
 
-        info:    New mode is arm
+    ```output
+    info:    New mode is arm
+    ```
 
 3. Open het parameterbestand, selecteer de inhoud en sla deze op in een bestand op uw computer. Hier is het parameterbestand opgeslagen als *parameters.json*.
 4. Voer de opdracht **azure group deployment create** uit om de nieuwe interne load balancer te implementeren met behulp van de sjabloon en de parameterbestanden die u hebt gedownload en hierboven hebt gewijzigd. De lijst die na de uitvoer wordt weergegeven, beschrijft de gebruikte parameters.

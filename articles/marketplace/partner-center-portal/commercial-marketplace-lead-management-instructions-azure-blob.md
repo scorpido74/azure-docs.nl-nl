@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: dsindona
-ms.openlocfilehash: 9ac7640dd8b63c72bac83c98e07cf861fb26c870
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 471675de58161fc0c0110e2968089da062c6da87
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845783"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960559"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Azure Blob-opslag gebruiken om leads voor commerciële Marketplace te beheren
 
@@ -33,11 +33,11 @@ ms.locfileid: "83845783"
 3. Maak in de Azure Portal een opslag account met behulp van de volgende procedure.  
     1. Selecteer **+ een resource maken** in de menu balk links.  Het **nieuwe** deel venster (Blade) wordt aan de rechter kant weer gegeven.
     2. Selecteer **opslag** in het deel venster **Nieuw** .  Er wordt een **Aanbevolen** lijst aan de rechter kant weer gegeven.
-    3. Selecteer het **opslag account** om te beginnen met het maken van het account.  Volg de instructies in het artikel [een opslag account maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
+    3. Selecteer het **opslag account** om te beginnen met het maken van het account.  Volg de instructies in het artikel [een opslag account maken](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
 
     ![Stappen voor het maken van een Azure Storage-account](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-create.png)
 
-    Selecteer voor meer informatie over opslag accounts [Snelstartgids zelf studie](https://docs.microsoft.com/azure/storage/).  Zie [prijzen voor opslag](https://azure.microsoft.com/pricing/details/storage/)voor meer informatie over prijzen voor opslag.
+    Zie deze [Quick](../../storage/blobs/storage-quickstart-blobs-portal.md)start voor meer informatie over opslag accounts.  Zie [prijzen voor opslag](https://azure.microsoft.com/pricing/details/storage/)voor meer informatie over prijzen voor opslag.
 
 4. Wacht tot uw opslag account is ingericht, een proces dat doorgaans een paar minuten in beslag neemt.  Ga vervolgens naar uw opslag account vanaf de **Start** pagina van de Azure portal door **alle resources weer geven** te selecteren of door **alle resources** te selecteren in de linker navigatie balk van de Azure Portal.
 

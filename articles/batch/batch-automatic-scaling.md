@@ -4,12 +4,12 @@ description: Schakel automatisch schalen in een Cloud groep in om het aantal rek
 ms.topic: how-to
 ms.date: 10/24/2019
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 223ba348ce1f8b69791581a70cd21af621c28b24
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: cb40ea72dad2313618fb3c38bf73bf822f4b4433
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609009"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960840"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Een automatische formule voor het schalen van reken knooppunten in een batch-pool maken
 
@@ -92,7 +92,7 @@ De volgende tabellen bevatten zowel lees-/schrijftoegang als alleen-lezen variab
 
 U kunt de waarden van deze door de service gedefinieerde variabelen ophalen en instellen om het aantal reken knooppunten in een pool te beheren:
 
-| Door service gedefinieerde variabelen lezen/schrijven | Beschrijving |
+| Door service gedefinieerde variabelen lezen/schrijven | Description |
 | --- | --- |
 | $TargetDedicatedNodes |Het doel aantal toegewezen reken knooppunten voor de pool. Het aantal toegewezen knoop punten is als doel opgegeven, omdat een pool mogelijk niet altijd het gewenste aantal knoop punten bereikt. Als het doel aantal toegewezen knoop punten bijvoorbeeld wordt gewijzigd door een evaluatie van automatisch schalen voordat de groep het eerste doel heeft bereikt, kan de groep het doel niet bereiken. <br /><br /> Een pool in een account dat is gemaakt met de batch-service configuratie heeft mogelijk niet het doel bereikt als het doel een knoop punt van een batch-account of een kern quotum overschrijdt. Een pool in een account dat is gemaakt met de configuratie van gebruikers abonnementen, bereikt mogelijk niet het doel als het doel het gedeelde kern quotum voor het abonnement overschrijdt.|
 | $TargetLowPriorityNodes |Het doel aantal reken knooppunten met lage prioriteit voor de groep. Het aantal knoop punten met een lage prioriteit wordt als doel opgegeven, omdat een pool mogelijk niet altijd het gewenste aantal knoop punten bereikt. Als het doel aantal knoop punten met een lage prioriteit bijvoorbeeld wordt gewijzigd door een evaluatie van automatisch schalen voordat de groep het eerste doel heeft bereikt, kan de groep het doel niet bereiken. Het doel van een pool kan ook niet worden bereikt als het doel een knoop punt van een batch-account of een kern quotum overschrijdt. <br /><br /> Zie [virtuele machines met lage prioriteit gebruiken met batch](batch-low-pri-vms.md)voor meer informatie over reken knooppunten met lage prioriteit. |
@@ -105,7 +105,7 @@ U kunt de waarden van deze door de service gedefinieerde variabelen ophalen en i
 
 U kunt de waarde van deze door de service gedefinieerde variabelen ophalen om aanpassingen te maken die zijn gebaseerd op metrische gegevens van de batch-service:
 
-| Alleen-lezen service gedefinieerde variabelen | Beschrijving |
+| Alleen-lezen service gedefinieerde variabelen | Description |
 | --- | --- |
 | $CPUPercent |Het gemiddelde percentage van CPU-gebruik. |
 | $WallClockSeconds |Het aantal seconden dat is verbruikt. |
@@ -165,7 +165,7 @@ Deze typen worden ondersteund in een formule:
   * TimeInterval_Week
   * TimeInterval_Year
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>Bewerkingen
 
 Deze bewerkingen zijn toegestaan voor de typen die worden vermeld in de vorige sectie.
 
@@ -190,10 +190,10 @@ Deze bewerkingen zijn toegestaan voor de typen die worden vermeld in de vorige s
 
 Bij het testen van een dubbele met een ternaire operator ( `double ? statement1 : statement2` ), is niet nul **waar**en is nul **False**.
 
-## <a name="functions"></a>Functies
+## <a name="functions"></a>Functions
 Deze vooraf gedefinieerde **functies** zijn beschikbaar voor gebruik bij het definiëren van een formule voor automatisch schalen.
 
-| Functie | Retourtype | Beschrijving |
+| Functie | Retourtype | Description |
 | --- | --- | --- |
 | Gem (doubleVecList) |double |Retourneert de gemiddelde waarde voor alle waarden in de doubleVecList. |
 | len (doubleVecList) |double |Retourneert de lengte van de vector die is gemaakt op basis van de doubleVecList. |
@@ -287,7 +287,7 @@ U kunt zowel de metrische gegevens van de resource als de taak gebruiken wanneer
 
 <table>
   <tr>
-    <th>Metrisch</th>
+    <th>Gegevens</th>
     <th>Beschrijving</th>
   </tr>
   <tr>
@@ -375,17 +375,17 @@ $TargetDedicatedNodes = min(400, $totalDedicatedNodes)
 
 ## <a name="create-an-autoscale-enabled-pool-with-batch-sdks"></a>Een groep met automatisch schalen maken met batch-Sdk's
 
-Het automatisch schalen van groepen kan worden geconfigureerd met een van [de batch-sdk's](batch-apis-tools.md#azure-accounts-for-batch-development), de batch- [rest API](https://docs.microsoft.com/rest/api/batchservice/) [batch Power shell-cmdlets](batch-powershell-cmdlets-get-started.md)en de batch- [cli](batch-cli-get-started.md). In deze sectie vindt u voor beelden voor .NET en python.
+Het automatisch schalen van groepen kan worden geconfigureerd met een van [de batch-sdk's](batch-apis-tools.md#azure-accounts-for-batch-development), de batch- [rest API](/rest/api/batchservice/) [batch Power shell-cmdlets](batch-powershell-cmdlets-get-started.md)en de batch- [cli](batch-cli-get-started.md). In deze sectie vindt u voor beelden voor .NET en python.
 
 ### <a name="net"></a>.NET
 
 Voer de volgende stappen uit om een pool te maken met automatisch schalen in .NET.
 
-1. Maak de pool met [BatchClient. pool Operations. CreatePool](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.createpool).
-1. Stel de eigenschap [CloudPool. AutoScaleEnabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) in op `true` .
-1. Stel de eigenschap [CloudPool. AutoScaleFormula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) in op uw formule voor automatisch schalen.
-1. Beschrijving Stel de eigenschap [CloudPool. AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) in (de standaard waarde is 15 minuten).
-1. Voer de pool door met [CloudPool. commit](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) of [CommitAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync).
+1. Maak de pool met [BatchClient. pool Operations. CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool).
+1. Stel de eigenschap [CloudPool. AutoScaleEnabled](/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) in op `true` .
+1. Stel de eigenschap [CloudPool. AutoScaleFormula](/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) in op uw formule voor automatisch schalen.
+1. Beschrijving Stel de eigenschap [CloudPool. AutoScaleEvaluationInterval](/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) in (de standaard waarde is 15 minuten).
+1. Voer de pool door met [CloudPool. commit](/dotnet/api/microsoft.azure.batch.cloudpool.commit) of [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudpool.commitasync).
 
 Met het volgende code fragment maakt u een groep met automatische schaal functionaliteit in .NET. Met de formule automatisch schalen van de pool wordt het doel aantal toegewezen knoop punten ingesteld op 5 op maandag en 1 op elke andere dag van de week. Het [interval voor automatisch schalen](#automatic-scaling-interval) is ingesteld op 30 minuten. In deze en de andere C#-fragmenten in dit artikel `myBatchClient` is een correct geïnitialiseerd exemplaar van de [BatchClient][net_batchclient] -klasse.
 
@@ -522,11 +522,11 @@ U kunt een Formule evalueren voordat u deze toepast op een groep. Op deze manier
 
 Als u een formule voor automatisch schalen wilt evalueren, moet u eerst automatische schaling op de groep met een geldige formule inschakelen. Als u een formule wilt testen voor een pool waarvoor automatisch schalen nog niet is ingeschakeld, gebruikt u de formule met één regel `$TargetDedicatedNodes = 0` Wanneer u automatische schaling voor het eerst inschakelt. Gebruik vervolgens een van de volgende opties om de formule te evalueren die u wilt testen:
 
-* [BatchClient. pool Operations. EvaluateAutoScale](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscale) of [EvaluateAutoScaleAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscaleasync)
+* [BatchClient. pool Operations. EvaluateAutoScale](/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscale) of [EvaluateAutoScaleAsync](/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscaleasync)
 
     Deze batch .NET-methoden vereisen de ID van een bestaande groep en een teken reeks met de formule voor automatisch schalen die moet worden geëvalueerd.
 
-* [Een formule voor automatisch schalen evalueren](https://docs.microsoft.com/rest/api/batchservice/evaluate-an-automatic-scaling-formula)
+* [Een formule voor automatisch schalen evalueren](/rest/api/batchservice/evaluate-an-automatic-scaling-formula)
 
     Geef in deze REST API aanvraag de groeps-ID op in de URI en de formule voor automatisch schalen in het element *autoScaleFormula* van de hoofd tekst van de aanvraag. Het antwoord van de bewerking bevat de fout informatie die kan worden gerelateerd aan de formule.
 
@@ -612,13 +612,13 @@ AutoScaleRun.Results:
 
 Om ervoor te zorgen dat uw formule op de verwachte manier wordt uitgevoerd, raden we u aan om regel matig de resultaten van de automatisch schalen uit te voeren die door batch worden uitgevoerd op uw pool. Als u dit wilt doen, kunt u een verwijzing naar de groep ophalen (of vernieuwen) en de eigenschappen van de laatste automatische schaal uitvoering bekijken.
 
-In batch .NET heeft de eigenschap [CloudPool. AutoScaleRun](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscalerun) diverse eigenschappen die informatie geven over de meest recente automatische schaal aanpassing die voor de groep wordt uitgevoerd:
+In batch .NET heeft de eigenschap [CloudPool. AutoScaleRun](/dotnet/api/microsoft.azure.batch.cloudpool.autoscalerun) diverse eigenschappen die informatie geven over de meest recente automatische schaal aanpassing die voor de groep wordt uitgevoerd:
 
-* [AutoScaleRun. time stamp](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.timestamp)
-* [AutoScaleRun. resultaten](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.results)
-* [AutoScaleRun. fout](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.error)
+* [AutoScaleRun. time stamp](/dotnet/api/microsoft.azure.batch.autoscalerun.timestamp)
+* [AutoScaleRun. resultaten](/dotnet/api/microsoft.azure.batch.autoscalerun.results)
+* [AutoScaleRun. fout](/dotnet/api/microsoft.azure.batch.autoscalerun.error)
 
-In de REST API wordt met de aanvraag [informatie over een groep ophalen](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool) informatie over de groep geretourneerd, waaronder de meest recente informatie over automatisch schalen in de eigenschap [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool) .
+In de REST API wordt met de aanvraag [informatie over een groep ophalen](/rest/api/batchservice/get-information-about-a-pool) informatie over de groep geretourneerd, waaronder de meest recente informatie over automatisch schalen in de eigenschap [autoScaleRun](/rest/api/batchservice/get-information-about-a-pool) .
 
 In het volgende code fragment van C# wordt de batch .NET-bibliotheek gebruikt om informatie af te drukken over de laatste automatische schaal aanpassing van de groep _myPool_:
 
@@ -735,15 +735,15 @@ string formula = string.Format(@"
 * [Maximaliseer Azure batch reken resource gebruik met gelijktijdige knooppunt taken](batch-parallel-node-tasks.md) bevat details over hoe u meerdere taken tegelijkertijd kunt uitvoeren op de reken knooppunten in uw pool. Naast automatisch schalen kunt u met deze functie de duur van taken voor sommige workloads verlagen, waardoor u geld bespaart.
 * Voor een andere efficiëntie Booster kunt u ervoor zorgen dat uw batch-toepassing op de meest optimale manier een query uitvoert op de batch-service. Zie [een efficiënte query uitvoeren op de Azure batch-service](batch-efficient-list-queries.md) voor meer informatie over het beperken van de hoeveelheid gegevens die de kabel kruist wanneer u de status van mogelijk duizenden reken knooppunten of taken doorzoekt.
 
-[net_api]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch
-[net_batchclient]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient
-[net_cloudpool_autoscaleformula]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula
-[net_cloudpool_autoscaleevalinterval]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval
-[net_enableautoscaleasync]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.enableautoscaleasync
-[net_maxtasks]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.maxtaskspercomputenode
-[net_poolops_resizepoolasync]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.resizepoolasync
+[net_api]: /dotnet/api/microsoft.azure.batch
+[net_batchclient]: /dotnet/api/microsoft.azure.batch.batchclient
+[net_cloudpool_autoscaleformula]: /dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula
+[net_cloudpool_autoscaleevalinterval]: /dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval
+[net_enableautoscaleasync]: /dotnet/api/microsoft.azure.batch.pooloperations.enableautoscaleasync
+[net_maxtasks]: /dotnet/api/microsoft.azure.batch.cloudpool.maxtaskspercomputenode
+[net_poolops_resizepoolasync]: /dotnet/api/microsoft.azure.batch.pooloperations.resizepoolasync
 
-[rest_api]: https://docs.microsoft.com/rest/api/batchservice/
-[rest_autoscaleformula]: https://docs.microsoft.com/rest/api/batchservice/enable-automatic-scaling-on-a-pool
-[rest_autoscaleinterval]: https://docs.microsoft.com/rest/api/batchservice/enable-automatic-scaling-on-a-pool
-[rest_enableautoscale]: https://docs.microsoft.com/rest/api/batchservice/enable-automatic-scaling-on-a-pool
+[rest_api]: /rest/api/batchservice/
+[rest_autoscaleformula]: /rest/api/batchservice/enable-automatic-scaling-on-a-pool
+[rest_autoscaleinterval]: /rest/api/batchservice/enable-automatic-scaling-on-a-pool
+[rest_enableautoscale]: /rest/api/batchservice/enable-automatic-scaling-on-a-pool

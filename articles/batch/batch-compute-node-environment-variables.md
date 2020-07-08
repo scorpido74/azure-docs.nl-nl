@@ -3,22 +3,22 @@ title: Omgevingsvariabelen voor de runtime van taken
 description: Richt lijnen voor de omgevings variabele van de taak runtime en naslag informatie voor Azure Batch Analytics.
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 0b3f00bcae50b0913432b122c85a3725a489679a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 6b8ade312146802ede6e12181a082a8fcd3842fe
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745336"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960908"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Omgevings variabelen Azure Batch-runtime
 
 De [Azure batch-service](https://azure.microsoft.com/services/batch/) stelt de volgende omgevings variabelen in op reken knooppunten. U kunt naar deze omgevings variabelen verwijzen in opdracht regels voor taken, en in de Program ma's en scripts die worden uitgevoerd door de opdracht regels.
 
-Zie [omgevings instellingen voor taken](https://docs.microsoft.com/azure/batch/batch-api-basics#environment-settings-for-tasks)voor meer informatie over het gebruik van omgevings variabelen met batch.
+Zie [omgevings instellingen voor taken](./jobs-and-tasks.md#environment-settings-for-tasks)voor meer informatie over het gebruik van omgevings variabelen met batch.
 
 ## <a name="environment-variable-visibility"></a>Zicht baarheid van omgevings variabele
 
-Deze omgevings variabelen zijn alleen zichtbaar in de context van de **taak gebruiker**, het gebruikers account op het knoop punt waaronder een taak wordt uitgevoerd. U ziet deze *niet* als u [extern verbinding maakt](https://azure.microsoft.com/documentation/articles/batch-api-basics/#connecting-to-compute-nodes) met een rekenknooppunt via Remote Desktop Protocol (RDP) of Secure Shell (SSH) en de omgevingsvariabelen weergeeft. Dit komt doordat het gebruikersaccount dat voor de externe verbinding wordt gebruikt, niet hetzelfde is als het account dat door de taak wordt gebruikt.
+Deze omgevings variabelen zijn alleen zichtbaar in de context van de **taak gebruiker**, het gebruikers account op het knoop punt waaronder een taak wordt uitgevoerd. U ziet deze *niet* als u [extern verbinding maakt](./error-handling.md#connect-to-compute-nodes) met een rekenknooppunt via Remote Desktop Protocol (RDP) of Secure Shell (SSH) en de omgevingsvariabelen weergeeft. Dit komt doordat het gebruikersaccount dat voor de externe verbinding wordt gebruikt, niet hetzelfde is als het account dat door de taak wordt gebruikt.
 
 Als u de huidige waarde van een omgevings variabele wilt ophalen, start u `cmd.exe` op een Windows-reken knooppunt of `/bin/sh` op een Linux-knoop punt:
 
@@ -36,12 +36,12 @@ De opdracht regels die door taken op reken knooppunten worden uitgevoerd, worden
 
 ## <a name="environment-variables"></a>Omgevingsvariabelen
 
-| Naam van de variabele                     | Beschrijving                                                              | Beschikbaarheid | Voorbeeld |
+| Naam van de variabele                     | Description                                                              | Beschikbaarheid | Voorbeeld |
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | De naam van het batch-account waartoe de taak behoort.                  | Alle taken.   | mybatchaccount gemaakt |
 | AZ_BATCH_ACCOUNT_URL            | De URL van het batch-account. | Alle taken. | `https://myaccount.westus.batch.azure.com` |
-| AZ_BATCH_APP_PACKAGE            | Een voor voegsel van alle omgevings variabelen voor het app-pakket. Als bijvoorbeeld toepassing "FOO" versie "1" is geïnstalleerd op een groep, wordt de omgevings variabele AZ_BATCH_APP_PACKAGE_FOO_1 (op Linux) of AZ_BATCH_APP_PACKAGE_FOO # 1 (in Windows). AZ_BATCH_APP_PACKAGE_FOO_1 verwijst naar de locatie waar het pakket is gedownload (een map). Wanneer u de standaard versie van het app-pakket gebruikt, gebruikt u de omgevings variabele AZ_BATCH_APP_PACKAGE zonder de versie nummers. Als in Linux en de naam van het toepassings pakket ' agent-Linux-x64 ' is en de versie ' 1.1.46.0 ' is, is de omgevings naam in feite: AZ_BATCH_APP_PACKAGE_agent_linux_x64_1_1_46_0, met behulp van onderstrepings tekens en kleine letters. Klik [hier](https://docs.microsoft.com/azure/batch/batch-application-packages#execute-the-installed-applications) voor meer informatie. | Elke taak met een gekoppeld app-pakket. Ook beschikbaar voor alle taken als het knoop punt zelf toepassings pakketten heeft. | AZ_BATCH_APP_PACKAGE_FOO_1 (Linux) of AZ_BATCH_APP_PACKAGE_FOO # 1 (Windows) |
-| AZ_BATCH_AUTHENTICATION_TOKEN   | Een verificatie token dat toegang verleent tot een beperkt aantal batch-service bewerkingen. Deze omgevings variabele is alleen aanwezig als de [authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) worden ingesteld wanneer de [taak wordt toegevoegd](/rest/api/batchservice/task/add#request-body). De token waarde wordt in de batch-Api's gebruikt als referenties voor het maken van een batch-client, zoals in de [.net API BatchClient. Open ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_). | Alle taken. | OAuth2-toegangs token |
+| AZ_BATCH_APP_PACKAGE            | Een voor voegsel van alle omgevings variabelen voor het app-pakket. Als bijvoorbeeld toepassing "FOO" versie "1" is geïnstalleerd op een groep, wordt de omgevings variabele AZ_BATCH_APP_PACKAGE_FOO_1 (op Linux) of AZ_BATCH_APP_PACKAGE_FOO # 1 (in Windows). AZ_BATCH_APP_PACKAGE_FOO_1 verwijst naar de locatie waar het pakket is gedownload (een map). Wanneer u de standaard versie van het app-pakket gebruikt, gebruikt u de omgevings variabele AZ_BATCH_APP_PACKAGE zonder de versie nummers. Als in Linux en de naam van het toepassings pakket ' agent-Linux-x64 ' is en de versie ' 1.1.46.0 ' is, is de omgevings naam in feite: AZ_BATCH_APP_PACKAGE_agent_linux_x64_1_1_46_0, met behulp van onderstrepings tekens en kleine letters. Klik [hier](./batch-application-packages.md#execute-the-installed-applications) voor meer informatie. | Elke taak met een gekoppeld app-pakket. Ook beschikbaar voor alle taken als het knoop punt zelf toepassings pakketten heeft. | AZ_BATCH_APP_PACKAGE_FOO_1 (Linux) of AZ_BATCH_APP_PACKAGE_FOO # 1 (Windows) |
+| AZ_BATCH_AUTHENTICATION_TOKEN   | Een verificatie token dat toegang verleent tot een beperkt aantal batch-service bewerkingen. Deze omgevings variabele is alleen aanwezig als de [authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) worden ingesteld wanneer de [taak wordt toegevoegd](/rest/api/batchservice/task/add#request-body). De token waarde wordt in de batch-Api's gebruikt als referenties voor het maken van een batch-client, zoals in de [.net API BatchClient. Open ()](/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_). | Alle taken. | OAuth2-toegangs token |
 | AZ_BATCH_CERTIFICATES_DIR       | Een map in de [werkmap][files_dirs] van de taak waarin certificaten worden opgeslagen voor Linux-reken knooppunten. Deze omgevings variabele is niet van toepassing op Windows-reken knooppunten.                                                  | Alle taken.   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
 | AZ_BATCH_HOST_LIST              | De lijst met knoop punten die worden toegewezen aan een [taak met meerdere instanties][multi_instance] in de indeling `nodeIP,nodeIP` . | Primaire en subtaken voor meerdere instanties. | `10.0.0.4,10.0.0.5` |
 | AZ_BATCH_IS_CURRENT_NODE_MASTER | Hiermee geeft u op of het huidige knoop punt het hoofd knooppunt is voor een [taak met meerdere exemplaren][multi_instance]. Mogelijke waarden zijn `true` en `false` .| Primaire en subtaken voor meerdere instanties. | `true` |
@@ -63,7 +63,7 @@ De opdracht regels die door taken op reken knooppunten worden uitgevoerd, worden
 | AZ_BATCH_TASK_WORKING_DIR       | Het volledige pad naar de [werkmap][files_dirs] van de taak op het knoop punt. De taak die momenteel wordt uitgevoerd, heeft lees-en schrijf toegang tot deze map. | Alle taken. | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
 | CCP_NODES                       | De lijst met knoop punten en het aantal kernen per knoop punt dat is toegewezen aan een [taak met meerdere exemplaren][multi_instance]. Knoop punten en kernen worden weer gegeven in de indeling`numNodes<space>node1IP<space>node1Cores<space>`<br/>`node2IP<space>node2Cores<space> ...`, waarbij het aantal knoop punten wordt gevolgd door een of meer IP-adressen van knoop punten en het aantal kern geheugens voor beide. |  Primaire en subtaken voor meerdere instanties. |`2 10.0.0.4 1 10.0.0.5 1` |
 
-[files_dirs]: https://azure.microsoft.com/documentation/articles/batch-api-basics/#files-and-directories
-[multi_instance]: https://azure.microsoft.com/documentation/articles/batch-mpi/
-[coord_cmd]: https://azure.microsoft.com/documentation/articles/batch-mpi/#coordination-command
-[app_cmd]: https://azure.microsoft.com/documentation/articles/batch-mpi/#application-command
+[files_dirs]: ./files-and-directories.md
+[multi_instance]: ./batch-mpi.md
+[coord_cmd]: ./batch-mpi.md#coordination-command
+[app_cmd]: ./batch-mpi.md#application-command

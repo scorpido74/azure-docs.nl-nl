@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: aeb3273622b863f04c73561520efe3be6cc6fec2
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 67aa9fcb51742432dcd629073f15a65d14bf3597
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84804922"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961197"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Power shell gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2
 
@@ -261,7 +261,7 @@ U kunt de `-Force` para meter gebruiken om het bestand zonder prompt te verwijde
 
 ## <a name="manage-access-permissions"></a>Toegangs machtigingen beheren
 
-U kunt toegangs machtigingen voor bestands systemen, mappen en bestanden ophalen, instellen en bijwerken. Deze machtigingen worden vastgelegd in toegangs beheer lijsten (Acl's).
+U kunt toegangs machtigingen van mappen en bestanden ophalen, instellen en bijwerken. Deze machtigingen worden vastgelegd in toegangs beheer lijsten (Acl's).
 
 > [!NOTE]
 > Als u Azure Active Directory (Azure AD) gebruikt om opdrachten te autoriseren, moet u ervoor zorgen dat aan uw beveiligingsprincipal de [rol van BLOB-gegevens eigenaar voor opslag](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)is toegewezen. Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
@@ -270,7 +270,7 @@ U kunt toegangs machtigingen voor bestands systemen, mappen en bestanden ophalen
 
 De ACL van een map of bestand ophalen met behulp van de- `Get-AzDataLakeGen2Item` cmdlet.
 
-In dit voor beeld wordt de ACL van een **Bestands systeem** opgehaald en wordt de ACL vervolgens naar de console afgedrukt.
+In dit voor beeld wordt de ACL van de hoofdmap van een **Bestands systeem** opgehaald en wordt de ACL vervolgens naar de console afgedrukt.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -305,7 +305,7 @@ In dit voor beeld heeft de gebruiker die eigenaar is, de machtigingen lezen, sch
 
 Gebruik de `set-AzDataLakeGen2ItemAclObject` cmdlet om een ACL te maken voor de gebruiker die eigenaar is, de groep die eigenaar is of andere gebruikers. Gebruik vervolgens de `Update-AzDataLakeGen2Item` cmdlet om de ACL door te voeren.
 
-In dit voor beeld wordt de ACL ingesteld op een **Bestands systeem** voor de gebruiker die eigenaar is, de groep die eigenaar is of andere gebruikers, en wordt de ACL vervolgens naar de console afgedrukt.
+In dit voor beeld wordt de ACL ingesteld op de hoofdmap van een **Bestands systeem** voor de gebruiker die eigenaar is van de groep of van andere gebruikers, en wordt de ACL vervolgens naar de console afgedrukt.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -422,7 +422,7 @@ In de volgende tabel ziet u hoe de cmdlets die worden gebruikt voor Data Lake St
 |Set-AzDataLakeStoreItemOwner<br>Set-AzDataLakeStoreItemPermission<br>Set-AzDataLakeStoreItemAcl|Update-AzDataLakeGen2Item|Met de cmdlet Update-AzDataLakeGen2Item wordt één enkel item bijgewerkt en niet recursief. Als u recursief wilt bijwerken, kunt u items weer geven met behulp van de cmdlet Get-AzDataLakeStoreChildItem en vervolgens pijp lijn naar de cmdlet Update-AzDataLakeGen2Item.|
 |Test-AzDataLakeStoreItem|Get-AzDataLakeGen2Item|Met de cmdlet Get-AzDataLakeGen2Item wordt een fout gerapporteerd als het item niet bestaat.|
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Bekende problemen](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [PowerShell Storage-cmdlets](/powershell/module/az.storage)

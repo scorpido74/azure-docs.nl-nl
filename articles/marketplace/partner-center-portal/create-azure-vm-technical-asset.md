@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: e126ee2bd4133281195d4a86c5cb6f1c47bbd6ac
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: d43015c86976594e8d5077a11cbdad27668b343c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266913"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957696"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Uw technische bedrijfs middelen voor virtuele Azure-machines maken
 
@@ -48,7 +48,7 @@ Overweeg het gebruik van een van de volgende script omgevingen om Vm's en Vhd's 
 
 Daarnaast kunt u de volgende hulpprogram ma's toevoegen aan uw ontwikkel omgeving:
 
-* [Azure Opslagverkenner](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Visual Studio Code](https://code.visualstudio.com/)
   * Extensie: [Azure Resource Manager-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   * Extensie: [beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -63,10 +63,10 @@ Bekijk de beschik bare hulpprogram ma's op de pagina [Azure Ontwikkelhulpprogram
 
 In deze sectie worden verschillende aspecten van het gebruik van een goedgekeurde basis beschreven, zoals het gebruik van de Remote Desktop Protocol (RDP), het selecteren van een grootte voor de virtuele machine, het installeren van de meest recente Windows-updates en het generaliseren van de VHD-installatie kopie.
 
-De volgende secties richten zich voornamelijk op op Windows gebaseerde Vhd's. Zie [Linux op distributies die zijn goedgekeurd door Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)voor meer informatie over het maken van op Linux gebaseerde virtuele harde schijven.
+De volgende secties richten zich voornamelijk op op Windows gebaseerde Vhd's. Zie [Linux op distributies die zijn goedgekeurd door Azure](../../virtual-machines/linux/endorsed-distros.md)voor meer informatie over het maken van op Linux gebaseerde virtuele harde schijven.
 
 > [!WARNING]
-> Volg de richt lijnen in dit onderwerp om Azure te gebruiken voor het maken van een virtuele machine met een vooraf geconfigureerd, goedgekeurd besturings systeem. Als dit niet compatibel is met uw oplossing, is het mogelijk een on-premises VM te maken en te configureren met behulp van een goedgekeurd besturings systeem. U kunt deze vervolgens configureren en voorbereiden voor het uploaden, zoals wordt beschreven in [een Windows-VHD of VHDX voorbereiden om te uploaden naar Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
+> Volg de richt lijnen in dit onderwerp om Azure te gebruiken voor het maken van een virtuele machine met een vooraf geconfigureerd, goedgekeurd besturings systeem. Als dit niet compatibel is met uw oplossing, is het mogelijk een on-premises VM te maken en te configureren met behulp van een goedgekeurd besturings systeem. U kunt deze vervolgens configureren en voorbereiden voor het uploaden, zoals wordt beschreven in [een Windows-VHD of VHDX voorbereiden om te uploaden naar Azure](../../virtual-machines/windows/prepare-for-upload-vhd-image.md).
 
 ### <a name="select-an-approved-base"></a>Selecteer een goedgekeurde basis
 
@@ -77,22 +77,22 @@ Selecteer het Windows-besturings systeem of Linux als basis.
 De VHD van het besturings systeem voor uw VM-installatie kopie op Windows moet gebaseerd zijn op een door Azure goedgekeurde basis installatie kopie die Windows Server of SQL Server bevat. Als u wilt beginnen, maakt u een virtuele machine van een van de volgende installatie kopieën van de Azure Portal:
 
 * Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 R2 data center](https://www.microsoft.com/cloud-platform/windows-server-pricing), [2012 Data Center](https://www.microsoft.com/cloud-platform/windows-server-pricing), [2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
-* [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enter prise, Standard, web)
-* [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enter prise, Standard, web)
+* [SQL Server 2014](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md) (Enter prise, Standard, web)
+* [SQL Server 2012 SP2](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md) (Enter prise, Standard, web)
 
 > [!NOTE]
 > Als u de huidige Azure Portal of Azure PowerShell gebruikt, worden installatie kopieën van Windows Server die zijn gepubliceerd op 8 september 2014 en later goedgekeurd.
 
 #### <a name="linux"></a>Linux
 
-Azure biedt een scala aan goedgekeurde Linux-distributies. Zie voor een actuele lijst [Linux op distributies die zijn goedgekeurd door Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+Azure biedt een scala aan goedgekeurde Linux-distributies. Zie voor een actuele lijst [Linux op distributies die zijn goedgekeurd door Azure](../../virtual-machines/linux/endorsed-distros.md).
 
 ### <a name="create-vm-in-the-azure-portal"></a>Een virtuele machine maken in de Azure Portal
 
 Volg deze stappen om de basis installatie kopie van de virtuele machine te maken in de [Azure Portal](https://ms.portal.azure.com/):
 
 1. Meld u aan bij de [Azure Portal](https://ms.portal.azure.com/) met de Microsoft-account die is gekoppeld aan het Azure-abonnement dat u wilt gebruiken om uw VM-aanbieding te publiceren.
-2. Maak een nieuwe resource groep en geef de locatie van de **resource groep**, het **abonnement**en de **resource groep**op. Zie [resources beheren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)voor meer informatie.
+2. Maak een nieuwe resource groep en geef de locatie van de **resource groep**, het **abonnement**en de **resource groep**op. Zie [resources beheren](../../azure-resource-manager/resource-group-portal.md)voor meer informatie.
 3. Selecteer **virtuele machines** aan de linkerkant om de pagina Details van virtuele machines weer te geven.
 4. Selecteer **+ toevoegen** om de **ervaring een virtuele machine maken**te openen.
 5. Selecteer de installatie kopie in de vervolg keuzelijst of klik op **Bladeren naar alle open bare en persoonlijke installatie kopieën** om de installatie kopieën van alle beschik bare virtuele machines te zoeken of bladeren.
@@ -102,11 +102,11 @@ Volg deze stappen om de basis installatie kopie van de virtuele machine te maken
 
 7. Vouw in de sectie **schijven** het gedeelte **Geavanceerd** uit en stel de optie **Managed disks gebruiken** in op **Nee**.
 8. Geef de overige vereiste gegevens op om de virtuele machine te maken.
-9. Selecteer **beoordeling + maken** om uw keuzes te controleren. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**.
+9. Selecteer **beoordeling + maken** om uw keuzes te controleren. Als u het bericht **Validatie geslaagd** ziet, selecteert u **Maken**.
 
 Azure begint met het inrichten van de virtuele machine die u hebt opgegeven. U kunt de voortgang volgen door op het tabblad **virtual machines** aan de linkerkant te klikken. Nadat deze is gemaakt, wordt de status gewijzigd in **actief**.
 
-Als u problemen ondervindt bij het maken van uw nieuwe VHD op basis van Azure, raadpleegt u [algemene problemen tijdens het maken van de VHD (Veelgestelde vragen)](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-issues-during-vhd-creation).
+Als u problemen ondervindt bij het maken van uw nieuwe VHD op basis van Azure, raadpleegt u [algemene problemen tijdens het maken van de VHD (Veelgestelde vragen)](common-issues-during-vhd-creation.md).
 
 ### <a name="connect-to-your-azure-vm"></a>Verbinding maken met uw Azure VM
 
@@ -116,7 +116,7 @@ In deze sectie wordt uitgelegd hoe u verbinding maakt met en hoe u zich aanmeldt
 
 Gebruik de extern bureau blad-client om verbinding te maken met de op Windows gebaseerde VM die wordt gehost op Azure. De meeste versies van Windows bevatten systeem eigen ondersteuning voor Remote Desktop Protocol (RDP). Voor andere besturings systemen kunt u meer informatie vinden over clients in [extern bureaublad-clients](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients).
 
-In dit artikel wordt beschreven hoe u de ingebouwde Windows RDP-ondersteuning gebruikt om verbinding te maken met uw VM: [verbinding maken en aanmelden bij een virtuele machine van Azure waarop Windows wordt uitgevoerd](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon).
+In dit artikel wordt beschreven hoe u de ingebouwde Windows RDP-ondersteuning gebruikt om verbinding te maken met uw VM: [verbinding maken en aanmelden bij een virtuele machine van Azure waarop Windows wordt uitgevoerd](../../virtual-machines/windows/connect-logon.md).
 
 > [!TIP]
 > Tijdens het proces kunnen er beveiligings waarschuwingen worden weer gegeven. Bijvoorbeeld: waarschuwingen zoals ' het RDP-bestand is van een onbekende uitgever ' of ' uw gebruikers referenties kunnen niet worden geverifieerd '. Het is veilig om deze waarschuwingen te negeren.
@@ -130,7 +130,7 @@ Als u verbinding wilt maken met een VM op basis van Linux, hebt u een SSH-client
 3. Selecteer de virtuele machine waarmee u verbinding wilt maken.
 4. Start de virtuele machine als deze nog niet wordt uitgevoerd.
 5. Selecteer de naam van de virtuele machine om de pagina **overzicht** te openen.
-6. Noteer het open bare IP-adres en de DNS-naam van uw virtuele machine (als deze waarden niet zijn ingesteld, moet u [een netwerk interface maken](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface)).
+6. Noteer het open bare IP-adres en de DNS-naam van uw virtuele machine (als deze waarden niet zijn ingesteld, moet u [een netwerk interface maken](../../virtual-network/virtual-network-network-interface.md#create-a-network-interface))).
 7. Open de PuTTy-toepassing.
 8. Voer in het dialoog venster PuTTy-configuratie het IP-adres of de DNS-naam van uw virtuele machine in.
 
@@ -141,7 +141,7 @@ Als u verbinding wilt maken met een VM op basis van Linux, hebt u een SSH-client
 
 Als u verbindings problemen hebt, raadpleegt u de documentatie voor uw SSH-client. Bijvoorbeeld [hoofd stuk 10: algemene fout berichten](https://www.ssh.com/ssh/putty/putty-manuals).
 
-Zie [extern bureaublad installeren en configureren om verbinding te maken met een virtuele Linux-machine in azure](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop)voor meer informatie, inclusief het toevoegen van een bureau blad aan een ingerichte Linux VM.
+Zie [extern bureaublad installeren en configureren om verbinding te maken met een virtuele Linux-machine in azure](../../virtual-machines/linux/use-remote-desktop.md)voor meer informatie, inclusief het toevoegen van een bureau blad aan een ingerichte Linux VM.
 
 ## <a name="create-a-vm-using-your-own-image"></a>Een virtuele machine maken met uw eigen installatie kopie
 
@@ -170,7 +170,7 @@ Maak uw installatie kopie met behulp van de Azure Portal of Azure PowerShell.
 
     :::image type="content" source="media/avm-custom-deployment.png" alt-text="Illustreert de aangepaste implementatie pagina.":::
 
-3. Plak deze [JSON-sjabloon](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-deploy-json-template) in de editor en selecteer **Opslaan**.
+3. Plak deze [JSON-sjabloon](../partner-center-portal/azure-vm-image-certification.md) in de editor en selecteer **Opslaan**.
 4. Geef de parameter waarden op voor de weer gegeven eigenschappen pagina's met **aangepaste implementatie** .
 
     | Parameter | Beschrijving |
@@ -183,7 +183,7 @@ Maak uw installatie kopie met behulp van de Azure Portal of Azure PowerShell.
     | Het type besturingssysteem | VM-besturings systeem: Windows of Linux |
     | Abonnements-id | Id van het geselecteerde abonnement |
     | Locatie | Geografische locatie van de implementatie |
-    | VM-grootte | [Azure VM-grootte](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), bijvoorbeeld Standard_A2 |
+    | VM-grootte | [Azure VM-grootte](../../virtual-machines/windows/sizes.md), bijvoorbeeld Standard_A2 |
     | Naam van openbaar IP-adres | Naam van uw open bare IP-adres |
     | VM-naam | De naam van de nieuwe virtuele machine |
     | Virtual Network naam | De naam van het virtuele netwerk dat wordt gebruikt door de virtuele machine |
@@ -209,8 +209,8 @@ De implementatie van Azure wordt gestart. Er wordt een nieuwe virtuele machine g
 
 Gebruik de volgende instructies die overeenkomen met uw benadering:
 
-* Azure PowerShell: [een installatie kopie van een niet-beheerde virtuele machine maken op basis van een Azure-VM](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)
-* Azure CLI: [een installatie kopie van een virtuele machine of VHD maken](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image)
+* Azure PowerShell: [een installatie kopie van een niet-beheerde virtuele machine maken op basis van een Azure-VM](../../virtual-machines/windows/capture-image-resource.md)
+* Azure CLI: [een installatie kopie van een virtuele machine of VHD maken](../../virtual-machines/linux/capture-image.md)
 * API: [virtual machines-vastleggen](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
 
 ## <a name="configure-the-virtual-machine"></a>De virtuele machine configureren
@@ -238,7 +238,7 @@ Voor Linux-distributies worden updates meestal gedownload en geïnstalleerd via 
 
 ### <a name="perform-additional-security-checks"></a>Aanvullende beveiligings controles uitvoeren
 
-Behoud een hoog beveiligings niveau voor uw oplossings installatie kopieën in de Azure Marketplace. Het volgende artikel bevat een controle lijst met beveiligings configuraties en-procedures om u te helpen: [beveiligings aanbevelingen voor installatie kopieën van Azure Marketplace](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images). Sommige van deze aanbevelingen zijn specifiek voor installatie kopieën op basis van Linux, maar zijn het meest van toepassing op elke VM-installatie kopie.
+Behoud een hoog beveiligings niveau voor uw oplossings installatie kopieën in de Azure Marketplace. Het volgende artikel bevat een controle lijst met beveiligings configuraties en-procedures om u te helpen: [beveiligings aanbevelingen voor installatie kopieën van Azure Marketplace](../../security/security-recommendations-azure-marketplace-images.md). Sommige van deze aanbevelingen zijn specifiek voor installatie kopieën op basis van Linux, maar zijn het meest van toepassing op elke VM-installatie kopie.
 
 ### <a name="perform-custom-configuration-and-scheduled-tasks"></a>Aangepaste configuratie en geplande taken uitvoeren
 
@@ -247,7 +247,7 @@ Als er aanvullende configuratie nodig is, gebruikt u een geplande taak die wordt
 * Als het een Run-Once-taak is, moet de taak zichzelf verwijderen nadat deze is voltooid.
 * Configuraties mogen niet afhankelijk zijn van C of D, omdat alleen deze twee schijven altijd gegarandeerd bestaan (station C is de schijf met het besturings systeem en station D is de tijdelijke lokale schijf).
 
-Zie [extensies en functies van virtuele machines voor Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux)voor meer informatie over Linux-aanpassingen.
+Zie [extensies en functies van virtuele machines voor Linux](../../virtual-machines/extensions/features-linux.md)voor meer informatie over Linux-aanpassingen.
 
 ## <a name="generalize-the-image"></a>De installatie kopie generaliseren
 
@@ -258,11 +258,11 @@ Alle installatie kopieën in azure Marketplace moeten op een algemene manier opn
 Windows-besturingssysteem schijven worden gegeneraliseerd met het [hulp programma Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview). Als u het besturings systeem vervolgens bijwerkt of opnieuw configureert, moet u Sysprep opnieuw uitvoeren.
 
 > [!WARNING]
-> Omdat updates mogelijk automatisch worden uitgevoerd, moet u na het uitvoeren van Sysprep de virtuele machine uitschakelen totdat deze is geïmplementeerd. Als u dit afsluit, voor komt u dat latere updates exemplaren van specifieke wijzigingen aanbrengen in het besturings systeem of de geïnstalleerde services. Zie [stappen voor het generaliseren van een VHD](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep)voor meer informatie over het uitvoeren van Sysprep.
+> Omdat updates mogelijk automatisch worden uitgevoerd, moet u na het uitvoeren van Sysprep de virtuele machine uitschakelen totdat deze is geïmplementeerd. Als u dit afsluit, voor komt u dat latere updates exemplaren van specifieke wijzigingen aanbrengen in het besturings systeem of de geïnstalleerde services. Zie [stappen voor het generaliseren van een VHD](../../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep)voor meer informatie over het uitvoeren van Sysprep.
 
 ### <a name="linux"></a>Linux
 
-Het volgende proces generaliseert een Linux-VM en implementeert deze opnieuw als een afzonderlijke VM. Zie [een installatie kopie van een virtuele machine of VHD maken](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image)voor meer informatie. U kunt stoppen wanneer u het gedeelte ' een virtuele machine maken van de vastgelegde installatie kopie ' bereikt.
+Het volgende proces generaliseert een Linux-VM en implementeert deze opnieuw als een afzonderlijke VM. Zie [een installatie kopie van een virtuele machine of VHD maken](../../virtual-machines/linux/capture-image.md)voor meer informatie. U kunt stoppen wanneer u het gedeelte ' een virtuele machine maken van de vastgelegde installatie kopie ' bereikt.
 
 1. **De Azure Linux-agent verwijderen**
 
@@ -278,8 +278,8 @@ Het volgende proces generaliseert een Linux-VM en implementeert deze opnieuw als
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u problemen ondervindt bij het maken van uw nieuwe VHD op basis van Azure, raadpleegt u [algemene problemen tijdens het maken](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues)van de VHD.
+Als u problemen ondervindt bij het maken van uw nieuwe VHD op basis van Azure, raadpleegt u [algemene problemen tijdens het maken](common-issues-during-vhd-creation.md)van de VHD.
 
 Anders:
 
-* Een [certificerings instantie voor uw VM-installatie kopie](https://docs.microsoft.com/azure/marketplace/partner-center-portal/get-sas-uri) wordt uitgelegd hoe u een VM-installatie kopie kunt testen en verzenden voor Azure Marketplace-certificering, met inbegrip van de locatie waar u het *certificerings test hulpprogramma voor het hulp programma voor Azure Certified* kunt gebruiken en hoe dit kan worden gebruikt om
+* Een [certificerings instantie voor uw VM-installatie kopie](get-sas-uri.md) wordt uitgelegd hoe u een VM-installatie kopie kunt testen en verzenden voor Azure Marketplace-certificering, met inbegrip van de locatie waar u het *certificerings test hulpprogramma voor het hulp programma voor Azure Certified* kunt gebruiken en hoe dit kan worden gebruikt om
