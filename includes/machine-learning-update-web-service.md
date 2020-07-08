@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/16/2020
 ms.author: larryfr
 ms.openlocfilehash: e6a7ee8ed497c87c08f13e09a0022b0835c952cc
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82975053"
 ---
 Als u een webservice wilt bijwerken, gebruikt u de- `update` methode. U kunt de webservice bijwerken voor het gebruik van een nieuw model, een nieuw invoer script of nieuwe afhankelijkheden die kunnen worden opgegeven in een Afleidings configuratie. Zie de documentatie voor [webservice-update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-)voor meer informatie.

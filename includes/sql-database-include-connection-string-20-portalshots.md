@@ -11,16 +11,16 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 6ead2e0ea326b5c3f2e76e7aa9cc4ab3c50d4154
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67176115"
 ---
 ### <a name="obtain-the-connection-string-from-the-azure-portal"></a>De connection string ophalen uit de Azure Portal
 Gebruik de [Azure Portal](https://portal.azure.com/) om de Connection String te verkrijgen die nodig zijn om uw client programma te laten communiceren met Azure SQL database.
 
-1. Selecteer **alle services** > **SQL-data bases**.
+1. Selecteer **alle services**  >  **SQL-data bases**.
 
 2. Voer de naam van uw data base in het tekstvak filter in de linkerbovenhoek van de Blade **SQL-data bases** in.
 
@@ -34,7 +34,7 @@ Gebruik de [Azure Portal](https://portal.azure.com/) om de Connection String te 
 
     ![De ADO-connection string voor uw data base kopiëren][20-CopyAdoConnectionString]
 
-7. Bewerk de connection string naar wens. Plaats bijvoorbeeld uw wacht woord in de connection string of verwijder ' @&lt;servername&gt;' uit de gebruikers naam als de gebruikers naam of de server een te lange waarde heeft.
+7. Bewerk de connection string naar wens. Plaats bijvoorbeeld uw wacht woord in de connection string of verwijder ' @ &lt; servername &gt; ' uit de gebruikers naam als de gebruikers naam of de server een te lange waarde heeft.
 
 8. Plak in de ene indeling of een andere de connection string informatie in de code van uw client programma.
 

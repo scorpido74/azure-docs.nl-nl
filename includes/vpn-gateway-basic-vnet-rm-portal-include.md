@@ -9,10 +9,10 @@ ms.date: 03/03/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: d2cf1a2e2ab9cf2d6e35aa12b5b0f8ddc04ad0e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78301935"
 ---
 U hebt door deze stappen te volgen een VNet gemaakt met behulp van het Resource Manager-implementatiemodel en de Azure-portal. Zie [Overzicht van virtuele netwerken](../articles/virtual-network/virtual-networks-overview.md) voor meer informatie over virtuele netwerken.
@@ -22,7 +22,7 @@ U hebt door deze stappen te volgen een VNet gemaakt met behulp van het Resource 
 >
 >
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. In **resources, services en documenten zoeken (G +/)**, type *virtueel netwerk*.
 
    ![Virtual Network resource pagina zoeken](./media/vpn-gateway-basic-vnet-rm-portal-include/marketplace.png "De resource pagina van het virtuele netwerk zoeken")
@@ -35,7 +35,7 @@ U hebt door deze stappen te volgen een VNet gemaakt met behulp van het Resource 
 1. Zodra u **maken**selecteert, wordt de pagina **virtueel netwerk maken** geopend.
 1. Configureer op het tabblad **basis beginselen** de instellingen **Project Details** en **exemplaar Details** VNet.
 
-   ![Tabblad basis beginselen](./media/vpn-gateway-basic-vnet-rm-portal-include/basics.png "Tabblad Basisinformatie") Wanneer u de velden invult, ziet u een groen vinkje wanneer de tekens die u in het veld invoert, worden gevalideerd. Sommige waarden worden automatisch ingevuld. Deze kunt u door uw eigen waarden vervangen:
+   ![Tabblad basis beginselen](./media/vpn-gateway-basic-vnet-rm-portal-include/basics.png "Tabblad Basisbeginselen") Wanneer u de velden invult, ziet u een groen vinkje wanneer de tekens die u in het veld invoert, worden gevalideerd. Sommige waarden worden automatisch ingevuld. Deze kunt u door uw eigen waarden vervangen:
 
    - **Abonnement**: Controleer of het weer gegeven abonnement het juiste is. U kunt abonnementen wijzigen met behulp van de vervolgkeuzelijst.
    - **Resource groep**: Selecteer een bestaande resource groep of klik op **Nieuw maken** om een nieuwe te maken. Zie [Azure Resource Manager Overview](../articles/azure-resource-manager/management/overview.md#resource-groups)voor meer informatie over resource groepen.

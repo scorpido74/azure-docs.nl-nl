@@ -9,10 +9,10 @@ ms.date: 05/13/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1d14ee849c89e6c3807636d0a728157abd9de97a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83650648"
 ---
 ## <a name="1-download-the-file"></a>1. down load het bestand
@@ -35,7 +35,7 @@ Pak het gecomprimeerde bestand uit. Het bestand bevat de volgende mappen:
 
 ## <a name="3-retrieve-information"></a>3. informatie ophalen
 
-Ga in de map **AzureVPN** naar het bestand ***azurevpnconfig. XML*** en open het met Klad blok. Noteer de tekst tussen de volgende tags.
+Ga in de map **AzureVPN** naar het ***azurevpnconfig.xml*** -bestand en open het met Klad blok. Noteer de tekst tussen de volgende tags.
 
 ```
 <audience>          </audience>
@@ -57,6 +57,6 @@ Wanneer u een verbinding toevoegt, gebruikt u de gegevens die u in de vorige sta
 
 ## <a name="folder-contents"></a>Mapinhoud
 
-* De **algemene map** bevat het open bare-server certificaat en het VpnSettings. XML-bestand. Het bestand VpnSettings. XML bevat informatie die nodig is voor het configureren van een algemene client.
+* De **algemene map** bevat het open bare-server certificaat en het VpnSettings.xml-bestand. Het VpnSettings.xml bestand bevat informatie die nodig is voor het configureren van een algemene client.
 
 * Het gedownloade zip-bestand kan ook **WindowsAmd64** -en **WindowsX86** -mappen bevatten. Deze mappen bevatten het installatie programma voor SSTP en IKEv2 voor Windows-clients. U moet beheerders rechten hebben op de client om ze te installeren.

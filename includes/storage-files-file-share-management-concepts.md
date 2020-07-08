@@ -9,10 +9,10 @@ ms.date: 12/26/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a67ad4c5010cf93ff55123013a35c697ce5971f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77597794"
 ---
 Azure-bestands shares worden geïmplementeerd in *opslag accounts*. Dit zijn objecten op het hoogste niveau die een gedeelde opslag groep vertegenwoordigen. Deze opslag groep kan worden gebruikt voor het implementeren van meerdere bestands shares en andere opslag resources, zoals BLOB-containers, wacht rijen of tabellen. Alle opslag resources die in een opslag account worden geïmplementeerd, delen de limieten die van toepassing zijn op dat opslag account. Zie [Azure files schaal baarheid en prestatie doelen](../articles/storage/files/storage-files-scale-targets.md)voor een overzicht van de huidige limieten voor een opslag account.

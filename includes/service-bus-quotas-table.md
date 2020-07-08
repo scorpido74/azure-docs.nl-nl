@@ -9,21 +9,21 @@ ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: b19dc7a85fafa1a4d875c84db9bbefabb3cd5a7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77651551"
 ---
 De volgende tabel bevat de quotum gegevens die specifiek zijn voor Azure Service Bus berichten. Voor informatie over prijzen en andere quota's voor Service Bus raadpleegt u [Service Bus prijzen](https://azure.microsoft.com/pricing/details/service-bus/).
 
-| Quotum naam | Bereik | Opmerkingen | Waarde |
+| Quotum naam | Bereik | Notities | Waarde |
 | --- | --- | --- | --- |
 | Maximum aantal basis-of standaard naam ruimten per Azure-abonnement |Naamruimte |Volgende aanvragen voor aanvullende Basic-of Standard-naam ruimten worden geweigerd door de Azure Portal. |100|
 | Maximum aantal Premium-naam ruimten per Azure-abonnement |Naamruimte |Volgende aanvragen voor aanvullende Premium-naam ruimten worden geweigerd door de portal. |100 |
 | Grootte van de wachtrij of het onderwerp |Entiteit |Gedefinieerd bij het maken van de wachtrij of het onderwerp. <br/><br/> Volgende inkomende berichten worden geweigerd en er wordt een uitzonde ring ontvangen door de aanroepende code. |1, 2, 3, 4 GB of 5 GB.<br /><br />In de Premium-SKU en de standaard-SKU waarvoor [partitionering](/azure/service-bus-messaging/service-bus-partitioning) is ingeschakeld, is de maximum grootte voor de wachtrij of het onderwerp 80 GB. |
 | Aantal gelijktijdige verbindingen op een naam ruimte |Naamruimte |Volgende aanvragen voor extra verbindingen worden geweigerd en er wordt een uitzonde ring ontvangen door de aanroepende code. REST-bewerkingen tellen niet mee voor gelijktijdige TCP-verbindingen. |Netmessa ging: 1.000.<br /><br />AMQP: 5.000. |
-| Aantal gelijktijdige ontvangen aanvragen voor een entiteit in een wachtrij, onderwerp of abonnement |Entiteit |Volgende ontvangen aanvragen worden afgewezen en er wordt een uitzonde ring ontvangen door de aanroepende code. Dit quotum is van toepassing op het gecombineerde aantal gelijktijdige ontvangst bewerkingen in alle abonnementen op een onderwerp. |5.000 |
+| Aantal gelijktijdige ontvangen aanvragen voor een entiteit in een wachtrij, onderwerp of abonnement |Entiteit |Volgende ontvangen aanvragen worden afgewezen en er wordt een uitzonde ring ontvangen door de aanroepende code. Dit quotum is van toepassing op het gecombineerde aantal gelijktijdige ontvangst bewerkingen in alle abonnementen op een onderwerp. |5\.000 |
 | Aantal onderwerpen of wacht rijen per naam ruimte |Naamruimte |Volgende aanvragen voor het maken van een nieuw onderwerp of nieuwe wachtrij in de naam ruimte worden geweigerd. Als dit het geval is, wordt er een fout bericht gegenereerd als dit wordt geconfigureerd via de [Azure Portal][Azure portal]. Als deze wordt aangeroepen vanuit de beheer-API, wordt er een uitzonde ring ontvangen door de aanroepende code. |10.000 voor de Basic-of Standard-laag. Het totale aantal onderwerpen en wacht rijen in een naam ruimte moet kleiner zijn dan of gelijk zijn aan 10.000. <br/><br/>Voor de Premium-laag, 1.000 per Messa ging-eenheid (MU). De maximum limiet is 4.000. |
 | Aantal [gepartitioneerde onderwerpen of wacht rijen](/azure/service-bus-messaging/service-bus-partitioning) per naam ruimte |Naamruimte |Volgende aanvragen voor het maken van een nieuw gepartitioneerd onderwerp of wachtrij in de naam ruimte worden geweigerd. Als dit het geval is, wordt er een fout bericht gegenereerd als dit wordt geconfigureerd via de [Azure Portal][Azure portal]. Indien aangeroepen vanuit de beheer-API, wordt de uitzonde ring **QuotaExceededException** ontvangen door de aanroepende code. |Basis-en standaard lagen: 100.<br/><br/>Gepartitioneerde entiteiten worden niet ondersteund in de [Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md) -laag.<br/><br />Elke gepartitioneerde wachtrij of elk onderwerp telt naar het quotum van 1.000 entiteiten per naam ruimte. |
 | Maximale grootte van het pad naar de Messa ging-entiteit: wachtrij of onderwerp |Entiteit |- |260 tekens. |

@@ -1,6 +1,6 @@
 ---
-title: Include-bestand
-description: Include-bestand
+title: bestand opnemen
+description: bestand opnemen
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -9,17 +9,17 @@ ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 0d5947f669b600b544cd7e5265e2cce8de118374
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82788983"
 ---
-## <a name="create-an-image-gallery"></a>Een galerie met installatie kopieën maken
+## <a name="create-an-image-gallery"></a>Een galerie met installatiekopieën maken
 
-Een galerie met installatie kopieën is de primaire resource die wordt gebruikt voor het inschakelen van het delen van afbeeldingen. Toegestane tekens voor de naam van de galerie bestaan uit hoofd letters of kleine letters, cijfers, punten en punten. De naam van de galerie mag geen streepjes bevatten.  Galerie namen moeten uniek zijn binnen uw abonnement. 
+Een galerie met installatiekopieën is de primaire resource die wordt gebruikt voor het inschakelen van het delen van installatiekopieën. De naam van de galerie kan bestaan uit hoofdletters en kleine letters, cijfers en punten. De naam van de galerie kan geen liggende streepjes bevatten.  De naam van de galerie moet uniek zijn binnen uw abonnement. 
 
-In het volgende voor beeld wordt een galerie gemaakt met de naam *myGallery* in de resource groep *myGalleryRG* .
+In het volgende voorbeeld wordt een galerie met de naam *myGallery* gemaakt in de resourcegroep *myGalleryRG*.
 
 1. Meld u aan bij Azure Portal op https://portal.azure.com.
 1. Gebruik de **Galerie met gedeelde installatie kopieën** in het zoekvak en selecteer **gedeelde installatie kopie galerie** in de resultaten.
@@ -33,9 +33,9 @@ In het volgende voor beeld wordt een galerie gemaakt met de naam *myGallery* in 
 1. Wanneer de implementatie is voltooid, selecteert **u naar resource gaan**.
 
 
-## <a name="create-an-image-definition"></a>Een definitie van een installatie kopie maken 
+## <a name="create-an-image-definition"></a>Een definitie voor de installatiekopie maken 
 
-Afbeeldings definities maken een logische groepering voor installatie kopieën. Ze worden gebruikt voor het beheren van informatie over de installatie kopieën die in deze versies worden gemaakt. Definitie namen van afbeeldingen kunnen bestaan uit hoofd letters, kleine letters, cijfers, punten, streepjes en punten. Zie [afbeeldings definities](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)voor meer informatie over de waarden die u kunt opgeven voor de definitie van een installatie kopie.
+Definities van installatiekopieën maken een logische groepering voor installatiekopieën. Die worden gebruikt voor het beheren van informatie over de installatiekopieversies die daarbinnen worden gemaakt. Namen van installatiekopiedefinities kunnen bestaan uit hoofdletters, kleine letters, cijfers, streepjes en punten. Zie [Installatiekopiedefinities](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions) voor meer informatie over de waarden die u kunt specificeren voor een installatiekopiedefinitie.
 
 Maak de definitie van de galerie-afbeelding in uw galerie. In dit voor beeld heeft de galerie-afbeelding de naam *myImageDefinition*.
 
@@ -57,7 +57,7 @@ Maak de definitie van de galerie-afbeelding in uw galerie. In dit voor beeld hee
 
 Een installatie kopie versie maken op basis van een beheerde installatie kopie. In dit voor beeld is de versie van de installatie kopie *1.0.0* en wordt deze gerepliceerd naar zowel *West-Centraal VS* -en *Zuid-Centraal VS* -data centers. Houd er rekening mee dat u bij het kiezen van doel regio's voor replicatie ook de *bron* regio moet toevoegen als doel voor replicatie.
 
-Toegestane tekens voor de versie van de installatie kopie zijn getallen en punten. Getallen moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion*. *MinorVersion*. *Patch*.
+Toegestane tekens voor een installatiekopieversie zijn cijfers en punten. Cijfers moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion*.*MinorVersion*.*Patch*.
 
 De stappen voor het maken van een installatie kopie versie zijn iets anders, afhankelijk van het feit of de bron een gegeneraliseerde installatie kopie of een moment opname van een gespecialiseerde virtuele machine is. 
 
@@ -70,11 +70,11 @@ De stappen voor het maken van een installatie kopie versie zijn iets anders, afh
 1. Laat de standaard waarde *Nee*staan in **uitgesloten van laatste**.
 1. Selecteer voor **einde levens datum**een datum in de kalender die in de toekomst een paar maanden is.
 1. In **replicatie**, moet u het **aantal standaard replica's** op 1 laten staan. U moet naar de bron regio repliceren, dus verlaat de eerste replica als de standaard waarde en kies vervolgens een tweede replica regio om *VS-Oost*te zijn.
-1. Wanneer u klaar bent, selecteert u **controleren + maken**. De configuratie wordt door Azure gevalideerd.
+1. Als u klaar bent, selecteert u **Beoordelen en maken**. De configuratie wordt door Azure gevalideerd.
 1. Wanneer de versie van de installatie kopie wordt goedgekeurd, selecteert u **maken**.
 1. Wanneer de implementatie is voltooid, selecteert **u naar resource gaan**.
 
-Het kan even duren om de installatie kopie te repliceren naar alle doel regio's.
+Het kan even duren om de installatiekopie naar alle doelregio's te repliceren.
 
 ### <a name="option-specialized"></a>Optie: speciaal
 
@@ -85,15 +85,15 @@ Het kan even duren om de installatie kopie te repliceren naar alle doel regio's.
 1. Laat de standaard waarde *Nee*staan in **uitgesloten van laatste**.
 1. Selecteer voor **einde levens datum**een datum in de kalender die in de toekomst een paar maanden is.
 1. In **replicatie**, moet u het **aantal standaard replica's** op 1 laten staan. U moet naar de bron regio repliceren, dus verlaat de eerste replica als de standaard waarde en kies vervolgens een tweede replica regio om *VS-Oost*te zijn.
-1. Wanneer u klaar bent, selecteert u **controleren + maken**. De configuratie wordt door Azure gevalideerd.
+1. Als u klaar bent, selecteert u **Beoordelen en maken**. De configuratie wordt door Azure gevalideerd.
 1. Wanneer de versie van de installatie kopie wordt goedgekeurd, selecteert u **maken**.
 1. Wanneer de implementatie is voltooid, selecteert **u naar resource gaan**.
 
 ## <a name="share-the-gallery"></a>De galerie delen
 
-U wordt aangeraden toegang te delen op het niveau van de galerie met installatie kopieën. Hieronder vindt u instructies voor het delen van de galerie die u zojuist hebt gemaakt.
+We raden aan om te delen op galerieniveau. Hieronder vindt u instructies voor het delen van de galerie die u zojuist hebt gemaakt.
 
-1. Open [Azure Portal](https://portal.azure.com).
+1. Open de [Azure Portal](https://portal.azure.com).
 1. Selecteer **resource groepen**in het menu aan de linkerkant. 
 1. Selecteer **myGalleryRG**in de lijst met resource groepen. De Blade voor de resource groep wordt geopend.
 1. Selecteer **toegangs beheer (IAM)** in het menu aan de linkerkant van de pagina **myGalleryRG** . 

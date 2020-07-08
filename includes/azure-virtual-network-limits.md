@@ -9,10 +9,10 @@ ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
 ms.openlocfilehash: 511354633b9f88f3d6cd2e2170ce3b7ca1f4ecdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82096103"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Netwerk limieten-Azure Resource Manager
@@ -36,7 +36,7 @@ De volgende limieten gelden alleen voor netwerk resources die worden beheerd via
 | Open bare IP-adressen per virtuele machine |256 |
 | [Gelijktijdige TCP-of UDP-stromen per NIC van een virtuele machine of rolinstantie](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) |500.000 |
 | Netwerk interface kaarten |65.536 |
-| Netwerkbeveiligingsgroepen |5.000 |
+| Netwerkbeveiligingsgroepen |5\.000 |
 | NSG-regels per NSG |1000 |
 | IP-adressen en-bereiken die zijn opgegeven voor bron of doel in een beveiligings groep |4000 |
 | Toepassingsbeveiligingsgroepen |3000 |
@@ -72,7 +72,7 @@ De volgende beperkingen gelden alleen voor netwerkresources die worden beheerd v
 | Regels per NIC (voor alle IP-adressen op een NIC) | 300                           |
 | Front-end-IP-configuraties              | 600                           |
 | Grootte van back-end-pool                       | 1.000 IP-configuraties, één virtueel netwerk |
-| Backend-bronnen per <sup>Load Balancer 1<sup> | 150                   |
+| Backend-bronnen per Load Balancer <sup> 1<sup> | 150                   |
 | Poorten met hoge Beschik baarheid                 | 1 per interne frontend       |
 | Uitgaande regels per Load Balancer        | 600                           |
 | [Time-out voor TCP-inactiviteit](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 minuten/30 minuten          |
@@ -105,6 +105,6 @@ De volgende beperkingen gelden alleen voor netwerkresources die worden beheerd v
 | Door de gebruiker gedefinieerde routes per route tabel |400 |400 |
 | Openbare IP-adressen (dynamisch) |500 |500 |
 | Gereserveerde openbare IP-adressen |500 |500 |
-| Openbare VIP per implementatie |5 |Contact opnemen met ondersteuning |
+| Openbare VIP per implementatie |5 |Contact opnemen met de ondersteuning |
 | Privé-VIP (interne taak verdeling) per implementatie |1 |1 |
 | Toegangs beheer lijsten (Acl's) voor eind punten |50 |50 |

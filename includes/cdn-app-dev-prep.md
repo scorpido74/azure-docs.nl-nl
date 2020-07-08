@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
 ms.openlocfilehash: 41f2d4540f665137d34d262546cdc1a2edfbae3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77608752"
 ---
 ## <a name="prerequisites"></a>Vereisten
@@ -20,7 +20,7 @@ Voordat u de CDN-beheer code schrijft, moet u een aantal voor bereidingen treffe
 
 ### <a name="creating-the-resource-group"></a>De resourcegroep maken
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Klik op **Een resource maken**.
+2. Klik op **een resource maken**.
 3. Zoek naar **resource groep** en klik in het deel venster Resource groep op **maken**.
 
     ![Een nieuwe resource groep maken](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)

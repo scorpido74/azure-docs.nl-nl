@@ -1,6 +1,6 @@
 ---
-title: Include-bestand
-description: Include-bestand
+title: bestand opnemen
+description: bestand opnemen
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -9,17 +9,17 @@ ms.date: 03/18/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 10c2b447a3f174afe93f56084827756d24d982cc
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792187"
 ---
-## <a name="create-an-image-gallery"></a>Een galerie met installatie kopieën maken 
+## <a name="create-an-image-gallery"></a>Een galerie met installatiekopieën maken 
 
-Een galerie met installatie kopieën is de primaire resource die wordt gebruikt voor het inschakelen van het delen van afbeeldingen. Toegestane tekens voor de naam van de galerie bestaan uit hoofd letters of kleine letters, cijfers, punten en punten. De naam van de galerie mag geen streepjes bevatten. Galerie namen moeten uniek zijn binnen uw abonnement. 
+Een galerie met installatiekopieën is de primaire resource die wordt gebruikt voor het inschakelen van het delen van installatiekopieën. De naam van de galerie kan bestaan uit hoofdletters en kleine letters, cijfers en punten. De naam van de galerie kan geen liggende streepjes bevatten. De naam van de galerie moet uniek zijn binnen uw abonnement. 
 
-Maak een galerie met installatie kopieën met [New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery). In het volgende voor beeld wordt een galerie gemaakt met de naam *myGallery* in de resource groep *myGalleryRG* .
+Maak een galerie met installatiekopieën met de opdracht [New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery). In het volgende voorbeeld wordt een galerie met de naam *myGallery* gemaakt in de resourcegroep *myGalleryRG*.
 
 ```azurepowershell-interactive
 $resourceGroup = New-AzResourceGroup `
@@ -35,7 +35,7 @@ $gallery = New-AzGallery `
 
 ## <a name="share-the-gallery"></a>De galerie delen
 
-U wordt aangeraden toegang te delen op het niveau van de galerie met installatie kopieën. Gebruik een e-mail adres en de cmdlet [Get-AzADUser](/powershell/module/az.resources/get-azaduser) om de object-id voor de gebruiker op te halen en gebruik vervolgens [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) om hen toegang tot de galerie te geven. Vervang de voorbeeld-e alinne_montes@contoso.com -mail in dit voor beeld met uw eigen gegevens.
+We raden aan om te delen op galerieniveau. Gebruik een e-mailadres en de cmdlet [Get-AzADUser](/powershell/module/az.resources/get-azaduser) om de object-id voor gebruikers op te halen en gebruik vervolgens [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) om hen toegang te geven tot de galerie. Vervang het e-mailadres, alinne_montes@contoso.com in dit voorbeeld, door uw eigen gegevens.
 
 ```azurepowershell-interactive
 # Get the object ID for the user

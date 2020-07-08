@@ -10,10 +10,10 @@ ms.date: 08/16/2019
 ms.author: dsindona
 ms.custom: include file
 ms.openlocfilehash: cf6a5730f92eba8f0a4e63bf40a4d2b50f76eb3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82131105"
 ---
 Wanneer u uw aanbieding naar Marketplace publiceert via partner centrum, moet u uw aanbieding koppelen aan uw CRM-systeem. Op deze manier kunt u contact gegevens van klanten direct ontvangen nadat een klant rente heeft ingedrukt of uw product implementeert.
@@ -22,7 +22,7 @@ Wanneer u uw aanbieding naar Marketplace publiceert via partner centrum, moet u 
 
     * [Dynamics 365](../commercial-marketplace-lead-management-instructions-dynamics.md) voor klant betrokkenheid
     * [Marketo](../commercial-marketplace-lead-management-instructions-marketo.md)
-    * [SalesForce](../commercial-marketplace-lead-management-instructions-salesforce.md)
+    * [Salesforce](../commercial-marketplace-lead-management-instructions-salesforce.md)
 
     Als uw CRM-systeem niet expliciet wordt ondersteund in deze lijst, kunt u de gegevens van de klant lead opslaan met behulp van de volgende opties. Vervolgens kunt u deze gegevens exporteren of importeren in uw CRM-systeem.
 

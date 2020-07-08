@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: cephalin
 ms.openlocfilehash: b4234acb2ce32980a268e389cb31de9a57ed18e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82132212"
 ---
 Wanneer u de configuratie kloont vanuit een andere implementatie site, kan de gekloonde configuratie bewerkbaar zijn. Sommige configuratie-elementen volgen de inhoud in een wissel (niet sleuf specifiek), terwijl andere configuratie-elementen zich in dezelfde sleuf bevinden na een wissel (sleuf specifiek). In de volgende lijsten ziet u de instellingen die veranderen wanneer u sleuven verwisselt.
@@ -41,5 +41,5 @@ Functies die zijn gemarkeerd met een sterretje (*) zijn gepland om ongewisseld t
 * Cross-Origin-resource delen (CORS)
 
 > [!NOTE]
-> Bepaalde app-instellingen die van toepassing zijn op niet-Verwissel bare instellingen, worden ook niet omgewisseld. Omdat de diagnostische instellingen bijvoorbeeld niet worden gewisseld, worden gerelateerde app-instellingen `WEBSITE_HTTPLOGGING_RETENTION_DAYS` , `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` zoals en ook niet omgewisseld, zelfs niet weer gegeven als sleuf instellingen.
+> Bepaalde app-instellingen die van toepassing zijn op niet-Verwissel bare instellingen, worden ook niet omgewisseld. Omdat de diagnostische instellingen bijvoorbeeld niet worden gewisseld, worden gerelateerde app-instellingen, zoals `WEBSITE_HTTPLOGGING_RETENTION_DAYS` en `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` ook niet omgewisseld, zelfs niet weer gegeven als sleuf instellingen.
 >

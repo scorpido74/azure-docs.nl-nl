@@ -6,17 +6,17 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
 ms.openlocfilehash: af11283f9e9dbd925ec994dcb1d96393332b90fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80117048"
 ---
 ## <a name="use-custom-page-content"></a>Aangepaste pagina-inhoud gebruiken
 
 Met de functie voor het aanpassen van de gebruikers interface van de pagina kunt u het uiterlijk van elk aangepast beleid aanpassen. U kunt er ook voor zorgen dat er visuele en merkconsistentie is tussen uw toepassing en Azure AD B2C.
 
-### <a name="how-it-works"></a>Hoe werkt het?
+### <a name="how-it-works"></a>Uitleg
 
 Azure AD B2C code wordt uitgevoerd in de browser van uw klant door gebruik te maken van [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/). Tijdens runtime wordt inhoud geladen vanuit een URL die u opgeeft in uw gebruikers stroom of aangepast beleid. Elke pagina in de gebruikers ervaring laadt de inhoud van de URL die u voor die pagina opgeeft. Nadat de inhoud is geladen vanuit uw URL, wordt deze samengevoegd met een HTML-fragment dat is ingevoegd door Azure AD B2C, waarna de pagina wordt weer gegeven aan uw klant.
 
@@ -89,7 +89,7 @@ Hier volgt een overzicht van het proces:
 
 Maak een aangepaste pagina-inhoud met de merk naam van uw product in de titel.
 
-1. Kopieer het volgende HTML-code fragment. Het is een goed gevormde HTML5 met een leeg element met de naam * \< Div ID = "API" \> \< /div \> * die zich in de * \< hoofd \> * code bevindt. Dit element geeft aan waar Azure AD B2C inhoud moet worden ingevoegd.
+1. Kopieer het volgende HTML-code fragment. Het is een goed gevormde HTML5 met een leeg element dat *\<div id="api"\>\</div\>* zich binnen de Tags bevindt *\<body\>* . Dit element geeft aan waar Azure AD B2C inhoud moet worden ingevoegd.
 
    ```html
    <!DOCTYPE html>
@@ -114,7 +114,7 @@ In dit artikel gebruiken we Azure Blob-opslag om onze inhoud te hosten. U kunt e
 
 Als u uw HTML-inhoud in Blob Storage wilt hosten, voert u de volgende stappen uit:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer in het **hub** -menu de optie **Nieuw**  >  **opslag**  >  **opslag account**.
 1. Selecteer een **abonnement** voor uw opslag account.
 1. Maak een **resource groep** of selecteer een bestaande.

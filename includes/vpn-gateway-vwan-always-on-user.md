@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 17df5dca584b760cc52ddc171e92fb26b418c347
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79500199"
 ---
 1. Installeer client certificaten op de Windows 10-client, zoals wordt weer gegeven in dit artikel van [punt-naar-site VPN-client](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md) . Het certificaat moet zich in het huidige gebruikers archief beslaan.
@@ -23,7 +23,7 @@ ms.locfileid: "79500199"
 
 Nadat u de virtuele netwerk gateway hebt geconfigureerd en het client certificaat in het archief van de lokale computer op de Windows 10-client hebt geïnstalleerd, configureert u een tunnel voor client apparaten met behulp van de volgende voor beelden:
 
-1. Kopieer de volgende tekst en sla deze op als *usercert. ps1*:
+1. Kopieer de volgende tekst en sla deze op als *usercert.ps1*:
 
    ```
    Param(
@@ -75,7 +75,7 @@ Nadat u de virtuele netwerk gateway hebt geconfigureerd en het client certificaa
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Kopieer de volgende tekst en sla deze op als *VPNProfile. XML* in dezelfde map als *usercert. ps1*. Bewerk de volgende tekst zodat deze overeenkomt met uw omgeving:
+1. Kopieer de volgende tekst en sla deze op als *VPNProfile.xml* in dezelfde map als *usercert.ps1*. Bewerk de volgende tekst zodat deze overeenkomt met uw omgeving:
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>  <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address>  <= IP of resource in the vnet or the vnet address space`
@@ -121,7 +121,7 @@ Nadat u de virtuele netwerk gateway hebt geconfigureerd en het client certificaa
    ```
 1. Voer PowerShell uit als beheerder.
 
-1. Ga in Power shell naar de map waarin *usercert. ps1* en *VPNProfile. XML* zich bevinden en voer de volgende opdracht uit:
+1. Ga in Power shell naar de map waarin *usercert.ps1* en *VPNProfile.xml* zich bevinden en voer de volgende opdracht uit:
 
    ```powershell
    C:\> .\usercert.ps1 .\VPNProfile.xml UserTest

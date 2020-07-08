@@ -9,15 +9,15 @@ ms.date: 03/04/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c3c9dbca6a76bf0b10a83087fc31d9fa41c6bd03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78331239"
 ---
 1. Selecteer in het menu [Azure Portal](https://portal.azure.com) de optie **een resource maken**. 
 
-   ![Een resource maken in de Azure Portal](./media/vpn-gateway-add-gw-rm-portal-include/azure-portal-create-resource.png)
+   ![Een resource maken in de Azure-portal](./media/vpn-gateway-add-gw-rm-portal-include/azure-portal-create-resource.png)
 2. In het veld **Marketplace doorzoeken** typt u ' Virtual Network gateway '. Zoek naar de gateway van het **virtuele netwerk** in het Zoek resultaat en selecteer de vermelding. Selecteer op de pagina **virtuele netwerk gateway** **maken**. Hiermee opent u de pagina **Gateway van het virtuele netwerk maken**.
 3. Vul op het tabblad **basis beginselen** de waarden in voor de gateway van uw virtuele netwerk.
 
@@ -25,12 +25,12 @@ ms.locfileid: "78331239"
 
    ![Pagina velden van een virtuele netwerk gateway maken](./media/vpn-gateway-add-gw-rm-portal-include/gateway2.png "Pagina velden van een virtuele netwerk gateway maken")
 
-   **Project Details**
+   **Projectgegevens**
 
    - **Abonnement**: Selecteer het abonnement dat u wilt gebruiken in de vervolg keuzelijst.
    - **Resource groep**: deze instelling wordt ingevuld wanneer u het virtuele netwerk op deze pagina selecteert.
 
-   **Exemplaar Details**
+   **Exemplaardetails**
 
    - **Naam**: naam van uw gateway. De naam van uw gateway is niet hetzelfde als de naam van een gateway-subnet. Het is de naam van het gateway-object dat u maakt.
    - **Regio**: Selecteer de regio waarin u deze resource wilt maken. De regio voor de gateway moet hetzelfde zijn als het virtuele netwerk.

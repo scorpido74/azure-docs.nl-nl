@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4ea97e2dbee87f7ab129c4295276c9024c0212c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80117021"
 ---
 Een nieuwe functie van de Windows 10 VPN-client, altijd aan, is de mogelijkheid om een VPN-verbinding te onderhouden. Met Always on kan het actieve VPN-profiel automatisch verbinding maken en blijven verbonden op basis van triggers, zoals het aanmelden van gebruikers, het wijzigen van de netwerk status of het scherm apparaat actief.
