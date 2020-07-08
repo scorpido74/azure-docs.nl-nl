@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
 ms.openlocfilehash: da163e902d06bd98ac47a24256cb809cb222173b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80804619"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>De Azure Blob Storage op de IoT Edge-module implementeren naar uw apparaat
@@ -82,18 +81,18 @@ Een implementatie manifest is een JSON-document waarin wordt beschreven welke mo
 
 4. De JSON die u hebt gekopieerd naar de **container Create-opties** bijwerken met de volgende informatie:
 
-   - Vervang `<your storage account name>` door een naam die u kunt onthouden. Account namen moeten 3 tot 24 tekens lang zijn, met kleine letters en cijfers. Geen spaties.
+   - Vervang door `<your storage account name>` een naam die u kunt onthouden. Account namen moeten 3 tot 24 tekens lang zijn, met kleine letters en cijfers. Geen spaties.
 
-   - Vervang `<your storage account key>` door een base64-sleutel van 64-bytes. U kunt een sleutel met hulpprogram ma's zoals [GeneratePlus](https://generate.plus/en/base64)genereren. U gebruikt deze referenties om toegang te krijgen tot de Blob-opslag van andere modules.
+   - Vervang door `<your storage account key>` een base64-sleutel van 64-bytes. U kunt een sleutel met hulpprogram ma's zoals [GeneratePlus](https://generate.plus/en/base64)genereren. U gebruikt deze referenties om toegang te krijgen tot de Blob-opslag van andere modules.
 
-   - Vervangen `<storage mount>` door het besturings systeem van de container. Geef de naam van een [volume](https://docs.docker.com/storage/volumes/) of het absolute pad op naar een bestaande map op uw IOT edge apparaat waar de gegevens worden opgeslagen in de BLOB-module. De opslag koppeling wijst een locatie op het apparaat toe die u hebt opgegeven voor een set-locatie in de module.
+   - Vervangen door `<storage mount>` het besturings systeem van de container. Geef de naam van een [volume](https://docs.docker.com/storage/volumes/) of het absolute pad op naar een bestaande map op uw IOT edge apparaat waar de gegevens worden opgeslagen in de BLOB-module. De opslag koppeling wijst een locatie op het apparaat toe die u hebt opgegeven voor een set-locatie in de module.
 
-     - Voor Linux-containers is ** \<de indeling uw opslagpad of volume>:/blobroot**. Bijvoorbeeld:
+     - Voor Linux-containers is de indeling ** \<your storage path or volume> :/blobroot**. Bijvoorbeeld:
          - [volume koppeling](https://docs.docker.com/storage/volumes/)gebruiken:`my-volume:/blobroot`
-         - [binding koppelen](https://docs.docker.com/storage/bind-mounts/)gebruiken: `/srv/containerdata:/blobroot`. Volg de stappen om [Directory toegang te verlenen aan de container gebruiker](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
-     - Voor Windows-containers is ** \<de indeling uw opslagpad of volume>: C:/BlobRoot**. Bijvoorbeeld:
-         - [volume koppeling](https://docs.docker.com/storage/volumes/)gebruiken: `my-volume:C:/BlobRoot`.
-         - [binding koppelen](https://docs.docker.com/storage/bind-mounts/)gebruiken: `C:/ContainerData:C:/BlobRoot`.
+         - [binding koppelen](https://docs.docker.com/storage/bind-mounts/)gebruiken: `/srv/containerdata:/blobroot` . Volg de stappen om [Directory toegang te verlenen aan de container gebruiker](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
+     - Voor Windows-containers is de indeling ** \<your storage path or volume> : C:/BlobRoot**. Bijvoorbeeld:
+         - [volume koppeling](https://docs.docker.com/storage/volumes/)gebruiken: `my-volume:C:/BlobRoot` .
+         - [binding koppelen](https://docs.docker.com/storage/bind-mounts/)gebruiken: `C:/ContainerData:C:/BlobRoot` .
          - In plaats van uw lokale station te gebruiken, kunt u uw SMB-netwerk locatie toewijzen. Zie [SMB-share gebruiken als lokale opslag](how-to-store-data-blob.md#using-smb-share-as-your-local-storage) voor meer informatie.
 
      > [!IMPORTANT]
@@ -155,7 +154,7 @@ Het kan even duren voordat de module op het apparaat is gestart en vervolgens we
 
 Azure IoT Edge biedt sjablonen in Visual Studio code om u te helpen bij het ontwikkelen van Edge-oplossingen. Gebruik de volgende stappen om een nieuwe IoT Edge-oplossing te maken met een Blob Storage-module en om het implementatie manifest te configureren.
 
-1. Selecteer**opdracht palet** **weer geven** > .
+1. Selecteer **View**  >  **opdracht palet**weer geven.
 
 1. Voer in het opdrachtpalet de opdracht **Azure IoT Edge: New IoT Edge solution** in en voer deze uit.
 
@@ -173,11 +172,11 @@ Azure IoT Edge biedt sjablonen in Visual Studio code om u te helpen bij het ontw
 
    Visual Studio code voert de door u verstrekte informatie, maakt een IoT Edge oplossing en laadt deze vervolgens in een nieuw venster. De oplossings sjabloon maakt een sjabloon implementatie manifest die de module kopie van de Blob-opslag bevat, maar u moet de opties voor het maken van de module configureren.
 
-1. Open *implementatie. Temp late. json* in de nieuwe oplossings werkruimte en zoek de sectie **modules** . Breng de volgende configuratie wijzigingen aan:
+1. Open *deployment.template.js* in de nieuwe oplossings werkruimte en zoek de sectie **modules** . Breng de volgende configuratie wijzigingen aan:
 
    1. Verwijder de **SimulatedTemperatureSensor** -module, omdat deze niet nodig is voor deze implementatie.
 
-   1. Kopieer de volgende code en plak deze in `createOptions` het veld:
+   1. Kopieer de volgende code en plak deze in het `createOptions` veld:
 
       ```json
       "Env":[
@@ -194,24 +193,24 @@ Azure IoT Edge biedt sjablonen in Visual Studio code om u te helpen bij het ontw
 
       ![Module createOptions-Visual Studio code bijwerken](./media/how-to-deploy-blob/create-options.png)
 
-1. Vervang `<your storage account name>` door een naam die u kunt onthouden. Account namen moeten 3 tot 24 tekens lang zijn, met kleine letters en cijfers. Geen spaties.
+1. Vervang door `<your storage account name>` een naam die u kunt onthouden. Account namen moeten 3 tot 24 tekens lang zijn, met kleine letters en cijfers. Geen spaties.
 
-1. Vervang `<your storage account key>` door een base64-sleutel van 64-bytes. U kunt een sleutel met hulpprogram ma's zoals [GeneratePlus](https://generate.plus/en/base64)genereren. U gebruikt deze referenties om toegang te krijgen tot de Blob-opslag van andere modules.
+1. Vervang door `<your storage account key>` een base64-sleutel van 64-bytes. U kunt een sleutel met hulpprogram ma's zoals [GeneratePlus](https://generate.plus/en/base64)genereren. U gebruikt deze referenties om toegang te krijgen tot de Blob-opslag van andere modules.
 
-1. Vervangen `<storage mount>` door het besturings systeem van de container. Geef de naam van een [volume](https://docs.docker.com/storage/volumes/) of het absolute pad op naar een map op uw IOT edge-apparaat waar de gegevens moeten worden opgeslagen in de BLOB-module. De opslag koppeling wijst een locatie op het apparaat toe die u hebt opgegeven voor een set-locatie in de module.  
+1. Vervangen door `<storage mount>` het besturings systeem van de container. Geef de naam van een [volume](https://docs.docker.com/storage/volumes/) of het absolute pad op naar een map op uw IOT edge-apparaat waar de gegevens moeten worden opgeslagen in de BLOB-module. De opslag koppeling wijst een locatie op het apparaat toe die u hebt opgegeven voor een set-locatie in de module.  
 
-     - Voor Linux-containers is ** \<de indeling uw opslagpad of volume>:/blobroot**. Bijvoorbeeld:
+     - Voor Linux-containers is de indeling ** \<your storage path or volume> :/blobroot**. Bijvoorbeeld:
          - [volume koppeling](https://docs.docker.com/storage/volumes/)gebruiken:`my-volume:/blobroot`
-         - [binding koppelen](https://docs.docker.com/storage/bind-mounts/)gebruiken: `/srv/containerdata:/blobroot`. Volg de stappen om [Directory toegang te verlenen aan de container gebruiker](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
-     - Voor Windows-containers is ** \<de indeling uw opslagpad of volume>: C:/BlobRoot**. Bijvoorbeeld
-         - [volume koppeling](https://docs.docker.com/storage/volumes/)gebruiken: `my-volume:C:/BlobRoot`.
-         - [binding koppelen](https://docs.docker.com/storage/bind-mounts/)gebruiken: `C:/ContainerData:C:/BlobRoot`.
+         - [binding koppelen](https://docs.docker.com/storage/bind-mounts/)gebruiken: `/srv/containerdata:/blobroot` . Volg de stappen om [Directory toegang te verlenen aan de container gebruiker](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
+     - Voor Windows-containers is de indeling ** \<your storage path or volume> : C:/BlobRoot**. Bijvoorbeeld
+         - [volume koppeling](https://docs.docker.com/storage/volumes/)gebruiken: `my-volume:C:/BlobRoot` .
+         - [binding koppelen](https://docs.docker.com/storage/bind-mounts/)gebruiken: `C:/ContainerData:C:/BlobRoot` .
          - In plaats van uw lokale station te gebruiken, kunt u uw SMB-netwerk locatie toewijzen voor meer informatie Raadpleeg [SMB share gebruiken als uw lokale opslag](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)
 
      > [!IMPORTANT]
      > Wijzig de tweede helft van de opslag koppelings waarde niet, die verwijst naar een specifieke locatie in het Blob Storage op IoT Edge-module. De opslag koppeling moet altijd eindigen op **:/blobroot** for Linux-containers en **: C:/blobroot** voor Windows-containers.
 
-1. Configureer [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) en [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) voor uw module door de volgende JSON toe te voegen aan het bestand *Deployment. Temp late. json* . Configureer elke eigenschap met een geschikte waarde en sla het bestand op. Als u de IoT Edge Simulator gebruikt, stelt u de waarden in op de verwante omgevings variabelen voor deze eigenschappen, die u kunt vinden in de sectie uitleg van [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) en [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties)
+1. Configureer [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) en [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) voor uw module door de volgende JSON toe te voegen aan de *deployment.template.jsin* het bestand. Configureer elke eigenschap met een geschikte waarde en sla het bestand op. Als u de IoT Edge Simulator gebruikt, stelt u de waarden in op de verwante omgevings variabelen voor deze eigenschappen, die u kunt vinden in de sectie uitleg van [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) en [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties)
 
    ```json
    "<your azureblobstorageoniotedge module name>":{
@@ -240,17 +239,17 @@ Azure IoT Edge biedt sjablonen in Visual Studio code om u te helpen bij het ontw
 
    Voor informatie over het configureren van deviceToCloudUploadProperties en deviceAutoDeleteProperties nadat de module is geïmplementeerd, raadpleegt u [de module twee bewerken](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin). Zie [EdgeAgent gewenste eigenschappen](module-edgeagent-edgehub.md#edgeagent-desired-properties)voor meer informatie over de opties voor het maken van containers, het opnieuw opstarten van beleid en de gewenste status.
 
-1. Sla het bestand *deployment.template.json* op.
+1. Sla de *deployment.template.jsop in* het bestand.
 
-1. Klik met de rechter muisknop op **implementatie. json** en selecteer **IOT Edge implementatie manifest genereren**.
+1. Klik met de rechter muisknop op **deployment.template.js** en selecteer **IOT Edge implementatie manifest genereren**.
 
-1. Visual Studio code maakt gebruik van de informatie die u hebt verstrekt in *implementatie. Temp late. json* en gebruikt deze om een nieuw implementatie manifest bestand te maken. Het implementatie manifest wordt gemaakt in **een nieuwe configuratiemap** in de werk ruimte van de oplossing. Zodra u dat bestand hebt, kunt u de stappen volgen in [Azure IOT Edge-modules implementeren vanuit Visual Studio code](how-to-deploy-modules-vscode.md) of [Azure IOT Edge modules implementeren met behulp van Azure CLI 2,0](how-to-deploy-modules-cli.md).
+1. Visual Studio code haalt de informatie op die u in *deployment.template.js* hebt gegeven en gebruikt deze om een nieuw manifest bestand voor de implementatie te maken. Het implementatie manifest wordt gemaakt in **een nieuwe configuratiemap** in de werk ruimte van de oplossing. Zodra u dat bestand hebt, kunt u de stappen volgen in [Azure IOT Edge-modules implementeren vanuit Visual Studio code](how-to-deploy-modules-vscode.md) of [Azure IOT Edge modules implementeren met behulp van Azure CLI 2,0](how-to-deploy-modules-cli.md).
 
 ## <a name="deploy-multiple-module-instances"></a>Meerdere module-exemplaren implementeren
 
 Als u meerdere exemplaren van de Azure Blob Storage op IoT Edge module wilt implementeren, moet u een ander opslagpad opgeven en de `HostPort` waarde wijzigen waaraan de module is gekoppeld. De BLOB storage-modules bieden altijd poort 11002 in de container, maar u kunt declareren aan welke poort deze is gebonden op de host.
 
-Bewerk de **container Create-opties** (in de Azure Portal) of het veld **createOptions** (in het bestand *Deployment. sjabloon. json* in Visual Studio code) om `HostPort` de waarde te wijzigen:
+Bewerk de opties voor het maken van een **container** (in de Azure Portal) of het veld **createOptions** (in de *deployment.template.jsvoor* het bestand in Visual Studio code) om de waarde te wijzigen `HostPort` :
 
 ```json
 "PortBindings":{

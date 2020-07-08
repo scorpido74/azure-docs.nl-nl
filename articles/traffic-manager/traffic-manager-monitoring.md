@@ -11,10 +11,9 @@ ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: rohink
 ms.openlocfilehash: 61aafbe8cb12e93d72f5efd01155f06fb3ec0c28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80757273"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Eindpuntbewaking in Traffic Manager
@@ -40,7 +39,7 @@ Als u eindpunt bewaking wilt configureren, moet u de volgende instellingen opgev
 
 ## <a name="how-endpoint-monitoring-works"></a>Hoe eindpunt controle werkt
 
-Als het bewakings protocol is ingesteld als HTTP of HTTPS, wordt door de agent van Traffic Manager zoeken een GET-aanvraag naar het eind punt gemaakt met behulp van het Protocol, de poort en het relatieve pad dat is opgegeven. Als er een 200-OK-antwoord wordt teruggestuurd of een van de antwoorden die zijn geconfigureerd in de **verwachte status codes \***, wordt dat eind punt als gezond beschouwd. Als het antwoord een andere waarde is, of als er geen reactie wordt ontvangen binnen de opgegeven time-outperiode, wordt de Traffic Manager hand leiding van de agent opnieuw geprobeerd, afhankelijk van de instelling van het getolerantiete aantal fouten (er worden geen nieuwe pogingen gedaan als deze instelling 0 is). Als het aantal opeenvolgende fouten hoger is dan het aantal ingestelde fouten, wordt het eind punt als beschadigd gemarkeerd. 
+Als het bewakings protocol is ingesteld als HTTP of HTTPS, wordt door de agent van Traffic Manager zoeken een GET-aanvraag naar het eind punt gemaakt met behulp van het Protocol, de poort en het relatieve pad dat is opgegeven. Als er een 200-OK-antwoord wordt teruggestuurd of een van de antwoorden die zijn geconfigureerd in de **verwachte status codes \* **, wordt dat eind punt als gezond beschouwd. Als het antwoord een andere waarde is, of als er geen reactie wordt ontvangen binnen de opgegeven time-outperiode, wordt de Traffic Manager hand leiding van de agent opnieuw geprobeerd, afhankelijk van de instelling van het getolerantiete aantal fouten (er worden geen nieuwe pogingen gedaan als deze instelling 0 is). Als het aantal opeenvolgende fouten hoger is dan het aantal ingestelde fouten, wordt het eind punt als beschadigd gemarkeerd. 
 
 Als het bewakings protocol TCP is, initieert de Traffic Manager zoeken-agent een TCP-verbindings aanvraag met behulp van de opgegeven poort. Als het eind punt reageert op de aanvraag met een reactie op het tot stand brengen van de verbinding, wordt die status controle gemarkeerd als geslaagd en wordt de TCP-verbinding door de agent van de Traffic Manager gezocht. Als het antwoord een andere waarde is, of als er geen reactie wordt ontvangen binnen de opgegeven time-outperiode, wordt de Traffic Manager hand leiding van de agent opnieuw geprobeerd, afhankelijk van het aantal ingestelde fouten (er worden geen nieuwe pogingen gedaan als deze instelling 0 is). Als het aantal opeenvolgende fouten hoger is dan het aantal ingestelde fouten, is dat eind punt gemarkeerd als beschadigd.
 
@@ -67,7 +66,7 @@ Met de instelling profiel status kunt u een specifiek profiel in-of uitschakelen
 
 Status van eindpunt monitor is een door Traffic Manager gegenereerde waarde waarmee de status van het eind punt wordt weer gegeven. U kunt deze instelling niet hand matig wijzigen. De eindpunt Monitor status is een combi natie van de resultaten van de eindpunt bewaking en de geconfigureerde eindpunt status. De mogelijke waarden van de status van de eindpunt monitor worden weer gegeven in de volgende tabel:
 
-| Profile status | Eindpunt status | Status van eindpunt monitor | Opmerkingen |
+| Profile status | Eindpunt status | Status van eindpunt monitor | Notities |
 | --- | --- | --- | --- |
 | Uitgeschakeld |Ingeschakeld |Niet-actief |Het profiel is uitgeschakeld. Hoewel de status van het eind punt is ingeschakeld, heeft de profiel status (uitgeschakeld) prioriteit. Eind punten in uitgeschakelde profielen worden niet bewaakt. Er wordt een NXDOMAIN-respons code geretourneerd voor de DNS-query. |
 | &lt;alle&gt; |Uitgeschakeld |Uitgeschakeld |Het eind punt is uitgeschakeld. Uitgeschakelde eind punten worden niet bewaakt. Het eind punt is niet opgenomen in DNS-antwoorden, waardoor er geen verkeer wordt ontvangen. |
@@ -85,9 +84,9 @@ Zie [geneste Traffic Manager profielen](traffic-manager-nested-profiles.md)voor 
 
 De profiel Monitor status is een combi natie van de geconfigureerde profiel status en de status waarden van de eindpunt monitor voor alle eind punten. De mogelijke waarden worden beschreven in de volgende tabel:
 
-| Profiel status (zoals geconfigureerd) | Status van eindpunt monitor | Status van profiel monitor | Opmerkingen |
+| Profiel status (zoals geconfigureerd) | Status van eindpunt monitor | Status van profiel monitor | Notities |
 | --- | --- | --- | --- |
-| Uitgeschakeld |&lt;een&gt; of meer profielen zonder gedefinieerde eind punten. |Uitgeschakeld |Het profiel is uitgeschakeld. |
+| Uitgeschakeld |&lt;een &gt; of meer profielen zonder gedefinieerde eind punten. |Uitgeschakeld |Het profiel is uitgeschakeld. |
 | Ingeschakeld |De status van ten minste één eind punt is gedegradeerd. |Verminderd beschikbaar |Controleer de afzonderlijke eindpunt status waarden om te bepalen welke eind punten verdere aandacht vereisen. |
 | Ingeschakeld |De status van ten minste één eind punt is online. Geen van de eind punten heeft een gedegradeerde status. |Online |Het verkeer wordt geaccepteerd door de service. Er is geen verdere actie vereist. |
 | Ingeschakeld |De status van ten minste één eind punt is CheckingEndpoint. Er zijn geen eind punten in de online of gedegradeerde status. |CheckingEndpoints |Deze overgangs status treedt op wanneer een profiel wordt gemaakt of ingeschakeld. De status van het eind punt wordt voor de eerste keer gecontroleerd. |

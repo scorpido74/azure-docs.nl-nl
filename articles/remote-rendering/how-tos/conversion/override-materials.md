@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
 ms.openlocfilehash: 90653db4c572877a728964851a99beebf2e823a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681478"
 ---
 # <a name="override-materials-during-model-conversion"></a>Materialen overschrijven tijden modelconversie
@@ -38,7 +37,7 @@ In dit geval kan een `box_materials_override.json` bestand als volgt worden gema
 ]
 ```
 
-Het `box_materials_override.json` bestand wordt in de invoer container geplaatst en er wordt `ConversionSettings.json` een toegevoegd naast `box.fbx`, waarmee wordt aangegeven dat het overschrijvings bestand moet worden gevonden (Zie [de model conversie configureren](configure-model-conversion.md)):
+Het `box_materials_override.json` bestand wordt in de invoer container geplaatst en er `ConversionSettings.json` wordt een toegevoegd naast `box.fbx` , waarmee wordt aangegeven dat het overschrijvings bestand moet worden gevonden (Zie [de model conversie configureren](configure-model-conversion.md)):
 
 ```json
 {
@@ -52,7 +51,7 @@ Wanneer het model wordt geconverteerd, worden de nieuwe instellingen toegepast.
 
 Het [kleuren materiaal](../../overview/features/color-materials.md) model beschrijft een voortdurend gearceerd Opper vlak dat onafhankelijk is van de belichting.
 Dit is handig voor assets die zijn gemaakt door Photogrammetry-algoritmen, bijvoorbeeld.
-In materiaal onderdrukking bestanden kan een materiaal worden gedeclareerd als een kleur materiaal door in te stellen `unlit` op `true`.
+In materiaal onderdrukking bestanden kan een materiaal worden gedeclareerd als een kleur materiaal door in te stellen `unlit` op `true` .
 
 ```json
 [
@@ -71,7 +70,7 @@ In materiaal onderdrukking bestanden kan een materiaal worden gedeclareerd als e
 
 Soms wilt u het conversie proces specifieke structuur toewijzingen negeren. Dit kan het geval zijn wanneer het model is gegenereerd door een hulp programma waarmee speciale kaarten worden gegenereerd die niet goed zijn begrepen door de renderer. Bijvoorbeeld een ' OpacityMap ' die wordt gebruikt voor het definiëren van iets anders dan dekking, of een model waarin ' NormalMap ' is opgeslagen als ' BumpMap '. (In het laatste geval kunt u "NormalMap" negeren. Dit zorgt ervoor dat het conversie programma "BumpMap" als "NormalMap" gebruikt.)
 
-Het principe is eenvoudig. Voeg een eigenschap toe met `ignoreTextureMaps` de naam en voeg een structuur toewijzing toe die u wilt negeren:
+Het principe is eenvoudig. Voeg een eigenschap toe met de naam `ignoreTextureMaps` en voeg een structuur toewijzing toe die u wilt negeren:
 
 ```json
 [
@@ -86,7 +85,7 @@ Zie het onderstaande JSON-schema voor een volledige lijst met patroon toewijzing
 
 ## <a name="json-schema"></a>JSON-schema
 
-Hier wordt het volledige JSON-schema voor materiaal bestanden gegeven. Met uitzonde ring `unlit` van `ignoreTextureMaps`en, zijn de beschik bare eigenschappen een subset van de eigenschappen die worden beschreven in de secties op het [kleuren](../../overview/features/color-materials.md) -en [PBR-materiaal](../../overview/features/pbr-materials.md) model.
+Hier wordt het volledige JSON-schema voor materiaal bestanden gegeven. Met uitzonde ring van `unlit` en `ignoreTextureMaps` , zijn de beschik bare eigenschappen een subset van de eigenschappen die worden beschreven in de secties op het [kleuren](../../overview/features/color-materials.md) -en [PBR-materiaal](../../overview/features/pbr-materials.md) model.
 
 ```json
 {

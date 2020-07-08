@@ -8,10 +8,9 @@ ms.date: 04/04/2020
 ms.author: thvankra
 ms.reviewer: sngun
 ms.openlocfilehash: 7de38097acdbfa1f9c9b90f3051c68dec5465b32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80758025"
 ---
 # <a name="secondary-indexing-in-azure-cosmos-db-cassandra-api"></a>Secundaire indexering in Azure Cosmos DB Cassandra-API
@@ -51,7 +50,7 @@ insert into sampleks.t1(user_id,lastname) values (8, 'Theo');
 insert into sampleks.t1(user_id,lastname) values (9, 'jagan');
 ```
 
-Als u probeert de volgende-instructie uit te voeren, wordt er een fout melding weer met de vraag `ALLOW FILTERING`: 
+Als u probeert de volgende-instructie uit te voeren, wordt er een fout melding weer met de vraag `ALLOW FILTERING` : 
 
 ```shell
 select user_id, lastname from sampleks.t1 where lastname='nishu';
@@ -62,10 +61,10 @@ Hoewel de Cassandra-API ondersteuning biedt voor het filteren van toestaan, word
 ```shell
 CREATE INDEX ON sampleks.t1 (lastname);
 ```
-Nadat u in het veld LastName een index hebt gemaakt, kunt u de vorige query nu uitvoeren. Met Cassandra-API in Azure Cosmos DB hoeft u geen index naam op te geven. Er wordt een standaard index `tablename_columnname_idx` met notatie gebruikt. Bijvoorbeeld, ` t1_lastname_idx` is de index naam voor de vorige tabel.
+Nadat u in het veld LastName een index hebt gemaakt, kunt u de vorige query nu uitvoeren. Met Cassandra-API in Azure Cosmos DB hoeft u geen index naam op te geven. Er wordt een standaard index met notatie `tablename_columnname_idx` gebruikt. Bijvoorbeeld, ` t1_lastname_idx` is de index naam voor de vorige tabel.
 
 ## <a name="dropping-the-index"></a>De index verwijderen 
-U moet weten wat de index naam is om de index te verwijderen. Voer de `desc schema` opdracht uit om de beschrijving van de tabel op te halen. De uitvoer van deze opdracht bevat de index naam in de indeling `CREATE INDEX tablename_columnname_idx ON keyspacename.tablename(columnname)`. U kunt vervolgens de index naam gebruiken om de index te verwijderen, zoals wordt weer gegeven in het volgende voor beeld:
+U moet weten wat de index naam is om de index te verwijderen. Voer de `desc schema` opdracht uit om de beschrijving van de tabel op te halen. De uitvoer van deze opdracht bevat de index naam in de indeling `CREATE INDEX tablename_columnname_idx ON keyspacename.tablename(columnname)` . U kunt vervolgens de index naam gebruiken om de index te verwijderen, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```shell
 drop index sampleks.t1_lastname_idx;
@@ -73,4 +72,4 @@ drop index sampleks.t1_lastname_idx;
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over hoe [automatische indexering](index-overview.md) werkt in azure Cosmos db
-* [Apache Cassandra-functies die worden ondersteund door Azure Cosmos DB Cassandra-API](cassandra-support.md)
+* [Door Azure Cosmos DB Cassandra API ondersteunde Apache Cassandra-functies](cassandra-support.md)

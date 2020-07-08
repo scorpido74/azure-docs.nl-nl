@@ -9,27 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.openlocfilehash: 6e9d1f35d021c3381f9c2887dfb1c150bb720871
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80804653"
 ---
 # <a name="use-the-azure-maps-services-module"></a>De Azure Maps Services-module gebruiken
 
-De Azure Maps Web-SDK biedt een *Services-module*. Deze module is een helper-bibliotheek waarmee u gemakkelijk de Azure Maps REST-services in web-of node. js-toepassingen kunt gebruiken met behulp van Java script of type script.
+De Azure Maps Web-SDK biedt een *Services-module*. Deze module is een helper-bibliotheek waarmee u gemakkelijk de Azure Maps REST-services in web-of Node.js toepassingen kunt gebruiken met behulp van Java script of type script.
 
 ## <a name="use-the-services-module-in-a-webpage"></a>De Services-module op een webpagina gebruiken
 
 1. Maak een nieuw HTML-bestand.
 1. Laad de Azure Maps Services-module. U kunt deze op twee manieren laden:
-    - Gebruik de wereld wijd gehoste Azure Content Delivery Network-versie van de module Azure Maps Services. Voeg een script verwijzing toe aan `<head>` het element van het bestand:
+    - Gebruik de wereld wijd gehoste Azure Content Delivery Network-versie van de module Azure Maps Services. Voeg een script verwijzing toe aan het `<head>` element van het bestand:
 
         ```html
         <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
         ```
 
-    - U kunt ook de Services-module voor de Azure Maps Web SDK-bron code lokaal laden met behulp van het [Azure-Maps-rest NPM-](https://www.npmjs.com/package/azure-maps-rest) pakket en dit vervolgens hosten met uw app. Dit pakket bevat ook type script definities. Gebruik deze opdracht:
+    - U kunt ook de Services-module voor de Azure Maps Web SDK-bron code lokaal laden met behulp van het [Azure-Maps-rest NPM-](https://www.npmjs.com/package/azure-maps-rest) pakket en dit vervolgens hosten met uw app. Dit pakket bevat ook TypeScript-definities. Gebruik deze opdracht:
     
         > **npm install azure-maps-rest**
     
@@ -160,7 +159,7 @@ De Azure Maps Web-SDK biedt een *Services-module*. Deze module is een helper-bib
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="De Services-module gebruiken" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Bekijk de pen <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>met behulp van de services</a> -<a href='https://codepen.io/azuremaps'>@azuremaps</a>module door Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+Bekijk de pen <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>met behulp van de Services-module</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 <br/>
@@ -169,7 +168,7 @@ Bekijk de pen <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>met behulp van 
 
 De Azure Maps Web-SDK ondersteunt de Azure Government Cloud. Alle Java script-en CSS-Url's die worden gebruikt voor toegang tot de Azure Maps Web-SDK blijven hetzelfde, maar de volgende taken moeten worden uitgevoerd om verbinding te maken met de Azure Government Cloud versie van het Azure Maps platform.
 
-Wanneer u het besturings element interactieve map gebruikt, voegt u de volgende regel code toe voordat u een `Map` instantie van de klasse maakt. 
+Wanneer u het besturings element interactieve map gebruikt, voegt u de volgende regel code toe voordat u een instantie van de `Map` klasse maakt. 
 
 ```javascript
 atlas.setDomain('atlas.azure.us');
@@ -183,7 +182,7 @@ Wanneer u de Services-module gebruikt, moet het domein voor de services worden i
 var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 ```
 
-Als u rechtstreeks toegang hebt tot de Azure Maps REST-services, wijzigt `atlas.azure.us`u het URL-domein in. Als u bijvoorbeeld de Search API-service gebruikt, wijzigt u het URL- `https://atlas.microsoft.com/search/` domein `https://atlas.azure.us/search/`van in naar.
+Als u rechtstreeks toegang hebt tot de Azure Maps REST-services, wijzigt u het URL-domein in `atlas.azure.us` . Als u bijvoorbeeld de Search API-service gebruikt, wijzigt u het URL-domein van `https://atlas.microsoft.com/search/` in naar `https://atlas.azure.us/search/` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -4,10 +4,9 @@ description: Een lijst met de Azure-resource typen wordt gebruikt om de mogelijk
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 3a3fbc531750bec4b16e38f1fe79f613c1b94f5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80754870"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Resource typen die de mogelijkheden van andere resources uitbreiden
@@ -26,10 +25,10 @@ Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden 
 - Micro soft. Authorization/findOrphanRoleAssignments
 - Micro soft. autorisatie/vergren delingen
 - Micro soft. Authorization/permissions
-- Micro soft. Authorization/policyAssignments
+- Microsoft.Authorization/policyAssignments
 - Micro soft. Authorization/policyDefinitions
 - Micro soft. Authorization/policySetDefinitions
-- Micro soft. Authorization/roleAssignments
+- Microsoft.Authorization/roleAssignments
 - Micro soft. Authorization/roleAssignmentsUsageMetrics
 - Micro soft. Authorization/roleDefinitions
 - Micro soft. facturering/billingPeriods

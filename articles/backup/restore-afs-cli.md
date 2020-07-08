@@ -4,10 +4,9 @@ description: Meer informatie over het gebruik van de Azure CLI voor het herstell
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.openlocfilehash: 980044011e3417a2aff8447a939e02299923da38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80757088"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>Azure-bestands shares herstellen met Azure CLI
@@ -138,7 +137,7 @@ Geef de volgende para meters op voor de items die u wilt herstellen:
 
 Gebruik de herstellen [AZ Backup Restore-Azure files](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefiles) cmdlet with Restore Mode set to *originallocation* om specifieke bestanden of mappen op de oorspronkelijke locatie te herstellen.
 
-In het volgende voor beeld wordt het bestand *RestoreTest. txt* op de oorspronkelijke locatie teruggezet: de *Azure files* -bestands share.
+In het volgende voor beeld wordt het *RestoreTest.txt* -bestand teruggezet op de oorspronkelijke locatie: de bestands share *Azure files* .
 
 ```azurecli-interactive
 az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore/RestoreTest.txt" --resolve-conflict overwrite  --out table
@@ -160,7 +159,7 @@ Als u specifieke bestanden of mappen naar een andere locatie wilt herstellen, ge
 * **--doel bestands share**: de bestands share binnen het doel-opslag account waarnaar de inhoud van de back-up wordt teruggezet.
 * **--doelmap**: de map onder de bestands share waarnaar gegevens worden teruggezet. Als de gegevens waarvan een back-up is gemaakt, moeten worden hersteld naar een hoofdmap, geeft u de waarde van de doelmap op als een lege teken reeks.
 
-In het volgende voor beeld wordt het *RestoreTest. txt* -bestand dat oorspronkelijk aanwezig is in de bestands share *Azure files* , teruggezet naar een alternatieve locatie: de map *restoredata* in de *azurefiles1* -bestands share die wordt gehost in het *afaccount1* -opslag account.
+In het volgende voor beeld wordt het *RestoreTest.txt* bestand dat oorspronkelijk aanwezig is in de *Azure files* -bestands share, teruggezet naar een alternatieve locatie: de map *restoredata* in de *azurefiles1* -bestands share die wordt gehost in het *afaccount1* -opslag account.
 
 ```azurecli-interactive
 az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --source-file-type file --source-file-path "Restore/RestoreTest.txt" --out table
@@ -178,7 +177,7 @@ Het **naam** kenmerk in de uitvoer komt overeen met de naam van de taak die word
 
 Als u een herstel bewerking voor meerdere items wilt uitvoeren, geeft u de waarde voor de para meter **Source-File-Path** door als **ruimte gescheiden** paden van alle bestanden of mappen die u wilt herstellen.
 
-In het volgende voor beeld worden de docx-bestanden *Restore. txt* en *AFS Test Report* hersteld op de oorspronkelijke locatie.
+In het volgende voor beeld worden de *Restore.txt* -en *AFS-Report.docxtest* bestanden op de oorspronkelijke locatie hersteld.
 
 ```azurecli-interactive
 az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932889937058317910 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore Test.txt" "AFS Testing Report.docx" --resolve-conflict overwrite  --out table

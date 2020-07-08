@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7f2b1031659864ae338bb0aa320c048ea23c21f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681699"
 ---
 # <a name="rendering-modes"></a>Weergavemodellen
@@ -38,7 +37,7 @@ In de **DepthBasedComposition** -modus wordt elke betrokken GPU weer gegeven met
 
 Elke enkele GPU maakt gebruik van MSAA om lokale inhoud te autoaliasren. Er kan echter sprake zijn van inherente aliassen tussen de randen van afzonderlijke Gpu's. Dit effect wordt beperkt door de postprocessing van de uiteindelijke afbeelding, maar de MSAA-kwaliteit is nog steeds erger dan in de **TileBasedComposition** -modus.
 
-MSAA-artefacten worden geïllustreerd in de volgende afbeelding ![: MSAA in DepthBasedComposition](./media/service-render-mode-balanced.png)
+MSAA-artefacten worden geïllustreerd in de volgende afbeelding: ![ MSAA in DepthBasedComposition](./media/service-render-mode-balanced.png)
 
 Antialiasing werkt goed tussen de Sculpture en het gordijn, omdat beide onderdelen op dezelfde GPU worden weer gegeven. Anderzijds toont de rand tussen gordijn en muur een aantal aliassen, omdat deze twee delen bestaan uit afzonderlijke Gpu's.
 
@@ -50,7 +49,7 @@ De prestatie kenmerken voor beide modi variëren op basis van de use-case en zij
 
 ## <a name="setting-the-render-mode"></a>De weergave modus instellen
 
-De weergave modus die wordt gebruikt op een externe rendering-VM `AzureSession.ConnectToRuntime` wordt opgegeven `ConnectToRuntimeParams`tijdens via de.
+De weergave modus die wordt gebruikt op een externe rendering-VM wordt opgegeven tijdens `AzureSession.ConnectToRuntime` via de `ConnectToRuntimeParams` .
 
 ```cs
 async void ExampleConnect(AzureSession session)

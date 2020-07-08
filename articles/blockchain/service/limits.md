@@ -5,10 +5,9 @@ ms.date: 04/02/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
 ms.openlocfilehash: 71e1bebf10fa0142870d03977182472da1ad031f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80676523"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Limieten in azure Block Chain Service
@@ -26,9 +25,9 @@ De maximum limieten voor trans acties en validatie knooppunten zijn afhankelijk 
 
 Uw consortium netwerk moet ten minste twee knoop punten van de Standard-laag van Azure Block Chain service hebben. De Standard-laag knooppunten bevatten twee validatie knooppunten. Er zijn vier validatie knooppunten vereist om te voldoen aan de [fout tolerantie consensus van Istanboel Byzantine](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus).
 
-De basis-laag gebruiken is voor het ontwikkelen, testen en controleren van concepten. De Standard-laag gebruiken voor implementaties van productie cijfers. U moet ook de laag *standaard* gebruiken als u Block Chain Data Manager gebruikt of een groot aantal privé transacties verzendt.
+De basis-laag gebruiken is voor het ontwikkelen, testen en controleren van concepten. De Standard-laag gebruiken voor implementaties van productie cijfers. U moet de categorie *Standard* ook gebruiken als u Blockchain Data Manager gebruikt of een groot aantal privé transacties verzendt.
 
-Het wijzigen van de prijs categorie tussen basis en standaard nadat het maken van een lid is niet ondersteund.
+Wanneer een lid is gemaakt, kan de prijscategorie niet meer worden gewijzigd van Basic in Standard en andersom.
 
 ## <a name="storage-capacity"></a>Opslagcapaciteit
 

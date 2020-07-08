@@ -6,20 +6,19 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 1d9b2ca163b70435a6c0e245e66492e8e2866639
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80680022"
 ---
 # <a name="texconv---texture-conversion-tool"></a>TexConv-patroon conversie programma
 
 TexConv is een opdracht regel programma voor het verwerken van structuren van typische invoer indelingen, zoals PNG, TGA, JPEG en DDS in geoptimaliseerde indelingen voor runtime-verbruik.
-Het meest voorkomende scenario is om één invoer bestand `A.xxx` te converteren naar een geoptimaliseerde indeling `B.yyy`. het hulp programma heeft veel extra opties voor Geavanceerd gebruik.
+Het meest voorkomende scenario is om één invoer bestand te converteren `A.xxx` naar een geoptimaliseerde indeling `B.yyy` . het hulp programma heeft veel extra opties voor Geavanceerd gebruik.
 
 ## <a name="command-line-help"></a>Help voor de opdracht regel
 
-Als u TexConv. exe uitvoert `--help` met de para meter, worden alle beschik bare opties weer geven. Daarnaast drukt TexConv de gebruikte opties af wanneer deze wordt uitgevoerd, zodat u beter kunt begrijpen wat er gebeurt. Raadpleeg deze uitvoer voor meer informatie.
+Als u TexConv.exe met de `--help` para meter uitvoert, worden alle beschik bare opties weer geven. Daarnaast drukt TexConv de gebruikte opties af wanneer deze wordt uitgevoerd, zodat u beter kunt begrijpen wat er gebeurt. Raadpleeg deze uitvoer voor meer informatie.
 
 ## <a name="general-usage"></a>Algemeen gebruik
 
@@ -37,13 +36,13 @@ TexConv.exe -out D:/result.dds -in0 D:/img.jpg -rgba in0
 
 ## <a name="multiple-input-files"></a>Meerdere invoer bestanden
 
-Als u de uitvoer van meerdere invoer bestanden wilt samen stellen, geeft u elk `-in` invoer bestand op met behulp van de optie met een verhoogd aantal:
+Als u de uitvoer van meerdere invoer bestanden wilt samen stellen, geeft u elk invoer bestand op met behulp van de `-in` optie met een verhoogd aantal:
 
 ```cmd
 -in0 D:/img0.jpg -in1 D:/img1.jpg -in2 D:/img2.jpg ...
 ```
 
-Bij het samen stellen van een cubemap vanuit 2D-bitmappatronen, kan er `-right`ook `-left`een `-top`, `-bottom`, `-front`, `-back` , `-px`, `-nx`of `-py`, `-ny`, `-pz`, `-nz`,, worden gebruikt.
+Bij het samen stellen van een cubemap vanuit 2D-bitmappatronen, kan er ook een `-right` ,, `-left` `-top` , `-bottom` ,, of,,,, `-front` `-back` `-px` `-nx` `-py` `-ny` `-pz` , worden gebruikt `-nz` .
 
 Als u deze invoer wilt toewijzen aan het uitvoer bestand, is een juiste kanaal toewijzing nodig.
 
@@ -67,7 +66,7 @@ Het opgeven van de toewijzing voor elk kanaal biedt de grootste flexibiliteit. V
 
 De volgende opties voor kanaal toewijzing zijn beschikbaar:
 
-- `-r`, `-g`, `-b`, `-a` : Deze geven toewijzingen voor één kanaal op
+- `-r`, `-g` , `-b` , `-a` : Deze geven toewijzingen voor één kanaal op
 - `-rg`: Geef de toewijzingen van het rode en groene kanaal op.
 - `-rgb`: Geef de toewijzingen voor het rood, groen en blauw kanaal op.
 - `-rgba`: Hiermee geeft u alle vier kanaal toewijzingen op.
@@ -89,9 +88,9 @@ U kunt ook kanalen vullen met zwart of wit:
 
 ## <a name="common-options"></a>Algemene opties
 
-De meest interessante opties worden hieronder weer gegeven. Meer opties worden weer gegeven `TexConv --help`door.
+De meest interessante opties worden hieronder weer gegeven. Meer opties worden weer gegeven door `TexConv --help` .
 
-### <a name="output-type"></a>Uitvoer type
+### <a name="output-type"></a>Uitvoertype
 
 - `-type 2D`: De uitvoer is een gewone 2D-afbeelding.
 - `-type Cubemap`: De uitvoer is een cubemap-installatie kopie. Alleen ondersteund voor DDS-uitvoer bestanden. Als deze is opgegeven, kan de cubemap worden samengesteld op basis van 6 reguliere 2D-invoer installatie kopieën.
@@ -111,7 +110,7 @@ Standaard genereert TexConv mipmaps wanneer de uitvoer indeling dit ondersteunt.
 
 ### <a name="usage-srgb--gamma-correction"></a>Gebruik (sRGB/gamma correctie)
 
-Met `-usage` de optie geeft u het doel van de uitvoer op en vertelt u TexConv of gamma correctie moet worden toegepast op de invoer-en uitvoer bestanden. Het gebruik is alleen van invloed op de RGB-kanalen. Het Alfa kanaal wordt altijd geacht ' lineaire ' waarden te bevatten. Als er geen gebruik is opgegeven, probeert de modus ' auto ' het gebruik te detecteren vanuit de indeling en de bestands naam van de eerste invoer installatie kopie. Zo zijn bijvoorbeeld enkelvoudige en dubbele kanaal uitvoer indelingen altijd lineair. Controleer de uitvoer om te zien welke beslissings TexConv zijn gemaakt.
+`-usage`Met de optie geeft u het doel van de uitvoer op en vertelt u TexConv of gamma correctie moet worden toegepast op de invoer-en uitvoer bestanden. Het gebruik is alleen van invloed op de RGB-kanalen. Het Alfa kanaal wordt altijd geacht ' lineaire ' waarden te bevatten. Als er geen gebruik is opgegeven, probeert de modus ' auto ' het gebruik te detecteren vanuit de indeling en de bestands naam van de eerste invoer installatie kopie. Zo zijn bijvoorbeeld enkelvoudige en dubbele kanaal uitvoer indelingen altijd lineair. Controleer de uitvoer om te zien welke beslissings TexConv zijn gemaakt.
 
 - `-usage Linear`: De uitvoer afbeelding bevat waarden die geen kleuren vertegenwoordigen. Dit is meestal het geval voor metalen en ruwe bitmappatronen, evenals alle soorten maskers.
 

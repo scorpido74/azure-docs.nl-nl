@@ -6,10 +6,9 @@ ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
 ms.openlocfilehash: 6f0605077bd131c54f27e3bf46240331557fd92e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681647"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>Azure Blob Storage gebruiken voor modelconversie
@@ -27,9 +26,9 @@ De [model conversie](model-conversion.md) service vereist toegang tot Azure Blob
 
 Het maken van het opslag account en de BLOB-containers kunnen worden uitgevoerd met een van de volgende hulpprogram ma's:
 
-- [Azure Portal](https://portal.azure.com)
+- [Azure-portal](https://portal.azure.com)
 - [AZ-opdracht regel](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- [Azure Opslagverkenner](https://azure.microsoft.com/features/storage-explorer/)
+- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 - Sdk's (C#, python...)
 
 ## <a name="ensure-azure-remote-rendering-can-access-your-storage-account"></a>Ervoor zorgen dat externe rendering van Azure toegang kan krijgen tot uw opslag account
@@ -53,11 +52,11 @@ Een SAS-URI kan worden gegenereerd met een van de volgende opties:
 - AZ Power shell-module
   - Zie het [voor beeld van Power shell-scripts](../../samples/powershell-example-scripts.md)
 - [AZ-opdracht regel](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- [Azure Opslagverkenner](https://azure.microsoft.com/features/storage-explorer/)
+- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
   - Klik met de rechter muisknop op de container ' Get Shared Access Signature ' (lezen, lijst toegang voor invoer container, schrijf toegang voor uitvoer container)
 - Sdk's (C#, python...)
 
-Een voor beeld van het gebruik van hand tekeningen voor gedeelde toegang in activa conversie wordt weer gegeven in conversie. ps1 van de [Power shell-voorbeeld scripts](../../samples/powershell-example-scripts.md#script-conversionps1).
+Een voor beeld van het gebruik van hand tekeningen voor gedeelde toegang in activa conversie wordt weer gegeven in Conversion.ps1 van de [Power shell-voorbeeld scripts](../../samples/powershell-example-scripts.md#script-conversionps1).
 
 ## <a name="upload-an-input-model"></a>Een invoer model uploaden
 
@@ -70,7 +69,7 @@ Als u een model wilt converteren, moet u dit uploaden met een van de volgende op
 - [Een opslag-SDK (python, C#...) gebruiken](https://docs.microsoft.com/azure/storage/)
 - [De Azure Storage REST-Api's gebruiken](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)
 
-Zie conversie. ps1 van de [Power shell-voorbeeld scripts](../../samples/powershell-example-scripts.md#script-conversionps1)voor een voor beeld van het uploaden van gegevens voor conversie.
+Zie Conversion.ps1 van de [Power shell-voorbeeld scripts](../../samples/powershell-example-scripts.md#script-conversionps1)voor een voor beeld van het uploaden van gegevens voor conversie.
 
 ## <a name="get-a-sas-uri-for-the-converted-model"></a>Een SAS-URI voor het geconverteerde model ophalen
 

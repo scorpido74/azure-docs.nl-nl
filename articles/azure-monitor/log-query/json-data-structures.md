@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: f792820b7b0dff20e647031410ba87ac26c2495a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80672961"
 ---
 # <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>Werken met JSON en gegevens structuren in Azure Monitor-logboek query's
@@ -23,7 +22,7 @@ ms.locfileid: "80672961"
 Geneste objecten zijn objecten die andere objecten bevatten in een matrix of een kaart van sleutel-waardeparen. Deze objecten worden weer gegeven als JSON-teken reeksen. In dit artikel wordt beschreven hoe JSON wordt gebruikt om gegevens op te halen en geneste objecten te analyseren.
 
 ## <a name="working-with-json-strings"></a>Werken met JSON-teken reeksen
-Wordt `extractjson` gebruikt voor toegang tot een specifiek JSON-element in een bekend pad. Voor deze functie is een padexpressie vereist die gebruikmaakt van de volgende conventies.
+`extractjson`Wordt gebruikt voor toegang tot een specifiek JSON-element in een bekend pad. Voor deze functie is een padexpressie vereist die gebruikmaakt van de volgende conventies.
 
 - _$_ verwijzen naar de hoofdmap
 - Gebruik de vier Kante haak of punt notatie om te verwijzen naar indexen en elementen, zoals aangegeven in de volgende voor beelden.
@@ -57,7 +56,7 @@ print hosts_report
 ## <a name="working-with-objects"></a>Met objecten werken
 
 ### <a name="parsejson"></a>parsejson
-Om toegang te krijgen tot meerdere elementen in uw JSON-structuur, is het eenvoudiger om deze te openen als een dynamisch object. Wordt `parsejson` gebruikt om tekst gegevens naar een dynamisch object te casten. Wanneer de gegevens zijn geconverteerd naar een dynamisch type, kunnen er extra functies worden gebruikt voor het analyseren van de informatie.
+Om toegang te krijgen tot meerdere elementen in uw JSON-structuur, is het eenvoudiger om deze te openen als een dynamisch object. Wordt gebruikt `parsejson` om tekst gegevens naar een dynamisch object te casten. Wanneer de gegevens zijn geconverteerd naar een dynamisch type, kunnen er extra functies worden gebruikt voor het analyseren van de informatie.
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');

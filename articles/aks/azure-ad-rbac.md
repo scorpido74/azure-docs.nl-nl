@@ -6,10 +6,9 @@ services: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.openlocfilehash: ad195085c049776bf0db418c57f2c72830f1adff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80803566"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Toegang tot cluster bronnen beheren met op rollen gebaseerd toegangs beheer en Azure Active Directory identiteiten in de Azure Kubernetes-service
@@ -22,7 +21,7 @@ In dit artikel wordt beschreven hoe u Azure AD-groepslid maatschap kunt gebruike
 
 In dit artikel wordt ervan uitgegaan dat er een bestaand AKS-cluster is ingeschakeld met Azure AD-integratie. Als u een AKS-cluster nodig hebt, raadpleegt u [Azure Active Directory integreren met AKS][azure-ad-aks-cli].
 
-U moet de Azure CLI-versie 2.0.61 of hoger hebben geïnstalleerd en geconfigureerd. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][install-azure-cli].
+U moet de Azure CLI-versie 2.0.61 of hoger hebben geïnstalleerd en geconfigureerd. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][install-azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="create-demo-groups-in-azure-ad"></a>Demo groepen maken in azure AD
 
@@ -60,7 +59,7 @@ az role assignment create \
 ```
 
 > [!TIP]
-> Als er een fout optreedt zoals `Principal 35bfec9328bd4d8d9b54dea6dac57b82 does not exist in the directory a5443dcd-cd0e-494d-a387-3039b419f0d5.`, wacht u enkele seconden tot de object-id van de Azure AD-groep wordt door gegeven via de Directory `az role assignment create` en probeer de opdracht opnieuw uit te voeren.
+> Als er een fout optreedt zoals `Principal 35bfec9328bd4d8d9b54dea6dac57b82 does not exist in the directory a5443dcd-cd0e-494d-a387-3039b419f0d5.` , wacht u enkele seconden tot de object-id van de Azure AD-groep wordt door gegeven via de Directory en probeer de `az role assignment create` opdracht opnieuw uit te voeren.
 
 Maak een tweede voor beeld van een groep met de naam *opssre*:
 
@@ -83,7 +82,7 @@ Met twee voor beelden van groepen die zijn gemaakt in azure AD voor onze toepass
 
 Maak het eerste gebruikers account in azure AD met behulp van de opdracht [AZ AD user create][az-ad-user-create] .
 
-In het volgende voor beeld wordt een gebruiker gemaakt met de weergave naam *AKS dev* en de User Principal Name ( `aksdev@contoso.com`UPN) van. Werk de UPN bij zodat deze een geverifieerd domein voor uw Azure AD-Tenant bevat (Vervang *contoso.com* door uw eigen domein) en geef uw `--password` eigen beveiligde referentie op:
+In het volgende voor beeld wordt een gebruiker gemaakt met de weergave naam *AKS dev* en de User Principal Name (UPN) van `aksdev@contoso.com` . Werk de UPN bij zodat deze een geverifieerd domein voor uw Azure AD-Tenant bevat (Vervang *contoso.com* door uw eigen domein) en geef uw eigen beveiligde `--password` referentie op:
 
 ```azurecli-interactive
 AKSDEV_ID=$(az ad user create \
@@ -99,7 +98,7 @@ Voeg nu de gebruiker toe aan de *appdev* -groep die in de vorige sectie is gemaa
 az ad group member add --group appdev --member-id $AKSDEV_ID
 ```
 
-Maak een tweede gebruikers account. In het volgende voor beeld wordt een gebruiker gemaakt met de weergave naam *AKS SRE* en de User Principal Name ( `akssre@contoso.com`UPN) van. Als u de UPN opnieuw wilt bijwerken, moet u een geverifieerd domein voor uw Azure AD-Tenant toevoegen (Vervang *contoso.com* door uw eigen domein) en `--password` Geef uw eigen beveiligde referentie op:
+Maak een tweede gebruikers account. In het volgende voor beeld wordt een gebruiker gemaakt met de weergave naam *AKS SRE* en de User Principal Name (UPN) van `akssre@contoso.com` . Als u de UPN opnieuw wilt bijwerken, moet u een geverifieerd domein voor uw Azure AD-Tenant toevoegen (Vervang *contoso.com* door uw eigen domein) en geef uw eigen beveiligde `--password` referentie op:
 
 ```azurecli-interactive
 # Create a user for the SRE role
@@ -133,7 +132,7 @@ In Kubernetes definiëren *rollen* de machtigingen die moeten worden verleend en
 
 Maak eerst een rol voor de naam ruimte van de *ontwikkelaar* . Met deze rol worden volledige machtigingen verleend aan de naam ruimte. In productie omgevingen kunt u meer gedetailleerde machtigingen opgeven voor verschillende gebruikers of groepen.
 
-Maak een bestand met `role-dev-namespace.yaml` de naam en plak het volgende YAML-manifest:
+Maak een bestand `role-dev-namespace.yaml` met de naam en plak het volgende YAML-manifest:
 
 ```yaml
 kind: Role
@@ -164,7 +163,7 @@ Haal vervolgens de resource-ID voor de *appdev* -groep op met behulp van de opdr
 az ad group show --group appdev --query objectId -o tsv
 ```
 
-Maak nu een RoleBinding voor de *appdev* -groep om de eerder gemaakte rol voor naam ruimte toegang te gebruiken. Maak een bestand met `rolebinding-dev-namespace.yaml` de naam en plak het volgende YAML-manifest. Op de laatste regel vervangt u *groupObjectId* door de groeps object-id-uitvoer van de vorige opdracht:
+Maak nu een RoleBinding voor de *appdev* -groep om de eerder gemaakte rol voor naam ruimte toegang te gebruiken. Maak een bestand `rolebinding-dev-namespace.yaml` met de naam en plak het volgende YAML-manifest. Op de laatste regel vervangt u *groupObjectId* door de groeps object-id-uitvoer van de vorige opdracht:
 
 ```yaml
 kind: RoleBinding
@@ -198,7 +197,7 @@ Maak eerst een naam ruimte voor *SRE* met behulp van de [kubectl maken naam ruim
 kubectl create namespace sre
 ```
 
-Maak een bestand met `role-sre-namespace.yaml` de naam en plak het volgende YAML-manifest:
+Maak een bestand `role-sre-namespace.yaml` met de naam en plak het volgende YAML-manifest:
 
 ```yaml
 kind: Role
@@ -229,7 +228,7 @@ De resource-ID voor de *opssre* -groep ophalen met de opdracht [AZ Ad Group show
 az ad group show --group opssre --query objectId -o tsv
 ```
 
-Maak een RoleBinding voor de *opssre* -groep om de eerder gemaakte rol voor naam ruimte toegang te gebruiken. Maak een bestand met `rolebinding-sre-namespace.yaml` de naam en plak het volgende YAML-manifest. Op de laatste regel vervangt u *groupObjectId* door de groeps object-id-uitvoer van de vorige opdracht:
+Maak een RoleBinding voor de *opssre* -groep om de eerder gemaakte rol voor naam ruimte toegang te gebruiken. Maak een bestand `rolebinding-sre-namespace.yaml` met de naam en plak het volgende YAML-manifest. Op de laatste regel vervangt u *groupObjectId* door de groeps object-id-uitvoer van de vorige opdracht:
 
 ```yaml
 kind: RoleBinding
@@ -328,7 +327,7 @@ Stel de *kubeconfig* -context opnieuw in met behulp van de opdracht [AZ AKS Get-
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --overwrite-existing
 ```
 
-Probeer in de toegewezen *SRE* -naam ruimte het peul te plannen en weer te geven. Wanneer u hierom wordt gevraagd, meldt `opssre@contoso.com` u zich aan met uw eigen referenties die aan het begin van het artikel zijn gemaakt:
+Probeer in de toegewezen *SRE* -naam ruimte het peul te plannen en weer te geven. Wanneer u hierom wordt gevraagd, meldt u zich aan met uw eigen `opssre@contoso.com` referenties die aan het begin van het artikel zijn gemaakt:
 
 ```console
 kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace sre

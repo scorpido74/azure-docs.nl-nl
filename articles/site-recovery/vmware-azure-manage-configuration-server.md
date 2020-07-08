@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 56c53b9e2388cc0594076a5ef35b072216aec20d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80672742"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>De configuratie server voor nood herstel van virtuele VMware-machines/fysieke servers beheren
@@ -43,9 +42,9 @@ U kunt als volgt toegang krijgen tot de configuratie server:
 
     ![VMware wijzigen](./media/vmware-azure-manage-configuration-server/modify-vmware-server.png)
 
-U kunt de referenties ook wijzigen via CSPSConfigtool. exe.
+U kunt de referenties ook wijzigen via CSPSConfigtool.exe.
 
-1. Meld u aan bij de configuratie server en start CSPSConfigtool. exe.
+1. Meld u aan bij de configuratie server en start CSPSConfigtool.exe
 2. Kies het account dat u wilt wijzigen en klik op **bewerken**.
 3. Voer de gewijzigde referenties in en klik op **OK**
 
@@ -59,9 +58,9 @@ Wijzig de referenties die worden gebruikt om Mobility service automatisch te ins
 
     ![De referenties van de Mobility-service wijzigen](./media/vmware-azure-manage-configuration-server/modify-mobility-credentials.png)
 
-U kunt de referenties ook wijzigen via CSPSConfigtool. exe.
+U kunt de referenties ook wijzigen via CSPSConfigtool.exe.
 
-1. Meld u aan bij de configuratie server en start CSPSConfigtool. exe.
+1. Meld u aan bij de configuratie server en start CSPSConfigtool.exe
 2. Kies het account dat u wilt wijzigen en klik op **bewerken**
 3. Voer de nieuwe referenties in en klik op **OK**.
 
@@ -74,9 +73,9 @@ Als u het toevoegen van referenties tijdens de OVF-implementatie van de configur
     ![add-Mobility-referenties](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. Voer de nieuwe referenties in en klik op **toevoegen**.
 
-U kunt ook referenties toevoegen via CSPSConfigtool. exe.
+U kunt ook referenties toevoegen via CSPSConfigtool.exe.
 
-1. Meld u aan bij de configuratie server en start CSPSConfigtool. exe.
+1. Meld u aan bij de configuratie server en start CSPSConfigtool.exe
 2. Klik op **toevoegen**, voer de nieuwe referenties in en klik op **OK**.
 
 ## <a name="modify-proxy-settings"></a>Proxy-instellingen wijzigen
@@ -107,7 +106,7 @@ De verval datum wordt weer gegeven onder status van de **Configuratie server**. 
 
 ### <a name="if-certificates-are-yet-to-expire"></a>Als certificaten nog verlopen zijn
 
-1. Als u wilt vernieuwen, opent u **site Recovery-infrastructuur** > **Configuratie server**in de kluis. Selecteer de vereiste configuratie server.
+1. Als u wilt vernieuwen, opent u **site Recovery-infrastructuur**  >  **Configuratie server**in de kluis. Selecteer de vereiste configuratie server.
 2. Zorg ervoor dat alle onderdelen scale-out proces servers, Master doel servers en mobiliteits agenten op alle beveiligde computers op de nieuwste versies zijn en de status verbonden hebben.
 3. Selecteer nu **certificaten vernieuwen**.
 4. Volg zorgvuldig de instructies op deze pagina en klik op OK om de certificaten op de geselecteerde configuratie server en de bijbehorende onderdelen te vernieuwen.
@@ -125,10 +124,10 @@ De verval datum wordt weer gegeven onder status van de **Configuratie server**. 
 Als dat nodig is, kunt u de configuratie server opnieuw registreren in dezelfde kluis. Als u beschikt over een extra proces Server computer, moet u naast de standaard proces server die wordt uitgevoerd op de computer van de configuratie server, beide computers opnieuw registreren.
 
 
-1. Open**site Recovery-infrastructuur** > **configuratie servers** **beheren** > in de kluis.
+1. Open **Manage**  >  **site Recovery-infrastructuur**  >  **configuratie servers**beheren in de kluis.
 2. In **servers**selecteert u **registratie sleutel downloaden** om het bestand met kluis referenties te downloaden.
 3. Meld u aan bij de computer met de configuratie server.
-4. Open **cspsconfigtool. exe**in **%ProgramData%\ASR\home\svsystems\bin**.
+4. Open **cspsconfigtool.exe**in **%ProgramData%\ASR\home\svsystems\bin**.
 5. Klik op het tabblad **kluis registratie** op **Bladeren**en zoek het kluis referentie bestand dat u hebt gedownload.
 6. Geef zo nodig proxyserver gegevens op. Selecteer vervolgens **Registreren**.
 7. Open een Power shell-opdracht venster voor beheerders en voer de volgende opdracht uit:
@@ -138,7 +137,7 @@ Als dat nodig is, kunt u de configuratie server opnieuw registreren in dezelfde 
    ```
 
     >[!NOTE]
-    >Als u de **meest recente certificaten** van de configuratie server wilt ophalen naar scale-out proces server, voert u de opdracht *'\<Installation Drive\Microsoft Azure site Recovery\agent\cdpcli.exe> '--registermt uit*
+    >Als u de **meest recente certificaten** van de configuratie server wilt ophalen voor de scale-out proces server voert u de opdracht uit * \<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe> --registermt uit*
 
 8. Start ten slotte de obengine opnieuw door de volgende opdracht uit te voeren.
    ```
@@ -178,7 +177,7 @@ Koppelingen naar update pakketten voor het uitvoeren van een upgrade naar alle v
 
 Voer als volgt een upgrade uit voor de server:
 
-1. Ga in de kluis naar**configuratie servers**voor**site Recovery-infra structuur** >  **beheren** > .
+1. Ga in de kluis naar **Manage**  >  configuratie servers voor**site Recovery-infra structuur**beheren  >  **Configuration Servers**.
 2. Als er een update beschikbaar is, wordt er een koppeling weer gegeven in de kolom **Agent versie** >.
     ![Update](./media/vmware-azure-manage-configuration-server/update2.png)
 3. Down load het installatie bestand voor de update naar de configuratie server.
@@ -212,7 +211,7 @@ Voer het installatie bestand als volgt uit:
 
 ### <a name="parameters"></a>Parameters
 
-|Parameternaam| Type | Beschrijving| Waarden|
+|Parameternaam| Type | Description| Waarden|
 |-|-|-|-|
 | /ServerMode|Vereist|Hiermee wordt aangegeven of zowel de configuratieserver als de processerver moet worden geïnstalleerd, of alleen de processerver|CS<br>PS|
 |/InstallLocation|Vereist|De map waarin de onderdelen worden geïnstalleerd| Een map op de computer|
@@ -256,7 +255,7 @@ ProxyPassword="Password"
 1. [Schakel de beveiliging](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) voor alle virtuele machines onder de configuratie server uit.
 2. [Koppel](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) en [Verwijder](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) alle replicatie beleidsregels van de configuratie server.
 3. [Verwijder](vmware-azure-manage-vcenter.md#delete-a-vcenter-server) alle vCenter-servers/vSphere-hosts die zijn gekoppeld aan de configuratie server.
-4. Open **site Recovery-infrastructuur** > **configuratie servers**in de kluis.
+4. Open **site Recovery-infrastructuur**  >  **configuratie servers**in de kluis.
 5. Selecteer de configuratie server die u wilt verwijderen. Selecteer vervolgens op de pagina **Details** de optie **verwijderen**.
 
     ![Configuratie server verwijderen](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
@@ -293,15 +292,15 @@ U kunt eventueel de configuratie server verwijderen met behulp van Power shell.
 
 1. Meld u aan bij uw configuratie server en open vervolgens een opdracht prompt venster als beheerder.
 2. Als u de map wilt wijzigen in de bin-map, voert u de opdracht **cd%ProgramData%\ASR\home\svsystems\bin** uit.
-3. Als u het wachtwoordzinbestand wilt genereren, voert u **genpassphrase. exe-v > MobSvc. wachtwoordzin**uit.
+3. Als u het wachtwoordzinbestand wilt genereren, voert u **genpassphrase.exe-v > MobSvc. wachtwoordzin**.
 4. Uw wachtwoordzin wordt opgeslagen in het bestand dat zich bevindt op **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase**.
 
 ## <a name="refresh-configuration-server"></a>Configuratie server vernieuwen
 
-1. Ga in het Azure Portal naar **Recovery Services kluis** > **Manage** > **site Recovery infra structuur** > beheren**voor VMware &** > **configuratie servers** voor fysieke machines
+1. Ga in het Azure Portal naar **Recovery Services kluis**  >  **Manage**  >  **site Recovery infra structuur**beheren  >  **voor VMware &**  >  **configuratie servers** voor fysieke machines
 2. Klik op de configuratie server die u wilt vernieuwen.
-3. Klik op de Blade met details van de gekozen configuratie server op **meer** > **server vernieuwen**.
-4. Controleer de voortgang van de taak onder **Recovery Services kluis** > **bewaking** > **site Recovery taken**.
+3. Klik op de Blade met details van de gekozen configuratie server op **meer**  >  **server vernieuwen**.
+4. Controleer de voortgang van de taak onder **Recovery Services kluis**  >  **bewaking**  >  **site Recovery taken**.
 
 ## <a name="failback-requirements"></a>Vereisten voor failback
 

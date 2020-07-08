@@ -6,17 +6,16 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 46560f067e020236031487677ad4f48a9560d4e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681244"
 ---
 # <a name="use-the-session-management-rest-api"></a>De REST API voor sessiebeheer gebruiken
 
 Als u de functionaliteit voor externe rendering van Azure wilt gebruiken, moet u een *sessie*maken. Elke sessie komt overeen met een virtuele machine (VM) die wordt toegewezen in Azure en er wordt gewacht tot een client apparaat verbinding maakt. Wanneer een apparaat verbinding maakt, worden de aangevraagde gegevens door de VM weer gegeven en wordt het resultaat als een video stroom beschouwd. Tijdens het maken van de sessie hebt u gekozen voor welk type server u wilt uitvoeren, waarmee de prijzen worden bepaald. Zodra de sessie niet meer nodig is, moet deze worden gestopt. Als deze niet hand matig wordt gestopt, wordt deze automatisch afgesloten wanneer de *lease tijd* van de sessie verloopt.
 
-We bieden een Power shell-script in de voor [beelden van ARR](https://github.com/Azure/azure-remote-rendering) in de map *scripts* , genaamd *RenderingSession. ps1*, dat het gebruik van onze service laat zien. Het script en de bijbehorende configuratie worden hier beschreven: [voor beelden van Power shell-scripts](../samples/powershell-example-scripts.md)
+We bieden een Power shell-script in de voor [beelden-opslag plaats](https://github.com/Azure/azure-remote-rendering) in de map *Scripts* , genaamd *RenderingSession.ps1*, waarin het gebruik van onze service wordt gedemonstreerd. Het script en de bijbehorende configuratie worden hier beschreven: [voor beelden van Power shell-scripts](../samples/powershell-example-scripts.md)
 
 > [!TIP]
 > De Power shell-opdrachten die op deze pagina worden weer gegeven, zijn bedoeld om elkaar aan te vullen. Als u alle scripts in volg orde uitvoert binnen dezelfde Power shell-opdracht prompt, worden ze boven op elkaar gebouwd.
@@ -46,7 +45,7 @@ $accountKey = "*******************************************="
 
 ## <a name="common-request-headers"></a>Algemene aanvraag headers
 
-* De *autorisatie* -header moet de waarde "`Bearer TOKEN`" hebben, waarbij "`TOKEN`" het verificatie token dat [door de Secure token service wordt geretourneerd](tokens.md).
+* De *autorisatie* -header moet de waarde " `Bearer TOKEN` " hebben, waarbij " `TOKEN` " het verificatie token dat [door de Secure token service wordt geretourneerd](tokens.md).
 
 ### <a name="example-script-request-a-token"></a>Voorbeeld script: een token aanvragen
 

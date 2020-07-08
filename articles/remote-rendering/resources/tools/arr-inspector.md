@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 03/09/2020
 ms.topic: article
 ms.openlocfilehash: e3acfc15b0c12822e48009bef4aabadac701fb2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80680074"
 ---
 # <a name="the-arrinspector-inspection-tool"></a>Het inspectiehulpprogramma ArrInspector
@@ -20,20 +19,20 @@ De ArrInspector is een webgebaseerd hulp programma dat wordt gebruikt om een act
 
 ## <a name="connecting-to-the-arrinspector"></a>Verbinding maken met de ArrInspector
 
-Wanneer u de hostnaam (eindigend op `mixedreality.azure.com`) van uw ARR-server hebt verkregen, maakt u verbinding met [ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector). Deze functie maakt een `StartArrInspector.html` op het apparaat waarop de toepassing wordt uitgevoerd. Als u ArrInspector wilt starten, opent u dat bestand met een browser (Edge, Firefox of Chrome) op een PC. Het bestand is alleen 24 uur geldig.
+Wanneer u de hostnaam (eindigend op `mixedreality.azure.com` ) van uw ARR-server hebt verkregen, maakt u verbinding met [ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector). Deze functie maakt een `StartArrInspector.html` op het apparaat waarop de toepassing wordt uitgevoerd. Als u ArrInspector wilt starten, opent u dat bestand met een browser (Edge, Firefox of Chrome) op een PC. Het bestand is alleen 24 uur geldig.
 
-Als de app die wordt `ConnectToArrInspectorAsync` aangeroepen, al wordt uitgevoerd op een PC:
+Als de app die `ConnectToArrInspectorAsync` wordt aangeroepen, al wordt uitgevoerd op een PC:
 
 * Als u de unit-integratie gebruikt, kan deze automatisch worden gestart.
-* Als dat niet het geval is, vindt u het bestand in *gebruikers\\mappen\\LocalAppData\\\\[your_app] AC Temp*.
+* Als dat niet het geval is, vindt u het bestand in *gebruikers mappen \\ LocalAppData \\ [your_app] \\ AC \\ temp*.
 
 Als de app wordt uitgevoerd op een HoloLens:
 
 1. Open de HoloLens met behulp van de [Windows-portal voor apparaten](https://docs.microsoft.com/windows/mixed-reality/using-the-windows-device-portal).
 1. Ga naar *System > bestanden Verkenner*.
-1. Navigeer naar *gebruikers mappen\\LocalAppData\\[your_app]\\AC\\Temp*.
-1. Sla *StartArrInspector. html* op uw PC op.
-1. Open *StartArrInspector. html* om de ArrInspector van de sessie te laden.
+1. Navigeer naar *gebruikers mappen \\ LocalAppData \\ [your_app] \\ AC \\ temp*.
+1. Bespaar *StartArrInspector.html* op uw PC.
+1. Open *StartArrInspector.html* om de ArrInspector van de sessie te laden.
 
 ## <a name="the-performance-panel"></a>Het deel venster prestaties
 
@@ -57,14 +56,14 @@ Het verticale bereik wordt standaard berekend op basis van de waarden die moment
 
 Het deel venster logboek bevat een lijst met logboek berichten die aan de server zijde zijn gegenereerd. Bij verbinding wordt het weer gegeven tot 200 eerdere logboek berichten en worden er nieuwe afgedrukt.
 
-U kunt de lijst filteren op basis van het logboek `[Error/Warning/Info/Debug]` type met behulp van de knoppen aan de bovenkant.
+U kunt de lijst filteren op basis van het logboek type `[Error/Warning/Info/Debug]` met behulp van de knoppen aan de bovenkant.
 ![Knoppen voor logboek filter](./media/log-filter.png)
 
 ## <a name="the-timing-data-capture-panel"></a>Het deel venster timing Data Capture
 
 ![Timing gegevens vastleggen](./media/timing-data-capture.png)
 
-Dit deel venster wordt gebruikt om informatie over de timing van de server vast te leggen en te downloaden. In het bestand wordt gebruikgemaakt van de [JSON-indeling voor Chrome-tracering](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/edit). Als u de gegevens wilt controleren, opent u Chrome `Chrome://tracing` op de URL en sleept u het gedownloade bestand naar de pagina. De timing gegevens worden voortdurend verzameld in een ring buffer met een vaste grootte. Bij het schrijven bevat de vastleg ging alleen informatie over de onmiddellijke periode, wat een paar seconden tot enkele minuten duurt.
+Dit deel venster wordt gebruikt om informatie over de timing van de server vast te leggen en te downloaden. In het bestand wordt gebruikgemaakt van de [JSON-indeling voor Chrome-tracering](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/edit). Als u de gegevens wilt controleren, opent u Chrome op de URL `Chrome://tracing` en sleept u het gedownloade bestand naar de pagina. De timing gegevens worden voortdurend verzameld in een ring buffer met een vaste grootte. Bij het schrijven bevat de vastleg ging alleen informatie over de onmiddellijke periode, wat een paar seconden tot enkele minuten duurt.
 
 ## <a name="the-scene-inspection-panel"></a>Het deel venster scène inspectie
 
@@ -113,7 +112,7 @@ Wanneer u live update opnieuw inschakelt, worden alle panels opnieuw ingesteld.
 
 Het hulp programma maakt standaard verbinding met de ARR-server die wordt uitgevoerd op dezelfde host als voor de ArrInspector. U kunt deze echter configureren voor het controleren van een andere server, ervan uitgaande dat er een ARR-exemplaar wordt uitgevoerd terwijl de hulp poort is geopend.
 
-Hiertoe opent u het hoofd menu aan de linkerkant van de koptekst balk en selecteert u *configuratie*van de host. Klik op **nieuwe host toevoegen**en voer de naam en hostnaam in. Voor *hostname* gebruikt u de hostnaam die eindigt `.mixedreality.azure.com`op, geen `http://` poort.
+Hiertoe opent u het hoofd menu aan de linkerkant van de koptekst balk en selecteert u *configuratie*van de host. Klik op **nieuwe host toevoegen**en voer de naam en hostnaam in. Voor *hostname* gebruikt u de hostnaam die eindigt op `.mixedreality.azure.com` , geen `http://` poort.
 
 ![Hostconfiguratie](./media/host-configuration.png)
 

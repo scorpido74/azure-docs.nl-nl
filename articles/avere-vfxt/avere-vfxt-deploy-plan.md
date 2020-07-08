@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
 ms.openlocfilehash: 6acc1ffd197ddba4290ff7c0751b259d98a70927
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80754387"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Uw Avere vFXT-systeem plannen
@@ -75,8 +74,8 @@ Volg deze richt lijnen bij het plannen van de netwerk infrastructuur van uw aver
   |----------|-----------|----------|
   | Resourcegroep | Ja, indien leeg | Moet leeg zijn|
   | Storage-account | **Ja** als er verbinding wordt gemaakt met een bestaande BLOB-container na het maken van het cluster <br/>  **Nee** , als u een nieuwe BLOB-container maakt tijdens het maken van het cluster | Bestaande BLOB-container moet leeg zijn <br/> &nbsp; |
-  | Virtueel netwerk | Ja | Moet een service-eind punt voor opslag bevatten als er een nieuwe Azure Blob-container wordt gemaakt |
-  | Subnet | Ja | Kan geen andere resources bevatten |
+  | Virtueel netwerk | Yes | Moet een service-eind punt voor opslag bevatten als er een nieuwe Azure Blob-container wordt gemaakt |
+  | Subnet | Yes | Kan geen andere resources bevatten |
 
 ## <a name="ip-address-requirements"></a>Vereisten voor IP-adressen
 

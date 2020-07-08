@@ -4,10 +4,9 @@ description: Hierin wordt beschreven hoe u back-ups inschakelt wanneer u een Azu
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80672809"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Back-up inschakelen wanneer u een Azure-VM maakt
@@ -50,12 +49,12 @@ Als u nog niet bent aangemeld bij uw account, meldt u zich aan bij de [Azure Por
 
 ## <a name="azure-backup-resource-group-for-virtual-machines"></a>Azure Backup resource groep voor Virtual Machines
 
-Met de back-upservice wordt een afzonderlijke resource groep (RG) gemaakt, die afwijkt van de resource groep van de virtuele machine om de herstel punt verzameling (RPC) op te slaan. De RPC-huizen de onmiddellijke herstel punten van beheerde Vm's. De standaard naamgevings indeling van de resource groep die is gemaakt door de back `AzureBackupRG_<Geo>_<number>`-upservice is:. Bijvoorbeeld: *AzureBackupRG_northeurope_1*. U kunt nu de naam van de resource groep aanpassen die is gemaakt door Azure Backup.
+Met de back-upservice wordt een afzonderlijke resource groep (RG) gemaakt, die afwijkt van de resource groep van de virtuele machine om de herstel punt verzameling (RPC) op te slaan. De RPC-huizen de onmiddellijke herstel punten van beheerde Vm's. De standaard naamgevings indeling van de resource groep die is gemaakt door de back-upservice is: `AzureBackupRG_<Geo>_<number>` . Bijvoorbeeld: *AzureBackupRG_northeurope_1*. U kunt nu de naam van de resource groep aanpassen die is gemaakt door Azure Backup.
 
 Punten om te noteren:
 
 1. U kunt de standaard naam van de RG gebruiken of deze bewerken volgens de vereisten van uw bedrijf.
-2. U geeft het naam patroon RG op als invoer tijdens het maken van het back-upbeleid van de VM. De naam van de RG moet de volgende indeling hebben `<alpha-numeric string>* n <alpha-numeric string>`:. ' n ' wordt vervangen door een geheel getal (vanaf 1) en wordt gebruikt om uit te schalen als de eerste RG vol is. Eén RG kan vandaag nog een maximum van 600 Rpc's hebben.
+2. U geeft het naam patroon RG op als invoer tijdens het maken van het back-upbeleid van de VM. De naam van de RG moet de volgende indeling hebben: `<alpha-numeric string>* n <alpha-numeric string>` . ' n ' wordt vervangen door een geheel getal (vanaf 1) en wordt gebruikt om uit te schalen als de eerste RG vol is. Eén RG kan vandaag nog een maximum van 600 Rpc's hebben.
               ![Naam kiezen bij het maken van beleid](./media/backup-during-vm-creation/create-policy.png)
 3. Het patroon moet de onderstaande regels voor de naamgeving van RG volgen en de totale lengte mag niet groter zijn dan de Maxi maal toegestane grootte van RG.
     1. Namen van resource groepen mogen alleen bestaan uit alfanumerieke tekens, punten, onderstrepingen, afbreek streepjes en haakjes. Ze kunnen niet eindigen op een punt.
