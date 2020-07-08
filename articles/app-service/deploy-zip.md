@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 716f6813e37aec086a7d496e001fe2ca0f4aab57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32fc57e720f9c23f6ef26f02b2cd4a82c4266984
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75945143"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957032"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Uw app implementeren voor Azure App Service met een ZIP-of WAR-bestand
 
@@ -28,6 +28,9 @@ Zie onze [Kudu-documentatie](https://github.com/projectkudu/kudu/wiki/Deploying-
 
 De WAR-bestands implementatie implementeert uw [War](https://wikipedia.org/wiki/WAR_(file_format)) -bestand op app service om uw Java-Web-app uit te voeren. Zie [war-bestand implementeren](#deploy-war-file).
 
+> [!NOTE]
+> Wanneer u gebruikt `ZipDeploy` , worden alleen bestanden gekopieerd als de tijds tempels niet overeenkomen met wat er al is geïmplementeerd. Het genereren van een zip met een bouw proces dat uitvoer in de cache opslaat, kan leiden tot snellere implementaties. Zie [implementeren vanuit een zip-bestand of-URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)voor meer informatie.
+
 ## <a name="prerequisites"></a>Vereisten
 
 Als u de stappen in dit artikel wilt uitvoeren, [maakt u een app service-app](/azure/app-service/)of gebruikt u een app die u hebt gemaakt voor een andere zelf studie.
@@ -43,7 +46,7 @@ Het bovenstaande eind punt werkt op dit moment niet voor Linux-App Services. Ove
 
 Implementeer het geüploade ZIP-bestand naar uw web-app met behulp van de opdracht [AZ webapp Deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) .  
 
-In het volgende voor beeld wordt het ZIP-bestand dat u hebt geüpload, geïmplementeerd. Wanneer u een lokale installatie van Azure CLI gebruikt, geeft u het pad op naar het lokale `--src`zip-bestand voor.
+In het volgende voor beeld wordt het ZIP-bestand dat u hebt geüpload, geïmplementeerd. Wanneer u een lokale installatie van Azure CLI gebruikt, geeft u het pad op naar het lokale ZIP-bestand voor `--src` .
 
 ```azurecli-interactive
 az webapp deployment source config-zip --resource-group <group-name> --name <app-name> --src clouddrive/<filename>.zip
@@ -51,7 +54,7 @@ az webapp deployment source config-zip --resource-group <group-name> --name <app
 
 Met deze opdracht worden de bestanden en mappen uit het ZIP-bestand geïmplementeerd in de standaardmap voor de App Service-toepassing (`\home\site\wwwroot`) en wordt de app opnieuw opgestart.
 
-De implementatie-engine veronderstelt standaard dat een ZIP-bestand gereed is om te worden uitgevoerd, en voert geen automatisering op basis van builds uit. Als u dezelfde build-automatisering wilt inschakelen als in een [Git](deploy-local-git.md)-implementatie `SCM_DO_BUILD_DURING_DEPLOYMENT` , stelt u de app-instelling in door de volgende opdracht uit te voeren in de [Cloud shell](https://shell.azure.com):
+De implementatie-engine veronderstelt standaard dat een ZIP-bestand gereed is om te worden uitgevoerd, en voert geen automatisering op basis van builds uit. Als u dezelfde build-automatisering wilt inschakelen als in een [Git-implementatie](deploy-local-git.md), stelt u de `SCM_DO_BUILD_DURING_DEPLOYMENT` app-instelling in door de volgende opdracht uit te voeren in de [Cloud shell](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
@@ -63,7 +66,7 @@ Zie onze [Kudu-documentatie](https://github.com/projectkudu/kudu/wiki/Deploying-
 
 ## <a name="deploy-war-file"></a>WAR-bestand implementeren
 
-Als u een WAR-bestand wilt implementeren op App Service, stuurt u `https://<app-name>.scm.azurewebsites.net/api/wardeploy`een post-aanvraag naar. Het WAR-bestand moet zijn opgenomen in de hoofdtekst van de POST-aanvraag. De implementatiereferenties voor uw app moet u opgegeven in de aanvraag met behulp van HTTP-basisverificatie.
+Als u een WAR-bestand wilt implementeren op App Service, stuurt u een POST-aanvraag naar `https://<app-name>.scm.azurewebsites.net/api/wardeploy` . Het WAR-bestand moet zijn opgenomen in de hoofdtekst van de POST-aanvraag. De implementatiereferenties voor uw app moet u opgegeven in de aanvraag met behulp van HTTP-basisverificatie.
 
 Altijd gebruiken `/api/wardeploy` bij het implementeren van War-bestanden. Met deze API wordt uw WAR-bestand uitgebreid en op het gedeelde bestands station geplaatst. het gebruik van andere implementatie-Api's kan leiden tot inconsistent gedrag. 
 
@@ -71,7 +74,7 @@ Voor de HTTP-basis verificatie hebt u uw App Service implementatie referenties n
 
 ### <a name="with-curl"></a>Met krul
 
-In het volgende voor beeld wordt het gereedschap krul gebruikt om een WAR-bestand te implementeren. Vervang de tijdelijke `<username>`aanduidingen `<war-file-path>`, en `<app-name>`. Wanneer u wordt gevraagd door krul, typt u het wacht woord.
+In het volgende voor beeld wordt het gereedschap krul gebruikt om een WAR-bestand te implementeren. Vervang de tijdelijke aanduidingen `<username>` , `<war-file-path>` en `<app-name>` . Wanneer u wordt gevraagd door krul, typt u het wacht woord.
 
 ```bash
 curl -X POST -u <username> --data-binary @"<war-file-path>" https://<app-name>.scm.azurewebsites.net/api/wardeploy
@@ -79,7 +82,7 @@ curl -X POST -u <username> --data-binary @"<war-file-path>" https://<app-name>.s
 
 ### <a name="with-powershell"></a>Met PowerShell
 
-In het volgende voor beeld wordt het WAR-bestand geüpload [-AzWebapp](/powershell/module/az.websites/publish-azwebapp) . Vervang de tijdelijke `<group-name>`aanduidingen `<app-name>`, en `<war-file-path>`.
+In het volgende voor beeld wordt het WAR-bestand geüpload [-AzWebapp](/powershell/module/az.websites/publish-azwebapp) . Vervang de tijdelijke aanduidingen `<group-name>` , `<app-name>` en `<war-file-path>` .
 
 ```powershell
 Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <war-file-path>

@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
-ms.openlocfilehash: 871ff0fe7fdf92e82b30b1c93867d753ce9a82b0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e743d557f70aaa92e464244d0198debbc25a1e46
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048523"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956896"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Rapport over uitgeschaalde Cloud databases (preview-versie)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,45 +64,53 @@ Deze worden gebruikt om verbinding te maken met de Shard-kaart Manager en de Sha
 1. Open SQL Server Management Studio of SQL Server Data Tools in Visual Studio.
 2. Maak verbinding met de ElasticDBQuery-data base en voer de volgende T-SQL-opdrachten uit:
 
-        CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
+    ```tsql
+    CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
 
-        CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
-        WITH IDENTITY = '<username>',
-        SECRET = '<password>';
+    CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
+    WITH IDENTITY = '<username>',
+    SECRET = '<password>';
+    ```
 
     gebruikers naam en wacht woord moeten hetzelfde zijn als de aanmeldings gegevens die worden gebruikt in stap 3 van [de sectie downloaden en de voor beeld-app uitvoeren](elastic-scale-get-started.md#download-and-run-the-sample-app) in het artikel aan de slag **met Elastic database-hulpprogram ma's** .
 
-### <a name="external-data-sources"></a>Externe gegevens bronnen
+### <a name="external-data-sources"></a>Externe gegevensbronnen
 Als u een externe gegevens bron wilt maken, voert u de volgende opdracht uit op de ElasticDBQuery-Data Base:
 
-    CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
-      (TYPE = SHARD_MAP_MANAGER,
-      LOCATION = '<server_name>.database.windows.net',
-      DATABASE_NAME = 'ElasticScaleStarterKit_ShardMapManagerDb',
-      CREDENTIAL = ElasticDBQueryCred,
-       SHARD_MAP_NAME = 'CustomerIDShardMap'
-    ) ;
+```tsql
+CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
+    (TYPE = SHARD_MAP_MANAGER,
+    LOCATION = '<server_name>.database.windows.net',
+    DATABASE_NAME = 'ElasticScaleStarterKit_ShardMapManagerDb',
+    CREDENTIAL = ElasticDBQueryCred,
+    SHARD_MAP_NAME = 'CustomerIDShardMap'
+) ;
+```    
 
  ' CustomerIDShardMap ' is de naam van de Shard-toewijzing als u de Shard-kaart en het Shard-toewijzings beheer hebt gemaakt met behulp van het Elastic Data Base-voor beeld. Als u echter de aangepaste installatie voor dit voor beeld hebt gebruikt, moet dit de naam zijn van de Shard-kaart die u in uw toepassing hebt gekozen.
 
 ### <a name="external-tables"></a>Externe tabellen
 Maak een externe tabel die overeenkomt met de tabel klanten op het Shards door de volgende opdracht uit te voeren in de ElasticDBQuery-Data Base:
 
-    CREATE EXTERNAL TABLE [dbo].[Customers]
-    ( [CustomerId] [int] NOT NULL,
-      [Name] [nvarchar](256) NOT NULL,
-      [RegionId] [int] NOT NULL)
-    WITH
-    ( DATA_SOURCE = MyElasticDBQueryDataSrc,
-      DISTRIBUTION = SHARDED([CustomerId])
-    ) ;
+```tsql
+CREATE EXTERNAL TABLE [dbo].[Customers]
+( [CustomerId] [int] NOT NULL,
+    [Name] [nvarchar](256) NOT NULL,
+    [RegionId] [int] NOT NULL)
+WITH
+( DATA_SOURCE = MyElasticDBQueryDataSrc,
+    DISTRIBUTION = SHARDED([CustomerId])
+) ;
+```
 
 ## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Een voor beeld van een Elastic data base-T-SQL-query uitvoeren
 Wanneer u uw externe gegevens bron en uw externe tabellen hebt gedefinieerd, kunt u nu volledige T-SQL gebruiken voor uw externe tabellen.
 
 Deze query uitvoeren op de ElasticDBQuery-Data Base:
 
-    select count(CustomerId) from [dbo].[Customers]
+```tsql
+select count(CustomerId) from [dbo].[Customers]
+```
 
 U ziet dat de query de resultaten van alle Shards samenvoegt en de volgende uitvoer levert:
 
@@ -116,7 +124,7 @@ U ziet dat de query de resultaten van alle Shards samenvoegt en de volgende uitv
 3. Klik **in andere bronnen** op en klik op **van SQL Server**.
 
    ![Excel importeren uit andere bronnen][5]
-4. Typ in de **wizard gegevens verbinding** de server naam en aanmeldings referenties. Klik of tik op **Volgende**.
+4. Typ in de **wizard gegevens verbinding** de server naam en aanmeldings referenties. Klik op **Volgende**.
 5. **Selecteer de data base die de gewenste gegevens bevat**in het dialoog venster, selecteer de **ElasticDBQuery** -data base.
 6. Selecteer de tabel **klanten** in de lijst weergave en klik op **volgende**. Klik vervolgens op **Voltooien**.
 7. Selecteer in het formulier **gegevens importeren** onder **Selecteer hoe u deze gegevens wilt weer geven in uw werkmap** **tabel** en klik vervolgens op **OK**.
