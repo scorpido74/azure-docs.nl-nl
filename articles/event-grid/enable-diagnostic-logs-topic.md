@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: spelluru
 ms.openlocfilehash: 253d1fb933c32735f68cf6a2d471a7687caf5301
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84670126"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Diagnostische logboeken inschakelen voor Azure Event grid-onderwerpen of-domeinen
@@ -30,7 +29,7 @@ Met Diagnostische instellingen kunnen Event Grid gebruikers publicatie- **en bez
 > [!NOTE]
 > De volgende procedure bevat stapsgewijze instructies voor het inschakelen van Diagnostische logboeken voor een onderwerp. Stappen voor het inschakelen van Diagnostische logboeken voor een domein zijn vergelijkbaar. In stap 2 gaat u naar het gebeurtenis raster **domein** in de Azure Portal.  
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Ga naar het event grid-onderwerp waarvoor u de instellingen voor Diagnostische logboeken wilt inschakelen. 
     1. Zoek in de zoek balk aan de bovenkant naar **Event grid onderwerpen**. 
     
@@ -59,7 +58,7 @@ Met Diagnostische instellingen kunnen Event Grid gebruikers publicatie- **en bez
 
 ## <a name="enable-diagnostic-logs-for-a-system-topic"></a>Diagnostische logboeken inschakelen voor een systeem onderwerp
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Ga naar het event grid-onderwerp waarvoor u de instellingen voor Diagnostische logboeken wilt inschakelen. 
     1. Zoek in de zoek balk aan de bovenkant naar **Event grid systeem onderwerpen**. 
     

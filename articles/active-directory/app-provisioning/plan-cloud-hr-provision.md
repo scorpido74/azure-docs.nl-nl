@@ -12,10 +12,9 @@ ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
 ms.openlocfilehash: 09ecaf327b2030a77f8a91d99f291cebb0281235
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84781596"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Cloud-HR-toepassing plannen voor Azure Active Directory gebruikers inrichting

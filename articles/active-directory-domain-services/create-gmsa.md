@@ -9,14 +9,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 9044380ec4f8f28a2056ab1e30a9fec3081ad204
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: 923502132fdbe0b4a56c0fc23c19475e9074b8ff
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734874"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040245"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-active-directory-domain-services"></a>Een door een groep beheerd service account (gMSA) maken in Azure Active Directory Domain Services
 
@@ -31,10 +30,10 @@ In dit artikel wordt beschreven hoe u met Azure PowerShell een gMSA maakt in een
 U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 
 * Een actief Azure-abonnement.
-    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
-    * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
-* Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
+    * Als u nog geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Een Azure Active Directory-tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises map of een cloudmap.
+    * [Maak zo nodig een Azure Active Directory-tenant][create-azure-ad-tenant] of [koppel een Azure-abonnement aan uw account][associate-azure-ad-tenant].
+* Een door Azure Active Directory Domain Services beheerd domein dat in uw Azure AD-tenant is ingeschakeld en geconfigureerd.
     * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services beheerd-domein][create-azure-ad-ds-instance].
 * Een Windows Server Management-VM die deel uitmaakt van het door Azure AD DS beheerde domein.
     * Als dat nodig is, voltooit u de zelf studie voor het [maken van een beheer-VM][tutorial-create-management-vm].

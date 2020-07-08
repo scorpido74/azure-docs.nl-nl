@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: alzam
 ms.openlocfilehash: ce9ab972d961a9193c3aa568878f9c93ccdcf6b1
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84988022"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>Waarschuwingen instellen voor VPN Gateway metrische gegevens
@@ -19,7 +18,7 @@ ms.locfileid: "84988022"
 Dit artikel helpt u bij het instellen van waarschuwingen op Azure VPN Gateway metrische gegevens. Azure Monitor biedt de mogelijkheid om waarschuwingen in te stellen voor Azure-resources. U kunt waarschuwingen instellen voor virtuele netwerk gateways van het type VPN.
 
 
-|**Gegevens**   | **Teleenheid** | **Granulariteit** | **Beschrijving** | 
+|**Meting**   | **Teleenheid** | **Granulariteit** | **Beschrijving** | 
 |---       | ---        | ---       | ---            | ---       |
 |**AverageBandwidth**| Bytes/s  | 5 minuten| Gemiddelde gecombineerde bandbreedte gebruik van alle site-naar-site-verbindingen op de gateway.     |
 |**P2SBandwidth**| Bytes/s  | 1 minuut  | Gemiddelde gecombineerde bandbreedte gebruik van alle punt-naar-site-verbindingen op de gateway.    |

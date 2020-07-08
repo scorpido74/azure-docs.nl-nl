@@ -7,10 +7,9 @@ ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: sngun
 ms.openlocfilehash: 4c9f02784507ee893b6396fef4ed34a87610166d
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85414169"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Bewerkingen van Azure Cosmos DB Control-vlak controleren
@@ -156,7 +155,7 @@ Voor API-specifieke bewerkingen wordt de bewerking benoemd met de volgende indel
 * Soort + ApiKindResourceType + OperationType
 * Soort + ApiKindResourceType + "door Voer" + operationType
 
-**Hierbij** 
+**Voorbeeld** 
 
 * CassandraKeyspacesCreate
 * CassandraKeyspacesUpdate

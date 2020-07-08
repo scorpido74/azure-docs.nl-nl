@@ -9,12 +9,11 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: fefd3fcd82454d505099f83944b0e251b71410f0
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.openlocfilehash: 2edc5e9e255af321a30521ba1e707eea30d81f73
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996904"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957593"
 ---
 # <a name="custom-translator-frequently-asked-questions"></a>Veelgestelde vragen over aangepaste vertalers
 
@@ -41,7 +40,7 @@ De implementatie duurt over het algemeen minder dan een uur.
 
 ## <a name="how-do-you-access-a-deployed-system"></a>Hoe krijgt u toegang tot een geïmplementeerd systeem?
 
-Geïmplementeerde systemen kunnen worden geopend via micro soft Translator V3 door de CategoryID op te geven. Meer informatie over de vertaler vindt u in de [API Reference](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) -webpagina.
+Geïmplementeerde systemen kunnen via Translator worden geopend door het CategoryID op te geven. Meer informatie over Translator vindt u in de [API Reference](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) -webpagina.
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Hoe kan ik de uitlijning en de zin niet overs Laan als er al een zin van mijn gegevens is uitgelijnd?
 

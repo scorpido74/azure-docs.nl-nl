@@ -9,21 +9,23 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 5844fca371680ce02e6628d9cacbf50ebe4c8ed0
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: bece22fa0b9d41f29f8829d47a26f4ae2075feac
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734823"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040109"
 ---
 # <a name="delete-an-azure-active-directory-domain-services-managed-domain-using-the-azure-portal"></a>Een door Azure Active Directory Domain Services beheerd domein verwijderen met de Azure Portal
 
-Als u een beheerd domein niet meer nodig hebt, kunt u een beheerd domein van Azure Active Directory Domain Services (Azure AD DS) verwijderen. Er is geen optie voor het uitschakelen of tijdelijk uitschakelen van een door Azure AD DS beheerd domein. Als u het beheerde domein verwijdert, wordt de Azure AD-Tenant niet verwijderd. Dit artikel laat u zien hoe u de Azure Portal kunt gebruiken om een beheerd domein te verwijderen.
+Als u een door Azure Active Directory Domain Services (Azure AD DS) beheerd domein niet meer nodig hebt, kunt u het verwijderen. Er is geen optie voor het uitschakelen of tijdelijk uitschakelen van een door Azure AD DS beheerd domein. Als u het beheerde domein verwijdert, wordt de Azure AD-Tenant niet verwijderd.
+
+Dit artikel laat u zien hoe u de Azure Portal kunt gebruiken om een beheerd domein te verwijderen.
 
 > [!WARNING]
 > **Verwijdering is permanent en kan niet worden omgekeerd.**
+> 
 > Wanneer u een beheerd domein verwijdert, worden de volgende stappen uitgevoerd:
 >   * Domein controllers voor het beheerde domein worden ongedaan gemaakt en uit het virtuele netwerk verwijderd.
 >   * Gegevens op het beheerde domein worden permanent verwijderd. Deze gegevens omvatten aangepaste organisatie-eenheden, Gpo's, aangepaste DNS-records, service-principals, Gmsa's, enzovoort die u hebt gemaakt.

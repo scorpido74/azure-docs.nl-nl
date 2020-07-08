@@ -4,10 +4,9 @@ description: Meer informatie over ondersteuning voor Hyper-V-evaluatie met Azure
 ms.topic: conceptual
 ms.date: 06/14/2020
 ms.openlocfilehash: c2df23b1566b4d793f4511499fd82d7912d0520f
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85051914"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Ondersteunings matrix voor Hyper-V-evaluatie

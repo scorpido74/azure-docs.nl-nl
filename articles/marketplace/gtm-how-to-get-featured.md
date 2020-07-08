@@ -7,18 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: fe18ca41942ff58b8d9eefef3122c90980029766
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: aac3f87c642559b0dfa13c38da448e425df3ffa2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684602"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957797"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>De aanbevolen procedure voor het gebruik van AppSource en Azure Marketplace
 
 Azure Marketplace en AppSource hebben secties met **Aanbevolen apps** , waar u uw app kunt weer geven:
 
-* Als u een proef-of transactie aanbieding hebt, kunt u het voor deel van uw categorie promotie gebruiken via [commerciële Marketplace-voor delen](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
+* Als u een proef-of transactie aanbieding hebt, kunt u het voor deel van uw categorie promotie gebruiken via [commerciële Marketplace-voor delen](gtm-your-marketplace-benefits.md).
 * Bekijk vervolgens de lijst met aanbevolen procedures en criteria hieronder om een spot te verdienen.
 
 Het selectie algoritme aanbevolen apps genereert een score voor een app van micro soft, net als bij de krediet score van een persoon in de Verenigde Staten.  De wekelijkse selectie van aanbevolen apps wordt gebaseerd op een berekening van de prestaties van apps en services.
@@ -31,7 +30,7 @@ U kunt de volgende actie punten ondernemen om uw score te verbeteren:
 2. *Azure Marketplace-apps: verg root uw Azure-verbruik per maand.* Als u gedurende 1.000 uur aan Azure-gebruik per maand kunt profiteren, verhoogt u de kans dat deze wordt aanbevolen.
 3. *AppSource-apps: Verhoog de aanschaf van uw aanbieding.* Als u 10 verwervingen per maand kunt bezorgen, verhoogt u de kans dat deze wordt aanbevolen. 
 4. Behaal de status van de *kant-en-klare mede koop*: Voltooi de vereisten voor het samen verkopen van het bedrijf.
-5. *Verbeter de kwaliteit van uw aanbieding*: Zie [richt lijnen voor inhouds vermelding](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation) voor informatie over het wijzigen van uw aanbieding
+5. *Verbeter de kwaliteit van uw aanbieding*: Zie [richt lijnen voor inhouds vermelding](marketplace-criteria-content-validation.md) voor informatie over het wijzigen van uw aanbieding
 6. Meerdere aanbiedingen publiceren in Marketplace: zijn al uw kern-apps en-services opgenomen? Hebt u een proef ervaring?
 7. Stimuleer uw klanten om beoordelingen te schrijven.
 
@@ -44,7 +43,7 @@ Uw GTM-ondersteuning omvat ook een volledige bibliotheek met zelfhulp sjablonen,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de [voor delen van uw commerciële Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
+Meer informatie over de [voor delen van uw commerciële Marketplace](gtm-your-marketplace-benefits.md).
 
 Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) om uw aanbieding te maken en te configureren.
 

@@ -7,12 +7,11 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 4125d7ea17c6ebab28ef8e5fde5af5475d07002d
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
-ms.translationtype: MT
+ms.openlocfilehash: 41fed622b14c10d3fbc7dfedca7ebc53a8efbc66
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85113378"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799340"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Gegevens modellering in Azure Cosmos DB
 
@@ -39,34 +38,38 @@ Bij het werken met relationele data bases is de strategie het normaliseren van a
 
 De richt zich op de lokale locatie bij het normaliseren van gegevens is om te **voor komen dat er redundante gegevens worden opgeslagen** op elke record en om te verwijzen naar gegevens. In dit voor beeld, om een persoon te lezen met al hun contact gegevens en-adressen, moet u samen voegingen gebruiken om uw gegevens in runtime effectief te maken (of te denormaliseren).
 
-    SELECT p.FirstName, p.LastName, a.City, cd.Detail
-    FROM Person p
-    JOIN ContactDetail cd ON cd.PersonId = p.Id
-    JOIN ContactDetailType cdt ON cdt.Id = cd.TypeId
-    JOIN Address a ON a.PersonId = p.Id
+```sql
+SELECT p.FirstName, p.LastName, a.City, cd.Detail
+FROM Person p
+JOIN ContactDetail cd ON cd.PersonId = p.Id
+JOIN ContactDetailType cdt ON cdt.Id = cd.TypeId
+JOIN Address a ON a.PersonId = p.Id
+```
 
 Voor het bijwerken van één persoon met hun contact gegevens en-adressen is schrijf bewerkingen in veel afzonderlijke tabellen vereist.
 
 Laten we nu eens kijken hoe we dezelfde gegevens als een op zichzelf staande entiteit in Azure Cosmos DB model leren.
 
-    {
-        "id": "1",
-        "firstName": "Thomas",
-        "lastName": "Andersen",
-        "addresses": [
-            {
-                "line1": "100 Some Street",
-                "line2": "Unit 1",
-                "city": "Seattle",
-                "state": "WA",
-                "zip": 98012
-            }
-        ],
-        "contactDetails": [
-            {"email": "thomas@andersen.com"},
-            {"phone": "+1 555 555-5555", "extension": 5555}
-        ]
-    }
+```json
+{
+    "id": "1",
+    "firstName": "Thomas",
+    "lastName": "Andersen",
+    "addresses": [
+        {
+            "line1": "100 Some Street",
+            "line2": "Unit 1",
+            "city": "Seattle",
+            "state": "WA",
+            "zip": 98012
+        }
+    ],
+    "contactDetails": [
+        {"email": "thomas@andersen.com"},
+        {"phone": "+1 555 555-5555", "extension": 5555}
+    ]
+}
+```
 
 Met behulp van de bovenstaande benadering hebben we de persoons record **genormaliseerd** door alle informatie met betrekking tot deze persoon, zoals de contact gegevens en-adressen, in te **sluiten** in *één JSON* -document.
 Omdat we niet zijn beperkt tot een vast schema, hebben we de flexibiliteit om zaken te doen, zoals het volledig hebben van contact gegevens van verschillende vormen.
@@ -94,21 +97,23 @@ De regel van de vuist in Azure Cosmos DB is om alles te denormaliseren en alle g
 
 Neem dit JSON-fragment op.
 
-    {
-        "id": "1",
-        "name": "What's new in the coolest Cloud",
-        "summary": "A blog post by someone real famous",
-        "comments": [
-            {"id": 1, "author": "anon", "comment": "something useful, I'm sure"},
-            {"id": 2, "author": "bob", "comment": "wisdom from the interwebs"},
-            …
-            {"id": 100001, "author": "jane", "comment": "and on we go ..."},
-            …
-            {"id": 1000000001, "author": "angry", "comment": "blah angry blah angry"},
-            …
-            {"id": ∞ + 1, "author": "bored", "comment": "oh man, will this ever end?"},
-        ]
-    }
+```json
+{
+    "id": "1",
+    "name": "What's new in the coolest Cloud",
+    "summary": "A blog post by someone real famous",
+    "comments": [
+        {"id": 1, "author": "anon", "comment": "something useful, I'm sure"},
+        {"id": 2, "author": "bob", "comment": "wisdom from the interwebs"},
+        …
+        {"id": 100001, "author": "jane", "comment": "and on we go ..."},
+        …
+        {"id": 1000000001, "author": "angry", "comment": "blah angry blah angry"},
+        …
+        {"id": ∞ + 1, "author": "bored", "comment": "oh man, will this ever end?"},
+    ]
+}
+```
 
 Dit kan zijn dat een post-entiteit met Inge sloten opmerkingen eruit zou zien als we een typische blog of CMS-systeem zouden model leren. Het probleem met dit voor beeld is dat de opmerkingen matrix niet is **gebonden**, wat inhoudt dat er geen (praktische) limiet is voor het aantal opmerkingen dat één post kan hebben. Dit kan een probleem zijn omdat de grootte van het item oneindig groot kan worden uitgebreid.
 
@@ -116,36 +121,38 @@ Naarmate de grootte van het item groeit, is de mogelijkheid om gegevens over de 
 
 In dit geval is het beter om rekening te houden met het volgende gegevens model.
 
-    Post item:
-    {
-        "id": "1",
-        "name": "What's new in the coolest Cloud",
-        "summary": "A blog post by someone real famous",
-        "recentComments": [
-            {"id": 1, "author": "anon", "comment": "something useful, I'm sure"},
-            {"id": 2, "author": "bob", "comment": "wisdom from the interwebs"},
-            {"id": 3, "author": "jane", "comment": "....."}
-        ]
-    }
+```json
+Post item:
+{
+    "id": "1",
+    "name": "What's new in the coolest Cloud",
+    "summary": "A blog post by someone real famous",
+    "recentComments": [
+        {"id": 1, "author": "anon", "comment": "something useful, I'm sure"},
+        {"id": 2, "author": "bob", "comment": "wisdom from the interwebs"},
+        {"id": 3, "author": "jane", "comment": "....."}
+    ]
+}
 
-    Comment items:
-    {
-        "postId": "1"
-        "comments": [
-            {"id": 4, "author": "anon", "comment": "more goodness"},
-            {"id": 5, "author": "bob", "comment": "tails from the field"},
-            ...
-            {"id": 99, "author": "angry", "comment": "blah angry blah angry"}
-        ]
-    },
-    {
-        "postId": "1"
-        "comments": [
-            {"id": 100, "author": "anon", "comment": "yet more"},
-            ...
-            {"id": 199, "author": "bored", "comment": "will this ever end?"}
-        ]
-    }
+Comment items:
+{
+    "postId": "1"
+    "comments": [
+        {"id": 4, "author": "anon", "comment": "more goodness"},
+        {"id": 5, "author": "bob", "comment": "tails from the field"},
+        ...
+        {"id": 99, "author": "angry", "comment": "blah angry blah angry"}
+    ]
+},
+{
+    "postId": "1"
+    "comments": [
+        {"id": 100, "author": "anon", "comment": "yet more"},
+        ...
+        {"id": 199, "author": "bored", "comment": "will this ever end?"}
+    ]
+}
+```
 
 Dit model bevat de drie meest recente opmerkingen die zijn Inge sloten in de post-container, een matrix met een vaste set kenmerken. De overige opmerkingen worden gegroepeerd in batches van 100 opmerkingen en opgeslagen als afzonderlijke items. De grootte van de batch is gekozen als 100 omdat de gebruiker met de fictieve toepassing 100 opmerkingen tegelijk kan laden.  
 
@@ -153,21 +160,23 @@ Een andere geval waarin het insluiten van gegevens geen goed idee is wanneer de 
 
 Neem dit JSON-fragment op.
 
-    {
-        "id": "1",
-        "firstName": "Thomas",
-        "lastName": "Andersen",
-        "holdings": [
-            {
-                "numberHeld": 100,
-                "stock": { "symbol": "zaza", "open": 1, "high": 2, "low": 0.5 }
-            },
-            {
-                "numberHeld": 50,
-                "stock": { "symbol": "xcxc", "open": 89, "high": 93.24, "low": 88.87 }
-            }
-        ]
-    }
+```json
+{
+    "id": "1",
+    "firstName": "Thomas",
+    "lastName": "Andersen",
+    "holdings": [
+        {
+            "numberHeld": 100,
+            "stock": { "symbol": "zaza", "open": 1, "high": 2, "low": 0.5 }
+        },
+        {
+            "numberHeld": 50,
+            "stock": { "symbol": "xcxc", "open": 89, "high": 93.24, "low": 88.87 }
+        }
+    ]
+}
+```
 
 Dit kan de aandelen portefeuille van een persoon vertegenwoordigen. We hebben ervoor gekozen de aandelen informatie in elk portfolio document in te sluiten. In een omgeving waarin gerelateerde gegevens regel matig worden gewijzigd, zoals een aandelen handels toepassing, wordt het insluiten van gegevens die regel matig worden gewijzigd, al dan niet telkens wanneer een aandeel wordt verhandeld, bijgewerkt.
 
@@ -181,38 +190,40 @@ Relationele data bases zijn niet de enige plaats waar u relaties tussen entiteit
 
 In de JSON hieronder hebben we gekozen om het voor beeld van een aandelen portefeuille van eerder te gebruiken, maar deze keer verwijzen we naar het voorraad item op de Port Folio in plaats van het in te sluiten. Op deze manier, wanneer de voorraad items regel matig worden gewijzigd, is het enige document dat moet worden bijgewerkt, het document met één aandeel.
 
-    Person document:
-    {
-        "id": "1",
-        "firstName": "Thomas",
-        "lastName": "Andersen",
-        "holdings": [
-            { "numberHeld":  100, "stockId": 1},
-            { "numberHeld":  50, "stockId": 2}
-        ]
-    }
+```json
+Person document:
+{
+    "id": "1",
+    "firstName": "Thomas",
+    "lastName": "Andersen",
+    "holdings": [
+        { "numberHeld":  100, "stockId": 1},
+        { "numberHeld":  50, "stockId": 2}
+    ]
+}
 
-    Stock documents:
-    {
-        "id": "1",
-        "symbol": "zaza",
-        "open": 1,
-        "high": 2,
-        "low": 0.5,
-        "vol": 11970000,
-        "mkt-cap": 42000000,
-        "pe": 5.89
-    },
-    {
-        "id": "2",
-        "symbol": "xcxc",
-        "open": 89,
-        "high": 93.24,
-        "low": 88.87,
-        "vol": 2970200,
-        "mkt-cap": 1005000,
-        "pe": 75.82
-    }
+Stock documents:
+{
+    "id": "1",
+    "symbol": "zaza",
+    "open": 1,
+    "high": 2,
+    "low": 0.5,
+    "vol": 11970000,
+    "mkt-cap": 42000000,
+    "pe": 5.89
+},
+{
+    "id": "2",
+    "symbol": "xcxc",
+    "open": 89,
+    "high": 93.24,
+    "low": 88.87,
+    "vol": 2970200,
+    "mkt-cap": 1005000,
+    "pe": 75.82
+}
+```
 
 Een onmiddellijke neerwaartse aanpak van deze benadering is dat als uw toepassing is vereist voor het weer geven van informatie over elk aandeel dat wordt bewaard bij het weer geven van de Port Folio van een persoon. in dit geval moet u meerdere trips naar de data base maken om de informatie voor elk voorraad document te laden. Hier hebben we een beslissing genomen voor het verbeteren van de efficiëntie van schrijf bewerkingen, die regel matig worden uitgevoerd, maar op de Lees bewerkingen die mogelijk minder invloed hebben op de prestaties van dit specifieke systeem.
 
@@ -241,40 +252,44 @@ De groei van de relatie helpt te bepalen in welk document de referentie moet wor
 
 Als we de JSON hieronder bekijken, modellen uitgevers en boeken.
 
-    Publisher document:
-    {
-        "id": "mspress",
-        "name": "Microsoft Press",
-        "books": [ 1, 2, 3, ..., 100, ..., 1000]
-    }
+```json
+Publisher document:
+{
+    "id": "mspress",
+    "name": "Microsoft Press",
+    "books": [ 1, 2, 3, ..., 100, ..., 1000]
+}
 
-    Book documents:
-    {"id": "1", "name": "Azure Cosmos DB 101" }
-    {"id": "2", "name": "Azure Cosmos DB for RDBMS Users" }
-    {"id": "3", "name": "Taking over the world one JSON doc at a time" }
-    ...
-    {"id": "100", "name": "Learn about Azure Cosmos DB" }
-    ...
-    {"id": "1000", "name": "Deep Dive into Azure Cosmos DB" }
+Book documents:
+{"id": "1", "name": "Azure Cosmos DB 101" }
+{"id": "2", "name": "Azure Cosmos DB for RDBMS Users" }
+{"id": "3", "name": "Taking over the world one JSON doc at a time" }
+...
+{"id": "100", "name": "Learn about Azure Cosmos DB" }
+...
+{"id": "1000", "name": "Deep Dive into Azure Cosmos DB" }
+```
 
 Als het aantal boeken per uitgever klein is met beperkte groei, kan het handig zijn om de boek verwijzing in het Publisher-document op te slaan. Als het aantal boeken per uitgever echter niet is gebonden, zou dit gegevens model kunnen leiden tot onveranderlijke en groeiende matrices, zoals in het voor beeld van een Publisher-document hierboven.
 
 Het omschakelen van dingen rond een beetje zou leiden tot een model dat nog steeds dezelfde gegevens bevat, maar deze grote, onveranderlijke verzamelingen vermijdt.
 
-    Publisher document:
-    {
-        "id": "mspress",
-        "name": "Microsoft Press"
-    }
+```json
+Publisher document:
+{
+    "id": "mspress",
+    "name": "Microsoft Press"
+}
 
-    Book documents:
-    {"id": "1","name": "Azure Cosmos DB 101", "pub-id": "mspress"}
-    {"id": "2","name": "Azure Cosmos DB for RDBMS Users", "pub-id": "mspress"}
-    {"id": "3","name": "Taking over the world one JSON doc at a time"}
-    ...
-    {"id": "100","name": "Learn about Azure Cosmos DB", "pub-id": "mspress"}
-    ...
-    {"id": "1000","name": "Deep Dive into Azure Cosmos DB", "pub-id": "mspress"}
+Book documents:
+{"id": "1","name": "Azure Cosmos DB 101", "pub-id": "mspress"}
+{"id": "2","name": "Azure Cosmos DB for RDBMS Users", "pub-id": "mspress"}
+{"id": "3","name": "Taking over the world one JSON doc at a time"}
+...
+{"id": "100","name": "Learn about Azure Cosmos DB", "pub-id": "mspress"}
+...
+{"id": "1000","name": "Deep Dive into Azure Cosmos DB", "pub-id": "mspress"}
+```
 
 In het bovenstaande voor beeld hebben we de niet-gebonden verzameling verwijderd uit het Publisher-document. In plaats daarvan hebben we een verwijzing naar de uitgever in elk boek document.
 
@@ -287,37 +302,41 @@ In een relationele data base zijn *veel* relaties vaak gemodelleerd met samenvoe
 
 Misschien bent u geneigd om hetzelfde te repliceren met behulp van documenten en een gegevens model te produceren dat er ongeveer als volgt uitziet.
 
-    Author documents:
-    {"id": "a1", "name": "Thomas Andersen" }
-    {"id": "a2", "name": "William Wakefield" }
+```json
+Author documents:
+{"id": "a1", "name": "Thomas Andersen" }
+{"id": "a2", "name": "William Wakefield" }
 
-    Book documents:
-    {"id": "b1", "name": "Azure Cosmos DB 101" }
-    {"id": "b2", "name": "Azure Cosmos DB for RDBMS Users" }
-    {"id": "b3", "name": "Taking over the world one JSON doc at a time" }
-    {"id": "b4", "name": "Learn about Azure Cosmos DB" }
-    {"id": "b5", "name": "Deep Dive into Azure Cosmos DB" }
+Book documents:
+{"id": "b1", "name": "Azure Cosmos DB 101" }
+{"id": "b2", "name": "Azure Cosmos DB for RDBMS Users" }
+{"id": "b3", "name": "Taking over the world one JSON doc at a time" }
+{"id": "b4", "name": "Learn about Azure Cosmos DB" }
+{"id": "b5", "name": "Deep Dive into Azure Cosmos DB" }
 
-    Joining documents:
-    {"authorId": "a1", "bookId": "b1" }
-    {"authorId": "a2", "bookId": "b1" }
-    {"authorId": "a1", "bookId": "b2" }
-    {"authorId": "a1", "bookId": "b3" }
+Joining documents:
+{"authorId": "a1", "bookId": "b1" }
+{"authorId": "a2", "bookId": "b1" }
+{"authorId": "a1", "bookId": "b2" }
+{"authorId": "a1", "bookId": "b3" }
+```
 
 Dit zou werken. Het laden van een auteur met hun boeken of het laden van een boek met de auteur, vereist echter altijd ten minste twee extra query's voor de data base. Een query voor het lid van het document en vervolgens een andere query voor het ophalen van het werkelijke document dat wordt toegevoegd.
 
 Als al deze samenvoegings tabel wordt uitgevoerd, worden twee gegevens van elkaar gelijmd en moet u daarom niet volledig verwijderen?
 Houd rekening met het volgende.
 
-    Author documents:
-    {"id": "a1", "name": "Thomas Andersen", "books": ["b1, "b2", "b3"]}
-    {"id": "a2", "name": "William Wakefield", "books": ["b1", "b4"]}
+```json
+Author documents:
+{"id": "a1", "name": "Thomas Andersen", "books": ["b1, "b2", "b3"]}
+{"id": "a2", "name": "William Wakefield", "books": ["b1", "b4"]}
 
-    Book documents:
-    {"id": "b1", "name": "Azure Cosmos DB 101", "authors": ["a1", "a2"]}
-    {"id": "b2", "name": "Azure Cosmos DB for RDBMS Users", "authors": ["a1"]}
-    {"id": "b3", "name": "Learn about Azure Cosmos DB", "authors": ["a1"]}
-    {"id": "b4", "name": "Deep Dive into Azure Cosmos DB", "authors": ["a2"]}
+Book documents:
+{"id": "b1", "name": "Azure Cosmos DB 101", "authors": ["a1", "a2"]}
+{"id": "b2", "name": "Azure Cosmos DB for RDBMS Users", "authors": ["a1"]}
+{"id": "b3", "name": "Learn about Azure Cosmos DB", "authors": ["a1"]}
+{"id": "b4", "name": "Deep Dive into Azure Cosmos DB", "authors": ["a2"]}
+```
 
 Nu als ik een auteur had, weet ik dan onmiddellijk welke boeken ze hebben geschreven en omgekeerd als ik een boek document had geladen ik weet wat de Id's van de auteur (s) zijn. Hiermee slaat u de tussenliggende query op voor de samenvoegings tabel om het aantal server retouren te verminderen dat uw toepassing moet maken.
 
@@ -331,46 +350,48 @@ Op basis van de specifieke gebruiks patronen en werk belastingen van uw toepassi
 
 Bekijk de volgende JSON.
 
-    Author documents:
-    {
-        "id": "a1",
-        "firstName": "Thomas",
-        "lastName": "Andersen",
-        "countOfBooks": 3,
-        "books": ["b1", "b2", "b3"],
-        "images": [
-            {"thumbnail": "https://....png"}
-            {"profile": "https://....png"}
-            {"large": "https://....png"}
-        ]
-    },
-    {
-        "id": "a2",
-        "firstName": "William",
-        "lastName": "Wakefield",
-        "countOfBooks": 1,
-        "books": ["b1"],
-        "images": [
-            {"thumbnail": "https://....png"}
-        ]
-    }
+```json
+Author documents:
+{
+    "id": "a1",
+    "firstName": "Thomas",
+    "lastName": "Andersen",
+    "countOfBooks": 3,
+    "books": ["b1", "b2", "b3"],
+    "images": [
+        {"thumbnail": "https://....png"}
+        {"profile": "https://....png"}
+        {"large": "https://....png"}
+    ]
+},
+{
+    "id": "a2",
+    "firstName": "William",
+    "lastName": "Wakefield",
+    "countOfBooks": 1,
+    "books": ["b1"],
+    "images": [
+        {"thumbnail": "https://....png"}
+    ]
+}
 
-    Book documents:
-    {
-        "id": "b1",
-        "name": "Azure Cosmos DB 101",
-        "authors": [
-            {"id": "a1", "name": "Thomas Andersen", "thumbnailUrl": "https://....png"},
-            {"id": "a2", "name": "William Wakefield", "thumbnailUrl": "https://....png"}
-        ]
-    },
-    {
-        "id": "b2",
-        "name": "Azure Cosmos DB for RDBMS Users",
-        "authors": [
-            {"id": "a1", "name": "Thomas Andersen", "thumbnailUrl": "https://....png"},
-        ]
-    }
+Book documents:
+{
+    "id": "b1",
+    "name": "Azure Cosmos DB 101",
+    "authors": [
+        {"id": "a1", "name": "Thomas Andersen", "thumbnailUrl": "https://....png"},
+        {"id": "a2", "name": "William Wakefield", "thumbnailUrl": "https://....png"}
+    ]
+},
+{
+    "id": "b2",
+    "name": "Azure Cosmos DB for RDBMS Users",
+    "authors": [
+        {"id": "a1", "name": "Thomas Andersen", "thumbnailUrl": "https://....png"},
+    ]
+}
+```
 
 Hier hebben we (voornamelijk) het Inge sloten model gevolgd, waar gegevens uit andere entiteiten zijn Inge sloten in het document op het hoogste niveau, maar er wordt naar andere gegevens verwezen.
 
@@ -386,27 +407,29 @@ De mogelijkheid om een model met vooraf berekende velden te maken, wordt mogelij
 
 In sommige scenario's wilt u mogelijk verschillende document typen combi neren in dezelfde verzameling. Dit is meestal het geval wanneer u wilt dat er meerdere, gerelateerde documenten zich in dezelfde [partitie](partitioning-overview.md)bevinden. U kunt bijvoorbeeld zowel boeken als boek beoordelingen in dezelfde verzameling plaatsen en partitioneren door `bookId` . In dat geval wilt u meestal aan uw documenten toevoegen met een veld dat het type identificeert om ze te onderscheiden.
 
-    Book documents:
-    {
-        "id": "b1",
-        "name": "Azure Cosmos DB 101",
-        "bookId": "b1",
-        "type": "book"
-    }
+```json
+Book documents:
+{
+    "id": "b1",
+    "name": "Azure Cosmos DB 101",
+    "bookId": "b1",
+    "type": "book"
+}
 
-    Review documents:
-    {
-        "id": "r1",
-        "content": "This book is awesome",
-        "bookId": "b1",
-        "type": "review"
-    },
-    {
-        "id": "r2",
-        "content": "Best book ever!",
-        "bookId": "b1",
-        "type": "review"
-    }
+Review documents:
+{
+    "id": "r1",
+    "content": "This book is awesome",
+    "bookId": "b1",
+    "type": "review"
+},
+{
+    "id": "r2",
+    "content": "Best book ever!",
+    "bookId": "b1",
+    "type": "review"
+}
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

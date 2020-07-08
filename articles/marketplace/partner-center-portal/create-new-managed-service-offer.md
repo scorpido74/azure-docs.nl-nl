@@ -8,16 +8,15 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: ffc8e1919350c9a14cb53bd243af66fdfa839d04
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
-ms.translationtype: MT
+ms.openlocfilehash: 3099c73849a63ebf490d026db95cedfd1278d735
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85373451"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957576"
 ---
 # <a name="create-a-managed-service-offer"></a>Een aanbieding voor beheerde service maken
 
-Beheerde service biedt hulp bij het inschakelen van [Azure Lighthouse](../../lighthouse/overview.md) -scenario's. Wanneer een klant een beheerd service aanbod aanvaardt, kunnen ze resources vrijgeven voor het beheer van de [gedelegeerde resources van Azure](../../lighthouse/concepts/azure-delegated-resource-management.md). Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) als u dit nog niet hebt gedaan. Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
+Beheerde service biedt hulp bij het inschakelen van [Azure Lighthouse](../../lighthouse/overview.md) -scenario's. Wanneer een klant een beheerd service aanbod aanvaardt, kunnen ze resources vrijgeven voor het beheer van de [gedelegeerde resources van Azure](../../lighthouse/concepts/azure-delegated-resource-management.md). Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner Center](create-account.md) als u dit nog niet hebt gedaan. Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
 
 U moet beschikken over een [Silver-of Gold-competentie voor het Cloud platform](https://partner.microsoft.com/membership/cloud-platform-competency) of een [Azure expert msp](https://partner.microsoft.com/membership/azure-expert-msp) -aanbod om een beheerde service te kunnen publiceren.
 
@@ -91,7 +90,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 3. Handige koppelingen
 4. Schermopnamen
 
-### <a name="name"></a>Naam
+### <a name="name"></a>Name
 
 De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd voor de **aanbiedings alias** tijdens het maken van de aanbieding, maar u kunt deze waarde wijzigen. Deze naam kan worden aangemerkt (en u kunt symbolen van het handels merk of copyright bevatten). De naam mag niet langer zijn dan 50 tekens en mag geen emojis bevatten.
 
@@ -103,7 +102,7 @@ Geef een korte beschrijving van uw aanbieding (Maxi maal 100 tekens), die kan wo
 
 Geef een langere beschrijving van uw aanbieding (Maxi maal 256 tekens). Deze lange samen vatting kan ook worden gebruikt in Zoek resultaten voor Marketplace.
 
-### <a name="description"></a>Beschrijving
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -162,7 +161,7 @@ U kunt optioneel Maxi maal vijf Video's toevoegen die uw aanbieding aantonen. De
 
 #### <a name="additional-marketplace-listing-resources"></a>Aanvullende bronnen voor Marketplace-lijst
 
-- [Best practices voor Marketplace-aanbiedingen](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [Best practices voor Marketplace-aanbiedingen](../gtm-offer-listing-best-practices.md)
 
 Selecteer **concept opslaan** voordat u doorgaat.
 

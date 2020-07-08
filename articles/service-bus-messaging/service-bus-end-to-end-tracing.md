@@ -4,10 +4,9 @@ description: Overzicht van Service Bus client diagnoses en end-to-end tracering 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 6138d3d6424364f28f55f81044768acb894bc651
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85340734"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Gedistribueerde tracering en correlatie via Service Bus berichten
@@ -20,7 +19,7 @@ Wanneer een producent een bericht via een wachtrij verzendt, gebeurt dit doorgaa
 Microsoft Azure Service Bus Messa ging heeft eigenschappen van Payload gedefinieerd die door producenten en consumenten moeten worden gebruikt om deze tracerings context door te geven.
 Het protocol is gebaseerd op het [http-correlatie protocol](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md).
 
-| Naam van eigenschap        | Beschrijving                                                 |
+| Naam van eigenschap        | Description                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnose-id       | De unieke id van een externe aanroep van de producent naar de wachtrij. Raadpleeg de [aanvraag-id in het HTTP-protocol](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) voor de motivering, overwegingen en indeling |
 |  Correlatie-context | Bewerkings context, die wordt door gegeven voor alle services die bij de verwerking van de bewerking betrokken zijn. Zie [correlatie-context in http-protocol](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) voor meer informatie. |

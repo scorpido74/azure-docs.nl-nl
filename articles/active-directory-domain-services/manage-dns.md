@@ -8,14 +8,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/16/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 7841db3138af2f8cb1efc03508b9e7c0bdb71324
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: b48fb62532402338fdf53cd6f9b15bac812c3c2c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734636"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040211"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-active-directory-domain-services-managed-domain"></a>DNS beheren en voorwaardelijke doorstuur servers maken in een Azure Active Directory Domain Services beheerd domein
 
@@ -23,7 +22,7 @@ In Azure Active Directory Domain Services (Azure AD DS) is een belang rijk onder
 
 Wanneer u uw eigen toepassingen en services uitvoert, moet u mogelijk DNS-records maken voor machines die niet zijn toegevoegd aan het domein, virtuele IP-adressen configureren voor load balancers of externe DNS-doorstuur servers instellen. Gebruikers die deel uitmaken van de groep *Aad DC-Administrators* , krijgen machtigingen voor DNS-beheer op het door Azure AD DS beheerde domein verleend en kunnen aangepaste DNS-records maken en bewerken.
 
-In een hybride omgeving worden DNS-zones en-records die zijn geconfigureerd in andere DNS-naam ruimten, zoals een on-premises AD DS omgeving, niet gesynchroniseerd met Azure AD DS. Voor het omzetten van benoemde resources in andere DNS-naam ruimten, maakt en gebruikt u voorwaardelijke doorstuur servers die verwijzen naar bestaande DNS-server in uw omgeving.
+In een hybride omgeving worden DNS-zones en-records die zijn geconfigureerd in andere DNS-naam ruimten, zoals een on-premises AD DS omgeving, niet gesynchroniseerd met het beheerde domein. Voor het omzetten van benoemde resources in andere DNS-naam ruimten, maakt en gebruikt u voorwaardelijke doorstuur servers die verwijzen naar bestaande DNS-server in uw omgeving.
 
 In dit artikel wordt beschreven hoe u de hulpprogram ma's voor DNS-server installeert en vervolgens de DNS-console gebruikt voor het beheren van records en het maken van voorwaardelijke doorstuur servers in azure AD DS.
 
@@ -32,34 +31,34 @@ In dit artikel wordt beschreven hoe u de hulpprogram ma's voor DNS-server instal
 U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 
 * Een actief Azure-abonnement.
-    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
-    * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
-* Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
+    * Als u nog geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Een Azure Active Directory-tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises map of een cloudmap.
+    * [Maak zo nodig een Azure Active Directory-tenant][create-azure-ad-tenant] of [koppel een Azure-abonnement aan uw account][associate-azure-ad-tenant].
+* Een door Azure Active Directory Domain Services beheerd domein dat in uw Azure AD-tenant is ingeschakeld en geconfigureerd.
     * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services beheerd domein][create-azure-ad-ds-instance].
 * Connectiviteit vanuit uw Azure AD DS virtuele netwerk naar de locatie waar uw andere DNS-naam ruimten worden gehost.
     * Deze connectiviteit kan worden gegeven met een [Azure ExpressRoute][expressroute] -of [Azure VPN gateway][vpn-gateway] -verbinding.
 * Een Windows Server Management-VM die is gekoppeld aan het beheerde domein.
     * Als dat nodig is, voltooit u de zelf studie voor het [maken van een Windows Server-VM en voegt u deze toe aan een beheerd domein][create-join-windows-vm].
-* Een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* in uw Azure AD-Tenant.
+* Een gebruikersaccount dat lid is van de *Azure AD DC-beheerdersgroep* in uw Azure AD-tenant.
 
 ## <a name="install-dns-server-tools"></a>Hulpprogram ma's voor DNS-server installeren
 
-Als u DNS-records wilt maken en wijzigen in azure AD DS, moet u de DNS-server hulpprogramma's installeren. Deze hulpprogram ma's kunnen worden geïnstalleerd als een functie in Windows Server. Zie install [Remote Server Administration Tools (RSAT) (Engelstalig)][install-rsat]voor meer informatie over het installeren van de beheer Programma's op een Windows-client.
+Als u DNS-records in een beheerd domein wilt maken en wijzigen, moet u de DNS-server hulpprogramma's installeren. Deze hulpprogram ma's kunnen worden geïnstalleerd als een functie in Windows Server. Zie install [Remote Server Administration Tools (RSAT) (Engelstalig)][install-rsat]voor meer informatie over het installeren van de beheer Programma's op een Windows-client.
 
 1. Meld u aan bij uw beheer-VM. Zie [verbinding maken met een virtuele machine van Windows Server][connect-windows-server-vm]voor stappen voor het maken van verbinding met behulp van de Azure Portal.
-1. Als **Serverbeheer** standaard niet wordt geopend wanneer u zich aanmeldt bij de VM, selecteert u het menu **Start** en kiest u vervolgens **Serverbeheer**.
-1. Selecteer in het deel venster *dash board* van het **Serverbeheer** -venster **functies en onderdelen toevoegen**.
-1. Selecteer op de pagina **voordat u begint** van de *wizard functies en onderdelen toevoegen*de optie **volgende**.
-1. Voor het *installatie type*, houdt u de **installatie optie op basis van functie of op basis** van het onderdeel ingeschakeld en selecteert u **volgende**.
-1. Kies op de pagina **server selectie** de huidige virtuele machine uit de Server groep, bijvoorbeeld *myvm.aaddscontoso.com*, en selecteer vervolgens **volgende**.
-1. Klik op de pagina **Server functies** op **volgende**.
-1. Vouw op de pagina **functies** het knoop punt **Remote Server Administration Tools** uit en vouw vervolgens het knoop punt **hulpprogram ma's voor functie beheer** uit. Selecteer de functie **Hulpprogram ma's voor DNS-server** in de lijst met hulpprogram ma's voor functie beheer.
+1. Als **Serverbeheer** niet standaard wordt geopend wanneer u zich aanmeldt bij de VM, selecteert u het menu **Start** en kiest u vervolgens **Serverbeheer**.
+1. Selecteer in het deelvenster *Dashboard* van het venster **Serverbeheer** de optie **Functies en onderdelen toevoegen**.
+1. Selecteer op de pagina **Voordat u begint** van de wizard *Functies en onderdelen toevoegen* **Volgende**.
+1. Voor het *installatietype* moet u de optie van het selectievakje **Installatie die op de functie of het onderdeel is gebaseerd** ingeschakeld laten en **Volgende** selecteren.
+1. Kies op de pagina **Selectie van servers** de huidige VM uit de servergroep, zoals *myvm.aaddscontoso.com*, en selecteer vervolgens **Volgende**.
+1. Klik op de pagina **Serverfuncties** op **Volgende**.
+1. Vouw op de pagina **Functies** het knooppunt **Beheerhulpprogramma's voor externe servers** uit en vouw vervolgens het knooppunt **Hulpprogramma's voor functiebeheer** uit. Selecteer de functie **Hulpprogram ma's voor DNS-server** in de lijst met hulpprogram ma's voor functie beheer.
 
     ![De Hulpprogram ma's voor de DNS-server installeren in de lijst met beschik bare hulpprogram ma's voor functie beheer](./media/manage-dns/install-dns-tools.png)
 
-1. Selecteer **installeren**op de pagina **bevestiging** . Het kan een paar minuten duren voordat de hulpprogram ma's voor het beheer van dnsGroup-beleid zijn geïnstalleerd.
-1. Wanneer de installatie van de functie is voltooid, selecteert u **sluiten** om de wizard **functies en onderdelen toevoegen** af te sluiten.
+1. Selecteer op de pagina **Bevestiging** **Installeren**. Het kan een paar minuten duren voordat de Hulpprogram Ma's voor de DNS-server zijn geïnstalleerd.
+1. Wanneer de installatie van de functie is voltooid, selecteert u **Sluiten** om de wizard **Functies en onderdelen toevoegen** af te sluiten.
 
 ## <a name="open-the-dns-management-console-to-administer-dns"></a>De DNS-beheer console openen voor het beheren van DNS
 
@@ -82,7 +81,7 @@ Als u de hulpprogram ma's voor DNS-server hebt geïnstalleerd, kunt u DNS-record
 
 ## <a name="create-conditional-forwarders"></a>Voorwaardelijke doorstuur servers maken
 
-Een Azure AD DS DNS-zone mag alleen de zone en records voor het beheerde domein zelf bevatten. Maak geen extra zones in azure AD DS om benoemde resources in andere DNS-naam ruimten op te lossen. Gebruik in plaats daarvan voorwaardelijke doorstuur servers in het beheerde domein om de DNS-server te laten weten waar deze moet worden geplaatst om adressen voor die resources op te lossen.
+Een Azure AD DS DNS-zone mag alleen de zone en records voor het beheerde domein zelf bevatten. Maak geen extra zones in het beheerde domein om benoemde resources in andere DNS-naam ruimten op te lossen. Gebruik in plaats daarvan voorwaardelijke doorstuur servers in het beheerde domein om de DNS-server te laten weten waar deze moet worden geplaatst om adressen voor die resources op te lossen.
 
 Voorwaardelijke doorstuur servers is een configuratie optie in een DNS-server waarmee u een DNS-domein, zoals *contoso.com*, kunt definiëren om query's door te sturen naar. In plaats van de lokale DNS-server die query's voor records in dat domein probeert op te lossen, worden DNS-query's doorgestuurd naar de geconfigureerde DNS voor dat domein. Deze configuratie zorgt ervoor dat de juiste DNS-records worden geretourneerd, omdat u geen lokale DNS-zone met dubbele records in het beheerde domein maakt om deze resources weer te geven.
 

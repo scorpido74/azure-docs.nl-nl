@@ -12,10 +12,9 @@ ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
 ms.openlocfilehash: dd5248996661be6d4ace81afd7ab942ab70eb4ff
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84781630"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Implementatie van een automatische gebruikersinrichting plannen
@@ -71,7 +70,7 @@ In dit artikel worden de volgende termen gebruikt:
 | Webinars op aanvraag| [Uw bedrijfs toepassingen beheren met Azure AD](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Meer informatie over hoe u met Azure AD eenmalige aanmelding kunt verkrijgen voor uw zakelijke SaaS-toepassingen en aanbevolen procedures voor het beheren van de toegang. |
 | Video's| [Wat is gebruikers inrichten in Active Azure Directory?](https://youtu.be/_ZjARPpI6NI) <br> [Hoe kan ik de gebruikers inrichten in Active Azure Directory implementeren?](https://youtu.be/pKzyts6kfrw) <br> [Sales Force integreren met Azure AD: gebruikers inrichten automatiseren](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
 | Online cursussen| SkillUp online: [identiteiten beheren](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Leer hoe u Azure AD integreert met veel SaaS-toepassingen en gebruikers toegang tot deze toepassingen kunt beveiligen. |
-| Books| [Moderne verificatie met Azure Active Directory voor webtoepassingen (Naslag informatie voor ontwikkel aars) 1e editie](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Dit is een gezaghebbende, diep gaande hand leiding voor het bouwen van Active Directory verificatie oplossingen voor deze nieuwe omgevingen. |
+| Boeken| [Moderne verificatie met Azure Active Directory voor webtoepassingen (Naslag informatie voor ontwikkel aars) 1e editie](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Dit is een gezaghebbende, diep gaande hand leiding voor het bouwen van Active Directory verificatie oplossingen voor deze nieuwe omgevingen. |
 | Zelfstudies| Zie de [lijst met zelf studies over het integreren van SaaS-apps met Azure AD](../saas-apps/tutorial-list.md). |
 | Veelgestelde vragen| [Veelgestelde vragen](../app-provisioning/user-provisioning.md) over het automatisch inrichten van gebruikers |
 

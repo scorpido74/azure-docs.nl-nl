@@ -10,10 +10,9 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 34d2ba05b00ab92066bc7fa3ccd0b7b2aa59e15c
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669634"
 ---
 # <a name="supported-features-of-azure-sql-edge-preview"></a>Ondersteunde functies van de Azure SQL-rand (preview-versie) 
@@ -62,7 +61,7 @@ Naast het ondersteunen van een subset van de functies van SQL Server on Linux bi
 
 De volgende lijst bevat de SQL Server 2019 in Linux-functies die momenteel niet worden ondersteund in Azure SQL Edge.
 
-| Gebied | Niet-ondersteunde functie of service |
+| Onderwerp | Niet-ondersteunde functie of service |
 |-----|-----|
 | **Database ontwerp** | In-Memory OLTP, en gerelateerde DDL-opdrachten en Transact-SQL-functies, catalogus weergaven en dynamische beheer weergaven. |
 | &nbsp; | `HierarchyID`gegevens type en gerelateerde DDL-opdrachten en Transact-SQL-functies, catalogus weergaven en dynamische beheer weergaven. |

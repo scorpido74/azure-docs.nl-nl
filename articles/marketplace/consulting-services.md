@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: dsindona
-ms.openlocfilehash: fb2031072ce93fcacdf52f8f0fad68f836049b22
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.openlocfilehash: 1267225f6b8557efc7ce36a973daef0a46aaba2d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560893"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957984"
 ---
 # <a name="consulting-service-offers"></a>Aanbiedingen voor advies service
 
@@ -22,11 +21,11 @@ Aanbiedingen voor Consulting-Services zijn klant gerichte afspraken. Uitgevers h
 
 ## <a name="compare-consulting-services"></a>Consulting Services vergelijken
 
-De commerciële Marketplace-winkel, Microsoft AppSource en Azure Marketplace, zijn afgestemd op doel groepen en Cloud producten om klanten te helpen bij het vinden van wat ze nodig hebben. Elke winkel heeft gespecialiseerde publicatie opties om u te helpen bij het maximaliseren van uw publicatie investeringen. Zie [Microsoft AppSource en Azure Marketplace vergelijken](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)voor meer informatie over het verschil tussen de twee winkeljes.
+De commerciële Marketplace-winkel, Microsoft AppSource en Azure Marketplace, zijn afgestemd op doel groepen en Cloud producten om klanten te helpen bij het vinden van wat ze nodig hebben. Elke winkel heeft gespecialiseerde publicatie opties om u te helpen bij het maximaliseren van uw publicatie investeringen. Zie [Microsoft AppSource en Azure Marketplace vergelijken](comparing-appsource-azure-marketplace.md)voor meer informatie over het verschil tussen de twee winkeljes.
 
 Consulting Services-aanbiedingen die zijn gebaseerd op Dynamics 365, Power apps en Power BI, komen in aanmerking voor de lijst op AppSource. Down load het PDF-bestand met de [Microsoft AppSource Consulting Services-overzichts richtlijnen](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) voor meer informatie.
 
-Advies Services en Managed Services-aanbiedingen die zijn gebaseerd op Microsoft Azure, komen in aanmerking voor de aanbieding op Azure Marketplace. Zie [een Azure consulting service-aanbieding publiceren](./partner-center-portal/create-consulting-service-offer.md) en [een managed services-aanbod publiceren op Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)voor meer informatie.
+Advies Services en Managed Services-aanbiedingen die zijn gebaseerd op Microsoft Azure, komen in aanmerking voor de aanbieding op Azure Marketplace. Zie [een Azure consulting service-aanbieding publiceren](./partner-center-portal/create-consulting-service-offer.md) en [een managed services-aanbod publiceren op Azure Marketplace](../lighthouse/how-to/publish-managed-services-offers.md)voor meer informatie.
 
 > [!Note]
 > Advies Services in azure Marketplace moeten zich richten op aanbiedingen voor een technisch publiek en benadrukken technische oplossingen en services van Azure.
@@ -72,7 +71,7 @@ Ga naar de pagina [competenties van Microsoft Partner Network](https://partner.m
 
 Systeem-integrator-partners kunnen advies-service aanbiedingen voor de volgende twintig landen/regio's verzenden:
 
-|   |   |   |   |
+| Landen  | (vervolg)   | (vervolg)  | (vervolg)  |
 |---------|----------|----------|----------|
 | Australië | België | Canada | Denemarken |
 | Finland  | Frankrijk | Duitsland  | India   |
@@ -83,7 +82,7 @@ Systeem-integrator-partners kunnen advies-service aanbiedingen voor de volgende 
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>Registreren voor advies Services in de commerciële Marketplace
 
-Begin met het [registreren](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) van uw bedrijfs gegevens in de Marketplace. Zie [een uitgever in de Marketplace worden](https://docs.microsoft.com/azure/marketplace/become-publisher)voor een volledige controle lijst met registratie vereisten. 
+Begin met het [registreren](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) van uw bedrijfs gegevens in de Marketplace. Zie [een uitgever in de Marketplace worden](become-publisher.md)voor een volledige controle lijst met registratie vereisten. 
 
 ## <a name="prepare-your-publishing-artifacts"></a>Uw publicatie artefacten voorbereiden
 Voordat u zich registreert, kunt u beginnen met het verzamelen en voorbereiden van de inhoud die uw vermelding helpt de waarde van uw service en oplossing voor uw doel klant te vermelden. 
@@ -152,7 +151,7 @@ Nadat het team voor inhouds beoordeling uw aanbiedings beschrijvingen heeft geco
 
 |Type aanbieding  |Vereist |Aanbevolen  |
 |---------|---------|---------|
-|**Onderzoek**    |   Neem een gedetailleerde agenda voor evaluaties van meerdere dagen of meerdere weken op en voeg het product uit dat door de klant kan worden verwacht.      |    Optimaliseer de samen vatting van uw aanbieding met uw topkwaliteits trefwoorden.     |
+|**Evaluatie**    |   Neem een gedetailleerde agenda voor evaluaties van meerdere dagen of meerdere weken op en voeg het product uit dat door de klant kan worden verwacht.      |    Optimaliseer de samen vatting van uw aanbieding met uw topkwaliteits trefwoorden.     |
 |**Briefing**    |   Stel in welk product de klant kan verwachten. Houd er rekening mee dat er persoonlijke *informatie* moet worden geleverd. Als u een virtuele service levert, kiest u een ander type aanbieding.    |  Optimaliseer de samen vatting van uw aanbieding met uw topkwaliteits trefwoorden.       |
 |**Implementatie**    |  Neem een gedetailleerde agenda op voor implementaties met meerdere dagen of meerdere weken en verdeel de technische wijzigingen, technische artefacten of andere artefacten die een klant kan verwachten als resultaat van de betrokkenheid.       |    Optimaliseer de samen vatting van uw aanbieding met uw topkwaliteits trefwoorden.     |
 |**Testen van het concept**    |    Stel in welke technische wijzigingen, technische artefacten of andere artefacten een klant kan worden verwacht als gevolg van de betrokkenheid.     | Optimaliseer de samen vatting van uw aanbieding met uw topkwaliteits trefwoorden.        |
