@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: db50a8938459fe063553f08c495149867ee36f43
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 0b025b3e017c8a7702b411e9d91cbdf22f915aba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710062"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549629"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Virtuele netwerken ontwerpen met NAT-gatewayresources
 
@@ -325,8 +325,7 @@ Een SNAT-poort kan na vijf seconden opnieuw worden gebruikt voor hetzelfde doel-
 - Logboekregistratie van de NSG-stroom wordt niet ondersteund bij gebruik van NAT.
 - NAT kan niet meerdere virtuele netwerken omvatten.
 
-
-## <a name="feedback"></a>Feedback
+## <a name="suggestions"></a>Suggesties
 
 We willen graag weten hoe we de service kunnen verbeteren. Mist u een mogelijkheid? Houd uw pleidooi voor wat we hierna moeten bouwen op [UserVoice voor NAT](https://aka.ms/natuservoice).
 

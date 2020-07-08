@@ -11,19 +11,17 @@ ms.date: 06/16/2020
 ms.author: mimart
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4369f42df8862adbc0b7fafd42979b9ceac0729b
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: a186b682a3a506f0f373776dd66e6592bc6036ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85386603"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551161"
 ---
 # <a name="define-custom-attributes-for-user-flows-preview"></a>Aangepaste kenmerken definiëren voor gebruikers stromen (preview-versie)
 
-|      |
-| ---- |
-| De functie aangepaste gebruikers kenmerken is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews. |
-|      |
+> [!NOTE]
+> De functie aangepaste gebruikers kenmerken is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
 
 Voor elke toepassing hebt u mogelijk verschillende vereisten voor de gegevens die u wilt verzamelen tijdens de registratie. Azure AD wordt geleverd met een ingebouwde set met informatie die is opgeslagen in kenmerken, zoals de naam, de voor waarde, de plaats en de post code. Met Azure AD kunt u de set met kenmerken die zijn opgeslagen op een gast account uitbreiden wanneer de externe gebruiker zich aanmeldt via een gebruikers stroom.
 

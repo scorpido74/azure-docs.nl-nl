@@ -11,18 +11,17 @@ ms.date: 05/06/2020
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 856338e6c5a2bac55fee57d3ea09575a1a4d14ed
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: abd6423ebbdba11cd1b0e0c2d00cfd36aa745e72
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85386535"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551139"
 ---
 # <a name="language-customization-in-azure-active-directory-preview"></a>Taal aanpassing in Azure Active Directory (preview-versie)
-|     |
-| --- |
-| Aanmelden via self-service is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.|
-|     |
+
+> [!NOTE]
+> Aanmelden via self-service is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
 
 Door de taal aanpassing in Azure Active Directory (Azure AD) kan uw gebruikers stroom voorzien van verschillende talen die aan de behoeften van uw gebruiker voldoen. Micro soft biedt de vertalingen voor [36 talen](#supported-languages). Zelfs als uw ervaring slechts voor één taal wordt gegeven, kunt u de kenmerk namen aanpassen op de pagina kenmerk verzameling.
 
@@ -193,8 +192,8 @@ Azure AD biedt ondersteuning voor de volgende talen. De talen van de gebruikers 
 | Russisch               | ru            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
 | Slowaaks                | SK            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
 | Sloveens             | lineaire            | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Servisch-cyrillisch    | SR-Cryl-CS    | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Servisch-Latijn       | SR-latn-cs    | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
+| Servisch - Cyrillisch    | SR-Cryl-CS    | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
+| Servisch - Latijn       | SR-latn-cs    | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
 | Zweeds               | sv            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
 | Tamil                 | &            | ![ja](./media/user-flow-customize-language/yes.png) | ![nee](./media/user-flow-customize-language/no.png) |
 | Telugu                | Ken            | ![ja](./media/user-flow-customize-language/yes.png) | ![nee](./media/user-flow-customize-language/no.png) |
@@ -202,5 +201,5 @@ Azure AD biedt ondersteuning voor de volgende talen. De talen van de gebruikers 
 | Turks               | formulieren            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
 | Oekraïens             | rijk            | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
 | Vietnamees            | beschreven            | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Chinees-vereenvoudigd  | zh-Hans       | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Chinees-traditioneel | zh-hant       | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
+| Chinese - vereenvoudigd  | zh-Hans       | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
+| Chinese - traditioneel | zh-hant       | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |

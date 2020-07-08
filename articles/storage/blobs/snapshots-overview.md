@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/02/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 26646ad5ae42d2fa301a7f894084a78a64c73bd4
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: cd8771afdc9c4462faaff758ffdd073382f69f53
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884668"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550966"
 ---
 # <a name="blob-snapshots"></a>BLOB-moment opnamen
 
@@ -25,9 +25,9 @@ Een moment opname is een alleen-lezen versie van een blob die op een bepaald mom
 
 ## <a name="about-blob-snapshots"></a>Over blob-moment opnamen
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-Een moment opname van een blob is identiek aan de basis-blob, behalve dat de BLOB-URI een **datum/tijd** -waarde heeft toegevoegd aan de BLOB-URI om het tijdstip aan te geven waarop de moment opname is gemaakt. Als de URI van een pagina-BLOB bijvoorbeeld `http://storagesample.core.blob.windows.net/mydrives/myvhd`is, is de moment opname- `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z`URI vergelijkbaar met.
+Een moment opname van een blob is identiek aan de basis-blob, behalve dat de BLOB-URI een **datum/tijd** -waarde heeft toegevoegd aan de BLOB-URI om het tijdstip aan te geven waarop de moment opname is gemaakt. Als de URI van een pagina-BLOB bijvoorbeeld is `http://storagesample.core.blob.windows.net/mydrives/myvhd` , is de moment opname-URI vergelijkbaar met `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z` .
 
 > [!NOTE]
 > Alle moment opnamen delen de URI van de basis-blob. Het enige verschil tussen de basis-Blob en de moment opname is de toegevoegde **DateTime** -waarde.
@@ -92,4 +92,4 @@ In scenario 4 is de basis-BLOB volledig bijgewerkt en bevat deze geen van de oor
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Een BLOB-moment opname maken en beheren in .NET](snapshots-manage-dotnet.md)
-- [Back-ups maken van Azure unmanaged VM-schijven met incrementele moment opnamen](../../virtual-machines/windows/incremental-snapshots.md)
+- [Back-ups maken van onbeheerde VM-schijven met incrementele momentopnames](../../virtual-machines/windows/incremental-snapshots.md)

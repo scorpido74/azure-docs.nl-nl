@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d67d867249286ad1591b441bbe5ea2637971e104
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 841b12b27447c4d32d25b8eb0d5bcf51ff8e2932
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80652618"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550276"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Logboeken controleren en bekijken voor on-premises Azure AD-wachtwoord beveiligings omgevingen
 
@@ -63,7 +63,7 @@ Discrete gebeurtenissen voor het vastleggen van deze situaties worden vastgelegd
 
 U hebt de volgende belang rijke gebeurtenissen met betrekking tot validatie op basis van wacht woorden:
 
-|   |Wachtwoord wijzigen |Wachtwoordset|
+| Gebeurtenis |Wachtwoord wijzigen |Wachtwoordset|
 | --- | :---: | :---: |
 |Door |10014 |10015|
 |Mislukt (vanwege wachtwoord beleid van klant)| 10016, 30002| 10017, 30003|
@@ -109,7 +109,7 @@ De `Get-AzureADPasswordProtectionSummaryReport` cmdlet werkt met behulp van een 
 |PasswordChangeErrors |10012|
 |PasswordSetErrors |10013|
 
-Houd er rekening `Get-AzureADPasswordProtectionSummaryReport` mee dat de cmdlet wordt verzonden in Power shell-script vorm en dat indien nodig, rechtstreeks naar de volgende locatie kan worden verwezen:
+Houd er rekening mee dat de `Get-AzureADPasswordProtectionSummaryReport` cmdlet wordt verzonden in Power shell-script vorm en dat indien nodig, rechtstreeks naar de volgende locatie kan worden verwezen:
 
 `%ProgramFiles%\WindowsPowerShell\Modules\AzureADPasswordProtection\Get-AzureADPasswordProtectionSummaryReport.ps1`
 
@@ -235,7 +235,7 @@ Tekst logboek registratie is standaard uitgeschakeld. De DC-Agent service moet o
 
 De DC Agent-service software installeert een prestatie meter object met de naam **Azure AD-wachtwoord beveiliging**. De volgende prestatie meter items zijn momenteel beschikbaar:
 
-|Naam prestatie meter item | Beschrijving|
+|Naam prestatie meter item | Description|
 | --- | --- |
 |Verwerkte wacht woorden |Met deze teller wordt het totale aantal verwerkte wacht woorden weer gegeven (geaccepteerd of afgewezen) sinds de laatste keer opnieuw opstarten.|
 |Wacht woorden geaccepteerd |Met deze teller wordt het totale aantal wacht woorden weer gegeven dat sinds de laatste keer opnieuw is geaccepteerd.|

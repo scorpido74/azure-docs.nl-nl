@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa110dac1ede9c3ef46bafcca0f4a59d956e3ae9
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 800c3dbeb96dfb87c7b495909e21eca929bec726
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85078652"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550312"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Resource rollen wijzigen voor een toegangs pakket in het beheer van rechten van Azure AD
 
@@ -90,7 +90,7 @@ Zie groepen en [Office 365-groepen en micro soft teams](https://docs.microsoft.c
 
     Wanneer u de groep of het team selecteert, wordt in de kolom **subtype** een van de volgende subtypen weer geven:
 
-    |  |  |
+    | Subtype | Description |
     | --- | --- |
     | Beveiliging | Wordt gebruikt voor het verlenen van toegang tot resources. |
     | Distributie | Wordt gebruikt voor het verzenden van meldingen naar een groep personen. |

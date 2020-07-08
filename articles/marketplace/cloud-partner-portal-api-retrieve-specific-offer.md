@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 06/19/2020
 ms.author: dsindona
 ms.openlocfilehash: 771c103b535c09f8481c2b01328078504b8633aa
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85516203"
 ---
 <a name="retrieve-a-specific-offer"></a>Een specifieke aanbieding ophalen
@@ -47,7 +47,7 @@ U kunt ook een bepaalde versie van de aanbieding ophalen of de aanbieding in con
 | offerId     | De GUID die de aanbieding uniek identificeert.                                                 | Tekenreeks        |
 | versie     | De versie van de aanbieding die wordt opgehaald. Standaard wordt de meest recente versie van de aanbieding opgehaald. | Geheel getal       |
 | slotId      | De sleuf van waaruit de aanbieding wordt opgehaald, kan een van de volgende zijn:      <br/>  - `Draft`(standaard) haalt de aanbiedings versie op die momenteel in concept wordt aangeboden.  <br/>  -  `Preview`haalt de aanbiedings versie op die momenteel in preview is.     <br/>  -  `Production`haalt de aanbiedings versie op die momenteel in productie is.          |      vaste |
-| api-versie | Nieuwste versie van API                                                                    | Date          |
+| api-versie | Nieuwste versie van API                                                                    | Datum          |
 |  |  |  |
 
 

@@ -11,18 +11,16 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfdae4a219408e811a49826999c85837aac449c0
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: e9fa9d9e23de9a4ec93cbef6d2696d7bec70d41d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85386688"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551243"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Een self-service-aanmeldings stroom voor gebruikers toevoegen aan een app (preview)
-|     |
-| --- |
-| Aanmelden via self-service is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.|
-|     |
+> [!NOTE]
+> Aanmelden via self-service is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
 
 U kunt gebruikers stromen maken voor apps die zijn gebouwd door uw organisatie. Als u uw gebruikers stroom aan een toepassing koppelt, kunt u zich aanmelden op die app inschakelen. U kunt ervoor kiezen om meer dan één toepassing te koppelen aan de gebruikers stroom. Wanneer u de gebruikers stroom aan een of meer toepassingen koppelt, kunnen gebruikers die de app bezoeken zich registreren en een gast account krijgen met de opties die in de gebruikers stroom zijn geconfigureerd.
 

@@ -12,19 +12,17 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 637e64c66714a67c4d76004668a3a5f7ff890b2d
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 714e4484c71b995bee186a2d94dc45c7ff82c50d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85386875"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551315"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>Verificatie met eenmalige e-mail code voor e-mail (preview-versie)
 
-|     |
-| --- |
-| De e-mail wachtwoord voor eenmalige e-mail is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.|
-|     |
+> [!NOTE]
+> De e-mail wachtwoord voor eenmalige e-mail is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
 
 In dit artikel wordt beschreven hoe u eenmalige verificatie via E-mail voor B2B-gast gebruikers inschakelt. Met de functie voor eenmalige e-mail code worden B2B-gast gebruikers geverifieerd wanneer ze niet kunnen worden geverifieerd via andere manieren, zoals Azure AD, een Microsoft-account (MSA) of Google Federatie. Met authenticatie op basis van eenmalige wachtwoord code hoeft u geen Microsoft-account te maken. Wanneer de gast gebruiker een uitnodiging heeft ingewisseld of een gedeelde resource opent, kunnen ze een tijdelijke code aanvragen, die wordt verzonden naar hun e-mail adres. Vervolgens voeren ze deze code in om door te gaan met aanmelden.
 

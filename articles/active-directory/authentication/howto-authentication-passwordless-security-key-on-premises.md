@@ -11,21 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 181e8192170cd7394d6817edd655f4e8257b48a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81cd2649ff056ab107491cf60602f0da7435b228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654048"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550642"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Aanmeldings wachtwoord zonder wacht woord inschakelen voor on-premises resources met Azure Active Directory (preview-versie)
 
 Dit document richt zich op het inschakelen van verificatie zonder wacht woord voor on-premises resources voor omgevingen met zowel **Azure AD join** als **hybride Azure AD gekoppelde** Windows 10-apparaten. Deze functionaliteit biedt naadloze eenmalige aanmelding (SSO) voor on-premises resources met behulp van met micro soft compatibele beveiligings sleutels.
 
-|     |
-| --- |
-| FIDO2-beveiligings sleutels zijn een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie over Previews|
-|     |
+> [!NOTE]
+> FIDO2-beveiligings sleutels zijn een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
 
 ## <a name="sso-to-on-premises-resources-using-fido2-keys"></a>Eenmalige aanmelding voor on-premises resources met behulp van FIDO2-sleutels
 
@@ -148,7 +146,7 @@ Remove-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -Domain
 
 Het object Azure AD Kerberos-server wordt weer gegeven in azure AD als een *KerberosDomain* -object. Elke on-premises Active Directory domein wordt weer gegeven als één *KerberosDomain* -object in azure AD.
 
-Uw organisatie heeft bijvoorbeeld een Active Directory forest met twee domeinen, `contoso.com` en. `fabrikam.com` Als u ervoor kiest om Azure AD in staat te stellen Kerberos-Tgt's uit te geven voor het hele forest, zijn er twee *KerberosDomain* -objecten in azure AD. Eén *KerberosDomain* -object `contoso.com`voor en één voor `fabrikam.com`. Als u meerdere Active Directory-forests hebt, is er één *KerberosDomain* -object voor elk domein in elk forest.
+Uw organisatie heeft bijvoorbeeld een Active Directory forest met twee domeinen, `contoso.com` en `fabrikam.com` . Als u ervoor kiest om Azure AD in staat te stellen Kerberos-Tgt's uit te geven voor het hele forest, zijn er twee *KerberosDomain* -objecten in azure AD. Eén *KerberosDomain* -object voor `contoso.com` en één voor `fabrikam.com` . Als u meerdere Active Directory-forests hebt, is er één *KerberosDomain* -object voor elk domein in elk forest.
 
 U moet de stappen uitvoeren om een [Kerberos-server object te maken](#create-kerberos-server-object) in elk domein en forest in uw organisatie die Azure AD-gebruikers bevatten.
 
@@ -156,7 +154,7 @@ U moet de stappen uitvoeren om een [Kerberos-server object te maken](#create-ker
 
 Aanmelden met FIDO wordt geblokkeerd als uw wacht woord is verlopen. De verwachting is dat de gebruiker het wacht woord opnieuw moet instellen voordat u zich kunt aanmelden met behulp van FIDO.
 
-## <a name="troubleshooting-and-feedback"></a>Problemen oplossen en feedback
+## <a name="troubleshooting-and-feedback"></a>Probleemoplossing en feedback
 
 Als u feedback wilt delen of problemen ondervindt tijdens het vooraf bekijken van deze functie, kunt u met de volgende stappen delen via de Windows feedback hub-app:
 
@@ -192,12 +190,12 @@ U kunt sleutels uit de Azure Portal verwijderen door te navigeren naar de pagina
 
 Bij een schone installatie van een hybride Azure AD-computer, nadat u het domein hebt toegevoegd en opnieuw hebt opgestart, moet u zich aanmelden met een wacht woord en wachten tot het beleid is gesynchroniseerd voordat u FIDO kunt gebruiken om u aan te melden.
 
-- Controleer de huidige status door te `dsregcmd /status` typen in een opdracht venster en controleer of *AzureAdJoined* en *DomainJoined* *Ja*worden weer gegeven.
+- Controleer de huidige status door te typen `dsregcmd /status` in een opdracht venster en controleer of *AzureAdJoined* en *DomainJoined* *Ja*worden weer gegeven.
 - Deze vertraging is een bekende beperking voor apparaten die lid zijn van een domein en is niet FIDO.
 
 ### <a name="im-unable-to-get-sso-to-my-ntlm-network-resource-after-signing-in-with-fido-and-get-a-credential-prompt"></a>Ik kan geen SSO ontvangen van mijn NTLM-netwerk bron na aanmelding bij FIDO en een prompt voor referenties ophalen
 
-Zorg ervoor dat er voldoende domein controllers zijn geïnstalleerd om te reageren op de tijd om uw resource aanvraag te verwerken. Als u wilt controleren of u een domein controller kunt zien waarop de functie wordt uitgevoerd, controleert u `nltest /dsgetdc:contoso /keylist /kdc`de uitvoer van.
+Zorg ervoor dat er voldoende domein controllers zijn geïnstalleerd om te reageren op de tijd om uw resource aanvraag te verwerken. Als u wilt controleren of u een domein controller kunt zien waarop de functie wordt uitgevoerd, controleert u de uitvoer van `nltest /dsgetdc:contoso /keylist /kdc` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

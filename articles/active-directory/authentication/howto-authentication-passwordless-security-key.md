@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 066ab7892bed6e7505e7ee114ff37a7850ef5c9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 300bb317d521ac9202fdd1a02328f844110a48e4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450918"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550415"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Aanmelden zonder wacht woord voor beveiligings sleutel inschakelen (preview)
 
@@ -24,10 +24,8 @@ Voor ondernemingen die tegenwoordig wacht woorden gebruiken en een gedeelde PC-o
 
 Dit document is gericht op het inschakelen van op wacht woord gebaseerde verificatie op basis van een sleutel. Aan het einde van dit artikel kunt u zich met behulp van een FIDO2-beveiligings sleutel aanmelden bij webtoepassingen met uw Azure AD-account.
 
-|     |
-| --- |
-| FIDO2-beveiligings sleutels zijn een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie over Previews|
-|     |
+> [!NOTE]
+> FIDO2-beveiligings sleutels zijn een open bare preview-functie van Azure Active Directory. Zie [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews) voor meer informatie.
 
 ## <a name="requirements"></a>Vereisten
 
@@ -52,8 +50,8 @@ Registratie functies voor verificatie methoden met een wacht woord zijn afhankel
 
 ### <a name="enable-fido2-security-key-method"></a>FIDO2-beveiligings sleutel methode inschakelen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Blader naar **Azure Active Directory** > **beleid voor verificatie methode**voor**beveiligings** > **verificatie methoden** > (preview).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Blader naar **Azure Active Directory**  >  **Security**  >  **Authentication methods**  >  **beleid voor verificatie methode**voor beveiligings verificatie methoden (preview).
 1. Kies onder de **beveiligings sleutel methode FIDO2**de volgende opties:
    1. **Inschakelen** -ja of Nee
    1. **Doel** -alle gebruikers of Selecteer gebruikers
@@ -61,7 +59,7 @@ Registratie functies voor verificatie methoden met een wacht woord zijn afhankel
 
 ## <a name="user-registration-and-management-of-fido2-security-keys"></a>Gebruikers registratie en het beheer van FIDO2-beveiligings sleutels
 
-1. Blader naar [https://myprofile.microsoft.com](https://myprofile.microsoft.com).
+1. Ga naar [https://myprofile.microsoft.com](https://myprofile.microsoft.com) .
 1. Meld u aan als dat nog niet het geval is.
 1. Klik op **beveiligings gegevens**.
    1. Als de gebruiker al ten minste één Azure Multi-Factor Authentication-methode heeft geregistreerd, kunnen ze onmiddellijk een FIDO2-beveiligings sleutel registreren.
@@ -79,7 +77,7 @@ In het voor beeld onder een gebruiker heeft de FIDO2-beveiligings sleutel al ing
 
 ![Aanmelden voor beveiligings sleutel micro soft Edge](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-edge-sign-in.png)
 
-## <a name="troubleshooting-and-feedback"></a>Problemen oplossen en feedback
+## <a name="troubleshooting-and-feedback"></a>Probleemoplossing en feedback
 
 Als u feedback wilt delen of problemen ondervindt tijdens het vooraf bekijken van deze functie, kunt u met de volgende stappen delen via de Windows feedback hub-app:
 

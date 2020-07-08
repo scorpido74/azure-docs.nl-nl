@@ -7,12 +7,12 @@ ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: a964a28b728a2b1741fb555f47fe6e329bc9902a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 10d4c2d6650502510bd160cc452ac2289130263b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655679"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549494"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>De Windows Azure Diagnostics-extensie (WAD) installeren en configureren
 [Azure Diagnostics-extensie](diagnostics-extension-overview.md) is een agent in azure monitor die bewakings gegevens van het gast besturingssysteem en werk belastingen van virtuele Azure-machines en andere reken bronnen verzamelt. Dit artikel bevat informatie over het installeren en configureren van de Windows diagnostische uitbrei ding en een beschrijving van de manier waarop de gegevens worden opgeslagen in en Azure Storage-account.
@@ -20,7 +20,7 @@ ms.locfileid: "83655679"
 De uitbrei ding van diagnostische gegevens wordt geïmplementeerd als extensie van een [virtuele machine](../../virtual-machines/extensions/overview.md) in azure, zodat deze dezelfde installatie opties ondersteunt met Resource Manager-sjablonen, Power shell en cli. Zie [extensies en functies voor virtuele machines voor Windows](../../virtual-machines/extensions/features-windows.md) voor meer informatie over het installeren en onderhouden van extensies van virtuele machines.
 
 ## <a name="overview"></a>Overzicht
-Wanneer u de diagnostische uitbrei ding van Windows Azure configureert, moet u een opslag account opgeven waarin alle opgegeven gegevens worden verzonden. U kunt eventueel een voor meer *gegevenssinks* toevoegen om de gegevens naar verschillende locaties te verzenden.
+Wanneer u de diagnostische uitbrei ding van Windows Azure configureert, moet u een opslag account opgeven waarin alle opgegeven gegevens worden verzonden. U kunt eventueel een of meer gegevens- *sinks* toevoegen om de gegevens naar verschillende locaties te verzenden.
 
 - Azure Monitor Sink: verzend gegevens van gast prestaties naar Azure Monitor metrieken.
 - Event hub-Sink: verzend gast prestaties en logboek gegevens naar Azure Event hubs om buiten Azure door te sturen. Deze Sink kan niet worden geconfigureerd in de Azure Portal.
@@ -191,7 +191,7 @@ Zie ook [Power shell gebruiken om Azure Diagnostics in te scha kelen op een virt
 De volgende tabel geeft een lijst van de verschillende typen gegevens die worden verzameld uit de diagnostische uitbrei ding en of ze worden opgeslagen als een tabel of BLOB. De gegevens die zijn opgeslagen in tabellen kunnen ook worden opgeslagen in blobs, afhankelijk van de [instelling para](diagnostics-extension-schema-windows.md#publicconfig-element) in uw open bare configuratie.
 
 
-| Gegevens | Opslagtype | Beschrijving |
+| Gegevens | Opslagtype | Description |
 |:---|:---|:---|
 | WADDiagnosticInfrastructureLogsTable | Tabel | Diagnostische monitor-en configuratie wijzigingen. |
 | WADDirectoriesTable | Tabel | Mappen die door de diagnostische monitor worden bewaakt.  Dit zijn onder andere IIS-logboeken, IIS-aanvraag logboeken en aangepaste directory's.  De locatie van het BLOB-logboek bestand wordt opgegeven in het container veld en de naam van de BLOB bevindt zich in het veld RelativePath.  Het veld AbsolutePath geeft de locatie en de naam van het bestand aan zoals het aanwezig is op de virtuele Azure-machine. |

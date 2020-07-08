@@ -11,13 +11,13 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
 ms.openlocfilehash: 4f513da4e7883cd273098039c9c4a4645d849f0f
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85516217"
 ---
-# <a name="azure-for-network-engineers"></a>Azure voor netwerk technici
+# <a name="azure-for-network-engineers"></a>Azure voor netwerktechnici
 Als een conventionele netwerk technicus hebt u fysieke activa, zoals routers, switches, kabels, firewalls voor het bouwen van een infra structuur. U hebt op een logische laag het virtuele LAN (VLAN) geconfigureerd, het STP (ring Tree Protocol), routerings protocollen (RIP, OSPF, BGP). U hebt uw netwerk beheerd met beheer hulpprogramma's en CLI. Netwerken in de Cloud wijken af van de locatie van de netwerk eindpunten logische en het gebruik van routerings protocollen mini maal. U werkt met Azure Resource Manager-API, Azure CLI en Power shell voor het configureren en beheren van assets in Azure. U begint uw netwerk traject in de Cloud door basis tenants van Azure-netwerken te weten te komen. 
 ## <a name="virtual-network"></a>Virtueel netwerk
 Wanneer u een netwerk van beneden naar boven ontwerpt, verzamelt u enkele basis gegevens. Deze informatie kan het aantal hosts, netwerk apparaten, het aantal subnetten, route ring tussen subnetten, isolatie domeinen zoals VLAN'S zijn. Deze informatie helpt bij het aanpassen van de grootte van de netwerk-en beveiligings apparaten en het maken van de architectuur voor de ondersteuning van toepassingen en services.

@@ -11,21 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c84d4f1ca01db07ea432bbf8f9929863a8134cfb
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: acf7f89ab7c84d74dcd6e3dff2c2c688da1cefea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976283"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550623"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Aanmeldings wachtwoord zonder wacht woord inschakelen voor Windows 10-apparaten met Azure Active Directory (preview-versie)
 
 Dit document is gericht op het inschakelen van FIDO2-verificatie op basis van wacht woorden met Windows 10-apparaten. Aan het einde van dit artikel kunt u zich aanmelden bij uw Azure AD-en hybride Azure AD Windows 10-apparaten met uw Azure AD-account met behulp van een FIDO2-beveiligings sleutel.
 
-|     |
-| --- |
-| FIDO2-beveiligings sleutels zijn een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie over Previews|
-|     |
+> [!NOTE]
+> FIDO2-beveiligings sleutels zijn een open bare preview-functie van Azure Active Directory. Zie [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews) voor meer informatie.
 
 ## <a name="requirements"></a>Vereisten
 
@@ -80,7 +78,7 @@ Organisaties kunnen ervoor kiezen om een of meer van de volgende methoden te geb
 
 Voer de volgende stappen uit om het gebruik van beveiligings sleutels met intune in te scha kelen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Blader naar **Microsoft intune**  >  **Device enrollment**  >  **registratie**  >  **van Windows hello voor bedrijven**-inschrijving voor het apparaat  >  **Properties**.
 1. Stel onder **instellingen** **beveiligings sleutels gebruiken voor aanmelden in** op **ingeschakeld**.
 
@@ -90,7 +88,7 @@ Configuratie van beveiligings sleutels voor aanmelden is niet afhankelijk van he
 
 Als u specifieke apparaatgroepen wilt instellen om de referentie provider in te scha kelen, gebruikt u de volgende aangepaste instellingen via intune:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Ga naar **Microsoft intune**  >  **apparaatconfiguratie**  >  **profielen**  >  **profiel maken**.
 1. Configureer het nieuwe profiel met de volgende instellingen:
    - Naam: beveiligings sleutels voor Windows-aanmelding

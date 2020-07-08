@@ -1,21 +1,21 @@
 ---
-title: Een evaluatie met Azure Migrate server beoordeling maken | Microsoft Docs
-description: Hierin wordt beschreven hoe u een evaluatie maakt met het hulp programma voor het evalueren van Azure Migrate-servers
+title: Een evaluatie van een Azure-VM maken met Azure Migrate server beoordeling | Microsoft Docs
+description: Hierin wordt beschreven hoe u een evaluatie van een Azure-VM maakt met het hulp programma voor het evalueren van Azure Migrate-servers
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: cffde2a677650387dffd19733e082ff7002ccb55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec95cde1f023b4d034c2fae9cc5a54744ccdc9a7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68229100"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549820"
 ---
-# <a name="create-an-assessment"></a>Een evaluatie maken
+# <a name="create-an-azure-vm-assessment"></a>Een Azure VM-evaluatie maken
 
-In dit artikel wordt beschreven hoe u een evaluatie maakt voor on-premises virtuele VMware-machines of virtuele Hyper-V-machines met Azure Migrate: Server evaluatie.
+In dit artikel wordt beschreven hoe u een Azure VM-evaluatie maakt voor on-premises virtuele VMware-machines of virtuele Hyper-V-machines met Azure Migrate: Server evaluatie.
 
 [Azure migrate](migrate-services-overview.md) helpt u bij het migreren naar Azure. Azure Migrate biedt een gecentraliseerde hub voor het bijhouden van detectie, beoordeling en migratie van on-premises infra structuur, toepassingen en gegevens naar Azure. De hub biedt Azure-hulpprogram ma's voor evaluatie en migratie, evenals onafhankelijke ISV-aanbiedingen (Independent Software Vendor) van derden. 
 
@@ -26,96 +26,100 @@ In dit artikel wordt beschreven hoe u een evaluatie maakt voor on-premises virtu
 - Als u een beoordeling wilt maken, moet u een Azure Migrate apparaat instellen voor [VMware](how-to-set-up-appliance-vmware.md) of [Hyper-V](how-to-set-up-appliance-hyper-v.md). Het apparaat detecteert on-premises machines en verstuurt meta gegevens en prestatie gegevens naar Azure Migrate: Server evaluatie. [Meer informatie](migrate-appliance.md).
 
 
-## <a name="assessment-overview"></a>Evaluatieoverzicht
-Er zijn twee soorten evaluaties die u kunt maken met behulp van Azure Migrate: Server Assessment.
+## <a name="azure-vm-assessment-overview"></a>Overzicht van de evaluatie van Azure VM
+Er zijn twee soorten grootte criteria die u kunt gebruiken om een Azure VM-evaluatie te maken met behulp van Azure Migrate: Server evaluatie.
 
-**Beoordeling** | **Nadere** | **Gegevens**
+**Evaluatie** | **Details** | **Gegevens**
 --- | --- | ---
-**Op basis van prestaties** | Evaluaties op basis van verzamelde prestatie gegevens | **Aanbevolen VM-grootte**: op basis van gegevens van CPU en geheugen gebruik.<br/><br/> **Aanbevolen schijf type (Standard of Premium Managed disk)**: op basis van de IOPS en door Voer van de on-premises schijven.
-**Als on-premises** | Evaluaties op basis van on-premises grootte. | **Aanbevolen VM-grootte**: op basis van de on-PREMISes VM-grootte<br/><br> **Aanbevolen schijf type**: op basis van de instelling voor het opslag type die u voor de evaluatie selecteert.
+**Op basis van prestaties** | Evaluaties op basis van verzamelde prestatiegegevens | **Aanbevolen VM-grootte**: Gebaseerd op verbruiksgegevens voor CPU en geheugen.<br/><br/> **Aanbevolen schijftype (standaard of premium beheerde schijf)** : Op basis van de IOPS en doorvoer van de on-premises schijven.
+**Zoals on-premises** | Evaluaties op basis van on-premises grootte aanpassen. | **Aanbevolen VM-grootte**: Op basis van de on-premises VM-grootte<br/><br> **Aanbevolen schijftype**: Op basis van de instelling voor het opslagtype die u voor de evaluatie selecteert.
 
 Meer [informatie](concepts-assessment-calculation.md) over evaluaties.
 
 ## <a name="run-an-assessment"></a>Een evaluatie uitvoeren
 
-Voer een evaluatie als volgt uit:
+Voer als volgt een evaluatie uit:
 
-1. Bekijk de [Aanbevolen procedures](best-practices-assessment.md) voor het maken van evaluaties.
-2. Klik op het tabblad **servers** in **Azure migrate: tegel server bepaling** op **evalueren**.
+1. Bekijk de [best practices](best-practices-assessment.md) voor het maken van evaluaties.
+2. Op het tabblad **Servers** in de tegel **Azure Migrate: Serverevaluatie**, klikt u op **Evalueren**.
 
     ![Evalueren](./media/how-to-create-assessment/assess.png)
 
-2. Geef in **servers beoordelen**een naam op voor de evaluatie.
-3. Klik op **Alles weergeven** om de evaluatie-eigenschappen te controleren.
+3. In **servers beoordelen**selecteert u het beoordelings type als Azure VM, selecteert u de detectie bron en geeft u de naam van de evaluatie op.
 
-    ![Eigenschappen van beoordeling](./media/how-to-create-assessment//view-all.png)
+    ![Basis beginselen van de beoordeling](./media/how-to-create-assessment/assess-servers-azurevm.png)
 
-3. In **een groep selecteren of maken**, selecteert u **nieuwe maken**en geeft u een groeps naam op. Een groep verzamelt een of meer Vm's samen voor evaluatie.
-4. Selecteer op **computers toevoegen aan de groep**de optie vm's die u aan de groep wilt toevoegen.
-5. Klik op **evaluatie maken** om de groep te maken en de evaluatie uit te voeren.
+4. Klik op **Alles weergeven** om de evaluatie-eigenschappen te controleren.
+
+    ![Evaluatie-eigenschappen](./media/how-to-create-assessment//view-all.png)
+
+5. Klik op **volgende** om **machines te selecteren die u wilt beoordelen**. In **Een groep selecteren of maken** selecteert u **Nieuwe maken** en geeft u een groepsnaam op. Een groep verzamelt een of meer VM's voor evaluatie.
+6. Selecteer in **Machines toevoegen aan de groep** de VM's die aan de groep moeten worden toegevoegd.
+7. Klik op **volgende** om te beoordelen **+ beoordeling maken** om de details van de evaluatie te bekijken.
+8. Klik op **Evaluatie maken** om de groep te maken en de evaluatie uit te voeren.
 
     ![Een evaluatie maken](./media/how-to-create-assessment//assessment-create.png)
 
-6. Nadat de evaluatie is gemaakt, bekijkt u deze in **servers** > **Azure migrate: Server evaluatie** > -**evaluaties**.
-7. Klik op **Evaluatie exporteren** om deze te downloaden als een Excel-bestand.
+9. Nadat de evaluatie is gemaakt, kunt u deze bekijken in **Servers** > **Azure Migrate: Serverevaluatie** > **Evaluaties**.
+10. Klik op **Evaluatie exporteren** om deze te downloaden als een Excel-bestand.
 
 
 
-## <a name="review-an-assessment"></a>Een evaluatie controleren
+## <a name="review-an-azure-vm-assessment"></a>Een evaluatie van een Azure-VM controleren
 
-Een evaluatie beschrijft:
+Een Azure VM-evaluatie beschrijft:
 
-- **Azure-gereedheid**: of vm's geschikt zijn voor migratie naar Azure.
-- **Schatting van maandelijkse kosten**: de geschatte maandelijkse reken-en opslag kosten voor het uitvoeren van de virtuele machines in Azure.
-- **Schatting maandelijkse opslag kosten**: geschatte kosten voor schijf opslag na migratie.
+- **Azure-gereedheid**: Hiermee wordt aangegeven of VM's geschikt zijn voor migratie naar Azure.
+- **Schatting maandelijkse kosten**: De geschatte maandelijkse reken- en opslagkosten voor het uitvoeren van de VM's in Azure.
+- **Schatting maandelijkse opslagkosten**: Geschatte kosten voor schijfopslag na migratie.
 
-### <a name="view-an-assessment"></a>Een evaluatie weer geven
+### <a name="view-an-azure-vm-assessment"></a>Een Azure VM-evaluatie weer geven
 
-1. In**servers**voor **migratie doelen** >  klikt u op **evaluaties** in **Azure migrate: Server evaluatie**.
-2. Klik in **beoordelingen**op een evaluatie om deze te openen.
+1. Klik in **Migratiedoelen** >  **Servers**, op **Evaluaties** in **Azure Migrate: Serverevaluatie**.
+2. Klik in **Evaluaties** op een evaluatie om deze te openen.
 
-    ![Evaluatie samenvatting](./media/how-to-create-assessment/assessment-summary.png)
+    ![Evaluatie-overzicht](./media/how-to-create-assessment/assessment-summary.png)
 
-### <a name="review-azure-readiness"></a>Azure-gereedheid controleren
+### <a name="review-azure-readiness"></a>Azure-gereedheid beoordelen
 
-1. Controleer in **Azure Readiness**of de vm's gereed zijn voor migratie naar Azure.
-2. Controleer de status van de virtuele machine:
-    - **Gereed voor Azure**: Azure migrate RAADT een VM-grootte en schattingen voor de kosten aan voor vm's in de evaluatie.
-    - **Klaar met voor waarden**: toont problemen en voorgestelde herbemiddeling.
-    - **Niet gereed voor Azure**: toont problemen en voorgestelde herbemiddeling.
-    - **Gereedheid onbekend**: wordt gebruikt wanneer Azure migrate de gereedheid niet kan beoordelen door problemen met de beschik baarheid van gegevens.
+1. Controleer in **Azure-gereedheid** of de VM's gereed zijn voor migratie naar Azure.
+2. Controleer de VM-status:
+    - **Gereed voor Azure**: Azure Migrate raadt een VM-grootte en schattingen voor de kosten aan voor VM's in de evaluatie.
+    - **Gereed met voorwaarden**: Geeft problemen en voorgesteld herstel weer.
+    - **Niet gereed voor Azure**: Geeft problemen en voorgesteld herstel weer.
+    - **Gereedheid onbekend**: Wordt gebruikt wanneer Azure Migrate de gereedheid niet kan evalueren door problemen met de beschikbaarheid van gegevens.
 
-2. Klik op de status van een **Azure-gereedheid** . U kunt details van de VM-gereedheid bekijken en inzoomen op de details van de virtuele machine, met inbegrip van compute-, opslag-en netwerk instellingen.
+3. Klik op een **Azure-gereedheid**-status. U kunt details van de VM-gereedheid weergeven en inzoomen op de details van de VM, inclusief berekenings-, opslag- en netwerkinstellingen.
 
 
 
-### <a name="review-cost-details"></a>Details van kosten bekijken
+### <a name="review-cost-details"></a>Gedetailleerde kosten beoordelen
 
-In deze weer gave ziet u de geschatte berekenings-en opslag kosten voor het uitvoeren van Vm's in Azure.
+Deze weergave toont de geschatte berekenings- en opslagkosten om virtuele machines in Azure uit te voeren.
 
-1. Bekijk de maandelijkse reken-en opslag kosten. De kosten worden geaggregeerd voor alle virtuele machines in de geraamde groep.
+1. Controleer de maandelijkse berekenings- en opslagkosten. De kosten worden geaggregeerd voor alle VM's in de geëvalueerde groep.
 
-    - Schattingen van kosten zijn gebaseerd op de grootte aanbevelingen voor een machine en de schijven en eigenschappen.
-    - De geschatte maandelijkse kosten voor Compute en opslag worden weer gegeven.
-    - De kosten raming is voor het uitvoeren van de on-premises Vm's als IaaS Vm's. Azure Migrate server-evaluatie houdt geen rekening met PaaS-of SaaS-kosten.
+    - Schattingen van kosten zijn gebaseerd op de grootte-aanbevelingen voor een machine en de schijven en eigenschappen.
+    - De geschatte maandelijkse kosten voor berekening en opslag worden weergegeven.
+    - De schatting van de kosten is voor het uitvoeren van de on-premises VM's als IaaS-VM's. Azure Migrate Serverevaluatie houdt geen rekening met PaaS-of SaaS-kosten.
 
-2. U kunt de maandelijkse schattingen voor de opslag kosten bekijken. In deze weer gave worden geaggregeerde opslag kosten voor de geschatte groep weer gegeven, gesplitst over verschillende typen opslag schijven.
-3. U kunt inzoomen om de details van specifieke Vm's te bekijken.
+2. U kunt de schatting van de maandelijkse opslagkosten controleren. In deze weergave worden geaggregeerde opslagkosten voor de geëvalueerde groep weergegeven, gesplitst over verschillende typen opslagschijven.
+3. U kunt inzoomen om de details voor specifieke VM's te bekijken.
 
 
 ### <a name="review-confidence-rating"></a>Betrouwbaarheidsclassificatie controleren
 
-Wanneer u evaluaties op basis van prestaties uitvoert, wordt een betrouwbaarheids classificatie aan de evaluatie toegewezen.
+Wanneer u evaluaties op basis van prestaties uitvoert, wordt er een betrouwbaarheidsclassificatie aan de evaluatie toegewezen.
 
 ![Betrouwbaarheidsclassificatie](./media/how-to-create-assessment/confidence-rating.png)
 
-- Er wordt een classificatie van 1 ster (laagste) tot 5 sterren (hoogst) toegekend.
-- De betrouwbaarheids classificatie helpt u bij het schatten van de betrouw baarheid van de grootte aanbevelingen van de evaluatie.
-- De betrouwbaarheids classificatie is gebaseerd op de beschik baarheid van gegevens punten die nodig zijn om de evaluatie te berekenen.
+- Er wordt een classificatie van 1 ster (laagst) tot 5 sterren (hoogst) toegekend.
+- De betrouwbaarheidsclassificatie helpt u om de betrouwbaarheid in te schatten van de aanbevelingen voor de grootte die de evaluatie geeft.
+- De betrouwbaarheidsclassificatie is op basis van de beschikbaarheid van de gegevenspunten die nodig zijn om de evaluatie te berekenen.
 
-De betrouwbaarheids classificaties voor een evaluatie zijn als volgt.
+De betrouwbaarheidsclassificatie voor een evaluatie zijn als volgt.
 
-**Beschik baarheid van gegevens punt** | **Betrouwbaarheidsclassificatie**
+**Beschikbaarheid van gegevenspunten** | **Betrouwbaarheidsclassificatie**
 --- | ---
 0%-20% | 1 ster
 21%-40% | 2 sterren

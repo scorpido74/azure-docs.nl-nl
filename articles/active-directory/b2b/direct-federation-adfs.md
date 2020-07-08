@@ -12,18 +12,17 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbf9b92b868e8707a0e20531f5738146d833c301
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 1b3d7c47ff0a2c533bf12a67958a913b22915f75
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85387079"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551522"
 ---
 # <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>Voor beeld: directe Federatie met Active Directory Federation Services (AD FS) (preview)
-|     |
-| --- |
-| Directe Federatie is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.|
-|     |
+
+> [!NOTE]
+> Directe Federatie is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
 
 In dit artikel wordt beschreven hoe u [directe Federatie](direct-federation.md) kunt instellen met behulp van Active Directory Federation Services (AD FS) als id-provider van SAML 2,0 of WS-wordt ingevoerd. Voor de ondersteuning van directe Federatie moeten bepaalde kenmerken en claims worden geconfigureerd bij de ID-provider. Om te laten zien hoe u een id-provider voor directe Federatie kunt configureren, gebruiken we Active Directory Federation Services (AD FS) als voor beeld. We laten u zien hoe u AD FS instelt als een SAML-ID-provider en als een id-provider voor de WS-bewerking.
 
@@ -77,7 +76,7 @@ Voordat u met deze procedure begint, moet u al een AD FS-server instellen en erm
 3. Onder **acties**, selecteert u **vertrouwens relatie van Relying Party toevoegen**. 
 4. Gebruik in de wizard Relying Party vertrouwens relatie toevoegen voor **gegevens bron selecteren**de optie **gegevens importeren over de Relying Party die online of op een lokaal netwerk zijn gepubliceerd**. Geef deze URL voor federatieve meta gegevens op https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml . Andere standaard selecties behouden. Selecteer **Sluiten**.
 5. De wizard **claim regels bewerken** wordt geopend.
-6. Selecteer in de wizard **claim regels bewerken** de optie **regel toevoegen**. Selecteer in **regel type kiezen**de optie **LDAP-kenmerken als claims verzenden**. Selecteer **Next**.
+6. Selecteer in de wizard **claim regels bewerken** de optie **regel toevoegen**. Selecteer in **regel type kiezen**de optie **LDAP-kenmerken als claims verzenden**. Selecteer **Volgende**.
 7. Geef in **claim regel configureren**de volgende waarden op: 
 
    - **Claim regel naam**: claim regel voor e-mail 
@@ -133,7 +132,7 @@ Voordat u met deze procedure begint, moet u al een AD FS-server instellen en erm
 1. Onder **acties**, selecteert u **vertrouwens relatie van Relying Party toevoegen**.  
 1. Gebruik in de wizard Relying Party vertrouwens relatie toevoegen voor **gegevens bron selecteren**de optie **gegevens importeren over de Relying Party die online of op een lokaal netwerk zijn gepubliceerd**. Geef de URL voor de federatieve meta gegevens op: `https://nexus.microsoftonline-p.com/federationmetadata/2007-06/federationmetadata.xml` .  Andere standaard selecties behouden. Selecteer **Sluiten**.
 1. De wizard **claim regels bewerken** wordt geopend. 
-1. Selecteer in de wizard **claim regels bewerken** de optie **regel toevoegen**. Selecteer bij **regel type kiezen** **de optie claims verzenden met een aangepaste regel**. Selecteer *Next*. 
+1. Selecteer in de wizard **claim regels bewerken** de optie **regel toevoegen**. Selecteer bij **regel type kiezen** **de optie claims verzenden met een aangepaste regel**. Selecteer *Volgende*. 
 1. Geef in **claim regel configureren**de volgende waarden op:
 
    - **Claim regel naam**: probleem onveranderbare id  
@@ -141,7 +140,7 @@ Voordat u met deze procedure begint, moet u al een AD FS-server instellen en erm
 
 1. Selecteer **Finish**. 
 1. In het venster **claim regels bewerken** wordt de nieuwe regel weer gegeven. Klik op **Toepassen**.  
-1. Selecteer in dezelfde wizard **claim regels bewerken** de optie **regel toevoegen**. In het **regel type coslang**selecteert u **LDAP-kenmerken als claims verzenden**. Selecteer **Next**.
+1. Selecteer in dezelfde wizard **claim regels bewerken** de optie **regel toevoegen**. In het **regel type coslang**selecteert u **LDAP-kenmerken als claims verzenden**. Selecteer **Volgende**.
 1. Geef in **claim regel configureren**de volgende waarden op: 
 
    - **Claim regel naam**: claim regel voor e-mail  

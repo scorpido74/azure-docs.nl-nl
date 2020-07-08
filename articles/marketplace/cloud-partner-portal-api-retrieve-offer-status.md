@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 88b07a3456bd2589d6ebefcc54903564e78f4bf2
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85516206"
 ---
 # <a name="retrieve-offer-status"></a>Aanbiedingsstatus ophalen
@@ -29,14 +29,14 @@ Hiermee wordt de huidige status van de aanbieding opgehaald.
 |  -------------  |  ------------------------------------------  |  ------------  |
 |  publisherId    | Uitgevers-id, bijvoorbeeld`Contoso`  |     Tekenreeks     |
 |  offerId        | GUID die de aanbieding uniek identificeert      |     Tekenreeks     |
-|  api-versie    | Nieuwste versie van API                        |     Date       |
+|  api-versie    | Nieuwste versie van API                        |     Datum       |
 |  |  |
 
 
 ## <a name="header"></a>Koptekst
 
 
-|  Naam           |  Waarde               |
+|  Name           |  Waarde               |
 |  -------------  | -------------------  |
 |  Content-Type   |  `application/json`  |
 |  Autorisatie  | `Bearer YOUR_TOKEN`  |

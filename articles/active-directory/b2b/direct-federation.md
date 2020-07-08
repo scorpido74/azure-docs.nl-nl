@@ -12,18 +12,17 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fef25af1e39aadb39113c109b7bee16e8e55195
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 78ad8761d3a4ff3e3cdab9dee5f50b469ff840fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85387096"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551534"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Directe Federatie met AD FS en providers van derden voor gast gebruikers (preview-versie)
-|     |
-| --- |
-| Directe Federatie is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.|
-|     |
+
+> [!NOTE]
+>  Directe Federatie is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
 
 In dit artikel wordt beschreven hoe u directe Federatie kunt instellen met een andere organisatie voor B2B-samen werking. U kunt directe Federatie instellen met elke organisatie waarvan de ID-provider (IdP) ondersteuning biedt voor het SAML 2,0-of WS-inschakel protocol.
 Wanneer u directe Federatie instelt met de IdP van een partner, kunnen nieuwe gast gebruikers uit dat domein hun eigen door IdP beheerd organisatie account gebruiken om zich aan te melden bij uw Azure AD-Tenant en samen met u aan de slag te gaan. De gast gebruiker hoeft geen afzonderlijk Azure AD-account te maken.
@@ -208,7 +207,7 @@ U kunt uw directe Federatie-instellingen verwijderen. Als u dit doet, kunnen geb
 2. Selecteer **externe identiteiten**.
 3. Selecteer **alle id-providers**.
 4. Selecteer de ID-provider en selecteer vervolgens **verwijderen**. 
-5. Selecteer **Ja** om de verwijdering te bevestigen. 
+5. Selecteer **Ja** om het verwijderen te bevestigen. 
 
 Directe Federatie met een id-provider verwijderen met behulp van Power shell:
 1. Installeer de nieuwste versie van de Azure AD Power shell for Graph-module ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)).

@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff1c0bd880f2052e6ee2ad3c5cdc3bed803f6da1
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: 3bf5e161b46b9ec6e39702ddd8435a7c7672111f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367764"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550126"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: release geschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -569,7 +569,7 @@ Vergrendel de toegang tot het AD DS-account door de volgende machtigings wijzigi
 *   Verwijder alle Ace's van het specifieke object, met uitzonde ring van Ace's die specifiek voor zichzelf zijn. We willen de standaard machtigingen intact houden wanneer het gaat om zelf.
 *   Wijs deze specifieke machtigingen toe:
 
-Type     | Naam                          | Access               | Van toepassing op
+Type     | Name                          | Access               | Van toepassing op
 ---------|-------------------------------|----------------------|--------------|
 Toestaan    | SYSTEEM                        | Volledig beheer         | Dit object  |
 Toestaan    | Ondernemingsadministrators             | Volledig beheer         | Dit object  |
@@ -901,18 +901,31 @@ CBool(
 ```
 
 * De volgende set X509Certificate2-compatibele functies is toegevoegd voor het maken van synchronisatie regel expressies voor het afhandelen van certificaat waarden in het kenmerk userCertificate:
-
-    ||||
-    | --- | --- | --- |
-    |CertSubject|CertIssuer|CertKeyAlgorithm|
-    |CertSubjectNameDN|CertIssuerOid|CertNameInfo|
-    |CertSubjectNameOid|CertIssuerDN|IsCert|
-    |CertFriendlyName|CertThumbprint|CertExtensionOids|
-    |CertFormat|CertNotAfter|CertPublicKeyOid|
-    |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
-    |CertVersion|CertSignatureAlgorithmOid|Selecteer|
-    |CertKeyAlgorithmParams|CertHashString|Waar|
-    |||With|
+  * CertSubject 
+  * CertIssuer
+  * CertKeyAlgorithm
+  * CertSubjectNameDN
+  * CertIssuerOid
+  * CertNameInfo
+  * CertSubjectNameOid
+  * CertIssuerDN
+  * IsCert
+  * CertFriendlyName
+  * CertThumbprint
+  * CertExtensionOids
+  * CertFormat
+  * CertNotAfter
+  * CertPublicKeyOid 
+  * CertSerialNumber
+  * CertNotBefore
+  * CertPublicKeyParametersOid
+  * CertVersion
+  * CertSignatureAlgorithmOid
+  * Selecteer
+  * CertKeyAlgorithmParams
+  * CertHashString
+  * Waar
+  * With
 
 * De volgende schema wijzigingen zijn geïntroduceerd zodat klanten aangepaste synchronisatie regels kunnen maken voor flow sAMAccountName, domainNetBios en domainFQDN voor groeps objecten, evenals DN voor gebruikers objecten:
 

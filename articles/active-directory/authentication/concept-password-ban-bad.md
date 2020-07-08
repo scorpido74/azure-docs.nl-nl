@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef127d120b32f5344bce0f68d79f48401087f0ce
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 0f905b3eb6d1675f0bc252c3500169b3144287d9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84691058"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550698"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Onjuiste wachtwoorden uit uw organisatie verwijderen
 
@@ -133,7 +133,7 @@ Voor beeld: Stel dat we een gebruiker, Pol, hebben die hun wacht woord opnieuw w
 
 #### <a name="score-calculation"></a>Score berekening
 
-De volgende stap is het identificeren van alle instanties van verboden wacht woorden in het genormaliseerde nieuwe wacht woord van de gebruiker. Daarna kunt u het volgende doen:
+De volgende stap is het identificeren van alle instanties van verboden wacht woorden in het genormaliseerde nieuwe wacht woord van de gebruiker. Vervolgens:
 
 1. Elk verboden wacht woord dat is gevonden in het wacht woord van een gebruiker wordt één punt gegeven.
 2. Elk resterend uniek teken wordt op één punt gegeven.
@@ -158,7 +158,7 @@ Na normalisatie wordt dit wacht woord "contosoblankf9!". Het overeenkomende proc
 
 ## <a name="license-requirements"></a>Licentievereisten
 
-|   | Azure AD-wachtwoord beveiliging met globale lijst met geblokkeerde wacht woorden | Azure AD-wachtwoord beveiliging met aangepaste lijst met geblokkeerde wacht woorden|
+| Gebruikers | Azure AD-wachtwoord beveiliging met globale lijst met geblokkeerde wacht woorden | Azure AD-wachtwoord beveiliging met aangepaste lijst met geblokkeerde wacht woorden|
 | --- | --- | --- |
 | Alleen Cloud gebruikers | Azure AD Free | Azure AD Premium P1 of P2 |
 | Gebruikers die zijn gesynchroniseerd vanuit een on-premises Windows Server-Active Directory | Azure AD Premium P1 of P2 | Azure AD Premium P1 of P2 |

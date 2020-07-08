@@ -1,22 +1,22 @@
 ---
 title: Beheer van verificatie sessies configureren-Azure Active Directory
-description: De configuratie van de Azure AD-verificatie sessie aanpassen, inclusief de aanmeldings frequentie van de gebruiker en de persistentie van de browser sessie.
+description: De configuratie van de Azure AD-verificatie sessie aanpassen, waaronder de aanmeldings frequentie van de gebruiker en de persistentie van de browser sessie.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 06/04/2020
+ms.date: 06/29/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72cc876e2fd695e40b3b9cf7d9a52d34dea2387c
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 2cf89864eb6e52baf925f82aa590619d7cfeabb2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253253"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552115"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Beheer van verificatiesessies met voorwaardelijke toegang configureren
 
@@ -35,7 +35,7 @@ Voordat u meer informatie over het configureren van het beleid krijgt, gaan we d
 
 Met de aanmeldings frequentie wordt de tijds periode gedefinieerd voordat een gebruiker wordt gevraagd om zich opnieuw aan te melden wanneer wordt geprobeerd om toegang te krijgen tot een bron.
 
-De standaard configuratie van de Azure Active Directory (Azure AD) voor de aanmeldings frequentie van gebruikers is een draaiende Window van 90 dagen. Het is vaak een goed idee om gebruikers te vragen om referenties, maar dit kan Backfire: gebruikers die zijn getraind om hun referenties op te geven zonder dat ze dit doen, kunnen ze per ongeluk door geven aan een kwaad aardige referentie prompt.
+De standaard configuratie van de Azure Active Directory (Azure AD) voor de aanmeldings frequentie van gebruikers is een rollend venster van 90 dagen. Het is vaak een goed idee om gebruikers te vragen om referenties, maar dit kan Backfire: gebruikers die zijn getraind om hun referenties op te geven zonder dat ze dit doen, kunnen ze per ongeluk door geven aan een kwaad aardige referentie prompt.
 
 Het kan erop klinken dat een waarschuwing wordt weer gegeven om te voor komen dat een gebruiker zich opnieuw aanmeldt, op voor waarde dat de sessie wordt ingetrokken door een schending van de IT-beleids regels. Enkele voor beelden zijn (maar niet beperkt tot) het wijzigen van een wacht woord, een niet-compatibel apparaat of het uitschakelen van een account. U kunt [gebruikers sessies ook expliciet intrekken met behulp van Power shell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). De standaard configuratie van Azure AD wordt niet meer door gebruikers gevraagd om hun referenties op te geven als de beveiligings postuur van hun sessies niet is gewijzigd.
 
@@ -51,6 +51,8 @@ De instelling voor de aanmeldings frequentie werkt met apps waarop OAUTH2 of OID
 - Dynamics CRM Online
 - Azure Portal
 
+De instelling voor de aanmeldings frequentie werkt ook met SAML-toepassingen, zolang ze hun eigen cookies niet hebben verwijderd en teruggestuurd worden naar Azure AD voor verificatie op regel matige basis.
+
 ### <a name="user-sign-in-frequency-and-multi-factor-authentication"></a>Aanmeldings frequentie van gebruikers en multi-factor Authentication
 
 De aanmeldings frequentie is eerder alleen toegepast op de eerste factor Authentication op apparaten die zijn toegevoegd aan Azure AD, hybride Azure AD en geregistreerde Azure AD. Er is geen eenvoudige manier voor onze klanten om multi-factor Authentication (MFA) op deze apparaten opnieuw af te dwingen. Op basis van feedback van klanten is de aanmeldings frequentie ook van toepassing op MFA.
@@ -59,7 +61,7 @@ De aanmeldings frequentie is eerder alleen toegepast op de eerste factor Authent
 
 ### <a name="user-sign-in-frequency-and-device-identities"></a>Aanmeldings frequentie van gebruikers en apparaat-id's
 
-Als u Azure AD hebt toegevoegd, hybride Azure AD is toegevoegd of geregistreerde Azure AD-apparaten, wanneer een gebruiker het apparaat ontgrendelt of zich interactief aanmeldt, zal deze gebeurtenis ook voldoen aan het beleid voor aanmeldings frequentie. In de volgende twee voor beelden is de aanmeldings frequentie voor gebruikers ingesteld op 1 uur:
+Als u Azure AD hebt toegevoegd, hybride Azure AD is toegevoegd of geregistreerde Azure AD-apparaten, wanneer een gebruiker het apparaat ontgrendelt of zich interactief aanmeldt, voldoet deze gebeurtenis ook aan het beleid voor aanmeldings frequentie. In de volgende twee voor beelden is de aanmeldings frequentie voor gebruikers ingesteld op 1 uur:
 
 Voorbeeld 1:
 
@@ -103,7 +105,7 @@ Voorwaardelijke toegang is een Azure AD Premium mogelijkheid en vereist een Prem
 
 ![Beleid voor voorwaardelijke toegang geconfigureerd voor aanmeldings frequentie](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
 
-Op Azure AD geregistreerde Windows-apparaten aanmelden bij het apparaat wordt beschouwd als een prompt. Als u bijvoorbeeld de aanmeldings frequentie hebt ingesteld op 24 uur voor Office-apps, voldoen gebruikers op Azure AD geregistreerde Windows-apparaten aan het beleid voor aanmeldings frequentie door zich aan te melden bij het apparaat en wordt er niet opnieuw gevraagd om de Office-apps te openen.
+Op Azure AD geregistreerde Windows-apparaten aanmelden bij het apparaat wordt beschouwd als een prompt. Als u bijvoorbeeld de aanmeldings frequentie hebt ingesteld op 24 uur voor Office-apps, voldoen gebruikers op Azure AD geregistreerde Windows-apparaten met het aanmeldings frequentie beleid door zich aan te melden bij het apparaat en wordt er niet opnieuw gevraagd om de Office-apps te openen.
 
 Als u een andere aanmeldings frequentie hebt geconfigureerd voor verschillende web-apps die worden uitgevoerd in dezelfde browser sessie, wordt het meest strikte beleid toegepast op beide apps, omdat alle apps die in dezelfde browser sessie worden uitgevoerd, een token van één sessie delen.
 

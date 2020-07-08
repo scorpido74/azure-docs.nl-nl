@@ -2,16 +2,16 @@
 author: normesta
 ms.service: storage
 ms.topic: include
-ms.date: 07/22/2019
+ms.date: 06/29/2019
 ms.author: normesta
-ms.openlocfilehash: bd21a70daaad16725fe77311176890884d37ff17
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8f8568f2b4df3367e1ca6778431c1056be713e51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72958540"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550973"
 ---
 > [!NOTE]
-> De functies die in dit artikel worden beschreven, zijn nu beschikbaar voor accounts met een hiërarchische naam ruimte. Zie het artikel [bekende problemen met Azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-known-issues) voor een overzicht van de beperkingen.
+> De functies die in dit artikel worden beschreven, zijn nu beschikbaar voor accounts met een hiërarchische naam ruimte. Zie de functies voor BLOB- [opslag die beschikbaar zijn in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-supported-blob-storage-features) artikel als u de beperkingen wilt bekijken.
 
 

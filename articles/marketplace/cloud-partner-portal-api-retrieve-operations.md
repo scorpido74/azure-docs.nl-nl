@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: bf980f7c60cd43a4a37a481b96dce737a91d03aa
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85516204"
 ---
 # <a name="retrieve-operations"></a>Bewerkingen ophalen
@@ -37,7 +37,7 @@ Hiermee haalt u alle bewerkingen op de aanbieding op of krijgt u een bepaalde be
 |  publisherId       |  Uitgevers-id, bijvoorbeeld`Contoso`                                                                   |  Tekenreeks       |
 |  offerId           |  Aanbiedings-id                                                                                              |  Tekenreeks       |
 |  operationId       |  GUID waarmee de bewerking op de aanbieding uniek wordt geïdentificeerd. De operationId kan worden opgehaald met behulp van deze API en wordt ook geretourneerd in de HTTP-header van het antwoord op een langlopende bewerking, zoals de API voor het [publiceren van aanbiedingen](./cloud-partner-portal-api-publish-offer.md) .  |   GUID   |
-|  api-versie       | Nieuwste versie van API |    Date      |
+|  api-versie       | Nieuwste versie van API |    Datum      |
 |  |  |  |
 
 ## <a name="header"></a>Koptekst

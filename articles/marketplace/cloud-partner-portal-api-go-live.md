@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 5d550f576108447a88660321899f2f55ffeb3c77
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85516220"
 ---
 # <a name="go-live"></a>Live gaan
@@ -30,7 +30,7 @@ Deze API start het proces voor het pushen van een app naar productie. Deze bewer
 |  --------      |   ---------------                                                           | ------------- |
 | publisherId    | De uitgevers-id van de aanbieding die u wilt ophalen, bijvoorbeeld`contoso`       |  Tekenreeks       |
 | offerId        | Id van de aanbieding die moet worden opgehaald                                   |  Tekenreeks       |
-| api-versie    | Nieuwste versie van de API                                                   |  Date         |
+| api-versie    | Nieuwste versie van de API                                                   |  Datum         |
 |  |  |  |
 
 ## <a name="header"></a>Koptekst

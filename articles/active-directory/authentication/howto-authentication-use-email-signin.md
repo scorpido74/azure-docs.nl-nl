@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 05/22/2020
+ms.date: 06/24/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: scottsta
-ms.openlocfilehash: 9a02a01bb55e63322964b52a5f4d6113b3280360
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 0a7048e79ddd4a86d7e14e573cf5b8556f462f03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220724"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550327"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Meld u aan Azure Active Directory gebruik te maken van een e-mail adres als een alternatieve aanmeldings-ID (preview-versie)
 
@@ -29,10 +29,8 @@ Sommige organisaties zijn niet naar hybride verificatie verplaatst om de volgend
 
 Om u te helpen bij het verplaatsen naar hybride verificatie kunt u Azure AD nu configureren zodat gebruikers zich kunnen aanmelden met een e-mail adres in uw geverifieerde domein als een alternatieve aanmeldings-ID. Als *Contoso* bijvoorbeeld is gebrandt op *fabrikam*, in plaats van zich te blijven aanmelden met de verouderde `balas@contoso.com` UPN, kan e-mail als alternatieve aanmeldings-id nu worden gebruikt. Om toegang te krijgen tot een toepassing of services, melden gebruikers zich aan bij Azure AD via hun toegewezen e-mail adres, zoals `balas@fabrikam.com` .
 
-|     |
-| --- |
-| Meld u aan bij Azure AD met een e-mail adres als alternatieve aanmeldings-ID. Dit is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.|
-|     |
+> [!NOTE]
+> Meld u aan bij Azure AD met een e-mail adres als alternatieve aanmeldings-ID. Dit is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Overzicht van de benaderingen van Azure AD-aanmelding
 
@@ -45,6 +43,19 @@ In sommige organisaties wordt de on-premises UPN echter niet gebruikt als aanmel
 De gebruikelijke tijdelijke oplossing voor dit probleem is het instellen van de Azure AD-UPN voor het e-mail adres waarmee de gebruiker zich aanmeldt. Deze benadering werkt, hoewel resulteert in verschillende Upn's tussen de on-premises AD en Azure AD en deze configuratie is niet compatibel met alle Microsoft 365 workloads.
 
 Een andere manier is om de Azure AD-en on-premises Upn's te synchroniseren met dezelfde waarde en vervolgens Azure AD te configureren zodat gebruikers zich kunnen aanmelden bij Azure AD met een geverifieerd e-mail adres. Als u deze mogelijkheid wilt bieden, definieert u een of meer e-mail adressen in het kenmerk *proxyAddresses* van de gebruiker in de on-premises Directory. *ProxyAddresses* worden vervolgens automatisch met Azure AD Connect gesynchroniseerd met Azure AD.
+
+## <a name="preview-limitations"></a>Preview-beperkingen
+
+In de huidige preview-status gelden de volgende beperkingen wanneer een gebruiker zich aanmeldt met een niet-UPN-e-mail als een alternatieve aanmeldings-ID:
+
+* Gebruikers kunnen hun UPN zien, zelfs wanneer hij zich heeft aangemeld met hun niet-UPN-e-mail. Het volgende voorbeeld gedrag kan worden weer gegeven:
+    * De gebruiker wordt gevraagd zich aan te melden met UPN bij de aanmelding bij Azure AD `login_hint=<non-UPN email>` .
+    * Wanneer een gebruiker zich aanmeldt met een niet-UPN-e-mail en een onjuist wacht woord invoert, wordt de pagina *uw wacht woord invoeren* gewijzigd om de UPN weer te geven.
+    * Op sommige micro soft-sites en-apps, zoals [https://portal.azure.com](https://portal.azure.com) en Microsoft Office, wordt in het besturings element voor **account beheer** doorgaans in de rechter bovenhoek de UPN van de gebruiker weer gegeven in plaats van de niet-UPN-e-mail die wordt gebruikt om u aan te melden.
+
+* Sommige stromen zijn momenteel niet compatibel met de niet-UPN-e-mail, zoals de volgende:
+    * Identiteits beveiliging komt momenteel niet overeen met het e-mail adres alternatieve aanmeldings-Id's met de risico detectie van lekkende *referenties* Met deze risico detectie wordt de UPN gebruikt voor het afstemmen van de referenties die zijn gelekt. Zie [Azure AD Identity Protection-risico detectie en-herstel][identity-protection]voor meer informatie.
+    * B2B-uitnodigingen die worden verzonden naar een alternatieve e-mail voor de aanmeldings-ID, worden niet volledig ondersteund. Nadat u een uitnodiging hebt geaccepteerd die als een alternatieve aanmeldings-ID naar een e-mail bericht is verzonden, kan de gebruiker zich niet aanmelden met de alternatieve e-mail.
 
 ## <a name="synchronize-sign-in-email-addresses-to-azure-ad"></a>E-mail adressen voor aanmelden synchroniseren met Azure AD
 
@@ -177,6 +188,7 @@ Zie How to Synchronizing [hash Sync][phs-overview] of [Pass-Through-verificatie]
 [hybrid-overview]: ../hybrid/cloud-governed-management-for-on-premises.md
 [phs-overview]: ../hybrid/how-to-connect-password-hash-synchronization.md
 [pta-overview]: ../hybrid/how-to-connect-pta-how-it-works.md
+[identity-protection]: ../identity-protection/overview-identity-protection.md#risk-detection-and-remediation
 
 <!-- EXTERNAL LINKS -->
 [Install-Module]: /powershell/module/powershellget/install-module

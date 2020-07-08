@@ -11,19 +11,17 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85f217266a2b28bfaf15df6a70a28784873dd123
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: c03c2c55988df04cc45ef4a1d66d959513c1626d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85386909"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551372"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>Interne gebruikers uitnodigen voor B2B-samen werking
 
-|     |
-| --- |
-| Het uitnodigen van interne gebruikers voor het gebruik van B2B-samen werking is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews. |
-|     |
+> [!NOTE]
+> Het uitnodigen van interne gebruikers voor het gebruik van B2B-samen werking is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
 
 Voor de beschik baarheid van Azure AD B2B-samen werking kunnen organisaties samen werken met distributeurs, leveranciers, leveranciers en andere gast gebruikers door interne referenties voor hen in te stellen. Als u over interne gast gebruikers beschikt, kunt u ze uitnodigen voor B2B-samen werking, zodat u kunt profiteren van de voor delen van Azure AD B2B. Uw B2B-gast gebruikers kunnen hun eigen identiteiten en referenties gebruiken om zich aan te melden en u hoeft geen wacht woorden te onderhouden of de levens cyclus van accounts te beheren.
 

@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5489c65a0e955183b034e173706b6decfa6df9d5
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: db158a50cfc164a0fc839e858cc6e7c46558eb77
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85387487"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551585"
 ---
 # <a name="azure-active-directory-for-developers-v10-overview"></a>Overzicht van Azure Active Directory voor ontwikkel aars (v 1.0)
 
@@ -29,11 +29,8 @@ Azure Active Directory (Azure AD) is een identiteitsservice in de cloud waarmee 
 > [!NOTE]
 > De meeste inhoud op deze pagina is gericht op het v 1.0-eind punt en het platform, dat alleen micro soft-werk-of school accounts ondersteunt. Als u zich wilt aanmelden bij consumenten-of persoonlijke micro soft-accounts, raadpleegt u de informatie op het [v 2.0-eind punt en-platform](../develop/v2-overview.md). Het v 2.0-eind punt biedt een uniforme ontwikkelaars ervaring voor apps die zich willen aanmelden bij alle micro soft-identiteiten.
 
-| | |
-| --- | --- |
-|[Basisbeginselen van verificatie](v1-authentication-scenarios.md) | Een inleiding tot verificatie met Azure AD. |
-|[Soorten toepassingen](app-types.md) | Een overzicht van de verificatiescenario's die worden ondersteund door Azure AD. |
-| | |
+- [Basis beginselen van verificatie](v1-authentication-scenarios.md) Een inleiding tot verificatie met Azure AD.
+- [Typen toepassingen](app-types.md) Een overzicht van de verificatie scenario's die worden ondersteund door Azure AD.
 
 ## <a name="get-started"></a>Aan de slag
 
@@ -47,12 +44,9 @@ Raadpleeg de **hand leidingen voor v 1.0** voor gedetailleerde informatie en ins
 
 De volgende artikelen bieden gedetailleerde informatie over API's, protocolberichten en termen die worden gebruikt in Azure AD.
 
-|                                                                                   | |
-| ----------------------------------------------------------------------------------| --- |
-| [Verificatiebibliotheken (ADAL)](active-directory-authentication-libraries.md)   | Een overzicht van de bibliotheken en SDK's die worden geleverd door Azure AD. |
-| [Codevoorbeelden](sample-v1-code.md)                                  | Een lijst met alle Azure AD-codevoorbeelden. |
-| [Woordenlijst](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)                                      | Termen en definities van woorden die in deze documenten worden gebruikt. |
-|  |  |
+- [Verificatie bibliotheken (ADAL)](active-directory-authentication-libraries.md) Een overzicht van de bibliotheken en Sdk's die worden geleverd door Azure AD.
+- [Code voorbeelden](sample-v1-code.md) Een lijst met alle Azure AD-code voorbeelden.
+- [Woorden lijst](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) Terminologie en definities van woorden die in deze documentatie worden gebruikt.
 
 ## <a name="videos"></a>Video's
 

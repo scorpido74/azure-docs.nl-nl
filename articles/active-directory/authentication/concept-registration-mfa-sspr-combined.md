@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4caaf8704f2ee49f8f094ad22065ae462154be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87cec45ac3d7bf491278a4ba8520e8257fd0f6c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143924"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550667"
 ---
 # <a name="combined-security-information-registration-overview"></a>Overzicht van registratie van gecombineerde beveiligings gegevens
 
@@ -34,11 +34,11 @@ Voordat u de nieuwe ervaring inschakelt, raadpleegt u deze documentatie met behe
 Registratie van gegevens over gecombineerde beveiliging van Azure AD is momenteel niet beschikbaar voor nationale Clouds, zoals Azure VS government, Azure Duitsland of Azure China 21Vianet.
 
 > [!IMPORTANT]
-> Gebruikers die zijn ingeschakeld voor de oorspronkelijke preview-versie en de verbeterde gecombineerde registratie-ervaring, zien het nieuwe gedrag. Gebruikers die zijn ingeschakeld voor beide ervaringen, zien alleen de nieuwe ervaring mijn profiel. Het nieuwe mijn profiel wordt uitgelijnd met het uiterlijk van de gecombineerde registratie en biedt een naadloze ervaring voor gebruikers. Gebruikers kunnen mijn profiel zien door naar te [https://myprofile.microsoft.com](https://myprofile.microsoft.com)gaan.
+> Gebruikers die zijn ingeschakeld voor de oorspronkelijke preview-versie en de verbeterde gecombineerde registratie-ervaring, zien het nieuwe gedrag. Gebruikers die zijn ingeschakeld voor beide ervaringen, zien alleen de nieuwe ervaring mijn profiel. Het nieuwe mijn profiel wordt uitgelijnd met het uiterlijk van de gecombineerde registratie en biedt een naadloze ervaring voor gebruikers. Gebruikers kunnen mijn profiel zien door naar te gaan [https://myprofile.microsoft.com](https://myprofile.microsoft.com) .
 >
 > Er wordt mogelijk een fout bericht weer gegeven wanneer u probeert toegang te krijgen tot de optie beveiligings gegevens. Bijvoorbeeld, we kunnen u niet aanmelden. In dit geval moet u bevestigen dat u geen configuratie-of groeps beleidsobject hebt waarmee cookies van derden in de webbrowser worden geblokkeerd.
 
-Mijn profiel pagina's worden gelokaliseerd op basis van de taal instellingen van de computer die toegang heeft tot de pagina. Micro soft slaat de meest recente taal op die wordt gebruikt in de cache van de browser, zodat de daaropvolgende pogingen om toegang te krijgen tot de pagina's worden weer gegeven in de laatste gebruikte taal. Als u de cache wist, worden de pagina's opnieuw weer gegeven. Als u een specifieke taal wilt forceren, kunt u aan `?lng=<language>` het einde van de URL toevoegen, waarbij `<language>` de code is van de taal die u wilt weer geven.
+Mijn profiel pagina's worden gelokaliseerd op basis van de taal instellingen van de computer die toegang heeft tot de pagina. Micro soft slaat de meest recente taal op die wordt gebruikt in de cache van de browser, zodat de daaropvolgende pogingen om toegang te krijgen tot de pagina's worden weer gegeven in de laatste gebruikte taal. Als u de cache wist, worden de pagina's opnieuw weer gegeven. Als u een specifieke taal wilt forceren, kunt u `?lng=<language>` aan het einde van de URL toevoegen, waarbij `<language>` de code is van de taal die u wilt weer geven.
 
 ![SSPR of andere methoden voor beveiligings verificatie instellen](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 
@@ -46,17 +46,17 @@ Mijn profiel pagina's worden gelokaliseerd op basis van de taal instellingen van
 
 Bij gecombineerde registratie worden de volgende verificatie methoden en-acties ondersteund:
 
-|   | Registreren | Wijzigen | Verwijderen |
+| Methode | Registreren | Wijziging | Verwijderen |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Ja (Maxi maal 5) | Nee | Ja |
-| Andere verificator-app | Ja (Maxi maal 5) | Nee | Ja |
-| Hardware-token | Nee | Nee | Ja |
+| Microsoft Authenticator | Ja (Maxi maal 5) | No | Yes |
+| Andere verificator-app | Ja (Maxi maal 5) | No | Yes |
+| Hardware-token | Nee | Nee | Yes |
 | Telefoon | Ja | Ja | Ja |
 | Alternatief telefoon nummer | Ja | Ja | Ja |
-| Zakelijke telefoon | Nee | Nee | Nee |
+| Bureautelefoon | Nee | Nee | Nee |
 | E-mail | Ja | Ja | Ja |
-| Beveiligingsvragen | Ja | Nee | Ja |
-| App-wachtwoorden | Ja | Nee | Ja |
+| Beveiligingsvragen | Yes | No | Yes |
+| App-wachtwoorden | Yes | No | Yes |
 | FIDO2-beveiligings sleutels<br />*Beheerde modus alleen via de pagina met [beveiligings gegevens](https://mysignins.microsoft.com/security-info)*| Ja | Ja | Ja |
 
 > [!NOTE]
@@ -111,7 +111,7 @@ Als het SSPR-beleid vereist dat gebruikers hun beveiligings gegevens met regel m
 
 ### <a name="manage-mode"></a>Beheer modus
 
-Gebruikers hebben toegang tot de beheer modus door [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) te gaan naar of door in mijn profiel **beveiligings gegevens** te selecteren. Van daaruit kunnen gebruikers methoden toevoegen, bestaande methoden verwijderen of wijzigen, de standaard methode wijzigen en nog veel meer.
+Gebruikers hebben toegang tot de beheer modus door te gaan naar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) of door in mijn profiel **beveiligings gegevens** te selecteren. Van daaruit kunnen gebruikers methoden toevoegen, bestaande methoden verwijderen of wijzigen, de standaard methode wijzigen en nog veel meer.
 
 ## <a name="key-usage-scenarios"></a>Scenario's voor het gebruik van sleutels
 
@@ -125,15 +125,15 @@ Een gebruiker heeft niet alle vereiste beveiligings gegevens ingesteld en gaat n
 
 Een beheerder heeft de registratie niet afgedwongen.
 
-Een gebruiker die de vereiste beveiligings gegevens nog niet heeft ingesteld, gaat [https://myprofile.microsoft.com](https://myprofile.microsoft.com)naar. De gebruiker selecteert **beveiligings gegevens** in het linkerdeel venster. Van daaruit kiest de gebruiker om een methode toe te voegen, selecteert een van de beschik bare methoden en volgt de stappen om die methode in te stellen. Wanneer u klaar bent, ziet de gebruiker de methode die zojuist is ingesteld op de pagina met beveiligings gegevens.
+Een gebruiker die de vereiste beveiligings gegevens nog niet heeft ingesteld, gaat naar [https://myprofile.microsoft.com](https://myprofile.microsoft.com) . De gebruiker selecteert **beveiligings gegevens** in het linkerdeel venster. Van daaruit kiest de gebruiker om een methode toe te voegen, selecteert een van de beschik bare methoden en volgt de stappen om die methode in te stellen. Wanneer u klaar bent, ziet de gebruiker de methode die zojuist is ingesteld op de pagina met beveiligings gegevens.
 
 ### <a name="delete-security-info-from-my-profile"></a>Beveiligings gegevens uit mijn profiel verwijderen
 
-Een gebruiker die eerder ten minste één methode heeft ingesteld, gaat naar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). De gebruiker kiest ervoor een van de eerder geregistreerde methoden te verwijderen. Als u klaar bent, ziet de gebruiker deze methode niet meer op de pagina beveiligings gegevens.
+Een gebruiker die eerder ten minste één methode heeft ingesteld, gaat naar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) . De gebruiker kiest ervoor een van de eerder geregistreerde methoden te verwijderen. Als u klaar bent, ziet de gebruiker deze methode niet meer op de pagina beveiligings gegevens.
 
 ### <a name="change-the-default-method-from-my-profile"></a>De standaard methode van mijn profiel wijzigen
 
-Een gebruiker die eerder ten minste één methode heeft ingesteld die kan worden gebruikt voor Multi-Factor Authentication naar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). De gebruiker wijzigt de huidige standaard methode in een andere standaard methode. Wanneer u klaar bent, ziet de gebruiker de nieuwe standaard methode op de pagina beveiligings gegevens.
+Een gebruiker die eerder ten minste één methode heeft ingesteld die kan worden gebruikt voor Multi-Factor Authentication naar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) . De gebruiker wijzigt de huidige standaard methode in een andere standaard methode. Wanneer u klaar bent, ziet de gebruiker de nieuwe standaard methode op de pagina beveiligings gegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 

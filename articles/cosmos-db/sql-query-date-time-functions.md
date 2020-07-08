@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 93b3e90deb5e3764cb5402938c5d0e14cadb7883
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 055fd5182920ebe15cb2f3ed4b7a8ff69bb94c16
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74873383"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549563"
 ---
 # <a name="date-and-time-functions-azure-cosmos-db"></a>Datum-en tijd functies (Azure Cosmos DB)
 
@@ -22,10 +22,8 @@ Met de functies datum en tijd kunt u datum-en tijds tempel bewerkingen uitvoeren
 
 Met de volgende scalaire functies kunt u de huidige UTC-datum en-tijd in twee vormen ophalen. een numerieke tijds tempel waarvan de waarde de UNIX-epoche is in milliseconden of als een teken reeks die voldoet aan de ISO 8601-indeling:
 
-|||
-|-|-|
-|[GetCurrentDateTime](sql-query-getcurrentdatetime.md)|[GetCurrentTimestamp](sql-query-getcurrenttimestamp.md)||
-
+* [GetCurrentDateTime](sql-query-getcurrentdatetime.md)
+* [GetCurrentTimestamp](sql-query-getcurrenttimestamp.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,6 @@
 ---
 title: Jacht-mogelijkheden in azure-Sentinel | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u de Azure Sentinel-jacht-mogelijkheden kunt gebruiken.
+description: Gebruik de ingebouwde jacht query's van Azure Sentinel om u te helpen bij het bepalen van de juiste vragen om problemen op te sporen in uw gegevens.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
-ms.openlocfilehash: 52af688917aa531d125f83844df29a988ed7cb7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cceeb1fc9715dfd7b1ac714c424421c51d292757
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686635"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552288"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>Zoeken naar bedreigingen met Azure Sentinel
 
@@ -76,7 +76,7 @@ Bekijk de [Zoek opslagplaats](https://github.com/Azure/Orion)van de query. Deel 
 
 ## <a name="sample-query"></a>Voorbeeldquery
 
-Een typische query begint met een tabel naam gevolgd door een reeks Opera tors gescheiden door \|.
+Een typische query begint met een tabel naam gevolgd door een reeks Opera tors gescheiden door \| .
 
 In het bovenstaande voor beeld begint u met de tabel naam SecurityEvent en voegt u waar nodig gepipede elementen toe.
 
@@ -84,7 +84,7 @@ In het bovenstaande voor beeld begint u met de tabel naam SecurityEvent en voegt
 
 2. Een filter toevoegen in de query om alleen gebeurtenis-ID 4688 weer te geven.
 
-3. Voeg in de query op de CommandLine een filter toe dat alleen exemplaren van cscript. exe bevat.
+3. Voeg in de query op de CommandLine een filter toe dat alleen exemplaren van cscript.exe bevat.
 
 4. Projecteer alleen de kolommen die u wilt verkennen en beperk de resultaten tot 1000 en klik op **query uitvoeren**.
 5. Klik op het groene drie hoekje en voer de query uit. U kunt de query testen en uitvoeren om te zoeken naar afwijkend gedrag.
@@ -139,7 +139,7 @@ Een bestaande zoek opdracht klonen en wijzigen:
    ![aangepaste query](./media/tutorial-hunting/custom-query.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd hoe u een jacht onderzoek kunt uitvoeren met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
+In dit artikel hebt u geleerd hoe u een jacht onderzoek kunt uitvoeren met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
 
 
 - [Notitie blokken gebruiken voor het uitvoeren van geautomatiseerde jacht-campagnes](notebooks.md)

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46e37365c73c603a8cd742e2f7943c2f5116ce22
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 0b5e1db2c86f6118c3cd333974c9cfd64f747128
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85387047"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551439"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>Facebook toevoegen als een id-provider voor externe identiteiten
 
@@ -32,7 +32,7 @@ Als u een Facebook-account wilt gebruiken als een [ID-provider](identity-provide
 
 > [!NOTE]  
 > Gebruik de volgende Url's in de stappen 9 en 16 hieronder.
-> - Voer de URL van de **site** in `https://login.microsoftonline.com` .
+> - Voor de **site-URL** voert u het adres van uw toepassing in, bijvoorbeeld `https://contoso.com` .
 > - Voer in voor **geldige OAuth omleidings-uri's** `https://login.microsoftonline.com/te/<tenant-id>/oauth2/authresp` . U vindt de `<tenant-ID>` Blade overzicht van Azure Active Directory.
 
 
@@ -88,7 +88,7 @@ U kunt de instellingen van uw Facebook-Federatie verwijderen. Als u dit doet, ku
 2. Selecteer **externe identiteiten**.
 3. Selecteer **alle id-providers**.
 4. Selecteer op de **Facebook** -regel het snelmenu (**...**) en selecteer vervolgens **verwijderen**. 
-5. Selecteer **Ja** om de verwijdering te bevestigen.
+5. Selecteer **Ja** om het verwijderen te bevestigen.
 
 ### <a name="to-delete-facebook-federation-by-using-powershell"></a>Facebook-Federatie verwijderen met behulp van Power shell: 
 1. Installeer de nieuwste versie van de Azure AD Power shell for Graph-module ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)).

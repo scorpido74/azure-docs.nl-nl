@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/26/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a9026db19d453100971739dcf633629a3f06d43
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 394af855b7968d38bf99afada246ae661dc0459a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85388300"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549477"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Registratie instellen en aanmelden met een Facebook-account met Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Als u een Facebook-account wilt gebruiken als een [ID-provider](authorization-co
 1. Selecteer **instellingen**  >  **basis**.
 1. Kies bijvoorbeeld een **categorie** `Business and Pages` . Deze waarde is vereist voor Facebook, maar wordt niet gebruikt voor Azure AD B2C.
 1. Selecteer onder aan de pagina **platform toevoegen**en selecteer vervolgens **website**.
-1. Voer in **site**-URL `https://your-tenant-name.b2clogin.com/` vervangen in `your-tenant-name` met de naam van uw Tenant. Voer een URL in voor de URL van het **Privacybeleid**, bijvoorbeeld `http://www.contoso.com` . De beleids-URL is een pagina die u kunt onderhouden voor het verstrekken van privacy-informatie voor uw toepassing.
+1. Voer in **site-URL**het adres van uw website in, bijvoorbeeld `https://contoso.com` . Voer een URL in voor de URL van het **Privacybeleid**, bijvoorbeeld `http://www.contoso.com/privacy` . De beleids-URL is een pagina die u kunt onderhouden voor het verstrekken van privacy-informatie voor uw toepassing.
 1. Selecteer **wijzigingen opslaan**.
 1. Kopieer de waarde van de **App-ID**aan de bovenkant van de pagina.
 1. Selecteer **weer geven** en kopieer de waarde van het **app-geheim**. U kunt beide gebruiken om Facebook te configureren als een id-provider in uw Tenant. **App-geheim** is een belang rijke beveiligings referentie.

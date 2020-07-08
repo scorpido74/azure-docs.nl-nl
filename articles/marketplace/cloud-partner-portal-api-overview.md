@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 2f79dea4baaa2589333af4e15aece06c1d86b9c1
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85516213"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Naslaginformatie over Cloud Partner-portal-API
@@ -50,7 +50,7 @@ Deze referentie Details Api's om de volgende algemene taken uit te voeren.
 - [Een aanbieding maken](./cloud-partner-portal-api-creating-offer.md)
 - [Een aanbieding publiceren](./cloud-partner-portal-api-publish-offer.md)
 
-### <a name="operations"></a>Operations
+### <a name="operations"></a>Bewerkingen
 
 - [Bewerkingen ophalen](./cloud-partner-portal-api-retrieve-operations.md)
 - [Bewerkingen annuleren](./cloud-partner-portal-api-cancel-operations.md)

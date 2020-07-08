@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: c698b9381755f81303dc3adfa9422b82500bb208
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 977dfea28c5c0dc3f34ada0c138556d70c979e04
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83642212"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551716"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Service-to-service aanroepen met behulp van client referenties (gedeeld geheim of certificaat)
 
@@ -52,7 +52,7 @@ Er zijn twee gevallen, afhankelijk van het feit of de client toepassing wordt be
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>Eerste case: toegangs token aanvraag met een gedeeld geheim
 Bij gebruik van een gedeeld geheim bevat een aanvraag voor service-naar-service-toegangs token de volgende para meters:
 
-| Parameter |  | Beschrijving |
+| Parameter | Type | Description |
 | --- | --- | --- |
 | grant_type |vereist |Hiermee geeft u het aangevraagde toekennings type op. In een client referenties toekenning stroom moet de waarde **client_credentials**zijn. |
 | client_id |vereist |Hiermee geeft u de id op van de Azure AD-client van de aanroepende webservice. Als u de client-ID van de aanroepende toepassing wilt zoeken, klikt u in het [Azure Portal](https://portal.azure.com)op **Azure Active Directory**, klikt u op **app-registraties**en klikt u op de toepassing. De client_id is de *toepassings-id* |
@@ -73,7 +73,7 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Tweede geval: toegangs token aanvraag met een certificaat
 Een aanvraag voor service-naar-service-toegangs token met een certificaat bevat de volgende para meters:
 
-| Parameter |  | Beschrijving |
+| Parameter | Type | Description |
 | --- | --- | --- |
 | grant_type |vereist |Hiermee geeft u het aangevraagde antwoord type op. In een client referenties toekenning stroom moet de waarde **client_credentials**zijn. |
 | client_id |vereist |Hiermee geeft u de id op van de Azure AD-client van de aanroepende webservice. Als u de client-ID van de aanroepende toepassing wilt zoeken, klikt u in het [Azure Portal](https://portal.azure.com)op **Azure Active Directory**, klikt u op **app-registraties**en klikt u op de toepassing. De client_id is de *toepassings-id* |
@@ -131,6 +131,6 @@ Host: graph.microsoft.com
 Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 ```
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 * [OAuth 2,0 in azure AD](v1-protocols-oauth-code.md)
 * Voor [beeld in c# van het service-to-Service-gesprek met een gedeeld geheim en een](https://github.com/Azure-Samples/active-directory-dotnet-daemon) [voor beeld in c# van de service to Service Call with a Certificate](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)

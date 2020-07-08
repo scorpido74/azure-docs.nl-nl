@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 192c91f700dd82f453d52f6891f8aaaaeef8c7ef
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6f52ddbfbdfa30108670b985fba5c5263ce517b2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83642077"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551679"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Service-naar-service-aanroepen die een overgedragen gebruikers-id gebruiken in namens-of-flow
 
@@ -79,7 +79,7 @@ Registreer zowel de middelste laag service als de client toepassing in azure AD.
 1. Selecteer **Registreren** om de toepassing te maken.
 1. Configureer machtigingen voor uw toepassing. Selecteer in **API**-machtigingen **de optie een machtiging toevoegen** en vervolgens **mijn api's**.
 1. Typ de naam van de middelste laag service in het tekst veld.
-1. Kies **machtigingen selecteren** en selecteer vervolgens **Access- \< service naam>**.
+1. Kies **machtigingen selecteren** en selecteer vervolgens **toegang \<service name> **.
 
 ### <a name="configure-known-client-applications"></a>Bekende client toepassingen configureren
 
@@ -105,7 +105,7 @@ De client toepassing wordt beveiligd door een gedeeld geheim of door een certifi
 
 Bij gebruik van een gedeeld geheim bevat een aanvraag voor service-naar-service-toegangs token de volgende para meters:
 
-| Parameter |  | Beschrijving |
+| Parameter | Type | Description |
 | --- | --- | --- |
 | grant_type |vereist | Het type van de token aanvraag. Een OBO-aanvraag gebruikt een JSON Web Token (JWT), dus de waarde moet **urn zijn: IETF: params: OAuth: Grant-type: JWT-Bearer**. |
 | Assertion |vereist | De waarde van het toegangs token dat in de aanvraag wordt gebruikt. |
@@ -139,7 +139,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 Een aanvraag voor service-naar-service-toegangs token met een certificaat bevat de volgende para meters:
 
-| Parameter |  | Beschrijving |
+| Parameter | Type | Description |
 | --- | --- | --- |
 | grant_type |vereist | Het type van de token aanvraag. Een OBO-aanvraag maakt gebruik van een JWT-toegangs token, dus de waarde moet **urn zijn: IETF: params: OAuth: toekenning-type: JWT-Bearer**. |
 | Assertion |vereist | De waarde van het token dat in de aanvraag wordt gebruikt. |
@@ -249,7 +249,7 @@ Sommige op OAuth gebaseerde webservices moeten toegang hebben tot andere web ser
 
 Een service-naar-service-aanvraag voor een SAML-verklaring bevat de volgende para meters:
 
-| Parameter |  | Beschrijving |
+| Parameter | Type | Description |
 | --- | --- | --- |
 | grant_type |vereist | Het type van de token aanvraag. Voor een aanvraag die gebruikmaakt van een JWT, moet de waarde **urn zijn: IETF: params: OAuth: Grant-type: JWT-Bearer**. |
 | Assertion |vereist | De waarde van het toegangs token dat in de aanvraag wordt gebruikt.|
@@ -283,9 +283,9 @@ Het antwoord bevat een SAML-token dat is gecodeerd in UTF8 en Base64url.
 - ext_expires_in: 0
 - expires_on: 1529627844
 - resource`https://api.contoso.com`
-- access_token: \< SAML-bevestiging\>
+- access_token:\<SAML assertion\>
 - issued_token_type: urn: IETF: params: OAuth: token-type: saml2
-- refresh_token: \< vernieuwings token\>
+- refresh_token:\<Refresh token\>
 
 ## <a name="client-limitations"></a>Client beperkingen
 
