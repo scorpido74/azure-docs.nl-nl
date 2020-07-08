@@ -16,10 +16,9 @@ ms.date: 05/25/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 14ba5f270138db22a76fd697b264046e22577427
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79086733"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Zelf studie: DRM dynamische versleuteling en licentie leverings service gebruiken
@@ -57,7 +56,7 @@ Hieronder wordt aangegeven wat de vereisten zijn om de zelfstudie te voltooien:
 * Installeer Visual Studio Code of Visual Studio.
 * Maak een nieuw Media Services-account zoals beschreven in deze [snelstart](create-account-cli-quickstart.md).
 * Zorg dat u referenties hebt die nodig zijn om Media Services-API's te kunnen gebruiken via [toegangs-API's](access-api-cli-how-to.md)
-* Stel de juiste waarden in het configuratie bestand van de app in (appSettings. json).
+* Stel de juiste waarden in het configuratie bestand van de app in (appsettings.jsaan).
 
 ## <a name="download-code"></a>Code downloaden
 
@@ -86,7 +85,7 @@ In de [uitvoerasset](assets-concept.md) wordt het resultaat van de coderingstaak
 
 ## <a name="get-or-create-an-encoding-transform"></a>Een coderingstransformatie verkrijgen of maken
 
-Bij het maken van een nieuw [transformatie](transforms-jobs-concept.md)-exemplaar, moet u opgeven wat u als uitvoer wilt maken. De vereiste para meter is `transformOutput` een object, zoals in de onderstaande code wordt weer gegeven. Elke transformatie-uitvoer bevat een **voorinstelling**. Voorinstelling bevat de stapsgewijze instructies van de video- en/of audioverwerkingen die moeten worden gebruikt voor het genereren van de gewenste TransformOutput. Het voorbeeld dat in dit artikel wordt beschreven, maakt gebruik van een ingebouwde voorinstelling genaamd **AdaptiveStreaming **. De voor instelling codeert de invoer video in een automatisch gegenereerde bitrate-ladder (paren voor de omzetting van de bitsnelheid) op basis van de invoer resolutie en bitrate, en produceert ISO MP4-bestanden met H. 264 video-en AAC-audio die overeenkomt met elke combi natie van de verlaagings oplossing. 
+Bij het maken van een nieuw [transformatie](transforms-jobs-concept.md)-exemplaar, moet u opgeven wat u als uitvoer wilt maken. De vereiste para meter is een `transformOutput` object, zoals in de onderstaande code wordt weer gegeven. Elke transformatie-uitvoer bevat een **voorinstelling**. Voorinstelling bevat de stapsgewijze instructies van de video- en/of audioverwerkingen die moeten worden gebruikt voor het genereren van de gewenste TransformOutput. Het voorbeeld dat in dit artikel wordt beschreven, maakt gebruik van een ingebouwde voorinstelling genaamd **AdaptiveStreaming **. De voor instelling codeert de invoer video in een automatisch gegenereerde bitrate-ladder (paren voor de omzetting van de bitsnelheid) op basis van de invoer resolutie en bitrate, en produceert ISO MP4-bestanden met H. 264 video-en AAC-audio die overeenkomt met elke combi natie van de verlaagings oplossing. 
 
 Voordat u een nieuwe **transformatie** gaat maken, moet u eerst controleren of er al een bestaat. Dit doet u met de methode **Ophalen**, zoals weergegeven in de volgende code.  In Media Services-v3 retourneert de methode **Ophalen** van entiteiten **null** als de entiteit (een hoofdlettergevoelige controle van de naam).
 
@@ -104,7 +103,7 @@ In deze zelf studie maken we de invoer van de taak op basis van een bestand dat 
 
 Het duurt enige tijd voordat de taak is voltooid. Wanneer dit het geval is, wilt u een melding ontvangen. In het onderstaande codevoorbeeld ziet u hoe de status van de **taak** kan worden opgevraagd in de service. Polling is geen aanbevolen best practice voor productie-apps vanwege een mogelijke latentie. Polling kan worden beperkt bij een te intensief gebruik op een account. Ontwikkelaars moeten in plaats daarvan Event Grid gebruiken. Zie [Gebeurtenissen routeren naar een aangepast eindpunt](job-state-events-cli-how-to.md).
 
-De **taak** doorloopt meestal de volgende statussen: **gepland**, **in wachtrij**, **wordt verwerkt**, **voltooid** (definitieve status). Als er een fout is opgetreden in de taak, krijgt u de **fout** status. Als de taak wordt geannuleerd, wordt deze **geannuleerd** en **geannuleerd** wanneer deze is voltooid...
+De **taak** doorloopt doorgaans de volgende statussen: **gepland**, **in de wachtrij geplaatst**, **verwerkt**, **voltooid** (de eind status). Als er een fout is opgetreden in de taak, krijgt u de **fout** status. Als de taak wordt geannuleerd, wordt deze **geannuleerd** en **geannuleerd** wanneer deze is voltooid...
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#WaitForJobToFinish)]
 
@@ -135,7 +134,7 @@ Nadat de codering is voltooid en het inhoudssleutelbeleid is ingesteld, bestaat 
 
 Het proces voor het maken van de **streaming-Locator** wordt publicatie genoemd. De **streaming-Locator** is standaard onmiddellijk geldig nadat u de API-aanroepen hebt gemaakt. De laatste keer dat deze wordt verwijderd, tenzij u de optionele begin-en eind tijden configureert.
 
-Wanneer u een **streaming-Locator**maakt, moet u de gewenste `StreamingPolicyName`gegevens opgeven. In deze zelf studie gebruiken we een van de vooraf gedefinieerde streaming-beleids regels, waarmee wordt aangegeven Azure Media Services hoe de inhoud voor streaming moet worden gepubliceerd. In dit voorbeeld stellen we StreamingLocator.StreamingPolicyName in op het beleid Predefined_MultiDrmCencStreaming. De sleutels PlayReady en Widevine worden toegepast en de sleutel wordt door gegeven aan de Play-client op basis van de geconfigureerde DRM-licenties. Als u wilt dat uw stream ook met CBCS (FairPlay) wordt versleuteld, gebruikt u Predefined_MultiDrmStreaming.
+Wanneer u een **streaming-Locator**maakt, moet u de gewenste gegevens opgeven `StreamingPolicyName` . In deze zelf studie gebruiken we een van de vooraf gedefinieerde streaming-beleids regels, waarmee wordt aangegeven Azure Media Services hoe de inhoud voor streaming moet worden gepubliceerd. In dit voorbeeld stellen we StreamingLocator.StreamingPolicyName in op het beleid Predefined_MultiDrmCencStreaming. De sleutels PlayReady en Widevine worden toegepast en de sleutel wordt door gegeven aan de Play-client op basis van de geconfigureerde DRM-licenties. Als u wilt dat uw stream ook met CBCS (FairPlay) wordt versleuteld, gebruikt u Predefined_MultiDrmStreaming.
 
 > [!IMPORTANT]
 > Wanneer u een aangepast [streamingbeleid](streaming-policy-concept.md) gebruikt, moet u een beperkte set met dergelijke beleidsregels ontwerpen voor uw Media Service-account, en deze opnieuw gebruiken voor de StreamingLocators wanneer dezelfde versleutelingsopties en protocollen nodig zijn. Uw Media Service-account heeft een quotum voor het aantal StreamingPolicy-vermeldingen. Het is niet mogelijk om voor elke StreamingLocator een nieuwe StreamingPolicy te maken.
@@ -180,7 +179,7 @@ az group delete --name amsResourceGroup
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 

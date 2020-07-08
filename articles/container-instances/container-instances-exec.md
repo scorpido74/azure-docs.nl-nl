@@ -4,10 +4,9 @@ description: Meer informatie over het uitvoeren van een opdracht in een containe
 ms.topic: article
 ms.date: 03/30/2018
 ms.openlocfilehash: de48e6ac246e2b0751561b4c60bb63d88b599bdf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79247200"
 ---
 # <a name="execute-a-command-in-a-running-azure-container-instance"></a>Een opdracht uitvoeren in een actief Azure-container exemplaar
@@ -72,7 +71,7 @@ Bye.
 
 ## <a name="multi-container-groups"></a>Groepen met meerdere containers
 
-Als uw [container groep](container-instances-container-groups.md) meerdere containers heeft, zoals een toepassings container en een logboek registratie, geeft u de naam op van de container waarin de opdracht moet worden uitgevoerd `--container-name`.
+Als uw [container groep](container-instances-container-groups.md) meerdere containers heeft, zoals een toepassings container en een logboek registratie, geeft u de naam op van de container waarin de opdracht moet worden uitgevoerd `--container-name` .
 
 In de container groep *mynginx* zijn bijvoorbeeld twee containers, *nginx-app* en *logboek registratie*. Een shell op de *nginx-app-* container starten:
 
@@ -82,7 +81,7 @@ az container exec --resource-group myResourceGroup --name mynginx --container-na
 
 ## <a name="restrictions"></a>Beperkingen
 
-Azure Container Instances ondersteunt momenteel het starten van één proces met [AZ container exec][az-container-exec]en u kunt geen opdracht argumenten door geven. Het is bijvoorbeeld niet mogelijk om opdrachten als in `sh -c "echo FOO && echo BAR"`te koppelen of `echo FOO`uit te voeren.
+Azure Container Instances ondersteunt momenteel het starten van één proces met [AZ container exec][az-container-exec]en u kunt geen opdracht argumenten door geven. Het is bijvoorbeeld niet mogelijk om opdrachten als in `sh -c "echo FOO && echo BAR"` te koppelen of uit te voeren `echo FOO` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

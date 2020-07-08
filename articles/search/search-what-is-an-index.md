@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: d2b8b2fecbf85e6590294f1fbd7ff2a4453b9e87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79282781"
 ---
 # <a name="create-a-basic-index-in-azure-cognitive-search"></a>Een Basic-index maken in azure Cognitive Search
@@ -145,7 +144,7 @@ De [*verzameling velden*](#fields-collection) is doorgaans het grootste deel van
 Bij het definiëren van het schema moet u de naam, het type en de kenmerken van elk veld in de index opgeven. Het veldtype classificeert de gegevens die in dat veld worden opgeslagen. Kenmerken worden ingesteld op afzonderlijke velden om op te geven hoe het veld wordt gebruikt. De volgende tabellen bevatten de typen en kenmerken die u kunt opgeven.
 
 ### <a name="data-types"></a>Gegevenstypen
-| Type | Beschrijving |
+| Type | Description |
 | --- | --- |
 | *Edm.String* |Tekst die eventueel kan worden getokend voor Zoek opdrachten in volledige tekst (woord afbreking, stam bestand, enzovoort). |
 | *Collection(EDM.String)* |Een lijst met tekenreeksen die van tokens kan worden voorzien om te zoeken in de volledige tekst. Er is geen theoretische bovengrens voor het aantal items in een verzameling, maar de bovengrens van 16 MB voor de nettolading geldt voor alle verzamelingen. |
@@ -153,7 +152,7 @@ Bij het definiëren van het schema moet u de naam, het type en de kenmerken van 
 | *Edm.Int32* |32-bits waarden van een heel getal. |
 | *Edm.Int64* |64-bits waarden van een heel getal. |
 | *Edm.Double* |Numerieke gegevens met dubbele precisie. |
-| *Edm.DateTimeOffset* |Datum en tijd waarden die worden weer gegeven in de OData v4- `yyyy-MM-ddTHH:mm:ss.fffZ` indeling `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`(bijvoorbeeld of). |
+| *Edm.DateTimeOffset* |Datum en tijd waarden die worden weer gegeven in de OData v4-indeling (bijvoorbeeld `yyyy-MM-ddTHH:mm:ss.fffZ` of `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm` ). |
 | *Edm.GeographyPoint* |Een punt voor een geografische locatie op de wereld. |
 
 Hier vindt u meer gedetailleerde informatie over de [ondersteunde gegevens typen](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)van Azure Cognitive Search.
@@ -211,9 +210,9 @@ Java script aan de client zijde kan standaard geen Api's aanroepen omdat de brow
 
 De volgende opties kunnen worden ingesteld voor CORS:
 
-+ **allowedOrigins** (vereist): dit is een lijst met oorsprongen waaraan toegang tot uw index wordt verleend. Dit betekent dat elke Java script-code die door deze oorsprongen wordt bediend, een query kan uitvoeren op uw index (ervan uitgaande dat deze de juiste API-sleutel bevat). Elke oorsprong is doorgaans van het formulier `protocol://<fully-qualified-domain-name>:<port>` Hoewel `<port>` deze vaak wordt wegge laten. Zie [Cross-Origin Resource Sharing (Wikipedia)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) voor meer informatie.
++ **allowedOrigins** (vereist): dit is een lijst met oorsprongen waaraan toegang tot uw index wordt verleend. Dit betekent dat elke Java script-code die door deze oorsprongen wordt bediend, een query kan uitvoeren op uw index (ervan uitgaande dat deze de juiste API-sleutel bevat). Elke oorsprong is doorgaans van het formulier `protocol://<fully-qualified-domain-name>:<port>` Hoewel deze `<port>` vaak wordt wegge laten. Zie [Cross-Origin Resource Sharing (Wikipedia)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) voor meer informatie.
 
-  Als u toegang tot alle oorsprongen wilt toestaan, neemt `*` u op als één item in de **allowedOrigins** -matrix. *Dit wordt niet aanbevolen voor productie Zoek Services* , maar het is vaak handig voor het ontwikkelen en opsporen van fouten.
+  Als u toegang tot alle oorsprongen wilt toestaan, neemt u op `*` als één item in de **allowedOrigins** -matrix. *Dit wordt niet aanbevolen voor productie Zoek Services* , maar het is vaak handig voor het ontwikkelen en opsporen van fouten.
 
 + **maxAgeInSeconds** (optioneel): browsers gebruiken deze waarde om de duur (in seconden) te bepalen voor het cachen van CORS-Preflight-reacties. Dit moet een niet-negatief geheel getal zijn. Hoe groter deze waarde is, hoe beter de prestaties, maar hoe langer het duurt om de wijzigingen van het CORS-beleid van kracht te laten worden. Als deze niet is ingesteld, wordt een standaard duur van 5 minuten gebruikt.
 

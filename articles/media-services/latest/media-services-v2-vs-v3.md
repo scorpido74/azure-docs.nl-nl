@@ -16,10 +16,9 @@ ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
 ms.openlocfilehash: fd094e35ceaa718ec1b258d74106b39744cbd16f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79087832"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services v2 versus v3
@@ -107,7 +106,7 @@ In de volgende tabel ziet u hoe de eigenschappen van het [element](https://docs.
 
 Ter bescherming van uw assets op rest moeten de activa worden versleuteld door de versleuteling van de opslag side. In de volgende tabel ziet u hoe de opslag side-versleuteling werkt in Media Services:
 
-|Versleutelings optie|Beschrijving|Media Services v2|Media Services v3|
+|Versleutelings optie|Description|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Opslag versleuteling Media Services|AES-256-versleuteling, sleutel beheerd door Media Services.|Ondersteund<sup>(1)</sup>|Niet ondersteund<sup>(2)</sup>|
 |[Storage Service Encryption voor Data-at-rest](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Versleuteling aan de server zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door Azure of door de klant.|Ondersteund|Ondersteund|

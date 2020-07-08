@@ -4,10 +4,9 @@ description: Meer informatie over failover en fouten in Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: d9b54f3c452212e12419a5ffd67b116c8660308d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79281806"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>Over on-premises nood herstel failover/failback
@@ -45,7 +44,7 @@ Er zijn een aantal vereisten om verbinding te maken met de virtuele Azure-machin
 
 **Failover** | **Locatie** | **Acties**
 --- | --- | ---
-**Azure VM (Windows (** | Op de on-premises computer vóór een failover | **Toegang via internet**: Schakel RDP in. Zorg ervoor dat de TCP-en UDP-regels zijn toegevoegd voor **openbaar**en dat RDP is toegestaan voor alle profielen in **Windows Firewall** > **toegestane apps**.<br/><br/> **Toegang via site-naar-site-VPN**: Schakel RDP in op de machine. Controleer of RDP is toegestaan in de **Windows Firewall** -> **toegestane apps en functies**voor **domein-en particuliere** netwerken.<br/><br/>  Zorg ervoor dat het SAN-beleid van het besturings systeem is ingesteld op **OnlineAll**. [Meer informatie](https://support.microsoft.com/kb/3031135).<br/><br/> Zorg ervoor dat er geen Windows-updates in behandeling zijn op de virtuele machine wanneer u een failover triggert. Windows Update kan worden gestart wanneer er een failover wordt uitgevoerd, en u kunt zich pas aanmelden bij de VM als er updates zijn uitgevoerd.
+**Azure VM (Windows (** | Op de on-premises computer vóór een failover | **Toegang via internet**: Schakel RDP in. Zorg ervoor dat de TCP-en UDP-regels zijn toegevoegd voor **openbaar**en dat RDP is toegestaan voor alle profielen in **Windows Firewall**  >  **toegestane apps**.<br/><br/> **Toegang via site-naar-site-VPN**: Schakel RDP in op de machine. Controleer of RDP is toegestaan in de **Windows Firewall**  ->  **toegestane apps en functies**voor **domein-en particuliere** netwerken.<br/><br/>  Zorg ervoor dat het SAN-beleid van het besturings systeem is ingesteld op **OnlineAll**. [Meer informatie](https://support.microsoft.com/kb/3031135).<br/><br/> Zorg ervoor dat er geen Windows-updates in behandeling zijn op de virtuele machine wanneer u een failover triggert. Windows Update kan worden gestart wanneer er een failover wordt uitgevoerd, en u kunt zich pas aanmelden bij de VM als er updates zijn uitgevoerd.
 **Virtuele Azure-machine met Windows** | Na een failover op de Azure-VM |  [Voeg een openbaar IP-adres toe](https://aka.ms/addpublicip) voor de VM.<br/><br/> De regels voor de netwerk beveiligings groep op de virtuele machine waarvoor een failover is uitgevoerd (en het Azure-subnet waarmee deze is verbonden) moeten binnenkomende verbindingen met de RDP-poort toestaan.<br/><br/> Controleer de **Diagnostische gegevens over opstarten** om een scherm opname van de virtuele machine te controleren. Als u geen verbinding kunt maken, controleert u of de virtuele machine wordt uitgevoerd en raadpleegt u tips voor het [oplossen van problemen](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 **Azure-VM met Linux** | Op de on-premises computer vóór een failover | Zorg ervoor dat de Secure shell-service op de VM is ingesteld om automatisch te starten bij het opstarten van het systeem.<br/><br/> Controleer of er in de firewallregels is ingesteld dat SSH-verbindingen zijn toegestaan.
 **Azure-VM met Linux** | Na een failover op de Azure-VM | De regels voor de netwerk beveiligings groep op de virtuele machine waarvoor een failover is uitgevoerd (en het Azure-subnet waarmee deze is verbonden) moeten binnenkomende verbindingen met de SSH-poort toestaan.<br/><br/> [Voeg een openbaar IP-adres toe](https://aka.ms/addpublicip) voor de VM.<br/><br/> Controleer de **Diagnostische gegevens over opstarten** voor een scherm opname van de virtuele machine.<br/><br/>
@@ -54,7 +53,7 @@ Er zijn een aantal vereisten om verbinding te maken met de virtuele Azure-machin
 
 Site Recovery biedt verschillende opties voor failover.
 
-**Failover** | **Nadere** | **Herstel** | **Werkstroom**
+**Failover** | **Details** | **Herstel** | **Werkstroom**
 --- | --- | --- | ---
 **Testfailover** | Wordt gebruikt voor het uitvoeren van een analyse die uw BCDR-strategie valideert, zonder gegevens verlies of downtime.| Hiermee maakt u een kopie van de virtuele machine in azure, zonder dat dit van invloed is op de continue replicatie of in uw productie omgeving. | 1. Voer een testfailover uit op één virtuele machine of op meerdere Vm's in een herstel plan.<br/><br/> 2. Selecteer een herstel punt dat u wilt gebruiken voor de testfailover.<br/><br/> 3. Selecteer een Azure-netwerk waarin de virtuele machine van Azure wordt geplaatst wanneer deze wordt gemaakt na een failover. Het netwerk wordt alleen gebruikt voor de testfailover.<br/><br/> 4. Controleer of de boren naar verwachting werkt. Met Site Recovery worden virtuele machines die in azure zijn gemaakt, automatisch opgeschoond tijdens de analyse.
 **Geplande failover-Hyper-V**  | Meestal gebruikt voor geplande uitval tijd.<br/><br/> De bron-Vm's worden afgesloten. De meest recente gegevens worden gesynchroniseerd voordat de failover wordt gestart. | Geen gegevens verlies voor de geplande werk stroom. | 1. het onderhouds venster voor uitval tijd plannen en gebruikers op de hoogte stellen.<br/><br/> 2. gebruikers gerichte apps offline halen.<br/><br/> 3. Start een geplande failover met het laatste herstel punt. De failover wordt niet uitgevoerd als de computer niet wordt afgesloten of als er fouten optreden.<br/><br/> 4. Controleer na de failover of de replica-VM van Azure actief is in Azure.<br/><br/> 5. Voer de failover door om te volt ooien. Met de actie door voeren worden alle herstel punten verwijderd.
@@ -76,7 +75,7 @@ In sommige gevallen vereist failover extra verwerking die ongeveer 8 tot 10 minu
 
 Tijdens een failover kunt u een aantal opties voor herstel punten selecteren.
 
-**Optie** | **Nadere**
+**Optie** | **Details**
 --- | ---
 **Laatste (laagste RPO)** | Deze optie biedt de laagste Recovery Point Objective (RPO). Eerst worden alle gegevens verwerkt die zijn verzonden naar Site Recovery service, om een herstel punt te maken voor elke virtuele machine voordat er een failover wordt uitgevoerd. Voor dit herstel punt worden alle gegevens gerepliceerd naar Site Recovery wanneer de failover werd geactiveerd.
 **Laatst verwerkt**  | Met deze optie wordt een failover uitgevoerd voor virtuele machines naar het laatste herstel punt dat is verwerkt door Site Recovery. Als u het meest recente herstel punt voor een specifieke virtuele machine wilt zien, controleert u de **meest recente herstel punten** in de VM-instellingen. Deze optie heeft een lage RTO (Recovery Time Objective), omdat er geen tijd wordt besteed aan het verwerken van niet-verwerkte gegevens.

@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: 2902ff17ac14a48f1a11259339c2ab1bc4595980
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79299257"
 ---
 # <a name="troubleshoot-data-encryption-in-azure-database-for-postgresql---single-server"></a>Problemen met gegevens versleuteling oplossen in Azure Database for PostgreSQL-één server
@@ -21,7 +20,7 @@ Dit artikel helpt u bij het identificeren en oplossen van veelvoorkomende proble
 
 Wanneer u gegevens versleuteling configureert voor het gebruik van een door de klant beheerde sleutel in Azure Key Vault, moet de server voortdurende toegang tot de sleutel hebben. Als de server de toegang tot de door de klant beheerde sleutel in Azure Key Vault kwijtraakt, worden alle verbindingen geweigerd, wordt het juiste fout bericht weer gegeven en wordt de status gewijzigd in niet ***toegankelijk*** in de Azure Portal.
 
-Als u een ontoegankelijke Azure Database for PostgreSQL server niet meer nodig hebt, kunt u deze verwijderen om kosten te besparen. Er zijn geen andere acties op de server toegestaan totdat toegang tot de sleutel kluis is hersteld en de server beschikbaar is. Het is ook niet mogelijk om de gegevens versleutelings optie `Yes`van (door de klant beheerd `No` ) te wijzigen in (door service beheerd) op een niet-toegankelijke server wanneer deze is versleuteld met een door de klant beheerde sleutel. U moet de sleutel hand matig opnieuw valideren voordat de server weer toegankelijk is. Deze actie is nodig om de gegevens te beveiligen tegen onbevoegde toegang terwijl machtigingen voor de door de klant beheerde sleutel worden ingetrokken.
+Als u een ontoegankelijke Azure Database for PostgreSQL server niet meer nodig hebt, kunt u deze verwijderen om kosten te besparen. Er zijn geen andere acties op de server toegestaan totdat toegang tot de sleutel kluis is hersteld en de server beschikbaar is. Het is ook niet mogelijk om de gegevens versleutelings optie van (door de `Yes` klant beheerd) te wijzigen in `No` (door service beheerd) op een niet-toegankelijke server wanneer deze is versleuteld met een door de klant beheerde sleutel. U moet de sleutel hand matig opnieuw valideren voordat de server weer toegankelijk is. Deze actie is nodig om de gegevens te beveiligen tegen onbevoegde toegang terwijl machtigingen voor de door de klant beheerde sleutel worden ingetrokken.
 
 ## <a name="common-errors-causing-server-to-become-inaccessible"></a>Veelvoorkomende fouten waardoor de server niet meer toegankelijk is
 

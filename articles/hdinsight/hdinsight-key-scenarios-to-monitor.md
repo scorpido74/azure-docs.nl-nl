@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
 ms.openlocfilehash: 75ac5a7fc352f877573d79a004d8da761c6f1cef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79082877"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Cluster prestaties in azure HDInsight bewaken
@@ -27,10 +26,10 @@ Hadoop-clusters kunnen de meest optimale prestaties leveren wanneer de belasting
 
 Meld u aan bij de [Ambari-webgebruikersinterface](hdinsight-hadoop-manage-ambari.md)en selecteer vervolgens het tabblad **hosts** om een hoog niveau te krijgen voor de knoop punten van uw cluster en het laden ervan. Uw hosts worden weer gegeven op basis van de volledig gekwalificeerde domein namen. De operationele status van elke host wordt weer gegeven met een gekleurde status indicator:
 
-| Kleur | Beschrijving |
+| Kleur | Description |
 | --- | --- |
 | Rood | Ten minste één hoofd onderdeel op de host is niet beschikbaar. Beweeg de muis aanwijzer om een knop Info weer te geven waarin de betrokken onderdelen worden weer gegeven. |
-| Orange | Ten minste één secundair onderdeel op de host is niet beschikbaar. Beweeg de muis aanwijzer om een knop Info weer te geven waarin de betrokken onderdelen worden weer gegeven. |
+| Oranje | Ten minste één secundair onderdeel op de host is niet beschikbaar. Beweeg de muis aanwijzer om een knop Info weer te geven waarin de betrokken onderdelen worden weer gegeven. |
 | Geel | De Ambari-server heeft meer dan drie minuten geen heartbeat van de host ontvangen. |
 | Groen | Normale status. |
 
@@ -70,7 +69,7 @@ Selecteer in de gebruikers interface van Resource Manager **scheduler** in het m
 
 ![Menu van Apache HAdoop Resource Manager-gebruikers interface](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
 
-## <a name="storage-throttling"></a>Opslag beperking
+## <a name="storage-throttling"></a>Opslagbeperking
 
 Het prestatie knelpunt van een cluster kan zich voordoen op het opslag niveau. Dit type bottleneck is vaak het gevolg van het *blok keren* van i/o-bewerkingen (invoer/uitvoer), wat er gebeurt wanneer uw actieve taken meer io verzenden dan de opslag service kan verwerken. Deze blok kering maakt een wachtrij met i/o-aanvragen die nog moeten worden verwerkt totdat de huidige IOs is verwerkt. De blokken zijn vanwege *opslag beperking*, wat geen fysieke limiet is, maar een limiet die door de opslag service wordt opgelegd door een Service Level Agreement (Sla). Deze limiet zorgt ervoor dat er geen enkele client of Tenant de service in beslag kan nemen. De SLA beperkt het aantal IOs per seconde (IOPS) voor Azure Storage-Zie [schaalbaarheids-en prestatie doelen voor standaard opslag accounts](../storage/common/scalability-targets-standard-account.md)voor meer informatie.
 
@@ -95,7 +94,7 @@ In sommige gevallen kan er sprake zijn van een traagheid vanwege onvoldoende sch
     du -h --max-depth=1 / | sort -h
     ```
 
-1. Controleer de uitvoer en controleer of er grote bestanden aanwezig zijn in de `mnt` map of in andere mappen. Normaal gesp roken `usercache`bevatten de `appcache` mappen, en (mnt/resource/Hadoop/garen/Local/usercache/Hive/appcache/) grote bestanden.
+1. Controleer de uitvoer en controleer of er grote bestanden aanwezig zijn in de `mnt` map of in andere mappen. Normaal gesp roken `usercache` bevatten de `appcache` mappen, en (mnt/resource/Hadoop/garen/Local/usercache/Hive/appcache/) grote bestanden.
 
 1. Als er grote bestanden zijn, wordt door een huidige taak de groei van het bestand of een mislukte vorige taak mogelijk bijgedragen aan dit probleem. Voer de volgende opdracht uit om te controleren of dit gedrag wordt veroorzaakt door een huidige taak:
 
@@ -109,7 +108,7 @@ In sommige gevallen kan er sprake zijn van een traagheid vanwege onvoldoende sch
     yarn application -kill -applicationId <application_id>
     ```
 
-    Vervang `application_id` door de toepassings-id. Als er geen specifieke taken worden aangegeven, gaat u naar de volgende stap.
+    Vervang door `application_id` de toepassings-id. Als er geen specifieke taken worden aangegeven, gaat u naar de volgende stap.
 
 1. Nadat de bovenstaande opdracht is voltooid, of als er geen specifieke taken worden aangegeven, verwijdert u de grote bestanden die u hebt geïdentificeerd door een opdracht uit te voeren die er ongeveer als volgt uitziet:
 

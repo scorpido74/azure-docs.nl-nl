@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
 ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78968900"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale implementeren op Azure
@@ -77,11 +76,11 @@ De GitHub-opslag plaats bevat DB2server. RSP, een antwoord bestand (. RSP) waarm
 | Kies een product          |                                              | DB2-versie 11.1.3.3. Server edities met DB2 pureScale                                              |
 | Configuratie             | Directory                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | Het installatie type selecteren                 | Standaard                                                                                               |
-|                           | Ik ga akkoord met de IBM-voor waarden                     | Geselecteerd                                                                                               |
+|                           | Ik ga akkoord met de IBM-voor waarden                     | Ingeschakeld                                                                                               |
 | Eigenaar van exemplaar            | Bestaande gebruiker voor exemplaar, gebruikers naam        | DB2sdin1                                                                                              |
 | Gebruiker met omheining               | Bestaande gebruiker, gebruikers naam                     | DB2sdfe1                                                                                              |
 | Bestands systeem van cluster       | Pad naar gedeelde schijf partitie apparaat            | /dev/dm-2                                                                                             |
-|                           | Koppel punt                                  | /DB2sd\_1804a                                                                                         |
+|                           | Koppel punt                                  | /DB2sd \_ 1804a                                                                                         |
 |                           | Gedeelde schijf voor gegevens                         | /dev/dm-1                                                                                             |
 |                           | Koppel punt (gegevens)                           | /DB2fs/datafs1                                                                                        |
 |                           | Gedeelde schijf voor logboek                          | /dev/dm-0                                                                                             |
@@ -111,7 +110,7 @@ De GitHub-opslag plaats bevat DB2server. RSP, een antwoord bestand (. RSP) waarm
 
 - De installatie scripts gebruiken aliassen voor de iSCSI-schijven zodat de werkelijke namen eenvoudig kunnen worden gevonden.
 
-- Wanneer het installatie script wordt uitgevoerd op D0, zijn **de\* /dev/DM-** -waarden mogelijk anders op D1, cf0 en CF1. Het verschil in waarden heeft geen invloed op de instellingen van de DB2-pureScale.
+- Wanneer het installatie script wordt uitgevoerd op D0, zijn **de \* /dev/DM-** -waarden mogelijk anders op D1, cf0 en CF1. Het verschil in waarden heeft geen invloed op de instellingen van de DB2-pureScale.
 
 ## <a name="troubleshooting-and-known-issues"></a>Probleemoplossing en bekende problemen
 

@@ -8,10 +8,9 @@ ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 7bf7d418e3f2680b32f61e42cffc76c921068508
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79365505"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Problemen vaststellen en oplossen bij het gebruik van Azure Functions trigger voor Cosmos DB
@@ -23,7 +22,7 @@ In dit artikel worden veelvoorkomende problemen, tijdelijke oplossingen en diagn
 De Azure Functions trigger en bindingen voor Cosmos DB zijn afhankelijk van de extensie pakketten in de basis Azure Functions runtime. Zorg ervoor dat deze pakketten altijd worden bijgewerkt, omdat deze mogelijk oplossingen en nieuwe functies bevatten die kunnen leiden tot mogelijke problemen die optreden:
 
 * Zie voor Azure Functions v2 [micro soft. Azure. webjobs. Extensions. CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB).
-* Zie voor Azure Functions v1 [micro soft. Azure. webjobs. Extensions. DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB).
+* Zie [Microsoft.Azure.WebJobs.Extensions.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB)voor Azure functions v1.
 
 In dit artikel wordt altijd verwezen naar Azure Functions v2 wanneer de runtime wordt vermeld, tenzij expliciet is opgegeven.
 
@@ -45,7 +44,7 @@ Dit betekent dat een of beide Azure Cosmos-containers die vereist zijn voor de t
 
 1. Controleer het `ConnectionStringSetting` kenmerk en of dit **verwijst naar een instelling die voor komt in uw Azure functie-app**. De waarde van dit kenmerk mag niet de verbindings reeks zelf zijn, maar de naam van de configuratie-instelling.
 2. Controleer of de `databaseName` en `collectionName` aanwezig zijn in uw Azure Cosmos-account. Als u automatische vervanging van waarden (met `%settingName%` patronen) gebruikt, moet u ervoor zorgen dat de naam van de instelling bestaat in uw Azure functie-app.
-3. Als u geen opgeeft `LeaseCollectionName/leaseCollectionName`, wordt de standaard waarde leases. Controleer of deze container bestaat. U kunt desgewenst het `CreateLeaseCollectionIfNotExists` kenmerk in de trigger instellen om `true` het automatisch te maken.
+3. Als u geen opgeeft `LeaseCollectionName/leaseCollectionName` , wordt de standaard waarde leases. Controleer of deze container bestaat. U kunt desgewenst het `CreateLeaseCollectionIfNotExists` kenmerk in de trigger instellen om `true` het automatisch te maken.
 4. Controleer de [firewall configuratie van uw Azure Cosmos-account](how-to-configure-firewall.md) om te zien of deze niet de Azure-functie blokkeert.
 
 ### <a name="azure-function-fails-to-start-with-shared-throughput-collection-should-have-a-partition-key"></a>De Azure-functie kan niet worden gestart met de verzameling gedeelde door voer moet een partitie sleutel hebben.
@@ -58,7 +57,7 @@ Deze fout betekent dat u momenteel een gepartitioneerde lease verzameling gebrui
 
 ### <a name="azure-function-fails-to-start-with-the-lease-collection-if-partitioned-must-have-partition-key-equal-to-id"></a>De Azure-functie kan niet worden gestart met ' de lease-verzameling, indien gepartitioneerd, moet een partitie sleutel hebben die gelijk is aan id. '
 
-Deze fout houdt in dat uw huidige leases-container is gepartitioneerd, maar het pad naar `/id`de partitie sleutel niet. Om dit probleem op te lossen, moet u de leases-container `/id` opnieuw maken met als de partitie sleutel.
+Deze fout houdt in dat uw huidige leases-container is gepartitioneerd, maar het pad naar de partitie sleutel niet `/id` . Om dit probleem op te lossen, moet u de leases-container opnieuw maken met `/id` als de partitie sleutel.
 
 ### <a name="you-see-a-value-cannot-be-null-parameter-name-o-in-your-azure-functions-logs-when-you-try-to-run-the-trigger"></a>U ziet een ' waarde kan niet null zijn. Parameter naam: o "in uw Azure Functions-Logboeken wanneer u probeert de trigger uit te voeren
 
@@ -79,7 +78,7 @@ In het laatste geval kan er enige vertraging optreden tussen het moment dat de w
 Het concept van een ' wijziging ' is een bewerking in een document. De meest voorkomende scenario's waarin gebeurtenissen voor hetzelfde document worden ontvangen, zijn:
 * Het account maakt gebruik van uiteindelijke consistentie. Bij het gebruik van de wijzigings feed in een mogelijk consistentie niveau, kunnen er dubbele gebeurtenissen optreden in de volgende Lees bewerkingen voor de invoer van wijzigingen (de laatste gebeurtenis van één Lees bewerking wordt weer gegeven als de eerste van de volgende).
 * Het document wordt bijgewerkt. De wijzigings feed kan meerdere bewerkingen voor dezelfde documenten bevatten, als dat document updates ontvangt, kunnen er meerdere gebeurtenissen worden opgehaald (één voor elke update). Een eenvoudige manier om onderscheid te maken tussen verschillende bewerkingen voor hetzelfde document is het bijhouden `_lsn` [van de eigenschap voor elke wijziging](change-feed.md#change-feed-and-_etag-_lsn-or-_ts). Als ze niet overeenkomen, zijn dit verschillende wijzigingen ten opzichte van hetzelfde document.
-* Als u documenten wilt identificeren `id`, moet u er rekening mee houden dat de unieke id voor een `id` document de en de bijbehorende partitie sleutel is (er kunnen twee documenten `id` zijn met dezelfde maar een andere partitie sleutel).
+* Als u documenten wilt identificeren, moet u `id` er rekening mee houden dat de unieke id voor een document de `id` en de bijbehorende partitie sleutel is (er kunnen twee documenten zijn met dezelfde `id` maar een andere partitie sleutel).
 
 ### <a name="some-changes-are-missing-in-my-trigger"></a>Er ontbreken enkele wijzigingen in de trigger
 
@@ -89,14 +88,14 @@ Als uw Azure-functie de wijzigingen ontvangt, worden deze vaak verwerkt en kunne
 
 Als sommige wijzigingen op de bestemming ontbreken, kan dit betekenen dat er een fout optreedt tijdens de uitvoering van de Azure-functie nadat de wijzigingen zijn ontvangen.
 
-In dit scenario is het de beste manier om blokken toe te `try/catch` voegen in uw code en binnen de lussen die de wijzigingen kunnen verwerken, om eventuele fouten voor een bepaalde subset van items te detecteren en ze dienovereenkomstig te verwerken (stuur ze naar een andere opslag voor verdere analyse of probeer het opnieuw). 
+In dit scenario is het de beste manier om blokken toe te voegen `try/catch` in uw code en binnen de lussen die de wijzigingen kunnen verwerken, om eventuele fouten voor een bepaalde subset van items te detecteren en ze dienovereenkomstig te verwerken (stuur ze naar een andere opslag voor verdere analyse of probeer het opnieuw). 
 
 > [!NOTE]
-> Standaard wordt er niet opnieuw een batch met wijzigingen geprobeerd als er een niet-afgehandelde uitzondering tijdens het uitvoeren van de code is opgetreden. Dit betekent dat de wijzigingen niet zijn doorgevoerd op de bestemming omdat u deze niet kunt verwerken.
+> Standaard wordt er met de Azure Functions-trigger niet opnieuw een batch met wijzigingen geprobeerd als er een niet-afgehandelde uitzondering tijdens het uitvoeren van de code is opgetreden. Dit betekent dat de wijzigingen niet zijn doorgevoerd op de bestemming omdat u deze niet kunt verwerken.
 
 Als u merkt dat sommige wijzigingen niet door de trigger zijn ontvangen, is het meest voorkomende scenario dat er **een andere Azure-functie wordt uitgevoerd**. Het kan een andere Azure-functie zijn die is geïmplementeerd in azure of een Azure-functie die lokaal wordt uitgevoerd op de computer van een ontwikkelaar en die **exact dezelfde configuratie** heeft (dezelfde bewaakte en lease-containers). deze Azure-functie stelen een subset van de wijzigingen die u verwacht dat uw Azure-functie wordt verwerkt.
 
-Daarnaast kunt u het scenario valideren als u weet hoeveel exemplaren van Azure functie-app u uitvoert. Als u uw leases-container inspecteert en het aantal lease-items binnen hebt geteld, moeten de `Owner` afzonderlijke waarden van de eigenschap in deze worden ingesteld op het aantal exemplaren van uw functie-app. Als er meer eigen aren zijn dan de instanties van de bekende Azure-functie-app, betekent dit dat deze extra eigen aren de wijzigingen ' stelen ' hebben.
+Daarnaast kunt u het scenario valideren als u weet hoeveel exemplaren van Azure functie-app u uitvoert. Als u uw leases-container inspecteert en het aantal lease-items binnen hebt geteld, moeten de afzonderlijke waarden van de `Owner` eigenschap in deze worden ingesteld op het aantal exemplaren van uw functie-app. Als er meer eigen aren zijn dan de instanties van de bekende Azure-functie-app, betekent dit dat deze extra eigen aren de wijzigingen ' stelen ' hebben.
 
 Een eenvoudige manier om deze situatie te omzeilen, is door een `LeaseCollectionPrefix/leaseCollectionPrefix` toe te passen op uw functie met een nieuwe/andere waarde of door te testen met een nieuwe lease-container.
 
@@ -109,7 +108,7 @@ Alle items in een container opnieuw verwerken vanaf het begin:
 
 Als u [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) instelt op True, wordt de Azure-functie gestart met het lezen van wijzigingen aan het begin van de geschiedenis van de verzameling in plaats van de huidige tijd. Dit werkt alleen wanneer er geen leases zijn (dat wil zeggen, documenten in de leases-verzameling). Als u deze eigenschap instelt op waar wanneer er al leases zijn gemaakt, heeft dit geen effect. Wanneer een functie wordt gestopt en opnieuw wordt gestart, wordt in dit scenario begonnen met het lezen van het laatste controle punt, zoals gedefinieerd in de verzameling leases. Volg de bovenstaande stappen 1-4 om vanaf het begin opnieuw te verwerken.  
 
-### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>U kunt de binding alleen doen met\<IReadOnlyList document> of JArray
+### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Binding kan alleen worden uitgevoerd met IReadOnlyList \<Document> of JArray
 
 Deze fout treedt op als uw Azure Functions project (of een project waarnaar wordt verwezen) een hand matige NuGet-verwijzing naar de Azure Cosmos DB SDK bevat met een andere versie dan die van de [uitbrei ding Azure Functions Cosmos DB](./troubleshoot-changefeed-functions.md#dependencies).
 

@@ -4,10 +4,9 @@ description: Versleutel uw toepassings gegevens in Azure Storage en implementeer
 ms.topic: article
 ms.date: 03/06/2020
 ms.openlocfilehash: 62179e900ace0d6d7b8b1f07e8f0ab685508f991
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79408721"
 ---
 # <a name="encryption-at-rest-using-customer-managed-keys"></a>Versleuteling in rust met door de klant beheerde sleutels
@@ -31,7 +30,7 @@ Gebruik vervolgens de Storage Explorer om [een SAS te genereren](../vs-azure-too
 
 ### <a name="configure-running-from-a-package-from-your-storage-account"></a>Uitvoeren vanuit een pakket vanuit uw opslag account configureren
   
-Wanneer u uw bestand uploadt naar Blob-opslag en een SAS-URL voor het bestand hebt `WEBSITE_RUN_FROM_PACKAGE` , stelt u de toepassings instelling in op de SAS-URL. In het volgende voor beeld wordt dit gedaan met behulp van Azure CLI:
+Wanneer u uw bestand uploadt naar Blob-opslag en een SAS-URL voor het bestand hebt, stelt u de `WEBSITE_RUN_FROM_PACKAGE` toepassings instelling in op de SAS-URL. In het volgende voor beeld wordt dit gedaan met behulp van Azure CLI:
 
 ```
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_RUN_FROM_PACKAGE="<your-SAS-URL>"
@@ -71,7 +70,7 @@ Het bijwerken van deze toepassings instelling zorgt ervoor dat de functie-app op
 
 Het is best practice om regel matig de SAS-sleutel van uw opslag account te draaien. Om ervoor te zorgen dat de functie-app niet per ongeluk toegang kan krijgen, moet u ook de SAS-URL in Key Vault bijwerken.
 
-1. Draai de SAS-sleutel door te navigeren naar uw opslag account in de Azure Portal. Klik onder **instellingen** > **toegangs sleutels**op het pictogram om de SAS-sleutel te roteren.
+1. Draai de SAS-sleutel door te navigeren naar uw opslag account in de Azure Portal. Klik onder **instellingen**  >  **toegangs sleutels**op het pictogram om de SAS-sleutel te roteren.
 
 1. Kopieer de nieuwe SAS-URL en gebruik de volgende opdracht om de bijgewerkte SAS-URL in uw sleutel kluis in te stellen:
 
@@ -113,11 +112,11 @@ Alleen de kosten die zijn gekoppeld aan het Azure Storage-account en eventuele v
 
 ### <a name="how-does-running-from-the-deployment-package-affect-my-function-app"></a>Wat is van invloed op de uitvoering van het implementatie pakket op mijn functie-app?
 
-- Als uw app vanuit het implementatie pakket wordt `wwwroot/` uitgevoerd, wordt alleen-lezen gemaakt. Uw app ontvangt een fout melding wanneer wordt geprobeerd naar deze map te schrijven.
+- Als uw app vanuit het implementatie pakket wordt uitgevoerd `wwwroot/` , wordt alleen-lezen gemaakt. Uw app ontvangt een fout melding wanneer wordt geprobeerd naar deze map te schrijven.
 - TAR-en GZIP-indelingen worden niet ondersteund.
 - Deze functie is niet compatibel met de lokale cache.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Key Vault verwijzingen voor App Service](../app-service/app-service-key-vault-references.md)
-- [Azure Storage versleuteling voor Data-at-rest](../storage/common/storage-service-encryption.md)
+- [Azure Storage-versleuteling voor inactieve gegevens](../storage/common/storage-service-encryption.md)

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: vturecek
 ms.openlocfilehash: 92c717fa2c82dd147acd3c28333e37ccf8dd2e89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79282300"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Hoe Reliable Actors het Service Fabric platform gebruiken?
@@ -28,7 +27,7 @@ Omdat de actor service zelf een betrouw bare service is, zijn alle [toepassings 
 
 In het voor gaande diagram ziet u de relatie tussen de Service Fabric toepassings raamwerken en gebruikers code. Blauwe elementen vertegenwoordigen het Reliable Services-toepassings raamwerk, het betrouw bare actor-Framework vertegenwoordigt en groen staat voor gebruikers code.
 
-In Reliable Services neemt uw service de `StatefulService` klasse over. Deze klasse is afgeleid van `StatefulServiceBase` (of `StatelessService` voor stateless Services). In Reliable Actors gebruikt u de actor-service. De actor-service is een andere implementatie van `StatefulServiceBase` de klasse die het actor patroon implementeert waar uw actoren worden uitgevoerd. Omdat de actor service zelf slechts een implementatie van `StatefulServiceBase`is, kunt u uw eigen service schrijven die is afgeleid van `ActorService` en serviceniveau functies op dezelfde manier als bij overname zou implementeren `StatefulService`, zoals:
+In Reliable Services neemt uw service de klasse over `StatefulService` . Deze klasse is afgeleid van `StatefulServiceBase` (of `StatelessService` voor stateless Services). In Reliable Actors gebruikt u de actor-service. De actor-service is een andere implementatie van de `StatefulServiceBase` klasse die het actor patroon implementeert waar uw actoren worden uitgevoerd. Omdat de actor service zelf slechts een implementatie van is `StatefulServiceBase` , kunt u uw eigen service schrijven die is afgeleid van `ActorService` en serviceniveau functies op dezelfde manier als bij overname zou implementeren `StatefulService` , zoals:
 
 * Back-up en herstel van de service.
 * Gedeelde functionaliteit voor alle actors, bijvoorbeeld een circuit onderbreker.
@@ -40,7 +39,7 @@ Zie [implementatie van functies op service niveau in uw actor service](service-f
 Actor Services zijn Reliable Services, waardoor het toepassings model hetzelfde is. De hulpprogram ma's voor het bouwen van actor Framework genereren echter enkele van de toepassings model bestanden voor u.
 
 ### <a name="service-manifest"></a>Service manifest
-De hulpprogram ma's voor het bouwen van actor Framework genereren automatisch de inhoud van het bestand ServiceManifest. XML van uw actor-service. Dit bestand bevat:
+De hulpprogram ma's voor het bouwen van actor Framework genereren automatisch de inhoud van het ServiceManifest.xml bestand van uw actor-service. Dit bestand bevat:
 
 * Type actor service. De type naam wordt gegenereerd op basis van de project naam van uw actor. Op basis van het kenmerk persistentie op uw actor wordt de HasPersistedState-vlag ook dienovereenkomstig ingesteld.
 * Code pakket.
@@ -61,7 +60,7 @@ Actor Services zijn gepartitioneerde stateful Services. Elke partitie van een ac
 Reliable Services kunnen worden gemaakt met verschillende partitie schema's en partitie sleutel bereik. De actor-service maakt gebruik van het schema Int64 partitioneren met het volledige Int64-sleutel bereik om actors toe te wijzen aan partities.
 
 ### <a name="actor-id"></a>Actor-ID
-Aan elke actor die in de service is gemaakt, is een unieke ID gekoppeld die wordt vertegenwoordigd door `ActorId` de klasse. `ActorId`is een ondoorzichtige ID-waarde die kan worden gebruikt voor een uniforme distributie van actors in de service partities door wille keurige Id's te genereren:
+Aan elke actor die in de service is gemaakt, is een unieke ID gekoppeld die wordt vertegenwoordigd door de `ActorId` klasse. `ActorId`is een ondoorzichtige ID-waarde die kan worden gebruikt voor een uniforme distributie van actors in de service partities door wille keurige Id's te genereren:
 
 ```csharp
 ActorProxy.Create<IMyActor>(ActorId.CreateRandom());
@@ -71,7 +70,7 @@ ActorProxyBase.create<MyActor>(MyActor.class, ActorId.newId());
 ```
 
 
-Elke `ActorId` wordt naar een Int64 gehasht. Daarom moet de actor-service een schema voor gegevens type Int64 gebruiken met het volledige Int64-sleutel bereik. Aangepaste ID-waarden kunnen echter worden gebruikt voor een `ActorID`, inclusief GUID'S/uuid, teken reeksen en Int64s.
+Elke `ActorId` wordt naar een Int64 gehasht. Daarom moet de actor-service een schema voor gegevens type Int64 gebruiken met het volledige Int64-sleutel bereik. Aangepaste ID-waarden kunnen echter worden gebruikt voor een `ActorID` , inclusief guid's/uuid, teken reeksen en Int64s.
 
 ```csharp
 ActorProxy.Create<IMyActor>(new ActorId(Guid.NewGuid()));
@@ -84,7 +83,7 @@ ActorProxyBase.create(MyActor.class, new ActorId("myActorId"));
 ActorProxyBase.create(MyActor.class, new ActorId(1234));
 ```
 
-Wanneer u GUID'S/UUID en teken reeksen gebruikt, worden de waarden gehasht naar een Int64. Wanneer u echter expliciet een Int64 levert aan een `ActorId`, wordt het gegevens type int64 rechtstreeks toegewezen aan een partitie zonder verdere hashing. U kunt deze methode gebruiken om te bepalen met welke partitie de actors worden geplaatst.
+Wanneer u GUID'S/UUID en teken reeksen gebruikt, worden de waarden gehasht naar een Int64. Wanneer u echter expliciet een Int64 levert aan een `ActorId` , wordt het gegevens type int64 rechtstreeks toegewezen aan een partitie zonder verdere hashing. U kunt deze methode gebruiken om te bepalen met welke partitie de actors worden geplaatst.
 
 
 ## <a name="next-steps"></a>Volgende stappen

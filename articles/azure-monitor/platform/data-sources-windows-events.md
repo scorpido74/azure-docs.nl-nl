@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79274682"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Gegevens bronnen in het Windows-gebeurtenis logboek in Azure Monitor
@@ -21,7 +20,7 @@ Windows-gebeurtenis logboeken zijn een van de meest voorkomende [gegevens bronne
 ## <a name="configuring-windows-event-logs"></a>Windows-gebeurtenis logboeken configureren
 Configureer Windows-gebeurtenis logboeken [in het menu Data van de geavanceerde instellingen](agent-data-sources.md#configuring-data-sources).
 
-Azure Monitor verzamelt alleen gebeurtenissen uit de Windows-gebeurtenis logboeken die zijn opgegeven in de instellingen.  U kunt een gebeurtenis logboek toevoegen door de naam van het logboek te typen en te **+** klikken op.  Voor elk logboek worden alleen de gebeurtenissen met de geselecteerde Ernst verzameld.  Controleer de ernst van het specifieke logboek dat u wilt verzamelen.  U kunt geen aanvullende criteria opgeven om gebeurtenissen te filteren.
+Azure Monitor verzamelt alleen gebeurtenissen uit de Windows-gebeurtenis logboeken die zijn opgegeven in de instellingen.  U kunt een gebeurtenis logboek toevoegen door de naam van het logboek te typen en te klikken op **+** .  Voor elk logboek worden alleen de gebeurtenissen met de geselecteerde Ernst verzameld.  Controleer de ernst van het specifieke logboek dat u wilt verzamelen.  U kunt geen aanvullende criteria opgeven om gebeurtenissen te filteren.
 
 Wanneer u de naam van een gebeurtenis logboek typt, geeft Azure Monitor suggesties voor veelvoorkomende namen van gebeurtenis Logboeken. Als het logboek dat u wilt toevoegen niet in de lijst wordt weer gegeven, kunt u het nog steeds toevoegen door de volledige naam van het logboek te typen. U kunt de volledige naam van het logboek vinden met behulp van Logboeken. Open de pagina *Eigenschappen* voor het logboek in Logboeken en kopieer de teken reeks uit het veld *volledige naam* .
 
@@ -30,7 +29,7 @@ Wanneer u de naam van een gebeurtenis logboek typt, geeft Azure Monitor suggesti
 > [!NOTE]
 > Kritieke gebeurtenissen van het Windows-gebeurtenis logboek hebben de ernst fout in Azure Monitor Logboeken.
 
-## <a name="data-collection"></a>Gegevens verzamelen
+## <a name="data-collection"></a>Gegevensverzameling
 Azure Monitor verzamelt elke gebeurtenis die overeenkomt met een bepaalde ernst van een bewaakt gebeurtenis logboek wanneer de gebeurtenis wordt gemaakt.  De agent legt de locatie vast in elk gebeurtenis logboek dat wordt verzameld van.  Als de agent gedurende een bepaalde tijd offline gaat, worden er gebeurtenissen verzameld van waar deze voor het laatst is uitgeschakeld, zelfs als deze gebeurtenissen zijn gemaakt terwijl de agent offline was.  Deze gebeurtenissen kunnen niet worden verzameld als het gebeurtenis logboek vastloopt met niet-verzamelde gebeurtenissen die worden overschreven terwijl de agent offline is.
 
 >[!NOTE]
@@ -60,7 +59,7 @@ Windows-gebeurtenis records hebben een type **gebeurtenis** en hebben de eigensc
 ## <a name="log-queries-with-windows-events"></a>Query's vastleggen in Logboeken met Windows-gebeurtenissen
 De volgende tabel bevat verschillende voor beelden van logboek query's waarmee Windows-gebeurtenis records worden opgehaald.
 
-| Query’s uitvoeren | Beschrijving |
+| Query’s uitvoeren | Description |
 |:---|:---|
 | Gebeurtenis |Alle Windows-gebeurtenissen. |
 | Gebeurtenis &#124; waarbij EventLevelName = = "Error" |Alle Windows-gebeurtenissen met de ernst van de fout. |

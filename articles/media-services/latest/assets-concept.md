@@ -1,5 +1,5 @@
 ---
-title: Activa
+title: Assets
 titleSuffix: Azure Media Services
 description: Meer informatie over wat assets zijn en hoe deze worden gebruikt door Azure Media Services.
 services: media-services
@@ -14,10 +14,9 @@ ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 9b04941a5799955097fbd54ad9bdf50eccb87541
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79087909"
 ---
 # <a name="assets-in-azure-media-services-v3"></a>Activa in Azure Media Services v3
@@ -32,7 +31,7 @@ De opslaglaag van het **Archief** wordt alleen aanbevolen voor zeer grote bron b
 
 ## <a name="naming"></a>Naamgeving 
 
-### <a name="assets"></a>Activa
+### <a name="assets"></a>Assets
 
 De namen van het activum moeten uniek zijn. Media Services v3-resource namen (bijvoorbeeld assets, taken, trans formaties) zijn onderhevig aan Azure Resource Manager naamgevings beperkingen. Zie [naamgevings conventies](media-services-apis-overview.md#naming-conventions)voor meer informatie.
 
@@ -44,6 +43,6 @@ De namen van bestanden/blobs in een Asset moeten de [vereisten voor de BLOB-naam
 
 [Assets in Media Services beheren](manage-asset-concept.md)
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 [Verschillen tussen Media Services v2 en v3](migrate-from-v2-to-v3.md)

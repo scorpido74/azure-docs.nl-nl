@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: c2d69d21eb46d502a45c9df1dfaaa947d26ef7c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79246108"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>DNS configureren voor naam omzetting voor Private Cloud vCenter-toegang vanaf on-premises werk stations
@@ -23,7 +22,7 @@ Om toegang te krijgen tot de vCenter-Server op een CloudSimple Privécloud vanui
 
 1. Meld u aan bij de [CloudSimple-Portal](access-cloudsimple-portal.md).
 
-2. Navigeer naar **Resources** > **persoonlijke Clouds** van resources en selecteer de privécloud waarmee u verbinding wilt maken.
+2. Navigeer naar **Resources**  >  **persoonlijke Clouds** van resources en selecteer de privécloud waarmee u verbinding wilt maken.
 
 3. Kopieer op de pagina **samen vatting** van de Privécloud onder **basis informatie**het IP-adres van de DNS-server van de privécloud.
 

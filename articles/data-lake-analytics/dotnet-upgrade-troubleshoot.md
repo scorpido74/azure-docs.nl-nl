@@ -10,10 +10,9 @@ ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
 ms.openlocfilehash: f909419810cbd837e57b19a13b2df6ae9ad2ee97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79213588"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics wordt bijgewerkt naar de .NET Framework v-4.7.2
@@ -65,27 +64,27 @@ De meest voorkomende achterwaartse incompatibiliteiten die de controle waarschij
   - Aanbevolen actie: Zorg ervoor dat TaskFactory. FromAsync correct retourneert
 
 - Data object. GetData haalt gegevens nu op als UTF-8
-  - Voor apps die zijn gericht op de .NET Framework 4 of die worden uitgevoerd op de .NET Framework 4.5.1 of eerdere versies, wordt met Data object. GetData HTML-gegevens opgehaald als een ASCII-teken reeks. Als gevolg hiervan worden niet-ASCII-tekens (tekens waarvan de ASCII-codes groter zijn dan 0x7F) weer gegeven met twee wille keurige tekens. #N # #N # voor apps die zijn gericht op de .NET Framework 4,5 of `DataObject.GetData` hoger en die worden uitgevoerd op de .NET Framework 4.5.2, haalt gegevens op die zijn OPGEMAAKT als UTF-8, wat tekens groter dan 0x7F bevat.
+  - Voor apps die zijn gericht op de .NET Framework 4 of die worden uitgevoerd op de .NET Framework 4.5.1 of eerdere versies, wordt met Data object. GetData HTML-gegevens opgehaald als een ASCII-teken reeks. Als gevolg hiervan worden niet-ASCII-tekens (tekens waarvan de ASCII-codes groter zijn dan 0x7F) weer gegeven met twee wille keurige tekens. #N # #N # voor apps die zijn gericht op de .NET Framework 4,5 of hoger en die worden uitgevoerd op de .NET Framework 4.5.2, `DataObject.GetData` haalt gegevens op die zijn opgemaakt als UTF-8, wat tekens groter dan 0x7F bevat.
   - Beïnvloede bibliotheken: Glo
   - Aanbevolen actie: Zorg ervoor dat de opgehaalde gegevens de gewenste indeling hebben
 
 - XmlWriter genereert ongeldige surrogaat paren
-  - Voor apps die zijn gericht op de .NET Framework 4.5.2 of de vorige versies, wordt er niet altijd een uitzonde ring gegenereerd door een ongeldige surrogaat paar te schrijven met behulp van uitzonde ring voor terugval verwerking. Voor apps die zijn gericht op de .NET Framework 4,6, wordt geprobeerd een ongeldig surrogaat paar te schrijven `ArgumentException`.
-  - Beïnvloede bibliotheken: System. XML, System. XML. ReaderWriter
+  - Voor apps die zijn gericht op de .NET Framework 4.5.2 of de vorige versies, wordt er niet altijd een uitzonde ring gegenereerd door een ongeldige surrogaat paar te schrijven met behulp van uitzonde ring voor terugval verwerking. Voor apps die zijn gericht op de .NET Framework 4,6, wordt geprobeerd een ongeldig surrogaat paar te schrijven `ArgumentException` .
+  - Beïnvloede bibliotheken: System.Xml, System.Xml. ReaderWriter
   - Aanbevolen actie: Zorg ervoor dat u geen ongeldig surrogaat paar schrijft dat argument uitzondering veroorzaakt
 
-- HtmlTextWriter geeft het element `<br/>` niet correct weer
-  - Vanaf de .NET Framework 4,6 wordt het `HtmlTextWriter.RenderBeginTag()` aanroepen `HtmlTextWriter.RenderEndTag()` en met `<BR />` een `<BR />` -element op de juiste manier ingevoegd (in plaats van twee)
+- HtmlTextWriter geeft het `<br/>` element niet correct weer
+  - Vanaf de .NET Framework 4,6 wordt het aanroepen `HtmlTextWriter.RenderBeginTag()` en `HtmlTextWriter.RenderEndTag()` met een `<BR />` -element op de juiste manier ingevoegd `<BR />` (in plaats van twee)
   - Beïnvloede bibliotheken: System. Web
   - Aanbevolen actie: Zorg ervoor dat u de verwachte hoeveelheid `<BR />` wilt zien, zodat er geen wille keurig gedrag wordt weer gegeven in de productie taak
 
 - Het aanroepen van CreateDefaultAuthorizationContext met een null-argument is gewijzigd
-  - De implementatie van de AuthorizationContext die wordt geretourneerd door een aanroep `CreateDefaultAuthorizationContext(IList<IAuthorizationPolicy>)` naar het argument met een null-authorizationPolicies-waarde, is gewijzigd in de .NET Framework 4,6.
+  - De implementatie van de AuthorizationContext die wordt geretourneerd door een aanroep naar het `CreateDefaultAuthorizationContext(IList<IAuthorizationPolicy>)` argument met een null-authorizationPolicies-waarde, is gewijzigd in de .NET Framework 4,6.
   - Beïnvloede bibliotheken: System. Identity model
   - Aanbevolen actie: Zorg ervoor dat u het nieuwe verwachte gedrag afhandelt wanneer er sprake is van Null-autorisatie beleid
   
 - RSACng laadt nu RSA-sleutels van de niet-standaard sleutel grootte
-  - In .NET Framework versies voorafgaand aan 4.6.2 hebben klanten met een niet-standaard sleutel grootte voor RSA-certificaten geen toegang tot deze sleutels `GetRSAPublicKey()` via `GetRSAPrivateKey()` de extensie methoden en. A `CryptographicException` met het bericht ' de aangevraagde sleutel grootte wordt niet ondersteund ' wordt gegenereerd. Het .NET Framework 4.6.2 dit probleem is opgelost. En nu werken met niet-standaard sleutel formaten zonder dat u dat `CryptographicException`hoeft te doen. `RSACng.ImportParameters()` `RSA.ImportParameters()`
+  - In .NET Framework versies voorafgaand aan 4.6.2 hebben klanten met een niet-standaard sleutel grootte voor RSA-certificaten geen toegang tot deze sleutels via de `GetRSAPublicKey()` `GetRSAPrivateKey()` extensie methoden en. A `CryptographicException` met het bericht ' de aangevraagde sleutel grootte wordt niet ondersteund ' wordt gegenereerd. Het .NET Framework 4.6.2 dit probleem is opgelost. `RSA.ImportParameters()`En `RSACng.ImportParameters()` nu werken met niet-standaard sleutel formaten zonder dat u dat hoeft te doen `CryptographicException` .
   - Beïnvloede bibliotheken: mscorlib, System. core
   - Aanbevolen actie: Zorg ervoor dat RSA-sleutels werken zoals verwacht
 
@@ -95,11 +94,11 @@ De meest voorkomende achterwaartse incompatibiliteiten die de controle waarschij
   - Aanbevolen actie:
 
 - Aanroepen naar claims-Constructors
-  - Vanaf de .NET Framework 4.6.2 is er een wijziging in de manier waarop `T:System.Security.Claims.ClaimsIdentity` constructors met een `T:System.Security.Principal.IIdentity` para meter de `P:System.Security.Claims.ClaimsIdentify.Actor` eigenschap instellen. Als het `T:System.Security.Principal.IIdentity` argument een `T:System.Security.Claims.ClaimsIdentity` `P:System.Security.Claims.ClaimsIdentify.Actor` object is en de eigenschap van dat `T:System.Security.Claims.ClaimsIdentity` object niet `null`is, wordt de `P:System.Security.Claims.ClaimsIdentify.Actor` eigenschap gekoppeld met behulp van `M:System.Security.Claims.ClaimsIdentity.Clone` de methode. In de Framework-4.6.1 en eerdere versies wordt `P:System.Security.Claims.ClaimsIdentify.Actor` de eigenschap gekoppeld als een bestaande verwijzing. Als gevolg van deze wijziging, te beginnen met de .NET Framework 4.6.2 `P:System.Security.Claims.ClaimsIdentify.Actor` , is de eigenschap `T:System.Security.Claims.ClaimsIdentity` van het nieuwe object niet gelijk `P:System.Security.Claims.ClaimsIdentify.Actor` aan de eigenschap van het `T:System.Security.Principal.IIdentity` argument van de constructor. In de .NET Framework 4.6.1 en eerdere versies is deze gelijk.
+  - Vanaf de .NET Framework 4.6.2 is er een wijziging in de manier waarop `T:System.Security.Claims.ClaimsIdentity` constructors met een `T:System.Security.Principal.IIdentity` para meter de `P:System.Security.Claims.ClaimsIdentify.Actor` eigenschap instellen. Als het `T:System.Security.Principal.IIdentity` argument een `T:System.Security.Claims.ClaimsIdentity` object is en de `P:System.Security.Claims.ClaimsIdentify.Actor` eigenschap van dat `T:System.Security.Claims.ClaimsIdentity` object niet is `null` , wordt de `P:System.Security.Claims.ClaimsIdentify.Actor` eigenschap gekoppeld met behulp van de `M:System.Security.Claims.ClaimsIdentity.Clone` methode. In de Framework-4.6.1 en eerdere versies `P:System.Security.Claims.ClaimsIdentify.Actor` wordt de eigenschap gekoppeld als een bestaande verwijzing. Als gevolg van deze wijziging, te beginnen met de .NET Framework 4.6.2, `P:System.Security.Claims.ClaimsIdentify.Actor` is de eigenschap van het nieuwe `T:System.Security.Claims.ClaimsIdentity` object niet gelijk aan de `P:System.Security.Claims.ClaimsIdentify.Actor` eigenschap van het argument van de constructor `T:System.Security.Principal.IIdentity` . In de .NET Framework 4.6.1 en eerdere versies is deze gelijk.
   - Beïnvloede bibliotheken: mscorlib
   - Aanbevolen actie: Zorg ervoor dat claims werkt zoals verwacht bij een nieuwe runtime
 
 - Serialisatie van besturings tekens met DataContractJsonSerializer is nu compatibel met ECMAScript V6 en V8
   - In de .NET Framework-4.6.2 en eerdere versies heeft de DataContractJsonSerializer geen speciale Stuur tekens, zoals \b, \f en \t, op een manier geserialiseerd die compatibel is met de ECMAScript V6-en V8-standaarden. Vanaf de .NET Framework 4,7 is serialisatie van deze Stuur codes compatibel met ECMAScript V6 en V8.
-  - Beïnvloede bibliotheken: System. runtime. serialisatie. json
+  - Beïnvloede bibliotheken: System.Runtime.Serialization.Jsop
   - Aanbevolen actie: zorg voor hetzelfde gedrag met DataContractJsonSerializer

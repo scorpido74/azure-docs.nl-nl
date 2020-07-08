@@ -9,13 +9,12 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: d548af6cba6d35b497f67a0dc774171088a91010
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78944674"
 ---
-# <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Door het platform ondersteunde migratie van IaaS-resources van klassiek naar Azure Resource Manager
+# <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Platformondersteunde migratie van IaaS-resources van het klassieke implementatiemodel naar Azure Resource Manager
 
 > [!IMPORTANT]
 > Nu gebruiken we op ongeveer 90% IaaS Vm's [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). Vanaf 28 februari 2020 zijn klassieke Vm's afgeschaft en worden ze volledig buiten gebruik gesteld op 1 maart 2023. Meer [informatie]( https://aka.ms/classicvmretirement) over deze afschaffing en [hoe dit van invloed is op u](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me).

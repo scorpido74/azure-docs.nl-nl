@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: e2f19ceb6c7f19ba749b46a3553036587be6a71a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969215"
 ---
 # <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>Cloud-init gebruiken om een bash-script uit te voeren in een virtuele Linux-machine in azure
@@ -21,7 +20,7 @@ Met Cloud-init hoeft u uw bestaande scripts niet te converteren naar een Cloud-c
 
 Als u de Azure-extensie voor aangepast script voor Linux hebt gebruikt om uw scripts uit te voeren, kunt u deze migreren voor het gebruik van Cloud-init. Azure-extensies hebben echter geïntegreerde rapportage om waarschuwingen te ontvangen voor script fouten, een Cloud-init-installatie kopie kan niet worden geïmplementeerd als het script is mislukt.
 
-Als u deze functionaliteit in actie wilt zien, maakt u een eenvoudig bash-script om te testen. Net als het Cloud- `#cloud-config` init-bestand moet dit script lokaal zijn waar u de AzureCLI-opdrachten uitvoert om uw virtuele machine in te richten.  In dit voor beeld maakt u het bestand in het Cloud Shell niet op uw lokale computer. U kunt elke editor die u wilt gebruiken. Voer `sensible-editor simple_bash.sh` in voor het maken van het bestand en om een overzicht van beschikbare editors te zien. Kies #1 om de **nano** -editor te gebruiken. Zorg ervoor dat het hele Cloud-init-bestand correct wordt gekopieerd, met name de eerste regel.  
+Als u deze functionaliteit in actie wilt zien, maakt u een eenvoudig bash-script om te testen. Net als het Cloud-init- `#cloud-config` bestand moet dit script lokaal zijn waar u de AzureCLI-opdrachten uitvoert om uw virtuele machine in te richten.  In dit voor beeld maakt u het bestand in het Cloud Shell niet op uw lokale computer. U kunt elke editor die u wilt gebruiken. Voer `sensible-editor simple_bash.sh` in voor het maken van het bestand en om een overzicht van beschikbare editors te zien. Kies #1 om de **nano** -editor te gebruiken. Zorg ervoor dat het hele Cloud-init-bestand correct wordt gekopieerd, met name de eerste regel.  
 
 ```bash
 #!/bin/sh
@@ -34,7 +33,7 @@ Voordat u deze installatie kopie implementeert, moet u een resource groep maken 
 az group create --name myResourceGroup --location eastus
 ```
 
-Maak nu een virtuele machine met [AZ VM Create](/cli/azure/vm) en geef het bash-script bestand `--custom-data simple_bash.sh` op met de volgende opties:
+Maak nu een virtuele machine met [AZ VM Create](/cli/azure/vm) en geef het bash-script bestand op met de `--custom-data simple_bash.sh` volgende opties:
 
 ```azurecli-interactive 
 az vm create \
@@ -51,7 +50,7 @@ SSH naar het open bare IP-adres van uw virtuele machine, weer gegeven in de uitv
 ssh <publicIpAddress>
 ```
 
-Ga naar de map **map/tmp** en controleer of het bestand myscript. txt bestaat en of de juiste tekst erin voor komt.  Als dat niet het geval is, kunt u de **/var/log/Cloud-init.log** controleren voor meer informatie.  Zoek naar de volgende vermelding:
+Ga naar de map **map/tmp** en controleer of myScript.txt bestand bestaat en of de juiste tekst erin is opgeslagen.  Als dat niet het geval is, kunt u de **/var/log/Cloud-init.log** controleren voor meer informatie.  Zoek naar de volgende vermelding:
 
 ```bash
 Running config-scripts-user using lock Running command ['/var/lib/cloud/instance/scripts/part-001']

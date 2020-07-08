@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
 ms.openlocfilehash: 551fb0cb9f3745a62d5d84f2c4878bbbbe5ad9a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79137319"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Getimede meta gegevens in live streamen signalering 
@@ -142,7 +141,7 @@ Als u aangepaste meta gegevensfeeds van uw upstream-encoder, een IP-camera, Dron
 De gegevens bericht opdracht **' onUserDataEvent '** moet een bericht lading met de volgende definitie bevatten om te kunnen worden vastgelegd door Media Services en zijn verpakt in de in-band bestands indeling, evenals de manifesten voor HLS, DASH en Smooth streaming.
 Het is raadzaam om berichten met een time-out van de meta gegevens niet vaker dan één keer per 0,5 seconden (500ms) of stabiliteits problemen met de live stream te verzenden. Elk bericht kan meta gegevens van meerdere frames samen voegen als u meta gegevens op frame niveau moet bieden. Als u multi-bitrate streams verzendt, kunt u het beste ook de meta gegevens op één bitrate geven om de band breedte te verminderen en storingen met de verwerking van video/audio te voor komen. 
 
-De payload voor **' onUserDataEvent '** moet een bericht van het type [MPEGDASH] EventStream XML-indeling zijn. Dit maakt het eenvoudig om aangepaste gedefinieerde schema's door te geven die kunnen worden uitgevoerd in ' emsg-nettoladingen in-band voor CMAF [MPEGCMAF] die worden geleverd via HLS-of streepje-protocollen. Elk streepje gebeurtenis stroom bericht bevat een schemeIdUri die fungeert als een URN-bericht schema-ID en definieert de payload van het bericht. Sommige schema's, zoals "https://aomedia.org/emsg/ID3" voor [id3v2] of **urn: scte: scte35:2013: bin** voor [scte-35], worden gestandaardiseerd door industriële consortia voor interoperabiliteit. Elke toepassings provider kan hun eigen aangepaste schema definiëren met behulp van een URL die ze beheren (domein in eigendom) en kunnen een specificatie op die URL geven als ze kiezen. Als een speler een handler heeft voor het gedefinieerde schema, is dat het enige onderdeel dat de payload en het protocol moet begrijpen.
+De payload voor **' onUserDataEvent '** moet een bericht van het type [MPEGDASH] EventStream XML-indeling zijn. Dit maakt het eenvoudig om aangepaste gedefinieerde schema's door te geven die kunnen worden uitgevoerd in ' emsg-nettoladingen in-band voor CMAF [MPEGCMAF] die worden geleverd via HLS-of streepje-protocollen. Elk streepje gebeurtenis stroom bericht bevat een schemeIdUri die fungeert als een URN-bericht schema-ID en definieert de payload van het bericht. Sommige schema's, zoals " https://aomedia.org/emsg/ID3 " voor [id3v2] of **urn: scte: scte35:2013: bin** voor [scte-35], worden gestandaardiseerd door industriële consortia voor interoperabiliteit. Elke toepassings provider kan hun eigen aangepaste schema definiëren met behulp van een URL die ze beheren (domein in eigendom) en kunnen een specificatie op die URL geven als ze kiezen. Als een speler een handler heeft voor het gedefinieerde schema, is dat het enige onderdeel dat de payload en het protocol moet begrijpen.
 
 Het schema voor de EventStream XML-nettolading van [MPEG-DASH] is gedefinieerd als (fragment van het streepje ISO-IEC-23009-1-3e editie). Houd er rekening mee dat er op dit moment slechts één "Event type" per "EventStream" wordt ondersteund. Alleen het eerste **gebeurtenis** element wordt verwerkt als er meerdere gebeurtenissen worden gegeven in de **EventStream**.
 
@@ -208,9 +207,9 @@ Het schema voor de EventStream XML-nettolading van [MPEG-DASH] is gedefinieerd a
 ```
 
 ### <a name="built-in-supported-scheme-id-uris"></a>Ingebouwde ondersteunde combi natie van schema-id's
-| URI van schema-ID                 | Beschrijving                                                                                                                                                                                                                                          |
+| URI van schema-ID                 | Description                                                                                                                                                                                                                                          |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| https:\//aomedia.org/emsg/ID3 | Hierin wordt beschreven hoe [ID3v2] meta gegevens kunnen worden uitgevoerd als getimede meta gegevens in een CMAF [MPEGCMAF] gefragmenteerde MP4. Zie de [getimede meta gegevens in de indeling common Media Application (CMAF)](https://github.com/AOMediaCodec/id3-emsg) voor meer informatie. |
+| https: \/ /aomedia.org/emsg/ID3 | Hierin wordt beschreven hoe [ID3v2] meta gegevens kunnen worden uitgevoerd als getimede meta gegevens in een CMAF [MPEGCMAF] gefragmenteerde MP4. Zie de [getimede meta gegevens in de indeling common Media Application (CMAF)](https://github.com/AOMediaCodec/id3-emsg) voor meer informatie. |
 
 ### <a name="event-processing-and-manifest-signaling"></a>Gebeurtenis verwerking en manifest signalen
 
@@ -291,7 +290,7 @@ Het bericht type ' onCuePoint ' is gedefinieerd in [Adobe-Flash-AS] en heeft de 
 
 | Eigenschap   | Beschrijving                                                                                                                                                                                                                     |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| name       | De naam moet '**scte35**' zijn door elementair Live.                                                                                                                                                                              |
+| naam       | De naam moet '**scte35**' zijn door elementair Live.                                                                                                                                                                              |
 | tijd       | De tijd in seconden waarop het actie punt tijdens de tijd lijn is opgetreden in het video bestand                                                                                                                                           |
 | type       | Het type actie punt moet worden ingesteld op**gebeurtenis**.                                                                                                                                                                             |
 | parameters | Een associatieve matrix met combi natie van naam/waarde-paren die de informatie uit het SCTE-35-bericht bevat, inclusief id en duur. Deze waarden worden geparseerd door Azure Media Services en opgenomen in de label manifest decoratie. |
@@ -413,13 +412,13 @@ Het coderings programma moet het fragment splitsen op het moment van de presenta
 
 ### <a name="221-live-server-manifest-box"></a>Dialoog venster 2.2.1 Live server
 
-De sparse track **moet** worden gedeclareerd in het manifest van de live-server met een ** \<TextStream\> ** -vermelding en **moet** de volgende kenmerken hebben ingesteld:
+De sparse track **moet** worden gedeclareerd in het manifest van de live-server met een **\<textstream\>** vermelding en **moet** de volgende kenmerken hebben ingesteld:
 
-| **Kenmerk naam** | **Veld type** | **Vereist?** | **Beschrijving**                                                                                                                                                                                                              |
+| **Kenmerknaam** | **Veld type** | **Vereist?** | **Beschrijving**                                                                                                                                                                                                              |
 | ------------------ | -------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | systemBitrate      | Aantal         | Vereist      | **Moet** ' 0 ' zijn, wat een track met een onbekende variabele bitrate aangeeft.                                                                                                                                                          |
 | parentTrackName    | Tekenreeks         | Vereist      | **Moet** de naam zijn van het bovenliggende spoor, waarbij de tijd codes van de sparse track worden uitgelijnd. Het bovenliggende spoor kan geen sparse track zijn.                                                                             |
-| manifestOutput     | Booleaans        | Vereist      | **Moet** ' True ' zijn, om aan te geven dat de sparse track wordt Inge sloten in het Smooth client-manifest.                                                                                                                        |
+| manifestOutput     | Boolean-waarde        | Vereist      | **Moet** ' True ' zijn, om aan te geven dat de sparse track wordt Inge sloten in het Smooth client-manifest.                                                                                                                        |
 | Subtype            | Tekenreeks         | Vereist      | **Moet** de vier teken code ' data ' zijn.                                                                                                                                                                                  |
 | Schema             | Tekenreeks         | Vereist      | **Moet** een urn of URL zijn die het bericht schema aangeeft. Voor [SCTE-35] berichten **moet** dit ' urn: SCTE: scte35:2013: bin ' zijn om berichten te verzenden naar HLS-, Smooth-en dash-clients in overeenstemming met [SCTE-35]. |
 | nummer bijhouden          | Tekenreeks         | Vereist      | **Moet** de naam van de sparse track zijn. De tracknaam kan worden gebruikt om meerdere gebeurtenis stromen te onderscheiden met hetzelfde schema. Elke unieke gebeurtenis stroom **moet** een unieke Track naam hebben.                                |
@@ -762,7 +761,7 @@ Er is ook een ' verouderde ' implementatie beschikbaar in Azure Media Services (
 
 De "verouderde" EXT-X-CUE-tag wordt hieronder gedefinieerd en er kan ook normatieve worden verwezen in de [Adobe-Primetime]-specificatie. Dit mag alleen worden gebruikt voor verouderde SCTE35-Signa lering wanneer dat nodig is, anders wordt de aanbevolen tag gedefinieerd in [RFC8216] als EXT-X-DATERANGE. 
 
-| **Kenmerk naam** | **Type**                      | **Vereist?**                             | **Beschrijving**                                                                                                                                                                                                                                                                          |
+| **Kenmerknaam** | **Type**                      | **Vereist?**                             | **Beschrijving**                                                                                                                                                                                                                                                                          |
 | ------------------ | ----------------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | WMS                | teken reeks tussen aanhalings tekens                 | Vereist                                  | Het bericht dat is gecodeerd als een base64-gecodeerde teken reeks, zoals beschreven in [RFC4648]. Voor [SCTE-35] berichten is dit de met base64 gecodeerde splice_info_section ().                                                                                                                                      |
 | TYPE               | teken reeks tussen aanhalings tekens                 | Vereist                                  | Een URN of URL die het bericht schema aangeeft. Voor [SCTE-35]-berichten neemt het type de speciale waarde ' scte35 '.                                                                                                                                                                          |
@@ -879,7 +878,7 @@ Manifest (MPD) van gebeurtenissen wordt in de MPD gesignaleerd met behulp van he
 
 Het EventStream-element heeft de volgende kenmerken:
 
-| **Kenmerk naam** | **Type**                | **Vereist?** | **Beschrijving**                                                                                                                                                                                                                                                                                                                                                                         |
+| **Kenmerknaam** | **Type**                | **Vereist?** | **Beschrijving**                                                                                                                                                                                                                                                                                                                                                                         |
 | ------------------ | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | scheme_id_uri      | tekenreeks                  | Vereist      | Hiermee wordt het schema van het bericht aangegeven. Het schema wordt ingesteld op de waarde van het kenmerk schema in het vak Live server-manifest. De waarde **moet** een urn of URL zijn die het bericht schema aangeeft. De ondersteunde uitvoer schemeId moet "urn: scte: scte35:2014: XML + bin" per [SCTE-214-1] SEC 6.7.4 (MPD) zijn, aangezien de service op dit moment alleen de XML + bin ondersteunt voor het boog gebruik in de MPD. |
 | waarde              | tekenreeks                  | Optioneel      | Een extra teken reeks waarde die door de eigen aren van het schema wordt gebruikt om de semantiek van het bericht aan te passen. Als u meerdere gebeurtenis stromen wilt onderscheiden met hetzelfde schema, **moet** de waarde worden ingesteld op de naam van de gebeurtenis stroom (Tracknaam voor [MS-SSTR-ingestie] of AMF-bericht naam voor een [RTMP]-opname).                                                                         |
@@ -939,7 +938,7 @@ In het volgende voor beeld ziet u een fragment EventStream van de Media Services
 #### <a name="3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals"></a>3.3.3.1-voorbeeld MPEG DASH-manifest (MPD) met één punt, EventStream, met behulp van eenvoudige Adobe-modus signalen
 
 In het volgende voor beeld ziet u de uitvoer van de Media Services Dynamic packager voor een bron-RTMP-stroom met behulp van de Adobe ' Simple ' modus AD-signaal methode. De uitvoer is een enkelvoudig periode manifest met een EventStream met behulp van de schemeId-URI ingesteld op "urn: com: Adobe: dpi: simple: 2015" en de eigenschap value ingesteld op "simplesignal".
-Elk eenvoudig signaal wordt gegeven in een gebeurtenis element met de @presentationTimeeigenschappen @duration, en @id die zijn gevuld op basis van de binnenkomende eenvoudige signalen.
+Elk eenvoudig signaal wordt gegeven in een gebeurtenis element met de @presentationTime Eigenschappen, en die zijn @duration @id gevuld op basis van de binnenkomende eenvoudige signalen.
 
 ~~~ xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -995,7 +994,7 @@ Elk eenvoudig signaal wordt gegeven in een gebeurtenis element met de @presentat
 #### <a name="3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling"></a>3.3.3.2-voorbeeld MPEG DASH-manifest (MPD) met meerdere punten, EventStream, met behulp van de Adobe SCTE35 mode-Signa lering
 
 In het volgende voor beeld ziet u de uitvoer van de Media Services Dynamic packager voor een bron-RTMP-stroom met behulp van het Adobe SCTE35-modus signaal.
-In dit geval is het uitvoer manifest een streepje. mpd met meerdere Peri Oden met een EventStream-element, @schemeIdUri en eigenschap ingesteld op "urn: scte: scte35:2014: XML + bin" en @value een eigenschap die is ingesteld op "scte35". Elk gebeurtenis element in de EventStream bevat het volledige Base64 Encoded binaire SCTE35-signaal 
+In dit geval is het uitvoer manifest een streepje. mpd met meerdere Peri Oden met een EventStream-element, en @schemeIdUri eigenschap ingesteld op "urn: scte: scte35:2014: XML + bin" en een @value eigenschap die is ingesteld op "scte35". Elk gebeurtenis element in de EventStream bevat het volledige Base64 Encoded binaire SCTE35-signaal 
 
 ~~~ xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -1172,7 +1171,7 @@ Wanneer u uw implementatie met het Azure Media Services-platform test, moet u ee
 
 ## <a name="change-history"></a>Wijzigingsoverzicht
 
-| Date     | Gewijzigde                                                                                                             |
+| Datum     | Wijzigingen                                                                                                             |
 | -------- | ------------------------------------------------------------------------------------------------------------------- |
 | 07/2/19  | Herziene RTMP-opname voor SCTE35-ondersteuning, toegevoegde RTMP "onCuePoint" voor elementaire Live                                  |
 | 08/22/19 | Bijgewerkt om OnUserDataEvent toe te voegen aan RTMP voor aangepaste meta gegevens                                                          |

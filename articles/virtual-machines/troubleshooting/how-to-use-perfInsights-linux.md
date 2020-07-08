@@ -14,10 +14,9 @@ ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
 ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79266986"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights gebruiken
@@ -69,7 +68,7 @@ Informatie over de virtuele Linux-machine, het besturings systeem, het blok kere
   - Stuur programmagegevens
 
 - Hardware
-  - PCI-apparaten`*`[]
+  - PCI-apparaten [ `*` ]
 
 - Processen en geheugen
   - Lijst met processen (taak naam, gebruikt geheugen, bestanden geopend)
@@ -103,7 +102,7 @@ Informatie over de virtuele Linux-machine, het besturings systeem, het blok kere
   - /var/log/cloud-init-output.log
   - /var/log/gpu-manager.log
   - /var/log/waagent.log
-  - /var/log/Azure/[extensie map]/\*logboek\*
+  - /var/log/Azure/[extensie map]/ \* logboek\*
   - /var/opt/microsoft/omsconfig/omsconfig.log
   - /var/opt/microsoft/omsagent/log/omsagent.log
   - /etc/waagent.config
@@ -112,7 +111,7 @@ Informatie over de virtuele Linux-machine, het besturings systeem, het blok kere
 - [Meta gegevens van Azure virtual machine-instantie](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
 >[!Note]
->[`*`] PCI-informatie is nog niet verzameld in Debian-en SLES-distributies
+>[ `*` ] PCI-informatie is nog niet verzameld in Debian-en SLES-distributies
 
 ## <a name="run-the-perfinsights-linux-on-your-vm"></a>De PerfInsights Linux uitvoeren op uw VM
 
@@ -127,16 +126,16 @@ Informatie over de virtuele Linux-machine, het besturings systeem, het blok kere
 
     | Distributie               | Versie                                         |
     |----------------------------|-------------------------------------------------|
-    | Oracle Linux server        | 6,10 [`*`], 7,3, 7,6, 7,5 (Oracle-data base-ee 13,8 Marketplace-installatie kopie)|
-    | CentOS                     | 6,5 [`*`], 7,6                                    |
-    | RHEL                       | 7,2, 7,5, 8,0 [`*`]                               |
+    | Oracle Linux server        | 6,10 [ `*` ], 7,3, 7,6, 7,5 (Oracle-data base-Ee 13,8 Marketplace-installatie kopie)|
+    | CentOS                     | 6,5 [ `*` ], 7,6                                    |
+    | RHEL                       | 7,2, 7,5, 8,0 [ `*` ]                               |
     | Ubuntu                     | 14.04, 16.04, 18.04                               |
-    | Debian                     | 8, 9, 10 [`*`]                                    |
-    | SLES                       | 12 SP4 [`*`]                                      |
+    | Debian                     | 8, 9, 10 [ `*` ]                                    |
+    | SLES                       | 12 SP4 [ `*` ]                                      |
     |                            |                                                   |
 
 >[!Note]
->[`*`] Raadpleeg de sectie [bekende problemen](#known-issues)
+>[ `*` ] Raadpleeg de sectie [bekende problemen](#known-issues)
 
 ### <a name="known-issues"></a>Bekende problemen
 
@@ -205,11 +204,11 @@ Voer de volgende stappen uit om het PerfInsights-hulp programma uit te voeren:
     >
     >Als u een actief ondersteunings ticket hebt met micro soft en PerfInsights wilt uitvoeren volgens de aanvraag van de ondersteunings technicus waarmee u werkt, moet u ervoor zorgen dat u het nummer van het ondersteunings ticket opgeeft met de optie **-s of--Support-aanvraag** .
 
-Wanneer de uitvoering is voltooid, wordt een nieuw tar-bestand weer gegeven in dezelfde map als PerfInsights, tenzij er geen uitvoermap is opgegeven. De naam van het bestand is **PerformanceDiagnostics\_jjjj-mm-dd\_hh-mm-SS-FFF. tar. gz.** U kunt dit bestand naar de ondersteunings agent verzenden voor analyse of het rapport openen in het bestand om de bevindingen en aanbevelingen te bekijken.
+Wanneer de uitvoering is voltooid, wordt een nieuw tar-bestand weer gegeven in dezelfde map als PerfInsights, tenzij er geen uitvoermap is opgegeven. De naam van het bestand is **PerformanceDiagnostics \_ jjjj-mm-dd \_ hh-mm-SS-FFF. tar. gz.** U kunt dit bestand naar de ondersteunings agent verzenden voor analyse of het rapport openen in het bestand om de bevindingen en aanbevelingen te bekijken.
 
 ## <a name="review-the-diagnostics-report"></a>Het diagnostische rapport controleren
 
-Binnen het **PerformanceDiagnostics\_jjjj-mm-dd\_hh-mm-SS-FFF. tar. gz** -bestand kunt u een HTML-rapport vinden met informatie over de bevindingen van PerfInsights. Als u het rapport wilt bekijken, vouwt u het bestand **\_PERFORMANCEDIAGNOSTICS\_jjjj-mm-dd hh-mm-SS-FFF. tar. gz** uit en opent u vervolgens het bestand **PerfInsights Report. html** .
+Binnen het **PerformanceDiagnostics \_ jjjj-mm-dd \_ hh-mm-SS-FFF. tar. gz** -bestand kunt u een HTML-rapport vinden met informatie over de bevindingen van PerfInsights. Als u het rapport wilt bekijken, vouwt u het bestand **PerformanceDiagnostics \_ jjjj-mm-dd \_ hh-mm-SS-FFF. tar. gz** uit en opent u vervolgens het bestand **PerfInsights Report.html** .
 
 ### <a name="overview-tab"></a>Tabblad Overzicht
 
@@ -254,4 +253,4 @@ Op de volgende scherm afbeelding wordt een bericht weer gegeven dat vergelijkbaa
 
 Volg de instructies in het bericht voor toegang tot de werk ruimte bestands overdracht. Voor extra beveiliging moet u uw wacht woord wijzigen bij het eerste gebruik.
 
-Nadat u zich hebt aangemeld, vindt u een dialoog venster voor het uploaden van het bestand **PerformanceDiagnostics\_jjjj-\_mm-dd hh-mm-SS-FFF. tar. gz** dat door PerfInsights is verzameld.
+Nadat u zich hebt aangemeld, vindt u een dialoog venster voor het uploaden van het bestand **PerformanceDiagnostics \_ jjjj-mm-dd \_ hh-mm-SS-FFF. tar. gz** dat door PerfInsights is verzameld.

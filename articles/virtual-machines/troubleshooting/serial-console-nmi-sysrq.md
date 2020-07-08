@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 3ad68438f5fc015b6a9150d67485b90a095f1a4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79250086"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Seriële console gebruiken voor SysRq- en NMI-aanroepen
@@ -25,13 +24,13 @@ ms.locfileid: "79250086"
 ## <a name="system-request-sysrq"></a>Systeem aanvraag (SysRq)
 Een SysRq is een reeks sleutels die worden begrepen door de Linux-bewerkings systeem-kernel, waarmee een reeks vooraf gedefinieerde acties kan worden geactiveerd. Deze opdrachten worden vaak gebruikt bij het oplossen van problemen met de virtuele machine of het herstel kan niet worden uitgevoerd via een traditioneel beheer (bijvoorbeeld als de VM niet reageert). Met de SysRq-functie van Azure Serial console wordt op het drukken van de SysRq-sleutel en de tekens die op een fysiek toetsen bord zijn ingevoerd, gesimuleerd.
 
-Zodra de SysRq-reeks is geleverd, bepaalt de kernel configuratie hoe het systeem reageert. Voor informatie over het in-en uitschakelen van SYSRQ, raadpleegt u de [tekst](https://aka.ms/kernelorgsysreqdoc) | [markdown](https://aka.ms/linuxsysrq)voor de *SYSRQ-beheerders handleiding* .
+Zodra de SysRq-reeks is geleverd, bepaalt de kernel configuratie hoe het systeem reageert. Voor informatie over het in-en uitschakelen van SYSRQ, raadpleegt u de tekst voor de *SYSRQ-beheerders handleiding* [text](https://aka.ms/kernelorgsysreqdoc)  |  [markdown](https://aka.ms/linuxsysrq).
 
 De Azure Serial console kan worden gebruikt om een SysRq te verzenden naar een virtuele Azure-machine met behulp van het toetsenbord pictogram in de onderstaande opdracht balk.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
-Als u de opdracht ' SysRq verzenden ' kiest, wordt er een dialoog venster geopend, waarmee u algemene SysRq-opties kunt opgeven, of een reeks SysRq-opdrachten die in het dialoog venster zijn ingevoerd.  Op die manier kunnen reeksen SysRq een bewerking op hoog niveau uitvoeren, zoals veilig opnieuw opstarten met behulp van `REISUB`:.
+Als u de opdracht ' SysRq verzenden ' kiest, wordt er een dialoog venster geopend, waarmee u algemene SysRq-opties kunt opgeven, of een reeks SysRq-opdrachten die in het dialoog venster zijn ingevoerd.  Op die manier kunnen reeksen SysRq een bewerking op hoog niveau uitvoeren, zoals veilig opnieuw opstarten met behulp van: `REISUB` .
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
@@ -79,7 +78,7 @@ Vanuit de SysRq-beheer handleiding hierboven:
 |``x``  |    Wordt gebruikt door de xmon-interface op PPC/powerpc-platforms. Algemene PMU-registers weer geven op sparc64. Alle TLB-vermeldingen op MIPS dumpen.
 |``y``  |    Globale CPU-registers weer geven [SPARC-64-specifiek]
 |``z``  |    De ftrace-buffer dumpen
-|``0``-``9`` | Hiermee stelt u het logboek niveau van de console in, waarbij wordt beheerd welke kernel-berichten worden afgedrukt op uw-console. (``0``dit kan bijvoorbeeld zodanig zijn dat alleen nood berichten, zoals een paniek of een bestand, het naar uw-console zou kunnen maken.)
+|``0``-``9`` | Hiermee stelt u het logboek niveau van de console in, waarbij wordt beheerd welke kernel-berichten worden afgedrukt op uw-console. ( ``0`` Dit kan bijvoorbeeld zodanig zijn dat alleen nood berichten, zoals een paniek of een bestand, het naar uw-console zou kunnen maken.)
 
 ### <a name="distribution-specific-documentation"></a>Distributie-specifieke documentatie ###
 Zie de onderstaande koppelingen voor distributie-specifieke documentatie over SysRq en stappen voor het configureren van Linux voor het maken van een crash dump bij het ontvangen van een SysRq ' crash '.
@@ -111,7 +110,7 @@ Voor Linux-systemen die sysctl ondersteunen voor het configureren van kernel-par
 1. Sysctl opnieuw opstarten of bijwerken door uit te voeren <br>
     `sysctl -p`
 
-Zie de [documentatie voor/proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt)voor meer informatie over `panic_on_io_nmi`Linux- `panic_on_unrecovered_nmi`kernel-configuraties, waaronder `unknown_nmi_panic`, en. Zie de onderstaande koppelingen voor distributie-specifieke documentatie over NMI en stappen voor het configureren van Linux voor het maken van een crash dump bij het ontvangen van een NMI.
+`unknown_nmi_panic` `panic_on_io_nmi` `panic_on_unrecovered_nmi` Zie de [documentatie voor/proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt)voor meer informatie over Linux-kernel-configuraties, waaronder, en. Zie de onderstaande koppelingen voor distributie-specifieke documentatie over NMI en stappen voor het configureren van Linux voor het maken van een crash dump bij het ontvangen van een NMI.
 
 ### <a name="ubuntu"></a>Ubuntu
  - [Kernel-crash dump](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)

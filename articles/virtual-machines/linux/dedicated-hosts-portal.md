@@ -8,10 +8,9 @@ ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: cynthn
 ms.openlocfilehash: 195a19ef881f235ad8e42f23b53da9e667ef88d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79086749"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Vm's implementeren op toegewezen hosts met behulp van de portal
@@ -32,7 +31,7 @@ Dit artikel begeleidt u bij het maken van een toegewezen Azure- [host](dedicated
 
     ![Administrator-account](./media/quick-create-portal/administrator-account.png)
 
-1. Onder **Binnenkomende poort regels** > **open bare binnenkomende poorten**kiest u **geselecteerde poorten toestaan** en selecteert u **SSH (22)** in de vervolg keuzelijst. 
+1. Onder **Binnenkomende poort regels**  >  **open bare binnenkomende poorten**kiest u **geselecteerde poorten toestaan** en selecteert u **SSH (22)** in de vervolg keuzelijst. 
 1. Selecteer boven aan de pagina het tabblad **Geavanceerd** en selecteer in de sectie **host** *MyHostGroup* voor **hostgroep** en *myHost* voor de **host**. 
     ![Hostgroep en host selecteren](./media/dedicated-hosts-portal/advanced.png)
 1. Laat de resterende standaardwaarden staan ​​en selecteer vervolgens de knop **Beoordelen en maken** aan de onderkant van de pagina.

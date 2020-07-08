@@ -12,10 +12,9 @@ ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: e1bc7c8a6f97d6dc6bb1d6cb54825425244b2158
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78944887"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>MongoDB installeren en configureren op een virtuele Linux-machine
@@ -30,13 +29,13 @@ ms.locfileid: "78944887"
 ## <a name="manually-install-and-configure-mongodb-on-a-vm"></a>MongoDB hand matig installeren en configureren op een VM
 MongoDB [bieden installatie-instructies](https://docs.mongodb.com/manual/administration/install-on-linux/) voor Linux distributies, waaronder Red Hat/CENTOS, SuSE, Ubuntu en Debian. In het volgende voor beeld wordt een *CentOS* -VM gemaakt. Als u deze omgeving wilt maken, moet u de nieuwste [Azure cli](/cli/azure/install-az-cli2) installeren en u aanmelden bij een Azure-account met [AZ login](/cli/azure/reference-index).
 
-Maak een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
+Maak een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Maak een VM met [az vm create](/cli/azure/vm). In het volgende voor beeld wordt een virtuele machine met de naam *myVM* gemaakt met de naam *azureuser* met behulp van open bare SSH-sleutel verificatie
+Maak een virtuele machine met [AZ VM Create](/cli/azure/vm). In het volgende voor beeld wordt een virtuele machine met de naam *myVM* gemaakt met de naam *azureuser* met behulp van open bare SSH-sleutel verificatie
 
 ```azurecli
 az vm create \
@@ -47,7 +46,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-SSH naar de virtuele machine met uw eigen gebruikers naam `publicIpAddress` en de weer gegeven in de uitvoer van de vorige stap:
+SSH naar de virtuele machine met uw eigen gebruikers naam en de `publicIpAddress` weer gegeven in de uitvoer van de vorige stap:
 
 ```bash
 ssh azureuser@<publicIpAddress>
@@ -59,7 +58,7 @@ Als u de installatie bronnen voor MongoDB wilt toevoegen, maakt u als volgt een 
 sudo touch /etc/yum.repos.d/mongodb-org-3.6.repo
 ```
 
-Open het MongoDB opslag plaats-bestand om het te bewerken, `vi` zoals `nano`met of. Voeg de volgende regels toe:
+Open het MongoDB opslag plaats-bestand om het te bewerken, zoals met `vi` of `nano` . Voeg de volgende regels toe:
 
 ```sh
 [mongodb-org-3.6]
@@ -89,7 +88,7 @@ Start de MongoDB-service als volgt:
 sudo service mongod start
 ```
 
-Controleer de MongoDB-installatie door verbinding te maken `mongo` via de lokale client:
+Controleer de MongoDB-installatie door verbinding te maken via de lokale `mongo` client:
 
 ```bash
 mongo
@@ -118,7 +117,7 @@ U kunt een basis-MongoDB-exemplaar maken op één CentOS-VM met behulp van de vo
 
 * [Basis-MongoDB-exemplaar op CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 
-Als u deze omgeving wilt maken, moet u de nieuwste [Azure cli](/cli/azure/install-az-cli2) installeren en u aanmelden bij een Azure-account met [AZ login](/cli/azure/reference-index). Maak eerst een resourcegroep met [az group create](/cli/azure/group). In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
+Als u deze omgeving wilt maken, moet u de nieuwste [Azure cli](/cli/azure/install-az-cli2) installeren en u aanmelden bij een Azure-account met [AZ login](/cli/azure/reference-index). Maak eerst een resourcegroep met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -143,7 +142,7 @@ SSH naar uw virtuele machine met uw eigen gebruikers naam en open bare DNS-adres
 ssh azureuser@mypublicdns.eastus.cloudapp.azure.com
 ```
 
-Controleer de MongoDB-installatie door als volgt verbinding `mongo` te maken via de lokale client:
+Controleer de MongoDB-installatie door als volgt verbinding te maken via de lokale `mongo` client:
 
 ```bash
 mongo
@@ -169,7 +168,7 @@ U kunt een complex MongoDB Shard-cluster maken met behulp van de volgende Azure 
 > [!WARNING]
 > Voor het implementeren van dit complexe MongoDB Shard-cluster zijn meer dan 20 kernen vereist. Dit is meestal het standaard aantal kernen per regio voor een abonnement. Open een ondersteunings aanvraag voor Azure om het aantal kernen te verhogen.
 
-Als u deze omgeving wilt maken, moet u de nieuwste [Azure cli](/cli/azure/install-az-cli2) installeren en u aanmelden bij een Azure-account met [AZ login](/cli/azure/reference-index). Maak eerst een resourcegroep met [az group create](/cli/azure/group). In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
+Als u deze omgeving wilt maken, moet u de nieuwste [Azure cli](/cli/azure/install-az-cli2) installeren en u aanmelden bij een Azure-account met [AZ login](/cli/azure/reference-index). Maak eerst een resourcegroep met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

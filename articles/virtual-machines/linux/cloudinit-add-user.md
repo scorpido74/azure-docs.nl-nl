@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: f1782bfe0c14e3b44703f89ec7f78590c1bb74c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969241"
 ---
 # <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>Cloud-init gebruiken om een gebruiker toe te voegen aan een virtuele Linux-machine in azure
@@ -19,7 +18,7 @@ Dit artikel laat u zien hoe u [Cloud-init](https://cloudinit.readthedocs.io) kun
 ## <a name="add-a-user-to-a-vm-with-cloud-init"></a>Een gebruiker toevoegen aan een virtuele machine met Cloud-init
 Een van de eerste taken op een nieuwe virtuele Linux-machine is het toevoegen van een extra gebruiker voor uzelf om het gebruik van de *hoofdmap*te voor komen. SSH-sleutels zijn best practice voor beveiliging en gebruiks gemak. Sleutels worden toegevoegd aan het bestand *~/.ssh/authorized_keys* met dit script voor Cloud-init.
 
-Als u een gebruiker aan een virtuele Linux-machine wilt toevoegen, maakt u een bestand in uw huidige shell met de naam *cloud_init_add_user. txt* en plakt u de volgende configuratie. In dit voor beeld maakt u het bestand in het Cloud Shell niet op uw lokale computer. U kunt elke editor die u wilt gebruiken. Voer `sensible-editor cloud_init_add_user.txt` in voor het maken van het bestand en om een overzicht van beschikbare editors te zien. Kies #1 om de **nano** -editor te gebruiken. Zorg ervoor dat het hele Cloud-init-bestand correct wordt gekopieerd, met name de eerste regel.  U moet uw eigen open bare sleutel (zoals de inhoud van *~/.ssh/id_rsa. pub*) opgeven voor de waarde `ssh-authorized-keys:` -deze is inge kort om het voor beeld te vereenvoudigen.
+Als u een gebruiker aan een virtuele Linux-machine wilt toevoegen, maakt u een bestand in uw huidige shell met de naam *cloud_init_add_user.txt* en plakt u de volgende configuratie. In dit voor beeld maakt u het bestand in het Cloud Shell niet op uw lokale computer. U kunt elke editor die u wilt gebruiken. Voer `sensible-editor cloud_init_add_user.txt` in voor het maken van het bestand en om een overzicht van beschikbare editors te zien. Kies #1 om de **nano** -editor te gebruiken. Zorg ervoor dat het hele Cloud-init-bestand correct wordt gekopieerd, met name de eerste regel.  U moet uw eigen open bare sleutel (zoals de inhoud van *~/.ssh/id_rsa. pub*) opgeven voor de waarde `ssh-authorized-keys:` -deze is inge kort om het voor beeld te vereenvoudigen.
 
 ```yaml
 #cloud-config
@@ -41,7 +40,7 @@ Voordat u deze installatie kopie implementeert, moet u een resource groep maken 
 az group create --name myResourceGroup --location eastus
 ```
 
-Maak nu een virtuele machine met [AZ VM Create](/cli/azure/vm) en geef het bestand Cloud-init op `--custom-data cloud_init_add_user.txt` met de volgende opties:
+Maak nu een virtuele machine met [AZ VM Create](/cli/azure/vm) en geef het bestand Cloud-init op met de `--custom-data cloud_init_add_user.txt` volgende opties:
 
 ```azurecli-interactive 
 az vm create \
@@ -64,7 +63,7 @@ Als u wilt bevestigen dat de gebruiker is toegevoegd aan de virtuele machine en 
 cat /etc/group
 ```
 
-In de volgende voorbeeld uitvoer ziet u dat de gebruiker uit het *cloud_init_add_user. txt* -bestand is toegevoegd aan de virtuele machine en de juiste groep:
+In de volgende voorbeeld uitvoer ziet u dat de gebruiker uit het *cloud_init_add_user.txt* -bestand is toegevoegd aan de virtuele machine en de juiste groep:
 
 ```bash
 root:x:0:

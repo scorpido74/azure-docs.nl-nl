@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79367581"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Georuimtelijke en geojson-locatie gegevens in Azure Cosmos DB
@@ -30,7 +29,7 @@ De SQL-API van Azure Cosmos DB ondersteunt twee ruimtelijke gegevens typen: het 
 - Het type **geometrie** vertegenwoordigt gegevens in een Euclidean-coördinaten systeem (plat)
 - Het **geografie** type staat voor gegevens in een coördinaten systeem met round-Earth.
 
-## <a name="supported-data-types"></a>Ondersteunde gegevens typen
+## <a name="supported-data-types"></a>Ondersteunde gegevenstypen
 
 Azure Cosmos DB ondersteunt het indexeren en doorzoeken van georuimtelijke punt gegevens die worden weer gegeven met de [GEOjson-specificatie](https://tools.ietf.org/html/rfc7946). Geojson-gegevens structuren zijn altijd geldige JSON-objecten, zodat ze kunnen worden opgeslagen en opgevraagd met behulp van Azure Cosmos DB zonder gespecialiseerde hulpprogram ma's of bibliotheken.
 
@@ -156,9 +155,9 @@ Omdat de vorm van de aarde onregelmatig is, worden coördinaten van georuimtelij
 Het populairste CRS dat momenteel wordt gebruikt, is de World Geodetic System [WGS-84](https://earth-info.nga.mil/GandG/update/index.php). GPS-apparaten en veel toewijzings Services, waaronder Google Maps en Bing Maps-Api's, gebruiken WGS-84. Azure Cosmos DB ondersteunt het indexeren en doorzoeken van georuimtelijke gegevens op geografische locatie alleen met behulp van de WGS-84-CRS.
 
 ## <a name="creating-documents-with-spatial-data"></a>Documenten maken met ruimtelijke gegevens
-Wanneer u documenten maakt die geojson-waarden bevatten, worden ze automatisch geïndexeerd met een ruimtelijke index in overeenstemming met het indexerings beleid van de container. Als u werkt met een Azure Cosmos DB SDK in een dynamisch getypeerde taal, zoals python of node. js, moet u een geldige geojson maken.
+Wanneer u documenten maakt die geojson-waarden bevatten, worden ze automatisch geïndexeerd met een ruimtelijke index in overeenstemming met het indexerings beleid van de container. Als u werkt met een Azure Cosmos DB SDK in een dynamisch getypeerde taal, zoals python of Node.js, moet u een geldige geojson maken.
 
-**Document maken met georuimtelijke gegevens in node. js**
+**Document maken met georuimtelijke gegevens in Node.js**
 
 ```javascript
 var userProfileDocument = {
@@ -174,7 +173,7 @@ client.createDocument(`dbs/${databaseName}/colls/${collectionName}`, userProfile
 });
 ```
 
-Als u met de SQL-api's werkt, kunt u de `Point`klassen, `LineString`, `Polygon`en `MultiPolygon` in de `Microsoft.Azure.Cosmos.Spatial` naam ruimte gebruiken om locatie-informatie in uw toepassings objecten in te sluiten. Deze klassen helpen de serialisatie en deserialisatie van ruimtelijke gegevens te vereenvoudigen in geojson.
+Als u met de SQL-api's werkt, kunt u de `Point` klassen, `LineString` , `Polygon` en `MultiPolygon` in de `Microsoft.Azure.Cosmos.Spatial` naam ruimte gebruiken om locatie-informatie in uw toepassings objecten in te sluiten. Deze klassen helpen de serialisatie en deserialisatie van ruimtelijke gegevens te vereenvoudigen in geojson.
 
 **Document maken met georuimtelijke gegevens in .NET**
 

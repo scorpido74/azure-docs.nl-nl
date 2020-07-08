@@ -5,10 +5,9 @@ ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.openlocfilehash: e2e32ac6981635e3b9885119fdf397783ac32cc9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79273200"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Op rollen gebaseerd Access Control gebruiken om Azure Backup herstel punten te beheren
@@ -81,5 +80,5 @@ In de volgende tabel worden de acties voor back-upbeheer en de bijbehorende rol 
 * Meer informatie over het beheren van toegang met:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure-CLI](../role-based-access-control/role-assignments-cli.md)
-  * [REST-API](../role-based-access-control/role-assignments-rest.md)
+  * [REST API](../role-based-access-control/role-assignments-rest.md)
 * [Access Control probleem oplossing op basis van rollen](../role-based-access-control/troubleshooting.md): suggesties ophalen voor het oplossen van veelvoorkomende problemen.

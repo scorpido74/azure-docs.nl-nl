@@ -9,10 +9,9 @@ ms.date: 05/23/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 84cee86dbddff77f6142925eec01889cf793a466
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79127548"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Problemen met grafische prestaties in Extern bureaublad diagnosticeren
@@ -35,7 +34,7 @@ U hebt uw externe sessie naam nodig om de grafische prestatie meter items te ide
 
 Nadat u de naam van uw externe sessie hebt bepaald, volgt u deze instructies voor het verzamelen van de prestatie meter items voor RemoteFX graphics voor uw externe sessie.
 
-1. Selecteer **Start** > **systeem beheer** > **prestatie meter**.
+1. Selecteer **Start**  >  **systeem beheer**  >  **prestatie meter**.
 2. Vouw in het dialoog venster **prestatie meter** het onderdeel **controle hulpprogramma's**uit, selecteer **prestatie meter**en selecteer vervolgens **toevoegen**.
 3. Vouw in het dialoog venster **items toevoegen** vanuit de lijst **beschik bare items** de sectie uit voor RemoteFX-afbeeldingen.
 4. Selecteer de prestatie meter items die moeten worden bewaakt.

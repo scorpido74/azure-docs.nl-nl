@@ -7,19 +7,18 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: 631b8ef83d5fbf10ec401df7432b23238f2ae2e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969168"
 ---
 # <a name="use-cloud-init-to-set-hostname-for-a-linux-vm-in-azure"></a>Cloud-init gebruiken om de hostnaam in te stellen voor een virtuele Linux-machine in azure
 Dit artikel laat u zien hoe u [Cloud-init](https://cloudinit.readthedocs.io) kunt gebruiken voor het configureren van een specifieke hostnaam op een virtuele machine (VM) of virtuele-machine schaal sets (VMSS) bij het inrichten van de tijd in Azure. Deze Cloud-init-scripts worden uitgevoerd bij de eerste keer opstarten zodra de resources zijn ingericht door Azure. Zie [Cloud-init Overview](using-cloud-init.md) (Engelstalig) voor meer informatie over hoe Cloud-init standaard werkt in Azure en de ondersteunde Linux-distributies
 
 ## <a name="set-the-hostname-with-cloud-init"></a>De hostnaam instellen met Cloud-init
-De hostnaam is standaard hetzelfde als de VM-naam wanneer u een nieuwe virtuele machine in azure maakt.  Als u een Cloud-init-script wilt uitvoeren om deze standaard-hostnaam te wijzigen wanneer u een virtuele machine in azure maakt met [AZ VM Create](/cli/azure/vm), geeft u `--custom-data` het bestand Cloud-init op met de switch.  
+De hostnaam is standaard hetzelfde als de VM-naam wanneer u een nieuwe virtuele machine in azure maakt.  Als u een Cloud-init-script wilt uitvoeren om deze standaard-hostnaam te wijzigen wanneer u een virtuele machine in azure maakt met [AZ VM Create](/cli/azure/vm), geeft u het bestand Cloud-init op met de `--custom-data` Switch.  
 
-Als u het upgrade proces in actie wilt zien, maakt u een bestand in uw huidige shell met de naam *cloud_init_hostname. txt* en plakt u de volgende configuratie. In dit voor beeld maakt u het bestand in het Cloud Shell niet op uw lokale computer. U kunt elke editor die u wilt gebruiken. Voer `sensible-editor cloud_init_hostname.txt` in voor het maken van het bestand en om een overzicht van beschikbare editors te zien. Kies #1 om de **nano** -editor te gebruiken. Zorg ervoor dat het hele Cloud-init-bestand correct wordt gekopieerd, met name de eerste regel.  
+Als u het upgrade proces in actie wilt zien, maakt u een bestand in uw huidige shell met de naam *cloud_init_hostname.txt* en plakt u de volgende configuratie. In dit voor beeld maakt u het bestand in het Cloud Shell niet op uw lokale computer. U kunt elke editor die u wilt gebruiken. Voer `sensible-editor cloud_init_hostname.txt` in voor het maken van het bestand en om een overzicht van beschikbare editors te zien. Kies #1 om de **nano** -editor te gebruiken. Zorg ervoor dat het hele Cloud-init-bestand correct wordt gekopieerd, met name de eerste regel.  
 
 ```yaml
 #cloud-config
@@ -32,7 +31,7 @@ Voordat u deze installatie kopie implementeert, moet u een resource groep maken 
 az group create --name myResourceGroup --location eastus
 ```
 
-Maak nu een virtuele machine met [AZ VM Create](/cli/azure/vm) en geef het bestand Cloud-init op `--custom-data cloud_init_hostname.txt` met de volgende opties:
+Maak nu een virtuele machine met [AZ VM Create](/cli/azure/vm) en geef het bestand Cloud-init op met de `--custom-data cloud_init_hostname.txt` volgende opties:
 
 ```azurecli-interactive 
 az vm create \
@@ -49,7 +48,7 @@ Als de Azure CLI eenmaal is gemaakt, wordt de informatie over de virtuele machin
 ssh <publicIpAddress>
 ```
 
-Als u de naam van de virtuele machine `hostname` wilt zien, gebruikt u de opdracht als volgt:
+Als u de naam van de virtuele machine wilt zien, gebruikt u de `hostname` opdracht als volgt:
 
 ```bash
 hostname

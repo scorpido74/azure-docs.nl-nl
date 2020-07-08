@@ -13,15 +13,14 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b6a60536bae6fbedf01eda7aa340e90ced58e004
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79281598"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Gegevens kopiëren van en naar Data Lake Storage Gen1 met behulp van Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-azure-datalake-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](data-factory-azure-datalake-connector.md)
 > * [Versie 2 (huidige versie)](../connector-azure-data-lake-store.md)
 
 > [!NOTE]
@@ -71,8 +70,8 @@ Een gekoppelde service koppelt een gegevens archief aan een data factory. U maak
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| **voert** | De eigenschap type moet worden ingesteld op **AzureDataLakeStore**. | Ja |
-| **dataLakeStoreUri** | Informatie over het Azure Data Lake Store-account. Deze informatie heeft een van de volgende indelingen: `https://[accountname].azuredatalakestore.net/webhdfs/v1` of `adl://[accountname].azuredatalakestore.net/`. | Ja |
+| **type** | De eigenschap type moet worden ingesteld op **AzureDataLakeStore**. | Yes |
+| **dataLakeStoreUri** | Informatie over het Azure Data Lake Store-account. Deze informatie heeft een van de volgende indelingen: `https://[accountname].azuredatalakestore.net/webhdfs/v1` of `adl://[accountname].azuredatalakestore.net/` . | Yes |
 | **Abonnements** | De Azure-abonnements-ID waartoe het Data Lake Store-account behoort. | Vereist voor Sink |
 | **resourceGroupName** | De naam van de Azure-resource groep waartoe het Data Lake Store-account behoort. | Vereist voor Sink |
 
@@ -92,9 +91,9 @@ Gebruik Service-Principal-verificatie door de volgende eigenschappen op te geven
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Geef de client-ID van de toepassing op. | Ja |
-| **servicePrincipalKey** | Geef de sleutel van de toepassing op. | Ja |
-| **bouw** | Geef de Tenant gegevens op (domein naam of Tenant-ID) waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Ja |
+| **servicePrincipalId** | Geef de client-ID van de toepassing op. | Yes |
+| **servicePrincipalKey** | Geef de sleutel van de toepassing op. | Yes |
+| **tenant** | Geef de Tenant gegevens op (domein naam of Tenant-ID) waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Yes |
 
 **Voor beeld: Service-Principal-verificatie**
 ```json
@@ -119,8 +118,8 @@ U kunt ook verificatie van de gebruikers referenties gebruiken om van of naar Da
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| **autorisatie** | Klik op de knop **machtigen** in de Data Factory editor en voer uw referenties in die de automatisch gegenereerde autorisatie-URL aan deze eigenschap toewijzen. | Ja |
-| **sessionId** | OAuth-sessie-ID van de OAuth-autorisatie sessie. Elke sessie-ID is uniek en kan slechts één keer worden gebruikt. Deze instelling wordt automatisch gegenereerd wanneer u de Data Factory editor gebruikt. | Ja |
+| **autorisatie** | Klik op de knop **machtigen** in de Data Factory editor en voer uw referenties in die de automatisch gegenereerde autorisatie-URL aan deze eigenschap toewijzen. | Yes |
+| **sessionId** | OAuth-sessie-ID van de OAuth-autorisatie sessie. Elke sessie-ID is uniek en kan slechts één keer worden gebruikt. Deze instelling wordt automatisch gegenereerd wanneer u de Data Factory editor gebruikt. | Yes |
 
 > [!IMPORTANT]
 > Zorg ervoor dat u de gebruiker de juiste machtigingen verleent in Azure Data Lake Store:
@@ -154,7 +153,7 @@ In de volgende tabel ziet u de verval tijden van verschillende soorten gebruiker
 
 | Gebruikers type | Verloopt na |
 |:--- |:--- |
-| Gebruikers accounts die *niet* worden @hotmail.com beheerd door Azure Active Directory (bijvoorbeeld of @live.com) |12 uur |
+| Gebruikers accounts die *niet* worden beheerd door Azure Active Directory (bijvoorbeeld @hotmail.com of @live.com ) |12 uur |
 | Gebruikers accounts die worden beheerd door Azure Active Directory |14 dagen na de laatste uitvoering van het segment <br/><br/>90 dagen, als een segment op basis van een op OAuth gebaseerde gekoppelde service ten minste één keer per 14 dagen wordt uitgevoerd |
 
 Als u uw wacht woord vóór de verloop tijd van het token wijzigt, verloopt het token direct. Het bericht dat eerder in deze sectie wordt vermeld, wordt weer gegeven.
@@ -186,7 +185,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
     }
 }
 ```
-Zie de onderwerpen [AzureDataLakeStoreLinkedService class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)en [AuthorizationSessionGetResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) voor meer informatie over de Data Factory klassen die in de code worden gebruikt. Voeg een verwijzing toe naar `2.9.10826.1824` versie `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll` van voor `WindowsFormsWebAuthenticationDialog` de klasse die in de code wordt gebruikt.
+Zie de onderwerpen [AzureDataLakeStoreLinkedService class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)en [AuthorizationSessionGetResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) voor meer informatie over de Data Factory klassen die in de code worden gebruikt. Voeg een verwijzing toe naar versie `2.9.10826.1824` van `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll` voor de `WindowsFormsWebAuthenticationDialog` klasse die in de code wordt gebruikt.
 
 ## <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
 
@@ -201,9 +200,9 @@ Zie de onderwerpen [AzureDataLakeStoreLinkedService class](https://msdn.microsof
 1. De `resourceGroupName` en/of `subscriptionId` opgegeven in azure data Lake Store gekoppelde service is onjuist.
 2. De gebruiker of de Service-Principal beschikt niet over de benodigde machtiging.
 
-**Opgelost**
+**Oplossing:**
 
-1. Zorg ervoor dat `subscriptionId` de `resourceGroupName` en die u in de gekoppelde `typeProperties` service opgeeft, inderdaad degene is van wie uw data Lake-account deel uitmaakt.
+1. Zorg ervoor dat de `subscriptionId` en `resourceGroupName` die u in de gekoppelde service opgeeft `typeProperties` , inderdaad degene is van wie uw data Lake-account deel uitmaakt.
 
 2. Zorg ervoor dat u ten minste de rol van **lezer** toewijst aan de gebruiker of Service-Principal op het data Lake-account. Hier kunt u het volgende doen:
 
@@ -238,17 +237,17 @@ De sectie **typeProperties** voor een gegevensset van het type **AzureDataLakeSt
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| **folderPath** |Het pad naar de container en de map in Data Lake Store. |Ja |
-| **fileName** |De naam van het bestand in Azure Data Lake Store. De eigenschap **filename** is optioneel en hoofdletter gevoelig. <br/><br/>Als u **filename**opgeeft, werkt de activiteit (inclusief kopie) voor het specifieke bestand.<br/><br/>Als er geen **Bestands naam** is opgegeven, kopiëren bevat alle bestanden in **FolderPath** in de invoer gegevensset.<br/><br/>Als er geen **Bestands naam** is opgegeven voor een uitvoer-gegevensset en **preserveHierarchy** niet is opgegeven in de activiteit sink, heeft de naam van het gegenereerde bestand in de indeling `Data._Guid_.txt`. Bijvoorbeeld: data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a. txt. |Nee |
-| **partitionedBy** |De eigenschap **partitionedBy** is optioneel. U kunt deze gebruiken om een dynamisch pad en een bestands naam op te geven voor gegevens van de tijd reeks. Zo kan **FolderPath** voor elk uur aan gegevens worden para meters. Zie de eigenschap partitionedBy voor meer informatie en voor beelden. |Nee |
-| **Formatteer** | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**en **ParquetFormat**. Stel de eigenschap **type** onder **indeling** in op een van deze waarden. Zie de secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON](data-factory-supported-file-and-compression-formats.md#json-format)-indeling, [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en [Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) -indeling in de [Bestands-en compressie-indelingen die worden ondersteund door Azure Data Factory](data-factory-supported-file-and-compression-formats.md) artikel voor meer informatie. <br><br> Als u bestanden "as-is" wilt kopiëren tussen archieven op basis van bestanden (binaire kopie), slaat u `format` de sectie in de gegevensset voor invoer en uitvoer. |Nee |
-| **compressie** | Geef het type en compressie niveau voor de gegevens op. Ondersteunde typen zijn **gzip**, **Deflate**, **bzip2**en **ZipDeflate**. Ondersteunde niveaus zijn **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen die worden ondersteund door Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
+| **folderPath** |Het pad naar de container en de map in Data Lake Store. |Yes |
+| **fileName** |De naam van het bestand in Azure Data Lake Store. De eigenschap **filename** is optioneel en hoofdletter gevoelig. <br/><br/>Als u **filename**opgeeft, werkt de activiteit (inclusief kopie) voor het specifieke bestand.<br/><br/>Als er geen **Bestands naam** is opgegeven, kopiëren bevat alle bestanden in **FolderPath** in de invoer gegevensset.<br/><br/>Als er geen **Bestands naam** is opgegeven voor een uitvoer-gegevensset en **preserveHierarchy** niet is opgegeven in de activiteit sink, heeft de naam van het gegenereerde bestand in de indeling `Data._Guid_.txt` . Bijvoorbeeld: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |No |
+| **partitionedBy** |De eigenschap **partitionedBy** is optioneel. U kunt deze gebruiken om een dynamisch pad en een bestands naam op te geven voor gegevens van de tijd reeks. Zo kan **FolderPath** voor elk uur aan gegevens worden para meters. Zie de eigenschap partitionedBy voor meer informatie en voor beelden. |No |
+| **Formatteer** | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**en **ParquetFormat**. Stel de eigenschap **type** onder **indeling** in op een van deze waarden. Zie de secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON](data-factory-supported-file-and-compression-formats.md#json-format)-indeling, [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en [Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) -indeling in de [Bestands-en compressie-indelingen die worden ondersteund door Azure Data Factory](data-factory-supported-file-and-compression-formats.md) artikel voor meer informatie. <br><br> Als u bestanden "as-is" wilt kopiëren tussen archieven op basis van bestanden (binaire kopie), slaat u de `format` sectie in de gegevensset voor invoer en uitvoer. |No |
+| **compressie** | Geef het type en compressie niveau voor de gegevens op. Ondersteunde typen zijn **gzip**, **Deflate**, **bzip2**en **ZipDeflate**. Ondersteunde niveaus zijn **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen die worden ondersteund door Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |No |
 
 ### <a name="the-partitionedby-property"></a>De eigenschap partitionedBy
 U kunt dynamische **FolderPath** -en **filename** -eigenschappen opgeven voor gegevens van de tijd reeks met de eigenschap **partitionedBy** , Data Factory functies en systeem variabelen. Zie het artikel [Azure Data Factory-functies en systeem variabelen](data-factory-functions-variables.md) voor meer informatie.
 
 
-In het volgende voor beeld `{Slice}` wordt vervangen door de waarde van de variabele `SliceStart` Data Factory systeem in de opgegeven notatie (`yyyyMMddHH`). De naam `SliceStart` verwijst naar de begin tijd van het segment. De `folderPath` eigenschap wijkt af van elk segment, zoals in `wikidatagateway/wikisampledataout/2014100103` of `wikidatagateway/wikisampledataout/2014100104`.
+In het volgende voor beeld `{Slice}` wordt vervangen door de waarde van de variabele Data Factory systeem `SliceStart` in de opgegeven notatie ( `yyyyMMddHH` ). De naam `SliceStart` verwijst naar de begin tijd van het segment. De `folderPath` eigenschap wijkt af van elk segment, zoals in `wikidatagateway/wikisampledataout/2014100103` of `wikidatagateway/wikisampledataout/2014100104` .
 
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Slice}",
@@ -258,7 +257,7 @@ In het volgende voor beeld `{Slice}` wordt vervangen door de waarde van de varia
 ],
 ```
 
-In het volgende voor beeld `SliceStart` worden het jaar, de maand, de dag en het tijdstip geëxtraheerd in afzonderlijke variabelen die worden gebruikt door de `folderPath` eigenschappen `fileName` en:
+In het volgende voor beeld worden het jaar, de maand, de dag en het tijdstip `SliceStart` geëxtraheerd in afzonderlijke variabelen die worden gebruikt door de `folderPath` `fileName` Eigenschappen en:
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
 "fileName": "{Hour}.csv",
@@ -282,22 +281,22 @@ De eigenschappen die beschikbaar zijn in de sectie **typeProperties** van een ac
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| **recursieve** |Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. |True (standaard waarde), False |Nee |
+| **recursieve** |Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. |True (standaard waarde), False |No |
 
 **AzureDataLakeStoreSink** ondersteunt de volgende eigenschappen in de sectie **typeProperties** :
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| **copyBehavior** |Hiermee geeft u het Kopieer gedrag op. |<b>PreserveHierarchy</b>: behoudt de bestands hiërarchie in de doelmap. Het relatieve pad van het bron bestand naar de bronmap is identiek aan het relatieve pad van het doel bestand naar de doelmap.<br/><br/><b>FlattenHierarchy</b>: alle bestanden in de bronmap worden gemaakt op het eerste niveau van de doelmap. De doel bestanden worden gemaakt met automatisch gegenereerde namen.<br/><br/><b>MergeFiles</b>: alle bestanden van de bronmap worden samengevoegd met één bestand. Als de naam van het bestand of de blob is opgegeven, is de naam van het samengevoegde bestand de opgegeven naam. Anders wordt de bestands naam automatisch gegenereerd. |Nee |
+| **copyBehavior** |Hiermee geeft u het Kopieer gedrag op. |<b>PreserveHierarchy</b>: behoudt de bestands hiërarchie in de doelmap. Het relatieve pad van het bron bestand naar de bronmap is identiek aan het relatieve pad van het doel bestand naar de doelmap.<br/><br/><b>FlattenHierarchy</b>: alle bestanden in de bronmap worden gemaakt op het eerste niveau van de doelmap. De doel bestanden worden gemaakt met automatisch gegenereerde namen.<br/><br/><b>MergeFiles</b>: alle bestanden van de bronmap worden samengevoegd met één bestand. Als de naam van het bestand of de blob is opgegeven, is de naam van het samengevoegde bestand de opgegeven naam. Anders wordt de bestands naam automatisch gegenereerd. |No |
 
 ### <a name="recursive-and-copybehavior-examples"></a>recursieve en copyBehavior-voor beelden
 In deze sectie wordt het resulterende gedrag van de Kopieer bewerking voor verschillende combi Naties van recursieve en copyBehavior waarden beschreven.
 
 | recursieve | copyBehavior | Resulterend gedrag |
 | --- | --- | --- |
-| waar |preserveHierarchy |Voor een bronmap Map1 met de volgende structuur: <br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doelmap Map1 wordt gemaakt met dezelfde structuur als de bron<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
-| waar |flattenHierarchy |Voor een bronmap Map1 met de volgende structuur: <br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doel-Map1 is gemaakt met de volgende structuur: <br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor File5 |
-| waar |mergeFiles |Voor een bronmap Map1 met de volgende structuur: <br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doel-Map1 is gemaakt met de volgende structuur: <br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1 + Bestand2 + File3 + File4 + inhoud van bestand 5 worden samengevoegd in één bestand met automatisch gegenereerde bestands naam |
+| true |preserveHierarchy |Voor een bronmap Map1 met de volgende structuur: <br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doelmap Map1 wordt gemaakt met dezelfde structuur als de bron<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
+| true |flattenHierarchy |Voor een bronmap Map1 met de volgende structuur: <br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doel-Map1 is gemaakt met de volgende structuur: <br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor File5 |
+| true |mergeFiles |Voor een bronmap Map1 met de volgende structuur: <br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doel-Map1 is gemaakt met de volgende structuur: <br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1 + Bestand2 + File3 + File4 + inhoud van bestand 5 worden samengevoegd in één bestand met automatisch gegenereerde bestands naam |
 | false |preserveHierarchy |Voor een bronmap Map1 met de volgende structuur: <br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doelmap Map1 is gemaakt met de volgende structuur<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/><br/><br/>Subfolder1 met File3, File4 en File5 worden niet opgehaald. |
 | false |flattenHierarchy |Voor een bronmap Map1 met de volgende structuur:<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doelmap Map1 is gemaakt met de volgende structuur<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor Bestand2<br/><br/><br/>Subfolder1 met File3, File4 en File5 worden niet opgehaald. |
 | false |mergeFiles |Voor een bronmap Map1 met de volgende structuur:<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doelmap Map1 is gemaakt met de volgende structuur<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;De inhoud van bestand1 + Bestand2 wordt samengevoegd met een bestand met een automatisch gegenereerde bestands naam. automatisch gegenereerde naam voor bestand1<br/><br/>Subfolder1 met File3, File4 en File5 worden niet opgehaald. |
@@ -319,7 +318,7 @@ In de voorbeeld code in deze sectie ziet u het volgende:
 
 In de voor beelden ziet u hoe de gegevens van de tijd reeks van Azure Blob Storage worden gekopieerd naar Data Lake Store elk uur.
 
-**Azure Storage gekoppelde service**
+**Een gekoppelde Azure Storage-service**
 
 ```JSON
 {
@@ -356,9 +355,9 @@ In de voor beelden ziet u hoe de gegevens van de tijd reeks van Azure Blob Stora
 > Zie de sectie eigenschappen van de [gekoppelde service](#linked-service-properties) voor meer informatie over de configuratie.
 >
 
-**Azure Blob-invoergegevensset**
+**Invoer gegevensset voor Azure Blob**
 
-In het volgende voor beeld worden gegevens elk uur opgehaald uit een nieuwe BLOB (`"frequency": "Hour", "interval": 1`). Het mappad en de bestands naam voor de BLOB worden dynamisch geëvalueerd op basis van de begin tijd van het segment dat wordt verwerkt. Het mappad gebruikt het deel van het jaar, de maand en de dag van de begin tijd. De bestands naam gebruikt het uur gedeelte van de begin tijd. De `"external": true` instelling informeert de Data Factory-service dat de tabel extern is voor de Data Factory en wordt niet geproduceerd door een activiteit in de Data Factory.
+In het volgende voor beeld worden gegevens elk uur opgehaald uit een nieuwe BLOB ( `"frequency": "Hour", "interval": 1` ). Het mappad en de bestands naam voor de BLOB worden dynamisch geëvalueerd op basis van de begin tijd van het segment dat wordt verwerkt. Het mappad gebruikt het deel van het jaar, de maand en de dag van de begin tijd. De bestands naam gebruikt het uur gedeelte van de begin tijd. De `"external": true` instelling informeert de Data Factory-service dat de tabel extern is voor de Data Factory en wordt niet geproduceerd door een activiteit in de Data Factory.
 
 ```JSON
 {
@@ -442,7 +441,7 @@ In het volgende voor beeld worden gegevens gekopieerd naar Data Lake Store. Nieu
 
 **Kopieer activiteit in een pijp lijn met een BLOB-bron en een Data Lake Store-Sink**
 
-In het volgende voor beeld bevat de pijp lijn een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets. De Kopieer activiteit is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp `source` lijn is het type `BlobSource`ingesteld op en `sink` het type is ingesteld `AzureDataLakeStoreSink`op.
+In het volgende voor beeld bevat de pijp lijn een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets. De Kopieer activiteit is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn `source` is het type ingesteld op `BlobSource` en het `sink` type is ingesteld op `AzureDataLakeStoreSink` .
 
 ```json
 {
@@ -524,7 +523,7 @@ De code kopieert elk uur gegevens van de tijd reeks van Data Lake Store naar een
 > Zie de sectie eigenschappen van de [gekoppelde service](#linked-service-properties) voor meer informatie over de configuratie.
 >
 
-**Azure Storage gekoppelde service**
+**Een gekoppelde Azure Storage-service**
 
 ```JSON
 {
@@ -539,7 +538,7 @@ De code kopieert elk uur gegevens van de tijd reeks van Data Lake Store naar een
 ```
 **Invoer gegevensset Azure Data Lake**
 
-In dit voor beeld informeert de Data Factory- `"external"` `true` service dat de tabel zich buiten het Data Factory bevindt en niet wordt geproduceerd door een activiteit in de Data Factory.
+In dit voor beeld `"external"` `true` informeert de Data Factory-service dat de tabel zich buiten het Data Factory bevindt en niet wordt geproduceerd door een activiteit in de Data Factory.
 
 ```json
 {
@@ -574,7 +573,7 @@ In dit voor beeld informeert de Data Factory- `"external"` `true` service dat de
 ```
 **Azure Blob-uitvoer gegevensset**
 
-In het volgende voor beeld worden elk uur (`"frequency": "Hour", "interval": 1`) gegevens naar een nieuwe BLOB geschreven. Het mappad voor de BLOB wordt dynamisch geëvalueerd op basis van de begin tijd van het segment dat wordt verwerkt. Het mappad maakt gebruik van het gedeelte jaar, maand, dag en uur van de begin tijd.
+In het volgende voor beeld worden elk uur () gegevens naar een nieuwe BLOB geschreven `"frequency": "Hour", "interval": 1` . Het mappad voor de BLOB wordt dynamisch geëvalueerd op basis van de begin tijd van het segment dat wordt verwerkt. Het mappad maakt gebruik van het gedeelte jaar, maand, dag en uur van de begin tijd.
 
 ```JSON
 {
@@ -634,7 +633,7 @@ In het volgende voor beeld worden elk uur (`"frequency": "Hour", "interval": 1`)
 
 **Een Kopieer activiteit in een pijp lijn met een Azure Data Lake Store bron en een BLOB-Sink**
 
-In het volgende voor beeld bevat de pijp lijn een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets. De Kopieer activiteit is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp `source` lijn is het type `AzureDataLakeStoreSource`ingesteld op en `sink` het type is ingesteld `BlobSink`op.
+In het volgende voor beeld bevat de pijp lijn een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets. De Kopieer activiteit is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn `source` is het type ingesteld op `AzureDataLakeStoreSource` en het `sink` type is ingesteld op `BlobSink` .
 
 ```json
 {

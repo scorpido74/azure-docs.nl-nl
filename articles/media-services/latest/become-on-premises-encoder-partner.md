@@ -9,10 +9,9 @@ ms.date: 03/02/2020
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: f98d9942f8c30f06b0144503b056c1e8a393ae52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79298628"
 ---
 # <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>Uw on-premises live streaming encoder controleren
@@ -65,9 +64,9 @@ Volg dezelfde stappen als in [Pass-through live-gebeurtenis verificatie](#pass-t
 
 ## <a name="email-your-recorded-settings"></a>Uw vastgelegde instellingen per e-mail verzenden
 
-Als laatste moet u de vastgelegde instellingen en de para meters amshelp@microsoft.com van uw Live-Archief per e-mail verzenden naar Azure Media Services als een melding dat alle verificatie controles zelf zijn geslaagd. Neem ook uw contact gegevens op voor elke follow-up. U kunt contact opnemen met het Azure Media Services team met vragen over dit proces.
+Als laatste moet u de vastgelegde instellingen en de para meters van uw Live-Archief per e-mail verzenden naar Azure Media Services amshelp@microsoft.com als een melding dat alle verificatie controles zelf zijn geslaagd. Neem ook uw contact gegevens op voor elke follow-up. U kunt contact opnemen met het Azure Media Services team met vragen over dit proces.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 [Geteste on-premises encoders](recommended-on-premises-live-encoders.md)
 

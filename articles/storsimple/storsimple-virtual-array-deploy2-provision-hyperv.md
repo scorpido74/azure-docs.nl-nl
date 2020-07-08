@@ -16,10 +16,9 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9d3f4f4ab6cc1c928761fce740d39f3f73426e62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79267532"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>StorSimple Virtual array implementeren-inrichten in Hyper-V
@@ -31,7 +30,7 @@ ms.locfileid: "79267532"
 
 In deze zelf studie wordt beschreven hoe u een virtuele StorSimple-matrix kunt inrichten op een hostsysteem waarop Hyper-V wordt uitgevoerd op Windows Server 2012 R2, Windows Server 2012 of Windows Server 2008 R2. Dit artikel is van toepassing op de implementatie van StorSimple virtuele arrays in Azure Portal en Microsoft Azure Government Cloud.
 
-U hebt beheerders bevoegdheden nodig om een virtuele matrix in te richten en te configureren. De inrichting en de initiële installatie kan ongeveer tien minuten duren.
+U hebt beheerders bevoegdheden nodig om een virtuele matrix in te richten en te configureren. De inrichting en de initiële installatie kan circa tien minuten duren.
 
 ## <a name="provisioning-prerequisites"></a>Vereisten inrichten
 Hier vindt u de vereisten voor het inrichten van een virtuele matrix op een hostsysteem waarop Hyper-V wordt uitgevoerd op Windows Server 2012 R2, Windows Server 2012 of Windows Server 2008 R2.
@@ -87,7 +86,7 @@ Zorg ervoor dat de onderliggende hardware (hostsysteem) waarop u de virtuele mat
 Voer de volgende stappen uit om een apparaat in de hypervisor in te richten.
 
 #### <a name="to-provision-a-virtual-array"></a>Een virtuele matrix inrichten
-1. Kopieer de installatie kopie van de virtuele matrix op de Windows Server-host naar een lokaal station. U hebt deze installatie kopie (VHD of VHDX) gedownload via de Azure Portal. Noteer de locatie waar u de installatiekopie naar hebt gekopieerd, want u gaat deze installatiekopie verderop in de procedure gebruiken.
+1. Kopieer de installatie kopie van de virtuele matrix op de Windows Server-host naar een lokaal station. U hebt deze installatie kopie (VHD of VHDX) gedownload via de Azure Portal. Noteer de locatie waar u de installatiekopie naartoe hebt gekopieerd, want u hebt deze installatiekopie verderop in de procedure nodig.
 2. Open **Serverbeheer**. Klik in de rechterbovenhoek op **Hulpprogramma's** en selecteer **Hyper-V-beheer**.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image1.png)  
@@ -163,7 +162,7 @@ Voer de volgende stappen uit om uw virtuele matrix te starten en er verbinding m
 2. Wanneer het apparaat is gestart, selecteert u het apparaat, klikt u met de rechtermuisknop en selecteert u **Verbinding maken**.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image22.png)
-3. Mogelijk moet u 5-10 minuten wachten totdat het apparaat klaar is. Er wordt een statusbericht op de console weergegeven om de voortgang aan te geven. Wanneer het apparaat gereed is, gaat u naar **Actie**. Druk `Ctrl + Alt + Delete` op om u aan te melden bij de virtuele matrix. De standaard gebruiker is *StorSimpleAdmin* en het standaard wachtwoord is *Wachtwoord1*.
+3. Mogelijk moet u 5-10 minuten wachten totdat het apparaat klaar is. Er wordt een statusbericht op de console weergegeven om de voortgang aan te geven. Wanneer het apparaat gereed is, gaat u naar **Actie**. Druk op om u aan `Ctrl + Alt + Delete` te melden bij de virtuele matrix. De standaard gebruiker is *StorSimpleAdmin* en het standaard wachtwoord is *Wachtwoord1*.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image23.png)
 4. Uit veiligheidsoverwegingen verloopt het beheerderswachtwoord voor het apparaat na de eerste aanmelding. U wordt gevraagd om het wachtwoord te wijzigen.
@@ -193,7 +192,7 @@ Voer de volgende stappen uit om uw virtuele matrix te starten en er verbinding m
     `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image30.png)
-9. Nadat de initiële installatie voltooid is en het apparaat is opgestart, ziet u de bannertekst van het apparaat. Noteer het IP-adres en de URL die wordt weergegeven in de bannertekst om het apparaat te beheren. Gebruik dit IP-adres om verbinding te maken met de Web-UI van uw virtuele matrix en de lokale installatie en registratie te volt ooien.
+9. Wanneer de initiële installatie is voltooid en het apparaat is opgestart, ziet u de bannertekst van het apparaat. Noteer het IP-adres en de URL die in de bannertekst worden weergegeven om het apparaat te beheren. Gebruik dit IP-adres om verbinding te maken met de Web-UI van uw virtuele matrix en de lokale installatie en registratie te volt ooien.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image31m.png)
 10. Beschrijving Voer deze stap alleen uit als u uw apparaat in de Government Cloud implementeert. U schakelt nu de FIPS-modus (Verenigde Staten Federal Information Processing Standard) op het apparaat in. De FIPS 140-standaard definieert cryptografische algoritmen die zijn goedgekeurd voor gebruik door Amerikaanse Federal Government-computer systemen voor de beveiliging van gevoelige gegevens.
@@ -208,14 +207,14 @@ Voer de volgende stappen uit om uw virtuele matrix te starten en er verbinding m
        >
        >
 
-Als uw apparaat niet voldoet aan de minimale configuratie vereisten, ziet u de volgende fout code in de banner tekst (zie hieronder). Wijzig de apparaatconfiguratie zo dat de virtuele machine voldoende resources heeft om aan de minimale vereisten te voldoen. U kunt het apparaat vervolgens opnieuw opstarten en er verbinding mee maken. Raadpleeg de minimale configuratie vereisten in stap 1: Zorg ervoor dat het hostsysteem voldoet aan de minimale vereisten voor virtuele matrix.
+Als uw apparaat niet voldoet aan de minimale configuratie vereisten, ziet u de volgende fout code in de banner tekst (zie hieronder). Wijzig de apparaatconfiguratie zo dat de virtuele machine voldoende resources heeft om aan de minimale vereisten te voldoen. Daarna kunt u het apparaat opnieuw opstarten en verbinding maken met het apparaat. Raadpleeg de minimale configuratie vereisten in stap 1: Zorg ervoor dat het hostsysteem voldoet aan de minimale vereisten voor virtuele matrix.
 
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image32.png)
 
-Als u tijdens de eerste configuratie een andere fout ondervindt met de lokale webgebruikersinterface, raadpleegt u de volgende werk stromen:
+Als er tijdens de eerste configuratie een andere fout optreedt bij gebruik van de lokale webgebruikersinterface, raadpleegt u de volgende werkstromen:
 
 * Diagnostische tests uitvoeren voor het [oplossen van problemen met de Web-UI-installatie](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors).
-* Een [logboek bestand genereren en logboek bestanden weer geven](storsimple-ova-web-ui-admin.md#generate-a-log-package).
+* [Logboekpakket genereren en logboekbestanden weergeven](storsimple-ova-web-ui-admin.md#generate-a-log-package).
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Stel uw virtuele StorSimple-matrix in als een bestands server](storsimple-virtual-array-deploy3-fs-setup.md)

@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 052223f69fc1c1d59ec5f1bcbeb3746ef7122c86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79087058"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Zelf studie: RingCentral configureren voor automatische gebruikers inrichting
@@ -43,7 +42,7 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 * [Een RingCentral-Tenant](https://www.ringcentral.com/office/plansandpricing.html)
 * Een gebruikers account in RingCentral met beheerders machtigingen.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>Step 1. Uw inrichtings implementatie plannen
+## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Uw inrichtings implementatie plannen
 1. Meer informatie over [de werking van de inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 2. Bepaal wie binnen het [bereik van de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)valt.
 3. Bepaal welke gegevens moeten worden [toegewezen tussen Azure AD en RingCentral](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
@@ -58,7 +57,7 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 
     ![SCIM RingCentral toevoegen](media/ringcentral-provisioning-tutorial/scim.png)
 
-3.  Neem contact op met het matthew.hunt@ringcentral.com ondersteunings team van RingCentral op een **scim-verificatie token**. Deze waarde wordt ingevoerd in het veld geheime token op het tabblad inrichten van uw RingCentral-toepassing in de Azure Portal.
+3.  Neem contact op met het ondersteunings team van RingCentral op matthew.hunt@ringcentral.com een **scim-verificatie token**. Deze waarde wordt ingevoerd in het veld geheime token op het tabblad inrichten van uw RingCentral-toepassing in de Azure Portal.
 
 > [!NOTE]
 > Om licenties aan gebruikers toe te wijzen, raadpleegt u [de koppeling naar](https://support.ringcentral.com/s/article/5-10-Adding-Extensions-via-Web?language)de video.
@@ -82,7 +81,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-ringcentral-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor RingCentral in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -98,7 +97,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Selecteer in de sectie **beheerders referenties** de `https://platform.ringcentral.com/scim/v2` invoer in de **Tenant-URL**. Voer de waarde voor het **scim-verificatie token** in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met RingCentral. Als de verbinding mislukt, zorg er dan voor dat uw RingCentral-account beheerders machtigingen heeft en probeer het opnieuw.
+5. Selecteer in de sectie **beheerders referenties** de invoer `https://platform.ringcentral.com/scim/v2` in de Tenant- **URL**. Voer de waarde voor het **scim-verificatie token** in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met RingCentral. Als de verbinding mislukt, zorg er dan voor dat uw RingCentral-account beheerders machtigingen heeft en probeer het opnieuw.
 
     ![Tabblad inrichten](./media/ringcentral-provisioning-tutorial/provisioning.png)
 
@@ -116,7 +115,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |---|---|
    |userName|Tekenreeks|
    |externalId|Tekenreeks|
-   |actief|Booleaans|
+   |actief|Boolean-waarde|
    |displayName|Tekenreeks|
    |titel|Tekenreeks|
    |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|
@@ -129,7 +128,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |naam. familielid|Tekenreeks|
    |phoneNumbers [type EQ "Mobile"]. waarde|Tekenreeks|
    |urn: IETF: params: scim: schemas: extension: Enter prise: 2.0: gebruiker: Department|Tekenreeks|
-   |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager|Naslaginformatie|
+   |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager|Verwijzing|
 
 10. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
@@ -157,7 +156,7 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

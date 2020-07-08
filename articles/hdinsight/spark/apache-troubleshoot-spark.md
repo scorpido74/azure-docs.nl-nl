@@ -9,10 +9,9 @@ ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
 ms.openlocfilehash: 80bca2dab1d07d9b99e75e283068bff99335fa18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79271939"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Probleem met Apache Spark oplossen met behulp van Azure HDInsight
@@ -21,17 +20,17 @@ Meer informatie over de belangrijkste problemen en hun oplossingen bij het werke
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-ambari-on-clusters"></a>Hoe kan ik een Apache Spark-toepassing configureren met behulp van Apache Ambari in clusters?
 
-Spark-configuratie waarden kunnen worden afgestemd om een `OutofMemoryError` Apache Spark toepassings uitzondering te voor komen. In de volgende stappen worden standaard waarden voor Spark-configuratie in azure HDInsight weer gegeven:
+Spark-configuratie waarden kunnen worden afgestemd om een Apache Spark toepassings uitzondering te voor komen `OutofMemoryError` . In de volgende stappen worden standaard waarden voor Spark-configuratie in azure HDInsight weer gegeven:
 
 1. Meld u aan bij Ambari `https://CLUSTERNAME.azurehdidnsight.net` met uw cluster referenties. In het eerste scherm wordt een overzichts dashboard weer gegeven. Er zijn geringe cosmetische verschillen tussen HDInsight 3,6 en 4,0.
 
-1. Ga naar **Spark2** > -**configuraties**.
+1. Ga naar **Spark2**-  >  **configuraties**.
 
     ![Selecteer het tabblad Configuratie.](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
 
 1. Selecteer in de lijst met configuraties de **Opties Custom-spark2-defaults**.
 
-1. Zoek naar de waarde-instelling die u moet aanpassen, zoals Spark. uitvoerder **. geheugen**. In dit geval is de waarde van **9728m** te hoog.
+1. Zoek naar de waarde-instelling die u moet aanpassen, zoals **spark.executor. Memory**. In dit geval is de waarde van **9728m** te hoog.
 
     ![Aangepaste Spark-standaard selecteren](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
 
@@ -111,6 +110,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
 * Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

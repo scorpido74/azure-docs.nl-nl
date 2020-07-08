@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
 ms.openlocfilehash: d8309a69c9c38610fa7bea3fee202a60d836980c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78945053"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale op Azure
@@ -73,13 +72,13 @@ Deze architectuur voert de toepassings-, opslag-en gegevens lagen uit op virtuel
 
 -   De DB2-CF maakt gebruik van virtuele machines die zijn geoptimaliseerd voor geheugen, zoals E-Series of L-serie.
 
--   Een gedeeld opslag cluster dat gebruikmaakt van\_Standard\_DS4 v2 virtuele machines waarop Linux wordt uitgevoerd.
+-   Een gedeeld opslag cluster dat gebruikmaakt van Standard \_ DS4 \_ v2 virtuele machines waarop Linux wordt uitgevoerd.
 
--   De Management JumpBox is een standaard\_DS2\_v2-virtuele machine met Linux.  Een alternatief is Azure Bastion, een service die een veilige RDP/SSH-ervaring biedt voor alle virtuele machines in uw virtuele netwerk.
+-   De Management JumpBox is een standaard \_ DS2 \_ v2-virtuele machine met Linux.  Een alternatief is Azure Bastion, een service die een veilige RDP/SSH-ervaring biedt voor alle virtuele machines in uw virtuele netwerk.
 
--   De client is een standaard\_DS3\_v2 virtuele machine met Windows (gebruikt voor het testen).
+-   De client is een standaard \_ DS3 \_ v2 virtuele machine met Windows (gebruikt voor het testen).
 
--   *Optioneel*. Een Witness-server. Dit is alleen nodig voor bepaalde eerdere versies van Db2 pureScale. In dit voor beeld wordt\_een\_standaard DS3 v2-virtuele machine met Linux gebruikt (gebruikt voor de DB2-pureScale).
+-   *Optioneel*. Een Witness-server. Dit is alleen nodig voor bepaalde eerdere versies van Db2 pureScale. In dit voor beeld wordt een standaard \_ DS3 \_ v2-virtuele machine met Linux gebruikt (gebruikt voor de DB2-pureScale).
 
 > [!NOTE]
 > Een DB2 pureScale-cluster vereist ten minste twee DB2-exemplaren. Er is ook een cache-exemplaar en een exemplaar van een vergrendelings Manager vereist.

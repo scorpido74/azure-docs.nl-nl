@@ -6,10 +6,9 @@ ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
 ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79080357"
 ---
 # <a name="encrypt-deployment-data"></a>Implementatiegegevens versleutelen
@@ -55,15 +54,15 @@ Bij de uitvoer van deze opdracht moet u een Service-Principal weer geven die is 
 
 Als u de Service-Principal niet kunt maken, doet u het volgende:
 * Bevestig dat u gemachtigd bent om dit te doen in uw Tenant
-* Controleer of er al een Service-Principal in uw Tenant bestaat voor de implementatie naar ACI. U kunt dit doen door deze `az ad sp show --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9` service-principal uit te voeren en te gebruiken
+* Controleer of er al een Service-Principal in uw Tenant bestaat voor de implementatie naar ACI. U kunt dit doen door `az ad sp show --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9` deze service-principal uit te voeren en te gebruiken
 
-### <a name="create-a-key-vault-resource"></a>Een Key Vault resource maken
+### <a name="create-a-key-vault-resource"></a>Een Key Vault-resource maken
 
 Maak een Azure Key Vault met behulp van [Azure Portal](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault), [cli](https://docs.microsoft.com/azure/key-vault/quick-create-cli)of [Power shell](https://docs.microsoft.com/azure/key-vault/quick-create-powershell). 
 
 Gebruik de volgende richt lijnen voor de eigenschappen van uw sleutel kluis: 
 * Naam: geef een unieke naam op. 
-* Abonnement: kies een abonnement.
+* Abonnement: Kies een abonnement.
 * Onder resource groep kiest u een bestaande resource groep of maakt u een nieuwe en voert u de naam van een resource groep in.
 * Kies een locatie in de vervolgkeuzelijst Locatie.
 * U kunt de standaard waarden van de andere opties wijzigen of kiezen op basis van aanvullende vereisten.
@@ -83,7 +82,7 @@ Maak een nieuw toegangs beleid om de ACI-service toegang tot uw sleutel te geven
 
 * Als uw sleutel is gegenereerd, klikt u op de Blade sleutel kluis resource onder instellingen op **toegangs beleid**.
 * Klik op **toegangs beleid toevoegen**op de pagina toegangs beleid voor uw sleutel kluis.
-* Stel de *sleutel machtigingen* in om sleutel machtigingen voor **Get** en **Unwrap** ![op te geven](./media/container-instances-encrypt-data/set-key-permissions.png)
+* Stel de *sleutel machtigingen* in om sleutel machtigingen voor **Get** en **Unwrap** op te geven ![](./media/container-instances-encrypt-data/set-key-permissions.png)
 * Selecteer voor *Select Principal*de **service Azure container instance**
 * Klik onderaan op **toevoegen** 
 
@@ -97,12 +96,12 @@ Het toegangs beleid wordt nu weer gegeven in het toegangs beleid van uw sleutel 
 > Het versleutelen van implementatie gegevens met een door de klant beheerde sleutel is beschikbaar in de nieuwste API-versie (2019-12-01) die momenteel wordt geïmplementeerd. Geef deze API-versie op in uw implementatie sjabloon. Neem contact op met de ondersteuning van Azure als u problemen ondervindt.
 
 Wanneer de sleutel kluis sleutel en het toegangs beleid zijn ingesteld, voegt u de volgende eigenschappen toe aan uw ACI-implementatie sjabloon. Meer informatie over het implementeren van ACI-resources met een sjabloon in de [zelf studie: een groep met meerdere containers implementeren met behulp van een resource manager-sjabloon](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
-* Stel `resources` `apiVersion` onder in op `2019-12-01`.
-* Voeg onder de sectie eigenschappen van container groep van de implementatie sjabloon een `encryptionProperties`toe, die de volgende waarden bevat:
+* `resources`Stel onder in `apiVersion` op `2019-12-01` .
+* Voeg onder de sectie eigenschappen van container groep van de implementatie sjabloon een toe `encryptionProperties` , die de volgende waarden bevat:
   * `vaultBaseUrl`: de DNS-naam van uw sleutel kluis kunt u vinden op de Blade overzicht van de sleutel kluis bron in de portal
   * `keyName`: de naam van de sleutel die u eerder hebt gegenereerd
   * `keyVersion`: de huidige versie van de sleutel. U kunt dit vinden door te klikken op de sleutel zelf (onder sleutels in de sectie instellingen van uw sleutel kluis resource).
-* Voeg onder de eigenschappen van de container groep `sku` een eigenschap met `Standard`waarde toe. De `sku` eigenschap is vereist in API-versie 2019-12-01.
+* Voeg onder de eigenschappen van de container groep een `sku` eigenschap met waarde toe `Standard` . De `sku` eigenschap is vereist in API-versie 2019-12-01.
 
 In het volgende sjabloon fragment worden de volgende aanvullende eigenschappen weer gegeven voor het versleutelen van implementatie gegevens:
 

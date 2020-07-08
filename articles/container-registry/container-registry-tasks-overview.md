@@ -4,10 +4,9 @@ description: Een inleiding tot ACR-taken, een reeks functies in Azure Container 
 ms.topic: article
 ms.date: 01/22/2020
 ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79087275"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Bouw en onderhoud van container installatie kopieën automatiseren met ACR-taken
@@ -22,7 +21,7 @@ Containers bieden nieuwe niveaus van virtualisatie, het isoleren van afhankelijk
 
 ACR-taken bieden ondersteuning voor verschillende scenario's voor het maken en onderhouden van container installatie kopieën en andere artefacten. Zie de volgende secties in dit artikel voor meer informatie.
 
-* **[Snelle taak](#quick-task)** : bouw en push één container installatie kopie naar een container register op aanvraag in azure, zonder dat hiervoor een lokale docker-engine moet worden geïnstalleerd. Denk `docker build`eens `docker push` in de Cloud.
+* **[Snelle taak](#quick-task)** : bouw en push één container installatie kopie naar een container register op aanvraag in azure, zonder dat hiervoor een lokale docker-engine moet worden geïnstalleerd. Denk `docker build` eens `docker push` in de Cloud.
 * **Automatisch geactiveerde taken** : Schakel een of meer *Triggers* in om een installatie kopie samen te stellen.
   * **[Activeren bij het bijwerken van de bron code](#trigger-task-on-source-code-update)** 
   * **[Activeren bij basis installatie kopie-update](#automate-os-and-framework-patching)** 
@@ -58,8 +57,8 @@ ACR-taken bieden ondersteuning voor de volgende triggers wanneer u een Git-opsla
 
 | Trigger | Standaard ingeschakeld |
 | ------- | ------------------ |
-| Doorvoeren | Ja |
-| Pull-aanvraag | Nee |
+| Doorvoeren | Yes |
+| Pull-aanvraag | No |
 
 Als u een trigger voor het bijwerken van de bron code wilt configureren, moet u de taak een persoonlijk toegangs token (PAT) geven om de webhook in te stellen in de open bare of persoonlijke GitHub of Azure DevOps opslag plaats.
 
@@ -83,7 +82,7 @@ U kunt een taak optioneel plannen door een of meer *Timer triggers* in te stelle
 
 ## <a name="multi-step-tasks"></a>Taken met meerdere stappen
 
-Taken met meerdere stappen bieden taak definitie en uitvoering op basis van een stap voor het bouwen, testen en bijwerken van container installatie kopieën in de Cloud. Taak stappen die in een [yaml-bestand](container-registry-tasks-reference-yaml.md) zijn gedefinieerd, geven afzonderlijke compilatie-en push bewerkingen voor container installatie kopieën of andere artefacten. Ze kunnen ook de uitvoering definiëren van een of meer containers, waarbij elke stap de container als uitvoeringsomgeving gebruikt.
+Taken met meerdere stappen biedt een stapsgewijze taakdefinitie en -uitvoering voor het ontwikkelen, testen en patchen van containerinstallatiekopieën in de cloud. Taak stappen die in een [yaml-bestand](container-registry-tasks-reference-yaml.md) zijn gedefinieerd, geven afzonderlijke compilatie-en push bewerkingen voor container installatie kopieën of andere artefacten. Ze kunnen ook de uitvoering definiëren van een of meer containers, waarbij elke stap de container als uitvoeringsomgeving gebruikt.
 
 U kunt bijvoorbeeld een taak met meerdere stappen maken waarmee het volgende wordt geautomatiseerd:
 
@@ -117,7 +116,7 @@ De volgende tabel bevat enkele voor beelden van ondersteunde context locaties vo
 
 ## <a name="image-platforms"></a>Afbeeldings platforms
 
-Standaard bouwt ACR-taken installatie kopieën voor het Linux-besturings systeem en de amd64-architectuur. Geef het `--platform` label op voor het bouwen van Windows-installatie kopieën of Linux-installatie kopieën voor andere architecturen. Geef het besturings systeem en eventueel een ondersteunde architectuur op in de indeling van het besturings systeem/ `--platform Linux/arm`de architectuur (bijvoorbeeld). Voor ARM-architecturen geeft u optioneel een variant op in de indeling OS/Architecture/variant ( `--platform Linux/arm64/v8`bijvoorbeeld):
+Standaard bouwt ACR-taken installatie kopieën voor het Linux-besturings systeem en de amd64-architectuur. Geef het `--platform` label op voor het bouwen van Windows-installatie kopieën of Linux-installatie kopieën voor andere architecturen. Geef het besturings systeem en eventueel een ondersteunde architectuur op in de indeling van het besturings systeem/de architectuur (bijvoorbeeld `--platform Linux/arm` ). Voor ARM-architecturen geeft u optioneel een variant op in de indeling OS/Architecture/variant (bijvoorbeeld `--platform Linux/arm64/v8` ):
 
 | OS | Architectuur|
 | --- | ------- | 
@@ -134,7 +133,7 @@ Meer informatie over het [weer geven en beheren van taak logboeken](container-re
 
 Als u klaar bent voor het automatiseren van container installatie kopieën en onderhoud in de Cloud, raadpleegt u de [reeks zelf](container-registry-tutorial-quick-task.md)studies over ACR-taken.
 
-Installeer eventueel de [docker-extensie voor Visual Studio code](https://code.visualstudio.com/docs/azure/docker) en de [Azure-account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) extensie om met uw Azure-container registers te werken. Pull-en push-installatie kopieën naar een Azure container Registry, of voer ACR-taken uit, allemaal in Visual Studio code.
+Installeer eventueel de [Docker-extensie voor Visual Studio-code](https://code.visualstudio.com/docs/azure/docker) en de [Azure-account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)extensie om te werken met uw Azure-containerregisters. Pull en push installatiekopieën naar een Azure-containerregister of voer ACR-taken uit, allemaal in Visual Studio-code.
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

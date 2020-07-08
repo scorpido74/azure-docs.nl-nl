@@ -10,10 +10,9 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 8a6b7cb3fd45e17b84519efcaa826b569083e156
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79265699"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Azure Data Lake Analytics beheren met de Azure-portal
@@ -29,24 +28,24 @@ In dit artikel wordt beschreven hoe u Azure Data Lake Analytics accounts, gegeve
 
 ### <a name="create-an-account"></a>Een account maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Klik op **een resource** > **Intelligence + Analytics** > -**Data Lake Analytics**maken.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+2. Klik op **een resource**  >  **Intelligence + Analytics**-  >  **Data Lake Analytics**maken.
 3. Selecteer waarden voor de volgende items: 
    1. **Naam**: de naam van het data Lake Analytics-account.
    2. **Abonnement**: het Azure-abonnement dat wordt gebruikt voor het account.
    3. **Resource groep**: de Azure-resource groep waarin het account moet worden gemaakt. 
    4. **Locatie**: het Azure-data centrum voor het data Lake Analytics-account. 
    5. **Data Lake Store**: het standaard archief dat moet worden gebruikt voor het data Lake Analytics-account. Het Azure data Lake Store-account en het data Lake Analytics-account moeten zich op dezelfde locatie bestaan.
-4. Klik op **maken**. 
+4. Klik op **Create**. 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>Een Data Lake Analytics account verwijderen
 
 Verwijder het standaard Data Lake Store account voordat u een Data Lake Analytics account verwijdert.
 
 1. Ga in het Azure Portal naar uw Data Lake Analytics-account.
-2. Klik op **verwijderen**.
+2. Klik op **Verwijderen**.
 3. Typ de account naam.
-4. Klik op **verwijderen**.
+4. Klik op **Verwijderen**.
 
 <!-- ################################ -->
 <!-- ################################ -->
@@ -89,7 +88,7 @@ U kunt de **wizard gebruiker toevoegen** gebruiken om eenvoudig nieuwe data Lake
 3. Selecteer een gebruiker en klik vervolgens op **selecteren**.
 4. Selecteer een rol en klik vervolgens op **selecteren**. Als u een nieuwe ontwikkelaar wilt instellen om Azure Data Lake te gebruiken, selecteert u de rol **Data Lake Analytics ontwikkelaar** .
 5. Selecteer de toegangs beheer lijsten (Acl's) voor de U-SQL-data bases. Wanneer u tevreden bent met uw keuzes, klikt u op **selecteren**.
-6. Selecteer de Acl's voor bestanden. Voor de standaard opslag wijzigt u niet de Acl's voor de hoofdmap//en voor de map/systeemstatus. Klik op **selecteren**.
+6. Selecteer de Acl's voor bestanden. Voor de standaard opslag wijzigt u niet de Acl's voor de hoofdmap//en voor de map/systeemstatus. Klik op **Selecteren**.
 7. Controleer alle geselecteerde wijzigingen en klik vervolgens op **uitvoeren**.
 8. Wanneer de wizard is voltooid, klikt u op **gereed**.
 
@@ -111,7 +110,7 @@ Gebruik de rol Data Lake Analytics ontwikkelaar om U-SQL-ontwikkel aars in staat
 ### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>Gebruikers of beveiligings groepen toevoegen aan een Data Lake Analytics-account
 
 1. Ga in het Azure Portal naar uw Data Lake Analytics-account.
-2. Klik op **toegangs beheer (IAM)** > **roltoewijzing toevoegen**.
+2. Klik op **toegangs beheer (IAM)**  >  **roltoewijzing toevoegen**.
 3. Selecteer een rol.
 4. Voeg een gebruiker toe.
 5. Klik op **OK**.

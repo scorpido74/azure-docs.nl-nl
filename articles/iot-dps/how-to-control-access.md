@@ -9,17 +9,16 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
 ms.openlocfilehash: 2a7e0932d226b1533c039b8529c2c11de06cf525
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79285147"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Toegang tot Azure IoT Hub Device Provisioning Service beheren
 
 In dit artikel worden de opties beschreven voor het beveiligen van uw IoT Device Provisioning-Service. De inrichtings service maakt gebruik van *machtigingen* om toegang te verlenen aan elk eind punt. Machtigingen beperken de toegang tot een service-exemplaar op basis van de functionaliteit.
 
-In dit artikel wordt beschreven:
+In dit artikel wordt het volgende beschreven:
 
 * De verschillende machtigingen die u kunt verlenen aan een back-end-app om toegang te krijgen tot uw inrichtings service.
 * Het verificatie proces en de tokens die worden gebruikt om machtigingen te controleren.
@@ -59,7 +58,7 @@ SharedAccessSignature sr =
 > [!NOTE]
 > De [sdk's van Azure IOT Device Provisioning Service][lnk-sdks] genereren automatisch tokens wanneer er verbinding wordt gemaakt met de service.
 
-## <a name="security-tokens"></a>Beveiligings tokens
+## <a name="security-tokens"></a>Beveiligingstokens
 
 De Device Provisioning Service maakt gebruik van beveiligings tokens voor het verifiëren van services om te voor komen dat sleutels op de kabel worden verzonden. Daarnaast worden beveiligings tokens beperkt in de geldigheid van de tijd en het bereik. De [sdk's van Azure IOT Device Provisioning Service][lnk-sdks] genereren automatisch tokens zonder dat hiervoor speciale configuratie is vereist. Voor sommige scenario's moet u beveiligings tokens rechtstreeks genereren en gebruiken. Dit scenario omvat het directe gebruik van het HTTP-Opper vlak.
 
@@ -77,14 +76,14 @@ Dit zijn de verwachte waarden:
 
 | Waarde | Beschrijving |
 | --- | --- |
-| ondertekening |Een HMAC-SHA256-handtekening teken reeks van het `{URL-encoded-resourceURI} + "\n" + expiry`formulier:. **Belang rijk**: de sleutel wordt gedecodeerd op basis van base64 en gebruikt als sleutel voor het uitvoeren van de HMAC-sha256-berekening.|
+| ondertekening |Een HMAC-SHA256-handtekening teken reeks van het formulier: `{URL-encoded-resourceURI} + "\n" + expiry` . **Belang rijk**: de sleutel wordt gedecodeerd op basis van base64 en gebruikt als sleutel voor het uitvoeren van de HMAC-sha256-berekening.|
 | verloop |UTF8-teken reeksen voor het aantal seconden sinds de epoche 00:00:00 UTC op 1 januari 1970. |
 | {URL-encoded-resourceURI} | Kleine letter-URL-code ring van de resource-URI voor kleine letters. URI-voor voegsel (per segment) van de eind punten die toegankelijk zijn met dit token, te beginnen met de hostnaam van de IoT Device Provisioning Service (geen Protocol). Bijvoorbeeld `mydps.azure-devices-provisioning.net`. |
 | PolicyName |De naam van het gedeelde toegangs beleid waarnaar dit token verwijst. |
 
-**Opmerking op voor voegsel**: het URI-voor voegsel wordt berekend door een segment en niet op basis van het teken. Bijvoorbeeld `/a/b` een voor voegsel voor `/a/b/c` , maar niet voor `/a/bc`.
+**Opmerking op voor voegsel**: het URI-voor voegsel wordt berekend door een segment en niet op basis van het teken. Bijvoorbeeld `/a/b` een voor voegsel voor, `/a/b/c` maar niet voor `/a/bc` .
 
-Het volgende node. js-fragment bevat een functie met de naam **generateSasToken** die het token van de `resourceUri, signingKey, policyName, expiresInMins`invoer berekent. In de volgende secties wordt beschreven hoe u de verschillende invoer gegevens voor de verschillende token-use cases initialiseert.
+Het volgende Node.js fragment bevat een functie met de naam **generateSasToken** die het token van de invoer berekent `resourceUri, signingKey, policyName, expiresInMins` . In de volgende secties wordt beschreven hoe u de verschillende invoer gegevens voor de verschillende token-use cases initialiseert.
 
 ```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
@@ -150,9 +149,9 @@ Hier volgen de service functies die beschikbaar zijn op de eind punten:
 
 Een voor beeld: een service die wordt gegenereerd met een vooraf gemaakt Shared Access-beleid met de naam **enrollmentread** , maakt een token met de volgende para meters:
 
-* resource-URI `{mydps}.azure-devices-provisioning.net`:,
+* resource-URI: `{mydps}.azure-devices-provisioning.net` ,
 * handtekening sleutel: een van de sleutels van het `enrollmentread` beleid,
-* beleids naam: `enrollmentread`,
+* beleids naam: `enrollmentread` ,
 * elke verloop tijd. backn
 
 ![Een gedeeld toegangs beleid voor uw Device Provisioning service-exemplaar maken in de portal][img-add-shared-access-policy]
@@ -177,7 +176,7 @@ In de volgende onderwerpen vindt u meer informatie over het beheren van de toega
 
 De volgende tabel geeft een lijst van de machtigingen die u kunt gebruiken voor het beheren van de toegang tot uw IoT Device Provisioning-Service.
 
-| Machtiging | Opmerkingen |
+| Machtiging | Notities |
 | --- | --- |
 | **ServiceConfig** |Hiermee wordt toegang verleend om de service configuraties te wijzigen. <br/>Deze machtiging wordt gebruikt door de back-end-Cloud Services. |
 | **EnrollmentRead** |Hiermee wordt lees toegang verleend aan de registraties en inschrijvings groepen van het apparaat. <br/>Deze machtiging wordt gebruikt door de back-end-Cloud Services. |

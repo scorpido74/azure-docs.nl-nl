@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
 ms.openlocfilehash: 07e91f3d9fd32f01db91415bfd90746cd1aef403
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78944740"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Metrische gegevens over het gebruik van virtuele machines ophalen met behulp van de REST API
@@ -46,8 +45,8 @@ De volgende headers zijn vereist:
 | resourceGroupName | De naam van de Azure-resource groep die is gekoppeld aan de resource. U kunt deze waarde ophalen uit de Azure Resource Manager-API, CLI of de portal. |
 | vmname | De naam van de virtuele machine van Azure. |
 | metricnames | Een door komma's gescheiden lijst met geldige [Load Balancer metrische gegevens](/azure/load-balancer/load-balancer-standard-diagnostics). |
-| api-versie | De API-versie die voor de aanvraag moet worden gebruikt.<br /><br /> In dit document wordt de API `2018-01-01`-versie beschreven die is opgenomen in de bovenstaande URL.  |
-| tijdsbestek | Teken reeks met de volgende `startDateTime_ISO/endDateTime_ISO` indeling die het tijds bereik van de geretourneerde metrische gegevens definieert. Deze optionele para meter is zo ingesteld dat de gegevens van een dag in het voor beeld worden geretourneerd. |
+| api-versie | De API-versie die voor de aanvraag moet worden gebruikt.<br /><br /> In dit document wordt de API-versie beschreven `2018-01-01` die is opgenomen in de bovenstaande URL.  |
+| tijdsbestek | Teken reeks met de volgende indeling `startDateTime_ISO/endDateTime_ISO` die het tijds bereik van de geretourneerde metrische gegevens definieert. Deze optionele para meter is zo ingesteld dat de gegevens van een dag in het voor beeld worden geretourneerd. |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>Aanvraagbody

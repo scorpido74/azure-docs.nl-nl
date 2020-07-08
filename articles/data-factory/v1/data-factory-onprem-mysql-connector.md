@@ -13,15 +13,14 @@ ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79281286"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Gegevens verplaatsen vanuit MySQL met Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-onprem-mysql-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](data-factory-onprem-mysql-connector.md)
 > * [Versie 2 (huidige versie)](../connector-mysql.md)
 
 > [!NOTE]
@@ -67,14 +66,14 @@ De volgende tabel bevat een beschrijving van de JSON-elementen die specifiek zij
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| type |De eigenschap type moet worden ingesteld op: **OnPremisesMySql** |Ja |
-| server |De naam van de MySQL-server. |Ja |
-| database |De naam van de MySQL-data base. |Ja |
-| schema |De naam van het schema in de data base. |Nee |
-| authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de MySQL-data base. Mogelijke waarden zijn: `Basic`. |Ja |
-| userName |Geef de gebruikers naam op om verbinding te maken met de MySQL-data base. |Ja |
-| wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven. |Ja |
-| gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises MySQL-data base. |Ja |
+| type |De eigenschap type moet worden ingesteld op: **OnPremisesMySql** |Yes |
+| server |De naam van de MySQL-server. |Yes |
+| database |De naam van de MySQL-data base. |Yes |
+| schema |De naam van het schema in de data base. |No |
+| authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de MySQL-data base. Mogelijke waarden zijn: `Basic` . |Yes |
+| userName |Geef de gebruikers naam op om verbinding te maken met de MySQL-data base. |Yes |
+| wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven. |Yes |
+| gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises MySQL-data base. |Yes |
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties zoals structuur, Beschik baarheid en beleid van een gegevensset-JSON zijn vergelijkbaar voor alle typen gegevens sets (Azure SQL, Azure Blob, Azure Table, enzovoort).
@@ -304,15 +303,15 @@ Bij het verplaatsen van gegevens naar MySQL worden de volgende toewijzingen gebr
 | bigint |Int64 |
 | bit |Decimal |
 | blob |Byte [] |
-| booleaans |Booleaans |
+| booleaans |Boolean-waarde |
 | char |Tekenreeks |
 | date |Datum/tijd |
 | datum/tijd |Datum/tijd |
 | decimal |Decimal |
-| dubbele precisie |Double |
-| double |Double |
+| dubbele precisie |Dubbel |
+| double |Dubbel |
 | vaste |Tekenreeks |
-| float |Enkel |
+| float |Enkelvoudig |
 | geheel getal niet ondertekend |Int64 |
 | int |Int32 |
 | geheel getal niet ondertekend |Int64 |
@@ -326,7 +325,7 @@ Bij het verplaatsen van gegevens naar MySQL worden de volgende toewijzingen gebr
 | mediumint |Int32 |
 | mediumtext |Tekenreeks |
 | numeriek |Decimal |
-| werkelijk |Double |
+| werkelijk |Dubbel |
 | set |Tekenreeks |
 | niet-ondertekend in smallint |Int32 |
 | smallint |Int16 |

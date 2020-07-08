@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 06/22/2018
 ms.author: tagore
 ms.openlocfilehash: c830dc0ee38ad808579a62274e3db87d0696e099
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79214711"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>.NET installeren op Azure Cloud Services-rollen
@@ -35,11 +34,11 @@ Als u het web-installatie programma voor de .NET Framework wilt downloaden, kies
 * [.NET Framework 4.6.2 web installer](https://www.microsoft.com/download/details.aspx?id=53345)
 
 Het installatie programma voor een *webrol toevoegen* :
-  1. Klik in **Solution Explorer**onder **rollen** in uw Cloud service project met de rechter muisknop op uw *webfunctie en* Selecteer**nieuwe map** **toevoegen** > . Maak een map met de naam **bin**.
-  2. Klik met de rechter muisknop op de map bin en selecteer**bestaand item** **toevoegen** > . Selecteer .NET Installer en voeg deze toe aan de bin-map.
+  1. Klik in **Solution Explorer**onder **rollen** *in uw Cloud* service project met de rechter muisknop op uw webfunctie en **Add**Selecteer  >  **nieuwe map**toevoegen. Maak een map met de naam **bin**.
+  2. Klik met de rechter muisknop op de map **Add**bin en selecteer  >  **bestaand item**toevoegen. Selecteer .NET Installer en voeg deze toe aan de bin-map.
   
 Het installatie programma voor een *werk* rollen toevoegen:
-* Klik *met de rechter* muisknop op uw werknemersrol en selecteer**bestaand item** **toevoegen** > . Selecteer .NET Installer en voeg deze toe aan de rol. 
+* Klik *met de rechter* muisknop op uw werknemersrol **Add**en selecteer  >  **bestaand item**toevoegen. Selecteer .NET Installer en voeg deze toe aan de rol. 
 
 Wanneer bestanden op deze manier aan de map rol inhoud worden toegevoegd, worden ze automatisch toegevoegd aan uw Cloud service pakket. De bestanden worden vervolgens geïmplementeerd op een consistente locatie op de virtuele machine. Herhaal dit proces voor elke web-en werk functie in uw Cloud service, zodat alle rollen een kopie van het installatie programma hebben.
 
@@ -73,7 +72,7 @@ U kunt opstart taken gebruiken om bewerkingen uit te voeren voordat een rol word
     </Startup>
     ```
    
-    De voor gaande configuratie voert de console `install.cmd` opdracht uit met beheerders bevoegdheden om de .NET Framework te installeren. De configuratie maakt ook een **LocalStorage** -element met de naam **NETFXInstall**. Met het opstart script wordt de map Temp ingesteld voor het gebruik van deze lokale opslag resource. 
+    De voor gaande configuratie voert de console opdracht `install.cmd` uit met beheerders bevoegdheden om de .NET Framework te installeren. De configuratie maakt ook een **LocalStorage** -element met de naam **NETFXInstall**. Met het opstart script wordt de map Temp ingesteld voor het gebruik van deze lokale opslag resource. 
     
     > [!IMPORTANT]
     > Om ervoor te zorgen dat het Framework correct wordt geïnstalleerd, stelt u de grootte van deze resource in op ten minste 1.024 MB.
@@ -197,7 +196,7 @@ U kunt opstart taken gebruiken om bewerkingen uit te voeren voordat een rol word
    EXIT /B 0
    ```
 
-3. Voeg het bestand install. cmd aan elke rol toe met behulp van**bestaand item** **toevoegen** > in **Solution Explorer** zoals eerder in dit onderwerp wordt beschreven. 
+3. Voeg het bestand install. cmd aan elke rol toe met **Add**behulp van  >  **bestaand item** toevoegen in **Solution Explorer** zoals eerder in dit onderwerp wordt beschreven. 
 
     Nadat deze stap is voltooid, moeten alle rollen het .NET-installatie bestand en het bestand install. cmd hebben.
 

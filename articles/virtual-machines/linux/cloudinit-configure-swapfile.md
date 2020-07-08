@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: 1247652e536042ee249054d86aed3c3f8e7aa7bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969209"
 ---
 # <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>Cloud-init gebruiken voor het configureren van een swap-partitie op een Linux-VM
@@ -22,7 +21,7 @@ Ubuntu galerie-afbeeldingen maken standaard geen swap-partities. Voor het inscha
 
 ## <a name="create-swap-partition-for-red-hat-and-centos-based-images"></a>Swap Partition maken voor installatie kopieën op basis van Red Hat en CentOS
 
-Maak in uw huidige shell een bestand met de naam *cloud_init_swappart. txt* en plak de volgende configuratie. In dit voor beeld maakt u het bestand in het Cloud Shell niet op uw lokale computer. U kunt elke editor die u wilt gebruiken. Voer `sensible-editor cloud_init_swappart.txt` in voor het maken van het bestand en om een overzicht van beschikbare editors te zien. Kies #1 om de **nano** -editor te gebruiken. Zorg ervoor dat het hele Cloud-init-bestand correct wordt gekopieerd, met name de eerste regel.  
+Maak in uw huidige shell een bestand met de naam *cloud_init_swappart.txt* en plak de volgende configuratie. In dit voor beeld maakt u het bestand in het Cloud Shell niet op uw lokale computer. U kunt elke editor die u wilt gebruiken. Voer `sensible-editor cloud_init_swappart.txt` in voor het maken van het bestand en om een overzicht van beschikbare editors te zien. Kies #1 om de **nano** -editor te gebruiken. Zorg ervoor dat het hele Cloud-init-bestand correct wordt gekopieerd, met name de eerste regel.  
 
 ```yaml
 #cloud-config
@@ -47,7 +46,7 @@ Voordat u deze installatie kopie implementeert, moet u een resource groep maken 
 az group create --name myResourceGroup --location eastus
 ```
 
-Maak nu een virtuele machine met [AZ VM Create](/cli/azure/vm) en geef het bestand Cloud-init op `--custom-data cloud_init_swappart.txt` met de volgende opties:
+Maak nu een virtuele machine met [AZ VM Create](/cli/azure/vm) en geef het bestand Cloud-init op met de `--custom-data cloud_init_swappart.txt` volgende opties:
 
 ```azurecli-interactive 
 az vm create \

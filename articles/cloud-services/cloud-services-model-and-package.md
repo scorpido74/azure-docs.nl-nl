@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: 32603f4ab33e020245861e5dc66d2ade545fa627
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79247486"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Wat is het Cloud service model en hoe kan ik het pakket inpakken?
@@ -221,15 +220,15 @@ De [Azure runtime library](/previous-versions/azure/reference/mt419365(v=azure.1
 
 Als u een toepassing als een Cloud service in azure wilt implementeren, moet u de toepassing eerst in de juiste indeling inpakken. U kunt het opdracht regel programma **CSPack** (geïnstalleerd met de Azure- [SDK](https://azure.microsoft.com/downloads/)) gebruiken om het pakket bestand te maken als een alternatief voor Visual Studio.
 
-**CSPack** maakt gebruik van de inhoud van het service definitie bestand en service configuratie bestand om de inhoud van het pakket te definiëren. **CSPack** genereert een toepassings pakket bestand (. cspkg) dat u naar Azure kunt uploaden met behulp van de [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy). Het pakket heet standaard `[ServiceDefinitionFileName].cspkg`, maar u kunt een andere naam opgeven met behulp van de `/out` optie **CSPack**.
+**CSPack** maakt gebruik van de inhoud van het service definitie bestand en service configuratie bestand om de inhoud van het pakket te definiëren. **CSPack** genereert een toepassings pakket bestand (. cspkg) dat u naar Azure kunt uploaden met behulp van de [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy). Het pakket heet standaard `[ServiceDefinitionFileName].cspkg` , maar u kunt een andere naam opgeven met behulp `/out` van de optie **CSPack**.
 
 **CSPack** bevindt zich op  
 `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\[sdk-version]\bin\`
 
 > [!NOTE]
-> CSPack. exe (in Windows) is beschikbaar door de **Microsoft Azure opdracht prompt** snelkoppeling uit te voeren die met de SDK is geïnstalleerd.  
+> CSPack.exe (in Windows) is beschikbaar door de **Microsoft Azure opdracht prompt** snelkoppeling uit te voeren die met de SDK is geïnstalleerd.  
 > 
-> Voer het programma CSPack. exe zelf uit om documentatie over alle mogelijke switches en opdrachten te bekijken.
+> Voer het CSPack.exe-programma zelfstandig uit om documentatie over alle mogelijke switches en opdrachten weer te geven.
 > 
 > 
 
@@ -266,7 +265,7 @@ Waar de variabelen als volgt worden gedefinieerd:
 | --- | --- |
 | \[DirectoryName\] |De submap onder de hoofdmap van het project met het. csdef-bestand van het Azure-project. |
 | \[ServiceDefinition\] |De naam van het service definitie bestand. Dit bestand heeft standaard de naam ServiceDefinition. csdef. |
-| \[OutputFileName\] |De naam voor het gegenereerde pakket bestand. Dit wordt doorgaans ingesteld op de naam van de toepassing. Als er geen bestands naam is opgegeven, wordt het toepassings pakket gemaakt \[als ApplicationName\]. cspkg. |
+| \[OutputFileName\] |De naam voor het gegenereerde pakket bestand. Dit wordt doorgaans ingesteld op de naam van de toepassing. Als er geen bestands naam is opgegeven, wordt het toepassings pakket gemaakt als \[ ApplicationName \] . cspkg. |
 | \[RoleName\] |De naam van de rol zoals gedefinieerd in het service definitie bestand. |
 | \[RoleBinariesDirectory] |De locatie van de binaire bestanden voor de rol. |
 | \[VirtualPath\] |De fysieke mappen voor elk virtueel pad dat is gedefinieerd in de sectie sites van de service definitie. |

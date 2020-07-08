@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 03/11/2020
 ms.author: stevelas
 ms.openlocfilehash: 2c6b66b635a2513ccc19e0352414d18d8389fef1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79371049"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Een OCI-artefact pushen en ophalen met behulp van een Azure container Registry
@@ -22,10 +21,10 @@ Om deze functie te demonstreren, wordt in dit artikel uitgelegd hoe u het [Oras-
 ## <a name="prerequisites"></a>Vereisten
 
 * **Azure-containerregister**: maak een containerregister in uw Azure-abonnement. Gebruik bijvoorbeeld de [Azure Portal](container-registry-get-started-portal.md) of de [Azure cli](container-registry-get-started-azure-cli.md).
-* **Oras-hulp programma** : down load en installeer een huidige Oras-versie voor uw besturings systeem van de [github opslag plaats](https://github.com/deislabs/oras/releases). Het hulp programma wordt uitgebracht als een gecomprimeerd tarball`.tar.gz` (bestand). Pak het bestand uit met behulp van standaard procedures voor uw besturings systeem en installeer het.
+* **Oras-hulp programma** : down load en installeer een huidige Oras-versie voor uw besturings systeem van de [github opslag plaats](https://github.com/deislabs/oras/releases). Het hulp programma wordt uitgebracht als een gecomprimeerd tarball ( `.tar.gz` bestand). Pak het bestand uit met behulp van standaard procedures voor uw besturings systeem en installeer het.
 * **Azure Active Directory Service-Principal (optioneel)** : Maak een [Service-Principal](container-registry-auth-service-principal.md) om toegang te krijgen tot uw REGI ster als u direct met Oras wilt verifiëren. Zorg ervoor dat aan de service-principal een rol is toegewezen, zoals AcrPush, zodat deze machtigingen heeft voor push-en pull-artefacten.
-* **Azure cli (optioneel)** : als u een afzonderlijke identiteit wilt gebruiken, moet u een lokale installatie van de Azure cli. Versie 2.0.71 of hoger wordt aanbevolen. Voer `az --version `uit om de versie te vinden. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
-* **Docker (optioneel)** : als u een afzonderlijke identiteit wilt gebruiken, moet u ook docker lokaal hebben geïnstalleerd om te verifiëren met het REGI ster. Docker biedt pakketten die eenvoudig Docker configureren op elk [Mac][docker-mac]-, [Windows][docker-windows]- of [Linux][docker-linux]-systeem.
+* **Azure cli (optioneel)** : als u een afzonderlijke identiteit wilt gebruiken, moet u een lokale installatie van de Azure cli. Versie 2.0.71 of hoger wordt aanbevolen. Voer uit `az --version ` om de versie te vinden. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+* **Docker (optioneel)** : als u een afzonderlijke identiteit wilt gebruiken, moet u ook docker lokaal hebben geïnstalleerd om te verifiëren met het REGI ster. Docker biedt pakketten die eenvoudig Docker configureren op elk [macOS][docker-mac]-, [Windows][docker-windows]- of [Linux][docker-linux]-systeem.
 
 
 ## <a name="sign-in-to-a-registry"></a>Aanmelden bij een REGI ster
@@ -34,13 +33,13 @@ In deze sectie worden twee voorgestelde werk stromen weer gegeven om u aan te me
 
 ### <a name="sign-in-with-oras"></a>Aanmelden met ORAS
 
-Met behulp van een [Service-Principal](container-registry-auth-service-principal.md) met push `oras login` rechten voert u de opdracht uit om u aan te melden bij het REGI ster met de toepassings-id en het wacht woord van de Service-Principal. Geef de volledig gekwalificeerde register naam (alle kleine letters) op, in dit geval *myregistry.azurecr.io*. De ID van de Service-Principal-toepassing wordt door `$SP_APP_ID`gegeven in de omgevings variabele en `$SP_PASSWD`het wacht woord in de variabele.
+Met behulp van een [Service-Principal](container-registry-auth-service-principal.md) met push rechten voert u de `oras login` opdracht uit om u aan te melden bij het REGI ster met de toepassings-id en het wacht woord van de Service-Principal. Geef de volledig gekwalificeerde register naam (alle kleine letters) op, in dit geval *myregistry.azurecr.io*. De ID van de Service-Principal-toepassing wordt door gegeven in de omgevings variabele `$SP_APP_ID` en het wacht woord in de variabele `$SP_PASSWD` .
 
 ```bash
 oras login myregistry.azurecr.io --username $SP_APP_ID --password $SP_PASSWD
 ```
 
-Als u het wacht woord van stdin wilt `--password-stdin`lezen, gebruikt u.
+Als u het wacht woord van stdin wilt lezen, gebruikt u `--password-stdin` .
 
 ### <a name="sign-in-with-azure-cli"></a>Aanmelden met Azure CLI
 
@@ -54,7 +53,7 @@ az acr login --name myregistry
 ```
 
 > [!NOTE]
-> `az acr login`maakt gebruik van de docker-client om een Azure Active Directory- `docker.config` token in het bestand in te stellen. De docker-client moet zijn geïnstalleerd en worden uitgevoerd om de afzonderlijke verificatie stroom te volt ooien.
+> `az acr login`maakt gebruik van de docker-client om een Azure Active Directory-token in het bestand in te stellen `docker.config` . De docker-client moet zijn geïnstalleerd en worden uitgevoerd om de afzonderlijke verificatie stroom te volt ooien.
 
 ## <a name="push-an-artifact"></a>Een artefact pushen
 
@@ -64,7 +63,7 @@ Maak een tekst bestand in een lokale werkmap met een bepaalde voorbeeld tekst. B
 echo "Here is an artifact!" > artifact.txt
 ```
 
-Gebruik de `oras push` opdracht om dit tekst bestand naar uw REGI ster te pushen. In het volgende voor beeld wordt het voorbeeld tekst bestand naar `samples/artifact` de opslag plaats gepusht. Het REGI ster wordt geïdentificeerd met de volledig gekwalificeerde register naam *myregistry.azurecr.io* (alle kleine letters). Het artefact is gelabeld `1.0`. Het artefact heeft een niet-gedefinieerd type, standaard aangeduid door de teken reeks voor het *media type* na de `artifact.txt`bestands naam. Zie [OCI-artefacten](https://github.com/opencontainers/artifacts) voor aanvullende typen. 
+Gebruik de `oras push` opdracht om dit tekst bestand naar uw REGI ster te pushen. In het volgende voor beeld wordt het voorbeeld tekst bestand naar de opslag plaats gepusht `samples/artifact` . Het REGI ster wordt geïdentificeerd met de volledig gekwalificeerde register naam *myregistry.azurecr.io* (alle kleine letters). Het artefact is gelabeld `1.0` . Het artefact heeft een niet-gedefinieerd type, standaard aangeduid door de teken reeks voor het *media type* na de bestands naam `artifact.txt` . Zie [OCI-artefacten](https://github.com/opencontainers/artifacts) voor aanvullende typen. 
 
 **Linux**
 
@@ -90,7 +89,7 @@ Pushed myregistry.azurecr.io/samples/artifact:1.0
 Digest: sha256:xxxxxxbc912ef63e69136f05f1078dbf8d00960a79ee73c210eb2a5f65xxxxxx
 ```
 
-Als u de artefacten in uw REGI ster wilt beheren, kunt u, als u de `az acr` Azure cli gebruikt, standaard opdrachten uitvoeren voor het beheren van installatie kopieën. U kunt bijvoorbeeld de kenmerken van het artefact ophalen met de opdracht [AZ ACR repository show][az-acr-repository-show] :
+Als u de artefacten in uw REGI ster wilt beheren, kunt u, als u de Azure CLI gebruikt, standaard `az acr` opdrachten uitvoeren voor het beheren van installatie kopieën. U kunt bijvoorbeeld de kenmerken van het artefact ophalen met de opdracht [AZ ACR repository show][az-acr-repository-show] :
 
 ```azurecli
 az acr repository show \
@@ -126,7 +125,7 @@ Verwijder eerst het tekst bestand uit uw lokale werkmap:
 rm artifact.txt
 ```
 
-Voer `oras pull` uit om het artefact op te halen en geef het media type op dat wordt gebruikt om het artefact te pushen:
+Voer uit `oras pull` om het artefact op te halen en geef het media type op dat wordt gebruikt om het artefact te pushen:
 
 ```bash
 oras pull myregistry.azurecr.io/samples/artifact:1.0 \

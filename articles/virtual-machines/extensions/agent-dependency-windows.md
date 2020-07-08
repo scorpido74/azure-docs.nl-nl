@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
 ms.openlocfilehash: 27d43af2d5860d287d8b5914379747ae528db34b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79250671"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>Extensie van de virtuele machine voor Azure Monitor afhankelijkheid voor Windows
@@ -71,10 +70,10 @@ De volgende JSON toont het schema voor de Azure VM dependency agent-extensie op 
 
 ### <a name="property-values"></a>Eigenschaps waarden
 
-| Naam | Waarde/voor beeld |
+| Name | Waarde/voor beeld |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
-| uitgever | Micro soft. Azure. monitoring. DependencyAgent |
+| publisher | Micro soft. Azure. monitoring. DependencyAgent |
 | type | DependencyAgentWindows |
 | typeHandlerVersion | 9,5 |
 

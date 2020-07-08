@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 59cce6d89bc863ad489a8ed37c7f284d3085c775
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79117267"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk-beveiliging en -gegevensbescherming
@@ -91,6 +90,6 @@ Bekijk het Microsoft-privacybeleid in het [Vertrouwenscentrum](https://www.micro
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Raadpleeg de [Vereisten voor Data Box](data-box-disk-system-requirements.md).
+- De [Vereisten voor Data Box Disk](data-box-disk-system-requirements.md) bekijken.
 - De [Limieten voor Data Box Disk](data-box-disk-limits.md) begrijpen.
 - Snel [Azure Data Box Disk](data-box-disk-quickstart-portal.md) in Azure Portal implementeren.

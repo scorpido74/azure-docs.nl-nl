@@ -8,10 +8,9 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.openlocfilehash: 0b13040b39ed491ec4fee4d6922d41f086edeeb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79284913"
 ---
 # <a name="use-ip-filters"></a>IP-filters gebruiken
@@ -48,7 +47,7 @@ Wanneer u **IP-filter regel toevoegen**selecteert, vult u de velden in.
 
 ![Nadat u een IP-filter regel toevoegen hebt geselecteerd](./media/iot-dps-ip-filtering/ip-filter-after-selecting-add.png)
 
-* Geef een **naam** op voor de IP-filter regel. Dit moet een unieke, hoofdletter gevoelige, alfanumerieke teken reeks van Maxi maal 128 tekens lang zijn. Alleen de ASCII 7-bits alfanumerieke tekens `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` plus worden geaccepteerd.
+* Geef een **naam** op voor de IP-filter regel. Dit moet een unieke, hoofdletter gevoelige, alfanumerieke teken reeks van Maxi maal 128 tekens lang zijn. Alleen de ASCII 7-bits alfanumerieke tekens plus `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` worden geaccepteerd.
 
 * Geef één IPv4-adres of een blok met IP-adressen in CIDR-notatie op. Bijvoorbeeld in CIDR-notatie 192.168.100.0/22 staat voor de IPv4-adressen van 1024 van 192.168.100.0 naar 192.168.103.255.
 
@@ -135,8 +134,8 @@ Werk de IP-filter regel kenmerken van de sjabloon bij op basis van uw vereisten.
 
 | Kenmerk                | Beschrijving |
 | ------------------------ | ----------- |
-| **FilterName**           | Geef een naam op voor de IP-filter regel. Dit moet een unieke, hoofdletter gevoelige, alfanumerieke teken reeks van Maxi maal 128 tekens lang zijn. Alleen de ASCII 7-bits alfanumerieke tekens plus {'-', ': ', '/',\'', ' + ', '% ', ' _ ', ' # ', '% ', '? ',!, ' (', ') ', ', ' = ', ' @ ', '; ', '} ', worden geaccepteerd. |
-| **Actie**               | Geaccepteerde waarden **accepteren** of **afwijzen** als de actie voor de IP-filter regel. |
+| **FilterName**           | Geef een naam op voor de IP-filter regel. Dit moet een unieke, hoofdletter gevoelige, alfanumerieke teken reeks van Maxi maal 128 tekens lang zijn. Alleen de ASCII 7-bits alfanumerieke tekens plus {'-', ': ', '/', ' \' , ' + ', '% ', ' _ ', ' # ', '% ', '? ',!, ' (', ') ', ', ' = ', ' @ ', '; ', '} ', worden geaccepteerd. |
+| **Actie**               | Geaccepteerde waarden **accepteren**   of **afwijzen**   als de actie voor de IP-filter regel. |
 | **ipMask**               | Geef één IPv4-adres of een blok met IP-adressen in CIDR-notatie op. Bijvoorbeeld in CIDR-notatie 192.168.100.0/22 staat voor de IPv4-adressen van 1024 van 192.168.100.0 naar 192.168.103.255. |
 
 

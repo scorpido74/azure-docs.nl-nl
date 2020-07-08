@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: cynthn
 ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78970275"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Maak een virtuele Linux-machine die gebruikmaakt van SSH-verificatie met de REST API
@@ -39,7 +38,7 @@ Als u een virtuele machine wilt maken of bijwerken, gebruikt u de volgende *put*
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?api-version=2017-12-01
 ```
 
-Naast `{subscription-id}` de para meters `{resourceGroupName}` en moet u het `{vmName}` (`api-version` optioneel) opgeven, maar dit artikel is getest met. `api-version=2017-12-01`
+Naast de `{subscription-id}` `{resourceGroupName}` para meters en moet u het `{vmName}` ( `api-version` optioneel) opgeven, maar dit artikel is getest met. `api-version=2017-12-01`
 
 De volgende headers zijn vereist:
 
@@ -54,16 +53,16 @@ Voor algemene informatie over het werken met REST API-aanvragen raadpleegt u [on
 
 De volgende algemene definities worden gebruikt voor het bouwen van een aanvraag tekst:
 
-| Naam                       | Vereist | Type                                                                                | Beschrijving  |
+| Name                       | Vereist | Type                                                                                | Description  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | tekenreeks                                                                              | Resource locatie. |
-| name                       |          | tekenreeks                                                                              | Naam voor de virtuele machine. |
+| naam                       |          | tekenreeks                                                                              | Naam voor de virtuele machine. |
 | Eigenschappen. hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Hiermee geeft u de hardware-instellingen voor de virtuele machine op. |
 | Eigenschappen. storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Hiermee geeft u de opslag instellingen voor de schijven van de virtuele machine. |
 | Eigenschappen. osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Hiermee geeft u de instellingen van het besturings systeem voor de virtuele machine. |
 | Eigenschappen. networkProfile  |          | [NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | Hiermee geeft u de netwerk interfaces van de virtuele machine. |
 
-Hieronder ziet u een voor beeld van een aanvraag tekst. Zorg ervoor dat u de naam van de virtuele `{computerName}` machine `{name}` opgeeft in de para meters en de naam van de netwerk `networkInterfaces`interface die u hebt `adminUsername` gemaakt `path`onder, uw gebruikers naam in en en het *open bare* gedeelte van uw SSH-sleutel `~/.ssh/id_rsa.pub`paar ( `keyData`bijvoorbeeld) in. Andere para meters die u mogelijk wilt `location` wijzigen `vmSize`, zijn en.  
+Hieronder ziet u een voor beeld van een aanvraag tekst. Zorg ervoor dat u de naam van de virtuele machine opgeeft in de `{computerName}` `{name}` para meters en de naam van de netwerk interface die u hebt gemaakt onder `networkInterfaces` , uw gebruikers naam in `adminUsername` en en `path` het *open bare* gedeelte van uw SSH-sleutel paar (bijvoorbeeld `~/.ssh/id_rsa.pub` ) in `keyData` . Andere para meters die u mogelijk wilt wijzigen `location` , zijn en `vmSize` .  
 
 ```json
 {
@@ -128,7 +127,7 @@ U kunt de client van uw voor keur gebruiken voor het verzenden van deze HTTP-aan
 
 Er zijn twee geslaagde reacties voor de bewerking om een virtuele machine te maken of bij te werken:
 
-| Naam        | Type                                                                              | Beschrijving |
+| Naam        | Type                                                                              | Description |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 gemaakt | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Gemaakt     |

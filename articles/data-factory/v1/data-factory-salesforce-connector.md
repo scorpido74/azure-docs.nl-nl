@@ -13,15 +13,14 @@ ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8b94f6388d77cca2ef74c802aec7648091172775
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79281130"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Gegevens uit Sales Force verplaatsen met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-salesforce-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](data-factory-salesforce-connector.md)
 > * [Versie 2 (huidige versie)](../connector-salesforce.md)
 
 > [!NOTE]
@@ -68,11 +67,11 @@ De volgende tabel bevat beschrijvingen van de JSON-elementen die specifiek zijn 
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| type |De eigenschap type moet worden ingesteld op: **Sales Force**. |Ja |
-| environmentUrl | Geef de URL van het Sales Force-exemplaar op. <br><br> -Standaard is ' https:\//login.salesforce.com '. <br> -Geef "https://test.salesforce.com" op om gegevens uit de sandbox te kopiëren. <br> -Als u gegevens wilt kopiëren uit een aangepast domein, geeft u bijvoorbeeld ' https://[domain]. mijn. Sales Force. com ' op. |Nee |
-| gebruikersnaam |Geef een gebruikers naam op voor het gebruikers account. |Ja |
-| wachtwoord |Geef een wacht woord op voor het gebruikers account. |Ja |
-| Security |Geef een beveiligings token op voor het gebruikers account. Zie [beveiligings Token ophalen](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) voor instructies over het opnieuw instellen/ophalen van een beveiligings token. Zie [beveiliging en de API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)voor meer informatie over beveiligings tokens in het algemeen. |Ja |
+| type |De eigenschap type moet worden ingesteld op: **Sales Force**. |Yes |
+| environmentUrl | Geef de URL van het Sales Force-exemplaar op. <br><br> -Standaard is ' https: \/ /login.salesforce.com '. <br> -Geef "" op om gegevens uit de sandbox te kopiëren https://test.salesforce.com . <br> -Als u gegevens wilt kopiëren uit een aangepast domein, geeft u bijvoorbeeld ' https://[domain]. mijn. Sales Force. com ' op. |No |
+| gebruikersnaam |Geef een gebruikers naam op voor het gebruikers account. |Yes |
+| wachtwoord |Geef een wacht woord op voor het gebruikers account. |Yes |
+| Security |Geef een beveiligings token op voor het gebruikers account. Zie [beveiligings Token ophalen](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) voor instructies over het opnieuw instellen/ophalen van een beveiligings token. Zie [beveiliging en de API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)voor meer informatie over beveiligings tokens in het algemeen. |Yes |
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties zoals structuur, Beschik baarheid en beleid van een gegevensset-JSON zijn vergelijkbaar voor alle typen gegevens sets (Azure SQL, Azure Blob, Azure Table, enzovoort).
@@ -114,7 +113,7 @@ Wanneer u de SOQL of SQL-query opgeeft, moet u rekening best Eden aan het versch
     * **JSON bewerken gebruiken om de query op te geven (juist escape-teken):**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
 
 ### <a name="retrieving-data-from-salesforce-report"></a>Gegevens ophalen uit Sales Force-rapport
-U kunt gegevens ophalen uit Sales Force-rapporten door query `{call "<report name>"}`op te geven als bijvoorbeeld. `"query": "{call \"TestReport\"}"`.
+U kunt gegevens ophalen uit Sales Force-rapporten door query op te geven als `{call "<report name>"}` bijvoorbeeld. `"query": "{call \"TestReport\"}"`.
 
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>Ophalen van verwijderde records uit de Prullenbak voor Sales Force
 Als u wilt zoeken in de Prullenbak van het Sales Force-cluster, kunt u **' IsDeleted = 1 '** opgeven in de query. Bijvoorbeeld:
@@ -152,7 +151,7 @@ In dit voor beeld wordt de gekoppelde service **Sales Force** gebruikt. Zie de s
     }
 }
 ```
-**Azure Storage gekoppelde service**
+**Een gekoppelde Azure Storage-service**
 
 ```json
 {
@@ -286,10 +285,10 @@ Zie [Eigenschappen van het type RelationalSource](#copy-activity-properties) voo
 | Sales Force-type | . Op het netwerk gebaseerd type |
 | --- | --- |
 | Automatisch nummer |Tekenreeks |
-| Checkbox |Booleaans |
+| Checkbox |Boolean-waarde |
 | Valuta |Decimal |
 | Date |DateTime |
-| Datum/tijd |DateTime |
+| Datum en tijd |DateTime |
 | E-mail |Tekenreeks |
 | Id |Tekenreeks |
 | Opzoek relatie |Tekenreeks |

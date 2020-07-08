@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: f0c7b966b9fa7580809d2df0f4d05a7146ca0fd1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79272199"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Problemen met Apache Hadoop YARN oplossen met behulp van Azure HDInsight
@@ -20,7 +19,7 @@ Meer informatie over de belangrijkste problemen en hun oplossingen bij het werke
 
 ## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Hoe kan ik een nieuwe GARENs wachtrij op een cluster maken?
 
-### <a name="resolution-steps"></a>Oplossingen
+### <a name="resolution-steps"></a>Stappen om het probleem op te lossen
 
 Gebruik de volgende stappen in Ambari om een nieuwe garen wachtrij te maken en de capaciteits toewijzing te verdelen over alle wacht rijen.
 
@@ -64,7 +63,7 @@ Deze wijzigingen zijn direct zichtbaar in de gebruikers interface van de GARENs-
 
 ## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Hoe kan ik GARENs van een cluster downloaden?
 
-### <a name="resolution-steps"></a>Oplossingen
+### <a name="resolution-steps"></a>Stappen om het probleem op te lossen
 
 1. Maak verbinding met het HDInsight-cluster met behulp van een SSH-client (Secure Shell). Zie [aanvullende Lees bewerkingen](#additional-reading-2)voor meer informatie.
 
@@ -95,7 +94,7 @@ Deze wijzigingen zijn direct zichtbaar in de gebruikers interface van de GARENs-
     yarn logs -applicationIdn logs -applicationId <application_id> -am ALL > amlogs.txt
     ```
 
-    Met deze opdracht maakt u een logboek bestand met de naam amlogs. txt.
+    Met deze opdracht maakt u een logboek bestand met de naam amlogs.txt.
 
 1. Gebruik de volgende opdracht om alleen garen-container logboeken te downloaden voor de meest recente toepassings Master:
 
@@ -103,7 +102,7 @@ Deze wijzigingen zijn direct zichtbaar in de gebruikers interface van de GARENs-
     yarn logs -applicationIdn logs -applicationId <application_id> -am -1 > latestamlogs.txt
     ```
 
-    Met deze opdracht maakt u een logboek bestand met de naam latestamlogs. txt.
+    Met deze opdracht maakt u een logboek bestand met de naam latestamlogs.txt.
 
 1. Als u garen-container logboeken voor de eerste twee toepassings Masters wilt downloaden, gebruikt u de volgende opdracht:
 
@@ -111,7 +110,7 @@ Deze wijzigingen zijn direct zichtbaar in de gebruikers interface van de GARENs-
     yarn logs -applicationIdn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt
     ```
 
-    Met deze opdracht maakt u een logboek bestand met de naam first2amlogs. txt.
+    Met deze opdracht maakt u een logboek bestand met de naam first2amlogs.txt.
 
 1. Als u alle garen-container logboeken wilt downloaden, gebruikt u de volgende opdracht:
 
@@ -119,7 +118,7 @@ Deze wijzigingen zijn direct zichtbaar in de gebruikers interface van de GARENs-
     yarn logs -applicationIdn logs -applicationId <application_id> > logs.txt
     ```
 
-    Met deze opdracht maakt u een logboek bestand met de naam logs. txt.
+    Met deze opdracht maakt u een logboek bestand met de naam logs.txt.
 
 1. Als u het garen-container logboek voor een specifieke container wilt downloaden, gebruikt u de volgende opdracht:
 
@@ -127,7 +126,7 @@ Deze wijzigingen zijn direct zichtbaar in de gebruikers interface van de GARENs-
     yarn logs -applicationIdn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt
     ```
 
-    Met deze opdracht maakt u een logboek bestand met de naam containerlogs. txt.
+    Met deze opdracht maakt u een logboek bestand met de naam containerlogs.txt.
 
 ### <a name="additional-reading"></a><a name="additional-reading-2"></a>Aanvullende Lees bewerkingen
 
@@ -140,6 +139,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 - Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-- Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+- Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
 - Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: mayg
 ms.openlocfilehash: 07c1f7f258dbea7bcf7a6e7ea51fdcfdfaa006aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79368720"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Over de Azure Site Recovery Deployment Planner voor herstel na nood geval voor Hyper-V naar Azure
@@ -72,17 +71,17 @@ Het hulpprogramma levert de volgende gegevens:
 
 | | **VMware naar Azure** |**Hyper-V naar Azure**|**Azure naar Azure**|**Hyper-V naar secundaire site**|**VMware naar secundaire site**
 --|--|--|--|--|--
-Ondersteunde scenario's |Ja|Ja|Nee|Ja*|Nee
-Ondersteunde versie | vCenter 6,7, 6,5, 6,0 of 5,5| WindowsServer 2016, Windows Server 2012 R2 | N.v.t. |WindowsServer 2016, Windows Server 2012 R2|N.v.t.
-Ondersteunde configuratie|vCenter, ESXi| Hyper-V-cluster, Hyper-V-host|N.v.t.|Hyper-V-cluster, Hyper-V-host|N.v.t.|
-Aantal servers dat kan worden geprofileerd per exemplaar van de Azure Site Recovery Deployment Planner |Eén (virtuele machines die horen bij een VMware vCenter Server of een ESXi-server kunnen worden geprofileerd op een tijdstip)|Meerdere (VM's op meerdere hosts of hostclusters kunnen tegelijk profiel zijn)| N.v.t. |Meerdere (VM's op meerdere hosts of hostclusters kunnen tegelijk profiel zijn)| N.v.t.
+Ondersteunde scenario's |Ja|Ja|Nee|Ja*|No
+Ondersteunde versie | vCenter 6,7, 6,5, 6,0 of 5,5| WindowsServer 2016, Windows Server 2012 R2 | NA |WindowsServer 2016, Windows Server 2012 R2|NA
+Ondersteunde configuratie|vCenter, ESXi| Hyper-V-cluster, Hyper-V-host|NA|Hyper-V-cluster, Hyper-V-host|NA|
+Aantal servers dat kan worden geprofileerd per exemplaar van de Azure Site Recovery Deployment Planner |Eén (virtuele machines die horen bij een VMware vCenter Server of een ESXi-server kunnen worden geprofileerd op een tijdstip)|Meerdere (VM's op meerdere hosts of hostclusters kunnen tegelijk profiel zijn)| NA |Meerdere (VM's op meerdere hosts of hostclusters kunnen tegelijk profiel zijn)| NA
 
 * Het hulpprogramma is voornamelijk bedoeld voor het Hyper-V naar Azure noodherstelscenario. Voor Hyper-V naar secundaire site noodherstel kan deze alleen worden gebruikt voor begrip van aanbevelingen aan de bronzijde, zoals vereiste netwerkbandbreedte, vrije opslagruimte op elk van de Hyper-V-bronservers en de initiële replicatie van batchnummers en batchdefinities.  De Azure-aanbevelingen en de kosten van het rapport negeren. De bewerking Ophalen doorvoer is ook niet van toepassing voor het Hyper-V naar secundaire site noodherstelscenario.
 
 ## <a name="prerequisites"></a>Vereisten
 Het hulpprogramma heeft drie belangrijke fasen voor Hyper-V: lijst ophalen met de VM, profilering en generatie rapportage. Er is ook een voerde optie, waarmee alleen doorvoer wordt berekend. De vereisten voor de server waarop de verschillende fasen moeten worden uitgevoerd worden in de volgende tabel weergegeven:
 
-| Serververeiste | Beschrijving |
+| Serververeiste | Description |
 |---|---|
 |VM-lijst ophalen, profileren en meten van doorvoer |<ul><li>Besturingssysteem: Microsoft Windows Server 2016 of Microsoft Windows Server 2012 R2 </li><li>Machineconfiguratie: 8 vCPU's, 16 GB RAM, 300 GB harde schijf</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Microsoft Visual C++ Redistributable voor Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internet toegang tot Azure (*. blob.core.windows.net) van deze server, poort 443<br>[Dit is optioneel. U kunt ervoor kiezen om de beschik bare band breedte tijdens het hand matig genereren van rapporten op te geven.]</li><li>Azure Storage-account</li><li>Beheerderstoegang op de server</li><li>Minimaal 100 GB vrije schijfruimte (uitgaande van 1000 virtuele machines met een gemiddelde van elk drie schijven, geprofileerd voor 30 dagen)</li><li>De virtuele machine waarop u de Azure Site Recovery ontwikkelingsplannertool uitvoert moet worden toegevoegd aan de TrustedHosts-lijst van alle Hyper-V-servers.</li><li>Alle Hyper-V-servers die moeten worden profileeerd, moeten worden toegevoegd aan de TrustedHosts-lijst van de client-VM vanaf waar het hulp programma wordt uitgevoerd. [Meer informatie voor het toevoegen van servers in de lijst TrustedHosts](#steps-to-add-servers-into-trustedhosts-list). </li><li> Het hulpprogramma moet met Beheerdersrechten worden uitgevoerd vanuit PowerShell of de opdrachtregelconsole op de client</ul></ul>|
 | Rapporten genereren | Een Windows-pc of Windows-server met Microsoft Excel 2013 of hoger |
@@ -115,9 +114,9 @@ De aanbevolen configuratie van de virtuele machine: 8 Vcpu, 16 GB RAM-geheugen, 
 1.  Pak de gecomprimeerde map uit.
 De map bevat meerdere bestanden en submappen. Het uitvoerbare bestand is ASRDeploymentPlanner.exe in de map op het hoogste niveau.
 
-Voorbeeld: kopieer het ZIP-bestand naar station E:\ en pak het uit. E:\ASR-implementatie Planner_v2.3. zip
+Voorbeeld: kopieer het ZIP-bestand naar station E:\ en pak het uit. E:\ASR-implementatie Planner_v2.3.zip
 
-E:\ASR-implementatie Planner_v2.3 \ ASRDeploymentPlanner. exe
+E:\ASR-implementatie Planner_v2.3\ASRDeploymentPlanner.exe
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>Bijwerken naar de nieuwste versie van de implementatieplanner
 

@@ -4,10 +4,9 @@ description: Uitvoerings logboeken weer geven en beheren die door ACR-taken word
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: f7098f470a3f8a0cdac019f4bf8eb8fe14330337
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79246966"
 ---
 # <a name="view-and-manage-task-run-logs"></a>Taak uitvoer logboeken weer geven en beheren
@@ -65,7 +64,7 @@ Als een taak automatisch wordt geactiveerd, bijvoorbeeld door het bijwerken van 
 Uitvoerings logboeken weer geven in de portal:
 
 1. Navigeer naar het container register.
-1. In **Services**selecteert u **taken** > worden**uitgevoerd**.
+1. In **Services**selecteert u **taken**worden  >  **uitgevoerd**.
 1. Selecteer een **Run-id** om de uitvoerings status te bekijken en Logboeken uit te voeren. Het logboek bevat dezelfde informatie als een gestreamd logboek als er een wordt gegenereerd.
 
 ![Aanmeldings portal voor taak uitvoering weer geven](./media/container-registry-tasks-logs/portal-task-run-logs.png)

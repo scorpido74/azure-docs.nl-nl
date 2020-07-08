@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
 ms.openlocfilehash: c6b791fda43a018a26204b2b43dc1e581ff3a945
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79269482"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>Virtuele VMware-machines migreren naar Azure-Vm's die zijn ingeschakeld met versleuteling aan de server zijde en door de klant beheerde sleutels
@@ -52,7 +51,7 @@ De portal voor server migratie vereenvoudigt de voor bereiding van de replicatie
 
 1. Ga op het Azure Portal naar de pagina Resource groepen en selecteer de resource groep waarin het Azure Migrate project is gemaakt.
 2. Selecteer **implementaties** in het menu links en zoek naar een implementatie naam die begint met de teken reeks *' micro soft. MigrateV2. VMwareV2EnableMigrate '*. U ziet een lijst met Resource Manager-sjablonen die zijn gemaakt door de portal-ervaring voor het instellen van replicatie voor virtuele machines in dit project. Er wordt één sjabloon gedownload en deze wordt gebruikt als basis voor het voorbereiden van de sjabloon voor replicatie met CMK.
-3. Als u de sjabloon wilt downloaden, selecteert u een implementatie die overeenkomt met het teken reeks patroon in de vorige stap > selecteert u in het menu links de optie **sjabloon** selecteren > klikt u op **downloaden** in het bovenste menu. Sla het bestand template. json lokaal op. U gaat dit sjabloon bestand in de laatste stap bewerken.
+3. Als u de sjabloon wilt downloaden, selecteert u een implementatie die overeenkomt met het teken reeks patroon in de vorige stap > selecteert u in het menu links de optie **sjabloon** selecteren > klikt u op **downloaden** in het bovenste menu. Sla de template.jsop het lokale bestand op. U gaat dit sjabloon bestand in de laatste stap bewerken.
 
 ## <a name="create-a-disk-encryption-set"></a>Een schijf versleutelings set maken
 

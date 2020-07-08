@@ -13,15 +13,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79281234"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Gegevens verplaatsen van PostgreSQL met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-onprem-postgresql-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](data-factory-onprem-postgresql-connector.md)
 > * [Versie 2 (huidige versie)](../connector-postgresql.md)
 
 > [!NOTE]
@@ -72,14 +71,14 @@ In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifie
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| type |De eigenschap type moet worden ingesteld op: **OnPremisesPostgreSql** |Ja |
-| server |De naam van de PostgreSQL-server. |Ja |
-| database |De naam van de PostgreSQL-data base. |Ja |
-| schema |De naam van het schema in de data base. De schema naam is hoofdletter gevoelig. |Nee |
-| authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de PostgreSQL-data base. Mogelijke waarden zijn: anoniem, basis en Windows. |Ja |
-| gebruikersnaam |Geef de gebruikers naam op als u basis-of Windows-verificatie gebruikt. |Nee |
-| wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |Nee |
-| gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises PostgreSQL-data base. |Ja |
+| type |De eigenschap type moet worden ingesteld op: **OnPremisesPostgreSql** |Yes |
+| server |De naam van de PostgreSQL-server. |Yes |
+| database |De naam van de PostgreSQL-data base. |Yes |
+| schema |De naam van het schema in de data base. De schema naam is hoofdletter gevoelig. |No |
+| authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de PostgreSQL-data base. Mogelijke waarden zijn: anoniem, basis en Windows. |Yes |
+| gebruikersnaam |Geef de gebruikers naam op als u basis-of Windows-verificatie gebruikt. |No |
+| wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |No |
+| gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises PostgreSQL-data base. |Yes |
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties, zoals structuur, Beschik baarheid en beleid van een gegevensset-JSON, zijn vergelijkbaar voor alle typen gegevensset.
@@ -104,7 +103,7 @@ Wanneer bron van het type **RelationalSource** (inclusief postgresql), zijn de v
 > [!NOTE]
 > Schema-en tabel namen zijn hoofdletter gevoelig. Plaats deze in `""` (dubbele aanhalings tekens) in de query.
 
-**Hierbij**
+**Voorbeeld:**
 
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
@@ -162,7 +161,7 @@ De eerste stap is het instellen van de Data Management Gateway. De instructies b
 
 In het voor beeld wordt ervan uitgegaan dat u in PostgreSQL een tabel ' MyTable ' hebt gemaakt en een kolom bevat met de naam Time Stamp voor tijdreeks gegevens.
 
-De `"external": true` instelling informeert de Data Factory-service dat de gegevensset zich buiten het Data Factory bevindt en wordt niet geproduceerd door een activiteit in de Data Factory.
+De instelling `"external": true` informeert de Data Factory-service dat de gegevensset zich buiten het Data Factory bevindt en wordt niet geproduceerd door een activiteit in de Data Factory.
 
 ```json
 {
@@ -309,7 +308,7 @@ Bij het verplaatsen van gegevens naar PostgreSQL worden de volgende toewijzingen
 | bigserial |serial8 |Int64 |
 | bits [(n)] | |Byte [], teken reeks |
 | bits variërend [(n)] |varbit |Byte [], teken reeks |
-| booleaans |booleaans |Booleaans |
+| booleaans |booleaans |Boolean-waarde |
 | keuzelijst | |Byte [], teken reeks |
 | bytea | |Byte [], teken reeks |
 | teken [(n)] |teken [(n)] |Tekenreeks |
@@ -319,7 +318,7 @@ Bij het verplaatsen van gegevens naar PostgreSQL worden de volgende toewijzingen
 | cirkel | |Byte [], teken reeks |
 | date | |Datum/tijd |
 | daterange | |Tekenreeks |
-| dubbele precisie |float8 |Double |
+| dubbele precisie |float8 |Dubbel |
 | inet | |Byte [], teken reeks |
 | intarry | |Tekenreeks |
 | int4range | |Tekenreeks |
@@ -331,7 +330,7 @@ Bij het verplaatsen van gegevens naar PostgreSQL worden de volgende toewijzingen
 | lijn | |Byte [], teken reeks |
 | lseg | |Byte [], teken reeks |
 | macaddr | |Byte [], teken reeks |
-| financieel | |Decimal |
+| money | |Decimal |
 | numeriek [(p, s)] |decimaal [(p, s)] |Decimal |
 | numrange | |Tekenreeks |
 | nogmaals | |Int32 |
@@ -339,7 +338,7 @@ Bij het verplaatsen van gegevens naar PostgreSQL worden de volgende toewijzingen
 | pg_lsn | |Int64 |
 | spreek | |Byte [], teken reeks |
 | polygoon | |Byte [], teken reeks |
-| werkelijk |float4 |Enkel |
+| werkelijk |float4 |Enkelvoudig |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | wel |serial4 |Int32 |

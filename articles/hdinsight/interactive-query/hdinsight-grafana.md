@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.openlocfilehash: cd515bfd1dc57e78a041ed96686e1ba692bf6d3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79082860"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Toegang tot Grafana in Azure HDInsight
@@ -20,7 +19,7 @@ ms.locfileid: "79082860"
 
 Op dit moment wordt in azure HDInsight Grafana ondersteund met de cluster typen Spark, HBase, Kafka en Interactive query. Het wordt niet ondersteund voor clusters waarvoor Enter prise Security Pack is ingeschakeld.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="create-an-apache-hadoop-cluster"></a>Een Apache Hadoop-cluster maken
 
@@ -38,7 +37,7 @@ Zie [Apache Hadoop clusters maken met behulp van de Azure Portal](../hdinsight-h
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze toepassing niet wilt blijven gebruiken, verwijdert u het cluster dat u hebt gemaakt met de volgende stappen:
+Als u deze toepassing verder niet meer gebruikt, verwijdert u het cluster dat u hebt gemaakt, via de volgende stappen:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
@@ -48,7 +47,7 @@ Als u deze toepassing niet wilt blijven gebruiken, verwijdert u het cluster dat 
 
 1. Selecteer in de lijst met HDInsight-clusters die wordt weer gegeven, de **...** naast het cluster dat u hebt gemaakt.
 
-1. Selecteer **verwijderen**. Selecteer **Ja**.
+1. Selecteer **Verwijderen**. Selecteer **Ja**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

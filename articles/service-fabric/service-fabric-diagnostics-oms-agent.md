@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
 ms.openlocfilehash: c3c1bf511f3313e7408d6ce90b73de60bd1309f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79366735"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Prestatie bewaking met Azure Monitor-logboeken
@@ -33,7 +32,7 @@ De beste manier om de Log Analytics agent toe te voegen aan uw cluster is via de
 
 3. Klik op **Windows-servers** als u een Windows-cluster wilt maken en **Linux-servers** als u een Linux-cluster maakt. Op deze pagina ziet u uw `workspace ID` en `workspace key` (vermeld als primaire sleutel in de portal). U hebt beide nodig voor de volgende stap.
 
-4. Voer de opdracht uit om de Log Analytics agent te installeren op uw cluster met `vmss extension set` behulp van de API:
+4. Voer de opdracht uit om de Log Analytics agent te installeren op uw cluster met behulp van de `vmss extension set` API:
 
     Voor een Windows-cluster:
 
@@ -51,7 +50,7 @@ De beste manier om de Log Analytics agent toe te voegen aan uw cluster is via de
 
     ![Opdracht Agent CLI Log Analytics](media/service-fabric-diagnostics-oms-agent/cli-command.png)
 
-5. Dit duurt minder dan 15 minuten om de agent aan uw knoop punten toe te voegen. U kunt controleren of de agents zijn toegevoegd met behulp `az vmss extension list` van de API:
+5. Dit duurt minder dan 15 minuten om de agent aan uw knoop punten toe te voegen. U kunt controleren of de agents zijn toegevoegd met behulp van de `az vmss extension list` API:
 
     ```azurecli
     az vmss extension list --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType>
@@ -67,25 +66,25 @@ U kunt deze sjabloon downloaden en aanpassen om een cluster te implementeren dat
 
 Nu u de Log Analytics-agent hebt toegevoegd, gaat u naar de Log Analytics Portal om te kiezen welke prestatie meter items u wilt verzamelen.
 
-1. Ga in het Azure Portal naar de resource groep waarin u de Service Fabric-analyse oplossing hebt gemaakt. Selecteer **ServiceFabric\<nameOfLog AnalyticsWorkspace\>**.
+1. Ga in het Azure Portal naar de resource groep waarin u de Service Fabric-analyse oplossing hebt gemaakt. Selecteer **ServiceFabric \<nameOfLog AnalyticsWorkspace\> **.
 
 2. Klik op **Log Analytics**.
 
 3. Klik op **Geavanceerde instellingen**.
 
-4. Klik op **gegevens**en vervolgens op **Windows-of Linux-prestatie meter items**. Er is een lijst met standaard tellers die u kunt inschakelen en u kunt het interval voor de verzameling ook instellen. U kunt ook [aanvullende prestatie meter items](service-fabric-diagnostics-event-generation-perf.md) toevoegen om te verzamelen. In dit [artikel](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx)wordt verwezen naar de juiste indeling.
+4. Klik op **gegevens**en vervolgens op **Windows-of Linux-prestatie meter items**. Er is een lijst met standaard meteritems die u kunt inschakelen en u kunt ook het interval voor verzameling instellen. U kunt ook [aanvullende prestatiemeteritems toevoegen](service-fabric-diagnostics-event-generation-perf.md) om te verzamelen. In dit [artikel](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx) wordt verwezen naar de juiste indeling.
 
-5. Klik op **Opslaan**en vervolgens op **OK**.
+5. Klik op **Opslaan** en klik vervolgens op **OK**.
 
 6. Sluit de Blade geavanceerde instellingen.
 
 7. Klik onder de kop algemeen op **werkruimte samenvatting**.
 
-8. U ziet tegels in de vorm van een grafiek voor elk van de ingeschakelde oplossingen, met inbegrip van een voor Service Fabric. Klik op de **service Fabric** grafiek om door te gaan naar de service Fabric-analyse oplossing.
+8. U ziet tegels in de vorm van een grafiek voor elk van de ingeschakelde oplossingen, met inbegrip van een voor Service Fabric. Klik op de **Service Fabric**-grafiek om door te gaan naar de oplossing Service Fabric-analyse.
 
-9. Er worden enkele tegels weer geven met grafieken op operationele kanaal en betrouw bare Services-gebeurtenissen. De grafische weer gave van de gegevens die in voor de items die u hebt geselecteerd, wordt onder metrische gegevens van knoop punten weer gegeven.
+9. Er worden enkele tegels weer geven met grafieken op operationele kanaal en betrouw bare Services-gebeurtenissen. De grafische weergave van de inkomende gegevens voor de meteritems die u hebt geselecteerd, wordt weergegeven onder Metrische knooppuntgegevens.
 
-10. Klik op de metrische grafiek van een container om meer details weer te geven. U kunt ook een query uitvoeren op gegevens van prestatie meter items op dezelfde manier als cluster gebeurtenissen en filteren op de knoop punten, de naam van het prestatie meter item en waarden met behulp van de Kusto-query taal.
+10. Klik op de metrische grafiek van een container om meer details weer te geven. U kunt ook query's uitvoeren op gegevens van prestatiemeteritems, net als bij clustergebeurtenissen, en filteren op de knooppunten, de naam van het prestatiemeteritem en waarden met behulp van de Kusto-querytaal.
 
 ![Log Analytics prestatie meter query](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.PNG)
 

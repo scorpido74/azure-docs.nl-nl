@@ -6,10 +6,9 @@ author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
 ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79275098"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>De Log Analytics-agent voor Windows en Linux beheren en onderhouden
@@ -28,13 +27,13 @@ De Log Analytics-agent voor Windows en Linux kan hand matig worden bijgewerkt na
 
 ### <a name="upgrade-windows-agent"></a>Windows-agent bijwerken 
 
-Als u de agent op een virtuele Windows-machine wilt bijwerken naar de nieuwste versie die niet is geïnstalleerd met behulp van de Log Analytics VM-extensie, voert u uit vanaf de opdracht prompt, het script\<of\>andere Automation-oplossing, of met behulp van de installatie wizard MMASetup-platform. msi.  
+Als u de agent op een virtuele Windows-machine wilt bijwerken naar de nieuwste versie die niet is geïnstalleerd met behulp van de Log Analytics VM-extensie, voert u uit vanaf de opdracht prompt, het script of andere Automation-oplossing of met de \<platform\> installatie wizard MMASetup-. msi.  
 
 U kunt de nieuwste versie van de Windows-agent downloaden van uw Log Analytics-werk ruimte door de volgende stappen uit te voeren.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-2. Klik in de Azure Portal op **alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **log Analytics-werk ruimten**.
+2. Klik in Azure Portal op **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Log Analytics-werkruimten**.
 
 3. Selecteer de werk ruimte in de lijst met Log Analytics-werk ruimten.
 
@@ -50,7 +49,7 @@ U kunt de nieuwste versie van de Windows-agent downloaden van uw Log Analytics-w
 
 1. Meld u aan bij de computer met een account met beheerders rechten.
 
-2. Voer **MMASetup-\<platform\>. exe** uit om de installatie wizard te starten.
+2. Voer **MMASetup- \<platform\> . exe** uit om de installatie wizard te starten.
 
 3. Klik op de eerste pagina van de installatie wizard op **volgende**.
 
@@ -64,7 +63,7 @@ U kunt de nieuwste versie van de Windows-agent downloaden van uw Log Analytics-w
 
 1. Meld u aan bij de computer met een account met beheerders rechten.
 
-2. Als u de installatie bestanden van de agent wilt extra heren, vanaf een `MMASetup-<platform>.exe /c` opdracht prompt met verhoogde bevoegdheid, wordt u gevraagd om het pad naar de bestanden uit te pakken. U kunt ook het pad opgeven door de argumenten `MMASetup-<platform>.exe /c /t:<Full Path>`door te geven.
+2. Als u de installatie bestanden van de agent wilt extra heren, vanaf een opdracht prompt met verhoogde bevoegdheid, `MMASetup-<platform>.exe /c` wordt u gevraagd om het pad naar de bestanden uit te pakken. U kunt ook het pad opgeven door de argumenten door te geven `MMASetup-<platform>.exe /c /t:<Full Path>` .
 
 3. Voer de volgende opdracht uit, waarbij D:\ de locatie is van het upgradelogboekbestand.
 
@@ -74,7 +73,7 @@ U kunt de nieuwste versie van de Windows-agent downloaden van uw Log Analytics-w
 
 ### <a name="upgrade-linux-agent"></a>Linux-agent bijwerken 
 
-Upgrade van eerdere versies (>1.0.0-47) wordt ondersteund. Wanneer u de installatie uitvoert `--upgrade` met de opdracht, worden alle onderdelen van de agent bijgewerkt naar de meest recente versie.
+Upgrade van eerdere versies (>1.0.0-47) wordt ondersteund. Wanneer u de installatie uitvoert met de `--upgrade` opdracht, worden alle onderdelen van de agent bijgewerkt naar de meest recente versie.
 
 Voer de volgende opdracht uit om de agent bij te werken.
 
@@ -129,7 +128,7 @@ $mma.ReloadConfiguration()
 ```
 
 >[!NOTE]
->Als u de opdracht regel of het script eerder hebt gebruikt voor het installeren of configureren van `EnableAzureOperationalInsights` de agent, `AddCloudWorkspace` is `RemoveCloudWorkspace`vervangen door en.
+>Als u de opdracht regel of het script eerder hebt gebruikt voor het installeren of configureren van de agent, `EnableAzureOperationalInsights` is vervangen door `AddCloudWorkspace` en `RemoveCloudWorkspace` .
 >
 
 ### <a name="linux-agent"></a>Linux-agent
@@ -236,16 +235,16 @@ Gebruik een van de volgende procedures om de Windows-of Linux-agent te verwijder
 3. Klik in **Program ma's en onderdelen**op **micro soft Monitoring Agent**, klik op **verwijderen**en vervolgens op **Ja**.
 
 >[!NOTE]
->U kunt de wizard Setup van agent ook uitvoeren door te dubbel klikken op **MMASetup\>-\<platform. exe**, dat kan worden gedownload via een werk ruimte in de Azure Portal.
+>U kunt de wizard Setup van agent ook uitvoeren door te dubbel klikken op **MMASetup- \<platform\> . exe**, dat kan worden gedownload via een werk ruimte in de Azure Portal.
 
 #### <a name="uninstall-from-the-command-line"></a>Verwijderen vanaf de opdracht regel
 Het gedownloade bestand voor de agent is een op zichzelf staand installatie pakket dat is gemaakt met IExpress. Het installatie programma voor de agent en de ondersteunende bestanden bevinden zich in het pakket en moet worden uitgepakt om correct te worden verwijderd met de opdracht regel die in het volgende voor beeld wordt weer gegeven.
 
 1. Meld u aan bij de computer met een account met beheerders rechten.
 
-2. Als u de installatie bestanden van de agent wilt extra heren, vanaf een `extract MMASetup-<platform>.exe` opdracht prompt met verhoogde bevoegdheid, wordt u gevraagd om het pad naar de bestanden uit te pakken. U kunt ook het pad opgeven door de argumenten `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`door te geven. Zie voor meer informatie over de opdracht regel parameters die worden ondersteund door IExpress, [opdracht regel parameters voor IExpress](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) en werk vervolgens het voor beeld bij aan uw behoeften.
+2. Als u de installatie bestanden van de agent wilt extra heren, vanaf een opdracht prompt met verhoogde bevoegdheid, `extract MMASetup-<platform>.exe` wordt u gevraagd om het pad naar de bestanden uit te pakken. U kunt ook het pad opgeven door de argumenten door te geven `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>` . Zie voor meer informatie over de opdracht regel parameters die worden ondersteund door IExpress, [opdracht regel parameters voor IExpress](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) en werk vervolgens het voor beeld bij aan uw behoeften.
 
-3. Typ `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`bij de prompt.
+3. Typ bij de prompt `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb` .
 
 ### <a name="linux-agent"></a>Linux-agent
 Voer de volgende opdracht op de Linux-computer uit om de agent te verwijderen. Met het argument *--purge* worden de agent en de configuratie ervan volledig verwijderd.
@@ -286,7 +285,7 @@ Voer de volgende stappen uit om de Log Analytics-agent voor Linux te configurere
 
 1. Het bestand bewerken`/etc/opt/omi/conf/omiserver.conf`
 
-2. Zorg ervoor dat de regel die `httpsport=` begint met de poort 1270 definieert. Zoals:`httpsport=1270`
+2. Zorg ervoor dat de regel die begint met `httpsport=` de poort 1270 definieert. Zoals:`httpsport=1270`
 
 3. Start de OMI-server opnieuw op:`sudo /opt/omi/bin/service_control restart`
 

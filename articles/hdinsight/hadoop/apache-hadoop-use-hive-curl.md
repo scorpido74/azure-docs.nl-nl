@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
 ms.openlocfilehash: 10a2f413142124db7547e68280a0d5e9abac9b98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79298747"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Apache Hive query's uitvoeren met Apache Hadoop in HDInsight met behulp van REST
@@ -27,11 +26,11 @@ Meer informatie over het gebruik van de WebHCat REST API om Apache Hive query's 
 
 * Een REST-client. In dit document wordt [invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) op Windows Power shell gebruikt en wordt [gekruld](https://curl.haxx.se/) op [bash](https://docs.microsoft.com/windows/wsl/install-win10).
 
-* Als u bash gebruikt, hebt u ook JQ, een opdracht regel-JSON-processor nodig.  Zie [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
+* Als u bash gebruikt, hebt u ook JQ, een opdracht regel-JSON-processor nodig.  Zie [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
 
 ## <a name="base-uri-for-rest-api"></a>Basis-URI voor rest API
 
-De basis-URI (Uniform Resource Identifier) voor de REST API op HDInsight `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`is, `CLUSTERNAME` waarbij de naam van uw cluster is.  Cluster namen in Uri's zijn **hoofdletter gevoelig**.  De naam van het cluster in het Fully Qualified Domain Name (FQDN) van de URI (`CLUSTERNAME.azurehdinsight.net`) is hoofdletter gevoelig en andere exemplaren in de URI zijn hoofdletter gevoelig.
+De basis-URI (Uniform Resource Identifier) voor de REST API op HDInsight is `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` , waarbij `CLUSTERNAME` de naam van uw cluster is.  Cluster namen in Uri's zijn **hoofdletter gevoelig**.  De naam van het cluster in het Fully Qualified Domain Name (FQDN) van de URI ( `CLUSTERNAME.azurehdinsight.net` ) is hoofdletter gevoelig en andere exemplaren in de URI zijn hoofdletter gevoelig.
 
 ## <a name="authentication"></a>Verificatie
 
@@ -42,7 +41,7 @@ Wanneer u een krul of andere REST-communicatie met WebHCat gebruikt, moet u de a
 Bewaar uw referenties om te voor komen dat ze opnieuw worden ingevoerd voor elk voor beeld.  De naam van het cluster wordt in een afzonderlijke stap bewaard.
 
 **A. bash**  
-Bewerk het onderstaande script door uw `PASSWORD` eigen wacht woord te vervangen.  Voer vervolgens de opdracht in.
+Bewerk het onderstaande script door `PASSWORD` uw eigen wacht woord te vervangen.  Voer vervolgens de opdracht in.
 
 ```bash
 export password='PASSWORD'
@@ -58,7 +57,7 @@ $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 
 De daad werkelijke behuizing van de cluster naam kan anders zijn dan verwacht, afhankelijk van hoe het cluster is gemaakt.  In de stappen hier wordt het werkelijke hoofdletter gebruik weer gegeven en opgeslagen in een variabele voor alle latere voor beelden.
 
-Bewerk de onderstaande scripts om deze `CLUSTERNAME` te vervangen door de naam van uw cluster. Voer vervolgens de opdracht in. (De cluster naam voor de FQDN is niet hoofdletter gevoelig.)
+Bewerk de onderstaande scripts om deze te vervangen `CLUSTERNAME` door de naam van uw cluster. Voer vervolgens de opdracht in. (De cluster naam voor de FQDN is niet hoofdletter gevoelig.)
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -101,7 +100,7 @@ $clusterName
     * `-u`-De gebruikers naam en het wacht woord die worden gebruikt om de aanvraag te verifiëren.
     * `-G`-Geeft aan dat deze aanvraag een GET-bewerking is.
 
-1. Het begin van de URL, `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1`is hetzelfde voor alle aanvragen. Het pad, `/status`, geeft aan dat de aanvraag de status WebHCat (ook wel bekend als Templeton) voor de server moet retour neren. U kunt ook de versie van Hive aanvragen met behulp van de volgende opdracht:
+1. Het begin van de URL, `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1` is hetzelfde voor alle aanvragen. Het pad, `/status` , geeft aan dat de aanvraag de status WebHCat (ook wel bekend als Templeton) voor de server moet retour neren. U kunt ook de versie van Hive aanvragen met behulp van de volgende opdracht:
 
     ```bash
     curl -u admin:$password -G https://$clusterName.azurehdinsight.net/templeton/v1/version/hive
@@ -159,7 +158,7 @@ $clusterName
    * `SELECT`-Selecteert een telling van alle rijen waarin de kolom **T4** de waarde **[error]** bevat. Deze instructie retourneert de waarde **3** als er drie rijen met deze waarde zijn.
 
      > [!NOTE]  
-     > U ziet dat de spaties tussen HiveQL-instructies worden vervangen `+` door het teken wanneer het wordt gebruikt met krul. Waarden die een spatie bevatten, zoals het scheidings teken, mogen niet worden vervangen door `+`.
+     > U ziet dat de spaties tussen HiveQL-instructies worden vervangen door het `+` teken wanneer het wordt gebruikt met krul. Waarden die een spatie bevatten, zoals het scheidings teken, mogen niet worden vervangen door `+` .
 
       Met deze opdracht wordt een taak-ID geretourneerd die kan worden gebruikt om de status van de taak te controleren.
 
@@ -183,7 +182,7 @@ $clusterName
 
     Als de taak is voltooid, is de status **geslaagd**.
 
-1. Zodra de status van de taak is gewijzigd in **geslaagd**, kunt u de resultaten van de taak ophalen uit Azure Blob-opslag. De `statusdir` para meter die is door gegeven met de query bevat de locatie van het uitvoer bestand. in dit geval `/example/rest`. Dit adres slaat de uitvoer op in `example/curl` de map in de standaard opslag voor clusters.
+1. Zodra de status van de taak is gewijzigd in **geslaagd**, kunt u de resultaten van de taak ophalen uit Azure Blob-opslag. De `statusdir` para meter die is door gegeven met de query bevat de locatie van het uitvoer bestand, in dit geval `/example/rest` . Dit adres slaat de uitvoer op in de `example/curl` map in de standaard opslag voor clusters.
 
     U kunt deze bestanden weer geven en downloaden met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli). Zie voor meer informatie over het gebruik van de Azure CLI met Azure Storage het document [Azure CLI gebruiken met Azure Storage](https://docs.microsoft.com/azure/storage/storage-azure-cli) .
 

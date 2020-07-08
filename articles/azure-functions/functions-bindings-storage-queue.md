@@ -7,10 +7,9 @@ ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 71321fa631bafde5b1dbaac2d165cb68fd8116d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79277308"
 ---
 # <a name="azure-queue-storage-trigger-and-bindings-for-azure-functions-overview"></a>Azure Queue Storage-trigger en bindingen voor Azure Functions-overzicht
@@ -24,7 +23,7 @@ Azure Functions kunnen worden uitgevoerd als nieuwe Azure Queue-opslag berichten
 
 ## <a name="add-to-your-functions-app"></a>Toevoegen aan uw functions-app
 
-### <a name="functions-2x-and-higher"></a>Functies 2. x en hoger
+### <a name="functions-2x-and-higher"></a>Functions 2.x en hoger
 
 Voor het werken met de trigger en bindingen moet u verwijzen naar het juiste pakket. Het NuGet-pakket wordt gebruikt voor .NET-klassen bibliotheken terwijl de uitbreidings bundel wordt gebruikt voor alle andere toepassings typen.
 

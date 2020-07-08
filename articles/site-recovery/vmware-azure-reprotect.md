@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
 ms.openlocfilehash: 976888f57269cc9fe6107a38e30d78c73eb5c124
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79257171"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>Opnieuw beveiligen van Azure naar on-premises
@@ -55,7 +54,7 @@ Schakel replicatie in. U kunt specifieke Vm's of een herstel plan opnieuw beveil
 
 Schakel de beveiliging als volgt in:
 
-1. Selecteer de **kluis** > **gerepliceerde items**. Klik met de rechter muisknop op de virtuele machine waarvoor een failover is uitgevoerd en selecteer vervolgens **opnieuw beveiligen**. U kunt ook op de opdracht knoppen de machine selecteren en vervolgens **opnieuw beveiligen**selecteren.
+1. Selecteer de **kluis**  >  **gerepliceerde items**. Klik met de rechter muisknop op de virtuele machine waarvoor een failover is uitgevoerd en selecteer vervolgens **opnieuw beveiligen**. U kunt ook op de opdracht knoppen de machine selecteren en vervolgens **opnieuw beveiligen**selecteren.
 2. Controleer of de **Azure to on-premises** richting van beveiliging is geselecteerd.
 3. In **hoofddoel server** en **proces server**selecteert u de on-premises hoofddoel server en de proces server.  
 4. Selecteer voor **gegevens opslag**de gegevens opslag waarnaar u de schijven on-premises wilt herstellen. Deze optie wordt gebruikt wanneer de on-premises virtuele machine wordt verwijderd en u moet nieuwe schijven maken. Deze optie wordt genegeerd als de schijven al bestaan. U moet nog een waarde opgeven.

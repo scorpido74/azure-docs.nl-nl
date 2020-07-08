@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.openlocfilehash: 78bc629598c0635b7760285d0507b7a85a4ab551
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79127017"
 ---
 # <a name="refresh-with-logic-apps"></a>Vernieuwen met Logic Apps
@@ -65,15 +64,15 @@ Configureer de HTTP-activiteit als volgt:
 |Eigenschap  |Waarde  |
 |---------|---------|
 |**Methode**     |POST         |
-|**URI**     | https://*uw server regio*/servers/*aas server name*/Models/*your data base name*/refreshes <br /> <br /> Bijvoorbeeld: https:\//westus.asazure.Windows.net/servers/MyServer/models/AdventureWorks/refreshes|
+|**URI**     | https://*uw server regio*/servers/*aas server name*/Models/*your data base name*/refreshes <br /> <br /> Bijvoorbeeld: https: \/ /westus.asazure.Windows.net/servers/MyServer/models/AdventureWorks/refreshes|
 |**Headers**     |   Content-type, Application/JSON <br /> <br />  ![Headers](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Hoofdtekst**     |   Zie voor meer informatie over het maken van de aanvraag tekst [asynchroon vernieuwen met de rest API-post/refreshes](analysis-services-async-refresh.md#post-refreshes). |
 |**Verificatie**     |Active Directory OAuth         |
 |**Tenant**     |Vul uw Azure Active Directory TenantId in         |
 |**Doelgroep**     |https://*. asazure. Windows. net         |
-|**Client-ID**     |Voer uw service principal name ClientID in         |
+|**Client-id**     |Voer uw service principal name ClientID in         |
 |**Referentie type**     |Geheim         |
-|**Gescheiden**     |Voer uw service principal name Secret in         |
+|**Geheim**     |Voer uw service principal name Secret in         |
 
 Voorbeeld:
 
@@ -116,4 +115,4 @@ Sla de logische app op.
 ## <a name="next-steps"></a>Volgende stappen
 
 [Voorbeelden](analysis-services-samples.md)  
-[REST-API](https://docs.microsoft.com/rest/api/analysisservices/servers)
+[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)

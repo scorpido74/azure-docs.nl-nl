@@ -9,10 +9,9 @@ ms.author: magoedte
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.openlocfilehash: 1fb64463b0372202adb04c2deb304c389c7773b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79164681"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>De verbonden machine agent installeren met behulp van Windows Power shell DSC
@@ -29,7 +28,7 @@ Met [Windows Power shell desired state Configuration](https://docs.microsoft.com
 
 ## <a name="install-the-connectedmachine-dsc-module"></a>De ConnectedMachine DSC-module installeren
 
-1. Als u de module hand matig wilt installeren, moet u de bron code downloaden en de inhoud van de `$env:ProgramFiles\WindowsPowerShell\Modules folder`projectmap uitpakken naar de. Of voer de volgende opdracht uit om te installeren vanuit de Power shell Gallery met behulp van PowerShellGet (in Power shell 5,0):
+1. Als u de module hand matig wilt installeren, moet u de bron code downloaden en de inhoud van de projectmap uitpakken naar de `$env:ProgramFiles\WindowsPowerShell\Modules folder` . Of voer de volgende opdracht uit om te installeren vanuit de Power shell Gallery met behulp van PowerShellGet (in Power shell 5,0):
 
     ```powershell
     Find-Module -Name AzureConnectedMachineDsc -Repository PSGallery | Install-Module
@@ -47,15 +46,15 @@ Met [Windows Power shell desired state Configuration](https://docs.microsoft.com
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>De agent installeren en verbinding maken met Azure
 
-De resources in deze module zijn ontworpen voor het beheren van de configuratie van de Azure Connected machine agent. Ook is een Power shell- `AzureConnectedMachineAgent.ps1`script gevonden dat in `AzureConnectedMachineDsc\examples` de map is opgenomen. Het maakt gebruik van community-bronnen voor het automatiseren van het downloaden en installeren en tot stand brengen van een verbinding met Azure Arc. Dit script voert soort gelijke stappen uit die worden beschreven in het artikel de [Azure Portal hybride computers verbinden met Azure](onboard-portal.md) .
+De resources in deze module zijn ontworpen voor het beheren van de configuratie van de Azure Connected machine agent. Ook is een Power shell `AzureConnectedMachineAgent.ps1` -script gevonden dat in de map is opgenomen `AzureConnectedMachineDsc\examples` . Het maakt gebruik van community-bronnen voor het automatiseren van het downloaden en installeren en tot stand brengen van een verbinding met Azure Arc. Dit script voert soort gelijke stappen uit die worden beschreven in het artikel de [Azure Portal hybride computers verbinden met Azure](onboard-portal.md) .
 
-Als de machine moet communiceren via een proxy server naar de service, moet u nadat u de agent hebt geïnstalleerd, een opdracht uitvoeren die [hier](onboard-portal.md#configure-the-agent-proxy-setting)wordt beschreven. Hiermee stelt u de systeem omgevingsvariabele van de `https_proxy`proxy server in. In plaats van de opdracht hand matig uit te voeren, kunt u deze stap met DSC uitvoeren met behulp van de [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) -module.
+Als de machine moet communiceren via een proxy server naar de service, moet u nadat u de agent hebt geïnstalleerd, een opdracht uitvoeren die [hier](onboard-portal.md#configure-the-agent-proxy-setting)wordt beschreven. Hiermee stelt u de systeem omgevingsvariabele van de proxy server in `https_proxy` . In plaats van de opdracht hand matig uit te voeren, kunt u deze stap met DSC uitvoeren met behulp van de [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) -module.
 
 >[!NOTE]
->Als u DSC wilt uitvoeren, moet u Windows configureren om externe Power shell-opdrachten te ontvangen, zelfs wanneer u een localhost-configuratie uitvoert. Als u uw omgeving eenvoudig op de juiste wijze `Set-WsManQuickConfig -Force` wilt configureren, voert u de opdracht uit in een Power shell-terminal met verhoogde bevoegdheden.
+>Als u DSC wilt uitvoeren, moet u Windows configureren om externe Power shell-opdrachten te ontvangen, zelfs wanneer u een localhost-configuratie uitvoert. Als u uw omgeving eenvoudig op de juiste wijze wilt configureren, voert u de opdracht `Set-WsManQuickConfig -Force` uit in een Power shell-terminal met verhoogde bevoegdheden.
 >
 
-Configuratie documenten (MOF-bestanden) kunnen worden toegepast op de computer met `Start-DscConfiguration` behulp van de-cmdlet.
+Configuratie documenten (MOF-bestanden) kunnen worden toegepast op de computer met behulp van de- `Start-DscConfiguration` cmdlet.
 
 Hieronder vindt u de para meters die u aan het Power shell-script geeft.
 
@@ -79,7 +78,7 @@ Hieronder vindt u de para meters die u aan het Power shell-script geeft.
     .\`AzureConnectedMachineAgent.ps1 -TenantId <TenantId GUID> -SubscriptionId <SubscriptionId GUID> -ResourceGroup '<ResourceGroupName>' -Location '<LocationName>' -Tags '<Tag>' -Credential <psCredential>
     ```
 
-3. Hiermee maakt u een `localhost.mof file` in een nieuwe map met `C:\dsc`de naam.
+3. Hiermee maakt u een `localhost.mof file` in een nieuwe map met de naam `C:\dsc` .
 
 Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken met Azure Arc voor servers (preview), gaat u naar de Azure Portal om te controleren of de server met succes is verbonden. Bekijk uw computers in de [Azure Portal](https://aka.ms/hybridmachineportal).
 
@@ -93,4 +92,4 @@ De [CompsiteResource](https://www.powershellgallery.com/packages/compositeresour
 
 - Meer informatie over het beheren van uw machine met [Azure Policy](../../governance/policy/overview.md), voor zaken als VM- [gast configuratie](../../governance/policy/concepts/guest-configuration.md), moet u controleren of de computer rapporteert aan de verwachte log Analytics-werk ruimte, de bewaking inschakelen met [Azure monitor met vm's](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)en nog veel meer.
 
-- Meer informatie over de [log Analytics-agent](../../azure-monitor/platform/log-analytics-agent.md). De Log Analytics-agent voor Windows en Linux is vereist wanneer u het besturings systeem en de workloads die worden uitgevoerd op de machine proactief wilt bewaken, beheren met Automation-runbooks of-oplossingen, zoals Updatebeheer, of andere Azure-Services zoals [Azure Security Center](../../security-center/security-center-intro.md)gebruiken.
+- Meer informatie over de [log Analytics-agent](../../azure-monitor/platform/log-analytics-agent.md). De Log Analytics-agent voor Windows en Linux is vereist wanneer u het besturingssysteem en workloads op de machine proactief wilt monitoren, deze wilt beheren met Automation-runbooks of oplossingen zoals Updatebeheer, of andere Azure-services zoals [Azure Security Center](../../security-center/security-center-intro.md) wilt gebruiken.

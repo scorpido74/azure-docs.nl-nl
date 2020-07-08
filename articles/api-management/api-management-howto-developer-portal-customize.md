@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
 ms.openlocfilehash: af7c995c11322a538dd9e27a905f1ddbc723e8ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79244093"
 ---
 # <a name="access-and-customize-developer-portal"></a>De ontwikkelaars Portal openen en aanpassen
@@ -68,7 +67,7 @@ U kunt rijen toevoegen aan een pagina door te klikken op een blauw pictogram met
 
 Indelingen bepalen hoe pagina's worden weer gegeven. In de standaard inhoud zijn er bijvoorbeeld twee indelingen: een is van toepassing op de start pagina en de andere op alle resterende pagina's.
 
-Een indeling wordt toegepast op een pagina door te voldoen aan de URL-sjabloon van de pagina. Indeling met `/wiki/*` een URL-sjabloon van wordt bijvoorbeeld toegepast op elke pagina met het `/wiki/` segment in de URL: `/wiki/getting-started`, `/wiki/styles`enzovoort.
+Een indeling wordt toegepast op een pagina door te voldoen aan de URL-sjabloon van de pagina. Indeling met een URL-sjabloon van wordt bijvoorbeeld `/wiki/*` toegepast op elke pagina met het `/wiki/` segment in de URL: `/wiki/getting-started` , `/wiki/styles` enzovoort.
 
 In de bovenstaande afbeelding wordt inhoud die deel uitmaakt van de lay-out blauw gemarkeerd, terwijl de pagina rood is gemarkeerd. De menu secties zijn respectievelijk gemarkeerd.
 
@@ -91,7 +90,7 @@ Wanneer u een wijziging aanbrengt in de portal, moet u deze hand matig opslaan d
 Voordat u uw portal voor de bezoekers beschikbaar maakt, moet u de automatisch gegenereerde inhoud personaliseren. De aanbevolen wijzigingen zijn de indelingen, stijlen en de inhoud van de start pagina.
 
 > [!NOTE]
-> Vanwege integratie overwegingen kunnen de volgende pagina's niet worden verwijderd of verplaatst onder een andere URL: `/404`, `/500`, `/captcha`, `/change-password`, `/config.json`, `/confirm/invitation`, `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef`, `/publish`, `/signin`, `/signin-sso`,. `/signup`
+> Vanwege integratie overwegingen kunnen de volgende pagina's niet worden verwijderd of verplaatst onder een andere URL: `/404` , `/500` , `/captcha` ,,, `/change-password` `/config.json` `/confirm/invitation` , `/confirm-v2/identities/basic/signup` , `/confirm-v2/password` , `/internal-status-0123456789abcdef` , `/publish` , `/signin` , `/signin-sso` , `/signup` .
 
 ### <a name="home-page"></a>Startpagina
 
@@ -124,7 +123,7 @@ Als u uw portal en de meest recente wijzigingen beschikbaar wilt maken voor bezo
 
 ## <a name="visit-the-published-portal"></a>Ga naar de gepubliceerde Portal
 
-Nadat u de portal hebt gepubliceerd, kunt u deze openen op dezelfde URL als het deel venster beheer, bijvoorbeeld `https://contoso-api.developer.azure-api.net`. Bekijk het in een afzonderlijke browser sessie (incognito/private Browse mode) als een externe gebruiker.
+Nadat u de portal hebt gepubliceerd, kunt u deze openen op dezelfde URL als het deel venster beheer, bijvoorbeeld `https://contoso-api.developer.azure-api.net` . Bekijk het in een afzonderlijke browser sessie (incognito/private Browse mode) als een externe gebruiker.
 
 ## <a name="apply-the-cors-policy-on-apis"></a>Het CORS-beleid Toep assen op Api's
 

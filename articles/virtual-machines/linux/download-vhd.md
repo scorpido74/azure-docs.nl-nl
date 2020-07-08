@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: cynthn
 ms.openlocfilehash: 02c3ee483e6a31960fd5123070a49f568ac4c690
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78968786"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Een Linux-VHD downloaden vanuit Azure
@@ -48,7 +47,7 @@ Voer de volgende stappen uit om de VHD als een installatie kopie te gebruiken om
 
 Voer de volgende stappen uit om de VHD als schijf te gebruiken voor een nieuw exemplaar van een bestaande virtuele machine of gegevens schijf:
 
-1.  Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1.  Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2.  Selecteer **virtual machines**in het linkermenu.
 3.  Selecteer de virtuele machine in de lijst.
 4.  Selecteer op de pagina voor de virtuele machine **stoppen**.

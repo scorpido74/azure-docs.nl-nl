@@ -9,15 +9,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.openlocfilehash: adcd4d9e81eecad9540a4ef1be5e675f940ffb8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79367989"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>Interactieve query Apache Hive gegevens visualiseren met micro soft Power BI met behulp van directe query's in HDInsight
 
-In dit artikel wordt beschreven hoe u micro soft Power BI verbindt met Azure HDInsight Interactive query-clusters en Apache Hive gegevens visualiseren met behulp van directe query's. In het voor beeld worden de gegevens van `hivesampletable` een Hive-tabel geladen in Power bi. De `hivesampletable` Hive-tabel bevat een aantal gebruiks gegevens over mobiele telefoons. U kunt de gebruiks gegevens vervolgens op een wereld kaart uitzetten:
+In dit artikel wordt beschreven hoe u micro soft Power BI verbindt met Azure HDInsight Interactive query-clusters en Apache Hive gegevens visualiseren met behulp van directe query's. In het voor beeld worden de gegevens van een `hivesampletable` Hive-tabel geladen in Power bi. De `hivesampletable` Hive-tabel bevat een aantal gebruiks gegevens over mobiele telefoons. U kunt de gebruiks gegevens vervolgens op een wereld kaart uitzetten:
 
 ![HDInsight-Power BI het kaart rapport](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
 
@@ -35,7 +34,7 @@ De `hivesampletable` Hive-tabel wordt geleverd met alle HDInsight-clusters.
 
 1. Start Power BI Desktop.
 
-2. Ga in de menu balk naar **Start** > **gegevens** > ophalen**meer...**.
+2. Ga in de menu balk naar **Start**  >  **gegevens ophalen**  >  **meer...**.
 
     ![HDInsight-Power BI gegevens meer ophalen](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
 

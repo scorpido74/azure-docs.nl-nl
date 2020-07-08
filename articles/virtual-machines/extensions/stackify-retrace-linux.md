@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: akjosh
 ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79253791"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify-extensie voor Linux-agent opnieuw traceren
@@ -54,14 +53,14 @@ De retrace-agent kan worden uitgevoerd met deze Linux-distributies
 
 De Stackify-agent extensie voor Linux vereist dat de virtuele doel machine is verbonden met internet. 
 
-Mogelijk moet u uw netwerk configuratie aanpassen om verbindingen met Stackify toe te staan. https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-FirewallZie voor meer informatie. 
+Mogelijk moet u uw netwerk configuratie aanpassen om verbindingen met Stackify toe te staan. Zie voor meer informatie https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall . 
 
 
 ## <a name="extension-schema"></a>Extensieschema
 
 ---
 
-In de volgende JSON wordt het schema voor de uitbrei ding Stackify retrace agent weer gegeven. Voor de uitbrei `environment` ding `activationKey`is de and vereist.
+In de volgende JSON wordt het schema voor de uitbrei ding Stackify retrace agent weer gegeven. Voor de uitbrei ding is de `environment` and vereist `activationKey` .
 
 ```json
     {
@@ -95,7 +94,7 @@ De JSON voor een extensie van een virtuele machine kan worden genest in de resou
 
 In het volgende voor beeld wordt ervan uitgegaan dat de Linux-uitbrei ding Stackify retrace is genest in de resource van de virtuele machine. Bij het nesten van de extensie bron wordt de JSON in het object ' resources ': [] van de virtuele machine geplaatst.
 
-Voor de uitbrei `environment` ding `activationKey`is de and vereist.
+Voor de uitbrei ding is de `environment` and vereist `activationKey` .
 
 ```json
     {
@@ -152,7 +151,7 @@ Bij het plaatsen van de JSON van de extensie in de hoofdmap van de sjabloon, bev
 
 De `Set-AzVMExtension` opdracht kan worden gebruikt voor het implementeren van de extensie van de virtuele machine van de Linux-agent Stackify naar een bestaande virtuele machine. Voordat u de opdracht uitvoert, moeten de open bare en persoonlijke configuraties worden opgeslagen in een Power shell-Hash-tabel.
 
-Voor de uitbrei `environment` ding `activationKey`is de and vereist.
+Voor de uitbrei ding is de `environment` and vereist `activationKey` .
 
 ```powershell
 $PublicSettings = @{"environment" = "myEnvironment"}
@@ -173,7 +172,7 @@ Set-AzVMExtension -ExtensionName "Stackify.LinuxAgent.Extension" `
 
 Het Azure CLI-hulp programma kan worden gebruikt voor het implementeren van de extensie van de virtuele machine van de Linux-agent Stackify naar een bestaande virtuele machine.  
 
-Voor de uitbrei `environment` ding `activationKey`is de and vereist.
+Voor de uitbrei ding is de `environment` and vereist `activationKey` .
 
 ```azurecli
 az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --name 'StackifyLinuxAgentExtension' --protected-settings '{"activationKey":"myActivationKey"}' --settings '{"environment":"myEnvironment"}'  --resource-group 'myResourceGroup' --vm-name 'myVmName'
@@ -198,4 +197,4 @@ az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --
 | 110 | Fout uitschakelen | Service verwijderen is mislukt |
 | 120 | Fout bij verwijderen | Stoppen van service mislukt |
 
-Als u meer hulp nodig hebt, kunt u contact opnemen https://support.stackify.commet de Stackify-ondersteuning in.
+Als u meer hulp nodig hebt, kunt u contact opnemen met de Stackify-ondersteuning in https://support.stackify.com .

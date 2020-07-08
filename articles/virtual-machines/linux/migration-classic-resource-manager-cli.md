@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: c41292a05e5c857cd0b1c120784a400f2f5410ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78945360"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>IaaS-resources migreren van klassiek naar Azure Resource Manager met behulp van Azure CLI
@@ -71,12 +70,12 @@ Wacht vijf minuten totdat de registratie is voltooid. U kunt de status van de go
 
     azure provider show Microsoft.ClassicInfrastructureMigrate
 
-Schakel de CLI nu over `asm` naar de modus.
+Schakel de CLI nu over naar de `asm` modus.
 
     azure config mode asm
 
 ## <a name="step-3-make-sure-you-have-enough-azure-resource-manager-virtual-machine-vcpus-in-the-azure-region-of-your-current-deployment-or-vnet"></a>Stap 3: Zorg ervoor dat u voldoende Azure Resource Manager virtuele-Vcpu's in de Azure-regio van uw huidige implementatie of VNET hebt
-Voor deze stap moet u overschakelen naar `arm` de modus. Doe dit met de volgende opdracht.
+Voor deze stap moet u overschakelen naar de `arm` modus. Doe dit met de volgende opdracht.
 
 ```
 azure config mode arm
@@ -88,7 +87,7 @@ U kunt de volgende CLI-opdracht gebruiken om het huidige aantal Vcpu's te contro
 azure vm list-usage -l "<Your VNET or Deployment's Azure region"
 ```
 
-Zodra u klaar bent met het controleren van deze stap, kunt u terugschakelen naar `asm` de modus.
+Zodra u klaar bent met het controleren van deze stap, kunt u terugschakelen naar de `asm` modus.
 
     azure config mode asm
 
@@ -118,7 +117,7 @@ Als u wilt migreren naar een bestaand virtueel netwerk in het Resource Manager-i
 
     azure service deployment prepare-migration <serviceName> <deploymentName> existing <destinationVNETResourceGroupName> <subnetName> <vnetName>
 
-Nadat de voor bereiding is voltooid, kunt u de uitgebreide uitvoer bekijken om de migratie status van de Vm's op te halen en ervoor te zorgen dat deze `Prepared` zich in de staat bevinden.
+Nadat de voor bereiding is voltooid, kunt u de uitgebreide uitvoer bekijken om de migratie status van de Vm's op te halen en ervoor te zorgen dat deze zich in de staat bevinden `Prepared` .
 
     azure vm show <vmName> -vv
 

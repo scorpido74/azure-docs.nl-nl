@@ -8,14 +8,13 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: c3165410809d98fd0ac4eeb515fbf30578633ef3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78968804"
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>Docker machine gebruiken om hosts in azure te maken
-In dit artikel wordt beschreven hoe u [docker machine](https://docs.docker.com/machine/) gebruikt voor het maken van hosts in Azure. Met `docker-machine` de opdracht wordt een virtuele Linux-machine (VM) in azure gemaakt en vervolgens docker geïnstalleerd. U kunt uw docker-hosts vervolgens beheren in azure met behulp van dezelfde lokale hulpprogram ma's en werk stromen. Als u docker-machine in Windows 10 wilt gebruiken, moet u Linux bash gebruiken.
+In dit artikel wordt beschreven hoe u [docker machine](https://docs.docker.com/machine/) gebruikt voor het maken van hosts in Azure. `docker-machine`Met de opdracht wordt een virtuele Linux-machine (VM) in azure gemaakt en vervolgens docker geïnstalleerd. U kunt uw docker-hosts vervolgens beheren in azure met behulp van dezelfde lokale hulpprogram ma's en werk stromen. Als u docker-machine in Windows 10 wilt gebruiken, moet u Linux bash gebruiken.
 
 ## <a name="create-vms-with-docker-machine"></a>Vm's maken met docker-machine
 Verschaf eerst uw Azure-abonnements-ID met [AZ account show](/cli/azure/account) :
@@ -24,7 +23,7 @@ Verschaf eerst uw Azure-abonnements-ID met [AZ account show](/cli/azure/account)
 sub=$(az account show --query "id" -o tsv)
 ```
 
-U maakt docker host-Vm's in azure `docker-machine create` met door *Azure* op te geven als het stuur programma. Zie de [documentatie van docker Azure-stuur programma](https://docs.docker.com/machine/drivers/azure/) voor meer informatie.
+U maakt docker host-Vm's in azure met `docker-machine create` door *Azure* op te geven als het stuur programma. Zie de [documentatie van docker Azure-stuur programma](https://docs.docker.com/machine/drivers/azure/) voor meer informatie.
 
 In het volgende voor beeld wordt een virtuele machine gemaakt met de naam *myVM*, op basis van het plan Standard D2 v2, wordt een gebruikers account met de naam *azureuser*gemaakt en wordt poort *80* geopend op de host-VM. Volg de aanwijzingen om u aan te melden bij uw Azure-account en docker-computer machtigingen te verlenen voor het maken en beheren van resources.
 
@@ -88,7 +87,7 @@ export DOCKER_MACHINE_NAME="machine"
 # eval $(docker-machine env myvm)
 ```
 
-Als u de verbindings instellingen wilt definiëren, kunt u de voorgestelde configuratie opdracht (`eval $(docker-machine env myvm)`) uitvoeren, of u kunt de omgevings variabelen hand matig instellen. 
+Als u de verbindings instellingen wilt definiëren, kunt u de voorgestelde configuratie opdracht ( `eval $(docker-machine env myvm)` ) uitvoeren, of u kunt de omgevings variabelen hand matig instellen. 
 
 ## <a name="run-a-container"></a>Een container uitvoeren
 Als u een container in actie wilt zien, kunt u een eenvoudige NGINX-webserver uitvoeren. Maak een container met `docker run` en open poort 80 voor webverkeer als volgt:
@@ -110,7 +109,7 @@ Status: Downloaded newer image for nginx:latest
 675e6056cb81167fe38ab98bf397164b01b998346d24e567f9eb7a7e94fba14a
 ```
 
-Actieve containers weer geven `docker ps`met. In de volgende voorbeeld uitvoer ziet u de NGINX-container met poort 80 beschikbaar:
+Actieve containers weer geven met `docker ps` . In de volgende voorbeeld uitvoer ziet u de NGINX-container met poort 80 beschikbaar:
 
 ```bash
 CONTAINER ID    IMAGE    COMMAND                   CREATED          STATUS          PORTS                          NAMES

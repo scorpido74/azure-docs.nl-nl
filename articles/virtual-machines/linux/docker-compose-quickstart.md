@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: cynthn
 ms.openlocfilehash: 434a3ef8c9bc1738252d59a5dca5bec16d85e45e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78970309"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Aan de slag met docker en samen stellen om een toepassing met meerdere containers te definiëren en uit te voeren in azure
@@ -21,13 +20,13 @@ Dit artikel is voor het laatst getest op 2/14/2019 met behulp van de [Azure Clou
 ## <a name="create-docker-host-with-azure-cli"></a>Docker-host maken met Azure CLI
 Installeer de nieuwste [Azure cli](/cli/azure/install-az-cli2) en meld u aan bij een Azure-account met de opdracht [AZ login](/cli/azure/reference-index).
 
-Maak eerst een resource groep voor uw docker-omgeving met [AZ Group Create](/cli/azure/group). In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
+Maak eerst een resource groep voor uw docker-omgeving met [AZ Group Create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
 
 ```azurecli-interactive
 az group create --name myDockerGroup --location eastus
 ```
 
-Maak een bestand met de naam *Cloud-init. txt* en plak de volgende configuratie. Voer `sensible-editor cloud-init.txt` in voor het maken van het bestand en om een overzicht van beschikbare editors te zien. 
+Maak een bestand met de naam *cloud-init.txt* en plak de volgende configuratie. Voer `sensible-editor cloud-init.txt` in voor het maken van het bestand en om een overzicht van beschikbare editors te zien. 
 
 ```yaml
 #include https://get.docker.com
@@ -71,7 +70,7 @@ sudo apt install docker-compose
 ## <a name="create-a-docker-composeyml-configuration-file"></a>Een docker-Compose. yml-configuratie bestand maken
 Maak een `docker-compose.yml` configuratie bestand om de docker-containers te definiëren die op de virtuele machine moeten worden uitgevoerd. Het bestand geeft de installatie kopie op die moet worden uitgevoerd op elke container, de vereiste omgevings variabelen en afhankelijkheden, poorten en de koppelingen tussen containers. Zie voor meer informatie over de syntaxis van een yml-bestand de [Naslag informatie](https://docs.docker.com/compose/compose-file/)voor het opstellen van een bestand.
 
-Maak een *docker-Compose. yml* -bestand. Gebruik uw favoriete tekst editor om gegevens toe te voegen aan het bestand. In het volgende voor beeld wordt het bestand gemaakt met `sensible-editor` de vraag om een editor te kiezen die u wilt gebruiken.
+Maak een *docker-Compose. yml* -bestand. Gebruik uw favoriete tekst editor om gegevens toe te voegen aan het bestand. In het volgende voor beeld wordt het bestand gemaakt met de vraag `sensible-editor` om een editor te kiezen die u wilt gebruiken.
 
 ```bash
 sensible-editor docker-compose.yml
@@ -94,7 +93,7 @@ db:
 ```
 
 ## <a name="start-the-containers-with-compose"></a>De containers starten met opstellen
-Voer in dezelfde map als uw *docker-Compose. yml* -bestand de volgende opdracht uit (afhankelijk van uw omgeving moet u mogelijk `docker-compose` gebruikmaken `sudo`van):
+Voer in dezelfde map als uw *docker-Compose. yml* -bestand de volgende opdracht uit (afhankelijk van uw omgeving moet u mogelijk `docker-compose` gebruikmaken van `sudo` ):
 
 ```bash
 sudo docker-compose up -d
@@ -109,7 +108,7 @@ Creating wordpress_wordpress_1...
 ```
 
 
-Als u wilt controleren of de containers zijn ingesteld `sudo docker-compose ps`, typt u. Dit ziet er ongeveer als volgt uit:
+Als u wilt controleren of de containers zijn ingesteld, typt u `sudo docker-compose ps` . Dit ziet er ongeveer als volgt uit:
 
 ```
         Name                       Command               State         Ports

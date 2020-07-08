@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.subservice: alerts
 ms.openlocfilehash: cefccd08ea66638f08f00e280fe2704444a7f916
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79369383"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Metrische waarschuwing maken, bekijken en beheren met Azure Monitor
@@ -43,7 +42,7 @@ In de volgende procedure wordt beschreven hoe u een regel voor metrische waarsch
 8. Als de metriek dimensies heeft, wordt er een tabel weer gegeven. Selecteer een of meer waarden per dimensie.
     - De weer gegeven dimensie waarden zijn gebaseerd op de metrische gegevens van de afgelopen drie dagen.
     - Als de dimensie waarde die u zoekt niet wordt weer gegeven, klikt u op + om een aangepaste waarde toe te voegen.
-    - U kunt ook een van de dimensies **selecteren \* ** . **Met \* selecteren** wordt de selectie dynamisch geschaald naar alle huidige en toekomstige waarden voor een dimensie.
+    - U kunt ook een van de dimensies **selecteren \* ** . **Selecteer \* ** de selectie wordt dynamisch geschaald naar alle huidige en toekomstige waarden voor een dimensie.
 
     De metrische waarschuwings regel evalueert de voor waarde voor alle combi Naties van geselecteerde waarden. Meer [informatie over hoe waarschuwingen voor multidimensionale metrische gegevens werken](alerts-metric-overview.md).
 

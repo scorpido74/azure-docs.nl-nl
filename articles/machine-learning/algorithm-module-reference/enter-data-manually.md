@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 35e31e5ace53654e8aad794dd3e25fc04bd9a088
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79367513"
 ---
 # <a name="enter-data-manually-module"></a>De module gegevens hand matig invoeren
@@ -57,7 +56,7 @@ Deze module kan handig zijn in scenario's zoals:
   
    - **ARFF**: plakken in een bestaand ARFF-indelings bestand. Als u waarden rechtstreeks typt, moet u de optionele header en de vereiste kenmerk velden toevoegen aan het begin van de gegevens. 
 
-     De volgende koptekst-en kenmerk rijen kunnen bijvoorbeeld worden toegevoegd aan een eenvoudige lijst. De kolomkop zou zijn `SampleText`. Houd er rekening mee dat het teken reeks type niet wordt ondersteund.
+     De volgende koptekst-en kenmerk rijen kunnen bijvoorbeeld worden toegevoegd aan een eenvoudige lijst. De kolomkop zou zijn `SampleText` . Houd er rekening mee dat het teken reeks type niet wordt ondersteund.
     
      ```text
      % Title: SampleText.ARFF  

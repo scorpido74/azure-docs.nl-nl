@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 79ebf543a3880a4f2c8ee8c0d706c268ef3f08d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79263645"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Problemen oplossen: on-premises Azure AD-wachtwoord beveiliging
@@ -40,7 +39,7 @@ Het belangrijkste symptoom van dit probleem is 30018 gebeurtenissen in het gebeu
 
 1. De hostmachine blokkeert de toegang tot het RPC-eind punt (dynamisch of statisch) dat is geluisterd door de proxy service
 
-   Het installatie programma voor de Azure AD-proxy voor wachtwoord beveiliging maakt automatisch een Windows Firewall regel voor binnenkomend verkeer waarmee toegang tot alle binnenkomende poorten die door de Azure AD-service voor wachtwoord beveiliging worden geluisterd, wordt toegestaan. Als deze regel later wordt verwijderd of uitgeschakeld, kunnen DC-agents niet communiceren met de proxy service. Als de ingebouwde Windows Firewall is uitgeschakeld in plaats van een ander firewall product, moet u die Firewall zodanig configureren dat toegang wordt toegestaan tot alle binnenkomende poorten die worden geluisterd door de Azure AD-service voor wachtwoord beveiliging. Deze configuratie kan specifieker worden gemaakt als de proxy service is geconfigureerd om te Luis teren op een specifieke statische RPC-poort `Set-AzureADPasswordProtectionProxyConfiguration` (met de cmdlet).
+   Het installatie programma voor de Azure AD-proxy voor wachtwoord beveiliging maakt automatisch een Windows Firewall regel voor binnenkomend verkeer waarmee toegang tot alle binnenkomende poorten die door de Azure AD-service voor wachtwoord beveiliging worden geluisterd, wordt toegestaan. Als deze regel later wordt verwijderd of uitgeschakeld, kunnen DC-agents niet communiceren met de proxy service. Als de ingebouwde Windows Firewall is uitgeschakeld in plaats van een ander firewall product, moet u die Firewall zodanig configureren dat toegang wordt toegestaan tot alle binnenkomende poorten die worden geluisterd door de Azure AD-service voor wachtwoord beveiliging. Deze configuratie kan specifieker worden gemaakt als de proxy service is geconfigureerd om te Luis teren op een specifieke statische RPC-poort (met de `Set-AzureADPasswordProtectionProxyConfiguration` cmdlet).
 
 1. De proxy-host is niet geconfigureerd om domein controllers in staat te stellen zich aan te melden bij de computer. Dit gedrag wordt bepaald via de toewijzing van de gebruikers bevoegdheid toegang tot deze computer vanaf het netwerk. Alle domein controllers in alle domeinen in het forest moeten aan deze bevoegdheid worden verleend. Deze instelling is vaak beperkt als onderdeel van een grotere inspanning voor netwerk beveiliging.
 
@@ -50,9 +49,9 @@ Het belangrijkste symptoom van dit probleem is 30018 gebeurtenissen in het gebeu
 
 1. Zorg ervoor dat het forest en alle proxy servers zijn geregistreerd bij dezelfde Azure-Tenant.
 
-   U kunt deze vereiste controleren door de `Get-AzureADPasswordProtectionProxy` -en `Get-AzureADPasswordProtectionDCAgent` Power shell-cmdlets uit te `AzureTenant` voeren en vervolgens de eigenschap van elk geretourneerd item te vergelijken. Voor een juiste werking moet de gerapporteerde Tenant naam hetzelfde zijn voor alle DC-agents en proxy servers.
+   U kunt deze vereiste controleren door de `Get-AzureADPasswordProtectionProxy` -en `Get-AzureADPasswordProtectionDCAgent` Power shell-cmdlets uit te voeren en vervolgens de `AzureTenant` eigenschap van elk geretourneerd item te vergelijken. Voor een juiste werking moet de gerapporteerde Tenant naam hetzelfde zijn voor alle DC-agents en proxy servers.
 
-   Als er een voor waarde is die niet overeenkomt met de Azure-Tenant registratie, kan `Register-AzureADPasswordProtectionProxy` dit probleem worden `Register-AzureADPasswordProtectionForest` opgelost door de-en/of Power shell-cmdlets als nodig uit te voeren, zodat u referenties van dezelfde Azure-Tenant gebruikt voor alle registraties.
+   Als er een voor waarde is die niet overeenkomt met de Azure-Tenant registratie, kan dit probleem worden opgelost door de `Register-AzureADPasswordProtectionProxy` -en/of `Register-AzureADPasswordProtectionForest` Power shell-cmdlets als nodig uit te voeren, zodat u referenties van dezelfde Azure-Tenant gebruikt voor alle registraties.
 
 ## <a name="dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files"></a>DC-agent kan wachtwoord beleids bestanden niet versleutelen of ontsleutelen
 
@@ -94,7 +93,7 @@ Dit probleem kan verschillende oorzaken hebben.
 
 1. De wachtwoord validatie algoritme werkt mogelijk in werkelijkheid zoals verwacht. Bekijk [hoe wacht woorden worden geëvalueerd](concept-password-ban-bad.md#how-are-passwords-evaluated).
 
-## <a name="ntdsutilexe-fails-to-set-a-weak-dsrm-password"></a>Ntdsutil. exe kan geen zwak wacht woord voor DSRM instellen
+## <a name="ntdsutilexe-fails-to-set-a-weak-dsrm-password"></a>Ntdsutil.exe kan geen zwak wacht woord voor DSRM instellen
 
 Active Directory valideert altijd een nieuw wacht woord voor de herstel modus van Directory Services om te controleren of het voldoet aan de vereisten voor wachtwoord complexiteit van het domein. deze validatie roept ook wachtwoord filter-dll's aan zoals Azure AD-wachtwoord beveiliging. Als het nieuwe DSRM-wacht woord wordt afgewezen, wordt het volgende fout bericht weer gegeven:
 
@@ -166,7 +165,7 @@ Aangezien de deadline alleen wordt gecontroleerd bij de eerste keer opstarten, w
 > [!IMPORTANT]
 > Micro soft raadt aan dat verlopen open bare preview-agents direct worden bijgewerkt naar de nieuwste versie.
 
-Een eenvoudige manier om DC-agents in uw omgeving te detecteren die moeten worden bijgewerkt, is `Get-AzureADPasswordProtectionDCAgent` door de cmdlet uit te voeren, bijvoorbeeld:
+Een eenvoudige manier om DC-agents in uw omgeving te detecteren die moeten worden bijgewerkt, is door de `Get-AzureADPasswordProtectionDCAgent` cmdlet uit te voeren, bijvoorbeeld:
 
 ```powershell
 PS C:\> Get-AzureADPasswordProtectionDCAgent
@@ -216,7 +215,7 @@ Als wordt besloten de Azure AD-software voor wachtwoord beveiliging te verwijder
 
    Laat het sterretje (*) aan het einde van de waarde van de $keywords variabele niet weg.
 
-   De resulterende object (en) die via de `Get-ADObject` opdracht zijn gevonden, kunnen vervolgens worden `Remove-ADObject`gesleept naar of hand matig worden verwijderd.
+   De resulterende object (en) die via de `Get-ADObject` opdracht zijn gevonden, kunnen vervolgens worden gesleept naar `Remove-ADObject` of hand matig worden verwijderd.
 
 4. Verwijder hand matig alle verbindings punten van de DC-agent in elke domein naamgevings context. Er kan één van deze objecten per domein controller in het forest zijn, afhankelijk van hoe ver de software is geïmplementeerd. De locatie van het object kan worden gedetecteerd met de volgende Active Directory Power shell-opdracht:
 
@@ -226,7 +225,7 @@ Als wordt besloten de Azure AD-software voor wachtwoord beveiliging te verwijder
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
-   De resulterende object (en) die via de `Get-ADObject` opdracht zijn gevonden, kunnen vervolgens worden `Remove-ADObject`gesleept naar of hand matig worden verwijderd.
+   De resulterende object (en) die via de `Get-ADObject` opdracht zijn gevonden, kunnen vervolgens worden gesleept naar `Remove-ADObject` of hand matig worden verwijderd.
 
    Laat het sterretje (*) aan het einde van de waarde van de $keywords variabele niet weg.
 

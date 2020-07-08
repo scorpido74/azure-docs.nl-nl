@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
 ms.openlocfilehash: 80e3d990b6e8026c57ffff0048d0447a95529564
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79258185"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Visualisern van uw cluster met Service Fabric Explorer
@@ -37,9 +36,9 @@ Gebruik de volgende koppelingen om Service Fabric Explorer te downloaden als een
 
 ### <a name="running-service-fabric-explorer-from-the-cluster"></a>Service Fabric Explorer uitvoeren vanuit het cluster
 
-Service Fabric Explorer wordt ook gehost in het HTTP-beheer eindpunt van een Service Fabric cluster. Als u SFX in een webbrowser wilt starten, bladert u naar het HTTP-beheer eindpunt van het cluster vanuit een browser\/, bijvoorbeeld https:/clusterFQDN: 19080.
+Service Fabric Explorer wordt ook gehost in het HTTP-beheer eindpunt van een Service Fabric cluster. Als u SFX in een webbrowser wilt starten, bladert u naar het HTTP-beheer eindpunt van het cluster vanuit een browser, bijvoorbeeld https: \/ /clusterFQDN: 19080.
 
-Voor het installatie programma voor ontwikkel aars kunt u Service Fabric Explorer op uw lokale cluster starten door naar https://localhost:19080/Explorerte navigeren. Bekijk dit artikel om [uw ontwikkel omgeving voor te bereiden](service-fabric-get-started.md).
+Voor het installatie programma voor ontwikkel aars kunt u Service Fabric Explorer op uw lokale cluster starten door naar te navigeren https://localhost:19080/Explorer . Bekijk dit artikel om [uw ontwikkel omgeving voor te bereiden](service-fabric-get-started.md).
 
 > [!NOTE]
 > Als uw cluster wordt beveiligd met een zelfondertekend certificaat, ontvangt u een fout bericht van de webbrowser ' deze site is niet veilig '. U kunt gewoon door gaan met de meeste moderne webbrowsers door de waarschuwing te vervangen. In een productie omgeving moet uw cluster worden beveiligd met een algemene naam en een certificaat certificerings instantie. 
@@ -47,7 +46,7 @@ Voor het installatie programma voor ontwikkel aars kunt u Service Fabric Explore
 >
 
 ## <a name="connect-to-a-service-fabric-cluster"></a>Verbinding maken met een Service Fabric-cluster
-Als u verbinding wilt maken met een Service Fabric cluster, hebt u het knoop punt voor cluster beheer (FQDN/IP) en de HTTP-beheer eindpunt poort (standaard 19080) nodig. Bijvoorbeeld https\://mysfcluster.westus.cloudapp.Azure.com:19080. Gebruik het selectie vakje ' verbinding maken met localhost ' om verbinding te maken met een lokaal cluster op uw werk station.
+Als u verbinding wilt maken met een Service Fabric cluster, hebt u het knoop punt voor cluster beheer (FQDN/IP) en de HTTP-beheer eindpunt poort (standaard 19080) nodig. Bijvoorbeeld https \: //mysfcluster.westus.cloudapp.Azure.com:19080. Gebruik het selectie vakje ' verbinding maken met localhost ' om verbinding te maken met een lokaal cluster op uw werk station.
 
 ### <a name="connect-to-a-secure-cluster"></a>Verbinding maken met een beveiligd cluster
 U kunt de client toegang tot uw Service Fabric cluster beheren met certificaten of met behulp van Azure Active Directory (AAD).
@@ -83,7 +82,7 @@ In de knooppuntweergave ziet u de fysieke indeling van het cluster. Voor elk kno
 ## <a name="actions"></a>Acties
 Service Fabric Explorer biedt een snelle manier om acties op knoop punten, toepassingen en services in uw cluster aan te roepen.
 
-Als u bijvoorbeeld een toepassings exemplaar wilt verwijderen, kiest u de toepassing in de structuur aan de linkerkant en kiest u vervolgens **acties** > **toepassing verwijderen**.
+Als u bijvoorbeeld een toepassings exemplaar wilt verwijderen, kiest u de toepassing in de structuur aan de linkerkant en kiest u vervolgens **acties**  >  **toepassing verwijderen**.
 
 ![Een toepassing in Service Fabric Explorer verwijderen][sfx-delete-application]
 

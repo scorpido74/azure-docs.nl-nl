@@ -5,10 +5,9 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
 ms.openlocfilehash: 28647b72334d592692c5fe1b031735330d1a0509
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969579"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Problemen met de systeem status back-up oplossen
@@ -77,7 +76,7 @@ Voer de volgende stappen uit om Windows Server Back-up te installeren met behulp
 3. Selecteer een server uit de Server groep en klik op **volgende**. In de serverrol, behoud de standaard selectie en klik op **volgende**.
 4. Selecteer **Windows Server back-up** op het tabblad **functies** en klik op **volgende**.
 
-    ![functies](./media/backup-azure-system-state-troubleshoot/features.png)
+    ![features](./media/backup-azure-system-state-troubleshoot/features.png)
 
 5. Klik op het tabblad **bevestiging** op **installeren** om het installatie proces te starten.
 6. Op het tabblad **resultaten** wordt weer gegeven dat de functie Windows Server back-up is geïnstalleerd op uw Windows-Server.
@@ -92,7 +91,7 @@ Zorg ervoor dat het lokale systeem volledig beheer heeft over de map **systeem v
 
 Zorg ervoor dat de onderstaande services worden uitgevoerd:
 
-**Servicenaam** | **Opstart type**
+**Service naam** | **Opstart type**
 --- | ---
 Externe procedure aanroep (RPC) | Automatisch
 COM+-gebeurtenis systeem (Event System) | Automatisch
@@ -120,8 +119,8 @@ Voer de volgende stappen uit om Windows Server Back-up status te valideren:
       > [!NOTE]
       >Vervang X door de stationsletter van het volume waar u de systeem status back-upinstallatie kopie wilt opslaan.
 
-    - Regel matig de status van de taak controleren door `Get-WBJob` de opdracht uit te voeren vanuit een verhoogde Power shell
-    - Nadat de back-uptaak is voltooid, controleert u de uiteindelijke status `Get-WBJob -Previous 1` van de taak door de opdracht uit te voeren
+    - Regel matig de status van de taak controleren door de `Get-WBJob` opdracht uit te voeren vanuit een verhoogde Power shell
+    - Nadat de back-uptaak is voltooid, controleert u de uiteindelijke status van de taak door de opdracht uit te voeren `Get-WBJob -Previous 1`
 
 Als de taak mislukt, wordt een WSB-probleem aangegeven dat kan leiden tot storingen van de systeem status van de MARS-agent.
 

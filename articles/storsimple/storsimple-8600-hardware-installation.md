@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79254753"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Uw StorSimple 8600-apparaat uitpakken, aan het rek koppelen en bekabelen
@@ -27,7 +26,7 @@ De volgende stappen bevatten duidelijke, gedetailleerde instructies voor het uit
 ### <a name="prepare-to-unpack-your-device"></a>Voorbereiden op het uitpakken van uw apparaat
 Lees de volgende informatie voordat u uw apparaat uitpakt.
 
-![Waarschuwing pictogram](./media/storsimple-safety/IC740879.png)![pictogram voor zwaar](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) gewicht **.**
+![Waarschuwing pictogram pictogram voor ](./media/storsimple-safety/IC740879.png)![ zwaar gewicht ](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **.**
 
 1. Zorg ervoor dat er twee mensen beschikbaar zijn om het gewicht van het apparaat te beheren als u het hand matig verwerkt. Een volledig geconfigureerde behuizing kan tot 32 kg (70 lbs) wegen.
 2. Leg de doos op een vlak, horizontaal oppervlak.
@@ -85,7 +84,7 @@ De behuizingen moeten worden geïnstalleerd in een standaard 19-inch rack met zo
 2. Controleer of de site waar u wilt instellen, een standaard AC van een onafhankelijke bron of een PDU (netstroom distributie-eenheid) met een nood voeding (UPS) heeft.
 3. Zorg ervoor dat er één 4U (2 X 2U)-sleuf beschikbaar is in het rek waarin u de bijlagen wilt koppelen.
 
-![Waarschuwing pictogram](./media/storsimple-safety/IC740879.png)![pictogram voor zwaar](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) gewicht **.**
+![Waarschuwing pictogram pictogram voor ](./media/storsimple-safety/IC740879.png)![ zwaar gewicht ](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **.**
 
  Zorg ervoor dat er twee mensen beschikbaar zijn voor het beheren van het gewicht als u de apparaat-installatie hand matig uitvoert. Een volledig geconfigureerde behuizing kan tot 32 kg (70 lbs) wegen.
 
@@ -198,7 +197,7 @@ Ter ondersteuning van deze redundante Controller-failover moet u het netwerk van
    
     **Terug op het apparaat met de gegevens poorten**
    
-   | Label | Beschrijving |
+   | Label | Description |
    | --- | --- |
    |   0, 1, 4, 5 |1 GbE-netwerk interfaces |
    |   2, 3 |10 GbE-netwerk interfaces |
@@ -209,7 +208,7 @@ Ter ondersteuning van deze redundante Controller-failover moet u het netwerk van
 
 **Netwerk kabels voor uw apparaat**
 
-| Label | Beschrijving |
+| Label | Description |
 | --- | --- |
 | A |LAN met Internet toegang |
 | B |Controller 0 |

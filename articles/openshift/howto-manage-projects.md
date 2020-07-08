@@ -9,10 +9,9 @@ ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
 ms.openlocfilehash: d4f53238951784a74e6e3fc8a73d1f112ce75608
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79139110"
 ---
 # <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Projecten, sjablonen, afbeeldings stromen beheren in een Azure Red Hat open Shift-cluster 
@@ -37,7 +36,7 @@ De toegang tot de API wordt verleend aan ontwikkel aars met de cluster functie v
 
 ## <a name="modify-the-template-for-a-new-project"></a>De sjabloon voor een nieuw project wijzigen 
 
-1. Meld u aan als een gebruiker `customer-admin` met bevoegdheden.
+1. Meld u aan als een gebruiker met `customer-admin` bevoegdheden.
 
 2. Bewerk de standaard sjabloon project-aanvraag.
 
@@ -61,7 +60,7 @@ De toegang tot de API wordt verleend aan ontwikkel aars met de cluster functie v
 
 U kunt voor komen dat een geverifieerde gebruikers groep nieuwe projecten zelf inricht.
 
-1. Meld u aan als een gebruiker `customer-admin` met bevoegdheden.
+1. Meld u aan als een gebruiker met `customer-admin` bevoegdheden.
 
 2. Bewerk de cluster functie binding Self-inrichting.
 
@@ -69,7 +68,7 @@ U kunt voor komen dat een geverifieerde gebruikers groep nieuwe projecten zelf i
    oc edit clusterrolebinding.rbac.authorization.k8s.io self-provisioners
    ```
 
-3. Verwijder de rol uit het ARO-update proces door de volgende aantekening `openshift.io/reconcile-protect: "true"`toe te voegen:.
+3. Verwijder de rol uit het ARO-update proces door de volgende aantekening toe te voegen: `openshift.io/reconcile-protect: "true"` .
 
    ```
    ...
@@ -79,7 +78,7 @@ U kunt voor komen dat een geverifieerde gebruikers groep nieuwe projecten zelf i
    ...
    ```
 
-4. Wijzig de binding van de cluster functie `system:authenticated:oauth` om te voor komen dat projecten worden gemaakt:
+4. Wijzig de binding van de cluster functie om te voor komen dat `system:authenticated:oauth` projecten worden gemaakt:
 
    ```
    apiVersion: rbac.authorization.k8s.io/v1
@@ -101,12 +100,12 @@ U kunt voor komen dat een geverifieerde gebruikers groep nieuwe projecten zelf i
 
 ## <a name="manage-default-templates-and-imagestreams"></a>Standaard sjablonen en imageStreams beheren
 
-In azure Red Hat open Shift kunt u updates uitschakelen voor alle standaard sjablonen en afbeeldings stromen binnen `openshift` de naam ruimte.
-Updates voor alle en `Templates` `ImageStreams` in `openshift` de naam ruimte uitschakelen:
+In azure Red Hat open Shift kunt u updates uitschakelen voor alle standaard sjablonen en afbeeldings stromen binnen de `openshift` naam ruimte.
+Updates voor alle `Templates` en in de `ImageStreams` `openshift` naam ruimte uitschakelen:
 
-1. Meld u aan als een gebruiker `customer-admin` met bevoegdheden.
+1. Meld u aan als een gebruiker met `customer-admin` bevoegdheden.
 
-2. Naam `openshift` ruimte bewerken:
+2. `openshift`Naam ruimte bewerken:
 
    ```
    oc edit namespace openshift
@@ -122,7 +121,7 @@ Updates voor alle en `Templates` `ImageStreams` in `openshift` de naam ruimte ui
    ...
    ```
 
-   Elk afzonderlijk object in de `openshift` naam ruimte kan worden verwijderd uit het update proces door hieraan een `openshift.io/reconcile-protect: "true"` aantekening toe te voegen.
+   Elk afzonderlijk object in de `openshift` naam ruimte kan worden verwijderd uit het update proces door hieraan een aantekening toe te voegen `openshift.io/reconcile-protect: "true"` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 12/14/2017
 ms.author: cynthn
 ms.openlocfilehash: 7ee4674f5e7c04709256459c3417a1379a65aedc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969566"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Een volledige virtuele Linux-machine maken met de Azure CLI
@@ -21,13 +20,13 @@ Zorg ervoor dat u de nieuwste [Azure cli](/cli/azure/install-az-cli2) hebt geïn
 Vervang in de volgende voor beelden voorbeeld parameter namen door uw eigen waarden. Voor beelden van parameter namen zijn *myResourceGroup*, *myVnet*en *myVM*.
 
 ## <a name="create-resource-group"></a>Een resourcegroep maken
-Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Er moet een resource groep worden gemaakt vóór een virtuele machine en de ondersteunende bronnen voor het virtuele netwerk. Maak de resource groep met [AZ Group Create](/cli/azure/group). In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
+Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Er moet een resource groep worden gemaakt vóór een virtuele machine en de ondersteunende bronnen voor het virtuele netwerk. Maak de resource groep met [AZ Group Create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-De uitvoer van Azure CLI-opdrachten bevindt zich standaard in JSON (JavaScript Object Notation). Als u de standaard uitvoer wilt wijzigen in een lijst of tabel, gebruikt u bijvoorbeeld [AZ Configure--Output](/cli/azure/reference-index). U kunt ook toevoegen `--output` aan elke opdracht voor eenmalige wijziging in uitvoer indeling. In het volgende voor beeld ziet u de JSON `az group create` -uitvoer van de opdracht:
+De uitvoer van Azure CLI-opdrachten bevindt zich standaard in JSON (JavaScript Object Notation). Als u de standaard uitvoer wilt wijzigen in een lijst of tabel, gebruikt u bijvoorbeeld [AZ Configure--Output](/cli/azure/reference-index). U kunt ook toevoegen `--output` aan elke opdracht voor eenmalige wijziging in uitvoer indeling. In het volgende voor beeld ziet u de JSON-uitvoer van de `az group create` opdracht:
 
 ```json                       
 {
@@ -94,7 +93,7 @@ In de uitvoer ziet u dat het subnet logisch is gemaakt in het virtuele netwerk:
 
 
 ## <a name="create-a-public-ip-address"></a>Een openbaar IP-adres maken
-We gaan nu een openbaar IP-adres maken met [AZ Network Public-IP Create](/cli/azure/network/public-ip). Met dit open bare IP-adres kunt u via Internet verbinding maken met uw virtuele machines. Omdat het standaard adres dynamisch is, maakt u een DNS-vermelding met `--domain-name-label` de naam met de para meter. In het volgende voor beeld wordt een openbaar IP-adres met de naam *myPublicIP* gemaakt met de DNS- *mypublicdns*. Omdat de DNS-naam uniek moet zijn, geeft u uw eigen unieke DNS-naam op:
+We gaan nu een openbaar IP-adres maken met [AZ Network Public-IP Create](/cli/azure/network/public-ip). Met dit open bare IP-adres kunt u via Internet verbinding maken met uw virtuele machines. Omdat het standaard adres dynamisch is, maakt u een DNS-vermelding met de naam met de `--domain-name-label` para meter. In het volgende voor beeld wordt een openbaar IP-adres met de naam *myPublicIP* gemaakt met de DNS- *mypublicdns*. Omdat de DNS-naam uniek moet zijn, geeft u uw eigen unieke DNS-naam op:
 
 ```azurecli
 az network public-ip create \
@@ -471,7 +470,7 @@ De uitvoer notities fout domeinen en update domeinen:
 ## <a name="create-a-vm"></a>Een virtuele machine maken
 U hebt de netwerk bronnen gemaakt ter ondersteuning van virtuele machines die toegankelijk zijn via internet. Maak nu een VM en beveilig deze met een SSH-sleutel. In dit voor beeld maken we een Ubuntu-VM op basis van de meest recente LTS. U kunt aanvullende installatie kopieën vinden met [AZ VM Image List](/cli/azure/vm/image), zoals beschreven in [Azure VM-installatie kopieën zoeken](cli-ps-findimage.md).
 
-Geef een SSH-sleutel op die moet worden gebruikt voor verificatie. Als u geen open bare SSH-sleutel paar hebt, kunt u [deze maken](mac-create-ssh-keys.md) of de `--generate-ssh-keys` para meter gebruiken om ze voor u te maken. Als u al een sleutel paar hebt, gebruikt deze para meter bestaande sleutels `~/.ssh`in.
+Geef een SSH-sleutel op die moet worden gebruikt voor verificatie. Als u geen open bare SSH-sleutel paar hebt, kunt u [deze maken](mac-create-ssh-keys.md) of de `--generate-ssh-keys` para meter gebruiken om ze voor u te maken. Als u al een sleutel paar hebt, gebruikt deze para meter bestaande sleutels in `~/.ssh` .
 
 Maak de virtuele machine door alle resources en informatie samen met de opdracht [AZ VM Create](/cli/azure/vm) op te halen. In het volgende voor beeld wordt een VM gemaakt met de naam *myVM*:
 
@@ -556,7 +555,7 @@ Wat moet u doen als u nu een extra ontwikkel omgeving met dezelfde para meters o
 az group export --name myResourceGroup > myResourceGroup.json
 ```
 
-Met deze opdracht maakt `myResourceGroup.json` u het bestand in de huidige werkmap. Wanneer u een omgeving maakt op basis van deze sjabloon, wordt u gevraagd om alle resource namen. U kunt deze namen invullen in het sjabloon bestand door de `--include-parameter-default-value` para meter toe te `az group export` voegen aan de opdracht. Bewerk de JSON-sjabloon om de resource namen op te geven of [Maak een JSON-bestand](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) waarin de resource namen worden opgegeven.
+Met deze opdracht maakt `myResourceGroup.json` u het bestand in de huidige werkmap. Wanneer u een omgeving maakt op basis van deze sjabloon, wordt u gevraagd om alle resource namen. U kunt deze namen invullen in het sjabloon bestand door de `--include-parameter-default-value` para meter toe te voegen aan de `az group export` opdracht. Bewerk de JSON-sjabloon om de resource namen op te geven of [Maak een parameters.jsvoor het bestand](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) waarin de resource namen worden opgegeven.
 
 Als u een omgeving wilt maken op basis van uw sjabloon, gebruikt u [AZ Group Deployment maken](/cli/azure/group/deployment) als volgt:
 
