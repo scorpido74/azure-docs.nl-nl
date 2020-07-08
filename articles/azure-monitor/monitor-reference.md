@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
-ms.openlocfilehash: 146deba7a0ef1e0dc5ffe03f9ad414e752058274
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70c1b35759241c2fdf687e7b7042cf4a18232bf5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945372"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085494"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Wat wordt er bewaakt door Azure Monitor?:
 In dit artikel worden de verschillende toepassingen en services beschreven die door Azure Monitor worden bewaakt. 
@@ -32,7 +32,7 @@ Inzichten bieden een aangepaste bewakings ervaring voor bepaalde toepassingen en
 [Azure Monitor voor resource groepen (preview-versie)](insights/resource-group-insights.md) |  Sorteren en diagnose eventuele problemen die uw afzonderlijke bronnen ondervinden, terwijl u context biedt voor de status en prestaties van de resource groep als geheel. |
 | [Azure Monitor voor opslag](insights/storage-insights-overview.md) | Biedt uitgebreide bewaking van uw Azure Storage-accounts door een uniforme weer gave te bieden van de prestaties, capaciteit en beschik baarheid van uw Azure Storage services. |
 | [Azure Monitor voor virtuele machines](insights/vminsights-overview.md) | Bewaakt uw Azure virtual machines (VM) en virtuele-machine schaal sets op schaal. De service analyseert de prestaties en status van uw Windows- en Linux-VM's en bewaakt hun processen en afhankelijkheden van andere resources en externe processen. |
-| [Azure Monitor voor Key Vault (preview-versie)](insights/key-vaults-insights-overview.md) | Povides uitgebreide bewaking van uw sleutel kluizen door een uniforme weer gave van uw Key Vault-aanvragen, prestaties, fouten en latentie te bieden. |
+| [Azure Monitor voor Key Vault (preview-versie)](insights/key-vaults-insights-overview.md) | Biedt uitgebreide bewaking van uw sleutel kluizen door een uniforme weer gave te bieden van uw Key Vault aanvragen, prestaties, fouten en latentie. |
 | [Azure Monitor voor Azure-cache voor redis (preview-versie)](insights/redis-cache-insights-overview.md) |  Biedt een geïntegreerde, interactieve weer gave van de algehele prestaties, fouten, capaciteit en operationele status. |
 
 
@@ -149,7 +149,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Service Bus | Yes | Ja | No |  |
 |Service Fabric | No | Yes | No | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken.  |
 |Aanmeldings Portal | Nee | Nee | Nee |  |
-|Siteherstel | No | Yes | No |  |
+|Site Recovery | No | Yes | No |  |
 |Lente-Cloud service | Nee | Nee | Nee |  |
 |SQL Data Warehouse | Yes | Ja | No |  |
 |SQL Database | Yes | Ja | No |  |
@@ -164,7 +164,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Traffic Manager | Yes | Ja | No |  |
 |Universeel afdrukken | Nee | Nee | Nee |  |
 |Virtuele-machineschaalsets | No | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
-|Virtual Machines | Yes | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
+|Virtuele machines | Yes | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
 |Virtual Network | Yes | Ja | [Ja](insights/network-insights-overview.md) |  |
 |Virtual Network-NSG-stroom logboeken | No | Yes | No |  |
 |VPN Gateway | Yes | Ja | No |  |
@@ -184,7 +184,7 @@ De services en oplossingen in de volgende tabel slaan hun gegevens op in een Log
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | Een diagnostische instelling maken om logboeken naar Azure Monitor te verzenden. Zie [logboek gegevens naar opslag, Event hubs of log Analytics verzenden in intune (preview)](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor).  |
 | Netwerk  | [Netwerkprestatiemeter](insights/network-performance-monitor.md) -Controleer de netwerk verbinding en prestaties voor service-en toepassings eindpunten.<br>[Azure-toepassing gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) -logboeken en metrische gegevens van Azure-toepassing gateway analyseren.<br>[Traffic Analytics](/azure/network-watcher/traffic-analytics) -Network Watcher netwerk beveiligings groep (NSG) stroom logboeken analyseren om inzicht te krijgen in de verkeers stroom in uw Azure-Cloud. |
 | [Office 365](insights/solution-office-365.md) | Uw Office 365-omgeving bewaken. Bijgewerkte versie met verbeterde onboarding beschikbaar via Azure Sentinel. |
-| [SQL Analytics](insights/azure-sql.md) | Bewaak de prestaties van Azure SQL-data bases, elastische Pools en beheerde exemplaren op schaal en op meerdere abonnementen. |
+| [SQL Analytics](insights/azure-sql.md) | Bewaak de prestaties van Azure SQL-data bases en SQL Managed instances op schaal en op meerdere abonnementen. |
 | [Surface Hub](insights/surface-hubs.md) | De status en het gebruik van Surface Hub apparaten bijhouden. |
 | [System Center Operations Manager](https://docs.microsoft.com/system-center/scom) | Gegevens verzamelen van Operations Manager agents door hun beheer groep te verbinden met Azure Monitor. Zie [Operations Manager verbinding maken met Azure monitor](platform/om-agents.md)<br> Evalueer het risico en de status van uw System Center Operations Manager-beheer groep met [Operations Manager-beoordelings](insights/scom-assessment.md) oplossing. |
 | [Micro soft teams-kamers](https://docs.microsoft.com/microsoftteams/room-systems/azure-monitor-deploy) | Geïntegreerd, end-to-end-beheer van micro soft teams-apparaten. |

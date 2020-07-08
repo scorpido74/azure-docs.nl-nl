@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: 8a47131cb4f19cce1664eafa50c67ab1a1171e67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a41c1f634c030106dd6936676010fea32da8d436
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77919427"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084015"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Opstarten van Azure VM is vastgelopen op Windows Update
 
@@ -47,14 +48,19 @@ Het update proces kan enige tijd in beslag nemen, afhankelijk van het aantal upd
 
 4. Open een opdracht prompt exemplaar met verhoogde bevoegdheid (als administrator uitvoeren). Voer de volgende opdracht uit om de lijst op te halen van de update pakketten die zich op de gekoppelde besturingssysteem schijf bevinden:
 
-        dism /image:<Attached OS disk>:\ /get-packages > c:\temp\Patch_level.txt
+    ```console
+    dism /image:<Attached OS disk>:\ /get-packages > c:\temp\Patch_level.txt
+    ```
 
     Als de gekoppelde besturingssysteem schijf bijvoorbeeld station F is, voert u de volgende opdracht uit:
 
-        dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
+    ```console
+    dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
+    ```
+
 5. Open het C:\temp\Patch_level.txt-bestand en lees het van de onderkant. Zoek de update die in **behandeling** is of verwijder de status in **behandeling** .  Hier volgt een voor beeld van de update status:
 
-     ```
+    ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
     State : Install Pending
     Release Type : Security Update

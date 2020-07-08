@@ -5,21 +5,21 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 07/07/2020
 ms.author: daperlov
-ms.openlocfilehash: 5e75f2203552a69e50ed16176525429c6c9d8810
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c4f2df074bc7feaa42704942a3fd238ab4b333a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807817"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083777"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Gemeen schappelijke gegevens model indeling in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Het gegevens systeem van het common data model (CDM) maakt het mogelijk om gegevens en de betekenis ervan eenvoudig te delen tussen toepassingen en bedrijfs processen. Zie het overzicht van [common data model](https://docs.microsoft.com/common-data-model/) voor meer informatie.
 
-In Azure Data Factory kunnen gebruikers transformeren naar en van CDM-entiteiten die zijn opgeslagen in [Azure data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) met toewijzing van gegevens stromen.
+In Azure Data Factory kunnen gebruikers transformeren naar en van CDM-entiteiten die zijn opgeslagen in [Azure data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) met toewijzing van gegevens stromen. U kunt kiezen uit model.js-en manifest stijl CDM-bronnen en schrijven naar CDM-manifest bestanden.
 
 > [!NOTE]
 > De standaard-connector voor gegevens modellen (CDM) voor ADF-gegevens stromen is momenteel beschikbaar als open bare preview.
@@ -27,6 +27,9 @@ In Azure Data Factory kunnen gebruikers transformeren naar en van CDM-entiteiten
 ## <a name="mapping-data-flow-properties"></a>Eigenschappen van gegevens stroom toewijzen
 
 Het common data model is beschikbaar als een [inline-gegevensset](data-flow-source.md#inline-datasets) in het toewijzen van gegevens stromen als een bron en een sink.
+
+> [!NOTE]
+> Bij het schrijven van CDM-entiteiten moet er al een bestaande CDM-entiteits definitie (meta gegevens schema) zijn gedefinieerd. Met de Sink van de ADF-gegevens stroom wordt dat bestand van de CDM-entiteit gelezen en wordt het schema in uw Sink voor veld toewijzing geïmporteerd.
 
 ### <a name="source-properties"></a>Bron eigenschappen
 
@@ -51,8 +54,16 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 
 #### <a name="import-schema"></a>Schema importeren
 
-CDM is alleen beschikbaar als een inline-gegevensset en heeft standaard geen bijbehorend schema. Als u kolom meta gegevens wilt ophalen, klikt u op de knop **schema importeren** op het tabblad **projectie** . Hiermee kunt u verwijzen naar de kolom namen en gegevens typen die door de verzameling zijn opgegeven. Als u het schema wilt importeren, moet de [fout opsporings sessie van de gegevens stroom](concepts-data-flow-debug-mode.md) actief zijn.
+CDM is alleen beschikbaar als een inline-gegevensset en heeft standaard geen bijbehorend schema. Als u kolom meta gegevens wilt ophalen, klikt u op de knop **schema importeren** op het tabblad **projectie** . Hiermee kunt u verwijzen naar de kolom namen en gegevens typen die door de verzameling zijn opgegeven. Als u het schema wilt importeren, moet een foutopsporingssessie voor [gegevens stromen](concepts-data-flow-debug-mode.md) actief zijn en moet u een bestaand CDM-entiteits definitie bestand hebben om naar te verwijzen.
 
+> [!NOTE]
+>  Wanneer u model.jsgebruikt voor het bron type dat afkomstig is van Power BI of het Power platform gegevens stromen, kan het zijn dat het fout verzameling pad is null of leeg is van de bron transformatie. Dit komt waarschijnlijk door het format teren van problemen met het pad van de partitie locatie in de model.jsin het bestand. Voer de volgende stappen uit om dit probleem op te lossen: 
+
+1. Het model.jsbestand openen in een tekst editor
+2. Zoek de partities. Locatie-eigenschap 
+3. Wijzig ' blob.core.windows.net ' in ' dfs.core.windows.net '
+4. De code ring '% 2F ' in de URL naar '/' oplossen
+ 
 
 ### <a name="cdm-source-data-flow-script-example"></a>Voor beeld van CDM-bron gegevensstroom script
 

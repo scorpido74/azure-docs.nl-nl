@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/10/2020
-ms.openlocfilehash: 817e1d740ce34704acb4b20a7c3f71807bfa66bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d462fa0fa2afe5937c60985938c8268991dfa41
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84187942"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084219"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Zelf studie: SQL Server naar een Azure SQL Managed instance online migreren met behulp van DMS
 
@@ -77,7 +78,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 * Als u meerdere benoemde exemplaren van SQL Server met dynamische poorten uitvoert, kunt u de SQL Browser-service inschakelen en toegang tot UDP-poort 1434 toestaan via uw firewalls zodat Azure Database Migration Service verbinding kan maken met een benoemd exemplaar op uw bron server.
 * Als u voor uw bron databases een firewall apparaat gebruikt, moet u mogelijk firewall regels toevoegen om Azure Database Migration Service toegang te geven tot de bron database (s) voor migratie, evenals bestanden via SMB-poort 445.
 * Maak een door SQL beheerd exemplaar door de details in het artikel [een SQL Managed instance maken in de Azure Portal](https://aka.ms/sqldbmi)te volgen.
-* Zorg ervoor dat de aanmeldingsreferenties die worden gebruikt om het bronexemplaar van SQL Server en het doelexemplaar van Managed Instance te verbinden, lid zijn van de serverrol sysadmin.
+* Zorg ervoor dat de aanmeldingen die worden gebruikt om verbinding te maken met de bron SQL Server en het beheerde exemplaar van SQL Managed instance lid zijn van de serverrol sysadmin.
 * Geef een SMB-netwerk share op met alle back-upbestanden van de data base en volgende back-upbestanden voor transactie logboeken, die Azure Database Migration Service kunnen gebruiken voor database migratie.
 * Zorg ervoor dat het serviceaccount van het bronexemplaar van SQL Server schrijfbevoegdheid heeft voor de netwerkshare die u hebt gemaakt en dat het computeraccount voor de bronserver lees-/schrijftoegang heeft tot de share.
 * Maak een notitie van een Windows-gebruiker (en wachtwoord) die volledig beheer heeft over de netwerkshare die u eerder hebt gemaakt. Azure Database Migration Service imiteert de gebruikers referentie voor het uploaden van de back-upbestanden naar Azure Storage container voor de herstel bewerking.
@@ -265,6 +266,6 @@ Nadat de volledige back-up van de data base is hersteld op het doel exemplaar va
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [een back-up terugzetten naar een beheerd exemplaar met behulp van de opdracht herstellen](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)voor een zelf studie waarin wordt beschreven hoe u een Data Base naar een beheerd exemplaar migreert met de opdracht voor het terugzetten van T-SQL.
-* Zie [Wat is een beheerd exemplaar](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)? voor meer informatie over een beheerd exemplaar.
-* Zie [toepassingen verbinden](../azure-sql/managed-instance/connect-application-instance.md)voor meer informatie over het verbinden van apps met een beheerd exemplaar.
+* Zie [een back-up herstellen naar een SQL-beheerd exemplaar met behulp van de opdracht herstellen](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)voor een zelf studie waarin wordt beschreven hoe u een Data Base naar een beheerd exemplaar van SQL migreert met de opdracht voor het terugzetten van T-SQL.
+* Zie [What is SQL Managed](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)instance (Engelstalig) voor meer informatie over SQL Managed instance.
+* Zie [toepassingen verbinden](../azure-sql/managed-instance/connect-application-instance.md)voor meer informatie over het verbinden van apps met een SQL Managed instance.

@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: amqp
-ms.openlocfilehash: a9bc0564a69124618d0a7e3ff6bafb65b2be0ee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7ab796ddd35ebe9b9c43509d8e3c2f4c41625c8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907479"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083985"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Apparaat-naar-cloud-berichten lezen van het geïntegreerde eindpunt
 
@@ -57,7 +57,7 @@ In de portal bevat het veld met de Event hub-compatibel eind punt een volledig E
 | Hostnaam | abcd1234namespace.servicebus.windows.net |
 | Naamruimte | abcd1234namespace |
 
-U kunt vervolgens elk gedeeld toegangs beleid gebruiken dat de **ServiceConnect** -machtigingen heeft om verbinding te maken met de opgegeven Event hub.
+U kunt vervolgens elk gedeeld toegangs beleid kiezen in de vervolg keuzelijst, zoals wordt weer gegeven in de bovenstaande scherm afbeelding. Er wordt alleen beleid weer gegeven met de **ServiceConnect** -machtigingen om verbinding te maken met de opgegeven Event hub.
 
 De Sdk's die u kunt gebruiken om verbinding te maken met het ingebouwde Event hub-compatibele eind punt dat IoT Hub beschikbaar is, zijn:
 

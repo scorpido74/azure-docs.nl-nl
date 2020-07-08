@@ -1,7 +1,7 @@
 ---
 title: Netwerk toegangs beheer
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: Overzicht van het beheren en controleren van de netwerk toegang voor Azure SQL Database en Azure SQL Data Warehouse (voorheen Azure SQL Data Warehouse).
+description: Overzicht van het beheren en controleren van de netwerk toegang voor Azure SQL Database en Azure Synapse Analytics (voorheen Azure SQL Data Warehouse).
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 3a88ce96ca95bd02481558597bcc8082adf7c975
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 435a5fe6f5900ffe742d4459e8e402d2e698ca9f
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343979"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085460"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL Database-en Azure Synapse Analytics-netwerk toegangs beheer
 
@@ -56,7 +56,7 @@ Dit heeft echter gevolgen voor de volgende functies die worden uitgevoerd op vir
 
 ### <a name="import-export-service"></a>Import export service
 
-Import export service werkt niet wanneer **toegang tot Azure-Services toestaan** is ingesteld op **uit**. U kunt het probleem echter omzeilen [door sqlpackage. exe hand matig uit te voeren vanuit een Azure VM of door de export](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) rechtstreeks in uw code uit te voeren met behulp van de DACFX-API.
+Import export service werkt niet wanneer **toegang tot Azure-Services toestaan** is ingesteld op **uit**. U kunt het probleem echter omzeilen [door sqlpackage.exe hand matig uit te voeren vanaf een Azure VM of door de export](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) rechtstreeks in uw code uit te voeren met behulp van de DACFX-API.
 
 ### <a name="data-sync"></a>Gegevens synchroniseren
 
@@ -82,7 +82,7 @@ PS C:\> $sql.Properties.AddressPrefixes
 > [!TIP]
 > Get-AzNetworkServiceTag retourneert het globale bereik voor SQL service-tag ondanks het opgeven van de locatie parameter. Zorg ervoor dat u deze filtert op de regio die de hub-data base host die door de synchronisatie groep wordt gebruikt
 
-Houd er rekening mee dat de uitvoer van het Power shell-script zich in CIDR-notatie (Classless Inter-Domain Routing) bevindt. Dit moet worden geconverteerd naar een indeling van het begin-en eind-IP-adres met behulp van [Get-IPrangeStartEnd. ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) als volgt:
+Houd er rekening mee dat de uitvoer van het Power shell-script zich in CIDR-notatie (Classless Inter-Domain Routing) bevindt. Dit moet worden geconverteerd naar een indeling van het begin-en eind-IP-adres met [Get-IPrangeStartEnd.ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) als volgt:
 
 ```powershell
 PS C:\> Get-IPrangeStartEnd -ip 52.229.17.93 -cidr 26
@@ -104,9 +104,9 @@ start          end
 
 U kunt deze nu als afzonderlijke firewall regels toevoegen en vervolgens instellen **dat Azure-Services toegang heeft** tot de server.
 
-## <a name="ip-firewall-rules"></a>IP-firewall regels
+## <a name="ip-firewall-rules"></a>IP-firewallregels
 
-Op IP gebaseerde firewall is een functie van de logische SQL-Server in azure waarmee alle toegang tot uw database server wordt voor komen, totdat u de [IP-adressen](firewall-create-server-level-portal-quickstart.md) van de client computers expliciet toevoegt.
+Op IP gebaseerde firewall is een functie van de logische SQL-Server in azure waarmee de toegang tot uw server wordt voor komen, totdat u de [IP-adressen](firewall-create-server-level-portal-quickstart.md) van de client computers expliciet toevoegt.
 
 ## <a name="virtual-network-firewall-rules"></a>Firewallregels voor virtueel netwerk
 
@@ -131,7 +131,7 @@ Houd rekening met de volgende Azure-netwerk termen wanneer u de firewall regels 
 
 Met de Azure SQL Database firewall kunt u IP-adresbereiken opgeven waarvan de communicatie in SQL Database wordt geaccepteerd. Deze aanpak is nauw keurig voor stabiele IP-adressen die zich buiten het particuliere Azure-netwerk bevinden. Virtuele machines (Vm's) in het particuliere Azure-netwerk zijn echter geconfigureerd met *dynamische* IP-adressen. Dynamische IP-adressen kunnen veranderen wanneer de virtuele machine opnieuw wordt opgestart en de op IP gebaseerde firewall regel ongeldig maken. Het is Folly om een dynamisch IP-adres op te geven in een firewall regel, in een productie omgeving.
 
-U kunt deze beperking omzeilen door een *statisch* IP-adres voor uw virtuele machine te verkrijgen. Zie voor meer informatie [privé IP-adressen configureren voor een virtuele machine met behulp van de Azure Portal](../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md). De aanpak van een statisch IP-adres kan echter moeilijk te beheren zijn, en het kost veel tijd om op schaal te worden uitgevoerd.
+U kunt deze beperking omzeilen door een *statisch* IP-adres voor uw virtuele machine te verkrijgen. Zie [een virtuele machine maken met een statisch openbaar IP-adres met behulp van de Azure Portal](../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md)voor meer informatie. De aanpak van een statisch IP-adres kan echter moeilijk te beheren zijn, en het kost veel tijd om op schaal te worden uitgevoerd.
 
 Regels voor virtuele netwerken zijn eenvoudiger om de toegang tot stand te brengen en te beheren vanaf een specifiek subnet dat uw virtuele machines bevat.
 
@@ -154,7 +154,7 @@ Met persoonlijke koppeling kunt u verbinding maken met een server via een **pers
 
 - Zie [Azure SQL-connectiviteits architectuur](connectivity-architecture.md) voor een overzicht van Azure SQL database connectiviteit
 
-- Zie [uw data base beveiligen](security-overview.md) voor een overzicht van Azure SQL database beveiliging
+- Zie [Uw database beveiligen](security-overview.md) voor een overzicht van Azure SQL Database security
 
 <!--Image references-->
 [1]: media/quickstart-create-single-database/new-server2.png

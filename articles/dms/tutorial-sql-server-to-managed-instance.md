@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 36efd3e90731e7659f023ad99df1eb9cb3c0198f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f20b9236631057449a337e4e161b7468f995e306
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84247441"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085526"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-offline-using-dms"></a>Zelf studie: SQL Server naar een Azure SQL Managed instance offline migreren met behulp van DMS
 
@@ -60,7 +61,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 - Als u meerdere benoemde exemplaren van SQL Server met dynamische poorten uitvoert, kunt u de SQL Browser-service inschakelen en toegang tot UDP-poort 1434 toestaan via uw firewalls zodat Azure Database Migration Service verbinding kan maken met een benoemd exemplaar op uw bron server.
 - Als u voor uw bron databases een firewall apparaat gebruikt, moet u mogelijk firewall regels toevoegen om Azure Database Migration Service toegang te geven tot de bron database (s) voor migratie, evenals bestanden via SMB-poort 445.
 - Maak een door SQL beheerd exemplaar door de details in het artikel [een SQL Managed instance maken in de Azure Portal](https://aka.ms/sqldbmi)te volgen.
-- Zorg ervoor dat de aanmeldingsreferenties die worden gebruikt voor verbinding met het bronexemplaar van SQL Server en het doelexemplaar van het beheerde exemplaar lid zijn van de serverrol sysadmin.
+- Zorg ervoor dat de aanmeldingen die worden gebruikt om verbinding te maken met de bron SQL Server en het beheerde exemplaar van SQL Managed instance lid zijn van de serverrol sysadmin.
 
     >[!NOTE]
     >Standaard biedt Azure Database Migration Service alleen ondersteuning voor het migreren van SQL-aanmeldingen. U kunt echter de mogelijkheid om Windows-aanmeldingen te migreren door:
@@ -112,7 +113,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
     Zie het artikel [een virtueel netwerk maken met behulp van de Azure Portal](https://aka.ms/DMSVnet)voor meer informatie over het maken van een virtueel netwerk in azure Portal.
 
-    Zie het artikel [netwerk topologieën voor Azure SQL data base-migraties van beheerde exemplaren met Azure database Migration service](https://aka.ms/dmsnetworkformi)voor meer informatie.
+    Zie voor meer informatie het artikel [netwerktopologieën voor Azure SQL Managed instance-migraties met behulp van Azure database Migration service](https://aka.ms/dmsnetworkformi).
 
 6. Selecteer een prijscategorie.
 
@@ -244,6 +245,6 @@ Nadat er een exemplaar van de service is gemaakt, zoekt u het exemplaar in de Az
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [een back-up terugzetten naar een beheerd exemplaar met behulp van de opdracht herstellen](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)voor een zelf studie waarin wordt beschreven hoe u een Data Base naar een beheerd exemplaar migreert met de opdracht voor het terugzetten van T-SQL.
-- Zie [Wat is een beheerd exemplaar](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)? voor meer informatie over een beheerd exemplaar.
-- Zie [toepassingen verbinden](../azure-sql/managed-instance/connect-application-instance.md)voor meer informatie over het verbinden van apps met een beheerd exemplaar.
+- Zie [een back-up herstellen naar een SQL-beheerd exemplaar met behulp van de opdracht herstellen](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)voor een zelf studie waarin wordt beschreven hoe u een Data Base naar een beheerd exemplaar van SQL migreert met de opdracht voor het terugzetten van T-SQL.
+- Zie [What is SQL Managed](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)instance (Engelstalig) voor meer informatie over SQL Managed instance.
+- Zie [toepassingen verbinden](../azure-sql/managed-instance/connect-application-instance.md)voor meer informatie over het verbinden van apps met een SQL Managed instance.

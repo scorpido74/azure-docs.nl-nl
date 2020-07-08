@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: e73a8a420c7591a45a62ba38123c6b3368e0f738
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d642397ef42227e530bd9eff14c3da6078241281
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190636"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085868"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Gegevens uploaden voor Apache Hadoop-taken in HDInsight
 
@@ -37,7 +37,7 @@ Micro soft biedt de volgende hulpprogram ma's voor het werken met Azure Storage:
 
 | Hulpprogramma | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure-portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure-CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
 | [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
 | [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
@@ -62,16 +62,16 @@ Bijvoorbeeld: `hadoop fs -copyFromLocal data.txt /example/data/data.txt`
 
 Omdat het standaard bestandssysteem voor HDInsight zich in Azure Storage bevindt, is/example/data/data.txt daad werkelijk in Azure Storage. U kunt ook naar het bestand verwijzen als:
 
-    wasbs:///example/data/data.txt
+`wasbs:///example/data/data.txt`
 
 of
 
-    wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
+`wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt`
 
 Zie voor een lijst met andere Hadoop-opdrachten die met bestanden werken[https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
 > [!WARNING]  
-> In Apache HBase-clusters is de standaard blok grootte die wordt gebruikt voor het schrijven van gegevens 256 KB. Dit werkt prima wanneer u HBase-Api's of REST-Api's gebruikt, `hadoop` met `hdfs dfs` behulp van de of-opdrachten voor het schrijven van gegevens die groter zijn dan ~ 12 GB. Dit resulteert in een fout. Zie voor meer informatie [opslag uitzondering voor schrijven op BLOB](hdinsight-troubleshoot-hdfs.md#storage-exception-for-write-on-blob).
+> In Apache HBase-clusters is de standaard blok grootte die wordt gebruikt voor het schrijven van gegevens 256 KB. Dit werkt prima wanneer u HBase-Api's of REST-Api's gebruikt, met behulp `hadoop` van de of- `hdfs dfs` opdrachten voor het schrijven van gegevens die groter zijn dan ~ 12 GB. Dit resulteert in een fout. Zie voor meer informatie [opslag uitzondering voor schrijven op BLOB](hdinsight-troubleshoot-hdfs.md#storage-exception-for-write-on-blob).
 
 ### <a name="graphical-clients"></a>Grafische clients
 
@@ -80,7 +80,7 @@ Er zijn ook verschillende toepassingen die een grafische interface bieden voor h
 | Client | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [Micro soft Visual Studio Tools voor HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
-| [Azure Opslagverkenner](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
+| [Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
 | [`Cerulea`](https://www.cerebrata.com/products/cerulean/features/azure-storage) | | |✔ |
 | [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) | | |✔ |
 | [CloudBerry Explorer voor Microsoft Azure](https://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
@@ -98,7 +98,7 @@ De Azure Data Factory-service is een volledig beheerde service voor het opstelle
 
 |Opslagtype|Documentatie|
 |----|----|
-|Azure Blob Storage|[Gegevens kopiëren naar of van Azure Blob-opslag met behulp van Azure Data Factory](../data-factory/connector-azure-blob-storage.md)|
+|Azure Blob Storage|[Gegevens kopiëren naar of uit Azure Blob Storage met behulp van Azure Data Factory](../data-factory/connector-azure-blob-storage.md)|
 |Azure Data Lake Storage Gen1|[Gegevens kopiëren van of naar Azure Data Lake Storage Gen1 met behulp van Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)|
 |Azure Data Lake Storage Gen2 |[Gegevens laden in Azure Data Lake Storage Gen2 met Azure Data Factory](../data-factory/load-azure-data-lake-storage-gen2.md)|
 

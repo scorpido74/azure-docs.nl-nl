@@ -1,6 +1,6 @@
 ---
 title: IP-firewallregels
-description: Configureer IP-firewall regels op server niveau voor een data base in Azure SQL Database of Azure Synapse Analytics firewall. Toegang beheren en IP-firewall regels op database niveau configureren voor één of gegroepeerde Data Base.
+description: Configureer IP-firewall regels op server niveau voor een data base in Azure SQL Database of Azure Synapse Analytics firewall. Toegang beheren en IP-firewall regels op database niveau configureren voor SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 06/17/2020
-ms.openlocfilehash: 19560c3746c67f8eb8ae789b3d6009e8f2fa74d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e18c0470a2d1be8323c2fe1c0780bfd47f3f64cb
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976809"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085086"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database-en Azure Synapse IP-firewall regels
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]

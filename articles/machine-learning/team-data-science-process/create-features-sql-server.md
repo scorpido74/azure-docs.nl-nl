@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 58fa98005d7d89e84404d99cf4f55e456fd91f21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0be75b3b0a7b9b5aaec0da1d9f41f67a7108e77a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76721741"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085307"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Met SQL en Python functies maken voor gegevens in SQL Server
 In dit document wordt beschreven hoe u functies kunt genereren voor gegevens die zijn opgeslagen in een SQL Server-VM op Azure, waardoor algoritmen efficiënter kunnen worden geleerd vanuit de gegevens. U kunt SQL of een programmeer taal zoals python gebruiken om deze taak uit te voeren. Beide benaderingen worden hier toegelicht.
@@ -48,15 +49,19 @@ In deze sectie wordt beschreven hoe u functies kunt genereren met behulp van SQL
 ### <a name="count-based-feature-generation"></a><a name="sql-countfeature"></a>Telling op basis van onderdelen genereren
 In dit document ziet u twee manieren voor het genereren van functies voor tellingen. De eerste methode maakt gebruik van Voorwaardelijke som en de tweede methode gebruikt de component WHERE. Deze nieuwe functies kunnen vervolgens worden gekoppeld aan de oorspronkelijke tabel (met behulp van primaire-sleutel kolommen) om onderdelen naast de oorspronkelijke gegevens te tellen.
 
-    select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3>
+```sql
+select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3>
 
-    select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename>
-    where <column_name3> = '<some_value>' group by <column_name1>,<column_name2>
+select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename>
+where <column_name3> = '<some_value>' group by <column_name1>,<column_name2>
+```
 
 ### <a name="binning-feature-generation"></a><a name="sql-binningfeature"></a>Binning-functie generatie
 In het volgende voor beeld ziet u hoe u binning-functies genereert door binning (met behulp van vijf opslag locaties) een numerieke kolom die als functie kan worden gebruikt:
 
-    `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
+```sql
+SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>
+```
 
 
 ### <a name="rolling-out-the-features-from-a-single-column"></a><a name="sql-featurerollout"></a>De functies uit één kolom implementeren
@@ -77,16 +82,18 @@ Hier volgt een korte primer op de locatie gegevens voor de breedte graad/lengte 
 
 De locatie-informatie kan worden featurized door de informatie over de regio, locatie en plaats te scheiden. Eenmaal kan ook een REST-eind punt aanroepen, zoals de Bing Maps-API (Zie `https://msdn.microsoft.com/library/ff701710.aspx` de informatie over de regio/district ophalen).
 
-    select
-        <location_columnname>
-        ,round(<location_columnname>,0) as l1        
-        ,l2=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 1 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),1,1) else '0' end     
-        ,l3=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 2 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),2,1) else '0' end     
-        ,l4=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 3 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),3,1) else '0' end     
-        ,l5=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 4 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),4,1) else '0' end     
-        ,l6=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 5 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),5,1) else '0' end     
-        ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
-    from <tablename>
+```sql
+select
+    <location_columnname>
+    ,round(<location_columnname>,0) as l1        
+    ,l2=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 1 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),1,1) else '0' end     
+    ,l3=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 2 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),2,1) else '0' end     
+    ,l4=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 3 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),3,1) else '0' end     
+    ,l5=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 4 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),4,1) else '0' end     
+    ,l6=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 5 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),5,1) else '0' end     
+    ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
+from <tablename>
+```
 
 Deze op locatie gebaseerde functies kunnen verder worden gebruikt voor het genereren van extra aantal functies, zoals eerder beschreven.
 
@@ -106,14 +113,18 @@ Python gebruiken om functies te genereren wanneer de gegevens zich in SQL Server
 
 De volgende connection string indeling kan worden gebruikt om vanuit python verbinding te maken met een SQL Server-Data Base met behulp van pyodbc (Vervang servername, dbname, username en password door uw specifieke waarden):
 
-    #Set up the SQL Azure connection
-    import pyodbc
-    conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```python
+#Set up the SQL Azure connection
+import pyodbc
+conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```
 
 De [bibliotheek Pandas](https://pandas.pydata.org/) in python biedt een uitgebreide set gegevens structuren en hulpprogram ma's voor gegevens analyse voor het bewerken van gegevens voor python-programmering. Met de volgende code worden de resultaten van een SQL Server data base in een Pandas-gegevens frame gelezen:
 
-    # Query database and load the returned results in pandas data frame
-    data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
+```python
+# Query database and load the returned results in pandas data frame
+data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
+```
 
 Nu kunt u samen werken met het gegevens frame van de Panda-Data, zoals beschreven in onderwerpen, [functies maken voor Azure Blob Storage-gegevens met behulp van Panda](create-features-blob.md).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 7d8a7e7e88837214042fb8f1c109c0b93bfe771b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d3e35f44d11cd9ed41badbc64ff7528b5b15558
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71058209"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084389"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>Naam wijzigingen van Linux VM-apparaat oplossen
 
@@ -52,103 +52,117 @@ Als u uw fstab al op een zodanige manier hebt bewerkt dat uw virtuele machine ni
 
 Toepassingen gebruiken Lun's om alle gekoppelde schijven te vinden en om symbolische koppelingen te maken. De Azure Linux-agent bevat udev-regels waarmee symbolische koppelingen van een LUN naar de apparaten worden ingesteld:
 
-    $ tree /dev/disk/azure
+```console
+$ tree /dev/disk/azure
 
-    /dev/disk/azure
-    ├── resource -> ../../sdb
-    ├── resource-part1 -> ../../sdb1
-    ├── root -> ../../sda
-    ├── root-part1 -> ../../sda1
-    └── scsi1
-        ├── lun0 -> ../../../sdc
-        ├── lun0-part1 -> ../../../sdc1
-        ├── lun1 -> ../../../sdd
-        ├── lun1-part1 -> ../../../sdd1
-        ├── lun1-part2 -> ../../../sdd2
-        └── lun1-part3 -> ../../../sdd3
+/dev/disk/azure
+├── resource -> ../../sdb
+├── resource-part1 -> ../../sdb1
+├── root -> ../../sda
+├── root-part1 -> ../../sda1
+└── scsi1
+    ├── lun0 -> ../../../sdc
+    ├── lun0-part1 -> ../../../sdc1
+    ├── lun1 -> ../../../sdd
+    ├── lun1-part1 -> ../../../sdd1
+    ├── lun1-part2 -> ../../../sdd2
+    └── lun1-part3 -> ../../../sdd3
+```
 
 LUN-informatie van het Linux-gast account wordt opgehaald met `lsscsi` of een vergelijkbaar hulp programma:
 
-      $ sudo lsscsi
+```console
+$ sudo lsscsi
 
-      [1:0:0:0] cd/dvd Msft Virtual CD/ROM 1.0 /dev/sr0
+[1:0:0:0] cd/dvd Msft Virtual CD/ROM 1.0 /dev/sr0
 
-      [2:0:0:0] disk Msft Virtual Disk 1.0 /dev/sda
+[2:0:0:0] disk Msft Virtual Disk 1.0 /dev/sda
 
-      [3:0:1:0] disk Msft Virtual Disk 1.0 /dev/sdb
+[3:0:1:0] disk Msft Virtual Disk 1.0 /dev/sdb
 
-      [5:0:0:0] disk Msft Virtual Disk 1.0 /dev/sdc
+[5:0:0:0] disk Msft Virtual Disk 1.0 /dev/sdc
 
-      [5:0:0:1] disk Msft Virtual Disk 1.0 /dev/sdd
+[5:0:0:1] disk Msft Virtual Disk 1.0 /dev/sdd
+```
 
 De gast-LUN-informatie wordt gebruikt met meta gegevens van het Azure-abonnement om de VHD te vinden in Azure Storage die de partitie gegevens bevat. U kunt bijvoorbeeld de `az` CLI gebruiken:
 
-    $ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks
-    [
-    {
-    "caching": "None",
-      "createOption": "empty",
-    "diskSizeGb": 1023,
-      "image": null,
-    "lun": 0,
-    "managedDisk": null,
-    "name": "testVM-20170619-114353",
-    "vhd": {
-      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-114353.vhd"
-    }
-    },
-    {
-    "caching": "None",
-    "createOption": "empty",
-    "diskSizeGb": 512,
-    "image": null,
-    "lun": 1,
-    "managedDisk": null,
-    "name": "testVM-20170619-121516",
-    "vhd": {
-      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-121516.vhd"
-      }
-      }
-    ]
+```azurecli
+$ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks
+[
+{
+"caching": "None",
+  "createOption": "empty",
+"diskSizeGb": 1023,
+  "image": null,
+"lun": 0,
+"managedDisk": null,
+"name": "testVM-20170619-114353",
+"vhd": {
+  "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-114353.vhd"
+}
+},
+{
+"caching": "None",
+"createOption": "empty",
+"diskSizeGb": 512,
+"image": null,
+"lun": 1,
+"managedDisk": null,
+"name": "testVM-20170619-121516",
+"vhd": {
+  "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-121516.vhd"
+  }
+  }
+]
+```
 
 ### <a name="discover-filesystem-uuids-by-using-blkid"></a>Bestandssysteem-UUID detecteren met behulp van blkid
 
 Toepassingen en scripts lezen de uitvoer van `blkid` of soort gelijke informatie bronnen om symbolische koppelingen te maken in het pad/dev. In de uitvoer ziet u de UUID van alle schijven die zijn gekoppeld aan de virtuele machine en het bijbehorende apparaatbestand:
 
-    $ sudo blkid -s UUID
+```console
+$ sudo blkid -s UUID
 
-    /dev/sr0: UUID="120B021372645f72"
-    /dev/sda1: UUID="52c6959b-79b0-4bdd-8ed6-71e0ba782fb4"
-    /dev/sdb1: UUID="176250df-9c7c-436f-94e4-d13f9bdea744"
-    /dev/sdc1: UUID="b0048738-4ecc-4837-9793-49ce296d2692"
+/dev/sr0: UUID="120B021372645f72"
+/dev/sda1: UUID="52c6959b-79b0-4bdd-8ed6-71e0ba782fb4"
+/dev/sdb1: UUID="176250df-9c7c-436f-94e4-d13f9bdea744"
+/dev/sdc1: UUID="b0048738-4ecc-4837-9793-49ce296d2692"
+```
 
 De udev-regels van de Azure Linux-agent maken een set symbolische koppelingen onder het pad/dev/disk/Azure:
 
-    $ ls -l /dev/disk/azure
+```console
+$ ls -l /dev/disk/azure
 
-    total 0
-    lrwxrwxrwx 1 root root  9 Jun  2 23:17 resource -> ../../sdb
-    lrwxrwxrwx 1 root root 10 Jun  2 23:17 resource-part1 -> ../../sdb1
-    lrwxrwxrwx 1 root root  9 Jun  2 23:17 root -> ../../sda
-    lrwxrwxrwx 1 root root 10 Jun  2 23:17 root-part1 -> ../../sda1
+total 0
+lrwxrwxrwx 1 root root  9 Jun  2 23:17 resource -> ../../sdb
+lrwxrwxrwx 1 root root 10 Jun  2 23:17 resource-part1 -> ../../sdb1
+lrwxrwxrwx 1 root root  9 Jun  2 23:17 root -> ../../sda
+lrwxrwxrwx 1 root root 10 Jun  2 23:17 root-part1 -> ../../sda1
+```
 
 Toepassingen gebruiken de koppelingen voor het identificeren van het opstart schijf apparaat en de bron schijf. In azure moeten toepassingen in de/dev/disk/Azure/root-part1-of/dev/disk/Azure-resource-part1-paden zoeken om deze partities te ontdekken.
 
 Eventuele extra partities van de `blkid` lijst bevinden zich op een gegevens schijf. Toepassingen behouden de UUID voor deze partities en gebruiken een pad om de naam van het apparaat te detecteren tijdens runtime:
 
-    $ ls -l /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692
+```console
+$ ls -l /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692
 
-    lrwxrwxrwx 1 root root 10 Jun 19 15:57 /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692 -> ../../sdc1
+lrwxrwxrwx 1 root root 10 Jun 19 15:57 /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692 -> ../../sdc1
+```
 
 
 ### <a name="get-the-latest-azure-storage-rules"></a>De meest recente Azure Storage-regels ophalen
 
 Voer de volgende opdrachten uit om de meest recente Azure Storage regels op te halen:
 
-    # sudo curl -o /etc/udev/rules.d/66-azure-storage.rules https://raw.githubusercontent.com/Azure/WALinuxAgent/master/config/66-azure-storage.rules
-    # sudo udevadm trigger --subsystem-match=block
+```console
+# sudo curl -o /etc/udev/rules.d/66-azure-storage.rules https://raw.githubusercontent.com/Azure/WALinuxAgent/master/config/66-azure-storage.rules
+# sudo udevadm trigger --subsystem-match=block
+```
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 Raadpleeg voor meer informatie de volgende artikelen:
 

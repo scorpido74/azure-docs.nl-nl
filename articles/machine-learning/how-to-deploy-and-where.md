@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
 ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: bc9ab6ddf3a9032fd1919b70d830f0d65cdc06ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa961cb94816b50aa515532e69454fce9b370c54
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817982"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083076"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen implementeren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -544,6 +544,10 @@ Implementatie maakt gebruik van de configuratie-implementatie configuratie voor 
 U kunt de volgende Compute-doelen of reken resources gebruiken om de implementatie van de webservice te hosten:
 
 [!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
+
+> [!NOTE]
+> * ACI is alleen geschikt voor kleine modellen <1 GB groot. 
+> * We raden u aan om één knoop punt AKS te gebruiken voor dev-test van grotere modellen.
 
 ### <a name="define-your-deployment-configuration"></a>Uw implementatie configuratie definiëren
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: 7bc6659904530bfa40ee54cd55eab5eaca689069
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 19c40f2a7609d556448641e78fdeffe83e8660b1
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85509214"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083947"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Meerdere HDInsight-clusters gebruiken met een Azure Data Lake Storage-account
 
@@ -79,7 +79,9 @@ Wanneer een nieuw Azure Data Lake Storage-account wordt gemaakt, wordt de hoofdm
 
 Deze instellingen zijn bekend als invloed op één specifieke HDInsight-use-case vastgelegd in [garen 247](https://hwxmonarch.atlassian.net/browse/YARN-247). Taak inzendingen kunnen mislukken met een fout bericht van de volgende strekking:
 
-    Resource XXXX is not publicly accessible and as such cannot be part of the public cache.
+```output
+Resource XXXX is not publicly accessible and as such cannot be part of the public cache.
+```
 
 Zoals vermeld in de GARENs die eerder zijn gekoppeld, terwijl open bare bronnen worden gelokaliseerd, valideert de localizer dat alle aangevraagde bronnen inderdaad openbaar zijn door hun machtigingen op het externe bestands systeem te controleren. LocalResource die niet aan deze voor waarde voldoen, worden voor lokalisatie afgewezen. De controle op machtigingen, bevat Lees toegang tot het bestand voor "anderen". Dit scenario werkt niet out-of-the-box bij het hosten van HDInsight-clusters op Azure Data Lake, omdat Azure Data Lake geen toegang meer heeft tot ' anderen ' op het niveau van de hoofdmap.
 
@@ -87,7 +89,7 @@ Zoals vermeld in de GARENs die eerder zijn gekoppeld, terwijl open bare bronnen 
 
 Stel de machtigingen lezen-uitvoeren voor **anderen** in via de hiërarchie, bijvoorbeeld op **/** **/clusters** en **/clusters/Finance** , zoals weer gegeven in de bovenstaande tabel.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [Snelstartgids: Clusters instellen in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 - [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](hdinsight-hadoop-use-data-lake-storage-gen2.md)

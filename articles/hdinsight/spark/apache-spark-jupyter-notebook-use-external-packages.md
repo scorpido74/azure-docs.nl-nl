@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: cec94b2ecb18bc9e8cceb24a21967a3c829d78a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6587a055d672bc309c89ff2a37fabb273a4c4621
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74561730"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084678"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Externe pakketten met Jupyter-notebooks gebruiken in Apache Spark clusters in HDInsight
 
@@ -31,13 +31,13 @@ In dit artikel leert u hoe u het [Spark-CSV-](https://search.maven.org/#artifact
 
 * Een Apache Spark-cluster in HDInsight. Zie [Apache Spark-clusters maken in Azure HDInsight](apache-spark-jupyter-spark-sql.md) voor instructies.
 
-* Weten hoe u Jupyter Notebook gebruikt met Spark on HDInsight. Zie [gegevens laden en query's uitvoeren met Apache Spark op HDInsight](./apache-spark-load-data-run-query.md)voor meer informatie.
+* Weten hoe u Jupyter Notebook gebruikt met Spark on HDInsight. Zie [Zelfstudie: Gegevens laden en query's uitvoeren in een Apache Spark-cluster in Azure HDInsight](./apache-spark-load-data-run-query.md) voor meer informatie.
 
-* Het [URI-schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) voor de primaire opslag van uw clusters. Dit is `wasb://` voor Azure Storage, `abfs://` voor Azure data Lake Storage Gen2 of `adl://` voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage of Data Lake Storage Gen2, wordt `wasbs://` de URI of `abfss://`, respectievelijk, weer geven, [beveiligde overdracht](../../storage/common/storage-require-secure-transfer.md).
+* Het [URI-schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) voor de primaire opslag van uw clusters. Dit is `wasb://` voor Azure Storage, `abfs://` voor Azure data Lake Storage Gen2 of `adl://` voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage of Data Lake Storage Gen2, wordt de URI `wasbs://` of `abfss://` , respectievelijk, weer geven, [beveiligde overdracht](../../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Externe pakketten gebruiken met Jupyter-notebooks
 
-1. Ga naar `https://CLUSTERNAME.azurehdinsight.net/jupyter` de `CLUSTERNAME` locatie waar de naam van uw Spark-cluster zich bevindt.
+1. Ga naar `https://CLUSTERNAME.azurehdinsight.net/jupyter` de locatie waar `CLUSTERNAME` de naam van uw Spark-cluster zich bevindt.
 
 1. Maak een nieuwe notebook. Selecteer **Nieuw**en selecteer vervolgens **Spark**.
 
@@ -47,10 +47,10 @@ In dit artikel leert u hoe u het [Spark-CSV-](https://search.maven.org/#artifact
 
     ![Een naam opgeven voor de notebook](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Een naam opgeven voor de notebook")
 
-1. U gebruikt de `%%configure` Magic om het notitie blok te configureren voor het gebruik van een extern pakket. Zorg er in notitie blokken die gebruikmaken van externe pakketten voor dat `%%configure` u het Magic aanroept in de eerste cel van de code. Dit zorgt ervoor dat de kernel zo is geconfigureerd dat het pakket wordt gebruikt voordat de sessie wordt gestart.
+1. U gebruikt de `%%configure` Magic om het notitie blok te configureren voor het gebruik van een extern pakket. Zorg er in notitie blokken die gebruikmaken van externe pakketten voor dat u het Magic aanroept `%%configure` in de eerste cel van de code. Dit zorgt ervoor dat de kernel zo is geconfigureerd dat het pakket wordt gebruikt voordat de sessie wordt gestart.
 
     >[!IMPORTANT]  
-    >Als u vergeet de kernel in de eerste cel te configureren, kunt u de `%%configure` gebruiken met de `-f` para meter, maar wordt de sessie opnieuw gestart en gaat alle voortgang verloren.
+    >Als u vergeet de kernel in de eerste cel te configureren, kunt u de gebruiken `%%configure` met de `-f` para meter, maar wordt de sessie opnieuw gestart en gaat alle voortgang verloren.
 
     | HDInsight-versie | Opdracht |
     |-------------------|---------|
@@ -61,35 +61,43 @@ In dit artikel leert u hoe u het [Spark-CSV-](https://search.maven.org/#artifact
 
     a. Zoek het pakket in de Maven-opslag plaats. Voor dit artikel gebruiken we [Spark-CSV](https://mvnrepository.com/artifact/com.databricks/spark-csv).
 
-    b. Verzamel de waarden voor **GroupId**, **ArtifactId**en **Version**uit de opslag plaats. Zorg ervoor dat de waarden die u verzamelt, overeenkomen met uw cluster. In dit geval gebruiken we een scala 2,11-en Spark 1.5.0-pakket, maar u moet mogelijk verschillende versies selecteren voor de juiste scala-of Spark-versie in uw cluster. U kunt de scala-versie in uw cluster vinden door uit `scala.util.Properties.versionString` te voeren op de Spark Jupyter-kernel of op Spark-verzen ding. U kunt de Spark-versie op uw cluster vinden door op `sc.version` Jupyter-notebooks uit te voeren.
+    b. Verzamel de waarden voor **GroupId**, **ArtifactId**en **Version**uit de opslag plaats. Zorg ervoor dat de waarden die u verzamelt, overeenkomen met uw cluster. In dit geval gebruiken we een scala 2,11-en Spark 1.5.0-pakket, maar u moet mogelijk verschillende versies selecteren voor de juiste scala-of Spark-versie in uw cluster. U kunt de scala-versie in uw cluster vinden door uit te voeren `scala.util.Properties.versionString` op de Spark Jupyter-kernel of op Spark-verzen ding. U kunt de Spark-versie op uw cluster vinden door `sc.version` op Jupyter-notebooks uit te voeren.
 
     ![Externe pakketten gebruiken met Jupyter notebook](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Externe pakketten gebruiken met Jupyter notebook")
 
     c. De drie waarden samen voegen, gescheiden door een dubbele punt (**:**).
 
-        com.databricks:spark-csv_2.11:1.5.0
+    ```scala
+    com.databricks:spark-csv_2.11:1.5.0
+    ```
 
-1. Voer de code-cel uit `%%configure` met het Magic. Hiermee configureert u de onderliggende livy-sessie voor het gebruik van het pakket dat u hebt ingevoerd. In de volgende cellen in het notitie blok kunt u het pakket nu gebruiken, zoals hieronder wordt weer gegeven.
+1. Voer de code-cel uit met het `%%configure` Magic. Hiermee configureert u de onderliggende livy-sessie voor het gebruik van het pakket dat u hebt ingevoerd. In de volgende cellen in het notitie blok kunt u het pakket nu gebruiken, zoals hieronder wordt weer gegeven.
 
-        val df = spark.read.format("com.databricks.spark.csv").
-        option("header", "true").
-        option("inferSchema", "true").
-        load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    ```scala
+    val df = spark.read.format("com.databricks.spark.csv").
+    option("header", "true").
+    option("inferSchema", "true").
+    load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    ```
 
     Voor HDInsight 3,4 en lager moet u het volgende code fragment gebruiken.
 
-        val df = sqlContext.read.format("com.databricks.spark.csv").
-        option("header", "true").
-        option("inferSchema", "true").
-        load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    ```scala
+    val df = sqlContext.read.format("com.databricks.spark.csv").
+    option("header", "true").
+    option("inferSchema", "true").
+    load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    ```
 
 1. U kunt vervolgens de fragmenten uitvoeren, zoals hieronder wordt weer gegeven, om de gegevens weer te geven van de data frame die u in de vorige stap hebt gemaakt.
 
-        df.show()
+    ```scala
+    df.show()
    
-        df.select("Time").count()
+    df.select("Time").count()
+    ```
 
-## <a name="see-also"></a><a name="seealso"></a>Zie ook
+## <a name="see-also"></a><a name="seealso"></a>Zie tevens
 
 * [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 

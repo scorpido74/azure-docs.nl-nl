@@ -2,7 +2,7 @@
 title: Streaming-export van metrische gegevens en bron logboeken configureren
 description: Meer informatie over het configureren van streaming-export van metrische gegevens en bron logboeken, waaronder intelligente diagnostische analyses van Azure SQL Database en Azure SQL Managed instance naar de bestemming van uw keuze om informatie over resource gebruik en query uitvoerings statistieken op te slaan.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: seoapril2019
 ms.devlang: sqldbrb=2
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: 49550453885ebaba40380a4675ace8fb012fcaa1
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: efb99e23466e4615dfa1f4a429addcd8c4ac68f5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322720"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085596"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Streaming-export van Azure SQL Database en SQL Managed instance diagnostische telemetrie configureren
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -133,9 +133,9 @@ Voer de volgende stappen uit om streaming van diagnostische telemetrie in te sch
 > [!IMPORTANT]
 > Naast het configureren van diagnostische telemetrie voor een elastische pool moet u ook diagnostische telemetrie configureren voor elke data base in de elastische pool.
 
-### <a name="single-and-pooled-databases-in-azure-sql-database"></a>Enkele en gegroepeerde Data bases in Azure SQL Database
+### <a name="databases-in-azure-sql-database"></a>Data bases in Azure SQL Database
 
-U kunt één of een gegroepeerde database resource instellen om de volgende diagnostische telemetrie te verzamelen:
+U kunt een database resource instellen om de volgende diagnostische telemetrie te verzamelen:
 
 | Resource | Telemetrie controleren |
 | :------------------- | ------------------- |
@@ -453,7 +453,7 @@ Raadpleeg de volgende tabellen voor meer informatie over basis gegevens per reso
 
 Raadpleeg de volgende tabel voor meer informatie over geavanceerde metrische gegevens.
 
-|**Gegevens**|**Weergave naam voor metrische gegevens**|**Beschrijving**|
+|**Meting**|**Weergave naam voor metrische gegevens**|**Beschrijving**|
 |---|---|---|
 |sqlserver_process_core_percent<sup>1</sup>|Kern percentage van SQL process|Het CPU-gebruiks percentage voor het SQL-proces, zoals gemeten door het besturings systeem.|
 |sqlserver_process_memory_percent<sup>1</sup> |Percentage van het SQL-proces geheugen|Het percentage geheugen gebruik voor het SQL-proces, zoals gemeten door het besturings systeem.|

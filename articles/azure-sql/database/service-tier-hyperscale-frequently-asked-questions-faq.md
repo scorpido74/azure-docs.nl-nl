@@ -11,11 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: d5faa08b0b493ac9b7fc03cd15c4747c3e602f02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d265726835620c5b468c8a81570e80c7167b2997
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84049916"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084338"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Veelgestelde vragen over Azure SQL Database grootschalige
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -42,11 +43,11 @@ De vCore-gebaseerde service lagen worden gedifferentieerd op basis van de beschi
 | | Resourcetype | Algemeen gebruik |  Hyperscale | Bedrijfskritiek |
 |:---:|:---:|:---:|:---:|:---:|
 | **Geschikt voor** |Alles|Biedt berekenings-en opslag opties voor budget gericht evenwicht.|De meeste zakelijke workloads. Opslag grootte automatisch schalen tot 100 TB, snelle verticale en horizontale reken schaal, snel data base terugzetten.|OLTP-toepassingen met hoge transactie snelheden en lage IO-latentie. Biedt de hoogste flexibiliteit voor fouten en snelle failovers met behulp van meerdere synchroon bijgewerkte replica's.|
-|  **Resourcetype** ||Eén data base/elastische pool/beheerd exemplaar | Individuele database | Eén data base/elastische pool/beheerd exemplaar |
-| **Reken grootte**|Eén data base/elastische pool * | 1 tot 80 vCores | 1 tot 80 vCores * | 1 tot 80 vCores |
+|  **Resourcetype** ||Door SQL Database/SQL beheerd exemplaar | Individuele database | Door SQL Database/SQL beheerd exemplaar |
+| **Reken grootte**|SQL Database * | 1 tot 80 vCores | 1 tot 80 vCores * | 1 tot 80 vCores |
 | |SQL Managed Instance | 8, 16, 24, 32, 40, 64, 80 vCores | N.v.t. | 8, 16, 24, 32, 40, 64, 80 vCores |
 | **Opslag type** | Alles |Premium externe opslag (per instantie) | Niet-gekoppelde opslag met lokale SSD-cache (per instantie) | Super snelle lokale SSD-opslag (per instantie) |
-| **Opslag grootte** | Eén data base/elastische pool *| 5 GB – 4 TB | Tot 100 TB | 5 GB – 4 TB |
+| **Opslag grootte** | SQL Database *| 5 GB – 4 TB | Tot 100 TB | 5 GB – 4 TB |
 | | SQL Managed Instance  | 32 GB – 8 TB | N.v.t. | 32 GB – 4 TB |
 | **IOPS** | Individuele database | 500 IOPS per vCore met 7000 maximum aantal IOPS | Grootschalige is een architectuur met meerdere lagen met caching op meerdere niveaus. Effectief IOPS is afhankelijk van de werk belasting. | 5000 IOPS met 200.000 maximum aantal IOPS|
 | | SQL Managed Instance | Is afhankelijk van de bestands grootte | N.v.t. | 1375 IOPS/vCore |

@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: efbd8dfa34f5d954e302b421dfcea6c46d9469ca
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 03bd00ad6d0262aeea31b5d3e2c6dd1733090e32
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022825"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082791"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Een pijplijn voor gegevensanalyse operationeel maken
 
@@ -53,7 +53,7 @@ Voor deze pijp lijn is een Azure SQL Database en een HDInsight Hadoop-cluster op
 
 1. Maak een Azure SQL Database. Zie [een Azure SQL database maken in de Azure Portal](../azure-sql/database/single-database-create-quickstart.md).
 
-1. Om ervoor te zorgen dat uw HDInsight-cluster toegang heeft tot de verbonden Azure SQL Database, configureert u Azure SQL Database firewall regels om Azure-Services en-bronnen toegang te geven tot de server. U kunt deze optie inschakelen in de Azure Portal door **Server firewall instellen** **te selecteren en onder andere** Azure- **Services en-bronnen toestaan toegang te krijgen tot deze server** voor Azure SQL database. Zie [IP-firewall regels maken en beheren](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)voor meer informatie.
+1. Om ervoor te zorgen dat uw HDInsight-cluster toegang heeft tot de verbonden Azure SQL Database, configureert u Azure SQL Database firewall regels om Azure-Services en-bronnen toegang te geven tot de server. U kunt deze optie inschakelen in de Azure Portal door **Server firewall instellen** **te selecteren en onder andere** Azure- **Services en-bronnen toestaan toegang te krijgen tot deze server** voor Azure SQL database. Raadpleeg [IP-firewallregels maken en beheren](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) voor meer informatie.
 
 1. Gebruik de [query-editor](../azure-sql/database/single-database-create-quickstart.md#query-the-database) om de volgende SQL-instructies uit te voeren om de tabel te maken `dailyflights` waarin de samenvattings gegevens van elke uitvoering van de pijp lijn worden opgeslagen.
 
@@ -235,7 +235,7 @@ Werk vervolgens de waarden voor uw specifieke omgeving bij. De tabel onder de te
     | nameNode | Het volledige pad naar de Azure Storage container die aan uw HDInsight-cluster is gekoppeld. |
     | jobTracker | De interne hostnaam naar het hoofd knooppunt van uw actieve cluster. Selecteer op de start pagina van Ambari de optie GARENs in de lijst met Services en kies vervolgens actieve Resource Manager. De hostnaam-URI wordt boven aan de pagina weer gegeven. Voeg poort 8050 toe. |
     | queueName | De naam van de garen wachtrij die wordt gebruikt bij het plannen van de Hive-acties. Als standaard laten. |
-    | oozie. System. libpad | Geef waar. |
+    | Pad naar oozie.use.system. | Geef waar. |
     | appBase | Het pad naar de submap in Azure Storage waar u de Oozie-werk stroom en ondersteunende bestanden implementeert. |
     | oozie. WF. Application. Path | De locatie van de Oozie-werk stroom `workflow.xml` die moet worden uitgevoerd. |
     | hiveScriptLoadPartition | Het pad in Azure Storage naar het Hive-query bestand `hive-load-flights-partition.hql` . |
@@ -422,7 +422,9 @@ Gebruik SCP vanuit uw bash-sessie om uw Oozie-werk stroom ( `workflow.xml` ), de
 
 1. Als de status geslaagd is, query's uitvoeren op de tabel SQL Database om de ingevoegde rijen weer te geven. Ga met behulp van de Azure Portal naar het deel venster voor uw SQL Database, selecteer **extra**en open de **query-editor**.
 
-        SELECT * FROM dailyflights
+    ```sql
+    SELECT * FROM dailyflights
+    ```
 
 Nu de werk stroom wordt uitgevoerd voor de enkele test dag, kunt u deze werk stroom verpakken met een coördinator waarmee de werk stroom wordt gepland zodat deze dagelijks wordt uitgevoerd.
 

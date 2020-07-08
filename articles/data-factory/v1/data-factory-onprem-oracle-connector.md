@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 066e32d5ab21f88b170498173606043c54fec586
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1aa8708701af37834ae3b6cdc42de9c691ccacec
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265855"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084287"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Gegevens naar of van Oracle on-premises kopiëren met behulp van Azure Data Factory
 
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-onprem-oracle-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](data-factory-onprem-oracle-connector.md)
 > * [Versie 2 (huidige versie)](../connector-oracle.md)
 
 > [!NOTE]
@@ -70,7 +70,7 @@ Deze Oracle-connector ondersteunt twee versies van Stuur Programma's:
 
 - **Oracle-gegevens provider voor .net**: u kunt Oracle data provider gebruiken om gegevens van of naar Oracle te kopiëren. Dit onderdeel is opgenomen in [Oracle Data Access Components voor Windows](https://www.oracle.com/technetwork/topics/dotnet/downloads/). Installeer de relevante versie (32-bits of 64-bits) op de computer waarop de gateway is geïnstalleerd. [Oracle data provider .net 12,1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) heeft toegang tot Oracle database 10g versie 2 en hoger.
 
-    Als u **xcopy-installatie**selecteert, voert u de stappen uit die worden beschreven in het bestand README. htm. U kunt het beste het installatie programma selecteren dat de gebruikers interface heeft (niet het installatie programma XCopy).
+    Als u **xcopy-installatie**selecteert, voert u de stappen uit die worden beschreven in het readme.htm-bestand. U kunt het beste het installatie programma selecteren dat de gebruikers interface heeft (niet het installatie programma XCopy).
 
     Nadat u de provider hebt geïnstalleerd, start u de Data Management Gateway host-service op uw computer opnieuw met behulp van het onderdeel Services of Data Management Gateway Configuration Manager.
 
@@ -101,15 +101,15 @@ De volgende tabel beschrijft de JSON-elementen die specifiek zijn voor de aan Or
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| type |De eigenschap **type** moet worden ingesteld op **OnPremisesOracle**. |Ja |
-| driverType | Opgeven welk stuur programma moet worden gebruikt voor het kopiëren van gegevens van of naar een Oracle-data base. Toegestane waarden zijn **micro soft** en **ODP** (standaard). Zie de [ondersteunde versie en de installatie](#supported-versions-and-installation) voor details van Stuur Programma's. | Nee |
-| Verbindings | Geef de gegevens op die nodig zijn om verbinding te maken met het Oracle data base-exemplaar voor de **Connections Tring** -eigenschap. | Ja |
-| gatewayName | De naam van de gateway die wordt gebruikt om verbinding te maken met de on-premises Oracle-server. |Ja |
+| type |De eigenschap **type** moet worden ingesteld op **OnPremisesOracle**. |Yes |
+| driverType | Opgeven welk stuur programma moet worden gebruikt voor het kopiëren van gegevens van of naar een Oracle-data base. Toegestane waarden zijn **micro soft** en **ODP** (standaard). Zie de [ondersteunde versie en de installatie](#supported-versions-and-installation) voor details van Stuur Programma's. | No |
+| Verbindings | Geef de gegevens op die nodig zijn om verbinding te maken met het Oracle data base-exemplaar voor de **Connections Tring** -eigenschap. | Yes |
+| gatewayName | De naam van de gateway die wordt gebruikt om verbinding te maken met de on-premises Oracle-server. |Yes |
 
 **Voor beeld: het micro soft-stuur programma gebruiken**
 
 > [!TIP]
-> Als u een fout ziet met de melding "ORA-01025: UPI para meter buiten bereik" en uw Oracle versie-8i, `WireProtocolMode=1` voegt u toe aan uw Connection String en probeert u het opnieuw:
+> Als u een fout ziet met de melding "ORA-01025: UPI para meter buiten bereik" en uw Oracle versie-8i, voegt u toe `WireProtocolMode=1` aan uw Connection String en probeert u het opnieuw:
 
 ```json
 {
@@ -171,7 +171,7 @@ Als de bron van het type **OracleSource** in Kopieer activiteit is, zijn de volg
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| oracleReaderQuery |Gebruik de aangepaste query om gegevens te lezen. |Een SQL-query teken reeks. Bijvoorbeeld ' Select \* from **myTable**'. <br/><br/>Als dit niet wordt opgegeven, wordt deze SQL-instructie uitgevoerd \* : ' Select from **myTable**' |Nee<br />(als **TableName** van **gegevensset** is opgegeven) |
+| oracleReaderQuery |Gebruik de aangepaste query om gegevens te lezen. |Een SQL-query teken reeks. Bijvoorbeeld ' Select \* from **myTable**'. <br/><br/>Als dit niet wordt opgegeven, wordt deze SQL-instructie uitgevoerd: ' Select \* from **myTable**' |No<br />(als **TableName** van **gegevensset** is opgegeven) |
 
 ### <a name="oraclesink"></a>OracleSink
 
@@ -179,10 +179,10 @@ Als de bron van het type **OracleSource** in Kopieer activiteit is, zijn de volg
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| writeBatchTimeout |De wacht tijd voor het volt ooien van de batch INSERT-bewerking voordat er een time-out optreedt. |**tijdsbestek**<br/><br/> Voor beeld: 00:30:00 (30 minuten) |Nee |
+| writeBatchTimeout |De wacht tijd voor het volt ooien van de batch INSERT-bewerking voordat er een time-out optreedt. |**tijdsbestek**<br/><br/> Voor beeld: 00:30:00 (30 minuten) |No |
 | writeBatchSize |Hiermee worden gegevens in de SQL-tabel ingevoegd wanneer de buffer grootte de waarde van **writeBatchSize**bereikt. |Geheel getal (aantal rijen) |Nee (standaard: 100) |
-| sqlWriterCleanupScript |Hiermee geeft u een query op voor het uitvoeren van de Kopieer activiteit, zodat de gegevens van een specifiek segment worden opgeruimd. |Een query-instructie. |Nee |
-| sliceIdentifierColumnName |Hiermee geeft u de kolom naam voor de Kopieer activiteit moet worden gevuld met een segment-id die automatisch is gegenereerd. De waarde voor **sliceIdentifierColumnName** wordt gebruikt voor het opschonen van gegevens van een specifiek segment wanneer het opnieuw wordt uitgevoerd. |De kolom naam van een kolom met het gegevens type **binary (32)**. |Nee |
+| sqlWriterCleanupScript |Hiermee geeft u een query op voor het uitvoeren van de Kopieer activiteit, zodat de gegevens van een specifiek segment worden opgeruimd. |Een query-instructie. |No |
+| sliceIdentifierColumnName |Hiermee geeft u de kolom naam voor de Kopieer activiteit moet worden gevuld met een segment-id die automatisch is gegenereerd. De waarde voor **sliceIdentifierColumnName** wordt gebruikt voor het opschonen van gegevens van een specifiek segment wanneer het opnieuw wordt uitgevoerd. |De kolom naam van een kolom met het gegevens type **binary (32)**. |No |
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>JSON-voor beelden voor het kopiëren van gegevens van en naar de Oracle-data base
 
@@ -418,7 +418,7 @@ In het voor beeld worden elk uur gegevens van een BLOB gekopieerd naar een tabel
 }
 ```
 
-**Azure Blob-invoergegevensset**
+**Invoer gegevensset voor Azure Blob**
 
 Gegevens worden elk uur uit een nieuwe BLOB opgehaald (**frequentie**: **uur**, **interval**: **1**). Het mappad en de bestands naam voor de BLOB worden dynamisch geëvalueerd op basis van de begin tijd van het segment dat wordt verwerkt. Het mappad gebruikt het deel van het jaar, de maand en de dag van de begin tijd. De bestands naam maakt gebruik van het uur gedeelte van de begin tijd. Met de instelling **extern**: **True** wordt de Data Factory-service informeert dat deze tabel extern is voor de Data Factory en niet wordt geproduceerd door een activiteit in de Data Factory.
 
@@ -554,9 +554,11 @@ De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik
 
 ### <a name="problem-1-net-framework-data-provider"></a>Probleem 1: .NET Framework gegevens provider
 
-**Fout bericht**
+**Foutbericht**
 
-    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
+```text
+Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
+```
 
 **Mogelijke oorzaken**
 
@@ -567,22 +569,26 @@ De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik
 
 * Als u de .NET-Provider voor Oracle nog niet hebt geïnstalleerd, [installeert u deze](https://www.oracle.com/technetwork/topics/dotnet/downloads/)en voert u het scenario opnieuw uit.
 * Als u het fout bericht ziet, zelfs nadat u de provider hebt geïnstalleerd, voert u de volgende stappen uit:
-    1. Open het computer configuratie bestand voor .NET 2,0 van de map <systeem schijf\>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
-    2. Zoek naar de **Oracle-gegevens provider voor .net**. U moet een vermelding kunnen vinden, zoals wordt weer gegeven in het volgende voor beeld onder **System. data** > **DbProviderFactories**:`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
-* Kopieer deze vermelding naar het bestand Machine. config in de volgende .NET 4,0-map: <systeem\>schijf: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Wijzig vervolgens de versie in 4. xxx. x.x.
-* Installeer <ODP.NET installed\>Path \ 11.2.0 \ client_1 \odp.net\bin\4\oracle.dataaccess.dll in de Global assembly cache (GAC) door **gacutil/i [provider pad]** uit te voeren.
+    1. Open het computer configuratie bestand voor .NET 2,0 vanuit de map <systeem schijf \>:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
+    2. Zoek naar de **Oracle-gegevens provider voor .net**. U moet een vermelding kunnen vinden, zoals wordt weer gegeven in het volgende voor beeld onder **System. data**  >  **DbProviderFactories**:`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
+* Kopieer deze vermelding naar het machine.config-bestand in de volgende .NET 4,0-map: <systeem schijf \>:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Wijzig vervolgens de versie in 4. xxx. x.x.
+* Installeer <ODP.NET geïnstalleerd pad \>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll in de Global assembly cache (GAC) door **gacutil/i**uit te voeren.
 
 ### <a name="problem-2-datetime-formatting"></a>Probleem 2: notatie van datum/tijd
 
-**Fout bericht**
+**Foutbericht**
 
-    Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
+```text
+Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
+```
 
 **Afsluiting**
 
 Mogelijk moet u de query reeks in uw Kopieer activiteit aanpassen op basis van de manier waarop datums worden geconfigureerd in de Oracle-data base. Hier volgt een voor beeld (met behulp van de functie **to_date** ):
 
-    "oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
+```console   
+"oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
+```
 
 
 ## <a name="type-mapping-for-oracle"></a>Type toewijzing voor Oracle

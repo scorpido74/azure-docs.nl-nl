@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 4b314fbdb9cbc0c0b797cbee8e92ee4702bbea81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f41f3bd38013cb0ebd2cad55168551c303c1d231
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77919461"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084324"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Extern bureaublad-services wordt niet gestart op een virtuele Azure-machine
 
@@ -46,7 +47,9 @@ Wanneer u probeert verbinding te maken met een virtuele machine, treden de volge
 
     U kunt ook de functie seriële toegangs console gebruiken om deze fouten op te sporen door de volgende query uit te voeren: 
 
-        wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more 
+    ```console
+   wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
+    ```
 
 ## <a name="cause"></a>Oorzaak
  
@@ -178,22 +181,37 @@ Gebruik de seriële console om dit probleem op te lossen. Of [herstel de virtuel
 
 1. Dit probleem treedt op als het opstart account van deze service is gewijzigd. De standaard instelling is gewijzigd in: 
 
-        sc config TermService obj= 'NT Authority\NetworkService'
+    ```console
+    sc config TermService obj= 'NT Authority\NetworkService'
+    ```
+
 2. Start de service:
 
-        sc start TermService
+    ```console
+    sc start TermService
+    ```
+
 3. Probeer verbinding te maken met de virtuele machine met behulp van Extern bureaublad.
 
 #### <a name="termservice-service-crashes-or-hangs"></a>Service wordt vastlopen of vastloopt
 1. Als de status van de service vastzit aan het **starten** of **stoppen**, probeert u de service te stoppen: 
 
-        sc stop TermService
+    ```console
+    sc stop TermService
+    ```
+
 2. De service op een eigen ' Svchost '-container isoleren:
 
-        sc config TermService type= own
+    ```console
+    sc config TermService type= own
+    ```
+
 3. Start de service:
 
-        sc start TermService
+    ```console
+    sc start TermService
+    ```
+
 4. Als de service nog steeds niet kan worden gestart, [neemt u contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="repair-the-vm-offline"></a>De virtuele machine offline herstellen

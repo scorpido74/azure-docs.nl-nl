@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 3aab89f86dcd48328771cd0fda03d1c9de4bc2c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5427077a4b07917c8852d0a63c815195e776b9de
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75932094"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085188"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Resources voor Apache Spark cluster beheren in azure HDInsight
 
@@ -34,17 +34,17 @@ U kunt de garen-interface gebruiken om toepassingen te bewaken die momenteel wor
     ![Gebruikers interface van garen starten](./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png)
 
    > [!TIP]  
-   > U kunt ook de gebruikers interface van garen starten vanuit de Ambari-gebruikers interface. Ga in de Ambari-gebruikers interface **naar** > **snelle koppelingen** > van een**actieve** > **Resource Manager-gebruikers interface**.
+   > U kunt ook de gebruikers interface van garen starten vanuit de Ambari-gebruikers interface. Ga in de Ambari-gebruikers interface **naar de**  >  **snelle koppelingen**van een  >  **actieve**  >  **Resource Manager-gebruikers interface**.
 
 ## <a name="optimize-clusters-for-spark-applications"></a>Clusters optimaliseren voor Spark-toepassingen
 
-De drie belang rijke para meters die kunnen worden gebruikt voor Spark-configuratie, zijn `spark.executor.instances`afhankelijk `spark.executor.cores`van de `spark.executor.memory`toepassings vereisten, en. Een uitvoerder is een proces dat wordt gestart voor een Spark-toepassing. Het wordt uitgevoerd op het worker-knoop punt en is verantwoordelijk voor het uitvoeren van de taken voor de toepassing. Het standaard aantal uitvoerende agents en de uitvoerings grootte voor elk cluster wordt berekend op basis van het aantal worker-knoop punten en de grootte van het worker-knoop punt. Deze informatie wordt opgeslagen in `spark-defaults.conf` op de hoofd knooppunten van het cluster.
+De drie belang rijke para meters die kunnen worden gebruikt voor Spark-configuratie, zijn afhankelijk van de toepassings vereisten `spark.executor.instances` , `spark.executor.cores` en `spark.executor.memory` . Een uitvoerder is een proces dat wordt gestart voor een Spark-toepassing. Het wordt uitgevoerd op het worker-knoop punt en is verantwoordelijk voor het uitvoeren van de taken voor de toepassing. Het standaard aantal uitvoerende agents en de uitvoerings grootte voor elk cluster wordt berekend op basis van het aantal worker-knoop punten en de grootte van het worker-knoop punt. Deze informatie wordt opgeslagen in `spark-defaults.conf` op de hoofd knooppunten van het cluster.
 
 De drie configuratie parameters kunnen worden geconfigureerd op cluster niveau (voor alle toepassingen die in het cluster worden uitgevoerd) of kunnen ook voor elke afzonderlijke toepassing worden opgegeven.
 
 ### <a name="change-the-parameters-using-ambari-ui"></a>De para meters wijzigen met behulp van Ambari-gebruikers interface
 
-1. Ga in de Ambari-gebruikers interface naar **Spark2** > **configs** > **aangepaste Spark2-defaults**.
+1. Ga in de Ambari-gebruikers interface naar **Spark2**  >  **configs**  >  **aangepaste Spark2-defaults**.
 
     ![Para meters instellen met Ambari Custom](./media/apache-spark-resource-manager/ambari-ui-spark2-configs.png "Para meters instellen met Ambari Custom")
 
@@ -58,38 +58,44 @@ De drie configuratie parameters kunnen worden geconfigureerd op cluster niveau (
 
 ### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>De para meters wijzigen voor een toepassing die wordt uitgevoerd in Jupyter notebook
 
-Voor toepassingen die worden uitgevoerd in de Jupyter-notebook, kunt `%%configure` u het Magic gebruiken om de configuratie wijzigingen door te voeren. In het ideale geval moet u dergelijke wijzigingen aan het begin van de toepassing aanbrengen voordat u uw eerste code-cel uitvoert. Dit zorgt ervoor dat de configuratie wordt toegepast op de livy-sessie wanneer deze wordt gemaakt. Als u de configuratie in een later stadium in de toepassing wilt wijzigen, moet u de `-f` para meter gebruiken. De voortgang van de toepassing gaat echter verloren.
+Voor toepassingen die worden uitgevoerd in de Jupyter-notebook, kunt u het `%%configure` Magic gebruiken om de configuratie wijzigingen door te voeren. In het ideale geval moet u dergelijke wijzigingen aan het begin van de toepassing aanbrengen voordat u uw eerste code-cel uitvoert. Dit zorgt ervoor dat de configuratie wordt toegepast op de livy-sessie wanneer deze wordt gemaakt. Als u de configuratie in een later stadium in de toepassing wilt wijzigen, moet u de `-f` para meter gebruiken. De voortgang van de toepassing gaat echter verloren.
 
 Het volgende code fragment laat zien hoe u de configuratie wijzigt voor een toepassing die wordt uitgevoerd in Jupyter.
 
-    %%configure
-    {"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
+```scala
+%%configure
+{"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
+```
 
 Configuratie parameters moeten worden door gegeven als een JSON-teken reeks en moeten zich op de volgende regel na de Magic bevallen, zoals wordt weer gegeven in de voorbeeld kolom.
 
 ### <a name="change-the-parameters-for-an-application-submitted-using-spark-submit"></a>De para meters voor een toepassing die is verzonden met Spark verzenden wijzigen
 
-De volgende opdracht is een voor beeld van het wijzigen van de configuratie parameters voor een batch toepassing die wordt `spark-submit`verzonden met.
+De volgende opdracht is een voor beeld van het wijzigen van de configuratie parameters voor een batch toepassing die wordt verzonden met `spark-submit` .
 
-    spark-submit --class <the application class to execute> --executor-memory 3072M --executor-cores 4 –-num-executors 10 <location of application jar file> <application parameters>
+```scala
+spark-submit --class <the application class to execute> --executor-memory 3072M --executor-cores 4 –-num-executors 10 <location of application jar file> <application parameters>
+```
 
 ### <a name="change-the-parameters-for-an-application-submitted-using-curl"></a>De para meters wijzigen voor een toepassing die via krul wordt verzonden
 
 De volgende opdracht is een voor beeld van het wijzigen van de configuratie parameters voor een batch toepassing die via krul wordt verzonden.
 
-    curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
+```bash
+curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
+```
 
 ### <a name="change-these-parameters-on-a-spark-thrift-server"></a>Deze para meters wijzigen op een Spark Thrift-server
 
 Spark Thrift server biedt JDBC/ODBC-toegang tot een Spark-cluster en wordt gebruikt voor het uitvoeren van Spark SQL-query's. Hulpprogram ma's als Power BI, tableau, enzovoort, gebruiken ODBC-protocol om te communiceren met Spark Thrift server om Spark SQL-query's uit te voeren als een Spark-toepassing. Wanneer een Spark-cluster wordt gemaakt, worden twee exemplaren van de Spark Thrift-server gestart, één op elk hoofd knooppunt. Elke Spark Thrift-server is zichtbaar als een Spark-toepassing in de garen-gebruikers interface.
 
-Spark Thrift server maakt gebruik van de toewijzing van de `spark.executor.instances` dynamische uitvoerder van Spark en daarom niet wordt gebruikt. In plaats daarvan gebruikt `spark.dynamicAllocation.maxExecutors` Spark Thrift server `spark.dynamicAllocation.minExecutors` om het aantal uitvoeringen op te geven. De configuratie parameters `spark.executor.cores`en `spark.executor.memory` worden gebruikt om de grootte van de uitvoerder te wijzigen. U kunt deze para meters wijzigen, zoals wordt weer gegeven in de volgende stappen:
+Spark Thrift server maakt gebruik van de toewijzing van de dynamische uitvoerder van Spark en daarom `spark.executor.instances` niet wordt gebruikt. In plaats daarvan gebruikt Spark Thrift `spark.dynamicAllocation.maxExecutors` server `spark.dynamicAllocation.minExecutors` om het aantal uitvoeringen op te geven. De configuratie parameters `spark.executor.cores` en `spark.executor.memory` worden gebruikt om de grootte van de uitvoerder te wijzigen. U kunt deze para meters wijzigen, zoals wordt weer gegeven in de volgende stappen:
 
-* Vouw de categorie **Geavanceerd spark2-Thrift-sparkconf** uit om de para `spark.dynamicAllocation.maxExecutors`meters `spark.dynamicAllocation.minExecutors`bij te werken en.
+* Vouw de categorie **Geavanceerd spark2-Thrift-sparkconf** uit om de para meters bij te werken `spark.dynamicAllocation.maxExecutors` en `spark.dynamicAllocation.minExecutors` .
 
     ![Spark Thrift-server configureren](./media/apache-spark-resource-manager/ambari-ui-advanced-thrift-sparkconf.png "Spark Thrift-server configureren")
 
-* Vouw de categorie **Custom spark2-Thrift-sparkconf** uit om de para `spark.executor.cores`meters `spark.executor.memory`bij te werken en.
+* Vouw de categorie **Custom spark2-Thrift-sparkconf** uit om de para meters bij te werken `spark.executor.cores` en `spark.executor.memory` .
 
     ![Spark Thrift-server parameter configureren](./media/apache-spark-resource-manager/ambari-ui-custom-thrift-sparkconf.png "Spark Thrift-server parameter configureren")
 
@@ -97,7 +103,7 @@ Spark Thrift server maakt gebruik van de toewijzing van de `spark.executor.insta
 
 Het geheugen van Spark Thrift-Server Stuur Programma's is ingesteld op 25% van de RAM-grootte van het hoofd knooppunt, op voor waarde dat de totale RAM-grootte van het hoofd knooppunt groter is dan 14 GB. U kunt de Ambari-gebruikers interface gebruiken om de geheugen configuratie van het stuur programma te wijzigen, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
-Ga in de Ambari-gebruikers interface naar **Spark2** > **configs** > **Advanced Spark2-env**. Geef vervolgens de waarde voor **spark_thrift_cmd_opts**op.
+Ga in de Ambari-gebruikers interface naar **Spark2**  >  **configs**  >  **Advanced Spark2-env**. Geef vervolgens de waarde voor **spark_thrift_cmd_opts**op.
 
 ## <a name="reclaim-spark-cluster-resources"></a>Spark-cluster resources vrijmaken
 
@@ -140,7 +146,7 @@ Start de gebruikers interface van het garen zoals in het begin van het artikel w
 
     ![App2 afsluiten](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "App2 afsluiten")
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Taken die worden uitgevoerd in een Apache Spark-cluster in HDInsight, traceren en er fouten in oplossen](apache-spark-job-debugging.md)
 

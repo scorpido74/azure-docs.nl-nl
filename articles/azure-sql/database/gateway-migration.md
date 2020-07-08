@@ -2,20 +2,20 @@
 title: Kennisgeving van migratie van Gateway verkeer
 description: Artikel geeft gebruikers informatie over de migratie van IP-adressen van Azure SQL Database gateways
 services: sql-database
-ms.service: sql-database
-ms.subservice: development
+ms.service: sql-db-mi
+ms.subservice: service
 ms.custom: sqldbrb=1 
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: d9ec21657f871211df575b56ff56962aad3f5c88
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: e9bf1f06b1ec1f99da1ce653b4bc72f4638ba451
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324709"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084950"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database verkeer migratie naar nieuwere gateways
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -24,10 +24,25 @@ Naarmate de Azure-infra structuur wordt verbeterd, zal micro soft hardware perio
 
 Klanten worden op de hoogte gesteld via e-mail en in het Azure Portal goed van elke wijziging aan gateways die beschikbaar zijn in elke regio. De meest recente informatie wordt bewaard in de tabel met [IP-adressen van de Azure SQL database gateway](connectivity-architecture.md#gateway-ip-addresses) .
 
-## <a name="impact-of-this-change"></a>Impact van deze wijziging
+## <a name="status-updates"></a>Status updates
 
-De eerste afronding van verkeer migratie naar nieuwere gateways is gepland voor **14 oktober 2019** in de volgende regio's:
+# <a name="in-progress"></a>[Actief](#tab/in-progress-ip)
 
+### <a name="august-2020"></a>2020 augustus
+
+Nieuwe SQL-gateways worden toegevoegd aan de volgende regio's:
+
+- Australië-oost: 13.70.112.9
+- Canada-centraal: 52.246.152.0, 20.38.144.1 
+- VS-West 2:40.78.240.8
+
+Deze SQL-gateways beginnen het accepteren van klant verkeer op 10 augustus 2020. 
+
+# <a name="completed"></a>[Voltooid](#tab/completed-ip)
+
+De volgende gateway migraties zijn voltooid: 
+
+### <a name="october-2019"></a>Oktober 2019
 - Brazilië - zuid
 - VS - west
 - Europa -west
@@ -42,11 +57,16 @@ De eerste afronding van verkeer migratie naar nieuwere gateways is gepland voor 
 - VS - oost 2
 - Azië - oost
 
-Bij de migratie van verkeer wordt het open bare IP-adres gewijzigd dat DNS voor uw data base in Azure SQL Database oplost.
-U hebt de volgende gevolgen:
+---
+
+## <a name="impact-of-this-change"></a>Impact van deze wijziging
+
+Verkeer migratie kan het open bare IP-adres wijzigen dat DNS voor uw data base in Azure SQL Database verhelpt.
+U hebt mogelijk gevolgen voor het volgende:
 
 - Het IP-adres voor een bepaalde gateway in uw on-premises firewall is vastgelegd.
 - Subnetten die gebruikmaken van micro soft. SQL als een service-eind punt, maar niet kunnen communiceren met de IP-adressen van de gateway
+- De [redundante zone configuratie](high-availability-sla.md#zone-redundant-configuration) voor uw data base gebruiken
 
 U hebt de volgende gevolgen:
 

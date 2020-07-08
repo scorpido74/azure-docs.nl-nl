@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: ce3916ef1155224a91c0736c3dabe907ae8d2611
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33c2ee7bc477d3c9d3823642dbdd974650017822
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796367"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084355"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Apache Hive optimaliseren met Apache Ambari in azure HDInsight
 
@@ -134,10 +134,10 @@ De beschik bare compressie typen zijn:
 
 | Indeling | Hulpprogramma | Algoritme | Bestands extensie | Splitsbaar? |
 | --- | --- | --- | --- | --- |
-| Gzip | Gzip | DEFLATE | `.gz` | Nee |
-| Bzip2 | Bzip2 | Bzip2 |`.bz2` | Ja |
+| Gzip | Gzip | DEFLATE | `.gz` | No |
+| Bzip2 | Bzip2 | Bzip2 |`.bz2` | Yes |
 | LZO | `Lzop` | LZO | `.lzo` | Ja, indien geïndexeerd |
-| Snappy | N.v.t. | Snappy | Snappy | Nee |
+| Snappy | N.v.t. | Snappy | Snappy | No |
 
 Een algemene regel is dat de compressie methode splitsbaar belang rijk is, anders worden enkele toewijzingen gemaakt. Als de invoer gegevens tekst is, `bzip2` is de beste optie. Voor de indeling ORC is Snappy de snelste compressie optie.
 
