@@ -13,13 +13,13 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.openlocfilehash: e31c2c69e36b97f5584ee32e6c452525389f7f42
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85479246"
 ---
-# <a name="azure-active-directory-app-manifest"></a>Azure Active Directory app-manifest
+# <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-app-manifest
 
 Het manifest van de toepassing bevat een definitie van alle kenmerken van een toepassings object in het micro soft Identity-platform. Het fungeert ook als mechanisme voor het bijwerken van het toepassings object. Zie de documentatie van de [Graph API toepassings entiteit](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)voor meer informatie over de toepassings entiteit en het bijbehorende schema.
 

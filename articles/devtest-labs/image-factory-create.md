@@ -4,10 +4,10 @@ description: In dit artikel wordt beschreven hoe u een aangepaste installatie ko
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 14c8338d6a5ae21847da3a9c774ea6dcdac33ae4
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85482068"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Een aangepaste installatie kopie maken in de fabriek in Azure DevTest Labs

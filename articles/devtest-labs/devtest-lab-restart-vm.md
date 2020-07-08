@@ -4,10 +4,10 @@ description: In dit artikel worden de stappen beschreven voor het snel en eenvou
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d2bcbcbea613aa84da91789fb9f118afd7023fab
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85481986"
 ---
 # <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Een virtuele machine opnieuw starten in een lab in Azure DevTest Labs
@@ -26,7 +26,7 @@ U kunt snel en eenvoudig een virtuele machine in DevTest Labs opnieuw opstarten 
    >
 
 ## <a name="steps-to-restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Stappen voor het opnieuw opstarten van een virtuele machine in een lab in Azure DevTest Labs
-1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 1. Selecteer in de lijst met Labs het lab dat de virtuele machine bevat die u opnieuw wilt opstarten.
 1. Selecteer in het linkerdeel venster **mijn virtual machines**.

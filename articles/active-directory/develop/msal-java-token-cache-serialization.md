@@ -14,10 +14,10 @@ ms.author: sagonzal
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 31b908eacd5f9f8610ad2c0a985fa7e0be8d1505
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85479331"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-java"></a>Aangepaste serialisatie van token cache in MSAL voor Java
@@ -60,6 +60,6 @@ PublicClientApplication app =
 PublicClientApplication.builder("my_client_id").setTokenCacheAccessAspect(persistenceAspect).build();
 ```
 
-## <a name="learn-more"></a>Meer informatie
+## <a name="learn-more"></a>Lees meer
 
 Meer informatie over [het ophalen en verwijderen van accounts uit de token cache met behulp van MSAL voor Java](msal-java-get-remove-accounts-token-cache.md).

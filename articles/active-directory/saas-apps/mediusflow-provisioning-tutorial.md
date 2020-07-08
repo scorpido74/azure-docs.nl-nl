@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
 ms.openlocfilehash: 838542bf4c3d566c76987754c8f336e00250d04a
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85482408"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Zelf studie: Medius flow configureren voor automatische gebruikers inrichting
@@ -129,7 +129,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-mediusflow-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Medius flow in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -169,7 +169,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |naam. familielid|Tekenreeks|
    |naam. opgemaakt|Tekenreeks|
    |externalID|Tekenreeks|
-   |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager|Naslaginformatie|
+   |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager|Verwijzing|
 
 
 10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met Medius flow**.
@@ -180,7 +180,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
       |---|---|
       |displayName|Tekenreeks|
       |externalID|Tekenreeks|
-      |leden|Naslaginformatie|
+      |leden|Verwijzing|
 
 12. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 

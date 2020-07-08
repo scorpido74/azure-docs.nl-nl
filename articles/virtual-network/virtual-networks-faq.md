@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
 ms.openlocfilehash: 19824e978af78e85f9e8c790517bd66b1f6c0113
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85481728"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Veelgestelde vragen over virtuele Azure-netwerken (FAQ)
@@ -44,7 +44,7 @@ Ja. U kunt een VNet gebruiken zonder het aan uw locatie te koppelen. U kunt bijv
 ### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>Kan ik WAN-optimalisatie uitvoeren tussen VNets of een VNet en mijn on-premises Data Center?
 Ja. U kunt een [WAN-optimalisatie netwerk virtueel apparaat](https://azuremarketplace.microsoft.com/en-us/marketplace/?term=wan%20optimization) van verschillende leveranciers implementeren via Azure Marketplace.
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Configuratie
 
 ### <a name="what-tools-do-i-use-to-create-a-vnet"></a>Welke hulpprogram ma's kan ik gebruiken om een VNet te maken?
 U kunt de volgende hulpprogram ma's gebruiken om een VNet te maken of configureren:

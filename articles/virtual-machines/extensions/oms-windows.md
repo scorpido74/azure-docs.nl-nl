@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
 ms.openlocfilehash: aa8f5fa9901055957c5c94923ebd74c3d57ce41a
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85481779"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>De virtuele-machine-extensie Log Analytics voor Windows
@@ -86,7 +86,7 @@ De volgende JSON toont het schema voor de uitbrei ding van de Log Analytics agen
 ```
 ### <a name="property-values"></a>Eigenschaps waarden
 
-| Naam | Waarde/voor beeld |
+| Name | Waarde/voor beeld |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Micro soft. EnterpriseCloud. monitoring |

@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
 ms.openlocfilehash: b85aab2491f4186cf4d6ee73144bc235a40cdeac
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85478481"
 ---
 # <a name="custom-script-extension-for-windows"></a>Aangepaste scriptextensie voor Windows
@@ -121,7 +121,7 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 
 ### <a name="property-values"></a>Eigenschaps waarden
 
-| Naam | Waarde/voor beeld | Gegevenstype |
+| Name | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Compute | tekenreeks |
@@ -281,7 +281,7 @@ Als u [invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke
 ```error
 The response content cannot be parsed because the Internet Explorer engine is not available, or Internet Explorer's first-launch configuration is not complete. Specify the UseBasicParsing parameter and try again.
 ```
-## <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
+## <a name="virtual-machine-scale-sets"></a>Virtuele-machineschaalsets
 
 Zie [add-AzVmssExtension](https://docs.microsoft.com/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0) voor meer informatie over het implementeren van de aangepaste script extensie voor een schaalset.
 

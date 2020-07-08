@@ -4,10 +4,10 @@ description: Meer informatie over hoe u met DevTest Labs eenvoudig Azure virtual
 ms.topic: article
 ms.date: 06/20/2020
 ms.openlocfilehash: b7e6493e5fb1c99dfa7962ed464dca3ebc6b0c7e
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85480198"
 ---
 # <a name="about-azure-devtest-labs"></a>Over Azure DevTest Labs
@@ -23,7 +23,7 @@ Met behulp van DevTest Labs kunt u de nieuwste versies van uw toepassingen teste
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/What-is-Azure-DevTest-Labs/player]
 
-## <a name="capabilities"></a>Functionaliteit
+## <a name="capabilities"></a>Functies
 DevTest Labs biedt de volgende mogelijkheden voor ontwikkel aars die werken met Vm's:
 
 - Maak snel Vm's door minder dan vijf eenvoudige stappen te volgen.

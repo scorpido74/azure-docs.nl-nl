@@ -4,10 +4,10 @@ description: In dit artikel vindt u antwoorden op enkele veelgestelde vragen ove
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b687ae5c7b64239387dad7a51e124fa2f507f2b8
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85481660"
 ---
 # <a name="azure-devtest-labs-faq"></a>Veelgestelde vragen over Azure DevTest Labs
@@ -277,7 +277,7 @@ Als u het uploaden van VHD-bestanden voor het maken van aangepaste installatie k
 
 Zoeken naar het doel-opslag account dat is gekoppeld aan uw Lab:
 
-1.  Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1.  Meld u aan bij [Azure Portal](https://portal.azure.com).
 2.  Selecteer **resource groepen**in het menu links.
 3.  Zoek en selecteer de resource groep die is gekoppeld aan uw Lab.
 4.  Selecteer een van de opslag accounts onder **overzicht**.

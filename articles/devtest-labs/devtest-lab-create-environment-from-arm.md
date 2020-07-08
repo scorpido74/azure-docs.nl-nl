@@ -4,10 +4,10 @@ description: Meer informatie over het maken van omgevingen met meerdere VM'S en 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: bab107257a6233543cecfb664b3a6d313dd0e538
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85481422"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Multi-VM-omgevingen en PaaS-resources maken met Azure Resource Manager-sjablonen
@@ -62,7 +62,7 @@ Er zijn verschillende regels die moeten worden gevolgd om uw Azure Resource Mana
 
 Nadat u de opslag plaats hebt gemaakt en geconfigureerd, kunt u deze toevoegen aan uw Lab met behulp van de Azure Portal:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 1. Selecteer in de lijst met Labs het gewenste Lab.
 1. Selecteer **configuratie en beleid**in het deel venster **overzicht** van de test omgeving.
@@ -109,7 +109,7 @@ In de volgende sectie wordt beschreven hoe u omgevingen maakt op basis van een A
 
 Zodra u een Azure Resource Manager sjabloon aan het Lab hebt toegevoegd, kunnen uw Lab-gebruikers in de Azure Portal omgevingen maken door de volgende stappen uit te voeren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 

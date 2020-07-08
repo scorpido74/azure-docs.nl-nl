@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.openlocfilehash: 0b0efc7e5dd4a60e33ddd61c19283a048cf4ab78
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85478294"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Procedure: claims aanpassen die zijn uitgegeven in het SAML-token voor zakelijke toepassingen
@@ -54,7 +54,7 @@ Als de SAML-aanvraag geen element voor NameIDPolicy bevat, wordt het NameID door
 
 U kunt een van de volgende opties selecteren in de vervolg keuzelijst **Kies naam-id-indeling** .
 
-| NameID-indeling | Beschrijving |
+| NameID-indeling | Description |
 |---------------|-------------|
 | **Standaard** | Azure AD gebruikt de standaard indeling voor de bron. |
 | **Permanent** | Azure AD gebruikt persistent als de NameID-indeling. |
@@ -68,7 +68,7 @@ Tijdelijke NameID wordt ook ondersteund, maar is niet beschikbaar in de vervolg 
 
 Selecteer de gewenste bron voor de `NameIdentifier` claim (of NameID). U kunt kiezen uit de volgende opties.
 
-| Naam | Beschrijving |
+| Naam | Description |
 |------|-------------|
 | E-mail | Het e-mailadres van de gebruiker |
 | userprincipalName | UPN (User Principal Name) van de gebruiker |

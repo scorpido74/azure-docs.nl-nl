@@ -4,10 +4,10 @@ description: Leer hoe u een proef concept kunt leveren, zodat Azure DevTest Labs
 ms.topic: article
 ms.date: 06/2/2020
 ms.openlocfilehash: b0178d412154de556f25ab71bb30eed7be5e9ba6
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85481354"
 ---
 # <a name="deliver-a-proof-of-concept"></a>Een proef van het concept leveren 

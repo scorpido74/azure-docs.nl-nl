@@ -4,10 +4,10 @@ description: Meer informatie over het plaatsen van een interne ondersteunings ve
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 1c9920e6fe7fbfe2a8d0aeacb896150b342981b0
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85480470"
 ---
 # <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>Een interne ondersteunings verklaring toevoegen aan een lab in Azure DevTest Labs
@@ -20,7 +20,7 @@ U kunt een ondersteunings verklaring eenvoudig uitschakelen of bewerken nadat de
 
 ## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>Stappen om een ondersteunings instructie toe te voegen aan een bestaand Lab
 
-1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Selecteer indien nodig **alle services**en selecteer vervolgens **DevTest Labs** in de lijst. (Uw Lab wordt mogelijk al weer gegeven op het dash board onder **alle resources**).
 1. Selecteer in de lijst met Labs het lab waarin u een ondersteunings verklaring wilt toevoegen.  
 1. Selecteer in het gedeelte **overzicht** van het lab de optie **configuratie en beleid**.  

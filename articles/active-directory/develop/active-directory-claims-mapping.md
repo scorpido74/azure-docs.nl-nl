@@ -14,10 +14,10 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.openlocfilehash: d9c46368b42cac1d06f7d78d5e0d03ad2de0bada
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85478396"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Procedure: claims aanpassen die worden verzonden in tokens voor een specifieke app in een Tenant (preview-versie)
@@ -44,7 +44,7 @@ Een claim toewijzings beleid is een type **beleids** object dat de claims wijzig
 
 Er zijn bepaalde sets claims die bepalen hoe en wanneer ze worden gebruikt in tokens.
 
-| Claimset | Beschrijving |
+| Claimset | Description |
 |---|---|
 | Kern claim ingesteld | Zijn aanwezig in elke token, ongeacht het beleid. Deze claims worden ook beschouwd als beperkt en kunnen niet worden gewijzigd. |
 | Basis claim instellen | Bevat de claims die standaard worden verzonden voor tokens (naast de kern claim set). U kunt basis claims weglaten of wijzigen met behulp van het beleid voor claim toewijzing. |
@@ -284,14 +284,14 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tabel 3: geldige ID-waarden per bron
 
-| Bron | Id | Beschrijving |
+| Bron | Id | Description |
 |-----|-----|-----|
 | Gebruiker | surname | Familie naam |
 | Gebruiker | givenname | Voornaam |
 | Gebruiker | displayname | Weergavenaam |
 | Gebruiker | id | ObjectID |
 | Gebruiker | mail | E-mailadres |
-| Gebruiker | userPrincipalName | User principal name |
+| Gebruiker | userPrincipalName | User Principal Name |
 | Gebruiker | department|Afdeling|
 | Gebruiker | onpremisessamaccountname | Naam van on-premises SAM-account |
 | Gebruiker | netbiosname| NetBios-naam |
@@ -359,7 +359,7 @@ Op basis van de gekozen methode wordt een set invoer en uitvoer verwacht. Defini
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabel 4: transformatie methoden en verwachte invoer en uitvoer
 
-|TransformationMethod|Verwachte invoer|Verwachte uitvoer|Beschrijving|
+|TransformationMethod|Verwachte invoer|Verwachte uitvoer|Description|
 |-----|-----|-----|-----|
 |Koppelen|tekenreeks1, tekenreeks2, scheidings teken|Output claim|Voegt invoer teken reeksen samen met behulp van een scheidings teken tussen. Bijvoorbeeld: tekenreeks1: " foo@bar.com ", tekenreeks2: "sandbox", scheidings teken: "." resulteert in output claim: " foo@bar.com.sandbox "|
 |ExtractMailPrefix|mail|Output claim|Extraheert het lokale deel van een e-mail adres. Bijvoorbeeld: mail: " foo@bar.com " resulteert in output claim: "foo". Als er geen \@ teken aanwezig is, wordt de oorspronkelijke invoer teken reeks geretourneerd als is.|
@@ -385,10 +385,10 @@ Op basis van de gekozen methode wordt een set invoer en uitvoer verwacht. Defini
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabel 5: kenmerken die zijn toegestaan als gegevens bron voor SAML NameID
 
-|Bron|Id|Beschrijving|
+|Bron|Id|Description|
 |-----|-----|-----|
 | Gebruiker | mail|E-mailadres|
-| Gebruiker | userPrincipalName|User principal name|
+| Gebruiker | userPrincipalName|User Principal Name|
 | Gebruiker | onpremisessamaccountname|Naam van on-premises SAM-account|
 | Gebruiker | employeeid|Werknemer-id|
 | Gebruiker | extensionattribute1 | Uitbreidings kenmerk 1 |
@@ -525,6 +525,6 @@ In dit voor beeld maakt u een beleid dat een aangepaste claim ' JoinedData ' uit
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 Zie [How to: claims aanpassen die zijn uitgegeven in het SAML-token voor zakelijke toepassingen voor](active-directory-saml-claims-customization.md) meer informatie over het aanpassen van claims die zijn uitgegeven in het SAML-token via de Azure Portal.

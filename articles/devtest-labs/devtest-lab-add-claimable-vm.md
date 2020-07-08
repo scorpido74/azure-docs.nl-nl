@@ -4,17 +4,17 @@ description: Meer informatie over het toevoegen van een claim bare virtuele mach
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 7a4e465f0ba6c592f173a0c48aadd51f3e12ea07
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85481303"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Bewering bare Vm's maken en beheren in Azure DevTest Labs
 U voegt een claim bare virtuele machine toe aan een lab op ongeveer dezelfde manier om [een standaard-VM toe te voegen](devtest-lab-add-vm.md) : van een *basis* die een [aangepaste afbeelding](devtest-lab-create-template.md), [formule](devtest-lab-manage-formulas.md)of [Marketplace-installatie kopie](devtest-lab-configure-marketplace-images.md)is. In deze zelf studie wordt u begeleid bij het gebruik van de Azure Portal om een claim bare virtuele machine toe te voegen aan een lab in DevTest Labs en worden de processen weer gegeven die een gebruiker volgt om de virtuele machine te claimen en te claimen.
 
 ## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>Stappen om een claim bare virtuele machine toe te voegen aan een lab in Azure DevTest Labs
-1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de sectie **DEVOPS** . Als u * (Star) selecteert naast **DevTest Labs** in de sectie **DEVOPS** . Met deze actie worden **DevTest Labs** toegevoegd aan het navigatie menu aan de linkerkant, zodat u de volgende keer snel toegang kunt krijgen. Vervolgens kunt u **DevTest Labs** selecteren in het navigatie menu aan de linkerkant.
 
     ![Alle services: Selecteer DevTest Labs](./media/devtest-lab-create-lab/all-services-select.png)

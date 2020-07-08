@@ -13,10 +13,10 @@ ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.openlocfilehash: ad66e0698cf0705c7a4db90a6dd515b71fed84e6
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85478617"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Procedure: de rol claim configureren die is uitgegeven in het SAML-token voor zakelijke toepassingen
@@ -88,7 +88,7 @@ Als uw toepassing verwacht dat aangepaste rollen worden door gegeven in een SAML
 
       ![Query voor het ophalen van de service-principal die u moet wijzigen](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
 
-    g. Extraheer de eigenschap **appRoles** uit het object Service-Principal.
+    bijvoorbeeld Extraheer de eigenschap **appRoles** uit het object Service-Principal.
 
       ![Details van de eigenschap appRoles](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
 

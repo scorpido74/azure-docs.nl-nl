@@ -4,10 +4,10 @@ description: Meer informatie over het maken van een aangepaste installatie kopie
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ba627421a43a8e4e7f193ad96da09da8934d028c
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85481269"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>Een aangepaste installatie kopie maken van een VHD-bestand
@@ -22,7 +22,7 @@ ms.locfileid: "85481269"
 
 De volgende stappen helpen u bij het maken van een aangepaste installatie kopie vanuit een VHD-bestand met behulp van de Azure Portal:
 
-1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 

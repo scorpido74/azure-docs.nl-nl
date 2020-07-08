@@ -4,10 +4,10 @@ description: Meer informatie over het toevoegen van een aankondiging aan een lab
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: bac2b0a4e33a01977418b36ce6e3726999d10ed5
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85478991"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Een aankondiging in Azure DevTest Labs plaatsen in een Lab
@@ -24,7 +24,7 @@ De aankondigings functie is bedoeld om te worden gebruikt voor tijdelijke meldin
 
 ## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>Stappen voor het plaatsen van een aankondiging in een bestaand Lab
 
-1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Selecteer indien nodig **alle services**en selecteer vervolgens **DevTest Labs** in de lijst. (Uw Lab wordt mogelijk al weer gegeven op het dash board onder **alle resources**).
 1. Selecteer in de lijst met Labs het lab waarin u een aankondiging wilt plaatsen.
 1. Selecteer in het gedeelte **overzicht** van het lab de optie **configuratie en beleid**.

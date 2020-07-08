@@ -4,10 +4,10 @@ description: Meer informatie over het gebruik van platform-as-a-Service-(Pass) s
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: eec37527386098174906dc2737d7b763241da3f2
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85478736"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>PaaS-Services (platform-as-a-Service) gebruiken in Azure DevTest Labs
@@ -34,7 +34,7 @@ In grote organisaties bieden ontwikkel teams doorgaans omgevingen zoals aangepas
 De eigenaar van het Lab kan de test omgevingen aanpassen om de rol van de gebruiker van de **lezer** te wijzigen in **Inzender** binnen de resource groep. Deze mogelijkheid bevindt zich op de pagina **Lab-instellingen** onder de **configuratie en het beleid** van het lab. Met deze wijziging in de rol kan de gebruiker resources toevoegen aan of verwijderen uit die omgeving. Als u de toegang verder wilt beperken, gebruikt u Azure-beleid. Met deze functie kunt u de resources of configuratie aanpassen zonder de toegang op het abonnements niveau.
 
 #### <a name="custom-tokens"></a>Aangepaste tokens
-Er zijn een aantal aangepaste Lab-gegevens die zich buiten de resource groep bevinden en die specifiek zijn voor omgevingen waar de sjabloon toegang toe heeft. Hier volgen enkele voor beelden: 
+Er zijn een aantal aangepaste Lab-gegevens die zich buiten de resource groep bevinden en die specifiek zijn voor omgevingen waar de sjabloon toegang toe heeft. Hier volgen een paar van deze manieren: 
 
 - Lab-netwerk identificatie
 - Locatie

@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 02/24/2017
 ms.author: cshoe
 ms.openlocfilehash: 2c6efd14bd974de1b01b1725b9810f153df74bf8
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85482170"
 ---
 # <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-and-higher-overview"></a>Azure Cosmos DB trigger en bindingen voor Azure Functions 2. x-en hoger-overzicht
@@ -37,7 +37,7 @@ In deze reeks artikelen wordt uitgelegd hoe u [Azure Cosmos DB](../cosmos-db/ser
 
 ## <a name="add-to-your-functions-app"></a>Toevoegen aan uw functions-app
 
-### <a name="functions-2x-and-higher"></a>Functies 2. x en hoger
+### <a name="functions-2x-and-higher"></a>Functions 2.x en hoger
 
 Voor het werken met de trigger en bindingen moet u verwijzen naar het juiste pakket. Het NuGet-pakket wordt gebruikt voor .NET-klassen bibliotheken terwijl de uitbreidings bundel wordt gebruikt voor alle andere toepassings typen.
 

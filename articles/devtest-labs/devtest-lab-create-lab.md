@@ -4,10 +4,10 @@ description: In dit artikel wordt stapsgewijs uitgelegd hoe u een Lab maakt met 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 09999c5b0187f924f9cfbbc2afad8954adee0fd7
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85481252"
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Een lab maken in Azure DevTest Labs

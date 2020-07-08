@@ -4,10 +4,10 @@ description: Meer informatie over het gebruik van beheerde identiteiten in azure
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 4d4df9cab17289eba21caf9d7c88eb37626b3349
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85478872"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Door Azure beheerde identiteiten gebruiken voor het implementeren van omgevingen in een Lab 

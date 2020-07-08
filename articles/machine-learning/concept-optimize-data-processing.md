@@ -11,10 +11,10 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
 ms.openlocfilehash: 09e48bd5c27dc4835ba0261ccd929f858fdb58b4
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85481881"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Gegevens verwerking optimaliseren met Azure Machine Learning
@@ -51,7 +51,7 @@ Voor meerdere virtuele Cpu's, vCPU moet u er voor zorgen dat de ene partitie in 
 
 Als u geen RAM-geheugen kunt toevoegen aan uw computer, kunt u de volgende technieken Toep assen om de CPU-workloads te minimaliseren en verwerkings tijden te optimaliseren. Deze aanbevelingen zijn van toepassing op zowel één als gedistribueerde systemen.
 
-Techniek | Beschrijving
+Techniek | Description
 ----|----
 Compressie | Gebruik een andere weer gave voor uw gegevens, op een manier die minder geheugen gebruikt en de resultaten van de berekening niet aanzienlijk beïnvloeden.<br><br>*Voor beeld:* In plaats van vermeldingen op te slaan als een teken reeks met ongeveer 10 bytes of meer per vermelding, slaat u ze op als Boolean, True of False, die u in één byte kunt opslaan.
 Segmenterings | Laad gegevens in subsets (segmenten) in het geheugen, waarbij de gegevens één subset op tijdstip worden verwerkt of meerdere subsets parallel zijn. Deze methode werkt het beste als u alle gegevens wilt verwerken, maar niet alle gegevens in een keer in het geheugen hoeft te laden. <br><br>*Voor beeld:* In plaats van de gegevens van een volledig jaar tegelijk te verwerken, moet u de gegevens één maand per keer laden en verwerken.
