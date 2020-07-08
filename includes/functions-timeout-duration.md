@@ -9,15 +9,15 @@ ms.date: 02/21/2018
 ms.author: nzthiago
 ms.custom: include file
 ms.openlocfilehash: eca2d3359614875e5bff0c9bb67f006f0a8cdba1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77198323"
 ---
 ## <a name="function-app-timeout-duration"></a><a name="timeout"></a>Time-outperiode van functie-app 
 
-De time-outwaarde van een functie-app `functionTimeout` wordt gedefinieerd door de eigenschap in het JSON-project bestand van de [host](../articles/azure-functions/functions-host-json.md#functiontimeout) . In de volgende tabel ziet u de standaard-en maximum waarden in minuten voor beide plannen en de verschillende runtime versies:
+De time-outwaarde van een functie-app wordt gedefinieerd door de `functionTimeout` eigenschap in het [host.jsvan](../articles/azure-functions/functions-host-json.md#functiontimeout) het project bestand. In de volgende tabel ziet u de standaard-en maximum waarden in minuten voor beide plannen en de verschillende runtime versies:
 
 | Plannen | Runtime versie | Standaard | Maximum |
 |------|---------|---------|---------|

@@ -5,10 +5,10 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 4eb794fa35164e3f86a5e3d6f67d446321f91f0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67132958"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Authenticatie van Azure Resource Manager aanvragen voorbereiden
@@ -41,8 +41,8 @@ De volgende stappen laten zien hoe u wachtwoord verificatie instelt voor een AD-
 3. Maak een nieuwe Azure Active Directory-toepassing met behulp van de volgende opdracht, waarbij de locatie houders worden vervangen:
    
    * **{Weergave naam}:** een weergave naam voor uw toepassing, zoals **MySampleApp**
-   * **{URL van start pagina}:** de URL van de start pagina van uw app, zoals **http\/:/mysampleapp/Home**. Deze URL hoeft niet naar een echte toepassing te verwijzen.
-   * **{Toepassings-id}:** Een unieke id, zoals **http:\//mysampleapp**. Deze URL hoeft niet naar een echte toepassing te verwijzen.
+   * **{URL van start pagina}:** de URL van de start pagina van uw app, zoals **http: \/ /mysampleapp/Home**. Deze URL hoeft niet naar een echte toepassing te verwijzen.
+   * **{Toepassings-id}:** Een unieke id, zoals **http: \/ /mysampleapp**. Deze URL hoeft niet naar een echte toepassing te verwijzen.
    * **{Wacht woord}:** Een wacht woord dat u gebruikt voor verificatie bij uw app.
      
      ```powershell
@@ -65,7 +65,7 @@ U hebt nu de Azure AD-toepassing gemaakt waarmee u kunt verifiëren vanuit uw aa
 
 * TenantId
 * SubscriptionId
-* ApplicationId
+* ApplicationID
 * Wachtwoord
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx

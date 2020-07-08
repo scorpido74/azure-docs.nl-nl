@@ -1,6 +1,6 @@
 ---
-title: Include-bestand
-description: Include-bestand
+title: bestand opnemen
+description: bestand opnemen
 services: machine-learning
 ms.service: machine-learning
 ms.custom: include file
@@ -9,13 +9,13 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/18/2019
 ms.openlocfilehash: e3cb977871af2e6cd7a59dd48505090dd29e8a76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75541801"
 ---
-1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com).
+1. Meld u aan bij [Azure Machine Learning Studio](https://ml.azure.com).
 
 1. Voer een upgrade uit voor uw werk ruimte naar Enter prise Edition.
 
@@ -26,7 +26,7 @@ ms.locfileid: "75541801"
     
 1. Ga naar de sectie ontwerp van de werk ruimte om uw lijst met pijp lijnen concepten weer te geven. 
     
-    Geconverteerde webservices kunt u vinden door te navigeren naar **eind** > punten in**realtime-eind punten**.
+    Geconverteerde webservices kunt u vinden door te navigeren naar **eind**punten in  >  **realtime-eind punten**.
 
 1. Selecteer een pijp lijn concept om deze te openen.
 

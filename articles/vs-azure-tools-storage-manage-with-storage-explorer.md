@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
 ms.openlocfilehash: f588ed6d35f3f8882d546b78ff833d62f33ac0a4
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84975262"
 ---
 # <a name="get-started-with-storage-explorer"></a>Aan de slag met Storage Explorer
 
 ## <a name="overview"></a>Overzicht
 
-Microsoft Azure Storage Explorer is een zelfstandige app waarmee u eenvoudig kunt werken met Azure Storage gegevens in Windows, macOS en Linux. In dit artikel leert u verschillende manieren om verbinding te maken met uw Azure Storage-accounts en hoe u deze kunt beheren.
+Microsoft Azure Storage Explorer is een zelfstandige app waarmee u eenvoudig met Azure Storage-gegevens kunt werken via Windows, macOS en Linux. In dit artikel leert u verschillende manieren om verbinding te maken met uw Azure Storage-accounts en hoe u deze kunt beheren.
 
 ![Microsoft Azure Storage Explorer][0]
 
@@ -123,7 +123,7 @@ Er zijn verschillende manieren om te koppelen aan een resource in Storage Explor
 
 1. Selecteer **een resource toevoegen via Azure Active Directory (Azure AD)** en selecteer vervolgens **volgende**.
 
-1. Selecteer een Azure-account en-Tenant. Deze waarden moeten toegang hebben tot de opslag resource die u wilt koppelen. Selecteer **Next**.
+1. Selecteer een Azure-account en-Tenant. Deze waarden moeten toegang hebben tot de opslag resource die u wilt koppelen. Selecteer **Volgende**.
 
 1. Kies het resource type dat u wilt koppelen. Geef de gegevens op die nodig zijn om verbinding te maken. 
 
@@ -155,7 +155,7 @@ Nadat de verbinding is toegevoegd, gaat de resource structuur naar het knoop pun
 
 1. Selecteer **een SAS-URI (Shared Access Signature) gebruiken**en selecteer **volgende**.
 
-1. Kies een weergave naam voor de verbinding en voer de URL voor de Shared Access-hand tekening in. Het service-eind punt voor het type resource dat u wilt koppelen, moet automatisch door voeren worden. Als u een aangepast eind punt gebruikt, is dit mogelijk niet het geval. Selecteer **Next**.
+1. Kies een weergave naam voor de verbinding en voer de URL voor de Shared Access-hand tekening in. Het service-eind punt voor het type resource dat u wilt koppelen, moet automatisch door voeren worden. Als u een aangepast eind punt gebruikt, is dit mogelijk niet het geval. Selecteer **Volgende**.
 
 1. Bekijk de **samen vatting** van de verbinding om te controleren of alle gegevens correct zijn. Als dat het geval is, selecteert u **verbinding maken**. Selecteer anders **terug** om terug te keren naar de vorige pagina's om eventuele onjuiste gegevens op te lossen.
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: amqp
 ms.openlocfilehash: a9bc0564a69124618d0a7e3ff6bafb65b2be0ee4
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84907479"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Apparaat-naar-cloud-berichten lezen van het geïntegreerde eindpunt
@@ -63,10 +63,10 @@ De Sdk's die u kunt gebruiken om verbinding te maken met het ingebouwde Event hu
 
 | Taal | SDK | Voorbeeld |
 | -------- | --- | ------ |
-| .NET | https://www.nuget.org/packages/Azure.Messaging.EventHubs | [Snelstart](quickstart-send-telemetry-dotnet.md) |
-| Java | https://mvnrepository.com/artifact/com.azure/azure-messaging-eventhubs | [Snelstart](quickstart-send-telemetry-java.md) |
-| Node.js | https://www.npmjs.com/package/@azure/event-hubs | [Snelstart](quickstart-send-telemetry-node.md) |
-| Python | https://pypi.org/project/azure-eventhub/ | [Snelstart](quickstart-send-telemetry-python.md) |
+| .NET | https://www.nuget.org/packages/Azure.Messaging.EventHubs | [Snelstartgids](quickstart-send-telemetry-dotnet.md) |
+| Java | https://mvnrepository.com/artifact/com.azure/azure-messaging-eventhubs | [Snelstartgids](quickstart-send-telemetry-java.md) |
+| Node.js | https://www.npmjs.com/package/@azure/event-hubs | [Snelstartgids](quickstart-send-telemetry-node.md) |
+| Python | https://pypi.org/project/azure-eventhub/ | [Snelstartgids](quickstart-send-telemetry-python.md) |
 
 De product integraties die u kunt gebruiken met het ingebouwde Event hub-compatibele eind punt dat IoT Hub beschikbaar zijn, zijn:
 

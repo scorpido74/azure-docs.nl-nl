@@ -5,10 +5,10 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/28/2019
 ms.openlocfilehash: 699c77e937fc13cadf742d193ab1b0b8f00a2726
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84905711"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Een Linux Node.js-app configureren voor Azure App Service
@@ -277,7 +277,7 @@ Wanneer een werk Node.js-app anders werkt in App Service of fouten bevat, kunt u
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelf studie: app Node.js met MongoDB](tutorial-nodejs-mongodb-app.md)
+> [Zelfstudie: Node.js-app met MongoDB](tutorial-nodejs-mongodb-app.md)
 
 > [!div class="nextstepaction"]
 > [Veelgestelde vragen over App Service Linux](app-service-linux-faq.md)

@@ -8,10 +8,10 @@ ms.date: 06/09/2020
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 553492a3ca6868279b1aec9446e2ce04ca673ab0
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84945355"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure-gebeurtenisschema in het activiteitenlogboek
@@ -31,7 +31,7 @@ Elke gebeurtenis in het activiteiten logboek heeft een bepaalde categorie die wo
 |:---|:---|
 | [Administratief](#administrative-category) | Bevat de record van alle bewerkingen voor maken, bijwerken, verwijderen en acties die zijn uitgevoerd via Resource Manager. Voor beelden van beheer gebeurtenissen zijn het maken van een _virtuele machine_ en het verwijderen van de _netwerk beveiligings groep_.<br><br>Elke actie die door een gebruiker of toepassing wordt uitgevoerd met behulp van Resource Manager, is gemodelleerd als een bewerking voor een bepaald bron type. Als het bewerkings type _schrijven_, _verwijderen_of _actie_is, worden de records van zowel het begin als het slagen of mislukken van die bewerking vastgelegd in de beheer categorie. Beheer gebeurtenissen omvatten ook eventuele wijzigingen in op rollen gebaseerd toegangs beheer in een abonnement. |
 | [Status van service](#service-health-category) | Bevat de record van alle service status incidenten die zich in azure hebben voorgedaan. Een voor beeld van een Service Health gebeurtenis _SQL Azure in VS-Oost_ondervindt downtime. <br><br>Service Health gebeurtenissen zijn beschikbaar in zes rassen: _actie vereist_, _assistentie herstel_, _incident_, _onderhoud_, _informatie_of _beveiliging_. Deze gebeurtenissen worden alleen gemaakt als u een resource in het abonnement hebt die van invloed is op de gebeurtenis.
-| [Status van resources](#resource-health-category) | Bevat de record van de resource status gebeurtenissen die zijn opgetreden in uw Azure-resources. Een voor beeld van een Resource Health gebeurtenis is de status van de _virtuele machine is gewijzigd in niet beschikbaar_.<br><br>Resource Health gebeurtenissen kunnen een van de vier statussen vertegenwoordigen: _beschikbaar, niet_ _beschikbaar_, _gedegradeerd_en _onbekend_. Daarnaast kunnen Resource Health gebeurtenissen worden gecategoriseerd als _platform gestart_ of door de _gebruiker gestart_. |
+| [Resource Health](#resource-health-category) | Bevat de record van de resource status gebeurtenissen die zijn opgetreden in uw Azure-resources. Een voor beeld van een Resource Health gebeurtenis is de status van de _virtuele machine is gewijzigd in niet beschikbaar_.<br><br>Resource Health gebeurtenissen kunnen een van de vier statussen vertegenwoordigen: _beschikbaar, niet_ _beschikbaar_, _gedegradeerd_en _onbekend_. Daarnaast kunnen Resource Health gebeurtenissen worden gecategoriseerd als _platform gestart_ of door de _gebruiker gestart_. |
 | [Waarschuwing](#alert-category) | Bevat de registratie van activeringen voor Azure-waarschuwingen. Een voor beeld van een waarschuwings gebeurtenis is _CPU% op myVM heeft de afgelopen vijf minuten meer dan 80_.|
 | [Automatisch schalen](#autoscale-category) | Bevat de record van gebeurtenissen die betrekking hebben op de werking van de engine voor automatisch schalen op basis van de instellingen voor automatisch schalen die u hebt gedefinieerd in uw abonnement. Een voor beeld van een automatisch schalen-gebeurtenis is het _Omhoog schalen van de actie voor schalen is mislukt_. |
 | [Aanbeveling](#recommendation-category) | Bevat aanbevelings gebeurtenissen van Azure Advisor. |
@@ -130,7 +130,7 @@ Deze categorie bevat de record van alle bewerkingen voor maken, bijwerken, verwi
 ```
 
 ### <a name="property-descriptions"></a>Beschrijvingen van eigenschappen
-| Naam van element | Beschrijving |
+| Naam van element | Description |
 | --- | --- |
 | autorisatie |BLOB van RBAC-eigenschappen van de gebeurtenis. Bevat meestal de eigenschappen ' Action ', ' Role ' en ' scope '. |
 | aanroeper |Het e-mail adres van de gebruiker die de bewerking, UPN-claim of SPN-claim heeft uitgevoerd op basis van Beschik baarheid. |
@@ -277,7 +277,7 @@ Deze categorie bevat de record van de resource status gebeurtenissen die zijn op
 ```
 
 ### <a name="property-descriptions"></a>Beschrijvingen van eigenschappen
-| Naam van element | Beschrijving |
+| Naam van element | Description |
 | --- | --- |
 | detailhandelkanalen | Altijd ' admin, bewerking ' |
 | correlationId | Een GUID in de teken reeks indeling. |
@@ -370,7 +370,7 @@ Deze categorie bevat de registratie van alle activeringen van klassieke Azure-wa
 ```
 
 ### <a name="property-descriptions"></a>Beschrijvingen van eigenschappen
-| Naam van element | Beschrijving |
+| Naam van element | Description |
 | --- | --- |
 | aanroeper | Altijd micro soft. Insights/alertRules |
 | detailhandelkanalen | Altijd ' admin, bewerking ' |
@@ -396,7 +396,7 @@ Deze categorie bevat de registratie van alle activeringen van klassieke Azure-wa
 Het veld eigenschappen bevat verschillende waarden, afhankelijk van de bron van de waarschuwings gebeurtenis. Twee veelvoorkomende waarschuwings gebeurtenis providers zijn activiteiten logboek waarschuwingen en metrische waarschuwingen.
 
 #### <a name="properties-for-activity-log-alerts"></a>Eigenschappen voor waarschuwingen voor activiteiten logboeken
-| Naam van element | Beschrijving |
+| Naam van element | Description |
 | --- | --- |
 | Eigenschappen. subscriptionId | De abonnements-ID van de gebeurtenis in het activiteiten logboek, waardoor de waarschuwings regel voor het activiteiten logboek wordt geactiveerd. |
 | Eigenschappen. eventDataId | De gebeurtenis gegevens-ID van de gebeurtenis in het activiteiten logboek, waardoor de waarschuwings regel voor het activiteiten logboek is geactiveerd. |
@@ -407,7 +407,7 @@ Het veld eigenschappen bevat verschillende waarden, afhankelijk van de bron van 
 | Eigenschappen. status | De status van de gebeurtenis in het activiteiten logboek die de waarschuwings regel voor het activiteiten logboek heeft veroorzaakt dat deze wordt geactiveerd.|
 
 #### <a name="properties-for-metric-alerts"></a>Eigenschappen voor metrische waarschuwingen
-| Naam van element | Beschrijving |
+| Naam van element | Description |
 | --- | --- |
 | eigenschappen. RuleUri | Resource-ID van de metrische waarschuwings regel zelf. |
 | eigenschappen. RuleName | De naam van de waarschuwings regel voor metrische gegevens. |
@@ -480,7 +480,7 @@ Deze categorie bevat een overzicht van alle gebeurtenissen die betrekking hebben
 ```
 
 ### <a name="property-descriptions"></a>Beschrijvingen van eigenschappen
-| Naam van element | Beschrijving |
+| Naam van element | Description |
 | --- | --- |
 | aanroeper | Altijd micro soft. Insights/autoscaleSettings |
 | detailhandelkanalen | Altijd ' admin, bewerking ' |
@@ -570,7 +570,7 @@ Deze categorie bevat alle waarschuwingen die door Azure Security Center worden g
 ```
 
 ### <a name="property-descriptions"></a>Beschrijvingen van eigenschappen
-| Naam van element | Beschrijving |
+| Naam van element | Description |
 | --- | --- |
 | detailhandelkanalen | Altijd ' bewerking ' |
 | correlationId | Een GUID in de teken reeks indeling. |
@@ -651,7 +651,7 @@ Deze categorie bevat de record met nieuwe aanbevelingen die voor uw services wor
 
 ```
 ### <a name="property-descriptions"></a>Beschrijvingen van eigenschappen
-| Naam van element | Beschrijving |
+| Naam van element | Description |
 | --- | --- |
 | detailhandelkanalen | Altijd ' bewerking ' |
 | correlationId | Een GUID in de teken reeks indeling. |
@@ -761,7 +761,7 @@ Deze categorie bevat records van alle bewerkingen voor effect acties die worden 
 
 ### <a name="policy-event-property-descriptions"></a>Beschrijvingen van eigenschap beleids gebeurtenis
 
-| Naam van element | Beschrijving |
+| Naam van element | Description |
 | --- | --- |
 | autorisatie | Matrix van RBAC-eigenschappen van de gebeurtenis. Voor nieuwe resources zijn dit de actie en het bereik van de aanvraag die de evaluatie heeft geactiveerd. Voor bestaande resources is de actie ' micro soft. resources/checkPolicyCompliance/lezen '. |
 | aanroeper | Voor nieuwe resources, de identiteit die een implementatie heeft gestart. Voor bestaande resources, de GUID van de Microsoft Azure Policy Insights RP. |

@@ -14,21 +14,21 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 9a0315fadefac0269a6d9670844ef8c3886eef12
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84975619"
 ---
 # <a name="authentication-flows"></a>Verificatie stromen
 
 De micro soft Authentication Library (MSAL) ondersteunt verschillende verificatie stromen voor gebruik in verschillende toepassings scenario's.
 
-| Stroom | Beschrijving | Gebruikt in|
+| Stroom | Description | Gebruikt in|
 | ---- | ----------- | ------- |
 | [SBSI](#interactive) | Hiermee wordt het token opgehaald via een interactief proces waarbij de gebruiker wordt gevraagd om referenties via een browser of pop-upvenster. | [Bureau blad-apps](scenario-desktop-overview.md), [mobiele apps](scenario-mobile-overview.md) |
 | [Impliciete toekenning](#implicit-grant) | Hiermee kan de app tokens ophalen zonder dat er een back-end-server referentie-uitwisseling wordt uitgevoerd. Hiermee kunt u de app in staat stelt om zich aan te melden bij de gebruiker, de sessie te onderhouden en tokens te verkrijgen voor andere web-Api's, allemaal in de Java script-code van de client| [Toepassingen met één pagina (SPA)](scenario-spa-overview.md) |
-| [Autorisatiecode](#authorization-code) | Wordt gebruikt in apps die op een apparaat zijn geïnstalleerd om toegang te krijgen tot beveiligde bronnen, zoals web-Api's. Hiermee kunt u aanmelding en API-toegang toevoegen aan uw mobiele en desktop-apps. | [Bureau blad-apps](scenario-desktop-overview.md), [mobiele apps](scenario-mobile-overview.md), [Web-apps](scenario-web-app-call-api-overview.md) |
+| [Autorisatie code](#authorization-code) | Wordt gebruikt in apps die op een apparaat zijn geïnstalleerd om toegang te krijgen tot beveiligde bronnen, zoals web-Api's. Hiermee kunt u aanmelding en API-toegang toevoegen aan uw mobiele en desktop-apps. | [Bureau blad-apps](scenario-desktop-overview.md), [mobiele apps](scenario-mobile-overview.md), [Web-apps](scenario-web-app-call-api-overview.md) |
 | [Namens-van](#on-behalf-of) | Een toepassing roept een service of Web-API aan, die op zijn beurt een andere service of Web-API moet aanroepen. Het is verstandig om de gedelegeerde gebruikers identiteit en de machtigingen via de aanvraag keten door te geven. | [Web-API's](scenario-web-api-call-api-overview.md) |
 | [Clientreferenties](#client-credentials) | Hiermee krijgt u toegang tot webhoste bronnen met behulp van de identiteit van een toepassing. Wordt meestal gebruikt voor server-naar-server-interacties die op de achtergrond moeten worden uitgevoerd, zonder directe interactie met een gebruiker. | [Daemon-apps](scenario-daemon-overview.md) |
 | [Apparaatcode](#device-code) | Hiermee kunnen gebruikers zich aanmelden op apparaten met invoer beperkingen, zoals een Smart TV, IoT-apparaat of printer. | [Desktop/mobiele apps](scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser) |

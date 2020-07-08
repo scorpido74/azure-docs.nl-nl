@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175710"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
@@ -27,7 +27,7 @@ U kunt Maxi maal 252 aangepaste eigenschappen definiëren voor een entiteit.
 
 ### <a name="add-table-entities"></a>Tabel entiteiten toevoegen
 
-Entiteiten toevoegen aan een tabel met behulp van **add-AzTableRow**. In deze voor beelden wordt gebruikgemaakt `partition1` van `partition2`partitie sleutels met waarden en en de rij-sleutels die gelijk zijn aan de status afkortingen. De eigenschappen in elke entiteit zijn `username` en `userid`. 
+Entiteiten toevoegen aan een tabel met behulp van **add-AzTableRow**. In deze voor beelden wordt gebruikgemaakt van partitie sleutels met waarden en en de `partition1` `partition2` rij-sleutels die gelijk zijn aan de status afkortingen. De eigenschappen in elke entiteit zijn `username` en `userid` . 
 
 ```powershell
 $partitionKey1 = "partition1"

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
 ms.openlocfilehash: a4af53e035929a44f74a95b8e9897cb1dc0c6d8e
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66814794"
 ---
 [!INCLUDE [ACS deprecation](container-service-deprecation.md)]
@@ -29,7 +29,7 @@ U kunt het aantal agent knooppunten in een DC/OS-, docker Swarm-of Kubernetes-cl
 
 ## <a name="scale-with-the-azure-cli"></a>Schalen met Azure CLI
 
-[Installeer de Azure cli](/cli/azure/install-azure-cli) en meld u aan bij een Azure- `az login`account met.
+[Installeer de Azure cli](/cli/azure/install-azure-cli) en meld u aan bij een Azure-account met `az login` .
 
 ### <a name="see-the-current-agent-count"></a>Bekijk het huidige aantal agents
 Voer de `az acs show` opdracht uit om te zien hoeveel agents zich momenteel in het cluster bevinden. Deze geeft de clusterconfiguratie weer. De volgende opdracht toont bijvoorbeeld de configuratie van de containerservice met de naam `containerservice-myACSName` in de resourcegroep `myResourceGroup`:

@@ -8,10 +8,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
 ms.openlocfilehash: e38ae07aa032e4a828c9188fd78b112f4ff0d397
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84945389"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Virtuele Azure-machines bewaken met Azure Monitor
@@ -130,7 +130,7 @@ Wanneer u de verzameling van bewakings gegevens voor een virtuele machine hebt g
 
 ![Bewaking in de Azure Portal](media/monitor-vm-azure/monitor-menu.png)
 
-| Menu optie | Beschrijving |
+| Menu optie | Description |
 |:---|:---|
 | Overzicht | Geeft de [platform metrische gegevens](../platform/data-platform-metrics.md) weer voor de host van de virtuele machine. Klik op een grafiek om met deze gegevens in [Metrics Explorer](../platform/metrics-getting-started.md)te werken. |
 | Activiteitenlogboek | Vermeldingen in het [activiteiten logboek](../platform/activity-log-view.md) gefilterd op de huidige virtuele machine. |
@@ -148,7 +148,7 @@ U kunt metrische gegevens voor virtuele machines analyseren met metrische gegeve
 
 Er zijn drie naam ruimten die door virtuele machines worden gebruikt voor metrische gegevens:
 
-| Naamruimte | Beschrijving | Vereiste |
+| Naamruimte | Description | Vereiste |
 |:---|:---|:---|
 | Host van virtuele machine | Metrische gegevens van de host worden automatisch verzameld voor alle virtuele machines van Azure. Gedetailleerde lijst met metrische gegevens bij [micro soft. Compute/informatie](../platform/metrics-supported.md#microsoftcomputevirtualmachines). | Automatisch verzameld zonder configuratie vereist. |
 | Gast (klassiek) | Beperkte set gast besturingssysteem en prestatie gegevens van toepassingen. Beschikbaar in Metrics Explorer, maar niet op andere Azure Monitor functies, zoals metrische waarschuwingen.  | [Diagnostische uitbrei ding](../platform/diagnostics-extension-overview.md) geïnstalleerd. Gegevens worden uit Azure Storage gelezen.  |

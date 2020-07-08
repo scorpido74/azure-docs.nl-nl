@@ -9,26 +9,26 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1643b20c6c157c43e93967cef364e703dbf4478e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74829172"
 ---
-|**VPN<br>-<br>gateway genereren** |**SKU**   | **S2S-/VNet-naar-VNet-<br>tunnels** | **P2S<br> SSTP-verbindingen** | **P2S<br> IKEv2/openvpn-verbindingen** | **Benchmark cumulatieve<br>doorvoer** | **BGP** | **Zone-redundant** |
+|**VPN- <br> gateway <br> genereren** |**SKU**   | **S2S-/VNet-naar-VNet-<br>tunnels** | **P2S<br> SSTP-verbindingen** | **P2S <br> IKEv2/openvpn-verbindingen** | **Benchmark cumulatieve<br>doorvoer** | **BGP** | **Zone-redundant** |
 |---            |---         | ---        | ---       | ---            | ---       | ---       | ---|
-|**Generation1**|**Hoofd**   | Met maximaal 10    | Met maximaal 128  | Niet ondersteund  | 100 Mbps  | Niet ondersteund| Nee |
-|**Generation1**|**VpnGw1**  | Met maximaal 30*   | Met maximaal 128  | Met maximaal 250       | 650 Mbps  | Ondersteund | Nee |
-|**Generation1**|**VpnGw2**  | Met maximaal 30*   | Met maximaal 128  | Met maximaal 500       | 1 Gbps    | Ondersteund | Nee |
-|**Generation1**|**VpnGw3**  | Met maximaal 30*   | Met maximaal 128  | Met maximaal 1000      | 1,25 Gbps | Ondersteund | Nee |
+|**Generation1**|**Standaard**   | Met maximaal 10    | Met maximaal 128  | Niet ondersteund  | 100 Mbps  | Niet ondersteund| No |
+|**Generation1**|**VpnGw1**  | Met maximaal 30*   | Met maximaal 128  | Met maximaal 250       | 650 Mbps  | Ondersteund | No |
+|**Generation1**|**VpnGw2**  | Met maximaal 30*   | Met maximaal 128  | Met maximaal 500       | 1 Gbps    | Ondersteund | No |
+|**Generation1**|**VpnGw3**  | Met maximaal 30*   | Met maximaal 128  | Met maximaal 1000      | 1,25 Gbps | Ondersteund | No |
 |**Generation1**|**VpnGw1AZ**| Met maximaal 30*   | Met maximaal 128  | Met maximaal 250       | 650 Mbps  | Ondersteund | Ja |
 |**Generation1**|**VpnGw2AZ**| Met maximaal 30*   | Met maximaal 128  | Met maximaal 500       | 1 Gbps    | Ondersteund | Ja |
 |**Generation1**|**VpnGw3AZ**| Met maximaal 30*   | Met maximaal 128  | Met maximaal 1000      | 1,25 Gbps | Ondersteund | Ja |
 |        |            |            |           |                |           |           |     |
-|**Generation2**|**VpnGw2**  | Met maximaal 30*   | Met maximaal 128  | Met maximaal 500       | 1,25 Gbps | Ondersteund | Nee |
-|**Generation2**|**VpnGw3**  | Met maximaal 30*   | Met maximaal 128  | Met maximaal 1000      | 2,5 Gbps  | Ondersteund | Nee |
-|**Generation2**|**VpnGw4**  | Met maximaal 30*   | Met maximaal 128  | Met maximaal 5000      | 5 Gbps    | Ondersteund | Nee |
-|**Generation2**|**VpnGw5**  | Met maximaal 30*   | Met maximaal 128  | Met maximaal 10.000      | 10 Gbps   | Ondersteund | Nee |
+|**Generation2**|**VpnGw2**  | Met maximaal 30*   | Met maximaal 128  | Met maximaal 500       | 1,25 Gbps | Ondersteund | No |
+|**Generation2**|**VpnGw3**  | Met maximaal 30*   | Met maximaal 128  | Met maximaal 1000      | 2,5 Gbps  | Ondersteund | No |
+|**Generation2**|**VpnGw4**  | Met maximaal 30*   | Met maximaal 128  | Met maximaal 5000      | 5 Gbps    | Ondersteund | No |
+|**Generation2**|**VpnGw5**  | Met maximaal 30*   | Met maximaal 128  | Met maximaal 10.000      | 10 Gbps   | Ondersteund | No |
 |**Generation2**|**VpnGw2AZ**| Met maximaal 30*   | Met maximaal 128  | Met maximaal 500       | 1,25 Gbps | Ondersteund | Ja |
 |**Generation2**|**VpnGw3AZ**| Met maximaal 30*   | Met maximaal 128  | Met maximaal 1000      | 2,5 Gbps  | Ondersteund | Ja |
 |**Generation2**|**VpnGw4AZ**| Met maximaal 30*   | Met maximaal 128  | Met maximaal 5000      | 5 Gbps    | Ondersteund | Ja |
@@ -48,7 +48,7 @@ ms.locfileid: "74829172"
 
 Om onze klanten te helpen bij het begrijpen van de relatieve prestaties van Sku's die gebruikmaken van verschillende algoritmen, hebben we de open bare iPerf-en CTSTraffic-hulpprogram ma's gebruikt om prestaties te meten. De volgende tabel bevat de resultaten van prestatie tests voor generatie 1, VpnGw Sku's. Zoals u kunt zien, worden de beste prestaties verkregen wanneer we het GCMAES256-algoritme voor zowel IPsec-versleuteling als-integriteit hebben gebruikt. Er zijn gemiddelde prestaties bij het gebruik van AES256 voor IPsec-versleuteling en SHA256 voor integriteit. Wanneer we DES3 gebruiken voor IPsec-versleuteling en SHA256 voor integriteit, hebben we de laagste prestaties ontvangen.
 
-|**Generatie**|**SKU**   | **Gebruikte<br>algoritmen** | **Waargenomen<br>door Voer** | **Gemeten pakketten per<br>seconde** |
+|**Generatie**|**SKU**   | **Gebruikte algoritmen <br>** | **Waargenomen door Voer <br>** | **Gemeten pakketten per seconde <br>** |
 |---           |---       | ---                 | ---            | ---                    |
 |**Generation1**|**VpnGw1**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 650 Mbps<br>500 Mbps<br>120 Mbps   | 58.000<br>50,000<br>50,000|
 |**Generation1**|**VpnGw2**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1 Gbps<br>500 Mbps<br>120 Mbps | 90,000<br>80,000<br>55.000|

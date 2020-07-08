@@ -7,10 +7,10 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 06/19/2020
 ms.openlocfilehash: 938f10b621d6081af84cf15d7e04c5f5ab517417
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84977681"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>Verbindingen die zijn gemaakt door connectors in Azure Logic Apps blok keren
@@ -111,7 +111,7 @@ Als u al een logische app hebt met de verbinding die u wilt blok keren, volgt u 
 
 Voer de volgende stappen uit om het maken van een verbinding in een logische app te blok keren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Voer in het zoekvak van de portal in `policy` en selecteer **beleid**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Voer in het zoekvak van de portal in `policy` en selecteer **beleid**.
 
    ![Zoek en selecteer ' beleid ' in Azure Portal](./media/block-connections-connectors/find-select-azure-policy.png)
 
@@ -125,11 +125,11 @@ Voer de volgende stappen uit om het maken van een verbinding in een logische app
 
    | Eigenschap | Vereist | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
-   | **Locatie van definitie** | Yes | <*Azure-abonnement-naam*> | Het Azure-abonnement dat moet worden gebruikt voor de beleids definitie <p><p>1. Als u uw abonnement wilt vinden, selecteert u de knop met weglatings tekens (**...**). <br>2. Zoek en selecteer uw abonnement in de lijst met **abonnementen** . <br>3. Als u klaar bent, selecteert u **selecteren**. |
+   | **Locatie van definitie** | Yes | <*Azure-subscription-name*> | Het Azure-abonnement dat moet worden gebruikt voor de beleids definitie <p><p>1. Als u uw abonnement wilt vinden, selecteert u de knop met weglatings tekens (**...**). <br>2. Zoek en selecteer uw abonnement in de lijst met **abonnementen** . <br>3. Als u klaar bent, selecteert u **selecteren**. |
    | **Naam** | Yes | <*beleids definitie: naam*> | De naam die moet worden gebruikt voor de beleids definitie |
    | **Beschrijving** | No | <*beleids definitie: naam*> | Een beschrijving van de beleids definitie |
    | **Categorie** | Yes | **Logic apps** | De naam van een bestaande categorie of nieuwe categorie voor de beleids definitie |
-   | **Beleidsafdwinging** | Yes | **Ingeschakeld** | Met deze instelling bepaalt u of de beleids definitie moet worden in-of uitgeschakeld wanneer u uw werk opslaat. |
+   | **Afdwingen van beleid** | Yes | **Ingeschakeld** | Met deze instelling bepaalt u of de beleids definitie moet worden in-of uitgeschakeld wanneer u uw werk opslaat. |
    ||||
 
 1. Onder **BELEIDS regel**is het JSON-invoervak vooraf ingevuld met een beleids definitie sjabloon. Vervang deze sjabloon door de [beleids definitie](../governance/policy/concepts/definition-structure.md) op basis van de eigenschappen die worden beschreven in de onderstaande tabel en met de volgende syntaxis:
@@ -223,7 +223,7 @@ Voer de volgende stappen uit om het maken van een verbinding in een logische app
 Zie de volgende onderwerpen voor meer informatie over Azure-beleids definities:
 
 * [Definitie van beleids structuur](../governance/policy/concepts/definition-structure.md)
-* [Zelf studie: beleid maken en beheren om naleving af te dwingen](../governance/policy/tutorials/create-and-manage.md)
+* [Zelfstudie: Beleidsregels voor het afdwingen van naleving maken en beheren](../governance/policy/tutorials/create-and-manage.md)
 * [Ingebouwde Azure Policy-beleidsdefinities voor Azure Logic Apps](../logic-apps/policy-samples.md)
 
 <a name="create-policy-connector-usage"></a>
@@ -232,7 +232,7 @@ Zie de volgende onderwerpen voor meer informatie over Azure-beleids definities:
 
 Wanneer u een verbinding maakt in een logische app, bestaat die verbinding als afzonderlijke Azure-resource. Als u alleen de logische app verwijdert, wordt de verbinding niet automatisch verwijderd en blijft deze bestaan tot deze wordt verwijderd. Mogelijk hebt u een scenario waarin de verbinding al bestaat of waar u de verbinding moet maken voor gebruik buiten een logische app. U kunt nog steeds de mogelijkheid voor het gebruik van een bestaande verbinding in een logische app blok keren door een beleid te maken waarmee wordt voor komen dat logische apps met de beperkte of niet-goedgekeurde verbinding worden opgeslagen.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Voer in het zoekvak van de portal in `policy` en selecteer **beleid**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Voer in het zoekvak van de portal in `policy` en selecteer **beleid**.
 
    ![Zoek en selecteer ' beleid ' in Azure Portal](./media/block-connections-connectors/find-select-azure-policy.png)
 
@@ -244,13 +244,13 @@ Wanneer u een verbinding maakt in een logische app, bestaat die verbinding als a
 
    ![Eigenschappen van beleids definitie](./media/block-connections-connectors/policy-definition-using-connections-1.png)
 
-   | Eigenschap | Vereist | Waarde | Beschrijving |
+   | Eigenschap | Vereist | Waarde | Description |
    |----------|----------|-------|-------------|
-   | **Locatie van definitie** | Yes | <*Azure-abonnement-naam*> | Het Azure-abonnement dat moet worden gebruikt voor de beleids definitie <p><p>1. Als u uw abonnement wilt vinden, selecteert u de knop met weglatings tekens (**...**). <br>2. Zoek en selecteer uw abonnement in de lijst met **abonnementen** . <br>3. Als u klaar bent, selecteert u **selecteren**. |
+   | **Locatie van definitie** | Yes | <*Azure-subscription-name*> | Het Azure-abonnement dat moet worden gebruikt voor de beleids definitie <p><p>1. Als u uw abonnement wilt vinden, selecteert u de knop met weglatings tekens (**...**). <br>2. Zoek en selecteer uw abonnement in de lijst met **abonnementen** . <br>3. Als u klaar bent, selecteert u **selecteren**. |
    | **Naam** | Yes | <*beleids definitie: naam*> | De naam die moet worden gebruikt voor de beleids definitie |
    | **Beschrijving** | No | <*beleids definitie: naam*> | Een beschrijving van de beleids definitie |
    | **Categorie** | Yes | **Logic apps** | De naam van een bestaande categorie of nieuwe categorie voor de beleids definitie |
-   | **Beleidsafdwinging** | Yes | **Ingeschakeld** | Met deze instelling bepaalt u of de beleids definitie moet worden in-of uitgeschakeld wanneer u uw werk opslaat. |
+   | **Afdwingen van beleid** | Yes | **Ingeschakeld** | Met deze instelling bepaalt u of de beleids definitie moet worden in-of uitgeschakeld wanneer u uw werk opslaat. |
    ||||
 
 1. Onder **BELEIDS regel**is het JSON-invoervak vooraf ingevuld met een beleids definitie sjabloon. Vervang deze sjabloon door de [beleids definitie](../governance/policy/concepts/definition-structure.md) op basis van de eigenschappen die worden beschreven in de onderstaande tabel en met de volgende syntaxis:
@@ -271,7 +271,7 @@ Wanneer u een verbinding maakt in een logische app, bestaat die verbinding als a
     }
     ```
 
-   | Eigenschap | Waarde | Beschrijving |
+   | Eigenschap | Waarde | Description |
    |----------|-------|-------------|
    | `mode` | `All` | De modus die de resource typen bepaalt die door het beleid worden geëvalueerd. <p><p>Met dit scenario stelt `mode` u in dat `All` het beleid wordt toegepast op Azure-resource groepen,-abonnementen en alle resource typen. <p><p>Zie [structuur modus van beleids definitie](../governance/policy/concepts/definition-structure.md#mode)voor meer informatie. |
    | `if` | `{condition-to-evaluate}` | De voor waarde waarmee wordt bepaald wanneer de beleids regel moet worden afgedwongen <p><p>In dit scenario bepaalt de `{condition-to-evaluate}` of de teken reeks uitvoer van de `[string(field('Microsoft.Logic/workflows/parameters'))]` teken reeks bevat, `{connector-name}` . <p><p>Zie [structuur beleids definitie-beleids regel](../governance/policy/concepts/definition-structure.md#policy-rule)voor meer informatie. |
@@ -310,7 +310,7 @@ Wanneer u een verbinding maakt in een logische app, bestaat die verbinding als a
 Zie de volgende onderwerpen voor meer informatie over Azure-beleids definities:
 
 * [Definitie van beleids structuur](../governance/policy/concepts/definition-structure.md)
-* [Zelf studie: beleid maken en beheren om naleving af te dwingen](../governance/policy/tutorials/create-and-manage.md)
+* [Zelfstudie: Beleidsregels voor het afdwingen van naleving maken en beheren](../governance/policy/tutorials/create-and-manage.md)
 * [Ingebouwde Azure Policy-beleidsdefinities voor Azure Logic Apps](../logic-apps/policy-samples.md)
 
 <a name="create-policy-assignment"></a>
@@ -337,7 +337,7 @@ Vervolgens moet u de beleids definitie toewijzen waarvoor u het beleid wilt afdw
    | **Toewijzings naam** | Yes | De naam die moet worden gebruikt voor de beleids toewijzing als deze afwijkt van de beleids definitie |
    | **Toewijzings-ID** | Yes | De automatisch gegenereerde ID voor de beleids toewijzing |
    | **Beschrijving** | No | Een beschrijving voor de beleids toewijzing |
-   | **Beleidsafdwinging** | Yes | De instelling waarmee de beleids toewijzing wordt in-of uitgeschakeld |
+   | **Afdwingen van beleid** | Yes | De instelling waarmee de beleids toewijzing wordt in-of uitgeschakeld |
    | **Toegewezen door** | No | De naam van de persoon die de beleids toewijzing heeft gemaakt en toegepast |
    ||||
 

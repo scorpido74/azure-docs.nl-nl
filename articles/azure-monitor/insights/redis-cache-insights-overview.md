@@ -6,10 +6,10 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
 ms.openlocfilehash: 469b402c694bcfae5a826c03ea35dbef2c365148
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84945406"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Azure Monitor voor Azure-cache verkennen voor redis (preview-versie)
@@ -23,7 +23,7 @@ Azure Monitor voor Azure cache voor redis (preview) voor al uw Azure-cache voor 
 
 Dit artikel helpt u bij het begrijpen van de voor delen van deze nieuwe bewakings ervaring. Ook wordt uitgelegd hoe u de ervaring kunt aanpassen en aanpassen aan de unieke behoeften van uw organisatie.
 
-## <a name="introduction"></a>Introductie
+## <a name="introduction"></a>Inleiding
 
 Voordat u met de ervaring begint, moet u weten hoe Azure Monitor voor Azure cache voor redis visueel informatie weergeeft.
 
@@ -44,7 +44,7 @@ Voor deze functie hoeft u niets in te scha kelen of te configureren. De Azure-ca
 
 Voer de volgende stappen uit om het gebruik en de prestaties van uw opslag accounts voor al uw abonnementen weer te geven:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Zoek naar **monitor**en selecteer **monitor**.
 
@@ -79,7 +79,7 @@ Wanneer u de naam van het Azure-cache geheugen selecteert voor de redis-resource
 - **Cachemissers**
 - **Fouten (max)**
 
-### <a name="operations"></a>Operations
+### <a name="operations"></a>Bewerkingen
 
 Wanneer u **bewerkingen** boven aan de pagina selecteert, wordt de tabel **bewerkingen** van de werkmap sjabloon geopend. Deze kolommen worden weer gegeven:
 

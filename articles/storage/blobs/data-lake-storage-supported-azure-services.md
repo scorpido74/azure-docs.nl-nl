@@ -9,10 +9,10 @@ ms.date: 04/07/2020
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 1854c6f86e1a3578b6314b072f104174032344e1
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84907581"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Azure-Services die ondersteuning bieden voor Azure Data Lake Storage Gen2
@@ -32,7 +32,7 @@ Deze tabel geeft een lijst van de Azure-Services die u kunt gebruiken met Azure 
 |Azure Databricks|Algemeen verkrijgbaar|[Gebruiken met Azure Databricks](https://docs.azuredatabricks.net/data/data-sources/azure/azure-datalake-gen2.html) <br> [Snelstartgids: gegevens in Azure Data Lake Storage Gen2 analyseren met behulp van Azure Databricks](data-lake-storage-quickstart-create-databricks-account.md) <br>[Zelfstudie: Gegevens extraheren, transformeren en laden met Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse) <br>[Zelf studie: toegang tot Data Lake Storage Gen2 gegevens met Azure Databricks met Spark](data-lake-storage-use-databricks-spark.md)|
 |Azure Event Hub|Algemeen verkrijgbaar|[Gebeurtenissen vastleggen via Azure Event Hubs in Azure Blob Storage of Azure Data Lake Storage](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|
 |Azure Event Grid|Algemeen verkrijgbaar|[Zelf studie: het data Lake Capture-patroon implementeren om een Databricks Delta tabel bij te werken](data-lake-storage-events.md)|
-|Azure Logic Apps|Algemeen verkrijgbaar|[Overzicht: wat is Azure Logic Apps?](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)|
+|Azure Logic Apps|Algemeen verkrijgbaar|[Overzicht - Wat is Azure Logic Apps?](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)|
 |Azure Machine Learning|Algemeen verkrijgbaar|[Toegang tot gegevens in azure Storage-services](https://docs.microsoft.com/azure/machine-learning/how-to-access-data)|
 |Azure Stream Analytics|Algemeen verkrijgbaar|[Snelstart: Een Stream Analytics-taak maken via Azure Portal](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal) <br> [Uitgaand naar Azure Data Lake Gen2](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2)|
 |Data Box|Algemeen verkrijgbaar|[Gebruik Azure Data Box om gegevens van een on-premises HDFS-Store te migreren naar Azure Storage](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|
@@ -51,4 +51,4 @@ Deze tabel geeft een lijst van de Azure-Services die u kunt gebruiken met Azure 
 - [Bekende problemen met Azure Data Lake Storage Gen2](data-lake-storage-known-issues.md)
 - [Blob-opslag functies die beschikbaar zijn in Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md)
 - [Open-source platforms die ondersteuning bieden voor Azure Data Lake Storage Gen2](data-lake-storage-supported-open-source-platforms.md)
-- [Toegang tot meerdere protocollen op Azure Data Lake Storage](data-lake-storage-multi-protocol-access.md)
+- [Toegang met meerdere protocollen in Azure Data Lake Storage](data-lake-storage-multi-protocol-access.md)

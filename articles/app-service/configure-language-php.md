@@ -5,10 +5,10 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 ms.openlocfilehash: 1eb4e9d349fdd0097cbde4e4cef3d5c61a167193
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84908089"
 ---
 # <a name="configure-a-windows-php-app-for-azure-app-service"></a>Een Windows PHP-app voor Azure App Service configureren
@@ -175,7 +175,7 @@ Als u de hoofdmap van de site wilt aanpassen, stelt u het pad van de virtuele to
 az resource update --name web --resource-group <group-name> --namespace Microsoft.Web --resource-type config --parent sites/<app-name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
 ```
 
-Azure App Service wijst standaard het pad naar de virtuele hoofdmap _/_ van de toepassing () naar de hoofdmap van de geïmplementeerde toepassings bestanden (_sites\wwwroot_).
+Azure App Service wijst standaard het hoofdpad voor de virtuele toepassing ( _/_ ) toe aan de hoofdmap van de geïmplementeerde toepassingsbestanden (_sites\wwwroot_).
 
 ## <a name="detect-https-session"></a>HTTPS-sessie detecteren
 

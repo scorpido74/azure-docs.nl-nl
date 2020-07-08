@@ -1,6 +1,6 @@
 ---
-title: Include-bestand
-description: Include-bestand
+title: bestand opnemen
+description: bestand opnemen
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 03/27/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e96d205ef1a8f94baa3a0cfe6c5127b6cf570e5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80420952"
 ---
 In dit artikel wordt uitgelegd hoe u een VHD van uw lokale machine uploadt naar een door Azure beheerde schijf of een beheerde schijf kopieert naar een andere regio met behulp van AzCopy. Met deze procedure kunt u direct uploaden ook een VHD uploaden naar 32 TiB rechtstreeks naar een beheerde schijf. Op dit moment wordt direct uploaden ondersteund voor standaard schijven, standaard SSD en Premium SSD Managed disks. Deze functie wordt nog niet ondersteund voor Ultra disks.

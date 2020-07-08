@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: 7518b03e41b086d8797fad3563f681bf0072a7dd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76021191"
 ---
 Als u resources in Azure wilt implementeren, moet u zijn aangemeld bij uw Azure-account en moet u de Azure Resource Manager-module gebruiken. Voor meer informatie over het gebruik van Azure Resource Manager in combinatie met Azure PowerShell of de Azure CLI raadpleegt u:

@@ -9,10 +9,10 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: aec1faa4de1149f08fb6fbc1cc5bf3aa2ab6becd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75371770"
 ---
 Met een Shared Access Signature (SAS) kunt u beperkte toegang verlenen tot containers en blobs in uw opslag account. Wanneer u een SAS maakt, geeft u de beperkingen op, waaronder Azure Storage bronnen die een client mag openen, welke machtigingen ze hebben op deze resources en hoe lang de SAS geldig is.

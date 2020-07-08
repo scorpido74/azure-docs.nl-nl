@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 73ba78eca710f0b98b2a209494519cb8003e554b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75466872"
 ---
 De beschikbaarheids groep-listener is een IP-adres en netwerk naam waarop de SQL Server beschikbaarheids groep luistert. Ga als volgt te werk om de beschikbaarheids groep-listener te maken:
@@ -28,7 +28,7 @@ De beschikbaarheids groep-listener is een IP-adres en netwerk naam waarop de SQL
 
     a. Vouw de cluster naam uit en klik vervolgens op **rollen**.
 
-    b. Klik in het deel venster **functies** met de rechter muisknop op de naam van de beschikbaarheids groep en selecteer vervolgens **bron** > **Client Access Point**toevoegen.
+    b. Klik in het deel venster **functies** met de rechter muisknop op de naam van de beschikbaarheids groep en selecteer vervolgens **bron**  >  **Client Access Point**toevoegen.
 
    ![Client toegangs punt](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
 
@@ -116,7 +116,7 @@ Herhaal indien nodig de bovenstaande stappen om de cluster parameters in te stel
 
 1. Klik met de rechter muisknop op **IP-adres**en selecteer **Eigenschappen**.
 
-1. Kopieer de **naam** van het IP-adres. Het kan zijn `Cluster IP Address`. 
+1. Kopieer de **naam** van het IP-adres. Het kan zijn `Cluster IP Address` . 
 
 1. <a name="setwsfcparam"></a>Stel de cluster parameters in Power shell in.
   

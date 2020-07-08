@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
 ms.openlocfilehash: a037eddb13645036fcbe501ecba33923733b6d03
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84944369"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Diagnostische instellingen maken voor het verzenden van platform logboeken en-metrische gegevens naar verschillende bestemmingen
@@ -41,7 +41,7 @@ Een enkele diagnostische instelling kan niet meer dan een van de doelen definië
 
 Platform-logboeken en-metrische gegevens kunnen worden verzonden naar de doelen in de volgende tabel. Volg elke koppeling in de volgende tabel voor meer informatie over het verzenden van gegevens naar deze bestemming.
 
-| Doel | Beschrijving |
+| Doel | Description |
 |:---|:---|
 | [Log Analytics werk ruimte](#log-analytics-workspace) | Door Logboeken en metrische gegevens naar een Log Analytics-werk ruimte te verzenden, kunt u ze analyseren met andere bewakings informatie die door Azure Monitor wordt verzameld met behulp van krachtige logboek query's en ook om gebruik te maken van andere Azure Monitor functies, zoals waarschuwingen en visualisaties. |
 | [Event hubs](#event-hub) | Door Logboeken en metrische gegevens naar Event Hubs te verzenden, kunt u met externe systemen, zoals Siem's van derden en andere log Analytics-oplossingen. |

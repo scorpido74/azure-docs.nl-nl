@@ -9,10 +9,10 @@ ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b8073240bdda38757a5e4feee66c9f54746966c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80632052"
 ---
 ### <a name="portal"></a>Portal
@@ -21,10 +21,10 @@ Door door de klant beheerde sleutels voor uw schijven in te stellen, moet u reso
 
 #### <a name="setting-up-your-azure-key-vault"></a>Uw Azure Key Vault instellen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Zoek en selecteer **sleutel kluizen**.
 
-    [![SSE-Key-Vault-Portal-Search. png](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search.png)](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search-expanded.png#lightbox)
+    [![sse-key-vault-portal-search.png](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search.png)](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search-expanded.png#lightbox)
 
     > [!IMPORTANT]
     > De Azure-sleutel kluis, de schijf versleutelings, de virtuele machine, de schijven en moment opnamen moeten allemaal in dezelfde regio en hetzelfde abonnement staan om te kunnen worden geïmplementeerd.
@@ -38,7 +38,7 @@ Door door de klant beheerde sleutels voor uw schijven in te stellen, moet u reso
 
 1. Als uw sleutel kluis is geïmplementeerd, selecteert u deze.
 1. Selecteer **sleutels** onder **instellingen**.
-1. Selecteer **genereren/importeren**.
+1. Selecteer **Genereren/importeren**.
 
     ![Scherm opname van het deel venster Key Vault resource-instellingen. Hiermee wordt de knop genereren/importeren in instellingen weer gegeven.](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
 

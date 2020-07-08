@@ -5,10 +5,10 @@ ms.service: expressroute
 ms.topic: include
 ms.author: cherylmc
 ms.openlocfilehash: f04861d55c9cea3c79f4983f7be2e1f5a3c6d864
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74926223"
 ---
 Installeer de nieuwste versies van de Azure Service Management (SM) Power shell-modules en de ExpressRoute-module. U kunt de Azure Cloud shell-omgeving niet gebruiken om SM-modules uit te voeren.

@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 0df74b82c847c9738d97d2001573666714c17672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81008328"
 ---
 ## <a name="limitations"></a>Beperkingen
@@ -27,12 +27,12 @@ ms.locfileid: "81008328"
 
 ### <a name="deploy-a-premium-ssd-as-a-shared-disk"></a>Een Premium SSD implementeren als een gedeelde schijf
 
-Voor het implementeren van een beheerde schijf waarop de functie gedeelde schijf is ingeschakeld, gebruikt `maxShares` u de nieuwe eigenschap en definieert u een waarde die groter is dan 1. Dit maakt de schijf deelbaar op meerdere Vm's.
+Voor het implementeren van een beheerde schijf waarop de functie gedeelde schijf is ingeschakeld, gebruikt u de nieuwe eigenschap `maxShares` en definieert u een waarde die groter is dan 1. Dit maakt de schijf deelbaar op meerdere Vm's.
 
 > [!IMPORTANT]
-> De waarde van `maxShares` kan alleen worden ingesteld of gewijzigd wanneer een schijf van alle virtuele machines wordt ontkoppeld. Zie de [schijf grootten](#disk-sizes) voor de toegestane waarden `maxShares`voor.
+> De waarde van `maxShares` kan alleen worden ingesteld of gewijzigd wanneer een schijf van alle virtuele machines wordt ontkoppeld. Zie de [schijf grootten](#disk-sizes) voor de toegestane waarden voor `maxShares` .
 
-Vervang `[parameters('dataDiskName')]`, `[resourceGroup().location]` `[parameters('dataDiskSizeGB')]`, en `[parameters('maxShares')]` door uw eigen waarden voordat u de volgende sjabloon gebruikt.
+Vervang `[parameters('dataDiskName')]` ,, `[resourceGroup().location]` en door `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]` uw eigen waarden voordat u de volgende sjabloon gebruikt.
 
 ```json
 { 
@@ -80,7 +80,7 @@ Vervang `[parameters('dataDiskName')]`, `[resourceGroup().location]` `[parameter
 Als u een beheerde schijf met de functie gedeelde schijf wilt implementeren, wijzigt `maxShares` u de para meter in een waarde die groter is dan 1. Dit maakt de schijf deelbaar op meerdere Vm's.
 
 > [!IMPORTANT]
-> De waarde van `maxShares` kan alleen worden ingesteld of gewijzigd wanneer een schijf van alle virtuele machines wordt ontkoppeld. Zie de [schijf grootten](#disk-sizes) voor de toegestane waarden `maxShares`voor.
+> De waarde van `maxShares` kan alleen worden ingesteld of gewijzigd wanneer een schijf van alle virtuele machines wordt ontkoppeld. Zie de [schijf grootten](#disk-sizes) voor de toegestane waarden voor `maxShares` .
 
 ```azurecli
 #Creating an Ultra shared Disk 
@@ -95,12 +95,12 @@ az disk show -g rg1 -n clidisk
 
 #### <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Voor het implementeren van een beheerde schijf waarop de functie gedeelde schijf is ingeschakeld, `maxShares` gebruikt u de eigenschap en definieert u een waarde die groter is dan 1. Dit maakt de schijf deelbaar op meerdere Vm's.
+Voor het implementeren van een beheerde schijf waarop de functie gedeelde schijf is ingeschakeld, gebruikt u de eigenschap `maxShares` en definieert u een waarde die groter is dan 1. Dit maakt de schijf deelbaar op meerdere Vm's.
 
 > [!IMPORTANT]
-> De waarde van `maxShares` kan alleen worden ingesteld of gewijzigd wanneer een schijf van alle virtuele machines wordt ontkoppeld. Zie de [schijf grootten](#disk-sizes) voor de toegestane waarden `maxShares`voor.
+> De waarde van `maxShares` kan alleen worden ingesteld of gewijzigd wanneer een schijf van alle virtuele machines wordt ontkoppeld. Zie de [schijf grootten](#disk-sizes) voor de toegestane waarden voor `maxShares` .
 
-`[parameters('dataDiskName')]`Vervang, `[resourceGroup().location]` `[parameters('dataDiskSizeGB')]` `[parameters('diskMBpsReadOnly')]` ,,,,, en door uw eigen waarden voordat u de volgende sjabloon gebruikt. `[parameters('maxShares')]` `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadWrite')]` `[parameters('diskIOPSReadOnly')]`
+Vervang,,,,,, `[parameters('dataDiskName')]` `[resourceGroup().location]` `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]` `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadWrite')]` `[parameters('diskIOPSReadOnly')]` en `[parameters('diskMBpsReadOnly')]` door uw eigen waarden voordat u de volgende sjabloon gebruikt.
 
 ```json
 {
@@ -170,7 +170,7 @@ Voor het implementeren van een beheerde schijf waarop de functie gedeelde schijf
 
 ### <a name="using-azure-shared-disks-with-your-vms"></a>Gedeelde Azure-schijven gebruiken met uw Vm's
 
-Wanneer u een gedeelde schijf met `maxShares>1`hebt geïmplementeerd, kunt u de schijf koppelen aan een of meer van uw virtuele machines.
+Wanneer u een gedeelde schijf met hebt geïmplementeerd `maxShares>1` , kunt u de schijf koppelen aan een of meer van uw virtuele machines.
 
 > [!IMPORTANT]
 > Alle Vm's die een schijf delen, moeten worden geïmplementeerd in dezelfde [plaatsings groep](../articles/virtual-machines/windows/proximity-placement-groups.md).

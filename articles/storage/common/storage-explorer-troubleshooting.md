@@ -9,15 +9,15 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.openlocfilehash: a49e5fbe9eac689b630a0f3b443729faf29cdb0d
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84974514"
 ---
-# <a name="azure-storage-explorer-troubleshooting-guide"></a>Gids voor het oplossen van problemen Azure Storage Explorer
+# <a name="azure-storage-explorer-troubleshooting-guide"></a>Gids voor probleemoplossing voor Azure Storage Explorer
 
-Microsoft Azure Storage Explorer is een zelfstandige app waarmee u eenvoudig kunt werken met Azure Storage gegevens in Windows, macOS en Linux. De app kan verbinding maken met opslag accounts die worden gehost op Azure, nationale Clouds en Azure Stack.
+Microsoft Azure Storage Explorer is een zelfstandige app waarmee u eenvoudig met Azure Storage-gegevens kunt werken via Windows, macOS en Linux. De app kan verbinding maken met opslagaccounts die worden gehost op Azure, nationale clouds en Azure Stack.
 
 In deze hand leiding vindt u een overzicht van oplossingen voor problemen die vaak worden weer gegeven in Storage Explorer.
 
@@ -63,7 +63,7 @@ Als u toegang wilt krijgen tot BLOB-containers of-wacht rijen, kunt u deze resou
 1. Open het dialoog venster verbinding maken.
 2. Selecteer een resource toevoegen via Azure Active Directory (Azure AD). Klik op Volgende.
 3. Selecteer het gebruikers account en de Tenant die zijn gekoppeld aan de resource waaraan u wilt koppelen. Klik op Volgende.
-4. Selecteer het resource type, voer de URL in voor de resource en voer een unieke weergave naam in voor de verbinding. Klik op Volgende. Klik op Verbinden.
+4. Selecteer het resource type, voer de URL in voor de resource en voer een unieke weergave naam in voor de verbinding. Klik op Volgende. Klik op verbinden.
 
 Voor andere resource typen hebben we momenteel geen oplossing die betrekking heeft op RBAC. Als tijdelijke oplossing kunt u een SAS-URI aanvragen om [aan uw resource te koppelen](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.openlocfilehash: c8a5e1b1324ca49d8b540998a82ebf125b3c5364
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84975857"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>Voor beeld: een Windows-VM met Azure Image Builder maken met behulp van Power shell
@@ -25,7 +25,7 @@ In dit artikel wordt beschreven hoe u een aangepaste Windows-installatie kopie k
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
-Als u PowerShell lokaal wilt gebruiken, moet u voor dit artikel de AZ Powershell-module installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount). Zie [Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps) voor meer informatie over het installeren van de AZ PowerShell-module.
+Als u PowerShell lokaal wilt gebruiken, moet u voor dit artikel de Az-module van PowerShell installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount). Zie [Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps) voor meer informatie over het installeren van de Az-module van PowerShell.
 
 > [!IMPORTANT]
 > Hoewel de Power shell-modules **AZ. ImageBuilder** en **AZ. ManagedServiceIdentity** in de preview-versie zijn, moet u ze afzonderlijk installeren met de `Install-Module` cmdlet met de `AllowPrerelease` para meter. Zodra deze Power shell-modules algemeen beschikbaar worden, worden ze onderdeel van toekomstige AZ Power shell-module releases en zijn deze standaard beschikbaar vanuit Azure Cloud Shell.

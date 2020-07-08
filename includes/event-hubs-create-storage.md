@@ -9,20 +9,20 @@ ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: bf107da82fb3f772a341e70ce472f08ea674a450
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75692525"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>Een opslagaccount voor Event Processor Host maken
 De Event Processor Host is een intelligente agent die het ontvangen van gebeurtenissen van Event Hubs vereenvoudigt door permanente controlepunten en parallelle ontvangsten te beheren. Voor controlepunten heeft de Event Processor Host een opslagaccount nodig. In het volgende voorbeeld ziet u hoe u een opslagaccount maakt en hoe u de sleutels krijgt voor toegang:
 
-1. Selecteer in het menu Azure Portal de optie **een resource maken**.
+1. Selecteer **Een resource maken** in het menu van de Azure-portal.
 
     ![Een menu opdracht voor een resource maken, Microsoft Azure-portal](./media/event-hubs-create-storage/create-resource.png)
 
-2. Selecteer **opslag** > **opslag account**.
+2. Selecteer **opslag**  >  **opslag account**.
    
     ![Selecteer een opslag account, Microsoft Azure-portal](./media/event-hubs-create-storage/select-storage-account.png)
 
@@ -32,7 +32,7 @@ De Event Processor Host is een intelligente agent die het ontvangen van gebeurte
    2. Kies een Azure- **abonnement** dat de Event hub bevat.
    3. Kies of maak de **resource groep** die de Event hub heeft.
    4. Kies een **locatie** om de resource te maken. 
-   5. Selecteer **controleren + maken**.
+   5. Selecteer **Controleren + maken**.
    
         ![Controleren + maken, opslag account maken, Microsoft Azure-portal](./media/event-hubs-create-storage/review-create.png)
 

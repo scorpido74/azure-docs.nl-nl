@@ -9,15 +9,15 @@ ms.date: 10/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9648f4c16e8d266bbdd504d4a7599b67a5c846b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73522664"
 ---
 1. Selecteer in het menu [Azure Portal](https://portal.azure.com) de optie **een resource maken**. 
 
-   ![Een resource maken in de Azure Portal](./media/vpn-gateway-add-local-network-gateway-portal-include/azure-portal-create-resource.png)
+   ![Een resource maken in de Azure-portal](./media/vpn-gateway-add-local-network-gateway-portal-include/azure-portal-create-resource.png)
 2. Typ in het veld **Marketplace doorzoeken de** tekst **lokale netwerk gateway**en druk vervolgens op **Enter** om te zoeken. Er wordt dan een lijst met resultaten geretourneerd. Klik op **Lokale netwerkgateway** om de pagina te openen en klik op de knop **Maken** om de pagina **Lokale netwerkgateway maken** te openen.
 
    ![De lokale netwerk gateway maken](./media/vpn-gateway-add-local-network-gateway-portal-include/create-local-network-gateway.png "De lokale netwerkgateway maken")

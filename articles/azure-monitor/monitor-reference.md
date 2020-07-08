@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
 ms.openlocfilehash: 146deba7a0ef1e0dc5ffe03f9ad414e752058274
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84945372"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Wat wordt er bewaakt door Azure Monitor?:
@@ -23,7 +23,7 @@ Kern inzichten en oplossingen worden beschouwd als onderdeel van Azure Monitor e
 
 Inzichten bieden een aangepaste bewakings ervaring voor bepaalde toepassingen en services. Ze verzamelen en analyseren beide logboeken en metrische gegevens.
 
-| Inzicht | Beschrijving |
+| Inzicht | Description |
 |:---|:---|
 | [Application Insights](app/app-insights-overview.md) | Uitbreid bare APM-service (Application Performance Management) voor het bewaken van uw Live Web-app op elk platform. |
 | [Azure Monitor voor containers](insights/container-insights-overview.md) | Bewaakt de prestaties van container werkbelastingen die zijn geïmplementeerd op Azure Container Instances of beheerde Kubernetes-clusters die worden gehost op de Azure Kubernetes-service (AKS). |
@@ -40,7 +40,7 @@ Inzichten bieden een aangepaste bewakings ervaring voor bepaalde toepassingen en
 
 Oplossingen zijn gebaseerd op logboek query's en weer gaven die zijn aangepast voor een bepaalde toepassing of service. Ze verzamelen en analyseren alleen logboeken en worden na verloop van tijd afgeschaft om inzicht te krijgen in de voor keuren.
 
-| Oplossing | Beschrijving |
+| Oplossing | Description |
 |:---|:---|
 | [Status van agent](insights/solution-agenthealth.md) | Analyseer de status en configuratie van Log Analytics agents. |
 | [Waarschuwingsbeheer](platform/alert-management-solution.md) | Analyseer waarschuwingen die zijn verzameld van System Center Operations Manager, nagios of zabbix. |
@@ -111,7 +111,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |ExpressRoute | Ja | Ja | No |  |
 |Firewall | Ja | Ja | No |  |
 |Front Door | Ja | Ja | No |  |
-|Functies | Ja | Ja | No |  |
+|Functions | Ja | Ja | No |  |
 |HDInsight | No | Yes | No |  |
 |HPC Cache | Nee | Nee | Nee |  |
 |Information Protection | No | Yes | No |  |
@@ -124,7 +124,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Logic Apps | Yes | Ja | No |  |
 |Machine Learning Service | No | Nee | Nee |  |
 |Managed Applications  | No | Nee | Nee |  |
-|Maps  | No | Nee | Nee |  |
+|Kaarten  | No | Nee | Nee |  |
 |Media Services | Yes | Ja | No |  |
 |Microsoft Flow | No | Nee | Nee |  |
 |Microsoft Managed Desktop | No | Nee | Nee |  |
@@ -174,7 +174,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 ## <a name="product-integrations"></a>Product integraties
 De services en oplossingen in de volgende tabel slaan hun gegevens op in een Log Analytics-werk ruimte, zodat deze kunnen worden geanalyseerd met andere logboek gegevens die worden verzameld door Azure Monitor.
 
-| Product/service | Beschrijving |
+| Product/service | Description |
 |:---|:---|
 | [Azure Automation](/azure/automation/) | Updates van het besturings systeem beheren en wijzigingen bijhouden op Windows-en Linux-computers. Zie [Wijzigingen bijhouden](../automation/change-tracking.md) en [updatebeheer](../automation/automation-update-management.md). |
 | [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/) | U kunt documenten en e-mail berichten classificeren en optioneel beveiligen. Zie [centrale rapportage voor Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports). |
@@ -196,7 +196,7 @@ De services en oplossingen in de volgende tabel slaan hun gegevens op in een Log
 ## <a name="other-solutions"></a>Andere oplossingen
 Andere oplossingen zijn beschikbaar voor het bewaken van verschillende toepassingen en services, maar actieve ontwikkeling is gestopt en is mogelijk niet beschikbaar in alle regio's. Deze worden gedekt door de Azure Log Analytics gegevens opname service level agreement.
 
-| Oplossing | Beschrijving |
+| Oplossing | Description |
 |:---|:---|
 | [Active Directory status controle](insights/ad-assessment.md) | Het risico en de status van uw Active Directory omgevingen evalueren. |
 | [Replicatie status van Active Directory](insights/ad-replication-status.md) | Bewaakt uw Active Directory-omgeving regel matig voor replicatie fouten. |
@@ -210,7 +210,7 @@ Andere oplossingen zijn beschikbaar voor het bewaken van verschillende toepassin
 
 ## <a name="third-party-integration"></a>Integratie van derden
 
-| Oplossing | Beschrijving |
+| Oplossing | Description |
 |:---|:---|
 | [ITSM](platform/itsmc-overview.md) | Met de IT Service Management-connector (ITSMC) kunt u Azure verbinden met een ondersteund ITSM-product/service (IT-servicebeheer).  |
 

@@ -5,10 +5,10 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
 ms.openlocfilehash: 9f4ccdd04b8d57784f452dc28fa4507fb7ea94c2
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84908090"
 ---
 # <a name="configure-a-windows-nodejs-app-for-azure-app-service"></a>Een Windows Node.js-app configureren voor Azure App Service
@@ -163,5 +163,5 @@ Wanneer een werk Node.js-app anders werkt in App Service of fouten bevat, kunt u
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelf studie: app Node.js met MongoDB](app-service-web-tutorial-nodejs-mongodb-app.md)
+> [Zelfstudie: Node.js-app met MongoDB](app-service-web-tutorial-nodejs-mongodb-app.md)
 

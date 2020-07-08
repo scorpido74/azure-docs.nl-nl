@@ -9,15 +9,15 @@ ms.date: 01/07/2020
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: feed8b21833d4244d027d64d5e6547b94e4fa66f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75945159"
 ---
 ## <a name="what-happens-to-my-app-during-deployment"></a>Wat gebeurt er met mijn app tijdens de implementatie?
 
-Met alle officieel ondersteunde implementatie methoden worden wijzigingen aangebracht in de bestanden in `/home/site/wwwroot` de map van uw app. Deze bestanden worden gebruikt om uw app uit te voeren. Daarom kan de implementatie mislukken vanwege vergrendelde bestanden. De app kan ook onvoorspelbaar werken tijdens de implementatie, omdat niet alle bestanden tegelijk worden bijgewerkt. Dit is niet wenselijk voor een klant gerichte app. Er zijn een aantal verschillende manieren om deze problemen te voor komen:
+Met alle officieel ondersteunde implementatie methoden worden wijzigingen aangebracht in de bestanden in de `/home/site/wwwroot` map van uw app. Deze bestanden worden gebruikt om uw app uit te voeren. Daarom kan de implementatie mislukken vanwege vergrendelde bestanden. De app kan ook onvoorspelbaar werken tijdens de implementatie, omdat niet alle bestanden tegelijk worden bijgewerkt. Dit is niet wenselijk voor een klant gerichte app. Er zijn een aantal verschillende manieren om deze problemen te voor komen:
 
 - [Voer uw app rechtstreeks uit vanuit het zip-pakket](../articles/app-service/deploy-run-package.md) zonder dit uit te pakken.
 - Stop uw app of schakel offline modus in voor uw app tijdens de implementatie. Zie voor meer informatie [omgaan met vergrendelde bestanden tijdens de implementatie](https://github.com/projectkudu/kudu/wiki/Dealing-with-locked-files-during-deployment).

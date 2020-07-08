@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 467e09f9bd46df6d888d82f2961c5aed9cca4ab5
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175836"
 ---
 In dit voor beeld moet de [Twilio](https://www.twilio.com/) -service worden gebruikt om SMS-berichten te verzenden naar een mobiele telefoon. Azure Functions biedt al ondersteuning voor Twilio via de [Twilio-binding](https://docs.microsoft.com/azure/azure-functions/functions-bindings-twilio). het voor beeld gebruikt deze functie.
 
-Het eerste wat u nodig hebt, is een Twilio-account. U kunt er gratis op https://www.twilio.com/try-twiliomaken. Nadat u een account hebt, voegt u de volgende drie **app-instellingen** toe aan de functie-app.
+Het eerste wat u nodig hebt, is een Twilio-account. U kunt er gratis op maken https://www.twilio.com/try-twilio . Nadat u een account hebt, voegt u de volgende drie **app-instellingen** toe aan de functie-app.
 
 | Naam van app-instelling | Waarde beschrijving |
 | - | - |

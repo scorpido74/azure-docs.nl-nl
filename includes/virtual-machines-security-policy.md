@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: d1ec61bf18248ea56c8ee5e430a671af7f39d732
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81458660"
 ---
 Het is belang rijk om uw virtuele machine (VM) te beveiligen voor de toepassingen die u uitvoert. Het beveiligen van uw Vm's kan bestaan uit een of meer Azure-Services en-functies die beveiligde toegang bieden tot uw Vm's en beveiligde opslag van uw gegevens. In dit artikel vindt u informatie waarmee u uw virtuele machines en toepassingen kunt beveiligen.
@@ -41,7 +41,7 @@ Raadpleeg de artikelen voor [Windows](../articles/virtual-machines/windows/disk-
 
 Virtuele schijven in azure kunnen worden versleuteld voor verbeterde beveiliging en naleving van de [Windows-VM](../articles/virtual-machines/windows/disk-encryption-overview.md) en de [Linux-VM](../articles/virtual-machines/linux/disk-encryption-overview.md) . Virtuele schijven op Windows-Vm's worden op rest versleuteld met behulp van BitLocker. Virtuele schijven op Linux Vm's worden op rest versleuteld met behulp van DM-cryptografie. 
 
-Er worden geen kosten in rekening gebracht voor het versleutelen van virtuele schijven in Azure. Cryptografische sleutels worden opgeslagen in Azure Key Vault met behulp van software beveiliging, of u kunt uw sleutels in Hardware Security modules (Hsm's) die zijn gecertificeerd voor FIPS 140-2 level 2-standaarden importeren of genereren. Deze cryptografische sleutels worden gebruikt voor het versleutelen en ontsleutelen van virtuele schijven die zijn gekoppeld aan uw VM. U behoudt de controle over deze cryptografische sleutels en kunt hun gebruik controleren. Een Azure Active Directory Service-Principal biedt een beveiligd mechanisme voor het uitgeven van deze cryptografische sleutels als Vm's worden in-en uitgeschakeld.
+Er worden geen kosten in rekening gebracht voor het versleutelen van virtuele schijven in Azure. Cryptografische sleutels worden opgeslagen in Azure Key Vault met behulp van softwarebeveiliging, of u kunt uw sleutels in Hardware Security Modules (HMS's), die zijn gecertificeerd voor FIPS 140-2 level 2-standaarden, importeren of genereren. Deze cryptografische sleutels worden gebruikt voor het versleutelen en ontsleutelen van virtuele schijven die zijn gekoppeld aan uw VM. U behoudt de controle over deze cryptografische sleutels en kunt het gebruik controleren. Een Azure Active Directory Service-Principal biedt een beveiligd mechanisme voor het uitgeven van deze cryptografische sleutels als Vm's worden in-en uitgeschakeld.
 
 ## <a name="key-vault-and-ssh-keys"></a>Key Vault-en SSH-sleutels
 

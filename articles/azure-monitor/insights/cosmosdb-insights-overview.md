@@ -7,17 +7,17 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
 ms.openlocfilehash: 3fd4bcd13b4d92d2c6e61d10ae9e62996b5dfcf5
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84945491"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Azure Monitor verkennen voor Azure Cosmos DB
 
 Azure Monitor voor Azure Cosmos DB biedt een overzicht van de algehele prestaties, fouten, capaciteit en operationele status van al uw Azure Cosmos DB bronnen in een uniforme interactieve ervaring. In dit artikel vindt u meer informatie over de voor delen van deze nieuwe bewakings ervaring en hoe u de ervaring kunt aanpassen en aanpassen aan de unieke behoeften van uw organisatie.   
 
-## <a name="introduction"></a>Introductie
+## <a name="introduction"></a>Inleiding
 
 Voordat u aan de slag gaat, moet u weten hoe de informatie wordt gepresenteerd en gevisualiseerd. 
 
@@ -38,7 +38,7 @@ Voor deze functie hoeft u niets in te scha kelen of te configureren. deze Azure 
 
 Voer de volgende stappen uit om het gebruik en de prestaties van uw opslag accounts in al uw abonnementen weer te geven.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Zoek naar **monitor** en selecteer **monitor**.
 
@@ -72,7 +72,7 @@ Selecteer **fouten** aan de bovenkant van de pagina en het gedeelte **storingen*
 
 ![Scherm opname van fouten met uitsplitsing op basis van het type HTTP-aanvraag](./media/cosmosdb-insights-overview/failures.png)
 
-| Code      |  Beschrijving       | 
+| Code      |  Description       | 
 |-----------|:--------------------|
 | `200 OK`  | Een van de volgende REST-bewerkingen is geslaagd: </br>-Een resource ophalen. </br> : In een resource plaatsen. </br> -POST op een resource. </br> -POST op een opgeslagen procedure resource om de opgeslagen procedure uit te voeren.|
 | `201 Created` | Er is een POST-bewerking voor het maken van een resource geslaagd. |
@@ -88,7 +88,7 @@ Selecteer de optie **capaciteit** boven aan de pagina en het gedeelte **capacite
 
 Net als bij de overzichts werkmap selecteert de vervolg keuzelijst naast een Azure Cosmos DB resource in de kolom **abonnement** een uitsplitsing van de afzonderlijke containers waaruit de data base is opgebouwd.
 
-### <a name="operations"></a>Operations 
+### <a name="operations"></a>Bewerkingen 
 
 Selecteer **bewerkingen** boven aan de pagina en het gedeelte **bewerkingen** van de werkmap sjabloon wordt geopend. Het biedt u de mogelijkheid om uw aanvragen weer te geven die zijn gesplitst op basis van het type aanvragen. 
 
