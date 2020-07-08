@@ -4,12 +4,11 @@ description: Antwoorden op veelgestelde vragen met betrekking tot de Azure Conta
 author: dkkapur
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 64dcd3da42083401d7086c1db6f3f930beb9a76d
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.openlocfilehash: 21643ccfb6bb256e29114435ccb39a009d1b8dae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447778"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806598"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Veelgestelde vragen over Azure Container Instances
 
@@ -27,7 +26,7 @@ De grootte van uw container installatie kopie heeft invloed op hoe lang het duur
 
 Omdat een van de belangrijkste determinanten van implementatie tijden de afbeeldings grootte is, zoekt u naar manieren om de grootte te verkleinen. Verwijder lagen die u niet nodig hebt of verklein de grootte van de lagen in de installatie kopie (door een lichtere installatie kopie van het basis besturingssysteem te kiezen). Als u bijvoorbeeld Linux-containers uitvoert, kunt u Alpine gebruiken als basis installatie kopie in plaats van een volledige Ubuntu-Server. Voor Windows-containers gebruikt u, indien mogelijk, een nano Server-basis installatie kopie. 
 
-U moet ook de lijst met vooraf in cache opgeslagen installatie kopieën in azure container-installatie kopieën controleren, die beschikbaar zijn via de [lijst in de cache opgeslagen installatie kopieën](/rest/api/container-instances/listcachedimages) -API. U kunt mogelijk een afbeelding slaag uitschakelen voor een van de vooraf in cache opgeslagen installatie kopieën. 
+U moet ook de lijst met vooraf in cache opgeslagen installatie kopieën in azure container-installatie kopieën controleren, die beschikbaar zijn via de [lijst in de cache opgeslagen installatie kopieën](/rest/api/container-instances/location/listcachedimages) -API. U kunt mogelijk een afbeelding slaag uitschakelen voor een van de vooraf in cache opgeslagen installatie kopieën. 
 
 Bekijk meer [gedetailleerde richt lijnen](container-instances-troubleshooting.md#container-takes-a-long-time-to-start) voor het beperken van de opstart tijd van de container.
 

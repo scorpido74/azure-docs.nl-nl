@@ -9,10 +9,9 @@ ms.author: mlearned
 description: Azure Policy gebruiken om cluster configuraties op schaal toe te passen
 keywords: Kubernetes, Arc, azure, K8s, containers
 ms.openlocfilehash: 4c013fe562d89bff4d1ce9c9f3e832e1b51c70f1
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85341382"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Gebruik Azure Policy om cluster configuraties op schaal toe te passen (preview-versie)
@@ -31,9 +30,9 @@ Als u meerdere Git-opslag plaatsen gebruikt als de bronnen van de waarheid voor 
 4. Als u resources uit het beleids bereik wilt uitsluiten, stelt u **uitsluitingen**in.
 5. Geef de beleids toewijzing een **naam** en **Beschrijving** die u kunt gebruiken om deze gemakkelijk te identificeren.
 6. Zorg ervoor dat het **afdwingen van beleid** is ingesteld op *ingeschakeld*.
-7. Selecteer **Next**.
+7. Selecteer **Volgende**.
 8. Stel parameter waarden in die worden gebruikt tijdens het maken van de `sourceControlConfiguration` .
-9. Selecteer **Next**.
+9. Selecteer **Volgende**.
 10. Schakel **een herstel taak maken**in.
 11. Verzeker u ervan dat het **maken van een beheerde identiteit** is ingeschakeld en dat de identiteit **Inzender** machtigingen heeft. Zie [dit document](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal) en [de opmerking in dit document](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources) voor meer informatie over de machtigingen die u nodig hebt.
 12. Selecteer **Controleren + maken**.

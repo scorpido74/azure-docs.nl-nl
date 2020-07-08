@@ -12,10 +12,9 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 405beb5cb8c2e74951aa54ba371be04d290ad3a2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84194476"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Releaseopmerkingen voor Data Management Gateway
@@ -26,7 +25,7 @@ Een van de uitdagingen voor moderne gegevens integratie is het verplaatsen van g
 
 Raadpleeg de volgende artikelen voor gedetailleerde informatie over Data Management Gateway en hoe u deze kunt gebruiken:
 
-*  [Gegevensbeheergateway](data-factory-data-management-gateway.md)
+*  [Data Management Gateway](data-factory-data-management-gateway.md)
 *  [Gegevens verplaatsen tussen on-premises en de Cloud met behulp van Azure Data Factory](data-factory-move-data-between-onprem-and-cloud.md)
 
 

@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: f8b466dca9f3af55e3c11b39b3fbdac315af3675
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.openlocfilehash: 0d16a2fa91b498888ae5dafd1b254b51eca94ebc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798592"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801407"
 ---
 # <a name="lead-management-for-commercial-marketplace"></a>Lead beheer voor commerciële Marketplace
 
@@ -91,7 +90,7 @@ U kunt documentatie vinden op [leads van klanten ophalen](./partner-center-porta
 **Moet ik een lead bestemming configureren om een aanbieding op Marketplace te publiceren?**
 
 Ja, als u een contact persoon, SaaS-app of advies service publiceert.  
- 
+
 **Hoe kan ik controleren of de lead configuratie juist is?**
 
 Nadat u uw aanbieding hebt ingesteld en het doel van de lead, publiceert u uw aanbieding. In de stap voor het valideren van de lead stuurt Marketplace een test bericht naar de doel locatie van de lead die in uw aanbieding is geconfigureerd. 
@@ -100,80 +99,67 @@ Nadat u uw aanbieding hebt ingesteld en het doel van de lead, publiceert u uw aa
 
 Zoek naar ' MSFT_TEST ' in de doel locatie van de lead. Hier volgt een voor beeld van lead gegevens: 
 
-bedrijf = MSFT_TEST_636573304831318844 
+```text
+company = MSFT_TEST_636573304831318844 
 
-land = US 
+country = US 
 
-Beschrijving = MSFT_TEST_636573304831318844 
+description = MSFT_TEST_636573304831318844 
 
-e-mail =MSFT_TEST_636573304831318844@test.com
+email = MSFT_TEST_636573304831318844@test.com
 
-Encoding = UTF-8 
+encoding = UTF-8 
 
-Encoding = UTF-8 
+encoding = UTF-8 
 
 first_name = MSFT_TEST_636573304831318844 
 
 last_name = MSFT_TEST_636573304831318844 
 
-lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844 | \< Naam van aanbieding> 
+lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844|\<Offer Name> 
 
-OID = 00Do0000000ZHog 
+oid = 00Do0000000ZHog 
 
-telefoon = 1234567890 
+phone = 1234567890 
 
-titel = MSFT_TEST_636573304831318844 
+title = MSFT_TEST_636573304831318844 
+```
 
 **Ik heb een live aanbieding, maar ik zie geen leads?**
 
-Elke lead heeft gegevens die worden door gegeven in velden in uw geselecteerde doel bestemming, de leads krijgen de volgende indeling: **bron actie | Aanbieding** 
+Elke lead heeft gegevens die worden door gegeven in velden in uw geselecteerde doel bestemming, de leads krijgen de volgende indeling: **bron actie | Aanbieding**
 
-  *Beperken*
+- *Beperken*
+  - AzureMarketplace
+  - AzurePortal
+  - TestDrive  
+  - SPZA (acroniem voor AppSource)
 
-    "AzureMarketplace", 
-    "AzurePortal", 
-    "TestDrive",  
-    "SPZA" (acronym for AppSource) 
+- *Regelen*
+  - ' INS ': staat voor installatie. Dit bevindt zich op Azure Marketplace of AppSource wanneer een klant op de knop komt om uw product te verkrijgen.
+  - "PLT": staat voor een door de partner geleide proef versie. Dit is op AppSource wanneer een klant de knop contact persoon bezoeken bevindt.
+  - ' DNC ': staat voor geen contact persoon. Dit is op AppSource wanneer een partner die op de pagina van uw app staat, wordt gevraagd om contact met u op te nemen. We delen de koppen die deze klant heeft door gegeven aan uw app, maar er hoeven geen contact mee te worden gemaakt.
+  - ' Maken ': dit bevindt zich alleen in Azure Portal en wanneer een klant uw aanbieding aan hun account aanschaft.
+  - "StartTestDrive": Dit geldt alleen voor test stations en wanneer een klant hun test drive start.
 
-  *Regelen*
+- *Over*
+  - "controle punt. Check-Point-r77-10sg-byol",
+  - ' BitNami. openedxcypress ',
+  - ' docusign. 3701c77e-1cfa-4c56-91e6-3ed0b622145a '
 
-    "INS" - Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
-    "PLT" - Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
+*Hier worden de voorbeeld gegevens van de klant gegevens weer gegeven*
 
-    "DNC" - Stands for Do Not Contact. This is on AppSource whenever a Partner who was cross listed on your app page gets requested to be contacted. We are sharing the heads up that this customer was cross listed on your app, but they do not need to be contacted. 
-
-    "Create" - This is inside Azure portal only and is whenever a customer purchases your offer to their account. 
-
-    "StartTestDrive" - This is for Test Drives only and is whenever a customer starts their test drive. 
-
-
-  *Over*
-
-    "checkpoint.check-point-r77-10sg-byol", 
-    "bitnami.openedxcypress", 
-    "docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145a" 
-
- 
-
-  *Hier worden de voorbeeld gegevens van de klant gegevens weer gegeven*
-
-    { 
-
-    "FirstName":"John", 
-
-    "LastName":"Smith", 
-
-    "Email":"jsmith@microsoft.com", 
-
-    "Phone":"1234567890", 
-
-    "Country":"US", 
-
-    "Company":"Microsoft", 
-
-    "Title":"CTO" 
-
-    } 
+```json
+{ 
+"FirstName":"John",
+"LastName":"Smith",
+"Email":"jsmith@microsoft.com",
+"Phone":"1234567890",
+"Country":"US",
+"Company":"Microsoft",
+"Title":"CTO"
+}
+```
 
 Meer informatie vindt u onder [lead info](./partner-center-portal/commercial-marketplace-get-customer-leads.md). 
 

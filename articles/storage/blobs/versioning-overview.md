@@ -10,10 +10,9 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 89d69547d793599fc669927b1a500716a858cc89
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84433586"
 ---
 # <a name="blob-versioning-preview"></a>Versie beheer van BLOB (preview)
@@ -84,7 +83,7 @@ Voor pagina-blobs en toevoeg-blobs wordt alleen een subset van schrijf-en verwij
 
 - [BLOB plaatsen](/rest/api/storageservices/put-blob)
 - [Blokkerings lijst plaatsen](/rest/api/storageservices/put-block-list)
-- [Blob verwijderen](/rest/api/storageservices/delete-blob)
+- [BLOB verwijderen](/rest/api/storageservices/delete-blob)
 - [BLOB-meta gegevens instellen](/rest/api/storageservices/set-blob-metadata)
 - [BLOB kopiëren](/rest/api/storageservices/copy-blob)
 
@@ -176,10 +175,10 @@ BLOB-versie beheer is ontworpen om uw gegevens te beschermen tegen onbedoeld of 
 
 In de volgende tabel ziet u welke RBAC-acties ondersteuning bieden bij het verwijderen van een BLOB of een BLOB-versie.
 
-| Beschrijving | Blob service bewerking | RBAC-gegevens actie vereist | Ondersteuning voor geïntegreerde RBAC-rollen |
+| Description | Blob service bewerking | RBAC-gegevens actie vereist | Ondersteuning voor geïntegreerde RBAC-rollen |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
-| De huidige versie van de BLOB verwijderen | Blob verwijderen | **Micro soft. Storage/Storage accounts/blobServices/containers/blobs/verwijderen** | Inzender voor Storage BLOB-gegevens |
-| Een versie verwijderen | Blob verwijderen | **Micro soft. Storage/Storage accounts/blobServices/containers/blobs/deleteBlobVersion/Action** | Eigenaar van gegevens van opslag-BLOB |
+| De huidige versie van de BLOB verwijderen | BLOB verwijderen | **Micro soft. Storage/Storage accounts/blobServices/containers/blobs/verwijderen** | Inzender voor Storage BLOB-gegevens |
+| Een versie verwijderen | BLOB verwijderen | **Micro soft. Storage/Storage accounts/blobServices/containers/blobs/deleteBlobVersion/Action** | Eigenaar van gegevens van opslag-BLOB |
 
 ### <a name="shared-access-signature-sas-parameters"></a>Para meters voor Shared Access Signature (SAS)
 
@@ -313,7 +312,7 @@ In scenario 4 is de basis-BLOB volledig bijgewerkt en bevat deze geen van de oor
 
 ![Azure Storage resources](./media/versioning-overview/versions-billing-scenario-4.png)
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [Blobversiebeheer inschakelen](versioning-enable.md)
 - [Een moment opname van een BLOB maken](/rest/api/storageservices/creating-a-snapshot-of-a-blob)

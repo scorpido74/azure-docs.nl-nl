@@ -8,10 +8,9 @@ ms.date: 03/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
 ms.openlocfilehash: 704c6b026ab656ce52b34e5ac70ba7e2087ccbcd
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85252437"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Problemen met terugkerende uitgaande verbindings fouten in Azure App Service oplossen
@@ -122,7 +121,7 @@ Raadpleeg voor andere omgevingen de provider of stuur programma-specifieke docum
 
 Het voor komen van de uitgaande TCP-limieten is gemakkelijker te oplossen, omdat de limieten worden ingesteld op basis van de grootte van uw werk nemer. U kunt de limieten in [sandbox cross-VM numerieke limieten weer geven-TCP-verbindingen](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
-|Limiet naam|Beschrijving|Klein (a1)|Middel groot (a2)|Groot (a3)|Geïsoleerde laag (ASE)|
+|Limiet naam|Description|Klein (a1)|Middel groot (a2)|Groot (a3)|Geïsoleerde laag (ASE)|
 |---|---|---|---|---|---|
 |Verbindingen|Aantal verbindingen voor de hele virtuele machine|1920|3968|8064|16.000|
 
@@ -154,7 +153,7 @@ TCP-verbindingen en SNAT-poorten zijn niet rechtstreeks gerelateerd. Een gebruik
 * De limiet voor TCP-verbindingen treedt op op het niveau van het worker-exemplaar. De uitgaande taak verdeling van het Azure-netwerk maakt geen gebruik van de TCP-verbindings gegevens voor de limiet voor SNAT-poorten.
 * De limieten voor TCP-verbindingen worden beschreven in [sandbox cross-VM-numerieke limieten-TCP-verbindingen](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
-|Limiet naam|Beschrijving|Klein (a1)|Middel groot (a2)|Groot (a3)|Geïsoleerde laag (ASE)|
+|Limiet naam|Description|Klein (a1)|Middel groot (a2)|Groot (a3)|Geïsoleerde laag (ASE)|
 |---|---|---|---|---|---|
 |Verbindingen|Aantal verbindingen voor de hele virtuele machine|1920|3968|8064|16.000|
 

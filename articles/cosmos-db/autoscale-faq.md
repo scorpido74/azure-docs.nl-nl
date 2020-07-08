@@ -7,10 +7,9 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
 ms.openlocfilehash: ca4e79977132586c619f323015f9d915e04707f1
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84449512"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Veelgestelde vragen over het automatisch schalen van ingerichte door Voer in Azure Cosmos DB
@@ -97,7 +96,7 @@ De opslag limiet in GB voor elke maximum versie van RU/s is: Max RU/s van data b
 ### <a name="what-happens-if-i-exceed-the-storage-limit-associated-with-my-max-throughput"></a>Wat gebeurt er als ik de opslag limiet overschrijdt die is gekoppeld aan mijn maximale door Voer?
 Als de opslag limiet die is gekoppeld aan de maximale door Voer van de data base of container wordt overschreden, wordt door Azure Cosmos DB de maximale door Voer automatisch verhoogd naar de volgende hoogste RU/s die dat opslag niveau kan ondersteunen.
 
-Als u bijvoorbeeld begint met een maximum van RU/s 50.000 RU/s (schalen tussen 5000-50.000 RU/s), kunt u Maxi maal 500 GB aan gegevens opslaan. Als u meer dan 500 GB hebt, bijvoorbeeld opslag is nu 600 GB, zijn de nieuwe maximum-RU/s 60.000 RU/s (schaalbaar tussen 6000-60.000 RU/s).
+Als u bijvoorbeeld begint met een maximum van RU/s 50.000 RU/s (schalen tussen 5000-50.000 RU/s), kunt u Maxi maal 500 GB aan gegevens opslaan. Als u meer dan 500 GB hebt - opslag is nu bijvoorbeeld 600 GB -, zal het nieuwe maximum aantal RU/s 60.000 RU/s zijn (schaalbaar tussen 6000 - 60.000 RU/s).
 
 ### <a name="can-i-change-the-max-rus-on-the-database-or-container"></a>Kan ik het maximum aantal RU/s voor de data base of container wijzigen? 
 Ja. Zie dit [artikel](how-to-provision-autoscale-throughput.md) voor meer informatie over het wijzigen van het maximum aantal ru/s. Wanneer u de maximale grootte van RU/s wijzigt, kan dit een asynchrone bewerking zijn die enige tijd kan duren (Maxi maal 4-6 uur, afhankelijk van de geselecteerde RU/s)
@@ -136,9 +135,9 @@ Als de totale hoeveelheid opgehaalde RU/s het maximum aantal RU/s van de data ba
 > De Azure Cosmos DB-hulpprogram ma's voor client-Sdk's en gegevens import (Azure Data Factory, bulk-uitvoerder bibliotheek) maken automatisch opnieuw een nieuwe poging op 429s, zodat af en toe 429s goed zijn. Een aanhoudende groot aantal 429s kan erop duiden dat u de maximale hoeveelheid RU/s moet verhogen of uw partitie strategie voor een [Hot partitie](#autoscale-rate-limiting)kunt controleren.
 
 ### <a name="is-it-still-possible-to-see-429s-throttlingrate-limiting-when-autoscale-is-enabled"></a><a id="autoscale-rate-limiting"></a>Is het nog steeds mogelijk om 429s (beperking/snelheids beperking) te zien wanneer automatisch schalen is ingeschakeld? 
-Ja. Het is mogelijk om 429s in twee scenario's te bekijken. Als de totale hoeveelheid gebruikte RU/s het maximum aantal RU/s van de data base of container overschrijdt, worden de aanvragen voor de service dienovereenkomstig beperkt. 
+Ja. In de volgende twee scenario's kunnen er 429-fouten optreden. Als de totale hoeveelheid gebruikte RU/s het maximum aantal RU/s van de data base of container overschrijdt, worden de aanvragen voor de service dienovereenkomstig beperkt. 
 
-Ten tweede, als er sprake is van een dynamische partitie, dat wil zeggen een logische partitie sleutel waarde met een onevenredig groter aantal aanvragen vergeleken met andere partitie sleutel waarden, is het mogelijk dat de onderliggende fysieke partitie het bovenliggende item/s-budget overschrijdt. Als best practice om warme partities te voor komen, [kiest u een goede partitie sleutel](partitioning-overview.md#choose-partitionkey) die resulteert in een gelijkmatige verdeling van zowel de opslag als de door voer. 
+Ten tweede, als er sprake is van een dynamische partitie, dat wil zeggen een logische partitie sleutel waarde met een onevenredig groter aantal aanvragen vergeleken met andere partitie sleutel waarden, is het mogelijk dat de onderliggende fysieke partitie het bovenliggende item/s-budget overschrijdt. Als best practice om dynamische partities te voorkomen, [kiest u een goede partitiesleutel](partitioning-overview.md#choose-partitionkey) die resulteert in een gelijkmatige verdeling van zowel opslag als doorvoer. 
 
 Als u bijvoorbeeld de optie Max-doorvoer capaciteit 20.000 RU/s selecteert en 200 GB aan opslag hebt, met vier fysieke partities, kan elke fysieke partitie automatisch worden geschaald naar 5000 RU/s. Als er een hete partitie is op een bepaalde logische-partitie sleutel, ziet u 429s wanneer de onderliggende fysieke partitie in meer dan 5000 RU/s is, d.w.z. meer dan 100% genormaliseerd gebruik.
 

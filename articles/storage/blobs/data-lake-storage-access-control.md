@@ -9,10 +9,9 @@ ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: 4f5be29dd42b03e86abb2be392ea42f875536fb5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84193524"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Toegangsbeheer in Data Lake Storage Gen2
@@ -123,12 +122,12 @@ In het POSIX-stijl model dat wordt gebruikt door Data Lake Storage Gen2, worden 
 
 De volgende tabel bevat enkele algemene scenario's die u helpen te begrijpen welke machtigingen nodig zijn om bepaalde bewerkingen uit te voeren op een opslag account.
 
-|    Bewerking             |    /    | Oregon | Port land | Data. txt     |
+|    Bewerking             |    /    | Oregon | Port land | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
-| Gegevens lezen. txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Toevoegen aan data. txt       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
-| Data. txt verwijderen          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Data. txt maken          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Data.txt lezen            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Toevoegen aan Data.txt       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Data.txt verwijderen          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Data.txt maken          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Orderverzamellijst                   |   `R-X`   |   `---`    |  `---`      | `---`          |
 | /Oregon/weer geven           |   `--X`   |   `R-X`    |  `---`      | `---`          |
 | /Oregon/Portland/weer geven  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
@@ -348,6 +347,6 @@ Acl's nemen niet over. Standaard-Acl's kunnen echter worden gebruikt om Acl's in
 * [POSIX ACL in Ubuntu](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [ACL met behulp van toegangs beheer lijsten op Linux](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Overzicht van Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)

@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a484a6c9a55eac4d166a711a9eae7990c4305cb4
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84194410"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>Gegevens verplaatsen van een SQL Server Data Base naar SQL Database met Azure Data Factory
@@ -61,7 +60,7 @@ In deze zelf studie wordt ervan uitgegaan dat u het volgende hebt:
 >
 
 ## <a name="upload-the-data-to-your-sql-server-instance"></a><a name="upload-data"></a>De gegevens uploaden naar uw SQL Server-exemplaar
-We gebruiken de [NYC taxi-gegevensset](https://chriswhong.com/open-data/foil_nyc_taxi/) om het migratie proces te demonstreren. De NYC taxi-gegevensset is beschikbaar, zoals vermeld in dat bericht, op Azure Blob Storage [NYC taxi-gegevens](https://www.andresmh.com/nyctaxitrips/). De gegevens hebben twee bestanden, het trip_data CSV-bestand, met reis Details en het trip_far. CSV-bestand, dat de details bevat van het tarief dat voor elke reis is betaald. Een voor beeld en een beschrijving van deze bestanden zijn te vinden in de beschrijving van de [NYC taxi trips](sql-walkthrough.md#dataset)van de verzameling.
+We gebruiken de [NYC taxi-gegevensset](https://chriswhong.com/open-data/foil_nyc_taxi/) om het migratie proces te demonstreren. De NYC taxi-gegevensset is beschikbaar, zoals vermeld in dat bericht, op Azure Blob Storage [NYC taxi-gegevens](https://www.andresmh.com/nyctaxitrips/). De gegevens hebben twee bestanden, het trip_data.csv bestand, dat reis Details bevat en het trip_far.csv bestand, dat details bevat van het tarief dat voor elke reis is betaald. Een voor beeld en een beschrijving van deze bestanden zijn te vinden in de beschrijving van de [NYC taxi trips](sql-walkthrough.md#dataset)van de verzameling.
 
 U kunt de procedure die u hier hebt opgegeven, aanpassen aan een set eigen gegevens of de stappen volgen die worden beschreven met behulp van de NYC taxi-gegevensset. Als u de NYC taxi-gegevensset wilt uploaden naar uw SQL Server-Data Base, volgt u de procedure die wordt beschreven in [gegevens bulksgewijs importeren in SQL Server-Data Base](sql-walkthrough.md#dbload).
 
@@ -138,7 +137,7 @@ De tabel definitie voor de SQL Server is opgegeven in het volgende JSON-bestand:
 
 De kolom namen zijn hier niet opgenomen. U kunt de kolom namen subselecteren door deze hier op te nemen (Zie het onderwerp [ADF-documentatie](../../data-factory/copy-activity-overview.md) voor meer informatie.
 
-Kopieer de JSON-definitie van de tabel naar een bestand met de naam *onpremtabledef. json* en sla het bestand op een bekende locatie op (dit wordt aangenomen dat het *C:\temp\onpremtabledef.json*is). Maak de tabel in ADF met de volgende Azure PowerShell-cmdlet:
+Kopieer de JSON-definitie van de tabel naar een bestand met de naam *onpremtabledef.jsin* het bestand en sla het op een bekende locatie op (dit wordt waarschijnlijk *C:\temp\onpremtabledef.jsop*). Maak de tabel in ADF met de volgende Azure PowerShell-cmdlet:
 
     New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
 
@@ -171,7 +170,7 @@ De definitie voor de tabel voor de blob van de uitvoer is als volgt (Hiermee wor
 }
 ```
 
-Kopieer de JSON-definitie van de tabel naar een bestand met de naam *bloboutputtabledef. json* en sla het bestand op een bekende locatie op (dit wordt aangenomen dat het *C:\temp\bloboutputtabledef.json*is). Maak de tabel in ADF met de volgende Azure PowerShell-cmdlet:
+Kopieer de JSON-definitie van de tabel naar een bestand met de naam *bloboutputtabledef.jsin* het bestand en sla het op een bekende locatie op (dit wordt waarschijnlijk *C:\temp\bloboutputtabledef.jsop*). Maak de tabel in ADF met de volgende Azure PowerShell-cmdlet:
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
 
@@ -203,7 +202,7 @@ De definitie voor de tabel voor de SQL Azure uitvoer bevindt zich in het volgend
 }
 ```
 
-Kopieer de JSON-definitie van de tabel naar een bestand met de naam *AzureSqlTable. json* en sla het bestand op een bekende locatie op (dit wordt aangenomen dat het *C:\temp\AzureSqlTable.json*is). Maak de tabel in ADF met de volgende Azure PowerShell-cmdlet:
+Kopieer de JSON-definitie van de tabel naar een bestand met de naam *AzureSqlTable.jsin* het bestand en sla het op een bekende locatie op (dit wordt waarschijnlijk *C:\temp\AzureSqlTable.jsop*). Maak de tabel in ADF met de volgende Azure PowerShell-cmdlet:
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
 
@@ -288,7 +287,7 @@ Met behulp van de tabel definities die eerder zijn opgegeven, wordt de pijplijn 
 }
 ```
 
-Kopieer deze JSON-definitie van de pijp lijn naar een bestand met de naam *pipelinedef. json* en sla het bestand op een bekende locatie op (dit wordt aangenomen dat het *C:\temp\pipelinedef.json*is). Maak de pijp lijn in ADF met de volgende Azure PowerShell-cmdlet:
+Kopieer deze JSON-definitie van de pijp lijn naar een bestand met de naam *pipelinedef.jsin* het bestand en sla het op een bekende locatie op (dit wordt waarschijnlijk *C:\temp\pipelinedef.jsop*). Maak de pijp lijn in ADF met de volgende Azure PowerShell-cmdlet:
 
     New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
 

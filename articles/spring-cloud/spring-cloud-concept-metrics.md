@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: brendm
 ms.openlocfilehash: ed8a46683d79211559b4af7972c6d1bb784e1f02
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84434176"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Informatie over metrische gegevens voor Azure lente-Cloud
@@ -88,14 +87,14 @@ In de volgende tabellen worden de beschik bare metrische gegevens en details wee
 
 ### <a name="error"></a>Fout
 >[!div class="mx-tdCol2BreakAll"]
->| Naam | Naam van bron van Lente aandrijving | Eenheid | Details |
+>| Name | Naam van bron van Lente aandrijving | Eenheid | Details |
 >|----|----|----|------------|
 >| Tomcat globale fout (afgeschaft)<br><br>(te verwijderen na 1 juli 2020)  | Tomcat. Global. error | Count | Aantal fouten dat is opgetreden in verwerkte aanvragen |
 >| Tomcat. Global. error | Tomcat. Global. error | Count | Aantal fouten dat is opgetreden in verwerkte aanvragen |
 
 ### <a name="performance"></a>Prestaties
 >[!div class="mx-tdCol2BreakAll"]
->| Naam | Naam van bron van Lente aandrijving | Eenheid | Details |
+>| Name | Naam van bron van Lente aandrijving | Eenheid | Details |
 >|----|----|----|------------|
 >| CPU-gebruiks percentage van systeem (afgeschaft)<br><br>(te verwijderen na 1 juli 2020) | System. CPU. Usage | Percentage | Recent CPU-gebruik voor het hele systeem. Deze waarde is een double in het interval van [0,0, 1,0]. Een waarde van 0,0 betekent dat alle Cpu's inactief zijn geweest tijdens de meest recente periode, terwijl een waarde van 1,0 betekent dat alle Cpu's op dit moment 100% van de tijd actief werden tijdens de meest recente periode.|
 >| System. CPU. Usage | System. CPU. Usage | Percentage | Recent CPU-gebruik voor het hele systeem. Deze waarde is een double in het interval van [0,0, 1,0]. Een waarde van 0,0 betekent dat alle Cpu's inactief zijn geweest tijdens de meest recente periode, terwijl een waarde van 1,0 betekent dat alle Cpu's op dit moment 100% van de tijd actief werden tijdens de meest recente periode.|
@@ -122,7 +121,7 @@ In de volgende tabellen worden de beschik bare metrische gegevens en details wee
 
 ### <a name="request"></a>Aanvraag
 >[!div class="mx-tdCol2BreakAll"]
->| Naam | Naam van bron van Lente aandrijving | Eenheid | Details |
+>| Name | Naam van bron van Lente aandrijving | Eenheid | Details |
 >|----|----|----|------------|
 >| Tomcat totaal aantal verzonden bytes (afgeschaft)<br><br>(verwijderd na 1 juli 2020) | Tomcat. Global. sent | Bytes | De hoeveelheid gegevens die Tomcat webserver heeft verzonden |
 >| Tomcat. Global. sent | Tomcat. Global. sent | Bytes | De hoeveelheid gegevens die Tomcat webserver heeft verzonden |
@@ -136,7 +135,7 @@ In de volgende tabellen worden de beschik bare metrische gegevens en details wee
 
 ### <a name="session"></a>Sessie
 >[!div class="mx-tdCol2BreakAll"]
->| Naam | Naam van bron van Lente aandrijving | Eenheid | Details |
+>| Name | Naam van bron van Lente aandrijving | Eenheid | Details |
 >|----|----|----|------------|
 >| Aantal actieve Tomcat-sessies (verouderd)<br><br>(verwijderd na 1 juli 2020) | Tomcat. Sessions. Active. Max | Count | Het maximum aantal sessies dat tegelijkertijd actief is geweest |
 >| Tomcat. Sessions. Active. Max | Tomcat. Sessions. Active. Max | Count | Het maximum aantal sessies dat tegelijkertijd actief is geweest |
@@ -150,7 +149,7 @@ In de volgende tabellen worden de beschik bare metrische gegevens en details wee
 >| Tomcat. Sessions. rejected | Tomcat. Sessions. rejected | Count | Het aantal sessies dat niet is gemaakt, omdat het maximum aantal actieve sessies is bereikt. |
 >| Tomcat. Sessions. Active. current | Tomcat. Sessions. Active. current | Count | Aantal actieve sessies van Tomcat |
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 * [Aan de slag met Azure Metrics Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
 
 * [Logboeken en metrische gegevens analyseren met Diagnostische instellingen](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)

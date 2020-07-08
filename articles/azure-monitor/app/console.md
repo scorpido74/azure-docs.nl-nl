@@ -4,12 +4,11 @@ description: Bewaak webtoepassingen voor Beschik baarheid, prestaties en gebruik
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.reviewer: lmolkova
-ms.openlocfilehash: fe34b2b48de8ef4f6c2cdd61623b885878bad2b4
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.openlocfilehash: 302d96544a719f0e818d942bff1011c6a4368ef7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774043"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807312"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights voor .NET-console toepassingen
 
@@ -44,7 +43,7 @@ telemetryClient.TrackTrace("Hello World!");
 U kunt Application Insights initialiseren en configureren vanuit de code of met behulp van het `ApplicationInsights.config` bestand. Zorg ervoor dat de initialisatie zo snel mogelijk gebeurt. 
 
 > [!NOTE]
-> Instructies die verwijzen naar **ApplicationInsights. config** zijn alleen van toepassing op apps die zijn gericht op de .NET Framework, en zijn niet van toepassing op .net core-toepassingen.
+> Instructies die verwijzen naar **ApplicationInsights.config** zijn alleen van toepassing op apps die zijn gericht op de .NET Framework en zijn niet van toepassing op .net core-toepassingen.
 
 ### <a name="using-config-file"></a>Configuratie bestand gebruiken
 
@@ -131,7 +130,7 @@ Als u een configuratie met een gewone `TelemetryConfiguration()` constructor heb
 configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
 ```
 
-* U kunt ook de Collector-module voor prestatie meter items installeren en initialiseren, zoals [hier](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/) wordt beschreven
+* U kunt ook de Collector-module voor prestatie meter items installeren en initialiseren, zoals [hier](https://apmtips.com/posts/2017-02-13-enable-application-insights-live-metrics-from-code/) wordt beschreven
 
 
 #### <a name="full-example"></a>Volledig voor beeld

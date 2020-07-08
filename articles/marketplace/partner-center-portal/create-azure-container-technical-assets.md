@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 87c915330fdc0d59d0d32c0747c7dc7647c342ba
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.openlocfilehash: 8f32313529da965573a6c9884daee678e3bc64cc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700978"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958596"
 ---
 # <a name="create-an-azure-container-offer"></a>Een Azure-container aanbieding maken
 
@@ -20,7 +19,7 @@ Dit artikel bevat technische bronnen en aanbevelingen om u te helpen bij het mak
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Raadpleeg de [documentatie van Azure container instances](https://docs.microsoft.com/azure/container-instances)voor Quick starts, zelf studies en voor beelden.
+Raadpleeg de [documentatie van Azure container instances](../../container-instances/index.yml)voor Quick starts, zelf studies en voor beelden.
 
 ## <a name="fundamental-technical-knowledge"></a>Fundamentele technische kennis
 
@@ -43,7 +42,7 @@ Kies een of beide van de volgende script omgevingen om uw container installatie 
 
 U wordt aangeraden deze hulpprogram ma's toe te voegen aan uw ontwikkel omgeving:
 
-- [Azure Opslagverkenner](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)
+- [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
   - Extensie: [Azure Resource Manager-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - Extensie: [beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -55,9 +54,9 @@ Bekijk de beschik bare hulpprogram ma's op de pagina [Azure Ontwikkelhulpprogram
 
 Zie de volgende zelf studies voor meer informatie:
 
-- [Zelf studie: een container installatie kopie maken voor implementatie naar Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
-- [Zelf studie: container installatie kopieën bouwen en implementeren in de Cloud met Azure container Registry taken](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task).
+- [Zelfstudie: een containerinstallatiekopie voor implementatie in Azure Container Instances maken](../../container-instances/container-instances-tutorial-prepare-app.md)
+- [Zelf studie: container installatie kopieën bouwen en implementeren in de Cloud met Azure container Registry taken](../../container-registry/container-registry-tutorial-quick-task.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Maak uw container aanbod](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer).
+- [Maak uw container aanbod](create-azure-container-offer.md).

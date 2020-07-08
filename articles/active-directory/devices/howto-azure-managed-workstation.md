@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c5fe1bf294c34afc2f7e0e0aa911dc05597ab9df
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85252777"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Een beveiligd, door Azure beheerd werk station implementeren
@@ -29,7 +28,7 @@ Selecteer een profiel voordat u de oplossing implementeert. U kunt meerdere prof
 > [!NOTE]
 > Pas een van de profielen toe die nodig zijn voor uw vereisten. U kunt overstappen op een ander profiel door het toe te wijzen in Microsoft Intune.
 
-| Profiel | Laag | Verbeterd | Hoog | Gespecialiseerd | Gesteld | Geïsoleerd |
+| Profiel | Laag | Verbeterd | Hoog | Gespecialiseerd | Beveiligd | Geïsoleerd |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Gebruiker in azure AD | Ja | Ja | Ja | Ja | Ja | Ja |
 | Door intune beheerde | Ja | Ja | Ja | Ja | Ja | Ja |
@@ -61,7 +60,7 @@ Wanneer u het beveiligde werk station Administrator-account maakt, wordt het acc
 
 Multi-factor Authentication vereisen, ten minste voor uw beheerders. Zie op [cloud gebaseerde MFA implementeren](../authentication/howto-mfa-getstarted.md) voor implementatie richtlijnen.
 
-### <a name="azure-ad-users-and-groups"></a>Azure AD-gebruikers en-groepen
+### <a name="azure-ad-users-and-groups"></a>Azure AD-gebruikers en -groepen
 
 1. Blader in het Azure Portal naar **Azure Active Directory**  >  **gebruikers**  >  **nieuwe gebruiker**.
 1. Maak de apparaat-beheerder door de stappen in de [zelf studie gebruikers maken](/Intune/quickstart-create-user)te volgen.
@@ -160,19 +159,19 @@ In intune in de Azure Portal:
    * Beschrijving: **implementatie van beveiligde werk stations**.
    * Stel **Alle doelapparaten converteren naar Autopilot** in op **Ja**. Deze instelling zorgt ervoor dat alle apparaten in de lijst worden ingeschreven bij de Autopilot-implementatieservice. Het kan 48 uur duren voordat de registratie is verwerkt.
 
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 
    * Voor **implementatie modus**kiest u **zelf implementeren (preview)**. Apparaten met dit profiel zijn gekoppeld aan de gebruiker die het apparaat inschrijft. Er zijn gebruikersreferenties vereist om het apparaat in te kunnen schrijven. Het is belang rijk om te weten dat wanneer u een apparaat implementeert in de modus **zelf implementeren** , u laptops in een gedeeld model kunt implementeren. Er vindt geen gebruikers toewijzing plaats totdat het apparaat voor de eerste keer wordt toegewezen aan een gebruiker. Als gevolg hiervan worden alle gebruikers beleidsregels, zoals BitLocker, pas ingeschakeld als een gebruikers toewijzing is voltooid. Zie [selected profiles](/intune/device-profile-assign)(Engelstalig) voor meer informatie over het aanmelden bij een beveiligd apparaat.
    * In het vak **toevoegen aan Azure AD** moet het **lid van Azure AD zijn opgenomen** en grijs worden weer gegeven.
    * Selecteer uw taal (regio), type **standaard**gebruikers account. 
 
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 
    * Selecteer een scope-tag als u deze vooraf hebt geconfigureerd.
 
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 1. Kies **toewijzingen**  >  **toewijzen aan**  >  **geselecteerde groepen**. Kies **werk stations beveiligen**in **groepen selecteren die u wilt toevoegen**.
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 1. Selecteer **Maken** om het profiel te maken. Het Autopilot-implementatieprofiel is nu klaar om te worden toegewezen aan apparaten.
 
 Registratie van apparaten in auto pilot biedt een andere gebruikers ervaring op basis van apparaattype en rol. In het voor beeld van de implementatie illustreren we een model waarin de beveiligde apparaten bulksgewijs worden geïmplementeerd en kunnen worden gedeeld, maar wanneer het apparaat voor de eerste keer wordt gebruikt, wordt het aan een gebruiker toegewezen. Zie [intune auto pilot Device Enrollment](/intune/device-enrollment)(Engelstalig) voor meer informatie.
@@ -236,7 +235,7 @@ Down load en voer het juiste script uit om de beveiliging van de oplossing te vo
 | Hoge beveiliging | https://aka.ms/securedworkstationgit | HighSecurityWorkstation-Windows10-(1809). ps1 |
 | Gespecialiseerd | https://github.com/pelarsen/IntunePowerShellAutomation | DeviceConfiguration_NCSC-Windows10 (1803) SecurityBaseline.ps1 |
 | Gespecialiseerde naleving * | https://aka.ms/securedworkstationgit | DeviceCompliance_NCSC-Windows10 (1803). ps1 |
-| Gesteld | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809) -SecurityBaseline.ps1 |
+| Beveiligd | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809) -SecurityBaseline.ps1 |
 
 \*Gespecialiseerde naleving is een script dat de gespecialiseerde configuratie afdwingt die is opgenomen in de NCSC Windows10 Security Baseline Baseline.
 
@@ -443,7 +442,7 @@ Vervolgens moet u Log Analytics instellen om de nieuwe logboeken te ontvangen
    * ' Micro soft-Windows-AppLocker/MSI en script ' **> selectie** opheffen
    * ' Micro soft-Windows-AppLocker/verpakte app-implementatie ' > **selectie** opheffen
    * ' Micro soft-Windows-AppLocker/verpakte app-Execution ' > **selectie** opheffen
-1. Selecteer **Opslaan**
+1. Selecteer **Opslaan**.
 
 Toepassings Logboeken is beschikbaar in uw geselecteerde Log Analytics-werk ruimte.
 

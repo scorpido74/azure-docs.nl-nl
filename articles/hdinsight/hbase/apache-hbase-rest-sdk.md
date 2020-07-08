@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
-ms.openlocfilehash: eba7d7ad009b2ef0442a916983489489eb5cceb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3e769d33db0a8f28ed22ba3c284a1e9b23ea6d11
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74806657"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959157"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>De .NET-SDK gebruiken voor Apache HBase
 
@@ -25,11 +24,13 @@ Voor C#-en .NET-toepassingen biedt de [micro soft HBASE rest-client bibliotheek 
 
 De HBase .NET SDK wordt weer gegeven als een NuGet-pakket, dat via de Visual Studio **NuGet Package Manager-console** kan worden geïnstalleerd met de volgende opdracht:
 
-    Install-Package Microsoft.HBase.Client
+```console
+Install-Package Microsoft.HBase.Client
+```
 
 ## <a name="instantiate-a-new-hbaseclient-object"></a>Een nieuw HBaseClient-object instantiëren
 
-Als u de SDK wilt gebruiken, moet `HBaseClient` u een nieuw object `ClusterCredentials` instantiëren, `Uri` bestaande uit het cluster en de Hadoop-gebruikers naam en-wacht woord.
+Als u de SDK wilt gebruiken, moet u een nieuw object instantiëren `HBaseClient` , `ClusterCredentials` bestaande uit het `Uri` cluster en de Hadoop-gebruikers naam en-wacht woord.
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net"), "USERNAME", "PASSWORD");
@@ -44,7 +45,7 @@ HBase slaat gegevens op in tabellen. Een tabel bestaat uit een *Rowkey*, de prim
 
 De gegevens worden fysiek opgeslagen in *HFiles*. Eén HFile bevat gegevens voor één tabel, één regio en één kolom familie. Rijen in HFile worden opgeslagen in Rowkey. Elke HFile heeft een *B +-structuur* index voor het snel ophalen van de rijen.
 
-Als u een nieuwe tabel wilt maken, `TableSchema` geeft u een en kolommen op. Met de volgende code wordt gecontroleerd of de tabel RestSDKTable al bestaat. als dat niet het geval is, wordt de tabel gemaakt.
+Als u een nieuwe tabel wilt maken, geeft u een `TableSchema` en kolommen op. Met de volgende code wordt gecontroleerd of de tabel RestSDKTable al bestaat. als dat niet het geval is, wordt de tabel gemaakt.
 
 ```csharp
 if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
@@ -70,7 +71,7 @@ await client.DeleteTableAsync("RestSDKTable");
 
 ## <a name="insert-data"></a>Gegevens invoegen
 
-Als u gegevens wilt invoegen, geeft u een unieke rijdefinitie op als de rij-id. Alle gegevens worden opgeslagen in een `byte[]` matrix. De volgende code definieert en voegt de `title`kolommen `director`,, `release_date` en toe aan de T1-kolom familie, omdat deze kolommen het meest worden gebruikt. De `description` kolommen `tagline` en worden toegevoegd aan de kolom familie T2. U kunt uw gegevens naar behoefte in kolom families partitioneren.
+Als u gegevens wilt invoegen, geeft u een unieke rijdefinitie op als de rij-id. Alle gegevens worden opgeslagen in een `byte[]` matrix. De volgende code definieert en voegt de `title` `director` kolommen,, en `release_date` toe aan de T1-kolom familie, omdat deze kolommen het meest worden gebruikt. De `description` `tagline` kolommen en worden toegevoegd aan de kolom familie T2. U kunt uw gegevens naar behoefte in kolom families partitioneren.
 
 ```csharp
 var key = "fifth_element";
@@ -118,7 +119,7 @@ HBase implementeert [Cloud Bigtable](https://cloud.google.com/bigtable/), dus de
 
 ## <a name="select-data"></a>Gegevens selecteren
 
-Als u gegevens uit een HBase-tabel wilt lezen, geeft u de tabel naam en `GetCellsAsync` de rij-sleutel `CellSet`door aan de methode om de te retour neren.
+Als u gegevens uit een HBase-tabel wilt lezen, geeft u de tabel naam en de rij-sleutel door aan de `GetCellsAsync` methode om de te retour neren `CellSet` .
 
 ```csharp
 var key = "fifth_element";
@@ -132,7 +133,7 @@ Console.WriteLine(Encoding.UTF8.GetString(cells.rows[0].values
 // With the previous insert, it should yield: "The Fifth Element"
 ```
 
-In dit geval retourneert de code alleen de eerste overeenkomende rij, omdat er slechts één rij voor een unieke sleutel moet zijn. De geretourneerde waarde wordt gewijzigd `string` in de indeling `byte[]` van de matrix. U kunt de waarde ook converteren naar andere typen, zoals een geheel getal voor de release datum van de film:
+In dit geval retourneert de code alleen de eerste overeenkomende rij, omdat er slechts één rij voor een unieke sleutel moet zijn. De geretourneerde waarde wordt gewijzigd in `string` de indeling van de `byte[]` matrix. U kunt de waarde ook converteren naar andere typen, zoals een geheel getal voor de release datum van de film:
 
 ```csharp
 var releaseDateField = cells.rows[0].values

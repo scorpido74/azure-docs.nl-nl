@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
 ms.openlocfilehash: 775234116812c8a6e156c6fb54d325ffcde4df94
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84449427"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Quota aanvragen verhogen voor Azure HDInsight
@@ -28,13 +27,13 @@ Als u een fout bericht hebt ontvangen dat aangeeft dat u een quotum limiet hebt 
 1. Bepaal de gewenste grootte, schaal en type van de cluster-VM.
 1. Controleer de huidige limieten voor quotum capaciteit van uw abonnement. Voer de volgende stappen uit om de beschik bare kernen te controleren:
 
-    1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+    1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
     1. Ga naar de **overzichts** pagina voor het HDInsight-cluster.
     1. Selecteer in het linkermenu **quotum limieten**. Op de pagina worden het aantal gebruikte kernen, het aantal beschikbare kernen en het totale aantal kernen weergegeven.
 
 Voer de volgende stappen uit om een quotum verhoging aan te vragen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Selecteer **Help en ondersteuning** aan de linkerkant van de pagina.
 
     ![knop Help en ondersteuning](./media/quota-increase-request/help-support-button.png)

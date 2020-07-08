@@ -9,12 +9,11 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: face605d756d2107c04b3df0c072602ac91d147d
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.openlocfilehash: 02e6d776dbb47ee8e30409f6b8adc5a61fc5fe52
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992892"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958919"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Hub-werk ruimte en projecten migreren naar een aangepaste vertaler
 
@@ -134,14 +133,14 @@ Deze tabel vergelijkt de functies tussen micro soft Translator hub en aangepaste
 |:-----|:----:|:----:|
 |Status van aanpassings functie    | Algemene Beschik baarheid    | Algemene Beschik baarheid |
 | Tekst-API-versie    | V2     | V3  |
-| SMT-aanpassing    | Ja    | Nee |
-| NMT aanpassen    | Nee    | Ja |
-| Nieuwe aanpassing van Unified speech Services    | Nee    | Ja |
+| SMT-aanpassing    | Yes    | Nee |
+| NMT aanpassen    | Nee    | Yes |
+| Nieuwe aanpassing van Unified speech Services    | Nee    | Yes |
 | Geen tracering | Ja | Ja |
 
 ## <a name="new-languages"></a>Nieuwe talen
 
-Als u een community of organisatie bent die bezig is met het maken van een nieuw taal systeem voor micro soft Translator, neem dan contact op met [custommt@microsoft.com](mailto:custommt@microsoft.com) voor meer informatie.
+Als u een community of organisatie bent die bezig is met het maken van een nieuw taal systeem voor Translator, neem dan contact op met [custommt@microsoft.com](mailto:custommt@microsoft.com) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -15,10 +15,9 @@ ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 44a01bb7d2f4aa3d31204d6235e955e82e471d5d
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84729044"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>Beheer van beheer eenheden in Azure Active Directory (preview-versie)

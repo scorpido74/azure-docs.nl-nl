@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 1e6465584dd4e67f736b94d2939678c1a69163bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e05cd861f899b700e68c151fcbaa6778dc43eb3a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75435670"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959191"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Apache HBase-cluster replicatie in virtuele Azure-netwerken instellen
 
@@ -118,7 +117,7 @@ Als u BIND wilt installeren, gebruikt u de volgende procedure:
     ssh sshuser@40.68.254.142
     ```
 
-    Vervang `sshuser` door het SSH-gebruikers account dat u hebt opgegeven bij het maken van de DNS-virtuele machine.
+    Vervang door `sshuser` het SSH-gebruikers account dat u hebt opgegeven bij het maken van de DNS-virtuele machine.
 
     > [!NOTE]  
     > Er zijn verschillende manieren om het `ssh` hulp programma te verkrijgen. In Linux, UNIX en macOS wordt het meegeleverd als onderdeel van het besturings systeem. Als u met Windows werkt, kunt u een van de volgende opties gebruiken:
@@ -135,7 +134,7 @@ Als u BIND wilt installeren, gebruikt u de volgende procedure:
     sudo apt-get install bind9 -y
     ```
 
-3. Configureer BIND om aanvragen voor naam omzetting door te sturen naar uw on-premises DNS-server. Als u dit wilt doen, gebruikt u de volgende tekst als de `/etc/bind/named.conf.options` inhoud van het bestand:
+3. Configureer BIND om aanvragen voor naam omzetting door te sturen naar uw on-premises DNS-server. Als u dit wilt doen, gebruikt u de volgende tekst als de inhoud van het `/etc/bind/named.conf.options` bestand:
 
     ```
     acl goodclients {
@@ -180,13 +179,15 @@ Als u BIND wilt installeren, gebruikt u de volgende procedure:
 
     Met deze opdracht wordt een waarde geretourneerd die vergelijkbaar is met de volgende tekst:
 
-        vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
+    ```output
+    vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
+    ```
 
     De `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` tekst is het __DNS-achtervoegsel__ voor dit virtuele netwerk. Sla deze waarde op, aangezien u die later nog nodig hebt.
 
     U moet ook het DNS-achtervoegsel van de andere DNS-server vinden. U hebt deze nodig in de volgende stap.
 
-5. Als u BIND wilt configureren om DNS-namen voor resources binnen het virtuele netwerk op te lossen, gebruikt u de `/etc/bind/named.conf.local` volgende tekst als de inhoud van het bestand:
+5. Als u BIND wilt configureren om DNS-namen voor resources binnen het virtuele netwerk op te lossen, gebruikt u de volgende tekst als de inhoud van het `/etc/bind/named.conf.local` bestand:
 
     ```
     // Replace the following with the DNS suffix for your virtual network
@@ -197,7 +198,7 @@ Als u BIND wilt installeren, gebruikt u de volgende procedure:
     ```
 
     > [!IMPORTANT]  
-    > U moet de `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` door het DNS-achtervoegsel van het andere virtuele netwerk vervangen. En het IP-adres van de doorstuur server bevindt zich in een ander virtueel netwerk.
+    > U moet de door `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` het DNS-achtervoegsel van het andere virtuele netwerk vervangen. En het IP-adres van de doorstuur server bevindt zich in een ander virtueel netwerk.
 
     Als u dit bestand wilt bewerken, gebruikt u de volgende opdracht:
 
@@ -221,13 +222,13 @@ Als u BIND wilt installeren, gebruikt u de volgende procedure:
     ```
 
     > [!IMPORTANT]  
-    > Vervang `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` door de Fully QUALIFIED domain name (FQDN) van de virtuele DNS-machine in het andere netwerk.
+    > Vervang door `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` de Fully Qualified Domain Name (FQDN) van de virtuele DNS-machine in het andere netwerk.
     >
-    > Vervang `10.2.0.4` door het __interne IP-adres__ van uw aangepaste DNS-server in het andere virtuele netwerk.
+    > Vervang door `10.2.0.4` het __interne IP-adres__ van uw aangepaste DNS-server in het andere virtuele netwerk.
 
     Het antwoord wordt weer gegeven zoals in de volgende tekst:
 
-    ```
+    ```output
     Server:         10.2.0.4
     Address:        10.2.0.4#53
     
@@ -285,18 +286,18 @@ In de volgende stappen wordt beschreven hoe u de script actie script aanroept va
 
 **HBase-replicatie inschakelen vanuit de Azure Portal**
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Open het bron HBase-cluster.
 3. Selecteer **script acties**in het menu cluster.
 4. Selecteer aan de bovenkant van de pagina de optie **Nieuw verzenden**.
 5. Selecteer of voer de volgende gegevens in:
 
    1. **Naam**: Voer **replicatie inschakelen in**.
-   2. **URL van bash**-script **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**: Voer in.
+   2. **URL van bash-script**: Voer in **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** .
    3. **Kop**: Zorg ervoor dat dit is geselecteerd. Wis de andere knooppunt typen.
    4. **Para meters**: de volgende voorbeeld parameters maken replicatie voor alle bestaande tabellen mogelijk en kopiëren alle gegevens van het bron cluster naar het doel cluster:
 
-          -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
+    `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata`
     
       > [!NOTE]
       > Gebruik hostname in plaats van FQDN voor zowel de bron-als het doel cluster DNS-naam.
@@ -336,19 +337,19 @@ In de volgende lijst ziet u enkele algemene gebruiks gevallen en de bijbehorende
 
 - **Schakel replicatie in voor alle tabellen tussen de twee clusters**. Voor dit scenario hoeven geen bestaande gegevens in de tabellen te worden gekopieerd of gemigreerd en worden er geen Phoenix-tabellen gebruikt. Gebruik de volgende para meters:
 
-        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>  
+  `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>`
 
 - **Schakel replicatie in voor specifieke tabellen**. Gebruik de volgende para meters om replicatie in Tabel1, Tabel2 en table3 in te scha kelen:
 
-        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"
+  `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"`
 
 - **Schakel replicatie in voor specifieke tabellen en kopieer de bestaande gegevens**. Gebruik de volgende para meters om replicatie in Tabel1, Tabel2 en table3 in te scha kelen:
 
-        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata
+  `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata`
 
 - **Schakel replicatie in voor alle tabellen en repliceer bredae meta gegevens van bron naar doel**. Phoenix-meta gegevens replicatie is niet perfect. Wees voorzichtig met het gebruik ervan. Gebruik de volgende para meters:
 
-        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta
+  `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta`
 
 ## <a name="copy-and-migrate-data"></a>Gegevens kopiëren en migreren
 
@@ -360,7 +361,7 @@ Er zijn twee afzonderlijke script actie scripts beschikbaar voor het kopiëren o
 
 U kunt dezelfde procedure volgen die wordt beschreven in [replicatie inschakelen](#enable-replication) om de script actie aan te roepen. Gebruik de volgende para meters:
 
-    -m hn1 -t <table1:start_timestamp:end_timestamp;table2:start_timestamp:end_timestamp;...> -p <replication_peer> [-everythingTillNow]
+`-m hn1 -t <table1:start_timestamp:end_timestamp;table2:start_timestamp:end_timestamp;...> -p <replication_peer> [-everythingTillNow]`
 
 De `print_usage()` sectie van het [script](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh) bevat een gedetailleerde beschrijving van para meters.
 
@@ -368,22 +369,21 @@ De `print_usage()` sectie van het [script](https://github.com/Azure/hbase-utils/
 
 - **Kopieer specifieke tabellen (test1, Test2 en Test3) voor alle rijen die tot nu toe zijn bewerkt (huidige tijds tempel)**:
 
-        -m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
+  `-m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow`
+
   Of
 
-        -m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
-
+  `-m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow`
 
 - **Specifieke tabellen kopiëren met een opgegeven tijds bereik**:
 
-        -m hn1 -t "table1:0:452256397;table2:14141444:452256397" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure"
-
+  `-m hn1 -t "table1:0:452256397;table2:14141444:452256397" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure"`
 
 ## <a name="disable-replication"></a>Replicatie uitschakelen
 
 Als u de replicatie wilt uitschakelen, gebruikt u een ander script actie script van [github](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh). U kunt dezelfde procedure volgen die wordt beschreven in [replicatie inschakelen](#enable-replication) om de script actie aan te roepen. Gebruik de volgende para meters:
 
-    -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
+`-m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">`
 
 De `print_usage()` sectie van het [script](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) bevat een gedetailleerde uitleg van para meters.
 
@@ -391,14 +391,15 @@ De `print_usage()` sectie van het [script](https://raw.githubusercontent.com/Azu
 
 - **Replicatie voor alle tabellen uitschakelen**:
 
-        -m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all
+  `-m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all`
+
   of
 
-        --src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
+  `--src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>`
 
 - **Replicatie voor opgegeven tabellen uitschakelen (Tabel1, Tabel2 en table3)**:
 
-        -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
+  `-m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"`
 
 > [!NOTE]
 > Als u van plan bent om het doel cluster te verwijderen, moet u dit verwijderen uit de lijst met peers van het bron cluster. U kunt dit doen door de opdracht remove_peer ' 1 ' uit te voeren op de hbase-shell van het bron cluster. Als dit mislukt, werkt het bron cluster mogelijk niet goed.

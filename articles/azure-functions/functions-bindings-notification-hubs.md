@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: f500e7cac7a049152057f7fc7c3349fb028a31a4
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85444536"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Notification Hubs uitvoer binding voor Azure Functions
@@ -43,7 +42,7 @@ Zie het taalspecifieke voor beeld:
 * [C#-script-asynchroon](#c-script-template-example---asynchronous)
 * [C#-script-JSON](#c-script-template-example---json)
 * [C#-script-bibliotheek typen](#c-script-template-example---library-types)
-* [Ls #](#f-template-example)
+* [F#](#f-template-example)
 * [JavaScript](#javascript-template-example)
 
 ### <a name="c-script-template-example---out-parameter"></a>Voorbeeld parameter sjabloon C#-script
@@ -243,11 +242,11 @@ Gebruik in [C# class libraries](functions-dotnet-class-library.md)het kenmerk [N
 
 De para meters en eigenschappen van de constructor van het kenmerk worden beschreven in de sectie [configuratie](#configuration) .
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Configuratie
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `NotificationHub` kenmerk:
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.jsbij eigenschap | Kenmerk eigenschap |Description|
 |---------|---------|----------------------|
 |**type** |N.v.t.| Moet worden ingesteld op `notificationHub` . |
 |**direction** |N.v.t.| Moet worden ingesteld op `out` . | 
@@ -296,7 +295,7 @@ De naam van deze toepassings instelling is wat er gebeurt in de instelling voor 
 
 ## <a name="exceptions-and-return-codes"></a>Uitzonde ringen en retour codes
 
-| Binding | Naslaginformatie |
+| Binding | Verwijzing |
 |---|---|
 | Notification hub | [Bedienings handleiding](https://docs.microsoft.com/rest/api/notificationhubs/) |
 

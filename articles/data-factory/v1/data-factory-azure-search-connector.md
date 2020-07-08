@@ -13,15 +13,14 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: f6521efe024ba0ea29ae427aeaf06ca0e5fa8dd7
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84194917"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Gegevens pushen naar een Azure Cognitive Search-index met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-azure-search-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](data-factory-azure-search-connector.md)
 > * [Versie 2 (huidige versie)](../connector-azure-search.md)
 
 > [!NOTE]
@@ -58,7 +57,7 @@ De volgende tabel bevat beschrijvingen van de JSON-elementen die specifiek zijn 
 | Eigenschap | Beschrijving | Vereist |
 | -------- | ----------- | -------- |
 | type | De eigenschap type moet worden ingesteld op: **AzureSearch**. | Yes |
-| URL | URL voor de zoek service. | Yes |
+| url | URL voor de zoek service. | Yes |
 | sleutel | De beheerders sleutel voor de zoek service. | Yes |
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
@@ -99,12 +98,12 @@ In de volgende tabel wordt aangegeven of een Azure Cognitive Search-gegevens typ
 
 | Azure Cognitive Search-gegevens type | Ondersteund in azure Cognitive Search Sink |
 | ---------------------- | ------------------------------ |
-| Tekenreeks | Y |
-| Int32 | Y |
-| Int64 | Y |
-| Double | Y |
-| Boolean | Y |
-| DataTimeOffset | Y |
+| Tekenreeks | J |
+| Int32 | J |
+| Int64 | J |
+| Dubbel | J |
+| Boolean-waarde | J |
+| DataTimeOffset | J |
 | Teken reeks matrix | N |
 | GeographyPoint | N |
 

@@ -6,14 +6,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/10/2020
-ms.openlocfilehash: 60fde4ca1d8aaf47367fcdb4b5dc7c73753b7496
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.openlocfilehash: 5569e7e3a33c4f1bbbd3214e742b0cb889c65e31
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834761"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040772"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Analyse van realtime Twitter-gevoel in Azure Stream Analytics
 
@@ -104,7 +103,7 @@ Als u nog geen Twitter-toepassing hebt die u voor deze hand leiding kunt gebruik
 > [!NOTE]
 > Het exacte proces in Twitter voor het maken van een toepassing en het ophalen van de sleutels, geheimen en token kan veranderen. Als deze instructies niet overeenkomen met wat u ziet op de Twitter-site, raadpleegt u de Twitter-ontwikkelaars documentatie.
 
-1. Ga in een webbrowser naar [Twitter voor ontwikkel aars](https://developer.twitter.com/en/apps), maak een ontwikkelaars account en selecteer **een app maken**. Mogelijk wordt er een bericht weer gegeven met de mede deling dat u moet aanvragen voor een Twitter-ontwikkelaars account. U kunt dit doen en nadat uw toepassing is goedgekeurd, ziet u een bevestigings-e-mail. Het kan enkele dagen duren voordat een ontwikkelaars account wordt goedgekeurd.
+1. Ga in een webbrowser naar [Twitter voor ontwikkel aars](https://developer.twitter.com/en/apps), maak een ontwikkelaars account en selecteer **een app maken**. Mogelijk wordt er een bericht weergegeven met de mededeling dat u een Twitter-ontwikkelaarsaccount moet aanvragen. U kunt dit doen en nadat uw toepassing is goedgekeurd, ziet u een bevestigings-e-mail. Het kan enkele dagen duren voordat de aanvraag voor een ontwikkelaarsaccount wordt goedgekeurd.
 
    ![Details van Twitter-toepassing](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details.png "Details van Twitter-toepassing")
 
@@ -112,7 +111,7 @@ Als u nog geen Twitter-toepassing hebt die u voor deze hand leiding kunt gebruik
 
    ![Details van Twitter-toepassing](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details-create.png "Details van Twitter-toepassing")
 
-3. Selecteer op de pagina toepassing het tabblad **sleutels en tokens** en kopieer de waarden voor de **CONSUMer-API-sleutel** en de **geheime sleutel**van de consument-API. Selecteer ook **maken** onder **toegangs token en geheim toegangs token** om de toegangs tokens te genereren. Kopieer de waarden voor **Access Token** en **Access Token Secret**.
+3. Selecteer op de toepassingspagina het tabblad **Keys and Tokens** en kopieer de waarden voor **Consumer API Key** en **Consumer API Secret Key**. Selecteer ook **Create** onder **Access Token and Access Token Secret** om de toegangstokens te genereren. Kopieer de waarden voor **Access Token** en **Access Token Secret**.
 
    Sla de waarden op die u hebt opgehaald voor de Twitter-toepassing. U hebt de waarden later nodig.
 
@@ -127,7 +126,7 @@ Voordat de toepassing wordt uitgevoerd, hebt u bepaalde gegevens van u nodig, zo
 
 1. Zorg ervoor dat u de [TwitterClientCore](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClientCore) -toepassing hebt gedownload, zoals vermeld in de vereisten.
 
-2. Gebruik een tekst editor om het bestand *app. config* te openen. Breng de volgende wijzigingen aan in het `<appSettings>` element:
+2. Gebruik een tekst editor om het *App.config* bestand te openen. Breng de volgende wijzigingen aan in het `<appSettings>` element:
 
    * Ingesteld `oauth_consumer_key` op de Twitter-consument sleutel (API-sleutel). 
    * Ingesteld `oauth_consumer_secret` op de Twitter-consument geheim (geheime API-sleutel).
@@ -159,7 +158,7 @@ Nu Tweet-gebeurtenissen in realtime worden gestreamd vanuit Twitter, kunt u een 
    |**Instelling**  |**Voorgestelde waarde**  |**Beschrijving**  |
    |---------|---------|---------|
    |Invoeralias| *TwitterStream* | Voer een alias in voor de invoer. |
-   |Abonnement  | \<Uw abonnement\> |  Selecteer het Azure-abonnement dat u wilt gebruiken. |
+   |Abonnement  | \<Your subscription\> |  Selecteer het Azure-abonnement dat u wilt gebruiken. |
    |Event hub-naamruimte | *ASA-Twitter-eventhub* |
    |Event Hub-naam | *socialtwitter-eh* | Kies *bestaande gebruiken*. Selecteer vervolgens de Event hub die u hebt gemaakt.|
    |Gebeurteniscompressietype| GZip | Het type gegevens compressie.|

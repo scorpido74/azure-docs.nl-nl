@@ -14,10 +14,9 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0c11723efe3fac236fce49c1f92fa338d4e58b59
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84732103"
 ---
 # <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Subtypen en machtigingen voor toepassings registratie in Azure Active Directory
@@ -65,7 +64,7 @@ Biedt de mogelijkheid om app-registraties te verwijderen die alleen toegankelijk
 > [!NOTE]
 > Bij het toewijzen van een rol die machtigingen voor maken bevat, moet de roltoewijzing worden gemaakt in het bereik van de map. Bij een Create-machtiging die is toegewezen aan een resource bereik, wordt niet de mogelijkheid geboden om app-registraties te maken.
 
-### <a name="read"></a>Raadplegen
+### <a name="read"></a>Lezen
 
 Alle leden van de organisatie kunnen standaard app-registratie gegevens lezen. Gast gebruikers en toepassings service-principals kunnen echter niet. Als u van plan bent om een rol toe te wijzen aan een gast gebruiker of-toepassing, moet u de juiste lees machtigingen toevoegen.
 

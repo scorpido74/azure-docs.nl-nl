@@ -4,10 +4,9 @@ description: Dit artikel bevat een overzicht van Azure Service Bus bericht overd
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 22be139fccdeecee846c204a8035804fb897ae5a
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85341148"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>Berichten overdragen, vergrendelen en verwerken

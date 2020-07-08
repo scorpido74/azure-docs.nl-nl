@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 07/26/2019
 ms.custom: references_regions
 ms.openlocfilehash: d0c9467497a8bd108d37a340d2cdbb887061e3a6
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84194837"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights standaard eindpunten overschrijven
@@ -25,7 +24,7 @@ Als u gegevens van Application Insights naar bepaalde regio's wilt verzenden, mo
 # <a name="net"></a>[.NET](#tab/net)
 
 > [!NOTE]
-> Het bestand applicationinsights. config wordt automatisch overschreven wanneer een SDK-upgrade wordt uitgevoerd. Nadat u een SDK-upgrade hebt uitgevoerd, moet u de regio-specifieke eindpunt waarden opnieuw invoeren.
+> Het applicationinsights.config bestand wordt automatisch overschreven wanneer een SDK-upgrade wordt uitgevoerd. Nadat u een SDK-upgrade hebt uitgevoerd, moet u de regio-specifieke eindpunt waarden opnieuw invoeren.
 
 ```xml
 <ApplicationInsights>
@@ -49,7 +48,7 @@ Als u gegevens van Application Insights naar bepaalde regio's wilt verzenden, mo
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-Wijzig het bestand appSettings. json in uw project als volgt om het belangrijkste eind punt aan te passen:
+Wijzig de appsettings.jsvoor het bestand in uw project als volgt om het belangrijkste eind punt aan te passen:
 
 ```json
 "ApplicationInsights": {
@@ -83,7 +82,7 @@ Naam: `APPLICATIONINSIGHTS_CONNECTION_STRING` waarde:`Connection String Value`
 
 # <a name="java"></a>[Java](#tab/java)
 
-Wijzig het applicationinsights. XML-bestand om het standaard eindpunt adres te wijzigen.
+Wijzig het applicationinsights.xml bestand om het standaard eindpunt adres te wijzigen.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -135,7 +134,7 @@ Profile Endpoint: "Profile_Query_Endpoint_address"
 Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/js)
+# <a name="javascript"></a>[JavaScript](#tab/js)
 
 ```javascript
 <script type="text/javascript">

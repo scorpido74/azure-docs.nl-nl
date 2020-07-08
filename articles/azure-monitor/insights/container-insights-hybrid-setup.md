@@ -2,13 +2,12 @@
 title: Hybride Kubernetes-clusters met Azure Monitor voor containers configureren | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers kunt configureren voor het bewaken van Kubernetes-clusters die worden gehost op Azure Stack of een andere omgeving.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 063da61c28a67f26d03c7072c0587fdae679d28f
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
-ms.translationtype: MT
+ms.date: 06/30/2020
+ms.openlocfilehash: c7a92476fca2bc61d51ab518c22ff0c436fb78f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85260998"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801458"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Hybride Kubernetes-clusters met Azure Monitor voor containers configureren
 
@@ -16,7 +15,7 @@ Azure Monitor voor containers biedt uitgebreide bewakings ervaring voor de Azure
 
 ## <a name="supported-configurations"></a>Ondersteunde configuraties
 
-Het volgende wordt officieel ondersteund met Azure Monitor voor containers.
+De volgende configuraties worden officieel ondersteund met Azure Monitor voor containers.
 
 - Verschillend
 
@@ -38,7 +37,7 @@ Het volgende wordt officieel ondersteund met Azure Monitor voor containers.
 
 Voordat u begint, moet u ervoor zorgen dat u over het volgende beschikt:
 
-- Een Log Analytics-werkruimte.
+- Een [log Analytics-werk ruimte](../platform/design-logs-deployment.md).
 
     Azure Monitor voor containers ondersteunt een Log Analytics-werk ruimte in de regio's die worden vermeld in azure- [producten per regio](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Om uw eigen werk ruimte te maken, kan deze worden gemaakt via [Azure Resource Manager](../platform/template-workspace-configuration.md), via [Power shell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)of in de [Azure Portal](../learn/quick-create-workspace.md).
 
@@ -46,7 +45,9 @@ Voordat u begint, moet u ervoor zorgen dat u over het volgende beschikt:
     >Het inschakelen van de bewaking van meerdere clusters met dezelfde cluster naam op dezelfde Log Analytics werk ruimte wordt niet ondersteund. Cluster namen moeten uniek zijn.
     >
 
-- U bent lid van de **rol log Analytics Inzender** om container bewaking in te scha kelen. Voor meer informatie over het beheren van de toegang tot een Log Analytics werkruimte raadpleegt [u toegang tot de werk ruimte en logboek gegevens](../platform/manage-access.md)
+- U bent lid van de **rol log Analytics Inzender** om container bewaking in te scha kelen. Voor meer informatie over het beheren van de toegang tot een Log Analytics-werk ruimte raadpleegt [u toegang tot de werk ruimte en de gegevens](../platform/manage-access.md)van een logboek.
+
+- Als u de bewakings gegevens wilt bekijken, moet u de rol van [*log Analytics lezer*](../platform/manage-access.md#manage-access-using-azure-permissions) hebben in de log Analytics-werk ruimte, geconfigureerd met Azure monitor voor containers.
 
 - [Helm-client](https://helm.sh/docs/using_helm/) voor het voorbereiden van de grafiek Azure monitor voor containers voor het opgegeven Kubernetes-cluster.
 
@@ -248,46 +249,58 @@ Deze methode bevat twee JSON-sjablonen. Met één sjabloon geeft u de configurat
 
        Nadat u bewaking hebt ingeschakeld, kan het ongeveer 15 minuten duren voordat u de metrische gegevens van de status voor het cluster kunt weer geven.
 
-## <a name="install-the-chart"></a>De grafiek installeren
+## <a name="install-the-helm-chart"></a>Het HELM-diagram installeren
+
+In deze sectie installeert u de container agent voor Azure Monitor voor containers. Voordat u doorgaat, moet u de werk ruimte-ID identificeren die is vereist voor de `omsagent.secret.wsid` para meter en de primaire sleutel die vereist is voor de `omsagent.secret.key` para meter. U kunt deze informatie vinden door de volgende stappen uit te voeren en vervolgens de opdrachten uit te voeren om de agent te installeren met behulp van de HELM-grafiek.
+
+1. Voer de volgende opdracht uit om de werk ruimte-ID te identificeren:
+
+    `az monitor log-analytics workspace list --resource-group <resourceGroupName>`
+
+    In de uitvoer vindt u de naam van de werk ruimte onder de veld **naam**en kopieert u de werk ruimte-id van die log Analytics werk ruimte onder het veld **customerID**.
+
+2. Voer de volgende opdracht uit om de primaire sleutel voor de werk ruimte te identificeren:
+
+    `az monitor log-analytics workspace get-shared-keys --resource-group <resourceGroupName> --workspace-name <logAnalyticsWorkspaceName>`
+
+    In de uitvoer vindt u de primaire sleutel onder het veld **primarySharedKey**en kopieert u de waarde.
 
 >[!NOTE]
->De volgende opdrachten zijn alleen van toepassing op helm versie 2. Het gebruik van de `--name` para meter is niet van toepassing op helm versie 3.
-
-Ga als volgt te werk om de HELM-grafiek in te scha kelen:
+>De volgende opdrachten zijn alleen van toepassing op helm versie 2. Het gebruik van de `--name` para meter is niet van toepassing op helm versie 3. 
 
 >[!NOTE]
 >Als uw Kubernetes-cluster communiceert via een proxy server, configureert u de para meter `omsagent.proxy` met de URL van de proxy server. Als het cluster niet via een proxy server communiceert, hoeft u deze para meter niet op te geven. Zie [Configure proxy endpoint](#configure-proxy-endpoint) verderop in dit artikel voor meer informatie.
 
-1. Voeg de opslag plaats van Azure Charts toe aan uw lokale lijst door de volgende opdracht uit te voeren:
+3. Voeg de opslag plaats van Azure Charts toe aan uw lokale lijst door de volgende opdracht uit te voeren:
 
     ```
     helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
     ````
 
-2. Installeer de grafiek door de volgende opdracht uit te voeren:
+4. Installeer de grafiek door de volgende opdracht uit te voeren:
 
     ```
     $ helm install --name myrelease-1 \
-    --set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
+    --set omsagent.secret.wsid=<logAnalyticsWorkspaceId>,omsagent.secret.key=<logAnalyticsWorkspaceKey>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
     ```
 
     Als de Log Analytics-werk ruimte zich in azure China 21Vianet bevindt, voert u de volgende opdracht uit:
 
     ```
     $ helm install --name myrelease-1 \
-     --set omsagent.domain=opinsights.azure.cn,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
+     --set omsagent.domain=opinsights.azure.cn,omsagent.secret.wsid=<logAnalyticsWorkspaceId>,omsagent.secret.key=<logAnalyticsWorkspaceKey>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
     ```
 
     Als de Log Analytics-werk ruimte zich in azure US Government bevindt, voert u de volgende opdracht uit:
 
     ```
     $ helm install --name myrelease-1 \
-    --set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
+    --set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<logAnalyticsWorkspaceId>,omsagent.secret.key=<logAnalyticsWorkspaceKey>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
     ```
 
 ### <a name="enable-the-helm-chart-using-the-api-model"></a>De helm-grafiek inschakelen met het API-model
 
-U kunt een invoeg toepassing opgeven in het JSON-bestand AKS engine cluster Specification, ook wel het API-model genoemd. Geef in deze invoeg toepassing de base64-gecodeerde versie van `WorkspaceGUID` en `WorkspaceKey` de log Analytics-werk ruimte op waar de verzamelde bewakings gegevens worden opgeslagen.
+U kunt een invoeg toepassing opgeven in het JSON-bestand AKS engine cluster Specification, ook wel het API-model genoemd. Geef in deze invoeg toepassing de base64-gecodeerde versie van `WorkspaceGUID` en `WorkspaceKey` de log Analytics-werk ruimte op waar de verzamelde bewakings gegevens worden opgeslagen. U kunt de `WorkspaceGUID` en de `WorkspaceKey` stappen 1 en 2 in de vorige sectie vinden.
 
 Ondersteunde API-definities voor het Azure Stack hub-cluster vindt u in dit voor beeld- [kubernetes-container-monitoring_existing_workspace_id_and_key.jsop](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json). Zoek in het bijzonder de eigenschap **Addons** in **kubernetesConfig**:
 
@@ -299,7 +312,7 @@ Ondersteunde API-definities voor het Azure Stack hub-cluster vindt u in dit voor
              "name": "container-monitoring",
              "enabled": true,
              "config": {
-               "workspaceGuid": "<Azure Log Analytics Workspace Guid in Base-64 encoded>",
+               "workspaceGuid": "<Azure Log Analytics Workspace Id in Base-64 encoded>",
                "workspaceKey": "<Azure Log Analytics Workspace Key in Base-64 encoded>"
              }
            }

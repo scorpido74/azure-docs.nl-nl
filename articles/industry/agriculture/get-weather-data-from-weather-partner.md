@@ -5,12 +5,11 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 4ab42509930e76989a67f45deb33e370e6e9adf4
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
-ms.translationtype: MT
+ms.openlocfilehash: 66138fb04b1053215a2c2ec07cec1b56e38fed0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194736"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800644"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Weer gegevens ophalen van weer partners
 
@@ -140,10 +139,7 @@ Volg de onderstaande stappen om te beginnen met het ophalen van weer gegevens op
 
 ## <a name="query-ingested-weather-data"></a>Query's opgenomen weer gegeven gegevens
 
-Nadat de weers taken zijn voltooid, kunt u een query uitvoeren op opgenomen weer gegevens om modellen of inzichten te ontwikkelen. Er zijn twee manieren om gegevens weer te geven en op te vragen uit FarmBeats:
-
-- API en
-- Time Series Insights (TSI).
+Nadat de weers taken zijn voltooid, kunt u een query uitvoeren op opgenomen weer gegevens om modellen of met actie bare inzichten te maken met behulp van FarmBeats Datahub REST-Api's.
 
 ### <a name="query-using-rest-api"></a>Query's uitvoeren met REST API
 
@@ -209,20 +205,6 @@ Volg de onderstaande stappen om de weers gegevens op te vragen met behulp van Fa
 
 In het vorige voor beeld bevat het antwoord gegevens voor twee tijds tempels, samen met de naam van de meting (' Tempe ratuur ') en waarden van de gerapporteerde weers gegevens in de twee tijds tempels. U moet verwijzen naar het bijbehorende weer gegevens model (zoals beschreven in stap 2 hierboven) om het type en de eenheid van de gerapporteerde waarden te interpreteren.
 
-### <a name="query-using-azure-time-series-insights-tsi"></a>Query's uitvoeren met behulp van Azure Time Series Insights (TSI)
-
-FarmBeats maakt gebruik van [Azure time series Insights (TSI)](https://azure.microsoft.com/services/time-series-insights/) om gegevens op IOT-schaal te opnemen, op te slaan, op te vragen en te visualiseren: gegevens die zeer worden betrouwd en geoptimaliseerd voor tijd reeksen.
-
-Weer gegevens worden ontvangen op een EventHub en vervolgens gepusht naar een TSI-omgeving binnen FarmBeats-resource groep. Gegevens kunnen vervolgens rechtstreeks vanuit de TSI worden opgevraagd. Raadpleeg de [TSI-documentatie](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer)voor meer informatie.
-
-Volg de stappen voor het visualiseren van gegevens op TSI:
-
-1. Ga naar **Azure Portal**  >  **FarmBeats DataHub resource groep** > Selecteer **Time Series Insights** Environment (TSI-xxxx) > **beleid voor gegevens toegang**. Voeg een gebruiker toe met toegang voor lezer of Inzender.
-
-2. Ga naar de pagina **overzicht** van **Time Series Insights** omgeving (TSI-xxxx) en selecteer de **URL van Time Series Insights Explorer**. U kunt nu de opgenomen weers gegevens visualiseren.
-
-Naast het opslaan, doorzoeken en visualisatie van weer gegevens, biedt de TSI ook integratie met een Power BI dash board. Zie [visualiseren van gegevens van Time Series Insights in Power bi](https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi)voor meer informatie.
-
 ## <a name="appendix"></a>Bijlage
 
 |        Partner   |  Details   |
@@ -236,7 +218,7 @@ Naast het opslaan, doorzoeken en visualisatie van weer gegevens, biedt de TSI oo
 | DockerDetails - partnerCredentials | referenties voor het aanroepen van de partner-API in docker. De partner moet deze informatie aan hun klanten geven op basis van het verificatie mechanisme dat wordt ondersteund voor beeld. Gebruikers naam/wacht woord of API-sleutels. |
 | partnerType | "Weer" (andere partner typen in FarmBeats zijn "sensor" en "installatie kopie")  |
 |  naam   |   Gewenste naam van de partner in het FarmBeats-systeem   |
-|  description |  Beschrijving   |
+|  description |  Description   |
 
 ## <a name="next-steps"></a>Volgende stappen
 

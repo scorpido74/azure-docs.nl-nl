@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 678c32703501c4d0b66321cfc3518631ffa28c0c
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85253270"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Inzichten en rapportage voor voorwaardelijke toegang
@@ -46,11 +45,11 @@ Als u geen Azure AD-Logboeken hebt geïntegreerd met Azure Monitor-logboeken, mo
 1. [Een log Analytics-werk ruimte maken in azure monitor](../../azure-monitor/learn/quick-create-workspace.md).
 1. [Integreer Azure AD-logboeken met Azure monitor-logboeken](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
 
-## <a name="how-it-works"></a>Hoe werkt het? 
+## <a name="how-it-works"></a>Uitleg 
 
 Voor toegang tot de werkmap inzichten en rapportage:  
 
-1. Meld u aan bij de **Azure-portal**.
+1. Meld u aan bij **Azure Portal**.
 1. Blader naar **Azure Active Directory**  >  **Security**  >  **Conditional Access**  >  **inzichten en rapportage**voor voorwaardelijke toegang van de beveiliging.
 
 ### <a name="get-started-select-parameters"></a>Aan de slag: para meters selecteren 
@@ -103,7 +102,7 @@ U kunt ook de aanmeldingen van een specifieke gebruiker onderzoeken door te zoek
 
 Als u toegang wilt krijgen tot de werkmap, hebt u de juiste Azure AD-machtigingen nodig, evenals Log Analytics werkruimte machtigingen. Als u wilt testen of u over de juiste machtigingen voor de werk ruimte beschikt door een voorbeeld query voor log Analytics uit te voeren:
 
-1. Meld u aan bij de **Azure-portal**.
+1. Meld u aan bij **Azure Portal**.
 1. Blader naar **Azure Active Directory**  >  **Logboeken**.
 1. Typ `SigninLogs` in het vak query en selecteer **uitvoeren**.
 1. Als de query geen resultaten retourneert, is de werk ruimte mogelijk niet op de juiste wijze geconfigureerd. 

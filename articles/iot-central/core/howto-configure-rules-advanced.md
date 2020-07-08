@@ -7,12 +7,11 @@ ms.date: 05/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: e2018f4d6f8e0813892a43c66975961356333bff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: 07e5ce5cb6fee11e3f55ce808da51ccad59b9ff2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665003"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801356"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>Werk stromen gebruiken om uw Azure IoT Central-toepassing te integreren met andere Cloud Services
 
@@ -20,27 +19,36 @@ ms.locfileid: "83665003"
 
 U kunt regels maken in IoT Central die acties activeren, zoals het verzenden van een e-mail bericht, als reactie op op telemetrie gebaseerde voor waarden, zoals de temperatuur van een apparaat overschrijden.
 
-Met de IoT Central-connector voor energie automatisering en Azure Logic Apps kunt u geavanceerde regels maken voor het automatiseren van bewerkingen in IoT Central:
+Met de Azure IoT Central v3-connector voor energie automatisering en Azure Logic Apps kunt u geavanceerde regels maken voor het automatiseren van bewerkingen in IoT Central:
 
 - Wanneer een regel wordt geactiveerd in uw Azure IoT Central-app, kan deze een werk stroom activeren in de automatische stroom of Azure Logic Apps. Deze werk stromen kunnen acties uitvoeren in andere Cloud Services, zoals Office 365 of een service van derden.
 - Een gebeurtenis in een andere Cloud service, zoals Office 365, kan een werk stroom activeren in automatische stroom of Azure Logic Apps. Deze werk stromen kunnen acties uitvoeren of gegevens ophalen uit uw IoT Central-toepassing.
+
+## <a name="prerequisites"></a>Vereisten
+
+Als u de stappen in deze hand leiding wilt uitvoeren, hebt u een actief Azure-abonnement nodig. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+
+Voor het instellen van de oplossing is een versie 3-IoT Central toepassing vereist. Zie [over uw toepassing](./howto-get-app-info.md)voor meer informatie over het controleren van de versie van uw toepassing. Zie [een Azure IOT Central-toepassing maken](./quick-deploy-iot-central.md)voor meer informatie over het maken van een IOT Central-toepassing.
+
+> [!NOTE]
+> Als u een IoT Central toepassing van versie 2 gebruikt, raadpleegt u [werk stromen bouwen met de IOT Central-connector in azure Logic apps](https://docs.microsoft.com/previous-versions/azure/iot-central/core/howto-build-azure-logic-apps) op de documentatie site van de vorige versie en de Azure IOT Central v2-connector gebruiken
 
 ## <a name="trigger-a-workflow-from-a-rule"></a>Een werk stroom activeren vanuit een regel
 
 Voordat u een werk stroom in Power Automatiseer of Azure Logic Apps kunt activeren, hebt u een regel in uw IoT Central toepassing nodig. Zie [regels en acties in Azure IOT Central configureren](./howto-configure-rules.md)voor meer informatie.
 
-De **Azure IOT Central-preview-** connector toevoegen als een trigger in automatische stroom:
+De **Azure IOT Central v3-preview-** connector toevoegen als een trigger in automatische stroom:
 
 1. Selecteer **+ maken**in automatische stroom, selecteer het tabblad **aangepast** .
-1. Zoek naar *IOT Central*en selecteer de connector **voor Azure IOT Central-preview** .
+1. Zoek naar *IOT Central*en selecteer de connector **Azure IOT Central v3-preview** .
 1. Selecteer in de lijst met triggers **Wanneer een regel wordt geactiveerd (preview)**.
 1. Selecteer in de stap **Wanneer een regel wordt gestart** de IOT Central toepassing en de regel die u gebruikt.
 
-De **Azure IOT Central-preview-** connector toevoegen als een trigger in azure Logic apps:
+De **Azure IOT Central v3-preview-** connector toevoegen als een trigger in azure Logic apps:
 
 1. Selecteer in **Logic apps Designer**de sjabloon voor de **lege logische app** .
 1. Selecteer in de ontwerp functie het tabblad **aangepast** .
-1. Zoek naar *IOT Central*en selecteer de connector **voor Azure IOT Central-preview** .
+1. Zoek naar *IOT Central*en selecteer de connector **Azure IOT Central v3-preview** .
 1. Selecteer in de lijst met triggers **Wanneer een regel wordt geactiveerd (preview)**.
 1. Selecteer in de stap **Wanneer een regel wordt gestart** de IOT Central toepassing en de regel die u gebruikt.
 
@@ -50,27 +58,27 @@ U kunt nu meer stappen toevoegen aan uw werk stroom om uw integratie scenario sa
 
 ## <a name="run-an-action"></a>Een actie uitvoeren
 
-U kunt acties uitvoeren in een IoT Central-toepassing vanuit Automatische stroom en Azure Logic Apps werk stromen. Maak eerst uw werk stroom en gebruik een connector om een trigger te definiëren om de werk stroom te starten. Gebruik vervolgens de **Azure IOT Central-preview-** connector als een actie.
+U kunt acties uitvoeren in een IoT Central-toepassing vanuit Automatische stroom en Azure Logic Apps werk stromen. Maak eerst uw werk stroom en gebruik een connector om een trigger te definiëren om de werk stroom te starten. Gebruik vervolgens de **Azure IOT Central v3-preview-** connector als een actie.
 
-Als u de **Azure IOT Central-preview-** connector als actie wilt toevoegen in automatische stroom bewerkingen:
+Als u de **Azure IOT Central v3-preview-** connector als actie wilt toevoegen in automatische energie:
 
 1. In energie automatisering, in het deel venster **Kies een actie** , selecteert u het tabblad **aangepast** .
-1. Zoek naar *IOT Central* en selecteer de connector **voor Azure IOT Central-preview** .
+1. Zoek naar *IOT Central* en selecteer de connector **Azure IOT Central v3-preview** .
 1. Selecteer in de lijst met acties de IoT Central actie die u wilt gebruiken.
 1. Voer in de stap actie de configuratie uit voor de actie die u hebt gekozen. Selecteer vervolgens **Opslaan**.
 
-De **Azure IOT Central-preview-** connector toevoegen als actie in azure Logic apps:
+De **Azure IOT Central v3-preview-** connector toevoegen als actie in azure Logic apps:
 
 1. Selecteer in **Logic apps Designer**in het deel venster **een actie kiezen** het tabblad **aangepast** .
-1. Zoek naar *IOT Central*en selecteer de connector **voor Azure IOT Central-preview** .
+1. Zoek naar *IOT Central*en selecteer de connector **Azure IOT Central v3-preview** .
 1. Selecteer in de lijst met acties de IoT Central actie die u wilt gebruiken.
 1. Voer in de stap actie de configuratie uit voor de actie die u hebt gekozen. Selecteer vervolgens **Opslaan**.
 
-:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Zoek de Azure IoT Central-preview-connector en kies een actie":::
+:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Zoek de Azure IoT Central v3-connector en kies een actie":::
 
 ## <a name="list-of-actions"></a>Lijst met acties
 
-De volgende lijst bevat alle beschik bare IoT Central acties in de **Azure IOT Central-preview-** connector en de bijbehorende configuratie opties. Veel van de velden kunnen dynamisch gegenereerde inhoud bevatten. Een voor gaande stap kan bijvoorbeeld bepalen van de apparaat-ID waarop de huidige stap wordt uitgevoerd.
+De volgende lijst bevat alle beschik bare IoT Central acties in de **Azure IOT Central v3-preview-** connector en de bijbehorende configuratie opties. Veel van de velden kunnen dynamisch gegenereerde inhoud bevatten. Een voor gaande stap kan bijvoorbeeld bepalen van de apparaat-ID waarop de huidige stap wordt uitgevoerd.
 
 ### <a name="create-or-update-a-device"></a>Een apparaat maken of bijwerken
 
@@ -83,7 +91,7 @@ Gebruik deze actie om een apparaat in uw IoT Central-toepassing te maken of bij 
 | Goedgekeurd | Kies of het apparaat is goedgekeurd om verbinding te maken met IoT Central. |
 | Beschrijving apparaat | Een gedetailleerde beschrijving van het apparaat. |
 | Apparaatnaam | De weergave naam van het apparaat. |
-| Apparaatprofiel | Kies uit de lijst met apparaatprofielen in uw IoT Central-toepassing. |
+| Apparaatsjabloon | Kies uit de lijst met apparaatprofielen in uw IoT Central-toepassing. |
 | Gesimuleerde | Kies of het apparaat is gesimuleerd. |
 
 ### <a name="delete-a-device"></a>Een apparaat verwijderen
@@ -105,7 +113,7 @@ Gebruik deze actie om een opdracht uit te voeren die is gedefinieerd in een van 
 | Apparaat | De unieke ID van het apparaat dat moet worden verwijderd. |
 | Onderdeel apparaat | De interface in de sjabloon van het apparaat dat de opdracht bevat. |
 | Apparaatopdracht | Kies een van de opdrachten op de geselecteerde interface. |
-| Apparaatprofiel | Kies uit de lijst met apparaatprofielen in uw IoT Central-toepassing. |
+| Apparaatsjabloon | Kies uit de lijst met apparaatprofielen in uw IoT Central-toepassing. |
 | Payload van opdracht apparaat aanvragen | Als voor de opdracht een nettolading voor aanvragen is vereist, voegt u deze hier toe.  |
 
 > [!NOTE]
@@ -130,7 +138,7 @@ Gebruik deze actie om de waarden van de Cloud eigenschappen voor een specifiek a
 | ----- | ----------- |
 | Toepassing | Kies uit de lijst met IoT Central toepassingen. |
 | Apparaat | De unieke ID van het apparaat dat moet worden verwijderd. |
-| Apparaatprofiel | Kies uit de lijst met apparaatprofielen in uw IoT Central-toepassing. |
+| Apparaatsjabloon | Kies uit de lijst met apparaatprofielen in uw IoT Central-toepassing. |
 
 U kunt de geretourneerde waarden van de Cloud eigenschap in de dynamische expressies in andere acties gebruiken.
 
@@ -142,7 +150,7 @@ Gebruik deze actie om de eigenschaps waarden voor een specifiek apparaat op te h
 | ----- | ----------- |
 | Toepassing | Kies uit de lijst met IoT Central toepassingen. |
 | Apparaat | De unieke ID van het apparaat dat moet worden verwijderd. |
-| Apparaatprofiel | Kies uit de lijst met apparaatprofielen in uw IoT Central-toepassing. |
+| Apparaatsjabloon | Kies uit de lijst met apparaatprofielen in uw IoT Central-toepassing. |
 
 U kunt de geretourneerde eigenschaps waarden in de dynamische expressies in andere acties gebruiken.
 
@@ -154,7 +162,7 @@ Gebruik deze actie om de telemetrie-waarden voor een specifiek apparaat op te ha
 | ----- | ----------- |
 | Toepassing | Kies uit de lijst met IoT Central toepassingen. |
 | Apparaat | De unieke ID van het apparaat dat moet worden verwijderd. |
-| Apparaatprofiel | Kies uit de lijst met apparaatprofielen in uw IoT Central-toepassing. |
+| Apparaatsjabloon | Kies uit de lijst met apparaatprofielen in uw IoT Central-toepassing. |
 
 U kunt de geretourneerde telemetrie-waarden in de dynamische expressies in andere acties gebruiken.
 
@@ -166,7 +174,7 @@ Gebruik deze actie om waarden van de Cloud eigenschappen voor een specifiek appa
 | ----- | ----------- |
 | Toepassing | Kies uit de lijst met IoT Central toepassingen. |
 | Apparaat | De unieke ID van het apparaat dat moet worden verwijderd. |
-| Apparaatprofiel | Kies uit de lijst met apparaatprofielen in uw IoT Central-toepassing. |
+| Apparaatsjabloon | Kies uit de lijst met apparaatprofielen in uw IoT Central-toepassing. |
 | Eigenschappen van Cloud | Nadat u een sjabloon voor het apparaat hebt gekozen, wordt er een veld toegevoegd voor elke Cloud eigenschap die in de sjabloon is gedefinieerd. |
 
 ### <a name="update-device-properties"></a>Apparaateigenschappen bijwerken
@@ -177,7 +185,7 @@ Gebruik deze actie om Beschrijf bare eigenschaps waarden voor een specifiek appa
 | ----- | ----------- |
 | Toepassing | Kies uit de lijst met IoT Central toepassingen. |
 | Apparaat | De unieke ID van het apparaat dat moet worden verwijderd. |
-| Apparaatprofiel | Kies uit de lijst met apparaatprofielen in uw IoT Central-toepassing. |
+| Apparaatsjabloon | Kies uit de lijst met apparaatprofielen in uw IoT Central-toepassing. |
 | Beschrijf bare eigenschappen | Nadat u een sjabloon hebt gekozen, wordt er een veld toegevoegd voor elke Beschrijf bare eigenschap die in de sjabloon is gedefinieerd. |
 
 ## <a name="next-steps"></a>Volgende stappen

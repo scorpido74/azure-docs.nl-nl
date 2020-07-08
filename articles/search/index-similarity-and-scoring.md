@@ -8,12 +8,11 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 00cf806bf6575fd96af435abf8d0b3dd8734338a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.openlocfilehash: 4c725fe74185088dea55b7506493fe667e71b7ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83679652"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806632"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Gelijkenis en score in azure Cognitive Search
 
@@ -38,7 +37,7 @@ Een score profiel maakt deel uit van de definitie van de index, die bestaat uit 
 
 <a name="scoring-statistics"></a>
 
-## <a name="scoring-statistics-and-sticky-sessions-preview"></a>Score statistieken en plak sessies (preview-versie)
+## <a name="scoring-statistics-and-sticky-sessions"></a>Score statistieken en plak sessies
 
 Voor schaal baarheid distribueert Azure Cognitive Search elke index horizon taal via een sharding-proces, wat betekent dat delen van een index fysiek gescheiden zijn.
 
@@ -47,14 +46,14 @@ De Score van een document wordt standaard berekend op basis van de statistische 
 Als u de score wilt berekenen op basis van de statistische eigenschappen van alle Shards, kunt u dit doen door *scoringStatistics = Global* toe te voegen als een [query parameter](https://docs.microsoft.com/rest/api/searchservice/search-documents) (of door *' scoringStatistics ': ' Global '* toe te voegen als een hoofd parameter van de [query-aanvraag](https://docs.microsoft.com/rest/api/searchservice/search-documents)).
 
 ```http
-GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2019-05-06-Preview&search=[search term]
+GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2020-06-30&search=[search term]
   Content-Type: application/json
   api-key: [admin or query key]  
 ```
 Als u scoringStatistics gebruikt, zorgt u ervoor dat alle Shards in dezelfde replica dezelfde resultaten hebben. Dat wil zeggen dat verschillende replica's enigszins verschillen van elkaar, aangezien ze altijd worden bijgewerkt met de laatste wijzigingen in uw index. In sommige scenario's wilt u mogelijk dat uw gebruikers tijdens een query sessie meer consistente resultaten krijgen. In dergelijke scenario's kunt u een `sessionId` als onderdeel van uw query's opgeven. De `sessionId` is een unieke teken reeks die u maakt om te verwijzen naar een unieke gebruikers sessie.
 
 ```http
-GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionId=[string]&api-version=2019-05-06-Preview&search=[search term]
+GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionId=[string]&api-version=2020-06-30&search=[search term]
   Content-Type: application/json
   api-key: [admin or query key]  
 ```
@@ -73,7 +72,38 @@ Het volgende video segment is een snelle doorstuur naar een uitleg van de classi
 
 > [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=322&end=643]
 
-## <a name="see-also"></a>Zie ook
+<a name="featuresMode-param"></a>
+
+## <a name="featuresmode-parameter-preview"></a>featuresMode-para meter (preview-versie)
+
+[Zoek documenten](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents) aanvragen hebben een nieuwe [featuresMode](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents#featuresmode) -para meter die aanvullende details kan geven over relevantie op veld niveau. Terwijl de `@searchScore` wordt berekend voor het document all-up (zoals relevant is dit document in de context van deze query), via featuresMode kunt u informatie ophalen over afzonderlijke velden, zoals wordt weer gegeven in een `@search.features` structuur. De structuur bevat alle velden die in de query worden gebruikt (specifieke velden via **searchFields** in een query of alle velden die worden **doorzocht** in een index). Voor elk veld krijgt u de volgende waarden:
+
++ Aantal unieke tokens gevonden in het veld
++ Vergelijk bare Score of een meting van de manier waarop de inhoud van het veld relatief is ten opzichte van de query term
++ De term frequentie of het aantal keren dat de query term in het veld is gevonden
+
+Een antwoord dat is opgenomen in de velden Beschrijving en titel, `@search.features` kan er als volgt uitzien:
+
+```json
+"value": [
+ {
+    "@search.score": 5.1958685,
+    "@search.features": {
+        "description": {
+            "uniqueTokenMatches": 1.0,
+            "similarityScore": 0.29541412,
+            "termFrequency" : 2
+        },
+        "title": {
+            "uniqueTokenMatches": 3.0,
+            "similarityScore": 1.75451557,
+            "termFrequency" : 6
+        }
+```
+
+U kunt deze gegevens punten gebruiken in [aangepaste Score oplossingen](https://github.com/Azure-Samples/search-ranking-tutorial) of met de informatie voor fout opsporing in relevantie problemen.
+
+## <a name="see-also"></a>Zie tevens
 
  [Score profielen](index-add-scoring-profiles.md) [rest API referentie](https://docs.microsoft.com/rest/api/searchservice/)   
  [Documenten zoeken-API](https://docs.microsoft.com/rest/api/searchservice/search-documents)   

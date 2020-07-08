@@ -7,10 +7,9 @@ ms.topic: how-to
 ms.date: 05/30/2018
 ms.author: twooley
 ms.openlocfilehash: 42c7894c33fe0f09748beee20508e7670545c0ed
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85515164"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Gegevens streamen van Azure Storage Blob naar Azure Data Lake Storage Gen1 met behulp van Azure Stream Analytics
@@ -112,5 +111,5 @@ U begint met het maken van een Stream Analytics-taak die een invoer bron en een 
 
     In het deel venster Data Explorer ziet u dat de uitvoer wordt geschreven naar een mappad zoals opgegeven in de Data Lake Storage Gen1 Output Settings ( `streamanalytics/job/output/{date}/{time}` ).  
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 * [Een HDInsight-cluster maken voor het gebruik van Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

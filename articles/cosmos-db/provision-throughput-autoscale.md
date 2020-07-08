@@ -7,15 +7,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.openlocfilehash: 20b0bcfe5043d4767199c36796fa1123ed779363
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84791143"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Azure Cosmos-containers en-data bases maken met de door Voer van automatisch schalen
 
-Met Azure Cosmos DB kunt u standaard (hand matig) of ingerichte door Voer voor automatisch schalen instellen voor uw data bases en containers. In dit artikel worden de voor delen en het gebruik beschreven van de door Voer ingericht voor automatisch schalen. 
+Met Azure Cosmos DB kunt u standaard (handmatig) of via automatische schaalaanpassing ingerichte doorvoer instellen voor uw databases en containers. In dit artikel worden de voordelen en toepassingen van via automatische schaalaanpassing ingerichte doorvoer beschreven. 
 
 Het automatisch schalen van de ingerichte door Voer is goed geschikt voor bedrijfskritische workloads met variabele of onvoorspelbare verkeers patronen, en voor het vereisen van Sla's voor hoge prestaties en schaal baarheid. 
 
@@ -63,11 +62,11 @@ Gebruik de [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autosc
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a>Doorvoer-en opslag limieten voor automatisch schalen
 
-Voor elke waarde van `Tmax` kan de data base of container een totaal van bevatten `0.01 * Tmax GB` . Nadat deze hoeveelheid opslag is bereikt, wordt het maximum aantal RU/s automatisch verhoogd op basis van de nieuwe opslag waarde, zonder dat dit van invloed is op uw toepassing. 
+Voor elke waarde van `Tmax` kan de data base of container een totaal van bevatten `0.01 * Tmax GB` . Wanneer deze hoeveelheid opslag is bereikt, wordt het maximum aantal RU/s automatisch verhoogd op basis van de nieuwe opslagwaarde, zonder dat dit van invloed is op uw toepassing. 
 
-Als u bijvoorbeeld begint met een maximum van RU/s 50.000 RU/s (schalen tussen 5000-50.000 RU/s), kunt u Maxi maal 500 GB aan gegevens opslaan. Als u meer dan 500 GB hebt, bijvoorbeeld opslag is nu 600 GB, zijn de nieuwe maximum-RU/s 60.000 RU/s (schaalbaar tussen 6000-60.000 RU/s).
+Als u bijvoorbeeld begint met een maximum van RU/s 50.000 RU/s (schaalbaar tussen 5000 - 50.000 RU/s), kunt u maximaal 500 GB aan gegevens opslaan. Als u meer dan 500 GB hebt - opslag is nu bijvoorbeeld 600 GB -, zal het nieuwe maximum aantal RU/s 60.000 RU/s zijn (schaalbaar tussen 6000 - 60.000 RU/s).
 
-Wanneer u door Voer op database niveau met automatisch schalen gebruikt, kunt u de eerste 25 containers een automatisch schaalbaar maximum RU/s van 4000 (schalen tussen 400-4000 RU/s) delen, op voor waarde dat u niet meer dan 40 GB opslag ruimte overschrijdt. Raadpleeg deze [documentatie](autoscale-faq.md#can-i-change-the-max-rus-on-the-database-or-container) voor meer informatie.
+Wanneer u doorvoer op databaseniveau met automatische schaalaanpassing gebruikt, kunt u de eerste 25 containers een maximum aantal RU/s van 4000 laten delen bij automatische schaalaanpassing (schaalbaar tussen 400 - 4000 RU/s), op voorwaarde dat u 40 GB opslagruimte niet overschrijdt. Raadpleeg deze [documentatie](autoscale-faq.md#can-i-change-the-max-rus-on-the-database-or-container) voor meer informatie.
 
 ## <a name="comparison--containers-configured-with-manual-vs-autoscale-throughput"></a>Vergelijking: containers die zijn geconfigureerd met hand matig en automatisch schalen door Voer
 Raadpleeg deze [documentatie](how-to-choose-offer.md) voor meer informatie over het kiezen van standaard (hand matig) en door Voer automatisch schalen.  

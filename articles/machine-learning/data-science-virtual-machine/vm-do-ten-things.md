@@ -10,12 +10,11 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: f59ee4a21581310a0729079cd25afa1c683071cd
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.openlocfilehash: 7d9aced42efefc8651605be44f0091b2f4f2815e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552699"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959276"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tien dingen die u kunt doen op de Windows-Data Science Virtual Machine
 
@@ -132,7 +131,7 @@ IrisPredictor(3,2,3,4)
 ### <a name="build-and-operationalize-r-models"></a>R-modellen bouwen en operationeel maken
 U kunt R-modellen implementeren die op de Data Science Virtual Machine of ergens anders op Azure Machine Learning zijn gebouwd op een manier die vergelijkbaar is met de manier waarop deze voor python wordt gemaakt. Dit zijn de stappen:
 
-1. Maak een bestand settings. json om uw werk ruimte-ID en verificatie token op te geven. 
+1. Maak een settings.jsin het bestand om uw werk ruimte-ID en verificatie token op te geven. 
 2. Schrijf een wrapper voor de functie voors pellen van het model.
 3. Aanroep ```publishWebService``` in de Azure machine learning-bibliotheek om door te geven in de functie-wrapper.  
 
@@ -140,9 +139,9 @@ Gebruik de volgende procedure en code fragmenten voor het instellen, bouwen, pub
 
 #### <a name="set-up"></a>Instellen
 
-Maak een bestand settings. json onder een map met ```.azureml``` de naam onder uw basismap. Geef de para meters op uit uw Azure Machine Learning-werk ruimte.
+Maak een settings.jsin het bestand onder een map met ```.azureml``` de naam onder uw basismap. Geef de para meters op uit uw Azure Machine Learning-werk ruimte.
 
-Dit zijn de instellingen. json-bestands structuur:
+Hier volgt een settings.jsvan de bestands structuur:
 
 ```json
 {"workspace":{
@@ -249,7 +248,9 @@ De DSVM wordt geladen met client hulpprogramma's op de opdracht regel en in de g
 
 Als u code uit een GitHub-opslag plaats wilt downloaden, gebruikt u de ```git clone``` opdracht. Als u bijvoorbeeld de data Science-opslag plaats wilt downloaden die door micro soft in de huidige map is gepubliceerd, kunt u de volgende opdracht uitvoeren in Git Bash:
 
-    git clone https://github.com/Azure/DataScienceVM.git
+```bash
+git clone https://github.com/Azure/DataScienceVM.git
+```
 
 In Visual Studio kunt u dezelfde kloon bewerking uitvoeren. In de volgende scherm afbeelding ziet u hoe u de hulpprogram ma's Git en GitHub opent in Visual Studio:
 
@@ -267,7 +268,7 @@ Azure Blob-opslag is een betrouw bare, voordelige service voor Cloud opslag voor
 
    ![Scherm opname van het proces voor het maken van het opslag account in de Azure Portal](./media/vm-do-ten-things/create-azure-blob.png)
 
-* Controleer of het opdracht regel programma AzCopy vooraf is geïnstalleerd: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` . De map met azcopy. exe bevindt zich al in uw omgevings variabele PATH, dus u kunt voor komen dat u het volledige pad naar de opdracht typt wanneer u dit hulp programma uitvoert. Zie de [AzCopy-documentatie](../../storage/common/storage-use-azcopy.md)voor meer informatie over het hulp programma AzCopy.
+* Controleer of het opdracht regel programma AzCopy vooraf is geïnstalleerd: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` . De map met azcopy.exe bevindt zich al in uw omgevings variabele PATH. u kunt dus voor komen dat u het volledige pad naar de opdracht typt wanneer u dit hulp programma uitvoert. Zie de [AzCopy-documentatie](../../storage/common/storage-use-azcopy.md)voor meer informatie over het hulp programma AzCopy.
 * Start het Azure Storage Explorer-hulp programma. U kunt deze downloaden van de [Storage Explorer webpagina](https://storageexplorer.com/). 
 
    ![Scherm afbeelding van Azure Storage Explorer toegang tot een opslag account](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
@@ -276,7 +277,9 @@ Azure Blob-opslag is een betrouw bare, voordelige service voor Cloud opslag voor
 
 Als u gegevens wilt verplaatsen tussen uw lokale bestanden en Blob-opslag, kunt u AzCopy gebruiken op de opdracht regel of in Power shell:
 
-    AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
+```powershell
+AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
+```
 
 Vervang **C:\myfolder** door het pad waar het bestand is opgeslagen, **mystorageaccount** met de naam van het Blob Storage-account, **mycontainer** met de container naam en de sleutel van het **opslag account** met de toegangs sleutel voor de Blob-opslag. U kunt de referenties van uw opslag account vinden in de [Azure Portal](https://portal.azure.com).
 
@@ -437,7 +440,7 @@ Nadat de query is verzonden naar de server, wordt in een diagram de status van u
 
 Nadat de gegevensset in Azure Data Lake is opgenomen, kunt u de [u-SQL-taal](../../data-lake-analytics/data-lake-analytics-u-sql-get-started.md) gebruiken om de gegevens op te vragen en te verkennen. U-SQL-taal is vergelijkbaar met T-SQL, maar combineert een aantal functies van C# zodat gebruikers aangepaste modules en door de gebruiker gedefinieerde functies kunnen schrijven. U kunt de scripts in de vorige stap gebruiken.
 
-Nadat de query is verzonden naar de server, tripdata_summary. CSV wordt weer gegeven in Azure Data Lake Explorer. U kunt een voor beeld van de gegevens bekijken door met de rechter muisknop op het bestand te klikken.
+Nadat de query is verzonden naar de server, wordt tripdata_summary.CSV weer gegeven in Azure Data Lake Explorer. U kunt een voor beeld van de gegevens bekijken door met de rechter muisknop op het bestand te klikken.
 
 ![Scherm opname van het CSV-bestand in Data Lake Explorer](./media/vm-do-ten-things/USQL_create_summary.png)
 
@@ -458,7 +461,7 @@ Gebruik de volgende vereiste stappen om toegang te krijgen tot Azure Cosmos DB v
 1. De Azure Cosmos DB python SDK is al geïnstalleerd op de DSVM. Voer ```pip install pydocumentdb --upgrade``` uit vanaf een opdracht prompt om het bij te werken.
 2. Maak een Azure Cosmos DB-account en-data base via de [Azure Portal](https://portal.azure.com).
 3. Down load het hulp programma voor gegevens migratie van Azure Cosmos DB van het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=53595) en pak het uit naar een gewenste map.
-4. Importeer JSON-gegevens (Volcano-gegevens) die zijn opgeslagen in een [open bare BLOB](https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json) in azure Cosmos DB met de volgende opdracht parameters voor het hulp programma voor migratie. (Gebruik dtui. exe in de map waarin u het hulp programma voor gegevens migratie Azure Cosmos DB hebt geïnstalleerd.) Voer de bron-en doel locatie in met de volgende para meters:
+4. Importeer JSON-gegevens (Volcano-gegevens) die zijn opgeslagen in een [open bare BLOB](https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json) in azure Cosmos DB met de volgende opdracht parameters voor het hulp programma voor migratie. (Gebruik dtui.exe uit de map waarin u het hulp programma voor gegevens migratie Azure Cosmos DB hebt geïnstalleerd.) Voer de bron-en doel locatie in met de volgende para meters:
    
     `/s:JsonFile /s.Files:https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 

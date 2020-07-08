@@ -4,10 +4,9 @@ description: Gebruik een Kopieer bewerking in een Azure Resource Manager sjabloo
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: 61122b01889da832a73f729833ab0af676904d54
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84678457"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Eigenschaps herhaling in ARM-sjablonen
@@ -16,7 +15,7 @@ In dit artikel wordt beschreven hoe u meer dan één exemplaar van een eigenscha
 
 U kunt ook kopiëren met [resources](copy-resources.md), [variabelen](copy-variables.md)en [uitvoer](copy-outputs.md)gebruiken.
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
 Het element Copy heeft de volgende algemene indeling:
 
@@ -252,7 +251,7 @@ U kunt resource en eigenschaps herhaling samen gebruiken. Verwijzing naar eigens
 
 In het volgende voor beeld ziet u een veelvoorkomend scenario voor het maken van meer dan één waarde voor een eigenschap.
 
-|Template  |Beschrijving  |
+|Template  |Description  |
 |---------|---------|
 |[VM-implementatie met een variabele aantal gegevens schijven](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Hiermee worden verschillende gegevens schijven met een virtuele machine geïmplementeerd. |
 

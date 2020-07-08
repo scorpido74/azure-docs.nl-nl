@@ -6,30 +6,18 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 900398a701659bff593df042db16890792e5cffd
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
-ms.translationtype: MT
+ms.openlocfilehash: 76bf38c9d15e977b39922fdfbc7d30f533707cda
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744730"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801373"
 ---
-# <a name="monitoring-the-security-of-your-containers"></a>De beveiliging van uw containers bewaken
+# <a name="monitor-the-security-of-your-containers"></a>De beveiliging van uw containers bewaken
 
 Op deze pagina wordt uitgelegd hoe u de beveiligings functies van de container kunt gebruiken die worden beschreven in het [artikel Container Security](container-security.md) in het gedeelte concepten.
 
-Azure Security Center heeft betrekking op de volgende drie aspecten van de container beveiliging:
-
-- **Beveiligings beheer** : als u zich bevindt in de prijs categorie standard van Security Center (Zie [prijzen](/azure/security-center/security-center-pricing)), kunt u uw op arm gebaseerde Azure container Registry op elke keer scannen wanneer een nieuwe installatie kopie wordt gepusht. De scanner (aangedreven door Qualys) geeft conclusies als Security Center aanbevelingen.
-    Zie voor gedetailleerde instructies [uw container registers scannen op beveiligings problemen](#scanning-your-arm-based-container-registries-for-vulnerabilities) hieronder.
-
-- Als **u de docker-hosts van uw containers verhardt** -Security Center vindt u niet-beheerde containers die worden gehost op IaaS Linux vm's of andere Linux-machines met docker, en vergelijkt u de configuraties van containers met de Center for Internet Security (CIS) docker-referentie. Security Center u wordt gewaarschuwd als uw containers niet voldoen aan een van de besturings elementen. Voortdurende bewaking van beveiligings Risico's door onjuiste configuratie is een cruciaal onderdeel van elk beveiligings programma. 
-    Zie voor gedetailleerde instructies [de verharding van de docker-hosts van uw containers](#hardening-your-containers-docker-hosts) hieronder.
-
-- **De beveiliging van uw Azure Kubernetes Service-clusters** -Security Center biedt aanbevelingen wanneer er beveiligings problemen worden gevonden in de configuratie van uw Azure Kubernetes-Service clusters. Zie de aanbevelingen van de [Kubernetes-service](recommendations-reference.md#recs-containers)voor meer informatie over de specifieke aanbevelingen die kunnen worden weer gegeven.
-
-- **Runtime-beveiliging** : als u zich in de Standard-prijs categorie van Security Center bevindt, ontvangt u real-time bedreigings beveiliging voor uw container omgevingen. Security Center genereert waarschuwingen voor verdachte activiteiten op het cluster niveau host en AKS. Zie de secties [waarschuwingen voor Azure Kubernetes Service-clusters](alerts-reference.md#alerts-akscluster) en [waarschuwingen voor containers-hostniveau](alerts-reference.md#alerts-containerhost) in de naslag tabel met waarschuwingen voor meer informatie over de relevante beveiligings waarschuwingen die kunnen worden weer gegeven.
 
 ## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>Uw ARM-gebaseerde container registers scannen op beveiligings problemen 
 
@@ -37,7 +25,7 @@ Azure Security Center heeft betrekking op de volgende drie aspecten van de conta
 
     1. Zorg ervoor dat u zich in de prijs categorie Standard van Azure Security Center bevindt.
 
-    1. Schakel op de pagina **prijs & instellingen** de optionele container registers bundel in voor uw abonnement: ![de bundel van de container registers inschakelen](media/monitor-container-security/enabling-container-registries-bundle.png)
+    1. Schakel op de pagina **prijs & instellingen** de optionele container registers bundel in voor uw abonnement: ![ de bundel van de container registers inschakelen](media/monitor-container-security/enabling-container-registries-bundle.png)
 
         Security Center is nu gereed voor het scannen van afbeeldingen die naar het REGI ster worden gepusht. 
 

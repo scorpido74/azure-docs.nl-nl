@@ -11,10 +11,9 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
 ms.openlocfilehash: 3408970bcf5e34ce9f0f0afe9e723b4877dcd694
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84193408"
 ---
 # <a name="query-acceleration-sql-language-reference-preview"></a>Naslag informatie over SQL-taal voor query versnelling (preview-versie)
@@ -58,7 +57,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 ## <a name="data-types"></a>Gegevenstypen
 
-|Gegevenstype|Beschrijving|
+|Gegevenstype|Description|
 |---------|-------------------------------------------|
 |INT      |64-bits geheel getal met teken.                     |
 |FLOAT    |64-bits (Double-Precision) drijvende komma.|
@@ -321,7 +320,7 @@ In de meeste gevallen is de grootte van elke batch iets hoger dan het getal dat 
 >[!NOTE]
 > De split_size moet mini maal 10 MB (10485760) zijn.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [Azure Data Lake Storage-query versnelling (preview-versie)](data-lake-storage-query-acceleration.md)
 - [Gegevens filteren met behulp van Azure Data Lake Storage-query versnelling (preview-versie)](data-lake-storage-query-acceleration-how-to.md)

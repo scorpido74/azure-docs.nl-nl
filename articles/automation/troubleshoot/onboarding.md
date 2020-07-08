@@ -2,20 +2,16 @@
 title: Problemen met de implementatie van Azure Automation-onderdelen oplossen
 description: In dit artikel leest u hoe u problemen kunt oplossen en oplossen die zich voordoen bij het implementeren van Azure Automation-functies.
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 05/22/2019
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
-ms.openlocfilehash: 4c4c43d8522c6f507d458c56abc445e2da35fa6d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.openlocfilehash: ca2f866dc882e003469163a22d32d3d72031443a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739376"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801026"
 ---
-# <a name="troubleshoot-feature-deployment-issues"></a>Problemen met de implementatie van functies oplossen
+# <a name="troubleshoot-feature-deployment-issues"></a>Problemen met implementatie van functies oplossen
 
 Er kunnen fout berichten worden weer gegeven wanneer u de functie Azure Automation Updatebeheer of de functie Wijzigingen bijhouden en inventarisatie op uw Vm's implementeert. In dit artikel worden de fouten beschreven die zich kunnen voordoen en hoe u deze kunt oplossen.
 
@@ -71,7 +67,7 @@ Deze fout wordt veroorzaakt door onjuiste of ontbrekende machtigingen voor de vi
 
 #### <a name="resolution"></a>Oplossing
 
-Zorg ervoor dat u de juiste machtigingen hebt voor de [implementatie van functies](../automation-role-based-access-control.md#feature-setup-permissions)en probeer het onderdeel opnieuw te implementeren. Als u het fout bericht ontvangt `The solution cannot be enabled on this VM because the permission to read the workspace is missing` , moet u ervoor zorgen dat u `Microsoft.OperationalInsights/workspaces/read` gemachtigd bent om te kunnen vinden of de virtuele machine is ingeschakeld voor een werk ruimte.
+Zorg ervoor dat u de juiste machtigingen hebt voor de [implementatie van functies](../automation-role-based-access-control.md#feature-setup-permissions)en probeer het onderdeel opnieuw te implementeren. Als het fout bericht wordt weer gegeven `The solution cannot be enabled on this VM because the permission to read the workspace is missing` , raadpleegt u de volgende [informatie over het oplossen van problemen](update-management.md#failed-to-enable-error).
 
 ### <a name="scenario-feature-deployment-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Scenario: de implementatie van de functie mislukt met het bericht ' kan Automation-account niet configureren voor diagnostische logboek registratie '
 

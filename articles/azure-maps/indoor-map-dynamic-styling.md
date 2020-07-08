@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 8c854a503e3c949be0165d9dda046e0169686c67
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84434155"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Dynamische stijlen voor het maken van kaarten in de maker implementeren
@@ -66,7 +65,7 @@ In de volgende sectie wordt de bezettings *status* van Office ingesteld `UNIT26`
 
  We gaan nu de status van de twee kant oren bijwerken `UNIT26` en `UNIT27` :
 
-1. Selecteer in de toepassing postman de optie **Nieuw**. Selecteer **aanvraag**in het venster **Nieuw maken** . Voer de **naam** van een aanvraag in en selecteer een verzameling. Klik op **Opslaan**
+1. Selecteer in de toepassing postman de optie **Nieuw**. Selecteer **aanvraag**in het venster **Nieuw maken** . Voer de **naam** van een aanvraag in en selecteer een verzameling. Klik op **Opslaan**.
 
 2. Gebruik de [API voor de functie-update status](https://docs.microsoft.com/rest/api/maps/featurestate/updatestatespreview) om de status bij te werken. Geef de statusset-ID en `UNIT26` een van de twee eenheden door. Voeg uw Azure Maps-abonnements sleutel toe. Dit is de URL van een **post** -aanvraag om de status bij te werken:
 
@@ -124,7 +123,7 @@ Zie de naslag informatie voor de Api's die in dit artikel worden vermeld:
 > [Gegevens conversie](creator-indoor-maps.md#convert-a-drawing-package)
 
 > [!div class="nextstepaction"]
-> [Sets](creator-indoor-maps.md#datasets)
+> [Gegevensset](creator-indoor-maps.md#datasets)
 
 > [!div class="nextstepaction"]
 > [Tegelset](creator-indoor-maps.md#tilesets)

@@ -1,5 +1,5 @@
 ---
-title: Python
+title: Python-script uitvoeren in de ontwerp functie
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het gebruik van python in Azure Machine Learning Designer voor het transformeren van gegevens.
 services: machine-learning
@@ -10,14 +10,13 @@ author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
 ms.custom: designer, tracking-python
-ms.openlocfilehash: af26dce03c0dcf5226c52dcdd8af4408186aa343
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.openlocfilehash: 31028ba0417f312aa0caaf49cb4b2d432f89979f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84557037"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041010"
 ---
-# <a name="execute-python-code-in-azure-machine-learning-designer"></a>Python-code uitvoeren in Azure Machine Learning Designer
+# <a name="run-python-code-in-azure-machine-learning-designer"></a>Python-code uitvoeren in Azure Machine Learning Designer
 
 In dit artikel leert u hoe u de script module voor het [uitvoeren van python](algorithm-module-reference/execute-python-script.md) kunt gebruiken om aangepaste logica aan Azure machine learning Designer toe te voegen. In de volgende procedures gebruikt u de bibliotheek van Pandas om eenvoudige functie techniek uit te voeren.
 

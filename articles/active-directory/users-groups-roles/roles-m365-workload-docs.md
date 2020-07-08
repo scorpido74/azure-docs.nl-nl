@@ -15,10 +15,9 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 79e3ed41ad3038cf66d61c25292ebad55c2b5e92
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84731694"
 ---
 # <a name="administrator-roles-for-microsoft-365-services"></a>Beheerders rollen voor Microsoft 365 Services
@@ -38,7 +37,7 @@ Security & compliance Center (Office 365 Advanced Threat Protection, Exchange On
 Beveiligde Score | [Azure AD-beheerders rollen](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Roltoewijzingen ophalen](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
 Compliance Manager | [Functies van de nalevings beheerder](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud#permissions-and-role-based-access-control) | Niet beschikbaar
 Azure Information Protection | [Azure AD-beheerders rollen](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Roltoewijzingen ophalen](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
-Microsoft Cloud App Security | [Op rollen gebaseerd toegangsbeheer](https://docs.microsoft.com/cloud-app-security/manage-admins) | [API-verwijzing](https://docs.microsoft.com/cloud-app-security/api-tokens) 
+Microsoft Cloud App Security | [Op rollen gebaseerd toegangsbeheer](https://docs.microsoft.com/cloud-app-security/manage-admins) | [API-naslaginformatie](https://docs.microsoft.com/cloud-app-security/api-tokens) 
 Azure Advanced Threat Protection | [Azure ATP-functiegroepen](https://docs.microsoft.com/azure-advanced-threat-protection/atp-role-groups) | Niet beschikbaar
 Windows Defender Advanced Threat Protection | [Windows Defender ATP op rollen gebaseerd toegangs beheer](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/rbac-windows-defender-advanced-threat-protection) | Niet beschikbaar
 Privileged Identity Management | [Azure AD-beheerders rollen](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Roltoewijzingen ophalen](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)

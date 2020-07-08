@@ -4,10 +4,9 @@ description: Meer informatie over het instellen van een Lab voor het leren van s
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ba14f2fb5263367014b57741c78d6e509df044b3
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85444961"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Een Lab instellen om shell scripting op Linux te leren
@@ -61,7 +60,7 @@ In deze sectie wordt beschreven hoe u een aantal tekst editors installeert. Gedi
     ```bash
     sudo apt-get install gedit
     ```
-1. Installeer [Visual Studio code](https://code.visualstudio.com/).  Visual Studio code kan worden geïnstalleerd met behulp van de snap Store.  Zie [Visual Studio code alternatieve down loads](https://code.visualstudio.com/#alt-downloads)(Engelstalig) voor alternatieve installatie opties.
+1. Installeer [Visual Studio Code](https://code.visualstudio.com/).  Visual Studio code kan worden geïnstalleerd met behulp van de snap Store.  Zie [Visual Studio code alternatieve down loads](https://code.visualstudio.com/#alt-downloads)(Engelstalig) voor alternatieve installatie opties.
 
     ```bash
     sudo snap install vscode --classic 

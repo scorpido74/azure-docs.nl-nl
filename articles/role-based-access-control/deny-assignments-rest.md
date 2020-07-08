@@ -16,10 +16,9 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 2f835c270930734bf9963a7c7c3168b873eddaf6
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84791908"
 ---
 # <a name="list-azure-deny-assignments-using-the-rest-api"></a>Azure deny-toewijzingen weer geven met behulp van de REST API
@@ -80,7 +79,7 @@ Als u informatie wilt ophalen over een weiger toewijzing, hebt u het volgende no
 1. Vervang *{filter}* door de voor waarde die u wilt Toep assen om de lijst met geweigerde toewijzingen te filteren.
 
     > [!div class="mx-tableFixed"]
-    > | Filteren | Beschrijving |
+    > | Filteren | Description |
     > | --- | --- |
     > | (geen filter) | Een lijst met alle weigerings toewijzingen op, boven en onder het opgegeven bereik. |
     > | `$filter=atScope()` | Een lijst met weigerings toewijzingen voor het opgegeven bereik en hierboven. Omvat niet de weigerings toewijzingen in subbereiken. |
@@ -102,7 +101,7 @@ Als u informatie wilt ophalen over een weiger toewijzing, hebt u het volgende no
 1. Vervang *{filter}* door de voor waarde die u wilt Toep assen om de lijst met geweigerde toewijzingen te filteren. U moet een filter opgeven.
 
     > [!div class="mx-tableFixed"]
-    > | Filteren | Beschrijving |
+    > | Filteren | Description |
     > | --- | --- |
     > | `$filter=atScope()` | Lijst weigeren alleen toewijzingen voor het hoofd bereik. Omvat niet de weigerings toewijzingen in subbereiken. |
     > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | Weiger toewijzingen met de opgegeven naam. |

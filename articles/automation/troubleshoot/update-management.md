@@ -2,27 +2,23 @@
 title: Problemen met Azure Automation Updatebeheer oplossen
 description: In dit artikel leest u hoe u problemen oplost en oplost met Azure Automation Updatebeheer.
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 03/17/2020
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
-ms.openlocfilehash: 2989d85ddfca036a27ff6b886bd3b13a981c27a3
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.openlocfilehash: 95e3fc12a77124c32e220d700a112f52cbad08fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170253"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801883"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Problemen met Updatebeheer oplossen
 
 In dit artikel worden problemen beschreven die u kunt uitvoeren bij het implementeren van de Updatebeheer-functie op uw computers. Er is een agent probleem oplosser voor de Hybrid Runbook Worker-agent om het onderliggende probleem te bepalen. Zie problemen [met Windows Update agent oplossen](update-agent-issues.md) en problemen [met de Linux-Update agent oplossen](update-agent-issues-linux.md)voor meer informatie over de probleem Oplosser. Zie problemen [met de implementatie van onderdelen oplossen](onboarding.md)voor meer informatie over het implementeren van problemen met functies.
 
 >[!NOTE]
->Als u problemen ondervindt bij het implementeren van Updatebeheer op een VM, controleert u het **Operations Manager** logboek onder **Logboeken voor toepassingen en services** op de lokale computer. Zoek naar gebeurtenissen met gebeurtenis-ID 4502 en gebeurtenis details die bevatten `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` .
+>Als u problemen ondervindt bij het implementeren van Updatebeheer op een Windows-computer, opent u de Windows-Logboeken en raadpleegt u het gebeurtenis logboek van **Operations Manager** onder **Logboeken voor toepassingen en services** op de lokale computer. Zoek naar gebeurtenissen met gebeurtenis-ID 4502 en gebeurtenis details die bevatten `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` .
 
-## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a>Scenario: de fout ' kan de update oplossing niet inschakelen ' wordt weer gegeven
+## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a><a name="failed-to-enable-error"></a>Scenario: de fout ' kan de update oplossing niet inschakelen ' wordt weer gegeven
 
 ### <a name="issue"></a>Probleem
 
@@ -48,9 +44,7 @@ Deze fout kan de volgende oorzaken hebben:
 
 * Ga naar [netwerk configuratie](../automation-hybrid-runbook-worker.md#network-planning) voor meer informatie over welke adressen en poorten moeten worden toegestaan om updatebeheer te kunnen werken.  
 
-* Ga naar [netwerk configuratie](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) voor meer informatie over welke adressen en poorten moeten worden toegestaan om de log Analytics-agent te laten werken.
-
-* Controleren op problemen met de scope configuratie. De [Scope configuratie](../automation-scope-configurations-update-management.md) bepaalt welke machines zijn geconfigureerd voor updatebeheer. Als uw machine wordt weer gegeven in uw werk ruimte, maar niet in de Updatebeheer Portal, moet u de scope configuratie instellen op de doel computers. Zie [computers in de werk ruimte inschakelen](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)voor meer informatie over de scope configuratie.
+* Controleren op problemen met de scope configuratie. De [Scope configuratie](../automation-scope-configurations-update-management.md) bepaalt welke machines zijn geconfigureerd voor updatebeheer. Als uw computer wordt weer gegeven in uw werk ruimte, maar niet in Updatebeheer, moet u de scope configuratie instellen op de doel computers. Zie [computers in de werk ruimte inschakelen](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)voor meer informatie over de scope configuratie.
 
 * Verwijder de configuratie van de werk nemer door de stappen in [de Hybrid Runbook worker verwijderen van een on-premises Windows-computer uit](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) te voeren of [de Hybrid Runbook worker te verwijderen van een on-premises Linux-computer](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker). 
 

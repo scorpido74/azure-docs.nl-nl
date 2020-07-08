@@ -4,10 +4,9 @@ description: In dit artikel leert u de configuratie voor het maken van back-ups 
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.openlocfilehash: 2bb172ca36f3f932fdaaf5b71e8fa183c04d1510
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84194188"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>Back-ups van SQL Server naar Azure maken met behulp van Azure Backup Server
@@ -36,7 +35,7 @@ Als u SQL Server-data bases in azure wilt beveiligen, moet u eerst een back-upbe
 1. Selecteer voor het type beveiligings groep de optie **servers**.
 
     ![Het type server beveiligings groep selecteren](./media/backup-azure-backup-sql/pg-servers.png)
-1. Vouw het SQL Server-exemplaar uit waarvan de data bases waarvan u een back-up wilt maken, zich bevinden. U ziet de gegevens bronnen waarvan een back-up van die server kan worden gemaakt. Vouw **alle SQL-shares** uit en selecteer vervolgens de data bases waarvan u een back-up wilt maken. In dit voor beeld selecteren we Report Server $ MSDPM2012 en Report Server $ MSDPM2012TempDB. Selecteer **Next**.
+1. Vouw het SQL Server-exemplaar uit waarvan de data bases waarvan u een back-up wilt maken, zich bevinden. U ziet de gegevens bronnen waarvan een back-up van die server kan worden gemaakt. Vouw **alle SQL-shares** uit en selecteer vervolgens de data bases waarvan u een back-up wilt maken. In dit voor beeld selecteren we Report Server $ MSDPM2012 en Report Server $ MSDPM2012TempDB. Selecteer **Volgende**.
 
     ![Een SQL Server-Data Base selecteren](./media/backup-azure-backup-sql/pg-databases.png)
 1. Geef de beveiligings groep de naam en selecteer **Ik wil online beveiliging**.
@@ -53,7 +52,7 @@ Als u SQL Server-data bases in azure wilt beveiligen, moet u eerst een back-upbe
    >
    >
 
-1. Selecteer **Next**. MABS toont de totale beschik bare opslag ruimte. Ook wordt het mogelijke schijfruimte gebruik weer gegeven.
+1. Selecteer **Volgende**. MABS toont de totale beschik bare opslag ruimte. Ook wordt het mogelijke schijfruimte gebruik weer gegeven.
 
     ![Schijf toewijzing instellen in MABS](./media/backup-azure-backup-sql/pg-storage.png)
 
@@ -91,7 +90,7 @@ Als u SQL Server-data bases in azure wilt beveiligen, moet u eerst een back-upbe
 
     ![Kies een Bewaar beleid in MABS](./media/backup-azure-backup-sql/pg-retentionschedule.png)
 
-    In dit voorbeeld:
+    In dit voorbeeld geldt het volgende:
 
     * Back-ups worden dagelijks uitgevoerd om 12:00 uur en 8:00 PM. Ze worden gedurende 180 dagen bewaard.
     * De back-up op zaterdag om 12:00 uur wordt gedurende 104 weken bewaard.
@@ -136,7 +135,7 @@ Een beveiligde entiteit, zoals een SQL Server Data Base, herstellen vanuit Azure
 1. Klik met de rechter muisknop op de naam van de data base en selecteer **herstellen**.
 
     ![Een Data Base herstellen vanuit Azure](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-1. DPM toont de details van het herstel punt. Selecteer **Next**. Als u de Data Base wilt overschrijven, selecteert u het herstel type **herstellen naar het oorspronkelijke exemplaar van SQL Server**. Selecteer vervolgens **Volgende**.
+1. DPM toont de details van het herstel punt. Selecteer **Volgende**. Als u de Data Base wilt overschrijven, selecteert u het herstel type **herstellen naar het oorspronkelijke exemplaar van SQL Server**. Selecteer vervolgens **Volgende**.
 
     ![Een Data Base op de oorspronkelijke locatie herstellen](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 

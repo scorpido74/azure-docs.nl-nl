@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 00b23a845002f5a92128917d81fdadf5a647d798
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85253185"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Wat zijn service afhankelijkheden in Azure Active Directory voorwaardelijke toegang? 
@@ -27,7 +26,7 @@ Wanneer u rechtstreeks toegang krijgt tot een site of service, is de impact van 
 > [!TIP]
 > Als u de app [office 365 (preview)](concept-conditional-access-cloud-apps.md#office-365-preview) gebruikt, zijn alle Office-apps gericht op het voor komen van problemen met service afhankelijkheden in de Office-stack.
 
-## <a name="policy-enforcement"></a>Beleidsafdwinging 
+## <a name="policy-enforcement"></a>Afdwingen van beleid 
 
 Als u een service afhankelijkheid hebt geconfigureerd, kan het beleid worden toegepast met behulp van vroegtijdige binding of een te late afhankelijk afdwinging. 
 
@@ -60,7 +59,7 @@ In de onderstaande tabel vindt u aanvullende service afhankelijkheden waaraan de
 | PowerApps           | Microsoft Azure beheer (Portal en API) | Vroeg gebonden |
 |                     | Windows Azure Active Directory              | Vroeg gebonden |
 | Project             | Dynamics CRM                                | Vroeg gebonden |
-| Skype voor Bedrijven  | Exchange                                    | Vroeg gebonden |
+| Skype voor bedrijven  | Exchange                                    | Vroeg gebonden |
 | Visual Studio       | Microsoft Azure beheer (Portal en API) | Vroeg gebonden |
 | Microsoft Forms     | Exchange                                    | Vroeg gebonden |
 |                     | SharePoint                                  | Vroeg gebonden |
