@@ -4,12 +4,11 @@ description: Hierin wordt beschreven hoe u een service implementeert over veel r
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: a91623d22a921b6285723af2b4ca1411b9cf0bab
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.openlocfilehash: 006c123dfbb682ff5c498872d7f717a4a09e0bb5
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677879"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057922"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Veilige implementatie procedures met Azure Deployment Manager (open bare preview) inschakelen
 
@@ -30,7 +29,7 @@ U implementeert de topologie sjabloon voordat u de implementatie sjabloon implem
 
 Aanvullende bronnen:
 
-- De [Naslag informatie voor Azure Deployment Manager rest API](https://docs.microsoft.com/rest/api/deploymentmanager/).
+- De [Naslag informatie voor Azure Deployment Manager rest API](/rest/api/deploymentmanager/).
 - [Zelf studie: Azure Deployment Manager gebruiken met Resource Manager-sjablonen](./deployment-manager-tutorial.md).
 - [Zelf studie: status controle gebruiken in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
 - [Een Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart)-voor beeld.

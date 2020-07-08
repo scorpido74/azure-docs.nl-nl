@@ -14,10 +14,9 @@ ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59502e01a96b603067bd80b92bcf49136f8cef4e
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85339172"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Het rapport AD FS toepassings activiteit (preview) gebruiken voor het migreren van toepassingen naar Azure AD
@@ -74,7 +73,7 @@ Het rapport AD FS toepassings activiteit is beschikbaar in de Azure Portal onder
 
 De volgende tabel bevat alle configuratie tests die worden uitgevoerd op AD FS toepassingen.
 
-|Resultaat  |Geslaagd/waarschuwing/mislukt  |Beschrijving  |
+|Resultaat  |Geslaagd/waarschuwing/mislukt  |Description  |
 |---------|---------|---------|
 |Test-ADFSRPAdditionalAuthenticationRules <br> Er is ten minste één niet-migreerbaar regel gedetecteerd voor AdditionalAuthentication.       | Pass/Warning          | De Relying Party heeft regels om te vragen naar multi-factor Authentication (MFA). Als u wilt overstappen op Azure AD, moet u deze regels vertalen in beleid voor voorwaardelijke toegang. Als u een on-premises MFA gebruikt, raden we u aan om over te stappen op Azure MFA. Meer [informatie over voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> Relying Party heeft AdditionalWSFedEndpoint ingesteld op waar.       | Geslaagd/mislukt          | Met de Relying Party in AD FS kunt u meerdere eind punten voor de WS-inschakel bevestiging toestaan.Op dit moment ondersteunt Azure AD slechts één.Als u een scenario hebt waarbij dit resultaat de migratie blokkeert, [laat het ons dan weten](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |

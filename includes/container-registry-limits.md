@@ -9,10 +9,9 @@ ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 643cf8fd400adf06bf61f070947bd78ba7be50eb
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85242077"
 ---
 | Resource | Basic | Standard | Premium |
@@ -25,11 +24,11 @@ ms.locfileid: "85242077"
 | Down load bandbreedte MBps<sup>2</sup> | 30 | 60 | 100 |
 | Upload bandbreedte MBps<sup>2</sup> | 10 | 20 | 50 |
 | Webhooks | 2 | 10 | 500 |
-| Geo-replicatie | N.v.t. | N.v.t. | [Geboden][geo-replication] |
-| Inhoud vertrouwen | N.v.t. | N.v.t. | [Geboden][content-trust] |
-| Persoonlijke koppeling met persoonlijke eind punten | N.v.t. | N.v.t. | [Geboden][plink] |
+| Geo-replicatie | N.v.t. | N.v.t. | [Ondersteund][geo-replication] |
+| Inhoud vertrouwen | N.v.t. | N.v.t. | [Ondersteund][content-trust] |
+| Persoonlijke koppeling met persoonlijke eind punten | N.v.t. | N.v.t. | [Ondersteund][plink] |
 | Toegang tot de service Endpoint VNet | N.v.t. | N.v.t. | [Preview][vnet] |
-| Door klant beheerde sleutels | N.v.t. | N.v.t. | [Geboden][cmk] |
+| Door klant beheerde sleutels | N.v.t. | N.v.t. | [Ondersteund][cmk] |
 | Machtigingen voor opslag plaatsen-scoped | N.v.t. | N.v.t. | [Preview][token]|
 | &bull;Tokens | N.v.t. | N.v.t. | 20.000 |
 | &bull;Scope toewijzingen | N.v.t. | N.v.t. | 20.000 |

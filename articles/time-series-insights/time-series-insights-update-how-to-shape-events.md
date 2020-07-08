@@ -10,12 +10,11 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 99a2f32c3f76d7fec475c9b299f7208b4db29cfe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fd2c58b07f3be5d5fa6d99d0c8c64906b81e7de4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77650920"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036981"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Vorm gebeurtenissen met Azure Time Series Insights preview
 
@@ -33,7 +32,7 @@ Algemene aanbevolen procedures zijn onder andere:
 Voor de beste query prestaties moet u de volgende vuist regels naleven:
 
 * Geen onnodige eigenschappen verzenden. Time Series Insights voor beeld van facturen per gebruik. Het is het beste om alleen de gegevens op te slaan en te verwerken die u doorzoekt.
-* Exemplaar velden gebruiken voor statische gegevens. Met deze procedure kunt u voor komen dat statische gegevens via het netwerk worden verzonden. Exemplaar velden, een onderdeel van het time series-model, werken als referentie gegevens in de Time Series Insights-service die algemeen beschikbaar is. Lees het [Time Series-model](./time-series-insights-update-tsm.md)voor meer informatie over exemplaar velden.
+* Exemplaar velden gebruiken voor statische gegevens. Met deze procedure kunt u voor komen dat statische gegevens via het netwerk worden verzonden. Exemplaar velden, een onderdeel van het time series-model, werken als referentie gegevens in de Time Series Insights-service die algemeen beschikbaar is. Lees het [Time Series-model](./concepts-model-overview.md)voor meer informatie over exemplaar velden.
 * Dimensie-eigenschappen delen tussen twee of meer gebeurtenissen. Met deze procedure kunt u gegevens efficiënter verzenden via het netwerk.
 * Gebruik geen geneste diepe matrix. Time Series Insights preview ondersteunt Maxi maal twee niveaus van geneste matrices die objecten bevatten. Met Time Series Insights preview worden matrices in berichten samengevoegd in meerdere gebeurtenissen met eigenschaps waarde-paren.
 * Als er slechts enkele maat regelen bestaan voor alle of de meeste gebeurtenissen, is het beter om deze metingen als afzonderlijke eigenschappen binnen hetzelfde object te verzenden. Als u ze afzonderlijk verzendt, vermindert het aantal gebeurtenissen en kunnen query's sneller worden uitgevoerd omdat er minder gebeurtenissen moeten worden verwerkt.
@@ -50,11 +49,11 @@ Tijdens de opname worden nettoladingen die geneste objecten bevatten, afgevlakt 
    },
    ```
 
-   Wordt als `data_flow` volgt: wanneer het is afgevlakt.
+   Wordt als volgt: wanneer het is `data_flow` afgevlakt.
 
 > [!IMPORTANT]
-> * Azure Time Series Insights preview gebruikt onderstrepings tekens (`_`) voor de kolom inlijning.
-> * Let op het verschil van algemene Beschik baarheid,`.`waarbij gebruik wordt gemaakt van peri Oden ().
+> * Azure Time Series Insights preview gebruikt onderstrepings tekens ( `_` ) voor de kolom inlijning.
+> * Let op het verschil van algemene Beschik baarheid, waarbij gebruik wordt gemaakt van peri Oden ( `.` ).
 
 Hieronder vindt u meer complexe scenario's.
 
@@ -95,7 +94,7 @@ Er is één Azure IoT Hub-bericht verzonden waarbij de buitenste matrix een gede
 
 **Takeaways:**
 
-* De JSON van het voor beeld heeft een buitenste matrix die gebruikmaakt van gegevens van een [Time Series-instantie](./time-series-insights-update-tsm.md#time-series-model-instances) om de efficiëntie van het bericht te verhogen. Hoewel time series-exemplaren de meta gegevens van het apparaat niet waarschijnlijk wijzigen, biedt het vaak nuttige eigenschappen voor gegevens analyse.
+* De JSON van het voor beeld heeft een buitenste matrix die gebruikmaakt van gegevens van een [Time Series-instantie](./concepts-model-overview.md#time-series-model-instances) om de efficiëntie van het bericht te verhogen. Hoewel time series-exemplaren de meta gegevens van het apparaat niet waarschijnlijk wijzigen, biedt het vaak nuttige eigenschappen voor gegevens analyse.
 
 * In de JSON worden twee of meer berichten (één van elk apparaat) gecombineerd tot één nettolading die gedurende een bepaalde periode wordt bespaard op band breedte.
 
@@ -106,7 +105,7 @@ Er is één Azure IoT Hub-bericht verzonden waarbij de buitenste matrix een gede
 
 #### <a name="time-series-instance"></a>Time Series-instantie 
 
-Laten we eens kijken hoe u het [Time Series-exemplaar](./time-series-insights-update-tsm.md#time-series-model-instances) kunt gebruiken om uw JSON optimaal te vorm geven. 
+Laten we eens kijken hoe u het [Time Series-exemplaar](./concepts-model-overview.md#time-series-model-instances) kunt gebruiken om uw JSON optimaal te vorm geven. 
 
 > [!NOTE]
 > De onderstaande [Time Series-id's](./time-series-insights-update-how-to-id.md) zijn *deviceIds*.
@@ -180,7 +179,7 @@ Bekijk de volgende JSON:
 }
 ```
 
-In het bovenstaande voor beeld zou de afgevlakt `data["flow"]` eigenschap een naam conflict met de `data_flow` eigenschap presen teren.
+In het bovenstaande voor beeld zou de afgevlakt `data["flow"]` eigenschap een naam conflict met de eigenschap presen teren `data_flow` .
 
 In dit geval zou de *meest recente* eigenschaps waarde het vorige overschrijven. 
 

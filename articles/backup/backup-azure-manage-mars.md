@@ -4,12 +4,11 @@ description: Meer informatie over het beheren en bewaken van back-ups van agents
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 0afe83edc638cba4cd14cc27b84a98937175fc86
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.openlocfilehash: 2cd536e191702e2619030c2e0fa06262d2e004ee
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248597"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057820"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Back-ups van de agent voor Microsoft Azure Recovery Services (MARS) beheren met behulp van de Azure Backup-Service
 
@@ -106,7 +105,7 @@ Er zijn twee manieren om het maken van back-ups van bestanden en mappen te stopp
 1. Selecteer op de pagina **beleids item selecteren** **de optie een back-upschema voor uw bestanden en mappen wijzigen** en klik op **volgende**.
 
     ![Een geplande back-up wijzigen of stoppen.](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
-1. Op de pagina **een geplande back-up wijzigen of stoppen** selecteert **u stoppen met het gebruik van dit back-upschema, maar behoud de opgeslagen back-ups totdat een schema opnieuw wordt geactiveerd**. Selecteer vervolgens **volgende**.
+1. Op de pagina **een geplande back-up wijzigen of stoppen** selecteert **u stoppen met het gebruik van dit back-upschema, maar behoud de opgeslagen back-ups totdat een schema opnieuw wordt geactiveerd**. Selecteer vervolgens **Volgende**.
 
     ![Een geplande back-up wijzigen of stoppen.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
 1. Bekijk de informatie in de **geplande back-up onderbreken** en klik op **volt ooien**.
@@ -117,7 +116,7 @@ Er zijn twee manieren om het maken van back-ups van bestanden en mappen te stopp
 ### <a name="stop-protection-and-delete-backup-data"></a>Beveiliging stoppen en back-upgegevens verwijderen
 
 1. Open de MARS-beheer console, ga naar het deel venster **acties** en selecteer **back-up plannen**.
-2. Op de pagina **een geplande back-up wijzigen of stoppen** selecteert **u stoppen met het gebruik van dit back-upschema en alle opgeslagen back-ups verwijderen**. Selecteer vervolgens **volgende**.
+2. Op de pagina **een geplande back-up wijzigen of stoppen** selecteert **u stoppen met het gebruik van dit back-upschema en alle opgeslagen back-ups verwijderen**. Selecteer vervolgens **Volgende**.
 
     ![Een geplande back-up wijzigen of stoppen.](./media/backup-azure-delete-vault/modify-schedule-backup.png)
 
@@ -167,6 +166,27 @@ Een wachtwoordzin wordt gebruikt voor het versleutelen en ontsleutelen van gegev
 
     ![Wachtwoordzin genereren.](./media/backup-azure-manage-mars/passphrase2.png)
 - Zorg ervoor dat de wachtwoordzin veilig wordt opgeslagen op een andere locatie (anders dan de bron machine), bij voor keur in het Azure Key Vault. Houd alle wachtwoordzin bij als er een back-up van meerdere machines met de MARS-agents wordt gemaakt.
+
+## <a name="managing-backup-data-for-unavailable-machines"></a>Back-upgegevens beheren voor niet-beschik bare computers
+
+In deze sectie wordt een scenario beschreven waarin uw bron machine die is beveiligd met MARS, niet meer beschikbaar is, omdat deze is verwijderd, beschadigd, geïnfecteerd met malware/Ransomware of uit bedrijf genomen.
+
+Voor deze computers zorgt de Azure Backup-service ervoor dat het laatste herstel punt niet verloopt (dat wil zeggen, niet wordt weggehaald) volgens de Bewaar regels die zijn opgegeven in het back-upbeleid. Daarom kunt u de computer veilig herstellen.  Houd rekening met de volgende scenario's die u kunt uitvoeren op de gegevens waarvan een back-up is gemaakt:
+
+### <a name="scenario-1-the-source-machine-is-unavailable-and-you-no-longer-need-to-retain-backup-data"></a>Scenario 1: de bron machine is niet beschikbaar en u hoeft geen back-upgegevens meer te bewaren
+
+- U kunt de gegevens waarvan een back-up is gemaakt, verwijderen uit de Azure Portal met behulp van de stappen die in [dit artikel](backup-azure-delete-vault.md#delete-protected-items-on-premises)worden beschreven.
+
+### <a name="scenario-2-the-source-machine-is-unavailable-and-you-need-to-retain-backup-data"></a>Scenario 2: de bron machine is niet beschikbaar en u moet de back-upgegevens behouden
+
+Het beheer van het back-upbeleid voor MARS wordt uitgevoerd via de MARS-console en niet via de portal. Als u de Bewaar instellingen voor bestaande herstel punten wilt uitbreiden voordat ze verlopen, moet u de machine herstellen, de MARS-console installeren en het beleid uitbreiden.
+
+- Voer de volgende stappen uit om de machine te herstellen:
+  - [De VM herstellen naar een andere doel computer](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
+  - De doel computer opnieuw maken met dezelfde hostnaam als de bron machine
+  - De agent installeren en opnieuw registreren bij dezelfde kluis en met dezelfde wachtwoordzin
+  - Start de MARS-client om de Bewaar periode uit te breiden volgens uw vereisten
+- De zojuist herstelde computer die wordt beveiligd met MARS, blijft back-ups maken.  
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -3,12 +3,11 @@ title: Resources verplaatsen naar een nieuw abonnement of een nieuwe resource gr
 description: Gebruik Azure Resource Manager om resources te verplaatsen naar een nieuwe resource groep of een nieuw abonnement.
 ms.topic: conceptual
 ms.date: 03/02/2020
-ms.openlocfilehash: ffb5f8be81d3628084d127db404ab994d4d5b938
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 036def01ef8ae5732d372dd995ad8f425c36cad9
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80631508"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057837"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement
 
@@ -53,7 +52,7 @@ Voordat u een resource verplaatst, moeten er enkele belangrijke stappen worden u
 
    Als de Tenant-Id's voor de bron-en doel abonnementen niet hetzelfde zijn, gebruikt u de volgende methoden voor het afstemmen van de Tenant-Id's:
 
-   * [Eigendom van een Azure-abonnement naar een ander account overdragen](../../billing/billing-subscription-transfer.md)
+   * [Eigendom van een Azure-abonnement naar een ander account overdragen](../../cost-management-billing/manage/billing-subscription-transfer.md)
    * [Een Azure-abonnement koppelen of toevoegen aan Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 1. Het doelabonnement moet zijn geregistreerd voor de resourceprovider van de resource die wordt verplaatst. Als dat niet het geval is, wordt er een fout bericht weer gegeven met de mede deling dat het **abonnement niet is geregistreerd voor een resource type**. Mogelijk ziet u deze fout wanneer u een resource verplaatst naar een nieuw abonnement, maar dat abonnement nooit is gebruikt voor dat resource type.

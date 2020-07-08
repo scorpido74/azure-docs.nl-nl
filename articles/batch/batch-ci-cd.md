@@ -5,12 +5,11 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: 72f976071a5fc65c8e96f6b3cd5c0094785e287b
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.openlocfilehash: d6b68a8448d8b644500b62e54ab763838d707c66
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726839"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956658"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Gebruik Azure-pijp lijnen om HPC-oplossingen te bouwen en te implementeren
 
@@ -28,8 +27,8 @@ In dit voor beeld maken we een pijp lijn voor Build en release om een Azure Batc
 
 Als u de stappen in dit artikel wilt volgen, hebt u een Azure DevOps-organisatie en een team project nodig.
 
-* [Een Azure DevOps-organisatie maken](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops)
-* [Een project maken in azure DevOps](https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops)
+* [Een Azure DevOps-organisatie maken](/azure/devops/organizations/accounts/create-organization?view=azure-devops)
+* [Een project maken in azure DevOps](/azure/devops/organizations/projects/create-project?view=azure-devops)
 
 ### <a name="source-control-for-your-environment"></a>Broncode beheer voor uw omgeving
 
@@ -48,7 +47,7 @@ De code basis structuur die in dit voor beeld wordt gebruikt, lijkt op het volge
 
 In deze sectie wordt ervan uitgegaan dat u bekend bent met versie beheer en het ontwerpen van Resource Manager-sjablonen. Als u niet bekend bent met deze concepten, raadpleegt u de volgende pagina's voor meer informatie.
 
-* [Wat is broncode beheer?](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)
+* [Wat is broncode beheer?](/azure/devops/user-guide/source-control?view=azure-devops)
 * [Informatie over de structuur en de syntaxis van Azure Resource Manager-sjablonen](../azure-resource-manager/templates/template-syntax.md)
 
 #### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
@@ -58,11 +57,11 @@ Dit voor beeld maakt gebruik van meerdere Resource Manager-sjablonen voor het im
 * De onderliggende sjablonen voor de mogelijkheid van een afzonderlijke eenheid kunnen worden getest.
 * De onderliggende sjablonen voor mogelijkheden kunnen worden gedefinieerd als een standaard binnen een organisatie en moeten opnieuw worden gebruikt in meerdere oplossingen.
 
-Voor dit voor beeld is er een end-to-end oplossings sjabloon (implementatie. json) waarmee drie sjablonen worden geïmplementeerd. De onderliggende sjablonen zijn mogelijkheden sjablonen, die verantwoordelijk zijn voor het implementeren van een specifiek aspect van de oplossing.
+Voor dit voor beeld is er een end-to-end oplossings sjabloon (deployment.jsaan) die drie sjablonen implementeert. De onderliggende sjablonen zijn mogelijkheden sjablonen, die verantwoordelijk zijn voor het implementeren van een specifiek aspect van de oplossing.
 
 ![Voor beeld van een gekoppelde sjabloon structuur met behulp van Azure Resource Manager sjablonen](media/batch-ci-cd/ARMTemplateHierarchy.png)
 
-De eerste sjabloon die we gaan bekijken, is voor een Azure Storage-account. Onze oplossing vereist een opslag account om de toepassing te implementeren in het batch-account. Het is belang rijk dat u de [Naslag Gids voor de Resource Manager-sjabloon voor micro soft. Storage-Resource typen](https://docs.microsoft.com/azure/templates/microsoft.storage/allversions) maakt bij het maken van Resource Manager-sjablonen voor opslag accounts.
+De eerste sjabloon die we gaan bekijken, is voor een Azure Storage-account. Onze oplossing vereist een opslag account om de toepassing te implementeren in het batch-account. Het is belang rijk dat u de [Naslag Gids voor de Resource Manager-sjabloon voor micro soft. Storage-Resource typen](/azure/templates/microsoft.storage/allversions) maakt bij het maken van Resource Manager-sjablonen voor opslag accounts.
 
 ```json
 {
@@ -102,7 +101,7 @@ De eerste sjabloon die we gaan bekijken, is voor een Azure Storage-account. Onze
 }
 ```
 
-Vervolgens kijken we naar de sjabloon voor het Azure Batch-account. Het Azure Batch-account fungeert als een platform voor het uitvoeren van talloze toepassingen in Pools (groepen van machines). Het is belang rijk dat u de [Naslag Gids voor de Resource Manager-sjabloon voor micro soft. batch-resource typen](https://docs.microsoft.com/azure/templates/microsoft.batch/allversions) maakt bij het maken van Resource Manager-sjablonen voor batch-accounts.
+Vervolgens kijken we naar de sjabloon voor het Azure Batch-account. Het Azure Batch-account fungeert als een platform voor het uitvoeren van talloze toepassingen in Pools (groepen van machines). Het is belang rijk dat u de [naslag handleiding voor Resource Manager-sjablonen voor Microsoft.BatCH-resource typen](/azure/templates/microsoft.batch/allversions) bij het maken van Resource Manager-sjablonen voor batch-accounts.
 
 ```json
 {
@@ -141,7 +140,7 @@ Vervolgens kijken we naar de sjabloon voor het Azure Batch-account. Het Azure Ba
 }
 ```
 
-De volgende sjabloon toont een voor beeld van het maken van een Azure Batch groep (de back-endservers voor het verwerken van onze toepassingen). Het is belang rijk dat u de [Naslag Gids voor de Resource Manager-sjabloon voor de resource typen micro soft. batch](https://docs.microsoft.com/azure/templates/microsoft.batch/allversions) maakt bij het maken van Resource Manager-sjablonen voor batch-account groepen.
+De volgende sjabloon toont een voor beeld van het maken van een Azure Batch groep (de back-endservers voor het verwerken van onze toepassingen). Het is belang rijk dat u de [naslag handleiding voor Resource Manager-sjablonen voor Microsoft.BatCH-resource typen](/azure/templates/microsoft.batch/allversions) bij het maken van Resource Manager-sjablonen voor batch-account groepen.
 
 ```json
 {
@@ -309,7 +308,7 @@ Nu de bron code is ingesteld, kunnen we beginnen met de eerste build.
 
 ## <a name="continuous-integration"></a>Continue integratie
 
-[Azure-pijp lijnen](https://docs.microsoft.com/azure/devops/pipelines/get-started/?view=azure-devops), binnen Azure DevOps Services, helpt u bij het implementeren van een pijp lijn voor bouwen, testen en implementatie voor uw toepassingen.
+[Azure-pijp lijnen](/azure/devops/pipelines/get-started/?view=azure-devops), binnen Azure DevOps Services, helpt u bij het implementeren van een pijp lijn voor bouwen, testen en implementatie voor uw toepassingen.
 
 In deze fase van uw pijp lijn worden tests meestal uitgevoerd om code te valideren en de juiste onderdelen van de software te bouwen. Het aantal en de typen tests, en eventuele extra taken die u uitvoert, zijn afhankelijk van uw bredere build-en release strategie.
 
@@ -323,9 +322,9 @@ In dit voor beeld wordt de focus gelegd op de map **HPC-Application** . De map *
 
 1. U hebt twee opties voor het maken van een build-pijp lijn:
 
-    a. [Visual Designer gebruiken](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=azure-devops&tabs=new-nav). Als u dit wilt gebruiken, klikt u op de Visual Designer gebruiken op de pagina **nieuwe pijp lijn** .
+    a. [Visual Designer gebruiken](/azure/devops/pipelines/get-started-designer?view=azure-devops&tabs=new-nav). Als u dit wilt gebruiken, klikt u op de Visual Designer gebruiken op de pagina **nieuwe pijp lijn** .
 
-    b. [Yaml-builds gebruiken](https://docs.microsoft.com/azure/devops/pipelines/get-started-yaml?view=azure-devops). U kunt een nieuwe YAML-pijp lijn maken door te klikken op de optie Azure opslag plaatsen of GitHub op de pagina nieuwe pijp lijn. U kunt het voor beeld hieronder ook opslaan in het bron beheer en verwijzen naar een bestaand YAML-bestand door te klikken op Visual Designer en vervolgens de YAML-sjabloon te gebruiken.
+    b. [Yaml-builds gebruiken](/azure/devops/pipelines/get-started-yaml?view=azure-devops). U kunt een nieuwe YAML-pijp lijn maken door te klikken op de optie Azure opslag plaatsen of GitHub op de pagina nieuwe pijp lijn. U kunt het voor beeld hieronder ook opslaan in het bron beheer en verwijzen naar een bestaand YAML-bestand door te klikken op Visual Designer en vervolgens de YAML-sjabloon te gebruiken.
 
     ```yml
     # To publish an application into Azure Batch, we need to
@@ -357,11 +356,11 @@ In dit voor beeld wordt de focus gelegd op de map **HPC-Application** . De map *
     ![Live uitvoer van uw build weer geven](media/batch-ci-cd/Build-1.jpg)
 
 > [!NOTE]
-> Als u een-client toepassing gebruikt om uw HPC-batch toepassing uit te voeren, moet u een afzonderlijke build-definitie maken voor die toepassing. U kunt een aantal hand leidingen vinden in de documentatie over [Azure-pijp lijnen](https://docs.microsoft.com/azure/devops/pipelines/get-started/index?view=azure-devops) .
+> Als u een-client toepassing gebruikt om uw HPC-batch toepassing uit te voeren, moet u een afzonderlijke build-definitie maken voor die toepassing. U kunt een aantal hand leidingen vinden in de documentatie over [Azure-pijp lijnen](/azure/devops/pipelines/get-started/index?view=azure-devops) .
 
 ## <a name="continuous-deployment"></a>Doorlopende implementatie
 
-Azure-pijp lijnen worden ook gebruikt voor het implementeren van uw toepassing en de onderliggende infra structuur. [Release pijplijnen](https://docs.microsoft.com/azure/devops/pipelines/release) is het onderdeel dat doorlopende implementatie mogelijk maakt en uw release proces automatiseert.
+Azure-pijp lijnen worden ook gebruikt voor het implementeren van uw toepassing en de onderliggende infra structuur. [Release pijplijnen](/azure/devops/pipelines/release) is het onderdeel dat doorlopende implementatie mogelijk maakt en uw release proces automatiseert.
 
 ### <a name="deploying-your-application-and-underlying-infrastructure"></a>Uw toepassing en de onderliggende infra structuur implementeren
 
@@ -416,7 +415,7 @@ Er zijn een aantal stappen voor het implementeren van de-infra structuur. Omdat 
     * **Actie**: resource groep maken of bijwerken
     * **Resource groep**: $ (resourceGroupName)
     * **Locatie**: $ (locatie)
-    * **Sjabloon**: $ (System. ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/arm-templates/storageAccount.json
+    * **Sjabloon**: $ (System. ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/arm-templates/storageAccount.jsop
     * **Sjabloon parameters negeren**:-AccountName $ (storageAccountName)
 
 1. Upload de artefacten van het bron beheer naar het opslag account. Er is een Azure pipeline-taak om dit uit te voeren. Als onderdeel van deze taak kunnen de URL van de opslag account container en het SAS-token worden gegenereerd naar een variabele in azure-pijp lijnen. Dit betekent dat deze tijdens deze agent fase opnieuw kan worden gebruikt.
@@ -439,7 +438,7 @@ Er zijn een aantal stappen voor het implementeren van de-infra structuur. Omdat 
     * **Actie**: resource groep maken of bijwerken
     * **Resource groep**: $ (resourceGroupName)
     * **Locatie**: $ (locatie)
-    * **Sjabloon**: $ (System. ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/arm-templates/Deployment.json
+    * **Sjabloon**: $ (System. ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/arm-templates/deployment.jsop
     * **Sjabloon parameters overschrijven**:```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
 
 Een veelvoorkomende procedure is het gebruik van Azure Key Vault taken. Als voor de Service-Principal (verbinding met uw Azure-abonnement) een geschikt toegangs beleid is ingesteld, kunnen er geheimen van een Azure Key Vault worden gedownload en als variabelen worden gebruikt in uw pijp lijn. De naam van het geheim wordt ingesteld met de bijbehorende waarde. In de release definitie kan bijvoorbeeld naar een geheim van sshPassword worden verwezen met $ (sshPassword).

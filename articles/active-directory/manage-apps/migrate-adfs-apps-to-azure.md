@@ -14,12 +14,11 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03fe49456ac49e0e81c108198584a2c4d8eab884
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.openlocfilehash: 33b67c836be3395061e33b5988a4bb06fa5ee20f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763224"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608548"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Toepassings verificatie van Active Directory Federation Services naar Azure Active Directory verplaatsen
 
@@ -28,7 +27,7 @@ ms.locfileid: "84763224"
 > [!NOTE]
 > In dit artikel wordt gekeken naar het verplaatsen van toepassings verificatie van on-premises Active Directory en Active Directory Federation Services naar Azure AD. Raadpleeg het technisch document [toepassings verificatie migreren naar Azure AD](https://aka.ms/migrateapps/whitepaper) voor een overzicht van het plannen van deze verhuizing. In het technisch document wordt uitgelegd hoe u de migratie, het testen en inzichten kunt plannen.
 
-## <a name="introduction"></a>Introductie
+## <a name="introduction"></a>Inleiding
 
 Als u een on-premises map hebt die gebruikers accounts bevat, hebt u waarschijnlijk veel toepassingen die gebruikers verifiëren. Elk van deze apps is geconfigureerd voor gebruikers om toegang te krijgen tot het gebruik van hun identiteit. 
 
@@ -139,7 +138,7 @@ Voor problemen met het voorbereiden van uw SaaS-apps kunt u contact opnemen met 
 
 Apps die u vandaag eenvoudig kunt verplaatsen, zijn SAML 2,0-apps die gebruikmaken van de standaardset configuratie-elementen en claims:
 
-* User principal name
+* User Principal Name
 
 * E-mailadres
 
@@ -398,7 +397,7 @@ Als u ingebouwde beleids regels wilt implementeren in azure AD, kunt u een [Nieu
 In deze tabel hebben we een aantal nuttige vergunningen en uitzonde ringen weer gegeven, en hoe deze worden toegewezen aan Azure AD. 
 
 
-| | Hoe kan ik de optie toestaan in azure AD configureren?| Hoe kunt u de optie behalve in azure AD configureren? |
+| Optie | Hoe kan ik de optie toestaan in azure AD configureren?| Hoe kunt u de optie behalve in azure AD configureren? |
 | - | - | - |
 | Van specifieke netwerk| Wordt toegewezen aan een [benoemde locatie](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations) in azure AD| Gebruik de optie **uitsluiten** voor [vertrouwde locaties](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition) |
 | Van specifieke groepen| [Een toewijzing van een gebruiker of groep instellen](https://docs.microsoft.com/azure/active-directory/manage-apps/assign-user-or-group-access-portal)| Gebruik de optie **uitsluiten** in gebruikers en groepen |
@@ -463,7 +462,7 @@ Afhankelijk van hoe u uw app configureert, controleert u of SSO goed werkt.
 ‎ |
 | Eenmalige aanmelding op basis van wacht woorden| Down load en installeer de [MyApps Secure Sign](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [in extension](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction). Deze uitbrei ding helpt u bij het starten van de Cloud-apps van uw organisatie waarvoor u een SSO-proces moet gebruiken.  
 ‎ |
-| Toepassingsproxy| Zorg ervoor dat uw connector wordt uitgevoerd en aan uw toepassing is toegewezen. Ga naar de [probleemoplossings gids](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot) [ ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot)voor toepassings proxy voor verdere ondersteuning.  
+| Toepassingsproxy| Zorg ervoor dat uw connector wordt uitgevoerd en aan uw toepassing is toegewezen. Ga naar de [probleemoplossings gids voor toepassings proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot) voor verdere ondersteuning.  
 ‎ |
 
 > [!NOTE]

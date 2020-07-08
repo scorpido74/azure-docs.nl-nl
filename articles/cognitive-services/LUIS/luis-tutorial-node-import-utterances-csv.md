@@ -1,5 +1,5 @@
 ---
-title: Uitingen importeren met behulp van node. js-LUIS
+title: Uitingen importeren met behulp van Node.js-LUIS
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over het maken van een LUIS-app via een programma vanuit bestaande gegevens in CSV-indeling met behulp van de LUIS authoring API.
 services: cognitive-services
@@ -11,14 +11,13 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 7b9646f2bab4c17449c6683ae7924af87b184167
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.openlocfilehash: 69eb6c5e5d0139049e252b0a22fefad747429068
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340178"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057735"
 ---
-# <a name="build-a-luis-app-programmatically-using-nodejs"></a>Een LUIS-app bouwen met behulp van node. js
+# <a name="build-a-luis-app-programmatically-using-nodejs"></a>Een LUIS-app bouwen via een programma met Node.js
 
 LUIS biedt een programmatische API die alles doet wat de [Luis](luis-reference-regions.md) -website doet. Dit kan tijd besparen wanneer u al bestaande gegevens hebt en u kunt sneller een LUIS-app maken dan door hand matig gegevens in te voeren.
 
@@ -26,10 +25,10 @@ LUIS biedt een programmatische API die alles doet wat de [Luis](luis-reference-r
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Meld u aan bij de [Luis](luis-reference-regions.md) -website en zoek uw [ontwerp sleutel](luis-concept-keys.md#authoring-key) in de account instellingen. U gebruikt deze sleutel om de ontwerp-Api's aan te roepen.
+* Meld u aan bij de [Luis](luis-reference-regions.md) -website en zoek uw [ontwerp sleutel](luis-how-to-azure-subscription.md#authoring-key) in de account instellingen. U gebruikt deze sleutel om de ontwerp-Api's aan te roepen.
 * Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 * Dit artikel begint met een CSV voor een hypothetische logboek bestanden van gebruikers aanvragen van een bedrijf. Down load deze [hier](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv).
-* Installeer de meest recente node. js met NPM. U kunt het [hier](https://nodejs.org/en/download/) downloaden.
+* Installeer de nieuwste Node.js met NPM. U kunt het [hier](https://nodejs.org/en/download/) downloaden.
 * **[Aanbevolen]** Visual Studio [code voor IntelliSense](https://code.visualstudio.com/) en fout opsporing kunt u deze gratis downloaden.
 
 Alle code in dit artikel is beschikbaar in de [github-opslag plaats Azure-samples language Understanding](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv).
@@ -118,17 +117,17 @@ Zodra de entiteiten en intenties zijn gedefinieerd in de LUIS-app, kunt u de uit
 ## <a name="run-the-code"></a>De code uitvoeren
 
 
-### <a name="install-nodejs-dependencies"></a>Afhankelijkheden van node. js installeren
-Installeer de node. js-afhankelijkheden vanuit NPM op de Terminal/opdracht regel.
+### <a name="install-nodejs-dependencies"></a>Node.js afhankelijkheden installeren
+Installeer de Node.js afhankelijkheden van NPM op de Terminal/opdracht regel.
 
 ```console
 > npm install
 ```
 
 ### <a name="change-configuration-settings"></a>Configuratie-instellingen wijzigen
-Als u deze toepassing wilt gebruiken, moet u de waarden in het bestand index. js wijzigen in uw eigen eindpunt sleutel en geeft u de naam op die u wilt voor de app. U kunt ook de cultuur van de app instellen of het versie nummer wijzigen.
+Als u deze toepassing wilt gebruiken, moet u de waarden in het index.js-bestand wijzigen in uw eigen eindpunt sleutel en geeft u de naam op die u wilt voor de app. U kunt ook de cultuur van de app instellen of het versie nummer wijzigen.
 
-Open het bestand index. js en wijzig deze waarden boven aan het bestand.
+Open het index.js-bestand en wijzig deze waarden boven aan het bestand.
 
 
 ```javascript
@@ -140,7 +139,7 @@ const LUIS_versionId = "0.1";
 ```
 
 ### <a name="run-the-script"></a>Het script uitvoeren
-Voer het script uit vanaf een Terminal/opdracht regel met behulp van node. js.
+Voer het script uit vanaf een Terminal/opdracht regel met Node.js.
 
 ```console
 > node index.js

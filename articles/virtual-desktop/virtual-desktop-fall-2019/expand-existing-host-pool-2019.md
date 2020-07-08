@@ -9,10 +9,9 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 70ae4a014768976c7dcf81ffadf1066027fa06ad
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85214278"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Een bestaande hostgroep uitbreiden met nieuwe sessie-hosts
@@ -49,7 +48,7 @@ Als u al een hostgroep en host-Vm's hebt gemaakt met behulp van de [Azure Market
 
 U kunt als volgt de Azure Resource Manager-sjabloon opnieuw implementeren om een hostgroep uit te breiden:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Zoek in de zoek balk aan de bovenkant van de Azure Portal naar **resource groepen** en selecteer het item onder **Services**.
 3. Zoek en selecteer de resource groep die u hebt gemaakt tijdens het maken van de hostgroep.
 4. Selecteer **implementaties**in het deel venster aan de linkerkant van de browser.

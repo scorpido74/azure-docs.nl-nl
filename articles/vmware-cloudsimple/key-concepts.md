@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 410215550f728d6b11b02b3ef108d429481e42a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81869033"
 ---
 # <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>Belangrijkste concepten voor het beheer van Azure VMware-oplossingen op CloudSimple
@@ -51,7 +50,7 @@ De CloudSimple-service biedt een netwerk per regio waar uw CloudSimple-service w
 * [VLAN's en subnetten](cloudsimple-vlans-subnets.md)
 * [Firewalltabellen](cloudsimple-firewall-tables.md)
 * [VPN-gateways](cloudsimple-vpn-gateways.md)
-* [Openbaar IP-adres](cloudsimple-public-ip-address.md)
+* [Openbare IP](cloudsimple-public-ip-address.md)
 * [Azure-netwerkverbinding](cloudsimple-azure-network-connection.md)
 
 ## <a name="cloudsimple-virtual-machine"></a>Virtuele machine CloudSimple

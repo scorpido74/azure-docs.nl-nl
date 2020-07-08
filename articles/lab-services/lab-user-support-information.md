@@ -4,10 +4,9 @@ description: In dit artikel wordt uitgelegd hoe een test gebruiker of docenten o
 ms.date: 06/26/2020
 ms.topic: how-to
 ms.openlocfilehash: 8d0c8a3ad8ba92e606f19480bdb36483f377fa04
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85443499"
 ---
 # <a name="view-support-information-lab-user-in-azure-lab-services"></a>Ondersteunings informatie (Lab-gebruiker in Azure Lab Services) weer geven

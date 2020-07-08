@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
 ms.openlocfilehash: 2e84d2f7c1a45f1ef18e5dc32b58d75bb17e2516
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85213751"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Uitzonde ringen en fout codes voor de ontwerp functie (preview-versie)
@@ -68,7 +67,7 @@ Hieronder vindt u fout codes van de modules in de ontwerp functie.
 
  Deze fout wordt weer gegeven in Azure Machine Learning als invoer of para meters voor een module null of leeg zijn.  Deze fout kan optreden als u bijvoorbeeld geen waarde voor een para meter hebt getypt. Dit kan ook gebeuren als u een gegevensset hebt gekozen met ontbrekende waarden of een lege gegevensset.  
 
-**Opgelost**
+**Oplossing:**
 
 + Open de module die de uitzonde ring heeft veroorzaakt en controleer of alle invoer waarden zijn opgegeven. Zorg ervoor dat alle vereiste invoer waarden zijn opgegeven. 
 + Zorg ervoor dat de gegevens die worden geladen vanuit Azure Storage toegankelijk zijn en dat de account naam of-sleutel niet is gewijzigd.  
@@ -131,7 +130,7 @@ Hieronder vindt u fout codes van de modules in de ontwerp functie.
 
  Deze fout kan ook worden weer gegeven als u twee gegevens sets opgeeft die op een of andere manier moeten overeenkomen. Als u bijvoorbeeld de naam van kolommen wijzigt en de kolommen op index opgeeft, moet het aantal namen dat u opgeeft overeenkomen met het aantal kolom indexen. Een ander voor beeld is mogelijk een reken kundige bewerking die gebruikmaakt van twee kolommen, waarbij de kolommen hetzelfde aantal rijen moeten bevatten. 
 
-**Opgelost**
+**Oplossing:**
 
  + Open de betreffende module en controleer de instellingen van de numerieke eigenschappen.
  + Zorg ervoor dat alle parameter waarden binnen het ondersteunde bereik van waarden voor die eigenschap vallen.
@@ -178,7 +177,7 @@ Deze fout treedt op in Azure Machine Learning Designer wanneer u para meters opg
  + U hebt niet volledig het bestandspad opgegeven (pad naar de blob)
    
 
-**Opgelost**
+**Oplossing:**
 
 Dergelijke problemen treden vaak op wanneer u de account naam, het wacht woord of het pad van de container hand matig wilt invoeren. U wordt aangeraden de nieuwe wizard te gebruiken voor de module [gegevens importeren](import-data.md) , waarmee u namen kunt opzoeken en controleren.
 
@@ -245,7 +244,7 @@ Als het volledige pad naar een blob is opgegeven, controleert u of het pad is op
 
  Deze fout treedt op wanneer een getraind model niet compatibel is met de verbonden Score-module. <!--For example, connecting the output of [Train Matchbox Recommender](train-matchbox-recommender.md) to [Score Model](score-model.md) (instead of [Score Matchbox Recommender](score-matchbox-recommender.md)) will generate this error when the pipeline is run.  -->
 
-**Opgelost**
+**Oplossing:**
 
 Bepaal het type leerer dat wordt geproduceerd door de trainings module en bepaal de Score module die geschikt is voor de kenniser. 
 
@@ -280,7 +279,7 @@ Als het model is getraind met een van de gespecialiseerde trainings modules, kop
 
  Deze fout treedt op wanneer een kolom te veel unieke waarden bevat.  U ziet deze fout bijvoorbeeld als u opgeeft dat een kolom moet worden verwerkt als categorische-gegevens, maar er zijn te veel unieke waarden in de kolom om te voor komen dat de verwerking is voltooid. Deze fout kan ook worden weer geven als het aantal unieke waarden in twee invoer niet overeenkomt.   
 
-**Opgelost**
+**Oplossing:**
 
 Open de module die de fout heeft gegenereerd en Identificeer de kolommen die als invoer worden gebruikt. Voor sommige modules kunt u met de rechter muisknop op de gegevensset-invoer klikken en **visualiseren** selecteren om statistieken op te halen voor afzonderlijke kolommen, inclusief het aantal unieke waarden en de distributie.
 
@@ -332,7 +331,7 @@ Voor kolommen die u wilt gebruiken voor groepering of categorisatie, neemt u sta
 
  U kunt deze fout bijvoorbeeld ontvangen in Azure Machine Learning als uw kolom selectie een kolom bevat met een gegevens type dat niet kan worden verwerkt door de module, zoals een teken reeks kolom voor een wiskundige bewerking, of een score kolom waarin een categorische-functie kolom is vereist.  
 
-**Opgelost**
+**Oplossing:**
  1. Bepaal de kolom waarin het probleem zich voordoet.
  2. Bekijk de vereisten van de module.
  3. Wijzig de kolom zodat deze voldoet aan de vereisten. U moet mogelijk een aantal van de volgende modules gebruiken om wijzigingen aan te brengen, afhankelijk van de kolom en de conversie die u probeert uit te voeren:
@@ -418,7 +417,7 @@ Voor kolommen die u wilt gebruiken voor groepering of categorisatie, neemt u sta
 
  Deze fout wordt weer gegeven in Azure Machine Learning wanneer er onvoldoende rijen in de gegevensset zijn om de opgegeven bewerking uit te voeren. U kunt deze fout bijvoorbeeld zien als de gegevensset leeg is of als u een bewerking probeert uit te voeren waarvoor een minimum aantal rijen moet worden opgegeven. Deze bewerkingen kunnen onder meer (maar niet beperkt tot) groeperingen of classificatie zijn gebaseerd op statistische methoden, bepaalde soorten binning en leren met aantallen.  
 
-**Opgelost**
+**Oplossing:**
 
  + Open de module die de fout heeft geretourneerd en controleer de invoer-gegevensset en module-eigenschappen. 
  + Controleer of de ingevoerde gegevensset niet leeg is en of er voldoende rijen met gegevens zijn om te voldoen aan de vereisten die in de Help van module zijn beschreven.  
@@ -488,7 +487,7 @@ Uitzonde ring treedt op als DataSet geen kolom Label bevat.
 
 Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar niet correct is gedetecteerd door Azure Machine Learning.
 
-**Opgelost**
+**Oplossing:**
 
 + Open de module die de fout heeft gegenereerd en controleer of er een label kolom aanwezig is. De naam of het gegevens type van de kolom is niet van belang, op voor waarde dat de kolom een enkel resultaat (of een afhankelijke variabele) bevat die u wilt voors pellen. Als u niet zeker weet welke kolom het label heeft, zoekt u naar een algemene naam, bijvoorbeeld *klasse* of *doel*. 
 +  Als de gegevensset geen kolom Label bevat, is het mogelijk dat de kolom Label expliciet of per ongeluk een upstream heeft verwijderd. Het kan ook zijn dat de gegevensset niet de uitvoer van een upstream-Score module is.
@@ -658,7 +657,7 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
 
  Deze fout in Azure Machine Learning treedt op wanneer u een aanbevelings model wilt gebruiken om te scoren, maar er geen functie Vector kan worden gevonden.  
 
-**Opgelost**
+**Oplossing:**
 
 De matchbox-aanbeveling heeft bepaalde vereisten waaraan moet worden voldaan wanneer u de onderdelen van het item of de gebruikers functies gebruikt.  Deze fout geeft aan dat er een functie Vector ontbreekt voor een gebruiker of een item dat u als invoer hebt opgegeven. Zorg ervoor dat er een vector met functies beschikbaar is in de gegevens voor elke gebruiker of elk item.  
 
@@ -730,7 +729,7 @@ U kunt bijvoorbeeld een kolom selecteren en proberen deze te converteren naar ee
 
 Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met drijvende-komma getallen of een groot aantal unieke waarden wilt gebruiken als een categorische kolom. 
 
-**Opgelost**
+**Oplossing:**
 
 + Open de Help-pagina voor de module die de fout heeft gegenereerd en controleer de vereisten voor het gegevens type.
 + Bekijk de gegevens typen van de kolommen in de invoer gegevensset.
@@ -891,7 +890,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 
   <!--For example, the [Convert to Indicator Values](convert-to-indicator-values.md) module requires that columns be categorical, and will raise this error if you select a feature column or label column.  -->
 
-**Opgelost**
+**Oplossing:**
 
 1.  Controleer het gegevens type van de kolommen die momenteel zijn geselecteerd. 
 
@@ -912,7 +911,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 
  Deze uitzonde ring treedt op wanneer u de module [gegevens exporteren](export-data.md) of een andere module gebruikt om resultaten van een pijp lijn in azure machine learning naar Azure Blob-opslag op te slaan, maar u probeert een bestand of BLOB te maken die al bestaat.   
 
-**Opgelost**
+**Oplossing:**
 
  Deze fout wordt alleen weer gegeven als u eerder de eigenschap **schrijf modus van Azure Blob Storage** hebt ingesteld op **fout**. In deze module wordt een fout gegenereerd als u probeert een gegevensset te schrijven naar een blob die al bestaat.
 
@@ -1070,7 +1069,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 
  Deze fout in Azure Machine Learning treedt op als er syntaxis fouten in het script van een Hive QL zijn of als de Hive-interpreter een fout ontdekt tijdens het uitvoeren van de query of het script.  
 
-**Opgelost**
+**Oplossing:**
 
 Het fout bericht van Hive wordt normaal gesp roken weer gegeven in het fouten logboek, zodat u actie kunt ondernemen op basis van de specifieke fout. 
 
@@ -1159,7 +1158,7 @@ Uitzonde ring treedt op wanneer een ongeldige binning-functie wordt gebruikt wan
 
 Deze fout in Azure Machine Learning treedt op wanneer u gegevens op basis van een niet-ondersteunde methode probeert te bin of wanneer de parameter combinaties ongeldig zijn.  
 
-**Opgelost**
+**Oplossing:**
 
 Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie van Azure Machine Learning die meer aanpassing van binning-methoden had toegestaan. Momenteel zijn alle binning-methoden gebaseerd op een selectie uit een vervolg keuzelijst, zodat deze fout niet meer kan worden weer geven.
 
@@ -1266,7 +1265,7 @@ Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie 
 
  Deze fout in Azure Machine Learning treedt op als u probeert een van de modules te gebruiken voor het evalueren van een model met uitvoer van een R-script dat scores bevat.  
 
-**Opgelost**
+**Oplossing:**
 
 |Uitzonderings berichten|
 |------------------------|
@@ -1345,7 +1344,7 @@ Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie 
 ## <a name="error-0125"></a>Fout 0125  
  Wordt gegenereerd wanneer het schema voor meerdere gegevens sets niet overeenkomt.  
 
-**Opgelost**
+**Oplossing:**
 
 |Uitzonderings berichten|
 |------------------------|
@@ -1373,7 +1372,7 @@ Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie 
 ## <a name="error-0128"></a>Fout 0128  
  Het aantal voorwaardelijke kansen voor categorische kolommen overschrijdt de limiet.  
 
-**Opgelost**
+**Oplossing:**
 
 |Uitzonderings berichten|
 |------------------------|
@@ -1384,7 +1383,7 @@ Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie 
 ## <a name="error-0129"></a>Fout 0129  
  Het aantal kolommen in de gegevensset overschrijdt de toegestane limiet.  
 
-**Opgelost**
+**Oplossing:**
 
 |Uitzonderings berichten|
 |------------------------|

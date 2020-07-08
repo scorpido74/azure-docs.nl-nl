@@ -12,10 +12,9 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 05/29/2020
 ms.openlocfilehash: 907579d44575de56f95e0828c3313d0d1682b29c
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513894"
 ---
 # <a name="copy-data-to-and-from-azure-sql-managed-instance-by-using-azure-data-factory"></a>Gegevens kopiëren van en naar Azure SQL Managed instance met behulp van Azure Data Factory
@@ -235,7 +234,7 @@ De volgende eigenschappen worden ondersteund voor het kopiëren van gegevens naa
 | tabel | De naam van de tabel/weer gave. |Nee voor bron, ja voor Sink  |
 | tableName | De naam van de tabel/weer gave met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik en voor nieuwe werk `schema` belasting `table` . | Nee voor bron, ja voor Sink |
 
-**Hierbij**
+**Voorbeeld**
 
 ```json
 {
@@ -569,7 +568,7 @@ Wanneer gegevens worden gekopieerd naar en van een SQL Managed instance, worden 
 |:--- |:--- |
 | bigint |Int64 |
 | binair |Byte [] |
-| bit |Booleaans |
+| bit |Boolean-waarde |
 | char |Teken reeks, char [] |
 | date |DateTime |
 | Datum/tijd |DateTime |

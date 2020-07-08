@@ -6,12 +6,11 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 446beca9b8491fb252a1e3284a9ec9a0e6dabef5
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
-ms.translationtype: MT
+ms.openlocfilehash: 49f944aa98bf0bf8090b10d2feeb50af4a2d42b2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739361"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955485"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows-en Linux-prestatie gegevens bronnen in Azure Monitor
 Prestatie meter items in Windows en Linux bieden inzicht in de prestaties van hardwareonderdelen, besturings systemen en toepassingen.  Azure Monitor kunt prestatie meter items op regel matige intervallen verzamelen voor analyse van bijna realtime (NRT), naast het samen voegen van prestatie gegevens voor langere termijn analyse en rapportage.
@@ -25,7 +24,7 @@ Wanneer u voor het eerst Windows-of Linux-prestatie meter items voor een nieuwe 
 
 Voor Windows-prestatie meter items kunt u een specifiek exemplaar voor elk prestatie meter item kiezen. Voor Linux-prestatie meter items geldt het exemplaar van elk item dat u kiest, van toepassing op alle onderliggende items van het bovenliggende item. In de volgende tabel ziet u de algemene instanties die beschikbaar zijn voor de prestatie meter items Linux en Windows.
 
-| Exemplaarnaam | Beschrijving |
+| Exemplaarnaam | Description |
 | --- | --- |
 | \_Totaal |Totaal van alle exemplaren |
 | \* |Alle instanties |
@@ -39,7 +38,7 @@ Volg deze procedure om een nieuw Windows-prestatie meter item toe te voegen om t
 
 1. Typ de naam van de teller in het tekstvak in de indeling *object (instantie) \counter*.  Wanneer u begint te typen, wordt er een overeenkomende lijst met algemene prestatie meter items weer gegeven.  U kunt een item in de lijst selecteren of een van uw eigen items typen.  U kunt ook alle instanties voor een bepaald prestatie meter item retour neren door *object\counter*op te geven.  
 
-    Bij het verzamelen van SQL Server prestatie meter items van benoemde instanties beginnen alle benoemde exemplaar items met *MSSQL $* en gevolgd door de naam van het exemplaar.  Als u bijvoorbeeld het item cache treffers van de logboeken voor alle data bases wilt verzamelen uit het database prestatie object voor benoemde `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`SQL-instantie INST2, geeft u op.
+    Bij het verzamelen van SQL Server prestatie meter items van benoemde instanties beginnen alle benoemde exemplaar items met *MSSQL $* en gevolgd door de naam van het exemplaar.  Als u bijvoorbeeld het item cache treffers van de logboeken voor alle data bases wilt verzamelen uit het database prestatie object voor benoemde SQL-instantie INST2, geeft u op `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio` .
 
 2. Klik **+** of druk op **Enter** om de teller toe te voegen aan de lijst.
 3. Wanneer u een teller toevoegt, wordt de standaard waarde van 10 seconden gebruikt voor het **steekproef interval**.  U kunt dit wijzigen in een hogere waarde van Maxi maal 1800 seconden (30 minuten) als u de opslag vereisten van de verzamelde prestatie gegevens wilt reduceren.
@@ -58,26 +57,28 @@ Volg deze procedure om een nieuw Linux-prestatie meter item toe te voegen om te 
 5. Wanneer u klaar bent met het toevoegen van items, klikt u op de knop **Opslaan** boven aan het scherm om de configuratie op te slaan.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>Linux-prestatie meter items configureren in het configuratie bestand
-In plaats van Linux-prestatie meter items te configureren met behulp van de Azure Portal, hebt u de mogelijkheid om configuratie bestanden te bewerken in de Linux-agent.  De prestatie gegevens die moeten worden verzameld, worden bepaald door de configuratie in de **/etc/opt/Microsoft/omsagent/\<-werk ruimte-id\>/conf/omsagent.conf**.
+In plaats van Linux-prestatie meter items te configureren met behulp van de Azure Portal, hebt u de mogelijkheid om configuratie bestanden te bewerken in de Linux-agent.  De prestatie gegevens die moeten worden verzameld, worden bepaald door de configuratie in **/etc/opt/Microsoft/omsagent/ \<workspace id\> /conf/omsagent.conf**.
 
 Elk object, of elke categorie, van prestatie gegevens die moeten worden verzameld, moet in het configuratie bestand als één `<source>` element worden gedefinieerd. De syntaxis is gebaseerd op het onderstaande patroon.
 
-    <source>
-      type oms_omi  
-      object_name "Processor"
-      instance_regex ".*"
-      counter_name_regex ".*"
-      interval 30s
-    </source>
+```xml
+<source>
+    type oms_omi  
+    object_name "Processor"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 30s
+</source>
+```
 
 
 De para meters in dit element worden in de volgende tabel beschreven.
 
-| Parameters | Beschrijving |
+| Parameters | Description |
 |:--|:--|
-| object\_naam | Object naam voor de verzameling. |
-| regex\_-exemplaar |  Een *reguliere expressie* die definieert welke exemplaren moeten worden verzameld. De waarde: `.*` Hiermee geeft u alle exemplaren op. Als u metrische gegevens van de processor alleen \_voor het totale exemplaar wilt verzamelen `_Total`, kunt u opgeven. Als u proces metrische gegevens alleen voor de crond-of sshd-instanties wilt verzamelen, `(crond\|sshd)`kunt u het volgende opgeven:. |
-| regex\_-\_naam van teller | Een *reguliere expressie* waarmee wordt gedefinieerd welke items (voor het object) moeten worden verzameld. Als u alle tellers voor het object wilt verzamelen `.*`, geeft u het volgende op:. Als u alleen tellers voor wissel ruimte voor het object memory wilt verzamelen, kunt u bijvoorbeeld het volgende opgeven:`.+Swap.+` |
+| object \_ naam | Object naam voor de verzameling. |
+| regex-exemplaar \_ |  Een *reguliere expressie* die definieert welke exemplaren moeten worden verzameld. De waarde: `.*` Hiermee geeft u alle exemplaren op. Als u metrische gegevens van de processor alleen voor het \_ totale exemplaar wilt verzamelen, kunt u opgeven `_Total` . Als u proces metrische gegevens alleen voor de crond-of sshd-instanties wilt verzamelen, kunt u het volgende opgeven: `(crond\|sshd)` . |
+| \_regex-naam van teller \_ | Een *reguliere expressie* waarmee wordt gedefinieerd welke items (voor het object) moeten worden verzameld. Als u alle tellers voor het object wilt verzamelen, geeft u het volgende op: `.*` . Als u alleen tellers voor wissel ruimte voor het object memory wilt verzamelen, kunt u bijvoorbeeld het volgende opgeven:`.+Swap.+` |
 | interval | De frequentie waarmee de tellers van het object worden verzameld. |
 
 
@@ -142,39 +143,41 @@ De volgende tabel bevat de objecten en prestatie meter items die u in het config
 
 Hieronder volgt de standaard configuratie voor metrische gegevens over prestaties.
 
-    <source>
-      type oms_omi
-      object_name "Physical Disk"
-      instance_regex ".*"
-      counter_name_regex ".*"
-      interval 5m
-    </source>
+```xml
+<source>
+    type oms_omi
+    object_name "Physical Disk"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 5m
+</source>
 
-    <source>
-      type oms_omi
-      object_name "Logical Disk"
-      instance_regex ".*
-      counter_name_regex ".*"
-      interval 5m
-    </source>
+<source>
+    type oms_omi
+    object_name "Logical Disk"
+    instance_regex ".*
+    counter_name_regex ".*"
+    interval 5m
+</source>
 
-    <source>
-      type oms_omi
-      object_name "Processor"
-      instance_regex ".*
-      counter_name_regex ".*"
-      interval 30s
-    </source>
+<source>
+    type oms_omi
+    object_name "Processor"
+    instance_regex ".*
+    counter_name_regex ".*"
+    interval 30s
+</source>
 
-    <source>
-      type oms_omi
-      object_name "Memory"
-      instance_regex ".*"
-      counter_name_regex ".*"
-      interval 30s
-    </source>
+<source>
+    type oms_omi
+    object_name "Memory"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 30s
+</source>
+```
 
-## <a name="data-collection"></a>Gegevens verzamelen
+## <a name="data-collection"></a>Gegevensverzameling
 Azure Monitor verzamelt alle opgegeven prestatie meter items op het opgegeven steekproef interval voor alle agents waarop dat item is geïnstalleerd.  De gegevens worden niet geaggregeerd en de onbewerkte gegevens zijn beschikbaar in alle logboek query weergaven voor de duur die is opgegeven door de log Analytics-werk ruimte.
 
 ## <a name="performance-record-properties"></a>Eigenschappen van prestatie record
@@ -184,7 +187,7 @@ Prestatie records hebben het type **perf** en hebben de eigenschappen in de volg
 |:--- |:--- |
 | Computer |Computer waarop de gebeurtenis is verzameld. |
 | CounterName |Naam van het prestatie meter item |
-| CounterPath |Volledig pad van de teller in de teller \\ \\ \<van het \\>object (exemplaar\\) van de vorm. |
+| CounterPath |Het volledige pad van de teller in de teller van het formulier \\ \\ \<Computer> \\ object (exemplaar) \\ . |
 | CounterValue |Numerieke waarde van het prestatie meter item. |
 | InstanceName |De naam van het gebeurtenis exemplaar.  Leeg als er geen exemplaar is. |
 | ObjectName |Naam van het prestatie object |
@@ -194,12 +197,12 @@ Prestatie records hebben het type **perf** en hebben de eigenschappen in de volg
 ## <a name="sizing-estimates"></a>Grootte schattingen
  Een ruwe schatting voor het verzamelen van een bepaalde teller met een interval van 10 seconden is ongeveer 1 MB per dag per exemplaar.  U kunt de opslag vereisten van een bepaald item schatten met de volgende formule.
 
-    1 MB x (number of counters) x (number of agents) x (number of instances)
+> 1 MB x (aantal tellers) x (aantal agents) x (aantal exemplaren)
 
 ## <a name="log-queries-with-performance-records"></a>Query's vastleggen met prestatie records
 De volgende tabel bevat verschillende voor beelden van logboek query's waarmee prestatie records worden opgehaald.
 
-| Query’s uitvoeren | Beschrijving |
+| Query’s uitvoeren | Description |
 |:--- |:--- |
 | Prestaties |Alle prestatie gegevens |
 | Perf &#124; waarbij computer = "mijn systeem" |Alle prestatie gegevens van een bepaalde computer |

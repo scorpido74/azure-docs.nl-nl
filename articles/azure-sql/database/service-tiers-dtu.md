@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
 ms.openlocfilehash: 1922e92f9314e48ae4e3106a53cf750da5daf5e1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84049832"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Service-lagen in het op DTU gebaseerde aankoopmodel
@@ -70,7 +69,7 @@ Reken grootten worden uitgedrukt in termen van Dtu's (data base Trans Action uni
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>EDTU-, opslag-en gegroepeerde database limieten voor elastische Pools
 
-| | **Standaard** | **Standaard** | **Premium** |
+| | **Standaard** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
 | Maximale opslag grootte per data base  | 2 GB | 1 TB | 1 TB |
 | Maximale opslag grootte per groep | 156 GB | 4 TB | 4 TB |
@@ -112,7 +111,7 @@ De grootte van de data base is gebaseerd op een ' schaal factor '. De schaal fac
 
 De werk belasting bestaat uit negen transactie typen, zoals wordt weer gegeven in de volgende tabel. Elke trans actie is ontworpen om een bepaalde set systeem kenmerken te markeren in de data base-engine en systeemhardware, met een hoog contrast van de andere trans acties. Deze aanpak maakt het gemakkelijker om de impact van verschillende onderdelen te beoordelen op de algehele prestaties. De trans actie ' read Heavy ' produceert bijvoorbeeld een groot aantal lees bewerkingen van de schijf.
 
-| Transactietype | Beschrijving |
+| Transactietype | Description |
 | --- | --- |
 | Lite lezen |UITGESCHAKELD in-Memory; alleen-lezen |
 | Medium lezen |UITGESCHAKELD voornamelijk in-Memory; alleen-lezen |

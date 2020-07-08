@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/16/2020
-ms.openlocfilehash: 8b8362a4d5ad742f29637ed03133bc6983bd5dd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: eca054d2db5eca1948d1085e105e91af19fc132e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80285143"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057956"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Een bestaande aanbieding bijwerken in Commerciële Marketplace
 
@@ -37,20 +36,29 @@ Wanneer u klaar bent om uw bijgewerkte aanbieding te publiceren, selecteert u va
 > [!IMPORTANT]
 > U moet uw Preview-voor beeld bekijken zodra deze beschikbaar is en **Go-Live** selecteren om uw bijgewerkte aanbieding te publiceren naar uw doel groep (openbaar of privé).
 
+## <a name="add-a-plan-to-an-existing-offer"></a>Een plan toevoegen aan een bestaande aanbieding
+
+Een nieuw abonnement toevoegen binnen een bestaande aanbieding die u al hebt gepubliceerd:
+
+1. Ga op de pagina **overzicht van aanbieding** voor uw huidige aanbieding naar de **overzichts pagina plan** en selecteer **nieuw plan maken**.
+1. Maak een nieuw abonnement volgens de [richt lijnen](./create-new-saas-offer.md#plan-overview) met behulp van het **prijs model voor bestaande abonnementen**.
+1. Selecteer **concept opslaan** nadat u de naam van het abonnement hebt gewijzigd. 
+1. Selecteer **publiceren** wanneer u klaar bent om uw updates te publiceren. De pagina **[controleren en publiceren](#review-and-publish-an-updated-offer)** wordt geopend en geeft een voltooiings status voor uw updates.
+
 ## <a name="update-a-plan-within-an-existing-offer"></a>Een abonnement binnen een bestaande aanbieding bijwerken
 
 Wijzigingen aanbrengen in een abonnement binnen een bestaande aanbieding die u al hebt gepubliceerd:
 
-- Open de pagina **overzicht van aanbieding** voor uw bestaande aanbieding en kies het abonnement dat u wilt wijzigen. Als het plan niet toegankelijk is vanuit de lijst **plan overzicht** , selecteert u **alle abonnementen weer geven**.
-- U kunt kiezen om de **naam**van het abonnement, het **prijs model**of de **Beschik baarheid**te selecteren. *Momenteel zijn abonnementen alleen beschikbaar in het Engels (Verenigde Staten)*.
-- Selecteer **Opslaan** nadat u de vereiste wijzigingen hebt aangebracht in de naam van het abonnement, de beschrijving, de prijzen of de beschik baarheid van de doel groep. 
-- Selecteer **publiceren** zodra u klaar bent om uw updates te publiceren. De pagina **[controleren en publiceren](#review-and-publish-an-updated-offer)** wordt geopend en geeft een voltooiings status voor uw updates.
+1. Klik op de pagina **overzicht van aanbieding** voor uw huidige aanbieding op het plan dat u wilt wijzigen. Als het plan niet toegankelijk is vanuit de lijst **plan overzicht** , selecteert u **alle abonnementen weer geven**.
+1. U kunt kiezen om de **naam**van het abonnement, het **prijs model**of de **Beschik baarheid**te selecteren. *Momenteel zijn abonnementen alleen beschikbaar in het Engels (Verenigde Staten)*.
+1. Selecteer **Opslaan** nadat u de vereiste wijzigingen hebt aangebracht in de naam, beschrijving of Beschik baarheid van het abonnement. 
+1. Selecteer **publiceren** wanneer u klaar bent om uw updates te publiceren. De pagina **[controleren en publiceren](#review-and-publish-an-updated-offer)** wordt geopend en geeft een voltooiings status voor uw updates.
 
 ## <a name="compare-changes-to-marketplace-offers"></a>Wijzigingen in Marketplace-aanbiedingen vergelijken
 
-U kunt de wijzigingen die u aanbrengt in een [gepubliceerd](#compare-changes-to-published-offer) of [Preview](#compare-changes-to-a-preview-offer) -aanbieding controleren voordat u ze Live maakt met behulp van **compare**.
+U kunt de wijzigingen die u aanbrengt in een [gepubliceerd](#compare-changes-to-published-offer) of [Preview](#compare-changes-to-a-preview-offer) -aanbieding controleren voordat u ze Live maakt met behulp van **vergelijken**.
 
->[!NOTE]
+> [!NOTE]
 > Een gepubliceerde aanbieding is een aanbieding die is gepubliceerd naar de preview-versie of live status.
 
 Zie hieronder voor algemene informatie over de controle:
@@ -122,9 +130,9 @@ Nadat u hebt bevestigd dat u het concept abonnement wilt verwijderen, is het pla
 
 Een aanbieding annuleren met de status **publiceren in voortgang** :
 
-- Selecteer de naam van de aanbieding om de **overzichts** pagina van de aanbieding te openen.
-- Selecteer **Publiceren annuleren** in de rechter bovenhoek van de pagina.
-- Bevestig dat u wilt stoppen met het publiceren van de aanbieding.
+1. Selecteer de naam van de aanbieding om de **overzichts** pagina van de aanbieding te openen.
+1. Selecteer **Publiceren annuleren** in de rechter bovenhoek van de pagina.
+1. Bevestig dat u wilt stoppen met het publiceren van de aanbieding.
 
 Als u de aanbieding op een later tijdstip wilt publiceren, moet u eerst het publicatie proces starten.
 

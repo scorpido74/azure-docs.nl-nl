@@ -5,12 +5,11 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 58757dba9a8956d97c19269c2ac913d801f73746
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.openlocfilehash: cf74322725c6e86ee455f83aadc4aade07000835
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844502"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057667"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Een Azure Remote Rendering-account maken
 
@@ -28,27 +27,31 @@ De volgende stappen zijn nodig om een account te maken voor de Azure remote rend
     1. ' Resource naam ' instellen op de naam van het account
     1. Abonnement indien nodig bijwerken
     1. De resource groep instellen op een resource groep van uw keuze
+    1. Selecteer een regio in de vervolg keuzelijst locatie waarin deze resource moet worden gemaakt. Zie de opmerkingen bij [account regio's](create-an-account.md#account-regions) hieronder.
 1. Zodra het account is gemaakt, navigeert u naar dit en:
     1. Bekijk op het tabblad *overzicht* de account-id
     1. Bekijk op het tabblad *instellingen > Access Keys* de ' primaire sleutel ': dit is de geheime account sleutel van het account
 
+### <a name="account-regions"></a>Account regio's
+De locatie die wordt opgegeven tijdens het maken van het account voor een account bepaalt aan welke regio de account resource is toegewezen. Dit kan niet worden gewijzigd nadat het is gemaakt. Het account kan echter worden gebruikt om verbinding te maken met een externe rendering-sessie in een [ondersteunde regio](./../reference/regions.md), ongeacht de locatie van het account.
+
 ### <a name="retrieve-the-account-information"></a>De account gegevens ophalen
 
-Voor de voor beelden en zelf studies moet u de account-ID en een sleutel opgeven. Bijvoorbeeld in het bestand **arrconfig. json** dat wordt gebruikt voor de Power shell-voorbeeld scripts:
+Voor de voor beelden en zelf studies moet u de account-ID en een sleutel opgeven. Bijvoorbeeld in de **arrconfig.js** voor het bestand dat wordt gebruikt voor de Power shell-voorbeeld scripts:
 
 ```json
-    "accountSettings": {
-        "arrAccountId": "<fill in the account ID from the Azure portal>",
-        "arrAccountKey": "<fill in the account key from the Azure portal>",
-        "region": "<select from available regions>"
-    },
+"accountSettings": {
+    "arrAccountId": "<fill in the account ID from the Azure portal>",
+    "arrAccountKey": "<fill in the account key from the Azure portal>",
+    "region": "<select from available regions>"
+},
 ```
 
 Bekijk de [lijst met beschik bare regio's](../reference/regions.md) voor het invullen van de *regio* optie.
 
 De waarden voor **`arrAccountId`** en **`arrAccountKey`** zijn te vinden in de portal, zoals beschreven in de volgende stappen:
 
-* Ga naar de [Azure Portal](https://www.portal.azure.com)
+* Ga naar de [Azure-portal](https://www.portal.azure.com)
 * Zoek uw **"externe rendering-account"** -deze moet zich in de lijst met **recente resources** bevinden. U kunt er ook naar zoeken in de zoek balk bovenin. In dat geval moet u ervoor zorgen dat het abonnement dat u wilt gebruiken, is geselecteerd in het standaard abonnements filter (filter pictogram naast zoek balk):
 
 ![Abonnements filter](./media/azure-subscription-filter.png)
@@ -89,6 +92,7 @@ Hierbij wordt ervan uitgegaan dat u een opslag account hebt. Ga naar het opslag 
 > Als uw externe rendering-account niet wordt weer gegeven, raadpleegt u de [sectie problemen oplossen](../resources/troubleshoot.md#cant-link-storage-account-to-arr-account).
 
 Herhaal nieuwe rollen nog twee keer voor de respectievelijke selecties in de vervolg keuzelijst **rol** :
+
 * **Inzender voor opslagaccounts**
 * **Inzender voor Storage BLOB-gegevens**
 

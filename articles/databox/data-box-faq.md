@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.openlocfilehash: d1455bc65f175970bb741dab4a56aa0aac58fc59
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83743000"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: veelgestelde vragen
@@ -38,7 +37,7 @@ A.  De service Azure Data Box is bedoeld voor offlinegegevensopname. Deze servic
 ### <a name="q-what-is-azure-data-box"></a>V. Wat is Azure Data Box?
 A. De Azure Data Box biedt een snelle, goedkope en veilige overdracht van terabytes aan gegevens in Azure. U kunt het Data Box-apparaat bestellen via de Azure-portal. Microsoft verzendt een opslagapparaat met een bruikbare capaciteit van 80 TB via een regionale koerier. 
 
-Nadat u het apparaat hebt ontvangen, kunt u het snel instellen via de lokale webinterface. Kopieer de gegevens van uw servers naar het apparaat en stuur het terug naar Azure. In het Azure-datacenter worden uw gegevens automatisch geüpload van de schijven naar Azure. Het volledige proces wordt gevolgd door de Data Box-service in Azure Portal.
+Nadat u het apparaat hebt ontvangen, kunt u het snel instellen via de lokale webinterface. Kopieer de gegevens van uw servers naar het apparaat en stuur het terug naar Azure. In het Azure-datacenter worden uw gegevens automatisch geüpload van de schijven naar Azure. Het volledige proces wordt gevolgd door de Data Box-service in de Azure-portal.
 
 ### <a name="q-when-should-i-use-data-box"></a>V. Wanneer moet ik Data Box gebruiken?
 A. Als u 40-500 TB aan gegevens naar Azure wilt overdragen, hebt u baat bij het gebruik van Data Box. Voor gegevens grootte < 40 TB gebruikt u Data Box Disk en voor de grootte van gegevens > 500 TB, meldt u zich aan voor [Data Box Heavy](data-box-heavy-overview.md).
@@ -268,4 +267,4 @@ A.  Nee. Het Azure-datacenter accepteert momenteel geen levering van de Data Box
 
 - De [Systeemvereisten voor Data Box](data-box-system-requirements.md) lezen.
 - Informatie over de [Limieten voor Data Box](data-box-limits.md).
-- Snel [Azure Data Box](data-box-quickstart-portal.md) in Azure Portal implementeren.
+- [Azure Data Box](data-box-quickstart-portal.md) snel implementeren in de Azure-portal.

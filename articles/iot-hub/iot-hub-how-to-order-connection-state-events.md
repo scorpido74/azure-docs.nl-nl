@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
 ms.openlocfilehash: 8d84db9f9c36dc2818c78c5091b1ebe29c35f865
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83726193"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Verbindingsgebeurtenissen voor het apparaat aanvragen bij Azure IoT Hub met behulp van Azure Cosmos DB
@@ -145,7 +144,7 @@ U gaat eerst een logische app maken en een trigger voor Event Grid toevoegen die
 
    ![Nieuwe logische app](./media/iot-hub-how-to-order-connection-state-events/new-logic-app.png)
 
-3. Selecteer **maken** om de logische app te maken.
+3. Selecteer **Maken** om de logische app te maken.
 
    U hebt nu een Azure-resource voor uw logische app gemaakt. Nadat de logische app is geïmplementeerd, toont de ontwerper van logische apps sjablonen voor algemene patronen, zodat u sneller aan de slag kunt.
 
@@ -256,7 +255,7 @@ In deze sectie configureert u de IoT-hub voor het publiceren van gebeurtenissen 
 
 1. Ga in Azure Portal naar uw IoT-hub.
 
-2. Selecteer **gebeurtenissen**.
+2. Selecteer **Gebeurtenissen**.
 
    ![Details van gebeurtenisraster weergeven](./media/iot-hub-how-to-order-connection-state-events/event-grid.png)
 
@@ -334,11 +333,11 @@ U kunt de resultaten van de uitgevoerde opgeslagen procedure bekijken in uw Cosm
 
 ## <a name="use-the-azure-cli"></a>Azure CLI gebruiken
 
-In plaats van de [Azure Portal](https://portal.azure.com)te gebruiken, kunt u de IOT hub stappen volt ooien met behulp van de Azure cli. Zie de Azure CLI-pagina's voor het [maken van een gebeurtenis abonnement](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) en het [maken van een IOT-apparaat](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create)voor meer informatie.
+In plaats van de [Azure Portal](https://portal.azure.com)te gebruiken, kunt u de IOT hub stappen volt ooien met behulp van de Azure cli. Zie de Azure CLI-pagina's voor het [maken van een gebeurtenisabonnement](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) en het [maken van een IoT-apparaat](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) voor meer informatie.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-In deze zelfstudie zijn resources gebruikt die kosten voor uw Azure-abonnement met zich meebrengen. Wanneer u klaar bent met het uitproberen van de zelf studie en de resultaten test, kunt u resources die u niet wilt hand haven, uitschakelen of verwijderen.
+In deze zelfstudie zijn resources gebruikt die kosten voor uw Azure-abonnement met zich meebrengen. Wanneer u klaar bent met de zelfstudie en het testen van de resultaten, moet u daarom de resources uitschakelen of verwijderen die u niet wilt behouden.
 
 Als u het werk aan uw logische app wilt behouden, kunt u de app uitschakelen in plaats van verwijderen.
 
@@ -358,7 +357,7 @@ Als u het werk aan uw logische app wilt behouden, kunt u de app uitschakelen in 
 
 6. Selecteer het gebeurtenisabonnement dat u wilt verwijderen.
 
-7. Selecteer **verwijderen**.
+7. Selecteer **Verwijderen**.
 
 Als u een Azure Cosmos DB account uit de Azure Portal wilt verwijderen, klikt u met de rechter muisknop op de naam van het account en klikt u op **account verwijderen**. Zie de gedetailleerde instructies voor [het verwijderen van een Azure Cosmos DB-account](https://docs.microsoft.com/azure/cosmos-db/manage-account).
 
