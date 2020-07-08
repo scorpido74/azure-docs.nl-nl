@@ -1,89 +1,73 @@
 ---
-title: Voorwaardelijke toegang-op Risico's gebaseerde voorwaardelijke toegang-Azure Active Directory
-description: Beleid voor voorwaardelijke toegang maken om verbeteringen van de identiteits beveiliging van beleid in te scha kelen
+title: Op Risico's gebaseerde voorwaardelijke toegang op basis van een aanmelding-Azure Active Directory
+description: Maak beleid voor voorwaardelijke toegang met behulp van aanmeldings risico voor identiteits beveiliging
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/26/2020
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9cfba377aba30d4687bab4ba7c5a311c70c4905
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: ce687ae1f47b20bb5fff3827e7bcbd5d7edf2d83
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995153"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024356"
 ---
-# <a name="conditional-access-risk-based-conditional-access"></a>Voorwaardelijke toegang: voorwaardelijke toegang op basis van een risico
+# <a name="conditional-access-sign-in-risk-based-conditional-access"></a>Voorwaardelijke toegang: op Risico's gebaseerde voorwaardelijke toegang op basis van een aanmelding
 
-Organisaties met Azure AD Premium P2-licenties kunnen beleids regels voor voorwaardelijke toegang maken met Azure AD Identity Protection risico detecties. Er zijn drie standaard beleidsregels die kunnen worden ingeschakeld. 
+De meeste gebruikers vertonen normaal gedrag dat kan worden getraceerd. Wanneer ze buiten de norm hiervoor vallen, zou het riskant kunnen zijn om hen toe te staan zich zomaar aan te melden. Mogelijk wilt u die gebruiker blok keren of kan hij of zij vragen om multi-factor Authentication uit te voeren om te bewijzen dat ze in werkelijkheid zijn. 
 
-* Vereisen dat alle gebruikers zich registreren voor Azure Multi-Factor Authentication.
-* Een wachtwoord wijziging vereisen voor gebruikers met een hoog risico.
-* Multi-factor Authentication vereisen voor gebruikers met gemiddeld of hoog aanmeldings risico.
+Een aanmeldings risico duidt op de kans dat een bepaalde verificatie aanvraag niet is geautoriseerd door de eigenaar van de identiteit. Organisaties met Azure AD Premium P2-licenties kunnen beleids regels voor voorwaardelijke toegang maken met inbegrip van [Azure AD Identity Protection risico detecties](../identity-protection/concept-identity-protection-risks.md#sign-in-risk).
 
-## <a name="require-all-users-to-register-for-azure-multi-factor-authentication"></a>Vereisen dat alle gebruikers zich registreren voor Azure Multi-Factor Authentication
+Er zijn twee locaties waar dit beleid kan worden toegewezen. Organisaties moeten een van de volgende opties kiezen om een beleid voor voorwaardelijke toegang op basis van een aanmelding in te scha kelen waarvoor een beveiligd wacht woord moet worden gewijzigd.
 
-Als u dit beleid inschakelt, moeten alle gebruikers binnen 14 dagen worden geregistreerd voor Azure Multi-Factor Authentication. 
+## <a name="enable-with-conditional-access-policy"></a>Inschakelen met beleid voor voorwaardelijke toegang
 
-1. Meld u aan bij de **Azure-portal**.
-1. Klik op **Alle services** en blader vervolgens naar **Azure AD Identity Protection**.
-1. Klik op **Registratie bij MFA**.
+1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
+1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**.
+1. Selecteer **Nieuw beleid**.
+1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
+1. Onder **Toewijzingen** selecteert u **Gebruikers en groepen**.
+   1. Onder **insluiten**selecteert u **alle gebruikers**.
+   1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u de accounts voor nood toegang of het afbreek glas van uw organisatie. 
+   1. Selecteer **Voltooid**.
+1. Onder **Cloud-apps of acties**  >  **Include**, selecteert u **alle Cloud-apps**.
+1. Stel onder **voor waarden**  >  **gebruikers risico** **configureren** in op **Ja**. Onder **Selecteer het risico niveau voor aanmelden wordt dit beleid van toepassing op** 
+   1. Selecteer **hoog** en **gemiddeld**.
+   1. Selecteer **Voltooid**.
+1. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang verlenen**, **multi-factor Authentication vereisen**en selecteert u **selecteren**.
+1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
+1. Selecteer **maken** om uw beleid in te stellen.
+
+## <a name="enable-through-identity-protection"></a>Identiteits beveiliging inschakelen
+
+1. Meld u aan bij **Azure Portal**.
+1. Selecteer **alle services**en blader naar **Azure AD Identity Protection**.
+1. Selecteer **beleid voor aanmeldings Risico's**.
 1. Onder **toewijzingen**selecteert u **gebruikers**.
    1. Onder **insluiten**selecteert u **alle gebruikers**.
-   1. Onder **uitsluiten**selecteert u **uitgesloten gebruikers selecteren**, kiest u de accounts voor nood toegang of het account van uw organisatie en selecteert u **selecteren**. 
-   1. Selecteer **Done**.
-1. Stel **beleid afdwingen** in **op aan**.
-1. Klik op **Opslaan**.
-
-## <a name="require-a-password-change-high-risk-users"></a>Vereisen dat gebruikers met een hoog risico hun wacht woord wijzigen
-
-Microsoft werkt samen met onderzoekers, justitie en politie, diverse beveiligingsteams bij Microsoft en andere betrouwbare bronnen om naar paren van gebruikersnamen en wachtwoorden te zoeken. Wanneer een van deze paren overeenkomt met een account in uw omgeving, kan een op risicogebeurtenissen gebaseerde wachtwoordwijziging worden geactiveerd met behulp van het volgende beleid.
-
-1. Meld u aan bij de **Azure-portal**.
-1. Klik op **Alle services** en blader vervolgens naar **Azure AD Identity Protection**.
-1. Klik op **beleid voor gebruikers Risico's**.
-1. Onder **toewijzingen**selecteert u **gebruikers**
-   1. Onder **insluiten**selecteert u **alle gebruikers**.
    1. Onder **uitsluiten**selecteert u **uitgesloten gebruikers selecteren**, kiest u de accounts voor nood toegang of het account van uw organisatie en selecteert u **selecteren**.
-   1. Selecteer **Done**.
-1. Selecteer onder **voor waarden** **gebruikers risico**en kies **hoog**.
-   1. Klik op **selecteren** en vervolgens op **gereed**.
-1. Kies onder **controle**van  >  **toegang**de optie **toegang toestaan**, en selecteer vervolgens **wachtwoord wijziging vereisen**.
-   1. Klik op **Selecteren**.
-1. Stel **beleid afdwingen** in **op aan**.
-1. Klik op **Opslaan**.
-
-## <a name="require-mfa-medium-or-high-sign-in-risk-users"></a>Gebruikers met een gemiddeld MFA of een hoog aanmeld risico vereisen
-
-De meeste gebruikers vertonen normaal gedrag dat kan worden getraceerd. Wanneer ze buiten de norm hiervoor vallen, zou het riskant kunnen zijn om hen toe te staan zich zomaar aan te melden. Mogelijk wilt u die gebruiker blok keren of kan hij of zij vragen om multi-factor Authentication uit te voeren om te bewijzen dat ze in werkelijkheid zijn. Als u een beleid wilt inschakelen waarbij MFA is vereist als er een risicovolle aanmelding wordt gedetecteerd, schakelt u het volgende beleid in.
-
-1. Meld u aan bij de **Azure-portal**.
-1. Klik op **Alle services** en blader vervolgens naar **Azure AD Identity Protection**.
-1. Klik op **beleid voor aanmeldings Risico's**
-1. Onder **toewijzingen**selecteert u **gebruikers**
-   1. Onder **insluiten**selecteert u **alle gebruikers**.
-   1. Onder **uitsluiten**selecteert u **uitgesloten gebruikers selecteren**, kiest u de accounts voor nood toegang of het account van uw organisatie en selecteert u **selecteren**.
-   1. Selecteer **Done**.
+   1. Selecteer **Voltooid**.
 1. Selecteer onder **voor waarden** **aanmeldings risico**en kies vervolgens **medium en hoger**.
-   1. Klik op **selecteren** en vervolgens op **gereed**.
+   1. Selecteer **selecteren**en vervolgens **gereed**.
 1. Kies onder **Controls**  >  **Access**de optie **toegang toestaan**en selecteer vervolgens **multi-factor Authentication vereisen**.
-   1. Klik op **Selecteren**.
+   1. Selecteer **Selecteren**.
 1. Stel **beleid afdwingen** in **op aan**.
-1. Klik op **Opslaan**.
+1. Selecteer **Opslaan**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 [Algemeen beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
 
+[Voorwaardelijke toegang op basis van gebruikers risico](howto-conditional-access-policy-risk-user.md)
+
 [Effect bepalen met de modus alleen rapport-alleen voor voorwaardelijke toegang](howto-conditional-access-report-only.md)
 
 [Aanmeld gedrag simuleren met het What If hulp programma voor voorwaardelijke toegang](troubleshoot-conditional-access-what-if.md)
 
-[Hoe werkt het - Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
-
-[Wat is Azure Active Directory Identity Protection](../identity-protection/overview.md)
+[Wat is Azure Active Directory Identity Protection?](../identity-protection/overview.md)

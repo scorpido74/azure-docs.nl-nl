@@ -278,6 +278,8 @@
               href: service-fabric-backup-restore-service-trigger-restore.md
             - name: Back-up van partitie op aanvraag
               href: service-fabric-backup-restore-service-ondemand-backup.md
+            - name: Back-ups van een betrouwbare verzameling offline weergeven en bewerken
+              href: backup-explorer.md
         - name: CodePackages voor initialisatiefunctie
           href: initializer-codepackages.md
         - name: RunToCompletion
@@ -466,7 +468,7 @@
               href: service-fabric-reliable-services-configuration.md
             - name: Meldingen verzenden
               href: service-fabric-reliable-services-notifications.md
-            - name: Back-ups en herstellen
+            - name: Back-up en herstel
               href: service-fabric-reliable-services-backup-restore.md
         - name: Een Reliable Actors-service bouwen
           items:
@@ -476,7 +478,7 @@
               href: service-fabric-reliable-actors-enumerate.md
             - name: Actoren en hun status verwijderen
               href: service-fabric-reliable-actors-delete-actors.md
-            - name: Een back-up maken van actoren en actoren herstellen
+            - name: Back-up van actoren maken en terugzetten
               href: service-fabric-reliable-actors-backup-and-restore.md
             - name: Actormeldingen verzenden
               href: service-fabric-reliable-actors-events.md

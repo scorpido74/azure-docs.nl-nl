@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 6624c8072c60793771d4f4b9943e15f1b276cd34
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 9c84b35318637f5b89e6c88c0ebb3fd6616533fc
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85604689"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023122"
 ---
 # <a name="debug-errors-when-authoring-a-custom-commands-application"></a>Fouten opsporen tijdens het ontwerpen van een toepassing voor aangepaste opdrachten
 
@@ -24,7 +24,7 @@ In dit artikel wordt beschreven hoe u fouten oplost tijdens het maken van de toe
 ## <a name="errors-when-creating-an-application"></a>Fouten bij het maken van een toepassing
 Aangepaste opdrachten maken ook een toepassing in [Luis](https://www.luis.ai/) bij het maken van een toepassing voor aangepaste opdrachten. 
 
-[Luis beperkt 500-toepassingen per ontwerp bron](https://docs.microsoft.com/azure/cognitive-services/luis/luis-limits). Het maken van een LUIS-toepassing kan mislukken als u een ontwerp bron gebruikt die al 500-toepassingen heeft. 
+[Luis beperkt 500-toepassingen per ontwerp bron](https://docs.microsoft.com/azure/cognitive-services/luis/luis-limits). Het maken van een LUIS-toepassing kan mislukken als u een ontwerp bron gebruikt die al 500 toepassingen bevat. 
 
 Zorg ervoor dat de geselecteerde LUIS-ontwerp bron minder dan 500 toepassingen bevat. Als dat niet het geval is, kunt u een nieuwe LUIS-ontwerp bron maken, overschakelen naar een andere, of proberen om uw LUIS-toepassingen op te schonen.  
 
@@ -35,7 +35,7 @@ Wanneer u een toepassing voor aangepaste opdrachten verwijdert, kunnen aangepast
 Als het verwijderen van een LUIS-toepassing is mislukt, gaat u naar uw [Luis](https://www.luis.ai/) -account om ze hand matig te verwijderen.
 
 ### <a name="toomanyrequests"></a>TooManyRequests
-Wanneer u een grote hoeveelheid toepassingen tegelijk probeert te verwijderen, worden er waarschijnlijk ' TooManyRequests-fouten weer geven. Dit betekent dat uw verwijderings aanvragen worden beperkt door Azure. 
+Wanneer u een groot aantal toepassingen tegelijk probeert te verwijderen, worden er waarschijnlijk ' TooManyRequests-fouten weer geven. Deze fouten betekenen dat uw verwijderings aanvragen worden beperkt door Azure. 
 
 Vernieuw de pagina en probeer minder toepassingen te verwijderen.
 
@@ -45,7 +45,7 @@ Vernieuw de pagina en probeer minder toepassingen te verwijderen.
 U mag geen para meter verwijderen als deze wordt gebruikt. Verwijder alle verwijzingen van de para meter in alle spraak reacties, voorbeeld zinnen, voor waarden, acties en probeer het opnieuw.
 
 ### <a name="cant-delete-a-web-endpoint"></a>Kan geen web-eind punt verwijderen
-U mag geen web-eind punt verwijderen wanneer het wordt gebruikt. Verwijder een webeindpunt actie voor een **gesprek** die gebruikmaakt van dit webeindpunt voordat u een webeindpunt verwijdert.
+U mag geen web-eind punt verwijderen wanneer het wordt gebruikt. Verwijder de actie **Webeindpunt** van de oproep die gebruikmaakt van dit webeindpunt voordat u een webeindpunt verwijdert.
 
 ## <a name="errors-when-training-an-application"></a>Fouten bij het trainen van een toepassing
 ### <a name="built-in-intents"></a>Ingebouwde intenties
@@ -53,15 +53,15 @@ LUIS heeft ingebouwde Ja/geen intenties. Als er voorbeeld zinnen met alleen ' ja
 
 | Zoek | Variaties | 
 | ------- | --------- | 
-| Ja | Zeker, OK |
-| Nee | Klopt, niet | 
+| Yes | Zeker, OK |
+| No | Klopt, niet | 
 
 ### <a name="common-sample-sentences"></a>Algemene voorbeeld zinnen
 Aangepaste opdrachten staan geen veelvoorkomende voorbeeld zinnen toe die worden gedeeld tussen verschillende opdrachten. De training van een toepassing kan mislukken als sommige voorbeeld zinnen in één opdracht al zijn gedefinieerd in een andere opdracht. 
 
-Zorg ervoor dat er geen veelvoorkomende voorbeeld zinnen worden gedeeld tussen de verschillende opdrachten. 
+Zorg ervoor dat er geen veelvoorkomende voorbeeld zinnen worden gedeeld tussen verschillende opdrachten. 
 
-Voor best practice van het verdelen van uw voorbeeld zinnen over verschillende opdrachten, raadpleegt u [LUIS best practice](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices).
+Voor best practice van het verdelen van uw voorbeeld zinnen over verschillende opdrachten, verwijzen wij u naar [LUIS best practice](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices).
 
 ### <a name="empty-sample-sentences"></a>Lege voorbeeld zinnen
 U moet ten minste één voorbeeld zin voor elke opdracht hebben.
@@ -88,7 +88,9 @@ Raadpleeg [LUIS best practice](https://docs.microsoft.com/azure/cognitive-servic
 ### <a name="reassign-to-e0-authoring-resource"></a>Opnieuw toewijzen aan E0-ontwerp bron
 LUIS biedt geen ondersteuning voor het opnieuw toewijzen van LUIS-toepassing aan E0 authoring resource.
 
-Als u uw ontwerp bron wilt wijzigen van F0 in E0 of als u wilt overschakelen naar een andere E0-resource, moet u de toepassing opnieuw maken.
+Als u uw ontwerp bron wilt wijzigen van F0 in E0 of als u wilt overschakelen naar een andere E0-resource, maakt u de toepassing opnieuw. 
+
+Als u een bestaande toepassing snel wilt exporteren en wilt importeren in een nieuwe toepassing, raadpleegt u [doorlopende implementatie met Azure DevOps](./how-to-custom-commands-deploy-cicd.md).
 
 ### <a name="save-button-is-disabled"></a>De knop Opslaan is uitgeschakeld
 Als u een LUIS-Voorspellings resource nooit aan uw toepassing toewijst, wordt de knop opslaan uitgeschakeld wanneer u probeert om uw ontwerp bron te wijzigen zonder een Voorspellings bron toe te voegen.

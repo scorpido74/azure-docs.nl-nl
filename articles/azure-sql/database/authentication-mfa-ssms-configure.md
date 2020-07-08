@@ -3,7 +3,7 @@ title: Multi-Factor Authentication instellen
 titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 description: Meer informatie over het gebruik van multi-factor Authentication met SSMS voor Azure SQL Database, Azure SQL Managed instance en Azure Synapse Analytics.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: has-adal-ref, sqldbrb=3
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 9548168e15522a8fb21cfd33c0cf475841a5d52b
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: b96627bfdfad039ae23dd134fc76f368d59b7d59
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85318229"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984701"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Multi-factor Authentication configureren voor SQL Server Management Studio en Azure AD
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]

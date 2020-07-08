@@ -3,8 +3,8 @@ title: Algemene service lagen voor algemeen gebruik en bedrijfs kritieke service
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: In het artikel worden de laag algemeen en bedrijfskritische service-lagen beschreven in het op vCore gebaseerde aankoop model dat wordt gebruikt door Azure SQL Database en Azure SQL Managed instance.
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 01/30/2020
-ms.openlocfilehash: 6b56d96a9684b2da3889219d4a5e13302e7e22e3
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 37dd6881876df010b548a8bb48ca88bb72dab764
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343894"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986600"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Service lagen van Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -37,7 +37,7 @@ In dit artikel worden de verschillen beschreven tussen de service lagen, opslag 
 
 In de volgende tabel worden de belangrijkste verschillen tussen service lagen voor de nieuwste generatie (GEN5) beschreven. Houd er rekening mee dat de kenmerken van de servicelaag in SQL Database en SQL Managed instance verschillend kunnen zijn.
 
-| | Resourcetype | Algemeen gebruik |  Hyperscale | Bedrijfskritiek |
+|-| Resourcetype | Algemeen gebruik |  Hyperscale | Bedrijfskritiek |
 |:---:|:---:|:---:|:---:|:---:|
 | **Geschikt voor** | |  Biedt berekenings-en opslag opties voor budget gericht evenwicht. | De meeste zakelijke workloads. Opslag grootte automatisch schalen tot 100 TB, vloeiend verticaal en horizon taal berekenen, snel terugzetten van de data base. | OLTP-toepassingen met hoge transactie snelheden en lage IO-latentie. Biedt de hoogste flexibiliteit voor fouten en snelle failovers met behulp van meerdere synchroon bijgewerkte replica's.|
 |  **Beschikbaar in resource type:** ||Door SQL Database/SQL beheerd exemplaar | Enkele Azure SQL Database | Door SQL Database/SQL beheerd exemplaar |

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 49b159434497d4b455a338ba88058d73d7de10ee
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 6e853edf5b7ba756aaedceaf59b1f7d1d7e48b39
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773131"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985423"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Oplossingen op virtuele machines van Azure
 
@@ -69,6 +69,9 @@ az vm list-skus
     --size dc 
     --query "[?family=='standardDCSv2Family']"
 ```
+### <a name="dedicated-host-requirements"></a>Vereisten voor speciale host
+Het implementeren van een **Standard_DC8_v2** grootte van virtuele machines in de VM-familie van de DCSv2-serie neemt de volledige host in beslag en wordt niet gedeeld met andere tenants of abonnementen. Deze VM-SKU-serie biedt de isolatie die u mogelijk nodig hebt om te voldoen aan nalevings-en beveiligings voorschriften die normaal gesp roken worden voldaan door een speciale host-service te hebben. Wanneer u **Standard_DC8_v2** SKU kiest, wijst de fysieke hostserver alle beschik bare hardwarebronnen, inclusief EPC-geheugen, toe aan uw virtuele machine. Houd er rekening mee dat deze functionaliteit bestaat door het ontwerpen van de infra structuur en dat alle functies van de **Standard_DC8_v2** worden ondersteund. Deze implementatie is niet hetzelfde als de [Azure dedicated host](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts) -service die wordt verschaft door andere Azure VM-families.
+
 
 ## <a name="deployment-considerations"></a>Overwegingen bij de implementatie
 

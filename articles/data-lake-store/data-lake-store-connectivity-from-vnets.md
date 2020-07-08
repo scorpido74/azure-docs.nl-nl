@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 080f1a55e70946281a11af44176600abfc5bc0e2
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 5793e1659f18818b85748dc0f2979895318ea913
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85515710"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985404"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Toegang tot Azure Data Lake Storage Gen1 van Vm's binnen een Azure-VNET
 Azure Data Lake Storage Gen1 is een PaaS-service die wordt uitgevoerd op open bare Internet-IP-adressen. Elke server die verbinding kan maken met het open bare Internet kan meestal ook verbinding maken met Azure Data Lake Storage Gen1-eind punten. Standaard hebben alle virtuele machines in azure VNETs toegang tot internet en kunnen ze dus toegang krijgen tot Azure Data Lake Storage Gen1. Het is echter mogelijk om Vm's in een VNET zo te configureren dat ze geen toegang tot internet hebben. Voor dergelijke Vm's is de toegang tot Azure Data Lake Storage Gen1 ook beperkt. Het blok keren van open bare Internet toegang voor Vm's in azure VNETs kan worden uitgevoerd met behulp van een van de volgende methoden:
@@ -31,14 +31,18 @@ In dit artikel wordt uitgelegd hoe u toegang tot Azure Data Lake Storage Gen1 ku
 ## <a name="enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity"></a>Connectiviteit met Azure Data Lake Storage Gen1 van Vm's met beperkte connectiviteit inschakelen
 Om toegang te krijgen tot Azure Data Lake Storage Gen1 van dergelijke Vm's, moet u ze configureren voor toegang tot het IP-adres voor de regio waar het Azure Data Lake Storage Gen1-account beschikbaar is. U kunt de IP-adressen voor uw Data Lake Storage Gen1-account regio's identificeren door de DNS-namen van uw accounts () te herleiden `<account>.azuredatalakestore.net` . Als u DNS-namen van uw accounts wilt omzetten, kunt u hulpprogram ma's zoals **nslookup**gebruiken. Open een opdracht prompt op de computer en voer de volgende opdracht uit:
 
-    nslookup mydatastore.azuredatalakestore.net
+```console
+nslookup mydatastore.azuredatalakestore.net
+```
 
 De uitvoer lijkt op het volgende. De waarde voor de eigenschap **adres** is het IP-adres dat is gekoppeld aan uw data Lake Storage gen1-account.
 
-    Non-authoritative answer:
-    Name:    1434ceb1-3a4b-4bc0-9c69-a0823fd69bba-mydatastore.projectcabostore.net
-    Address:  104.44.88.112
-    Aliases:  mydatastore.azuredatalakestore.net
+```output
+Non-authoritative answer:
+Name:    1434ceb1-3a4b-4bc0-9c69-a0823fd69bba-mydatastore.projectcabostore.net
+Address:  104.44.88.112
+Aliases:  mydatastore.azuredatalakestore.net
+```
 
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>Connectiviteit van Vm's die zijn beperkt met behulp van NSG inschakelen
@@ -50,7 +54,7 @@ Wanneer routes, ofwel Udr's of BGP-exchangeed routes, worden gebruikt om de toeg
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-expressroute"></a>Connectiviteit van Vm's die zijn beperkt met behulp van ExpressRoute inschakelen
 Wanneer een ExpressRoute-circuit is geconfigureerd, hebben de on-premises servers toegang tot Data Lake Storage Gen1 via open bare peering. Meer informatie over het configureren van ExpressRoute voor open bare peering is beschikbaar op [ExpressRoute-Veelgestelde vragen](../expressroute/expressroute-faqs.md).
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 * [Overzicht van Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Gegevens beveiligen die zijn opgeslagen in Azure Data Lake Storage Gen1](data-lake-store-security-overview.md)
 

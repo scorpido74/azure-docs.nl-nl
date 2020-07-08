@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: ecc38633d8081f9060f2c1877f129378fac68f6e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 5077e71eda42aa3b48cda2b39b60efc19bddd8a5
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84696260"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985530"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Webservices Azure Machine Learning Studio (klassiek): implementatie en verbruik
 
@@ -53,7 +53,9 @@ Als u de cmdlets wilt gebruiken, moet u zich eerst vanuit de Power shell-omgevin
 
 Als u uw voorspellende experiment wilt exporteren, gebruikt u [deze voorbeeld code](https://github.com/ritwik20/AzureML-WebServices). Nadat u het exe-bestand van de code hebt gemaakt, kunt u het volgende typen:
 
-    C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
+```azurepowershell
+C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
+```
 
 Als u de toepassing uitvoert, wordt een JSON-sjabloon voor de webservice gemaakt. Als u de sjabloon wilt gebruiken om een webservice te implementeren, moet u de volgende informatie toevoegen:
 
@@ -68,13 +70,15 @@ Voeg ze toe aan de JSON-sjabloon als onderliggende elementen van het knoop punt 
 
 Hier volgt een voorbeeld:
 
-    "StorageAccount": {
-            "name": "YourStorageAccountName",
-            "key": "YourStorageAccountKey"
-    },
-    "CommitmentPlan": {
-        "id": "subscriptions/YouSubscriptionID/resourceGroups/YourResourceGroupID/providers/Microsoft.MachineLearning/commitmentPlans/YourPlanName"
-    }
+```json
+"StorageAccount": {
+        "name": "YourStorageAccountName",
+        "key": "YourStorageAccountKey"
+},
+"CommitmentPlan": {
+    "id": "subscriptions/YouSubscriptionID/resourceGroups/YourResourceGroupID/providers/Microsoft.MachineLearning/commitmentPlans/YourPlanName"
+}
+```
 
 Raadpleeg de volgende artikelen en voorbeeld code voor aanvullende informatie:
 

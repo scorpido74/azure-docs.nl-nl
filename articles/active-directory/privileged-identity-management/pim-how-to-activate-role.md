@@ -10,22 +10,22 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 06/28/2019
+ms.date: 07/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 203b09ab7287d148b4a5e613b6198b6ad44c7234
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: 433ccecdc5eee5314114d020571761ee82afd6b9
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743963"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024095"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Mijn Microsoft Azure AD-rollen activeren in PIM
 
 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) vereenvoudigt de manier waarop bedrijven bevoorrechte toegang tot resources in azure AD en andere micro soft-onlineservices, zoals Office 365 of Microsoft Intune, kunnen beheren.  
 
-Als u in aanmerking komt voor een administratieve rol, betekent dit dat u die rol kunt activeren wanneer u geprivilegieerde acties moet uitvoeren. Als u bijvoorbeeld af en toe Office 365-functies beheert, is het mogelijk dat beheerders van de bevoegde rol van uw organisatie u geen permanente globale beheerder maken, omdat die rol ook van invloed is op andere services. In plaats daarvan komt u in aanmerking voor Azure AD-rollen zoals Exchange Online-beheerder. U kunt aanvragen om die rol te activeren als u de juiste bevoegdheden nodig hebt, en u hebt beheerders controle voor een vooraf bepaalde periode.
+Als u in aanmerking komt voor een administratieve rol, moet u de roltoewijzing activeren wanneer u geprivilegieerde acties moet uitvoeren. Als u bijvoorbeeld af en toe Office 365-functies beheert, is het mogelijk dat beheerders van de bevoegde rol van uw organisatie u geen permanente globale beheerder maken, omdat die rol ook van invloed is op andere services. In plaats daarvan komt u in aanmerking voor Azure AD-rollen zoals Exchange Online-beheerder. U kunt aanvragen om die rol te activeren als u de juiste bevoegdheden nodig hebt, en u hebt beheerders controle voor een vooraf bepaalde periode.
 
 Dit artikel is voor beheerders die hun Azure AD-rol moeten activeren in Privileged Identity Management.
 
@@ -42,9 +42,9 @@ Vanaf november 2019 wordt het gedeelte van de Azure AD-functies van Privileged I
 
 ## <a name="activate-a-role"></a>Een rol activeren
 
-Wanneer u een Azure AD-rol wilt aannemen, kunt u de activering aanvragen met de navigatie optie **mijn rollen** in privileged Identity Management.
+Wanneer u een Azure AD-rol wilt aannemen, kunt u activering aanvragen door **mijn rollen** te openen in privileged Identity Management.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Open **Azure AD privileged Identity Management**. Zie voor meer informatie over het toevoegen van de Privileged Identity Management tegel aan uw dash board [beginnen met privileged Identity Management](pim-getting-started.md).
 
@@ -56,7 +56,7 @@ Wanneer u een Azure AD-rol wilt aannemen, kunt u de activering aanvragen met de 
 
     ![Azure AD-rollen-mijn in aanmerking komende rollen lijst](./media/pim-how-to-activate-role/activate-link.png)
 
-1. Selecteer **activeren** om het deel venster activeren te openen.
+1. Selecteer **activeren** om de pagina activeren te openen.
 
     ![Azure AD-rollen: de activerings pagina bevat de duur en het bereik](./media/pim-how-to-activate-role/activate-page.png)
 
@@ -74,31 +74,11 @@ Wanneer u een Azure AD-rol wilt aannemen, kunt u de activering aanvragen met de 
 
 1. Voer in het vak **reden** de reden voor de activerings aanvraag in.
 
-1. Selecteer **activeren**.
-
-    Als voor de rol geen goed keuring is vereist, wordt deze geactiveerd en toegevoegd aan de lijst met actieve rollen. Als u de rol wilt gebruiken, volgt u de stappen in de volgende sectie.
-
-    ![Deel venster activeren met bereik, start tijd, duur en reden is voltooid](./media/pim-how-to-activate-role/azure-ad-activation-status.png)
+1. Selecteer **Activate**.
 
     Als voor de [rol goed keuring moet](pim-resource-roles-approval-workflow.md) worden geactiveerd, wordt in de rechter bovenhoek van uw browser gemeld dat de aanvraag goed keuring in behandeling is.
 
     ![Goedkeurings melding in afwachting van activerings aanvraag](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
-
-## <a name="use-a-role-immediately-after-activation"></a>Een rol direct na de activering gebruiken
-
-In het geval van een vertraging na de activering voert u de volgende stappen uit nadat u hebt geactiveerd om uw Azure AD-rollen direct te gebruiken.
-
-1. Open Azure AD Privileged Identity Management.
-
-1. Selecteer **mijn rollen** om een lijst met uw in aanmerking komende Azure AD-rollen en Azure-resource rollen weer te geven.
-
-1. Selecteer **Azure AD-rollen**.
-
-1. Selecteer het tabblad **actieve rollen** .
-
-1. Zodra de rol actief is, meldt u zich af bij de portal en meldt u zich opnieuw aan.
-
-    De rol moet nu beschikbaar zijn voor gebruik.
 
 ## <a name="view-the-status-of-your-requests"></a>De status van uw aanvragen weer geven
 
@@ -134,8 +114,6 @@ Wanneer u een rol in Privileged Identity Management activeert, wordt de activeri
 
 1. Meld u af bij de Azure-portal en meld u weer aan.
 
-    Wanneer u een Azure AD-rol activeert, ziet u de fasen van uw activering. Wanneer alle fasen zijn voltooid, ziet u de koppeling **Afmelden**. U kunt deze koppeling gebruiken om u af te melden. Hiermee worden de meeste gevallen voor de activerings vertraging opgelost.
-
 1. Controleer in Privileged Identity Management of u wordt vermeld als lid van de rol.
 
 # <a name="previous-version"></a>[Vorige versie](#tab/previous)
@@ -144,7 +122,7 @@ Wanneer u een rol in Privileged Identity Management activeert, wordt de activeri
 
 Wanneer u een Azure AD-rol nodig hebt, kunt u activering aanvragen met behulp van de navigatie optie **mijn rollen** in privileged Identity Management.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Open **Azure AD privileged Identity Management**. Zie voor meer informatie over het toevoegen van de Privileged Identity Management tegel aan uw dash board [beginnen met privileged Identity Management](pim-getting-started.md).
 

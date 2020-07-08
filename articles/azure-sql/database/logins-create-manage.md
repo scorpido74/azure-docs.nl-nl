@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 description: Meer informatie over hoe Azure SQL Database, SQL Managed instance en Azure Synapse gebruikers voor toegang verifieert met behulp van aanmeldingen en gebruikers accounts. Meer informatie over het verlenen van database rollen en expliciete machtigingen om aanmeldingen en gebruikers te autoriseren om acties uit te voeren en gegevens op te vragen.
 keywords: sql-databasebeveiliging,beheer databasebeveiliging,aanmeldingsbeveiliging,databasebeveiliging,databasetoegang
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=3
 ms.devlang: ''
@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: ebd55151a4b1656ec1187117b7c4b6da9d37e161
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: fbcec1ace45927561c56449cd8ca0c8d3306b3bd
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298461"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986280"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Database toegang tot SQL Database, SQL Managed instance en Azure Synapse Analytics autoriseren
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]

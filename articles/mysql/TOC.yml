@@ -109,6 +109,8 @@
           href: concepts-data-encryption-mysql.md
         - name: Azure Active Directory-verificatie
           href: concepts-azure-ad-authentication.md
+        - name: Dubbele infrastructuurversleuteling
+          href: concepts-infrastructure-double-encryption.md
         - name: Beveiligingsbasislijn
           href: security-baseline.md
     - name: Bedrijfscontinuïteit
@@ -276,6 +278,10 @@
           href: howto-data-encryption-cli.md
         - name: Validatie voor gegevensversleuteling
           href: howto-data-encryption-validation.md
+    - name: Dubbele infrastructuurversleuteling
+      items:
+        - name: Dubbele infrastructuurversleuteling configureren
+          href: howto-double-encryption.md
     - name: Azure AD-integratie
       items:
         - name: Azure AD-integratie configureren

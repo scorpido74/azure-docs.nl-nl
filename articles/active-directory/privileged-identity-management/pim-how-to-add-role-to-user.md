@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/07/2020
+ms.date: 07/01/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06dbb985ece8e5b6df3ef3f29a997af5212404ad
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: 7cdea30e7b630b2fa62b004f98cb67fd1994f915
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84742674"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024159"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-rollen toewijzen in Privileged Identity Management
 
@@ -53,15 +53,13 @@ Volg deze stappen om een gebruiker in aanmerking te laten komen voor een Azure A
 
     ![Azure AD-rollen](./media/pim-how-to-add-role-to-user/roles-list.png)
 
-1. Selecteer **lid toevoegen** om de pagina **nieuwe toewijzing** te openen.
+1. Selecteer **toewijzingen toevoegen** om de pagina **toewijzingen toevoegen** te openen.
 
-1. Selecteer **een rol selecteren** om de pagina een rol selecteren te openen.
+1. Selecteer **een rol selecteren** om de pagina **een rol selecteren** te openen.
 
     ![Deel venster nieuwe toewijzing](./media/pim-how-to-add-role-to-user/select-role.png)
 
-1. Selecteer een rol die u wilt toewijzen en klik vervolgens op **selecteren**.
-
-1. Selecteer een lid waaraan u de rol wilt toewijzen en selecteer vervolgens **selecteren**.
+1. Selecteer een rol die u wilt toewijzen, selecteer een lid waaraan u de rol wilt toewijzen en selecteer vervolgens **volgende**.
 
 1. Selecteer in de lijst **toewijzings type** in het deel venster **lidmaatschaps instellingen** in **aanmerking komend** of **actief**.
 
@@ -69,15 +67,11 @@ Volg deze stappen om een gebruiker in aanmerking te laten komen voor een Azure A
 
     - Voor **actieve** toewijzingen hoeft het lid geen actie te ondernemen om de rol te gebruiken. Aan leden die als actief zijn toegewezen, zijn de bevoegdheden altijd toegewezen aan de rol.
 
-1. Als de toewijzing permanent moet zijn (permanent in aanmerking komend of permanent toegewezen), schakelt u het selectie vakje **permanent** in.
-
-    Afhankelijk van de rolinstellingen, wordt het selectie vakje mogelijk niet weer gegeven of kan het niet worden gewijzigd.
-
-1. Als u een specifieke duur voor de toewijzing wilt opgeven, schakelt u het selectie vakje uit en wijzigt u de begin-en/of eind datum en-tijd vakken. Als u klaar bent, selecteert u **gereed**.
+1. Als u een specifieke toewijzings duur wilt opgeven, voegt u een begin-en eind datum en-tijd vakken toe. Wanneer u klaar bent, selecteert u **toewijzen** om de nieuwe roltoewijzing te maken.
 
     ![Instellingen voor lidmaatschappen-datum en tijd](./media/pim-how-to-add-role-to-user/start-and-end-dates.png)
 
-1. Als u de nieuwe roltoewijzing wilt maken, selecteert u **toevoegen**. Er wordt een melding van de status weer gegeven.
+1. Nadat de rol is toegewezen, wordt er een melding over een toewijzings status weer gegeven.
 
     ![Nieuwe toewijzing-melding](./media/pim-how-to-add-role-to-user/assignment-notification.png)
 
@@ -129,7 +123,7 @@ Volg deze stappen om een gebruiker in aanmerking te laten komen voor een Azure A
 
 1. Nu de gebruiker in aanmerking komt voor de rol, laat hij ze weten dat ze deze kunnen activeren volgens de instructies in [mijn Azure AD-rollen activeren in privileged Identity Management](pim-how-to-activate-role.md).
 
-    In aanmerking komende beheerders worden tijdens de activering gevraagd om zich te registreren voor Azure Multi-Factor Authentication (MFA). Als een gebruiker zich niet kan registreren voor MFA of een Microsoft-account (zoals) gebruikt @outlook.com , moet u deze in al hun rollen blijvend maken.
+    In aanmerking komende beheerders worden tijdens de activering gevraagd om zich te registreren voor Azure Multi-Factor Authentication. Als een gebruiker zich niet kan registreren voor MFA of een Microsoft-account (zoals) gebruikt @outlook.com , moet u deze in al hun rollen blijvend maken.
 
 ## <a name="make-a-role-assignment-permanent"></a>Een roltoewijzing permanent maken
 

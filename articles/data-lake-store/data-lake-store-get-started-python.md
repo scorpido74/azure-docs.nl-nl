@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: tracking-python
-ms.openlocfilehash: 78e638952513eddf8da828158c4afa3187819fbb
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: e72873f01a68a9c5c7fcd44086464bb850836715
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85508602"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985910"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Account beheer bewerkingen op Azure Data Lake Storage Gen1 met behulp van python
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ Als u wilt werken met Data Lake Storage Gen1 met behulp van python, moet u drie 
 
 Gebruik de volgende opdrachten om de modules te installeren.
 
-```
+```console
 pip install azure-mgmt-resource
 pip install azure-mgmt-datalake-store
 pip install azure-datalake-store
@@ -54,7 +54,7 @@ pip install azure-datalake-store
 
 2. Voeg het volgende codefragment toe om de vereiste modules te importeren
 
-    ```
+    ```python
     ## Use this only for Azure AD service-to-service authentication
     from azure.common.credentials import ServicePrincipalCredentials
 
@@ -92,43 +92,49 @@ In deze sectie bespreken we de verschillende manieren om te verifiëren met Azur
 
 In het volgende code fragment maakt u eerst de client voor het Data Lake Storage Gen1-account. Er wordt gebruikgemaakt van het-client object om een Data Lake Storage Gen1-account te maken. Ten slotte maakt het fragment een clientobject voor het bestandssysteem.
 
-    ## Declare variables
-    subscriptionId = 'FILL-IN-HERE'
-    adlsAccountName = 'FILL-IN-HERE'
-    resourceGroup = 'FILL-IN-HERE'
-    location = 'eastus2'
+```python
+## Declare variables
+subscriptionId = 'FILL-IN-HERE'
+adlsAccountName = 'FILL-IN-HERE'
+resourceGroup = 'FILL-IN-HERE'
+location = 'eastus2'
 
-    ## Create Data Lake Storage Gen1 account management client object
-    adlsAcctClient = DataLakeStoreAccountManagementClient(armCreds, subscriptionId)
+## Create Data Lake Storage Gen1 account management client object
+adlsAcctClient = DataLakeStoreAccountManagementClient(armCreds, subscriptionId)
 
-    ## Create a Data Lake Storage Gen1 account
-    adlsAcctResult = adlsAcctClient.account.create(
-        resourceGroup,
-        adlsAccountName,
-        DataLakeStoreAccount(
-            location=location
-        )
-    ).wait()
+## Create a Data Lake Storage Gen1 account
+adlsAcctResult = adlsAcctClient.account.create(
+    resourceGroup,
+    adlsAccountName,
+    DataLakeStoreAccount(
+        location=location
+    )
+).wait()
+```
 
     
 ## <a name="list-the-data-lake-storage-gen1-accounts"></a>De Data Lake Storage Gen1-accounts weer geven
 
-    ## List the existing Data Lake Storage Gen1 accounts
-    result_list_response = adlsAcctClient.account.list()
-    result_list = list(result_list_response)
-    for items in result_list:
-        print(items)
+```python
+## List the existing Data Lake Storage Gen1 accounts
+result_list_response = adlsAcctClient.account.list()
+result_list = list(result_list_response)
+for items in result_list:
+    print(items)
+```
 
 ## <a name="delete-the-data-lake-storage-gen1-account"></a>Het Data Lake Storage Gen1 account verwijderen
 
-    ## Delete an existing Data Lake Storage Gen1 account
-    adlsAcctClient.account.delete(adlsAccountName)
+```python
+## Delete an existing Data Lake Storage Gen1 account
+adlsAcctClient.account.delete(adlsAccountName)
+```
     
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Bestandssysteem bewerkingen op Data Lake Storage gen1 met behulp van python](data-lake-store-data-operations-python.md).
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Naslag informatie over Azure-datalake-Store python (File System)](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core)
 * [Open source Big Data-toepassingen die compatibel zijn met Azure Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)

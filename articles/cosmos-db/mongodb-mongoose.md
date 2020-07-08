@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 05298ac0b76f93ba8249cc72910d33b58a9889e4
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 2ccd352950117d8427809616f78f4a0691319cdf
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263123"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023666"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Een Node.js Mongoose-toepassing verbinden met Azure Cosmos DB
 
@@ -194,7 +194,7 @@ In deze sectie wordt beschreven hoe u dit kunt doen met de API van Azure Cosmos 
 
 1. Nu ziet u in het Azure Portal twee verzamelingen die zijn gemaakt in Cosmos DB.
 
-    ![Node.js zelf studie: scherm afbeelding van de Azure Portal, met een Azure Cosmos DB account, waarbij meerdere verzamelings namen zijn gemarkeerd-knooppunt database][multiple-coll]
+   :::image type="content" source="./media/mongodb-mongoose/mongo-mutliple-collections.png" alt-text="Node.js zelf studie: scherm afbeelding van de Azure Portal, met een Azure Cosmos DB account, waarbij meerdere verzamelings namen zijn gemarkeerd-knooppunt database":::
 
 1. Tot slot lezen we de gegevens van Cosmos DB. Aangezien we gebruikmaken van het standaardmodel van Mongoose, zijn de leesbewerkingen hetzelfde als alle andere leesbewerkingen met Mongoose.
 
@@ -299,7 +299,7 @@ Hier maken we een basisobjectmodel, definiëren we een onderscheidende sleutel e
 
 1. Als u nu terug naar Azure Portal gaat, ziet u dat er slechts één verzameling met de naam ```alldata``` met zowel 'Family'- als 'VacationDestinations'-gegevens heeft.
 
-    ![Node.js zelf studie: scherm afbeelding van de Azure Portal met een Azure Cosmos DB-account, waarbij de naam van de verzameling is gemarkeerd-knooppunt database][alldata]
+   :::image type="content" source="./media/mongodb-mongoose/mongo-collections-alldata.png" alt-text="Node.js zelf studie: scherm afbeelding van de Azure Portal met een Azure Cosmos DB-account, waarbij de naam van de verzameling is gemarkeerd-knooppunt database":::
 
 1. U ziet ook dat elk object een ander kenmerk heeft dat wordt aangeroepen als ```__type```, waarmee u onderscheid tussen de twee verschillende objectmodellen kunt maken.
 
@@ -323,6 +323,4 @@ Zoals u ziet, is het eenvoudig om met Mongoose-discriminators te werken. Als u e
 - Meer informatie over het [gebruik van Robo 3T](mongodb-robomongo.md) met de API voor MongoDB van Azure Cosmos DB.
 - Verken [voorbeelden](mongodb-samples.md) van MongoDB met de API van Azure Cosmos DB voor MongoDB.
 
-[alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png
-[multiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png
 [dbleveltp]: ./media/mongodb-mongoose/db-level-throughput.png

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9550684ad154f28a02ee347fd0a79c1ec286beb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db61a3f9034908043695bc7db3a16551bf4659c3
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74382185"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024074"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection-beveiligings overzicht
 
@@ -56,7 +56,7 @@ In de tegel niet-beveiligde Risk ante aanmeldingen wordt het aantal geslaagde, r
 
 ### <a name="legacy-authentication"></a>Verouderde verificatie
 
-De tegel ' verouderde verificatie ' bevat het aantal verouderde authenticaties van de laatste week in uw organisatie. Verouderde verificatie protocollen bieden geen ondersteuning voor moderne beveiligings methoden zoals een MFA. Als u verouderde verificatie wilt voor komen, kunt u een beleid voor voorwaardelijke toegang Toep assen. Als u op de tegel ' oude verificatie ' klikt, wordt u omgeleid naar de beveiligde score voor identiteit.
+De tegel ' verouderde verificatie ' toont het aantal verouderde authenticaties van de laatste week met een risico dat aanwezig is in uw organisatie. Verouderde verificatie protocollen bieden geen ondersteuning voor moderne beveiligings methoden zoals een MFA. Als u verouderde verificatie wilt voor komen, kunt u een beleid voor voorwaardelijke toegang Toep assen. Als u op de tegel ' oude verificatie ' klikt, wordt u omgeleid naar de beveiligde score voor identiteit.
 
 ### <a name="identity-secure-score"></a>Identiteits veilige Score
 
@@ -64,6 +64,6 @@ De identiteit van de beveiligde score meet en vergelijkt uw beveiligings postuur
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Wat is risico](concept-identity-protection-risks.md)
+- [What is risk](concept-identity-protection-risks.md) (Wat is een risico?)
 
-- [Beleids regels beschikbaar om Risico's te beperken](concept-identity-protection-policies.md)
+- [Policies available to mitigate risks](concept-identity-protection-policies.md) (Beschikbare beleidsregels om risico's te beperken)

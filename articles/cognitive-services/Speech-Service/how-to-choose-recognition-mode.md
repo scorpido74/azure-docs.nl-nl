@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.author: dapine
+ms.author: trbye
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 0c0c57c27689da7df23285c9740665f811f71fd5
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: ed2c59a92f348812afac3e39719d3814f0720621
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977563"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023037"
 ---
 # <a name="choose-a-speech-recognition-mode"></a>Een modus voor spraak herkenning kiezen
 
@@ -30,7 +30,7 @@ Aan het einde van een herkende utterance stopt de service de verwerking van de a
 
 ::: zone pivot="programming-language-csharp"
 
-Zie de [documentatie voor .net Speech SDK](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechRecognizer_RecognizeOnceAsync)voor meer informatie over het gebruik van de `RecognizeOnceAsync` functie.
+`RecognizeOnceAsync`Zie de [documentatie voor .net Speech SDK](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechRecognizer_RecognizeOnceAsync)voor meer informatie over het gebruik van de functie.
 
 ```csharp
 var result = await recognizer.RecognizeOnceAsync();
@@ -39,7 +39,7 @@ var result = await recognizer.RecognizeOnceAsync();
 ::: zone-end
 ::: zone pivot="programming-language-cpp"
 
-Zie de [documentatie van C++ Speech SDK](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#recognizeonceasync)voor meer informatie over het gebruik van de `RecognizeOnceAsync` functie.
+`RecognizeOnceAsync`Zie de [documentatie van C++ Speech SDK](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#recognizeonceasync)voor meer informatie over het gebruik van de functie.
 
 ```cpp
 auto result = recognize->RecognizeOnceAsync().get();
@@ -48,7 +48,7 @@ auto result = recognize->RecognizeOnceAsync().get();
 ::: zone-end
 ::: zone pivot="programming-language-java"
 
-Zie de [documentatie voor Java Speech SDK](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechRecognizer.recognizeOnceAsync?view=azure-java-stable)voor meer informatie over het gebruik van de `recognizeOnceAsync` functie.
+`recognizeOnceAsync`Zie de [documentatie voor Java Speech SDK](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechRecognizer.recognizeOnceAsync?view=azure-java-stable)voor meer informatie over het gebruik van de functie.
 
 ```java
 SpeechRecognitionResult result = recognizer.recognizeOnceAsync().get();
@@ -57,7 +57,7 @@ SpeechRecognitionResult result = recognizer.recognizeOnceAsync().get();
 ::: zone-end
 ::: zone pivot="programming-language-python"
 
-Zie de [documentatie van python Speech SDK](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python#recognize-once------azure-cognitiveservices-speech-speechrecognitionresult)voor meer informatie over het gebruik van de `recognize_once` functie.
+`recognize_once`Zie de [documentatie van PYTHON Speech SDK](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python#recognize-once------azure-cognitiveservices-speech-speechrecognitionresult)voor meer informatie over het gebruik van de functie.
 
 ```python
 result = speech_recognizer.recognize_once()
@@ -67,7 +67,7 @@ result = speech_recognizer.recognize_once()
 
 ::: zone pivot="programming-language-javascript"
 
-Zie de `recognizeOnceAsync` [Java script Speech SDK docs](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-)(Engelstalig) voor meer informatie over het gebruik van de functie.
+`recognizeOnceAsync`Zie de [Speech SDK voor Java script-documenten](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognizeonceasync--e--speechrecognitionresult-----void---e--string-----void-)voor meer informatie over het gebruik van de functie.
 
 ```JavaScript
 recognizer.recognizeOnceAsync((result)=>{}, (error)=>{}));
@@ -195,7 +195,7 @@ Bij het gebruik van doorlopende herkenning kunt u de verwerking van spraak herke
 
 ::: zone pivot="programming-language-csharp"
 
-Zie de [documentatie voor .net Speech SDK](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EnableDictation)voor meer informatie over het gebruik van de `EnableDictation` functie.
+`EnableDictation`Zie de [documentatie voor .net Speech SDK](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EnableDictation)voor meer informatie over het gebruik van de functie.
 
 ```csharp
 // Enable diction
@@ -205,7 +205,7 @@ SpeechConfig.EnableDictation();
 ::: zone-end
 ::: zone pivot="programming-language-cpp"
 
-Zie de [documentatie van C++ Speech SDK](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#enabledictation)voor meer informatie over het gebruik van de `EnableDictation` functie.
+`EnableDictation`Zie de [documentatie van C++ Speech SDK](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#enabledictation)voor meer informatie over het gebruik van de functie.
 
 ```cpp
 // Enable diction
@@ -215,7 +215,7 @@ SpeechConfig->EnableDictation();
 ::: zone-end
 ::: zone pivot="programming-language-java"
 
-Zie de [documentatie voor Java Speech SDK](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechConfig.enableDictation?view=azure-java-stable)voor meer informatie over het gebruik van de `enableDictation` functie.
+`enableDictation`Zie de [documentatie voor Java Speech SDK](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechConfig.enableDictation?view=azure-java-stable)voor meer informatie over het gebruik van de functie.
 
 ```java
 // Enable diction
@@ -225,7 +225,7 @@ SpeechConfig.enableDictation();
 ::: zone-end
 ::: zone pivot="programming-language-python"
 
-Zie de [documentatie van python Speech SDK](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#enable-dictation--)voor meer informatie over het gebruik van de `enable_dictation` functie.
+`enable_dictation`Zie de [documentatie van PYTHON Speech SDK](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#enable-dictation--)voor meer informatie over het gebruik van de functie.
 
 ```python
 # Enable diction
@@ -236,7 +236,7 @@ SpeechConfig.enable_dictation()
 
 ::: zone pivot="programming-language-javascript"
 
-Zie de `enableDictation` [Java script Speech SDK docs](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#enabledictation--)(Engelstalig) voor meer informatie over het gebruik van de functie.
+`enableDictation`Zie de [Speech SDK voor Java script-documenten](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#enabledictation--)voor meer informatie over het gebruik van de functie.
 
 ```JavaScript
 // Enable diction

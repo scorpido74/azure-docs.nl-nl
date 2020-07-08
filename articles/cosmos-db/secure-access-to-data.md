@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 1349ec3fc0fe9b5db60af883558a9d0aed5ee612
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 9c851a172fcfe89e6e7aa31c298a5b3d7931a528
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392179"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023581"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Beveiligde toegang tot gegevens in Azure Cosmos DB
 
@@ -41,7 +41,7 @@ Naast de twee hoofd sleutels voor het Cosmos DB-account, zijn er twee alleen-lez
 
 De hoofd sleutels primair, secundair, alleen-lezen en lezen/schrijven kunnen worden opgehaald en opnieuw worden gegenereerd met behulp van de Azure Portal. Zie [toegangs sleutels weer geven, kopiëren en opnieuw genereren](manage-with-cli.md#regenerate-account-key)voor instructies.
 
-![Toegangs beheer (IAM) in de Azure Portal-demonstring NoSQL data base Security](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Toegangs beheer (IAM) in de Azure Portal-demonstring NoSQL data base Security":::
 
 ### <a name="key-rotation"></a>Sleutel rotatie<a id="key-rotation"></a>
 
@@ -103,7 +103,7 @@ Het genereren en beheren van bron tokens worden verwerkt door de systeem eigen C
 
 Zie de [resource token Broker-app](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)voor een voor beeld van een middle-tier service die wordt gebruikt om resource tokens te genereren of Broker.
 
-## <a name="users"></a>Bezoekers<a id="users"></a>
+## <a name="users"></a>Gebruikers<a id="users"></a>
 
 Azure Cosmos DB gebruikers zijn gekoppeld aan een Cosmos-data base.  Elke Data Base kan nul of meer Cosmos DB gebruikers bevatten. In het volgende code voorbeeld ziet u hoe u een Cosmos DB gebruiker maakt met behulp van de [Azure Cosmos db .NET SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement).
 
@@ -117,7 +117,7 @@ User user = await database.CreateUserAsync("User 1");
 > [!NOTE]
 > Elke Cosmos DB gebruiker heeft een ReadAsync ()-methode die kan worden gebruikt voor het ophalen van de lijst met [machtigingen](#permissions) die aan de gebruiker zijn gekoppeld.
 
-## <a name="permissions"></a>Bevoegdheden<a id="permissions"></a>
+## <a name="permissions"></a>Machtigingen<a id="permissions"></a>
 
 Een machtigings resource is gekoppeld aan een gebruiker en toegewezen aan de container en het niveau van de partitie sleutel. Elke gebruiker kan nul of meer machtigingen bevatten. Een machtigings bron biedt toegang tot een beveiligings token dat de gebruiker nodig heeft om toegang te krijgen tot een specifieke container of gegevens in een specifieke partitie sleutel. Er zijn twee toegangs niveaus beschikbaar die kunnen worden gegeven door een machtigings Bron:
 

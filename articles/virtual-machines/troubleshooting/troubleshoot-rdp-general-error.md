@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7fc0fbf3362d18284ad6a80afa6396b6be1270a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f996ffa864fb4178ddedecde7c5511d5d9cf39a1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71058004"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985803"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Een algemene RDP-fout in een Azure-VM oplossen
 
@@ -60,13 +60,13 @@ De RDP-listener is onjuist geconfigureerd.
 
 ## <a name="solution"></a>Oplossing
 
-U kunt dit probleem oplossen door een [back-up te maken van de schijf van het besturings systeem](../windows/snapshot-copy-managed-disk.md)en [de besturingssysteem schijf te koppelen aan een herstel-VM](troubleshoot-recovery-disks-portal-windows.md)en de stappen te volgen.
+Voordat u deze stappen volgt, moet u een moment opname maken van de besturingssysteem schijf van de betrokken VM als back-up. U kunt dit probleem oplossen met behulp van serieel beheer of de virtuele machine offline herstellen.
 
 ### <a name="serial-console"></a>Seriële console
 
 #### <a name="step-1-open-cmd-instance-in-serial-console"></a>Stap 1: open CMD-exemplaar in Seriële console
 
-1. Open de [seriële console](serial-console-windows.md) door ondersteuning te selecteren **& probleem oplossing** > **seriële console (preview)**. Als de functie is ingeschakeld op de virtuele machine, kunt u verbinding maken met de virtuele machine.
+1. Open de [seriële console](serial-console-windows.md) door ondersteuning te selecteren **& probleem oplossing**  >  **seriële console (preview)**. Als de functie is ingeschakeld op de virtuele machine, kunt u verbinding maken met de virtuele machine.
 
 2. Een nieuw kanaal maken voor een CMD-exemplaar. Typ **cmd** om het kanaal te starten om de kanaal naam op te halen.
 
@@ -78,29 +78,37 @@ U kunt dit probleem oplossen door een [back-up te maken van de schijf van het be
 
 #### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>Stap 2: Controleer de waarden van RDP-register sleutels:
 
-1. Controleer of RDP is uitgeschakeld door policies.
+1. Controleer of de RDP is uitgeschakeld door groeps beleid.
 
-      ```
-      REM Get the local policy 
-      reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server " /v fDenyTSConnections
+    ```
+    REM Get the group policy 
+    reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
+    ```
+    Als in het groeps beleid wordt aangegeven dat RDP is uitgeschakeld (fDenyTSConnections waarde is 0x1), voert u de volgende opdracht uit om de service term in te scha kelen. Als de register sleutel niet wordt gevonden, is er geen groeps beleid geconfigureerd om de RDP uit te scha kelen. U kunt door gaan naar de volgende stap.
 
-      REM Get the domain policy if any
-      reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
-      ```
+    ```
+    REM update the fDenyTSConnections value to enable TermService service
+    reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+    ```
+    > [!NOTE]
+    > Met deze stap wordt de service Terminal Services tijdelijk ingeschakeld. De wijziging wordt opnieuw ingesteld wanneer de instellingen voor groeps beleid worden vernieuwd. Om het probleem op te lossen, moet u controleren of de service wordt uitgeschakeld door het lokale groeps beleid of door het groeps beleid van de domein en de beleids instellingen dienovereenkomstig bij te werken.
+    
+2. Controleer de huidige configuratie van de externe verbinding.
+    ```
+    REM Get the local remote connection setting
+    reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections
+    ```
+    Als de opdracht 0x1 retourneert, kan de virtuele machine geen externe verbinding toestaan. Vervolgens kunt u externe verbinding toestaan met de volgende opdracht:
+     ```
+     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+     ```
+    
+1. Controleer de huidige configuratie van de Terminal Server.
 
-      - Als het domein beleid bestaat, wordt de installatie van het lokale beleid overschreven.
-      - Als in het domein beleid wordt aangegeven dat RDP is uitgeschakeld (1), werkt u het AD-beleid bij van domein controller.
-      - Als in het domein beleid wordt aangegeven dat RDP is ingeschakeld (0), is er geen update nodig.
-      - Als het domein beleid niet bestaat en de status van het lokale beleid dat RDP is uitgeschakeld (1), schakelt u RDP in met behulp van de volgende opdracht: 
-      
-            reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
-                  
-
-2. Controleer de huidige configuratie van de Terminal Server.
-
-      ```
-      reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
-      ```
+    ```
+    REM Get the local remote connection setting
+    reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
+    ```
 
       Als de opdracht 0 retourneert, wordt de Terminal server uitgeschakeld. Schakel vervolgens de Terminal-Server als volgt in:
 
@@ -157,9 +165,9 @@ U kunt dit probleem oplossen door een [back-up te maken van de schijf van het be
 
 7. Start de VM opnieuw.
 
-8. Verlaat het CMD-exemplaar door te `exit`typen en vervolgens twee keer op **Enter** te drukken.
+8. Verlaat het CMD-exemplaar door te typen `exit` en vervolgens twee keer op **Enter** te drukken.
 
-9. Start de VM opnieuw op `restart`door te typen en vervolgens verbinding te maken met de virtuele machine.
+9. Start de VM opnieuw op door te typen `restart` en vervolgens verbinding te maken met de virtuele machine.
 
 Als het probleem nog steeds optreedt, gaat u naar stap 2.
 

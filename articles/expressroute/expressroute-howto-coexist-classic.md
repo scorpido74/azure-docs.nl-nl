@@ -8,12 +8,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: charwen
-ms.openlocfilehash: ad762d67825b69bf226de720cbe333043b1b9bf7
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: b1efaecc0bb857478a6a9f94db33ddaf547f1ac2
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84736336"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985204"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Gelijktijdige ExpressRoute- en site-to-site-verbindingen configureren (klassiek)
 > [!div class="op_single_selector"]
@@ -92,65 +92,77 @@ Deze procedure helpt u bij het maken van een VNet en site-naar-site- en ExpressR
    * Het gatewaysubnet voor het virtuele netwerk moet /27 of een korter voorvoegsel (zoals /26 of /25) zijn.
    * Het verbindingstype van de gateway is Toegewezen.
      
-             <VirtualNetworkSite name="MyAzureVNET" Location="Central US">
-               <AddressSpace>
-                 <AddressPrefix>10.17.159.192/26</AddressPrefix>
-               </AddressSpace>
-               <Subnets>
-                 <Subnet name="Subnet-1">
-                   <AddressPrefix>10.17.159.192/27</AddressPrefix>
-                 </Subnet>
-                 <Subnet name="GatewaySubnet">
-                   <AddressPrefix>10.17.159.224/27</AddressPrefix>
-                 </Subnet>
-               </Subnets>
-               <Gateway>
-                 <ConnectionsToLocalNetwork>
-                   <LocalNetworkSiteRef name="MyLocalNetwork">
-                     <Connection type="Dedicated" />
-                   </LocalNetworkSiteRef>
-                 </ConnectionsToLocalNetwork>
-               </Gateway>
-             </VirtualNetworkSite>
+    ```xml
+    <VirtualNetworkSite name="MyAzureVNET" Location="Central US">
+      <AddressSpace>
+        <AddressPrefix>10.17.159.192/26</AddressPrefix>
+      </AddressSpace>
+      <Subnets>
+        <Subnet name="Subnet-1">
+          <AddressPrefix>10.17.159.192/27</AddressPrefix>
+        </Subnet>
+        <Subnet name="GatewaySubnet">
+          <AddressPrefix>10.17.159.224/27</AddressPrefix>
+          /Subnet>
+      </Subnets>
+      <Gateway>
+        <ConnectionsToLocalNetwork>
+          <LocalNetworkSiteRef name="MyLocalNetwork">
+            <Connection type="Dedicated" />
+          </LocalNetworkSiteRef>
+        </ConnectionsToLocalNetwork>
+      </Gateway>
+    </VirtualNetworkSite>
+    ```
 3. Upload het bestand nadat u het XML-schemabestand hebt gemaakt en geconfigureerd. Hiermee maakt u het virtuele netwerk.
    
     Gebruik de volgende cmdlet voor het uploaden van het bestand en vervang de waarde door uw eigen waarde.
    
-        Set-AzureVNetConfig -ConfigurationPath 'C:\NetworkConfig.xml'
+    ```azurepowershell
+    Set-AzureVNetConfig -ConfigurationPath 'C:\NetworkConfig.xml'
+    ```
 4. <a name="gw"></a>Maak een ExpressRoute-gateway. Zorg ervoor dat u de GatewaySKU opgeeft als *Standard*, *HighPerformance* of *UltraPerformance* en het GatewayType als *DynamicRouting*.
    
     Gebruik het volgende voorbeeld, waarbij u de waarden vervangt door uw eigen waarden.
-   
-        New-AzureVNetGateway -VNetName MyAzureVNET -GatewayType DynamicRouting -GatewaySKU HighPerformance
+
+    ```azurepowershell
+    New-AzureVNetGateway -VNetName MyAzureVNET -GatewayType DynamicRouting -GatewaySKU HighPerformance
+    ```
 5. Koppel de ExpressRoute-gateway aan het ExpressRoute-circuit. Nadat deze stap is voltooid, wordt de verbinding tussen uw on-premises netwerk en Azure tot stand gebracht via ExpressRoute.
    
-        New-AzureDedicatedCircuitLink -ServiceKey <service-key> -VNetName MyAzureVNET
+    ```azurepowershell
+    New-AzureDedicatedCircuitLink -ServiceKey <service-key> -VNetName MyAzureVNET
+    ```
 6. <a name="vpngw"></a>Maak vervolgens uw site-naar-site-VPN-gateway. De GatewaySKU moet zijn ingesteld op *Standard*, *HighPerformance* of *UltraPerformance* en het GatewayType op *DynamicRouting*.
    
-        New-AzureVirtualNetworkGateway -VNetName MyAzureVNET -GatewayName S2SVPN -GatewayType DynamicRouting -GatewaySKU  HighPerformance
+    ```azurepowershell
+    New-AzureVirtualNetworkGateway -VNetName MyAzureVNET -GatewayName S2SVPN -GatewayType DynamicRouting -GatewaySKU  HighPerformance
+    ```
    
     Gebruik de cmdlet `Get-AzureVirtualNetworkGateway` om de instellingen van de gateway van het virtuele netwerk op te halen, waaronder de gateway-ID en het openbare IP-adres.
    
-        Get-AzureVirtualNetworkGateway
+    ```azurepowershell
+    Get-AzureVirtualNetworkGateway
    
-        GatewayId            : 348ae011-ffa9-4add-b530-7cb30010565e
-        GatewayName          : S2SVPN
-        LastEventData        :
-        GatewayType          : DynamicRouting
-        LastEventTimeStamp   : 5/29/2015 4:41:41 PM
-        LastEventMessage     : Successfully created a gateway for the following virtual network: GNSDesMoines
-        LastEventID          : 23002
-        State                : Provisioned
-        VIPAddress           : 104.43.x.y
-        DefaultSite          :
-        GatewaySKU           : HighPerformance
-        Location             :
-        VnetId               : 979aabcf-e47f-4136-ab9b-b4780c1e1bd5
-        SubnetId             :
-        EnableBgp            : False
-        OperationDescription : Get-AzureVirtualNetworkGateway
-        OperationId          : 42773656-85e1-a6b6-8705-35473f1e6f6a
-        OperationStatus      : Succeeded
+    GatewayId            : 348ae011-ffa9-4add-b530-7cb30010565e
+    GatewayName          : S2SVPN
+    LastEventData        :
+    GatewayType          : DynamicRouting
+    LastEventTimeStamp   : 5/29/2015 4:41:41 PM
+    LastEventMessage     : Successfully created a gateway for the following virtual network: GNSDesMoines
+    LastEventID          : 23002
+    State                : Provisioned
+    VIPAddress           : 104.43.x.y
+    DefaultSite          :
+    GatewaySKU           : HighPerformance
+    Location             :
+    VnetId               : 979aabcf-e47f-4136-ab9b-b4780c1e1bd5
+    SubnetId             :
+    EnableBgp            : False
+    OperationDescription : Get-AzureVirtualNetworkGateway
+    OperationId          : 42773656-85e1-a6b6-8705-35473f1e6f6a
+    OperationStatus      : Succeeded
+    ```
 7. Maak een lokaal exemplaar van de VPN-gateway van uw site. Deze opdracht wordt niet gebruikt om uw on-premises VPN-gateway te configureren. Met deze opdracht kunt u de instellingen voor de lokale gateway opgeven, zoals het openbare IP-adres en de on-premises-adresruimte, zodat de Azure VPN-gateway er verbinding mee kan maken.
    
    > [!IMPORTANT]
@@ -160,7 +172,9 @@ Deze procedure helpt u bij het maken van een VNet en site-naar-site- en ExpressR
    
     Gebruik het volgende voorbeeld, waarbij u de waarden vervangt door uw eigen waarden.
    
-        New-AzureLocalNetworkGateway -GatewayName MyLocalNetwork -IpAddress <MyLocalGatewayIp> -AddressSpace <MyLocalNetworkAddress>
+    ```azurepowershell
+    New-AzureLocalNetworkGateway -GatewayName MyLocalNetwork -IpAddress <MyLocalGatewayIp> -AddressSpace <MyLocalNetworkAddress>
+    ```
    
    > [!NOTE]
    > Als uw lokale netwerk meerdere routes heeft, kunt u ze doorgeven als een matrix.  $MyLocalNetworkAddress = @('10.1.2.0/24', '10.1.3.0/24', '10.2.1.0/24')  
@@ -169,15 +183,17 @@ Deze procedure helpt u bij het maken van een VNet en site-naar-site- en ExpressR
 
     Gebruik de cmdlet `Get-AzureVirtualNetworkGateway` om de instellingen van de gateway van het virtuele netwerk op te halen, waaronder de gateway-ID en het openbare IP-adres. Zie het volgende voorbeeld
 
-        Get-AzureLocalNetworkGateway
+    ```azurepowershell
+    Get-AzureLocalNetworkGateway
 
-        GatewayId            : 532cb428-8c8c-4596-9a4f-7ae3a9fcd01b
-        GatewayName          : MyLocalNetwork
-        IpAddress            : 23.39.x.y
-        AddressSpace         : {10.1.2.0/24}
-        OperationDescription : Get-AzureLocalNetworkGateway
-        OperationId          : ddc4bfae-502c-adc7-bd7d-1efbc00b3fe5
-        OperationStatus      : Succeeded
+    GatewayId            : 532cb428-8c8c-4596-9a4f-7ae3a9fcd01b
+    GatewayName          : MyLocalNetwork
+    IpAddress            : 23.39.x.y
+    AddressSpace         : {10.1.2.0/24}
+    OperationDescription : Get-AzureLocalNetworkGateway
+    OperationId          : ddc4bfae-502c-adc7-bd7d-1efbc00b3fe5
+    OperationStatus      : Succeeded
+    ```
 
 
 1. Configureer het lokale VPN-apparaat om verbinding te maken met de nieuwe gateway. Gebruik de informatie die u in stap 6 bij de configuratie van uw VPN-apparaat hebt opgehaald. Zie [VPN-apparaatconfiguratie](../vpn-gateway/vpn-gateway-about-vpn-devices.md) voor meer informatie over het configureren van een VPN-apparaat. 
@@ -185,7 +201,9 @@ Deze procedure helpt u bij het maken van een VNet en site-naar-site- en ExpressR
    
     In dit voorbeeld is connectedEntityId de lokale gateway-ID. Deze kunt u vinden door `Get-AzureLocalNetworkGateway` uit te voeren. U kunt virtualNetworkGatewayId vinden met behulp van de cmdlet `Get-AzureVirtualNetworkGateway`. Na deze stap wordt de verbinding tussen uw lokale netwerk en Azure tot stand gebracht via de site-naar-site-VPN-verbinding.
 
-        New-AzureVirtualNetworkGatewayConnection -connectedEntityId <local-network-gateway-id> -gatewayConnectionName Azure2Local -gatewayConnectionType IPsec -sharedKey abc123 -virtualNetworkGatewayId <azure-s2s-vpn-gateway-id>
+    ```azurepowershell
+    New-AzureVirtualNetworkGatewayConnection -connectedEntityId <local-network-gateway-id> -gatewayConnectionName Azure2Local -gatewayConnectionType IPsec -sharedKey abc123 -virtualNetworkGatewayId <azure-s2s-vpn-gateway-id>
+    ```
 
 ## <a name="to-configure-coexisting-connections-for-an-already-existing-vnet"></a><a name="add"></a>Naast elkaar bestaande verbindingen configureren voor een bestaand VNet
 Als u een bestaand virtueel netwerk hebt, controleert u de grootte van het gatewaysubnet. Als het gatewaysubnet /28 of /29 is, moet u eerst de gateway van het virtuele netwerk verwijderen en het gatewaysubnet vergroten. In de stappen in dit gedeelte wordt beschreven hoe u dat doet.
@@ -200,10 +218,14 @@ Als het gatewaysubnet /27 of groter is en het virtuele netwerk is verbonden via 
 1. U moet de meest recente versie van de Azure Resource Manager PowerShell-cmdlets installeren. Zie [How to install and configure Azure PowerShell](/powershell/azure/overview) (Azure PowerShell installeren en configureren) voor meer informatie over het installeren van de PowerShell-cmdlets. Houd er rekening mee dat de cmdlets die u voor deze configuratie gebruikt, mogelijk enigszins afwijken van de cmdlets waarmee u bekend bent. Zorg ervoor dat u de cmdlets gebruikt die in deze instructies worden vermeld. 
 2. Verwijder de bestaande ExpressRoute- of site-naar-site-VPN-gateway. Gebruik de volgende cmdlet, waarbij u de waarden vervangt door uw eigen waarden.
    
-        Remove-AzureVNetGateway –VnetName MyAzureVNET
+    ```azurepowershell
+    Remove-AzureVNetGateway –VnetName MyAzureVNET
+    ```
 3. Exporteer het schema van het virtuele netwerk. Gebruik de volgende PowerShell-cmdlet, waarbij u de waarden vervangt door uw eigen waarden.
    
-        Get-AzureVNetConfig –ExportToFile "C:\NetworkConfig.xml"
+    ```azurepowershell
+    Get-AzureVNetConfig –ExportToFile "C:\NetworkConfig.xml"
+    ```
 4. Bewerk het schema van het netwerkconfiguratiebestand zodanig dat het gatewaysubnet /27 of een kortere voorvoegsel (zoals /26 of /25) is. Zie het volgende voorbeeld 
    
    > [!NOTE]
@@ -211,18 +233,22 @@ Als het gatewaysubnet /27 of groter is en het virtuele netwerk is verbonden via 
    > 
    > 
    
-          <Subnet name="GatewaySubnet">
-            <AddressPrefix>10.17.159.224/27</AddressPrefix>
-          </Subnet>
+    ```xml
+    <Subnet name="GatewaySubnet">
+      <AddressPrefix>10.17.159.224/27</AddressPrefix>
+    </Subnet>
+    ```
 5. Als uw vorige gateway een site-naar-site-VPN was, moet u ook het verbindingstype wijzigen in **Toegewezen**.
    
-                 <Gateway>
-                  <ConnectionsToLocalNetwork>
-                    <LocalNetworkSiteRef name="MyLocalNetwork">
-                      <Connection type="Dedicated" />
-                    </LocalNetworkSiteRef>
-                  </ConnectionsToLocalNetwork>
-                </Gateway>
+    ```xml
+    <Gateway>
+      <ConnectionsToLocalNetwork>
+        <LocalNetworkSiteRef name="MyLocalNetwork">
+          <Connection type="Dedicated" />
+        </LocalNetworkSiteRef>
+      </ConnectionsToLocalNetwork>
+    </Gateway>
+    ```
 6. U hebt op dit moment een VNet zonder gateways. Als u nieuwe gateways wilt maken en uw verbindingen wilt voltooien, kunt u doorgaan met [Stap 4 - Een ExpressRoute-gateway maken](#gw). Deze stap vindt u in de voorgaande reeks stappen.
 
 ## <a name="next-steps"></a>Volgende stappen

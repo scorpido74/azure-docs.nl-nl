@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b699f0672b49dd2f947e0cf00d0ffcef7961e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbf4d7b9f622ff590eee401544bf62655fd8d096
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80295312"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024380"
 ---
 # <a name="common-conditional-access-policies"></a>Algemeen beleid voor voorwaardelijke toegang
 
-De [standaard instellingen voor beveiliging](../fundamentals/concept-fundamentals-security-defaults.md) zijn handig voor sommige organisaties, maar er zijn meer flexibiliteit nodig dan ze bieden. Zo hebben veel de mogelijkheid om specifieke accounts uit te sluiten, zoals de accounts voor toegang via nood gevallen of het verbreken van verbindingen van beleids regels voor voorwaardelijke toegang waarvoor multi-factor Authentication is vereist. De algemene beleids regels waarnaar in dit artikel wordt verwezen, kunnen worden gebruikt voor deze organisaties.
+De [standaard instellingen voor beveiliging](../fundamentals/concept-fundamentals-security-defaults.md) zijn handig voor sommige organisaties, maar er zijn meer flexibiliteit nodig dan ze bieden. Veel organisaties hebben bijvoorbeeld de mogelijkheid om specifieke accounts uit te sluiten, zoals de accounts voor toegang in nood gevallen of het afbreken van een account van het beleid voor voorwaardelijke toegang waarvoor multi-factor Authentication is vereist. De algemene beleids regels waarnaar in dit artikel wordt verwezen, kunnen worden gebruikt voor deze organisaties.
 
 ![Beleid voor voorwaardelijke toegang in de Azure Portal](./media/concept-conditional-access-policy-common/conditional-access-policies-azure-ad-listing.png)
 
@@ -38,11 +38,12 @@ Meer informatie over accounts voor toegang in nood gevallen en waarom ze belang 
 * [MFA vereisen voor Azure-beheer](howto-conditional-access-policy-azure-management.md)\*
 * [MFA vereisen voor alle gebruikers](howto-conditional-access-policy-all-users-mfa.md)\*
 
-\*Deze vier beleids regels worden bij elkaar geconfigureerd, waarbij de functionaliteit is ingeschakeld door de [standaard instellingen voor beveiliging](../fundamentals/concept-fundamentals-security-defaults.md).
+\*Deze vier beleids regels worden samen geconfigureerd, waarbij de functionaliteit is ingeschakeld door de [standaard instellingen voor beveiliging](../fundamentals/concept-fundamentals-security-defaults.md).
 
 ## <a name="additional-policies"></a>Extra beleids regels
 
-* [Op risico's gebaseerde voorwaardelijke toegang (vereist Azure AD Premium P2)](howto-conditional-access-policy-risk.md)
+* [Aanmelden op risico gebaseerd voorwaardelijke toegang (vereist Azure AD Premium P2)](howto-conditional-access-policy-risk.md)
+* [Voorwaardelijke toegang op basis van gebruikers risico (vereist Azure AD Premium P2)](howto-conditional-access-policy-risk-user.md)
 * [Vertrouwde locatie vereisen voor MFA-registratie](howto-conditional-access-policy-registration.md)
 * [Toegang op locatie blok keren](howto-conditional-access-policy-location.md)
 * [Compatibel apparaat vereisen](howto-conditional-access-policy-compliant-device.md)

@@ -6,17 +6,17 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 45f9ebced14856145b1631fdbb6484c94826b72e
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 777f2dfdf9e9e6d80814a47101730ccb3f5ece68
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85511132"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985954"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Bestandssysteem bewerkingen op Azure Data Lake Storage Gen1 met behulp van Java SDK
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-data-operations-net-sdk.md)
-> * [Java-SDK](data-lake-store-get-started-java-sdk.md)
+> * [Java SDK](data-lake-store-get-started-java-sdk.md)
 > * [REST API](data-lake-store-data-operations-rest-api.md)
 > * [Python](data-lake-store-data-operations-python.md)
 >
@@ -39,33 +39,37 @@ Dit codevoorbeeld beschikbaar [in GitHub](https://azure.microsoft.com/documentat
 
 2. Voeg de volgende afhankelijkheden toe aan het **pom.xml**-bestand in Maven. Voeg het volgende fragment toe vóór de **\</project>** Tag:
    
-        <dependencies>
-          <dependency>
-            <groupId>com.microsoft.azure</groupId>
-            <artifactId>azure-data-lake-store-sdk</artifactId>
-            <version>2.1.5</version>
-          </dependency>
-          <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-nop</artifactId>
-            <version>1.7.21</version>
-          </dependency>
-        </dependencies>
+    ```xml
+    <dependencies>
+        <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure-data-lake-store-sdk</artifactId>
+        <version>2.1.5</version>
+        </dependency>
+        <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-nop</artifactId>
+        <version>1.7.21</version>
+        </dependency>
+    </dependencies>
+    ```
    
     De eerste afhankelijkheid is het gebruik van de Data Lake Storage Gen1 SDK ( `azure-data-lake-store-sdk` ) in de Maven-opslag plaats. De tweede afhankelijkheid dient om op te geven welk framework voor logboekregistratie (`slf4j-nop`) voor deze toepassing moet worden gebruikt. De Data Lake Storage Gen1 SDK gebruikt [SLF4J](https://www.slf4j.org/) logging gevel, waarmee u kunt kiezen uit een aantal populaire logging-frameworks, zoals Log4j, Java-logboek registratie, logback, enzovoort, of geen logboek registratie. In dit voorbeeld wordt logboekregistratie uitgeschakeld. Daarom wordt de binding **slf4j-nop** gebruikt. [Hier](https://www.slf4j.org/manual.html#projectDep) vindt u andere opties voor logboekregistratie voor uw toepassing.
 
 3. Voeg de volgende importinstructies toe aan uw toepassing.
 
-        import com.microsoft.azure.datalake.store.ADLException;
-        import com.microsoft.azure.datalake.store.ADLStoreClient;
-        import com.microsoft.azure.datalake.store.DirectoryEntry;
-        import com.microsoft.azure.datalake.store.IfExists;
-        import com.microsoft.azure.datalake.store.oauth2.AccessTokenProvider;
-        import com.microsoft.azure.datalake.store.oauth2.ClientCredsTokenProvider;
+    ```java
+    import com.microsoft.azure.datalake.store.ADLException;
+    import com.microsoft.azure.datalake.store.ADLStoreClient;
+    import com.microsoft.azure.datalake.store.DirectoryEntry;
+    import com.microsoft.azure.datalake.store.IfExists;
+    import com.microsoft.azure.datalake.store.oauth2.AccessTokenProvider;
+    import com.microsoft.azure.datalake.store.oauth2.ClientCredsTokenProvider;
 
-        import java.io.*;
-        import java.util.Arrays;
-        import java.util.List;
+    import java.io.*;
+    import java.util.Arrays;
+    import java.util.List;
+    ```
 
 ## <a name="authentication"></a>Verificatie
 
@@ -75,8 +79,10 @@ Dit codevoorbeeld beschikbaar [in GitHub](https://azure.microsoft.com/documentat
 ## <a name="create-a-data-lake-storage-gen1-client"></a>Een Data Lake Storage Gen1-client maken
 Als u een [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) -object wilt maken, moet u de naam van het data Lake Storage gen1 account en de token provider opgeven die u hebt gegenereerd bij het verifiëren met data Lake Storage gen1 (Zie de sectie [verificatie](#authentication) ). De naam van het Data Lake Storage Gen1 account moet een Fully Qualified Domain Name zijn. Vervang bijvoorbeeld **Fill-in-hier** door iets als **mydatalakestoragegen1.azuredatalakestore.net**.
 
-    private static String accountFQDN = "FILL-IN-HERE";  // full account FQDN, not just the account name
-    ADLStoreClient client = ADLStoreClient.createClient(accountFQDN, provider);
+```java
+private static String accountFQDN = "FILL-IN-HERE";  // full account FQDN, not just the account name
+ADLStoreClient client = ADLStoreClient.createClient(accountFQDN, provider);
+```
 
 De codefragmenten in de volgende secties bevatten voorbeelden van enkele veelvoorkomende bestandssysteembewerkingen. U kunt de volledige [Data Lake Storage gen1 Java SDK API-documenten](https://azure.github.io/azure-data-lake-store-java/javadoc/) van het object **ADLStoreClient** bekijken om andere bewerkingen te bekijken.
 
@@ -84,33 +90,39 @@ De codefragmenten in de volgende secties bevatten voorbeelden van enkele veelvoo
 
 Met het volgende code fragment maakt u een mapstructuur in de hoofdmap van het Data Lake Storage Gen1 account dat u hebt opgegeven.
 
-    // create directory
-    client.createDirectory("/a/b/w");
-    System.out.println("Directory created.");
+```java
+// create directory
+client.createDirectory("/a/b/w");
+System.out.println("Directory created.");
+```
 
 ## <a name="create-a-file"></a>Een bestand maken
 
 In het volgende codefragment wordt een bestand (c.txt) in de mapstructuur gemaakt en worden er gegevens naar het bestand geschreven.
 
-    // create file and write some content
-    String filename = "/a/b/c.txt";
-    OutputStream stream = client.createFile(filename, IfExists.OVERWRITE  );
-    PrintStream out = new PrintStream(stream);
-    for (int i = 1; i <= 10; i++) {
-        out.println("This is line #" + i);
-        out.format("This is the same line (%d), but using formatted output. %n", i);
-    }
-    out.close();
-    System.out.println("File created.");
+```java
+// create file and write some content
+String filename = "/a/b/c.txt";
+OutputStream stream = client.createFile(filename, IfExists.OVERWRITE  );
+PrintStream out = new PrintStream(stream);
+for (int i = 1; i <= 10; i++) {
+    out.println("This is line #" + i);
+    out.format("This is the same line (%d), but using formatted output. %n", i);
+}
+out.close();
+System.out.println("File created.");
+```
 
 U kunt ook een bestand (d.txt) maken met behulp van bytematrices.
 
-    // create file using byte arrays
-    stream = client.createFile("/a/b/d.txt", IfExists.OVERWRITE);
-    byte[] buf = getSampleContent();
-    stream.write(buf);
-    stream.close();
-    System.out.println("File created using byte array.");
+```java
+// create file using byte arrays
+stream = client.createFile("/a/b/d.txt", IfExists.OVERWRITE);
+byte[] buf = getSampleContent();
+stream.write(buf);
+stream.close();
+System.out.println("File created using byte array.");
+```
 
 De definitie van functie `getSampleContent` die in het bovenstaande codefragment wordt gebruikt, is beschikbaar als onderdeel van het voorbeeld [op GitHub](https://azure.microsoft.com/documentation/samples/data-lake-store-java-upload-download-get-started/). 
 
@@ -118,11 +130,13 @@ De definitie van functie `getSampleContent` die in het bovenstaande codefragment
 
 In het volgende codefragment wordt inhoud toegevoegd aan een bestaand bestand.
 
-    // append to file
-    stream = client.getAppendStream(filename);
-    stream.write(getSampleContent());
-    stream.close();
-    System.out.println("File appended.");
+```java
+// append to file
+stream = client.getAppendStream(filename);
+stream.write(getSampleContent());
+stream.close();
+System.out.println("File appended.");
+```
 
 De definitie van functie `getSampleContent` die in het bovenstaande codefragment wordt gebruikt, is beschikbaar als onderdeel van het voorbeeld [op GitHub](https://azure.microsoft.com/documentation/samples/data-lake-store-java-upload-download-get-started/).
 
@@ -130,62 +144,74 @@ De definitie van functie `getSampleContent` die in het bovenstaande codefragment
 
 Met het volgende code fragment wordt inhoud van een bestand in een Data Lake Storage Gen1-account gelezen.
 
-    // Read File
-    InputStream in = client.getReadStream(filename);
-    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-    String line;
-    while ( (line = reader.readLine()) != null) {
-        System.out.println(line);
-    }
-    reader.close();
-    System.out.println();
-    System.out.println("File contents read.");
+```java
+// Read File
+InputStream in = client.getReadStream(filename);
+BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+String line;
+while ( (line = reader.readLine()) != null) {
+    System.out.println(line);
+}
+reader.close();
+System.out.println();
+System.out.println("File contents read.");
+```
 
 ## <a name="concatenate-files"></a>Bestanden samenvoegen
 
 Met het volgende code fragment worden twee bestanden in een Data Lake Storage Gen1-account samengevoegd. Als dit lukt, worden de twee bestaande bestanden vervangen door het samengevoegde bestand.
 
-    // concatenate the two files into one
-    List<String> fileList = Arrays.asList("/a/b/c.txt", "/a/b/d.txt");
-    client.concatenateFiles("/a/b/f.txt", fileList);
-    System.out.println("Two files concatenated into a new file.");
+```java
+// concatenate the two files into one
+List<String> fileList = Arrays.asList("/a/b/c.txt", "/a/b/d.txt");
+client.concatenateFiles("/a/b/f.txt", fileList);
+System.out.println("Two files concatenated into a new file.");
+```
 
 ## <a name="rename-a-file"></a>De naam van een bestand wijzigen
 
 In het volgende code fragment wordt de naam van een bestand in een Data Lake Storage Gen1-account gewijzigd.
 
-    //rename the file
-    client.rename("/a/b/f.txt", "/a/b/g.txt");
-    System.out.println("New file renamed.");
+```java
+//rename the file
+client.rename("/a/b/f.txt", "/a/b/g.txt");
+System.out.println("New file renamed.");
+```
 
 ## <a name="get-metadata-for-a-file"></a>Metagegevens ophalen voor een bestand
 
 Met het volgende code fragment worden de meta gegevens opgehaald voor een bestand in een Data Lake Storage Gen1-account.
 
-    // get file metadata
-    DirectoryEntry ent = client.getDirectoryEntry(filename);
-    printDirectoryInfo(ent);
-    System.out.println("File metadata retrieved.");
+```java
+// get file metadata
+DirectoryEntry ent = client.getDirectoryEntry(filename);
+printDirectoryInfo(ent);
+System.out.println("File metadata retrieved.");
+```
 
 ## <a name="set-permissions-on-a-file"></a>Machtigingen instellen voor een bestand
 
 In het volgende codefragment worden machtigingen ingesteld voor het bestand dat u in de vorige sectie hebt gemaakt.
 
-    // set file permission
-    client.setPermission(filename, "744");
-    System.out.println("File permission set.");
+```java
+// set file permission
+client.setPermission(filename, "744");
+System.out.println("File permission set.");
+```
 
 ## <a name="list-directory-contents"></a>Mapinhoud weergeven
 
 In het volgende codefragment wordt recursief de inhoud van een map weergegeven.
 
-    // list directory contents
-    List<DirectoryEntry> list = client.enumerateDirectory("/a/b", 2000);
-    System.out.println("Directory listing for directory /a/b:");
-    for (DirectoryEntry entry : list) {
-        printDirectoryInfo(entry);
-    }
-    System.out.println("Directory contents listed.");
+```java
+// list directory contents
+List<DirectoryEntry> list = client.enumerateDirectory("/a/b", 2000);
+System.out.println("Directory listing for directory /a/b:");
+for (DirectoryEntry entry : list) {
+    printDirectoryInfo(entry);
+}
+System.out.println("Directory contents listed.");
+```
 
 De definitie van functie `printDirectoryInfo` die in het bovenstaande codefragment wordt gebruikt, is beschikbaar als onderdeel van het voorbeeld [op GitHub](https://azure.microsoft.com/documentation/samples/data-lake-store-java-upload-download-get-started/).
 
@@ -193,10 +219,12 @@ De definitie van functie `printDirectoryInfo` die in het bovenstaande codefragme
 
 Met het volgende code fragment worden de opgegeven bestanden en mappen in een Data Lake Storage Gen1-account recursief verwijderd.
 
-    // delete directory along with all the subdirectories and files in it
-    client.deleteRecursive("/a");
-    System.out.println("All files and folders deleted recursively");
-    promptEnterKey();
+```java
+// delete directory along with all the subdirectories and files in it
+client.deleteRecursive("/a");
+System.out.println("All files and folders deleted recursively");
+promptEnterKey();
+```
 
 ## <a name="build-and-run-the-application"></a>De toepassing bouwen en uitvoeren.
 1. Klik op de knop **Uitvoeren** om de toepassing vanuit een IDE uit te voeren. Gebruik [exec:exec](https://www.mojohaus.org/exec-maven-plugin/exec-mojo.html) om deze vanuit Maven uit te voeren.

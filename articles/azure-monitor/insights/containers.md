@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/22/2019
-ms.openlocfilehash: 171f897f6e110e8f759281c139addab477ecede3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/06/2020
+ms.openlocfilehash: fe8d2a2c083072ebc717b7476bb0738bb83301f1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77664691"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984621"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Container bewakings oplossing in Azure Monitor
 
@@ -116,7 +116,7 @@ Raadpleeg de [docker-engine in Windows](https://docs.microsoft.com/virtualizatio
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Linux-container-hosts installeren en configureren
 
-Nadat u docker hebt geïnstalleerd, gebruikt u de volgende instellingen voor de container-host om de agent te configureren voor gebruik met docker. Eerst hebt u de Log Analytics werk ruimte-ID en-sleutel nodig die u in de Azure Portal kunt vinden. Klik in uw werk ruimte op **Quick Start** > **computers** om uw **werk ruimte-id** en **primaire sleutel**weer te geven.  Kopieer en plak beide in uw favoriete editor.
+Nadat u docker hebt geïnstalleerd, gebruikt u de volgende instellingen voor de container-host om de agent te configureren voor gebruik met docker. Eerst hebt u de Log Analytics werk ruimte-ID en-sleutel nodig die u in de Azure Portal kunt vinden. Klik in uw werk ruimte op **Quick Start**  >  **computers** om uw **werk ruimte-id** en **primaire sleutel**weer te geven.  Kopieer en plak beide in uw favoriete editor.
 
 **Voor alle Linux-container hosts, met uitzonde ring van CoreOS:**
 
@@ -231,7 +231,7 @@ In deze sectie worden de stappen beschreven die nodig zijn om de Log Analytics-a
 Voer de volgende stappen uit als u geheimen wilt gebruiken om uw Log Analytics werk ruimte-ID en primaire sleutel te beveiligen wanneer u het Log Analytics agent daemon-set yaml-bestand gebruikt.
 
 1. Meld u aan bij het knoop punt openshift Master en kopieer het yaml [-bestand OCP-DS-omsagent. yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) en het script voor het genereren van een geheim [OCP-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) uit github.  Met dit script wordt het yaml-bestand geheimen voor Log Analytics werk ruimte-ID en primaire sleutel gegenereerd voor het beveiligen van uw geheime gegevens.  
-2. Voer de volgende opdrachten uit om een project te maken voor Azure Monitor en het gebruikers account in te stellen. Het geheime genererende script vraagt om uw Log Analytics werk `<WSID>` ruimte-id `<KEY>` en primaire sleutel en na voltooiing wordt het bestand OCP-Secret. yaml gemaakt.  
+2. Voer de volgende opdrachten uit om een project te maken voor Azure Monitor en het gebruikers account in te stellen. Het geheime genererende script vraagt om uw Log Analytics werk ruimte-ID `<WSID>` en primaire sleutel `<KEY>` en na voltooiing wordt het bestand OCP-Secret. yaml gemaakt.  
 
     ```
     oc adm new-project omslogging --node-selector='zone=default'  
@@ -303,7 +303,7 @@ U kunt ervoor kiezen om omsagent DaemonSets te maken met of zonder geheimen.
 
 **Standaard OMSagent Daemonset yaml-bestand zonder geheimen**
 
-- Voor het standaard Log Analytics agent daemon yaml-bestand, vervangt u `<WSID>` de `<KEY>` en naar uw WSID en sleutel. Kopieer het bestand naar het hoofd knooppunt en voer de volgende handelingen uit:
+- Voor het standaard Log Analytics agent daemon yaml-bestand, vervangt `<WSID>` u de en `<KEY>` naar uw WSID en sleutel. Kopieer het bestand naar het hoofd knooppunt en voer de volgende handelingen uit:
 
     ```
     sudo kubectl create -f omsagent.yaml
@@ -466,7 +466,7 @@ Voer de volgende stappen uit om helm te gebruiken om Log Analytics-agent te impl
     omsagent-msoms  3        3        3      3           3          <none>         3s
     ```
 
-3. U kunt de status van de omsagent controleren door uit te ```helm status "omsagent"``` voeren: en de uitvoer ziet er ongeveer als volgt uit:
+3. U kunt de status van de omsagent controleren door uit te voeren: ```helm status "omsagent"``` en de uitvoer ziet er ongeveer als volgt uit:
 
     ```
     keiko@k8s-master-3814F33-0:~$ helm status omsagent
@@ -547,7 +547,7 @@ De volgende tabel bevat voor beelden van records die zijn verzameld door de cont
 | Container proces | `ContainerProcess_CL` | TimeGenerated, computer, Pod_s, Namespace_s, ClassName_s, InstanceID_s, Uid_s, PID_s, PPID_s, C_s, STIME_s, Tty_s, TIME_s, Cmd_s, Id_s, Name_s, hebben |
 | Kubernetes-gebeurtenissen | `KubeEvents_CL` | TimeGenerated, computer, Name_s, ObjectKind_s, Namespace_s, Reason_s, Type_s, SourceComponent_s, hebben, bericht |
 
-Labels die zijn toegevoegd aan *PodLabel* -gegevens typen zijn uw eigen aangepaste labels. De namen van de toegevoegde PodLabel die in de tabel worden weer gegeven, zijn voor beelden. Dus,,, verschilt van de gegevensverzameling van uw omgeving en lijkt algemeen op elkaar `PodLabel_yourlabel_s` `PodLabel_deployment_s` `PodLabel_deploymentconfig_s` `PodLabel_docker_registry_s`
+Labels die zijn toegevoegd aan *PodLabel* -gegevens typen zijn uw eigen aangepaste labels. De namen van de toegevoegde PodLabel die in de tabel worden weer gegeven, zijn voor beelden. Dus,,, `PodLabel_deployment_s` `PodLabel_deploymentconfig_s` `PodLabel_docker_registry_s` verschilt van de gegevensverzameling van uw omgeving en lijkt algemeen op elkaar `PodLabel_yourlabel_s` .
 
 ## <a name="monitor-containers"></a>Containers bewaken
 Nadat u de oplossing hebt ingeschakeld in de Azure Portal, toont de tegel **containers** samenvattings informatie over de container-hosts en de containers die worden uitgevoerd in hosts.
@@ -618,7 +618,6 @@ Wanneer u een specifieke fout wilt oplossen, kunt u zien waar deze zich voordoen
 - **KubeEvents_CL**  Gebruik dit type om de Kubernetes-gebeurtenissen te bekijken.
 - **KubePodInventory_CL**  Gebruik dit type als u inzicht wilt krijgen in de gegevens van de cluster hiërarchie.
 
-
 ### <a name="to-query-logs-for-container-data"></a>Logboeken voor container gegevens opvragen
 
 * Kies een afbeelding waarvan u weet dat deze onlangs is mislukt en zoek de fouten logboeken hierop. Zoek eerst de naam van een container met de installatie kopie met een **ContainerInventory** zoeken. Zoek bijvoorbeeld naar`ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
@@ -628,7 +627,7 @@ Wanneer u een specifieke fout wilt oplossen, kunt u zien waar deze zich voordoen
 
 ## <a name="example-log-queries"></a>Voorbeeld logboek query's
 
-Het is vaak handig om query's te bouwen, te beginnen met een voor beeld of twee en deze vervolgens te wijzigen in uw omgeving. Als uitgangs punt kunt u experimenteren met het gebied voor **voorbeeld query's** om meer geavanceerde query's te maken.
+Het is vaak handig om query's te bouwen, te beginnen met een voor beeld of twee en deze vervolgens te wijzigen in uw omgeving. Als uitgangs punt kunt u experimenteren met het gebied met **voorbeeld query's** aan de rechter kant van de oplossings pagina, om u te helpen bij het bouwen van geavanceerdere query's.
 
 ![Container query's](./media/containers/containers-queries.png)
 

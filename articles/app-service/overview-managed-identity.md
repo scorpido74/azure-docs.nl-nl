@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: tracking-python
-ms.openlocfilehash: 3be41014c315a5820add3407ca0e4cbdb5a5e23e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 87e4d67086ea9f260becb2d63765e807e2b73546
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559699"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985749"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Beheerde identiteiten gebruiken voor App Service en Azure Functions
 
@@ -43,7 +43,7 @@ Als u een beheerde identiteit in de portal instelt, moet u eerst een toepassing 
 
 
 > [!NOTE] 
-> Ga naar de sectie gebruikers instellingen onder Enter prise-toepassingen om de beheerde identiteit voor uw web-of sleuf-app in de Azure Portal te vinden.
+> Als u de beheerde identiteit voor de web-app of de app wilt vinden in de Azure Portal, gaat u naar de sectie **gebruikers instellingen** onder **bedrijfs toepassingen**. Normaal gesp roken is de naam van de sleuf gelijk aan `<app name>/slots/<slot name>` .
 
 
 ### <a name="using-the-azure-cli"></a>Azure CLI gebruiken
@@ -312,7 +312,7 @@ Er zijn twee omgevings variabelen gedefinieerd voor een app met een beheerde ide
 
 De **IDENTITY_ENDPOINT** is een lokale URL van waaruit uw app tokens kan aanvragen. Als u een token voor een resource wilt ophalen, maakt u een HTTP GET-aanvraag naar dit eind punt, met inbegrip van de volgende para meters:
 
-> | Parameternaam    | In     | Beschrijving                                                                                                                                                                                                                                                                                                                                |
+> | Parameternaam    | In     | Description                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | resource          | Query’s uitvoeren  | De Azure AD-resource-URI van de resource waarvoor een token moet worden verkregen. Dit kan een van de [Azure-Services zijn die ondersteuning bieden voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) of een andere resource-URI.    |
 > | api-versie       | Query’s uitvoeren  | De versie van de token-API die moet worden gebruikt. Gebruik 2019-08-01 of hoger.                                                                                                                                                                                                                                                                 |
@@ -326,7 +326,7 @@ De **IDENTITY_ENDPOINT** is een lokale URL van waaruit uw app tokens kan aanvrag
 
 Een geslaagd 200 OK-antwoord bevat een JSON-hoofd tekst met de volgende eigenschappen:
 
-> | Naam van eigenschap | Beschrijving                                                                                                                                                                                                                                        |
+> | Naam van eigenschap | Description                                                                                                                                                                                                                                        |
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | Het aangevraagde toegangs token. De aanroepende webservice kan dit token gebruiken om te verifiëren bij de ontvangende webservice.                                                                                                                               |
 > | client_id     | De client-ID van de identiteit die is gebruikt.                                                                                                                                                                                                       |

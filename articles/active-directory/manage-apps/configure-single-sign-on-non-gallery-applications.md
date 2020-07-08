@@ -12,12 +12,12 @@ ms.date: 06/08/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1604e132cb77fbb2a2a1033a1f23f70dd3e6b8b9
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 3cee2b9a0ea32a3b331849263c8a97f55930542d
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85355961"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024228"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Eenmalige aanmelding op basis van SAML configureren voor niet-galerietoepassingen
 
@@ -42,7 +42,7 @@ Als de toepassing niet is toegevoegd aan uw Azure AD-Tenant, raadpleegt u [een n
 
 3. Selecteer onder de sectie **beheren** de optie **eenmalige aanmelding**. 
 
-   - Houd er rekening mee dat er bepaalde scenario's zijn waarbij de optie **voor eenmalige aanmelding** niet aanwezig is. Als de toepassing bijvoorbeeld is geregistreerd met behulp van **app-registraties** , wordt de mogelijkheid voor eenmalige aanmelding geconfigureerd in de **app-registratie** Portal en wordt deze niet weer gegeven in de navigatie onder **bedrijfs toepassingen**. Andere scenario's waarin **eenmalige aanmelding** ontbreekt in de navigatie, zijn, wanneer een toepassing wordt gehost in een andere Tenant of als uw account niet over de vereiste machtigingen (globale beheerder, Cloud toepassings beheerder, toepassings beheerder of eigenaar van de service-principal) beschikt. Machtigingen kunnen ook leiden tot een scenario waarin u **eenmalige aanmelding** kunt openen, maar niet kunt opslaan. Zie (voor meer informatie over Azure AD-beheerders rollen https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) .
+   - Houd er rekening mee dat er bepaalde scenario's zijn waarbij de optie **voor eenmalige aanmelding** niet aanwezig is. Als de toepassing bijvoorbeeld is geregistreerd met behulp van **app-registraties** , is de mogelijkheid tot eenmalige aanmelding standaard ingesteld op het gebruik van OIDC OAuth. In dit geval wordt de optie **voor eenmalige aanmelding** niet weer gegeven in de navigatie onder **bedrijfs toepassingen**. Wanneer u **app-registraties** gebruikt om uw aangepaste app toe te voegen, configureert u de opties in het manifest bestand. Zie (voor meer informatie over het manifest bestand) https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) . Zie (voor meer informatie over SSO-standaarden https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform) . Andere scenario's waarin **eenmalige aanmelding** ontbreekt in de navigatie, zijn, wanneer een toepassing wordt gehost in een andere Tenant of als uw account niet over de vereiste machtigingen (globale beheerder, Cloud toepassings beheerder, toepassings beheerder of eigenaar van de service-principal) beschikt. Machtigingen kunnen ook leiden tot een scenario waarin u **eenmalige aanmelding** kunt openen, maar niet kunt opslaan. Zie (voor meer informatie over Azure AD-beheerders rollen https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) .
 
 4. Selecteer **SAML**. De pagina **eenmalige aanmelding met SAML-preview instellen** wordt weer gegeven.
 
@@ -52,7 +52,7 @@ Als de toepassing niet is toegevoegd aan uw Azure AD-Tenant, raadpleegt u [een n
 
 1. Voer de volgende instellingen in. U moet de waarden van de leverancier van de toepassing ophalen. U kunt de waarden hand matig invoeren of een meta gegevensbestand uploaden om de waarde van de velden te extra heren.
 
-    | Basis configuratie-instelling voor SAML | SP-geïnitieerd | idP-geïnitieerd | Beschrijving |
+    | Basis configuratie-instelling voor SAML | SP-geïnitieerd | idP-geïnitieerd | Description |
     |:--|:--|:--|:--|
     | **Id (Entiteits-id)** | Vereist voor sommige apps | Vereist voor sommige apps | Unieke identificatie van de toepassing. Azure Active Directory stuurt de id naar de toepassing als parameter van de doelgroep van het SAML-token. Er wordt verwacht dat de toepassing deze valideert. Deze waarde wordt ook weergegeven als de entiteit-ID in SAML-metagegevens die worden geleverd door de toepassing. Voer een URL in die gebruikmaakt van het volgende patroon: ' https:// <subdomain> . contoso.com ' *u kunt deze waarde vinden als het element van de **Uitgever** in de **AuthnRequest** (SAML-aanvraag) die door de toepassing is verzonden.* |
     | **Antwoord-URL** | Vereist | Vereist | Hiermee geeft u op waar de toepassing verwacht het SAML-token te ontvangen. De antwoord-URL wordt ook de ACS-URL (Assertion Consumer Service) genoemd. U kunt de extra antwoord-URL velden gebruiken om meerdere antwoord-Url's op te geven. Stel dat u aanvullende antwoord-Url's nodig hebt voor meerdere subdomeinen. Voor test doeleinden kunt u meerdere antwoord-Url's (lokale host en open bare Url's) tegelijk opgeven. |

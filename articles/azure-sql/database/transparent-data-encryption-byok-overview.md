@@ -1,8 +1,9 @@
 ---
 title: Door de klant beheerde transparante gegevens versleuteling (TDE)
 description: Bring Your Own Key-ondersteuning (BYOK) voor Transparent Data Encryption (TDE) met Azure Key Vault voor SQL Database en Azure Synapse Analytics. TDE met BYOK overview, voor delen, hoe het werkt, overwegingen en aanbevelingen.
+titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: seo-lt-2019, azure-synapse
 ms.devlang: ''
@@ -11,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 51187a81865d9efa098e2c25cccdead01ed6dc74
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 32347f6d943565eeca7c37a9cdd2cf511e39ddb3
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84321305"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985306"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption met door de klant beheerde sleutel
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -29,6 +30,9 @@ Voor Azure SQL Database en Azure Synapse Analytics wordt de TDE-Protector ingest
 
 > [!IMPORTANT]
 > Voor degenen die gebruikmaken van service-beheerde TDE die willen beginnen met door de klant beheerde TDE, blijft de gegevens versleuteld tijdens het proces van overschakeling en wordt er geen downtime of hercodering van de database bestanden weer gegeven. Wanneer u overschakelt van een door een service beheerde sleutel naar een door de klant beheerde sleutel, hoeft u de DEK alleen opnieuw te versleutelen, wat een snelle en online bewerking is.
+
+> [!NOTE]
+> Om Azure SQL-klanten te voorzien van twee lagen versleuteling van gegevens in rust, wordt infrastructuur versleuteling (met AES-256-versleutelings algoritme) met door het platform beheerde sleutels geïmplementeerd. Dit biedt een toevoeging van de versleutelings laag en de TDE met door de klant beheerde sleutels, die al beschikbaar zijn. Klanten moeten op dit moment toegang vragen tot deze mogelijkheid. Als u geïnteresseerd bent in deze mogelijkheid, neemt u contact op met AzureSQLDoubleEncryptionAtRest@service.microsoft.com .
 
 ## <a name="benefits-of-the-customer-managed-tde"></a>Voor delen van de door de klant beheerde TDE
 
@@ -74,7 +78,7 @@ Audi tors kunnen Azure Monitor gebruiken om de sleutel kluis audit event-logboek
 
 - De sleutel kluis en het SQL Database/beheerde exemplaar moeten deel uitmaken van dezelfde Azure Active Directory Tenant. De cross-Tenant sleutel kluis en server interacties worden niet ondersteund. Als u later resources wilt verplaatsen, moet TDE met Azure opnieuw worden geconfigureerd. Meer informatie over het [verplaatsen van resources](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
-- De functie voor [voorlopig verwijderen](../../key-vault/general/overview-soft-delete.md) moet zijn ingeschakeld op de sleutel kluis om te beschermen tegen onbedoelde sleutel (of sleutel kluis) voor het verwijderen van gegevens verlies. Voorlopig verwijderde bronnen worden 90 dagen bewaard, tenzij de klant in de tussen tijd is hersteld of verwijderd. De *herstel* -en *opschoon* acties hebben hun eigen machtigingen die zijn gekoppeld aan een sleutel kluis toegangs beleid. De functie voor voorlopig verwijderen is standaard uitgeschakeld en kan worden ingeschakeld via [Power shell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) of [de CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete). Deze kan niet worden ingeschakeld via de Azure Portal.  
+- De functie voor [voorlopig verwijderen](../../key-vault/general/overview-soft-delete.md) moet zijn ingeschakeld op de sleutel kluis om te beschermen tegen onbedoelde sleutel (of sleutel kluis) voor het verwijderen van gegevens verlies. Voorlopig verwijderde bronnen worden 90 dagen bewaard, tenzij de klant in de tussen tijd is hersteld of verwijderd. Aan de acties *herstellen* en *opschonen* zijn aparte machtigingen gekoppeld in het toegangsbeleid van een sleutelkluis. De functie voor voorlopig verwijderen is standaard uitgeschakeld en kan worden ingeschakeld via [Power shell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) of [de CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete). Deze kan niet worden ingeschakeld via de Azure Portal.  
 
 - Verleen de server of het beheerde exemplaar toegang tot de sleutel kluis (Get, wrapKey, sleutel uitpakken) met behulp van de Azure Active Directory identiteit. Wanneer u de Azure Portal gebruikt, wordt de Azure AD-identiteit automatisch gemaakt. Wanneer u Power shell of de CLI gebruikt, moet de Azure AD-identiteit expliciet worden gemaakt en moet de voltooiing worden gecontroleerd. Zie [Configure TDe with BYOK](transparent-data-encryption-byok-configure.md) en [Configure TDe with BYOK for SQL Managed instance](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) voor gedetailleerde stapsgewijze instructies voor het gebruik van Power shell.
 
@@ -127,7 +131,7 @@ Nadat de toegang tot de sleutel is hersteld, is voor de Data Base weer online ex
 
 - Als de sleutel toegang binnen acht uur wordt hersteld, wordt de data base binnen het volgende uur automatisch opnieuw geactiveerd.
 
-- Als de sleutel toegang na meer dan acht uur wordt hersteld, is het automatisch herstellen niet mogelijk en hebt u voor de data base extra stappen nodig op de portal. Dit kan een aanzienlijke hoeveelheid tijd duren, afhankelijk van de grootte van de data base. Zodra de Data Base weer online is, eerder geconfigureerde instellingen op server niveau, zoals [failover-groeps](auto-failover-group-overview.md) configuratie, punt-in-time-herstel geschiedenis en tags **gaan verloren**. Daarom is het raadzaam om een meldings systeem te implementeren waarmee u de onderliggende sleutel toegangs problemen binnen acht uur kunt identificeren en oplossen.
+- Als de sleuteltoegang na meer dan acht uur is hersteld, is automatisch herstellen niet mogelijk en zijn er voor aanvullende stappen in de portal nodig om de database weer actief te krijgen. Dit kan afhankelijk van de grootte van de database vrij lang duren. Zodra de Data Base weer online is, eerder geconfigureerde instellingen op server niveau, zoals [failover-groeps](auto-failover-group-overview.md) configuratie, punt-in-time-herstel geschiedenis en tags **gaan verloren**. Daarom is het raadzaam om een meldings systeem te implementeren waarmee u de onderliggende sleutel toegangs problemen binnen acht uur kunt identificeren en oplossen.
 
 ### <a name="accidental-tde-protector-access-revocation"></a>Onopzettelijke toegang tot TDE-Protector
 

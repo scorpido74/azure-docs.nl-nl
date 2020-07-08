@@ -6,19 +6,19 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 38228e7080cb0bdead2f2b3490729702d923ae36
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.date: 06/17/2020
+ms.openlocfilehash: 499c7e9e4ca4ab5db02c566830738f0ceb07e40d
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85504896"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984646"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Een Azure virtual machine-aanbieding maken op Azure Marketplace
 
 In dit artikel wordt beschreven hoe u een Azure virtual machine-aanbieding maakt en publiceert naar [Azure Marketplace](https://azuremarketplace.microsoft.com/). Het biedt zowel Windows-als op Linux gebaseerde virtuele machines die een besturings systeem, een virtuele harde schijf (VHD) en Maxi maal 16 gegevens schijven bevatten. 
 
-Voordat u begint, moet u [een commercieel Marketplace-account maken in het partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account). Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
+Voordat u begint, moet u [een commercieel Marketplace-account maken in het partner centrum](create-account.md). Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
 
 ## <a name="introduction"></a>Inleiding
 
@@ -33,19 +33,19 @@ Wanneer u uw aanbiedingen op Azure Marketplace publiceert, kunt u het volgende d
 
 ### <a name="before-you-begin"></a>Voordat u begint
 
-Als u dit nog niet hebt gedaan, bekijkt u de [publicatie handleiding voor de virtuele machine-aanbieding](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) en dit materiaal voor virtuele machines van Azure:
+Als u dit nog niet hebt gedaan, bekijkt u de [publicatie handleiding voor de virtuele machine-aanbieding](../marketplace-virtual-machines.md) en dit materiaal voor virtuele machines van Azure:
 
 - Quick start-gidsen
   - [Sjablonen voor Azure Quick Start](https://azure.microsoft.com/resources/templates/)
   - [GitHub Azure Quick Start-sjablonen](https://github.com/azure/azure-quickstart-templates)
 - Zelfstudies
-  - [Virtuele Linux-machines](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
-  - [Virtuele Windows-machines](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
+  - [Virtuele Linux-machines](../../virtual-machines/linux/tutorial-manage-vm.md)
+  - [Virtuele Windows-machines](../../virtual-machines/windows/tutorial-manage-vm.md)
 - Voorbeelden
-  - [Azure CLI-voor beelden voor Linux Vm's](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
-  - [Azure PowerShell voor Linux-Vm's](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
-  - [Azure CLI-voor beelden voor Windows-Vm's](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
-  - [Azure PowerShell voor Windows-Vm's](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick)
+  - [Azure CLI-voor beelden voor Linux Vm's](../../virtual-machines/linux/cli-samples.md)
+  - [Azure PowerShell voor Linux-Vm's](../../virtual-machines/linux/powershell-samples.md)
+  - [Azure CLI-voor beelden voor Windows-Vm's](../../virtual-machines/windows/cli-samples.md)
+  - [Azure PowerShell voor Windows-Vm's](../../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md)
 
 ### <a name="fundamentals-in-technical-knowledge"></a>Grond beginselen van technische kennis
 
@@ -86,14 +86,14 @@ Selecteer **maken** om de aanbieding te genereren en door te gaan.
 
 ### <a name="test-drive"></a>Test Drive
 
-Een *test station* is een uitstekende manier om uw aanbieding te presen teren aan potentiële klanten. Het biedt de mogelijkheid om te ' proberen voordat u koopt ', waarmee u uw conversies kunt verg Roten en zeer gekwalificeerde leads kan genereren. Zie [Wat is een test station?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)voor meer informatie.
+Een *test station* is een uitstekende manier om uw aanbieding te presen teren aan potentiële klanten. Het biedt de mogelijkheid om te ' proberen voordat u koopt ', waarmee u uw conversies kunt verg Roten en zeer gekwalificeerde leads kan genereren. Zie [Wat is een test station?](../what-is-test-drive.md)voor meer informatie.
 
 Als u een test station voor een bepaalde periode wilt inschakelen, schakelt u het selectie vakje **een test drive inschakelen** in. Als u het test station uit uw aanbieding wilt verwijderen, schakelt u het selectie vakje uit.
 
 Aanvullende bronnen voor test stations:
 
 - [Technische best practices](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [Best practices voor marketing](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [Best practices voor marketing](../what-is-test-drive.md)
 - [Het overzicht van het test station downloaden](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF-bestand (zorg ervoor dat pop-upblokkering is uitgeschakeld).
 
 ### <a name="customer-leads"></a>Leads van klanten
@@ -101,12 +101,12 @@ Aanvullende bronnen voor test stations:
 Wanneer u uw aanbieding publiceert naar de commerciële Marketplace met het partner centrum, sluit u deze aan op het CRM-systeem (Customer Relationship Management). Zo kunt u contact gegevens van klanten ontvangen zodra iemand interesse in of gebruikt voor uw product. Verbinding maken met een CRM is vereist als u een test station wilt inschakelen (Zie de voor gaande sectie). Anders is het maken van een verbinding met een CRM optioneel.
 
 1. Selecteer een leadbestemming waarnaar wij de klantenleads moeten sturen. Het partner Centrum ondersteunt de volgende CRM-systemen:
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) voor klant betrokkenheid
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) voor klant betrokkenheid
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > Als uw CRM-systeem hier niet wordt vermeld, gebruikt u [Azure Table Storage](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) of een [https-eind punt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) om uw klant lead gegevens op te slaan. Exporteer de gegevens vervolgens naar uw CRM-systeem.
+    > Als uw CRM-systeem hier niet wordt vermeld, gebruikt u [Azure Table Storage](commercial-marketplace-lead-management-instructions-azure-table.md) of een [https-eind punt](commercial-marketplace-lead-management-instructions-https.md) om uw klant lead gegevens op te slaan. Exporteer de gegevens vervolgens naar uw CRM-systeem.
 
 1. Verbind uw aanbieding met de doel locatie van de lead wanneer u publiceert in het partner centrum.
 1. Controleer of de verbinding met de doel locatie juist is geconfigureerd. Nadat u het in het partner centrum hebt gepubliceerd, valideert micro soft de verbinding en stuurt hij u een test lead. Wanneer u een voor beeld bekijkt van de aanbieding voordat deze live gaat, kunt u ook uw lead verbinding testen door zelf te proberen de aanbieding in de voorbeeld omgeving te implementeren.
@@ -116,11 +116,16 @@ Wanneer u uw aanbieding publiceert naar de commerciële Marketplace met het part
 
 ## <a name="properties"></a>Eigenschappen
 
-Op de pagina **Eigenschappen** definieert u de categorieën en sectoren die worden gebruikt voor het groeperen van uw aanbieding op Azure Marketplace, de versie van uw toepassing en de juridische contracten die uw aanbieding ondersteunen.
+Op de pagina **Eigenschappen** definieert u de categorieën die worden gebruikt voor het groeperen van uw aanbieding op Azure Marketplace, de versie van uw toepassing en de juridische contracten die uw aanbieding ondersteunen.
 
-### <a name="categories"></a>Categorieën
+### <a name="category"></a>Categorie
 
-Selecteer mini maal één en Maxi maal vijf categorieën. U gebruikt deze categorieën om uw aanbieding te plaatsen in de juiste Azure Marketplace-Zoek gebieden. In de beschrijving van de aanbieding wordt uitgelegd hoe uw aanbod deze categorieën ondersteunt. De aanbiedingen van de virtuele machine worden weer gegeven onder de **reken** categorie op Azure Marketplace.
+Selecteer categorieën en subcategorieën om uw aanbieding te plaatsen in de juiste Zoek gebieden voor Marketplace. Zorg ervoor dat u beschrijft hoe uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding. Selecteer:
+
+- Ten minste één en Maxi maal twee categorieën, met inbegrip van een primaire en secundaire categorie (optioneel).
+- Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie van toepassing is op uw aanbieding, selecteert u **niet van toepassing**.
+
+Bekijk de volledige lijst met categorieën en subcategorieën in [Aanbevolen procedures voor aanbiedingen](../gtm-offer-listing-best-practices.md). Virtuele machine aanbiedingen worden altijd weer gegeven onder de **reken** categorie op Azure Marketplace.
 
 ### <a name="legal"></a>Juridisch
 
@@ -143,7 +148,7 @@ U moet de voor waarden van de aanbieding voor uw klanten opgeven. U hebt hiervoo
   > [!NOTE]
   > Nadat u een aanbieding hebt gepubliceerd met behulp van het standaard contract voor de commerciële Marketplace, kunt u uw eigen aangepaste voor waarden niet gebruiken. U kunt een oplossing aanbieden onder het standaard contract of uw eigen voor waarden.
 
-  Zie voor meer informatie [het standaard contract voor de micro soft Commercial Marketplace](https://docs.microsoft.com/azure/marketplace/standard-contract). Down load het [standaard](https://go.microsoft.com/fwlink/?linkid=2041178) -PDF-bestand (zorg ervoor dat pop-upblokkering is uitgeschakeld).
+  Zie voor meer informatie [het standaard contract voor de micro soft Commercial Marketplace](../standard-contract.md). Down load het [standaard](https://go.microsoft.com/fwlink/?linkid=2041178) -PDF-bestand (zorg ervoor dat pop-upblokkering is uitgeschakeld).
 
   **Wijzigingen in het standaard contract**
 
@@ -175,7 +180,7 @@ Op de **aanbiedings** pagina kunt u de details van het voor stel opgeven, zoals 
 
 ### <a name="marketplace-details"></a>Marketplace-gegevens
 
-#### <a name="name"></a>Naam
+#### <a name="name"></a>Name
 
 De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld wordt aangevuld met de naam die u hebt ingevoerd in het vak **aanbiedings alias** tijdens het maken van de aanbieding. U kunt deze naam later wijzigen. De naam:
 
@@ -191,7 +196,7 @@ Geef een korte beschrijving van uw aanbieding, die wordt weer gegeven in de zoek
 
 Geef een langere beschrijving van uw aanbieding op, zodat deze wordt weer gegeven in de zoek resultaten van Azure Marketplace. De naam mag Maxi maal 256 tekens bevatten.
 
-#### <a name="description"></a>Beschrijving
+#### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -221,7 +226,7 @@ Geef de ondersteunings website op waar klanten uw ondersteunings team kunnen ber
 
 Geef contact gegevens op voor micro soft-partners die kunnen worden gebruikt wanneer uw klanten een ondersteunings ticket openen. Deze informatie wordt niet vermeld op Azure Marketplace.
 
-- Naam
+- Name
 - E-mail
 - Telefoon
 
@@ -229,7 +234,7 @@ Geef contact gegevens op voor micro soft-partners die kunnen worden gebruikt wan
 
 Geef contact gegevens op die micro soft kan gebruiken wanneer er problemen zijn met uw aanbieding, met inbegrip van problemen met certificering. Deze informatie wordt niet vermeld op Azure Marketplace.
 
-- Naam
+- Name
 - E-mail
 - Telefoon
 
@@ -259,7 +264,7 @@ Voeg Maxi maal vijf scherm opnamen toe die laten zien hoe uw aanbieding werkt. E
 
 Voeg Maxi maal vijf Video's toe die uw aanbieding aantonen. De Video's moeten worden gehost op een externe video service. Voer de naam, het webadres en een miniatuur van de video-afbeelding van de video in op 1280 &times; 720 pixels.
 
-Zie [Best Practices for Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)List voor aanvullende bronnen voor Marketplace-aanbiedingen.
+Zie [Best Practices for Marketplace](../gtm-offer-listing-best-practices.md)List voor aanvullende bronnen voor Marketplace-aanbiedingen.
 
 Selecteer **concept opslaan** voordat u doorgaat.
 
@@ -324,11 +329,11 @@ Als u meer dan één abonnement van hetzelfde type hebt en de pakketten identiek
 
 Uw abonnement moet beschikbaar worden gesteld in ten minste één Azure-regio.
 
-Selecteer de optie **Azure Global** om uw plan beschikbaar te maken voor klanten in alle wereld wijde Azure-regio's die een commerciële Marketplace-integratie hebben. Zie [geografische Beschik baarheid en valuta ondersteuning](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)voor meer informatie.
+Selecteer de optie **Azure Global** om uw plan beschikbaar te maken voor klanten in alle wereld wijde Azure-regio's die een commerciële Marketplace-integratie hebben. Zie [geografische Beschik baarheid en valuta ondersteuning](../marketplace-geo-availability-currencies.md)voor meer informatie.
 
-Selecteer de optie **Azure Government** om uw plan beschikbaar te maken in de regio [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) . Deze regio voorziet in gecontroleerde toegang voor klanten van Amerikaanse federale, staats-, lokale of tribalee entiteiten, en voor partners die in aanmerking komen voor hen. Als uitgever bent u verantwoordelijk voor nalevings controles, beveiligings maatregelen en aanbevolen procedures. Azure Government maakt gebruik van fysiek geïsoleerde data centers en netwerken (alleen in de VS).
+Selecteer de optie **Azure Government** om uw plan beschikbaar te maken in de regio [Azure Government](../../azure-government/documentation-government-welcome.md) . Deze regio voorziet in gecontroleerde toegang voor klanten van Amerikaanse federale, staats-, lokale of tribalee entiteiten, en voor partners die in aanmerking komen voor hen. Als uitgever bent u verantwoordelijk voor nalevings controles, beveiligings maatregelen en aanbevolen procedures. Azure Government maakt gebruik van fysiek geïsoleerde data centers en netwerken (alleen in de VS).
 
-Voordat u naar [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)publiceert, moet u uw abonnement testen en valideren in de omgeving, omdat bepaalde eind punten kunnen verschillen. Als u uw abonnement wilt instellen en testen, vraagt u een proef account aan op de pagina met de [Microsoft Azure Government proef versie](https://azure.microsoft.com/global-infrastructure/government/request/) .
+Voordat u naar [Azure Government](../../azure-government/documentation-government-manage-marketplace-partners.md)publiceert, moet u uw abonnement testen en valideren in de omgeving, omdat bepaalde eind punten kunnen verschillen. Als u uw abonnement wilt instellen en testen, vraagt u een proef account aan op de pagina met de [Microsoft Azure Government proef versie](https://azure.microsoft.com/global-infrastructure/government/request/) .
 
 > [!NOTE]
 > Nadat uw abonnement is gepubliceerd en beschikbaar is in een specifieke Azure-regio, kunt u die regio niet verwijderen.
@@ -420,7 +425,7 @@ Selecteer **concept opslaan** voordat u doorgaat.
 
 ### <a name="technical-configuration"></a>Technische configuratie
 
-Geef de installatie kopieën en andere technische eigenschappen op die aan dit plan zijn gekoppeld. Zie [een technische Asset voor Azure VM maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)voor meer informatie.
+Geef de installatie kopieën en andere technische eigenschappen op die aan dit plan zijn gekoppeld. Zie [een technische Asset voor Azure VM maken](create-azure-container-technical-assets.md)voor meer informatie.
 
 > [!NOTE]
 > Het tabblad **technische configuratie** wordt niet weer gegeven als u dit plan hebt geconfigureerd voor het opnieuw gebruiken van pakketten van een ander abonnement op het tabblad **installatie plannen** .
@@ -454,7 +459,7 @@ Voor **ondersteuning van versneld netwerken**selecteert u of uw virtuele machine
 Geef een schijf versie en de SAS-URI (Shared Access Signature) voor de installatie kopieën van de virtuele machine op. Voeg Maxi maal 16 gegevens schijven toe voor elke VM-installatie kopie. Geef slechts één nieuwe versie van de installatie kopie op per abonnement in een opgegeven inzending. Nadat een installatie kopie is gepubliceerd, kunt u deze niet meer bewerken, maar wel verwijderen. Als u een versie verwijdert, kunnen zowel nieuwe als bestaande gebruikers een nieuw exemplaar van de verwijderde versie implementeren.
 
 - **Schijf versie**: de versie van de installatie kopie die u opgeeft.
-- **SAS-URI**: de locatie in uw Azure Storage-account waar u de virtuele harde schijf van het besturings systeem hebt opgeslagen.
+- **SAS-URI**: de locatie in uw Azure Storage-account waar u de virtuele harde schijf van het besturings systeem hebt opgeslagen. Zie voor meer informatie over het ophalen van een SAS-URI [de gedeelde toegangs handtekening-URI voor uw VM-installatie kopie ophalen](get-sas-uri.md).
 - Installatie kopieën van de gegevens schijf zijn ook Uri's van gedeelde Access-hand tekeningen voor VHD die zijn opgeslagen in hun Azure-opslag accounts.
 - Voeg slechts één afbeelding per inzending toe aan een plan.
 
@@ -470,13 +475,13 @@ Selecteer **concept opslaan** voordat u doorgaat.
 
 ## <a name="test-drive"></a>Test Drive
 
-Stel een demonstratie of *test station*in waarmee klanten uw aanbieding voor een bepaalde periode kunnen uitproberen voordat ze deze kopen. Als u een demonstratie omgeving voor uw klanten wilt maken, raadpleegt u [test drive aanbiedingen in de commerciële Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive).
+Stel een demonstratie of *test station*in waarmee klanten uw aanbieding voor een bepaalde periode kunnen uitproberen voordat ze deze kopen. Als u een demonstratie omgeving voor uw klanten wilt maken, raadpleegt u [test drive aanbiedingen in de commerciële Marketplace](test-drive.md).
 
 Als u een test station wilt inschakelen, schakelt u het selectie vakje **een test drive inschakelen** in het deel venster **instellingen voor aanbieding** in. Als u het test station uit uw aanbieding wilt verwijderen, schakelt u het selectie vakje uit.
 
 Aanvullende bronnen voor test stations:
 
-- [Best practices voor marketing](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [Best practices voor marketing](../what-is-test-drive.md)
 - [Technische best practices](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Overzicht van test drive](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF-bestand (zorg ervoor dat de pop-upblokkering is uitgeschakeld)
 
@@ -511,10 +516,10 @@ Op de **overzichts** pagina van de aanbieding ziet u een visuele weer gave van d
 
 Deze pagina bevat ook koppelingen waarmee u kunt samen werken met de aanbieding, afhankelijk van de status:
 
-- Als de aanbieding een concept is: [concept aanbieding verwijderen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- Als de aanbieding Live is: de [aanbieding niet meer verkopen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
-- Als de aanbieding in preview is: [Go-Live](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
-- Als u Publisher-afmelding niet hebt voltooid: [Publicatie annuleren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
+- Als de aanbieding een concept is: [concept aanbieding verwijderen](update-existing-offer.md#delete-a-draft-offer))
+- Als het aanbod Live is: wilt u [de aanbieding niet meer verkopen](update-existing-offer.md#stop-selling-an-offer-or-plan))
+- Als de aanbieding in preview is: [Go-Live](publishing-status.md#publisher-approval))
+- Als u Publisher-afmelding niet hebt voltooid: [Publicatie annuleren](update-existing-offer.md#cancel-publishing))
 
 ## <a name="marketplace-examples"></a>Marketplace-voor beelden
 
@@ -530,7 +535,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 4. Voorwaarden
 5. Adres van privacybeleid (koppeling)
 6. Naam van aanbieding
-7. Beschrijving
+7. Description
 8. Handige koppelingen
 9. Scherm afbeeldingen/Video's
 
@@ -587,4 +592,4 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 
 ## <a name="next-step"></a>Volgende stap
 
-- [Een bestaande aanbieding bijwerken in de commerciële Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [Een bestaande aanbieding bijwerken in de commerciële Marketplace](update-existing-offer.md)

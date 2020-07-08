@@ -3,12 +3,12 @@ title: Containerinstallatiekopieën importeren
 description: Container installatie kopieën importeren in een Azure container Registry met behulp van Azure Api's, zonder dat u docker-opdrachten hoeft uit te voeren.
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: caf7a47ac8f7ff0e72d2e049a7013542d274a225
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7a6566540880d027b1dc3428d394b352f34318d
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80051927"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023513"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Container installatie kopieën importeren in een container register
 
@@ -72,13 +72,13 @@ az acr import \
 
 ### <a name="import-from-microsoft-container-registry"></a>Importeren uit micro soft Container Registry
 
-U kunt bijvoorbeeld de meest recente installatie kopie van Windows Server importeren uit de `windows` opslag plaats in micro soft container Registry.
+Importeer bijvoorbeeld de `ltsc2019` Windows Server Core-installatie kopie uit de `windows` opslag plaats in micro soft container Registry.
 
 ```azurecli
 az acr import \
 --name myregistry \
---source mcr.microsoft.com/windows/servercore:latest \
---image servercore:latest
+--source mcr.microsoft.com/windows/servercore:ltsc2019 \
+--image servercore:ltsc2019
 ```
 
 ## <a name="import-from-another-azure-container-registry"></a>Importeren vanuit een ander Azure container Registry

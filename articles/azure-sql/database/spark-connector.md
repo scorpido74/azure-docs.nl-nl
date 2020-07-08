@@ -2,7 +2,7 @@
 title: De Spark-connector gebruiken met Microsoft Azure SQL en SQL Server
 description: Meer informatie over het gebruik van de Spark-connector met Azure SQL Database, Azure SQL Managed instance en SQL Server.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -11,12 +11,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: eb48773b2816ac801ea1ddc6752a86b13ca7dd1d
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: cb7fb7f6c44f9e1c4a9b073c666543a2e892582a
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343299"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985496"
 ---
 # <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>Big data analyse in realtime versnellen met behulp van de Spark-connector 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Om aan de slag te gaan, downloadt u de Spark-connector vanuit de [Azure-sqldb-Sp
 | :-----------------------------------  | :----------------------- |
 | Apache Spark                          | 2.0.2 of hoger           |
 | Scala                                 | 2,10 of hoger            |
-| Micro soft JDBC-stuur programma voor SQL Server  | 6,2 of hoger             |
+| Microsoft JDBC-stuurprogramma voor SQL Server  | 6,2 of hoger             |
 | Microsoft SQL Server                  | SQL Server 2008 of hoger |
 | Azure SQL Database                    | Ondersteund                |
 | Azure SQL Managed Instance            | Ondersteund                |

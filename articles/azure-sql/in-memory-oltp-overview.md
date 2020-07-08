@@ -2,8 +2,8 @@
 title: In-memory technologieën
 description: In-Memory technologieën worden de prestaties van transactionele en analytische workloads in Azure SQL Database en Azure SQL Managed instance aanzienlijk verbeterd.
 services: sql-database
-ms.service: sql-database
-ms.subservice: development
+ms.service: sql-db-mi
+ms.subservice: ''
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
-ms.openlocfilehash: c5208edc6038db0f9d45bb8fe10f3a96b5051b4c
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 43527e8e5860e0bbfc50643210156be943d2f174
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560553"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985187"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Optimaliseer de prestaties met behulp van in-Memory technologieën in Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -74,7 +74,7 @@ Zie voor meer informatie over in-memory in SQL Server:
 - [Hand leiding voor column Store-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview)
 - Hybride transactionele/analytische verwerking (HTAP), ook wel bekend als [real-time Operational Analytics](/sql/relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics)
 
-## <a name="in-memory-oltp"></a>OLTP in het geheugen
+## <a name="in-memory-oltp"></a>In-Memory OLTP
 
 De OLTP-technologie in het geheugen biedt extreem snelle bewerkingen voor gegevens toegang door alle gegevens in het geheugen te bewaren. Het maakt ook gebruik van gespecialiseerde indexen, systeem eigen compilatie van query's en vrije gegevens toegang om de prestaties van de OLTP-werk belasting te verbeteren. Er zijn twee manieren om de OLTP-gegevens in het geheugen te ordenen:
 

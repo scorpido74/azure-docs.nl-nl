@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 2032ba11c307adda7035d64828d5089da49bedba
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 1c9b0b48c7862990cfa2c8ba38bde0851058a228
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307582"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023020"
 ---
 # <a name="debug-errors-when-running-a-custom-commands-application"></a>Fouten opsporen bij het uitvoeren van een toepassing voor aangepaste opdrachten
 
@@ -27,9 +27,8 @@ Als uw toepassing aangepaste opdrachten uitvoeren vanuit de [client toepassing (
 
 | Foutcode | Details |
 | ------- | -------- |
-| 401 | AuthenticationFailure: bijwerken van WebSocket is mislukt met een verificatie fout |
-| 1000 | De maximum duur voor de niet-actieve verbinding van de WebSocket is overschreden (> 300.000 MS) |
-| 1002 | De server heeft de status code ' 404 ' geretourneerd wanneer de status code ' 101 ' werd verwacht. |
+| [401](#error-401) | AuthenticationFailure: bijwerken van WebSocket is mislukt met een verificatie fout |
+| [1002](#error-1002)] | De server heeft de status code ' 404 ' geretourneerd wanneer de status code ' 101 ' werd verwacht. |
 
 ### <a name="error-401"></a>Fout 401
 - De regio die in de client toepassing is opgegeven, komt niet overeen met de regio van de aangepaste opdracht toepassing
@@ -37,9 +36,6 @@ Als uw toepassing aangepaste opdrachten uitvoeren vanuit de [client toepassing (
 - De spraak bron sleutel is ongeldig
     
     Zorg ervoor dat de spraak bron sleutel juist is.
-
-### <a name="error-1000"></a>Fout 1000 
-Niet-actieve verbindingen worden na 5 minuten beëindigd door de server. Probeer opnieuw verbinding te maken.
 
 ### <a name="error-1002"></a>Fout 1002 
 - De aangepaste opdracht toepassing is niet gepubliceerd
@@ -49,10 +45,12 @@ Niet-actieve verbindingen worden na 5 minuten beëindigd door de server. Probeer
 - De applicationId van uw aangepaste opdracht is ongeldig
 
     Zorg ervoor dat de toepassings-ID van uw aangepaste opdracht juist is.
-
-- U probeert toegang te krijgen tot een aangepaste opdracht toepassing buiten uw spraak resource
+ aangepaste opdracht toepassing buiten uw spraak resource
 
     Zorg ervoor dat de aangepaste opdracht toepassing wordt gemaakt onder uw spraak bron.
+
+Raadpleeg voor meer informatie over het oplossen van problemen met de verbinding [Windows Voice Assistant client oplossen](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/master/clients/csharp-wpf#troubleshooting)
+
 
 ## <a name="dialog-is-canceled"></a>Dialoog venster is geannuleerd
 
@@ -70,14 +68,14 @@ De gebeurtenis CancelledDialog bestaat uit de annulerings code en beschrijving, 
 
 | Annulerings code | Beschrijving van annulering |
 | ------- | --------------- | ----------- |
-| MaxTurnThresholdReached | Er is geen voortgang gemaakt nadat het maximum aantal schakelingen is toegestaan |
-| RecognizerQuotaExceeded | Gebruiks quota van Recognizer overschreden |
-| RecognizerConnectionFailed | De verbinding met de herkenner is mislukt |
-| RecognizerUnauthorized | Kan geen toegang krijgen tot deze toepassing met het huidige abonnement |
-| RecognizerInputExceededAllowedLength | De invoer overschrijdt de Maxi maal ondersteunde lengte voor de herkenner |
-| RecognizerNotFound | Kan de herkenner niet vinden |
-| RecognizerInvalidQuery | Ongeldige query voor de herkenner |
-| RecognizerError | Recognizer retourneert een fout |
+| [MaxTurnThresholdReached](#no-progress-was-made-after-the-max-number-of-turns-allowed) | Er is geen voortgang gemaakt nadat het maximum aantal schakelingen is toegestaan |
+| [RecognizerQuotaExceeded](#recognizer-usage-quota-exceeded) | Gebruiks quota van Recognizer overschreden |
+| [RecognizerConnectionFailed](#connection-to-the-recognizer-failed) | De verbinding met de herkenner is mislukt |
+| [RecognizerUnauthorized](#this-application-cannot-be-accessed-with-the-current-subscription) | Kan geen toegang krijgen tot deze toepassing met het huidige abonnement |
+| [RecognizerInputExceededAllowedLength](#input-exceeds-the-maximum-supported-length) | De invoer overschrijdt de Maxi maal ondersteunde lengte voor de herkenner |
+| [RecognizerNotFound](#recognizer-not-found) | Kan de herkenner niet vinden |
+| [RecognizerInvalidQuery](#invalid-query-for-the-recognizer) | Ongeldige query voor de herkenner |
+| [RecognizerError](#recognizer-return-an-error) | Recognizer retourneert een fout |
 
 ### <a name="no-progress-was-made-after-the-max-number-of-turns-allowed"></a>Er is geen voortgang gemaakt nadat het maximum aantal schakelingen is toegestaan
 Het dialoog venster wordt geannuleerd wanneer een vereiste sleuf na een bepaald aantal schakelingen niet met succes is bijgewerkt. Het build-maximum aantal is 3.

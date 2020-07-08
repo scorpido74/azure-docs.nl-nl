@@ -3,7 +3,7 @@ title: Azure Active Directory-verificatie configureren
 titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 description: Meer informatie over hoe u verbinding maakt met SQL Database, SQL Managed instance en Azure Synapse Analytics met behulp van Azure Active Directory-verificatie, nadat u Azure AD hebt geconfigureerd.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: azure-synapse, has-adal-ref, sqldbrb=2
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/27/2020
-ms.openlocfilehash: eaad361ba82ee6adf139174c728c2ef9ffa94849
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: f5ef4c701cab8b9e94f89607bf643699e95ccad0
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310900"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984897"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure AD-verificatie configureren en beheren met Azure SQL
 
@@ -107,7 +107,7 @@ Als u uw SQL Managed instance Azure AD-Lees machtiging wilt verlenen met de Azur
 
     ![Azure Active Directory beheerder toevoegen](./media/authentication-aad-configure/add-azure-active-directory-admin.png)
 
-8. Selecteer boven aan de pagina Active Directory-beheer de optie **Opslaan**.
+8. Selecteer bovenaan de pagina Active Directory-beheerder de optie **Opslaan**.
 
     ![save](./media/authentication-aad-configure/save.png)
 
@@ -188,7 +188,7 @@ Voer de volgende Azure PowerShell opdrachten uit om een Azure AD-beheerder in te
 
 De cmdlets die worden gebruikt voor het inrichten en beheren van Azure AD-beheerder voor uw SQL Managed instance worden weer gegeven in de volgende tabel:
 
-| Naam van cmdlet | Beschrijving |
+| Naam van cmdlet | Description |
 | --- | --- |
 | [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Richt een Azure AD-beheerder in voor het beheerde exemplaar van SQL in het huidige abonnement. (Moet afkomstig zijn van het huidige abonnement)|
 | [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Hiermee verwijdert u een Azure AD-beheerder voor het beheerde exemplaar van SQL in het huidige abonnement. |
@@ -257,7 +257,7 @@ In de volgende twee procedures wordt uitgelegd hoe u een Azure Active Directory 
 
     ![Azure Active Directory beheerder selecteren](./media/authentication-aad-configure/select-azure-active-directory-admin.png)  
 
-6. Selecteer boven aan de pagina **Active Directory-beheerder** de optie **Opslaan**.
+6. Selecteer boven aan de pagina **Active Directory-beheer** de optie **Opslaan**.
 
     ![beheerder opslaan](./media/authentication-aad-configure/save-admin.png)
 
@@ -279,7 +279,7 @@ Als u Power shell-cmdlets wilt uitvoeren, moet Azure PowerShell zijn geïnstalle
 
 Cmdlets die worden gebruikt voor het inrichten en beheren van Azure AD-beheerder voor SQL Database en Azure Synapse:
 
-| Naam van cmdlet | Beschrijving |
+| Naam van cmdlet | Description |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Richt een Azure Active Directory beheerder in voor de server die als host fungeert voor SQL Database of Azure Synapse. (Moet afkomstig zijn van het huidige abonnement) |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Hiermee verwijdert u een Azure Active Directory beheerder voor de server die als host fungeert voor SQL Database of Azure Synapse.|
@@ -293,7 +293,7 @@ Met het volgende script wordt een Azure AD-Beheerders groep met de naam **DBA_Gr
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server" -DisplayName "DBA_Group"
 ```
 
-De para meter **DisplayName** invoer accepteert de Azure AD-weergave naam of de principal-naam van de gebruiker. Bijvoorbeeld, ``DisplayName="John Smith"`` en ``DisplayName="johns@contoso.com"`` . Voor Azure AD-groepen wordt alleen de Azure AD-weergave naam ondersteund.
+De para meter **DisplayName** invoer accepteert de Azure AD-weergave naam of de principal-naam van de gebruiker. Bijvoorbeeld ``DisplayName="John Smith"`` en ``DisplayName="johns@contoso.com"``. Voor Azure AD-groepen wordt alleen de Azure AD-weergave naam ondersteund.
 
 > [!NOTE]
 > De Azure PowerShell opdracht ```Set-AzSqlServerActiveDirectoryAdministrator``` voor komt niet dat u Azure AD-beheerders kunt inrichten voor niet-ondersteunde gebruikers. Een niet-ondersteunde gebruiker kan worden ingericht, maar kan geen verbinding maken met een Data Base.
@@ -343,7 +343,7 @@ Zie [AZ SQL Server](/cli/azure/sql/server)(Engelstalig) voor meer informatie ove
 Op alle client computers, van waaruit uw toepassingen of gebruikers verbinding maken met SQL Database of Azure Synapse met behulp van Azure AD-identiteiten, moet u de volgende software installeren:
 
 - .NET Framework 4,6 of hoger van [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx) .
-- Azure Active Directory-verificatie bibliotheek voor SQL Server (*ADAL. DLL*). Hieronder vindt u de Download koppelingen voor het installeren van de nieuwste SSMS-, ODBC-en OLE DB-Stuur Programma's die de *ADAL bevatten. DLL* -bibliotheek.
+- Azure Active Directory-verificatie bibliotheek voor SQL Server (*ADAL.DLL*). Hieronder vindt u de Download koppelingen voor het installeren van het nieuwste SSMS-, ODBC-en OLE DB-stuur programma dat de *ADAL.DLL* -bibliotheek bevat.
   - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
   - [ODBC-stuur programma 17 voor SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
   - [OLE DB stuur programma 18 voor SQL Server](https://www.microsoft.com/download/details.aspx?id=56730)
@@ -351,9 +351,9 @@ Op alle client computers, van waaruit uw toepassingen of gebruikers verbinding m
 U kunt aan de volgende vereisten voldoen:
 
 - Het installeren van de nieuwste versie van [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) of [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) voldoet aan de .NET Framework 4,6-vereiste.
-  - SSMS installeert de x86-versie van *ADAL. DLL*.
-  - SSDT installeert de amd64-versie van *ADAL. DLL*.
-  - De nieuwste Visual Studio- [down loads van Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs) voldoen aan de vereiste van .NET Framework 4,6, maar installeert de vereiste amd64-versie van *ADAL niet. DLL*.
+  - SSMS installeert de x86-versie van *ADAL.DLL*.
+  - SSDT installeert de amd64-versie van *ADAL.DLL*.
+  - De nieuwste Visual Studio- [down loads van Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs) voldoen aan de vereiste van .NET Framework 4,6, maar installeert de vereiste amd64-versie van *ADAL.DLL*niet.
 
 ## <a name="create-contained-users-mapped-to-azure-ad-identities"></a>Opgenomen gebruikers maken die zijn toegewezen aan Azure AD-identiteiten
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 479b227a9144604d3bd0116a60de751189376b5f
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: e50091750e01435912a2a5163cc786e79dc09f5c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85511465"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985061"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Diagnostische logboeken openen voor Azure Data Lake Storage Gen1
 Meer informatie over het inschakelen van diagnostische logboek registratie voor uw Azure Data Lake Storage Gen1-account en het weer geven van de logboeken die voor uw account zijn verzameld.
@@ -91,29 +91,31 @@ De audit-en aanvraag logboeken hebben een JSON-indeling. In deze sectie kijken w
 ### <a name="request-logs"></a>Logboeken aanvragen
 Hier volgt een voor beeld van een vermelding in het aanvraag logboek in JSON-indeling. Elke BLOB heeft één hoofd object met de naam **records** die een matrix met logboek objecten bevatten.
 
+```json
+{
+"records": 
+  [        
+    . . . .
+    ,
     {
-    "records": 
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-07T21:02:53.456Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
-             "category": "Requests",
-             "operationName": "GETCustomerIngressEgress",
-             "resultType": "200",
-             "callerIpAddress": "::ffff:1.1.1.1",
-             "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
-             "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
-             "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z"}
-        }
-        ,
-        . . . .
-      ]
+        "time": "2016-07-07T21:02:53.456Z",
+        "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
+        "category": "Requests",
+        "operationName": "GETCustomerIngressEgress",
+        "resultType": "200",
+        "callerIpAddress": "::ffff:1.1.1.1",
+        "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
+        "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
+        "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z"}
     }
+    ,
+    . . . .
+  ]
+}
+```
 
 #### <a name="request-log-schema"></a>Schema voor aanvraag logboek
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | tijd |Tekenreeks |De tijds tempel (in UTC) van het logboek |
 | resourceId |Tekenreeks |De ID van de resource waarop de bewerking plaatsvond |
@@ -126,7 +128,7 @@ Hier volgt een voor beeld van een vermelding in het aanvraag logboek in JSON-ind
 | properties |JSON |Zie hieronder voor meer informatie |
 
 #### <a name="request-log-properties-schema"></a>Schema eigenschappen van het aanvraag logboek
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | HttpMethod |Tekenreeks |De HTTP-methode die wordt gebruikt voor de bewerking. Bijvoorbeeld ophalen. |
 | Pad |Tekenreeks |Het pad waarin de bewerking is uitgevoerd |
@@ -138,29 +140,31 @@ Hier volgt een voor beeld van een vermelding in het aanvraag logboek in JSON-ind
 ### <a name="audit-logs"></a>Auditlogboeken
 Hier volgt een voor beeld van een vermelding in het audit logboek in JSON-indeling. Elke BLOB heeft één hoofd object met de naam **records** dat een matrix met logboek objecten bevat
 
+```json
+{
+"records": 
+  [        
+    . . . .
+    ,
     {
-    "records": 
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-08T19:08:59.359Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
-             "category": "Audit",
-             "operationName": "SeOpenStream",
-             "resultType": "0",
-             "resultSignature": "0",
-             "correlationId": "381110fc03534e1cb99ec52376ceebdf;Append_BrEKAmg;25.66.9.145",
-             "identity": "A9DAFFAF-FFEE-4BB5-A4A0-1B6CBBF24355",
-             "properties": {"StreamName":"adl://<data_lake_storage_gen1_account_name>.azuredatalakestore.net/logs.csv"}
-        }
-        ,
-        . . . .
-      ]
+        "time": "2016-07-08T19:08:59.359Z",
+        "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
+        "category": "Audit",
+        "operationName": "SeOpenStream",
+        "resultType": "0",
+        "resultSignature": "0",
+        "correlationId": "381110fc03534e1cb99ec52376ceebdf;Append_BrEKAmg;25.66.9.145",
+        "identity": "A9DAFFAF-FFEE-4BB5-A4A0-1B6CBBF24355",
+        "properties": {"StreamName":"adl://<data_lake_storage_gen1_account_name>.azuredatalakestore.net/logs.csv"}
     }
+    ,
+    . . . .
+  ]
+}
+```
 
 #### <a name="audit-log-schema"></a>Schema van auditlogboek
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | tijd |Tekenreeks |De tijds tempel (in UTC) van het logboek |
 | resourceId |Tekenreeks |De ID van de resource waarop de bewerking plaatsvond |
@@ -173,7 +177,7 @@ Hier volgt een voor beeld van een vermelding in het audit logboek in JSON-indeli
 | properties |JSON |Zie hieronder voor meer informatie |
 
 #### <a name="audit-log-properties-schema"></a>Schema eigenschappen van controle logboek
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | StreamName |Tekenreeks |Het pad waarin de bewerking is uitgevoerd |
 
@@ -189,7 +193,7 @@ search *
 
 Azure Data Lake Storage Gen1 biedt een voor beeld van hoe u de logboek gegevens kunt verwerken en analyseren. U kunt het voor beeld vinden op [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) . 
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 * [Overzicht van Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Gegevens beveiligen in Data Lake Storage Gen1](data-lake-store-secure-data.md)
 

@@ -2,7 +2,7 @@
 title: Playbook voor het adresseren van algemene beveiligings vereisten
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Dit artikel bevat algemene beveiligings vereisten en aanbevolen procedures in Azure SQL Database en Azure SQL Managed instance
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=2
 author: VanMSFT
@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 5a35d9f9ff611576f26a55cb5792bc4b1718bee0
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 8104302afa84446e2d57c7156f33bc0160e31472
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323838"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986775"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Playbook voor het adresseren van algemene beveiligings vereisten met Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -59,8 +59,6 @@ Tenzij anders vermeld, raden we u aan alle aanbevolen procedures in elke sectie 
 - [Micro soft Operational Security Assurance (OSA)-procedures](https://www.microsoft.com/securityengineering/osa/practices): Oefen #1-6 en #9
 - [Specifieke NIST-publicatie 800-53 beveiligings controles](https://nvd.nist.gov/800-53): AC-5, AC-6
 - [PCI DSS](https://www.pcisecuritystandards.org/document_library): 6.3.2, 6.4.2
-
-### <a name="feedback"></a>Feedback
 
 We gaan nu verder met het bijwerken van de aanbevelingen en aanbevolen procedures die hier worden vermeld. Geef een invoer of eventuele correcties voor dit document op met behulp van de **feedback** koppeling onder aan dit artikel.
 
@@ -141,7 +139,7 @@ Azure Multi-Factor Authentication biedt extra beveiliging doordat er meer dan é
   - Interactieve verificatie gebruiken die wordt ondersteund in SQL Server Data Tools (SSDT). Zie het artikel [Azure Active Directory ondersteuning in SQL Server Data tools (SSDT)](https://docs.microsoft.com/sql/ssdt/azure-active-directory?view=azuresqldb-current).
   - Gebruik andere SQL-hulpprogram ma's die Multi-Factor Authentication ondersteunen.
     - Ondersteuning van de wizard SSMS voor het exporteren/extra heren/implementeren van de data base  
-    - [sqlpackage. exe](https://docs.microsoft.com/sql/tools/sqlpackage): optie '/UA '
+    - [sqlpackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage): optie '/UA '
     - [Sqlcmd-hulp programma](https://docs.microsoft.com/sql/tools/sqlcmd-utility): Option-G (interactief)
     - [bcp-hulp programma](https://docs.microsoft.com/sql/tools/bcp-utility): Option-G (interactief)
 
@@ -340,7 +338,7 @@ Voor de lezers die dieper willen zijn in SoD, raden we de volgende bronnen aan:
 - Voor Azure SQL Database en SQL Managed instance:  
   - [Toegang tot databases beheren en verlenen](logins-create-manage.md)
   - [Schei ding van functies voor de toepassings ontwikkelaar](https://docs.microsoft.com/previous-versions/sql/sql-server-2008/cc974525(v=sql.100))
-  - [Schei ding van taken](https://www.microsoft.com/download/details.aspx?id=39269)
+  - [Scheiding van taken](https://www.microsoft.com/download/details.aspx?id=39269)
   - [Opgeslagen procedures ondertekenen](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
 
 - Voor Azure resource management:
@@ -378,7 +376,7 @@ Schei ding van taken is niet beperkt tot de gegevens in een Data Base, maar beva
 
 - Zorg ervoor dat u alle bron code-wijzigingen kent. Code kan zich in T-SQL-scripts bevindt. Dit kan ad-hoc opdrachten zijn om uit te voeren of te worden geïmplementeerd in formulieren van weer gaven, functies, triggers en opgeslagen procedures. Het kan een onderdeel zijn van SQL Agent-taak definities (stappen). Het kan ook worden uitgevoerd vanuit SSIS-pakketten, Azure Data Factory en andere services.
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 Gegevens beveiliging is een reeks mogelijkheden voor het beveiligen van belang rijke informatie tegen inbreuk door versleuteling of het afwijzen van een schijf.
 

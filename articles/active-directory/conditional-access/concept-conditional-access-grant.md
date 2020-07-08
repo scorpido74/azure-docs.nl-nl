@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1dcc91c6a7b823cd89b3ce4bf4d611b9923f87d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d1d30a32a58dd2385a214d813307c645c56afdc8
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558728"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024444"
 ---
 # <a name="conditional-access-grant"></a>Voorwaardelijke toegang: verlenen
 
@@ -39,6 +39,7 @@ Beheerders kunnen ervoor kiezen om een of meer besturings elementen af te dwinge
 - [Hybride Azure AD-aangesloten apparaat vereisen](../devices/concept-azure-ad-join-hybrid.md)
 - [Goedgekeurde client-apps vereisen](app-based-conditional-access.md)
 - [Beleid voor app-beveiliging vereisen](app-protection-based-conditional-access.md)
+- [Wachtwoord wijziging vereisen](#require-password-change)
 
 Wanneer beheerders ervoor kiezen deze opties te combi neren, kunnen ze de volgende methoden kiezen:
 
@@ -134,6 +135,21 @@ Deze instelling is van toepassing op de volgende client-apps:
     - Er is een Broker-app vereist om het apparaat te registreren. Op iOS is de Broker-app Microsoft Authenticator en op Android, Intune-bedrijfsportal app.
 
 Zie het artikel [procedure: app-beveiligings beleid en een goedgekeurde client-app vereisen voor toegang tot Cloud-apps met voorwaardelijke toegang](app-protection-based-conditional-access.md) voor configuratie voorbeelden.
+
+### <a name="require-password-change"></a>Wachtwoord wijziging vereisen 
+
+Wanneer gebruikers risico wordt gedetecteerd met behulp van de beleids voorwaarden voor gebruikers Risico's, kunnen beheerders ervoor kiezen de gebruiker het wacht woord veilig te wijzigen met behulp van de selfservice voor wachtwoord herstel van Azure AD. Als gebruikers risico wordt gedetecteerd, kunnen gebruikers een self-service voor het opnieuw instellen van een wacht woord op zichzelf herstellen, waarna de risico gebeurtenis voor gebruikers wordt gesloten om onnodig ruis voor beheerders te voor komen. 
+
+Wanneer een gebruiker wordt gevraagd het wacht woord te wijzigen, moeten ze eerst multi-factor Authentication volt ooien. U wilt ervoor zorgen dat al uw gebruikers zijn geregistreerd voor multi-factor Authentication, zodat ze worden voor bereid als er een risico wordt gedetecteerd voor hun account.  
+
+> [!WARNING]
+> Gebruikers moeten eerder zijn geregistreerd voor selfservice voor wachtwoord herstel voordat ze het beleid voor gebruikers Risico's kunnen activeren. 
+
+Er bestaat een aantal beperkingen wanneer u een beleid configureert met behulp van het besturings element voor wachtwoord wijziging.  
+
+1. Het beleid moet worden toegewezen aan alle Cloud-apps. Zo voor komt u dat een kwaadwillende persoon een andere app gebruikt om het wacht woord van de gebruiker te wijzigen en het account risico opnieuw in te stellen door zich eenvoudigweg aan te melden bij een andere app. 
+1. Vereisen dat wachtwoord wijziging niet kan worden gebruikt met andere besturings elementen, zoals het vereisen van een compatibel apparaat.  
+1. Het besturings element voor wachtwoord wijziging kan alleen worden gebruikt met de voor waarde voor de gebruikers-en groeps toewijzing, de voor waarde voor de Cloud app-toewijzing (die moet worden ingesteld op alle) en de risico voorwaarden van de gebruiker. 
 
 ### <a name="terms-of-use"></a>Gebruiksvoorwaarden
 

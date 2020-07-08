@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 622950c394d59d8ba504901f5bb0eea6bc04707f
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 121b3ced2e021f3907983623ea60185286797670
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160712"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024440"
 ---
 # <a name="conditional-access-conditions"></a>Voorwaardelijke toegang: voor waarden
 
@@ -32,6 +32,10 @@ Als er bijvoorbeeld een gevoelige toepassing wordt geopend, kan een beheerder de
 
 Voor klanten met toegang tot [identiteits beveiliging](../identity-protection/overview-identity-protection.md)kunnen aanmeldings Risico's worden geëvalueerd als onderdeel van een beleid voor voorwaardelijke toegang. Aanmeld risico geeft aan dat de kans dat een bepaalde verificatie aanvraag niet is geautoriseerd door de eigenaar van de identiteit. Meer informatie over aanmeldings Risico's vindt u in de artikelen, [Wat is Risico's](../identity-protection/concept-identity-protection-risks.md#sign-in-risk) en [procedure: risico beleid configureren en inschakelen](../identity-protection/howto-identity-protection-configure-risk-policies.md).
 
+## <a name="user-risk"></a>Gebruikers risico 
+
+Voor klanten met toegang tot [identiteits beveiliging](../identity-protection/overview-identity-protection.md)kan gebruikers risico worden geëvalueerd als onderdeel van een beleid voor voorwaardelijke toegang. Gebruikers risico duidt op de kans dat een gegeven identiteit of account is aangetast. Meer informatie over gebruikers risico vindt u in de artikelen, [Wat is Risico's](../identity-protection/concept-identity-protection-risks.md#user-risk) en [procedure: risico beleid configureren en inschakelen](../identity-protection/howto-identity-protection-configure-risk-policies.md).
+
 ## <a name="device-platforms"></a>Apparaatplatformen
 
 Het platform van het apparaat wordt gekenmerkt door het besturings systeem dat op een apparaat wordt uitgevoerd. Azure AD identificeert het platform met behulp van informatie die wordt geleverd door het apparaat, zoals teken reeksen van de gebruikers agent. Omdat teken reeksen van de gebruikers agent kunnen worden gewijzigd, wordt deze informatie niet geverifieerd. Het platform van het apparaat moet worden gebruikt in combi natie met Microsoft Intune nalevings beleid voor apparaten of als onderdeel van een blok instructie. De standaard instelling is van toepassing op alle platformen.
@@ -43,9 +47,6 @@ Voorwaardelijke toegang van Azure AD biedt ondersteuning voor de volgende platfo
 - Windows Phone
 - Windows
 - macOS
-
-> [!WARNING]
-> Micro soft is op de hoogte van een probleem met het beleid voor voorwaardelijke toegang en voor macOS 10.15.4-apparaten. Meer informatie vindt u in het blog bericht, [bekende probleem: voorwaardelijke toegang heeft onverwacht de macOS 10.15.4 native mail-client/andere apps geblokkeerd](https://techcommunity.microsoft.com/t5/intune-customer-success/known-issue-conditional-access-unexpectedly-blocking-macos-10-15/ba-p/1322283).
 
 Als u verouderde verificatie blokkeert met de voor waarde van **andere clients** , kunt u ook de voor waarde voor het apparaat platform instellen.
 
@@ -115,21 +116,17 @@ Voor Chrome-ondersteuning in **Windows 10 Crea tors update (versie 1703)** of ni
 
 Als u deze uitbrei ding automatisch wilt implementeren in Chrome-browsers, maakt u de volgende register sleutel:
 
-|    |    |
-| --- | --- |
-| Pad | HKEY_LOCAL_MACHINE \Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Naam | 1 |
-| Type | REG_SZ (teken reeks) |
-| Gegevens | ppnbnpeolgkicgegkbkbjmhlideopiji; https\://clients2.Google.com/service/UPDATE2/CRX |
+- Pad HKEY_LOCAL_MACHINE \Software\Policies\Google\Chrome\ExtensionInstallForcelist
+- Naam 1
+- Type REG_SZ (teken reeks)
+- Data ppnbnpeolgkicgegkbkbjmhlideopiji; https \: //clients2.Google.com/service/UPDATE2/CRX
 
 Voor Chrome-ondersteuning in **Windows 8,1 en 7**maakt u de volgende register sleutel:
 
-|    |    |
-| --- | --- |
-| Pad | HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Naam | 1 |
-| Type | REG_SZ (teken reeks) |
-| Gegevens | {"patroon": "https://device.login.microsoftonline.com", "filter": {"uitgever": {"CN": "MS-organisatie-Access"}}} |
+- Pad HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
+- Naam 1
+- Type REG_SZ (teken reeks)
+- Data {"patroon": " https://device.login.microsoftonline.com ", "filter": {"uitgever": {"CN": "MS-organisatie-Access"}}}
 
 Deze browsers ondersteunen de verificatie van apparaten, zodat het apparaat kan worden geïdentificeerd en gevalideerd op basis van een beleid. De controle van het apparaat mislukt als de browser wordt uitgevoerd in de privé modus.
 
@@ -156,7 +153,7 @@ Deze instelling heeft gevolgen voor toegangs pogingen van de volgende mobiele ap
 | Outlook 2016, Outlook 2013 (met moderne verificatie), Skype voor bedrijven (met moderne verificatie) | Office 365 Exchange Online | Windows 8,1, Windows 7 |
 | Mobiele Outlook-app | Office 365 Exchange Online | Android, iOS |
 | Power BI-app | Power BI-service | Windows 10, Windows 8,1, Windows 7, Android en iOS |
-| Skype voor Bedrijven | Office 365 Exchange Online| Android, iOS |
+| Skype voor bedrijven | Office 365 Exchange Online| Android, iOS |
 | App Visual Studio Team Services | Visual Studio Team Services | Windows 10, Windows 8,1, Windows 7, iOS en Android |
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync-clients

@@ -6,25 +6,27 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: f7f0a466f288031474b100f42c9ba41aafb9ff9a
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.date: 06/17/2020
+ms.openlocfilehash: c3cd5ed952ddb40157ee16246d4d1669d47ed6b9
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85515547"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984500"
 ---
-# <a name="create-an-azure-container-offer"></a>Een Azure-container aanbieding maken
+# <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Een Azure-container aanbieding maken in azure Marketplace
 
-In dit artikel wordt beschreven hoe u een container aanbod voor Azure Marketplace maakt en publiceert. Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) als u dit nog niet hebt gedaan. Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
+In dit artikel wordt beschreven hoe u een container aanbod voor Azure Marketplace maakt en publiceert. Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner Center](create-account.md) als u dit nog niet hebt gedaan. Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
 
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
+
 2. Selecteer in het menu links de optie **commerciële Marketplace**-  >  **overzicht**.
+
 3. Selecteer op de pagina overzicht **+ nieuwe**  >  **Azure-container**aanbod.
 
-    ![Illustreert het navigatie menu.](./media/new-offer-azure-container.png)
+   ![Illustreert het navigatie menu.](./media/new-offer-azure-container.png)
 
 > [!TIP]
 > Nadat een aanbieding is gepubliceerd, worden wijzigingen die in het partner centrum zijn aangebracht, alleen weer gegeven in de winkel wanneer u de aanbieding opnieuw publiceert. Zorg ervoor dat u altijd opnieuw publiceert nadat u wijzigingen hebt aangebracht.
@@ -50,10 +52,10 @@ De **overzichts** pagina van de aanbieding bevat een visuele weer gave van de st
 
 Op deze pagina worden verschillende koppelingen weer gegeven op basis van de huidige status van de aanbieding. Bijvoorbeeld:
 
-- Als de aanbieding een concept is- [concept verwijderen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- Als de aanbieding Live is: [de aanbieding wordt niet meer verkocht](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
-- Als de aanbieding in Preview- [Live](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval) staat
-- Als u Publisher-afmelding niet hebt voltooid, kunt u het [Publiceren annuleren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
+- Als de aanbieding een concept is- [concept verwijderen](update-existing-offer.md#delete-a-draft-offer)
+- Als de aanbieding Live is: [de aanbieding wordt niet meer verkocht](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- Als de aanbieding in Preview- [Live](publishing-status.md#publisher-approval) staat
+- Als u Publisher-afmelding niet hebt voltooid, kunt u het [Publiceren annuleren](update-existing-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>Installatie van aanbieding
 
@@ -65,12 +67,12 @@ Wanneer u uw aanbieding naar de commerciële Marketplace met het partner centrum
 
 1. **Selecteer de doel locatie van de lead waarnaar we leads van klanten willen verzenden**. Het partner Centrum ondersteunt de volgende CRM-systemen:
 
-   - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) voor klant betrokkenheid
-   - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-   - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+   - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) voor klant betrokkenheid
+   - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+   - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
    > [!NOTE]
-   > Als uw CRM-systeem niet hierboven wordt vermeld, gebruikt u [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) of [https-eind punt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) om klant lead gegevens op te slaan en exporteert u de gegevens vervolgens naar uw CRM-systeem.
+   > Als uw CRM-systeem niet hierboven wordt vermeld, gebruikt u [Azure Table](commercial-marketplace-lead-management-instructions-azure-table.md) of [https-eind punt](commercial-marketplace-lead-management-instructions-https.md) om klant lead gegevens op te slaan en exporteert u de gegevens vervolgens naar uw CRM-systeem.
 
 2. Verbind uw aanbieding met de doel locatie van de lead wanneer u publiceert in het partner centrum.
 3. Controleer of de verbinding met de doel locatie juist is geconfigureerd. Nadat u het in het partner centrum hebt gepubliceerd, valideren we de verbinding en sturen we u een test lead. Wanneer u een voor beeld van de aanbieding bekijkt voordat deze live gaat, kunt u ook uw lead verbinding testen door zelf te proberen de aanbieding aan te schaffen in de preview-omgeving.
@@ -78,9 +80,9 @@ Wanneer u uw aanbieding naar de commerciële Marketplace met het partner centrum
 
 Hier volgen enkele aanvullende bronnen voor het beheer van leads:
 
-- [Overzicht Lead beheer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [Veelgestelde vragen over leadmanagement](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Algemene leadconfiguratiefouten](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
+- [Overzicht Lead beheer](commercial-marketplace-get-customer-leads.md)
+- [Veelgestelde vragen over leadmanagement](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
+- [Algemene leadconfiguratiefouten](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
 - [Overzicht Lead beheer](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (zorg ervoor dat de pop-upblokkering is uitgeschakeld)
 
 Selecteer **concept opslaan** voordat u doorgaat.
@@ -91,7 +93,12 @@ Op deze pagina kunt u de categorieën definiëren die worden gebruikt voor het g
 
 #### <a name="category"></a>Categorie
 
-Selecteer mini maal één en Maxi maal vijf categorieën. Deze categorieën worden gebruikt om uw aanbieding in de juiste Marketplace-Zoek gebieden te plaatsen en worden weer gegeven op de pagina met details van de aanbieding. In de beschrijving van de aanbieding wordt uitgelegd hoe uw aanbod deze categorieën ondersteunt. Containers worden weer gegeven onder **containers** en vervolgens de categorie **container installatie kopieën** .
+Selecteer categorieën en subcategorieën om uw aanbieding te plaatsen in de juiste Zoek gebieden voor Marketplace. Zorg ervoor dat u beschrijft hoe uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding. Selecteer:
+
+- Ten minste één en Maxi maal twee categorieën, met inbegrip van een primaire en secundaire categorie (optioneel).
+- Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie van toepassing is op uw aanbieding, selecteert u **niet van toepassing**.
+
+Bekijk de volledige lijst met categorieën en subcategorieën in [Aanbevolen procedures voor aanbiedingen](../gtm-offer-listing-best-practices.md). Containers worden altijd weer gegeven onder **containers** en vervolgens de categorie **container installatie kopieën** .
 
 #### <a name="legal"></a>Juridisch
 
@@ -100,13 +107,13 @@ U moet voor waarden voor de aanbieding opgeven. Er zijn twee opties:
 - Gebruik het standaard contract voor micro soft Commercial Marketplace.
 - Geef uw eigen voor waarden op.
 
-##### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standard-contract voor micro soft Commercial Marketplace
+#### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standard-contract voor micro soft Commercial Marketplace
 
 We bieden een standaard contract sjabloon om trans acties in de commerciële Marketplace te vergemakkelijken. U kunt ervoor kiezen om uw oplossing aan te bieden onder het standaard contract, wat klanten alleen eenmaal hoeven te controleren en accepteren. Dit is een goede optie als u geen aangepaste voor waarden wilt maken.
 
-Zie voor meer informatie over het standaard contract [Standard-contract voor de micro soft Commercial Marketplace](https://docs.microsoft.com/azure/marketplace/standard-contract). U kunt ook het [standaard](https://go.microsoft.com/fwlink/?linkid=2041178) -PDF-bestand downloaden (zorg ervoor dat de pop-upblokkering is uitgeschakeld).
+Zie voor meer informatie over het standaard contract [Standard-contract voor de micro soft Commercial Marketplace](../standard-contract.md). U kunt ook het [standaard](https://go.microsoft.com/fwlink/?linkid=2041178) -PDF-bestand downloaden (zorg ervoor dat de pop-upblokkering is uitgeschakeld).
 
-Als u het standaard contract wilt gebruiken, schakelt u het selectie vakje **het standaard contract voor commerciële Marketplace van micro soft gebruiken** in en klikt u op **accepteren**.
+Als u het standaard contract wilt gebruiken, selecteert u het * * gebruik het standaard contract voor de commerciële Marketplace van micro soft. /standard-contract.md)
 
 > [!NOTE]
 > Nadat u een aanbieding hebt gepubliceerd met het standaard contract voor micro soft Commercial Marketplace, kunt u uw eigen aangepaste voor waarden niet gebruiken. U kunt uw oplossing aanbieden onder het Standard-contract of onder uw eigen voor waarden.
@@ -126,7 +133,7 @@ Op deze pagina kunt u de details van het aanbod definiëren dat wordt weer gegev
 > [!NOTE]
 > De details van de aanbieding hoeven niet in het Engels te staan als de beschrijving van de aanbieding begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook handig om een nuttige koppeling te bieden om inhoud te bieden in een andere taal dan die wordt gebruikt in de details van de aanbieding.
 
-### <a name="name"></a>Naam
+### <a name="name"></a>Name
 
 De naam die u hier opgeeft, wordt weer gegeven als de titel van uw aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd in het vak **aanbiedings alias** wanneer u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
@@ -144,7 +151,7 @@ Een korte beschrijving van uw aanbieding. Dit kan Maxi maal 100 tekens lang zijn
 
 Een gedetailleerde beschrijving van uw aanbieding. Dit kan Maxi maal 256 tekens lang zijn en wordt gebruikt in Zoek resultaten voor Marketplace.
 
-### <a name="description"></a>Beschrijving
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -177,7 +184,7 @@ Geef in de sectie **contact persoon** van het CSP-programma de koppeling op ( **
 
 #### <a name="additional-marketplace-listing-resources"></a>Aanvullende bronnen voor Marketplace-lijst
 
-Zie [Best practices](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices) voor aanbiedings aanbiedingen voor meer informatie over het maken van aanbiedings vermeldingen
+Zie [Best practices](../gtm-offer-listing-best-practices.md) voor aanbiedings aanbiedingen voor meer informatie over het maken van aanbiedings vermeldingen
 
 ### <a name="marketplace-images"></a>Marketplace-installatie kopieën
 
@@ -275,11 +282,11 @@ Op dit tabblad kunt u kiezen in welke Clouds het plan beschikbaar is. Uw antwoor
 
 #### <a name="azure-regions"></a>Azure-regio's
 
-Alle abonnementen voor Azure-container aanbiedingen worden automatisch beschikbaar gemaakt in **Azure Global**.  Uw abonnement kan door klanten worden gebruikt in alle wereld wijde Azure-regio's die gebruikmaken van de commerciële Marketplace. Zie [geografische Beschik baarheid en valuta ondersteuning](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)voor meer informatie.
+Alle abonnementen voor Azure-container aanbiedingen worden automatisch beschikbaar gemaakt in **Azure Global**.  Uw abonnement kan door klanten worden gebruikt in alle wereld wijde Azure-regio's die gebruikmaken van de commerciële Marketplace. Zie [geografische Beschik baarheid en valuta ondersteuning](../marketplace-geo-availability-currencies.md)voor meer informatie.
 
-Selecteer de optie [**Azure Government**](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) om uw oplossing hier weer te geven. Dit is een community-Cloud met gecontroleerde toegang voor klanten van de Amerikaanse federale, staats-en lokale of tribale overheids instanties en partners die in aanmerking komen voor de overheid. Als uitgever bent u verantwoordelijk voor nalevings controles, beveiligings maatregelen en aanbevolen procedures voor deze Cloud community. Azure Government maakt gebruik van fysiek geïsoleerde data centers en netwerken (alleen in de Verenigde Staten).
+Selecteer de optie [**Azure Government**](../../azure-government/documentation-government-welcome.md) om uw oplossing hier weer te geven. Dit is een overheids Community-Cloud met gecontroleerde toegang voor klanten van de Amerikaanse federale, S] (. /Marketplace-geo-Availability-currencies.MD) em. Als uitgever bent u verantwoordelijk voor nalevings controles, beveiligings maatregelen en aanbevolen procedures voor deze Cloud community. Azure Government maakt gebruik van fysiek geïsoleerde data centers en netwerken (alleen in de Verenigde Staten).
 
-Voordat u naar Azure Government [publiceert](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) , moet u de oplossing in dat gebied testen en bevestigen, omdat de resultaten mogelijk verschillend zijn. Vraag een proef account aan [Microsoft Azure Government proef versie](https://azure.microsoft.com/global-infrastructure/government/request/)om uw oplossing te maken en te testen.
+Voordat u naar Azure Government [publiceert](../../azure-government/documentation-government-manage-marketplace-partners.md) , moet u de oplossing in dat gebied testen en bevestigen, omdat de resultaten mogelijk verschillend zijn. Vraag een proef account aan [Microsoft Azure Government proef versie](https://azure.microsoft.com/global-infrastructure/government/request/)om uw oplossing te maken en te testen.
 
 > [!NOTE]
 > Nadat uw plan is gepubliceerd en beschikbaar is in een specifieke regio, kunt u die regio niet verwijderen.
@@ -337,7 +344,7 @@ Dit veld wordt gebruikt wanneer:
 
 Container installatie kopieën moeten worden gehost in een persoonlijke [Azure container Registry](https://azure.microsoft.com/services/container-registry/). Geef op het tabblad **technische configuratie** referentie gegevens op voor de opslag plaats van de container installatie kopie in de Azure container Registry.
 
-Nadat de aanbieding is gepubliceerd, wordt uw container installatie kopie gekopieerd naar Azure Marketplace in een specifiek openbaar container register. Alle aanvragen voor het gebruik van uw container installatie kopie worden aangeboden vanuit het open bare container register van Azure Marketplace, niet aan uw persoonlijke voor naam. Zie [technische activa van Azure-container voorbereiden](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)voor meer informatie.
+Nadat de aanbieding is gepubliceerd, wordt uw container installatie kopie gekopieerd naar Azure Marketplace in een specifiek openbaar container register. Alle aanvragen voor het gebruik van uw container installatie kopie worden aangeboden vanuit het open bare container register van Azure Marketplace, niet aan uw persoonlijke voor naam. Zie [technische activa van Azure-container voorbereiden](create-azure-container-technical-assets.md)voor meer informatie.
 
 ### <a name="image-repository-details"></a>Details van de afbeeldings opslagplaats
 
@@ -345,11 +352,11 @@ Geef de volgende informatie op het tabblad Details van de **afbeeldings opslagpl
 
 **Azure-abonnements-id** : Geef de abonnements-id op waar het gebruik wordt gerapporteerd en de services worden gefactureerd voor de Azure container Registry die uw container installatie kopie bevatten. U kunt deze ID vinden op de [pagina Abonnementen](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) in het Azure Portal.
 
-**Naam van de Azure-resource groep** : Geef de naam van de [resource groep](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) op die de Azure container Registry bevat met de container installatie kopie. De resource groep moet toegankelijk zijn in de abonnements-ID (hierboven). U vindt de naam op de pagina [resource groepen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) in de Azure Portal.
+**Naam van de Azure-resource groep** : Geef de naam van de [resource groep](../../azure-resource-manager/management/manage-resource-groups-portal.md) op die de Azure container Registry bevat met de container installatie kopie. De resource groep moet toegankelijk zijn in de abonnements-ID (hierboven). U vindt de naam op de pagina [resource groepen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) in de Azure Portal.
 
-**Azure container Registry naam** : Geef de naam op van de [Azure container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-intro) met de container installatie kopie. Het container register moet zich bevinden in de Azure-resource groep die u eerder hebt ingesteld. Neem alleen de register naam op, niet de volledige naam van de aanmeldings server. Zorg ervoor dat u **azurecr.io** weglaat uit de naam. U kunt de register naam vinden op de [pagina container registers](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) in de Azure Portal.
+**Azure container Registry naam** : Geef de naam op van de [Azure container Registry](../../container-registry/container-registry-intro.md) met de container installatie kopie. Het container register moet zich bevinden in de Azure-resource groep die u eerder hebt ingesteld. Neem alleen de register naam op, niet de volledige naam van de aanmeldings server. Zorg ervoor dat u **azurecr.io** weglaat uit de naam. U kunt de register naam vinden op de [pagina container registers](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) in de Azure Portal.
 
-**Gebruikers naam van de beheerder voor de Azure container Registry** : Geef de [gebruikers naam](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account) van de beheerder die is gekoppeld aan de Azure container Registry met de container installatie kopie. De gebruikers naam en het wacht woord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het REGI ster. Als u de gebruikers naam en het wacht woord van de beheerder wilt ophalen, stelt u de eigenschap met **beheerders** rechten in op **True** met behulp van de Azure-opdracht regel interface (CLI). U kunt optioneel een **admin-gebruiker** instellen om in azure Portal in te **scha kelen** .
+**Gebruikers naam van de beheerder voor de Azure container Registry** : Geef de [gebruikers naam](../../container-registry/container-registry-authentication.md#admin-account)van de beheerder op die is gekoppeld aan de Azure container Registry met de container installatie kopie. De gebruikers naam en het wacht woord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het REGI ster. Als u de gebruikers naam en het wacht woord van de beheerder wilt ophalen, stelt u de eigenschap met **beheerders** rechten in op **True** met behulp van de Azure-opdracht regel interface (CLI). U kunt optioneel een **admin-gebruiker** instellen om in azure Portal in te **scha kelen** .
 
  :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Illustreert het dialoog venster update container Registry.":::
 
@@ -357,7 +364,7 @@ Geef de volgende informatie op het tabblad Details van de **afbeeldings opslagpl
 
 :::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Illustreert het menu toegangs sleutel.":::
 
-**De naam van de opslag plaats in de Azure container Registry**. Geef de naam op van de Azure Container Registry opslag plaats met uw installatie kopie. Neem de naam van de opslag plaats op wanneer u de installatie kopie naar het REGI ster pusht. U kunt de naam van de opslag plaats vinden door naar de pagina [container Registry](https://azure.microsoft.com/services/container-registry/)  >  **opslagplaatsen** te gaan. Zie [container register opslagplaatsen weer geven in azure Portal](https://docs.microsoft.com/azure/container-registry/container-registry-repositories)voor meer informatie.
+**De naam van de opslag plaats in de Azure container Registry**. Geef de naam op van de Azure Container Registry opslag plaats met uw installatie kopie. Neem de naam van de opslag plaats op wanneer u de installatie kopie naar het REGI ster pusht. U kunt de naam van de opslag plaats vinden door naar de pagina [container Registry](https://azure.microsoft.com/services/container-registry/)  >  **opslagplaatsen** te gaan. Zie [container register opslagplaatsen weer geven in azure Portal](../../container-registry/container-registry-repositories.md)voor meer informatie.
 
 > [!NOTE]
 > Nadat de naam is ingesteld, kan deze niet meer worden gewijzigd. Gebruik een unieke naam voor elke aanbieding in uw account.
@@ -370,7 +377,7 @@ Klanten moeten automatisch updates kunnen ophalen van de Azure Marketplace wanne
 
 Dit veld moet een **laatste** tag bevatten die verwijst naar de nieuwste versie van uw installatie kopie op alle ondersteunde platforms. Het moet ook een versie label bevatten (bijvoorbeeld vanaf xx. xx. xx, waarbij XX een getal is). Klanten moeten [manifest Tags](https://github.com/estesp/manifest-tool) gebruiken om meerdere platforms te bereiken. Alle labels waarnaar wordt verwezen door een manifest-tag, moeten ook worden toegevoegd, zodat ze kunnen worden geüpload.
 
-Alle manifest Tags (met uitzonde ring van de laatste tag) moeten beginnen met X. Y **-** of x. y. z-waarbij x, Y en z een geheel getal zijn. Als een van de **nieuwste** Tags bijvoorbeeld verwijst naar 1.0.1-Linux-x64, 1.0.1-Linux-arm32 en 1.0.1-Windows-arm32, moeten deze zes Tags worden toegevoegd aan dit veld. Zie [technische activa van Azure-container voorbereiden](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)voor meer informatie.
+Alle manifest Tags (met uitzonde ring van de laatste tag) moeten beginnen met X. Y **-** of x. y. z-waarbij x, Y en z een geheel getal zijn. Als een van de **nieuwste** Tags bijvoorbeeld verwijst naar 1.0.1-Linux-x64, 1.0.1-Linux-arm32 en 1.0.1-Windows-arm32, moeten deze zes Tags worden toegevoegd aan dit veld. Zie [technische activa van Azure-container voorbereiden](create-azure-container-technical-assets.md)voor meer informatie.
 
 > [!NOTE]
 > Vergeet niet om een test code toe te voegen aan uw installatie kopie, zodat u de afbeelding tijdens het testen kunt identificeren.
@@ -397,4 +404,4 @@ Als u uw aanbieding naar het publiek wilt publiceren, gaat u naar partner centru
 
 ## <a name="next-step"></a>Volgende stap
 
-- [Een bestaande aanbieding bijwerken in de commerciële Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [Een bestaande aanbieding bijwerken in de commerciële Marketplace](update-existing-offer.md)

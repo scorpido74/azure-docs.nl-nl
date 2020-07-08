@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: 889da0188c5dba4a7ceb785dcf20d439b4b9d6f5
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 32d17962938c9a1dc301c7a1a681801ed488c584
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85515572"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985015"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Gegevens kopiëren tussen Data Lake Storage Gen1 en Azure SQL Database met behulp van Sqoop
 
@@ -39,33 +39,39 @@ Voordat u begint, moet u het volgende hebben:
 
     **Maken Tabel1**
 
-       CREATE TABLE [dbo].[Table1](
-       [ID] [int] NOT NULL,
-       [FName] [nvarchar](50) NOT NULL,
-       [LName] [nvarchar](50) NOT NULL,
-        CONSTRAINT [PK_Table_1] PRIMARY KEY CLUSTERED
+    ```tsql
+    CREATE TABLE [dbo].[Table1](
+    [ID] [int] NOT NULL,
+    [FName] [nvarchar](50) NOT NULL,
+    [LName] [nvarchar](50) NOT NULL,
+     CONSTRAINT [PK_Table_1] PRIMARY KEY CLUSTERED
            (
                   [ID] ASC
            )
-       ) ON [PRIMARY]
-       GO
+    ) ON [PRIMARY]
+    GO
+    ```
 
     **Tabel2 maken**
 
-       CREATE TABLE [dbo].[Table2](
-       [ID] [int] NOT NULL,
-       [FName] [nvarchar](50) NOT NULL,
-       [LName] [nvarchar](50) NOT NULL,
-        CONSTRAINT [PK_Table_2] PRIMARY KEY CLUSTERED
+    ```tsql
+    CREATE TABLE [dbo].[Table2](
+    [ID] [int] NOT NULL,
+    [FName] [nvarchar](50) NOT NULL,
+    [LName] [nvarchar](50) NOT NULL,
+     CONSTRAINT [PK_Table_2] PRIMARY KEY CLUSTERED
            (
                   [ID] ASC
            )
-       ) ON [PRIMARY]
-       GO
+    ) ON [PRIMARY]
+    GO
+    ```
 
 1. Voer de volgende opdracht uit om een aantal voorbeeld gegevens toe te voegen aan **Tabel1**. Laat de instelling **tabel2** empty leeg. Later importeert u gegevens van **Tabel1** in data Lake Storage gen1. Vervolgens exporteert u gegevens van Data Lake Storage Gen1 naar **tabel2**.
 
-       INSERT INTO [dbo].[Table1] VALUES (1,'Neal','Kell'), (2,'Lila','Fulton'), (3, 'Erna','Myers'), (4,'Annette','Simpson');
+    ```tsql
+    INSERT INTO [dbo].[Table1] VALUES (1,'Neal','Kell'), (2,'Lila','Fulton'), (3, 'Erna','Myers'), (4,'Annette','Simpson');
+    ```
 
 ## <a name="use-sqoop-from-an-hdinsight-cluster-with-access-to-data-lake-storage-gen1"></a>Sqoop gebruiken vanuit een HDInsight-cluster met toegang tot Data Lake Storage Gen1
 
@@ -75,7 +81,9 @@ De Sqoop-pakketten van An HDInsight cluster zijn al beschikbaar. Als u het HDIns
 
 1. Controleer of u toegang hebt tot het Data Lake Storage Gen1-account vanuit het cluster. Voer de volgende opdracht uit vanaf de SSH-prompt:
 
-       hdfs dfs -ls adl://<data_lake_storage_gen1_account>.azuredatalakestore.net/
+    ```console
+    hdfs dfs -ls adl://<data_lake_storage_gen1_account>.azuredatalakestore.net/
+    ```
 
    Met deze opdracht geeft u een lijst van bestanden/mappen in het Data Lake Storage Gen1-account.
 
@@ -85,25 +93,33 @@ De Sqoop-pakketten van An HDInsight cluster zijn al beschikbaar. Als u het HDIns
 
 1. Importeer de gegevens van **Tabel1** in het data Lake Storage gen1-account. Gebruik de volgende syntaxis:
 
-       sqoop-import --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table1 --target-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1
+    ```console
+    sqoop-import --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table1 --target-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1
+    ```
 
    De naam van de server waarop de data base wordt uitgevoerd, vertegenwoordigt de tijdelijke aanduiding voor de **SQL-Data Base-Server naam** . **SQL-data base-naam** tijdelijke aanduiding staat voor de werkelijke database naam.
 
    Bijvoorbeeld:
 
-       sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
+    ```console
+    sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
+    ```
 
 1. Controleer of de gegevens zijn overgedragen naar het Data Lake Storage Gen1-account. Voer de volgende opdracht uit:
 
-       hdfs dfs -ls adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/
+    ```console
+    hdfs dfs -ls adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/
+    ```
 
    De volgende uitvoer wordt weergegeven.
 
-       -rwxrwxrwx   0 sshuser hdfs          0 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/_SUCCESS
-       -rwxrwxrwx   0 sshuser hdfs         12 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00000
-       -rwxrwxrwx   0 sshuser hdfs         14 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00001
-       -rwxrwxrwx   0 sshuser hdfs         13 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00002
-       -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
+    ```console
+    -rwxrwxrwx   0 sshuser hdfs          0 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/_SUCCESS
+    -rwxrwxrwx   0 sshuser hdfs         12 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00000
+    -rwxrwxrwx   0 sshuser hdfs         14 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00001
+    -rwxrwxrwx   0 sshuser hdfs         13 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00002
+    -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
+    ```
 
    Elk **deel-m-*-** bestand komt overeen met een rij in de bron tabel, **Tabel1**. U kunt de inhoud van de deel-m-*-bestanden weer geven om te controleren.
 
@@ -111,24 +127,32 @@ De Sqoop-pakketten van An HDInsight cluster zijn al beschikbaar. Als u het HDIns
 
 1. Exporteer de gegevens uit het Data Lake Storage Gen1-account naar de lege tabel, **tabel2**, in de Azure SQL database. Gebruik de volgende syntaxis.
 
-       sqoop-export --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table2 --export-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
+    ```console
+    sqoop-export --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table2 --export-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
+    ```
 
    Bijvoorbeeld:
 
-       sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
+    ```console
+    sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
+    ```
 
 1. Controleer of de gegevens zijn geüpload naar de tabel SQL Database. Gebruik [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) of Visual Studio om verbinding te maken met de Azure SQL database en voer vervolgens de volgende query uit.
 
-       SELECT * FROM TABLE2
+    ```tsql
+    SELECT * FROM TABLE2
+    ```
 
    Deze opdracht moet de volgende uitvoer hebben.
 
-        ID  FName    LName
-       -------------------
-       1    Neal     Kell
-       2    Lila     Fulton
-       3    Erna     Myers
-       4    Annette  Simpson
+    ```output
+     ID  FName    LName
+    -------------------
+    1    Neal     Kell
+    2    Lila     Fulton
+    3    Erna     Myers
+    4    Annette  Simpson
+    ```
 
 ## <a name="performance-considerations-while-using-sqoop"></a>Prestatie overwegingen bij het gebruik van Sqoop
 

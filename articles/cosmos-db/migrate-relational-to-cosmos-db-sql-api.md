@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: f79ad56d8083e7ef75279eb2a07e1d35a50c45b5
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 860b78df8df0d3c6946785a94e40141689278cd0
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261100"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023139"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>Een-op-weinig relationele gegevens migreren naar Azure Cosmos DB SQL-API-account
 
@@ -48,8 +48,7 @@ FROM Orders o;
 
 De resultaten van deze query zien er als volgt uit: 
 
-![Bestellingsgegevens](./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png#lightbox)
-
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png" alt-text="Bestellingsgegevens" lightbox="./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png":::
 
 IDEA liter wilt u een Kopieer activiteit met één Azure Data Factory (ADF) gebruiken om SQL-gegevens als bron op te vragen en de uitvoer rechtstreeks naar Azure Cosmos DB sink te schrijven als juiste JSON-objecten. Het is momenteel niet mogelijk om de benodigde JSON-trans formatie uit te voeren in één Kopieer activiteit. Als we proberen de resultaten van de bovenstaande query te kopiëren naar een Azure Cosmos DB SQL API-container, zien we het veld OrderDetails als een teken reeks eigenschap van het document, in plaats van de verwachte JSON-matrix.
 

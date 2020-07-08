@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dceb7dc6ce6f2b97bbaad0b2db129611833eb30f
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: 985342b19baad8b9210e985c9c7dfb9482708a0c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743827"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023715"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Azure-resource rollen toewijzen in Privileged Identity Management
 
@@ -47,33 +47,31 @@ Volg deze stappen om een gebruiker in aanmerking te laten komen voor een Azure-r
 
 1. Selecteer **Azure-resources**.
 
-1. Gebruik het **resource filter** om de lijst met beheerde resources te filteren.
+1. Gebruik het resource filter om de beheerde resources te vinden waarnaar u op zoek bent.
 
     ![Lijst met Azure-resources die u wilt beheren](./media/pim-resource-roles-assign-roles/resources-list.png)
 
-1. Selecteer de resource die u wilt beheren, zoals een abonnement of beheer groep.
+1. Selecteer de resource die u wilt beheren om de pagina Resource overzicht te openen.
 
-1. Selecteer onder beheren de optie **rollen** om de lijst met rollen voor Azure-resources weer te geven.
+1. Selecteer onder **beheren**de optie **rollen** om de lijst met rollen voor Azure-resources weer te geven.
 
     ![Azure-resources rollen](./media/pim-resource-roles-assign-roles/resources-roles.png)
 
-1. Selecteer **lid toevoegen** om het deel venster nieuwe toewijzing te openen.
+1. Selecteer **toewijzingen toevoegen** om het deel venster **toewijzingen toevoegen** te openen.
 
-1. Selecteer **een rol selecteren** om het deel venster een rol selecteren te openen.
+1. Selecteer **een rol selecteren** om de pagina **een rol selecteren** te openen.
 
     ![Deel venster nieuwe toewijzing](./media/pim-resource-roles-assign-roles/resources-select-role.png)
 
 1. Selecteer een rol die u wilt toewijzen en klik vervolgens op **selecteren**.
 
-    Het deel venster een lid of groep selecteren wordt geopend.
+    Het deel venster **een lid of groep selecteren** wordt geopend.
 
 1. Selecteer een lid of groep die u aan de rol wilt toewijzen en klik vervolgens op **selecteren**.
 
     ![Een lid of groeps deel venster selecteren](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
 
-    Het deel venster lidmaatschaps instellingen wordt geopend.
-
-1. Selecteer in **aanmerking komend** of **actief**in de lijst **toewijzings type** .
+1. Op het tabblad **instellingen** in de lijst **toewijzings type** selecteert u in **aanmerking komend** of **actief**.
 
     ![Deel venster instellingen voor lidmaatschappen](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
 
@@ -83,19 +81,11 @@ Volg deze stappen om een gebruiker in aanmerking te laten komen voor een Azure-r
 
     - Voor **actieve** toewijzingen hoeft het lid geen actie te ondernemen om de rol te gebruiken. Aan leden die als actief zijn toegewezen, zijn de bevoegdheden altijd toegewezen aan de rol.
 
-1. Als de toewijzing permanent moet zijn (permanent in aanmerking komend of permanent toegewezen), schakelt u het selectie vakje **permanent** in.
+1. Als u een specifieke toewijzings duur wilt opgeven, wijzigt u de begin-en eind datum en-tijd.
 
-    Afhankelijk van de rolinstellingen, wordt het selectie vakje mogelijk niet weer gegeven of kan het niet worden gewijzigd.
+1. Wanneer u klaar bent, selecteert u **toewijzen**.
 
-1. Als u een specifieke duur voor de toewijzing wilt opgeven, schakelt u het selectie vakje uit en wijzigt u de begin-en/of eind datum en-tijd vakken.
-
-    ![Instellingen voor lidmaatschappen-datum en tijd](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
-
-1. Als u klaar bent, selecteert u **gereed**.
-
-    ![Nieuwe toewijzing-toevoegen](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
-
-1. Als u de nieuwe roltoewijzing wilt maken, selecteert u **toevoegen**. Er wordt een melding van de status weer gegeven.
+1. Nadat de nieuwe roltoewijzing is gemaakt, wordt er een status melding weer gegeven.
 
     ![Nieuwe toewijzing-melding](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
 
@@ -107,9 +97,9 @@ Volg deze stappen om een bestaande roltoewijzing bij te werken of te verwijderen
 
 1. Selecteer **Azure-resources**.
 
-1. Selecteer de resource die u wilt beheren, zoals een abonnement of beheer groep.
+1. Selecteer de resource die u wilt beheren om de pagina overzicht te openen.
 
-1. Selecteer onder beheren de optie **rollen** om de lijst met rollen voor Azure-resources weer te geven.
+1. Selecteer onder **beheren**de optie **rollen** om de lijst met rollen voor Azure-resources weer te geven.
 
     ![Azure-resource rollen: rol selecteren](./media/pim-resource-roles-assign-roles/resources-update-select-role.png)
 

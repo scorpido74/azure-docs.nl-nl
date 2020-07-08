@@ -2,7 +2,7 @@
 title: Azure Resource Health gebruiken om database status te bewaken
 description: Gebruik Azure Resource Health om de status van Azure SQL Database en Azure SQL Managed instance te bewaken, helpt u bij het vaststellen en verkrijgen van ondersteuning wanneer een Azure-probleem van invloed is op uw SQL-resources.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 02/26/2019
-ms.openlocfilehash: 6ea7709d1385eff3d538d69b25a9b31b88e7b904
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 27865afd356be9eac64083c1ebdeb6ced43dbd18
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84717999"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986939"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database-and-azure-sql-managed-instance"></a>Resource Health gebruiken om problemen met de verbinding voor Azure SQL Database en Azure SQL Managed instance op te lossen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

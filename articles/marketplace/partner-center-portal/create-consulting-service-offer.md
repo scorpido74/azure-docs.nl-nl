@@ -6,19 +6,19 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 52b97e772897289f0c54c4520da7d7af80f44dc3
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.date: 06/17/2020
+ms.openlocfilehash: b9bac7b5b23c4e7d4042b53b93347628488be953
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213708"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984267"
 ---
 # <a name="create-a-consulting-service-offer"></a>Een adviesservice-aanbieding maken
 
-In dit artikel wordt beschreven hoe u een advies service publiceert naar [Microsoft AppSource](https://appsource.microsoft.com/) of [Azure Marketplace](https://azuremarketplace.microsoft.com/). Lijst met advies services die zijn gebaseerd op micro soft [Dynamics 365](https://dynamics.microsoft.com/) en het Power platform op AppSource. Vermeld de aanbiedingen voor advies Services op basis van Microsoft Azure op Azure Marketplace. Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) als u dit nog niet hebt gedaan. Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
+In dit artikel wordt beschreven hoe u een advies service publiceert naar [Microsoft AppSource](https://appsource.microsoft.com/) of [Azure Marketplace](https://azuremarketplace.microsoft.com/). Lijst met advies services die zijn gebaseerd op micro soft [Dynamics 365](https://dynamics.microsoft.com/) en het Power platform op AppSource. Vermeld de aanbiedingen voor advies Services op basis van Microsoft Azure op Azure Marketplace. Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner Center](create-account.md) als u dit nog niet hebt gedaan. Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
 
-Voordat u uw aanbieding maakt, controleert u de vereisten in de [consulting service-vereisten](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites).
+Voordat u uw aanbieding maakt, controleert u de vereisten in de [consulting service-vereisten](consulting-service-prerequisites.md).
 
 ## <a name="publishing-benefits"></a>Publicatie voordelen
 
@@ -63,12 +63,12 @@ Wanneer u uw aanbieding naar Marketplace publiceert met het partner centrum, _mo
 
 1. Selecteer **verbinden** om op te geven waar u leads van klanten wilt verzenden. Het partner Centrum ondersteunt de volgende systemen:
 
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) voor klant betrokkenheid
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) voor klant betrokkenheid
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > Als uw CRM-systeem niet hierboven wordt vermeld, gebruikt u [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) of [https-eind punt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) om klant lead gegevens op te slaan en exporteert u de gegevens vervolgens naar uw CRM-systeem.
+    > Als uw CRM-systeem niet hierboven wordt vermeld, gebruikt u [Azure Table](commercial-marketplace-lead-management-instructions-azure-table.md) of [https-eind punt](commercial-marketplace-lead-management-instructions-https.md) om klant lead gegevens op te slaan en exporteert u de gegevens vervolgens naar uw CRM-systeem.
 
 2. Verbind uw aanbieding met de doel locatie van de lead wanneer u publiceert in het partner centrum.
 3. Controleer of de verbinding met de doel locatie juist is geconfigureerd. Nadat u het in het partner centrum hebt gepubliceerd, valideren we de verbinding en sturen we u een test lead. Wanneer u een voor beeld van de aanbieding bekijkt voordat deze live gaat, kunt u ook uw lead verbinding testen door zelf te proberen de aanbieding aan te schaffen in de preview-omgeving.
@@ -76,9 +76,9 @@ Wanneer u uw aanbieding naar Marketplace publiceert met het partner centrum, _mo
 
 Hier volgen enkele aanvullende bronnen voor het beheer van leads:
 
-- [Overzicht Lead beheer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [Veelgestelde vragen over leadmanagement](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Algemene leadconfiguratiefouten](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
+- [Overzicht Lead beheer](commercial-marketplace-get-customer-leads.md)
+- [Veelgestelde vragen over Lead beheer](../lead-management-for-cloud-marketplace.md#frequently-asked-questions))
+- [Veelvoorkomende fouten van de lead configuratie](../lead-management-for-cloud-marketplace.md#publishing-config-errors))
 - [Overzicht Lead beheer](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (zorg ervoor dat de pop-upblokkering is uitgeschakeld)
 
 Selecteer **concept opslaan** voordat u doorgaat.
@@ -96,10 +96,19 @@ Op deze pagina kunt u het primaire product instellen dat door uw consulting serv
     - **Testen van concept**: een implementatie met een beperkt bereik om te bepalen of een oplossing voldoet aan de vereisten van de klant.
     - **Workshop**: een interactieve betrokkenheid die wordt uitgevoerd op de lokale locatie van een klant. Dit kan betrekking hebben op trainingen, korte informatie, beoordelingen of demo's die zijn gebaseerd op de gegevens of omgeving van de klant.
 
-3. Als u een primair product van **Azure**hebt geselecteerd, selecteert u Maxi maal drie **oplossings gebieden**. Dit maakt het gemakkelijker voor klanten in azure Marketplace om uw aanbieding te vinden. Als u Azure niet hebt gekozen, slaat u deze stap over.
-4. Als u een _ander_ primair product dan Azure hebt geselecteerd, selecteert u Maxi maal drie **toepasselijke producten**. Zo kunnen klanten in AppSource gemakkelijker uw aanbieding vinden. Zie [Microsoft AppSourceing Consulting Service List guideline](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF) (Engelstalig) voor meer informatie.
-5. Selecteer Maxi maal zes **branches** waarop uw aanbieding van toepassing is. Dit maakt het voor klanten gemakkelijker om uw aanbieding te vinden.
-6. Voeg Maxi maal drie **competenties** toe die uw bedrijf heeft behaald om weer te geven in uw aanbieding voor advies service. Er is ten minste één competentie vereist, met uitzonde ring van Azure expert Msp's en Azure Networking Msp's.
+3. Als u **Azure** als primair product hebt geselecteerd, selecteert u Maxi maal drie **oplossings gebieden**. Dit maakt het gemakkelijker voor klanten in azure Marketplace om uw aanbieding te vinden. Als u Azure niet hebt gekozen, slaat u deze stap over.
+
+    | Oplossings gebied | | | |
+    | --- | --- | --- | --- |
+    | Analyse | Backup | DevOps | Migratie |
+    | App-modernisatie | Big data | Herstel na noodgevallen | Netwerken |
+    | Archiveren | Gegevens platform | Identiteit | Beveiliging |
+    | AI + Machine Learning | Data Center-beheer | Internet of Things | Storage |
+
+1. Als u **Azure** als primair product hebt geselecteerd, hebt u de mogelijkheid om Maxi maal zes **branches**te selecteren. Dit maakt het gemakkelijker voor klanten in azure Marketplace om uw aanbieding te vinden. Bekijk de volledige lijst met branches in [Best practices voor aanbiedingen](../gtm-offer-listing-best-practices.md). Als u Azure niet hebt gekozen, slaat u deze stap over.
+1. Als u een *ander* primair product dan Azure hebt geselecteerd, selecteert u Maxi maal drie **toepasselijke producten**. Zo kunnen klanten in AppSource gemakkelijker uw aanbieding vinden. Zie [Microsoft AppSourceing Consulting Service List guideline](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF) (Engelstalig) voor meer informatie.
+1. Als u een *ander* primair product dan Azure hebt geselecteerd, hebt u de optie om Maxi maal twee **branches** en twee **verticale** items voor elke branche te selecteren. Zo kunnen klanten in AppSource gemakkelijker uw aanbieding vinden. Bekijk de volledige lijst met branches en verticale in [Aanbevolen procedures](../gtm-offer-listing-best-practices.md)voor aanbiedingen.
+1. Voeg Maxi maal drie **competenties** toe die uw bedrijf heeft behaald om weer te geven in uw aanbieding voor advies service. Er is ten minste één competentie vereist, met uitzonde ring van Azure expert Msp's en Azure Networking Msp's.
 
 Selecteer **concept opslaan** voordat u doorgaat.
 
@@ -122,7 +131,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 4. Bedrijfstakken
 5. Naam van aanbieding
 6. Samenvatting
-7. Beschrijving
+7. Description
 8. Scherm afbeeldingen/Video's
 
 <br>Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in Microsoft AppSource (alle prijzen zijn bijvoorbeeld alleen bedoeld als voor beeld van de werkelijke kosten):
@@ -137,7 +146,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 4. Bedrijfstakken
 5. Naam van aanbieding
 6. Samenvatting
-7. Beschrijving
+7. Description
 8. Scherm afbeeldingen/Video's
 9. Documenten
 
@@ -155,7 +164,7 @@ De naam:
 
 Geef een korte beschrijving van uw aanbieding. Dit kan Maxi maal 100 tekens lang zijn en wordt gebruikt in Zoek resultaten voor Marketplace.
 
-### <a name="description"></a>Beschrijving
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -230,8 +239,8 @@ Nadat u alle vereiste gedeelten van de aanbieding hebt voltooid, kunt u uw aanbi
 4. Wanneer u klaar bent, selecteert u **verzenden**.
 5. Op de **overzichts** pagina van de aanbieding ziet u in welke publicatie fase uw aanbieding zich bevindt.
 
-Zie [de publicatie status van uw aanbieding voor commerciële Marketplace controleren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status)voor meer informatie over hoe lang uw aanbieding in elke publicatie fase kan worden verwacht.
+Zie [de publicatie status van uw aanbieding voor commerciële Marketplace controleren](publishing-status.md)voor meer informatie over hoe lang uw aanbieding in elke publicatie fase kan worden verwacht.
 
 ## <a name="update-your-existing-consulting-service-offers"></a>De aanbiedingen van uw bestaande advies service bijwerken
 
-- [Een bestaande aanbieding bijwerken in de commerciële Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [Een bestaande aanbieding bijwerken in de commerciële Marketplace](update-existing-offer.md)

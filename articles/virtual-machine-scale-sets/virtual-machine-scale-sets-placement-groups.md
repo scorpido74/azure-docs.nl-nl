@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 7d71995e0e7a4b8cb7f6d80756f64cb6824c1ce9
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 0848d092c342b29c1839a4dd4cebd0bad62ea3ca
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374386"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023003"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Werken met grote virtuele-machineschaalsets
 U kunt nu Azure-[virtuele-machineschaalsets](/azure/virtual-machine-scale-sets/) maken met een capaciteit van maximaal 1000 virtuele machines. In dit document wordt een _grote virtuele-machineschaalset_ gedefinieerd als een schaalset waarmee u kunt schalen tot meer dan 100 virtuele machines. Deze mogelijkheid wordt ingesteld met een schaalseteigenschap (_singlePlacementGroup=False_). 
@@ -33,6 +33,7 @@ Overweeg de volgende vereisten voordat u beslist of uw toepassing doeltreffend g
 - Schaalsets die vanuit Azure Marketplace zijn gemaakt, kunnen worden geschaald tot maximaal 1000 virtuele machines.
 - Schaalsets die vanuit aangepaste installatiekopieën (VM-installatiekopieën die u zelf maakt en uploadt) zijn gemaakt, kunnen op dit moment worden geschaald tot maximaal 600 VM’s.
 - Grote schaalsets vereisen Azure Managed Disks. Voor schaalsets die niet worden gemaakt met Managed Disks zijn meerdere opslagaccounts vereist (één voor elke 20 virtuele machines). Grote schaalsets zijn ontworpen om exclusief met Managed Disks te werken om de overhead voor opslagbeheer te beperken en om het risico te vermijden dat u met abonnementslimieten van opslagaccounts wordt geconfronteerd. 
+- Grote schaal (SPG = false) biedt geen ondersteuning voor InfiniBand-netwerken
 - Laag-4 taakverdeling met schaalsets die uit meerdere plaatsingsgroepen bestaan vereist [Azure Load Balancer standaard-SKU](../load-balancer/load-balancer-standard-overview.md). De Load Balancer standaard-SKU biedt extra voordelen, zoals de mogelijkheid om taken te verdelen tussen meerdere schaalsets. Standaard-SKU vereist ook dat er een netwerkbeveiligingsgroep is gekoppeld aan de schaalset, anders werken de NAT-pools niet correct. Als u de Azure Load Balancer basis-SKU moet gebruiken, zorgt u dat de schaalset is geconfigureerd voor het gebruik van één plaatsingsgroep. Dit is de standaardinstelling.
 - Laag-7 taakverdeling met de Azure Application Gateway wordt voor alle schaalsets ondersteund.
 - Een schaalset wordt gedefinieerd met één subnet. Zorg dat het subnet een adresruimte heeft die groot genoeg is voor alle virtuele machines die u nodig hebt. Standaard wordt een schaalset te groot ingericht (dat wil zeggen dat er tijdens de implementatie of bij het uitschalen extra virtuele machines worden gemaakt, waarvoor u niet hoeft te betalen), om de betrouwbaarheid en prestaties van de implementatie te verbeteren. Zorg daarom voor een adresruimte die 20% groter is dan het aantal virtuele machines waarnaar u wilt gaan schalen.
@@ -42,7 +43,7 @@ Overweeg de volgende vereisten voordat u beslist of uw toepassing doeltreffend g
 ## <a name="creating-a-large-scale-set"></a>Een grote schaalset maken
 Als u een schaalset maakt in de Azure-portal, hoeft u alleen maar de waarde bij het *aantal exemplaren* van maximaal 1.000 in te vullen. Als het om meer dan 100 exemplaren gaat, wordt *Schalen naar meer dan 100 exemplaren inschakelen* ingesteld op *Ja*. Hierdoor kan de schaal worden aangepast naar meerdere plaatsingsgroepen. 
 
-![](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
+![Deze afbeelding toont de Blade instanties van de Azure-Portal. Opties voor het selecteren van het aantal instanties en de exemplaar grootte zijn beschikbaar.](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
 
 U kunt u een grote virtuele-machineschaalset maken met de [Azure CLI-opdracht ](https://github.com/Azure/azure-cli) _az vmss create_. Met deze opdracht stelt u intelligente standaardinstellingen in, zoals een subnetgrootte op basis van het argument _instance-count_:
 

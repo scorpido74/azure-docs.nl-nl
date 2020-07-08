@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: tracking-python
-ms.openlocfilehash: c63fb819f0db7a3a367f5351fd80eb14e5733d99
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: a8c70254c7ba7a9525b843240230ac158e29a338
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559459"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985732"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellen trainen met Azure Machine Learning
 
@@ -23,14 +23,14 @@ Azure Machine Learning biedt verschillende manieren om uw modellen te trainen, v
 
 + [Azure machine learning SDK voor python](#python-sdk): de PYTHON-SDK biedt verschillende manieren om modellen te trainen, elk met verschillende mogelijkheden.
 
-    | Trainings methode | Beschrijving |
+    | Trainings methode | Description |
     | ----- | ----- |
     | [Configuratie uitvoeren](#run-configuration) | Een **algemene manier om modellen te trainen** is door een trainings script te gebruiken en de configuratie uit te voeren. De uitvoerings configuratie bevat de informatie die nodig is voor het configureren van de trainings omgeving die wordt gebruikt voor het trainen van uw model. U kunt een uitvoerings configuratie, uw trainings script en een berekenings doel (de trainings omgeving) maken en een trainings taak uitvoeren. |
     | [Automatische machine learning](#automated-machine-learning) | Met geautomatiseerde machine learning kunt u **modellen trainen zonder uitgebreide data Wetenschappen of programmeer kennis**. Voor mensen met een gegevens wetenschap en-programmeer achtergrond biedt het een manier om tijd en resources te besparen door het automatiseren van algoritme selectie en afstemming-afstemming. U hoeft zich geen zorgen te maken over het definiëren van een configuratie voor het uitvoeren van automatische machine learning. |
     | [Schattingen](#estimators) | Met Estimator-klassen kunt u **eenvoudig modellen trainen op basis van populaire machine learning Frameworks**. Er zijn Estimator-klassen voor **Scikit-leer-**, **PyTorch**-, **tensor flow**-, **Chainer**-en **Ray-RLlib**. Er is ook een algemene Estimator die kan worden gebruikt met frameworks die nog geen specifieke Estimator-klasse hebben. U hoeft zich geen zorgen te maken over het definiëren van een uitvoerings configuratie bij het gebruik van schattingen. |
     | [Machine learning-pijp lijn](#machine-learning-pipeline) | Pijp lijnen zijn geen andere Trainings methode, maar een **manier om een werk stroom te definiëren met behulp van modulaire, herbruikbare stappen**die training kunnen bevatten als onderdeel van de werk stroom. Machine learning-pijp lijnen ondersteunen het gebruik van geautomatiseerde machine learning, schattingen en het uitvoeren van een configuratie voor het trainen van modellen. Omdat pijp lijnen niet specifiek zijn gericht op training, zijn de redenen voor het gebruik van een pijp lijn meer gevarieerder dan de andere trainings methoden. Over het algemeen kunt u gebruikmaken van een pijp lijn wanneer:<br>* U wilt **processen zonder toezicht plannen** , zoals langlopende trainings taken of gegevens voorbereiding.<br>* Gebruik **meerdere stappen** die worden gecoördineerd over heterogene reken resources en opslag locaties.<br>* Gebruik de pijp lijn als een **herbruikbare sjabloon** voor specifieke scenario's, zoals retraining of batch scores.<br>* **Gegevens bronnen, invoer en uitvoer** voor uw werk stroom bijhouden en controleren.<br>* Uw werk stroom wordt **geïmplementeerd door verschillende teams die onafhankelijk werken met specifieke stappen**. Stappen kunnen vervolgens aan elkaar worden gekoppeld in een pijp lijn om de werk stroom te implementeren. |
 
-+ [Azure machine learning SDK voor python](#r-sdk): de SDK maakt gebruik van het Reticulate-pakket om een binding te maken met de PYTHON-sdk van Azure machine learning. Hiermee hebt u toegang tot de kern objecten en-methoden die zijn geïmplementeerd in de python-SDK vanuit elke R-omgeving.
++ [Azure machine learning SDK voor r](#r-sdk): de SDK voor r maakt gebruik van het Reticulate-pakket om een verbinding te maken met de PYTHON-SDK van Azure machine learning. Hiermee hebt u toegang tot de kern objecten en-methoden die zijn geïmplementeerd in de python-SDK vanuit elke R-omgeving.
 
 + **Designer**: Azure machine learning Designer (preview) biedt een eenvoudig ingangs punt in machine learning voor het maken van een proef versie van concepten of voor gebruikers die weinig Codeer ervaring hebben. Het biedt u de mogelijkheid om modellen te trainen met behulp van een slepen-en-neerzetten op het web. U kunt python-code gebruiken als onderdeel van het ontwerp of modellen trainen zonder code te schrijven.
 
@@ -44,7 +44,7 @@ Met de Azure Machine Learning SDK voor python kunt u machine learning werk strom
 
 * [Wat is de Azure Machine Learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 * [De SDK installeren/bijwerken](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
-* [Een ontwikkel omgeving configureren voor Azure Machine Learning](how-to-configure-environment.md)
+* [Een ontwikkelingsomgeving voor Azure Machine Learning configureren](how-to-configure-environment.md)
 
 ### <a name="run-configuration"></a>Configuratie uitvoeren
 
@@ -53,7 +53,7 @@ Een algemene trainings taak met Azure Machine Learning kan worden gedefinieerd m
 U kunt beginnen met het uitvoeren van een configuratie voor uw lokale computer en overschakelen naar een op de cloud gebaseerd reken doel als dat nodig is. Wanneer u het berekenings doel wijzigt, wijzigt u alleen de configuratie van de uitvoering die u gebruikt. Een uitvoering registreert ook informatie over de trainings taak, zoals de invoer, uitvoer en Logboeken.
 
 * [Wat is een uitvoerings configuratie?](concept-azure-machine-learning-architecture.md#run-configurations)
-* [Zelf studie: uw eerste ML model trainen](tutorial-1st-experiment-sdk-train.md)
+* [Zelfstudie: Uw eerste ML-model trainen](tutorial-1st-experiment-sdk-train.md)
 * [Voor beelden: Jupyter Notebook voor beelden van trainings modellen](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training)
 * [Procedure: Compute-doelen voor model training instellen en gebruiken](how-to-set-up-training-targets.md)
 
@@ -66,7 +66,7 @@ Definieer de herhalingen, afstemming-instellingen, parametrisatie en andere inst
 
 * [Wat is geautomatiseerde machine learning?](concept-automated-ml.md)
 * [Zelf studie: uw eerste classificatie model maken met geautomatiseerde machine learning](tutorial-first-experiment-automated-ml.md)
-* [Zelf studie: automatische machine learning gebruiken om taxi tarieven te voors pellen](tutorial-auto-train-models.md)
+* [Zelfstudie: Geautomatiseerde machine learning gebruiken om taxitarieven te voorspellen](tutorial-auto-train-models.md)
 * [Voor beelden: Jupyter Notebook voor beelden voor automatische machine learning](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)
 * [Procedure: geautomatiseerde ML experimenten configureren in python](how-to-configure-auto-train.md)
 * [Procedure: een prognose model voor een time-reeks autotrainen](how-to-auto-train-forecast.md)

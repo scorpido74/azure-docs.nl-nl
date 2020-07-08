@@ -3,19 +3,19 @@ title: overzicht van vCore-inkoop model
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Met het vCore-aankoop model kunt u de reken-en opslag resources onafhankelijk van elkaar schalen, de on-premises prestaties afstemmen en de prijs optimaliseren voor Azure SQL Database en Azure SQL Managed instance.
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 3a359e4b3523615623c76d48c1aafd7aa95a5277
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 7b5e4174da3ffa0dff5c840e5da1d98435e8d07b
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255038"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985547"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>overzicht van vCore-model-Azure SQL Database en Azure SQL Managed instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ Het Virtual core (vCore)-aankoop model dat wordt gebruikt door Azure SQL Databas
 
 Opties voor de servicelaag in het vCore-model bevatten Algemeen, Bedrijfskritiek en grootschalige. De servicelaag definieert in het algemeen de opslag architectuur, ruimte en I/O-limieten en opties voor bedrijfs continuïteit die betrekking hebben op Beschik baarheid en herstel na nood gevallen.
 
-||**Algemeen**|**Bedrijfskritiek**|**Hyperscale**|
+|-|**Algemeen**|**Bedrijfskritiek**|**Hyperscale**|
 |---|---|---|---|
 |Ideaal voor|De meeste zakelijke workloads. Biedt budget gerichte, evenwichtige en schaal bare reken-en opslag opties. |Biedt zakelijke toepassingen de hoogste flexibiliteit voor storingen met behulp van verschillende geïsoleerde replica's en biedt de hoogste I/O-prestaties per database replica.|De meeste zakelijke workloads met zeer schaal bare opslag-en lees vereisten.  Biedt meer flexibiliteit voor storingen door de configuratie van meer dan één geïsoleerde database replica toe te staan. |
 |Storage|Maakt gebruik van externe opslag.<br/>**SQL database voorziene Compute**:<br/>5 GB – 4 TB<br/>**Serverloze Compute**:<br/>5 GB-3 TB<br/>**SQL Managed instance**: 32 GB-8 TB |Maakt gebruik van lokale SSD-opslag.<br/>**SQL database voorziene Compute**:<br/>5 GB – 4 TB<br/>**SQL-beheerd exemplaar**:<br/>32 GB-4 TB |Flexibele Automatische toename van opslag als dat nodig is. Ondersteunt Maxi maal 100 TB aan opslag ruimte. Maakt gebruik van lokale SSD-opslag voor lokale buffer-pool cache en lokale gegevens opslag. Maakt gebruik van Azure externe opslag als definitieve gegevens opslag op lange termijn. |

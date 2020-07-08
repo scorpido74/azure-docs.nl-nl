@@ -3,12 +3,12 @@ title: Streaming-gebeurtenissen vastleggen-Azure Event Hubs | Microsoft Docs
 description: Dit artikel bevat een overzicht van de functie Capture waarmee u gebeurtenissen streaming kunt vastleggen via Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 271948d4496d773585beecdbcec8e4c66d0ce622
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: be5a8bed06f5df0ffcee66c277f8ba5fa1a1bf74
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323083"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985255"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Gebeurtenissen vastleggen via Azure Event Hubs in Azure Blob Storage of Azure Data Lake Storage
 Met Azure Event Hubs kunt u automatisch de streaminggegevens vastleggen in Event Hubs in een [Azure Blob-opslag](https://azure.microsoft.com/services/storage/blobs/) of [Azure data Lake Storage gen 1-of gen 2](https://azure.microsoft.com/services/data-lake-store/) -account van uw keuze, met extra flexibiliteit voor het opgeven van een tijd-of grootte-interval. Het instellen van vastleggen is snel, er zijn geen administratieve kosten om deze uit te voeren en deze worden automatisch geschaald met Event Hubs [doorvoer eenheden](event-hubs-scalability.md#throughput-units). Event Hubs Capture is de eenvoudigste manier om streaminggegevens te laden in azure, en u kunt zich concentreren op gegevens verwerking in plaats van op het vastleggen van gegevens.
@@ -149,7 +149,7 @@ Meer informatie over het inschakelen van deze functie met behulp van de Azure Po
 [support request]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
 [Azure Storage Explorer]: https://azurestorageexplorer.codeplex.com/
 [3]: ./media/event-hubs-capture-overview/event-hubs-capture3.png
-[Avro Tools]: https://www.apache.org/dist/avro/stable/java/avro-tools-1.9.2.jar
+[Avro Tools]: https://downloads.apache.org/avro/stable/java/
 [Java]: https://avro.apache.org/docs/current/gettingstartedjava.html
 [Python]: https://avro.apache.org/docs/current/gettingstartedpython.html
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md

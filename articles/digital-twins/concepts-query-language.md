@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: e4952bc3df2b5b164038654f5d77f4c352827463
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 3196004015046b4d3d2789745c80d323bacdced9
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84726803"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985238"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Over de query taal voor Azure Digital Apparaatdubbels
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Het midden van Azure Digital Apparaatdubbels is het [**dubbele diagram**](concepts-twins-graph.md), dat is geconstrueerd op basis van **digitale apparaatdubbels** en **relaties**. Deze grafiek kan worden opgevraagd om informatie te krijgen over de digitale apparaatdubbels en de relaties hierin. Deze query's worden geschreven in een aangepaste SQL-achtige query taal, genaamd **Azure Digital Apparaatdubbels query Store-taal**.
 
@@ -25,7 +22,7 @@ Als u een query wilt verzenden naar de service vanuit een client-app, gebruikt u
 
 ## <a name="query-language-features"></a>Functies voor query taal
 
-Azure Digital Apparaatdubbels biedt uitgebreide query mogelijkheden tegen het dubbele diagram. Query's worden beschreven met behulp van de SQL-achtige syntaxis, als een superset van de mogelijkheden van de [IOT hub query taal](../iot-hub/iot-hub-devguide-query-language.md).
+Azure Digital Apparaatdubbels biedt uitgebreide query mogelijkheden tegen het dubbele diagram. Query's worden beschreven met behulp van de SQL-achtige syntaxis, in een query taal die vergelijkbaar is met de [IOT hub query taal](../iot-hub/iot-hub-devguide-query-language.md) met veel vergelijk bare functies.
 
 Hier volgen de bewerkingen die beschikbaar zijn in de Azure Digital Apparaatdubbels query Store-taal:
 * De eigenschappen van apparaatdubbels worden opgehaald via Digital apparaatdubbels.
