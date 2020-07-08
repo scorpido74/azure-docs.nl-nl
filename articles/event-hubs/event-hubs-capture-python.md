@@ -1,20 +1,14 @@
 ---
 title: 'Quickstart: Vastgelegde gegevens uit een Python-app lezen - Azure Event Hubs'
 description: 'Quickstart: Scripts die gebruikmaken van de Azure Python-SDK om de functie Event Hubs Capture te demonstreren.'
-services: event-hubs
-author: spelluru
-ms.assetid: bdff820c-5b38-4054-a06a-d1de207f01f6
-ms.service: event-hubs
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: 658bfc95e9d7ef2954d245ac9bd7eafb56ebaaa1
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 8e6174970a6821f7541387f91b226cdebe555625
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296590"
+ms.locfileid: "85323061"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>Quickstart: Stapsgewijze handleiding voor Event Hubs Capture: Python (azure-eventhub versie 1)
 

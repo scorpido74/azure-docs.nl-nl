@@ -1,22 +1,14 @@
 ---
 title: Een toegewezen Event Hubs-cluster maken met behulp van de Azure-portal
 description: In deze quickstart leert u hoe u met de Azure-portal een Azure Event Hubs-cluster maakt.
-services: event-hubs
-documentationcenter: ''
-author: spelluru
-manager: ''
-ms.service: event-hubs
 ms.topic: quickstart
-ms.custom: mvc
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: ad2c392fca7bf85ecf0840f6442ef8454e768f7a
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: cb657619e16f7be1d633bab61625026a40a378b8
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296097"
+ms.locfileid: "85323104"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Quickstart: Een toegewezen Event Hubs-cluster maken met behulp van de Azure-portal 
 Event Hubs-clusters bieden implementaties met één tenant voor klanten met de meest veeleisende streaming-behoeften. Deze aanbieding heeft een gegarandeerde SLA van 99,99% en is alleen beschikbaar voor de prijscategorie Dedicated. Een [Event Hubs-cluster](event-hubs-dedicated-overview.md) kan miljoenen gebeurtenissen per seconde opnemen met gegarandeerde capaciteit en latentie van minder dan een seconde. Naamruimten en Event Hubs die in een cluster worden gemaakt, omvatten alle functies van de aanbieding voor Standard en meer, en hebben geen opnamelimieten. De Dedicated-aanbieding omvat ook de populaire functie [Event Hubs Capture](event-hubs-capture-overview.md), die gratis beschikbaar is, voor automatische batchverwerking en vastlegging van gegevensstromen in [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) of [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md).

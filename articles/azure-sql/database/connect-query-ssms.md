@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 3b601fbbc448ef909b0700ac887375147c42ecdd
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 14e7f4d09185f76786fd88576eef0b6df02877c4
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253610"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368070"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Quickstart: Verbinding maken met en query uitvoeren in Azure SQL Database of Azure SQL Managed Instance met behulp van SSMS
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -155,7 +155,7 @@ Voer deze Transact-SQL [INSERT](/sql/t-sql/statements/insert-transact-sql/)-code
 
 ### <a name="update-data"></a>Gegevens bijwerken
 
-Voer deze Transact-SQL [UPDATE](/sql/t-sql/statements/update-transact-sql)-code uit om uw nieuwe product te wijzigen.
+Voer deze Transact-SQL [UPDATE](/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15)-code uit om uw nieuwe product te wijzigen.
 
 1. Vervang de vorige query door deze die de nieuwe record retourneert die u eerder hebt gemaakt:
 
