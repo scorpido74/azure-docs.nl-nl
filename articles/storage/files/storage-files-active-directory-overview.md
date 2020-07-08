@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
 ms.openlocfilehash: db256c8361af740ac536e059969a5085e57df485
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84263339"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Overzicht van Azure Files verificatie opties op basis van een identiteit voor SMB-toegang
@@ -91,7 +90,7 @@ Verificatie op basis van identiteit voor Azure Files biedt verschillende voor de
 -   **Back-ups maken van Windows-Acl's (ook wel NTFS genoemd) samen met uw gegevens**  
     U kunt Azure-bestands shares gebruiken om een back-up te maken van uw bestaande on-premises bestands shares. Azure Files behoudt uw Acl's samen met uw gegevens wanneer u een back-up maakt van een bestands share naar Azure-bestands shares via SMB.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 
 Azure-bestands shares maken gebruik van het Kerberos-protocol voor verificatie met on-premises AD DS of Azure AD DS. Wanneer een identiteit die is gekoppeld aan een gebruiker of toepassing die wordt uitgevoerd op een client, probeert toegang te krijgen tot gegevens in azure-bestands shares, wordt de aanvraag verzonden naar de domein service, een AD DS of Azure AD DS, om de identiteit te verifiëren. Als de verificatie is geslaagd, wordt een Kerberos-token geretourneerd. De client verzendt een aanvraag met het Kerberos-token en Azure-bestands shares die token gebruiken om de aanvraag te autoriseren. Azure-bestands shares ontvangen alleen het Kerberos-token, geen toegang tot referenties.
 
@@ -146,7 +145,7 @@ Er worden geen extra kosten in rekening gebracht voor het inschakelen van verifi
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende bronnen voor meer informatie over Azure Files en verificatie op basis van identiteit via SMB:
 
-- [Planning voor de implementatie van Azure Files](storage-files-planning.md)
+- [Implementatie van Azure Files plannen](storage-files-planning.md)
 - [On-premises Active Directory Domain Services authenticatie inschakelen via SMB voor Azure-bestands shares](storage-files-identity-auth-active-directory-enable.md)
 - [Azure Active Directory Domain Services authenticatie inschakelen op Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md)
 - [Veelgestelde vragen](storage-files-faq.md)

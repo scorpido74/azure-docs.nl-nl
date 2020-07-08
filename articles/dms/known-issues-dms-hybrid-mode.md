@@ -12,10 +12,9 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 5347cda14773583bcfe92a702e59d4967ce2ea09
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84196284"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>Bekende problemen/migratie beperkingen bij het gebruik van de hybride modus
@@ -24,7 +23,7 @@ Bekende problemen en beperkingen die zijn gekoppeld aan het gebruik van Azure Da
 
 ## <a name="installer-fails-to-authenticate"></a>Het installatie programma kan niet worden geverifieerd
 
-Nadat het certificaat is geüpload naar uw AdApp, is er een vertraging van Maxi maal enkele minuten voordat de verificatie met Azure kan worden uitgevoerd. Het installatie programma zal proberen om het opnieuw te proberen, maar het is mogelijk dat de vertraging van de doorgifte langer is dan de nieuwe poging en dat er een **FailedToGetAccessTokenException** -bericht wordt weer gegeven. Als het certificaat is geüpload naar de juiste AdApp en de juiste AppId is gegeven in dmsSettings. json, voert u de installatie opdracht opnieuw uit.
+Nadat het certificaat is geüpload naar uw AdApp, is er een vertraging van Maxi maal enkele minuten voordat de verificatie met Azure kan worden uitgevoerd. Het installatie programma zal proberen om het opnieuw te proberen, maar het is mogelijk dat de vertraging van de doorgifte langer is dan de nieuwe poging en dat er een **FailedToGetAccessTokenException** -bericht wordt weer gegeven. Als het certificaat is geüpload naar de juiste AdApp en de juiste AppId is gegeven in dmsSettings.js, voert u de installatie opdracht opnieuw uit.
 
 ## <a name="service-offline-after-successful-installation"></a>Service ' offline ' na een geslaagde installatie
 
@@ -55,7 +54,7 @@ Als de service als offline wordt weer gegeven nadat het installatie proces is vo
 
 ## <a name="using-your-own-signed-certificate"></a>Uw eigen ondertekende certificaat gebruiken
 
-Het certificaat dat is gegenereerd door de actie GenerateCert is een zelfondertekend certificaat dat mogelijk niet acceptabel is op basis van uw interne beveiligings beleid. In plaats van dit certificaat te gebruiken, kunt u uw eigen certificaat opgeven en de vinger afdruk opgeven in dmsSettings. json. Dit certificaat moet worden geüpload naar uw AdApp en geïnstalleerd op de computer waarop u de Azure Database Migration Service Hybrid worker installeert. Installeer vervolgens dit certificaat met de persoonlijke sleutel in het certificaat archief van de lokale computer.
+Het certificaat dat is gegenereerd door de actie GenerateCert is een zelfondertekend certificaat dat mogelijk niet acceptabel is op basis van uw interne beveiligings beleid. In plaats van dit certificaat te gebruiken, kunt u uw eigen certificaat opgeven en de vinger afdruk opgeven in dmsSettings.jsop. Dit certificaat moet worden geüpload naar uw AdApp en geïnstalleerd op de computer waarop u de Azure Database Migration Service Hybrid worker installeert. Installeer vervolgens dit certificaat met de persoonlijke sleutel in het certificaat archief van de lokale computer.
 
 ## <a name="running-the-worker-service-as-a-low-privilege-account"></a>De Worker-service uitvoeren als een account met beperkte bevoegdheden
 

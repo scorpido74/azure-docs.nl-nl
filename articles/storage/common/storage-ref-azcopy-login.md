@@ -9,10 +9,9 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 8d2adca661882ea11d04ebe55afe25f7f9c2ef4e
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84219954"
 ---
 # <a name="azcopy-login"></a>azcopy login
@@ -99,7 +98,7 @@ Zorg ervoor dat/path/to/my/CERT wordt behandeld als een pad naar een PEM-of PKCS
 
 ## <a name="options"></a>Opties
 
-|Optie|Beschrijving|
+|Optie|Description|
 |--|--|
 |--Aad-eind punt|Het Azure Active Directory-eind punt dat moet worden gebruikt. De standaard waarde ( `https://login.microsoftonline.com` ) is correct voor de open bare Azure-Cloud. Stel deze para meter in wanneer u een verificatie uitvoert in een nationale Cloud. Zie [Azure AD-verificatie-eind punten](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
 Deze vlag is niet nodig voor Managed Service Identity.|
@@ -115,12 +114,12 @@ Deze vlag is niet nodig voor Managed Service Identity.|
 
 ## <a name="options-inherited-from-parent-commands"></a>Opties overgenomen van bovenliggende opdrachten
 
-|Optie|Beschrijving|
+|Optie|Description|
 |---|---|
 |--Cap-Mbps uint32|De overdrachts frequentie in megabits per seconde. Even door Voer kan enigszins afwijken van het kapje. Als deze optie is ingesteld op nul of wordt wegge laten, wordt de door Voer niet afgetopt.|
 |--type teken reeks voor uitvoer|De indeling van de uitvoer van de opdracht. De opties zijn onder andere: Text, JSON. De standaard waarde is "text".|
 |--vertrouwd-micro soft-achtervoegsels teken reeks   |Hiermee geeft u aanvullende domein achtervoegsels op waar Azure Active Directory aanmeldings tokens kunnen worden verzonden.  De standaard waarde is *. core.Windows.net;*. core.chinacloudapi.cn; *. core.cloudapi.de;*. core.usgovcloudapi.net '. Alle hier vermelde waarden worden toegevoegd aan de standaard instelling. Voor beveiliging moet u Microsoft Azure domeinen hier alleen plaatsen. Scheid meerdere vermeldingen met een punt komma.|
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [azcopy](storage-ref-azcopy.md)

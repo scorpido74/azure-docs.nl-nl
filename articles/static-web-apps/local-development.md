@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.openlocfilehash: a7215790a7f052227b08f51dcd7ad5dd337bb4e9
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84259266"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Lokale ontwikkeling voor Azure static Web Apps-Preview instellen
@@ -122,7 +121,7 @@ Als onderdeel van het proces voor het maken van de API wordt een start configura
 
 ### <a name="debugging-the-api"></a>Fout opsporing van de API
 
-1. Open het bestand _API/GetMessage/index. js_ in Visual Studio code.
+1. Open het bestand _API/GetMessage/index.js_ in Visual Studio code.
 
 1. Klik in de linkermarge op regel 2 om een onderbrekings punt in te stellen. Er wordt een rode stip weer gegeven die aangeeft dat het onderbrekings punt is ingesteld.
 

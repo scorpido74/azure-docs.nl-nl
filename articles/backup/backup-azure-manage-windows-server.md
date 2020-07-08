@@ -4,10 +4,9 @@ description: In dit artikel leert u hoe u het overzichts Dashboard van Recovery 
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.openlocfilehash: 598e9198ee7e153d8008389f97c0be399a0186ba
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84234597"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-kluizen beheren en controleren
@@ -110,7 +109,7 @@ Standaard worden alle details, met uitzonde ring van de **laatste tijdstippen**,
 * Waarschuwing
 * Back-upitem
 * Beveiligde server
-* Ernst
+* Severity
 * Duur
 * Aanmaak tijd
 * Status

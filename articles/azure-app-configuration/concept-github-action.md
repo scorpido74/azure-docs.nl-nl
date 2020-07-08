@@ -7,10 +7,9 @@ ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
 ms.openlocfilehash: 6d072cd03fa0e5c8da4593d8633a268d3b5a50fb
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84197053"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>Uw GitHub-opslag plaats synchroniseren met de app-configuratie
@@ -209,11 +208,11 @@ jobs:
 ```
 
 ## <a name="use-azure-key-vault-with-github-action"></a>Azure Key Vault gebruiken met actie GitHub
-Ontwikkel aars die gebruikmaken van Azure Key Vault met AppConfiguration, moeten twee afzonderlijke bestanden gebruiken, meestal een ' appSettings. json ' en een secretreferences. json. De secretreferences. json bevat de URL naar het sleutel kluis geheim.
+Ontwikkel aars die Azure Key Vault gebruiken met AppConfiguration, moeten twee afzonderlijke bestanden gebruiken, meestal een appsettings.jsop en een secretreferences.jsop. De secretreferences.jsin bevat de URL naar het sleutel kluis geheim.
 
 {"mySecret": "{ \" URI \" : \" https://myKeyVault.vault.azure.net/secrets/mySecret "} "}
 
-De actie GitHub kan vervolgens worden geconfigureerd om een strikte synchronisatie uit te voeren op het bestand appSettings. json, gevolgd door een niet-strikte synchronisatie op secretreferences. json. In het volgende voor beeld wordt een synchronisatie geactiveerd wanneer een van de bestanden wordt bijgewerkt:
+De actie GitHub kan vervolgens worden geconfigureerd om een strikte synchronisatie uit te voeren op de appsettings.jsop, gevolgd door een niet-strikte synchronisatie op secretreferences.jsop. In het volgende voor beeld wordt een synchronisatie geactiveerd wanneer een van de bestanden wordt bijgewerkt:
 
 ```json
 on:
@@ -309,7 +308,7 @@ Invoer parameters geven gegevens op die worden gebruikt door de actie tijdens ru
 | Invoer naam | Vereist? | Waarde |
 |----|----|----|
 | configurationFile | Yes | Relatief pad naar het configuratie bestand in de opslag plaats.  Globs-patronen worden ondersteund en kunnen meerdere bestanden bevatten. |
-| formaat | Yes | Bestands indeling van het configuratie bestand.  Geldige indelingen zijn: JSON, YAML, eigenschappen. |
+| indeling | Yes | Bestands indeling van het configuratie bestand.  Geldige indelingen zijn: JSON, YAML, eigenschappen. |
 | Verbindings | Yes | Verbindings reeks voor het app-configuratie-exemplaar. De connection string moet worden opgeslagen als een geheim in de GitHub-opslag plaats en alleen de geheime naam moet in de werk stroom worden gebruikt. |
 | scheiding | Yes | Scheidings teken dat wordt gebruikt bij het afvlakken van het configuratie bestand naar sleutel-waardeparen.  Geldige waarden zijn:. , ; : - _ __ / |
 | beleids | No | Het voor voegsel dat moet worden toegevoegd aan het begin van de sleutels. |

@@ -6,10 +6,9 @@ ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
 ms.openlocfilehash: 6eab9b543bfec90c0c338bdc758d690499f083e3
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84204919"
 ---
 # <a name="enable-update-management-from-the-azure-portal"></a>Updatebeheer inschakelen via Azure Portal
@@ -29,7 +28,7 @@ Het aantal resource groepen dat u kunt gebruiken voor het beheren van uw Vm's, w
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij Azure op https://portal.azure.com .
+Aanmelden bij Azure op https://portal.azure.com.
 
 ## <a name="enable-update-management"></a>Updatebeheer inschakelen
 

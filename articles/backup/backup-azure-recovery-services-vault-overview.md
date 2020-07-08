@@ -4,10 +4,9 @@ description: Een overzicht en vergelijking tussen Recovery Services kluizen en A
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.openlocfilehash: 798f49629ad1012e8cc9ac3ed43f5beddd6eefeb
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248903"
 ---
 # <a name="recovery-services-vaults-overview"></a>Overzicht van Recovery Services-kluizen
@@ -34,7 +33,7 @@ Recovery Services kluizen zijn gebaseerd op het Azure Resource Manager model van
 
 ## <a name="storage-settings-in-the-recovery-services-vault"></a>Opslag instellingen in de Recovery Services kluis
 
-Een Recovery Services kluis is een entiteit waarin de back-ups en herstel punten worden opgeslagen die in de loop van de tijd zijn gemaakt. De Recovery Services kluis bevat ook het back-upbeleid dat is gekoppeld aan de beveiligde virtuele machines.
+Een Recovery Service-kluis is een entiteit waarin de back-ups en herstelpunten worden opgeslagen die in de loop van de tijd zijn gemaakt. De Recovery Service-kluis bevat ook de beleidsregels voor back-up die aan de beveiligde virtuele machines zijn gekoppeld.
 
 Azure Backup beheert automatisch de opslag voor de kluis. Bekijk hoe [opslag instellingen kunnen worden gewijzigd](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy).
 

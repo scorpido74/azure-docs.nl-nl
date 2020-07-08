@@ -10,17 +10,16 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 0ddd1544c6a51ff1e2f98a28e40d9eb2ee0b47c7
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84233286"
 ---
 # <a name="sql-database-dac-packages-in-sql-edge"></a>SQL Database DAC-pakketten in SQL-rand
 
 Azure SQL Edge (preview) is een geoptimaliseerde relationele data base-engine die is afgestemd op IoT-en Edge-implementaties. Het is gebaseerd op de nieuwste versies van de Microsoft SQL Server data base-engine, waarmee toonaangevende prestaties, beveiliging en verwerkings mogelijkheden voor query's worden geboden. Naast de toonaangevende mogelijkheden voor het beheer van relationele data bases van SQL Server biedt Azure SQL Edge ingebouwde streaming-mogelijkheden voor realtime analyse en complexe gebeurtenis verwerking.
 
-Azure SQL Edge biedt ook een systeem eigen implementatie van SqlPackage. exe, waarmee u een [SQL database DAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) -pakket kunt implementeren tijdens de implementatie van SQL Edge. SQL Database dacpacs kan worden geïmplementeerd op SQL Edge met behulp van de para meter SqlPackage die wordt weer gegeven via de `module twin's desired properties` optie van de SQL Edge-module:
+Azure SQL Edge biedt ook een systeem eigen implementatie van SqlPackage.exe waarmee u een [SQL database DAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) -pakket kunt implementeren tijdens de implementatie van SQL Edge. SQL Database dacpacs kan worden geïmplementeerd op SQL Edge met behulp van de para meter SqlPackage die wordt weer gegeven via de `module twin's desired properties` optie van de SQL Edge-module:
 
 ```json
 {

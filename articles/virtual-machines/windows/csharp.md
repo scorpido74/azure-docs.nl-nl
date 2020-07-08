@@ -8,15 +8,14 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.openlocfilehash: 4fd7ccc7b6df85397fd547f8e1e48b776f12c0df
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84234518"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Virtuele Windows-machines maken en beheren in azure met behulp van C # #
 
-Een [virtuele machine](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) van Azure heeft verschillende ondersteunende Azure-resources nodig. In dit artikel wordt beschreven hoe u VM-resources kunt maken, beheren en verwijderen met C#. Procedures voor:
+Een [virtuele machine](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) van Azure heeft verschillende ondersteunende Azure-resources nodig. In dit artikel wordt beschreven hoe u VM-resources kunt maken, beheren en verwijderen met C#. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Een Visual Studio-project maken
@@ -32,7 +31,7 @@ Het duurt ongeveer 20 minuten om deze stappen uit te voeren.
 ## <a name="create-a-visual-studio-project"></a>Een Visual Studio-project maken
 
 1. Als u dat nog niet hebt gedaan, installeert u [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Selecteer **.net desktop Development** op de pagina workloads en klik vervolgens op **installeren**. In de samen vatting ziet u dat **.NET Framework 4-4,6-ontwikkel Programma's** automatisch voor u worden geselecteerd. Als u Visual Studio al hebt geïnstalleerd, kunt u de .NET-workload toevoegen met behulp van de Visual Studio Launcher.
-2. Klik in Visual Studio op **bestand**  >  **Nieuw**  >  **project**.
+2. Klik in Visual Studio op **File** > **New** > **Project**.
 3. In **sjablonen**  >  **Visual C#** selecteert u **console-app (.NET Framework)**, voert u *myDotnetProject* in voor de naam van het project, selecteert u de locatie van het project en klikt u vervolgens op **OK**.
 
 ## <a name="install-the-package"></a>Het pakket installeren
@@ -240,7 +239,7 @@ Wanneer u iets moet doen met de virtuele machine, moet u een exemplaar hiervan o
 var vm = azure.VirtualMachines.GetByResourceGroup(groupName, vmName);
 ```
 
-### <a name="get-information-about-the-vm"></a>Informatie over de virtuele machine ophalen
+### <a name="get-information-about-the-vm"></a>Informatie over de VM ophalen
 
 Als u informatie over de virtuele machine wilt ophalen, voegt u deze code toe aan de methode Main:
 

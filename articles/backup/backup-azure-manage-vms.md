@@ -5,10 +5,9 @@ ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.openlocfilehash: 6e49d1eed81d15970519299fb6f662c650116d6e
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248580"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Back-ups van Azure-VM'S beheren met Azure Backup-Service
@@ -30,7 +29,7 @@ U kunt back-ups beheren met behulp van het dash board en door in te zoomen op af
 
 Vm's op het kluis dashboard weer geven:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Klik in het menu hub op **Bladeren**. Typ in de lijst met resources **Recovery Services**. Terwijl u typt, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Recovery Services kluizen**.
 
     ![Een Recovery Services-kluis maken](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
@@ -56,7 +55,7 @@ Vm's op het kluis dashboard weer geven:
 
 Een back-upbeleid beheren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/). Open het kluis dashboard.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/). Open het kluis dashboard.
 2. Selecteer **Azure virtual machines**op de tegel **Back-upitems** .
 
     ![De tegel back-upitems openen](./media/backup-azure-manage-vms/contoso-vault-1606.png)

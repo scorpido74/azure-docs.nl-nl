@@ -8,10 +8,9 @@ ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 912dab16cd854ae940b7bbdfe88a8da7adf1c5e0
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84197201"
 ---
 # <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>Gateway gebruiken voor gegevens bronnen op een Azure Virtual Network (VNet)
@@ -35,7 +34,7 @@ Gegevens bronnen van Azure SQL Managed instance worden uitgevoerd in azure VNet 
     ![Altijd gateway-eigenschap gebruiken](media/analysis-services-vnet-gateway/aas-ssms-always-property.png)
 
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 [Verbinding maken met on-premises gegevens bronnen](analysis-services-gateway.md)   
 [Een on-premises gegevens gateway installeren en configureren](analysis-services-gateway-install.md)   
 [Azure Virtual Network (VNET)](../virtual-network/virtual-networks-overview.md)   

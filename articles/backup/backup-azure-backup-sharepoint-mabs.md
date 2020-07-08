@@ -4,10 +4,9 @@ description: Gebruik Azure Backup Server om back-ups te maken van uw share point
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.openlocfilehash: 62fcb434ef00df43ce2950a5df569e346a06903a
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84234795"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Een back-up maken van een share point-Farm naar Azure met MABS
@@ -52,9 +51,9 @@ Aanvullende vereisten en beperkingen:
 
 ## <a name="configure-backup"></a>Back-up configureren
 
-Als u een back-up wilt maken van de share point-Farm, configureert u beveiliging voor share point met behulp van ConfigureSharePoint. exe en maakt u vervolgens een beveiligings groep in MABS.
+Als u een back-up wilt maken van de share point-Farm, configureert u beveiliging voor share point met behulp van ConfigureSharePoint.exe en maakt u een beveiligings groep in MABS.
 
-1. **ConfigureSharePoint.exe uitvoeren**: met dit hulpprogramma configureert u de SharePoint VSS Writer-service \(WSS\) en voorziet u de beveiligingsagent van referenties voor de SharePoint-farm. Nadat u de beveiligings agent hebt geïmplementeerd, kunt u het bestand ConfigureSharePoint. exe vinden in de `<MABS Installation Path\>\bin` map op de front- \- endwebserver.  Als u meerdere WFE-servers hebt, hoeft u deze alleen maar op een van beide te installeren. Voer het bestand als volgt uit:
+1. **ConfigureSharePoint.exe uitvoeren**: met dit hulpprogramma configureert u de SharePoint VSS Writer-service \(WSS\) en voorziet u de beveiligingsagent van referenties voor de SharePoint-farm. Nadat u de beveiligings agent hebt geïmplementeerd, bevindt het ConfigureSharePoint.exe-bestand zich in de `<MABS Installation Path\>\bin` map op de front- \- endwebserver.  Als u meerdere WFE-servers hebt, hoeft u deze alleen maar op een van beide te installeren. Voer het bestand als volgt uit:
 
     * Ga op de WFE-server naar de opdracht prompt `\<MABS installation location\>\\bin\\` en voer deze uit `ConfigureSharePoint \[\-EnableSharePointProtection\] \[\-EnableSPSearchProtection\] \[\-ResolveAllSQLAliases\] \[\-SetTempPath <path>\]` , waarbij:
 
@@ -72,13 +71,13 @@ Als u een back-up wilt maken van de share point-Farm, configureert u beveiliging
 
         * Verleen de **WSS_Admin_WPG** -groep lees toegang tot de register sleutel MABS ( `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager` ).
 
-        Na het uitvoeren van ConfigureSharePoint. exe moet u deze opnieuw uitvoeren als er een wijziging is in de referenties van de share point-farm beheerder.
+        Nadat ConfigureSharePoint.exe is uitgevoerd, moet u het opnieuw uitvoeren als er een wijziging is in de referenties van de share point-farm beheerder.
 
 1. Als u een beveiligings groep wilt maken, klikt u op **beveiligings**  >  **acties**  >  **beveiligings groep maken** om de wizard **nieuwe beveiligings groep maken** in de MABS-console te openen.
 
 1. In **type beveiligings groep**selecteren selecteert u **servers**.
 
-1. Vouw in **groeps leden selecteren**de server uit die de functie WFE bevat. Als er meer dan één WFE-server is, selecteert u de versie waarop u ConfigureSharePoint. exe hebt geïnstalleerd.
+1. Vouw in **groeps leden selecteren**de server uit die de functie WFE bevat. Als er meer dan één WFE-server is, selecteert u de versie waarop u ConfigureSharePoint.exe hebt geïnstalleerd.
 
     Wanneer u de MABS query's van share Point server uitvouwt, kunt u zien welke gegevens MABS kunnen beveiligen.  Als de share point-data base extern is, wordt er met MABS verbinding gemaakt. Als share point-gegevens bronnen niet worden weer gegeven, controleert u of de VSS Writer wordt uitgevoerd op de share Point-server en eventuele externe SQL Server en of de MABS-agent is geïnstalleerd op zowel de share Point-server als de externe SQL Server. Zorg er ook voor dat share point-data bases niet elders worden beveiligd als SQL Server data bases.
 

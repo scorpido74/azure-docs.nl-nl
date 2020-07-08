@@ -4,10 +4,9 @@ description: Hierin wordt beschreven hoe beleids initiatieven worden gebruikt vo
 ms.date: 05/29/2020
 ms.topic: conceptual
 ms.openlocfilehash: 80fa90765caa25d6995220134b9a5b4225133219
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84205958"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Definitie structuur van Azure Policy initiatief
@@ -326,5 +325,5 @@ Hieronder ziet u een voor beeld van het object **policyMetadata** . Dit voor bee
 - Lees [Informatie over de effecten van het beleid](effects.md).
 - Meer informatie over het [programmatisch maken van beleids regels](../how-to/programmatically-create.md).
 - Meer informatie over het [ophalen van compatibiliteits gegevens](../how-to/get-compliance-data.md).
-- Meer informatie over het [oplossen van niet-compatibele resources](../how-to/remediate-resources.md).
+- Ontdek hoe u [niet-compatibele resources kunt herstellen](../how-to/remediate-resources.md).
 - Bekijk wat een beheer groep is met [het organiseren van uw resources met Azure-beheer groepen](../../management-groups/overview.md).

@@ -12,15 +12,14 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/22/2020
 ms.openlocfilehash: ac351e688eba274c989b4b475c6d61607b9ea5c1
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84219288"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Gegevens kopiëren van SAP HANA met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](v1/data-factory-sap-hana-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](v1/data-factory-sap-hana-connector.md)
 > * [Huidige versie](connector-sap-hana.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -280,12 +279,12 @@ Bij het kopiëren van gegevens uit SAP HANA worden de volgende toewijzingen gebr
 | CLOB               | Tekenreeks                         |
 | DATE               | DateTime                       |
 | KOMMA            | Decimal                        |
-| DUBBELKLIK             | Double                         |
-| FLOAT              | Double                         |
+| DUBBELKLIK             | Dubbel                         |
+| FLOAT              | Dubbel                         |
 | INTEGER            | Int32                          |
 | NCLOB              | Tekenreeks                         |
 | NVARCHAR           | Tekenreeks                         |
-| REAL               | Enkel                         |
+| REAL               | Enkelvoudig                         |
 | SECONDDATE         | DateTime                       |
 | SHORTTEXT          | Tekenreeks                         |
 | SMALLDECIMAL       | Decimal                        |

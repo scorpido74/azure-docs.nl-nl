@@ -10,22 +10,21 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c24cef2cf9e4c54d16ebc75eb1a56273d8826355
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84221403"
 ---
-# <a name="monitor-module-twins"></a>Module apparaatdubbels bewaken
+# <a name="monitor-module-twins"></a>Dubbele modules bewaken
 
 Met de module apparaatdubbels in IoT Hub Azure kunt u de connectiviteit en status van uw IoT Edge-implementaties controleren. Module apparaatdubbels bevatten nuttige informatie over de prestaties van uw actieve modules in uw IoT-hub. De [IOT Edge-agent](iot-edge-runtime.md#iot-edge-agent) en de runtime modules van [IOT Edge hub](iot-edge-runtime.md#iot-edge-hub) onderhouden hun module apparaatdubbels `$edgeAgent` en `$edgeHub` respectievelijk:
 
 * `$edgeAgent`bevat status-en connectiviteits gegevens over de IoT Edge agent en IoT Edge hub runtime modules en uw aangepaste modules. De IoT Edge-agent is verantwoordelijk voor het implementeren van de modules, het bewaken ervan en het rapporteren van de verbindings status aan uw Azure IoT hub.
 * `$edgeHub`bevat gegevens over de communicatie tussen de IoT Edge hub die op een apparaat wordt uitgevoerd en uw Azure IoT hub. Dit omvat het verwerken van inkomende berichten van downstream-apparaten. IoT Edge hub is verantwoordelijk voor het verwerken van de communicatie tussen de Azure-IoT Hub en de IoT Edge apparaten en modules.
 
-De gegevens zijn ingedeeld in meta gegevens, tags en de gewenste en gerapporteerde eigenschappen sets in de apparaatdubbels JSON-structuren van de module. De gewenste eigenschappen die u hebt opgegeven in uw implementatie. JSON-bestand worden gekopieerd naar de module apparaatdubbels. Met de IoT Edge-agent en de IoT Edge-hub worden de gerapporteerde eigenschappen voor hun modules bijgewerkt.
+De gegevens zijn ingedeeld in meta gegevens, tags en de gewenste en gerapporteerde eigenschappen sets in de apparaatdubbels JSON-structuren van de module. De gewenste eigenschappen die u hebt opgegeven in uw deployment.jsvoor het bestand worden gekopieerd naar de module apparaatdubbels. Met de IoT Edge-agent en de IoT Edge-hub worden de gerapporteerde eigenschappen voor hun modules bijgewerkt.
 
-Op dezelfde manier worden de gewenste eigenschappen voor uw aangepaste modules in het implementatie. JSON-bestand gekopieerd naar de bijbehorende module dubbele, maar uw oplossing is verantwoordelijk voor het leveren van de gerapporteerde eigenschaps waarden.
+Op dezelfde manier worden de gewenste eigenschappen voor uw aangepaste modules in de deployment.jsin het bestand gekopieerd naar de bijbehorende module, maar is uw oplossing verantwoordelijk voor het leveren van de gerapporteerde eigenschaps waarden.
 
 In dit artikel wordt beschreven hoe u de module apparaatdubbels in de Azure Portal, Azure CLI en Visual Studio code kunt controleren. Zie [IOT Edge-implementaties bewaken](how-to-monitor-iot-edge-deployments.md)voor meer informatie over het controleren van de manier waarop uw apparaten de implementaties ontvangen. Zie voor een overzicht van het concept van module apparaatdubbels [begrijpen en module apparaatdubbels gebruiken in IOT hub](../iot-hub/iot-hub-devguide-module-twins.md).
 
@@ -83,7 +82,7 @@ De JSON kan worden beschreven in de volgende secties, vanaf de bovenkant:
 
 * Meta gegevens-bevat verbindings gegevens. De verbindings status voor de IoT Edge-agent is in het gepaarte toestand altijd een status die niet verbonden is: `"connectionState": "Disconnected"` . De reden hiervoor is dat de verbindings status van toepassing is op D2C-berichten (apparaat-naar-Cloud) en dat de IoT Edge-agent geen D2C-berichten verzendt.
 * Eigenschappen: bevat de `desired` `reported` subsecties en.
-* Eigenschappen. desired: verwachte eigenschaps waarden die zijn ingesteld door de operator in het bestand Implementation. json (weer gegeven samengevouwen).
+* Eigenschappen. desired: verwachte eigenschaps waarden die zijn ingesteld door de operator in het deployment.jsin het bestand (samengevouwen).
 * Properties. gerapporteerd-meest recente eigenschaps waarden die zijn gerapporteerd door IoT Edge agent.
 
 Zowel de- `properties.desired` als- `properties.reported` secties hebben een vergelijk bare structuur en bevatten aanvullende meta gegevens voor schema-, versie-en runtime-informatie. Is ook opgenomen `modules` in de sectie voor alle aangepaste modules (zoals `SimulatedTemperatureSensor` ) en de `systemModules` sectie voor `$edgeAgent` en de `$edgeHub` runtime modules.
@@ -159,14 +158,14 @@ De JSON kan worden beschreven in de volgende secties, vanaf de bovenkant:
 * Meta gegevens-bevat verbindings gegevens.
 
 * Eigenschappen: bevat de `desired` `reported` subsecties en.
-* Eigenschappen. desired: verwachte eigenschaps waarden die zijn ingesteld door de operator in het bestand Implementation. json (weer gegeven samengevouwen).
+* Eigenschappen. desired: verwachte eigenschaps waarden die zijn ingesteld door de operator in het deployment.jsin het bestand (samengevouwen).
 * Properties. gerapporteerd-meest recente eigenschaps waarden die zijn gerapporteerd door IoT Edge hub.
 
 Als u problemen ondervindt met uw downstream-apparaten, is het controleren van deze gegevens een goede plaats om te starten.
 
 ## <a name="monitor-custom-module-twins"></a>Aangepaste module apparaatdubbels bewaken
 
-De informatie over de connectiviteit van uw aangepaste modules wordt onderhouden in de module IoT Edge agent. De module twee voor uw aangepaste module wordt voornamelijk gebruikt voor het onderhouden van gegevens voor uw oplossing. De gewenste eigenschappen die u in uw implementatie. JSON-bestand hebt gedefinieerd, worden weer gegeven in de module dubbele en de module kan de gerapporteerde eigenschaps waarden naar wens bijwerken.
+De informatie over de connectiviteit van uw aangepaste modules wordt onderhouden in de module IoT Edge agent. De module twee voor uw aangepaste module wordt voornamelijk gebruikt voor het onderhouden van gegevens voor uw oplossing. De gewenste eigenschappen die u in uw deployment.jsin het bestand hebt gedefinieerd, worden weer gegeven in de module dubbele en de module kan de gerapporteerde eigenschaps waarden naar wens bijwerken.
 
 U kunt uw favoriete programmeer taal gebruiken met de [sdk's van het Azure IOT hub apparaat](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-device-sdks) om de gerapporteerde eigenschaps waarden in de module twee bij te werken, op basis van de toepassings code van uw module. De volgende procedure maakt gebruik van de Azure SDK voor .NET om dit te doen met behulp van code uit de [SimulatedTemperatureSensor](https://github.com/Azure/iotedge/blob/dd5be125df165783e4e1800f393be18e6a8275a3/edge-modules/SimulatedTemperatureSensor/src/Program.cs) -module:
 

@@ -4,10 +4,9 @@ description: Meer informatie over het toevoegen van hulpprogram ma's voor migrat
 ms.topic: article
 ms.date: 04/26/2020
 ms.openlocfilehash: 670341adca7ab2958d43132aab164d7bba0f87d0
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84195810"
 ---
 # <a name="add-migration-tools"></a>Migratiehulpprogramma's toevoegen
@@ -19,7 +18,7 @@ In dit artikel wordt beschreven hoe u migratie hulpprogramma's toevoegt in [Azur
 
 ## <a name="select-a-migration-scenario"></a>Een migratie scenario selecteren
 
-1. Klik in het Azure Migrate project op **overzicht**.
+1. Klik in het Azure Migrate-project op **Overzicht**.
 2. Selecteer het migratie scenario dat u wilt gebruiken:
 
     - Als u machines en werk belastingen wilt migreren naar Azure, selecteert u **servers beoordelen en migreren**.

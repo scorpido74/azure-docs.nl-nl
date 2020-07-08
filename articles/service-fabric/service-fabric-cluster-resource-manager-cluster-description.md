@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: a9699eae17657e96b38b3bccc95e8f84326efbb3
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84259470"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Een Service Fabric cluster beschrijven met cluster resource manager
@@ -247,7 +246,7 @@ Als in de vorige indeling de **TargetReplicaSetSize** -waarde vijf en N1 uit het
 ## <a name="configuring-fault-and-upgrade-domains"></a>Fout-en upgrade domeinen configureren
 In door Azure gehoste Service Fabric-implementaties worden fout domeinen en upgrade domeinen automatisch gedefinieerd. Service Fabric de omgevings gegevens van Azure ophaalt en gebruikt.
 
-Als u uw eigen cluster maakt (of als u een bepaalde topologie in ontwikkeling wilt uitvoeren), kunt u het fout domein zelf opgeven en zelf de domein gegevens upgraden. In dit voor beeld definiëren we een lokaal ontwikkelings cluster met negen knoop punten dat drie data centers omvat (elk met drie racks). Dit cluster heeft ook drie upgrade domeinen die zijn gesegmenteerd over deze drie data centers. Hier volgt een voor beeld van de configuratie in ClusterManifest. XML:
+Als u uw eigen cluster maakt (of als u een bepaalde topologie in ontwikkeling wilt uitvoeren), kunt u het fout domein zelf opgeven en zelf de domein gegevens upgraden. In dit voor beeld definiëren we een lokaal ontwikkelings cluster met negen knoop punten dat drie data centers omvat (elk met drie racks). Dit cluster heeft ook drie upgrade domeinen die zijn gesegmenteerd over deze drie data centers. Hier volgt een voor beeld van de configuratie in ClusterManifest.xml:
 
 ```xml
   <Infrastructure>
@@ -268,7 +267,7 @@ Als u uw eigen cluster maakt (of als u een bepaalde topologie in ontwikkeling wi
   </Infrastructure>
 ```
 
-In dit voor beeld wordt ClusterConfig. json gebruikt voor zelfstandige implementaties:
+In dit voor beeld wordt ClusterConfig.jsgebruikt voor zelfstandige implementaties:
 
 ```json
 "nodes": [
@@ -375,7 +374,7 @@ De waarde die in de knooppunt eigenschap is opgegeven, kan een teken reeks, een 
 
 * Voorwaardelijke controles voor het maken van specifieke instructies:
 
-  | Rekeningen | Syntaxis |
+  | Rekeningen | Syntax |
   | --- |:---:|
   | "gelijk aan" | "==" |
   | is niet gelijk aan | "!=" |
@@ -386,7 +385,7 @@ De waarde die in de knooppunt eigenschap is opgegeven, kan een teken reeks, een 
 
 * Booleaanse instructies voor groepering en logische bewerkingen:
 
-  | Rekeningen | Syntaxis |
+  | Rekeningen | Syntax |
   | --- |:---:|
   | maar | "&&" |
   | of | "&#124;&#124;" |
@@ -401,7 +400,7 @@ Hier volgen enkele voor beelden van elementaire beperkings instructies:
 
 Alleen knoop punten waarbij de instructie van de algemene plaatsings beperking resulteert in ' True ', kan de service op de node hebben geplaatst. Knoop punten waarvoor geen eigenschap is gedefinieerd, komen niet overeen met een plaatsings beperking die de eigenschap bevat.
 
-Stel dat de volgende knooppunt eigenschappen zijn gedefinieerd voor een knooppunt type in ClusterManifest. XML:
+Stel dat de volgende knooppunt eigenschappen zijn gedefinieerd voor een knooppunt type in ClusterManifest.xml:
 
 ```xml
     <NodeType Name="NodeType01">
@@ -413,7 +412,7 @@ Stel dat de volgende knooppunt eigenschappen zijn gedefinieerd voor een knooppun
     </NodeType>
 ```
 
-In het volgende voor beeld worden eigenschappen van knoop punten weer gegeven die zijn gedefinieerd via ClusterConfig. json voor zelfstandige implementaties of sjabloon. json voor door Azure gehoste clusters. 
+In het volgende voor beeld ziet u de knooppunt eigenschappen die zijn gedefinieerd via ClusterConfig.jsop voor zelfstandige implementaties of Template.jsop voor door Azure gehoste clusters. 
 
 > [!NOTE]
 > In uw Azure Resource Manager-sjabloon is het knooppunt type meestal para meters. Dit ziet eruit als `"[parameters('vmNodeType1Name')]"` in plaats van NodeType01.
@@ -505,7 +504,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("ClientConnections,High,1024,0)
 ```
 
-U kunt de capaciteit zien die in het cluster manifest is gedefinieerd. Hier volgt een voor beeld van ClusterManifest. XML:
+U kunt de capaciteit zien die in het cluster manifest is gedefinieerd. Hier volgt een voor beeld van ClusterManifest.xml:
 
 ```xml
     <NodeType Name="NodeType03">
@@ -515,7 +514,7 @@ U kunt de capaciteit zien die in het cluster manifest is gedefinieerd. Hier volg
     </NodeType>
 ```
 
-Hier volgt een voor beeld van capaciteit gedefinieerd via ClusterConfig. json voor zelfstandige implementaties of sjabloon. json voor door Azure gehoste clusters: 
+Hier volgt een voor beeld van capaciteit gedefinieerd via ClusterConfig.jsop voor zelfstandige implementaties of Template.jsop voor door Azure gehoste clusters: 
 
 ```json
 "nodeTypes": [
@@ -548,7 +547,7 @@ Gebufferde capaciteit is een andere functie van cluster resource manager. Hierme
 
 Gebufferde capaciteit wordt globaal opgegeven per metrische waarde voor alle knoop punten. De waarde die u kiest voor de gereserveerde capaciteit is een functie van het aantal fout-en upgrade domeinen dat u in het cluster hebt. Meer fout-en upgrade domeinen betekenen dat u een lager getal kunt kiezen voor de buffer capaciteit. Als u meer domeinen hebt, kunt u verwachten dat kleinere hoeveel heden van uw cluster niet beschikbaar zijn tijdens upgrades en fouten. Het opgeven van de capaciteit van de buffer is alleen zinvol als u ook de capaciteit van het knoop punt voor een metriek hebt opgegeven.
 
-Hier volgt een voor beeld van het opgeven van gebufferde capaciteit in ClusterManifest. XML:
+Hier volgt een voor beeld van het opgeven van gebufferde capaciteit in ClusterManifest.xml:
 
 ```xml
         <Section Name="NodeBufferPercentage">
@@ -557,7 +556,7 @@ Hier volgt een voor beeld van het opgeven van gebufferde capaciteit in ClusterMa
         </Section>
 ```
 
-Hier volgt een voor beeld van het opgeven van gebufferde capaciteit via ClusterConfig. json voor zelfstandige implementaties of sjabloon. json voor door Azure gehoste clusters:
+Hier volgt een voor beeld van het opgeven van gebufferde capaciteit via ClusterConfig.jsop voor zelfstandige implementaties of Template.jsop voor door Azure gehoste clusters:
 
 ```json
 "fabricSettings": [

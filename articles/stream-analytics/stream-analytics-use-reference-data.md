@@ -8,10 +8,9 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/11/2020
 ms.openlocfilehash: 8aae9a0ff3ffdbd4f6bc93db5c6f15dcb938080e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84196424"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Referentie gegevens gebruiken voor Zoek opdrachten in Stream Analytics
@@ -39,13 +38,13 @@ Referentie gegevens worden gemodelleerd als een reeks blobs (gedefinieerd in de 
 
 Als u uw referentie gegevens wilt configureren, moet u eerst een invoer maken van het type **referentie gegevens**. In de onderstaande tabel wordt elke eigenschap uitgelegd die u moet opgeven tijdens het maken van de referentie gegevens invoer met de beschrijving:
 
-|**Naam van eigenschap**  |**Beschrijving**  |
+|**Eigenschaps naam**  |**Beschrijving**  |
 |---------|---------|
 |Invoeralias   | Een beschrijvende naam die wordt gebruikt in de taak query om te verwijzen naar deze invoer.   |
 |Opslagaccount   | De naam van het opslag account waarin uw blobs zich bevinden. Als deze zich in hetzelfde abonnement bevindt als uw Stream Analytics-taak, kunt u deze selecteren in de vervolg keuzelijst.   |
 |Sleutel van het opslag account   | De geheime sleutel die is gekoppeld aan het opslag account. Dit wordt automatisch ingevuld als het opslag account zich in hetzelfde abonnement als uw Stream Analytics-taak bevindt.   |
-|Opslag container   | Containers bieden een logische groepering voor blobs die zijn opgeslagen in de Microsoft Azure Blob service. Wanneer u een BLOB uploadt naar de Blob service, moet u een container voor die BLOB opgeven.   |
-|Padpatroon   | Dit is een vereiste eigenschap die wordt gebruikt om uw blobs binnen de opgegeven container te vinden. Binnen het pad kunt u een of meer exemplaren van de volgende twee variabelen opgeven:<BR>{date}, {time}<BR>Voor beeld 1: producten/{date}/{time}/product-list. CSV<BR>Voor beeld 2: producten/{date}/product-list. CSV<BR>Voor beeld 3: product-list. CSV<BR><br> Als de BLOB niet bestaat in het opgegeven pad, wacht de Stream Analytics taak oneindig voordat de BLOB beschikbaar wordt.   |
+|Opslagcontainer   | Containers bieden een logische groepering voor blobs die zijn opgeslagen in de Microsoft Azure Blob service. Wanneer u een BLOB uploadt naar de Blob service, moet u een container voor die BLOB opgeven.   |
+|Padpatroon   | Dit is een vereiste eigenschap die wordt gebruikt om uw blobs binnen de opgegeven container te vinden. Binnen het pad kunt u een of meer exemplaren van de volgende twee variabelen opgeven:<BR>{date}, {time}<BR>Voor beeld 1: producten/{date}/{time}/product-list.csv<BR>Voor beeld 2: producten/{date}/product-list.csv<BR>Voor beeld 3: product-list.csv<BR><br> Als de BLOB niet bestaat in het opgegeven pad, wacht de Stream Analytics taak oneindig voordat de BLOB beschikbaar wordt.   |
 |Datum notatie [Optioneel]   | Als u {date} hebt gebruikt binnen het door u opgegeven pad-patroon, kunt u de datum notatie selecteren waarin uw blobs zijn ingedeeld in de vervolg keuzelijst met ondersteunde indelingen.<BR>Voor beeld: JJJJ/MM/DD, MM/DD/JJJJ, enzovoort.   |
 |Tijd notatie [Optioneel]   | Als u {time} hebt gebruikt binnen het door u opgegeven pad-patroon, kunt u de tijd notatie selecteren waarin uw blobs zijn ingedeeld in de vervolg keuzelijst met ondersteunde indelingen.<BR>Voor beeld: HH, HH/mm of uu-mm.  |
 |Serialisatie-indeling voor gebeurtenissen   | Om ervoor te zorgen dat uw query's werken zoals verwacht, Stream Analytics moet weten welke serialisatie-indeling u gebruikt voor binnenkomende gegevens stromen. Voor referentie gegevens zijn de ondersteunde indelingen CSV en JSON.  |
@@ -98,7 +97,7 @@ Als u uw SQL Database referentie gegevens wilt configureren, moet u eerst **refe
 
 U kunt [Azure SQL Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) als referentie gegevens invoer gebruiken. U moet een [openbaar eind punt configureren in het SQL Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) en vervolgens hand matig de volgende instellingen configureren in azure stream Analytics. Een virtuele Azure-machine met SQL Server met een gekoppelde data base wordt ook ondersteund door de onderstaande instellingen hand matig te configureren.
 
-|**Naam van eigenschap**|**Beschrijving**  |
+|**Eigenschaps naam**|**Beschrijving**  |
 |---------|---------|
 |Invoeralias|Een beschrijvende naam die wordt gebruikt in de taak query om te verwijzen naar deze invoer.|
 |Abonnement|Kies uw abonnement|

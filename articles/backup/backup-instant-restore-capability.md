@@ -5,10 +5,9 @@ ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.openlocfilehash: 6225a7eb8198ffcca0d1e3e15f64e2b3c977dc16
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248274"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Profiteer van verbeterde prestaties voor back-up en herstel met Azure Backup functie voor direct terugzetten
@@ -30,10 +29,10 @@ Het nieuwe model voor direct terugzetten biedt de volgende functie verbeteringen
 
 Op dit moment bestaat de back-uptaak uit twee fasen:
 
-1. Een VM-moment opname maken.
-2. Een VM-moment opname overbrengen naar de Azure Recovery Services kluis.
+1. Het maken van een VM-schaduwkopie.
+2. Het overdragen van een VM-schaduwkopie naar de Azure Recovery Services-kluis.
 
-Een herstel punt wordt alleen als gemaakt beschouwd nadat de fasen 1 en 2 zijn voltooid. Als onderdeel van deze upgrade wordt een herstel punt gemaakt zodra de moment opname is voltooid. dit herstel punt van het momentopname type kan worden gebruikt om een herstel uit te voeren met dezelfde herstel stroom. U kunt dit herstel punt in de Azure Portal identificeren door ' moment opname ' te gebruiken als het herstel punt type en nadat de moment opname is overgebracht naar de kluis, wordt het herstel punt type gewijzigd in moment opname en kluis.
+Een herstelpunt wordt alleen als gemaakt beschouwd nadat fase 1 en 2 zijn voltooid. Als onderdeel van deze upgrade wordt een herstelpunt gemaakt zodra de schaduwkopie is voltooid. Dit herstelpunt van het type schaduwkopie kan worden gebruikt om een herstel uit te voeren met dezelfde herstelstroom. U kunt dit herstel punt in de Azure Portal identificeren door ' moment opname ' te gebruiken als het herstel punt type en nadat de moment opname is overgebracht naar de kluis, wordt het herstel punt type gewijzigd in moment opname en kluis.
 
 ![Back-uptaak in VM-back-upstack Resource Manager-implementatie model: opslag en kluis](./media/backup-azure-vms/instant-rp-flow.png)
 

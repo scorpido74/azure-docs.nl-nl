@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
 ms.openlocfilehash: 1db32d506cc455b020fc6c0f2bba10361e961324
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84197045"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Replicatie problemen voor virtuele VMware-machines en fysieke servers oplossen
@@ -71,7 +70,7 @@ Mogelijke oorzaken:
 - De wijzigings frequentie van gegevens (geschreven bytes per seconde) op de vermelde schijven van de virtuele machine is hoger dan de [Azure site Recovery ondersteunde limieten](site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) voor het type opslag account voor replicatie doel.
 - Er is een plotselinge piek in het verloop percentage, omdat de hoge hoeveelheid gegevens in behandeling is voor het uploaden.
 
-Om het probleem op te lossen:
+Het probleem oplossen:
 - Zorg ervoor dat het type van het doel opslag account (Standard of Premium) is ingericht conform de vereiste voor de verloop snelheid bij de bron.
 - Als u al repliceert naar een Premium Managed disk (type asrseeddisk), moet u ervoor zorgen dat de grootte van de schijf het waargenomen verloop tarief per Site Recovery limieten ondersteunt. Indien nodig kunt u de grootte van de asrseeddisk verg Roten. Volg de onderstaande stappen:
     - Navigeer naar de Blade schijven van de betrokken gerepliceerde machine en kopieer de naam van de replica schijf

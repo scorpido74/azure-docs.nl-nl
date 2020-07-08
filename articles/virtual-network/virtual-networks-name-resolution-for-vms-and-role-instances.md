@@ -14,10 +14,9 @@ ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 32ef66c0a6d585e785fccb038a2b499c7f7f66db
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84204766"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Naamomzetting voor resources in virtuele Azure-netwerken
@@ -38,7 +37,7 @@ Welk type naamomzetting u gebruikt, is afhankelijk van hoe uw resources met elka
 > [!NOTE]
 > Als u Azure meegeleverde DNS gebruikt, wordt het juiste DNS-achtervoegsel automatisch toegepast op uw virtuele machines. Voor alle andere opties moet u FQDN (Fully Qualified Domain names) gebruiken of het juiste DNS-achtervoegsel hand matig Toep assen op uw virtuele machines.
 
-| **Scenario** | **Oplossen** | **DNS-achtervoegsel** |
+| **Scenario** | **Oplossing** | **DNS-achtervoegsel** |
 | --- | --- | --- |
 | Naam omzetting tussen virtuele machines die zich in hetzelfde virtuele netwerk bevinden, of Azure Cloud Services Role-instanties in dezelfde Cloud service. | [Azure DNS persoonlijke zones](../dns/private-dns-overview.md) of door [Azure aangelegde naam omzetting](#azure-provided-name-resolution) |Hostnaam of FQDN |
 | Naam omzetting tussen Vm's in verschillende virtuele netwerken of rolinstanties in verschillende Cloud Services. |[Azure DNS particuliere zones](../dns/private-dns-overview.md) of, door de klant beheerde DNS-servers, waarmee query's tussen virtuele netwerken worden doorgestuurd voor omzetting door Azure (DNS-proxy). Zie [naam omzetting met uw eigen DNS-server](#name-resolution-that-uses-your-own-dns-server). |Alleen FQDN |

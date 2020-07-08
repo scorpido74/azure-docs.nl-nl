@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 7f98fee687fca6a2b6e746b24ca582671e28391f
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84216394"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Gegevens kopiëren van Netezza met behulp van Azure Data Factory
@@ -67,7 +66,7 @@ Een typische connection string is `Server=<server>;Port=<port>;Database=<databas
 | SecurityLevel | Het beveiligings niveau dat het stuur programma gebruikt voor de verbinding met het gegevens archief. Het stuur programma ondersteunt SSL-verbindingen met eenrichtings verificatie met behulp van SSL-versie 3. <br>Bijvoorbeeld: `SecurityLevel=preferredSecured`. Ondersteunde waarden zijn:<br/>- **Alleen niet beveiligd** (**OnlyUnSecured**): het stuur programma gebruikt geen SSL.<br/>- **Voor keur niet-beveiligd (preferredUnSecured) (standaard)**: als de server een keuze biedt, gebruikt het stuur programma geen SSL. <br/>- **Voorkeurs beveiliging (preferredSecured)**: als de server een keuze biedt, maakt het stuur programma gebruik van SSL. <br/>- **Alleen beveiligd (onlySecured)**: het stuur programma kan geen verbinding maken tenzij er een SSL-verbinding beschikbaar is. | No |
 | CaCertFile | Het volledige pad naar het SSL-certificaat dat door de server wordt gebruikt. Voorbeeld: `CaCertFile=<cert path>;`| Ja, als SSL is ingeschakeld |
 
-**Hierbij**
+**Voorbeeld**
 
 ```json
 {
@@ -126,7 +125,7 @@ Als u gegevens van Netezza wilt kopiëren, stelt u de eigenschap **type** van de
 | tabel | De naam van de tabel. |Nee (als "query" in activiteit bron is opgegeven)  |
 | tableName | De naam van de tabel met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` en `table` voor nieuwe werk belasting. | Nee (als "query" in activiteit bron is opgegeven) |
 
-**Hierbij**
+**Voorbeeld**
 
 ```json
 {

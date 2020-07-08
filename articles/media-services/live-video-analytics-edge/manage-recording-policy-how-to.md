@@ -4,13 +4,12 @@ description: In dit onderwerp wordt uitgelegd hoe u het registratie beleid behee
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.openlocfilehash: 321e68087bfe2a8b3e1354e49585a89f9d3af295
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261315"
 ---
-# <a name="manage-recording-policy"></a>Registratie beleid beheren
+# <a name="manage-recording-policy"></a>Opnamebeleid beheren
 
 U kunt live video Analytics op IoT Edge gebruiken voor [continue video-opname](continuous-video-recording-concept.md), waarbij u gedurende weken of maanden video in de cloud kunt opnemen. U kunt de lengte (in dagen) van het Cloud archief beheren met behulp van de [levenscyclus beheer hulpprogramma's](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) die zijn ingebouwd in azure Storage.  
 

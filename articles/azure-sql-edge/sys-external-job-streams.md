@@ -10,22 +10,21 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
 ms.openlocfilehash: 2634128f4d431e4283f59032c6474a71f2af364d
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84233087"
 ---
 # <a name="sysexternal_job_streams-transact-sql"></a>sys.external_job_streams (Transact-SQL)
 
 Retourneert een rij voor het externe stroom object input of output dat is toegewezen aan een externe streaming-taak.
 
-|Kolomnaam|Gegevenstype|Beschrijving|  
+|Kolomnaam|Gegevenstype|Description|  
 |-----------------|---------------|-----------------|
 |**job_id**|**int**| Object-id-nummer voor het streaming-taak object. Deze kolom is gekoppeld aan de object_id kolom van sys. external_streaming_jobs.|
 |**stream_id**|**int**| Object-id-nummer voor het Stream-object. Deze kolom is gekoppeld aan de object_id kolom van sys. external_streams. |
-|**is_input**|**bit**| 1 als het Stream-object wordt gebruikt als invoer voor de streaming-taak, anders 0.|
-|**is_output**|**bit**| 1 als het Stream-object wordt gebruikt als uitvoer voor de streaming-taak, anders 0.|
+|**is_input**|**bitmask**| 1 als het Stream-object wordt gebruikt als invoer voor de streaming-taak, anders 0.|
+|**is_output**|**bitmask**| 1 als het Stream-object wordt gebruikt als uitvoer voor de streaming-taak, anders 0.|
 
 ## <a name="example"></a>Voorbeeld
 
@@ -57,7 +56,7 @@ inner join sys.external_streaming_jobs sj on sj.object_id = js.job_id
 
 De zicht baarheid van de meta gegevens in catalogus weergaven is beperkt tot Beveilig bare items die eigendom zijn van een gebruiker of waarvoor de gebruiker toestemming heeft gekregen. Zie voor meer informatie [configuratie van zicht baarheid van meta gegevens](/sql/relational-databases/security/metadata-visibility-configuration/).
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [Catalogus weergaven (Transact-SQL)](/sql/relational-databases/system-catalog-views/catalog-views-transact-sql/)
 - [Systeem weergaven (Transact-SQL)](/sql/t-sql/language-reference/)

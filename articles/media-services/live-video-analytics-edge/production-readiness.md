@@ -4,13 +4,12 @@ description: Dit artikel bevat richt lijnen voor het configureren en implementer
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: a5a2ff78d456d4423facdf5f3533ee94bc25bfc4
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261070"
 ---
-# <a name="production-readiness-and-best-practices"></a>Gereedheid voor productie en aanbevolen procedures
+# <a name="production-readiness-and-best-practices"></a>Productiegereedheid en best practices
 
 Dit artikel bevat richt lijnen voor het configureren en implementeren van de live video-analyse op IoT Edge module in productie omgevingen. Raadpleeg de voor [bereiding voor het implementeren van uw IOT EDGE oplossing in productie](https://docs.microsoft.com/azure/iot-edge/production-checklist) artikel over het voorbereiden van uw IOT EDGE-oplossing. 
 
@@ -107,7 +106,7 @@ U kunt vervolgens in de opties voor het maken van de rand in het implementatie m
 
 Als u de voor beeld-media grafieken voor de Snelstartgids en zelf studies bekijkt, zoals [continue video-opname](continuous-video-recording-tutorial.md), ziet u dat de media cache directory (localMediaCachePath) gebruikmaakt van een submap onder applicationDataDirectory. Dit is de aanbevolen benadering, omdat de cache tijdelijke gegevens bevat.
 
-### <a name="naming-video-assets-or-files"></a>Video-assets of-bestanden een naam geven
+### <a name="naming-video-assets-or-files"></a>Video-assets of -bestanden een naam geven
 
 Met media grafieken kunt u activa maken in de Cloud-of MP4-bestanden aan de rand. Media-assets kunnen worden gegenereerd door [continue video-opnamen](continuous-video-recording-tutorial.md) of op [gebeurtenissen gebaseerde video-opname](event-based-video-recording-tutorial.md). Hoewel deze assets en bestanden als gewenst kunnen worden genoemd, is de aanbevolen naamgevings structuur voor het doorlopend video-opname op basis van media " &lt; AnyText &gt; -$ {System. GraphTopologyName}-$ {System. GraphInstanceName}". Zo kunt u de assetNamePattern op de Asset Sink als volgt instellen:
 
@@ -162,4 +161,4 @@ De Linux-VM die u als een edge-apparaat gebruikt, kan niet meer reageren als dez
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Snelstartgids: aan de slag-live video Analytics op IoT Edge](get-started-detect-motion-emit-events-quickstart.md)
+[Quickstart: Over Live Video Analytics in IoT Edge](get-started-detect-motion-emit-events-quickstart.md)

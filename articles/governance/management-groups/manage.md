@@ -4,10 +4,9 @@ description: Meer informatie over het weer geven, onderhouden, bijwerken en verw
 ms.date: 04/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: b60adbdf404f40739d6bcab7a0a3ceaf24c0b59f
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84259402"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Uw resources beheren met beheer groepen
@@ -196,24 +195,24 @@ Als u een specifieke beheer groep en alle niveaus van de onderliggende hiërarch
 az account management-group show --name 'Contoso' -e -r
 ```
 
-## <a name="moving-management-groups-and-subscriptions"></a>Beheer groepen en abonnementen verplaatsen   
+## <a name="moving-management-groups-and-subscriptions"></a>Beheergroepen en abonnementen verplaatsen   
 
 Een van de redenen om een beheer groep te maken, is om abonnementen samen te bundelen. Alleen beheer groepen en abonnementen kunnen onderliggende items van een andere beheer groep worden gemaakt. Een abonnement dat naar een beheer groep verplaatst, neemt alle gebruikers toegang en het beleid over van de bovenliggende beheer groep
 
 Wanneer u een beheer groep of een abonnement naar een onderliggend niveau van een andere beheer groep verplaatst, moeten er drie regels worden geëvalueerd als waar.
 
-Als u de verplaatsings actie uitvoert, hebt u het volgende nodig: 
+Als u de verplaatsing wilt uitvoeren, hebt u het volgende nodig: 
 
-- Schrijf machtigingen voor schrijven en rollen toewijzen aan de beheer groep voor het onderliggende abonnement of de beheer groep.
+- Schrijfmachtigingen voor beheergroepen en roltoewijzingen voor het onderliggende abonnement of de beheergroep.
   - Voor beeld van ingebouwde rol **eigenaar**
-- Schrijf toegang van de beheer groep op de bovenliggende doel beheer groep.
-  - Voor beeld van ingebouwde rol: **eigenaar**, **Inzender**, **Inzender voor beheer groepen**
-- Schrijf toegang van de beheer groep voor de bestaande bovenliggende beheer groep.
-  - Voor beeld van ingebouwde rol: **eigenaar**, **Inzender**, **Inzender voor beheer groepen**
+- Schrijftoegang voor de beheergroep op de beoogde bovenliggende beheergroep.
+  - Voorbeeld van een ingebouwde rol: **Eigenaar**, **Inzender**, **Inzender beheergroep**
+- Schrijftoegang voor de beheergroep op de bestaande bovenliggende beheergroep.
+  - Voorbeeld van een ingebouwde rol: **Eigenaar**, **Inzender**, **Inzender beheergroep**
 
-**Uitzonde ring**: als het doel of de bestaande bovenliggende beheer groep de hoofd beheer groep is, zijn de machtigingen vereisten niet van toepassing. Omdat de hoofd beheer groep de standaard overgangs plaats voor alle nieuwe beheer groepen en abonnementen is, hebt u geen machtigingen nodig om een item te verplaatsen.
+**Uitzondering**: Als de beoogde of bestaande bovenliggende beheergroep de hoofdbeheergroep is, zijn de machtigingsvereisten niet van toepassing. Omdat de hoofdbeheergroep de standaardplek voor alle nieuwe beheergroepen en abonnementen is, hebt u geen machtigingen nodig om een item te verplaatsen.
 
-Als de rol van eigenaar van het abonnement wordt overgenomen van de huidige beheer groep, zijn de verplaatsings doelen beperkt. U kunt het abonnement alleen verplaatsen naar een andere beheer groep waar u de rol eigenaar hebt. U kunt het niet verplaatsen naar een beheer groep waar u mede werker bent, omdat u de eigenaar van het abonnement kwijtraakt. Als u direct wordt toegewezen aan de rol van eigenaar van het abonnement (niet overgenomen van de beheer groep), kunt u dit verplaatsen naar een beheer groep waar u Inzender bent.
+Als de rol Eigenaar van het abonnement wordt overgenomen van de huidige beheergroep, zijn de verplaatsingsdoelen beperkt. U kunt het abonnement alleen verplaatsen naar een andere beheergroep waarvan u de rol Eigenaar hebt. U kunt het niet verplaatsen naar een beheergroep waarvan u een Inzender bent, omdat u dan het eigendom van het abonnement kwijtraakt. Als u direct wordt toegewezen aan de rol van eigenaar van het abonnement (niet overgenomen van de beheer groep), kunt u dit verplaatsen naar een beheer groep waar u Inzender bent.
 
 Als u wilt zien welke machtigingen u hebt in de Azure Portal, selecteert u de beheer groep en selecteert u vervolgens **iam**. Zie [toegang en machtigingen beheren met RBAC](../../role-based-access-control/overview.md)voor meer informatie over RBAC-rollen.
 
@@ -327,7 +326,7 @@ Beheergroepen worden ondersteund door het [Azure-activiteitenlogboek](../../azur
 
 :::image type="content" source="./media/al-mg.png" alt-text="Activiteiten logboeken met beheer groepen" border="false":::
 
-Bij het uitvoeren van query's op beheergroepen buiten de Azure-portal, ziet het doelbereik voor beheergroepen er als volgt uit: **/ providers/Microsoft.Management/managementGroups/{yourMgID}**.
+Bij het uitvoeren van query's op beheergroepen buiten de Azure-portal, ziet het doelbereik voor beheergroepen er als volgt uit: **/ providers/Microsoft.Management/managementGroups/{yourMgID}** .
 
 ## <a name="referencing-management-groups-from-other-resource-providers"></a>Verwijzen naar beheer groepen van andere bron providers
 

@@ -9,10 +9,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2020
 ms.openlocfilehash: 0b966b10c5bbc7bb90a4226d94dda8b75e25c3af
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84247475"
 ---
 # <a name="data-access-strategies"></a>Strategieën voor gegevenstoegang
@@ -47,16 +46,16 @@ Zie onder twee tabellen voor meer informatie over ondersteunde netwerk beveiligi
 
     | Gegevensarchieven                  | Ondersteund netwerk beveiligings mechanisme in gegevens archieven         | Vertrouwde service     | Statisch IP-bereik | Servicetags | Azure-Services toestaan |
     |------------------------------|-------------------------------------------------------------|---------------------|-----------------|--------------|----------------------|
-    | Azure PaaS-gegevens opslag       | Azure Cosmos DB                                             | -                   | Ja             | -            | Ja                  |
+    | Azure PaaS-gegevens opslag       | Azure Cosmos DB                                             | -                   | Ja             | -            | Yes                  |
     |                              | Azure Data Explorer                                         | -                   | Ja*            | Ja*         | -                    |
-    |                              | Azure Data Lake gen1                                        | -                   | Ja             | -            | Ja                  |
-    |                              | Azure Database for MariaDB, MySQL, PostgreSQL               | -                   | Ja             | -            | Ja                  |
+    |                              | Azure Data Lake gen1                                        | -                   | Ja             | -            | Yes                  |
+    |                              | Azure Database for MariaDB, MySQL, PostgreSQL               | -                   | Ja             | -            | Yes                  |
     |                              | Azure File Storage                                          | -                   | Yes             | -            | .                    |
     |                              | Azure Storage (blog, ADLS Gen2)                             | Ja (alleen MSI-verificatie) | Yes             | -            | .                    |
-    |                              | Azure SQL DB, SQL DW (Synapse Analytics), SQL ml          | -                   | Ja             | -            | Ja                  |
-    |                              | Azure Key Vault (voor het ophalen van geheimen/connection string) | Ja                 | Ja             | -            | -                    |
+    |                              | Azure SQL DB, SQL DW (Synapse Analytics), SQL ml          | -                   | Ja             | -            | Yes                  |
+    |                              | Azure Key Vault (voor het ophalen van geheimen/connection string) | Ja                 | Yes             | -            | -                    |
     | Andere PaaS/SaaS-gegevens archieven | AWS S3, Sales Force, Google Cloud Storage, enzovoort.            | -                   | Yes             | -            | -                    |
-    | Azure-laaS                   | SQL Server, Oracle, etc.                                  | -                   | Ja             | Ja          | -                    |
+    | Azure-laaS                   | SQL Server, Oracle, etc.                                  | -                   | Ja             | Yes          | -                    |
     | On-premises laaS              | SQL Server, Oracle, etc.                                  | -                   | Yes             | -            | -                    |
     
     **Alleen van toepassing als Azure Data Explorer virtueel netwerk is geïnjecteerd en IP-bereik kan worden toegepast op NSG/firewall.* 
@@ -65,14 +64,14 @@ Zie onder twee tabellen voor meer informatie over ondersteunde netwerk beveiligi
     
     | Gegevens archieven                  | Ondersteund netwerk beveiligings mechanisme in gegevens archieven         | Statisch IP-adres | Vertrouwde services  |
     |--------------------------------|---------------------------------------------------------------|-----------|---------------------|
-    | Azure PaaS-gegevens opslag       | Azure Cosmos DB                                               | Yes       | -                   |
+    | Azure PaaS-gegevens opslag       | Azure Cosmos DB                                               | Ja       | -                   |
     |                                | Azure Data Explorer                                           | -         | -                   |
     |                                | Azure Data Lake gen1                                          | Yes       | -                   |
     |                                | Azure Database for MariaDB, MySQL, PostgreSQL               | Yes       | -                   |
     |                                | Azure File Storage                                            | Yes       | -                   |
     |                                | Azure Storage (blog, ADLS Gen2)                             | Yes       | Ja (alleen MSI-verificatie) |
     |                                | Azure SQL DB, SQL DW (Synapse Analytics), SQL ml          | Yes       | -                   |
-    |                                | Azure Key Vault (voor het ophalen van geheimen/connection string) | Ja       | Ja                 |
+    |                                | Azure Key Vault (voor het ophalen van geheimen/connection string) | Ja       | Yes                 |
     | Andere PaaS/SaaS-gegevens archieven | AWS S3, Sales Force, Google Cloud Storage, enzovoort.              | Yes       | -                   |
     | Azure-laaS                     | SQL Server, Oracle, etc.                                  | Yes       | -                   |
     | On-premises laaS              | SQL Server, Oracle, etc.                                  | Ja       | -                   |    

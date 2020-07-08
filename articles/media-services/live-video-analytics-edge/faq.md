@@ -4,10 +4,9 @@ description: In dit onderwerp vindt u antwoorden op live video Analytics op IoT 
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 0a6c1c0f26116227454fa0968264644ea7a43178
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261322"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Veelgestelde vragen (FAQ)
@@ -18,7 +17,7 @@ In dit onderwerp vindt u antwoorden op live video Analytics op IoT Edge Veelgest
 
 Wat zijn de systeem variabelen die kunnen worden gebruikt in de definitie van de grafiek topologie?
 
-|Variabele   |Beschrijving|
+|Variabele   |Description|
 |---|---|
 |[System. DateTime](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/linq/system-datetime-methods)|Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum en tijd van de dag.|
 |System. GraphTopologyName   |Vertegenwoordigt een media grafiek topologie, bevat de blauw druk van een grafiek.|
@@ -31,17 +30,17 @@ Kan ik de module media Edge implementeren op een Windows 10-apparaat?
 
 ## <a name="capture-from-ip-camera-and-rtsp-settings"></a>Vastleggen van IP-camera en RTSP-instellingen
 
-* Moet ik een speciale SDK op mijn apparaat gebruiken om in een video stroom te verzenden?
+* Moet ik een speciale SDK op mijn apparaat gebruiken om een videostream te verzenden?
     * Nee. Live video Analytics op IoT Edge ondersteunt het vastleggen van media met het RTSP video streaming protocol (dat wordt ondersteund op de meeste IP-camera's).
 * Kan ik media pushen naar live video Analytics op IoT Edge met behulp van RTMP of Smooth (zoals een Media Services live-evenement)?
     * Nee. LVA biedt alleen ondersteuning voor RTSP voor het vastleggen van video van IP-camera's.
     * Elke camera die RTSP-streaming via TCP/HTTP ondersteunt, zou moeten werken. 
-* Kan ik de RTSP-bron-URL op een grafiek exemplaar opnieuw instellen of bijwerken?
+* Kan ik de RTSP-bron-URL in een grafiekexemplaar opnieuw instellen of bijwerken?
     * Ja, wanneer het exemplaar van de grafiek de status inactief heeft.  
 * Is er een RTSP-Simulator beschikbaar voor gebruik tijdens het testen en ontwikkelen?
-    * Ja. Er is een [RTSP Simulator](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) Edge-module beschikbaar voor gebruik in de Quick Start en zelf studies ter ondersteuning van het leer proces. Deze module wordt geleverd als beste werk en is mogelijk niet altijd beschikbaar. Het wordt ten zeerste aangeraden deze niet langer dan een paar uur te gebruiken. Voordat u plannen maakt voor een productie-implementatie, moet u investeren in tests met uw werkelijke RTSP-bron.
-* Biedt u ondersteuning voor ONVIF detectie van IP-camera's aan de rand?
-    * Nee, er is geen ondersteuning voor ONVIF detectie van apparaten aan de rand.
+    * Ja. Er is een [RTSP Simulator](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) Edge-module beschikbaar voor gebruik in de Quick Start en zelf studies ter ondersteuning van het leer proces. Deze module wordt geleverd als best-effort en is mogelijk niet altijd beschikbaar. Het wordt ten zeerste aangeraden deze niet langer dan een paar uur te gebruiken. Voordat u plannen maakt voor een productie-implementatie, moet u investeren in tests met uw werkelijke RTSP-bron.
+* Bieden jullie ondersteuning voor ONVIF-detectie van IP-camera's aan de rand?
+    * Nee, er is geen ondersteuning voor ONVIF-detectie van apparaten aan de rand.
 
 ## <a name="streaming-and-playback"></a>Streaming en afspelen
 
@@ -54,9 +53,9 @@ Kan ik de module media Edge implementeren op een Windows 10-apparaat?
     De aanbevolen spelers voor testen zijn onder andere:
 
     * [Azure Media Player](../latest/use-azure-media-player.md)
-    * [HLS. js](https://hls-js.netlify.app/demo/)
-    * [Video. js](https://videojs.com/)
-    * [Streepje. js](https://github.com/Dash-Industry-Forum/dash.js/wiki)
+    * [HLS.js](https://hls-js.netlify.app/demo/)
+    * [Video.js](https://videojs.com/)
+    * [Dash.js](https://github.com/Dash-Industry-Forum/dash.js/wiki)
     * [Schuda-speler](https://github.com/google/shaka-player)
     * [ExoPlayer](https://github.com/google/ExoPlayer)
     * [Apple native HTTP Live Streaming](https://developer.apple.com/streaming/)
@@ -87,4 +86,4 @@ Zie het artikel over [bewaking en logboek registratie](monitoring-logging.md) vo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Snelstartgids: aan de slag-live video Analytics op IoT Edge](get-started-detect-motion-emit-events-quickstart.md)
+[Quickstart: Over Live Video Analytics in IoT Edge](get-started-detect-motion-emit-events-quickstart.md)

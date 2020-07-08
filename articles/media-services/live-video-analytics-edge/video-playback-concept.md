@@ -4,19 +4,18 @@ description: Tijdelijke aanduiding
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 1fc65a00b2aa1e82c5585583ee9e0ccb97e5168f
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84260930"
 ---
 # <a name="video-playback"></a>Video afspelen 
 
-## <a name="suggested-pre-reading"></a>Aanbevolen voor lezen 
+## <a name="suggested-pre-reading"></a>Aanbevolen om te lezen 
 
-* [Overzicht van live video-analyses op IoT Edge](overview.md)
-* [Live video-analyses op IoT Edge terminologie](terminology.md)
-* [Concept van media grafiek](media-graph-concept.md)
+* [Overzicht van Live Video Analytics in IoT Edge](overview.md)
+* [Terminologie van Live Video Analytics in IoT Edge](terminology.md)
+* [Mediagrafiekconcepten](media-graph-concept.md)
 
 ## <a name="overview"></a>Overzicht  
 
@@ -36,7 +35,7 @@ Azure Media Services biedt u verschillende methoden om uw video-streams te bevei
 
 Als u de beveiliging van inhoud wilt waarborgen, kunt u een [streaming-beleid](../latest/streaming-policy-concept.md) definiëren en maken in uw media service-account en dit gebruiken voor het streamen van alle assets (ervan uitgaande dat alle streams dezelfde vereisten voor beveiliging hebben). U kunt ook een van de vooraf gedefinieerde beleids regels (zoals Predefined_ClearStreamingOnly) gebruiken.
 
-## <a name="streaming-locator"></a>Streaming-Locator  
+## <a name="streaming-locator"></a>Streaming-locator  
 
 Zodra u een streaming-eind punt hebt gestart in uw media service-account en het streaming-beleid dat u hebt gedefinieerd, kunt u door gaan met het streamen van geregistreerde media vanuit een Asset via HLS of streepje-protocollen. Webspelers en mobiele apps hebben een URL nodig die verwijst naar die HLS of STREEPJES stroom. U kunt deze URL maken met behulp van de [streaming-Locator](../latest/streaming-locators-concept.md). Zoals besproken in dat artikel, en wordt weer gegeven in [een streaming-Locator maken en](../latest/create-streaming-locator-build-url.md) voor beeld van build-url's, wordt de streaming-URL samengesteld uit het streaming-eind punt, het streaming-beleid en de streaming-Locator.
 

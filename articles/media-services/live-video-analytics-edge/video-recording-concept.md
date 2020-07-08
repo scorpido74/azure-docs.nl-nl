@@ -4,10 +4,9 @@ description: In de context van een video beheersysteem voor CCTV-camera's verwij
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: c03472f577e67d5b2705a2ebe3f53e85e0849819
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84260944"
 ---
 # <a name="video-recording"></a>Video-opname
@@ -20,7 +19,7 @@ Continue video-opname (CVR) verwijst naar het proces van het continu vastleggen 
 
 ## <a name="event-based-video-recording"></a>Video-opname op basis van gebeurtenissen  
 
-Video-opname op basis van gebeurtenissen (EVR) verwijst naar het proces van het opnemen van video die wordt geactiveerd door een gebeurtenis. De betrokken gebeurtenis kan afkomstig zijn als gevolg van het verwerken van het video signaal zelf of kan afkomstig zijn uit een onafhankelijke bron (bijvoorbeeld van een deur sensor). Video-opname op basis van gebeurtenissen (EVR) kan leiden tot besparing van opslag, maar er zijn aanvullende onderdelen vereist die de gebeurtenissen genereren en de video-opname (volgens een vooraf gedefinieerd beleid) activeren. Met andere woorden, EVR moet extra beslissingen nemen over de gebeurtenissen die video-opnamen moeten activeren en het beleid dat is gekoppeld aan de video-opname (ook wel het registratie beleid genoemd). Een voor beeld van een beleid kan er ongeveer als volgt uitzien: Noteer de video gedurende 2 minuten, te beginnen bij 30 seconden vóór de tijd van de gebeurtenis. De betreffende gebeurtenissen kunnen afkomstig zijn als gevolg van video verwerking op de camera zelf. Een voor beeld: verschillende camera's ondersteunen het genereren van een signaal gebeurtenis voor Motion-detectie wanneer er bewegingen worden gedetecteerd binnen een vooraf geconfigureerde zone van belang in de View Port van de camera. De gebeurtenissen kunnen ook worden gegenereerd door de video te verwerken op een ander apparaat dat de video van de camera vastlegt en analyseert met behulp van eenvoudige beeldverwerkings technieken of geavanceerde machine learning modellen. 
+Video-opname op basis van gebeurtenissen (EVR) verwijst naar het proces van het opnemen van video geactiveerd door een gebeurtenis. De betrokken gebeurtenis kan afkomstig zijn als gevolg van het verwerken van het video signaal zelf of kan afkomstig zijn uit een onafhankelijke bron (bijvoorbeeld van een deur sensor). Video-opname op basis van gebeurtenissen (EVR) kan leiden tot besparing van opslag, maar er zijn aanvullende onderdelen vereist die de gebeurtenissen genereren en de video-opname (volgens een vooraf gedefinieerd beleid) activeren. Met andere woorden, EVR moet extra beslissingen nemen over de gebeurtenissen die video-opnamen moeten activeren en het beleid dat is gekoppeld aan de video-opname (ook wel het registratie beleid genoemd). Een voor beeld van een beleid kan er ongeveer als volgt uitzien: Noteer de video gedurende 2 minuten, te beginnen bij 30 seconden vóór de tijd van de gebeurtenis. De betreffende gebeurtenissen kunnen afkomstig zijn als gevolg van video verwerking op de camera zelf. Een voor beeld: verschillende camera's ondersteunen het genereren van een signaal gebeurtenis voor Motion-detectie wanneer er bewegingen worden gedetecteerd binnen een vooraf geconfigureerde zone van belang in de View Port van de camera. De gebeurtenissen kunnen ook worden gegenereerd door de video te verwerken op een ander apparaat dat de video van de camera vastlegt en analyseert met behulp van eenvoudige beeldverwerkings technieken of geavanceerde machine learning modellen. 
 
 ## <a name="choosing-recording-modes"></a>Opname modi kiezen  
 
@@ -32,6 +31,6 @@ Het registratie beleid verwijst naar de beleids regels die de begin-en eind tijd
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Detectie van bewegingen, video clips opnemen in Azure Media Services](detect-motion-record-video-clips-media-services-quickstart.md)
+* [Beweging detecteren, videofragmenten opnemen in Azure Media Services](detect-motion-record-video-clips-media-services-quickstart.md)
 * [Beweging detecteren, video clips opnemen naar edge-apparaten](detect-motion-record-video-clips-edge-devices-quickstart.md)
 

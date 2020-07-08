@@ -13,16 +13,15 @@ ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 12deb51cb2c0efc1bef77a3ff2c8d5150ba13cde
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84196110"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Copy Activity performance and tuning guide (Gids voor prestaties en configuratie van Activiteit kopiëren)
 
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-copy-activity-performance.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](data-factory-copy-activity-performance.md)
 > * [Versie 2 (huidige versie)](../copy-activity-performance.md)
 
 > [!NOTE]
@@ -36,7 +35,7 @@ Azure biedt een reeks hoogwaardige oplossingen voor gegevens opslag en Data Ware
 * Gegevens laden in **Azure Blob-opslag** op **1,0 Gbps**
 * Gegevens laden in **Azure data Lake Store** op **1,0 Gbps**
 
-In dit artikel wordt beschreven:
+In dit artikel wordt het volgende beschreven:
 
 * [Prestatie referentie nummers](#performance-reference) voor ondersteunde bron-en Sink-gegevens opslag om u te helpen bij het plannen van uw project.
 * Functies waarmee de Kopieer doorvoer kan worden verhoogd in verschillende scenario's, waaronder [gegevens verplaatsings eenheden](#cloud-data-movement-units)voor de Cloud, [parallelle kopie](#parallel-copy)en [gefaseerde kopie](#staged-copy);
@@ -136,7 +135,7 @@ U kunt de eigenschap **parallelCopies** gebruiken om aan te geven welke parallel
 
 Voor elke uitvoering van de Kopieer activiteit bepaalt Data Factory het aantal parallelle kopieën dat moet worden gebruikt voor het kopiëren van gegevens uit de brongegevens opslag en naar het doel gegevens archief. Het standaard aantal parallelle kopieën dat wordt gebruikt, is afhankelijk van het type bron en Sink dat u gebruikt.
 
-| Bron en Sink | Standaard aantal parallelle kopieën bepaald door service |
+| Bron en sink | Standaard aantal parallelle kopieën bepaald door service |
 | --- | --- |
 | Gegevens kopiëren tussen archieven op basis van bestanden (Blob Storage; Data Lake Store; Amazon S3; een on-premises bestands systeem; een on-premises HDFS) |Tussen 1 en 32. Is afhankelijk van de grootte van de bestanden en het aantal DMUs (Cloud data units) dat wordt gebruikt voor het kopiëren van gegevens tussen twee gegevens archieven in de Cloud of de fysieke configuratie van de gateway computer die wordt gebruikt voor een hybride kopie (om gegevens naar of van een on-premises gegevens opslag te kopiëren). |
 | Gegevens uit **een brongegevens archief kopiëren naar Azure-tabel opslag** |4 |
@@ -262,7 +261,7 @@ U wordt aangeraden deze stappen uit te voeren om de prestaties van uw Data Facto
      * [Eenheden voor gegevens verplaatsing in de Cloud](#cloud-data-movement-units)
      * [Gefaseerde kopie](#staged-copy)
      * [Schaal baarheid Data Management Gateway](data-factory-data-management-gateway-high-availability-scalability.md)
-   * [Gegevensbeheergateway](#considerations-for-data-management-gateway)
+   * [Data Management Gateway](#considerations-for-data-management-gateway)
    * [Bron](#considerations-for-the-source)
    * [Sink](#considerations-for-the-sink)
    * [Serialisatie en deserialisatie](#considerations-for-serialization-and-deserialization)
@@ -413,7 +412,7 @@ In dit geval kan bzip2 gegevens compressie de volledige pijp lijn vertragen. Als
 
 ![Scenario 3](./media/data-factory-copy-activity-performance/scenario-3.png)
 
-## <a name="reference"></a>Naslaginformatie
+## <a name="reference"></a>Verwijzing
 Hier volgen de prestaties en het afstemmen van verwijzingen voor een aantal ondersteunde gegevens archieven:
 
 * Azure Blob-opslag: [schaal baarheid en prestatie doelen voor Blob Storage](../../storage/blobs/scalability-targets.md) en de [controle lijst voor prestaties en schaal baarheid voor Blob Storage](../../storage/blobs/storage-performance-checklist.md).

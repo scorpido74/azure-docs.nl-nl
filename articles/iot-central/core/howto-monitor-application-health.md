@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 664819b209aeb09093ce8711456b86ff4d3e8949
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84249576"
 ---
 # <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>De algemene status van de apparaten die zijn verbonden met een IoT Central-toepassing bewaken
@@ -43,7 +42,7 @@ Toegang tot metrische gegevens in het Azure Portal wordt beheerd door [Azure Rol
 
 De volgende tabel beschrijft de metrische gegevens die momenteel beschikbaar zijn voor IoT Central:
 
-| Gegevens | Weergave naam voor metrische gegevens | Eenheid | Aggregatietype | Beschrijving |
+| Gegevens | Weergave naam voor metrische gegevens | Eenheid | Type aggregatie | Description |
 |--------|---------------------|------|------------------|-------------|
 | connectedDeviceCount         | Totaal aantal verbonden apparaten                              | Count  | Totaal             | Aantal apparaten dat is verbonden met IoT Central                               |
 | C2D. Property. Read. geslaagd    | Geslaagde apparaat-eigenschap leest van IoT Central    | Count  | Totaal             | Het aantal geslaagde Lees bewerkingen van eigenschappen dat is gestart vanuit IoT Central    |

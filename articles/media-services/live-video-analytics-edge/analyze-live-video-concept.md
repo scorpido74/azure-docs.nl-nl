@@ -4,17 +4,16 @@ description: Een media grafiek kan worden gebruikt om analyse alleen uit te pakk
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 29e00b9c04a652771ca150e2a45e980d20f8bc1f
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84260937"
 ---
 # <a name="analyzing-live-video-without-any-recording"></a>Live video analyseren zonder opname
 
-## <a name="suggested-pre-reading"></a>Aanbevolen voor lezen 
+## <a name="suggested-pre-reading"></a>Aanbevolen om te lezen 
 
-* [Concept van media grafiek](media-graph-concept.md)
+* [Mediagrafiekconcepten](media-graph-concept.md)
 * [Video-opname op basis van gebeurtenissen](event-based-video-recording-concept.md)
 
 ## <a name="overview"></a>Overzicht  
@@ -25,7 +24,7 @@ U kunt een media grafiek gebruiken om live video te analyseren zonder delen van 
 
 De media grafiek die hieronder wordt weer gegeven, bestaat uit een [RTSP-bron](media-graph-concept.md#rtsp-source) knooppunt, een [bewegings detectie processor](media-graph-concept.md#motion-detection-processor) knooppunt en een [IOT hub Message Sink](media-graph-concept.md#iot-hub-message-sink) -knoop punt. De JSON-weer gave van de grafiek topologie van een dergelijke media grafiek vindt u [hier](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-detection/topology.json). Met deze grafiek kunt u bewegingen in de inkomende live video stream detecteren en de bewegings gebeurtenissen door sturen naar andere apps en services via het knoop punt IoT Hub Message sink. De externe apps of services kunnen een waarschuwing activeren of een melding naar het juiste personeel sturen.
 
-![Live video analyse op basis van bewegings detectie](./media/analyze-live-video/motion-detection.png)
+![Live Video Analytics op basis van bewegingsdetectie](./media/analyze-live-video/motion-detection.png)
 
 ### <a name="analyzing-video-using-a-custom-vision-model"></a>Video analyseren met behulp van een aangepast gezichts model 
 

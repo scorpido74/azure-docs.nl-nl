@@ -10,10 +10,9 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
 ms.openlocfilehash: c2f63abeb9f935236b4c35decb278eb86e0e2a82
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84233301"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
@@ -59,11 +58,11 @@ Het gehele getal dat de breedte van de Bucket in combi natie met het argument *d
 Een expressie die kan worden omgezet in een van de volgende waarden:
 
 + **vallen**
-+ **datetime**
-+ **date time offset**
++ **datum/tijd**
++ **datetimeoffset**
 + **datetime2**
 + **smalldatetime**
-+ **tegelijk**
++ **time**
 
 Voor *datum* `DATE_BUCKET` accepteert een kolom expressie, expressie of door de gebruiker gedefinieerde variabele als deze worden omgezet naar een van de hierboven genoemde gegevens typen.
 
@@ -269,6 +268,6 @@ order by DateBucket
 GO  
 ``` 
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 [&#40;Transact-SQL-&#41;CASTen en converteren](/sql/t-sql/functions/cast-and-convert-transact-sql/)

@@ -4,17 +4,16 @@ description: Continue video-opname (CVR) verwijst naar het proces van het contin
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 9a785125d4cfb2324224f4676e1d429342ec325c
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261245"
 ---
 # <a name="continuous-video-recording"></a>Continue video-opname  
 
-## <a name="suggested-pre-reading"></a>Aanbevolen voor lezen  
+## <a name="suggested-pre-reading"></a>Aanbevolen om te lezen  
 
-* [Concept van media grafiek](media-graph-concept.md)
+* [Mediagrafiekconcepten](media-graph-concept.md)
 * [Concept voor het opnemen van video](video-recording-concept.md)
 
 ## <a name="overview"></a>Overzicht
@@ -52,7 +51,7 @@ De eigenschap segmentLength zorgt ervoor dat de Edge-module Maxi maal eenmaal pe
 >Raadpleeg [Dit](playback-recordings-how-to.md) artikel voor het effect dat segmentLength op het afspelen heeft.
 
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Video-opname op basis van gebeurtenissen](event-based-video-recording-concept.md)
 * [Afspelen van opgenomen inhoud](video-playback-concept.md)

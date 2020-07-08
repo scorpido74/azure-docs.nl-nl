@@ -13,16 +13,15 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: fe9a50b5557e6165835abf1df67f7486c260c1c5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84195927"
 ---
 # <a name="move-data-to-and-from-sql-server-using-azure-data-factory"></a>Gegevens verplaatsen van en naar SQL Server met behulp van Azure Data Factory
 
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-sqlserver-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](data-factory-sqlserver-connector.md)
 > * [Versie 2 (huidige versie)](../connector-sql-server.md)
 
 > [!NOTE]
@@ -402,7 +401,7 @@ In het voor beeld worden elk uur gegevens van een tijd reeks gekopieerd van een 
   }
 }
 ```
-**Invoer gegevensset voor Azure Blob**
+**Azure Blob-invoergegevensset**
 
 Gegevens worden elk uur uit een nieuwe BLOB opgehaald (frequentie: uur, interval: 1). Het mappad en de bestands naam voor de BLOB worden dynamisch geëvalueerd op basis van de begin tijd van het segment dat wordt verwerkt. Het mappad gebruikt het gedeelte Year, month en Day van de begin tijd en de bestands naam maakt gebruik van het uur gedeelte van de begin tijd. met de instelling ' Extern ': ' waar ' wordt de Data Factory-service informeert dat de gegevensset extern is voor de data factory en niet wordt geproduceerd door een activiteit in de data factory.
 
@@ -655,7 +654,7 @@ De toewijzing is hetzelfde als de SQL Server gegevens type toewijzing voor ADO.N
 | --- | --- |
 | bigint |Int64 |
 | binair |Byte [] |
-| bit |Boolean |
+| bit |Boolean-waarde |
 | char |Teken reeks, char [] |
 | date |DateTime |
 | Datum/tijd |DateTime |
@@ -663,15 +662,15 @@ De toewijzing is hetzelfde als de SQL Server gegevens type toewijzing voor ADO.N
 | Date time offset |Date time offset |
 | Decimal |Decimal |
 | FILESTREAM-kenmerk (varbinary (max)) |Byte [] |
-| Float |Double |
+| Float |Dubbel |
 | image |Byte [] |
 | int |Int32 |
-| financieel |Decimal |
+| money |Decimal |
 | nchar |Teken reeks, char [] |
 | ntext |Teken reeks, char [] |
 | numeriek |Decimal |
 | nvarchar |Teken reeks, char [] |
-| werkelijk |Enkel |
+| werkelijk |Enkelvoudig |
 | rowversion |Byte [] |
 | smalldatetime |DateTime |
 | smallint |Int16 |

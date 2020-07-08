@@ -4,10 +4,9 @@ description: Beschrijft de beleids toewijzings definitie die door Azure Policy w
 ms.date: 04/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: c9f400aa72508822f8fff2fe41fb17ce98339737
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84205038"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-toewijzingsstructuur
@@ -100,5 +99,5 @@ In dit voor beeld zijn de para meters die eerder zijn gedefinieerd in de beleids
 - Meer informatie over de structuur van de [beleids definitie](./definition-structure.md).
 - Meer informatie over het [programmatisch maken van beleids regels](../how-to/programmatically-create.md).
 - Meer informatie over het [ophalen van compatibiliteits gegevens](../how-to/get-compliance-data.md).
-- Meer informatie over het [oplossen van niet-compatibele resources](../how-to/remediate-resources.md).
+- Ontdek hoe u [niet-compatibele resources kunt herstellen](../how-to/remediate-resources.md).
 - Bekijk wat een beheer groep is met [het organiseren van uw resources met Azure-beheer groepen](../../management-groups/overview.md).

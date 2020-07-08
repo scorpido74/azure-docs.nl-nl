@@ -4,10 +4,9 @@ description: Hierin wordt beschreven hoe u back-ups van virtuele Azure-machines 
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 4b869b24392fa597f752992fb65de46785117618
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84234701"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Back-ups van virtuele Azure-machines maken en herstellen met Power shell
@@ -489,7 +488,7 @@ Geef een extra para meter **TargetResourceGroupName** op om de RG op te geven wa
 $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID
 ```
 
-Het bestand **VMConfig. json** wordt hersteld naar het opslag account en de beheerde schijven worden teruggezet naar de opgegeven doel-RG.
+Het **VMConfig.JS** bestand wordt teruggezet naar het opslag account en de beheerde schijven worden teruggezet naar de opgegeven doel-RG.
 
 De uitvoer lijkt op die in het volgende voorbeeld:
 

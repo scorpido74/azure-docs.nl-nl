@@ -13,10 +13,9 @@ ms.date: 5/28/2020
 ms.author: inhenkel
 ms.custom: references_regions
 ms.openlocfilehash: cefd366e29fe1c6f68ec38816247f78bb53cd6e6
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84196246"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Clouds en regio's waarin Azure Media Services v3 bestaat
@@ -110,7 +109,7 @@ De volgende eind punten zijn belang rijk om te weten wanneer u verbinding maakt 
 | Verificatie | `https://login.chinacloudapi.cn/` |
 | Token doelgroep |  `https://management.core.chinacloudapi.cn/` |
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/)
 * [Geografische gebieden in Azure](https://azure.microsoft.com/global-infrastructure/geographies/)

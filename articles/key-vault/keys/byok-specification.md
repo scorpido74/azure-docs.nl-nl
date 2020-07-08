@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
 ms.openlocfilehash: 80796d852c07952b7100c6dd7802bc9279f3218c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84198998"
 ---
-# <a name="bring-your-own-key-specification"></a>Uw eigen sleutel specificatie meenemen
+# <a name="bring-your-own-key-specification"></a>BYOK-specificatie (Bring Your Own Key)
 
 In dit document worden de specificaties beschreven voor het importeren van met HSM beveiligde sleutels van on-premises Hsm's van klanten in Key Vault.
 
@@ -31,7 +30,7 @@ Hier volgen de vereisten:
 
 ## <a name="terminology"></a>Terminologie
 
-|Sleutel naam|Sleutel type|Oorsprong|Beschrijving|
+|Sleutel naam|Sleutel type|Oorsprong|Description|
 |---|---|---|---|
 |Sleutel uitwisselings sleutel (KEK)|RSA|Azure Key Vault HSM|Een HSM-sleutel paar met back-ups dat is gegenereerd in Azure Key Vault
 Toets inpakken|AES|Leverancier HSM|Een [kortstondig] AES-sleutel gegenereerd door HSM on-premises

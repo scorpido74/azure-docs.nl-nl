@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
 ms.openlocfilehash: 87e3d75d925968b6521324f5b776cf8df1f6af11
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84247796"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Virtuele Azure-machines herstellen met behulp van REST API
@@ -31,7 +30,7 @@ De *Get* -URI heeft alle vereiste para meters. Er is geen aanvullende aanvraag t
 
 ### <a name="responses"></a>Antwoorden
 
-|Naam  |Type  |Beschrijving  |
+|Naam  |Type  |Description  |
 |---------|---------|---------|
 |200 OK     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
@@ -117,7 +116,7 @@ Het herstel punt wordt aangeduid met het `{name}` veld in het bovenstaande antwo
 
 ## <a name="restore-disks"></a>Schijven herstellen
 
-Als het maken van een virtuele machine moet worden aangepast op basis van de back-upgegevens, kan de ene schijf alleen herstellen naar een gekozen opslag account en een virtuele machine maken op basis van de vereisten. Het opslag account moet zich in dezelfde regio bevinden als de Recovery Services-kluis en mag niet zone redundant zijn. De schijven en de configuratie van de back-up van de virtuele machine (' vmconfig. json ') worden opgeslagen in het opgegeven opslag account.
+Als het maken van een virtuele machine moet worden aangepast op basis van de back-upgegevens, kan de ene schijf alleen herstellen naar een gekozen opslag account en een virtuele machine maken op basis van de vereisten. Het opslag account moet zich in dezelfde regio bevinden als de Recovery Services-kluis en mag niet zone redundant zijn. De schijven en de configuratie van de back-up van de virtuele machine (vmconfig.jsop) worden opgeslagen in het opgegeven opslag account.
 
 Het activeren van herstel schijven is een *post* -aanvraag. Raadpleeg de [rest API trigger herstellen](https://docs.microsoft.com/rest/api/backup/restores/trigger)voor meer informatie over de bewerking schijven herstellen.
 
@@ -131,7 +130,7 @@ De `{containerName}` en `{protectedItemName}` zijn [hier](backup-azure-arm-usere
 
 Als u een schijf herstel wilt activeren vanuit een back-up van een Azure-VM, volgt u de onderdelen van de hoofd tekst van de aanvraag.
 
-|Naam  |Type  |Beschrijving  |
+|Naam  |Type  |Description  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -165,7 +164,7 @@ Het activeren van een herstel schijf is een [asynchrone bewerking](https://docs.
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 200 (OK) wanneer deze bewerking is voltooid.
 
-|Naam  |Type  |Beschrijving  |
+|Naam  |Type  |Description  |
 |---------|---------|---------|
 |202 geaccepteerd     |         |     Geaccepteerd    |
 
@@ -229,7 +228,7 @@ X-Powered-By: ASP.NET
 
 Aangezien de back-uptaak een langlopende bewerking is, moet deze worden gevolgd zoals uitgelegd in de [taken bewaken met rest API document](backup-azure-arm-userestapi-managejobs.md#tracking-the-job).
 
-Zodra de langlopende taak is voltooid, zijn de schijven en de configuratie van de back-up van de virtuele machine (' VMConfig. json ') aanwezig in het opgegeven opslag account.
+Zodra de langlopende taak is voltooid, zijn de schijven en de configuratie van de back-up van de virtuele machine (VMConfig.jsop) aanwezig in het opgegeven opslag account.
 
 ## <a name="restore-as-another-virtual-machine"></a>Herstellen als een andere virtuele machine
 

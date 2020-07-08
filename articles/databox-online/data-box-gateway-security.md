@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: 2711160534270f38845ab7b48234f4a441c236b4
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84195877"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Beveiligings-en gegevens beveiliging Azure Data Box Gateway
@@ -85,8 +84,8 @@ In deze sectie worden de Data Box Gateway beveiligings functies beschreven die i
 
 Als u de virtuele schijven op uw Data Box Gateway virtuele machine wilt beveiligen, wordt u aangeraden BitLocker in te scha kelen. BitLocker is standaard niet ingeschakeld. Zie voor meer informatie:
 
-- [Versleutelingsinstellingen voor ondersteuning in Hyper-V-beheer](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
-- [BitLocker-ondersteuning in een virtuele machine](https://kb.vmware.com/s/article/2036142)
+- [Instellingen voor ondersteuning van versleuteling in Hyper-V Manager](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+- [BitLocker-ondersteuning op een virtuele machine](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="manage-personal-information"></a>Persoonlijke gegevens beheren
 

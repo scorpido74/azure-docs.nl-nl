@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: rajanaki
 ms.openlocfilehash: ce3bfd85656972cb93b74a85a1bd6d469837ce22
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84236304"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Netwerkconfiguraties van de beoogde Azure-VM aanpassen
@@ -77,7 +76,7 @@ Openbaar IP-adres:
 - Het abonnement en de regio van het open bare IP-adres en de doel-VM moeten hetzelfde zijn.
 - De open bare IP-SKU van de doel-VM en de SKU van de interne load balancer moeten hetzelfde zijn.
 
-Netwerkbeveiligingsgroep:
+Netwerk beveiligings groep:
 - Het abonnement en de regio van de netwerk beveiligings groep en de doel-VM moeten hetzelfde zijn.
 
 

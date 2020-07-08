@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b45b2294d56de896849dca0f387a4e26b845aa93
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84204188"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Wat is de modus alleen rapport-alleen voor voorwaardelijke toegang?
@@ -38,7 +37,7 @@ De modus alleen rapport is een nieuwe beleids status voor voorwaardelijk toegang
 
 Wanneer een beleid in de modus alleen rapport wordt geëvalueerd voor een bepaalde aanmelding, zijn er vier nieuwe mogelijke resultaat waarden:
 
-| Resultaat | Beschrijving |
+| Resultaat | Description |
 | --- | --- |
 | Alleen rapport: geslaagd | Alle geconfigureerde beleids voorwaarden, vereiste besturings elementen voor niet-interactieve toekenning en er zijn sessie besturings elementen voldaan. Voor een multi-factor Authentication-vereiste wordt bijvoorbeeld voldaan aan een MFA-claim die al aanwezig is in het token of aan een compatibel apparaatbeleid wordt voldaan door een controle van een apparaat op een compatibel apparaat uit te voeren. |
 | Alleen rapport: fout | Aan alle geconfigureerde beleids voorwaarden is voldaan, maar niet aan alle vereiste besturings elementen voor niet-interactieve toekenning of sessie besturings elementen is voldaan. Een beleid is bijvoorbeeld van toepassing op een gebruiker waar een blok besturings element is geconfigureerd of een apparaat voldoet niet aan het beleid voor naleving van het apparaat. |

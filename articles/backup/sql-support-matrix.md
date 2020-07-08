@@ -4,10 +4,9 @@ description: Hierin wordt een overzicht gegeven van de ondersteunings instelling
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.openlocfilehash: f9594b9157f84a0536ffd4b62f792fd86fb1c243
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84234249"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Ondersteunings matrix voor SQL Server back-up in virtuele machines van Azure
@@ -16,10 +15,10 @@ U kunt Azure Backup gebruiken om een back-up te maken van SQL Server-data bases 
 
 ## <a name="scenario-support"></a>Scenario-ondersteuning
 
-**Ondersteuning** | **Nadere**
+**Ondersteuning** | **Details**
 --- | ---
 **Ondersteunde implementaties** | SQL Marketplace Azure-VM's en niet-Marketplace-VM's (SQL Server handmatig geïnstalleerd) worden ondersteund.
-**Ondersteunde regio's** | Australië-Zuid-Oost (ASE), Oost-Australië (AE), Australië-centraal (AC), Australië-centraal 2 (AC) <br> Brazilië - zuid (BRS)<br> Canada-centraal (CNC), Canada-oost (CE)<br> Zuid-Azië-oost (zee), Azië-oost (EA) <br> VS-Oost (EUS), VS-Oost 2 (EUS2), VS-West-Centraal (WCUS), VS-West (WUS); VS-West 2 (WUS 2) Noord-Centraal VS (NCUS) centraal VS (CUS) Zuid-Centraal (SCUS) <br> India-centraal (INC), India-Zuid (INS), India-West <br> Japan-Oost (JPE), Japan-West (JPW) <br> Korea-centraal (KRC), Korea-zuid (KRS) <br> Europa-noord (NE), Europa-west <br> UK-zuid (UKS), UK-west (UKW) <br> US Gov-Arizona, US Gov-Virginia, US Gov-Texas, US DoD-centraal, US DoD-oost <br> Duitsland-noord, Duitsland-west-centraal <br> Zwitserland-noord, Zwitserland-west <br> Frankrijk - centraal <br> China-oost, China-oost 2, China-noord, China-noord 2
+**Ondersteunde regio’s** | Australië-Zuid-Oost (ASE), Oost-Australië (AE), Australië-centraal (AC), Australië-centraal 2 (AC) <br> Brazilië - zuid (BRS)<br> Canada-centraal (CNC), Canada-oost (CE)<br> Zuid-Azië-oost (zee), Azië-oost (EA) <br> VS-Oost (EUS), VS-Oost 2 (EUS2), VS-West-Centraal (WCUS), VS-West (WUS); VS-West 2 (WUS 2) Noord-Centraal VS (NCUS) centraal VS (CUS) Zuid-Centraal (SCUS) <br> India-centraal (INC), India-Zuid (INS), India-West <br> Japan-Oost (JPE), Japan-West (JPW) <br> Korea-centraal (KRC), Korea-zuid (KRS) <br> Europa-noord (NE), Europa-west <br> UK-zuid (UKS), UK-west (UKW) <br> US Gov-Arizona, US Gov-Virginia, US Gov-Texas, US DoD-centraal, US DoD-oost <br> Duitsland-noord, Duitsland-west-centraal <br> Zwitserland-noord, Zwitserland-west <br> Frankrijk - centraal <br> China-oost, China-oost 2, China-noord, China-noord 2
 **Ondersteunde besturingssystemen** | Windows Server 2019, Windows Server 2016, Windows Server 2012, Windows Server 2008 R2 SP1 <br/><br/> Linux wordt momenteel niet ondersteund.
 **Ondersteunde SQL Server-versies** | SQL Server 2019, SQL Server 2017 zoals beschreven op de [pagina product levenscyclus zoeken](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 en SPS zoals beschreven op de [pagina product levenscyclus zoeken](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012, SQL Server 2008 R2 SQL Server 2008 <br/><br/> Enterprise, Standard, Web, Developer, Express.
 **Ondersteunde .NET-versies** | .NET Framework 4.5.2 of later geïnstalleerd op de VM
@@ -54,7 +53,7 @@ Afhankelijk van de voor keuren voor back-ups en back-ups (volledig/differentieel
 
 #### <a name="backup-preference-primary"></a>Back-upvoorkeur: primair
 
-**Type back-up** | **Knooppunt**
+**Back-uptype** | **Knooppunt**
 --- | ---
 Volledig | Primair
 Differentiële | Primair
@@ -63,7 +62,7 @@ Alleen-kopiëren is volledig |  Primair
 
 #### <a name="backup-preference-secondary-only"></a>Back-upvoorkeur: alleen secundair
 
-**Type back-up** | **Knooppunt**
+**Back-uptype** | **Knooppunt**
 --- | ---
 Volledig | Primair
 Differentiële | Primair
@@ -72,7 +71,7 @@ Alleen-kopiëren is volledig |  Secundair
 
 #### <a name="backup-preference-secondary"></a>Back-upvoorkeur: secundair
 
-**Type back-up** | **Knooppunt**
+**Back-uptype** | **Knooppunt**
 --- | ---
 Volledig | Primair
 Differentiële | Primair
@@ -81,7 +80,7 @@ Alleen-kopiëren is volledig |  Secundair
 
 #### <a name="no-backup-preference"></a>Geen voorkeurs instelling voor back-up
 
-**Type back-up** | **Knooppunt**
+**Back-uptype** | **Knooppunt**
 --- | ---
 Volledig | Primair
 Differentiële | Primair

@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 8f8f5a2f605f8e8b7109267e5223593eb1e2cfb9
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84264363"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Aanbevolen procedures voor het Azure Maps van Search Service
@@ -77,7 +76,7 @@ U wordt aangeraden de Azure Maps [Zoek actie voor fuzzy](https://docs.microsoft.
 * `XStr` - **Kruis straten of snij punten**: koppelingen of plaatsen waar twee straten INTERSECT.
 
 
-#### <a name="usage-examples"></a>Gebruiks voorbeelden
+#### <a name="usage-examples"></a>Gebruiksvoorbeelden
 
 * `idxSet=POI`-Alleen naar Poi's zoeken. 
 
@@ -411,7 +410,7 @@ U moet de URI coderen voor het afhandelen van speciale tekens in het adres om Cr
 
 Het is raadzaam om teken gegevens te coderen in een URI. In een URI Codeer u alle tekens met behulp van een procent teken ( `%` ) en een hexadecimale waarde van twee tekens die overeenkomt met de tekens UTF-8.
 
-#### <a name="usage-examples"></a>Gebruiks voorbeelden
+#### <a name="usage-examples"></a>Gebruiksvoorbeelden
 
 Beginnen met dit adres:
 

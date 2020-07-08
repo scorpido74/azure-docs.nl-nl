@@ -13,10 +13,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: d27905acc60e953ec5ed92e77d7a352c1c3fec8b
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84196567"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-managed-instance"></a>SQL Server Integration Services-pakketten migreren naar een beheerd exemplaar van Azure SQL
@@ -57,11 +56,11 @@ Hoewel de evaluatie van de bron-SSISDB nog niet is geïntegreerd in de data base
 
     ![Portal-abonnementen weergeven](media/how-to-migrate-ssis-packages-mi/portal-select-subscriptions.png)
 
-2. Selecteer het abonnement waarin u het exemplaar van Azure Database Migration Service wilt maken en selecteer vervolgens **resource providers**.
+2. Selecteer het abonnement waarin u het Azure Database Migration Service-exemplaar wilt maken en selecteer vervolgens **Resourceproviders**.
 
     ![Resourceproviders weergeven](media/how-to-migrate-ssis-packages-mi/portal-select-resource-provider.png)
 
-3. Zoek naar migratie, klik rechts van **micro soft. DataMigration**, selecteer **registreren**.
+3. Zoek naar migratie en selecteer rechts van **Microsoft.DataMigration** de optie **Registreren**.
 
     ![Resourceprovider registreren](media/how-to-migrate-ssis-packages-mi/portal-register-resource-provider.png)
 

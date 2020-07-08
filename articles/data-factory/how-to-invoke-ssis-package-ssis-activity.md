@@ -15,10 +15,9 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 05/25/2020
 ms.openlocfilehash: 0cd50e0ad4121798d6d4fb67cd18c7ae3b3b54ae
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84195413"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Een SSIS-pakket uitvoeren met de activiteit SSIS-pakket uitvoeren in Azure Data Factory
@@ -73,7 +72,7 @@ Voer de volgende stappen uit op het tabblad **Algemeen** van de activiteit SSIS-
 
    1. Schakel het selectie vakje **beveiligde invoer** in om te kiezen of u de invoer van de activiteit voor het uitvoeren van SSIS-pakketten wilt uitsluiten van logboek registratie.
 
-#### <a name="settings-tab"></a>Tabblad instellingen
+#### <a name="settings-tab"></a>Tabblad Instellingen
 
 Voer de volgende stappen uit op het tabblad **instellingen** van de activiteit voor het uitvoeren van SSIS-pakketten.
 
@@ -199,7 +198,7 @@ Als u **pakket archief** als uw pakket locatie selecteert, voert u de volgende s
    
    1. Voor de naam van het **pakket archief**selecteert u een bestaande pakket opslag die is gekoppeld aan uw Azure-SSIS IR.
 
-   1. Geef uw pakket op dat moet worden uitgevoerd door het pad (zonder) op te geven `.dtsx` van het geselecteerde pakket archief in het vak **pakket pad** . Als het geselecteerde pakket archief zich boven op het bestands systeem/Azure Files bevindt, kunt u door **Bladeren door bestand opslag**selecteren en het pad in de indeling van opgeven `<folder name>\<package name>` . U kunt ook nieuwe pakketten importeren in het geselecteerde pakket archief via SQL Server Management Studio (SSMS), vergelijkbaar met de [verouderde SSIS-pakket opslag](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017). Zie [SSIS-pakketten beheren met Azure-SSIS IR-pakket archieven](https://docs.microsoft.com/azure/data-factory/azure-ssis-integration-runtime-package-store)voor meer informatie.
+   1. Geef uw pakket op dat moet worden uitgevoerd door het pad (zonder) op te geven `.dtsx` van het geselecteerde pakket archief in het vak **pakket pad** . Als het geselecteerde pakket archief zich boven op het bestands systeem/Azure Files bevindt, kunt u door **Bladeren door bestand opslag**selecteren en het pad in de indeling van opgeven `<folder name>\<package name>` . U kunt ook nieuwe pakketten importeren in het geselecteerde pakket archief via SQL Server Management Studio (SSMS), vergelijkbaar met de [verouderde SSIS-pakket opslag](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017). Zie [SSIS-pakketten beheren met pakketarchieven van Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/azure-ssis-integration-runtime-package-store) voor meer informatie.
 
    1. Als u uw pakket in een afzonderlijk bestand configureert, moet u een UNC-pad naar uw configuratie bestand opgeven (met `.dtsConfig` ) in het vak **configuratiepad** . U kunt door de configuratie bladeren en deze selecteren door **Bladeren in file storage** te selecteren of het pad hand matig in te voeren. Als u bijvoorbeeld uw configuratie opslaat in Azure Files, is het pad `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig` .
 

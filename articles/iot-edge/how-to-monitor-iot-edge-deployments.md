@@ -10,10 +10,9 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 4ca22c39fcd7b488f527326e4fdeaa56b0485cb9
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84220296"
 ---
 # <a name="monitor-iot-edge-deployments"></a>IoT Edge-implementaties bewaken
@@ -24,7 +23,7 @@ Zowel apparaten als modules hebben vergelijk bare gegevens, zoals connectiviteit
 
 De IoT Hub-service verzamelt gegevens die worden gerapporteerd door apparaat-en module apparaatdubbels en biedt een aantal verschillende statussen die apparaten kunnen hebben. Met de IoT Hub-service worden deze gegevens ingedeeld in vier metrische groepen:
 
-| Type | Beschrijving |
+| Type | Description |
 | --- | ---|
 | Gericht | Toont de IoT Edge apparaten die overeenkomen met de voor waarde voor de implementatie doelstelling. |
 | Toegepast | Geeft de doel IoT Edge apparaten weer die niet zijn gericht op een andere implementatie van een hogere prioriteit. |

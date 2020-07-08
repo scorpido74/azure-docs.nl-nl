@@ -4,10 +4,9 @@ description: Meer informatie over hoe u de functie code die wordt uitgevoerd in 
 ms.date: 4/13/2020
 ms.topic: conceptual
 ms.openlocfilehash: 692e8420bda1e7baa8521dd6caaf5eef183823fb
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84259419"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions beveiligen
@@ -22,7 +21,7 @@ Zie [Azure-beveiligings basislijn voor Azure functions](security-baseline.md)voo
 
 In deze sectie vindt u meer over het configureren en uitvoeren van uw functie-app zo veilig mogelijk. 
 
-### <a name="security-center"></a>Security Center
+### <a name="security-center"></a>Beveiligingscentrum
 
 Security Center integreert met uw functie-app in de portal. Het biedt gratis een snelle evaluatie van mogelijke beveiligings problemen met betrekking tot configuraties. Functie-apps die in een specifiek abonnement worden uitgevoerd, kunnen ook gebruikmaken van de real-time beveiligings functies van Security Center, voor extra kosten. Zie [uw Azure app service Web-apps en Api's beveiligen](../security-center/security-center-app-services.md)voor meer informatie. 
 

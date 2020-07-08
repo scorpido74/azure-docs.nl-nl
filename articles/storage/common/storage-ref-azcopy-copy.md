@@ -9,10 +9,9 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 7f55b22938bd6f18bae1576a0c64e673996d38bf
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84220138"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
@@ -103,7 +102,7 @@ Een enkel bestand downloaden met behulp van een SAS-token:
 
 Een enkel bestand downloaden met behulp van een SAS-token en vervolgens de uitvoer naar een bestand sluizen (alleen blok-blobs):
   
-- azcopy CP "https://[account]. blob. core. Windows. net/[container]/[pad/naar/BLOB]? [SAS] > '/Path/to/file.txt '
+- azcopy CP "https://[account]. blob. core. Windows. net/[container]/[pad/naar/BLOB]? [SAS] >/Path/to/file.txt
 
 Een volledige directory downloaden met behulp van een SAS-token:
   
@@ -197,7 +196,7 @@ Kopieer een subset van buckets met behulp van een Joker teken (*) in de Bucket n
 
 **--exclude-BLOB-type** teken reeks geeft optioneel het type BLOB (BlockBlob/PageBlob/AppendBlob) op dat moet worden uitgesloten bij het kopiëren van blobs uit de container of het account. Het gebruik van deze vlag is niet van toepassing op het kopiëren van gegevens van niet-Azure-service naar service. Meer dan één BLOB moet worden gescheiden door '; '.
 
-**--exclude-** teken reeks van het pad deze paden uitsluiten bij het kopiëren. Deze optie biedt geen ondersteuning voor joker tekens (*). Hiermee wordt het relatieve pad voor voegsel gecontroleerd (bijvoorbeeld: myFolder; myFolder/subDirName/file. PDF). Bij gebruik in combi natie met account-traversal bevatten paden geen container naam.
+**--exclude-** teken reeks van het pad deze paden uitsluiten bij het kopiëren. Deze optie biedt geen ondersteuning voor joker tekens (*). Hiermee wordt het relatieve pad voor voegsel gecontroleerd (bijvoorbeeld: myFolder; myFolder/subDirName/file.pdf). Bij gebruik in combi natie met account-traversal bevatten paden geen container naam.
 
 **--exclude-patroon** teken reeks deze bestanden uitsluiten bij het kopiëren. Deze optie ondersteunt joker tekens (*)
 
@@ -209,7 +208,7 @@ Kopieer een subset van buckets met behulp van een Joker teken (*) in de Bucket n
 
 **--include-kenmerken** teken reeks (alleen Windows) bevatten bestanden waarvan de kenmerken overeenkomen met de kenmerk lijst. Bijvoorbeeld: A; Z N
 
-**--include-** teken reeks bevat alleen deze paden bij het kopiëren. Deze optie biedt geen ondersteuning voor joker tekens (*). Hiermee wordt het relatieve pad voor voegsel gecontroleerd (bijvoorbeeld: myFolder; myFolder/subDirName/file. PDF).
+**--include-** teken reeks bevat alleen deze paden bij het kopiëren. Deze optie biedt geen ondersteuning voor joker tekens (*). Hiermee wordt het relatieve pad voor voegsel gecontroleerd (bijvoorbeeld: myFolder; myFolder/subDirName/file.pdf).
 
 **--include-patroon** teken reeks bevatten alleen deze bestanden bij het kopiëren. Deze optie biedt ondersteuning voor joker tekens (*). Scheid bestanden met behulp van een '; '.
 
@@ -251,6 +250,6 @@ Kopieer een subset van buckets met behulp van een Joker teken (*) in de Bucket n
 
 **--vertrouwd-micro soft-achtervoegsels** teken reeks geeft aanvullende domein achtervoegsels aan waar Azure Active Directory aanmeldings tokens kunnen worden verzonden.  De standaard waarde is *. core.Windows.net;*. core.chinacloudapi.cn; *. core.cloudapi.de;*. core.usgovcloudapi.net '. Alle hier vermelde waarden worden toegevoegd aan de standaard instelling. Voor beveiliging moet u Microsoft Azure domeinen hier alleen plaatsen. Scheid meerdere vermeldingen met een punt komma.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [azcopy](storage-ref-azcopy.md)

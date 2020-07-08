@@ -13,10 +13,9 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 05/25/2020
 ms.openlocfilehash: fa1ab60ae5690bd3782e4c849ca7cb5c29d640c2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84199054"
 ---
 # <a name="manage-packages-with-azure-ssis-integration-runtime-package-store"></a>Pakketten beheren met Azure-SSIS Integration Runtime-pakket archief
@@ -25,8 +24,8 @@ ms.locfileid: "84199054"
 
 Als u & uw SSIS-workloads (on-premises SQL Server Integration Services) naar de Cloud wilt verplaatsen, kunt u Azure-SSIS Integration Runtime (IR) inrichten in Azure Data Factory (ADF). Zie [een Azure-SSIS IR inrichten](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)voor meer informatie. Een Azure-SSIS IR ondersteunt:
 
-- Pakketten die worden geïmplementeerd in SSIS Catalog (SSISDB) die worden gehost door Azure SQL Database Server/beheerd exemplaar (project implementatie model)
-- Het uitvoeren van pakketten die zijn geïmplementeerd in het bestands systeem, Azure Files of SQL Server Data Base (MSDB) gehost door Azure SQL Managed instance (pakket implementatie model)
+- Pakketten die zijn geïmplementeerd in SSIS Catalog (SSISDB) die worden gehost door een server of beheerd exemplaar van Azure SQL Database (projectimplementatiemodel)
+- Pakketten die zijn geïmplementeerd in het bestandssysteem, Azure Files of SQL Server-database (MSDB) die worden gehost door Azure SQL Managed Instance (pakketimplementatiemodel)
 
 Wanneer u pakket implementatie model gebruikt, kunt u kiezen of u uw Azure-SSIS IR wilt inrichten met pakket archieven die een pakket beheer-laag hebben op bestands systeem/Azure Files/MSDB die wordt gehost door Azure SQL Managed instance. Met Azure-SSIS IR-pakket archief kunt u pakketten importeren/exporteren/verwijderen en uitvoeren en de uitvoering van pakketten via SQL Server Management Studio (SSMS) controleren en stoppen, vergelijkbaar met de [verouderde SSIS-pakket opslag](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017). 
 

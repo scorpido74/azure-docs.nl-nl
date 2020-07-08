@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
 ms.openlocfilehash: eadcebdaf4db3dbe6c0a62b8631ff7d76fa50fad
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248223"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Recovery Services kluis configuraties van Azure bijwerken met behulp van REST API
@@ -43,7 +42,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Het geslaagde antwoord voor de GET-bewerking wordt hieronder weer gegeven:
 
-|Naam  |Type  |Beschrijving  |
+|Naam  |Type  |Description  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
@@ -83,10 +82,10 @@ De volgende algemene definities worden gebruikt voor het maken van een aanvraag 
 
 Raadpleeg [de rest API-documentatie](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body) voor meer informatie.
 
-|Name  |Vereist  |Type  |Beschrijving  |
+|Name  |Vereist  |Type  |Description  |
 |---------|---------|---------|---------|
 |eTag     |         |   Tekenreeks      |  Optionele eTag       |
-|location     |  waar       |Tekenreeks         |   Resource locatie      |
+|location     |  true       |Tekenreeks         |   Resourcelocatie      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Eigenschappen van de kluis       |
 |tags     |         | Object        |     Resourcetags    |
 
@@ -107,7 +106,7 @@ Het volgende voor beeld wordt gebruikt om de status van zacht verwijderen bij te
 
 Het geslaagde antwoord voor de PATCH bewerking wordt hieronder weer gegeven:
 
-|Naam  |Type  |Beschrijving  |
+|Naam  |Type  |Description  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 

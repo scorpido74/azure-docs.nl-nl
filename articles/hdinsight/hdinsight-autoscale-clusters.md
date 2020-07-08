@@ -1,5 +1,5 @@
 ---
-title: Automatisch schalen van Azure HDInsight-clusters
+title: Azure HDInsight-clusters automatisch schalen
 description: De functie voor automatisch schalen van Azure HDInsight gebruiken om clusters Apache Hadoop schalen
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,17 +9,16 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
 ms.openlocfilehash: ccd729510341a9232764b1c211aa18c197ad5a37
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248631"
 ---
-# <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatisch schalen van Azure HDInsight-clusters
+# <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight-clusters automatisch schalen
 
 Met de gratis functie voor automatisch schalen van Azure HDInsight kunt u het aantal worker-knoop punten in uw cluster, op basis van eerder ingestelde criteria, verg Roten of verkleinen. U stelt een minimum-en maximum aantal knoop punten in tijdens het maken van het cluster, waarbij u de schaal criteria instelt met behulp van een dag-tijd schema of specifieke prestatie gegevens en het HDInsight-platform de rest.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 
 De functie voor automatisch schalen maakt gebruik van twee soorten voor waarden voor het activeren van schaal gebeurtenissen: drempel waarden voor diverse metrische gegevens voor cluster prestaties (zogenaamde *op belasting gebaseerd schalen*) en activering op basis van tijd (genoemd *op schema gebaseerd*). Schalen op basis van een belasting wijzigt het aantal knoop punten in het cluster, binnen een bereik dat u instelt, om ervoor te zorgen dat het CPU-gebruik optimaal werkt en de uitgevoerde kosten tot een minimum worden beperkt. Schalen op basis van een schema wijzigt het aantal knoop punten in uw cluster op basis van bewerkingen die u koppelt aan specifieke datums en tijden.
 
@@ -39,7 +38,7 @@ Houd rekening met de volgende factoren bij het kiezen van een schaal type:
 
 Automatisch schalen bewaakt het cluster voortdurend en verzamelt de volgende metrische gegevens:
 
-|Metrisch|Beschrijving|
+|Gegevens|Beschrijving|
 |---|---|
 |Totale CPU in behandeling|Het totale aantal kern geheugens dat nodig is om de uitvoering van alle in behandeling zijnde containers te starten.|
 |Totaal geheugen in behandeling|Het totale geheugen (in MB) dat is vereist om de uitvoering van alle in behandeling zijnde containers te starten.|
@@ -66,9 +65,9 @@ Voor schalen, automatisch schalen, wordt een aanvraag voor het verwijderen van e
 ### <a name="cluster-compatibility"></a>Cluster compatibiliteit
 
 > [!Important]
-> De functie voor automatisch schalen van Azure HDInsight is uitgebracht voor algemene Beschik baarheid op 7 november, 2019 voor Spark-en Hadoop-clusters en bevat verbeteringen die niet beschikbaar zijn in de preview-versie van de functie. Als u een Spark-cluster hebt gemaakt vóór november 7, 2019 en u de functie voor automatisch schalen op uw cluster wilt gebruiken, is het aanbevolen pad om een nieuw cluster te maken en automatisch schalen op het nieuwe cluster in te scha kelen.
+> De functie voor automatisch schalen van Azure HDInsight is op 7 november 2019 algemeen beschikbaar gekomen voor Spark- en Hadoop-clusters en bevat verbeteringen die niet beschikbaar zijn in de preview-versie van de functie. Als u vóór 7 november 2019 een Spark-cluster hebt gemaakt en u de functie voor automatisch schalen wilt gebruiken in uw cluster, is het aanbevolen pad om een nieuw cluster te maken en automatisch schalen in te schakelen in het nieuwe cluster.
 >
-> Automatisch schalen voor interactieve Query's (LLAP) en HBase-clusters is nog steeds beschikbaar als preview-versie. Automatisch schalen is alleen beschikbaar voor Spark-, Hadoop-, interactieve query-en HBase-clusters.
+> Automatisch schalen voor LLAP-clusters (Interactive Query) en HBase-clusters is nog steeds in preview. Automatisch schalen is alleen beschikbaar voor clusters van Spark, Hadoop, Interactive Query en HBase.
 
 In de volgende tabel worden de cluster typen en versies beschreven die compatibel zijn met de functie voor automatisch schalen.
 
@@ -225,7 +224,7 @@ De cluster status die in de Azure Portal wordt weer gegeven, kan u helpen bij he
 
 Alle cluster status berichten die u mogelijk ziet, worden beschreven in de onderstaande lijst.
 
-| De clusterstatus | Beschrijving |
+| De clusterstatus | Description |
 |---|---|
 | In uitvoering | Het cluster werkt normaal. Alle vorige activiteiten voor automatisch schalen zijn voltooid. |
 | Bijwerken  | De configuratie van het automatisch schalen van clusters wordt bijgewerkt.  |

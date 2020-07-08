@@ -14,10 +14,9 @@ ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 04706de4b1cc18a4f3146f75442de84340319cef
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84220161"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Video en audio coderen met Media Services
@@ -60,7 +59,7 @@ Wanneer u taken voor het verwerken van uw Video's verzendt, moet u Media Service
 * [Coderen van een HTTPS-URL met .NET](stream-files-dotnet-quickstart.md)
 * [Coderen van een HTTPS-URL met REST](stream-files-tutorial-with-rest.md)
 * [Coderen van een HTTPS-URL met CLI](stream-files-cli-quickstart.md)
-* [Coderen van een HTTPS-URL met behulp van node. js](stream-files-nodejs-quickstart.md)
+* [Coderen van een HTTPS-URL met Node.js](stream-files-nodejs-quickstart.md)
 
 ### <a name="creating-job-input-from-a-local-file"></a>Taak invoer maken op basis van een lokaal bestand
 
@@ -142,7 +141,7 @@ In Media Services v3 zijn de voor instellingen sterk getypeerde entiteiten in de
 
 Zie [schalen met CLI](media-reserved-units-cli-how-to.md)voor informatie over het schalen van media verwerking.
 
-## <a name="billing"></a>Facturering
+## <a name="billing"></a>Billing
 
 Media Services worden geen geannuleerde of fout taken gefactureerd. Een taak die bijvoorbeeld een voortgang van 50% heeft bereikt en wordt geannuleerd, wordt niet in rekening gebracht tegen 50% van de taak minuten. Er worden alleen kosten in rekening gebracht voor voltooide taken.
 
@@ -157,4 +156,4 @@ Bekijk het [Azure Media Services Community](media-services-community.md) -artike
 * [Uploaden, coderen en streamen met behulp van Media Services](stream-files-tutorial-with-api.md).
 * [Code ring van een HTTPS-URL met behulp van ingebouwde voor instellingen](job-input-from-http-how-to.md).
 * [Codeer een lokaal bestand met ingebouwde voor instellingen](job-input-from-local-file-how-to.md).
-* [Bouw een aangepaste voor instelling om te voldoen aan uw specifieke scenario-of apparaat vereisten](customize-encoder-presets-how-to.md).
+* [Een aangepaste voorinstelling bouwen voor de vereisten van uw specifieke scenario of apparaat](customize-encoder-presets-how-to.md).

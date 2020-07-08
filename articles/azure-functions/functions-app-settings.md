@@ -4,10 +4,9 @@ description: Referentie documentatie voor de Azure Functions app-instellingen of
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.openlocfilehash: 5a0201eeed1678299ec16ff268062463b9c75e5c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84235350"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Naslaginformatie over app-instellingen voor Azure Functions
@@ -16,11 +15,11 @@ App-instellingen in een functie-app bevatten globale configuratie opties die van
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-Er zijn andere globale configuratie opties in het bestand [host. json](functions-host-json.md) en in het bestand [Local. settings. json](functions-run-local.md#local-settings-file) .
+Er zijn andere globale configuratie opties in de [host.jsop](functions-host-json.md) bestand en in de [local.settings.jsvoor](functions-run-local.md#local-settings-file) het bestand.
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-De instrumentatie sleutel voor Application Insights. Gebruik alleen een van `APPINSIGHTS_INSTRUMENTATIONKEY` of `APPLICATIONINSIGHTS_CONNECTION_STRING` . Zie [Azure functions bewaken](functions-monitoring.md)voor meer informatie. 
+De instrumentatie sleutel voor Application Insights. Gebruik alleen een van `APPINSIGHTS_INSTRUMENTATIONKEY` of `APPLICATIONINSIGHTS_CONNECTION_STRING` . Zie [Monitor Azure Functions](functions-monitoring.md) (Azure Functions bewaken) voor meer informatie. 
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
@@ -40,7 +39,7 @@ In versie 2. x en latere versies van de functions runtime configureert het app-g
 
 ## <a name="azurefunctionsjobhost__"></a>AzureFunctionsJobHost__\*
 
-In versie 2. x en latere versies van de functions runtime kunnen de instellingen van de [host. json](functions-host-json.md) in de huidige omgeving worden overschreven. Deze onderdrukkingen worden weer gegeven als toepassings instellingen met de naam `AzureFunctionsJobHost__path__to__setting` . Zie [host. json-waarden onderdrukken](functions-host-json.md#override-hostjson-values)voor meer informatie.
+In versie 2. x en latere versies van de runtime van functions kunnen toepassings instellingen [host.jsoverschrijven op](functions-host-json.md) instellingen in de huidige omgeving. Deze onderdrukkingen worden weer gegeven als toepassings instellingen met de naam `AzureFunctionsJobHost__path__to__setting` . Zie [onderdrukking host.jsop waarden](functions-host-json.md#override-hostjson-values)voor meer informatie.
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
@@ -59,7 +58,7 @@ Optioneel opslag account connection string voor het opslaan van Logboeken en wee
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
-|AzureWebJobsDisableHomepage|waar|
+|AzureWebJobsDisableHomepage|true|
 
 Als deze app-instelling wordt wegge laten of is ingesteld op `false` , wordt een pagina die lijkt op het volgende voor beeld weer gegeven als reactie op de URL `<functionappname>.azurewebsites.net` .
 
@@ -71,7 +70,7 @@ Als deze app-instelling wordt wegge laten of is ingesteld op `false` , wordt een
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
-|AzureWebJobsDotNetReleaseCompilation|waar|
+|AzureWebJobsDotNetReleaseCompilation|true|
 
 ## <a name="azurewebjobsfeatureflags"></a>AzureWebJobsFeatureFlags
 
@@ -87,7 +86,7 @@ Hiermee geeft u de opslag plaats of provider op die moet worden gebruikt voor sl
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
-|AzureWebJobsSecretStorageType|Bestanden|
+|AzureWebJobsSecretStorageType|Files|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
@@ -132,7 +131,7 @@ Hiervoor moet [de \_ \_ versie](functions-app-settings.md#functions_extension_ve
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
-|Function \_ v2- \_ compatibiliteits \_ modus|waar|
+|Function \_ v2- \_ compatibiliteits \_ modus|true|
 
 ## <a name="functions_worker_process_count"></a>\_aantal functies werk \_ proces \_
 
@@ -181,7 +180,7 @@ Het maximum aantal exemplaren waarmee de functie-app kan worden uitgeschaald. De
 ## <a name="website_node_default_version"></a>DEFAULT_VERSION van WEBSITE \_ knooppunt \_
 
 _Alleen Windows._  
-Hiermee stelt u de versie van node. js in die moet worden gebruikt voor het uitvoeren van uw functie-app in Windows. U moet een tilde (~) gebruiken om de runtime de meest recente beschik bare versie van de doel primaire versie te laten gebruiken. Wanneer deze bijvoorbeeld is ingesteld op `~10` , wordt de meest recente versie van node. js 10 gebruikt. Wanneer een primaire versie is gericht op een tilde, hoeft u de secundaire versie niet hand matig bij te werken. 
+Hiermee stelt u de versie van Node.js in die moet worden gebruikt voor het uitvoeren van uw functie-app in Windows. U moet een tilde (~) gebruiken om de runtime de meest recente beschik bare versie van de doel primaire versie te laten gebruiken. Als deze bijvoorbeeld is ingesteld op `~10` , wordt de meest recente versie van Node.js 10 gebruikt. Wanneer een primaire versie is gericht op een tilde, hoeft u de secundaire versie niet hand matig bij te werken. 
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
@@ -203,8 +202,8 @@ Standaard functions maken gebruik van een snelkoppeling voor het verzenden van A
 
 |Sleutel|Waarde|Beschrijving|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|waar|Aanroepen met een back-end-URL die verwijst naar een functie in de lokale functie-app worden niet meer rechtstreeks naar de functie verzonden en worden in plaats daarvan teruggestuurd naar de HTTP-front-end voor de functie-app|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|onjuist|Dit is de standaardwaarde. Aanroepen met een back-end-URL die verwijst naar een functie in de lokale functie-app worden rechtstreeks naar die functie doorgestuurd|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Aanroepen met een back-end-URL die verwijst naar een functie in de lokale functie-app worden niet meer rechtstreeks naar de functie verzonden en worden in plaats daarvan teruggestuurd naar de HTTP-front-end voor de functie-app|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Dit is de standaardwaarde. Aanroepen met een back-end-URL die verwijst naar een functie in de lokale functie-app worden rechtstreeks naar die functie doorgestuurd|
 
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
@@ -213,12 +212,12 @@ Met deze instelling bepaalt u of% 2F wordt gedecodeerd als slash-tekens in route
 
 |Sleutel|Waarde|Beschrijving|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|waar|Voor route parameters met gecodeerde slashes worden ze gedecodeerd. `example.com/api%2ftest`wordt`example.com/api/test`|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|onjuist|Dit is de standaardinstelling. Alle route parameters worden ongewijzigd door gegeven|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Voor route parameters met gecodeerde slashes worden ze gedecodeerd. `example.com/api%2ftest`wordt`example.com/api/test`|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|Dit is de standaardinstelling. Alle route parameters worden ongewijzigd door gegeven|
 
 ### <a name="example"></a>Voorbeeld
 
-Hier volgt een voor beeld van proxy's. json in een functie-app op de URL myfunction.com
+Hier volgt een voor beeld proxies.jsin een functie-app op de URL myfunction.com
 
 ```JSON
 {
@@ -235,14 +234,14 @@ Hier volgt een voor beeld van proxy's. json in een functie-app op de URL myfunct
 ```
 |URL-decodering|Invoer|Uitvoer|
 |-|-|-|
-|waar|myfunction.com/test%2fapi|example.com/test/api
-|onjuist|myfunction.com/test%2fapi|example.com/test%2fapi|
+|true|myfunction.com/test%2fapi|example.com/test/api
+|false|myfunction.com/test%2fapi|example.com/test%2fapi|
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 [Meer informatie over het bijwerken van de app-instellingen](functions-how-to-use-azure-function-app-settings.md#settings)
 
-[Zie algemene instellingen in het bestand host. json](functions-host-json.md)
+[Algemene instellingen in het host.jsbestand bekijken](functions-host-json.md)
 
 [Andere app-instellingen voor App Service apps bekijken](https://github.com/projectkudu/kudu/wiki/Configurable-settings)

@@ -1,26 +1,25 @@
 ---
 title: Video-opname op basis van gebeurtenissen-Azure
-description: Video-opname op basis van gebeurtenissen (EVR) verwijst naar het proces van het opnemen van video die wordt geactiveerd door een gebeurtenis. De betrokken gebeurtenis kan afkomstig zijn als gevolg van het verwerken van het video signaal zelf (bijvoorbeeld detectie op beweging) of kan afkomstig zijn uit een onafhankelijke bron (bijvoorbeeld het openen van een deur).  In dit artikel worden enkele gebruiks voorbeelden besproken die betrekking hebben op op gebeurtenissen gebaseerde video-opname.
+description: Video-opname op basis van gebeurtenissen (EVR) verwijst naar het proces van het opnemen van video geactiveerd door een gebeurtenis. De betrokken gebeurtenis kan afkomstig zijn als gevolg van het verwerken van het video signaal zelf (bijvoorbeeld detectie op beweging) of kan afkomstig zijn uit een onafhankelijke bron (bijvoorbeeld het openen van een deur).  In dit artikel worden enkele gebruiks voorbeelden besproken die betrekking hebben op op gebeurtenissen gebaseerde video-opname.
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.openlocfilehash: 0a6f7ca4233c195c7494fc6f63e7dfb5bf654c17
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261329"
 ---
 # <a name="event-based-video-recording"></a>Video-opname op basis van gebeurtenissen  
  
-## <a name="suggested-pre-reading"></a>Aanbevolen voor lezen  
+## <a name="suggested-pre-reading"></a>Aanbevolen om te lezen  
 
 * [Continue video-opname](continuous-video-recording-concept.md)
 * [Afspelen van opgenomen inhoud](video-playback-concept.md)
-* [Concept van media grafiek](media-graph-concept.md)
+* [Mediagrafiekconcepten](media-graph-concept.md)
 
 ## <a name="overview"></a>Overzicht 
 
-Video-opname op basis van gebeurtenissen (EVR) verwijst naar het proces van het opnemen van video die wordt geactiveerd door een gebeurtenis. De betrokken gebeurtenis kan afkomstig zijn als gevolg van het verwerken van het video signaal zelf (bijvoorbeeld detectie op beweging) of kan afkomstig zijn uit een onafhankelijke bron (bijvoorbeeld het openen van een deur). 
+Video-opname op basis van gebeurtenissen (EVR) verwijst naar het proces van het opnemen van video geactiveerd door een gebeurtenis. De betrokken gebeurtenis kan afkomstig zijn als gevolg van het verwerken van het video signaal zelf (bijvoorbeeld detectie op beweging) of kan afkomstig zijn uit een onafhankelijke bron (bijvoorbeeld het openen van een deur). 
 
 U kunt video (geactiveerd door een gebeurtenis) opnemen van een CCTV-camera naar een Media Services-Asset met behulp van een media grafiek die bestaat uit een [RTSP-bron](media-graph-concept.md#rtsp-source) knooppunt, een [Asset Sink](media-graph-concept.md#asset-sink) -knoop punt en andere knoop punten, zoals beschreven in de onderstaande gebruiks voorbeelden. Telkens wanneer er een gebeurtenis optreedt, kunt u het knoop punt [Asset Sink](media-graph-concept.md#asset-sink) zo configureren dat er nieuwe assets worden gegenereerd, zodat de video die overeenkomt met elke gebeurtenis in zijn eigen activa wordt weer gegeven. U kunt er ook voor kiezen om één Asset te gebruiken voor het opslaan van de video voor alle gebeurtenissen. 
 

@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
 ms.openlocfilehash: a45fc5f4e56ff3a5d7f0be167c5d758aa0e47caf
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84196354"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Aanbevolen procedures voor Azure SQL Data Sync 
@@ -229,7 +228,7 @@ Als u een complex schema hebt om te synchroniseren, kunt u een time-out voor de 
 Als u dit probleem wilt verhelpen, schaalt u de data base met gesynchroniseerde meta gegevens zodanig dat deze een hogere SKU heeft, zoals S3. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Voor meer informatie over SQL Data Sync raadpleegt u:
+Zie de volgende onderwerpen voor meer informatie over SQL Data Sync:
 
 -   Overzicht: [Gegevens synchroniseren tussen meerdere cloud- en on-premises databases met SQL Data Sync](sql-data-sync-data-sql-server-sql-database.md)
 -   SQL Data Sync instellen
@@ -238,13 +237,13 @@ Voor meer informatie over SQL Data Sync raadpleegt u:
         -  [Power shell gebruiken om te synchroniseren tussen meerdere data bases in Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [Power shell gebruiken om te synchroniseren tussen een data base in SQL Database en een data base in een SQL Server-exemplaar](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 -   Data Sync-agent: [Data Sync-agent voor Azure SQL Data Sync](sql-data-sync-agent-overview.md)
--   SQL Data Sync controleren [met Azure monitor-logboeken](sql-data-sync-monitor-sync.md)
+-   Bewaken: [SQL Data Sync bewaken met Azure Monitor-logboeken](sql-data-sync-monitor-sync.md)
 -   Problemen oplossen: [Problemen met Azure SQL Data Sync oplossen](sql-data-sync-troubleshoot.md)
 -   Het synchronisatieschema bijwerken
     -   Met Transact-SQL: [De replicatie van schemawijzigingen in Azure SQL Data Sync automatiseren](sql-data-sync-update-sync-schema.md)
     -   Met PowerShell: [PowerShell gebruiken voor het bijwerken van het synchronisatieschema in een bestaande synchronisatiegroep](scripts/update-sync-schema-in-sync-group.md)
 
-Voor meer informatie over SQL Database raadpleegt u:
+Meer informatie over SQL Database vindt u in:
 
--   [Overzicht van SQL Database](sql-database-paas-overview.md)
+-   [Overzicht van SQL Database?](sql-database-paas-overview.md)
 -   [Levenscyclus beheer van de data base](https://msdn.microsoft.com/library/jj907294.aspx)

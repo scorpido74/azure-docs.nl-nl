@@ -8,29 +8,28 @@ ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: d415ef165da18312a458d7d14fba18acd1bf44cf
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84235610"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Overzicht van share-momentopnamen voor Azure Files
 
-Azure Files biedt de mogelijkheid om moment opnamen van shares van bestands shares te maken. Met moment opnamen delen wordt de status van de share op dat moment vastgelegd. In dit artikel wordt beschreven welke mogelijkheden moment opnamen delen bieden en hoe u deze kunt gebruiken in uw aangepaste use-case.
+Azure Files biedt de mogelijkheid om share-momentopnamen van bestandsshares te maken. Met share-momentopnamen kan de status van de share op dat moment worden vastgelegd. In dit artikel wordt beschreven welke mogelijkheden share-momentopnamen bieden en hoe u deze kunt gebruiken in uw aangepaste scenario.
 
-## <a name="when-to-use-share-snapshots"></a>Wanneer moet u moment opnamen van shares gebruiken?
+## <a name="when-to-use-share-snapshots"></a>Wanneer moet u share-momentopnamen gebruiken?
 
-### <a name="protection-against-application-error-and-data-corruption"></a>Bescherming tegen toepassings fout en gegevens beschadiging
+### <a name="protection-against-application-error-and-data-corruption"></a>Bescherming tegen toepassingsfouten en gegevensbeschadiging
 
-Toepassingen die gebruikmaken van bestands shares voeren bewerkingen uit, zoals schrijven, lezen, opslag, verzen ding en verwerking. Als een toepassing onjuist is geconfigureerd of als er een onbedoelde fout is geïntroduceerd, kunnen er onbedoelde overschrijvingen of schade optreden in enkele blokken. Om u te helpen bij het beveiligen van deze scenario's, kunt u een moment opname van een share maken voordat u nieuwe toepassings code implementeert. Als er een bug-of toepassings fout is geïntroduceerd in de nieuwe implementatie, kunt u teruggaan naar een eerdere versie van uw gegevens op die bestands share. 
+Toepassingen die gebruikmaken van bestandsshares, voeren bewerkingen uit als schrijven, lezen, opslag, verzending en verwerking. Als een toepassing niet goed wordt geconfigureerd of als er een onbedoelde fout wordt geïntroduceerd, kan er in enkele blokken een onbedoelde overschrijving of beschadiging optreden. Om u te helpen bij het beveiligen voor deze scenario's, kunt u een share-momentopname maken voordat u nieuwe toepassingscode implementeert. Als er een bug of toepassingsfout is geïntroduceerd tijdens de nieuwe implementatie, kunt u teruggaan naar een eerdere versie van uw gegevens in die bestandsshare. 
 
-### <a name="protection-against-accidental-deletions-or-unintended-changes"></a>Bescherming tegen onbedoeld verwijderen of onbedoelde wijzigingen
+### <a name="protection-against-accidental-deletions-or-unintended-changes"></a>Bescherming tegen onbedoeld verwijderingen of onbedoelde wijzigingen
 
-Stel dat u werkt met een tekst bestand in een bestands share. Wanneer het tekst bestand is gesloten, verliest u de mogelijkheid om uw wijzigingen ongedaan te maken. In deze gevallen moet u een vorige versie van het bestand herstellen. U kunt moment opnamen van shares gebruiken om eerdere versies van het bestand te herstellen als de naam per ongeluk is gewijzigd of verwijderd.
+Stel dat u werkt aan een tekstbestand in een bestandsshare. Wanneer het tekstbestand wordt gesloten, is het niet langer mogelijk uw wijzigingen ongedaan te maken. In deze gevallen moet u een vorige versie van het bestand herstellen. U kunt moment share-momentopnamen gebruiken om eerdere versies van het bestand te herstellen als de naam per ongeluk is gewijzigd of als het bestand is verwijderd.
 
-### <a name="general-backup-purposes"></a>Algemene back-updoeleinden
+### <a name="general-backup-purposes"></a>Algemene doeleinden voor back-up
 
-Nadat u een bestands share hebt gemaakt, kunt u regel matig een moment opname van de share van de bestands share maken om deze te gebruiken voor gegevens back-up. Als u regel matig een moment opname van een share maakt, kunt u de vorige versies van de gegevens behouden die kunnen worden gebruikt voor toekomstige controle vereisten of herstel na nood gevallen. U kunt het beste [Azure file share backup](../../backup/azure-file-share-backup-overview.md) gebruiken als back-upoplossing voor het maken en beheren van moment opnamen. U kunt moment opnamen ook zelf maken en beheren met CLI of Power shell.
+Nadat u een bestandsshare hebt gemaakt, kunt u af en toe een share-momentopname van de bestandsshare maken en deze gebruiken voor back-up van gegevens. Als u regelmatig een share-momentopname maakt, kunt u de vorige versies van gegevens behouden. Deze kunnen worden gebruikt voor toekomstige auditvereisten of herstel na noodgeval. U kunt het beste [Azure file share backup](../../backup/azure-file-share-backup-overview.md) gebruiken als back-upoplossing voor het maken en beheren van moment opnamen. U kunt moment opnamen ook zelf maken en beheren met CLI of Power shell.
 
 ## <a name="capabilities"></a>Functies
 
@@ -71,17 +70,17 @@ Er is geen limiet voor de gelijktijdige aanroepen voor het maken van moment opna
 
 Momenteel is het niet mogelijk om moment opnamen van shares te koppelen aan linux. Dit komt doordat de Linux SMB-client geen ondersteuning biedt voor het koppelen van moment opnamen zoals Windows wel.
 
-## <a name="copying-data-back-to-a-share-from-share-snapshot"></a>De gegevens worden terug gekopieerd naar een share vanuit een share-moment opname
+## <a name="copying-data-back-to-a-share-from-share-snapshot"></a>Gegevens terug kopiëren naar een share vanuit een share-momentopname
 
-Kopieer bewerkingen die betrekking hebben op bestanden en moment opnamen delen, gelden deze regels:
+Voor kopieerbewerkingen die betrekking hebben op bestanden en share-momentopnamen, gelden deze regels:
 
-U kunt afzonderlijke bestanden in een moment opname van een bestands share kopiëren naar het basis share of een andere locatie. U kunt een eerdere versie van een bestand herstellen of de volledige bestands share herstellen door bestand te kopiëren op bestand van de moment opname van de share. De moment opname van de share wordt niet gepromoveerd naar een basis share. 
+U kunt afzonderlijke bestanden in een bestandsshare-momentopname kopiëren naar de bijbehorende basisshare of een andere locatie. U kunt een eerdere versie van een bestand herstellen of de volledige bestandsshare herstellen door bestand voor bestand vanaf de share-momentopname te kopiëren. De share-momentopname wordt niet gepromoveerd naar het niveau van de basisshare. 
 
-De moment opname van de share blijft intact na het kopiëren, maar de basis bestands share wordt overschreven met een kopie van de gegevens die beschikbaar waren in de moment opname van de share. Alle herstelde bestanden tellen mee naar gewijzigde inhoud.
+De share-momentopname blijft na kopiëren intact, maar de basisbestandsshare wordt overschreven met een kopie van de gegevens die beschikbaar waren in de share-momentopname. Alle herstelde bestanden tellen mee met 'gewijzigde inhoud'.
 
-U kunt een bestand in een moment opname van een share kopiëren naar een ander doel met een andere naam. Het resulterende doel bestand is een schrijfbaar bestand en geen moment opname van de share. In dit geval blijft uw basis bestands share intact.
+U kunt een bestand in een share-momentopname kopiëren naar een ander doel met een andere naam. Het resulterende doelbestand is een schrijfbaar bestand en geen share-momentopname. In dit geval blijft uw basisbestandsshare intact.
 
-Wanneer een doel bestand wordt overschreven door een kopie, blijven de moment opnamen van shares die zijn gekoppeld aan het oorspronkelijke doel bestand intact.
+Wanneer een doelbestand met een kopie wordt overschreven, blijven de share-momentopnamen die zijn gekoppeld aan het oorspronkelijke doelbestand, intact.
 
 ## <a name="general-best-practices"></a>Algemene best practices
 

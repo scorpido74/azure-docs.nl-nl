@@ -4,10 +4,9 @@ description: Informatie over het oplossen van back-ups van SQL Server-data bases
 ms.topic: troubleshooting
 ms.date: 06/18/2019
 ms.openlocfilehash: a4397f0bfa50990a7ad8080579261ed4587c4958
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84247951"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problemen met SQL Server database back-up oplossen met behulp van Azure Backup
@@ -50,9 +49,9 @@ Bij momenten kunnen wille keurige fouten optreden in back-up-en herstel bewerkin
 
 1. De volgende drie processen die worden uitgevoerd in een VM uitsluiten van antivirus scans:
 
-    - IaasWLPluginSvc. exe
-    - IaasWorkloadCoordinaorService. exe
-    - TriggerExtensionJob. exe
+    - IaasWLPluginSvc.exe
+    - IaasWorkloadCoordinaorService.exe
+    - TriggerExtensionJob.exe
 
 1. SQL biedt ook enkele richt lijnen voor het werken met antivirus Programma's. Raadpleeg [dit artikel](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server) voor meer informatie.
 
@@ -60,7 +59,7 @@ Bij momenten kunnen wille keurige fouten optreden in back-up-en herstel bewerkin
 
 ### <a name="backup-type-unsupported"></a>Het back-uptype wordt niet ondersteund
 
-| Ernst | Beschrijving | Mogelijke oorzaken | Aanbevolen actie |
+| Severity | Description | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|---|
 | Waarschuwing | De huidige instellingen voor deze data base bieden geen ondersteuning voor bepaalde back-uptypen die aanwezig zijn in het bijbehorende beleid. | <li>Alleen een volledige database back-upbewerking kan worden uitgevoerd op de hoofd database. U kunt geen differentiële back-up of transactie logboek back-up maken. </li> <li>Voor alle data bases in het eenvoudige herstel model is het maken van back-ups van transactie logboeken niet toegestaan.</li> | Wijzig de data base-instellingen zodanig dat alle back-uptypen in het beleid worden ondersteund. Of wijzig het huidige beleid zodat alleen de ondersteunde back-uptypen worden vermeld. Anders worden de niet-ondersteunde back-uptypen overgeslagen tijdens de geplande back-up of mislukt de back-uptaak voor back-ups op aanvraag.
 

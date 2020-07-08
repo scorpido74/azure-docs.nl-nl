@@ -4,10 +4,9 @@ description: In dit artikel leert u hoe u uw omgeving voorbereidt op het beveili
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 2cf6d88ad37ec1368e53c7213ea771c028a56643
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84247271"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server installeren en upgraden
@@ -95,7 +94,7 @@ De instelling voor opslagreplicatie bewerken:
 
 ### <a name="downloading-the-software-package"></a>Het software pakket downloaden
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Als er al een Recovery Services kluis is geopend, gaat u verder met stap 3. Als er geen Recovery Services kluis is geopend, maar wel in de Azure Portal, klikt u in het hoofd menu op **Bladeren**.
 
    * Typ in de lijst met resources **Recovery Services**.
@@ -147,7 +146,7 @@ De instelling voor opslagreplicatie bewerken:
 
 ### <a name="extracting-the-software-package"></a>Het software pakket extra heren
 
-Nadat u alle bestanden hebt gedownload, klikt u op **MicrosoftAzureBackupInstaller. exe**. Hiermee start u de **installatie wizard van Microsoft Azure backup** om de installatie bestanden uit te pakken op een locatie die door u is opgegeven. Ga door met de wizard en klik op de knop **extra heren** om het uitpak proces te starten.
+Nadat u alle bestanden hebt gedownload, klikt u op **MicrosoftAzureBackupInstaller.exe**. Hiermee start u de **installatie wizard van Microsoft Azure backup** om de installatie bestanden uit te pakken op een locatie die door u is opgegeven. Ga door met de wizard en klik op de knop **extra heren** om het uitpak proces te starten.
 
 > [!WARNING]
 > Er is ten minste 4 GB beschik bare ruimte nodig om de Setup-bestanden uit te pakken.
@@ -156,7 +155,7 @@ Nadat u alle bestanden hebt gedownload, klikt u op **MicrosoftAzureBackupInstall
 
 ![Wizard Microsoft Azure Backup-installatie](./media/backup-azure-microsoft-azure-backup/extract/03.png)
 
-Zodra het uitpakken is voltooid, schakelt u het selectie vakje in om de vers geëxtraheerde *Setup. exe* te starten om te beginnen met de installatie van Microsoft Azure backup server en klikt u op de knop **volt ooien** .
+Zodra het uitpakken is voltooid, schakelt u het selectie vakje in om de volledig geëxtraheerde *setup.exe* te starten om te beginnen met de installatie van Microsoft Azure backup server en klikt u op de knop **volt ooien** .
 
 ### <a name="installing-the-software-package"></a>Het software pakket installeren
 

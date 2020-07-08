@@ -4,10 +4,9 @@ description: Biedt een samen vatting van nieuwe functies en de meest recente upd
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.openlocfilehash: e0015aa9de51e3cb43473a079d09698fcbeef9a0
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84259215"
 ---
 # <a name="whats-new-in-site-recovery"></a>Nieuw in Site Recovery
@@ -39,7 +38,7 @@ Meer [informatie](service-updates-how-to.md) over installatie en ondersteuning v
 
 [Update pakket 46](https://support.microsoft.com/help/4564347/update-rollup-46-for-azure-site-recovery) bevat de volgende updates:
 
-**Bijwerken** | **Nadere**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Updates van Site Recovery agents en providers zoals beschreven in het pakket.
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen zoals beschreven in de samen telling.
@@ -50,7 +49,7 @@ Meer [informatie](service-updates-how-to.md) over installatie en ondersteuning v
 
 [Update pakket 45](https://support.microsoft.com/help/4550047/update-rollup-45-for-azure-site-recovery) bevat de volgende updates:
 
-**Bijwerken** | **Nadere**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Updates van Site Recovery agents en providers zoals beschreven in het pakket.
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen zoals beschreven in de samen telling.
@@ -61,7 +60,7 @@ Meer [informatie](service-updates-how-to.md) over installatie en ondersteuning v
 
 [Update pakket 44](https://support.microsoft.com/help/4538187/update-rollup-44-for-azure-site-recovery) bevat de volgende updates.
 
-**Bijwerken** | **Nadere**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Er zijn geen updates voor de Site Recovery providers en agents.
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen zoals beschreven in de samen telling.
@@ -75,7 +74,7 @@ Virtuele Azure-machines ondersteunen nu Vm's voor versleuteling-at-rest met door
 
 [Update pakket 43](https://support.microsoft.com/help/4537047/update-rollup-43-for-azure-site-recovery) bevat de volgende updates.
 
-**Bijwerken** | **Nadere**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Updates voor Site Recovery agents en providers (zoals beschreven in de rollup)
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in de rollup)
@@ -87,7 +86,7 @@ Virtuele Azure-machines ondersteunen nu Vm's voor versleuteling-at-rest met door
 
 [Update pakket 42](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) bevat de volgende updates.
 
-**Bijwerken** | **Nadere**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Updates voor Site Recovery agents en providers (zoals beschreven in de rollup)
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in de rollup)
@@ -97,7 +96,7 @@ Virtuele Azure-machines ondersteunen nu Vm's voor versleuteling-at-rest met door
 
 Nieuwe functies voor herstel na nood gevallen voor Azure VM worden in de tabel samenvatten.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 **UEFI** | Site Recovery ondersteunt nu herstel na nood gevallen voor Azure-Vm's met UEFI-gebaseerde opstart architectuur.
 **Linux** | Site Recovery ondersteunt nu Azure-Vm's met Linux met Azure Disk Encryption (ADE).
@@ -108,7 +107,7 @@ Nieuwe functies voor herstel na nood gevallen voor Azure VM worden in de tabel s
 
 De tabel bevat een overzicht van de nieuwe functies voor VMware naar Azure voor herstel na nood gevallen.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 **UEFI** | Site Recovery ondersteunt nu herstel na nood geval voor virtuele VMware-machines met UEFI-gebaseerde opstart architectuur.<br/><br/> Ondersteunde besturings systemen zijn onder andere Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, SLES 12 SP4, RHEL 8.
 
@@ -134,7 +133,7 @@ Voor herstel na nood gevallen van virtuele Azure-machines naar een secundaire re
 
 [Update pakket 41](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) bevat de volgende updates.
 
-**Bijwerken** | **Nadere**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Updates voor Site Recovery agents en providers (zoals beschreven in de rollup)
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in de rollup)
@@ -145,7 +144,7 @@ Voor herstel na nood gevallen van virtuele Azure-machines naar een secundaire re
 
 Nieuwe functies voor herstel na nood gevallen voor Azure VM worden in de tabel samenvatten.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 **Failover-instellingen testen** | Bij het instellen van een testfailover kunt u nu instellingen configureren voor de VM van de testfailover en het netwerk, met inbegrip van IP-adres, NSG, intern taak verdeling en het open bare IP-adres voor elke machine-NIC. Deze instellingen zijn optioneel en zijn niet van invloed op het huidige gedrag. Als u deze instellingen niet configureert, kunt u een Azure-VNet kiezen op het moment van de testfailover. [Meer informatie](https://azure.microsoft.com/blog/customize-networking-for-dr-drills-azure-site-recovery/).
 **Herstelplannen** | Herstel plannen zijn nu beperkt tot 100 Vm's, om de betrouw baarheid van failover te garanderen.
@@ -154,7 +153,7 @@ Nieuwe functies voor herstel na nood gevallen voor Azure VM worden in de tabel s
 
 De tabel bevat een overzicht van de nieuwe functies voor VMware naar Azure voor herstel na nood gevallen.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 **Herstelplannen** | Herstel plannen zijn nu beperkt tot 100 Vm's, om de betrouw baarheid van failover te garanderen.
 
@@ -165,7 +164,7 @@ De tabel bevat een overzicht van de nieuwe functies voor VMware naar Azure voor 
 
 [Update pakket 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) bevat de volgende updates.
 
-**Bijwerken** | **Nadere**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Updates voor Site Recovery agents en providers (zoals beschreven in de rollup)
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in de rollup)
@@ -177,7 +176,7 @@ De tabel bevat een overzicht van de nieuwe functies voor VMware naar Azure voor 
 
 Nieuwe functies voor herstel na nood gevallen voor Azure VM worden in de tabel samenvatten.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 **Opschonen na failback** | Na een failover naar de secundaire Azure en vervolgens een failback naar de primaire regio, Site Recovery automatisch machines in de secundaire regio opschonen. Het is niet nodig om Vm's en Nic's hand matig te verwijderen.
 **IP-adres behouden door testfailover** | U kunt nu het IP-adres van de bron-VM bewaren tijdens een nood herstel analyse en een statisch IP-adres kiezen voor een testfailover.
@@ -186,7 +185,7 @@ Nieuwe functies voor herstel na nood gevallen voor Azure VM worden in de tabel s
 
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 Nieuwe waarschuwingen voor proces server | Er zijn nieuwe waarschuwingen voor de proces server toegevoegd. [Meer informatie](vmware-physical-azure-monitor-process-server.md).
 
@@ -194,7 +193,7 @@ Nieuwe waarschuwingen voor proces server | Er zijn nieuwe waarschuwingen voor de
 
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 Storage-account | Site Recovery ondersteunt nu het gebruik van opslag accounts waarvoor Firewall is ingeschakeld voor Hyper-V naar Azure-herstel na nood gevallen.  U kunt opslag accounts met firewall mogelijkheden selecteren als doel account of voor cache opslag. Als u gebruikmaakt van Firewall-account, moet u ervoor zorgen dat u de optie voor het toestaan van vertrouwde micro soft-Services hebt ingeschakeld.<br/><br/> Dit wordt ondersteund voor virtuele Hyper-V-machines met of zonder System Center VMM.
 
@@ -205,7 +204,7 @@ Storage-account | Site Recovery ondersteunt nu het gebruik van opslag accounts w
 
 [Update pakket 39](https://support.microsoft.com/help/4517283/update-rollup-39-for-azure-site-recovery) bevat de volgende updates.
 
-**Bijwerken** | **Nadere**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Updates voor Site Recovery agents en providers (zoals beschreven in de rollup)
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in de rollup)
@@ -215,7 +214,7 @@ Storage-account | Site Recovery ondersteunt nu het gebruik van opslag accounts w
 
 Nieuwe functies voor herstel na nood gevallen voor Azure VM worden in de tabel samenvatten.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 **Versleuteling zonder Azure AD** | Versleuteling zonder Azure AD-app wordt nu ondersteund voor Azure VM-replicatie naar Managed disks met Windows.
 **Netwerk bronnen voor failover** | Wanneer een failover wordt uitgevoerd naar een andere regio, kunt u nu netwerk bron instellingen (Nsg's, taak verdeling, openbaar IP-adres) koppelen aan een virtuele machine.
@@ -226,7 +225,7 @@ Nieuwe functies voor herstel na nood gevallen voor Azure VM worden in de tabel s
 
 [Update pakket 38](https://support.microsoft.com/help/4513507/) bevat de volgende updates.
 
-**Bijwerken** | **Nadere**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Updates voor Site Recovery agents en providers (zoals beschreven in de rollup)
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in de rollup)
@@ -247,7 +246,7 @@ U kunt schijven nu tot 8 TB repliceren, wanneer u naar een Azure-VM met beheerde
 
 [Update pakket 37](https://support.microsoft.com/help/4508614/) bevat de volgende updates.
 
-**Bijwerken** | **Nadere**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Updates voor Site Recovery agents en providers (zoals beschreven in de rollup)
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in de rollup)
@@ -257,7 +256,7 @@ U kunt schijven nu tot 8 TB repliceren, wanneer u naar een Azure-VM met beheerde
 
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 **GPT-partities** | Vanaf update pakket 37 en hoger (Mobility Service versie 9.25.5241.1) worden Maxi maal vijf GPT-partities ondersteund in UEFI. Vóór deze update werden vier ondersteund.
 
@@ -269,7 +268,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 [Update pakket 36](https://support.microsoft.com/help/4503156) bevat de volgende updates.
 
-**Bijwerken** | **Nadere**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in de rollup)
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in de rollup)
@@ -278,7 +277,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 **Toegevoegde schijven repliceren** | Schakel replicatie in voor gegevens schijven die zijn toegevoegd aan een virtuele machine van Azure die al is ingeschakeld voor herstel na nood gevallen. [Meer informatie](azure-to-azure-enable-replication-added-disk.md).
 **Automatische updates** | Bij het configureren van automatische updates voor de extensie van de Mobility-service die wordt uitgevoerd op Azure-Vm's die zijn ingeschakeld voor nood herstel, kunt u nu een bestaand Automation-account selecteren dat u wilt gebruiken, in plaats van het standaard account te gebruiken dat is gemaakt door Site Recovery. [Meer informatie](azure-to-azure-autoupdate.md).
@@ -288,7 +287,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 **Bewaking proces server** | Voor herstel na nood gevallen van on-premises virtuele VMware-machines en fysieke servers kunt u problemen met de proces server controleren en oplossen met verbeterde rapporten en waarschuwingen voor de server status. [Meer informatie](vmware-physical-azure-monitor-process-server.md).
 
@@ -302,7 +301,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 [Update pakket 35](https://support.microsoft.com/en-us/help/4494485/update-rollup-35-for-azure-site-recovery) bevat de volgende updates.
 
-**Bijwerken** | **Nadere**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in de rollup)
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in de rollup)
@@ -311,7 +310,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 **Beheerde schijven** | De replicatie van on-premises virtuele VMware-machines en fysieke servers is nu rechtstreeks voor beheerde schijven in Azure. On-premises gegevens worden verzonden naar een cache-opslag account in Azure en er worden herstel punten gemaakt op beheerde schijven op de doel locatie. Dit zorgt ervoor dat u niet meerdere doel opslag accounts hoeft te beheren.
 **Configuratie server** | Site Recovery ondersteunt nu configuratie servers met meerdere Nic's. Voeg extra adapters toe aan de configuratie Server-VM voordat u de configuratie server in de kluis registreert. Als u later toevoegt, moet u de server opnieuw registreren in de kluis.
@@ -323,7 +322,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 [Update pakket 34](https://support.microsoft.com/help/4490016/update-rollup-34-for-azure-site-recovery) bevat de volgende updates.
 
-**Bijwerken** | **Nadere**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in het pakket).
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in het pakket).
@@ -333,7 +332,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 [Update pakket 33](https://support.microsoft.com/help/4489582/update-rollup-33-for-azure-site-recovery) bevat de volgende updates.
 
-**Bijwerken** | **Nadere**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in het pakket).
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in het pakket).
@@ -343,7 +342,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 **Netwerktoewijzing** | Voor herstel na nood gevallen van Azure VM kunt u nu elk beschik bare doelnet werken gebruiken wanneer u replicatie inschakelt.
 **Standard - SSD** | U kunt nu herstel na nood gevallen instellen voor Azure-Vm's met behulp van [Standard-SSD-schijven](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd).
@@ -354,7 +353,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 **Linux BRTFS-bestands systeem** | Site Recovery ondersteunt nu replicatie van virtuele VMware-machines met het BRTFS-bestands systeem. Replicatie wordt niet ondersteund als:<br/><br/>-Het subvolume van het BTRFS-bestands systeem wordt gewijzigd nadat de replicatie is ingeschakeld.<br/><br/>-Het bestands systeem is verdeeld over meerdere schijven.<br/><br/>-Het BTRFS-bestands systeem ondersteunt RAID.
 **Windows Server 2019** | Ondersteuning toegevoegd voor computers met Windows Server 2019.
@@ -373,7 +372,7 @@ Versneld netwerken maken gebruik van I/O-virtualisatie met één hoofdmap (SR-IO
 
 [Update pakket 32](https://support.microsoft.com/help/4485985/update-rollup-32-for-azure-site-recovery) bevat de volgende updates.
 
-**Bijwerken** | **Nadere**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in het pakket).
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in het pakket).
@@ -382,7 +381,7 @@ Versneld netwerken maken gebruik van I/O-virtualisatie met één hoofdmap (SR-IO
 
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 **Linux Support** | Er is ondersteuning toegevoegd voor RedHat-werk Station 6/7, en voor nieuwe kernel-versies voor Ubuntu, Debian en SUSE.
 **Opslagruimten direct** | Site Recovery ondersteunt Azure Vm's met behulp van Opslagruimten Direct (S2D).
@@ -391,7 +390,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 **Linux Support** | Er is ondersteuning toegevoegd voor redhat Enter prise Linux 7,6, RedHat Workstation 6/7, Oracle Linux 6,10 en Oracle Linux 7,6 en nieuwe kernel-versies voor Ubuntu, Debian en SUSE.
 
@@ -400,7 +399,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 [Update pakket 31](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery) bevat de volgende updates.
 
-**Bijwerken** | **Nadere**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in het pakket).
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in het pakket).
@@ -409,7 +408,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 **Linux Support** |  Er is ondersteuning toegevoegd voor Oracle Linux 6,8, Oracle Linux 6,9 en Oracle Linux 7,0 met de Red Hat compatible kernel en voor de onbreekbare UEK-versie (Enter prise kernel) 5.
 **LVM** | Ondersteuning toegevoegd voor LVM-en LVM2-volumes.<br/><br/> De/boot-map op een schijf partitie en op LVM-volumes wordt nu ondersteund.
@@ -422,7 +421,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 **Linux Support** | Er is ondersteuning toegevoegd voor Oracle Linux 6,8, Oracle Linux 6,9 en Oracle Linux 7,0 met de Red Hat compatible kernel en voor de onbreekbare UEK-versie (Enter prise kernel) 5.
 **Linux BRTFS-bestands systeem** | Ondersteund voor virtuele Azure-machines.
@@ -455,7 +454,7 @@ Herstel na nood gevallen van virtuele Azure-machines, en netwerk-en opslag koste
 
 [Update pakket 30](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30) biedt de volgende updates.
 
-**Bijwerken** | **Nadere**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in het pakket).
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in het pakket).
@@ -463,7 +462,7 @@ Herstel na nood gevallen van virtuele Azure-machines, en netwerk-en opslag koste
 ### <a name="azure-vm-disaster-recovery"></a>Herstel na nood gevallen voor Azure VM
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 **Ondersteuning voor regio** | Site Recovery ondersteuning toegevoegd voor Australië-centraal 1 en Australië-centraal 2.
 **Ondersteuning voor schijf versleuteling** | Ondersteuning toegevoegd voor herstel na nood gevallen van Azure-Vm's die zijn versleuteld met Azure Disk Encryption (ADE) met de Azure AD-app. [Meer informatie](azure-to-azure-how-to-enable-replication-ade-vms.md).
@@ -475,7 +474,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 [Update pakket 29](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery) biedt de volgende updates.
 
-**Bijwerken** | **Nadere**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in het pakket).
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in het pakket).
@@ -487,7 +486,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 [Update pakket 28](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery) bevat de volgende updates.
 
-**Bijwerken** | **Nadere**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in het pakket).
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in het pakket).
@@ -495,7 +494,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 ### <a name="azure-vm-disaster-recovery"></a>Herstel na nood gevallen voor Azure VM
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 **Linux Support** | Toegevoegd ondersteund voor RedHat Enter prise Linux 6,10; CentOS 6,10.<br/><br/>
 **Cloud ondersteuning** | Ondersteunde nood herstel voor virtuele Azure-machines in de Duitse Cloud.
@@ -504,7 +503,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 ### <a name="vmware-vmphysical-server-disaster-recovery"></a>Herstel na nood geval voor VMware VM/fysieke server
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 **Linux Support** | Ondersteuning toegevoegd voor RedHat Enter prise Linux 6,10, CentOS 6,10.<br/><br/> Op Linux gebaseerde virtuele machines die gebruikmaken van de partitie stijl GPT (GUID-partitie tabel) in verouderde BIOS-compatibiliteits modus, worden nu ondersteund. Raadpleeg de [Veelgestelde vragen over Azure VM](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks) voor meer informatie.
 **Herstel na nood geval voor Vm's na migratie** | Ondersteuning voor het inschakelen van herstel na nood gevallen naar een secundaire regio voor een on-premises virtuele VMware-machine die is gemigreerd naar Azure, zonder dat u de Mobility-service op de virtuele machine hoeft te verwijderen voordat u replicatie inschakelt.
@@ -516,7 +515,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 [Update pakket 27](https://support.microsoft.com/help/4055712/update-rollup-27-for-azure-site-recovery) bevat de volgende updates.
 
-**Bijwerken** | **Nadere**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in het pakket).
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in het pakket).
@@ -525,7 +524,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 **Linux Support** | Ondersteuning toegevoegd voor Red Hat Enterprise Linux 7,5.
 
@@ -533,7 +532,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 **Linux Support** | Ondersteuning toegevoegd voor Red Hat Enterprise Linux 7,5, SUSE Linux Enterprise Server 12.
 

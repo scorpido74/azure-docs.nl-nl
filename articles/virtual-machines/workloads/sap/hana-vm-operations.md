@@ -16,10 +16,9 @@ ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0ede0f5d74ceb5ce79cdfc095b3ffeccd96a1b3b
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84230139"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Configuraties en bewerkingen van SAP HANA-infrastructuur in Azure
@@ -173,8 +172,8 @@ Een scale-out SAP-configuratie installeren, moet u de volgende stappen uitvoeren
 Als uw Azure VM-infra structuur wordt geïmplementeerd en alle andere voor bereidingen worden uitgevoerd, moet u de SAP HANA scale-out-configuraties installeren in de volgende stappen:
 
 - Installeer het SAP HANA-hoofd knooppunt volgens de documentatie van SAP
-- In het geval van het gebruik van Azure Premium Storage of Ultra Disk Storage met niet-gedeelde schijven van/Hana/data en/Hana/log, moet u het bestand Global. ini wijzigen en de para meter ' basepath_shared = no ' toevoegen aan het bestand Global. ini. Met deze para meter kunnen SAP HANA worden uitgevoerd in scale-out zonder gedeelde **/Hana/data** -en **/Hana/log** -volumes tussen de knoop punten. Details worden beschreven in [SAP Note #2080991](https://launchpad.support.sap.com/#/notes/2080991). Als u NFS-volumes gebruikt op basis van ANF voor/Hana/data en/Hana/log, hoeft u deze wijziging niet aan te brengen
-- Start na de uiteindelijke wijziging in de para meter Global. ini het SAP HANA-exemplaar opnieuw
+- In het geval van het gebruik van Azure Premium Storage of Ultra Disk Storage met niet-gedeelde schijven van/Hana/data en/Hana/log, moet u het global.ini bestand wijzigen en de para meter ' basepath_shared = no ' toevoegen aan het global.ini-bestand. Met deze para meter kunnen SAP HANA worden uitgevoerd in scale-out zonder gedeelde **/Hana/data** -en **/Hana/log** -volumes tussen de knoop punten. Details worden beschreven in [SAP Note #2080991](https://launchpad.support.sap.com/#/notes/2080991). Als u NFS-volumes gebruikt op basis van ANF voor/Hana/data en/Hana/log, hoeft u deze wijziging niet aan te brengen
+- Nadat de uiteindelijke wijziging in de global.ini para meter, start u de SAP HANA instantie opnieuw op
 - Voeg extra worker-knoop punten toe. Zie ook <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html> . Geef het interne netwerk voor SAP HANA communicatie tussen knoop punten op tijdens de installatie of later met behulp van bijvoorbeeld de lokale hdblcm. Zie ook [SAP opmerking #2183363](https://launchpad.support.sap.com/#/notes/2183363)voor gedetailleerdere documentatie. 
 
 Details voor het instellen van een SAP HANA scale-out systeem met een stand-by-knoop punt in SUSE Linux wordt uitvoerig beschreven in [een SAP Hana scale-out systeem implementeren met stand-by-knoop punt op Azure-vm's met behulp van Azure NetApp files op SuSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse). Gelijkwaardige documentatie voor Red Hat vindt u in het artikel [een SAP Hana scale-out systeem met stand-by-knoop punt op virtuele machines van Azure implementeren met behulp van Azure NetApp files op Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel). 

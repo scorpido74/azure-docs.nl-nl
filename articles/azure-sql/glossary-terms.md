@@ -13,10 +13,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/22/2020
 ms.openlocfilehash: f05871c41e2deec3f6a52446844c0b8fd2c9038d
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84221389"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Woorden lijst met termen Azure SQL Database
@@ -24,7 +23,7 @@ ms.locfileid: "84221389"
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
 
-|Context|Term|Meer informatie|
+|Context|Termijn|Meer informatie|
 |:---|:---|:---|
 |Azure-service|Azure SQL Database of SQL Database|[Azure SQL Database](database/sql-database-paas-overview.md)|
 |Aankoop model|Op DTU gebaseerd inkoop model|[Op DTU gebaseerd inkoop model](database/service-tiers-dtu.md)|
@@ -41,7 +40,7 @@ ms.locfileid: "84221389"
 
 ## <a name="azure-sql-managed-instance"></a>Azure SQL Managed Instance
 
-|Context|Term|Meer informatie|
+|Context|Termijn|Meer informatie|
 |:---|:---|:---|
 |Azure-service|Azure SQL Managed Instance|[SQL Managed Instance](managed-instance/sql-managed-instance-paas-overview.md)|
 |Aankoop model|Aankoopmodel op basis van vCore|[Aankoopmodel op basis van vCore](database/service-tiers-vcore.md)|

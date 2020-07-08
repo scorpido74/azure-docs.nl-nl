@@ -1,5 +1,5 @@
 ---
-title: App beheren en bewaken met Azure Spring-opstart klep
+title: App beheren en bewaken met Azure Spring Boot Actuator
 description: Meer informatie over het beheren en bewaken van de app met een Spring boot-klep.
 author: MikeDodaro
 ms.author: brendm
@@ -7,13 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: e932930e43e6131e8e1e82fe2f42246c967a19fe
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84206007"
 ---
-# <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>App beheren en bewaken met Azure Spring-opstart klep
+# <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>App beheren en bewaken met Azure Spring Boot Actuator
 
 Nadat u het nieuwe binaire bestand hebt geïmplementeerd voor uw app, kunt u de functionaliteit controleren en informatie over uw actieve toepassing bekijken. In dit artikel wordt uitgelegd hoe u toegang krijgt tot de API vanuit een test eindpunt dat is opgenomen in azure lente Cloud en de functies voor productie gereed voor uw app beschikbaar maakt.
 

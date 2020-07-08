@@ -5,10 +5,9 @@ ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.openlocfilehash: 11657a5dda79fc550f4c07d4020d75c671335da4
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84248257"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Veelgestelde vragen over SQL Server-data bases die worden uitgevoerd op een back-up van Azure VM
@@ -32,8 +31,8 @@ In sommige gevallen worden herstel back-ups door de Azure Backup-service geactiv
 
 Automatisch herstellen als een mogelijkheid is standaard ingeschakeld voor alle gebruikers. Als u er echter voor kiest om dit te doen, voert u de onderstaande stappen uit:
 
-- Op het SQL Server-exemplaar in de map *C:\Program Files\Azure workload Backup\bin* maakt of bewerkt u het bestand **ExtensionSettingsOverrides. json** .
-- Stel *{"EnableAutoHealer": False}* in in **ExtensionSettingsOverrides. json**.
+- Op het SQL Server-exemplaar in de map *C:\Program Files\Azure workload Backup\bin* maakt of bewerkt u de **ExtensionSettingsOverrides.jsin** het bestand.
+- Stel *{"EnableAutoHealer": False}* in het **ExtensionSettingsOverrides.js**in.
 - Sla de wijzigingen op en sluit het bestand.
 - Open op het SQL Server-exemplaar **taak beheer** en start de **AzureWLBackupCoordinatorSvc** -service vervolgens opnieuw.
 
@@ -41,8 +40,8 @@ Automatisch herstellen als een mogelijkheid is standaard ingeschakeld voor alle 
 
 Ja. U kunt de snelheid waarmee het back-upbeleid wordt uitgevoerd, beperken om de impact op een SQL Server-exemplaar te minimaliseren. Ga als volgt te werk om de instelling te wijzigen:
 
-1. Maak het bestand *ExtensionSettingsOverrides. json* in de map *C:\Program Files\Azure workload Backup\bin* van het SQL Server-exemplaar.
-2. In het bestand *ExtensionSettingsOverrides. json* wijzigt u de instelling **DefaultBackupTasksThreshold** in een lagere waarde (bijvoorbeeld 5). <br>
+1. Maak op het SQL Server-exemplaar in de map *C:\Program Files\Azure workload Backup\bin* de *ExtensionSettingsOverrides.jsin* het bestand.
+2. Wijzig in het *ExtensionSettingsOverrides.js* bestand de instelling **DefaultBackupTasksThreshold** in een lagere waarde (bijvoorbeeld 5). <br>
   `{"DefaultBackupTasksThreshold": 5}`
 <br>
 De standaard waarde van DefaultBackupTasksThreshold is **20**.

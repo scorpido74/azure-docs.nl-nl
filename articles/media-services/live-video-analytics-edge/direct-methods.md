@@ -4,10 +4,9 @@ description: Met live video Analytics op IoT Edge worden verschillende directe m
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: b87452de6b12b0335afca5e28abb3ef6adb29157
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261371"
 ---
 # <a name="direct-methods"></a>Directe methoden
@@ -98,7 +97,7 @@ Gedetailleerde validatie fout, zoals validaties van de module Graph, worden toeg
 }
 ```
 
-|Status|    Gedetailleerde code   |Beschrijving|
+|Status|    Gedetailleerde code   |Description|
 |---|---|---|
 |400|   GraphValidationError|   Algemene grafiek fouten, zoals cycli of partitioneren, enzovoort.|
 |400|   ModuleValidationError|  Module-specifieke validatie fouten.|
@@ -280,7 +279,7 @@ Hiermee wordt een lijst opgehaald met alle grafiek-topologieën die overeenkomen
 
 |Bewerking      |Veld (en)   |Operators|
 |---|---|---|
-|$orderby|name  |ASC|
+|$orderby|naam  |ASC|
 
 
 #### <a name="status-codes"></a>Statuscodes
@@ -468,7 +467,7 @@ Hiermee wordt een lijst opgehaald met alle grafiek exemplaren die overeenkomen m
 
 |Bewerking  |   Veld (en)|   Operators|
 |---|---|---|
-|$orderby|  name|   ASC|
+|$orderby|  naam|   ASC|
 
 #### <a name="status-codes"></a>Statuscodes
 
@@ -575,4 +574,4 @@ Belangrijkste aspecten:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Configuratieschema van moduledubbel](module-twin-configuration-schema.md)
+[Schema voor de module dubbele configuratie](module-twin-configuration-schema.md)

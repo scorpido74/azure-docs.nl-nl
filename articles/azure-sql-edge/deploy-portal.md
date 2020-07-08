@@ -10,10 +10,9 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 43359b66ba747dba7b3294d022a2c1aa2a3e624c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84233243"
 ---
 # <a name="deploy-azure-sql-edge-preview"></a>Azure SQL Edge implementeren (preview-versie) 
@@ -57,7 +56,7 @@ Azure Marketplace is een online Marketplace voor toepassingen en services waar u
 
    |**Parameter**  |**Beschrijving**|
    |---------|---------|
-   | Name | Naam voor de module. |
+   | Naam | Naam voor de module. |
    |SA_PASSWORD  | Geef een sterk wacht woord op voor het SQL Edge-beheerders account. |
    |MSSQL_LCID   | Hiermee stelt u de taal-ID in die moet worden gebruikt voor SQL Server. Bijvoorbeeld, 1036 is Frans. |
    |MSSQL_COLLATION | Hiermee stelt u de standaard sortering voor SQL Server. Deze instelling overschrijft de standaard toewijzing van taal-ID (LCID) in sortering. |
@@ -112,7 +111,7 @@ Azure Marketplace is een online Marketplace voor toepassingen en services waar u
 10. Klik op de pagina **modules instellen** op **volgende**.
 11. Geef op de pagina **route opgeven (optioneel)** van de **set-modules** de routes voor module naar module of module op IOT Edge hub-communicatie, Zie [modules implementeren en routes instellen in IOT Edge](../iot-edge/module-composition.md).
 12. Klik op **Volgende**.
-13. Klik op **verzenden**.
+13. Klik op **Submit**
 
 In deze Quick Start hebt u een SQL Edge-module geïmplementeerd op een IoT Edge apparaat.
 

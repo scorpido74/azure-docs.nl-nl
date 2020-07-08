@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
 ms.openlocfilehash: 6ba1568e5fb05954313f50e63364a2e475dfbab7
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84195281"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Problemen oplossen met replicatie en failover voor Hyper-V naar Azure
@@ -53,8 +52,8 @@ Problemen met eerste en doorlopende replicatie kunt u als volgt oplossen:
     - Als u repliceert met VMM in de omgeving, controleert u of deze services worden uitgevoerd:
         - Controleer op de Hyper-V-host of de Virtual Machine Management-service, de Microsoft Azure Recovery Services agent en de WMI provider host-service worden uitgevoerd.
         - Zorg ervoor dat de System Center Virtual Machine Manager-service wordt uitgevoerd op de VMM-server.
-4. Controleer de connectiviteit tussen de Hyper-V-server en Azure. Als u de connectiviteit wilt controleren, opent u taak beheer op de Hyper-V-host. Klik op het tabblad **prestaties** op **Broncontrole openen**. Controleer op het tabblad **netwerk** > **proces met netwerk activiteit**of cbengine. exe bezig is met het verzenden van grote hoeveel heden gegevens.
-5. Controleer of de Hyper-V-hosts verbinding kunnen maken met de URL van de Azure Storage-blob. Selecteer en controleer **cbengine. exe**om te controleren of de hosts verbinding kunnen maken. **TCP-verbindingen** weer geven om de connectiviteit van de host naar de Azure Storage-BLOB te controleren.
+4. Controleer de connectiviteit tussen de Hyper-V-server en Azure. Als u de connectiviteit wilt controleren, opent u taak beheer op de Hyper-V-host. Klik op het tabblad **prestaties** op **Broncontrole openen**. Controleer op het tabblad **netwerk** > **proces met netwerk activiteit**of cbengine.exe bezig is met het verzenden van grote hoeveel heden gegevens.
+5. Controleer of de Hyper-V-hosts verbinding kunnen maken met de URL van de Azure Storage-blob. Selecteer en controleer de **cbengine.exe**om te controleren of de hosts verbinding kunnen maken. **TCP-verbindingen** weer geven om de connectiviteit van de host naar de Azure Storage-BLOB te controleren.
 6. Controleer de prestatie problemen, zoals hieronder wordt beschreven.
     
 ### <a name="performance-issues"></a>Prestatieproblemen
@@ -135,7 +134,7 @@ Een app-consistente moment opname is een tijdgebonden moment opname van de toepa
 
 ### <a name="common-errors"></a>Algemene fouten
 
-**Fout code** | **Bericht** | **Nadere**
+**Foutcode** | **Bericht** | **Details**
 --- | --- | ---
 **0x800700EA** | Hyper-V kan geen VSS-momentopnameset genereren voor de virtuele machine: er zijn meer gegevens beschikbaar. (0x800700EA). Het genereren van VSS-moment opnamen kan mislukken als er een back-upbewerking wordt uitgevoerd.<br/><br/> De replicatie bewerking voor de virtuele machine is mislukt: er zijn meer gegevens beschikbaar. | Controleer of er een dynamische schijf is ingeschakeld op de virtuele machine. Nee, dit wordt niet ondersteund.
 **0x80070032** | "Hyper-V-aanvrager van volume schaduw kopie kan geen verbinding maken met de virtuele machine <./VMname> omdat de versie niet overeenkomt met de versie die wordt verwacht door Hyper-V | Controleer of de meest recente Windows-updates zijn geïnstalleerd.<br/><br/> Voer een [upgrade uit](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) naar de nieuwste versie van Integration Services.
@@ -157,7 +156,7 @@ Alle replicatie gebeurtenissen van Hyper-V worden vastgelegd in het Hyper-V-VMMS
 
 ### <a name="event-log-locations"></a>Locaties van gebeurtenis logboeken
 
-**Gebeurtenislogboek** | **Nadere** |
+**Gebeurtenislogboek** | **Details** |
 --- | ---
 **Toepassingen en service logboeken/micro soft/VirtualMachineManager/server/admin** (VMM-server) | Logboeken voor het oplossen van problemen met VMM.
 **Toepassingen en service logboeken/MicrosoftAzureRecoveryServices/replicatie** (Hyper-V-host) | Logboeken voor het oplossen van problemen met Microsoft Azure Recovery Services agents. 

@@ -4,10 +4,9 @@ description: Met beheerde services kunnen service providers resource beheer aanb
 ms.date: 05/28/2020
 ms.topic: conceptual
 ms.openlocfilehash: e6f741ccbf0d52e0859722aa304aa6c273fb5acf
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84219078"
 ---
 # <a name="azure-delegated-resource-management"></a>Meer informatie over gedelegeerd resourcebeheer
@@ -48,5 +47,5 @@ Als u hulp nodig hebt met betrekking tot het beheer van de gedelegeerde resource
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [ervaring op het beheer van cross-tenants](cross-tenant-management-experience.md).
+- Meer informatie over [beheerervaring in meerdere tenants](cross-tenant-management-experience.md).
 - Meer informatie over [Managed Services-aanbiedingen in azure Marketplace](managed-services-offers.md).

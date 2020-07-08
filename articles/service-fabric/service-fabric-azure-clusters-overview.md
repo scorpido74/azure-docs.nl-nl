@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
 ms.openlocfilehash: 8c1be30750e6a6d1c541f244c4d0c3875e7dd927
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84234697"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Overzicht van Service Fabric clusters op Azure
@@ -31,7 +30,7 @@ Een Service Fabric cluster op Azure is een Azure-resource die gebruikmaakt van e
 ![Service Fabric cluster][Image]
 
 ### <a name="virtual-machine"></a>Virtuele machine
-Een [virtuele machine](/azure/virtual-machines/) die deel uitmaakt van een cluster, wordt een knoop punt genoemd, maar een cluster knooppunt is een service Fabric runtime proces. Aan elk knooppunt wordt een knooppuntnaam toegewezen (een tekenreeks). Knoop punten hebben kenmerken, zoals [plaatsings eigenschappen](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints). Elke machine of VM heeft een service voor automatisch starten, *FabricHost. exe*, die wordt uitgevoerd op het moment dat de computer wordt opgestart en vervolgens twee uitvoer bare bestanden, *Fabric. exe* en *FabricGateway. exe*, die het knoop punt vormen, worden gestart. Een productie-implementatie is één knoop punt per fysieke of virtuele machine. Voor het testen van scenario's kunt u meerdere knoop punten op één computer of virtuele machine hosten door meerdere exemplaren van *Fabric. exe* en *FabricGateway. exe*uit te voeren.
+Een [virtuele machine](/azure/virtual-machines/) die deel uitmaakt van een cluster, wordt een knoop punt genoemd, maar een cluster knooppunt is een service Fabric runtime proces. Aan elk knooppunt wordt een knooppuntnaam toegewezen (een tekenreeks). Knoop punten hebben kenmerken, zoals [plaatsings eigenschappen](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints). Elke machine of VM heeft een service die automatisch wordt gestart, *FabricHost.exe*, die wordt gestart op het moment dat de computer wordt opgestart en twee uitvoer bare bestanden, *Fabric.exe* en *FabricGateway.exe*worden gestart, waarmee het knoop punt wordt gemaakt. Een productie-implementatie is één knoop punt per fysieke of virtuele machine. Voor het testen van scenario's kunt u meerdere knoop punten op één computer of virtuele machine hosten door meerdere exemplaren van *Fabric.exe* en *FabricGateway.exe*uit te voeren.
 
 Elke VM is gekoppeld aan een virtuele netwerk interface kaart (NIC) en aan elke NIC wordt een privé-IP-adres toegewezen.  Een virtuele machine wordt toegewezen aan een virtueel netwerk en een lokale Balancer via de NIC.
 

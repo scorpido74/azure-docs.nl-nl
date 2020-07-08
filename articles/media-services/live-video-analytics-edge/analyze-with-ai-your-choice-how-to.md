@@ -4,19 +4,18 @@ description: In dit artikel leert u hoe u een IoT Edge module bouwt die kan word
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.openlocfilehash: 0ac2af280eefd5ce293a8be422551d5ee6f6d3f3
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261259"
 ---
-# <a name="analyze-live-video-with-ai-of-your-choice"></a>Analyseer live video met AI van uw keuze
+# <a name="analyze-live-video-with-ai-of-your-choice"></a>Livevideo analyseren met de AI van uw keuze
 
 In dit artikel leert u hoe u een IoT Edge module bouwt die kan worden geïntegreerd met live video Analytics op IoT Edge om live video te analyseren met behulp van een computer vision model van uw keuze. 
 
 ## <a name="pre-reading"></a>Vooraf lezen
 
-[Concept van media grafiek](media-graph-concept.md)
+[Mediagrafiekconcepten](media-graph-concept.md)
 
 ## <a name="media-graph-extension"></a>Media Graph-extensie
 

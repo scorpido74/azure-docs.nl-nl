@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: tomfitz
 ms.openlocfilehash: fa5e59b96aada06c2dd486094d9be6a52c79e43e
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261287"
 ---
 # <a name="use-existing-virtual-network-with-azure-managed-applications"></a>Bestaand virtueel netwerk gebruiken met Azure Managed Applications
@@ -18,7 +17,7 @@ Dit artikel laat u zien hoe u een door Azure beheerde toepassing kunt definiëre
 
 ## <a name="main-template"></a>Hoofd sjabloon
 
-Eerst kijken we naar het bestand **mainTemplate. json** . Hieronder ziet u de volledige sjabloon voor het implementeren van een virtuele machine en de bijbehorende resources. Later gaat u nauw keuriger kijken wat de onderdelen van de sjabloon zijn die zijn gerelateerd aan het gebruik van een bestaand virtueel netwerk.
+Laten we eerst eens kijken naar de **mainTemplate.jsin** het bestand. Hieronder ziet u de volledige sjabloon voor het implementeren van een virtuele machine en de bijbehorende resources. Later gaat u nauw keuriger kijken wat de onderdelen van de sjabloon zijn die zijn gerelateerd aan het gebruik van een bestaand virtueel netwerk.
 
 :::code language="json" source="~/resourcemanager-templates/managed-app-existing-vnet/mainTemplate.json":::
 
@@ -38,7 +37,7 @@ De netwerk interface wordt ingesteld op de subnet-ID-variabele.
 
 ## <a name="ui-definition"></a>UI-definitie
 
-Nu gaan we kijken naar het bestand **createUiDefinition. json** . Het hele bestand is:
+Nu gaan we kijken naar de **createUiDefinition.jsin** het bestand. Het hele bestand is:
 
 :::code language="json" source="~/resourcemanager-templates/managed-app-existing-vnet/createUiDefinition.json":::
 
@@ -59,4 +58,4 @@ In de uitvoer neemt u een waarde op die aangeeft of de consumer een nieuw of bes
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het maken van het definitie bestand voor de gebruikers interface [CreateUiDefinition. json voor het maken van ervaring met Azure Managed Application](create-uidefinition-overview.md).
+Voor meer informatie over het maken van het definitie bestand van de gebruikers interface, Zie [CreateUiDefinition.jsvoor het maken van een door Azure beheerde toepassing](create-uidefinition-overview.md).
