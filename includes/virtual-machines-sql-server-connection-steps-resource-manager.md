@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 4e79fef08af8ff73ce63ab4732c9efd77e3a5d3f
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175990"
 ---
 ### <a name="configure-a-dns-label-for-the-public-ip-address"></a>Een DNS-label configureren voor het openbare IP-adres
@@ -38,7 +38,7 @@ Als u een DNS-label wilt maken, selecteert u eerst **Virtuele machines** in de p
 
 1. Bewerk in het dialoogvenster **Verbinding maken met server** of **Verbinding maken met Database-engine** de waarde voor **Servernaam**. Voer het IP-adres of de volledige DNS-naam van de virtuele machine in (zoals bepaald in de vorige taak). U kunt ook een komma toevoegen en de TCP-poort van SQL Server opgeven. Bijvoorbeeld `mysqlvmlabel.eastus.cloudapp.azure.com,1433`.
 
-1. Kies in het vak **Verificatie****SQL Server-verificatie**.
+1. Kies in het vak **Verificatie** **SQL Server-verificatie**.
 
 1. Typ in het vak **Aanmelden** een geldige SQL-aanmeldingsnaam.
 

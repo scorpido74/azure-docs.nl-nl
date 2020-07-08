@@ -8,10 +8,10 @@ ms.topic: include
 ms.date: 12/11/2018
 ms.author: cherylmc
 ms.openlocfilehash: 31ccf14c82f6248c74d6af932fe9e338d26d2747
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175897"
 ---
 Op elke clientcomputer die u verbindt met een VNet via een punt-naar-site-verbinding, moet een clientcertificaat zijn geïnstalleerd. U genereert het clientcertificaat op basis van het basiscertificaat en installeert het clientcertificaat op elke clientcomputer. Als u geen geldig clientcertificaat hebt geïnstalleerd en de client probeert verbinding te maken met het VNet, mislukt de verificatie.
@@ -22,7 +22,7 @@ U kunt clientcertificaten genereren op de volgende manieren:
 
 - **Ondernemings certificaat:**
 
-  - Als u een oplossing voor een bedrijfs certificaat gebruikt, genereert u een client certificaat met de indelings *naam\@* van de algemene naam waarde yourdomain.com. Gebruik deze indeling in plaats van de indeling *domeinnaam\gebruikersnaam*.
+  - Als u een oplossing voor een bedrijfs certificaat gebruikt, genereert u een client certificaat met de indelings *naam \@ *van de algemene naam waarde yourdomain.com. Gebruik deze indeling in plaats van de indeling *domeinnaam\gebruikersnaam*.
   - Zorg ervoor dat het clientcertificaat dat u verleent, is gebaseerd op de certificaatsjabloon voor *Gebruiker met Clientverificatie* als het eerste item in de lijst. U kunt het certificaat controleren door op het clientcertificaat te dubbelklikken en **Enhanced Key Usage ** (Uitgebreid sleutelgebruik) weer te geven op het tabblad **Details**.
 
 - **Zelfondertekend basis certificaat:** Volg de stappen in een van de volgende P2S-certificaat artikelen zodat de client certificaten die u maakt, compatibel zijn met uw P2S-verbindingen. De stappen in deze artikelen zijn bedoeld om een compatibel clientcertificaat te maken: 

@@ -9,15 +9,15 @@ ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 6e7294f10ba094a1adaae399187fb9973397a561
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83868027"
 ---
 Gedeelde Azure-schijven (preview) is een nieuwe functie voor Azure Managed disks waarmee u tegelijkertijd een beheerde schijf kunt koppelen aan meerdere virtuele machines (Vm's). Als u een beheerde schijf aan meerdere Vm's koppelt, kunt u nieuwe, geclusterde toepassingen implementeren of migreren naar Azure.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 
 Vm's in het cluster kunnen lezen van of schrijven naar uw gekoppelde schijf op basis van de reserve ring die door de geclusterde toepassing is gekozen met behulp van [SCSI-permanente reserve ringen](https://www.t10.org/members/w_spc3.htm) (SCSI-PR). SCSI-PR is een industrie standaard die wordt gebruikt door toepassingen die on-premises worden uitgevoerd op Storage Area Network (SAN). Door SCSI-PR op een beheerde schijf in te scha kelen, kunt u deze toepassingen naar Azure migreren.
 

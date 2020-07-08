@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 06/07/2019
 ms.author: rogarana
 ms.openlocfilehash: b28427b3ede0cfaeb9e08d3c73b15ea7f2961f1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71180043"
 ---
 #### <a name="additional-premium-file-share-level-limits"></a>Extra limieten voor Premium file share-niveaus
@@ -26,7 +26,7 @@ ms.locfileid: "71180043"
 |Onderwerp  |Premium-bestand  |Standaard bestand |
 |---------|---------|---------|
 |Grootte                  |1 TiB         |1 TiB|
-|Maximum aantal IOPS per bestand     |5.000         |1000|
+|Maximum aantal IOPS per bestand     |5\.000         |1000|
 |Gelijktijdige ingangen    |2.000         |2.000|
 |Uitgaand verkeer  |300-MiB per seconde|      Zie standaard waarden voor doorvoer bestanden|
 |Inkomend verkeer  |200-MiB per seconde| Zie standaard waarden voor doorvoer bestanden|

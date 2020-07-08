@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 4fdb891d668d99644d8a9ed9c15d158e65d53ba5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72793139"
 ---
 Voor het beveiligen van een Internet of Things IoT-infra structuur is een strenge, diep gaande strategie vereist. Deze strategie vereist dat u gegevens in de Cloud beveiligt, gegevens integriteit beschermt tijdens de overdracht via het open bare Internet en apparaten veilig inricht. Elke laag bouwt over hogere beveiligings garanties in de algehele infra structuur.

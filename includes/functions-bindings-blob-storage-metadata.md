@@ -10,15 +10,15 @@ ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: 3788fdb954917f28f64a0dfe035bed4ded0932d5
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69642134"
 ---
 De BLOB-trigger biedt verschillende eigenschappen van meta gegevens. Deze eigenschappen kunnen worden gebruikt als onderdeel van binding expressies in andere bindingen of als para meters in uw code. Deze waarden hebben dezelfde semantiek als het type [CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet) .
 
-|Eigenschap  |Type  |Beschrijving  |
+|Eigenschap  |Type  |Description  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|Het pad naar de activerings-blob.|
 |`Uri`|`System.Uri`|De URI van de BLOB voor de primaire locatie.|

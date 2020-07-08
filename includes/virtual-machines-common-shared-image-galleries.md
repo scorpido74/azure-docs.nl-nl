@@ -8,20 +8,20 @@ ms.date: 04/16/2020
 ms.author: akjosh
 ms.custom: include file
 ms.openlocfilehash: 5af9deef7b6c3e2ea688f9e8ad5cc498f79c784e
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84317646"
 ---
 Galerie met gedeelde afbeeldingen is een service die u helpt bij het bouwen van structuur en organisatie rond uw beheerde installatie kopieën. Galerieën met gedeelde afbeeldingen bieden:
 
 - Beheerde algemene replicatie van installatie kopieën.
-- Versie beheer en groepering van installatie kopieën voor eenvoudiger beheer.
-- Maxi maal beschik bare installatie kopieën met ZRS-accounts (zone redundant Storage) in regio's die Beschikbaarheidszones ondersteunen. ZRS biedt betere flexibiliteit tegen zonegebonden-fouten.
+- Versiebeheer en groepering van installatiekopieën voor eenvoudiger beheer.
+- Maxi maal beschik bare installatie kopieën met ZRS-accounts (zone redundant Storage) in regio's die Beschikbaarheidszones ondersteunen. ZRS biedt betere flexibiliteit tegen zonegebonden fouten.
 - Ondersteuning voor Premium Storage (Premium_LRS).
-- Het delen van meerdere abonnementen en zelfs tussen Active Directory (AD)-tenants met behulp van RBAC.
-- Het schalen van uw implementaties met afbeeldings replica's in elke regio.
+- U kunt delen tussen meerdere abonnementen en zelfs tussen Active Directory (AD)-tenants met behulp van RBAC.
+- Het schalen van uw implementaties met replica's van installatiekopieën in elke regio.
 
 Met behulp van een galerie met gedeelde afbeeldingen kunt u uw installatie kopieën delen met verschillende gebruikers, service-principals of AD-groepen binnen uw organisatie. Gedeelde installatie kopieën kunnen worden gerepliceerd naar meerdere regio's, zodat u uw implementaties sneller kunt schalen.
 
@@ -29,9 +29,9 @@ Een installatie kopie is een kopie van een volledige virtuele machine (inclusief
 
 Als u een groot aantal installatie kopieën hebt die u moet onderhouden, en u deze beschikbaar wilt maken in het hele bedrijf, kunt u een galerie met gedeelde afbeeldingen gebruiken als opslag plaats. 
 
-De functie gedeelde installatie kopie galerie heeft meerdere bron typen:
+De functie Shared Image Gallery heeft meerdere resourcetypen:
 
-| Resource | Beschrijving|
+| Resource | Description|
 |----------|------------|
 | **Bron van installatie kopie** | Dit is een resource die kan worden gebruikt voor het maken van een **installatie kopie versie** in een galerie met installatie kopieën. Een installatie kopie bron kan bestaan uit een bestaande virtuele machine van Azure die is [gegeneraliseerde of gespecialiseerde](#generalized-and-specialized-images), een beheerde installatie kopie, een moment opname of een installatie kopie-versie in een andere galerie met installatie kopieën. |
 | **Galerie met installatie kopieën** | Net als de Azure Marketplace is een **afbeeldings galerie** een opslag plaats voor het beheren en delen van installatie kopieën, maar u bepaalt wie toegang heeft. |
@@ -96,7 +96,7 @@ De bron regio's worden weer gegeven in de volgende tabel. Alle open bare regio's
 | Canada - oost           | VS - oost 2         | VS - noord-centraal   | VS (overheid) - Texas       |
 | India - centraal         | VS-Oost 2 EUAP    | Europa - noord       | VS (overheid) - Virginia    |
 | VS - centraal            | Frankrijk - centraal    | VS - zuid-centraal   | India - west         |
-| Centrale VS-EUAP       | Frankrijk - zuid      | VS - west-centraal    | VS - west            |
+| VS - centraal EUAP       | Frankrijk - zuid      | VS - west-centraal    | VS - west            |
 |                       |                   |                    | VS - west 2          |
 
 
@@ -162,12 +162,12 @@ Er worden geen extra kosten in rekening gebracht voor het gebruik van de service
 Nadat u deze hebt gemaakt, kunt u enkele wijzigingen aanbrengen in de afbeeldingen galerie-resources. Deze zijn beperkt tot:
  
 Galerie met gedeelde afbeeldingen:
-- Beschrijving
+- Description
 
 Definitie van installatie kopie:
 - Aanbevolen Vcpu's
 - Aanbevolen geheugen
-- Beschrijving
+- Description
 - Einde van de levens duur
 
 Versie van installatie kopie:
@@ -184,7 +184,7 @@ Met de volgende Sdk's wordt ondersteuning geboden voor het maken van gedeelde af
 - [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
 - [Node.js](https://docs.microsoft.com/javascript/api/@azure/arm-compute)
 - [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
-- [OK](https://docs.microsoft.com/azure/go/)
+- [Go](https://docs.microsoft.com/azure/go/)
 
 ## <a name="templates"></a>Sjablonen
 
@@ -218,7 +218,7 @@ U kunt een resource voor de galerie met gedeelde afbeeldingen maken met behulp v
 
 Volg de onderstaande stappen om alle resources van de gedeelde installatie kopie galerie weer te geven in abonnementen waartoe u toegang hebt op de Azure Portal:
 
-1. Open [Azure Portal](https://portal.azure.com).
+1. Open de [Azure Portal](https://portal.azure.com).
 1. Schuif naar beneden op de pagina en selecteer **alle resources**.
 1. Selecteer alle abonnementen waaronder u alle resources wilt weer geven.
 1. Zoek naar bronnen van de galerie van het type **gedeelde afbeeldingen**,.

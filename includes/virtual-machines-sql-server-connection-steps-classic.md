@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 57f238a8f91df1271e91894b88a7f02118b1f123
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175979"
 ---
 ### <a name="determine-the-dns-name-of-the-virtual-machine"></a>De DNS-naam van de virtuele machine achterhalen
@@ -29,7 +29,7 @@ Als u vanaf een andere computer verbinding wilt maken met de database-engine van
     Als u het eerder gekozen poortnummer van het openbare eindpunt niet meer weet, kunt u dit terugvinden in het gedeelte **Eindpunten** van de blade **Virtuele machine**.
    
     ![Openbare poort](./media/virtual-machines-sql-server-connection-steps/sql-vm-port-number.png)
-3. Kies in het vak **Verificatie****SQL Server-verificatie**.
+3. Kies in het vak **Verificatie** **SQL Server-verificatie**.
 4. Typ in het vak **Aanmelding** de naam van een aanmelding die u eerder hebt gemaakt.
 5. Typ in het vak **Wachtwoord** het wachtwoord van de aanmelding die u eerder hebt gemaakt.
 6. Klik op **Verbinden**.

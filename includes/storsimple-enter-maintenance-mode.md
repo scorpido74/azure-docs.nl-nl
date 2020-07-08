@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: d35f0ef783a2c48f8211657bc8829635c19495aa
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67176062"
 ---
 #### <a name="to-enter-maintenance-mode"></a>Onderhouds modus activeren
 1. Kies in het menu van de seriële console optie 1, **Meld u aan met volledige toegang**.
-2. Typ het wacht woord. Het standaard wachtwoord is **Wachtwoord1**.
+2. Typ het wacht woord. Het standaardapparaatwachtwoord is **Wachtwoord1**.
 3. Typ bij de opdracht prompt
    
      `Enter-HcsMaintenanceMode`

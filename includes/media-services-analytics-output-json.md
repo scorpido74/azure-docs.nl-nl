@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 065cb4daa9501ee658d364dad43b9e03798e4083
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67176449"
 ---
 De taak produceert een JSON-uitvoer bestand dat meta gegevens bevat over gedetecteerde en getraceerde gezichten. De meta gegevens bevatten coördinaten die de locatie van de gezichten aangeven, evenals een face ID-nummer dat het bijhouden van die persoon aangeeft. Gezichts-ID-nummers zijn gevoelig voor het opnieuw instellen van de voor kant wanneer het frontale gezicht verloren is gegaan of wordt overlapt in het kader, wat betekent dat sommige personen meerdere Id's krijgen toegewezen.
@@ -17,7 +17,7 @@ De JSON van de uitvoer bevat de volgende elementen:
 
 ### <a name="root-json-elements"></a>Wortel-JSON-elementen
 
-| Element | Beschrijving |
+| Element | Description |
 | --- | --- |
 | versie |Dit verwijst naar de versie van de video-API. |
 | lijnen |' Ticks ' per seconde van de video. |
@@ -28,7 +28,7 @@ De JSON van de uitvoer bevat de volgende elementen:
 
 ### <a name="fragments-json-elements"></a>Fragmenten JSON-elementen
 
-|Element|Beschrijving|
+|Element|Description|
 |---|---|
 | start |De begin tijd van de eerste gebeurtenis in Ticks. |
 | duur |De lengte van het fragment, in Ticks. |

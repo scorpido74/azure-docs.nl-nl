@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: 00b0c1b1a40ad16db177916c57dba6e9d5a187a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67176563"
 ---
 Volg de stappen voor uw specifieke omstandigheden.
@@ -26,7 +26,7 @@ Volg de stappen voor uw specifieke omstandigheden.
 Gebruik deze stappen alleen als er geen manier is om de computer waarop de proces server is geïnstalleerd, opnieuw in te stellen.
 
 1. Meld u als beheerder aan bij de configuratie server.
-2. Open een opdracht prompt met beheerders rechten en blader `%ProgramData%\ASR\home\svsystems\bin`naar.
+2. Open een opdracht prompt met beheerders rechten en blader naar `%ProgramData%\ASR\home\svsystems\bin` .
 3. Voer deze opdracht uit om een lijst met een of meer proces servers op te halen.
 
     ```
