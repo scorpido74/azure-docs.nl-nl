@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 9e282aed68e58409a53546a08699cc7035633f62
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: c55824990779ff7947a7e89b31f5fa2479d940dd
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85505188"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857148"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-java"></a>Service-naar-service verificatie met Azure Data Lake Storage Gen1 met behulp van Java
 
@@ -41,39 +41,45 @@ In dit artikel leert u hoe u de Java SDK gebruikt om service-to-service-verifica
 
 2. Voeg de volgende afhankelijkheden toe aan het **pom.xml**-bestand in Maven. Voeg het volgende fragment toe vóór de **\</project>** Tag:
 
-        <dependencies>
-          <dependency>
-            <groupId>com.microsoft.azure</groupId>
-            <artifactId>azure-data-lake-store-sdk</artifactId>
-            <version>2.2.3</version>
-          </dependency>
-          <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-nop</artifactId>
-            <version>1.7.21</version>
-          </dependency>
-        </dependencies>
+    ```xml
+    <dependencies>
+      <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure-data-lake-store-sdk</artifactId>
+        <version>2.2.3</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-nop</artifactId>
+        <version>1.7.21</version>
+      </dependency>
+    </dependencies>
+    ```
 
     De eerste afhankelijkheid is het gebruik van de Data Lake Storage Gen1 SDK ( `azure-data-lake-store-sdk` ) in de Maven-opslag plaats. De tweede afhankelijkheid dient om op te geven welk framework voor logboekregistratie (`slf4j-nop`) voor deze toepassing moet worden gebruikt. De Data Lake Storage Gen1 SDK gebruikt [slf4j](https://www.slf4j.org/) logging gevel, waarmee u kunt kiezen uit een aantal populaire logging-frameworks, zoals Log4j, Java-logboek registratie, logback, enzovoort, of geen logboek registratie. In dit voorbeeld wordt logboekregistratie uitgeschakeld. Daarom wordt de binding **slf4j-nop** gebruikt. [Hier](https://www.slf4j.org/manual.html#projectDep) vindt u andere opties voor logboekregistratie voor uw toepassing.
 
 3. Voeg de volgende importinstructies toe aan uw toepassing.
 
-        import com.microsoft.azure.datalake.store.ADLException;
-        import com.microsoft.azure.datalake.store.ADLStoreClient;
-        import com.microsoft.azure.datalake.store.DirectoryEntry;
-        import com.microsoft.azure.datalake.store.IfExists;
-        import com.microsoft.azure.datalake.store.oauth2.AccessTokenProvider;
-        import com.microsoft.azure.datalake.store.oauth2.ClientCredsTokenProvider;
+    ```java
+    import com.microsoft.azure.datalake.store.ADLException;
+    import com.microsoft.azure.datalake.store.ADLStoreClient;
+    import com.microsoft.azure.datalake.store.DirectoryEntry;
+    import com.microsoft.azure.datalake.store.IfExists;
+    import com.microsoft.azure.datalake.store.oauth2.AccessTokenProvider;
+    import com.microsoft.azure.datalake.store.oauth2.ClientCredsTokenProvider;
+    ```
 
 4. Gebruik het volgende code fragment in uw Java-toepassing om het token te verkrijgen voor de Active Directory-webtoepassing die u eerder hebt gemaakt met behulp van een van de subklassen van `AccessTokenProvider` (het volgende voor beeld `ClientCredsTokenProvider` ). De tokenprovider slaat de referenties die worden gebruikt voor het ophalen van het token, op in de cache en vernieuwt het token automatisch als het bijna is verlopen. Het is mogelijk om uw eigen subklassen te maken `AccessTokenProvider` , zodat er tokens worden verkregen door de code van uw klant. We gebruiken nu alleen de versie die in de SDK is opgenomen.
 
     Vervang **FILL-IN-HERE** met de daadwerkelijke waarden voor de Azure Active Directory-webtoepassing.
 
-        private static String clientId = "FILL-IN-HERE";
-        private static String authTokenEndpoint = "FILL-IN-HERE";
-        private static String clientKey = "FILL-IN-HERE";
-    
-        AccessTokenProvider provider = new ClientCredsTokenProvider(authTokenEndpoint, clientId, clientKey);   
+    ```java
+    private static String clientId = "FILL-IN-HERE";
+    private static String authTokenEndpoint = "FILL-IN-HERE";
+    private static String clientKey = "FILL-IN-HERE";
+
+    AccessTokenProvider provider = new ClientCredsTokenProvider(authTokenEndpoint, clientId, clientKey);   
+    ```
 
 De Data Lake Storage Gen1 SDK biedt handige methoden waarmee u de beveiligings tokens kunt beheren die nodig zijn om te communiceren met het Data Lake Storage Gen1-account. Dit zijn echter niet de enige methoden die met SDK kunnen worden gebruikt. U kunt elke andere methode voor het verkrijgen van een token gebruiken. Zo kunt u de [Azure Active Directory SDK](https://github.com/AzureAD/azure-activedirectory-library-for-java) gebruiken, of uw persoonlijke code.
 

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 225c67421a26edc52e06ee0cf0b6e1c965f52009
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: e3e54b037485a85d836e7e7e67c9af2d9d140986
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85515598"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856815"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Maak HDInsight-clusters met Azure Data Lake Storage Gen1 met behulp van de Azure Portal
 
@@ -45,7 +45,7 @@ In deze sectie maakt u een HDInsight-cluster met Data Lake Storage Gen1 accounts
 
 Een HDInsight-cluster met een Data Lake Storage Gen1-account maken als het standaard opslag account:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Volg [clusters maken](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) voor algemene informatie over het maken van HDInsight-clusters.
 3. Selecteer op de Blade **opslag** onder **primair opslag type** **Azure data Lake Storage gen1**en voer de volgende gegevens in:
 
@@ -64,7 +64,7 @@ De volgende instructies maken een HDInsight-cluster met een Azure Storage-accoun
 
 Een HDInsight-cluster met een Data Lake Storage Gen1-account maken als een extra opslag account:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Volg [clusters maken](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) voor algemene informatie over het maken van HDInsight-clusters.
 3. Selecteer op de Blade **opslag** onder **primair opslag type** **Azure Storage**en voer de volgende gegevens in:
 
@@ -170,7 +170,9 @@ Wanneer u met gegevens in een Data Lake Storage Gen1 account werkt, zijn er enke
 
 Als u bijvoorbeeld het cluster gebruikt dat u hebt gemaakt met Data Lake Storage Gen1 als primaire opslag, is het pad naar de gegevens: *adl://<data_lake_storage_gen1_account_name>/azuredatalakestore.net/Path/to/file*. Een Hive-query voor het maken van een tabel uit voorbeeld gegevens die zijn opgeslagen in het Data Lake Storage Gen1-account ziet er als volgt uit:
 
-    CREATE EXTERNAL TABLE websitelog (str string) LOCATION 'adl://hdiadlsg1storage.azuredatalakestore.net/clusters/myhdiadlcluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/'
+```console
+CREATE EXTERNAL TABLE websitelog (str string) LOCATION 'adl://hdiadlsg1storage.azuredatalakestore.net/clusters/myhdiadlcluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/'
+```
 
 Beschreven
 
@@ -195,7 +197,7 @@ U kunt een Spark-cluster gebruiken om Spark-taken uit te voeren op gegevens die 
 
 U kunt het Data Lake Storage Gen1-account gebruiken om gegevens van een storm-topologie te schrijven. Zie [Azure data Lake Storage gen1 gebruiken met Apache Storm met HDInsight](../hdinsight/storm/apache-storm-write-data-lake-store.md)voor instructies over het uitvoeren van dit scenario.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Data Lake Storage Gen1 gebruiken met Azure HDInsight-clusters](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
 * [Power shell: een HDInsight-cluster maken voor het gebruik van Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-powershell.md)

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 00b4306340e9888ea5a794c7940a021674060e05
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: f0fba815cdc8425f016b74be7df36e5b28dfee3d
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85316127"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856976"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Veelgestelde vragen over Azure Cache voor Redis
 Meer informatie over de antwoorden op veelgestelde vragen, patronen en aanbevolen procedures voor Azure cache voor redis.
@@ -213,22 +213,23 @@ Een van de fantastische dingen over redis is dat er veel clients zijn die veel v
 ### <a name="is-there-a-local-emulator-for-azure-cache-for-redis"></a>Is er een lokale emulator voor Azure cache voor redis?
 Er is geen lokale emulator voor Azure cache voor redis, maar u kunt de MSOpenTech-versie van redis-server.exe uitvoeren vanaf de [opdracht regel Programma's redis](https://github.com/MSOpenTech/redis/releases/) op uw lokale computer en er verbinding mee maken om een vergelijk bare ervaring te krijgen met een lokale cache-emulator, zoals wordt weer gegeven in het volgende voor beeld:
 
-    private static Lazy<ConnectionMultiplexer>
-          lazyConnection = new Lazy<ConnectionMultiplexer>
-        (() =>
-        {
-            // Connect to a locally running instance of Redis to simulate a local cache emulator experience.
-            return ConnectionMultiplexer.Connect("127.0.0.1:6379");
-        });
+```csharp
+private static Lazy<ConnectionMultiplexer>
+      lazyConnection = new Lazy<ConnectionMultiplexer>
+    (() =>
+    {
+        // Connect to a locally running instance of Redis to simulate a local cache emulator experience.
+        return ConnectionMultiplexer.Connect("127.0.0.1:6379");
+    });
 
-        public static ConnectionMultiplexer Connection
+    public static ConnectionMultiplexer Connection
+    {
+        get
         {
-            get
-            {
-                return lazyConnection.Value;
-            }
+            return lazyConnection.Value;
         }
-
+    }
+```
 
 U kunt eventueel een bestand [redis. conf](https://redis.io/topics/config) configureren dat meer nauw keurig overeenkomt met de [standaard cache-instellingen](cache-configure.md#default-redis-server-configuration) voor uw online Azure-cache voor redis, indien gewenst.
 
@@ -366,10 +367,12 @@ In principe betekent dit dat wanneer het aantal bezette threads groter is dan de
 
 Als we een voor beeld van een fout bericht van stack Exchange. redis (build 1.0.450 of hoger) bekijken, ziet u dat er nu thread pool-statistieken worden afgedrukt (Zie de details van IOCP en WORKer hieronder).
 
+```output
     System.TimeoutException: Timeout performing GET MyKey, inst: 2, mgr: Inactive,
     queue: 6, qu: 0, qs: 6, qc: 0, wr: 0, wq: 0, in: 0, ar: 0,
     IOCP: (Busy=6,Free=994,Min=4,Max=1000),
     WORKER: (Busy=3,Free=997,Min=4,Max=1000)
+```
 
 In het vorige voor beeld ziet u dat er voor IOCP-thread zes bezette threads zijn en het systeem zo is geconfigureerd dat vier minimale threads zijn toegestaan. In dit geval zou de client waarschijnlijk 2 500-MS vertragingen hebben gezien, omdat 6 > 4.
 

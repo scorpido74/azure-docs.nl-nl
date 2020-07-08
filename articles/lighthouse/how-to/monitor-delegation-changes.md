@@ -3,12 +3,12 @@ title: Overdrachts wijzigingen in uw beheer Tenant bewaken
 description: Meer informatie over het bewaken van overdrachts activiteiten van klant tenants naar uw beheer Tenant.
 ms.date: 03/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 5bb299f85074675b1d02943ee623394a7deff000
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 9a772cc577392558f050211b7f767928ecbb707b
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85515779"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919130"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Overdrachts wijzigingen in uw beheer Tenant bewaken
 
@@ -73,7 +73,7 @@ Nadat u het account voor de Service-Principal hebt gemaakt en de rol van bewakin
 
 Wanneer u een nieuw Service-Principal-account hebt gemaakt met behulp van de toegang tot het hoofd bereik van de beheer-Tenant, kunt u deze gebruiken voor het opvragen en rapporteren van overdrachts activiteiten in uw Tenant. 
 
-[Dit Azure PowerShell script](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes) kan worden gebruikt om een query uit te proberen voor de afgelopen 1 dag van de activiteit en rapporten van toegevoegde of verwijderde delegaties (of pogingen die niet zijn gelukt). Het zoekt naar de logboek gegevens van de [Tenant activiteit](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) en bouwt vervolgens de volgende waarden op om te rapporteren over delegaties die worden toegevoegd of verwijderd:
+[Dit Azure PowerShell script](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes) kan worden gebruikt om een query uit te proberen voor de afgelopen 1 dag van de activiteit en rapporten van toegevoegde of verwijderde delegaties (of pogingen die niet zijn gelukt). Het zoekt naar de logboek gegevens van de [Tenant activiteit](/rest/api/monitor/TenantActivityLogs/List) en bouwt vervolgens de volgende waarden op om te rapporteren over delegaties die worden toegevoegd of verwijderd:
 
 - **DelegatedResourceId**: de id van het gedelegeerde abonnement of de resource groep
 - **CustomerTenantId**: de Tenant-id van de klant

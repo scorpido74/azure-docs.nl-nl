@@ -3,12 +3,12 @@ title: Aangepaste artefacten maken voor uw virtuele machine van DevTest Labs | M
 description: Meer informatie over het ontwerpen van uw eigen artefacten voor gebruik met Azure DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: f33b6da3354dc3caf9376f249b802d324aa3148c
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 775908749f52c71eeaf97eef25e3787f9b6794fc
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85482952"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857015"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Aangepaste artefacten maken voor uw virtuele machine van DevTest Labs
 
@@ -24,52 +24,56 @@ U kunt *artefacten* gebruiken om uw toepassing te implementeren en in te stellen
 ## <a name="artifact-definition-file-format"></a>Indeling van artefact definitie bestand
 In het volgende voor beeld ziet u de secties waaruit de basis structuur van een definitie bestand is opgebouwd:
 
-    {
-      "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
-      "title": "",
-      "description": "",
-      "iconUri": "",
-      "targetOsType": "",
-      "parameters": {
-        "<parameterName>": {
-          "type": "",
-          "displayName": "",
-          "description": ""
-        }
-      },
-      "runCommand": {
-        "commandToExecute": ""
+```json
+  {
+    "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
+    "title": "",
+    "description": "",
+    "iconUri": "",
+    "targetOsType": "",
+    "parameters": {
+      "<parameterName>": {
+        "type": "",
+        "displayName": "",
+        "description": ""
       }
+    },
+    "runCommand": {
+      "commandToExecute": ""
     }
+  }
+```
 
-| Elementnaam | Vereist? | Beschrijving |
+| Elementnaam | Vereist? | Description |
 | --- | --- | --- |
-| $schema |Nee |Locatie van het JSON-schema bestand. Het JSON-schema bestand kan u helpen de geldigheid van het definitie bestand te testen. |
-| titel |Ja |De naam van het artefact dat wordt weer gegeven in het lab. |
-| description |Ja |Beschrijving van het artefact dat wordt weer gegeven in het lab. |
-| iconUri |Nee |De URI van het pictogram dat wordt weer gegeven in het lab. |
-| targetOsType |Ja |Het besturings systeem van de virtuele machine waarop het artefact is geïnstalleerd. Ondersteunde opties zijn Windows en Linux. |
-| parameters |Nee |Waarden die worden gegeven wanneer de opdracht voor artefact installatie wordt uitgevoerd op een computer. Zo kunt u uw artefact aanpassen. |
-| Opdracht |Ja |Installatie opdracht voor artefact die op een virtuele machine wordt uitgevoerd. |
+| $schema |No |Locatie van het JSON-schema bestand. Het JSON-schema bestand kan u helpen de geldigheid van het definitie bestand te testen. |
+| titel |Yes |De naam van het artefact dat wordt weer gegeven in het lab. |
+| description |Yes |Beschrijving van het artefact dat wordt weer gegeven in het lab. |
+| iconUri |No |De URI van het pictogram dat wordt weer gegeven in het lab. |
+| targetOsType |Yes |Het besturings systeem van de virtuele machine waarop het artefact is geïnstalleerd. Ondersteunde opties zijn Windows en Linux. |
+| parameters |No |Waarden die worden gegeven wanneer de opdracht voor artefact installatie wordt uitgevoerd op een computer. Zo kunt u uw artefact aanpassen. |
+| Opdracht |Yes |Installatie opdracht voor artefact die op een virtuele machine wordt uitgevoerd. |
 
 ### <a name="artifact-parameters"></a>Artefactparameters
 Geef in de sectie para meters van het definitie bestand op welke waarden een gebruiker kan invoeren wanneer een artefact wordt geïnstalleerd. U kunt naar deze waarden verwijzen in de opdracht voor artefact installatie.
 
 Gebruik de volgende structuur om para meters te definiëren:
 
-    "parameters": {
-      "<parameterName>": {
-        "type": "<type-of-parameter-value>",
-        "displayName": "<display-name-of-parameter>",
-        "description": "<description-of-parameter>"
-      }
+```json
+  "parameters": {
+    "<parameterName>": {
+      "type": "<type-of-parameter-value>",
+      "displayName": "<display-name-of-parameter>",
+      "description": "<description-of-parameter>"
     }
+  }
+```
 
 | Elementnaam | Vereist? | Beschrijving |
 | --- | --- | --- |
-| type |Ja |Type parameter waarde. Zie de volgende lijst voor de toegestane typen. |
-| displayName |Ja |De naam van de para meter die wordt weer gegeven voor een gebruiker in het lab. |
-| description |Ja |Beschrijving van de para meter die wordt weer gegeven in het lab. |
+| type |Yes |Type parameter waarde. Zie de volgende lijst voor de toegestane typen. |
+| displayName |Yes |De naam van de para meter die wordt weer gegeven voor een gebruiker in het lab. |
+| description |Yes |Beschrijving van de para meter die wordt weer gegeven in het lab. |
 
 Toegestane typen zijn:
 
@@ -115,12 +119,14 @@ De volgende lijst bevat algemene functies:
 
 In het volgende voor beeld ziet u hoe u expressies en functies kunt gebruiken om een waarde te maken:
 
-    runCommand": {
-        "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./startChocolatey.ps1'
-    , ' -RawPackagesList ', parameters('packages')
-    , ' -Username ', parameters('installUsername')
-    , ' -Password ', parameters('installPassword'))]"
-    }
+```json
+  runCommand": {
+      "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./startChocolatey.ps1'
+  , ' -RawPackagesList ', parameters('packages')
+  , ' -Username ', parameters('installUsername')
+  , ' -Password ', parameters('installPassword'))]"
+  }
+```
 
 ## <a name="create-a-custom-artifact"></a>Een aangepast artefact maken
 

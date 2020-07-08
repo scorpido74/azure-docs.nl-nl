@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: osamaz
-ms.openlocfilehash: 6aa66ddc52665c22310fb58977fd516eea4e806a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6b9db450139c22fdf2df0875f36c65cdf684dfb3
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651984"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856704"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Voor beelden van router configuraties voor het instellen en beheren van route ring
 Op deze pagina vindt u voor beelden van interface-en routerings configuratie voor Cisco IOS-XE-en Juniper MX-serie routers wanneer u met Azure ExpressRoute werkt.
@@ -40,78 +40,90 @@ U hebt een subinterface nodig per peering in elke router waarmee u verbinding ma
 
 Dit voor beeld bevat de subinterface-definitie voor een subinterface met één VLAN-ID. De VLAN-ID is uniek per peering. Het laatste octet van uw IPv4-adres zal altijd een oneven getal zijn.
 
-    interface GigabitEthernet<Interface_Number>.<Number>
-     encapsulation dot1Q <VLAN_ID>
-     ip address <IPv4_Address><Subnet_Mask>
+```console
+interface GigabitEthernet<Interface_Number>.<Number>
+ encapsulation dot1Q <VLAN_ID>
+ ip address <IPv4_Address><Subnet_Mask>
+```
 
 **Interface definitie van QinQ**
 
 Dit voor beeld bevat de subinterface-definitie voor een subinterface met twee VLAN-Id's. De buitenste VLAN-ID (s-tag), indien gebruikt, blijft hetzelfde voor alle peerings. De binnenste VLAN-ID (c-tag) is uniek per peering. Het laatste octet van uw IPv4-adres zal altijd een oneven getal zijn.
 
-    interface GigabitEthernet<Interface_Number>.<Number>
-     encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
-     ip address <IPv4_Address><Subnet_Mask>
+```console
+interface GigabitEthernet<Interface_Number>.<Number>
+ encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
+ ip address <IPv4_Address><Subnet_Mask>
+```
 
 ### <a name="set-up-ebgp-sessions"></a>EBGP-sessies instellen
 U moet voor elke peering een BGP-sessie met micro soft instellen. Stel een BGP-sessie in met behulp van het volgende voor beeld. Als het IPv4-adres dat u hebt gebruikt voor de subinterface, a. b. c. d is, is het IP-adres van de BGP-Neighbor (micro soft) a. b. c. d + 1. Het laatste octet van het IPv4-adres van de BGP-neighbor zal altijd een even getal zijn.
 
-    router bgp <Customer_ASN>
-     bgp log-neighbor-changes
-     neighbor <IP#2_used_by_Azure> remote-as 12076
-     !        
-     address-family ipv4
-     neighbor <IP#2_used_by_Azure> activate
-     exit-address-family
-    !
+```console
+router bgp <Customer_ASN>
+ bgp log-neighbor-changes
+ neighbor <IP#2_used_by_Azure> remote-as 12076
+ !
+ address-family ipv4
+ neighbor <IP#2_used_by_Azure> activate
+ exit-address-family
+!
+```
 
 ### <a name="set-up-prefixes-to-be-advertised-over-the-bgp-session"></a>Voor voegsels instellen die moeten worden geadverteerd via de BGP-sessie
 Configureer uw router om te adverteren Selecteer voor voegsels naar micro soft met behulp van het volgende voor beeld.
 
-    router bgp <Customer_ASN>
-     bgp log-neighbor-changes
-     neighbor <IP#2_used_by_Azure> remote-as 12076
-     !        
-     address-family ipv4
-      network <Prefix_to_be_advertised> mask <Subnet_mask>
-      neighbor <IP#2_used_by_Azure> activate
-     exit-address-family
-    !
+```console
+router bgp <Customer_ASN>
+ bgp log-neighbor-changes
+ neighbor <IP#2_used_by_Azure> remote-as 12076
+ !
+ address-family ipv4
+  network <Prefix_to_be_advertised> mask <Subnet_mask>
+  neighbor <IP#2_used_by_Azure> activate
+ exit-address-family
+!
+```
 
 ### <a name="route-maps"></a>Route kaarten
 Gebruik route kaarten en voorvoegsel lijsten om voor voegsels te filteren die worden door gegeven in uw netwerk. Raadpleeg het volgende voor beeld en controleer of u de juiste lijst met voor voegsels hebt ingesteld.
 
-    router bgp <Customer_ASN>
-     bgp log-neighbor-changes
-     neighbor <IP#2_used_by_Azure> remote-as 12076
-     !        
-     address-family ipv4
-      network <Prefix_to_be_advertised> mask <Subnet_mask>
-      neighbor <IP#2_used_by_Azure> activate
-      neighbor <IP#2_used_by_Azure> route-map <MS_Prefixes_Inbound> in
-     exit-address-family
-    !
-    route-map <MS_Prefixes_Inbound> permit 10
-     match ip address prefix-list <MS_Prefixes>
-    !
+```console
+router bgp <Customer_ASN>
+ bgp log-neighbor-changes
+ neighbor <IP#2_used_by_Azure> remote-as 12076
+ !
+ address-family ipv4
+  network <Prefix_to_be_advertised> mask <Subnet_mask>
+  neighbor <IP#2_used_by_Azure> activate
+  neighbor <IP#2_used_by_Azure> route-map <MS_Prefixes_Inbound> in
+ exit-address-family
+!
+route-map <MS_Prefixes_Inbound> permit 10
+ match ip address prefix-list <MS_Prefixes>
+!
+```
 
 ### <a name="configure-bfd"></a>BFD configureren
 
 U configureert BFD op twee plaatsen: één op interface niveau en een andere op BGP-niveau. Het voor beeld hier is voor de QinQ-interface. 
 
-    interface GigabitEthernet<Interface_Number>.<Number>
-     bfd interval 300 min_rx 300 multiplier 3
-     encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
-     ip address <IPv4_Address><Subnet_Mask>
-    
-    router bgp <Customer_ASN>
-     bgp log-neighbor-changes
-     neighbor <IP#2_used_by_Azure> remote-as 12076
-     !        
-     address-family ipv4
-      neighbor <IP#2_used_by_Azure> activate
-      neighbor <IP#2_used_by_Azure> fall-over bfd
-     exit-address-family
-    !
+```console
+interface GigabitEthernet<Interface_Number>.<Number>
+ bfd interval 300 min_rx 300 multiplier 3
+ encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
+ ip address <IPv4_Address><Subnet_Mask>
+
+router bgp <Customer_ASN>
+ bgp log-neighbor-changes
+ neighbor <IP#2_used_by_Azure> remote-as 12076
+ !
+ address-family ipv4
+  neighbor <IP#2_used_by_Azure> activate
+  neighbor <IP#2_used_by_Azure> fall-over bfd
+ exit-address-family
+!
+```
 
 
 ## <a name="juniper-mx-series-routers"></a>Juniper MX-serie routers
@@ -123,6 +135,7 @@ De voor beelden in deze sectie zijn van toepassing op elke Juniper MX-serie rout
 
 Dit voor beeld bevat de subinterface-definitie voor een subinterface met één VLAN-ID. De VLAN-ID is uniek per peering. Het laatste octet van uw IPv4-adres zal altijd een oneven getal zijn.
 
+```console
     interfaces {
         vlan-tagging;
         <Interface_Number> {
@@ -134,12 +147,14 @@ Dit voor beeld bevat de subinterface-definitie voor een subinterface met één V
             }
         }
     }
+```
 
 
 **Interface definitie van QinQ**
 
 Dit voor beeld bevat de subinterface-definitie voor een subinterface met twee VLAN-Id's. De buitenste VLAN-ID (s-tag), indien gebruikt, blijft hetzelfde voor alle peerings. De binnenste VLAN-ID (c-tag) is uniek per peering. Het laatste octet van uw IPv4-adres zal altijd een oneven getal zijn.
 
+```console
     interfaces {
         <Interface_Number> {
             flexible-vlan-tagging;
@@ -151,10 +166,12 @@ Dit voor beeld bevat de subinterface-definitie voor een subinterface met twee VL
             }                               
         }                                   
     }                           
+```
 
 ### <a name="set-up-ebgp-sessions"></a>EBGP-sessies instellen
 U moet voor elke peering een BGP-sessie met micro soft instellen. Stel een BGP-sessie in met behulp van het volgende voor beeld. Als het IPv4-adres dat u hebt gebruikt voor de subinterface, a. b. c. d is, is het IP-adres van de BGP-Neighbor (micro soft) a. b. c. d + 1. Het laatste octet van het IPv4-adres van de BGP-neighbor zal altijd een even getal zijn.
 
+```console
     routing-options {
         autonomous-system <Customer_ASN>;
     }
@@ -167,10 +184,12 @@ U moet voor elke peering een BGP-sessie met micro soft instellen. Stel een BGP-s
             }                               
         }                                   
     }
+```
 
 ### <a name="set-up-prefixes-to-be-advertised-over-the-bgp-session"></a>Voor voegsels instellen die moeten worden geadverteerd via de BGP-sessie
 Configureer uw router om te adverteren Selecteer voor voegsels naar micro soft met behulp van het volgende voor beeld.
 
+```console
     policy-options {
         policy-statement <Policy_Name> {
             term 1 {
@@ -192,11 +211,12 @@ Configureer uw router om te adverteren Selecteer voor voegsels naar micro soft m
             }                               
         }                                   
     }
-
+```
 
 ### <a name="route-policies"></a>Routerings beleid
 U kunt route toewijzingen en voorvoegsel lijsten gebruiken om voor voegsels te filteren die worden door gegeven in uw netwerk. Raadpleeg het volgende voor beeld en controleer of u de juiste lijst met voor voegsels hebt ingesteld.
 
+```console
     policy-options {
         prefix-list MS_Prefixes {
             <IP_Prefix_1/Subnet_Mask>;
@@ -223,10 +243,12 @@ U kunt route toewijzingen en voorvoegsel lijsten gebruiken om voor voegsels te f
             }                               
         }                                   
     }
+```
 
 ### <a name="configure-bfd"></a>BFD configureren
 Configureer BFD alleen onder de sectie Protocol BGP.
 
+```console
     protocols {
         bgp { 
             group <Group_Name> { 
@@ -239,10 +261,12 @@ Configureer BFD alleen onder de sectie Protocol BGP.
             }                               
         }                                   
     }
+```
 
 ### <a name="configure-macsec"></a>MACSec configureren
 Voor de configuratie van MACSec moet de verbindings koppelings sleutel (CAK) en de connectiviteits sleutel naam (CKN) worden vergeleken met de geconfigureerde waarden via Power shell-opdrachten.
 
+```console
     security {
         macsec {
             connectivity-association <Connectivity_Association_Name> {
@@ -260,6 +284,7 @@ Voor de configuratie van MACSec moet de verbindings koppelings sleutel (CAK) en 
             }
         }
     }
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md) voor meer informatie.

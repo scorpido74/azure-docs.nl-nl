@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: 29ad5ca6c9058b88a539c7a3bb8ace4d9a65083a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84abbe8d9958bf41768f3706a700ae0ecad6b44f
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79278088"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857009"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Gegevens importeren en exporteren in azure cache voor redis
 Import/export is een Azure cache voor redis-gegevens beheer bewerking, waarmee u gegevens kunt importeren in azure-cache voor redis of gegevens uit Azure-cache exporteren voor redis door het importeren en exporteren van een Azure-cache voor de redis-data base (RDB) van een Premium-cache naar een BLOB in een Azure Storage-account.
@@ -124,10 +124,10 @@ Azure cache voor redis ondersteunt RDB-import via RDB versie 7.
 Ja, en u kunt importeren/exporteren tussen een geclusterde cache en een niet-geclusterde cache. Omdat redis-cluster [alleen data base 0 ondersteunt](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering), worden alle gegevens in andere data bases dan 0 niet geïmporteerd. Wanneer geclusterde cache gegevens worden geïmporteerd, worden de sleutels opnieuw verdeeld over de Shards van het cluster.
 
 ### <a name="how-does-importexport-work-with-a-custom-databases-setting"></a>Hoe werkt importeren/exporteren met een aangepaste data base-instelling?
-Sommige prijs categorieën hebben verschillende [database limieten](cache-configure.md#databases), dus er zijn enkele overwegingen bij het importeren als u een aangepaste waarde voor de `databases` instelling hebt geconfigureerd tijdens het maken van de cache.
+Sommige prijs categorieën hebben verschillende [database limieten](cache-configure.md#databases), dus er zijn enkele overwegingen bij het importeren als u een aangepaste waarde voor de instelling hebt geconfigureerd tijdens het maken van de `databases` cache.
 
-* Bij het importeren in een prijs categorie met een `databases` lagere limiet dan de laag die u hebt geëxporteerd:
-  * Als u het standaard aantal van `databases`16 voor alle prijs categorieën gebruikt, gaan er geen gegevens verloren.
+* Bij het importeren in een prijs categorie met een lagere `databases` limiet dan de laag die u hebt geëxporteerd:
+  * Als u het standaard aantal van `databases` 16 voor alle prijs categorieën gebruikt, gaan er geen gegevens verloren.
   * Als u een aangepast aantal gebruikt `databases` dat binnen de limieten voor de laag valt die u importeert, gaan er geen gegevens verloren.
   * Als de geëxporteerde gegevens gegevens bevatten in een Data Base die de limieten van de nieuwe laag overschrijdt, worden de gegevens van deze hogere data bases niet geïmporteerd.
 
@@ -142,7 +142,9 @@ Ja, voor Power shell-instructies Zie [een Azure-cache importeren voor redis](cac
 ### <a name="i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean"></a>Ik heb een time-outfout ontvangen tijdens de import/export-bewerking. Wat betekent dit?
 Als u de Blade **gegevens importeren** of **gegevens exporteren** langer dan 15 minuten overblijft voordat de bewerking wordt gestart, wordt een fout bericht met een fout melding weer gegeven die vergelijkbaar is met het volgende voor beeld:
 
-    The request to import data into cache 'contoso55' failed with status 'error' and error 'One of the SAS URIs provided could not be used for the following reason: The SAS token end time (se) must be at least 1 hour from now and the start time (st), if given, must be at least 15 minutes in the past.
+```output
+The request to import data into cache 'contoso55' failed with status 'error' and error 'One of the SAS URIs provided could not be used for the following reason: The SAS token end time (se) must be at least 1 hour from now and the start time (st), if given, must be at least 15 minutes in the past.
+```
 
 U kunt dit oplossen door de import-of export bewerking te initiëren voordat 15 minuten is verstreken.
 

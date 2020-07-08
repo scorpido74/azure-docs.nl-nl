@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: baa0ad790491351a17b638ba9d8eb75ed1f355b0
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: aa662dfbd98be5ec16a30e690f28196ca3868390
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758619"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855890"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Aanbevolen procedures voor de beveiliging van Azure Identity Management en Access Control
 
@@ -167,7 +167,7 @@ Hieronder vindt u opties en voor delen voor het inschakelen van verificatie in t
 * MFA-Challenge vereisen via Microsoft Authenticator voor alle gebruikers
 * Verperk verouderde verificatie protocollen.
 
-Deze methode is beschikbaar voor alle licentie categorieën, maar kan niet worden gemengd met het bestaande beleid voor voorwaardelijke toegang. U vindt meer informatie in de standaard instellingen van Azure AD-beveiliging
+Deze methode is beschikbaar voor alle licentie categorieën, maar kan niet worden gemengd met het bestaande beleid voor voorwaardelijke toegang. U vindt meer informatie in de [standaard instellingen van Azure AD-beveiliging](/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)
 
 **Optie 2**: [Schakel multi-factor Authentication in door de gebruikers status te wijzigen](../../active-directory/authentication/howto-mfa-userstates.md).   
 **Voor deel**: dit is de traditionele methode voor het vereisen van verificatie in twee stappen. Het werkt met [azure multi-factor Authentication in de Cloud en azure multi-factor Authentication-Server](/azure/active-directory/authentication/concept-mfa-whichversion). Wanneer u deze methode gebruikt, moeten gebruikers elke keer dat ze zich aanmelden een verificatie in twee stappen uitvoeren en het beleid voor voorwaardelijke toegang negeren.
@@ -189,7 +189,7 @@ Dit is de meest flexibele manier om verificatie in twee stappen voor uw gebruike
 Deze methode maakt gebruik van de Azure AD Identity Protection risico evaluatie om te bepalen of verificatie in twee stappen is vereist op basis van gebruikers-en aanmeldings Risico's voor alle Cloud toepassingen. Voor deze methode is Azure Active Directory P2-licentie vereist. Meer informatie over deze methode vindt u in [Azure Active Directory Identity Protection](/azure/active-directory/identity-protection/overview).
 
 > [!Note]
-> Optie 1, waardoor Multi-Factor Authentication wordt ingeschakeld door de gebruikers status te wijzigen, overschrijft het beleid voor voorwaardelijke toegang. Omdat opties 2 en 3 gebruikmaken van het beleid voor voorwaardelijke toegang, kunt u de optie 1 niet gebruiken.
+> Optie 2, waarmee Multi-Factor Authentication wordt ingeschakeld door de gebruikers status te wijzigen, overschrijft het beleid voor voorwaardelijke toegang. Omdat opties 3 en 4 gebruikmaken van het beleid voor voorwaardelijke toegang, kunt u de optie 2 niet gebruiken.
 
 Organisaties die geen extra lagen van identiteits beveiliging toevoegen, zoals verificatie in twee stappen, zijn gevoeliger voor aanvallen met referentie diefstal. Een aanval met een referentie diefstal kan leiden tot inbreuk op gegevens.
 

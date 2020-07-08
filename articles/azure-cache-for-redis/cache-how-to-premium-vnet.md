@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 2821ee637b2562b5287dd3d59cf943b3dcb7ef97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dae829336c5328bec4b620217c34c69fa5931b3a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010882"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856844"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Virtual Network ondersteuning configureren voor een Premium Azure-cache voor redis
 Azure cache voor redis heeft verschillende cache aanbiedingen, die flexibiliteit bieden bij het kiezen van de cache grootte en-functies, inclusief functies van de Premium-laag, zoals clustering, persistentie en ondersteuning voor virtuele netwerken. Een VNet is een privé netwerk in de Cloud. Wanneer een Azure-cache voor redis-exemplaar is geconfigureerd met een VNet, is het niet openbaar adresseerbaar en is deze alleen toegankelijk vanaf virtuele machines en toepassingen binnen het VNet. In dit artikel wordt beschreven hoe u ondersteuning voor virtuele netwerken kunt configureren voor een Premium Azure-cache voor een redis-exemplaar.
@@ -59,18 +59,20 @@ Nadat de cache is gemaakt, kunt u de configuratie voor het VNet bekijken door te
 
 Als u verbinding wilt maken met uw Azure-cache voor redis-instantie wanneer u een VNet gebruikt, geeft u de hostnaam van uw cache op in de connection string, zoals in het volgende voor beeld wordt weer gegeven:
 
-    private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-    {
-        return ConnectionMultiplexer.Connect("contoso5premium.redis.cache.windows.net,abortConnect=false,ssl=true,password=password");
-    });
+```csharp
+private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+{
+    return ConnectionMultiplexer.Connect("contoso5premium.redis.cache.windows.net,abortConnect=false,ssl=true,password=password");
+});
 
-    public static ConnectionMultiplexer Connection
+public static ConnectionMultiplexer Connection
+{
+    get
     {
-        get
-        {
-            return lazyConnection.Value;
-        }
+        return lazyConnection.Value;
     }
+}
+```
 
 ## <a name="azure-cache-for-redis-vnet-faq"></a>Veelgestelde vragen over Azure cache voor redis VNet
 De volgende lijst bevat antwoorden op veelgestelde vragen over de Azure-cache voor redis-schaling.
@@ -98,7 +100,7 @@ Wanneer Azure cache voor redis wordt gehost in een VNet, worden de poorten in de
 
 Er zijn negen uitgaande poort vereisten. Uitgaande aanvragen in deze bereiken zijn ofwel uitgaand voor andere services die nodig zijn om de cache te laten functioneren of intern voor het redis-subnet voor communicatie tussen knoop punten. Voor geo-replicatie bestaan er extra uitgaande vereisten voor communicatie tussen subnetten van de primaire en secundaire cache.
 
-| Poort(en) | Richting | Transportprotocol | Doel | Lokaal IP-adres | Extern IP-adres |
+| Poort(en) | Richting | Transportprotocol | Functie | Lokaal IP-adres | Extern IP-adres |
 | --- | --- | --- | --- | --- | --- |
 | 80, 443 |Uitgaand |TCP |Afhankelijkheden van redis op Azure Storage/PKI (Internet) | (Redis-subnet) |* |
 | 443 | Uitgaand | TCP | Afhankelijkheid van redis op Azure Key Vault | (Redis-subnet) | AzureKeyVault <sup>1</sup> |
@@ -124,15 +126,15 @@ Als u gebruikmaakt van georeplicatie tussen caches in virtuele netwerken van Azu
 
 Er zijn acht vereisten voor het poort bereik voor inkomend verkeer. Inkomende aanvragen in deze bereiken zijn ofwel inkomend van andere services die worden gehost in hetzelfde VNET of intern voor de communicatie van het redis-subnet.
 
-| Poort(en) | Richting | Transportprotocol | Doel | Lokaal IP-adres | Extern IP-adres |
+| Poort(en) | Richting | Transportprotocol | Functie | Lokaal IP-adres | Extern IP-adres |
 | --- | --- | --- | --- | --- | --- |
 | 6379, 6380 |Inkomend |TCP |Client communicatie naar redis, Azure-taak verdeling | (Redis-subnet) | (Redis subnet), Virtual Network, Azure Load Balancer <sup>1</sup> |
 | 8443 |Inkomend |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |
-| 8500 |Inkomend |TCP/UDP |Azure-taak verdeling | (Redis-subnet) |Azure Load Balancer |
+| 8500 |Inkomend |TCP/UDP |Azure-taakverdeling | (Redis-subnet) |Azure Load Balancer |
 | 10221-10231 |Inkomend |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis subnet), Azure Load Balancer |
 | 13000-13999 |Inkomend |TCP |Client communicatie met redis-clusters, Azure-taak verdeling | (Redis-subnet) |Virtual Network, Azure Load Balancer |
 | 15000-15999 |Inkomend |TCP |Client communicatie met redis-clusters, Azure-taak verdeling en geo-replicatie | (Redis-subnet) |Virtual Network, Azure Load Balancer, (geo-replica peer-subnet) |
-| 16001 |Inkomend |TCP/UDP |Azure-taak verdeling | (Redis-subnet) |Azure Load Balancer |
+| 16001 |Inkomend |TCP/UDP |Azure-taakverdeling | (Redis-subnet) |Azure Load Balancer |
 | 20226 |Inkomend |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |
 
 <sup>1</sup> u kunt de service label ' AzureLoadBalancer ' (Resource Manager) (of ' AZURE_LOADBALANCER ' voor klassiek) gebruiken om de NSG-regels te ontwerpen.

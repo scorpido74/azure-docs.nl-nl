@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: e7efdb7244e2c7e4651a4507b538123f8d320c1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da0c00f0b4a8f2c49996fbcb9b34ee4a1ab65273
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77650772"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856649"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>Bekende problemen/migratie beperkingen met online migraties naar Azure SQL Database
 
@@ -28,7 +28,7 @@ Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van SQL
 
 ### <a name="migration-of-temporal-tables-not-supported"></a>Migratie van tijdelijke tabellen wordt niet ondersteund
 
-**Duid**
+**Symptoom**
 
 Als uw bron database uit een of meer tijdelijke tabellen bestaat, mislukt de migratie van de data base tijdens de bewerking ' volledige gegevens laden ' en ziet u mogelijk het volgende bericht:
 
@@ -38,7 +38,7 @@ Als uw bron database uit een of meer tijdelijke tabellen bestaat, mislukt de mig
 
  ![Voor beeld van fouten in tijdelijke tabellen](media/known-issues-azure-sql-online/dms-temporal-tables-errors.png)
 
-**Enkele**
+**Tijdelijke oplossing**
 
 Voer de volgende stappen uit.
 
@@ -52,19 +52,19 @@ Voer de volgende stappen uit.
 
 3. Voer de migratie activiteit opnieuw uit.
 
-**Resources**
+**Bronnen**
 
 Zie het artikel [tijdelijke tabellen](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables?view=sql-server-2017)voor meer informatie.
 
 ### <a name="migration-of-tables-includes-one-or-more-columns-with-the-hierarchyid-data-type"></a>Migratie van tabellen bevat een of meer kolommen met het gegevens type hierarchyid
 
-**Duid**
+**Symptoom**
 
 Er wordt mogelijk een SQL-uitzonde ring weer gegeven met de suggestie ' ntext is incompatibel met hierarchyid ' tijdens de bewerking ' volledige gegevens laden ':
 
 ![voor beeld van hierarchyid-fouten](media/known-issues-azure-sql-online/dms-hierarchyid-errors.png)
 
-**Enkele**
+**Tijdelijke oplossing**
 
 Voer de volgende stappen uit.
 
@@ -80,7 +80,7 @@ Voer de volgende stappen uit.
 
 ### <a name="migration-failures-with-various-integrity-violations-with-active-triggers-in-the-schema-during-full-data-load-or-incremental-data-sync"></a>Migratie fouten met verschillende integriteits schendingen met actieve triggers in het schema tijdens volledige belasting van gegevens of incrementele gegevens synchronisatie
 
-**Enkele**
+**Tijdelijke oplossing**
 
 Voer de volgende stappen uit.
 
@@ -96,7 +96,7 @@ Voer de volgende stappen uit.
 
 ### <a name="support-for-lob-data-types"></a>Ondersteuning voor LOB-gegevens typen
 
-**Duid**
+**Symptoom**
 
 Als de LOB-kolom (lengte van Large Object) groter is dan 32 KB, worden gegevens mogelijk afgekapt bij het doel. U kunt de lengte van de LOB-kolom controleren met behulp van de volgende query:
 
@@ -104,29 +104,29 @@ Als de LOB-kolom (lengte van Large Object) groter is dan 32 KB, worden gegevens 
 SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 ```
 
-**Enkele**
+**Tijdelijke oplossing**
 
 Als u een LOB-kolom hebt die groter is dan 32 KB, neemt u contact op met het technische team om [Azure-database migraties te vragen](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
 
 ### <a name="issues-with-timestamp-columns"></a>Problemen met Time Stamp-kolommen
 
-**Duid**
+**Symptoom**
 
 De time stamp-waarde van Azure Database Migration Service wordt niet gemigreerd. Azure Database Migration Service wordt in plaats daarvan een nieuwe time stamp-waarde in de doel tabel gegenereerd.
 
-**Enkele**
+**Tijdelijke oplossing**
 
 Als u Azure Database Migration Service nodig hebt om de exacte tijds tempel waarde te migreren die is opgeslagen in de bron tabel, neemt u contact op met het technische team om [Azure-database migraties te vragen](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
 
 ### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>Gegevens migratie fouten bieden geen aanvullende details over de Blade gedetailleerde status van data base
 
-**Duid**
+**Symptoom**
 
 Wanneer u problemen met de migratie ondervinden in de status weergave Details van data bases, is het selecteren van de koppeling **fouten in gegevens migratie** op het bovenste lint mogelijk niet meer specifieke informatie over de migratie fouten.
 
 ![gegevens migratie fouten geen voor beeld van Details](media/known-issues-azure-sql-online/dms-data-migration-errors-no-details.png)
 
-**Enkele**
+**Tijdelijke oplossing**
 
 Voer de volgende stappen uit om specifieke fout gegevens op te halen.
 
@@ -138,24 +138,28 @@ Voer de volgende stappen uit om specifieke fout gegevens op te halen.
 
 ### <a name="geography-datatype-not-supported-in-sqldb-online-migration"></a>Geografie gegevens type wordt niet ondersteund in SQLDB online migratie
 
-**Duid**
+**Symptoom**
 
 De migratie mislukt met een fout bericht met de volgende tekst:
 
-     “** encountered a fatal error”, "errorEvents":<Table>.<Column> is of type 'GEOGRAPHY', which is not supported by 'Full Load' under 'Full LOB' support mode."
+```output
+"** encountered a fatal error", "errorEvents":<Table>.<Column> is of type 'GEOGRAPHY', which is not supported by 'Full Load' under 'Full LOB' support mode.
+```
 
-**Enkele**
+**Tijdelijke oplossing**
 
 Hoewel Azure Database Migration Service het geografie gegevens type voor offline migraties naar Azure SQL Database ondersteunt, wordt voor online migraties het geografie type geo niet ondersteund. Probeer alternatieve methoden om het gegevens type bij de bron te wijzigen in een ondersteund type voordat u Azure Database Migration Service probeert te gebruiken voor een online migratie van deze data base.
 
 ### <a name="supported-editions"></a>Ondersteunde versies
 
-**Duid**
+**Symptoom**
 
 De migratie mislukt met een fout bericht met de volgende tekst:
 
-    Migration settings validation error: The edition of the server [Business Intelligence Edition (64-bit)] does not match the supported edition(s) [Enterprise,Standard,Developer].
+```output
+Migration settings validation error: The edition of the server [Business Intelligence Edition (64-bit)] does not match the supported edition(s) [Enterprise,Standard,Developer].
+```
 
-**Enkele**
+**Tijdelijke oplossing**
 
 Ondersteuning voor online migraties naar Azure SQL Database met behulp van Azure Database Migration Service gaat alleen over de Enter prise-, Standard-en Developer-edities. Zorg ervoor dat u een ondersteunde editie gebruikt voordat u begint met het migratie proces.

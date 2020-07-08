@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 54410e1e70a2ec0d3a9e2f853dc9556cd05996ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 70d48ba9519c627addf58939866633cdcc43049e
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79297251"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919829"
 ---
 # <a name="create-php-web-and-worker-roles"></a>PHP-web- en -werkrollen maken
 
@@ -40,22 +40,28 @@ De eerste stap bij het maken van een PHP-web-of-werk functie is het maken van ee
 
 Als u een nieuw Azure-service project wilt maken, voert u Azure PowerShell uit als beheerder en voert u de volgende opdracht uit:
 
-    PS C:\>New-AzureServiceProject myProject
+```powershell
+PS C:\>New-AzureServiceProject myProject
+```
 
-Met deze opdracht wordt een nieuwe map (`myProject`) gemaakt waaraan u web-en werk rollen kunt toevoegen.
+Met deze opdracht wordt een nieuwe map ( `myProject` ) gemaakt waaraan u web-en werk rollen kunt toevoegen.
 
 ## <a name="add-php-web-or-worker-roles"></a>PHP-web-of-werk rollen toevoegen
 
 Als u een PHP-webfunctie wilt toevoegen aan een project, voert u de volgende opdracht uit vanuit de hoofdmap van het project:
 
-    PS C:\myProject> Add-AzurePHPWebRole roleName
+```powershell
+PS C:\myProject> Add-AzurePHPWebRole roleName
+```
 
 Voor een worker-rol gebruikt u deze opdracht:
 
-    PS C:\myProject> Add-AzurePHPWorkerRole roleName
+```powershell
+PS C:\myProject> Add-AzurePHPWorkerRole roleName
+```
 
 > [!NOTE]
-> De `roleName` para meter is optioneel. Als de naam wordt wegge laten, wordt de rolnaam automatisch gegenereerd. De eerste webfunctie die wordt gemaakt `WebRole1`, is de tweede `WebRole2`, enzovoort. De eerste werk rollen die worden gemaakt `WorkerRole1`, zijn de tweede `WorkerRole2`, enzovoort.
+> De `roleName` para meter is optioneel. Als de naam wordt wegge laten, wordt de rolnaam automatisch gegenereerd. De eerste webfunctie die wordt gemaakt `WebRole1` , is de tweede `WebRole2` , enzovoort. De eerste werk rollen die worden gemaakt `WorkerRole1` , zijn de tweede `WorkerRole2` , enzovoort.
 >
 >
 
@@ -68,11 +74,14 @@ In sommige gevallen, in plaats van een geïntegreerde PHP-runtime te selecteren 
 Voer de volgende stappen uit om een webrole te configureren voor het gebruik van een PHP-runtime die u opgeeft:
 
 1. Maak een Azure-service project en voeg een PHP-webfunctie toe zoals eerder in dit onderwerp wordt beschreven.
-2. Maak een `php` map in de `bin` map die zich in de hoofdmap van uw webfunctie bevindt en voeg vervolgens de PHP-runtime (alle binaire bestanden, configuratie bestanden, submappen, enzovoort `php` ) toe aan de map.
-3. Beschrijving Als uw PHP-runtime gebruikmaakt van de [micro soft-Stuur Programma's voor php voor SQL Server][sqlsrv drivers], moet u uw webrole configureren om [SQL Server Native Client 2012][sql native client] te installeren wanneer het is ingericht. Als u dit wilt doen, voegt u het [installatie programma SQLNCLI. msi x64] toe aan de `bin` map in de hoofdmap van uw webrol. Het opstart script dat in de volgende stap wordt beschreven, voert het installatie programma op de achtergrond uit wanneer de rol is ingericht. Als uw PHP-runtime geen gebruikmaakt van de micro soft-Stuur Programma's voor PHP voor SQL Server, kunt u de volgende regel verwijderen uit het script dat wordt weer gegeven in de volgende stap:
+2. Maak een `php` map in de `bin` map die zich in de hoofdmap van uw webfunctie bevindt en voeg vervolgens de PHP-runtime (alle binaire bestanden, configuratie bestanden, submappen, enzovoort) toe aan de `php` map.
+3. Beschrijving Als uw PHP-runtime gebruikmaakt van de [micro soft-Stuur Programma's voor php voor SQL Server][sqlsrv drivers], moet u uw webrole configureren om [SQL Server Native Client 2012][sql native client] te installeren wanneer het is ingericht. Als u dit wilt doen, voegt u het [installatie programma vansqlncli.msi x64] toe aan de `bin` map in de hoofdmap van uw webrol. Het opstart script dat in de volgende stap wordt beschreven, voert het installatie programma op de achtergrond uit wanneer de rol is ingericht. Als uw PHP-runtime geen gebruikmaakt van de micro soft-Stuur Programma's voor PHP voor SQL Server, kunt u de volgende regel verwijderen uit het script dat wordt weer gegeven in de volgende stap:
 
-        msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
-4. Definieer een opstart taak waarmee [Internet Information Services (IIS)][iis.net] wordt geconfigureerd om uw PHP-runtime te gebruiken voor het `.php` afhandelen van aanvragen voor pagina's. Hiertoe opent u het `setup_web.cmd` bestand (in het `bin` bestand met de hoofdmap van de webfunctie) in een tekst editor en vervangt u de inhoud door het volgende script:
+   ```console
+   msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
+   ```
+
+4. Definieer een opstart taak waarmee [Internet Information Services (IIS)][iis.net] wordt geconfigureerd om uw PHP-runtime te gebruiken voor het afhandelen van aanvragen voor `.php` pagina's. Hiertoe opent u het `setup_web.cmd` bestand (in het `bin` bestand met de hoofdmap van de webfunctie) in een tekst editor en vervangt u de inhoud door het volgende script:
 
     ```cmd
     @ECHO ON
@@ -104,11 +113,14 @@ Voer de volgende stappen uit om een webrole te configureren voor het gebruik van
 Als u een werknemersrol wilt configureren voor het gebruik van een PHP-runtime die u opgeeft, voert u de volgende stappen uit:
 
 1. Maak een Azure-service project en voeg een PHP-worker-rol toe zoals eerder in dit onderwerp wordt beschreven.
-2. Maak een `php` map in de hoofdmap van de werk rollen en voeg vervolgens de PHP-runtime (alle binaire bestanden, configuratie bestanden, submappen, enzovoort) toe aan `php` de map.
-3. Beschrijving Als uw PHP-runtime gebruikmaakt [van micro soft-Stuur Programma's voor php voor SQL Server][sqlsrv drivers], moet u uw werknemersrol configureren om [SQL Server Native Client 2012][sql native client] te installeren wanneer het is ingericht. U doet dit door het [installatie programma SQLNCLI. msi x64] toe te voegen aan de hoofdmap van de werk rollen. Het opstart script dat in de volgende stap wordt beschreven, voert het installatie programma op de achtergrond uit wanneer de rol is ingericht. Als uw PHP-runtime geen gebruikmaakt van de micro soft-Stuur Programma's voor PHP voor SQL Server, kunt u de volgende regel verwijderen uit het script dat wordt weer gegeven in de volgende stap:
+2. Maak een `php` map in de hoofdmap van de werk rollen en voeg vervolgens de PHP-runtime (alle binaire bestanden, configuratie bestanden, submappen, enzovoort) toe aan de `php` map.
+3. Beschrijving Als uw PHP-runtime gebruikmaakt [van micro soft-Stuur Programma's voor php voor SQL Server][sqlsrv drivers], moet u uw werknemersrol configureren om [SQL Server Native Client 2012][sql native client] te installeren wanneer het is ingericht. U doet dit door het [sqlncli.msi x64-installatie programma] toe te voegen aan de hoofdmap van de werk rollen. Het opstart script dat in de volgende stap wordt beschreven, voert het installatie programma op de achtergrond uit wanneer de rol is ingericht. Als uw PHP-runtime geen gebruikmaakt van de micro soft-Stuur Programma's voor PHP voor SQL Server, kunt u de volgende regel verwijderen uit het script dat wordt weer gegeven in de volgende stap:
 
-        msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
-4. Definieer een opstart taak waarmee uw `php.exe` uitvoer bare bestand wordt toegevoegd aan de omgevings variabele PATH van de werk rollen wanneer de rol wordt ingericht. Als u dit wilt doen, `setup_worker.cmd` opent u het bestand (in de hoofdmap van de werk rollen) in een tekst editor en vervangt u de inhoud door het volgende script:
+   ```console
+   msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
+   ```
+
+4. Definieer een opstart taak waarmee uw `php.exe` uitvoer bare bestand wordt toegevoegd aan de omgevings variabele PATH van de werk rollen wanneer de rol wordt ingericht. Als u dit wilt doen, opent u het `setup_worker.cmd` bestand (in de hoofdmap van de werk rollen) in een tekst editor en vervangt u de inhoud door het volgende script:
 
     ```cmd
     @echo on
@@ -147,20 +159,26 @@ U moet PHP lokaal hebben geïnstalleerd om de compute-emulator te kunnen gebruik
 
 Als u uw project wilt uitvoeren in de emulators, voert u de volgende opdracht uit vanuit de hoofdmap van het project:
 
-    PS C:\MyProject> Start-AzureEmulator
+```powershell
+PS C:\MyProject> Start-AzureEmulator
+```
 
 U ziet uitvoer die lijkt op de volgende: 
 
-    Creating local package...
-    Starting Emulator...
-    Role is running at http://127.0.0.1:81
-    Started
+```output
+Creating local package...
+Starting Emulator...
+Role is running at http://127.0.0.1:81
+Started
+```
 
-U kunt zien dat uw toepassing wordt uitgevoerd in de emulator door een webbrowser te openen en te bladeren naar het lokale adres dat wordt`http://127.0.0.1:81` weer gegeven in de uitvoer (in de voorbeeld uitvoer hierboven).
+U kunt zien dat uw toepassing wordt uitgevoerd in de emulator door een webbrowser te openen en te bladeren naar het lokale adres dat wordt weer gegeven in de uitvoer ( `http://127.0.0.1:81` in de voorbeeld uitvoer hierboven).
 
 Als u de emulators wilt stoppen, voert u deze opdracht uit:
 
-    PS C:\MyProject> Stop-AzureEmulator
+```powershell
+PS C:\MyProject> Stop-AzureEmulator
+```
 
 ## <a name="publish-your-application"></a>Uw toepassing publiceren
 
@@ -176,4 +194,4 @@ Zie het [PHP-ontwikkelaars centrum](https://azure.microsoft.com/develop/php/)voo
 [iis.net]: https://www.iis.net/
 [sql native client]: https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation
 [sqlsrv drivers]: https://php.net/sqlsrv
-[SQLNCLI. msi x64-installatie programma]: https://go.microsoft.com/fwlink/?LinkID=239648
+[sqlncli.msi x64-installatie programma]: https://go.microsoft.com/fwlink/?LinkID=239648

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: c569c83ed0bc5d78f0e5670c802188ee9fd8fd53
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 0fc7951411f1c8956b4816f9031a8b7c26594b42
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85340796"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856130"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Een Linux-Hybrid Runbook Worker implementeren
 
@@ -30,17 +30,17 @@ Als u geen Azure Monitor Log Analytics-werk ruimte hebt, raadpleegt u de [ontwer
 
 Als u een werk ruimte hebt, maar deze niet is gekoppeld aan uw Automation-account en u een automatiserings functie inschakelt, voegt u functionaliteit toe voor Azure Automation, inclusief ondersteuning voor de Hybrid Runbook Worker. Wanneer u een van de Azure Automation functies in uw Log Analytics-werk ruimte, met name [updatebeheer](automation-update-management.md) of [Wijzigingen bijhouden en inventaris](change-tracking.md), inschakelt, worden de werk onderdelen automatisch naar de agent computer gepusht.
 
-   Als u de functie Updatebeheer wilt toevoegen aan uw werk ruimte, voert u de volgende Power shell-cmdlet uit:
+Als u de functie Updatebeheer wilt toevoegen aan uw werk ruimte, voert u de volgende Power shell-cmdlet uit:
 
-    ```powershell-interactive
+```powershell-interactive
     Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <logAnalyticsWorkspaceName> -IntelligencePackName "Updates" -Enabled $true
-    ```
+```
 
-   Voer de volgende Power shell-cmdlet uit om de functie Wijzigingen bijhouden en inventaris aan uw werk ruimte toe te voegen:
+Voer de volgende Power shell-cmdlet uit om de functie Wijzigingen bijhouden en inventaris aan uw werk ruimte toe te voegen:
 
-    ```powershell-interactive
+```powershell-interactive
     Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <logAnalyticsWorkspaceName> -IntelligencePackName "ChangeTracking" -Enabled $true
-    ```
+```
 
 ### <a name="log-analytics-agent"></a>Log Analytics-agent
 
@@ -82,11 +82,11 @@ Hybrid Runbook Workers van Linux ondersteunen een beperkt aantal typen Runbook i
 
 |Type Runbook | Ondersteund |
 |-------------|-----------|
-|Python 2 |Ja |
+|Python 2 |Yes |
 |PowerShell |Ja<sup>1</sup> |
-|PowerShell-werkstroom |Nee |
-|Grafisch |Nee |
-|Grafische power shell-werk stroom |Nee |
+|PowerShell-werkstroom |No |
+|Grafisch |No |
+|Grafische power shell-werk stroom |No |
 
 <sup>1</sup> Power shell-runbooks vereisen dat Power shell core wordt geïnstalleerd op de Linux-machine. Zie [Power shell core in Linux installeren](/powershell/scripting/install/installing-powershell-core-on-linux) voor meer informatie over het installeren ervan.
 

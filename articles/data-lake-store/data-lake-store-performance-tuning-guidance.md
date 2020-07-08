@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 2521700e0f07691541ee6cbbf085a8be72f08129
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 51716bdd6ab7f5b5102ccba3e6d57855dee5df33
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73904628"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855915"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Azure Data Lake Storage Gen1 voor prestaties afstemmen
 
@@ -65,15 +65,11 @@ Soms hebben gegevens pijplijnen een beperkte controle over de onbewerkte gegeven
 
 Voor Hive-en ADLA-werk belastingen kan het maken van een partitie van Time Series-gegevens helpen sommige query's alleen een subset van de gegevens lezen, waardoor de prestaties worden verbeterd.
 
-Deze pijp lijnen die gegevens van tijd reeksen opnemen, plaatsen hun bestanden vaak met een gestructureerde naam voor bestanden en mappen. Hier volgt een voor beeld van een algemeen overzicht van gegevens die zijn gestructureerd op datum:
-
-    \DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv
+Deze pijp lijnen die gegevens van tijd reeksen opnemen, plaatsen hun bestanden vaak met een gestructureerde naam voor bestanden en mappen. Hier volgt een voor beeld van een algemeen overzicht van gegevens die zijn gestructureerd op datum: *\dataset\yyyy\mm\dd\ datafile_YYYY_MM_DD. TSV*.
 
 U ziet dat de datetime-informatie zowel als mappen als in de bestands naam wordt weer gegeven.
 
-Voor datum en tijd is het volgende een algemeen patroon
-
-    \DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv
+Voor datum en tijd is het volgende een algemeen patroon: *\dataset\yyyy\mm\dd\hh\mm\ datafile_YYYY_MM_DD_HH_mm. TSV*.
 
 Daarnaast moet de keuze die u maakt met de map en de bestands organisatie worden geoptimaliseerd voor de grotere bestands grootten en een redelijk aantal bestanden in elke map.
 
@@ -135,7 +131,7 @@ Naast de bovenstaande algemene richt lijnen heeft elke toepassing verschillende 
 | [MapReduce in HDInsight](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>MapReduce. map. Memory</li><li>MapReduce. job. Maps</li><li>MapReduce. Reduc. Memory</li><li>MapReduce. job. reduceert</li></ul> |
 | [Storm op HDInsight](data-lake-store-performance-tuning-storm.md)| <ul><li>Aantal werk processen</li><li>Aantal exemplaren van de Spout-uitvoerder</li><li>Aantal exemplaren van de bout-uitvoerder </li><li>Aantal Spout-taken</li><li>Aantal Schicht-taken</li></ul>|
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Overzicht van Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Aan de slag met Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

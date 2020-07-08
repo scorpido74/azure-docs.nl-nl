@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: ef2fd40db422c459ca966e802344ef45f7ec01de
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 3393c661240ae5619597256a6691ae43608d622b
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74072116"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856711"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Voor beelden van router configuraties voor het instellen en beheren van NAT
 
@@ -30,59 +30,71 @@ Op deze pagina vindt u voor beelden van de NAT-configuratie voor Cisco ASA-en Ju
 
 ## <a name="cisco-asa-firewalls"></a>Cisco ASA-firewalls
 ### <a name="pat-configuration-for-traffic-from-customer-network-to-microsoft"></a>PAT-configuratie voor verkeer van het klanten netwerk naar micro soft
-    object network MSFT-PAT
-      range <SNAT-START-IP> <SNAT-END-IP>
+
+```console
+object network MSFT-PAT
+  range <SNAT-START-IP> <SNAT-END-IP>
 
 
-    object-group network MSFT-Range
-      network-object <IP> <Subnet_Mask>
+object-group network MSFT-Range
+  network-object <IP> <Subnet_Mask>
 
-    object-group network on-prem-range-1
-      network-object <IP> <Subnet-Mask>
+object-group network on-prem-range-1
+  network-object <IP> <Subnet-Mask>
 
-    object-group network on-prem-range-2
-      network-object <IP> <Subnet-Mask>
+object-group network on-prem-range-2
+  network-object <IP> <Subnet-Mask>
 
-    object-group network on-prem
-      network-object object on-prem-range-1
-      network-object object on-prem-range-2
+object-group network on-prem
+  network-object object on-prem-range-1
+  network-object object on-prem-range-2
 
-    nat (outside,inside) source dynamic on-prem pat-pool MSFT-PAT destination static MSFT-Range MSFT-Range
+nat (outside,inside) source dynamic on-prem pat-pool MSFT-PAT destination static MSFT-Range MSFT-Range
+```
 
 ### <a name="pat-configuration-for-traffic-from-microsoft-to-customer-network"></a>PAT-configuratie voor verkeer van micro soft naar het klanten netwerk
 
 **Interfaces en richting:**
 
-    Source Interface (where the traffic enters the ASA): inside
-    Destination Interface (where the traffic exits the ASA): outside
+Bron interface (waarbij het verkeer de ASA binnengaat): in de doel interface (waarbij het verkeer de ASA verlaat): buiten
 
 **Configuratie**
 
 NAT-groep:
 
-    object network outbound-PAT
-        host <NAT-IP>
+```console
+object network outbound-PAT
+    host <NAT-IP>
+```
 
 Doel server:
 
-    object network Customer-Network
-        network-object <IP> <Subnet-Mask>
+```console
+object network Customer-Network
+    network-object <IP> <Subnet-Mask>
+```
 
-Object groep voor IP-adressen van klant
+Object groep voor IP-adressen van klant:
 
-    object-group network MSFT-Network-1
-        network-object <MSFT-IP> <Subnet-Mask>
+```console
+object-group network MSFT-Network-1
+    network-object <MSFT-IP> <Subnet-Mask>
 
-    object-group network MSFT-PAT-Networks
-        network-object object MSFT-Network-1
+object-group network MSFT-PAT-Networks
+    network-object object MSFT-Network-1
+```
 
 NAT-opdrachten:
 
-    nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT destination static Customer-Network Customer-Network
+```console
+nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT destination static Customer-Network Customer-Network
+```
 
 
 ## <a name="juniper-srx-series-routers"></a>Routers van de Juniper SRX-serie
 ### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. redundante Ethernet-interfaces maken voor het cluster
+
+```console
     interfaces {
         reth0 {
             description "To Internal Network";
@@ -112,17 +124,50 @@ NAT-opdrachten:
             }
         }
     }
-
+```
 
 ### <a name="2-create-two-security-zones"></a>2. Maak twee beveiligings zones
 * Vertrouwens zone voor intern netwerk en niet-vertrouwde zone voor externe netwerk gerichte Edge-routers
 * De juiste interfaces aan de zones toewijzen
 * Services op de interfaces toestaan
 
-    beveiliging {zones {Security-Zone Trust {host-inkomend verkeer {System-Services {ping;                   } protocollen {BGP;                   }} interfaces {reth 0.100;               }} beveiligings zone niet vertrouwen {host-inkomend verkeer {System-Services {ping;                   } protocollen {BGP;                   }} interfaces {reth 1.100;               }           }       }   }
+```console
+    security {
+        zones {
+            security-zone Trust {
+                host-inbound-traffic {
+                    system-services {
+                        ping;
+                    }
+                    protocols {
+                        bgp;
+                    }
+                }
+                interfaces {
+                    reth0.100;
+                }
+            }
+            security-zone Untrust {
+                host-inbound-traffic {
+                    system-services {
+                        ping;
+                    }
+                    protocols {
+                        bgp;
+                    }
+                }
+                interfaces {
+                    reth1.100;
+                }
+            }
+        }
+    }
+```
 
 
 ### <a name="3-create-security-policies-between-zones"></a>3. beveiligings beleidsregels maken tussen zones
+
+```console
     security {
         policies {
             from-zone Trust to-zone Untrust {
@@ -151,12 +196,13 @@ NAT-opdrachten:
             }
         }
     }
-
+```
 
 ### <a name="4-configure-nat-policies"></a>4. NAT-beleid configureren
 * Maak twee NAT-Pools. Er wordt een NAT-verkeer naar micro soft en andere van micro soft naar de klant gebruikt.
 * Regels maken voor NAT het respectieve verkeer
-  
+
+```console
        security {
            nat {
                source {
@@ -211,11 +257,14 @@ NAT-opdrachten:
                }
            }
        }
+```
 
 ### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. Configureer BGP voor het adverteren van selectieve voor voegsels in elke richting
 Raadpleeg voor beelden op de pagina [routerings configuratie voorbeelden](expressroute-config-samples-routing.md) .
 
 ### <a name="6-create-policies"></a>6. beleids regels maken
+
+```console
     routing-options {
                   autonomous-system <Customer-ASN>;
     }
@@ -309,6 +358,7 @@ Raadpleeg voor beelden op de pagina [routerings configuratie voorbeelden](expres
             }
         }
     }
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md) voor meer informatie.

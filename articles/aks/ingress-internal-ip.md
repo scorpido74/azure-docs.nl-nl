@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Meer informatie over het installeren en configureren van een NGINX ingress-controller voor een intern, particulier netwerk in een Azure Kubernetes service-cluster (AKS).
 services: container-service
 ms.topic: article
-ms.date: 04/27/2020
-ms.openlocfilehash: ca804849001ec99f077397fb9fbee2aae7bc2e18
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.date: 07/02/2020
+ms.openlocfilehash: 8f1a538364284863cbfe3786213434b14918f214
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298562"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920228"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Een ingangs controller maken naar een intern virtueel netwerk in azure Kubernetes service (AKS)
 
@@ -58,6 +58,9 @@ De ingangscontroller moet ook worden gepland op een Linux-knooppunt. Windows Ser
 ```console
 # Create a namespace for your ingress resources
 kubectl create namespace ingress-basic
+
+# Add the official stable repository
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 
 # Use Helm to deploy an NGINX ingress controller
 helm install nginx-ingress stable/nginx-ingress \

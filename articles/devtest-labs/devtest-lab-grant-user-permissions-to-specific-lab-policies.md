@@ -3,12 +3,12 @@ title: Gebruikers machtigingen verlenen aan een specifiek Lab-beleid | Microsoft
 description: Meer informatie over het verlenen van gebruikers machtigingen voor specifieke Lab-beleids regels in DevTest Labs op basis van de behoeften van elke gebruiker
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: de9510ec77c009bad293ce5435eba8d20fd7e667
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: cfacba2a7cdba20bd5a05c9ca5898194c31c2e68
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85481745"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855786"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Gebruikers machtigingen verlenen aan specifieke Lab-beleids regels
 ## <a name="overview"></a>Overzicht
@@ -34,36 +34,42 @@ Wanneer u de cmdlets voor Azure PowerShell hebt ingesteld, kunt u de volgende ta
 
 In het volgende Power shell-script ziet u voor beelden van hoe u deze taken uitvoert:
 
-    # List all the operations/actions for a resource provider.
-    Get-AzProviderOperation -OperationSearchString "Microsoft.DevTestLab/*"
+```azurepowershell
+# List all the operations/actions for a resource provider.
+Get-AzProviderOperation -OperationSearchString "Microsoft.DevTestLab/*"
 
-    # List actions in a particular role.
-    (Get-AzRoleDefinition "DevTest Labs User").Actions
+# List actions in a particular role.
+(Get-AzRoleDefinition "DevTest Labs User").Actions
 
-    # Create custom role.
-    $policyRoleDef = (Get-AzRoleDefinition "DevTest Labs User")
-    $policyRoleDef.Id = $null
-    $policyRoleDef.Name = "Policy Contributor"
-    $policyRoleDef.IsCustom = $true
-    $policyRoleDef.AssignableScopes.Clear()
-    $policyRoleDef.AssignableScopes.Add("/subscriptions/<SubscriptionID> ")
-    $policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/policySets/policies/*")
-    $policyRoleDef = (New-AzRoleDefinition -Role $policyRoleDef)
+# Create custom role.
+$policyRoleDef = (Get-AzRoleDefinition "DevTest Labs User")
+$policyRoleDef.Id = $null
+$policyRoleDef.Name = "Policy Contributor"
+$policyRoleDef.IsCustom = $true
+$policyRoleDef.AssignableScopes.Clear()
+$policyRoleDef.AssignableScopes.Add("/subscriptions/<SubscriptionID> ")
+$policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/policySets/policies/*")
+$policyRoleDef = (New-AzRoleDefinition -Role $policyRoleDef)
+```
 
 ## <a name="assigning-permissions-to-a-user-for-a-specific-policy-using-custom-roles"></a>Machtigingen toewijzen aan een gebruiker voor een specifiek beleid met behulp van aangepaste rollen
 Zodra u uw aangepaste rollen hebt gedefinieerd, kunt u deze toewijzen aan gebruikers. Als u een aangepaste rol aan een gebruiker wilt toewijzen, moet u eerst de **ObjectId** verkrijgen die de gebruiker vertegenwoordigt. Hiervoor gebruikt u de cmdlet **Get-AzADUser** .
 
 In het volgende voor beeld is de **ObjectId** van de *SomeUser* -gebruiker 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3.
 
-    PS C:\>Get-AzADUser -SearchString "SomeUser"
+```azurepowershell
+PS C:\>Get-AzADUser -SearchString "SomeUser"
 
-    DisplayName                    Type                           ObjectId
-    -----------                    ----                           --------
-    someuser@hotmail.com                                          05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3
+DisplayName                    Type                           ObjectId
+-----------                    ----                           --------
+someuser@hotmail.com                                          05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3
+```
 
 Zodra u de **ObjectId** voor de gebruiker en een aangepaste rolnaam hebt, kunt u die rol toewijzen aan de gebruiker met de cmdlet **New-AzRoleAssignment** :
 
-    PS C:\>New-AzRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/default/policies/AllowedVmSizesInLab
+```azurepowershell
+PS C:\>New-AzRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/default/policies/AllowedVmSizesInLab
+```
 
 In het vorige voor beeld wordt het **AllowedVmSizesInLab** -beleid gebruikt. U kunt elk van de volgende beleids regels gebruiken:
 

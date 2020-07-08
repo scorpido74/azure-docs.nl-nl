@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: danis
-ms.openlocfilehash: c16343b412cd9164df84ea140e9bc5368890cc3e
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: bebf4967d96177038aba64be59d43f49458b82be
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298970"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920190"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Cloud-init-ondersteuning voor virtuele machines in azure
 In dit artikel wordt de ondersteuning beschreven die bestaat voor [Cloud-init](https://cloudinit.readthedocs.io) voor het configureren van een virtuele machine (VM) of schaal sets voor virtuele machines bij het inrichten van de tijd in Azure. Deze Cloud-init-configuraties worden uitgevoerd bij de eerste keer opstarten zodra de resources zijn ingericht door Azure.  
@@ -46,38 +46,52 @@ Er zijn twee fasen om Cloud-init beschikbaar te maken voor het geviseerde bestur
 | Uitgever/versie | Aanbieding | SKU | Versie | afbeelding Cloud-init gereed | Cloud-init-pakket ondersteuning op Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |ja | Ja, ondersteuning van pakket versie: *18.2-1. el7_6.2*|
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Ja (Opmerking: dit is een voorbeeld afbeelding en zodra alle RHEL 7,7-installatie kopieën Cloud-init ondersteunen, wordt dit 1 september 2020 verwijderd) | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Ja (Opmerking: dit is een voorbeeld afbeelding en **mag** niet meer worden gebruikt. dit wordt 1e september 2020) | N.v.t. |
 |RedHat 7,7 (gen1)|RHEL |7,7 | 7.7.2020051912 | ja | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
 |RedHat 7,7 (Gen2)|RHEL | 77-Gen2 | 7.7.2020051913 | ja | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
 |RedHat 7,7 (gen1)|RHEL |7-LVM | 7.7.2020051921 | ja | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
 |RedHat 7,7 (Gen2)|RHEL | 7lvm-Gen2 | 7.7.2020051922  | ja | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
 |RedHat 7,7 (gen1) |RHEL-BYOS | RHEL-lvm77 | 7.7.20200416 | ja  | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
-|RedHat 8,1 (gen1) |RHEL |8,1-CI |8.1.2020042511 | Ja (Opmerking: dit is een voorbeeld afbeelding en zodra alle RHEL 8,1-installatie kopieën Cloud-init ondersteunen, wordt dit 1 augustus 2020 verwijderd) | Nee, ETA voor volledige ondersteuning van juni 2020|
-|RedHat 8,1 (Gen2) |RHEL |81-CI-Gen2 |8.1.2020042524 | Ja (Opmerking: dit is een voorbeeld afbeelding en zodra alle RHEL 8,1-installatie kopieën Cloud-init ondersteunen, wordt dit 1 augustus 2020 verwijderd) | Nee, ETA voor volledige ondersteuning van juni 2020 |
+|RedHat 8,1 (gen1) |RHEL |8,1-CI |8.1.2020042511 | Ja (Opmerking: dit is een voorbeeld afbeelding en zodra alle RHEL 8,1-installatie kopieën Cloud-init ondersteunen, wordt dit 1e augustus 2020 verwijderd) | Nee, ETA voor volledige ondersteuning van juni 2020|
+|RedHat 8,1 (Gen2) |RHEL |81-CI-Gen2 |8.1.2020042524 | Ja (Opmerking: dit is een voorbeeld afbeelding en zodra alle RHEL 8,1-installatie kopieën Cloud-init ondersteunen, wordt dit 1e augustus 2020 verwijderd) | Nee, ETA voor volledige ondersteuning van juni 2020 |
 
-RedHat: RHEL 7,8-en 8,2-installatie kopieën (gen1 en Gen2) worden ingericht met behulp van Cloud-init.
+* Alle RedHat: RHEL 7,8-en 8,2-installatie kopieën (gen1 en Gen2) worden ingericht met behulp van Cloud-init.
 
 ### <a name="centos"></a>CentOS
 
 | Uitgever/versie | Aanbieding | SKU | Versie | afbeelding Cloud-init gereed | Cloud-init-pakket ondersteuning op Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Open Logic 7,7 |CentOS |7-CI |7.7.20190920 |Ja (Opmerking: dit is een voorbeeld afbeelding en zodra alle CentOS 7,7-installatie kopieën Cloud-init ondersteunen, wordt dit 1 september 2020 verwijderd) | Ja, ondersteuning van pakket versie:`18.5-3.el7.centos`|
+|Open Logic 7,7 |CentOS |7-CI |7.7.20190920 |Ja (Opmerking: dit is een voorbeeld afbeelding en **mag** niet meer worden gebruikt. dit wordt 1e september 2020) | N.v.t. |
+|Open Logic 7,7 |CentOS | 7,7 |7.7.2020062400 |ja | Ja, ondersteuning van pakket versie:`18.5-6.el7.centos.5`|
+|Open Logic 7,7 (Gen2) |CentOS | 7_7-Gen2 |7.7.2020062401 |ja | Ja, ondersteuning van pakket versie:`18.5-6.el7.centos.5`|
+|Open Logic 7,7 |CentOS-HPC | 7,7 |7.6.2020062600 |ja | Ja, ondersteuning van pakket versie:`18.5-6.el7.centos.5`|
+|Open Logic 7,7 (Gen2) |CentOS-HPC | 7_7-Gen2 |7.6.2020062601 |ja | Ja, ondersteuning van pakket versie:`18.5-6.el7.centos.5`|
+|Open Logic 8,1 |CentOS | 8_1 |8.1.2020062400 |ja | Ja, ondersteuning van pakket versie:`18.5-7.el8_1.1`|
+|Open Logic 8,1 (Gen2) |CentOS | 8_1-Gen2 |8.1.2020062401 |ja | Ja, ondersteuning van pakket versie:`18.5-7.el8_1.1`|
+|Open Logic 8,1 |CentOS-HPC | 8_1 |8.1.2020062400 |ja | Ja, ondersteuning van pakket versie:`18.5-7.el8_1.1`|
+|Open Logic 8,1 (Gen2) |CentOS-HPC: 8_1-Gen2 | 8_1-Gen2 |8.1.2020062401 |ja | Ja, ondersteuning van pakket versie:`18.5-7.el8_1.1`|
 
-* CentOS 7,7-installatie kopieën die worden gebruikt voor de Cloud-init, worden hier in juni 2020 bijgewerkt 
-* CentOS 7,8-installatie kopieën worden ingericht met Cloud-init.
-
+* Alle open Logic: CentOS 7,8-en 8,2-installatie kopieën (gen1 en Gen2) worden ingericht met behulp van Cloud-init.
 
 ### <a name="oracle"></a>Oracle
 
 | Uitgever/versie | Aanbieding | SKU | Versie | afbeelding Cloud-init gereed | Cloud-init-pakket ondersteuning op Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Oracle 7,7 |Oracle-Linux |77-CI |7.7.01| Preview-afbeelding (Let op: dit is een voorbeeld afbeelding en zodra alle Oracle 7,7-installatie kopieën Cloud-init ondersteunen, wordt dit mid 2020 verwijderd, maar wordt de melding weer gegeven.) | Nee, in de preview-versie is *het pakket: 18.5-3.0.1. EL7*
+|Oracle 7,7 |Oracle-Linux |77-CI |7.7.01| voor beeld van een afbeelding (Opmerking: dit is een voorbeeld afbeelding, en zodra alle Oracle 7,7-installatie kopieën Cloud-init ondersteunen, wordt dit mid 2020 verwijderd, wordt de melding weer gegeven.) | Nee, in de preview-versie is *het pakket: 18.5-3.0.1. EL7*
 
 ### <a name="suse-sles"></a>SUSE SLES
-| Uitgever/versie | Aanbieding | SKU | Versie | afbeelding Cloud-init gereed | Cloud-init-pakket ondersteuning op Azure|
-|:--- |:--- |:--- |:--- |:--- |:--- |
-|SUSE SLES 15 SP1 |SUSE |SLES-15-SP1-Basic |Cloud-init-preview| Zie [SuSE Cloud-init blog](https://suse.com/c/clout-init-coming-to-suse-images-in-azure/) voor meer informatie | Nee, in de preview-versie. |
-|SUSE SLES 15 SP1 |SUSE |SLES-15-SP1-Basic |Gen2-Cloud-init-preview| Zie [SuSE Cloud-init blog](https://suse.com/c/clout-init-coming-to-suse-images-in-azure/) voor meer informatie | Nee, in de preview-versie. |
+Deze SLES-installatie kopieën zijn bijgewerkt met het inrichten van Cloud-init, de Gen2-installatie kopie varianten zijn ook bijgewerkt.
+* SuSE: SLES-15-SP1-{Basic/BYOS/HPC/HPC-BYOS/Chost-BYOS}: gen1:2020.06.10
+* SuSE: SLES-SAP-15-SP1: gen1:2020.06.10
+* SuSE: SLES-SAP-15-SP1-BYOS: gen1:2020.06.10
+* SuSE: Manager-proxy-4-BYOS: gen1:2020.06.10
+* SuSE: Manager-server-4-BYOS: gen1:2020.06.10
+* SuSE: SLES-{BYOS/SAP/SAP-BYOS}: 15:2020.06.10
+* SuSE: SLES-12-SP5: gen1:2020.06.10
+* SuSE: SLES-12-SP5 {-BYOS/Basic/HPC-BYOS/HPC}: gen1:2020.06.10
+* SuSE: SLES-{BYOS/SAP/SAP-BYOS}: 12-SP4:2020.06.10
+* SuSE: SLES-{BYOS/SAP/SAP-BYOS}: 12-SP3:2020.06.10
+* SuSE: SLES-{BYOS/SAP/SAP-BYOS}: 12-SP2:2020.06.10
 
 
 ### <a name="debian"></a>Debian

@@ -13,18 +13,18 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 52a08661ffa25bf2105791c1217cfc460034502a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f9713c0ce2df2533a49086c6c4a95aeaa24c48e
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188566"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919819"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Azure Policy gebruiken om de installatie van extensies op Linux-Vm's te beperken
 
 Als u wilt voor komen dat bepaalde uitbrei dingen op uw Linux-Vm's worden gebruikt of geïnstalleerd, kunt u een Azure Policy definitie maken met behulp van de CLI om uitbrei dingen voor virtuele machines in een resource groep te beperken. 
 
-In deze zelf studie wordt gebruikgemaakt van de CLI binnen de Azure Cloud Shell, die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Azure CLI lokaal wilt uitvoeren, moet u versie 2.0.26 of hoger installeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli). 
+In deze zelfstudie wordt gebruikgemaakt van de CLI in de Azure Cloud Shell, die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Azure CLI lokaal wilt uitvoeren, moet u versie 2.0.26 of hoger installeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. 
 
 ## <a name="create-a-rules-file"></a>Een regel bestand maken
 
@@ -87,7 +87,6 @@ Kopieer en plak de volgende json in het bestand.
         "type": "Array",
         "metadata": {
             "description": "The list of extensions that will be denied. Example: CustomScriptForLinux, VMAccessForLinux etc.",
-            "strongType": "type",
             "displayName": "Denied extension"
         }
     }

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: f5a6180fa939699f752678271fbddfb8328a1afe
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: c83323ff7b951892b96d49f3173c022592aac331
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84883935"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920172"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Aan de slag met Azure CDN-ontwikkeling
 > [!div class="op_single_selector"]
@@ -44,7 +44,9 @@ Nu we een resource groep voor onze CDN-profielen hebben gemaakt en u de machtigi
 
 Maak een map voor het opslaan van uw toepassing.  Vanuit een-console met de Node.js-hulpprogram ma's in uw huidige pad, stelt u uw huidige locatie in op deze nieuwe map en initialiseert u het project door het volgende uit te voeren:
 
-    npm init
+```console
+npm init
+```
 
 Vervolgens wordt er een reeks vragen weer gegeven om uw project te initialiseren.  Voor **ingangs punt**gebruikt deze zelf studie *app.js*.  In het volgende voor beeld ziet u de andere opties.
 
@@ -52,8 +54,10 @@ Vervolgens wordt er een reeks vragen weer gegeven om uw project te initialiseren
 
 Ons project is nu geïnitialiseerd met een *packages.jsin* het bestand.  Ons project gaat gebruikmaken van enkele Azure-bibliotheken die zijn opgenomen in NPM-pakketten.  We gebruiken Azure client runtime for Node.js (MS-rest-Azure) en de Azure CDN-client bibliotheek voor Node.js (Azure-arm-cd).  Laten we die als afhankelijkheden toevoegen aan het project.
 
-    npm install --save ms-rest-azure
-    npm install --save azure-arm-cdn
+```console
+npm install --save ms-rest-azure
+npm install --save azure-arm-cdn
+```
 
 Nadat de installatie van de pakketten is voltooid, moet de *package.jsin* het bestand er ongeveer als volgt uitzien (versie nummers kunnen verschillen):
 

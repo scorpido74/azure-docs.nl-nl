@@ -3,12 +3,12 @@ title: Eigen aren en gebruikers toevoegen in Azure DevTest Labs | Microsoft Docs
 description: Eigen aren en gebruikers toevoegen in Azure DevTest Labs met behulp van de Azure Portal of Power shell
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 180c46480d099de4537216a59f0a2b9ab13d5d40
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: d5e7a166f9b79e2ff46f5874d53a40ed16750100
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85481320"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855697"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Eigen aren en gebruikers toevoegen in Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -29,7 +29,7 @@ In de volgende tabel ziet u de acties die kunnen worden uitgevoerd door gebruike
 | **Acties die gebruikers in deze rol kunnen uitvoeren** | **DevTest Labs-gebruiker** | **Eigenaar** | **Inzender** |
 | --- | --- | --- | --- |
 | **Lab-taken** | | | |
-| Gebruikers toevoegen aan een Lab |Nee |Ja |Nee |
+| Gebruikers toevoegen aan een Lab |Nee |Yes |Nee |
 | Instellingen voor update kosten |Nee |Ja |Ja |
 | **VM-basis taken** | | | |
 | Aangepaste installatie kopieën toevoegen en verwijderen |Nee |Ja |Ja |
@@ -53,7 +53,7 @@ In de volgende tabel ziet u de acties die kunnen worden uitgevoerd door gebruike
 U kunt eigen aren en gebruikers toevoegen op het niveau van de test omgeving via de Azure Portal. Een gebruiker kan een externe gebruiker met een geldig [Microsoft-account (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account)zijn.
 De volgende stappen leiden u door het proces van het toevoegen van een eigenaar of gebruiker aan een lab in Azure DevTest Labs:
 
-1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 3. Selecteer in de lijst met Labs het gewenste Lab.
 4. Selecteer op de Blade van het lab de optie **configuratie en beleid**. 
@@ -77,29 +77,31 @@ U kunt de `subscriptionId` waarden, `labResourceGroup` en, ophalen `labName` van
 > 
 > 
 
-    # Add an external user in DevTest Labs user role to a lab
-    # Ensure that guest users can be added to the Azure Active directory:
-    # https://azure.microsoft.com/documentation/articles/active-directory-create-users/#set-guest-user-access-policies
+```azurepowershell
+# Add an external user in DevTest Labs user role to a lab
+# Ensure that guest users can be added to the Azure Active directory:
+# https://azure.microsoft.com/documentation/articles/active-directory-create-users/#set-guest-user-access-policies
 
-    # Values to change
-    $subscriptionId = "<Enter Azure subscription ID here>"
-    $labResourceGroup = "<Enter lab's resource name here>"
-    $labName = "<Enter lab name here>"
-    $userDisplayName = "<Enter user's display name here>"
+# Values to change
+$subscriptionId = "<Enter Azure subscription ID here>"
+$labResourceGroup = "<Enter lab's resource name here>"
+$labName = "<Enter lab name here>"
+$userDisplayName = "<Enter user's display name here>"
 
-    # Log into your Azure account
-    Connect-AzAccount
+# Log into your Azure account
+Connect-AzAccount
 
-    # Select the Azure subscription that contains the lab. 
-    # This step is optional if you have only one subscription.
-    Select-AzSubscription -SubscriptionId $subscriptionId
+# Select the Azure subscription that contains the lab. 
+# This step is optional if you have only one subscription.
+Select-AzSubscription -SubscriptionId $subscriptionId
 
-    # Retrieve the user object
-    $adObject = Get-AzADUser -SearchString $userDisplayName
+# Retrieve the user object
+$adObject = Get-AzADUser -SearchString $userDisplayName
 
-    # Create the role assignment. 
-    $labId = ('subscriptions/' + $subscriptionId + '/resourceGroups/' + $labResourceGroup + '/providers/Microsoft.DevTestLab/labs/' + $labName)
-    New-AzRoleAssignment -ObjectId $adObject.Id -RoleDefinitionName 'DevTest Labs User' -Scope $labId
+# Create the role assignment. 
+$labId = ('subscriptions/' + $subscriptionId + '/resourceGroups/' + $labResourceGroup + '/providers/Microsoft.DevTestLab/labs/' + $labName)
+New-AzRoleAssignment -ObjectId $adObject.Id -RoleDefinitionName 'DevTest Labs User' -Scope $labId
+```
 
 ## <a name="add-an-owner-or-user-at-the-subscription-level"></a>Een eigenaar of gebruiker toevoegen op het abonnements niveau
 Azure-machtigingen worden door gegeven vanuit het bovenliggende bereik naar een onderliggend bereik in Azure. Daarom zijn de eigen aren van een Azure-abonnement dat Labs bevat, automatisch eigenaar van deze Labs. Ze zijn ook eigenaar van de virtuele machines en andere resources die zijn gemaakt door de gebruikers van het lab en de Azure DevTest Labs-service. 
@@ -108,7 +110,7 @@ U kunt extra eigen aren toevoegen aan een lab via de Blade van het lab in de [Az
 
 Voer de volgende stappen uit om een eigenaar aan een Azure-abonnement toe te voegen:
 
-1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Selecteer **alle services**en selecteer vervolgens **abonnementen** in de lijst.
 3. Selecteer het gewenste abonnement.
 4. Selecteer het pictogram **toegang** . 

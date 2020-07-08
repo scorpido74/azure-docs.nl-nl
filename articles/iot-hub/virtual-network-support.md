@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: bf193859c140001def83a18ca7965d9cbd312b02
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 32ff08c62e53384b64981e1c40a3485b17a8ce11
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84907530"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918758"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Ondersteuning voor virtuele netwerken IoT Hub met persoonlijke koppelingen en beheerde identiteit
 
@@ -69,8 +69,8 @@ Het [ingebouwde Event hub-compatibele eind punt](iot-hub-devguide-messages-read-
 Het [IP-filter](iot-hub-ip-filtering.md) van IOT hub beheert ook niet de open bare toegang tot het ingebouwde eind punt. Als u open bare netwerk toegang tot uw IoT-hub volledig wilt blok keren, moet u het volgende doen: 
 
 1. Toegang tot privé-eind punten configureren voor IoT Hub
-1. Open bare netwerk toegang uitschakelen door IP-filter te gebruiken om alle IP-adressen te blok keren
-1. Het ingebouwde Event hub-eind punt uitschakelen door [route ring in te stellen zodat er geen gegevens naar worden verzonden](iot-hub-devguide-messages-d2c.md)
+1. [Open bare toegang tot het netwerk uitschakelen](iot-hub-public-network-access.md) of IP-filter gebruiken om alle IP-adressen te blok keren
+1. Het ingebouwde Event hub-eind punt niet meer gebruiken door [route ring in te stellen zodat er geen gegevens naar worden verzonden](iot-hub-devguide-messages-d2c.md)
 1. De [terugval route](iot-hub-devguide-messages-d2c.md#fallback-route) uitschakelen
 1. Uitgaand verkeer configureren voor andere Azure-resources met behulp van [vertrouwde micro soft-Services](#egress-connectivity-from-iot-hub-to-other-azure-resources)
 

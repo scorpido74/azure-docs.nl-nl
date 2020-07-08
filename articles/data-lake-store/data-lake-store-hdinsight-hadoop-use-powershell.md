@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b1264475a9e5100e2b38079fe0540ada5d91cd55
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 902210f0ba6fc195cd219dd5a24e7098ed484d8f
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85504709"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855656"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Azure PowerShell gebruiken om een HDInsight-cluster te maken met Azure Data Lake Storage Gen1 (als extra opslag)
 
@@ -62,17 +62,19 @@ Volg deze stappen om een Data Lake Storage Gen1-account te maken.
 
 1. Open op het bureau blad een nieuw Azure PowerShell venster en voer het volgende code fragment in. Wanneer u wordt gevraagd om u aan te melden, moet u zich aanmelden als een van de abonnements beheerder/eigenaar:
 
-        # Log in to your Azure account
-        Connect-AzAccount
+    ```azurepowershell
+    # Log in to your Azure account
+    Connect-AzAccount
 
-        # List all the subscriptions associated to your account
-        Get-AzSubscription
+    # List all the subscriptions associated to your account
+    Get-AzSubscription
 
-        # Select a subscription
-        Set-AzContext -SubscriptionId <subscription ID>
+    # Select a subscription
+    Set-AzContext -SubscriptionId <subscription ID>
 
-        # Register for Data Lake Storage Gen1
-        Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
+    # Register for Data Lake Storage Gen1
+    Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
+    ```
 
    > [!NOTE]
    > Als er een fout bericht wordt weer gegeven `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` die vergelijkbaar is met het registreren van de data Lake Storage gen1 resource provider, is het mogelijk dat uw abonnement niet white list is voor data Lake Storage gen1. Zorg ervoor dat u uw Azure-abonnement voor Data Lake Storage Gen1 inschakelt door deze [instructies](data-lake-store-get-started-portal.md)te volgen.
@@ -80,44 +82,53 @@ Volg deze stappen om een Data Lake Storage Gen1-account te maken.
    >
 2. Een Data Lake Storage Gen1-account is gekoppeld aan een Azure-resource groep. Maak daarom eerst een Azure-resourcegroep.
 
-        $resourceGroupName = "<your new resource group name>"
-        New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
+    ```azurepowershell
+    $resourceGroupName = "<your new resource group name>"
+    New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
+    ```
 
     De uitvoer ziet er als volgt uit:
 
-        ResourceGroupName : hdiadlgrp
-        Location          : eastus2
-        ProvisioningState : Succeeded
-        Tags              :
-        ResourceId        : /subscriptions/<subscription-id>/resourceGroups/hdiadlgrp
+    ```output
+    ResourceGroupName : hdiadlgrp
+    Location          : eastus2
+    ProvisioningState : Succeeded
+    Tags              :
+    ResourceId        : /subscriptions/<subscription-id>/resourceGroups/hdiadlgrp
+    ```
 
 3. Maak een Data Lake Storage Gen1-account. De account naam die u opgeeft, mag alleen kleine letters en cijfers bevatten.
 
-        $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 account name>"
-        New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
+    ```azurepowershell
+    $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 account name>"
+    New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
+    ```
 
     Als het goed is, wordt ongeveer de volgende uitvoer weergegeven:
 
-        ...
-        ProvisioningState           : Succeeded
-        State                       : Active
-        CreationTime                : 5/5/2017 10:53:56 PM
-        EncryptionState             : Enabled
-        ...
-        LastModifiedTime            : 5/5/2017 10:53:56 PM
-        Endpoint                    : hdiadlstore.azuredatalakestore.net
-        DefaultGroup                :
-        Id                          : /subscriptions/<subscription-id>/resourceGroups/hdiadlgrp/providers/Microsoft.DataLakeStore/accounts/hdiadlstore
-        Name                        : hdiadlstore
-        Type                        : Microsoft.DataLakeStore/accounts
-        Location                    : East US 2
-        Tags                        : {}
+    ```output
+    ...
+    ProvisioningState           : Succeeded
+    State                       : Active
+    CreationTime                : 5/5/2017 10:53:56 PM
+    EncryptionState             : Enabled
+    ...
+    LastModifiedTime            : 5/5/2017 10:53:56 PM
+    Endpoint                    : hdiadlstore.azuredatalakestore.net
+    DefaultGroup                :
+    Id                          : /subscriptions/<subscription-id>/resourceGroups/hdiadlgrp/providers/Microsoft.DataLakeStore/accounts/hdiadlstore
+    Name                        : hdiadlstore
+    Type                        : Microsoft.DataLakeStore/accounts
+    Location                    : East US 2
+    Tags                        : {}
+    ```
 
 5. Upload enkele voorbeeld gegevens naar Data Lake Storage Gen1. Dit wordt verderop in dit artikel gebruikt om te controleren of de gegevens toegankelijk zijn vanuit een HDInsight-cluster. Als u nog geen voorbeeldgegevens hebt om te uploaden, kunt u de map **Ambulance Data** uit de [Azure Data Lake Git-opslagplaats](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) gebruiken.
 
-        $myrootdir = "/"
-        Import-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path "C:\<path to data>\vehicle1_09142014.csv" -Destination $myrootdir\vehicle1_09142014.csv
-
+    ```azurepowershell
+    $myrootdir = "/"
+    Import-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path "C:\<path to data>\vehicle1_09142014.csv" -Destination $myrootdir\vehicle1_09142014.csv
+    ```
 
 ## <a name="set-up-authentication-for-role-based-access-to-data-lake-storage-gen1"></a>Verificatie instellen voor op rollen gebaseerde toegang tot Data Lake Storage Gen1
 
@@ -134,15 +145,19 @@ Zorg ervoor dat [Windows SDK](https://dev.windows.com/en-us/downloads) is geïns
 
 1. Ga in het Power shell-venster naar de locatie waar u Windows SDK hebt geïnstalleerd (doorgaans `C:\Program Files (x86)\Windows Kits\10\bin\x86` en gebruik het hulp programma [makecert][makecert] om een zelfondertekend certificaat en een persoonlijke sleutel te maken. Gebruik de volgende opdrachten.
 
-        $certificateFileDir = "<my certificate directory>"
-        cd $certificateFileDir
+    ```azurepowershell
+    $certificateFileDir = "<my certificate directory>"
+    cd $certificateFileDir
 
-        makecert -sv mykey.pvk -n "cn=HDI-ADL-SP" CertFile.cer -r -len 2048
+    makecert -sv mykey.pvk -n "cn=HDI-ADL-SP" CertFile.cer -r -len 2048
+    ```
 
     U wordt gevraagd om het wacht woord voor de persoonlijke sleutel in te voeren. Nadat de opdracht is uitgevoerd, ziet u een **CertBestand. CER** en **mykey. PVK** in de certificaat Directory die u hebt opgegeven.
 2. Gebruik het hulp programma [Pvk2Pfx][pvk2pfx] om de PVK-en CER-bestanden te converteren die makecert gemaakt naar een pfx-bestand. Voer de volgende opdracht uit.
 
-        pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
+    ```azurepowershell
+    pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
+    ```
 
     Geef het wacht woord voor de persoonlijke sleutel op dat u eerder hebt opgegeven. De waarde die u opgeeft voor de para meter **-io** is het wacht woord dat is gekoppeld aan het pfx-bestand. Nadat de opdracht is voltooid, ziet u ook een CertBestand. pfx in de door u opgegeven certificaat Directory.
 
@@ -152,34 +167,42 @@ In deze sectie voert u de stappen uit voor het maken van een service-principal v
 
 1. Plak de volgende cmdlets in het Power shell-console venster. Zorg ervoor dat de waarde die u opgeeft voor de eigenschap **-DisplayName** uniek is. De waarden voor **-Home page** en **-IdentiferUris** zijn ook waarden van tijdelijke aanduidingen en worden niet geverifieerd.
 
-        $certificateFilePath = "$certificateFileDir\CertFile.pfx"
+    ```azurepowershell
+    $certificateFilePath = "$certificateFileDir\CertFile.pfx"
 
-        $password = Read-Host -Prompt "Enter the password" # This is the password you specified for the .pfx file
+    $password = Read-Host -Prompt "Enter the password" # This is the password you specified for the .pfx file
 
-        $certificatePFX = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certificateFilePath, $password)
+    $certificatePFX = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certificateFilePath, $password)
 
-        $rawCertificateData = $certificatePFX.GetRawCertData()
+    $rawCertificateData = $certificatePFX.GetRawCertData()
 
-        $credential = [System.Convert]::ToBase64String($rawCertificateData)
+    $credential = [System.Convert]::ToBase64String($rawCertificateData)
 
-        $application = New-AzADApplication `
-            -DisplayName "HDIADL" `
-            -HomePage "https://contoso.com" `
-            -IdentifierUris "https://mycontoso.com" `
-            -CertValue $credential  `
-            -StartDate $certificatePFX.NotBefore  `
-            -EndDate $certificatePFX.NotAfter
+    $application = New-AzADApplication `
+        -DisplayName "HDIADL" `
+        -HomePage "https://contoso.com" `
+        -IdentifierUris "https://mycontoso.com" `
+        -CertValue $credential  `
+        -StartDate $certificatePFX.NotBefore  `
+        -EndDate $certificatePFX.NotAfter
 
-        $applicationId = $application.ApplicationId
+    $applicationId = $application.ApplicationId
+    ```
+
 2. Maak een service-principal met behulp van de toepassings-ID.
 
-        $servicePrincipal = New-AzADServicePrincipal -ApplicationId $applicationId
+    ```azurepowershell
+    $servicePrincipal = New-AzADServicePrincipal -ApplicationId $applicationId
 
-        $objectId = $servicePrincipal.Id
+     $objectId = $servicePrincipal.Id
+    ```
+
 3. Verleen de Service-Principal toegang tot de Data Lake Storage Gen1 map en het bestand dat u vanuit het HDInsight-cluster gaat gebruiken. Het onderstaande code fragment biedt toegang tot de hoofdmap van het Data Lake Storage Gen1-account (waar u het voorbeeld gegevensbestand hebt gekopieerd) en het bestand zelf.
 
-        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
-        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /vehicle1_09142014.csv -AceType User -Id $objectId -Permissions All
+    ```azurepowershell
+    Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
+    Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /vehicle1_09142014.csv -AceType User -Id $objectId -Permissions All
+    ```
 
 ## <a name="create-an-hdinsight-linux-cluster-with-data-lake-storage-gen1-as-additional-storage"></a>Een HDInsight Linux-cluster met Data Lake Storage Gen1 als extra opslag maken
 
@@ -187,29 +210,37 @@ In deze sectie maken we een HDInsight Hadoop Linux-cluster met Data Lake Storage
 
 1. Begin met het ophalen van de Tenant-ID van het abonnement. U hebt dit later nodig.
 
-        $tenantID = (Get-AzContext).Tenant.TenantId
+    ```azurepowershell
+    $tenantID = (Get-AzContext).Tenant.TenantId
+    ```
+
 2. Voor deze release voor een Hadoop-cluster Data Lake Storage Gen1 kan alleen worden gebruikt als extra opslag ruimte voor het cluster. De standaard opslag is nog steeds de Azure Storage-blobs (WASB). Daarom maken we eerst het opslag account en de opslag containers die vereist zijn voor het cluster.
 
-        # Create an Azure storage account
-        $location = "East US 2"
-        $storageAccountName = "<StorageAccountName>"   # Provide a Storage account name
+    ```azurepowershell
+    # Create an Azure storage account
+    $location = "East US 2"
+    $storageAccountName = "<StorageAccountName>"   # Provide a Storage account name
 
-        New-AzStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName -Location $location -Type Standard_GRS
+    New-AzStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName -Location $location -Type Standard_GRS
 
-        # Create an Azure Blob Storage container
-        $containerName = "<ContainerName>"              # Provide a container name
-        $storageAccountKey = (Get-AzStorageAccountKey -Name $storageAccountName -ResourceGroupName $resourceGroupName)[0].Value
-        $destContext = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
-        New-AzStorageContainer -Name $containerName -Context $destContext
+    # Create an Azure Blob Storage container
+    $containerName = "<ContainerName>"              # Provide a container name
+    $storageAccountKey = (Get-AzStorageAccountKey -Name $storageAccountName -ResourceGroupName $resourceGroupName)[0].Value
+    $destContext = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
+    New-AzStorageContainer -Name $containerName -Context $destContext
+    ```
+
 3. Maak het HDInsight-cluster. Gebruik de volgende cmdlets.
 
-        # Set these variables
-        $clusterName = $containerName                   # As a best practice, have the same name for the cluster and container
-        $clusterNodes = <ClusterSizeInNodes>            # The number of nodes in the HDInsight cluster
-        $httpCredentials = Get-Credential
-        $sshCredentials = Get-Credential
+    ```azurepowershell
+    # Set these variables
+    $clusterName = $containerName                   # As a best practice, have the same name for the cluster and container
+    $clusterNodes = <ClusterSizeInNodes>            # The number of nodes in the HDInsight cluster
+    $httpCredentials = Get-Credential
+    $sshCredentials = Get-Credential
 
-        New-AzHDInsightCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredentials -Location $location -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainer $containerName  -ClusterSizeInNodes $clusterNodes -ClusterType Hadoop -Version "3.4" -OSType Linux -SshCredential $sshCredentials -ObjectID $objectId -AadTenantId $tenantID -CertificateFilePath $certificateFilePath -CertificatePassword $password
+    New-AzHDInsightCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredentials -Location $location -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainer $containerName  -ClusterSizeInNodes $clusterNodes -ClusterType Hadoop -Version "3.4" -OSType Linux -SshCredential $sshCredentials -ObjectID $objectId -AadTenantId $tenantID -CertificateFilePath $certificateFilePath -CertificatePassword $password
+    ```
 
     Nadat de cmdlet is voltooid, ziet u een uitvoer waarin de cluster Details worden weer gegeven.
 
@@ -224,25 +255,32 @@ In deze sectie gaat u SSH naar het HDInsight Linux-cluster dat u hebt gemaakt en
 
 1. Nadat de verbinding tot stand is gebracht, start u de Hive-CLI met behulp van de volgende opdracht:
 
-        hive
+    ```azurepowershell
+    hive
+    ```
+
 2. Voer met behulp van de CLI de volgende instructies in om een nieuwe tabel met de naam **Voer tuigen** te maken met behulp van de voorbeeld gegevens in data Lake Storage gen1:
 
-        DROP TABLE vehicles;
-        CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://<mydatalakestoragegen1>.azuredatalakestore.net:443/';
-        SELECT * FROM vehicles LIMIT 10;
+    ```azurepowershell
+    DROP TABLE vehicles;
+    CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://<mydatalakestoragegen1>.azuredatalakestore.net:443/';
+    SELECT * FROM vehicles LIMIT 10;
+    ```
 
     Als het goed is, wordt ongeveer de volgende uitvoer weergegeven:
 
-        1,1,2014-09-14 00:00:03,46.81006,-92.08174,51,S,1
-        1,2,2014-09-14 00:00:06,46.81006,-92.08174,13,NE,1
-        1,3,2014-09-14 00:00:09,46.81006,-92.08174,48,NE,1
-        1,4,2014-09-14 00:00:12,46.81006,-92.08174,30,W,1
-        1,5,2014-09-14 00:00:15,46.81006,-92.08174,47,S,1
-        1,6,2014-09-14 00:00:18,46.81006,-92.08174,9,S,1
-        1,7,2014-09-14 00:00:21,46.81006,-92.08174,53,N,1
-        1,8,2014-09-14 00:00:24,46.81006,-92.08174,63,SW,1
-        1,9,2014-09-14 00:00:27,46.81006,-92.08174,4,NE,1
-        1,10,2014-09-14 00:00:30,46.81006,-92.08174,31,N,1
+    ```output
+    1,1,2014-09-14 00:00:03,46.81006,-92.08174,51,S,1
+    1,2,2014-09-14 00:00:06,46.81006,-92.08174,13,NE,1
+    1,3,2014-09-14 00:00:09,46.81006,-92.08174,48,NE,1
+    1,4,2014-09-14 00:00:12,46.81006,-92.08174,30,W,1
+    1,5,2014-09-14 00:00:15,46.81006,-92.08174,47,S,1
+    1,6,2014-09-14 00:00:18,46.81006,-92.08174,9,S,1
+    1,7,2014-09-14 00:00:21,46.81006,-92.08174,53,N,1
+    1,8,2014-09-14 00:00:24,46.81006,-92.08174,63,SW,1
+    1,9,2014-09-14 00:00:27,46.81006,-92.08174,4,NE,1
+    1,10,2014-09-14 00:00:30,46.81006,-92.08174,31,N,1
+    ```
 
 ## <a name="access-data-lake-storage-gen1-using-hdfs-commands"></a>Toegang tot Data Lake Storage Gen1 met HDFS-opdrachten
 Zodra u het HDInsight-cluster hebt geconfigureerd voor het gebruik van Data Lake Storage Gen1, kunt u de HDFS-shell opdrachten gebruiken om toegang te krijgen tot de Store.
@@ -254,13 +292,17 @@ In deze sectie gaat u SSH naar het HDInsight Linux-cluster dat u hebt gemaakt en
 
 Nadat de verbinding tot stand is gebracht, gebruikt u de volgende HDFS-bestands systeem opdracht om de bestanden in het Data Lake Storage Gen1-account weer te geven.
 
-    hdfs dfs -ls adl://<Data Lake Storage Gen1 account name>.azuredatalakestore.net:443/
+```azurepowershell
+hdfs dfs -ls adl://<Data Lake Storage Gen1 account name>.azuredatalakestore.net:443/
+```
 
 Hiermee wordt het bestand vermeld dat u eerder hebt geüpload naar Data Lake Storage Gen1.
 
-    15/09/17 21:41:15 INFO web.CaboWebHdfsFileSystem: Replacing original urlConnectionFactory with org.apache.hadoop.hdfs.web.URLConnectionFactory@21a728d6
-    Found 1 items
-    -rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestoragegen1.azuredatalakestore.net:443/mynewfolder
+```output
+15/09/17 21:41:15 INFO web.CaboWebHdfsFileSystem: Replacing original urlConnectionFactory with org.apache.hadoop.hdfs.web.URLConnectionFactory@21a728d6
+Found 1 items
+-rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestoragegen1.azuredatalakestore.net:443/mynewfolder
+```
 
 U kunt ook de `hdfs dfs -put` opdracht gebruiken om bestanden te uploaden naar Data Lake Storage gen1 en vervolgens gebruiken `hdfs dfs -ls` om te controleren of de bestanden zijn geüpload.
 

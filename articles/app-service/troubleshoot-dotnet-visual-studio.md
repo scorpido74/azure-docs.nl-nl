@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: 516c7f50f7ff9fe947475b12120a527fc69353bc
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 26746a477da301eb352f002e105e883f992aaf0a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926847"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857201"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Problemen met een app in Azure App Service oplossen met Visual Studio
 ## <a name="overview"></a>Overzicht
@@ -66,7 +66,7 @@ Visual Studio biedt toegang tot een subset van de app-beheer functies en configu
     Als u een app-beheer taak wilt uitvoeren die niet in dit venster kan worden uitgevoerd, klikt u op **openen in Beheerportal** om een browser venster te openen voor de Azure Portal.
 
 ## <a name="access-app-files-in-server-explorer"></a><a name="remoteview"></a>Toegang tot app-bestanden in Server Explorer
-U implementeert doorgaans een webproject met `customErrors` de markering in het bestand Web. config ingesteld `On` op `RemoteOnly`of, wat betekent dat u geen handig fout bericht krijgt wanneer er iets verkeerd gaat. Voor veel fouten krijgt u alleen een pagina als een van de volgende:
+U implementeert doorgaans een webproject met de `customErrors` markering in het Web.config-bestand ingesteld op `On` of `RemoteOnly` , wat betekent dat er geen handig fout bericht wordt weer gegeven wanneer iets verkeerd gaat. Voor veel fouten krijgt u alleen een pagina als een van de volgende:
 
 **Server fout in/-toepassing:**
 
@@ -80,28 +80,28 @@ U implementeert doorgaans een webproject met `customErrors` de markering in het 
 
 ![Niet-Help fout pagina](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png)
 
-De eenvoudigste manier om de oorzaak van de fout te vinden, is vaak om gedetailleerde fout berichten in te scha kelen, zoals in de eerste van de voor gaande scherm afbeeldingen wordt uitgelegd hoe u dit moet doen. Hiervoor is een wijziging in het geïmplementeerde web. config-bestand vereist. U kunt het bestand *Web. config* in het project bewerken en het project opnieuw implementeren, of een [Web. config-trans formatie](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) maken en een debug-build implementeren, maar er is een snellere manier **Solution Explorer**om bestanden in de externe app rechtstreeks weer te geven en te bewerken met behulp van de functie *externe weer gave* .
+De eenvoudigste manier om de oorzaak van de fout te vinden, is vaak om gedetailleerde fout berichten in te scha kelen, zoals in de eerste van de voor gaande scherm afbeeldingen wordt uitgelegd hoe u dit moet doen. Hiervoor is een wijziging in het geïmplementeerde Web.config-bestand vereist. U kunt het *Web.config* -bestand in het project bewerken en het project opnieuw implementeren, of een [Web.config-trans formatie](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) maken en een debug-build implementeren, maar er is een snellere manier: in **Solution Explorer**u de bestanden in de externe app rechtstreeks weer geven en bewerken met behulp van de functie *externe weer gave* .
 
 1. Vouw in **Server Explorer** **Azure**uit, vouw **app service**uit, vouw de resource groep uit waarin uw app zich bevindt en vouw vervolgens het knoop punt voor uw app uit.
 
     U ziet knoop punten die u toegang geven tot de inhouds bestanden en logboek bestanden van de app.
-2. Vouw het knoop punt **bestanden** uit en dubbel klik op het bestand *Web. config* .
+2. Vouw het knoop punt **bestanden** uit en dubbel klik op het bestand *Web.config* .
 
-    ![Web. config openen](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png)
+    ![Web.config openen](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png)
 
-    Visual Studio opent het bestand Web. config vanuit de externe app en toont [Remote] naast de naam van het bestand in de titel balk.
-3. Voeg de volgende regel toe aan `system.web` het element:
+    Visual Studio opent het Web.config-bestand van de externe app en toont [Remote] naast de naam van het bestand in de titel balk.
+3. Voeg de volgende regel toe aan het `system.web` element:
 
     `<customErrors mode="Off"></customErrors>`
 
-    ![Web. config bewerken](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png)
+    ![Web.config bewerken](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png)
 4. Vernieuw de browser waarin het fout bericht niet meer wordt weer gegeven en u krijgt nu een gedetailleerd fout bericht, zoals het volgende voor beeld:
 
     ![Gedetailleerd fout bericht](./media/web-sites-dotnet-troubleshoot-visual-studio/detailederror.png)
 
     (De fout die wordt weer gegeven, is gemaakt door de regel die wordt weer gegeven in rood, toe te voegen aan *Views\Home\Index.cshtml*.)
 
-Het bewerken van het bestand Web. config is slechts één voor beeld van scenario's waarin de mogelijkheid om bestanden in uw App Service-app te lezen en te bewerken eenvoudiger te maken is om problemen op te lossen.
+Het bewerken van het Web.config bestand is slechts één voor beeld van scenario's waarin de mogelijkheid om bestanden op uw App Service app te lezen en te bewerken eenvoudiger te maken is om problemen op te lossen.
 
 ## <a name="remote-debugging-apps"></a><a name="remotedebug"></a>Apps voor externe fout opsporing
 Als het gedetailleerde fout bericht niet voldoende informatie biedt en u de fout niet lokaal opnieuw kunt maken, kunt u het probleem op een andere manier oplossen door op afstand de foutopsporingsmodus uit te voeren. U kunt onderbrekings punten instellen, het geheugen rechtstreeks manipuleren, de code stapsgewijs door lopen en zelfs het codepad wijzigen.
@@ -114,7 +114,7 @@ In deze sectie wordt uitgelegd hoe u op afstand fouten oplost met het project da
 
 1. Open *Controllers\HomeController.cs*.
 
-1. Verwijder de `About()` -methode en voeg de volgende code toe.
+1. Verwijder de- `About()` methode en voeg de volgende code toe.
 
     ```csharp
     public ActionResult About()
@@ -151,13 +151,13 @@ In deze sectie wordt uitgelegd hoe u op afstand fouten oplost met het project da
 
     Visual Studio stopt op het onderbrekings punt en de code wordt uitgevoerd in azure, niet op uw lokale computer.
 
-1. Beweeg de muis `currentTime` aanwijzer over de variabele om de tijd waarde weer te geven.
+1. Beweeg de muis aanwijzer over de `currentTime` variabele om de tijd waarde weer te geven.
 
     ![De variabele weer geven in de foutopsporingsmodus die in azure wordt uitgevoerd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugviewinwa.png)
 
     De tijd die u ziet, is de Azure-server tijd, die mogelijk in een andere tijd zone ligt dan uw lokale computer.
 
-1. Voer een nieuwe waarde in voor `currentTime` de variabele, zoals ' nu uitgevoerd in azure '.
+1. Voer een nieuwe waarde in voor de `currentTime` variabele, zoals ' nu uitgevoerd in azure '.
 
 1. Druk op F5 om door te gaan met uitvoeren.
 
@@ -176,7 +176,7 @@ Externe fout opsporing werkt alleen met doorlopende webjobs. Geplande en on-dema
 
 2. Open *functions.cs*in het project ContosoAdsWebJob.
 
-3. [Stel een onderbrekings punt](https://docs.microsoft.com/visualstudio/debugger/) in op de eerste `GnerateThumbnail` instructie in de methode.
+3. [Stel een onderbrekings punt](https://docs.microsoft.com/visualstudio/debugger/) in op de eerste instructie in de `GnerateThumbnail` methode.
 
     ![Onderbrekings punt instellen](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
 
@@ -200,7 +200,7 @@ Externe fout opsporing werkt alleen met doorlopende webjobs. Geplande en on-dema
 
     Als u een AD maakt, wordt er een wachtrij bericht gemaakt dat wordt opgehaald door de Webtaak en verwerkt. Wanneer de webjobs SDK de functie aanroept om het wachtrij bericht te verwerken, komt de code voor uw onderbrekings punt.
 
-10. Wanneer het fout opsporingsprogramma op uw onderbrekings punt breekt, kunt u de waarden van de variabelen bekijken en wijzigen terwijl de Cloud wordt uitgevoerd. In de volgende afbeelding ziet u het fout opsporingsprogramma de inhoud van het blobInfo-object dat is door `GenerateThumbnail` gegeven aan de-methode.
+10. Wanneer het fout opsporingsprogramma op uw onderbrekings punt breekt, kunt u de waarden van de variabelen bekijken en wijzigen terwijl de Cloud wordt uitgevoerd. In de volgende afbeelding ziet u het fout opsporingsprogramma de inhoud van het blobInfo-object dat is door gegeven aan de- `GenerateThumbnail` methode.
 
      ![blobInfo-object in fout opsporing](./media/web-sites-dotnet-troubleshoot-visual-studio/blobinfo.png)
 
@@ -218,7 +218,7 @@ Externe fout opsporing werkt alleen met doorlopende webjobs. Geplande en on-dema
 
      ![Klik op ContosoAdsWebJob](./media/web-sites-dotnet-troubleshoot-visual-studio/clickcaw.png)
 
-     Het dash board laat zien `GenerateThumbnail` dat de functie onlangs is uitgevoerd.
+     Het dash board laat zien dat de `GenerateThumbnail` functie onlangs is uitgevoerd.
 
      (De volgende keer dat u op **dash board weer geven**klikt, hoeft u zich niet aan te melden en de browser gaat rechtstreeks naar de pagina voor uw Webtaak.)
 
@@ -233,7 +233,7 @@ Als uw functie [Logboeken heeft geschreven](https://github.com/Azure/azure-webjo
 * Het uitvoeren van de foutopsporingsmodus in de productie omgeving wordt niet aanbevolen. Als uw productie-app niet naar meerdere server instanties kan worden geschaald, voor komt fout opsporing dat de webserver reageert op andere aanvragen. Als u meerdere webserver instanties hebt, wanneer u aan het fout opsporingsprogramma koppelt, krijgt u een wille keurig exemplaar en hebt u geen enkele manier om ervoor te zorgen dat volgende browser aanvragen naar hetzelfde exemplaar gaan. Het is ook niet mogelijk om een build voor fout opsporing te implementeren voor productie en compilatie optimalisaties voor builds voor het maken van een compiler kan ertoe leiden dat het niet mogelijk is om te laten zien wat er in de bron code op regel staat. Voor het oplossen van problemen met productie zijn de beste bronnen voor toepassings tracering en webserver logboeken.
 * Vermijd lange stops bij onderbrekings punten wanneer externe fout opsporing. Azure behandelt een proces dat langer dan een paar minuten wordt gestopt als een proces dat niet reageert en sluit het af.
 * Tijdens het opsporen van fouten, verzendt de server gegevens naar Visual Studio. Dit kan van invloed zijn op de bandbreedte kosten. Zie [Azure-prijzen](https://azure.microsoft.com/pricing/calculator/)voor meer informatie over de bandbreedte tarieven.
-* Zorg ervoor dat het `debug` kenmerk van het `compilation` element in het bestand *Web. config* is ingesteld op True. De instelling is standaard ingesteld op true wanneer u een configuratie voor het maken van fout opsporing publiceert.
+* Zorg ervoor dat het `debug` kenmerk van het `compilation` element in het *Web.config* bestand is ingesteld op True. De instelling is standaard ingesteld op true wanneer u een configuratie voor het maken van fout opsporing publiceert.
 
     ```xml
     <system.web>
@@ -243,7 +243,7 @@ Als uw functie [Logboeken heeft geschreven](https://github.com/Azure/azure-webjo
     ```
 * Als u merkt dat het fout opsporingsprogramma de code die u wilt opsporen niet Step Into, moet u mogelijk de Just My Code instelling wijzigen.  Zie voor meer informatie [opgeven of u alleen fouten wilt opsporen in gebruikers code met behulp van Just my code in Visual Studio](https://docs.microsoft.com/visualstudio/debugger/just-my-code).
 * Een timer wordt gestart op de server wanneer u de functie voor fout opsporing op afstand inschakelt en na 48 uur wordt de functie automatisch uitgeschakeld. Deze limiet van 48 uur wordt uitgevoerd om veiligheids-en prestatie redenen. U kunt de functie zo vaak als u wilt weer inschakelen. U wordt aangeraden de functie uitgeschakeld te laten wanneer u niet actief fouten opspoort.
-* U kunt het fout opsporingsprogramma hand matig koppelen aan elk proces, niet alleen het app-proces (W3wp. exe). Zie [fout opsporing in Visual Studio](/visualstudio/debugger/debugging-in-visual-studio)voor meer informatie over het gebruik van de foutopsporingsmodus in Visual Studio.
+* U kunt het fout opsporingsprogramma hand matig koppelen aan elk proces, niet alleen het app-proces (w3wp.exe). Zie [fout opsporing in Visual Studio](/visualstudio/debugger/debugging-in-visual-studio)voor meer informatie over het gebruik van de foutopsporingsmodus in Visual Studio.
 
 ## <a name="diagnostic-logs-overview"></a><a name="logsoverview"></a>Overzicht van Diagnostische logboeken
 Een ASP.NET-toepassing die wordt uitgevoerd in een App Service-app, kan de volgende soorten logboeken maken:
@@ -271,7 +271,7 @@ In deze sectie voert u de volgende taken uit:
 Voor informatie over het maken van toepassings Logboeken in webjobs, raadpleegt [u werken met Azure Queue Storage met de Webjobs SDK-logboeken schrijven](https://github.com/Azure/azure-webjobs-sdk/wiki). De volgende instructies voor het weer geven van Logboeken en bepalen hoe ze worden opgeslagen in azure zijn ook van toepassing op toepassings logboeken die zijn gemaakt door webjobs.
 
 ### <a name="add-tracing-statements-to-the-application"></a>Tracerings instructies toevoegen aan de toepassing
-1. Open *Controllers\HomeController.cs*en `Index`Vervang de methoden, `About`, en `Contact` door de volgende code om instructies toe te voegen `Trace` en een `using` instructie voor `System.Diagnostics`:
+1. Open *Controllers\HomeController.cs*en vervang de `Index` methoden, `About` , en door `Contact` de volgende code om instructies toe te voegen `Trace` en een `using` instructie voor `System.Diagnostics` :
 
     ```csharp
     public ActionResult Index()
@@ -307,12 +307,12 @@ Voor informatie over het maken van toepassings Logboeken in webjobs, raadpleegt 
 ### <a name="view-the-tracing-output-locally"></a>De tracerings uitvoer lokaal weer geven
 1. Druk op F5 om de toepassing uit te voeren in de foutopsporingsmodus.
 
-    De default Trace listener schrijft alle uitvoer van de tracering naar het **uitvoer** venster, samen met andere uitvoer van fout opsporing. In de volgende afbeelding ziet u de uitvoer van de trace-instructies die u `Index` aan de methode hebt toegevoegd.
+    De default Trace listener schrijft alle uitvoer van de tracering naar het **uitvoer** venster, samen met andere uitvoer van fout opsporing. In de volgende afbeelding ziet u de uitvoer van de trace-instructies die u aan de methode hebt toegevoegd `Index` .
 
     ![Traceren in het venster fout opsporing](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugtracing.png)
 
     De volgende stappen laten zien hoe u de tracerings uitvoer in een webpagina kunt weer geven zonder te compileren in de foutopsporingsmodus.
-1. Open het web. config-bestand van de toepassing (de map die zich in de projectmap bevindt) en voeg een `<system.diagnostics>` element toe aan het einde `</configuration>` van het bestand net vóór het afsluitende element:
+1. Open het Web.config bestand van de toepassing (de map die zich in de projectmap bevindt) en voeg `<system.diagnostics>` aan het einde van het bestand een element toe, net vóór het eind `</configuration>` element:
 
     ``` xml
     <system.diagnostics>
@@ -329,28 +329,30 @@ Voor informatie over het maken van toepassings Logboeken in webjobs, raadpleegt 
     </system.diagnostics>
     ```
 
-Met `WebPageTraceListener` de kunt u tracerings uitvoer weer geven `/trace.axd`door te bladeren naar.
-1. Voeg een <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">tracerings element</a> toe onder `<system.web>` in het bestand Web. config, zoals in het volgende voor beeld:
+`WebPageTraceListener`Met de kunt u tracerings uitvoer weer geven door te bladeren naar `/trace.axd` .
+1. Voeg een <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">tracerings element</a> toe onder `<system.web>` in het Web.config-bestand, zoals in het volgende voor beeld:
 
     ``` xml
     <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
     ```
 
 1. Druk op CTRL + F5 om de toepassing uit te voeren.
-1. Voeg in de adres balk van het browser venster *tracering. axd* toe aan de URL en druk op ENTER (de URL is vergelijkbaar met `http://localhost:53370/trace.axd`).
+1. Voeg in de adres balk van het browser venster *tracering. axd* toe aan de URL en druk op ENTER (de URL is vergelijkbaar met `http://localhost:53370/trace.axd` ).
 1. Klik op de pagina **toepassings tracering** op **Details weer geven** op de eerste regel (niet op de regel BrowserLink).
 
     ![Trace. axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
 
-    De pagina **aanvraag Details** wordt weer gegeven en in de sectie **tracerings gegevens** ziet u de uitvoer van de trace-instructies die u `Index` hebt toegevoegd aan de-methode.
+    De pagina **aanvraag Details** wordt weer gegeven en in de sectie **tracerings gegevens** ziet u de uitvoer van de trace-instructies die u hebt toegevoegd aan de- `Index` methode.
 
     ![Trace. axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png)
 
-    `trace.axd` Is standaard alleen lokaal beschikbaar. Als u het beschikbaar wilt maken vanuit een externe app, kunt u dit toevoegen `localOnly="false"` aan het `trace` -element in het *Web. config* -bestand, zoals wordt weer gegeven in het volgende voor beeld:
+    `trace.axd`Is standaard alleen lokaal beschikbaar. Als u het beschikbaar wilt maken vanuit een externe app, kunt u dit toevoegen `localOnly="false"` aan het `trace` -element in het *Web.config* -bestand, zoals wordt weer gegeven in het volgende voor beeld:
 
-        <trace enabled="true" writeToDiagnosticsTrace="true" localOnly="false" mostRecent="true" pageOutput="false" />
+    ```xml
+    <trace enabled="true" writeToDiagnosticsTrace="true" localOnly="false" mostRecent="true" pageOutput="false" />
+    ```
 
-    Het inschakelen `trace.axd` van een productie-app wordt echter niet aanbevolen om veiligheids redenen. In de volgende secties ziet u een eenvoudige manier om traceer Logboeken in een App Service-app te lezen.
+    `trace.axd`Het inschakelen van een productie-app wordt echter niet aanbevolen om veiligheids redenen. In de volgende secties ziet u een eenvoudige manier om traceer Logboeken in een App Service-app te lezen.
 
 ### <a name="view-the-tracing-output-in-azure"></a>De tracerings uitvoer in azure weer geven
 1. Klik in **Solution Explorer**met de rechter muisknop op het webproject en klik op **publiceren**.
@@ -366,7 +368,7 @@ Met `WebPageTraceListener` de kunt u tracerings uitvoer weer geven `/trace.axd`d
     ![Streaming-Logboeken in het context menu weer geven](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png)
 4. Klik in het browser venster waarin de start pagina van uw toepassing wordt weer gegeven op **contact persoon**.
 
-    Binnen een paar seconden wordt de uitvoer van de tracering op fout niveau die u hebt `Contact` toegevoegd aan de-methode weer gegeven in het **uitvoer** venster.
+    Binnen een paar seconden wordt de uitvoer van de tracering op fout niveau die u hebt toegevoegd aan de- `Contact` methode weer gegeven in het **uitvoer** venster.
 
     ![Fout traceren in uitvoer venster](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-errortrace.png)
 
@@ -386,7 +388,7 @@ Met `WebPageTraceListener` de kunt u tracerings uitvoer weer geven `/trace.axd`d
 
     ![Uitgebreide tracerings uitvoer](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-verbosetraces.png)
 
-    In deze sectie hebt u logboek registratie ingeschakeld en uitgeschakeld met behulp van app-instellingen. U kunt traceer listeners ook in-en uitschakelen door het bestand Web. config te wijzigen. Het wijzigen van het bestand Web. config zorgt er echter voor dat het app-domein wordt gerecycled, terwijl logboek registratie via de app-configuratie dit niet doet. Als het probleem veel tijd in beslag neemt of als er een terugkerende fout optreedt, kan het app-domein worden gerepareerd en kunt u wachten totdat het opnieuw wordt uitgevoerd. Door Diagnostische gegevens in te scha kelen in azure kunt u meteen beginnen met het vastleggen van fout gegevens zonder het app-domein te recyclen.
+    In deze sectie hebt u logboek registratie ingeschakeld en uitgeschakeld met behulp van app-instellingen. U kunt traceer listeners ook in-en uitschakelen door het Web.config-bestand te wijzigen. Als u echter het Web.config bestand wijzigt, wordt het app-domein opnieuw gerecycled, terwijl het inschakelen van logboek registratie via de app-configuratie dit niet doet. Als het probleem veel tijd in beslag neemt of als er een terugkerende fout optreedt, kan het app-domein worden gerepareerd en kunt u wachten totdat het opnieuw wordt uitgevoerd. Door Diagnostische gegevens in te scha kelen in azure kunt u meteen beginnen met het vastleggen van fout gegevens zonder het app-domein te recyclen.
 
 ### <a name="output-window-features"></a>Functies van het uitvoer venster
 Het tabblad **Microsoft Azure logboeken** van het **uitvoer** venster bevat verschillende knoppen en een tekstvak:
@@ -440,7 +442,7 @@ Gedetailleerde fout logboeken bevatten aanvullende informatie over HTTP-aanvrage
 
     ![Alle logboeken bewaken](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-monitorall.png)
 
-4. Voeg in de adres balk van het browser venster een extra teken toe aan de URL om een 404-fout te veroorzaken (bijvoorbeeld `http://localhost:53370/Home/Contactx`) en druk op ENTER.
+4. Voeg in de adres balk van het browser venster een extra teken toe aan de URL om een 404-fout te veroorzaken (bijvoorbeeld `http://localhost:53370/Home/Contactx` ) en druk op ENTER.
 
     Na enkele seconden wordt het gedetailleerde fouten logboek weer gegeven in het Visual Studio- **uitvoer** venster.
 

@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.openlocfilehash: 0b83a35d912c97ae25bc2d69d076e8eae8ca490f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b8f8bda52be63a4176411855dd9ff9919e9e31f5
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77523601"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856679"
 ---
 # <a name="keys-and-values"></a>Sleutels en waarden
 
@@ -19,25 +19,29 @@ Azure-app-configuratie slaat configuratie gegevens op als sleutel-waardeparen. S
 
 ## <a name="keys"></a>Sleutels
 
-Sleutels fungeren als id's voor sleutel-waardeparen en worden gebruikt voor het opslaan en ophalen van de bijbehorende waarden. Het is een veelvoorkomende procedure om sleutels te organiseren in een hiërarchische naam ruimte met behulp van `/` een `:`teken scheidings tekens, zoals of. Gebruik een Conventie die het meest geschikt is voor uw toepassing. Voor App Configuration zijn sleutels een op zichzelf staand object. Sleutels worden niet geparseerd om erachter te komen hoe hun namen worden gestructureerd of dat er regels worden afgedwongen.
+Sleutels fungeren als id's voor sleutel-waardeparen en worden gebruikt voor het opslaan en ophalen van de bijbehorende waarden. Het is een veelvoorkomende procedure om sleutels te organiseren in een hiërarchische naam ruimte met behulp van een teken scheidings tekens, zoals `/` of `:` . Gebruik een Conventie die het meest geschikt is voor uw toepassing. Voor App Configuration zijn sleutels een op zichzelf staand object. Sleutels worden niet geparseerd om erachter te komen hoe hun namen worden gestructureerd of dat er regels worden afgedwongen.
 
 Hier volgen twee voor beelden van sleutel namen die zijn gestructureerd in een hiërarchie:
 
 * Op basis van componentservices
 
+```aspx
         AppName:Service1:ApiEndpoint
         AppName:Service2:ApiEndpoint
+```
 
 * Op basis van implementatieregio's
 
+```aspx
         AppName:Region1:DbEndpoint
         AppName:Region2:DbEndpoint
+```
 
-Het gebruik van configuratie gegevens in Application Frameworks kan specifieke naamgevings schema's voor sleutel waarden dicteren. In het voor beeld van de lente van een `Environment` Java-Framework definieert u bijvoorbeeld bronnen voor het leveren van instellingen aan een lente-toepassing.  Deze zijn para meters van variabelen die *toepassings naam* en- *profiel*bevatten. Sleutels voor lente-Cloud configuratie gegevens beginnen meestal met deze twee elementen gescheiden door een scheidings teken.
+Het gebruik van configuratie gegevens in Application Frameworks kan specifieke naamgevings schema's voor sleutel waarden dicteren. In het voor beeld van de lente van een Java-Framework definieert `Environment` u bijvoorbeeld bronnen voor het leveren van instellingen aan een lente-toepassing.  Deze zijn para meters van variabelen die *toepassings naam* en- *profiel*bevatten. Sleutels voor lente-Cloud configuratie gegevens beginnen meestal met deze twee elementen gescheiden door een scheidings teken.
 
 Sleutels die zijn opgeslagen in App Configuration zijn hoofdlettergevoelige tekenreeksen, op basis van Unicode. De sleutels *app1* en *app1* zijn uniek in een app-configuratie opslag. Houd dit in gedachten wanneer u configuratie-instellingen in een toepassing gebruikt omdat sommige Frameworks configuratie sleutels hoofdletter gevoelig verwerken. Het is niet raadzaam om cases te gebruiken om sleutels te onderscheiden.
 
-U kunt elk Unicode-teken in sleutel namen gebruiken, `*`behalve `,`voor, `\`, en.  Als u een van deze gereserveerde tekens wilt gebruiken `\{Reserved Character}`, sluit u deze met. 
+U kunt elk Unicode-teken in sleutel namen gebruiken, behalve voor `*` , `,` , en `\` .  Als u een van deze gereserveerde tekens wilt gebruiken, sluit u deze met `\{Reserved Character}` . 
 
 Er is een gecombineerde grootte limiet van 10 KB voor een sleutel/waarde-paar. Deze limiet omvat alle tekens in de sleutel, de bijbehorende waarde en alle bijbehorende optionele kenmerken. Binnen deze limiet kunt u veel niveaus voor sleutels gebruiken.
 
@@ -53,23 +57,25 @@ U kunt sleutels in App Configuration op allerlei manieren hiërarchisch indelen.
 
 ### <a name="label-keys"></a>Label sleutels
 
-Sleutel waarden in app-configuratie kunnen optioneel een label kenmerk hebben. Labels worden gebruikt om sleutel waarden te onderscheiden met dezelfde sleutel. Een Key *app1* met labels *A* en *B* vormt twee afzonderlijke sleutels in een app-configuratie opslag. Standaard heeft een sleutel waarde geen label. Als u expliciet wilt verwijzen naar een sleutel waarde zonder label `\0` , gebruikt u ( `%00`URL-gecodeerd als).
+Sleutel waarden in app-configuratie kunnen optioneel een label kenmerk hebben. Labels worden gebruikt om sleutel waarden te onderscheiden met dezelfde sleutel. Een Key *app1* met labels *A* en *B* vormt twee afzonderlijke sleutels in een app-configuratie opslag. Standaard heeft een sleutel waarde geen label. Als u expliciet wilt verwijzen naar een sleutel waarde zonder label, gebruikt u `\0` (URL-gecodeerd als `%00` ).
 
 Label biedt een handige manier om varianten van een sleutel te maken. Het gebruik van labels is gebruikelijk om meerdere omgevingen op te geven voor dezelfde sleutel:
 
+```aspx
     Key = AppName:DbEndpoint & Label = Test
     Key = AppName:DbEndpoint & Label = Staging
     Key = AppName:DbEndpoint & Label = Production
+```
 
 ### <a name="version-key-values"></a>Versie sleutel waarden
 
 App-configuratie bevat niet automatisch sleutel waarden. Gebruik labels als een manier om meerdere versies van een sleutel waarde te maken. U kunt bijvoorbeeld een versie nummer van een toepassing of een Git-doorvoer-ID invoeren in labels om sleutel waarden te identificeren die zijn gekoppeld aan een bepaalde software-build.
 
-U kunt elk Unicode-teken gebruiken in labels, `*`behalve `,`voor, `\`, en. Deze tekens zijn gereserveerd. Als u een gereserveerd teken wilt toevoegen, moet u dit met `\{Reserved Character}`behulp van gebruiken.
+U kunt elk Unicode-teken gebruiken in labels, behalve voor `*` , `,` , en `\` . Deze tekens zijn gereserveerd. Als u een gereserveerd teken wilt toevoegen, moet u dit met behulp van gebruiken `\{Reserved Character}` .
 
 ### <a name="query-key-values"></a>Sleutel waarden opvragen
 
-Elke sleutel waarde wordt uniek aangeduid door de sleutel plus een label dat kan zijn `null`. U kunt een app-configuratie Archief voor sleutel waarden opvragen door een patroon op te geven. In het app-configuratie archief worden alle sleutel waarden geretourneerd die overeenkomen met het patroon en de bijbehorende waarden en kenmerken. Gebruik de volgende sleutel patronen in REST API-aanroepen naar app-configuratie:
+Elke sleutel waarde wordt uniek aangeduid door de sleutel plus een label dat kan zijn `null` . U kunt een app-configuratie Archief voor sleutel waarden opvragen door een patroon op te geven. In het app-configuratie archief worden alle sleutel waarden geretourneerd die overeenkomen met het patroon en de bijbehorende waarden en kenmerken. Gebruik de volgende sleutel patronen in REST API-aanroepen naar app-configuratie:
 
 | Sleutel | |
 |---|---|
@@ -83,10 +89,10 @@ U kunt ook de volgende label patronen toevoegen:
 | Label | |
 |---|---|
 | `label` wordt weggelaten of `label=*` | Komt overeen met een label, inclusief`null` |
-| `label=%00` | Komt `null` overeen met label |
+| `label=%00` | Komt overeen met `null` label |
 | `label=1.0.0` | Komt exact overeen met label **1.0.0** |
 | `label=1.0.*` | Komt overeen met labels die beginnen met **1.0.** |
-| `label=%00,1.0.0` | Komt overeen `null` met labels of **1.0.0**, beperkt tot vijf csv's |
+| `label=%00,1.0.0` | Komt overeen met labels `null` of **1.0.0**, beperkt tot vijf csv's |
 
 ## <a name="values"></a>Waarden
 

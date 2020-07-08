@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 41b7dc2b7ddcf5d8bd15043d117a25771a278f95
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 14e8b3e28115fb191760382ed2a9fbd5c5a04114
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204868"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919924"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob-opslag: dynamische en statische toegangslagen, en archieftoegangslaag
 
@@ -82,7 +82,7 @@ Met lagen op blobniveau kunt u gegevens uploaden naar de toegangs laag van uw ke
 Het tijdstip waarop de laatste wijziging aan de blob-laag heeft plaatsgevonden, wordt weergegeven via de blob-eigenschap **Access Tier Change Time**. Bij het overschrijven van een BLOB in de warme of koude laag, neemt de zojuist gemaakte BLOB de laag over van de blob die is overschreven, tenzij de nieuwe BLOB-toegangs laag expliciet is ingesteld bij het maken. Als een BLOB zich in de laag Archive bevindt, kan deze niet worden overschreven, dus het uploaden van dezelfde blob is niet toegestaan in dit scenario. 
 
 > [!NOTE]
-> Archiefopslag en laaginstelling op blobniveau ondersteunen alleen blok-blobs. U kunt de laag van een blok-blob die moment opnamen bevat, momenteel ook niet wijzigen.
+> Archiefopslag en laaginstelling op blobniveau ondersteunen alleen blok-blobs.
 
 ### <a name="blob-lifecycle-management"></a>Beheer van de BLOB levenscyclus
 
@@ -141,7 +141,7 @@ In deze sectie worden de volgende scenario's geïllustreerd met behulp van de Az
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>De toegangslaag van het standaardaccount van een GPv2- of Blob Storage-account wijzigen
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Zoek in het Azure Portal **alle resources**en selecteer deze.
 
@@ -169,7 +169,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>De laag van een BLOB in een GPv2 of Blob Storage-account wijzigen
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Zoek in het Azure Portal **alle resources**en selecteer deze.
 

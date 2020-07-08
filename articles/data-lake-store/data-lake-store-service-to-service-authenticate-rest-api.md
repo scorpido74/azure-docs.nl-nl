@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 08b5e915902fb4e2002bd20699cdaca9f0f35e3e
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 725490316ef4fcbce197d5a29b7665b7de7014c9
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85505063"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857121"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Service-naar-service verificatie met Azure Data Lake Storage Gen1 met behulp van REST API
 > [!div class="op_single_selector"]
@@ -34,15 +34,19 @@ In dit artikel leert u hoe u met behulp van de REST API service-to-service-verif
 
 In dit scenario biedt de toepassing zijn eigen referenties om de bewerkingen uit te voeren. Hiervoor moet u een POST-aanvraag uitgeven, zoals in het volgende code fragment:
 
-    curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
-      -F grant_type=client_credentials \
-      -F resource=https://management.core.windows.net/ \
-      -F client_id=<CLIENT-ID> \
-      -F client_secret=<AUTH-KEY>
+```console
+curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
+  -F grant_type=client_credentials \
+  -F resource=https://management.core.windows.net/ \
+  -F client_id=<CLIENT-ID> \
+  -F client_secret=<AUTH-KEY>
+```
 
 De uitvoer van de aanvraag bevat een autorisatie token (aangegeven door `access-token` in de onderstaande uitvoer) dat u vervolgens doorgeeft aan uw rest API-aanroepen. Sla het verificatie token op in een tekst bestand. u hebt deze nodig wanneer REST-aanroepen naar Data Lake Storage Gen1 worden uitgevoerd.
 
-    {"token_type":"Bearer","expires_in":"3599","expires_on":"1458245447","not_before":"1458241547","resource":"https://management.core.windows.net/","access_token":"<REDACTED>"}
+```output
+{"token_type":"Bearer","expires_in":"3599","expires_on":"1458245447","not_before":"1458241547","resource":"https://management.core.windows.net/","access_token":"<REDACTED>"}
+```
 
 In dit artikel wordt de **niet-interactieve** benadering gebruikt. Zie [Service-naar-service-aanroepen met referenties](https://msdn.microsoft.com/library/azure/dn645543.aspx) voor meer informatie over niet-interactieve (service-naar-service) aanroepen.
 

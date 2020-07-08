@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: 843cd74c85c619dbbd2b11a32fccf75d030b5613
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: be212de7a24b416ad4e5dc08998ba1147c6f3753
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772961"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855941"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Gegevensverzameling in Azure Security Center
 Security Center verzamelt gegevens van uw virtuele machines van Azure (Vm's), schaal sets voor virtuele machines, IaaS containers en niet-Azure-computers (inclusief on-premises) om te controleren op beveiligings problemen en bedreigingen. Gegevens worden verzameld met behulp van de Log Analytics-agent, die verschillende aan beveiliging gerelateerde configuraties en gebeurtenis logboeken van de computer leest en de gegevens naar uw werk ruimte kopieert voor analyse. Voor beelden van dergelijke gegevens zijn: besturingssysteem type en-versie, logboeken van besturings systemen (Windows-gebeurtenis Logboeken), actieve processen, computer naam, IP-adressen en aangemelde gebruiker.
@@ -199,7 +199,7 @@ Als de geconfigureerde werk ruimte een gebruikers werkruimte is (niet Security C
 <br>
 Voor Linux-machines wordt agent-multi-multihoming nog niet ondersteund. als er een bestaande agent wordt gedetecteerd, treedt er geen automatische inrichting op en wordt de configuratie van de computer niet gewijzigd.
 <br>
-Voor bestaande machines op abonnementen die voor Security Center vóór 2019-03-17 worden uitgevoerd, wordt de uitbrei ding van de Log Analytics agent niet geïnstalleerd en wordt de computer niet beïnvloed als er een bestaande agent wordt gedetecteerd. Zie voor deze computers de aanbeveling ' bewakings agent status problemen oplossen op uw computers ' om de installatie problemen van de agent op deze computers op te lossen.
+Voor bestaande machines op abonnementen die vóór 17 maart 2019 op Security Center worden uitgevoerd, wordt de uitbrei ding van de Log Analytics agent niet geïnstalleerd en wordt de computer niet beïnvloed als er een bestaande agent wordt gedetecteerd. Zie voor deze computers de aanbeveling ' bewakings agent status problemen oplossen op uw computers ' om de installatie problemen van de agent op deze computers op te lossen.
 
   
 - System Center Operations Manager agent is geïnstalleerd op de computer<br>
@@ -237,58 +237,44 @@ Er zijn verschillende manieren om de Log Analytics agent hand matig te installer
 ### <a name="operations-management-suite-vm-extension-deployment"></a>Implementatie van VM-extensie van Operations Management Suite 
 
 U kunt de Log Analytics-agent hand matig installeren, zodat Security Center beveiligings gegevens van uw virtuele machines kan verzamelen en aanbevelingen en waarschuwingen kunt geven.
-1. Selecteer automatische inrichting – uit.
-2. Maak een werk ruimte en stel de prijs categorie in voor de werk ruimte die u wilt instellen voor de Log Analytics-agent:
 
-   a.  Selecteer in het hoofd menu van Security Center de optie **beveiligings beleid**.
-     
-   b.  Selecteer de werk ruimte waarin u de agent wilt verbinden. Zorg ervoor dat de werk ruimte zich in hetzelfde abonnement bevindt dat u in Security Center gebruikt en dat u lees-en schrijf machtigingen hebt voor de werk ruimte.
-       ![Werkruimte selecteren][8]
-3. Stel de prijs categorie in.
-   ![Prijs categorie selecteren][9] 
-   >[!NOTE]
-   >Als er al een **beveiligings** -of **SecurityCenterFree** -oplossing is ingeschakeld voor de werk ruimte, wordt de prijs automatisch ingesteld. 
+1. Schakel automatische inrichting uit.
+
+1. U kunt ook een werk ruimte maken.
+
+1. Stel de werk ruimte in waarop u de Log Analytics Agent installeert in de prijs categorie Standard:
+
+    1. Selecteer in het menu van Security Center **prijzen & instellingen**.
+
+    1. Stel de werk ruimte in waarop u de agent wilt installeren. Zorg ervoor dat de werk ruimte zich in hetzelfde abonnement bevindt dat u in Security Center gebruikt en dat u lees-en schrijf machtigingen hebt voor de werk ruimte.
+
+    1. Stel de prijs categorie Standard in en selecteer **Opslaan**.
+
+        ![Een standaard prijs categorie instellen voor een werk ruimte](.\media\security-center-enable-data-collection\workspace-to-standard-tier.gif)
+
+       >[!NOTE]
+       >Als er al een **beveiligings** -of **SecurityCenterFree** -oplossing is ingeschakeld voor de werk ruimte, wordt de prijs automatisch ingesteld. 
    > 
 
-4. Als u de agents op nieuwe Vm's wilt implementeren met behulp van een resource manager-sjabloon, installeert u de OMS-extensie van de virtuele machine:
+1. Als u de agents op nieuwe Vm's wilt implementeren met behulp van een resource manager-sjabloon, installeert u de Log Analytics agent:
 
-   a.  [De OMS-extensie voor virtuele machines voor Windows installeren](../virtual-machines/extensions/oms-windows.md)
+   a.  [De Log Analytics-agent voor Windows installeren](../virtual-machines/extensions/oms-windows.md)
     
-   b.  [De OMS-extensie van de virtuele machine voor Linux installeren](../virtual-machines/extensions/oms-linux.md)
-5. Als u de uitbrei dingen op bestaande Vm's wilt implementeren, volgt u de instructies in [gegevens verzamelen over Azure virtual machines](../azure-monitor/learn/quick-collect-azurevm.md).
+   b.  [De Log Analytics-agent voor Linux installeren](../virtual-machines/extensions/oms-linux.md)
+
+1. Als u de uitbrei dingen op bestaande Vm's wilt implementeren, volgt u de instructies in [gegevens verzamelen over Azure virtual machines](../azure-monitor/learn/quick-collect-azurevm.md).
 
    > [!NOTE]
    > De sectie **gebeurtenis-en prestatie gegevens verzamelen** is optioneel.
    >
-6. Als u Power shell wilt gebruiken om de uitbrei ding te implementeren, gebruikt u het volgende Power shell-voor beeld:
-   
-   [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-   
-   1. Ga naar **log Analytics** en klik op **Geavanceerde instellingen**.
-    
-      ![Log Analytics instellen][11]
 
-   2. Kopieer de waarden van de **WorkspaceID** en de **primaire sleutel**.
-  
-      ![Waarden kopiëren][12]
+1. Als u Power shell wilt gebruiken om de uitbrei ding te implementeren, gebruikt u de instructies in de documentatie voor virtual machines:
 
-   3. Vul de open bare configuratie en de persoonlijke configuratie in met de volgende waarden:
-     
-           $PublicConf = @{
-               "workspaceId"= "<WorkspaceID value>"
-           }
- 
-           $PrivateConf = @{
-               "workspaceKey"= "<Primary key value>"
-           }
+    - [Voor Windows-machines](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#powershell-deployment)
 
-      - Wanneer u installeert op een Windows-VM:
-        
-            Set-AzVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -settings $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
-    
-      - Wanneer u installeert op een virtuele Linux-machine:
-        
-            Set-AzVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
+    - [Voor Linux-machines](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-linux?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#azure-cli-deployment)
+
+
 
 > [!NOTE]
 > Zie voor instructies over het onboarden van Security Center met behulp van Power shell de Azure Security Center voor bereiding op het [uitvoeren van](security-center-powershell-onboarding.md)een onboarding.

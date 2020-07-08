@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: 471633414603ede123382b46b549acb2fd4fd98e
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 9066c53fce750b1c8402c5a0ccbd10debd5ec431
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85508704"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855707"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Integratie van virtuele netwerken voor Azure Data Lake Storage Gen1
 
@@ -46,17 +46,17 @@ Een belangrijk voordeel van service-eindpunten voor virtuele netwerken is [optim
 
 **Openbaar IP-adres van Data Lake Storage**: gebruik het openbare IP-adres voor de Data Lake Storage Gen1-doelaccounts. U kunt de IP-adressen voor het Data Lake Storage Gen1-account identificeren door [de DNS-namen van de accounts](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-connectivity-from-vnets#enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity) om te zetten. Maak een afzonderlijke vermelding voor elk adres.
 
-    ```azurecli
-    # Create a route table for your resource group.
-    az network route-table create --resource-group $RgName --name $RouteTableName
-    
-    # Create route table rules for Data Lake Storage public IP addresses.
-    # There's one rule per Data Lake Storage public IP address. 
-    az network route-table route create --name toADLSregion1 --resource-group $RgName --route-table-name $RouteTableName --address-prefix <ADLS Public IP Address> --next-hop-type Internet
-    
-    # Update the virtual network, and apply the newly created route table to it.
-    az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resource-group $RgName --route-table $RouteTableName
-    ```
+```azurecli
+# Create a route table for your resource group.
+az network route-table create --resource-group $RgName --name $RouteTableName
+
+# Create route table rules for Data Lake Storage public IP addresses.
+# There's one rule per Data Lake Storage public IP address. 
+az network route-table route create --name toADLSregion1 --resource-group $RgName --route-table-name $RouteTableName --address-prefix <ADLS Public IP Address> --next-hop-type Internet
+
+# Update the virtual network, and apply the newly created route table to it.
+az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resource-group $RgName --route-table $RouteTableName
+```
 
 ## <a name="data-exfiltration-from-the-customer-virtual-network"></a>Gegevensoverdracht vanuit het virtuele netwerk van de klant
 
@@ -81,7 +81,7 @@ Een aantal beschikbare opties zijn:
   
 - Bestands- en mapgegevens in uw Data Lake Storage Gen1-account met virtuele-netwerkfunctionaliteit zijn niet toegankelijk vanuit de portal. Deze beperking omvat toegang vanuit een VM in het virtuele netwerk en activiteiten zoals het gebruik van Data Explorer. Accountbeheeractiviteiten blijven werken. Bestands- en mapgegevens in uw Data Lake Storage-account met virtuele-netwerkfunctionaliteit zijn toegankelijk via alle niet-portalresources. Deze resources omvatten bijvoorbeeld SDK-toegang, PowerShell-scripts en andere Azure-services als deze niet afkomstig zijn uit de portal. 
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Configuratie
 
 ### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>Stap 1: uw virtuele netwerk configureren voor het gebruik van een Azure AD-service-eindpunt
 

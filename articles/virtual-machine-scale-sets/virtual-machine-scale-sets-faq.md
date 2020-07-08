@@ -6,15 +6,15 @@ ms.author: mimckitt
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: faq
-ms.date: 05/24/2019
+ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: a3074fdd10ef960a1c0b58b973d57da14d888af4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: cf58b62001ce5d193e3a06973215d82138ad4b59
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200166"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855591"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Veelgestelde vragen over schaalsets voor virtuele Azure-machines
 
@@ -224,9 +224,9 @@ U kunt open bare SSH-sleutels in tekst zonder opmaak opgeven wanneer u een virtu
 }
 ```
 
-linuxConfiguration element naam | Vereist | Type | Beschrijving
+linuxConfiguration element naam | Vereist | Type | Description
 --- | --- | --- | ---
-SSH | Nee | Verzameling | Hiermee geeft u de configuratie van de SSH-sleutel voor een Linux-besturings systeem op
+SSH | No | Verzameling | Hiermee geeft u de configuratie van de SSH-sleutel voor een Linux-besturings systeem op
 path | Ja | Tekenreeks | Hiermee geeft u het pad naar het Linux-bestand op waar de SSH-sleutels of het certificaat zich bevinden
 Gegevens | Ja | Tekenreeks | Hiermee geeft u een open bare SSH-sleutel met base64-code ring op
 
@@ -234,7 +234,7 @@ Zie [de sjabloon 101-VM-Sshkey github Quick](https://github.com/Azure/azure-quic
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Wanneer ik voer `Update-AzVmss` na het toevoegen van meer dan één certificaat uit dezelfde sleutel kluis, wordt het volgende bericht weer gegeven:
 
->Update-AzVmss: List Secret bevat herhaalde exemplaren van \< de/Subscriptions/mijn abonnement-id>/ResourceGroups/Internal-RG-dev/providers/Microsoft.keyvault/vaults/Internal-keyvault-dev, wat niet is toegestaan.
+>Update-AzVmss: List Secret bevat herhaalde exemplaren van/Subscriptions/ \<my-subscription-id> /resourceGroups/Internal-RG-dev/providers/Microsoft.KeyVault/vaults/Internal-keyvault-dev. Dit is niet toegestaan.
 
 Dit kan gebeuren als u probeert dezelfde kluis opnieuw toe te voegen in plaats van een nieuw kluis certificaat te gebruiken voor de bestaande bron kluis. De `Add-AzVmssSecret` opdracht werkt niet goed als u extra geheimen toevoegt.
 
@@ -338,7 +338,7 @@ Zie [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/Compliance/PC
 
 Ja. U ziet enkele voor beelden van MSI-sjablonen in azure Quick Start-sjablonen voor [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) en [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi).
 
-## <a name="deleting"></a>Verwijder
+## <a name="deleting"></a>Verwijderen
 
 ### <a name="will-the-locks-i-set-in-place-on-virtual-machine-scale-set-instances-be-respected-when-deleting-instances"></a>Worden de vergren delingen die ik heb ingesteld voor instanties van virtuele-machine schaal sets gerespecteerd bij het verwijderen van instanties?
 
@@ -346,7 +346,7 @@ In azure Portal kunt u een afzonderlijk exemplaar of bulksgewijs verwijderen ver
 
 In azure CLI hebt u alleen de mogelijkheid om een afzonderlijk exemplaar te verwijderen. Als u probeert om één exemplaar te verwijderen dat een vergren deling heeft, wordt de vergren deling gerespecteerd en kunt u dat exemplaar niet verwijderen.
 
-## <a name="extensions"></a>Uitbreidingen
+## <a name="extensions"></a>Extensies
 
 ### <a name="how-do-i-delete-a-virtual-machine-scale-set-extension"></a>Wilt u de extensie van een virtuele-machine schaalset Hoe kan ik verwijderen?
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: b85140d5a54d7447a80899f498dd63014bd11695
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 1996f607d05cb84a80acbb105504ce0b5d3bb0c1
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321861"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856902"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Naslag informatie voor algoritme & module voor Azure Machine Learning Designer (preview)
 
@@ -55,7 +55,7 @@ Zie voor hulp bij het kiezen van algoritmen
 | Model leren en evalueren | Meet de nauw keurigheid van het getrainde model. | [Transformatie toepassen](apply-transformation.md) <br/> [Gegevens aan cluster toewijzen](assign-data-to-clusters.md) <br/> [Kruisvalidatie van model valideren](cross-validate-model.md) <br/> [Model evalueren](evaluate-model.md) <br/> [Afbeeldingsmodel voor score](score-image-model.md) <br/> [Score Model](score-model.md) |
 | Python-taal | Schrijf code en sluit deze in een module in om python met uw pijp lijn te integreren. | [Python-model maken](create-python-model.md) <br/> [Python-script uitvoeren](execute-python-script.md) |
 | R-taal | Schrijf code en sluit deze in een module in om R met uw pijp lijn te integreren. | [R-Script uitvoeren](execute-r-script.md) |
-| Text Analytics | Bieden speciale reken kundige hulp middelen voor het werken met zowel gestructureerde als ongestructureerde tekst. |  [Word converteren naar vector](convert-word-to-vector.md) <br/> [N-Gram-functies uit tekst halen](extract-n-gram-features-from-text.md) <br/> [Functie-hashing](feature-hashing.md) <br/> [Tekst voorverwerken](preprocess-text.md) <br/> [Latente Dirichlet-toewijzing](latent-dirichlet-allocation.md) |
+| Tekstanalyse | Bieden speciale reken kundige hulp middelen voor het werken met zowel gestructureerde als ongestructureerde tekst. |  [Word converteren naar vector](convert-word-to-vector.md) <br/> [N-Gram-functies uit tekst halen](extract-n-gram-features-from-text.md) <br/> [Functie-hashing](feature-hashing.md) <br/> [Tekst voorverwerken](preprocess-text.md) <br/> [Latente Dirichlet-toewijzing](latent-dirichlet-allocation.md) <br/> [Vowpal Wabbit-model scoren](score-vowpal-wabbit-model.md) <br/> [Vowpal Wabbit-model trainen](train-vowpal-wabbit-model.md)|
 | Computer Vision | Voor verwerking van installatie kopie-en installatie kopieën gerelateerde modules. |  [Afbeeldingstransformatie toepassen](apply-image-transformation.md) <br/> [Converteren naar afbeeldingsmap](convert-to-image-directory.md) <br/> [Afbeeldingstransformatie initiëren](init-image-transformation.md) <br/> [Map om afbeeldingen te splitsen](split-image-directory.md) <br/> [DenseNet](densenet.md) <br/> [ResNet](resnet.md) |
 | Aanbeveling | Aanbevelings modellen bouwen. | [Aanbevelingsfunctie voor evaluatie](evaluate-recommender.md) <br/> [Aanbevelingsfunctie voor SVD-score](score-svd-recommender.md) <br/> [Aanbevelingsfunctie voor wide en deep learning-scores](score-wide-and-deep-recommender.md)<br/> [Aanbevelingsfunctie van SVD-training](train-SVD-recommender.md) <br/> [Aanbevelingsfunctie voor wide en deep learning-trainingen](train-wide-and-deep-recommender.md)|
 | Anomaliedetectie | Anomalie detectie modellen bouwen. | [Anomaliedetectie op basis van PCA](pca-based-anomaly-detection.md) <br/> [Anomaliedetectiemodel trainen](train-anomaly-detection-model.md) |

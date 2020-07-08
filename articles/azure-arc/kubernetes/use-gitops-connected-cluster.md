@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: GitOps gebruiken voor een Azure Arc-cluster configuratie (preview-versie)
 keywords: GitOps, Kubernetes, K8s, azure, Arc, Azure Kubernetes service, containers
-ms.openlocfilehash: 954c77503e8adacc4cd27b25b68b50cac1f80458
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 890b35aac33a6fa207a71d76143997a1b93116bf
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779718"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856984"
 ---
 # <a name="use-gitops-for-an-azure-arc-enabled--configuration-preview"></a>GitOps gebruiken voor een configuratie met Azure-Arc-functionaliteit (preview-versie)
 
@@ -99,14 +99,14 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 Dit zijn de ondersteunde scenario's voor de waarde van de para meter---Repository-URL.
 
-| Scenario | Indeling | Beschrijving |
+| Scenario | Indeling | Description |
 | ------------- | ------------- | ------------- |
 | Privé GitHub opslag plaats-SSH | git@github.com:username/repo | SSH-sleutel paar gegenereerd door stroom.  Gebruiker moet de open bare sleutel toevoegen aan het GitHub-account als Deploy-sleutel. |
 | Open bare GitHub-opslag plaats | `http://github.com/username/repo`of git://github.com/username/repo   | Openbaar Git-opslag plaats  |
 
 Deze scenario's worden nog ondersteund door stroom, maar niet door sourceControlConfiguration. 
 
-| Scenario | Indeling | Beschrijving |
+| Scenario | Indeling | Description |
 | ------------- | ------------- | ------------- |
 | Privé GitHub opslag plaats-HTTPS | `https://github.com/username/repo` | Er wordt geen SSH-sleutel paar gegenereerd door stroom.  [Instructies](https://docs.fluxcd.io/en/1.17.0/guides/use-git-https.html) |
 | Privé Git-host | user@githost:path/to/repo | [Instructies](https://docs.fluxcd.io/en/1.18.0/guides/use-private-git-host.html) |
@@ -129,7 +129,7 @@ Hier volgen enkele aanvullende para meters om het maken van de configuratie aan 
 
 Opties die worden ondersteund in--operator-params
 
-| Optie | Beschrijving |
+| Optie | Description |
 | ------------- | ------------- |
 | --Git-Branch  | Vertakking van Git opslag plaats die moet worden gebruikt voor Kubernetes-manifesten. De standaard waarde is ' Master '. |
 | --Git-pad  | Relatief pad binnen de Git-opslag plaats voor stroom om Kubernetes-manifesten te vinden. |
@@ -167,7 +167,7 @@ Houd er rekening mee dat de `sourceControlConfiguration` resource wordt bijgewer
 Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
 {
   "complianceStatus": {
-    "complianceState": "Compliant",
+    "complianceState": "Installed",
     "lastConfigApplied": "2019-12-05T05:34:41.481000",
     "message": "...",
     "messageLevel": "3"
@@ -201,8 +201,8 @@ Wanneer de `sourceControlConfiguration` is gemaakt, zijn er enkele dingen die zi
 Terwijl het inrichtings proces plaatsvindt, `sourceControlConfiguration` wordt de status van een aantal wijzigingen gewijzigd. Bewaak de voortgang met de `az k8sconfiguration show ...` bovenstaande opdracht:
 
 1. `complianceStatus` -> `Pending`: Hiermee worden de initiële statussen en in uitvoeringen
-1. `complianceStatus` -> `Compliant`: `config-agent` het cluster kan worden geconfigureerd en `flux` zonder fouten worden geïmplementeerd
-1. `complianceStatus` -> `Noncompliant`: er `config-agent` is een fout opgetreden bij het implementeren `flux` ; de gegevens moeten beschikbaar zijn in de `complianceStatus.message` antwoord tekst
+1. `complianceStatus` -> `Installed`: `config-agent` het cluster kan worden geconfigureerd en `flux` zonder fouten worden geïmplementeerd
+1. `complianceStatus` -> `Failed`: er `config-agent` is een fout opgetreden bij het implementeren `flux` ; de gegevens moeten beschikbaar zijn in de `complianceStatus.message` antwoord tekst
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>Configuratie Toep assen vanuit een persoonlijke Git-opslag plaats
 

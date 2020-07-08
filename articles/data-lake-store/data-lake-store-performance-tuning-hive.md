@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 819e158ce2613441efdf2177d50fc8e7989bf68f
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: c49388d50b79b037b0a0923f2c5e9ac72105c54e
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85510931"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855765"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Richt lijnen voor het afstemmen van de prestaties van Hive op HDInsight en Azure Data Lake Storage Gen1
 
@@ -55,17 +55,15 @@ I/O-intensieve workloads kunnen profiteren van meer parallellisatie door de TEZ-
 
 Het aantal gelijktijdige taken of parallelle uitvoeringen wordt begrensd door het totale garen geheugen.  Het aantal garen-containers bepaalt hoeveel gelijktijdige taken kunnen worden uitgevoerd.  Als u het garen geheugen per knoop punt wilt vinden, gaat u naar Ambari.  Navigeer naar GARENs en Bekijk het tabblad Configuratie.  Het garen geheugen wordt in dit venster weer gegeven.  
 
-        Total YARN memory = nodes * YARN memory per node
-        # of YARN containers = Total YARN memory / Tez container size
+> Totaal aantal GARENs * knoop punten * garen geheugen per knooppunt aantal GARENs = totale garen geheugen/TEZ container grootte
+
 De sleutel voor het verbeteren van de prestaties met behulp van Data Lake Storage Gen1 is om de gelijktijdigheid zo veel mogelijk te verhogen.  TEZ berekent automatisch het aantal taken dat moet worden gemaakt, zodat u dit niet hoeft in te stellen.   
 
 ## <a name="example-calculation"></a>Voorbeeld berekening
 
 Stel dat u een D14-cluster van 8 knoop punten hebt.  
 
-    Total YARN memory = nodes * YARN memory per node
-    Total YARN memory = 8 nodes * 96GB = 768GB
-    # of YARN containers = 768GB / 3072MB = 256
+> Totaal aantal GARENs * knoop punten * garen geheugen per knoop punt totaal garen geheugen = 8 knoop punten * 96GB = 768GB aantal garen-containers = 768GB/3072MB = 256
 
 ## <a name="limitations"></a>Beperkingen
 

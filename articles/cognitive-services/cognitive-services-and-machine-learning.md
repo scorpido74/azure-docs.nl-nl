@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: 42717b1e9b4ba12c2fe42dbd13ef44223ef2ba43
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: c8480557d0f27594fa369e4e2451a5d0fe7ad3cc
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220205"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856737"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services en machine learning
 
@@ -73,7 +73,7 @@ Cognitive Services kan, als een groep services, geen, sommige of alle aangepaste
 
 ### <a name="no-additional-training-data-required"></a>Geen extra trainings gegevens vereist
 
-Services die een volledig getraind model bieden, kunnen worden behandeld als een _zwart vak_. U hoeft niet te weten hoe ze werken of welke gegevens er zijn gebruikt om ze te trainen. U brengt uw gegevens naar een volledig getraind model om een voor spelling te krijgen. 
+Services die een volledig getraind model bieden, kunnen worden behandeld als een _dekkend vak_. U hoeft niet te weten hoe ze werken of welke gegevens er zijn gebruikt om ze te trainen. U brengt uw gegevens naar een volledig getraind model om een voor spelling te krijgen. 
 
 ### <a name="some-or-all-training-data-required"></a>Sommige of alle trainings gegevens zijn vereist
 
@@ -98,7 +98,7 @@ In de volgende gegevens wordt elke service gecategoriseerd op basis van het type
 |[Custom Vision](./Custom-Vision-Service/home.md)||x||
 |[Face](./Face/Overview.md)|x|x||
 |[Form Recognizer](./form-recognizer/overview.md)||x||
-|[Insluitende lezer](./immersive-reader/overview.md)|x|||
+|[Immersive Reader](./immersive-reader/overview.md)|x|||
 |[Ink Recognizer](./Ink-recognizer/overview.md)|x|x||
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
 |[Personalizer](./personalizer/what-is-personalizer.md)|BxDxH|BxDxH|x|
@@ -106,9 +106,9 @@ In de volgende gegevens wordt elke service gecategoriseerd op basis van het type
 |[Spreker-herkenning](./speaker-recognition/home.md)||x||
 |[Spraak tekst naar spraak (TTS)](speech-service/text-to-speech.md)|x|x||
 |[Spraak-naar-tekst (STT)](speech-service/speech-to-text.md)|x|x||
-|[Spraakomzetting](speech-service/speech-translation.md)|x|||
-|[Tekstanalyse](./text-analytics/overview.md)|x|||
-|[Vertaler](./translator/translator-info-overview.md)|x|||
+|[Speech Translation](speech-service/speech-translation.md)|x|||
+|[Text Analytics](./text-analytics/overview.md)|x|||
+|[Translator](./translator/translator-info-overview.md)|x|||
 |[Translator-aangepaste vertaler](./translator/custom-translator/overview.md)||x||
 
 * Personaler vereist alleen trainings gegevens die door de service worden verzameld (zoals deze in realtime actief zijn) om uw beleid en gegevens te evalueren. Personaler heeft geen grote historische gegevens sets nodig voor de voor-en hands-training. 

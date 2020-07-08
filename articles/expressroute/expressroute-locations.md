@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 06/12/2020
+ms.date: 06/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: c4ad466a8c643c1922749f6afd694255b75176b1
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 42c8dd298c1fa0de04449945c7bb82e8b8bd6ff0
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100444"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856615"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partners en peeringlocaties voor ExpressRoute
 
@@ -44,7 +44,7 @@ In de volgende tabel vindt u een toewijzing van Azure-regio's aan ExpressRoute-l
 | --- | --- | --- |
 | **Australië - overheid** |Australië Centraal, Australië Centraal 2 |Canberra, Canberra2 |
 | **Europa** | Frankrijk-centraal, Frankrijk-zuid, Duitsland-noord, Duitsland-west-centraal, Europa-noord, Noor wegen Oost, Noor wegen West, Zwitserland-noord, Zwitserland-west, UK-west, UK-zuid, Europa-west |Amsterdam, Amsterdam2, Berlijn, kopen Hagen, Dublin, Frankfurt, Genève, Londen, London2, Marseille, Milaan, München, Newport (Wales), Utrecht, Parijs, Stavanger, Stockholm, Zürich |
-| **Noord-Amerika** |VS - oost, VS - west, VS - oost 2, VS - west 2, VS - centraal, VS - zuid-centraal, VS - noord-centraal, VS - west-centraal, Canada - centraal, Canada - oost |Atlanta, Chicago, Amsterdam, Denver, Las Miami, Los Angeles,, New York, San Antonio, Seattle, Silicon dal, Silicon Valley2, Washington DC, Washington DC2, Montreal, Quebec City, Toronto, Vancouver |
+| **Noord-Amerika** |VS - oost, VS - west, VS - oost 2, VS - west 2, VS - centraal, VS - zuid-centraal, VS - noord-centraal, VS - west-centraal, Canada - centraal, Canada - oost |Atlanta, Chicago, Amsterdam, Denver, Las Miami, Los Angeles,, Minneapolis, New York, Queretaro (Mexico), San Antonio, Seattle, silicone dal, Silicon Valley2, Washington DC, Washington DC2, Montreal, Quebec City, Toronto, Vancouver |
 | **Azië** | Azië - oost, Azië - zuidoost | Bangkok, Hongkong, Hongkong Kong2, Jakarta, Kuala Lumpur, Singapore, Singapore2, Taiwan |
 | **India** | India - west, India - centraal, India - zuid |Chennai, Chennai2, Mumbai, Mumbai2 |
 | **Japan** | Japan - west, Japan - oost |Osaka, Tokio, Tokyo2 |
@@ -96,11 +96,11 @@ De volgende tabel toont de locaties per serviceprovider. Als u alle beschikbare 
 | **Unicom-China-wereld wijd** |Ondersteund |Ondersteund | Singapore2 |
 | **[Chunghwa Telecom](https://www.cht.com.tw/en/home/cht/about-cht/products-and-services/International/Cloud-Service)** |Ondersteund |Ondersteund |Taipei |
 | **[Claro](https://www.usclaro.com/enterprise-mnc/connectivity/mpls/)** |Ondersteund |Ondersteund |Miami |
-| **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |Ondersteund |Ondersteund |Chicago, Groningen, Montreal, Toronto, Vancouver, Washington DC |
+| **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |Ondersteund |Ondersteund |Chicago, Amsterdam, Minneapolis, Montreal, Toronto, Vancouver, Washington DC |
 | **[Colt](https://www.colt.net/direct-connect/azure/)** |Ondersteund |Ondersteund |Amsterdam, Amsterdam2, Chicago, Dublin, Frankfurt, Londen, London2, Newport, New York, Osaka, Parijs, silicium dal, Silicon Valley2, Singapore2, Tokio, Washington DC |
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |Ondersteund |Ondersteund |Chicago, Silicon Valley, Washington DC |
 | **[CoreSite](https://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |Ondersteund |Ondersteund |Chicago, Denver, Los Angeles, New York, Silicon dal, Silicon Valley2, Washington DC, Washington DC2 |
-| **[DE CIX](https://www.de-cix.net/en/de-cix-service-world/cloud-exchange/find-a-cloud-service/detail/microsoft-azure)** | Ondersteund |Ondersteund |Amsterdam2, Frankfurt, Marseille|
+| **[DE CIX](https://www.de-cix.net/en/de-cix-service-world/cloud-exchange/find-a-cloud-service/detail/microsoft-azure)** | Ondersteund |Ondersteund |Amsterdam2, Dubai2, Frankfurt, Marseille, Mumbai, München, New York |
 | **[Devoli](https://devoli.com/expressroute)** | Ondersteund |Ondersteund | Auckland, Melbourne, Sydney |
 | **du datamena** |Ondersteund |Ondersteund | Dubai2 |
 | **eir** |Ondersteund |Ondersteund |Dublin|
@@ -162,7 +162,7 @@ De volgende tabel toont de locaties per serviceprovider. Als u alle beschikbare 
 | **[Telus](https://www.telus.com)** |Ondersteund |Ondersteund |Montreal, Seattle, Toronto |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |Ondersteund |Ondersteund |Kaapstad, Johannesburg |
 | **[TIJD dotCom](https://www.time.com.my/enterprise/connectivity/direct-cloud)** | Ondersteund | Ondersteund | Kuala Lumpur |
-| **[Transtelco](https://transtelco.net/enterprise-services/)** |Ondersteund |Ondersteund |Rotterdam, Queretaro|
+| **[Transtelco](https://transtelco.net/enterprise-services/)** |Ondersteund |Ondersteund |Rotterdam, Queretaro (Mexico)|
 | **[UOLDIVEO](https://www.uoldiveo.com.br/)** |Ondersteund |Ondersteund |Sao Paulo |
 | **[UIH](https://www.uih.co.th/en/network-solutions/global-network/cloud-direct-for-microsoft-azure-expressroute)** | Ondersteund | Ondersteund | Bangkok |
 | **[Verizon](https://enterprise.verizon.com/products/network/application-enablement/secure-cloud-interconnect/)** |Ondersteund |Ondersteund |Amsterdam, Chicago, Amsterdam, Hongkong SAR, Londen, Mumbai, silicium dal, Singapore, Sydney, Tokio, Toronto, Washington DC |

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: f604d1d054717e426fcb02271b3a2aa06c6489b6
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 7012808e4ebcd936f30aba767731e7888d92161f
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85505253"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856909"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Richt lijnen voor het afstemmen van de prestaties van Spark in HDInsight en Azure Data Lake Storage Gen1
 
@@ -43,7 +43,7 @@ Uitvoerder **-kernen** Hiermee stelt u de hoeveelheid kern geheugens in die per 
 
 Standaard worden twee virtuele garen kernen gedefinieerd voor elke fysieke kern bij het uitvoeren van Spark op HDInsight. Dit aantal biedt een goede balans van gelijktijdigheid en hoeveelheid context wisseling van meerdere threads.
 
-## <a name="guidance"></a>Richtlijnen
+## <a name="guidance"></a>Hulp
 
 Bij het uitvoeren van Spark analytische werk belastingen voor het werken met gegevens in Data Lake Storage Gen1 raden wij u aan de meest recente HDInsight-versie te gebruiken om de beste prestaties te verkrijgen met Data Lake Storage Gen1. Wanneer uw taak meer I/O-intensief is, kunnen bepaalde para meters worden geconfigureerd om de prestaties te verbeteren. Data Lake Storage Gen1 is een uiterst schaalbaar opslag platform dat hoge door Voer kan verwerken. Als de taak voornamelijk uit Lees-of schrijf bewerkingen bestaat, kunnen de prestaties worden verbeterd door de gelijktijdige gelijktijdigheid te verhogen voor I/O van en naar Data Lake Storage Gen1.
 
@@ -55,26 +55,30 @@ Er zijn enkele algemene manieren om gelijktijdigheid te verhogen voor I/O-intens
 
 **Stap 3: de uitvoerder-kernen instellen** : voor I/O-intensieve workloads die geen complexe bewerkingen hebben, is het goed om te beginnen met een groot aantal uitvoeres-cores om het aantal parallelle taken per uitvoerder te verhogen. Het instellen van de uitvoerder-kernen op 4 is een goed begin.
 
-    executor-cores = 4
+```console
+executor-cores = 4
+```
+
 Het verhogen van het aantal uitvoeringen-kern geheugens geeft u meer parallellisme zodat u kunt experimenteren met verschillende Voer-cores. Voor taken met complexere bewerkingen moet u het aantal kernen per uitvoerder verminderen. Als de uitvoerder is ingesteld op meer dan 4, wordt de garbagecollection mogelijk inefficiënt en wordt de prestaties verslechteren.
 
 **Stap 4: de hoeveelheid garen geheugen in het cluster bepalen** : deze informatie is beschikbaar in Ambari. Navigeer naar GARENs en Bekijk het tabblad Contigs. Het garen geheugen wordt in dit venster weer gegeven.
 Opmerking terwijl u zich in het venster bevindt, ziet u ook de standaard grootte van de garen container. De grootte van de garen container is hetzelfde als het geheugen per uitvoer parameter.
 
-    Total YARN memory = nodes * YARN memory per node
+Totaal aantal GARENs = knoop punten * garen geheugen per knoop punt
+
 **Stap 5: berekenen van num-uitvoerende modules**
 
 **Geheugen beperking berekenen** : de para meter voor de num-uitvoerende modules wordt beperkt door het geheugen of de CPU. De geheugen beperking wordt bepaald door de hoeveelheid beschikbaar garen geheugen voor uw toepassing. Haal het totale aantal GARENs in de hele lijn op en Splits het in het geheugen. De beperking moet worden geschaald voor het aantal apps, zodat we delen door het aantal apps.
 
-    Memory constraint = (total YARN memory / executor memory) / # of apps
+Geheugen beperking = (totale garen geheugen/uitvoerder geheugen)/aantal apps
+
 **CPU-beperking berekenen** : de CPU-beperking wordt berekend als de totale virtuele kernen gedeeld door het aantal kernen per uitvoerder. Er zijn twee virtuele kernen voor elke fysieke kern. Net als bij de beperking van het geheugen, zijn er delen door het aantal apps.
 
-    virtual cores = (nodes in cluster * # of physical cores in node * 2)
-    CPU constraint = (total virtual cores / # of cores per executor) / # of apps
+virtuele kernen = (knoop punten in cluster * # fysieke kernen in knoop punt * 2) CPU-beperking = (totaal aantal virtuele kernen/aantal kernen per uitvoerder)/aantal apps
+
 **Stel num-uitvoerende modules** in: de para meter num-uitvoerende modules wordt bepaald door de minimale geheugen beperking en de CPU-beperking te nemen. 
 
-    num-executors = Min (total virtual Cores / # of cores per executor, available YARN memory / executor-memory)
-Het instellen van een groter aantal num-uitvoerende modules is niet noodzakelijkerwijs de prestaties te verhogen. Houd er rekening mee dat het toevoegen van meer uitvoerder extra overhead voor elke extra uitvoerder toevoegt, waardoor de prestaties mogelijk kunnen afnemen. Num-uitvoerende modules worden begrensd door de cluster resources.
+num-uitvoerende modules = min (totale aantal virtuele kernen/aantal kernen per uitvoerder, beschik bare garen geheugen/uitvoerder geheugen) bij het instellen van een hogere hoeveelheid num-uitvoerende modules is niet noodzakelijkerwijs de prestaties verbeterd. Houd er rekening mee dat het toevoegen van meer uitvoerder extra overhead voor elke extra uitvoerder toevoegt, waardoor de prestaties mogelijk kunnen afnemen. Num-uitvoerende modules worden begrensd door de cluster resources.
 
 ## <a name="example-calculation"></a>Voorbeeld berekening
 
@@ -84,30 +88,28 @@ Stel dat u momenteel een cluster hebt dat bestaat uit 8 D4v2-knoop punten met tw
 
 **Stap 2: uitvoerder instellen-geheugen** : voor dit voor beeld bepalen we dat 6GB van de uitvoerder-geheugen voldoende is voor de I/O-intensieve taak.
 
-    executor-memory = 6GB
+```console
+executor-memory = 6GB
+```
+
 **Stap 3: de uitvoerder instellen-kernen** – omdat dit een I/O-intensieve taak is, kunnen we het aantal kernen voor elke uitvoerder instellen op vier. Het instellen van kernen per uitvoerder tot meer dan vier kan leiden tot garbagecollection-problemen.
 
-    executor-cores = 4
+```console
+executor-cores = 4
+```
+
 **Stap 4: het aantal garens in het cluster bepalen** . Ga naar Ambari om erachter te komen dat elke D4V2 een 25 GB van het garen-geheugen heeft. Omdat er 8 knoop punten zijn, wordt het beschik bare garen geheugen vermenigvuldigd met 8.
 
-    Total YARN memory = nodes * YARN memory* per node
-    Total YARN memory = 8 nodes * 25 GB = 200 GB
+Totale garen geheugen = knoop punten * garen geheugen * per knoop punt totaal GARENs geheugen = 8 knoop punten * 25 GB = 200 GB
+
 **Stap 5: berekenen van num-uitvoerende modules** : de para meter num-uitvoerende modules wordt bepaald door het minimum van de geheugen beperking en de CPU-beperking te nemen, gedeeld door het aantal apps dat op Spark wordt uitgevoerd.
 
 **Geheugen beperking berekenen** : de geheugen beperking wordt berekend als het totale aantal garens gedeeld door het geheugen per uitvoerder.
 
-    Memory constraint = (total YARN memory / executor memory) / # of apps 
-    Memory constraint = (200 GB / 6 GB) / 2
-    Memory constraint = 16 (rounded)
-**CPU-beperking berekenen** : de CPU-beperking wordt berekend als de totale garen kernen gedeeld door het aantal kernen per uitvoerder.
-    
-    YARN cores = nodes in cluster * # of cores per node * 2
-    YARN cores = 8 nodes * 8 cores per D14 * 2 = 128
-    CPU constraint = (total YARN cores / # of cores per executor) / # of apps
-    CPU constraint = (128 / 4) / 2
-    CPU constraint = 16
+Geheugen beperking = (totale garen geheugen/uitvoerbaar geheugen)/aantal apps geheugen beperking = (200 GB/6 GB)/2 geheugen beperking = 16 (afgerond) **CPU-beperking berekenen** : de CPU-beperking wordt berekend als het totale aantal garens op basis van de kernen per uitvoerder.
+
+GARENs van hetzelfde niveau = knoop punten in cluster * aantal kernen per knoop punt * 2 garen kernen = 8 knoop punten * 8 kern geheugens per D14 * 2 = 128 CPU-beperking = (totaal aantal GARENs/aantal kernen per uitvoerder)/aantal apps CPU-beperking = (128/4)/2 CPU-beperking = 16
+
 **Num-uitvoerende modules instellen**
 
-    num-executors = Min (memory constraint, CPU constraint)
-    num-executors = Min (16, 16)
-    num-executors = 16
+num-executers = min (geheugen beperking, CPU-beperking) num-uitvoerende modules = min (16, 16) num-uitvoerendes = 16

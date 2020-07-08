@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ee2c279db7dde0e3e6acadb318c470813dccc7a3
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 7b6b310cdc03cb45fba6ba06dbcf2add9818f6cf
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488785"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857037"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uw app integreren met een virtueel Azure-netwerk
 
@@ -151,25 +151,27 @@ Drie kosten zijn gerelateerd aan het gebruik van de gateway vereiste VNet-integr
 
 CLI-ondersteuning is beschikbaar voor regionale VNet-integratie. [Installeer de Azure cli][installCLI]om toegang te krijgen tot de volgende opdrachten.
 
-        az webapp vnet-integration --help
+```azurecli
+az webapp vnet-integration --help
 
-        Group
-            az webapp vnet-integration : Methods that list, add, and remove virtual network integrations
-            from a webapp.
-                This command group is in preview. It may be changed/removed in a future release.
-        Commands:
-            add    : Add a regional virtual network integration to a webapp.
-            list   : List the virtual network integrations on a webapp.
-            remove : Remove a regional virtual network integration from webapp.
+Group
+    az webapp vnet-integration : Methods that list, add, and remove virtual network
+    integrations from a webapp.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    add    : Add a regional virtual network integration to a webapp.
+    list   : List the virtual network integrations on a webapp.
+    remove : Remove a regional virtual network integration from webapp.
 
-        az appservice vnet-integration --help
+az appservice vnet-integration --help
 
-        Group
-            az appservice vnet-integration : A method that lists the virtual network integrations used in an
-            appservice plan.
-                This command group is in preview. It may be changed/removed in a future release.
-        Commands:
-            list : List the virtual network integrations used in an appservice plan.
+Group
+    az appservice vnet-integration : A method that lists the virtual network
+    integrations used in an appservice plan.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    list : List the virtual network integrations used in an appservice plan.
+```
 
 Voor gateway-vereiste VNet-integratie kunt u App Service integreren met een virtueel Azure-netwerk met behulp van Power shell. Zie [een app in azure app service verbinden met een virtueel Azure-netwerk](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3)voor een kant-en-klaar script.
 

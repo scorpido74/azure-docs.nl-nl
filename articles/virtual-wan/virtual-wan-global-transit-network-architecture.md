@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1cd5ead1604f47f07aa9d517f679850fcea8d897
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 78656b4789ea03601bc12579c391292e2f9ead9a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84753286"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856371"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Wereld wijde doorvoer netwerk architectuur en virtueel WAN
 
@@ -47,7 +47,7 @@ In de virtuele WAN-architectuur van Azure worden virtuele WAN-hubs ingericht in 
 
 U kunt een virtueel WAN opzetten door één virtuele WAN-hub te maken in de regio met het grootste aantal spokes (vertakkingen, VNets, gebruikers) en vervolgens de spokes in andere regio's te verbinden met de hub. Dit is een goede optie wanneer een bedrijfs footprint voornamelijk in één regio met een paar externe spokes is.  
   
-## <a name="hub-to-hub-connectivity-preview"></a><a name="hubtohub"></a>Hub-naar-hub-connectiviteit (preview-versie)
+## <a name="hub-to-hub-connectivity"></a><a name="hubtohub"></a>Hub-naar-hub-connectiviteit
 
 Een Cloud footprint in de onderneming kan meerdere Cloud regio's omvatten en is optimaal (wachttijd) om toegang te krijgen tot de Cloud vanuit een regio die het dichtst bij hun fysieke site en gebruikers ligt. Een van de belangrijkste principes van de wereld wijde doorvoer netwerk-architectuur is het inschakelen van connectiviteit tussen regio's tussen alle Cloud-en on-premises netwerk eindpunten. Dit betekent dat verkeer van een vertakking dat is verbonden met de cloud in één regio een andere vertakking of een VNet in een andere regio kan bereiken met behulp van hub-naar-hub-connectiviteit ingeschakeld door het [globale Azure-netwerk](https://azure.microsoft.com/global-infrastructure/global-network/).
 

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 9b99f7fa88dc933c32077d273221d8551270529c
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: d04a5c0e53e9a5db8bba03a5a9e9d95b87a8b5a3
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85508568"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855676"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>De Azure import/export-service gebruiken voor het offline kopiëren van gegevens naar Data Lake Storage Gen1
 
@@ -31,17 +31,16 @@ Voordat u begint, moet u het volgende hebben:
 
 Voordat u de import/export-service gebruikt, verbreekt u het gegevens bestand dat moet worden overgebracht naar **kopieën die kleiner zijn dan 200 GB** . Het hulp programma voor importeren werkt niet met bestanden die groter zijn dan 200 GB. In dit artikel splitst u het bestand in delen van 100 GB. U kunt dit doen met behulp van [Cygwin](https://cygwin.com/install.html). Cygwin ondersteunt Linux-opdrachten. In dit geval gebruikt u de volgende opdracht:
 
-    split -b 100m 319GB.tsv
+```console
+split -b 100m 319GB.tsv
+```
 
 Met de bewerking splitsen worden bestanden met de volgende namen gemaakt.
 
-    319GB.tsv-part-aa
-
-    319GB.tsv-part-ab
-
-    319GB.tsv-part-ac
-
-    319GB.tsv-part-ad
+* *319GB. TSV-deel-AA*
+* *319GB. TSV-deel-AB*
+* *319GB. TSV-deel-AC*
+* *319GB. TSV-deel-AD*
 
 ## <a name="get-disks-ready-with-data"></a>Schijven gereed met gegevens ophalen
 
