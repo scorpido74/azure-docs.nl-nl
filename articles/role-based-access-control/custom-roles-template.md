@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 06/25/2020
 ms.author: rolyon
 ms.openlocfilehash: bcf1966ffc326291448cb611d99390fe0d652151
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392928"
 ---
 # <a name="create-an-azure-custom-role-using-an-azure-resource-manager-template"></a>Een aangepaste Azure-rol maken met behulp van een Azure Resource Manager sjabloon
@@ -54,7 +54,7 @@ Het bereik waar deze aangepaste rol kan worden toegewezen, wordt ingesteld op he
 
 Volg deze stappen om de vorige sjabloon te implementeren.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Open Azure Cloud Shell voor PowerShell.
 

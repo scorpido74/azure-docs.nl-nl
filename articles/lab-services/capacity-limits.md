@@ -4,10 +4,10 @@ description: Meer informatie over capaciteits limieten (limieten voor virtuele m
 ms.topic: conceptual
 ms.date: 06/26/2020
 ms.openlocfilehash: 92bdc714d70b3d73ca2cbc76b1f5dc5366582cbd
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85444094"
 ---
 # <a name="capacity-limits-in-azure-lab-services"></a>Capaciteits limieten in Azure Lab Services
@@ -37,7 +37,7 @@ Als de limiet voor kern geheugens is bereikt, kunt u een verhoging van de limiet
 
 De berichten over de limieten van de kernen van virtuele machines in de Azure Lab Services portal bevatten een koppeling om een limiet voor het aantal aanvragen te verg Roten. Met de koppeling wordt een nieuw browser tabblad geopend, waar u een nieuwe ondersteunings aanvraag kunt maken. De gegevens voor het type probleem, het abonnement en het quotum type worden automatisch ingevuld, zoals wordt weer gegeven in de volgende afbeelding: 
 
-![Nieuw ondersteuningsverzoek](./media/capacity-limits/new-support-request.png)
+![Nieuwe ondersteuningsaanvraag](./media/capacity-limits/new-support-request.png)
 
 
 Vervolgens wordt u gevraagd om meer informatie op te geven over de limiet verhoging. Geef in het veld **Beschrijving** de volgende gegevens op:

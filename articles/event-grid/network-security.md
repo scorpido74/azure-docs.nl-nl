@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: vkukke
 ms.openlocfilehash: f3b3877ae3278e12eec43843dbed6ac686227860
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85414246"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Netwerk beveiliging voor Azure Event Grid bronnen
@@ -27,7 +27,7 @@ Een servicetag vertegenwoordigt een groep IP-adres voorvoegsels van een bepaalde
 
 U kunt service tags gebruiken voor het definiëren van netwerk toegangs beheer voor [netwerk beveiligings groepen](../virtual-network/security-overview.md#security-rules)   of [Azure firewall](../firewall/service-tags.md). Gebruik service tags in plaats van specifieke IP-adressen wanneer u beveiligings regels maakt. Door de naam van de service label (bijvoorbeeld **AzureEventGrid**) op te geven in het juiste *bron*-   of *doel*   veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren.
 
-| Servicetag | Doel | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
+| Servicetag | Functie | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|
 | AzureEventGrid | Azure Event Grid. | Beide | Nee | Nee |
 
@@ -85,10 +85,10 @@ In de volgende tabel worden de verschillende statussen van de verbinding met het
 
 | Verbindings status   |  Publiceren voltooid (Ja/Nee) |
 | ------------------ | -------------------------------|
-| Goedgekeurd           | Ja                            |
-| Afgewezen           | Nee                             |
-| In behandeling            | Nee                             |
-| Ontkoppeld       | Nee                             |
+| Goedgekeurd           | Yes                            |
+| Afgewezen           | No                             |
+| In behandeling            | No                             |
+| Ontkoppeld       | No                             |
 
 Voor een geslaagde publicatie moet de verbindings status van het particuliere eind punt worden **goedgekeurd**. Als een verbinding wordt geweigerd, kan deze niet worden goedgekeurd met behulp van de Azure Portal. De enige mogelijkheid is de verbinding te verwijderen en in plaats daarvan een nieuwe te maken.
 

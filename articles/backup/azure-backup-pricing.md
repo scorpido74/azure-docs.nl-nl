@@ -4,10 +4,10 @@ description: Meer informatie over het schatten van de kosten voor budget tering 
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.openlocfilehash: 274a61ff5a98fa1291f9d8917af9ab1d1b3da2fd
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85391108"
 ---
 # <a name="azure-backup-pricing"></a>Prijzen van Azure Backup
@@ -150,4 +150,4 @@ Voor een schatting van de kosten voor het maken van een back-up van SAP HANA ser
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Wat is de Azure Backup-Service?](backup-overview.md)
+[Wat is de Azure Backup-service?](backup-overview.md)

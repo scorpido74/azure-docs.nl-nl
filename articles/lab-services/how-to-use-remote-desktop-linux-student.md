@@ -4,10 +4,10 @@ description: Meer informatie over het gebruik van extern bureau blad voor virtue
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d13868477ff2e3378d87d7785789a7498ed17e59
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85443414"
 ---
 # <a name="connect-to-linux-virtual-machines-in-a-classroom-lab-of-azure-lab-services"></a>Verbinding maken met virtuele Linux-machines in een leslokaal Lab van Azure Lab Services
@@ -24,7 +24,7 @@ In dit artikel wordt beschreven hoe studenten in een Lab verbinding kunnen maken
    
 1. Schakel op de tegel de knop in om de virtuele machine te starten als deze de status gestopt heeft. 
 
-2. Selecteer **Verbinden**. U ziet twee opties om verbinding te maken met de VM: **SSH** en **RDP**.
+2. Selecteer **Verbinding maken**. U ziet twee opties om verbinding te maken met de VM: **SSH** en **RDP**.
 
     ![VM van student-verbindings opties](./media/how-to-enable-remote-desktop-linux/student-vm-connect-options.png)
 
