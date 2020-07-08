@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/28/2020
 ms.openlocfilehash: 00966af4e0fc83015726d86a4c7cb5724ad38633
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513364"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-using-azure-data-factory"></a>Gegevens kopiëren van en naar micro soft Access met behulp van Azure Data Factory
@@ -97,7 +96,7 @@ Als u gegevens wilt kopiëren vanuit micro soft Access, worden de volgende eigen
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **MicrosoftAccessTable** | Yes |
 | tableName | De naam van de tabel in micro soft Access. | Nee voor bron (als "query" in activiteits bron is opgegeven);<br/>Ja voor Sink |
 
-**Hierbij**
+**Voorbeeld**
 
 ```json
 {

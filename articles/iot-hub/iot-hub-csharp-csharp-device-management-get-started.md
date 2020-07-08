@@ -11,10 +11,9 @@ ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 3cc74faa39b21b1ab275149db4f85de8f55fd07e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733477"
 ---
 # <a name="get-started-with-device-management-net"></a>Aan de slag met Apparaatbeheer (.NET)
@@ -41,7 +40,7 @@ Aan het eind van deze zelfstudie beschikt u over twee .NET-consoletoepassingen:
 
 * Een actief Azure-account. Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.
 
-* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+* Zorg ervoor dat de poort 8883 is geopend in de firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort is in sommige netwerkomgevingen van bedrijven en onderwijsinstellingen mogelijk geblokkeerd. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -61,7 +60,7 @@ Aan het eind van deze zelfstudie beschikt u over twee .NET-consoletoepassingen:
 
 In deze sectie maakt u een .NET-console-app met behulp van C#, waarmee een apparaat op afstand opnieuw wordt opgestart met behulp van een directe methode. De app maakt gebruik van Device-dubbele query's om de tijd van de laatste keer opnieuw opstarten voor dat apparaat te detecteren.
 
-1. Selecteer in Visual Studio **een nieuw project maken**.
+1. Selecteer **Een nieuw project maken** in Visual Studio.
 
 1. Zoek in **een nieuw project maken**en selecteer de project sjabloon **console-app (.NET Framework)** en selecteer vervolgens **volgende**.
 
@@ -84,7 +83,7 @@ In deze sectie maakt u een .NET-console-app met behulp van C#, waarmee een appar
    using Microsoft.Azure.Devices.Shared;
    ```
 
-1. Voeg de volgende velden toe aan de klasse **Program**: Vervang de `{iot hub connection string}` waarde van de tijdelijke aanduiding door de IOT hub Connection String u eerder hebt gekopieerd in [de IoT hub-Connection String ophalen](#get-the-iot-hub-connection-string).
+1. Voeg de volgende velden toe aan de klasse **Program**: Vervang de `{iot hub connection string}` waarde van de tijdelijke aanduiding door de IoT Hub Connection String u eerder hebt gekopieerd in [de IOT Hub-Connection String ophalen](#get-the-iot-hub-connection-string).
 
    ```csharp
    static RegistryManager registryManager;
@@ -129,7 +128,7 @@ In deze sectie maakt u een .NET-console-app met behulp van C#, waarmee een appar
    Console.ReadLine();
    ```
 
-1. Selecteer **Build** > **Build Solution**.
+1. Selecteer **Bouwen** > **Oplossing bouwen**.
 
 > [!NOTE]
 > In deze zelf studie wordt slechts één query uitgevoerd voor de gerapporteerde eigenschappen van het apparaat. In productie code kunt u het beste navragen om wijzigingen in de gerapporteerde eigenschappen te detecteren.
@@ -146,7 +145,7 @@ In deze sectie doet u het volgende:
 
 Als u de gesimuleerde apparaat-app wilt maken, volgt u deze stappen:
 
-1. Selecteer in Visual Studio het **bestand** > **Nieuw** > **project**in de TriggerReboot-oplossing die u al hebt gemaakt. Zoek in **een nieuw project maken**en selecteer de project sjabloon **console-app (.NET Framework)** en selecteer vervolgens **volgende**.
+1. Selecteer in Visual Studio het **bestand**  >  **Nieuw**  >  **project**in de TriggerReboot-oplossing die u al hebt gemaakt. Zoek in **een nieuw project maken**en selecteer de project sjabloon **console-app (.NET Framework)** en selecteer vervolgens **volgende**.
 
 1. In **uw nieuwe project configureren**, de naam van het project *SimulateManagedDevice*en voor de **oplossing**, selecteert **u toevoegen aan oplossing**. Selecteer **Maken**.
 
@@ -237,9 +236,9 @@ Als u de gesimuleerde apparaat-app wilt maken, volgt u deze stappen:
 
 1. Klik in Solution Explorer met de rechter muisknop op uw oplossing en selecteer vervolgens **opstart projecten instellen**.
 
-1. Selecteer **één opstart project**voor **algemene eigenschappen** > voor het opstarten van het**project**en selecteer vervolgens het project **SimulateManagedDevice** . Selecteer **OK** om uw wijzigingen op te slaan.
+1. **Common Properties**  >  Selecteer **één opstart project**voor algemene eigenschappen voor het opstarten van het**project**en selecteer vervolgens het project **SimulateManagedDevice** . Selecteer **OK** om uw wijzigingen op te slaan.
 
-1. Selecteer **Build** > **Build Solution**.
+1. Selecteer **Bouwen** > **Oplossing bouwen**.
 
 > [!NOTE]
 > Om de zaken niet nodeloos ingewikkeld te maken, is in deze handleiding geen beleid voor opnieuw proberen geïmplementeerd. In productie code moet u beleid voor opnieuw proberen implementeren (zoals een exponentiële uitstel), zoals wordt voorgesteld in [tijdelijke fout afhandeling](/azure/architecture/best-practices/transient-faults).

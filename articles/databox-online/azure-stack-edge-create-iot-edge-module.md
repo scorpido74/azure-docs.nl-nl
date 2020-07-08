@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
 ms.openlocfilehash: 7c12beaf30651a6cb1048a75b0f7cb353b45173a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84339889"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>Een C# IoT Edge-module ontwikkelen om bestanden te verplaatsen op Azure Stack rand
@@ -116,7 +115,7 @@ Maak een C#-oplossingssjabloon die u met uw eigen code kunt aanpassen.
 
     ![Nieuwe oplossing 4 maken](./media/azure-stack-edge-create-iot-edge-module/create-new-solution-4.png)
 
-5. Blader naar de map **EdgeSolution** die u eerder hebt gemaakt. Het VS code-venster laadt uw IoT Edge Solution-werk ruimte met de vijf onderdelen op het hoogste niveau. U kunt de **vscode** -map, het. **gitignore** -bestand, het **. env** -bestand en de **implementatie. Temp late. json** in dit artikel niet bewerken.
+5. Blader naar de map **EdgeSolution** die u eerder hebt gemaakt. Het VS code-venster laadt uw IoT Edge Solution-werk ruimte met de vijf onderdelen op het hoogste niveau. U kunt de **vscode** -map, het. **gitignore** -bestand, het **. env** -bestand en de **deployment.template.js** in dit artikel niet bewerken.
     
     Het enige onderdeel dat u wijzigt, is de map modules. Deze map bevat de C#-code voor uw module en docker-bestanden om uw module als container installatie kopie te maken.
 
@@ -256,7 +255,7 @@ In de vorige sectie hebt u een IoT Edge oplossing gemaakt en code toegevoegd aan
 
 2. Geef het wacht woord op wanneer u wordt gevraagd om het wacht woord. U kunt ook de waarden voor aanmeldings server, gebruikers naam en wacht woord ophalen uit de **toegangs sleutels** in het container register in het Azure Portal.
  
-3. Zodra de referenties zijn opgegeven, kunt u de module-installatie kopie pushen naar uw Azure container Registry. Klik in de VS code Explorer met de rechter muisknop op het bestand **module. json** en selecteer **Build and push IOT Edge Solution**.
+3. Zodra de referenties zijn opgegeven, kunt u de module-installatie kopie pushen naar uw Azure container Registry. Klik in de VS code Explorer met de rechter muisknop op het **module.js** bestand en selecteer **Build and push IOT Edge Solution**.
 
     ![IoT Edge oplossing bouwen en pushen](./media/azure-stack-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
  
@@ -273,7 +272,7 @@ In de vorige sectie hebt u een IoT Edge oplossing gemaakt en code toegevoegd aan
 
     *Program. cs (77, 44): waarschuwing CS1998: deze async-methode heeft geen ' await ' Opera tors en wordt synchroon uitgevoerd. Overweeg het gebruik van de operator await om niet-blokkerende API-aanroepen of ' await-taak. run (...) ' te gebruiken voor het CPU-gebonden werk op een achtergrond thread.*
 
-4. U kunt het volledige adres van de containerinstallatiekopie, inclusief de tag, zien in de geïntegreerde terminal van VS Code. Het adres van de installatie kopie is gebaseerd op informatie die zich in het bestand module. json bevindt met de indeling `<repository>:<version>-<platform>` . In dit artikel moet er als volgt uitzien `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64` .
+4. U kunt het volledige adres van de containerinstallatiekopie, inclusief de tag, zien in de geïntegreerde terminal van VS Code. Het adres van de installatie kopie is gebaseerd op informatie in de module.jsin het bestand met de indeling `<repository>:<version>-<platform>` . In dit artikel moet er als volgt uitzien `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

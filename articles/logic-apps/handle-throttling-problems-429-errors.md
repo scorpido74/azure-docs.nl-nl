@@ -7,10 +7,9 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.openlocfilehash: fbfd52065bc0522668488492de2181f252f86a4e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81272675"
 ---
 # <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>Omgaan met beperkings problemen (429-"te veel aanvragen") in Azure Logic Apps
@@ -101,7 +100,7 @@ U hebt de volgende opties om bandbreedte beperking op dit niveau te verwerken:
 
       `@take(collection-or-array-name, div(length(collection-or-array-name), 2))`
 
-    * Expressie 2: met `skip()` de functie wordt de front van een verzameling verwijderd en worden alle andere items geretourneerd. Zie de [ **`skip()`** functie](workflow-definition-language-functions-reference.md#skip)voor meer informatie.
+    * Expressie 2: `skip()` met de functie wordt de front van een verzameling verwijderd en worden alle andere items geretourneerd. Zie de [ **`skip()`** functie](workflow-definition-language-functions-reference.md#skip)voor meer informatie.
 
       `@skip(collection-or-array-name, div(length(collection-or-array-name), 2))`
 
@@ -119,7 +118,7 @@ U hebt de volgende opties om bandbreedte beperking op dit niveau te verwerken:
 
 * Wijzig de gelijktijdigheid of parallellisme op een [lus voor elke](../logic-apps/logic-apps-control-flow-loops.md#foreach-loop).
 
-  Standaard worden voor elke herhalings herhalingen uitgevoerd op hetzelfde tijdstip tot aan de [gelijktijdigheids limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u een connector hebt die wordt beperkt binnen een lus voor elke, kunt u het aantal herhalings iteraties verminderen die parallel worden uitgevoerd. Zie deze onderwerpen voor meer informatie:
+  Standaard worden voor elke herhalings herhalingen uitgevoerd op hetzelfde tijdstip tot aan de [gelijktijdigheids limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u een connector hebt die wordt beperkt binnen een lus voor elke, kunt u het aantal herhalings iteraties verminderen die parallel worden uitgevoerd. Raadpleeg de volgende onderwerpen voor meer informatie:
   
   * [' Voor elke ' lussen: gelijktijdige uitvoering wijzigen of opeenvolgend uitvoeren](../logic-apps/logic-apps-control-flow-loops.md#sequential-foreach-loop)
 
@@ -164,9 +163,9 @@ U hebt de volgende opties om bandbreedte beperking op dit niveau te verwerken:
 
 * Gebruik de webhook-versies voor triggers en acties in plaats van de polling versies.
 
-  Hoe komt dat? Een polling trigger blijft de doel service of het systeem op specifieke intervallen controleren. Een regel matig interval, zoals elke seconde, kan beperkings problemen veroorzaken. Een webhook-trigger of-actie, zoals [http-webhook](../connectors/connectors-native-webhook.md), maakt echter slechts één aanroep van de doel service of het systeem, dat gebeurt op het tijdstip van het abonnement en de aanvragen die het doel krijgt de trigger of actie, alleen wanneer er een gebeurtenis optreedt. Op die manier hoeft de trigger of actie de bestemming niet continu te controleren.
+  Hoe kan dat? Een polling trigger blijft de doel service of het systeem op specifieke intervallen controleren. Een regel matig interval, zoals elke seconde, kan beperkings problemen veroorzaken. Een webhook-trigger of-actie, zoals [http-webhook](../connectors/connectors-native-webhook.md), maakt echter slechts één aanroep van de doel service of het systeem, dat gebeurt op het tijdstip van het abonnement en de aanvragen die het doel krijgt de trigger of actie, alleen wanneer er een gebeurtenis optreedt. Op die manier hoeft de trigger of actie de bestemming niet continu te controleren.
   
-  Als de doel service of het systeem webhooks ondersteunt of een connector biedt met een webhook-versie, is deze optie beter dan het gebruik van de polling-versie. Als u de triggers en acties van webhooks wilt identificeren, `ApiConnectionWebhook` moet u controleren of ze het type hebben of dat u geen terugkeer patroon opgeeft. Zie [APIConnectionWebhook trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) and [APIConnectionWebhook Action](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-action)(Engelstalig) voor meer informatie.
+  Als de doel service of het systeem webhooks ondersteunt of een connector biedt met een webhook-versie, is deze optie beter dan het gebruik van de polling-versie. Als u de triggers en acties van webhooks wilt identificeren, moet u controleren of ze het `ApiConnectionWebhook` type hebben of dat u geen terugkeer patroon opgeeft. Zie [APIConnectionWebhook trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) and [APIConnectionWebhook Action](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-action)(Engelstalig) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

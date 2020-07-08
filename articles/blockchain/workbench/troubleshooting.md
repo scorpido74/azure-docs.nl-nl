@@ -5,10 +5,9 @@ ms.date: 10/14/2019
 ms.topic: troubleshooting
 ms.reviewer: brendal
 ms.openlocfilehash: 20c0f9bdd6f820a73b1ba6660de805268c0d8714
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85212850"
 ---
 # <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Preview-versie van Azure Block Chain Workbench oplossen
@@ -56,7 +55,7 @@ Het script accepteert de volgende para meters:
 
 Het ZIP-bestand van de uitvoer bevat de volgende mapstructuur:
 
-| Map of bestand | Beschrijving  |
+| Map of bestand | Description  |
 |---------|---------|
 | \Summary.txt | Samen vatting van het systeem |
 | \Metrics\blockchain | Metrische gegevens over de Block Chain |

@@ -4,10 +4,9 @@ description: Meer informatie over het ophalen, opmaken, pagina's en overs laan v
 ms.date: 03/20/2020
 ms.topic: conceptual
 ms.openlocfilehash: 4b45a28a5dbd2ebc233bcf9a6808cb7d7cd6d8c8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83681066"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Werken met grote Azure-resource gegevens sets
@@ -169,6 +168,6 @@ response = client.resources(request)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de taal die wordt gebruikt in [Start query's](../samples/starter.md).
-- Zie Geavanceerd gebruik in [Geavanceerde query's](../samples/advanced.md).
-- Meer informatie over hoe u [resources kunt verkennen](explore-resources.md).
+- Zie de taal die wordt gebruikt in [Starter-query's](../samples/starter.md).
+- Zie [Geavanceerde query's](../samples/advanced.md) voor geavanceerde gebruikswijzen.
+- Lees meer over het [verkennen van resources](explore-resources.md).

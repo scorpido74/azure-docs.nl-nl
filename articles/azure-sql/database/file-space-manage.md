@@ -12,10 +12,9 @@ ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: ebaddbcacbc20097b2ec5606244650ea2916edfe
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84324535"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Bestands ruimte voor data bases in Azure SQL Database beheren
@@ -24,7 +23,7 @@ ms.locfileid: "84324535"
 In dit artikel worden verschillende soorten opslag ruimte voor data bases in Azure SQL Database beschreven en de stappen die kunnen worden uitgevoerd wanneer de toegewezen bestands ruimte expliciet moet worden beheerd.
 
 > [!NOTE]
-> Dit artikel is niet van toepassing op een door Azure SQL beheerd exemplaar.
+> Dit artikel is niet van toepassing op Azure SQL Managed Instance.
 
 ## <a name="overview"></a>Overzicht
 
@@ -124,7 +123,7 @@ Meer informatie over de volgende hoeveel heden voor opslag ruimte zijn belang ri
 
 ## <a name="query-an-elastic-pool-for-storage-space-information"></a>Een elastische pool doorzoeken op informatie over de opslag ruimte
 
-De volgende query's kunnen worden gebruikt om de hoeveelheid opslag ruimte voor een elastische pool te bepalen.  
+De volgende query's kunnen worden gebruikt om de hoeveelheid opslagruimte voor een elastische pool te bepalen.  
 
 ### <a name="elastic-pool-data-space-used"></a>Gebruikte gegevens ruimte elastische pool
 

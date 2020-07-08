@@ -12,10 +12,9 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 523fd3103585865a969f6463b3dc41fe362b9130
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84324710"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>Zelf studie: een geografisch gedistribueerde data base implementeren (Azure SQL Database)
@@ -140,7 +139,7 @@ Geo-replicatie-instellingen kunnen ook worden gewijzigd in de Azure portal door 
    cd SqlDbSample
    ```
 
-1. Open met uw favoriete editor het bestand *pom. XML* in de projectmap.
+1. Open met behulp van uw favoriete editor het *pom.xml* -bestand in de projectmap.
 
 1. Voeg het micro soft JDBC-stuur programma voor SQL Server afhankelijkheid toe door de volgende sectie toe te voegen `dependency` . De afhankelijkheid moet in de grotere sectie worden geplakt `dependencies` .
 

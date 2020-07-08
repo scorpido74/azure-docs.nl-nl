@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.openlocfilehash: 8776ecae982a4b1c67f6b66f16fceec930a561f0
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392128"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Queryprestaties afstemmen met Azure Cosmos DB
@@ -38,7 +37,7 @@ Wanneer u een query naar Azure Cosmos DB geeft, voert de SDK de volgende logisch
 
 De Sdk's bieden verschillende opties voor het uitvoeren van query's. In .NET zijn deze opties bijvoorbeeld beschikbaar in de- `FeedOptions` klasse. In de volgende tabel worden deze opties beschreven en hoe deze van invloed zijn op de uitvoerings tijd van query's. 
 
-| Optie | Beschrijving |
+| Optie | Description |
 | ------ | ----------- |
 | `EnableCrossPartitionQuery` | Moet worden ingesteld op True voor elke query die moet worden uitgevoerd in meer dan één partitie. Dit is een expliciete vlag waarmee u tijdens de ontwikkelings periode de prestaties kunt afnemen. |
 | `EnableScanInQuery` | Moet worden ingesteld op True als u zich hebt afgemeld bij het indexeren, maar u wilt de query toch uitvoeren via een scan. Alleen van toepassing als indexering voor het aangevraagde filter pad is uitgeschakeld. | 
@@ -124,7 +123,7 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 
 De belangrijkste reactie headers die worden geretourneerd door de query zijn onder andere:
 
-| Optie | Beschrijving |
+| Optie | Description |
 | ------ | ----------- |
 | `x-ms-item-count` | Het aantal items dat in het antwoord is geretourneerd. Dit is afhankelijk van de opgegeven `x-ms-max-item-count` waarde, het aantal items dat kan worden aangepast binnen de maximale grootte van de nettolading, de ingerichte door Voer en de uitvoerings tijd van de query. |  
 | `x-ms-continuation:` | Het vervolg token om de uitvoering van de query te hervatten als er aanvullende resultaten beschikbaar zijn. | 
@@ -237,7 +236,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| Gegevens | Eenheid | Beschrijving | 
+| Gegevens | Eenheid | Description | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | milliseconden | Uitvoerings tijd van query | 
 | `queryCompileTimeInMs` | milliseconden | Compilatie tijd van de query  | 
@@ -259,7 +258,7 @@ De client-Sdk's kunnen intern meerdere query bewerkingen uitvoeren om de query b
 
 Hier volgen enkele voor beelden van query's en het interpreteren van enkele metrische gegevens die worden geretourneerd door de uitvoering van query's: 
 
-| Query’s uitvoeren | Voorbeeld metriek | Beschrijving | 
+| Query’s uitvoeren | Voorbeeld metriek | Description | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | Het aantal opgehaalde documenten is 100 + 1 om overeen te komen met de component TOP. De query tijd wordt meestal gebruikt in `WriteOutputTime` en `DocumentLoadTime` omdat het een scan is. | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount is nu hoger (500 + 1 zodat dit overeenkomt met de TOP-component). | 

@@ -4,10 +4,9 @@ description: Controleer uw web- en werkrollen op een effectieve manier met Appli
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.openlocfilehash: 17813d17a1c40caac5587e37e279be6376992b90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537590"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights voor Azure Cloud Services
@@ -70,7 +69,7 @@ Als u de telemetrie naar de juiste resources wilt verzenden, kunt u de Applicati
 
 Als u hebt besloten om een afzonderlijke resource te maken voor elke rol, en wellicht een afzonderlijke set voor elke build-configuratie, is het het gemakkelijkst om ze allemaal in de Application Insights portal te maken. Als u een groot aantal resources maakt, kunt u [het proces automatiseren](../../azure-monitor/app/powershell.md).
 
-1. Selecteer in de [Azure Portal][portal] **nieuwe** > **ontwikkelaars Services** > **Application Insights**.  
+1. Selecteer in de [Azure Portal][portal] **nieuwe**  >  **ontwikkelaars Services**  >  **Application Insights**.  
 
     ![Application Insights deel venster](./media/cloudservices/01-new.png)
 
@@ -82,7 +81,7 @@ Elke resource wordt geïdentificeerd door een instrumentatie sleutel. U hebt dez
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Azure Diagnostics instellen voor elke rol
 Stel deze optie in om uw app te controleren met Application Insights. Voor webrollen biedt deze optie prestatie bewaking, waarschuwingen, diagnostische gegevens en gebruiks analyse. Voor andere rollen kunt u Azure Diagnostics, zoals opnieuw opstarten, prestatie meter items en aanroepen naar System. Diagnostics. trace, zoeken en controleren. 
 
-1. Open in Visual Studio Solution Explorer, onder ** \<uwcloudservice>**  > - **rollen**, de eigenschappen van elke rol.
+1. Open in Visual Studio Solution Explorer, onder **\<YourCloudService>**  >  **rollen**, de eigenschappen van elke rol.
 
 1. Schakel in **configuratie**het selectie vakje **Diagnostische gegevens verzenden naar Application Insights** in en selecteer vervolgens de Application Insights resource die u eerder hebt gemaakt.
 
@@ -90,7 +89,7 @@ Als u hebt besloten om een afzonderlijke Application Insights-resource voor elke
 
 ![Application Insights configureren](./media/cloudservices/configure-azure-diagnostics.png)
 
-Dit heeft gevolgen voor het invoegen van uw Application Insights instrumentatie sleutels in de bestanden met de naam *ServiceConfiguration.\*. cscfg*. Hier volgt de [voorbeeld code](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
+Dit heeft gevolgen voor het invoegen van uw Application Insights instrumentatie sleutels in de bestanden met de naam *ServiceConfiguration. \* . cscfg*. Hier volgt de [voorbeeld code](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
 
 Als u het niveau van diagnostische gegevens wilt variëren dat naar Application Insights wordt verzonden, kunt u dit doen [door de *cscfg* -bestanden rechtstreeks te bewerken](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
 
@@ -124,7 +123,7 @@ Gebruik Visual Studio om de Application Insights-SDK voor elk cloudtoepassingspr
     * [Werkrol](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
     * [Voor webpagina's](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
 
-1. Stel in dat het bestand *ApplicationInsights. config* altijd moet worden gekopieerd naar de uitvoermap.
+1. Stel in dat het *ApplicationInsights.config* bestand altijd naar de uitvoermap moet worden gekopieerd.
 
    Een bericht in het *. config* -bestand vraagt u om de instrumentatie sleutel in te plaatsen. Voor Cloud-apps is het echter beter om deze in te stellen vanuit het *cscfg* -bestand. Deze aanpak zorgt ervoor dat de rol correct wordt geïdentificeerd in de portal.
 
@@ -132,7 +131,7 @@ Gebruik Visual Studio om de Application Insights-SDK voor elk cloudtoepassingspr
 
 Deze stap is alleen nodig als u volledige SQL-query's wilt vastleggen op .NET Framework. 
 
-1. Voeg `\*.csdef` in bestand [opstart taak](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks) toevoegen toe voor elke rol die vergelijkbaar is met 
+1. `\*.csdef`Voeg in bestand [opstart taak](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks) toevoegen toe voor elke rol die vergelijkbaar is met 
 
     ```xml
     <Startup>
@@ -147,7 +146,7 @@ Deze stap is alleen nodig als u volledige SQL-query's wilt vastleggen op .NET Fr
     </Startup>
     ```
     
-2. Down load [InstallAgent. bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) en [InstallAgent. ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1)en plaats deze in `AppInsightsAgent` de map van elk rolinstantie. Zorg ervoor dat u ze naar de uitvoermap kopieert via de bestands eigenschappen van Visual Studio of door scripts te bouwen.
+2. Down load [InstallAgent.bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) en [InstallAgent.ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1)en plaats ze in de `AppInsightsAgent` map van elk Role-project. Zorg ervoor dat u ze naar de uitvoermap kopieert via de bestands eigenschappen van Visual Studio of door scripts te bouwen.
 
 3. Voeg op alle werk rollen omgevings variabelen toe: 
 
@@ -233,7 +232,7 @@ Voor webrollen worden ook gegevens verzameld voor de volgende prestatiemeteritem
 * \ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time
 * \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue
 
-U kunt aanvullende aangepaste of andere Windows-prestatie meter items opgeven door *ApplicationInsights. config* te bewerken [, zoals wordt weer gegeven in dit voor beeld](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14).
+U kunt aanvullende aangepaste of andere Windows-prestatie meter items opgeven door *ApplicationInsights.config* te bewerken [, zoals in dit voor beeld wordt weer gegeven](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14).
 
   ![Prestatiemeteritems](./media/cloudservices/002-servers.png)
 
@@ -242,11 +241,11 @@ Voor een uitgebreide diagnostische ervaring kunt u zien wat er is geresulteerd i
 
 Als u deze weer gave voor werk rollen wilt behaalt, kunt u een aangepaste telemetrie-initialisatie functie gebruiken om een gemeen schappelijk Operation.Id context kenmerk voor alle telemetrie in te stellen. Als u dit doet, kunt u in één oogopslag zien of de latentie of fout melding is veroorzaakt door een afhankelijkheid of code. 
 
-Dit doet u al volgt:
+U doet dit als volgt:
 
 * Stel de correlationId in een call context in [, zoals wordt weer gegeven in dit voor beeld](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36). In dit geval gebruiken we de aanvraag-ID als de correlationId.
 * Voeg een aangepaste TelemetryInitializer-implementatie toe om de Operation.Id in te stellen op de correlationId die eerder is ingesteld. Zie [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)voor een voor beeld.
-* Voeg de aangepaste telemetrie-initializer toe. U kunt dit doen in het bestand *ApplicationInsights. config* of in code [zoals in dit voor beeld wordt weer gegeven](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233).
+* Voeg de aangepaste telemetrie-initializer toe. U kunt dit doen in het *ApplicationInsights.config* bestand of in code [zoals in dit voor beeld wordt weer gegeven](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233).
 
 ## <a name="client-telemetry"></a>Telemetrie op de client
 Zie [de Java script-SDK toevoegen aan uw][client]webpagina's voor meer informatie over het maken van een telemetrie in de Cloud, zoals het aantal pagina weergave, pagina laad tijden of script uitzonderingen, en om aangepaste telemetrie in uw pagina scripts te schrijven.

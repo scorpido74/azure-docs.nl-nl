@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84710368"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Gegevens bewerkingen uitvoeren in Azure Logic Apps
@@ -35,7 +34,7 @@ Deze acties helpen u bij het werken met gegevens in matrices.
 | [**HTML-tabel maken**](#create-html-table-action) | Een HTML-tabel maken op basis van een matrix. |
 | [**Matrix filteren**](#filter-array-action) | Maak een matrix subset van een matrix op basis van het opgegeven filter of voor waarde. |
 | [**Koppelen**](#join-action) | Maak een teken reeks van alle items in een matrix en scheid elk item met het opgegeven teken. |
-| [**Selecteer**](#select-action) | Een matrix maken op basis van de opgegeven eigenschappen voor alle items in een andere matrix. |
+| [**Uitgeschakeld**](#select-action) | Een matrix maken op basis van de opgegeven eigenschappen voor alle items in een andere matrix. |
 ||| 
 
 **JSON-acties**
@@ -106,7 +105,7 @@ Volg deze stappen met behulp van de ontwerp functie voor logische apps als u een
 
    ![Voltooid voor beeld voor de actie opstellen](./media/logic-apps-perform-data-operations/finished-compose-action.png)
 
-1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Sla uw logische app op. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 Zie voor meer informatie over deze actie in uw onderliggende werk stroom definitie de [actie opstellen](../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action).
 
@@ -167,7 +166,7 @@ Als u liever met de code weergave-editor werkt, kunt u het voor beeld voor het m
 
    ![Voltooid voor beeld voor de actie CSV-tabel maken](./media/logic-apps-perform-data-operations/finished-create-csv-table-action.png)
 
-1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Sla uw logische app op. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 ### <a name="customize-table-format"></a>Tabel indeling aanpassen
 
@@ -318,7 +317,7 @@ Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld
 
    ![Voltooid voor beeld voor ' HTML-tabel maken '](./media/logic-apps-perform-data-operations/finished-create-html-table-action.png)
 
-1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Sla uw logische app op. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 ### <a name="customize-table-format"></a>Tabel indeling aanpassen
 
@@ -482,7 +481,7 @@ Als u liever aan de slag gaat met de code weergave-editor, kunt u de voorbeeld *
 
    ![Het voor beeld van een actie ' filter matrix ' is voltooid](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
 
-1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Sla uw logische app op. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 Zie [query actie](../logic-apps/logic-apps-workflow-actions-triggers.md#query-action)voor meer informatie over deze actie in uw onderliggende werk stroom definitie.
 
@@ -544,7 +543,7 @@ Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld
 
    ![Het scheidings teken opgeven](./media/logic-apps-perform-data-operations/finished-join-action.png)
 
-1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Sla uw logische app op. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 Zie voor meer informatie over deze actie in uw onderliggende werk stroom definitie de [actie toevoegen](../logic-apps/logic-apps-workflow-actions-triggers.md#join-action).
 
@@ -612,7 +611,7 @@ Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld
 
       ![De JSON-inhoud invoeren voor het genereren van het schema](./media/logic-apps-perform-data-operations/generate-schema-parse-json-action.png)
 
-1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Sla uw logische app op. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 Zie [JSON-actie parseren](../logic-apps/logic-apps-workflow-actions-triggers.md)voor meer informatie over deze actie in uw onderliggende werk stroom definitie.
 
@@ -683,7 +682,7 @@ Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld
 
    ![Voltooid voor beeld voor de actie ' selecteren '](./media/logic-apps-perform-data-operations/finished-select-action.png)
 
-1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Sla uw logische app op. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 Zie voor meer informatie over deze actie in uw onderliggende werk stroom definitie [actie selecteren](../logic-apps/logic-apps-workflow-actions-triggers.md).
 

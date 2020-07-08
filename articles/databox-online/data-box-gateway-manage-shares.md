@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 5ca8f5d629a110d2a4d3b35cb357af2c723ec312
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84339192"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>De Azure Portal gebruiken om shares te beheren in uw Azure Data Box Gateway 
@@ -72,7 +71,7 @@ Voer in de Azure Portal de volgende stappen uit om een share te verwijderen.
 
     ![Share selecteren](media/data-box-gateway-manage-shares/delete-1.png)
 
-2. Klik op **verwijderen**. 
+2. Klik op **Verwijderen**. 
 
     ![Op Verwijderen klikken](media/data-box-gateway-manage-shares/delete-2.png)
 
