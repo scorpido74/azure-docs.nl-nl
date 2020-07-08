@@ -3,11 +3,12 @@ title: Back-ups maken van VMware-Vm's met Azure Backup Server
 description: In dit artikel leert u hoe u Azure Backup Server kunt gebruiken om een back-up te maken van virtuele VMware-machines die op een VMware vCenter/ESXi-server worden uitgevoerd.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: deb72ad1f2b9b18368ef5134ecc23048b483f3f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fed088a9c5eea461f93c844dcb0eead74761237e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84628448"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081057"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Back-ups maken van VMware-Vm's met Azure Backup Server
 
@@ -26,9 +27,8 @@ In dit artikel wordt uitgelegd hoe u:
 - Controleer of u een versie van vCenter-ESXi gebruikt die wordt ondersteund voor back-up. Raadpleeg [hier](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)de ondersteunings matrix.
 - Zorg ervoor dat u Azure Backup Server hebt ingesteld. Als u dat nog [niet hebt gedaan, moet u dat doen](backup-azure-microsoft-azure-backup.md) voordat u begint. U moet Azure Backup Server uitvoeren met de nieuwste updates.
 - Controleer of de volgende netwerk poorten zijn geopend:
-    - TCP 443 tussen MABS en vCenter
-    - TCP 443 en TCP 902 tussen de MABS-en ESXi-host
-
+  - TCP 443 tussen MABS en vCenter
+  - TCP 443 en TCP 902 tussen de MABS-en ESXi-host
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>Een beveiligde verbinding met de vCenter Server maken
 
@@ -133,72 +133,75 @@ De Azure Backup Server moet een gebruikers account met machtigingen hebben voor 
 
 ### <a name="role-permissions"></a>Rolmachtigingen
 
-| Bevoegdheden voor het vCenter 6,7-gebruikers account                     | Bevoegdheden voor het vCenter 6,5-gebruikers account                     |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Data Store cluster.Configureren een datatstore-cluster            | Data Store cluster.Configureren een datatstore-cluster            |
-| Data Store. AllocateSpace                                      | Data Store. AllocateSpace                                      |
-| Data Store. bladeren in Data Store                                   | Data Store. bladeren in Data Store                                   |
-| Bestands bewerkingen op laag niveau                          | Bestands bewerkingen op laag niveau                          |
-| Global. Disable-methoden                                       | Global. Disable-methoden                                       |
-| Global. enable-methoden                                        | Global. enable-methoden                                        |
-| Global. licenties                                              | Global. licenties                                              |
-| Global. log-gebeurtenis                                             | Global. log-gebeurtenis                                             |
-| Global. aangepaste kenmerken beheren                              | Global. aangepaste kenmerken beheren                              |
-| Global. Set Custom-kenmerk                                  | Global. Set Custom-kenmerk                                  |
-| Host. lokale bewerkingen. Virtuele machine maken                | Host. lokale bewerkingen. Virtuele machine maken                |
-| Netwerk. netwerk toewijzen                                       | Netwerk. netwerk toewijzen                                       |
-| Resource. Virtuele machine aan resource groep toewijzen           | Resource. Virtuele machine aan resource groep toewijzen           |
-| vApp. virtuele machine toevoegen                                     | vApp. virtuele machine toevoegen                                     |
-| vApp. resource groep toewijzen                                    | vApp. resource groep toewijzen                                    |
-| vApp. registratie ongedaan maken                                              | vApp. registratie ongedaan maken                                              |
-| VirtualMachine.Configuratie. Apparaat toevoegen of verwijderen          | VirtualMachine.Configuratie. Apparaat toevoegen of verwijderen          |
-| Virtuele machine.Configuratie. Lease van schijf verkrijgen            | Virtuele machine.Configuratie. Lease van schijf                     |
-| Virtuele machine.Configuratie. Nieuwe schijf toevoegen                   | Virtuele machine.Configuratie. Nieuwe schijf toevoegen                   |
-| Virtuele machine.Configuratie. Geavanceerde configuratie        | Virtuele machine.Configuratie. Gevanceerde                       |
-| Virtuele machine.Configuratie. Bijhouden van schijf wijzigingen in-/uitschakelen   | Virtuele machine.Configuratie. Bijhouden van schijf wijzigingen          |
-| USB-apparaat virtuele machine.Configuration.Configureren host     | Virtuele machine.Configuratie. Host-USB-apparaat               |
-| Virtuele machine.Configuratie. Virtuele schijf uitbreiden           | Virtuele machine.Configuratie. Virtuele schijf uitbreiden           |
-| Virtuele machine.Configuratie. Niet-eigendoms bestanden opvragen           | Virtuele machine.Configuratie. Niet-eigendoms bestanden opvragen           |
-| Virtuele machine.Configuratie. Swapfile-plaatsing wijzigen     | Virtuele machine.Configuratie. Swapfile-plaatsing            |
-| Virtuele machine. Gast bewerkingen. uitvoering van gast bewerkings programma | Virtuele machine. Gast bewerkingen. uitvoering van gast bewerkings programma |
-| Virtuele machine. Gast bewerkingen. wijzigingen in de gast bewerking | Virtuele machine. Gast bewerkingen. wijzigingen in de gast bewerking |
-| Virtuele machine. Gast bewerkingen. Query's voor de gast bewerking    | Virtuele machine. Gast bewerkingen. Query's voor de gast bewerking    |
-| Virtuele machine. Communiceer. Apparaat-verbinding             | Virtuele machine. Communiceer. Apparaat-verbinding             |
+In de volgende tabel worden de bevoegdheden vastgelegd die u moet toewijzen aan het gebruikers account dat u maakt:
+
+| Bevoegdheden voor het vCenter 6,5-gebruikers account                          | Bevoegdheden voor het vCenter 6,7-gebruikers account                            |
+|----------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| Data Store cluster.Configureren een Data Store-cluster                           | Data Store cluster.Configureren een Data Store-cluster                           |
+| Data Store. AllocateSpace                                                    | Data Store. AllocateSpace                                                    |
+| Data Store. bladeren in Data Store                                                 | Data Store. bladeren in Data Store                                                 |
+| Bestands bewerkingen op laag niveau                                        | Bestands bewerkingen op laag niveau                                        |
+| Global. Disable-methoden                                                     | Global. Disable-methoden                                                     |
+| Global. enable-methoden                                                      | Global. enable-methoden                                                      |
+| Global. licenties                                                            | Global. licenties                                                            |
+| Global. log-gebeurtenis                                                           | Global. log-gebeurtenis                                                           |
+| Global. aangepaste kenmerken beheren                                            | Global. aangepaste kenmerken beheren                                            |
+| Global. Set Custom-kenmerk                                                | Global. Set Custom-kenmerk                                                |
+| Host. lokale bewerkingen. Virtuele machine maken                               | Host. lokale bewerkingen. Virtuele machine maken                               |
+| Netwerk. netwerk toewijzen                                                     | Netwerk. netwerk toewijzen                                                     |
+| Resource. Virtuele machine aan resource groep toewijzen                          | Resource. Virtuele machine aan resource groep toewijzen                          |
+| vApp. virtuele machine toevoegen                                                   | vApp. virtuele machine toevoegen                                                   |
+| vApp. resource groep toewijzen                                                  | vApp. resource groep toewijzen                                                  |
+| vApp. registratie ongedaan maken                                                            | vApp. registratie ongedaan maken                                                            |
+| VirtualMachine.Configuratie. Apparaat toevoegen of verwijderen                         | VirtualMachine.Configuratie. Apparaat toevoegen of verwijderen                         |
+| Virtuele machine.Configuratie. Lease van schijf                                   | Virtuele machine.Configuratie. Lease van schijf verkrijgen                           |
+| Virtuele machine.Configuratie. Nieuwe schijf toevoegen                                 | Virtuele machine.Configuratie. Nieuwe schijf toevoegen                                 |
+| Virtuele machine.Configuratie. Gevanceerde                                     | Virtuele machine.Configuratie. Geavanceerde configuratie                       |
+| Virtuele machine.Configuratie. Bijhouden van schijf wijzigingen                         | Virtuele machine.Configuratie. Bijhouden van schijf wijzigingen in-/uitschakelen                  |
+| Virtuele machine.Configuratie. Host-USB-apparaat                              | USB-apparaat virtuele machine.Configuration.Configureren host                    |
+| Virtuele machine.Configuratie. Virtuele schijf uitbreiden                          | Virtuele machine.Configuratie. Virtuele schijf uitbreiden                          |
+| Virtuele machine.Configuratie. Niet-eigendoms bestanden opvragen                          | Virtuele machine.Configuratie. Niet-eigendoms bestanden opvragen                          |
+| Virtuele machine.Configuratie. Swapfile-plaatsing                           | Virtuele machine.Configuratie. Swapfile-plaatsing wijzigen                    |
+| Virtuele machine. Gast bewerkingen. uitvoering van gast bewerkings programma         | Virtuele machine. Gast bewerkingen. uitvoering van gast bewerkings programma         |
+| Virtuele machine. Gast bewerkingen. wijzigingen in de gast bewerking             | Virtuele machine. Gast bewerkingen. wijzigingen in de gast bewerking             |
+| Virtuele machine. Gast bewerkingen. Query's voor de gast bewerking                   | Virtuele machine. Gast bewerkingen. Query's voor de gast bewerking                   |
+| Virtuele machine. Communiceer. Apparaat-verbinding                            | Virtuele machine. Communiceer. Apparaat-verbinding                            |
 | Virtuele machine. Communiceer. Beheer van gast besturingssystemen met VIX-API | Virtuele machine. Communiceer. Beheer van gast besturingssystemen met VIX-API |
-| Virtuele machine. Communiceer. Uitschakelen                      | Virtuele machine. Communiceer. Uitschakelen                      |
-| Virtuele machine. Inventaris. nieuwe maken                        | Virtuele machine. Inventaris. nieuwe maken                        |
-| Virtuele machine. Inventaris. Remove                            | Virtuele machine. Inventaris. Remove                            |
-| Virtuele machine. Inventarisatie. REGI ster                          | Virtuele machine. Inventarisatie. REGI ster                          |
-| Virtuele machine. Inrichten. schijf toegang toestaan             | Virtuele machine. Inrichten. schijf toegang toestaan             |
-| Virtuele machine. Inrichten. toegang tot bestand toestaan             | Virtuele machine. Inrichten. toegang tot bestand toestaan             |
-| Virtuele machine. Inrichting. alleen-lezen schijf toegang toestaan   | Virtuele machine. Inrichting. alleen-lezen schijf toegang toestaan   |
-| Virtuele machine. Inrichten. het downloaden van virtuele machines toestaan | Virtuele machine. Inrichten. het downloaden van virtuele machines toestaan |
-| Virtuele machine. Beheer van moment opnamen.  Momentopname maken       | Virtuele machine. Beheer van moment opnamen.  Momentopname maken       |
-| Virtuele machine. Beheer van moment opnamen. Moment opname verwijderen        | Virtuele machine. Beheer van moment opnamen. Moment opname verwijderen        |
-| Virtuele machine. Beheer van moment opnamen. Herstellen naar moment opname     | Virtuele machine. Beheer van moment opnamen. Herstellen naar moment opname     |
+| Virtuele machine. Communiceer. Uitschakelen                                    | Virtuele machine. Communiceer. Uitschakelen                                    |
+| Virtuele machine. Inventaris. nieuwe maken                                      | Virtuele machine. Inventaris. nieuwe maken                                      |
+| Virtuele machine. Inventaris. Remove                                          | Virtuele machine. Inventaris. Remove                                          |
+| Virtuele machine. Inventarisatie. REGI ster                                        | Virtuele machine. Inventarisatie. REGI ster                                        |
+| Virtuele machine. Inrichten. schijf toegang toestaan                            | Virtuele machine. Inrichten. schijf toegang toestaan                            |
+| Virtuele machine. Inrichten. toegang tot bestand toestaan                            | Virtuele machine. Inrichten. toegang tot bestand toestaan                            |
+| Virtuele machine. Inrichting. alleen-lezen schijf toegang toestaan                  | Virtuele machine. Inrichting. alleen-lezen schijf toegang toestaan                  |
+| Virtuele machine. Inrichten. het downloaden van virtuele machines toestaan               | Virtuele machine. Inrichten. het downloaden van virtuele machines toestaan               |
+| Virtuele machine. Beheer van moment opnamen. Momentopname maken                      | Virtuele machine. Beheer van moment opnamen. Momentopname maken                      |
+| Virtuele machine. Beheer van moment opnamen. Moment opname verwijderen                       | Virtuele machine. Beheer van moment opnamen. Moment opname verwijderen                       |
+| Virtuele machine. Beheer van moment opnamen. Herstellen naar moment opname                    | Virtuele machine. Beheer van moment opnamen. Herstellen naar moment opname                    |
 
-<br>
+> [!NOTE]
+> De volgende tabel bevat de bevoegdheden voor de gebruikers accounts vCenter 6,0 en vCenter 5,5.
 
-| **Bevoegdheden voor het vCenter 6,0-gebruikers account**                | **Bevoegdheden voor het vCenter 5,5-gebruikers account** |
-| ---------------------------------------------------------- | ------------------------------------------- |
-| Data Store. AllocateSpace                                    | Netwerk. assign                              |
-| Global. aangepaste kenmerken beheren                           | Data Store. AllocateSpace                     |
-| Global. Set Custom-kenmerk                               | VirtualMachine.Config. Change tracking        |
-| Host. lokale bewerkingen. Virtuele machine maken              | VirtualMachine. State. RemoveSnapshot         |
-| Netwerk.  Netwerk toewijzen                                   | VirtualMachine. State. CreateSnapshot         |
-| Resource.  Virtuele machine aan resource groep toewijzen         | VirtualMachine. provisioning. DiskRandomRead  |
-| Virtuele machine.Configuratie. Nieuwe schijf toevoegen                | VirtualMachine. interactie. uitgeschakeld            |
-| Virtuele machine.Configuratie. Gevanceerde                    | VirtualMachine. Inventory. Create             |
-| Virtuele machine.Configuratie. Bijhouden van schijf wijzigingen        | VirtualMachine.Config. AddNewDisk            |
-| Virtuele machine.Configuratie. Host-USB-apparaat             | VirtualMachine.Config. HostUSBDevice         |
-| Virtuele machine.Configuratie. Niet-eigendoms bestanden opvragen         | VirtualMachine.Config. AdvancedConfig        |
-| Virtuele machine.Configuratie. Swapfile-plaatsing          | VirtualMachine.Config. SwapPlacement         |
-| Virtuele machine. Interactie. uit                     | Global. ManageCustomFields                   |
-| Virtuele machine. Tell. Nieuwe maken                     |                                             |
-| Virtuele machine. Inrichten. schijf toegang toestaan            |                                             |
-| Virtuele machine. Inrichtings. Alleen-lezen schijf toegang toestaan |                                             |
-| Virtuele machine. Beheer van moment opnamen. Moment opname maken       |                                             |
-| Virtuele machine. Beheer van moment opnamen. Moment opname verwijderen       |                                             |
+| Bevoegdheden voor het vCenter 6,0-gebruikers account | Bevoegdheden voor het vCenter 5,5-gebruikers account |
+| --- | --- |
+| Data Store. AllocateSpace | Netwerk. assign |
+| Global. aangepaste kenmerken beheren | Data Store. AllocateSpace |
+| Global. Set Custom-kenmerk | VirtualMachine.Config. Change tracking |
+| Host. lokale bewerkingen. Virtuele machine maken | VirtualMachine. State. RemoveSnapshot |
+| Netwerk. Netwerk toewijzen | VirtualMachine. State. CreateSnapshot |
+| Resource. Virtuele machine aan resource groep toewijzen | VirtualMachine. provisioning. DiskRandomRead |
+| Virtuele machine.Configuratie. Nieuwe schijf toevoegen | VirtualMachine. interactie. uitgeschakeld |
+| Virtuele machine.Configuratie. Gevanceerde | VirtualMachine. Inventory. Create |
+| Virtuele machine.Configuratie. Bijhouden van schijf wijzigingen | VirtualMachine.Config. AddNewDisk |
+| Virtuele machine.Configuratie. Host-USB-apparaat | VirtualMachine.Config. HostUSBDevice |
+| Virtuele machine.Configuratie. Niet-eigendoms bestanden opvragen | VirtualMachine.Config. AdvancedConfig |
+| Virtuele machine.Configuratie. Swapfile-plaatsing | VirtualMachine.Config. SwapPlacement |
+| Virtuele machine. Interactie. uit | Global. ManageCustomFields |
+| Virtuele machine. Tell. Nieuwe maken |   |
+| Virtuele machine. Inrichten. schijf toegang toestaan |   |
+| Virtuele machine. Inrichtings. Alleen-lezen schijf toegang toestaan |   |
+| Virtuele machine. Beheer van moment opnamen. Moment opname maken |   |
+| Virtuele machine. Beheer van moment opnamen. Moment opname verwijderen |   |
 
 ## <a name="create-a-vmware-account"></a>Een VMware-account maken
 

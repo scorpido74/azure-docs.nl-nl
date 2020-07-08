@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 48b51c40e5de8f10d9d1d16b02e2c70b045816b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d462f146f3f094602835d88e48815d5537c58665
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687443"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078779"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Scenario's voor geavanceerde analyses in Azure Machine Learning
 In dit artikel vindt u een overzicht van de verschillende voorbeeld gegevens bronnen en doel scenario's die kunnen worden verwerkt door het [team data Science process (TDSP)](overview.md). De TDSP biedt een systematische aanpak voor teams om samen te werken aan het bouwen van intelligente toepassingen. De scenario's die hier worden weer gegeven, illustreren de beschik bare opties in de werk stroom voor gegevens verwerking die afhankelijk is van de gegevens kenmerken, bron locaties en doel opslagplaatsen in Azure.
@@ -193,9 +194,7 @@ Als u de hele SQL Server data base in uw SQL Server virtuele machine wilt replic
 1. Een Azure HDInsight Hadoop-cluster maken.
 1. Beschrijving Gegevens vooraf verwerken en opschonen.
    
-   a.  Gegevens vooraf verwerken en opschonen in IPython notebook, toegang krijgen tot gegevens van Azure
-   
-       blobs.
+   a.  Gegevens vooraf verwerken en opschonen in IPython notebook, toegang krijgen tot gegevens uit Azure-blobs.
    
    b.  Transformeer gegevens naar een gereinigd tabellaire formulier, indien nodig.
    

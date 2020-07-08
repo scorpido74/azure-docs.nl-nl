@@ -3,18 +3,18 @@ title: Azure-toepassing inzichten voor ASP.NET Core toepassingen | Microsoft Doc
 description: Bewaak ASP.NET Core webtoepassingen voor Beschik baarheid, prestaties en gebruik.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: f9e51521e9bd35c6afb3dbe7cafb1e56e847756a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e575bf0d1fe138ae9dd4160b55be4f2c8ea5bea
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390122"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082196"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights voor ASP.NET Core toepassingen
 
 In dit artikel wordt beschreven hoe u Application Insights inschakelt voor een [ASP.net core](https://docs.microsoft.com/aspnet/core) toepassing. Wanneer u de instructies in dit artikel hebt voltooid, verzamelt Application Insights aanvragen, afhankelijkheden, uitzonde ringen, prestatie meter items, heartbeats en logboeken van uw ASP.NET Core toepassing.
 
-Het voor beeld dat hier wordt gebruikt, is een [MVC-toepassing](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app) die gericht is `netcoreapp3.0` . U kunt deze instructies Toep assen op alle ASP.NET Core-toepassingen.
+Het voor beeld dat hier wordt gebruikt, is een [MVC-toepassing](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app) die gericht is `netcoreapp3.0` . U kunt deze instructies Toep assen op alle ASP.NET Core-toepassingen. Als u de [Worker-service](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services#worker-service-template)gebruikt, gebruikt u de instructies [hier](./worker-service.md).
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
 
@@ -225,7 +225,7 @@ Zie [adaptieve steek proeven voor ASP.net core toepassingen configureren](../../
 
 ### <a name="adding-telemetryinitializers"></a>TelemetryInitializers toevoegen
 
-Gebruik de [initialisatie functies voor telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) wanneer u algemene eigenschappen wilt definiëren die worden verzonden met alle telemetrie.
+Gebruik de [initialisatie functies voor telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) wanneer u telemetrie wilt verrijken met aanvullende informatie.
 
 Voeg nieuwe `TelemetryInitializer` toe aan de `DependencyInjection` container, zoals in de volgende code wordt weer gegeven. De SDK neemt automatisch een selectie `TelemetryInitializer` op die wordt toegevoegd aan de `DependencyInjection` container.
 
@@ -282,7 +282,7 @@ Application Insights maakt gebruik van telemetrie-modules om automatisch nuttige
 De volgende automatische verzamelings modules zijn standaard ingeschakeld. Deze modules zijn verantwoordelijk voor het automatisch verzamelen van telemetrie. U kunt ze uitschakelen of configureren om het standaard gedrag te wijzigen.
 
 * `RequestTrackingTelemetryModule`-Verzamelt RequestTelemetry van inkomende webaanvragen.
-* `DependencyTrackingTelemetryModule`-Verzamelt DependencyTelemetry van uitgaande HTTP-aanroepen en SQL-aanroepen.
+* `DependencyTrackingTelemetryModule`-Verzamelt [DependencyTelemetry](./asp-net-dependencies.md) van uitgaande HTTP-aanroepen en SQL-aanroepen.
 * `PerformanceCollectorModule`-Verzamelt Windows Performance Counters.
 * `QuickPulseTelemetryModule`-Verzamelt telemetrie voor weer gave in de portal voor Live Metrics.
 * `AppServicesHeartbeatTelemetryModule`-Hiermee worden kern maten (die worden verzonden als aangepaste metrische gegevens) verzameld over Azure App Service omgeving waarin de toepassing wordt gehost.
@@ -329,7 +329,7 @@ Vanaf 2.12.2-versie [`ApplicationInsightsServiceOptions`](#using-applicationinsi
 
 ### <a name="configuring-a-telemetry-channel"></a>Een telemetrie-kanaal configureren
 
-Het standaard kanaal is `ServerTelemetryChannel` . U kunt deze overschrijven zoals in het volgende voor beeld wordt weer gegeven.
+Het standaard- [telemetrie-kanaal](./telemetry-channels.md) is `ServerTelemetryChannel` . U kunt deze overschrijven zoals in het volgende voor beeld wordt weer gegeven.
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -398,7 +398,7 @@ public class HomeController : Controller
     }
 ```
 
-Voor meer informatie over aangepaste gegevens rapportage in Application Insights raadpleegt u Application Insights data API-naslag informatie voor [aangepaste metrieken](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics/).
+Voor meer informatie over aangepaste gegevens rapportage in Application Insights raadpleegt u Application Insights data API-naslag informatie voor [aangepaste metrieken](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics/). Een soort gelijke benadering kan worden gebruikt voor het verzenden van aangepaste metrische gegevens naar Application Insights met behulp van de [GetMetric-API](./get-metric.md).
 
 ### <a name="some-visual-studio-templates-used-the-useapplicationinsights-extension-method-on-iwebhostbuilder-to-enable-application-insights-is-this-usage-still-valid"></a>Sommige Visual Studio-sjablonen hebben de uitbreidings methode UseApplicationInsights () gebruikt op IWebHostBuilder om Application Insights in te scha kelen. Is dit gebruik nog geldig?
 

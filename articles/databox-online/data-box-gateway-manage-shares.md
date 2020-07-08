@@ -8,11 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 5ca8f5d629a110d2a4d3b35cb357af2c723ec312
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2b26016ec67f0eecd785e3bfb951fe5fd607545
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339192"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079141"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>De Azure Portal gebruiken om shares te beheren in uw Azure Data Box Gateway 
 
@@ -91,23 +92,23 @@ Met de functie Vernieuwen kunt u de inhoud van een on-premises share vernieuwen.
 
 Voer in de Azure Portal de volgende stappen uit om een share te vernieuwen.
 
-1.   Ga in de Azure Portal naar **Shares**. Klik op de share die u wilt vernieuwen.
+1. Ga in de Azure Portal naar **Shares**. Klik op de share die u wilt vernieuwen.
 
-    ![Share selecteren](media/data-box-gateway-manage-shares/refresh-1.png)
+   ![Share selecteren](media/data-box-gateway-manage-shares/refresh-1.png)
 
-2.   Klik op **Vernieuwen**. 
+2. Klik op **Vernieuwen**. 
 
-    ![Op Vernieuwen klikken](media/data-box-gateway-manage-shares/refresh-2.png)
+   ![Op Vernieuwen klikken](media/data-box-gateway-manage-shares/refresh-2.png)
  
-3.   Klik op **Ja** als u om bevestiging wordt gevraagd. Er wordt een taak gestart om de inhoud van de on-premises share te vernieuwen. 
+3. Klik op **Ja** als u om bevestiging wordt gevraagd. Er wordt een taak gestart om de inhoud van de on-premises share te vernieuwen. 
 
-    ![Vernieuwen bevestigen](media/data-box-gateway-manage-shares/refresh-3.png)
+   ![Vernieuwen bevestigen](media/data-box-gateway-manage-shares/refresh-3.png)
  
 4.   Terwijl het vernieuwen wordt uitgevoerd, is de optie Vernieuwen niet beschikbaar in het contextmenu. Klik op de taakmelding om de status van de vernieuwingstaak weer te geven.
 
-5.   Hoe lang de vernieuwing duurt is afhankelijk van het aantal bestanden in de Azure-container en van het aantal bestanden op het apparaat. Zodra het vernieuwen is voltooid, wordt het tijdstempel van de share bijgewerkt. Zelfs als de vernieuwing niet geheel zonder fouten is uitgevoerd, wordt de bewerking als voltooid beschouwd en wordt het tijdstempel bijgewerkt. 
+5. Hoe lang de vernieuwing duurt is afhankelijk van het aantal bestanden in de Azure-container en van het aantal bestanden op het apparaat. Zodra het vernieuwen is voltooid, wordt het tijdstempel van de share bijgewerkt. Zelfs als de vernieuwing niet geheel zonder fouten is uitgevoerd, wordt de bewerking als voltooid beschouwd en wordt het tijdstempel bijgewerkt. 
 
-    ![Bijgewerkt tijdstempel](media/data-box-gateway-manage-shares/refresh-4.png)
+   ![Bijgewerkt tijdstempel](media/data-box-gateway-manage-shares/refresh-4.png)
  
 Als er een fout optreedt, wordt er een waarschuwing gegenereerd. De waarschuwing bevat meer informatie over de oorzaak en een aanbeveling om het probleem te verhelpen. De waarschuwing bevat ook een koppeling naar een bestand dat een volledig overzicht bevat van de fouten en van de bestanden die niet zijn bijgewerkt of verwijderd.
 

@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 315974e4995630eb3af055ac0e1c44f7d8dd0737
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bce1616ce0c7f7e42810a551acb2f02165ccf93
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918237"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078626"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Kan geen extern bureau blad naar een virtuele machine, omdat de netwerk interface is uitgeschakeld
 
@@ -39,21 +40,29 @@ Als u de interface voor de virtuele machine wilt inschakelen, gebruikt u serieel
 ). Als de seriële console niet op uw virtuele machine is ingeschakeld, raadpleegt u de [netwerk interface opnieuw instellen](#reset-network-interface).
 2. Controleer de status van de netwerk interface:
 
-        netsh interface show interface
+    ```console
+    netsh interface show interface
+    ```
 
     Noteer de naam van de uitgeschakelde netwerk interface.
 
 3. De netwerk interface inschakelen:
 
-        netsh interface set interface name="interface Name" admin=enabled
+    ```console
+    netsh interface set interface name="interface Name" admin=enabled
+    ```
 
     Als de interwerk-interface bijvoorbeeld ' Ethernet 2 ' heet, voert u de volgende opdracht uit:
 
-        netsh interface set interface name="Ethernet 2" admin=enabled
+    ```console
+    netsh interface set interface name="Ethernet 2" admin=enabled
+    ```
 
 4.  Controleer de status van de netwerk interface opnieuw om er zeker van te zijn dat de netwerk interface is ingeschakeld.
 
-        netsh interface show interface
+    ```console
+    netsh interface show interface
+    ```
 
     U hoeft de virtuele machine op dit moment niet opnieuw op te starten. De virtuele machine is terug bereikbaar.
 

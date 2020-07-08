@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: e2a2f6abfd6b7c644e95649f3c9832e4cc986037
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8585779a263f4ff5dbdd998bbf065c6a4e1acdf
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82188443"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079255"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Problemen met script acties in azure HDInsight oplossen
 
@@ -55,7 +55,9 @@ Als het maken van een cluster mislukt vanwege een script fout, worden de logboek
 
 * Alle **stdout** en **stderr** van de bijbehorende host worden geüpload naar het opslag account. Er zijn één **uitvoer- \* . txt** en **fouten- \* . txt** voor elke script actie. Het **output-*. txt** -bestand bevat informatie over de URI van het script dat op de host is uitgevoerd. De volgende tekst is een voor beeld van deze informatie:
 
-        'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
+    ```output
+    'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
+    ```
 
 * Het is mogelijk dat u herhaaldelijk een script actie cluster met dezelfde naam maakt. In dat geval kunt u de relevante logboeken onderscheiden op basis van de naam van de map **date** . De mapstructuur voor een cluster, **mycluster**, die op verschillende datums wordt gemaakt, lijkt bijvoorbeeld op de volgende logboek vermeldingen:
 

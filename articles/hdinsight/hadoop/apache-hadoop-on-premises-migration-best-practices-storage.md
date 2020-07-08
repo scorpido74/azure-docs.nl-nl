@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: f19d4adad675cdf95f59aca0f752f46211b75e8f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0394a7db6776e00ea031a2f40ab4de01540982a6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80436924"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080207"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>On-premises Apache Hadoop clusters migreren naar Azure HDInsight
 
@@ -33,7 +33,7 @@ Azure Storage kunnen geo-replicatie zijn. Hoewel geo-replicatie geografisch hers
 
 Een van de volgende indelingen kan worden gebruikt om toegang te krijgen tot gegevens die zijn opgeslagen in Azure Storage:
 
-|Data Access-indeling |Beschrijving |
+|Data Access-indeling |Description |
 |---|---|
 |`wasb:///`|Toegang tot standaard opslag met niet-versleutelde communicatie.|
 |`wasbs:///`|Toegang tot de standaard opslag met behulp van gecodeerde communicatie.|
@@ -155,7 +155,7 @@ HDInsight heeft standaard volledige toegang tot de gegevens in de Azure Storage 
 
 1. Open het [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) -bestand en wijzig de volgende waarden:
 
-    |Token eigenschap|Beschrijving|
+    |Token eigenschap|Description|
     |---|---|
     |policy_name|De naam die moet worden gebruikt om het opgeslagen beleid te maken.|
     |storage_account_name|De naam van uw opslagaccount.|

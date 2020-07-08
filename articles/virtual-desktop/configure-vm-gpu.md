@@ -7,11 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 96881154a368da15d703b43ba2ffe5d6dd034bd3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7a26b6a622368fe9601ea3b6555386b6a121540
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213258"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081091"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>GPU-versnelling (graphics processing unit) configureren voor virtuele Windows-Bureau bladen
 
@@ -59,22 +60,36 @@ Apps en Desk tops die worden uitgevoerd in configuraties met meerdere sessies wo
 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>GPU-versnelde frame codering configureren
 
-Extern bureaublad codeert alle afbeeldingen die worden weer gegeven door apps en Desk tops (ongeacht of deze zijn gerenderd met GPU of met CPU) voor verzen ding naar Extern bureaublad-clients. Extern bureaublad maakt standaard geen gebruik van beschik bare Gpu's voor deze code ring. Configureer groepsbeleid voor de sessiehost om GPU-versnelde frame codering in te scha kelen. De bovenstaande stappen worden voortgezet:
+Extern bureaublad codeert alle afbeeldingen die worden weer gegeven door apps en Desk tops (ongeacht of deze zijn gerenderd met GPU of met CPU) voor verzen ding naar Extern bureaublad-clients. Wanneer een deel van het scherm regel matig wordt bijgewerkt, wordt dit deel van het scherm gecodeerd met een videocodec (H. 264/AVC). Extern bureaublad maakt standaard geen gebruik van beschik bare Gpu's voor deze code ring. Configureer groepsbeleid voor de sessiehost om GPU-versnelde frame codering in te scha kelen. De bovenstaande stappen worden voortgezet:
+ 
+>[!NOTE]
+>GPU-versneld frame codering is niet beschikbaar in virtuele machines uit de NVv4-serie.
 
-1. Selecteer beleid **prioriteit van H. 264/avc 444 grafische modus voor extern bureaublad verbindingen** en stel dit beleid in op **ingeschakeld** om de H. 264/AVC 444-codec in de externe sessie af te dwingen.
-2. Selecteer beleid **configureren H. 264/AVC-hardwarematige versleuteling voor extern bureaublad verbindingen** en stel dit beleid in op **ingeschakeld** om hardwarematige code ring in te scha kelen voor AVC/H. 264 in de externe sessie.
+1. Selecteer beleid **configureren H. 264/AVC-hardwarematige versleuteling voor extern bureaublad verbindingen** en stel dit beleid in op **ingeschakeld** om hardwarematige code ring in te scha kelen voor AVC/H. 264 in de externe sessie.
 
     >[!NOTE]
     >Stel in Windows Server 2016 voor keur voor de optie voor **AVC-hardwarematige code ring** in op **altijd poging**.
 
-3. Nu het groeps beleid is bewerkt, dwingt u een update van groeps beleid af. Open de opdracht prompt en typ het volgende:
+2. Nu het groeps beleid is bewerkt, dwingt u een update van groeps beleid af. Open de opdracht prompt en typ het volgende:
 
     ```batch
     gpupdate.exe /force
     ```
 
-4. Meld u af bij de Extern bureaublad-sessie.
+3. Meld u af bij de Extern bureaublad-sessie.
 
+## <a name="configure-fullscreen-video-encoding"></a>Video codering op volledig scherm configureren
+
+Als u vaak toepassingen gebruikt die een hoogwaardige inhouds opleveren, zoals 3D-modellen, CAD/CAM-en video toepassingen, kunt u ervoor kiezen om een inkomende video codering in te scha kelen voor een externe sessie. Het video profiel volledig scherm biedt een hogere frame snelheid en een betere gebruikers ervaring voor dergelijke toepassingen op kosten van netwerk bandbreedte en zowel sessie-host-en client bronnen. Het is raadzaam GPU-versnelde frame codering te gebruiken voor een video codering met een volledig scherm. Configureer groepsbeleid voor de sessiehost voor het inschakelen van de video codering op volledig scherm. De bovenstaande stappen worden voortgezet:
+
+1. Selecteer beleid **prioriteit van H. 264/avc 444 grafische modus voor extern bureaublad verbindingen** en stel dit beleid in op **ingeschakeld** om de H. 264/AVC 444-codec in de externe sessie af te dwingen.
+2. Nu het groeps beleid is bewerkt, dwingt u een update van groeps beleid af. Open de opdracht prompt en typ het volgende:
+
+    ```batch
+    gpupdate.exe /force
+    ```
+
+3. Meld u af bij de Extern bureaublad-sessie.
 ## <a name="verify-gpu-accelerated-app-rendering"></a>Rendering van GPU-versnelde apps controleren
 
 Voer een van de volgende handelingen uit om te controleren of apps de GPU gebruiken voor Rendering:
@@ -89,7 +104,14 @@ Controleren of Extern bureaublad gebruikmaakt van GPU-versneld coderen:
 1. Maak verbinding met het bureau blad van de virtuele machine met behulp van de Windows-client voor virtueel bureau blad.
 2. Start de logboeken en ga naar het volgende knoop punt: **Logboeken toepassingen en services**  >  **micro soft**  >  **Windows**  >  **RemoteDesktopServices-RdpCoreCDV**  >  **operationeel**
 3. Zoek naar gebeurtenis-ID 170 om te bepalen of GPU-versneld coderen wordt gebruikt. Als u ' AVC hardware encoder enabled: 1 ' ziet, wordt GPU-code ring gebruikt.
-4. Zoek naar gebeurtenis-ID 162 om te bepalen of de AVC 444-modus wordt gebruikt. Als u ' AVC available: 1 eerste profiel: 2048 ' ziet, wordt het gebruik van AVC 444 gebruikt.
+
+## <a name="verify-fullscreen-video-encoding"></a>Video codering op volledig scherm controleren
+
+U kunt als volgt controleren of Extern bureaublad gebruikmaakt van de video codering voor volledig scherm:
+
+1. Maak verbinding met het bureau blad van de virtuele machine met behulp van de Windows-client voor virtueel bureau blad.
+2. Start de logboeken en ga naar het volgende knoop punt: **Logboeken toepassingen en services**  >  **micro soft**  >  **Windows**  >  **RemoteDesktopServices-RdpCoreCDV**  >  **operationeel**
+3. Zoek naar gebeurtenis-ID 162 om te bepalen of de fullscreen video-code ring wordt gebruikt. Als u ' AVC available: 1 eerste profiel: 2048 ' ziet, wordt het gebruik van AVC 444 gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -5,13 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/23/2019
-ms.openlocfilehash: 43875b87d26f144b85454077fd3c044c820132bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e724e6336163a092c9b4385324b1aa037295bb6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75494982"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081754"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Verbeter de prestaties van Apache Spark werk belastingen met behulp van de Azure HDInsight IO-cache
 
@@ -46,7 +47,7 @@ De Azure HDInsight IO-cache is standaard uitgeschakeld in de preview-versie. I/o
 > [!NOTE]  
 > Hoewel de voortgangs balk geactiveerd wordt weer gegeven, wordt de i/o-cache niet daad werkelijk ingeschakeld totdat u de andere betrokken services opnieuw opstart.
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
   
 Er kunnen schijf ruimte fouten optreden bij het uitvoeren van Spark-taken na het inschakelen van i/o-cache. Deze fouten treden op omdat Spark ook gebruikmaakt van lokale schijf opslag voor het opslaan van gegevens tijdens het volg orde van bewerkingen. Spark kan geen SSD-ruimte meer gebruiken nadat de i/o-cache is ingeschakeld en de ruimte voor Spark-opslag is beperkt. De hoeveelheid ruimte die wordt gebruikt door de i/o-cache is standaard de helft van de totale SSD-ruimte. Het schijfruimte gebruik voor de i/o-cache kan worden geconfigureerd in Ambari. Als u schijf ruimte fouten krijgt, vermindert u de hoeveelheid SSD-ruimte die wordt gebruikt voor de i/o-cache en start u de service opnieuw. Voer de volgende stappen uit om de ingestelde ruimte voor de i/o-cache te wijzigen:
 

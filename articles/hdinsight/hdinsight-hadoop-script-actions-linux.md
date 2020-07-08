@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: db37a56ffbf0cb64530f8f7af38841bac72c77d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08354e212b8ca3cae642b599f25ed318e79f581c
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767552"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082247"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Ontwikkeling van script acties met HDInsight
 
@@ -60,7 +60,7 @@ Voor verschillende versies van HDInsight zijn verschillende versies van Hadoop-S
 
 Verschillende versies van HDInsight zijn afhankelijk van specifieke versies van Ubuntu. Er zijn mogelijk verschillen tussen versies van het besturings systeem die u moet controleren in uw script. Het is bijvoorbeeld mogelijk dat u een binair element moet installeren dat is gekoppeld aan de versie van Ubuntu.
 
-Gebruik `lsb_release`om de versie van het besturings systeem te controleren. Het volgende script laat bijvoorbeeld zien hoe u kunt verwijzen naar een specifiek tar-bestand, afhankelijk van de versie van het besturings systeem:
+Gebruik om de versie van het besturings systeem te controleren `lsb_release` . Het volgende script laat bijvoorbeeld zien hoe u kunt verwijzen naar een specifiek tar-bestand, afhankelijk van de versie van het besturings systeem:
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -77,7 +77,7 @@ fi
 
 HDInsight is gebaseerd op de Ubuntu Linux-distributie. Verschillende versies van HDInsight zijn afhankelijk van verschillende versies van Ubuntu, die kunnen veranderen hoe uw script zich gedraagt. HDInsight 3,4 en eerder zijn bijvoorbeeld gebaseerd op Ubuntu-versies die gebruikmaken van upstart. Versie 3,5 en hoger zijn gebaseerd op Ubuntu 16,04, dat gebruikmaakt van gesystemed. Systeem-en Upstarts zijn afhankelijk van verschillende opdrachten, zodat uw script moet worden geschreven om te werken met beide.
 
-Een ander belang rijk verschil tussen HDInsight 3,4 en 3,5 `JAVA_HOME` is dat nu naar Java 8 wijst. De volgende code laat zien hoe u kunt bepalen of het script wordt uitgevoerd op Ubuntu 14 of 16:
+Een ander belang rijk verschil tussen HDInsight 3,4 en 3,5 is dat `JAVA_HOME` nu naar Java 8 wijst. De volgende code laat zien hoe u kunt bepalen of het script wordt uitgevoerd op Ubuntu 14 of 16:
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -108,7 +108,7 @@ elif [[ $OS_VERSION == 16* ]]; then
 fi
 ```
 
-U kunt het volledige script vinden dat deze fragmenten bevat op https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh.
+U kunt het volledige script vinden dat deze fragmenten bevat op https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh .
 
 Voor de versie van Ubuntu die door HDInsight wordt gebruikt, raadpleegt u het versie document van [HDInsight-onderdelen](hdinsight-component-versioning.md) .
 
@@ -123,7 +123,7 @@ Het best practice is om alles in een Azure Storage account in uw abonnement te d
 > [!IMPORTANT]  
 > Het gebruikte opslag account moet het standaard opslag account voor het cluster of een open bare, alleen-lezen container op een ander opslag account zijn.
 
-De voor beelden die door micro soft worden verschaft, worden bijvoorbeeld [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) opgeslagen in het opslag account. Deze locatie is een open bare, alleen-lezen container die wordt onderhouden door het HDInsight-team.
+De voor beelden die door micro soft worden verschaft, worden bijvoorbeeld opgeslagen in het [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) opslag account. Deze locatie is een open bare, alleen-lezen container die wordt onderhouden door het HDInsight-team.
 
 ### <a name="use-pre-compiled-resources"></a><a name="bPS4"></a>Vooraf gecompileerde resources gebruiken
 
@@ -152,7 +152,7 @@ Voor de meeste bewerkingen hoeft u het bestands systeem niet op te geven. In het
 hdfs dfs -put /usr/hdp/current/hadoop-client/hadoop-common.jar /example/jars/
 ```
 
-In dit voor beeld gebruikt `hdfs` de opdracht de standaard cluster opslag op transparante wijze. Voor sommige bewerkingen moet u mogelijk de URI opgeven. Bijvoorbeeld `adl:///example/jars` voor Azure data Lake Storage gen1, `abfs:///example/jars` voor data Lake Storage Gen2 of `wasb:///example/jars` voor Azure Storage.
+In dit voor beeld `hdfs` gebruikt de opdracht de standaard cluster opslag op transparante wijze. Voor sommige bewerkingen moet u mogelijk de URI opgeven. Bijvoorbeeld `adl:///example/jars` voor Azure data Lake Storage gen1, `abfs:///example/jars` voor data Lake Storage Gen2 of `wasb:///example/jars` voor Azure Storage.
 
 ### <a name="write-information-to-stdout-and-stderr"></a><a name="bPS7"></a>Gegevens schrijven naar STDOUT en STDERR
 
@@ -161,19 +161,19 @@ HDInsight registreert script uitvoer die is geschreven naar STDOUT en STDERR. U 
 > [!NOTE]  
 > Apache Ambari is alleen beschikbaar als het cluster is gemaakt. Als u een script actie gebruikt tijdens het maken van het cluster en het maken mislukt, raadpleegt u [script acties oplossen](./troubleshoot-script-action.md) voor andere manieren om toegang te krijgen tot geregistreerde gegevens.
 
-De meeste hulpprogram ma's en installatie pakketten schrijven al informatie naar STDOUT en STDERR, maar u wilt mogelijk extra logboek registratie toevoegen. Als u tekst wilt verzenden naar STDOUT `echo`, gebruikt u. Bijvoorbeeld:
+De meeste hulpprogram ma's en installatie pakketten schrijven al informatie naar STDOUT en STDERR, maar u wilt mogelijk extra logboek registratie toevoegen. Als u tekst wilt verzenden naar STDOUT, gebruikt u `echo` . Bijvoorbeeld:
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-De teken reeks `echo` wordt standaard verzonden naar stdout. Voeg `>&2` vóór `echo`toe om het naar stderr te sturen. Bijvoorbeeld:
+`echo`De teken reeks wordt standaard verzonden naar stdout. Voeg vóór toe om het naar STDERR te sturen `>&2` `echo` . Bijvoorbeeld:
 
 ```bash
 >&2 echo "An error occurred installing Foo"
 ```
 
-Hiermee wordt informatie die naar STDOUT is geschreven, omgeleid naar STDERR (2). Zie [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html)voor meer informatie over i/o-omleiding.
+Hiermee wordt informatie die naar STDOUT is geschreven, omgeleid naar STDERR (2). Zie voor meer informatie over i/o-omleiding [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html) .
 
 Zie [problemen met script acties oplossen](./troubleshoot-script-action.md)voor meer informatie over het weer geven van gegevens die zijn geregistreerd door script acties.
 
@@ -235,10 +235,10 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 De volgende helpers die beschikbaar zijn voor gebruik in uw script:
 
-| Help-gebruik | Beschrijving |
+| Help-gebruik | Description |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Hiermee wordt een bestand gedownload van de bron-URI naar het opgegeven bestandspad. Standaard wordt een bestaand bestand niet overschreven. |
-| `untar_file TARFILE DESTDIR` |Hiermee wordt een tar-bestand ( `-xf`met) uitgepakt naar de doelmap. |
+| `untar_file TARFILE DESTDIR` |Hiermee wordt een tar-bestand (met) uitgepakt `-xf` naar de doelmap. |
 | `test_is_headnode` |Als deze wordt uitgevoerd op een hoofd knooppunt van het cluster, retour neren 1; in andere gevallen, 0. |
 | `test_is_datanode` |Als het huidige knoop punt een Data (worker)-knoop punt is, retourneert een 1; in andere gevallen, 0. |
 | `test_is_first_datanode` |Als het huidige knoop punt het eerste gegevens knooppunt (worker) (met de naam workernode0) is, retourneert een 1; in andere gevallen, 0. |
@@ -264,15 +264,19 @@ Waarden die worden door gegeven aan het script als para meters moeten tussen enk
 
 Het instellen van een omgevings variabele wordt uitgevoerd met de volgende instructie:
 
-    VARIABLENAME=value
+```bash
+VARIABLENAME=value
+```
 
-Waarbij VARIABLEnaam de naam van de variabele is. Gebruik `$VARIABLENAME`om toegang te krijgen tot de variabele. Als u bijvoorbeeld een waarde wilt toewijzen die wordt opgegeven door een positionele para meter als een omgevings variabele met de naam wacht woord, gebruikt u de volgende instructie:
+Waarbij VARIABLEnaam de naam van de variabele is. Gebruik om toegang te krijgen tot de variabele `$VARIABLENAME` . Als u bijvoorbeeld een waarde wilt toewijzen die wordt opgegeven door een positionele para meter als een omgevings variabele met de naam wacht woord, gebruikt u de volgende instructie:
 
-    PASSWORD=$1
+```bash
+PASSWORD=$1
+```
 
-Volgende toegang tot de informatie kan vervolgens worden `$PASSWORD`gebruikt.
+Volgende toegang tot de informatie kan vervolgens worden gebruikt `$PASSWORD` .
 
-Omgevings variabelen die in het script zijn ingesteld, bestaan alleen binnen het bereik van het script. In sommige gevallen moet u mogelijk omgevings variabelen voor het hele systeem toevoegen die blijven bestaan nadat het script is voltooid. Als u omgevings variabelen voor het hele systeem wilt toevoegen, `/etc/environment`voegt u de variabele toe aan. De volgende instructie voegt `HADOOP_CONF_DIR`bijvoorbeeld:
+Omgevings variabelen die in het script zijn ingesteld, bestaan alleen binnen het bereik van het script. In sommige gevallen moet u mogelijk omgevings variabelen voor het hele systeem toevoegen die blijven bestaan nadat het script is voltooid. Als u omgevings variabelen voor het hele systeem wilt toevoegen, voegt u de variabele toe aan `/etc/environment` . De volgende instructie voegt bijvoorbeeld `HADOOP_CONF_DIR` :
 
 ```bash
 echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
@@ -298,7 +302,7 @@ Resources die worden gebruikt door het script, moeten ook openbaar beschikbaar z
 Het opslaan van bestanden in een Azure Storage account of Azure Data Lake Storage biedt snelle toegang, zowel binnen het Azure-netwerk.
 
 > [!NOTE]  
-> De URI-indeling die wordt gebruikt om te verwijzen naar het script verschilt, afhankelijk van de service die wordt gebruikt. Gebruik `wasb://` of `wasbs://`voor opslag accounts die zijn gekoppeld aan het HDInsight-cluster. Gebruik `http://` of `https://`voor openbaar Lees bare uri's. Gebruik `adl://`voor data Lake Storage.
+> De URI-indeling die wordt gebruikt om te verwijzen naar het script verschilt, afhankelijk van de service die wordt gebruikt. Gebruik of voor opslag accounts die zijn gekoppeld aan het HDInsight-cluster `wasb://` `wasbs://` . Gebruik of voor openbaar Lees bare `http://` uri's `https://` . Gebruik voor Data Lake Storage `adl://` .
 
 ## <a name="checklist-for-deploying-a-script-action"></a><a name="deployScript"></a>Controle lijst voor het implementeren van een script actie
 
@@ -324,11 +328,11 @@ Zie [How to use script Action](hdinsight-hadoop-customize-cluster-linux.md)(Enge
 
 Micro soft biedt voorbeeld scripts voor het installeren van onderdelen in een HDInsight-cluster. Zie [kleur Toon op HDInsight-clusters installeren en gebruiken](hdinsight-hadoop-hue-linux.md) als een voorbeeld script actie.
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 
 Hieronder vindt u fouten die kunnen optreden bij het gebruik van scripts die u hebt ontwikkeld:
 
-**Fout**: `$'\r': command not found`. Soms gevolgd door `syntax error: unexpected end of file`.
+**Fout**: `$'\r': command not found` . Soms gevolgd door `syntax error: unexpected end of file` .
 
 *Oorzaak*: deze fout wordt veroorzaakt wanneer de regels in een script EINDIGEN met CRLF. UNIX-systemen verwachten alleen LF als de regel eindigt.
 
@@ -346,15 +350,17 @@ Dit probleem treedt meestal op wanneer het script wordt gemaakt in een Windows-o
 | `perl -pi -e 's/\r\n/\n/g' INFILE` | Hiermee wordt het bestand rechtstreeks gewijzigd |
 | ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |Out-bestand bevat een versie met alleen LF-einden. |
 
-**Fout**: `line 1: #!/usr/bin/env: No such file or directory`.
+**Fout**: `line 1: #!/usr/bin/env: No such file or directory` .
 
 *Oorzaak*: deze fout treedt op wanneer het script is opgeslagen als UTF-8 met een byte order Mark (bom).
 
 *Oplossing*: Sla het bestand op als ASCII of als UTF-8 zonder een stuk lijst. U kunt ook de volgende opdracht op een Linux-of UNIX-systeem gebruiken om een bestand te maken zonder de stuk lijst:
 
-    awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
+```bash
+awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
+```
 
-Vervang `INFILE` door het bestand dat de stuk lijst bevat. `OUTFILE`moet een nieuwe bestands naam zijn die het script bevat zonder de stuk lijst.
+Vervang door `INFILE` het bestand dat de stuk lijst bevat. `OUTFILE`moet een nieuwe bestands naam zijn die het script bevat zonder de stuk lijst.
 
 ## <a name="next-steps"></a><a name="seeAlso"></a>Volgende stappen
 

@@ -13,11 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/27/2020
-ms.openlocfilehash: 1ad7dc2452cdc2756413db1a07da74e2a1dc3fcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a4f26b11911caaa7bce40b77570331b492ceb9d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344625"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080173"
 ---
 # <a name="what-is-azure-sql"></a>Wat is Azure SQL? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -58,7 +59,7 @@ Azure bewaakt uw gegevens voortdurend op bedreigingen. Met Azure SQL kunt u het 
 Er zijn verschillende factoren die van invloed kunnen zijn op uw beslissing om te kiezen tussen de verschillende gegevens aanbiedingen:
 
 - [Kosten](#cost): zowel de Paas-als de IaaS-optie zijn basis prijs die betrekking heeft op de onderliggende infra structuur en licenties. Met de optie IaaS moet u echter extra tijd en resources investeren om uw data base te beheren, terwijl u in PaaS deze beheer functies in de prijs hebt opgenomen. Met IaaS kunt u resources afsluiten terwijl u ze niet gebruikt om de kosten te verlagen, terwijl PaaS altijd wordt uitgevoerd, tenzij u uw resources verwijdert en opnieuw maakt wanneer dat nodig is.
-- [Beheer](#administration): PaaS opties verminderen de hoeveelheid tijd die u moet investeren om de data base te beheren. Het kan echter ook het bereik van aangepaste beheer taken en scripts beperken dat u kunt uitvoeren of uitvoeren. De CLR wordt bijvoorbeeld niet ondersteund met één of gegroepeerde Data Base, maar wordt wel ondersteund voor een exemplaar van een SQL-beheerd exemplaar. Daarnaast bieden geen implementatie opties in PaaS ondersteuning voor het gebruik van tracerings vlaggen.
+- [Beheer](#administration): PaaS opties verminderen de hoeveelheid tijd die u moet investeren om de data base te beheren. Het kan echter ook het bereik van aangepaste beheer taken en scripts beperken dat u kunt uitvoeren of uitvoeren. De CLR wordt bijvoorbeeld niet ondersteund met SQL Database, maar wordt wel ondersteund voor een exemplaar van SQL Managed instance. Daarnaast bieden geen implementatie opties in PaaS ondersteuning voor het gebruik van tracerings vlaggen.
 - [Service overeenkomst](#service-level-agreement-sla): zowel IaaS als PaaS bieden een hoge, industrie standaard sla. De PaaS-optie garandeert een SLA van 99,99%, terwijl IaaS 99,95% SLA voor infra structuur garandeert, wat betekent dat u extra mechanismen moet implementeren om de beschik baarheid van uw data bases te garanderen. U kunt 99,99% SLA bereiken door een extra virtuele SQL-machine te maken en de oplossing voor de hoge Beschik baarheid van de SQL Server-groep altijd te implementeren. 
 - [Tijd om over te stappen op Azure](#market): SQL Server op de virtuele machine van Azure is het exacte resultaat van uw omgeving, dus migratie van on-premises naar de Azure-VM is niet anders dan het verplaatsen van de data bases van een lokale server naar een andere. Met SQL Managed Instance kunt u ook eenvoudige migratie; Er zijn echter enkele wijzigingen die u moet Toep assen vóór de migratie. 
 

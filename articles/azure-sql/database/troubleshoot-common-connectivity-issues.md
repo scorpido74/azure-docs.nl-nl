@@ -12,11 +12,12 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: b7cf4ab817f222f3a36a047e1e4d379f5bd6b73e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acc61cefbc9d89f11eae5b6549add57871035ddb
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668403"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078966"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>Tijdelijke verbindings fouten in SQL Database en SQL Managed instance oplossen
 
@@ -104,7 +105,7 @@ Als u deze test praktisch wilt uitvoeren, koppelt u uw computer los van het netw
 - Onderbreek verdere uitvoering met behulp van de methode **console. readline** of een dialoog venster met een knop OK. De gebruiker drukt op ENTER wanneer de computer is aangesloten op het netwerk.
 - Probeer het opnieuw om verbinding te maken. dit wordt verwacht.
 
-#### <a name="test-by-misspelling-the-database-name-when-connecting"></a>Testen door de naam van de data base tijdens het verbinden te controleren
+#### <a name="test-by-misspelling-the-user-name-when-connecting"></a>Testen door de gebruikers naam foutief te spellen tijdens het verbinden
 
 Het programma kan de gebruikers naam voor de eerste verbindings poging het meest misbruiken. De fout is:
 

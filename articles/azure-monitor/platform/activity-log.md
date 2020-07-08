@@ -7,17 +7,20 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 1b834f6222885ea9c5930081738a80be28f9c545
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 77946694253ff0c1c6953d0b20836d3cb6733801
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84947047"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082298"
 ---
 # <a name="azure-activity-log"></a>Azure-activiteiten logboek
 Het activiteiten logboek is een [platform logboek](platform-logs-overview.md) in azure dat inzicht biedt in gebeurtenissen op abonnements niveau. Dit geldt ook voor gegevens zoals wanneer een resource wordt gewijzigd of wanneer een virtuele machine wordt gestart. U kunt het activiteiten logboek weer geven in de Azure Portal of items ophalen met Power shell en CLI. Voor aanvullende functionaliteit moet u een diagnostische instelling maken om het activiteiten logboek naar [Azure monitor logboeken](data-platform-logs.md)te verzenden naar Azure Event hubs om buiten Azure door te sturen, of om Azure Storage te archiveren. In dit artikel vindt u informatie over het weer geven van het activiteiten logboek en het verzenden ervan naar verschillende bestemmingen.
 
 Zie [Diagnostische instellingen maken om platform logboeken en metrische gegevens naar verschillende bestemmingen te verzenden](diagnostic-settings.md) voor meer informatie over het maken van een diagnostische instelling.
+
+> [!NOTE]
+> Vermeldingen in het activiteiten logboek worden door het systeem gegenereerd en kunnen niet worden gewijzigd of verwijderd.
 
 ## <a name="view-the-activity-log"></a>Het activiteiten logboek weer geven
 U kunt het activiteiten logboek openen vanuit de meeste menu's in de Azure Portal. Het menu waarmee u het opent, bepaalt het eerste filter. Als u het opent vanuit het menu **monitor** , wordt het enige filter voor het abonnement. Als u het opent vanuit het menu van een resource, wordt het filter ingesteld op die resource. U kunt het filter altijd wijzigen om alle andere vermeldingen weer te geven. Klik op **filter toevoegen** om extra eigenschappen toe te voegen aan het filter.
@@ -63,14 +66,14 @@ Als u bijvoorbeeld een aantal records in het activiteiten logboek voor elke cate
 
 ```kusto
 AzureActivity
-| summarize count() by CategoryValue
+| summarize count() by Category
 ```
 
 Gebruik de volgende query om alle records in de beheer categorie op te halen.
 
 ```kusto
 AzureActivity
-| where CategoryValue == "Administrative"
+| where Category == "Administrative"
 ```
 
 

@@ -3,12 +3,12 @@ title: Beleids definities voor gast configuratie maken van groepsbeleid basis li
 description: Meer informatie over het converteren van groepsbeleid van de Windows Server 2019-beveiligings basislijn naar een beleids definitie.
 ms.date: 06/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 021e8cc4aa34a21f980363e71de1a4b9afbf3ec9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bbb634ed55acf8aa994045fbef6569fae031c841
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85269009"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080666"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Beleids definities voor gast configuratie maken van groepsbeleid basis lijn voor Windows
 
@@ -92,7 +92,7 @@ De volgende stap is het publiceren van het bestand naar de Blob-opslag.
 1. Het onderstaande script bevat een functie die u kunt gebruiken om deze taak te automatiseren. Opmerking: voor de opdrachten die in de functie worden gebruikt, `publish` is de `Az.Storage` module vereist.
 
    ```azurepowershell-interactive
-    function publish {
+    function Publish-Configuration {
         param(
         [Parameter(Mandatory=$true)]
         $resourceGroup,
@@ -147,25 +147,29 @@ De volgende stap is het publiceren van het bestand naar de Blob-opslag.
 
 1. Gebruik de functie Publish met de toegewezen para meters voor het publiceren van het gast configuratie pakket naar open bare Blob-opslag.
 
-   ```azurepowershell-interactive
-   $uri = publish `
-    -resourceGroup $resourceGroup `
-    -storageAccountName $storageAccount `
-    -storageContainerName $storageContainer `
-    -filePath $path `
-    -blobName $blob
-    -FullUri
-    ```
 
+   ```azurepowershell-interactive
+   $PublishConfigurationSplat = @{
+       resourceGroup = $resourceGroup
+       storageAccountName = $storageAccount
+       storageContainerName = $storageContainer
+       filePath = $path
+       blobName = $blob
+       FullUri = $true
+   }
+   $uri = Publish-Configuration @PublishConfigurationSplat
+    ```
 1. Nadat een aangepast beleids pakket voor de gast configuratie is gemaakt en geüpload, maakt u de beleids definitie voor het gast configuratie beleid. Gebruik de `New-GuestConfigurationPolicy` cmdlet om de gast configuratie te maken.
 
    ```azurepowershell-interactive
-   New-GuestConfigurationPolicy `
-    -ContentUri $Uri `
-    -DisplayName 'Server 2019 Configuration Baseline' `
-    -Description 'Validation of using a completely custom baseline configuration for Windows VMs' `
-    -Path C:\git\policyfiles\policy  `
-    -Platform Windows 
+    $NewGuestConfigurationPolicySplat = @{
+        ContentUri = $Uri 
+        DisplayName = 'Server 2019 Configuration Baseline' 
+        Description 'Validation of using a completely custom baseline configuration for Windows VMs' 
+        Path = 'C:\git\policyfiles\policy'  
+        Platform = Windows 
+        }
+   New-GuestConfigurationPolicy @NewGuestConfigurationPolicySplat
    ```
     
 1. Publiceer de beleids definities met de `Publish-GuestConfigurationPolicy` cmdlet. De cmdlet heeft alleen de para meter **Path** die verwijst naar de locatie van de json-bestanden die zijn gemaakt door `New-GuestConfigurationPolicy` . Als u de opdracht publiceren wilt uitvoeren, moet u toegang hebben tot het maken van beleids definities in Azure. De specifieke autorisatie vereisten worden beschreven op de pagina [overzicht van Azure Policy](../overview.md#getting-started) . De beste ingebouwde rol is Inzender voor **resource beleid**.

@@ -3,12 +3,12 @@ title: Problemen met back-ups van Azure-bestands share oplossen
 description: Dit artikel gaat over het oplossen van problemen die optreden bij het beveiligen van uw Azure-bestandsshares.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 15cea28ee6c6a969b56e34242e2631b0aa760331
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d09c89433be17e16ad768e2d28305819146e6b5e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130395"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079884"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Problemen oplossen bij het maken van back-ups van Azure-bestands shares
 
@@ -277,8 +277,6 @@ Fout code: BMSUserErrorObjectLocked
 Fout bericht: er wordt een andere bewerking uitgevoerd voor het geselecteerde item.
 
 Wacht totdat de andere bewerking in uitvoering is voltooid en probeer het later opnieuw.
-
-Uit het bestand: troubleshoot-azure-files.md
 
 ## <a name="common-soft-delete-related-errors"></a>Veelvoorkomende problemen bij zacht verwijderen
 

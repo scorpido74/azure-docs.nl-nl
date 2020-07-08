@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 851c5eb4ebfee4e4a4836a07b51578dd2b0c68cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3e06ff28c7980910636edeb06c5863859120484
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701878"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081567"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Specifieke RDP-foutberichten oplossen naar een virtuele Windows-machine in Azure
 Er wordt mogelijk een specifiek fout bericht weer gegeven wanneer Extern bureaublad verbinding met een virtuele machine van Windows (VM) in azure wordt gebruikt. In dit artikel worden enkele veelvoorkomende fout berichten beschreven, samen met de stappen voor probleem oplossing om deze op te lossen. Als u problemen ondervindt met het maken van verbinding met uw virtuele machine via RDP, maar geen specifiek fout bericht tegen komt, raadpleegt u de [hand leiding voor het oplossen van problemen voor extern bureaublad](troubleshoot-rdp-connection.md).
@@ -39,7 +40,9 @@ Oorzaak: de licentie respijt periode van 120 dagen voor de Extern bureaublad ser
 
 U kunt dit probleem verhelpen door een lokale kopie van het RDP-bestand op te slaan vanuit de portal en deze opdracht uit te voeren vanaf een Power shell-opdracht prompt om verbinding te maken. Met deze stap wordt de licentie verlening voor alleen die verbinding uitgeschakeld:
 
-        mstsc <File name>.RDP /admin
+```powershell
+mstsc <File name>.RDP /admin
+```
 
 Als u niet echt meer dan twee gelijktijdige Extern bureaublad verbindingen met de virtuele machine nodig hebt, kunt u Serverbeheer gebruiken om de Extern bureaublad server functie te verwijderen.
 
@@ -54,9 +57,11 @@ Mogelijke oplossingen:
 
 * Als u zich op het intranet van een organisatie bevindt, moet u ervoor zorgen dat de computer toegang heeft tot de proxy server en daar HTTPS-verkeer naar kunnen verzenden.
 * Als u een lokaal opgeslagen RDP-bestand gebruikt, probeert u het te gebruiken dat is gegenereerd door de portal. Met deze stap zorgt u ervoor dat u de juiste DNS-naam voor de virtuele machine of de Cloud service en de eindpunt poort van de VM hebt. Hier volgt een voor beeld van een RDP-bestand dat door de portal wordt gegenereerd:
-  
-        full address:s:tailspin-azdatatier.cloudapp.net:55919
-        prompt for credentials:i:1
+
+    ```output
+    full address:s:tailspin-azdatatier.cloudapp.net:55919
+    prompt for credentials:i:1
+    ```
 
 Het adres gedeelte van dit RDP-bestand heeft:
 

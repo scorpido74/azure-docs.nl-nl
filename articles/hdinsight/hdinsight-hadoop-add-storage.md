@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: d5dde8c45331cf8c443aba86c96ba12c8277472c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44262c30dc49182314fb70dbb814be25c49e9d50
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82192481"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080003"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Extra opslag accounts toevoegen aan HDInsight
 
@@ -133,14 +133,6 @@ Om dit probleem te omzeilen:
 
 > [!IMPORTANT]  
 > Het draaien van de opslag sleutel voor het primaire opslag account dat aan een cluster is gekoppeld, wordt niet ondersteund.
-
-### <a name="poor-performance"></a>Slechte prestaties
-
-Als het opslag account zich in een andere regio bevindt dan het HDInsight-cluster, kan dat leiden tot slechte prestaties. Toegang tot gegevens in een andere regio verzendt netwerk verkeer buiten het regionale Azure-Data Center. En via het open bare Internet, dat latentie kan introduceren.
-
-### <a name="additional-charges"></a>Extra kosten
-
-Als het opslag account zich in een andere regio bevindt dan het HDInsight-cluster, kunt u extra uitgangs kosten in rekening worden gebracht voor uw Azure-facturering. Er wordt een uitgangs kosten toegepast wanneer gegevens een regionaal Data Center verlaten. Deze kosten worden toegepast, zelfs als het verkeer bestemd is voor een ander Azure Data Center in een andere regio.
 
 ## <a name="next-steps"></a>Volgende stappen
 

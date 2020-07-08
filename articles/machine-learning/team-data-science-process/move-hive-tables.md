@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d5e44d6b34a16f03d4ca1f82453f1f6e9f074917
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cce0a927c2ffd69252a22ea4459f789d22721c2
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83860610"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080734"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive-tabellen maken en gegevens laden vanuit Azure Blob Storage
 
@@ -69,7 +70,9 @@ U kunt de opdracht uitvoeren als `hive -e "<your hive query>;` om eenvoudige Hiv
 #### <a name="submit-hive-queries-in-hql-files"></a>Hive-query's in. HQL-bestanden verzenden
 Wanneer de Hive-query ingewik kelder is en meerdere lijnen heeft, is het bewerken van query's in opdracht regel of Hive-opdracht console niet praktisch. U kunt ook een tekst editor gebruiken in het hoofd knooppunt van het Hadoop-cluster om de Hive-query's in een. HQL-bestand op te slaan in een lokale map van het hoofd knooppunt. Vervolgens kan de Hive-query in het bestand '. HQL ' als volgt worden verzonden met behulp van het `-f` argument:
 
-    hive -f "<path to the '.hql' file>"
+```console
+hive -f "<path to the '.hql' file>"
+```
 
 ![Hive-query in een. HQL-bestand](./media/move-hive-tables/run-hive-queries-3.png)
 
@@ -77,8 +80,10 @@ Wanneer de Hive-query ingewik kelder is en meerdere lijnen heeft, is het bewerke
 
 Na het uitvoeren van Hive-query op de Hadoop-opdracht regel wordt de voortgang van de taak toewijzen/verminderen standaard afgedrukt op het scherm. Als u de scherm afdruk van de voortgang van de taak toewijzing/verminderen wilt onderdrukken, kunt u `-S` als volgt een argument ("S" in hoofd letters) op de opdracht regel gebruiken:
 
-    hive -S -f "<path to the '.hql' file>"
-    hive -S -e "<Hive queries>"
+```console
+hive -S -f "<path to the '.hql' file>"
+hive -S -e "<Hive queries>"
+```
 
 #### <a name="submit-hive-queries-in-hive-command-console"></a>Hive-query's in Hive-opdracht console verzenden.
 U kunt ook eerst de Hive-opdracht console invoeren door de opdracht `hive` in Hadoop opdracht regel uit te voeren en vervolgens Hive-query's in Hive-opdracht console te verzenden. Hier volgt een voorbeeld. In dit voor beeld markeren de twee rode vakjes de opdrachten die worden gebruikt om de Hive-opdracht console in te voeren en de Hive-query die respectievelijk in de Hive-opdracht console is ingediend. In het groene vak wordt de uitvoer van de Hive-query gemarkeerd.
@@ -90,7 +95,9 @@ In de vorige voor beelden worden de Hive-query resultaten rechtstreeks op het sc
 **Resultaten van de Hive-query van de uitvoer naar een lokaal bestand.**
 Als u de resultaten van de Hive-query wilt uitvoeren naar een lokale map op het hoofd knooppunt, moet u de Hive-query in de Hadoop-opdracht regel als volgt indienen:
 
-    hive -e "<hive query>" > <local path in the head node>
+```console
+hive -e "<hive query>" > <local path in the head node>
+```
 
 In het volgende voor beeld wordt de uitvoer van Hive-query naar een bestand `hivequeryoutput.txt` in de map geschreven `C:\apps\temp` .
 
@@ -100,7 +107,9 @@ In het volgende voor beeld wordt de uitvoer van Hive-query naar een bestand `hiv
 
 U kunt ook de resultaten van de Hive-query uitvoeren naar een Azure-Blob in de standaard container van het Hadoop-cluster. De Hive-query hiervoor is als volgt:
 
-    insert overwrite directory wasb:///<directory within the default container> <select clause from ...>
+```console
+insert overwrite directory wasb:///<directory within the default container> <select clause from ...>
+```
 
 In het volgende voor beeld wordt de uitvoer van Hive-query geschreven naar een BLOB-map `queryoutputdir` binnen de standaard container van het Hadoop-cluster. Hier hoeft u alleen de naam van de map op te geven, zonder de naam van de blob. Er wordt een fout gegenereerd als u namen van mappen en blobs opgeeft, zoals `wasb:///queryoutputdir/queryoutput.txt` .
 
@@ -121,18 +130,20 @@ De Hive-query's worden gedeeld in de [github-opslag plaats](https://github.com/A
 
 Dit is de Hive-query waarmee een Hive-tabel wordt gemaakt.
 
-    create database if not exists <database name>;
-    CREATE EXTERNAL TABLE if not exists <database name>.<table name>
-    (
-        field1 string,
-        field2 int,
-        field3 float,
-        field4 double,
-        ...,
-        fieldN string
-    )
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' lines terminated by '<line separator>'
-    STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line.count"="1");
+```hiveql
+create database if not exists <database name>;
+CREATE EXTERNAL TABLE if not exists <database name>.<table name>
+(
+    field1 string,
+    field2 int,
+    field3 float,
+    field4 double,
+    ...,
+    fieldN string
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' lines terminated by '<line separator>'
+STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line.count"="1");
+```
 
 Hier volgen de beschrijvingen van de velden die u nodig hebt om in te sluiten en andere configuraties:
 
@@ -146,7 +157,9 @@ Hier volgen de beschrijvingen van de velden die u nodig hebt om in te sluiten en
 ## <a name="load-data-to-hive-tables"></a><a name="load-data"></a>Gegevens laden in Hive-tabellen
 Dit is de Hive-query waarmee gegevens worden geladen in een Hive-tabel.
 
-    LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
+```hiveql
+LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
+```
 
 * **\<path to blob data\>**: Als het blobbestand dat moet worden geüpload naar de Hive-tabel zich in de standaard container van het HDInsight Hadoop-cluster bevindt, *\<path to blob data\>* moet de indeling *' wasb:// \<directory in this container> / \<blob file name> '* zijn. Het blobbestand kan ook een extra container van het HDInsight Hadoop-cluster zijn. In dit geval *\<path to blob data\>* moet de indeling *' wasb:// \<container name> @ \<storage account name> . blob.core.Windows.net/ \<blob file name> '* zijn.
 
@@ -163,69 +176,83 @@ Naast het partitioneren van Hive-tabellen is het ook handig om de Hive-gegevens 
 ### <a name="partitioned-table"></a>Gepartitioneerde tabel
 Hier volgt de Hive-query waarmee een gepartitioneerde tabel wordt gemaakt en er gegevens in worden geladen.
 
-    CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<table name>
-    (field1 string,
-    ...
-    fieldN string
-    )
-    PARTITIONED BY (<partitionfieldname> vartype) ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
-         lines terminated by '<line separator>' TBLPROPERTIES("skip.header.line.count"="1");
-    LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<partitioned table name>
-        PARTITION (<partitionfieldname>=<partitionfieldvalue>);
+```hiveql
+CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<table name>
+(field1 string,
+...
+fieldN string
+)
+PARTITIONED BY (<partitionfieldname> vartype) ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
+    lines terminated by '<line separator>' TBLPROPERTIES("skip.header.line.count"="1");
+LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<partitioned table name>
+    PARTITION (<partitionfieldname>=<partitionfieldvalue>);
+```
 
 Bij het uitvoeren van query's op gepartitioneerde tabellen wordt aanbevolen om de partitie voorwaarde toe te voegen aan het **begin** van de `where` component, waardoor de efficiëntie van de zoek opdracht wordt verbeterd.
 
-    select
-        field1, field2, ..., fieldN
-    from <database name>.<partitioned table name>
-    where <partitionfieldname>=<partitionfieldvalue> and ...;
+```hiveql
+select
+    field1, field2, ..., fieldN
+from <database name>.<partitioned table name>
+where <partitionfieldname>=<partitionfieldvalue> and ...;
+```
 
 ### <a name="store-hive-data-in-orc-format"></a><a name="orc"></a>Hive-gegevens opslaan in de ORC-indeling
 U kunt gegevens niet rechtstreeks laden vanuit Blob-opslag in Hive-tabellen die zijn opgeslagen in de ORC-indeling. Hier volgen de stappen die u moet uitvoeren om gegevens van Azure-blobs te laden naar Hive-tabellen die zijn opgeslagen in de ORC-indeling.
 
 Een externe tabel maken **die is opgeslagen als TEXTFILE** en gegevens uit de Blob-opslag in de tabel laden.
 
-        CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<external textfile table name>
-        (
-            field1 string,
-            field2 int,
-            ...
-            fieldN date
-        )
-        ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
-            lines terminated by '<line separator>' STORED AS TEXTFILE
-            LOCATION 'wasb:///<directory in Azure blob>' TBLPROPERTIES("skip.header.line.count"="1");
+```hiveql
+CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<external textfile table name>
+(
+    field1 string,
+    field2 int,
+    ...
+    fieldN date
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
+    lines terminated by '<line separator>' STORED AS TEXTFILE
+    LOCATION 'wasb:///<directory in Azure blob>' TBLPROPERTIES("skip.header.line.count"="1");
 
-        LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<table name>;
+LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<table name>;
+```
 
 Maak een interne tabel met hetzelfde schema als de externe tabel in stap 1, met hetzelfde veld scheidings teken en sla de Hive-gegevens op in de ORC-indeling.
 
-        CREATE TABLE IF NOT EXISTS <database name>.<ORC table name>
-        (
-            field1 string,
-            field2 int,
-            ...
-            fieldN date
-        )
-        ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' STORED AS ORC;
+```hiveql
+CREATE TABLE IF NOT EXISTS <database name>.<ORC table name>
+(
+    field1 string,
+    field2 int,
+    ...
+    fieldN date
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' STORED AS ORC;
+```
 
 Selecteer gegevens uit de externe tabel in stap 1 en voeg deze in de tabel ORC in
 
-        INSERT OVERWRITE TABLE <database name>.<ORC table name>
-            SELECT * FROM <database name>.<external textfile table name>;
+```hiveql
+INSERT OVERWRITE TABLE <database name>.<ORC table name>
+    SELECT * FROM <database name>.<external textfile table name>;
+```
 
 > [!NOTE]
 > Als de TEXTFILE-tabel * \<database name\> . \<external textfile table name\> * heeft partities. in stap 3 selecteert de `SELECT * FROM <database name>.<external textfile table name>` opdracht de partitie variabele als een veld in de geretourneerde gegevensset. Deze in te voegen in de * \<database name\> . \<ORC table name\> * mislukt sinds * \<database name\> . \<ORC table name\> * heeft niet de partitie variabele als een veld in het tabel schema. In dit geval moet u de velden die u wilt invoegen specifiek selecteren * \<database name\> . \<ORC table name\> * als volgt:
 >
 >
 
-        INSERT OVERWRITE TABLE <database name>.<ORC table name> PARTITION (<partition variable>=<partition value>)
-           SELECT field1, field2, ..., fieldN
-           FROM <database name>.<external textfile table name>
-           WHERE <partition variable>=<partition value>;
+```hiveql
+INSERT OVERWRITE TABLE <database name>.<ORC table name> PARTITION (<partition variable>=<partition value>)
+    SELECT field1, field2, ..., fieldN
+    FROM <database name>.<external textfile table name>
+    WHERE <partition variable>=<partition value>;
+```
 
 Het is veilig om de te verwijderen *\<external text file table name\>* Wanneer u de volgende query gebruikt nadat alle gegevens zijn ingevoegd in * \<database name\> . \<ORC table name\> *:
 
-        DROP TABLE IF EXISTS <database name>.<external textfile table name>;
+```hiveql
+    DROP TABLE IF EXISTS <database name>.<external textfile table name>;
+```
 
 Nadat u deze procedure hebt voltooid, moet u een tabel met gegevens in de ORC-indeling maken die kan worden gebruikt.  

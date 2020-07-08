@@ -5,17 +5,20 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 66138fb04b1053215a2c2ec07cec1b56e38fed0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39d37b1a032a386219a98a409f2eb04a6ccc6eca
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800644"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078723"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Weer gegevens ophalen van weer partners
 
 Met Azure FarmBeats kunt u weer gegevens ophalen van uw weer gegevens provider (s) met behulp van een Connector-Framework op basis van docker. Met behulp van dit framework implementeren weer gegevens providers een docker die kan worden geïntegreerd met FarmBeats. Momenteel worden de volgende gegevens providers ondersteund:
 
-[DTN](https://www.dtn.com/dtn-content-integration/)
+  ![DTN](./media/get-sensor-data-from-sensor-partner/dtn-logo.png)
+
+  [DTN](https://www.dtn.com/dtn-content-integration/)
 
 De weer gegevens kunnen worden gebruikt voor het genereren van met actie bruikbare inzichten en het bouwen van AI/ML-modellen op FarmBeats.
 
@@ -59,6 +62,9 @@ Volg de onderstaande stappen om te beginnen met het ophalen van weer gegevens op
    ```
 
    Als u bijvoorbeeld weer gegevens wilt ophalen uit DTN, gebruikt u de onderstaande nettolading. U kunt de naam en beschrijving aanpassen volgens uw voor keur.
+
+   > [!NOTE]
+   > Voor de onderstaande stap is een API-sleutel vereist. Neem contact op met DTN om hetzelfde te krijgen voor uw DTN-abonnement.
 
    ```json
    {

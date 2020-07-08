@@ -7,14 +7,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: ea960a92aee1c9447bb12d27cffdc42de9fd907a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb6c540573ecd3163e9200be66edb58ed2ca4751
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77672120"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079204"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>Apache Pig gebruiken met Apache Hadoop op HDInsight
 
@@ -44,11 +44,13 @@ Zie voor meer informatie over Pig-Latijns de hand [leiding voor varkens Latijns 
 
 ## <a name="example-data"></a><a id="data"></a>Voorbeeldgegevens
 
-HDInsight biedt diverse voor beelden van gegevens sets, die worden opgeslagen `/example/data` in `/HdiSamples` de mappen en. Deze directory's bevinden zich in de standaard opslag voor uw cluster. Het Pig-voor beeld in dit document *log4j* maakt gebruik van `/example/data/sample.log`het log4j-bestand van.
+HDInsight biedt diverse voor beelden van gegevens sets, die worden opgeslagen in de `/example/data` `/HdiSamples` mappen en. Deze directory's bevinden zich in de standaard opslag voor uw cluster. Het Pig-voor beeld in dit document maakt gebruik van het *log4j* -bestand van `/example/data/sample.log` .
 
 Elk logboek in het bestand bestaat uit een regel met velden die een `[LOG LEVEL]` veld bevat om het type en de ernst weer te geven, bijvoorbeeld:
 
-    2012-02-03 20:26:41 SampleClass3 [ERROR] verbose detail for id 1527353937
+```output
+2012-02-03 20:26:41 SampleClass3 [ERROR] verbose detail for id 1527353937
+```
 
 In het vorige voor beeld is het logboek niveau fout.
 
@@ -57,17 +59,17 @@ In het vorige voor beeld is het logboek niveau fout.
 
 ## <a name="example-job"></a><a id="job"></a>Voorbeeld taak
 
-Met de volgende waarde van de Latijnse `sample.log` taak wordt het bestand geladen uit de standaard opslag voor uw HDInsight-cluster. Vervolgens wordt een reeks trans formaties uitgevoerd die resulteren in een telling van het aantal keren dat elk logboek niveau is opgetreden in de invoer gegevens. De resultaten worden geschreven naar STDOUT.
+Met de volgende waarde van de Latijnse taak wordt het `sample.log` bestand geladen uit de standaard opslag voor uw HDInsight-cluster. Vervolgens wordt een reeks trans formaties uitgevoerd die resulteren in een telling van het aantal keren dat elk logboek niveau is opgetreden in de invoer gegevens. De resultaten worden geschreven naar STDOUT.
 
-    ```
-    LOGS = LOAD 'wasb:///example/data/sample.log';
-    LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
-    FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
-    GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;
-    FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;
-    RESULT = order FREQUENCIES by COUNT desc;
-    DUMP RESULT;
-    ```
+```output
+LOGS = LOAD 'wasb:///example/data/sample.log';
+LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
+FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
+GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;
+FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;
+RESULT = order FREQUENCIES by COUNT desc;
+DUMP RESULT;
+```
 
 De volgende afbeelding toont een samen vatting van wat elke trans formatie naar de gegevens doet.
 

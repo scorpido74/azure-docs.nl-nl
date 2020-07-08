@@ -3,12 +3,12 @@ title: Service kosten verminderen met behulp van Azure Advisor
 description: Gebruik Azure Advisor om de kosten van uw Azure-implementaties te optimaliseren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 8ff4e2d8f778d05e9a0fa271600446e1c24380be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad8340595b10ce9c729c9c89f0099434c15a9ff2
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130626"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078558"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Service kosten verminderen met behulp van Azure Advisor
 
@@ -60,7 +60,7 @@ Advisor analyseert gebruiks patronen voor de afgelopen 30 dagen voor de volgende
 Advisor analyseert uw Azure Cosmos DB gebruiks patronen voor de afgelopen 30 dagen en raadt u aan om gereserveerde capaciteit te kopen om de kosten te optimaliseren. Door gebruik te maken van gereserveerde capaciteit, kunt u het gebruik van Azure Cosmos DB uur vooraf aanschaffen en besparen u de kosten voor betalen per gebruik. Gereserveerde capaciteit is een facturerings voordeel en is automatisch van toepassing op nieuwe en bestaande implementaties. Advisor berekent spaar prijzen voor afzonderlijke abonnementen met behulp van een reserverings prijs van drie jaar en door de gebruiks patronen te extrapoleren die in de afgelopen 30 dagen zijn waargenomen. Aanbevelingen voor Shared scopes zijn beschikbaar voor gereserveerde capaciteits aankopen en kunnen de besparingen verhogen.
 
 ### <a name="sql-paas-reserved-capacity"></a>Gereserveerde capaciteit voor SQL PaaS
-Advisor analyseert SQL PaaS elastische-database Pools en gebruiks patronen voor beheerde exemplaren over de afgelopen 30 dagen. Vervolgens wordt gereserveerde capaciteits aankopen aanbevolen die de kosten optimaliseren. Door gebruik te maken van gereserveerde capaciteit, kunt u het gebruik van SQL DB-uur vooraf aanschaffen en besparen u de kosten voor SQL-berekeningen. Uw SQL-licentie wordt afzonderlijk in rekening gebracht en wordt niet gedisconteerd door de reserve ring. Gereserveerde capaciteit is een facturerings voordeel en is automatisch van toepassing op nieuwe en bestaande implementaties. Advisor berekent spaar prijzen voor afzonderlijke abonnementen met behulp van een reserverings prijs van drie jaar en door de gebruiks patronen te extrapoleren die in de afgelopen 30 dagen zijn waargenomen. Aanbevelingen voor Shared scopes zijn beschikbaar voor gereserveerde capaciteits aankopen en kunnen de besparingen verhogen.
+Advisor analyseert SQL PaaS elastische-database Pools en gebruiks patronen voor SQL-beheerde exemplaren over de afgelopen 30 dagen. Vervolgens wordt gereserveerde capaciteits aankopen aanbevolen die de kosten optimaliseren. Door gebruik te maken van gereserveerde capaciteit, kunt u het gebruik van SQL DB-uur vooraf aanschaffen en besparen u de kosten voor SQL-berekeningen. Uw SQL-licentie wordt afzonderlijk in rekening gebracht en wordt niet gedisconteerd door de reserve ring. Gereserveerde capaciteit is een facturerings voordeel en is automatisch van toepassing op nieuwe en bestaande implementaties. Advisor berekent spaar prijzen voor afzonderlijke abonnementen met behulp van een reserverings prijs van drie jaar en door de gebruiks patronen te extrapoleren die in de afgelopen 30 dagen zijn waargenomen. Aanbevelingen voor Shared scopes zijn beschikbaar voor gereserveerde capaciteits aankopen en kunnen de besparingen verhogen.
 
 ### <a name="app-service-stamp-fee-reserved-capacity"></a>Gereserveerde capaciteit App Service Stamp-vergoeding
 Advisor analyseert het gebruiks patroon van de stempel kosten voor uw Azure App Service geïsoleerde omgeving in de afgelopen 30 dagen en raadt u aan om gereserveerde capaciteits aankopen te doen die de kosten optimaliseren. Door gebruik te maken van gereserveerde capaciteit, kunt u het gebruik van elk uur vooraf kopen voor de kosten voor de geïsoleerde omgevings stempel en besparen op uw betalen naar gebruik-tarieven. Houd er rekening mee dat gereserveerde capaciteit alleen van toepassing is op de stempel kosten en niet op App Service exemplaren. Gereserveerde capaciteit is een facturerings voordeel en is automatisch van toepassing op nieuwe en bestaande implementaties. Advisor berekent het opslaan van schattingen voor afzonderlijke abonnementen met behulp van een reserverings prijs van drie jaar op basis van gebruiks patronen in de afgelopen 30 dagen.

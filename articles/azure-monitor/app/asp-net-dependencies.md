@@ -3,15 +3,16 @@ title: Afhankelijkheden bijhouden in Azure-toepassing Insights | Microsoft Docs
 description: Afhankelijkheids aanroepen bewaken vanaf uw on-premises of Microsoft Azure webtoepassing met Application Insights.
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 17fa2120df45b5cb940f6c1b6887718023a3926f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 472d7d26c8a478f521159a44959d7e0a5d749e0d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445216"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081346"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Afhankelijkheden bijhouden in Azure-toepassing Insights 
 
-Een *afhankelijkheid* is een extern onderdeel dat wordt aangeroepen door uw toepassing. Het is doorgaans een service met de naam HTTP, een Data Base of een bestands systeem. [Application Insights](../../azure-monitor/app/app-insights-overview.md) meet de duur van afhankelijkheids aanroepen, of het nu niet lukt, samen met aanvullende informatie, zoals de naam van de afhankelijkheid, enzovoort. U kunt specifieke afhankelijkheids aanroepen onderzoeken en deze correleren aan aanvragen en uitzonde ringen.
+Een *afhankelijkheid* is een onderdeel dat wordt aangeroepen door uw toepassing. Het is doorgaans een service met de naam HTTP, een Data Base of een bestands systeem. [Application Insights](../../azure-monitor/app/app-insights-overview.md) meet de duur van afhankelijkheids aanroepen, of het nu niet lukt, samen met aanvullende informatie, zoals de naam van de afhankelijkheid, enzovoort. U kunt specifieke afhankelijkheids aanroepen onderzoeken en deze correleren aan aanvragen en uitzonde ringen.
 
 ## <a name="automatically-tracked-dependencies"></a>Automatisch bijgehouden afhankelijkheden
 

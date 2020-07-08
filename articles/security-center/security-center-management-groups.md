@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 734876380d22f5d4d6dae0dd375b238fd5f6ffed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 236153612f6056e90cb9b5af128f49ed550e3fe9
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74559350"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080870"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Zicht baarheid voor de hele Tenant verkrijgen voor Azure Security Center
 In dit artikel wordt uitgelegd hoe u de beveiligings postuur van uw organisatie op schaal kunt beheren door beveiligings beleid toe te passen op alle Azure-abonnementen die zijn gekoppeld aan uw Azure Active Directory-Tenant.
@@ -73,7 +74,7 @@ Een Azure Active Directory Tenant beheerder heeft geen rechtstreekse toegang tot
 
 3. Stel onder **toegangs beheer voor Azure-resources**de schakel optie in op **Ja**.
 
-   ![De globale beheerder kan Azure-abonnementen en de Beheergroepen scherm afbeelding beheren](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
+   ![Toegangs beheer voor Azure-resources-scherm afbeelding](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
 
    - Wanneer u de schakel optie instelt op Ja, wordt de rol gebruikers toegangs beheerder toegewezen in azure RBAC in het hoofd bereik (/). Hiermee verleent u toestemming om rollen toe te wijzen aan alle Azure-abonnementen en-beheer groepen die zijn gekoppeld aan deze Azure AD-Directory. Deze schakel optie is alleen beschikbaar voor gebruikers aan wie de rol van globale beheerder is toegewezen in azure AD.
 
@@ -160,7 +161,7 @@ Zodra de RBAC-rollen aan de gebruikers zijn toegewezen, moet de Tenant beheerder
 
 2. Klik in de navigatie lijst op **Azure Active Directory** en klik vervolgens op **Eigenschappen**.
 
-3. Onder **globale beheerder kunnen Azure-abonnementen en-beheergroepen beheren**, stel de switch in op **Nee**.
+3. Stel onder **toegangs beheer voor Azure-resources**de schakel optie in op **Nee**.
 
 4. Klik op **Opslaan** om de instelling op te slaan.
 

@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/27/2019
-ms.openlocfilehash: 7f8f20be81e815414c283f7ec48aa6503e3b60ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d1dff01c9e7b5232cfac0cf5581c077e67f6937
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75552641"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079493"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Best practices voor Apache Phoenix-prestaties
 
@@ -33,21 +33,21 @@ Een tabel voor contact personen heeft bijvoorbeeld de voor naam, achternaam, tel
 
 |rowkey|       adres|   telefoon| voornaam| achternaam|
 |------|--------------------|--------------|-------------|--------------|
-|  1000|1111 San Gabriel Dr.|1-425-000-0002|    John|Davids|
+|  1000|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Davids|
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji|
 
 Als u echter vaak een query uitvoert op lastName, wordt deze primaire sleutel mogelijk niet goed uitgevoerd, omdat voor elke query een volledige tabel scan is vereist om de waarde van elke lastName te lezen. In plaats daarvan kunt u een primaire sleutel definiëren voor de kolommen lastName, firstName en Social Security Number. Deze laatste kolom is om twee inwoners op hetzelfde adres te dubbel zinnigheid met dezelfde naam, zoals een vader en zoon.
 
 |rowkey|       adres|   telefoon| voornaam| achternaam| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  1000|1111 San Gabriel Dr.|1-425-000-0002|    John|Davids| 111 |
+|  1000|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Davids| 111 |
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
 Met deze nieuwe primaire sleutel worden de door Breda gegenereerde rij sleutels:
 
 |rowkey|       adres|   telefoon| voornaam| achternaam| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  Davids-Jan-111|1111 San Gabriel Dr.|1-425-000-0002|    John|Davids| 111 |
+|  Davids-Jan-111|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Davids| 111 |
 |  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
 In de eerste rij hierboven worden de gegevens voor de rowkey weer gegeven:
@@ -56,7 +56,7 @@ In de eerste rij hierboven worden de gegevens voor de rowkey weer gegeven:
 |------|--------------------|---|
 |  Davids-Jan-111|adres |1111 San Gabriel Dr.|  
 |  Davids-Jan-111|telefoon |1-425-000-0002|  
-|  Davids-Jan-111|voornaam |John|  
+|  Davids-Jan-111|voornaam |Jan|  
 |  Davids-Jan-111|achternaam |Davids|  
 |  Davids-Jan-111|socialSecurityNum |111|
 
@@ -82,13 +82,17 @@ Met Phoenix kunt u het aantal regio's bepalen waar uw gegevens worden gedistribu
 
 Als u een tabel wilt zouten tijdens het maken, geeft u het aantal zout buckets op:
 
-    CREATE TABLE CONTACTS (...) SALT_BUCKETS = 16
+```sql
+CREATE TABLE CONTACTS (...) SALT_BUCKETS = 16
+```
 
 Met dit zouten wordt de tabel op basis van de waarden van primaire sleutels gesplitst, waarbij de waarden automatisch worden gekozen. 
 
 Als u wilt bepalen waar de tabel zich bevindt, kunt u de tabel vooraf splitsen door de waarden voor het bereik op te geven waarmee de splitsing plaatsvindt. Als u bijvoorbeeld een tabel splitsing langs drie regio's wilt maken:
 
-    CREATE TABLE CONTACTS (...) SPLIT ON ('CS','EU','NA')
+```sql
+CREATE TABLE CONTACTS (...) SPLIT ON ('CS','EU','NA')
+```
 
 ## <a name="index-design"></a>Indexontwerp
 
@@ -115,16 +119,20 @@ In de tabel met contact personen kunt u bijvoorbeeld een secundaire index maken 
 
 |rowkey|       adres|   telefoon| voornaam| achternaam| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  Davids-Jan-111|1111 San Gabriel Dr.|1-425-000-0002|    John|Davids| 111 |
+|  Davids-Jan-111|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Davids| 111 |
 |  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
 Als u echter doorgaans de voor naam en achternaam wilt opzoeken op basis van de socialSecurityNum, kunt u een gedekte index maken die de voor naam en achternaam als werkelijke gegevens in de index tabel bevat:
 
-    CREATE INDEX ssn_idx ON CONTACTS (socialSecurityNum) INCLUDE(firstName, lastName);
+```sql
+CREATE INDEX ssn_idx ON CONTACTS (socialSecurityNum) INCLUDE(firstName, lastName);
+```
 
 Met deze gedekte index kan de volgende query alle gegevens ophalen, alleen door te lezen uit de tabel met de secundaire index:
 
-    SELECT socialSecurityNum, firstName, lastName FROM CONTACTS WHERE socialSecurityNum > 100;
+```sql
+SELECT socialSecurityNum, firstName, lastName FROM CONTACTS WHERE socialSecurityNum > 100;
+```
 
 ### <a name="use-functional-indexes"></a>Functionele indexen gebruiken
 
@@ -132,7 +140,9 @@ Met functionele indexen kunt u een index maken voor een wille keurige expressie 
 
 U kunt bijvoorbeeld een index maken waarmee u niet-hoofdletter gevoelige zoek acties kunt uitvoeren op de gecombineerde voor naam en achternaam van een persoon:
 
-     CREATE INDEX FULLNAME_UPPER_IDX ON "Contacts" (UPPER("firstName"||' '||"lastName"));
+```sql
+CREATE INDEX FULLNAME_UPPER_IDX ON "Contacts" (UPPER("firstName"||' '||"lastName"));
+```
 
 ## <a name="query-design"></a>Query ontwerp
 
@@ -153,46 +163,64 @@ Gebruik in [sqlline gebruiken](http://sqlline.sourceforge.net/)de uitleg gevolgd
 
 Stel, u hebt een tabel met de naam vluchten waarin informatie over de vertraging wordt opgeslagen.
 
-Om alle vluchten te selecteren met een airlineid van `19805`, waarbij airlineid een veld is dat zich niet in de primaire sleutel of in een index bevindt:
+Om alle vluchten te selecteren met een airlineid van `19805` , waarbij airlineid een veld is dat zich niet in de primaire sleutel of in een index bevindt:
 
-    select * from "FLIGHTS" where airlineid = '19805';
+```sql
+select * from "FLIGHTS" where airlineid = '19805';
+```
 
 Voer de uitleg opdracht als volgt uit:
 
-    explain select * from "FLIGHTS" where airlineid = '19805';
+```sql
+explain select * from "FLIGHTS" where airlineid = '19805';
+```
 
 Het query plan ziet er als volgt uit:
 
-    CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN FULL SCAN OVER FLIGHTS
-        SERVER FILTER BY AIRLINEID = '19805'
+```sql
+CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN FULL SCAN OVER FLIGHTS
+   SERVER FILTER BY AIRLINEID = '19805'
+```
 
 In dit plan noteert u de woord groep FULL SCAN OVER vluchten. Deze zin duidt op de uitvoering van een tabel SCAN over alle rijen in de tabel, in plaats van het gebruik van de optie SCAN of OVERs laan voor het scannen van een efficiënt bereik.
 
 Stel nu dat u wilt zoeken naar vluchten op 2 januari 2014 voor de drager `AA` waarvan de flightnum groter is dan 1. We gaan ervan uit dat de kolommen Year, month, DayOfMonth, carrier en flightnum bestaan in de voorbeeld tabel en alle deel uitmaken van de samengestelde primaire sleutel. De query ziet er als volgt uit:
 
-    select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```sql
+select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```
 
 Laten we het plan voor deze query bekijken met:
 
-    explain select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```sql
+explain select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```
 
 Het resulterende plan is:
 
-    CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER FLIGHTS [2014,1,2,'AA',2] - [2014,1,2,'AA',*]
+```sql
+CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER FLIGHTS [2014,1,2,'AA',2] - [2014,1,2,'AA',*]
+```
 
-De waarden tussen vier Kante haken zijn het waarden bereik voor de primaire sleutels. In dit geval worden de waarden van het bereik verholpen met jaar 2014, maand 1 en dayofmonth 2, maar waarden toestaan voor flightnum vanaf 2 en omhoog (`*`). Met dit query plan wordt bevestigd dat de primaire sleutel wordt gebruikt zoals verwacht.
+De waarden tussen vier Kante haken zijn het waarden bereik voor de primaire sleutels. In dit geval worden de waarden van het bereik verholpen met jaar 2014, maand 1 en dayofmonth 2, maar waarden toestaan voor flightnum vanaf 2 en omhoog ( `*` ). Met dit query plan wordt bevestigd dat de primaire sleutel wordt gebruikt zoals verwacht.
 
-Maak vervolgens een index op de tabel vluchten met de `carrier2_idx` naam alleen op het veld transporteur. Deze index omvat ook flightdate, tailnum, Origin en flightnum als gedekte kolommen waarvan de gegevens ook worden opgeslagen in de index.
+Maak vervolgens een index op de tabel vluchten `carrier2_idx` met de naam alleen op het veld transporteur. Deze index omvat ook flightdate, tailnum, Origin en flightnum als gedekte kolommen waarvan de gegevens ook worden opgeslagen in de index.
 
-    CREATE INDEX carrier2_idx ON FLIGHTS (carrier) INCLUDE(FLIGHTDATE,TAILNUM,ORIGIN,FLIGHTNUM);
+```sql
+CREATE INDEX carrier2_idx ON FLIGHTS (carrier) INCLUDE(FLIGHTDATE,TAILNUM,ORIGIN,FLIGHTNUM);
+```
 
 Stel dat u de provider wilt ophalen samen met de flightdate en tailnum, zoals in de volgende query:
 
-    explain select carrier,flightdate,tailnum from "FLIGHTS" where carrier = 'AA';
+```sql
+explain select carrier,flightdate,tailnum from "FLIGHTS" where carrier = 'AA';
+```
 
 U ziet dat deze index wordt gebruikt:
 
-    CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER CARRIER2_IDX ['AA']
+```sql
+CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER CARRIER2_IDX ['AA']
+```
 
 Voor een volledige lijst van de items die kunnen worden weer gegeven in de resultaten van de uitleg van het plan, raadpleegt u de sectie uitleg plannen in de [Apache Phoenix Tuning Guide (Engelstalig](https://phoenix.apache.org/tuning_guide.html)).
 
@@ -200,7 +228,7 @@ Voor een volledige lijst van de items die kunnen worden weer gegeven in de resul
 
 Over het algemeen wilt u voor komen dat u deelneemt, tenzij een zijde klein is, met name bij query's die vaak worden uitgevoerd.
 
-Als dat nodig is, kunt u grote samen voegingen `/*+ USE_SORT_MERGE_JOIN */` doen met de hint, maar een grote samen voeging is een dure bewerking in grote aantallen rijen. Als de totale grootte van alle tabellen aan de rechter kant het beschik bare geheugen zou overschrijden, `/*+ NO_STAR_JOIN */` gebruikt u de hint.
+Als dat nodig is, kunt u grote samen voegingen doen met de `/*+ USE_SORT_MERGE_JOIN */` Hint, maar een grote samen voeging is een dure bewerking in grote aantallen rijen. Als de totale grootte van alle tabellen aan de rechter kant het beschik bare geheugen zou overschrijden, gebruikt u de `/*+ NO_STAR_JOIN */` Hint.
 
 ## <a name="scenarios"></a>Scenario's
 
@@ -222,7 +250,9 @@ Wanneer u een grote gegevensset verwijdert, schakelt u automatisch door voeren i
 
 Als uw scenario de schrijf snelheid voor gegevens integriteit nagaat, kunt u overwegen om het Write-Ahead logboek uit te scha kelen bij het maken van uw tabellen:
 
-    CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
+```sql
+CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
+```
 
 Zie [Apache Phoenix-grammatica](https://phoenix.apache.org/language/index.html#options)voor meer informatie over deze en andere opties.
 

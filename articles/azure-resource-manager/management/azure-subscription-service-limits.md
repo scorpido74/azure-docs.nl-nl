@@ -5,18 +5,18 @@ ms.topic: conceptual
 author: davidsmatlak
 ms.author: v-dasmat
 ms.date: 06/04/2020
-ms.openlocfilehash: 7805e65b3f49a69d4667180715a58585767ddf5a
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 594e34a07cf2c370546e59ebe59df1de88eb2aa4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391475"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080972"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-abonnements-en service limieten, quota's en beperkingen
 
 Dit document bevat enkele van de meest voorkomende Microsoft Azure limieten, ook wel quota's genoemd.
 
-Zie [overzicht van Azure-prijzen](https://azure.microsoft.com/pricing/)voor meer informatie over Azure-prijzen. Daar kunt u uw kosten ramen met behulp van de [prijs calculator](https://azure.microsoft.com/pricing/calculator/). U kunt ook naar de pagina prijs informatie voor een bepaalde service gaan, bijvoorbeeld Windows- [vm's](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows). Zie [onverwachte kosten voor komen met Azure billing and cost management](../../billing/billing-getting-started.md)voor tips voor het beheren van uw kosten.
+Zie [overzicht van Azure-prijzen](https://azure.microsoft.com/pricing/)voor meer informatie over Azure-prijzen. Daar kunt u uw kosten ramen met behulp van de [prijs calculator](https://azure.microsoft.com/pricing/calculator/). U kunt ook naar de pagina prijs informatie voor een bepaalde service gaan, bijvoorbeeld Windows- [vm's](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows). Zie [onverwachte kosten voor komen met Azure billing and cost management](../../cost-management-billing/manage/getting-started.md)voor tips voor het beheren van uw kosten.
 
 ## <a name="managing-limits"></a>Limieten beheren
 
@@ -29,7 +29,7 @@ Zie [overzicht van Azure-prijzen](https://azure.microsoft.com/pricing/)voor meer
 >
 > Als u de limiet of het quotum boven de standaard limiet wilt verhogen, kunt u gratis [een online klant ondersteuning-aanvraag openen](../templates/error-resource-quota.md).
 
-[Gratis proef abonnementen](https://azure.microsoft.com/offers/ms-azr-0044p) komen niet in aanmerking voor limiet of quotum verhoging. Als u een [gratis proef abonnement](https://azure.microsoft.com/offers/ms-azr-0044p)hebt, kunt u een upgrade uitvoeren naar een abonnement met [betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/) . Zie voor meer informatie [uw abonnement op gratis proef versie van Azure bijwerken naar een betalen per gebruik-abonnement](../../billing/billing-upgrade-azure-subscription.md) en de [Veelgestelde vragen over het gratis proef abonnement](https://azure.microsoft.com/free/free-account-faq).
+[Gratis proef abonnementen](https://azure.microsoft.com/offers/ms-azr-0044p) komen niet in aanmerking voor limiet of quotum verhoging. Als u een [gratis proef abonnement](https://azure.microsoft.com/offers/ms-azr-0044p)hebt, kunt u een upgrade uitvoeren naar een abonnement met [betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/) . Zie voor meer informatie [uw abonnement op gratis proef versie van Azure bijwerken naar een betalen per gebruik-abonnement](../../cost-management-billing/manage/upgrade-azure-subscription.md) en de [Veelgestelde vragen over het gratis proef abonnement](https://azure.microsoft.com/free/free-account-faq).
 
 Sommige limieten worden beheerd op een regionaal niveau.
 
@@ -259,7 +259,7 @@ De volgende tabel bevat een overzicht van de functies en limieten van de [servic
 
 ### <a name="media-services-v2-legacy"></a>Media Services v2 (verouderd)
 
-Zie [Media Services v2 (verouderd)](https://docs.microsoft.com/azure/media-services/previous/media-services-quotas-and-limitations) voor limieten die specifiek zijn voor Media Services v2 (verouderd)
+Zie [Media Services v2 (verouderd)](../../media-services/previous/media-services-quotas-and-limitations.md) voor limieten die specifiek zijn voor Media Services v2 (verouderd)
 
 ## <a name="mobile-services-limits"></a>Mobile Services limieten
 
@@ -332,11 +332,11 @@ De volgende tabel is van toepassing op v1-, v2-, Standard-en WAF-Sku's, tenzij a
 
 ## <a name="sql-database-limits"></a>SQL Database limieten
 
-Zie [SQL database resource limieten voor afzonderlijke data bases](../../azure-sql/database/resource-limits-vcore-single-databases.md), [SQL database resource limieten voor elastische Pools en gegroepeerde Data bases](../../azure-sql/database/resource-limits-vcore-elastic-pools.md)en [SQL database resource limieten voor beheerde instanties](../../azure-sql/managed-instance/resource-limits.md)voor SQL database limieten.
+Zie [SQL database resource limieten voor afzonderlijke data bases](../../azure-sql/database/resource-limits-vcore-single-databases.md), [SQL database resource limieten voor elastische Pools en gepoolde data bases](../../azure-sql/database/resource-limits-vcore-elastic-pools.md)en [SQL database resource limieten voor SQL Managed instance](../../azure-sql/managed-instance/resource-limits.md)voor SQL database limieten.
 
-## <a name="sql-data-warehouse-limits"></a>SQL Data Warehouse limieten
+## <a name="azure-synapse-analytics-limits"></a>Limieten voor Azure Synapse Analytics
 
-Zie [SQL Data Warehouse resource limieten](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)voor SQL Data Warehouse limieten.
+Zie [Azure Synapse-resource limieten](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)voor limieten voor Azure Synapse Analytics.
 
 ## <a name="storage-limits"></a>Opslag limieten
 
@@ -420,7 +420,7 @@ Er zijn limieten, per abonnement, voor het implementeren van resources met behul
 
 [!INCLUDE [virtual-machine-scale-sets-limits](../../../includes/azure-virtual-machine-scale-sets-limits.md)]
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Meer informatie over Azure-limieten en toename](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Grootten van virtuele machines en Cloud Services voor Azure](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

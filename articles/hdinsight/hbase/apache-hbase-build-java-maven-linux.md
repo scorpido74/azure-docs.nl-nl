@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seodec18
 ms.date: 12/24/2019
-ms.openlocfilehash: 3e9b23ce450e45dfedcee8b20e09b1c2b52b6e68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f367f7fb6201a62c7fb47e0c593d04d41e0b378
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75495780"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079510"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Ontwikkel Java-toepassingen voor Apache HBase
 
@@ -27,7 +27,7 @@ De stappen in dit document gebruiken [Apache Maven](https://maven.apache.org/) o
 
 * [Jdk-versie 8 (Java Developer Kit)](https://aka.ms/azure-jdks).
 
-* [Apache Maven](https://maven.apache.org/download.cgi) is op de juiste wijze [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een project voor het maken van een systeem voor Java-projecten.
+* [Apache Maven](https://maven.apache.org/download.cgi) correct [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een systeem voor het bouwen van Java-projecten.
 
 * Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -57,13 +57,13 @@ cd C:\HDI
     mkdir conf
     ```
 
-    Met deze opdracht maakt u een `hbaseapp` map met de naam op de huidige locatie, die een Basic Maven-project bevat. Met de tweede opdracht wordt de werkmap gewijzigd `hbaseapp`in. Met de derde opdracht maakt u een nieuwe `conf`map, die later wordt gebruikt. De `hbaseapp` map bevat de volgende items:
+    Met deze opdracht maakt u een map met `hbaseapp` de naam op de huidige locatie, die een Basic Maven-project bevat. Met de tweede opdracht wordt de werkmap gewijzigd in `hbaseapp` . Met de derde opdracht maakt u een nieuwe map, `conf` die later wordt gebruikt. De `hbaseapp` map bevat de volgende items:
 
     * `pom.xml`: Het project object model ([pom](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) bevat informatie en configuratie details die zijn gebruikt om het project te bouwen.
     * `src\main\java\com\microsoft\examples`: Bevat de code van uw toepassing.
     * `src\test\java\com\microsoft\examples`: Bevat tests voor uw toepassing.
 
-2. Verwijder de gegenereerde voorbeeld code. Verwijder de gegenereerde test-en `AppTest.java`toepassings bestanden `App.java` en voer de volgende opdrachten in:
+2. Verwijder de gegenereerde voorbeeld code. Verwijder de gegenereerde test-en toepassings bestanden `AppTest.java` en `App.java` Voer de volgende opdrachten in:
 
     ```cmd
     DEL src\main\java\com\microsoft\examples\App.java
@@ -72,7 +72,7 @@ cd C:\HDI
 
 ## <a name="update-the-project-object-model"></a>Het object model van het project bijwerken
 
-Zie https://maven.apache.org/pom.htmlvoor een volledige referentie van het bestand pom. XML.  Open `pom.xml` door de volgende opdracht in te voeren:
+Zie voor een volledige referentie van het pom.xml-bestand https://maven.apache.org/pom.html .  Open `pom.xml` door de volgende opdracht in te voeren:
 
 ```cmd
 notepad pom.xml
@@ -80,7 +80,7 @@ notepad pom.xml
 
 ### <a name="add-dependencies"></a>Afhankelijkheden toevoegen
 
-Voeg `pom.xml`in de `<dependencies>` sectie de volgende tekst toe:
+`pom.xml`Voeg in de sectie de volgende tekst toe `<dependencies>` :
 
 ```xml
 <dependency>
@@ -111,7 +111,7 @@ Zie [Wat zijn de verschillende Apache Hadoop onderdelen die beschikbaar zijn met
 
 Met maven-invoeg toepassingen kunt u de build-fasen van het project aanpassen. Deze sectie wordt gebruikt om invoeg toepassingen, resources en andere configuratie opties voor het maken van een toepassing toe te voegen.
 
-Voeg de volgende code toe aan `pom.xml` het bestand, sla het bestand op en sluit het. Deze tekst moet zich in de `<project>...</project>` Tags in het bestand bevindt, bijvoorbeeld `</dependencies>` tussen `</project>`en.
+Voeg de volgende code toe aan het `pom.xml` bestand, sla het bestand op en sluit het. Deze tekst moet zich in de `<project>...</project>` Tags in het bestand bevindt, bijvoorbeeld tussen `</dependencies>` en `</project>` .
 
 ```xml
 <build>
@@ -158,18 +158,18 @@ Voeg de volgende code toe aan `pom.xml` het bestand, sla het bestand op en sluit
 </build>
 ```
 
-In deze sectie configureert u een bron`conf/hbase-site.xml`() die configuratie-informatie voor HBase bevat.
+In deze sectie configureert u een bron ( `conf/hbase-site.xml` ) die configuratie-informatie voor HBase bevat.
 
 > [!NOTE]  
 > U kunt ook configuratie waarden instellen via code. Bekijk de opmerkingen in het `CreateTable` voor beeld.
 
-In deze sectie worden ook de [invoeg toepassing Apache Maven compiler](https://maven.apache.org/plugins/maven-compiler-plugin/) en [Apache Maven Shad](https://maven.apache.org/plugins/maven-shade-plugin/)geconfigureerd. De compiler-invoeg toepassing wordt gebruikt voor het compileren van de topologie. De arcerings-invoeg toepassing wordt gebruikt om te voor komen dat licentie duplicatie in het JAR-pakket dat is gebouwd door maven. Deze invoeg toepassing wordt gebruikt om te voor komen dat een ' dubbele licentie bestanden ' tijdens runtime op het HDInsight-cluster wordt uitgevoerd. Het gebruik van Maven-Shad-plugin `ApacheLicenseResourceTransformer` met de implementatie verhindert de fout.
+In deze sectie worden ook de [invoeg toepassing Apache Maven compiler](https://maven.apache.org/plugins/maven-compiler-plugin/) en [Apache Maven Shad](https://maven.apache.org/plugins/maven-shade-plugin/)geconfigureerd. De compiler-invoeg toepassing wordt gebruikt voor het compileren van de topologie. De arcerings-invoeg toepassing wordt gebruikt om te voor komen dat licentie duplicatie in het JAR-pakket dat is gebouwd door maven. Deze invoeg toepassing wordt gebruikt om te voor komen dat een ' dubbele licentie bestanden ' tijdens runtime op het HDInsight-cluster wordt uitgevoerd. Het gebruik van Maven-Shad-plugin met de `ApacheLicenseResourceTransformer` implementatie verhindert de fout.
 
 De Maven-Shade-invoeg toepassing produceert ook een uber jar dat alle afhankelijkheden bevat die vereist zijn voor de toepassing.
 
-### <a name="download-the-hbase-sitexml"></a>De hbase-site. xml downloaden
+### <a name="download-the-hbase-sitexml"></a>De hbase-site.xml downloaden
 
-Gebruik de volgende opdracht om de HBase-configuratie van het HBase-cluster naar `conf` de map te kopiëren. Vervang `CLUSTERNAME` door de naam van uw HDInsight-cluster en voer de volgende opdracht in:
+Gebruik de volgende opdracht om de HBase-configuratie van het HBase-cluster naar de map te kopiëren `conf` . Vervang door `CLUSTERNAME` de naam van uw HDInsight-cluster en voer de volgende opdracht in:
 
 ```cmd
 scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
@@ -179,7 +179,7 @@ scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./
 
 ### <a name="implement-a-createtable-class"></a>Een CreateTable-klasse implementeren
 
-Voer de onderstaande opdracht in om een nieuw bestand `CreateTable.java`te maken en te openen. Selecteer **Ja** wanneer u wordt gevraagd een nieuw bestand te maken.
+Voer de onderstaande opdracht in om een nieuw bestand te maken en te openen `CreateTable.java` . Selecteer **Ja** wanneer u wordt gevraagd een nieuw bestand te maken.
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\CreateTable.java
@@ -261,7 +261,7 @@ Deze code is de `CreateTable` klasse. Hiermee maakt u een tabel `people` met de 
 
 ### <a name="implement-a-searchbyemail-class"></a>Een SearchByEmail-klasse implementeren
 
-Voer de onderstaande opdracht in om een nieuw bestand `SearchByEmail.java`te maken en te openen. Selecteer **Ja** wanneer u wordt gevraagd een nieuw bestand te maken.
+Voer de onderstaande opdracht in om een nieuw bestand te maken en te openen `SearchByEmail.java` . Selecteer **Ja** wanneer u wordt gevraagd een nieuw bestand te maken.
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\SearchByEmail.java
@@ -346,7 +346,7 @@ De `SearchByEmail` klasse kan worden gebruikt om rijen op basis van een e-mail a
 
 ### <a name="implement-a-deletetable-class"></a>Een DeleteTable-klasse implementeren
 
-Voer de onderstaande opdracht in om een nieuw bestand `DeleteTable.java`te maken en te openen. Selecteer **Ja** wanneer u wordt gevraagd een nieuw bestand te maken.
+Voer de onderstaande opdracht in om een nieuw bestand te maken en te openen `DeleteTable.java` . Selecteer **Ja** wanneer u wordt gevraagd een nieuw bestand te maken.
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\DeleteTable.java
@@ -376,11 +376,11 @@ public class DeleteTable {
 }
 ```
 
-De `DeleteTable` klasse ruimt de HBase-tabellen op die in dit voor beeld zijn gemaakt door de tabel die door `CreateTable` de klasse is gemaakt, uit te scha kelen en neer te zetten.
+De `DeleteTable` klasse ruimt de HBase-tabellen op die in dit voor beeld zijn gemaakt door de tabel die door de klasse is gemaakt, uit te scha kelen en neer te zetten `CreateTable` .
 
 ## <a name="build-and-package-the-application"></a>De toepassing bouwen en inpakken
 
-1. Gebruik in `hbaseapp` de map de volgende opdracht om een jar-bestand te maken dat de toepassing bevat:
+1. Gebruik in de `hbaseapp` map de volgende opdracht om een jar-bestand te maken dat de toepassing bevat:
 
     ```cmd
     mvn clean package
@@ -388,22 +388,22 @@ De `DeleteTable` klasse ruimt de HBase-tabellen op die in dit voor beeld zijn ge
 
     Met deze opdracht wordt de toepassing gebouwd en verpakt in een jar-bestand.
 
-2. Wanneer de opdracht is voltooid, bevat `hbaseapp/target` de map een bestand met `hbaseapp-1.0-SNAPSHOT.jar`de naam.
+2. Wanneer de opdracht is voltooid, `hbaseapp/target` bevat de map een bestand met de naam `hbaseapp-1.0-SNAPSHOT.jar` .
 
    > [!NOTE]  
    > Het `hbaseapp-1.0-SNAPSHOT.jar` bestand is een uber jar. Het bevat alle afhankelijkheden die nodig zijn om de toepassing uit te voeren.
 
 ## <a name="upload-the-jar-and-run-jobs-ssh"></a>De JAR en run Jobs uploaden (SSH)
 
-De volgende stappen worden `scp` gebruikt om het jar naar het primaire hoofd knooppunt van uw Apache HBase in HDInsight-cluster te kopiëren. De `ssh` opdracht wordt vervolgens gebruikt om verbinding te maken met het cluster en het voor beeld rechtstreeks op het hoofd knooppunt uit te voeren.
+De volgende stappen `scp` worden gebruikt om het jar naar het primaire hoofd knooppunt van uw Apache HBase in HDInsight-cluster te kopiëren. De `ssh` opdracht wordt vervolgens gebruikt om verbinding te maken met het cluster en het voor beeld rechtstreeks op het hoofd knooppunt uit te voeren.
 
-1. Upload het jar naar het cluster. Vervang `CLUSTERNAME` door de naam van uw HDInsight-cluster en voer de volgende opdracht in:
+1. Upload het jar naar het cluster. Vervang door `CLUSTERNAME` de naam van uw HDInsight-cluster en voer de volgende opdracht in:
 
     ```cmd
     scp ./target/hbaseapp-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:hbaseapp-1.0-SNAPSHOT.jar
     ```
 
-2. Maak verbinding met het HBase-cluster. Vervang `CLUSTERNAME` door de naam van uw HDInsight-cluster en voer de volgende opdracht in:
+2. Maak verbinding met het HBase-cluster. Vervang door `CLUSTERNAME` de naam van uw HDInsight-cluster en voer de volgende opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -425,12 +425,14 @@ De volgende stappen worden `scp` gebruikt om het jar naar het primaire hoofd kno
 
     U ontvangt de volgende resultaten:
 
-        Franklin Holtz - ID: 2
-        Franklin Holtz - franklin@contoso.com - ID: 2
-        Rae Schroeder - ID: 4
-        Rae Schroeder - rae@contoso.com - ID: 4
-        Gabriela Ingram - ID: 6
-        Gabriela Ingram - gabriela@contoso.com - ID: 6
+    ```console
+    Franklin Holtz - ID: 2
+    Franklin Holtz - franklin@contoso.com - ID: 2
+    Rae Schroeder - ID: 4
+    Rae Schroeder - rae@contoso.com - ID: 4
+    Gabriela Ingram - ID: 6
+    Gabriela Ingram - gabriela@contoso.com - ID: 6
+    ```
 
 5. Als u de tabel wilt verwijderen, gebruikt u de volgende opdracht:
 
@@ -442,7 +444,7 @@ De volgende stappen worden `scp` gebruikt om het jar naar het primaire hoofd kno
 
 In de volgende stappen wordt gebruikgemaakt van de Azure PowerShell [AZ-module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) voor het uploaden van het jar naar de standaard opslag voor uw Apache HBase-cluster. HDInsight-cmdlets worden vervolgens gebruikt om de voor beelden op afstand uit te voeren.
 
-1. Nadat u de AZ-module hebt geïnstalleerd en geconfigureerd, maakt `hbase-runner.psm1`u een bestand met de naam. Gebruik de volgende tekst als de inhoud van dit bestand:
+1. Nadat u de AZ-module hebt geïnstalleerd en geconfigureerd, maakt u een bestand met de naam `hbase-runner.psm1` . Gebruik de volgende tekst als de inhoud van dit bestand:
 
    ```powershell
     <#
@@ -646,9 +648,9 @@ In de volgende stappen wordt gebruikgemaakt van de Azure PowerShell [AZ-module](
    * **Add-HDInsightFile** : wordt gebruikt voor het uploaden van bestanden naar het cluster
    * **Start-HBaseExample** : wordt gebruikt voor het uitvoeren van de klassen die u eerder hebt gemaakt
 
-2. Sla het `hbase-runner.psm1` bestand op in `hbaseapp` de map.
+2. Sla het `hbase-runner.psm1` bestand op in de `hbaseapp` map.
 
-3. Registreer de modules met Azure PowerShell. Open een nieuw Azure PowerShell venster en bewerk de onderstaande opdracht door de `CLUSTERNAME` naam van uw cluster te vervangen. Voer vervolgens de volgende opdrachten in:
+3. Registreer de modules met Azure PowerShell. Open een nieuw Azure PowerShell venster en bewerk de onderstaande opdracht door `CLUSTERNAME` de naam van uw cluster te vervangen. Voer vervolgens de volgende opdrachten in:
 
     ```powershell
     cd C:\HDI\hbaseapp
@@ -664,7 +666,7 @@ In de volgende stappen wordt gebruikgemaakt van de Azure PowerShell [AZ-module](
 
     Wanneer u hierom wordt gevraagd, voert u de naam en het wacht woord voor het cluster aanmelding (admin) in. De opdracht uploadt de `hbaseapp-1.0-SNAPSHOT.jar` naar de `example/jars` locatie in de primaire opslag voor uw cluster.
 
-5. Als u een tabel wilt maken `hbaseapp`met behulp van de, gebruikt u de volgende opdracht:
+5. Als u een tabel wilt maken met behulp van de `hbaseapp` , gebruikt u de volgende opdracht:
 
     ```powershell
     Start-HBaseExample -className com.microsoft.examples.CreateTable -clusterName $myCluster
@@ -682,16 +684,18 @@ In de volgende stappen wordt gebruikgemaakt van de Azure PowerShell [AZ-module](
 
     Wanneer u hierom wordt gevraagd, voert u de naam en het wacht woord voor het cluster aanmelding (admin) in.
 
-    Met deze opdracht wordt `SearchByEmail` de-klasse gebruikt om te zoeken naar `contactinformation` rijen waar de kolom `email` familie en de kolom de `contoso.com`teken reeks bevatten. De volgende resultaten moeten worden weer gegeven:
+    Met deze opdracht wordt de- `SearchByEmail` klasse gebruikt om te zoeken naar rijen waar de `contactinformation` kolom familie en de `email` kolom de teken reeks bevatten `contoso.com` . De volgende resultaten moeten worden weer gegeven:
 
-          Franklin Holtz - ID: 2
-          Franklin Holtz - franklin@contoso.com - ID: 2
-          Rae Schroeder - ID: 4
-          Rae Schroeder - rae@contoso.com - ID: 4
-          Gabriela Ingram - ID: 6
-          Gabriela Ingram - gabriela@contoso.com - ID: 6
+    ```output
+    Franklin Holtz - ID: 2
+    Franklin Holtz - franklin@contoso.com - ID: 2
+    Rae Schroeder - ID: 4
+    Rae Schroeder - rae@contoso.com - ID: 4
+    Gabriela Ingram - ID: 6
+    Gabriela Ingram - gabriela@contoso.com - ID: 6
+    ```
 
-    Als u **fabrikam.com** gebruikt `-emailRegex` voor de waarde, worden de gebruikers met **fabrikam.com** in het veld e-mail geretourneerd. U kunt ook reguliere expressies gebruiken als zoek term. Zo retourneert **^ r** e-mail adressen die beginnen met de letter r.
+    Als u **fabrikam.com** gebruikt voor de waarde, worden `-emailRegex` de gebruikers met **fabrikam.com** in het veld e-mail geretourneerd. U kunt ook reguliere expressies gebruiken als zoek term. Zo retourneert **^ r** e-mail adressen die beginnen met de letter r.
 
 7. Als u de tabel wilt verwijderen, gebruikt u de volgende opdracht:
 

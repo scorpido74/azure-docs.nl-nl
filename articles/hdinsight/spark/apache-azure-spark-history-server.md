@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
-ms.openlocfilehash: 5cf1986711479f7330b0cd477744d9f4e2ac6459
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8dd9aaeaadf13fa48577cf2853e7bcf58badb41
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76548931"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079289"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>De uitgebreide functies van de Apache Spark History-server gebruiken om fouten op te sporen en op te sporen in Spark-toepassingen
 
@@ -32,7 +32,7 @@ De Spark-geschiedenis server is de Web-UI voor voltooide en actieve Spark-toepas
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>De Web-UI van de Spark-geschiedenis server op URL openen
 
-Open de Spark-geschiedenis server door te `https://CLUSTERNAME.azurehdinsight.net/sparkhistory`bladeren naar, waarbij **clustername** de naam is van uw Spark-cluster.
+Open de Spark-geschiedenis server door te bladeren naar `https://CLUSTERNAME.azurehdinsight.net/sparkhistory` , waarbij **clustername** de naam is van uw Spark-cluster.
 
 De Web-UI van de Spark-geschiedenis server kan er ongeveer als volgt uitzien:
 
@@ -97,10 +97,10 @@ Selecteer de taak-ID en selecteer vervolgens **gegevens** in het menu van het hu
    ![De heatmap op de pagina & taak grafiek van Spark-toepassing.](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
 
 
-    |Kleur |Beschrijving |
+    |Kleur |Description |
     |---|---|
     |Groen|De taak is voltooid.|
-    |Orange|De taak is mislukt, maar dit heeft geen invloed op het uiteindelijke resultaat van de taak. Deze taken bevatten dubbele of nieuwe exemplaren die later kunnen worden uitgevoerd.|
+    |Oranje|De taak is mislukt, maar dit heeft geen invloed op het uiteindelijke resultaat van de taak. Deze taken bevatten dubbele of nieuwe exemplaren die later kunnen worden uitgevoerd.|
     |Blauw|De taak wordt uitgevoerd.|
     |Wit|De taak wacht op uitvoering of het stadium is overgeslagen.|
     |Rood|De taak is mislukt.|
@@ -208,7 +208,7 @@ Selecteer het kleur pictogram om de bijbehorende inhoud in alle concepten te sel
 Voer de volgende stappen uit om terug te keren naar de Community-versie.
 
 1. Open het cluster in Ambari.
-1. Ga naar **Spark2** > -**configuraties**.
+1. Ga naar **Spark2**-  >  **configuraties**.
 1. Selecteer **aangepaste spark2-standaard waarden**.
 1. **Eigenschap toevoegen selecteren...**.
 1. Voeg **Spark. UI. Enhancement. Enabled = False**toe en sla het vervolgens op.
@@ -245,7 +245,7 @@ Als er een fout optreedt in de Spark-geschiedenis server, moet u de volgende sta
 
 ### <a name="how-do-i-upgrade-a-jar-file-in-a-hotfix-scenario"></a>Hoe kan ik u een jar-bestand in een hotfix-scenario bijwerken?
 
-Als u een upgrade wilt uitvoeren met een hotfix, gebruikt u het volgende script dat zal `spark-enhancement.jar*`worden bijgewerkt.
+Als u een upgrade wilt uitvoeren met een hotfix, gebruikt u het volgende script dat zal worden bijgewerkt `spark-enhancement.jar*` .
 
 **upgrade_spark_enhancement. sh**:
 
@@ -310,7 +310,7 @@ Als u een upgrade wilt uitvoeren met een hotfix, gebruikt u het volgende script 
     |Eigenschap |Waarde |
     |---|---|
     |Script type|-Aangepast|
-    |Naam|UpgradeJar|
+    |Name|UpgradeJar|
     |Bash-script-URI|`https://hdinsighttoolingstorage.blob.core.windows.net/shsscriptactions/upgrade_spark_enhancement.sh`|
     |Knooppunt type (n)|Hoofd, werk nemer|
     |Parameters|`https://${account_name}.blob.core.windows.net/packages/jars/spark-enhancement-${version}.jar`|
@@ -328,6 +328,6 @@ Als u een upgrade wilt uitvoeren met een hotfix, gebruikt u het volgende script 
 + [Resources voor een Apache Spark cluster in HDInsight beheren](apache-spark-resource-manager.md)
 + [Apache Spark-instellingen configureren](apache-spark-settings.md)
 
-## <a name="feedback"></a>Feedback
+## <a name="suggestions"></a>Suggesties
 
-Als u feedback hebt of problemen ondervindt bij het gebruik van dit hulp programma, stuurt u een[hdivstool@microsoft.com](mailto:hdivstool@microsoft.com)e-mail naar ().
+Als u feedback hebt of problemen ondervindt bij het gebruik van dit hulp programma, stuurt u een e-mail naar ( [hdivstool@microsoft.com](mailto:hdivstool@microsoft.com) ).
