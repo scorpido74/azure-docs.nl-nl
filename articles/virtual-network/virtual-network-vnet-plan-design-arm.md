@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
-ms.openlocfilehash: 4601a7f5da8d6e4eda2ee433fe52d08a6341ce6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 416ca556e298fa088916a554860d05725bc1cf72
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186013"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045498"
 ---
 # <a name="plan-virtual-networks"></a>Virtuele netwerken plannen
 
@@ -61,7 +61,7 @@ Een virtueel netwerk kan worden gesegmenteerd in een of meer subnetten tot aan d
 - Elk subnet moet een uniek adres bereik hebben, opgegeven in CIDR-notatie, binnen de adres ruimte van het virtuele netwerk. Het adres bereik mag niet overlappen met andere subnetten in het virtuele netwerk.
 - Als u van plan bent om bepaalde Azure-service resources te implementeren in een virtueel netwerk, kunnen ze een eigen subnet vereisen of maken, zodat er voldoende niet-toegewezen ruimte is. Als u wilt bepalen of een Azure-service een eigen subnet maakt, raadpleegt u de informatie voor elke [Azure-service die in een virtueel netwerk kan worden geïmplementeerd](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network). Als u bijvoorbeeld een virtueel netwerk verbindt met een on-premises netwerk met behulp van een Azure-VPN Gateway, moet het virtuele netwerk een specifiek subnet voor de gateway hebben. Meer informatie over [Gateway-subnetten](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub).
 - Azure routeert netwerk verkeer tussen alle subnetten in een virtueel netwerk standaard. U kunt de standaard routering van Azure onderdrukken om Azure-route ring tussen subnetten te voor komen of om verkeer tussen subnetten te routeren via een virtueel netwerk apparaat, bijvoorbeeld. Als u wilt dat verkeer tussen bronnen in dezelfde virtuele netwerk stroom via een virtueel netwerk apparaat (NVA) wordt vereist, implementeert u de bronnen op verschillende subnetten. Meer informatie vindt u in [beveiliging](#security).
-- U kunt de toegang tot Azure-resources, zoals een Azure-opslag account of Azure SQL database, beperken tot specifieke subnetten met een service-eind punt van een virtueel netwerk. Verder kunt u de toegang tot de bronnen van Internet weigeren. U kunt meerdere subnetten maken en een service-eind punt inschakelen voor sommige subnetten, maar niet voor anderen. Meer informatie over [service-eind punten](virtual-network-service-endpoints-overview.md)en de Azure-resources die u kunt inschakelen voor.
+- U kunt de toegang tot Azure-resources, zoals een Azure-opslag account of Azure SQL Database, beperken tot specifieke subnetten met een service-eind punt voor een virtueel netwerk. Verder kunt u de toegang tot de bronnen van Internet weigeren. U kunt meerdere subnetten maken en een service-eind punt inschakelen voor sommige subnetten, maar niet voor anderen. Meer informatie over [service-eind punten](virtual-network-service-endpoints-overview.md)en de Azure-resources die u kunt inschakelen voor.
 - U kunt nul of één netwerk beveiligings groep koppelen aan elk subnet in een virtueel netwerk. U kunt dezelfde of een andere netwerk beveiligings groep koppelen aan elk subnet. Elke netwerk beveiligings groep bevat regels die verkeer naar en van bronnen en bestemmingen toestaan of weigeren. Meer informatie over [netwerk beveiligings groepen](#traffic-filtering).
 
 ## <a name="security"></a>Beveiliging

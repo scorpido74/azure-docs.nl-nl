@@ -4,15 +4,15 @@ description: In dit artikel wordt beschreven hoe u beheerde identiteiten gebruik
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 01741ea56b9e6f55c1393e88fc7991d410c33119
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 551f0065f1547e94d93993a38795234f455b9eef
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84712374"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044393"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Stream Analytics verifiëren voor het Azure Data Lake Storage Gen1 met behulp van beheerde identiteiten
 
@@ -166,7 +166,7 @@ In dit artikel ziet u drie manieren om beheerde identiteit in te scha kelen voor
 
    De **PrincipalId** is de object-id van de Service-Principal en wordt weer gegeven op het portal scherm wanneer de Service-Principal is gemaakt. Als u de taak hebt gemaakt met behulp van een resource manager-sjabloon implementatie, wordt de object-ID weer gegeven in de eigenschap identiteit van het antwoord op de taak.
 
-   **Hierbij**
+   **Voorbeeld**
 
    ```powershell
    PS > Set-AzDataLakeStoreItemAclEntry -AccountName "adlsmsidemo" -Path / -AceType

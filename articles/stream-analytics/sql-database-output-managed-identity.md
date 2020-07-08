@@ -4,14 +4,14 @@ description: In dit artikel wordt beschreven hoe u beheerde identiteiten gebruik
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: a8699b3942fe3a4b23f1d72036b7364cdab36f8e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 757dd7280867e9b31fdc0750fc0848de8f266770
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651971"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045617"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Beheerde identiteiten gebruiken om toegang te krijgen tot Azure SQL Database vanuit een Azure Stream Analytics-taak (preview-versie)
 
@@ -70,7 +70,7 @@ Nadat u een beheerde identiteit hebt gemaakt, selecteert u een Active Directory 
 
 Vervolgens maakt u een Inge sloten database gebruiker in uw SQL Database die is toegewezen aan de Azure Active Directory identiteit. De Inge sloten database gebruiker heeft geen aanmelding voor de hoofd database, maar wordt toegewezen aan een identiteit in de map die is gekoppeld aan de data base. De identiteit van de Azure Active Directory kan een afzonderlijk gebruikers account of een groep zijn. In dit geval wilt u een Inge sloten database gebruiker voor uw Stream Analytics-taak maken. 
 
-1. Maak verbinding met de SQL database met behulp van SQL Server Management Studio. De **gebruikers naam** is een Azure Active Directory gebruiker met de machtiging voor het **wijzigen van een gebruiker** . De beheerder die u instelt op de SQL Server is een voor beeld. Gebruik **Azure Active Directory-Universal met MFA-** verificatie. 
+1. Verbinding maken met SQL Database met behulp van SQL Server Management Studio. De **gebruikers naam** is een Azure Active Directory gebruiker met de machtiging voor het **wijzigen van een gebruiker** . De beheerder die u instelt op de SQL Server is een voor beeld. Gebruik **Azure Active Directory-Universal met MFA-** verificatie. 
 
    ![Verbinding maken met SQL Server](./media/sql-db-output-managed-identity/connect-sql-server.png)
 
@@ -96,7 +96,7 @@ Vervolgens maakt u een Inge sloten database gebruiker in uw SQL Database die is 
    CREATE USER [ASA_JOB_NAME] FROM EXTERNAL PROVIDER; 
    ```
 
-1. Voor de Azure Active Directory van micro soft om te controleren of de Stream Analytics-taak toegang heeft tot de SQL Database, moeten we Azure Active Directory toestemming geven om te communiceren met de data base. Als u dit wilt doen, gaat u opnieuw naar de pagina firewalls en virtuele netwerken in azure Portal en schakelt u ' Azure-Services en-resources toestaan om toegang te krijgen tot deze server ' in. 
+1. Voor de Azure Active Directory van micro soft om te controleren of de Stream Analytics-taak toegang heeft tot de SQL Database, moeten we Azure Active Directory toestemming geven om te communiceren met de data base. Als u dit wilt doen, gaat u naar de pagina firewalls en virtueel netwerk in Azure Portal en schakelt u ' Azure-Services en-bronnen toestaan voor toegang tot deze server ' in. 
 
    ![Firewall en virtueel netwerk](./media/sql-db-output-managed-identity/allow-access.png)
 

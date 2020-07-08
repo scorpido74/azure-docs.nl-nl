@@ -5,15 +5,15 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f506cc526a824d45ae2d6b7a75e1c1a99dae4d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0e2244d8c70ca2e6d379e741d543d9cd260b7f8
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426442"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044580"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Een IoT-oplossing bouwen met behulp van Stream Analytics
 
@@ -54,7 +54,7 @@ De gegevens stroom van de vermelding bevat informatie over auto's wanneer deze n
 
 Hier volgt een korte beschrijving van de kolommen:
 
-| Kolom | Beschrijving |
+| Kolom | Description |
 | --- | --- |
 | TollID |De ID van het telefoon nummer waarmee een telefoon stand wordt aangeduid |
 | EntryTime |De datum en tijd van binnenkomst van het Voer tuig in UTC |
@@ -81,7 +81,7 @@ De gegevens stroom voor afsluiten bevat informatie over auto's die het bewerking
 
 Hier volgt een korte beschrijving van de kolommen:
 
-| Kolom | Beschrijving |
+| Kolom | Description |
 | --- | --- |
 | TollID |De ID van het telefoon nummer waarmee een telefoon stand wordt aangeduid |
 | ExitTime |De datum en tijd van het verlaten van het Voer tuig in UTC |
@@ -101,7 +101,7 @@ De oplossing maakt gebruik van een statische moment opname van een registratie d
 
 Hier volgt een korte beschrijving van de kolommen:
 
-| Kolom | Beschrijving |
+| Kolom | Description |
 | --- | --- |
 | LicensePlate |Het nummer van de licentie plaat van het Voer tuig |
 | Registratie |De registratie-ID van het Voer tuig |
@@ -112,8 +112,8 @@ Als u deze oplossing wilt volt ooien, hebt u een Microsoft Azure-abonnement nodi
 
 Volg de stappen in de sectie ' uw Azure-account opschonen ' aan het einde van dit artikel zodat u het beste gebruik kunt maken van uw Azure-tegoed.
 
-## <a name="deploy-the-sample"></a>Het voor beeld implementeren
-Er zijn verschillende bronnen die eenvoudig kunnen worden geïmplementeerd in een resource groep, samen met een paar klikken. De definitie van de oplossing wordt gehost in de [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp)github-opslag plaats op.
+## <a name="deploy-the-sample"></a>Het voorbeeld implementeren
+Er zijn verschillende bronnen die eenvoudig kunnen worden geïmplementeerd in een resource groep, samen met een paar klikken. De definitie van de oplossing wordt gehost in de GitHub-opslag plaats op [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp) .
 
 ### <a name="deploy-the-tollapp-template-in-the-azure-portal"></a>De TollApp-sjabloon implementeren in de Azure Portal
 1. Gebruik deze koppeling om [TollApp Azure-sjabloon te implementeren](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-stream-analytics%2Fmaster%2FSamples%2FTollApp%2FVSProjects%2FTollAppDeployment%2Fazuredeploy.json)om de TollApp-omgeving te implementeren in Azure.
@@ -122,7 +122,7 @@ Er zijn verschillende bronnen die eenvoudig kunnen worden geïmplementeerd in ee
 
 3. Kies het abonnement waarin de verschillende resources worden gefactureerd.
 
-4. Geef een nieuwe resource groep op met een unieke naam, bijvoorbeeld `MyTollBooth`.
+4. Geef een nieuwe resource groep op met een unieke naam, bijvoorbeeld `MyTollBooth` .
 
 5. Selecteer een Azure-locatie.
 
@@ -168,7 +168,7 @@ Er zijn verschillende bronnen die eenvoudig kunnen worden geïmplementeerd in ee
 3. Bekijk de invoer van de voorbeeld taak TollApp. Alleen de EntryStream-invoer wordt gebruikt in de huidige query.
    - **EntryStream** -invoer is een event hub-verbinding waarbij gegevens worden gequeued die elke keer dat een auto een tollbooth op de weg binnenkomt. In een web-app die deel uitmaakt van het voor beeld, worden de gebeurtenissen gemaakt en worden de gegevens in de wachtrij geplaatst in deze event hub. Houd er rekening mee dat deze invoer wordt opgevraagd in de component FROM van de streaming-query.
    - **ExitStream** -invoer is een event hub-verbinding waarbij gegevens worden geplaatst die elke keer dat een auto een tollbooth op de weg verlaat. Deze streaming-invoer wordt gebruikt in latere variaties van de query syntaxis.
-   - **Registratie** -invoer is een Azure Blob-opslag verbinding, die verwijst naar een statische registratie. JSON-bestand, dat wordt gebruikt voor zoek acties als dat nodig is. Deze invoer voor referentie gegevens wordt in latere variaties van de query syntaxis gebruikt.
+   - **Registratie** -invoer is een Azure Blob-opslag verbinding, die verwijst naar een statische registration.jsin het bestand, die wordt gebruikt voor zoek acties als dat nodig is. Deze invoer voor referentie gegevens wordt in latere variaties van de query syntaxis gebruikt.
 
 4. Bekijk de uitvoer van de voorbeeld taak TollApp.
    - **Cosmos DB** -uitvoer is een Cosmos-database container die de uitvoer-Sink-gebeurtenissen ontvangt. Houd er rekening mee dat deze uitvoer wordt gebruikt in component INTO van de streaming-query.
@@ -185,11 +185,11 @@ Volg deze stappen om de streaming-taak te starten:
 ## <a name="review-the-cosmosdb-output-data"></a>De CosmosDB-uitvoer gegevens controleren
 1. Zoek de resource groep die de TollApp-resources bevat.
 
-2. Selecteer het Azure Cosmos DB account met het naam patroon **tollapp\<wille keurig\>-Cosmos**.
+2. Selecteer het Azure Cosmos DB account met het naam patroon **tollapp \<random\> -Cosmos**.
 
 3. Selecteer de **Data Explorer** kop om de pagina Data Explorer te openen.
 
-4. Vouw de **tollAppDatabase** > -**tollAppCollection** > -**documenten**uit.
+4. Vouw de **tollAppDatabase**-  >  **tollAppCollection**-  >  **documenten**uit.
 
 5. In de lijst met id's worden verschillende documenten weer gegeven zodra de uitvoer beschikbaar is.
 

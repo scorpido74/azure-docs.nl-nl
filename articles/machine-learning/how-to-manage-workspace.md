@@ -1,5 +1,5 @@
 ---
-title: Azure Machine Learning-werk ruimten maken in de portal
+title: Werk ruimten maken in de portal
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het maken, weer geven en verwijderen van Azure Machine Learning-werk ruimten in de Azure Portal.
 services: machine-learning
@@ -10,21 +10,21 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: c729f59fbb92584ff613147577ab097e63307ace
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 71bb85c5812a3e779570cdd87c5092e5b0de52f9
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84430442"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045702"
 ---
-# <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Machine Learning-werk ruimten in de Azure Portal maken en beheren
+# <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Machine Learning-werkruimten maken en beheren in de Azure-portal
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel maakt, bekijkt en verwijdert u [**Azure machine learning-werk ruimten**](concept-workspace.md) in de Azure Portal voor [Azure machine learning](overview-what-is-azure-ml.md).  De portal is de eenvoudigste manier om aan de slag te gaan met werk ruimten, maar als uw behoeften wijzigen of vereisten voor automatisering verhogen, kunt u ook werk ruimten maken en verwijderen [met behulp van de CLI](reference-azure-machine-learning-cli.md), [met Python-code](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) of [via de VS code-extensie](tutorial-setup-vscode-extension.md).
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 
-Als u een werk ruimte wilt maken, hebt u een Azure-abonnement nodig. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
+Als u een werk ruimte wilt maken, hebt u een Azure-abonnement nodig. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met behulp van de referenties voor uw Azure-abonnement. 
 
@@ -42,7 +42,7 @@ Als u een werk ruimte wilt maken, hebt u een Azure-abonnement nodig. Als u nog g
 
    Veld|Beschrijving 
    ---|---
-   Naam van de werkruimte |Voer een unieke naam in die uw werk ruimte identificeert. In dit voor beeld gebruiken we **docs-WS**. De namen moeten uniek zijn in de resource groep. Gebruik een naam die gemakkelijk kan worden ingetrokken en om onderscheid te maken tussen werk ruimten die door anderen zijn gemaakt. De naam van de werk ruimte is niet hoofdletter gevoelig.
+   Werkruimtenaam |Voer een unieke naam in die uw werk ruimte identificeert. In dit voor beeld gebruiken we **docs-WS**. De namen moeten uniek zijn in de resource groep. Gebruik een naam die gemakkelijk kan worden ingetrokken en om onderscheid te maken tussen werk ruimten die door anderen zijn gemaakt. De naam van de werk ruimte is niet hoofdletter gevoelig.
    Abonnement |Selecteer het Azure-abonnement dat u wilt gebruiken.
    Resourcegroep | Gebruik een bestaande resourcegroep in uw abonnement of voer een naam in om een nieuwe resourcegroep te maken. Een resource groep bevat gerelateerde resources voor een Azure-oplossing. In dit voor beeld gebruiken we **docs-AML**. 
    Locatie | Selecteer de locatie die het dichtst bij uw gebruikers ligt en de gegevens bronnen om uw werk ruimte te maken.
@@ -60,13 +60,13 @@ Als u een werk ruimte wilt maken, hebt u een Azure-abonnement nodig. Als u nog g
  
  1. Als u de nieuwe werk ruimte wilt weer geven, selecteert u **Ga naar resource**.
 
-### <a name="download-a-configuration-file"></a>Een configuratie bestand downloaden
+### <a name="download-a-configuration-file"></a>Een configuratiebestand downloaden
 
 1. Als u een [reken instantie](tutorial-1st-experiment-sdk-setup.md#azure)wilt maken, slaat u deze stap over.
 
-1. Als u van plan bent code te gebruiken in uw lokale omgeving die verwijst naar deze werk ruimte, selecteert u **config. json downloaden** in het gedeelte **overzicht** van de werk ruimte.  
+1. Als u van plan bent om code te gebruiken in uw lokale omgeving die verwijst naar deze werk ruimte, selecteert u **config.jsdownloaden in** het gedeelte **overzicht** van de werk ruimte.  
 
-   ![Config. json downloaden](./media/how-to-manage-workspace/configure.png)
+   ![Down load config.jsop](./media/how-to-manage-workspace/configure.png)
    
    Plaats het bestand in de mapstructuur met uw python-scripts of Jupyter-notebooks. Deze kan zich in dezelfde map bevindt, in een submap met de naam *. azureml*of in een bovenliggende map. Wanneer u een reken instantie maakt, wordt dit bestand voor u toegevoegd aan de juiste map op de virtuele machine.
 
@@ -74,7 +74,7 @@ Als u een werk ruimte wilt maken, hebt u een Azure-abonnement nodig. Als u nog g
 
 U kunt uw werk ruimte upgraden van de Basic Edition naar Enter prise Edition om gebruik te maken van de uitgebreide functies, zoals ervaringen met weinig code en verbeterde beveiligings functies.
 
-1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com).
+1. Meld u aan bij [Azure Machine Learning Studio](https://ml.azure.com).
 
 1. Selecteer de werk ruimte die u wilt bijwerken.
 

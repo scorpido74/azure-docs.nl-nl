@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 07/06/2020
 ms.author: b-juche
-ms.openlocfilehash: 9d39a6d85f878b6d67ffbcc55f468ad6984eecab
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 23ec482de740cc1ac8800a5de1c0e3be1f055df7
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85260798"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045481"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Oplossingsarchitecturen op basis van Azure NetApp Files
 Dit artikel bevat verwijzingen naar aanbevolen procedures waarmee u inzicht krijgt in de oplossings architecturen voor het gebruik van Azure NetApp Files.  
@@ -49,6 +49,7 @@ Deze sectie bevat verwijzingen naar Windows-toepassingen en SQL Server oplossing
 ### <a name="sql-server"></a>SQL Server
 
 * [SQL Server implementeren via SMB met Azure NetApp Files](https://www.youtube.com/watch?v=x7udfcYbibs)
+* [SQL Server failover cluster met behulp van SMB implementeren met Azure NetApp Files](https://www.youtube.com/watch?v=zuNJ5E07e8Q)
 * [Altijd-on-beschikbaarheids groepen implementeren met Azure NetApp Files](https://www.youtube.com/watch?v=y3VQmzzeyvc)
 
 ## <a name="sap-on-azure-solutions"></a>SAP on Azure oplossingen

@@ -66,6 +66,8 @@
       href: load-balancer-standard-availability-zones.md
     - name: Ingebouwde beveiligingsmaatregelen
       href: load-balancer-security-controls.md
+    - name: Beheer van back-end-pools
+      href: backend-pool-management.md
 - name: Procedures
   items:
     - name: Virtuele-machineschaalsets

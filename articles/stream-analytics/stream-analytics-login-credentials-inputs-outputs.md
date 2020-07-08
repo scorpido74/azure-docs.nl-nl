@@ -5,15 +5,15 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3ae639dd7c5a42fc6880240988f0fb2817b09f43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3154447e4df64b9b335beae99cfd208d1a21efc4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75425974"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044410"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Aanmeldings referenties voor invoer en uitvoer van een Stream Analytics-taak draaien
 
@@ -49,13 +49,13 @@ In deze sectie leert u hoe u de referenties voor Blob Storage, Event Hubs, SQL D
 
 ### <a name="sql-database"></a>SQL Database
 
-U moet verbinding maken met de SQL database om de aanmeldings referenties van een bestaande gebruiker bij te werken. U kunt referenties bijwerken met behulp van Azure Portal of een hulp programma aan de client zijde, zoals SQL Server Management Studio. In deze sectie wordt het proces voor het bijwerken van referenties met behulp van Azure Portal beschreven.
+U moet verbinding maken met SQL Database om de aanmeldings referenties van een bestaande gebruiker bij te werken. U kunt referenties bijwerken met behulp van Azure Portal of een hulp programma aan de client zijde, zoals SQL Server Management Studio. In deze sectie wordt het proces voor het bijwerken van referenties met behulp van Azure Portal beschreven.
 
 1. Meld u aan bij de Azure Portal > te bladeren door de SQL database die u als uitvoer voor de Stream Analytics-taak hebt gebruikt.    
 2. Van **Data Explorer**, aanmelden/verbinding maken met uw data base > verificatie type selecteren als **SQL server-verificatie** > Typ uw **aanmeldings** -en **wachtwoord** gegevens > Selecteer **OK**.  
-   ![Referenties voor SQL database opnieuw genereren](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
+   ![Referenties voor SQL Database opnieuw genereren](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
 
-3. Wijzig op het tabblad query het wacht woord voor een van de gebruikers door de volgende query uit te voeren (Vervang `<user_name>` door uw gebruikers naam en `<new_password>` met het nieuwe wacht woord):  
+3. Wijzig op het tabblad query het wacht woord voor een van de gebruikers door de volgende query uit te voeren (Vervang door `<user_name>` uw gebruikers naam en `<new_password>` met het nieuwe wacht woord):  
 
    ```SQL
    Alter user `<user_name>` WITH PASSWORD = '<new_password>'
@@ -64,7 +64,7 @@ U moet verbinding maken met de SQL database om de aanmeldings referenties van ee
 
 4. Noteer het nieuwe wacht woord.    
 5. Blader in het Azure Portal door de Stream Analytics-taak > Selecteer **stoppen** en wacht totdat de taak is gestopt.    
-6. Zoek de SQL database uitvoer waarvoor u de referenties wilt draaien. Werk het wacht woord bij en sla de wijzigingen op.    
+6. Zoek de SQL Database uitvoer waarvoor u de referenties wilt draaien. Werk het wacht woord bij en sla de wijzigingen op.    
 7. Een verbindings test wordt automatisch gestart wanneer u de wijzigingen opslaat, Controleer of deze is geslaagd.    
 8. Ga door met [het starten van de taak in de sectie laatste keer gestopt](#start-your-job-from-the-last-stopped-time) .
 

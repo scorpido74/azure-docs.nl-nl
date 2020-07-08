@@ -1,6 +1,6 @@
 ---
 title: Connectiviteits instellingen voor Azure SQL Database en Data Warehouse
-description: Dit document bevat informatie over de TLS-versie keuze en de instelling van proxy versus omleiding voor Azure SQL Database en Azure Synapse Analytics
+description: In dit document wordt de versie keuze van Transport Layer Security (TLS) en de instelling voor proxy versus omleiding voor Azure SQL Database en Azure Synapse Analytics uitgelegd
 services: sql-database
 ms.service: sql-database
 titleSuffix: Azure SQL Database and SQL Data Warehouse
@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
-ms.date: 03/09/2020
-ms.openlocfilehash: 3397fcb14f27e6bc0cc64b048dedde7198d5a06b
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.date: 07/06/2020
+ms.openlocfilehash: 04c5d9c8eceb14ab68ca0d96f994bf6a64bbc431
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266080"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045366"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL-connectiviteitsinstellingen
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -33,9 +33,17 @@ De connectiviteits instellingen zijn toegankelijk via het scherm **firewalls en 
 
 ## <a name="deny-public-network-access"></a>Open bare netwerk toegang weigeren
 
-In de Azure Portal, wanneer de instelling **open bare netwerk toegang weigeren** is ingesteld op **Ja**, worden alleen verbindingen via persoonlijke eind punten toegestaan. Als deze instelling is ingesteld op **Nee**, kunnen clients verbinding maken met behulp van het privé-of open bare eind punt.
+Wanneer de instelling **open bare netwerk toegang weigeren** is ingesteld op **Ja**, zijn alleen verbindingen via persoonlijke eind punten toegestaan. Als deze instelling is ingesteld op **Nee** (standaard), kunnen clients verbinding maken met behulp van open bare eind punten (op IP gebaseerde firewall regels, op VNET gebaseerde firewall regels) of privé-eind punten (met behulp van een persoonlijke koppeling), zoals beschreven in het [overzicht van netwerk toegang](network-access-controls-overview.md). 
 
-Klanten kunnen verbinding maken met SQL Database met behulp van open bare eind punten (op IP gebaseerde firewall regels, op VNET gebaseerde firewall regels) of privé-eind punten (met behulp van een persoonlijke koppeling), zoals beschreven in het [overzicht van netwerk toegang](network-access-controls-overview.md). 
+ ![Scherm opname van connectiviteit met open bare toegang tot het netwerk weigeren][2]
+
+Elke poging om de instelling **toegang tot open bare netwerk weigeren** in te stellen op **Ja** zonder dat er een bestaand persoonlijk eind punt op de logische server wordt uitgevoerd, mislukt met een fout bericht dat lijkt op het volgende:  
+
+```output
+Error 42102
+Unable to set Deny Public Network Access to Yes since there is no private endpoint enabled to access the server. 
+Please set up private endpoints and retry the operation. 
+```
 
 Wanneer de instelling **open bare netwerk toegang weigeren** is ingesteld op **Ja**, worden alleen verbindingen via persoonlijke eind punten toegestaan en worden alle verbindingen via open bare eind punten geweigerd met een fout bericht dat lijkt op het volgende:  
 
@@ -44,6 +52,14 @@ Error 47073
 An instance-specific error occurred while establishing a connection to SQL Server. 
 The public network interface on this server is not accessible. 
 To connect to this server, use the Private Endpoint from inside your virtual network.
+```
+
+Wanneer de instelling **open bare netwerk toegang weigeren** is ingesteld op **Ja**, worden pogingen om firewall regels toe te voegen of bij te werken, geweigerd met een fout bericht dat vergelijkbaar is met:
+
+```output
+Error 42101
+Unable to create or modify firewall rules when public network interface for the server is disabled. 
+To manage server or database level firewall rules, please enable the public network interface.
 ```
 
 ## <a name="change-public-network-access-via-powershell"></a>Open bare netwerk toegang wijzigen via Power shell
@@ -86,9 +102,12 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 
 Met de instelling minimale versie van [Transport Layer Security (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) kunnen klanten de versie van TLS beheren die door hun Azure SQL database wordt gebruikt.
 
-Momenteel ondersteunen we TLS 1,0, 1,1 en 1,2. Als u een minimale TLS-versie instelt, worden nieuwe versies van TLS ondersteund. Bijvoorbeeld, bijvoorbeeld het kiezen van een TLS-versie die groter is dan 1,1. houdt in dat alleen verbindingen met TLS 1,1 en 1,2 worden geaccepteerd en dat TLS 1,0 wordt afgewezen. Nadat u hebt getest om te bevestigen dat uw toepassingen deze ondersteunen, wordt u aangeraden minimale TLS-versie in te stellen op 1,2, omdat deze oplossingen bevat voor beveiligings problemen die in vorige versies zijn gevonden en de hoogste versie van TLS ondersteund in Azure SQL Database.
+Momenteel ondersteunen we TLS 1,0, 1,1 en 1,2. Als u een minimale TLS-versie instelt, worden nieuwe versies van TLS ondersteund. U kunt bijvoorbeeld een TLS-versie groter dan 1,1 kiezen. houdt in dat alleen verbindingen met TLS 1,1 en 1,2 worden geaccepteerd en dat TLS 1,0 wordt afgewezen. Nadat u hebt getest om te bevestigen dat uw toepassingen deze ondersteunen, wordt u aangeraden minimale TLS-versie in te stellen op 1,2, omdat deze oplossingen bevat voor beveiligings problemen die in vorige versies zijn gevonden en de hoogste versie van TLS ondersteund in Azure SQL Database.
 
-Voor klanten met toepassingen die afhankelijk zijn van oudere versies van TLS, wordt u aangeraden de minimale TLS-versie in te stellen volgens de vereisten van uw toepassingen. Voor klanten die afhankelijk zijn van toepassingen om verbinding te maken met behulp van een niet-versleutelde verbinding, wordt u aangeraden geen minimale TLS-versie in te stellen. 
+> [!IMPORTANT]
+> De standaard waarde voor de minimale TLS-versie is alle versies toestaan. Als u echter een versie van TLS afdwingt, is het niet mogelijk om terug te keren naar de standaard waarde.
+
+Voor klanten met toepassingen die afhankelijk zijn van oudere versies van TLS, wordt u aangeraden de minimale TLS-versie in te stellen volgens de vereisten van uw toepassingen. Voor klanten die afhankelijk zijn van toepassingen om verbinding te maken met behulp van een niet-versleutelde verbinding, wordt u aangeraden geen minimale TLS-versie in te stellen.
 
 Zie [TLS-overwegingen voor SQL database connectiviteit](connect-query-content-reference-guide.md#tls-considerations-for-database-connectivity)voor meer informatie.
 
@@ -205,3 +224,4 @@ az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 
 <!--Image references-->
 [1]: media/single-database-create-quickstart/manage-connectivity-settings.png
+[2]: media/single-database-create-quickstart/manage-connectivity-flowchart.png

@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: 58908b690464396f716801338cb22514ae4b5a66
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 74d3f154f9965e44c9fba42ec094b9240972b40d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831259"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044342"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Stream Analytics-taken bewaken en beheren met Azure PowerShell-cmdlets
 Meer informatie over het bewaken en beheren van Stream Analytics resources met Azure PowerShell-cmdlets en Power shell-scripts waarmee basis Stream Analytics taken worden uitgevoerd.
@@ -93,7 +93,7 @@ Get-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US
 
 Deze Power shell-opdracht retourneert informatie over alle Stream Analytics taken in de resource groep StreamAnalytics-default-Central-nl.
 
-**Voor beeld 3**
+**Voorbeeld 3**
 
 Azure PowerShell 0.9.8:  
 
@@ -242,7 +242,7 @@ Azure PowerShell 1,0:
 New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -File "C:\Input.json" 
 ```
 
-Met deze Power shell-opdracht maakt u een nieuwe invoer van de bestands invoer. json. Als een bestaande invoer met de naam die is opgegeven in het invoer definitie bestand al is gedefinieerd, wordt door de cmdlet gevraagd of deze moet worden vervangen.
+Met deze Power shell-opdracht maakt u een nieuwe invoer van het bestand Input.jsop. Als een bestaande invoer met de naam die is opgegeven in het invoer definitie bestand al is gedefinieerd, wordt door de cmdlet gevraagd of deze moet worden vervangen.
 
 **Voorbeeld 2**
 
@@ -260,7 +260,7 @@ New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US
 
 Met deze Power shell-opdracht maakt u een nieuwe invoer in de taak met de naam EntryStream. Als er al een bestaande invoer met deze naam is gedefinieerd, wordt u door de cmdlet gevraagd of u deze wilt vervangen.
 
-**Voor beeld 3**
+**Voorbeeld 3**
 
 Azure PowerShell 0.9.8:  
 
@@ -301,7 +301,7 @@ Azure PowerShell 1,0:
 New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\JobDefinition.json" 
 ```
 
-Met deze Power shell-opdracht wordt een nieuwe taak gemaakt op basis van de definitie in taak definitie. json. Als er al een bestaande taak met de naam in het taak definitie bestand is gedefinieerd, wordt u door de cmdlet gevraagd of u deze wilt vervangen.
+Met deze Power shell-opdracht wordt een nieuwe taak gemaakt op basis van de definitie in JobDefinition.jsop. Als er al een bestaande taak met de naam in het taak definitie bestand is gedefinieerd, wordt u door de cmdlet gevraagd of u deze wilt vervangen.
 
 **Voorbeeld 2**
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 46b78ca6f385f62d265210b41e634bbbd9a2041c
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 2ad817afd8f4e80e99055646dca34b9bb05d100f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262715"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044308"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Verbeterde beveiligde Score in Azure Security Center
 
@@ -132,7 +132,7 @@ De volgende tabel bevat de beveiligings opties in Azure Security Center. Voor el
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Versleuteling inschakelen op rest (maximum score 4)</p></strong><a href="https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest">Versleuteling bij rest</a> biedt gegevens beveiliging voor opgeslagen gegevens. Aanvallen tegen gegevens in rust zijn onder andere pogingen om fysieke toegang te krijgen tot de hardware waarop de gegevens zijn opgeslagen. Azures gebruiken symmetrische versleuteling om grote hoeveel heden gegevens op rest te versleutelen en ontsleutelen. Een symmetrische versleutelings sleutel wordt gebruikt voor het versleutelen van gegevens die naar opslag worden geschreven. Deze versleutelings sleutel wordt ook gebruikt om die gegevens te ontsleutelen wanneer deze gereed zijn voor gebruik in het geheugen. Sleutels moeten worden opgeslagen op een veilige locatie met toegangs beheer op basis van identiteit en controle beleid. Een dergelijke veilige locatie is Azure Key Vault. Als een aanvaller de versleutelde gegevens verkrijgt, maar niet de versleutelings sleutels, heeft de aanvaller geen toegang tot de gegevens zonder de versleuteling te verbreken.</td>
-    <td class="tg-lboi"; width=55%>-Schijf versleuteling moet worden toegepast op virtuele machines<br>-Transparent Data Encryption voor SQL-data bases moet zijn ingeschakeld<br>-De variabelen van het Automation-account moeten worden versleuteld<br>-Voor Service Fabric clusters moet de eigenschap ClusterProtectionLevel zijn ingesteld op EncryptAndSign<br>-SQL Server TDE-beveiliging moet worden versleuteld met uw eigen sleutel</td>
+    <td class="tg-lboi"; width=55%>-Schijf versleuteling moet worden toegepast op virtuele machines<br>-Transparent Data Encryption op SQL Database moet zijn ingeschakeld<br>-De variabelen van het Automation-account moeten worden versleuteld<br>-Voor Service Fabric clusters moet de eigenschap ClusterProtectionLevel zijn ingesteld op EncryptAndSign<br>-SQL Server TDE-beveiliging moet worden versleuteld met uw eigen sleutel</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Gegevens in transit versleutelen (maximum score 4)</p></strong>Gegevens zijn in transit wanneer ze worden verzonden tussen onderdelen, locaties of Program ma's. Organisaties die gegevens in de overdracht niet kunnen beveiligen, zijn vatbaar voor man-in-the-middle-aanvallen, afluis teren en het overnemen van sessies. SSL/TLS-protocollen moeten worden gebruikt voor het uitwisselen van gegevens en een VPN wordt aanbevolen. Bij het verzenden van versleutelde gegevens tussen een virtuele machine van Azure en een on-premises locatie via internet kunt u een virtuele netwerk gateway zoals <a href="https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways">Azure VPN gateway</a> gebruiken om versleuteld verkeer te verzenden.</td>
@@ -151,7 +151,7 @@ De volgende tabel bevat de beveiligings opties in Azure Security Center. Voor el
     <td class="tg-lboi"; width=55%>-Door sturen via IP op uw virtuele machine moet worden uitgeschakeld<br>-Geautoriseerde IP-bereiken moeten worden gedefinieerd in Kubernetes Services (preview)<br>-KEUR Toegang tot App Services moet worden beperkt (preview-versie)<br>-KEUR De regels voor webtoepassingen op IaaS Nsg's moeten worden gehard<br>-Virtuele machines moeten worden gekoppeld aan een netwerk beveiligings groep<br>-CORS mag niet alle bronnen toestaan om toegang te krijgen tot uw API-app<br>-CORS mag niet alle bronnen toestaan om toegang te krijgen tot uw functie-app<br>-CORS mag niet alle bronnen toestaan om toegang te krijgen tot uw webtoepassing<br>-Fout opsporing op afstand moet worden uitgeschakeld voor de API-app<br>-Fout opsporing op afstand moet worden uitgeschakeld voor functie-app<br>-Externe fout opsporing moet worden uitgeschakeld voor webtoepassing<br>-Toegang moet worden beperkt voor strikte netwerk beveiligings groepen met Internet gerichte Vm's<br>-De regels voor de netwerk beveiligings groep voor virtuele machines die zijn gericht op internet, moeten worden gehard</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">Adaptief toepassings beheer Toep assen (maximum score 3)</p></strong>Adaptief toepassings beheer (AAC) is een intelligente, geautomatiseerde, end-to-end oplossing, waarmee u kunt bepalen welke toepassingen kunnen worden uitgevoerd op uw Azure-en niet-Azure-machines. Het helpt ook om uw computers te beschermen tegen schadelijke software.<br>Security Center gebruikt machine learning voor het maken van een white list met bekende veilige toepassingen voor een groep machines.<br>Deze innovatieve benadering van Application white list biedt de beveiligings voordelen zonder beheer complexiteit.<br>AAC is met name relevant voor speciaal ontwikkelde servers die een specifieke set toepassingen moeten uitvoeren.</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Adaptief toepassings beheer Toep assen (maximum score 3)</p></strong>Adaptief toepassings beheer (AAC) is een intelligente, geautomatiseerde, end-to-end oplossing, waarmee u kunt bepalen welke toepassingen kunnen worden uitgevoerd op uw Azure-en niet-Azure-machines. Het helpt ook om uw computers te beschermen tegen schadelijke software.<br>Security Center gebruikt machine learning om een lijst met bekende veilige toepassingen voor een groep machines te maken.<br>Deze innovatieve benadering van de lijst met goedgekeurde toepassingen biedt de beveiligings voordelen zonder de beheer complexiteit.<br>AAC is met name relevant voor speciaal ontwikkelde servers die een specifieke set toepassingen moeten uitvoeren.</td>
     <td class="tg-lboi"; width=55%>-Adaptieve toepassings besturings elementen moeten worden ingeschakeld op virtuele machines<br>-Bewakings agent moet worden geïnstalleerd op uw virtuele machines<br>-Bewakings agent moet op uw computers zijn geïnstalleerd<br>-Log Analytics agent moet worden geïnstalleerd op uw op Windows gebaseerde Azure Arc-machines (preview)<br>-Log Analytics agent moet worden geïnstalleerd op uw op Linux gebaseerde Azure-Arc-machines (preview)<br>-Controle agent status problemen moeten worden opgelost op uw computers</td>
   </tr>
   <tr>

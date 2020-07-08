@@ -1,16 +1,16 @@
 ---
-title: Gast configuratie beleidsregels voor Windows maken
+title: Beleidsregels voor gastconfiguratie voor Windows maken
 description: Meer informatie over het maken van een Azure Policy-gast configuratie beleid voor Windows.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: a8231840cc20f03da44d489ae5226e7a0b4e0d48
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: b53c8ec8189516305de8b0b8c05b2be8ea49f7f2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835951"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045124"
 ---
-# <a name="how-to-create-guest-configuration-policies-for-windows"></a>Gast configuratie beleidsregels voor Windows maken
+# <a name="how-to-create-guest-configuration-policies-for-windows"></a>Beleidsregels voor gastconfiguratie voor Windows maken
 
 Voordat u aangepaste beleids definities maakt, is het een goed idee om de conceptuele overzichts informatie op de pagina [Azure Policy gast configuratie](../concepts/guest-configuration.md)te lezen.
  
@@ -28,7 +28,7 @@ Gebruik de volgende acties om uw eigen configuratie te maken voor het valideren 
 >
 > De gast configuratie-uitbrei ding is vereist voor het uitvoeren van controles op virtuele machines van Azure.
 > Als u de uitbrei ding op schaal op alle Windows-computers wilt implementeren, wijst u de volgende beleids definities toe:
->   - [Vereisten implementeren om gast configuratie beleid in te scha kelen op Windows-Vm's.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+>   - [Vereisten voor het inschakelen van gastconfiguratiebeleid op Windows-VM's implementeren.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
 
 ## <a name="install-the-powershell-module"></a>De Power shell-module installeren
 
@@ -84,11 +84,14 @@ Zie [overzicht van Power shell DSC](/powershell/scripting/dsc/overview/overview)
 
 ### <a name="how-guest-configuration-modules-differ-from-windows-powershell-dsc-modules"></a>Hoe gast configuratie modules verschillen van Windows Power shell DSC-modules
 
-Wanneer een gast configuratie een computer controleert:
+Wanneer een gast configuratie een computer controleert, is de volg orde van de gebeurtenissen anders dan in Windows Power shell DSC.
 
 1. De agent wordt eerst uitgevoerd `Test-TargetResource` om te bepalen of de configuratie de juiste status heeft.
 1. De Booleaanse waarde die door de functie wordt geretourneerd, bepaalt of de Azure Resource Manager status voor de gast toewijzing compatibel/niet-compatibel moet zijn.
 1. De provider wordt uitgevoerd `Get-TargetResource` om de huidige status van elke instelling te retour neren, zodat er informatie beschikbaar is over waarom een machine niet aan het beleid voldoet en om te bevestigen dat de huidige status compatibel is.
+
+Para meters in Azure Policy die waarden door geven aan gast configuratie toewijzingen moeten een _teken reeks_ type zijn.
+Het is niet mogelijk matrices door te geven via para meters, zelfs als de DSC-resource matrices ondersteunt.
 
 ### <a name="get-targetresource-requirements"></a>Vereisten voor Get-TargetResource
 
@@ -138,7 +141,7 @@ class ResourceName : OMI_BaseResource
 
 ### <a name="configuration-requirements"></a>Configuratie vereisten
 
-De naam van de aangepaste configuratie moet consistent zijn. De naam van het zip-bestand voor het inhouds pakket, de configuratie naam in het MOF-bestand en de naam van de gast toewijzing in de Resource Manager-sjabloon, moet hetzelfde zijn.
+De naam van de aangepaste configuratie moet consistent zijn. De naam van het zip-bestand voor het inhouds pakket, de configuratie naam in het MOF-bestand en de naam van de gast toewijzing in de Azure Resource Manager sjabloon (ARM-sjabloon) moet hetzelfde zijn.
 
 ### <a name="scaffolding-a-guest-configuration-project"></a>Een configuratie project voor een gast steiger
 
@@ -163,7 +166,7 @@ De pakket indeling moet een zip-bestand zijn.
 ### <a name="storing-guest-configuration-artifacts"></a>Gast configuratie artefacten opslaan
 
 Het zip-pakket moet worden opgeslagen op een locatie die toegankelijk is voor de beheerde virtuele machines.
-Voor beelden zijn GitHub-opslag plaatsen, een Azure-opslag plaats of Azure-opslag. Als u het pakket liever niet openbaar wilt maken, kunt u een [SAS-token](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) in de URL toevoegen.
+Voor beelden zijn GitHub-opslag plaatsen, een Azure-opslag plaats of Azure-opslag. Als u het pakket liever niet openbaar wilt maken, kunt u een [SAS-token](../../../storage/common/storage-sas-overview.md) in de URL toevoegen.
 U kunt ook [service-eind punten](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) implementeren voor computers in een particulier netwerk, hoewel deze configuratie alleen van toepassing is op toegang tot het pakket en niet communiceert met de service.
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>Stapsgewijze procedure, het maken van een aangepaste gast configuratie-controle beleid voor Windows
@@ -320,9 +323,9 @@ New-GuestConfigurationPolicy `
 
 De volgende bestanden worden gemaakt door `New-GuestConfigurationPolicy` :
 
-- **auditIfNotExists. json**
-- **deployIfNotExists. json**
-- **Initiative. json**
+- **auditIfNotExists.jsop**
+- **deployIfNotExists.jsop**
+- **Initiative.jsop**
 
 De cmdlet-uitvoer retourneert een object dat de weergave naam en het pad van de beleids bestanden bevat.
 
@@ -408,7 +411,7 @@ Hieronder vindt u een voorbeeld fragment van een beleids definitie waarmee filte
 
 Gast configuratie ondersteunt het overschrijven van eigenschappen van een configuratie tijdens runtime. Deze functie betekent dat de waarden in het MOF-bestand in het pakket niet als statisch moeten worden beschouwd. De onderdrukkings waarden worden geleverd via Azure Policy en hebben geen invloed op de manier waarop de configuraties worden gemaakt of gecompileerd.
 
-De cmdlets `New-GuestConfigurationPolicy` en `Test-GuestConfigurationPolicyPackage` bevatten een para meter met de naam **para meters**. Deze para meter gebruikt de definitie van de hash-tabel, inclusief alle details over elke para meter en maakt de vereiste secties van elk bestand dat wordt gebruikt voor de Azure Policy definitie.
+De cmdlets `New-GuestConfigurationPolicy` en `Test-GuestConfigurationPolicyPackage` bevatten een para meter met de naam **para meter**. Deze para meter gebruikt de definitie van de hash-tabel, inclusief alle details over elke para meter en maakt de vereiste secties van elk bestand dat wordt gebruikt voor de Azure Policy definitie.
 
 In het volgende voor beeld wordt een beleids definitie gemaakt voor het controleren van een service, waarbij de gebruiker selecteert in een lijst op het moment van beleids toewijzing.
 
@@ -431,15 +434,15 @@ New-GuestConfigurationPolicy
     -DisplayName 'Audit Windows Service.' `
     -Description 'Audit if a Windows Service is not enabled on Windows machine.' `
     -Path '.\policyDefinitions' `
-    -Parameters $PolicyParameterInfo `
+    -Parameter $PolicyParameterInfo `
     -Version 1.0.0
 ```
 
 ## <a name="extending-guest-configuration-with-third-party-tools"></a>Gast configuratie uitbreiden met hulpprogram ma's van derden
 
 > [!Note]
-> Deze functie is beschikbaar als preview-versie en vereist de 1.20.1 van de gast configuratie module, die kan worden geïnstalleerd met `Install-Module GuestConfiguration -AllowPrerelease` .
-> In versie 1.20.1 is deze functie alleen beschikbaar voor beleids definities die Windows-computers controleren
+> Deze functie is beschikbaar als preview-versie en vereist de 1.20.3 van de gast configuratie module, die kan worden geïnstalleerd met `Install-Module GuestConfiguration -AllowPrerelease` .
+> In versie 1.20.3 is deze functie alleen beschikbaar voor beleids definities die Windows-computers controleren
 
 De artefact pakketten voor gast configuratie kunnen worden uitgebreid met hulpprogram ma's van derden.
 Het uitbreiden van de gast configuratie vereist het ontwikkelen van twee onderdelen.
@@ -465,7 +468,14 @@ Alleen de `New-GuestConfigurationPackage` cmdlet vereist een wijziging in de sta
 Installeer de vereiste modules in uw ontwikkel omgeving:
 
 ```azurepowershell-interactive
-Install-Module GuestConfiguration, gcInSpec
+# Update PowerShellGet if needed to allow installing PreRelease versions of modules
+Install-Module PowerShellGet -Force
+
+# Install GuestConfiguration module prerelease version
+Install-Module GuestConfiguration -allowprerelease
+
+# Install commmunity supported gcInSpec module
+Install-Module gcInSpec
 ```
 
 Maak eerst het YaML-bestand dat wordt gebruikt door de specificatie. Het bestand bevat algemene informatie over de omgeving. Hieronder ziet u een voor beeld:
@@ -482,7 +492,7 @@ supports:
   - os-family: windows
 ```
 
-Sla dit bestand op in een map met `wmi_service` de naam in de projectmap.
+Sla dit bestand `wmi_service.yml` op met de naam in een map `wmi_service` met de naam in de projectmap.
 
 Maak vervolgens het ruby-bestand met de specificatie van de Inspec-taal die wordt gebruikt om de machine te controleren.
 
@@ -501,7 +511,7 @@ end
 
 ```
 
-Sla dit bestand op in een nieuwe map met de naam in `controls` de `wmi_service` map.
+Sla dit bestand `wmi_service.rb` op in een nieuwe map met de naam in `controls` de `wmi_service` map.
 
 Maak ten slotte een configuratie, importeer de resource module **GuestConfiguration** en gebruik de `gcInSpec` resource om de naam van het INSPEC-profiel in te stellen.
 
@@ -509,7 +519,7 @@ Maak ten slotte een configuratie, importeer de resource module **GuestConfigurat
 # Define the configuration and import GuestConfiguration
 Configuration wmi_service
 {
-    Import-DSCResource -Module @{ModuleName = 'gcInSpec'; ModuleVersion = '2.0.0'}
+    Import-DSCResource -Module @{ModuleName = 'gcInSpec'; ModuleVersion = '2.1.0'}
     node 'wmi_service'
     {
         gcInSpec wmi_service
@@ -552,7 +562,8 @@ Voer de volgende opdracht uit om een pakket te maken met behulp van de configura
 New-GuestConfigurationPackage `
   -Name 'wmi_service' `
   -Configuration './Config/wmi_service.mof' `
-  -FilesToInclude './wmi_service'
+  -FilesToInclude './wmi_service'  `
+  -Path './package' 
 ```
 
 ## <a name="policy-lifecycle"></a>Levens duur van beleid

@@ -1,0 +1,92 @@
+---
+title: Gebeurtenis bronnen voor streaming-opname-Azure Time Series Insights | Microsoft Docs
+description: Meer informatie over het streamen van gegevens naar Azure Time Series Insights.
+author: lyrana
+ms.author: lyhughes
+manager: deepakpalled
+ms.workload: big-data
+ms.service: time-series-insights
+services: time-series-insights
+ms.topic: conceptual
+ms.date: 06/03/2020
+ms.custom: seodec18
+ms.openlocfilehash: 602f5a0df6cbd7c308d45d02795e7404c46c73a7
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86049928"
+---
+# <a name="time-series-insights-event-sources"></a>Time Series Insights gebeurtenis bronnen
+
+ De omgeving van de TSI kan Maxi maal twee streaming gebeurtenis bronnen bevatten. Twee typen Azure-resources worden ondersteund als invoer:
+
+- [Azure IoT Hub](../iot-hub/about-iot-hub.md)
+- [Azure Event Hubs](../event-hubs/event-hubs-about.md)
+
+Gebeurtenissen moeten worden verzonden als JSON met UTF-8-code ring.
+
+## <a name="create-or-edit-event-sources"></a>Gebeurtenis bronnen maken of bewerken
+
+De bron (nen) van uw gebeurtenis kan in hetzelfde Azure-abonnement wonen als uw Time Series Insights-omgeving of een ander abonnement. U kunt de [Azure Portal](time-series-insights-update-create-environment.md#create-a-preview-payg-environment), [Azure cli](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights), [ARM-sjablonen](time-series-insights-manage-resources-using-azure-resource-manager-template.md)en de [rest API](https://docs.microsoft.com/rest/api/time-series-insights/management/eventsources) gebruiken om de gebeurtenis bronnen van uw omgeving te maken, bewerken of verwijderen.
+
+Wanneer u verbinding maakt met een gebeurtenis bron, worden alle gebeurtenissen die momenteel zijn opgeslagen in uw IOT of event hub door de omgeving van de TSI gelezen, te beginnen met de oudste gebeurtenis.
+
+> [!IMPORTANT]
+>
+> * U kunt een hoge initiële latentie ervaren wanneer u een gebeurtenis bron koppelt aan uw preview-omgeving.
+> De gebeurtenis bron latentie is afhankelijk van het aantal gebeurtenissen dat zich momenteel in uw IoT Hub of event hub bevinden.
+> * Hoge latentie wordt weer gegeven nadat de bron gegevens van de gebeurtenis voor het eerst zijn opgenomen. Verzend een ondersteunings ticket via de Azure Portal als u een voortdurende hoge latentie ondervindt.
+
+## <a name="streaming-ingestion-best-practices"></a>Best practices voor streaming-opname
+
+* Maak altijd een unieke consumenten groep voor uw TSI-omgeving om gegevens van uw gebeurtenis bron te gebruiken. Het opnieuw gebruiken van consumenten groepen kan wille keurige verbreken veroorzaken en kan leiden tot verlies van gegevens.
+
+* Configureer uw TSI-omgeving en uw IoT Hub en/of Event Hubs in dezelfde Azure-regio. Hoewel het mogelijk is om in een afzonderlijke regio een gebeurtenis bronnen te configureren, wordt dit scenario niet ondersteund en kunnen we geen hoge Beschik baarheid garanderen.
+
+* Ga niet verder dan de limiet van de [doorvoer snelheid](concepts-streaming-throughput-limitations.md) van uw omgeving of per partitie limiet.
+
+* Configureer een [waarschuwing](https://review.docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency?branch=pr-en-us-117938#monitor-latency-and-throttling-with-alerts) over vertraging als uw omgeving problemen ondervindt bij het verwerken van gegevens.
+
+* Gebruik Streaming-opname alleen voor bijna realtime-en recente gegevens, en het streamen van historische gegevens wordt niet ondersteund.
+
+* Begrijpen hoe eigenschappen worden ontsnapd en JSON- [gegevens worden afgevlakt en opgeslagen.](./concepts-json-flattening-escaping-rules.md)
+
+* Volg het principe van minimale bevoegdheden bij het leveren van verbindings reeksen voor gebeurtenis bronnen. Configureer voor Event Hubs een gedeeld toegangs beleid met alleen de claim *verzenden* en voor IOT hub de *service Connect* -machtiging alleen te gebruiken.
+
+### <a name="historical-data-ingestion"></a>Historische gegevens opname
+
+Het gebruik van de streaming-pijp lijn voor het importeren van historische gegevens wordt momenteel niet ondersteund in Azure Time Series Insights preview. Als u gegevens uit het verleden in uw omgeving wilt importeren, volgt u de onderstaande richt lijnen:
+
+* Streamt geen Live en historische gegevens parallel. Het opnemen van gegevens uit de volg orde resulteert in gedegradeerde query prestaties.
+* Neem historische gegevens op in een tijdgebonden manier om de beste prestaties te leveren.
+* Blijf binnen de limieten voor de doorvoer snelheid van de opname hieronder.
+* Schakel warme Store uit als de gegevens ouder zijn dan de Bewaar periode voor uw warme winkel.
+
+## <a name="event-source-timestamp"></a>Tijds tempel gebeurtenis bron
+
+Wanneer u een gebeurtenis bron configureert, wordt u gevraagd om een time stamp-ID-eigenschap op te geven. De tijds tempel eigenschap wordt gebruikt om gebeurtenissen gedurende een periode bij te houden. Dit is de tijd die wordt gebruikt als de $event. $ts in de [Time Series query-api's](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute) en voor het uitzetten van reeksen in de TSI-Verkenner. Als er geen eigenschap wordt gegeven tijdens de aanmaak tijd, of als de tijds tempel eigenschap ontbreekt in een gebeurtenis, worden de IoT Hub van de gebeurtenis of de gebeurtenissen hubs in de wachtrij gezet als standaard waarde gebruikt. Eigenschaps waarden van tijds tempels worden opgeslagen in UTC.
+
+Over het algemeen kunnen gebruikers ervoor kiezen de tijds tempel eigenschap aan te passen en de tijd te gebruiken waarop de sensor of tag de Lees bewerking heeft gegenereerd, in plaats van de standaard hub in de wachtrij te gebruiken. Dit is met name nodig wanneer apparaten een onregelmatig connectiviteits verlies hebben en een batch van vertraagde berichten wordt doorgestuurd naar de TSI.
+
+Als uw aangepaste tijds tempel binnen een genest JSON-object of een matrix valt, moet u de juiste eigenschaps naam opgeven volgens onze [afvlakkings-en Escape-naamgevings regels](concepts-json-flattening-escaping-rules.md). De tijds tempel van de gebeurtenis bron voor de JSON-nettolading die [hier](concepts-json-flattening-escaping-rules.md#example-a) wordt weer gegeven, moet bijvoorbeeld worden ingevoerd als `"values.time"` .
+
+### <a name="time-zone-offsets"></a>Tijd zone-offsets
+
+Tijds tempels moeten worden verzonden in de ISO 8601-indeling en worden opgeslagen in UTC. Als er een tijd zone-offset is opgegeven, wordt de offset toegepast en vervolgens de tijd die wordt opgeslagen en geretourneerd in UTC-notatie. Als de verschuiving onjuist is opgemaakt, wordt deze genegeerd. In situaties waarin uw oplossing mogelijk geen context van de oorspronkelijke offset heeft, kunt u de offset gegevens in een aanvullende gebeurtenis eigenschap verzenden om ervoor te zorgen dat deze behouden blijven en dat uw toepassing kan verwijzen naar een query-antwoord.
+
+De tijd zone-offset moet worden opgemaakt als een van de volgende:
+
+± HHMMZ</br>
+± UU: MM</br>
+± UU: MMZ</br>
+
+## <a name="next-steps"></a>Volgende stappen
+
+* Lees de [regels voor json-afvlakking en-Escapes](./concepts-json-flattening-escaping-rules.md) om te begrijpen hoe gebeurtenissen worden opgeslagen. 
+
+* Inzicht in de [doorvoer beperkingen](concepts-streaming-throughput-limitations.md) van uw omgeving
+
+
+
+

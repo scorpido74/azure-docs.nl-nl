@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: dpalled
-ms.openlocfilehash: b4ddff197ff41ee9ddee129fae4699e18af8d0d0
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: ebb62b67b56134902f2752b43dd25fb0a7c6ccd4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898029"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045770"
 ---
 # <a name="adding-support-for-long-data-type"></a>Ondersteuning voor lang gegevens type toevoegen
 
@@ -211,4 +211,4 @@ Als u een warme winkel gebruiker bent met een groot aantal eigenschappen en denk
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Raadpleeg het artikel over [ingangs-en opslag](time-series-insights-update-storage-ingress.md) voor meer informatie over de ondersteunde gegevens typen.
+* Raadpleeg [Dit](concepts-supported-data-types.md) artikel om de volledige lijst met ondersteunde gegevens typen weer te geven.

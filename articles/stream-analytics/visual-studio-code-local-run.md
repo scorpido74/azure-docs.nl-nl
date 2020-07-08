@@ -5,13 +5,13 @@ ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 11/10/2019
-ms.topic: conceptual
-ms.openlocfilehash: c29d0d9ecd856ee9611df21d23b1b2b763e24652
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: a47b641f4f5049beb605490122a33d407ac3e222
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75486467"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044359"
 ---
 # <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>Stream Analytics query's lokaal met voorbeeld gegevens testen met Visual Studio code
 
@@ -35,7 +35,7 @@ U moet eerst voorbeeld invoer gegevens bestanden voorbereiden. Als u al een aant
 
 ## <a name="define-a-local-input"></a>Een lokale invoer definiëren
 
-1. Klik op **input. json** onder map met invoer in uw stream Analytics-project. Selecteer vervolgens **lokale invoer toevoegen** van de bovenste regel.
+1. Klik op **input.js** in de map inputs in uw stream Analytics-project. Selecteer vervolgens **lokale invoer toevoegen** van de bovenste regel.
 
     ![Lokale invoer uit project toevoegen](./media/quick-create-vs-code/add-input-from-project.png)
 
@@ -55,7 +55,7 @@ U moet eerst voorbeeld invoer gegevens bestanden voorbereiden. Als u al een aant
 
     ![Een nieuwe lokale invoer-alias voor ASA toevoegen](./media/vscode-local-run/new-local-input-alias.png)
 
-5. Voer in het zojuist gegenereerde **LocalInput_Input. json** -bestand het bestandspad in waar uw lokale gegevens bestand zich bevindt.
+5. In de zojuist gegenereerde **LocalInput_Input.jsvoor** het bestand voert u het bestandspad in waar uw lokale gegevens bestand zich bevindt.
 
     ![Lokaal bestandspad invoeren in Visual Studio](./media/vscode-local-run/local-file-path.png)
 

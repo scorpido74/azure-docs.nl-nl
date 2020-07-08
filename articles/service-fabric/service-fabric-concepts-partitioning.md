@@ -3,12 +3,12 @@ title: Service Fabric Services partitioneren
 description: Hierin wordt beschreven hoe u Service Fabric stateful-Services partitioneert. Partities maken gegevens opslag mogelijk op de lokale computers, zodat de gegevens en reken kracht samen kunnen worden geschaald.
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: 4edfaa74fe109c688cad733d16031e87fff1e46f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e395fc31550dfdbedf963db0d648191453d016b2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81115168"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045413"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Partitioneren van Service Fabric-betrouwbare services
 Dit artikel bevat een inleiding tot de basis concepten van het partitioneren van Azure Service Fabric reliable Services. De bron code die in het artikel wordt gebruikt, is ook beschikbaar op [github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
@@ -21,11 +21,11 @@ Voor stateless Services kunt u nadenken over een partitie die een logische eenhe
 
 ![Stateless service](./media/service-fabric-concepts-partitioning/statelessinstances.png)
 
-Er zijn heel twee soorten stateless service oplossingen. De eerste is een service die de status van het externe apparaat persistent maakt, bijvoorbeeld in een Azure SQL database (zoals een website waar de sessie gegevens en gegevens worden opgeslagen). De tweede is een alleen-reken kundige service (zoals een calculator of afbeeldings miniatuur) die geen permanente status beheert.
+Er zijn heel twee soorten stateless service oplossingen. De eerste is een service die de status van het externe apparaat persistent maakt, bijvoorbeeld in een data base in Azure SQL Database (zoals een website waar de sessie-informatie en-gegevens worden opgeslagen). De tweede is een alleen-reken kundige service (zoals een calculator of afbeeldings miniatuur) die geen permanente status beheert.
 
 In beide gevallen is het partitioneren van een stateless service een zeer zeldzaam scenario: de schaal baarheid en beschik baarheid worden normaal gesp roken bereikt door meer instanties toe te voegen. De enige keer dat u meerdere partities wilt overwegen voor stateless service exemplaren, is wanneer u aan speciale routerings aanvragen moet voldoen.
 
-Denk bijvoorbeeld aan een geval waarbij gebruikers met Id's in een bepaald bereik alleen moeten worden geleverd door een bepaald service-exemplaar. Een ander voor beeld van wanneer u een stateless service partitioneert, is wanneer u een echt gepartitioneerde back-end hebt (bijvoorbeeld een Shard-SQL database) en u wilt bepalen welk service-exemplaar moet schrijven naar de data base-Shard, of andere voorbereidende werkzaamheden uitvoeren in de stateless service waarvoor dezelfde partitie-informatie is vereist als wordt gebruikt in de back-end. Deze soorten scenario's kunnen ook op verschillende manieren worden opgelost en hoeven niet noodzakelijkerwijs service partitioneren.
+Denk bijvoorbeeld aan een geval waarbij gebruikers met Id's in een bepaald bereik alleen moeten worden geleverd door een bepaald service-exemplaar. Een ander voor beeld van wanneer u een stateless service partitioneert, is wanneer u een echt gepartitioneerde back-end hebt (bijvoorbeeld een Shard-data base in SQL Database) en u wilt bepalen welk service-exemplaar moet schrijven naar de data base Shard, of andere voorbereidende werkzaamheden uitvoeren in de stateless service waarvoor dezelfde partitie-informatie is vereist als wordt gebruikt in de back-end. Deze soorten scenario's kunnen ook op verschillende manieren worden opgelost en hoeven niet noodzakelijkerwijs service partitioneren.
 
 De rest van dit scenario is gericht op stateful Services.
 
@@ -115,17 +115,17 @@ Omdat we letterlijk één partitie per letter willen hebben, kunnen we 0 als de 
 > 
 > 
 
-1. Open **Visual Studio** > **-bestand** > **Nieuw** > **project**.
+1. Open **Visual Studio**-  >  **bestand**  >  **Nieuw**  >  **project**.
 2. Kies in het dialoog venster **Nieuw project** de service Fabric toepassing.
 3. Roep het project "AlphabetPartitions" aan.
 4. Kies in het dialoog venster **een service maken** de optie **stateful** service en roep het ' alfabet. processing ' aan.
-5. Stel het aantal partities in. Open het bestand applicationManifest. XML dat zich bevindt in de map Application Package root van het AlphabetPartitions-project en werk de para meter bij Processing_PartitionCount op 26 zoals hieronder wordt weer gegeven.
+5. Stel het aantal partities in. Open het Applicationmanifest.xml-bestand dat zich bevindt in de map Application Package root van het AlphabetPartitions-project en werk de para meter bij Processing_PartitionCount op 26 zoals hieronder wordt weer gegeven.
    
     ```xml
     <Parameter Name="Processing_PartitionCount" DefaultValue="26" />
     ```
    
-    U moet ook de eigenschappen LowKey en HighKey van het element StatefulService in de ApplicationManifest. XML bijwerken zoals hieronder wordt weer gegeven.
+    U moet ook de eigenschappen LowKey en HighKey van het element StatefulService in het ApplicationManifest.xml bijwerken, zoals hieronder wordt weer gegeven.
    
     ```xml
     <Service Name="Processing">
@@ -134,7 +134,7 @@ Omdat we letterlijk één partitie per letter willen hebben, kunnen we 0 als de 
       </StatefulService>
     </Service>
     ```
-6. Als de service toegankelijk is, opent u een eind punt op een poort door het eindpunt element van ServiceManifest. XML (in de map PackageRoot) toe te voegen voor de alfabet. processing-service, zoals hieronder wordt weer gegeven:
+6. Als de service toegankelijk is, opent u een eind punt op een poort door het eindpunt element van ServiceManifest.xml (in de map PackageRoot) toe te voegen voor de alfabet. processing-service, zoals hieronder wordt weer gegeven:
    
     ```xml
     <Endpoint Name="ProcessingServiceEndpoint" Port="8089" Protocol="http" Type="Internal" />
@@ -147,7 +147,7 @@ Omdat we letterlijk één partitie per letter willen hebben, kunnen we 0 als de 
    > Voor dit voor beeld wordt ervan uitgegaan dat u een eenvoudige HttpCommunicationListener gebruikt. Zie voor meer informatie over betrouw bare service communicatie [het betrouw bare communicatie model voor services](service-fabric-reliable-services-communication.md).
    > 
    > 
-8. Een aanbevolen patroon voor de URL waar een replica op luistert, is de volgende indeling `{scheme}://{nodeIp}:{port}/{partitionid}/{replicaid}/{guid}`:.
+8. Een aanbevolen patroon voor de URL waar een replica op luistert, is de volgende indeling: `{scheme}://{nodeIp}:{port}/{partitionid}/{replicaid}/{guid}` .
     Daarom wilt u uw communicatie-listener configureren om te Luis teren naar de juiste eind punten en met dit patroon.
    
     Meerdere replica's van deze service worden mogelijk gehost op dezelfde computer, dus dit adres moet uniek zijn voor de replica. Dit is de reden waarom partitie-ID + replica-ID zich in de URL bevindt. HttpListener kunnen Luis teren op meerdere adressen op dezelfde poort zolang het URL-voor voegsel uniek is.
@@ -224,14 +224,14 @@ Omdat we letterlijk één partitie per letter willen hebben, kunnen we 0 als de 
     }
     ```
    
-    `ProcessInternalRequest`Hiermee worden de waarden van de query teken reeks parameter voor het aanroepen van `AddUserAsync` de partitie en aanroepen om de LastName `dictionary`toe te voegen aan de betrouw bare woorden lijst gelezen.
+    `ProcessInternalRequest`Hiermee worden de waarden van de query teken reeks parameter voor het aanroepen van de partitie en aanroepen `AddUserAsync` om de LastName toe te voegen aan de betrouw bare woorden lijst gelezen `dictionary` .
 10. We gaan een stateless service toevoegen aan het project om te zien hoe u een bepaalde partitie kunt aanroepen.
     
     Deze service fungeert als een eenvoudige webinterface die de para meter LastName als een query teken reeks parameter accepteert, bepaalt de partitie sleutel en verzendt deze naar de alfabet. processing-service voor verwerking.
 11. In het dialoog venster **een service maken** kiest u **stateless** service en roept u deze ' alfabet. Web ' aan, zoals hieronder wordt weer gegeven.
     
     ![Scherm afbeelding stateless service](./media/service-fabric-concepts-partitioning/createnewstateless.png).
-12. Werk de eindpunt gegevens in ServiceManifest. XML van de alfabet. WebApi-service bij om een poort te openen, zoals hieronder wordt weer gegeven.
+12. Werk de eindpunt gegevens bij in de ServiceManifest.xml van de alfabet. WebApi-service om een poort te openen, zoals hieronder wordt weer gegeven.
     
     ```xml
     <Endpoint Name="WebApiServiceEndpoint" Protocol="http" Port="8081"/>
@@ -252,7 +252,7 @@ Omdat we letterlijk één partitie per letter willen hebben, kunnen we 0 als de 
         return new HttpCommunicationListener(uriPrefix, uriPublished, this.ProcessInputRequest);
     }
     ```
-14. Nu moet u de verwerkings logica implementeren. De HttpCommunicationListener wordt `ProcessInputRequest` aangeroepen wanneer een aanvraag binnenkomt. We gaan nu de onderstaande code toevoegen.
+14. Nu moet u de verwerkings logica implementeren. De HttpCommunicationListener wordt aangeroepen `ProcessInputRequest` Wanneer een aanvraag binnenkomt. We gaan nu de onderstaande code toevoegen.
     
     ```csharp
     private async Task ProcessInputRequest(HttpListenerContext context, CancellationToken cancelRequest)
@@ -298,7 +298,7 @@ Omdat we letterlijk één partitie per letter willen hebben, kunnen we 0 als de 
     }
     ```
     
-    Laten we stap voor stap door lopen. De code leest de eerste letter van de query teken reeks `lastname` parameter in een teken. Vervolgens wordt de partitie sleutel voor deze letter bepaald door de hexadecimale waarde van `A` uit de hexadecimale waarde van de achternaam ' eerste letter ' af te trekken.
+    Laten we stap voor stap door lopen. De code leest de eerste letter van de query teken reeks parameter `lastname` in een teken. Vervolgens wordt de partitie sleutel voor deze letter bepaald door de hexadecimale waarde van `A` uit de hexadecimale waarde van de achternaam ' eerste letter ' af te trekken.
     
     ```csharp
     string lastname = context.Request.QueryString["lastname"];
@@ -307,13 +307,13 @@ Omdat we letterlijk één partitie per letter willen hebben, kunnen we 0 als de 
     ```
     
     Houd er rekening mee dat we voor dit voor beeld 26 partities met één partitie sleutel per partitie gebruiken.
-    Vervolgens verkrijgen we de service partitie `partition` voor deze sleutel met behulp van `ResolveAsync` de methode voor `servicePartitionResolver` het object. `servicePartitionResolver`is gedefinieerd als
+    Vervolgens verkrijgen we de service partitie `partition` voor deze sleutel met behulp van de `ResolveAsync` methode voor het `servicePartitionResolver` object. `servicePartitionResolver`is gedefinieerd als
     
     ```csharp
     private readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
     ```
     
-    De `ResolveAsync` -methode gebruikt de service-URI, de partitie sleutel en het annulerings token als para meters. De service-URI voor de verwerkings service is `fabric:/AlphabetPartitions/Processing`. Daarna krijgen we het eind punt van de partitie.
+    De `ResolveAsync` -methode gebruikt de service-URI, de partitie sleutel en het annulerings token als para meters. De service-URI voor de verwerkings service is `fabric:/AlphabetPartitions/Processing` . Daarna krijgen we het eind punt van de partitie.
     
     ```csharp
     ResolvedServiceEndpoint ep = partition.GetEndpoint()
@@ -343,7 +343,7 @@ Omdat we letterlijk één partitie per letter willen hebben, kunnen we 0 als de 
 16. Nadat u de implementatie hebt voltooid, kunt u de service en alle partities ervan controleren in de Service Fabric Explorer.
     
     ![Scherm afbeelding Service Fabric Explorer](./media/service-fabric-concepts-partitioning/sfxpartitions.png)
-17. In een browser kunt u de partitionatie logica testen door in te `http://localhost:8081/?lastname=somename`voeren. U ziet dat elke achternaam die begint met dezelfde letter wordt opgeslagen in dezelfde partitie.
+17. In een browser kunt u de partitionatie logica testen door in te voeren `http://localhost:8081/?lastname=somename` . U ziet dat elke achternaam die begint met dezelfde letter wordt opgeslagen in dezelfde partitie.
     
     ![Scherm afbeelding browser](./media/service-fabric-concepts-partitioning/samplerunning.png)
 

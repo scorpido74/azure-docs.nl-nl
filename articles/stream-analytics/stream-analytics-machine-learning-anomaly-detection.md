@@ -5,14 +5,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/21/2019
-ms.openlocfilehash: 51b9c827d453eef2e2e75e1aa5222204eaa38d0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69824df1b84f6cdfafa08a662816281442ad44fd
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77525529"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044376"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomalie detectie in Azure Stream Analytics
 
@@ -117,7 +117,7 @@ De prestaties van deze modellen zijn afhankelijk van de geschiedenis grootte, de
 * **Geschiedenis formaat** : deze modellen voeren lineair uit met de **geschiedenis grootte**. Hoe langer het geschiedenis formaat, hoe langer het model is om een nieuwe gebeurtenis te beoordelen. Dit komt doordat de modellen de nieuwe gebeurtenis vergelijken met elk van de gebeurtenissen in de geschiedenis buffer.
 * **Duur** van het venster: de duur van het **venster** moet weer geven hoe lang het duurt om zoveel gebeurtenissen te ontvangen als aangegeven door de geschiedenis grootte. Zonder dat er veel gebeurtenissen in het venster zijn, worden in Azure Stream Analytics ontbrekende waarden toegerekend. Daarom is het CPU-verbruik een functie van de geschiedenis grootte.
 * **Gebeurtenis belasting** : hoe groter de **gebeurtenis belasting**, hoe meer werk wordt uitgevoerd door de modellen, waardoor het CPU-verbruik wordt beïnvloed. De taak kan worden uitgeschaald door deze ongeëvenaard parallel te maken, ervan uitgaande dat het zinvol is voor bedrijfs logica om meer invoer partities te gebruiken.
-* **Function level partitioning** - **Partitioneren** op functie niveau partitioneren op functie niveau wordt uitgevoerd ```PARTITION BY``` met behulp van de functie aanroep van de afwijkings detectie. Dit type partitionering voegt een overhead toe, aangezien de status moet worden bijgehouden voor meerdere modellen tegelijk. Partitioneren op functie niveau wordt gebruikt in scenario's zoals het partitioneren op apparaatniveau.
+* Partitioneren op functie **niveau**  -  **Partitioneren op functie niveau** wordt uitgevoerd met behulp van ```PARTITION BY``` de functie aanroep van de afwijkings detectie. Dit type partitionering voegt een overhead toe, aangezien de status moet worden bijgehouden voor meerdere modellen tegelijk. Partitioneren op functie niveau wordt gebruikt in scenario's zoals het partitioneren op apparaatniveau.
 
 ### <a name="relationship"></a>Relatie
 De geschiedenis grootte, de duur van het venster en de totale gebeurtenis belasting zijn op de volgende manier gerelateerd:

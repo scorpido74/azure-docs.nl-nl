@@ -2,13 +2,13 @@
 title: Virtuele Azure-machines verplaatsen naar een nieuw abonnement of een nieuwe resource groep
 description: Gebruik Azure Resource Manager om virtuele machines te verplaatsen naar een nieuwe resource groep of een nieuw abonnement.
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: e5bd004b6619db9c9882b8e9e6005309317b8ca5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/06/2020
+ms.openlocfilehash: c85ec175d802a29de7a8a87ee7a51c0916762a5a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82744639"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044546"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Richt lijnen voor het verplaatsen van virtuele machines
 
@@ -24,6 +24,18 @@ De volgende scenario's worden nog niet ondersteund:
 * Virtuele machines in een bestaand virtueel netwerk kunnen niet worden verplaatst naar een nieuw abonnement wanneer u niet alle resources in het virtuele netwerk verplaatst.
 * Virtuele machines met lage prioriteit en virtuele-machine schaal sets met lage prioriteit kunnen niet worden verplaatst over resource groepen of-abonnementen.
 * Virtuele machines in een beschikbaarheidsset kunnen niet afzonderlijk worden verplaatst.
+
+## <a name="azure-disk-encryption"></a>Azure Disk Encryption
+
+U kunt een virtuele machine die is geïntegreerd met een sleutel kluis, niet verplaatsen om Azure Disk Encryption te implementeren [voor Linux vm's](../../../virtual-machines/linux/disk-encryption-overview.md) of [Azure Disk Encryption voor Windows-vm's](../../../virtual-machines/windows/disk-encryption-overview.md). Als u de virtuele machine wilt verplaatsen, moet u versleuteling uitschakelen.
+
+```azurecli-interactive
+az vm encryption disable --resource-group demoRG --name myVm1
+```
+
+```azurepowershell-interactive
+Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
+```
 
 ## <a name="virtual-machines-with-azure-backup"></a>Virtuele machines met Azure Backup
 

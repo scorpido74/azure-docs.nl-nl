@@ -3,12 +3,12 @@ title: Nalevings gegevens voor beleid ophalen
 description: Azure Policy evaluaties en effecten bepalen de naleving. Meer informatie over hoe u de compatibiliteits Details van uw Azure-resources kunt ophalen.
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: e4d63355b793f69ccc2ed7aaa44bfb60a3a8440e
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 53c946c59862451859616cb87d1101ae8fd5f15b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204834"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045192"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Compatibiliteits gegevens van Azure-resources ophalen
 
@@ -30,11 +30,11 @@ De resultaten van een voltooide evaluatie cyclus zijn beschikbaar in de `Microso
 
 De evaluaties van toegewezen beleid en initiatieven worden uitgevoerd als gevolg van verschillende gebeurtenissen:
 
-- Een beleid of initiatief is nieuw toegewezen aan een bereik. Het duurt ongeveer 30 minuten voordat de toewijzing wordt toegepast op het gedefinieerde bereik. Wanneer de evaluatie cyclus eenmaal is toegepast, begint deze met het nieuwe beleid of initiatief van bronnen binnen die scope en afhankelijk van de effecten die worden gebruikt door het beleid of initiatief, worden bronnen gemarkeerd als compatibel of niet-compatibel. Een groot beleid of initiatief dat is geëvalueerd op basis van een groot bereik van resources kan enige tijd duren. Als zodanig is er geen vooraf gedefinieerde verwachting van wanneer de evaluatie cyclus is voltooid. Zodra het proces is voltooid, zijn bijgewerkte resultaten van de naleving beschikbaar in de portal en Sdk's.
+- Een beleid of initiatief wordt voor het eerst toegewezen aan een bereik. Het duurt ongeveer 30 minuten voordat de toewijzing wordt toegepast op het gedefinieerde bereik. Wanneer de evaluatie cyclus eenmaal is toegepast, begint deze met het nieuwe beleid of initiatief van bronnen binnen die scope en afhankelijk van de effecten die worden gebruikt door het beleid of initiatief, worden bronnen gemarkeerd als compatibel of niet-compatibel. Een groot beleid of initiatief dat is geëvalueerd op basis van een groot bereik van resources kan enige tijd duren. Als zodanig is er geen vooraf gedefinieerde verwachting van wanneer de evaluatie cyclus is voltooid. Zodra het proces is voltooid, zijn bijgewerkte resultaten van de naleving beschikbaar in de portal en Sdk's.
 
-- Een beleid of initiatief dat al is toegewezen aan een bereik wordt bijgewerkt. De evaluatie cyclus en de timing voor dit scenario zijn hetzelfde als voor een nieuwe toewijzing aan een bereik.
+- Een beleid of initiatief dat al is toegewezen aan een bereik, wordt bijgewerkt. De evaluatie cyclus en de timing voor dit scenario zijn hetzelfde als voor een nieuwe toewijzing aan een bereik.
 
-- Een resource wordt geïmplementeerd in een bereik met een toewijzing via Resource Manager, REST, Azure CLI of Azure PowerShell. In dit scenario wordt de effect gebeurtenis (toevoegen, controleren, weigeren, implementeren) en compatibele status informatie voor de afzonderlijke resource beschikbaar in de portal en de Sdk's ongeveer 15 minuten later. Deze gebeurtenis veroorzaakt geen evaluatie van andere resources.
+- Een resource wordt geïmplementeerd in een bereik met een toewijzing via Azure Resource Manager, REST, Azure CLI of Azure PowerShell. In dit scenario wordt de effect gebeurtenis (toevoegen, controleren, weigeren, implementeren) en compatibele status informatie voor de afzonderlijke resource beschikbaar in de portal en de Sdk's ongeveer 15 minuten later. Deze gebeurtenis veroorzaakt geen evaluatie van andere resources.
 
 - Evaluatie cyclus voor standaard compatibiliteit. Eenmaal per 24 uur worden toewijzingen automatisch opnieuw geëvalueerd. Een groot beleid of initiatief van veel resources kan enige tijd in beslag nemen, dus er is geen vooraf gedefinieerde verwachting wanneer de evaluatie cyclus is voltooid. Zodra het proces is voltooid, zijn bijgewerkte resultaten van de naleving beschikbaar in de portal en Sdk's.
 
@@ -429,7 +429,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor-logboeken
 
-Als u een [log Analytics-werk ruimte](../../../log-analytics/log-analytics-overview.md) hebt met `AzureActivity` van de [analyse van activiteitenlogboek-oplossing](../../../azure-monitor/platform/activity-log-collect.md) die aan uw abonnement is gekoppeld, kunt u de resultaten van de niet-naleving van de evaluatie cyclus ook bekijken met behulp van eenvoudige Kusto-query's en de `AzureActivity` tabel. Met details in Azure Monitor-logboeken kunnen waarschuwingen worden geconfigureerd om niet-naleving te controleren.
+Als u een [log Analytics-werk ruimte](../../../azure-monitor/log-query/log-query-overview.md) hebt met `AzureActivity` van de [analyse van activiteitenlogboek-oplossing](../../../azure-monitor/platform/activity-log.md) die aan uw abonnement is gekoppeld, kunt u de resultaten van de niet-naleving van de evaluatie cyclus ook bekijken met behulp van eenvoudige Kusto-query's en de `AzureActivity` tabel. Met details in Azure Monitor-logboeken kunnen waarschuwingen worden geconfigureerd om niet-naleving te controleren.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Naleving Azure Policy met behulp van Azure Monitor-logboeken" border="false":::
 
@@ -439,5 +439,5 @@ Als u een [log Analytics-werk ruimte](../../../log-analytics/log-analytics-overv
 - Lees over de [structuur van Azure Policy-definities](../concepts/definition-structure.md).
 - Lees [Informatie over de effecten van het beleid](../concepts/effects.md).
 - Meer informatie over het [programmatisch maken van beleids regels](programmatically-create.md).
-- Meer informatie over het [oplossen van niet-compatibele resources](remediate-resources.md).
+- Ontdek hoe u [niet-compatibele resources kunt herstellen](remediate-resources.md).
 - Bekijk wat een beheer groep is met [het organiseren van uw resources met Azure-beheer groepen](../../management-groups/overview.md).

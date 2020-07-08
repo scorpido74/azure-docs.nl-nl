@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 11e68aaa7c70d4f888c0009bc28d9bb90f431f3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56fb677ca80c047fb90c58a3e0aedb41e6d4a3f2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75354446"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045090"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>Het NuGet-pakket voor de Azure Stream Analytics CI/CD gebruiken voor integratie en ontwikkeling 
 In dit artikel wordt beschreven hoe u het Azure Stream Analytics CI/CD NuGet-pakket gebruikt om een doorlopend integratie-en implementatie proces in te stellen.
@@ -34,15 +34,19 @@ Net als de standaard Visual Studio MSBuild-ervaring om een project te bouwen, he
 
 Wanneer een Stream Analytics Visual Studio-project is gebouwd, worden de volgende twee Azure Resource Manager sjabloon bestanden gegenereerd in de map **bin/[debug/Retail]/Deploy** : 
 
-*  Resource Manager-sjabloon bestand
+* Resource Manager-sjabloon bestand
 
-       [ProjectName].JobTemplate.json 
+   ```
+   [ProjectName].JobTemplate.json 
+   ```
 
-*  Resource Manager-parameter bestand
+* Resource Manager-parameter bestand
+   
+   ```
+   [ProjectName].JobTemplate.parameters.json
+   ```
 
-       [ProjectName].JobTemplate.parameters.json   
-
-De standaard parameters in het bestand para meters. json zijn afkomstig uit de instellingen in uw Visual Studio-project. Als u wilt implementeren in een andere omgeving, vervangt u de para meters dienovereenkomstig.
+De standaard parameters in de parameters.jsin het bestand zijn afkomstig uit de instellingen in uw Visual Studio-project. Als u wilt implementeren in een andere omgeving, vervangt u de para meters dienovereenkomstig.
 
 > [!NOTE]
 > Voor alle referenties worden de standaard waarden ingesteld op null. U **moet** de waarden instellen voordat u naar de Cloud implementeert.
@@ -60,7 +64,7 @@ Als u beheerde identiteit voor Azure Data Lake Store gen1 als uitvoer Sink wilt 
 ## <a name="command-line-tool"></a>Opdracht regel programma
 
 ### <a name="build-the-project"></a>Het project bouwen
-Het NuGet-pakket heeft een opdracht regel programma met de naam **sa. exe**. Het ondersteunt project build en lokale tests op een wille keurige computer, die u kunt gebruiken in uw continue integratie en doorlopend leverings proces. 
+Het NuGet-pakket heeft een opdracht regel programma met de naam **SA.exe**. Het ondersteunt project build en lokale tests op een wille keurige computer, die u kunt gebruiken in uw continue integratie en doorlopend leverings proces. 
 
 De implementatie bestanden worden standaard in de huidige map geplaatst. U kunt het uitvoerpad opgeven met behulp van de volgende para meter-OutputPath:
 

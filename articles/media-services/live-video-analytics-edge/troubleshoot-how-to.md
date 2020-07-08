@@ -1,14 +1,16 @@
 ---
 title: Problemen met live video Analytics op IoT Edge-Azure oplossen
 description: In dit artikel worden de stappen beschreven voor het oplossen van problemen met live video Analytics op IoT Edge.
+author: IngridAtMicrosoft
 ms.topic: how-to
+ms.author: inhenkel
 ms.date: 05/24/2020
-ms.openlocfilehash: c235dd27da1d370531c1668c40586d4ae479aec7
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: dd55050521a1791a11f220cd5617d9df2fa2d160
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261119"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045570"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Problemen met live video Analytics op IoT Edge oplossen
 
@@ -128,7 +130,7 @@ Dit probleem oplossen:
     ```
 1. Zorg ervoor dat de volgende uitbrei dingen zijn geïnstalleerd. Vanaf het schrijven van deze hand leiding zijn de versie voor uitbrei dingen als volgt:
 
-    |||
+    | Toestelnummer | Versie |
     |---|---|
     |azure-cli   |      2.5.1|
     |opdracht-modules-nspkg         |   2.0.3|
@@ -199,7 +201,7 @@ Als onderdeel van onze release hebben we een voor beeld van een .NET-voorbeeld c
     sudo iotedge support-bundle --since 2h
     ```
 1. Als er een fout bericht met de code 400 wordt weer geven, zorgt u ervoor dat de nettolading van de methode aanroep goed gevormd is volgens de [directe methode](direct-methods.md) gids.
-1. Als u de status 200-code krijgt, geeft deze aan dat uw hub goed werkt en dat de module-implementatie juist is en reageert. De volgende stap is om te controleren of de app-configuraties nauw keurig zijn. Uw app-configuratie bestaat uit de volgende velden in het bestand appSettings. json. Controleer of deviceId en moduleId nauw keurig zijn. Een eenvoudige manier om dit te controleren, is via de Azure IoT Hub extension-sectie in de VSCode. De waarden in het bestand appSettings. json en de sectie IoT Hub moeten overeenkomen.
+1. Als u de status 200-code krijgt, geeft deze aan dat uw hub goed werkt en dat de module-implementatie juist is en reageert. De volgende stap is om te controleren of de app-configuraties nauw keurig zijn. Uw app-configuratie bestaat uit de volgende velden in de appsettings.jsin het bestand. Controleer of deviceId en moduleId nauw keurig zijn. Een eenvoudige manier om dit te controleren, is via de Azure IoT Hub extension-sectie in de VSCode. De waarden in appsettings.jsbestand en de sectie IoT Hub moeten overeenkomen.
     
     ```
     {
@@ -211,7 +213,7 @@ Als onderdeel van onze release hebben we een voor beeld van een .NET-voorbeeld c
 
     ![IOT-HUB](./media/troubleshoot-how-to/iot-hub.png)
 
-1. Ten slotte moet u ervoor zorgen [dat de verbindings](https://devblogs.microsoft.com/iotdev/understand-different-connection-strings-in-azure-iot-hub/) reeks van het IOT hub apparaat in appSettings. json is ingesteld IOT hub verbindings reeks.
+1. Zorg er ten slotte voor dat in appsettings.jsop u IoT Hub verbindings reeks en niet de verbindings reeks van het IoT Hub apparaat hebt ingesteld, omdat hun [indelingen](https://devblogs.microsoft.com/iotdev/understand-different-connection-strings-in-azure-iot-hub/) verschillend zijn.
 
 ### <a name="live-video-analytics-working-with-external-modules"></a>Live video Analytics met externe modules
 
@@ -241,10 +243,95 @@ Met live video analyses via de HTTP-extensie processor kan de media grafiek word
 
 Live video Analytics op IoT Edge biedt een directe methode op basis van een programmeer model waarmee u meerdere topologieën en meerdere grafiek exemplaren kunt instellen. Als onderdeel van de topologie en de grafiek instellingen roept u meerdere directe-methode aanroepen aan in de module Edge. Als u deze methode aanroepen met meerdere methoden aanroept, met name de bewerkingen die de grafieken parallel starten en stoppen, kunnen er enkele time-outstoringen optreden, zoals hieronder. 
 
-Assembly-initialisatie methode micro soft. media. LiveVideoAnalytics. test. feature. Edge. AssemblyInitializer. InitializeAssemblyAsync heeft een uitzonde ring gegenereerd. Micro soft. Azure. devices. common. exceptions. IotHubException: micro soft. Azure. devices. common. exceptions. IotHubException:<br/> `{"Message":"{\"errorCode\":504101,\"trackingId\":\"55b1d7845498428593c2738d94442607-G:32-TimeStamp:05/15/2020 20:43:10-G:10-TimeStamp:05/15/2020 20:43:10\",\"message\":\"Timed out waiting for the response from device.\",\"info\":{},\"timestampUtc\":\"2020-05-15T20:43:10.3899553Z\"}","ExceptionMessage":""}. Aborting test execution. `
+De initialisatie methode voor assembly Microsoft.Media.LiveVideoAnalytics.Test.Feature.Edge.AssemblyInitializer.InitializeAssemblyAsync heeft een uitzonde ring gegenereerd. Micro soft. Azure. devices. common. exceptions. IotHubException: micro soft. Azure. devices. common. exceptions. IotHubException:<br/> `{"Message":"{\"errorCode\":504101,\"trackingId\":\"55b1d7845498428593c2738d94442607-G:32-TimeStamp:05/15/2020 20:43:10-G:10-TimeStamp:05/15/2020 20:43:10\",\"message\":\"Timed out waiting for the response from device.\",\"info\":{},\"timestampUtc\":\"2020-05-15T20:43:10.3899553Z\"}","ExceptionMessage":""}. Aborting test execution. `
 
-We raden u aan om directe methoden niet op parallelle wijze aan te roepen, maar dit op een sequentiële manier te doen, d.w.z.  een directe aanroep van de methode is pas nadat het vorige is voltooid. 
+We raden u aan om directe methoden niet op parallelle wijze aan te roepen, maar dit op een sequentiële manier te doen, d.w.z.  een directe aanroep van de methode is pas nadat het vorige is voltooid.
+
+### <a name="collecting-logs-for-submitting-a-support-ticket"></a>Logboeken verzamelen voor het indienen van een ondersteunings ticket
+
+Wanneer u problemen met de door uzelf begeleide stappen niet kunt oplossen, gaat u naar de Azure Portal en [opent u een ondersteunings ticket](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+
+Ga door de volgende stappen om de relevante logboeken te verzamelen die aan het ticket moeten worden toegevoegd. U kunt de logboek bestanden uploaden op het tabblad **Details** van het ondersteunings verzoek.
+
+### <a name="support-bundle"></a>Ondersteunings bundel
+
+Wanneer u logboeken van een IoT Edge apparaat wilt verzamelen, is het de eenvoudigste manier om de `support-bundle` opdracht te gebruiken. Met deze opdracht wordt verzameld:
+
+- Module Logboeken
+- IoT Edge Security Manager en container engine-logboeken
+- JSON-uitvoer Iotedge controleren
+- Nuttige informatie over fout opsporing
+
+#### <a name="use-the-iot-edge-security-manager"></a>IoT Edge Security Manager gebruiken
+ 
+De IoT Edge Security Manager is verantwoordelijk voor bewerkingen zoals het initialiseren van het IoT Edge systeem bij het opstarten en het inrichten van apparaten. Als IoT Edge niet wordt gestart, kunnen de logboeken van de beveiligings beheerder nuttige informatie geven. Meer gedetailleerde logboeken van de IoT Edge Security Manager weer geven:
+
+1. Bewerk de IoT Edge daemon-instellingen op het IoT edge-apparaat:
+
+    ```
+    sudo systemctl edit iotedge.service
+    ```
+
+1. Werk de volgende regels bij:
+
+    ```
+    [Service]
+    Environment=IOTEDGE_LOG=edgelet=debug
+    ```
+
+1. Start de IoT Edge-beveiligings-daemon opnieuw door de volgende opdrachten uit te voeren:
+
+    ```
+    sudo systemctl cat iotedge.service
+    sudo systemctl daemon-reload
+    sudo systemctl restart iotedge
+    ```
+
+1. Voer de `support-bundle` opdracht uit met de vlag--sinds om op te geven hoelang van het verleden u logboeken wilt ophalen. Zo ontvangt 2H logboeken sinds de laatste twee uur. U kunt de waarde van deze vlag wijzigen zodat er logboeken voor een andere periode worden toegevoegd.
+
+    ```
+    sudo iotedge support-bundle --since 2h
+    ```
+
+### <a name="lva-debug-logs"></a>Logboeken voor fout opsporing LVA
+
+Volg deze stappen om de LVA op IoT Edge module te configureren voor het genereren van Logboeken voor fout opsporing:
+
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en navigeer naar uw IOT-hub.
+1. Selecteer **IOT Edge** in het menu.
+1. Klik op de ID van het doel apparaat in de lijst met apparaten.
+1. Klik op de koppeling **set modules** in het bovenste menu.
+
+  ![modules instellen Azure Portal](media/troubleshoot-how-to/set-modules.png)
+
+5. Zoek in de sectie IoT Edge modules naar en klik op **lvaEdge**.
+1. Klik op **Opties voor container maken**.
+1. Voeg in de sectie bindingen de volgende opdracht toe:
+
+    `/var/local/mediaservices/logs:/var/lib/azuremediaservices/logs`
+
+    Hiermee worden de logboeken mappen tussen het rand apparaat en de container gebonden.
+
+1. Klik op de knop **bijwerken**
+1. Klik op de knop **controleren + maken** onder aan de pagina. Er wordt een eenvoudige validatie uitgevoerd en er is een geslaagd validatie bericht in een groene banner geplaatst.
+1. Klik op de knop **maken** .
+1. Werk vervolgens de **module-identiteit** in op dubbele wijze naar de map waarin de logboeken worden verzameld:
+    1. Selecteer **lvaEdge** onder de tabel **modules** .
+    1. Klik op de **module Identity-dubbele** koppeling. U vindt dit boven aan de pagina. Hiermee opent u een deel venster dat kan worden bewerkt.
+    1. Voeg het volgende sleutel/waarde-paar toe onder de **gewenste sleutel**:
+
+        `"DebugLogsDirectory": "/var/lib/azuremediaservices/logs"`
+
+    1. Klik op **Opslaan**.
+
+1. Reproduceer het probleem.
+1. Maak verbinding met de virtuele machine via de pagina IoT Hub in uw portal.
+1. Ga naar de `/var/local/mediaservices/logs` map en gebruik de opslag locatie-inhoud van deze map en deel deze met ons. (Deze logboek bestanden zijn niet bedoeld voor zelf-diagnose. Ze zijn bedoeld voor Azure-engineering voor het analyseren van uw problemen.)
+
+1. De logboek verzameling kan worden gestopt door de waarde in **module-id twee** keer opnieuw in te stellen op *Null* . Ga terug naar de **dubbele pagina module Identity** en werk de volgende para meter bij als:
+
+    `"DebugLogsDirectory": ""`
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Zelf studie: video-opname op basis van gebeurtenissen in de Cloud en afspelen vanuit de Cloud](event-based-video-recording-tutorial.md)
+[Zelfstudie: Video-opname op basis van gebeurtenissen in de cloud en afspelen vanuit de Cloud](event-based-video-recording-tutorial.md)

@@ -6,14 +6,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: deb6c2439cc84f196b7f42fd9f49d3ebfd057cbb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a7fe3f7e1c39837106471d118a8b1bb770a524e
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76962164"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045821"
 ---
 # <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>Een Azure Stream Analytics-taak implementeren met CI/CD NPM-pakket 
 
@@ -27,7 +27,7 @@ U kunt continue integratie en implementatie voor Azure Stream Analytics-taken in
 
 U kunt [het pakket rechtstreeks downloaden](https://www.npmjs.com/package/azure-streamanalytics-cicd) of het [wereld wijd](https://docs.npmjs.com/downloading-and-installing-packages-globally) installeren via de `npm install -g azure-streamanalytics-cicd` opdracht. Dit is de aanbevolen benadering, die ook kan worden gebruikt in een Power shell-of Azure CLI-script taak van een build-pijp lijn in **Azure-pijp lijnen**.
 
-Nadat u het pakket hebt geïnstalleerd, gebruikt u de volgende opdracht om de Azure Resource Manager-sjablonen uit te voeren. Het argument **ScriptPath** is het absolute pad naar het **asaql** -bestand in uw project. Zorg ervoor dat de bestanden asaproj. json en JobConfig. json zich in dezelfde map bevinden als het script bestand. Als de **outputPath** niet is opgegeven, worden de sjablonen geplaatst in de map **Deploy** onder de **bin** -map van het project.
+Nadat u het pakket hebt geïnstalleerd, gebruikt u de volgende opdracht om de Azure Resource Manager-sjablonen uit te voeren. Het argument **ScriptPath** is het absolute pad naar het **asaql** -bestand in uw project. Zorg ervoor dat de asaproj.jsop en JobConfig.jsop bestanden zich in dezelfde map bevinden als het script bestand. Als de **outputPath** niet is opgegeven, worden de sjablonen geplaatst in de map **Deploy** onder de **bin** -map van het project.
 
 ```powershell
 azure-streamanalytics-cicd build -scriptPath <scriptFullPath> -outputPath <outputPath>
@@ -39,15 +39,19 @@ azure-streamanalytics-cicd build -scriptPath "/Users/roger/projects/samplejob/sc
 
 Wanneer een Stream Analytics Visual Studio code-project is gebouwd, worden de volgende twee Azure Resource Manager sjabloon bestanden gegenereerd in de map **bin/[debug/Retail]/Deploy** : 
 
-*  Resource Manager-sjabloon bestand
+* Resource Manager-sjabloon bestand
 
-       [ProjectName].JobTemplate.json 
+   ```
+   [ProjectName].JobTemplate.json 
+   ```
 
-*  Resource Manager-parameter bestand
+* Resource Manager-parameter bestand
 
-       [ProjectName].JobTemplate.parameters.json   
+   ```
+   [ProjectName].JobTemplate.parameters.json
+   ```   
 
-De standaard parameters in het bestand para meters. json zijn afkomstig uit de instellingen in uw Visual Studio code-project. Als u wilt implementeren in een andere omgeving, vervangt u de para meters dienovereenkomstig.
+De standaard parameters in de parameters.jsin het bestand zijn afkomstig uit de instellingen in uw Visual Studio code-project. Als u wilt implementeren in een andere omgeving, vervangt u de para meters dienovereenkomstig.
 
 > [!NOTE]
 > Voor alle referenties worden de standaard waarden ingesteld op null. U **moet** de waarden instellen voordat u naar de Cloud implementeert.
@@ -145,7 +149,7 @@ Open een webbrowser en navigeer naar uw Azure Stream Analytics Visual Studio cod
 
 1. Selecteer in de vervolg keuzelijst taken de optie **taak implementeren naar test omgeving**. 
 
-2. Selecteer de **+** taak volgende bij **agent** en zoek naar *implementatie van Azure-resource groep*. Voer de volgende para meters in:
+2. Selecteer de **+** **taak** volgende bij agent en zoek naar *implementatie van Azure-resource groep*. Voer de volgende para meters in:
 
    |Instelling|Waarde|
    |-|-|
@@ -155,14 +159,14 @@ Open een webbrowser en navigeer naar uw Azure Stream Analytics Visual Studio cod
    |Resourcegroep| Kies een naam voor de test resource groep die uw Stream Analytics-taak bevat.|
    |Locatie|Kies de locatie van de test resource groep.|
    |Sjabloonlocatie| *Gekoppeld artefact*|
-   |Template| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.json |
-   |Sjabloonparameters|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.json|
+   |Template| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.jsop |
+   |Sjabloonparameters|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.jsop|
    |Sjabloonparameters overschrijven|-Input_IoTHub1_iotHubNamespace $ (test_eventhubname)|
    |Implementatie modus|Incrementeel|
 
 3. Selecteer in de vervolg keuzelijst taken de optie **taak op productie omgeving implementeren**.
 
-4. Selecteer de **+** taak volgende bij **agent** en zoek naar *implementatie van Azure-resource groep*. Voer de volgende para meters in:
+4. Selecteer de **+** **taak** volgende bij agent en zoek naar *implementatie van Azure-resource groep*. Voer de volgende para meters in:
 
    |Instelling|Waarde|
    |-|-|
@@ -172,8 +176,8 @@ Open een webbrowser en navigeer naar uw Azure Stream Analytics Visual Studio cod
    |Resourcegroep| Kies een naam voor de productie resource groep die uw Stream Analytics-taak bevat.|
    |Locatie|Kies de locatie van de productie resource groep.|
    |Sjabloonlocatie| *Gekoppeld artefact*|
-   |Template| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.json |
-   |Sjabloonparameters|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.json|
+   |Template| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.jsop |
+   |Sjabloonparameters|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.jsop|
    |Sjabloonparameters overschrijven|-Input_IoTHub1_iotHubNamespace $ (eventhubname)|
    |Implementatie modus|Incrementeel|
 

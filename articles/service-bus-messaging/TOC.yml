@@ -182,6 +182,10 @@
           href: service-bus-nodejs-how-to-use-queues.md
         - name: Publiceren en abonneren op berichten (verouderde azure-sb)
           href: service-bus-nodejs-how-to-use-topics-subscriptions.md
+    - name: Integreren
+      items:
+        - name: Integreren met RabbitMQ
+          href: service-bus-integrate-with-rabbitmq.md
     - name: Beheren
       items:
         - name: Messaging-eenheden automatisch bijwerken

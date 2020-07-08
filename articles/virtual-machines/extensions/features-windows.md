@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd6439bf1b1f52b8e63819e8e519fc4971d1bc2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ff4fb08b1e627184760bb0a33797b2a324d4c55
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80066841"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045906"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Extensies en functies van virtuele machines voor Windows
 
@@ -150,7 +150,7 @@ In het volgende voor beeld ziet u de installatie van de micro soft-antimalware-e
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
 
-VM-extensies kunnen worden toegevoegd aan een Azure Resource Manager sjabloon en worden uitgevoerd met de implementatie van de sjabloon. Wanneer u een uitbrei ding met een sjabloon implementeert, kunt u volledig geconfigureerde Azure-implementaties maken. De volgende JSON wordt bijvoorbeeld overgenomen van een resource manager-sjabloon en implementeert een set taak verdeling Vm's en een Azure-SQL database en installeert vervolgens een .NET core-toepassing op elke virtuele machine. De VM-extensie zorgt voor de software-installatie.
+VM-extensies kunnen worden toegevoegd aan een Azure Resource Manager sjabloon en worden uitgevoerd met de implementatie van de sjabloon. Wanneer u een uitbrei ding met een sjabloon implementeert, kunt u volledig geconfigureerde Azure-implementaties maken. De volgende JSON wordt bijvoorbeeld overgenomen van een resource manager-sjabloon en implementeert een set taak verdeling Vm's en een Azure SQL Database en installeert vervolgens een .NET core-toepassing op elke virtuele machine. De VM-extensie zorgt voor de software-installatie.
 
 Zie de [volledige Resource Manager-sjabloon](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)voor meer informatie.
 
@@ -421,7 +421,7 @@ U kunt een uitbrei ding ook als volgt verwijderen in de Azure Portal:
 4. Kies **verwijderen**.
 
 ## <a name="common-vm-extensions-reference"></a>Naslag informatie over algemene VM-extensies
-| Extensie naam | Beschrijving | Meer informatie |
+| Extensie naam | Description | Meer informatie |
 | --- | --- | --- |
 | Aangepaste scriptextensie voor Windows |Scripts uitvoeren op een virtuele Azure-machine |[Aangepaste scriptextensie voor Windows](custom-script-windows.md) |
 | DSC-extensie voor Windows |Uitbrei ding Power shell DSC (desired state Configuration) |[DSC-extensie voor Windows](dsc-overview.md) |

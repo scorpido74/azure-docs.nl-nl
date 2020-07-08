@@ -5,15 +5,15 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 07f109b3d5539f7cd87a12fb42a36803573c2bdf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 44b84c03dd9c070fd7ca3764a0dc50e8caa9e1fc
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75354554"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045158"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Stream Analytics Edge-taken ontwikkelen met behulp van Visual Studio Tools
 
@@ -29,7 +29,7 @@ U hebt de volgende vereisten nodig om deze zelf studie te volt ooien:
  
 ## <a name="create-a-stream-analytics-edge-project"></a>Een Stream Analytics Edge-project maken 
 
-Selecteer in Visual Studio **bestand** > **Nieuw** > **project**. Ga naar de lijst **sjablonen** aan de linkerkant > Vouw **Azure stream Analytics** > **Stream Analytics Edge** > **Azure stream Analytics Edge-toepassing**uit. Geef een naam, locatie en oplossings naam op voor uw project en selecteer **OK**.
+Selecteer in Visual Studio **bestand**  >  **Nieuw**  >  **project**. Ga naar de lijst **sjablonen** aan de linkerkant > Vouw **Azure stream Analytics**  >  **Stream Analytics Edge**  >  **Azure stream Analytics Edge-toepassing**uit. Geef een naam, locatie en oplossings naam op voor uw project en selecteer **OK**.
 
 ![Nieuw Stream Analytics Edge-project in Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
 
@@ -46,7 +46,7 @@ Nadat het project is gemaakt, gaat u naar de **Solution Explorer** om de mappen 
 
 ## <a name="define-inputs"></a>Invoer opgeven
 
-1. Vouw in het **Solution Explorer**het knoop punt **invoer** uit om een invoer met de naam **EdgeInput. json**weer te geven. Dubbel klik om de instellingen weer te geven.  
+1. Vouw in het **Solution Explorer**het knoop punt **invoer** uit om een invoer met de naam **EdgeInput.jsop**te geven. Dubbel klik om de instellingen weer te geven.  
 
 2. Bron type instellen op **gegevens stroom**. Stel vervolgens bron-naar- **Edge-hub**, serialisatie-indeling voor gebeurtenissen in op **JSON**en code ring naar **utf8**. U kunt desgewenst de naam van de **invoer alias**wijzigen. laten we dit voor beeld laten staan. Als u de naam van de invoer alias wijzigt, gebruikt u de naam die u hebt opgegeven bij het definiëren van de query. Selecteer **Opslaan** om de instellingen op te slaan.  
    ![Configuratie van Stream Analytics taak invoer](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-input-configuration.png)
@@ -55,7 +55,7 @@ Nadat het project is gemaakt, gaat u naar de **Solution Explorer** om de mappen 
 
 ## <a name="define-outputs"></a>Uitvoer definiëren
 
-1. Vouw in het **Solution Explorer**het knoop punt **uitvoer** uit om een uitvoer met de naam **EdgeOutput. json**weer te geven. Dubbel klik om de instellingen weer te geven.  
+1. Vouw in het **Solution Explorer**het knoop punt **uitvoer** uit om een uitvoer met de naam **EdgeOutput.jsop**te geven. Dubbel klik om de instellingen weer te geven.  
 
 2. Zorg ervoor dat sink is ingesteld op Select **Edge hub**, stel de indeling van de gebeurtenis serialisatie in op **JSON**, stel encoding in op **utf8**en stel format **array**in. U kunt desgewenst de naam van de **uitvoer alias**wijzigen. laten we dit voor beeld laten staan. Als u de naam van de uitvoer alias wijzigt, gebruikt u de naam die u hebt opgegeven bij het definiëren van de query. Selecteer **Opslaan** om de instellingen op te slaan. 
    ![Configuratie van Stream Analytics taak uitvoer](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-output-configuration.png)
@@ -65,7 +65,7 @@ Nadat het project is gemaakt, gaat u naar de **Solution Explorer** om de mappen 
 Stream Analytics taken die in de Stream Analytics IoT Edge omgevingen zijn geïmplementeerd, ondersteunen de meeste [Stream Analytics query taal verwijzing](https://msdn.microsoft.com/azure/stream-analytics/reference/stream-analytics-query-language-reference?f=255&MSPPError=-2147217396). De volgende bewerkingen worden echter nog niet ondersteund voor Stream Analytics Edge-taken: 
 
 
-|**Categorie**  | **Cmd**  |
+|**Categorie**  | **Opdracht**  |
 |---------|---------|
 |Andere opera tors | <ul><li>PARTITIONEREN OP</li><li>TIME STAMP MET MEER DAN</li><li>JavaScript UDF</li><li>Door de gebruiker gedefinieerde aggregaties (UDA)</li><li>GetMetadataPropertyValue</li><li>Meer dan 14 statistische functies gebruiken in één stap</li></ul>   |
 
@@ -82,12 +82,12 @@ FROM EdgeInput
 
 Als u de query lokaal wilt testen, moet u de voorbeeld gegevens uploaden. U kunt voorbeeld gegevens ophalen door registratie gegevens uit de [github-opslag plaats](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/Registration.json) te downloaden en op te slaan op uw lokale computer. 
 
-1. Als u voorbeeld gegevens wilt uploaden, klikt u met de rechter muisknop op **EdgeInput. json** -bestand en kiest u **lokale invoer toevoegen**  
+1. Als u voorbeeld gegevens wilt uploaden, klikt u met de rechter muisknop op **EdgeInput.js** bestand en kiest u **lokale invoer toevoegen**  
 
 2. In het pop-upvenster > **Bladeren door** de voorbeeld gegevens uit uw lokale pad > Selecteer **Opslaan**.
    ![Lokale invoer configuratie in Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-local-input-configuration.png)
  
-3. Een bestand met de naam **local_EdgeInput. json** wordt automatisch toegevoegd aan de map met invoer gegevens.  
+3. Een bestand met de naam **local_EdgeInput.jsop** wordt automatisch toegevoegd aan de map met invoer gegevens.  
 4. U kunt de toepassing lokaal uitvoeren of naar Azure verzenden. Als u de query wilt testen, selecteert u **lokaal uitvoeren**.  
    ![Opties voor het uitvoeren van Stream Analytics taken in Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-visual-stuidio-run-options.png)
  
@@ -99,7 +99,7 @@ Als u de query lokaal wilt testen, moet u de voorbeeld gegevens uploaden. U kunt
 
 ## <a name="submit-the-job-to-azure"></a>De taak naar Azure verzenden
 
-1. Voordat u de taak naar Azure verzendt, moet u verbinding maken met uw Azure-abonnement. Open **Server Explorer** > Klik met de rechter muisknop op **Azure** > **Connect to Microsoft Azure Subscription** > Meld u aan bij uw Azure-abonnement.  
+1. Voordat u de taak naar Azure verzendt, moet u verbinding maken met uw Azure-abonnement. Open **Server Explorer** > Klik met de rechter muisknop op **Azure**  >  **Connect to Microsoft Azure Subscription** > Meld u aan bij uw Azure-abonnement.  
 
 2. Als u de taak wilt verzenden naar Azure, gaat u naar de query-editor > selecteert **u verzenden naar Azure**.  
 

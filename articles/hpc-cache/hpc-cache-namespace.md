@@ -1,17 +1,17 @@
 ---
-title: Een HPC-cache van Azure maken
+title: Een Azure HPC-cache-exemplaar maken
 description: Een Azure HPC-cache-exemplaar maken
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: aaa939051a1aeafdb0650119772fc7214506aa8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be09d8b903d63b9fb2b57f8b9b7486b02a60085c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73582183"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045804"
 ---
 # <a name="plan-the-aggregated-namespace"></a>De geaggregeerde naamruimte plannen
 
@@ -29,14 +29,14 @@ Denk bijvoorbeeld aan een systeem waarbij een Azure HPC-cache-exemplaar wordt ge
 
 De sjabloon gegevens worden opgeslagen in een Data Center en de informatie die nodig is voor deze taak wordt opgeslagen in de volgende submappen:
 
-    /goldline/templates/acme2017/sku798
-    /goldline/templates/acme2017/sku980 
+* */goldline/templates/acme2017/sku798*
+* */goldline/templates/acme2017/sku980* 
 
 In het Data Center-opslag systeem zijn de volgende export bewerkingen beschikbaar:
 
-    /
-    /goldline
-    /goldline/templates
+* */*
+* */goldline*
+* */goldline/templates*
 
 De gegevens die moeten worden geanalyseerd, zijn gekopieerd naar een Azure Blob Storage-container met de naam ' sourcecollection ' met het [hulp programma CLFSLoad](hpc-cache-ingest.md#pre-load-data-in-blob-storage-with-clfsload).
 
@@ -57,7 +57,7 @@ Omdat de NFS-bron paden submappen van dezelfde export zijn, moet u meerdere naam
 | *IP-adres of hostnaam* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
 | *IP-adres of hostnaam* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |
 
-Een client toepassing kan de cache koppelen en eenvoudig toegang krijgen tot de geaggregeerde bestands ``/source``paden ``/templates/sku798``van de ``/templates/sku980``naam ruimte, en.
+Een client toepassing kan de cache koppelen en eenvoudig toegang krijgen tot de geaggregeerde bestands paden van de naam ruimte ``/source`` , ``/templates/sku798`` en ``/templates/sku980`` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

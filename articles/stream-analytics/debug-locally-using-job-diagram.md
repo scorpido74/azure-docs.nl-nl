@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: 106b1f0b765700803d2cd55b5e049fae5be3dfad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86367f1dce3cc8040555827935e9ca2f9f9fb4c5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76847197"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045396"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Fouten opsporen Azure Stream Analytics query's lokaal met behulp van taak diagram in Visual Studio
 
@@ -20,7 +20,7 @@ Taken waarvoor geen resultaten of onverwachte resultaten optreden, zijn veelvoor
 
 ## <a name="debug-a-query-using-job-diagram"></a>Fouten opsporen in een query met behulp van taak diagram
 
-Een Azure Stream Analytics script wordt gebruikt om invoer gegevens naar uitvoer gegevens te transformeren. In het taak diagram wordt weer gegeven hoe gegevens stromen van invoer bronnen (Event hub, IoT Hub, enzovoort) via meerdere query stappen en tot slot naar uitvoer-Sinks. Elke query stap wordt toegewezen aan een tijdelijke resultatenset die is gedefinieerd in het script `WITH` met behulp van een-instructie. U kunt de gegevens weer geven, evenals de metrieken van elke query stap in elke tussenliggende resultatenset om de bron van een probleem te vinden.
+Een Azure Stream Analytics script wordt gebruikt om invoer gegevens naar uitvoer gegevens te transformeren. In het taak diagram wordt weer gegeven hoe gegevens stromen van invoer bronnen (Event hub, IoT Hub, enzovoort) via meerdere query stappen en tot slot naar uitvoer-Sinks. Elke query stap wordt toegewezen aan een tijdelijke resultatenset die is gedefinieerd in het script met behulp van een- `WITH` instructie. U kunt de gegevens weer geven, evenals de metrieken van elke query stap in elke tussenliggende resultatenset om de bron van een probleem te vinden.
 
 > [!NOTE]
 > In dit taak diagram worden alleen de gegevens en statistieken voor lokale tests in één knoop punt weer gegeven. Het mag niet worden gebruikt voor het afstemmen van de prestaties en het oplossen van problemen.

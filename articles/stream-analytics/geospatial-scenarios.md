@@ -4,14 +4,14 @@ description: In dit artikel wordt beschreven hoe u Azure Stream Analytics gebrui
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/02/2019
-ms.openlocfilehash: 5a3aa3786469c3df37b53cb82bdd396871689297
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9792641da4b3aebad047179e2c02dad757027801
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443645"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045260"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Geoomheining en georuimtelijke aggregatie scenario's met Azure Stream Analytics
 
@@ -29,7 +29,7 @@ Referentie gegevens die in dit voor beeld worden gebruikt, hebben de geofence-in
 
 ### <a name="define-geofences-in-reference-data"></a>Geofences definiëren in referentie gegevens
 
-Een geofence kan worden gedefinieerd met behulp van een geojson-object. Voor taken met compatibiliteits versie 1,2 en hoger kunnen geofences ook worden gedefinieerd met behulp van bekende tekst (WKT `NVARCHAR(MAX)`) als. WKT is een Open Geospatial Consortium-standaard (OGC) die wordt gebruikt om ruimtelijke gegevens in een tekst indeling weer te geven.
+Een geofence kan worden gedefinieerd met behulp van een geojson-object. Voor taken met compatibiliteits versie 1,2 en hoger kunnen geofences ook worden gedefinieerd met behulp van bekende tekst (WKT) als `NVARCHAR(MAX)` . WKT is een Open Geospatial Consortium-standaard (OGC) die wordt gebruikt om ruimtelijke gegevens in een tekst indeling weer te geven.
 
 De ingebouwde georuimtelijke functies kunnen gedefinieerde geofences gebruiken om erachter te komen of een element zich in of uit een specifieke geofence-veelhoek bevindt.
 
@@ -43,7 +43,7 @@ De volgende tabel is een voor beeld van geofence-referentie gegevens die kunnen 
 
 ### <a name="generate-alerts-with-geofence"></a>Waarschuwingen genereren met geofence
 
-Apparaten kunnen hun ID en locatie elke minuut verzenden via een stroom met `DeviceStreamInput`de naam. De volgende tabel is een stroom van invoer.
+Apparaten kunnen hun ID en locatie elke minuut verzenden via een stroom met de naam `DeviceStreamInput` . De volgende tabel is een stroom van invoer.
 
 |DeviceID|Geopositie|
 |--------|-----------|
@@ -70,7 +70,7 @@ Het apparaat ' C ' bevindt zich in de gebouw-ID 2, maar dit is niet toegestaan v
 
 ### <a name="site-with-multiple-allowed-devices"></a>Site met meerdere toegestane apparaten
 
-Als een site meerdere apparaten toestaat, kan een matrix met apparaat-Id's worden gedefinieerd `AllowedDeviceID` in en een door de gebruiker gedefinieerde functie kan worden gebruikt `WHERE` in de component om te controleren of de apparaat-id van de stream overeenkomt met een apparaat-id in die lijst. Raadpleeg voor meer informatie de [Java script UDF](stream-analytics-javascript-user-defined-functions.md) -zelf studie voor Cloud taken en de C#-zelf studie over de [UDF](stream-analytics-edge-csharp-udf.md) voor Edge-taken.
+Als een site meerdere apparaten toestaat, kan een matrix met apparaat-Id's worden gedefinieerd in `AllowedDeviceID` en een door de gebruiker gedefinieerde functie kan worden gebruikt in de `WHERE` component om te controleren of de apparaat-id van de stream overeenkomt met een apparaat-id in die lijst. Raadpleeg voor meer informatie de [Java script UDF](stream-analytics-javascript-user-defined-functions.md) -zelf studie voor Cloud taken en de C#-zelf studie over de [UDF](stream-analytics-edge-csharp-udf.md) voor Edge-taken.
 
 ## <a name="geospatial-aggregation"></a>Georuimtelijke aggregatie
 

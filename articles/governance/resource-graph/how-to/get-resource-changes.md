@@ -3,12 +3,12 @@ title: Resourcewijzigingen ophalen
 description: Meer informatie over hoe u kunt zoeken wanneer een resource is gewijzigd, een lijst met de gewijzigde eigenschappen ophalen en de verschillen evalueren.
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 9e233ebbdd1d70d483af44eacf12cc924deaafac
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: ace911361ccb96cab3d5c7557ba0e524dbf801d2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167159"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044988"
 ---
 # <a name="get-resource-changes"></a>Resourcewijzigingen ophalen
 
@@ -28,7 +28,7 @@ Wijzigings detectie en Details zijn waardevol voor de volgende voorbeeld scenari
 In dit artikel wordt uitgelegd hoe u deze informatie kunt verzamelen via de SDK van resource Graph. Zie de wijzigings [geschiedenis](../../policy/how-to/determine-non-compliance.md#change-history) van Azure Policy of de [wijzigings geschiedenis](../../../azure-monitor/platform/activity-log-view.md#azure-portal)van het Azure-activiteiten logboek om deze informatie te bekijken in de Azure Portal. Zie voor meer informatie over wijzigingen in uw toepassingen van de laag van de infra structuur de implementatie van toepassingen [(preview-versie) gebruiken](../../../azure-monitor/app/change-analysis.md) in azure monitor.
 
 > [!NOTE]
-> Details wijzigen in resource grafiek zijn voor eigenschappen van Resource Manager. Zie voor het bijhouden van wijzigingen in een virtuele machine de Azure Automation [Wijzigingen bijhouden](../../../automation/automation-change-tracking.md) of de [gast configuratie](../../policy/concepts/guest-configuration.md)van de Azure Policy voor vm's.
+> Details wijzigen in resource grafiek zijn voor eigenschappen van Resource Manager. Zie voor het bijhouden van wijzigingen in een virtuele machine de Azure Automation [Wijzigingen bijhouden](../../../automation/change-tracking.md) of de [gast configuratie](../../policy/concepts/guest-configuration.md)van de Azure Policy voor vm's.
 
 > [!IMPORTANT]
 > De wijzigings geschiedenis in azure resource Graph bevindt zich in de open bare preview.
@@ -285,7 +285,7 @@ Als u de resultaten wilt vergelijken, gebruikt u de eigenschap **Changes** in **
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de taal die wordt gebruikt in [Start query's](../samples/starter.md).
-- Zie Geavanceerd gebruik in [Geavanceerde query's](../samples/advanced.md).
-- Meer informatie over hoe u [resources kunt verkennen](../concepts/explore-resources.md).
+- Zie de taal die wordt gebruikt in [Starter-query's](../samples/starter.md).
+- Zie [Geavanceerde query's](../samples/advanced.md) voor geavanceerde gebruikswijzen.
+- Lees meer over het [verkennen van resources](../concepts/explore-resources.md).
 - Zie [richt lijnen voor beperkte aanvragen](../concepts/guidance-for-throttled-requests.md)voor meer informatie over het werken met query's met een hoge frequentie.

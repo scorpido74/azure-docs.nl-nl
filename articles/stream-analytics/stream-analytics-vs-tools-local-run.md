@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2018
-ms.openlocfilehash: 34c8555356d5c0142d7b677c8119fe66806ab064
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa1d8ff0743399d96436f33426ebc4c4ab4a29f6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76834902"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045634"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>Stream Analytics query's lokaal testen met Visual Studio
 
@@ -36,7 +36,7 @@ Selecteer in het pop-upvenster voorbeeld gegevens uit het lokale pad en **Sla**h
    
 ![Lokale invoer toevoegen](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-02.png)
    
-Een bestand met de naam **local_EntryStream. json** wordt automatisch toegevoegd aan de map met invoer gegevens.
+Een bestand met de naam **local_EntryStream.jsop** wordt automatisch toegevoegd aan de map met invoer gegevens.
    
 ![Bestand lijst met lokale invoer mappen](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-03.png)
    

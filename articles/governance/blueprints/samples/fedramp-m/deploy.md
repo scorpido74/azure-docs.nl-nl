@@ -3,12 +3,12 @@ title: Blauwdrukvoorbeeld FedRAMP Moderate implementeren
 description: Implementeer stappen voor het blauwdrukvoorbeeld FedRAMP Moderate, waaronder details van de parameters voor blauwdrukartefacten.
 ms.date: 05/14/2020
 ms.topic: sample
-ms.openlocfilehash: af29dafe071bcd50c24c7ff7dc1aaf4a2d60ae4c
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 80c33fc854b00aa9fc33d288b8b466c80596a078
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816247"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044784"
 ---
 # <a name="deploy-the-fedramp-moderate-blueprint-sample"></a>Het Blauwdrukvoorbeeld FedRAMP Moderate implementeren
 
@@ -94,7 +94,7 @@ In de volgende tabel ziet u een lijst met de blauwdrukartefactparameters:
 |Naam van het artefact|Type artefact|Parameternaam|Beschrijving|
 |-|-|-|-|
 |\[Preview\]: FedRAMP Moderate-controles controleren en specifieke VM-extensies ter ondersteuning van de controlevereisten implementeren|Beleidstoewijzing|Id van de Log Analytics-werkruimte waarvoor VM's moeten worden geconfigureerd|Dit is de id (GUID) van de Log Analytics-werkruimte waarvoor de VM's moeten worden geconfigureerd.|
-|\[Preview\]: FedRAMP Moderate-controles controleren en specifieke VM-extensies ter ondersteuning van de controlevereisten implementeren|Beleidstoewijzing|Lijst met resourcetypen waarvoor diagnostische logboeken moeten zijn ingeschakeld|Lijst met resourcetypen die moeten worden gecontroleerd als de instelling voor diagnostische logboeken niet is ingeschakeld. Acceptabele waarden vindt u in de [schema's van diagnostische logboeken van Azure Monitor](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
+|\[Preview\]: FedRAMP Moderate-controles controleren en specifieke VM-extensies ter ondersteuning van de controlevereisten implementeren|Beleidstoewijzing|Lijst met resourcetypen waarvoor diagnostische logboeken moeten zijn ingeschakeld|Lijst met resourcetypen die moeten worden gecontroleerd als de instelling voor diagnostische logboeken niet is ingeschakeld. Acceptabele waarden vindt u in de [schema's van diagnostische logboeken van Azure Monitor](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas).|
 |\[Preview\]: FedRAMP Moderate-controles controleren en specifieke VM-extensies ter ondersteuning van de controlevereisten implementeren|Beleidstoewijzing|Lijst met gebruikers die moeten worden uitgesloten van de groep Beheerders voor Windows-VM's|Een lijst met leden die niet moeten worden opgenomen in de lokale groep beheerders, gescheiden door puntkomma's. Bijvoorbeeld: Beheerder; myUser1; myUser2|
 |\[Preview\]: FedRAMP Moderate-controles controleren en specifieke VM-extensies ter ondersteuning van de controlevereisten implementeren|Beleidstoewijzing|Lijst met gebruikers die moeten worden opgenomen in de groep Beheerders voor virtuele Windows-machines|Een lijst met leden die moeten worden opgenomen in de lokale groep beheerders, gescheiden door puntkomma's. Bijvoorbeeld: Beheerder; myUser1; myUser2|
 |\[Preview\]: Log Analytics-agent voor Linux VM Scale Sets (VMSS) implementeren|Beleidstoewijzing|Log Analytics-werkruimte voor Linux-VM-schaalsets (VMSS)|Als deze werkruimte buiten het bereik van de toewijzing valt, moet u aan de principal-id van de beleidstoewijzing handmatig de rechten voor Inzender voor Log Analytics (of vergelijkbaar) toekennen.|

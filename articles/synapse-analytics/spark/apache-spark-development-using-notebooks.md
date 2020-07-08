@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse Studio-notebooks (preview) maken, ontwikkelen en onderhouden
+title: Synapse Studio-notebooks
 description: In dit artikel leert u hoe u Azure Synapse Studio-notitie blokken maakt en ontwikkelt om gegevens voor te bereiden en visualisatie te maken.
 services: synapse analytics
 author: ruixinxu
@@ -10,16 +10,16 @@ ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: tracking-python
-ms.openlocfilehash: 458cbe35e9d46b8a6afde399e20f3b484dfe6478
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: e0b0525035732a54965f7c391ac6041b114d7304
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85373366"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045685"
 ---
-# <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Azure Synapse Studio-notebooks (preview) maken, ontwikkelen en onderhouden
+# <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Synapse Studio-notebooks maken, ontwikkelen en onderhouden in azure Synapse Analytics
 
-Een Azure Synapse Studio-Notebook (preview-versie) is een webinterface waarmee u bestanden kunt maken met Live code, visualisaties en tekst. Notebooks zijn een goede plaats om ideeën te valideren en snelle experimenten te gebruiken om inzicht te krijgen in uw gegevens. Notebooks worden ook veel gebruikt in gegevens voorbereiding, gegevens visualisatie, machine learning en andere scenario's voor Big data.
+Een Synapse Studio-Notebook (preview-versie) is een webinterface waarmee u bestanden kunt maken die live code, visualisaties en tekst verhalen bevatten. Notebooks zijn een goede plaats om ideeën te valideren en snelle experimenten te gebruiken om inzicht te krijgen in uw gegevens. Notebooks worden ook veel gebruikt in gegevens voorbereiding, gegevens visualisatie, machine learning en andere scenario's voor Big data.
 
 Met een Azure Synapse Studio-notebook kunt u het volgende doen:
 
@@ -36,7 +36,7 @@ Er zijn twee manieren om een notitie blok te maken. U kunt een nieuw notitie blo
 
 ![Synapse-Create-import-notebook](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
 
-## <a name="develop-notebooks"></a>Notitie blokken ontwikkelen
+## <a name="develop-notebooks"></a>Notebooks ontwikkelen
 
 Notitie blokken bestaan uit cellen. Dit zijn afzonderlijke blokken code of tekst die onafhankelijk of als groep kunnen worden uitgevoerd.
 
@@ -71,7 +71,7 @@ U kunt de primaire taal voor nieuwe toegevoegde cellen instellen in de vervolg k
 
 U kunt meerdere talen gebruiken in één notebook door de juiste Magic-opdracht voor de taal aan het begin van een cel op te geven. De volgende tabel bevat de Magic-opdrachten om te scha kelen tussen talen in cellen.
 
-|Opdracht Magic |Taal | Beschrijving |  
+|Opdracht Magic |Taal | Description |  
 |---|------|-----|
 |%% pyspark| Python | Voer een **python** -query uit op Spark-context.  |
 |% Spark| Scala | Voer een **scala** -query uit op Spark-context.  |  
@@ -110,7 +110,7 @@ U kunt niet rechtstreeks verwijzen naar gegevens of variabelen in verschillende 
 
 ### <a name="ide-style-intellisense"></a>IDE-stijl IntelliSense
 
-Azure Synapse Studio-notebooks zijn geïntegreerd met de Monaco-editor om een IDE-stijl IntelliSense te bieden in de cel-editor. Met de syntaxis markeren, fout maker en automatische code-voltooiing kunt u code schrijven en problemen sneller identificeren.
+Azure Synapse Studio-notebooks zijn geïntegreerd met de Monaco-editor om een IDE-stijl IntelliSense te bieden in de cel-editor. Met syntaxis markering, fout markering en automatische code voltooiingen kunt u code sneller schrijven en problemen identificeren.
 
 De IntelliSense-functies bevinden zich op verschillende niveaus van de verval datum voor verschillende talen. Gebruik de onderstaande tabel om te zien wat er wordt ondersteund.
 
@@ -119,7 +119,7 @@ De IntelliSense-functies bevinden zich op verschillende niveaus van de verval da
 |PySpark (python)|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Spark (scala)|Ja|Ja|Ja|Ja|-|-|-|Ja|
 |SparkSQL|Ja|Ja|-|-|-|-|-|-|
-|.NET voor Spark (C#)|Ja|-|-|-|-|-|-|-|
+|.NET voor Spark (C#)|Yes|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Tekst cel opmaken met werkbalk knoppen
 
@@ -159,7 +159,7 @@ Klik op de knop **uitvoer samen vouwen** in de linkerbovenhoek van de huidige ce
 
    ![samen vouwen-cel-uitvoer](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-output.gif)
 
-## <a name="run-notebooks"></a>Notitie blokken uitvoeren
+## <a name="run-notebooks"></a>Notebooks gebruiken
 
 U kunt de code cellen in uw notitie blok afzonderlijk of in één keer uitvoeren. De status en voortgang van elke cel worden weer gegeven in het notitie blok.
 
