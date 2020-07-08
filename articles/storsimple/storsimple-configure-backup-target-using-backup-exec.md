@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
 ms.openlocfilehash: 699df6ab44a08645c9f46e95cd2ad279de75ea70
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85509656"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>StorSimple als back-updoel met Backup Exec
@@ -275,7 +275,7 @@ Maak op basis van de voor gaande hypo theses een gelaagd volume van 26 TiB StorS
 
     ![Backup Exec-beheer console, opslag pagina selecteren](./media/storsimple-configure-backup-target-using-backup-exec/image5.png)
 
-3.  Voer een representatieve naam in, bijvoorbeeld **zaterdag vol**en een beschrijving. Selecteer **Next**.
+3.  Voer een representatieve naam in, bijvoorbeeld **zaterdag vol**en een beschrijving. Selecteer **Volgende**.
 
     ![Pagina Backup Exec-beheer console, naam en beschrijving](./media/storsimple-configure-backup-target-using-backup-exec/image7.png)
 
@@ -478,7 +478,7 @@ Een nood geval kan worden veroorzaakt door diverse factoren. De volgende tabel g
 | Backup Exec-server fout | Back-up-en herstel bewerkingen worden onderbroken. | Bouw de back-upserver opnieuw op en voer data base terugzetten uit, zoals beschreven in [een hand matige back-up en herstel van de data base Backup Exec (BEDB)](http://www.veritas.com/docs/000041083). | U moet de Backup Exec-server opnieuw samen stellen of herstellen op de site voor nood herstel. Zet de data base terug naar het meest recente punt. Als de herstelde data base van Backup Exec niet synchroon is met uw meest recente back-uptaken, is indexeren en catalogiseren vereist. Dit proces voor het opnieuw scannen van index en catalogus kan ertoe leiden dat alle back-upsets worden gescand en van de Cloud laag worden opgehaald naar de laag van het lokale apparaat. Hierdoor is het veel tijdrovender. |
 | Site fout die leidt tot verlies van zowel de back-upserver als de StorSimple | Back-up-en herstel bewerkingen worden onderbroken. | Herstel eerst StorSimple en herstel vervolgens de functie voor het maken van back-ups. | Herstel eerst StorSimple en herstel vervolgens de functie voor het maken van back-ups. Als u na het herstel van het apparaat een herstel bewerking moet uitvoeren, worden de volledige gegevens sets van de Cloud naar het nieuwe apparaat opgehaald. Alle bewerkingen bevinden zich in de Cloud snelheid. |
 
-## <a name="references"></a>Referenties
+## <a name="references"></a>Verwijzingen
 
 In dit artikel wordt verwezen naar de volgende documenten:
 

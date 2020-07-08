@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
 ms.openlocfilehash: f2a514b6f44df7be15f18aa8f7c42668c872ab4a
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85509690"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple als een back-updoel met Veeam
@@ -276,11 +276,11 @@ Maak op basis van de voor gaande hypo theses een gelaagd volume van 26 TiB StorS
 
     ![Veeam-beheer console, pagina Back-upopslagplaats](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
 
-2.  Voer in het dialoog venster **nieuwe back-upopslagplaats** een naam en een beschrijving in voor de opslag plaats. Selecteer **Next**.
+2.  Voer in het dialoog venster **nieuwe back-upopslagplaats** een naam en een beschrijving in voor de opslag plaats. Selecteer **Volgende**.
 
     ![Veeam-beheer console, naam en beschrijvings pagina](./media/storsimple-configure-backup-target-using-veeam/veeamimage2.png)
 
-3.  Selecteer **micro soft Windows Server**voor het type. Selecteer de Veeam-server. Selecteer **Next**.
+3.  Selecteer **micro soft Windows Server**voor het type. Selecteer de Veeam-server. Selecteer **Volgende**.
 
     ![Veeam-beheer console, type back-upopslagplaats selecteren](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
 
@@ -293,7 +293,7 @@ Maak op basis van de voor gaande hypo theses een gelaagd volume van 26 TiB StorS
 
     ![Veeam-beheer console, instellingen voor opslag compatibiliteit](./media/storsimple-configure-backup-target-using-veeam/veeamimage5.png)
 
-6.  Schakel in het dialoog venster **nieuwe back-upopslagplaats** het selectie vakje **vPower NFS-service inschakelen op het koppel server (aanbevolen)** in. Selecteer **Next**.
+6.  Schakel in het dialoog venster **nieuwe back-upopslagplaats** het selectie vakje **vPower NFS-service inschakelen op het koppel server (aanbevolen)** in. Selecteer **Volgende**.
 
     ![Veeam-beheer console, pagina Back-upopslagplaats](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
 
@@ -507,7 +507,7 @@ Een nood geval kan worden veroorzaakt door diverse factoren. De volgende tabel g
 | Site fout die leidt tot verlies van zowel de back-upserver als de StorSimple | Back-up-en herstel bewerkingen worden onderbroken. | Herstel StorSimple eerst en herstel vervolgens Veeam. | Herstel StorSimple eerst en herstel vervolgens Veeam. Als u na het herstel van het apparaat een herstel bewerking moet uitvoeren, worden de volledige gegevens sets van de Cloud naar het nieuwe apparaat opgehaald. Alle bewerkingen bevinden zich in de Cloud snelheid. |
 
 
-## <a name="references"></a>Referenties
+## <a name="references"></a>Verwijzingen
 
 In dit artikel wordt verwezen naar de volgende documenten:
 

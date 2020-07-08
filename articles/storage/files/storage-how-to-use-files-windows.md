@@ -8,10 +8,10 @@ ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: bb9e7582317851d1968e104cd351a2b5e02b1e19
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85509775"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Een Azure-bestandsshare gebruiken met Windows
@@ -57,14 +57,14 @@ De Azure Portal biedt u een script dat u kunt gebruiken om uw bestands share rec
 
 Dit script ophalen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Navigeer naar het opslag account dat de bestands share bevat die u wilt koppelen.
 1. Selecteer **Bestands shares**.
 1. Selecteer de bestands share die u wilt koppelen.
 
     :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="Hierbij":::
 
-1. Selecteer **Verbinden**.
+1. Selecteer **Verbinding maken**.
 
     :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="Scherm afbeelding van het verbindings pictogram voor de bestands share.":::
 

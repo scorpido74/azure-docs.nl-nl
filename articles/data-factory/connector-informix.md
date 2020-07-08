@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 93f484bd30de1ba0ca0f7aa5db263243bebc5b09
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85508806"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-using-azure-data-factory"></a>Gegevens kopiëren van en naar IBM Informix met Azure Data Factory
@@ -94,7 +94,7 @@ Als u gegevens wilt kopiëren uit Informix, worden de volgende eigenschappen ond
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **InformixTable** | Yes |
 | tableName | De naam van de tabel in de Informix. | Nee voor bron (als "query" in activiteits bron is opgegeven);<br/>Ja voor Sink |
 
-**Hierbij**
+**Voorbeeld**
 
 ```json
 {

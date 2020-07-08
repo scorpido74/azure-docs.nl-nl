@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
 ms.openlocfilehash: 87885d9b476582fcce53b8b960d24093693af4ec
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85509384"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple als back-updoel met NetBackup
@@ -328,7 +328,7 @@ In de volgende procedure wordt ervan uitgegaan dat NetBackup en de doelhost zijn
 
    ![Beheer console voor netback-ups, selecteer beleid type](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
 
-5. Selecteer uw host, schakel het selectie vakje **client besturingssysteem detecteren** in en selecteer vervolgens **toevoegen**. Selecteer **Next**.
+5. Selecteer uw host, schakel het selectie vakje **client besturingssysteem detecteren** in en selecteer vervolgens **toevoegen**. Selecteer **Volgende**.
 
    ![Beheer console voor netback-ups, clients weer geven in een nieuw beleid](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
 

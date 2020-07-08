@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 0ed8533b093c5af0d8aefdcd5175bed63f37a76c
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85507667"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>Gebruik de service StorSimple Apparaatbeheer om een Ondersteuningsaanvraag te registreren voor de virtuele StorSimple-matrix
@@ -27,7 +27,7 @@ ms.locfileid: "85507667"
 
 De StorSimple-Apparaatbeheer biedt de mogelijkheid om **een nieuwe ondersteunings aanvraag in te loggen** op de Blade service overzicht. In dit artikel wordt uitgelegd hoe u een nieuwe ondersteunings aanvraag kunt vastleggen en hoe u de levens cyclus vanuit de portal beheert.
 
-## <a name="new-support-request"></a>Nieuw ondersteuningsverzoek
+## <a name="new-support-request"></a>Nieuwe ondersteuningsaanvraag
 
 Afhankelijk van uw [ondersteunings plan](https://azure.microsoft.com/support/plans/)kunt u op de Blade StorSimple Apparaatbeheer service overzicht direct ondersteunings tickets maken voor een probleem op uw StorSimple-virtuele matrix.
 
@@ -35,7 +35,7 @@ Afhankelijk van uw [ondersteunings plan](https://azure.microsoft.com/support/pla
 
 1. Ga naar uw StorSimple-apparaatbeheerservice. Ga in de Blade instellingen service overzicht naar **ondersteuning en probleem oplossing** en klik vervolgens op **nieuwe ondersteunings aanvraag**.
    
-    ![Nieuw ondersteuningsverzoek](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
+    ![Nieuwe ondersteuningsaanvraag](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
 
 2. Ga als volgt te werk op de Blade **basis beginselen** :
 
@@ -49,11 +49,11 @@ Afhankelijk van uw [ondersteunings plan](https://azure.microsoft.com/support/pla
 
 3. Kies in **stap 2**de **Ernst** en geef op of het probleem betrekking heeft op de matrix of de StorSimple-Apparaatbeheer service. Kies ook een **categorie** voor dit probleem en geef meer **informatie** over het probleem.
    
-    ![Nieuw ondersteuningsverzoek](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
+    ![Nieuwe ondersteuningsaanvraag](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
 
 4. Geef in **stap 3**uw contact gegevens op. Microsoft Ondersteuning gebruikt deze informatie om u te bereiken voor meer informatie, diagnose en oplossing.
    
-    ![Nieuw ondersteuningsverzoek](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
+    ![Nieuwe ondersteuningsaanvraag](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
 
 ## <a name="manage-a-support-request"></a>Een ondersteunings aanvraag beheren
 
