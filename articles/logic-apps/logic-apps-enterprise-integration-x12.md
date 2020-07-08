@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
 ms.openlocfilehash: 9398b40763e8226cedf788f9cefbf5ed28cd649d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83739529"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange X12-berichten voor B2B Enter prise integration in Azure Logic Apps met Enterprise Integration Pack
@@ -45,7 +45,7 @@ Nadat u de eigenschappen van de overeenkomst hebt ingesteld, kunt u configureren
 
    * [Id's](#inbound-identifiers)
    * [Bevestigings](#inbound-acknowledgement)
-   * [Schema 's](#inbound-schemas)
+   * [Schema's](#inbound-schemas)
    * [Enveloppen](#inbound-envelopes)
    * [Controle nummers](#inbound-control-numbers)
    * [Validaties](#inbound-validations)
@@ -169,12 +169,12 @@ Nadat u de eigenschappen van de overeenkomst hebt ingesteld, kunt u configureren
 
    * [Id's](#outbound-identifiers)
    * [Bevestigings](#outbound-acknowledgement)
-   * [Schema 's](#outbound-schemas)
+   * [Schema's](#outbound-schemas)
    * [Enveloppen](#outbound-envelopes)
    * [Versie nummer van besturings element](#outbound-control-version-number)
    * [Controle nummers](#outbound-control-numbers)
    * [Teken sets en scheidings tekens](#outbound-character-sets-separators)
-   * [Validatie](#outbound-validation)
+   * [/Categorievalidatie](#outbound-validation)
 
 1. Wanneer u klaar bent, moet u de instellingen opslaan door **OK**te selecteren.
 
@@ -316,7 +316,7 @@ Wanneer u werkt met HIPAA-schema's en de 277-of 837-bericht typen, moet u een pa
 
 Deze tabel bevat de betrokken bericht typen, varianten en de document versie nummers die zijn toegewezen aan deze bericht typen:
 
-| Bericht type of-variant |  Beschrijving | Document versie nummer (GS8) |
+| Bericht type of-variant |  Description | Document versie nummer (GS8) |
 |-------------------------|--------------|-------------------------------|
 | 277 | Melding van status van informatie over gezondheids zorg | 005010X212 |
 | 837_I | Gezondheids zorg claim institutionele | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |
