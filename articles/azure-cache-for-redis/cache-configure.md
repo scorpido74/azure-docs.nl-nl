@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: 3f0de52782694e6cbc8fdb6b55d545191dbbb350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81010304"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure-cache configureren voor redis
@@ -40,7 +39,7 @@ U kunt de volgende instellingen weer geven en configureren met behulp van het **
     * [Geavanceerde instellingen](#advanced-settings)
     * [Azure-cache voor redis Advisor](#azure-cache-for-redis-advisor)
     * [Schalen](#scale)
-    * [Cluster grootte](#cluster-size)
+    * [Grootte van cluster](#cluster-size)
     * [Gegevens persistentie](#redis-data-persistence)
     * [Updates plannen](#schedule-updates)
     * [Geo-replicatie](#geo-replication)
@@ -53,13 +52,13 @@ U kunt de volgende instellingen weer geven en configureren met behulp van het **
     * [Gegevens importeren](#importexport)
     * [Gegevens exporteren](#importexport)
     * [Opnieuw opstarten](#reboot)
-* [Bewaking](#monitoring)
+* [Controle](#monitoring)
     * [Metrische gegevens van redis](#redis-metrics)
     * [Waarschuwings regels](#alert-rules)
-    * [Diagnostiek](#diagnostics)
+    * [Diagnostics](#diagnostics)
 * Ondersteuning voor het oplossen van problemen met instellingen &
-    * [Resource status](#resource-health)
-    * [Nieuwe ondersteunings aanvraag](#new-support-request)
+    * [Status van resources](#resource-health)
+    * [Nieuwe ondersteuningsaanvraag](#new-support-request)
 
 
 ## <a name="overview"></a>Overzicht
@@ -92,7 +91,7 @@ De sectie **instellingen** biedt u de mogelijkheid om de volgende instellingen v
 * [Geavanceerde instellingen](#advanced-settings)
 * [Azure-cache voor redis Advisor](#azure-cache-for-redis-advisor)
 * [Schalen](#scale)
-* [Cluster grootte](#cluster-size)
+* [Grootte van cluster](#cluster-size)
 * [Gegevens persistentie](#redis-data-persistence)
 * [Updates plannen](#schedule-updates)
 * [Geo-replicatie](#geo-replication)
@@ -139,13 +138,13 @@ Met **Maxmemory-beleid** configureert u het verwijderings beleid voor de cache e
 * `volatile-ttl`
 * `noeviction`
 
-Zie `maxmemory` [verwijderings beleid](https://redis.io/topics/lru-cache#eviction-policies)voor meer informatie over beleid.
+`maxmemory`Zie [verwijderings beleid](https://redis.io/topics/lru-cache#eviction-policies)voor meer informatie over beleid.
 
 De instelling **maxmemory-gereserveerde** configureert de hoeveelheid geheugen (in MB) die is gereserveerd voor niet-cache bewerkingen, zoals replicatie tijdens failover. Door deze waarde in te stellen, kunt u een consistente redis-server ervaring hebben wanneer uw belasting varieert. Deze waarde moet hoger worden ingesteld voor werk belastingen die zijn geschreven. Wanneer geheugen is gereserveerd voor dergelijke bewerkingen, is het niet beschikbaar voor opslag van gegevens in de cache.
 
 De instelling **maxfragmentationmemory-gereserveerde** configureert de hoeveelheid geheugen in MB die is gereserveerd voor geheugen fragmentatie. Door deze waarde in te stellen, kunt u een consistente redis-server ervaring hebben wanneer de cache vol is of bijna vol is en de fragmentatie verhouding hoog is. Wanneer geheugen is gereserveerd voor dergelijke bewerkingen, is het niet beschikbaar voor opslag van gegevens in de cache.
 
-Een ding waarmee u rekening moet houden bij het kiezen van een nieuwe waarde voor geheugen reservering (**maxmemory** of **maxfragmentationmemory-** Reserved), is de manier waarop deze wijziging van invloed kan zijn op een cache die al wordt uitgevoerd met grote hoeveel heden gegevens. Als u bijvoorbeeld een cache van 53 GB met gegevens van 49 GB hebt, wijzigt u de reserverings waarde in 8 GB. deze wijziging zal de Maxi maal beschik bare hoeveelheid geheugen voor het systeem verlagen tot 45 GB. Als uw huidige `used_memory` waarde of uw `used_memory_rss` waarden hoger zijn dan de nieuwe limiet van 45 GB, dan moet het systeem gegevens verwijderen tot beide `used_memory` en `used_memory_rss` onder 45 GB vallen. Verwijderen kan de belasting van de server en de geheugen fragmentatie verhogen. Zie `used_memory` [beschik bare metrische gegevens en rapportage-intervallen](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)voor meer informatie over de cache-metrische gegevens, zoals en `used_memory_rss`.
+Een ding waarmee u rekening moet houden bij het kiezen van een nieuwe waarde voor geheugen reservering (**maxmemory** of **maxfragmentationmemory-** Reserved), is de manier waarop deze wijziging van invloed kan zijn op een cache die al wordt uitgevoerd met grote hoeveel heden gegevens. Als u bijvoorbeeld een cache van 53 GB met gegevens van 49 GB hebt, wijzigt u de reserverings waarde in 8 GB. deze wijziging zal de Maxi maal beschik bare hoeveelheid geheugen voor het systeem verlagen tot 45 GB. Als uw huidige `used_memory` waarde of uw `used_memory_rss` waarden hoger zijn dan de nieuwe limiet van 45 GB, dan moet het systeem gegevens verwijderen tot beide `used_memory` en `used_memory_rss` onder 45 GB vallen. Verwijderen kan de belasting van de server en de geheugen fragmentatie verhogen. `used_memory` `used_memory_rss` Zie [beschik bare metrische gegevens en rapportage-intervallen](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)voor meer informatie over de cache-metrische gegevens, zoals en.
 
 > [!IMPORTANT]
 > De instellingen voor **maxmemory** en **maxfragmentationmemory-reserve** ring zijn alleen beschikbaar voor de standaard-en Premium-caches.
@@ -203,7 +202,7 @@ Klik op **schalen** om de prijs categorie voor uw cache weer te geven of te wijz
 ### <a name="redis-cluster-size"></a>Grootte van redis-cluster
 Klik op **cluster grootte** om de cluster grootte te wijzigen voor een actieve Premium-cache waarbij Clustering is ingeschakeld.
 
-![Cluster grootte](./media/cache-configure/redis-cache-redis-cluster-size.png)
+![Grootte van cluster](./media/cache-configure/redis-cache-redis-cluster-size.png)
 
 Als u de cluster grootte wilt wijzigen, gebruikt u de schuif regelaar of typt u een getal tussen 1 en 10 in het tekstvak **Shard aantal** en klikt u op **OK** om op te slaan.
 
@@ -333,7 +332,7 @@ Zie [Azure-cache bewaken voor redis](cache-how-to-monitor.md)voor meer informati
 
 * [Metrische gegevens van redis](#redis-metrics)
 * [Waarschuwings regels](#alert-rules)
-* [Diagnostiek](#diagnostics)
+* [Diagnostics](#diagnostics)
 
 ### <a name="redis-metrics"></a>Metrische gegevens van redis
 Klik op **redis metrische gegevens** om de [metrische gegevens](cache-how-to-monitor.md#view-cache-metrics) voor uw cache weer te geven.
@@ -356,8 +355,8 @@ De instellingen in de sectie **ondersteuning en probleem oplossing** bieden u op
 
 ![Ondersteuning en probleemoplossing](./media/cache-configure/redis-cache-support-troubleshooting.png)
 
-* [Resource status](#resource-health)
-* [Nieuwe ondersteunings aanvraag](#new-support-request)
+* [Status van resources](#resource-health)
+* [Nieuwe ondersteuningsaanvraag](#new-support-request)
 
 ### <a name="resource-health"></a>Status van resources
 De **resource status** houdt uw resource in de gaten en vertelt u of deze wordt uitgevoerd zoals verwacht. Zie [overzicht van Azure resource Health](../resource-health/resource-health-overview.md)voor meer informatie over de Azure resource Health-Service.
@@ -367,7 +366,7 @@ De **resource status** houdt uw resource in de gaten en vertelt u of deze wordt 
 >
 >
 
-### <a name="new-support-request"></a>Nieuw ondersteuningsverzoek
+### <a name="new-support-request"></a>Nieuwe ondersteuningsaanvraag
 Klik op **nieuwe ondersteunings aanvraag** om een ondersteunings aanvraag voor uw cache te openen.
 
 
@@ -378,7 +377,7 @@ Klik op **nieuwe ondersteunings aanvraag** om een ondersteunings aanvraag voor u
 Nieuwe Azure-cache voor redis-exemplaren worden geconfigureerd met de volgende standaard instellingen voor redis-configuratie:
 
 > [!NOTE]
-> De instellingen in deze sectie kunnen niet worden gewijzigd met `StackExchange.Redis.IServer.ConfigSet` de-methode. Als deze methode wordt aangeroepen met een van de opdrachten in deze sectie, wordt een uitzonde ring gegenereerd die lijkt op het volgende voor beeld:  
+> De instellingen in deze sectie kunnen niet worden gewijzigd met de- `StackExchange.Redis.IServer.ConfigSet` methode. Als deze methode wordt aangeroepen met een van de opdrachten in deze sectie, wordt een uitzonde ring gegenereerd die lijkt op het volgende voor beeld:  
 >
 > `StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
 >
@@ -388,16 +387,16 @@ Nieuwe Azure-cache voor redis-exemplaren worden geconfigureerd met de volgende s
 
 | Instelling | Standaardwaarde | Beschrijving |
 | --- | --- | --- |
-| `databases` |16 |Het standaard aantal data bases is 16, maar u kunt een ander getal configureren op basis van de prijs categorie. <sup>1</sup> de standaard database is db 0. u kunt een andere waarde per verbinding `connection.GetDatabase(dbid)` selecteren, waarbij `dbid` u een getal tussen `0` en `databases - 1`gebruikt. |
+| `databases` |16 |Het standaard aantal data bases is 16, maar u kunt een ander getal configureren op basis van de prijs categorie. <sup>1</sup> de standaard database is db 0. u kunt een andere waarde per verbinding selecteren, `connection.GetDatabase(dbid)` waarbij u `dbid` een getal tussen `0` en gebruikt `databases - 1` . |
 | `maxclients` |Is afhankelijk van de prijs categorie<sup>2</sup> |Deze waarde is het maximum aantal aangesloten clients dat tegelijkertijd is toegestaan. Zodra de limiet is bereikt, sluit redis alle nieuwe verbindingen af en wordt de fout ' maximum aantal clients bereikt ' geretourneerd. |
-| `maxmemory-policy` |`volatile-lru` |Maxmemory-beleid is de instelling voor hoe redis selecteert wat moet worden `maxmemory` verwijderd wanneer (de grootte van de cache aanbieding die u hebt geselecteerd tijdens het maken van de cache) is bereikt. Met Azure cache voor redis is `volatile-lru`de standaard instelling, waarmee de sleutels met een verloopset worden verwijderd met behulp van een LRU-algoritme. Deze instelling kan worden geconfigureerd in de Azure Portal. Zie [geheugen beleid](#memory-policies)voor meer informatie. |
+| `maxmemory-policy` |`volatile-lru` |Maxmemory-beleid is de instelling voor hoe redis selecteert wat moet worden verwijderd wanneer `maxmemory` (de grootte van de cache aanbieding die u hebt geselecteerd tijdens het maken van de cache) is bereikt. Met Azure cache voor redis is de standaard instelling `volatile-lru` , waarmee de sleutels met een verloopset worden verwijderd met behulp van een LRU-algoritme. Deze instelling kan worden geconfigureerd in de Azure Portal. Zie [geheugen beleid](#memory-policies)voor meer informatie. |
 | `maxmemory-samples` |3 |Voor het opslaan van geheugen zijn LRU en minimale TTL-algoritmen een geschatte algoritme in plaats van nauw keurige algoritmen. Standaard worden met redis drie sleutels gecontroleerd en wordt de versie gekozen die minder recent is gebruikt. |
-| `lua-time-limit` |5.000 |Maximale uitvoerings tijd van een Lua-script in milliseconden. Als de maximale uitvoerings tijd is bereikt, redis logboeken dat een script nog steeds wordt uitgevoerd na de Maxi maal toegestane tijd en begint met het beantwoorden van query's met een fout. |
+| `lua-time-limit` |5\.000 |Maximale uitvoerings tijd van een Lua-script in milliseconden. Als de maximale uitvoerings tijd is bereikt, redis logboeken dat een script nog steeds wordt uitgevoerd na de Maxi maal toegestane tijd en begint met het beantwoorden van query's met een fout. |
 | `lua-event-limit` |500 |Maximale grootte van script gebeurtenis wachtrij. |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |De limieten voor client uitvoer buffers kunnen worden gebruikt om te voor komen dat clients die geen gegevens van de server snel genoeg worden gelezen, om een of andere reden. (een veelvoorkomende reden is dat een pub/sub-client berichten niet kan gebruiken als de uitgever deze kan produceren). Zie [https://redis.io/topics/clients](https://redis.io/topics/clients)voor meer informatie. |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |De limieten voor client uitvoer buffers kunnen worden gebruikt om te voor komen dat clients die geen gegevens van de server snel genoeg worden gelezen, om een of andere reden. (een veelvoorkomende reden is dat een pub/sub-client berichten niet kan gebruiken als de uitgever deze kan produceren). Zie voor meer informatie [https://redis.io/topics/clients](https://redis.io/topics/clients) . |
 
 <a name="databases"></a>
-<sup>1</sup> De limiet voor `databases` is verschillend voor elke Azure-cache voor redis prijs categorie en kan worden ingesteld tijdens het maken van de cache. Als er `databases` geen instelling wordt opgegeven tijdens het maken van de cache, is de standaard waarde 16.
+<sup>1</sup> De limiet voor `databases` is verschillend voor elke Azure-cache voor redis prijs categorie en kan worden ingesteld tijdens het maken van de cache. Als er geen `databases` instelling wordt opgegeven tijdens het maken van de cache, is de standaard waarde 16.
 
 * Basic-en Standard-caches
   * C0 (250 MB) cache-Maxi maal 16 data bases
@@ -412,12 +411,12 @@ Nieuwe Azure-cache voor redis-exemplaren worden geconfigureerd met de volgende s
   * P2 (13 GB-130 GB)-Maxi maal 32 data bases
   * P3 (26 GB-260 GB)-Maxi maal 48 data bases
   * P4 (53 GB-530 GB)-Maxi maal 64 data bases
-  * Alle Premium-caches met redis-cluster enabled-redis cluster ondersteunt alleen het gebruik van data `databases` base 0, dus de limiet voor een Premium-cache waarvoor redis-cluster is ingeschakeld, is in feite 1 en de [selectie](https://redis.io/commands/select) opdracht is niet toegestaan. Zie voor meer informatie [moet ik wijzigingen aanbrengen in mijn client toepassing voor het gebruik van clusters?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
+  * Alle Premium-caches met redis-cluster enabled-redis cluster ondersteunt alleen het gebruik van data base 0, dus de `databases` limiet voor een Premium-cache waarvoor redis-cluster is ingeschakeld, is in feite 1 en de [selectie](https://redis.io/commands/select) opdracht is niet toegestaan. Zie voor meer informatie [moet ik wijzigingen aanbrengen in mijn client toepassing voor het gebruik van clusters?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 
 Zie [Wat zijn redis-data bases?](cache-faq.md#what-are-redis-databases) voor meer informatie over data bases.
 
 > [!NOTE]
-> De `databases` instelling kan alleen worden geconfigureerd tijdens het maken van de cache en alleen Power shell, CLI of andere management-clients gebruiken. Zie [New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases)voor `databases` een voor beeld van het configureren van het maken van een cache met behulp van Power shell.
+> De `databases` instelling kan alleen worden geconfigureerd tijdens het maken van de cache en alleen Power shell, CLI of andere management-clients gebruiken. Zie New-AzRedisCache voor een voor beeld van het configureren van het maken van een `databases` cache met behulp van Power shell. [New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases)
 >
 >
 
@@ -447,7 +446,7 @@ Zie [Wat zijn redis-data bases?](cache-faq.md#what-are-redis-databases) voor mee
 
 ## <a name="redis-commands-not-supported-in-azure-cache-for-redis"></a>Redis-opdrachten die niet worden ondersteund in azure cache voor redis
 > [!IMPORTANT]
-> Omdat de configuratie en het beheer van Azure cache voor redis-exemplaren door micro soft worden beheerd, worden de volgende opdrachten uitgeschakeld. Als u deze probeert aan te roepen, wordt een fout bericht van de `"(error) ERR unknown command"`volgende strekking weer gegeven.
+> Omdat de configuratie en het beheer van Azure cache voor redis-exemplaren door micro soft worden beheerd, worden de volgende opdrachten uitgeschakeld. Als u deze probeert aan te roepen, wordt een fout bericht van de volgende strekking weer gegeven `"(error) ERR unknown command"` .
 >
 > * BGREWRITEAOF
 > * BGSAVE
@@ -461,14 +460,14 @@ Zie [Wat zijn redis-data bases?](cache-faq.md#what-are-redis-databases) voor mee
 >
 >
 
-Zie [https://redis.io/commands](https://redis.io/commands)voor meer informatie over redis-opdrachten.
+Zie voor meer informatie over redis-opdrachten [https://redis.io/commands](https://redis.io/commands) .
 
 ## <a name="redis-console"></a>Redis-console
 U kunt met behulp van de **redis-console**, die beschikbaar is in de Azure portal voor alle cache-lagen, veilig opdrachten verzenden naar uw Azure-cache voor redis-instanties.
 
 > [!IMPORTANT]
 > - De redis-console werkt niet met [VNET](cache-how-to-premium-vnet.md). Wanneer uw cache deel uitmaakt van een VNET, hebben alleen clients in het VNET toegang tot de cache. Omdat de redis-console wordt uitgevoerd in uw lokale browser, die zich buiten het VNET bevindt, kan er geen verbinding worden gemaakt met uw cache.
-> - Niet alle redis-opdrachten worden ondersteund in azure cache voor redis. Zie de vorige [redis-opdrachten die niet worden ondersteund in azure cache for redis](#redis-commands-not-supported-in-azure-cache-for-redis) voor een lijst met redis-opdrachten die zijn uitgeschakeld voor Azure-cache voor redis. Zie [https://redis.io/commands](https://redis.io/commands)voor meer informatie over redis-opdrachten.
+> - Niet alle redis-opdrachten worden ondersteund in azure cache voor redis. Zie de vorige [redis-opdrachten die niet worden ondersteund in azure cache for redis](#redis-commands-not-supported-in-azure-cache-for-redis) voor een lijst met redis-opdrachten die zijn uitgeschakeld voor Azure-cache voor redis. Zie voor meer informatie over redis-opdrachten [https://redis.io/commands](https://redis.io/commands) .
 >
 >
 
@@ -494,7 +493,7 @@ shard1>get myKey
 (error) MOVED 866 13.90.202.154:13000 (shard 0)
 ```
 
-In het vorige voor beeld is Shard 1 de geselecteerde Shard, maar `myKey` bevindt zich in Shard 0, zoals wordt `(shard 0)` aangegeven door het gedeelte van het fout bericht. In dit voor beeld selecteert u `myKey`Shard 0 met de Shard-kiezer en geeft u vervolgens de gewenste opdracht op.
+In het vorige voor beeld is Shard 1 de geselecteerde Shard, maar `myKey` bevindt zich in Shard 0, zoals wordt aangegeven door het `(shard 0)` gedeelte van het fout bericht. In dit voor beeld selecteert u `myKey` Shard 0 met de Shard-kiezer en geeft u vervolgens de gewenste opdracht op.
 
 
 ## <a name="move-your-cache-to-a-new-subscription"></a>Uw cache verplaatsen naar een nieuw abonnement

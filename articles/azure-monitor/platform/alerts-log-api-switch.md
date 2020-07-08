@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.subservice: alerts
 ms.openlocfilehash: 7950b3f584c36b68a4eff66b05e83ba94c1ec1dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114353"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Switch-API-voor keur voor logboek waarschuwingen
@@ -50,7 +49,7 @@ De gevolgen van de switch van de voor keur voor de scheduledQueryRules-API worde
 Door het proces van het verplaatsen van waarschuwings regels van de [verouderde log Analytics-waarschuwings-API](api-alerts.md) hoeft u de waarschuwingen definitie,-query of-configuratie op geen enkele manier te wijzigen. Uw waarschuwings regels en controle worden niet beïnvloed en de waarschuwingen worden niet gestopt of niet meer tijdens of na de switch. De enige wijzigingen zijn:
 
 - Een wijziging in de API-voor keur en toegang tot uw regels via een nieuwe API.
-- Een gewijzigde resource-URI voor een waarschuwings regel met de Id's die worden gebruikt in de [verouderde API voor log Analytics waarschuwingen](api-alerts.md) in `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`plaats van de naam van de waarschuwings regel in deze structuur. De weergave naam van de waarschuwings regel blijft ongewijzigd.
+- Een gewijzigde resource-URI voor een waarschuwings regel met de Id's die worden gebruikt in de [verouderde API voor log Analytics waarschuwingen](api-alerts.md) in plaats van de naam van de waarschuwings regel in deze structuur `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` . De weergave naam van de waarschuwings regel blijft ongewijzigd.
 
 Elke klant die vrijwillig wil overschakelen naar de nieuwe [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) en het gebruik van de [verouderde log Analytics alert-API](api-alerts.md)wilt blok keren. kan dit doen door een PUT-aanroep uit te voeren op de onderstaande API om alle waarschuwings regels te wijzigen die zijn gekoppeld aan de specifieke Log Analytics-werk ruimte.
 

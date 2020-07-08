@@ -6,10 +6,9 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 1d21c7ed93ac2ce2ab61282707d57fbf43e0b71a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81261071"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrische waarschuwingen met dynamische drempel waarden in Azure Monitor
@@ -18,7 +17,7 @@ Een metrische waarschuwing met dynamische drempel waarden detectie maakt gebruik
 
 Zodra een waarschuwings regel is gemaakt, wordt deze alleen geactiveerd wanneer de gecontroleerde metrische gegevens niet zoals verwacht functioneren, op basis van de aangepaste drempel waarden.
 
-We horen graag uw feedback en blijven deze op <azurealertsfeedback@microsoft.com>.
+We horen graag uw feedback en blijven deze op <azurealertsfeedback@microsoft.com> .
 
 ## <a name="why-and-when-is-using-dynamic-condition-type-recommended"></a>Waarom en wanneer wordt dynamisch voor waarden type gebruikt?
 

@@ -4,10 +4,9 @@ description: Krijg antwoorden op veelgestelde vragen over herstel na nood gevall
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: d551cef7037c0b6d7286cbb4b70d8f7a8f7f5cae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81259507"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Algemene vragen over replicatie van VMware naar Azure
@@ -282,7 +281,7 @@ Ja, maar houd er rekening mee dat de fysieke machine alleen kan worden teruggeze
 
 ### <a name="where-can-i-download-vault-registration-keys"></a>Waar kan ik een kluis registratie sleutel downloaden?
 
-Selecteer in de Recovery Services kluis **configuratie servers** in **site Recovery-infra structuur** > **beheren**. Selecteer vervolgens bij **servers**de optie **registratie sleutel downloaden** om het bestand met kluis referenties te downloaden.
+Selecteer in de Recovery Services kluis **configuratie servers** in **site Recovery-infra structuur**  >  **beheren**. Selecteer vervolgens bij **servers**de optie **registratie sleutel downloaden** om het bestand met kluis referenties te downloaden.
 
 ### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>Kan één configuratie server worden gebruikt voor het beveiligen van meerdere vCenter-instanties?
 

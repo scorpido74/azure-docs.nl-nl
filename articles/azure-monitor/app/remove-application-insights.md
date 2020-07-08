@@ -4,10 +4,9 @@ description: Application Insights SDK voor ASP.NET en ASP.NET Core verwijderen i
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 1c9ff8d3d305645ac7d113421e2c6c5f8451bd2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80805103"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>Application Insights verwijderen in Visual Studio
@@ -49,7 +48,7 @@ Als u Application Insights wilt verwijderen, moet u de NuGet-pakketten en-verwij
 
 # <a name="net"></a>[.NET](#tab/net)
 
-1. Klik in de *Solution Explorer* aan de rechter kant op **oplossing** en selecteer NuGet- **Pakketten beheren voor oplossing**.
+1. Klik in de *Solution Explorer*   aan de rechter kant op **oplossing**   en selecteer NuGet- **Pakketten beheren voor oplossing**.
 
     Vervolgens wordt er een scherm weer gegeven waarin u alle NuGet-pakketten kunt bewerken die deel uitmaken van het project.
     
@@ -58,9 +57,9 @@ Als u Application Insights wilt verwijderen, moet u de NuGet-pakketten en-verwij
     > [!NOTE]
     > Als traceer verzameling is ingeschakeld, moet u eerst micro soft. ApplicationInsights. TraceListener verwijderen zonder de afhankelijkheden te verwijderen en vervolgens de onderstaande stappen volgen om micro soft. ApplicationInsights. web te verwijderen met geselecteerde afhankelijkheden verwijderen.
     
-1. Klik op het pakket micro soft. ApplicationInsights. Web.Schakel aan de rechter kant het selectie vakje naast *project* in om alle projecten te selecteren.
+1. Klik op het pakket micro soft. ApplicationInsights. Web.Schakel aan de rechter kant het selectie vakje naast *project*   in om alle projecten te selecteren.
     
-1. Als u alle afhankelijkheden wilt verwijderen wanneer u de installatie ongedaan maakt, selecteert u de vervolg keuze knop **Opties** onder de sectie waarin u project hebt geselecteerd.
+1. Als u alle afhankelijkheden wilt verwijderen wanneer u de installatie **Options**ongedaan maakt, selecteert   u de vervolg keuze knop Opties onder de sectie waarin u project hebt geselecteerd.
 
     Schakel onder *Opties voor verwijderen*het selectie vakje in naast *afhankelijkheden verwijderen*.
 
@@ -68,15 +67,15 @@ Als u Application Insights wilt verwijderen, moet u de NuGet-pakketten en-verwij
     
     ![Schakel afhankelijkheden verwijderen uit en verwijder vervolgens](./media/remove-application-insights/uninstall-framework.png)
 
-    Er verschijnt een dialoog venster waarin alle afhankelijkheden worden weer gegeven die uit de toepassing moeten worden verwijderd.Selecteer **OK** om te verwijderen.
+    Er verschijnt een dialoog venster waarin alle afhankelijkheden worden weer gegeven die uit de toepassing moeten worden verwijderd.Selecteer **OK**   om te verwijderen.
     
     ![Schakel afhankelijkheden verwijderen uit en verwijder vervolgens](./media/remove-application-insights/preview-uninstall-framework.png)
     
-1.  Nadat alles is verwijderd, ziet u mogelijk nog steeds ' ApplicationInsights. config ' en ' AiHandleErrorAttribute.cs ' in de *Solution Explorer*.U kunt de twee bestanden hand matig verwijderen.
+1.  Nadat alles is verwijderd, ziet u mogelijk nog steeds ' ApplicationInsights.config ' en ' AiHandleErrorAttribute.cs ' in de *Solution Explorer*.U kunt de twee bestanden hand matig verwijderen.
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-1. Klik in de *Solution Explorer* aan de rechter kant op **oplossing** en selecteer NuGet- **Pakketten beheren voor oplossing**.
+1. Klik in de *Solution Explorer*   aan de rechter kant op **oplossing**   en selecteer NuGet- **Pakketten beheren voor oplossing**.
 
     Vervolgens wordt er een scherm weer gegeven waarin u alle NuGet-pakketten kunt bewerken die deel uitmaken van het project.
 
@@ -107,7 +106,7 @@ De volgende stukjes code worden toegevoegd:
      <ApplicationInsightsResourceId>/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/WebApplication4</ApplicationInsightsResourceId>
     ```
 
-- Packages. config
+- Packages.config
 
     ```xml
     <packages>
@@ -155,7 +154,7 @@ De volgende stukjes code worden toegevoegd:
     </head>
     ```
 
-- ConnectedService. json
+- ConnectedService.jsop
 
     ```json
     {
@@ -197,14 +196,14 @@ Wanneer u Application Insights Telemetry toevoegt aan een sjabloon project van V
       </ItemGroup>
     ```
 
-- AppSettings. json:
+- Appsettings.jsop:
 
     ```json
     "ApplicationInsights": {
         "InstrumentationKey": "00000000-0000-0000-0000-000000000000"
     ```
 
-- ConnectedService. json
+- ConnectedService.jsop
     
     ```json
     {

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 keywords: Prometheus, Aro, open Shift, metrische gegevens, Red Hat
 ms.openlocfilehash: 7f22df587f51af735e0ea663e53f6eef14d60692
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80886885"
 ---
 # <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Een zelfstandig Prometheus-exemplaar in een Azure Red Hat open Shift-cluster implementeren
@@ -30,13 +29,13 @@ U gaat een aantal Prometheus-configuratie bestanden lokaal voorbereiden. Maak ee
 
 ## <a name="sign-in-to-the-cluster-by-using-the-oc-tool"></a>Aanmelden bij het cluster met het hulp programma OC
 
-1. Open een webbrowser en ga vervolgens naar de webconsole van uw cluster (https://openshift.* wille keurige id*. *Region*. azmosa.io).
+1. Open een webbrowser en ga vervolgens naar de webconsole van uw cluster ( https://openshift .* wille keurige id*. *Region*. azmosa.io).
 2. Meld u aan met uw Azure-referenties.
 3. Selecteer uw gebruikers naam in de rechter bovenhoek en selecteer vervolgens **aanmeldings opdracht kopiëren**.
 4. Plak uw gebruikers naam in de terminal die u gaat gebruiken.
 
 > [!NOTE]
-> Voer de `oc whoami -c` opdracht uit om te zien of u bent aangemeld bij het juiste cluster.
+> Voer de opdracht uit om te zien of u bent aangemeld bij het juiste cluster `oc whoami -c` .
 
 ## <a name="prepare-the-projects"></a>De projecten voorbereiden
 
@@ -49,7 +48,7 @@ oc new-project app-project2
 
 
 > [!NOTE]
-> U kunt de `-n` para meter or `--namespace` gebruiken of een actief project selecteren door de `oc project` opdracht uit te voeren.
+> U kunt de `-n` `--namespace` para meter or gebruiken of een actief project selecteren door de opdracht uit te voeren `oc project` .
 
 ## <a name="prepare-the-prometheus-configuration-file"></a>Het Prometheus-configuratie bestand voorbereiden
 Maak een Prometheus. yml-bestand door de volgende inhoud in te voeren:
@@ -110,7 +109,7 @@ oc create secret generic prom-alerts --from-file=alertmanager.yml -n prometheus-
 Alertmanager. yml is het configuratie bestand van waarschuwings beheer.
 
 > [!NOTE]
-> Voer de `oc get secret -n prometheus-project` opdracht uit om de twee vorige stappen te controleren.
+> Voer de opdracht uit om de twee vorige stappen te controleren `oc get secret -n prometheus-project` .
 
 ## <a name="start-prometheus-and-alertmanager"></a>Prometheus en Alertmanager starten
 Ga naar Open [SHIFT/Origin](https://github.com/openshift/origin/tree/release-3.11/examples/prometheus) en down load de sjabloon [Prometheus-standalone. yaml](
@@ -121,7 +120,7 @@ oc process -f https://raw.githubusercontent.com/openshift/origin/release-3.11/ex
 Het Prometheus-standalone. yaml-bestand is een open Shift-sjabloon. Er wordt een Prometheus-exemplaar gemaakt met OAuth-proxy vóór het en een Alertmanager-exemplaar, ook beveiligd met OAuth-proxy. In deze sjabloon is OAuth-proxy zo geconfigureerd dat elke gebruiker die de naam ruimte Prometheus-project kan ophalen (Zie de `-openshift-sar` vlag).
 
 > [!NOTE]
-> Voer de `oc get statefulset -n prometheus-project` opdracht uit om te controleren of de PROM StatefulSet gelijk is aan de gewenste replica's en het huidige aantal. Als u alle resources in het project wilt controleren, `oc get all -n prometheus-project` voert u de opdracht uit.
+> Voer de opdracht uit om te controleren of de PROM StatefulSet gelijk is aan de gewenste replica's en het huidige aantal `oc get statefulset -n prometheus-project` . Als u alle resources in het project wilt controleren, voert u de `oc get all -n prometheus-project` opdracht uit.
 
 ## <a name="add-permissions-to-allow-service-discovery"></a>Machtigingen toevoegen om service detectie toe te staan
 
@@ -178,11 +177,11 @@ oc process -f prometheus-sdrole.yml | oc apply -f - -n prometheus-project
 ```
 
 > [!NOTE]
-> Voer de opdrachten en `oc get role` `oc get rolebinding` uit om te controleren of de functie en RoleBinding correct zijn gemaakt.
+> Voer de opdrachten en uit om te controleren of de functie en RoleBinding correct zijn gemaakt `oc get role` `oc get rolebinding` .
 
 ## <a name="optional-deploy-example-application"></a>Optioneel: voorbeeld toepassing implementeren
 
-Alles werkt, maar er zijn geen metrische bronnen. Ga naar de Prometheus-URLhttps://prom-prometheus-project.apps(.* wille keurige id*. *Region*. azmosa.io/). U kunt deze vinden met de volgende opdracht:
+Alles werkt, maar er zijn geen metrische bronnen. Ga naar de Prometheus-URL ( https://prom-prometheus-project.apps .* wille keurige id*. *Region*. azmosa.io/). U kunt deze vinden met de volgende opdracht:
 
 ```
 oc get route prom -n prometheus-project
@@ -200,7 +199,7 @@ oc new-app python:3.6~https://github.com/Makdaam/prometheus-example --name=examp
 ```
 De nieuwe toepassingen moeten worden weer gegeven als geldige doelen op de service detectie pagina binnen 30 seconden na de implementatie.
 
-Selecteer **status** > **doelen**voor meer informatie.
+Selecteer **status**  >  **doelen**voor meer informatie.
 
 > [!NOTE]
 > Voor elke geslaagde, Prometheus een gegevens punt toevoegen aan de metrische waarde. Selecteer **Prometheus** in de linkerbovenhoek **, Voer in** als de expressie en selecteer vervolgens **uitvoeren**.
@@ -213,5 +212,5 @@ Voor meer informatie raadpleegt u de volgende GitHub-bibliotheken:
 
  - [Java](https://github.com/prometheus/client_java)
  - [Python](https://github.com/prometheus/client_python)
- - [OK](https://github.com/prometheus/client_golang)
+ - [Go](https://github.com/prometheus/client_golang)
  - [Ruby](https://github.com/prometheus/client_ruby)

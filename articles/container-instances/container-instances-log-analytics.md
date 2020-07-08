@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 04/07/2020
 ms.author: danlep
 ms.openlocfilehash: bd21a511641d5ea027c18bedb4dce47749110bcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80892390"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Logboek registratie van container groepen en instanties met Azure Monitor-logboeken
@@ -28,7 +27,7 @@ In de volgende secties wordt beschreven hoe u een container groep met ingeschake
 
 Voor het inschakelen van logboekregistratie voor uw containerexemplaren hebt u het volgende nodig:
 
-* [Log Analytics-werkruimte](../azure-monitor/learn/quick-create-workspace.md)
+* [Log Analytics werk ruimte](../azure-monitor/learn/quick-create-workspace.md)
 * [Azure CLI](/cli/azure/install-azure-cli) (of [Cloud Shell](/azure/cloud-shell/overview))
 
 ## <a name="get-log-analytics-credentials"></a>Log Analytics-referenties verkrijgen
@@ -39,9 +38,9 @@ De Log Analytics-werkruimte-id en de primaire sleutel verkrijgt u als volgt:
 
 1. Navigeer in Azure Portal naar uw Log Analytics-werkruimte.
 1. Selecteer **Geavanceerde instellingen** onder **instellingen**
-1. **Verbonden bronnen** > selecteren**Windows-servers** (of Linux- **servers**: de id en de sleutels zijn hetzelfde voor beide)
+1. **Verbonden bronnen**selecteren  >  **Windows-servers** (of Linux- **servers**: de id en de sleutels zijn hetzelfde voor beide)
 1. Noteer het volgende:
-   * **WERKRUIMTE-ID**
+   * **WERK RUIMTE-ID**
    * **PRIMAIRE SLEUTEL**
 
 ## <a name="create-container-group"></a>Containergroep maken
@@ -92,7 +91,7 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Voer vervolgens de volgende opdracht uit om de container groep te implementeren. Vervang `myResourceGroup` door een resource groep in uw abonnement (of maak eerst een resource groep met de naam ' myResourceGroup '):
+Voer vervolgens de volgende opdracht uit om de container groep te implementeren. Vervang door `myResourceGroup` een resource groep in uw abonnement (of maak eerst een resource groep met de naam ' myResourceGroup '):
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainergroup001 --file deploy-aci.yaml
@@ -115,7 +114,7 @@ U ziet een aantal resultaten die door de query worden weer gegeven. Als u eerst 
 
 ## <a name="view-events"></a>Gebeurtenissen weergeven
 
-U kunt ook gebeurtenissen weer geven voor container instanties in de Azure Portal. Gebeurtenissen bevatten het tijdstip waarop het exemplaar is gemaakt en wanneer het wordt gestart. De gebeurtenis gegevens in de `ContainerEvent_CL` tabel weer geven:
+U kunt ook gebeurtenissen weer geven voor container instanties in de Azure Portal. Gebeurtenissen bevatten het tijdstip waarop het exemplaar is gemaakt en wanneer het wordt gestart. De gebeurtenis gegevens in de tabel weer geven `ContainerEvent_CL` :
 
 1. Navigeer in Azure Portal naar uw Log Analytics-werkruimte.
 1. Onder **Algemeen**selecteert u **Logboeken**  
@@ -130,7 +129,7 @@ U ziet een aantal resultaten die door de query worden weer gegeven. Als u eerst 
 
 Azure Monitor-logboeken bevat een uitgebreide [querytaal][query_lang] voor het ophalen van gegevens uit mogelijk duizenden regels aan logboekuitvoer.
 
-De basis structuur van een query is de bron tabel (in dit artikel `ContainerInstanceLog_CL` `ContainerEvent_CL`), gevolgd door een reeks opera toren, gescheiden door het sluis teken (`|`). U kunt verschillende operatoren aan elkaar koppelen om de resultaten te verfijnen en geavanceerde functies uit te voeren.
+De basis structuur van een query is de bron tabel (in dit artikel `ContainerInstanceLog_CL` ), `ContainerEvent_CL` gevolgd door een reeks opera toren, gescheiden door het sluis teken ( `|` ). U kunt verschillende operatoren aan elkaar koppelen om de resultaten te verfijnen en geavanceerde functies uit te voeren.
 
 Als u voorbeeld query resultaten wilt weer geven, plakt u de volgende query in het tekstvak query en selecteert u de knop uitvoeren om de query **uit** te voeren. Deze query geeft alle logboekvermeldingen weer waarvan het veld 'Bericht' het woord 'waarschuwen' bevat:
 
@@ -153,7 +152,7 @@ ContainerInstanceLog_CL
 
 Voor meer informatie over het uitvoeren van query's op logboeken en het configureren van waarschuwingen in Azure Monitor-logboeken, zie:
 
-* [Zoekopdrachten in Azure Monitor-logboeken begrijpen](../log-analytics/log-analytics-log-search.md)
+* [Zoek opdrachten in Logboeken in Azure Monitor logboeken](../log-analytics/log-analytics-log-search.md)
 * [Consistente waarschuwingen in Azure Monitor](../azure-monitor/platform/alerts-overview.md)
 
 

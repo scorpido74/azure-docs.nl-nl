@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
 ms.openlocfilehash: e74d7dcf8764d167e0080c9d7cca5573bd69ef1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81260986"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Noodherstel implementeren met back-up en herstellen van services in Azure API Management
@@ -36,7 +35,7 @@ In deze hand leiding wordt beschreven hoe u back-up-en herstel bewerkingen autom
 > Met de back-upbewerking worden geen vooraf geaggregeerde logboek gegevens vastgelegd die worden gebruikt in rapporten die worden weer gegeven op de Blade Analytics in de Azure Portal.
 
 > [!WARNING]
-> Elke back-up verloopt na 30 dagen. Als u een back-up probeert te herstellen nadat de verval periode van 30 dagen is verstreken, mislukt de herstel bewerking `Cannot restore: backup expired` met een bericht.
+> Elke back-up verloopt na 30 dagen. Als u een back-up probeert te herstellen nadat de verval periode van 30 dagen is verstreken, mislukt de herstel bewerking met een `Cannot restore: backup expired` bericht.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -55,7 +54,7 @@ Alle taken die u op resources uitvoert met behulp van de Azure Resource Manager 
 
 ### <a name="create-an-azure-active-directory-application"></a>Een Azure Active Directory-toepassing maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Ga met het abonnement dat uw API Management service-exemplaar bevat naar het tabblad **app-registraties** in **Azure Active Directory** (Azure Active Directory > beheer/app-registraties).
 
     > [!NOTE]
@@ -67,8 +66,8 @@ Alle taken die u op resources uitvoert met behulp van de Azure Resource Manager 
 
 4. Voer een naam in voor de toepassing.
 5. Selecteer **systeem eigen**voor het toepassings type.
-6. Voer een URL `http://resources` voor de tijdelijke aanduiding in, zoals voor de **omleidings-URI**, omdat het een vereist veld is, maar de waarde niet later wordt gebruikt. Klik op het selectie vakje om de toepassing op te slaan.
-7. Klik op **maken**.
+6. Voer een URL voor de tijdelijke aanduiding in `http://resources` , zoals voor de **omleidings-URI**, omdat het een vereist veld is, maar de waarde niet later wordt gebruikt. Klik op het selectie vakje om de toepassing op te slaan.
+7. Klik op **Create**.
 
 ### <a name="add-an-application"></a>Een toepassing toevoegen
 
@@ -113,9 +112,9 @@ namespace GetTokenResourceManagerRequests
 }
 ```
 
-Vervang `{tenant id}`, `{application id}`en `{redirect uri}` gebruik de volgende instructies:
+Vervang `{tenant id}` , `{application id}` en `{redirect uri}` Gebruik de volgende instructies:
 
-1. Vervang `{tenant id}` door de Tenant-id van de Azure Active Directory toepassing die u hebt gemaakt. U kunt de id openen door te klikken op **app-registraties** -> -**eind punten**.
+1. Vervang door `{tenant id}` de Tenant-id van de Azure Active Directory toepassing die u hebt gemaakt. U kunt de id openen door te klikken op **app-registraties**-  ->  **eind punten**.
 
     ![Eindpunten][api-management-endpoint]
 
@@ -165,9 +164,9 @@ Geef in de hoofd tekst van de aanvraag de doel-Azure Storage-account naam, de to
 }
 ```
 
-Stel de waarde van de `Content-Type` aanvraag header in `application/json`op.
+Stel de waarde van de `Content-Type` aanvraag header in op `application/json` .
 
-Het maken van een back-up is een langlopende bewerking die langer dan een minuut kan duren. Als de aanvraag is voltooid en het back-upproces is gestart `202 Accepted` , ontvangt u een antwoord `Location` status code met een header. Stel GET-aanvragen naar de URL in de `Location` header in om de status van de bewerking te bepalen. Terwijl de back-up wordt uitgevoerd, blijft de status code ' 202 geaccepteerd ' ontvangen. Met een antwoord code `200 OK` wordt aangegeven dat de back-upbewerking is voltooid.
+Het maken van een back-up is een langlopende bewerking die langer dan een minuut kan duren. Als de aanvraag is voltooid en het back-upproces is gestart, ontvangt u een `202 Accepted` antwoord status code met een `Location` header. Stel GET-aanvragen naar de URL in de `Location` header in om de status van de bewerking te bepalen. Terwijl de back-up wordt uitgevoerd, blijft de status code ' 202 geaccepteerd ' ontvangen. Met een antwoord code `200 OK` wordt aangegeven dat de back-upbewerking is voltooid.
 
 Houd rekening met de volgende beperkingen bij het maken van een back-up-of herstel aanvraag:
 
@@ -209,9 +208,9 @@ In de hoofd tekst van de aanvraag geeft u de locatie van het back-upbestand op. 
 }
 ```
 
-Stel de waarde van de `Content-Type` aanvraag header in `application/json`op.
+Stel de waarde van de `Content-Type` aanvraag header in op `application/json` .
 
-Herstellen is een langlopende bewerking die Maxi maal 30 minuten kan duren. Als de aanvraag is voltooid en het herstel proces is gestart, ontvangt `202 Accepted` u een antwoord status code `Location` met een header. Stel GET-aanvragen naar de URL in de `Location` header in om de status van de bewerking te bepalen. Terwijl het herstel wordt uitgevoerd, blijft de status code ' 202 accepted ' ontvangen. Met een antwoord code `200 OK` wordt aangegeven dat de herstel bewerking is voltooid.
+Herstellen is een langlopende bewerking die Maxi maal 30 minuten kan duren. Als de aanvraag is voltooid en het herstel proces is gestart, ontvangt u een `202 Accepted` antwoord status code met een `Location` header. Stel GET-aanvragen naar de URL in de `Location` header in om de status van de bewerking te bepalen. Terwijl het herstel wordt uitgevoerd, blijft de status code ' 202 accepted ' ontvangen. Met een antwoord code `200 OK` wordt aangegeven dat de herstel bewerking is voltooid.
 
 > [!IMPORTANT]
 > **De SKU** van de service die wordt hersteld in **moet overeenkomen met** de SKU van de back-upservice die wordt hersteld.
@@ -229,8 +228,8 @@ Bekijk de volgende bronnen voor verschillende scenario's van het back-up-en hers
 
 -   [Azure API Management-accounts repliceren](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 -   [Back-up maken en terugzetten in API Management automatiseren met Logic Apps](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
--   [Azure API Management: het maken van een back](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
-    -up en het herstellen van_de configuratie de aanpak die wordt gedetailleerd door Stuart komt niet overeen met de officiële richt lijnen, maar is wel interessant._
+-   [Azure API Management: een back](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx) -up maken van de configuratie 
+     en deze herstellen _De benadering die wordt gedetailleerd door Stuart komt niet overeen met de officiële richt lijnen, maar is wel interessant._
 
 [backup an api management service]: #step1
 [restore an api management service]: #step2

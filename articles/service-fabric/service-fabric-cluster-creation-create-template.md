@@ -4,13 +4,12 @@ description: Meer informatie over het maken van een resource manager-sjabloon vo
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: 6cf0f9c3b8b54db7bd27ec8dd9c9d59d849c74cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80985368"
 ---
-# <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Een Service Fabric cluster resource manager-sjabloon maken
+# <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Een Service Fabric-cluster maken met Resource Manager-sjabloon
 
 Een [Azure service Fabric-cluster](service-fabric-deploy-anywhere.md) is een met het netwerk verbonden reeks virtuele machines waarop uw micro services worden geïmplementeerd en beheerd. Een Service Fabric cluster dat in azure wordt uitgevoerd, is een Azure-resource die wordt geïmplementeerd, beheerd en bewaakt met behulp van de Resource Manager.  In dit artikel wordt beschreven hoe u een resource manager-sjabloon maakt voor een Service Fabric cluster dat in azure wordt uitgevoerd.  Wanneer de sjabloon is voltooid, kunt u [het cluster implementeren op Azure](service-fabric-cluster-creation-via-arm.md).
 
@@ -24,13 +23,13 @@ Voordat u een productie cluster implementeert om productie werkbelastingen uit t
 ## <a name="create-the-resource-manager-template"></a>Het Resource Manager-sjabloon maken
 Voorbeeld sjablonen voor Resource Manager zijn beschikbaar in de [Azure-voor beelden op github](https://github.com/Azure-Samples/service-fabric-cluster-templates). Deze sjablonen kunnen worden gebruikt als uitgangs punt voor uw cluster sjabloon.
 
-In dit artikel worden de voorbeeld sjabloon en sjabloon parameters voor het [beveiligde cluster met vijf knoop punten][service-fabric-secure-cluster-5-node-1-nodetype] gebruikt. Down load *azuredeploy. json* en *azuredeploy. para meters. json* naar uw computer en open beide bestanden in uw favoriete tekst editor.
+In dit artikel worden de voorbeeld sjabloon en sjabloon parameters voor het [beveiligde cluster met vijf knoop punten][service-fabric-secure-cluster-5-node-1-nodetype] gebruikt. Down load *azuredeploy.jsop* en *azuredeploy.parameters.jsop* uw computer en open beide bestanden in uw favoriete tekst editor.
 
 > [!NOTE]
-> `fabricSettings` Voor nationale Clouds (Azure Government, Azure China, Azure Duitsland) moet u ook het volgende toevoegen aan uw sjabloon: `AADLoginEndpoint`, `AADTokenEndpointFormat` en `AADCertEndpointFormat`.
+> Voor nationale Clouds (Azure Government, Azure China, Azure Duitsland) moet u ook het volgende toevoegen `fabricSettings` aan uw sjabloon: `AADLoginEndpoint` , `AADTokenEndpointFormat` en `AADCertEndpointFormat` .
 
 ## <a name="add-certificates"></a>Certificaten toevoegen
-U voegt certificaten toe aan een cluster resource manager-sjabloon door te verwijzen naar de sleutel kluis die de certificaat sleutels bevat. Voeg deze sleutel-kluis parameters en waarden toe aan een resource manager-sjabloon parameter bestand (*azuredeploy. para meters. json*).
+U voegt certificaten toe aan een cluster resource manager-sjabloon door te verwijzen naar de sleutel kluis die de certificaat sleutels bevat. Voeg deze sleutel-kluis parameters en waarden toe aan een resource manager-sjabloon parameter bestand (*azuredeploy.parameters.jsaan*).
 
 ### <a name="add-all-certificates-to-the-virtual-machine-scale-set-osprofile"></a>Alle certificaten toevoegen aan de osProfile voor de virtuele-machine schaalset
 Elk certificaat dat in het cluster is geïnstalleerd, moet worden geconfigureerd in de sectie **osProfile** van de resource Scale set (micro soft. Compute/virtualMachineScaleSets). Met deze actie wordt de resource provider geïnstrueerd het certificaat op de Vm's te installeren. Deze installatie omvat zowel het cluster certificaat als alle toepassings beveiligings certificaten die u voor uw toepassingen wilt gebruiken:
@@ -132,7 +131,7 @@ Het cluster verificatie certificaat moet worden geconfigureerd in zowel de Servi
 
 ## <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>Azure Active Directory-configuratie toevoegen voor het gebruik van Azure Active Directory voor clienttoegang
 
-U voegt de Azure AD-configuratie toe aan een cluster resource manager-sjabloon door te verwijzen naar de sleutel kluis die de certificaat sleutels bevat. Voeg deze Azure AD-para meters en-waarden toe aan een resource manager-sjabloon parameter bestand (*azuredeploy. para meters. json*). 
+U voegt de Azure AD-configuratie toe aan een cluster resource manager-sjabloon door te verwijzen naar de sleutel kluis die de certificaat sleutels bevat. Voeg deze Azure AD-para meters en-waarden toe in een resource manager-sjabloon parameter bestand (*azuredeploy.parameters.jsaan*). 
 
 > [!NOTE]
 > In Linux moeten Azure AD-tenants en gebruikers worden gemaakt voordat ze het cluster kunnen maken.  Lees voor meer informatie [Azure AD instellen om clients te verifiëren](service-fabric-cluster-creation-setup-aad.md).
@@ -252,11 +251,11 @@ Nu u een sjabloon voor uw cluster hebt, leert u hoe u [het cluster implementeert
 
 Zie voor meer informatie over de JSON-syntaxis en de eigenschappen voor de resources die in dit artikel zijn geïmplementeerd:
 
-* [Micro soft. ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters)
-* [Micro soft. Storage/Storage accounts](/azure/templates/microsoft.storage/storageaccounts)
-* [Micro soft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-* [Micro soft. Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
-* [Micro soft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
+* [Microsoft.ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters)
+* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
 * [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
 
 <!-- Links -->

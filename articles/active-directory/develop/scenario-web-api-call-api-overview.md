@@ -12,10 +12,9 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 88a0177755fbd913bdaaf0ecf3e12c62dee294c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885069"
 ---
 # <a name="scenario-a-web-api-that-calls-web-apis"></a>Scenario: een web-API die web-Api's aanroept
@@ -29,8 +28,8 @@ In dit scenario, waarin een beveiligde web-API Web-Api's aanroept, bouwt u op he
 ## <a name="overview"></a>Overzicht
 
 - Een web-, Desktop-, mobiele of toepassing met één pagina (niet weer gegeven in het bijbehorende diagram) roept een beveiligde web-API aan en biedt een JSON Web Token (JWT) Bearer-token in de HTTP-header autorisatie.
-- De beveiligde web-API valideert het token en maakt gebruik van de methode micro soft `AcquireTokenOnBehalfOf` Authentication Library (MSAL) om een andere token van Azure Active Directory (Azure AD) aan te vragen, zodat de beveiligde web-API een tweede Web-API of downstream Web-API kan aanroepen namens de gebruiker.
-- De beveiligde web-API kan later `AcquireTokenSilent`ook aanroepen om tokens voor andere downstream-api's namens dezelfde gebruiker aan te vragen. `AcquireTokenSilent`Hiermee wordt het token vernieuwd wanneer dit nodig is.
+- De beveiligde web-API valideert het token en maakt gebruik van de methode micro soft Authentication Library (MSAL) `AcquireTokenOnBehalfOf` om een andere token van Azure Active Directory (Azure AD) aan te vragen, zodat de beveiligde web-API een tweede Web-API of downstream Web-API kan aanroepen namens de gebruiker.
+- De beveiligde web-API kan later ook aanroepen `AcquireTokenSilent` om tokens voor andere downstream-api's namens dezelfde gebruiker aan te vragen. `AcquireTokenSilent`Hiermee wordt het token vernieuwd wanneer dit nodig is.
 
 ![Diagram van een web-API die een web-API aanroept](media/scenarios/web-api.svg)
 

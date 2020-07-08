@@ -9,17 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: d8509af7829910bdda8bba3d63553e83626fe784
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80804670"
 ---
 # <a name="drawing-tool-events"></a>Gebeurtenissen voor het tekenen van gereedschappen
 
-Wanneer u teken hulpprogramma's op een kaart gebruikt, is het handig om te reageren op bepaalde gebeurtenissen wanneer de gebruiker op de kaart tekent. Deze tabel geeft een lijst van alle gebeurtenissen die door `DrawingManager` de klasse worden ondersteund.
+Wanneer u teken hulpprogramma's op een kaart gebruikt, is het handig om te reageren op bepaalde gebeurtenissen wanneer de gebruiker op de kaart tekent. Deze tabel geeft een lijst van alle gebeurtenissen die door de klasse worden ondersteund `DrawingManager` .
 
-| Gebeurtenis | Beschrijving |
+| Gebeurtenis | Description |
 |-------|-------------|
 | `drawingchanged` | Deze gebeurtenis wordt gestart wanneer een coördinaat in een vorm is toegevoegd of gewijzigd. | 
 | `drawingchanging` | Deze gebeurtenis wordt gestart wanneer een voor beeld-coördinaat voor een vorm wordt weer gegeven. Deze gebeurtenis wordt bijvoorbeeld meerdere keren geactiveerd wanneer een coördinaat wordt gesleept. | 
@@ -32,7 +31,7 @@ De volgende code laat zien hoe de gebeurtenissen in de module teken Hulpprogramm
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Tekenen hulpprogram ma's gebeurtenissen" src="https://codepen.io/azuremaps/embed/dyPMRWo?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zie de gebeurtenissen van de pen <a href='https://codepen.io/azuremaps/pen/dyPMRWo'>tekenen</a> door Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() op <a href='https://codepen.io'>CodePen</a>.
+Zie de gebeurtenissen van de pen <a href='https://codepen.io/azuremaps/pen/dyPMRWo'>tekenen</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 <br/>
@@ -43,12 +42,12 @@ Laten we eens kijken naar enkele veelvoorkomende scenario's die gebruikmaken van
 
 ### <a name="select-points-in-polygon-area"></a>Punten in het gebied veelhoek selecteren
 
-Deze code laat zien hoe u een gebeurtenis van een teken vorm van een gebruiker kunt bewaken. Voor dit voor beeld worden met de code shapes van veelhoeken, rechthoeken en cirkels gecontroleerd. Vervolgens wordt bepaald welke gegevens punten op de kaart zich in het teken gebied bevinden. De `drawingcomplete` gebeurtenis wordt gebruikt om de Select Logic te activeren. In de Select Logic worden door de code alle gegevens punten op de kaart door lopen. Er wordt gecontroleerd of er een snij punt is van het punt en het gebied van de getekende vorm. In dit voor beeld wordt het gebruik van de open-source [turf. js](https://turfjs.org/) -bibliotheek gebruikt voor het uitvoeren van een ruimtelijke intersectie berekening.
+Deze code laat zien hoe u een gebeurtenis van een teken vorm van een gebruiker kunt bewaken. Voor dit voor beeld worden met de code shapes van veelhoeken, rechthoeken en cirkels gecontroleerd. Vervolgens wordt bepaald welke gegevens punten op de kaart zich in het teken gebied bevinden. De `drawingcomplete` gebeurtenis wordt gebruikt om de Select Logic te activeren. In de Select Logic worden door de code alle gegevens punten op de kaart door lopen. Er wordt gecontroleerd of er een snij punt is van het punt en het gebied van de getekende vorm. In dit voor beeld wordt het gebruik van de open-source [Turf.js](https://turfjs.org/) bibliotheek gebruikt voor het uitvoeren van een ruimtelijke intersectie berekening.
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Gegevens selecteren in een getekend veelhoek gebied" src="https://codepen.io/azuremaps/embed/XWJdeja?height=500&theme-id=default&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zie de pen <a href='https://codepen.io/azuremaps/pen/XWJdeja'>gegevens selecteren in getekend veelhoek</a> van het gebied Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() op <a href='https://codepen.io'>CodePen</a>.
+Zie de pen <a href='https://codepen.io/azuremaps/pen/XWJdeja'>gegevens selecteren in getekend veelhoek</a> van het gebied Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 <br/>
@@ -60,19 +59,19 @@ Met deze code zoekt u naar belang stellingen binnen het gebied van een vorm nada
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Tekenen en zoeken in veelhoek gebied" src="https://codepen.io/azuremaps/embed/eYmZGNv?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Bekijk de pen <a href='https://codepen.io/azuremaps/pen/eYmZGNv'>tekenen en zoek in het gebied veelhoek</a> op Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() op <a href='https://codepen.io'>CodePen</a>.
+Bekijk de pen <a href='https://codepen.io/azuremaps/pen/eYmZGNv'>tekenen en zoek in het gebied veelhoek</a> op Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 <br/>
 
 ### <a name="create-a-measuring-tool"></a>Een meet programma maken
 
-De volgende code laat zien hoe de teken gebeurtenissen kunnen worden gebruikt voor het maken van een meet programma. De `drawingchanging` wordt gebruikt voor het bewaken van de vorm, terwijl deze wordt getekend. Wanneer de gebruiker de muis verplaatst, worden de afmetingen van de vorm berekend. De `drawingcomplete` gebeurtenis wordt gebruikt om een uiteindelijke berekening uit te voeren op de vorm nadat deze is getekend. De `drawingmodechanged` gebeurtenis wordt gebruikt om te bepalen wanneer de gebruiker overschakelt naar een teken modus. Met de `drawingmodechanged` gebeurtenis wordt ook het teken papier gewist en de oude meet gegevens gewist.
+De volgende code laat zien hoe de teken gebeurtenissen kunnen worden gebruikt voor het maken van een meet programma. De `drawingchanging` wordt gebruikt voor het bewaken van de vorm, terwijl deze wordt getekend. Wanneer de gebruiker de muis verplaatst, worden de afmetingen van de vorm berekend. De `drawingcomplete` gebeurtenis wordt gebruikt om een uiteindelijke berekening uit te voeren op de vorm nadat deze is getekend. De `drawingmodechanged` gebeurtenis wordt gebruikt om te bepalen wanneer de gebruiker overschakelt naar een teken modus. Met de gebeurtenis wordt ook `drawingmodechanged` het teken papier gewist en de oude meet gegevens gewist.
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Meet gereedschap" src="https://codepen.io/azuremaps/embed/RwNaZXe?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zie de pen <a href='https://codepen.io/azuremaps/pen/RwNaZXe'>meet hulpprogramma's</a> door Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+Zie de pen <a href='https://codepen.io/azuremaps/pen/RwNaZXe'>meet hulpprogramma's</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 <br/>

@@ -10,10 +10,9 @@ ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
 ms.openlocfilehash: 598e361949b000724645c841910b1682a7bbb1a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81258453"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>MXChip IoT DevKit verbinden met de oplossings versneller voor externe controle van Azure IoT
@@ -62,7 +61,7 @@ Een actief Azure-abonnement. Als u er geen hebt, kunt u zich registreren via een
   
    ![Een nieuw apparaat toevoegen](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-add-new-device.png)
 
-7. Klik op ik **wil mijn eigen apparaat-id definiëren**, Voer `AZ3166`in en klik vervolgens op **maken**.
+7. Klik op ik **wil mijn eigen apparaat-id definiëren**, Voer in `AZ3166` en klik vervolgens op **maken**.
   
    ![Apparaat met ID maken](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-new-device-configuration.png)
 
@@ -82,11 +81,11 @@ Een actief Azure-abonnement. Als u er geen hebt, kunt u zich registreren via een
 4. Vouw de sectie **ARDUINO-voor beelden** aan de linkerkant uit, blader naar **voor beelden voor MXCHIP AZ3166 > AzureIoT**en selecteer **RemoteMonitoring**. Er wordt een nieuw versus code venster geopend met daarin een projectmap.
 
    > [!NOTE]
-   > Als u het deel venster sluit, kunt u het opnieuw openen. Gebruik `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) om het opdracht palet te openen, typ **Arduino**en zoek en selecteer vervolgens **Arduino: voor beelden**.
+   > Als u het deel venster sluit, kunt u het opnieuw openen. Gebruik `Ctrl+Shift+P` (macOS: `Cmd+Shift+P` ) om het opdracht palet te openen, typ **Arduino**en zoek en selecteer vervolgens **Arduino: voor beelden**.
 
 ## <a name="provision-required-azure-services"></a>Vereiste Azure-Services inrichten
 
-Voer in het venster oplossing uw taak uit `Ctrl+P` (macOS: `Cmd+P`) door het invoeren `task cloud-provision` van het tekstvak.
+Voer in het venster oplossing uw taak uit `Ctrl+P` (macOS: `Cmd+P` ) door het invoeren `task cloud-provision` van het tekstvak.
 
 In de VS code-terminal wordt u door een interactieve opdracht regel begeleid bij het inrichten van de vereiste Azure-Services.
 
@@ -94,15 +93,15 @@ In de VS code-terminal wordt u door een interactieve opdracht regel begeleid bij
 
 ## <a name="build-and-upload-the-device-code"></a>Bouw en upload de toestel code
 
-1. Gebruik `Ctrl+P` (macOS: `Cmd + P`) en typ **taak configuratie-apparaat-Connection**.
+1. Gebruik `Ctrl+P` (macOS: `Cmd + P` ) en typ **taak configuratie-apparaat-Connection**.
 
-2. De Terminal vraagt u of u een connection string wilt gebruiken dat uit de `task cloud-provision` stap is opgehaald. U kunt ook uw eigen apparaat connection string invoeren door te klikken op nieuwe maken...
+2. De Terminal vraagt u of u een connection string wilt gebruiken dat uit de stap is opgehaald `task cloud-provision` . U kunt ook uw eigen apparaat connection string invoeren door te klikken op nieuwe maken...
 
 3. De Terminal vraagt u de configuratie modus in te voeren. Als u dit wilt doen, houdt u de knop A ingedrukt en geeft u de knop opnieuw instellen op. In het scherm worden de DevKit-ID en configuratie weer gegeven.
 
    ![Invoer connection string](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/config-device-connection.png)
 
-4. Als `task config-device-connection` u klaar bent, `F1` klikt u op laden VS code opdrachten `Arduino: Upload`en selecteert u. VS code controleert de Arduino-schets en uploadt deze.
+4. Als `task config-device-connection` u klaar bent, klikt `F1` u op laden VS code opdrachten en selecteert u `Arduino: Upload` . VS code controleert de Arduino-schets en uploadt deze.
   
    ![Verificatie en upload van de Arduino-schets](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/arduino-upload.png)
 

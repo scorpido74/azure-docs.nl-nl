@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 630304bec17dd34befab4e5bd9f1cfdfb6505645
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811424"
 ---
 # <a name="azure-customer-data-protection"></a>Azure-klant gegevens beveiliging   
@@ -33,7 +32,7 @@ Ondersteunings medewerkers van Azure krijgen unieke zakelijke Active Directory a
 
 Alle toegangs pogingen worden gecontroleerd en kunnen worden weer gegeven via een eenvoudige set rapporten.
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 Azure biedt klanten krachtige gegevens beveiliging, zowel standaard als klant opties.
 
 **Gegevens**scheiding: Azure is een service met meerdere tenants, wat betekent dat meerdere klant implementaties en virtuele machines op dezelfde fysieke hardware zijn opgeslagen. Azure gebruikt logische isolatie om de gegevens van elke klant te scheiden van de gegevens van anderen. Schei ding biedt de schaal en de economische voor delen van multi tenant Services, terwijl klanten de gegevens van elkaar niet kunnen openen.

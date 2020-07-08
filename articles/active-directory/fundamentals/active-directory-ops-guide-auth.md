@@ -12,10 +12,9 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: f25abb70a95f559cf0cc14efa6cf9f0e81ec9ec0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80876289"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Naslag Gids voor verificatie beheer van Azure Active Directory
@@ -119,7 +118,7 @@ Federatieve verificatie met geïntegreerde Windows-verificatie (IWA) of naadloze
 
 ### <a name="device-trust-access-policies"></a>Toegangs beleid voor vertrouwens relaties van apparaten
 
-Net als bij een gebruiker in uw organisatie is een apparaat een kern identiteit die u wilt beveiligen. U kunt de identiteit van een apparaat gebruiken om uw resources te beschermen op elk gewenst moment en vanaf elke locatie.Het verifiëren van het apparaat en de accounting voor het vertrouwens type verbetert uw beveiligings postuur en-bruikbaarheid door:
+Net als een gebruiker in uw organisatie is een apparaat een kernidentiteit die u wilt beveiligen. U kunt de apparaat-id gebruiken om uw resources altijd en overal te beschermen.Het verifiëren van het apparaat en de accounting voor het vertrouwens type verbetert uw beveiligings postuur en-bruikbaarheid door:
 
 - Vermijd wrijving, bijvoorbeeld met MFA, wanneer het apparaat wordt vertrouwd
 - Toegang vanaf niet-vertrouwde apparaten blok keren
@@ -128,7 +127,7 @@ Net als bij een gebruiker in uw organisatie is een apparaat een kern identiteit 
 U kunt dit doel doen door de apparaat-id's te halen en te beheren in azure AD met behulp van een van de volgende methoden:
 
 - Organisaties kunnen [Microsoft intune](https://docs.microsoft.com/intune/what-is-intune) gebruiken om het apparaat te beheren en nalevings beleid af te dwingen, de status van het apparaat te bevestigen en beleids regels voor voorwaardelijke toegang in te stellen op basis van het feit of het apparaat compatibel is. Microsoft Intune kunt iOS-apparaten, Mac-Bureau bladen (via JAMF-integratie), Windows-Bureau bladen (systeem eigen gebruik van Mobile Device Management voor Windows 10 en co-beheer met micro soft endpoint Configuration Manager) en mobiele Android-apparaten beheren.
-- [Hybride Azure AD join](../devices/hybrid-azuread-join-managed-domains.md) biedt beheer met groeps beleid of micro soft Endpoint-Configuration Manager in een omgeving met Active Directory computers die lid zijn van een domein. Organisaties kunnen een beheerde omgeving implementeren via PHS of PTA met naadloze SSO. Door uw apparaten naar Azure ad te brengen, wordt de gebruikers productiviteit via eenmalige aanmelding in uw Cloud en on-premises resources gemaximaliseerd, terwijl u de toegang tot uw Cloud en on-premises resources met [voorwaardelijke toegang](../conditional-access/overview.md) tegelijk kunt beveiligen.
+- [Hybride Azure AD join](../devices/hybrid-azuread-join-managed-domains.md) biedt beheer met groeps beleid of micro soft Endpoint-Configuration Manager in een omgeving met Active Directory computers die lid zijn van een domein. Organisaties kunnen een beheerde omgeving implementeren via PHS of PTA met naadloze SSO. Door uw apparaten naar Azure AD te brengen, wordt de gebruikers productiviteit via eenmalige aanmelding in uw Cloud en on-premises resources gemaximaliseerd, terwijl u de toegang tot uw Cloud en on-premises resources met [voorwaardelijke toegang](../conditional-access/overview.md)   tegelijk kunt beveiligen.
 
 Als u Windows-apparaten die lid zijn van een domein die niet zijn geregistreerd in de Cloud, of Windows-apparaten die lid zijn van het domein die zijn geregistreerd in de Cloud, maar geen beleid voor voorwaardelijke toegang, moet u de niet-geregistreerde apparaten registreren en in beide gevallen [hybride Azure AD join gebruiken als een besturings element](../conditional-access/require-managed-devices.md) in uw beleid voor voorwaardelijke toegang.
 
@@ -140,7 +139,7 @@ Als u apparaten beheert met MDM of Microsoft Intune, maar niet met behulp van ap
 
 #### <a name="device-trust-access-policies-recommended-reading"></a>Toegangs beleid voor vertrouwens relaties van apparaten aanbevolen lezen
 
-- [Procedure: uw hybride Azure Active Directory deelname-implementatie plannen](../devices/hybrid-azuread-join-plan.md)
+- [Procedure: de implementatie van uw hybride Azure Active Directory-koppeling plannen](../devices/hybrid-azuread-join-plan.md)
 - [Configuraties voor identiteit en apparaattoegang](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>Windows Hello voor Bedrijven
@@ -192,20 +191,20 @@ Als u daarentegen toepassingen vindt die aan afzonderlijke gebruikers zijn toege
 - [Machtigingen voor app-registratie in Azure Active Directory delegeren](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-delegate-app-roles)
 - [Dynamische lidmaatschaps regels voor groepen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)
 
-## <a name="access-policies"></a>Toegangsbeleidsregels
+## <a name="access-policies"></a>Toegangsbeleid
 
 ### <a name="named-locations"></a>Benoemde locaties
 
-Met [benoemde locaties](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations) in azure AD kunt u vertrouwde IP-adresbereiken labelen in uw organisatie. Azure AD maakt gebruik van benoemde locaties om:
+Met [benoemde locaties](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations) in azure AD kunt u vertrouwde IP-adresbereiken labelen in uw organisatie. Azure AD maakt gebruik van benoemde locaties voor:
 
 - Voorkom fout-positieven in risico gebeurtenissen. Wanneer u zich aanmeldt vanaf een vertrouwde netwerk locatie, wordt het aanmeldings risico van een gebruiker verlaagd.
-- Configureer [op locatie gebaseerde voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations).
+- Configureren van [Voorwaardelijke toegang op basis van locatie](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations).
 
 ![Benoemde locatie](./media/active-directory-ops-guide/active-directory-ops-img10.png)
 
 Gebruik de onderstaande tabel op basis van prioriteit voor de aanbevolen oplossing die het beste voldoet aan de behoeften van uw organisatie:
 
-| **Prioriteiten** | **Scenario** | **Aanbeveling** |
+| **Priority** | **Scenario** | **Aanbeveling** |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | 1 | Als u PHS of PTA gebruikt en er geen benoemde locaties zijn gedefinieerd | Benoemde locaties definiëren voor het verbeteren van de detectie van risico gebeurtenissen |
 | 2 | Als u federatief bent en geen ' insideCorporateNetwork-claim gebruikt en er geen benoemde locaties zijn gedefinieerd | Benoemde locaties definiëren voor het verbeteren van de detectie van risico gebeurtenissen |
@@ -296,7 +295,7 @@ Bij een illegale toestemming verleent de aanvaller een Azure AD-geregistreerde t
 
 Hieronder vindt u een lijst met apps met machtigingen die u mogelijk wilt scrutinize voor micro soft-Cloud Services:
 
-- Apps met een app of die \*zijn gedelegeerd. ReadWrite-machtigingen
+- Apps met een app of die zijn gedelegeerd \* . ReadWrite-machtigingen
 - Apps met gedelegeerde machtigingen kunnen e-mail namens de gebruiker lezen, verzenden of beheren
 - Apps waaraan het gebruik van de volgende machtigingen is verleend:
 

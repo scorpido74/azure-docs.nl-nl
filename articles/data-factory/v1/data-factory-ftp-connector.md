@@ -13,15 +13,14 @@ ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: eeeb122d240d8c3eae4ebe1650f67cf0e4b9dac6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80992042"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Gegevens verplaatsen van een FTP-server met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-ftp-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](data-factory-ftp-connector.md)
 > * [Versie 2 (huidige versie)](../connector-ftp.md)
 
 > [!NOTE]
@@ -64,16 +63,16 @@ De volgende tabel beschrijft de JSON-elementen die specifiek zijn voor een gekop
 
 | Eigenschap | Beschrijving | Vereist | Standaard |
 | --- | --- | --- | --- |
-| type |Stel dit in op FtpServer. |Ja |&nbsp; |
-| host |Geef de naam of het IP-adres van de FTP-server op. |Ja |&nbsp; |
-| authenticationType |Geef het verificatie type op. |Ja |Basic, anoniem |
-| gebruikersnaam |Geef de gebruiker op die toegang heeft tot de FTP-server. |Nee |&nbsp; |
-| wachtwoord |Geef het wacht woord voor de gebruiker (gebruikers naam) op. |Nee |&nbsp; |
-| encryptedCredential |Geef de versleutelde referentie op voor toegang tot de FTP-server. |Nee |&nbsp; |
-| gatewayName |Geef de naam op van de gateway in Data Management Gateway om verbinding te maken met een on-premises FTP-server. |Nee |&nbsp; |
-| poort |Geef de poort op waarop de FTP-server luistert. |Nee |21 |
-| enableSsl |Geef op of FTP via een SSL/TLS-kanaal moet worden gebruikt. |Nee |waar |
-| enableServerCertificateValidation |Geef op of de TLS/SSL-certificaat validatie van de server moet worden ingeschakeld wanneer u FTP via SSL/TLS-kanaal gebruikt. |Nee |waar |
+| type |Stel dit in op FtpServer. |Yes |&nbsp; |
+| host |Geef de naam of het IP-adres van de FTP-server op. |Yes |&nbsp; |
+| authenticationType |Geef het verificatie type op. |Yes |Basic, anoniem |
+| gebruikersnaam |Geef de gebruiker op die toegang heeft tot de FTP-server. |No |&nbsp; |
+| wachtwoord |Geef het wacht woord voor de gebruiker (gebruikers naam) op. |No |&nbsp; |
+| encryptedCredential |Geef de versleutelde referentie op voor toegang tot de FTP-server. |No |&nbsp; |
+| gatewayName |Geef de naam op van de gateway in Data Management Gateway om verbinding te maken met een on-premises FTP-server. |No |&nbsp; |
+| poort |Geef de poort op waarop de FTP-server luistert. |No |21 |
+| enableSsl |Geef op of FTP via een SSL/TLS-kanaal moet worden gebruikt. |No |true |
+| enableServerCertificateValidation |Geef op of de TLS/SSL-certificaat validatie van de server moet worden ingeschakeld wanneer u FTP via SSL/TLS-kanaal gebruikt. |No |true |
 
 >[!NOTE]
 >De FTP-connector ondersteunt toegang tot de FTP-server zonder versleuteling of expliciete SSL/TLS-versleuteling. Het biedt geen ondersteuning voor impliciete SSL/TLS-versleuteling.
@@ -154,13 +153,13 @@ De sectie **typeProperties** verschilt voor elk type gegevensset. Het bevat info
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| folderPath |Subpad van de map. Escape teken ' \ ' gebruiken voor speciale tekens in de teken reeks. Zie voor beelden van gekoppelde service en gegevensset-definities voor voor beeld.<br/><br/>U kunt deze eigenschap combi neren met **partitionBy** om mappaden te laten zijn op basis van de begin-en eind datum van het segment. |Ja |
-| fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen **Bestands naam** is opgegeven voor een uitvoer gegevensset, de naam van het gegenereerde bestand heeft de volgende indeling: <br/><br/>`Data.<Guid>.txt`(Voor beeld: data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a. txt) |Nee |
-| File filter |Geef een filter op dat moet worden gebruikt om een subset van bestanden in de **FolderPath**te selecteren, in plaats van alle bestanden.<br/><br/>Toegestane waarden zijn: `*` (meerdere tekens) en `?` (één teken).<br/><br/>Voor beeld 1:`"fileFilter": "*.log"`<br/>Voor beeld 2:`"fileFilter": 2014-1-?.txt"`<br/><br/> **File filter** is van toepassing op een invoer-file share-gegevensset. Deze eigenschap wordt niet ondersteund met Hadoop Distributed File System (HDFS). |Nee |
-| partitionedBy |Wordt gebruikt om een dynamische **FolderPath** en een **Bestands naam** op te geven voor time series-gegevens. U kunt bijvoorbeeld een **FolderPath** opgeven dat voor elk uur aan gegevens is para meters. |Nee |
-| formaat | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie de secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en [Parquet-indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) voor meer informatie. <br><br> Als u bestanden wilt kopiëren als ze zich bevinden tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie opmaak in de gegevensset voor invoer en uitvoer over. |Nee |
-| compressie | Geef het type en compressie niveau voor de gegevens op. Ondersteunde typen zijn **gzip**, **Deflate**, **bzip2**en **ZipDeflate**, en ondersteunde niveaus zijn **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
-| useBinaryTransfer |Geef op of de binaire overdrachts modus moet worden gebruikt. De waarden zijn waar voor de binaire modus (dit is de standaard waarde) en False voor ASCII. Deze eigenschap kan alleen worden gebruikt wanneer het gekoppelde type gekoppelde service van het type: FtpServer is. |Nee |
+| folderPath |Subpad van de map. Escape teken ' \ ' gebruiken voor speciale tekens in de teken reeks. Zie voor beelden van gekoppelde service en gegevensset-definities voor voor beeld.<br/><br/>U kunt deze eigenschap combi neren met **partitionBy** om mappaden te laten zijn op basis van de begin-en eind datum van het segment. |Yes |
+| fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen **Bestands naam** is opgegeven voor een uitvoer gegevensset, de naam van het gegenereerde bestand heeft de volgende indeling: <br/><br/>`Data.<Guid>.txt`(Voor beeld: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |No |
+| File filter |Geef een filter op dat moet worden gebruikt om een subset van bestanden in de **FolderPath**te selecteren, in plaats van alle bestanden.<br/><br/>Toegestane waarden zijn: `*` (meerdere tekens) en `?` (één teken).<br/><br/>Voor beeld 1:`"fileFilter": "*.log"`<br/>Voor beeld 2:`"fileFilter": 2014-1-?.txt"`<br/><br/> **File filter** is van toepassing op een invoer-file share-gegevensset. Deze eigenschap wordt niet ondersteund met Hadoop Distributed File System (HDFS). |No |
+| partitionedBy |Wordt gebruikt om een dynamische **FolderPath** en een **Bestands naam** op te geven voor time series-gegevens. U kunt bijvoorbeeld een **FolderPath** opgeven dat voor elk uur aan gegevens is para meters. |No |
+| indeling | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie de secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en [Parquet-indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) voor meer informatie. <br><br> Als u bestanden wilt kopiëren als ze zich bevinden tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie opmaak in de gegevensset voor invoer en uitvoer over. |No |
+| compressie | Geef het type en compressie niveau voor de gegevens op. Ondersteunde typen zijn **gzip**, **Deflate**, **bzip2**en **ZipDeflate**, en ondersteunde niveaus zijn **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |No |
+| useBinaryTransfer |Geef op of de binaire overdrachts modus moet worden gebruikt. De waarden zijn waar voor de binaire modus (dit is de standaard waarde) en False voor ASCII. Deze eigenschap kan alleen worden gebruikt wanneer het gekoppelde type gekoppelde service van het type: FtpServer is. |No |
 
 > [!NOTE]
 > **Bestands naam** en **File filter** kunnen niet tegelijkertijd worden gebruikt.
@@ -205,7 +204,7 @@ Als de bron van het type **FileSystemSource**is in Kopieer activiteit, is de vol
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| recursieve |Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. |True, False (standaard) |Nee |
+| recursieve |Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. |True, False (standaard) |No |
 
 ## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>JSON-voor beeld: gegevens kopiëren van een FTP-server naar Azure Blob
 In dit voor beeld ziet u hoe u gegevens kopieert van een FTP-server naar Azure Blob Storage. Gegevens kunnen echter rechtstreeks naar een van de sinks worden gekopieerd die worden vermeld in de [ondersteunde gegevens archieven en-indelingen](data-factory-data-movement-activities.md#supported-data-stores-and-formats), met behulp van de Kopieer activiteit in Data Factory.
@@ -259,7 +258,7 @@ Zie de sectie [gekoppelde FTP-service](#linked-service-properties) voor verschil
 ```
 ### <a name="ftp-input-dataset"></a>FTP-invoer gegevensset
 
-Deze gegevensset verwijst naar de FTP- `mysharedfolder` map en `test.csv`het-bestand. Met de pijp lijn wordt het bestand naar het doel gekopieerd.
+Deze gegevensset verwijst naar de FTP-map en het- `mysharedfolder` bestand `test.csv` . Met de pijp lijn wordt het bestand naar het doel gekopieerd.
 
 Als u **extern** instelt op **True** , informeert de Data Factory-service dat de gegevensset zich buiten het Data Factory bevindt, en wordt deze niet geproduceerd door een activiteit in de Data Factory.
 

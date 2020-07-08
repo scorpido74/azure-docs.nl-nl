@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: allensu
 ms.openlocfilehash: 29138b4fc6716ae5361cc4d7f97ceba41b90c2da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81259949"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Acties in de standaard regels-engine voor Azure CDN
@@ -30,7 +29,7 @@ Gebruik deze actie om de TTL-waarde (time to Live) van het eind punt te overschr
 
 #### <a name="required-fields"></a>Vereiste velden
 
-Cache gedrag |  Beschrijving              
+Cache gedrag |  Description              
 ---------------|----------------
 Cache overs Laan | Als deze optie is geselecteerd en de regel overeenkomt, wordt de inhoud niet in de cache opgeslagen.
 Onderdrukken | Als deze optie is geselecteerd en de regel overeenkomt, wordt de TTL-waarde die wordt geretourneerd door uw oorsprong overschreven door de waarde die is opgegeven in de actie.
@@ -38,7 +37,7 @@ Instellen als ontbreekt | Als deze optie is geselecteerd en de regel overeenkomt
 
 #### <a name="additional-fields"></a>Aanvullende velden
 
-Dagen | Uren | Minuten | Seconden
+Dagen | Tijden | Minuten | Seconden
 -----|-------|---------|--------
 Int | Int | Int | Int 
 
@@ -48,7 +47,7 @@ Gebruik deze actie om de cache sleutel te wijzigen op basis van query teken reek
 
 #### <a name="required-fields"></a>Vereiste velden
 
-Gedrag | Beschrijving
+Gedrag | Description
 ---------|------------
 Opnemen | Als deze optie is geselecteerd en de regel overeenkomt, worden in de para meters opgegeven query reeksen opgenomen wanneer de cache sleutel wordt gegenereerd. 
 Elke unieke URL in de cache opslaan | Als deze optie is geselecteerd en de regel overeenkomt, heeft elke unieke URL een eigen cache sleutel. 
@@ -104,7 +103,7 @@ Gebruik deze actie om het pad van een aanvraag die naar uw oorsprong is doorgest
 
 Veld | Beschrijving 
 ------|------------
-Bron patroon | Definieer het bron patroon in het URL-pad dat moet worden vervangen. Op dit moment gebruikt het bron patroon een overeenkomst op basis van voor voegsels. Als u wilt dat alle URL-paden overeenkomen,**/** gebruikt u een slash () als bron patroon waarde.
+Bron patroon | Definieer het bron patroon in het URL-pad dat moet worden vervangen. Op dit moment gebruikt het bron patroon een overeenkomst op basis van voor voegsels. Als u wilt dat alle URL-paden overeenkomen, gebruikt u een slash ( **/** ) als bron patroon waarde.
 Doel | Definieer het doelpad dat moet worden gebruikt in de herschrijf bewerking. Het doelpad overschrijft het bron patroon.
 Niet-overeenkomend pad behouden | Als deze instelling is ingesteld op **Ja**, wordt het resterende pad na het bron patroon toegevoegd aan het nieuwe doelpad. 
 

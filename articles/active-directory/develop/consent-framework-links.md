@@ -1,5 +1,5 @@
 ---
-title: Hoe de toepassing toestemming werkt
+title: Hoe toepassingstoestemming werkt
 description: Meer informatie over hoe het Azure AD toestemmings raamwerk werkt om te zien hoe u deze kunt gebruiken bij het ontwikkelen van toepassingen in azure AD
 services: active-directory
 author: rwike77
@@ -12,13 +12,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.openlocfilehash: 86b592ecf5485654ab6860addbfde48cee4df077
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885545"
 ---
-# <a name="how-application-consent-works"></a>Hoe de toepassing toestemming werkt
+# <a name="how-application-consent-works"></a>Hoe toepassingstoestemming werkt
 
 In dit artikel vindt u meer informatie over de werking van het Azure AD instemming-Framework, zodat u toepassingen effectiever kunt ontwikkelen.
 

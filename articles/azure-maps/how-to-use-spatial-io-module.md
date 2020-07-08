@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 1de9dd9721700418b1aa9ba661fc070db1dbedcc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80804636"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>De Azure Maps ruimtelijke IO-module gebruiken
@@ -45,13 +44,13 @@ Voordat u de ruimtelijke IO-module kunt gebruiken, moet u [een Azure Maps accoun
 
 U kunt de Azure Maps ruimtelijke IO-module laden met een van de twee opties:
 
-* De wereld wijd gehoste Azure CDN voor de Azure Maps Spatial IO-module. Voor deze optie voegt u een verwijzing naar het Java script toe aan `<head>` het element van het HTML-bestand.
+* De wereld wijd gehoste Azure CDN voor de Azure Maps Spatial IO-module. Voor deze optie voegt u een verwijzing naar het Java script toe aan het `<head>` element van het HTML-bestand.
 
     ```html
     <script src="https://atlas.microsoft.com/sdk/javascript/spatial/0/atlas-spatial.js"></script>
     ```
 
-* De bron code voor [Azure-Maps-Spatial-io](https://www.npmjs.com/package/azure-maps-spatial-io) kan lokaal worden geladen en vervolgens worden gehost met uw app. Dit pakket bevat ook type script definities. Voor deze optie gebruikt u de volgende opdracht om het pakket te installeren:
+* De bron code voor [Azure-Maps-Spatial-io](https://www.npmjs.com/package/azure-maps-spatial-io) kan lokaal worden geladen en vervolgens worden gehost met uw app. Dit pakket bevat ook TypeScript-definities. Voor deze optie gebruikt u de volgende opdracht om het pakket te installeren:
 
     ```sh
     npm install azure-maps-spatial-io
@@ -121,13 +120,13 @@ U kunt de Azure Maps ruimtelijke IO-module laden met een van de twee opties:
     </html>
     ```
 
-2. Laad de Azure Maps ruimtelijke IO-module. Gebruik voor deze oefening het CDN voor de Azure Maps ruimtelijke IO-module. Voeg de onderstaande referentie toe aan `<head>` het element van uw HTML-bestand:
+2. Laad de Azure Maps ruimtelijke IO-module. Gebruik voor deze oefening het CDN voor de Azure Maps ruimtelijke IO-module. Voeg de onderstaande referentie toe aan het `<head>` element van uw HTML-bestand:
 
     ```html
     <script src="https://atlas.microsoft.com/sdk/javascript/spatial/0/atlas-spatial.js"></script>
     ```
 
-3. Initialiseer a `datasource`en voeg de gegevens bron toe aan de kaart. Initialiseer a `layer`en voeg de gegevens bron toe aan de kaartLaag. Vervolgens worden zowel de gegevens bron als de laag weer gegeven. Voordat u omlaag schuift om de volledige code in de volgende stap te bekijken, moet u nadenken over de beste plaatsen om de fragmenten van de gegevens bron en laag code te plaatsen. Als u de kaart programmatisch wilt bewerken, moet u wachten tot de kaart resource gereed is.
+3. Initialiseer a `datasource` en voeg de gegevens bron toe aan de kaart. Initialiseer a `layer` en voeg de gegevens bron toe aan de kaartLaag. Vervolgens worden zowel de gegevens bron als de laag weer gegeven. Voordat u omlaag schuift om de volledige code in de volgende stap te bekijken, moet u nadenken over de beste plaatsen om de fragmenten van de gegevens bron en laag code te plaatsen. Als u de kaart programmatisch wilt bewerken, moet u wachten tot de kaart resource gereed is.
 
     ```javascript
     var datasource, layer;
@@ -241,16 +240,16 @@ De functie die we hier hebben gedemonstreerd, is slechts een van de vele beschik
 > [Ruimtelijke gegevens lezen en schrijven](spatial-io-read-write-spatial-data.md)
 
 > [!div class="nextstepaction"]
-> [Een OGC-kaartLaag toevoegen](spatial-io-add-ogc-map-layer.md)
+> [Een OGC-kaartlaag toevoegen](spatial-io-add-ogc-map-layer.md)
 
 > [!div class="nextstepaction"]
 > [Verbinding maken met een WFS-service](spatial-io-connect-wfs-service.md)
 
 > [!div class="nextstepaction"]
-> [Kern bewerkingen gebruiken](spatial-io-core-operations.md)
+> [Kernbewerkingen gebruiken](spatial-io-core-operations.md)
 
 > [!div class="nextstepaction"]
-> [Details van ondersteunde gegevens indeling](spatial-io-supported-data-format-details.md)
+> [Details van ondersteunde gegevensindeling](spatial-io-supported-data-format-details.md)
 
 Raadpleeg de Azure Maps ruimtelijke IO-documentatie:
 

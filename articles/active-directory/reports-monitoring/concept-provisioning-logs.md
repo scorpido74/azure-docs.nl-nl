@@ -18,10 +18,9 @@ ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 30cc8be6ad9ebffcad58c5b2412ae15ff3f26fa5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81113323"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Rapporten inrichten in de Azure Active Directory Portal (preview)
@@ -30,7 +29,7 @@ De rapportage architectuur in Azure Active Directory (Azure AD) bestaat uit de v
 
 - **Activiteit** 
     - **Aanmeldingen** : informatie over het gebruik van beheerde toepassingen en aanmeldings activiteiten voor gebruikers.
-    - **Audit logboeken** - [audit logboeken](concept-audit-logs.md) bevatten informatie over de systeem activiteit van gebruikers en groeps beheer, beheerde toepassingen en Directory-activiteiten.
+    - **Audit logboeken**  -  [Audit logboeken](concept-audit-logs.md) bevatten informatie over de systeem activiteit van gebruikers en groeps beheer, beheerde toepassingen en Directory-activiteiten.
     - **Inrichtings logboeken** : systeem activiteiten bieden over gebruikers, groepen en rollen die zijn ingericht door de Azure AD-inrichtings service. 
 
 - **Beveiliging** 
@@ -94,7 +93,7 @@ U kunt uw inrichtings gegevens filteren. Sommige filter waarden worden dynamisch
 In de standaard weergave kunt u de volgende filters selecteren:
 
 - Identiteit
-- Date
+- Datum
 - Status
 - Bewerking
 
@@ -118,7 +117,7 @@ Wanneer u een aangepast tijds bestek selecteert, kunt u een begin-en eind datum 
 
 Met het **status** filter kunt u het volgende selecteren:
 
-- Alle
+- Alles
 - Geslaagd
 - Fout
 - Overgeslagen
@@ -131,11 +130,11 @@ Met het **actie** filter kunt u het volgende filteren:
 - Bijwerken
 - Verwijderen
 - Uitschakelen
-- Overige
+- Anders
 
 Daarnaast kunt u aan de filters van de standaard weergave ook de volgende filters instellen:
 
-- Taak-ID
+- Taak-id
 - Cyclus-ID
 - ID wijzigen
 - Bron-ID
@@ -224,7 +223,7 @@ Op het tabblad **samen vatting** vindt u een overzicht van wat er is gebeurd en 
 
 Gebruik de onderstaande tabel voor meer informatie over het oplossen van fouten die u in de inrichtings Logboeken kunt vinden. Geef feedback met behulp van de koppeling onder aan deze pagina voor eventuele ontbrekende fout codes. 
 
-|Foutcode|Beschrijving|
+|Foutcode|Description|
 |---|---|
 |Conflict, EntryConflict|Corrigeer de conflicterende kenmerk waarden in azure AD of de toepassing of Controleer de overeenkomende kenmerk configuratie als het conflicterende gebruikers account zou moeten overeenkomen en moeten worden overgenomen. Raadpleeg de volgende [documentatie](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) voor meer informatie over het configureren van overeenkomende kenmerken.|
 |TooManyRequests|De doel-app heeft deze poging geweigerd de gebruiker bij te werken omdat deze is overbelast en te veel aanvragen ontvangt. Er is niets te doen. Deze poging wordt automatisch buiten gebruik gesteld. Micro soft is ook op de hoogte gesteld van dit probleem.|

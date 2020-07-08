@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/08/2020
 ms.author: juliako
 ms.openlocfilehash: 8eca95f9fca47fca4d54bacbab35f3a0ffc3ba31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81010576"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Live-evenementen en live-uitvoer in Media Services
@@ -30,7 +29,7 @@ Met Azure Media Services kunt u live gebeurtenissen aan uw klanten leveren via d
 
 ## <a name="live-events"></a>Livegebeurtenissen
 
-[Livegebeurtenissen](https://docs.microsoft.com/rest/api/media/liveevents) zijn verantwoordelijk voor het opnemen en verwerken van de live videofeeds. Wanneer u een live gebeurtenis maakt, wordt er een primair en secundair invoer eindpunt gemaakt dat u kunt gebruiken om een live signaal van een extern coderings programma te verzenden. Met het externe Live coderings programma wordt de bijdrage feed naar het invoer eindpunt verzonden met behulp van het [RTMP](https://www.adobe.com/devnet/rtmp.html) -of [Smooth streaming](https://msdn.microsoft.com/library/ff469518.aspx) (gefragmenteerde-MP4) invoer protocol. Voor het RTMP-opname protocol kan de inhoud worden verzonden in de Clear (`rtmp://`) of veilig versleuteld op de`rtmps://`kabel (). Voor het Smooth Streaming opname protocol zijn `http://` de ondersteunde URL-schema's of `https://`.  
+[Livegebeurtenissen](https://docs.microsoft.com/rest/api/media/liveevents) zijn verantwoordelijk voor het opnemen en verwerken van de live videofeeds. Wanneer u een live gebeurtenis maakt, wordt er een primair en secundair invoer eindpunt gemaakt dat u kunt gebruiken om een live signaal van een extern coderings programma te verzenden. Met het externe Live coderings programma wordt de bijdrage feed naar het invoer eindpunt verzonden met behulp van het [RTMP](https://www.adobe.com/devnet/rtmp.html) -of [Smooth streaming](https://msdn.microsoft.com/library/ff469518.aspx) (gefragmenteerde-MP4) invoer protocol. Voor het RTMP-opname protocol kan de inhoud worden verzonden in de Clear ( `rtmp://` ) of veilig versleuteld op de kabel ( `rtmps://` ). Voor het Smooth Streaming opname protocol zijn de ondersteunde URL-schema's `http://` of `https://` .  
 
 ## <a name="live-event-types"></a>Live gebeurtenis typen
 
@@ -87,7 +86,7 @@ Wanneer u een live gebeurtenis maakt, kunt u de volgende opties opgeven:
 ### <a name="naming-rules"></a>Naamgevingsregels
 
 * De maximale naam van een live-gebeurtenis is 32 tekens.
-* De naam moet volgen op dit [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) - `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`patroon:.
+* De naam moet volgen op dit [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) -patroon: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` .
 
 Zie ook [naam conventies voor streaming-eind punten](streaming-endpoint-concept.md#naming-convention).
 
@@ -116,11 +115,11 @@ U kunt niet-vanity-URL's en vanity-URL's gebruiken.
     > [!NOTE]
     > In de Azure Portal de Vanity-URL de naam '*permanente invoer-URL*'.
 
-    Als u deze modus in de API wilt opgeven `vanityUrl` , `true` moet u instellen op de aanmaak tijd (standaard instelling `false`). U moet ook uw eigen toegangs token (`LiveEventInput.accessToken`) door geven tijdens de aanmaak tijd. U geeft de token waarde op om een wille keurig token in de URL te vermijden. Het toegangs token moet een geldige GUID-teken reeks zijn (met of zonder de afbreek streepjes). Zodra de modus is ingesteld, kan deze niet worden bijgewerkt.
+    Als u deze modus in de API wilt opgeven, moet u instellen op de `vanityUrl` `true` aanmaak tijd (standaard instelling `false` ). U moet ook uw eigen toegangs token () door geven `LiveEventInput.accessToken` tijdens de aanmaak tijd. U geeft de token waarde op om een wille keurig token in de URL te vermijden. Het toegangs token moet een geldige GUID-teken reeks zijn (met of zonder de afbreek streepjes). Zodra de modus is ingesteld, kan deze niet worden bijgewerkt.
 
     Het toegangs token moet uniek zijn in uw Data Center. Als uw app een Vanity-URL moet gebruiken, is het raadzaam om altijd een nieuw GUID-exemplaar voor uw toegangs token te maken (in plaats van een bestaande GUID opnieuw te gebruiken).
 
-    Gebruik de volgende Api's om de Vanity-URL in te scha kelen en het toegangs token in te stellen op een `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`geldige GUID (bijvoorbeeld).  
+    Gebruik de volgende Api's om de Vanity-URL in te scha kelen en het toegangs token in te stellen op een geldige GUID (bijvoorbeeld `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"` ).  
 
     |Taal|Vanity-URL inschakelen|Toegangstoken instellen|
     |---|---|---|

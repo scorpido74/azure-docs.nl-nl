@@ -12,10 +12,9 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 65d254cec5735c54e19f5adfde57fb6aed776a2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881482"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Scenario: Web-app die gebruikers aantekent
@@ -54,7 +53,7 @@ Als u een Java-ontwikkelaar bent, kunt u de volgende Snelstartgids proberen:
 Als u met python ontwikkelt, voert u de volgende Snelstartgids uit:
 
 > [!div class="nextstepaction"]
-> [Snelstartgids: aanmelden toevoegen met micro soft aan een Python-web-app](quickstart-v2-python-webapp.md)
+> [Quickstart: Aanmelden met Microsoft toevoegen aan een Python-webapp](quickstart-v2-python-webapp.md)
 
 ---
 

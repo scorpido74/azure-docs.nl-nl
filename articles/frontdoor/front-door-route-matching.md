@@ -12,13 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 420aa52293da14a0dfe8fbdfe681440ee4309e6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80878592"
 ---
-# <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Hoe front-deur overeenkomt met aanvragen voor een routerings regel
+# <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Hoe Front Door aanvragen afstemt op een regel voor doorsturen
 
 Na het tot stand brengen van een verbinding en het uitvoeren van een TLS-Handshake, wanneer een aanvraag binnen een van de eerste punten in een front-deur omgeving wordt bepaald, wordt bepaald welke routerings regel moet overeenkomen met de aanvraag en de gedefinieerde actie te ondernemen. In het volgende document wordt uitgelegd hoe de voor deur bepaalt welke route configuratie moet worden gebruikt bij het verwerken van een HTTP-aanvraag.
 
@@ -29,8 +28,8 @@ De configuratie van een voor deur routerings regel bestaat uit twee belang rijke
 De volgende eigenschappen bepalen of de binnenkomende aanvraag overeenkomt met de routerings regel (of aan de linkerkant):
 
 * **HTTP-protocollen** (http/https)
-* **Hosts** (bijvoorbeeld www\.-foo.com, \*. bar.com)
-* **Paden** (bijvoorbeeld/\*,/gebruikers/\*,/File.gif)
+* **Hosts** (bijvoorbeeld www- \. foo.com, \* . bar.com)
+* **Paden** (bijvoorbeeld/ \* ,/gebruikers/ \* ,/file.gif)
 
 Deze eigenschappen worden intern uitgevouwen zodat elke combi natie van protocol/host/pad een mogelijke overeenkomende set is.
 
@@ -52,19 +51,19 @@ Om dit proces verder uit te leggen, bekijken we een voor beeld van de configurat
 |-------|--------------------|-------|
 | A | foo.contoso.com | /\* |
 | B | foo.contoso.com | /gebruikers/\* |
-| C | www\.-fabrikam.com, Foo.Adventure-Works.com  | /\*, /images/\* |
+| C | www \. -fabrikam.com, Foo.Adventure-Works.com  | /\*, /images/\* |
 
 Als de volgende binnenkomende aanvragen zijn verzonden naar de voor deur, zouden ze overeenkomen met de volgende routerings regels van boven:
 
 | Inkomende frontend-host | Overeenkomende regel (s) voor route ring |
 |---------------------|---------------|
 | foo.contoso.com | A, B |
-| www\.-fabrikam.com | C |
+| www- \. fabrikam.com | C |
 | images.fabrikam.com | Fout 400: ongeldige aanvraag |
 | foo.adventure-works.com | C |
 | contoso.com | Fout 400: ongeldige aanvraag |
-| www\.-Adventure-Works.com | Fout 400: ongeldige aanvraag |
-| www\.-northwindtraders.com | Fout 400: ongeldige aanvraag |
+| www- \. Adventure-Works.com | Fout 400: ongeldige aanvraag |
+| www- \. northwindtraders.com | Fout 400: ongeldige aanvraag |
 
 ### <a name="path-matching"></a>Pad zoeken
 Nadat u de specifieke frontend-host hebt bepaald en mogelijke routerings regels hebt gefilterd op alleen de routes met die frontend-host, worden de routerings regels vervolgens gefilterd op basis van het aanvraag pad. We gebruiken een soort gelijke logica als frontend-hosts:
@@ -80,35 +79,35 @@ Bekijk voor meer uitleg een andere set voor beelden:
 
 | Routeringsregel | Frontend-host    | Pad     |
 |-------|---------|----------|
-| A     | www\.-contoso.com | /        |
-| B     | www\.-contoso.com | /\*      |
-| C     | www\.-contoso.com | /ab      |
-| D     | www\.-contoso.com | /abc     |
-| E     | www\.-contoso.com | ABC    |
-| F     | www\.-contoso.com | ABC\*  |
-| G     | www\.-contoso.com | /abc/def |
-| H     | www\.-contoso.com | /Path   |
+| A     | www- \. contoso.com | /        |
+| B     | www- \. contoso.com | /\*      |
+| C     | www- \. contoso.com | /ab      |
+| D     | www- \. contoso.com | /abc     |
+| E     | www- \. contoso.com | ABC    |
+| F     | www- \. contoso.com | ABC\*  |
+| G     | www- \. contoso.com | /abc/def |
+| H     | www- \. contoso.com | /Path   |
 
 Gezien de configuratie is het volgende voor beeld dat overeenkomt met de tabel:
 
 | Binnenkomende aanvraag    | Overeenkomende route |
 |---------------------|---------------|
-| www\.-contoso.com/            | A             |
-| www\.-contoso.com/a           | B             |
-| www\.-contoso.com/AB          | C             |
-| www\.-contoso.com/ABC         | D             |
-| www\.-contoso.com/abzzz       | B             |
-| www\.-contoso.com/ABC/        | E             |
-| www\.-contoso.com/abc/d       | F             |
-| www\.-contoso.com/abc/def     | G             |
-| www\.-contoso.com/ABC/defzzz  | F             |
-| www\.-contoso.com/abc/def/ghi | F             |
-| www\.-contoso.com/Path        | B             |
-| www\.-contoso.com/Path/       | H             |
-| www\.-contoso.com/Path/zzz    | B             |
+| www- \. contoso.com/            | A             |
+| www- \. contoso.com/a           | B             |
+| www- \. contoso.com/AB          | C             |
+| www- \. contoso.com/ABC         | D             |
+| www- \. contoso.com/abzzz       | B             |
+| www- \. contoso.com/ABC/        | E             |
+| www- \. contoso.com/abc/d       | F             |
+| www- \. contoso.com/abc/def     | G             |
+| www- \. contoso.com/ABC/defzzz  | F             |
+| www- \. contoso.com/abc/def/ghi | F             |
+| www- \. contoso.com/Path        | B             |
+| www- \. contoso.com/Path/       | H             |
+| www- \. contoso.com/Path/zzz    | B             |
 
 >[!WARNING]
-> </br> Als er geen routerings regels zijn voor een exacte front-end-frontend-host met een ' catch`/*`-all route Path (), is er geen overeenkomst met een routerings regel.
+> </br> Als er geen routerings regels zijn voor een exacte front-end-frontend-host met een ' catch-all route Path ( `/*` ), is er geen overeenkomst met een routerings regel.
 >
 > Voorbeeld configuratie:
 >

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.openlocfilehash: 455f44fb365152b75a3811563b646c6243f686db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81011120"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Door de gebruiker gedefinieerde functies (Udf's) in Azure Cosmos DB
@@ -26,13 +25,13 @@ Met behulp van Udf's kunt u de query taal van Azure Cosmos DB uitbreiden. Udf's 
 We raden u echter aan om Udf's te vermijden wanneer:
 
 - Er bestaat al een gelijkwaardige [systeem functie](sql-query-system-functions.md) in azure Cosmos db. Systeem functies gebruiken altijd minder RU dan de equivalente UDF.
-- De UDF is het enige filter in de `WHERE` component van uw query. UDF maakt geen gebruik van de index, dus voor het evalueren van de UDF moeten documenten worden geladen. Het combi neren van extra filter predikaten die gebruikmaken van de index, in combi natie met een `WHERE` UDF in de component, vermindert het aantal documenten dat door de UDF wordt verwerkt.
+- De UDF is het enige filter in de `WHERE` component van uw query. UDF maakt geen gebruik van de index, dus voor het evalueren van de UDF moeten documenten worden geladen. Het combi neren van extra filter predikaten die gebruikmaken van de index, in combi natie met een UDF in de `WHERE` component, vermindert het aantal documenten dat door de UDF wordt verwerkt.
 
 Als u dezelfde UDF meerdere keren in een query moet gebruiken, moet u verwijzen naar de UDF in een [subquery](sql-query-subquery.md#evaluate-once-and-reference-many-times), zodat u een joinexpressie kunt gebruiken om de UDF één keer te evalueren, maar ernaar te verwijzen.
 
 ## <a name="examples"></a>Voorbeelden
 
-In het volgende voor beeld wordt een UDF onder een item container in de Cosmos-data base geregistreerd. In het voor beeld wordt een UDF gemaakt `REGEX_MATCH`waarvan de naam is. Er worden twee JSON- `input` teken reeks waarden `pattern`geaccepteerd en gecontroleerd of de eerste overeenkomt met het patroon dat is opgegeven in de `string.match()` tweede met behulp van Java script-functie.
+In het volgende voor beeld wordt een UDF onder een item container in de Cosmos-data base geregistreerd. In het voor beeld wordt een UDF gemaakt waarvan de naam is `REGEX_MATCH` . Er worden twee JSON-teken reeks waarden geaccepteerd `input` en `pattern` gecontroleerd of de eerste overeenkomt met het patroon dat is opgegeven in de tweede met behulp van Java script- `string.match()` functie.
 
 ```javascript
        UserDefinedFunction regexMatchUdf = new UserDefinedFunction
@@ -48,7 +47,7 @@ In het volgende voor beeld wordt een UDF onder een item container in de Cosmos-d
            regexMatchUdf).Result;  
 ```
 
-Gebruik deze UDF nu in een query-projectie. U moet Udf's kwalificeren met het hoofdletter gevoelige voor voegsel `udf.` wanneer u ze aanroept vanuit query's.
+Gebruik deze UDF nu in een query-projectie. U moet Udf's kwalificeren met het hoofdletter gevoelige voor voegsel `udf.` Wanneer u ze aanroept vanuit query's.
 
 ```sql
     SELECT udf.REGEX_MATCH(Families.address.city, ".*eattle")

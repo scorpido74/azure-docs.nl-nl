@@ -7,10 +7,9 @@ ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
 ms.openlocfilehash: d31c856e17348c23ad61130869af6ae440d3050d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114310"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Werking van het hulpprogramma voor migratie
@@ -112,16 +111,16 @@ Dit zijn klassieke waarschuwings regels voor metrische gegevens die eerder werde
 
 | Resourcetype| Afgeschafte metriek (en) |
 |-------------|----------------- |
-| Micro soft. DBforMySQL/servers | compute_consumption_percent, compute_limit |
-| Micro soft. DBforPostgreSQL/servers | compute_consumption_percent, compute_limit |
-| Micro soft. Network/publicIPAddresses | defaultddostriggerrate |
+| Microsoft.DBforMySQL/servers | compute_consumption_percent, compute_limit |
+| Microsoft.DBforPostgreSQL/servers | compute_consumption_percent, compute_limit |
+| Microsoft.Network/publicIPAddresses | defaultddostriggerrate |
 | Micro soft. SQL/servers/data bases | service_level_objective, storage_limit, storage_used, beperken, dtu_consumption_percent, storage_used |
 | Micro soft. Web/hostingEnvironments/multirolepools | averagememoryworkingset |
 | Micro soft. Web/hostingEnvironments/workerpools | BytesReceived, httpqueuelength |
 
 ## <a name="how-equivalent-new-alert-rules-and-action-groups-are-created"></a>Hoe gelijkwaardige nieuwe waarschuwings regels en actie groepen worden gemaakt
 
-Het hulp programma voor migratie converteert uw klassieke waarschuwings regels naar gelijkwaardige nieuwe waarschuwings regels en actie groepen. Voor de meeste klassieke waarschuwings regels worden gelijkwaardige nieuwe waarschuwings regels op dezelfde metrische waarde met dezelfde eigenschappen, zoals `windowSize` en `aggregationType`genoemd. Er zijn echter enkele klassieke waarschuwings regels voor metrische gegevens die een andere, gelijkwaardige metriek hebben in het nieuwe systeem. De volgende principes zijn van toepassing op de migratie van klassieke waarschuwingen, tenzij aangegeven in de volgende sectie:
+Het hulp programma voor migratie converteert uw klassieke waarschuwings regels naar gelijkwaardige nieuwe waarschuwings regels en actie groepen. Voor de meeste klassieke waarschuwings regels worden gelijkwaardige nieuwe waarschuwings regels op dezelfde metrische waarde met dezelfde eigenschappen, zoals `windowSize` en genoemd `aggregationType` . Er zijn echter enkele klassieke waarschuwings regels voor metrische gegevens die een andere, gelijkwaardige metriek hebben in het nieuwe systeem. De volgende principes zijn van toepassing op de migratie van klassieke waarschuwingen, tenzij aangegeven in de volgende sectie:
 
 - **Frequentie**: definieert hoe vaak een klassieke of nieuwe waarschuwings regel controleert op de voor waarde. De `frequency` regel voor klassieke waarschuwingen kan niet door de gebruiker worden geconfigureerd en is altijd 5 minuten voor alle resource typen, met uitzonde ring van Application Insights onderdelen waarvoor het 1 min. De frequentie van gelijkwaardige regels is ook ingesteld op 5 min en 1 min.
 - **Aggregatie type**: definieert hoe de metrische gegevens worden geaggregeerd over het venster van belang. De `aggregationType` is ook hetzelfde tussen klassieke waarschuwingen en nieuwe waarschuwingen voor de meeste metrische gegevens. In sommige gevallen, aangezien de metriek verschilt van klassieke waarschuwingen en nieuwe waarschuwingen, gelijkwaardig `aggregationType` of de `primary Aggregation Type` gedefinieerde metrische gegevens worden gebruikt.
@@ -197,7 +196,7 @@ Voor Application Insights zijn equivalente gegevens zoals hieronder weer gegeven
 | requestFailed. Count | aanvragen/mislukt| Gebruik `aggregationType` ' count ' in plaats van ' sum '.   |
 | aantal weer gaven | Page views/aantal| Gebruik `aggregationType` ' count ' in plaats van ' sum '.   |
 
-### <a name="microsoftdocumentdbdatabaseaccounts"></a>Micro soft. DocumentDB/databaseAccounts
+### <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
 Voor Cosmos DB zijn equivalente gegevens zoals hieronder weer gegeven:
 

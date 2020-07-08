@@ -1,5 +1,5 @@
 ---
-title: Registratie velden Azure Portal voor aangepaste apps
+title: Registratievelden in Azure-portal voor zelf ontwikkelde apps
 description: Richt lijnen voor het registreren van een aangepaste ontwikkelde toepassing met Azure AD
 services: active-directory
 author: rwike77
@@ -12,13 +12,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.openlocfilehash: c44575ca43063388d5c65855542cf15700d2cb5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80883165"
 ---
-# <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>Registratie velden Azure Portal voor aangepaste apps
+# <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>Registratievelden in Azure-portal voor zelf ontwikkelde apps
 
 In dit artikel vindt u een korte beschrijving van alle beschik bare velden in het formulier voor toepassings registratie in de [Azure Portal](https://portal.azure.com).
 
@@ -47,7 +46,7 @@ Zodra u de bovenstaande velden hebt ingevuld, wordt de toepassing geregistreerd 
 | Veld           | Beschrijving        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Toepassings-id  | Wanneer u een toepassing registreert, wijst Azure AD een toepassings-ID toe aan uw toepassing. De toepassings-ID kan worden gebruikt om uw toepassing op unieke wijze te identificeren bij verificatie aanvragen voor Azure AD, en om toegang te krijgen tot resources zoals de Graph API.                                                          |
-| App-id-URI      | Dit moet een unieke URI zijn, doorgaans de **&gt;/&lt;\_naam&gt;van de&lt;https://\_-Tenant naam** van het formulier. Dit wordt gebruikt tijdens de autorisatie toekennings stroom, als een unieke id voor het opgeven van de bron waarvoor het token moet worden uitgegeven. Het wordt ook de claim ' AUD ' in het verleende toegangs token. |
+| App-id-URI      | Dit moet een unieke URI zijn, doorgaans de naam van de **https://- &lt; Tenant naam van het formulier \_ &gt; / &lt; \_ &gt; .** Dit wordt gebruikt tijdens de autorisatie toekennings stroom, als een unieke id voor het opgeven van de bron waarvoor het token moet worden uitgegeven. Het wordt ook de claim ' AUD ' in het verleende toegangs token. |
 
 ### <a name="branding"></a>Huisstijl
 

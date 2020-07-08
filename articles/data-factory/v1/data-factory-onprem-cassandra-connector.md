@@ -13,15 +13,14 @@ ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0f96680f1ea91434c84d6606e3637c68c1cb5a84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80991498"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Gegevens verplaatsen van een on-premises Cassandra-data base met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-onprem-cassandra-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](data-factory-onprem-cassandra-connector.md)
 > * [Versie 2 (huidige versie)](../connector-cassandra.md)
 
 > [!NOTE]
@@ -65,14 +64,14 @@ In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifie
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| type |De eigenschap type moet worden ingesteld op: **OnPremisesCassandra** |Ja |
-| host |Een of meer IP-adressen of hostnamen van Cassandra-servers.<br/><br/>Geef een door komma's gescheiden lijst met IP-adressen of hostnamen op om gelijktijdig verbinding te maken met alle servers. |Ja |
+| type |De eigenschap type moet worden ingesteld op: **OnPremisesCassandra** |Yes |
+| host |Een of meer IP-adressen of hostnamen van Cassandra-servers.<br/><br/>Geef een door komma's gescheiden lijst met IP-adressen of hostnamen op om gelijktijdig verbinding te maken met alle servers. |Yes |
 | poort |De TCP-poort die de Cassandra-server gebruikt om te Luis teren naar client verbindingen. |Nee, standaard waarde: 9042 |
-| authenticationType |Basic of anoniem |Ja |
+| authenticationType |Basic of anoniem |Yes |
 | gebruikersnaam |Geef de gebruikers naam voor het gebruikers account op. |Ja, als authenticationType is ingesteld op Basic. |
 | wachtwoord |Geef het wacht woord voor het gebruikers account op. |Ja, als authenticationType is ingesteld op Basic. |
-| gatewayName |De naam van de gateway die wordt gebruikt om verbinding te maken met de on-premises Cassandra-data base. |Ja |
-| encryptedCredential |Referentie versleuteld door de gateway. |Nee |
+| gatewayName |De naam van de gateway die wordt gebruikt om verbinding te maken met de on-premises Cassandra-data base. |Yes |
+| encryptedCredential |Referentie versleuteld door de gateway. |No |
 
 >[!NOTE]
 >Momenteel wordt geen verbinding met Cassandra met behulp van TLS ondersteund.
@@ -264,10 +263,10 @@ Zie [Eigenschappen van het type RelationalSource](#copy-activity-properties) voo
 | ASCII |Tekenreeks |
 | BIGINT |Int64 |
 | BLOBCACHE |Byte [] |
-| True |Booleaans |
+| True |Boolean-waarde |
 | KOMMA |Decimal |
-| DUBBELKLIK |Double |
-| FLOAT |Enkel |
+| DUBBELKLIK |Dubbel |
+| FLOAT |Enkelvoudig |
 | INET |Tekenreeks |
 | INT |Int32 |
 | TEXT |Tekenreeks |

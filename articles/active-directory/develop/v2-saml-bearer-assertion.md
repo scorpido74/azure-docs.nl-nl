@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 1cd79b1f9e4cd3afadee250da0c184c0c5b8ac07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80886174"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Micro soft Identity platform en OAuth 2,0-bevestiging stroom voor SAML Bearer
@@ -41,7 +40,7 @@ Een vertrouwens relatie tot stand brengen tussen de autorisatie server/omgeving 
 
 Registreer de toepassing in de [Portal](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade):
 1. Meld u aan bij de [Blade app-registratie van de portal](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) (u gebruikt de v 2.0-eind punten voor Graph API en moet de toepassing daarom registreren in deze portal. Anders kunnen we de registraties in azure Active Directory gebruiken. 
-1. Selecteer **nieuwe registratie**.
+1. Selecteer **Nieuwe registratie**.
 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in: 
     1. **Naam**: voer een beschrijvende toepassingsnaam in. Deze wordt zichtbaar voor gebruikers van de app.
     1. **Ondersteunde accounttypen**: selecteer voor welke accounts de toepassing ondersteuning moet bieden.
@@ -85,7 +84,7 @@ Nadat u het toegangs token hebt ontvangen, roept u de Graph-Api's aan (Outlook-t
 
 1. Maak een GET-aanvraag met het toegangs token dat u in de vorige stap hebt opgehaald:
 
-    ![Aanvraag ophalen](./media/v2-saml-bearer-assertion/7.png)
+    ![GET-aanvraag](./media/v2-saml-bearer-assertion/7.png)
 
 1. Wanneer de aanvraag is voltooid, ontvangt u een JSON-antwoord.
 

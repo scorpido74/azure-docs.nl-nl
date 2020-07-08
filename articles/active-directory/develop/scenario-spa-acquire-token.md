@@ -12,15 +12,14 @@ ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
 ms.openlocfilehash: eeba01a609a1a21ed564c0b9cb78a28a4ad5c95a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882315"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Toepassing met één pagina: een Token ophalen om een API aan te roepen
 
-Het patroon voor het verkrijgen van tokens voor Api's met MSAL. js is om eerst een Silent token aanvraag te proberen met `acquireTokenSilent` behulp van de-methode. Wanneer deze methode wordt aangeroepen, controleert de bibliotheek eerst de cache in browser opslag om te zien of er een geldig token bestaat en retourneert het. Als er geen geldig token in de cache staat, verzendt het een Silent-token aanvraag naar Azure Active Directory (Azure AD) van een verborgen iframe. Met deze methode kan de bibliotheek ook tokens vernieuwen. Zie [levens duur van tokens](active-directory-configurable-token-lifetimes.md)voor meer informatie over de waarden van de sessie voor eenmalige aanmelding en levens duur van tokens in azure AD.
+Het patroon voor het verkrijgen van tokens voor Api's met MSAL.js is om eerst een Silent token aanvraag te proberen met behulp van de- `acquireTokenSilent` methode. Wanneer deze methode wordt aangeroepen, controleert de bibliotheek eerst de cache in browser opslag om te zien of er een geldig token bestaat en retourneert het. Als er geen geldig token in de cache staat, verzendt het een Silent-token aanvraag naar Azure Active Directory (Azure AD) van een verborgen iframe. Met deze methode kan de bibliotheek ook tokens vernieuwen. Zie [levens duur van tokens](active-directory-configurable-token-lifetimes.md)voor meer informatie over de waarden van de sessie voor eenmalige aanmelding en levens duur van tokens in azure AD.
 
 De aanvragen voor het Silent-token voor Azure AD kunnen mislukken vanwege een verlopen Azure AD-sessie of een wijziging in een wacht woord. In dat geval kunt u een van de interactieve methoden (waarmee de gebruiker wordt gevraagd) aanroepen om tokens te verkrijgen:
 
@@ -39,7 +38,7 @@ U kunt de API-bereiken instellen waarvan u wilt dat het toegangs token moet word
 
 ## <a name="acquire-a-token-with-a-pop-up-window"></a>Een token verkrijgen met een pop-upvenster
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 In de volgende code wordt het eerder beschreven patroon gecombineerd met de methoden voor een pop-upervaring:
 
@@ -126,13 +125,13 @@ ngOnDestroy() {
  }
 ```
 
-U kunt ook expliciet tokens verkrijgen met behulp van de methoden Acquire-token, zoals beschreven in de core MSAL. JS-bibliotheek.
+U kunt ook expliciet tokens verkrijgen met behulp van de methoden Acquire-token, zoals beschreven in de basis MSAL.js-bibliotheek.
 
 ---
 
 ## <a name="acquire-a-token-with-a-redirect"></a>Een token verkrijgen met een omleiding
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Het volgende patroon is eerder beschreven, maar wordt weer gegeven met een omleidings methode om tokens interactief te verkrijgen. U moet de retour aanroep van de omleiding registreren zoals eerder is beschreven.
 
@@ -168,7 +167,7 @@ U kunt optionele claims gebruiken voor de volgende doel einden:
 - Wijzig het gedrag van bepaalde claims die Azure AD retourneert in tokens.
 - Aangepaste claims toevoegen en openen voor uw toepassing.
 
-Als u optionele claims in `IdToken`wilt aanvragen, kunt u een stringified-claim object `claimsRequest` verzenden naar het `AuthenticationParameters.ts` veld van de klasse.
+Als u optionele claims in wilt aanvragen `IdToken` , kunt u een stringified-claim object verzenden naar het `claimsRequest` veld van de `AuthenticationParameters.ts` klasse.
 
 ```javascript
 "optionalClaims":

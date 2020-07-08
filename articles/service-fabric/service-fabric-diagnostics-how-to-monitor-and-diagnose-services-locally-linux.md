@@ -4,10 +4,9 @@ description: Meer informatie over het bewaken en diagnosticeren van uw Service F
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80991327"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Services controleren en diagnoses uitvoeren in een lokale installatie van Linux machine Development
@@ -24,7 +23,7 @@ Voor het bewaken, detecteren, diagnosticeren en oplossen van problemen kunnen se
 
 ## <a name="debugging-service-fabric-java-applications"></a>Fout opsporing Service Fabric Java-toepassingen
 
-Voor Java-toepassingen zijn [meerdere logboek registratie raamwerken](https://en.wikipedia.org/wiki/Java_logging_framework) beschikbaar. Omdat `java.util.logging` de standaard optie is met de jre, wordt deze ook gebruikt voor de [code voorbeelden in github](https://github.com/Azure-Samples/service-fabric-java-getting-started). In de volgende bespreking wordt uitgelegd hoe u `java.util.logging` het Framework kunt configureren.
+Voor Java-toepassingen zijn [meerdere logboek registratie raamwerken](https://en.wikipedia.org/wiki/Java_logging_framework) beschikbaar. Omdat de `java.util.logging` standaard optie is met de jre, wordt deze ook gebruikt voor de [code voorbeelden in github](https://github.com/Azure-Samples/service-fabric-java-getting-started). In de volgende bespreking wordt uitgelegd hoe u het Framework kunt configureren `java.util.logging` .
 
 Met Java. util. logging kunt u uw toepassings logboeken omleiden naar geheugen, uitvoer stromen, console bestanden of sockets. Voor elk van deze opties zijn er standaard-handlers die al in het Framework zijn opgenomen. U kunt een `app.properties` bestand maken om de bestandshandler voor uw toepassing te configureren om alle logboeken door te sturen naar een lokaal bestand.
 
@@ -40,14 +39,14 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
-De map waarnaar het `app.properties` bestand verwijst, moet bestaan. Nadat het `app.properties` `entrypoint.sh` bestand is gemaakt, moet u ook het toegangs punt script wijzigen in de `<applicationfolder>/<servicePkg>/Code/` map om de eigenschap `java.util.logging.config.file` in te stellen op `app.properties` bestand. De vermelding moet er ongeveer uitzien als in het volgende code fragment:
+De map waarnaar het bestand verwijst, `app.properties` moet bestaan. Nadat het `app.properties` bestand is gemaakt, moet u ook het toegangs punt script wijzigen `entrypoint.sh` in de `<applicationfolder>/<servicePkg>/Code/` map om de eigenschap in te stellen `java.util.logging.config.file` op `app.properties` bestand. De vermelding moet er ongeveer uitzien als in het volgende code fragment:
 
 ```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
 ```
 
 
-Deze configuratie resulteert in het verzamelen van Logboeken op een manier `/tmp/servicefabric/logs/`om te draaien. Het logboek bestand in dit geval heet mysfapp% u .% g. log, waarbij:
+Deze configuratie resulteert in het verzamelen van Logboeken op een manier om te draaien `/tmp/servicefabric/logs/` . Het logboek bestand in dit geval heet mysfapp% u .% g. log, waarbij:
 * **% u** is een uniek nummer voor het oplossen van conflicten tussen gelijktijdige Java-processen.
 * **% g** is het generatie nummer om onderscheid te maken tussen het draaiende Logboeken.
 
@@ -61,7 +60,7 @@ Zie de [code voorbeelden in github](https://github.com/Azure-Samples/service-fab
 
 Er zijn meerdere frameworks beschikbaar voor het traceren van CoreCLR-toepassingen in Linux. Zie [.net-extensies voor logboek registratie](https://github.com/dotnet/extensions/tree/master/src/Logging)voor meer informatie.  Omdat Event source bekend is bij C#-ontwikkel aars, wordt in dit artikel Event Source gebruikt voor het traceren van CoreCLR-voor beelden in Linux.
 
-De eerste stap is het toevoegen van System. Diagnostics. tracering, zodat u uw logboeken kunt schrijven naar geheugen, uitvoer stromen of console bestanden.  Voor logboek registratie met Event source voegt u het volgende project toe aan uw project. json:
+De eerste stap is het toevoegen van System. Diagnostics. tracering, zodat u uw logboeken kunt schrijven naar geheugen, uitvoer stromen of console bestanden.  Voor logboek registratie met Event source voegt u het volgende project toe aan uw project.jsop:
 
 ```json
     "System.Diagnostics.StackTrace": "4.0.1"
@@ -120,7 +119,7 @@ internal class ServiceEventListener : EventListener
 ```
 
 
-Het voor gaande fragment voert de logboeken naar een bestand `/tmp/MyServiceLog.txt`in. Deze bestands naam moet op de juiste manier worden bijgewerkt. Als u de logboeken wilt omleiden naar de console, gebruikt u het volgende code fragment in uw aangepaste EventListener-klasse:
+Het voor gaande fragment voert de logboeken naar een bestand in `/tmp/MyServiceLog.txt` . Deze bestands naam moet op de juiste manier worden bijgewerkt. Als u de logboeken wilt omleiden naar de console, gebruikt u het volgende code fragment in uw aangepaste EventListener-klasse:
 
 ```csharp
 public static TextWriter Out = Console.Out;

@@ -9,15 +9,14 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 04/01/2020
 ms.openlocfilehash: d2598dfe9d7972dcb764abf4a1239613a1e8417a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80879170"
 ---
-# <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Geavanceerde JSON-trans formaties uitvoeren met liquide sjablonen in Azure Logic Apps
+# <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Geavanceerde JSON-transformaties uitvoeren met Liquid-sjablonen in Azure Logic Apps
 
-U kunt eenvoudige JSON-trans formaties uitvoeren in uw Logic apps met systeem eigen gegevens bewerkingen, zoals het **opstellen** of **parseren van JSON**. Als u geavanceerde JSON-trans formaties wilt uitvoeren, kunt u sjablonen of kaarten met [liquide middelen](https://shopify.github.io/liquid/)maken. Dit is een open source sjabloon taal voor flexibele web-apps. Een vloeistof sjabloon definieert hoe de JSON-uitvoer moet worden getransformeerd en ondersteunt complexere JSON-trans formaties, zoals iteraties, controle stromen, variabelen, enzovoort.
+U kunt eenvoudige JSON-trans formaties uitvoeren in uw Logic apps met systeem eigen gegevens bewerkingen, zoals het **opstellen** of **parseren van JSON**. Als u geavanceerde JSON-trans formaties wilt uitvoeren, kunt u sjablonen of kaarten met [liquide middelen](https://shopify.github.io/liquid/)maken. Dit is een open source sjabloon taal voor flexibele web-apps. Een Liquid-sjabloon definieert hoe JSON-uitvoer moet worden getransformeerd en ondersteunt complexere JSON-transformaties, zoals iteraties, controlestromen, variabelen, enzovoort.
 
 Voordat u een liquide trans formatie in uw logische app kunt uitvoeren, moet u eerst de JSON definiëren in JSON-toewijzing met een vloeistof sjabloon en die kaart opslaan in uw integratie account. In dit artikel wordt beschreven hoe u deze vloeistof sjabloon of kaart maakt en gebruikt.
 
@@ -57,7 +56,7 @@ Voordat u een liquide trans formatie in uw logische app kunt uitvoeren, moet u e
    }
    ```
 
-1. Voer in het [Azure Portal](https://portal.azure.com), in het zoekvak van Azure, `integration accounts`ENTER en selecteer **integratie accounts**.
+1. Voer in het [Azure Portal](https://portal.azure.com), in het zoekvak van Azure, Enter `integration accounts` en selecteer **integratie accounts**.
 
    !["Integratie accounts" zoeken](./media/logic-apps-enterprise-integration-liquid-transform/find-integration-accounts.png)
 
@@ -86,7 +85,7 @@ Voordat u een liquide trans formatie in uw logische app kunt uitvoeren, moet u e
 
 1. Voeg in de ontwerp functie voor logische apps de [aanvraag trigger](../connectors/connectors-native-reqres.md#add-request) toe aan uw logische app.
 
-1. Kies **nieuwe stap**onder de trigger. Typ `liquid` als filter in het zoekvak en selecteer deze actie: **JSON transformeren naar JSON-liquide**
+1. Kies **nieuwe stap**onder de trigger. Typ als filter in het zoekvak `liquid` en selecteer deze actie: **JSON TRANSFORMEREN naar JSON-liquide**
 
    ![Een liquide actie zoeken en selecteren](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 

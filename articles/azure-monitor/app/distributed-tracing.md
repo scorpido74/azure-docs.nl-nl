@@ -7,10 +7,9 @@ ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 83575aa7f9b63615f453e00bd06b00a5540b9a9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80892254"
 ---
 # <a name="what-is-distributed-tracing"></a>Wat is gedistribueerde tracering?
@@ -31,13 +30,13 @@ Het inschakelen van gedistribueerde tracering over de services in een toepassing
 
 ## <a name="enabling-via-application-insights-through-auto-instrumentation-or-sdks"></a>Inschakelen via Application Insights via automatische instrumentatie of Sdk's
 
-De Application Insights agents en/of Sdk's voor .NET, .NET core, Java, node. js en Java script bieden allemaal ondersteuning voor gedistribueerde tracering. Instructies voor het installeren en configureren van elke Application Insights SDK zijn hieronder beschikbaar:
+De Application Insights agents en/of Sdk's voor .NET, .NET core, Java, Node.js en Java script bieden alle ondersteuning voor gedistribueerde tracering. Instructies voor het installeren en configureren van elke Application Insights SDK zijn hieronder beschikbaar:
 
 * [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
 * [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)
 * [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
-* [Javascript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
 * [Python](opencensus-python.md)
 
 Met de juiste Application Insights SDK geïnstalleerd en geconfigureerd, wordt tracerings informatie automatisch verzameld voor populaire frameworks, Bibliotheken en technologieën door de auto-Collector van de SDK-afhankelijkheden. De volledige lijst met ondersteunde technologieën is beschikbaar in [de documentatie voor het automatisch verzamelen van afhankelijkheden](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies).

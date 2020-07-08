@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
 ms.openlocfilehash: 5a868167f80aaa735e4fbeab32fd1d308dd6da1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114435"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Een klassieke waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
@@ -29,7 +28,7 @@ De basis stappen zijn als volgt:
 Hieronder wordt beschreven hoe u eerst een resource manager-sjabloon maakt voor een waarschuwing, waarna een waarschuwing wordt weer gegeven tijdens het maken van een andere resource.
 
 ## <a name="resource-manager-template-for-a-classic-metric-alert"></a>Resource Manager-sjabloon voor een klassieke waarschuwing voor metrische gegevens
-Als u een waarschuwing wilt maken met behulp van een resource manager-sjabloon, `Microsoft.Insights/alertRules` maakt u een bron van het type en vult u alle gerelateerde eigenschappen in. Hieronder ziet u een sjabloon waarmee een waarschuwings regel wordt gemaakt.
+Als u een waarschuwing wilt maken met behulp van een resource manager-sjabloon, maakt u een bron van het type `Microsoft.Insights/alertRules` en vult u alle gerelateerde eigenschappen in. Hieronder ziet u een sjabloon waarmee een waarschuwings regel wordt gemaakt.
 
 ```json
 {
@@ -179,7 +178,7 @@ Als u een waarschuwing wilt maken met behulp van een resource manager-sjabloon, 
 [Hier](https://msdn.microsoft.com/library/azure/dn933805.aspx)vindt u een uitleg van het schema en de eigenschappen voor een waarschuwings regel.
 
 ## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>Resource Manager-sjabloon voor een resource met een klassieke waarschuwing voor metrische gegevens
-Een waarschuwing voor een resource manager-sjabloon is het vaakst handig bij het maken van een waarschuwing tijdens het maken van een resource. U kunt er bijvoorbeeld voor zorgen dat de regel ' CPU% > 80 ' wordt ingesteld telkens wanneer u een virtuele machine implementeert. Als u dit wilt doen, voegt u de waarschuwings regel als resource toe aan de resource matrix voor uw VM-sjabloon en voegt u `dependsOn` een afhankelijkheid toe met behulp van de eigenschap aan de resource-id van de virtuele machine. Hier volgt een volledig voor beeld van het maken van een Windows-VM en het toevoegen van een waarschuwing waarmee abonnements beheerders worden gewaarschuwd wanneer het CPU-gebruik meer dan 80% overschrijdt.
+Een waarschuwing voor een resource manager-sjabloon is het vaakst handig bij het maken van een waarschuwing tijdens het maken van een resource. U kunt er bijvoorbeeld voor zorgen dat de regel ' CPU% > 80 ' wordt ingesteld telkens wanneer u een virtuele machine implementeert. Als u dit wilt doen, voegt u de waarschuwings regel als resource toe aan de resource matrix voor uw VM-sjabloon en voegt u een afhankelijkheid toe met behulp van de `dependsOn` eigenschap aan de resource-id van de virtuele machine. Hier volgt een volledig voor beeld van het maken van een Windows-VM en het toevoegen van een waarschuwing waarmee abonnements beheerders worden gewaarschuwd wanneer het CPU-gebruik meer dan 80% overschrijdt.
 
 ```json
 {

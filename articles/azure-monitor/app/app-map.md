@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80989524"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Toepassings overzicht: gedistribueerde toepassingen sorteren
@@ -112,7 +111,7 @@ namespace CustomInitializer.Telemetry
 
 **ASP.NET-Apps: initialisatie functie laden naar de actieve TelemetryConfiguration**
 
-In ApplicationInsights. config:
+In ApplicationInsights.config:
 
 ```xml
     <ApplicationInsights>
@@ -138,11 +137,11 @@ Een alternatieve methode voor ASP.NET Web apps is het instantiëren van de initi
 ```
 
 > [!NOTE]
-> Het toevoegen van initializer `ApplicationInsights.config` met `TelemetryConfiguration.Active` of gebruikt is niet geldig voor ASP.net core toepassingen. 
+> Het toevoegen van initializer met `ApplicationInsights.config` of gebruikt `TelemetryConfiguration.Active` is niet geldig voor ASP.net core toepassingen. 
 
 **ASP.NET Core Apps: initialisatie functie laden naar de TelemetryConfiguration**
 
-Voor [ASP.net core](asp-net-core.md#adding-telemetryinitializers) toepassingen voegt u een nieuw `TelemetryInitializer` item toe door het toe te voegen aan de container voor het invoegen van afhankelijkheden, zoals hieronder wordt weer gegeven. Dit doet u in `ConfigureServices` de methode van `Startup.cs` uw klasse.
+Voor [ASP.net core](asp-net-core.md#adding-telemetryinitializers) toepassingen voegt u een nieuw `TelemetryInitializer` item toe door het toe te voegen aan de container voor het invoegen van afhankelijkheden, zoals hieronder wordt weer gegeven. Dit doet u in `ConfigureServices` de methode van uw `Startup.cs` klasse.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -169,9 +168,9 @@ Voor [Java-agent 3,0](https://docs.microsoft.com/azure/azure-monitor/app/java-in
 }
 ```
 
-U kunt ook de naam van de Cloud functie instellen met behulp van de omgevings variabele ```APPLICATIONINSIGHTS_ROLE_NAME```.
+U kunt ook de naam van de Cloud functie instellen met behulp van de omgevings variabele ```APPLICATIONINSIGHTS_ROLE_NAME``` .
 
-**Java-SDK**
+**Java SDK**
 
 Als u de SDK gebruikt, vanaf Application Insights Java SDK 2.5.0, kunt u de naam van de Cloud functie opgeven door toe `<RoleName>` te voegen aan uw `ApplicationInsights.xml` bestand, bijvoorbeeld
 
@@ -199,7 +198,7 @@ appInsights.defaultClient.context.tags["ai.cloud.role"] = "your role name";
 appInsights.defaultClient.context.tags["ai.cloud.roleInstance"] = "your role instance";
 ```
 
-### <a name="alternate-method-for-nodejs"></a>Alternatieve methode voor node. js
+### <a name="alternate-method-for-nodejs"></a>Alternatieve methode voor Node.js
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -211,7 +210,7 @@ appInsights.defaultClient.addTelemetryProcessor(envelope => {
 });
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 appInsights.queue.push(() => {
@@ -229,7 +228,7 @@ Als u wilt nadenken over de naam van de **Cloud functie**, kan het handig zijn o
 
 ![Scherm opname van toepassings kaart](media/app-map/cloud-rolename.png)
 
-In het bovenstaande toepassings overzicht zijn de namen van Cloud rollen voor verschillende aspecten van deze gedistribueerde toepassing. De functies van deze app bestaan dus uit: `Authentication`, `acmefrontend`, `Inventory Management`, a `Payment Processing Worker Role`. 
+In het bovenstaande toepassings overzicht zijn de namen van Cloud rollen voor verschillende aspecten van deze gedistribueerde toepassing. De functies van deze app bestaan dus uit: `Authentication` , `acmefrontend` , `Inventory Management` , a `Payment Processing Worker Role` . 
 
 In het geval van deze app wordt elk van deze namen van Cloud rollen ook aangeduid met een andere unieke Application Insights resource met hun eigen instrumentatie sleutels. Omdat de eigenaar van deze toepassing toegang heeft tot elk van deze vier verschillende Application Insights resources, kan toepassings overzicht een kaart van de onderliggende relaties samen voegen.
 

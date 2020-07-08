@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 25389348476552298ddb947ccb59acb8b3d5bc57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881245"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Procedure: SSO configureren in macOS en iOS
@@ -106,7 +105,7 @@ Zie [sleutel hanger groepen](howto-v2-keychain-objc.md)voor meer informatie.
 
 ## <a name="configure-the-application-object"></a>Het toepassings object configureren
 
-Wanneer u de sleutel hanger hebt ingeschakeld in elk van uw toepassingen en u klaar bent voor het gebruik van SSO `MSALPublicClientApplication` , configureert u met de toegangs groep voor de sleutel hanger, zoals in het volgende voor beeld:
+Wanneer u de sleutel hanger hebt ingeschakeld in elk van uw toepassingen en u klaar bent voor het gebruik van SSO, configureert u `MSALPublicClientApplication` met de toegangs groep voor de sleutel hanger, zoals in het volgende voor beeld:
 
 Doel-C:
 
@@ -145,7 +144,7 @@ MSAL biedt ondersteuning voor brokered-verificatie met Microsoft Authenticator. 
 
 Met de volgende stappen kunt u eenmalige aanmelding inschakelen met behulp van een verificatie Broker voor uw app:
 
-1. Registreer een Broker-compatibele omleidings-URI-indeling voor de toepassing in de info. plist van uw app. De indeling van de Broker-compatibele `msauth.<app.bundle.id>://auth`omleidings-URI is. Vervang '<app.bundle.id>' ' door de bundel-ID van uw toepassing. Bijvoorbeeld:
+1. Registreer een Broker-compatibele omleidings-URI-indeling voor de toepassing in de info. plist van uw app. De indeling van de Broker-compatibele omleidings-URI is `msauth.<app.bundle.id>://auth` . Vervang '<app.bundle.id>' ' door de bundel-ID van uw toepassing. Bijvoorbeeld:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -154,7 +153,7 @@ Met de volgende stappen kunt u eenmalige aanmelding inschakelen met behulp van e
     </array>
     ```
 
-1. Voeg volgende schema's toe aan de info. plist van uw `LSApplicationQueriesSchemes`app onder:
+1. Voeg volgende schema's toe aan de info. plist van uw app onder `LSApplicationQueriesSchemes` :
 
     ```xml
     <key>LSApplicationQueriesSchemes</key>
@@ -164,7 +163,7 @@ Met de volgende stappen kunt u eenmalige aanmelding inschakelen met behulp van e
     </array>
     ```
 
-1. Voeg het volgende toe aan `AppDelegate.m` het bestand voor het afhandelen van retour aanroepen:
+1. Voeg het volgende toe aan het `AppDelegate.m` bestand voor het afhandelen van retour aanroepen:
 
     Doel-C:
     
@@ -183,8 +182,8 @@ Met de volgende stappen kunt u eenmalige aanmelding inschakelen met behulp van e
     }
     ```
     
-**Als u Xcode 11 gebruikt**, moet u in plaats daarvan MSAL-Call `SceneDelegate` back in het bestand plaatsen.
-Als u zowel UISceneDelegate als UIApplicationDelegate voor compatibiliteit met oudere iOS-versies ondersteunt, moet MSAL call back in beide bestanden worden geplaatst.
+**Als u Xcode 11 gebruikt**, moet u in plaats daarvan MSAL-call back in het `SceneDelegate` bestand plaatsen.
+Als u ondersteuning biedt voor UISceneDelegate en UIApplicationDelegate voor compatibiliteit met oudere iOS-versies, moet MSAL-callback in beide bestanden worden geplaatst.
 
 Doel-C:
 

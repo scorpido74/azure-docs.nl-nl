@@ -12,19 +12,18 @@ ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.openlocfilehash: 5b70b109f43e80fc3ec68f52aef2dba6823033bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882128"
 ---
 # <a name="single-page-application-call-a-web-api"></a>Toepassing met één pagina: een web-API aanroepen
 
-U wordt aangeraden de methode `acquireTokenSilent` voor het verkrijgen of vernieuwen van een toegangs token aan te roepen voordat u een web-API aanroept. Nadat u een token hebt, kunt u een beveiligde web-API aanroepen.
+U wordt aangeraden de `acquireTokenSilent` methode voor het verkrijgen of vernieuwen van een toegangs token aan te roepen voordat u een web-API aanroept. Nadat u een token hebt, kunt u een beveiligde web-API aanroepen.
 
 ## <a name="call-a-web-api"></a>Een web-API aanroepen
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Gebruik het verkregen toegangs token als een Bearer in een HTTP-aanvraag om een web-API, zoals Microsoft Graph-API, aan te roepen. Bijvoorbeeld:
 
@@ -53,4 +52,4 @@ De MSAL-hoek wrapper maakt gebruik van de HTTP-Interceptor om automatisch toegan
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Verplaatsen naar productie](scenario-spa-production.md)
+> [Naar productie verplaatsen](scenario-spa-production.md)

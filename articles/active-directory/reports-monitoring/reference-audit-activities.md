@@ -18,10 +18,9 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86a0e0b3c64554e00a5ba7734af28dc136df643f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80891506"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referentie voor auditactiviteiten van Azure AD
@@ -60,7 +59,7 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 |Toegangsbeoordelingen|Toepassen van beoordelingsresultaat aanvragen|
 |Toegangsbeoordelingen|RBAC-rollidmaatschap beoordelen|
 |Toegangsbeoordelingen|App-toewijzing beoordelen|
-|Toegangsbeoordelingen|Groepslidmaatschap beoordelen|
+|Toegangsbeoordelingen|Groepslidmaatschap controleren|
 |Toegangsbeoordelingen|Aanvraag voor goedkeuring aanvraag beoordelen|
 |Toegangsbeoordelingen|Programmabeheer ontkoppelen|
 |Toegangsbeoordelingen|Toegangsbeoordeling bijwerken|
@@ -79,22 +78,22 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 
 |Controlecategorie|Activiteit|
 |---|---|
-|Beheer van toepassingen|V2-toepassingsmachtigingen ophalen|
-|Beheer van toepassingen|V2-toepassingsservice-principals in de huidige tenant ophalen|
-|Beheer van toepassingen|V1-toepassing bijwerken|
-|Beheer van toepassingen|V2-toepassing bijwerken|
-|Beheer van toepassingen|V2-toepassingsmachtiging bijwerken|
-|Beheer van toepassingen|OAuth2PermissionGrant toevoegen|
-|Beheer van toepassingen|App-roltoewijzing aan service-principal toevoegen|
+|Toepassingsbeheer|V2-toepassingsmachtigingen ophalen|
+|Toepassingsbeheer|V2-toepassingsservice-principals in de huidige tenant ophalen|
+|Toepassingsbeheer|V1-toepassing bijwerken|
+|Toepassingsbeheer|V2-toepassing bijwerken|
+|Toepassingsbeheer|V2-toepassingsmachtiging bijwerken|
+|Toepassingsbeheer|OAuth2PermissionGrant toevoegen|
+|Toepassingsbeheer|App-roltoewijzing aan service-principal toevoegen|
 
 ## <a name="application-proxy"></a>Toepassingsproxy
 
 |Controlecategorie|Activiteit|
 |---|---|
-|Beheer van toepassingen|Toepassing toevoegen|
-|Beheer van toepassingen|Eigenaar aan toepassing toevoegen|
-|Beheer van toepassingen|Eigenaar aan service-principal toevoegen|
-|Beheer van toepassingen|Beleid aan service-principal toevoegen|
+|Toepassingsbeheer|Toepassing toevoegen|
+|Toepassingsbeheer|Eigenaar aan toepassing toevoegen|
+|Toepassingsbeheer|Eigenaar aan service-principal toevoegen|
+|Toepassingsbeheer|Beleid aan service-principal toevoegen|
 |Mapbeheer|Service-principal toevoegen|
 |Mapbeheer|Referenties voor service-principal toevoegen|
 |Mapbeheer|Instemmen met toepassing|
@@ -112,29 +111,29 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 
 |Controlecategorie|Activiteit|
 |---|---|
-|Beheer van toepassingen|Referenties voor service-principal verwijderen|
+|Toepassingsbeheer|Referenties voor service-principal verwijderen|
 
 
 ## <a name="b2c"></a>B2C
 
 |Controlecategorie|Activiteit|
 |---|---|
-|Beheer van toepassingen|Toepassing herstellen|
-|Beheer van toepassingen|Toestemming intrekken|
-|Beheer van toepassingen|Toepassing bijwerken|
-|Beheer van toepassingen|Externe geheimen bijwerken|
-|Beheer van toepassingen|Service-principal bijwerken|
-|Beheer van toepassingen|Een toegangstoken voor de toepassing uitgeven|
-|Beheer van toepassingen|Een autorisatiecode aan de toepassing uitgeven|
-|Beheer van toepassingen|Een id_token voor de toepassing uitgeven|
-|Beheer van toepassingen|De referenties voor lokale accounts valideren|
-|Beheer van toepassingen|Verificatie van de gebruiker valideren|
-|Beheer van toepassingen|V2-toepassingsmachtigingen toevoegen|
-|Beheer van toepassingen|Een sleutel op basis van een ASCII-geheim aan een CPIM-sleutelcontainer toevoegen|
-|Beheer van toepassingen|Een sleutel aan een CPIM-sleutelcontainer toevoegen|
-|Beheer van toepassingen|AdminPolicyDatas-SetResources|
-|Beheer van toepassingen|AdminUserJourneys-GetResources|
-|Beheer van toepassingen|AdminUserJourneys-RemoveResources|
+|Toepassingsbeheer|Toepassing herstellen|
+|Toepassingsbeheer|Toestemming intrekken|
+|Toepassingsbeheer|Toepassing bijwerken|
+|Toepassingsbeheer|Externe geheimen bijwerken|
+|Toepassingsbeheer|Service-principal bijwerken|
+|Toepassingsbeheer|Een toegangstoken voor de toepassing uitgeven|
+|Toepassingsbeheer|Een autorisatiecode aan de toepassing uitgeven|
+|Toepassingsbeheer|Een id_token voor de toepassing uitgeven|
+|Toepassingsbeheer|De referenties voor lokale accounts valideren|
+|Toepassingsbeheer|Verificatie van de gebruiker valideren|
+|Toepassingsbeheer|V2-toepassingsmachtigingen toevoegen|
+|Toepassingsbeheer|Een sleutel op basis van een ASCII-geheim aan een CPIM-sleutelcontainer toevoegen|
+|Toepassingsbeheer|Een sleutel aan een CPIM-sleutelcontainer toevoegen|
+|Toepassingsbeheer|AdminPolicyDatas-SetResources|
+|Toepassingsbeheer|AdminUserJourneys-GetResources|
+|Toepassingsbeheer|AdminUserJourneys-RemoveResources|
 |Verificatie|AdminUserJourneys-SetResources|
 |Verificatie|IdentityProvider maken|
 |Verificatie|V1-toepassing maken|
@@ -267,8 +266,8 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 |Sleutel|Bedrijfsinstellingen verwijderen|
 |Sleutel|Niveau van partner verlagen|
 |Sleutel|Map verwijderd|
-|Overige|Map permanent verwijderd|
-|Overige|Map staat gepland voor verwijdering|
+|Anders|Map permanent verwijderd|
+|Anders|Map staat gepland voor verwijdering|
 |Resource|Niveau van bedrijf verhogen tot partner|
 |Resource|Rights Management-eigenschappen leegmaken|
 |Resource|Partner uit bedrijf verwijderen|
@@ -353,29 +352,29 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 |Administratieve eenheden beheren|Alle typen risico detectie downloaden|
 |Administratieve eenheden beheren|Beschik bare risico detecties voor gebruikers downloaden|
 |Administratieve eenheden beheren|Gebruikers voor wie wordt aangegeven dat ze risico lopen downloaden|
-|Beheer van toepassingen|Verwerkte batchuitnodigingen|
-|Beheer van toepassingen|Geüploade batchuitnodigingen|
-|Beheer van toepassingen|Eigenaar aan beleid toevoegen|
-|Beheer van toepassingen|Beleid toevoegen|
-|Beheer van toepassingen|Beleid verwijderen|
-|Beheer van toepassingen|Beleidsreferenties verwijderen|
-|Beheer van toepassingen|Beleid bijwerken|
-|Beheer van toepassingen|Beleid voor MFA-registratie instellen|
-|Beheer van toepassingen|Beleid voor aanmeldingsrisico's instellen|
-|Beheer van toepassingen|Beleid voor gebruikersrisico's instellen|
-|Beheer van toepassingen|Gebruiksvoorwaarden accepteren|
-|Beheer van toepassingen|Gebruiksvoorwaarden maken|
-|Beheer van toepassingen|Gebruiksvoorwaarden afwijzen|
-|Beheer van toepassingen|Gebruiksvoorwaarden verwijderen|
-|Beheer van toepassingen|Gebruiksvoorwaarden bewerken|
-|Beheer van toepassingen|Gebruiksvoorwaarden publiceren|
-|Beheer van toepassingen|Publicatie van gebruiksvoorwaarden ongedaan maken|
-|Beheer van toepassingen|TLS/SSL-certificaat van toepassing toevoegen|
-|Beheer van toepassingen|TLS-binding verwijderen|
-|Beheer van toepassingen|Connector registreren|
-|Beheer van toepassingen|AdminPolicyDatas-RemoveResources|
-|Beheer van toepassingen|AdminPolicyDatas-SetResources|
-|Beheer van toepassingen|AdminUserJourneys-GetResources|
+|Toepassingsbeheer|Verwerkte batchuitnodigingen|
+|Toepassingsbeheer|Geüploade batchuitnodigingen|
+|Toepassingsbeheer|Eigenaar aan beleid toevoegen|
+|Toepassingsbeheer|Beleid toevoegen|
+|Toepassingsbeheer|Beleid verwijderen|
+|Toepassingsbeheer|Beleidsreferenties verwijderen|
+|Toepassingsbeheer|Beleid bijwerken|
+|Toepassingsbeheer|Beleid voor MFA-registratie instellen|
+|Toepassingsbeheer|Beleid voor aanmeldingsrisico's instellen|
+|Toepassingsbeheer|Beleid voor gebruikersrisico's instellen|
+|Toepassingsbeheer|Gebruiksvoorwaarden accepteren|
+|Toepassingsbeheer|Gebruiksvoorwaarden maken|
+|Toepassingsbeheer|Gebruiksvoorwaarden afwijzen|
+|Toepassingsbeheer|Gebruiksvoorwaarden verwijderen|
+|Toepassingsbeheer|Gebruiksvoorwaarden bewerken|
+|Toepassingsbeheer|Gebruiksvoorwaarden publiceren|
+|Toepassingsbeheer|Publicatie van gebruiksvoorwaarden ongedaan maken|
+|Toepassingsbeheer|TLS/SSL-certificaat van toepassing toevoegen|
+|Toepassingsbeheer|TLS-binding verwijderen|
+|Toepassingsbeheer|Connector registreren|
+|Toepassingsbeheer|AdminPolicyDatas-RemoveResources|
+|Toepassingsbeheer|AdminPolicyDatas-SetResources|
+|Toepassingsbeheer|AdminUserJourneys-GetResources|
 |Mapbeheer|AdminUserJourneys-RemoveResources|
 |Mapbeheer|AdminUserJourneys-SetResources|
 |Mapbeheer|IdentityProvider maken|
@@ -500,18 +499,18 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 
 
 
-## <a name="identity-protection"></a>Identiteitsbescherming
+## <a name="identity-protection"></a>Identiteitsbeveiliging
 
 |Controlecategorie|Activiteit|
 |---|---|
 |Mapbeheer|Verhogen|
 |Mapbeheer|Verwijderd|
 |Mapbeheer|Wijzigingen van de rolinstelling|
-|Overige|ScanAlertsNow|
-|Overige|Registreren|
-|Overige|Bevoegdheden verlagen|
-|Overige|UpdateAlertSettings|
-|Overige|UpdateCurrentState|
+|Anders|ScanAlertsNow|
+|Anders|Registreren|
+|Anders|Bevoegdheden verlagen|
+|Anders|UpdateAlertSettings|
+|Anders|UpdateCurrentState|
 |Beleidsbeheer|Toegangsbeoordeling beëindigd|
 |Beleidsbeheer|Goedkeurder toevoegen om goedkeuring te vragen|
 |Beleidsbeheer|Revisor toevoegen voor toegang tot revisie|
@@ -523,13 +522,13 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 
 |Controlecategorie|Activiteit|
 |---|---|
-|Overige|Aanvraaggoedkeuring maken|
-|Overige|Toegangsbeoordeling verwijderen|
+|Anders|Aanvraaggoedkeuring maken|
+|Anders|Toegangsbeoordeling verwijderen|
 |Gebruikersbeheer|Revisor verwijderen uit toegangsbeoordeling|
 |Gebruikersbeheer|Toepassen van beoordelingsresultaat aanvragen|
 |Gebruikersbeheer|Stoppen beoordeling aanvragen|
 |Gebruikersbeheer|App-toewijzing beoordelen|
-|Gebruikersbeheer|Groepslidmaatschap beoordelen|
+|Gebruikersbeheer|Groepslidmaatschap controleren|
 |Gebruikersbeheer|RBAC-rollidmaatschap beoordelen|
 
 

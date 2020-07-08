@@ -5,10 +5,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.openlocfilehash: d9b6118bc165a9b0a78ae9c4da895719249b22b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114218"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor buiten gebruik stellen van de Api's van het klassieke implementatie model voor metrische gegevens en automatisch schalen
@@ -35,9 +34,9 @@ Dit artikel is van toepassing op het gebruik van de volgende onderdelen:
 
 Als u niet zeker weet of uw code of aangepaste hulp middelen de klassieke Api's aanroepen, bekijkt u het volgende:
 
-- Controleer de URI waarnaar wordt verwezen in de code of het hulp programma. De klassieke Api's gebruiken de URI https://management.core.windows.net. U moet de nieuwere URI gebruiken voor de op Resource Manager gebaseerde Api's, te `https://management.azure.com/`beginnen met.
+- Controleer de URI waarnaar wordt verwezen in de code of het hulp programma. De klassieke Api's gebruiken de URI https://management.core.windows.net . U moet de nieuwere URI gebruiken voor de op Resource Manager gebaseerde Api's, te beginnen met `https://management.azure.com/` .
 
-- Vergelijk de naam van de assembly op uw computer. De oudere klassieke assembly bevindt zich op https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/.
+- Vergelijk de naam van de assembly op uw computer. De oudere klassieke assembly bevindt zich op https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/ .
 
 - Als u verificatie via certificaat gebruikt voor toegang tot metrische gegevens of Api's voor automatisch schalen, gebruikt u een klassiek eind punt en een bibliotheek. De nieuwere Resource Manager-Api's vereisen Azure Active Directory authenticatie via een service-principal of User Principal.
 
@@ -83,9 +82,9 @@ Er is een pensioen melding verzonden naar e-mail adressen voor de volgende accou
 - Account-en service beheerders
 - Cobeheerders  
 
-Als u vragen hebt, kunt u contact met MonitorClassicAPIhelp@microsoft.comons opnemen via.  
+Als u vragen hebt, kunt u contact met ons opnemen via MonitorClassicAPIhelp@microsoft.com .  
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Referenties
 
 - [Nieuwere REST-Api's voor Azure Monitor](https://docs.microsoft.com/rest/api/monitor/) 
 - [Nieuwere Azure Monitor-SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)

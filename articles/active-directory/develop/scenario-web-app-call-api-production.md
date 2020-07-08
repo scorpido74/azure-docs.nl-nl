@@ -12,10 +12,9 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 6404d00b87b9ee745b9e3a92c646404e574417c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881658"
 ---
 # <a name="a-web-app-that-calls-web-apis-move-to-production"></a>Een web-app die web-Api's aanroept: verplaatsen naar productie
@@ -35,7 +34,7 @@ Meer informatie over het uitproberen van de volledige, progressieve zelf studie 
 - Hiermee wordt uw eigen web-API aangeroepen.
 
 > [!div class="nextstepaction"]
-> [Zelf studie voor ASP.NET Core web-app](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)
+> [Zelfstudie ASP.NET Core-web-app](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)
 
 <!--- Removing this diagram as it's already shown from the next step linked tutorial
 

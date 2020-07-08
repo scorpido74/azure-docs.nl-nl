@@ -6,10 +6,9 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.openlocfilehash: e635c243a887690fb1f7a5dcd017c1130d74a747
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114588"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Klassieke metrische waarschuwingen maken, weer geven en beheren met behulp van Azure Monitor
@@ -34,7 +33,7 @@ Klassieke metrische waarschuwingen in Azure Monitor bieden een manier om een mel
 
 6. **E-mail eigenaren selecteren...** als u wilt dat beheerders en mede beheerders e-mail meldingen ontvangen wanneer de waarschuwing wordt geactiveerd.
 
-7. Als u meldingen wilt verzenden naar extra e-mail adressen wanneer de waarschuwing wordt geactiveerd, voegt u deze toe in het veld **extra beheerder e-mail (s)** . Scheid meerdere e-mail berichten met een punt komma, in de volgende indeling: *e-mail\@contoso\@. com; email2 contoso.com*
+7. Als u meldingen wilt verzenden naar extra e-mail adressen wanneer de waarschuwing wordt geactiveerd, voegt u deze toe in het veld **extra beheerder e-mail (s)** . Scheid meerdere e-mail berichten met een punt komma, in de volgende indeling: *e-mail \@ contoso. com; email2 \@ contoso.com*
 
 8. Plaats een geldige URI in het veld **webhook** als u wilt dat deze wordt aangeroepen wanneer de waarschuwing wordt geactiveerd.
 
@@ -88,7 +87,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 In deze secties ziet u hoe u met Power shell-opdrachten klassieke metrische waarschuwingen kunt maken, weer geven en beheren. In de voor beelden in dit artikel wordt uitgelegd hoe u Azure Monitor-cmdlets kunt gebruiken voor klassieke metrische waarschuwingen.
 
-1. Als u dat nog niet hebt gedaan, stelt u in dat Power shell op uw computer moet worden uitgevoerd. Zie [Power Shell installeren en configureren](/powershell/azure/overview)voor meer informatie. U kunt ook de volledige lijst met Azure Monitor Power shell-cmdlets bekijken bij [Azure monitor-cmdlets (inzichten)](https://docs.microsoft.com/powershell/module/az.applicationinsights).
+1. Als u dat nog niet hebt gedaan, stelt u PowerShell in op uw computer. Zie [PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie. U kunt ook de volledige lijst met Azure Monitor PowerShell-cmdlets bekijken via [Azure Monitor-cmdlets (Insights)](https://docs.microsoft.com/powershell/module/az.applicationinsights).
 
 2. Meld u eerst aan bij uw Azure-abonnement.
 
@@ -96,13 +95,13 @@ In deze secties ziet u hoe u met Power shell-opdrachten klassieke metrische waar
     Connect-AzAccount
     ```
 
-3. Er wordt een aanmeldings scherm weer gegeven. Zodra u zich hebt aangemeld met uw account, TenantID en standaard abonnements-ID worden weer gegeven. Alle Azure-cmdlets werken in de context van uw standaard abonnement. Als u de lijst met abonnementen waartoe u toegang hebt, wilt weer geven, gebruikt u de volgende opdracht:
+3. Er wordt een aanmeldingsscherm weergegeven. Zodra u zich hebt aangemeld met uw account, worden de tenant-id en standaardabonnements-id weergegeven. Alle Azure-cmdlets werken in de context van uw standaardabonnement. Als u de lijst met abonnementen waartoe u toegang hebt, wilt weergeven, gebruikt u de volgende opdracht:
 
     ```powershell
     Get-AzSubscription
     ```
 
-4. Als u uw werk context wilt wijzigen in een ander abonnement, gebruikt u de volgende opdracht:
+4. Als u uw werkcontext wilt wijzigen in een ander abonnement, gebruikt u de volgende opdracht:
 
     ```powershell
     Set-AzContext -SubscriptionId <subscriptionid>
@@ -120,7 +119,7 @@ In deze secties ziet u hoe u met Power shell-opdrachten klassieke metrische waar
     Get-AzAlertRule -Name simpletestCPU -ResourceGroup montest -DetailedOutput
     ```
 
-7. U kunt alle waarschuwings regels ophalen die zijn ingesteld voor een doel resource. Bijvoorbeeld alle waarschuwings regels die zijn ingesteld op een virtuele machine.
+7. U kunt alle waarschuwings regels ophalen die zijn ingesteld voor een doel resource. Bijvoorbeeld alle waarschuwingsregels die zijn ingesteld op een virtuele machine.
 
     ```powershell
     Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig

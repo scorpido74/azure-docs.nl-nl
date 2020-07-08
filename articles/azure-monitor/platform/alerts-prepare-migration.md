@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: f31fcc07bed0287c2f86ca4fe52bf02a2a1d2a71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114412"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Uw logische apps en runbooks voorbereiden voor de migratie van klassieke waarschuwingsregels
@@ -24,7 +23,7 @@ Als u ervoor kiest om uw klassieke waarschuwings regels vrijwillig te migreren n
 
 ## <a name="api-changes"></a>API-wijzigingen
 
-De Api's die klassieke waarschuwings regels maken en beheren (`microsoft.insights/alertrules`) verschillen van de api's die nieuwe metrische waarschuwingen maken en beheren (`microsoft.insights/metricalerts`). Als u nu een regel matig klassieke waarschuwings regels maakt en beheert, moet u de implementatie scripts bijwerken zodat deze met de nieuwe Api's kan worden gebruikt.
+De Api's die klassieke waarschuwings regels maken en beheren ( `microsoft.insights/alertrules` ) verschillen van de api's die nieuwe metrische waarschuwingen maken en beheren ( `microsoft.insights/metricalerts` ). Als u nu een regel matig klassieke waarschuwings regels maakt en beheert, moet u de implementatie scripts bijwerken zodat deze met de nieuwe Api's kan worden gebruikt.
 
 De volgende tabel bevat een verwijzing naar de programmatische interfaces voor zowel klassieke als nieuwe waarschuwingen:
 
@@ -32,7 +31,7 @@ De volgende tabel bevat een verwijzing naar de programmatische interfaces voor z
 |---------|---------|---------|
 |REST-API     | [micro soft. Insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [micro soft. Insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
 |Azure CLI     | [AZ-monitor waarschuwing](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [waarschuwing AZ monitor Metrics](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
-|PowerShell      | [Naslaginformatie](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Naslaginformatie](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
+|PowerShell      | [Verwijzing](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Verwijzing](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Azure Resource Manager-sjabloon | [Voor klassieke waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[Voor nieuwe metrische waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
 
 ## <a name="notification-payload-changes"></a>Wijzigingen aan de meldings lading
@@ -50,7 +49,7 @@ Gebruik de volgende tabel om de velden voor de nettolading van webhooks van de k
 | Naam van waarschuwingsregel | **context.name** | **data.context.name** |
 | Beschrijving van de waarschuwings regel | **context. Description** | **data. context. Description** |
 | Voor waarde waarschuwings regel | **context. condition** | **data. context. condition** |
-| Naam van meetwaarde | **context. condition. metrische** | **data. context. condition. overzet [0]. metrische** |
+| Naam van metrische gegevens | **context. condition. metrische** | **data. context. condition. overzet [0]. metrische** |
 | Tijd aggregatie (hoe de metrische gegevens worden geaggregeerd over het evaluatie venster)| **context. condition. timeAggregation** | **context. condition. timeAggregation** |
 | Evaluatie periode | **context. condition. windowSize** | **data. context. condition. windowSize** |
 | Operator (hoe de cumulatieve metrische waarde wordt vergeleken met de drempel) | **context. condition. operator** | **data. context. condition. operator** |
@@ -62,7 +61,7 @@ Gebruik de volgende tabel om de velden voor de nettolading van webhooks van de k
 | Type van de betrokken resource | **context. resource type** | **data. context. resource type** |
 | Resource-ID van de betrokken resource | **context. resourceId** | **data. context. resourceId** |
 | Directe koppeling naar de pagina overzicht van portal-resources | **context. portalLink** | **data. context. portalLink** |
-| Aangepaste Payload-velden die moeten worden door gegeven aan de webhook-of logische app | **eigenschappen** | **data. Properties** |
+| Aangepaste Payload-velden die moeten worden door gegeven aan de webhook-of logische app | **properties** | **data. Properties** |
 
 De payloads zijn vergelijkbaar, zoals u kunt zien. In de volgende sectie vindt u:
 

@@ -6,10 +6,9 @@ ms.date: 11/04/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: d76bac60bae11f0843d81de523030154af62a373
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811694"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>Gebruik een TLS/SSL-certificaat in uw code in Azure App Service
@@ -29,7 +28,7 @@ Als u deze hand leiding wilt volgen:
 
 ## <a name="find-the-thumbprint"></a>De vinger afdruk zoeken
 
-Selecteer **App Services** > **app Services\<app-name>** in het menu links in het <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
+Selecteer in het <a href="https://portal.azure.com" target="_blank">Azure Portal</a>in het linkermenu **app Services**  >  **\<app-name>** .
 
 Selecteer in de linkernavigatiebalk van uw app instellingen voor **TLS/SSL**en selecteer vervolgens **certificaten voor persoonlijke sleutels (PFX)** of certificaten met een **open bare sleutel (. CER)**.
 
@@ -39,22 +38,22 @@ Zoek het certificaat dat u wilt gebruiken en kopieer de vinger afdruk.
 
 ## <a name="make-the-certificate-accessible"></a>Het certificaat toegankelijk maken
 
-Als u toegang wilt krijgen tot een certificaat in uw app-code, `WEBSITE_LOAD_CERTIFICATES` voegt u de vinger afdruk toe aan de app-instelling door de volgende opdracht uit te voeren in de <a target="_blank" href="https://shell.azure.com" >Cloud shell</a>:
+Als u toegang wilt krijgen tot een certificaat in uw app-code, voegt u de vinger afdruk toe aan de `WEBSITE_LOAD_CERTIFICATES` app-instelling door de volgende opdracht uit te voeren in de <a target="_blank" href="https://shell.azure.com" >Cloud shell</a>:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_CERTIFICATES=<comma-separated-certificate-thumbprints>
 ```
 
-Als u al uw certificaten toegankelijk wilt maken, stelt u `*`de waarde in op.
+Als u al uw certificaten toegankelijk wilt maken, stelt u de waarde in op `*` .
 
 ## <a name="load-certificate-in-windows-apps"></a>Certificaat in Windows-apps laden
 
-Met `WEBSITE_LOAD_CERTIFICATES` de app-instelling worden de opgegeven certificaten toegankelijk voor uw Windows-app die is gehost in het Windows-certificaat archief. de locatie is afhankelijk van de [prijs categorie](overview-hosting-plans.md):
+Met de `WEBSITE_LOAD_CERTIFICATES` app-instelling worden de opgegeven certificaten toegankelijk voor uw Windows-app die is gehost in het Windows-certificaat archief. de locatie is afhankelijk van de [prijs categorie](overview-hosting-plans.md):
 
 - **Geïsoleerde** laag-in [lokale Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores). 
 - Alle andere lagen: in [huidige User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores).
 
-In C#-code opent u het certificaat via de vinger afdruk van het certificaat. Met de volgende code wordt een certificaat met de `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`vinger afdruk geladen.
+In C#-code opent u het certificaat via de vinger afdruk van het certificaat. Met de volgende code wordt een certificaat met de vinger afdruk geladen `E661583E8FABEF4C0BEF694CBC41C28FB81CD870` .
 
 ```csharp
 using System;
@@ -109,10 +108,10 @@ Zie [certificaat uit bestand laden](#load-certificate-from-file)voor talen die n
 
 ## <a name="load-certificate-in-linux-apps"></a>Certificaat in Linux-apps laden
 
-Met `WEBSITE_LOAD_CERTIFICATES` de app-instellingen worden de opgegeven certificaten toegankelijk voor uw door Linux gehoste apps (inclusief aangepaste container-apps) als bestanden. De bestanden bevinden zich in de volgende directory's:
+Met de `WEBSITE_LOAD_CERTIFICATES` app-instellingen worden de opgegeven certificaten toegankelijk voor uw door Linux gehoste apps (inclusief aangepaste container-apps) als bestanden. De bestanden bevinden zich in de volgende directory's:
 
 - Privé certificaten- `/var/ssl/private` ( `.p12` bestanden)
-- Open bare certificaten `/var/ssl/certs` - `.der` (bestanden)
+- Open bare certificaten- `/var/ssl/certs` ( `.der` bestanden)
 
 De namen van de certificaat bestanden zijn de certificaat vingerafdrukken. De volgende C#-code laat zien hoe u een openbaar certificaat in een Linux-app kunt laden.
 
@@ -128,7 +127,7 @@ var cert = new X509Certificate2(bytes);
 // Use the loaded certificate
 ```
 
-Zie de documentatie voor de desbetreffende taal of het webplatform voor meer informatie over het laden van een TLS/SSL-certificaat van een bestand in node. js, PHP, Python, Java of Ruby.
+Zie de documentatie voor de desbetreffende taal of het webplatform voor meer informatie over het laden van een TLS/SSL-certificaat van een bestand in Node.js, PHP, Python, Java of Ruby.
 
 ## <a name="load-certificate-from-file"></a>Certificaat uit bestand laden
 
@@ -157,7 +156,7 @@ var cert = new X509Certificate2(bytes);
 // Use the loaded certificate
 ```
 
-Zie de documentatie voor de desbetreffende taal of het webplatform voor meer informatie over het laden van een TLS/SSL-certificaat van een bestand in node. js, PHP, Python, Java of Ruby.
+Zie de documentatie voor de desbetreffende taal of het webplatform voor meer informatie over het laden van een TLS/SSL-certificaat van een bestand in Node.js, PHP, Python, Java of Ruby.
 
 ## <a name="more-resources"></a>Meer bronnen
 

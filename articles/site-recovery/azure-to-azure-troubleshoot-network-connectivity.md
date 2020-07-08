@@ -6,10 +6,9 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
 ms.openlocfilehash: d2cc4133e52e7cab812413d23948da6ac2660e77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80884865"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Problemen met Azure-naar-Azure-VM-netwerk connectiviteit oplossen
@@ -20,7 +19,7 @@ Voor een goede werking van Site Recovery replicatie is uitgaande verbinding met 
 
 | URL | Details |
 |---|---|
-| `*.blob.core.windows.net` | Vereist zodat gegevens kunnen worden geschreven naar het cache-opslag account in de bron regio van de virtuele machine. Als u alle cache opslag accounts voor uw virtuele machines weet, kunt u een lijst met toegestane Url's gebruiken voor de specifieke URL van het opslag account. Bijvoorbeeld, `cache1.blob.core.windows.net` `cache2.blob.core.windows.net` in plaats van `*.blob.core.windows.net`. |
+| `*.blob.core.windows.net` | Vereist zodat gegevens kunnen worden geschreven naar het cache-opslag account in de bron regio van de virtuele machine. Als u alle cache opslag accounts voor uw virtuele machines weet, kunt u een lijst met toegestane Url's gebruiken voor de specifieke URL van het opslag account. Bijvoorbeeld, `cache1.blob.core.windows.net` `cache2.blob.core.windows.net` in plaats van `*.blob.core.windows.net` . |
 | `login.microsoftonline.com` | Vereist voor autorisatie en verificatie voor de Url's van de Site Recovery-service. |
 | `*.hypervrecoverymanager.windowsazure.com` | Vereist zodat de Site Recovery service communicatie kan worden uitgevoerd vanaf de virtuele machine. U kunt het bijbehorende _site Recovery IP-adres_ gebruiken als uw firewall proxy ip's ondersteunt. |
 | `*.servicebus.windows.net` | Vereist zodat de Site Recovery bewakings-en diagnostische gegevens van de virtuele machine kunnen worden geschreven. U kunt de bijbehorende _site Recovery bewakings-IP_ gebruiken als uw firewall proxy ip's ondersteunt. |
@@ -51,7 +50,7 @@ Probeer toegang te krijgen tot de DNS-server vanaf de virtuele machine. Als de D
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>Probleem 2: configuratie van Site Recovery is mislukt (151196)
 
 > [!NOTE]
-> Als de virtuele machines zich achter een **standaard** interne Load Balancer, heeft deze standaard geen toegang tot de Office 365-IP-adressen `login.microsoftonline.com`zoals. Wijzig deze in een **Basic** interne Load Balancer type of maak uitgaande toegang zoals vermeld in het artikel [Configureer taak verdeling en uitgaande regels in Standard Load Balancer met behulp van Azure cli](/azure/load-balancer/configure-load-balancer-outbound-cli).
+> Als de virtuele machines zich achter een **standaard** interne Load Balancer, heeft deze standaard geen toegang tot de Office 365-IP-adressen zoals `login.microsoftonline.com` . Wijzig deze in een **Basic** interne Load Balancer type of maak uitgaande toegang zoals vermeld in het artikel [Configureer taak verdeling en uitgaande regels in Standard Load Balancer met behulp van Azure cli](/azure/load-balancer/configure-load-balancer-outbound-cli).
 
 #### <a name="possible-cause"></a>Mogelijke oorzaak
 
@@ -124,7 +123,7 @@ De aangepaste proxy instellingen zijn ongeldig en de Azure Site Recovery Mobilit
 
 #### <a name="resolution"></a>Oplossing
 
-1. De Mobility Service-agent detecteert de proxy-instellingen van Internet `/etc/environment` Explorer in Windows en op Linux.
+1. De Mobility Service-agent detecteert de proxy-instellingen van Internet Explorer in Windows en `/etc/environment` op Linux.
 1. Als u liever proxy alleen instelt voor Azure Site Recovery Mobility-service, kunt u de proxy gegevens opgeven in _ProxyInfo. conf_ op:
 
    - **Linux**:`/usr/local/InMage/config/`

@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 753892790a6f6b898b48d955e6806837967f3e92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882961"
 ---
 # <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Bureau blad-app die web-Api's aanroept: een web-API aanroepen
@@ -60,11 +59,11 @@ if(responseCode != HttpURLConnection.HTTP_OK) {
 JSONObject responseObject = HttpClientHelper.processResponse(responseCode, response);
 ```
 
-# <a name="macos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 ## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>Een web-API aanroepen in MSAL voor iOS en macOS
 
-De methoden voor het verkrijgen van tokens `MSALResult` retour neren een object. `MSALResult`beschrijft een `accessToken` eigenschap die kan worden gebruikt om een web-API aan te roepen. Voeg een toegangs token toe aan de HTTP-autorisatie-header voordat u de aanroep gaat gebruiken om toegang te krijgen tot de beveiligde web-API.
+De methoden voor het verkrijgen van tokens retour neren een `MSALResult` object. `MSALResult`beschrijft een `accessToken` eigenschap die kan worden gebruikt om een web-API aan te roepen. Voeg een toegangs token toe aan de HTTP-autorisatie-header voordat u de aanroep gaat gebruiken om toegang te krijgen tot de beveiligde web-API.
 
 Doel-C:
 
@@ -94,7 +93,7 @@ task.resume()
 
 ## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>Meerdere Api's aanroepen: stapsgewijze toestemming en voorwaardelijke toegang
 
-Als u meerdere Api's voor dezelfde gebruiker wilt aanroepen, moet u na het ophalen van een token voor `AcquireTokenSilent`de eerste API bellen. U ontvangt een token voor de andere Api's de meeste tijd op de achtergrond.
+Als u meerdere Api's voor dezelfde gebruiker wilt aanroepen, moet u na het ophalen van een token voor de eerste API bellen `AcquireTokenSilent` . U ontvangt een token voor de andere Api's de meeste tijd op de achtergrond.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -130,4 +129,4 @@ catch(MsalUiRequiredException ex)
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Verplaatsen naar productie](scenario-desktop-production.md)
+> [Naar productie verplaatsen](scenario-desktop-production.md)

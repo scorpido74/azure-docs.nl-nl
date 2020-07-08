@@ -9,10 +9,9 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
 ms.openlocfilehash: 0a8d79af9f45731971cb1be1f39fc193f9d0f0d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80878966"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Uitgaande verificatie voor Azure scheduler
@@ -32,35 +31,35 @@ Scheduler ondersteunt deze verificatie modellen:
 
 ## <a name="add-or-remove-authentication"></a>Verificatie toevoegen of verwijderen
 
-* Als u verificatie wilt toevoegen aan een planner taak, voegt u, wanneer u de taak maakt of `authentication` bijwerkt, het onderliggende element JavaScript object NOTATION `request` (JSON) toe aan het-element. 
+* Als u verificatie wilt toevoegen aan een planner taak, voegt u, wanneer u de taak maakt of bijwerkt, het `authentication` onderliggende element JavaScript object Notation (JSON) toe aan het- `request` element. 
 
-  Antwoorden retour neren nooit geheimen die worden door gegeven aan de Scheduler-service via een PUT-, PATCH-of `authentication` post-aanvraag in het-object. 
+  Antwoorden retour neren nooit geheimen die worden door gegeven aan de Scheduler-service via een PUT-, PATCH-of POST-aanvraag in het- `authentication` object. 
   Antwoorden stellen geheime gegevens in op null of kunnen een openbaar token gebruiken dat de geverifieerde entiteit vertegenwoordigt. 
 
-* Als u de verificatie van een planner taak wilt verwijderen, voert u een PUT-of PATCH-aanvraag voor de taak `authentication` expliciet uit en stelt u het object in op null. Het antwoord bevat geen verificatie-eigenschappen.
+* Als u de verificatie van een planner taak wilt verwijderen, voert u een PUT-of PATCH-aanvraag voor de taak expliciet uit en stelt `authentication` u het object in op null. Het antwoord bevat geen verificatie-eigenschappen.
 
 ## <a name="client-certificate"></a>Client certificaat
 
 ### <a name="request-body---client-certificate"></a>Aanvraag tekst-client certificaat
 
-Wanneer u verificatie toevoegt met `ClientCertificate` behulp van het model, geeft u deze extra elementen op in de hoofd tekst van de aanvraag.  
+Wanneer u verificatie toevoegt met behulp van het `ClientCertificate` model, geeft u deze extra elementen op in de hoofd tekst van de aanvraag.  
 
 | Element | Vereist | Beschrijving |
 |---------|----------|-------------|
 | **verificatie** (bovenliggend element) | Het verificatie object voor het gebruik van een SSL/TLS-client certificaat |
-| **voert** | Ja | Het verificatie type. Voor SSL/TLS-client certificaten is `ClientCertificate`de waarde. |
-| **pfx** | Ja | De met base64 gecodeerde inhoud van het PFX-bestand |
-| **wachtwoord** | Ja | Het wacht woord voor toegang tot het PFX-bestand |
+| **type** | Yes | Het verificatie type. Voor SSL/TLS-client certificaten is de waarde `ClientCertificate` . |
+| **pfx** | Yes | De met base64 gecodeerde inhoud van het PFX-bestand |
+| **wachtwoord** | Yes | Het wacht woord voor toegang tot het PFX-bestand |
 ||| 
 
 ### <a name="response-body---client-certificate"></a>Antwoord tekst-client certificaat 
 
 Wanneer een aanvraag wordt verzonden met verificatie gegevens, bevat het antwoord deze verificatie-elementen.
 
-| Element | Beschrijving | 
+| Element | Description | 
 |---------|-------------| 
 | **verificatie** (bovenliggend element) | Het verificatie object voor het gebruik van een SSL/TLS-client certificaat |
-| **voert** | Het verificatie type. Voor SSL/TLS-client certificaten is `ClientCertificate`de waarde. |
+| **type** | Het verificatie type. Voor SSL/TLS-client certificaten is de waarde `ClientCertificate` . |
 | **certificateThumbprint** |De vinger afdruk van het certificaat |
 | **certificateSubjectName** |De DN-naam van het certificaat onderwerp |
 | **certificateExpiration** | De verval datum van het certificaat |
@@ -163,24 +162,24 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 
 ### <a name="request-body---basic"></a>Hoofd tekst van aanvraag-basis
 
-Wanneer u verificatie toevoegt met `Basic` behulp van het model, geeft u deze extra elementen op in de hoofd tekst van de aanvraag.
+Wanneer u verificatie toevoegt met behulp van het `Basic` model, geeft u deze extra elementen op in de hoofd tekst van de aanvraag.
 
 | Element | Vereist | Beschrijving |
 |---------|----------|-------------|
 | **verificatie** (bovenliggend element) | Het verificatie object voor het gebruik van basis verificatie | 
-| **voert** | Ja | Het verificatie type. De waarde is `Basic`voor basis verificatie. | 
-| **gebruikers** | Ja | De gebruikers naam voor verificatie | 
-| **wachtwoord** | Ja | Het wacht woord voor verificatie |
+| **type** | Yes | Het verificatie type. De waarde is voor basis verificatie `Basic` . | 
+| **gebruikers** | Yes | De gebruikers naam voor verificatie | 
+| **wachtwoord** | Yes | Het wacht woord voor verificatie |
 |||| 
 
 ### <a name="response-body---basic"></a>Antwoord tekst-basis
 
 Wanneer een aanvraag wordt verzonden met verificatie gegevens, bevat het antwoord deze verificatie-elementen.
 
-| Element | Beschrijving | 
+| Element | Description | 
 |---------|-------------|
 | **verificatie** (bovenliggend element) | Het verificatie object voor het gebruik van basis verificatie |
-| **voert** | Het verificatie type. De waarde is `Basic`voor basis verificatie. |
+| **type** | Het verificatie type. De waarde is voor basis verificatie `Basic` . |
 | **gebruikers** | De geverifieerde gebruikers naam |
 ||| 
 
@@ -281,28 +280,28 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 
 ### <a name="request-body---active-directory-oauth"></a>Aanvraag tekst-Active Directory OAuth 
 
-Wanneer u verificatie toevoegt met `ActiveDirectoryOAuth` behulp van het model, geeft u deze extra elementen op in de hoofd tekst van de aanvraag.
+Wanneer u verificatie toevoegt met behulp van het `ActiveDirectoryOAuth` model, geeft u deze extra elementen op in de hoofd tekst van de aanvraag.
 
 | Element | Vereist | Beschrijving |
 |---------|----------|-------------|
-| **verificatie** (bovenliggend element) | Ja | Het verificatie object voor het gebruik van ActiveDirectoryOAuth-verificatie |
-| **voert** | Ja | Het verificatie type. De waarde is `ActiveDirectoryOAuth`voor ActiveDirectoryOAuth-verificatie. |
-| **bouw** | Ja | De Tenant-id voor de Azure AD-Tenant. Voer `Get-AzureAccount` in azure PowerShell om de Tenant-id voor de Azure AD-Tenant te vinden. |
-| **gericht** | Ja | Deze waarde is ingesteld op `https://management.core.windows.net/`. | 
-| **clientId** | Ja | De client-id voor de Azure AD-toepassing | 
-| **geheim** | Ja | Het geheim voor de client die het token aanvraagt | 
+| **verificatie** (bovenliggend element) | Yes | Het verificatie object voor het gebruik van ActiveDirectoryOAuth-verificatie |
+| **type** | Yes | Het verificatie type. De waarde is voor ActiveDirectoryOAuth-verificatie `ActiveDirectoryOAuth` . |
+| **tenant** | Yes | De Tenant-id voor de Azure AD-Tenant. Voer in Azure PowerShell om de Tenant-id voor de Azure AD-Tenant te vinden `Get-AzureAccount` . |
+| **gericht** | Yes | Deze waarde is ingesteld op `https://management.core.windows.net/` . | 
+| **clientId** | Yes | De client-id voor de Azure AD-toepassing | 
+| **gescheiden** | Yes | Het geheim voor de client die het token aanvraagt | 
 |||| 
 
 ### <a name="response-body---active-directory-oauth"></a>Antwoord tekst-Active Directory OAuth
 
 Wanneer een aanvraag wordt verzonden met verificatie gegevens, bevat het antwoord deze verificatie-elementen.
 
-| Element | Beschrijving |
+| Element | Description |
 |---------|-------------|
 | **verificatie** (bovenliggend element) | Het verificatie object voor het gebruik van ActiveDirectoryOAuth-verificatie |
-| **voert** | Het verificatie type. De waarde is `ActiveDirectoryOAuth`voor ActiveDirectoryOAuth-verificatie. | 
-| **bouw** | De Tenant-id voor de Azure AD-Tenant |
-| **gericht** | Deze waarde is ingesteld op `https://management.core.windows.net/`. |
+| **type** | Het verificatie type. De waarde is voor ActiveDirectoryOAuth-verificatie `ActiveDirectoryOAuth` . | 
+| **tenant** | De Tenant-id voor de Azure AD-Tenant |
+| **gericht** | Deze waarde is ingesteld op `https://management.core.windows.net/` . |
 | **clientId** | De client-id voor de Azure AD-toepassing |
 ||| 
 

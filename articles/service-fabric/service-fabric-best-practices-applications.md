@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: mfussell
 ms.openlocfilehash: 56df6e28940eb15597a3d6bccca3f85e5f690f89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80991651"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Aanbevolen procedures voor het ontwerpen van Azure Service Fabric-toepassingen
@@ -59,7 +58,7 @@ Bespaar kosten en verbeter de beschik baarheid:
 Met Service Fabric Reliable Services kunt u eenvoudig stateless en stateful Services maken. Zie de [Inleiding tot reliable Services](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-introduction)voor meer informatie.
 - Altijd het [annulerings token](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-lifecycle#stateful-service-primary-swaps) in de `RunAsync()` methode voor stateless en stateful Services en de `ChangeRole()` methode voor stateful Services. Als u dit niet doet, weet Service Fabric niet of uw service kan worden gesloten. Als u bijvoorbeeld niet voldoet aan het annulerings token, kunnen er veel langere tijden voor de upgrade van toepassingen optreden.
 -    Open en sluit [communicatie-listeners](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication) tijdig en honoreer de annulerings tokens.
--    Combi neer synchronisatie code nooit met async-code. Gebruik `.GetAwaiter().GetResult()` bijvoorbeeld niet in uw async-aanroepen. Gebruik async *all de methode* via de aanroep stack.
+-    Combi neer synchronisatie code nooit met async-code. Gebruik bijvoorbeeld niet `.GetAwaiter().GetResult()` in uw async-aanroepen. Gebruik async *all de methode* via de aanroep stack.
 
 ## <a name="how-to-work-with-reliable-actors"></a>Werken met Reliable Actors
 Met Service Fabric Reliable Actors kunt u eenvoudig stateful, virtuele actors maken. Zie de [Inleiding tot reliable actors](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction)voor meer informatie.
@@ -70,14 +69,14 @@ Met Service Fabric Reliable Actors kunt u eenvoudig stateful, virtuele actors ma
 - Vanwege hun [op hun beurt gebaseerde gelijktijdigheid](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction#concurrency)worden actors het beste gebruikt als onafhankelijke objecten. Maak geen grafieken van multi actor-, synchrone-methode aanroepen (die elk waarschijnlijk een afzonderlijke netwerk aanroep worden) of maak circulaire actor-aanvragen. Dit is van invloed op de prestaties en schaal baarheid.
 - Combi neer de synchronisatie code niet met een async-code. Gebruik async consistent om prestatie problemen te voor komen.
 - Maak geen langlopende aanroepen in actors. Met langlopende aanroepen worden andere aanroepen naar dezelfde actor geblokkeerd vanwege de gelijktijdigheid op basis van een op te slaan.
-- Als u communiceert met andere services met [service Fabric externe toegang](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication-remoting) en u een `ServiceProxyFactory`maakt, maakt u de Factory op het niveau van de [actor-service](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-using) en *niet* op het actor niveau.
+- Als u communiceert met andere services met [service Fabric externe toegang](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication-remoting) en u een maakt `ServiceProxyFactory` , maakt u de Factory op het niveau van de [actor-service](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-using) en *niet* op het actor niveau.
 
 
 ## <a name="application-diagnostics"></a>Application Diagnostics
 Wees uitgebreid met het toevoegen van [toepassings logboeken](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app) in service aanroepen. Het helpt u bij het vaststellen van scenario's waarin Services elkaar aanroepen. Wanneer een aanroepen B bijvoorbeeld C-aanroepen aanroept, kan de aanroep nergens worden uitgevoerd. Als u onvoldoende logboek registratie hebt, zijn fouten moeilijk te onderzoeken. Als de services te veel worden geregistreerd vanwege aanroepende volumes, moet u ervoor zorgen dat u ten minste logboek fouten en waarschuwingen meldt.
 
 ## <a name="iot-and-messaging-applications"></a>IoT-en Messa ging-toepassingen
-Gebruik [ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/ServiceFabricProcessor)als u berichten leest van [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) of [Azure Event hubs](https://docs.microsoft.com/azure/event-hubs/). ServiceFabricProcessor kan worden geïntegreerd met Service Fabric Reliable Services om de status van het lezen van de Event Hub partities te behouden en nieuwe berichten naar uw services te `IEventProcessor::ProcessEventsAsync()` pushen via de-methode.
+Gebruik [ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/ServiceFabricProcessor)als u berichten leest van [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) of [Azure Event hubs](https://docs.microsoft.com/azure/event-hubs/). ServiceFabricProcessor kan worden geïntegreerd met Service Fabric Reliable Services om de status van het lezen van de Event Hub partities te behouden en nieuwe berichten naar uw services te pushen via de- `IEventProcessor::ProcessEventsAsync()` methode.
 
 
 ## <a name="design-guidance-on-azure"></a>Ontwerp richtlijnen voor Azure

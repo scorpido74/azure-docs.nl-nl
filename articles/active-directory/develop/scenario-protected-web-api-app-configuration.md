@@ -13,10 +13,9 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 073eca94ad93c69811b02abe2c8649940a394e8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882468"
 ---
 # <a name="protected-web-api-code-configuration"></a>Beveiligde web-API: code configuratie
@@ -134,7 +133,7 @@ Het vorige code fragment wordt geëxtraheerd uit de stapsgewijze zelf studie voo
 
 ## <a name="token-validation"></a>Token validatie
 
-In het voor gaande fragment valideert de JwtBearer-middleware, zoals de OpenID Connect Connect-koppeling in web apps, het token op basis van `TokenValidationParameters`de waarde van. Het token wordt naar behoefte ontsleuteld, de claims worden geëxtraheerd en de hand tekening wordt gecontroleerd. De middleware valideert vervolgens het token door te controleren op deze gegevens:
+In het voor gaande fragment valideert de JwtBearer-middleware, zoals de OpenID Connect Connect-koppeling in web apps, het token op basis van de waarde van `TokenValidationParameters` . Het token wordt naar behoefte ontsleuteld, de claims worden geëxtraheerd en de hand tekening wordt gecontroleerd. De middleware valideert vervolgens het token door te controleren op deze gegevens:
 
 - Doel groep: het token is gericht op de Web-API.
 - Sub: het certificaat is uitgegeven voor een app die de Web-API mag aanroepen.
@@ -150,7 +149,7 @@ De validatie stappen worden vastgelegd in validators, die worden weer gegeven in
 
 In deze tabel worden de validatie functies beschreven:
 
-| Validator | Beschrijving |
+| Validator | Description |
 |---------|---------|
 | **ValidateAudience** | Zorgt ervoor dat het token voor de toepassing is die het token voor u valideert. |
 | **ValidateIssuer** | Hiermee zorgt u ervoor dat het token is uitgegeven door een vertrouwde STS, wat inhoudt dat u vertrouwt. |

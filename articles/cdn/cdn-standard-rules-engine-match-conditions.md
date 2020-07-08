@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: allensu
 ms.openlocfilehash: b8050b973027ac91ede0ba98f4d1c76831da9828
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81259920"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Voldoen aan de voor waarden in de standaard regels-engine voor Azure CDN
@@ -62,7 +61,7 @@ Tekenreeks | [Lijst met standaard operators](#standard-operator-list) | Teken re
 
 #### <a name="key-information"></a>Belang rijke informatie
 
-- U kunt geen joker tekens (inclusief sterretjes (\*)) gebruiken wanneer u een cookie naam opgeeft. u moet een exacte cookie naam gebruiken.
+- U kunt geen joker tekens (inclusief sterretjes ( \* )) gebruiken wanneer u een cookie naam opgeeft. u moet een exacte cookie naam gebruiken.
 - U kunt slechts één cookie naam per exemplaar van deze match-voor waarde opgeven.
 - Cookie naam vergelijkingen zijn niet hoofdletter gevoelig.
 - Als u meerdere cookie waarden wilt opgeven, gebruikt u één spatie tussen elke cookie waarde. 
@@ -170,7 +169,7 @@ Operator | Aanvraag-URL | Case-trans formatie
 
 #### <a name="key-information"></a>Belang rijke informatie
 
-- Wanneer u deze regel voorwaarde gebruikt, moet u protocol gegevens toevoegen. Bijvoorbeeld: *https://www.\<yourdomain\>.com*.
+- Wanneer u deze regel voorwaarde gebruikt, moet u protocol gegevens toevoegen. Bijvoorbeeld: * https://www . \<yourdomain\> . com*.
 
 ### <a name="url-file-extension"></a>URL-bestands extensie
 

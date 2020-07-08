@@ -6,10 +6,9 @@ services: container-service
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: 5051232f29ad51d9fee893a4a660fc81f6e60d77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80886735"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Gebruik een statisch openbaar IP-adres en een DNS-label met de Azure Kubernetes-service (AKS) load balancer
@@ -74,7 +73,7 @@ az role assignment create \
 
 U kunt ook de door het systeem toegewezen beheerde identiteit voor machtigingen gebruiken in plaats van de Service-Principal. Zie [beheerde identiteiten gebruiken](use-managed-identity.md)voor meer informatie.
 
-Als u een *Load Balancer* -service met het statische open bare IP- `loadBalancerIP` adres wilt maken, voegt u de eigenschap en de waarde van het statische open bare IP-adres toe aan het yaml-manifest. Maak een bestand met `load-balancer-service.yaml` de naam en kopieer de volgende YAML. Geef uw eigen open bare IP-adres op dat u in de vorige stap hebt gemaakt. In het volgende voor beeld wordt de aantekening ook ingesteld op de resource groep met de naam *myResourceGroup*. Geef de naam van uw eigen resource groep op.
+Als u een *Load Balancer* -service met het statische open bare IP-adres wilt maken, voegt `loadBalancerIP` u de eigenschap en de waarde van het statische open bare IP-adres toe aan het yaml-manifest. Maak een bestand `load-balancer-service.yaml` met de naam en kopieer de volgende YAML. Geef uw eigen open bare IP-adres op dat u in de vorige stap hebt gemaakt. In het volgende voor beeld wordt de aantekening ook ingesteld op de resource groep met de naam *myResourceGroup*. Geef de naam van uw eigen resource groep op.
 
 ```yaml
 apiVersion: v1
@@ -92,7 +91,7 @@ spec:
     app: azure-load-balancer
 ```
 
-Maak de service en de implementatie met `kubectl apply` behulp van de opdracht.
+Maak de service en de implementatie met behulp van de `kubectl apply` opdracht.
 
 ```console
 kubectl apply -f load-balancer-service.yaml
@@ -100,7 +99,7 @@ kubectl apply -f load-balancer-service.yaml
 
 ## <a name="apply-a-dns-label-to-the-service"></a>Een DNS-label op de service Toep assen
 
-Als uw service gebruikmaakt van een dynamisch of statisch openbaar IP-adres, kunt u de annotatie van de `service.beta.kubernetes.io/azure-dns-label-name` service gebruiken om een openbaar DNS-label in te stellen. Hiermee publiceert u een Fully Qualified Domain Name voor uw service met behulp van de open bare DNS-servers van Azure en het domein op het hoogste niveau. De annotatie waarde moet uniek zijn binnen de Azure-locatie. Daarom is het raadzaam om een voldoende gekwalificeerd label te gebruiken.   
+Als uw service gebruikmaakt van een dynamisch of statisch openbaar IP-adres, kunt u de annotatie van de service gebruiken `service.beta.kubernetes.io/azure-dns-label-name` om een openbaar DNS-label in te stellen. Hiermee publiceert u een Fully Qualified Domain Name voor uw service met behulp van de open bare DNS-servers van Azure en het domein op het hoogste niveau. De annotatie waarde moet uniek zijn binnen de Azure-locatie. Daarom is het raadzaam om een voldoende gekwalificeerd label te gebruiken.   
 
 In azure wordt vervolgens automatisch een standaard subnet toegevoegd, zoals `<location>.cloudapp.azure.com` (waarbij locatie de regio is die u hebt geselecteerd), naar de naam die u opgeeft, om de volledig gekwalificeerde DNS-naam te maken. Bijvoorbeeld:
 

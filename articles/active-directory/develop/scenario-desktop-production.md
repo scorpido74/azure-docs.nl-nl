@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: ea564eb69f102d8e548bf8ae9a626598fa264cd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882876"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Bureau blad-app voor het aanroepen van web-Api's: verplaatsen naar productie
@@ -31,14 +30,14 @@ In de verschillende stromen hebt u geleerd hoe u de fouten voor de Stille strome
 > [!NOTE]
 > Het verkrijgen van toestemming voor verschillende bronnen werkt voor micro soft Identity platform, maar niet voor Azure Active Directory (Azure AD) B2C. Azure AD B2C ondersteunt alleen beheerders toestemming en geen toestemming van de gebruiker.
 
-U kunt geen token voor meerdere resources tegelijk ophalen met het micro soft Identity platform (v 2.0)-eind punt. De `scopes` para meter kan alleen bereiken voor één resource bevatten. U kunt ervoor zorgen dat de gebruiker vooraf toestuurt naar verschillende bronnen met behulp `extraScopesToConsent` van de para meter.
+U kunt geen token voor meerdere resources tegelijk ophalen met het micro soft Identity platform (v 2.0)-eind punt. De `scopes` para meter kan alleen bereiken voor één resource bevatten. U kunt ervoor zorgen dat de gebruiker vooraf toestuurt naar verschillende bronnen met behulp van de `extraScopesToConsent` para meter.
 
 U kunt bijvoorbeeld twee resources hebben met twee bereiken:
 
 - `https://mytenant.onmicrosoft.com/customerapi`met de scopes `customer.read` en`customer.write`
 - `https://mytenant.onmicrosoft.com/vendorapi`met de scopes `vendor.read` en`vendor.write`
 
-In dit voor beeld gebruikt u `.WithAdditionalPromptToConsent` de modificator met de `extraScopesToConsent` para meter.
+In dit voor beeld gebruikt u de `.WithAdditionalPromptToConsent` modificator met de `extraScopesToConsent` para meter.
 
 Bijvoorbeeld:
 
@@ -95,7 +94,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 Met deze aanroep krijgt u een toegangs token voor de eerste web-API.
 
-Wanneer u de tweede Web-API moet aanroepen, roept `AcquireTokenSilent` u de API aan.
+Wanneer u de tweede Web-API moet aanroepen, roept u de `AcquireTokenSilent` API aan.
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();

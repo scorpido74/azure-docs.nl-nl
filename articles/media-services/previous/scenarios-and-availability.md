@@ -14,10 +14,9 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: fa0cf5d698bc2186928e0db19be173ec725485e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80985929"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scenario's en de beschikbaarheid van Media Services-functies in datacenters
@@ -177,10 +176,10 @@ Media Services-klanten kunnen een **Standard**-streaming-eindpunt of een Premium
 
 #### <a name="availability"></a>Beschikbaarheid
 
-|Naam|Status|Datacenters
+|Name|Status|Datacenters
 |---|---|---|
-|Standard|Algemene beschikbaarheid|Alle|
-|Premium|Algemene beschikbaarheid|Alle|
+|Standard|Algemene beschikbaarheid|Alles|
+|Premium|Algemene beschikbaarheid|Alles|
 
 ### <a name="live-encoding"></a>Live Encoding
 
@@ -196,7 +195,7 @@ AMS biedt twee coderingsprogramma's die op basis van behoefte kunnen worden gebr
 
 |Naam van mediaprocessor|Status|Datacenters
 |---|---|---|
-|Media Encoder Standard|Algemene beschikbaarheid|Alle|
+|Media Encoder Standard|Algemene beschikbaarheid|Alles|
 |Media Encoder Premium Workflow|Algemene beschikbaarheid|Overal behalve China|
 
 ### <a name="analytics-media-processors"></a>Mediaprocessors voor analyse
@@ -210,12 +209,12 @@ Media Analytics is een verzameling spraakonderdelen en visuele onderdelen waarme
 
 |Naam van mediaprocessor|Status|Datacenters
 |---|---|---|
-|Azure Media Face Detector|Preview|Alle|
-|Azure Media Indexer|Algemene beschikbaarheid|Alle|
-|Azure Media Motion Detector|Preview|Alle|
-|Azure Media OCR|Preview|Alle|
-|Azure Media Redactor|Algemene beschikbaarheid|Alle|
-|Azure Media Video Thumbnails|Preview|Alle|
+|Azure Media Face Detector|Preview|Alles|
+|Azure Media Indexer|Algemene beschikbaarheid|Alles|
+|Azure Media Motion Detector|Preview|Alles|
+|Azure Media OCR|Preview|Alles|
+|Azure Media Redactor|Algemene beschikbaarheid|Alles|
+|Azure Media Video Thumbnails|Preview|Alles|
 
 ### <a name="protection"></a>Beveiliging
 
@@ -225,10 +224,10 @@ Met Microsoft Azure Media Services kunt u uw media beveiligen vanaf het moment d
 
 |Versleuteling|Status|Datacenters|
 |---|---|---| 
-|Storage|Algemene beschikbaarheid|Alle|
-|AES-128-sleutels|Algemene beschikbaarheid|Alle|
-|FairPlay|Algemene beschikbaarheid|Alle|
-|PlayReady|Algemene beschikbaarheid|Alle|
+|Storage|Algemene beschikbaarheid|Alles|
+|AES-128-sleutels|Algemene beschikbaarheid|Alles|
+|FairPlay|Algemene beschikbaarheid|Alles|
+|PlayReady|Algemene beschikbaarheid|Alles|
 |Widevine|Algemene beschikbaarheid|Overal behalve in Duitsland, bij overheden en in China.
 
 ### <a name="reserved-units-rus"></a>Gereserveerde eenheden (RU's)
@@ -251,13 +250,13 @@ Zie de sectie [Schalen](#scaling) voor meer informatie.
 
 |RU-typenaam|Status|Datacenters
 |---|---|---|
-|S1|Algemene beschikbaarheid|Alle|
+|S1|Algemene beschikbaarheid|Alles|
 |S2|Algemene beschikbaarheid|Overal behalve in BR - zuid en India - west|
 |S3|Algemene beschikbaarheid|Overal behalve in India - west|
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
 
 ## <a name="next-steps"></a>Volgende stappen
 

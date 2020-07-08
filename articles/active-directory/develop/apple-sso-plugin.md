@@ -14,10 +14,9 @@ ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: a6af1a78582ebf62aed82bad8fa06cac37f511ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80982579"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Micro soft Enter prise SSO-invoeg toepassing voor Apple-apparaten (preview-versie)
@@ -25,7 +24,7 @@ ms.locfileid: "80982579"
 > [!NOTE]
 > Deze functie is beschikbaar voor openbare preview.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 De *micro soft Enter PRISE SSO-invoeg toepassing voor Apple-apparaten* biedt eenmalige aanmelding (SSO) voor Azure Active Directory (Azure AD)-accounts voor alle toepassingen die ondersteuning bieden voor de functie voor [eenmalige aanmelding voor ondernemingen](https://developer.apple.com/documentation/authenticationservices) van Apple. Micro soft werkte nauw samen met Apple voor het ontwikkelen van deze invoeg toepassing om de bruikbaarheid van uw toepassingen te verhogen en de beste beveiliging te bieden die door Apple en micro soft kan worden geboden.
 

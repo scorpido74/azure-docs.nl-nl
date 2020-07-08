@@ -8,10 +8,9 @@ ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: mimckitt
 ms.openlocfilehash: 0825a29b45ea701315a57ff5248731e64e29de32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81261632"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Inleiding tot FreeBSD op Azure
@@ -52,9 +51,9 @@ sudo rm /usr/local/bin/python 
 sudo ln -s /usr/local/bin/python3.5 /usr/local/bin/python
 ```
 
-Tijdens de installatie wordt u gevraagd `Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)`. Als u `y` antwoordt en `/etc/rc.conf` invoert `a path to an rc file to update`, kunt u aan het probleem `ERROR: [Errno 13] Permission denied`voldoen. U kunt dit probleem oplossen door het schrijf recht toe te kennen aan de huidige gebruiker op `etc/rc.conf`het bestand.
+Tijdens de installatie wordt u gevraagd `Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)` . Als u antwoordt `y` en `/etc/rc.conf` invoert `a path to an rc file to update` , kunt u aan het probleem voldoen `ERROR: [Errno 13] Permission denied` . U kunt dit probleem oplossen door het schrijf recht toe te kennen aan de huidige gebruiker op het bestand `etc/rc.conf` .
 
-Nu kunt u zich aanmelden bij Azure en uw FreeBSD-VM maken. Hieronder ziet u een voor beeld van het maken van een FreeBSD 11,0-VM. U kunt ook de para meter `--public-ip-address-dns-name` toevoegen met een wereld wijd unieke DNS-naam voor een nieuw, gemaakt openbaar IP-adres. 
+Nu kunt u zich aanmelden bij Azure en uw FreeBSD-VM maken. Hieronder ziet u een voor beeld van het maken van een FreeBSD 11,0-VM. U kunt ook de para meter toevoegen `--public-ip-address-dns-name` met een wereld wijd unieke DNS-naam voor een nieuw, gemaakt openbaar IP-adres. 
 
 ```azurecli
 az login 
@@ -103,7 +102,7 @@ De [CustomScript](https://github.com/Azure/azure-linux-extensions/tree/master/Cu
 ## <a name="authentication-user-names-passwords-and-ssh-keys"></a>Verificatie: gebruikers namen, wacht woorden en SSH-sleutels
 Wanneer u een virtuele FreeBSD-machine maakt met behulp van de Azure Portal, moet u een gebruikers naam, wacht woord of open bare SSH-sleutel opgeven.
 Gebruikers namen voor het implementeren van een virtuele FreeBSD-machine in azure mogen niet overeenkomen met de namen van systeem accounts (UID <100) die al aanwezig zijn in de virtuele machine (bijvoorbeeld ' root ').
-Op dit moment wordt alleen de RSA SSH-sleutel ondersteund. Een SSH-sleutel met meerdere regels `---- BEGIN SSH2 PUBLIC KEY ----` moet beginnen met `---- END SSH2 PUBLIC KEY ----`en eindigen op.
+Op dit moment wordt alleen de RSA SSH-sleutel ondersteund. Een SSH-sleutel met meerdere regels moet beginnen met `---- BEGIN SSH2 PUBLIC KEY ----` en eindigen op `---- END SSH2 PUBLIC KEY ----` .
 
 ## <a name="obtaining-superuser-privileges"></a>Bevoegdheden van super gebruiker verkrijgen
 Het gebruikers account dat is opgegeven tijdens de implementatie van de virtuele machine-instantie op Azure is een bevoegd account. Het pakket met sudo is geïnstalleerd in de gepubliceerde FreeBSD-installatie kopie.
@@ -113,7 +112,7 @@ Nadat u bent aangemeld via dit gebruikers account, kunt u opdrachten uitvoeren a
 $ sudo <COMMAND>
 ```
 
-U kunt eventueel een basis shell verkrijgen met behulp `sudo -s`van.
+U kunt eventueel een basis shell verkrijgen met behulp van `sudo -s` .
 
 ## <a name="known-issues"></a>Bekende problemen
 De [Azure VM Guest agent](https://github.com/Azure/WALinuxAgent/) versie 2.2.2 heeft een [bekend probleem](https://github.com/Azure/WALinuxAgent/pull/517) dat ertoe leidt dat de inrichtings fout voor FreeBSD vm in azure wordt veroorzaakt. De oplossing is vastgelegd door de [Azure VM Guest agent](https://github.com/Azure/WALinuxAgent/) versie 2.2.3 en latere versies. 

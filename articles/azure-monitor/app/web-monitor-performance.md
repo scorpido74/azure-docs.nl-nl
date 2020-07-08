@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80985062"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Prestaties in webtoepassingen controleren
@@ -21,7 +20,7 @@ Application Insights kunt Java-en ASP.NET-webtoepassingen en-services, WCF-servi
 Aan de client zijde kan Application Insights telemetrie maken op basis van webpagina's en een groot aantal verschillende apparaten, waaronder iOS-, Android-en Windows Store-apps.
 
 ## <a name="set-up-performance-monitoring"></a><a name="setup"></a>Prestatie bewaking instellen
-Als u Application Insights nog niet aan uw project hebt toegevoegd (dat wil zeggen, als het geen ApplicationInsights. config heeft), kiest u een van de volgende manieren om aan de slag te gaan:
+Als u Application Insights nog niet aan uw project hebt toegevoegd (dat wil zeggen, als het geen ApplicationInsights.config heeft), kiest u een van de volgende manieren om aan de slag te gaan:
 
 * [ASP.NET-web-apps](../../azure-monitor/app/asp-net.md)
   * [Uitzonderings bewaking toevoegen](../../azure-monitor/app/asp-net-exceptions.md)

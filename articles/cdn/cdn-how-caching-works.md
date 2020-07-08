@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
 ms.openlocfilehash: d0c438aee7f56e96feb7167fad718fd9519a9f76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81253710"
 ---
 # <a name="how-caching-works"></a>Hoe caching werkt
@@ -60,7 +59,7 @@ Caching is integraal naar de manier waarop een CDN kan worden geleverd om de lev
 
 Net als in de manier waarop caching wordt geïmplementeerd in een webbrowser, kunt u bepalen hoe caching in een CDN wordt uitgevoerd door cache-instructie headers te verzenden. Cache-instructie headers zijn HTTP-headers, die meestal worden toegevoegd door de oorspronkelijke server. Hoewel de meeste van deze headers oorspronkelijk zijn ontworpen om caching in client browsers aan te pakken, worden ze nu ook gebruikt door alle tussenliggende caches, zoals Cdn's. 
 
-Twee kopteksten kunnen worden gebruikt voor het definiëren van cache `Cache-Control` versheid `Expires`: en. `Cache-Control`is meer actueel en heeft voor rang `Expires`op, als beide bestaan. Er worden ook twee typen kopteksten gebruikt voor validatie (met de naam validators `ETag` ) `Last-Modified`: en. `ETag`is recurrent en heeft voor rang `Last-Modified`op, als beide zijn gedefinieerd.  
+Twee kopteksten kunnen worden gebruikt voor het definiëren van cache versheid: `Cache-Control` en `Expires` . `Cache-Control`is meer actueel en heeft voor rang op `Expires` , als beide bestaan. Er worden ook twee typen kopteksten gebruikt voor validatie (met de naam Validators): `ETag` en `Last-Modified` . `ETag`is recurrent en heeft voor rang op `Last-Modified` , als beide zijn gedefinieerd.  
 
 ## <a name="cache-directive-headers"></a>Cache-instructie headers
 
@@ -70,43 +69,43 @@ Twee kopteksten kunnen worden gebruikt voor het definiëren van cache `Cache-Con
 Azure CDN ondersteunt de volgende HTTP-cache-instructie headers, waarmee de cache duur en het delen van de cache worden gedefinieerd.
 
 **Cache-Control:**
-- Geïntroduceerd in HTTP 1,1 om webpublicaties meer controle te geven over de inhoud en om de beperkingen van `Expires` de header te kunnen aanpakken.
-- Hiermee wordt de `Expires` header overschreven als beide en `Cache-Control` worden gedefinieerd.
-- Bij gebruik in een HTTP-aanvraag van de client naar de CDN- `Cache-Control` pop, wordt standaard door alle Azure CDN profielen genegeerd.
+- Geïntroduceerd in HTTP 1,1 om webpublicaties meer controle te geven over de inhoud en om de beperkingen van de header te kunnen aanpakken `Expires` .
+- Hiermee wordt de header overschreven `Expires` als beide en `Cache-Control` worden gedefinieerd.
+- Bij gebruik in een HTTP-aanvraag van de client naar de CDN-POP, `Cache-Control` wordt standaard door alle Azure CDN profielen genegeerd.
 - Bij gebruik in een HTTP-antwoord van de client naar de CDN-POP:
-     - **Azure CDN Standard/Premium van Verizon** en **Azure CDN Standard van micro soft** ondersteunen `Cache-Control` alle richt lijnen.
+     - **Azure CDN Standard/Premium van Verizon** en **Azure CDN Standard van micro soft** ondersteunen alle `Cache-Control` richt lijnen.
      - **Azure CDN standaard van Akamai** ondersteunt alleen de volgende `Cache-Control` richt lijnen. alle andere worden genegeerd:
          - `max-age`: Een cache kan de inhoud voor het opgegeven aantal seconden opslaan. Bijvoorbeeld `Cache-Control: max-age=5`. Deze richt lijn geeft de maximale hoeveelheid tijd aan die de inhoud als vernieuwd wordt beschouwd.
-         - `no-cache`: De inhoud in de cache opslaan, maar de inhoud elke keer valideren voordat deze vanuit de cache wordt afgeleverd. Gelijk aan `Cache-Control: max-age=0`.
+         - `no-cache`: De inhoud in de cache opslaan, maar de inhoud elke keer valideren voordat deze vanuit de cache wordt afgeleverd. Gelijk aan `Cache-Control: max-age=0` .
          - `no-store`: De inhoud nooit in de cache opslaan. Verwijder inhoud als deze eerder is opgeslagen.
 
 **Verstreken**
 - Verouderde header geïntroduceerd in HTTP 1,0; ondersteund voor achterwaartse compatibiliteit.
 - Maakt gebruik van een verval tijd op basis van een datum met de tweede precisie. 
-- Vergelijkbaar met `Cache-Control: max-age`.
-- Wordt gebruikt `Cache-Control` wanneer niet bestaat.
+- Vergelijkbaar met `Cache-Control: max-age` .
+- Wordt gebruikt wanneer `Cache-Control` niet bestaat.
 
 **Pragma**
    - Standaard niet gehonoreerd door Azure CDN.
    - Verouderde header geïntroduceerd in HTTP 1,0; ondersteund voor achterwaartse compatibiliteit.
-   - Wordt gebruikt als een aanvraag header van de client met de `no-cache`volgende instructie:. Met deze instructie wordt de server geïnstrueerd een nieuwe versie van de resource te leveren.
-   - `Pragma: no-cache`is gelijk aan `Cache-Control: no-cache`.
+   - Wordt gebruikt als een aanvraag header van de client met de volgende instructie: `no-cache` . Met deze instructie wordt de server geïnstrueerd een nieuwe versie van de resource te leveren.
+   - `Pragma: no-cache`is gelijk aan `Cache-Control: no-cache` .
 
 ## <a name="validators"></a>Controles
 
-Wanneer de cache verouderd is, worden validaties van de HTTP-cache gebruikt voor het vergelijken van de versie van een bestand in de cache met de versie op de oorspronkelijke server. **Azure CDN Standard/Premium van Verizon** ondersteunt zowel `ETag` als `Last-Modified` validatie functie standaard, terwijl **Azure CDN standaard van micro soft** en **Azure CDN standaard van Akamai** alleen `Last-Modified` worden ondersteund.
+Wanneer de cache verouderd is, worden validaties van de HTTP-cache gebruikt voor het vergelijken van de versie van een bestand in de cache met de versie op de oorspronkelijke server. **Azure CDN Standard/Premium van Verizon** ondersteunt zowel `ETag` als `Last-Modified` validatie functie standaard, terwijl **Azure CDN standaard van micro soft** en **Azure CDN standaard van Akamai** alleen worden ondersteund `Last-Modified` .
 
 **ETAG**
 - **Azure CDN Standard/Premium van Verizon** ondersteunt `ETag` standaard, terwijl **Azure CDN standaard van micro soft** en **Azure CDN Standard van Akamai** niet.
 - `ETag`Hiermee wordt een teken reeks gedefinieerd die uniek is voor elk bestand en elke versie van een bestand. Bijvoorbeeld `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`.
-- Is geïntroduceerd in HTTP 1,1 en is meer actueel `Last-Modified`dan. Handig wanneer de datum van laatste wijziging moeilijk te bepalen is.
+- Is geïntroduceerd in HTTP 1,1 en is meer actueel dan `Last-Modified` . Handig wanneer de datum van laatste wijziging moeilijk te bepalen is.
 - Ondersteunt zowel sterke validatie als zwakke validatie; Azure CDN ondersteunt echter alleen sterke validatie. Voor een sterke validatie moeten de twee resource representaties byte-voor-byte identiek zijn. 
-- Een cache valideert een bestand dat wordt `ETag` gebruikt door een `If-None-Match` header met een of meer `ETag` validatie functies in de aanvraag te verzenden. Bijvoorbeeld `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`. Als de versie van de server overeenkomt met een `ETag` validatie functie in de lijst, verzendt deze de status code 304 (niet gewijzigd) in de reactie. Als de versie anders is, reageert de server met de status code 200 (OK) en de bijgewerkte resource.
+- Een cache valideert een bestand dat wordt gebruikt `ETag` door een `If-None-Match` header met een of meer `ETag` validatie functies in de aanvraag te verzenden. Bijvoorbeeld `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`. Als de versie van de server overeenkomt met een `ETag` validatie functie in de lijst, verzendt deze de status code 304 (niet gewijzigd) in de reactie. Als de versie anders is, reageert de server met de status code 200 (OK) en de bijgewerkte resource.
 
 **Laatst gewijzigd:**
 - Alleen voor **Azure CDN Standard/Premium van Verizon** `Last-Modified` wordt gebruikt als `ETag` dit geen onderdeel is van het HTTP-antwoord. 
 - Hiermee geeft u de datum en tijd op waarop de oorspronkelijke server heeft bepaald dat de bron voor het laatst is gewijzigd. Bijvoorbeeld `Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT`.
-- Een cache valideert een bestand met `Last-Modified` behulp van `If-Modified-Since` door een header met een datum en tijd in de aanvraag te verzenden. De oorspronkelijke server vergelijkt die datum met `Last-Modified` de koptekst van de laatste resource. Als de resource sinds de opgegeven tijd niet is gewijzigd, retourneert de server de status code 304 (niet gewijzigd) in het antwoord. Als de resource is gewijzigd, retourneert de server status code 200 (OK) en de bijgewerkte resource.
+- Een cache valideert een bestand met behulp `Last-Modified` van door een `If-Modified-Since` header met een datum en tijd in de aanvraag te verzenden. De oorspronkelijke server vergelijkt die datum met de `Last-Modified` koptekst van de laatste resource. Als de resource sinds de opgegeven tijd niet is gewijzigd, retourneert de server de status code 304 (niet gewijzigd) in het antwoord. Als de resource is gewijzigd, retourneert de server status code 200 (OK) en de bijgewerkte resource.
 
 ## <a name="determining-which-files-can-be-cached"></a>Bepalen welke bestanden in de cache kunnen worden opgeslagen
 
@@ -126,12 +125,12 @@ In de volgende tabel wordt het standaard gedrag voor caching voor de Azure CDN p
 
 |    | Micro soft: algemene Internet levering | Verizon: algemene Internet levering | Verizon: DSA | Akamai: algemene Internet levering | Akamai: DSA | Akamai: grote bestanden downloaden | Akamai: algemeen of VOD mediastreaming |
 |------------------------|--------|-------|------|--------|------|-------|--------|
-| **Naleven**       | Ja    | Ja   | Nee   | Ja    | Nee   | Ja   | Ja    |
+| **Naleven**       | Ja    | Ja   | Nee   | Yes    | Nee   | Ja   | Ja    |
 | **CDN-cache duur** | 2 dagen |7 dagen | Geen | 7 dagen | Geen | 1 dag | 1 jaar |
 
 Nagaan van de **oorsprong**: Hiermee geeft u aan of de ondersteunde cache-instructie headers moeten worden nageleefd als deze bestaan in het HTTP-antwoord van de oorspronkelijke server.
 
-**CDN-cache duur**: Hiermee geeft u de hoeveelheid tijd op waarvoor een resource in de cache wordt opgeslagen op de Azure CDN. Als navraag van de **oorsprong** Ja is en het HTTP-antwoord van de oorspronkelijke server de header `Expires` van de cache `Cache-Control: max-age`-instructie bevat of, Azure CDN gebruikt de duur waarde die door de header is opgegeven. 
+**CDN-cache duur**: Hiermee geeft u de hoeveelheid tijd op waarvoor een resource in de cache wordt opgeslagen op de Azure CDN. Als navraag van de **oorsprong** Ja is en het HTTP-antwoord van de oorspronkelijke server de header van de cache-instructie bevat `Expires` of `Cache-Control: max-age` , Azure CDN gebruikt de duur waarde die door de header is opgegeven. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

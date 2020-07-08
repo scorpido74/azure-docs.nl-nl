@@ -4,10 +4,9 @@ description: Een SSL-of TLS-eind punt maken voor een container groep die wordt u
 ms.topic: article
 ms.date: 02/14/2020
 ms.openlocfilehash: b9ea9367219db694b89d6bf4a1e52efb373c71c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80984603"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>Een TLS-eind punt inschakelen in een zijspan wagen
@@ -24,7 +23,7 @@ Zie de [volgende stappen](#next-steps) voor andere benaderingen van het inschake
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om dit artikel te volt ooien. Als u het lokaal wilt gebruiken, wordt versie 2.0.55 of hoger aanbevolen. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
+U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om dit artikel te volt ooien. Als u het lokaal wilt gebruiken, wordt versie 2.0.55 of hoger aanbevolen. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="create-a-self-signed-certificate"></a>Een zelfondertekend certificaat maken
 
@@ -46,19 +45,19 @@ Voer de volgende opdracht uit om het zelfondertekende certificaat (. crt-bestand
 openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
 ```
 
-U ziet nu drie bestanden in de map: de certificaat aanvraag (`ssl.csr`), de persoonlijke sleutel (`ssl.key`) en het zelfondertekende certificaat (`ssl.crt`). U gebruikt `ssl.key` en `ssl.crt` in latere stappen.
+U ziet nu drie bestanden in de map: de certificaat aanvraag ( `ssl.csr` ), de persoonlijke sleutel () `ssl.key` en het zelfondertekende certificaat ( `ssl.crt` ). U gebruikt `ssl.key` en `ssl.crt` in latere stappen.
 
 ## <a name="configure-nginx-to-use-tls"></a>Nginx configureren voor het gebruik van TLS
 
 ### <a name="create-nginx-configuration-file"></a>Nginx-configuratie bestand maken
 
-In deze sectie maakt u een configuratie bestand voor nginx om TLS te gebruiken. Begin met het kopiëren van de volgende tekst in een nieuw `nginx.conf`bestand met de naam. In Azure Cloud Shell kunt u Visual Studio code gebruiken om het bestand in uw werkmap te maken:
+In deze sectie maakt u een configuratie bestand voor nginx om TLS te gebruiken. Begin met het kopiëren van de volgende tekst in een nieuw bestand met de naam `nginx.conf` . In Azure Cloud Shell kunt u Visual Studio code gebruiken om het bestand in uw werkmap te maken:
 
 ```console
 code nginx.conf
 ```
 
-In `location`, moet u ervoor zorgen `proxy_pass` dat u de juiste poort voor uw app hebt ingesteld. In dit voor beeld stellen we poort 80 in voor `aci-helloworld` de container.
+In `location` , moet u ervoor zorgen dat u `proxy_pass` de juiste poort voor uw app hebt ingesteld. In dit voor beeld stellen we poort 80 in voor de `aci-helloworld` container.
 
 ```console
 # nginx Configuration File
@@ -138,13 +137,13 @@ Implementeer nu de container groep door de container configuraties in een [yaml-
 
 ### <a name="create-yaml-file"></a>YAML-bestand maken
 
-Kopieer de volgende YAML naar een nieuw bestand met `deploy-aci.yaml`de naam. In Azure Cloud Shell kunt u Visual Studio code gebruiken om het bestand in uw werkmap te maken:
+Kopieer de volgende YAML naar een nieuw bestand met de naam `deploy-aci.yaml` . In Azure Cloud Shell kunt u Visual Studio code gebruiken om het bestand in uw werkmap te maken:
 
 ```console
 code deploy-aci.yaml
 ```
 
-Voer de inhoud van de met base64 gecodeerde bestanden in, zoals `secret`aangegeven onder. Bijvoorbeeld `cat` elk van de met base64 gecodeerde bestanden om de inhoud ervan weer te geven. Tijdens de implementatie worden deze bestanden toegevoegd aan een [geheim volume](container-instances-volume-secret.md) in de container groep. In dit voor beeld wordt het geheime volume gekoppeld aan de nginx-container.
+Voer de inhoud van de met base64 gecodeerde bestanden in, zoals aangegeven onder `secret` . Bijvoorbeeld `cat` elk van de met base64 gecodeerde bestanden om de inhoud ervan weer te geven. Tijdens de implementatie worden deze bestanden toegevoegd aan een [geheim volume](container-instances-volume-secret.md) in de container groep. In dit voor beeld wordt het geheime volume gekoppeld aan de nginx-container.
 
 ```YAML
 api-version: 2018-10-01
@@ -223,7 +222,7 @@ app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-
 
 ## <a name="verify-tls-connection"></a>TLS-verbinding controleren
 
-Ga in uw browser naar het open bare IP-adres van de container groep. Het IP-adres dat in dit voor `52.157.22.76`beeld wordt weer gegeven, **https://52.157.22.76**is de URL. U moet HTTPS gebruiken om de actieve toepassing weer te geven vanwege de configuratie van de nginx-server. Pogingen om verbinding te maken via HTTP mislukt.
+Ga in uw browser naar het open bare IP-adres van de container groep. Het IP-adres dat in dit voor beeld wordt weer gegeven `52.157.22.76` , is de URL **https://52.157.22.76** . U moet HTTPS gebruiken om de actieve toepassing weer te geven vanwege de configuratie van de nginx-server. Pogingen om verbinding te maken via HTTP mislukt.
 
 ![Schermafbeelding van browser met toepassing die wordt uitgevoerd in een exemplaar van een Azure-container](./media/container-instances-container-group-ssl/aci-app-ssl-browser.png)
 

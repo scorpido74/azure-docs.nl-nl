@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: 48a83fad3395f6ecf06fb1f1ba95aa1b06a53431
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81259133"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Azure API Management integreren met Azure Application Insights
@@ -37,7 +36,7 @@ Voordat u Azure-toepassing Insights kunt gebruiken, moet u eerst een exemplaar v
 2. Klik op **+ Toevoegen**.  
     ![App Insights maken](media/api-management-howto-app-insights/apim-app-insights-instance-2.png)  
 3. Vul het formulier in. Selecteer **Algemeen** als het **toepassings type**.
-4. Klik op **maken**.
+4. Klik op **Create**.
 
 ## <a name="create-a-connection-between-azure-application-insights-and-azure-api-management-service-instance"></a>Een verbinding maken tussen Azure-toepassing Insights-en Azure API Management service-exemplaar
 
@@ -46,7 +45,7 @@ Voordat u Azure-toepassing Insights kunt gebruiken, moet u eerst een exemplaar v
 3. Klik op **+ Toevoegen**.  
     ![Logboek voor app Insights](media/api-management-howto-app-insights/apim-app-insights-logger-1.png)  
 4. Selecteer het eerder gemaakte **Application Insights** -exemplaar en geef een korte beschrijving op.
-5. Klik op **maken**.
+5. Klik op **Create**.
 6. U hebt zojuist een Azure-toepassing Insights-logboek registratie gemaakt met een instrumentatie sleutel. Deze wordt nu weer gegeven in de lijst.  
     ![Logboek voor app Insights](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
@@ -72,7 +71,7 @@ Voordat u Azure-toepassing Insights kunt gebruiken, moet u eerst een exemplaar v
 > [!NOTE]
 > Achter de scène wordt een [Diagnostische](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate) entiteit met de naam ' applicationinsights ' gemaakt op het API-niveau.
 
-| Naam van instelling                        | Waardetype                        | Beschrijving                                                                                                                                                                                                                                                                                                                                      |
+| Naam van de instelling                        | Waardetype                        | Description                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Inschakelen                              | booleaans                           | Hiermee wordt aangegeven of logboek registratie van deze API is ingeschakeld.                                                                                                                                                                                                                                                                                                |
 | Doel                         | Azure-toepassing Insights-logboek registratie | Hiermee wordt aangegeven Azure-toepassing Insights-logboeken moeten worden gebruikt                                                                                                                                                                                                                                                                                           |

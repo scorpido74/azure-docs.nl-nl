@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
 ms.openlocfilehash: 733f4b74ca7643476586189b36f4e1d3e446968b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811169"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>API Management integreren in een intern VNET met Application Gateway
@@ -87,7 +86,7 @@ In deze hand leiding wordt de **ontwikkelaars Portal** ook beschikbaar voor exte
 > Als u Azure AD of authenticatie van derden gebruikt, schakelt u de [cookie-functie voor sessie affiniteit op basis van cookies](../application-gateway/features.md#session-affinity) in Application Gateway.
 
 > [!WARNING]
-> Als u wilt voor komen dat Application Gateway WAF het downloaden van de OpenAPI-specificatie in de ontwikkelaars Portal verbreekt, moet `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`u de firewall regel uitschakelen.
+> Als u wilt voor komen dat Application Gateway WAF het downloaden van de OpenAPI-specificatie in de ontwikkelaars Portal verbreekt, moet u de firewall regel uitschakelen `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"` .
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Een resourcegroep maken voor Resource Manager
 
@@ -191,7 +190,7 @@ Nadat de bovenstaande opdracht is uitgevoerd, raadpleegt u de [DNS-configuratie 
 
 ### <a name="step-1"></a>Stap 1
 
-Initialiseer de volgende variabelen met de details van de certificaten met persoonlijke sleutels voor de domeinen. In dit voor beeld gebruiken `api.contoso.net` we en. `portal.contoso.net`  
+Initialiseer de volgende variabelen met de details van de certificaten met persoonlijke sleutels voor de domeinen. In dit voor beeld gebruiken we `api.contoso.net` en `portal.contoso.net` .  
 
 ```powershell
 $gatewayHostname = "api.contoso.net"                 # API gateway host
@@ -220,7 +219,7 @@ Set-AzApiManagement -InputObject $apimService
 ```
 
 > [!NOTE]
-> Als u de verouderde ontwikkelaars Portal connectiviteit wilt configureren `-HostnameType DeveloperPortal` , `-HostnameType Portal`moet u vervangen door.
+> Als u de verouderde ontwikkelaars Portal connectiviteit wilt configureren, moet u vervangen door `-HostnameType DeveloperPortal` `-HostnameType Portal` .
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Een openbaar IP-adres maken voor de front-endconfiguratie
 
@@ -280,10 +279,10 @@ $portalListener = New-AzApplicationGatewayHttpListener -Name "listener02" -Proto
 
 ### <a name="step-6"></a>Stap 6
 
-Aangepaste tests maken voor het domein eindpunt van `ContosoApi` de API Management-Service proxy. Het pad `/status-0123456789abcdef` is een standaard status eindpunt dat wordt gehost op alle API Management Services. Stel `api.contoso.net` in als een aangepaste test-hostnaam om deze te beveiligen met het TLS/SSL-certificaat.
+Aangepaste tests maken voor het domein eindpunt van de API Management-service `ContosoApi` proxy. Het pad `/status-0123456789abcdef` is een standaard status eindpunt dat wordt gehost op alle API Management Services. Stel in `api.contoso.net` als een aangepaste test-hostnaam om deze te beveiligen met het TLS/SSL-certificaat.
 
 > [!NOTE]
-> De hostnaam `contosoapi.azure-api.net` is de standaard hostnaam van de proxy die is geconfigureerd `contosoapi` wanneer een service met de naam wordt gemaakt in open bare Azure.
+> De hostnaam `contosoapi.azure-api.net` is de standaard hostnaam van de proxy die is geconfigureerd wanneer een service met de naam `contosoapi` wordt gemaakt in open bare Azure.
 >
 
 ```powershell
@@ -357,7 +356,7 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $resGroupN
 
 Wanneer de gateway is gemaakt, gaat u in de volgende stap de front-end voor communicatie configureren. Bij het gebruik van een openbaar IP-adres Application Gateway een dynamisch toegewezen DNS-naam vereist, die mogelijk niet eenvoudig te gebruiken is.
 
-De DNS-naam van de Application Gateway moet worden gebruikt om een CNAME-record te maken die verwijst naar de hostnaam `api.contoso.net` van de APIM-proxy (bijvoorbeeld in de bovenstaande voor beelden) naar deze DNS-naam. Als u de frontend-IP CNAME-record wilt configureren, haalt u de details van de Application Gateway en de bijbehorende IP/DNS-naam op met het element PublicIPAddress. Het gebruik van A-records wordt niet aanbevolen, omdat het VIP kan worden gewijzigd bij het opnieuw starten van de gateway.
+De DNS-naam van de Application Gateway moet worden gebruikt om een CNAME-record te maken die verwijst naar de hostnaam van de APIM-proxy (bijvoorbeeld `api.contoso.net` in de bovenstaande voor beelden) naar deze DNS-naam. Als u de frontend-IP CNAME-record wilt configureren, haalt u de details van de Application Gateway en de bijbehorende IP/DNS-naam op met het element PublicIPAddress. Het gebruik van A-records wordt niet aanbevolen, omdat het VIP kan worden gewijzigd bij het opnieuw starten van de gateway.
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"

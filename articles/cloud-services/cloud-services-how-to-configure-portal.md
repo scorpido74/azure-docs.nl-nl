@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: tagore
 ms.openlocfilehash: e862818a4fe2471af574d153d43f0096af7847b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811412"
 ---
 # <a name="how-to-configure-cloud-services"></a>Cloud Services configureren
@@ -46,7 +45,7 @@ Als u een specifieke versie van het besturings systeem nodig hebt, kunt u deze i
 
 ## <a name="monitoring"></a>Bewaking
 
-U kunt waarschuwingen toevoegen aan uw Cloud service. Klik op **instellingen** > **waarschuwings regels** > **waarschuwing toevoegen**.
+U kunt waarschuwingen toevoegen aan uw Cloud service. Klik op **instellingen**  >  **waarschuwings regels**  >  **waarschuwing toevoegen**.
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
@@ -62,7 +61,7 @@ Hier kunt u een waarschuwing instellen. In de vervolg keuzelijst **metriek** kun
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>Bewaking configureren op basis van een metrische tegel
 
-In plaats van **instellingen** > voor**waarschuwings regels**te gebruiken, kunt u klikken op een van de metrische tegels in de sectie **bewaking** van de Cloud service.
+In plaats van **instellingen**voor  >  **waarschuwings regels**te gebruiken, kunt u klikken op een van de metrische tegels in de sectie **bewaking** van de Cloud service.
 
 ![Cloud service bewaken](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
 
@@ -92,7 +91,7 @@ Mogelijk moet u de Cloud service opnieuw configureren via het [cscfg-bestand (se
     ![Blade configuratie](./media/cloud-services-how-to-configure-portal/cs-settings-config.png)
 3. Klik op de knop **Downloaden**.
 
-    ![Download](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
+    ![Downloaden](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
 4. Nadat u het service configuratie bestand hebt bijgewerkt, uploadt u de configuratie-updates en past u deze toe:
 
     ![Uploaden](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)

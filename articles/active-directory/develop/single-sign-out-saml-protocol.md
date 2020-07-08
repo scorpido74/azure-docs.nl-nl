@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: dbe21d020d5d01f24913b95587721403fa218cc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881262"
 ---
 # <a name="single-sign-out-saml-protocol"></a>SAML-protocol voor eenmalige afmelding
@@ -48,10 +47,10 @@ Het `LogoutRequest` element dat naar Azure AD wordt verzonden, vereist de volgen
 Het `Issuer` element in een `LogoutRequest` moet exact overeenkomen met een van de **ServicePrincipalNames** in de Cloud service in azure AD. Dit is normaal gesp roken ingesteld op de **App-ID-URI** die is opgegeven tijdens de registratie van de toepassing.
 
 ### <a name="nameid"></a>Meid
-De waarde van het `NameID` element moet exact overeenkomen `NameID` met de van de gebruiker die wordt afgemeld.
+De waarde van het `NameID` element moet exact overeenkomen met de `NameID` van de gebruiker die wordt afgemeld.
 
 ## <a name="logoutresponse"></a>LogoutResponse
-Azure AD stuurt een `LogoutResponse` als-antwoord naar `LogoutRequest` een-element. Het volgende fragment toont een voor `LogoutResponse`beeld.
+Azure AD stuurt een `LogoutResponse` als-antwoord naar een- `LogoutRequest` element. Het volgende fragment toont een voor beeld `LogoutResponse` .
 
 ```
 <samlp:LogoutResponse ID="_f0961a83-d071-4be5-a18c-9ae7b22987a4" Version="2.0" IssueInstant="2013-03-18T08:49:24.405Z" InResponseTo="iddce91f96e56747b5ace6d2e2aa9d4f8c" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -63,12 +62,12 @@ Azure AD stuurt een `LogoutResponse` als-antwoord naar `LogoutRequest` een-eleme
 ```
 
 ### <a name="logoutresponse"></a>LogoutResponse
-Azure AD stelt de `ID`en `Version` `IssueInstant` waarden in het `LogoutResponse` -element in. Het `InResponseTo` element wordt ook ingesteld op de waarde van het `ID` kenmerk van de `LogoutRequest` die het antwoord heeft gereageerd.
+Azure AD stelt de `ID` en `Version` `IssueInstant` waarden in het- `LogoutResponse` element in. Het element wordt ook ingesteld `InResponseTo` op de waarde van het `ID` kenmerk van de `LogoutRequest` die het antwoord heeft gereageerd.
 
 ### <a name="issuer"></a>Verlener
-Azure AD stelt deze waarde in `https://login.microsoftonline.com/<TenantIdGUID>/` op \<waar TenantIdGUID> de Tenant-id is van de Azure AD-Tenant.
+Azure AD stelt deze waarde in `https://login.microsoftonline.com/<TenantIdGUID>/` op \<TenantIdGUID> de locatie van de Tenant-id van de Azure AD-Tenant.
 
 Als u de waarde van het `Issuer` element wilt evalueren, gebruikt u de waarde van de **App-ID-URI** die is geleverd tijdens de registratie van de toepassing.
 
 ### <a name="status"></a>Status
-Azure AD gebruikt het `StatusCode` element in het `Status` -element om aan te geven dat de afmelding is geslaagd of mislukt. Wanneer de aanmeldings poging mislukt, kan het `StatusCode` element ook aangepaste fout berichten bevatten.
+Azure AD gebruikt het `StatusCode` element in het- `Status` element om aan te geven dat de afmelding is geslaagd of mislukt. Wanneer de aanmeldings poging mislukt, `StatusCode` kan het element ook aangepaste fout berichten bevatten.

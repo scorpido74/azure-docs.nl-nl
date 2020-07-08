@@ -4,10 +4,9 @@ description: Met Azure Service Fabric kunt u resource limieten opgeven voor serv
 ms.topic: conceptual
 ms.date: 8/9/2017
 ms.openlocfilehash: 11ca6e29829d911717a829b3e4dee0a190856a52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81115150"
 ---
 # <a name="resource-governance"></a>Resourcebeheer
@@ -21,9 +20,9 @@ Wanneer u meerdere services op hetzelfde knoop punt of cluster uitvoert, is het 
 
 Resource governance wordt ondersteund in Service Fabric conform het [service pakket](service-fabric-application-model.md). De resources die zijn toegewezen aan het service pakket kunnen verder worden verdeeld tussen code pakketten. De resource limieten die zijn opgegeven, betekenen ook de reserve ring van de resources. Service Fabric ondersteunt het opgeven van CPU en geheugen per service pakket, met twee ingebouwde [metrische gegevens](service-fabric-cluster-resource-manager-metrics.md):
 
-* *CPU* (metrische naam `servicefabric:/_CpuCores`): een logische kern die beschikbaar is op de hostmachine. Alle kernen op alle knoop punten worden hetzelfde gewogen.
+* *CPU* (metrische naam `servicefabric:/_CpuCores` ): een logische kern die beschikbaar is op de hostmachine. Alle kernen op alle knoop punten worden hetzelfde gewogen.
 
-* *Geheugen* (metrische naam `servicefabric:/_MemoryInMB`): het geheugen wordt uitgedrukt in mega bytes en wordt toegewezen aan het fysieke geheugen dat beschikbaar is op de computer.
+* *Geheugen* (metrische naam `servicefabric:/_MemoryInMB` ): het geheugen wordt uitgedrukt in mega bytes en wordt toegewezen aan het fysieke geheugen dat beschikbaar is op de computer.
 
 Voor deze twee metrische gegevens houdt [cluster resource manager](service-fabric-cluster-resource-manager-cluster-description.md) de totale cluster capaciteit bij, de belasting van elk knoop punt in het cluster en de resterende bronnen in het cluster. Deze twee meet waarden zijn gelijk aan die van andere gebruikers of aangepaste metrische gegevens. Alle bestaande functies kunnen met ze worden gebruikt:
 
@@ -206,7 +205,7 @@ Om te voor komen dat deze situaties zich voordoen, kunt u met Service Fabric *d
 
 Aanvullende opmerkingen:
 
-* Het afdwingen van de resource limiet `servicefabric:/_CpuCores` is `servicefabric:/_MemoryInMB` alleen van toepassing op de metrische gegevens en de resource.
+* Het afdwingen van de resource limiet is alleen van toepassing op de `servicefabric:/_CpuCores` `servicefabric:/_MemoryInMB` metrische gegevens en de resource.
 * Het afdwingen van resources werkt alleen als de capaciteit van knoop punten voor de metrische gegevens van de resource beschikbaar is voor Service Fabric, hetzij via een mechanisme voor automatische detectie, hetzij via gebruikers hand matig de knooppunt capaciteit opgeven (zoals wordt uitgelegd in de sectie [cluster installatie voor het inschakelen van resource governance](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) ).Als de knooppunt capaciteit niet is geconfigureerd, kan de functie voor het afdwingen van resources niet worden gebruikt omdat Service Fabric niet weet hoeveel bronnen er moeten worden gereserveerd voor gebruikers services.Service Fabric geeft een status waarschuwing als ' EnforceUserServiceMetricCapacities ' waar ' is, maar de knooppunt capaciteit niet is geconfigureerd.
 
 ## <a name="other-resources-for-containers"></a>Andere resources voor containers

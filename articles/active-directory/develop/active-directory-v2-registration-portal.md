@@ -14,10 +14,9 @@ ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.openlocfilehash: 910aaf84d3563d4410826d3c0bdfde3d2dfc75e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885630"
 ---
 # <a name="app-registration-reference"></a>Naslaginformatie over app-registratie
@@ -26,7 +25,7 @@ In dit document vindt u context en beschrijvingen van diverse functies die in de
 
 ## <a name="my-applications-or-converged-applications"></a>Mijn toepassingen of geconvergeerde toepassingen
 
-Deze lijst bevat alle toepassingen die zijn geregistreerd voor gebruik met het micro soft Identity platform (v 2.0)-eind punt. Met deze toepassingen kunnen gebruikers zich aanmelden met persoonlijke micro soft-accounts en werk-of school accounts van Azure Active Directory. Zie het [overzicht van v 2.0](active-directory-appmodel-v2-overview.md)voor meer informatie over het identiteits platform-eind punt. Deze toepassingen kunnen ook worden gebruikt om te integreren met het Microsoft-account verificatie- `https://login.live.com`eind punt.
+Deze lijst bevat alle toepassingen die zijn geregistreerd voor gebruik met het micro soft Identity platform (v 2.0)-eind punt. Met deze toepassingen kunnen gebruikers zich aanmelden met persoonlijke micro soft-accounts en werk-of school accounts van Azure Active Directory. Zie het [overzicht van v 2.0](active-directory-appmodel-v2-overview.md)voor meer informatie over het identiteits platform-eind punt. Deze toepassingen kunnen ook worden gebruikt om te integreren met het Microsoft-account verificatie-eind punt `https://login.live.com` .
 
 ## <a name="azure-ad-only-applications"></a>Alleen Azure AD-toepassingen
 
@@ -34,11 +33,11 @@ Deze lijst bevat alle toepassingen die zijn geregistreerd voor gebruik met het A
 
 ## <a name="live-sdk-applications"></a>Live SDK-toepassingen
 
-Deze lijst bevat alle toepassingen die zijn geregistreerd voor gebruik met Microsoft-account. Deze zijn niet ingeschakeld voor gebruik met Azure Active Directory. Hier vindt u alle toepassingen die eerder zijn geregistreerd bij de MSA-ontwikkelaars Portal op `https://account.live.com/developers/applications`. Alle functies die u eerder hebt uitgevoerd `https://account.live.com/developers/applications` , kunnen nu worden uitgevoerd in [app-registraties](https://aka.ms/appregistrations).
+Deze lijst bevat alle toepassingen die zijn geregistreerd voor gebruik met Microsoft-account. Deze zijn niet ingeschakeld voor gebruik met Azure Active Directory. Hier vindt u alle toepassingen die eerder zijn geregistreerd bij de MSA-ontwikkelaars Portal op `https://account.live.com/developers/applications` . Alle functies die u eerder hebt uitgevoerd, `https://account.live.com/developers/applications` kunnen nu worden uitgevoerd in [app-registraties](https://aka.ms/appregistrations).
 
 ## <a name="application-secrets"></a>Toepassings geheimen
 
-Toepassings geheimen zijn referenties waarmee uw toepassing betrouw bare [client verificatie](https://tools.ietf.org/html/rfc6749#section-2.3) kan uitvoeren met Azure AD. In OAuth & OpenID Connect Connect wordt een toepassings geheim doorgaans aangeduid als een `client_secret`. In het v 2.0-protocol moet elke toepassing die een beveiligings token ontvangt op een webadresseer bare locatie (met `https` behulp van een schema) een toepassings geheim gebruiken om zichzelf te identificeren bij Azure AD na terugbetaling van dat beveiligings token. Daarnaast mag elke native client die tokens ontvangt op een apparaat, geen toepassings geheim gebruiken om client verificatie uit te voeren. Hiermee wordt de opslag van geheimen in onbeveiligde omgevingen geraden.
+Toepassings geheimen zijn referenties waarmee uw toepassing betrouw bare [client verificatie](https://tools.ietf.org/html/rfc6749#section-2.3) kan uitvoeren met Azure AD. In OAuth & OpenID Connect Connect wordt een toepassings geheim doorgaans aangeduid als een `client_secret` . In het v 2.0-protocol moet elke toepassing die een beveiligings token ontvangt op een webadresseer bare locatie (met behulp `https` van een schema) een toepassings geheim gebruiken om zichzelf te identificeren bij Azure AD na terugbetaling van dat beveiligings token. Daarnaast mag elke native client die tokens ontvangt op een apparaat, geen toepassings geheim gebruiken om client verificatie uit te voeren. Hiermee wordt de opslag van geheimen in onbeveiligde omgevingen geraden.
 
 Elke app kan op elk gewenst moment twee geldige toepassings geheimen bevatten. Door twee geheimen te bewaren, hebt u de mogelijkheid om periodieke sleutel rollover uit te voeren in de gehele omgeving van uw toepassing. Wanneer u de volledige versie van uw toepassing naar een nieuw geheim hebt gemigreerd, kunt u het oude geheim verwijderen en een nieuw item inrichten.
 
