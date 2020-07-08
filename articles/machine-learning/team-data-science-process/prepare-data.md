@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: caedcf313ab809e9607907545f26ca1b62bbeca7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720041"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Taken om gegevens voor te bereiden voor verbeterde Machine Learning
@@ -96,7 +95,7 @@ Er zijn verschillende methoden om de gegevens grootte te reduceren voor eenvoudi
 
 **Gegevens onderzoek** biedt een vroegtijdige weer gave van de gegevens. Tijdens deze stap kan een aantal gegevens problemen worden gedetecteerd en de bijbehorende methoden kunnen worden toegepast om deze problemen op te lossen.  Het is belang rijk om vragen te stellen, zoals wat de oorzaak is van het probleem en hoe het probleem kan zijn geïntroduceerd. Dit proces helpt u ook bij het bepalen van de gegevens verwerkings stappen die moeten worden uitgevoerd om ze op te lossen. Het identificeren van de eind use cases en personen kunnen ook worden gebruikt voor het bepalen van de gegevens verwerkings inspanning.
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Referenties
 > *Data Mining: concepten en technieken*, derde editie, Morgan Kaufmann, 2011, Jiawei Han, Micheline Kamber en Jian Pei
 > 
 > 

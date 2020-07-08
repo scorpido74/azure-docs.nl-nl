@@ -1,6 +1,6 @@
 ---
 title: Ondersteuning voor Azure IoT Device Sdk's-platform | Microsoft Docs
-description: Open-source apparaat-Sdk's zijn beschikbaar op GitHub in C, .NET (C#), Java, node. js en python om apparaten te verbinden met Azure IoT Hub en de Device Provisioning Service (DPS).
+description: Er zijn Sdk's voor open source-apparaten beschikbaar op GitHub in C, .NET (C#), Java, Node.js en Python, om apparaten te verbinden met Azure IoT Hub en de Device Provisioning Service (DPS).
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,15 +8,14 @@ ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
 ms.openlocfilehash: 496b890cc49b6b6b9f15213a48472447f801b1c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76045119"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Ondersteuning voor Azure IoT Device Sdk's-platform
 
-Micro soft streeft ernaar om het universum van Azure IoT Hub-compatibele apparaten voortdurend uit te breiden. Micro soft publiceert het open-source apparaat Sdk's op GitHub om apparaten te verbinden met Azure IoT Hub en de Device Provisioning-Service. De Sdk's van het apparaat zijn beschikbaar voor C, .NET (C#), Java, node. js en python. Micro soft test elke SDK om ervoor te zorgen dat deze wordt uitgevoerd op de ondersteunde configuraties die hiervoor worden ondersteund in de sectie [micro soft sdk's and Device platform support](#microsoft-sdks-and-device-platform-support) .
+Micro soft streeft ernaar om het universum van Azure IoT Hub-compatibele apparaten voortdurend uit te breiden. Micro soft publiceert het open-source apparaat Sdk's op GitHub om apparaten te verbinden met Azure IoT Hub en de Device Provisioning-Service. De apparaat-Sdk's zijn beschikbaar voor C, .NET (C#), Java, Node.js en python. Micro soft test elke SDK om ervoor te zorgen dat deze wordt uitgevoerd op de ondersteunde configuraties die hiervoor worden ondersteund in de sectie [micro soft sdk's and Device platform support](#microsoft-sdks-and-device-platform-support) .
 
 Naast de Sdk's van het apparaat biedt micro soft verschillende andere mogelijkheden om klanten en ontwikkel aars in staat te stellen hun apparaten te verbinden met Azure IoT:
 
@@ -30,7 +29,7 @@ In dit onderwerp vindt u informatie over de micro soft-Sdk's en de platform conf
 
 ## <a name="microsoft-sdks-and-device-platform-support"></a>Ondersteuning voor micro soft-Sdk's en-platform
 
-Micro soft publiceert open-source Sdk's op GitHub voor de volgende talen: C, .NET (C#), node. js, Java en python. De Sdk's en hun afhankelijkheden worden vermeld in deze sectie. De Sdk's worden ondersteund op elk platform dat voldoet aan deze afhankelijkheden.
+Micro soft publiceert open-source Sdk's op GitHub voor de volgende talen: C, .NET (C#), Node.js, Java en python. De Sdk's en hun afhankelijkheden worden vermeld in deze sectie. De Sdk's worden ondersteund op elk platform dat voldoet aan deze afhankelijkheden.
 
 Voor elk van de vermelde Sdk's, micro soft:
 
@@ -78,7 +77,7 @@ De .NET SDK kan ook worden gebruikt met Windows IoT core met de [Azure Device ag
 
 ### <a name="nodejs-sdk"></a>Node.js SDK
 
-De [SDK van het Azure IOT hub node. js-apparaat](https://github.com/Azure/azure-iot-sdk-node) wordt getest met en ondersteunt de volgende configuraties.
+De [SDK van het Azure IoT Hub Node.js-apparaat](https://github.com/Azure/azure-iot-sdk-node) wordt getest met en ondersteunt de volgende configuraties.
 
 | OS                  | Knooppunt versie    |
 |---------------------|-----------------|
@@ -134,7 +133,7 @@ Als u problemen ondervindt bij het gebruik van de Azure IoT-apparaat-Sdk's, zijn
 
 * [Problemen met Azure IoT Hub Java SDK](https://github.com/Azure/azure-iot-sdk-java/issues)
 
-* [Problemen met Azure IoT Hub node. js SDK](https://github.com/Azure/azure-iot-sdk-node/issues)
+* [Problemen met Azure IoT Hub Node.js SDK](https://github.com/Azure/azure-iot-sdk-node/issues)
 
 * [Problemen met Azure IoT Hub python SDK](https://github.com/Azure/azure-iot-sdk-python/issues)
 

@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: bfc63c6f5aca92fb7fda9e3ecf63ce4c332b12ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720908"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Gegevens verplaatsen van en naar Azure Blob Storage met behulp van Azure Storage Explorer
@@ -52,6 +51,6 @@ In de volgende stappen wordt beschreven hoe u gegevens kunt uploaden/downloaden 
 6. Het toe te voegen opslag account moet nu worden weer gegeven. Als u een BLOB-container in een opslag account wilt maken, klikt u met de rechter muisknop op het knoop punt **BLOB containers** in dat account, selecteert u **BLOB-container maken**en voert u een naam in.
 7. Als u gegevens wilt uploaden naar een container, selecteert u de doel container en klikt u op de knop **uploaden** .
 ![Opslagaccounts](./media/move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
-8. Klik op de **...** rechts van het vak **bestanden** , selecteer een of meer bestanden die u wilt uploaden uit het bestands systeem en klik op **uploaden** om te beginnen met het uploaden van de bestanden. ![Bestanden uploaden](./media/move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
+8. Klik op de **...** rechts van het vak **bestanden** , selecteer een of meer bestanden die u wilt uploaden uit het bestands systeem en klik op **uploaden** om te beginnen met het uploaden van de bestanden. ![ Bestanden uploaden](./media/move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
 9. Als u gegevens wilt downloaden, selecteert u de BLOB in de bijbehorende container om te downloaden en klikt u op **downloaden**. ![Bestanden downloaden](./media/move-data-to-azure-blob-using-azure-storage-explorer/download-files-from-blob.png)
 

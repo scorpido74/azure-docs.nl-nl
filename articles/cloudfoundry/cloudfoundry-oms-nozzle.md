@@ -12,10 +12,9 @@ ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
 ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76277364"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Azure Log Analytics-spuit voor Cloud Foundry systeem bewaking implementeren
@@ -59,7 +58,7 @@ U kunt de Log Analytics-werk ruimte hand matig of met behulp van een sjabloon ma
 #### <a name="to-create-the-workspace-manually"></a>De werk ruimte hand matig maken:
 
 1. Zoek in de Azure Portal de lijst met Services in de Azure Marketplace en selecteer vervolgens Log Analytics werk ruimten.
-2. Selecteer **maken**en selecteer vervolgens opties voor de volgende items:
+2. Selecteer **Maken** en geef uw keuze aan voor de volgende items:
 
    * **Log Analytics werk ruimte**: Typ een naam voor uw werk ruimte.
    * **Abonnement**: als u meerdere abonnementen hebt, kiest u de optie die gelijk is aan uw CF-implementatie.
@@ -183,7 +182,7 @@ Als u de werk ruimte Log Analytics hand matig hebt gemaakt, volgt u de onderstaa
 
 ### <a name="1-import-the-oms-view"></a>1. de OMS-weer gave importeren
 
-Blader vanuit de OMS-Portal naar **weer gave Designer** > **import** > **Browse**en selecteer een van de omsview-bestanden. Selecteer bijvoorbeeld *Cloud Foundry. omsview*en sla de weer gave op. Er wordt nu een tegel op de pagina **overzicht** weer gegeven. Selecteer deze optie om gevisualiseerde metrische gegevens weer te geven.
+Blader vanuit de OMS-Portal naar **weer gave Designer**  >  **import**  >  **Browse**en selecteer een van de omsview-bestanden. Selecteer bijvoorbeeld *Cloud Foundry. omsview*en sla de weer gave op. Er wordt nu een tegel op de pagina **overzicht** weer gegeven. Selecteer deze optie om gevisualiseerde metrische gegevens weer te geven.
 
 U kunt deze weer gaven aanpassen of nieuwe weer gaven maken met behulp van de **weer gave Designer**.
 
@@ -193,7 +192,7 @@ De *' Cloud Foundry. omsview '* is een preview-versie van de Cloud Foundry OMS-w
 
 U kunt [de waarschuwingen maken](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts)en zo nodig de query's en drempel waarden aanpassen. De volgende waarschuwingen worden aanbevolen:
 
-| Zoekquery                                                                  | Waarschuwing genereren op basis van | Beschrijving                                                                       |
+| Zoekquery                                                                  | Waarschuwing genereren op basis van | Description                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
 | Type = CF_ValueMetric_CL Origin_s = BBS Name_s = "domein. CF-apps"                   | Aantal resultaten < 1   | **BBS. Domain.cf: apps** geeft aan of het CF-Apps-domein up-to-date is. Dit betekent dat CF-app-aanvragen van de Cloud controller zijn gesynchroniseerd met BBS. LRPsDesired (Diego-gewenste AIs) voor uitvoering. Geen gegevens ontvangen betekent dat het CF-Apps-domein niet up-to-date is in het opgegeven tijd venster. |
 | Type = CF_ValueMetric_CL Origin_s = rep Name_s = UnhealthyCell Value_d>1            | Aantal resultaten > 0   | Voor Diego-cellen betekent 0 dat ze in orde zijn, en 1 betekent een slechte status. Stel de waarschuwing in als er meerdere beschadigde Diego-cellen worden gedetecteerd in het opgegeven tijd venster. |

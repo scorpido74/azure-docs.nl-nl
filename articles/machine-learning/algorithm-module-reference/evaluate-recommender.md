@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: 38144d5df04427a82989b78843466ecd55386196
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76312257"
 ---
 # <a name="evaluate-recommender"></a>Aanbevelingsfunctie voor evaluatie
@@ -65,7 +64,7 @@ Wanneer u voorspelde beoordelingen evalueert, moet de Score van de gescoorde geg
 -   De derde kolom bevat de bijbehorende beoordelingen van gebruikers items.  
   
 > [!IMPORTANT] 
-> Voor een geslaagde evaluatie moeten de kolom namen respectievelijk `User`, `Item`, en `Rating`.  
+> Voor een geslaagde evaluatie moeten de kolom namen `User` respectievelijk, `Item` , en `Rating` .  
   
 Met de aanbeveling evalueren wordt de classificaties in de gegevensset ' vloer waarheid ' vergeleken met de voorspelde classificaties van de gescoorde gegevensset. Vervolgens wordt de gemiddelde absolute fout (MAE) en de wortel fout (RMSE) berekend.
 
@@ -81,7 +80,7 @@ Wanneer u de aanbevelingen van een item evalueert, gebruikt u een gescoorde gege
 Voordat u deze gegevensset verbindt, wordt u aangeraden de gegevensset te sorteren zodat de meest relevante items het eerst worden geleverd.  
 
 > [!IMPORTANT] 
-> Als u wilt evalueren, kunt u het beste de kolom namen `User` `Item 1` `Item 2` `Item 3` gebruiken, enzovoort.  
+> Als u wilt evalueren, kunt u het beste de kolom namen gebruiken, enzovoort `User` `Item 1` `Item 2` `Item 3` .  
   
 Bij evaluatie van evalueren wordt de gemiddelde genormaliseerde cumulatieve winst (NDCG) berekend en geretourneerd in de uitvoer gegevensset.  
   

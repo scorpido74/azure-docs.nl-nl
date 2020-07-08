@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: brendm
 ms.openlocfilehash: f329fb5472c5a2eab6f22a2e81b19d90e7045330
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76278517"
 ---
 # <a name="cicd-for-azure-spring-cloud"></a>CI/CD voor Azure lente-Cloud
@@ -25,7 +24,7 @@ Lees [dit artikel](https://docs.microsoft.com/azure/devops/pipelines/library/con
 
 ### <a name="deploy-artifacts"></a>Artefacten implementeren
 
-U kunt uw projecten bouwen en implementeren met behulp van `tasks`een reeks van. In dit fragment wordt eerst een Maven-taak gedefinieerd voor het bouwen van de toepassing, gevolgd door een tweede taak die het JAR-bestand implementeert met behulp van de Azure lente-Azure CLI-extensie.
+U kunt uw projecten bouwen en implementeren met behulp van een reeks van `tasks` . In dit fragment wordt eerst een Maven-taak gedefinieerd voor het bouwen van de toepassing, gevolgd door een tweede taak die het JAR-bestand implementeert met behulp van de Azure lente-Azure CLI-extensie.
 
 ```yaml
 steps:

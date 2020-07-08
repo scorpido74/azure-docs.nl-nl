@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: victorh
 ms.openlocfilehash: bc34afe82c1b73afb5f3d5d1a07f2a5059590146
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76705967"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Voor beelden van Azure Firewall log Analytics
@@ -28,7 +27,7 @@ Voer de volgende stappen uit om de weer gave toe te voegen aan uw Log Analytics-
 
 1. Open de werk ruimte Log Analytics in het Azure Portal.
 2. Open de **weer gave Designer** onder **Algemeen**.
-3. Klik op **importeren**.
+3. Klik op **Import**.
 4. Blader en selecteer het **AzureFirewall. omsview** -bestand dat u eerder hebt gedownload.
 5. Klik op **Opslaan**.
 

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: sfrev
 ms.openlocfilehash: 0aeb8ab2923915befdd11f96025687be3b3c4ff9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76024737"
 ---
 # <a name="service-fabric-application-scenarios"></a>Toepassings scenario's Service Fabric
@@ -55,15 +54,15 @@ Het maken van toepassingen met Azure Cloud Services worker-werk rollen is een vo
 
 Stateful Services in Service Fabric hoge Beschik baarheid bieden voor alle soorten toepassingen, niet alleen voor data bases en andere gegevens archieven. Dit is een natuurlijke voortgang. Toepassingen zijn al verplaatst van het gebruik van louter relationele data bases voor hoge Beschik baarheid tot NoSQL-data bases. Nu kunnen de toepassingen zelf hun ' hot ' status hebben en gegevens die worden beheerd in hun voor extra prestatie voordelen zonder dat er wordt geofferd dat betrouw baarheid, consistentie of Beschik baarheid.
 
-Wanneer u toepassingen bouwt die bestaan uit micro Services, hebt u normaal gesp roken een combi natie van stateless web-apps (zoals ASP.NET en node. js) die worden aangeroepen op stateless en stateful bedrijfs Services voor de middelste laag. De apps en services worden allemaal geïmplementeerd in hetzelfde Service Fabric cluster via de Service Fabric-implementatie opdrachten. Elk van deze services is onafhankelijk van de schaal, betrouw baarheid en het resource gebruik. Deze onafhankelijkheid verbetert de flexibiliteit en flexibiliteit bij het ontwikkelen en het levenscyclus beheer.
+Wanneer u toepassingen bouwt die bestaan uit micro Services, hebt u normaal gesp roken een combi natie van stateless web-apps (zoals ASP.NET en Node.js) die worden aangeroepen op stateless en stateful bedrijfs Services voor de middelste laag. De apps en services worden allemaal geïmplementeerd in hetzelfde Service Fabric cluster via de Service Fabric-implementatie opdrachten. Elk van deze services is onafhankelijk van de schaal, betrouw baarheid en het resource gebruik. Deze onafhankelijkheid verbetert de flexibiliteit en flexibiliteit bij het ontwikkelen en het levenscyclus beheer.
 
 Stateful micro Services is van toepassing op toepassings ontwerpen omdat ze de nood zaak van de extra wacht rijen en caches die traditioneel zijn vereist voor het oplossen van de vereisten voor Beschik baarheid en latentie van louter stateless toepassingen, verwijderen. Omdat stateful Services hoge Beschik baarheid en lage latentie hebben, zijn er minder details die in uw toepassing kunnen worden beheerd.
 
 In de volgende diagrammen ziet u de verschillen tussen het ontwerpen van een toepassing die staatloos is en die de statussen heeft. Door gebruik te maken van de [reliable Services](service-fabric-reliable-services-introduction.md) -en [reliable actors](service-fabric-reliable-actors-introduction.md) -programmeer modellen, kunnen stateful Services de complexiteit van de toepassing beperken tijdens hoge door Voer en lage latentie.
 
-Hier volgt een voor beeld van een toepassing die stateless Services ![gebruikt: toepassing die stateless Services gebruikt.][Image1]
+Hier volgt een voor beeld van een toepassing die stateless Services gebruikt: ![ toepassing die stateless Services gebruikt.][Image1]
 
-Hier volgt een voorbeeld toepassing die gebruikmaakt van stateful Services: ![de toepassing die gebruikmaakt van stateful Services][Image2]
+Hier volgt een voorbeeld toepassing die gebruikmaakt van stateful Services: ![ de toepassing die gebruikmaakt van stateful Services][Image2]
 
 ## <a name="next-steps"></a>Volgende stappen
 

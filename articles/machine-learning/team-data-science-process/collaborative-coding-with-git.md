@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721894"
 ---
 # <a name="collaborative-coding-with-git"></a>Samenwerken aan code met Git
@@ -39,7 +38,7 @@ U kunt ook een nieuwe vertakking maken met behulp van de volgende Git Bash-opdra
 git checkout -b <new branch name> <base branch name>
 
 ```
-Als u geen naam van \<een basis vertakking opgeeft>, is de nieuwe vertakking gebaseerd `master`op. 
+Als u geen opgeeft \<base branch name> , wordt de nieuwe vertakking gebaseerd op `master` . 
 
 Als u wilt overschakelen naar uw werk vertakking, voert u de volgende opdracht uit: 
 
@@ -61,7 +60,7 @@ U kunt ook een werk item aan een bestaande vertakking koppelen. Selecteer **kopp
 
 ## <a name="work-on-the-branch-and-commit-changes"></a><a name='WorkonaBranchandCommittheChanges-2'></a>Werken aan de vertakking en wijzigingen door voeren 
 
-Nadat u een wijziging hebt aangebracht voor uw werk item, zoals het toevoegen van een R-script bestand aan de `script` vertakking van uw lokale computer, kunt u de wijziging door voeren van uw lokale vertakking in de upstream-werk vertakking met behulp van de volgende Git-Bash-opdrachten:
+Nadat u een wijziging hebt aangebracht voor uw werk item, zoals het toevoegen van een R-script bestand aan de vertakking van uw lokale computer `script` , kunt u de wijziging door voeren van uw lokale vertakking in de upstream-werk vertakking met behulp van de volgende Git-Bash-opdrachten:
 
 ```bash
 git status
@@ -76,7 +75,7 @@ git push origin script
 
 Wanneer u klaar bent voor het samen voegen van uw huidige werk vertakking in de basis vertakking van een of meer door voeringen en pushes, kunt u een *pull-aanvraag* maken en verzenden in azure opslag plaatsen. 
 
-Ga op de hoofd pagina van uw Azure DevOps-project naar **opslag plaatsen** > **pull-aanvragen** in het linkernavigatievenster. Selecteer vervolgens een van de knoppen van de **nieuwe pull-aanvraag** of de koppeling **een pull-aanvraag maken** .
+Ga op de hoofd pagina van uw Azure DevOps-project naar **opslag plaatsen**  >  **pull-aanvragen** in het linkernavigatievenster. Selecteer vervolgens een van de knoppen van de **nieuwe pull-aanvraag** of de koppeling **een pull-aanvraag maken** .
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 

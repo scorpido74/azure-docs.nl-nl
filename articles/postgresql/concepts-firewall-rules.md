@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: 5d462be1caa3787cb7ff9a455be595ec5784eefe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76157267"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Firewall regels in Azure Database for PostgreSQL-één server
@@ -29,7 +28,7 @@ Verbindings pogingen via internet en Azure moeten eerst door de firewall worden 
 Firewall regels op server niveau zijn van toepassing op alle data bases op dezelfde Azure Database for PostgreSQL server. Als het IP-adres van de aanvraag binnen een van de bereiken ligt die zijn opgegeven in de firewallregels op serverniveau, wordt de verbinding toegestaan.
 Als het IP-adres van de aanvraag niet binnen de bereiken valt die zijn opgegeven in een van de firewall regels op server niveau, mislukt de verbindings aanvraag.
 Als uw toepassing bijvoorbeeld verbinding maakt met het JDBC-stuur programma voor PostgreSQL, kan deze fout optreden wanneer de firewall de verbinding blokkeert.
-> Java. util. gelijktijdige. ExecutionException: Java. lang. RuntimeException: org. postgresql. util. PSQLException: fataal: No PG\_HBA. conf entry for host "123.45.67.890", User "adminuser", data base "postgresql", SSL
+> java.util.concurrent.ExecutionException: Java. lang. RuntimeException: org. postgresql. util. PSQLException: fataal: geen PG \_ HBA. conf entry for host "123.45.67.890", User "adminuser", data base "postgresql", SSL
 
 ## <a name="connecting-from-azure"></a>Verbinding maken vanuit Azure
 Het is raadzaam om het uitgaande IP-adres van een toepassing of service te vinden en expliciet toegang tot die afzonderlijke IP-adressen of bereiken toe te staan. U kunt bijvoorbeeld het uitgaande IP-adres van een Azure App Service vinden of een open bare IP gebruiken dat is gekoppeld aan een virtuele machine of een andere bron (zie hieronder voor informatie over het maken van een verbinding met de privé-IP van een virtuele machine via service-eind punten). 
@@ -57,7 +56,7 @@ Houd rekening met de volgende punten wanneer de toegang tot de Microsoft Azure-D
 * **De aanmelding is niet geautoriseerd of er is een onjuist wacht woord gebruikt:** Als een aanmelding geen machtigingen heeft op de Azure Database for PostgreSQL server of het gebruikte wacht woord onjuist is, wordt de verbinding met de Azure Database for PostgreSQL-server geweigerd. Het maken van een firewall instelling biedt clients alleen de mogelijkheid om verbinding te maken met uw server. elke client moet nog steeds de benodigde beveiligings referenties opgeven.
 
    Als u bijvoorbeeld een JDBC-client gebruikt, kan de volgende fout worden weer gegeven.
-   > Java. util. gelijktijdige. ExecutionException: Java. lang. RuntimeException: org. postgresql. util. PSQLException: fataal: wachtwoord verificatie mislukt voor gebruiker ' yourusername '
+   > java.util.concurrent.ExecutionException: Java. lang. RuntimeException: org. postgresql. util. PSQLException: fataal: wachtwoord verificatie is mislukt voor gebruiker ' yourusername '
 
 * **Dynamisch IP-adres:** als u een internetverbinding hebt met dynamische IP-adressering en problemen ondervindt bij het passeren van de firewall, kunt u een van de volgende oplossingen proberen:
 
@@ -65,7 +64,7 @@ Houd rekening met de volgende punten wanneer de toegang tot de Microsoft Azure-D
 
    * Neem in plaats daarvan statische IP-adressen op voor uw client computers en voeg vervolgens het statische IP-adres toe als een firewall regel.
 
-* **Het IP-adres van de server lijkt openbaar te zijn:** Verbindingen met de Azure Database for PostgreSQL-server worden doorgestuurd via een openbaar toegankelijke Azure-gateway. Het daadwerkelijke IP-adres van de server wordt echter beschermd door de firewall. Ga naar het artikel over de [connectiviteits architectuur](concepts-connectivity-architecture.md)voor meer informatie. 
+* **Het IP-adres van de server lijkt openbaar te zijn:** Verbindingen met de Azure Database for PostgreSQL-server worden doorgestuurd via een openbaar toegankelijke Azure-gateway. Het daadwerkelijke IP-adres van de server wordt echter beschermd door de firewall. Raadpleeg het artikel [over de connectiviteitsarchitectuur](concepts-connectivity-architecture.md) voor meer informatie. 
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie voor artikelen over het maken van firewall regels op server niveau en op database niveau:

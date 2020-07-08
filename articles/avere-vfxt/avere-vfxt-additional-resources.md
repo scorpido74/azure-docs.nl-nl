@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 78e0500057baf407f1d26afe29d9df1e525cbf3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76153765"
 ---
 # <a name="additional-documentation"></a>Aanvullende documentatie
@@ -19,7 +18,7 @@ Dit artikel bevat koppelingen naar aanvullende documentatie over de beheer inter
 
 ## <a name="avere-cluster-documentation"></a>Documentatie voor avere-cluster
 
-Meer documentatie over avere-clusters vindt u op de website <https://azure.github.io/Avere/>op. Deze documenten kunnen u helpen inzicht te krijgen in de mogelijkheden van het cluster en het configureren van de instellingen.
+Meer documentatie over avere-clusters vindt u op de website op <https://azure.github.io/Avere/> . Deze documenten kunnen u helpen inzicht te krijgen in de mogelijkheden van het cluster en het configureren van de instellingen.
 
 * De [FXT-hand leiding](<https://azure.github.io/Avere/#fxt_cluster>) voor het maken van clusters is ontworpen voor clusters die bestaan uit fysieke hardwareconfiguraties, maar sommige informatie in het document is ook relevant voor vFXT-clusters. Met name nieuwe vFXT-cluster beheerders kunnen de volgende secties profiteren:
   * Door de [instellingen voor ondersteuning en controle](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_support.html#config-support>) aan te passen wordt uitgelegd hoe u de instellingen voor het uploaden van ondersteuning kunt aanpassen en externe bewaking kunt inschakelen

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
 ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76511141"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Modbus TCP-apparaten verbinden via een IoT Edge apparaat-gateway
@@ -33,7 +32,7 @@ In dit artikel wordt ervan uitgegaan dat u het Modbus-protocol TCP gebruikt. Voo
 
 ## <a name="prepare-a-modbus-container"></a>Een Modbus-container voorbereiden
 
-Als u de functionaliteit van de Modbus-gateway wilt testen, heeft Microsoft een voorbeeldmodule die u kunt gebruiken. U kunt de module openen vanuit Azure Marketplace, [Modbus](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview)of met de afbeeldings- `mcr.microsoft.com/azureiotedge/modbus:1.0`URI.
+Als u de functionaliteit van de Modbus-gateway wilt testen, heeft Microsoft een voorbeeldmodule die u kunt gebruiken. U kunt de module openen vanuit Azure Marketplace, [Modbus](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview)of met de afbeeldings-URI `mcr.microsoft.com/azureiotedge/modbus:1.0` .
 
 Als u uw eigen module wilt maken en deze wilt aanpassen voor uw omgeving, is er een open-source [Azure IOT Edge Modbus-module](https://github.com/Azure/iot-edge-modbus) project op github. Volg de instructies in dit project om uw eigen containerinstallatiekopie te maken. Als u een container installatie kopie wilt maken, raadpleegt u [C#-modules ontwikkelen in Visual Studio](how-to-visual-studio-develop-csharp-module.md) of [modules ontwikkelen in Visual Studio code](how-to-vs-code-develop-module.md). Deze artikelen bevatten instructies voor het maken van nieuwe modules en het publiceren van container installatie kopieën in een REGI ster.
 
@@ -51,10 +50,10 @@ In deze sectie wordt uitgelegd hoe u de voor beeld-Modbus-module van micro soft 
 
    1. Klik op de vervolg keuzelijst **toevoegen** en selecteer **Marketplace-module**.
    2. Zoek `Modbus` en selecteer de **Modbus TCP-module** van micro soft.
-   3. De module wordt automatisch geconfigureerd voor uw IoT Hub en wordt weer gegeven in de lijst met IoT Edge modules. De routes worden ook automatisch geconfigureerd. Selecteer **controleren + maken**.
+   3. De module wordt automatisch geconfigureerd voor uw IoT Hub en wordt weer gegeven in de lijst met IoT Edge modules. De routes worden ook automatisch geconfigureerd. Selecteer **Controleren + maken**.
    4. Controleer het implementatie manifest en selecteer **maken**.
 
-5. Selecteer de module Modbus, `ModbusTCPModule`in de lijst en selecteer het tabblad **module dubbele instellingen** . De vereiste JSON voor de module dubbele gewenste eigenschappen wordt automatisch ingevuld.
+5. Selecteer de module Modbus, `ModbusTCPModule` in de lijst en selecteer het tabblad **module dubbele instellingen** . De vereiste JSON voor de module dubbele gewenste eigenschappen wordt automatisch ingevuld.
 
 6. Zoek naar de eigenschap **SlaveConnection** in de JSON en stel de waarde ervan in op het IPv4-adres van uw Modbus-apparaat.
 

@@ -17,10 +17,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2886b842aab81732beec0fdd7957aab8e2b4f5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76548863"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect-synchronisatie: inzicht in de standaardconfiguratie
@@ -70,7 +69,7 @@ De volgende kenmerk regels zijn van toepassing:
   1. Kenmerken met betrekking tot aanmelden (bijvoorbeeld userPrincipalName) zijn bijgedragen vanuit het forest met een ingeschakeld account.
   2. Kenmerken die kunnen worden gevonden in een Exchange-GAL (algemene adres lijst), zijn bijgedragen vanuit het forest met een Exchange-postvak.
   3. Als er geen postvak kan worden gevonden, kunnen deze kenmerken afkomstig zijn uit elk forest.
-  4. Aan Exchange gerelateerde kenmerken (technische kenmerken die niet zichtbaar zijn in de GAL) zijn van de `mailNickname ISNOTNULL`forest bijgebracht.
+  4. Aan Exchange gerelateerde kenmerken (technische kenmerken die niet zichtbaar zijn in de GAL) zijn van de forest bijgebracht `mailNickname ISNOTNULL` .
   5. Als er meerdere forests aan een van deze regels voldoen, wordt de aanmaak volgorde (datum/tijd) van de connectors (forests) gebruikt om te bepalen welk forest de kenmerken bijdraagt. Het eerste forest dat is verbonden, is het eerste forest dat wordt gesynchroniseerd. 
 
 ### <a name="contact-out-of-box-rules"></a>Contact opnemen met out-of-Box-regels
@@ -79,8 +78,8 @@ Een contact object moet voldoen aan het volgende om te worden gesynchroniseerd:
 * De contact persoon moet zijn ingeschakeld voor e-mail. Deze wordt gecontroleerd met de volgende regels:
   * `IsPresent([proxyAddresses]) = True)`. Het kenmerk proxyAddresses moet worden ingevuld.
   * U vindt een primair e-mail adres in het kenmerk proxyAddresses of het kenmerk mail. De aanwezigheid van een \@ wordt gebruikt om te controleren of de inhoud een e-mail adres is. Een van deze twee regels moet worden geëvalueerd als waar.
-    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`. Is er een vermelding met ' SMTP: ' en als dat het geval is, \@ kan deze in de teken reeks worden gevonden?
-    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`. Is het e-mail kenmerk ingevuld en als dit zo is, \@ kan het worden gevonden in de teken reeks?
+    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`. Is er een vermelding met ' SMTP: ' en als dat het geval is, kan \@ deze in de teken reeks worden gevonden?
+    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`. Is het e-mail kenmerk ingevuld en als dit zo is, kan \@ het worden gevonden in de teken reeks?
 
 De volgende contact objecten zijn **niet** gesynchroniseerd met Azure AD:
 
@@ -106,7 +105,7 @@ De volgende groeps objecten zijn **niet** gesynchroniseerd met Azure AD:
 * `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. Synchroniseer geen objecten voor het slacht offer van de replicatie.
 
 ### <a name="foreignsecurityprincipal-out-of-box-rules"></a>ForeignSecurityPrincipal out-of-Box-regels
-FSPs worden toegevoegd aan het object any (\*) in de tekst. In werkelijkheid gebeurt deze samen voeging alleen voor gebruikers en beveiligings groepen. Deze configuratie zorgt ervoor dat meerdere forest-lidmaatschappen worden opgelost en correct worden weer gegeven in azure AD.
+FSPs worden toegevoegd aan het object any ( \* ) in de tekst. In werkelijkheid gebeurt deze samen voeging alleen voor gebruikers en beveiligings groepen. Deze configuratie zorgt ervoor dat meerdere forest-lidmaatschappen worden opgelost en correct worden weer gegeven in azure AD.
 
 ### <a name="computer-out-of-box-rules"></a>Out-of-Box-regels voor computer
 Een computer object moet voldoen aan het volgende om te worden gesynchroniseerd:
@@ -148,7 +147,7 @@ Omdat deze regel een out-of-Box-regel is, wordt er een waarschuwing weer gegeven
 
 Een synchronisatie regel heeft vier configuratie secties: beschrijving, bereik filter, regels voor samen voegen en trans formaties.
 
-#### <a name="description"></a>Beschrijving
+#### <a name="description"></a>Description
 De eerste sectie bevat basis informatie, zoals een naam en beschrijving.
 
 ![Tabblad Beschrijving in de editor voor synchronisatie regels](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
@@ -162,7 +161,7 @@ De sectie Filter bereik wordt gebruikt om te configureren wanneer een synchronis
 
 ![Het tabblad bereik in de editor voor synchronisatie regels](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
-Het filter bereik heeft groepen en componenten die kunnen worden genest. Voor alle componenten in een groep moet worden voldaan aan een synchronisatie regel die moet worden toegepast. Wanneer er meerdere groepen zijn gedefinieerd, moet aan ten minste één groep worden voldaan om de regel toe te passen. Dat wil zeggen, een logische of wordt geëvalueerd tussen groepen en een logische en wordt geëvalueerd in een groep. Een voor beeld van deze configuratie vindt u in de regel voor uitgaande synchronisatie **naar Aad-Group-koppeling**. Er zijn verschillende synchronisatie filter groepen, bijvoorbeeld één voor beveiligings groepen (`securityEnabled EQUAL True`) en één voor distributie groepen (`securityEnabled EQUAL False`).
+Het filter bereik heeft groepen en componenten die kunnen worden genest. Voor alle componenten in een groep moet worden voldaan aan een synchronisatie regel die moet worden toegepast. Wanneer er meerdere groepen zijn gedefinieerd, moet aan ten minste één groep worden voldaan om de regel toe te passen. Dat wil zeggen, een logische of wordt geëvalueerd tussen groepen en een logische en wordt geëvalueerd in een groep. Een voor beeld van deze configuratie vindt u in de regel voor uitgaande synchronisatie **naar Aad-Group-koppeling**. Er zijn verschillende synchronisatie filter groepen, bijvoorbeeld één voor beveiligings groepen ( `securityEnabled EQUAL True` ) en één voor distributie groepen ( `securityEnabled EQUAL False` ).
 
 ![Het tabblad bereik in de editor voor synchronisatie regels](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilterout.png)
 
@@ -220,7 +219,7 @@ De prioriteit van synchronisatie regels wordt ingesteld in groepen door de insta
 ### <a name="putting-it-all-together"></a>Alles samenvoegen
 We weten nu voldoende over synchronisatie regels om te begrijpen hoe de configuratie werkt met de verschillende synchronisatie regels. Als u een gebruiker bekijkt en de kenmerken die aan de tekst zijn bijgedragen, worden de regels in de volgende volg orde toegepast:
 
-| Naam | Opmerking |
+| Name | Opmerking |
 |:--- |:--- |
 | Vanuit AD: gebruiker toevoegen |Regel voor het koppelen van connector ruimte-objecten met een omgekeerd. |
 | In vanuit AD: User account ingeschakeld |Kenmerken die vereist zijn voor aanmelding bij Azure AD en Office 365. We willen deze kenmerken van het ingeschakelde account. |

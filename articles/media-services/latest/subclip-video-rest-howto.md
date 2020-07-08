@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 06/10/2019
 ms.author: juliako
 ms.openlocfilehash: c39aded55fe36cb130459a4f6f119f872b1adbc4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76514320"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>Een video bijsnijden bij het coderen met Media Services-REST
@@ -39,7 +38,7 @@ Voor het uitvoeren van de stappen die in dit onderwerp worden beschreven, moet u
 
 ## <a name="create-a-subclipping-job"></a>Een subknipsel taak maken
 
-1. Selecteer in de Postman-verzameling die u hebt gedownload, **trans formaties en taken** -> **maken taak met subknipsel**.
+1. Selecteer in de Postman-verzameling die u hebt gedownload, **trans formaties en taken**  ->  **maken taak met subknipsel**.
     
     De **put** -aanvraag ziet er als volgt uit:
     

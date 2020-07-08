@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a7aaed519f8f97a9be77a263568aeed5257c16d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76710330"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>De fase van de zakelijke activiteiten van de team data Science process Lifecycle
@@ -24,7 +23,7 @@ In dit artikel vindt u een overzicht van de doel stellingen, taken en producten 
 
    1. **Inzicht in het bedrijf**
    2. **Gegevens verzamelen en begrijpen**
-   3. **Modelleren**
+   3. **Modellen maken**
    4. **Implementatie**
    5. **Aanvaarding van de klant**
 
@@ -74,7 +73,7 @@ Identificeer gegevens bronnen die bekende voor beelden van antwoorden op uw sche
 
 U kunt bijvoorbeeld zien dat de bestaande systemen extra soorten gegevens moeten verzamelen en registreren om het probleem op te lossen en de project doelen te bereiken. In deze situatie wilt u mogelijk zoeken naar externe gegevens bronnen of uw systemen bijwerken om nieuwe gegevens te verzamelen.
 
-## <a name="artifacts"></a>Artefacten
+## <a name="artifacts"></a>Artifacts
 Dit zijn de producten in deze fase:
 
    * [Document voor hand vesting](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): er wordt een standaard sjabloon in de project structuur definitie TDSP gegeven. Het charter document is een woon document. U werkt de sjabloon tijdens het project bij tijdens het maken van nieuwe detecties en het wijzigen van de bedrijfs vereisten. De sleutel is om dit document te herhalen en meer details toe te voegen tijdens de voortgang van het detectie proces. Zorg ervoor dat de klant en de andere betrokkenen betrokken zijn bij het maken van de wijzigingen en de redenen voor de wijzigingen duidelijk kunnen door geven.  
@@ -87,7 +86,7 @@ Hier vindt u koppelingen naar elke stap in de levens cyclus van de TDSP:
 
    1. [Inzicht in het bedrijf](lifecycle-business-understanding.md)
    2. [Gegevens verzamelen en begrijpen](lifecycle-data.md)
-   3. [Modelleren](lifecycle-modeling.md)
+   3. [Modellen maken](lifecycle-modeling.md)
    4. [Implementatie](lifecycle-deployment.md)
    5. [Aanvaarding van de klant](lifecycle-acceptance.md)
 

@@ -9,10 +9,9 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5f5ded3faec3a080022eea70de2cca5d27529c4d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76272095"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>StorSimple Virtual array implementeren-inrichten in VMware
@@ -24,7 +23,7 @@ ms.locfileid: "76272095"
 
 In deze zelf studie wordt beschreven hoe u een virtuele StorSimple-matrix inricht en verbindt op een hostsysteem met VMware ESXi 5,0, 5,5, 6,0 of 6,5. Dit artikel is van toepassing op de implementatie van StorSimple virtuele arrays in Azure Portal en de Microsoft Azure Government Cloud.
 
-U hebt beheerdersmachtigingen nodig voor het inrichten van een virtueel apparaat en om er verbinding mee te maken. De inrichting en de initiële installatie kan ongeveer tien minuten duren.
+U hebt beheerdersmachtigingen nodig voor het inrichten van een virtueel apparaat en om er verbinding mee te maken. De inrichting en de initiële installatie kan circa tien minuten duren.
 
 ## <a name="provisioning-prerequisites"></a>Vereisten inrichten
 De vereisten voor het inrichten van een virtueel apparaat op een hostsysteem met VMware ESXi 5,0, 5,5, 6,0 of 6,5, zijn als volgt.
@@ -39,7 +38,7 @@ Zorg voordat u begint voor het volgende:
 Voordat u een virtueel apparaat implementeert, controleert u of:
 
 * U hebt toegang tot een hostsysteem waarop Hyper-V (2008 R2 of hoger) wordt uitgevoerd en dat kan worden gebruikt om een apparaat in te richten.
-* Het hostsysteem kan de volgende resources volledig toewijzen aan het inrichten van uw virtuele apparaat:
+* Het hostsysteem kan de volgende resources reserveren voor het inrichten van uw virtuele apparaat:
 
   * Minimaal 4 kerngeheugens.
   * Ten minste 8 GB RAM-geheugen. Als u van plan bent de virtuele matrix te configureren als bestands server, ondersteunt 8 GB minder dan 2.000.000 bestanden. U hebt 16 GB RAM nodig om 2-4 miljoen bestanden te ondersteunen.
@@ -75,7 +74,7 @@ Voer de volgende stappen uit voor het inrichten van een virtueel apparaat in de 
 1. Kopieer de installatiekopie van het virtuele apparaat naar uw systeem. U hebt deze virtuele installatie kopie gedownload via de Azure Portal.
 
    1. Zorg ervoor dat u het meest recente afbeeldings bestand hebt gedownload. Als u de afbeelding eerder hebt gedownload, downloadt u deze opnieuw om te controleren of u over de meest recente installatie kopie beschikt. De nieuwste afbeelding heeft twee bestanden (in plaats van één).
-   2. Noteer de locatie waar u de installatiekopie naar hebt gekopieerd, want u gaat deze installatiekopie verderop in de procedure gebruiken.
+   2. Noteer de locatie waar u de installatiekopie naartoe hebt gekopieerd, want u hebt deze installatiekopie verderop in de procedure nodig.
 
 2. Meld u aan bij de ESXi-server met behulp van de vSphere-client. U moet beheerdersbevoegdheden hebben om een virtuele machine te kunnen maken.
 
@@ -101,7 +100,7 @@ Voer de volgende stappen uit voor het inrichten van een virtueel apparaat in de 
 9. De nieuwe map wordt weergegeven in het linkerdeelvenster van de **gegevensopslagbrowser**.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image9.png)
-10. Klik op het pictogram ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png) uploaden en selecteer **bestand uploaden**.
+10. Klik op het pictogram uploaden ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png) en selecteer **bestand uploaden**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image11.png)
 11. Blader en wijs naar de VMDK-bestanden die u hebt gedownload. Er zijn twee bestanden. Selecteer een bestand dat u wilt uploaden.
@@ -151,7 +150,7 @@ Voer de volgende stappen uit voor het inrichten van een virtueel apparaat in de 
 26. Accepteer de standaard instellingen op de pagina **Geavanceerde opties** en klik op **volgende**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image27.png)
-27. Op de pagina **Gereed om te voltooien** controleert u alle instellingen voor de nieuwe virtuele machine. Controleer **de instellingen voor de virtuele machine voordat u de bewerking hebt voltooid**. Klik op **door gaan**.
+27. Op de pagina **Gereed om te voltooien** controleert u alle instellingen voor de nieuwe virtuele machine. Controleer **de instellingen voor de virtuele machine voordat u de bewerking hebt voltooid**. Klik op **Doorgaan**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image28.png)
 28. Zoek op de pagina **virtual machines eigenschappen** op het tabblad **Hardware** de hardware van het apparaat. Selecteer **nieuwe harde schijf**. Klik op **Add**.
@@ -216,7 +215,7 @@ Voer de volgende stappen uit om uw virtuele apparaat te starten en verbinding te
     `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image44.png)
-9. Nadat de initiële installatie voltooid is en het apparaat is opgestart, ziet u de bannertekst van het apparaat. Noteer het IP-adres en de URL die wordt weergegeven in de bannertekst om het apparaat te beheren. U gebruikt dit IP-adres om verbinding te maken met de Web-UI van uw virtuele apparaat en de lokale installatie en registratie te volt ooien.
+9. Wanneer de initiële installatie is voltooid en het apparaat is opgestart, ziet u de bannertekst van het apparaat. Noteer het IP-adres en de URL die in de bannertekst worden weergegeven om het apparaat te beheren. U gebruikt dit IP-adres om verbinding te maken met de Web-UI van uw virtuele apparaat en de lokale installatie en registratie te volt ooien.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image45.png)
 10. Beschrijving Voer deze stap alleen uit als u uw apparaat in de Government Cloud implementeert. U schakelt nu de FIPS-modus (Verenigde Staten Federal Information Processing Standard) op het apparaat in. De FIPS 140-standaard definieert cryptografische algoritmen die zijn goedgekeurd voor gebruik door Amerikaanse Federal Government-computer systemen voor de beveiliging van gevoelige gegevens.
@@ -231,14 +230,14 @@ Voer de volgende stappen uit om uw virtuele apparaat te starten en verbinding te
        >
        >
 
-Als uw apparaat niet voldoet aan de minimale configuratievereisten, wordt er een fout weergegeven in de bannertekst (zie hieronder). U moet de apparaatconfiguratie wijzigen zodat er voldoende resources zijn om aan de minimale vereisten te voldoen. U kunt het apparaat vervolgens opnieuw opstarten en er verbinding mee maken. Raadpleeg de minimale configuratievereisten in [Stap 1: Controleren of het hostsysteem voldoet aan minimale vereisten voor virtuele apparaten](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements).
+Als uw apparaat niet voldoet aan de minimale configuratievereisten, wordt er een fout weergegeven in de bannertekst (zie hieronder). U moet de apparaatconfiguratie wijzigen zodat er voldoende resources zijn om aan de minimale vereisten te voldoen. Daarna kunt u het apparaat opnieuw opstarten en verbinding maken met het apparaat. Raadpleeg de minimale configuratievereisten in [Stap 1: Controleren of het hostsysteem voldoet aan minimale vereisten voor virtuele apparaten](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements).
 
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image46.png)
 
-Als u tijdens de eerste configuratie een andere fout ondervindt met de lokale webgebruikersinterface, raadpleegt u de volgende werk stromen:
+Als er tijdens de eerste configuratie een andere fout optreedt bij gebruik van de lokale webgebruikersinterface, raadpleegt u de volgende werkstromen:
 
 * Diagnostische tests uitvoeren voor het [oplossen van problemen met de Web-UI-installatie](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors).
-* Een [logboek bestand genereren en logboek bestanden weer geven](storsimple-ova-web-ui-admin.md#generate-a-log-package).
+* [Logboekpakket genereren en logboekbestanden weergeven](storsimple-ova-web-ui-admin.md#generate-a-log-package).
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Stel uw virtuele StorSimple-matrix in als een bestands server](storsimple-virtual-array-deploy3-fs-setup.md)

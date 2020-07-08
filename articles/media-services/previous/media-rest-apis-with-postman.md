@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 11c9c26e7c0f36e1e3dba732e90a6aef95e6ee14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76694987"
 ---
 # <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>Postman configureren voor Media Services v2-REST API-aanroepen  
@@ -37,13 +36,13 @@ Deze omgeving en verzameling wordt in artikelen gebruikt die laten zien hoe u ve
 
 ## <a name="configure-the-environment"></a>De omgeving configureren 
 
-1. Maak een JSON-bestand dat de omgevings variabelen bevat die in AMS-zelf studies worden gebruikt. Noem het bestand (bijvoorbeeld **AzureMediaServices. postman_environment. json**). Open het bestand en plak de code die de Postman-omgeving in de [code vermelding](postman-environment.md)definieert. 
+1. Maak een JSON-bestand dat de omgevings variabelen bevat die in AMS-zelf studies worden gebruikt. Noem het bestand (bijvoorbeeld **AzureMediaServices.postman_environment.jsop**). Open het bestand en plak de code die de Postman-omgeving in de [code vermelding](postman-environment.md)definieert. 
 2. Open de **Postman**.
 3. Selecteer rechts van het scherm de optie **Manage environment**.
 
     ![Bestand uploaden](./media/media-services-rest-upload-files/postman-create-env.png)
 4. Klik in het dialoogvenster **Manage environment** op **Import**.
-5. Blader en selecteer het bestand **AzureMediaServices. postman_environment. json** .
+5. Blader en selecteer de **AzureMediaServices.postman_environment.jsin** het bestand.
 6. De **Media** -omgeving wordt toegevoegd.
 7. Sluit het dialoogvenster.
 8. Selecteer de **Media** -omgeving.
@@ -52,9 +51,9 @@ Deze omgeving en verzameling wordt in artikelen gebruikt die laten zien hoe u ve
 
 ## <a name="configure-the-collection"></a>De collectie configureren
 
-1. Maak een JSON-bestand dat de **postman** -verzameling bevat met alle bewerkingen die nodig zijn om een bestand te uploaden naar Media Services. Noem het bestand (bijvoorbeeld **AzureMediaServicesOperations. postman_collection. json**). Open het bestand en plak de code die de **postman** -verzameling definieert vanuit [deze code lijst](postman-collection.md).
+1. Maak een JSON-bestand dat de **postman** -verzameling bevat met alle bewerkingen die nodig zijn om een bestand te uploaden naar Media Services. Noem het bestand (bijvoorbeeld **AzureMediaServicesOperations.postman_collection.jsop**). Open het bestand en plak de code die de **postman** -verzameling definieert vanuit [deze code lijst](postman-collection.md).
 2. Klik op **Import** om het verzamelingbestand te importeren.
-3. Kies het bestand **AzureMediaServicesOperations. postman_collection. json** .
+3. Kies de **AzureMediaServicesOperations.postman_collection.jsin** het bestand.
 
     ![Bestand uploaden](./media/media-services-rest-upload-files/postman-import-collection.png)
 

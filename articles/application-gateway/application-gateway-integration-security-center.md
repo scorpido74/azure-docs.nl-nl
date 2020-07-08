@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
 ms.openlocfilehash: f5ecd2334ca80f5561c0611239b5bb00d222112a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76277195"
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Overzicht van de integratie tussen Application Gateway en Azure Security Center
@@ -30,7 +29,7 @@ Als u op aanbevelingen met betrekking tot Web Application Firewall klikt, wordt 
 
 ## <a name="add-a-web-application-firewall-to-an-existing-resource"></a>Een Web Application Firewall toevoegen aan een bestaande resource
 
-Ga naar **alle services** > **beveiliging en identiteit** > **Security Center** en op **Security Center-overzicht**en klik op **toepassingen**. In **Security Center-toepassingen**bevat de tabel een lijst met toepassingen die Security Center gedetecteerd in uw abonnement.
+Ga naar **alle services**  >  **beveiliging en identiteit**  >  **Security Center** en op **Security Center-overzicht**en klik op **toepassingen**. In **Security Center-toepassingen**bevat de tabel een lijst met toepassingen die Security Center gedetecteerd in uw abonnement.
 
 ![webtoepassingen][3]
 
@@ -50,7 +49,7 @@ Als u een webtoepassing toevoegt aan een toepassings gateway via Security Center
 
 ## <a name="add-a-resource-to-an-existing-web-application-firewall"></a>Een resource toevoegen aan een bestaande Web Application Firewall
 
-Ga naar **alle services** > **beveiliging en identiteit** > **Security Center** en klik op **Security Center-overzicht**op **partner oplossingen**. Bestaande Security Center-compatibele toepassings gateways worden weer gegeven op de pagina **partner oplossingen** .
+Ga naar **alle services**  >  **beveiliging en identiteit**  >  **Security Center** en klik op **Security Center-overzicht**op **partner oplossingen**. Bestaande Security Center-compatibele toepassings gateways worden weer gegeven op de pagina **partner oplossingen** .
 
 ![partner oplossingen][7]
 
@@ -66,7 +65,7 @@ Security Center houdt toepassingen bij die zijn toegevoegd aan een toepassings g
 
 ## <a name="security-alerts"></a>Beveiligings waarschuwingen
 
-In Security Center navigeert u naar**beveiligings waarschuwingen**voor **detectie** > .  Hier vindt u WAF-waarschuwingen voor uw toepassings gateways. Waarschuwingen worden opgesplitst op WAF regel.
+In Security Center navigeert **DETECTION**u naar  >  **beveiligings waarschuwingen**voor detectie.  Hier vindt u WAF-waarschuwingen voor uw toepassings gateways. Waarschuwingen worden opgesplitst op WAF regel.
 
 ![beveiligings waarschuwingen][8]
 

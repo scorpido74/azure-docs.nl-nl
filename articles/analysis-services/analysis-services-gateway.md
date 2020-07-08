@@ -8,10 +8,9 @@ ms.date: 01/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 648646b6f973762245c344cd2629a874a219b170
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76310149"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Verbinding maken met on-premises gegevens bronnen met on-premises gegevens gateway
@@ -32,10 +31,10 @@ Voor Azure Analysis Services is het voorbereiden van de installatie met de gatew
 
 
 
-## <a name="how-it-works"></a><a name="how-it-works"> </a>Hoe werkt het?
+## <a name="how-it-works"></a><a name="how-it-works"> </a>Uitleg
 De gateway die u op een computer in uw organisatie installeert, wordt uitgevoerd als een Windows-service, **on-premises gegevens gateway**. Deze lokale service is geregistreerd bij de Gateway-cloudservice via Azure Service Bus. Vervolgens maakt u een on-premises gegevens gateway resource voor uw Azure-abonnement. Uw Azure Analysis Services-servers worden vervolgens verbonden met uw Azure gateway-resource. Wanneer modellen op uw server verbinding moeten maken met uw on-premises gegevens bronnen voor query's of verwerking, passeren een query en gegevens stroom de gateway resource, Azure Service Bus, de lokale on-premises gegevens Gateway Service en uw gegevens bronnen. 
 
-![Hoe werkt het?](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
+![Uitleg](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
 
 Query's en gegevensstroom:
 
@@ -46,7 +45,7 @@ Query's en gegevensstroom:
 5. De gateway stuurt de query voor uitvoering naar de gegevensbron.
 6. De resultaten worden vanuit de gegevensbron teruggezonden naar de gateway en vervolgens naar de cloudservice en uw server.
 
-## <a name="installing"></a>Installeren
+## <a name="installing"></a>Wordt geïnstalleerd
 
 Wanneer u voor een Azure Analysis Services omgeving installeert, is het belang rijk dat u de stappen volgt die worden beschreven in de [on-premises gegevens gateway installeren en configureren voor Azure Analysis Services](analysis-services-gateway-install.md). Dit artikel is specifiek voor Azure Analysis Services. Het bevat aanvullende stappen die vereist zijn voor het instellen van een on-premises gegevens gateway resource in Azure en het verbinden van uw Azure Analysis Services-server met de resource.
 
@@ -58,7 +57,7 @@ Mogelijk moet u IP-adressen voor uw gegevens regio in uw firewall toevoegen. U k
 
 Hieronder vindt u een volledig gekwalificeerde domein naam die wordt gebruikt door de gateway.
 
-| Domeinnamen | Uitgaande poorten | Beschrijving |
+| Domeinnamen | Uitgaande poorten | Description |
 | --- | --- | --- |
 | *.powerbi.com |80 |HTTP wordt gebruikt om het installatiebestand te downloaden. |
 | *.powerbi.com |443 |HTTPS |
@@ -75,7 +74,7 @@ Hieronder vindt u een volledig gekwalificeerde domein naam die wordt gebruikt do
 
 ### <a name="forcing-https-communication-with-azure-service-bus"></a><a name="force-https"></a>HTTPS-communicatie met Azure Service Bus afdwingen
 
-U kunt afdwingen dat de gateway communiceert met Azure Service Bus door gebruik te maken van HTTPS in plaats van direct TCP; Dit kan echter de prestaties aanzienlijk verminderen. U kunt het bestand *Microsoft. PowerBI. DataMovement. pipeline. GatewayCore. dll. config* wijzigen door de waarde te wijzigen `AutoDetect` van `Https`in. Dit bestand bevindt zich doorgaans in *C:\Program Files\On-premises data gateway*.
+U kunt afdwingen dat de gateway communiceert met Azure Service Bus door gebruik te maken van HTTPS in plaats van direct TCP; Dit kan echter de prestaties aanzienlijk verminderen. U kunt het *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* bestand wijzigen door de waarde te wijzigen van `AutoDetect` in `Https` . Dit bestand bevindt zich doorgaans in *C:\Program Files\On-premises data gateway*.
 
 ```
 <setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">
@@ -87,7 +86,7 @@ U kunt afdwingen dat de gateway communiceert met Azure Service Bus door gebruik 
 
 De volgende artikelen zijn opgenomen in de on-premises gegevens gateway algemene inhoud die van toepassing is op alle services die door de gateway worden ondersteund:
 
-* [FAQ voor on-premises gegevensgateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)   
+* [Veelgestelde vragen over on-premises gegevensgateways](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)   
 * [Gebruik de on-premises gegevensgateway-app](https://docs.microsoft.com/data-integration/gateway/service-gateway-app)   
 * [Beheer op tenantniveau](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)
 * [Proxy-instellingen configureren](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)   

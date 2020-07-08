@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
 ms.openlocfilehash: a21b8f2fea7433e9f65fd790321a28ea47a38c79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76544715"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef VM-extensie voor Linux en Windows
@@ -36,7 +35,7 @@ De chef-VM-extensie vereist dat de virtuele doel machine is verbonden met intern
 
 ## <a name="extension-schema"></a>Extensieschema
 
-In de volgende JSON wordt het schema voor de VM-extensie chef weer gegeven. Voor de uitbrei ding zijn mini maal de URL van de chef-server, de naam van de validatie-client en de validatie sleutel voor de chef-server vereist. deze waarden zijn te vinden in het `knife.rb` bestand in Starter-Kit. zip dat wordt gedownload wanneer u [chef Automatiseer](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) of een zelfstandige chef- [Server](https://downloads.chef.io/chef-server)installeert. Omdat de validatie sleutel moet worden behandeld als gevoelige gegevens, moet deze worden geconfigureerd onder het **protectedSettings** -element, wat inhoudt dat deze alleen wordt ontsleuteld op de virtuele doel machine.
+In de volgende JSON wordt het schema voor de VM-extensie chef weer gegeven. Voor de uitbrei ding zijn mini maal de URL van de chef-server, de naam van de validatie-client en de validatie sleutel voor de chef-server vereist. deze waarden zijn te vinden in het `knife.rb` bestand in de starter-kit.zip dat wordt gedownload wanneer u [chef Automatiseer](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) of een zelfstandige [chef-server](https://downloads.chef.io/chef-server)installeert. Omdat de validatie sleutel moet worden behandeld als gevoelige gegevens, moet deze worden geconfigureerd onder het **protectedSettings** -element, wat inhoudt dat deze alleen wordt ontsleuteld op de virtuele doel machine.
 
 ```json
 {
@@ -67,16 +66,16 @@ In de volgende JSON wordt het schema voor de VM-extensie chef weer gegeven. Voor
 
 ### <a name="core-property-values"></a>Kern eigenschaps waarden
 
-| Naam | Waarde/voor beeld | Gegevenstype
+| Name | Waarde/voor beeld | Gegevenstype
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | teken reeks (datum) |
-| uitgever | `Chef.Bootstrap.WindowsAzure` | tekenreeks |
+| publisher | `Chef.Bootstrap.WindowsAzure` | tekenreeks |
 | type | `LinuxChefClient`(Linux), `ChefClient` (Windows) | tekenreeks |
 | typeHandlerVersion | `1210.13` | teken reeks (dubbel) |
 
 ### <a name="settings"></a>Instellingen
 
-| Naam | Waarde/voor beeld | Gegevenstype | Vereist?
+| Name | Waarde/voor beeld | Gegevenstype | Vereist?
 | ---- | ---- | ---- | ----
 | instellingen/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | teken reeks (URL) | J |
 | instellingen/bootstrap_options/validation_client_name | `myorg-validator` | tekenreeks | J |
@@ -84,7 +83,7 @@ In de volgende JSON wordt het schema voor de VM-extensie chef weer gegeven. Voor
 
 ### <a name="protected-settings"></a>Beveiligde instellingen
 
-| Naam | Voorbeeld | Gegevenstype | Vereist?
+| Name | Voorbeeld | Gegevenstype | Vereist?
 | ---- | ---- | ---- | ---- |
 | protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | tekenreeks | J |
 

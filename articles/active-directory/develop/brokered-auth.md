@@ -14,10 +14,9 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
 ms.openlocfilehash: a734589178438fd65d9a2d156fd91fc82807f578
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76697894"
 ---
 # <a name="brokered-authentication-in-android"></a>Brokered-verificatie in Android
@@ -56,9 +55,9 @@ Als op een apparaat nog geen Broker-app is geïnstalleerd, geeft MSAL de gebruik
 
 ### <a name="when-a-broker-is-installed"></a>Wanneer een Broker is geïnstalleerd
 
-Wanneer een Broker op een apparaat is geïnstalleerd, worden alle volgende interactieve token aanvragen (aanroepen naar `acquireToken()`) afgehandeld door de broker in plaats van lokaal door MSAL. Elke SSO-status die eerder beschikbaar is voor MSAL, is niet beschikbaar voor de Broker. Als gevolg hiervan moet de gebruiker zich opnieuw verifiëren of een account selecteren uit de bestaande lijst met accounts die bekend zijn bij het apparaat.
+Wanneer een Broker op een apparaat is geïnstalleerd, worden alle volgende interactieve token aanvragen (aanroepen naar `acquireToken()` ) afgehandeld door de broker in plaats van lokaal door MSAL. Elke SSO-status die eerder beschikbaar is voor MSAL, is niet beschikbaar voor de Broker. Als gevolg hiervan moet de gebruiker zich opnieuw verifiëren of een account selecteren uit de bestaande lijst met accounts die bekend zijn bij het apparaat.
 
-Als u een Broker installeert, hoeft de gebruiker zich niet opnieuw aan te melden. Alleen als de gebruiker een `MsalUiRequiredException` moet omzetten, gaat de volgende aanvraag naar de Broker. `MsalUiRequiredException`wordt om een aantal redenen gegenereerd en moet interactief worden opgelost. Dit zijn enkele veelvoorkomende redenen:
+Als u een Broker installeert, hoeft de gebruiker zich niet opnieuw aan te melden. Alleen als de gebruiker een moet omzetten `MsalUiRequiredException` , gaat de volgende aanvraag naar de Broker. `MsalUiRequiredException`wordt om een aantal redenen gegenereerd en moet interactief worden opgelost. Dit zijn enkele veelvoorkomende redenen:
 
 - De gebruiker heeft het wacht woord gewijzigd dat is gekoppeld aan het account.
 - Het account van de gebruiker voldoet niet meer aan het beleid voor voorwaardelijke toegang.
@@ -116,9 +115,9 @@ MSAL communiceert met de Broker op twee manieren:
 - Broker gebonden service
 - Android-AccountManager
 
-MSAL maakt eerst gebruik van de Broker gebonden service omdat het aanroepen van deze service geen Android-machtigingen vereist. Als binding met de gebonden service mislukt, gebruikt MSAL de Android AccountManager-API. MSAL doet dit alleen als de `"READ_CONTACTS"` machtiging al is toegekend aan uw app.
+MSAL maakt eerst gebruik van de Broker gebonden service omdat het aanroepen van deze service geen Android-machtigingen vereist. Als binding met de gebonden service mislukt, gebruikt MSAL de Android AccountManager-API. MSAL doet dit alleen als de machtiging al is toegekend aan uw app `"READ_CONTACTS"` .
 
-Als er een met `MsalClientException` de fout code `"BROKER_BIND_FAILURE"`wordt weer geven, zijn er twee opties:
+Als er een met de fout code wordt weer geven `MsalClientException` `"BROKER_BIND_FAILURE"` , zijn er twee opties:
 
 - Vraag de gebruiker om energie optimalisatie uit te scha kelen voor de Microsoft Authenticator-app en de Intune-bedrijfsportal.
-- De gebruiker vragen om de `"READ_CONTACTS"` machtiging te verlenen
+- De gebruiker vragen om de machtiging te verlenen `"READ_CONTACTS"`

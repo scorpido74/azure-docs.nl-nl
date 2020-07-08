@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 68535f70507e7a81d217f4148314a3d76ec832ea
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68727203"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Azure Information System-onderdelen en-grenzen
@@ -47,7 +46,7 @@ Het Data Center is onderverdeeld in clusters. Clusters isoleren fouten op het ni
 
 ### <a name="hardware-inventory"></a>Hardware-inventaris
 
-De FC bereidt een inventaris van de hardware-en netwerk apparaten van Azure voor tijdens het Boots trap configuratie proces. Nieuwe hardware en netwerk onderdelen die de Azure-productie omgeving invoeren, moeten het Boots trap configuratie proces volgen. De FC is verantwoordelijk voor het beheren van de volledige inventaris die wordt vermeld in het configuratie bestand Data Center. XML.
+De FC bereidt een inventaris van de hardware-en netwerk apparaten van Azure voor tijdens het Boots trap configuratie proces. Nieuwe hardware en netwerk onderdelen die de Azure-productie omgeving invoeren, moeten het Boots trap configuratie proces volgen. De FC is verantwoordelijk voor het beheren van de volledige inventaris die wordt vermeld in het datacenter.xml-configuratie bestand.
 
 ### <a name="fc-managed-operating-system-images"></a>FC-beheerde installatie kopieën van besturings systemen
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: e8077068a265d659cf6009eb7762188637c373d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721656"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Aangepaste velden toewijzen aan Event Grid-schema
@@ -47,9 +46,9 @@ Wanneer u een aangepast onderwerp maakt, geeft u op hoe velden van de oorspronke
 
 * De waarde van het **invoer schema** geeft u het type schema op. De beschik bare opties zijn CloudEvents schema, aangepast gebeurtenis schema of Event Grid schema. De standaard waarde is Event Grid schema. Gebruik aangepast gebeurtenis schema bij het maken van een aangepaste toewijzing tussen uw schema en het event grid-schema. Wanneer gebeurtenissen zich in het CloudEvents-schema bevinden, gebruikt u het Cloudevents-schema.
 
-* De eigenschap **standaard waarden toewijzen** geeft standaard waarden voor velden in het event grid schema op. U kunt standaard waarden instellen voor `subject`, `eventtype`, en `dataversion`. Normaal gesp roken gebruikt u deze para meter wanneer uw aangepaste schema geen veld bevat dat overeenkomt met een van deze drie velden. U kunt bijvoorbeeld opgeven dat de gegevens versie altijd is ingesteld op **1,0**.
+* De eigenschap **standaard waarden toewijzen** geeft standaard waarden voor velden in het event grid schema op. U kunt standaard waarden instellen voor `subject` , `eventtype` , en `dataversion` . Normaal gesp roken gebruikt u deze para meter wanneer uw aangepaste schema geen veld bevat dat overeenkomt met een van deze drie velden. U kunt bijvoorbeeld opgeven dat de gegevens versie altijd is ingesteld op **1,0**.
 
-* De waarde van de **toewijzings velden** wijst velden van uw schema toe aan het event grid-schema. U geeft waarden op in een spatie gescheiden sleutel/waarde-paren. Gebruik de naam van het gebeurtenis raster veld voor de sleutel naam. Gebruik de naam van uw veld voor de waarde. U kunt sleutel namen gebruiken voor `id`, `topic`, `eventtime` `subject` `eventtype`,, en `dataversion`.
+* De waarde van de **toewijzings velden** wijst velden van uw schema toe aan het event grid-schema. U geeft waarden op in een spatie gescheiden sleutel/waarde-paren. Gebruik de naam van het gebeurtenis raster veld voor de sleutel naam. Gebruik de naam van uw veld voor de waarde. U kunt sleutel namen gebruiken voor `id` , `topic` ,,, `eventtime` `subject` `eventtype` en `dataversion` .
 
 Als u een aangepast onderwerp met Azure CLI wilt maken, gebruikt u:
 

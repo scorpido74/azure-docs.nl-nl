@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
 ms.openlocfilehash: 2e27958dd9379a26ca7e7f4d7e427e5afa216e29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75981154"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Uw eerste serverloze app bouwen met behulp van Azure Logic Apps en Azure Functions in Visual Studio
@@ -64,7 +63,7 @@ Om aan de slag te gaan, moet u een [Azure-resource groep-project](../azure-resou
 
    ![Nieuw project maken in Visual Studio](./media/logic-apps-serverless-get-started-vs/create-new-project-visual-studio.png)
 
-1. Onder **Installed**, selecteert u **Visual C#** of **Visual Basic**. Selecteer vervolgens **Cloud** > **Azure-resource groep**.
+1. Onder **Installed**, selecteert u **Visual C#** of **Visual Basic**. Selecteer vervolgens **Cloud**  >  **Azure-resource groep**.
 
    > [!NOTE]
    > Als de **Cloud** categorie of het project van de **Azure-resource groep** niet bestaat, moet u ervoor zorgen dat u de Azure SDK voor Visual Studio hebt geïnstalleerd.
@@ -73,7 +72,7 @@ Om aan de slag te gaan, moet u een [Azure-resource groep-project](../azure-resou
 
    1. Selecteer in het vak **een nieuw project maken** de project sjabloon **Azure-resource groep** voor Visual C# of Visual Basic en selecteer vervolgens **volgende**.
 
-   1. Geef de naam en andere project gegevens op die u wilt gebruiken voor de Azure-resource groep. Als u gereed bent, selecteert u **Maken**.
+   1. Geef de naam en andere project gegevens op die u wilt gebruiken voor de Azure-resource groep. Selecteer **Maken** als u klaar bent.
 
 1. Geef uw project een naam en een locatie en selecteer **OK**.
 
@@ -90,7 +89,7 @@ Om aan de slag te gaan, moet u een [Azure-resource groep-project](../azure-resou
    ![Azure Quick Start-sjabloon selecteren](./media/logic-apps-serverless-get-started-vs/select-template.png)
 
    Met Visual Studio maakt en opent u een oplossing voor het project van uw resource groep. 
-   Met de Azure Quick Start-sjabloon die u hebt geselecteerd, wordt een implementatie sjabloon gemaakt met de naam azuredeploy. json in het project van de resource groep. Deze implementatie sjabloon bevat de definitie voor een eenvoudige logische app die wordt geactiveerd door een HTTP-aanvraag, een Azure-functie aanroept en het resultaat als een HTTP-antwoord retourneert.
+   Met de Azure Quick Start-sjabloon die u hebt geselecteerd, wordt een implementatie sjabloon gemaakt met de naam azuredeploy.jsin het project van de resource groep. Deze implementatie sjabloon bevat de definitie voor een eenvoudige logische app die wordt geactiveerd door een HTTP-aanvraag, een Azure-functie aanroept en het resultaat als een HTTP-antwoord retourneert.
 
    ![Nieuwe serverloze oplossing](./media/logic-apps-serverless-get-started-vs/create-serverless-solution.png)
 
@@ -100,7 +99,7 @@ Om aan de slag te gaan, moet u een [Azure-resource groep-project](../azure-resou
 
 Voordat u uw logische app kunt openen in de ontwerp functie voor logische apps in Visual Studio, moet u een Azure-resource groep hebben die al is geïmplementeerd in Azure. De ontwerper kan vervolgens verbindingen maken met bronnen en services in uw logische app. Voor deze taak voert u de volgende stappen uit om uw oplossing te implementeren vanuit Visual Studio naar de Azure Portal:
 
-1. Selecteer in Solution Explorer, in het snelmenu van het resource project, de optie**nieuwe** **implementeren** > .
+1. Selecteer in Solution Explorer, in het snelmenu van het resource project, **Deploy**de optie  >  **nieuwe**implementeren.
 
    ![Nieuwe implementatie voor resource groep maken](./media/logic-apps-serverless-get-started-vs/deploy.png)
 
@@ -119,9 +118,9 @@ Voordat u uw logische app kunt openen in de ontwerp functie voor logische apps i
 
 Als u de logische app na de implementatie wilt bewerken, opent u de logische app met behulp van de ontwerp functie voor logische apps in Visual Studio.
 
-1. In Solution Explorer, in het snelmenu van het bestand azuredeploy. json, selecteert u **openen met Logic app Designer**.
+1. Selecteer in Solution Explorer in het snelmenu van de azuredeploy.jsop bestand **openen met Logic app Designer**.
 
-   ![Azuredeploy. json openen in de ontwerp functie voor logische apps](./media/logic-apps-serverless-get-started-vs/open-logic-app-designer.png)
+   ![azuredeploy.jsopenen in de ontwerp functie voor logische apps](./media/logic-apps-serverless-get-started-vs/open-logic-app-designer.png)
 
    > [!TIP]
    > Als u deze opdracht niet in Visual Studio 2019 hebt, controleert u of u de meest recente updates voor Visual Studio hebt.
@@ -140,7 +139,7 @@ Als u uw functions-project wilt maken en werken met Java script, Python, F #, Po
 
 ## <a name="deploy-functions-from-visual-studio"></a>Functies implementeren vanuit Visual Studio
 
-Uw implementatie sjabloon implementeert alle Azure-functies die u in uw oplossing hebt van het git-opslag plaats dat is opgegeven door de variabelen in het bestand azuredeploy. json. Als u uw functions-project in uw oplossing maakt en inontwerpt, kunt u dat project controleren in Git-bron beheer (bijvoorbeeld GitHub of Azure DevOps) en `repo` vervolgens de variabele bijwerken, zodat de sjabloon uw Azure-functie implementeert.
+Uw implementatie sjabloon implementeert alle Azure-functies die u in uw oplossing hebt van de Git-opslag plaats die is opgegeven door de variabelen in de azuredeploy.jsin het bestand. Als u uw functions-project in uw oplossing maakt en inontwerpt, kunt u dat project controleren in Git-bron beheer (bijvoorbeeld GitHub of Azure DevOps) en vervolgens de `repo` variabele bijwerken, zodat de sjabloon uw Azure-functie implementeert.
 
 ## <a name="manage-logic-apps-and-view-run-history"></a>Logische apps beheren en de uitvoerings geschiedenis weer geven
 

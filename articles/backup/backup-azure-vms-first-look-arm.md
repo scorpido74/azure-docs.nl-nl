@@ -4,10 +4,9 @@ description: In dit artikel vindt u informatie over het maken van een back-up va
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: 72d6e5657add3e815bb0d77fadbdbc716712bee5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76705442"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Een back-up van een Azure VM maken op basis van de VM-instellingen
@@ -31,7 +30,7 @@ Azure Backup installeert een uitbrei ding op de VM-agent die op de computer word
 
 ## <a name="back-up-from-azure-vm-settings"></a>Back-ups maken van Azure VM-instellingen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Klik op **alle services** en typ **virtuele machines**in het filter en klik vervolgens op **virtuele machines**.
 3. Selecteer in de lijst met Vm's de virtuele machine waarvan u een back-up wilt maken.
 4. Klik in het menu VM op **back-up**.
@@ -64,7 +63,7 @@ Azure Backup installeert een uitbrei ding op de VM-agent die op de computer word
 
 ## <a name="run-a-backup-immediately"></a>Direct een back-up uitvoeren
 
-1. Als u direct een back-up wilt uitvoeren, klikt u in het menu VM op **back** > -**up maken nu**.
+1. Als u direct een back-up wilt uitvoeren, klikt u in het menu VM op **back**-  >  **up maken nu**.
 
     ![Back-up uitvoeren](./media/backup-azure-vms-first-look-arm/backup-now-update.png)
 

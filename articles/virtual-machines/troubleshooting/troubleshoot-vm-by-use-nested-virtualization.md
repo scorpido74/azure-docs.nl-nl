@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
 ms.openlocfilehash: e1acfc3216ccfaeac035f1ff31e82c7b67c17daf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76119615"
 ---
 # <a name="troubleshoot-a-faulty-azure-vm-by-using-nested-virtualization-in-azure"></a>Problemen met een defecte virtuele machine in azure oplossen met geneste virtualisatie in azure
@@ -42,13 +41,13 @@ Als u de beschadigde VM wilt koppelen, moet de virtuele machine van de werk ruim
 
 2.  Nadat de herstel-VM is gemaakt, wordt extern bureau blad naar de virtuele machine voor herstel.
 
-3.  In Serverbeheer klikt u op **beheer** > **toevoegen rollen en onderdelen**.
+3.  In Serverbeheer klikt u op **beheer**  >  **toevoegen rollen en onderdelen**.
 
 4.  Selecteer in de sectie **type installatie** de optie installatie die op de **functie of het onderdeel is gebaseerd**.
 
 5.  Controleer in de sectie de **doel server selecteren** of de virtuele machine voor herstel is geselecteerd.
 
-6.  Selecteer de **Hyper-V-functie** > **onderdelen toevoegen**.
+6.  Selecteer de **Hyper-V-functie**  >  **onderdelen toevoegen**.
 
 7.  Selecteer **volgende** in het gedeelte **functies** .
 
@@ -74,7 +73,7 @@ Als u de beschadigde VM wilt koppelen, moet de virtuele machine van de werk ruim
 
 4.  Open Hyper-V-beheer: in **Serverbeheer**selecteert u de **hyper-v-rol**. Klik met de rechter muisknop op de server en selecteer **Hyper-V-beheer**.
 
-5.  Klik in Hyper-V-beheer met de rechter muisknop op de**virtuele** > machine voor herstel en selecteer vervolgens **nieuwe** > VM**volgende**.
+5.  Klik in Hyper-V-beheer met de rechter muisknop op de virtuele machine voor herstel en selecteer vervolgens **nieuwe**VM  >  **Virtual Machine**  >  **volgende**.
 
 6.  Typ een naam voor de virtuele machine en selecteer vervolgens **volgende**.
 

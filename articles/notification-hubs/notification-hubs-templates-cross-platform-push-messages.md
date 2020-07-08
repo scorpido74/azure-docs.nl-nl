@@ -17,10 +17,9 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 7d88f57fe92b9da62cc9f90d64bdec4c27642fb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76263741"
 ---
 # <a name="templates"></a>Sjablonen
@@ -58,7 +57,7 @@ U kunt vergelijk bare nettoladingen maken voor MPNS-en FCM-platforms (Windows Ph
 
 Deze vereiste zorgt ervoor dat de back-end van de app verschillende nettoladingen voor elk platform produceert en de back-end effectief maakt voor een deel van de presentatielaag van de app. Enkele problemen zijn onder andere lokalisatie en grafische indelingen (met name voor Windows Store-apps die meldingen bevatten voor diverse typen tegels).
 
-Met de functie Notification Hubs sjabloon kan een client-app speciale registraties maken, die sjabloon registraties worden genoemd, naast de set met tags, een sjabloon. Met de functie Notification Hubs sjabloon kan een client-app apparaten koppelen aan sjablonen, ongeacht of u met installaties (voor keur) of registraties werkt. Gezien de voor beelden van voor gaande Payload, is de enige platform onafhankelijke informatie het daad werkelijke waarschuwings bericht (Hallo!). Een sjabloon is een set instructies voor de notification hub voor het format teren van een platform onafhankelijk bericht voor de registratie van die specifieke client-app. In het vorige voor beeld is het platform onafhankelijke bericht één eigenschap: `message = Hello!`.
+Met de functie Notification Hubs sjabloon kan een client-app speciale registraties maken, die sjabloon registraties worden genoemd, naast de set met tags, een sjabloon. Met de functie Notification Hubs sjabloon kan een client-app apparaten koppelen aan sjablonen, ongeacht of u met installaties (voor keur) of registraties werkt. Gezien de voor beelden van voor gaande Payload, is de enige platform onafhankelijke informatie het daad werkelijke waarschuwings bericht (Hallo!). Een sjabloon is een set instructies voor de notification hub voor het format teren van een platform onafhankelijk bericht voor de registratie van die specifieke client-app. In het vorige voor beeld is het platform onafhankelijke bericht één eigenschap: `message = Hello!` .
 
 In de volgende afbeelding ziet u het proces:
 
@@ -139,13 +138,13 @@ In de volgende tabel ziet u de taal die is toegestaan in sjablonen:
 | $ (prop, n)       | Net als hierboven wordt de tekst expliciet afgekapt bij n tekens, bijvoorbeeld $ (title, 20), clips de inhoud van de eigenschap Title op 20 tekens. |
 | . (prop, n)       | Net als hierboven, maar de tekst is een achtervoegsel met drie punten wanneer het is afgekapt. De totale grootte van de afgekapte teken reeks en het achtervoegsel mag niet langer zijn dan n tekens. . (titel, 20) met een invoer eigenschap van ' Dit is de titel regel ' resulteert in **Dit is de titel...** |
 | % (prop)          | Vergelijkbaar met $ (naam), behalve dat de uitvoer URI-gecodeerd is. |
-| # (prop)          | Wordt gebruikt in JSON-sjablonen (bijvoorbeeld voor iOS-en Android-sjablonen).<br><br>Deze functie werkt precies hetzelfde als $ (prop) eerder opgegeven, behalve wanneer het wordt gebruikt in JSON-sjablonen (bijvoorbeeld Apple-sjablonen). Als deze functie niet is omgeven door ' {', '} ' (bijvoorbeeld ' myJsonProperty ': ' # (naam) '), en resulteert in een getal in Java script-indeling, bijvoorbeeld regexp: (0&#124; (&#91;1-9&#93;&#91;0-9&#93; *)) (\.&#91;0-9&#93;+)? ((e&#124;E) (+&#124;-)? &#91;0-9&#93;+)?, is de uitvoer-JSON een getal.<br><br>' Badge: ' # (name) ' wordt bijvoorbeeld ' badge ': 40 (en niet ' 40 '). |
+| # (prop)          | Wordt gebruikt in JSON-sjablonen (bijvoorbeeld voor iOS-en Android-sjablonen).<br><br>Deze functie werkt precies hetzelfde als $ (prop) eerder opgegeven, behalve wanneer het wordt gebruikt in JSON-sjablonen (bijvoorbeeld Apple-sjablonen). Als deze functie niet is omgeven door ' {', '} ' (bijvoorbeeld ' myJsonProperty ': ' # (naam) ') en het resulteert in een getal in Java script-indeling, bijvoorbeeld regexp: (0&#124; (&#91;1-9&#93;&#91;0-9&#93; *)) ( \.&#91;0-9&#93;+)? ( (e&#124;E) (+&#124;-)? &#91;0-9&#93;+)?, is de uitvoer-JSON een getal.<br><br>' Badge: ' # (name) ' wordt bijvoorbeeld ' badge ': 40 (en niet ' 40 '). |
 | ' tekst ' of ' tekst ' | Een letterlijke waarde. Letterlijke waarden bevatten wille keurige tekst tussen enkele of dubbele aanhalings tekens. |
 | Expr1 en Expr2    | De samenvoegings operator verbindt twee expressies tot één teken reeks. |
 
 De expressies kunnen een van de voor gaande formulieren zijn.
 
-Bij het gebruik van samen voegen moet de volledige expressie omgeven `{}`worden door. Bijvoorbeeld `{$(prop) + ‘ - ’ + $(prop2)}`.
+Bij het gebruik van samen voegen moet de volledige expressie omgeven worden door `{}` . Bijvoorbeeld `{$(prop) + ‘ - ’ + $(prop2)}`.
 
 De volgende sjabloon is bijvoorbeeld geen geldige XML-sjabloon:
 

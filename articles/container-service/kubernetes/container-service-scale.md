@@ -1,0 +1,21 @@
+---
+title: KEUR Azure Container Service cluster schalen
+description: Agent knooppunten schalen in een DC/OS-, docker Swarm-of Kubernetes-cluster in Azure Container Service met behulp van de Azure CLI of Azure Portal.
+author: sauryadas
+ms.service: container-service
+ms.topic: conceptual
+ms.date: 03/01/2017
+ms.author: saudas
+ms.custom: H1Hack27Feb2017, mvc
+ms.openlocfilehash: d53369128a660805df7e144fbec67b1bad787b7b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.contentlocale: nl-NL
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76275628"
+---
+# <a name="deprecated-scale-agent-nodes-in-a-container-service-cluster"></a>KEUR Schaal agent knooppunten in een container service-cluster
+
+> [!TIP]
+> Zie [een Azure Kubernetes service-cluster (AKS) schalen](../../aks/scale-cluster.md)voor de bijgewerkte versie van dit artikel waarin de Azure Kubernetes-service wordt gebruikt.
+
+[!INCLUDE [container-service-scale.md](../../../includes/container-service-scale.md)]

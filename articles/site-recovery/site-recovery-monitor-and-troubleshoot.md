@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: raynew
 ms.openlocfilehash: aa9d776df50306ab1705426c923413b5a5d545a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68717354"
 ---
 # <a name="monitor-site-recovery"></a>Site Recovery bewaken
@@ -46,9 +45,9 @@ U kunt [algemene controle vragen](monitoring-common-questions.md) bekijken voord
 
 In **gerepliceerde items**controleert u de status van alle computers in de kluis waarvoor replicatie is ingeschakeld.
 
-**Overheids** | **Nadere**
+**Status** | **Details**
 --- | ---
-Goed | De replicatie wordt normaal uitgevoerd. Er zijn geen fout-of waarschuwings symptomen gedetecteerd.
+In orde | De replicatie wordt normaal uitgevoerd. Er zijn geen fout-of waarschuwings symptomen gedetecteerd.
 Waarschuwing | Er zijn een of meer waarschuwings symptomen gedetecteerd die van invloed kunnen zijn op replicatie.
 Kritiek | Er zijn een of meer kritieke symptomen van de replicatie fout gedetecteerd.<br/><br/> Deze fout symptomen zijn doorgaans indica toren die zijn achtergebleven, of die niet zo snel als de snelheid van gegevens wijzigingen worden uitgevoerd.
 Niet van toepassing | Servers die momenteel niet naar verwachting repliceren. Dit kan ook betrekking hebben op machines waarvoor een failover is uitgevoerd.
@@ -60,7 +59,7 @@ Controleer de failover-status voor computers in de kluis in de **failover-test**
 - We raden u aan om ten minste één keer per zes maanden een testfailover uit te voeren op gerepliceerde machines. Het is een manier om te controleren of failover werkt zoals verwacht, zonder uw productie omgeving te onderbreken. 
 - Een testfailover wordt alleen als geslaagd beschouwd nadat de failover en het opruimen na de failover zijn voltooid.
 
-**Overheids** | **Nadere**
+**Status** | **Details**
 --- | ---
 Aanbevolen test | Computers die geen testfailover hebben gehad sinds de beveiliging is ingeschakeld.
 Is uitgevoerd | Machines met een of meer geslaagde testfailover.
@@ -73,7 +72,7 @@ In **configuratie problemen**bewaakt u eventuele problemen die van invloed kunne
 - Configuratie problemen (met uitzonde ring van de beschik baarheid van software-updates) worden gedetecteerd door een periodieke validatie bewerking die standaard elke 12 uur wordt uitgevoerd. U kunt afdwingen dat de validatie bewerking onmiddellijk wordt uitgevoerd door te klikken op het pictogram Vernieuwen naast de sectie **configuratie problemen** .
 - Klik op de koppelingen voor meer informatie. Klik op **aandacht vereist** in de kolom **doel configuraties** voor problemen die invloed hebben op specifieke computers. Details zijn onder andere aanbevelingen voor herstel.
 
-**Overheids** | **Nadere**
+**Status** | **Details**
 --- | ---
 Ontbrekende configuraties | Er ontbreekt een vereiste instelling, zoals een herstel netwerk of een resource groep.
 Ontbrekende resources | Een opgegeven resource is niet gevonden of is niet beschikbaar in het abonnement. De resource is bijvoorbeeld verwijderd of gemigreerd. Bewaakte resources bevatten de doel resource groep, het doel-VNet/subnet, het logboek/het doel opslag account, de beschik baarheid van doelen, het doel-IP-adres.
@@ -107,14 +106,14 @@ Bewaak in **infrastructuur weergave**de infrastructuur onderdelen die bij de rep
 - Als u alle functies in de infrastructuur weergave wilt gebruiken, moet u [Update pakket 22](https://support.microsoft.com/help/4072852) voor deze onderdelen uitvoeren.
 - Als u de infrastructuur weergave wilt gebruiken, selecteert u het juiste replicatie scenario in uw omgeving. U kunt inzoomen op de weer gave voor meer informatie. In de volgende tabel ziet u welke scenario's worden weer gegeven.
 
-    **Scenario** | **Overheids**  | **Weer gave beschikbaar?**
+    **Scenario** | **Status**  | **Weer gave beschikbaar?**
     --- |--- | ---
-    **Replicatie tussen on-premises sites** | Alle staten | Nee 
-    **Azure-VM-replicatie tussen Azure-regio's**  | Replicatie ingeschakeld/initiële replicatie wordt uitgevoerd | Ja
-    **Azure-VM-replicatie tussen Azure-regio's** | Failover/failback is voltooid | Nee   
-    **Replicatie van VMware naar Azure** | Replicatie ingeschakeld/initiële replicatie wordt uitgevoerd | Ja     
-    **Replicatie van VMware naar Azure** | Failover/fail-back | Nee      
-    **Hyper-V-replicatie naar Azure** | Failover/fail-back | Nee
+    **Replicatie tussen on-premises sites** | Alle staten | No 
+    **Azure-VM-replicatie tussen Azure-regio's**  | Replicatie ingeschakeld/initiële replicatie wordt uitgevoerd | Yes
+    **Azure-VM-replicatie tussen Azure-regio's** | Failover/failback is voltooid | No   
+    **Replicatie van VMware naar Azure** | Replicatie ingeschakeld/initiële replicatie wordt uitgevoerd | Yes     
+    **Replicatie van VMware naar Azure** | Failover/fail-back | No      
+    **Hyper-V-replicatie naar Azure** | Failover/fail-back | No
 
 - Als u de weer gave van de infra structuur voor één replicerende computer wilt zien, klikt u in het menu kluis op **gerepliceerde items**en selecteert u een server.  
 

@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
 ms.openlocfilehash: 9612114bb368898ccf31b2c8692869b84544b652
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721967"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Gegevens wetenschappen code testen op Azure met het team data Science process en Azure DevOps Services
@@ -26,7 +25,7 @@ Dit artikel bevat voorlopige richt lijnen voor het testen van code in een Data S
 
 * Gegevensvoorbereiding
 * Kwaliteits onderzoek van gegevens
-* Modelleren
+* Modellen maken
 * Modelimplementatie 
 
 In dit artikel wordt de term ' eenheid testen ' vervangen door ' code testen '. Er wordt gerefereerd aan het testen als de functies die helpen te beoordelen of de code voor een bepaalde stap van een levens cyclus van een data technologie de resultaten levert zoals verwacht. De persoon die de test schrijft, definieert wat er wordt verwacht, afhankelijk van het resultaat van de functie, bijvoorbeeld gegevens kwaliteit controleren of model leren.
@@ -138,7 +137,7 @@ Gebruik de volgende stappen voor het instellen en uitvoeren van code testen en e
     
     ![Power shell-Details](./media/code-test/powershell_scripts.PNG)
 
-    g. Selecteer **& wachtrij opslaan** om het build pipeline-proces te volt ooien.
+    bijvoorbeeld Selecteer **& wachtrij opslaan** om het build pipeline-proces te volt ooien.
 
     ![Knop voor opslaan van & wachtrij](./media/code-test/save_and_queue_build_definition.PNG)
 
@@ -154,7 +153,7 @@ Als waarschuwingen correct zijn ingesteld, ontvangt u een melding in het e-mail 
 * Raadpleeg de [opslag plaats](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) voor de uitkering van icb's voor concrete voor beelden van eenheids tests voor data Science-scenario's.
 * Volg de voor gaande overzichten en voor beelden van het scenario van de ICB-baten prognose in uw eigen data Science-projecten.
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Referenties
 * [Team Data Science Process](https://aka.ms/tdsp)
 * [Hulpprogram Ma's voor het testen van Visual Studio](https://www.visualstudio.com/vs/features/testing-tools/)
 * [Azure DevOps-test bronnen](https://www.visualstudio.com/team-services/)

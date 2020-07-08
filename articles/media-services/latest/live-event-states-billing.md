@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.author: juliako
 ms.openlocfilehash: e4eee3b9f3f97bf7cd7a7b61425ec5c9a3a198ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76543072"
 ---
 # <a name="live-event-states-and-billing"></a>Live gebeurtenis statussen en facturering
@@ -36,10 +35,10 @@ De live-gebeurtenis kan een van de volgende statussen hebben.
 |Status|Beschrijving|
 |---|---|
 |**Gestopt**| Dit is de begin status van de live gebeurtenis na het maken (tenzij auto start is ingesteld op True.) Er vindt geen facturering plaats in deze status. In deze status kunnen de eigenschappen van de live-gebeurtenis worden bijgewerkt, maar streaming is niet toegestaan.|
-|**Ingang**| De live gebeurtenis wordt gestart en er worden resources toegewezen. Er vindt geen facturering plaats in deze status. Updates of streaming zijn niet toegestaan tijdens deze status. Als er een fout optreedt, keert de live-gebeurtenis terug naar de status gestopt.|
+|**Starten**| De live gebeurtenis wordt gestart en er worden resources toegewezen. Er vindt geen facturering plaats in deze status. Updates of streaming zijn niet toegestaan tijdens deze status. Als er een fout optreedt, keert de live-gebeurtenis terug naar de status gestopt.|
 |**Wordt uitgevoerd**| De live-gebeurtenis resources zijn toegewezen, opname-en preview-Url's zijn gegenereerd en kunnen live streams ontvangen. Op dit moment is facturering actief. U moet expliciet Stop aanroepen in de resource van de livegebeurtenis om verdere facturering stop te zetten.|
 |**Stoppen**| De live gebeurtenis wordt gestopt en de inrichting van de resources wordt ongedaan gemaakt. Er vindt geen facturering plaats in deze tijdelijke status. Updates of streaming zijn niet toegestaan tijdens deze status.|
-|**Verwijder**| De live-gebeurtenis wordt verwijderd. Er vindt geen facturering plaats in deze tijdelijke status. Updates of streaming zijn niet toegestaan tijdens deze status.|
+|**Verwijderen**| De live-gebeurtenis wordt verwijderd. Er vindt geen facturering plaats in deze tijdelijke status. Updates of streaming zijn niet toegestaan tijdens deze status.|
 
 U kunt ervoor kiezen om live-transcripties in te scha kelen wanneer u de live-gebeurtenis maakt. Als u dit doet, wordt u gefactureerd voor Live transcripties wanneer de live-gebeurtenis de status **actief** heeft. Houd er rekening mee dat u wordt gefactureerd, zelfs als er geen audio stroom door de live-gebeurtenis plaatsvindt.
 

@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/16/2019
 ms.openlocfilehash: 916c54c3739d1164e4e9c1db67aa1f4e0dbd0c6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76157790"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Azure HDInsight 3,6 Apache Storm migreren naar HDInsight 4,0 Apache Spark
@@ -57,7 +56,7 @@ Storm biedt een model waarmee elke gebeurtenis wordt verwerkt. Dit betekent dat 
 
 Storm-topologieën bestaan uit meerdere onderdelen die zijn gerangschikt in een Directed Acyclic Graph (DAG). Gegevens stromen tussen de onderdelen in de grafiek. Elk onderdeel verbruikt een of meer gegevensstromen en kan eventueel een of meer stromen genereren.
 
-|Onderdeel |Beschrijving |
+|Onderdeel |Description |
 |---|---|
 |Spout|Haalt gegevens op in een topologie. Deze onderdelen introduceren een of meer stromen in de topologie.|
 |Montagekit|Verbruikt stromen die zijn verzonden vanuit spouts of andere schichten. Bolts kunnen eventueel nieuwe stromen in de topologie introduceren. Bolts zijn ook verantwoordelijk voor het wegschrijven van gegevens naar externe services of opslag, zoals HDFS, Kafka of HBase.|
@@ -67,7 +66,7 @@ Storm-topologieën bestaan uit meerdere onderdelen die zijn gerangschikt in een 
 
 Storm bestaat uit de volgende drie daemons, waarmee het Storm-cluster goed werkt.
 
-|Daemon |Beschrijving |
+|Daemon |Description |
 |---|---|
 |Nimbus|Net als bij Hadoop JobTracker is het verantwoordelijk voor het distribueren van code rond het cluster en het toewijzen van taken aan machines en het bewaken van fouten.|
 |Zookeeper|Wordt gebruikt voor de coördinatie van het cluster.|

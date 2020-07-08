@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
 ms.openlocfilehash: 61d43addfdf9008cb7aa8a073dcf3bb702cb55f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76513368"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API-importbeperkingen en bekende problemen
@@ -50,18 +49,18 @@ Als u fouten ontvangt bij het importeren van uw OpenAPI-document, moet u ervoor 
 
 ### <a name="openapi-version-3"></a><a name="open-api-v3"> </a>OpenAPI-versie 3
 
--   Als er `servers` veel zijn opgegeven, probeert API Management de eerste HTTPS-URL te selecteren. Als er geen HTTPs-Url's zijn, de eerste HTTP-URL. Als er geen HTTP-Url's zijn, de URL van de server is leeg.
--   `Examples`wordt niet ondersteund, `example` maar is.
+-   Als er veel `servers` zijn opgegeven, probeert API Management de eerste HTTPS-URL te selecteren. Als er geen HTTPs-Url's zijn, de eerste HTTP-URL. Als er geen HTTP-Url's zijn, de URL van de server is leeg.
+-   `Examples`wordt niet ondersteund, maar `example` is.
 
 ## <a name="openapi-import-update-and-export-mechanisms"></a>OpenAPI importeren, bijwerken en exporteren
 
 ### <a name="add-new-api-via-openapi-import"></a>Nieuwe API toevoegen via OpenAPI importeren
 
-Voor elke bewerking die in het OpenAPI-document is gevonden, wordt een nieuwe bewerking gemaakt met de naam van de Azure- `operationId` resource `summary` en de weergave naam die is ingesteld op respectievelijk. `operationId`de waarde wordt genormaliseerd volgens de regels die hieronder worden beschreven. `summary`de waarde wordt geïmporteerd als-is en de lengte is beperkt tot 300 tekens.
+Voor elke bewerking die in het OpenAPI-document is gevonden, wordt een nieuwe bewerking gemaakt met de naam van de Azure-resource en de weergave naam die is ingesteld op `operationId` `summary` respectievelijk. `operationId`de waarde wordt genormaliseerd volgens de regels die hieronder worden beschreven. `summary`de waarde wordt geïmporteerd als-is en de lengte is beperkt tot 300 tekens.
 
-Als `operationId` niet wordt opgegeven (dat wil zeggen, niet `null`aanwezig of leeg), wordt de waarde van de Azure-resource naam gegenereerd door de combi natie van HTTP-methode `get-foo`en pad-sjabloon, bijvoorbeeld.
+Als `operationId` niet wordt opgegeven (dat wil zeggen, niet aanwezig `null` of leeg), wordt de waarde van de Azure-resource naam gegenereerd door de combi natie van HTTP-methode en pad-sjabloon, bijvoorbeeld `get-foo` .
 
-Als `summary` niet wordt opgegeven (dat wil zeggen, niet `null`aanwezig of leeg), `display name` wordt de waarde ingesteld `operationId`op. Als `operationId` niet is opgegeven, wordt de weergave naam waarde gegenereerd door de combi natie van de HTTP-methode en de `Get - /foo`pad-sjabloon, bijvoorbeeld.
+Als `summary` niet wordt opgegeven (dat wil zeggen, niet aanwezig `null` of leeg), `display name` wordt de waarde ingesteld op `operationId` . Als `operationId` niet is opgegeven, wordt de weergave naam waarde gegenereerd door de combi natie van de HTTP-methode en de pad-sjabloon, bijvoorbeeld `Get - /foo` .
 
 ### <a name="update-an-existing-api-via-openapi-import"></a>Een bestaande API bijwerken via OpenAPI-import
 
@@ -75,20 +74,20 @@ Alle bestaande niet-overeenkomende bewerkingen worden verwijderd.
 
 Volg deze richt lijnen om de import bewerking meer voorspelbaar te maken:
 
-- Zorg ervoor dat u `operationId` de eigenschap voor elke bewerking opgeeft.
-- U hoeft niet `operationId` meer te wijzigen nadat u de eerste keer hebt geïmporteerd.
-- Nooit tegelijkertijd `operationId` wijzigen en de HTTP-methode of het pad naar de sjabloon.
+- Zorg ervoor dat u de `operationId` eigenschap voor elke bewerking opgeeft.
+- U hoeft niet meer te wijzigen nadat u de `operationId` eerste keer hebt geïmporteerd.
+- Nooit `operationId` tegelijkertijd wijzigen en de HTTP-methode of het pad naar de sjabloon.
 
 ### <a name="export-api-as-openapi"></a>API exporteren als OpenAPI
 
-Voor elke bewerking wordt de naam van de Azure-resource geëxporteerd als `operationId`een, en de weergave naam wordt geëxporteerd als `summary`een.
+Voor elke bewerking wordt de naam van de Azure-resource geëxporteerd als een `operationId` , en de weergave naam wordt geëxporteerd als een `summary` .
 Normalisatie regels voor operationId
 
 - Converteren naar kleine letters.
-- Vervang elke reeks van niet-alfanumerieke tekens door één streepje, bijvoorbeeld `GET-/foo/{bar}?buzz={quix}` worden omgezet in. `get-foo-bar-buzz-quix-`
-- Streepjes op beide zijden knippen worden bijvoorbeeld `get-foo-bar-buzz-quix-``get-foo-bar-buzz-quix`
+- Vervang elke reeks van niet-alfanumerieke tekens door één streepje, bijvoorbeeld worden omgezet `GET-/foo/{bar}?buzz={quix}` in `get-foo-bar-buzz-quix-` .
+- Streepjes op beide zijden `get-foo-bar-buzz-quix-` knippen worden bijvoorbeeld`get-foo-bar-buzz-quix`
 - Afkappen tot 76 tekens, vier tekens kleiner dan maximum limiet voor een resource naam.
-- Gebruik, indien nodig, nog vier tekens voor een achtervoegsel voor ontdubbeling in de vorm `-1, -2, ..., -999`van.
+- Gebruik, indien nodig, nog vier tekens voor een achtervoegsel voor ontdubbeling in de vorm van `-1, -2, ..., -999` .
 
 
 ## <a name="wsdl"></a><a name="wsdl"> </a>WSDL

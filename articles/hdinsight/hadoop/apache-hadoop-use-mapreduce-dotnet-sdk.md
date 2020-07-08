@@ -9,17 +9,16 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/15/2020
 ms.openlocfilehash: e50510f2420d69be37af584a2648a794e1561ee3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76157046"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>MapReduce-taken uitvoeren met behulp van de HDInsight .NET-SDK
 
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-Meer informatie over het verzenden van MapReduce-taken met behulp van HDInsight .NET SDK. HDInsight-clusters worden geleverd met een jar-bestand met enkele MapReduce-voor beelden. Het jar-bestand `/example/jars/hadoop-mapreduce-examples.jar`is.  Een van de voor beelden is **WordCount**. U ontwikkelt een C#-console toepassing om een WordCount-taak te verzenden.  De taak leest het `/example/data/gutenberg/davinci.txt` bestand en voert de resultaten uit naar `/example/data/davinciwordcount`.  Als u de toepassing opnieuw wilt uitvoeren, moet u de uitvoermap opschonen.
+Meer informatie over het verzenden van MapReduce-taken met behulp van HDInsight .NET SDK. HDInsight-clusters worden geleverd met een jar-bestand met enkele MapReduce-voor beelden. Het jar-bestand is `/example/jars/hadoop-mapreduce-examples.jar` .  Een van de voor beelden is **WordCount**. U ontwikkelt een C#-console toepassing om een WordCount-taak te verzenden.  De taak leest het `/example/data/gutenberg/davinci.txt` bestand en voert de resultaten uit naar `/example/data/davinciwordcount` .  Als u de toepassing opnieuw wilt uitvoeren, moet u de uitvoermap opschonen.
 
 > [!NOTE]  
 > De stappen in dit artikel moeten worden uitgevoerd vanaf een Windows-client. Voor informatie over het gebruik van een Linux-, OS X-of UNIX-client om met hive te werken, gebruikt u de tabblad kiezer die boven aan het artikel wordt weer gegeven.
@@ -36,13 +35,13 @@ De HDInsight .NET SDK biedt .NET-client Bibliotheken, waarmee u eenvoudiger met 
 
 1. Start Visual Studio en maak een C#-console toepassing.
 
-1. Ga naar **extra** > **NuGet** > Package Manager-**console** en voer de volgende opdracht in:
+1. Ga naar **extra**NuGet Package Manager-  >  **NuGet Package Manager**  >  **console** en voer de volgende opdracht in:
 
     ```   
     Install-Package Microsoft.Azure.Management.HDInsight.Job
     ```
 
-1. Kopieer de onderstaande code naar **Program.cs**. Bewerk de code vervolgens door de waarden in te stellen `existingClusterName`voor `existingClusterPassword`: `defaultStorageAccountName`, `defaultStorageAccountKey`,, `defaultStorageContainerName`en.
+1. Kopieer de onderstaande code naar **Program.cs**. Bewerk de code vervolgens door de waarden in te stellen voor: `existingClusterName` , `existingClusterPassword` , `defaultStorageAccountName` , `defaultStorageAccountKey` en `defaultStorageContainerName` .
 
     ```csharp
     using System.Collections.Generic;
@@ -163,9 +162,9 @@ De HDInsight .NET SDK biedt .NET-client Bibliotheken, waarmee u eenvoudiger met 
 
 1. Druk op **F5** om de toepassing uit te voeren.
 
-Als u de taak opnieuw wilt uitvoeren, moet u de naam van de map voor de taak uitvoer wijzigen `/example/data/davinciwordcount`in het voor beeld.
+Als u de taak opnieuw wilt uitvoeren, moet u de naam van de map voor de taak uitvoer wijzigen in het voor beeld `/example/data/davinciwordcount` .
 
-Wanneer de taak is voltooid, wordt de inhoud van het uitvoer bestand `part-r-00000`afgedrukt door de toepassing.
+Wanneer de taak is voltooid, wordt de inhoud van het uitvoer bestand afgedrukt door de toepassing `part-r-00000` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

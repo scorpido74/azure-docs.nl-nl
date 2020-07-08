@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1d3cd61ea3da88c4c5231f22c0e127508591fb8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720466"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Model fase van de levens cyclus van het team data Science-proces
@@ -24,7 +23,7 @@ In dit artikel vindt u een overzicht van de doelen, taken en producten die zijn 
 
    1. **Inzicht in het bedrijf**
    2. **Gegevens verzamelen en begrijpen**
-   3. **Modelleren**
+   3. **Modellen maken**
    4. **Implementatie**
    5. **Aanvaarding van de klant**
 
@@ -69,7 +68,7 @@ De training voor het model proces bestaat uit de volgende stappen:
 
 We bieden een [geautomatiseerd hulp programma voor model lering en rapportage](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) met TDSP dat kan worden uitgevoerd via meerdere algoritmen en parameter sweeps om een basis lijn model te maken. Er wordt ook een basislijn model rapport gemaakt met een overzicht van de prestaties van elk model en de combi natie van para meters, inclusief de prioriteit van de variabele. Dit proces wordt ook herhaald, aangezien het verdere functie techniek kan hebben. 
 
-## <a name="artifacts"></a>Artefacten
+## <a name="artifacts"></a>Artifacts
 De artefacten die in deze fase worden geproduceerd, zijn onder andere:
 
    * [Functie sets](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md): de functies die voor het model leren zijn ontwikkeld, worden beschreven in de sectie **functie sets** van het rapport **gegevens definitie** . Het bevat aanwijzers naar de code voor het genereren van de functies en een beschrijving van de manier waarop de functie is gegenereerd.
@@ -84,7 +83,7 @@ Hier vindt u koppelingen naar elke stap in de levens cyclus van de TDSP:
 
    1. [Inzicht in het bedrijf](lifecycle-business-understanding.md)
    2. [Gegevens verzamelen en begrijpen](lifecycle-data.md)
-   3. [Modelleren](lifecycle-modeling.md)
+   3. [Modellen maken](lifecycle-modeling.md)
    4. [Implementatie](lifecycle-deployment.md)
    5. [Aanvaarding van de klant](lifecycle-acceptance.md)
 

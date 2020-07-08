@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a043a1655950f3ed7688e59352f8a912146e12c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720449"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>De levens cyclus van het team data Science-proces
@@ -30,7 +29,7 @@ De levens cyclus van TDSP bestaat uit vijf hoofd fasen die iteratief worden uitg
 
    1. [Inzicht in het bedrijf](lifecycle-business-understanding.md)
    2. [Gegevens verzamelen en begrijpen](lifecycle-data.md)
-   3. [Modelleren](lifecycle-modeling.md)
+   3. [Modellen maken](lifecycle-modeling.md)
    4. [Implementatie](lifecycle-deployment.md)
    5. [Aanvaarding van de klant](lifecycle-acceptance.md)
 

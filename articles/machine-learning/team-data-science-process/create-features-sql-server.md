@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 58fa98005d7d89e84404d99cf4f55e456fd91f21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721741"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Met SQL en Python functies maken voor gegevens in SQL Server
@@ -63,7 +62,7 @@ In het volgende voor beeld ziet u hoe u binning-functies genereert door binning 
 ### <a name="rolling-out-the-features-from-a-single-column"></a><a name="sql-featurerollout"></a>De functies uit één kolom implementeren
 In deze sectie wordt gedemonstreerd hoe u één kolom in een tabel kunt samen stellen om extra functies te genereren. In het voor beeld wordt ervan uitgegaan dat er een kolom breedte graad of lengte graad is in de tabel van waaruit u functies wilt genereren.
 
-Hier volgt een korte primer op de locatie gegevens voor de breedte graad/lengte graad ( `https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude`vanaf stack overflow). Hier volgen enkele nuttige zaken die u moet begrijpen over locatie gegevens voordat u functies van het veld maakt:
+Hier volgt een korte primer op de locatie gegevens voor de breedte graad/lengte graad (vanaf stack overflow `https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude` ). Hier volgen enkele nuttige zaken die u moet begrijpen over locatie gegevens voordat u functies van het veld maakt:
 
 * Het teken geeft aan of we Noord of Zuid, Oost of West zijn op de wereld.
 * Een niet-nul honderd cijfers duidt de lengte graad aan, maar er wordt geen breedte graad gebruikt.
@@ -76,7 +75,7 @@ Hier volgt een korte primer op de locatie gegevens voor de breedte graad/lengte 
 * De vijfde decimaal heeft een waarde van Maxi maal 1,1 m: het onderscheidt bomen van elkaar. Nauw keurigheid van dit niveau met commerciële GPS-eenheden kan alleen worden behaald met differentiële correctie.
 * De zesde decimaal positie is Maxi maal 0,11 m: u kunt dit niveau gebruiken voor het indelen van structuren, voor het ontwerpen van landschappen, het bouwen van wegen. Het moet meer dan goed genoeg zijn voor het volgen van de bewegingen van Glaciers en rivieren. Dit doel kan worden bereikt door Painstaking-maat regelen te nemen met GPS, zoals een differentieeel gecorrigeerde GPS.
 
-De locatie-informatie kan worden featurized door de informatie over de regio, locatie en plaats te scheiden. Eenmaal kan ook een REST-eind punt aanroepen, zoals de Bing Maps `https://msdn.microsoft.com/library/ff701710.aspx` -API (Zie de informatie over de regio/district ophalen).
+De locatie-informatie kan worden featurized door de informatie over de regio, locatie en plaats te scheiden. Eenmaal kan ook een REST-eind punt aanroepen, zoals de Bing Maps-API (Zie `https://msdn.microsoft.com/library/ff701710.aspx` de informatie over de regio/district ophalen).
 
     select
         <location_columnname>

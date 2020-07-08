@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: chenyl
 ms.openlocfilehash: a76c9aaabf984723e2b60a7cd42425c9b29c916a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76710834"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Gebeurtenissen van Azure SignalR Service naar Event Grid verzenden
@@ -26,7 +25,7 @@ De Azure CLI-opdrachten in dit artikel zijn ingedeeld voor de **bash** -shell. A
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een Azure-resource groep is een logische container waarin u Azure-resources implementeert en beheert. Met de volgende opdracht [AZ Group Create][az-group-create] wordt een resource groep met de naam *myResourceGroup* gemaakt in de regio *eastus* . Als u een andere naam voor de resource groep wilt gebruiken, stelt `RESOURCE_GROUP_NAME` u deze in op een andere waarde.
+Een Azure-resource groep is een logische container waarin u Azure-resources implementeert en beheert. Met de volgende opdracht [AZ Group Create][az-group-create] wordt een resource groep met de naam *myResourceGroup* gemaakt in de regio *eastus* . Als u een andere naam voor de resource groep wilt gebruiken, stelt u deze `RESOURCE_GROUP_NAME` in op een andere waarde.
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup
@@ -75,7 +74,7 @@ Zodra de seingevings service is gemaakt, retourneert de Azure CLI uitvoer die er
 
 In deze sectie gebruikt u een resource manager-sjabloon die zich in een GitHub-opslag plaats bevindt om een vooraf gemaakte voorbeeld webtoepassing te implementeren op Azure App Service. Later abonneert u zich op de Event Grid gebeurtenissen van uw REGI ster en geeft u deze app op als het eind punt waarnaar de gebeurtenissen worden verzonden.
 
-Als u de voor beeld-app `SITE_NAME` wilt implementeren, stelt u een unieke naam in voor de web-app en voert u de volgende opdrachten uit. De site naam moet uniek zijn binnen Azure omdat deze deel uitmaakt van de Fully Qualified Domain Name (FQDN) van de web-app. In een latere sectie gaat u naar de FQDN van de app in een webbrowser om de gebeurtenissen van het REGI ster weer te geven.
+Als u de voor beeld-app wilt implementeren, stelt `SITE_NAME` u een unieke naam in voor de web-app en voert u de volgende opdrachten uit. De site naam moet uniek zijn binnen Azure omdat deze deel uitmaakt van de Fully Qualified Domain Name (FQDN) van de web-app. In een latere sectie gaat u naar de FQDN van de app in een webbrowser om de gebeurtenissen van het REGI ster weer te geven.
 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>

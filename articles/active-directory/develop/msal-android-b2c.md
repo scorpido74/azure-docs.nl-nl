@@ -14,10 +14,9 @@ ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
 ms.openlocfilehash: 0998bb04b0dfc69db4696f2e390cfe259eba6718
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76696518"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>MSAL voor Android gebruiken met B2C
@@ -34,7 +33,7 @@ Op basis van een B2C-toepassing met twee beleids regels:
 - Profiel bewerken
     * Heet`B2C_1_EditProfile`
 
-In het configuratie bestand voor de app worden twee `authorities`gedeclareerd. Eén voor elk beleid. De `type` eigenschap van elke instantie is `B2C`.
+In het configuratie bestand voor de app worden twee gedeclareerd `authorities` . Eén voor elk beleid. De `type` eigenschap van elke instantie is `B2C` .
 
 ### `app/src/main/res/raw/msal_config.json`
 ```json
@@ -54,7 +53,7 @@ In het configuratie bestand voor de app worden twee `authorities`gedeclareerd. E
 }
 ```
 
-De `redirect_uri` moet zijn geregistreerd in de app-configuratie en is ook `AndroidManifest.xml` in ter ondersteuning van omleiding tijdens de [autorisatie code toekennings stroom](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code).
+De `redirect_uri` moet zijn geregistreerd in de app-configuratie en is ook in `AndroidManifest.xml` ter ondersteuning van omleiding tijdens de [autorisatie code toekennings stroom](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code).
 
 ## <a name="initialize-ipublicclientapplication"></a>IPublicClientApplication initialiseren
 
@@ -81,7 +80,7 @@ PublicClientApplication.createMultipleAccountPublicClientApplication(
 
 ## <a name="interactively-acquire-a-token"></a>Interactief een token verkrijgen
 
-Als u een token interactief wilt aanschaffen met MSAL, bouwt u `AcquireTokenParameters` een instantie en levert u deze `acquireToken` aan de-methode. De onderstaande token aanvraag gebruikt de `default` -instantie.
+Als u een token interactief wilt aanschaffen met MSAL, bouwt `AcquireTokenParameters` u een instantie en levert u deze aan de- `acquireToken` methode. De onderstaande token aanvraag gebruikt de- `default` instantie.
 
 ```java
 IMultipleAccountPublicClientApplication pca = ...; // Initialization not shown
@@ -112,7 +111,7 @@ pca.acquireToken(parameters);
 
 ## <a name="silently-renew-a-token"></a>Een token op de achtergrond vernieuwen
 
-Als u een token op de achtergrond wilt verkrijgen met MSAL `AcquireTokenSilentParameters` , bouwt u een instantie en `acquireTokenSilentAsync` levert u deze aan de-methode. In tegens `acquireToken` telling tot de `authority` methode moet de worden opgegeven om een token op de achtergrond te verkrijgen.
+Als u een token op de achtergrond wilt verkrijgen met MSAL, bouwt `AcquireTokenSilentParameters` u een instantie en levert u deze aan de- `acquireTokenSilentAsync` methode. In tegens telling tot de `acquireToken` methode `authority` moet de worden opgegeven om een token op de achtergrond te verkrijgen.
 
 ```java
 IMultilpeAccountPublicClientApplication pca = ...; // Initialization not shown
@@ -139,7 +138,7 @@ pca.acquireTokenSilentAsync(parameters);
 
 ## <a name="specify-a-policy"></a>Een beleid opgeven
 
-Omdat beleids regels in B2C worden weer gegeven als afzonderlijke instanties, wordt het aanroepen van een ander beleid dan de standaard `fromAuthority` waarde bereikt door een `acquireToken` component `acquireTokenSilent` op te geven bij het maken of para meters.  Bijvoorbeeld:
+Omdat beleids regels in B2C worden weer gegeven als afzonderlijke instanties, wordt het aanroepen van een ander beleid dan de standaard waarde bereikt door een component op te geven `fromAuthority` bij het maken `acquireToken` of `acquireTokenSilent` para meters.  Bijvoorbeeld:
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
@@ -155,9 +154,9 @@ AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
 
 De gebruikers stroom voor het registreren of aanmelden van het lokale account bevat een**verg eten wacht woord?** gekoppeld. Als u op deze koppeling klikt, wordt de gebruikers stroom voor wacht woord opnieuw instellen niet automatisch geactiveerd.
 
-In plaats daarvan wordt de `AADB2C90118` fout code geretourneerd naar uw app. Uw app moet deze fout code verwerken door een specifieke gebruikers stroom uit te voeren waarmee het wacht woord opnieuw wordt ingesteld.
+In plaats daarvan wordt de fout code `AADB2C90118` geretourneerd naar uw app. Uw app moet deze fout code verwerken door een specifieke gebruikers stroom uit te voeren waarmee het wacht woord opnieuw wordt ingesteld.
 
-Voor het opvangen van een fout code voor het opnieuw instellen van een wacht woord `AuthenticationCallback`, kan de volgende implementatie worden gebruikt in uw:
+Voor het opvangen van een fout code voor het opnieuw instellen van een wacht woord, kan de volgende implementatie worden gebruikt in uw `AuthenticationCallback` :
 
 ```java
 new AuthenticationCallback() {
@@ -185,7 +184,7 @@ new AuthenticationCallback() {
 
 ## <a name="use-iauthenticationresult"></a>IAuthenticationResult gebruiken
 
-Een geslaagde token verwerving resulteert `IAuthenticationResult` in een object. Het bevat het toegangs token, de gebruikers claims en de meta gegevens.
+Een geslaagde token verwerving resulteert in een `IAuthenticationResult` object. Het bevat het toegangs token, de gebruikers claims en de meta gegevens.
 
 ### <a name="get-the-access-token-and-related-properties"></a>Het toegangs token en de bijbehorende eigenschappen ophalen
 
@@ -227,15 +226,15 @@ String tenantId = account.getTenantId();
 
 ### <a name="idtoken-claims"></a>IdToken claims
 
-Claims die in de IdToken worden geretourneerd, worden gevuld door de Security Token Service (STS), niet door MSAL. Afhankelijk van de ID-provider (IdP) die wordt gebruikt, zijn sommige claims mogelijk niet aanwezig. Sommige id bieden momenteel geen `preferred_username` claim. Omdat deze claim wordt gebruikt door MSAL voor caching, wordt een tijdelijke aanduiding `MISSING FROM THE TOKEN RESPONSE`in plaats daarvan gebruikt. Zie [overzicht van tokens in azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#claims)voor meer informatie over B2C IdToken claims.
+Claims die in de IdToken worden geretourneerd, worden gevuld door de Security Token Service (STS), niet door MSAL. Afhankelijk van de ID-provider (IdP) die wordt gebruikt, zijn sommige claims mogelijk niet aanwezig. Sommige id bieden momenteel geen `preferred_username` claim. Omdat deze claim wordt gebruikt door MSAL voor caching, wordt een tijdelijke aanduiding `MISSING FROM THE TOKEN RESPONSE` in plaats daarvan gebruikt. Zie [overzicht van tokens in azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#claims)voor meer informatie over B2C IdToken claims.
 
 ## <a name="managing-accounts-and-policies"></a>Accounts en beleids regels beheren
 
 B2C behandelt elk beleid als een afzonderlijke instantie. De toegangs tokens, vernieuwings tokens en ID-tokens die door elk beleid worden geretourneerd, zijn dus niet uitwisselbaar. Dit betekent dat elk beleid een afzonderlijk `IAccount` object retourneert waarvan de tokens niet kunnen worden gebruikt voor het aanroepen van andere beleids regels.
 
-Elk beleid voegt een `IAccount` aan de cache toe voor elke gebruiker. Als een gebruiker zich aanmeldt bij een toepassing en twee beleids regels aanroept, hebben `IAccount`ze twee s. Als u deze gebruiker uit de cache wilt verwijderen, moet `removeAccount()` u voor elk beleid aanroepen.
+Elk beleid voegt een `IAccount` aan de cache toe voor elke gebruiker. Als een gebruiker zich aanmeldt bij een toepassing en twee beleids regels aanroept, hebben ze twee `IAccount` s. Als u deze gebruiker uit de cache wilt verwijderen, moet u `removeAccount()` voor elk beleid aanroepen.
 
-Wanneer u tokens vernieuwt voor een `acquireTokenSilent`beleid met, geeft `IAccount` u hetzelfde op als het resultaat van eerdere aanroepen van het `AcquireTokenSilentParameters`beleid naar. Als u een account opgeeft dat door een ander beleid wordt geretourneerd, treedt er een fout op.
+Wanneer u tokens vernieuwt voor een beleid met `acquireTokenSilent` , geeft u hetzelfde op als het `IAccount` resultaat van eerdere aanroepen van het beleid naar `AcquireTokenSilentParameters` . Als u een account opgeeft dat door een ander beleid wordt geretourneerd, treedt er een fout op.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -17,10 +17,9 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 0104547a432f7f78d74731e11926bcd82088cef7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76264030"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Hulp voor architectuur via pushmeldingen van het bedrijf
@@ -234,7 +233,7 @@ De volledige voorbeeld code is beschikbaar op [Notification hub]-voor beelden. H
 
     ![][3]
 
-    g. Configureer de taak zo dat deze continu wordt uitgevoerd. Als u zich aanmeldt bij de [Azure Portal] , moet u er ongeveer als volgt uitzien:
+    bijvoorbeeld Configureer de taak zo dat deze continu wordt uitgevoerd. Als u zich aanmeldt bij de [Azure Portal] , moet u er ongeveer als volgt uitzien:
 
     ![][4]
 
@@ -244,7 +243,7 @@ De volledige voorbeeld code is beschikbaar op [Notification hub]-voor beelden. H
 
     b. Zorg ervoor dat uw toepassing is ingeschakeld voor het ontvangen van pop-upmeldingen.
 
-    c. Zorg ervoor dat de volgende Notification Hubs registratie code wordt aangeroepen bij het opstarten van de app (na het `HubName` vervangen `DefaultListenSharedAccessSignature` van de waarden en):
+    c. Zorg ervoor dat de volgende Notification Hubs registratie code wordt aangeroepen bij het opstarten van de app (na het vervangen van de `HubName` waarden en) `DefaultListenSharedAccessSignature` :
 
     ```csharp
     private async void InitNotificationsAsync()
@@ -291,4 +290,4 @@ De volledige voorbeeld code is beschikbaar op [Notification hub]-voor beelden. H
 [Service Bus pub/sub-programmering]: https://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
 [Azure-Webtaak]: ../app-service/webjobs-create.md
 [Notification Hubs-Windows Universal-zelf studie]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[Azure Portal]: https://portal.azure.com/
+[Azure-portal]: https://portal.azure.com/

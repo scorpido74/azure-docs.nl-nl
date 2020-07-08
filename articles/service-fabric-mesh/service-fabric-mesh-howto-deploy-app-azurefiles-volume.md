@@ -7,10 +7,9 @@ ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 5bb7ab6c861d958f6811ca852363c59cfced3940
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76718817"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Een op Azure Files gebaseerd volume koppelen in een Service Fabric mesh-toepassing 
@@ -34,7 +33,7 @@ PS C:\WINDOWS\system32> Mofcomp c:\windows\system32\wbem\smbwmiv2.mof
 
 U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om dit artikel te volt ooien. 
 
-Als u de Azure CLI lokaal wilt gebruiken met dit artikel, `az --version` moet u ervoor `azure-cli (2.0.43)`zorgen dat u ten minste een waarde retourneert.  Installeer de module Azure Service Fabric mesh CLI (of werk deze bij) door deze [instructies](service-fabric-mesh-howto-setup-cli.md)te volgen.
+Als u de Azure CLI lokaal wilt gebruiken met dit artikel, moet u ervoor zorgen dat u `az --version` ten minste een waarde retourneert `azure-cli (2.0.43)` .  Installeer de module Azure Service Fabric mesh CLI (of werk deze bij) door deze [instructies](service-fabric-mesh-howto-setup-cli.md)te volgen.
 
 Aanmelden bij Azure en uw abonnement instellen:
 
@@ -57,7 +56,7 @@ az storage share create --name myshare --quota 2048 --connection-string $current
 ```
 
 ## <a name="get-the-storage-account-name-and-key-and-the-file-share-name"></a>De naam en sleutel van het opslag account en de naam van de bestands share ophalen
-In de naam van het opslag account, de sleutel van het opslag account en de naam van `<storageAccountName>`de `<storageAccountKey>`bestands share `<fileShareName>` wordt verwezen als, en in de volgende secties. 
+In de naam van het opslag account, de sleutel van het opslag account en de naam van de bestands share wordt verwezen als `<storageAccountName>` , `<storageAccountKey>` en `<fileShareName>` in de volgende secties. 
 
 Vermeld uw opslag accounts en haal de naam van het opslag account op met de bestands share die u wilt gebruiken:
 ```azurecli-interactive
@@ -81,11 +80,11 @@ U kunt deze waarden ook vinden in de [Azure Portal](https://portal.azure.com):
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>Een volume resource declareren en de service resource (JSON) bijwerken
 
-Voeg para meters `<fileShareName>`toe `<storageAccountName>`voor de `<storageAccountKey>` , en en waarden die u in een vorige stap hebt gevonden. 
+Voeg para meters toe voor de `<fileShareName>` , `<storageAccountName>` en en `<storageAccountKey>` waarden die u in een vorige stap hebt gevonden. 
 
-Maak een volume resource als een peer van de toepassings bron. Geef een naam en provider ("SFAzureFile") op om het op Azure Files gebaseerd volume te gebruiken). Geef `azureFileParameters`in de para meters voor `<fileShareName>`de `<storageAccountName>`,, `<storageAccountKey>` en waarden op die u in een vorige stap hebt gevonden.
+Maak een volume resource als een peer van de toepassings bron. Geef een naam en provider ("SFAzureFile") op om het op Azure Files gebaseerd volume te gebruiken). `azureFileParameters`Geef in de para meters voor de `<fileShareName>` , `<storageAccountName>` , en `<storageAccountKey>` waarden op die u in een vorige stap hebt gevonden.
 
-Als u het volume in uw service wilt koppelen, `volumeRefs` voegt u `codePackages` een toe aan het-element van de service.  `name`is de bron-ID voor het volume (of een implementatie sjabloon parameter voor de volume bron) en de naam van het volume dat is gedeclareerd in het bron bestand volume. yaml.  `destinationPath`is de lokale map waaraan het volume wordt gekoppeld.
+Als u het volume in uw service wilt koppelen, voegt `volumeRefs` u een toe aan het- `codePackages` element van de service.  `name`is de bron-ID voor het volume (of een implementatie sjabloon parameter voor de volume bron) en de naam van het volume dat is gedeclareerd in het bron bestand volume. yaml.  `destinationPath`is de lokale map waaraan het volume wordt gekoppeld.
 
 ```json
 {
@@ -195,7 +194,7 @@ Als u het volume in uw service wilt koppelen, `volumeRefs` voegt u `codePackages
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-yaml"></a>Een volume resource declareren en de service resource bijwerken (YAML)
 
-Voeg een nieuw *volume. yaml* -bestand toe aan de map *app-resources* voor uw toepassing.  Geef een naam en provider ("SFAzureFile") op om het op Azure Files gebaseerd volume te gebruiken). `<fileShareName>`, `<storageAccountName>`en `<storageAccountKey>` zijn de waarden die u in een vorige stap hebt gevonden.
+Voeg een nieuw *volume. yaml* -bestand toe aan de map *app-resources* voor uw toepassing.  Geef een naam en provider ("SFAzureFile") op om het op Azure Files gebaseerd volume te gebruiken). `<fileShareName>`, `<storageAccountName>` en `<storageAccountKey>` zijn de waarden die u in een vorige stap hebt gevonden.
 
 ```yaml
 volume:
@@ -210,7 +209,7 @@ volume:
         accountKey: <storageAccountKey>
 ```
 
-Werk het bestand *service. yaml* in de map *service resources* bij om het volume te koppelen aan uw service.  Voeg het `volumeRefs` element toe aan `codePackages` het-element.  `name`is de bron-ID voor het volume (of een implementatie sjabloon parameter voor de volume bron) en de naam van het volume dat is gedeclareerd in het bron bestand volume. yaml.  `destinationPath`is de lokale map waaraan het volume wordt gekoppeld.
+Werk het bestand *service. yaml* in de map *service resources* bij om het volume te koppelen aan uw service.  Voeg het `volumeRefs` element toe aan het- `codePackages` element.  `name`is de bron-ID voor het volume (of een implementatie sjabloon parameter voor de volume bron) en de naam van het volume dat is gedeclareerd in het bron bestand volume. yaml.  `destinationPath`is de lokale map waaraan het volume wordt gekoppeld.
 
 ```yaml
 ## Service definition ##

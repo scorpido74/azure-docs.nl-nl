@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: af9c157b4644156edc6dcdb1b53c141263576500
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68727154"
 ---
 # <a name="azure-infrastructure-monitoring"></a>Bewaking van Azure-infra structuur   
@@ -29,7 +28,7 @@ Azure controleert en werkt de configuratie-instellingen en basislijn configurati
 
 De basislijn configuraties die vereist zijn voor services op basis van Azure worden gecontroleerd door het Azure Security-en nalevings team en door service teams. Een beoordeling van een service team maakt deel uit van de tests die zich voordoen voordat de implementatie van de productie service wordt uitgevoerd.
 
-## <a name="vulnerability-management"></a>Beveiligings beheer
+## <a name="vulnerability-management"></a>Beheer van beveiligingsproblemen
 Met beveiligings update beheer kunt u systemen beveiligen tegen bekende beveiligings problemen. Azure gebruikt geïntegreerde implementatie systemen voor het beheren van de distributie en installatie van beveiligings updates voor micro soft-software. Azure kan ook op de resources van het micro soft Security Response Center (MSRC) tekenen. Het MSRC identificeert, bewaakt, reageert op en verhelpt beveiligings incidenten en Cloud lekken rondom de klok, elke dag van het jaar.
 
 ## <a name="vulnerability-scanning"></a>Scannen van beveiligings problemen

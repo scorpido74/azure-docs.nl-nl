@@ -14,17 +14,16 @@ ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
 ms.openlocfilehash: e75e3f3eecf6c34050aeaa7fe387fffb0de58a74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76513198"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Migreren van Windows Azure Media Encoder naar Media Encoder Standard
 
 In dit artikel worden de stappen beschreven voor het migreren van de verouderde Windows Azure Media Encoder (WAME)-media processor (die buiten gebruik wordt gesteld) naar de Media Encoder Standard-media processor. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](legacy-components.md) .
 
-Bij het coderen van bestanden met WAME gebruikt klanten doorgaans een vooraf ingestelde teken `H264 Adaptive Bitrate MP4 Set 1080p`reeks, zoals. Als u wilt migreren, moet uw code worden bijgewerkt om gebruik te kunnen maken van de **Media Encoder Standard** media processor in plaats van WAME, en een van de `H264 Multiple Bitrate 1080p`equivalente [voor instellingen](media-services-mes-presets-overview.md) van het systeem, zoals. 
+Bij het coderen van bestanden met WAME gebruikt klanten doorgaans een vooraf ingestelde teken reeks, zoals `H264 Adaptive Bitrate MP4 Set 1080p` . Als u wilt migreren, moet uw code worden bijgewerkt om gebruik te kunnen maken van de **Media Encoder Standard** media processor in plaats van WAME, en een van de equivalente [voor instellingen](media-services-mes-presets-overview.md) van het systeem, zoals `H264 Multiple Bitrate 1080p` . 
 
 ## <a name="migrating-to-media-encoder-standard"></a>Migreren naar Media Encoder Standard
 
@@ -74,7 +73,7 @@ Media Encoder Standard is robuuster, betrouwbaarder, heeft betere prestaties en 
 * Media Encoder Standard produceert artefacten, zoals bestanden met de meta gegevens van het [invoer bestand](media-services-input-metadata-schema.md) en de [meta gegevens van het uitvoer bestand](media-services-output-metadata-schema.md).
 * Zoals is beschreven op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/media-services/#encoding) (met name in het gedeelte Veelgestelde vragen), wordt u gefactureerd op basis van de duur van de bestanden die worden geproduceerd als uitvoer wanneer u Video's codeert met behulp van Media Encoder Standard. Met WAME wordt u gefactureerd op basis van de grootte van de invoer video bestanden en video bestand (en).
 
-## <a name="need-help"></a>Hebt u hulp nodig?
+## <a name="need-help"></a>Hulp nodig?
 
 U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 

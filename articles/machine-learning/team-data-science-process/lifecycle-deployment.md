@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1138c95274c769186a9a29aa4d35517e378baeae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720483"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Implementatie fase van de team data Science proces levenscyclus
@@ -24,7 +23,7 @@ In dit artikel vindt u een overzicht van de doelen, taken en producten die zijn 
 
    1. **Inzicht in het bedrijf**
    2. **Gegevens verzamelen en begrijpen**
-   3. **Modelleren**
+   3. **Modellen maken**
    4. **Implementatie**
    5. **Aanvaarding van de klant**
 
@@ -52,7 +51,7 @@ Nadat u een set modellen hebt die goed pres teren, kunt u deze operationeel make
 
 Zie [Deploy a Azure machine learning web service](../studio/deploy-a-machine-learning-web-service.md)(Engelstalig) voor voor beelden van model uitoefening met een Azure machine learning-webservice. Het is een best practice om telemetrie te bouwen en te controleren in het productie model en de gegevens pijplijn die u implementeert. Deze werk wijze helpt bij het volgen van de systeem status rapportage en probleem oplossing.  
 
-## <a name="artifacts"></a>Artefacten
+## <a name="artifacts"></a>Artifacts
 
 * Een status dashboard waarin de metrische gegevens van de systeem status en de sleutel worden weer gegeven
 * Een laatste model rapport met implementatie Details
@@ -65,7 +64,7 @@ Hier vindt u koppelingen naar elke stap in de levens cyclus van de TDSP:
 
    1. [Inzicht in het bedrijf](lifecycle-business-understanding.md)
    2. [Gegevens verkrijgen en meer informatie](lifecycle-data.md)
-   3. [Modelleren](lifecycle-modeling.md)
+   3. [Modellen maken](lifecycle-modeling.md)
    4. [Implementatie](lifecycle-deployment.md)
    5. [Aanvaarding van de klant](lifecycle-acceptance.md)
 

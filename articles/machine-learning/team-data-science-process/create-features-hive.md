@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c926aac3ea4360793ff52b616a55dc6198357c8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721775"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Functies maken voor gegevens in een Hadoop-cluster met behulp van Hive-query's
@@ -79,7 +78,7 @@ In binaire classificatie moeten niet-numerieke Categorische variabelen worden ge
             group by <column_name1>, <column_name2>
             )b
 
-In dit voor beeld worden `smooth_param1` variabelen `smooth_param2` en ingesteld op het vloeiend maken van de risico waarden die worden berekend op basis van de gegevens. Risico's hebben een bereik tussen-inf en inf. Een risico > 0 geeft aan dat de kans dat het doel gelijk is aan 1 groter is dan 0,5.
+In dit voor beeld `smooth_param1` worden variabelen en `smooth_param2` ingesteld op het vloeiend maken van de risico waarden die worden berekend op basis van de gegevens. Risico's hebben een bereik tussen-inf en inf. Een risico > 0 geeft aan dat de kans dat het doel gelijk is aan 1 groter is dan 0,5.
 
 Nadat de risico tabel is berekend, kunnen gebruikers risico waarden toewijzen aan een tabel door deze te koppelen aan de risico tabel. In de vorige sectie is de Hive-query toegevoegd.
 
@@ -89,14 +88,14 @@ Hive wordt geleverd met een set UDFs voor het verwerken van datetime-velden. In 
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-Deze Hive-query gaat ervan uit dat het * \<datum/tijd-veld>* de standaard notatie voor datum/tijd heeft.
+Deze Hive-query gaat ervan uit dat de *\<datetime field>* in de standaard notatie voor datum/tijd is.
 
 Als een datum veld niet de standaard indeling heeft, moet u eerst het datum/tijd-veld converteren naar een UNIX-tijds tempel en de UNIX-tijds tempel vervolgens converteren naar een datum/tijd-teken reeks in de standaard indeling. Wanneer de datum/tijd de standaard indeling heeft, kunnen gebruikers de Inge sloten datetime-Udf's Toep assen om functies te extra heren.
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-Als in deze query het * \<veld Datum/tijd>* het patroon als *03/26/2015 12:04:39*heeft, is het * \<patroon van het veld Datum/tijd>.* `'MM/dd/yyyy HH:mm:ss'` Gebruikers kunnen de app testen
+In deze query geldt dat als het een *\<datetime field>* patroon heeft dat lijkt op * \<pattern of the datetime field> * *03/26/2015 12:04:39* `'MM/dd/yyyy HH:mm:ss'` . Gebruikers kunnen de app testen
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;
@@ -112,7 +111,7 @@ Als de Hive-tabel een tekst veld bevat met een teken reeks met woorden die worde
 ### <a name="calculate-distances-between-sets-of-gps-coordinates"></a><a name="hive-gpsdistance"></a>De afstanden tussen sets van GPS-coördinaten berekenen
 De query die in deze sectie wordt gegeven, kan rechtstreeks worden toegepast op de NYC-gegevens van de taxi-reis. Het doel van deze query is om te laten zien hoe een Inge sloten wiskundige functie in Hive moet worden toegepast om functies te genereren.
 
-De velden die in deze query worden gebruikt, zijn de GPS-coördinaten van pickup-en dropoff-locaties, de naam van de *\_ophaal lengte*, *\_afhalen breedte*graad, *dropoff\_-lengte graad*en *dropoff\_breedte graad*. De query's die de directe afstand berekenen tussen de coördinaten voor ophalen en dropoff zijn:
+De velden die in deze query worden gebruikt, zijn de GPS-coördinaten van pickup-en dropoff-locaties, de naam van de *ophaal \_ lengte*, *afhalen \_ breedte*graad, *dropoff- \_ lengte graad*en *dropoff \_ breedte graad*. De query's die de directe afstand berekenen tussen de coördinaten voor ophalen en dropoff zijn:
 
         set R=3959;
         set pi=radians(180);
@@ -130,7 +129,7 @@ De velden die in deze query worden gebruikt, zijn de GPS-coördinaten van pickup
         and dropoff_latitude between 30 and 90
         limit 10;
 
-De wiskundige vergelijkingen waarmee de afstand tussen twee GPS-coördinaten worden berekend, vindt u op de site met <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Gebeweegde type scripts</a> , ontworpen door Peter Lapisu. In deze Java script is de `toRad()` functie gewoon *lat_or_lon*pi/180, waarmee graden wordt geconverteerd naar radialen. *Lat_or_lon* is hier de breedte graad of lengte graad. Component bevat `atan2`de functie niet, maar biedt de functie `atan`. de `atan2` functie wordt geïmplementeerd door `atan` de functie in de bovenstaande Hive-query met behulp van de definitie in <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a>.
+De wiskundige vergelijkingen waarmee de afstand tussen twee GPS-coördinaten worden berekend, vindt u op de site met <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Gebeweegde type scripts</a> , ontworpen door Peter Lapisu. In deze Java script is de functie `toRad()` gewoon *lat_or_lon*pi/180, waarmee graden wordt geconverteerd naar radialen. *Lat_or_lon* is hier de breedte graad of lengte graad. Component bevat de functie niet `atan2` , maar biedt de functie `atan` . de `atan2` functie wordt geïmplementeerd door de `atan` functie in de bovenstaande Hive-query met behulp van de definitie in <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a>.
 
 ![Werkruimte maken](./media/create-features-hive/atan2new.png)
 

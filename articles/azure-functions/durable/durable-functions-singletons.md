@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4eff7c4c91ed664fcf1f4fc7a8be2d43d24e5c6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76262806"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Singleton-Orchestrator in Durable Functions (Azure Functions)
@@ -20,7 +19,7 @@ Voor achtergrond taken moet u er vaak voor zorgen dat slechts één exemplaar va
 
 In het volgende voor beeld ziet u een HTTP-trigger-functie waarmee een singleton achtergrond taak indeling wordt gemaakt. De code zorgt ervoor dat er slechts één exemplaar bestaat voor een opgegeven exemplaar-ID.
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("HttpStartSingle")]
@@ -52,11 +51,11 @@ public static async Task<HttpResponseMessage> RunSingle(
 ```
 
 > [!NOTE]
-> De vorige C#-code is voor Durable Functions 2. x. Voor Durable Functions 1. x, moet u kenmerk `OrchestrationClient` gebruiken in plaats van `DurableClient` het kenmerk, en moet u het `DurableOrchestrationClient` parameter type gebruiken in `IDurableOrchestrationClient`plaats van. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+> De vorige C#-code is voor Durable Functions 2. x. Voor Durable Functions 1. x, moet u `OrchestrationClient` kenmerk gebruiken in plaats van het `DurableClient` kenmerk, en moet u het `DurableOrchestrationClient` parameter type gebruiken in plaats van `IDurableOrchestrationClient` . Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-**function. json**
+**function.json**
 
 ```json
 {
@@ -83,7 +82,7 @@ public static async Task<HttpResponseMessage> RunSingle(
 }
 ```
 
-**index. js**
+**index.js**
 
 ```javascript
 const df = require("durable-functions");
@@ -114,7 +113,7 @@ module.exports = async function(context, req) {
 
 ---
 
-Exemplaar-Id's zijn standaard wille keurig gegenereerde GUID'S. In het vorige voor beeld wordt de exemplaar-ID echter door gegeven in route gegevens van de URL. De code aanroepen `GetStatusAsync`(C#) `getStatus` of (Java script) om te controleren of een exemplaar met de opgegeven id al wordt uitgevoerd. Als een dergelijk exemplaar niet wordt uitgevoerd, wordt er een nieuw exemplaar gemaakt met die ID.
+Exemplaar-Id's zijn standaard wille keurig gegenereerde GUID'S. In het vorige voor beeld wordt de exemplaar-ID echter door gegeven in route gegevens van de URL. De code aanroepen `GetStatusAsync` (C#) of `getStatus` (Java script) om te controleren of een exemplaar met de opgegeven id al wordt uitgevoerd. Als een dergelijk exemplaar niet wordt uitgevoerd, wordt er een nieuw exemplaar gemaakt met die ID.
 
 > [!NOTE]
 > Dit voor beeld bevat een mogelijke race voorwaarde. Als twee instanties van **HttpStartSingle** gelijktijdig worden uitgevoerd, wordt door beide functie aanroepen geslaagd, maar er wordt slechts één Orchestration-exemplaar gestart. Afhankelijk van uw vereisten kan dit ongewenste neven effecten hebben. Daarom is het belang rijk om ervoor te zorgen dat twee aanvragen deze trigger gelijktijdig kunnen uitvoeren.

@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9409f14b20684afa1a39d45e663ff316f405cc97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76717923"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Schaal bare gegevens wetenschap met Azure Data Lake: een end-to-end-procedure
@@ -131,7 +130,7 @@ De trip_fare CSV bevat details over het tarief dat voor elke reis is betaald, zo
        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-De unieke sleutel voor deelname aan\_reis gegevens en\_reis tarief bestaat uit de volgende drie velden: Medallion, Hack\_License en datum\_/tijd van ophalen. De onbewerkte CSV-bestanden kunnen worden geopend vanuit een Azure Storage blob. Het U-SQL-script voor deze samen voeging bevindt zich in de sectie [koppelings reis en ritbedrag tabellen](#join) .
+De unieke sleutel voor deelname aan reis \_ gegevens en reis \_ tarief bestaat uit de volgende drie velden: Medallion, Hack \_ License en \_ datum/tijd van ophalen. De onbewerkte CSV-bestanden kunnen worden geopend vanuit een Azure Storage blob. Het U-SQL-script voor deze samen voeging bevindt zich in de sectie [koppelings reis en ritbedrag tabellen](#join) .
 
 ## <a name="process-data-with-u-sql"></a>Gegevens verwerken met U-SQL
 De gegevens verwerkings taken die in deze sectie worden geïllustreerd, zijn opname, kwaliteit controleren, verkennen en bemonsteren van de gegevens. Hoe u kunt toevoegen aan reis-en ritbedrag tabellen, wordt ook weer gegeven. In de laatste sectie wordt een U-SQL-script taak uitgevoerd vanuit het Azure Portal. Hier vindt u koppelingen naar elke Subsectie:
@@ -158,7 +157,7 @@ Om U-SQL uit te voeren, opent U Visual Studio, klikt u op **bestand--> nieuw--> 
 
 ### <a name="data-ingestion-read-in-data-from-public-blob"></a><a name="ingest"></a>Gegevens opname: gegevens uit open bare BLOB lezen
 
-Er wordt verwezen naar de locatie van de gegevens in de Azure- **BLOB\_als\@wasb://container\_-\_naam\_Blob Storage-account name.blob.core.Windows.net/blob_name** en kunnen worden geëxtraheerd met **Extracts. CSV ()**. Vervang uw eigen container naam en de naam van het opslag account in de\_volgende\@scripts\_voor\_container\_name Blob Storage account name in het adres wasb. Omdat de bestands namen zich in dezelfde indeling bevinden, is het mogelijk **reis\_gegevens\_\{\*\}. CSV** te gebruiken om alle 12 de bestanden te lezen.
+Er wordt verwezen naar de locatie van de gegevens in de Azure-Blob als **wasb://container- \_ naam \@ BLOB \_ Storage- \_ account \_ name.blob.core.Windows.net/blob_name** en kunnen worden geëxtraheerd met behulp van **Extractors.Csv ()**. Vervang uw eigen container naam en de naam van het opslag account in de volgende scripts voor container \_ name \@ BLOB \_ Storage \_ account \_ name in het adres wasb. Omdat de bestands namen zich in dezelfde indeling bevinden, is het mogelijk **reis \_ gegevens \_ \{ \* \} . CSV** te gebruiken om alle 12 de bestanden te lezen.
 
     ///Read in Trip data
     @trip0 =
@@ -181,7 +180,7 @@ Er wordt verwezen naar de locatie van de gegevens in de Azure- **BLOB\_als\@wasb
     FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
     USING Extractors.Csv();
 
-Omdat er kopteksten zijn in de eerste rij, moet u de kopteksten verwijderen en de kolom typen wijzigen in de gewenste waarden. U kunt de verwerkte gegevens opslaan op Azure Data Lake Storage met behulp van **swebhdfs://data_lake_storage_name. azuredatalakestorage. net/folder_name/file_name**_ of naar een Azure Blob Storage-account met **wasb://container_name\@blob_storage_account_name. blob. core. Windows. net/blob_name**.
+Omdat er kopteksten zijn in de eerste rij, moet u de kopteksten verwijderen en de kolom typen wijzigen in de gewenste waarden. U kunt de verwerkte gegevens opslaan op Azure Data Lake Storage met behulp van **swebhdfs://data_lake_storage_name. azuredatalakestorage. net/folder_name/file_name**_ of naar een Azure Blob Storage-account met **wasb://container_name \@ blob_storage_account_name. blob. core. windows. net/blob_name**.
 
     // change data types
     @trip =
@@ -569,7 +568,7 @@ Hier bouwt u een binair classificatie model om te voors pellen of een reis wordt
 ### <a name="build-web-service-api-and-consume-it-in-python"></a>Web Service-API maken en deze gebruiken in python
 U wilt het machine learning model operationeel maken nadat het is gemaakt. Het model voor binaire logistiek wordt hier als voor beeld gebruikt. Zorg ervoor dat de scikit-leer versie op uw lokale computer 0.15.1 is (Azure Machine Learning Studio al ten minste op deze versie).
 
-* Zoek uw werkruimte referenties van Azure Machine Learning Studio (klassieke) instellingen. Klik in azure machine learning Studio op **instellingen** --> **naam** --> **autorisatie tokens**.
+* Zoek uw werkruimte referenties van Azure Machine Learning Studio (klassieke) instellingen. Klik in azure machine learning Studio op **instellingen**  -->  **naam**  -->  **autorisatie tokens**.
 
     ![stand](./media/data-lake-walkthrough/c3-workspace-id.PNG)
 
@@ -612,7 +611,7 @@ Een HDInsight-cluster (Linux) maken op basis van de [Azure Portal](https://porta
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
 ### <a name="create-hive-table-in-hdinsight"></a>Hive-tabel maken in HDInsight
-U maakt nu Hive-tabellen die worden gebruikt in Azure Machine Learning Studio (klassiek) in het HDInsight-cluster met behulp van de gegevens die zijn opgeslagen in Azure Data Lake Storage in de vorige stap. Ga naar het HDInsight-cluster dat u hebt gemaakt. Klik op **instellingen** --> **Eigenschappen** --> **cluster Aad-identiteit** --> **ADLS toegang**, Controleer of uw Azure data Lake Storage account is toegevoegd in de lijst met rechten voor lezen, schrijven en uitvoeren.
+U maakt nu Hive-tabellen die worden gebruikt in Azure Machine Learning Studio (klassiek) in het HDInsight-cluster met behulp van de gegevens die zijn opgeslagen in Azure Data Lake Storage in de vorige stap. Ga naar het HDInsight-cluster dat u hebt gemaakt. Klik op **instellingen**  -->  **Eigenschappen**  -->  **cluster Aad-identiteit**  -->  **ADLS toegang**, Controleer of uw Azure data Lake Storage account is toegevoegd in de lijst met rechten voor lezen, schrijven en uitvoeren.
 
  ![19](./media/data-lake-walkthrough/19-HDI-cluster-add-ADLS.PNG)
 
@@ -675,7 +674,7 @@ Een voor beeld van een experiment met binaire classificatie voor het lezen van g
 
  ![24](./media/data-lake-walkthrough/24-AML-exp.PNG)
 
-Wanneer het experiment is gemaakt, klikt **u op webservice** --> voor**Predictive Web** service instellen
+Wanneer het experiment is gemaakt, klikt **u op webservice**voor  -->  **Predictive Web** service instellen
 
  ![25](./media/data-lake-walkthrough/25-AML-exp-deploy.PNG)
 

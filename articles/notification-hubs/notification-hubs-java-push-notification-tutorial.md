@@ -17,10 +17,9 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: d48973cc7c5ed1fc7ae3f96128d488f3f1df3a05
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76263860"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>Notification Hubs van Java gebruiken
@@ -188,7 +187,7 @@ Installatie-API is een alternatief mechanisme voor registratie beheer. In plaats
 
 De installatie bevat alles wat u nodig hebt: push Channel (apparaat-token), tags, sjablonen, secundaire tegels (voor WNS en APNS). U hoeft de service niet aan te roepen om ID meer op te halen: u hoeft alleen een GUID of andere id te genereren, deze op het apparaat te laten staan en te verzenden naar uw back-end met een push kanaal (apparaat-token).
 
-Op de back-end moet u slechts één aanroep doen naar `CreateOrUpdateInstallation`; het is volledig idempotent, dus u kunt het opnieuw proberen als dat nodig is.
+Op de back-end moet u slechts één aanroep doen naar `CreateOrUpdateInstallation` ; het is een volledig idempotent, zodat u het opnieuw kunt proberen als dat nodig is.
 
 Bijvoorbeeld voor Amazon Kindle Fire:
 
@@ -221,7 +220,7 @@ Installatie verwijderen:
     hub.deleteInstallation(installation.getInstallationId());
     ```
 
-`CreateOrUpdate`, `Patch`, en `Delete` zijn uiteindelijk consistent met `Get`. De aangevraagde bewerking gaat gewoon naar de systeem wachtrij tijdens de aanroep en wordt op de achtergrond uitgevoerd. Get is niet ontworpen voor het hoofd runtime-scenario, maar alleen voor fout opsporing en probleem oplossing, wordt het nauw keurig beperkt door de service.
+`CreateOrUpdate`, `Patch` , en `Delete` zijn uiteindelijk consistent met `Get` . De aangevraagde bewerking gaat gewoon naar de systeem wachtrij tijdens de aanroep en wordt op de achtergrond uitgevoerd. Get is niet ontworpen voor het hoofd runtime-scenario, maar alleen voor fout opsporing en probleem oplossing, wordt het nauw keurig beperkt door de service.
 
 Verzend stroom voor installaties is hetzelfde als voor registraties. Als u een melding wilt ontvangen voor de specifieke installatie, gebruikt u tag "InstallationId: {desired-id}". Voor dit geval is de code:
 
@@ -384,7 +383,7 @@ In dit onderwerp wordt uitgelegd hoe u een eenvoudige Java-REST-client maakt voo
   * [Meldingen verzenden naar geverifieerde gebruikers]
   * [Kruis platform meldingen verzenden naar geverifieerde gebruikers]
 
-[Java-SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
+[Java SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
 [Get started tutorial]: notification-hubs-ios-apple-push-notification-apns-get-started.md
 [Aan de slag met Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Laatste nieuws verzenden]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md

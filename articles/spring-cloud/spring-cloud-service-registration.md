@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: brendm
 ms.openlocfilehash: 6c217096f0ba4200f49bd1fd8056768a6f6f6dbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76278861"
 ---
 # <a name="discover-and-register-your-spring-cloud-services"></a>Uw lente-Cloud Services ontdekken en registreren
@@ -19,8 +18,8 @@ Service detectie is een belang rijke vereiste voor een architectuur op basis van
 
 ## <a name="register-your-application-using-spring-cloud-service-registry"></a>Uw toepassing registreren met een lente-Cloud service register
 
-Voordat uw toepassing service registratie en detectie kan beheren met een lente-Cloud service register, moeten er verschillende afhankelijkheden zijn opgenomen in het *pom. XML-* bestand van de toepassing.
-Afhankelijkheden voor *veer-Cloud-starter-Netflix-Eureka-client* en *lente-Cloud-starter-Azure-lente-cloud-client* naar uw *pom. XML-bestand* toevoegen
+Voordat uw toepassing service registratie en detectie kan beheren met een lente-Cloud service register, moeten er meerdere afhankelijkheden zijn opgenomen in het *pom.xml* -bestand van de toepassing.
+Neem afhankelijkheden voor *veer-Cloud-starter-Netflix-Eureka-client* en *lente-Cloud-starter-Azure-lente-cloud-client* op uw *pom.xml*
 
 ```xml
     <dependency>

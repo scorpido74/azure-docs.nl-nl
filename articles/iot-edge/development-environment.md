@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 96078be20e8048e481a994fefc169e48ab1d8459
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76511090"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>Bereid uw ontwikkel-en test omgeving voor op IoT Edge
@@ -43,7 +42,7 @@ Als u liever met andere editors of vanuit de CLI wilt ontwikkelen, biedt het Azu
 
 ### <a name="visual-studio-code-extension"></a>Visual Studio Code-extensie
 
-De Azure IoT Edge-extensie voor Visual Studio code biedt IoT Edge module sjablonen die zijn gebaseerd op programmeer talen, waaronder C, C#, Java, node. js en Python, evenals Azure functions in C#.
+De Azure IoT Edge-extensie voor Visual Studio code biedt IoT Edge module sjablonen die zijn gebaseerd op programmeer talen, waaronder C, C#, Java, Node.js en Python, evenals Azure functions in C#.
 
 Zie [Azure IOT-Hulpprogram ma's voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)voor meer informatie en om te downloaden.
 
@@ -59,7 +58,7 @@ De module sjablonen voor sommige talen en services hebben vereisten die nodig zi
 | C | [Git](https://git-scm.com/) |
 | C# | [.NET Core 2,1 SDK](https://www.microsoft.com/net/download) |
 | Java | <ul><li>[Java SE Development Kit 10](https://aka.ms/azure-jdks) <li> [De variabele JAVA_HOME omgeving instellen](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) <li> [Maven](https://maven.apache.org/)</ul> |
-| Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Module Generator van node. js Azure IoT Edge](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
+| Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Generator van Azure IoT Edge Node.js-module](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
 | Python |<ul><li> [Python](https://www.python.org/downloads/) <li> [Pip](https://pip.pypa.io/en/stable/installing/#installation) <li> [Git](https://git-scm.com/) </ul> |
 
 ### <a name="visual-studio-20172019-extension"></a>Visual Studio 2017/2019-extensie
@@ -97,7 +96,7 @@ Zie [Azure IOT EdgeHub dev tool](https://pypi.org/project/iotedgehubdev/)voor me
 
 ### <a name="iot-edge-dev-container"></a>IoT Edge dev-container
 
-De Azure IoT Edge dev-container is een docker-container met alle afhankelijkheden die u nodig hebt om IoT Edge te ontwikkelen. Met deze container kunt u gemakkelijk aan de slag gaan met de taal die u wilt ontwikkelen in, waaronder C#, Python, node. js en Java. U hoeft alleen maar een container engine te installeren, zoals docker of Moby, om de container naar uw ontwikkel machine te halen.
+De Azure IoT Edge dev-container is een docker-container met alle afhankelijkheden die u nodig hebt om IoT Edge te ontwikkelen. Met deze container kunt u gemakkelijk aan de slag gaan met de taal die u wilt ontwikkelen in, waaronder C#, Python, Node.js en Java. U hoeft alleen maar een container engine te installeren, zoals docker of Moby, om de container naar uw ontwikkel machine te halen.
 
 Zie [Azure IOT Edge dev container](https://hub.docker.com/r/microsoft/iotedgedev/)(Engelstalig) voor meer informatie.
 

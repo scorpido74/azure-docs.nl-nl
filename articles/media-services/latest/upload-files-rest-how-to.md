@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.openlocfilehash: 38d46978e37ead59deb17a86f643df041452e497
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76705765"
 ---
 # <a name="upload-files-into-a-media-services-v3-account-using-rest"></a>Bestanden uploaden naar een Media Services v3-account met behulp van REST
@@ -35,14 +34,14 @@ Voor het uitvoeren van de stappen die in dit onderwerp worden beschreven, moet u
     
     Zorg ervoor dat u de laatste stap in het onderwerp [Azure AD-Token ophalen](media-rest-apis-with-postman.md#get-azure-ad-token)volgt. 
 
-## <a name="create-an-asset"></a>Een Asset maken
+## <a name="create-an-asset"></a>Een asset maken
 
 In deze sectie wordt beschreven hoe u een nieuwe Asset maakt.
 
-1. **Activa** -> selecteren om**activa te maken of bij te werken**.
+1. **Activa**selecteren om  ->  **activa te maken of bij te werken**.
 2. Druk op **Verzenden**.
 
-    ![Een Asset maken](./media/upload-files/postman-create-asset.png)
+    ![Een asset maken](./media/upload-files/postman-create-asset.png)
 
 U ziet het **antwoord** met de informatie over nieuw gemaakte activa.
 
@@ -50,7 +49,7 @@ U ziet het **antwoord** met de informatie over nieuw gemaakte activa.
 
 In deze sectie wordt uitgelegd hoe u een SAS-URL kunt ophalen die is gegenereerd voor de gemaakte Asset. De SAS-URL is gemaakt met lees-en schrijf machtigingen en kan worden gebruikt voor het uploaden van digitale bestanden in de Asset-container.
 
-1. **Activa** -> selecteren**lijst van de Asset-url's**.
+1. **Activa**selecteren  ->  **lijst van de Asset-url's**.
 2. Druk op **Verzenden**.
 
     ![Bestand uploaden](./media/upload-files/postman-create-sas-locator.png)

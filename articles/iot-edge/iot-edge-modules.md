@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 1c625e628f53d156ad56a1c69df1c23aec9120ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76548710"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Informatie over Azure IoT Edge-modules
@@ -43,7 +42,7 @@ As use cases for Azure IoT Edge grow, new types of module images and instances w
 
 Wanneer een nieuw module-exemplaar wordt gemaakt door de IoT Edge runtime, wordt er een bijbehorende module-id opgehaald. De module-identiteit wordt opgeslagen in IoT Hub en wordt gebruikt als het bereik van de adressen en de beveiliging voor alle lokale en Cloud communicatie voor dat module-exemplaar.
 
-De identiteit die is gekoppeld aan een module-exemplaar is afhankelijk van de identiteit van het apparaat waarop het exemplaar wordt uitgevoerd en de naam die u in uw oplossing aan die module verstrekt. Als u bijvoorbeeld een module aanroept `insight` die gebruikmaakt van een Azure stream Analytics en u deze implementeert op een apparaat met `Hannover01`de naam, maakt de IOT Edge-runtime een bijbehorende `/devices/Hannover01/modules/insight`module-ID met de naam.
+De identiteit die is gekoppeld aan een module-exemplaar is afhankelijk van de identiteit van het apparaat waarop het exemplaar wordt uitgevoerd en de naam die u in uw oplossing aan die module verstrekt. Als u bijvoorbeeld `insight` een module aanroept die gebruikmaakt van een Azure stream Analytics en u deze implementeert op een apparaat met `Hannover01` de naam, maakt de IOT Edge-runtime een bijbehorende module-ID met de naam `/devices/Hannover01/modules/insight` .
 
 Als u één module installatie kopie meerdere keren op hetzelfde apparaat moet implementeren, kunt u de installatie kopie ook meerdere keren met verschillende namen implementeren.
 

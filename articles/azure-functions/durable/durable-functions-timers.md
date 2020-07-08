@@ -5,15 +5,14 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 0565cc149a36baf31d8516fffcf48b194c465760
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76261480"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Timers in Durable Functions (Azure Functions)
 
-[Durable functions](durable-functions-overview.md) biedt *duurzame timers* voor gebruik in Orchestrator-functies voor het implementeren van vertragingen of het instellen van time-outs voor asynchrone acties. Duurzame timers moeten worden gebruikt in Orchestrator-functies in plaats `Thread.Sleep` van `Task.Delay` en (C#), `setTimeout()` of `setInterval()` en (Java script).
+[Durable functions](durable-functions-overview.md) biedt *duurzame timers* voor gebruik in Orchestrator-functies voor het implementeren van vertragingen of het instellen van time-outs voor asynchrone acties. Duurzame timers moeten worden gebruikt in Orchestrator-functies in plaats van `Thread.Sleep` en `Task.Delay` (C#), of `setTimeout()` en `setInterval()` (Java script).
 
 U maakt een duurzame timer door de `CreateTimer` methode (.net) of de `createTimer` methode (Java script) van de [Orchestration-trigger binding](durable-functions-bindings.md#orchestration-trigger)aan te roepen. De methode retourneert een taak die op een opgegeven datum en tijd wordt voltooid.
 
@@ -22,14 +21,14 @@ U maakt een duurzame timer door de `CreateTimer` methode (.net) of de `createTim
 Wanneer u een timer maakt die om 4:30 uur verloopt, in het onderliggende duurzame taak raamwerk een bericht dat alleen op 4:30 uur zichtbaar wordt. Bij het uitvoeren van het Azure Functions verbruiks abonnement zorgt het nieuw zicht bare timer bericht ervoor dat de functie-app wordt geactiveerd op een geschikte VM.
 
 > [!NOTE]
-> * Duurzame timers zijn momenteel beperkt tot 7 dagen. Als er langere vertragingen nodig zijn, kunnen ze worden gesimuleerd met behulp van `while` de timer-api's in een lus.
-> * Gebruik `CurrentUtcDateTime` altijd in plaats `DateTime.UtcNow` van in .net `currentUtcDateTime` of in `Date.now` plaats `Date.UTC` van of in Java script bij het berekenen van de brand tijd voor duurzame timers. Zie het artikel [Orchestrator functie code constraints](durable-functions-code-constraints.md) voor meer informatie.
+> * Duurzame timers zijn momenteel beperkt tot 7 dagen. Als er langere vertragingen nodig zijn, kunnen ze worden gesimuleerd met behulp van de timer-Api's in een `while` lus.
+> * Gebruik altijd `CurrentUtcDateTime` in plaats van `DateTime.UtcNow` in .net of in `currentUtcDateTime` plaats van `Date.now` of `Date.UTC` in Java script bij het berekenen van de brand tijd voor duurzame timers. Zie het artikel [Orchestrator functie code constraints](durable-functions-code-constraints.md) voor meer informatie.
 
 ## <a name="usage-for-delay"></a>Gebruik voor vertraging
 
 In het volgende voor beeld ziet u hoe u duurzame timers gebruikt voor het vertragen van de uitvoering. In het voor beeld wordt elke dag 10 dagen een facturerings melding uitgegeven.
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("BillingIssuer")]
@@ -46,9 +45,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Het vorige C#-voor beeld is gericht Durable Functions 2. x. Voor Durable Functions 1. x moet u in plaats `DurableOrchestrationContext` van `IDurableOrchestrationContext`gebruiken. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+> Het vorige C#-voor beeld is gericht Durable Functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` in plaats van gebruiken `IDurableOrchestrationContext` . Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```js
 const df = require("durable-functions");
@@ -72,7 +71,7 @@ module.exports = df.orchestrator(function*(context) {
 
 In dit voor beeld ziet u hoe u met duurzame timers time-outs implementeert.
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TryGetQuote")]
@@ -104,9 +103,9 @@ public static async Task<bool> Run(
 ```
 
 > [!NOTE]
-> Het vorige C#-voor beeld is gericht Durable Functions 2. x. Voor Durable Functions 1. x moet u in plaats `DurableOrchestrationContext` van `IDurableOrchestrationContext`gebruiken. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+> Het vorige C#-voor beeld is gericht Durable Functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` in plaats van gebruiken `IDurableOrchestrationContext` . Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```js
 const df = require("durable-functions");

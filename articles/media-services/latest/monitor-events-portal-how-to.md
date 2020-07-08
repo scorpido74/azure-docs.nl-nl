@@ -16,10 +16,9 @@ ms.workload: media
 ms.date: 01/21/2020
 ms.author: juliako
 ms.openlocfilehash: 18503e64dc6f38daab61599153cd0e0fb6fadb20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76509220"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Media Services-gebeurtenissen maken en bewaken met Event Grid met de Azure-portal
@@ -73,7 +72,7 @@ U abonneert u op een onderwerp om Event Grid te laten weten welke gebeurtenissen
 
 1. Bekijk opnieuw uw web-app en u zult zien dat er een validatiegebeurtenis voor een abonnement naartoe is verzonden. 
 
-    Via Event Grid wordt de validatiegebeurtenis verzonden zodat het eindpunt kan controleren of de gebeurtenisgegevens in aanmerking komen om ontvangen te worden. Het eind punt moet worden `validationResponse` ingesteld `validationCode`op. Zie [Event grid beveiliging en verificatie](../../event-grid/security-authentication.md)voor meer informatie. U kunt de code van de web-app bekijken om te zien hoe het abonnement wordt gevalideerd.
+    Via Event Grid wordt de validatiegebeurtenis verzonden zodat het eindpunt kan controleren of de gebeurtenisgegevens in aanmerking komen om ontvangen te worden. Het eind punt moet worden ingesteld `validationResponse` op `validationCode` . Zie [Event grid beveiliging en verificatie](../../event-grid/security-authentication.md)voor meer informatie. U kunt de code van de web-app bekijken om te zien hoe het abonnement wordt gevalideerd.
 
 Nu gaan we gebeurtenissen activeren om te zien hoe Event Grid het bericht distribueert naar uw eind punt.
 

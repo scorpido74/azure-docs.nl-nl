@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75980633"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Implementatie problemen voor Azure Cloud Services: veelgestelde vragen (FAQ)
@@ -54,7 +53,7 @@ Zie [Microsoft Azure: producten beschikbaar per regio](https://azure.microsoft.c
 ## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>Waarom is het implementeren van een Cloud service ergens mislukt vanwege limieten/quota's/beperkingen voor mijn abonnement of service?
 De implementatie van een Cloud service kan mislukken als de resources die moeten worden toegewezen, het standaard-of maximum quotum overschrijden dat is toegestaan voor uw service op het niveau van de regio/Data Center. Zie [Cloud Services limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cloud-services-limits)voor meer informatie.
 
-U kunt ook het huidige gebruik/quotum voor uw abonnement volgen op de portal: Azure Portal =>-abonnementen = \<> juiste abonnement> => ' gebruik en quotum '.
+U kunt ook het huidige gebruik/quotum voor uw abonnement volgen op de portal: Azure Portal =>-abonnementen => \<appropriate subscription>   => "gebruik + quotum".
 
 Informatie over het resource gebruik/het verbruik kan ook worden opgehaald via de Azure Billing-API's. Zie de [Azure resource usage-API (preview)](../cost-management-billing/manage/usage-rate-card-overview.md#azure-resource-usage-api-preview).
 

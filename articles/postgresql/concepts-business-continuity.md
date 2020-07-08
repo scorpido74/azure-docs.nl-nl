@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: afa03399933bdc8bd8ff869125955cfd9e0abecb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75981917"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Overzicht van bedrijfs continuïteit met Azure Database for PostgreSQL-één server
@@ -23,7 +22,7 @@ Azure Database for PostgreSQL biedt functies voor bedrijfs continuïteit, waaron
 
 De volgende tabel vergelijkt de ERT en RPO voor de beschik bare functies:
 
-| **Mogelijkheid** | **Hoofd** | **Algemeen** | **Geoptimaliseerd geheugen** |
+| **Mogelijkheid** | **Standaard** | **Algemeen** | **Geoptimaliseerd geheugen** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Herstel naar een bepaald tijdstip vanuit back-up | Elk herstel punt binnen de Bewaar periode | Elk herstel punt binnen de Bewaar periode | Elk herstel punt binnen de Bewaar periode |
 | Geo-herstel van geo-gerepliceerde back-ups | Niet ondersteund | ERT < 12 uur<br/>RPO < 1 uur | ERT < 12 uur<br/>RPO < 1 uur |

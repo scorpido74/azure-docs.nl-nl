@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.openlocfilehash: 85b7093df99127b690c51e8f2f28d18e3f5f3c95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75981640"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Gebeurtenissen verwerken vanuit Azure Event Hubs met Apache Storm op HDInsight (C#)
@@ -35,7 +34,7 @@ C#-topologieën moeten ook .NET 4,5-doel gericht zijn.
 
 ## <a name="how-to-work-with-event-hubs"></a>Werken met Event Hubs
 
-Micro soft biedt een set Java-onderdelen die kunnen worden gebruikt om te communiceren met Event Hubs vanuit een storm-topologie. U vindt het bestand met het Java-archief (JAR) dat een met HDInsight 3,6 compatibele versie van deze [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar)onderdelen bevat op.
+Micro soft biedt een set Java-onderdelen die kunnen worden gebruikt om te communiceren met Event Hubs vanuit een storm-topologie. U vindt het bestand met het Java-archief (JAR) dat een met HDInsight 3,6 compatibele versie van deze onderdelen bevat op [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar) .
 
 > [!IMPORTANT]  
 > Hoewel de onderdelen in Java zijn geschreven, kunt u ze eenvoudig gebruiken vanuit een C#-topologie.
@@ -113,9 +112,9 @@ U kunt een volledige versie downloaden van het project dat in dit artikel is gem
 
 ## <a name="download-the-event-hubs-components"></a>De Event Hubs-onderdelen downloaden
 
-Down load het Event Hubs Spout-en- [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar)bout-onderdeel van.
+Down load het Event Hubs Spout-en-bout-onderdeel van [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar) .
 
-Maak een map met `eventhubspout`de naam en sla het bestand op in de map.
+Maak een map `eventhubspout` met de naam en sla het bestand op in de map.
 
 ## <a name="configure-event-hubs"></a>Event Hubs configureren
 
@@ -123,7 +122,7 @@ Event Hubs is de gegevens bron voor dit voor beeld. Gebruik de informatie in de 
 
 1. Nadat de Event Hub is gemaakt, bekijkt u de instellingen voor **EventHub** in de Azure Portal en selecteert u **beleid voor gedeelde toegang**. Selecteer **+ toevoegen** om het volgende beleid te maken:
 
-   | Naam | Machtigingen |
+   | Name | Machtigingen |
    | --- | --- |
    | Writer |Verzenden |
    | gelezen |Luisteren |
@@ -138,7 +137,7 @@ Event Hubs is de gegevens bron voor dit voor beeld. Gebruik de informatie in de 
 
 2. Down load de oplossing van [eventhub-Storm-hybride](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub).
 
-3. Open **EventHubExample. SLN**. Open het bestand **app. config** in het project **EventHubWriter** . Gebruik de informatie uit de Event Hub die u eerder hebt geconfigureerd om de waarde voor de volgende sleutels in te vullen:
+3. Open **EventHubExample. SLN**. Open het **App.config** -bestand in het project **EventHubWriter** . Gebruik de informatie uit de Event Hub die u eerder hebt geconfigureerd om de waarde voor de volgende sleutels in te vullen:
 
    | Sleutel | Waarde |
    | --- | --- |
@@ -148,13 +147,13 @@ Event Hubs is de gegevens bron voor dit voor beeld. Gebruik de informatie in de 
    | EventHubName |De naam van uw Event Hub. |
    | EventHubPartitionCount |Het aantal partities in uw Event Hub. |
 
-4. Sla het bestand **app. config** op en sluit het.
+4. Sla het **App.config** bestand op en sluit het.
 
 ## <a name="configure-the-eventhubreader"></a>De EventHubReader configureren
 
 1. Open het **EventHubReader** -project.
 
-2. Open het bestand **app. config** voor de **EventHubReader**. Gebruik de informatie uit de Event Hub die u eerder hebt geconfigureerd om de waarde voor de volgende sleutels in te vullen:
+2. Open het **App.config** -bestand voor de **EventHubReader**. Gebruik de informatie uit de Event Hub die u eerder hebt geconfigureerd om de waarde voor de volgende sleutels in te vullen:
 
    | Sleutel | Waarde |
    | --- | --- |
@@ -164,7 +163,7 @@ Event Hubs is de gegevens bron voor dit voor beeld. Gebruik de informatie in de 
    | EventHubName |De naam van uw Event Hub. |
    | EventHubPartitionCount |Het aantal partities in uw Event Hub. |
 
-3. Sla het bestand **app. config** op en sluit het.
+3. Sla het **App.config** bestand op en sluit het.
 
 ## <a name="deploy-the-topologies"></a>De topologieën implementeren
 

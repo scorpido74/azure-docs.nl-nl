@@ -4,10 +4,9 @@ description: Hierin worden de fouten beschreven die u kunt tegen komen wanneer u
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.openlocfilehash: 5b2706d8540ea38ef08bf7ca0f804e6811a93085
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76153969"
 ---
 # <a name="resolve-errors-for-storage-account-names"></a>Fouten voor de namen van opslag accounts oplossen
@@ -35,7 +34,7 @@ Als u een opslag account met dezelfde naam als een bestaand opslag account in uw
 
 ## <a name="cause"></a>Oorzaak
 
-Namen van opslag accounts moeten tussen de 3 en 24 tekens lang zijn en mogen alleen cijfers en kleine letters bevatten. De naam moet uniek zijn.
+Opslagaccountnamen moeten tussen 3 en 24 tekens lang zijn en mogen alleen getallen en kleine letters bevatten. De naam moet uniek zijn.
 
 ## <a name="solution"></a>Oplossing
 

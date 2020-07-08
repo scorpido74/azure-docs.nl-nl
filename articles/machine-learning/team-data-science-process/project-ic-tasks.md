@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721248"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Taken voor afzonderlijke mede werkers in het team data Science process
@@ -55,7 +54,7 @@ Als u opslag plaatsen wilt klonen en inhoud wilt wijzigen op uw lokale machine o
 
 Als u lokaal wilt werken met opslag plaatsen en u uw wijzigingen naar het gedeelde team en project opslagplaatsen wilt pushen, kopieert of *kloont* u de opslag plaatsen eerst naar uw lokale machine. 
 
-1. Ga in azure DevOps naar de pagina project overzicht van uw team op *https:\//\<server naam>/\<organisatie naam>/\<team naam>* bijvoorbeeld **https:\//dev.Azure.com/DataScienceUnit/MyTeam**.
+1. Ga in azure DevOps naar de project samenvattings pagina van uw team op *https \/ / \<server name> / \<organization name> / \<team name> :* bijvoorbeeld **https: \/ /dev.Azure.com/DataScienceUnit/MyTeam**.
    
 1. Selecteer **opslag plaatsen** in de linkernavigatiebalk en selecteer boven aan de pagina de opslag plaats die u wilt klonen.
    
@@ -63,7 +62,7 @@ Als u lokaal wilt werken met opslag plaatsen en u uw wijzigingen naar het gedeel
    
 1. In het dialoog venster kloon van de **opslag plaats** selecteert u **https** voor een http-verbinding of **SSH** voor een SSH-verbinding en kopieert u de kloon-URL onder de **opdracht regel** naar het klem bord.
    
-   ![Opslag plaats klonen](./media/project-ic-tasks/clone.png)
+   ![Opslagplaats klonen](./media/project-ic-tasks/clone.png)
    
 1. Maak de volgende directory's op uw lokale computer of DSVM:
    
@@ -72,7 +71,7 @@ Als u lokaal wilt werken met opslag plaatsen en u uw wijzigingen naar het gedeel
    
 1. Ga naar de map die u hebt gemaakt.
    
-1. In Git Bash voert u de opdracht `git clone <clone URL>` uit voor elke opslag plaats die u wilt klonen. 
+1. In Git Bash voert u de opdracht uit `git clone <clone URL>` voor elke opslag plaats die u wilt klonen. 
    
    Met de volgende opdracht wordt bijvoorbeeld de **TeamUtilities** -opslag plaats gekloond naar de *MyTeam* -map op uw lokale computer. 
    

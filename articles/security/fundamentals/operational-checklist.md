@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
 ms.openlocfilehash: fb940857a0f88590cb9bbbf56b9e6a791299309f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75980947"
 ---
 # <a name="azure-operational-security-checklist"></a>Controle lijst voor operationele beveiliging van Azure
@@ -37,7 +36,7 @@ Azure biedt een reeks infrastructuur services die u kunt gebruiken voor het impl
 
 Deze controle lijst is bedoeld om ondernemingen te helpen bij het implementeren van verschillende operationele beveiligings overwegingen bij de implementatie van geavanceerde zakelijke toepassingen op Azure. Het kan ook worden gebruikt om u te helpen bij het bouwen van een veilige Cloud migratie en bewerkings strategie voor uw organisatie.
 
-|Controlelijst categorie| Beschrijving|
+|Controlelijst categorie| Description|
 | ------------ | -------- |
 | [<br>Beveiligings rollen & toegangs beheer](../../security-center/security-center-planning-and-operations-guide.md)|<ul><li>Gebruik op [rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/role-assignments-portal.md) om gebruikersspecifieke gebruikers informatie te bieden die wordt gebruikt om machtigingen toe te wijzen aan gebruikers, groepen en toepassingen bij een bepaald bereik.</li></ul> |
 | [<br>Gegevens verzameling & opslag](../../storage/blobs/security-recommendations.md)|<ul><li>Gebruik beveiliging van het beheer vlak om uw opslag account te beveiligen met behulp [van op rollen gebaseerde Access Control (RBAC)](../../role-based-access-control/role-assignments-portal.md).</li><li>Beveiliging van gegevens vlak om de toegang tot uw gegevens te beveiligen met behulp van [Shared Access signatures (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) en opgeslagen toegangs beleid.</li><li>Versleuteling op transport niveau gebruiken: HTTPS gebruiken en de versleuteling die wordt gebruikt door [SMB (Server Message Block Protocols) 3,0](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) voor [Azure-bestands shares](../../storage/files/storage-dotnet-how-to-use-files.md).</li><li>Gebruik [versleuteling aan de client zijde](../../storage/common/storage-client-side-encryption.md) om gegevens te beveiligen die u naar opslag accounts verzendt wanneer u uitsluitend beheer van versleutelings sleutels nodig hebt. </li><li>Gebruik [Storage service Encryption (SSE)](../../storage/common/storage-service-encryption.md) om automatisch gegevens te versleutelen in Azure Storage en [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) de schijf bestanden van de virtuele machine te versleutelen voor het besturings systeem en de gegevens schijven.</li><li>Azure [Opslaganalyse](https://docs.microsoft.com/rest/api/storageservices/storage-analytics) gebruiken om het autorisatie type te bewaken. net als bij Blob Storage, kunt u zien of gebruikers een Shared Access Signature of de sleutels voor het opslag account hebben gebruikt.</li><li>Gebruik [Cross-Origin Resource Sharing (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) voor toegang tot opslag bronnen uit verschillende domeinen.</li></ul> |

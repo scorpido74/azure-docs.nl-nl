@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 7224a7bb26ef491915df9fcb9b6b84ff171a9fc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76720517"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Acceptatie fase van de klant van de team data Science proces levenscyclus
@@ -24,7 +23,7 @@ In dit artikel vindt u een overzicht van de doelen, taken en producten die zijn 
 
    1. **Inzicht in het bedrijf**
    2. **Gegevens verzamelen en begrijpen**
-   3. **Modelleren**
+   3. **Modellen maken**
    4. **Implementatie**
    5. **Aanvaarding van de klant**
 
@@ -44,7 +43,7 @@ Er zijn twee hoofd taken die in deze fase worden behandeld:
 
 De klant moet valideren dat het systeem voldoet aan de behoeften van uw bedrijf en dat het beantwoordt aan de vragen met aanvaard bare nauw keurigheid om het systeem te implementeren op productie voor gebruik door de toepassing van de client. Alle documentatie wordt voltooid en gecontroleerd. Het project wordt door gegeven aan de entiteit die verantwoordelijk is voor de bewerkingen. Deze entiteit kan bijvoorbeeld een IT-of klant gegevens Science-Team of een agent van de klant zijn die verantwoordelijk is voor het uitvoeren van het systeem in de productie omgeving. 
 
-## <a name="artifacts"></a>Artefacten
+## <a name="artifacts"></a>Artifacts
 Het belangrijkste artefact dat in deze laatste fase is geproduceerd, is het **afsluit rapport van het project voor de klant**. Dit technische rapport bevat alle details van het project die handig zijn om te leren hoe u het systeem kunt gebruiken. TDSP biedt een sjabloon voor het [afsluiten van rapporten](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) . U kunt de sjabloon gebruiken als is of u kunt deze aanpassen voor specifieke client behoeften. 
 
 
@@ -54,7 +53,7 @@ Hier vindt u koppelingen naar elke stap in de levens cyclus van de TDSP:
 
    1. [Inzicht in het bedrijf](lifecycle-business-understanding.md)
    2. [Gegevens verzamelen en begrijpen](lifecycle-data.md)
-   3. [Modelleren](lifecycle-modeling.md)
+   3. [Modellen maken](lifecycle-modeling.md)
    4. [Implementatie](lifecycle-deployment.md)
    5. [Aanvaarding van de klant](lifecycle-acceptance.md)
 

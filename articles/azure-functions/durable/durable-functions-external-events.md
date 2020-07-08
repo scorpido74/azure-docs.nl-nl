@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 0877161f8d668141c8efb7c06b10643bf209341f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76262959"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Externe gebeurtenissen in Durable Functions verwerken (Azure Functions)
@@ -20,9 +19,9 @@ Orchestrator-functies hebben de mogelijkheid om te wachten op externe gebeurteni
 
 ## <a name="wait-for-events"></a>Wachten op gebeurtenissen
 
-De `WaitForExternalEvent` methoden (.net) `waitForExternalEvent` en (Java script) van de [Orchestration-trigger binding](durable-functions-bindings.md#orchestration-trigger) kunnen een Orchestrator-functie asynchroon wachten en Luis teren naar een externe gebeurtenis. De functie voor het Luis teren van Orchestrator declareert de *naam* van de gebeurtenis en de *vorm van de gegevens* die ze verwacht te ontvangen.
+De `WaitForExternalEvent` methoden (.net) en `waitForExternalEvent` (Java script) van de [Orchestration-trigger binding](durable-functions-bindings.md#orchestration-trigger) kunnen een Orchestrator-functie asynchroon wachten en Luis teren naar een externe gebeurtenis. De functie voor het Luis teren van Orchestrator declareert de *naam* van de gebeurtenis en de *vorm van de gegevens* die ze verwacht te ontvangen.
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("BudgetApproval")]
@@ -42,9 +41,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> De vorige C#-code is voor Durable Functions 2. x. Voor Durable Functions 1. x moet u in plaats `DurableOrchestrationContext` van `IDurableOrchestrationContext`gebruiken. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+> De vorige C#-code is voor Durable Functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` in plaats van gebruiken `IDurableOrchestrationContext` . Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -65,7 +64,7 @@ In het voor gaande voor beeld wordt geluisterd naar een specifieke gebeurtenis e
 
 U kunt gelijktijdig naar meerdere gebeurtenissen Luis teren, zoals in het volgende voor beeld, waarin wordt gewacht op een van de drie mogelijke gebeurtenis meldingen.
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Select")]
@@ -93,9 +92,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> De vorige C#-code is voor Durable Functions 2. x. Voor Durable Functions 1. x moet u in plaats `DurableOrchestrationContext` van `IDurableOrchestrationContext`gebruiken. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+> De vorige C#-code is voor Durable Functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` in plaats van gebruiken `IDurableOrchestrationContext` . Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -120,7 +119,7 @@ module.exports = df.orchestrator(function*(context) {
 
 In het vorige voor beeld wordt geluisterd naar *een* of meer gebeurtenissen. Het is ook mogelijk te wachten op *alle* gebeurtenissen.
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("NewBuildingPermit")]
@@ -141,11 +140,11 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> De vorige code is voor Durable Functions 2. x. Voor Durable Functions 1. x moet u in plaats `DurableOrchestrationContext` van `IDurableOrchestrationContext`gebruiken. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+> De vorige code is voor Durable Functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` in plaats van gebruiken `IDurableOrchestrationContext` . Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-Als de nettolading van de gebeurtenis in .NET niet kan worden geconverteerd naar het `T`verwachte type, wordt er een uitzonde ring gegenereerd.
+Als de nettolading van de gebeurtenis in .NET niet kan worden geconverteerd naar het verwachte type `T` , wordt er een uitzonde ring gegenereerd.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -169,15 +168,15 @@ module.exports = df.orchestrator(function*(context) {
 `WaitForExternalEvent`voor sommige invoer wordt oneindig gewacht.  De functie-app kan tijdens het wachten veilig worden verwijderd. Als en wanneer een gebeurtenis arriveert voor dit Orchestrator-exemplaar, wordt deze automatisch geactiveerd en wordt de gebeurtenis onmiddellijk verwerkt.
 
 > [!NOTE]
-> Als uw functie-app gebruikmaakt van het verbruiks abonnement, worden er geen facturerings kosten in rekening gebracht terwijl een Orchestrator-functie wacht `WaitForExternalEvent` op een taak van `waitForExternalEvent` (.net) of (Java script), ongeacht hoe lang het wacht.
+> Als uw functie-app gebruikmaakt van het verbruiks abonnement, worden er geen facturerings kosten in rekening gebracht terwijl een Orchestrator-functie wacht op een taak van `WaitForExternalEvent` (.net) of `waitForExternalEvent` (Java script), ongeacht hoe lang het wacht.
 
 ## <a name="send-events"></a>Gebeurtenissen verzenden
 
-De `RaiseEventAsync` (.net) of `raiseEvent` (Java script)-methode van de [Orchestrator client binding](durable-functions-bindings.md#orchestration-client) verzendt de gebeurtenissen `WaitForExternalEvent` die (.net) `waitForExternalEvent` of (Java script) wachten op.  Voor `RaiseEventAsync` de-methode worden *eventname* en *Event Data* als para meters gebruikt. De gebeurtenis gegevens moeten JSON-serialiseerbaar zijn.
+De `RaiseEventAsync` (.net) of `raiseEvent` (Java script)-methode van de [Orchestrator client binding](durable-functions-bindings.md#orchestration-client) verzendt de gebeurtenissen die `WaitForExternalEvent` (.net) of `waitForExternalEvent` (Java script) wachten op.  Voor de- `RaiseEventAsync` methode worden *eventname* en *Event Data* als para meters gebruikt. De gebeurtenis gegevens moeten JSON-serialiseerbaar zijn.
 
 Hieronder ziet u een voor beeld van een door de wachtrij geactiveerde functie die een ' goed keuring ' gebeurtenis naar een Orchestrator-functie exemplaar verzendt. De indelings exemplaar-ID is afkomstig van de hoofd tekst van het wachtrij bericht.
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ApprovalQueueProcessor")]
@@ -190,9 +189,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> De vorige C#-code is voor Durable Functions 2. x. Voor Durable Functions 1. x, moet u kenmerk `OrchestrationClient` gebruiken in plaats van `DurableClient` het kenmerk, en moet u het `DurableOrchestrationClient` parameter type gebruiken in `IDurableOrchestrationClient`plaats van. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+> De vorige C#-code is voor Durable Functions 2. x. Voor Durable Functions 1. x, moet u `OrchestrationClient` kenmerk gebruiken in plaats van het `DurableClient` kenmerk, en moet u het `DurableOrchestrationClient` parameter type gebruiken in plaats van `IDurableOrchestrationClient` . Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");

@@ -4,10 +4,9 @@ description: In dit artikel wordt uitgelegd hoe u de KeyVaultReference-ondersteu
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76545480"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>KeyVaultReference-ondersteuning voor Service Fabric toepassingen (preview)
@@ -24,7 +23,7 @@ Een veelvoorkomende uitdaging bij het bouwen van Cloud toepassingen is het veili
 
     Central geheimen Store (CSS) is de versleutelde lokale geheimen cache van Service Fabric. CSS is een lokale archief cache voor het opslaan van gevoelige gegevens, zoals een wacht woord, tokens en sleutels, versleuteld in het geheugen. KeyVaultReference, zodra het is opgehaald, worden in de cache opgeslagen in CSS.
 
-    Voeg het onderstaande toe aan uw cluster configuratie `fabricSettings` onder om alle vereiste functies voor KeyVaultReference-ondersteuning in te scha kelen.
+    Voeg het onderstaande toe aan uw cluster configuratie onder `fabricSettings` om alle vereiste functies voor KeyVaultReference-ondersteuning in te scha kelen.
 
     ```json
     "fabricSettings": 
@@ -86,18 +85,18 @@ Om de wijzigingen van kracht te laten worden, moet u ook het upgrade beleid wijz
     Raadpleeg dit [document](how-to-grant-access-other-resources.md) voor meer informatie over het verlenen van beheerde identiteits toegang tot de sleutel kluis. Opmerking Als u een door het systeem toegewezen beheerde identiteit gebruikt, wordt de beheerde identiteit alleen gemaakt na de implementatie van de toepassing.
 
 ## <a name="keyvault-secret-as-application-parameter"></a>Sleutel kluis geheim als toepassings parameter
-Stel dat de toepassing het wacht woord voor de back-enddatabase moet lezen dat is opgeslagen in de sleutel kluis. Service Fabric KeyVaultReference-ondersteuning maakt het eenvoudig. In het onderstaande `DBPassword` voor beeld wordt geheim gelezen uit de sleutel kluis met behulp van service Fabric KeyVaultReference-ondersteuning.
+Stel dat de toepassing het wacht woord voor de back-enddatabase moet lezen dat is opgeslagen in de sleutel kluis. Service Fabric KeyVaultReference-ondersteuning maakt het eenvoudig. In het onderstaande voor beeld wordt geheim gelezen uit de sleutel `DBPassword` kluis met behulp van service Fabric KeyVaultReference-ondersteuning.
 
-- Een sectie toevoegen aan Settings. XML
+- Een sectie toevoegen aan settings.xml
 
-    Para `DBPassword` meter met het `KeyVaultReference` type en de waarde definiëren`<KeyVaultURL>`
+    `DBPassword`Para meter met het `KeyVaultReference` type en de waarde definiëren`<KeyVaultURL>`
 
     ```xml
     <Section Name="dbsecrets">
         <Parameter Name="DBPassword" Type="KeyVaultReference" Value="https://vault200.vault.azure.net/secrets/dbpassword/8ec042bbe0ea4356b9b171588a8a1f32"/>
     </Section>
     ```
-- Raadpleeg de nieuwe sectie in ApplicationManifest. XML in`<ConfigPackagePolicies>`
+- Raadpleeg de nieuwe sectie in ApplicationManifest.xml in`<ConfigPackagePolicies>`
 
     ```xml
     <ServiceManifestImport>
@@ -115,7 +114,7 @@ Stel dat de toepassing het wacht woord voor de back-enddatabase moet lezen dat i
 
 - KeyVaultReference in uw toepassing gebruiken
 
-    Service Fabric op service-instantiëring wordt de KeyVaultReference-para meter omgezet met de beheerde identiteit van de toepassing. Elke para meter die `<Section  Name=dbsecrets>` onder wordt weer gegeven, is een bestand in de map waarnaar wordt aangegeven door EnvironmentVariable SecretPath. Onder C#-code fragment ziet u hoe u DBPassword in uw toepassing kunt lezen.
+    Service Fabric op service-instantiëring wordt de KeyVaultReference-para meter omgezet met de beheerde identiteit van de toepassing. Elke para meter die onder wordt weer gegeven `<Section  Name=dbsecrets>` , is een bestand in de map waarnaar wordt aangegeven door EnvironmentVariable SecretPath. Onder C#-code fragment ziet u hoe u DBPassword in uw toepassing kunt lezen.
 
     ```C#
     string secretPath = Environment.GetEnvironmentVariable("SecretPath");

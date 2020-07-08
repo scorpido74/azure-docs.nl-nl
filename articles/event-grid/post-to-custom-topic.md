@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 0afad249f71a36bf7552da499e985b68d48ee7a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721552"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Bericht plaatsen op aangepast onderwerp voor Azure Event Grid
@@ -23,9 +22,9 @@ In dit artikel wordt beschreven hoe u een gebeurtenis op een aangepast onderwerp
 
 ## <a name="endpoint"></a>Eindpunt
 
-Gebruik de URI-indeling als u het HTTP-bericht naar een aangepast onderwerp `https://<topic-endpoint>?api-version=2018-01-01`verzendt:.
+Gebruik de URI-indeling als u het HTTP-bericht naar een aangepast onderwerp verzendt: `https://<topic-endpoint>?api-version=2018-01-01` .
 
-Een geldige URI is bijvoorbeeld: `https://exampletopic.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01`.
+Een geldige URI is bijvoorbeeld: `https://exampletopic.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01` .
 
 Als u het eind punt voor een aangepast onderwerp met Azure CLI wilt ophalen, gebruikt u:
 
@@ -39,11 +38,11 @@ Als u het eind punt voor een aangepast onderwerp met Azure PowerShell wilt ophal
 (Get-AzEventGridTopic -ResourceGroupName <topic-resource-group> -Name <topic-name>).Endpoint
 ```
 
-## <a name="header"></a>Header
+## <a name="header"></a>Koptekst
 
-Neem in de aanvraag een header waarde op met `aeg-sas-key` de naam die een sleutel voor verificatie bevat.
+Neem in de aanvraag een header waarde op met de naam `aeg-sas-key` die een sleutel voor verificatie bevat.
 
-Een geldige header-waarde is `aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==`bijvoorbeeld.
+Een geldige header-waarde is bijvoorbeeld `aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==` .
 
 Als u de sleutel voor een aangepast onderwerp met Azure CLI wilt ophalen, gebruikt u:
 

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
 ms.openlocfilehash: a2f04d6faa7770eef7768437ae0e624b76713f98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76275114"
 ---
 # <a name="available-regions-for-your-storsimple"></a>Beschik bare regio's voor uw StorSimple
@@ -71,7 +70,7 @@ Als u een fysiek StorSimple 8100-of 8600-apparaat gebruikt, is het apparaat besc
 | 6  | Canada                | 21 | Ierland            | 36 | Polen              | 51 | Zwitserland                |
 | 7  | Chili                 | 22 | Israël             | 37 | Portugal            | 52 | Taiwan                     |
 | 8  | Colombia              | 23 | Italië              | 38 | Puerto Rico         | 53 | Thailand                   |
-| 9  | Tsjechië        | 24 | Japan              | 39 | Qatar               | 54 | Turkije                     |
+| 9  | Tsjechische Republiek        | 24 | Japan              | 39 | Qatar               | 54 | Turkije                     |
 | 10 | Denemarken               | 25 | Kenia              | 40 | Roemenië             | 55 | Oekraïne                    |
 | 11 | Egypte                 | 26 | Koeweit             | 41 | Rusland              | 56 | Verenigde Arabische Emiraten       |
 | 12 | Finland               | 27 | Macau SAR          | 42 | Saoedi-Arabië        | 57 | Verenigd Koninkrijk             |
