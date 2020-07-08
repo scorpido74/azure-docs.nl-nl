@@ -9,10 +9,10 @@ ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 7cf03de2efdb1026934985c225a2a9eecbfbb5a1
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84902720"
 ---
 ## <a name="limitations"></a>Beperkingen
@@ -113,7 +113,7 @@ De grootten en typen hardware variëren per regio. Raadpleeg de pagina met [prij
 
 Azure bewaakt en beheert de integriteits status van uw hosts. De volgende statussen worden geretourneerd wanneer u een query op uw host uitvoert:
 
-| Status   | Beschrijving       |
+| Status   | Description       |
 |----------|----------------|
 | Host beschikbaar     | Er zijn geen bekende problemen met de host.   |
 | Host wordt onderzocht  | Er zijn enkele problemen met de host die we op zoek zijn. Dit is een overgangs status die vereist is voor Azure om het bereik en de hoofd oorzaak voor het geïdentificeerde probleem te identificeren. Voor virtuele machines die op de host worden uitgevoerd, kan dit gevolgen hebben. |

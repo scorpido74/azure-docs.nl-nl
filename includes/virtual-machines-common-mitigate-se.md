@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: cynthn;kareni
 ms.custom: include file
 ms.openlocfilehash: 6668d9753d0b93ab907d37cdeff8315f488cff7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73935888"
 ---
 **Laatste document update**: 12 November 2019 10:00 am PST.
@@ -101,17 +101,17 @@ Windows OS support for MDS mitigation is enabled: True
 Windows OS support for TAA mitigation is enabled: True
 ```
 
-Als de uitvoer wordt `MDS mitigation is enabled: False`weer gegeven, [neemt u contact op met Azure-ondersteuning](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) voor beschik bare beperkende opties.
+Als de uitvoer wordt weer gegeven `MDS mitigation is enabled: False` , [neemt u contact op met Azure-ondersteuning](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) voor beschik bare beperkende opties.
 
 
 
-**Stap 3**: Volg de instructies in [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) om beveiligingen in te scha kelen met behulp van de `Session Manager` register sleutels om KVAS (kernel Virtual Address shadowing) en BTI-ondersteuning (vertakkings doel injectie) in te scha kelen. Opnieuw opstarten is vereist.
+**Stap 3**: Volg de instructies in [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) om beveiligingen in te scha kelen met behulp van de register sleutels om KVAS (kernel Virtual Address shadowing) en BTI-ondersteuning (vertakkings doel injectie) in te scha kelen `Session Manager` . Opnieuw opstarten is vereist.
 
 
 **Stap 4**: voor implementaties die gebruikmaken van [geneste virtualisatie](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) (alleen D3 en E3): deze instructies zijn van toepassing in de virtuele machine die u als Hyper-V-host gebruikt.
 
-1.  Volg de instructies in [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) om beveiliging in te scha kelen `MinVmVersionForCpuBasedMitigations` met behulp van de register sleutels.
-2.  Stel het type Hyper Visor scheduler `Core` in op door de instructies [hier](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types)te volgen.
+1.  Volg de instructies in [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) om beveiliging in te scha kelen met behulp van de `MinVmVersionForCpuBasedMitigations` register sleutels.
+2.  Stel het type Hyper Visor scheduler in op `Core` door de instructies [hier](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types)te volgen.
 
 
 ### <a name="linux"></a>Linux
@@ -119,11 +119,11 @@ Als de uitvoer wordt `MDS mitigation is enabled: False`weer gegeven, [neemt u co
 <a name="linux"></a>Het inschakelen van de set aanvullende beveiligings functies in vereist dat het doel besturingssysteem volledig up-to-date is. Sommige beperkende factoren worden standaard ingeschakeld. In de volgende sectie worden de functies beschreven die standaard zijn uitgeschakeld en/of afhankelijk van de hardware-ondersteuning (micro code). Het inschakelen van deze functies kan invloed hebben op de prestaties. Raadpleeg de documentatie van uw besturings systeem provider voor verdere instructies
 
 
-**Stap 1: Hyper-Threading uitschakelen op de virtuele machine** -klanten die niet-vertrouwde code uitvoeren op een Hyper-Threaded VM, moeten Hyper-Threading uitschakelen of verplaatsen naar een niet-Hyper-Threaded VM.  Raadpleeg [dit document](https://docs.microsoft.com/azure/virtual-machines/linux/acu) voor een lijst met Hyper-Threaded VM-grootten (waarbij de verhouding van VCPU naar Core 2:1 is). Als u wilt controleren of u een Hyper-Threaded VM uitvoert, voert `lscpu` u de opdracht uit in de Linux-VM. 
+**Stap 1: Hyper-Threading uitschakelen op de virtuele machine** -klanten die niet-vertrouwde code uitvoeren op een Hyper-Threaded VM, moeten Hyper-Threading uitschakelen of verplaatsen naar een niet-Hyper-Threaded VM.  Raadpleeg [dit document](https://docs.microsoft.com/azure/virtual-machines/linux/acu) voor een lijst met Hyper-Threaded VM-grootten (waarbij de verhouding van VCPU naar Core 2:1 is). Als u wilt controleren of u een Hyper-Threaded VM uitvoert, voert u de `lscpu` opdracht uit in de Linux-VM. 
 
-Als `Thread(s) per core = 2`, dan is Hyper-Threading ingeschakeld. 
+Als `Thread(s) per core = 2` , dan is Hyper-Threading ingeschakeld. 
 
-Als `Thread(s) per core = 1`de Hyper-Threading is uitgeschakeld. 
+Als de `Thread(s) per core = 1` Hyper-Threading is uitgeschakeld. 
 
  
 Voorbeeld uitvoer voor een virtuele machine waarop Hyper-Threading is ingeschakeld: 

@@ -4,10 +4,10 @@ description: In dit artikel vindt u informatie over het maken van een back-up va
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 16e24ed94d8017d9fb922193bb16a33ec7a9cdfd
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84817538"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Back-ups maken van SQL Server-databases in virtuele Azure-machines
@@ -35,7 +35,7 @@ Controleer de volgende criteria voordat u een back-up maakt van een SQL Server D
 1. Identificeer of maak een [Recovery Services kluis](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) in dezelfde regio en hetzelfde abonnement als de virtuele machine die als host fungeert voor het SQL Server exemplaar.
 1. Controleer of de virtuele machine [verbinding](backup-sql-server-database-azure-vms.md#establish-network-connectivity)heeft met het netwerk.
 1. Zorg ervoor dat de SQL Server-data bases voldoen [aan de richt lijnen voor de naamgeving van data bases voor Azure backup](#database-naming-guidelines-for-azure-backup).
-1. Zorg ervoor dat de gecombineerde lengte van de naam van de SQL Server VM en de naam van de resource groep niet langer is dan 84 tekens voor Azure Resource Manager (ARM) Vm's (of 77 tekens voor klassieke Vm's). Deze beperking is omdat sommige tekens zijn gereserveerd door de service.
+1. Zorg ervoor dat de gecombineerde lengte van de naam van de SQL Server VM en de naam van de resource groep niet langer is dan 84 tekens voor Azure Resource Manager (ARM) Vm's (of 77 tekens voor klassieke Vm's). Deze beperking geldt omdat sommige tekens zijn gereserveerd door de service.
 1. Controleer of er geen andere back-upoplossingen zijn ingeschakeld voor de data base. Schakel alle andere SQL Server back-ups uit voordat u een back-up van de data base maakt.
 
 > [!NOTE]

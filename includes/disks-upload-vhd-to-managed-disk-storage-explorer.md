@@ -9,10 +9,10 @@ ms.date: 09/25/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 5104c3b4446a8d3747ce7cc1648ef05dd117eb3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74013773"
 ---
 Met Storage Explorer 1.10.0 kunnen gebruikers Managed disks uploaden, downloaden en kopiëren, en moment opnamen maken. Als gevolg van deze aanvullende mogelijkheden kunt u Storage Explorer gebruiken om gegevens van on-premises naar Azure te migreren en gegevens te migreren tussen Azure-regio's.
@@ -42,7 +42,7 @@ Als uw Storage Explorer niet is verbonden met Azure, kunt u dit niet gebruiken o
 
 1. Selecteer uw abonnement in de lijst en klik op **Toepassen**.
 
-    ![Selecteer uw abonnement](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-subscription.png)
+    ![Uw abonnement selecteren](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-subscription.png)
 
 ## <a name="upload-a-managed-disk-from-an-on-prem-vhd"></a>Een beheerde schijf uploaden van een on-premises VHD
 
@@ -120,7 +120,7 @@ Met Storage Explorer kunt u een beheerd-schijf kopiëren binnen of tussen versch
 
     ![Een momentopname maken](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-button.png)
 
-1. Geef in **moment opname maken**de naam op van de moment opname en de resource groep waarin u deze wilt maken. Selecteer vervolgens **maken**.
+1. Geef in **moment opname maken**de naam op van de moment opname en de resource groep waarin u deze wilt maken. Selecteer vervolgens **Maken**.
 
     ![Dialoog venster moment opname maken](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-dialog.png)
 

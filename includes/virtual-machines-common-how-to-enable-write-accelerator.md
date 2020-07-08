@@ -9,10 +9,10 @@ ms.date: 11/27/2019
 ms.author: raiye
 ms.custom: include file
 ms.openlocfilehash: 456d550659c04b2272c048fcd64fe73b1a11522a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74566247"
 ---
 Write Accelerator is een schijf mogelijkheid voor Virtual Machines van de M-serie (Vm's) op Premium Storage alleen met Azure Managed Disks. Als de naam statussen is het doel van de functionaliteit om de I/O-latentie van schrijf bewerkingen voor Azure Premium Storage te verbeteren. Write Accelerator is in het ideale geval waar logboek bestanden moeten worden opgeslagen op de schijf op een zeer krachtige manier voor moderne data bases.
@@ -112,7 +112,7 @@ Er kunnen twee belang rijke scenario's worden vastgelegd, zoals wordt weer gegev
 
 U kunt dit script gebruiken om een nieuwe schijf toe te voegen aan uw VM. De schijf die is gemaakt met dit script maakt gebruik van Write Accelerator.
 
-Vervang `myVM`, `myWAVMs`, `log001`, grootte van de schijf en LunID van de schijf door de waarden die geschikt zijn voor uw specifieke implementatie.
+Vervang `myVM` , `myWAVMs` , `log001` , grootte van de schijf en LunID van de schijf door de waarden die geschikt zijn voor uw specifieke implementatie.
 
 ```powershell
 # Specify your VM Name
@@ -135,7 +135,7 @@ Update-AzVM -ResourceGroupName $rgname -VM $vm
 
 ### <a name="enabling-write-accelerator-on-an-existing-azure-disk-using-powershell"></a>Write Accelerator in te scha kelen op een bestaande Azure-schijf met behulp van Power shell
 
-U kunt dit script gebruiken om Write Accelerator in te scha kelen op een bestaande schijf. Vervang `myVM`, `myWAVMs`, en `test-log001` door de waarden die van toepassing zijn op uw specifieke implementatie. Het script voegt Write Accelerator toe aan een bestaande schijf waarvan de waarde voor **$NewStatus** is ingesteld op $True. Als u de waarde ' $false ' gebruikt, wordt Write Accelerator op een bepaalde schijf uitgeschakeld.
+U kunt dit script gebruiken om Write Accelerator in te scha kelen op een bestaande schijf. Vervang `myVM` , `myWAVMs` , en `test-log001` door de waarden die van toepassing zijn op uw specifieke implementatie. Het script voegt Write Accelerator toe aan een bestaande schijf waarvan de waarde voor **$NewStatus** is ingesteld op $True. Als u de waarde ' $false ' gebruikt, wordt Write Accelerator op een bepaalde schijf uitgeschakeld.
 
 ```powershell
 #Specify your VM Name
@@ -179,13 +179,13 @@ Als u wilt implementeren met behulp van de rest API van Azure, moet u de Azure-a
 
 ### <a name="install-armclient"></a>Armclient installeren
 
-Als u armclient wilt uitvoeren, moet u deze via chocolade installeren. U kunt dit installeren via cmd. exe of Power shell. Gebruik verhoogde rechten voor deze opdrachten ("als administrator uitvoeren").
+Als u armclient wilt uitvoeren, moet u deze via chocolade installeren. U kunt dit installeren via cmd.exe of Power shell. Gebruik verhoogde rechten voor deze opdrachten ("als administrator uitvoeren").
 
-Voer de volgende opdracht uit met behulp van cmd. exe:`@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"`
+Voer met behulp van cmd.exe de volgende opdracht uit:`@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"`
 
 Gebruik Power shell om de volgende opdracht uit te voeren:`Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))`
 
-U kunt de armclient nu installeren met behulp van de volgende opdracht in cmd. exe of Power shell`choco install armclient`
+U kunt de armclient nu installeren met behulp van de volgende opdracht in cmd.exe of Power shell`choco install armclient`
 
 ### <a name="getting-your-current-vm-configuration"></a>De huidige VM-configuratie ophalen
 

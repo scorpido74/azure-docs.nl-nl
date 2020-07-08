@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 11/15/2019
 ms.author: matjazl
 ms.openlocfilehash: adc6fdf144927d10f811a00aa33f244cfdc25042
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84871762"
 ---
 # <a name="configure-database-settings"></a>Data base-instellingen configureren 
@@ -38,4 +38,4 @@ Als u deze instelling in de Azure Portal wilt wijzigen, gaat u naar de Azure API
 In dit artikel hebt u geleerd hoe u de RUs voor Azure API voor FHIR bijwerkt. Implementeer daarna een volledig beheerde Azure-API voor FHIR:
  
 >[!div class="nextstepaction"]
->[Azure API for FHIR implementeren](fhir-paas-portal-quickstart.md)
+>[De Azure-API voor FHIR implementeren](fhir-paas-portal-quickstart.md)

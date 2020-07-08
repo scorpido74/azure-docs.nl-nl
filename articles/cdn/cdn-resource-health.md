@@ -15,13 +15,13 @@ ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 65b3d5a29028214a52e6b26430472394c91c6f27
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84887060"
 ---
-# <a name="monitor-the-health-of-azure-cdn-resources"></a>De status van Azure CDN bronnen bewaken
+# <a name="monitor-the-health-of-azure-cdn-resources"></a>De status van Azure CDN-resources bewaken
   
 Azure CDN resource Health is een subset van [Azure-resource status](../resource-health/resource-health-overview.md).  U kunt Azure resource Health gebruiken om de status van CDN-resources te controleren en richt lijnen te ontvangen om problemen op te lossen.
 

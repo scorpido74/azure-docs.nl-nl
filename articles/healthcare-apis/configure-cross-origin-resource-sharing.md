@@ -8,10 +8,10 @@ ms.topic: reference
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.openlocfilehash: dc4c034b0821f1fe5ecb940591fca77d61edc3ce
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84871748"
 ---
 # <a name="configure-cross-origin-resource-sharing-in-azure-api-for-fhir"></a>Cross-Origin-resource delen configureren in azure API voor FHIR
@@ -42,4 +42,4 @@ Als u een CORS-instelling in de Azure API voor FHIR wilt configureren, geeft u d
 In dit artikel hebt u geleerd hoe u het delen van cross-origin in azure API voor FHIR kunt configureren. Implementeer daarna een volledig beheerde Azure-API voor FHIR:
  
 >[!div class="nextstepaction"]
->[Azure API for FHIR implementeren](fhir-paas-portal-quickstart.md)
+>[De Azure-API voor FHIR implementeren](fhir-paas-portal-quickstart.md)

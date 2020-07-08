@@ -11,10 +11,10 @@ ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
 ms.openlocfilehash: 55c5e6c5b718dc2de295b9b4418ddc8607a69f8f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84872048"
 ---
 # <a name="peering-service-faq"></a>Veelgestelde vragen over peering-service
@@ -54,4 +54,4 @@ A. Azure ExpressRoute is een privé, exclusieve verbinding van een of meer klant
 - Zie [peering service-partners en-locaties](location-partners.md)om een service provider te vinden.
 - Zie voor het onboarden van een peering-service verbinding [onboarding-peering-service](onboarding-model.md).
 - Zie [een peering service-verbinding registreren-Azure Portal](azure-portal.md)als u een peering service-verbinding wilt registreren.
-- Zie [verbindings-telemetrie meten](measure-connection-telemetry.md)om telemetrie te meten.
+- Zie [Verbindingstelemetrie meten](measure-connection-telemetry.md) om telemetrie te meten.

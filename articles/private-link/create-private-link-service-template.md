@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.date: 05/29/2020
 ms.author: allensu
 ms.openlocfilehash: c9ed628501e8fa02b816a1564b91620404dfc379
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84817618"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-an-azure-resource-manager-template"></a>Snelstartgids: een persoonlijke koppelings service maken met behulp van een Azure Resource Manager sjabloon
@@ -33,7 +33,7 @@ Met deze sjabloon maakt u een persoonlijke koppelings service.
 
 ### <a name="review-the-template"></a>De sjabloon controleren
 
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-snelstartsjablonen](https://azure.microsoft.com/resources/templates/).
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstart-sjablonen](https://azure.microsoft.com/resources/templates/).
 
 :::code language="json" source="~/quickstart-templates/101-privatelink-service/azuredeploy.json" range="001-432" highlight="263-289":::
 
@@ -71,7 +71,7 @@ Maak als volgt verbinding met de VM- _myConsumerVm {UniqueID}_ van het Internet:
 
 1.  Voer _myConsumerVm {UniqueID}_ in de zoek balk van de portal in.
 
-2.  Selecteer **Verbinden**. **Verbinding maken met de virtuele machine** wordt geopend.
+2.  Selecteer **Verbinding maken**. **Verbinding maken met de virtuele machine** wordt geopend.
 
 3.  Selecteer **RDP-bestand downloaden**. In Azure wordt een _RDP_-bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
 

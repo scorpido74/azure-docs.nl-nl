@@ -1,6 +1,6 @@
 ---
-title: Include-bestand
-description: Include-bestand
+title: bestand opnemen
+description: bestand opnemen
 services: data-factory
 author: nabhishek
 ms.service: data-factory
@@ -8,13 +8,13 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: abnarain
 ms.openlocfilehash: 6af6795fefb41f1d8f2b56e0aa1fb367fc18cee2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74559310"
 ---
-| Domeinnamen                  | Uitgaande poorten | Beschrijving                              |
+| Domeinnamen                  | Uitgaande poorten | Description                              |
 | ----------------------------- | -------------- | ---------------------------------------- |
 | `*.servicebus.windows.net`    | 443            | Vereist door de zelf-hostende Integration runtime om verbinding te maken met Services voor gegevens verplaatsing in Azure Data Factory. |
 | `*.frontend.clouddatahub.net` | 443            | Vereist door de zelf-hostende Integration runtime om verbinding te maken met de Data Factory-service. |

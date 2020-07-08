@@ -11,10 +11,10 @@ ms.workload: Infrastructure-services
 ms.date: 05/29/2020
 ms.author: derekol
 ms.openlocfilehash: 012468ea16a9d1125bbcc93333eb8dad586aa502
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84872102"
 ---
 # <a name="peering-service-partners"></a>Peering service-partners
@@ -52,6 +52,6 @@ De tabel in dit artikel bevat informatie over de communicatie partners van de pe
 - Zie [overzicht van peering service](about.md)voor meer informatie over peering-service.
 - Zie [Veelgestelde vragen over peering-service](faq.md)voor meer informatie over veelgestelde vragen over peering-service.
 - Zie [configuratie van peering-service](connection.md)voor meer informatie over partners voor onboarding en configuratie van peering-service.
-- Zie [verbinding met peering service](connection.md)voor meer informatie over peering service-verbinding.
-- Zie [telemetrie-verbinding met peering service](connection-telemetry.md)voor meer informatie over de telemetrie van de peering-service verbinding.
+- Zie [Peering Service-verbinding](connection.md) voor meer informatie over de Peering Service-verbinding.
+- Zie [Peering Service-verbindingstelemetrie](connection-telemetry.md) voor meer informatie over de Peering Service-verbindingstelemetrie.
 - Zie voor meer informatie over het onboarden van een peering-service verbinding [onboarding-peering-service](onboarding-model.md).

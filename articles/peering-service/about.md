@@ -11,15 +11,15 @@ ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
 ms.openlocfilehash: 548d4f90bd9632e4807547120ac1be589668e8fa
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84872034"
 ---
 # <a name="azure-peering-service-overview"></a>Overzicht van Azure peering-service
 
-Azure peering service is een netwerk service die de connectiviteit van klanten verbetert met micro soft-Cloud Services, zoals Office 365, Dynamics 365, software as a Service (SaaS)-Services, Azure of andere micro soft-services die toegankelijk zijn via het open bare Internet. Micro soft heeft wereld wijd een partnerschap gemaakt met Internet serviceproviders (Isp's), IXPs (Internet Exchange partners) en SDCI-providers (software-defined Cloud Interconnect) om betrouw bare en hoogwaardige open bare connectiviteit te bieden met optimale route ring van de klant naar het micro soft-netwerk.
+Azure Peering Service is een netwerkservice die de klantconnectiviteit verbetert met Microsoft-cloudservices, zoals Office 365, Dynamics 365, SaaS-services (Software as a Service), Azure of een andere Microsoft-service die toegankelijk is via openbaar internet. Micro soft heeft wereld wijd een partnerschap gemaakt met Internet serviceproviders (Isp's), IXPs (Internet Exchange partners) en SDCI-providers (software-defined Cloud Interconnect) om betrouw bare en hoogwaardige open bare connectiviteit te bieden met optimale route ring van de klant naar het micro soft-netwerk.
 
 Met peering service kunnen klanten een goed verbonden partner serviceprovider selecteren in een bepaalde regio. Open bare connectiviteit is geoptimaliseerd voor hoge betrouw baarheid en minimale latentie van Cloud Services naar de locatie van de eind gebruiker.
 
@@ -129,8 +129,8 @@ Er worden BGP-route afwijkingen gerapporteerd in de Azure Portal, indien van toe
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie voor meer informatie over peering service-verbindingen [peering Service Connections](connection.md).
-- Zie [telemetrie-verbinding met peering service](connection-telemetry.md)voor meer informatie over de telemetrie van de peering-service verbinding.
+- Zie [Peering Service-verbindingstelemetrie](connection-telemetry.md) voor meer informatie over de Peering Service-verbindingstelemetrie.
 - Zie [peering service-partners en-locaties](location-partners.md)om een service provider partner te vinden.
 - Zie [onboarding peering service model](onboarding-model.md)voor een onboarding van een peering service-verbinding.
 - Zie [een peering service-verbinding registreren met behulp van de Azure Portal](azure-portal.md)om een verbinding te registreren met behulp van de Azure Portal.
-- Zie [verbindings-telemetrie meten](measure-connection-telemetry.md)om telemetrie te meten.
+- Zie [Verbindingstelemetrie meten](measure-connection-telemetry.md) om telemetrie te meten.

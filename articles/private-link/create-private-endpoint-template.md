@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
 ms.openlocfilehash: a60edde222a6200a0378cd8c9c4f4774da9c2e50
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84817972"
 ---
 # <a name="quickstart-create-a-private-endpoint-by-using-an-azure-resource-manager-template"></a>Snelstartgids: een persoonlijk eind punt maken met behulp van een Azure Resource Manager sjabloon
@@ -33,7 +33,7 @@ Met deze sjabloon maakt u een persoonlijk eind punt voor een exemplaar van Azure
 
 ### <a name="review-the-template"></a>De sjabloon controleren
 
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-snelstartsjablonen](https://azure.microsoft.com/resources/templates/).
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstart-sjablonen](https://azure.microsoft.com/resources/templates/).
 
 :::code language="json" source="~/quickstart-templates/101-private-endpoint-sql/azuredeploy.json" range="001-295" highlight="131-156":::
 
@@ -74,7 +74,7 @@ Maak als volgt verbinding met de VM- _myVm {UniqueID}_ van het Internet:
 
 1. Voer _myVm {UniqueID}_ in de zoek balk van de portal in.
 
-2. Selecteer **Verbinden**. **Verbinding maken met de virtuele machine** wordt geopend.
+2. Selecteer **Verbinding maken**. **Verbinding maken met de virtuele machine** wordt geopend.
 
 3. Selecteer **RDP-bestand downloaden**. In Azure wordt een _RDP_-bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
 
@@ -118,7 +118,7 @@ U kunt als volgt via het persoonlijke eind punt verbinding maken met de SQL Data
     - **Wacht woord**: Voer een wacht woord in dat u hebt opgegeven tijdens het maken.
     - **Wacht woord onthouden**: Selecteer **Ja**.
 
-5.  Selecteer **Verbinden**.
+5.  Selecteer **Verbinding maken**.
 6.  Ga in het menu aan de linkerkant naar **data bases**.
 7.  U kunt desgewenst informatie uit voor _beeld-DB_maken of er query's op uitvoeren.
 8.  Sluit de Extern bureaublad verbinding met _myVm {UniqueID}_.

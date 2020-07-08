@@ -11,10 +11,10 @@ ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
 ms.openlocfilehash: df337736a676c40f1345310afb9a2e685ddc1d5c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84872020"
 ---
 # <a name="peering-service-connection"></a>Peering service-verbinding
@@ -47,6 +47,6 @@ De klant kan een enkele verbinding of meerdere verbindingen tot stand brengen co
 
 Zie [peering service registreren met behulp van de Azure Portal](azure-portal.md)voor meer informatie over het registreren van een peering-service verbinding.
 
-Zie [telemetrie-verbinding met peering service](connection-telemetry.md)voor meer informatie over de telemetrie van de peering-service verbinding.
+Zie [Peering Service-verbindingstelemetrie](connection-telemetry.md) voor meer informatie over de Peering Service-verbindingstelemetrie.
 
-Zie [verbindings-telemetrie meten](measure-connection-telemetry.md)om telemetrie te meten.
+Zie [Verbindingstelemetrie meten](measure-connection-telemetry.md) om telemetrie te meten.

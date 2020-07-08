@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: mihansen
 ms.openlocfilehash: 5aa9e5a33dbe66e3ebd787decfa3a520454fc6f6
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84871790"
 ---
 # <a name="register-a-public-client-application-in-azure-active-directory"></a>Een open bare client toepassing registreren in Azure Active Directory
@@ -64,4 +64,4 @@ Als u uw client toepassing configureert in een andere Azure AD-Tenant vanaf uw F
 In dit artikel hebt u geleerd hoe u een open bare client toepassing in Azure Active Directory kunt registreren. Test vervolgens de toegang tot uw FHIR-server met behulp van postman.
  
 >[!div class="nextstepaction"]
->[Toegang tot Azure API voor FHIR met postman](access-fhir-postman-tutorial.md)
+>[Azure API for FHIR openen met Postman](access-fhir-postman-tutorial.md)

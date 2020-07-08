@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 05/28/2020
 ms.custom: seodec18
 ms.openlocfilehash: aa348728cd4e9ac0ce5d70cb293ac850cc549666
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84817134"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Parametrisatie in automatische machine learning
@@ -45,7 +45,7 @@ Voor experimenten die u configureert met de python-SDK, kunt u de instelling par
 
 De volgende tabel bevat de geaccepteerde instellingen voor `featurization` in de [AutoMLConfig-klasse](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig):
 
-|Parametrisatie-configuratie | Beschrijving|
+|Parametrisatie-configuratie | Description|
 ------------- | ------------- |
 |`"featurization": 'auto'`| Hiermee geeft u op dat, als onderdeel van preverwerking, de [stappen voor gegevens Guardrails en parametrisatie](#featurization) automatisch moeten worden uitgevoerd. Dit is de standaardinstelling.|
 |`"featurization": 'off'`| Hiermee geeft u op dat parametrisatie stappen niet automatisch moeten worden uitgevoerd.|
@@ -60,7 +60,7 @@ De volgende tabel bevat een overzicht van de technieken die automatisch worden t
 > [!NOTE]
 > Als u van plan bent om uw door AutoML gemaakte modellen te exporteren naar een [ONNX-model](concept-onnx.md), worden alleen de parametrisatie-opties aangegeven met een asterisk (*) ondersteund in de ONNX-indeling. Meer informatie over [het converteren van modellen naar ONNX](concept-automated-ml.md#use-with-onnx).
 
-|Parametrisatie- &nbsp; stappen| Beschrijving |
+|Parametrisatie- &nbsp; stappen| Description |
 | ------------- | ------------- |
 |**Hoge kardinaliteit of geen variantie-functies verwijderen*** |Verwijder deze functies uit de trainings-en validatie sets. Is van toepassing op functies waarbij alle waarden ontbreken, met dezelfde waarde in alle rijen of met een hoge kardinaliteit (bijvoorbeeld hashes, Id's of GUID'S).|
 |**Ontbrekende waarden toegerekend*** |Voor numerieke functies toegerekend met het gemiddelde van de waarden in de kolom.<br/><br/>Voor categorische-functies toegerekend met de meest frequente waarde.|

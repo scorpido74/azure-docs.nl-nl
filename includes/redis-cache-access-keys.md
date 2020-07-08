@@ -9,10 +9,10 @@ ms.date: 11/05/2019
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: a737e130d616a67bab28c7c96c0372216a6707af
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73720304"
 ---
 ### <a name="retrieve-host-name-ports-and-access-keys-from-the-azure-portal"></a>Hostnaam, poorten en toegangs sleutels ophalen uit de Azure Portal
@@ -23,7 +23,7 @@ Als u verbinding wilt maken met een Azure-cache voor redis-exemplaar, moeten de 
   
   ![Sleutels van Azure Cache voor Redis](media/redis-cache-access-keys/redis-cache-keys.png)
 
-- Als u de hostnaam en poorten wilt ophalen, selecteert u in de cache naar links de optie **Eigenschappen**. De hostnaam heeft de naam van het formulier * \<DNS>. redis.cache.Windows.net*.
+- Als u de hostnaam en poorten wilt ophalen, selecteert u in de cache naar links de optie **Eigenschappen**. De hostnaam is van het formulier * \<DNS name> . redis.cache.Windows.net*.
 
   ![Eigenschappen van Azure Cache voor Redis](media/redis-cache-access-keys/redis-cache-hostname-ports.png)
 

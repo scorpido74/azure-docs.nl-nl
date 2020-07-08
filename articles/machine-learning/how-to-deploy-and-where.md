@@ -12,10 +12,10 @@ ms.reviewer: larryfr
 ms.date: 06/12/2020
 ms.custom: seoapril2019, tracking-python
 ms.openlocfilehash: bc9ab6ddf3a9032fd1919b70d830f0d65cdc06ed
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84817982"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen implementeren met Azure Machine Learning
@@ -604,7 +604,7 @@ Tijdens de implementatie van het model ziet u mogelijk de wijziging van de servi
 
 In de volgende tabel worden de verschillende service statussen beschreven:
 
-| Status van webservice | Beschrijving | Eind status?
+| Status van webservice | Description | Eind status?
 | ----- | ----- | ----- |
 | Overstappen | De service is in het implementatie proces. | No |
 | Niet in orde | De service is geïmplementeerd, maar is momenteel niet bereikbaar.  | No |

@@ -10,15 +10,15 @@ ms.tgt_pltfrm: na
 ms.date: 05/18/2020
 ms.author: derekol
 ms.openlocfilehash: 0e54b20cc6aefa69226c24f557ae02166dc4b4b6
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84872006"
 ---
 # <a name="peering-service-connection-telemetry"></a>Telemetrie van peering service-verbinding
 
-Telemetrie van de verbinding biedt inzichten die worden verzameld voor de connectiviteit tussen de locatie van de klant en het micro soft-netwerk. Klanten kunnen telemetrie voor de Azure peering service-verbinding verkrijgen door de verbinding te registreren in de Azure Portal. Deze functie biedt een voor voegsel van beveiliging en inzicht in de netwerk prestaties.
+Verbindingstelemetrie biedt inzichten die worden verzameld voor de connectiviteit tussen de locatie van de klant en het Microsoft-netwerk. Klanten kunnen telemetrie voor de Azure peering service-verbinding verkrijgen door de verbinding te registreren in de Azure Portal. Deze functie biedt een voor voegsel van beveiliging en inzicht in de netwerk prestaties.
 
 
 Telemetrie van de verbinding bestaat uit de volgende bereiken:
@@ -37,6 +37,6 @@ Routerings paden worden bewaakt voor verdachte activiteiten die vervolgens worde
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [verbinding met peering service](connection.md)voor meer informatie over peering service-verbinding.
+- Zie [Peering Service-verbinding](connection.md) voor meer informatie over de Peering Service-verbinding.
 - Zie voor een onboarding van een peering- [service model onboarding](onboarding-model.md).
-- Zie [verbindings-telemetrie meten](measure-connection-telemetry.md)om telemetrie te meten.
+- Zie [Verbindingstelemetrie meten](measure-connection-telemetry.md) om telemetrie te meten.

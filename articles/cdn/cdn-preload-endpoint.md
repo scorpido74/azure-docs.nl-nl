@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 02/12/2018
 ms.author: allensu
 ms.openlocfilehash: 587a6c4104693e8ccf610a670064832364a166d7
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84887580"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Vooraf assets op een Azure CDN-eindpunt laden
@@ -66,7 +66,7 @@ In deze zelf studie wordt u begeleid bij het vooraf laden van inhoud in de cache
 > 
 > 
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 * [Een Azure CDN-eind punt verwijderen](cdn-purge-endpoint.md)
 * [Azure CDN REST API verwijzing: inhoud op een eind punt vooraf laden](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
 * [Azure CDN REST API verwijzing: inhoud uit een eind punt verwijderen](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: sethm
 ms.openlocfilehash: 7fd161c90234d45a6751f173ba3685ee8c392c87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74260711"
 ---
 ## <a name="webapi-project"></a>WebAPI-project
@@ -92,7 +92,7 @@ ms.locfileid: "74260711"
     }
     ```
 
-Houd er rekening `Post` mee dat de methode nu geen pop-upmelding verzendt. Er wordt een onbewerkte melding verzonden die alleen de meldings-ID en geen gevoelige inhoud bevat. Zorg er ook voor dat u de verzend bewerking bijwerkt voor de platforms waarvoor u geen referenties hebt geconfigureerd op uw notification hub, omdat deze fouten zullen veroorzaken.
+Houd er rekening mee dat de `Post` methode nu geen pop-upmelding verzendt. Er wordt een onbewerkte melding verzonden die alleen de meldings-ID en geen gevoelige inhoud bevat. Zorg er ook voor dat u de verzend bewerking bijwerkt voor de platforms waarvoor u geen referenties hebt geconfigureerd op uw notification hub, omdat deze fouten zullen veroorzaken.
 
 1. Nu gaan we deze app opnieuw implementeren op een Azure-website om deze toegankelijk te maken vanaf alle apparaten. Klik met de rechtermuisknop op het project **AppBackend** en selecteer **Publiceren**.
 2. Selecteer de Azure-website als uw publicatie doel. Meld u aan met uw Azure-account en selecteer een bestaande of nieuwe website en noteer de eigenschap **doel-URL** op het tabblad **verbinding** . Verderop in deze zelf studie wordt naar deze URL verwezen als *back-end-eind punt* . Klik op **Publish**.

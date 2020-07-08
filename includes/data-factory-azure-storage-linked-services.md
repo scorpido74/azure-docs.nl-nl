@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 37917e0ed663675677f1d0452b5796120ca2694e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75468764"
 ---
 ### <a name="azure-storage-linked-service"></a>Een gekoppelde Azure Storage-service
@@ -36,7 +36,7 @@ Zie [toegangs sleutels voor opslag accounts beheren](../articles/storage/common/
 ```
 
 ### <a name="azure-storage-sas-linked-service"></a>Azure Storage SAS-gekoppelde service
-Een SAS (Shared Access Signature; handtekening voor gedeelde toegang) biedt gedelegeerde toegang tot bronnen in uw opslagaccount. U kunt een client beperkte machtigingen verlenen voor objecten in uw opslag account voor een bepaalde periode en met een opgegeven set machtigingen, zonder dat u de toegangs sleutels van uw account hoeft te delen. De SAS is een URI die in de query parameters omvat alle informatie die nodig is voor geverifieerde toegang tot een opslag resource. Om toegang te krijgen tot opslag bronnen met de SAS, hoeft de client alleen de SA'S door te geven aan de juiste constructor of methode. Zie voor meer informatie over SA'S [beperkte toegang verlenen tot Azure storage-resources met behulp van Shared Access signatures (SAS)](../articles/storage/common/storage-sas-overview.md).
+Een SAS (Shared Access Signature; handtekening voor gedeelde toegang) biedt gedelegeerde toegang tot bronnen in uw opslagaccount. U kunt een client beperkte machtigingen verlenen voor objecten in uw opslag account voor een bepaalde periode en met een opgegeven set machtigingen, zonder dat u de toegangs sleutels van uw account hoeft te delen. De SAS is een URI die in de query parameters omvat alle informatie die nodig is voor geverifieerde toegang tot een opslag resource. Om toegang te krijgen tot opslag bronnen met de SAS, hoeft de client alleen de SA'S door te geven aan de juiste constructor of methode. Zie [Beperkte toegang verlenen tot Azure Storage-resources via SAS (Shared Access Signatures)](../articles/storage/common/storage-sas-overview.md) voor meer informatie over SAS.
 
 > [!IMPORTANT]
 > Azure Data Factory ondersteunt nu alleen **service-sa's** maar geen Sa's van accounts. Let op dat de SAS-URL kan worden afgeleid van Azure Portal of Storage Explorer een account-SA'S is, wat niet wordt ondersteund.

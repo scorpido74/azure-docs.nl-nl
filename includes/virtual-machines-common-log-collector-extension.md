@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 09c4420647043fccc408631fec75854667923721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74085234"
 ---
 Voor het vaststellen van problemen met een Microsoft Azure-Cloud service moet u de logboek bestanden van de service verzamelen op virtuele machines terwijl de problemen optreden. U kunt de AzureLogCollector-extensie op aanvraag gebruiken voor het uitvoeren van een eenmalige verzameling logboeken van een of meer virtuele machines in de Cloud service (van beide webrollen en werk rollen) en het overdragen van de verzamelde bestanden naar een Azure-opslag account. dit gebeurt zonder dat u zich op afstand hoeft aan te melden bij een van de virtuele machines.
@@ -33,7 +33,7 @@ In zowel de verzamel modus kunnen extra mappen voor gegevens verzameling worden 
 
 * **Naam**: de naam van de verzameling, die wordt gebruikt als de naam van de submap in het zip-bestand met de verzamelde bestanden.
 * **Locatie**: het pad naar de map op de virtuele machine waar de te verzamelen bestanden zich bevinden.
-* **SearchPattern**: het patroon van de namen van de bestanden die moeten worden verzameld. De standaard waarde\*is
+* **SearchPattern**: het patroon van de namen van de bestanden die moeten worden verzameld. De standaard waarde is \*
 * **Recursief**: als de bestanden die moeten worden verzameld, recursief worden opgeslagen onder de opgegeven locatie.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -129,7 +129,7 @@ U kunt een van de volgende twee stappen volgen om de AzureLogCollector toe te vo
    ```
 
    > [!NOTE]
-   > U kunt token `%roleroot%` gebruiken om het hoofd station van de rol op te geven, omdat het geen vaste schijf gebruikt.
+   > U kunt token gebruiken `%roleroot%` om het hoofd station van de rol op te geven, omdat het geen vaste schijf gebruikt.
    > 
    > 
 4. Geef de naam en sleutel van het Azure Storage-account op waarmee verzamelde bestanden worden geüpload.
@@ -139,7 +139,7 @@ U kunt een van de volgende twee stappen volgen om de AzureLogCollector toe te vo
    $StorageAccountKey  = 'YourStorageAccountKey'
    ```
 
-5. Roep SetAzureServiceLogCollector. ps1 (opgenomen aan het einde van het artikel) als volgt aan om de AzureLogCollector-extensie voor een Cloud service in te scha kelen. Zodra de uitvoering is voltooid, kunt u het geüploade bestand vinden onder`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+5. Roep de SetAzureServiceLogCollector.ps1 (opgenomen aan het einde van het artikel) als volgt om de AzureLogCollector-extensie voor een Cloud service in te scha kelen. Zodra de uitvoering is voltooid, kunt u het geüploade bestand vinden onder`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
    ```powershell
    .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
@@ -231,7 +231,7 @@ Volg de instructies om Azure PowerShell verbinding te maken met uw abonnement.
    $StorageAccountKey  = 'YourStorageAccountKey'
    ```
 
-3. Roep SetAzureVMLogCollector. ps1 (opgenomen aan het einde van het artikel) als volgt aan om de AzureLogCollector-extensie voor een Cloud service in te scha kelen. Zodra de uitvoering is voltooid, kunt u het geüploade bestand vinden onder`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+3. Roep de SetAzureVMLogCollector.ps1 (opgenomen aan het einde van het artikel) als volgt om de AzureLogCollector-extensie voor een Cloud service in te scha kelen. Zodra de uitvoering is voltooid, kunt u het geüploade bestand vinden onder`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
 Hier volgt de definitie van de para meters die worden door gegeven aan het script. (Deze worden hieronder ook gekopieerd.)
 
@@ -276,7 +276,7 @@ param (
   ```
 
 ## <a name="extention-powershell-script-files"></a>Power shell-script bestanden voor extensies
-### <a name="setazureservicelogcollectorps1"></a>SetAzureServiceLogCollector. ps1
+### <a name="setazureservicelogcollectorps1"></a>SetAzureServiceLogCollector.ps1
 
 ```powershell
 [CmdletBinding(SupportsShouldProcess = $true)]
@@ -385,7 +385,7 @@ $SasUri = $SasUri + "&restype=container&comp=list"
 Write-Output "The container for uploaded file can be accessed using this link:`r`n$sasuri"
 ```
 
-### <a name="setazurevmlogcollectorps1"></a>SetAzureVMLogCollector. ps1
+### <a name="setazurevmlogcollectorps1"></a>SetAzureVMLogCollector.ps1
 
 ```powershell
 [CmdletBinding(SupportsShouldProcess = $true)]

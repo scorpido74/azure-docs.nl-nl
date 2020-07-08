@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: mihansen
 ms.openlocfilehash: 6642adf5f51be1f4f54c538624829fe9004d3907
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84871874"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>Een vertrouwelijke client toepassing registreren in Azure Active Directory
@@ -78,4 +78,4 @@ In dit artikel hebt u geleerd hoe u een vertrouwelijke client toepassing in Azur
 Nadat u de Azure API voor FHIR hebt geïmplementeerd, kunt u aanvullende beschik bare instellingen bekijken.
  
 >[!div class="nextstepaction"]
->[Azure API for FHIR implementeren](fhir-paas-powershell-quickstart.md)
+>[De Azure-API voor FHIR implementeren](fhir-paas-powershell-quickstart.md)

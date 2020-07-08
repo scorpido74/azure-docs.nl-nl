@@ -11,19 +11,19 @@ ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
 ms.openlocfilehash: 6646016a4529f46431ecb622c7546140a93a5d88
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84872144"
 ---
 # <a name="register-peering-service-by-using-the-azure-portal"></a>De peering-service registreren met behulp van de Azure Portal
 
-Azure peering service is een netwerk service die de connectiviteit van klanten verbetert met micro soft-Cloud Services, zoals Office 365, Dynamics 365, software as a Service (SaaS)-Services, Azure of andere micro soft-services die toegankelijk zijn via het open bare Internet.
+Azure Peering Service is een netwerkservice die de klantconnectiviteit verbetert met Microsoft-cloudservices, zoals Office 365, Dynamics 365, SaaS-services (Software as a Service), Azure of een andere Microsoft-service die toegankelijk is via openbaar internet.
 
 In dit artikel leert u hoe u een peering service-verbinding kunt registreren met behulp van de Azure Portal.
 
-Als u nog geen abonnement op Azure hebt, maak dan nu een [account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Als u nog geen Azure-abonnement hebt, maakt u nu een [account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > 
 
@@ -33,11 +33,11 @@ U moet het volgende hebben:
 
 ### <a name="azure-account"></a>Azure-account
 
-U moet een geldig en actief Microsoft Azure-account hebben. Dit account is vereist voor het instellen van de peering-service verbinding. Peering-service is een resource binnen Azure-abonnementen. 
+U moet beschikken over een geldig en actief Microsoft Azure-account. Dit account is vereist voor het instellen van de Peering Service-verbinding. Peering Service is een resource binnen Azure-abonnementen. 
 
 ### <a name="connectivity-provider"></a>Connectiveitsprovider
 
-U kunt samen werken met een Internet serviceprovider of een Internet Exchange-partner om peering service te verkrijgen om verbinding te maken met uw netwerk met het micro soft-netwerk.
+U kunt samenwerken met een internetprovider of een Internet Exchange-partner om Peering Service te verkrijgen om verbinding te maken tussen uw netwerk en het Microsoft-netwerk.
 
 Zorg ervoor dat de [connectiviteits providers](location-partners.md) zijn gekoppeld aan micro soft.
 
@@ -49,57 +49,57 @@ Ga in een browser naar de Azure Portal en meld u aan met uw Azure-account.
 
 ## <a name="register-a-peering-service-connection"></a>Een Peering Service-verbinding registreren
 
-1. Als u een peering service-verbinding wilt registreren, selecteert u **een resource**  >  **peering-service**maken.
+1. Als u een Peering Service-verbinding wilt registreren, selecteert u **Een resource maken** > **Peering Service**.
 
     ![Peering Service registreren](./media/peering-service-portal/peering-servicecreate.png)
-1. Voer de volgende gegevens in op het tabblad **basis beginselen** op de pagina **een peering-service verbinding maken** .
+1. Voer de volgende gegevens in op het tabblad **Basisbeginselen** op de pagina **Een Peering Service-verbinding maken**.
 
  
-1. Selecteer het abonnement en de resource groep die aan het abonnement is gekoppeld.
+1. Selecteer het abonnement en de resourcegroep die aan het abonnement is gekoppeld.
 
    ![Tabblad basis van peering registreren](./media/peering-service-portal/peering-servicebasics.png)
 
-1. Voer een **naam** in voor het peering service-exemplaar dat moet worden geregistreerd.
+1. Voer een **Naam** in voor het Peering Service-exemplaar dat moet worden geregistreerd.
  
-1. Selecteer nu de knop **volgende: Configuratie** onder aan de pagina. De pagina **configuratie** wordt weer gegeven.
+1. Selecteer vervolgens onderaan de pagina de knop **Volgende: configuratie**. De pagina **Configuratie** wordt weergegeven.
 
-## <a name="configure-the-peering-service-connection"></a>De peering service-verbinding configureren
+## <a name="configure-the-peering-service-connection"></a>De Peering Service-verbinding configureren
 
-1. Selecteer op de pagina **configuratie** de locatie waar de peering-service moet worden ingeschakeld door dezelfde optie te selecteren in de vervolg keuzelijst **service locatie van peering** .
+1. Selecteer op de pagina **Configuratie** de locatie waarop de Peering Service moet worden ingeschakeld door dezelfde locatie te selecteren in de vervolgkeuzelijst **Peering Service-locatie**.
 
-1. Selecteer de service provider waarvan de peering service moet worden verkregen door een provider naam te selecteren in de vervolg keuzelijst van de **peering-service provider** .
+1. Selecteer de serviceprovider waar de Peering Service moet worden verkregen door een providernaam te selecteren in de vervolgkeuzelijst **Peering Service-provider**.
  
-1. Selecteer **Nieuw voor voegsel maken** onder aan de sectie voor **voegsels** en tekst vakken worden weer gegeven. Voer nu de naam in van de voorvoegsel resource en de voor voegsels die zijn gekoppeld aan de service provider.
+1. Selecteer **Nieuw voorvoegsel maken** onderaan de sectie **Voorvoegsels**. Er worden nu tekstvakken weergegeven. Voer nu de naam in van de voorvoegselresource en van de voorvoegsels die zijn gekoppeld aan de serviceprovider.
 
-1. Selecteer **prefix sleutel** en voeg de prefix sleutel toe die u hebt ontvangen van uw provider (ISP of IXP). Met deze sleutel kan MS het voor voegsel en de provider valideren die uw IP-voor voegsel hebben toegewezen.
-   > ![Tabblad Configuratie van peering-service registreren](./media/peering-service-portal/peering-serviceconfiguration.png)
+1. Selecteer **Voorvoegselsleutel** en voeg de voorvoegselsleutel toe die u hebt ontvangen van uw provider (ISP of IXP). Met deze sleutel kan MS het voorvoegsel en de provider valideren die uw IP-voorvoegsel hebben toegewezen.
+   > ![Configuratietabblad Peering Service registreren](./media/peering-service-portal/peering-serviceconfiguration.png)
 
-1. Selecteer de knop **beoordeling + maken** linksonder op de pagina. De pagina **controleren + maken** wordt weer gegeven en Azure valideert uw configuratie.
+1. Selecteer linksonder op de pagina de knop **Beoordelen en maken**. De pagina **Beoordelen en maken** wordt weergegeven en de configuratie wordt gevalideerd in Azure.
     
 
-1. Wanneer het bericht **door gegeven validatie** wordt weer gegeven, selecteert u **maken**.
+1. Als u het bericht **Validatie geslaagd** ziet zoals weergegeven, selecteert u **Maken**.
 
-   > ![Tabblad Configuratie van peering-service registreren](./media/peering-service-portal/peering-service-prefix.png)
+   > ![Configuratietabblad Peering Service registreren](./media/peering-service-portal/peering-service-prefix.png)
 
 
-1. Nadat u een peering service-verbinding hebt geregistreerd, wordt er aanvullende validatie uitgevoerd voor de meegeleverde voor voegsels. U kunt de validatie status bekijken in de sectie voor **voegsels** van de resource naam. Als de validatie mislukt, wordt een van de volgende fout berichten weer gegeven:
+1. Nadat u een Peering Service-verbinding hebt geregistreerd, wordt aanvullende validatie uitgevoerd voor de meegeleverde voorvoegsels. U kunt de validatiestatus bekijken in de sectie **Voorvoegsels** van de resourcenaam. Als de validatie mislukt, wordt een van de volgende foutberichten weergegeven:
 
-   - Ongeldig voor voegsel voor peering-service, het voor voegsel moet een geldige indeling zijn. alleen IPv4-voor voegsel wordt ondersteund.
-   - Er is geen voor voegsel ontvangen van de peering-service provider.
+   - Ongeldig Peering Service-voorvoegsel. Het voorvoegsel moet een geldige indeling hebben. Alleen IPv4-voorvoegsels worden ondersteund.
+   - Er is geen voorvoegsel ontvangen van de Peering Service-provider.
    - De voorvoegsel aankondiging heeft geen geldige BGP-community. Neem contact op met de peering service provider.
    - De back-uproute is niet gevonden. Neem contact op met de peering service provider.
    - Het voor voegsel dat langer is ontvangen als pad, neemt contact op met de peering service provider.
    - Het voor voegsel dat is ontvangen met privé als in het pad, neemt contact op met de peering service provider.
 
-### <a name="add-or-remove-a-prefix"></a>Een voor voegsel toevoegen of verwijderen
+### <a name="add-or-remove-a-prefix"></a>Een voorvoegsel toevoegen of verwijderen
 
-Selecteer voor voegsels **toevoegen** op de pagina voor **voegsels** om voor voegsels toe te voegen.
+Selecteer **Voorvoegsels toevoegen** op de pagina **Voorvoegsels** om voorvoegsels toe te voegen.
 
-Selecteer het beletsel teken (...) naast het vermelde voor voegsel en selecteer de optie **verwijderen** .
+Selecteer het beletselteken (...) naast het vermelde voorvoegsel, en selecteer de optie **Verwijderen**.
 
-### <a name="delete-a-peering-service-connection"></a>Een peering service-verbinding verwijderen
+### <a name="delete-a-peering-service-connection"></a>Een Peering Service-verbinding verwijderen
 
-Schakel op de pagina **alle resources** het selectie vakje in de peering-service in en selecteer de optie **verwijderen** boven aan de pagina.
+Selecteer op de pagina **Alle resources** het selectievakje in de Peering Service, en selecteer bovenaan de pagina de optie **Verwijderen**.
 
 > [!NOTE]
 > U kunt een bestaand voor voegsel niet wijzigen.
@@ -107,8 +107,8 @@ Schakel op de pagina **alle resources** het selectie vakje in de peering-service
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [verbinding met peering service](connection.md)voor meer informatie over peering service-verbinding.
-- Zie [telemetrie-verbinding met peering service](connection-telemetry.md)voor meer informatie over de telemetrie van de peering-service verbinding.
-- Zie [verbindings-telemetrie meten](measure-connection-telemetry.md)om telemetrie te meten.
-- Als u de verbinding wilt registreren met behulp van Azure PowerShell, raadpleegt u [een peering service-verbinding registreren-Azure PowerShell](powershell.md).
-- Als u de verbinding wilt registreren met behulp van de Azure CLI, raadpleegt u [een peering service-verbinding registreren-Azure cli](cli.md).
+- Zie [Peering Service-verbinding](connection.md) voor meer informatie over de Peering Service-verbinding.
+- Zie [Peering Service-verbindingstelemetrie](connection-telemetry.md) voor meer informatie over de Peering Service-verbindingstelemetrie.
+- Zie [Verbindingstelemetrie meten](measure-connection-telemetry.md) om telemetrie te meten.
+- Zie [Een Peering Service-verbinding registreren - Azure PowerShell](powershell.md) als u de verbinding wilt registreren met behulp van Azure PowerShell.
+- Zie [Een Peering Service-verbinding registreren - Azure CLI](cli.md) als u de verbinding wilt registreren met behulp van de Azure CLI.

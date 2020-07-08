@@ -14,10 +14,10 @@ ms.topic: how-to
 ms.date: 03/19/2019
 ms.author: allensu
 ms.openlocfilehash: 1f30943eb0cc72f677785d1228b47b65764c1e7d
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84887854"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Cachinggedrag in Azure CDN beheren met regels voor opslaan in cache
@@ -113,7 +113,7 @@ Wanneer deze regels zijn ingesteld, wordt een aanvraag voor _ &lt; eind &gt; pun
 > - Voor **Azure CDN standaard van Verizon** -profielen wordt de doorgifte doorgaans in tien minuten voltooid.  
 >
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [Hoe caching werkt](cdn-how-caching-works.md)
 - [Zelfstudie: Azure CDN-regels voor opslaan in cache instellen](cdn-caching-rules-tutorial.md)

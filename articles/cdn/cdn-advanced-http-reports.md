@@ -15,13 +15,13 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: c06af1cc7f068070954669fc4ec269c9e679f278
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84886059"
 ---
-# <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Gebruiks statistieken analyseren met Azure CDN geavanceerde HTTP-rapporten
+# <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Gebruiksstatistieken analyseren met geavanceerde HTTP-rapporten in Azure CDN
 ## <a name="overview"></a>Overzicht
 In dit document wordt uitgebreide HTTP-rapportage in Microsoft Azure CDN uitgelegd. Deze rapporten bevatten gedetailleerde informatie over CDN-activiteiten.
 
@@ -48,7 +48,7 @@ Gedetailleerde verkeer-en bandbreedte gegevens voor elke regio worden direct ond
 
 Hieronder vindt u een korte beschrijving voor elk type geografie rapport op basis van een kaart.
 
-| Rapportnaam | Beschrijving |
+| Rapportnaam | Description |
 | --- | --- |
 | Wereld kaart |Met dit rapport kunt u de wereld wijde vraag naar uw CDN-inhoud weer geven. Elk land/elke regio heeft een kleur code op de wereld kaart om het percentage treffers op te geven dat afkomstig is van die regio. |
 | Verenigde Staten kaart |Met dit rapport kunt u de vraag naar uw CDN-inhoud in het Verenigde Staten weer geven. Elke status wordt in kleur code op deze kaart vermeld om het percentage treffers aan te geven dat afkomstig is van die regio. |
@@ -71,7 +71,7 @@ De gegevens die zijn gebruikt voor het genereren van het staaf diagram kunnen hi
 
 Hieronder vindt u een korte beschrijving van beide typen rapporten.
 
-| Rapportnaam | Beschrijving |
+| Rapportnaam | Description |
 | --- | --- |
 | Populairste steden |In dit rapport worden steden gerangschikt op basis van het aantal treffers dat afkomstig is uit die regio. |
 | Belangrijkste landen |In dit rapport worden landen/regio's gerangschikt op basis van het aantal treffers dat afkomstig is uit dat land/deze regio. |
@@ -199,7 +199,7 @@ De linkerkant van de grafiek (y-as) geeft de bestands naam aan voor elk van de T
 
 Direct onder het staaf diagram wordt de volgende informatie weer gegeven voor de belangrijkste aangevraagde assets van 250: relatief pad (inclusief bestands naam), het aantal aanvragen dat heeft geresulteerd in een 404-status code, het totale aantal keren dat de Asset is aangevraagd en het percentage aanvragen dat heeft geresulteerd in een 404 niet gevonden status code.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 * [Overzicht van Azure CDN](cdn-overview.md)
 * [Realtime-statistieken in Microsoft Azure CDN](cdn-real-time-stats.md)
 * [Standaard HTTP-gedrag negeren met de regel engine](cdn-rules-engine.md)

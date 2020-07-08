@@ -11,17 +11,17 @@ ms.workload: Infrastructure-services
 ms.date: 05/2/2020
 ms.author: derekol
 ms.openlocfilehash: fbb9a6237aafe1c1b7c94d9dd23ad4c3665c0c73
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84872130"
 ---
 # <a name="register-a-peering-service-connection-by-using-the-azure-cli"></a>Een peering service-verbinding registreren met behulp van de Azure CLI
 
-Azure peering service is een netwerk service die de connectiviteit van klanten verbetert met micro soft-Cloud Services, zoals Office 365, Dynamics 365, software as a Service (SaaS)-Services, Azure of andere micro soft-services die toegankelijk zijn via het open bare Internet. In dit artikel leert u hoe u een peering service-verbinding kunt registreren met behulp van de Azure CLI.
+Azure Peering Service is een netwerkservice die de klantconnectiviteit verbetert met Microsoft-cloudservices, zoals Office 365, Dynamics 365, SaaS-services (Software as a Service), Azure of een andere Microsoft-service die toegankelijk is via openbaar internet. In dit artikel leert u hoe u een peering service-verbinding kunt registreren met behulp van de Azure CLI.
 
-Als u nog geen abonnement op Azure hebt, maak dan nu een [account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Als u nog geen Azure-abonnement hebt, maakt u nu een [account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -33,13 +33,13 @@ U moet het volgende hebben:
 
 ### <a name="azure-account"></a>Azure-account
 
-U moet een geldig en actief Microsoft Azure-account hebben. Dit account is vereist voor het instellen van de peering-service verbinding. Peering-service is een resource binnen Azure-abonnementen.
+U moet beschikken over een geldig en actief Microsoft Azure-account. Dit account is vereist voor het instellen van de Peering Service-verbinding. Peering Service is een resource binnen Azure-abonnementen.
 
 ### <a name="connectivity-provider"></a>Connectiveitsprovider
 
-U kunt samen werken met een Internet serviceprovider of een Internet Exchange-partner om peering service te verkrijgen om verbinding te maken met uw netwerk met het micro soft-netwerk.
+U kunt samenwerken met een internetprovider of een Internet Exchange-partner om Peering Service te verkrijgen om verbinding te maken tussen uw netwerk en het Microsoft-netwerk.
 
-Zorg ervoor dat de connectiviteits providers zijn gekoppeld aan micro soft.
+Zorg ervoor dat de connectiviteitsproviders een partnerschap hebben met Microsoft.
 
 ### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1. Meld u aan bij uw Azure-account en selecteer uw abonnement
 
@@ -93,7 +93,7 @@ az peering service create : Create peering service\
 
 ### <a name="4-register-the-prefix"></a>4. het voor voegsel registreren
 
-Registreer het voor voegsel dat wordt verschaft door de connectiviteits provider door de volgende opdrachten uit te voeren via de Azure CLI. In dit voor beeld wordt het voor voegsel geregistreerd met de naam myPrefix.
+Registreer het voor voegsel dat wordt verschaft door de connectiviteits provider door de volgende opdrachten uit te voeren via de Azure CLI. In dit voorbeeld wordt het voorvoegsel met de naam myPrefix geregistreerd.
 
 ```azurecli-interactive
 az peering service prefix create \
@@ -105,7 +105,7 @@ az peering service prefix create \
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [verbinding met peering service](connection.md)voor meer informatie over peering service-verbinding.
-- Zie [telemetrie-verbinding met peering service](connection-telemetry.md)voor meer informatie over de telemetrie van de peering-service verbinding.
-- Zie [verbindings-telemetrie meten](measure-connection-telemetry.md)om telemetrie te meten.
-- Als u de verbinding wilt registreren met behulp van Azure PowerShell, raadpleegt u [een peering service-verbinding registreren-Azure PowerShell](powershell.md).
+- Zie [Peering Service-verbindingstelemetrie](connection-telemetry.md) voor meer informatie over de Peering Service-verbindingstelemetrie.
+- Zie [Verbindingstelemetrie meten](measure-connection-telemetry.md) om telemetrie te meten.
+- Zie [Een Peering Service-verbinding registreren - Azure PowerShell](powershell.md) als u de verbinding wilt registreren met behulp van Azure PowerShell.
 - Als u de verbinding wilt registreren met behulp van de Azure Portal, raadpleegt u [een peering service-verbinding registreren-Azure Portal](azure-portal.md).

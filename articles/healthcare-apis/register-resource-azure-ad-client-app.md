@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: mihansen
 ms.openlocfilehash: 10b951300b8386b057744a980abd5d847b6b6907
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84871853"
 ---
 # <a name="register-a-resource-application-in-azure-active-directory"></a>Een resource toepassing registreren in Azure Active Directory
@@ -110,4 +110,4 @@ De Azure-API voor FHIR en de OSS FHIR-server voor Azure gebruiken [Azure Active 
 In dit artikel hebt u geleerd hoe u een resource toepassing kunt registreren in Azure Active Directory. Implementeer vervolgens de Azure API voor FHIR.
  
 >[!div class="nextstepaction"]
->[Azure API for FHIR implementeren](fhir-paas-powershell-quickstart.md)
+>[De Azure-API voor FHIR implementeren](fhir-paas-powershell-quickstart.md)

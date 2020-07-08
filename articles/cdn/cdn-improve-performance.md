@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
 ms.openlocfilehash: bd32bbb5957832629fa19eb756b95356c0292ef1
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84887696"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>De prestaties verbeteren door bestanden in Azure CDN te comprimeren
@@ -165,6 +165,6 @@ Voor eind punten die zijn ingeschakeld voor Media Services CDN-streaming, wordt 
 - URL van de toepassing/vnd.apple.mpeg
 - Application/F4M + XML 
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 * [Problemen met CDN-bestandscompressie oplossen](cdn-troubleshoot-compression.md)    
 

@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 06/06/2018
 ms.author: allensu
 ms.openlocfilehash: 2c432b28250dca382f69a992de73d633b5ea45b8
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84883988"
 ---
 # <a name="azure-diagnostic-logs"></a>Diagnostische logboeken in Azure
@@ -51,7 +51,7 @@ Zie [Diagnostische logboeken](https://docs.microsoft.com/azure/monitoring-and-di
 
 Volg deze stappen om logboek registratie in te scha kelen met CDN core Analytics:
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com). Als u CDN nog niet hebt ingeschakeld voor uw werk stroom, [maakt u een Azure CDN profiel en een eind punt](cdn-create-new-endpoint.md) voordat u doorgaat.
+Meld u aan bij [Azure Portal](https://portal.azure.com). Als u CDN nog niet hebt ingeschakeld voor uw werk stroom, [maakt u een Azure CDN profiel en een eind punt](cdn-create-new-endpoint.md) voordat u doorgaat.
 
 1. Navigeer in het Azure Portal naar het **CDN-profiel**.
 
@@ -445,7 +445,7 @@ Voorbeeld eigenschappen:
 
 * [Diagnostische logboeken van Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Kern analyse via Azure CDN aanvullende portal](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Azure Monitor-logboeken](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Azure Monitor logboeken](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 * [Azure Log Analytics REST API](https://docs.microsoft.com/rest/api/loganalytics)
 
 

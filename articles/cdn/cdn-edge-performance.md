@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: dc1599fc0c2f8c55c709ab674c10dd53c8d8dc04
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84887707"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Prestaties van edge nod analyseren in Microsoft Azure CDN
@@ -126,7 +126,7 @@ Het doel van deze metrische gegevens is om de algemene CDN-prestaties voor uw ve
 #### <a name="secure-traffic-metrics"></a>Metrische gegevens van beveiligd verkeer
 Het doel van deze metrische gegevens is om de CDN-prestaties voor HTTPS-verkeer bij te houden.
 
-| Veld | Beschrijving |
+| Veld | Description |
 | --- | --- |
 | Efficiëntie van de cache beveiligen |Hiermee wordt het percentage verzonden gegevens aangegeven voor HTTPS-aanvragen die vanuit de cache zijn bediend. Deze metrische gegevens worden gemeten wanneer een in cache opgeslagen versie van de aangevraagde inhoud rechtstreeks vanuit het CDN (Edge-servers) naar aanvragers (bijvoorbeeld webbrowser) via HTTPS wordt verzonden. |
 | Beveiligde overdrachts frequentie |Hiermee wordt de gemiddelde snelheid aangegeven waarmee inhoud van het CDN (Edge-servers) naar aanvragers (bijvoorbeeld webservers) via HTTPS is overgedragen. |
@@ -183,7 +183,7 @@ Elk rapport in deze module bevat een diagram en statistieken over band breedte e
 | 502 fouten |Bevat een staaf diagram waarmee u de tien belangrijkste aanvragen kunt weer geven die hebben geleid tot een ongeldige gateway-reactie code van 502. Een ongeldige gateway-reactie code van 502 treedt op wanneer een HTTP-protocol fout optreedt tussen een server en een HTTP-proxy. In het geval van ons CDN treedt 502 er meestal een ongeldige gateway-antwoord code op wanneer een klant van oorsprong een ongeldige reactie op een Edge-Server retourneert. Een antwoord is ongeldig als het niet kan worden geparseerd of niet is voltooid. |
 | 5xx-fouten |Bevat een staaf diagram waarmee u de tien belangrijkste aanvragen kunt weer geven die hebben geresulteerd in een antwoord code in het 500-bereik.  Uitgesloten van dit rapport zijn 502 ongeldige gateway-en 504-time-outantwoord codes. |
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 * [Overzicht van Azure CDN](cdn-overview.md)
 * [Realtime-statistieken in Microsoft Azure CDN](cdn-real-time-stats.md)
 * [Standaard HTTP-gedrag negeren met de regel engine](cdn-rules-engine.md)

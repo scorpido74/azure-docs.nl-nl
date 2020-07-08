@@ -9,10 +9,10 @@ ms.date: 08/16/2016
 ms.author: deli
 ms.custom: include file
 ms.openlocfilehash: eb13d889cb72911e2268b7538a74336befe3320b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75392424"
 ---
 In de volgende tabel worden de belangrijkste quota's, limieten, standaard waarden en beperkingen in azure scheduler beschreven.
@@ -29,7 +29,7 @@ In de volgende tabel worden de belangrijkste quota's, limieten, standaard waarde
 | **Grootte van aanvraag-URL** | De maximale grootte voor een aanvraag-URL is 2.048 tekens. |
 | **Aantal headers** | Het maximum aantal headers is 50 kopteksten. | 
 | **Cumulatieve header grootte** | De maximale cumulatieve header grootte is 4.096 tekens. |
-| **Out** | De time-out van de aanvraag is statisch, dat wil zeggen, niet configureerbaar. en is 60 seconden voor HTTP-acties. Volg de asynchrone HTTP-protocollen voor meer bewerkingen. U kunt bijvoorbeeld een 202 direct retour neren, maar op de achtergrond blijven werken. | 
+| **Time-out** | De time-out van de aanvraag is statisch, dat wil zeggen, niet configureerbaar. en is 60 seconden voor HTTP-acties. Volg de asynchrone HTTP-protocollen voor meer bewerkingen. U kunt bijvoorbeeld een 202 direct retour neren, maar op de achtergrond blijven werken. | 
 | **Jobgeschiedenis** | De maximale tekst van het antwoord dat is opgeslagen in de taak geschiedenis is 2.048 bytes. |
 | **Taak geschiedenis retentie** | De taak geschiedenis wordt Maxi maal twee maanden of tot de laatste 1.000 uitvoeringen bewaard. | 
 | **Voltooide en mislukte taak behoud** | Voltooide en mislukte taken worden 60 dagen bewaard. |

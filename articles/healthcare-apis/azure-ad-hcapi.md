@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: cavoeg
 ms.openlocfilehash: 53adf974a3af4a2cc3e5c89156fe4b50571c7b79
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84871727"
 ---
 # <a name="azure-active-directory-identity-configuration-for-azure-api-for-fhir"></a>Azure Active Directory identiteits configuratie voor de Azure-API voor FHIR
@@ -87,7 +87,7 @@ Het token kan worden gedecodeerd en geinspectet met hulpprogram ma's zoals [http
 }.[Signature]
 ```
 
-## <a name="obtaining-an-access-token"></a>Een toegangs token verkrijgen
+## <a name="obtaining-an-access-token"></a>Een toegangstoken verkrijgen
 
 Zoals hierboven vermeld, zijn er verschillende manieren om een token van Azure AD te verkrijgen. Deze worden gedetailleerd beschreven in de [documentatie voor Azure AD-ontwikkel aars](https://docs.microsoft.com/azure/active-directory/develop/).
 
@@ -111,4 +111,4 @@ Er zijn andere variaties (bijvoorbeeld voor stroom) voor het verkrijgen van een 
 In dit document hebt u enkele van de basis concepten geleerd van het beveiligen van de toegang tot de Azure API voor FHIR met behulp van Azure AD. Ga verder naar de Snelstartgids voor implementatie voor meer informatie over het implementeren van een exemplaar van de Azure API voor FHIR.
 
 >[!div class="nextstepaction"]
->[Azure API for FHIR implementeren](fhir-paas-portal-quickstart.md)
+>[De Azure-API voor FHIR implementeren](fhir-paas-portal-quickstart.md)
