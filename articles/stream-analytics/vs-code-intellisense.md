@@ -5,13 +5,13 @@ ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 4/11/2020
-ms.topic: conceptual
-ms.openlocfilehash: 25ece3174cd65df9c665888d913cf6b9029904b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: how-to
+ms.openlocfilehash: df6e7435d072cc88e82f3dc9a323a5b21145c432
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81394395"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037253"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>IntelliSense in Azure Stream Analytics-hulpprogram ma's voor Visual Studio code
 
@@ -34,13 +34,12 @@ U kunt IntelliSense in elk editor venster activeren door een trigger teken, zoal
 
 Stream Analytics-hulpprogram ma's voor VS code IntelliSense bieden verschillende typen aanvullingen, waaronder suggesties voor taal servers, fragmenten en eenvoudige woord afrondingen op basis van woorden.
 
-|       |         |       |
-| ----- | ------- | ----- |
+|Voltooiing     |  Type       |
+| ----- | ------- |
 | Trefwoorden | `keyword`
 | Functions | `build-in function`, `user defined function`  |
 | Naam van gegevensset| `input`, `output`, `intermediate result set`|
 | Kolom naam voor gegevensset|`input`, `intermediate result set`|
-|
 
 #### <a name="name-completion"></a>Naam voltooiing
 
