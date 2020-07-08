@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5350e728ad9c30a6e9258ce9c7615baf020473a8
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83995119"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Voorwaardelijke toegang: toegang blok keren per locatie
@@ -43,7 +42,7 @@ Meer informatie over de locatie voorwaarde in voorwaardelijke toegang vindt u in
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **insluiten**selecteert u **alle gebruikers**.
-   1. Selecteer **Done**.
+   1. Selecteer **Voltooid**.
 1. Onder **Cloud-apps of acties**  >  **Include**, selecteert u **alle Cloud-apps**en selecteert u **gereed**.
 1. Onder **voor waarden**  >  **locatie**.
    1. Stel **configureren** op **Ja** in

@@ -8,10 +8,9 @@ ms.author: kaib
 ms.date: 03/11/2020
 ms.custom: seodec18
 ms.openlocfilehash: e2916a71f167c415f6bf1dde8ff82a38b0e0557c
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83873985"
 ---
 # <a name="verify-encryption-status-for-linux"></a>Versleutelings status voor Linux controleren 
@@ -280,7 +279,7 @@ az storage account list --query [].[id] -o tsv
 ```
 De Id's van het opslag account worden in de volgende vorm weer gegeven:
 
-/Subscriptions/ \< -abonnements-id> naam van/ResourceGroups/- \< resource groep>/providers/Microsoft.Storage/storageaccounts/- \< opslag account>
+/Subscriptions/ \<subscription id> /ResourceGroups/ \<resource group name> /providers/Microsoft.Storage/storageAccounts/\<storage account name>
 
 Selecteer de juiste ID en sla deze op in een variabele:
 ```bash

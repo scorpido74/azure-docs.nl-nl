@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c65b4ede6f4851418bf17d42db5b3215dafa9234
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83995170"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>Voorwaardelijke toegang: compatibele apparaten vereisen
@@ -40,13 +39,13 @@ De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke t
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **insluiten**selecteert u **alle gebruikers**.
    1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u de accounts voor nood toegang of het afbreek glas van uw organisatie. 
-   1. Selecteer **Done**.
+   1. Selecteer **Voltooid**.
 1. Onder **Cloud-apps of acties**  >  **Include**, selecteert u **alle Cloud-apps**.
    1. Als u specifieke toepassingen van uw beleid moet uitsluiten, kunt u ze kiezen op het tabblad **uitsluiten** onder **Selecteer uitgesloten Cloud-apps** en kiest u **selecteren**.
-   1. Selecteer **Done**.
+   1. Selecteer **Voltooid**.
 1. Onder **voor waarden**  >  **client-apps (preview)** stelt u **configureren** op **Ja**in en selecteert u **gereed**.
 1. Onder **toegangs beheer**  >  **toekennen**selecteert **u apparaat vereisen dat moet worden gemarkeerd als compatibel**.
-   1. Kies **Selecteren**.
+   1. Selecteer **Selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid in te stellen.
 

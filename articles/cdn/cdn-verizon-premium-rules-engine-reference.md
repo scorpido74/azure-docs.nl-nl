@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: allensu
 ms.openlocfilehash: 75633521474ec3bcbc35cea49ea7a2da6a271e01
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83872514"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Referentie voor Azure CDN van Verizon Premium-regels engine
@@ -75,7 +74,7 @@ De werk stroom waarmee een beleid kan worden toegepast op de productie-of Faseri
 |Aanvraag beoordeling implementeren   |    <br>Een implementatie aanvraag ondergaat automatische validatie en fout detectie.</br><br>Hoewel het meren deel van de implementatie aanvragen automatisch wordt goedgekeurd, is hand matige controle vereist voor complexere beleids regels.</br>   |
 |Beleids implementatie ([fase ring](https://docs.vdms.com/cdn/index.html#HRE/Environment.htm#Staging))   |  <br> Na goed keuring van een implementatie aanvraag voor de Faserings omgeving wordt een beleid toegepast op de Faserings omgeving. Met deze omgeving kan een beleid worden getest op basis waarvan site verkeer wordt gesimuleerd.</br><br>Zodra het beleid gereed is om te worden toegepast op live site verkeer, moet een nieuwe implementatie aanvraag voor de productie omgeving worden ingediend.</br>      |
 |Beleids implementatie ([productie](https://docs.vdms.com/cdn/index.html#HRE/Environment.htm#Producti))   |  Na goed keuring van een implementatie aanvraag voor de productie omgeving wordt een beleid toegepast op de productie omgeving. Met deze omgeving kan een beleid fungeren als de laatste instantie om te bepalen hoe het CDN live verkeer moet verwerken.     |
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
 De manier waarop speciale tekens worden behandeld, is afhankelijk van hoe een overeenkomst voorwaarde of-functie tekst waarden verwerkt. Een match-voor waarde of functie kan tekst op een van de volgende manieren interpreteren:
 
@@ -93,19 +92,19 @@ Een percentage symbool wordt gebruikt om URL-code ring aan te geven (bijvoorbeel
 
 Tekst die wordt geïnterpreteerd als een Joker teken, wijst extra betekenissen toe aan speciale tekens. In de volgende tabel wordt beschreven hoe de volgende reeks tekens wordt geïnterpreteerd:
 
-Teken | Beschrijving
+Teken | Description
 ----------|------------
 \ | Een back slash wordt gebruikt om een van de tekens die in deze tabel zijn opgegeven, te escapepen. Een back slash moet direct voor het speciale teken worden opgegeven.<br/>De volgende syntaxis verescapet bijvoorbeeld een asterisk:`\*`
 % | Een percentage symbool wordt gebruikt om URL-code ring aan te geven (bijvoorbeeld `%20` ).
 \* | Een asterisk is een Joker teken dat bestaat uit een of meer tekens.
 Space | Een spatie geeft aan dat aan een voor waarde voor een overeenkomst kan worden voldaan door een van de opgegeven waarden of patronen.
-Value | Een enkele aanhaling heeft geen speciale betekenis. Er wordt echter een set met enkele aanhalings tekens gebruikt om aan te geven dat een waarde moet worden behandeld als een letterlijke waarde. Dit kan op de volgende manieren worden gebruikt:<br><br/>-Hiermee kan een match-voor waarde worden vervuld wanneer de opgegeven waarde overeenkomt met een deel van de vergelijkings waarde.  Bijvoorbeeld, `'ma'` komt overeen met een van de volgende teken reeksen: <br/><br/>/Business/**ma**rathon/Asset.htm<br/>**ma**p. gif<br/>/business/template. **ma**p<br /><br />-Hiermee kan een speciaal teken worden opgegeven als een letterlijke teken. U kunt bijvoorbeeld een letterlijke spatie opgeven door een spatie te plaatsen binnen een set met enkele aanhalings tekens ( `' '` of `'sample value'` ).<br/>-Hiermee kan een lege waarde worden opgegeven. Geef een lege waarde op door een set met enkele aanhalings tekens (,) op te geven.<br /><br/>**Belang rijk**<br/>-Als de opgegeven waarde geen joker teken bevat, wordt deze automatisch beschouwd als een letterlijke waarde, wat betekent dat het niet nodig is om een set met enkele aanhalings tekens op te geven.<br/>-Als een back slash geen ander teken in deze tabel weglaat, wordt deze genegeerd wanneer deze is opgegeven binnen een set met enkele aanhalings tekens.<br/>-Een andere manier om een speciaal teken op te geven als een letterlijke teken, is het escapeel te maken met behulp van een back slash (dat wil zeggen `\` ).
+Value | Een enkele aanhaling heeft geen speciale betekenis. Er wordt echter een set met enkele aanhalings tekens gebruikt om aan te geven dat een waarde moet worden behandeld als een letterlijke waarde. Dit kan op de volgende manieren worden gebruikt:<br><br/>-Hiermee kan een match-voor waarde worden vervuld wanneer de opgegeven waarde overeenkomt met een deel van de vergelijkings waarde.  Bijvoorbeeld, `'ma'` komt overeen met een van de volgende teken reeksen: <br/><br/>/Business/**ma**rathon/asset.htm<br/>**ma**p.gif<br/>/business/template. **ma**p<br /><br />-Hiermee kan een speciaal teken worden opgegeven als een letterlijke teken. U kunt bijvoorbeeld een letterlijke spatie opgeven door een spatie te plaatsen binnen een set met enkele aanhalings tekens ( `' '` of `'sample value'` ).<br/>-Hiermee kan een lege waarde worden opgegeven. Geef een lege waarde op door een set met enkele aanhalings tekens (,) op te geven.<br /><br/>**Belangrijk:**<br/>-Als de opgegeven waarde geen joker teken bevat, wordt deze automatisch beschouwd als een letterlijke waarde, wat betekent dat het niet nodig is om een set met enkele aanhalings tekens op te geven.<br/>-Als een back slash geen ander teken in deze tabel weglaat, wordt deze genegeerd wanneer deze is opgegeven binnen een set met enkele aanhalings tekens.<br/>-Een andere manier om een speciaal teken op te geven als een letterlijke teken, is het escapeel te maken met behulp van een back slash (dat wil zeggen `\` ).
 
 ### <a name="regular-expressions"></a>Reguliere expressies
 
 Reguliere expressies definiëren een patroon dat wordt doorzocht in een tekst waarde. De notatie reguliere expressie definieert specifieke betekenissen voor diverse symbolen. In de volgende tabel wordt aangegeven hoe speciale tekens worden behandeld door matching voorwaarden en functies die reguliere expressies ondersteunen.
 
-Speciaal teken | Beschrijving
+Speciaal teken | Description
 ------------------|------------
 \ | Met een back slash wordt het teken dat het volgt, als een letterlijke waarde gezien in plaats van de normale expressie betekenis. De volgende syntaxis verescapet bijvoorbeeld een asterisk:`\*`
 % | De betekenis van een percentage symbool is afhankelijk van het gebruik.<br/><br/> `%{HTTPVariable}`: Met deze syntaxis wordt een HTTP-variabele aangeduid.<br/>`%{HTTPVariable%Pattern}`: In deze syntaxis wordt een percentage symbool gebruikt om een HTTP-variabele en als scheidings teken te identificeren.<br />`\%`: Als u een percentage tekent, kan dit worden gebruikt als letterlijke waarde of om URL-code ring aan te geven (bijvoorbeeld `\%20` ).

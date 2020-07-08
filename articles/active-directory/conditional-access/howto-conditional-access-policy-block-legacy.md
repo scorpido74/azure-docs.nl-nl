@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2d6539a233fbb8038d82a8ea41da2c9e79745324
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83995187"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Voorwaardelijke toegang: verouderde verificatie blok keren
@@ -33,14 +32,14 @@ De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke t
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **insluiten**selecteert u **alle gebruikers**.
    1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u alle accounts die de mogelijkheid moeten hebben om verouderde verificatie te gebruiken. Sluit ten minste één account uit om te voor komen dat uzelf wordt vergrendeld. Als u geen account uitsluit, kunt u dit beleid niet maken.
-   1. Selecteer **Done**.
+   1. Selecteer **Voltooid**.
 1. Selecteer onder **Cloud-apps of-acties** **alle Cloud-apps**.
-   1. Selecteer **Done**.
+   1. Selecteer **Voltooid**.
 1. Stel onder **voor waarden**  >  **client-apps (preview)** **configureren** in op **Ja**.
    1. Controleer alleen de vakken **Mobile apps en desktop-clients**  >  **andere clients**.
-   1. Selecteer **Done**.
+   1. Selecteer **Voltooid**.
 1. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang blok keren**.
-   1. Kies **Selecteren**.
+   1. Selecteer **Selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in op **alleen rapport**.
 1. Selecteer **maken** om uw beleid in te stellen.
 

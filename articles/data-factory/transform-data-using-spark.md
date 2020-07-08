@@ -11,15 +11,14 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
 ms.openlocfilehash: bc8fd73b18e197c42e4750612320c1b15a6db020
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83849209"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Spark-activiteit in Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](v1/data-factory-spark.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](v1/data-factory-spark.md)
 > * [Huidige versie](transform-data-using-spark.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -61,8 +60,8 @@ In de volgende tabel worden de JSON-eigenschappen beschreven die in de JSON-defi
 
 | Eigenschap              | Beschrijving                              | Vereist |
 | --------------------- | ---------------------------------------- | -------- |
-| name                  | De naam van de activiteit in de pijp lijn.    | Yes      |
-| beschrijving           | Tekst die beschrijft wat de activiteit doet.  | No       |
+| naam                  | De naam van de activiteit in de pijp lijn.    | Yes      |
+| description           | Tekst die beschrijft wat de activiteit doet.  | No       |
 | type                  | Voor Spark-activiteiten is het type activiteit HDInsightSpark. | Yes      |
 | linkedServiceName     | De naam van de gekoppelde HDInsight Spark-service waarop het Spark-programma wordt uitgevoerd. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service. | Yes      |
 | SparkJobLinkedService | De Azure Storage gekoppelde service die het Spark-taak bestand, de afhankelijkheden en de logboeken bevat. Hier worden alleen **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** -en **[ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** gekoppelde services ondersteund. Als u geen waarde voor deze eigenschap opgeeft, wordt de opslag gebruikt die aan het HDInsight-cluster is gekoppeld. De waarde van deze eigenschap kan alleen een Azure Storage gekoppelde service zijn. | No       |
@@ -79,10 +78,10 @@ Spark-taken zijn meer uitbreidbaar dan Pig/Hive-taken. U kunt voor Spark-taken m
 
 Maak de volgende mapstructuur in de Azure Blob-opslag waarnaar wordt verwezen door de gekoppelde HDInsight-service. Upload vervolgens afhankelijke bestanden naar de juiste submappen in de hoofdmap die wordt vertegenwoordigd door **entryFilePath**. Upload bijvoorbeeld python-bestanden naar de pyFiles-submap en JAR-bestanden naar de submap potten van de hoofdmap. Tijdens runtime verwacht Data Factory service de volgende mapstructuur in de Azure Blob-opslag:     
 
-| Pad                  | Beschrijving                              | Vereist | Type   |
+| Pad                  | Description                              | Vereist | Type   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
-| `.`basis            | Het pad naar de hoofdmap van de Spark-taak in de gekoppelde opslag service | Yes      | Map |
-| &lt;door de gebruiker gedefinieerd&gt; | Het pad naar het invoer bestand van de Spark-taak | Yes      | File   |
+| `.`basis            | Het pad naar de hoofdmap van de Spark-taak in de gekoppelde opslag service | Ja      | Map |
+| &lt;door de gebruiker gedefinieerd&gt; | Het pad naar het invoer bestand van de Spark-taak | Yes      | Bestand   |
 | ./jars                | Alle bestanden in deze map worden geüpload en geplaatst in het Java-klassenpad van het cluster | No       | Map |
 | ./pyFiles             | Alle bestanden in deze map worden geüpload en op de PYTHONPATH van het cluster geplaatst | No       | Map |
 | ./files               | Alle bestanden in deze map worden geüpload en op de werk directory van de uitvoerder geplaatst | No       | Map |

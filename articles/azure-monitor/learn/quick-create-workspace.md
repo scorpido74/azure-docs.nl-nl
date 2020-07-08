@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
 ms.openlocfilehash: e6ef8fb7dfd98a509b0b89e049c70169dafbe134
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83860559"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Een Log Analytics-werk ruimte maken in de Azure Portal
@@ -33,7 +32,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com). 
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
-1. Klik in de Azure Portal op **alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **log Analytics-werk ruimten**.
+1. Klik in Azure Portal op **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Log Analytics-werkruimten**.
 
     ![Azure Portal](media/quick-create-workspace/azure-portal-01.png)
   
@@ -45,7 +44,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
    * Selecteer een beschik bare **locatie**.  Zie voor meer informatie de [regio's log Analytics beschikbaar in](https://azure.microsoft.com/regions/services/) en zoek naar Azure monitor in het veld **zoeken naar een product** .  
    * Als u een werkruimte maakt in een nieuw abonnement dat na 2 april 2018 is gemaakt, gebruikt deze automatisch de prijscategorie *Per GB*. De optie voor het selecteren van een prijscategorie is dan niet beschikbaar.  Als u een werk ruimte maakt voor een bestaand abonnement dat is gemaakt vóór 2 april, of voor een abonnement dat is gekoppeld aan een bestaande Enterprise Agreement EA-inschrijving, selecteert u de gewenste prijs categorie.  Zie [log Analytics prijs informatie](https://azure.microsoft.com/pricing/details/log-analytics/)voor meer informatie over de specifieke lagen.
 
-        ![Log Analytics resource-Blade maken](media/quick-create-workspace/create-loganalytics-workspace-02.png)  
+        ![Log Analytics-resourceblade maken](media/quick-create-workspace/create-loganalytics-workspace-02.png)  
 
 3. Nadat u de vereiste gegevens hebt opgegeven in het deelvenster **Log Analytics-werkruimte**, klikt u op **OK**.  
 

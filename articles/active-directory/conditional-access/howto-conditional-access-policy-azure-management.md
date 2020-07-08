@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 09d07717895c6faa506d692becb261e834e44890
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83995352"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>Voorwaardelijke toegang: MFA vereisen voor Azure-beheer
@@ -48,7 +47,7 @@ De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke t
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **insluiten**selecteert u **alle gebruikers**.
    1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u de accounts voor nood toegang of het afbreek glas van uw organisatie. 
-   1. Selecteer **Done**.
+   1. Selecteer **Voltooid**.
 1. Onder **Cloud-apps of acties**  >  **Include**, selecteert u **apps selecteren**, kiest u **Microsoft Azure beheer**en selecteert u vervolgens **op** **gereed**.
 1. Onder **voor waarden**  >  **client-apps (preview)** stelt u **configureren** op **Ja**in en selecteert u **gereed**.
 1. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang verlenen**, **multi-factor Authentication vereisen**en selecteert u **selecteren**.

@@ -12,16 +12,15 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
 ms.openlocfilehash: 54eff77daa7e69c39e9ec5d6f326f2f64c9fcafb
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83849226"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Hadoop Pig-activiteit in Azure Data Factory
 
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](v1/data-factory-pig-activity.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](v1/data-factory-pig-activity.md)
 > * [Huidige versie](transform-data-using-hadoop-pig.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -30,7 +29,7 @@ De HDInsight-Pig-activiteit in een Data Factory [pijp lijn](concepts-pipelines-a
 
 Als u geen ervaring hebt met Azure Data Factory, lees dan [Inleiding tot Azure Data Factory](introduction.md) en voer de [volgende zelf studie uit: gegevens transformeren](tutorial-transform-data-spark-powershell.md) voordat u dit artikel leest. 
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -61,8 +60,8 @@ Als u geen ervaring hebt met Azure Data Factory, lees dan [Inleiding tot Azure D
 
 | Eigenschap            | Beschrijving                              | Vereist |
 | ------------------- | ---------------------------------------- | -------- |
-| name                | Naam van de activiteit                     | Yes      |
-| beschrijving         | Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt | No       |
+| naam                | Naam van de activiteit                     | Yes      |
+| description         | Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt | No       |
 | type                | Voor Hive-activiteit is het type activiteit HDinsightPig | Yes      |
 | linkedServiceName   | Verwijzing naar het HDInsight-cluster dat is geregistreerd als een gekoppelde service in Data Factory. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service. | Yes      |
 | scriptLinkedService | Verwijzing naar een Azure Storage gekoppelde service die wordt gebruikt voor het opslaan van het Pig-script dat moet worden uitgevoerd. Hier worden alleen **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** -en **[ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** gekoppelde services ondersteund. Als u deze gekoppelde service niet opgeeft, wordt de Azure Storage gekoppelde service gebruikt die is gedefinieerd in de gekoppelde HDInsight-service. | No       |

@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: fa1be31f90bd14c1f22d9e389132487094ecb4ff
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83849753"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Grafische runbooks ontwerpen in Azure Automation
@@ -34,11 +33,11 @@ Met het besturings element canvas kunt u uw runbook ontwerpen. U kunt activiteit
 
 Met het besturings element bibliotheek kunt u [activiteiten](#use-activities) selecteren om aan uw runbook toe te voegen. U voegt deze toe aan het canvas, waar u ze kunt verbinden met andere activiteiten. Het besturings element bibliotheek bevat de secties die in de volgende tabel zijn gedefinieerd.
 
-| Sectie | Beschrijving |
+| Sectie | Description |
 |:--- |:--- |
 | Cmdlets |Alle cmdlets die kunnen worden gebruikt in uw runbook. Cmdlets zijn ingedeeld op module. Alle modules die u hebt geïnstalleerd in uw Automation-account zijn beschikbaar. |
 | Runbooks |De runbooks in uw Automation-account. U kunt deze runbooks toevoegen aan het canvas dat moet worden gebruikt als onderliggende runbooks. Alleen runbooks van hetzelfde kern type worden weer gegeven als het runbook dat wordt bewerkt. Voor grafische runbooks worden alleen op Power shell gebaseerde runbooks weer gegeven. Voor grafische runbooks in Power shell-werk stromen worden alleen runbooks op basis van Power shell-werk stromen weer gegeven. |
-| Activa |De [Automation-assets](/previous-versions/azure/dn939988(v=azure.100)) in uw Automation-account dat u in uw runbook kunt gebruiken. Als u een activum toevoegt aan een runbook, wordt er een werk stroom activiteit toegevoegd waarmee de geselecteerde activa worden opgehaald. In het geval van variabele assets kunt u selecteren of u een activiteit wilt toevoegen om de variabele op te halen of de variabele in te stellen. |
+| Assets |De [Automation-assets](/previous-versions/azure/dn939988(v=azure.100)) in uw Automation-account dat u in uw runbook kunt gebruiken. Als u een activum toevoegt aan een runbook, wordt er een werk stroom activiteit toegevoegd waarmee de geselecteerde activa worden opgehaald. In het geval van variabele assets kunt u selecteren of u een activiteit wilt toevoegen om de variabele op te halen of de variabele in te stellen. |
 | Runbookbesturing |Beheer activiteiten die kunnen worden gebruikt in uw huidige runbook. Een verbindings activiteit heeft meerdere invoer en wacht totdat alle taken zijn voltooid voordat u doorgaat met de werk stroom. Een code activiteit voert een of meer regels Power shell-of Power shell-werk stroom code uit, afhankelijk van het type van het grafische runbook. U kunt deze activiteit gebruiken voor aangepaste code of voor functionaliteit die moeilijk te vergemakkelijkt is met andere activiteiten. |
 
 ### <a name="configuration-control"></a>Configuratie beheer
@@ -69,7 +68,7 @@ In het volgende voor beeld heeft de cmdlet [Get-AzVM](https://docs.microsoft.com
 
 Wanneer u een waarde voor een para meter opgeeft, selecteert u een gegevens bron om te bepalen hoe de waarde is opgegeven. De gegevens bronnen die beschikbaar zijn voor een bepaalde para meter, zijn afhankelijk van de geldige waarden voor die para meter. Zo is null bijvoorbeeld geen beschik bare optie voor een para meter die geen Null-waarden toestaat.
 
-| Gegevensbron | Beschrijving |
+| Gegevensbron | Description |
 |:--- |:--- |
 | Constante waarde |Typ een waarde voor de para meter. Deze gegevens bron is alleen beschikbaar voor de volgende gegevens typen: Int32, Int64, String, Boolean, DateTime, Switch. |
 | Uitvoer van activiteit |Gebruik uitvoer van een activiteit die voorafgaat aan de huidige activiteit in de werk stroom. Alle geldige activiteiten worden weer gegeven. Gebruik voor de parameter waarde alleen de activiteit die de uitvoer produceert. Als met de activiteit een object met meerdere eigenschappen wordt uitgevoerd, kunt u de naam van een specifieke eigenschap typen nadat u de activiteit hebt geselecteerd. |
@@ -151,7 +150,7 @@ U kunt een koppeling tussen twee activiteiten maken door de bron activiteit te s
 
 Selecteer de koppeling om de eigenschappen ervan te configureren in de Blade configuratie. Eigenschappen bevatten het koppelings type, dat wordt beschreven in de volgende tabel.
 
-| Koppelings type | Beschrijving |
+| Koppelings type | Description |
 |:--- |:--- |
 | Pijplijn |De doel activiteit wordt één keer uitgevoerd voor elke object uitvoer van de bron activiteit. De doel activiteit wordt niet uitgevoerd als de bron activiteit resulteert in geen uitvoer. Uitvoer van de bron activiteit is beschikbaar als een object. |
 | Reeks |De doel activiteit wordt slechts eenmaal uitgevoerd wanneer de uitvoer van de bron activiteit wordt ontvangen. Uitvoer van de bron activiteit is beschikbaar als een matrix met objecten. |
@@ -256,8 +255,8 @@ Elke invoer parameter wordt gedefinieerd door de eigenschappen in de volgende ta
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| Name | Vereist. De naam van de para meter. De naam moet uniek zijn binnen het runbook. De naam moet beginnen met een letter en mag alleen letters, cijfers en onderstrepings tekens bevatten. De naam mag geen spatie bevatten. |
-| Beschrijving |Optioneel. Beschrijving van het doel van de invoer parameter. |
+| Naam | Vereist. De naam van de para meter. De naam moet uniek zijn binnen het runbook. De naam moet beginnen met een letter en mag alleen letters, cijfers en onderstrepings tekens bevatten. De naam mag geen spatie bevatten. |
+| Description |Optioneel. Beschrijving van het doel van de invoer parameter. |
 | Type | Optioneel. Er wordt een gegevens type verwacht voor de parameter waarde. De Azure Portal biedt een geschikt besturings element voor het gegevens type voor elke para meter bij het vragen om invoer. Ondersteunde parameter typen zijn String, Int32, Int64, Decimal, Boolean, DateTime en object. Als er geen gegevens type is geselecteerd, wordt standaard de teken reeks gebruikt.|
 | Verplicht | Optioneel. Instelling die aangeeft of er een waarde moet worden opgegeven voor de para meter. Als u kiest `yes` , moet u een waarde opgeven wanneer het runbook wordt gestart. Als u kiest `no` , is een waarde niet vereist wanneer het runbook wordt gestart en kan een standaard waarde worden gebruikt. Het runbook kan niet worden gestart als u geen waarde opgeeft voor elke verplichte para meter waarvoor geen standaard waarde is gedefinieerd. |
 | Standaardwaarde | Optioneel. De waarde die wordt gebruikt voor een para meter als deze niet wordt door gegeven wanneer het runbook wordt gestart. Kies om een standaard waarde in te stellen `Custom` . Selecteer deze optie `None` Als u geen standaard waarde wilt opgeven. |
@@ -386,7 +385,7 @@ De volgende activiteit, `Connect-AzAccount` , voegt het geverifieerde run as-acc
 ![De para meter set Connect-AzAccount](media/automation-graphical-authoring-intro/authenticate-conn-to-azure-parameter-set.png)
 
 >[!NOTE]
->Voor Power shell-runbooks `Add-AzAccount` en `Add-AzureRMAccount` zijn aliassen voor `Connect-AzAccount` . Houd er rekening mee dat deze aliassen niet beschikbaar zijn voor uw grafische runbooks. Een grafisch runbook kan alleen worden gebruikt `Connect-AzAccount` .
+>Voor PowerShell-runbooks zijn `Add-AzAccount` en `Add-AzureRMAccount` aliassen voor `Connect-AzAccount`. Houd er rekening mee dat deze aliassen niet beschikbaar zijn voor uw grafische runbooks. Een grafisch runbook kan alleen worden gebruikt `Connect-AzAccount` .
 
 Voor de parameter velden **APPLICATIONID**, **CERTIFICATETHUMBPRINT**en **TENANTID**geeft u de naam van de eigenschap voor het pad naar het veld op, omdat de activiteit een object met meerdere eigenschappen uitvoert. Anders mislukt de verificatie wanneer het runbook wordt uitgevoerd. Dit is wat u Mini maal nodig hebt om uw runbook te verifiëren met het run as-account.
 
@@ -435,4 +434,4 @@ U hebt de mogelijkheid om terug te keren naar de gepubliceerde versie van een ru
 * Zie [zelf studie: een grafisch Runbook maken](learn/automation-tutorial-runbook-graphical.md)om aan de slag te gaan met grafische runbooks.
 * Zie [Azure Automation runbook-typen](automation-runbook-types.md)voor meer informatie over de typen runbook en hun voor delen en beperkingen.
 * Zie [uitvoeren als-account](automation-security-overview.md#run-as-account)voor informatie over het verifiëren met behulp van het uitvoeren als-account voor Automation.
-* Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)(Engelstalig) voor een Power shell-cmdlet-verwijzing.
+* Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation) voor een naslagdocumentatie voor een PowerShell-cmdlet.

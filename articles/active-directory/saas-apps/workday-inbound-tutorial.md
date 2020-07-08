@@ -16,10 +16,9 @@ ms.date: 05/26/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6415214e5d6b71d174e5117c1cf1e41af381334c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84013562"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Zelf studie: workday configureren voor het automatisch inrichten van gebruikers
@@ -293,7 +292,7 @@ In deze sectie vindt u de stappen voor het inrichten van gebruikers accounts van
 
 1. Ga naar <https://portal.azure.com>.
 
-2. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
+2. Zoek en selecteer in de Azure-portal de optie **Azure Active Directory**.
 
 3. Selecteer **bedrijfs toepassingen**en vervolgens **alle toepassingen**.
 
@@ -395,9 +394,9 @@ In deze stap maken we verbinding met werkdag en Active Directory in de Azure Por
    
      | URL-indeling | WWS API-versie gebruikt | XPATH-wijzigingen vereist |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Nee |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Nee |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Ja |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
 
       > [!NOTE]
      > Als er geen versie gegevens zijn opgegeven in de URL, gebruikt de app workday Web Services (WWS) v 21.1 en zijn er geen wijzigingen vereist voor de standaard XPATH API-expressies die worden geleverd bij de app. Als u een specifieke API-versie van WWS wilt gebruiken, geeft u het versie nummer op in de URL <br>
@@ -420,7 +419,7 @@ In deze stap maken we verbinding met werkdag en Active Directory in de Azure Por
    * Klik op de knop **verbinding testen** . Als de verbindings test is geslaagd, klikt u bovenaan op de knop **Opslaan** . Als dit mislukt, controleert u of de workday-referenties en de AD-referenties die zijn geconfigureerd voor de installatie van de agent geldig zijn.
 
      >[!div class="mx-imgBorder"]
-     >![Azure Portal](./media/workday-inbound-tutorial/wd_1.png)
+     >![Azure-portal](./media/workday-inbound-tutorial/wd_1.png)
 
    * Zodra de referenties zijn opgeslagen, wordt in de sectie **toewijzingen** de standaard toewijzing voor **werk dagen op locatie Active Directory**
 
@@ -485,7 +484,7 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar A
 
 1. Klik boven aan de sectie kenmerk toewijzing op **Opslaan** om uw toewijzingen op te slaan.
    >[!div class="mx-imgBorder"]
-   >![Azure Portal](./media/workday-inbound-tutorial/wd_2.png)
+   >![Azure-portal](./media/workday-inbound-tutorial/wd_2.png)
 
 #### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>Hieronder ziet u enkele voor beelden van kenmerk toewijzingen tussen werk dagen en Active Directory, met enkele algemene expressies
 
@@ -505,13 +504,13 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar A
 | **Voor**   | givenName       |     |    + Update maken |
 | **Naam**   |   sn   |     |  + Update maken |
 | **PreferredNameData**  |  displayName |     |   + Update maken |
-| **Bedrijfs**         | bedrijf   |     |  + Update maken |
-| **SupervisoryOrganization**  | afdeling  |     |  + Update maken |
+| **Company**         | bedrijf   |     |  + Update maken |
+| **SupervisoryOrganization**  | department  |     |  + Update maken |
 | **ManagerReference**   | manager  |     |  + Update maken |
-| **BusinessTitle**   |  title     |     |  + Update maken | 
+| **BusinessTitle**   |  titel     |     |  + Update maken | 
 | **AddressLineData**    |  streetAddress  |     |   + Update maken |
 | **Gemeenschap**   |   l   |     | + Update maken |
-| **CountryReferenceTwoLetter**      |   collega's |     |   + Update maken |
+| **CountryReferenceTwoLetter**      |   co |     |   + Update maken |
 | **CountryReferenceTwoLetter**    |  c  |     |         + Update maken |
 | **CountryRegionReference** |  st     |     | + Update maken |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  + Update maken |
@@ -651,7 +650,7 @@ Raadpleeg [Azure AD Connect inrichtings agent: versie geschiedenis](../app-provi
 * Zoek naar de versie die overeenkomt met de vermelding **Microsoft Azure AD inrichtings agent verbinden**
 
   >[!div class="mx-imgBorder"]
-  >![Azure Portal](./media/workday-inbound-tutorial/pa_version.png)
+  >![Azure-portal](./media/workday-inbound-tutorial/pa_version.png)
 
 #### <a name="does-microsoft-automatically-push-provisioning-agent-updates"></a>Pusht micro soft automatisch de updates voor de inrichtings agent?
 
@@ -667,8 +666,8 @@ Tijdens de configuratie vraagt de inrichtings agent alleen om de referenties van
 
 #### <a name="how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication"></a>Hoe kan ik de inrichtings agent configureren voor het gebruik van een proxy server voor uitgaande HTTP-communicatie?
 
-De inrichtings agent ondersteunt het gebruik van een uitgaande proxy. U kunt deze configureren door het configuratie bestand van de agent te bewerken **C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\AADConnectProvisioningAgent.exe.config**. Voeg de volgende regels toe aan het einde van het bestand net vóór de afsluit `</configuration>` code.
-Vervang de variabelen [proxy-server] en [proxy-port] door de naam en poort waarden van de proxy server.
+De inrichtings agent ondersteunt het gebruik van een uitgaande proxy. U kunt deze configureren door het configuratie bestand van de agent te bewerken **C:\Program Files\Microsoft Azure AD Connect inrichting Agent\AADConnectProvisioningAgent.exe.config**. Voeg de volgende regels toe aan het einde van het bestand net vóór de afsluit `</configuration>` code.
+Vervang de variabelen [proxy-server] en [proxy-port] door de naam- en poortwaarden van de proxyserver.
 
 ```xml
     <system.net>

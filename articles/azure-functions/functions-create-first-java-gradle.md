@@ -6,10 +6,9 @@ ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
 ms.openlocfilehash: a366a199338539ba8e599bd5f406838f4e7bd21c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83996637"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Java en Gradle gebruiken voor het maken en publiceren van een functie in azure
@@ -60,7 +59,7 @@ azurefunctions {
 Open de nieuwe functie. java-bestand van het pad *src/main/Java* in een tekst editor en controleer de gegenereerde code. Deze code is een door [http geactiveerde](functions-bindings-http-webhook.md) functie die de hoofd tekst van de aanvraag echoert. 
 
 > [!div class="nextstepaction"]
-> [Ik heb een probleem ondertreden](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=generate-project)
+> [Er is een fout opgetreden](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=generate-project)
 
 ## <a name="run-the-function-locally"></a>De functie lokaal uitvoeren
 
@@ -102,11 +101,11 @@ Hello, AzureFunctions
 Gebruik `Ctrl+C` in de terminal om de functiecode te stoppen.
 
 > [!div class="nextstepaction"]
-> [Ik heb een probleem ondertreden](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=local-run)
+> [Er is een fout opgetreden](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=local-run)
 
 ## <a name="deploy-the-function-to-azure"></a>De functie implementeren in Azure
 
-Een functie-app en gerelateerde resources worden in azure gemaakt wanneer u de functie-app voor het eerst implementeert. Voordat u kunt implementeren, gebruikt u de opdracht [AZ login](/cli/azure/authenticate-azure-cli) Azure CLI om u aan te melden bij uw Azure-abonnement. 
+Een functie-app en gerelateerde resources worden in azure gemaakt wanneer u de functie-app voor het eerst implementeert. Voordat u de implementeren kunt starten moet u de Azure CLI-opdracht [az login](/cli/azure/authenticate-azure-cli) gebruiken om u aan te melden bij uw Azure-abonnement. 
 
 ```azurecli
 az login
@@ -123,17 +122,17 @@ gradle azureFunctionsDeploy
 
 Hiermee maakt u de volgende resources in azure, op basis van de waarden in het bestand build. gradle:
 
-+ Resource groep. Met de naam van de _resourceGroup_ die u hebt opgegeven.
-+ Opslag account. Vereist door-functies. De naam wordt wille keurig gegenereerd op basis van de vereisten van het opslag account.
++ Resourcegroep. Met de naam van de _resourceGroup_ die u hebt opgegeven.
++ Opslagaccount. Vereist door Funtions. De naam wordt willekeurig gegenereerd op basis van de vereisten van het opslagaccount.
 + App Service plan. Serverloze verbruiks plan dat als host fungeert voor uw functie-app in de opgegeven _appRegion_. De naam wordt wille keurig gegenereerd.
-+ Functie-app. Een functie-app is de implementatie-en uitvoerings eenheid voor uw functies. De naam is uw _AppName_, die wordt toegevoegd met een wille keurig gegenereerd nummer. 
++ Functie-app. Een functie-app is de implementatie- en uitvoeringseenheid voor uw functies. De naam is uw _AppName_, die wordt toegevoegd met een wille keurig gegenereerd nummer. 
 
 De implementatie verpakt de project bestanden ook en implementeert deze in de nieuwe functie-app met behulp van [zip-implementatie](functions-deployment-technologies.md#zip-deploy), waarbij de modus uitvoeren vanaf pakket is ingeschakeld.
 
 De authLevel voor de HTTP-trigger in het voorbeeld project is `ANONYMOUS` , waarmee de verificatie wordt overgeslagen. Als u echter andere authLevel gebruikt, zoals `FUNCTION` of `ADMIN` , moet u de functie code ophalen om het eind punt van de functie aan te roepen via http. De eenvoudigste manier om de functie code op te halen, is van de [Azure Portal].
 
 > [!div class="nextstepaction"]
-> [Ik heb een probleem ondertreden](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=deploy)
+> [Er is een fout opgetreden](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=deploy)
 
 ## <a name="get-the-http-trigger-url"></a>De URL van de HTTP-trigger ophalen
 
@@ -164,7 +163,7 @@ Hello, AzureFunctions
 </pre>
 
 > [!div class="nextstepaction"]
-> [Ik heb een probleem ondertreden](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=verify-deployment)
+> [Er is een fout opgetreden](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=verify-deployment)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -175,4 +174,4 @@ U hebt een Java-functies project gemaakt met een door HTTP geactiveerde functie,
 
 
 [Azure-CLI]: /cli/azure
-[Azure Portal]: https://portal.azure.com
+[Azure-portal]: https://portal.azure.com

@@ -5,17 +5,16 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
 ms.openlocfilehash: 51d8c951958dc5fb4b26e92337f96e7a5c758999
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83996598"
 ---
-# <a name="azure-functions-javascript-developer-guide"></a>Ontwikkelaars handleiding voor Azure Functions java script
+# <a name="azure-functions-javascript-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions Javascript
 
 Deze hand leiding bevat informatie over de complexiteit voor het schrijven van Azure Functions met Java script.
 
-Een Java script-functie is een export `function` die wordt uitgevoerd wanneer geactiveerd ([triggers worden geconfigureerd in function. json](functions-triggers-bindings.md)). Het eerste argument dat aan elke functie is door gegeven, is een `context` object dat wordt gebruikt voor het ontvangen en verzenden van bindings gegevens, logboek registratie en communicatie met de runtime.
+Een Java script-functie is een export `function` die wordt uitgevoerd wanneer geactiveerd ([triggers worden geconfigureerd in function.jsop](functions-triggers-bindings.md)). Het eerste argument dat aan elke functie is door gegeven, is een `context` object dat wordt gebruikt voor het ontvangen en verzenden van bindings gegevens, logboek registratie en communicatie met de runtime.
 
 In dit artikel wordt ervan uitgegaan dat u de [Azure functions Naslag informatie voor ontwikkel aars](functions-reference.md)al hebt gelezen. Voltooi de Quick Start van functies om uw eerste functie te maken met behulp van [Visual Studio code](functions-create-first-function-vs-code.md) of [in de portal](functions-create-first-azure-function.md).
 
@@ -42,7 +41,7 @@ FunctionsProject
  | - extensions.csproj
 ```
 
-In de hoofdmap van het project bevindt zich een gedeeld [host. json](functions-host-json.md) -bestand dat kan worden gebruikt voor het configureren van de functie-app. Elke functie heeft een map met een eigen code bestand (. js) en een bindings configuratie bestand (function. json). De naam van de `function.json` bovenliggende map is altijd de naam van uw functie.
+In de hoofdmap van het project bevindt zich een gedeelde [host.jsvoor](functions-host-json.md) het bestand dat kan worden gebruikt om de functie-app te configureren. Elke functie heeft een map met een eigen code bestand (. js) en een bindings configuratie bestand (function.jsaan). De naam van de `function.json` bovenliggende map is altijd de naam van uw functie.
 
 De bindings uitbreidingen vereist in [versie 2. x](functions-versions.md) van de functions runtime worden gedefinieerd in het `extensions.csproj` bestand, met de daad werkelijke bibliotheek bestanden in de `bin` map. Wanneer u lokaal ontwikkelt, moet u [bindings uitbreidingen registreren](./functions-bindings-register.md#extension-bundles). Bij het ontwikkelen van functies in de Azure Portal, wordt deze registratie voor u uitgevoerd.
 
@@ -98,17 +97,17 @@ module.exports = async function (context, req) {
 ```
 
 ## <a name="bindings"></a>Bindingen 
-In Java script worden [bindingen](functions-triggers-bindings.md) geconfigureerd en gedefinieerd in de functie Function. json van een functie. Functies werken op een aantal manieren met bindingen.
+In Java script worden [bindingen](functions-triggers-bindings.md) geconfigureerd en gedefinieerd in de function.jsvan een functie in. Functies werken op een aantal manieren met bindingen.
 
-### <a name="inputs"></a>Invoer
+### <a name="inputs"></a>Invoerwaarden
 De invoer is onderverdeeld in twee categorieën in Azure Functions: een is de invoer van de trigger en de andere is de extra invoer. Triggers en andere invoer bindingen (bindingen van `direction === "in"` ) kunnen op drie manieren worden gelezen door een functie:
- - **_[Aanbevolen]_ Als para meters die zijn door gegeven aan de functie.** Ze worden door gegeven aan de functie in dezelfde volg orde als waarin ze zijn gedefinieerd in *Function. json*. De `name` eigenschap die is gedefinieerd in *Function. json* hoeft niet overeen te komen met de naam van uw para meter, maar dit moet wel.
+ - **_[Aanbevolen]_ Als para meters die zijn door gegeven aan de functie.** Ze worden door gegeven aan de functie in dezelfde volg orde als waarin ze zijn gedefinieerd in *function.jsop*. De `name` eigenschap die is gedefinieerd in *function.js* in, hoeft niet overeen te komen met de naam van uw para meter, maar dit moet wel.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
    
- - **Als leden van het [`context.bindings`](#contextbindings-property) object.** Elk lid krijgt de naam van de eigenschap die is `name` gedefinieerd in *Function. json*.
+ - **Als leden van het [`context.bindings`](#contextbindings-property) object.** Elk lid krijgt de naam van de eigenschap die is `name` gedefinieerd in *function.jsop*.
  
    ```javascript
    module.exports = async function(context) { 
@@ -128,12 +127,12 @@ De invoer is onderverdeeld in twee categorieën in Azure Functions: een is de in
    };
    ```
 
-### <a name="outputs"></a>Uitvoer
-Uitvoer (bindingen van `direction === "out"` ) kan op een aantal manieren worden geschreven naar een functie. In alle gevallen komt de `name` eigenschap van de binding zoals gedefinieerd in *Function. json* overeen met de naam van het object lid dat is geschreven naar in uw functie. 
+### <a name="outputs"></a>Uitvoerwaarden
+Uitvoer (bindingen van `direction === "out"` ) kan op een aantal manieren worden geschreven naar een functie. In alle gevallen komt de `name` eigenschap van de binding, zoals gedefinieerd in *function.js* , overeen met de naam van het object lid dat is geschreven in uw functie. 
 
 U kunt gegevens aan uitvoer bindingen op een van de volgende manieren toewijzen (deze methoden niet combi neren):
 
-- **_[Aanbevolen voor meerdere uitvoer]_ Een object retour neren.** Als u een functie van async/Promise retourneert, kunt u een object retour neren met de toegewezen uitvoer gegevens. In het onderstaande voor beeld zijn de uitvoer bindingen de naam ' httpResponse ' en ' queueOutput ' in *Function. json*.
+- **_[Aanbevolen voor meerdere uitvoer]_ Een object retour neren.** Als u een functie van async/Promise retourneert, kunt u een object retour neren met de toegewezen uitvoer gegevens. In het onderstaande voor beeld zijn de uitvoer bindingen de naam ' httpResponse ' en ' queueOutput ' in *function.jsop*.
 
   ```javascript
   module.exports = async function(context) {
@@ -198,7 +197,7 @@ context.bindings
 
 Retourneert een benoemd object dat wordt gebruikt om bindings gegevens te lezen of toe te wijzen. Invoer-en trigger gegevens voor bindingen kunnen worden geopend door het lezen van eigenschappen van `context.bindings` . Uitvoer binding gegevens kunnen worden toegewezen door gegevens toe te voegen aan`context.bindings`
 
-De volgende bindings definities in uw functie. json bieden bijvoorbeeld toegang tot de inhoud van een wachtrij van `context.bindings.myInput` en het toewijzen van uitvoer aan een wachtrij met behulp van `context.bindings.myOutput` .
+Met de volgende bindings definities in uw function.jshebt u bijvoorbeeld toegang tot de inhoud van een wachtrij van `context.bindings.myInput` en het toewijzen van uitvoer aan een wachtrij met behulp van `context.bindings.myOutput` .
 
 ```json
 {
@@ -278,7 +277,7 @@ In het volgende voor beeld wordt een logboek op het tracerings niveau waarschuwi
 context.log.warn("Something has happened."); 
 ```
 
-U kunt [de drempel waarde tracerings niveau voor logboek registratie configureren](#configure-the-trace-level-for-console-logging) in het bestand host. json. Zie voor meer informatie over het schrijven van Logboeken [trace-uitvoer](#writing-trace-output-to-the-console) .
+U kunt [de drempel waarde tracerings niveau voor logboek registratie configureren](#configure-the-trace-level-for-console-logging) in de host.jsvoor het bestand. Zie voor meer informatie over het schrijven van Logboeken [trace-uitvoer](#writing-trace-output-to-the-console) .
 
 Lees de [controle Azure functions](functions-monitoring.md) voor meer informatie over het weer geven en opvragen van functie Logboeken.
 
@@ -306,7 +305,7 @@ context.log.error("An error has occurred.");
 
 Omdat de _fout_ het hoogste traceer niveau is, wordt deze tracering naar de uitvoer op alle tracerings niveaus geschreven zolang logboek registratie is ingeschakeld.
 
-Alle `context.log` methoden ondersteunen dezelfde parameter indeling die wordt ondersteund door de methode node. js [util. Format](https://nodejs.org/api/util.html#util_util_format_format). Bekijk de volgende code, waarmee functie Logboeken worden geschreven met behulp van het standaard tracerings niveau:
+Alle `context.log` methoden ondersteunen dezelfde parameter indeling die wordt ondersteund door de methode Node.js [util. Format](https://nodejs.org/api/util.html#util_util_format_format). Bekijk de volgende code, waarmee functie Logboeken worden geschreven met behulp van het standaard tracerings niveau:
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=' + req.originalUrl);
@@ -322,7 +321,7 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 
 ### <a name="configure-the-trace-level-for-console-logging"></a>Het tracerings niveau voor console logboek registratie configureren
 
-Met de functie 1. x kunt u het tracerings niveau van de drempel waarde voor het schrijven naar de-console definiëren, zodat u gemakkelijk kunt bepalen hoe traceringen naar de console worden geschreven vanuit uw functie. Als u de drempel waarde wilt instellen voor alle traceringen die naar de-console worden geschreven, gebruikt u de `tracing.consoleLevel` eigenschap in het bestand host. json. Deze instelling is van toepassing op alle functies in uw functie-app. In het volgende voor beeld wordt de drempel voor tracering ingesteld om uitgebreide logboek registratie in te scha kelen:
+Met de functie 1. x kunt u het tracerings niveau van de drempel waarde voor het schrijven naar de-console definiëren, zodat u gemakkelijk kunt bepalen hoe traceringen naar de console worden geschreven vanuit uw functie. Als u de drempel waarde wilt instellen voor alle traceringen die naar de-console worden geschreven, gebruikt u de `tracing.consoleLevel` eigenschap in de host.jsvoor het bestand. Deze instelling is van toepassing op alle functies in uw functie-app. In het volgende voor beeld wordt de drempel voor tracering ingesteld om uitgebreide logboek registratie in te scha kelen:
 
 ```json
 {
@@ -332,7 +331,7 @@ Met de functie 1. x kunt u het tracerings niveau van de drempel waarde voor het 
 }  
 ```
 
-De waarden van **consoleLevel** komen overeen met de namen van de `context.log` methoden. Als u alle traceer logboek registratie wilt uitschakelen voor de-console, stelt u **consoleLevel** in op _uit_. Zie voor meer informatie [host. json Reference](functions-host-json-v1.md).
+De waarden van **consoleLevel** komen overeen met de namen van de `context.log` methoden. Als u alle traceer logboek registratie wilt uitschakelen voor de-console, stelt u **consoleLevel** in op _uit_. Zie [host.jsop referentie](functions-host-json-v1.md)voor meer informatie.
 
 ## <a name="http-triggers-and-bindings"></a>HTTP-triggers en-bindingen
 
@@ -409,9 +408,9 @@ Wanneer u met HTTP-triggers werkt, kunt u op een aantal manieren toegang krijgen
 
 ## <a name="scaling-and-concurrency"></a>Schalen en gelijktijdigheid
 
-Standaard controleert Azure Functions automatisch de belasting van uw toepassing en worden er indien nodig extra exemplaren van de host voor node. js gemaakt. Functies gebruiken ingebouwde (niet door de gebruiker te configureren) drempel waarden voor verschillende trigger typen om te bepalen wanneer instanties moeten worden toegevoegd, zoals de leeftijd van berichten en de grootte van de wachtrij voor Queue trigger. Zie [hoe het verbruik en de Premium-abonnementen werken](functions-scale.md#how-the-consumption-and-premium-plans-work)voor meer informatie.
+Standaard controleert Azure Functions automatisch de belasting van uw toepassing en worden er indien nodig extra exemplaren van de host gemaakt voor Node.js. Functies gebruiken ingebouwde (niet door de gebruiker te configureren) drempel waarden voor verschillende trigger typen om te bepalen wanneer instanties moeten worden toegevoegd, zoals de leeftijd van berichten en de grootte van de wachtrij voor Queue trigger. Zie [hoe het verbruik en de Premium-abonnementen werken](functions-scale.md#how-the-consumption-and-premium-plans-work)voor meer informatie.
 
-Dit gedrag van schalen is voldoende voor veel node. js-toepassingen. Voor CPU-gebonden toepassingen kunt u de prestaties verder verbeteren door gebruik te maken van werk processen in meerdere talen.
+Dit gedrag voor schalen is voldoende voor veel Node.js toepassingen. Voor CPU-gebonden toepassingen kunt u de prestaties verder verbeteren door gebruik te maken van werk processen in meerdere talen.
 
 Elk functions-exemplaar heeft standaard een werk proces met één taal. U kunt het aantal werk processen per host (Maxi maal 10) verhogen met behulp van de [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) toepassings instelling. Azure Functions probeert vervolgens gelijktijdige functie aanroepen voor deze werk nemers gelijkmatig te verdelen. 
 
@@ -419,7 +418,7 @@ De FUNCTIONS_WORKER_PROCESS_COUNT is van toepassing op elke host die functies ma
 
 ## <a name="node-version"></a>Knooppunt versie
 
-In de volgende tabel ziet u de huidige ondersteunde node. js-versies voor elke primaire versie van de functions-runtime, door het besturings systeem:
+In de volgende tabel ziet u de huidige ondersteunde Node.js versies voor elke hoofd versie van de functions runtime, door het besturings systeem:
 
 | Functie versie | Knooppunt versie (Windows) | Knooppunt versie (Linux) |
 |---|---| --- |
@@ -463,11 +462,11 @@ Er zijn twee manieren om pakketten te installeren op uw functie-app:
 
 2. Klik op **debug console**-  >  **cmd**.
 
-3. Ga naar `D:\home\site\wwwroot` en sleep het bestand Package. json naar de map **wwwroot** in het bovenste gedeelte van de pagina.  
+3. Ga naar `D:\home\site\wwwroot` en sleep uw package.jsnaar bestand naar de map **wwwroot** in het bovenste gedeelte van de pagina.  
     U kunt ook op andere manieren bestanden uploaden naar uw functie-app. Zie de [functie-app-bestanden bijwerken](functions-reference.md#fileupdate)voor meer informatie. 
 
-4. Nadat het bestand Package. json is geüpload, voert u de `npm install` opdracht uit in de **kudu-console voor externe uitvoering**.  
-    Met deze actie worden de pakketten gedownload die in het bestand Package. json zijn aangegeven en wordt de functie-app opnieuw gestart.
+4. Nadat de package.jsin het bestand is geüpload, voert u de `npm install` opdracht uit in de **kudu-console voor externe uitvoering**.  
+    Met deze actie worden de pakketten gedownload die zijn aangegeven in de package.jsin het bestand en wordt de functie-app opnieuw gestart.
 
 ## <a name="environment-variables"></a>Omgevingsvariabelen
 
@@ -485,7 +484,7 @@ module.exports = async function (context, myTimer) {
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-Wanneer u lokaal uitvoert, worden de app-instellingen gelezen uit het bestand [Local. settings. json](functions-run-local.md#local-settings-file) project.
+Wanneer u lokaal uitvoert, worden de app-instellingen uit het [local.settings.jsvan](functions-run-local.md#local-settings-file) het project bestand gelezen.
 
 ## <a name="configure-function-entry-point"></a>Functie-ingangs punt configureren
 
@@ -557,11 +556,11 @@ In dit voor beeld is het belang rijk te weten dat er een object wordt geëxporte
 
 ## <a name="local-debugging"></a>Lokale fout opsporing
 
-Wanneer met de `--inspect` para meter wordt gestart, luistert een node. js-proces naar een client voor fout opsporing op de opgegeven poort. In Azure Functions 2. x kunt u argumenten opgeven die moeten worden door gegeven aan het node. js-proces dat uw code uitvoert door de omgevings variabele of app-instelling toe te voegen `languageWorkers:node:arguments = <args>` . 
+Wanneer met de `--inspect` para meter wordt gestart, luistert een Node.js proces naar een client voor fout opsporing op de opgegeven poort. In Azure Functions 2. x kunt u argumenten opgeven die moeten worden door gegeven aan het Node.js proces waarmee de code wordt uitgevoerd door de omgevings variabele of app-instelling toe te voegen `languageWorkers:node:arguments = <args>` . 
 
-Als u lokaal fouten wilt opsporen, voegt u `"languageWorkers:node:arguments": "--inspect=5858"` onder `Values` in het bestand [Local. settings. json](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) toe en koppelt u een fout opsporingsprogramma aan poort 5858.
+Als u lokaal fouten wilt opsporen, voegt u `"languageWorkers:node:arguments": "--inspect=5858"` onder `Values` in uw [local.settings.js](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) toe aan het bestand en koppelt u een fout opsporingsprogramma aan poort 5858.
 
-Bij fout opsporing met behulp van VS code `--inspect` wordt de para meter automatisch toegevoegd met behulp van de `port` waarde in het bestand Launch. json van het project.
+Bij fout opsporing met behulp van VS code `--inspect` wordt de para meter automatisch toegevoegd met behulp van de `port` waarde in de launch.jsvan het project in het bestand.
 
 In versie 1. x wordt de instelling `languageWorkers:node:arguments` niet gebruikt. De poort voor fout opsporing kan worden geselecteerd met de [`--nodeDebugPort`](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) para meter op Azure functions core tools.
 
@@ -581,7 +580,7 @@ Met de [Azure functions voor Visual Studio code](https://marketplace.visualstudi
 
 Als u een type script-functie-app in Visual Studio code wilt maken, kiest `TypeScript` u als taal bij het maken van een functie-app.
 
-Wanneer u op **F5** drukt om de app lokaal uit te voeren, wordt transpilation uitgevoerd voordat de host (func. exe) is geïnitialiseerd. 
+Wanneer u op **F5** drukt om de app lokaal uit te voeren, wordt transpilation uitgevoerd voordat de host (func.exe) wordt geïnitialiseerd. 
 
 Wanneer u de functie-app in azure implementeert met behulp van de knop **implementeren in functie app...** , genereert de Azure functions extensie eerst een productie-app-kant van Java script-bestanden van de type script-bron bestanden.
 
@@ -645,7 +644,7 @@ Wanneer u een servicespecifieke client gebruikt in een Azure Functions-toepassin
 ### <a name="use-async-and-await"></a>Gebruiken `async` en`await`
 
 Wanneer u Azure Functions in Java script schrijft, moet u code schrijven met behulp van de `async` `await` sleutel woorden en. Het schrijven van code met behulp `async` `await` van en in plaats van retour aanroepen of `.then` en `.catch` met beloftes helpt twee veelvoorkomende problemen te voor komen:
- - Niet-onderschepte uitzonde ringen veroorzaken waardoor [het node. js-proces vastloopt](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly), waardoor de uitvoering van andere functies kan worden beïnvloed.
+ - Niet-onderschepte uitzonde ringen genereren die [het Node.js proces vastlopen](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly), waardoor de uitvoering van andere functies kan worden beïnvloed.
  - Onverwacht gedrag, zoals ontbrekende logboeken van context. log, veroorzaakt door asynchrone aanroepen die niet goed zijn gewacht.
 
 In het onderstaande voor beeld wordt de asynchrone methode `fs.readFile` aangeroepen met een fout-eerste call back functie als de tweede para meter. Met deze code worden beide hierboven vermelde problemen veroorzaakt. Een uitzonde ring die niet expliciet is gevangen in het juiste bereik, heeft het hele proces vastlopen (probleem #1). Het aanroepen `context.done()` van buiten het bereik van de call back-functie betekent dat de functie aanroep kan eindigen voordat het bestand wordt gelezen (probleem #2). In dit voor beeld roept het aanroepen `context.done()` van te vroege resultaten aan ontbrekende logboek vermeldingen die beginnen met `Data from file:` .
@@ -669,7 +668,7 @@ module.exports = function (context) {
 }
 ```
 
-Met behulp `async` `await` van de tref woorden en kunnen beide fouten worden voor komen. U moet het hulp programma node. js gebruiken [`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original) om de functies voor het terugbellen van fouten in te scha kelen in functies die kunnen worden afgewacht.
+Met behulp `async` `await` van de tref woorden en kunnen beide fouten worden voor komen. U moet de functie Node.js Utility gebruiken om de functies voor het automatisch [`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original) aanroepen van fouten in te scha kelen in functies die kunnen worden afgewacht.
 
 In het onderstaande voor beeld mislukken alle niet-verwerkte uitzonde ringen die tijdens de uitvoering van de functie worden gegenereerd de afzonderlijke aanroep die een uitzonde ring heeft veroorzaakt. Het `await` sleutel woord geeft aan dat de stappen na voltooiing van de procedure `readFileAsync` `readFile` worden uitgevoerd. Met `async` en `await` hoeft u ook de call back niet aan te roepen `context.done()` .
 
@@ -698,6 +697,6 @@ Zie de volgende bronnen voor meer informatie:
 
 + [Aanbevolen procedures voor Azure Functions](functions-best-practices.md)
 + [Naslaginformatie over Azure Functions voor ontwikkelaars](functions-reference.md)
-+ [Azure Functions triggers en bindingen](functions-triggers-bindings.md)
++ [Azure Functions-triggers en -bindingen](functions-triggers-bindings.md)
 
 [' func Azure functionapp Publish ']: functions-run-local.md#project-file-deployment

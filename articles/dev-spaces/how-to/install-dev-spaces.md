@@ -4,12 +4,11 @@ services: azure-dev-spaces
 ms.date: 07/24/2019
 ms.topic: conceptual
 description: Meer informatie over het inschakelen van Azure dev Spaces in een AKS-cluster en het installeren van de hulpprogram ma's aan de client zijde.
-keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s
 ms.openlocfilehash: b62c4a4861529c19363f159b8cc64a32a0ba11e8
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83996258"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>Azure dev Spaces inschakelen op een AKS-cluster en de hulpprogram ma's aan de client zijde installeren
@@ -19,11 +18,11 @@ In dit artikel wordt beschreven hoe u op verschillende manieren Azure dev-ruimte
 ## <a name="enable-or-remove-azure-dev-spaces-using-the-cli"></a>Azure-ontwikkel ruimten in-of uitschakelen met de CLI
 
 Voordat u ontwikkel ruimten kunt inschakelen met behulp van de CLI, hebt u het volgende nodig:
-* Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account][az-portal-create-account]maken.
+* Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account][az-portal-create-account] maken.
 * [De Azure-cli is geïnstalleerd][install-cli].
 * [Een AKS-cluster][create-aks-cli] in een [ondersteunde regio][supported-regions].
 
-Gebruik de `use-dev-spaces` opdracht om ontwikkel ruimten in uw AKS-cluster in te scha kelen en de prompts te volgen.
+Gebruik de opdracht `use-dev-spaces` om Dev Spaces in te schakelen voor uw AKS-cluster en volg de prompts.
 
 ```azurecli
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster

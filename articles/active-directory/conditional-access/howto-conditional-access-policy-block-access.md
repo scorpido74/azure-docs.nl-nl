@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b3ee7287f2a5cf9491ae91d434caf2f653c853a3
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83995306"
 ---
 # <a name="conditional-access-block-access"></a>Voorwaardelijke toegang: toegang blok keren
@@ -49,7 +48,7 @@ Het eerste beleid blokkeert de toegang tot alle apps, met uitzonde ring van Offi
 1. Onder **Toewijzingen** selecteert u **Gebruikers en groepen**.
    1. Onder **insluiten**selecteert u **alle gebruikers**.
    1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u de accounts voor nood toegang of het afbreek glas van uw organisatie. 
-   1. Selecteer **Done**.
+   1. Selecteer **Voltooid**.
 1. Selecteer onder **Cloud-apps of acties**de volgende opties:
    1. Onder **insluiten**selecteert u **alle Cloud-apps**.
    1. Onder **uitsluiten**selecteert u **Office 365 (preview)**, selecteert **u selecteren**en selecteert u **gereed**.
@@ -58,7 +57,7 @@ Het eerste beleid blokkeert de toegang tot alle apps, met uitzonde ring van Offi
       1. Stel **configureren** op **Ja** in
       1. Onder **insluiten**selecteert u **een wille keurige locatie**.
       1. Selecteer **alle vertrouwde locaties**onder **uitsluiten**.
-      1. Selecteer **Done**.
+      1. Selecteer **Voltooid**.
    1. Stel **onder client-apps (preview)** **configureren** in op **Ja**en selecteer **gereed**en vervolgens **gereed**.
 1. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang blok keren**en selecteert u **selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in op **alleen rapport**.
@@ -71,12 +70,12 @@ Hieronder wordt een tweede beleid gemaakt om multi-factor Authentication of een 
 1. Onder **Toewijzingen** selecteert u **Gebruikers en groepen**.
    1. Onder **insluiten**selecteert u **alle gebruikers**.
    1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u de accounts voor nood toegang of het afbreek glas van uw organisatie. 
-   1. Selecteer **Done**.
+   1. Selecteer **Voltooid**.
 1. Onder **Cloud-apps of acties**  >  **Include**, selecteert **u apps selecteren**, kiest u **Office 365 (preview)** en selecteert u **selecteren**en **gereed**.
 1. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang verlenen**.
    1. Selecteer **multi-factor Authentication vereisen** en **vereisen dat het apparaat moet worden gemarkeerd als compatibel** selectie **vakje**selecteren.
    1. Zorg ervoor dat **alle geselecteerde besturings elementen** zijn geselecteerd.
-   1. Kies **Selecteren**.
+   1. Selecteer **Selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in op **alleen rapport**.
 1. Selecteer **maken** om uw beleid in te stellen.
 

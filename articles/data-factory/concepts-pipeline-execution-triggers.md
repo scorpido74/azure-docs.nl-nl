@@ -12,16 +12,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.openlocfilehash: 73934521cc68dc8ec2e28f29e35df833651915d2
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83996972"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Pijplijnen uitvoeren en triggers in Azure Data Factory
 
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
-> * [Versie 1](v1/data-factory-scheduling-and-execution.md)
+> * [Versie 1:](v1/data-factory-scheduling-and-execution.md)
 > * [Huidige versie](concepts-pipeline-execution-triggers.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -235,7 +234,7 @@ Als u wilt dat de schematrigger een pijplijnuitvoering activeert, moet u een ver
 ### <a name="schema-overview"></a>Schemaoverzicht
 De volgende tabel bevat een overzicht van de belangrijkste schema-elementen die betrekking hebben op het terugkeerpatroon en het schema van een trigger:
 
-| JSON-eigenschap | Beschrijving |
+| JSON-eigenschap | Description |
 | --- | --- |
 | **startTime** | Een datum/tijdwaarde. Voor eenvoudige schema's is de waarde **startTime** van toepassing op de eerste gebeurtenis. In complexe schema's begint de trigger niet eerder dan de opgegeven waarde voor **startTime**. |
 | **endTime** | De einddatum en -tijd voor de trigger. De trigger wordt na de opgegeven einddatum en -tijd niet uitgevoerd. De waarde voor de eigenschap kan niet in het verleden liggen. <!-- This property is optional. --> |
@@ -283,11 +282,11 @@ De volgende tabel bevat een overzicht van de belangrijkste schema-elementen die 
 
 | JSON-eigenschap | Type | Vereist | Standaardwaarde | Geldige waarden | Voorbeeld |
 | --- | --- | --- | --- | --- | --- |
-| **startTime** | tekenreeks | Ja | Geen | Datums en tijden volgens ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **optreden** | object | Ja | Geen | Een recurrence-object | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **bereik** | getal | Nee | 1 | 1 tot 1000 | `"interval":10` |
-| **endTime** | tekenreeks | Ja | Geen | Een datum/tijdwaarde die een toekomstig tijdstip aangeeft | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **planning** | object | Nee | Geen | Een schedule-object | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **startTime** | tekenreeks | Yes | Geen | Datums en tijden volgens ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **optreden** | object | Yes | Geen | Een recurrence-object | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **bereik** | getal | No | 1 | 1 tot 1000 | `"interval":10` |
+| **endTime** | tekenreeks | Yes | Geen | Een datum/tijdwaarde die een toekomstig tijdstip aangeeft | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **planning** | object | No | Geen | Een schedule-object | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>Eigenschap startTime
 In de volgende tabel ziet u hoe de eigenschap **startTime** de uitvoering van een trigger bepaalt:
@@ -314,7 +313,7 @@ Als er meerdere **plannings** elementen worden opgegeven, is de volg orde van de
 
 In de volgende tabel worden de **schedule**-elementen in detail beschreven:
 
-| JSON-element | Beschrijving | Geldige waarden |
+| JSON-element | Description | Geldige waarden |
 | --- | --- | --- |
 | **wachten** | Minuten van het uur waarop de trigger wordt uitgevoerd. |- Geheel getal<br />- Matrix van gehele getallen |
 | **loopt** | Uren van de dag waarop de trigger wordt uitgevoerd. |- Geheel getal<br />- Matrix van gehele getallen |
@@ -338,7 +337,7 @@ Dit gedeelte bevat voorbeelden van schema's met terugkeerpatronen. Dit artikel g
 
 In de voor beelden wordt ervan uitgegaan dat de waarde voor **interval** 1 is en dat de waarde van de **frequentie** juist is volgens de definitie van de planning. De waarde voor **frequency** kan bijvoorbeeld niet tegelijkertijd 'day' zijn én een wijziging **monthDays** in het **schedule**-object hebben. Dit soort beperkingen wordt beschreven in de tabel in het vorige gedeelte.
 
-| Voorbeeld | Beschrijving |
+| Voorbeeld | Description |
 | --- | --- |
 | `{"hours":[5]}` | Wordt elke dag om 5:00 uur uitgevoerd. |
 | `{"minutes":[15], "hours":[5]}` | Wordt elke dag om 5:15 uur uitgevoerd. |
@@ -377,10 +376,10 @@ In de volgende tabel wordt een vergelijking weergegeven tussen de tumblingvenste
 
 | Item | Tumblingvenstertrigger | Schematrigger |
 | --- | --- | --- |
-| **Backfill-scenario's** | Ondersteund. Pijplijnuitvoeringen kunnen voor tijdvensters in het verleden worden gepland. | Niet ondersteund. Pijplijnuitvoeringen kunnen alleen worden uitgevoerd in perioden vanaf de huidige tijd. |
+| **Backfill-scenario's** | Ondersteund. Pijplijnuitvoeringen kunnen voor tijdvensters in het verleden worden gepland. | Wordt niet ondersteund. Pijplijnuitvoeringen kunnen alleen worden uitgevoerd in perioden vanaf de huidige tijd. |
 | **Betrouwbaarheid** | 100% betrouwbaarheid. Pijplijnuitvoeringen kunnen vanaf een bepaalde begindatum zonder onderbrekingen worden uitgevoerd voor alle tijdvensters. | Minder betrouwbaar. |
-| **Mogelijkheid voor nieuwe uitvoerpogingen** | Ondersteund. Nieuwe pogingen van pijplijnuitvoeringen vinden plaats volgens het standaardbeleid van 0 of volgens een beleid dat de gebruiker in de triggerdefinitie heeft opgegeven. Wordt automatisch opnieuw geprobeerd wanneer de pijp lijn wordt uitgevoerd vanwege gelijktijdigheids-, server-en beperkings limieten (dat wil zeggen, status codes 400: gebruikers fout, 429: te veel aanvragen en 500: interne server fout). | Niet ondersteund. |
-| **Gelijktijdigheid** | Ondersteund. Gebruikers kunnen expliciet gelijktijdigheidsbeperkingen voor de trigger instellen. Het is mogelijk om tussen de 1 en 50 door triggers geactiveerde pijplijnuitvoeringen gelijktijdig uit te voeren. | Niet ondersteund. |
+| **Mogelijkheid voor nieuwe uitvoerpogingen** | Ondersteund. Nieuwe pogingen van pijplijnuitvoeringen vinden plaats volgens het standaardbeleid van 0 of volgens een beleid dat de gebruiker in de triggerdefinitie heeft opgegeven. Wordt automatisch opnieuw geprobeerd wanneer de pijp lijn wordt uitgevoerd vanwege gelijktijdigheids-, server-en beperkings limieten (dat wil zeggen, status codes 400: gebruikers fout, 429: te veel aanvragen en 500: interne server fout). | Wordt niet ondersteund. |
+| **Gelijktijdigheid** | Ondersteund. Gebruikers kunnen expliciet gelijktijdigheidsbeperkingen voor de trigger instellen. Het is mogelijk om tussen de 1 en 50 door triggers geactiveerde pijplijnuitvoeringen gelijktijdig uit te voeren. | Wordt niet ondersteund. |
 | **Systeemvariabelen** | In combi natie met @trigger (). scheduledTime en @trigger (). StartTime, wordt ook het gebruik van de systeem variabelen **WindowStart** en **WindowEnd** ondersteund. Gebruikers kunnen voor de triggerdefinitie gebruikmaken van `triggerOutputs().windowStartTime` en `triggerOutputs().windowEndTime` als systeemvariabelen in de trigger. De waarden worden respectievelijk als de begin- en eindtijd van het tijdvenster gebruikt. Voor bijvoorbeeld een tumblingvenstertrigger die elk uur wordt uitgevoerd in het tijdvenster 1:00 uur tot 2:00 uur, is de definitie `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` en `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`. | Ondersteunt alleen default @trigger (). scheduledTime en @trigger (). StartTime-variabelen. |
 | **Pipeline-trigger-relatie** | Ondersteunt een een-op-een-relatie. Slechts één pijplijn kan worden geactiveerd. | Ondersteunt veel-op-veel-relaties. Meerdere triggers kunnen één pijplijn activeren. Eén trigger kan meerdere pijplijnen activeren. |
 

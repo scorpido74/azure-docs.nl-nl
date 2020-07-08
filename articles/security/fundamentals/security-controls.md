@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 2222c1d5e434e1c51cb66c2c5943badd58f95af9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84013024"
 ---
 # <a name="index-of-built-in-security-controls-articles-for-azure-services"></a>Index van "ingebouwde beveiligings controles"-artikelen voor Azure-Services
@@ -30,12 +29,12 @@ Ingebouwde artikelen over beveiligings beheer zijn beschikbaar voor de volgende 
 - [Azure Event Hubs](../../event-hubs/event-hubs-security-controls.md)
 - [Azure ExpressRoute](../../expressroute/expressroute-security-controls.md)
 - [Azure Load Balancer](../../load-balancer/load-balancer-security-controls.md)
-- [Azure Service Bus berichten](../../service-bus-messaging/service-bus-messaging-security-controls.md)
+- [Azure Service Bus Messaging](../../service-bus-messaging/service-bus-messaging-security-controls.md)
 - [Azure Service Bus relay](../../service-bus-relay/service-bus-relay-security-controls.md)
 - [Azure Service Fabric](../../service-fabric/service-fabric-security-controls.md)
 - [Azure Spring Cloud](../../spring-cloud/spring-cloud-concept-security-controls.md)
 - [Azure SQL Database](../../azure-sql/database/security-controls.md)
-- [Azure Virtual Machine Scale Sets](../../virtual-machine-scale-sets/virtual-machine-scale-sets-security-controls.md)
+- [Virtuele Azure-machineschaalsets](../../virtual-machine-scale-sets/virtual-machine-scale-sets-security-controls.md)
 - [Virtuele Linux-machines](../../virtual-machines/linux/virtual-machines-linux-security-controls.md)
 - [Virtuele Windows-machines](../../virtual-machines/windows/virtual-machines-windows-security-controls.md)
 - [Azure VPN-gateway](../../vpn-gateway/vpn-gateway-security-controls.md)

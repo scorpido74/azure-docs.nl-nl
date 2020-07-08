@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
 ms.openlocfilehash: c3892cfe3f8bd6966f5bd00c0747590eef3bc50d
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83860513"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Uw App Service of Azure Functions app configureren voor het gebruik van Azure AD-aanmelding
@@ -97,13 +96,13 @@ Voer de volgende stappen uit:
 1. In de [Azure Portal]zoekt en selecteert u **app Services**en selecteert u vervolgens uw app.
 1. Selecteer in het linkerdeel venster onder **instellingen**de optie **verificatie/autorisatie**  >  **On**.
 1. Beschrijving Standaard staat App Service verificatie niet-geverifieerde toegang tot uw app toe. Als u gebruikers verificatie wilt afdwingen, stelt **u de actie in die moet worden uitgevoerd wanneer de aanvraag niet is geverifieerd** om u aan te **melden met Azure Active Directory**.
-1. Selecteer **Azure Active Directory**onder **verificatie providers**.
+1. Selecteer onder **Azure Active Directory** de optie **Verificatieproviders**.
 1. Selecteer in de **beheer modus** **geavanceerd** en configureer app service verificatie volgens de volgende tabel:
 
     |Veld|Beschrijving|
     |-|-|
     |Client-id| Gebruik de **toepassings-id (client)** van de app-registratie. |
-    |URL van de uitgever| Gebruik `<authentication-endpoint>/<tenant-id>/v2.0` en vervang * \< verificatie-eind punt>* met het [verificatie-eind punt voor uw cloud omgeving](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (bijvoorbeeld ' https://login.microsoft.com "voor wereld wijd Azure), vervang ook de * \< Tenant-id>* door de **map (Tenant)** waarin de app-registratie is gemaakt. Deze waarde wordt gebruikt om gebruikers om te leiden naar de juiste Azure AD-Tenant, en om de juiste meta gegevens te downloaden om de juiste sleutels voor token-ondertekening en claim waarde voor token uitgever te bepalen. De `/v2.0` sectie kan worden wegge laten voor toepassingen die gebruikmaken van Aad v1. |
+    |URL van de uitgever| Gebruik `<authentication-endpoint>/<tenant-id>/v2.0` en vervang door *\<authentication-endpoint>* het [verificatie-eind punt voor uw cloud omgeving](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (bijvoorbeeld ' https://login.microsoft.com "voor wereld wijd Azure), vervang ook door *\<tenant-id>* de **Directory-ID (Tenant)** waarin de app-registratie is gemaakt. Deze waarde wordt gebruikt om gebruikers om te leiden naar de juiste Azure AD-Tenant, en om de juiste meta gegevens te downloaden om de juiste sleutels voor token-ondertekening en claim waarde voor token uitgever te bepalen. De `/v2.0` sectie kan worden wegge laten voor toepassingen die gebruikmaken van Aad v1. |
     |Client geheim (optioneel)| Gebruik het client geheim dat u hebt gegenereerd in de app-registratie.|
     |Toegestane token doel groepen| Als dit een Cloud-of server-app is en u verificatie tokens van een web-app wilt toestaan, voegt u hier de URI voor de **toepassings-id** van de web-app toe. De geconfigureerde **client-id** wordt *altijd* impliciet beschouwd als een toegestane doel groep. |
 
@@ -157,7 +156,7 @@ U hebt nu een daemon-client toepassing geconfigureerd die toegang heeft tot uw A
 ## <a name="next-steps"></a><a name="related-content"> </a>Volgende stappen
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
-* [Zelfstudie: Gebruikers eind-tot-eind verifiëren en autoriseren in Azure App Service](app-service-web-tutorial-auth-aad.md)
+* [Zelfstudie: Zelfstudie: Gebruikers eind-tot-eind verifiëren en autoriseren in Azure App Service](app-service-web-tutorial-auth-aad.md)
 <!-- URLs. -->
 
-[Azure Portal]: https://portal.azure.com/
+[Azure-portal]: https://portal.azure.com/

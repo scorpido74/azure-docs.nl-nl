@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d5e44d6b34a16f03d4ca1f82453f1f6e9f074917
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83860610"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive-tabellen maken en gegevens laden vanuit Azure Blob Storage
@@ -30,7 +29,7 @@ In dit artikel wordt ervan uitgegaan dat u het volgende hebt:
 * Externe toegang tot het cluster ingeschakeld, aangemeld en de Hadoop-opdracht regel console geopend. Zie [Apache Hadoop-clusters beheren](../../hdinsight/hdinsight-administer-use-portal-linux.md)als u instructies nodig hebt.
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Gegevens uploaden naar Azure Blob Storage
-Als u een virtuele machine van Azure hebt gemaakt met behulp van de instructies in [een virtuele Azure-machine instellen voor geavanceerde analyse](../../machine-learning/data-science-virtual-machine/overview.md), moet dit script bestand zijn gedownload naar de map *C: \\ gebruikers \\ \< gebruikers naam \> \\ documenten \\ Data Science scripts* op de virtuele machine. Deze Hive-query's vereisen alleen dat u een gegevens schema en Azure Blob-opslag configuratie opgeeft in de juiste velden die kunnen worden verzonden.
+Als u een virtuele machine van Azure hebt gemaakt met behulp van de instructies in [een virtuele Azure-machine instellen voor geavanceerde analyses](../../machine-learning/data-science-virtual-machine/overview.md), moet dit script bestand zijn gedownload naar de map *C: \\ gebruikers \\ \<user name\> \\ documenten \\ Data Science scripts* op de virtuele machine. Deze Hive-query's vereisen alleen dat u een gegevens schema en Azure Blob-opslag configuratie opgeeft in de juiste velden die kunnen worden verzonden.
 
 We gaan ervan uit dat de gegevens voor Hive-tabellen een **gedecomprimeerde** tabel indeling hebben en dat de gegevens zijn geüpload naar de standaard container van het opslag account dat wordt gebruikt door het Hadoop-cluster.
 
@@ -112,7 +111,7 @@ Als u de standaard container van het Hadoop-cluster met Azure Storage Explorer o
 ![Azure Storage Explorer de uitvoer van de Hive-query wordt weer gegeven](./media/move-hive-tables/output-hive-results-3.png)
 
 ### <a name="submit-hive-queries-with-the-hive-editor"></a><a name="hive-editor"></a>Hive-query's verzenden met de Hive-editor
-U kunt ook de query console (Hive-editor) gebruiken door een URL in te voeren van het formulier *https: \/ / \< Hadoop-cluster naam>. azurehdinsight.net/Home/HiveEditor* in een webbrowser. U moet zijn aangemeld met de informatie in deze console en daarom moet u uw Hadoop-cluster referenties hier opgeven.
+U kunt ook de query console (Hive-editor) gebruiken door een URL van het formulier *https: \/ / \<Hadoop cluster name> . azurehdinsight.net/Home/HiveEditor* in te voeren in een webbrowser. U moet zijn aangemeld met de informatie in deze console en daarom moet u uw Hadoop-cluster referenties hier opgeven.
 
 ### <a name="submit-hive-queries-with-azure-powershell-commands"></a><a name="ps"></a>Hive-query's met Azure PowerShell-opdrachten verzenden
 U kunt ook Power shell gebruiken om Hive-query's te verzenden. Zie [Hive-taken verzenden met Power shell](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md)voor instructies.
@@ -137,11 +136,11 @@ Dit is de Hive-query waarmee een Hive-tabel wordt gemaakt.
 
 Hier volgen de beschrijvingen van de velden die u nodig hebt om in te sluiten en andere configuraties:
 
-* ** \< database naam \> **: de naam van de data base die u wilt maken. Als u alleen de standaard database wilt gebruiken, kan de query "*Data Base maken...*" worden wegge laten.
-* ** \< tabel naam \> **: de naam van de tabel die u in de opgegeven Data Base wilt maken. Als u de standaard database wilt gebruiken, kan de tabel rechtstreeks worden aangeduid met een * \< tabel naam \> * zonder \< database naam \> .
-* ** \< veld scheidings \> **teken: het scheidings teken dat velden in het gegevens bestand begrenst dat naar de Hive-tabel moet worden geüpload.
-* ** \< lijn scheidings \> **teken: het scheidings teken dat de regels in het gegevens bestand opsplitsen.
-* ** \< opslag locatie \> **: de locatie van de Azure Storage om de gegevens van Hive-tabellen op te slaan. Als u geen *locatie \< opslag \> locatie*opgeeft, worden de data base en de tabellen standaard opgeslagen in *Hive/Warehouse/* Directory in de standaard container van het Hive-cluster. Als u de opslag locatie wilt opgeven, moet de opslag locatie zich in de standaard container voor de data base en de tabellen bevinden. Deze locatie moet worden aangeduid als locatie relatief ten opzichte van de standaard container van het cluster in de indeling *wasb:/// \< directory 1>/'* of *' wasb:/// \< Directory 1>/ \< map 2>/'*, enzovoort. Nadat de query is uitgevoerd, worden de relatieve directory's in de standaard container gemaakt.
+* **\<database name\>**: de naam van de data base die u wilt maken. Als u alleen de standaard database wilt gebruiken, kan de query "*Data Base maken...*" worden wegge laten.
+* **\<table name\>**: de naam van de tabel die u in de opgegeven Data Base wilt maken. Als u de standaard database wilt gebruiken, kan de tabel rechtstreeks worden aangeduid door *\<table name\>* zonder \<database name\> .
+* **\<field separator\>**: het scheidings teken dat velden in het gegevens bestand begrenst dat naar de Hive-tabel moet worden geüpload.
+* **\<line separator\>**: het scheidings teken waarmee regels in het gegevens bestand worden gelimiteerd.
+* **\<storage location\>**: de locatie van de Azure Storage om de gegevens van Hive-tabellen op te slaan. Als u geen *locatie \<storage location\> *opgeeft, worden de data base en de tabellen standaard opgeslagen in *Hive/Warehouse/* Directory in de standaard container van het Hive-cluster. Als u de opslag locatie wilt opgeven, moet de opslag locatie zich in de standaard container voor de data base en de tabellen bevinden. Deze locatie moet worden aangeduid als locatie relatief ten opzichte van de standaard container van het cluster in de indeling *' wasb:/// \<directory 1> /'* of *' wasb:/// \<directory 1> / \<directory 2> /'*, enzovoort. Nadat de query is uitgevoerd, worden de relatieve directory's in de standaard container gemaakt.
 * **TBLPROPERTIES ("Skip. header. line. Count" = "1")**: als het gegevens bestand een header-regel bevat, moet u deze eigenschap toevoegen **aan het einde** van de query *Create Table* . Anders wordt de header regel geladen als een record in de tabel. Als het gegevens bestand geen header-regel heeft, kan deze configuratie worden wegge laten in de query.
 
 ## <a name="load-data-to-hive-tables"></a><a name="load-data"></a>Gegevens laden in Hive-tabellen
@@ -149,7 +148,7 @@ Dit is de Hive-query waarmee gegevens worden geladen in een Hive-tabel.
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* ** \< pad naar blobgegevens \> **: als het blobbestand dat naar de Hive-tabel moet worden geüpload zich in de standaard container van het HDInsight Hadoop-cluster bevindt, moet het * \< pad naar BLOB-gegevens \> * in de indeling *' wasb:// \< in deze container voor komen>/BLOB- \< Bestands naam> '*. Het blobbestand kan ook een extra container van het HDInsight Hadoop-cluster zijn. In dit geval moet het * \< pad naar de \> BLOB-gegevens* de indeling *' wasb:// \< container name> @ \< Storage account name>. blob.core.Windows.net/ \< BLOB-bestands naam> '* hebben.
+* **\<path to blob data\>**: Als het blobbestand dat moet worden geüpload naar de Hive-tabel zich in de standaard container van het HDInsight Hadoop-cluster bevindt, *\<path to blob data\>* moet de indeling *' wasb:// \<directory in this container> / \<blob file name> '* zijn. Het blobbestand kan ook een extra container van het HDInsight Hadoop-cluster zijn. In dit geval *\<path to blob data\>* moet de indeling *' wasb:// \<container name> @ \<storage account name> . blob.core.Windows.net/ \<blob file name> '* zijn.
 
   > [!NOTE]
   > De BLOB-gegevens die naar de Hive-tabel moeten worden geüpload, moeten zich in de standaard-of extra container van het opslag account voor het Hadoop-cluster bevinden. Als dat niet het geval is, kan de query voor het *laden van gegevens* geen toegang krijgen tot de gegevens.
@@ -216,7 +215,7 @@ Selecteer gegevens uit de externe tabel in stap 1 en voeg deze in de tabel ORC i
             SELECT * FROM <database name>.<external textfile table name>;
 
 > [!NOTE]
-> Als de naam van de TEXTFILE-tabel * \< database \> . \< de naam \> van de externe TEXTFILE-tabel* bevat partities, in stap 3, de `SELECT * FROM <database name>.<external textfile table name>` opdracht de partitie variabele selecteert als een veld in de gegevensset die wordt geretourneerd. Deze invoegen in de * \< database naam \> . \< De naam \> * van de Orc-tabel is mislukt, omdat de * \< database naam \> . \< De ORC- \> tabel naam* heeft niet de partitie variabele als een veld in het tabel schema. In dit geval moet u de velden die u wilt invoegen in de * \< database naam specifiek selecteren \> . \< De naam \> * van de Orc-tabel is als volgt:
+> Als de TEXTFILE-tabel * \<database name\> . \<external textfile table name\> * heeft partities. in stap 3 selecteert de `SELECT * FROM <database name>.<external textfile table name>` opdracht de partitie variabele als een veld in de geretourneerde gegevensset. Deze in te voegen in de * \<database name\> . \<ORC table name\> * mislukt sinds * \<database name\> . \<ORC table name\> * heeft niet de partitie variabele als een veld in het tabel schema. In dit geval moet u de velden die u wilt invoegen specifiek selecteren * \<database name\> . \<ORC table name\> * als volgt:
 >
 >
 
@@ -225,7 +224,7 @@ Selecteer gegevens uit de externe tabel in stap 1 en voeg deze in de tabel ORC i
            FROM <database name>.<external textfile table name>
            WHERE <partition variable>=<partition value>;
 
-Het is veilig om de * \< tabel naam \> van het externe tekst bestand* te verwijderen wanneer u de volgende query gebruikt nadat alle gegevens zijn ingevoegd in de * \< database naam \> . \< ORC-tabel \> naam*:
+Het is veilig om de te verwijderen *\<external text file table name\>* Wanneer u de volgende query gebruikt nadat alle gegevens zijn ingevoegd in * \<database name\> . \<ORC table name\> *:
 
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 

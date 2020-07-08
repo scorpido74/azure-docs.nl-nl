@@ -11,10 +11,9 @@ ms.author: abnarain
 manager: anandsub
 ms.date: 05/08/2019
 ms.openlocfilehash: 3233292f0097330cc5e6ed07460de80934a278e4
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83849294"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Reken omgevingen die worden ondersteund door Azure Data Factory
@@ -35,14 +34,14 @@ De volgende tabel bevat een lijst met reken omgevingen die worden ondersteund do
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
 | [Azure SQL](#azure-sql-database-linked-service), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service), [SQL Server](#sql-server-linked-service) | [Opgeslagen procedure](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Notebook](transform-data-databricks-notebook.md), [jar](transform-data-databricks-jar.md), [python](transform-data-databricks-python.md) |
-| [Azure Functions](#azure-function-linked-service)         | [Azure function-activiteit](control-flow-azure-function-activity.md)
+| [Azure-functie](#azure-function-linked-service)         | [Azure function-activiteit](control-flow-azure-function-activity.md)
 >  
 
 ## <a name="hdinsight-compute-environment"></a>HDInsight Compute-omgeving
 
 Raadpleeg de onderstaande tabel voor meer informatie over de ondersteunde opslag typen die worden ondersteund door de service voor configuratie in on-demand en BYOC (uw eigen Compute-omgeving meenemen).
 
-| In Compute-gekoppelde service | Naam van eigenschap                | Beschrijving                                                  | Blob | ADLS Gen2 | Azure SQL Database | ADLS Gen 1 |
+| In Compute-gekoppelde service | Naam van eigenschap                | Description                                                  | Blob | ADLS Gen2 | Azure SQL Database | ADLS Gen 1 |
 | ------------------------- | ---------------------------- | ------------------------------------------------------------ | ---- | --------- | ------------ | ---------- |
 | Op aanvraag                 | linkedServiceName            | Azure Storage gekoppelde service die moet worden gebruikt door het cluster op aanvraag om gegevens op te slaan en te verwerken. | Ja  | Ja       | Nee           | Nee         |
 |                           | additionalLinkedServiceNames | Hiermee worden extra opslag accounts voor de gekoppelde HDInsight-service opgegeven, zodat de Data Factory-service namens u kan worden geregistreerd. | Yes  | Nee        | Nee           | Nee         |
@@ -173,14 +172,14 @@ U kunt ook de volgende eigenschappen opgeven voor de gedetailleerde configuratie
 
 | Eigenschap               | Beschrijving                              | Vereist |
 | :--------------------- | :--------------------------------------- | :------- |
-| coreConfiguration      | Hiermee geeft u de para meters voor de kern configuratie op (zoals in bestand core-site. XML) voor het HDInsight-cluster dat moet worden gemaakt. | No       |
-| hBaseConfiguration     | Hiermee geeft u de HBase-configuratie parameters (hbase-site. XML) voor het HDInsight-cluster. | No       |
-| hdfsConfiguration      | Hiermee geeft u de HDFS-configuratie parameters (hdfs-site. XML) voor het HDInsight-cluster. | No       |
-| hiveConfiguration      | Hiermee geeft u de Hive-configuratie parameters (Hive-site. XML) op voor het HDInsight-cluster. | No       |
-| mapReduceConfiguration | Hiermee geeft u de MapReduce-configuratie parameters (mapred-site. XML) voor het HDInsight-cluster. | No       |
-| oozieConfiguration     | Hiermee geeft u de Oozie-configuratie parameters (oozie-site. XML) voor het HDInsight-cluster. | No       |
-| stormConfiguration     | Hiermee geeft u de Storm-configuratie parameters (Storm-site. XML) voor het HDInsight-cluster. | No       |
-| yarnConfiguration      | Hiermee geeft u de garen configuratie parameters (Yarn-site. XML) voor het HDInsight-cluster. | No       |
+| coreConfiguration      | Hiermee geeft u de para meters voor de kern configuratie op (zoals in core-site.xml) voor het HDInsight-cluster dat moet worden gemaakt. | No       |
+| hBaseConfiguration     | Hiermee geeft u de HBase-configuratie parameters (hbase-site.xml) voor het HDInsight-cluster. | No       |
+| hdfsConfiguration      | Hiermee geeft u de HDFS-configuratie parameters (hdfs-site.xml) voor het HDInsight-cluster op. | No       |
+| hiveConfiguration      | Hiermee geeft u de Hive-configuratie parameters (hive-site.xml) voor het HDInsight-cluster. | No       |
+| mapReduceConfiguration | Hiermee geeft u de MapReduce-configuratie parameters (mapred-site.xml) voor het HDInsight-cluster. | No       |
+| oozieConfiguration     | Hiermee geeft u de Oozie-configuratie parameters (oozie-site.xml) voor het HDInsight-cluster. | No       |
+| stormConfiguration     | Hiermee geeft u de Storm-configuratie parameters (storm-site.xml) voor het HDInsight-cluster. | No       |
+| yarnConfiguration      | Hiermee geeft u de garen configuratie parameters (yarn-site.xml) voor het HDInsight-cluster. | No       |
 
 * Voor beeld: HDInsight-cluster configuratie op aanvraag met geavanceerde eigenschappen
 
@@ -442,7 +441,7 @@ U maakt een Azure Machine Learning gekoppelde service om een Azure Machine Learn
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | Type                   | De eigenschap type moet worden ingesteld op: **AzureMLService**. | Yes                                      |
 | subscriptionId         | Azure-abonnements-ID              | Yes                                      |
-| resourceGroupName      | name | Yes                                      |
+| resourceGroupName      | naam | Yes                                      |
 | mlWorkspaceName        | Naam van Azure Machine Learning werkruimte | Yes  |
 | servicePrincipalId     | Geef de client-ID van de toepassing op.     | No |
 | servicePrincipalKey    | Geef de sleutel van de toepassing op.           | No |
@@ -545,7 +544,7 @@ U kunt **Azure Databricks gekoppelde service** maken om de Databricks-werk ruimt
 
 | Eigenschap             | Beschrijving                              | Vereist                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
-| name                 | De naam van de gekoppelde service               | Yes   |
+| naam                 | De naam van de gekoppelde service               | Yes   |
 | type                 | De eigenschap type moet worden ingesteld op: **Azure Databricks**. | Yes                                      |
 | domein               | Geef de Azure-regio op op basis van de regio van de Databricks-werk ruimte. Voorbeeld: https://eastus.azuredatabricks.net | Yes                                 |
 | accessToken          | Er is een toegangs token vereist om Data Factory te verifiëren bij Azure Databricks. Het toegangs token moet worden gegenereerd op basis van de databricks-werk ruimte. Meer gedetailleerde stappen om het toegangs token te vinden, vindt u [hier](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token)  | Yes                                       |
@@ -554,7 +553,7 @@ U kunt **Azure Databricks gekoppelde service** maken om de Databricks-werk ruimt
 | newClusterVersion    | De Spark-versie van het cluster. Er wordt een taak cluster gemaakt in databricks. | No  |
 | newClusterNumOfWorker| Het aantal worker-knoop punten dat dit cluster moet hebben. Een cluster heeft één Spark-stuur programma en num_workers-uitvoerders voor een totaal van num_workers + 1 Spark-knoop punten. Een teken reeks met de notatie Int32, zoals ' 1 ' betekent dat numOfWorker 1 of ' 1:10 ' betekent dat automatisch wordt geschaald van 1 tot en met 10 als Max.  | No                |
 | newClusterNodeType   | Dit veld codeert, via één waarde, de bronnen die beschikbaar zijn voor elk van de Spark-knoop punten in dit cluster. De Spark-knoop punten kunnen bijvoorbeeld worden ingericht en geoptimaliseerd voor geheugen of computerintensieve werk belastingen. Dit veld is vereist voor het nieuwe cluster                | No               |
-| newClusterSparkConf  | een set optionele, door de gebruiker opgegeven Spark-configuratie sleutel-waardeparen. Gebruikers kunnen ook een reeks extra JVM-opties door geven aan het stuur programma en de uitvoerers via Spark. driver. extraJavaOptions en Spark. Execute. extraJavaOptions respectievelijk. | No  |
+| newClusterSparkConf  | een set optionele, door de gebruiker opgegeven Spark-configuratie sleutel-waardeparen. Gebruikers kunnen ook een reeks extra JVM-opties door geven aan het stuur programma en de uitvoerendeers via Spark. driver. extraJavaOptions en spark.executor. extraJavaOptions respectievelijk. | No  |
 | newClusterInitScripts| een set optionele, door de gebruiker gedefinieerde initialisatie scripts voor het nieuwe cluster. Het DBFS-pad naar de init-scripts opgeven. | No  |
 
 

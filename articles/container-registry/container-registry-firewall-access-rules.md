@@ -4,10 +4,9 @@ description: Configureer regels voor toegang tot een Azure container Registry va
 ms.topic: article
 ms.date: 05/18/2020
 ms.openlocfilehash: 4774191087b3e88e657e8dc9bc6a9f9c406153e2
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83849979"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Regels configureren voor toegang tot een Azure container Registry achter een firewall
@@ -141,7 +140,7 @@ Het gegevens eindpunt of eind punt wordt weer gegeven in de portal.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Gebruik Azure CLI-versie 2.4.0 of hoger om gegevens eindpunten in te scha kelen met behulp van de Azure CLI. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
+Gebruik Azure CLI-versie 2.4.0 of hoger om gegevens eindpunten in te scha kelen met behulp van de Azure CLI. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 Met de volgende opdracht [AZ ACR update][az-acr-update] kunt u speciale gegevens eindpunten in een REGI ster *myregistry*. 
 

@@ -4,10 +4,9 @@ description: Webtests met meerdere stappen instellen om uw webtoepassingen te be
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.openlocfilehash: 04361f7b3306c5f7c164a849d8b05d7cf4756999
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83873350"
 ---
 # <a name="multi-step-web-tests"></a>Webtests met meerdere stappen
@@ -106,7 +105,7 @@ In alle gevallne moet u een account maken in uw toepassing voor testdoeleinden. 
 
 **SAML-verificatie**
 
-|Naam van eigenschap| Beschrijving|
+|Naam van eigenschap| Description|
 |----|-----|
 | Doel groep-URI | De doel groep-URI voor het SAML-token.  Dit is de URI voor de Access Control Service (ACS), met inbegrip van de ACS-naam ruimte en de hostnaam. |
 | Certificaat wachtwoord | Het wacht woord voor het client certificaat waarmee toegang wordt verleend aan de Inge sloten persoonlijke sleutel. |

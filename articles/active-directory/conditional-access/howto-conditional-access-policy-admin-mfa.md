@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: af82a9d19f8dee9062d15a58e83ee3c2a8c59af6
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83995425"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Voorwaardelijke toegang: MFA vereisen voor beheerders
@@ -66,7 +65,7 @@ De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke t
       * SharePoint-beheerder
       * Gebruikersbeheerder
    1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u de accounts voor nood toegang of het afbreek glas van uw organisatie. 
-   1. Selecteer **Done**.
+   1. Selecteer **Voltooid**.
 1. Onder **Cloud-apps of acties**  >  **Include**, selecteert u **alle Cloud-apps**en selecteert u **gereed**.
 1. Onder **voor waarden**  >  **client-apps (preview)** stelt u **configureren** op **Ja**in en selecteert u **gereed**.
 1. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang verlenen**, **multi-factor Authentication vereisen**en selecteert u **selecteren**.

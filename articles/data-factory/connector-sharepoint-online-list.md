@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
 ms.openlocfilehash: f560a01c4ec00649157a9c43aedf0ed6cfc2e050
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83871922"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Gegevens uit de share point online-lijst kopiëren met behulp van Azure Data Factory
@@ -117,7 +116,7 @@ Zie [gegevens sets en gekoppelde services](concepts-datasets-linked-services.md)
 | type | De eigenschap **type** van de DataSet moet worden ingesteld op **SharePointOnlineLResource**. | Yes |
 | listName | De naam van de share point online-lijst. | Yes |
 
-**Hierbij**
+**Voorbeeld**
 
 ```json
 {
@@ -151,7 +150,7 @@ Als u gegevens wilt kopiëren uit de share point online-lijst, worden de volgend
 | query | Aangepaste OData-query opties voor het filteren van gegevens. Bijvoorbeeld: `"$top=10&$select=Title,Number"`. | No |
 | httpRequestTimeout | De time-out (in seconden) voor de HTTP-aanvraag om een antwoord te krijgen. De standaard waarde is 300 (5 minuten). | No |
 
-**Hierbij**
+**Voorbeeld**
 
 ```json
 "activities":[
@@ -192,11 +191,11 @@ Wanneer u gegevens kopieert vanuit share point online-lijst, worden de volgende 
 | Eén tekstregel                             | Edm.String                                           | Tekenreeks                                   |
 | Meerdere tekstregels                          | Edm.String                                           | Tekenreeks                                   |
 | Keuze (menu om uit te kiezen)                    | Edm.String                                           | Tekenreeks                                   |
-| Getal (1, 1,0, 100)                            | Edm.Double                                           | Double                                   |
-| Valuta ($, ¥, €)                              | Edm.Double                                           | Double                                   |
+| Getal (1, 1,0, 100)                            | Edm.Double                                           | Dubbel                                   |
+| Valuta ($, ¥, €)                              | Edm.Double                                           | Dubbel                                   |
 | Datum en tijd                                   | EDM. DateTime                                         | DateTime                                 |
 | Opzoeken (informatie die al op deze site aanwezig is)       | Edm.Int32                                            | Int32                                    |
-| Ja/Nee (selectie vakje)                              | Edm.Boolean                                          | Boolean                                  |
+| Ja/Nee (selectie vakje)                              | Edm.Boolean                                          | Boolean-waarde                                  |
 | Persoon of groep                                 | Edm.Int32                                            | Int32                                    |
 | Hyper Link of afbeelding                            | Edm.String                                           | Tekenreeks                                   |
 | Berekend (berekening op basis van andere kolommen) | EDM. String/EDM. Double/EDM. DateTime/EDM. Boolean | Teken reeks/dubbele/DateTime/Boolean     |

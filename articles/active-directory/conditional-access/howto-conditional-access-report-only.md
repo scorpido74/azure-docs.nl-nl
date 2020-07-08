@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 46a00d55c58992be1009da1de5441ebe4e589a70
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83994966"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>Een beleid voor voorwaardelijke toegang configureren in de modus alleen rapport
@@ -30,7 +29,7 @@ Een beleid voor voorwaardelijke toegang configureren in de modus alleen rapport:
 1. Selecteer **Nieuw beleid**.
 1. Configureer de beleids voorwaarden en de vereiste granting-besturings elementen als dat nodig is.
 1. Stel onder **beleid inschakelen** de modus voor **alleen rapport** in.
-1. Selecteer **Opslaan**
+1. Selecteer **Opslaan**.
 
 > [!TIP]
 > U kunt de beleids status van een bestaand beleid in **-** of uitschakelen, maar **Hiermee schakelt u** het afdwingen van **beleid uit.** 

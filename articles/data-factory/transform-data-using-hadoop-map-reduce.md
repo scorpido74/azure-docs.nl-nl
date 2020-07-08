@@ -11,16 +11,15 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
 ms.openlocfilehash: 48afff71d4b5241ede1783a270658e56e4b8c242
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83849243"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Hadoop MapReduce-activiteit in Azure Data Factory
 
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](v1/data-factory-map-reduce.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](v1/data-factory-map-reduce.md)
 > * [Huidige versie](transform-data-using-hadoop-map-reduce.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,7 +30,7 @@ Als u niet bekend bent met Azure Data Factory, leest u [Inleiding tot Azure Data
 
 Zie [Pig](transform-data-using-hadoop-pig.md) en [Hive](transform-data-using-hadoop-hive.md) voor meer informatie over het uitvoeren van Pig/Hive-scripts in een HDInsight-cluster via een pijp lijn met behulp van HDInsight Pig en Hive-activiteiten.
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -64,8 +63,8 @@ Zie [Pig](transform-data-using-hadoop-pig.md) en [Hive](transform-data-using-had
 
 | Eigenschap          | Beschrijving                              | Vereist |
 | ----------------- | ---------------------------------------- | -------- |
-| name              | Naam van de activiteit                     | Yes      |
-| beschrijving       | Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt | No       |
+| naam              | Naam van de activiteit                     | Yes      |
+| description       | Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt | No       |
 | type              | Voor MapReduce-activiteit is het type activiteit HDinsightMapReduce | Yes      |
 | linkedServiceName | Verwijzing naar het HDInsight-cluster dat is geregistreerd als een gekoppelde service in Data Factory. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service. | Yes      |
 | className         | Naam van de klasse die moet worden uitgevoerd         | Yes      |

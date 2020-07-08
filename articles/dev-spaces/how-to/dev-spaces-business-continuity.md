@@ -6,13 +6,12 @@ ms.author: lcozzens
 ms.date: 01/28/2019
 ms.topic: conceptual
 description: Meer informatie over het gebruik van Azure dev Spaces en Azure Kubernetes Services voor bedrijfs continuïteit en voor bereiding op nood herstel
-keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s '
 manager: gwallace
 ms.openlocfilehash: 993866a35f530616c235728cbe59e52e083aa968
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83996921"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Bedrijfs continuïteit en herstel na nood gevallen in azure dev Spaces

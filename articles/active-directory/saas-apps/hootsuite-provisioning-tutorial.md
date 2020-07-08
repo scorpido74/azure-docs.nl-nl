@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 04/15/2020
 ms.author: Zhchia
 ms.openlocfilehash: 1adbb0961ab610db936107f2fff210f4acecf2ed
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83883098"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>Zelf studie: HootSuite configureren voor automatische gebruikers inrichting
@@ -70,7 +69,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-hootsuite-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor HootSuite in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](./media/hootsuite-provisioning-tutorial/enterprise-applications.png)
 
@@ -108,7 +107,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |---|---|
    |userName|Tekenreeks|
    |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|
-   |actief|Boolean|
+   |actief|Boolean-waarde|
    |displayName|Tekenreeks|
    |preferredLanguage|Tekenreeks|
    |tijd zone|Tekenreeks|
@@ -140,7 +139,7 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 
