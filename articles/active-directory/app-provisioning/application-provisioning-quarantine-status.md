@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: d8b50bfdd894d36b96fb3a53eab7c43c5b1fe11a
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: e5c0b00873cd97b255eff7e001f8b54cf0397462
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84782106"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024567"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Toepassing inrichten in quarantaine status
 
@@ -46,7 +46,7 @@ Er zijn drie manieren om te controleren of een toepassing in quarantaine is gepl
 
 ## <a name="why-is-my-application-in-quarantine"></a>Waarom wordt mijn toepassing in quarantaine geplaatst?
 
-|Beschrijving|Aanbevolen actie|
+|Description|Aanbevolen actie|
 |---|---|
 |**Probleem met scim-naleving:** Er is een antwoord HTTP/404 niet gevonden geretourneerd in plaats van het verwachte HTTP/200 OK-antwoord. In dit geval heeft de Azure AD-inrichtings service een aanvraag ingediend bij de doel toepassing en heeft deze een onverwacht antwoord ontvangen.|Controleer de sectie beheerders referenties om te zien of de toepassing de Tenant-URL moet opgeven en zorg ervoor dat de URL juist is. Als er geen probleem wordt weer geven, neemt u contact op met de ontwikkelaar van de toepassing om te controleren of hun service SCIM-compatibel is. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
 |**Ongeldige referenties:** Als er wordt geprobeerd toegang te verlenen tot de doel toepassing, is er een reactie ontvangen van de doel toepassing die aangeeft dat de ingevoerde referenties ongeldig zijn.|Ga naar de sectie beheerders referenties van de gebruikers interface van de inrichtings configuratie en autoriseer Access opnieuw met geldige referenties. Als de toepassing zich in de galerie bevindt, raadpleegt u de zelf studie over de configuratie van de toepassing voor aanvullende stappen die vereist zijn.|
@@ -75,3 +75,6 @@ Nadat u het probleem hebt opgelost, start u de inrichtings taak opnieuw. Bepaald
 - Gebruik Microsoft Graph om [de inrichtings taak opnieuw te starten](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http). U hebt volledige controle over wat u opnieuw opstart. U kunt ervoor kiezen om de borg te wissen (om de borg teller voor de quarantaine status opnieuw te starten), de quarantaine te wissen (de toepassing uit quarantaine te verwijderen) of door water merken te wissen. Gebruik de volgende aanvraag:
  
        `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`
+       
+Vervang {id} door de waarde van de toepassings-ID en vervang {jobId} door de [id van de synchronisatie taak](https://docs.microsoft.com/graph/api/resources/synchronization-configure-with-directory-extension-attributes?view=graph-rest-beta&tabs=http#list-synchronization-jobs-in-the-context-of-the-service-principal). 
+
