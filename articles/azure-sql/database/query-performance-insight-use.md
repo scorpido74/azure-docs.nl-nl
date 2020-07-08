@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: afb8e18cbad6a47a99d3ccf05bdb9957f1f9778e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 01287f344d77dedade30892d76f5fdbd54481df1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048152"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042880"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Query Performance Insight voor Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,7 +32,7 @@ Query Performance Insight biedt intelligente query analyses voor afzonderlijke e
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor Query Performance Insight moet het [query archief](https://msdn.microsoft.com/library/dn817826.aspx) actief zijn in uw data base. De standaard instelling is automatisch ingeschakeld voor alle data bases in Azure SQL-data bases. Als query Store niet wordt uitgevoerd, wordt u door de Azure Portal gevraagd dit in te scha kelen.
+Voor Query Performance Insight moet het [query archief](https://msdn.microsoft.com/library/dn817826.aspx) actief zijn in uw data base. De standaard instelling is automatisch ingeschakeld voor alle data bases in Azure SQL Database. Als query Store niet wordt uitgevoerd, wordt u door de Azure Portal gevraagd dit in te scha kelen.
 
 > [!NOTE]
 > Zie [de configuratie van het query archief optimaliseren](#optimize-the-query-store-configuration)als het bericht ' query archief is niet juist is geconfigureerd voor deze data base ' wordt weer gegeven in de portal.

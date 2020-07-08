@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: 48d8c9a0f32c94f64601d27b9785213b776439af
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 312bb9bac93ea30d01e1c3138709325ee1aa6173
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84706770"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042166"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Aanbevolen procedures voor het kiezen van een time series-ID
 
@@ -37,9 +37,10 @@ Het selecteren van de juiste tijd reeks-ID is van cruciaal belang. Het kiezen va
 De belangrijkste aanbevolen procedures zijn:
 
 * Kies een partitie sleutel met veel afzonderlijke waarden (bijvoorbeeld honderden of duizenden). In veel gevallen kan dit de apparaat-ID, sensor-ID of label-ID in uw JSON zijn.
-* De time series-ID moet uniek zijn op het leaf-knooppunt niveau van uw [Time Series-model](./time-series-insights-update-tsm.md).
+* De time series-ID moet uniek zijn op het leaf-knooppunt niveau van uw [Time Series-model](./concepts-model-overview.md).
 * De teken limiet voor de eigenschaps naam van de tijd reeks-ID is 128. De teken limiet voor de eigenschaps waarde van de tijd reeks-ID is 1.024.
 * Als een unieke eigenschaps waarde voor de time series-ID ontbreekt, wordt deze behandeld als een null-waarde en volgt dezelfde regel van de uniekheids beperking.
+* Als uw tijd reeks-ID is genest in een complex JSON-object, moet u de inkomende [regels](./concepts-json-flattening-escaping-rules.md) volgen wanneer u de naam van uw eigenschap opgeeft. Bekijk voor beeld [B](concepts-json-flattening-escaping-rules.md#example-b). 
 * U kunt ook Maxi maal *drie* sleutel eigenschappen selecteren als uw tijd reeks-id. De combi natie hiervan is een samengestelde sleutel die de tijd reeks-ID vertegenwoordigt.  
   > [!NOTE]
   > Uw drie sleutel eigenschappen moeten teken reeksen zijn.
@@ -79,6 +80,6 @@ In de Azure Portal, kunt u de samengestelde sleutel als volgt invoeren:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [gegevens modellering](./time-series-insights-update-tsm.md).
+* Lees de [regels voor json-afvlakking en-Escapes](./concepts-json-flattening-escaping-rules.md) om te begrijpen hoe gebeurtenissen worden opgeslagen.
 
 * Plan uw [Azure time series Insights preview-omgeving](./time-series-insights-update-plan.md).

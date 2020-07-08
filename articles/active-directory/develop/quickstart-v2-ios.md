@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: b4092ac7bdd03d2e978cd9d9a8aa9fd2aaf1cdd2
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: bd17c20707c3bf1a153e9209cd7e2ec279de0501
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733288"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554059"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Quickstart: Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een iOS- of macOS-app
 
@@ -173,7 +173,7 @@ let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, r
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
 
-> |Waar: ||
+> |Waar: | Beschrijving |
 > |---------|---------|
 > | `clientId` | De toepassings-id van de toepassing die is geregistreerd in *portal.azure.com* |
 > | `authority` | Het Microsoft identity platform-eindpunt. In de meeste gevallen is dit *https<span/>://login.microsoftonline.com/common* |
@@ -237,7 +237,7 @@ let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParamete
 self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
-> |Waar:||
+> |Waar:| Beschrijving |
 > |---------|---------|
 > | `scopes` | Bevat de bereiken die worden aangevraagd (dat wil zeggen `[ "user.read" ]` voor Microsoft Graph of `[ "<Application ID URL>/scope" ]` voor aangepaste web-API's (`api://<Application ID>/access_as_user`) |
 
@@ -257,7 +257,7 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 }
 ```
 
-> |Waar: ||
+> |Waar: | Beschrijving |
 > |---------|---------|
 > | `scopes` | Bevat de bereiken die worden aangevraagd (dat wil zeggen `[ "user.read" ]` voor Microsoft Graph of `[ "<Application ID URL>/scope" ]` voor aangepaste web-API's (`api://<Application ID>/access_as_user`) |
 > | `account` | Het account waarvoor een token wordt aangevraagd. Deze quickstart betreft een toepassing met één account. Als u een app met meerdere accounts wilt maken, moet u logica definiëren om te bepalen welk account moet worden gebruikt voor tokenaanvragen met behulp van `accountsFromDeviceForParameters:completionBlock:` en doorgifte van de juiste `accountIdentifier` |

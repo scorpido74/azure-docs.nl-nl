@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 05/21/2020
-ms.openlocfilehash: 327fffd807d93fda67ff650954ece65e5db58e63
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.date: 07/06/2020
+ms.openlocfilehash: 1c63568418f21da0556ced0d004e04e7909118fb
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798118"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042625"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Gegevens stromen toewijzen prestaties en afstemmings handleiding
 
@@ -40,8 +40,10 @@ Bij het ontwerpen van gegevens stromen kunt u elke trans formatie per eenheid te
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>De reken grootte verg Roten in Azure Integration Runtime
 
 Een Integration Runtime met meer kernen verhoogt het aantal knoop punten in de Spark-reken omgevingen en biedt meer verwerkings kracht voor het lezen, schrijven en transformeren van uw gegevens. ADF-gegevens stromen gebruiken Spark voor de compute-engine. De Spark-omgeving werkt goed op resources die zijn geoptimaliseerd voor geheugen.
-* Probeer een **geoptimaliseerde Compute** -cluster als u wilt dat de verwerkings snelheid hoger is dan uw invoer snelheid.
-* Probeer een cluster dat is **geoptimaliseerd voor geheugen** als u meer gegevens in het geheugen wilt opslaan. Geoptimaliseerd geheugen heeft een hoger prijs punt per kern dan de compute Optimized, maar zal waarschijnlijk leiden tot snellere transformatie snelheden. Als er geheugen fouten optreden tijdens het uitvoeren van uw gegevens stromen, schakelt u over naar een geoptimaliseerd voor geheugen Azure IR-configuratie.
+
+We raden u aan geheugen te gebruiken dat is **geoptimaliseerd** voor de meeste werk belastingen van de productie omgeving. U kunt meer gegevens in het geheugen opslaan en geheugen fouten minimaliseren. Geoptimaliseerd geheugen heeft een hoger prijs punt per kern dan de compute Optimized, maar zal waarschijnlijk leiden tot snellere transformatie snelheden en succes volle pijp lijnen. Als er geheugen fouten optreden tijdens het uitvoeren van uw gegevens stromen, schakelt u over naar een geoptimaliseerd voor geheugen Azure IR-configuratie.
+
+**Compute Optimized** kan voldoende zijn voor fout opsporing en gegevens weergave van een beperkt aantal rijen gegevens. Het optimaliseren van de reken kracht zal waarschijnlijk niet worden uitgevoerd, maar ook voor productiewerk belastingen.
 
 ![Nieuwe IR](media/data-flow/ir-new.png "Nieuwe IR")
 
@@ -110,7 +112,7 @@ Als u wilt voor komen dat rijen worden ingevoegd in uw DW, schakelt u **fase rin
 
 ## <a name="optimizing-for-files"></a>Optimaliseren voor bestanden
 
-U kunt bij elke trans formatie instellen welk partitie schema u data factory wilt gebruiken op het tabblad Optimize. Het is een goed idee om eerst op bestanden gebaseerde sinks te testen waarbij de standaard partitionering en optimalisaties behouden blijven.
+U kunt bij elke trans formatie instellen welk partitie schema u data factory wilt gebruiken op het tabblad Optimize. Het is een goed idee om eerst op bestanden gebaseerde sinks te testen waarbij de standaard partitionering en optimalisaties behouden blijven. Als u partitioneren naar ' huidige partitionering ' in de Sink voor een bestands bestemming laat, kan Spark een geschikte standaard partitie voor uw workloads instellen. Standaard partitioneren maakt gebruik van 128 MB per partitie.
 
 * Voor kleinere bestanden kan het kiezen van minder partities soms beter en sneller zijn dan Spark om uw kleine bestanden te partitioneren.
 * Als u niet voldoende informatie over de bron gegevens hebt, kiest u *Round Robin* partitioneren en stelt u het aantal partities in.
@@ -153,13 +155,13 @@ Het instellen van de door Voer en batch-eigenschappen op CosmosDB-sinks worden a
 * Door Voer: Stel hier een hogere doorvoer instelling in zodat documenten sneller naar CosmosDB kunnen schrijven. Houd de hogere RU-kosten in acht op basis van een instelling voor hoge door voer.
 *   Budget voor schrijf doorvoer: gebruik een waarde die kleiner is dan het totaal van RUs per minuut. Als u een gegevens stroom hebt met een groot aantal Spark-partities, is het instellen van een budget doorvoer meer evenwicht over die partities.
 
-## <a name="join-performance"></a>Prestaties samen voegen
+## <a name="join-and-lookup-performance"></a>Prestaties voor samen voegen en opzoeken
 
 Het beheren van de prestaties van samen voegingen in uw gegevens stroom is een zeer veelvoorkomende bewerking die u tijdens de levens cyclus van uw gegevens transformaties kunt uitvoeren. In ADF moeten voor gegevens stromen geen gegevens worden gesorteerd voordat ze worden toegevoegd omdat deze bewerkingen worden uitgevoerd als hash-samen voegingen in Spark. U kunt echter profiteren van verbeterde prestaties met de ' Broadcast '-deelname aan optimalisatie die van toepassing is op samen voegingen, bestaande en trans formaties.
 
 Zo voor komt u dat de inhoud van een wille keurige plaats in de andere kant van de samenvoegings relatie naar het Spark-knoop punt wordt gepusht. Dit werkt goed voor kleinere tabellen die worden gebruikt voor het opzoeken van verwijzingen. Grotere tabellen die mogelijk niet in het geheugen van het knoop punt passen, zijn geen goede kandidaten voor de optimalisatie van broadcast berichten.
 
-De aanbevolen configuratie voor gegevens stromen met veel koppelings bewerkingen is om de optimalisatie in te stellen op ' auto ' voor ' Broadcast ' en een geoptimaliseerd voor geheugen te gebruiken Azure Integration Runtime configuratie. Als er geheugen fouten of time-outs tijdens de uitvoering van de gegevens stroom optreden, kunt u de uitschakeling van de uitzending uitschakelen. Dit leidt er echter toe dat gegevens stromen langzamer worden uitgevoerd. U kunt ook de gegevens stroom instrueren om alleen de linker-of rechter zijde van de koppeling te pushdown of beide.
+De aanbevolen configuratie voor gegevens stromen met veel koppelings bewerkingen is om de optimalisatie in te stellen op ' auto ' voor ' Broadcast ' en een ***geoptimaliseerd voor geheugen*** te gebruiken Azure Integration runtime configuratie. Als er geheugen fouten of time-outs tijdens de uitvoering van de gegevens stroom optreden, kunt u de uitschakeling van de uitzending uitschakelen. Dit leidt er echter toe dat gegevens stromen langzamer worden uitgevoerd. U kunt ook de gegevens stroom instrueren om alleen de linker-of rechter zijde van de koppeling te pushdown of beide.
 
 ![Instellingen voor broadcasten](media/data-flow/newbroad.png "Instellingen voor broadcasten")
 

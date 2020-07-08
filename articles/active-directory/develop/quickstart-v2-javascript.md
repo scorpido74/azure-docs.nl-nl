@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: d0c705ffba84b9d34f8bc3d6e4c06d4bdb90fa21
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 047e03c4fa5916119036c5e539674dc48a6c77aa
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322818"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554023"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Quickstart: Gebruikers aanmelden en een toegangstoken verkrijgen in een JavaScript SPA
 
@@ -204,7 +204,7 @@ De quickstart-code laat ook zien hoe u de MSAL-bibliotheek kunt initialiseren:
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Waar  |  |
+> |Waar  | Beschrijving |
 > |---------|---------|
 > |`clientId`     | De toepassings-id van de toepassing die is geregistreerd in het Azure-portal.|
 > |`authority`    | (Optioneel) De URL van de instantie die accounttypen ondersteunt zoals eerder beschreven in het configuratiegedeelte. De standaardinstantie is `https://login.microsoftonline.com/common`. |
@@ -232,7 +232,7 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-> |Waar  |  |
+> |Waar  | Beschrijving |
 > |---------|---------|
 > | `scopes`   | (Optioneel) Bevat bereiken die worden aangevraagd voor gebruikerstoestemming tijdens het aanmelden. Bijvoorbeeld, `[ "user.read" ]` voor Microsoft Graph of `[ "<Application ID URL>/scope" ]` voor aangepaste web-API’s (`api://<Application ID>/access_as_user`). |
 
@@ -262,7 +262,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-> |Waar  |  |
+> |Waar  | Beschrijving |
 > |---------|---------|
 > | `scopes`   | Bevat bereiken die worden aangevraagd om te worden geretourneerd in het toegangstoken voor de API. Bijvoorbeeld, `[ "mail.read" ]` voor Microsoft Graph of `[ "<Application ID URL>/scope" ]` voor aangepaste web-API’s (`api://<Application ID>/access_as_user`).|
 

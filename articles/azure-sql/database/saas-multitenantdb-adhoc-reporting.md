@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/30/2018
-ms.openlocfilehash: 8e4f042e162408fef44b5c525b3a737e37005fdd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 7564adb6e2e596b95cd138c8e4e2190a4c1e2a57
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042510"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042642"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-databases-azure-sql-database"></a>Ad hoc Analytics-query's uitvoeren in meerdere data bases (Azure SQL Database)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -59,7 +59,7 @@ De Wingtip tickets SaaS multi-tenant database scripts en toepassings bron code z
 
 Als u query's wilt uitvoeren op een interessantere gegevensset, maakt u verkoop gegevens van tickets door de ticket Generator uit te voeren.
 
-1. Open in de *Power shell-ISE*de.. \\ . Trainings modules \\ Operational \\ Reporting AD \\ *demo-AdhocReporting. ps1* script en stel de volgende waarden in:
+1. Open in de *Power shell-ISE*de.. \\ . Trainings modules \\ Operational \\ Reporting ad \\ Scripting*Demo-AdhocReporting.ps1* script en stel de volgende waarden in:
    * **$DemoScenario** = 1, **Koop tickets voor gebeurtenissen op alle locaties**.
 2. Druk op **F5** om het script uit te voeren en de verkoop van tickets te genereren. Wanneer het script wordt uitgevoerd, gaat u door met de stappen in deze zelf studie. De ticket gegevens worden in de sectie *ad hoc gedistribueerde Query's uitvoeren* opgevraagd en wachten op het volt ooien van de ticket generator.
 
@@ -73,7 +73,7 @@ Om dit patroon te krijgen, bevatten alle Tenant tabellen een kolom *VenueId* die
 
 In deze oefening wordt de *adhocreporting* -data base geïmplementeerd. Dit is de hoofd database die het schema bevat dat wordt gebruikt voor het uitvoeren van query's in alle Tenant databases. De data base wordt geïmplementeerd op de bestaande catalogus server. Dit is de server die wordt gebruikt voor alle aan beheer gerelateerde data bases in de voor beeld-app.
 
-1. Openen... \\ Trainings modules \\ Operational \\ Reporting AD \\ *demo-AdhocReporting. Ps1* in de *Power shell ISE* en stel de volgende waarden in:
+1. Openen... \\ Trainings modules \\ Operational \\ Reporting ad-rapportage \\ *Demo-AdhocReporting.ps1* in de *Power shell ISE* en stel de volgende waarden in:
    * **$DemoScenario** = 2, **ad hoc Analytics-Data Base implementeren**.
 
 2. Druk op **F5** om het script uit te voeren en de *adhocreporting* -data base te maken.

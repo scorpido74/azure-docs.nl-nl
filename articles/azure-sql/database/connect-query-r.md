@@ -14,12 +14,12 @@ ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7bfc00566ef24fb6d6851a7cdee402598fe15951
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: adc3cbd7b98d915a0b598227b459891cb0e0bfff
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84052615"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042506"
 ---
 # <a name="quickstart-use-r-with-azure-sql-database-machine-learning-services-preview-to-query-a-database"></a>Quickstart: R gebruiken met Azure SQL Database Machine Learning Services (preview) om een query uit te voeren op een database 
 
@@ -85,4 +85,3 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de da
 - [Uw eerste database ontwerpen in Azure SQL Database](design-first-database-tutorial.md)
 - [Azure SQL Database Machine Learning Services (met R)](machine-learning-services-overview.md)
 - [Eenvoudige R-scripts maken en uitvoeren in Azure SQL Database Machine Learning Services (preview)](r-script-create-quickstart.md)
-- [Geavanceerde R-functies schrijven in Azure SQL Database met behulp van Machine Learning Services (preview)](machine-learning-services-functions.md)

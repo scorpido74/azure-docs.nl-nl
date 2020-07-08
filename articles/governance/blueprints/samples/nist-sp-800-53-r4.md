@@ -3,12 +3,12 @@ title: Overzicht van het blauwdrukvoorbeeld NIST SP 800-53 R4
 description: Overzicht van het blauwdrukvoorbeeld NIST SP 800-53 R4. Met dit blauwdrukvoorbeeld kunnen klanten specifieke beheeropties van NIST SP 800-53 R4 bekijken.
 ms.date: 05/14/2020
 ms.topic: sample
-ms.openlocfilehash: e7ad29904b87a20f59d2867d277d806331614461
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 20ea6e81746a07db85a00a0881744340b2a24d1f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84739459"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042659"
 ---
 # <a name="nist-sp-800-53-r4-blueprint-sample"></a>Blauwdrukvoorbeeld NIST SP 800-53 R4
 
@@ -102,7 +102,7 @@ In de volgende tabel ziet u een lijst met de blauwdrukartefactparameters:
 |Naam van het artefact|Type artefact|Parameternaam|Beschrijving|
 |-|-|-|-|
 |\[Preview\]: NIST SP 800-53 R4-controles en implementatie van specifieke VM-extensies implementeren ter ondersteuning van de controlevereisten controleren|Beleidstoewijzing|Id van de Log Analytics-werkruimte waarvoor VM's moeten worden geconfigureerd|Dit is de id (GUID) van de Log Analytics-werkruimte waarvoor de VM's moeten worden geconfigureerd.|
-|\[Preview\]: NIST SP 800-53 R4-controles en implementatie van specifieke VM-extensies implementeren ter ondersteuning van de controlevereisten controleren|Beleidstoewijzing|Lijst met resourcetypen waarvoor diagnostische logboeken moeten zijn ingeschakeld|Lijst met resourcetypen die moeten worden gecontroleerd als de instelling voor diagnostische logboeken niet is ingeschakeld. Acceptabele waarden vindt u in de [schema's van diagnostische logboeken van Azure Monitor](../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
+|\[Preview\]: NIST SP 800-53 R4-controles en implementatie van specifieke VM-extensies implementeren ter ondersteuning van de controlevereisten controleren|Beleidstoewijzing|Lijst met resourcetypen waarvoor diagnostische logboeken moeten zijn ingeschakeld|Lijst met resourcetypen die moeten worden gecontroleerd als de instelling voor diagnostische logboeken niet is ingeschakeld. Acceptabele waarden vindt u in de [schema's van diagnostische logboeken van Azure Monitor](../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas).|
 |\[Preview\]: NIST SP 800-53 R4-controles en implementatie van specifieke VM-extensies implementeren ter ondersteuning van de controlevereisten controleren|Beleidstoewijzing|Lijst met gebruikers die moeten worden uitgesloten van de groep Beheerders voor Windows-VM's|Een lijst met leden die niet moeten worden opgenomen in de lokale groep beheerders, gescheiden door puntkomma's. Bijvoorbeeld: Beheerder; myUser1; myUser2|
 |\[Preview\]: NIST SP 800-53 R4-controles en implementatie van specifieke VM-extensies implementeren ter ondersteuning van de controlevereisten controleren|Beleidstoewijzing|Lijst met gebruikers die moeten worden opgenomen in de groep Beheerders voor Windows-VM's|Een lijst met leden die moeten worden opgenomen in de lokale groep beheerders, gescheiden door puntkomma's. Bijvoorbeeld: Beheerder; myUser1; myUser2|
 |\[Preview\]: Log Analytics-agent voor Linux-VM-schaalsets (VMSS) implementeren|Beleidstoewijzing|Log Analytics-werkruimte voor Linux-VM-schaalsets (VMSS)|Als deze werkruimte buiten het bereik van de toewijzing valt, moet u aan de principal-id van de beleidstoewijzing handmatig de rechten voor Inzender voor Log Analytics (of vergelijkbaar) toekennen.|

@@ -1,6 +1,6 @@
 ---
 title: 'SaaS-app: prestaties van veel data bases bewaken'
-description: Prestaties van Azure SQL-data bases en-Pools bewaken en beheren in een SaaS-app met meerdere tenants
+description: Prestaties van Azure SQL Database in een multi tenant SaaS-app bewaken en beheren
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 458349ec666de7cdb94fca5422143738fea50a26
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 714ddf69bd8bca70019487576830b319bd25a7c0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042846"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042812"
 ---
-# <a name="monitor-and-manage-performance-of-azure-sql-database-and-pools-in-a-multi-tenant-saas-app"></a>Prestaties van Azure SQL Database en Pools bewaken en beheren in een SaaS-app met meerdere tenants
+# <a name="monitor-and-manage-performance-of-azure-sql-database-in-a-multi-tenant-saas-app"></a>Prestaties van Azure SQL Database in een multi tenant SaaS-app bewaken en beheren
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 In deze zelf studie worden verschillende scenario's voor prestatie beheer in SaaS-toepassingen besproken. Het gebruik van een load generator voor het simuleren van activiteit in alle Tenant databases, de ingebouwde bewakings-en waarschuwings functies van SQL Database en elastische Pools worden gedemonstreerd.
@@ -69,7 +69,7 @@ Hoewel pools al met twee S3-databases rendabel kunnen zijn, geldt dat hoe meer d
 
 Als u al een batch tenants in een vorige zelf studie hebt ingericht, gaat u naar de sectie [gebruik simuleren op alle Tenant databases](#simulate-usage-on-all-tenant-databases) .
 
-1. Open in de **Power shell-ISE**.. \\ . Leer modules \\ prestaties bewaken en beheren \\ *demo-PerformanceMonitoringAndManagement. ps1*. Houd dit script open; u gaat verschillende scenario's uitvoeren tijdens deze zelfstudie.
+1. Open in de **Power shell-ISE**.. \\ . Leer modules \\ prestaties bewaken en beheren \\ *Demo-PerformanceMonitoringAndManagement.ps1*. Houd dit script open; u gaat verschillende scenario's uitvoeren tijdens deze zelfstudie.
 1. **$DemoScenario**  =  **1**instellen, **een batch met tenants inrichten**
 1. Druk op **F5** om het script uit te voeren.
 
@@ -79,7 +79,7 @@ In het script *New-TenantBatch* wordt gebruikgemaakt van een geneste of gekoppel
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>Gebruik simuleren op alle tenantdatabases
 
-Het script *demo-PerformanceMonitoringAndManagement. ps1* wordt gebruikt voor het simuleren van een werk belasting die wordt uitgevoerd op alle Tenant databases. De belasting wordt gegenereerd met behulp van een van de beschik bare laad scenario's:
+Het *Demo-PerformanceMonitoringAndManagement.ps1* script is bedoeld voor het simuleren van een werk belasting die wordt uitgevoerd op alle Tenant databases. De belasting wordt gegenereerd met behulp van een van de beschik bare laad scenario's:
 
 | Demo | Scenario |
 |:--|:--|
@@ -91,7 +91,7 @@ Het script *demo-PerformanceMonitoringAndManagement. ps1* wordt gebruikt voor he
 
 De load-generator past een *synthetische* load alleen voor CPU toe op elke tenantdatabase. De generator start voor elke tenantdatabase een taak, die periodiek een opgeslagen procedure aanroept die de load genereert. De load-niveaus (in eDTU's), duur en intervallen zijn verschillend voor alle databases. Dit simuleert onvoorspelbare tenantactiviteit.
 
-1. Open in de **Power shell-ISE**.. \\ . Leer modules \\ prestaties bewaken en beheren \\ *demo-PerformanceMonitoringAndManagement. ps1*. Houd dit script open; u gaat verschillende scenario's uitvoeren tijdens deze zelfstudie.
+1. Open in de **Power shell-ISE**.. \\ . Leer modules \\ prestaties bewaken en beheren \\ *Demo-PerformanceMonitoringAndManagement.ps1*. Houd dit script open; u gaat verschillende scenario's uitvoeren tijdens deze zelfstudie.
 1. Stel **$DemoScenario**  =  **2**in, *Genereer normale taak intensiteit*.
 1. Druk op **F5** om een load toe te passen op al uw tenantdatabases.
 
@@ -195,7 +195,7 @@ Als een afzonderlijke data base in een groep een aanhoudende hoge belasting onde
 
 Deze oefening simuleert het effect van een hoge load voor Contoso Concert Hall wanneer kaartjes voor een populair concert in de verkoop gaan.
 
-1. Open in de **Power shell-ISE**de.. \\ . Script *demo-PerformanceMonitoringAndManagement. ps1* .
+1. Open in de **Power shell-ISE**de.. \\ . *Demo-PerformanceMonitoringAndManagement.ps1* script.
 1. Stel **$DemoScenario = 5 in, Genereer een normale belasting plus een hoge belasting voor één Tenant (ongeveer 95 DTU).**
 1. Stel **$SingleTenantDatabaseName = contosoconcerthall** in
 1. Voer het script uit met **F5**.
