@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: ea8c13e134eceeb27bd064e794d46d711092a867
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84450729"
 ---
 # <a name="resnet"></a>ResNet
@@ -46,7 +45,7 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 
 ###  <a name="module-parameters"></a>Module parameters  
 
-| Naam       | Bereik | Type    | Standaard           | Beschrijving                              |
+| Name       | Bereik | Type    | Standaard           | Description                              |
 | ---------- | ----- | ------- | ----------------- | ---------------------------------------- |
 | Modelnaam | Alle   | Modus    | resnext101 \_ 32x8d | Naam van een bepaalde ResNet-structuur       |
 | Voortraind | Alle   | Boolean-waarde | True              | Of u een vooraf getrainde model wilt gebruiken op ImageNet |
@@ -54,7 +53,7 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 
 ###  <a name="output"></a>Uitvoer  
 
-| Naam            | Type                    | Beschrijving                              |
+| Naam            | Type                    | Description                              |
 | --------------- | ----------------------- | ---------------------------------------- |
 | Niet-traind model | UntrainedModelDirectory | Een niet-traind ResNet-model dat kan worden verbonden met Train Pytorch model. |
 

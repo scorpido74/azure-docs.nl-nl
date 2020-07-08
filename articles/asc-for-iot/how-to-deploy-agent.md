@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 4253e496aca4cbf71fab7ef0ee388b1356df5c16
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84456790"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Een beveiligings agent op uw IoT-apparaat selecteren en implementeren
@@ -46,7 +45,7 @@ De op C gebaseerde beveiligings agent heeft een lagere geheugen capaciteit en is
 | --- | ----------- | --------- |
 | Open-source | Beschikbaar onder een [MIT-licentie](https://en.wikipedia.org/wiki/MIT_License) in [github](https://aka.ms/iot-security-github-c) | Beschikbaar onder een [MIT-licentie](https://en.wikipedia.org/wiki/MIT_License) in [github](https://aka.ms/iot-security-github-cs) |
 | Ontwikkelingstaal    | C | C# |
-| Ondersteunde Windows-platforms? | Nee | Ja |
+| Ondersteunde Windows-platforms? | Nee | Yes |
 | Windows-vereisten | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
 | Ondersteunde Linux-platforms? | Ja, x64 en x86 | Ja, alleen x64 |
 | Linux-vereisten | libunwind8, libcurl3, uuid-runtime, gecontroleerde, audispd-invoeg toepassingen | libunwind8, libcurl3, uuid-runtime, gecontroleerde, audispd-plugins, sudo, netstat, iptables |
@@ -60,7 +59,7 @@ De op C gebaseerde beveiligings agent heeft een lagere geheugen capaciteit en is
 
 ## <a name="security-agent-installation-guidelines"></a>Richt lijnen voor installatie van beveiligings agent
 
-Voor **Windows**: het script install SecurityAgent. ps1 moet worden uitgevoerd vanuit een Power shell-venster van de beheerder.
+Voor **Windows**: het Installeer SecurityAgent.ps1 script moet worden uitgevoerd vanuit een Power shell-venster van de beheerder.
 
 Voor **Linux**: de InstallSecurityAgent.sh moet worden uitgevoerd als super gebruiker. U wordt aangeraden de installatie opdracht voor te stellen met ' sudo '.
 

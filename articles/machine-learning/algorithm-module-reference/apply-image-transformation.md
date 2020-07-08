@@ -1,5 +1,5 @@
 ---
-title: Afbeeldings transformatie Toep assen
+title: Afbeeldingstransformatie toepassen
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het gebruik van de module afbeeldings transformatie Toep assen om een afbeeldings transformatie toe te passen op een afbeeldings Directory.
 services: machine-learning
@@ -10,13 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: 7ff135911742c49c2c52ce30d1dca00bc89b3a56
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84450722"
 ---
-# <a name="apply-image-transformation"></a>Afbeeldings transformatie Toep assen 
+# <a name="apply-image-transformation"></a>Afbeeldingstransformatie toepassen 
 
 In dit artikel wordt beschreven hoe u de module installatie kopie transformeren Toep assen in Azure Machine Learning Designer (preview) gebruikt om een map met een invoer installatie kopie te wijzigen op basis van een eerder opgegeven afbeeldings transformatie.  
 
@@ -47,20 +46,20 @@ U moet een init- [installatie kopie transformatie](init-image-transformation.md)
 
 ### <a name="module-parameters"></a>Module parameters
 
-| Naam | Bereik | Type | Standaard                   | Beschrijving                              |
+| Name | Bereik | Type | Standaard                   | Description                              |
 | ---- | ----- | ---- | ------------------------- | ---------------------------------------- |
 | Modus | Alle   | Modus | (Verplicht te geven gebruiker) | Voor welk doel gebruikt u invoer transformatie. U moet wille keurige transformatie bewerkingen uitsluiten, maar ze in de training houden |
 
 ### <a name="expected-inputs"></a>Verwachte invoer  
 
-| Naam                       | Type                    | Beschrijving                       |
+| Naam                       | Type                    | Description                       |
 | -------------------------- | ----------------------- | --------------------------------- |
 | Trans formatie van invoer afbeelding | TransformationDirectory | Trans formatie van invoer afbeelding        |
 | Map met invoer afbeeldingen      | ImageDirectory          | Afbeeldings Directory die moet worden getransformeerd |
 
-### <a name="outputs"></a>Uitvoer  
+### <a name="outputs"></a>Uitvoerwaarden  
 
-| Naam                   | Type           | Beschrijving            |
+| Naam                   | Type           | Description            |
 | ---------------------- | -------------- | ---------------------- |
 | Uitvoer afbeelding map | ImageDirectory | Uitvoer afbeelding map |
 

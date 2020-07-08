@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: ca5c8fdd14f155163dd55d944cafd2e209e7a94b
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84450659"
 ---
 # <a name="train-pytorch-model"></a>Pytorch-model trainen
@@ -58,7 +57,7 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 ## <a name="technical-notes"></a>Technische opmerkingen
 ###  <a name="expected-inputs"></a>Verwachte invoer  
 
-| Naam               | Type                    | Beschrijving                              |
+| Naam               | Type                    | Description                              |
 | ------------------ | ----------------------- | ---------------------------------------- |
 | Niet-traind model    | UntrainedModelDirectory | Niet-traind model, vereisen pytorch         |
 | Trainings gegevensset   | ImageDirectory          | Trainings gegevensset                         |
@@ -66,7 +65,7 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 
 ###  <a name="module-parameters"></a>Module parameters  
 
-| Naam          | Bereik            | Type    | Standaard | Beschrijving                              |
+| Name          | Bereik            | Type    | Standaard | Description                              |
 | ------------- | ---------------- | ------- | ------- | ---------------------------------------- |
 | Epoches        | >0               | Geheel getal | 5       | Selecteer de kolom die de kolom Label of het resultaat bevat |
 | Batchgrootte    | >0               | Geheel getal | 16      | Het aantal exemplaren dat in een batch moet worden getraind   |
@@ -74,9 +73,9 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 | Wille keurige Seed   | Alle              | Geheel getal | 1       | Het Seed voor de generator voor wille keurige getallen die wordt gebruikt door het model. |
 | Geduld      | >0               | Geheel getal | 3       | Het aantal epochen naar een vroege stop-training   |
 
-###  <a name="outputs"></a>Uitvoer  
+###  <a name="outputs"></a>Uitvoerwaarden  
 
-| Naam          | Type           | Beschrijving   |
+| Naam          | Type           | Description   |
 | ------------- | -------------- | ------------- |
 | Getraind model | ModelDirectory | Getraind model |
 

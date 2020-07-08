@@ -6,10 +6,9 @@ author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
 ms.openlocfilehash: 50a7e9520730159ad2df3ec3e0b75fcfa0c5ce0a
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84451065"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>Problemen met SDK-laad fouten voor Java script-web-apps oplossen
@@ -101,7 +100,7 @@ De volgende secties bevatten verschillende rapportage opties, maar u wordt aange
 
 Eerst kunt u op Java script-uitzonde ringen controleren met behulp van een browser die ontwikkel hulpprogramma's ondersteunt (F12) de pagina laden en controleren of er uitzonde ringen zijn opgetreden.
 
-Als er uitzonde ringen worden gerapporteerd in het SDK-script (bijvoorbeeld AI. 2. min. js), kan dit erop wijzen dat de configuratie die in de SDK is door gegeven, onverwachte of ontbrekende vereiste configuratie bevat of dat een beschadigde release is geïmplementeerd in het CDN.
+Als er uitzonde ringen worden gerapporteerd in het SDK-script (bijvoorbeeld ai.2.min.js), kan dit erop wijzen dat de configuratie die in de SDK is door gegeven, onverwachte of ontbrekende vereiste configuratie bevat of dat een beschadigde release is geïmplementeerd in het CDN.
 
 Als u wilt controleren op defecte configuratie, wijzigt u de configuratie die is door gegeven aan het fragment (indien nog niet), zodat het alleen uw instrumentatie sleutel als teken reeks waarde bevat.
 
@@ -128,7 +127,7 @@ Ervan uitgaande dat er geen uitzonde ringen worden gegenereerd de volgende stap 
 > [!NOTE]
 > Tijdens de initialisatie voert de SDK enkele basis controles uit op bekende primaire afhankelijkheden. Als deze niet worden verschaft door de huidige runtime, worden de fouten gerapporteerd als waarschuwings berichten naar de-console, maar alleen als de waarde `loggingLevelConsole` groter is dan nul.
 
-Als deze nog steeds niet kan worden geïnitialiseerd, schakelt u de ```enableDebug``` configuratie-instelling in. Dit zorgt ervoor dat alle interne fouten worden gegenereerd als een uitzonde ring (waardoor telemetrie verloren gaat). Aangezien dit een ontwikkelaar is, is het waarschijnlijk dat er ruis ontstaat met uitzonde ringen die worden gegenereerd als onderdeel van een aantal interne controles. Daarom moet u elke uitzonde ring bekijken om te bepalen welk probleem ervoor zorgt dat de SDK mislukt. Gebruik de niet-minified versie van het script (Let op de uitbrei ding '. js ' en niet '. min. js ') anders worden de uitzonde ringen onleesbaar.
+Als deze nog steeds niet kan worden geïnitialiseerd, schakelt u de ```enableDebug``` configuratie-instelling in. Dit zorgt ervoor dat alle interne fouten worden gegenereerd als een uitzonde ring (waardoor telemetrie verloren gaat). Aangezien dit een ontwikkelaar is, is het waarschijnlijk dat er ruis ontstaat met uitzonde ringen die worden gegenereerd als onderdeel van een aantal interne controles. Daarom moet u elke uitzonde ring bekijken om te bepalen welk probleem ervoor zorgt dat de SDK mislukt. Gebruik de niet-minified versie van het script (Let op de uitbrei ding onder het '. js ' en niet op ' .min.js ') anders worden de uitzonde ringen onleesbaar.
 
 > [!WARNING]
 > Dit is een instelling die alleen voor ontwikkel aars is en die nooit moet worden ingeschakeld in een volledige productie omgeving omdat telemetrie verloren gaat.
@@ -194,7 +193,7 @@ Als uw eind gebruikers zich in een bedrijfs netwerk bevinden, is het waarschijnl
 
 #### <a name="host-the-sdk-on-your-own-cdn"></a>De SDK op uw eigen CDN hosten
 
- In plaats van uw eind gebruikers te downloaden van de Application Insights SDK vanuit het open bare CDN, kunt u de Application Insights SDK hosten vanuit uw eigen CDN-eind punt. Het is raadzaam een specifieke versie (AI. 2. #. #. min. js) te gebruiken, zodat het gemakkelijker is om te identificeren welke versie u gebruikt. Werk het ook regel matig bij naar de huidige versie (AI. 2. min. js), zodat u kunt gebruikmaken van eventuele oplossingen voor fouten en nieuwe functies die beschikbaar worden.
+ In plaats van uw eind gebruikers te downloaden van de Application Insights SDK vanuit het open bare CDN, kunt u de Application Insights SDK hosten vanuit uw eigen CDN-eind punt. Het is raadzaam een specifieke versie (AI. 2. #. # .min.js) te gebruiken, zodat het gemakkelijker is om te identificeren welke versie u gebruikt. Werk het ook regel matig bij met de huidige versie (ai.2.min.js), zodat u kunt gebruikmaken van eventuele oplossingen voor fouten en nieuwe functies die beschikbaar worden.
 
 #### <a name="use-npm-packages-to-embed-the-application-insight-sdk"></a>NPM-pakketten gebruiken om de Application Insight-SDK in te sluiten
 

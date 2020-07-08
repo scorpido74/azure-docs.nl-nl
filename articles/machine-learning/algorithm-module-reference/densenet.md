@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: db0e2f90ee45d4e1c0173cbc037084793a66e149
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84450645"
 ---
 # <a name="densenet"></a>DenseNet
@@ -49,15 +48,15 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 
 ###  <a name="module-parameters"></a>Module parameters  
 
-| Naam             | Bereik | Type    | Standaard     | Beschrijving                              |
+| Name             | Bereik | Type    | Standaard     | Description                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
 | Modelnaam       | Alle   | Modus    | densenet201 | Naam van een bepaalde densenet-structuur     |
 | Voortraind       | Alle   | Boolean-waarde | True        | Of u een vooraf getrainde model wilt gebruiken op ImageNet |
-| Geheugen efficiënt | Alle   | Booleaans | False       | Of controle punten moeten worden gebruikt, wat veel geheugen efficiënt maar langzamer is |
+| Geheugen efficiënt | Alle   | Boolean-waarde | False       | Of controle punten moeten worden gebruikt, wat veel geheugen efficiënt maar langzamer is |
 
 ###  <a name="output"></a>Uitvoer  
 
-| Naam            | Type                    | Beschrijving                              |
+| Naam            | Type                    | Description                              |
 | --------------- | ----------------------- | ---------------------------------------- |
 | Niet-traind model | UntrainedModelDirectory | Een niet-traind densenet-model dat kan worden verbonden met Train Pytorch model. |
 

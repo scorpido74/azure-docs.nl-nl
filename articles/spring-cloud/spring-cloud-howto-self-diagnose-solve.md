@@ -7,10 +7,9 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.openlocfilehash: 581d77a5568b9533d85ff476b63001c8a237bc4e
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84457198"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Zelf diagnose en probleem oplossing in azure lente Cloud
@@ -20,12 +19,12 @@ Azure veer Cloud diagnostiek is een interactieve ervaring om u te helpen bij het
 Voor deze zelfstudie hebt u het volgende nodig:
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
-* Een geïmplementeerd Azure lente-Cloud service-exemplaar. Volg onze [Snelstartgids voor het implementeren van een app via de Azure cli](spring-cloud-quickstart-launch-app-cli.md) om aan de slag te gaan.
-* Ten minste één toepassing is al in uw service-exemplaar gemaakt.
+* Een geïmplementeerd Azure Spring Cloud-service-exemplaar. Volg onze [quickstart voor het implementeren van een app via Azure CLI](spring-cloud-quickstart-launch-app-cli.md) om aan de slag te gaan.
+* Er is al minstens één toepassing gemaakt in uw service-exemplaar.
 
 ## <a name="navigate-to-the-diagnostics-page"></a>Ga naar de pagina met diagnostische gegevens
 1. Meld u aan bij Azure Portal.
-2. Ga naar de **overzichts** pagina van Azure lente Cloud.
+2. Ga naar de **Overzichtspagina** van Azure Spring Cloud.
 3. Open het menu aan de linkerkant van de pagina om **problemen op te sporen en op te lossen** .
 
  ![Diagnose en oplossen dialoog venster](media/spring-cloud-diagnose/diagnose-solve-dialog.png)

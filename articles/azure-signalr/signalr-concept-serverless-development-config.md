@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.openlocfilehash: dbacb6a5bbdead52750935c476f453423647fc0f
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84457130"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Ontwikkeling en configuratie van Azure Functions met Azure SignalR Service
@@ -215,7 +214,7 @@ De Java script-type script-client maakt HTTP-aanvragen aan de onderhandelings fu
 
 #### <a name="localhost"></a>Lokalehost
 
-Wanneer u de functie-app op uw lokale computer uitvoert, kunt u een `Host` sectie toevoegen aan *lokaal. settings. json* om CORS in te scha kelen. Voeg in de `Host` sectie twee eigenschappen toe:
+Wanneer u de functie-app op uw lokale computer uitvoert, kunt u een `Host` sectie toevoegen aan *local.settings.jsin* om CORS in te scha kelen. Voeg in de `Host` sectie twee eigenschappen toe:
 
 * `CORS`-Voer de basis-URL in die de oorsprong is van de client toepassing
 * `CORSCredentials`-Stel deze instelling in op `true` ' withCredentials-aanvragen toestaan
