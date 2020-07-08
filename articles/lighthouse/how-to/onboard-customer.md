@@ -3,12 +3,12 @@ title: Een klant in gedelegeerd Azure-resourcebeheer plaatsen
 description: Meer informatie over hoe u een klant kunt vrijmaken voor het beheer van Azure-resources, zodat deze toegankelijk is en kan worden beheerd via uw eigen Tenant.
 ms.date: 05/26/2020
 ms.topic: how-to
-ms.openlocfilehash: dc8156307a91a0d9fd598f330b4fbc28223e4483
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 149398a822d5aa21335be4122e92c96800d94255
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636543"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920920"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Een klant in gedelegeerd Azure-resourcebeheer plaatsen
 
@@ -126,17 +126,17 @@ De sjabloon die u kiest, is afhankelijk van het feit of u een volledig abonnemen
 
 |Als u dit wilt onboarden  |Deze Azure Resource Manager sjabloon gebruiken  |En dit parameter bestand wijzigen |
 |---------|---------|---------|
-|Abonnement   |[delegatedResourceManagement. json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement. para meters. json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
-|Resourcegroep   |[rgDelegatedResourceManagement. json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement. para meters. json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
-|Meerdere resource groepen binnen een abonnement   |[multipleRgDelegatedResourceManagement. json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement. para meters. json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
-|Abonnement (wanneer u een aanbieding gebruikt die is gepubliceerd op Azure Marketplace)   |[marketplaceDelegatedResourceManagement. json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement. para meters. json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
+|Abonnement   |[delegatedResourceManagement.jsop](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement.parameters.jsop](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
+|Resourcegroep   |[rgDelegatedResourceManagement.jsop](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement.parameters.jsop](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
+|Meerdere resource groepen binnen een abonnement   |[multipleRgDelegatedResourceManagement.jsop](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.jsop](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
+|Abonnement (wanneer u een aanbieding gebruikt die is gepubliceerd op Azure Marketplace)   |[marketplaceDelegatedResourceManagement.jsop](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.jsop](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
 > Voor het proces dat hier wordt beschreven, is een afzonderlijke implementatie op abonnements niveau vereist voor elk abonnement dat wordt voorbereid, zelfs als u abonnementen op de werk belasting van de klant onboarding hebt. Er zijn ook afzonderlijke implementaties vereist als u meerdere resource groepen binnen verschillende abonnementen in dezelfde Tenant van de klant wilt voorbereiden. Het voorbereiden van meerdere resource groepen binnen één abonnement kan echter worden uitgevoerd op één implementatie op abonnements niveau.
 >
 > Er zijn ook afzonderlijke implementaties vereist voor meerdere aanbiedingen die worden toegepast op hetzelfde abonnement (of resource groepen binnen een abonnement). Elke aanbieding die wordt toegepast, moet een andere **mspOfferName**gebruiken.
 
-In het volgende voor beeld ziet u een aangepast **delegatedResourceManagement. para meters. json** -bestand dat kan worden gebruikt voor het onboarden van een abonnement. De parameter bestanden van de resource groep (in de map [RG-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management) ) zijn vergelijkbaar, maar bevatten ook een **rgName** -para meter om de specifieke resource groep (en) te identificeren die onboarding moet worden uitgevoerd.
+In het volgende voor beeld ziet u een gewijzigde **delegatedResourceManagement.parameters.jsvoor** een bestand dat kan worden gebruikt om een abonnement te maken. De parameter bestanden van de resource groep (in de map [RG-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management) ) zijn vergelijkbaar, maar bevatten ook een **rgName** -para meter om de specifieke resource groep (en) te identificeren die onboarding moet worden uitgevoerd.
 
 ```json
 {
@@ -189,7 +189,7 @@ In het volgende voor beeld ziet u een aangepast **delegatedResourceManagement. p
 }
 ```
 
-De laatste autorisatie in bovenstaand voor beeld voegt een **principalId** toe aan de rol voor gebruikers toegang (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9). Wanneer u deze rol toewijst, moet u de eigenschap **delegatedRoleDefinitionIds** en een of meer ingebouwde rollen toevoegen. De gebruiker die in deze autorisatie is gemaakt, kan deze ingebouwde rollen toewijzen aan [beheerde identiteiten](../../active-directory/managed-identities-azure-resources/overview.md) in de Tenant van de klant, wat vereist is om [beleid te implementeren dat kan worden hersteld](deploy-policy-remediation.md). Geen enkele andere machtigingen die normaal gesp roken zijn gekoppeld aan de rol beheerder van gebruikers toegang, zijn van toepassing op deze gebruiker.
+De laatste autorisatie in bovenstaand voor beeld voegt een **principalId** toe aan de rol voor gebruikers toegang (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9). Wanneer u deze rol toewijst, moet u de eigenschap **delegatedRoleDefinitionIds** en een of meer ingebouwde rollen toevoegen. De gebruiker die in deze autorisatie is gemaakt, kan deze ingebouwde rollen toewijzen aan [beheerde identiteiten](../../active-directory/managed-identities-azure-resources/overview.md) in de Tenant van de klant, wat vereist is om [beleid te implementeren dat kan worden hersteld](deploy-policy-remediation.md).  De gebruiker kan ook ondersteunings incidenten maken.  Geen enkele andere machtigingen die normaal gesp roken zijn gekoppeld aan de rol beheerder van gebruikers toegang, zijn van toepassing op deze gebruiker.
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>De Azure Resource Manager-sjablonen implementeren
 
@@ -198,9 +198,9 @@ Zodra u het parameter bestand hebt bijgewerkt, moet een gebruiker in de Tenant v
 Omdat dit een implementatie op abonnements niveau is, kan deze niet worden gestart in de Azure Portal. De implementatie kan worden uitgevoerd met behulp van Power shell of Azure CLI, zoals hieronder wordt weer gegeven.
 
 > [!IMPORTANT]
-> Deze implementatie op abonnementniveau moet worden uitgevoerd door een niet-gast account in de Tenant van de klant met de [ingebouwde rol](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) van de eigenaar van het abonnement (of de resource groepen die worden uitgevoerd). Als u alle gebruikers wilt zien die het abonnement kunnen delegeren, kan een gebruiker in de Tenant van de klant het abonnement selecteren in de Azure Portal, **toegangs beheer openen (IAM)** en [alle gebruikers met de rol eigenaar weer geven](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
+> Deze implementatie op abonnementniveau moet worden uitgevoerd door een niet-gast account in de Tenant van de klant met de [ingebouwde rol](../../role-based-access-control/built-in-roles.md#owner) van de eigenaar van het abonnement (of de resource groepen die worden uitgevoerd). Als u alle gebruikers wilt zien die het abonnement kunnen delegeren, kan een gebruiker in de Tenant van de klant het abonnement selecteren in de Azure Portal, **toegangs beheer openen (IAM)** en [alle gebruikers met de rol eigenaar weer geven](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
 >
-> Als het abonnement is gemaakt met behulp van het [programma Cloud Solution Provider (CSP)](../concepts/cloud-solution-provider.md), kan elke gebruiker met de rol [beheerder](https://docs.microsoft.com/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) in de Tenant van de service provider de implementatie uitvoeren.
+> Als het abonnement is gemaakt met behulp van het [programma Cloud Solution Provider (CSP)](../concepts/cloud-solution-provider.md), kan elke gebruiker met de rol [beheerder](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) in de Tenant van de service provider de implementatie uitvoeren.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -284,6 +284,6 @@ az account list
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [ervaring op het beheer van cross-tenants](../concepts/cross-tenant-management-experience.md).
+- Meer informatie over [beheerervaring in meerdere tenants](../concepts/cross-tenant-management-experience.md).
 - [Bekijk en beheer klanten](view-manage-customers.md) door naar **mijn klanten** te gaan in de Azure Portal.
 - Meer informatie over het [verwijderen van de toegang tot een overdracht](remove-delegation.md) die eerder is uitgevoerd.

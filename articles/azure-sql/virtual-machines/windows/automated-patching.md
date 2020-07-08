@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a63b7af1cf29f120f41bd03ed51b5114fa85fa02
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: ed973b6ea5bbcd2b23e30d381e909ef2ab03b917
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669423"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921665"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Automatische patching voor SQL Server op virtuele machines van Azure (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -67,7 +67,7 @@ Als u automatische patching wilt gebruiken, moet u rekening houden met de volgen
 ## <a name="settings"></a>Instellingen
 In de volgende tabel worden de opties beschreven die kunnen worden geconfigureerd voor automatische patching. De werkelijke configuratie stappen variëren, afhankelijk van of u de Azure Portal-of Azure Windows Power shell-opdrachten gebruikt.
 
-| Instelling | Mogelijke waarden | Beschrijving |
+| Instelling | Mogelijke waarden | Description |
 | --- | --- | --- |
 | **Automatisch patchen** |Inschakelen/uitschakelen (uitgeschakeld) |Hiermee schakelt u automatische patching voor een virtuele machine van Azure in of uit. |
 | **Onderhoudsplanning** |Dagelijks, maandag, dinsdag, woensdag, donderdag, vrijdag, zaterdag, zondag |Het schema voor het downloaden en installeren van Windows-, SQL Server-en micro soft-updates voor uw virtuele machine. |
@@ -105,10 +105,13 @@ Nadat u uw SQL-VM hebt ingericht, gebruikt u Power shell om automatische patches
 
 In het volgende voor beeld wordt Power shell gebruikt voor het configureren van automatische patches op een bestaande SQL Server VM. Met de opdracht **New-AzVMSqlServerAutoPatchingConfig** wordt een nieuwe onderhouds venster voor automatische updates geconfigureerd.
 
-    $vmname = "vmname"
-    $resourcegroupname = "resourcegroupname"
-    $aps = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
-s set-AzVMSqlServerExtension-AutoPatchingSettings $aps-VMName $vmname-ResourceGroupName $resourcegroupname
+```azurepowershell
+$vmname = "vmname"
+$resourcegroupname = "resourcegroupname"
+$aps = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
+s
+Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceGroupName $resourcegroupname
+```
 
 > [!IMPORTANT]
 > Als de extensie nog niet is geïnstalleerd, wordt de installatie opnieuw gestart SQL Server.
