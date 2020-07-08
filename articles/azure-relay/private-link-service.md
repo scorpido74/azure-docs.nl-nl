@@ -4,10 +4,10 @@ description: Meer informatie over het integreren van Azure Relay met Azure Priva
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: a113e52b892a25fd2b12a18d73df443d9a9866f2
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85317314"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Azure Relay integreren met een persoonlijke Azure-koppeling (preview-versie)
@@ -39,7 +39,7 @@ Uw privé-eindpunt maakt gebruik van een privé IP-adres in uw virtueel netwerk.
 ### <a name="steps"></a>Stappen
 Zie [een Azure relay naam ruimte maken met behulp van de Azure Portal](relay-create-namespace-portal.md)voor stapsgewijze instructies voor het maken van een nieuwe Azure relay naam ruimte en entiteiten hierin.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 2. Typ in de zoek balk in **relays**.
 3. Selecteer de **naam ruimte** in de lijst waaraan u een persoonlijk eind punt wilt toevoegen.
 4. Selecteer het tabblad **netwerken** onder **instellingen**.

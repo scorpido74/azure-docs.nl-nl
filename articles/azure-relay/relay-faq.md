@@ -4,10 +4,10 @@ description: In dit artikel vindt u antwoorden op enkele veelgestelde vragen ove
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 40e6f830e2314f7c8f36fcd25d24a41cc256bef2
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85317030"
 ---
 # <a name="azure-relay-faqs"></a>Veelgestelde vragen over Azure Relay

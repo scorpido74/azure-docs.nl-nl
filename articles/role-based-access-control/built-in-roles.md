@@ -9,10 +9,10 @@ author: rolyon
 ms.author: rolyon
 ms.date: 06/18/2020
 ms.openlocfilehash: b645945cc082b321e63e9d02e0bb6a799e82364d
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85317305"
 ---
 # <a name="azure-built-in-roles"></a>Ingebouwde rollen van Azure
@@ -26,7 +26,7 @@ De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouw
 ## <a name="all"></a>Alles
 
 > [!div class="mx-tableFixed"]
-> | Ingebouwde rol | Description | Id |
+> | Ingebouwde rol | Beschrijving | Id |
 > | --- | --- | --- |
 > | **Algemeen** |  |  |
 > | [Inzender](#contributor) | Hiermee beheert u alles behalve het verlenen van toegang tot resources. | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -152,7 +152,7 @@ De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouw
 > | [Beveiligings beheerder](#security-admin) | Machtigingen voor Security Center weer geven en bijwerken. Dezelfde machtigingen als de rol van beveiligings lezer en kunnen ook het beveiligings beleid bijwerken en waarschuwingen en aanbevelingen negeren. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [Inzender voor beveiligings beoordeling](#security-assessment-contributor) | Hiermee kunt u evaluaties naar Security Center pushen | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
 > | [Beveiligings beheer (verouderd)](#security-manager-legacy) | Dit is een verouderde rol. Gebruik in plaats daarvan beveiligings beheerder. | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
-> | [Beveiligings lezer](#security-reader) | Machtigingen voor Security Center weer geven. Kan aanbevelingen, waarschuwingen, een beveiligings beleid en beveiligings status weer geven, maar kan geen wijzigingen aanbrengen. | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
+> | [Beveiligingslezer](#security-reader) | Machtigingen voor Security Center weer geven. Kan aanbevelingen, waarschuwingen, een beveiligings beleid en beveiligings status weer geven, maar kan geen wijzigingen aanbrengen. | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **DevOps** |  |  |
 > | [DevTest Labs-gebruiker](#devtest-labs-user) | Met kunt u verbinding maken met uw virtuele machines in uw Azure DevTest Labs, deze starten, opnieuw opstarten en afsluiten. | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
 > | [Lab-Maker](#lab-creator) | Met kunt u uw beheerde Labs maken, beheren en verwijderen in uw Azure Lab-accounts. | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |

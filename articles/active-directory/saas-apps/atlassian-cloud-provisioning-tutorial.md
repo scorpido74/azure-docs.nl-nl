@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 95455d389669b89075ca0ea8583cc7858bb532f0
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85317625"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Zelf studie: atlassian-Cloud configureren voor het automatisch inrichten van gebruikers
@@ -111,7 +111,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |Kenmerk|Type|
    |---|---|
    |userName|Tekenreeks|
-   |actief|Booleaans|
+   |actief|Boolean-waarde|
    |naam. familielid|Tekenreeks|
    |name. naam|Tekenreeks|
    |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|   
@@ -124,7 +124,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
       |---|---|
       |displayName|Tekenreeks|
       |externalId|Tekenreeks|
-      |leden|Naslaginformatie|
+      |leden|Verwijzing|
 
 12. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 

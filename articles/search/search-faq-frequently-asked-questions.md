@@ -1,5 +1,5 @@
 ---
-title: Veelgestelde vragen (FAQ's)
+title: Veelgestelde vragen
 titleSuffix: Azure Cognitive Search
 description: Krijg antwoorden op veelgestelde vragen over Microsoft Azure Cognitive Search-service, een in de Cloud gehoste zoek service op Microsoft Azure.
 manager: nitinme
@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.openlocfilehash: d3c5a998db5e76118b0c5a73b6df8bdedadc6dfb
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85317232"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure Cognitive Search
@@ -101,7 +101,7 @@ De meeste klanten kiezen voor een verzameling specifieke velden wanneer het gaat
 
 Is uw vraag over een ontbrekend onderdeel of functionaliteit? Vraag de functie aan op de website van de [gebruikers spraak](https://feedback.azure.com/forums/263029-azure-search).
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
  [Stack overflow: Azure Cognitive Search](https://stackoverflow.com/questions/tagged/azure-search)   
  [Hoe zoeken in de volledige tekst werkt in Azure Cognitive Search](search-lucene-query-architecture.md)  
