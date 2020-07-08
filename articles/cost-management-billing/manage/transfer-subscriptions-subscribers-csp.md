@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/19/2020
 ms.author: banders
-ms.openlocfilehash: 91f11502a136ca08d62072808d270f8e840a8710
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.openlocfilehash: 925a69f1f3a408e50cb9dc1d03cb5c1cf673ef41
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85106432"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102681"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Overdracht van Azure-abonnementen tussen abonnees en CSP's
 
@@ -67,4 +67,4 @@ Als u andere Azure-abonnementen wilt overdragen van een CSP-partner naar een and
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Vraag het eigendom van facturering van Azure-abonnementen aan voor uw MPA-account](mpa-request-ownership.md).
-- Lees meer over het [beheren van accounts en abonnementen met Azure -facturering](index.yml).
+- Lees meer over het [beheren van accounts en abonnementen met Azure -facturering](../index.yml).
