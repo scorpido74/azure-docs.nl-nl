@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711898"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Herstel na noodgeval instellen voor on-premises virtuele VMware-machines of fysieke servers naar een secundaire site
@@ -53,7 +52,7 @@ o voor fysieke computers, volgt u deze [zelf studie](./physical-azure-disaster-r
 **Gerepliceerd** |Schijf (Windows en Linux) |Volume-Windows<br> Schijf-Linux
 **Gedeeld schijf cluster** |Niet ondersteund|Ondersteund
 **Limieten voor gegevens verloop (gemiddeld)** |10 MB/s gegevens per schijf<br> 25MB/s gegevens per VM<br> [Meer informatie](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | > 10 MB/s gegevens per schijf  <br> > 25 MB/s gegevens per VM
-**Bewaking** |Van Azure Portal|Van CX (configuratie server)
+**Controle** |Van Azure Portal|Van CX (configuratie server)
 **Ondersteunings matrix** | [Klik hier voor meer informatie](./vmware-physical-azure-support-matrix.md)|[Met ASR Scout compatibele matrix downloaden](https://aka.ms/asr-scout-cm)
 
 
@@ -135,7 +134,7 @@ Down load het bestand [Update](https://aka.ms/asr-scout-update7) . zip en de upg
 
    * [Releaseopmerkingen](https://aka.ms/asr-scout-release-notes)
    * [Compatibiliteits matrix](https://aka.ms/asr-scout-cm)
-   * [Gebruikers handleiding](https://aka.ms/asr-scout-user-guide)
+   * [Gebruikershandleiding](https://aka.ms/asr-scout-user-guide)
    * [Gebruikers handleiding voor RX](https://aka.ms/asr-scout-rx-user-guide)
    * [Hand leiding voor snelle installatie](https://aka.ms/asr-scout-quick-install-guide)
    * [MYSQL-en PHP-bibliotheken bijwerken](https://aka.ms/asr-scout-u7-mysql-php-manualupgrade)

@@ -7,12 +7,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: aa778aa395d013bd644f69886ea5ebc2399e6f54
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.openlocfilehash: 1bea8adbdb39d2ce83cfe7821ef052fdc1f1d512
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84265247"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921321"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>ID-Broker (preview-versie) gebruiken voor referentie beheer
 
@@ -38,7 +37,7 @@ Met ID Broker kunt u zich aanmelden bij ESP-clusters met behulp van Multi-Factor
 
 Voer de volgende stappen uit om een ESP-cluster met de ID-Broker te maken:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Volg de basis stappen voor het maken van een ESP-cluster. Zie [een HDInsight-cluster met ESP maken](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)voor meer informatie.
 1. Selecteer **HDINSIGHT id Broker inschakelen**.
 
@@ -89,6 +88,8 @@ Als u een nieuwe rol `idbrokernode` met de naam met de volgende kenmerken aan he
 ## <a name="tool-integration"></a>Integratie van hulp programma
 
 De HDInsight [IntelliJ-invoeg toepassing](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) is bijgewerkt voor de ondersteuning van OAuth. U kunt deze invoeg toepassing gebruiken om verbinding te maken met het cluster en taken te verzenden.
+
+U kunt ook [Spark-& Hive-Hulpprogram ma's voor VS code](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) gebruiken voor het gebruik van notebook-en verzend taken.
 
 ## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>SSH-toegang zonder wacht woord-hash in azure AD DS
 

@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 04/09/2020
-ms.openlocfilehash: addf85f3ed966f45472fec6ee15272574a0f840e
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.openlocfilehash: e96118e3c570faaaffb4cc7ef64e6d2d0e075e47
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724714"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954173"
 ---
 # <a name="common-issues-during-vhd-creation"></a>Veelvoorkomende problemen tijdens het maken van VHD
 
@@ -20,7 +19,7 @@ Deze veelgestelde vragen zijn van belang voor veelvoorkomende problemen die kunn
 
 ## <a name="how-do-i-create-a-vm-from-the-azure-portal-using-a-vhd-in-premium-storage"></a>Hoe kan ik een virtuele machine maken op basis van de Azure Portal met behulp van een VHD in Premium Storage?
 
-Azure Marketplace biedt momenteel geen ondersteuning voor het maken van VM-aanbiedingen van installatie kopieën op beheerde opslag of Azure Premium Storage. Zie [overzicht van Azure Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)voor meer informatie.
+Azure Marketplace biedt momenteel geen ondersteuning voor het maken van VM-aanbiedingen van installatie kopieën op beheerde opslag of Azure Premium Storage. Zie [overzicht van Azure Managed disks](../../virtual-machines/windows/managed-disks-overview.md)voor meer informatie.
 
 ## <a name="can-i-use-generation-2-vms-for-offers"></a>Kan ik virtuele machines van de tweede generatie voor aanbiedingen gebruiken?
 
@@ -45,9 +44,9 @@ Het genereren van certificaten wordt uitgelegd in [Azure VM-installatie kopie-ce
 
 Als u het Azure Resource Manager-implementatie model gebruikt, hebt u drie opties:
 
-* [Een op een route gebaseerde VPN-gateway maken met behulp van de Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-portal)
-* [Een op een route gebaseerde VPN-gateway maken met behulp van Azure PowerShell](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-powershell)
-* [Een op een route gebaseerde VPN-gateway maken met behulp van CLI](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-cli)
+* [Een op een route gebaseerde VPN-gateway maken met behulp van de Azure Portal](../../vpn-gateway/create-routebased-vpn-gateway-portal.md)
+* [Een op een route gebaseerde VPN-gateway maken met behulp van Azure PowerShell](../../vpn-gateway/create-routebased-vpn-gateway-powershell.md)
+* [Een op een route gebaseerde VPN-gateway maken met behulp van CLI](../../vpn-gateway/create-routebased-vpn-gateway-cli.md)
 
 ## <a name="what-are-microsoft-support-policies-for-running-microsoft-server-software-on-azure-based-vms"></a>Wat is micro soft-ondersteunings beleid voor het uitvoeren van micro soft-server software op Vm's op basis van Azure?
 
@@ -65,7 +64,7 @@ Zie [aangepaste script extensie voor Windows](https://azure.microsoft.com/docume
 
 In het algemeen niet. De ondersteunde besturings systemen en standaard services voor virtuele Azure-machines zijn allemaal 64 bits. Hoewel de meeste 64-bits besturings systemen 32-bits versies van toepassingen ondersteunen voor achterwaartse compatibiliteit, is het gebruik van 32-bits toepassingen als onderdeel van uw VM-oplossing niet-ondersteund en sterk afgeraden. Maak uw toepassing opnieuw als een 64-bits project.
 
-Raadpleeg voor meer informatie de volgende artikelen:
+Raadpleeg deze artikelen voor meer informatie:
 
 * [Het uitvoeren van 32-bits toepassingen](https://docs.microsoft.com/windows/desktop/WinProg64/running-32-bit-applications)
 * [Ondersteuning voor 32-bits besturingssystemen in virtuele Azure-machines](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)
@@ -75,4 +74,4 @@ Raadpleeg voor meer informatie de volgende artikelen:
 
 Telkens wanneer ik een installatie kopie van mijn Vhd's probeer te maken, krijg ik de fout ' VHD is al geregistreerd bij de opslag plaats van de installatie kopie als de resource ' in Azure PowerShell. Ik heb geen installatie kopie gemaakt vóór en ik heb een installatie kopie met deze naam in azure gevonden. Hoe los ik dit op?
 
-Dit probleem wordt doorgaans weer gegeven als u een virtuele machine hebt gemaakt op basis van een virtuele harde schijf met een vergren deling. Controleer of er geen VM is toegewezen van deze VHD en voer de bewerking opnieuw uit. Als dit probleem zich blijft voordoen, opent u een ondersteunings ticket. Zie [ondersteuning voor Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support).
+Dit probleem wordt doorgaans weer gegeven als u een virtuele machine hebt gemaakt op basis van een virtuele harde schijf met een vergren deling. Controleer of er geen VM is toegewezen van deze VHD en voer de bewerking opnieuw uit. Als dit probleem zich blijft voordoen, opent u een ondersteunings ticket. Zie [ondersteuning voor Partner Center](support.md).

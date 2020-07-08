@@ -6,10 +6,9 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
 ms.openlocfilehash: f1ae8ca1ef940e45c2d32adc9a002b349f9e1b44
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84783007"
 ---
 # <a name="material-mapping-for-model-formats"></a>Materiaaltoewijzing voor modelindelingen
@@ -174,5 +173,5 @@ Als u hier wilt samenvatten, `Albedo` wordt de oorspronkelijke dichtheid in de b
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Model conversie](../how-tos/conversion/model-conversion.md)
+* [Modelconversie](../how-tos/conversion/model-conversion.md)
 * [Materialen overschrijven tijdens model conversie](../how-tos/conversion/override-materials.md)

@@ -1,15 +1,14 @@
 ---
 title: Wat is nieuw? Release opmerkingen-Azure Block Chain Service
 description: Meer informatie over wat er nieuw is in azure Block Chain Service, zoals de nieuwste opmerkingen bij de release, versies, bekende problemen en aanstaande wijzigingen.
-ms.date: 06/03/2020
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
-ms.openlocfilehash: c5316aa387de28fe1a78b336eb2e9e010c624b02
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.openlocfilehash: 80ece6cb6bb81b7ce168da997603e17d1238171b
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84435427"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921896"
 ---
 # <a name="whats-new-in-azure-blockchain-service"></a>Wat is er nieuw in de Azure Block Chain-Service?
 
@@ -23,6 +22,25 @@ De Azure Block Chain-service ontvangt verbeteringen doorlopend. Dit artikel beva
 
 ---
 
+## <a name="june-2020"></a>Juni 2020
+
+### <a name="version-upgrades"></a>Versie-upgrades
+
+- Upgrade van de quorum versie naar 2.6.0. Met versie 2.6.0 kunt u ondertekende persoonlijke trans acties verzenden. Zie de [quorum API-documentatie](https://docs.goquorum.com/en/latest/Getting%20Started/api/)voor meer informatie over het verzenden van persoonlijke trans acties.
+- Upgrade van Tessera-versie naar 0.10.5.
+
+### <a name="contract-size-and-transaction-size-increased-to-128-kb"></a>De grootte van het contract en de transactie grootte zijn verhoogd tot 128 KB
+
+Type: configuratie wijziging
+
+De omvang van het contract (MaxCodeSize) is verhoogd tot 128 KB, zodat u een groot aantal slimme contracten kunt implementeren. Daarnaast is de transactie omvang (txnSizeLimit) verhoogd tot 128 KB. Configuratie wijzigingen zijn van toepassing op nieuwe consortiums die zijn gemaakt in de Azure Block Chain-service na juni 19 2020.
+
+### <a name="trietimeout-value-reduced"></a>TrieTimeout waarde verkleind
+
+Type: configuratie wijziging
+
+De TrieTimeout-waarde is beperkt zodat de in-memory status vaker naar de schijf wordt geschreven. De lagere waarde zorgt ervoor dat een knoop punt sneller kan worden hersteld in het zeldzame geval van een storing in een knoop punt.
+
 ## <a name="may-2020"></a>Mei 2020
 
 ### <a name="version-upgrades"></a>Versie-upgrades
@@ -33,17 +51,24 @@ De Azure Block Chain-service ontvangt verbeteringen doorlopend. Dit artikel beva
 
 ### <a name="azure-blockchain-service-supports-sending-rawprivate-transactions"></a>De Azure Block Chain-service ondersteunt het verzenden van rawPrivate-trans acties
 
-**Type:** Hulp
+Type: functie
 
 Klanten kunnen persoonlijke trans acties buiten het account op het knoop punt ondertekenen.
 
 ### <a name="two-phase-member-provisioning"></a>Inrichting van twee fasen
 
-**Type:** Verbetering
+Type: uitbrei ding
 
 In twee fasen kunt u scenario's voor het maken van een lid in een lang bestaand consortium optimaliseren. De infra structuur van het lid is in de eerste fase ingericht. In de tweede fase wordt het lid gesynchroniseerd met block chain. Bij het inrichten in twee fasen wordt het maken van een lid voor komen vanwege time-outs.
 
 ## <a name="known-issues"></a>Bekende problemen
+
+### <a name="ethestimategas-function-throws-exception-in-quorum-v260"></a>de functie Eth. estimateGas genereert uitzonde ring in quorum v 2.6.0
+
+In quorum v-2.6.0 aanroepen naar de functie *Eth. estimateGas* zonder de para meter extra *waarde* op te geven, wordt een uitzonde ring veroorzaakt door een *methode-handler* . Het quorum team is op de hoogte gebracht en er wordt een correctie verwacht tot eind juli 2020. U kunt de volgende tijdelijke oplossingen gebruiken totdat een oplossing beschikbaar is:
+
+- Vermijd het gebruik van *Eth. estimateGas* omdat dit van invloed kan zijn op de prestaties. Zie voor meer informatie over Eth. estimateGas-prestatie problemen. de functie voor het [aanroepen van ETH. estimateGas vermindert de prestaties](#calling-ethestimategas-function-reduces-performance). Neem een aardgas waarde op voor elke trans actie. De meeste bibliotheken zullen Eth. estimateGas aanroepen als er geen aardgas waarde wordt gegeven, waardoor quorum v-2.6.0 vastloopt.
+- Als u *Eth. estimateGas*moet aanroepen, raadt het quorum *team aan de* extra parameter *waarde* als tijdelijke oplossing door te geven.
 
 ### <a name="mining-stops-if-fewer-than-four-validator-nodes"></a>De analyse stopt als er minder dan vier validatie knooppunten zijn
 
@@ -53,13 +78,13 @@ Als het block chain-netwerk in de Azure Block Chain-service niet vier validatie 
 
 Als oplossing moet het Azure Block Chain Service-team het knoop punt opnieuw opstarten. Klanten moeten een ondersteunings aanvraag openen om het knoop punt opnieuw op te starten. Het Azure Block Chain Service-team werkt samen met het automatisch detecteren en herstellen van analyse problemen.
 
-De *Standard* -laag gebruiken voor implementaties van productie cijfers. Gebruik de *basis* -laag voor het ontwikkelen, testen en testen van concepten. Het wijzigen van de prijs categorie tussen basis en standaard nadat het maken van een lid is niet ondersteund.
+Gebruik de *Standard*-laag voor implementaties van productiekwaliteit. Gebruik de *Basic*-laag voor ontwikkeling, tests en concepten. Wanneer een lid is gemaakt, kan de prijscategorie niet meer worden gewijzigd van Basic in Standard en andersom.
 
 ### <a name="blockchain-data-manager-requires-standard-tier-node"></a>Voor Block Chain Data Manager is een Standard-laag knooppunt vereist
 
 Gebruik de laag *standaard* als u block chain-Data Manager gebruikt. De laag *Basic* heeft alleen 4 GB geheugen. Dit kan daarom niet worden geschaald naar het gebruik dat is vereist voor Block Chain Data Manager en andere services die erop worden uitgevoerd.
 
-Gebruik de *basis* -laag voor het ontwikkelen, testen en testen van concepten. Het wijzigen van de prijs categorie tussen basis en standaard nadat het maken van een lid is niet ondersteund.
+Gebruik de *Basic*-laag voor ontwikkeling, tests en concepten. Wanneer een lid is gemaakt, kan de prijscategorie niet meer worden gewijzigd van Basic in Standard en andersom.
 
 ### <a name="large-volume-of-unlock-account-calls-causes-geth-to-crash"></a>Grote volume van Unlock-account aanroepen zorgt ervoor dat Geth vastloopt
 
@@ -87,13 +112,13 @@ U kunt de crash van de Tessera detecteren door de logboeken van de Block Chain-t
 
 De Azure Block Chain-service start Tessera opnieuw op wanneer er een crash is. Opnieuw opstarten duurt ongeveer een minuut.
 
-Gebruik de laag *standaard* als u een groot aantal privé transacties verzendt. Gebruik de *basis* -laag voor het ontwikkelen, testen en testen van concepten. Het wijzigen van de prijs categorie tussen basis en standaard nadat het maken van een lid is niet ondersteund.
+Gebruik de laag *standaard* als u een groot aantal privé transacties verzendt. Gebruik de *Basic*-laag voor ontwikkeling, tests en concepten. Wanneer een lid is gemaakt, kan de prijscategorie niet meer worden gewijzigd van Basic in Standard en andersom.
 
-### <a name="calling-ethestimate-gas-function-reduces-performance"></a>Het aanroepen van ETH. een schatting van de functie gas vermindert de prestaties
+### <a name="calling-ethestimategas-function-reduces-performance"></a>De functie Eth. estimateGas aanroepen vermindert de prestaties
 
-Het aanroepen van *Eth. schattings* functie meerdere keer dat trans acties per seconde drastisch worden verminderd. Gebruik niet de functie *Eth. schatting* voor het verzenden van elke trans actie. De functie *Eth. estimate* is geheugen intensief.
+Het aanroepen van *Eth. estimateGas* -functie meerdere keer dat trans acties per seconde drastisch worden verminderd. Gebruik niet de functie *Eth. estimateGas* voor elke verzen ding van een trans actie. De functie *Eth. estimateGas* is geheugen intensief.
 
-Gebruik, indien mogelijk, een conservatieve aardgas waarde voor het verzenden van trans acties en Minimaliseer het gebruik van *Eth. estimate*.
+Gebruik, indien mogelijk, een conservatieve aardgas waarde voor het verzenden van trans acties en Minimaliseer het gebruik van *Eth. estimateGas*.
 
 ### <a name="unbounded-loops-in-smart-contracts-reduces-performance"></a>Ongebonden lussen in slimme contracten verminderen de prestaties
 

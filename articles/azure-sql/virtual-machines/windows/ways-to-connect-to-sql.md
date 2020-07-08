@@ -14,10 +14,9 @@ ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: aa0fdddbf31cadad55582f4d45c8e536ce74acd9
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84667416"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Verbinding maken met een SQL Server virtuele machine in azure
@@ -39,7 +38,7 @@ Als u in de Azure Portal een SQL Server virtuele machine inricht, hebt u de moge
 
 De opties voor connectiviteit zijn onder andere:
 
-| Optie | Beschrijving |
+| Optie | Description |
 |---|---|
 | **Openbaar** | Verbinding maken met SQL Server via internet. |
 | **Privé** | Verbinding maken met SQL Server in hetzelfde virtuele netwerk. |
@@ -135,7 +134,7 @@ Hoewel de portal opties biedt voor het automatisch configureren van connectivite
 
 De volgende tabel bevat de vereisten om verbinding te maken met SQL Server op Azure VM.
 
-| Vereiste | Beschrijving |
+| Vereiste | Description |
 |---|---|
 | [Verificatie modus SQL Server inschakelen](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | SQL Server-verificatie is vereist om extern verbinding te maken met de virtuele machine tenzij u Active Directory hebt geconfigureerd op een virtueel netwerk. |
 | [Een SQL-aanmelding maken](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | Als u SQL-verificatie gebruikt, hebt u een SQL-aanmelding nodig met een gebruikers naam en wacht woord die ook machtigingen voor uw doel database hebben. |

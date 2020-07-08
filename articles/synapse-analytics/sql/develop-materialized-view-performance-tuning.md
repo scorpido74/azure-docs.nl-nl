@@ -6,16 +6,15 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: a07c419ecaa0cb0ec05c7c392a4d5ed9b0bfa491
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.openlocfilehash: a3b012d86444ca2bb9b84af37aa17424221457d1
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747411"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955060"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Prestaties afstemmen met gerealiseerde weergaven
 
@@ -38,7 +37,7 @@ De meeste standaard weergave vereisten zijn nog steeds van toepassing op een ger
 |Gegevens vernieuwen                    | Altijd bijgewerkt                               | Altijd bijgewerkt
 |Snelheid om weergave gegevens op te halen uit complexe query's     | Trage                                         | Hoog  
 |Extra opslag ruimte                   | Nee                                           | Ja
-|Syntaxis                          | WEER GAVE MAKEN                                  | GEREALISEERDE WEER GAVE MAKEN ALS SELECTEREN
+|Syntax                          | WEER GAVE MAKEN                                  | GEREALISEERDE WEER GAVE MAKEN ALS SELECTEREN
 
 ## <a name="benefits-of-using-materialized-views"></a>Voor delen van het gebruik van gerealiseerde weer gaven
 

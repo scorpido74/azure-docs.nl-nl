@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
 ms.openlocfilehash: a527b75d376f05ab6190187b7a03d6da775055ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759280"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Vooruitbetalen voor Azure-softwareabonnementen
@@ -70,7 +69,7 @@ Zie [Azure-reserve ringen beheren](../../cost-management-billing/reservations/ma
 
 Raadpleeg de volgende artikelen voor meer informatie:
 
-- [Wat zijn Azure Reservations?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Wat zijn Azure-reserveringen?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
 - [Reserveringen beheren in Azure](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)
 - [Begrijpen hoe de SUSE-reserverings korting wordt toegepast](../../cost-management-billing/reservations/understand-suse-reservation-charges.md)
 - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)

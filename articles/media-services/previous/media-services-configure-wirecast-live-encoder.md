@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: cenkdin;anilmur
-ms.openlocfilehash: 8e3705aaecb0760513f0605aece89b7ffc0044a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f5ca4496b9de25d6e95f37076f679eacff28af81
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641646"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954963"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Het Wirecast-coderings programma gebruiken om een live stream met één bitsnelheid te verzenden 
 > [!div class="op_single_selector"]
@@ -102,7 +101,7 @@ In deze zelf studie worden de volgende uitvoer instellingen gebruikt. In de rest
 
     Geef de voor instelling een naam en controleer op de volgende aanbevolen instellingen:
 
-    **Hardware**
+    **Video**
 
    * Coderings programma: MainConcept H. 264
    * Frames per seconde: 30
@@ -147,7 +146,7 @@ In deze zelf studie worden de volgende uitvoer instellingen gebruikt. In de rest
 
 Ga naar het hulp programma AMSE en klik met de rechter muisknop op het kanaal dat u wilt testen. Klik in het menu met de muis aanwijzer op **het afspelen van de preview-versie** en selecteer **met Azure Media Player**.  
 
-    ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
+![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
 
 Als de stroom in de speler wordt weer gegeven, is het coderings programma op de juiste wijze geconfigureerd om verbinding te maken met AMS.
 

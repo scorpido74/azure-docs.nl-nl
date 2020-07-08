@@ -10,12 +10,11 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 0a3e3455615006c0e93cf32eebcdaedac9960a79
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
-ms.translationtype: MT
+ms.openlocfilehash: 520b38f4c733e7bf28a2a06429ad14d016c5bd28
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307553"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027610"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>Activiteit aangepaste opdrachten verzenden naar client toepassing
 
@@ -28,7 +27,7 @@ U voert de volgende taken uit:
 
 ## <a name="prerequisites"></a>Vereisten
 > [!div class = "checklist"]
-> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) of hoger. In deze hand leiding wordt gebruikgemaakt van Visual Studio 2019
 > * Een Azure-abonnements sleutel voor de speech-service: [Haal er gratis een](get-started.md) op en maak deze op de [Azure Portal](https://portal.azure.com)
 > * Een eerder [gemaakte aangepaste opdrachten-app](quickstart-custom-commands-application.md)
 > * Een Speech SDK met ingeschakelde client [-app: procedures: integreren met een client toepassing met behulp van Speech SDK](./how-to-custom-commands-setup-speech-sdk.md)
@@ -46,7 +45,7 @@ U voert de volgende taken uit:
      "device": "{SubjectDevice}"
    }
    ```
-1. Klik op **Opslaan** om een nieuwe regel te maken met de actie activiteit verzenden
+1. Klik op **Opslaan** om een nieuwe regel met de actie activiteit verzenden te maken, de wijziging te **trainen** en te **publiceren**
 
    > [!div class="mx-imgBorder"]
    > ![Voltooiings regel voor activiteit verzenden](media/custom-commands/send-activity-to-client-completion-rules.png)
@@ -55,9 +54,12 @@ U voert de volgende taken uit:
 
 In [procedures: client toepassing met Speech SDK (preview)](./how-to-custom-commands-setup-speech-sdk.md)hebt u een UWP-client toepassing gemaakt met een Speech SDK die opdrachten zoals `turn on the tv` , heeft verwerkt `turn off the fan` . Als er visuele elementen zijn toegevoegd, kunt u het resultaat van deze opdrachten bekijken.
 
-Voeg gelabelde vakken met tekst **in** of **uit** aan de hand van de volgende XML-code die is toegevoegd aan`MainPage.xaml`
+Voeg het volgende XML-blok van StackPanel toe aan om vakken met een label toe te voegen aan een tekst die **is aan-of** **uitgeschakeld** `MainPage.xaml` .
 
 ```xml
+<StackPanel Orientation="Vertical" H......>
+......
+</StackPanel>
 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
     <Grid x:Name="Grid_TV" Margin="50, 0" Width="100" Height="100" Background="LightBlue">
         <StackPanel>
@@ -72,6 +74,7 @@ Voeg gelabelde vakken met tekst **in** of **uit** aan de hand van de volgende XM
         </StackPanel>
     </Grid>
 </StackPanel>
+<MediaElement ....../>
 ```
 
 ### <a name="add-reference-libraries"></a>Referentie bibliotheken toevoegen
@@ -79,15 +82,21 @@ Voeg gelabelde vakken met tekst **in** of **uit** aan de hand van de volgende XM
 Omdat u een JSON-nettolading hebt gemaakt, moet u een verwijzing naar de [JSON.net](https://www.newtonsoft.com/json) -bibliotheek toevoegen om de deserialisatie te verwerken.
 
 1. Rechts-client uw oplossing.
-1. Kies **NuGet-pakketten beheren voor oplossing**, selecteer **installeren** 
-1. Zoek naar **Newtonsoft.js** in de lijst met updates, werk **micro soft. NetCore. UniversalWindowsPlatform** bij naar de nieuwste versie
+1. Kies **NuGet-pakketten beheren voor oplossing**, selecteer **Bladeren** 
+1. Als u **Newtonsoft.js**al hebt geïnstalleerd, zorg er dan voor dat de versie ten minste 12.0.3 is. Als dat niet het geval is, gaat u naar **NuGet-pakketten beheren voor oplossing-updates**, zoekt u naar **Newtonsoft.jsop** om het bij te werken. In deze hand leiding wordt gebruikgemaakt van versie 12.0.3.
 
-> [!div class="mx-imgBorder"]
-> ![Nettolading activiteit verzenden](media/custom-commands/send-activity-to-client-json-nuget.png)
+    > [!div class="mx-imgBorder"]
+    > ![Nettolading activiteit verzenden](media/custom-commands/send-activity-to-client-json-nuget.png)
+
+1. Zorg er ook voor dat NuGet-pakket **micro soft. NetCore. UniversalWindowsPlatform** ten minste 6.2.10 is. In deze hand leiding wordt gebruikgemaakt van versie 6.2.10.
 
 Voeg in ' MainPage. xaml. cs '
-- `using Newtonsoft.Json;` 
-- `using Windows.ApplicationModel.Core;`
+
+```C#
+using Newtonsoft.Json; 
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
+```
 
 ### <a name="handle-the-received-payload"></a>De ontvangen nettolading verwerken
 

@@ -11,10 +11,9 @@ ms.workload: identity
 ms.date: 03/19/2020
 ms.author: kenwith
 ms.openlocfilehash: ef4fbf582baf1e4b81d49c81a8b0e16674e64841
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84781719"
 ---
 # <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Instructies: inrichtings configuratie exporteren en terugdraaien naar een bekende goede staat
@@ -30,7 +29,7 @@ In dit artikel leert u het volgende:
 
 De configuratie exporteren:
 
-1. In de [Azure Portal](https://portal.azure.com/), in het navigatie venster aan de linkerkant, selecteert u **Azure Active Directory**.
+1. Selecteer **Azure Active Directory** in [Azure Portal](https://portal.azure.com/) in het navigatiepaneel aan de linkerkant.
 1. Selecteer in het deel venster **Azure Active Directory** de optie **bedrijfs toepassingen** en kies uw toepassing.
 1. Selecteer **inrichten**in het navigatie deel venster links. Klik op de pagina inrichtings configuratie op **kenmerk toewijzingen**, **Geef geavanceerde opties weer**en **Controleer vervolgens het schema**. Hiermee gaat u naar de schema-editor.
 1. Klik op downloaden in de opdracht balk boven aan de pagina om uw schema te downloaden.

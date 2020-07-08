@@ -11,12 +11,11 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55de5a5c604273225a85e49ca682980f83a951d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3e5cc6bbe363e111f5c39147010d6a3d00cb45c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75767565"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604604"
 ---
 # <a name="what-are-baseline-policies"></a>Wat zijn basislijn beleidsregels?
 
@@ -25,7 +24,7 @@ Basislijn beleid is een set vooraf gedefinieerde beleids regels waarmee organisa
 Voor het beheren van het aangepaste beleid voor voorwaardelijke toegang is een Azure AD Premium-licentie vereist.
 
 > [!IMPORTANT]
-> Basislijn beleidsregels worden afgeschaft. [Wat is er nieuw in azure Active Directory?](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults) voor meer informatie.
+> Basislijn beleidsregels worden afgeschaft. Zie [archiveren voor wat is er nieuw in azure Active Directory?](../fundamentals/whats-new-archive.md#replacement-of-baseline-policies-with-security-defaults) voor meer informatie.
 
 ## <a name="baseline-policies"></a>Basislijnbeleid
 
@@ -57,7 +56,7 @@ MFA vereisen voor beheerders (preview) is een basislijn beleid waarvoor multi-fa
 * Beveiligingsbeheerder
 * Helpdesk beheerder/wachtwoord beheerder
 * Factureringsbeheerder
-* Gebruikers beheerder
+* Gebruikersbeheerder
 
 Als uw organisatie deze accounts in gebruik heeft in scripts of code, kunt u overwegen deze te vervangen door [beheerde identiteiten](../managed-identities-azure-resources/overview.md).
 

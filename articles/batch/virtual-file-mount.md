@@ -3,23 +3,22 @@ title: Een virtueel bestands systeem koppelen aan een groep
 description: Meer informatie over het koppelen van een virtueel bestands systeem aan een batch-pool.
 ms.topic: how-to
 ms.date: 08/13/2019
-ms.openlocfilehash: 4e51e8a1f11d670515893a83398a0c6d7c6e9a46
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: MT
+ms.openlocfilehash: 80acf5df0cf5262249b2eac584152744a4224a35
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816026"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954669"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Een virtueel bestands systeem koppelen aan een batch-pool
 
 Azure Batch ondersteunt nu het koppelen van Cloud opslag of een extern bestands systeem op Windows-of Linux-reken knooppunten in uw batch-Pools. Wanneer een reken knooppunt wordt toegevoegd aan een pool, wordt het virtuele bestands systeem gekoppeld en behandeld als een lokaal station op het knoop punt. U kunt bestands systemen zoals Azure Files, Azure Blob Storage, Network File System (NFS), waaronder een [avere vFXT-cache](../avere-vfxt/avere-vfxt-overview.md)of een common Internet File System (CIFS) koppelen.
 
-In dit artikel leert u hoe u een virtueel bestands systeem koppelt aan een pool van reken knooppunten met behulp [van de batch-beheer bibliotheek voor .net](https://docs.microsoft.com/dotnet/api/overview/azure/batch?view=azure-dotnet).
+In dit artikel leert u hoe u een virtueel bestands systeem koppelt aan een pool van reken knooppunten met behulp [van de batch-beheer bibliotheek voor .net](/dotnet/api/overview/azure/batch?view=azure-dotnet).
 
 > [!NOTE]
 > Het koppelen van een virtueel bestands systeem wordt ondersteund op batch-Pools die zijn gemaakt op of na 2019-08-19. Batch-Pools die zijn gemaakt vóór 2019-08-19 bieden geen ondersteuning voor deze functie.
 > 
-> De Api's voor het koppelen van bestands systemen op een reken knooppunt maken deel uit van de [batch .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch?view=azure-dotnet) -bibliotheek.
+> De Api's voor het koppelen van bestands systemen op een reken knooppunt maken deel uit van de [batch .net](/dotnet/api/microsoft.azure.batch?view=azure-dotnet) -bibliotheek.
 
 ## <a name="benefits-of-mounting-on-a-pool"></a>Voor delen van koppelen aan een groep
 
@@ -128,7 +127,7 @@ new PoolAddParameter
 
 ### <a name="common-internet-file-system"></a>Common Internet File System
 
-Common Internet File Systems (CIFS) kan ook worden gekoppeld aan groeps knooppunten, zodat traditionele bestands systemen eenvoudig kunnen worden geopend door Azure Batch knooppunten. CIFS is een protocol voor het delen van bestanden dat een open en platformoverschrijdende mechanisme biedt voor het aanvragen van netwerk server bestanden en-services. CIFS is gebaseerd op de verbeterde versie van het SMB-protocol (Server Message Block) van micro soft voor het delen van Internet-en intranet bestanden en wordt gebruikt om externe bestands systemen te koppelen aan Windows-knoop punten. Zie [File Server and SMB](https://docs.microsoft.com/windows-server/storage/file-server/file-server-smb-overview)(Engelstalig) voor meer informatie over SMB.
+Common Internet File Systems (CIFS) kan ook worden gekoppeld aan groeps knooppunten, zodat traditionele bestands systemen eenvoudig kunnen worden geopend door Azure Batch knooppunten. CIFS is een protocol voor het delen van bestanden dat een open en platformoverschrijdende mechanisme biedt voor het aanvragen van netwerk server bestanden en-services. CIFS is gebaseerd op de verbeterde versie van het SMB-protocol (Server Message Block) van micro soft voor het delen van Internet-en intranet bestanden en wordt gebruikt om externe bestands systemen te koppelen aan Windows-knoop punten. Zie [File Server and SMB](/windows-server/storage/file-server/file-server-smb-overview)(Engelstalig) voor meer informatie over SMB.
 
 ```csharp
 new PoolAddParameter
@@ -153,7 +152,7 @@ new PoolAddParameter
 
 ## <a name="diagnose-mount-errors"></a>Fouten bij koppelen vaststellen
 
-Als een koppelings configuratie mislukt, mislukt het reken knooppunt in de groep en wordt de status van het knoop punt onbruikbaar. Als u een fout bij het koppelen van een configuratie wilt vaststellen, inspecteert u de [`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) eigenschap voor meer informatie over de fout.
+Als een koppelings configuratie mislukt, mislukt het reken knooppunt in de groep en wordt de status van het knoop punt onbruikbaar. Als u een fout bij het koppelen van een configuratie wilt vaststellen, inspecteert u de [`ComputeNodeError`](/rest/api/batchservice/computenode/get#computenodeerror) eigenschap voor meer informatie over de fout.
 
 Als u de logboek bestanden voor fout opsporing wilt ophalen, gebruikt u [OutputFiles](batch-task-output-files.md) om de bestanden te uploaden `*.log` . De `*.log` bestanden bevatten informatie over de bestandssysteem koppeling op de `AZ_BATCH_NODE_MOUNTS_DIR` locatie. Het koppelen van logboek bestanden heeft de volgende indeling: `<type>-<mountDirOrDrive>.log` voor elke koppeling. Een `cifs` koppeling op een koppelings Directory met de naam heeft bijvoorbeeld `test` een koppel logboek bestand met de naam: `cifs-test.log` .
 
@@ -179,5 +178,5 @@ Als u de logboek bestanden voor fout opsporing wilt ophalen, gebruikt u [OutputF
 
 - Meer informatie over het koppelen van een Azure Files share met [Windows](../storage/files/storage-how-to-use-files-windows.md) of [Linux](../storage/files/storage-how-to-use-files-linux.md).
 - Meer informatie over het gebruik van en koppelen van [blobfuse](https://github.com/Azure/azure-storage-fuse) Virtual File Systems.
-- Zie [overzicht Network File System](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview) voor meer informatie over NFS en de bijbehorende toepassingen.
-- Zie het [overzicht van micro soft SMB-protocol en CIFS-protocol](https://docs.microsoft.com/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) voor meer informatie over CIFS.
+- Zie [overzicht Network File System](/windows-server/storage/nfs/nfs-overview) voor meer informatie over NFS en de bijbehorende toepassingen.
+- Zie het [overzicht van micro soft SMB-protocol en CIFS-protocol](/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) voor meer informatie over CIFS.

@@ -11,10 +11,9 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
 ms.openlocfilehash: 49565624cee70e40141ca7e8b57b2c26b950d20b
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84666926"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Een persoonlijke Azure-koppeling configureren voor een Azure Machine Learning-werk ruimte (preview)
@@ -51,7 +50,7 @@ Bij het implementeren van een sjabloon moet u de volgende informatie opgeven:
 
 Zodra een sjabloon is verzonden en de inrichting is voltooid, bevat de resource groep die uw werk ruimte bevat drie nieuwe artefact typen die betrekking hebben op persoonlijke koppeling:
 
-* Persoonlijk eind punt
+* Privé-eindpunt
 * Netwerkinterface
 * Privé-DNS-zone
 

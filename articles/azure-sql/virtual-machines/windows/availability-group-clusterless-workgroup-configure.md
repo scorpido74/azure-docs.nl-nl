@@ -13,12 +13,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 0d3e7e7de6d8f044355a43eb870420ad121ed61f
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.openlocfilehash: 93819332def05022272eabc130e0f2240938f244
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343690"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955502"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Een beschikbaarheids groep voor werk groepen configureren 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -40,7 +39,7 @@ Ter referentie worden de volgende para meters in dit artikel gebruikt, maar kunn
 | :------ | :---------------------------------- |
 | **Knooppunt1**   | AGNode1 (10.0.0.4) |
 | **Knooppunt2**   | AGNode2 (10.0.0.5) |
-| **Clusternaam** | AGWGAG (10.0.0.6 ALS) |
+| **Cluster naam** | AGWGAG (10.0.0.6 ALS) |
 | **Listener** | AGListener (10.0.0.7) | 
 | **DNS-achtervoegsel** | ag.wgcluster.example.com | 
 | **Naam van werk groep** | AGWorkgroup | 
@@ -104,7 +103,7 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 
 ## <a name="create-the-failover-cluster"></a>Het failovercluster maken
 
-In deze stap maakt u het failovercluster. Als u niet bekend bent met deze stappen, kunt u ze volgen vanuit de [zelf studie](failover-cluster-instance-storage-spaces-direct-manually-configure.md#step-2-configure-the-windows-server-failover-cluster-with-storage-spaces-direct)over het failovercluster.
+In deze stap maakt u het failovercluster. Als u niet bekend bent met deze stappen, kunt u ze volgen vanuit de [zelf studie](failover-cluster-instance-storage-spaces-direct-manually-configure.md)over het failovercluster.
 
 Er zijn belang rijke verschillen tussen de zelf studie en wat er moet gebeuren voor een werkgroepen cluster:
 - Schakel de **opslag ruimte**uit en **opslagruimten direct** bij het uitvoeren van de cluster validatie. 
@@ -113,7 +112,7 @@ Er zijn belang rijke verschillen tussen de zelf studie en wat er moet gebeuren v
    - `AGNode2.ag.wgcluster.example.com`
 - Schakel **de optie alle in aanmerking komende opslag toevoegen aan het cluster**uit. 
 
-Nadat het cluster is gemaakt, wijst u een statisch cluster-IP-adres toe. Hiervoor volgt u de volgende stappen:
+Nadat het cluster is gemaakt, wijst u een statisch cluster-IP-adres toe. Voer hiervoor de volgende stappen uit:
 
 1. Open **Failoverclusterbeheer**op een van de knoop punten, selecteer het cluster, klik met de rechter muisknop op de **naam: \<ClusterNam> ** onder **cluster kern resources** en selecteer vervolgens **Eigenschappen**. 
 
@@ -130,7 +129,7 @@ Nadat het cluster is gemaakt, wijst u een statisch cluster-IP-adres toe. Hiervoo
 
 ## <a name="create-a-cloud-witness"></a>Een cloudwitness maken 
 
-In deze stap configureert u een Cloud share-Witness. Als u niet bekend bent met de stappen, raadpleegt u de [zelf studie over failover-clusters](failover-cluster-instance-storage-spaces-direct-manually-configure.md#create-a-cloud-witness). 
+In deze stap configureert u een Cloud share-Witness. Als u niet bekend bent met de stappen, raadpleegt u [een Cloudwitness implementeren voor een failovercluster](/windows-server/failover-clustering/deploy-cloud-witness). 
 
 ## <a name="enable-the-availability-group-feature"></a>De functie beschikbaarheids groep inschakelen 
 
@@ -277,7 +276,7 @@ GO
 
 Als er andere knoop punten in het cluster zijn, herhaalt u deze stappen ook om de betreffende certificaten en gebruikers namen te wijzigen. 
 
-## <a name="configure-an-availability-group"></a>Een beschikbaarheids groep configureren
+## <a name="configure-an-availability-group"></a>Een beschikbaarheidsgroep configureren
 
 In deze stap configureert u uw beschikbaarheids groep en voegt u de data bases hieraan toe. Maak op dit moment geen listener. Als u niet bekend bent met de stappen, raadpleegt u de [zelf studie over de beschikbaarheids groep](availability-group-manually-configure-tutorial.md#create-the-availability-group). Zorg ervoor dat u een failover en failback initieert om te controleren of alles werkt zoals het zou moeten zijn. 
 

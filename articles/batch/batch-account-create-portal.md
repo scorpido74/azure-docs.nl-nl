@@ -5,10 +5,9 @@ ms.topic: how-to
 ms.date: 06/10/2020
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1205de2b800588b735aeb20d388ba4b64bc6b078
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711337"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Een Batch-account maken met behulp van Azure Portal
@@ -21,7 +20,7 @@ Zie [batch-service werk stroom en resources](batch-service-workflow-features.md)
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Selecteer **een resource maken**en selecteer vervolgens **Compute** en **batch-service**.
 
@@ -74,7 +73,7 @@ Als u ervoor kiest een Batch-account te maken in de modus Gebruikersabonnement, 
 
 Wanneer u uw eerste Batch-account maakt in de modus Gebruikersabonnement, moet u de volgende stappen uitvoeren om uw abonnement te registreren bij Batch. (Als u dit al hebt gedaan, gaat u naar de volgende sectie.)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Selecteer **alle services**  >  **abonnementen**en selecteer het abonnement dat u wilt gebruiken voor het batch-account.
 

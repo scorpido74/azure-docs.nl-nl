@@ -9,12 +9,11 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
-ms.openlocfilehash: 23fbb0b4c506b2f72000add9704618337b8b24cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 774d2bb58fd7dd75825be8f433f078d70c13fe8c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75386184"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919980"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Een Node.js-toepassing maken en implementeren in een Azure Cloud Service
 
@@ -47,19 +46,24 @@ Voer de volgende taken uit om een nieuw Azure Cloud Services-project te maken, s
 2. [Koppel PowerShell] aan uw abonnement.
 3. Voer de volgende PowerShell-cmdlet in om het project te maken:
 
-        New-AzureServiceProject helloworld
+   ```powershell
+   New-AzureServiceProject helloworld
+   ```
 
-    ![The result of the New-AzureService helloworld command][The result of the New-AzureService helloworld command]
+   ![The result of the New-AzureService helloworld command][The result of the New-AzureService helloworld command]
 
-    De **New-AzureServiceProject**-cmdlet genereert een basisstructuur voor het publiceren van een Node.js-toepassing naar een cloudservice. Deze bevat configuratiebestanden die nodig zijn voor publicatie naar Azure. De cmdlet wijzigt ook uw werkmap naar de map voor de service.
+   De **New-AzureServiceProject**-cmdlet genereert een basisstructuur voor het publiceren van een Node.js-toepassing naar een cloudservice. Deze bevat configuratiebestanden die nodig zijn voor publicatie naar Azure. De cmdlet wijzigt ook uw werkmap naar de map voor de service.
 
-    De cmdlet maakt de volgende bestanden:
+   De cmdlet maakt de volgende bestanden:
 
    * **ServiceConfiguration.Cloud.cscfg**, **ServiceConfiguration.Local.cscfg** en **ServiceDefinition.csdef**: Azure-specifieke bestanden die nodig zijn voor het publiceren van uw toepassing. Zie [Overzicht van het maken van een gehoste service voor Azure].
    * **deploymentSettings.json**: lokale instellingen die worden gebruikt door de Azure PowerShell-cmdlets voor implementatie.
+
 4. Voer de volgende opdracht in om een nieuwe webrol toe te voegen:
 
-       Add-AzureNodeWebRole
+   ```powershell
+   Add-AzureNodeWebRole
+   ```
 
    ![The output of the Add-AzureNodeWebRole command][The output of the Add-AzureNodeWebRole command]
 
@@ -70,12 +74,14 @@ Voer de volgende taken uit om een nieuw Azure Cloud Services-project te maken, s
 
 De Node.js-app is gedefinieerd in het bestand **server.js**, dat zich bevindt in de map voor de webrol (standaard **WebRole1**). Dit is de code:
 
-    var http = require('http');
-    var port = process.env.port || 1337;
-    http.createServer(function (req, res) {
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end('Hello World\n');
-    }).listen(port);
+```js
+var http = require('http');
+var port = process.env.port || 1337;
+http.createServer(function (req, res) {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello World\n');
+}).listen(port);
+```
 
 Deze code is in wezen hetzelfde als het testitem 'Hallo wereld' op de [nodejs.org]-website, behalve dat het poortnummer wordt gebruikt dat is toegewezen door de cloudomgeving.
 
@@ -89,14 +95,18 @@ Voor het implementeren van uw toepassing naar Azure moet u eerst de publicatie-i
 
 1. Voer de volgende Azure PowerShell-cmdlet uit:
 
-       Get-AzurePublishSettingsFile
+    ```powershell
+    Get-AzurePublishSettingsFile
+    ```
 
    Hierbij wordt uw browser gebruikt om te navigeren naar de downloadpagina voor publicatie-instellingen. U wordt mogelijk gevraagd om aan te melden met een Microsoft-account. Als dit het geval is, gebruikt u het account dat is gekoppeld aan uw Azure-abonnement.
 
    Sla het gedownloade profiel op naar een bestandslocatie waar u gemakkelijk bij kunt.
 2. Voer de volgende cmdlet uit om het publicatieprofiel te importeren dat u hebt gedownload:
 
-       Import-AzurePublishSettingsFile [path to file]
+    ```powershell
+    Import-AzurePublishSettingsFile [path to file]
+    ```
 
     > [!NOTE]
     > Na het importeren van de publicatie-instellingen is het raadzaam het gedownloade .publishSettings-bestand te verwijderen, omdat dit informatie bevat die iemand toegang zou kunnen geven tot uw account.
@@ -104,8 +114,10 @@ Voor het implementeren van uw toepassing naar Azure moet u eerst de publicatie-i
 ### <a name="publish-the-application"></a>De toepassing publiceren
 Voer de volgende opdrachten uit om de toepassing te publiceren:
 
-      $ServiceName = "NodeHelloWorld" + $(Get-Date -Format ('ddhhmm'))
-    Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Launch
+```powershell
+$ServiceName = "NodeHelloWorld" + $(Get-Date -Format ('ddhhmm'))
+Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Launch
+```
 
 * **-ServiceName** is de naam voor de implementatie. Dit moet een unieke naam zijn, anders mislukt het publicatieproces. De **Get-Date**-opdracht voegt een datum/tijd-tekenreeks toe die de naam uniek zou moeten maken.
 * Met **-Location** geeft u het datacenter op waarin de toepassing wordt gehost. Gebruik de **Get-AzureLocation**- cmdlet als u een lijst van beschikbare datacenters wilt bekijken.
@@ -136,14 +148,18 @@ Nadat u uw toepassing hebt geïmplementeerd, wilt u deze mogelijk uitschakelen o
 
 1. In het Windows PowerShell-venster stopt u de service-implementatie die u in de vorige sectie hebt gemaakt, met de volgende cmdlet:
 
-       Stop-AzureService
+    ```powershell
+    Stop-AzureService
+    ```
 
    Het kan enkele minuten duren voordat de service is gestopt. Als de service is gestopt, krijgt u een bericht waarin dit wordt aangegeven.
 
    ![The status of the Stop-AzureService command][The status of the Stop-AzureService command]
 2. Als u de service wilt verwijderen, roept u de volgende cmdlet aan:
 
-       Remove-AzureService
+    ```powershell
+    Remove-AzureService
+    ```
 
    Wanneer dit wordt gevraagd, typt u **Y** om de service te verwijderen.
 
@@ -161,7 +177,7 @@ Zie het [Node.js-ontwikkelaarscentrum] voor meer informatie.
 
 [Vergelijking van Azure Websites, Cloud Services en Virtual Machines]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [een eenvoudige web-app-functie te gebruiken]: ../app-service/app-service-web-get-started-nodejs.md
-[Azure Power shell]: /powershell/azureps-cmdlets-docs
+[Azure Powershell]: /powershell/azureps-cmdlets-docs
 [Azure SDK voor .NET 2.7]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
 [Koppel PowerShell]: /powershell/azureps-cmdlets-docs
 [nodejs.org]: https://nodejs.org/

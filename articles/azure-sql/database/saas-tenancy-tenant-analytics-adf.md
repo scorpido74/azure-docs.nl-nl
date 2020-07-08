@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: fff308f241a29cbf40bf2884fc412acf5942497b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84048803"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Bekijk SaaS Analytics met Azure SQL Database, Azure Synapse Analytics, Data Factory en Power BI
@@ -122,7 +121,7 @@ In de Objectverkenner:
 1. Klik **op \<user\> wingtipstaging** opslag account om de aanwezige objecten te verkennen.
 1. Klik op de tegel **blobs**
 1. Klik op de container **configfile**
-1. Controleer of **configfile** een JSON-bestand met de naam **TableConfig. json**bevat. Dit bestand bevat de namen van de bron-en doel tabel, kolom namen en de naam van de tracker-kolom.
+1. Controleer of **configfile** een JSON-bestand bevat met de naam **TableConfig.jsop**. Dit bestand bevat de namen van de bron-en doel tabel, kolom namen en de naam van de tracker-kolom.
 
 #### <a name="azure-data-factory-adf"></a>Azure Data Factory (ADF)
 

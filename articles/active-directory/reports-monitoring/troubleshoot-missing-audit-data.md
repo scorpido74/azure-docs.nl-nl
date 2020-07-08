@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: 7cbe4337-bb77-4ee0-b254-3e368be06db7
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,12 +17,11 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c335a4d30846f7c1b4dbd6b6aedc4d100a9b43a
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.openlocfilehash: 5e1ac0033b7ed2de90ece481cd02d64970ff5f9f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74014276"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608106"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Problemen met ontbrekende gegevens in de activiteitenlogboeken van Azure Active Directory oplossen 
 
@@ -32,16 +31,16 @@ ms.locfileid: "74014276"
 
 Ik heb enkele acties uitgevoerd in de Azure-portal en had verwacht de auditlogboeken voor deze acties te zien op de blade `Activity logs > Audit Logs`, maar ik kan ze niet vinden.
 
- ![Rapporten](./media/troubleshoot-missing-audit-data/01.png)
+ ![Rapportage](./media/troubleshoot-missing-audit-data/01.png)
  
 ### <a name="cause"></a>Oorzaak
 
 Acties worden niet direct weergegeven in de activiteitenlogboeken. In de onderstaande tabel ziet u de latentiewaarden voor activiteitenlogboeken. 
 
-| Rapport | &nbsp; | Latentie (P95) | Latentie (P99) |
-|--------|--------|---------------|---------------|
-| Directorycontrole | &nbsp; | 2 minuten | 5 minuten |
-| Aanmeldingsactiviteit | &nbsp; | 2 minuten | 5 minuten | 
+| Rapport | Latentie (P95) | Latentie (P99) |
+|--------|---------------|---------------|
+| Directorycontrole | 2 minuten | 5 minuten |
+| Aanmeldingsactiviteit | 2 minuten | 5 minuten |
 
 ### <a name="resolution"></a>Oplossing
 
@@ -53,16 +52,16 @@ Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het 
 
 Ik heb me onlangs aangemeld bij de Azure-portal en dan zou ik hier eigenlijk vermeldingen voor moeten zien in de logboeken op de blade `Activity logs > Sign-ins`, maar ik kan ze niet vinden.
 
- ![Rapporten](./media/troubleshoot-missing-audit-data/02.png)
+ ![Rapportage](./media/troubleshoot-missing-audit-data/02.png)
  
 ### <a name="cause"></a>Oorzaak
 
 Acties worden niet direct weergegeven in de activiteitenlogboeken. In de onderstaande tabel ziet u de latentiewaarden voor activiteitenlogboeken. 
 
-| Rapport | &nbsp; | Latentie (P95) | Latentie (P99) |
-|--------|--------|---------------|---------------|
-| Directorycontrole | &nbsp; | 2 minuten | 5 minuten |
-| Aanmeldingsactiviteit | &nbsp; | 2 minuten | 5 minuten | 
+| Rapport | Latentie (P95) | Latentie (P99) |
+|--------|---------------|---------------|
+| Directorycontrole | 2 minuten | 5 minuten |
+| Aanmeldings activiteit 2 minuten | 5 minuten |
 
 ### <a name="resolution"></a>Oplossing
 
@@ -72,18 +71,18 @@ Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het 
 
 ### <a name="symptoms"></a>Symptomen
 
-Ik kan niet meer dan 30 dagen aan aanmeldings- en controlegegevens bekijken in de Azure-portal. Hoe komt dat? 
+Ik kan niet meer dan 30 dagen aan aanmeldings- en controlegegevens bekijken in de Azure-portal. Hoe kan dat? 
 
- ![Rapporten](./media/troubleshoot-missing-audit-data/03.png)
+ ![Rapportage](./media/troubleshoot-missing-audit-data/03.png)
 
 ### <a name="cause"></a>Oorzaak
 
 Afhankelijk van uw licentie bewaart Azure Active Directory Actions de activiteitenrapporten gedurende de volgende perioden:
 
-| Rapport           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
-| ---              | ----   |  ---           | ---                 | ---                 |
-| Directorycontrole  | &nbsp; |   7 dagen     | 30 dagen             | 30 dagen             |
-| Aanmeldingsactiviteit | &nbsp; | Niet beschikbaar. U kunt gedurende zeven dagen uw eigen aanmeldingsactiviteit bekijken op de blade met uw individuele gebruikersprofiel. | 30 dagen | 30 dagen             |
+| Rapport           | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| ---              | ---           | ---                 | ---                 |
+| Directorycontrole  |  7 dagen       | 30 dagen             | 30 dagen             |
+| Aanmeldingsactiviteit | Niet beschikbaar. U kunt gedurende zeven dagen uw eigen aanmeldingsactiviteit bekijken op de blade met uw individuele gebruikersprofiel. | 30 dagen | 30 dagen             |
 
 Zie [Bewaarbeleid Azure Active Directory-rapporten](reference-reports-data-retention.md) voor meer informatie.  
 

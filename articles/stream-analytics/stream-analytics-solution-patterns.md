@@ -7,12 +7,11 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 3b95863c1ae53bd0642aec356f55aba1faf8ef09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 49c83fab54b7188c3a3838f3162e71d8495989dd
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79535779"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037508"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics-oplossingspatronen
 
@@ -30,13 +29,13 @@ Dit oplossings patroon biedt de laagste latentie van de gebeurtenis bron naar he
 
 ## <a name="use-sql-for-dashboard"></a>SQL voor dash board gebruiken
 
-Het Power BI dash board biedt lage latentie, maar kan niet worden gebruikt voor het produceren van volledige Power BI rapporten. Een algemeen rapportage patroon is het uitvoeren van uw gegevens naar een SQL database eerst. Gebruik vervolgens de SQL-connector van Power BI om SQL voor de meest recente gegevens op te vragen.
+Het Power BI dash board biedt lage latentie, maar kan niet worden gebruikt voor het produceren van volledige Power BI rapporten. Een algemeen rapportage patroon is het uitvoeren van uw gegevens naar SQL Database eerst. Gebruik vervolgens de SQL-connector van Power BI om SQL voor de meest recente gegevens op te vragen.
 
 ![ASA SQL-dash board](media/stream-analytics-solution-patterns/sqldashboard.png)
 
-Het gebruik van SQL database biedt meer flexibiliteit, maar ten koste van een iets hogere latentie. Deze oplossing is optimaal voor taken met een latentie vereisten van meer dan één seconde. Met deze methode kunt u de mogelijkheden van Power BI optimaliseren om de gegevens voor rapporten verder te segmenteren en te dobbelten, en nog veel meer visualisatie opties. U krijgt ook de flexibiliteit om andere dashboard oplossingen te gebruiken, zoals tableau.
+Het gebruik van SQL Database biedt meer flexibiliteit, maar ten koste van een iets hogere latentie. Deze oplossing is optimaal voor taken met een latentie vereisten van meer dan één seconde. Met deze methode kunt u de mogelijkheden van Power BI optimaliseren om de gegevens voor rapporten verder te segmenteren en te dobbelten, en nog veel meer visualisatie opties. U krijgt ook de flexibiliteit om andere dashboard oplossingen te gebruiken, zoals tableau.
 
-SQL is geen gegevens opslag met hoge door voer. De maximale door Voer voor een SQL database van Azure Stream Analytics is momenteel ongeveer 24 MB/s. Als de gebeurtenis bronnen in uw oplossing een hoger aantal gegevens produceren, moet u de verwerkings logica in Stream Analytics gebruiken om de uitvoer snelheid naar SQL te verminderen. Technieken zoals filteren, aggregaties in Vensters, patroon vergelijking met tijdelijke samen voegingen en analyse functies kunnen worden gebruikt. De uitvoer frequentie naar SQL kan verder worden geoptimaliseerd met behulp van technieken die worden beschreven in [Azure stream Analytics uitvoer naar Azure SQL database](stream-analytics-sql-output-perf.md).
+SQL is geen gegevens opslag met hoge door voer. De maximale door voer naar SQL Database van Azure Stream Analytics is momenteel ongeveer 24 MB/s. Als de gebeurtenis bronnen in uw oplossing een hoger aantal gegevens produceren, moet u de verwerkings logica in Stream Analytics gebruiken om de uitvoer snelheid naar SQL te verminderen. Technieken zoals filteren, aggregaties in Vensters, patroon vergelijking met tijdelijke samen voegingen en analyse functies kunnen worden gebruikt. De uitvoer frequentie naar SQL kan verder worden geoptimaliseerd met behulp van technieken die worden beschreven in [Azure stream Analytics uitvoer naar Azure SQL database](stream-analytics-sql-output-perf.md).
 
 ## <a name="incorporate-real-time-insights-into-your-application-with-event-messaging"></a>Real-time inzichten opnemen in uw toepassing met gebeurtenis berichten
 
@@ -72,7 +71,7 @@ Dit patroon verbetert de flexibiliteit en beheer baarheid van het systeem. Hoewe
 
 ## <a name="use-reference-data-for-application-customization"></a>Referentie gegevens gebruiken voor het aanpassen van toepassingen
 
-De functie voor het Azure Stream Analytics referentie gegevens is specifiek ontworpen voor aanpassing aan eind gebruikers, zoals waarschuwings drempelwaarde, verwerkings regels en [geofences](geospatial-scenarios.md). De toepassingslaag kan parameter wijzigingen accepteren en in een SQL database opslaan. Met de Stream Analytics taak wordt periodiek een query uitgevoerd op wijzigingen in de data base en worden de aanpassings parameters toegankelijk via een referentie gegevens koppeling. Voor meer informatie over het gebruik van referentie gegevens voor het aanpassen van toepassingen raadpleegt u [SQL-referentie gegevens](sql-reference-data.md) en [samen voegen met referentie gegevens](/stream-analytics-query/reference-data-join-azure-stream-analytics).
+De functie voor het Azure Stream Analytics referentie gegevens is specifiek ontworpen voor aanpassing aan eind gebruikers, zoals waarschuwings drempelwaarde, verwerkings regels en [geofences](geospatial-scenarios.md). De toepassingslaag kan parameter wijzigingen accepteren en in SQL Database opslaan. Met de Stream Analytics taak wordt periodiek een query uitgevoerd op wijzigingen in de data base en worden de aanpassings parameters toegankelijk via een referentie gegevens koppeling. Voor meer informatie over het gebruik van referentie gegevens voor het aanpassen van toepassingen raadpleegt u [SQL-referentie gegevens](sql-reference-data.md) en [samen voegen met referentie gegevens](/stream-analytics-query/reference-data-join-azure-stream-analytics).
 
 Dit patroon kan ook worden gebruikt voor het implementeren van een regel engine waarbij de drempel waarden van de regels worden gedefinieerd vanuit referentie gegevens. Zie voor meer informatie over regels de [procedure Configureer bare op drempel waarden gebaseerde regels in azure stream Analytics](stream-analytics-threshold-based-rules.md).
 

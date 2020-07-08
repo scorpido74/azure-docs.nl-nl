@@ -4,10 +4,9 @@ description: Hierin wordt beschreven hoe u afhankelijkheids analyse gebruikt voo
 ms.topic: conceptual
 ms.date: 06/14/2020
 ms.openlocfilehash: ff563668666207f35fa2ea796d6c909a59df245f
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84771339"
 ---
 # <a name="dependency-analysis"></a>Afhankelijkheids analyse
@@ -31,7 +30,7 @@ Er zijn twee opties voor het implementeren van afhankelijkheids analyse
 **Optie** | **Details** | **Open bare Cloud** | **Azure Government**
 ----  |---- | ---- 
 **Zonder agent** | Controleert gegevens van virtuele VMware-machines met behulp van vSphere-Api's.<br/><br/> U hoeft geen agents te installeren op Vm's.<br/><br/> Deze optie is momenteel beschikbaar als preview-versie voor virtuele VMware-machines. | Ondersteund. | Ondersteund.
-**Analyse op basis van een agent** | Maakt gebruik van de [servicetoewijzing oplossing](../azure-monitor/insights/service-map.md) in azure monitor om de visualisatie en analyse van afhankelijkheden in te scha kelen.<br/><br/> U moet agents installeren op elke on-premises computer die u wilt analyseren. | Ondersteund | Niet ondersteund.
+**Analyse op basis van een agent** | Maakt gebruik van de [servicetoewijzing oplossing](../azure-monitor/insights/service-map.md) in azure monitor om de visualisatie en analyse van afhankelijkheden in te scha kelen.<br/><br/> U moet agents installeren op elke on-premises computer die u wilt analyseren. | Ondersteund | Wordt niet ondersteund.
 
 
 ## <a name="agentless-analysis"></a>Analyse zonder agent
@@ -74,7 +73,7 @@ De verschillen tussen visualisatie zonder agents en visualisaties op basis van a
 **Vereiste** | **Zonder agent** | **Op basis van een agent**
 --- | --- | ---
 **Ondersteuning** | Alleen in Preview voor virtuele VMware-machines. [Bekijk](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) ondersteunde besturings systemen. | In algemene Beschik baarheid (GA).
-**Agent** | Er zijn geen agents nodig op computers die u wilt analyseren. | De agents die zijn vereist op elke on-premises computer die u wilt analyseren.
+**Tussen** | Er zijn geen agents nodig op computers die u wilt analyseren. | De agents die zijn vereist op elke on-premises computer die u wilt analyseren.
 **Log Analytics** | Niet vereist. | Azure Migrate gebruikt de [servicetoewijzing](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) oplossing in [Azure monitor logboeken](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) voor afhankelijkheids analyse. 
 **Proces** | Hiermee worden de TCP-verbindings gegevens vastgelegd. Na detectie verzamelt het gegevens met intervallen van vijf minuten. | Servicetoewijzing agents die op een computer zijn geïnstalleerd, verzamelen gegevens over TCP-processen en inkomende/uitgaande verbindingen voor elk proces.
 **Gegevens** | Naam van de bron computer server, proces, toepassings naam.<br/><br/> Naam van de doel computer server, proces, toepassings naam en poort. | Naam van de bron computer server, proces, toepassings naam.<br/><br/> Naam van de doel computer server, proces, toepassings naam en poort.<br/><br/> Het aantal gegevens over verbindingen, latentie en gegevens overdracht wordt verzameld en beschikbaar gesteld voor Log Analytics query's. 

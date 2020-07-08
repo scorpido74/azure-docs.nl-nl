@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: guybo
 ms.openlocfilehash: fd6d17709cc3e5e9f6bb89ed7480fcd9ee80fd97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759383"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Een Oracle Linux virtuele machine voorbereiden voor Azure
@@ -27,7 +26,7 @@ In dit artikel wordt ervan uitgegaan dat u al een Oracle Linux besturings systee
 * Linux-kernel-versies ouder dan 2.6.37 bieden geen ondersteuning voor NUMA op Hyper-V met grotere VM-grootten. Dit probleem heeft voornamelijk betrekking op oudere distributies met behulp van de upstream Red Hat 2.6.32 kernel en is opgelost in Oracle Linux 6,6 en hoger
 * Configureer geen swap partitie op de besturingssysteem schijf. De Linux-agent kan worden geconfigureerd voor het maken van een wissel bestand op de tijdelijke bron schijf.  Meer informatie hierover vindt u in de volgende stappen.
 * Alle Vhd's op Azure moeten een virtuele grootte hebben die is afgestemd op 1 MB. Wanneer u van een onbewerkte schijf naar VHD converteert, moet u ervoor zorgen dat de onbewerkte schijf grootte een meervoud van 1MB is vóór de conversie. Zie [installatie notities voor Linux](create-upload-generic.md#general-linux-installation-notes) voor meer informatie.
-* Zorg ervoor dat de `Addons` opslag plaats is ingeschakeld. Bewerk het bestand `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) of `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7) en wijzig de `enabled=0` regel naar `enabled=1` onder **[ol6_addons]** of **[ol7_addons]** in dit bestand.
+* Zorg ervoor dat de `Addons` opslag plaats is ingeschakeld. Bewerk het bestand `/etc/yum.repos.d/public-yum-ol6.repo` (Oracle Linux 6) of `/etc/yum.repos.d/public-yum-ol7.repo` (Oracle Linux 7) en wijzig de regel `enabled=0` naar `enabled=1` onder **[ol6_addons]** of **[ol7_addons]** in dit bestand.
 
 ## <a name="oracle-linux-64-and-later"></a>Oracle Linux 6,4 en hoger
 U moet specifieke configuratie stappen in het besturings systeem uitvoeren om de virtuele machine in azure uit te voeren.
@@ -38,8 +37,8 @@ U moet specifieke configuratie stappen in het besturings systeem uitvoeren om de
    
         # sudo rpm -e --nodeps NetworkManager
    
-    **Opmerking:** Als het pakket nog niet is geïnstalleerd, mislukt deze opdracht met een fout bericht. Dit is normaal gedrag.
-4. Maak in de `/etc/sysconfig/` map een bestand met de naam **netwerk** dat de volgende tekst bevat:
+    **Opmerking:** Als het pakket nog niet is geïnstalleerd, mislukt deze opdracht met een fout bericht. Dit is normaal.
+4. Maak in de map **network** een bestand `/etc/sysconfig/` met de naam netwerk dat de volgende tekst bevat:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
@@ -112,7 +111,7 @@ Het voorbereiden van een virtuele machine voor Oracle Linux 7 voor Azure lijkt v
 
 1. Selecteer de virtuele machine in Hyper-V-beheer.
 2. Klik op **verbinding maken** om een console venster voor de virtuele machine te openen.
-3. Maak in de `/etc/sysconfig/` map een bestand met de naam **netwerk** dat de volgende tekst bevat:
+3. Maak in de map **network** een bestand `/etc/sysconfig/` met de naam netwerk dat de volgende tekst bevat:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
@@ -138,7 +137,7 @@ Het voorbereiden van een virtuele machine voor Oracle Linux 7 voor Azure lijkt v
    
         # sudo yum clean all
         # sudo yum -y update
-9. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u dit wilt doen, opent u '/etc/default/grub ' in een tekst `GRUB_CMDLINE_LINUX` editor en bewerkt u de para meter, bijvoorbeeld:
+9. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u dit wilt doen, opent u '/etc/default/grub ' in een tekst editor en bewerkt u de `GRUB_CMDLINE_LINUX` para meter, bijvoorbeeld:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    

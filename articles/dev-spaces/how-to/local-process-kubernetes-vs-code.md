@@ -1,18 +1,17 @@
 ---
-title: Lokaal proces met Kubernetes met Visual Studio code (preview-versie) gebruiken
+title: Lokaal proces met Kubernetes gebruiken met Visual Studio Code (preview)
 services: azure-dev-spaces
 ms.date: 06/02/2020
 ms.topic: conceptual
 description: Meer informatie over het gebruik van lokaal proces met Kubernetes om uw ontwikkel computer te verbinden met een Kubernetes-cluster met Azure dev Spaces
 keywords: Lokaal proces met Kubernetes, Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
 ms.openlocfilehash: 23a94528ffa4e9e412f472349ea26d1a14003616
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84316738"
 ---
-# <a name="use-local-process-with-kubernetes-with-visual-studio-code-preview"></a>Lokaal proces met Kubernetes met Visual Studio code (preview-versie) gebruiken
+# <a name="use-local-process-with-kubernetes-with-visual-studio-code-preview"></a>Lokaal proces met Kubernetes gebruiken met Visual Studio Code (preview)
 
 Met het lokale proces met Kubernetes kunt u code op uw ontwikkel computer uitvoeren en fouten opsporen, terwijl u nog steeds met uw Kubernetes-cluster verbonden bent met de rest van uw toepassing of services. Als u bijvoorbeeld een grote micro Services-architectuur hebt met veel onderling afhankelijke services en data bases, kan het repliceren van die afhankelijkheden op uw ontwikkel computer lastig zijn. Daarnaast kan het maken en implementeren van code voor uw Kubernetes-cluster voor elke code wijziging tijdens de interne loop tijd traag, tijdrovend en moeilijk te gebruiken zijn met een fout opsporingsprogramma.
 
@@ -23,7 +22,7 @@ Lokaal proces met Kubernetes omleidt verkeer tussen uw verbonden Kubernetes-clus
 In deze hand leiding vindt u informatie over het gebruik van lokaal proces met Kubernetes om verkeer tussen uw Kubernetes-cluster en code die wordt uitgevoerd op uw ontwikkel computer, om te leiden. Deze hand leiding bevat ook een script voor het implementeren van een grote voorbeeld toepassing met meerdere micro Services op een Kubernetes-cluster.
 
 > [!IMPORTANT]
-> Deze functie is momenteel in preview. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][preview-terms]. Sommige aspecten van deze functionaliteit kunnen wijzigen voordat deze functionaliteit algemeen beschikbaar wordt.
+> Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][preview-terms]. Sommige aspecten van deze functionaliteit kunnen wijzigen voordat deze functionaliteit algemeen beschikbaar wordt.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -31,7 +30,7 @@ In deze hand leiding wordt gebruikgemaakt van de [voorbeeld toepassing voor dele
 
 ### <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free)maken.
+* Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 * [Azure CLI geïnstalleerd][azure-cli].
 * [Visual Studio-code][vs-code] die wordt uitgevoerd op MacOS of Windows 10.
 * De [Azure dev Spaces][azds-vs-code] -extensie versie 2.0.220200601 of hoger geïnstalleerd in Visual Studio code.
@@ -39,7 +38,7 @@ In deze hand leiding wordt gebruikgemaakt van de [voorbeeld toepassing voor dele
 
 ## <a name="create-a-kubernetes-cluster"></a>Een Kubernetes-cluster maken
 
-Maak een AKS-cluster in een [ondersteunde regio][supported-regions]. Met de onderstaande opdrachten maakt u een resource groep met de naam *MyResourceGroup* en een AKS-cluster met de naam *MyAKS*.
+Maak een AKS-cluster in een [ondersteunde regio][supported-regions]. Met de onderstaande opdrachten maakt u een resourcegroep met de naam *MyResourceGroup* en een AKS-cluster met de naam *MyAKS*.
 
 ```azurecli-interactive
 az group create \
@@ -130,13 +129,13 @@ Uw ontwikkel computer is aangesloten op de status balk oranje en de extensie voo
 ![Ontwikkel computer verbonden](../media/local-process-kubernetes-vs-code/development-computer-connected.png)
 
 > [!NOTE]
-> Op subesquent wordt u niet gevraagd naar de service naam, de poort of de taak starten. Deze waarden worden opgeslagen in *. vscode/tasks. json*.
+> Op subesquent wordt u niet gevraagd naar de service naam, de poort of de taak starten. Deze waarden worden opgeslagen in *. vscode/tasks.jsop*.
 
 Als uw ontwikkel computer is verbonden, wordt het verkeer omgeleid naar uw ontwikkel computer voor de service die u wilt vervangen.
 
 ## <a name="set-a-break-point"></a>Een breek punt instellen
 
-Open [server. js][server-js-breakpoint] en klik ergens op regel 233 om de cursor daar te plaatsen. Stel een onderbrekings punt in door op *F9* te klikken of op *uitvoeren* en vervolgens *onderbrekings punt*.
+Open [server.js][server-js-breakpoint] en klik ergens in regel 233 om de cursor daar te plaatsen. Stel een onderbrekings punt in door op *F9* te klikken of op *uitvoeren* en vervolgens *onderbrekings punt*.
 
 Ga naar de voorbeeld toepassing door de open bare URL te openen. Selecteer *Aurelia Briggs (klant)* als de gebruiker en selecteer vervolgens een te huur fiets. U ziet dat de afbeelding voor de fiets niet wordt geladen. Ga terug naar Visual Studio code en kijk regel 233 is gemarkeerd. Het onderbrekings punt dat u hebt ingesteld, heeft de service onderbroken op regel 233. Als u de service wilt hervatten, druk op *F5* of klik op *uitvoeren* en vervolgens op *door gaan*. Ga terug naar uw browser en controleer of er een tijdelijke aanduiding voor de fiets wordt weer gegeven.
 

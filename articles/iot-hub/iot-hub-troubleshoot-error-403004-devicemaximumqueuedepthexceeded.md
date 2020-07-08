@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 5cc8bae0f0245f5c4b45ca0cd446582b04788c21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758764"
 ---
 # <a name="403004-devicemaximumqueuedepthexceeded"></a>403004 DeviceMaximumQueueDepthExceeded
@@ -30,7 +29,7 @@ Wanneer u een Cloud-naar-apparaat-bericht probeert te verzenden, mislukt de aanv
 
 De onderliggende oorzaak is dat het aantal berichten in de wachtrij voor het apparaat groter is dan de limiet voor de [wacht rijen (50)](./iot-hub-devguide-quotas-throttling.md#other-limits).
 
-De meest waarschijnlijke reden hiervoor is dat u HTTPS gebruikt om het bericht te ontvangen, wat leidt tot doorlopende polling met `ReceiveAsync`, wat resulteert in IOT hub het beperken van de aanvraag.
+De meest waarschijnlijke reden hiervoor is dat u HTTPS gebruikt om het bericht te ontvangen, wat leidt tot doorlopende polling met `ReceiveAsync` , wat resulteert in IOT hub het beperken van de aanvraag.
 
 ## <a name="solution"></a>Oplossing
 

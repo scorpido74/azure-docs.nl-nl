@@ -5,12 +5,11 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: bf5821a0781b5208096a0c02058cf2239a99e7d6
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
-ms.translationtype: MT
+ms.openlocfilehash: 35d408c636e20aef9495e72bc8535e0d7a99431e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367849"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955265"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -35,7 +34,7 @@ Er zijn drie versies van Azure Functions Core Tools. Welke versie u gebruikt, is
 
 + **Versie 1. x**: ondersteunt versie 1. x van de Azure functions runtime. Deze versie van de hulpprogram ma's wordt alleen ondersteund op Windows-computers en wordt geïnstalleerd vanuit een [NPM-pakket](https://www.npmjs.com/package/azure-functions-core-tools).
 
-+ [**Versie 2. x/3. x**](#v2): ondersteunt [versie 2. x of 3. x van de Azure functions runtime](functions-versions.md). Deze versies ondersteunen [Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2), [macOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)en [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2) en gebruiken platformspecifieke pakket beheerders of NPM voor installatie.
++ [**Versie 3. x/2. x**](#v2): ondersteunt [versie 3. x of 2. x van de Azure functions runtime](functions-versions.md). Deze versies ondersteunen [Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2), [macOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)en [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2) en gebruiken platformspecifieke pakket beheerders of NPM voor installatie.
 
 Tenzij anders vermeld, zijn de voor beelden in dit artikel van versie 3. x.
 
@@ -46,9 +45,9 @@ Tenzij anders vermeld, zijn de voor beelden in dit artikel van versie 3. x.
 >[!IMPORTANT]
 >U moet de [Azure cli](/cli/azure/install-azure-cli) lokaal hebben geïnstalleerd om te kunnen publiceren naar Azure vanaf Azure functions core tools.  
 
-### <a name="version-2x-and-3x"></a><a name="v2"></a>Versie 2. x en 3. x
+### <a name="version-3x-and-2x"></a><a name="v2"></a>Versie 3. x en 2. x
 
-Versie 2. x/3. x van de hulpprogram ma's maakt gebruik van de Azure Functions runtime die is gebouwd op .NET core. Deze versie wordt ondersteund op alle platformen .NET core ondersteunt, waaronder [Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2), [macOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)en [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2). 
+Versie 3. x/2. x van de hulpprogram ma's maakt gebruik van de Azure Functions runtime die is gebouwd op .NET core. Deze versie wordt ondersteund op alle platformen .NET core ondersteunt, waaronder [Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2), [macOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)en [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2). 
 
 > [!IMPORTANT]
 > U kunt de vereiste voor het installeren van de .NET Core SDK overs Laan door gebruik te maken van [uitbreidings bundels].
@@ -58,28 +57,28 @@ Versie 2. x/3. x van de hulpprogram ma's maakt gebruik van de Azure Functions ru
 In de volgende stappen wordt NPM gebruikt om de belangrijkste Hulpprogram Ma's in Windows te installeren. U kunt ook [Choco lade](https://chocolatey.org/)gebruiken. Zie het Leesmij-bestand met [belangrijkste Hulpprogram ma's](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)voor meer informatie.
 
 1. Installeer [Node.js], dat NPM omvat.
-    - Voor versie 2. x van de hulpprogram ma's worden alleen Node.js 8,5 en latere versies ondersteund.
     - Voor versie 3. x van de hulpprogram ma's worden alleen Node.js 10 en latere versies ondersteund.
+    - Voor versie 2. x van de hulpprogram ma's worden alleen Node.js 8,5 en latere versies ondersteund.
 
 1. Installeer het pakket met kern Hulpprogramma's:
 
-    ##### <a name="v2x"></a>v2. x
-
-    ```cmd
-    npm install -g azure-functions-core-tools
-    ```
-
-    ##### <a name="v3x"></a>v3. x
+    ##### <a name="v3x-recommended"></a>v3. x (aanbevolen)
 
     ```cmd
     npm install -g azure-functions-core-tools@3
     ```
 
+    ##### <a name="v2x"></a>v2. x
+
+    ```cmd
+    npm install -g azure-functions-core-tools@2
+    ```
+
    Het kan enkele minuten duren voordat NPM het pakket met kern Hulpprogramma's downloadt en installeert.
 
-1. Als u geen [uitbreidings bundels]wilt gebruiken, installeert u de [.net Core 2. x SDK voor Windows](https://www.microsoft.com/net/download/windows).
+1. Als u geen [uitbreidings bundels](functions-bindings-register.md#extension-bundles)wilt gebruiken, installeert u de [.net Core 3. x SDK voor Windows](https://dotnet.microsoft.com/download).
 
-# <a name="macos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[MacOS](#tab/macos)
 
 In de volgende stappen wordt homebrew gebruikt om de belangrijkste Hulpprogram Ma's voor macOS te installeren.
 
@@ -87,14 +86,7 @@ In de volgende stappen wordt homebrew gebruikt om de belangrijkste Hulpprogram M
 
 1. Installeer het pakket met kern Hulpprogramma's:
 
-    ##### <a name="v2x"></a>v2. x
-
-    ```bash
-    brew tap azure/functions
-    brew install azure-functions-core-tools
-    ```
-
-    ##### <a name="v3x"></a>v3. x
+    ##### <a name="v3x-recommended"></a>v3. x (aanbevolen)
 
     ```bash
     brew tap azure/functions
@@ -102,6 +94,15 @@ In de volgende stappen wordt homebrew gebruikt om de belangrijkste Hulpprogram M
     # if upgrading on a machine that has 2.x installed
     brew link --overwrite azure-functions-core-tools@3
     ```
+    
+    ##### <a name="v2x"></a>v2. x
+
+    ```bash
+    brew tap azure/functions
+    brew install azure-functions-core-tools@2
+    ```
+    
+1. Als u geen [uitbreidings bundels](functions-bindings-register.md#extension-bundles)wilt gebruiken, installeert u de [.net Core 3. x SDK voor macOS](https://dotnet.microsoft.com/download).
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
@@ -148,11 +149,19 @@ De volgende stappen gebruiken [apt](https://wiki.debian.org/Apt) om kern hulppro
 
 1. Installeer het pakket met kern Hulpprogramma's:
 
+    ##### <a name="v3x-recommended"></a>v3. x (aanbevolen)
     ```bash
-    sudo apt-get install azure-functions-core-tools
+    sudo apt-get update
+    sudo apt-get install azure-functions-core-tools-3
+    ```
+    
+    ##### <a name="v2x"></a>v2. x
+    ```bash
+    sudo apt-get update
+    sudo apt-get install azure-functions-core-tools-2
     ```
 
-1. Als u geen [uitbreidings bundels]wilt gebruiken, installeert u [.net Core 2. x SDK voor Linux](https://www.microsoft.com/net/download/linux).
+1. Als u geen [uitbreidings bundels](functions-bindings-register.md#extension-bundles)wilt gebruiken, installeert u [.net Core 3. x SDK voor Linux](https://dotnet.microsoft.com/download).
 
 ---
 
@@ -160,7 +169,7 @@ De volgende stappen gebruiken [apt](https://wiki.debian.org/Apt) om kern hulppro
 
 Een project directory functions bevat de bestanden [host.jsop](functions-host-json.md) en [local.settings.jsop](#local-settings-file), samen met submappen die de code voor afzonderlijke functies bevatten. Deze map is het equivalent van een functie-app in Azure. Zie de [hand leiding voor de Azure functions-ontwikkel aars](functions-reference.md#folder-structure)voor meer informatie over de mapstructuur van de functies.
 
-Versie 2. x vereist dat u een standaard taal voor uw project selecteert wanneer deze wordt geïnitialiseerd. In versie 2. x worden alle functies toegevoegd standaard taal sjablonen gebruiken. In versie 1. x geeft u de taal op telkens wanneer u een functie maakt.
+Versie 3. x/2. x vereist dat u een standaard taal voor uw project selecteert wanneer deze wordt geïnitialiseerd. In versie 3. x/2. x worden alle functies toegevoegd standaard taal sjablonen gebruiken. In versie 1. x geeft u de taal op telkens wanneer u een functie maakt.
 
 Voer in het Terminal venster of vanaf een opdracht prompt de volgende opdracht uit om het project en de lokale Git-opslag plaats te maken:
 
@@ -169,7 +178,7 @@ func init MyFunctionProj
 ```
 
 Wanneer u een project naam opgeeft, wordt een nieuwe map met die naam gemaakt en geïnitialiseerd. Anders wordt de huidige map geïnitialiseerd.  
-In versie 2. x, wanneer u de opdracht uitvoert, moet u een runtime voor uw project kiezen. 
+In versie 3. x/2. x, wanneer u de opdracht uitvoert, moet u een runtime voor uw project kiezen. 
 
 <pre>
 Select a worker runtime:
@@ -192,9 +201,9 @@ Writing C:\myfunctions\myMyFunctionProj\.vscode\extensions.json
 Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 </pre>
 
-`func init`biedt ondersteuning voor de volgende opties: versie 2. x-only, tenzij anders vermeld.
+`func init`ondersteunt de volgende opties, versie 3. x/2. x-only, tenzij anders vermeld:
 
-| Optie     | Beschrijving                            |
+| Optie     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--csharp`**<br/> **`--dotnet`** | Initialiseert een [C#-Class Library-project (. cs)](functions-dotnet-class-library.md). |
 | **`--csx`** | Initialiseert een [C# script-project (. CSX)](functions-reference-csharp.md). U moet `--csx` in volgende opdrachten opgeven. |
@@ -203,7 +212,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 | **`--force`** | Initialiseer het project zelfs wanneer er bestaande bestanden in het project aanwezig zijn. Deze instelling overschrijft bestaande bestanden met dezelfde naam. Andere bestanden in de projectmap worden niet beïnvloed. |
 | **`--java`**  | Initialiseert een [Java-project](functions-reference-java.md). |
 | **`--javascript`**<br/>**`--node`**  | Initialiseert een [Java script-project](functions-reference-node.md). |
-| **`--no-source-control`**<br/>**`-n`** | Hiermee wordt voor komen dat een Git-opslag plaats standaard wordt gemaakt in versie 1. x. In versie 2. x wordt de Git-opslag plaats standaard niet gemaakt. |
+| **`--no-source-control`**<br/>**`-n`** | Hiermee wordt voor komen dat een Git-opslag plaats standaard wordt gemaakt in versie 1. x. In versie 3. x/2. x is de Git-opslag plaats standaard niet gemaakt. |
 | **`--powershell`**  | Initialiseert een [Power Shell-project](functions-reference-powershell.md). |
 | **`--python`**  | Initialiseert een [python-project](functions-reference-python.md). |
 | **`--source-control`** | Hiermee wordt bepaald of een Git-opslag plaats wordt gemaakt. Een opslag plaats wordt standaard niet gemaakt. Wanneer `true` wordt een opslag plaats gemaakt. |
@@ -211,7 +220,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 | **`--worker-runtime`** | Hiermee stelt u de taal runtime voor het project in. Ondersteunde waarden zijn: `csharp` , `dotnet` , `java` , `javascript` , `node` (Java script), `powershell` , en `python` `typescript` . Wanneer deze niet is ingesteld, wordt u gevraagd uw runtime te kiezen tijdens de initialisatie. |
 
 > [!IMPORTANT]
-> Versie 2. x van de kern Hulpprogramma's maakt standaard functie-app-projecten voor de .NET-runtime als [C#-klassen projecten](functions-dotnet-class-library.md) (. csproj). Deze C#-projecten, die kunnen worden gebruikt met Visual Studio of Visual Studio code, worden gecompileerd tijdens het testen en bij het publiceren naar Azure. Als u in plaats daarvan dezelfde C# script bestanden (. CSX) wilt maken en gebruiken die zijn gemaakt in versie 1. x en in de portal, moet u de `--csx` para meter toevoegen wanneer u functies maakt en implementeert.
+> Standaard worden in versie 3. x/2. x van de kern Hulpprogramma's functie-app-projecten voor de .NET-runtime gemaakt als [C#-klassen projecten](functions-dotnet-class-library.md) (. csproj). Deze C#-projecten, die kunnen worden gebruikt met Visual Studio of Visual Studio code, worden gecompileerd tijdens het testen en bij het publiceren naar Azure. Als u in plaats daarvan dezelfde C# script bestanden (. CSX) wilt maken en gebruiken die zijn gemaakt in versie 1. x en in de portal, moet u de `--csx` para meter toevoegen wanneer u functies maakt en implementeert.
 
 [!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
@@ -267,7 +276,7 @@ Voer de volgende opdracht uit om een functie te maken:
 func new
 ```
 
-In versie 2. x, wanneer u uitvoert, wordt u `func new` gevraagd een sjabloon in de standaard taal van uw functie-app te kiezen. vervolgens wordt u gevraagd om een naam voor de functie te kiezen. In versie 1. x wordt u ook gevraagd om de taal te kiezen.
+In versie 3. x/2. x, wanneer u uitvoert, wordt u `func new` gevraagd een sjabloon te kiezen in de standaard taal van uw functie-app. vervolgens wordt u gevraagd om een naam voor de functie te kiezen. In versie 1. x wordt u ook gevraagd om de taal te kiezen.
 
 <pre>
 Select a language: Select a template:
@@ -295,10 +304,10 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 U kunt deze opties ook opgeven in de opdracht met behulp van de volgende argumenten:
 
-| Argument     | Beschrijving                            |
+| Argument     | Description                            |
 | ------------------------------------------ | -------------------------------------- |
-| **`--csx`** | (Versie 2. x) Genereert dezelfde C# script-sjablonen (. CSX) die worden gebruikt in versie 1. x en in de portal. |
-| **`--language`**, **`-l`**| De programmeer taal van de sjabloon, zoals C#, F # of Java script. Deze optie is vereist in versie 1. x. In versie 2. x gebruikt u deze optie niet of kiest u een taal die overeenkomt met de runtime van de werk nemer. |
+| **`--csx`** | (Versie 3. x/2. x) Genereert dezelfde C# script-sjablonen (. CSX) die worden gebruikt in versie 1. x en in de portal. |
+| **`--language`**, **`-l`**| De programmeer taal van de sjabloon, zoals C#, F # of Java script. Deze optie is vereist in versie 1. x. In versie 3. x/2. x gebruikt u deze optie niet of kiest u een taal die overeenkomt met de runtime van de werk nemer. |
 | **`--name`**, **`-n`** | De functie naam. |
 | **`--template`**, **`-t`** | Gebruik de `func templates list` opdracht om de volledige lijst met beschik bare sjablonen voor elke ondersteunde taal weer te geven.   |
 
@@ -354,7 +363,7 @@ npm start
 
 `func start`biedt ondersteuning voor de volgende opties:
 
-| Optie     | Beschrijving                            |
+| Optie     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | Pas het huidige project niet samen om uit te voeren. Alleen voor dotnet-projecten. De standaard waarde is ingesteld op ONWAAR. Niet ondersteund voor versie 1. x. |
 | **`--cert`** | Het pad naar een pfx-bestand dat een persoonlijke sleutel bevat. Alleen gebruikt met `--useHttps` . Niet ondersteund voor versie 1. x. |
@@ -395,7 +404,9 @@ Zie [strategieën voor het testen van uw code in azure functions](functions-test
 
 U roept het volgende eind punt aan om HTTP en door de webhook geactiveerde functies lokaal uit te voeren:
 
-    http://localhost:{port}/api/{function_name}
+```http
+http://localhost:{port}/api/{function_name}
+```
 
 Zorg ervoor dat u dezelfde server naam en poort gebruikt als waarop de host van de functies luistert. U ziet dit in de uitvoer die wordt gegenereerd bij het starten van de host van de functie. U kunt deze URL aanroepen met de HTTP-methode die wordt ondersteund door de trigger.
 
@@ -429,7 +440,9 @@ U kunt eventueel test gegevens door geven aan de uitvoering in de hoofd tekst va
 
 U roept het volgende Administrator-eind punt aan om niet-HTTP-functies te activeren:
 
-    http://localhost:{port}/admin/functions/{function_name}
+```http
+http://localhost:{port}/admin/functions/{function_name}
+```
 
 Als u test gegevens wilt door geven aan het eind punt van de beheerder van een functie, moet u de gegevens opgeven in de hoofd tekst van een bericht van een POST-aanvraag. De hoofd tekst van het bericht moet de volgende JSON-indeling hebben:
 
@@ -460,7 +473,7 @@ In versie 1. x kunt u ook rechtstreeks een functie aanroepen met behulp `func ru
 
 `func run`biedt ondersteuning voor de volgende opties:
 
-| Optie     | Beschrijving                            |
+| Optie     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--content`**, **`-c`** | Inline-inhoud. |
 | **`--debug`**, **`-d`** | Koppel een fout opsporingsprogramma aan het hostproces voordat u de functie uitvoert.|
@@ -485,7 +498,7 @@ Een projectmap kan taalspecifieke bestanden en mappen bevatten die niet mogen wo
 
 ### <a name="deploy-project-files"></a><a name="project-file-deployment"></a>Project bestanden implementeren
 
-Als u uw lokale code naar een functie-app in azure wilt publiceren, gebruikt u de `publish` opdracht:
+Als u uw lokale code wilt publiceren in een functie-app in Azure, gebruikt u de opdracht `publish`:
 
 ```
 func azure functionapp publish <FunctionAppName>
@@ -494,19 +507,19 @@ func azure functionapp publish <FunctionAppName>
 Met deze opdracht wordt gepubliceerd naar een bestaande functie-app in Azure. U krijgt een fout melding als u probeert te publiceren naar een `<FunctionAppName>` die niet voor komt in uw abonnement. Zie [een functie-app maken voor serverloze uitvoering voor](./scripts/functions-cli-create-serverless.md)meer informatie over het maken van een functie-app vanuit de opdracht prompt of het Terminal venster met behulp van de Azure cli. Deze opdracht maakt standaard gebruik van [externe build](functions-deployment-technologies.md#remote-build) en implementeert uw app voor [uitvoering vanuit het implementatie pakket](run-functions-from-deployment-package.md). Als u deze aanbevolen implementatie modus wilt uitschakelen, gebruikt u de `--nozip` optie.
 
 >[!IMPORTANT]
-> Wanneer u een functie-app maakt in de Azure Portal, gebruikt deze standaard versie 2. x van de functie-runtime. Volg de instructies in [uitvoeren op versie 1. x](functions-versions.md#creating-1x-apps)om de functie-app versie 1. x van de runtime te laten gebruiken.
+> Wanneer u een functie-app maakt in de Azure Portal, gebruikt deze standaard versie 3. x van de functie-runtime. Volg de instructies in [uitvoeren op versie 1. x](functions-versions.md#creating-1x-apps)om de functie-app versie 1. x van de runtime te laten gebruiken.
 > U kunt de runtime versie niet wijzigen voor een functie-app met bestaande functies.
 
-De volgende publicatie opties zijn van toepassing voor beide versies, 1. x en 2. x:
+De volgende publicatie opties zijn van toepassing op versies 3. x, 2. x en 1. x:
 
-| Optie     | Beschrijving                            |
+| Optie     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  Publiceer instellingen in local.settings.jsnaar Azure en vraag om te worden overschreven als de instelling al bestaat. Als u de Microsoft Azure-opslagemulator gebruikt, wijzigt u eerst de app-instelling in een [echte opslag verbinding](#get-your-storage-connection-strings). |
 | **`--overwrite-settings -y`** | De prompt voor het overschrijven van app-instellingen onderdrukken wanneer deze wordt `--publish-local-settings -i` gebruikt.|
 
-De volgende publicatie opties worden alleen ondersteund in versie 2. x:
+De volgende publicatie opties worden alleen ondersteund in versie 3. x en 2. x:
 
-| Optie     | Beschrijving                            |
+| Optie     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only`**, **`-o`** |  Publiceer instellingen alleen en sla de inhoud over. De standaard instelling is prompt. |
 |**`--list-ignored-files`** | Geeft een lijst weer van bestanden die worden genegeerd tijdens het publiceren, dat is gebaseerd op het. funcignore-bestand. |
@@ -530,7 +543,7 @@ func deploy
 
 De volgende opties voor de implementatie van de aangepaste container zijn beschikbaar:
 
-| Optie     | Beschrijving                            |
+| Optie     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | De naam van een docker-REGI ster waarmee de huidige gebruiker zich heeft aangemeld. |
 | **`--platform`** | Hosting platform voor de functie-app. Geldige opties zijn`kubernetes` |

@@ -7,22 +7,21 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: ac9e3fd4fec8ab2fe9f0c93d46489e67feebe88d
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
-ms.translationtype: MT
+ms.openlocfilehash: 0955cc8722c2a2b559935341cfd7e87bac6e4d3e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85116261"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954652"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Totale eigendoms kosten (TCO) met Azure Cosmos DB
 
 Azure Cosmos DB is ontworpen met verfijnde multitenancy en verfijnd resourcebeheer Vanwege dit ontwerp kost werken met Azure Cosmos DB aanzienlijk minder, waardoor gebruikers geld besparen. Momenteel biedt Azure Cosmos DB ondersteuning voor meer dan 280 workloads van klanten op één computer, waarbij de dichtheid voortdurend toeneemt, en voor duizenden workloads van klanten binnen een cluster. Het zorgt voor een taakverdeling van replica’s voor de workloads van klanten op verschillende computers in een cluster, en in verschillende clusters binnen een datacenter. Ga voor meer informatie naar [Azure Cosmos DB: de grens van wereld wijd gedistribueerde data bases te pushen](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/). Vanwege resource-governance, multitenancy en systeem eigen integratie met de rest van de Azure-infra structuur, is Azure Cosmos DB gemiddeld 4 tot 6 keer goed koper dan MongoDB, Cassandra of andere OSS-NoSQL die op IaaS worden uitgevoerd en Maxi maal 10 keer goed koper zijn dan de data base-engines die on-premises worden uitgevoerd. Zie het artikel over [de totale kosten van (niet) eigendom van een NoSQL data base-Cloud service](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf).
 
-De OSS NoSQL-database oplossingen, zoals Apache Cassandra, MongoDB, HBase, engines zijn ontworpen voor on-premises. Als een beheerde service wordt aangeboden, zijn ze gelijk aan een resource manager-sjabloon met een Tenant database voor het beheren van de ingerichte clusters en bewakings ondersteuning. Voor OSS NoSQL-architecturen zijn aanzienlijke operationele overhead nodig en de expertise kan moeilijk en kostbaar zijn. Azure Cosmos DB is daarentegen een volledig beheerde Cloud service, waarmee ontwikkel aars zich kunnen richten op bedrijfs innovatie in plaats van de infra structuur van de data base te beheren en onderhouden. 
+De OSS NoSQL-database oplossingen, zoals Apache Cassandra, MongoDB, HBase, engines zijn ontworpen voor on-premises. Als een beheerde service wordt aangeboden, zijn ze gelijk aan een resource manager-sjabloon met een Tenant database voor het beheren van de ingerichte clusters en bewakings ondersteuning. Voor OSS NoSQL-architecturen zijn aanzienlijke operationele overhead nodig en de expertise kan moeilijk en kostbaar zijn. Azure Cosmos DB is daarentegen een volledig beheerde Cloud service, waarmee ontwikkel aars zich kunnen richten op bedrijfs innovatie in plaats van de infra structuur van de data base te beheren en onderhouden.
 
 In tegens telling tot een Cloud-native database service-Azure Cosmos DB zijn de OSS NoSQL-data base-engines niet ontworpen en gebouwd met het resource governance of een fijnend multitenancy als basis principes van de architectuur. De OSS NoSQL data base-engines zoals Cassandra en MongoDB maken een fundamentele veronderstelling dat alle resources van de virtuele machine waarop ze worden uitgevoerd, beschikbaar zijn voor gebruik. Veel van deze data base-engines kunnen niet worden gebruikt als de hoeveelheid resources onder een bepaalde drempel waarde daalt. Bijvoorbeeld voor kleine VM-instanties en ze zijn beschikbaar met door de leverancier aanbevolen configuraties die een grote virtuele machine met hogere kosten Voorst Ellen. Het is dus niet mogelijk een OSS-NoSQL of een andere on-premises data base-engine te hosten en deze beschikbaar te maken met behulp van een op verbruik gebaseerd kosten model zoals aanvragen per seconde of verbruikte opslag.
 
-## <a name="total-cost-of-ownership-of-azure-cosmos-db"></a>Totale eigendoms kosten van Azure Cosmos DB 
+## <a name="total-cost-of-ownership-of-azure-cosmos-db"></a>Totale eigendoms kosten van Azure Cosmos DB
 
 Het serverloze inrichtings model van Azure Cosmos DB elimineert de nood zaak om de infra structuur van de data base te overinrichten. Azure Cosmos DB bronnen worden zonder gespecialiseerde configuraties of licenties verschaft. Als gevolg hiervan kunnen de toepassingen met Azure Cosmos DB-ondersteuning worden uitgevoerd met een totale kosten besparing van 70 procent in vergelijking met de OSS NoSQL-data bases. Zie [klant gebruik-cases](https://customers.microsoft.com/en-us/search?sq=Cosmos%20DB&ff=&p=0&so=story_publish_date%20desc)voor enkele voor beelden van realtime. Andere voor delen van het Azure Cosmos DB prijs model zijn:
 

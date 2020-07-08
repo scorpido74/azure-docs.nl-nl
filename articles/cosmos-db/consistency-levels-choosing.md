@@ -7,16 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: aa8a020dc4a7e9d4e7de0671b566755e413caeb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: aa8f2d14124e7cfc5db0025c295f9b38d96bf56c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191750"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921831"
 ---
 # <a name="choose-the-right-consistency-level"></a>Het juiste consistentieniveau kiezen 
 
-Gedistribueerde data bases die gebruikmaken van replicatie voor hoge Beschik baarheid, lage latentie of beide, maken de fundamentele verhouding tussen de Lees consistentie versus Beschik baarheid, latentie en door voer. De meeste commerciële beschik bare gedistribueerde data bases vragen ontwikkel aars om te kiezen tussen de twee uiterst consistente consistentie modellen: *sterke* consistentie en *uiteindelijke* consistentie. Met Azure Cosmos DB kunnen ontwikkel aars kiezen uit de vijf goed gedefinieerde consistentie modellen: *Strong*, *gebonden veroudering*, *sessie*, *consistent voor voegsel* en *uiteindelijk*. Elk van deze consistentie modellen is goed gedefinieerd, intuïtief en kan worden gebruikt voor specifieke praktijk scenario's. Elk van de vijf consistentie modellen biedt nauw keurige [Beschik baarheid en prestatie-afwegingen](consistency-levels-tradeoffs.md) en wordt ondersteund door de uitgebreide service overeenkomsten. Met de volgende eenvoudige overwegingen kunt u de juiste keuze maken in veel algemene scenario's.
+Gedistribueerde data bases die gebruikmaken van replicatie voor hoge Beschik baarheid, lage latentie of beide, maken de fundamentele verhouding tussen de Lees consistentie versus Beschik baarheid, latentie en door voer. De meeste commerciële beschik bare gedistribueerde data bases vragen ontwikkel aars om te kiezen tussen de twee uiterst consistente consistentie modellen: *sterke* consistentie en *uiteindelijke* consistentie. Met Azure Cosmos DB kunnen ontwikkel aars kiezen uit de vijf goed gedefinieerde consistentie modellen: *Strong*, *gebonden veroudering*, *sessie*, *consistent voor voegsel* en *uiteindelijk*. Elk van deze consistentie modellen is goed gedefinieerd, intuïtief en kan worden gebruikt voor specifieke praktijk scenario's. Elk van de vijf consistentie modellen biedt nauw keurige [Beschik baarheid en prestatie-afwegingen](consistency-levels-tradeoffs.md) en wordt ondersteund door de uitgebreide service overeenkomsten. U kunt een standaard consistentie configureren op het niveau van de account en [deze overschrijven op aanvraag niveau](how-to-manage-consistency.md#override-the-default-consistency-level). Met de volgende eenvoudige overwegingen kunt u de juiste keuze maken in veel algemene scenario's.
 
 ## <a name="sql-api-and-table-api"></a>SQL-API en Table-API
 

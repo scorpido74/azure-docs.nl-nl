@@ -13,10 +13,9 @@ ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
 ms.openlocfilehash: 21609e38625d0911476c85a9d6e518f5ff7e9e61
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84667366"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Opslagconfiguratie voor SQL Server-VM's
@@ -127,7 +126,7 @@ Azure gebruikt de volgende instellingen voor het maken van de opslag groep op SQ
 | --- | --- |
 | Stripe-grootte |256 KB (data warehousing); 64 KB (transactioneel) |
 | Schijf grootten |1 TB elk |
-| Cache |Raadplegen |
+| Cache |Lezen |
 | Toewijzings grootte |64 KB NTFS Allocation Unit Size |
 | Herstel | Eenvoudig herstel (geen tolerantie) |
 | Aantal kolommen |Aantal gegevens schijven tot 8<sup>1</sup> |
@@ -140,7 +139,7 @@ Azure gebruikt de volgende instellingen voor het maken van de opslag groep op SQ
 
 In de volgende tabel worden de drie beschik bare opties voor werkbelasting typen en de bijbehorende optimalisaties beschreven:
 
-| Type werk belasting | Beschrijving | Optimalisaties |
+| Type werk belasting | Description | Optimalisaties |
 | --- | --- | --- |
 | **Algemeen** |Standaard instelling die de meeste werk belastingen ondersteunt |Geen |
 | **Transactionele verwerking** |Optimaliseert de opslag voor traditionele OLTP-workloads van data bases |Tracerings vlag 1117<br/>Tracerings vlag 1118 |

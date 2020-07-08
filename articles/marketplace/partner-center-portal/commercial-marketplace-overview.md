@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 95d57e34694190b4ab997229f005ebeef7924e57
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.openlocfilehash: 2d506656343df6eaa58975bfeb921423c2e3314b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724816"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954128"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Overzicht van de portal voor commerciële Marketplace in het partner centrum
 
@@ -34,7 +33,7 @@ Bestaande uitgevers die de Cloud Partner-portal eerder hebben gebruikt, vinden e
 
 ### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>Verbeteringen voor het publiceren en aanbieden van gebruikers ervaring voor beheer
 
-Met de overgang naar partner Center is er naast verbeteringen van de gebruikers ervaring geen nieuwe functionaliteit beschikbaar voor uitgevers.  Zie [Veelgestelde vragen over het migreren van Cloud Partner-Portal naar het partner centrum](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-migration-faq)voor meer informatie.
+Met de overgang naar partner Center is er naast verbeteringen van de gebruikers ervaring geen nieuwe functionaliteit beschikbaar voor uitgevers.  Zie [Veelgestelde vragen over het migreren van Cloud Partner-Portal naar het partner centrum](../cloud-partner-portal-migration-faq.md)voor meer informatie.
 
 ### <a name="account-and-user-management-updates"></a>Updates voor account-en gebruikers beheer
 
@@ -50,10 +49,10 @@ Partner Center Analytics biedt een overzicht van de prestaties van uw aanbieding
 
 ## <a name="view-the-roadmap-and-join-the-conversation"></a>Het schema weer geven en lid worden van het gesprek
 
-Ga voor meer informatie over recente en toekomstige releases naar het [micro soft Commercial Marketplace-schema](https://docs.microsoft.com/azure/marketplace/marketplace-roadmap)of neem lid van het gesprek op in de [micro soft partner community](https://www.microsoftpartnercommunity.com/).
+Ga voor meer informatie over recente en toekomstige releases naar het [micro soft Commercial Marketplace-schema](../marketplace-roadmap.md)of neem lid van het gesprek op in de [micro soft partner community](https://www.microsoftpartnercommunity.com/).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [een commercieel Marketplace-account maken in het partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)voor nieuwe micro soft-partners die geïnteresseerd zijn in het publiceren van een aanbieding naar de Marketplace.
-- Voor bestaande partners die eerder aanbiedingen hebben gepubliceerd in Cloud Partner-portal, [beheert u uw commerciële Marketplace-account in partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).
+- Zie [een commercieel Marketplace-account maken in het partner centrum](create-account.md)voor nieuwe micro soft-partners die geïnteresseerd zijn in het publiceren van een aanbieding naar de Marketplace.
+- Voor bestaande partners die eerder aanbiedingen hebben gepubliceerd in Cloud Partner-portal, [beheert u uw commerciële Marketplace-account in partner centrum](manage-account.md).
 - Meer informatie over het Cloud Marketplace-beheer dat wordt verplaatst naar partner Center in dit [blog bericht van de partner community](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293), waarin een demo video is opgenomen.

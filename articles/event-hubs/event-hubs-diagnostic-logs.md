@@ -4,10 +4,9 @@ description: Meer informatie over het instellen van activiteiten logboeken en Di
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 976d8a7127438164c8b807b6f14d3ae877f44b65
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85322461"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Diagnostische logboeken instellen voor een Azure Event Hub
@@ -132,7 +131,7 @@ JSON van het logboek voor automatisch schalen bevat elementen die in de volgende
 | Naam | Beschrijving |
 | ---- | ----------- | 
 | TrackingId | Interne ID, die wordt gebruikt voor tracerings doeleinden |
-| ResourceId | Azure Resource Manager Resource-ID. |
+| ResourceId | Azure Resource Manager-resource-id. |
 | Bericht | Informatief bericht, dat details bevat over het automatisch verg Roten van de actie. Het bericht bevat de vorige en huidige waarde van de doorvoer eenheid voor een opgegeven naam ruimte en wat de verg Roten van de TU heeft veroorzaakt. |
 
 Hier volgt een voor beeld van een gebeurtenis voor automatisch schalen: 
@@ -184,7 +183,7 @@ Kafka voor fout logboek van gebruikers bevat elementen die in de volgende tabel 
 | PartitionId | Partitie-id |
 | GroupId | Groeps-id |
 | ClientId | Client-id |
-| ResourceId | Azure Resource Manager Resource-ID. |
+| ResourceId | Azure Resource Manager-resource-id. |
 | Bericht | Informatief bericht, dat details bevat over een fout |
 
 ## <a name="event-hubs-virtual-network-connection-event-schema"></a>Verbindings gebeurtenis schema voor virtuele netwerk Event Hubs
@@ -199,7 +198,7 @@ De JSON-verbindings gebeurtenis van het Event Hubs virtuele netwerk (VNet) bevat
 | Bewerking | De actie die door de Event Hubs-service wordt uitgevoerd bij de evaluatie van verbindings aanvragen. Ondersteunde acties zijn **verbinding accepteren** en **verbinding weigeren**. |
 | Reden | Geeft een reden waarom de actie is uitgevoerd |
 | Count | Aantal exemplaren voor de opgegeven actie |
-| ResourceId | Azure Resource Manager Resource-ID. |
+| ResourceId | Azure Resource Manager-resource-id. |
 
 ### <a name="example"></a>Voorbeeld
 

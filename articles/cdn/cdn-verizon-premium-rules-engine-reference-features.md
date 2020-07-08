@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 06/02/2020
 ms.author: allensu
 ms.openlocfilehash: 0ea4f167b992ccfbc4156ac06c8f636d2ef4a355
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343197"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN van de functies van de functie van Verizon Premium-regels
@@ -27,7 +26,7 @@ De beschik bare typen functies zijn:
 * [Toegang](#access)
 * [Caching](#caching)
 * [Opmerking](#comment)
-* [Kopteksten](#headers)
+* [Headers](#headers)
 * [Logboeken](#logs)
 * [Optimaliseren](#optimize)
 * [Oorsprong](#origin)
@@ -39,7 +38,7 @@ De beschik bare typen functies zijn:
 
 Deze functies zijn ontworpen om de toegang tot inhoud te beheren.
 
-| Naam       | Functie                                                           |
+| Name       | Functie                                                           |
 |------------|-------------------------------------------------------------------|
 | [Toegang weigeren (403)](https://docs.vdms.com/cdn/Content/HRE/F/Deny-Access-403.htm) | Hiermee wordt bepaald of alle aanvragen worden afgewezen met een 403 verboden-antwoord. |
 | [Token verificatie](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm) | Hiermee wordt bepaald of op tokens gebaseerde verificatie wordt toegepast op een aanvraag. |
@@ -53,7 +52,7 @@ Deze functies zijn ontworpen om de toegang tot inhoud te beheren.
 
 Deze functies zijn ontworpen om aan te passen wanneer en hoe inhoud in de cache wordt opgeslagen.
 
-| Naam       | Functie                                                           |
+| Name       | Functie                                                           |
 |------------|-------------------------------------------------------------------|
 | [Bandbreedte parameters](https://docs.vdms.com/cdn/Content/HRE/F/Bandwidth-Parameters.htm) | Bepaalt of de para meters voor bandbreedte regeling (ec_rate en ec_prebuf) actief moeten zijn. |
 | [Bandbreedte regeling](https://docs.vdms.com/cdn/Content/HRE/F/Bandwidth-Throttling.htm) | Beperkt de band breedte voor de reactie die wordt gegeven door onze edge-servers. |
@@ -88,11 +87,11 @@ Met de functie opmerking kan een notitie worden toegevoegd binnen een regel.
 
 **[Terug naar boven](#top)**
 
-### <a name="headers"></a><a name="headers"></a>Kopteksten
+### <a name="headers"></a><a name="headers"></a>Headers
 
 Deze functies zijn ontworpen om kopteksten toe te voegen, te wijzigen of te verwijderen uit de aanvraag of het antwoord.
 
-| Naam       | Functie                                                           |
+| Name       | Functie                                                           |
 |------------|-------------------------------------------------------------------|
 | [Header van ouderdoms reactie](https://docs.vdms.com/cdn/Content/HRE/F/Age-Response-Header.htm) | Hiermee wordt bepaald of een ouderdoms reactie header wordt opgenomen in het antwoord dat naar de aanvrager wordt verzonden. |
 | [Debug cache-antwoord headers](https://docs.vdms.com/cdn/Content/HRE/F/Debug-Cache-Response-Headers.htm) | Hiermee wordt bepaald of een antwoord de [reactie header X-EC-debug](https://docs.vdms.com/cdn/Content/Knowledge_Base/X_EC_Debug.htm) kan bevatten, die informatie bevat over het cache beleid voor de aangevraagde Asset. |
@@ -106,7 +105,7 @@ Deze functies zijn ontworpen om kopteksten toe te voegen, te wijzigen of te verw
 
 Deze functies zijn ontworpen om de gegevens die zijn opgeslagen in onbewerkte logboek bestanden aan te passen.
 
-| Naam       | Functie                                                           |
+| Name       | Functie                                                           |
 |------------|-------------------------------------------------------------------|
 | [Aangepast logboek veld 1](https://docs.vdms.com/cdn/Content/HRE/F/Custom-Log-Field-1.htm) | Bepaalt de indeling en de inhoud die wordt toegewezen aan het aangepaste logboek veld in een onbewerkte logboek bestand. |
 | [Query reeks voor logboek](https://docs.vdms.com/cdn/Content/HRE/F/Log-Query-String.htm) | Hiermee wordt bepaald of een query reeks wordt opgeslagen samen met de URL in de logboeken van de toegang. |
@@ -117,7 +116,7 @@ Deze functies zijn ontworpen om de gegevens die zijn opgeslagen in onbewerkte lo
 
 Deze functies bepalen of een aanvraag de optimalisaties betrekt die door Edge Optimizer worden ondersteund.
 
-| Naam       | Functie                                                           |
+| Name       | Functie                                                           |
 |------------|-------------------------------------------------------------------|
 | [Edge-optimalisatie](https://docs.vdms.com/cdn/Content/HRE/F/Edge-Optimizer.htm) | Hiermee wordt bepaald of Edge Optimizer kan worden toegepast op een aanvraag. |
 | [Edge Optimizer: een exemplaar maken van configuratie](https://docs.vdms.com/cdn/Content/HRE/F/Edge-Optimizer-Instantiate-Configuration.htm) | De Edge Optimizer configuratie die is gekoppeld aan een site, wordt geïnstantieerd of geactiveerd. |
@@ -128,7 +127,7 @@ Deze functies bepalen of een aanvraag de optimalisaties betrekt die door Edge Op
 
 Deze functies zijn ontworpen om te bepalen hoe het CDN communiceert met een oorspronkelijke server.
 
-| Naam       | Functie                                                           |
+| Name       | Functie                                                           |
 |------------|-------------------------------------------------------------------|
 | [Maximum aantal Keep-Alive-aanvragen](https://docs.vdms.com/cdn/Content/HRE/F/Maximum-Keep-Alive-Requests.htm) | Hiermee definieert u het maximum aantal aanvragen voor een keep-alive-verbinding voordat het wordt gesloten. |
 | [Proxy-speciale headers](https://docs.vdms.com/cdn/Content/HRE/F/Proxy-Special-Headers.htm) | Hiermee wordt de set [CDN-specifieke aanvraag headers](https://docs.vdms.com/cdn/Content/Knowledge_Base/Request-Format.htm#RequestHeaders) gedefinieerd die worden doorgestuurd van een Edge-server naar een bron server. |
@@ -139,7 +138,7 @@ Deze functies zijn ontworpen om te bepalen hoe het CDN communiceert met een oors
 
 Deze functies bieden geavanceerde functionaliteit die alleen mag worden gebruikt door geavanceerde gebruikers.
 
-| Naam       | Functie                                                           |
+| Name       | Functie                                                           |
 |------------|-------------------------------------------------------------------|
 | [Cacheable HTTP-methoden](https://docs.vdms.com/cdn/Content/HRE/F/Cacheable-HTTP-Methods.htm) | Bepaalt de set aanvullende HTTP-methoden die in het netwerk in de cache kunnen worden opgeslagen. |
 | [Grootte van cacheable aanvraag hoofdtekst](https://docs.vdms.com/cdn/Content/HRE/F/Cacheable-Request-Body-Size.htm) | Definieert de drempel waarde voor het bepalen of een POST-antwoord in de cache kan worden opgeslagen. |
@@ -153,7 +152,7 @@ Deze functies bieden geavanceerde functionaliteit die alleen mag worden gebruikt
 
 Met deze functies kan een aanvraag worden omgeleid of herschreven naar een andere URL.
 
-| Naam       | Functie                                                           |
+| Name       | Functie                                                           |
 |------------|-------------------------------------------------------------------|
 | [Omleidingen volgen](https://docs.vdms.com/cdn/Content/HRE/F/Follow-Redirects.htm) | Hiermee wordt bepaald of aanvragen kunnen worden omgeleid naar de hostnaam die is opgegeven in de locatie-header die wordt geretourneerd door een server van de klant. |
 | [URL-omleiding](https://docs.vdms.com/cdn/Content/HRE/F/URL-Redirect.htm) | Stuurt aanvragen via de locatie header. |

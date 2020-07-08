@@ -10,10 +10,9 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 8d76588ae9124d34902659cc0149063400b6e766
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759532"
 ---
 # <a name="post-deployment-tasks"></a>Taken na de implementatie
@@ -34,9 +33,9 @@ Als u Azure Active Directory voor verificatie wilt gebruiken, moet u eerst een A
 In deze stappen wordt gebruikgemaakt van de Azure CLI om de app-registratie te maken en de gebruikers interface (Portal) om de machtigingen in te stellen. Als u de app-registratie wilt maken, hebt u de volgende vijf stukjes informatie nodig:
 
 - Weergave naam: naam van de app-registratie (bijvoorbeeld OCPAzureAD)
-- Start pagina: URL van open Shift-console (bijvoorbeeld `https://masterdns343khhde.westus.cloudapp.azure.com/console`)
-- Id-URI: open Shift-console-URL ( `https://masterdns343khhde.westus.cloudapp.azure.com/console`bijvoorbeeld)
-- Antwoord-URL: open bare URL voor Master en de naam van de app `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD`-registratie (bijvoorbeeld)
+- Start pagina: URL van open Shift-console (bijvoorbeeld `https://masterdns343khhde.westus.cloudapp.azure.com/console` )
+- Id-URI: open Shift-console-URL (bijvoorbeeld `https://masterdns343khhde.westus.cloudapp.azure.com/console` )
+- Antwoord-URL: open bare URL voor Master en de naam van de app-registratie (bijvoorbeeld `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD` )
 - Wacht woord: beveiligd wacht woord (gebruik een sterk wacht woord)
 
 In het volgende voor beeld wordt een app-registratie gemaakt met behulp van de voor gaande informatie:
@@ -69,7 +68,7 @@ Noteer de eigenschap appId die wordt geretourneerd door de opdracht voor een lat
 
 In Azure Portal:
 
-1. Selecteer **Azure Active Directory** > **app-registratie**.
+1. Selecteer **Azure Active Directory**  >  **app-registratie**.
 2. Zoek naar de registratie van uw app (bijvoorbeeld OCPAzureAD).
 3. Klik in de resultaten op de app-registratie.
 4. Selecteer onder **instellingen**de optie **vereiste machtigingen**.
@@ -197,7 +196,7 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 
 Met Service Broker openen voor Azure of OSBA kunt u Azure Cloud Services rechtstreeks inrichten vanuit open SHIFT. OSBA in een open Service Broker API-implementatie voor Azure. De open Service Broker-API is een specificatie die een gemeen schappelijke taal definieert voor cloud providers die native toepassingen in de Cloud kunnen gebruiken om Cloud Services zonder vergren deling te beheren.
 
-Volg de instructies die u hier vindt om OSBA te installeren op open https://github.com/Azure/open-service-broker-azure#openshift-project-templateShift:. 
+Volg de instructies die u hier vindt om OSBA te installeren op open Shift: https://github.com/Azure/open-service-broker-azure#openshift-project-template . 
 > [!NOTE]
 > Voer de stappen in het gedeelte open Shift-project sjabloon alleen uit en niet de volledige installatie sectie.
 

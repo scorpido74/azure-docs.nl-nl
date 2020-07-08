@@ -7,13 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.openlocfilehash: c56c31bb6f56efb10808ce25b6b232089391e831
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84712442"
 ---
-# <a name="data-operation-code-samples-for-azure-logic-apps"></a>Voor beelden van gegevens bewerkings code voor Azure Logic Apps
+# <a name="data-operation-code-samples-for-azure-logic-apps"></a>Voorbeelden van code voor het bewerken van gegevens voor Azure Logic Apps
 
 Hier volgen de code voorbeelden voor de actie definities van de gegevens bewerking in het artikel, [uitvoeren van gegevens bewerkingen](../logic-apps/logic-apps-perform-data-operations.md). U kunt deze voor beelden gebruiken als u de voor beeld wilt uitproberen met de onderliggende werk stroom definitie, Azure-abonnement en API-verbindingen van uw eigen logische app. Kopieer en plak deze actie definities in de code weergave-editor voor de werk stroom definitie van uw logische app en wijzig vervolgens de definities voor uw specifieke werk stroom. 
 

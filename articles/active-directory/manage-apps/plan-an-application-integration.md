@@ -16,10 +16,9 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0d49c23e5968b0fe1b2d4838978fe1b23931e5e9
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763088"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Hand leiding voor het integreren van Azure Active Directory met toepassingen
@@ -95,7 +94,7 @@ Voor gedetailleerde informatie kunt u Azure Active Directory implementatie plann
 
 Een implementatie plan downloaden van de Azure Portal:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **Enterprise Applications**  |  **een app**-  |  **implementatie plan**voor bedrijfs toepassingen.
 
 Geef feedback over implementatie plannen door gebruik te maken van de enquête van het [implementatie plan](https://aka.ms/DeploymentPlanFeedback).

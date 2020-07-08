@@ -10,10 +10,9 @@ ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 7f4489b3073462a93319886ee5560ed5a6660111
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84659966"
 ---
 # <a name="create-a-snapshot"></a>Een momentopname maken 
@@ -58,7 +57,7 @@ az snapshot list \
 
 ## <a name="use-azure-portal"></a>Azure Portal gebruiken 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Klik in de linkerbovenhoek op **een resource maken** en zoek naar een **moment opname**. Selecteer **moment opname** in de zoek resultaten.
 3. Klik op de Blade **moment opname** op **maken**.
 4. Voer een **naam** in voor de moment opname.
