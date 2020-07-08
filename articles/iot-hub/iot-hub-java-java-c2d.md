@@ -13,10 +13,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: e16d0ed264f32746c11d89e88ea1e67f9383b773
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732517"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>Cloud-naar-apparaat-berichten verzenden met IoT Hub (Java)
@@ -56,7 +55,7 @@ Aan het einde van deze zelf studie voert u twee Java Console-apps uit:
 
 * Een actief Azure-account. Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.
 
-* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+* Zorg ervoor dat de poort 8883 is geopend in de firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort is in sommige netwerkomgevingen van bedrijven en onderwijsinstellingen mogelijk geblokkeerd. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>Berichten ontvangen in de gesimuleerde apparaat-app
 
@@ -114,7 +113,7 @@ In deze sectie maakt u een Java-Console-app die Cloud-naar-apparaat-berichten na
 
 2. Ga bij de opdracht prompt naar de nieuwe map Send-C2D-messages.
 
-3. Open met een tekst editor het bestand pom. XML in de map Send-C2D-messages en voeg de volgende afhankelijkheid toe aan het knoop punt **afhankelijkheden** . Door de afhankelijkheid toe te voegen, kunt u het **iothub-Java-service-client-** pakket in uw toepassing gebruiken om te communiceren met uw IOT hub-service:
+3. Open met een tekst editor het pom.xml-bestand in de map Send-C2D-messages en voeg de volgende afhankelijkheid toe aan het knoop punt **afhankelijkheden** . Door de afhankelijkheid toe te voegen, kunt u het **iothub-Java-service-client-** pakket in uw toepassing gebruiken om te communiceren met uw IOT hub-service:
 
     ```xml
     <dependency>

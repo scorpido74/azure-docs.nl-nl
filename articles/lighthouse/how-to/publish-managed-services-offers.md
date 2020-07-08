@@ -3,12 +3,11 @@ title: Een beheerde service aanbieding naar Azure Marketplace publiceren
 description: Meer informatie over het publiceren van een Managed Service-aanbod waarmee klanten worden vrijgegeven aan het beheer van de gedelegeerde resources van Azure.
 ms.date: 05/04/2020
 ms.topic: how-to
-ms.openlocfilehash: f1aef8bbf5279891fb8edf2222cc1dda3326bdd6
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.openlocfilehash: 214a71faca59072660f1e1f413cb107d8e8f6fc9
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636509"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920891"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Een beheerde service aanbieding naar Azure Marketplace publiceren
 
@@ -18,7 +17,7 @@ In dit artikel leert u hoe u een aanbieding voor open bare of privé beheerde se
 
 U hebt een geldig [account in het partner centrum](../../marketplace/partner-center-portal/create-account.md) nodig om aanbiedingen te maken en te publiceren. Als u nog geen account hebt, wordt u door het [aanmeldings proces](https://aka.ms/joinmarketplace) geleid door de stappen voor het maken van een account in partner centrum en het inschrijven van het commerciële Marketplace-programma.
 
-Op basis van de [certificerings vereisten voor het beheerde service aanbod](https://docs.microsoft.com/legal/marketplace/certification-policies#7004-business-requirements)moet u beschikken over een [Silver-of Gold-competentie voor het Cloud platform](https://docs.microsoft.com/partner-center/learn-about-competencies) of van een Azure-expert- [MSP](https://partner.microsoft.com/membership/azure-expert-msp) om een beheerd service aanbod te kunnen publiceren.
+Op basis van de [certificerings vereisten voor het beheerde service aanbod](/legal/marketplace/certification-policies#7004-business-requirements)moet u beschikken over een [Silver-of Gold-competentie voor het Cloud platform](/partner-center/learn-about-competencies) of van een Azure-expert- [MSP](https://partner.microsoft.com/membership/azure-expert-msp) om een beheerd service aanbod te kunnen publiceren.
 
 Uw Microsoft Partner Network-ID (MPN) wordt [automatisch gekoppeld](../../billing/billing-partner-admin-link-started.md) aan de aanbiedingen die u publiceert voor het bijhouden van invloed op de klant afspraken.
 
@@ -29,7 +28,7 @@ Uw Microsoft Partner Network-ID (MPN) wordt [automatisch gekoppeld](../../billin
 
 Zie [een beheerde service aanbieding maken](../../marketplace/partner-center-portal/create-new-managed-service-offer.md)voor gedetailleerde instructies voor het maken van uw aanbieding, inclusief alle informatie en assets die u moet opgeven.
 
-Zie de [publicatie handleiding voor Azure Marketplace en AppSource](../../marketplace/marketplace-publishers-guide.md)voor meer informatie over het algemene publicatie proces. U moet ook het [beleid voor commerciële Marketplace-certificerings](https://docs.microsoft.com/legal/marketplace/certification-policies)instanties, met name de sectie [Managed Services](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) , bekijken.
+Zie de [publicatie handleiding voor Azure Marketplace en AppSource](../../marketplace/marketplace-publishers-guide.md)voor meer informatie over het algemene publicatie proces. U moet ook het [beleid voor commerciële Marketplace-certificerings](/legal/marketplace/certification-policies)instanties, met name de sectie [Managed Services](/legal/marketplace/certification-policies#700-managed-services) , bekijken.
 
 Zodra een klant uw aanbieding heeft toegevoegd, kunnen ze een of meer abonnementen of resource groepen delegeren, die vervolgens voor het [beheer van gedelegeerde resources van Azure](#the-customer-onboarding-process)wordt uitgevoerd.
 
@@ -47,12 +46,12 @@ U kunt op elk gewenst moment [een bijgewerkte versie van uw aanbieding publicere
 Nadat een klant uw aanbieding heeft toegevoegd, kunnen ze [een of meer specifieke abonnementen of resource groepen delegeren](view-manage-service-providers.md#delegate-resources), die vervolgens worden uitgevoerd voor het beheer van de gedelegeerde resources van Azure. Als een klant een aanbieding heeft geaccepteerd, maar nog geen resources heeft gedelegeerd, wordt op de pagina [**service providers**](view-manage-service-providers.md) van de Azure Portal een opmerking weer geven boven aan de **provider** .
 
 > [!IMPORTANT]
-> Delegering moet worden uitgevoerd door een niet-gast account in de Tenant van de klant waarvan de [eigenaar ingebouwde rol](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) heeft voor het abonnement (of de resource groepen bevat die worden uitgevoerd). Als u alle gebruikers wilt zien die het abonnement kunnen delegeren, kan een gebruiker in de Tenant van de klant het abonnement selecteren in de Azure Portal, **toegangs beheer openen (IAM)** en [alle gebruikers met de rol eigenaar weer geven](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
+> Delegering moet worden uitgevoerd door een niet-gast account in de Tenant van de klant waarvan de [eigenaar ingebouwde rol](../../role-based-access-control/built-in-roles.md#owner) heeft voor het abonnement (of de resource groepen bevat die worden uitgevoerd). Als u alle gebruikers wilt zien die het abonnement kunnen delegeren, kan een gebruiker in de Tenant van de klant het abonnement selecteren in de Azure Portal, **toegangs beheer openen (IAM)** en [alle gebruikers met de rol eigenaar weer geven](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
 
 Zodra de klant een abonnement (of een of meer resource groepen binnen een abonnement) delegeert, wordt de resource provider **micro soft. ManagedServices** geregistreerd voor dat abonnement en kunnen gebruikers in uw Tenant toegang krijgen tot de gedelegeerde resources op basis van de autorisaties in uw aanbieding.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over de [commerciële Marketplace](../../marketplace/partner-center-portal/commercial-marketplace-overview.md).
-- Meer informatie over de [ervaring op het beheer van cross-tenants](../concepts/cross-tenant-management-experience.md).
+- Meer informatie over [beheerervaring in meerdere tenants](../concepts/cross-tenant-management-experience.md).
 - [Bekijk en beheer klanten](view-manage-customers.md) door naar **mijn klanten** te gaan in de Azure Portal.

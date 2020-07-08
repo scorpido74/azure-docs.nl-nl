@@ -8,10 +8,9 @@ ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: dfa9de94665c0ee98d0252be6de807f18e39b087
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83697971"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Azure Analysis Services beheren met PowerShell
@@ -44,7 +43,7 @@ Documentatie- [sqlserver-referentie](/powershell/module/sqlserver)
 
 ### <a name="supported-cmdlets"></a>Ondersteunde cmdlets
 
-|Cmdlet|Beschrijving|
+|Cmdlet|Description|
 |------------|-----------------| 
 |[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Een lid toevoegen aan een databaserol.| 
 |[Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|Back-up maken van een Analysis Services-Data Base.|  

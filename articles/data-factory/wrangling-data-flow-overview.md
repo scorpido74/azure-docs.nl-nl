@@ -7,16 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 3b8632eaf7662d705235adaad7cd03d2e7e4904b
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.openlocfilehash: 203e5fcaa99f7aebeda34e6968f636ed72851ec8
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626868"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921535"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Wat zijn wrangling-gegevens stromen?
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 
 Organisaties moeten gegevens voorbereiding en wrangling voor nauw keurige analyse van complexe gegevens die steeds elke dag blijven groeien. Het voorbereiden van gegevens is vereist zodat organisaties de gegevens in verschillende bedrijfs processen kunnen gebruiken en de tijd tot waarde kan verlagen.
 
@@ -25,6 +25,9 @@ Met Wrangling-gegevens stromen in Azure Data Factory kunt u de gegevens voorbere
 Wrangling-gegevens stroom vertaalt M die is gegenereerd door Power Query online Mashup-Editor in Spark-code voor het uitvoeren van Cloud schalen.
 
 Wrangling-gegevens stromen zijn vooral nuttig voor gegevens technici of ' burger data Integrators '.
+
+> [!NOTE]
+> Wrangling-gegevens stroom is momenteel beschik bare in open bare preview
 
 ## <a name="use-cases"></a>Gebruiksvoorbeelden
 

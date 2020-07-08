@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: 80c789f955b279e7771fe39c20087baa465b3293
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042622"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Nieuwe tenants inrichten en catalogiseren in een SaaS-toepassing met behulp van een Shard multi tenant-Azure SQL Database
@@ -156,7 +155,7 @@ Hieronder ziet u de belangrijkste elementen van de werk stroom voor het inrichte
 
 Als u wilt weten hoe de Wingtip-app nieuwe Tenant inrichting implementeert in een gedeelde data base, voegt u een onderbrekings punt toe en voert u de volgende stappen uit:
 
-1. Open in de *Power shell-ISE*.. \\ . Learning modules \\ ProvisionTenants \\ *demo-ProvisionTenants. ps1* en stel de volgende para meters in:
+1. Open in de *Power shell-ISE*.. \\ . Leer modules \\ ProvisionTenants \\ *Demo-ProvisionTenants.ps1* en stel de volgende para meters in:
    - **$TenantName**  =  **Bushwillowe blauw**, de naam van een nieuwe locatie.
    - **$VenueType**  =  **blauw**, een van de vooraf gedefinieerde typen locaties: blauw, classicalmusic, dans, jazz, Judo, motorracing, Multipurpose, Opera, rockmusic, voetbal (kleine letters, geen spaties).
    - **$DemoScenario**  =  **1**, voor het inrichten van een Tenant in een gedeelde data base met andere tenants.
@@ -196,7 +195,7 @@ Hieronder vindt u belang rijke elementen van de werk stroom tijdens het traceren
 
 Bekijk nu het script proces bij het maken van een Tenant in een eigen Data Base:
 
-1. Nog steeds in... \\ Learning modules \\ ProvisionTenants \\ *demo-ProvisionTenants. ps1* Stel de volgende para meters in:
+1. Nog steeds in... \\ Leer modules \\ ProvisionTenants \\ *Demo-ProvisionTenants.ps1* de volgende para meters instellen:
    - **$TenantName**  =  **Sequoia voetbal**, de naam van een nieuwe locatie.
    - **$VenueType**  =  **voetbal**, een van de vooraf gedefinieerde typen locaties: blauw, classicalmusic, dans, jazz, Judo, motorracing, Multipurpose, Opera, rockmusic, voetbal (kleine letters, geen spaties).
    - **$DemoScenario**  =  **2**, om een Tenant in te richten in een eigen data base.
@@ -213,7 +212,7 @@ Bekijk nu het script proces bij het maken van een Tenant in een eigen Data Base:
 
 In deze oefening worden een batch van 17 tenants ingericht. Het is raadzaam deze batch met tenants in te richten voordat u andere zelf studies voor Wingtip tickets start, zodat er meer data bases zijn om mee te werken.
 
-1. Open in de *Power shell-ISE*.. \\ . Learning modules \\ ProvisionTenants \\ *demo-ProvisionTenants. ps1* en wijzig de *$DemoScenario* para meter in 4:
+1. Open in de *Power shell-ISE*.. \\ . Leer modules \\ ProvisionTenants \\ *Demo-ProvisionTenants.ps1* en wijzig de *$DemoScenario* -para meter in 4:
    - **$DemoScenario**  =  **4**, voor het inrichten van een batch tenants in een gedeelde data base.
 
 2. Druk op **F5** om het script uit te voeren.

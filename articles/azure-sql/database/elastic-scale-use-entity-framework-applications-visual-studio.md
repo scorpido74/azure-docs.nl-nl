@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
 ms.openlocfilehash: b53e37384ba85770b445f834c440075cd35b6eb2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84041873"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Client bibliotheek Elastic Database met Entity Framework
@@ -191,7 +190,7 @@ De nood zaak om te bepalen waar tijdelijke uitzonde ringen in het bereik terugko
 
 De code voorbeelden hierboven illustreren de standaard herschrijf bewerkingen van de constructor die vereist zijn voor uw toepassing om gegevens afhankelijke route ring te kunnen gebruiken met de Entity Framework. In de volgende tabel wordt deze aanpak gegeneraliseerd met andere constructors.
 
-| Huidige constructor | Reschreven constructor voor gegevens | Basis-constructor | Opmerkingen |
+| Huidige constructor | Reschreven constructor voor gegevens | Basis-constructor | Notities |
 | --- | --- | --- | --- |
 | MyContext() |ElasticScaleContext(ShardMap, TKey) |DbContext (DbConnection, BOOL) |De verbinding moet een functie zijn van de Shard-kaart en de gegevens afhankelijke routerings sleutel. U moet door gaan met het maken van automatische verbinding door EF en in plaats daarvan de Shard-toewijzing gebruiken om de verbinding te Broker. |
 | MyContext (teken reeks) |ElasticScaleContext(ShardMap, TKey) |DbContext (DbConnection, BOOL) |De verbinding is een functie van de Shard-kaart en de gegevens afhankelijke routerings sleutel. De naam van een vaste data base of connection string werkt niet als door gegeven validatie door de Shard-kaart. |

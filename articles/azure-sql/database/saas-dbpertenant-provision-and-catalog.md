@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: 368843cf9b6e59497fe00e69433ae0d14b3f3398
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042811"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Meer informatie over het inrichten van nieuwe tenants en registreren in de catalogus
@@ -78,7 +77,7 @@ De SaaS-scripts van Wingtip tickets en de bron code van de toepassing zijn besch
 
 Als u wilt weten hoe de toepassing Wingtip tickets nieuwe Tenant inrichting implementeert, voegt u een onderbrekings punt toe en volgt u de werk stroom terwijl u een Tenant inricht.
 
-1. Open in de Power shell-ISE.. \\ . Learning modules \\ ProvisionAndCatalog \\ _demo-ProvisionAndCatalog. ps1_ en stel de volgende para meters in:
+1. Open in de Power shell-ISE.. \\ . Leer modules \\ ProvisionAndCatalog \\ _Demo-ProvisionAndCatalog.ps1_ en stel de volgende para meters in:
 
    * **$TenantName** = de naam van de nieuwe venue (bijvoorbeeld *Bushwillow Blues*).
    * **$VenueType** = een van de vooraf gedefinieerde typen locaties: _blauw, classicalmusic, dans, jazz, Judo, Motor Racing, multifunctioneel, Opera, rockmusic, voetbal_.
@@ -116,7 +115,7 @@ U hoeft deze werk stroom niet expliciet te volgen. Hierin wordt uitgelegd hoe u 
 
     De databasenaam wordt samengesteld aan de hand van de naam van de tenant om duidelijk aan te geven welke shard bij welke tenant hoort. U kunt ook andere database naam conventies gebruiken. Een resource manager-sjabloon maakt een Tenant database door een sjabloon database (_baseTenantDB_) op de catalogus server te kopiëren. Als alternatief kunt u een Data Base maken en deze initialiseren door een Bacpac te importeren. U kunt ook een initialisatie script uitvoeren vanaf een bekende locatie.
 
-    De Resource Manager-sjabloon bevindt zich in de map. ..\Learning Modules\Common\: *tenantdatabasecopytemplate. json*
+    De Resource Manager-sjabloon bevindt zich in de map. ..\Learning Modules\Common\: *tenantdatabasecopytemplate.jsop*
 
 * **De Tenant database is verder geïnitialiseerd.** De naam van de locatie (Tenant) en het type locatie worden toegevoegd. U kunt hier ook andere initialisaties uitvoeren.
 
@@ -136,7 +135,7 @@ Nadat het inrichten is voltooid, keert de uitvoering terug naar het oorspronkeli
 
 In deze oefening worden een batch van 17 tenants ingericht. U wordt aangeraden deze batch tenants in te richten voordat u andere zelf studies voor Wingtip tickets SaaS-Data Base kunt starten. Er zijn meer dan slechts een paar data bases waarmee u kunt werken.
 
-1. Open in de Power shell-ISE.. \\ . Learning modules \\ ProvisionAndCatalog \\ *demo-ProvisionAndCatalog. ps1*. Wijzig de *$DemoScenario* para meter in 3:
+1. Open in de Power shell-ISE.. \\ . Learning modules \\ ProvisionAndCatalog \\ *Demo-ProvisionAndCatalog.ps1*. Wijzig de *$DemoScenario* para meter in 3:
 
    * **$DemoScenario**  =  **3**, *een batch met tenants inrichten*.
 2. Druk op F5 om het script uit te voeren.

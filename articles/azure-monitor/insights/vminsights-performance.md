@@ -1,5 +1,5 @@
 ---
-title: Prestaties van grafieken met Azure Monitor voor VM's
+title: Prestaties in kaart brengen met Azure Monitor voor VM's
 description: Prestaties is een functie van de Azure Monitor voor VM's die toepassings onderdelen automatisch detecteert op Windows-en Linux-systemen en de communicatie tussen services toewijst. In dit artikel vindt u informatie over het gebruik ervan in verschillende scenario's.
 ms.subservice: ''
 ms.topic: conceptual
@@ -7,13 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/31/2020
 ms.openlocfilehash: 1ea6d09609d1b7b3f7ba7297a040447d1fc24756
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83684391"
 ---
-# <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>Prestaties van grafieken met Azure Monitor voor VM's
+# <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>Prestaties in kaart brengen met Azure Monitor voor VM's
 
 Azure Monitor voor VM's bevat een reeks prestatie diagrammen die gericht zijn op verschillende Key Performance Indica tors (Kpi's) waarmee u kunt bepalen hoe goed een virtuele machine wordt uitgevoerd. In de grafieken wordt het resource gebruik gedurende een bepaalde periode weer gegeven, zodat u knel punten, afwijkingen kunt identificeren of overschakelen naar een perspectief waarin elke machine wordt weer gegeven op basis van de geselecteerde metriek. Hoewel er talrijke elementen zijn waarmee u rekening moet houden bij de prestaties, wordt Azure Monitor voor VM's bewaakt de prestatie-indica tors van het sleutel besturings systeem die betrekking hebben op de processor, het geheugen, de netwerk adapter en het schijf gebruik. Prestaties vormen een aanvulling op de status controle functie en helpen problemen op te lossen die duiden op een mogelijke systeem onderdeel fout, ondersteuning voor afstemming en Optima Lise ring om efficiëntie te beleven of capaciteits planning te ondersteunen.  
 

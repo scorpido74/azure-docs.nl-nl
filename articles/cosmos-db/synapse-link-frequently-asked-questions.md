@@ -6,16 +6,15 @@ ms.author: srchi
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: d16da1588c2fa90c4a40a829ed660fd089ff29ac
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.openlocfilehash: bead905a3bd4b1cdd46c4cd27775f9d7e03040d5
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392366"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921185"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Veelgestelde vragen over Azure Synapse Link voor Azure Cosmos DB
 
-Met Azure Synapse link voor Azure Cosmos DB maakt u een nauwe integratie tussen Azure Cosmos DB en Azure Synapse Analytics. Hierdoor kunnen klanten bijna realtime analyses uitvoeren via hun operationele gegevens met volledige prestatie isolatie van hun transactionele werk belastingen en zonder een ETL-pijp lijn. In dit artikel vindt u antwoorden op veelgestelde vragen over de Synapse-koppeling voor Azure Cosmos DB.
+Met Azure Synapse link voor Azure Cosmos DB maakt u een nauwe integratie tussen Azure Cosmos DB en Azure Synapse Analytics. Hierdoor kunnen klanten bijna realtime analyses uitvoeren via hun operationele gegevens met volledige prestatie isolatie van hun transactionele werk belastingen en zonder een ETL-pijp lijn. Dit artikel beantwoordt veelgestelde vragen over Synapse Link voor Azure Cosmos DB.
 
 ## <a name="general-faq"></a>Veelgestelde algemene vragen
 
@@ -29,6 +28,9 @@ Wanneer u van plan bent een Azure Cosmos-account met meerdere regio's te configu
 
 ### <a name="can-i-choose-to-enable-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>Kan ik kiezen om Synapse-koppeling in te scha kelen voor slechts bepaalde regio's en niet voor alle regio's in een account met meerdere regio's?
 Wanneer de Synapse-koppeling is ingeschakeld voor een account met meerdere regio's in de preview-versie, wordt het analytische archief in alle regio's gemaakt. De onderliggende gegevens worden geoptimaliseerd voor de door Voer en transactionele consistentie in het transactionele archief.
+
+### <a name="is-backup-and-restore-supported-for-synapse-link-enabled-accounts"></a>Worden back-up-en herstel bewerkingen ondersteund voor Synapse-accounts?
+In de preview-versie wordt voor Synapse-koppeling ingeschakelde database accounts geen back-up en herstel van containers ondersteund. Als u productie werkbelastingen hebt waarvoor een back-up-en herstel functionaliteit nodig is, wordt aangeraden de Synapse-koppeling niet in te scha kelen voor deze database accounts. 
 
 ### <a name="can-i-disable-the-synapse-link-feature-for-my-azure-cosmos-account"></a>Kan ik de Synapse-koppelings functie voor mijn Azure Cosmos-account uitschakelen?
 Nadat de Synapse Link-functie op accountniveau is ingeschakeld, kunt u deze momenteel niet uitschakelen.  Als u de mogelijkheid wilt uitschakelen, moet u een nieuw Azure Cosmos-account verwijderen en opnieuw maken.

@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
 ms.openlocfilehash: a8c879ae56eb22d9817841667d33e37109a4f63d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759399"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>De besturingssysteem schijf wijzigen die wordt gebruikt door een virtuele machine van Azure met de CLI
@@ -24,7 +23,7 @@ De VM moet stopped\deallocated zijn. vervolgens kan de bron-ID van de beheerde s
 
 Zorg ervoor dat de VM-grootte en het opslag type compatibel zijn met de schijf die u wilt koppelen. Als de schijf die u wilt gebruiken zich bijvoorbeeld in Premium Storage bevindt, moet de virtuele machine Premium Storage kunnen zijn (zoals een grootte van de DS-serie).
 
-Voor dit artikel is Azure CLI versie 2.0.25 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli). 
+Voor dit artikel is Azure CLI versie 2.0.25 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. 
 
 
 Gebruik [AZ Disk List](/cli/azure/disk) om een lijst op te halen van de schijven in de resource groep.
@@ -46,7 +45,7 @@ az vm stop \
 ```
 
 
-Gebruik [AZ VM update](/cli/azure/vm#az-vm-update) met de volledige resource-id van de nieuwe schijf voor `--osdisk` de para meter 
+Gebruik [AZ VM update](/cli/azure/vm#az-vm-update) met de volledige resource-id van de nieuwe schijf voor de `--osdisk` para meter 
 
 ```azurecli-interactive 
 az vm update \

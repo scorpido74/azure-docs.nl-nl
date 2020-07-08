@@ -12,10 +12,9 @@ ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: d944ff86cdc11c30142792c6fd15d03e3cfd4fa9
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85212935"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-the-azure-portal"></a>Snelstartgids: Compute Scale for Synapse SQL pool with the Azure Portal
@@ -37,12 +36,12 @@ U kunt een SQL-groep die u al hebt, schalen of [Quick Start: Create and Connect-
 
 ## <a name="scale-compute"></a>De schaal van Compute aanpassen
 
-Reken resources van SQL-pool kunnen worden geschaald door de Data Warehouse-eenheden te verg Roten of te verkleinen. De [Snelstartgids: Create and Connect-Portal](create-data-warehouse-portal.md) heeft **mySampleDataWarehouse** gemaakt en geïnitialiseerd met 400 dwu's. In de volgende stappen wordt het aantal DWU's voor **mySampleDataWarehouse** aangepast.
+Reken resources van SQL-pool kunnen worden geschaald door de Data Warehouse-eenheden te verg Roten of te verkleinen. De [Snelstartgids: Create and Connect-Portal](create-data-warehouse-portal.md) heeft **mySampleDataWarehouse** gemaakt en geïnitialiseerd met 400 dwu's. In de volgende stappen wordt het aantal DWU’s voor **mySampleDataWarehouse** aangepast.
 
 DWU’s wijzigen:
 
-1. Klik op **Azure Synapse Analytics (voorheen SQL DW)** op de linker pagina van de Azure Portal.
-2. Selecteer **mySampleDataWarehouse** op de pagina **Azure Synapse Analytics (voorheen SQL DW)** . De SQL-groep wordt geopend.
+1. Klik op **Azure Synapse Analytics (voorheen SQL DW)** op de linkerpagina van de Azure Portal.
+2. Selecteer **mySampleDataWarehouse** op de pagina **Azure Synapse Analytics (voorheen SQL DW)** . De SQL-pool wordt geopend.
 3. Klik op **Schalen**.
 
     ![Op Schalen klikken](./media/quickstart-scale-compute-portal/click-scale.png)

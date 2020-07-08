@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
 ms.openlocfilehash: 9cb516b6d13b4b57a89bb276683857c62a758618
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84021871"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolatie in de open bare Azure-Cloud
@@ -208,10 +207,10 @@ IP-opslag gegevens kunnen worden beschermd tegen onbevoegde gebruikers via een n
 
 Azure biedt de volgende typen versleuteling om gegevens te beveiligen:
 
-- Versleuteling 'in transit'
+- Versleuteling tijdens overdracht
 - Versleuteling 'at rest'
 
-#### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
+#### <a name="encryption-in-transit"></a>Versleuteling in transit
 
 Versleuteling in transit is een mechanisme voor het beveiligen van gegevens wanneer deze via netwerken worden verzonden. Met Azure Storage kunt u gegevens beveiligen met behulp van:
 
@@ -219,7 +218,7 @@ Versleuteling in transit is een mechanisme voor het beveiligen van gegevens wann
 - [Wire-versleuteling](../../storage/blobs/security-recommendations.md), zoals SMB 3,0-versleuteling voor Azure-bestands shares.
 - [Versleuteling aan de client zijde](../../storage/blobs/security-recommendations.md), voor het versleutelen van de gegevens voordat deze naar de opslag wordt overgebracht en voor het ontsleutelen van de gegevens nadat deze buiten de opslag zijn overgedragen.
 
-#### <a name="encryption-at-rest"></a>Versleuteling bij rest
+#### <a name="encryption-at-rest"></a>Versleuteling 'at rest'
 
 Voor veel organisaties is [gegevens versleuteling in rust](isolation-choices.md) een verplichte stap op het vlak van gegevens privacy, naleving en data soevereiniteit. Er zijn drie Azure-functies voor het versleutelen van gegevens met de waarde ' op rest ':
 

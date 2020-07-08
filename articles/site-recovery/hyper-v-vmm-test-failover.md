@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84710674"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Een DR-analyse uitvoeren voor virtuele Hyper-V-machines naar een secundaire site
@@ -123,7 +122,7 @@ In deze procedure wordt beschreven hoe u een testfailover uitvoert voor een hers
 2. Geef op de Blade **testfailover** op hoe replica-vm's moeten worden verbonden met netwerken na de testfailover.
 3. Volg de voortgang van de failover op het tabblad **taken** .
 4. Nadat de failover is voltooid, controleert u of de Vm's zijn gestart.
-5. Wanneer u klaar bent, klikt u op **testfailover opschonen** in het herstel plan. Leg in **notities**eventuele opmerkingen over de testfailover vast en sla deze op. Met deze stap worden alle Vm's en netwerken verwijderd die tijdens de testfailover zijn gemaakt door Site Recovery. 
+5. Wanneer u klaar bent, klikt u op **testfailover opschonen** in het herstel plan. Leg in **Notities** eventuele opmerkingen over de testfailover vast en sla deze op. Met deze stap worden alle Vm's en netwerken verwijderd die tijdens de testfailover zijn gemaakt door Site Recovery. 
 
 ![Testfailover](./media/hyper-v-vmm-test-failover/TestFailover.png)
  

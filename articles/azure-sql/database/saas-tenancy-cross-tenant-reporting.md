@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewers: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: fe4b25dfd8bf96d1ed6dab189543e0e1b810ecd8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042118"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Rapportage over meerdere tenants met behulp van gedistribueerde query's
@@ -59,7 +58,7 @@ De Wingtip tickets SaaS multi-tenant database scripts en toepassings bron code z
 
 Als u query's wilt uitvoeren op een interessantere gegevensset, maakt u verkoop gegevens van tickets door de ticket Generator uit te voeren.
 
-1. Open in de *Power shell-ISE*de.. \\ . Trainings modules \\ Operational \\ Reporting AD \\ *demo-AdhocReporting. ps1* script en stel de volgende waarde in:
+1. Open in de *Power shell-ISE*de.. \\ . Trainings modules \\ Operational \\ Reporting ad \\ Scripting*Demo-AdhocReporting.ps1* script en stel de volgende waarde in:
    * **$DemoScenario** = 1, **Koop tickets voor gebeurtenissen op alle locaties**.
 2. Druk op **F5** om het script uit te voeren en de verkoop van tickets te genereren. Wanneer het script wordt uitgevoerd, gaat u door met de stappen in deze zelf studie. De ticket gegevens worden in de sectie *ad hoc gedistribueerde Query's uitvoeren* opgevraagd en wachten op het volt ooien van de ticket generator.
 
@@ -104,7 +103,7 @@ Scripteer een van de andere *locaties* weergaven om te zien hoe ze de *VenueId*t
 
 In deze oefening wordt de _adhocreporting_ -data base geïmplementeerd. Dit is de hoofd database die het schema bevat dat wordt gebruikt voor het uitvoeren van query's in alle Tenant databases. De data base wordt geïmplementeerd op de bestaande catalogus server. Dit is de server die wordt gebruikt voor alle aan beheer gerelateerde data bases in de voor beeld-app.
 
-1. Open in *Power shell ISE*.. \\ . Trainings modules \\ Operational \\ Reporting AD \\ *demo-AdhocReporting. ps1*. 
+1. Open in *Power shell ISE*.. \\ . Trainings modules \\ Operational \\ Reporting ad-rapportage \\ *Demo-AdhocReporting.ps1*. 
 
 1. Stel **$DemoScenario = 2**in, _Implementeer een ad-hoc rapportage database_.
 

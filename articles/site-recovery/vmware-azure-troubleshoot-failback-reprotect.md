@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: a5b8ac3d46f21f299f3e56dab24a1b5f342fb4b6
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84309948"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Problemen met failback naar on-premises vanuit Azure oplossen
@@ -50,7 +49,7 @@ Deze fout treedt op wanneer:
 * De Azure-VM kan de on-premises configuratie server niet bereiken. De virtuele machine kan niet worden gedetecteerd en geregistreerd op de configuratie server.
 * De inmage Scout-toepassings service wordt niet uitgevoerd op de virtuele Azure-machine na een failover. De service is vereist voor communicatie met de on-premises configuratie server.
 
-Los dit probleem als volgt op:
+Ga als volgt te werk om het probleem op te lossen:
 
 * Controleer of het VM-netwerk van Azure toestaat dat de Azure VM communiceert met de on-premises configuratie server. U kunt een site-naar-site-VPN instellen voor uw on-premises Data Center of een Azure ExpressRoute-verbinding configureren met privé-peering op het virtuele netwerk van de Azure VM.
 * Als de virtuele machine kan communiceren met de on-premises configuratie server, meldt u zich aan bij de virtuele machine. Controleer vervolgens de toepassings service inmage Scout. Als u ziet dat deze niet wordt uitgevoerd, start u de service hand matig. Controleer of het start type van de service is ingesteld op **automatisch**.
@@ -61,7 +60,7 @@ Los dit probleem als volgt op:
 
 Dit probleem kan zich voordoen als er al een virtuele machine met dezelfde naam op de hoofddoel server is die u niet meer gebruikt.
 
-Los dit probleem als volgt op:
+Ga als volgt te werk om het probleem op te lossen:
 
 * Selecteer een andere Master doel server op een andere host zodat de computer op een andere host wordt gemaakt, waarbij de namen niet conflicteren.
 * U kunt vMotion ook gebruiken om het hoofd doel te verplaatsen naar een andere host waar de naam conflicten niet optreden. Als de bestaande VM een losse machine is, wijzigt u de naam zodat de nieuwe VM op dezelfde ESXi-host kan worden gemaakt.
@@ -71,7 +70,7 @@ Los dit probleem als volgt op:
 
 **De VM wordt niet uitgevoerd, reageert niet of is niet toegankelijk.**
 
-Los dit probleem als volgt op:
+Ga als volgt te werk om het probleem op te lossen:
 
 Als u een failover-VM opnieuw wilt beveiligen, moet de virtuele machine van Azure worden uitgevoerd zodat de Mobility-service wordt geregistreerd bij de on-premises configuratie server en kan worden gerepliceerd door te communiceren met de proces server. Als de computer zich op een onjuist netwerk bevindt of niet wordt uitgevoerd (niet reageert of wordt afgesloten), kan de configuratie server de Mobility-service niet bereiken op de VM om de herbeveiliging te starten.
 
@@ -95,7 +94,7 @@ In deze sectie worden veelvoorkomende fouten beschreven die kunnen optreden tijd
 
 Dit probleem treedt op wanneer de on-premises VM wordt geactiveerd op een host waarvoor onvoldoende geheugen is ingericht. 
 
-Los dit probleem als volgt op:
+Ga als volgt te werk om het probleem op te lossen:
 
 * Richt meer geheugen in op de ESXi-host.
 * Daarnaast kunt u met vMotion de virtuele machine verplaatsen naar een andere ESXi-host die voldoende geheugen heeft om de virtuele machine op te starten.

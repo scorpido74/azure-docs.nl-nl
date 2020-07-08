@@ -8,10 +8,9 @@ ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 7e1eab20a8e315b977c21de46dd4f6ea2fec9f5d
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83701489"
 ---
 # <a name="setup-diagnostic-logging"></a>Registratie in diagnoselogboek instellen
@@ -90,7 +89,7 @@ De categorie metrische gegevens registreert dezelfde [Server metrieken](analysis
 
 3. Klik op **Opslaan**.
 
-    Als er een fout bericht wordt weer gegeven dat het bijwerken van de diagnostische gegevens voor de \< werkruimte naam> is mislukt. De abonnements \< -id> is niet geregistreerd voor het gebruik van micro soft. Insights. Volg de instructies voor het [oplossen van problemen Azure Diagnostics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) om het account te registreren en voer deze procedure opnieuw uit.
+    Als er een fout bericht wordt weer gegeven waarin wordt vermeld dat diagnostische gegevens niet kunnen worden bijgewerkt voor \<workspace name> . Het abonnement \<subscription id> is niet geregistreerd voor het gebruik van micro soft. Insights. Volg de instructies voor het [oplossen van problemen Azure Diagnostics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) om het account te registreren en voer deze procedure opnieuw uit.
 
     Als u wilt wijzigen hoe uw bron logboeken op elk moment in de toekomst worden opgeslagen, kunt u teruggaan naar deze pagina om de instellingen te wijzigen.
 

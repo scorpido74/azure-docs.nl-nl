@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
 ms.openlocfilehash: 4dd959d75fd582d787e68db4a415a4a694b9cda8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81770692"
 ---
 # <a name="deployment-best-practices"></a>Aanbevolen procedures voor implementatie
@@ -119,7 +118,7 @@ az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
    --sdk-auth
 ```
 
-Meld u in uw script aan met `az login --service-principal`en geef de gegevens van de principal op. U kunt vervolgens gebruiken `az webapp config container set` om de container naam, label, register-URL en het register wachtwoord in te stellen. Hieronder vindt u enkele handige koppelingen waarmee u uw container CI-proces kunt bouwen.
+Meld u in uw script aan met `az login --service-principal` en geef de gegevens van de principal op. U kunt vervolgens gebruiken `az webapp config container set` om de container naam, label, register-URL en het register wachtwoord in te stellen. Hieronder vindt u enkele handige koppelingen waarmee u uw container CI-proces kunt bouwen.
 
 - [Aanmelden bij de Azure CLI op cirkel CI](https://circleci.com/orbs/registry/orb/circleci/azure-cli) 
 
@@ -127,15 +126,15 @@ Meld u in uw script aan met `az login --service-principal`en geef de gegevens va
 
 ### <a name="java"></a>Java
 
-Gebruik de kudu [zipdeploy/](deploy-zip.md) API voor het implementeren van jar-toepassingen en [WARDEPLOY/](deploy-zip.md#deploy-war-file) voor War-apps. Als u Jenkins gebruikt, kunt u deze Api's rechtstreeks in uw implementatie fase gebruiken. Raadpleeg [dit artikel](../jenkins/execute-cli-jenkins-pipeline.md) voor meer informatie.
+Gebruik de kudu [zipdeploy/](deploy-zip.md) API voor het implementeren van jar-toepassingen en [WARDEPLOY/](deploy-zip.md#deploy-war-file) voor War-apps. Als u Jenkins gebruikt, kunt u deze Api's rechtstreeks in uw implementatie fase gebruiken. Zie [dit artikel](../jenkins/execute-cli-jenkins-pipeline.md)voor meer informatie.
 
 ### <a name="node"></a>Knooppunt
 
-Kudu voert standaard de stappen voor het bouwen van de knooppunt toepassing (`npm install`) uit. Als u een build-service gebruikt, zoals Azure DevOps, is de kudu-build niet nodig. Als u de kudu-build wilt uitschakelen, maakt u `SCM_DO_BUILD_DURING_DEPLOYMENT`een app-instelling, `false`met een waarde van.
+Kudu voert standaard de stappen voor het bouwen van de knooppunt toepassing ( `npm install` ) uit. Als u een build-service gebruikt, zoals Azure DevOps, is de kudu-build niet nodig. Als u de kudu-build wilt uitschakelen, maakt u een app-instelling, `SCM_DO_BUILD_DURING_DEPLOYMENT` met een waarde van `false` .
 
 ### <a name="net"></a>.NET 
 
-Kudu voert standaard de stappen voor het bouwen van uw .NET-toepassing (`dotnet build`) uit. Als u een build-service gebruikt, zoals Azure DevOps, is de kudu-build niet nodig. Als u de kudu-build wilt uitschakelen, maakt u `SCM_DO_BUILD_DURING_DEPLOYMENT`een app-instelling, `false`met een waarde van.
+Kudu voert standaard de stappen voor het bouwen van uw .NET-toepassing ( `dotnet build` ) uit. Als u een build-service gebruikt, zoals Azure DevOps, is de kudu-build niet nodig. Als u de kudu-build wilt uitschakelen, maakt u een app-instelling, `SCM_DO_BUILD_DURING_DEPLOYMENT` met een waarde van `false` .
 
 ## <a name="other-deployment-considerations"></a>Andere overwegingen bij de implementatie
 
@@ -156,4 +155,4 @@ Voor meer informatie over best practices gaat u naar [app service diagnostische 
 - Kies de tegel start pagina voor **Best practices** .
 - Klik op **Aanbevolen procedures voor Beschik baarheid & prestaties** of **Aanbevolen procedures voor optimale configuratie** om de huidige status van uw app te bekijken met betrekking tot deze aanbevolen procedures.
 
-U kunt deze koppeling ook gebruiken om direct App Service diagnostische gegevens te openen voor uw `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`resource:.
+U kunt deze koppeling ook gebruiken om direct App Service diagnostische gegevens te openen voor uw resource: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot` .

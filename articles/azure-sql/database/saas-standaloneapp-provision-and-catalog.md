@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: b3d886186d26c398a83643c93b98192fca16df6d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042167"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Nieuwe tenants inrichten en catalogiseren met behulp van de toepassing per Tenant SaaS-patroon
@@ -90,7 +89,7 @@ In deze taak leert u hoe u de catalogus inricht die wordt gebruikt voor het regi
     ![een onderbrekings punt instellen voor tracering](./media/saas-standaloneapp-provision-and-catalog/breakpoint.png)
 
 1. Voer het script uit door op **F5**te drukken.
-1.  Wanneer het uitvoeren van het script stopt bij het onderbrekings punt, drukt u op **F11** om het script New-Catalog. ps1 te Step into.
+1.  Wanneer het uitvoeren van het script stopt bij het onderbrekings punt, drukt u op **F11** om het New-Catalog.ps1 script te Step into.
 1.  De uitvoering van het script traceren met behulp van de opties voor het menu fout opsporing, F10 en F11, om over te stappen of functies te noemen.
     *   Zie [Tips voor het werken met en het opsporen van fouten in Power shell-scripts](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)voor meer informatie over fout opsporing in Power shell-scripts.
 
@@ -127,7 +126,7 @@ In deze taak leert u hoe u één Tenant toepassing inricht. U gaat het volgende 
 
 1. Voeg een onderbrekings punt toe aan het script door de cursor ergens op regel 49 te plaatsen met de tekst `& $PSScriptRoot\New-TenantApp.ps1` en druk vervolgens op **F9**.
 1. Voer het script uit door op **F5**te drukken.
-1.  Wanneer het uitvoeren van het script stopt bij het onderbrekings punt, drukt u op **F11** om het script New-Catalog. ps1 te Step into.
+1.  Wanneer het uitvoeren van het script stopt bij het onderbrekings punt, drukt u op **F11** om het New-Catalog.ps1 script te Step into.
 1.  De uitvoering van het script traceren met behulp van de opties voor het menu fout opsporing, F10 en F11, om over te stappen of functies te noemen.
 
 Nadat de Tenant is ingericht, wordt de website van de nieuwe Tenant geopend.

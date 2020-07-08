@@ -4,10 +4,9 @@ description: Meer informatie over het werken met matrix parameters en matrix-taa
 ms.date: 05/20/2020
 ms.topic: how-to
 ms.openlocfilehash: f3d30f76d555386e5ab8041a0b8cc82b5b60e28e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83684254"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Beleid voor het schrijven van matrix eigenschappen op Azure-resources
@@ -209,5 +208,5 @@ Zie voor meer informatie de [Append-voor beelden](../concepts/effects.md#append-
 - Lees over de [structuur van Azure Policy-definities](../concepts/definition-structure.md).
 - Lees [Informatie over de effecten van het beleid](../concepts/effects.md).
 - Meer informatie over het [programmatisch maken van beleids regels](programmatically-create.md).
-- Meer informatie over het [oplossen van niet-compatibele resources](remediate-resources.md).
+- Ontdek hoe u [niet-compatibele resources kunt herstellen](remediate-resources.md).
 - Bekijk wat een beheer groep is met [het organiseren van uw resources met Azure-beheer groepen](../../management-groups/overview.md).

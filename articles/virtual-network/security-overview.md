@@ -14,10 +14,9 @@ ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
 ms.openlocfilehash: 7464a9d13e1ffccbc3fab3256fe6c7ab1cb10495
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84321493"
 ---
 # <a name="network-security-groups"></a>Netwerkbeveiligingsgroepen
@@ -33,7 +32,7 @@ Een netwerkbeveiligingsgroep bevat nul regels of zoveel regels als u wilt binnen
 
 |Eigenschap  |Uitleg  |
 |---------|---------|
-|Naam|Een unieke naam binnen de netwerkbeveiligingsgroep.|
+|Name|Een unieke naam binnen de netwerkbeveiligingsgroep.|
 |Prioriteit | Een getal tussen 100 en 4096. Regels worden verwerkt in volgorde van prioriteit, waarbij lagere getallen worden verwerkt vóór hogere getallen omdat lagere getallen een hogere prioriteit hebben. Zodra het verkeer overeenkomt met een regel, wordt de verwerking beëindigd. Daardoor worden regels met een lagere prioriteit (een hoger getal) die dezelfde kenmerken hebben als regels met een hogere prioriteit, niet verwerkt.|
 |Bron of doel| Een IP-adres, CIDR-blok (bijvoorbeeld 10.0.0.0/24), servicetag of toepassingsbeveiligingsgroep. Als u een adres opgeeft voor een Azure-resource, geeft u het privé-IP-adres op dat aan de resource is toegewezen. Netwerkbeveiligingsgroepen worden verwerkt nadat Azure een openbaar IP-adres vertaalt naar een privé-IP-adres voor binnenkomend verkeer en voordat Azure een privé-IP-adres naar een openbaar IP-adres voor uitgaand verkeer vertaalt. . Als u een bereik, servicetag of toepassingsbeveiligingsgroep opgeeft, hoeft u minder beveiligingsregels te maken. De mogelijkheid om meerdere afzonderlijke IP-adressen en-bereiken op te geven (u kunt niet meerdere service tags of toepassings groepen opgeven) in een regel worden uitgebreide [beveiligings regels](#augmented-security-rules)genoemd. Uitgebreide beveiligingsregels kunnen alleen worden gemaakt in netwerkbeveiligingsgroepen die zijn gemaakt via het Resource Manager-implementatiemodel. U kunt niet meerdere IP-adressen en IP-adresbereiken opgeven in netwerkbeveiligingsgroepen die zijn gemaakt via het klassieke implementatiemodel.|
 |Protocol     | TCP, UDP, ICMP of any.|

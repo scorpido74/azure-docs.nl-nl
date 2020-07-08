@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: a644e211cc933ca686f0bd6a13b0d2ba8ae20162
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 61f555dc8f24ce303934187d36ee994b25b31920
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81114098"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920087"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Algemene problemen waardoor rollen worden herhaald
 In dit artikel worden enkele veelvoorkomende oorzaken van implementatie problemen beschreven en tips voor het oplossen van problemen die u kunnen helpen bij het oplossen van deze problemen. Een indicatie dat er een probleem is met een toepassing is wanneer de rolinstantie niet kan worden gestart, of wordt gerecycled tussen de status initialisatie, bezet en gestopt.
@@ -32,7 +31,7 @@ Als een rol in uw toepassing afhankelijk is van een assembly die geen deel uitma
 Controleer het volgende voordat u uw toepassing bouwt en inpakt:
 
 * Als u Visual Studio gebruikt, moet u ervoor zorgen dat de **lokale eigenschap Copy** is ingesteld op **True** voor elke assembly waarnaar wordt verwezen in uw project die geen deel uitmaakt van de Azure SDK of de .NET Framework.
-* Zorg ervoor dat het bestand Web. config niet verwijst naar ongebruikte assembly's in het compilatie-element.
+* Zorg ervoor dat het web.config bestand niet verwijst naar ongebruikte assembly's in het compilatie-element.
 * De **Build-actie** van elk. cshtml-bestand is ingesteld op **inhoud**. Dit zorgt ervoor dat de bestanden correct worden weer gegeven in het pakket en dat andere bestanden waarnaar wordt verwezen, kunnen worden weer gegeven in het pakket.
 
 ## <a name="assembly-targets-wrong-platform"></a>Assembly doelen onjuist platform
@@ -47,13 +46,15 @@ De methode [Run] is bedoeld om voor onbepaalde tijd te worden uitgevoerd. Als uw
 ## <a name="incorrect-diagnosticsconnectionstring-setting"></a>Onjuiste DiagnosticsConnectionString-instelling
 Als de toepassing Azure Diagnostics gebruikt, moet uw service configuratie bestand de `DiagnosticsConnectionString` configuratie-instelling opgeven. Met deze instelling moet een HTTPS-verbinding met uw opslag account in Azure worden opgegeven.
 
-Controleer het volgende om `DiagnosticsConnectionString` ervoor te zorgen dat uw instelling juist is voordat u het toepassings pakket implementeert in Azure:  
+Controleer het volgende om ervoor te zorgen dat uw `DiagnosticsConnectionString` instelling juist is voordat u het toepassings pakket implementeert in Azure:  
 
 * De `DiagnosticsConnectionString` instelling wijst naar een geldig opslag account in Azure.  
   Deze instelling verwijst standaard naar het geëmuleerde opslag account, dus u moet deze instelling expliciet wijzigen voordat u het toepassings pakket implementeert. Als u deze instelling niet wijzigt, wordt er een uitzonde ring gegenereerd wanneer de rolinstantie de diagnostische monitor probeert te starten. Dit kan ertoe leiden dat de rolinstantie voor onbepaalde tijd wordt gerecycled.
 * De connection string is opgegeven in de volgende [indeling](../storage/common/storage-configure-connection-string.md). (Het protocol moet worden opgegeven als HTTPS.) Vervang *MyAccountName* door de naam van uw opslag account en *MyAccountKey* met uw toegangs sleutel:    
 
-        DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
+```console
+DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
+```
 
   Als u uw toepassing ontwikkelt met behulp van Azure-Hulpprogram Ma's voor micro soft Visual Studio, kunt u de eigenschappen pagina's gebruiken om deze waarde in te stellen.
 
@@ -68,4 +69,4 @@ Bekijk meer scenario's voor het recyclen van rollen in [de blog serie van Kevin 
 [RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
 [OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
 [OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
-[Uitvoeringsrun]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx
+[Uitvoeren]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx

@@ -14,10 +14,9 @@ ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
 ms.openlocfilehash: 06cf0a5692b3d80a07c305f53c9e3801cbdb5110
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84764006"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Dasboards maken en delen in Azure Portal
@@ -30,7 +29,7 @@ De Azure Portal biedt een standaard dashboard als uitgangs punt. U kunt het stan
 
 In dit voor beeld maken we een nieuw persoonlijk dash board en wijzen we een naam toe. Volg deze stappen om aan de slag te gaan:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Selecteer in het menu Azure Portal de optie **dash board**. De standaard weergave is mogelijk al ingesteld op dash board.
 

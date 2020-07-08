@@ -4,10 +4,9 @@ description: Bevat een samenvatting van ondersteuningsinstellingen en -beperking
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.openlocfilehash: 4946a4627d037053e441152182278c26b4f693fe
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84655621"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Ondersteunings matrix voor Azure Backup
@@ -129,7 +128,7 @@ Backup ondersteunt de compressie van het back-upverkeer, zoals wordt beschreven 
 
 **Machine** | **Comprimeren naar MABS/DPM (TCP)** | **Comprimeren naar kluis (HTTPS)**
 --- | --- | ---
-**Directe back-ups van on-premises Windows-computers** | NA | ![Ja][green]
+**Directe back-ups van on-premises Windows-computers** | NA | ![Yes][green]
 **Back-ups van virtuele Azure-machines maken met behulp van VM-extensie** | NA | NA
 **Back-ups op on-premises/Azure-computers met behulp van MABS/DPM** | ![Ja][green] | ![Ja][green]
 
@@ -152,9 +151,9 @@ Azure Backup de functie voor het terugzetten van meerdere regio's heeft toegevoe
 | Type back-upbeheer | Ondersteund                                                    | Ondersteunde regio's |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Ja.   Ondersteund voor versleutelde Vm's en Vm's met minder dan 4 TB schijven | Alle open bare Azure-regio's.  |
-| MARS-agent/on-premises | Nee                                                           | N.v.t.               |
-| SQL-/SAP HANA          | Nee                                                           | N.v.t.               |
-| AFS                    | Nee                                                           | N.v.t.               |
+| MARS-agent/on-premises | No                                                           | N.v.t.               |
+| SQL-/SAP HANA          | No                                                           | N.v.t.               |
+| AFS                    | No                                                           | N.v.t.               |
 
 ## <a name="next-steps"></a>Volgende stappen
 

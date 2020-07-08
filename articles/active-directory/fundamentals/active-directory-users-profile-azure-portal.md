@@ -7,17 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/11/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ba51b0ad7f314058f34092dff4e26411020086a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 277f4c7016849fbdbac4b5070c2a4db681cc66a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75422883"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604009"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>De profielgegevens van een gebruiker toevoegen of bijwerken met behulp van Azure Active Directory
 Gebruikers profiel gegevens toevoegen, met inbegrip van een profiel afbeelding, specifieke informatie over de taak en enkele instellingen met behulp van Azure Active Directory (Azure AD). Voor meer informatie over het toevoegen van nieuwe gebruikers raadpleegt [u gebruikers toevoegen of verwijderen in azure Active Directory](add-users-azure-active-directory.md).

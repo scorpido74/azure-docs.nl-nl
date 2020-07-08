@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: amqp
 ms.openlocfilehash: ac45cf42ed174d3e9423b4ea39cadf16b84897ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759649"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>X. 509-beveiliging instellen in uw Azure IoT-hub
@@ -47,7 +46,7 @@ U kunt een van de volgende manieren kiezen om uw certificaten op te halen:
 
 Deze stappen laten zien hoe u een nieuwe certificerings instantie aan uw IoT-hub kunt toevoegen via de portal.
 
-1. Navigeer in het Azure Portal naar uw IOT-hub en selecteer **instellingen** > **certificaten** voor de hub.
+1. Navigeer in het Azure Portal naar uw IOT-hub en selecteer **instellingen**  >  **certificaten** voor de hub.
 
 1. Selecteer **toevoegen** om een nieuw certificaat toe te voegen.
 
@@ -73,7 +72,7 @@ Deze stappen laten zien hoe u een nieuwe certificerings instantie aan uw IoT-hub
 
 ## <a name="create-an-x509-device-for-your-iot-hub"></a>Een X. 509-apparaat maken voor uw IoT-hub
 
-1. Navigeer in het Azure Portal naar uw IOT-hub en selecteer vervolgens**IOT-apparaten**in **Explorer** > .
+1. Navigeer in het Azure Portal naar uw IOT-hub en selecteer vervolgens IOT-apparaten in **Explorer**  >  **IoT devices**.
 
 1. Selecteer **Nieuw** om een nieuw apparaat toe te voegen.
 
@@ -87,7 +86,7 @@ Als u uw X. 509-apparaat wilt verifiëren, moet u het apparaat eerst ondertekene
 
 We laten nu zien hoe u een C#-toepassing kunt maken om het X. 509-apparaat te simuleren dat voor uw IoT-hub is geregistreerd. De waarden voor de Tempe ratuur en lucht vochtigheid worden verzonden vanaf het gesimuleerde apparaat naar uw hub. In deze zelf studie maakt u alleen de apparaat-app. Het is aan de lezers te blijven om de IoT Hub-service toepassing te maken die een reactie verzendt naar de gebeurtenissen die door dit gesimuleerde apparaat worden verzonden. De C#-toepassing veronderstelt dat u de stappen in het [beheer van test-CA-certificaten voor voor beelden en zelf studies](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)hebt gevolgd.
 
-1. Open Visual Studio, selecteer **een nieuw project maken**en kies vervolgens de project sjabloon **console-app (.NET Framework)** . Selecteer **Next**.
+1. Open Visual Studio, selecteer **een nieuw project maken**en kies vervolgens de project sjabloon **console-app (.NET Framework)** . Selecteer **Volgende**.
 
 1. Geef in **uw nieuwe project**de naam project *SimulateX509Device*en selecteer vervolgens **maken**.
 
@@ -181,7 +180,7 @@ We laten nu zien hoe u een C#-toepassing kunt maken om het X. 509-apparaat te si
 
    1. Ga naar de map die uw oplossing bevat en navigeer naar het pad naar de *bin/fout opsporing* in de map met oplossingen.
 
-   1. Voer de toepassing **SimulateX509Device. exe** uit vanaf de opdracht regel.
+   1. Voer de toepassing uit **SimulateX509Device.exe** vanaf de opdracht prompt.
 
    U moet het apparaat zien dat er verbinding wordt gemaakt met de hub en de gebeurtenissen verzendt.
 

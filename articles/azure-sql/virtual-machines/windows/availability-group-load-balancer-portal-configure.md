@@ -13,12 +13,11 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c527ef9767d7b88e956bb1b3354b3067847857d9
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.openlocfilehash: a2eb6278a9e796c33178f895eede6fd8f2144e9a
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669321"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921683"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Een load balancer configureren voor een SQL Server AlwaysOn-beschikbaarheids groep in azure Virtual Machines
 
@@ -133,17 +132,17 @@ In Azure wordt de test gemaakt en vervolgens gebruikt om te testen welk SQL Serv
 
 ### <a name="step-4-set-the-load-balancing-rules"></a>Stap 4: de regels voor taak verdeling instellen
 
-De taakverdelings regels configureren hoe de load balancer het verkeer naar de SQL Server-instanties routeren. Voor deze load balancer schakelt u Direct Server Return in, omdat slechts een van de twee SQL Server exemplaren de listener-resource van de beschikbaarheids groep tegelijk heeft.
+De taakverdelingsregels bepalen hoe de taakverdeling verkeer routeert naar de SQL Server-exemplaren. Voor deze load balancer schakelt u Direct Server Return in, omdat slechts een van de twee SQL Server exemplaren de listener-resource van de beschikbaarheids groep tegelijk heeft.
 
 1. Selecteer op de Blade load balancer **instellingen** de optie **taakverdelings regels**. 
 
 2. Selecteer **toevoegen**op de Blade **regel voor taak verdeling** .
 
-3. Configureer op de Blade taakverdelings **regels toevoegen** de regel voor taak verdeling. Gebruik de volgende instellingen: 
+3. Configureer de taakverdelingsregel op de blade **Taakverdelingsregels toevoegen**. Gebruik de volgende instellingen: 
 
    | Instelling | Waarde |
    | --- | --- |
-   | **Naam** |Een tekst naam die de regels voor taak verdeling weergeeft. Bijvoorbeeld: **SQLAlwaysOnEndPointListener**. |
+   | **Naam** |Een tekstnaam voor de taakverdelersregels. Bijvoorbeeld: **SQLAlwaysOnEndPointListener**. |
    | **Protocol** |**TCP** |
    | **Poort** |*1433* |
    | **Poort back-end** |*1433*. Deze waarde wordt genegeerd, omdat deze regel **Zwevend IP (Direct Server Return)** gebruikt. |
@@ -158,7 +157,7 @@ De taakverdelings regels configureren hoe de load balancer het verkeer naar de S
 
 4. Selecteer **OK**. 
 
-5. De taakverdelings regel wordt door Azure geconfigureerd. De taakverdeler is nu geconfigureerd om verkeer naar het SQL Server-exemplaar te routeren dat de listener voor beschikbaarheidsgroep host. 
+5. In Azure wordt de taakverdelingsregel geconfigureerd. De taakverdeler is nu geconfigureerd om verkeer naar het SQL Server-exemplaar te routeren dat de listener voor beschikbaarheidsgroep host. 
 
 Op dit moment heeft de resource groep een load balancer die verbinding maakt met beide SQL Server machines. De load balancer bevat ook een IP-adres voor de SQL Server always on-beschikbaarheids groep, zodat de computer kan reageren op aanvragen voor de beschikbaarheids groepen.
 
@@ -203,8 +202,10 @@ Test de verbinding door de volgende stappen uit te voeren:
 1. Gebruik RDP (Remote Desktop Protocol) om verbinding te maken met een SQL Server-exemplaar dat zich in hetzelfde virtuele netwerk bevindt, maar geen eigenaar is van de replica. Deze server kan het andere SQL Server-exemplaar in het cluster zijn.
 
 2. Gebruik het **Sqlcmd** -hulp programma om de verbinding te testen. Met het volgende script wordt bijvoorbeeld een **Sqlcmd** -verbinding met de primaire replica tot stand gebracht via de listener met Windows-verificatie:
-   
-        sqlcmd -S <listenerName> -E
+
+    ```console
+    sqlcmd -S <listenerName> -E
+    ```
 
 De SQLCMD-verbinding maakt automatisch verbinding met het SQL Server-exemplaar dat als host fungeert voor de primaire replica. 
 
@@ -251,7 +252,7 @@ Voer de volgende stappen uit om een IP-adres toe te voegen aan een load balancer
     |**Frontend-IP-adres** |Selecteer het IP-adres dat u hebt gemaakt. 
     |**Protocol** |TCP
     |**Poort** |Gebruik de poort die de SQL Server exemplaren gebruiken. Een standaard exemplaar gebruikt poort 1433, tenzij u deze hebt gewijzigd. 
-    |**Backend-poort** |Gebruik dezelfde waarde als **poort**.
+    |**Poort back-end** |Gebruik dezelfde waarde als **poort**.
     |**Back-end-pool** |De groep die de virtuele machines bevat met de SQL Server exemplaren. 
     |**Statustest** |Kies de test die u hebt gemaakt.
     |**Sessiepersistentie** |Geen
@@ -300,7 +301,7 @@ Als een beschikbaarheids groep deelneemt aan een gedistribueerde beschikbaarheid
    |**Frontend-IP-adres** |Gebruik hetzelfde frontend-IP-adres als de beschikbaarheids groep.
    |**Protocol** |TCP
    |**Poort** |5022-de poort voor de [eind punt-listener van de gedistribueerde beschikbaarheids groep](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups).</br> Dit kan elke beschik bare poort zijn.  
-   |**Backend-poort** | 5022-gebruik dezelfde waarde als **poort**.
+   |**Poort back-end** | 5022-gebruik dezelfde waarde als **poort**.
    |**Back-end-pool** |De groep die de virtuele machines bevat met de SQL Server exemplaren. 
    |**Statustest** |Kies de test die u hebt gemaakt.
    |**Sessiepersistentie** |Geen

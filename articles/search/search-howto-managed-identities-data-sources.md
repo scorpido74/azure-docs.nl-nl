@@ -10,16 +10,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.openlocfilehash: 48b94b8cd047f62ea13bf4e062254088ea11840e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83664898"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity-preview"></a>Een Indexeer functie verbinding met een gegevens bron instellen met behulp van een beheerde identiteit (preview)
 
 > [!IMPORTANT] 
-> Ondersteuning voor het instellen van een verbinding met een gegevens bron met behulp van een beheerde identiteit bevindt zich momenteel in een open bare preview-versie. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen.
+> Ondersteuning voor het instellen van een verbinding met een gegevens bron met behulp van een beheerde identiteit bevindt zich momenteel in een open bare preview-versie. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads.
 > U kunt toegang tot de preview aanvragen door [dit formulier](https://aka.ms/azure-cognitive-search/mi-preview-request)in te vullen.
 
 Een [Indexeer functie](search-indexer-overview.md) in azure Cognitive Search is een verkenning die een manier biedt om gegevens uit uw gegevens bron op te halen in azure Cognitive Search. Een Indexeer functie haalt een gegevens bron verbinding op van het gegevens bron object dat u maakt. Het gegevens bron object bevat gewoonlijk referenties voor de gegevens bron van het doel. Het gegevens bron object kan bijvoorbeeld een Azure Storage account sleutel bevatten als u gegevens wilt indexeren van een BLOB storage-container.

@@ -15,10 +15,9 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.openlocfilehash: 1d76fb96676ad49ce28ff4ef0d6c4fbc84636638
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84041790"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Zelf studie: kenmerk terugschrijven van Azure AD naar workday configureren
@@ -58,7 +57,7 @@ Volg deze instructies voor het configureren van write-back van gebruikers-e-mail
 
 1. Ga naar <https://portal.azure.com>.
 
-2. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
+2. Zoek en selecteer in de Azure-portal de optie **Azure Active Directory**.
 
 3. Selecteer **bedrijfs toepassingen**en vervolgens **alle toepassingen**.
 
@@ -95,7 +94,7 @@ In deze sectie configureert u hoe terugschrijf kenmerken stromen van Azure AD na
 4. Normaal gesp roken wijst u het kenmerk Azure AD *userPrincipalName* toe aan het kenmerk workday *GebruikersID* en wijst u het Azure AD *mail-* kenmerk toe aan het kenmerk *EmailAddress* . 
 
      >[!div class="mx-imgBorder"]
-     >![Azure Portal](./media/workday-inbound-tutorial/workday-writeback-mapping.png)
+     >![Azure-portal](./media/workday-inbound-tutorial/workday-writeback-mapping.png)
 
 5. Gebruik de onderstaande richt lijnen voor het toewijzen van telefoon nummer kenmerk waarden van Azure AD op werkdag. 
 

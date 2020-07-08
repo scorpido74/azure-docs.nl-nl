@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: 587cdd54f09be2761026c25ccd80fb67d3eb6bb0
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84987043"
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Gegevens uit een Hive kopiëren met behulp van Azure Data Factory 
@@ -103,7 +102,7 @@ Als u gegevens wilt kopiëren uit Hive, stelt u de eigenschap type van de gegeve
 | tabel | De naam van de tabel. |Nee (als "query" in activiteit bron is opgegeven)  |
 | tableName | De naam van de tabel met inbegrip van het schema gedeelte. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik en voor nieuwe werk `schema` belasting `table` . | Nee (als "query" in activiteit bron is opgegeven) |
 
-**Hierbij**
+**Voorbeeld**
 
 ```json
 {

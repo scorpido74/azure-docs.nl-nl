@@ -4,13 +4,12 @@ description: In dit artikel wordt uitgelegd hoe consumenten en producenten die g
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 8f6c4cbdcbbc1d589b0803f36305f9a9fe6eebfa
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85322745"
 ---
-# <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>Migreren naar Azure Event Hubs voor Apache Kafka ecosystemen
+# <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>Migreren naar Azure Event Hubs voor Apache Kafka-ecosystemen
 Azure Event Hubs geeft een Apache Kafka eind punt weer, waarmee u verbinding kunt maken met Event Hubs met behulp van het Kafka-protocol. Door minimale wijzigingen aan te brengen in uw bestaande Kafka-toepassing, kunt u verbinding maken met Azure Event Hubs en profiteren van de voor delen van het Azure-ecosysteem. Event Hubs voor Kafka-ondersteuning [Apache Kafka versie 1,0](https://kafka.apache.org/10/documentation.html) en hoger.
 
 ## <a name="pre-migration"></a>Voorafgaand aan de migratie 

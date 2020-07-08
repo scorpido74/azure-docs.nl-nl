@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
 ms.openlocfilehash: dbeaa58da109c5afceb03a560e69e0c8bf63ad42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81768127"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Log Analytics-werk ruimte beheren met Azure Resource Manager sjablonen
@@ -39,7 +38,7 @@ De volgende tabel geeft een overzicht van de API-versie voor de resources die in
 
 | Resource | Resourcetype | API-versie |
 |:---|:---|:---|
-| Werkruimte   | werkruimten    | 2017-03-15-preview |
+| Werkruimte   | workspaces    | 2017-03-15-preview |
 | Search      | savedSearches | 2015-03-20 |
 | Gegevensbron | gegevens bronnen   | 2015-11-01-preview |
 | Oplossing    | oplossingen     | 2015-11-01-preview |
@@ -51,7 +50,7 @@ In het volgende voor beeld wordt een werk ruimte gemaakt op basis van een sjablo
 > [!WARNING]
 > Met de volgende sjabloon maakt u een Log Analytics-werk ruimte en configureert u de gegevens verzameling. Hierdoor kunnen uw facturerings instellingen worden gewijzigd. Bekijk het beheren van het [gebruik en de kosten met Azure monitor logboeken](manage-cost-storage.md) om inzicht te krijgen in de facturering van gegevens die zijn verzameld in een log Analytics werk ruimte voordat u deze toepast in uw Azure-omgeving.
 
-Voor de capaciteits reservering definieert u een geselecteerde capaciteits reservering voor het opnemen van gegevens door `CapacityReservation` de SKU en een waarde in GB voor `capacityReservationLevel`de eigenschap op te geven. De volgende lijst bevat de ondersteunde waarden en het gedrag bij het configureren ervan.
+Voor de capaciteits reservering definieert u een geselecteerde capaciteits reservering voor het opnemen van gegevens door de SKU `CapacityReservation` en een waarde in GB voor de eigenschap op te geven `capacityReservationLevel` . De volgende lijst bevat de ondersteunde waarden en het gedrag bij het configureren ervan.
 
 - Zodra u de reserverings limiet hebt ingesteld, kunt u niet binnen 31 dagen overschakelen op een andere SKU.
 
@@ -155,7 +154,7 @@ Voor de capaciteits reservering definieert u een geselecteerde capaciteits reser
 
 2. Bewerk de sjabloon om te voldoen aan uw vereisten. Overweeg om een [Resource Manager-parameter bestand](../../azure-resource-manager/templates/parameter-files.md) te maken in plaats van para meters door te geven als inline-waarden. Raadpleeg de naslag informatie over [micro soft. OperationalInsights/werkruimte sjablonen](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) als u wilt weten welke eigenschappen en waarden worden ondersteund. 
 
-3. Sla dit bestand op als **deploylaworkspacetemplate. json** naar een lokale map.
+3. Sla dit bestand als **deploylaworkspacetemplate.jsop in** een lokale map.
 
 4. U kunt deze sjabloon nu implementeren. U kunt Power shell of de opdracht regel gebruiken om de werk ruimte te maken, waarbij u de naam en locatie van de werk ruimte opgeeft als onderdeel van de opdracht. De naam van de werk ruimte moet globaal uniek zijn in alle Azure-abonnementen.
 

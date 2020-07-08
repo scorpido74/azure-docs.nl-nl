@@ -13,10 +13,9 @@ ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
 ms.openlocfilehash: 9338ad86595771c1c70d243250c2d57af5eb7858
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83683787"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>Problemen oplossen met toepassingen die TLS 1,2 niet ondersteunen
@@ -51,7 +50,7 @@ De server wordt ook geleverd met een beperkt aantal coderings suites:
 
 ## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>Stap 1: het Power shell-script maken om TLS 1,0 en TLS 1,1 in te scha kelen 
 
-Gebruik de volgende code als voor beeld voor het maken van een script waarmee oudere protocollen en coderings suites worden ingeschakeld. Voor de doel einden van deze documentatie krijgt dit script de naam: **TLSsettings. ps1**. Sla dit script op uw lokale bureau blad op voor eenvoudige toegang in latere stappen. 
+Gebruik de volgende code als voor beeld voor het maken van een script waarmee oudere protocollen en coderings suites worden ingeschakeld. Voor de doel einden van deze documentatie krijgt dit script de naam: **TLSsettings.ps1**. Sla dit script op uw lokale bureau blad op voor eenvoudige toegang in latere stappen. 
 
 
 ```Powershell
@@ -344,7 +343,7 @@ Hier volgt een voor beeld waarin zowel de werk rollen als de webrol worden weer 
 1) Klik in Visual Studio met de rechter muisknop op uw webfunctie-of WorkerRole
 2) Selecteer **toevoegen**
 3) **Bestaand item** selecteren
-4) Ga in Verkenner naar het bureau blad waar u de bestanden **TLSsettings. ps1** en **RunTLSSettings. cmd** hebt opgeslagen 
+4) Ga in Verkenner naar het bureau blad waar u de **TLSsettings.ps1** -en **RunTLSSettings. cmd** -bestanden hebt opgeslagen. 
 5) Selecteer de twee bestanden om deze aan uw Cloud Services project toe te voegen
 
 ## <a name="step-5-enable-copy-to-output-directory"></a>Stap 5: kopiëren naar uitvoermap inschakelen
@@ -354,7 +353,7 @@ Om ervoor te zorgen dat de scripts worden geüpload bij elke update die wordt ge
 1) Klik onder uw webrole of WorkerRole met de rechter muisknop op RunTLSSettings. cmd
 2) **Eigenschappen** selecteren
 3) Wijzig op het tabblad Eigenschappen de *Opties kopiëren naar uitvoer Directory* naar *altijd kopiëren* .
-4) Herhaal de stappen voor **TLSsettings. ps1**
+4) Herhaal de stappen voor **TLSsettings.ps1**
 
 ## <a name="step-6-publish--validate"></a>Stap 6: & valideren publiceren
 

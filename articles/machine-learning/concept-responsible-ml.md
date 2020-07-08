@@ -9,12 +9,11 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 05/08/2020
-ms.openlocfilehash: 17cbf4f7b0ae31b0523a0fbea0c1cae8f83b234b
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.openlocfilehash: 09bb7710df19482e9625c1834d2646f70368fc1d
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84982591"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920365"
 ---
 # <a name="responsible-machine-learning-ml"></a>Verantwoordelijke Machine Learning (ML)
 
@@ -36,7 +35,7 @@ Aangezien kunst matige intelligentie en autonome systemen meer kunnen worden ge√
 
 ## <a name="interpret-and-explain-model-behavior"></a>Model gedrag interpreteren en uitleggen
 
-Het is moeilijk om uitleg of Black-Box systemen te geven, omdat het moeilijk is voor belanghebbenden zoals systeem ontwikkelaars, regelgevende instanties, gebruikers en besluit vormers om te begrijpen waarom systemen bepaalde beslissingen nemen. Sommige AI-systemen zijn beter verklaren dan andere en er is soms een afweging tussen een systeem met nauw keurigheid en een meer uitleg.
+Moeilijk te verklaren of ondoorzichtige systemen kunnen problemen veroorzaken omdat het moeilijk is voor belanghebbenden zoals systeem ontwikkelaars, regelgevende instanties, gebruikers en besluit vormers om te begrijpen waarom systemen bepaalde beslissingen nemen. Sommige AI-systemen zijn beter verklaren dan andere en er is soms een afweging tussen een systeem met nauw keurigheid en een meer uitleg.
 
 Gebruik [InterpretML](https://github.com/interpretml/interpret), een open-source pakket dat is gebouwd door micro soft, voor het bouwen van interpretatieve AI-systemen. [InterpretML kan worden gebruikt in azure machine learning](how-to-machine-learning-interpretability.md) voor [het interpreteren en uitleggen van uw machine learning modellen](how-to-machine-learning-interpretability-aml.md), inclusief [geautomatiseerde machine learning modellen](how-to-machine-learning-interpretability-automl.md).
 
@@ -68,7 +67,7 @@ Het implementeren van differentiatie van een differentieel particulier systeem i
 
 Het documenteren van de juiste informatie in het machine learning proces is essentieel voor het maken van verantwoordelijke beslissingen in elke fase. Gegevens bladen zijn een manier om machine learning activa te documenteren die worden gebruikt en gemaakt als onderdeel van de levens cyclus van machine learning.
 
-Modellen worden vaak beschouwd als zwarte vakjes en er is slechts weinig informatie over. Omdat machine learning systemen steeds betrouwbaarder worden en worden gebruikt voor het nemen van beslissingen, is het gebruik van gegevens bladen een stap voor het ontwikkelen van meer verantwoordelijke machine learning systemen.
+Modellen worden meestal gezien als ' dekkende dozen ' en vaak is er weinig informatie over deze systemen. Omdat machine learning systemen steeds betrouwbaarder worden en worden gebruikt voor het nemen van beslissingen, is het gebruik van gegevens bladen een stap voor het ontwikkelen van meer verantwoordelijke machine learning systemen.
 
 Sommige model gegevens die u mogelijk wilt documenteren als onderdeel van een gegevens blad:
 

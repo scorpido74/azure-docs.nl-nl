@@ -10,10 +10,9 @@ ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.openlocfilehash: c0efdda24ae47ae65f0d469b50feaefdf6350678
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84022211"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: veelgestelde vragen
@@ -133,7 +132,7 @@ Raadpleeg de volgende documenten voor meer informatie:
 
 - [Binnenkomend verkeer naar HDInsight-clusters in een virtueel netwerk met een persoonlijk eind punt beveiligen](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
 
-- [IP-adressen van HDInsight-beheer](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
+- [IP-adressen beheren met HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
 
 ### <a name="can-i-deploy-an-additional-virtual-machine-within-the-same-subnet-as-an-hdinsight-cluster"></a>Kan ik een extra virtuele machine implementeren in hetzelfde subnet als een HDInsight-cluster?
 
@@ -182,7 +181,7 @@ U wordt aangeraden een certificaat te gebruiken dat is uitgegeven door een certi
 
 - [Azure Active Directory Domain Services inschakelen](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
-- [Zelf studie: secure LDAP configureren voor een Azure Active Directory Domain Services beheerd domein](../active-directory-domain-services/tutorial-configure-ldaps.md)
+- [Zelfstudie: Secure LDAP configureren voor een door Azure Active Directory Domain Services beheerd domein](../active-directory-domain-services/tutorial-configure-ldaps.md)
 
 ### <a name="how-can-i-pull-login-activity-shown-in-ranger"></a>Hoe kan ik de aanmeldings activiteiten in zwerver weer geven?
 
@@ -249,7 +248,7 @@ done
 ```
  
 > [!NOTE]
-> Het bestand *filenames. txt* heeft het absolute pad van de bestanden in de BLOB-containers.
+> Het bestand *filenames.txt* heeft het absolute pad van de bestanden in de BLOB-containers.
  
 ### <a name="are-there-any-ranger-plugins-for-storage"></a>Zijn er zwerver-invoeg toepassingen voor opslag?
 
@@ -321,7 +320,7 @@ Als u de opdracht van buiten het virtuele netwerk of vanuit een niet-gekoppeld v
 > [!NOTE]
 > Met krul wordt u om een wacht woord gevraagd. U moet een geldig wacht woord opgeven voor de gebruikers naam van het cluster.
 
-## <a name="billing"></a>Facturering
+## <a name="billing"></a>Billing
 
 ### <a name="how-much-does-it-cost-to-deploy-an-hdinsight-cluster"></a>Hoeveel kost het om een HDInsight-cluster te implementeren?
 

@@ -10,10 +10,9 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
 ms.openlocfilehash: d86e42dcc16d108cc82c9d245c7919145cef365f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759344"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>PostgreSQL op Azure installeren en configureren
@@ -58,7 +57,7 @@ Maak verbinding met de virtuele Linux-machine die u hebt gemaakt via PuTTy. Als 
         # cd postgresql-9.3.5
    
         # ./configure --prefix=/opt/postgresql-9.3.5
-5. Als u alles wilt bouwen dat kan worden gemaakt, met inbegrip van de documentatie (HTML-en man-pagina's)`contrib`en aanvullende modules (), voert u de volgende opdracht uit:
+5. Als u alles wilt bouwen dat kan worden gemaakt, met inbegrip van de documentatie (HTML-en man-pagina's) en aanvullende modules ( `contrib` ), voert u de volgende opdracht uit:
    
         # gmake install-world
    
@@ -119,7 +118,7 @@ Maak verbinding met de virtuele Linux-machine die u hebt gemaakt via PuTTy. Als 
    
     De volgende uitvoer wordt weer gegeven:
 
-![installatiekopie](./media/postgresql-install/no1.png)
+![image](./media/postgresql-install/no1.png)
 
 ## <a name="set-up-postgresql"></a>PostgreSQL instellen
 <!--    [postgres@ test ~]$ exit -->
@@ -136,7 +135,7 @@ Wijzig twee variabelen in het/etc/init.d/postgresql-bestand. Het voor voegsel wo
 
     # sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
 
-![installatiekopie](./media/postgresql-install/no2.png)
+![image](./media/postgresql-install/no2.png)
 
 Wijzig het bestand om het uit te voeren:
 
@@ -152,7 +151,7 @@ Controleer of het eind punt van PostgreSQL zich op:
 
 In dat geval moet de volgende uitvoer worden weergegeven:
 
-![installatiekopie](./media/postgresql-install/no3.png)
+![image](./media/postgresql-install/no3.png)
 
 ## <a name="connect-to-the-postgres-database"></a>Verbinding maken met de post gres-data base
 Opnieuw overschakelen naar de post gres-gebruiker:
@@ -183,20 +182,20 @@ U hebt nu een tabel met vier kolommen met de volgende kolom namen en beperkingen
 
 Als uw tabel is gemaakt, ziet u het volgende:
 
-![installatiekopie](./media/postgresql-install/no4.png)
+![image](./media/postgresql-install/no4.png)
 
 U kunt ook de tabel structuur controleren met behulp van de volgende opdracht:
 
-![installatiekopie](./media/postgresql-install/no5.png)
+![image](./media/postgresql-install/no5.png)
 
 ### <a name="add-data-to-a-table"></a>Gegevens toevoegen aan een tabel
 Voeg eerst gegevens in een rij in:
 
     INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Casserole', 'Y', '2012-04-11');
 
-Deze uitvoer ziet er ongeveer als volgt uit:
+U hoort deze uitvoer te zien:
 
-![installatiekopie](./media/postgresql-install/no6.png)
+![image](./media/postgresql-install/no6.png)
 
 U kunt ook een paar personen toevoegen aan de tabel. Hier volgen enkele opties, of u kunt uw eigen instellingen maken:
 
@@ -213,7 +212,7 @@ Gebruik de volgende opdracht om een tabel weer te geven:
 
 Dit is de uitvoer:
 
-![installatiekopie](./media/postgresql-install/no7.png)
+![image](./media/postgresql-install/no7.png)
 
 ### <a name="delete-data-in-a-table"></a>Gegevens in een tabel verwijderen
 Gebruik de volgende opdracht om gegevens in een tabel te verwijderen:
@@ -222,7 +221,7 @@ Gebruik de volgende opdracht om gegevens in een tabel te verwijderen:
 
 Hiermee verwijdert u alle gegevens in de rij ' Johan '. Dit is de uitvoer:
 
-![installatiekopie](./media/postgresql-install/no8.png)
+![image](./media/postgresql-install/no8.png)
 
 ### <a name="update-data-in-a-table"></a>Gegevens in een tabel bijwerken
 Gebruik de volgende opdracht om gegevens in een tabel bij te werken. Voor deze versie heeft zand bevestigd dat ze deel nemen, dus zullen we de RSVP wijzigen van ' N ' in ' Y ':

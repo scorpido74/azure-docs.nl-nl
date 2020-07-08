@@ -12,10 +12,9 @@ ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: bbb8e82710b4c8ca7736b53d427b3880faf2be05
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85213275"
 ---
 # <a name="rest-apis-for-azure-synapse-analytics-data-warehouse"></a>REST-Api's voor Azure Synapse Analytics-Data Warehouse
@@ -37,7 +36,7 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
-## <a name="pause-compute"></a>Compute onderbreken
+## <a name="pause-compute"></a>Berekening onderbreken
 
 Gebruik de [pause data base](/rest/api/sql/databases/pause?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) rest API om een Data Base te onderbreken. In het volgende voor beeld wordt een Data Base met de naam Database02 die wordt gehost op een server met de naam Server01, onderbroken. De server bevindt zich in een Azure-resourcegroep met de naam ResourceGroep1.
 
@@ -45,7 +44,7 @@ Gebruik de [pause data base](/rest/api/sql/databases/pause?toc=/azure/synapse-an
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/pause?api-version=2014-04-01-preview HTTP/1.1
 ```
 
-## <a name="resume-compute"></a>Compute hervatten
+## <a name="resume-compute"></a>Berekening hervatten
 
 Als u een Data Base wilt starten, gebruikt u de REST API [Data Base hervatten](/rest/api/sql/databases/resume?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) . In het volgende voor beeld wordt een Data Base met de naam Database02 gehost op een server met de naam Server01. De server bevindt zich in een Azure-resourcegroep met de naam ResourceGroep1.
 

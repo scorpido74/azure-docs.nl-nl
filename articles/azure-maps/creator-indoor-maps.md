@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: fb0293c66662c86723c31baebeed42dd42d33413
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83677811"
 ---
 # <a name="creator-for-indoor-maps"></a>Maker voor kaarten in de binnenste
@@ -95,7 +94,7 @@ De Azure Maps [render v2-service: de tegel-API ophalen](https://docs.microsoft.c
 
 Gegevens sets kunnen worden opgevraagd met behulp van de [WFS-API (Web Feature Service)](https://docs.microsoft.com/rest/api/maps/wfs). WFS volgt de [Open GEOSPATIAL consortium API-functies](http://docs.opengeospatial.org/DRAFTS/17-069r1.html). Met de WFS-API kunt u in de gegevensset zelf een query uitvoeren op functies. U kunt WFS bijvoorbeeld gebruiken om alle middel grote Vergader zalen van een bepaalde faciliteit en een basis niveau te vinden.
 
-### <a name="indoor-maps-module"></a>Module voor binnenste kaarten
+### <a name="indoor-maps-module"></a>Plattegrondmodule
 
 De [Azure Maps Web-SDK](https://docs.microsoft.com/azure/azure-maps/) bevat de module kaarten van de kaart. Deze module biedt uitgebreide functionaliteiten voor de Azure Maps *map control* bibliotheek. Met de module binnenste kaarten worden de kaarten weer gegeven die zijn gemaakt in de maker. Het integreert widgets als *vloer kiezer*, waarmee gebruikers de verschillende vloeren kunnen visualiseren.
 

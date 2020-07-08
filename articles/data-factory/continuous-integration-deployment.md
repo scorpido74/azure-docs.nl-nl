@@ -12,10 +12,9 @@ manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.openlocfilehash: d997c6d4eae93290cbb1e4cafe6c7ad662a65933
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85336877"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continue integratie en levering in Azure Data Factory
@@ -108,7 +107,7 @@ Hieronder vindt u een hand leiding voor het instellen van een Azure pijp lijnen 
 
     f.  Selecteren **...** Naast het vak **sjabloon parameters** om het parameter bestand te kiezen. Zoek naar het bestand `ARMTemplateParametersForFactory.json` in de <FactoryName> map van de vertakking adf_publish.
 
-    g.  Selecteren **...** Naast het vak **sjabloon parameters negeren** en voer de gewenste parameter waarden in voor de doel Data Factory. Voer de naam van het geheim tussen dubbele aanhalings tekens in voor de referenties die afkomstig zijn van Azure Key Vault. Als de naam van het geheim bijvoorbeeld cred1 is, voert u **$ (cred1)** in voor deze waarde.
+    bijvoorbeeld  Selecteren **...** Naast het vak **sjabloon parameters negeren** en voer de gewenste parameter waarden in voor de doel Data Factory. Voer de naam van het geheim tussen dubbele aanhalings tekens in voor de referenties die afkomstig zijn van Azure Key Vault. Als de naam van het geheim bijvoorbeeld cred1 is, voert u **$ (cred1)** in voor deze waarde.
 
     h. Selecteer **Incrementeel** voor de **implementatie modus**.
 
@@ -305,7 +304,7 @@ Hier volgt een voor beeld van hoe een parameterisering-sjabloon eruit kan zien:
 ```
 Hier volgt een uitleg van de manier waarop de vorige sjabloon is samengesteld, onderverdeeld op resource type.
 
-#### <a name="pipelines"></a>Pijplijnen
+#### <a name="pipelines"></a>Pipelines
     
 * Een eigenschap in het pad `activities/typeProperties/waitTimeInSeconds` is para meters. Alle activiteiten in een pijp lijn met de naam eigenschap `waitTimeInSeconds` (bijvoorbeeld de `Wait` activiteit) worden als een getal met een standaard naam vastgelegd. Maar heeft geen standaard waarde in de Resource Manager-sjabloon. Het is een verplichte invoer tijdens de implementatie van Resource Manager.
 * Op dezelfde manier is een eigenschap `headers` (bijvoorbeeld in een `Web` activiteit) para meters van het type `object` (JObject). Het heeft een standaard waarde. Dit is dezelfde waarde als die van de bron-Factory.

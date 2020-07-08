@@ -12,10 +12,9 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
 ms.openlocfilehash: 27fcbcec07012dc34c846f316fccf788a0d25329
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84041316"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Aanbevelingen voor prestaties zoeken en Toep assen
@@ -29,7 +28,7 @@ Als u aanbevelingen voor prestaties wilt weer geven en Toep assen, hebt u de jui
 
 Gebruik de volgende stappen om aanbevelingen voor prestaties te vinden op het Azure Portal:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Ga naar **alle services**  >  **SQL-data bases**en selecteer uw data base.
 3. Navigeer naar **Aanbevolen prestaties** om de beschik bare aanbevelingen voor de geselecteerde Data Base weer te geven.
 
@@ -39,7 +38,7 @@ Aanbevelingen voor prestaties worden weer gegeven in de tabel zoals die wordt we
 
 Aanbevelingen worden gesorteerd op de mogelijke invloed op de prestaties van de volgende categorieën:
 
-| Impact | Beschrijving |
+| Impact | Description |
 |:--- |:--- |
 | Hoog |Aanbevelingen met hoge impact moeten de belangrijkste prestatie-impact bieden. |
 | Normaal |Aanbevelingen voor normale impact moeten de prestaties verbeteren, maar niet aanzienlijk. |
@@ -172,4 +171,4 @@ Controleer uw aanbevelingen en pas deze toe om de prestaties te verfijnen. Data 
 
 * [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)
 * [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
-* [Toegangs beheer op basis van rollen](../../role-based-access-control/overview.md)
+* [Op rollen gebaseerd toegangsbeheer](../../role-based-access-control/overview.md)

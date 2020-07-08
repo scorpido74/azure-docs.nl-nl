@@ -10,10 +10,9 @@ ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
 ms.openlocfilehash: d7d251370aefdfadc0b77a67f6dad1be2dcb9e9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759444"
 ---
 # <a name="deploy-okd-in-azure"></a>OKD implementeren in azure
@@ -29,15 +28,15 @@ Als u wilt implementeren met behulp van de Resource Manager-sjabloon, gebruikt u
 
 Enkele algemene aanpassings opties zijn, maar zijn niet beperkt tot:
 
-- Bastion VM-grootte (variabele in azuredeploy. json)
-- Naamgevings regels (variabelen in azuredeploy. json)
+- Bastion VM-grootte (variabele in azuredeploy.jsop)
+- Naam conventies (variabelen in azuredeploy.jsop)
 - Details van open Shift-cluster, gewijzigd via een hosts-bestand (deployOpenShift.sh)
 
 Voor de [OKD-sjabloon](https://github.com/Microsoft/openshift-origin) zijn meerdere vertakkingen beschikbaar voor verschillende versies van OKD.  Op basis van uw behoeften kunt u rechtstreeks vanuit de opslag plaats implementeren of u kunt het opslag plaats opsplitsen en aangepaste wijzigingen aanbrengen voordat u implementeert.
 
-Gebruik de `appId` waarde van de service-principal die u eerder hebt gemaakt `aadClientId` voor de para meter.
+Gebruik de `appId` waarde van de service-principal die u eerder hebt gemaakt voor de `aadClientId` para meter.
 
-Hier volgt een voor beeld van een bestand met para meters met de naam azuredeploy. para meters. json met alle vereiste invoer.
+Hier volgt een voor beeld van een parameter bestand met de naam azuredeploy.parameters.jsop met alle vereiste invoer.
 
 ```json
 {
@@ -119,9 +118,9 @@ Verschillende releases hebben mogelijk verschillende para meters. Controleer de 
 
 
 > [!NOTE] 
-> Voor de volgende opdracht is Azure CLI 2.0.8 of hoger vereist. U kunt de CLI-versie controleren met `az --version` de opdracht. Zie [Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)voor informatie over het bijwerken van de CLI-versie.
+> Voor de volgende opdracht is Azure CLI 2.0.8 of hoger vereist. U kunt de CLI-versie controleren met de `az --version` opdracht. Zie [Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)voor informatie over het bijwerken van de CLI-versie.
 
-In het volgende voor beeld worden het OKD-cluster en alle gerelateerde resources geïmplementeerd in een resource groep met de naam openshiftrg, met een implementatie naam van myOpenShiftCluster. Er wordt rechtstreeks vanuit de GitHub-opslag plaats naar de sjabloon verwezen tijdens het gebruik van een lokaal bestand met para meters met de naam azuredeploy. para meters. json.
+In het volgende voor beeld worden het OKD-cluster en alle gerelateerde resources geïmplementeerd in een resource groep met de naam openshiftrg, met een implementatie naam van myOpenShiftCluster. Er wordt rechtstreeks vanuit de GitHub-opslag plaats naar de sjabloon verwezen tijdens het gebruik van een lokaal parameter bestand met de naam azuredeploy.parameters.jsop.
 
 ```azurecli 
 az group deployment create -g openshiftrg --name myOpenShiftCluster \
@@ -138,11 +137,11 @@ Het volt ooien van de implementatie duurt ten minste 30 minuten, op basis van he
 }
 ```
 
-Als u niet wilt dat de opdracht regel wordt ingewisseld om de implementatie te volt ooien `--no-wait` , voegt u als een van de opties voor de groeps implementatie toe. De uitvoer van de implementatie kan worden opgehaald uit de Azure Portal in de implementatie sectie voor de resource groep.
+Als u niet wilt dat de opdracht regel wordt ingewisseld om de implementatie te volt ooien, voegt u `--no-wait` als een van de opties voor de groeps implementatie toe. De uitvoer van de implementatie kan worden opgehaald uit de Azure Portal in de implementatie sectie voor de resource groep.
 
 ## <a name="connect-to-the-okd-cluster"></a>Verbinding maken met het OKD-cluster
 
-Wanneer de implementatie is voltooid, maakt u verbinding met de open Shift-console met uw `OpenShift Console Url`browser met behulp van de. U kunt ook SSHen naar de OKD-Master. Hieronder volgt een voor beeld waarin de uitvoer van de implementatie wordt gebruikt:
+Wanneer de implementatie is voltooid, maakt u verbinding met de open Shift-console met uw browser met behulp van de `OpenShift Console Url` . U kunt ook SSHen naar de OKD-Master. Hieronder volgt een voor beeld waarin de uitvoer van de implementatie wordt gebruikt:
 
 ```bash
 $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com

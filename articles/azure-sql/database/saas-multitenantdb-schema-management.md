@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: b115b410547b37e6cfa369b825c94b6b22436941
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042174"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-databases"></a>Schema beheren in een SaaS-toepassing die gebruikmaakt van Shard multi tenant-data bases
@@ -75,10 +74,10 @@ De Wingtip tickets SaaS multi-tenant database scripts en toepassings bron code z
 
 Voor deze zelf studie moet u Power shell gebruiken om de data base van de taak agent en de taak agent te maken. Net als de MSDB-data base die wordt gebruikt door SQL-Agent, gebruikt een taak agent een data base in Azure SQL Database om taak definities, taak status en geschiedenis op te slaan. Nadat de taak agent is gemaakt, kunt u taken direct maken en bewaken.
 
-1. Open in **Power shell ISE** *.. \\ . Learning modules \\ schema beheer \\ demo-SchemaManagement. ps1*.
+1. Open in **Power shell ISE** *.. \\ .Demo-SchemaManagement.ps1voor het \\ schema \\ beheer van learning modules *.
 2. Druk op **F5** om het script uit te voeren.
 
-Het script *demo-SchemaManagement. ps1* roept het script *Deploy-SchemaManagement. ps1* aan om een Data Base met de naam _jobagent_ te maken op de catalogus server. Het script maakt vervolgens de taak agent, waarbij de _jobagent_ -Data Base als para meter wordt door gegeven.
+Het *Demo-SchemaManagement.ps1* script roept het *Deploy-SchemaManagement.ps1* script aan om een Data Base met de naam _jobagent_ te maken op de catalogus server. Het script maakt vervolgens de taak agent, waarbij de _jobagent_ -Data Base als para meter wordt door gegeven.
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>Een taak maken om nieuwe referentiegegevens te implementeren voor alle tenants
 

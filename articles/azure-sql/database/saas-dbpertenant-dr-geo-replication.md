@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 53d12510c4960b16d56ee32f07ca96bc398f999a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84043154"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Herstel na nood gevallen voor een SaaS-toepassing met meerdere tenants met behulp van geo-replicatie voor de data base
@@ -253,7 +252,7 @@ Wanneer het herstel proces is voltooid, zijn de toepassing en alle tenants volle
 In deze taak werkt u een van de Tenant databases bij. 
 
 1. Ga in uw browser naar de lijst met gebeurtenissen voor de concert hal van Contoso en noteer de naam van de laatste gebeurtenis.
-2. Stel in het *Power shell-ISE*in het script. ..\Learning Modules\Business continuïteit en nood Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 de volgende waarde in:
+2. Stel in het *Power shell-ISE*in het script. ..\Learning Modules\Business continuïteit en ramp Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 de volgende waarde in:
     * **$DemoScenario = 5** Een gebeurtenis verwijderen uit een Tenant in de herstel regio
 3. Druk op **F5** om het script uit te voeren
 4. Vernieuw de pagina van de contoso-evenementen http://events.wingtip-dpt.&lt voor concert (; User &gt; . trafficmanager.net/contosoconcerthall-substitueer &lt; User &gt; door de gebruikers waarde van uw implementatie) en u ziet dat de laatste gebeurtenis is verwijderd.
@@ -278,7 +277,7 @@ Met de failover wordt de data base effectief verplaatst naar de oorspronkelijke 
 ### <a name="run-the-repatriation-script"></a>Het repatriërings script uitvoeren
 Stel nu dat de storing is opgelost en voer het repatriërings script uit.
 
-1. In de *Power shell-ISE*in het script. ..\Learning Modules\Business continuïteit en nood Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1.
+1. In de *Power shell-ISE*in de Modules\Business-continuïteit en het rampen Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 script.
 
 2. Controleer of het catalogus synchronisatie proces nog steeds wordt uitgevoerd in het Power shell-exemplaar.  Als dat nodig is, start u deze opnieuw met de instelling:
     * **$DemoScenario = 1**, begin met het synchroniseren van de configuratie gegevens van de Tenant server, de groep en de data base in de catalogus

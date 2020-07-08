@@ -6,12 +6,11 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 89d7e46563182bf7808eb118f4526571c631fa23
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
-ms.translationtype: MT
+ms.openlocfilehash: 3dcadd77866a6c57542a43657a1942791cc4d179
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262511"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027785"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Azure Cosmos DB-gegevens visualiseren met behulp van de Power BI-connector 
 
@@ -51,22 +50,24 @@ Als u uw rapporten wilt delen in PowerBI.com, moet u een account hebben in Power
 ## <a name="lets-get-started"></a>Laten we aan de slag
 In deze zelf studie stel u voor dat u een geologiste Volcanoes over de hele wereld bent. De Volcano-gegevens worden opgeslagen in een Azure Cosmos DB-account en de JSON-document indeling is als volgt:
 
-    {
-        "Volcano Name": "Rainier",
-           "Country": "United States",
-          "Region": "US-Washington",
-          "Location": {
-            "type": "Point",
-            "coordinates": [
-              -121.758,
-              46.87
-            ]
-          },
-          "Elevation": 4392,
-          "Type": "Stratovolcano",
-          "Status": "Dendrochronology",
-          "Last Known Eruption": "Last known eruption from 1800-1899, inclusive"
-    }
+```json
+{
+    "Volcano Name": "Rainier",
+        "Country": "United States",
+        "Region": "US-Washington",
+        "Location": {
+          "type": "Point",
+          "coordinates": [
+            -121.758,
+            46.87
+          ]
+        },
+        "Elevation": 4392,
+        "Type": "Stratovolcano",
+        "Status": "Dendrochronology",
+        "Last Known Eruption": "Last known eruption from 1800-1899, inclusive"
+}
+```
 
 U haalt de Volcano-gegevens op uit het Azure Cosmos DB-account en visualiseert gegevens in een interactief Power BI rapport.
 
@@ -74,13 +75,13 @@ U haalt de Volcano-gegevens op uit het Azure Cosmos DB-account en visualiseert g
 
 2. U kunt **gegevens ophalen**, **recente bronnen**weer geven of **andere rapporten** rechtstreeks vanuit het welkomst scherm openen. Selecteer de ' X ' in de rechter bovenhoek om het scherm te sluiten. De **rapport** weergave van Power bi Desktop wordt weer gegeven.
    
-   ![Power BI Desktop rapport weergave-Power BI-connector](./media/powerbi-visualize/power_bi_connector_pbireportview.png)
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
 3. Selecteer het lint **Start** en klik vervolgens op **gegevens ophalen**.  Het venster **gegevens ophalen** wordt weer gegeven.
 
 4. Klik op **Azure**, selecteer **Azure Cosmos DB (bèta)** en klik vervolgens op **verbinding maken**. 
 
-    ![Power BI Desktop gegevens ophalen-Power BI-connector](./media/powerbi-visualize/power_bi_connector_pbigetdata.png)   
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbigetdata.png" alt-text="Power BI Desktop gegevens ophalen-Power BI-connector":::
 
 5. Klik op de pagina **voor beeld** van de connector op **door gaan**. Het venster **Azure Cosmos DB** wordt weer gegeven.
 
@@ -98,37 +99,48 @@ U haalt de Volcano-gegevens op uit het Azure Cosmos DB-account en visualiseert g
     
     In het voorbeeld venster ziet u een lijst met **record** items.  Een document wordt weer gegeven als een **record** type in Power bi. Op dezelfde manier is een genest JSON-blok in een document ook een **record**.
     
-    ![Power BI zelf studie voor Azure Cosmos DB Power BI connector-Navigator venster](./media/powerbi-visualize/power_bi_connector_pbinavigator.png)
+    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbinavigator.png" alt-text="Power BI zelf studie voor Azure Cosmos DB Power BI connector-Navigator venster":::
+
 12. Klik op **bewerken** om de query-editor in een nieuw venster te openen om de gegevens te transformeren.
 
 ## <a name="flattening-and-transforming-json-documents"></a>Het afvlakken en transformeren van JSON-documenten
 1. Schakel over naar het venster Power BI query-editor, waarbij de kolom **document** in het middelste deel venster wordt.
-   ![Query-editor in Power BI Desktop](./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png)
-2. Klik op de uitbreidings module aan de rechter kant van de kolomkop **document** .  Het context menu met een lijst met velden wordt weer gegeven.  Selecteer de velden die u nodig hebt voor het rapport, bijvoorbeeld Volcano naam, land, regio, locatie, uitbrei ding, type, status en eind afbreken. Schakel het selectie vakje **oorspronkelijke kolom naam gebruiken als voor voegsel** uit en klik vervolgens op **OK**.
-   
-    ![Power BI zelf studie voor Azure Cosmos DB Power BI connector-documenten uitbreiden](./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png)
-3. In het middelste deel venster wordt een voor beeld weer gegeven van het resultaat met de geselecteerde velden.
-   
-    ![Power BI zelf studie voor Azure Cosmos DB Power BI connector-afvlakking van resultaten](./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png)
-4. In ons voor beeld is de locatie-eigenschap een geojson-blok in een document.  Zoals u kunt zien, wordt de locatie weer gegeven als een **record** type in Power bi Desktop.  
-5. Klik op de uitbreidings module aan de rechter kant van de kolomkop document. locatie.  Het context menu met de velden type en coördinaten wordt weer gegeven.  Laten we het veld coördinaten selecteren, zorg ervoor dat de **oorspronkelijke kolom naam gebruiken als voor voegsel** niet is geselecteerd en klik op **OK**.
-   
-    ![Power BI zelf studie voor Azure Cosmos DB Power BI connector-locatie record](./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png)
-6. In het middelste deel venster wordt nu een kolom coördinaten van het **lijst** type weer gegeven.  Zoals aan het begin van de zelf studie wordt weer gegeven, is de geojson-gegevens in deze zelf studie van punt type met de breedte-en lengte waarden die zijn vastgelegd in de coördinaten matrix.
-   
-    Het element coördinaten [0] vertegenwoordigt een lengte graad terwijl coördinaten [1] de breedte graad aangeeft.
-    ![Power BI zelf studie voor Azure Cosmos DB Power BI connector-coördinaten lijst](./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
-7. Als u de coördinaten matrix wilt samen voegen, maakt u een **aangepaste kolom** met de naam LatLong.  Selecteer het lint **kolom toevoegen** en klik op **aangepaste kolom**.  Het venster **aangepaste kolom** wordt weer gegeven.
-8. Geef een naam op voor de nieuwe kolom, bijvoorbeeld LatLong.
-9. Geef vervolgens de aangepaste formule voor de nieuwe kolom op.  In ons voor beeld voegen we de breedte-en lengte waarden, gescheiden door een komma, toe, zoals hieronder wordt weer gegeven, met behulp van de volgende formule: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})` . Klik op **OK**.
-   
-    Raadpleeg voor meer informatie over Dax (Data Analysis expressions), waaronder DAX-functies, de [basis beginselen van Dax in Power bi Desktop](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics).
-   
-    ![Power BI zelf studie voor Azure Cosmos DB Power BI-connector-aangepaste kolom toevoegen](./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png)
 
-10. In het middelste deel venster ziet u nu de nieuwe LatLong kolommen gevuld met de waarden.
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png" alt-text="Query-editor in Power BI Desktop":::
+
+1. Klik op de uitbreidings module aan de rechter kant van de kolomkop **document** .  Het context menu met een lijst met velden wordt weer gegeven.  Selecteer de velden die u nodig hebt voor het rapport, bijvoorbeeld Volcano naam, land, regio, locatie, uitbrei ding, type, status en eind afbreken. Schakel het selectie vakje **oorspronkelijke kolom naam gebruiken als voor voegsel** uit en klik vervolgens op **OK**.
+   
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png" alt-text="Power BI zelf studie voor Azure Cosmos DB Power BI connector-documenten uitbreiden":::
+
+1. In het middelste deel venster wordt een voor beeld weer gegeven van het resultaat met de geselecteerde velden.
+   
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png" alt-text="Power BI zelf studie voor Azure Cosmos DB Power BI connector-afvlakking van resultaten":::
+
+1. In ons voor beeld is de locatie-eigenschap een geojson-blok in een document.  Zoals u kunt zien, wordt de locatie weer gegeven als een **record** type in Power bi Desktop.  
+
+1. Klik op de uitbreidings module aan de rechter kant van de kolomkop document. locatie.  Het context menu met de velden type en coördinaten wordt weer gegeven.  Laten we het veld coördinaten selecteren, zorg ervoor dat de **oorspronkelijke kolom naam gebruiken als voor voegsel** niet is geselecteerd en klik op **OK**.
+   
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png" alt-text="Power BI zelf studie voor Azure Cosmos DB Power BI connector-locatie record":::
+
+1. In het middelste deel venster wordt nu een kolom coördinaten van het **lijst** type weer gegeven.  Zoals aan het begin van de zelf studie wordt weer gegeven, is de geojson-gegevens in deze zelf studie van punt type met de breedte-en lengte waarden die zijn vastgelegd in de coördinaten matrix.
+   
+   Het element coördinaten [0] vertegenwoordigt een lengte graad terwijl coördinaten [1] de breedte graad aangeeft.
+
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png" alt-text="Power BI zelf studie voor Azure Cosmos DB Power BI connector-coördinaten lijst":::
+
+1. Als u de coördinaten matrix wilt samen voegen, maakt u een **aangepaste kolom** met de naam LatLong.  Selecteer het lint **kolom toevoegen** en klik op **aangepaste kolom**.  Het venster **aangepaste kolom** wordt weer gegeven.
+
+1. Geef een naam op voor de nieuwe kolom, bijvoorbeeld LatLong.
+
+1. Geef vervolgens de aangepaste formule voor de nieuwe kolom op.  In ons voor beeld voegen we de breedte-en lengte waarden, gescheiden door een komma, toe, zoals hieronder wordt weer gegeven, met behulp van de volgende formule: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})` . Klik op **OK**.
+   
+   Raadpleeg voor meer informatie over Dax (Data Analysis expressions), waaronder DAX-functies, de [basis beginselen van Dax in Power bi Desktop](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics).
+   
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png" alt-text="Power BI zelf studie voor Azure Cosmos DB Power BI-connector-aangepaste kolom toevoegen":::
+
+1. In het middelste deel venster ziet u nu de nieuwe LatLong kolommen gevuld met de waarden.
     
-    ![Power BI zelf studie voor Azure Cosmos DB Power BI connector-kolom aangepaste LatLong](./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png)
+    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png" alt-text="Power BI zelf studie voor Azure Cosmos DB Power BI connector-kolom aangepaste LatLong":::
     
     Als er een fout in de nieuwe kolom wordt weer gegeven, moet u ervoor zorgen dat de toegepaste stappen onder query-instellingen overeenkomen met de volgende afbeelding:
     
@@ -136,43 +148,44 @@ U haalt de Volcano-gegevens op uit het Azure Cosmos DB-account en visualiseert g
     
     Als uw stappen verschillen, verwijdert u de extra stappen en probeert u de aangepaste kolom opnieuw toe te voegen. 
 
-11. Klik op **sluiten en Toep assen** om het gegevens model op te slaan.
-    
-    ![Power BI zelf studie voor Azure Cosmos DB Power BI connector-sluiten & Toep assen](./media/powerbi-visualize/power_bi_connector_pbicloseapply.png)
+1. Klik op **sluiten en Toep assen** om het gegevens model op te slaan.
+
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicloseapply.png" alt-text="Power BI zelf studie voor Azure Cosmos DB Power BI connector-sluiten & Toep assen":::
 
 <a id="build-the-reports"></a>
 ## <a name="build-the-reports"></a>De rapporten maken
+
 In Power BI Desktop rapport weergave kunt u beginnen met het maken van rapporten om gegevens te visualiseren.  U kunt rapporten maken door velden naar het **rapport** doek te slepen en neer te zetten.
 
-![Power BI Desktop rapport weergave-Power BI-connector](./media/powerbi-visualize/power_bi_connector_pbireportview2.png)
+:::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview2.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
 In de rapport weergave vindt u het volgende:
 
 1. In het deel venster **velden** ziet u een lijst met gegevens modellen met velden die u voor uw rapporten kunt gebruiken.
-2. Het deel venster **Visualisaties** . Een rapport kan één of meer visualisaties bevatten.  Kies de gewenste visuele typen in het deel venster **Visualisaties** .
-3. De **rapport** canvas, dit is de locatie waar u de visuele elementen voor uw rapport bouwt.
-4. De **rapport** pagina. U kunt meerdere rapport pagina's toevoegen in Power BI Desktop.
+1. Het deel venster **Visualisaties** . Een rapport kan één of meer visualisaties bevatten.  Kies de gewenste visuele typen in het deel venster **Visualisaties** .
+1. De **rapport** canvas, dit is de locatie waar u de visuele elementen voor uw rapport bouwt.
+1. De **rapport** pagina. U kunt meerdere rapport pagina's toevoegen in Power BI Desktop.
 
 Hieronder ziet u de basis stappen voor het maken van een eenvoudig interactief kaart weergave rapport.
 
 1. In ons voor beeld maken we een kaart weergave waarin de locatie van elk Volcano wordt weer gegeven.  Klik in het deel venster **Visualisaties** op het visuele type kaart dat is gemarkeerd in de bovenstaande scherm afbeelding.  U ziet dat het type kaart visueel is getekend op het canvas van het **rapport** .  In het deel venster **Visualisaties** moet ook een set eigenschappen worden weer gegeven die betrekking hebben op het visuele type van de kaart.
-2. Sleep het veld LatLong nu van het deel venster **velden** naar de eigenschap **locatie** in het deel venster **Visualisaties** .
-3. Vervolgens sleept u het veld Volcano name naar de eigenschap **Legend** .  
-4. Sleep vervolgens het veld met de kanteling naar de eigenschap **Size** .  
-5. U ziet nu de kaart Visual met een set met bellen die de locatie van elk Volcano aangeven met de grootte van de bel met de uitbrei ding van de Volcano.
-6. U hebt nu een basis rapport gemaakt.  U kunt het rapport verder aanpassen door meer visualisaties toe te voegen.  In ons geval hebben we een slicer van het type Volcano toegevoegd om het rapport interactief te maken.  
+1. Sleep het veld LatLong nu van het deel venster **velden** naar de eigenschap **locatie** in het deel venster **Visualisaties** .
+1. Vervolgens sleept u het veld Volcano name naar de eigenschap **Legend** .  
+1. Sleep vervolgens het veld met de kanteling naar de eigenschap **Size** .  
+1. U ziet nu de kaart Visual met een set met bellen die de locatie van elk Volcano aangeven met de grootte van de bel met de uitbrei ding van de Volcano.
+1. U hebt nu een basis rapport gemaakt.  U kunt het rapport verder aanpassen door meer visualisaties toe te voegen.  In ons geval hebben we een slicer van het type Volcano toegevoegd om het rapport interactief te maken.  
    
-7. Klik in het menu bestand op **Opslaan** en sla het bestand op als PowerBITutorial. pbix.
+1. Klik in het menu bestand op **Opslaan** en sla het bestand op als PowerBITutorial. pbix.
 
 ## <a name="publish-and-share-your-report"></a>Uw rapport publiceren en delen
 Als u uw rapport wilt delen, moet u een account hebben in PowerBI.com.
 
 1. Klik in de Power BI Desktop op het lint **Start** .
-2. Klik op **Publish**.  U wordt gevraagd om de gebruikers naam en het wacht woord voor uw PowerBI.com-account in te voeren.
-3. Zodra de referentie is geverifieerd, wordt het rapport gepubliceerd naar uw bestemming die u hebt geselecteerd.
-4. Klik op **PowerBITutorial. Pbix openen in Power bi** om uw rapport te bekijken en te delen op PowerBI.com.
+1. Klik op **Publish**.  U wordt gevraagd om de gebruikers naam en het wacht woord voor uw PowerBI.com-account in te voeren.
+1. Zodra de referentie is geverifieerd, wordt het rapport gepubliceerd naar uw bestemming die u hebt geselecteerd.
+1. Klik op **PowerBITutorial. Pbix openen in Power bi** om uw rapport te bekijken en te delen op PowerBI.com.
    
-    ![Publiceren naar Power BI slagen. Open zelf studie in Power BI](./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png)
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png" alt-text="Publiceren naar Power BI slagen. Open zelf studie in Power BI":::
 
 ## <a name="create-a-dashboard-in-powerbicom"></a>Een dashboard maken op PowerBI.com
 Nu u een rapport hebt, kunt u dit delen op PowerBI.com

@@ -11,12 +11,11 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 88c116121452fb00397b8d99c21e9f02b1796f00
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
-ms.translationtype: MT
+ms.openlocfilehash: 148b344d469c78936b56b96090c76e379bb63731
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85559811"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027491"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Taal-en spraak ondersteuning voor de spraak service
 
@@ -36,53 +35,53 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
-| Landinstelling  | Taal                          | Ondersteund | Aanpassingen                                    |
-|---------|-----------------------------------|-----------|---------------------------------------------------|
-| `ar-AE` | Arabisch (VAE)                      | Ja       | Nee                                                |
-| `ar-BH` | Arabisch (Bahrein), modern, standaard | Ja       | Taalmodel                                    |
-| `ar-EG` | Arabisch (Egypte)                    | Ja       | Taalmodel                                    |
-| `ar-IL` | Arabisch (Israël)                   | Ja       | Nee                                                |
-| `ar-JO` | Arabisch (Jordanië)                   | Ja       | Nee                                                |
-| `ar-KW` | Arabisch (Koeweit)                   | Ja       | Nee                                                |
-| `ar-LB` | Arabisch (Libanon)                  | Ja       | Nee                                                |
-| `ar-PS` | Arabisch (Palestijnse)                | Ja       | Nee                                                |
-| `ar-QA` | Arabisch (Qatar)                    | Ja       | Nee                                                |
-| `ar-SA` | Arabisch (Saoedi-Arabië)             | Ja       | Nee                                                |
-| `ar-SY` | Arabisch (Syrië)                    | Ja       | Taalmodel                                    |
-| `ca-ES` | Catalaans                           | Ja       | Taalmodel                                    |
-| `da-DK` | Deens (Denemarken)                  | Ja       | Taalmodel                                    |
-| `de-DE` | Duits (Duitsland)                  | Ja       | Akoestisch model<br>Taalmodel<br>Uitspraak van |
-| `en-AU` | Engels (Australië)               | Ja       | Akoestisch model<br>Taalmodel                  |
-| `en-CA` | Engels (Canada)                  | Ja       | Akoestisch model<br>Taalmodel                  |
-| `en-GB` | Engels (Verenigd Koninkrijk)          | Ja       | Akoestisch model<br>Taalmodel<br>Uitspraak van |
-| `en-IN` | Engels (India)                   | Ja       | Akoestisch model<br>Taalmodel                  |
-| `en-NZ` | Engels (Nieuw-Zeeland)             | Ja       | Akoestisch model<br>Taalmodel                  |
-| `en-US` | Engels (Verenigde Staten)           | Ja       | Akoestisch model<br>Taalmodel<br>Uitspraak van |
-| `es-ES` | Spaans (Spanje)                   | Ja       | Akoestisch model<br>Taalmodel                  |
-| `es-MX` | Spaans (Mexico)                  | Ja       | Akoestisch model<br>Taalmodel                  |
-| `fi-FI` | Fins (Finland)                 | Ja       | Taalmodel                                    |
-| `fr-CA` | Frans (Canada)                   | Ja       | Akoestisch model<br>Taalmodel                  |
-| `fr-FR` | Frans (Frankrijk)                   | Ja       | Akoestisch model<br>Taalmodel<br>Uitspraak van |
-| `gu-IN` | Gujarati (Indiase)                 | Ja       | Taalmodel                                    |
-| `hi-IN` | Hindi (India)                     | Ja       | Akoestisch model<br>Taalmodel                  |
-| `it-IT` | Italiaans (Italië)                   | Ja       | Akoestisch model<br>Taalmodel<br>Uitspraak van |
-| `ja-JP` | Japans (Japan)                  | Ja       | Taalmodel                                    |
-| `ko-KR` | Koreaans (Korea)                    | Ja       | Taalmodel                                    |
-| `mr-IN` | Marathi (India)                   | Ja       | Taalmodel                                    |
-| `nb-NO` | Noors (Bokmål) (Noor wegen)       | Ja       | Taalmodel                                    |
-| `nl-NL` | Nederlands (Nederland)               | Ja       | Taalmodel                                    |
-| `pl-PL` | Pools (Polen)                   | Ja       | Taalmodel                                    |
-| `pt-BR` | Portugees (Brazilië)               | Ja       | Akoestisch model<br>Taalmodel<br>Uitspraak van |
-| `pt-PT` | Portugees (Portugal)             | Ja       | Taalmodel                                    |
-| `ru-RU` | Russisch (Rusland)                  | Ja       | Akoestisch model<br>Taalmodel                  |
-| `sv-SE` | Zweeds (Zweden)                  | Ja       | Taalmodel                                    |
-| `ta-IN` | Tamil (India)                     | Ja       | Taalmodel                                    |
-| `te-IN` | Telugu (India)                    | Ja       | Taalmodel                                    |
-| `th-TH` | Thai (Thailand)                   | Ja       | Nee                                                |
-| `tr-TR` | Turks (Turkije)                  | Ja       | Taalmodel                                    |
-| `zh-CN` | Chinees (Mandarijn, vereenvoudigd)    | Ja       | Akoestisch model<br>Taalmodel                  |
-| `zh-HK` | Chinees (Kantonees, traditioneel)  | Ja       | Taalmodel                                    |
-| `zh-TW` | Chinees (Taiwan Mandarijn)      | Ja       | Taalmodel                                    |
+| Landinstelling  | Taal                          | Aanpassingen                                    |
+|---------|-----------------------------------|---------------------------------------------------|
+| `ar-AE` | Arabisch (VAE)                      | No                                                |
+| `ar-BH` | Arabisch (Bahrein), modern, standaard | Taalmodel                                    |
+| `ar-EG` | Arabisch (Egypte)                    | Taalmodel                                    |
+| `ar-IL` | Arabisch (Israël)                   | No                                                |
+| `ar-JO` | Arabisch (Jordanië)                   | No                                                |
+| `ar-KW` | Arabisch (Koeweit)                   | No                                                |
+| `ar-LB` | Arabisch (Libanon)                  | No                                                |
+| `ar-PS` | Arabisch (Palestijnse)                | No                                                |
+| `ar-QA` | Arabisch (Qatar)                    | No                                                |
+| `ar-SA` | Arabisch (Saoedi-Arabië)             | No                                                |
+| `ar-SY` | Arabisch (Syrië)                    | Taalmodel                                    |
+| `ca-ES` | Catalaans                           | Taalmodel                                    |
+| `da-DK` | Deens (Denemarken)                  | Taalmodel                                    |
+| `de-DE` | Duits (Duitsland)                  | Akoestisch model<br>Taalmodel<br>Uitspraak van |
+| `en-AU` | Engels (Australië)               | Akoestisch model<br>Taalmodel                  |
+| `en-CA` | Engels (Canada)                  | Akoestisch model<br>Taalmodel                  |
+| `en-GB` | Engels (Verenigd Koninkrijk)          | Akoestisch model<br>Taalmodel<br>Uitspraak van |
+| `en-IN` | Engels (India)                   | Akoestisch model<br>Taalmodel                  |
+| `en-NZ` | Engels (Nieuw-Zeeland)             | Akoestisch model<br>Taalmodel                  |
+| `en-US` | Engels (Verenigde Staten)           | Akoestisch model<br>Taalmodel<br>Uitspraak van |
+| `es-ES` | Spaans (Spanje)                   | Akoestisch model<br>Taalmodel                  |
+| `es-MX` | Spaans (Mexico)                  | Akoestisch model<br>Taalmodel                  |
+| `fi-FI` | Fins (Finland)                 | Taalmodel                                    |
+| `fr-CA` | Frans (Canada)                   | Akoestisch model<br>Taalmodel                  |
+| `fr-FR` | Frans (Frankrijk)                   | Akoestisch model<br>Taalmodel<br>Uitspraak van |
+| `gu-IN` | Gujarati (Indiase)                 | Taalmodel                                    |
+| `hi-IN` | Hindi (India)                     | Akoestisch model<br>Taalmodel                  |
+| `it-IT` | Italiaans (Italië)                   | Akoestisch model<br>Taalmodel<br>Uitspraak van |
+| `ja-JP` | Japans (Japan)                  | Taalmodel                                    |
+| `ko-KR` | Koreaans (Korea)                    | Taalmodel                                    |
+| `mr-IN` | Marathi (India)                   | Taalmodel                                    |
+| `nb-NO` | Noors (Bokmål) (Noor wegen)       | Taalmodel                                    |
+| `nl-NL` | Nederlands (Nederland)               | Taalmodel                                    |
+| `pl-PL` | Pools (Polen)                   | Taalmodel                                    |
+| `pt-BR` | Portugees (Brazilië)               | Akoestisch model<br>Taalmodel<br>Uitspraak van |
+| `pt-PT` | Portugees (Portugal)             | Taalmodel                                    |
+| `ru-RU` | Russisch (Rusland)                  | Akoestisch model<br>Taalmodel                  |
+| `sv-SE` | Zweeds (Zweden)                  | Taalmodel                                    |
+| `ta-IN` | Tamil (India)                     | Taalmodel                                    |
+| `te-IN` | Telugu (India)                    | Taalmodel                                    |
+| `th-TH` | Thai (Thailand)                   | No                                                |
+| `tr-TR` | Turks (Turkije)                  | Taalmodel                                    |
+| `zh-CN` | Chinees (Mandarijn, vereenvoudigd)    | Akoestisch model<br>Taalmodel                  |
+| `zh-HK` | Chinees (Kantonees, traditioneel)  | Taalmodel                                    |
+| `zh-TW` | Chinees (Taiwan Mandarijn)      | Taalmodel                                    |
 
 ## <a name="text-to-speech"></a>Tekst naar spraak
 

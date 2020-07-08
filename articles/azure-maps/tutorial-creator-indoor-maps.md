@@ -8,12 +8,11 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 93827e4d5f6bcf66191ae78c18adac71b5dd0a22
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.openlocfilehash: c3c34ea9e32e100d5756a3930ce9d0147363e379
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255174"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027866"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>De Creator gebruiken om kaarten voor de binnenste toe te maken
 
@@ -109,6 +108,8 @@ De API voor het uploaden van gegevens is een langlopende trans actie die het hie
     ```http
     https://atlas.microsoft.com/conversion/convert?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&udid={udid}&inputType=DWG
     ```
+    >[!IMPORTANT]
+    > De API-url's in dit document moeten mogelijk worden aangepast op basis van de locatie van de bron van de maker. Zie [toegang tot Creator-Services](how-to-manage-creator.md#access-to-creator-services)voor meer informatie.
 
 3. Klik op de knop **verzenden** en wacht totdat de aanvraag is verwerkt. Zodra de aanvraag is voltooid, gaat u naar het tabblad **headers** van het antwoord en zoekt u naar de **locatie** sleutel. Kopieer de waarde van de **locatie** sleutel, die de `status URL` voor de conversie aanvraag is.
 

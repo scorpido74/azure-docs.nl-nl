@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 65331136b5b137c44577fd09f3914e8869cc2dcb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042797"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Eén Tenant herstellen met een SaaS-toepassing met een Data Base per Tenant
@@ -74,7 +73,7 @@ Als u deze herstel scenario's wilt demonstreren, moet u eerst per ongeluk een ge
 
 ### <a name="accidentally-delete-the-last-event"></a>De laatste gebeurtenis onbedoeld verwijderen
 
-1. Open in de Power shell-ISE.. \\ . Leer modules \\ bedrijfs continuïteit en herstel na nood gevallen \\ RestoreTenant \\ *demo-RestoreTenant. ps1*en stel de volgende waarde in:
+1. Open in de Power shell-ISE.. \\ . Leer modules \\ bedrijfs continuïteit en herstel na nood gevallen \\ RestoreTenant \\ *Demo-RestoreTenant.ps1*en stel de volgende waarde in:
 
    * **$DemoScenario**  =  **1**, *laatste gebeurtenis verwijderen (zonder ticket verkoop)*.
 2. Druk op F5 om het script uit te voeren en de laatste gebeurtenis te verwijderen. Het volgende bevestigings bericht wordt weer gegeven:
@@ -91,10 +90,10 @@ Als u deze herstel scenario's wilt demonstreren, moet u eerst per ongeluk een ge
 
 Met deze oefening wordt de contoso hal-Data Base op een bepaald moment teruggezet voordat de gebeurtenis werd verwijderd. In dit scenario wordt ervan uitgegaan dat u de verwijderde gegevens in een parallelle Data Base wilt controleren.
 
- Met het script *Restore-TenantInParallel. ps1* maakt u een parallelle Tenant database met de naam *ContosoConcertHall \_ Old*, met een vermelding in een parallelle catalogus. Dit patroon van herstellen is het meest geschikt voor het herstellen van een klein gegevens verlies. U kunt dit patroon ook gebruiken als u gegevens moet controleren op nalevings-of controle doeleinden. Het is de aanbevolen benadering voor het gebruik van [actieve geo-replicatie](active-geo-replication-overview.md).
+ Met het *Restore-TenantInParallel.ps1* script maakt u een parallelle Tenant database met de naam *ContosoConcertHall \_ Old*, met een vermelding in een parallelle catalogus. Dit patroon van herstellen is het meest geschikt voor het herstellen van een klein gegevens verlies. U kunt dit patroon ook gebruiken als u gegevens moet controleren op nalevings-of controle doeleinden. Het is de aanbevolen benadering voor het gebruik van [actieve geo-replicatie](active-geo-replication-overview.md).
 
 1. Voltooi de sectie [een Tenant verwijderen die per ongeluk gegevens verwijdert](#simulate-a-tenant-accidentally-deleting-data) .
-2. Open in de Power shell-ISE.. \\ . Leer modules \\ bedrijfs continuïteit en herstel na nood gevallen \\ RestoreTenant \\ _demo-RestoreTenant. ps1_.
+2. Open in de Power shell-ISE.. \\ . Trainings modules voor \\ bedrijfs continuïteit en herstel na nood gevallen \\ RestoreTenant \\ _Demo-RestoreTenant.ps1_.
 3. Stel **$DemoScenario**  =  **2** *in en herstel de Tenant parallel*.
 4. Druk op F5 om het script uit te voeren.
 
@@ -114,7 +113,7 @@ Het weer geven van de herstelde Tenant als een extra Tenant met een eigen Events
 
 Deze oefening zet de contoso-Tenant voor concert hal om naar een punt voordat de gebeurtenis werd verwijderd. Met het script *Restore-TenantInPlace* wordt een Tenant database teruggezet naar een nieuwe data base en wordt het oorspronkelijke verwijderd. Dit herstel patroon is het meest geschikt voor het herstellen van ernstige gegevens beschadiging en de Tenant moet mogelijk een aanzienlijk gegevens verlies bevatten.
 
-1. Open in de Power shell-ISE het bestand **demo-RestoreTenant. ps1** .
+1. Open het **Demo-RestoreTenant.ps1** -bestand in de Power shell-ISE.
 2. Stel **$DemoScenario**  =  **5** *in en herstel de Tenant*.
 3. Druk op F5 om het script uit te voeren.
 

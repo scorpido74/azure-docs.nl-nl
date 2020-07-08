@@ -12,10 +12,9 @@ ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 02/24/2020
 ms.openlocfilehash: d92882014f66234be8a8b1d7063dae866ec6f230
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84045296"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Een transactioneel consistente kopie van een data base in Azure SQL Database kopiëren
@@ -171,7 +170,7 @@ Zie [Azure SQL database beveiliging beheren na nood herstel](active-geo-replicat
 
 De volgende fouten zijn opgetreden tijdens het kopiëren van een data base in Azure SQL Database. Zie [Een Azure SQL Database kopiëren](database-copy.md) voor meer informatie.
 
-| Foutcode | Ernst | Beschrijving |
+| Foutcode | Severity | Description |
 | ---:| ---:|:--- |
 | 40635 |16 |De client met het IP-adres%. &#x2a;LS is tijdelijk uitgeschakeld. |
 | 40637 |16 |Het maken van de data base is momenteel uitgeschakeld. |

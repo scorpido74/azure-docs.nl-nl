@@ -9,10 +9,9 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
 ms.openlocfilehash: bc3e17ce5becf039703585167e1ef3aa825cf2ab
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83697529"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Een Service-Principal toevoegen aan de rol Server beheerder 
@@ -22,7 +21,7 @@ ms.locfileid: "83697529"
 ## <a name="before-you-begin"></a>Voordat u begint
 Voordat u deze taak voltooit, moet u een Service-Principal hebben geregistreerd in Azure Active Directory.
 
-[Service-Principal maken-Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)   
+[Service-principal maken - Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)   
 [Service-principal maken - PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="using-sql-server-management-studio"></a>SQL Server Management Studio gebruiken

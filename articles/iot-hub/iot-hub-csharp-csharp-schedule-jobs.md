@@ -10,10 +10,9 @@ ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 4c71a108d1967027465d127db50737119af3e2c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733373"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>Taken plannen en uitzenden (.NET)
@@ -56,7 +55,7 @@ Aan het einde van deze zelf studie hebt u twee .NET (C#)-console-apps:
 
 * Een actief Azure-account. Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.
 
-* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+* Zorg ervoor dat de poort 8883 is geopend in de firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort is in sommige netwerkomgevingen van bedrijven en onderwijsinstellingen mogelijk geblokkeerd. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -167,7 +166,7 @@ In deze sectie maakt u een .NET-console-app die reageert op een directe methode 
 
 In deze sectie maakt u een .NET-console-app (met C#) die gebruikmaakt van taken om de **LockDoor** direct-methode aan te roepen en gewenste eigenschaps updates naar meerdere apparaten te verzenden.
 
-1. Selecteer in Visual Studio **bestand** > **Nieuw** > **project**. Kies in **een nieuw project maken de**optie **console-app (.NET Framework)** en selecteer vervolgens **volgende**.
+1. Selecteer in Visual Studio **Bestand** > **Nieuw** > **Project**. Kies in **een nieuw project maken de**optie **console-app (.NET Framework)** en selecteer vervolgens **volgende**.
 
 1. Geef het project de naam *ScheduleJob*in **uw nieuwe project configureren**. Kies voor **oplossing**de optie **toevoegen aan oplossing**en selecteer vervolgens **maken**.
 
@@ -295,9 +294,9 @@ U kunt nu de apps uitvoeren.
 
 1. Klik in Visual Studio Solution Explorer met de rechter muisknop op uw oplossing en selecteer vervolgens **opstart projecten instellen**.
 
-1. Selecteer **algemene eigenschappen** > **Start project**en selecteer vervolgens **meerdere opstart projecten**.
+1. Selecteer **algemene eigenschappen**  >  **Start project**en selecteer vervolgens **meerdere opstart projecten**.
 
-1. Zorg ervoor `SimulateDeviceMethods` dat boven aan de lijst wordt gevolgd door `ScheduleJob`. Stel beide acties in op **Start** en selecteer **OK**.
+1. Zorg ervoor dat `SimulateDeviceMethods` boven aan de lijst wordt gevolgd door `ScheduleJob` . Stel beide acties in op **Start** en selecteer **OK**.
 
 1. Voer de projecten uit door te klikken op **Start** of ga naar het menu **fout opsporing** en klik op **fout opsporing starten**.
 

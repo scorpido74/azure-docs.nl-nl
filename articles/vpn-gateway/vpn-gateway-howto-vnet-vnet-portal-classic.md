@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: cherylmc
 ms.openlocfilehash: bdd27645045195016b7a563787470bf6f2187115
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84985463"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Een VNet-naar-VNet-verbinding configureren (klassiek)
@@ -71,7 +70,7 @@ Het is belang rijk om te bepalen welke bereiken u gaat gebruiken voor het config
 
 In de volgende tabel ziet u een voor beeld van hoe u uw VNets definieert. Gebruik de bereiken alleen als richt lijn. Noteer de bereiken voor uw virtuele netwerken. U hebt deze informatie nodig voor latere stappen.
 
-**Hierbij**
+**Voorbeeld**
 
 | Virtual Network | Adresruimte | Regio | Maakt verbinding met de lokale netwerk site |
 |:--- |:--- |:--- |:--- |

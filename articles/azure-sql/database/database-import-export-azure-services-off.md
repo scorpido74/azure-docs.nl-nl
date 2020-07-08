@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
 ms.openlocfilehash: ea6aec9ffcaf01c0db5b297d40783ce4690a8f0a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84045303"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Een Azure SQL Database importeren of exporteren zonder dat Azure-Services toegang hebben tot de server
@@ -71,7 +70,7 @@ De volgende stappen laten zien hoe u verbinding kunt maken met uw virtuele machi
 
 [Down load en installeer de meest recente versie van SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download).
 
-Zie [SqlPackage. exe](https://docs.microsoft.com/sql/tools/sqlpackage)(Engelstalig) voor meer informatie.
+Zie [SqlPackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage)voor meer informatie.
 
 ## <a name="create-a-firewall-rule-to-allow-the-vm-access-to-the-database"></a>Een firewall regel maken om de VM toegang tot de data base te geven
 
@@ -85,7 +84,7 @@ Met de volgende stappen maakt u een IP-firewall regel op server niveau voor het 
 
    ![servernaam](./media/database-import-export-azure-services-off/server-name.png)
 
-3. Selecteer **Serverfirewall instellen** op de werkbalk. De pagina **firewall-instellingen** voor de server wordt geopend.
+3. Selecteer **Serverfirewall instellen** op de werkbalk. De pagina **Firewallinstellingen** voor de server wordt geopend.
 
    ![IP-firewallregel op serverniveau](./media/database-import-export-azure-services-off/server-firewall-rule.png)
 
@@ -101,7 +100,7 @@ Zie [para meters en eigenschappen exporteren](https://docs.microsoft.com/sql/too
 
 We raden u aan het SqlPackage-hulp programma te gebruiken voor schaal en prestaties in de meeste productie omgevingen. Raadpleeg dit blogartikel van het SQL Server-klantadviesteam over migratie met behulp van BACPAC-bestanden: [Migrating from SQL Server to Azure SQL Database using BACPAC Files](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/) (Migreren van SQL Server naar Azure SQL Database met BACPAC-bestanden).
 
-In dit voor beeld ziet u hoe u een Data Base exporteert met SqlPackage. exe met Active Directory universele verificatie. Vervang door waarden die specifiek zijn voor uw omgeving.
+In dit voor beeld ziet u hoe u een Data Base exporteert met SqlPackage.exe met Active Directory universele verificatie. Vervang door waarden die specifiek zijn voor uw omgeving.
 
 ```cmd
 SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=<servername>.database.windows.net;Initial Catalog=MyDB;" /ua:True /tid:"apptest.onmicrosoft.com"

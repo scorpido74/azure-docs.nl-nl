@@ -14,12 +14,11 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25c477d0d293e896bc92cd3bd6047135a56cb4ad
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
-ms.translationtype: MT
+ms.openlocfilehash: 70d53bf3d97f27caae7d3dee7cd03a4606d6761c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85105971"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921753"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerrol in Azure Active Directory
 
@@ -395,7 +394,7 @@ Gebruikers met deze rol hebben volledige toegang tot alle micro soft Search-behe
 
 Gebruikers met deze rol kunnen inhoud voor micro soft Search maken, beheren en verwijderen in het beheer centrum van Microsoft 365, waaronder blad wijzers, Q&als en locaties.
 
-### <a name="security-administrator"></a>[Beveiligings beheerder](#security-administrator-permissions)
+### <a name="security-administrator"></a>[Beveiligingsbeheer](#security-administrator-permissions)
 
 Gebruikers met deze rol hebben machtigingen voor het beheren van beveiligings functies in het Microsoft 365 Security Center, Azure Active Directory Identity Protection, Azure Active Directory Authentication, Azure Information Protection en Office 365 Security & compliance Center. Meer informatie over machtigingen voor Office 365 is beschikbaar op [machtigingen in het Office 365 Security & compliance Center](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
@@ -414,7 +413,7 @@ Windows Defender ATP en EDR | Rollen toewijzen<br>Computer groepen beheren<br>De
 [Slimme vergrendeling](../authentication/howto-password-smart-lockout.md) | Definieer de drempel en duur voor vergren delingen wanneer mislukte aanmeldings gebeurtenissen plaatsvinden.
 [Wachtwoord beveiliging](../authentication/concept-password-ban-bad.md) | Aangepaste lijst met verboden wacht woorden of on-premises wachtwoord beveiliging configureren.
 
-### <a name="security-operator"></a>[Beveiligingsoperator](#security-operator-permissions)
+### <a name="security-operator"></a>[Beveiligings operator](#security-operator-permissions)
 
 Gebruikers met deze rol kunnen waarschuwingen beheren en algemene alleen-lezen toegang hebben voor beveiligings functies, inclusief alle informatie in Microsoft 365 Security Center, Azure Active Directory, identiteits beveiliging, Privileged Identity Management en Office 365 Security & compliance Center. Meer informatie over machtigingen voor Office 365 is beschikbaar op [machtigingen in het Office 365 Security & compliance Center](https://docs.microsoft.com/office365/securitycompliance/permissions-in-the-security-and-compliance-center).
 
@@ -429,7 +428,7 @@ Windows Defender ATP en EDR | Alle machtigingen van de rol beveiligings lezer<br
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Alle machtigingen van de rol beveiligings lezer
 [Office 365-service status](https://docs.microsoft.com/office365/enterprise/view-service-health) | De status van Office 365-services weer geven
 
-### <a name="security-reader"></a>[Beveiligings lezer](#security-reader-permissions)
+### <a name="security-reader"></a>[Beveiligingslezer](#security-reader-permissions)
 
 Gebruikers met deze rol hebben algemene alleen-lezen toegang voor de functie met betrekking tot beveiliging, inclusief alle informatie in Microsoft 365 Security Center, Azure Active Directory, identiteits beveiliging, Privileged Identity Management, en de mogelijkheid om Azure Active Directory aanmeld rapporten en controle logboeken te lezen, en in Office 365 Security & compliance Center. Meer informatie over machtigingen voor Office 365 is beschikbaar op [machtigingen in het Office 365 Security & compliance Center](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
@@ -1349,8 +1348,7 @@ Kan commerciële aankopen voor een bedrijf, afdeling of team beheren.
 | --- | --- |
 | micro soft. commerce. facturering/partners/lezen | Lees de partner-eigenschap van de O365-facturering. |
 | micro soft. commerce. volumeLicenseServiceCenter/allTasks | Beheer alle aspecten van het Volume Licensing-service centrum. |
-| micro soft. map/organisatie/basis/bijwerken | Basis eigenschappen van de organisatie in Azure Active Directory bijwerken. |
-| micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
+| micro soft. office365. supportTickets/cons/allTasks | Eigen Office 365-ondersteunings tickets maken en weer geven. |
 | micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 
 
