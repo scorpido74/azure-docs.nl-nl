@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: a2eafd6bb34b897f3492ddcffd6841f0fabc4ca7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73034543"
 ---
 Bij het ontwerpen van een systeem is het belang rijk om inzicht te krijgen in de mogelijke dreigingen van dat systeem en de juiste verdedigingen dienovereenkomstig, aangezien het systeem is ontworpen en gearchitectd. Het is belang rijk dat u het product ontwerpt van het begin met beveiliging in het gedrang, omdat u kunt zien hoe een aanvaller een systeem kan misbruiken om ervoor te zorgen dat de juiste oplossingen van het begin worden uitgevoerd.
@@ -177,7 +177,7 @@ In elk van de categorieën die worden beschreven in de Azure IoT-architectuur, w
 
 **Uitbrei ding van bevoegdheden (E)**: een apparaat dat een specifieke functie heeft, kan worden gedwongen om iets anders te doen. Zo kan een klep die is geprogrammeerd om te worden geopend, zo worden gerenderd dat deze helemaal kan worden geopend.
 
-| **Component** | **Bestaat** | **Oplossing** | **Risico** | **Verloop** |
+| **Onderdeel** | **Bedreiging** | **Oplossing** | **Risico** | **Implementatie** |
 | --- | --- | --- | --- | --- |
 | Apparaat |S |Identiteit toewijzen aan het apparaat en het apparaat verifiëren |Het apparaat of een deel van het apparaat vervangen door een ander apparaat. Hoe weet u dat u met het juiste apparaat praat? |Het apparaat verifiëren met behulp van Transport Layer Security (TLS) of IPSec. Infra structuur moet ondersteuning bieden voor het gebruik van een vooraf gedeelde sleutel (PSK) op de apparaten die geen volledige asymmetrische crypto grafie kunnen verwerken. Gebruik Azure AD, [OAuth](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) |
 || TRID |Pas tamperproof-mechanismen toe op het apparaat, bijvoorbeeld door het niet mogelijk te maken sleutels en andere cryptografische materialen van het apparaat te extra heren. |Het risico is als iemand het apparaat knoeit (fysieke storing). Hoe weet u zeker dat er niet met het apparaat is geknoeid. |De meest efficiënte oplossing is een TPM-mogelijkheid (Trusted Platform Module) waarmee sleutels kunnen worden opgeslagen in een speciale on-chip-circuit van waaruit de sleutels niet kunnen worden gelezen, maar kan alleen worden gebruikt voor cryptografische bewerkingen die de sleutel gebruiken, maar die de sleutel nooit vrijgeven. Geheugen versleuteling van het apparaat. Sleutel beheer voor het apparaat. De code te ondertekenen. |
@@ -220,7 +220,7 @@ Hier volgen enkele voor beelden van bedreigingen in deze categorie:
 
 Bedreigingen rond het communicatie traject tussen apparaten, apparaten en veld gateways en apparaat-en Cloud gateway. De volgende tabel bevat enkele richt lijnen rond open sockets op het apparaat/VPN:
 
-| **Component** | **Bestaat** | **Oplossing** | **Risico** | **Verloop** |
+| **Onderdeel** | **Bedreiging** | **Oplossing** | **Risico** | **Implementatie** |
 | --- | --- | --- | --- | --- |
 | Apparaat IoT Hub |TID |! TLS (PSK/RSA) om het verkeer te versleutelen |De communicatie tussen het apparaat en de gateway wordt geluisterd of verstoord |Beveiliging op het niveau van het protocol. Met aangepaste protocollen moet u weten hoe u ze kunt beveiligen. In de meeste gevallen wordt de communicatie van het apparaat naar de IoT Hub (het apparaat initieert de verbinding). |
 | Apparaat naar apparaat |TID |! TLS (PSK/RSA) om het verkeer te versleutelen. |Gegevens lezen in transit tussen apparaten. Knoeien met de gegevens. Het apparaat overbelasten met nieuwe verbindingen |Beveiliging op het protocol niveau (MQTT/AMQP/HTTP/CoAP. Met aangepaste protocollen moet u weten hoe u ze kunt beveiligen. De risico beperking voor het DoS-risico is op peer-apparaten via een Cloud-of veld Gateway en heeft deze alleen als clients in het netwerk. De peering kan leiden tot een rechtstreekse verbinding tussen de peers na de Broker van de gateway |
@@ -244,7 +244,7 @@ Hier volgen enkele voor beelden van bedreigingen in deze categorie:
 
 Elke apparaat-en veld Gateway heeft een vorm van opslag (tijdelijk voor het in de wachtrij plaatsen van gegevens, besturings systeem installatie kopie opslag).
 
-| **Component** | **Bestaat** | **Oplossing** | **Risico** | **Verloop** |
+| **Onderdeel** | **Bedreiging** | **Oplossing** | **Risico** | **Implementatie** |
 | --- | --- | --- | --- | --- |
 | Opslag van apparaten |TRID |Opslag versleuteling, de logboeken ondertekenen |Gegevens lezen uit de opslag (PII-gegevens), knoeien met telemetriegegevens. Knoeien met opdracht besturings gegevens in de wachtrij of in de cache. Knoeien met configuratie-of firmware-update pakketten die lokaal in de cache zijn opgeslagen of in de wachtrij staan, kunnen leiden tot het besturings systeem en/of systeem onderdelen die worden aangetast |Versleuteling, bericht verificatie code (MAC) of digitale hand tekening. Waar mogelijk, krachtig toegangs beheer via toegangs beheer lijsten (Acl's) of machtigingen voor de resource. |
 | Installatie kopie van het besturings systeem van apparaat |TRID | |Knoeien met het besturings systeem/replacing de besturingssysteem onderdelen |Alleen-lezen OS-partitie, ondertekende OS-installatie kopie, versleuteling |

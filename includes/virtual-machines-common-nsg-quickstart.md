@@ -9,31 +9,31 @@ ms.date: 09/12/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: ec6cbcbc93fe87634c87caeb0041b75ec916a22f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67176005"
 ---
-U opent een poort of maakt een eindpunt voor een virtuele machine (VM) in Azure door een netwerkfilter te maken op een subnet of een VM-netwerkinterface. U plaatst deze filters, die zowel binnenkomend als uitgaand verkeer beheren, op een netwerkbeveiligingsgroep die is gekoppeld aan de bron die het verkeer ontvangt.
+U opent een poort of maakt een eind punt naar een virtuele machine (VM) in azure door een netwerk filter te maken op een subnet of een VM-netwerk interface. U plaatst deze filters, waarmee zowel binnenkomend als uitgaand verkeer worden beheerd op een netwerk beveiligings groep die is gekoppeld aan de resource die het verkeer ontvangt.
 
-In het voorbeeld in dit artikel wordt uitgelegd hoe u een netwerkfilter maakt dat gebruikmaakt van de standaard TCP-poort 80 (er wordt ervan uitgegaan dat u de juiste services al hebt gestart en dat u alle firewallregels van het besturingssysteem op de VM hebt geopend).
+In het voor beeld in dit artikel ziet u hoe u een netwerk filter maakt dat gebruikmaakt van de standaard TCP-poort 80 (ervan wordt uitgegaan dat u de juiste services al hebt gestart en de firewall regels van het besturings systeem op de virtuele machine hebt geopend).
 
-Nadat u een VM hebt gemaakt die is geconfigureerd om webaanvragen te serveren op de standaard TCP-poort 80, u het als volgt instellen:
+Nadat u een virtuele machine hebt gemaakt die is geconfigureerd voor webaanvragen op de standaard TCP-poort 80, kunt u het volgende doen:
 
 1. Maak een netwerkbeveiligingsgroep.
 
-2. Maak een binnenkomende beveiligingsregel waarmee verkeer wordt toegestaan en wijs waarden toe aan de volgende instellingen:
+2. Maak een regel voor binnenkomende beveiliging die verkeer toestaat en waarden toewijst aan de volgende instellingen:
 
-   - **Bestemmingspoortbereik**: 80
+   - **Poortbereiken van doel**: 80
 
-   - **Bronpoortbereiken**: * (maakt elke bronpoort mogelijk)
+   - **Poort bereik van bron**: * (staat wille keurige bron poort toe)
 
-   - **Prioriteitswaarde:** voer een waarde in die minder dan 65.500 en hoger in prioriteit is dan de standaard catch-all inkomende regel weigeren.
+   - **Prioriteits waarde**: Voer een waarde in die kleiner is dan 65.500 en hoger dan de standaard regel voor het weigeren van binnenkomende verbindingen.
 
-3. Koppel de netwerkbeveiligingsgroep aan de VM-netwerkinterface of subnet.
+3. Koppel de netwerk beveiligings groep aan de VM-netwerk interface of het subnet.
 
-Hoewel in dit voorbeeld een eenvoudige regel wordt gebruikt om HTTP-verkeer toe te staan, u ook netwerkbeveiligingsgroepen en -regels gebruiken om complexere netwerkconfiguraties te maken. 
+Hoewel in dit voor beeld een eenvoudige regel wordt gebruikt om HTTP-verkeer toe te staan, kunt u ook netwerk beveiligings groepen en-regels gebruiken om complexere netwerk configuraties te maken. 
 
 
 

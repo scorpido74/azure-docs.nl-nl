@@ -9,10 +9,10 @@ ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
 ms.openlocfilehash: 57f557a812ec5e4eea75b76ca1394ca360a85d30
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175974"
 ---
 Azure Virtual Machines (Vm's) passeren verschillende statussen die kunnen worden ingedeeld in *inrichting* en *energie* status. Het doel van dit artikel is om deze statussen te beschrijven en te markeren wanneer klanten worden gefactureerd voor het gebruik van een exemplaar. 
@@ -40,7 +40,7 @@ Facturering van exemplaar gebruik
 </tr>
 <tr>
 <td>
-<p><b>Ingang</b></p>
+<p><b>Starten</b></p>
 </td>
 <td>
 <p>De VM wordt opgestart.</p>
@@ -178,7 +178,7 @@ Dit zijn de overgangs statussen nadat het platform een door de gebruiker gestart
 <p><b>Staten</b></p>
 </td>
 <td width="366">
-<p>Beschrijving</p>
+<p>Description</p>
 </td>
 </tr>
 <tr>
@@ -210,7 +210,7 @@ Dit zijn de overgangs statussen nadat het platform een door de gebruiker gestart
 </tr>
 <tr>
 <td width="162">
-<p><b>Verwijder</b></p>
+<p><b>Verwijderen</b></p>
 </td>
 <td width="366">
 <code>"statuses": [<br>
@@ -228,7 +228,7 @@ Dit zijn de overgangs statussen nadat het platform een door de gebruiker gestart
 </td>
 <td width="366">
 <p>Als een virtuele machine wordt gemaakt met een installatie kopie van een besturings systeem en niet met een gespecialiseerde installatie kopie, kunnen de volgende Substatussen worden waargenomen:</p>
-<p>1. <b>OSProvisioningInprogress</b> &ndash; de virtuele machine wordt uitgevoerd en de installatie van het gast besturingssysteem wordt uitgevoerd. <p /> 
+<p>1. <b>OSProvisioningInprogress</b> &ndash; De virtuele machine wordt uitgevoerd en de installatie van het gast besturingssysteem wordt uitgevoerd. <p /> 
 <code> "statuses": [<br>
  {<br>
  "code": "ProvisioningState/creating/OSProvisioningInprogress",<br>
@@ -236,7 +236,7 @@ Dit zijn de overgangs statussen nadat het platform een door de gebruiker gestart
  "displayStatus": "OS Provisioning In progress"<br>
  }<br>
 ]</code><br>
-<p>2. <b>OSProvisioningComplete</b> &ndash; korte status. De virtuele machine wordt snel overgezet naar **geslaagd** , tenzij er uitbrei dingen moeten worden geïnstalleerd. Het installeren van extensies kan enige tijd duren. <br />
+<p>2. <b>OSProvisioningComplete</b> &ndash; Korte status. De virtuele machine wordt snel overgezet naar **geslaagd** , tenzij er uitbrei dingen moeten worden geïnstalleerd. Het installeren van extensies kan enige tijd duren. <br />
 <code> "statuses": [<br>
  {<br>
  "code": "ProvisioningState/creating/OSProvisioningComplete",<br>

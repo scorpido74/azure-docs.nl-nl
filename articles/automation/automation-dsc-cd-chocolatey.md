@@ -7,10 +7,10 @@ ms.date: 08/08/2018
 ms.topic: conceptual
 ms.custom: references_regions
 ms.openlocfilehash: 1bab503004876a2680286204de28631ce26b9069
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84197109"
 ---
 # <a name="set-up-continuous-deployment-with-chocolatey"></a>Doorlopende implementatie instellen met Chocolatey
@@ -82,7 +82,7 @@ U kunt uw Automation-account in een van de volgende regio's plaatsen (ook wel lo
 ## <a name="step-2-make-vm-extension-tweaks-to-the-resource-manager-template"></a>Stap 2: de aanpassingen van de VM-extensie maken voor de Resource Manager-sjabloon
 
 Details voor de registratie van de virtuele machine (met behulp van de Power shell DSC-extensie) die is opgenomen in deze [Azure Quick](https://github.com/Azure/azure-quickstart-templates/tree/master/dsc-extension-azure-automation-pullserver)start-sjabloon.
-Met deze stap wordt de nieuwe virtuele machine geregistreerd bij de pull-server in de lijst met status configuratie knooppunten. In deze registratie wordt de knooppunt configuratie opgegeven die op het knoop punt moet worden toegepast. Deze knooppunt configuratie hoeft nog niet te bestaan op de pull-server. het is dus een goed probleem dat stap 4 de eerste keer wordt uitgevoerd. Maar u moet in stap 2 de naam van het knoop punt en de naam van de configuratie hebben bepaald. In dit voor beeld is het knoop punt ' isvbox ' en de configuratie is ' ISVBoxConfig '. De naam van de knooppunt configuratie (die moet worden opgegeven in DeploymentTemplate. json) is dus ' ISVBoxConfig. isvbox '.
+Met deze stap wordt de nieuwe virtuele machine geregistreerd bij de pull-server in de lijst met status configuratie knooppunten. In deze registratie wordt de knooppunt configuratie opgegeven die op het knoop punt moet worden toegepast. Deze knooppunt configuratie hoeft nog niet te bestaan op de pull-server. het is dus een goed probleem dat stap 4 de eerste keer wordt uitgevoerd. Maar u moet in stap 2 de naam van het knoop punt en de naam van de configuratie hebben bepaald. In dit voor beeld is het knoop punt ' isvbox ' en de configuratie is ' ISVBoxConfig '. De naam van de knooppunt configuratie (die moet worden opgegeven in DeploymentTemplate.jsop) is dus ISVBoxConfig. isvbox.
 
 ## <a name="step-3-add-required-dsc-resources-to-the-pull-server"></a>Stap 3: de vereiste DSC-resources toevoegen aan de pull-server
 
@@ -126,7 +126,7 @@ Het opgenomen voor beeld implementeert deze stappen voor cChoco en xNetworking.
 
 ## <a name="step-4-add-the-node-configuration-to-the-pull-server"></a>Stap 4: de knooppunt configuratie toevoegen aan de pull-server
 
-Er is niets speciaal voor de eerste keer dat u uw configuratie in de pull-server importeert en compileert. Alle latere invoer of compilaties van dezelfde configuratie zien er precies hetzelfde uit. Telkens wanneer u het pakket bijwerkt en het moet worden gepusht naar productie, voert u deze stap uit nadat u hebt gecontroleerd of het configuratie bestand juist is, met inbegrip van de nieuwe versie van uw pakket. Hier is het configuratie bestand **ISVBoxConfig. ps1**:
+Er is niets speciaal voor de eerste keer dat u uw configuratie in de pull-server importeert en compileert. Alle latere invoer of compilaties van dezelfde configuratie zien er precies hetzelfde uit. Telkens wanneer u het pakket bijwerkt en het moet worden gepusht naar productie, voert u deze stap uit nadat u hebt gecontroleerd of het configuratie bestand juist is, met inbegrip van de nieuwe versie van uw pakket. Hier ziet u het configuratie bestand **ISVBoxConfig.ps1**:
 
 ```powershell
 Configuration ISVBoxConfig
@@ -171,7 +171,7 @@ Configuration ISVBoxConfig
 }
 ```
 
-Dit is het script **New-ConfigurationScript. ps1** (gewijzigd voor het gebruik van de module AZ):
+Hier is het **New-ConfigurationScript.ps1** script (gewijzigd voor het gebruik van de module AZ):
 
 ```powershell
 Import-AzAutomationDscConfiguration `
@@ -213,6 +213,6 @@ Vanaf dat moment is het tot de virtuele machines die afhankelijk zijn van die co
 - Zie [Azure Automation status configuratie Overview](automation-dsc-overview.md)(Engelstalig) voor een overzicht.
 - Zie aan de slag [met Azure Automation status configuratie](automation-dsc-getting-started.md)om aan de slag te gaan met het gebruik van de functie.
 - Zie [DSC-configuraties compileren in azure Automation status configuratie](automation-dsc-compile.md)voor meer informatie over het compileren van DSC-configuraties zodat u ze aan doel knooppunten kunt toewijzen.
-- Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)(Engelstalig) voor een Power shell-cmdlet-verwijzing.
+- Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+) voor een naslagdocumentatie voor een PowerShell-cmdlet.
 - Zie [prijzen voor Azure Automation status configuratie](https://azure.microsoft.com/pricing/details/automation/)voor prijs informatie.

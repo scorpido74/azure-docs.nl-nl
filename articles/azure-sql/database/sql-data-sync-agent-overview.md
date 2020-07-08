@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
 ms.openlocfilehash: 8033e64924b5faa1cfdc9c04cdd8711850185dca
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84195468"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>Data Sync-agent voor SQL Data Sync
@@ -319,14 +319,14 @@ SqlDataSyncAgentCommand.exe -action "updatecredential" -serverName localhost -da
 
 Raadpleeg de volgende artikelen voor meer informatie over SQL Data Sync:
 
--   Overzicht: [gegevens synchroniseren tussen meerdere Cloud-en on-premises data bases met SQL Data Sync in azure](sql-data-sync-data-sql-server-sql-database.md)
+-   Overzicht: [Gegevens synchroniseren tussen meerdere cloud- en on-premises databases met SQL Data Sync in Azure](sql-data-sync-data-sql-server-sql-database.md)
 -   Data Sync instellen
     - In de portal- [zelf studie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL database en SQL Server](sql-data-sync-sql-server-configure.md)
     - Met PowerShell
         -  [Power shell gebruiken om te synchroniseren tussen meerdere data bases in Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [Power shell gebruiken om te synchroniseren tussen een data base in Azure SQL Database en een data base in een SQL Server-exemplaar](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 -   Best practices: [Best practices voor Azure SQL Data Sync](sql-data-sync-best-practices.md)
--   SQL Data Sync controleren [met Azure monitor-logboeken](sql-data-sync-monitor-sync.md)
+-   Bewaken: [SQL Data Sync bewaken met Azure Monitor-logboeken](sql-data-sync-monitor-sync.md)
 -   Problemen oplossen-[problemen oplossen met Azure SQL Data Sync] SQL-Data-Sync-troubleshoot.md)
 -   Het synchronisatieschema bijwerken
     -   Met Transact-SQL- [replicatie van schema wijzigingen automatiseren met SQL Data Sync in azure](sql-data-sync-update-sync-schema.md)

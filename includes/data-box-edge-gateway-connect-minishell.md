@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/06/2019
 ms.author: alkohli
 ms.openlocfilehash: 348f7bdd333da4f4a6cb41a438b7aee08d6a6bbb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67176497"
 ---
 Afhankelijk van het besturings systeem van de client zijn de procedures om een externe verbinding met het apparaat te maken verschillend.
@@ -20,7 +20,7 @@ Voordat u begint, moet u ervoor zorgen dat Windows Power shell 5,0 of hoger word
 Volg deze stappen om vanaf een Windows-client extern verbinding te maken.
 
 1. Een Windows Power shell-sessie uitvoeren als beheerder.
-2. Zorg ervoor dat de Windows Remote Management-service wordt uitgevoerd op de client. Typ het volgende na de opdrachtprompt:
+2. Zorg ervoor dat de Windows Remote Management-service wordt uitgevoerd op de client. Typ in de opdrachtprompt:
 
     `winrm quickconfig`
 
@@ -28,7 +28,7 @@ Volg deze stappen om vanaf een Windows-client extern verbinding te maken.
 
     $ip = "<device_ip>"
 
-    Vervang `<device_ip>` door het IP-adres van uw apparaat.
+    Vervang door `<device_ip>` het IP-adres van uw apparaat.
 
 4. Typ de volgende opdracht om het IP-adres van uw apparaat toe te voegen aan de lijst met vertrouwde hosts van de client:
 

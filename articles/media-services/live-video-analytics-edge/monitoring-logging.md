@@ -4,10 +4,10 @@ description: Dit artikel bevat een overzicht van live video analyses op IoT Edge
 ms.topic: reference
 ms.date: 04/27/2020
 ms.openlocfilehash: 807b0623159e0b50285b89da2835e9dd6cb037aa
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84261210"
 ---
 # <a name="monitoring-and-logging"></a>Bewaking en registratie
@@ -139,13 +139,13 @@ Gebeurtenissen zijn afkomstig van het apparaat aan de rand en kunnen worden gebr
 
 Bij elke gebeurtenis, wanneer deze via de IoT Hub wordt waargenomen, wordt een aantal algemene eigenschappen weer gegeven, zoals hieronder wordt beschreven.
 
-|Eigenschap   |Eigenschapstype| Gegevenstype   |Beschrijving|
+|Eigenschap   |Eigenschapstype| Gegevenstype   |Description|
 |---|---|---|---|
 |bericht-id |systeem |guid|  Unieke gebeurtenis-ID.|
 |onderwerp| applicationProperty |tekenreeks|    Azure Resource Manager pad voor het Media Services-account.|
 |Onderwerp|   applicationProperty |tekenreeks|    Subpad van de entiteit die de gebeurtenis verstuurt.|
 |eventTime| applicationProperty|    tekenreeks| Tijdstip waarop de gebeurtenis is gegenereerd.|
-|eventType| applicationProperty |tekenreeks|    Gebeurtenis type-id (zie hieronder).|
+|Type| applicationProperty |tekenreeks|    Gebeurtenis type-id (zie hieronder).|
 |body|body  |object|    Bepaalde gebeurtenis gegevens.|
 |dataVersion    |applicationProperty|   tekenreeks  |{Major}. Secundair|
 
@@ -178,9 +178,9 @@ Gebeurtenis typen worden toegewezen aan een naam ruimte op basis van het volgend
 
 `Microsoft.Media.Graph.{EventClass}.{EventType}`
 
-#### <a name="event-classes"></a>Gebeurtenis klassen
+#### <a name="event-classes"></a>Gebeurtenisklassen
 
-|Klassenaam|Beschrijving|
+|Klassenaam|Description|
 |---|---|
 |Analyse  |Gebeurtenissen die worden gegenereerd als onderdeel van inhouds analyse.|
 |Diagnostiek    |Gebeurtenissen die hulp bieden bij diagnose van problemen en prestaties.|

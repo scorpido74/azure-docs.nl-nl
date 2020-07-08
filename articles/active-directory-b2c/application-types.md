@@ -12,10 +12,10 @@ ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 29a82c1aed4ea79673b4019270a334eac722bc96
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84295419"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Toepassings typen die kunnen worden gebruikt in Active Directory B2C
@@ -42,7 +42,7 @@ Deze stappen kunnen enigszins verschillen op basis van het type toepassing dat u
 
 ## <a name="web-applications"></a>Webtoepassingen
 
-Voor webtoepassingen (inclusief .NET, PHP, Java, Ruby, python en node. js) die worden gehost op een server en toegankelijk zijn via een browser, Azure AD B2C ondersteunt [OpenID Connect Connect](protocols-overview.md) voor alle gebruikers ervaringen. In de Azure AD B2C implementatie van OpenID Connect Connect initieert uw webtoepassing gebruikers ervaringen door verificatie aanvragen uit te geven aan Azure AD. Het resultaat van de aanvraag is een `id_token`. Dit beveiligingstoken vertegenwoordigt de identiteit van de gebruiker. Het bevat ook informatie over de gebruiker in de vorm van claims:
+Voor webtoepassingen (inclusief .NET, PHP, Java, Ruby, python en Node.js) die worden gehost op een server en toegankelijk zijn via een browser, Azure AD B2C ondersteunt [OpenID Connect Connect](protocols-overview.md) voor alle gebruikers ervaringen. In de Azure AD B2C implementatie van OpenID Connect Connect initieert uw webtoepassing gebruikers ervaringen door verificatie aanvragen uit te geven aan Azure AD. Het resultaat van de aanvraag is een `id_token`. Dit beveiligingstoken vertegenwoordigt de identiteit van de gebruiker. Het bevat ook informatie over de gebruiker in de vorm van claims:
 
 ```json
 // Partial raw id_token

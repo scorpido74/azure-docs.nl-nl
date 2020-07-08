@@ -9,20 +9,20 @@ ms.date: 02/27/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 0a81d8c97b916fd15e7be5fde05e9ea25ba1151d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175937"
 ---
 Een hub bevat de gateway. Zodra de hub is gemaakt, worden u kosten in rekening gebracht voor de hub, zelfs als u geen sites hebt toegevoegd. Het duurt 30 minuten om de hub en gateway te maken.
 
-1. Zoek het virtuele WAN dat u hebt gemaakt. Klik op de virtuele WAN-pagina, onder de sectie **virtuele WAN-architectuur** , op **hubs**.
+1. Zoek naar de virtuele WAN die u hebt gemaakt. Klik op de virtuele WAN-pagina, onder de sectie **virtuele WAN-architectuur** , op **hubs**.
 2. Klik op de pagina hubs op **+ nieuwe hub** om de pagina **virtuele hub maken** te openen.
 3. Vul op de pagina **virtuele hub maken** de volgende velden in:
 
    * Locatie
-   * Naam
+   * Name
    * Privé-adresruimte van hub
 
 Klik op **Bevestigen** om de hub te maken. Klik op **vernieuwen** om de hub weer te geven op de pagina **hubs** .

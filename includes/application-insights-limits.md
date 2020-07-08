@@ -9,17 +9,17 @@ ms.date: 08/06/2019
 ms.author: mbullwin
 ms.custom: include file
 ms.openlocfilehash: 14e2bd4af2616e9dd33fe8267de132ab6c0f1cfe
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69982613"
 ---
 Er zijn enkele limieten voor het aantal metrische gegevens en gebeurtenissen per toepassing, dat wil zeggen, per instrumentatie sleutel. De limieten zijn afhankelijk van de [prijscategorie](https://azure.microsoft.com/pricing/details/application-insights/) die u kiest.
 
-| Resource | Standaardlimiet | Opmerking
+| Resource | Standaardlimiet | Notitie
 | --- | --- | --- |
-| Totale hoeveelheid gegevens per dag | 100 GB | U kunt gegevens beperken door een maximum in te stellen. Als u meer gegevens nodig hebt, kunt u de limiet in de portal verhogen tot 1.000 GB. Voor capaciteit groter dan 1.000 GB stuurt u een e-mail AIDataCap@microsoft.comnaar.
+| Totale hoeveelheid gegevens per dag | 100 GB | U kunt gegevens beperken door een maximum in te stellen. Als u meer gegevens nodig hebt, kunt u de limiet in de portal verhogen tot 1.000 GB. Voor capaciteit groter dan 1.000 GB stuurt u een e-mail naar AIDataCap@microsoft.com .
 | Beperking | 32.000 gebeurtenissen per seconde | De limiet wordt gemeten in een minuut.
 | Bewaartijd van gegevens | [30-730 dagen](https://docs.microsoft.com/azure/azure-monitor/app/pricing#change-the-data-retention-period)  | Deze resource is voor [Search](../articles/azure-monitor/app/diagnostic-search.md), [Analytics](../articles/azure-monitor/app/analytics.md) en [Metrics Explorer](../articles/azure-monitor/app/metrics-explorer.md).
 | Bewaartijd van gedetailleerde resultaten van [beschikbaarheidstests met meerdere stappen](../articles/azure-monitor/app/availability-multistep.md) | 90 dagen | Deze resource biedt gedetailleerde resultaten van elke stap.

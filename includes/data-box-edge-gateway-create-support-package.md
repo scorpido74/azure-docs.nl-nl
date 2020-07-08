@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: b657ee32e76dd90671f7e91337ced01b925889a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67176494"
 ---
 Als u problemen ondervindt met het apparaat, kunt u een ondersteunings pakket maken op basis van de systeem Logboeken. Microsoft Ondersteuning gebruikt dit pakket om de problemen op te lossen. Volg deze stappen voor het maken van een ondersteunings pakket:
@@ -34,7 +34,7 @@ Als u problemen ondervindt met het apparaat, kunt u een ondersteunings pakket ma
     - `-Path`-Geef het netwerk of het lokale pad op waarnaar u het ondersteunings pakket wilt kopiëren. lang
     - `-Credential`-Geef de referenties op voor toegang tot het beveiligde pad.
     - `-Zip`-Geef op of u een zip-bestand wilt genereren.
-    - `-Include`-Geef op of u de onderdelen wilt opnemen die moeten worden opgenomen in het ondersteunings pakket. Als niet wordt opgegeven `Default` , wordt ervan uitgegaan.
+    - `-Include`-Geef op of u de onderdelen wilt opnemen die moeten worden opgenomen in het ondersteunings pakket. Als niet wordt opgegeven, `Default` wordt ervan uitgegaan.
     - `-IncludeArchived`-Geef op of u gearchiveerde logboeken wilt toevoegen aan het ondersteunings pakket.
     - `-IncludePeriodicStats`-Geef op of u periodieke Statie logboeken wilt gebruiken in het ondersteunings pakket.
 

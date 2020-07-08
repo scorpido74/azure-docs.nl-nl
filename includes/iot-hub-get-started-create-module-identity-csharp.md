@@ -9,10 +9,10 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: include file
 ms.openlocfilehash: a5c1ddd085ae65b9920d73f50f993f4646785a69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68883752"
 ---
 ## <a name="create-a-module-identity"></a>Een module-id maken
@@ -29,7 +29,7 @@ Als u deze consoletoepassing uitvoert, worden er een unieke id en een unieke sle
 
     ![Voer de naam en het framework in voor uw Visual Studio-oplossing](./media/iot-hub-get-started-create-module-identity-csharp/configure-createidentities-project.png)
 
-1. Open in Visual Studio **tools** > **NuGet package manager** > **NuGet-pakketten beheren voor oplossing**. Selecteer het tabblad **Browse**.
+1. Open in Visual Studio **tools**  >  **NuGet package manager**  >  **NuGet-pakketten beheren voor oplossing**. Selecteer het tabblad **Browse**.
 
 1. Zoek naar **micro soft. Azure. devices**. Selecteer deze en selecteer vervolgens **installeren**.
 
@@ -104,7 +104,7 @@ Als u deze consoletoepassing uitvoert, worden er een unieke id en een unieke sle
 
     De `AddDeviceAsync` -methode maakt een apparaat-id met de id **myFirstDevice**. Als deze apparaat-ID al bestaat in het identiteits register, haalt de code gewoon de bestaande apparaatgegevens op. De app geeft vervolgens de primaire sleutel voor die identiteit weer. U gebruikt deze sleutel in de gesimuleerde apparaat-app om verbinding te maken met uw hub.
 
-    De `AddModuleAsync` -methode maakt een module-identiteit met id **MyFirstModule** onder apparaat **myFirstDevice**. Als die module-ID al bestaat in het identiteits register, haalt de code gewoon de bestaande module-informatie op. De app geeft vervolgens de primaire sleutel voor die identiteit weer. U gebruikt deze sleutel in de gesimuleerde module-app om verbinding te maken met uw hub.
+    De `AddModuleAsync` -methode maakt een module-identiteit met id **myFirstModule** onder apparaat **myFirstDevice**. Als die module-ID al bestaat in het identiteits register, haalt de code gewoon de bestaande module-informatie op. De app geeft vervolgens de primaire sleutel voor die identiteit weer. U gebruikt deze sleutel in de gesimuleerde module-app om verbinding te maken met uw hub.
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 

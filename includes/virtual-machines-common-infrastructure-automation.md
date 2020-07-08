@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
 ms.openlocfilehash: 3733989ad6eed113e37c87eb7da6748cec10e34d
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485753"
 ---
 Om Azure virtual machines (Vm's) op een consistente manier te maken en te beheren, is een vorm van automatisering doorgaans gewenst. Er zijn veel hulpprogram ma's en oplossingen waarmee u de volledige levens cyclus van Azure-infrastructuur implementatie en-beheer kunt automatiseren. In dit artikel worden enkele van de hulpprogram ma's voor het automatiseren van de infra structuur geïntroduceerd die u in azure kunt gebruiken. Deze hulpprogram ma's passen doorgaans in op een van de volgende benaderingen:
@@ -56,7 +56,7 @@ Leer hoe u het volgende doet:
 
 Cloud-init werkt ook in distributies. U gebruikt bijvoorbeeld niet **apt-get install** of **yum install** om een pakket te installeren. In plaats daarvan kunt u een lijst definiëren met te installeren pakketten. Cloud-init maakt automatisch gebruik van het hulpprogramma voor systeemeigen pakketbeheer voor de distro die u selecteert.
 
-We werken samen met onze goedgekeurde Linux distributie-partners om ervoor te zorgen dat installatie kopieën met Cloud-init beschikbaar zijn op de Azure Marketplace. Met deze installatie kopieën kunnen uw Cloud-init-implementaties en-configuraties naadloos samen werken met Vm's en virtuele-machine schaal sets.
+We werken samen met onze goedgekeurde Linux-distributiepartners om ervoor te zorgen dat installatiekopieën met cloud-init beschikbaar zijn op de Azure Marketplace. Met deze installatie kopieën kunnen uw Cloud-init-implementaties en-configuraties naadloos samen werken met Vm's en virtuele-machine schaal sets.
 Meer informatie over Cloud-init op Azure:
 
 - [Cloud-init-ondersteuning voor virtuele Linux-machines in azure](../articles/virtual-machines/linux/using-cloud-init.md)

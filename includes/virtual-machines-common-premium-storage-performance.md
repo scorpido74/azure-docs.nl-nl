@@ -9,10 +9,10 @@ ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 2c8c0430e8a1f54daa99d3fd986bae0c3eaf7f61
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84017598"
 ---
 ## <a name="application-performance-indicators"></a>Prestatie-indica toren voor toepassingen
@@ -92,7 +92,7 @@ De beste manier om prestatie vereisten van uw toepassing te meten, is het gebrui
 
 De prestatie meter items zijn beschikbaar voor processor, geheugen en, elke logische schijf en fysieke schijf van uw server. Wanneer u Premium Storage-schijven met een virtuele machine gebruikt, zijn de fysieke-schijf tellers voor elke Premium-opslag schijf en worden voor elk volume dat op de Premium Storage-schijven wordt gemaakt, items voor logische schijven opgenomen. U moet de waarden vastleggen voor de schijven waarop de workload van uw toepassing wordt gehost. Als er een toewijzing is tussen logische en fysieke schijven, kunt u verwijzen naar fysieke-schijf items; Raadpleeg anders de items van de logische schijf. In Linux genereert de iostat gebruiken-opdracht een rapport voor CPU-en schijf gebruik. Het rapport schijf gebruik bevat statistieken per fysiek apparaat of partitie. Als u een database server hebt met gegevens en logboeken op afzonderlijke schijven, verzamelt u deze gegevens voor beide schijven. In de onderstaande tabel worden de items voor schijven, processors en geheugen beschreven:
 
-| Prestatiemeteritem | Beschrijving | Controle | Iostat gebruiken |
+| Prestatiemeteritem | Description | Controle | Iostat gebruiken |
 | --- | --- | --- | --- |
 | **IOPS of trans acties per seconde** |Het aantal I/O-aanvragen dat per seconde aan de opslag schijf is uitgegeven. |Lees bewerkingen per seconde <br> Schrijf bewerkingen per seconde |TPS <br> r/s <br> w/s |
 | **Lees-en schrijf bewerkingen op schijf** |% van lees-en schrijf bewerkingen die op de schijf worden uitgevoerd. |Percentage schijf leestijd <br> Percentage schrijf tijd schijf |r/s <br> w/s |
@@ -156,10 +156,10 @@ Hier volgt een voor beeld van hoe u de IOPS en de door Voer/band breedte kunt be
 
 | Toepassings vereiste | I/O-grootte | IOPS | Door Voer/band breedte |
 | --- | --- | --- | --- |
-| Max. IOPS |8 kB |5.000 |40 MB per seconde |
+| Max. IOPS |8 kB |5\.000 |40 MB per seconde |
 | Maximale door Voer |1024 KB |200 |200 MB per seconde |
 | Maximale door Voer + hoge IOPS |64 kB |3.200 |200 MB per seconde |
-| Maximale IOPS + hoge door Voer |32 KB |5.000 |160 MB per seconde |
+| Maximale IOPS + hoge door Voer |32 KB |5\.000 |160 MB per seconde |
 
 Als u IOPS en band breedte wilt ophalen die hoger is dan de maximum waarde van één Premium-opslag schijf, gebruikt u meerdere Premium-schijven die met elkaar zijn gesegmenteerd. U kunt bijvoorbeeld twee P30-schijven opstrepen om een gecombineerde IOPS van 10.000 IOPS te verkrijgen of een gecombineerde door Voer van 400 MB per seconde. Zoals uitgelegd in de volgende sectie, moet u een VM-grootte gebruiken die ondersteuning biedt voor de gecombineerde schijf-IOPS en-door voer.
 
@@ -195,7 +195,7 @@ Als u echter dezelfde toepassing op Premium Storage hebt gehost, hebt u een klei
 
 Onderstaande tabel bevat een overzicht van de kosten analyse van dit scenario voor Standard en Premium Storage.
 
-| &nbsp; | **Standaard** | **Premium** |
+| &nbsp; | **Standard** | **Premium** |
 | --- | --- | --- |
 | **Kosten van VM per maand** |$1.570,58 (standaard \_ D14) |$1.003,66 (standaard \_ DS13) |
 | **Kosten van schijven per maand** |$1.638,40 (32 x 1 TB schijven) |$544,34 (4 x P30 schijven) |
