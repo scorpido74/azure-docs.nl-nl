@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
 ms.openlocfilehash: 6a1dddfbcdbf2bd49586238872db15f1da5d7ce1
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84457300"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Aanbevolen procedures voor Azure Cache voor Redis 
@@ -69,7 +68,7 @@ Helaas is er geen eenvoudig antwoord.  Elke toepassing moet bepalen welke bewerk
 Als u wilt testen hoe uw code werkt onder fout voorwaarden, kunt u overwegen de [herstart-functie](cache-administration.md#reboot)te gebruiken. Door opnieuw op te starten, kunt u zien hoe de verbindings problemen invloed heeft op uw toepassing.
 
 ## <a name="performance-testing"></a>Prestaties testen
- * **Beginnen `redis-benchmark.exe` ** met voor een mogelijke door Voer/latentie voordat u uw eigen prestatie tests schrijft.  Redis-Bench Mark-documentatie vindt u [hier](https://redis.io/topics/benchmarks).  Houd er rekening mee dat redis-Bench Mark geen ondersteuning biedt voor TLS, zodat u [de niet-TLS-poort via de portal moet inschakelen](cache-configure.md#access-ports) voordat u de test uitvoert.  [Een Windows-compatibele versie van redis-benchmark. exe vindt u hier](https://github.com/MSOpenTech/redis/releases)
+ * **Beginnen `redis-benchmark.exe` ** met voor een mogelijke door Voer/latentie voordat u uw eigen prestatie tests schrijft.  Redis-Bench Mark-documentatie vindt u [hier](https://redis.io/topics/benchmarks).  Houd er rekening mee dat redis-Bench Mark geen ondersteuning biedt voor TLS, zodat u [de niet-TLS-poort via de portal moet inschakelen](cache-configure.md#access-ports) voordat u de test uitvoert.  [Hier vindt u een Windows-compatibele versie van redis-benchmark.exe.](https://github.com/MSOpenTech/redis/releases)
  * De client-VM die wordt gebruikt voor het testen moet zich **in dezelfde regio** bevinden als uw redis-cache-exemplaar.
  * **We raden u** aan om een DV2-VM-reeks te gebruiken voor uw client, omdat deze betere hardware heeft en de beste resultaten oplevert.
  * Zorg ervoor dat de client-VM die u gebruikt,*ten minste evenveel reken kracht en band breedte* heeft als de cache die wordt getest. 
@@ -83,10 +82,10 @@ Als u wilt testen hoe uw code werkt onder fout voorwaarden, kunt u overwegen de 
  
 ### <a name="redis-benchmark-examples"></a>Voor beelden van redis-benchmarks
 **Installatie vooraf testen**: bereid het cache-exemplaar voor met de gegevens die zijn vereist voor de onderstaande opdrachten voor latentie en door voer.
-> redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t SET-n 10-d 1024 
+> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t SET-n 10-d 1024 
 
 **Test latentie**: aanvragen ophalen met een payload van 1 KB.
-> redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-d 1024-P 50-c 4
+> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-d 1024-P 50-c 4
 
 De **door Voer testen:** GET-aanvragen in de pipeline met een payload van 1 KB.
-> redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-n 1000000-d 1024-P 50-c 50
+> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-n 1000000-d 1024-P 50-c 50

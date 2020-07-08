@@ -4,10 +4,9 @@ description: Dit artikel bevat een lijst met Azure Service Bus Messa ging-uitzon
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: dd57938c24565257aefebc89a8b070865e6791af
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85341652"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Uitzonde ringen Service Bus berichten

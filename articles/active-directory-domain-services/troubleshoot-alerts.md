@@ -12,10 +12,9 @@ ms.topic: troubleshooting
 ms.date: 01/21/2020
 ms.author: iainfou
 ms.openlocfilehash: 5d3300151dc5fdfde0b34aa3f76c3ed9494d34fd
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84734058"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Bekende problemen: gemeen schappelijke waarschuwingen en oplossingen in Azure Active Directory Domain Services
@@ -133,7 +132,7 @@ Azure AD DS maakt extra resources om goed te werken, zoals open bare IP-adressen
 
 Deze waarschuwing wordt gegenereerd wanneer een van deze vereiste bronnen wordt verwijderd. Als de resource minder dan vier uur geleden is verwijderd, is er een kans dat het Azure-platform de verwijderde resource automatisch opnieuw kan maken. In de volgende stappen wordt uitgelegd hoe u de status en tijds tempel controleert voor het verwijderen van resources:
 
-1. Zoek en selecteer in het Azure Portal **Domain Services**. Kies uw beheerde domein, zoals *aaddscontoso.com*.
+1. Zoek en selecteer in het Azure Portal **Domain Services**. Kies uw beheerde domein, bijvoorbeeld *aaddscontoso.com*.
 1. Selecteer in de navigatie balk aan de linkerkant de optie **status**.
 1. Selecteer op de pagina status de waarschuwing met de ID *AADDS109*.
 1. De waarschuwing heeft een tijds tempel voor de eerste keer dat deze is gevonden. Als de tijds tempel minder dan vier uur geleden is, kan het Azure-platform de resource mogelijk automatisch opnieuw maken en de waarschuwing zelf oplossen.

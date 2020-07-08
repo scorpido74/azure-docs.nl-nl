@@ -17,10 +17,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 36844c3c2fcfdbf016b3e2d148345e9ce31ea2b4
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85356148"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Problemen met Pass Through-verificatie in Azure Active Directory oplossen
@@ -44,7 +43,7 @@ Zorg ervoor dat de functie Pass-Through-verificatie nog steeds is **ingeschakeld
 
 Als de gebruiker zich niet kan aanmelden met behulp van Pass-Through-verificatie, zien ze mogelijk een van de volgende gebruikers fouten in het aanmeldings scherm van Azure AD: 
 
-|Fout|Beschrijving|Oplossing
+|Fout|Description|Oplossing
 | --- | --- | ---
 |AADSTS80001|Kan geen verbinding maken met Active Directory|Zorg ervoor dat de agent servers lid zijn van hetzelfde AD-forest als de gebruikers waarvan de wacht woorden moeten worden gevalideerd en dat ze verbinding kunnen maken met Active Directory.  
 |AADSTS8002|Er is een time-out opgetreden tijdens het verbinden met Active Directory|Controleer of Active Directory beschikbaar is en reageert op aanvragen van de agents.

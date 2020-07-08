@@ -10,19 +10,18 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 39ebbf99ad31cce20eabc20fbdc056c889235713
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2fa56217c54ac662a62a5ce835d75e3d85f05bfa
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77470748"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041469"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Gegevens modellering in Azure Time Series Insights preview
 
 In dit artikel wordt beschreven hoe u kunt werken met Time Series-model in Azure Time Series Insights preview. Het bevat een aantal veelvoorkomende gegevens scenario's.
 
 > [!TIP]
-> * Meer informatie over het [Time Series-model](time-series-insights-update-tsm.md)preview.
+> * Meer informatie over het [Time Series-model](concepts-model-overview.md)preview.
 > * Meer informatie over het navigeren in de preview-gebruikers interface in [Azure time series Insights preview Explorer](./time-series-insights-update-explorer.md).
 
 ## <a name="instances"></a>exemplaren
@@ -168,7 +167,7 @@ Selecteer om te beginnen de **model** weergave in de weer gave **analyse** van T
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees [gegevens modellering](./time-series-insights-update-tsm.md)voor meer informatie over het time series-model.
+- Lees [gegevens modellering](./concepts-model-overview.md)voor meer informatie over het time series-model.
 
 - Lees voor meer informatie over de preview-versie [visualiseren van gegevens in de preview-versie van Azure time series Insights](./time-series-insights-update-explorer.md).
 

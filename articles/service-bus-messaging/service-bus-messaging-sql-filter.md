@@ -4,10 +4,9 @@ description: Dit artikel bevat informatie over SQLFilter-grammatica. Een SqlFilt
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 8412dea583ae119b30976e53d4751411b45339a4
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85341592"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter-syntaxis
@@ -182,7 +181,7 @@ Booleaanse constanten worden vertegenwoordigd door de tref woorden **True** of *
 
 Teken reeks constanten worden tussen enkele aanhalings tekens geplaatst en bevatten geldige Unicode-tekens. Een enkel aanhalings teken in een teken reeks constante wordt weer gegeven als twee enkele aanhalings tekens.  
   
-## <a name="function"></a>functieassembly  
+## <a name="function"></a>-functie  
   
 ```  
 <function> :=  

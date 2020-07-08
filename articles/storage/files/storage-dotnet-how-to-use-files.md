@@ -9,10 +9,9 @@ ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 44602c65a08f2e76fa017022f6137a18481f2edd
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85515371"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Ontwikkelen voor Azure Files met .NET
@@ -43,7 +42,7 @@ API | Wanneer gebruikt u dit? | Opmerkingen
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>De consoletoepassing maken en de assembly verkrijgen
 
-Maak in Visual Studio een nieuwe Windows-consoletoepassing. De volgende stappen laten zien hoe u een console toepassing maakt in Visual Studio 2019. De stappen zijn nagenoeg gelijk in andere versies van Visual Studio.
+Maak in Visual Studio een nieuwe Windows-consoletoepassing. In de volgende stappen ziet u hoe u een consoletoepassing maakt in Visual Studio 2019. De stappen zijn nagenoeg gelijk in andere versies van Visual Studio.
 
 1. Start Visual Studio en selecteer **Een nieuw project maken**.
 1. Kies in **een nieuw project maken de**optie **console-app (.NET Framework)** voor C# en selecteer vervolgens **volgende**.
@@ -494,7 +493,7 @@ Raadpleeg de volgende bronnen voor meer informatie over Azure Files:
 * [Aan de slag met AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [Problemen met Azure Files in Windows oplossen](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
-### <a name="reference"></a>Naslaginformatie
+### <a name="reference"></a>Verwijzing
 
 * [Azure Storage-API's voor .NET](/dotnet/api/overview/azure/storage)
 * [Bestandsservice REST API](/rest/api/storageservices/File-Service-REST-API)

@@ -3,12 +3,11 @@ title: Rendering van toepassingen
 description: Het is mogelijk om alle rendering-toepassingen met Azure Batch te gebruiken. Azure Marketplace-VM-installatie kopieën zijn echter beschikbaar met vooraf geïnstalleerde toepassingen.
 ms.date: 09/19/2019
 ms.topic: how-to
-ms.openlocfilehash: 70e3fb18f0cc4788303ed16656e1eed0f8177dfc
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.openlocfilehash: f876671c6ac16137c2c1cf8d40bd70860c06975b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726482"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960483"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>Vooraf geïnstalleerde toepassingen voor het renderen van VM-installatie kopieën
 
@@ -60,7 +59,7 @@ De volgende lijst is van toepassing op Windows Server 2016, version 1.3.8 render
 * AZ 10
 
 > [!IMPORTANT]
-> Begin met het uitvoeren van een V-Ray met Maya buiten de [Azure batch extensie sjablonen](https://github.com/Azure/batch-extension-templates) `vrayses.exe` voordat u de weer gave uitvoert. U kunt de volgende opdracht gebruiken om de vrayses. exe buiten de sjablonen te starten `%MAYA_2017%\vray\bin\vrayses.exe"` .
+> Begin met het uitvoeren van een V-Ray met Maya buiten de [Azure batch extensie sjablonen](https://github.com/Azure/batch-extension-templates) `vrayses.exe` voordat u de weer gave uitvoert. Als u de vrayses.exe buiten de sjablonen wilt starten, kunt u de volgende opdracht gebruiken `%MAYA_2017%\vray\bin\vrayses.exe"` .
 >
 > Zie de begin taak van de [Maya-en V-Ray-sjabloon](https://github.com/Azure/batch-extension-templates/blob/master/templates/maya/render-vray-windows/pool.template.json) op github voor een voor beeld.
 
@@ -87,4 +86,4 @@ De volgende lijst is van toepassing op Windows Server 2016, version 1.3.7 render
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u de weer gave-VM-installatie kopieën wilt gebruiken, moet u deze opgeven in de groeps configuratie wanneer er een groep wordt gemaakt. Bekijk de [mogelijkheden van de batch-pool voor rendering](https://docs.microsoft.com/azure/batch/batch-rendering-functionality#batch-pools).
+Als u de weer gave-VM-installatie kopieën wilt gebruiken, moet u deze opgeven in de groeps configuratie wanneer er een groep wordt gemaakt. Bekijk de [mogelijkheden van de batch-pool voor rendering](./batch-rendering-functionality.md#batch-pools).

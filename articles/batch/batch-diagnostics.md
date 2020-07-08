@@ -4,12 +4,11 @@ description: Registreer en analyseer logboek gebeurtenissen van het diagnostisch
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: bd8265d18f618980af466e193b41cfcc03999c47
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: MT
+ms.openlocfilehash: 6e10a4fc6cd13854682f094274c975931b056365
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220352"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960721"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metrische batches, waarschuwingen en logboeken voor diagnostische evaluatie en bewaking
  
@@ -70,7 +69,7 @@ Een waarschuwing voor metrische gegevens configureren in de Azure Portal:
 
 Zie [begrijpen hoe metrische waarschuwingen werken in azure monitor](../azure-monitor/platform/alerts-metric-overview.md) en [metrische waarschuwingen met behulp van Azure monitor maken, weer geven en beheren](../azure-monitor/platform/alerts-metric.md)voor meer informatie over het maken van metrische waarschuwingen.
 
-U kunt ook een nabije realtime-waarschuwing configureren met behulp van de Azure Monitor [rest API](https://docs.microsoft.com/rest/api/monitor/). Zie [overzicht van waarschuwingen in Microsoft Azure](../azure-monitor/platform/alerts-overview.md)voor meer informatie. Zie de informatie over zoek query's in [reageren op gebeurtenissen met Azure monitor waarschuwingen](../azure-monitor/learn/tutorial-response.md)om taak-, taak-of pool-specifieke informatie in uw waarschuwingen op te vragen.
+U kunt ook een nabije realtime-waarschuwing configureren met behulp van de Azure Monitor [rest API](/rest/api/monitor/). Zie [overzicht van waarschuwingen in Microsoft Azure](../azure-monitor/platform/alerts-overview.md)voor meer informatie. Zie de informatie over zoek query's in [reageren op gebeurtenissen met Azure monitor waarschuwingen](../azure-monitor/learn/tutorial-response.md)om taak-, taak-of pool-specifieke informatie in uw waarschuwingen op te vragen.
 
 ## <a name="batch-diagnostics"></a>Batch-diagnose
 

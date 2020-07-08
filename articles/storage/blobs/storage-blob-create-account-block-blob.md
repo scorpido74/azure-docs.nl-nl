@@ -9,10 +9,9 @@ ms.date: 05/10/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 31a7048c263d7231fe827ad5a1c927c5cb3e2f6d
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84463549"
 ---
 # <a name="create-a-blockblobstorage-account"></a>Een BlockBlobStorage-account maken
@@ -63,7 +62,7 @@ U kunt Azure CLI ook lokaal installeren en gebruiken. Voor dit procedure-artikel
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com).
+Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -111,7 +110,7 @@ Voer de volgende stappen uit om een BlockBlobStorage-account te maken in de Azur
    |Veld     |Waarde  |
    |---------|---------|
    |**Prestaties**    |  Selecteer **Premium**.   |
-   |**Soort account**    | Selecteer **BlockBlobStorage**.      |
+   |**Type account**    | Selecteer **BlockBlobStorage**.      |
    |**Replicatie**    |  Behoud de standaard instelling van **lokaal redundante opslag (LRS)**.      |
 
    ![Geeft een portal-gebruikers interface weer voor het maken van een blok-Blob-opslag account](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)

@@ -6,10 +6,9 @@ ms.custom: fasttrack-edit, references_regions
 ms.topic: article
 ms.date: 02/27/2020
 ms.openlocfilehash: 06507c75d486717a77676154818f2032b7e8c807
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84195570"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Een AKS-cluster (Azure Kubernetes service) maken dat gebruikmaakt van beschikbaarheids zones
@@ -85,7 +84,7 @@ az aks create \
     --zones 1 2 3
 ```
 
-Het duurt enkele minuten om het AKS-cluster te maken.
+Het duurt een paar minuten om het AKS-cluster te maken.
 
 Bij het bepalen van de zone waarvan een nieuw knoop punt deel moet uitmaken, gebruikt een bepaalde AKS-knooppunt groep een [Aanbevolen zone verdeling die wordt geboden door de onderliggende Azure-virtual machine Scale sets][vmss-zone-balancing]. Een bepaalde AKS-knooppunt groep wordt beschouwd als ' evenwichtig ' als elke zone hetzelfde aantal Vm's of + \- 1 virtuele machine heeft in alle andere zones voor de schaalset.
 

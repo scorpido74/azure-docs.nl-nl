@@ -7,12 +7,11 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 4cf851022a2b2b0c9a9781f4d41b40982bf2ad57
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.openlocfilehash: 4e4abdd5d5a9e3cddf00cf47d7388a57d0d4d6fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835339"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807703"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor
 
@@ -245,7 +244,7 @@ De details zijn afhankelijk van het type project. Voor een webtoepassing:
 
 * Voegt deze bestanden toe aan uw project:
   * ApplicationInsights.config
-  * AI. js
+  * ai.js
 * Installeert deze NuGet-pakketten:
   * *Application Insights-API* : de core-API
   * *Application Insights-API voor webtoepassingen* : wordt gebruikt voor het verzenden van telemetrie van de server
@@ -255,14 +254,14 @@ De details zijn afhankelijk van het type project. Voor een webtoepassing:
   * Micro soft. ApplicationInsights. platform
 * Hiermee worden items ingevoegd in:
   * Web.config
-  * packages. config
+  * packages.config
 * (Alleen nieuwe projecten: als u [Application Insights toevoegt aan een bestaand project][start], moet u dit hand matig doen.) Hiermee worden fragmenten ingevoegd in de client-en server code om ze te initialiseren met de Application Insights Resource-ID. In een MVC-app wordt bijvoorbeeld code ingevoegd in de basis pagina weergaven/gedeeld/ \_ Layout. cshtml
 
 ### <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Hoe kan ik upgrade van oudere SDK-versies?
 Zie de [release opmerkingen](app/release-notes.md) voor de SDK die geschikt is voor uw type toepassing.
 
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>Hoe kan ik wijzigen met welke Azure-resource mijn project gegevens verzendt?
-Klik in Solution Explorer met de rechter muisknop `ApplicationInsights.config` en kies **Application Insights bijwerken**. U kunt de gegevens verzenden naar een bestaande of nieuwe resource in Azure. De update wizard wijzigt de instrumentatie sleutel in ApplicationInsights. config, waarmee wordt bepaald waar de server-SDK uw gegevens verzendt. Tenzij u ' Alles bijwerken ' uitschakelt, wordt ook de sleutel gewijzigd waar deze wordt weer gegeven op uw webpagina's.
+Klik in Solution Explorer met de rechter muisknop `ApplicationInsights.config` en kies **Application Insights bijwerken**. U kunt de gegevens verzenden naar een bestaande of nieuwe resource in Azure. De update wizard wijzigt de instrumentatie sleutel in ApplicationInsights.config, wat bepaalt waar de server-SDK uw gegevens verzendt. Tenzij u ' Alles bijwerken ' uitschakelt, wordt ook de sleutel gewijzigd waar deze wordt weer gegeven op uw webpagina's.
 
 ### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>Kan ik gebruiken `providers('Microsoft.Insights', 'components').apiVersions[0]` in mijn Azure Resource Manager-implementaties?
 
@@ -318,7 +317,7 @@ We zoeken het IP-adres (IPv4 of IPv6) van de webclient met behulp van [GeoLite2]
 * Raadpleeg dit [artikel](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)voor meer informatie over hoe IP-adres en geolocatie gegevens worden verzameld in Application Insights.
 
 
-U kunt de configureren `ClientIpHeaderTelemetryInitializer` om het IP-adres van een andere header te halen. In sommige systemen wordt het bijvoorbeeld verplaatst met een proxy, load balancer of CDN naar `X-Originating-IP` . [Meer informatie](https://apmtips.com/blog/2016/07/05/client-ip-address/).
+U kunt de configureren `ClientIpHeaderTelemetryInitializer` om het IP-adres van een andere header te halen. In sommige systemen wordt het bijvoorbeeld verplaatst met een proxy, load balancer of CDN naar `X-Originating-IP` . [Meer informatie](https://apmtips.com/posts/2016-07-05-client-ip-address/).
 
 U kunt [Power bi gebruiken](app/export-power-bi.md ) om uw aanvraag-telemetrie weer te geven op een kaart.
 
@@ -367,7 +366,7 @@ Gebruik één resource voor alle onderdelen of rollen in één bedrijfs systeem.
 ### <a name="what-are-the-user-and-session-counts"></a>Wat zijn de gebruikers-en sessie aantallen?
 
 * De Java script-SDK stelt een gebruikers cookie op de webclient in om terugkerende gebruikers te identificeren en een sessie cookie om activiteiten te groeperen.
-* Als er geen script aan de client zijde is, kunt u [cookies instellen op de server](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/).
+* Als er geen script aan de client zijde is, kunt u [cookies instellen op de server](https://apmtips.com/posts/2016-07-09-tracking-users-in-api-apps/).
 * Als een echte gebruiker uw site in verschillende browsers gebruikt of als u in-private/incognito Browse of verschillende computers gebruikt, worden deze meerdere keren geteld.
 * Als u een aangemelde gebruiker op verschillende computers en browsers wilt identificeren, voegt u een aanroep toe aan [setAuthenticatedUserContext ()](app/api-custom-events-metrics.md#authenticated-users).
 
@@ -443,12 +442,12 @@ Hiermee staat u toe dat uw webserver telemetrie naar onze eind punten verzendt.
 
 #### <a name="gateway-redirect"></a>Gateway omleiden
 
-Verkeer van uw server naar een gateway op uw intranet routeren door eind punten in uw configuratie te overschrijven. Als deze eigenschappen van het eind punt niet aanwezig zijn in uw configuratie, gebruiken deze klassen de standaard waarden die hieronder worden weer gegeven in het voor beeld ApplicationInsights. config. 
+Verkeer van uw server naar een gateway op uw intranet routeren door eind punten in uw configuratie te overschrijven. Als deze eigenschappen van het eind punt niet aanwezig zijn in uw configuratie, gebruiken deze klassen de standaard waarden die hieronder worden weer gegeven in het voor beeld ApplicationInsights.config. 
 
 Uw gateway moet verkeer routeren naar het basis adres van het eind punt. Vervang in uw configuratie de standaard waarden door `http://<your.gateway.address>/<relative path>` .
 
 
-##### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Voor beeld van ApplicationInsights. config met standaard eindpunten:
+##### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Voor beeld ApplicationInsights.config met standaard eindpunten:
 ```xml
 <ApplicationInsights>
   ...
@@ -479,7 +478,7 @@ Uw gateway moet verkeer routeren naar het basis adres van het eind punt. Vervang
 Passthrough van de proxy kan worden bereikt door een computer niveau of proxy op toepassings niveau te configureren.
 Zie voor meer informatie het artikel van DOTNET op [DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
  
- Voor beeld van web. config:
+ Voor beeld Web.config:
  ```xml
 <system.net>
     <defaultProxy>
@@ -546,7 +545,7 @@ De **andere processen** omvatten:
 
 Voor Agent versie ciprod12042019 en hoger worden deze twee eigenschappen standaard niet ingevuld voor elke logboek regel om de kosten te minimaliseren voor logboek gegevens die worden verzameld. Er zijn twee opties voor het opvragen van de tabel die deze eigenschappen bevat met hun waarden:
 
-#### <a name="option-1"></a>Mogelijkheid 1 
+#### <a name="option-1"></a>Optie 1 
 
 Neem deel aan andere tabellen om deze eigenschaps waarden in de resultaten op te nemen.
 
@@ -619,7 +618,7 @@ Zie [agent beheer](insights/container-insights-manage-agent.md)voor meer informa
 
 Momenteel Azure Monitor voor containers geen ondersteuning voor logboek registratie in meerdere regels, maar er zijn tijdelijke oplossingen beschikbaar. U kunt alle services zo configureren dat ze worden geschreven in JSON-indeling en vervolgens docker/Moby als één regel schrijft.
 
-U kunt uw logboek bijvoorbeeld als een JSON-object laten teruglopen, zoals wordt weer gegeven in het onderstaande voor beeld voor een node. js-toepassing voor een voor beeld:
+U kunt uw logboek bijvoorbeeld als een JSON-object laten teruglopen, zoals in het onderstaande voor beeld voor een voor beeld node.js toepassing wordt weer gegeven:
 
 ```
 console.log(json.stringify({ 

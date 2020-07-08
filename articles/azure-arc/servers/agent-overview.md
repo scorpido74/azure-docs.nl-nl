@@ -6,14 +6,13 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 06/16/2020
+ms.date: 07/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3b49682b2ece20266b3a051091d3784cc3e8bcca
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
-ms.translationtype: MT
+ms.openlocfilehash: 74ac991eb40864aeb4ac42d4774d9ab61fb14c36
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976418"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807669"
 ---
 # <a name="overview-of-azure-arc-for-servers-agent"></a>Overzicht van Azure Arc voor servers agent
 
@@ -26,6 +25,12 @@ Het pakket met de Azure Connected machine agent bevat verschillende logische ond
 * Met de HIMDS (Hybrid instance meta data service) wordt de verbinding met Azure en de Azure-identiteit van de verbonden machine beheerd.
 
 * De gast configuratie agent biedt in-gast beleid en gast configuratie functionaliteit, zoals de beoordeling of de computer voldoet aan het vereiste beleid.
+
+    Let op het volgende gedrag met Azure Policy [gast configuratie](../../governance/policy/concepts/guest-configuration.md) voor een niet-verbonden computer:
+
+    * Een toewijzing van een gast configuratie beleid met een doel voor niet-verbonden computers wordt niet beïnvloed.
+    * De gast toewijzing wordt gedurende 14 dagen lokaal opgeslagen. Als de verbonden machine agent binnen de periode van 14 dagen opnieuw verbinding maakt met de service, worden beleids toewijzingen opnieuw toegepast.
+    * Toewijzingen worden na 14 dagen verwijderd en worden na de periode van 14 dagen niet opnieuw aan de machine toegewezen.
 
 * De extensie agent beheert VM-extensies, met inbegrip van installeren, verwijderen en bijwerken. Uitbrei dingen worden gedownload van Azure en gekopieerd naar de `%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads` map in Windows, en voor Linux naar `/opt/GC_Ext/downloads` . In Windows wordt de uitbrei ding geïnstalleerd op het volgende pad `%SystemDrive%\Packages\Plugins\<extension>` en op Linux wordt de extensie geïnstalleerd `/var/lib/waagent/<extension>` .
 
@@ -54,7 +59,7 @@ Na de installatie van de verbonden machine-agent voor Windows, worden de volgend
 
 * De volgende installatie mappen worden tijdens de installatie gemaakt.
 
-    |Map |Beschrijving |
+    |Map |Description |
     |-------|------------|
     |C:\Program Files\AzureConnectedMachineAgent |Standaardpad met de agent ondersteunings bestanden.|
     |%ProgramData%\AzureConnectedMachineAgent |Bevat de configuratie bestanden voor de agent.|
@@ -66,7 +71,7 @@ Na de installatie van de verbonden machine-agent voor Windows, worden de volgend
 
 * De volgende Windows-Services worden tijdens de installatie van de agent gemaakt op de doel machine.
 
-    |Servicenaam |Weergavenaam |Procesnaam |Beschrijving |
+    |Servicenaam |Weergavenaam |Procesnaam |Description |
     |-------------|-------------|-------------|------------|
     |himds |Azure Hybrid Instance Metadata Service |himds.exe |Deze service implementeert de Azure instance meta data service (IMDS) voor het beheren van de verbinding met Azure en de Azure-identiteit van de verbonden machine.|
     |DscService |Gast configuratie service |dsc_service.exe |Dit is de configuratie code van de desired state Configuration (DSC v2) die in azure wordt gebruikt voor het implementeren van beleid in de gast.|
@@ -80,7 +85,7 @@ Na de installatie van de verbonden machine-agent voor Windows, worden de volgend
 
 * Er zijn verschillende logboek bestanden beschikbaar voor het oplossen van problemen. Deze worden beschreven in de volgende tabel.
 
-    |Logboek |Beschrijving |
+    |Logboek |Description |
     |----|------------|
     |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Registreert gegevens van de agents (HIMDS) en de interactie met Azure.|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |Bevat de uitvoer van de azcmagent-hulp programma-opdrachten wanneer het argument uitgebreid (-v) wordt gebruikt.|
@@ -105,7 +110,7 @@ Na de installatie van de verbonden machine agent voor Linux worden de volgende a
 
 * De volgende installatie mappen worden tijdens de installatie gemaakt.
 
-    |Map |Beschrijving |
+    |Map |Description |
     |-------|------------|
     |/var/opt/azcmagent/ |Standaardpad met de agent ondersteunings bestanden.|
     |/opt/azcmagent/ |
@@ -117,14 +122,14 @@ Na de installatie van de verbonden machine agent voor Linux worden de volgende a
 
 * De volgende daemons worden tijdens de installatie van de agent gemaakt op de doel machine.
 
-    |Servicenaam |Weergavenaam |Procesnaam |Beschrijving |
+    |Servicenaam |Weergavenaam |Procesnaam |Description |
     |-------------|-------------|-------------|------------|
     |himdsd. service |Azure Hybrid Instance Metadata Service |/opt/azcmagent/bin/himds |Deze service implementeert de Azure instance meta data service (IMDS) voor het beheren van de verbinding met Azure en de Azure-identiteit van de verbonden machine.|
     |dscd. service |Gast configuratie service |/opt/DSC/dsc_linux_service |Dit is de configuratie code van de desired state Configuration (DSC v2) die in azure wordt gebruikt voor het implementeren van beleid in de gast.|
 
 * Er zijn verschillende logboek bestanden beschikbaar voor het oplossen van problemen. Deze worden beschreven in de volgende tabel.
 
-    |Logboek |Beschrijving |
+    |Logboek |Description |
     |----|------------|
     |/var/opt/azcmagent/log/himds.log |Registreert gegevens van de agents (HIMDS) en de interactie met Azure.|
     |/var/opt/azcmagent/log/azcmagent.log |Bevat de uitvoer van de azcmagent-hulp programma-opdrachten wanneer het argument uitgebreid (-v) wordt gebruikt.|
@@ -194,7 +199,7 @@ Service Tags:
 
 Adres
 
-| Agentresource | Beschrijving |
+| Agentresource | Description |
 |---------|---------|
 |management.azure.com|Azure Resource Manager|
 |login.windows.net|Azure Active Directory|

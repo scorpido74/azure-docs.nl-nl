@@ -4,10 +4,9 @@ description: Meer informatie over het toevoegen van beoordelings hulpprogramma's
 ms.topic: how-to
 ms.date: 04/26/2020
 ms.openlocfilehash: 10e8b66575893bc8e63aa94392c872acc04407c4
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84195634"
 ---
 # <a name="add-assessment-tools"></a>Evaluatiehulpprogramma's toevoegen
@@ -19,7 +18,7 @@ In dit artikel wordt beschreven hoe u beoordelings hulpprogramma's toevoegt in [
 
 ## <a name="select-an-assessment-scenario"></a>Een evaluatie scenario selecteren
 
-1. Klik in het Azure Migrate project op **overzicht**.
+1. Klik in het Azure Migrate-project op **Overzicht**.
 2. Selecteer het beoordelings scenario dat u wilt gebruiken:
 
     - Als u machines en werk belastingen wilt detecteren en beoordelen voor migratie naar Azure, selecteert u **servers beoordelen en migreren**.

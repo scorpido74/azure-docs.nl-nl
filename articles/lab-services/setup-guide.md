@@ -4,10 +4,9 @@ description: Deze hand leiding helpt Lab-makers snel een Lab-account in te stell
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ad1a679c556316c2d23a713ffa5ac5dfe86cce0e
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85445573"
 ---
 # <a name="classroom-lab-setup-guide"></a>Setup-hand leiding voor klas Lab

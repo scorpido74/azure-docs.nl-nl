@@ -12,10 +12,9 @@ ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: luleon
 ms.openlocfilehash: 50ee9e3c22c885931e2586f65ba2fa3353fccfeb
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85355842"
 ---
 # <a name="automate-saml-based-sso-app-configuration-with-microsoft-graph-api"></a>Configuratie van op SAML gebaseerde SSO-app automatiseren met Microsoft Graph-API
@@ -596,7 +595,7 @@ HTTP/1.1 204
 
 Wijs de volgende gebruiker toe aan de Service-Principal en wijs de AWS_Role1 toe. 
 
-| Naam  | Id  |
+| Name  | Id  |
 |---------|---------|
 | Gebruikers-ID (principalId) | 6cad4079-4e79-4a3f-9efb-ea30a14bdb26 |
 | Type (principalType) | Gebruiker |

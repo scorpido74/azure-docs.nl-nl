@@ -12,13 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3610fa5ea442e5ccb15255d8a1ddcee211871aeb
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84463940"
 ---
-# <a name="how-to-investigate-risk"></a>Procedure: risico onderzoeken
+# <a name="how-to-investigate-risk"></a>Procedure: Risico onderzoeken
 
 Identiteits beveiliging biedt organisaties drie rapporten die ze kunnen gebruiken om identiteits Risico's te onderzoeken in hun omgeving. Deze rapporten zijn de **Risk ante gebruikers**, **Risk ante aanmeldingen**en **risico detecties**. Onderzoek van gebeurtenissen is belang rijk voor een beter inzicht in en het identificeren van zwakke punten in uw beveiligings strategie.
 

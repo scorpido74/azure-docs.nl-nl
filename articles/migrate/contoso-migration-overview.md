@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: raynew
 ms.openlocfilehash: 2cc03462fd72db1a50434d3d6de0851660414cd9
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84195858"
 ---
 # <a name="contoso-migration-series"></a>Migratieserie Contoso
@@ -26,7 +25,7 @@ De artikelen in de reeks worden in de onderstaande tabel samenvatten.
 - Voor elk implementatie scenario geven we informatie over bedrijfs Stuur Programma's en-doelen, een voorgestelde architectuur, stappen voor het uitvoeren van de migratie en aanbevelingen voor opschonen en volgende stappen nadat de migratie is voltooid.
 
 
-**Knowledge** | **Nadere** 
+**Knowledge** | **Details** 
 --- | --- 
 [Artikel 1: overzicht](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-overview) | Overzicht van de artikel reeks, de migratie strategie van Contoso en de voor beeld-apps die in de reeks worden gebruikt. 
 [Artikel 2: Azure-infra structuur implementeren](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-infrastructure) | Contoso bereidt zijn on-premises infra structuur en Azure-infra structuur voor migratie voor. Dezelfde infra structuur wordt gebruikt voor alle artikelen in de reeks. 

@@ -4,10 +4,9 @@ description: In dit artikel wordt beschreven hoe u Azure DevTest Labs gebruikt v
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 582508968609ba53de14b95b71ee75b5fec9ba93
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85445250"
 ---
 # <a name="use-classroom-labs-for-trainings"></a>Klassikale Labs gebruiken voor trainingen

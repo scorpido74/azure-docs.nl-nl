@@ -16,12 +16,11 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69eb19686598de103b1c2f3e97ad35be2c427beb
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
-ms.translationtype: MT
+ms.openlocfilehash: dbc9e5a9187f9ef16ea03cfa6c97e438c2b26c99
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85356368"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807601"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Problemen met wachtwoord-hashsynchronisatie oplossen met Azure AD Connect-synchronisatie
 
@@ -288,12 +287,15 @@ Als u aangepaste installatie hebt gebruikt, stelt u de machtigingen hand matig i
 6. Zijn de domein controllers bereikbaar voor Azure AD Connect? Als de Connect-server geen verbinding kan maken met alle domein controllers, configureert u **alleen voorkeurs domein controller gebruiken**.  
     
     ![Domein controller die wordt gebruikt door Active Directory connector](./media/tshoot-connect-password-hash-synchronization/preferreddc.png)  
-    
+
 7. Ga terug naar **Synchronization Service Manager** en **Configureer de Directory partitie**. 
  
 8. Selecteer uw domein in **Directory partities selecteren**, schakel het selectie vakje **alleen voorkeurs domein controllers gebruiken** in en klik vervolgens op **configureren**. 
 
 9. Geef in de lijst de domein controllers op waarmee verbinding moet worden gebruikt voor wachtwoord synchronisatie. Dezelfde lijst wordt ook gebruikt voor importeren en exporteren. Voer deze stappen uit voor al uw domeinen.
+
+> [!NOTE]
+> Als u deze wijzigingen wilt Toep assen, start u de **Microsoft Azure AD Sync** -service (ADSync) opnieuw.
 
 10. Als het script laat zien dat er geen heartbeat is, voert u het script uit om [een volledige synchronisatie van alle wacht woorden te activeren](#trigger-a-full-sync-of-all-passwords).
 
@@ -323,7 +325,7 @@ U kunt eenvoudig problemen met wachtwoord-hash-synchronisatie oplossen door de s
 
     f. Zoek naar de gebruiker die u zoekt en klik vervolgens op **Eigenschappen** om alle kenmerken weer te geven. Als de gebruiker zich niet in het Zoek resultaat bevindt, controleert u uw [filter regels](how-to-connect-sync-configure-filtering.md) en zorgt u ervoor dat u [Toep assen en wijzigingen controleren](how-to-connect-sync-configure-filtering.md#apply-and-verify-changes) zodat de gebruiker wordt weer gegeven in verbinding maken.
 
-    g. Klik op **logbestand**om de details van het wachtwoord synchronisatie van het object voor de afgelopen week weer te geven.  
+    bijvoorbeeld Klik op **logbestand**om de details van het wachtwoord synchronisatie van het object voor de afgelopen week weer te geven.  
 
     ![Details van object logboek](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 

@@ -12,10 +12,9 @@ ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
 ms.openlocfilehash: 5f2c823b0932db42876be6ab04ebcd82783729aa
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84734418"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Scoped Synchronization from Azure AD to Azure Active Directory Domain Services configureren
@@ -60,19 +59,19 @@ Voer de volgende stappen uit om scoped synchronisatie in te scha kelen in de Azu
 1. Volg de [zelf studie voor het maken en configureren van een beheerd domein](tutorial-create-instance-advanced.md). Voer alle vereisten en implementatie stappen uit, anders dan voor synchronisatie bereik.
 1. Kies **scoped** bij de synchronisatie stap en selecteer vervolgens de Azure ad-groepen die u wilt synchroniseren met het beheerde domein.
 
-Het beheerde domein kan tot een uur duren voordat de implementatie is voltooid. In de Azure Portal wordt op de pagina **overzicht** voor uw beheerde domein de huidige status in deze implementatie fase weer gegeven.
+Het beheerde domein kan tot een uur duren voordat de implementatie is voltooid. Op de **Overzichtspagina** voor uw beheerde domein in de Azure-portal wordt de huidige status weergegeven tijdens deze implementatiefase.
 
-Wanneer het Azure Portal laat zien dat het beheerde domein is ingericht, moeten de volgende taken worden uitgevoerd:
+Wanneer in de Azure-portal wordt weergegeven dat inrichten van het beheerde domein gereed is, moeten de volgende taken worden voltooid:
 
-* Werk de DNS-instellingen voor het virtuele netwerk bij, zodat de virtuele machines het beheerde domein kunnen vinden voor het lid worden van het domein of de verificatie.
-    * Als u DNS wilt configureren, selecteert u uw beheerde domein in de portal. In het **overzichts** venster wordt u gevraagd deze DNS-instellingen automatisch te configureren.
-* [Wachtwoord synchronisatie inschakelen voor Azure AD Domain Services](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds) zodat eind gebruikers zich kunnen aanmelden bij het beheerde domein met hun bedrijfs referenties.
+* Werk de DNS-instellingen voor het virtuele netwerk bij, zodat virtuele machines het beheerde domein kunnen vinden voor domeindeelname of verificatie.
+    * Selecteer het beheerde domein in de portal om DNS te configureren. In het **Overzichtsvenster** wordt u gevraagd om deze DNS-instellingen automatisch te configureren.
+* U moet [Wachtwoordsynchronisatie in Azure AD Domain Services inschakelen](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds) zodat eindgebruikers zich bij het beheerde domein kunnen aanmelden met hun bedrijfsreferenties.
 
 ## <a name="modify-scoped-synchronization-using-the-azure-portal"></a>Scoped Synchronization wijzigen met behulp van de Azure Portal
 
 Voer de volgende stappen uit om de lijst met groepen te wijzigen waarvan gebruikers moeten worden gesynchroniseerd met het beheerde domein:
 
-1. Zoek in het Azure Portal naar en selecteer **Azure AD Domain Services**. Kies uw beheerde domein, zoals *aaddscontoso.com*.
+1. Zoek in het Azure Portal naar en selecteer **Azure AD Domain Services**. Kies uw beheerde domein, bijvoorbeeld *aaddscontoso.com*.
 1. Selecteer **synchronisatie** in het menu aan de linkerkant.
 1. Als u een groep wilt toevoegen, **selecteert u groepen bovenaan selecteren** en kiest u vervolgens de groepen die u wilt toevoegen.
 1. Als u een groep uit het synchronisatie bereik wilt verwijderen, selecteert u deze in de lijst met momenteel gesynchroniseerde groepen en kiest u **groepen verwijderen**.
@@ -84,7 +83,7 @@ Het wijzigen van het bereik van de synchronisatie zorgt ervoor dat het beheerde 
 
 Voer de volgende stappen uit als u de synchronisatie op basis van een groep wilt uitschakelen voor een beheerd domein:
 
-1. Zoek in het Azure Portal naar en selecteer **Azure AD Domain Services**. Kies uw beheerde domein, zoals *aaddscontoso.com*.
+1. Zoek in het Azure Portal naar en selecteer **Azure AD Domain Services**. Kies uw beheerde domein, bijvoorbeeld *aaddscontoso.com*.
 1. Selecteer **synchronisatie** in het menu aan de linkerkant.
 1. Stel het synchronisatie **bereik in op** **alle**en selecteer vervolgens **synchronisatie bereik opslaan**.
 
@@ -196,7 +195,7 @@ Gebruik Power shell om de volgende reeks stappen uit te voeren. Raadpleeg de ins
 
 1. Maak nu het beheerde domein en schakel scoped-synchronisatie op basis van groepen in. Neem *' filteredSync ' = ' enabled* ' op in de para meter *-Properties* .
 
-    Stel de ID van uw Azure-abonnement in en geef een naam op voor het beheerde domein, zoals *aaddscontoso.com*. U kunt uw abonnements-ID ophalen met behulp van de cmdlet [Get-AzSubscription][Get-AzSubscription] . Stel de naam van de resource groep, de naam van het virtuele netwerk en de regio in op de waarden die worden gebruikt in de vorige stappen voor het maken van de ondersteunende Azure-resources:
+    Stel uw Azure-abonnements-id in en geef vervolgens een naam op voor het beheerde domein, bijvoorbeeld *aaddscontoso.com*. U kunt uw abonnements-id ophalen met behulp van de [Get-AzSubscription][Get-AzSubscription]-cmdlet. Stel de naam van de resource groep, de naam van het virtuele netwerk en de regio in op de waarden die worden gebruikt in de vorige stappen voor het maken van de ondersteunende Azure-resources:
 
    ```powershell
    $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
@@ -213,15 +212,15 @@ Gebruik Power shell om de volgende reeks stappen uit te voeren. Raadpleeg de ins
    -Force -Verbose
    ```
 
-Het duurt enkele minuten om de resource te maken en het besturings element terug te sturen naar de Power shell-prompt. Het beheerde domein blijft op de achtergrond worden ingericht en kan tot een uur duren voordat de implementatie is voltooid. In de Azure Portal wordt op de pagina **overzicht** voor uw beheerde domein de huidige status in deze implementatie fase weer gegeven.
+Het duurt enkele minuten om de resource te maken en het beheer terug te geven aan de PowerShell-prompt. Het inrichten van het beheerde domein wordt op de achtergrond voortgezet. Het kan een uur duren voordat de implementatie is voltooid. Op de **Overzichtspagina** voor uw beheerde domein in de Azure-portal wordt de huidige status weergegeven tijdens deze implementatiefase.
 
-Wanneer het Azure Portal laat zien dat het beheerde domein is ingericht, moeten de volgende taken worden uitgevoerd:
+Wanneer in de Azure-portal wordt weergegeven dat inrichten van het beheerde domein gereed is, moeten de volgende taken worden voltooid:
 
-* Werk de DNS-instellingen voor het virtuele netwerk bij, zodat de virtuele machines het beheerde domein kunnen vinden voor het lid worden van het domein of de verificatie.
-    * Als u DNS wilt configureren, selecteert u uw beheerde domein in de portal. In het **overzichts** venster wordt u gevraagd deze DNS-instellingen automatisch te configureren.
-* Als u een beheerd domein hebt gemaakt in een regio die Beschikbaarheidszones ondersteunt, maakt u een netwerk beveiligings groep om het verkeer in het virtuele netwerk voor het beheerde domein te beperken. Er wordt een Azure Standard-load balancer gemaakt waarvoor deze regels moeten worden uitgevoerd. Deze netwerk beveiligings groep beveiligt Azure AD DS en is vereist voor een juiste werking van het beheerde domein.
-    * Als u de netwerk beveiligings groep en de vereiste regels wilt maken, selecteert u uw beheerde domein in de portal. In het **overzichts** venster wordt u gevraagd om de netwerk beveiligings groep automatisch te maken en te configureren.
-* [Wachtwoord synchronisatie inschakelen voor Azure AD Domain Services](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds) zodat eind gebruikers zich kunnen aanmelden bij het beheerde domein met hun bedrijfs referenties.
+* Werk de DNS-instellingen voor het virtuele netwerk bij, zodat virtuele machines het beheerde domein kunnen vinden voor domeindeelname of verificatie.
+    * Selecteer het beheerde domein in de portal om DNS te configureren. In het **Overzichtsvenster** wordt u gevraagd om deze DNS-instellingen automatisch te configureren.
+* Als u een beheerd domein hebt gemaakt in een regio die ondersteuning biedt voor beschikbaarheidszones, maakt u een netwerkbeveiligingsgroep om het verkeer in het virtuele netwerk voor het beheerde domein te beperken. Er wordt een Standard Load Balancer van Azure gemaakt waarvoor deze regels moeten worden uitgevoerd. Deze netwerkbeveiligingsgroep beveiligt Azure AD DS en is vereist voor een juiste werking van het beheerde domein.
+    * Selecteer het beheerde domein in de portal om de netwerkbeveiligingsgroep en vereiste regels goed te laten werken. In het **Overzichtsvenster** wordt u gevraagd om de netwerkbeveiligingsgroep automatisch te maken en configureren.
+* U moet [Wachtwoordsynchronisatie in Azure AD Domain Services inschakelen](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds) zodat eindgebruikers zich bij het beheerde domein kunnen aanmelden met hun bedrijfsreferenties.
 
 ## <a name="modify-scoped-synchronization-using-powershell"></a>Scoped Synchronization wijzigen met Power shell
 

@@ -18,10 +18,9 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 82c66231bcbdcaeb5371838291f1e6998f9f8bd7
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85356165"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect Sync: afhandelings LargeObject-fouten veroorzaakt door userCertificate-kenmerk
@@ -117,8 +116,8 @@ De nieuwe synchronisatie regel moet hetzelfde **bereik filter** hebben en een **
 
     | Kenmerk | Waarde | Details |
     | --- | --- | --- |
-    | Naam | *Geef een naam op* | Bijvoorbeeld *' uit tot Aad – Custom override voor userCertificate '* |
-    | Beschrijving | *Geef een beschrijving op* | Bijvoorbeeld, *als het kenmerk userCertificate meer dan 15 waarden heeft, wordt Null geëxporteerd. "* |
+    | Name | *Geef een naam op* | Bijvoorbeeld *' uit tot Aad – Custom override voor userCertificate '* |
+    | Description | *Geef een beschrijving op* | Bijvoorbeeld, *als het kenmerk userCertificate meer dan 15 waarden heeft, wordt Null geëxporteerd. "* |
     | Verbonden systeem | *De Azure AD-connector selecteren* |
     | Type verbonden systeem object | **gebruiker** | |
     | Omgekeerd object type | **gelaedeerde** | |
@@ -131,7 +130,7 @@ De nieuwe synchronisatie regel moet hetzelfde **bereik filter** hebben en een **
 
     | Kenmerk | Waarde |
     | --- | --- |
-    | Stroomtype |**Expressie** |
+    | Stroomtype |**Expression** |
     | Doel kenmerk |**userCertificate** |
     | Bronkenmerk |*Gebruik de volgende expressie*:`IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
     

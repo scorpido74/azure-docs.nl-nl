@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 03b06d46cb35346580070f1739fd43128fa7a7fa
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84463923"
 ---
 # <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>Procedure: risico feedback in Azure AD Identity Protection geven
@@ -45,7 +44,7 @@ Azure AD gebruikt uw feedback om het risico van de onderliggende gebruiker en/of
 
 Hier volgen de scenario's en mechanismen voor het geven van risico feedback voor Azure AD.
 
-| Scenario | Hoe kunt u feedback geven? | Wat gebeurt er onder de motorkap? | Opmerkingen |
+| Scenario | Hoe kunt u feedback geven? | Wat gebeurt er onder de motorkap? | Notities |
 | --- | --- | --- | --- |
 | **Het aanmelden is niet aangetast (fout positief)** <br> In het rapport Risk ante aanmeldingen wordt een aanmeldings risico (risico status = gevaar) weer gegeven, maar de aanmelding is niet aangetast. | Selecteer de aanmelding en klik op aanmelden bevestigen veilig. | Azure AD verplaatst het aggregatie risico van het aanmelden naar geen [risico status = bevestigd veilig; Risico niveau (aggregatie) =-] en maakt de impact op het risico van de gebruiker ongedaan. | Op dit moment is de optie veilig aanmelden bevestigen alleen beschikbaar in het rapport Risk ante aanmeldingen. |
 | **Aanmelding is aangetast (ware positieve)** <br> In het rapport Risk ante aanmeldingen ziet u een aanmeld risico (risico status = loopt risico) met laag risico [risico niveau (aggregatie) = low] en die aanmelding werd inderdaad aangetast. | Selecteer de aanmelding en klik op bevestigen dat er is geknoeid. | Azure AD verplaatst het aggregatie risico van het aanmelden en het gebruikers risico op hoog [risico status = bevestigd is aangetast; Risico niveau = hoog]. | Op dit moment is de optie voor misbruik van een aanmelding bevestigen alleen beschikbaar in het rapport Risk ante aanmeldingen. |

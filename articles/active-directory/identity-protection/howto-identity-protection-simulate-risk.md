@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cbcc2351b7ead3714cfd21aa30b031cec75074a9
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84463753"
 ---
 # <a name="simulating-risk-detections-in-identity-protection"></a>Risico detecties in identiteits beveiliging simuleren
@@ -92,7 +91,7 @@ In deze sectie vindt u stappen voor het testen van de gebruiker en het aanmeldin
 
 Als u een beveiligings beleid voor gebruikers Risico's wilt testen, voert u de volgende stappen uit:
 
-1. Navigeer naar het [Azure Portal](https://portal.azure.com).
+1. Navigeer naar [Azure Portal](https://portal.azure.com).
 1. Blader naar **Azure Active Directory**  >  **Security**-  >  **overzicht**.
 1. Selecteer **gebruikers risico beleid configureren**.
    1. Onder **toewijzingen**
@@ -112,7 +111,7 @@ Als u een beveiligings beleid voor gebruikers Risico's wilt testen, voert u de v
 
 Voer de volgende stappen uit om een beleid voor aanmeldings Risico's te testen:
 
-1. Navigeer naar het [Azure Portal](https://portal.azure.com).
+1. Navigeer naar [Azure Portal](https://portal.azure.com).
 1. Blader naar **Azure Active Directory**  >  **Security**-  >  **overzicht**.
 1. Selecteer **beleid voor aanmeldings risico configureren**.
    1. Onder **toewijzingen**

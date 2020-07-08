@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 68f42aa13288c2416257f3ba6c0b6072c1572977
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4b5a18f0dc5edc06e4800215e88b694e681b5bbb
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77162987"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960459"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Ontwerp van een inhouds beschermings systeem met toegangs beheer met Azure Media Services 
 
@@ -206,7 +205,7 @@ De implementatie omvat de volgende stappen:
    * Installeer-package micro soft. Azure. ActiveDirectory. GraphClient
    * Installeer-package micro soft. Owin. Security. OpenIdConnect
    * Installeer-package micro soft. Owin. Security. cookies
-   * Installeer-package micro soft. Owin. host. SystemWeb
+   * Installeren-package Microsoft.Owin.Host.SystemWeb
    * Installeer-package micro soft. Identity model. clients. ActiveDirectory
 
 8. Een speler maken met behulp van de [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/). Gebruik de [Azure Media Player PROTECTIONINFO API](https://amp.azure.net/libs/amp/latest/docs/) om op te geven welke DRM-technologie op verschillende DRM-platforms moet worden gebruikt.
@@ -234,8 +233,10 @@ Gebruik de volgende informatie voor probleem oplossing voor hulp bij implementat
 
 * De URL van de uitgever moet eindigen op '/'. De doel groep moet de client-ID van de Player-toepassing zijn. Voeg ook '/' toe aan het einde van de URL van de uitgever.
 
-        <add key="ida:audience" value="[Application Client ID GUID]" />
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```xml
+    <add key="ida:audience" value="[Application Client ID GUID]" />
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```
 
     In de [JWT-decoder](http://jwt.calebb.net/)ziet u **AUD** en **ISS**, zoals wordt weer gegeven in de JWT:
 
@@ -247,11 +248,15 @@ Gebruik de volgende informatie voor probleem oplossing voor hulp bij implementat
 
 * Gebruik de juiste verlener wanneer u dynamische CENC-beveiliging instelt.
 
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```xml
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```
 
     Het volgende werkt niet:
 
-        <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```xml
+    <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```
 
     De GUID is de ID van de Azure AD-Tenant. De GUID vindt u in het pop-upmenu **endpoints** in het Azure Portal.
 
@@ -261,7 +266,9 @@ Gebruik de volgende informatie voor probleem oplossing voor hulp bij implementat
 
 * Stel het juiste token type in wanneer u beperkings vereisten maakt.
 
-        objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    ```csharp
+    objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    ```
 
     Omdat u ondersteuning voor JWT (Azure AD) toevoegt naast SWT (ACS), is het standaard token type token. JWT. Als u SWT/ACS gebruikt, moet u het token instellen op token type. SWT.
 
@@ -398,7 +405,7 @@ Hoewel Azure oorspronkelijk alleen toegang heeft toegestaan door Microsoft-accou
 
 Omdat Azure AD het Microsoft-account domein vertrouwt, kunt u accounts uit de volgende domeinen toevoegen aan de aangepaste Azure AD-Tenant en het account gebruiken om u aan te melden:
 
-| **Domeinnaam** | **Domain** |
+| **Domeinnaam** | **Domein** |
 | --- | --- |
 | **Aangepast Azure AD-Tenant domein** |somename.onmicrosoft.com |
 | **Bedrijfs domein** |microsoft.com |
@@ -472,7 +479,7 @@ In dit document wordt CENC met multi-native DRM-en toegangs beheer via token ver
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -4,27 +4,26 @@ description: Verbeter de prestaties door uw query's te filteren bij het aanvrage
 ms.topic: how-to
 ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7034b910f7ddfe07b27ee9c2939fb8ee6531c9ca
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
-ms.translationtype: MT
+ms.openlocfilehash: bcf99dbc55d708af70a28155a3f98c20003e51f7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299463"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960602"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Query's maken om batch resources efficiënt weer te geven
 
 Bijna alle batch-toepassingen moeten een type bewaking of een andere bewerking uitvoeren die de batch-service uitvoert, vaak regel matig intervallen. Als u bijvoorbeeld wilt bepalen of er taken in de wachtrij voor een taak resteren, moet u gegevens ophalen voor elke taak in de taak. Als u de status van knoop punten in uw pool wilt bepalen, moet u gegevens op elk knoop punt in de pool ophalen. In dit artikel wordt uitgelegd hoe u dergelijke query's op de meest efficiënte manier uitvoert.
 
-U kunt de prestaties van uw Azure Batch-toepassing verhogen door de hoeveelheid gegevens die door de service wordt geretourneerd, te verminderen wanneer u een query uitvoert op taken, taken, reken knooppunten en andere resources met de [batch .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch) -bibliotheek.
+U kunt de prestaties van uw Azure Batch-toepassing verhogen door de hoeveelheid gegevens die door de service wordt geretourneerd, te verminderen wanneer u een query uitvoert op taken, taken, reken knooppunten en andere resources met de [batch .net](/dotnet/api/microsoft.azure.batch) -bibliotheek.
 
 > [!NOTE]
-> De batch-service biedt API-ondersteuning voor de algemene scenario's voor het tellen van taken in een taak en het tellen van reken knooppunten in de batch-pool. In plaats van een lijst query voor deze te gebruiken, kunt u de bewerkingen [taak aantallen ophalen](https://docs.microsoft.com/rest/api/batchservice/job/gettaskcounts) en [aantal aantallen van lijst groepen](https://docs.microsoft.com/rest/api/batchservice/account/listpoolnodecounts) aanroepen. Deze bewerkingen zijn efficiënter dan een lijst query, maar retour neren meer beperkte informatie die niet altijd up-to-date is. Zie [Count tasks and compute nodes by state](batch-get-resource-counts.md)(Engelstalig) voor meer informatie.
+> De batch-service biedt API-ondersteuning voor de algemene scenario's voor het tellen van taken in een taak en het tellen van reken knooppunten in de batch-pool. In plaats van een lijst query voor deze te gebruiken, kunt u de bewerkingen [taak aantallen ophalen](/rest/api/batchservice/job/gettaskcounts) en [aantal aantallen van lijst groepen](/rest/api/batchservice/account/listpoolnodecounts) aanroepen. Deze bewerkingen zijn efficiënter dan een lijst query, maar retour neren meer beperkte informatie die niet altijd up-to-date is. Zie [Count tasks and compute nodes by state](batch-get-resource-counts.md)(Engelstalig) voor meer informatie.
 
 ## <a name="specify-a-detail-level"></a>Een detail niveau opgeven
 
 In een productie batch-toepassing kunnen entiteiten zoals Jobs, taken en reken knooppunten het aantal duizend tallen. Wanneer u informatie nodig hebt over deze resources, moet u een mogelijke grote hoeveelheid gegevens ' cross ' door kruisen van de batch-service naar uw toepassing op elke query. Door het aantal items en het type informatie dat wordt geretourneerd door een query te beperken, kunt u de snelheid van uw query's verhogen en dus ook de prestaties van uw toepassing.
 
-Dit code fragment voor [batch .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch) API *bevat een* lijst met alle taken die aan een taak zijn gekoppeld, samen met *alle* eigenschappen van elke taak:
+Dit code fragment voor [batch .net](/dotnet/api/microsoft.azure.batch) API *bevat een* lijst met alle taken die aan een taak zijn gekoppeld, samen met *alle* eigenschappen van elke taak:
 
 ```csharp
 // Get a collection of all of the tasks and all of their properties for job-001
@@ -32,7 +31,7 @@ IPagedEnumerable<CloudTask> allTasks =
     batchClient.JobOperations.ListTasks("job-001");
 ```
 
-U kunt een veel efficiëntere lijst query uitvoeren, maar door een ' detail niveau ' toe te passen op uw query. U doet dit door een [ODATADetailLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel) -object op te geven voor de methode [JobOperations. ListTasks](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations) . Dit fragment retourneert alleen de eigenschappen van de ID, opdracht regel en reken knooppunt voor voltooide taken:
+U kunt een veel efficiëntere lijst query uitvoeren, maar door een ' detail niveau ' toe te passen op uw query. U doet dit door een [ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) -object op te geven voor de methode [JobOperations. ListTasks](/dotnet/api/microsoft.azure.batch.joboperations) . Dit fragment retourneert alleen de eigenschappen van de ID, opdracht regel en reken knooppunt voor voltooide taken:
 
 ```csharp
 // Configure an ODATADetailLevel specifying a subset of tasks and
@@ -53,7 +52,7 @@ Als in dit voorbeeld scenario duizenden taken in de taak zijn, worden de resulta
 
 ## <a name="filter-select-and-expand"></a>Filteren, selecteren en uitvouwen
 
-De [batch .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch) -en [batch](https://docs.microsoft.com/rest/api/batchservice/) -api's bieden de mogelijkheid om zowel het aantal geretourneerde items in een lijst te verminderen als de hoeveelheid gegevens die voor elk item wordt geretourneerd. U doet dit door **filter**-, **Select**-en **expand-teken reeksen** op te geven bij het uitvoeren van lijst query's.
+De [batch .net](/dotnet/api/microsoft.azure.batch) -en [batch](/rest/api/batchservice/) -api's bieden de mogelijkheid om zowel het aantal geretourneerde items in een lijst te verminderen als de hoeveelheid gegevens die voor elk item wordt geretourneerd. U doet dit door **filter**-, **Select**-en **expand-teken reeksen** op te geven bij het uitvoeren van lijst query's.
 
 ### <a name="filter"></a>Filteren
 
@@ -84,7 +83,7 @@ In dit voor beeld wordt de teken reeks uitgebreid geeft aan dat er statistische 
 
 ### <a name="rules-for-filter-select-and-expand-strings"></a>Regels voor het filteren, selecteren en uitvouwen van teken reeksen
 
-- Eigenschappen in filter-, Select-en Expand-teken reeksen moeten worden weer gegeven zoals in de [batch rest](https://docs.microsoft.com/rest/api/batchservice/) -API, zelfs wanneer u [batch .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch) of een van de andere batch-sdk's gebruikt.
+- Eigenschappen in filter-, Select-en Expand-teken reeksen moeten worden weer gegeven zoals in de [batch rest](/rest/api/batchservice/) -API, zelfs wanneer u [batch .net](/dotnet/api/microsoft.azure.batch) of een van de andere batch-sdk's gebruikt.
 - Alle eigenschapnamen zijn hoofdletter gevoelig, maar eigenschaps waarden zijn niet hoofdletter gevoelig.
 - Datum-en tijd teken reeksen kunnen een van de twee indelingen hebben en moeten worden voorafgegaan door `DateTime` .
   
@@ -95,11 +94,11 @@ In dit voor beeld wordt de teken reeks uitgebreid geeft aan dat er statistische 
 
 ## <a name="efficient-querying-in-batch-net"></a>Efficiënte query's uitvoeren in batch .NET
 
-Binnen de [batch .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch) -API wordt de klasse [ODATADetailLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel) gebruikt voor het leveren van filters, selecteren en uitvouwen van teken reeksen om bewerkingen weer te geven. De klasse ODataDetailLevel heeft drie open bare teken reeks eigenschappen die kunnen worden opgegeven in de constructor of die rechtstreeks op het object kan worden ingesteld. Vervolgens geeft u het ODataDetailLevel-object als een para meter door aan de verschillende lijst bewerkingen, zoals [ListPools](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations), [ListJobs](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations)en [ListTasks](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations).
+Binnen de [batch .net](/dotnet/api/microsoft.azure.batch) -API wordt de klasse [ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) gebruikt voor het leveren van filters, selecteren en uitvouwen van teken reeksen om bewerkingen weer te geven. De klasse ODataDetailLevel heeft drie open bare teken reeks eigenschappen die kunnen worden opgegeven in de constructor of die rechtstreeks op het object kan worden ingesteld. Vervolgens geeft u het ODataDetailLevel-object als een para meter door aan de verschillende lijst bewerkingen, zoals [ListPools](/dotnet/api/microsoft.azure.batch.pooloperations), [ListJobs](/dotnet/api/microsoft.azure.batch.joboperations)en [ListTasks](/dotnet/api/microsoft.azure.batch.joboperations).
 
-- [ODATADetailLevel. FilterClause](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause): het aantal geretourneerde items beperken.
-- [ODATADetailLevel. SelectClause](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause): Geef op welke eigenschaps waarden met elk item worden geretourneerd.
-- [ODATADetailLevel. ExpandClause](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel.expandclause): gegevens ophalen voor alle items in één API-aanroep in plaats van afzonderlijke aanroepen voor elk item.
+- [ODATADetailLevel. FilterClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause): het aantal geretourneerde items beperken.
+- [ODATADetailLevel. SelectClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause): Geef op welke eigenschaps waarden met elk item worden geretourneerd.
+- [ODATADetailLevel. ExpandClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.expandclause): gegevens ophalen voor alle items in één API-aanroep in plaats van afzonderlijke aanroepen voor elk item.
 
 In het volgende code fragment wordt de batch .NET API gebruikt om de batch-service op een efficiënte manier te doorzoeken op de statistieken van een specifieke set met groepen. In dit scenario heeft de batch gebruiker zowel test-als productie Pools. De test groep-Id's worden voorafgegaan door ' test ' en de productie pool-Id's worden voorafgegaan door ' Prod '. In het fragment is *myBatchClient* een correct geïnitialiseerd exemplaar van de klasse [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) .
 
@@ -130,7 +129,7 @@ List<CloudPool> testPools =
 ```
 
 > [!TIP]
-> Een instantie van [ODATADetailLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel) die is geconfigureerd met SELECT-en Expand-componenten, kan ook worden door gegeven aan de toepasselijke Get-methoden, zoals [pool Operations. GetPool](/dotnet/api/microsoft.azure.batch.pooloperations.getpool#Microsoft_Azure_Batch_PoolOperations_GetPool_System_String_Microsoft_Azure_Batch_DetailLevel_System_Collections_Generic_IEnumerable_Microsoft_Azure_Batch_BatchClientBehavior__), om de hoeveelheid gegevens die wordt geretourneerd, te beperken.
+> Een instantie van [ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) die is geconfigureerd met SELECT-en Expand-componenten, kan ook worden door gegeven aan de toepasselijke Get-methoden, zoals [pool Operations. GetPool](/dotnet/api/microsoft.azure.batch.pooloperations.getpool#Microsoft_Azure_Batch_PoolOperations_GetPool_System_String_Microsoft_Azure_Batch_DetailLevel_System_Collections_Generic_IEnumerable_Microsoft_Azure_Batch_BatchClientBehavior__), om de hoeveelheid gegevens die wordt geretourneerd, te beperken.
 
 ## <a name="batch-rest-to-net-api-mappings"></a>Batch-REST naar .NET API-toewijzingen
 
@@ -138,39 +137,39 @@ Eigenschaps namen in filters, selecteren en uitvouwen teken reeksen moeten overe
 
 ### <a name="mappings-for-filter-strings"></a>Toewijzingen voor filter teken reeksen
 
-- **.Net-lijst methoden**: voor elk van de .net API-methoden in deze kolom wordt een [ODATADetailLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel) -object als para meter geaccepteerd.
-- **Rest-lijst aanvragen**: elke rest API pagina die aan deze kolom is gekoppeld, bevat een tabel die de eigenschappen en bewerkingen specificeert die zijn toegestaan in *filter* teken reeksen. U gebruikt deze eigenschaps namen en bewerkingen wanneer u een [ODATADetailLevel. FilterClause](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause) -teken reeks bouwt.
+- **.Net-lijst methoden**: voor elk van de .net API-methoden in deze kolom wordt een [ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) -object als para meter geaccepteerd.
+- **Rest-lijst aanvragen**: elke rest API pagina die aan deze kolom is gekoppeld, bevat een tabel die de eigenschappen en bewerkingen specificeert die zijn toegestaan in *filter* teken reeksen. U gebruikt deze eigenschaps namen en bewerkingen wanneer u een [ODATADetailLevel. FilterClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause) -teken reeks bouwt.
 
 | .NET-lijst methoden | Aanvragen van de REST-lijst |
 | --- | --- |
-| [Methode certificateoperations. ListCertificates](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.certificateoperations) |[De certificaten in een account weer geven](https://docs.microsoft.com/rest/api/batchservice/certificate/list) |
-| [CloudTask. ListNodeFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) |[De bestanden weer geven die zijn gekoppeld aan een taak](https://docs.microsoft.com/rest/api/batchservice/file/listfromtask) |
-| [JobOperations. ListJobPreparationAndReleaseTaskStatus](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations) |[De status van de taken voor taak voorbereiding en taak release voor een taak weer geven](https://docs.microsoft.com/rest/api/batchservice/job/listpreparationandreleasetaskstatus) |
-| [JobOperations. ListJobs](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations) |[De taken in een account weer geven](https://docs.microsoft.com/rest/api/batchservice/job/list) |
-| [JobOperations. ListNodeFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations) |[De bestanden op een knoop punt weer geven](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode) |
-| [JobOperations. ListTasks](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations) |[De taken weer geven die aan een taak zijn gekoppeld](https://docs.microsoft.com/rest/api/batchservice/task/list) |
-| [JobScheduleOperations.ListJobSchedules](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.jobscheduleoperations) |[De taak planningen in een account weer geven](https://docs.microsoft.com/rest/api/batchservice/jobschedule/list) |
-| [JobScheduleOperations.ListJobs](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.jobscheduleoperations) |[De taken weer geven die zijn gekoppeld aan een taak schema](https://docs.microsoft.com/rest/api/batchservice/job/listfromjobschedule) |
-| [Pool Operations. ListComputeNodes](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations) |[De reken knooppunten in een pool weer geven](https://docs.microsoft.com/rest/api/batchservice/computenode/list) |
-| [Pool Operations. ListPools](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations) |[De Pools in een account weer geven](https://docs.microsoft.com/rest/api/batchservice/pool/list) |
+| [Methode certificateoperations. ListCertificates](/dotnet/api/microsoft.azure.batch.certificateoperations) |[De certificaten in een account weer geven](/rest/api/batchservice/certificate/list) |
+| [CloudTask. ListNodeFiles](/dotnet/api/microsoft.azure.batch.cloudtask) |[De bestanden weer geven die zijn gekoppeld aan een taak](/rest/api/batchservice/file/listfromtask) |
+| [JobOperations. ListJobPreparationAndReleaseTaskStatus](/dotnet/api/microsoft.azure.batch.joboperations) |[De status van de taken voor taak voorbereiding en taak release voor een taak weer geven](/rest/api/batchservice/job/listpreparationandreleasetaskstatus) |
+| [JobOperations. ListJobs](/dotnet/api/microsoft.azure.batch.joboperations) |[De taken in een account weer geven](/rest/api/batchservice/job/list) |
+| [JobOperations. ListNodeFiles](/dotnet/api/microsoft.azure.batch.joboperations) |[De bestanden op een knoop punt weer geven](/rest/api/batchservice/file/listfromcomputenode) |
+| [JobOperations. ListTasks](/dotnet/api/microsoft.azure.batch.joboperations) |[De taken weer geven die aan een taak zijn gekoppeld](/rest/api/batchservice/task/list) |
+| [JobScheduleOperations.ListJobSchedules](/dotnet/api/microsoft.azure.batch.jobscheduleoperations) |[De taak planningen in een account weer geven](/rest/api/batchservice/jobschedule/list) |
+| [JobScheduleOperations.ListJobs](/dotnet/api/microsoft.azure.batch.jobscheduleoperations) |[De taken weer geven die zijn gekoppeld aan een taak schema](/rest/api/batchservice/job/listfromjobschedule) |
+| [Pool Operations. ListComputeNodes](/dotnet/api/microsoft.azure.batch.pooloperations) |[De reken knooppunten in een pool weer geven](/rest/api/batchservice/computenode/list) |
+| [Pool Operations. ListPools](/dotnet/api/microsoft.azure.batch.pooloperations) |[De Pools in een account weer geven](/rest/api/batchservice/pool/list) |
 
 ### <a name="mappings-for-select-strings"></a>Toewijzingen voor selectie teken reeksen
 
 - **Batch .net-typen**: batch .net API-typen.
-- **Rest API entiteiten**: elke pagina in deze kolom bevat een of meer tabellen met de rest API eigenschaps namen voor het type. Deze eigenschapnamen worden gebruikt wanneer *u teken reeksen* samen stelt. U gebruikt dezelfde eigenschapnamen wanneer u een teken reeks voor [ODATADetailLevel. SelectClause](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause) bouwt.
+- **Rest API entiteiten**: elke pagina in deze kolom bevat een of meer tabellen met de rest API eigenschaps namen voor het type. Deze eigenschapnamen worden gebruikt wanneer *u teken reeksen* samen stelt. U gebruikt dezelfde eigenschapnamen wanneer u een teken reeks voor [ODATADetailLevel. SelectClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause) bouwt.
 
 | Batch .NET-typen | REST API entiteiten |
 | --- | --- |
-| [Certificaat](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.certificate) |[Informatie over een certificaat ophalen](https://docs.microsoft.com/rest/api/batchservice/certificate/get) |
-| [Eigenschap cloudjob](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob) |[Informatie over een taak ophalen](https://docs.microsoft.com/rest/api/batchservice/job/get) |
-| [CloudJobSchedule](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjobschedule) |[Informatie over een taak schema ophalen](https://docs.microsoft.com/rest/api/batchservice/jobschedule/get) |
-| [ComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode) |[Informatie over een knoop punt ophalen](https://docs.microsoft.com/rest/api/batchservice/computenode/get) |
-| [CloudPool](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool) |[Informatie over een groep ophalen](https://docs.microsoft.com/rest/api/batchservice/pool/get) |
-| [CloudTask](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) |[Informatie over een taak ophalen](https://docs.microsoft.com/rest/api/batchservice/task/get) |
+| [Certificaat](/dotnet/api/microsoft.azure.batch.certificate) |[Informatie over een certificaat ophalen](/rest/api/batchservice/certificate/get) |
+| [Eigenschap cloudjob](/dotnet/api/microsoft.azure.batch.cloudjob) |[Informatie over een taak ophalen](/rest/api/batchservice/job/get) |
+| [CloudJobSchedule](/dotnet/api/microsoft.azure.batch.cloudjobschedule) |[Informatie over een taak schema ophalen](/rest/api/batchservice/jobschedule/get) |
+| [ComputeNode](/dotnet/api/microsoft.azure.batch.computenode) |[Informatie over een knoop punt ophalen](/rest/api/batchservice/computenode/get) |
+| [CloudPool](/dotnet/api/microsoft.azure.batch.cloudpool) |[Informatie over een groep ophalen](/rest/api/batchservice/pool/get) |
+| [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) |[Informatie over een taak ophalen](/rest/api/batchservice/task/get) |
 
 ## <a name="example-construct-a-filter-string"></a>Voor beeld: een filter teken reeks maken
 
-Wanneer u een filter teken reeks voor [ODATADetailLevel. FilterClause](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause)bouwt, raadpleegt u de bovenstaande tabel onder toewijzingen voor filter reeksen om de rest API-documentatie pagina te vinden die overeenkomt met de lijst bewerking die u wilt uitvoeren. U vindt de filter eigenschappen en de ondersteunde Opera tors in de eerste kolom MultiRow op die pagina. Als u alle taken wilt ophalen waarvan de afsluit code niet gelijk is aan nul, bijvoorbeeld deze rij in [de lijst met taken die aan een taak zijn gekoppeld](https://docs.microsoft.com/rest/api/batchservice/task/list) , geeft u de toepasselijke eigenschap teken reeks en toegestane Opera tors op:
+Wanneer u een filter teken reeks voor [ODATADetailLevel. FilterClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.filterclause)bouwt, raadpleegt u de bovenstaande tabel onder toewijzingen voor filter reeksen om de rest API-documentatie pagina te vinden die overeenkomt met de lijst bewerking die u wilt uitvoeren. U vindt de filter eigenschappen en de ondersteunde Opera tors in de eerste kolom MultiRow op die pagina. Als u alle taken wilt ophalen waarvan de afsluit code niet gelijk is aan nul, bijvoorbeeld deze rij in [de lijst met taken die aan een taak zijn gekoppeld](/rest/api/batchservice/task/list) , geeft u de toepasselijke eigenschap teken reeks en toegestane Opera tors op:
 
 | Eigenschap | Toegestane bewerkingen | Type |
 |:--- |:--- |:--- |
@@ -182,7 +181,7 @@ De filter teken reeks voor het weer geven van alle taken met een niet-nul afslui
 
 ## <a name="example-construct-a-select-string"></a>Voor beeld: een SELECT-teken reeks maken
 
-Als u [ODATADetailLevel. SelectClause](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause)wilt maken, raadpleegt u de bovenstaande tabel onder ' toewijzingen voor Select strings ' en navigeert u naar de rest API pagina die overeenkomt met het type entiteit dat u wilt weer geven. U vindt de eigenschappen die kunnen worden geselecteerd en de Opera tors die worden ondersteund in de eerste kolom MultiRow op die pagina. Als u alleen de ID en de opdracht regel voor elke taak in een lijst wilt ophalen, kunt u deze rijen in de desbetreffende tabel vinden op [informatie over een taak ophalen](https://docs.microsoft.com/rest/api/batchservice/task/get):
+Als u [ODATADetailLevel. SelectClause](/dotnet/api/microsoft.azure.batch.odatadetaillevel.selectclause)wilt maken, raadpleegt u de bovenstaande tabel onder ' toewijzingen voor Select strings ' en navigeert u naar de rest API pagina die overeenkomt met het type entiteit dat u wilt weer geven. U vindt de eigenschappen die kunnen worden geselecteerd en de Opera tors die worden ondersteund in de eerste kolom MultiRow op die pagina. Als u alleen de ID en de opdracht regel voor elke taak in een lijst wilt ophalen, kunt u deze rijen in de desbetreffende tabel vinden op [informatie over een taak ophalen](/rest/api/batchservice/task/get):
 
 | Eigenschap | Type | Notities |
 |:--- |:--- |:--- |
@@ -197,7 +196,7 @@ De teken reeks selecteren voor het opnemen van alleen de ID en de opdracht regel
 
 ### <a name="efficient-list-queries-code-sample"></a>Code voorbeeld van een efficiënte lijst query's
 
-Het [EfficientListQueries](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/ArticleProjects/EfficientListQueries) -voorbeeld project op github laat zien hoe een efficiënte lijst query de prestaties van een toepassing kan beïnvloeden. Met deze C#-console toepassing wordt een groot aantal taken gemaakt en toegevoegd aan een taak. Vervolgens worden er meerdere aanroepen naar de methode [JobOperations. ListTasks](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.joboperations) gemaakt en worden [ODATADetailLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.odatadetaillevel) -objecten door gegeven die zijn geconfigureerd met verschillende eigenschaps waarden om de hoeveelheid gegevens die moeten worden geretourneerd, te variëren. Dit levert uitvoer op die er ongeveer als volgt uitziet:
+Het [EfficientListQueries](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/ArticleProjects/EfficientListQueries) -voorbeeld project op github laat zien hoe een efficiënte lijst query de prestaties van een toepassing kan beïnvloeden. Met deze C#-console toepassing wordt een groot aantal taken gemaakt en toegevoegd aan een taak. Vervolgens worden er meerdere aanroepen naar de methode [JobOperations. ListTasks](/dotnet/api/microsoft.azure.batch.joboperations) gemaakt en worden [ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) -objecten door gegeven die zijn geconfigureerd met verschillende eigenschaps waarden om de hoeveelheid gegevens die moeten worden geretourneerd, te variëren. Dit levert uitvoer op die er ongeveer als volgt uitziet:
 
 ```
 Adding 5000 tasks to job jobEffQuery...
@@ -244,53 +243,53 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 - Meer informatie over het [bewaken van batch-oplossingen door taken en knoop punten te tellen per status](batch-get-resource-counts.md)
 
 
-[api_net]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch
-[api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
-[api_rest]: https://docs.microsoft.com/rest/api/batchservice/
+[api_net]: /dotnet/api/microsoft.azure.batch
+[api_net_listjobs]: /dotnet/api/microsoft.azure.batch.joboperations
+[api_rest]: /rest/api/batchservice/
 [batch_metrics]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchMetrics
 [efficient_query_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/EfficientListQueries
 [github_samples]: https://github.com/Azure/azure-batch-samples
-[odata]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.odatadetaillevel.aspx
-[odata_ctor]: https://msdn.microsoft.com/library/azure/dn866178.aspx
-[odata_expand]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.odatadetaillevel.expandclause.aspx
-[odata_filter]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.odatadetaillevel.filterclause.aspx
-[odata_select]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.odatadetaillevel.selectclause.aspx
+[odata]: /dotnet/api/microsoft.azure.batch.odatadetaillevel
+[odata_ctor]: /dotnet/api/microsoft.azure.batch.odatadetaillevel
+[odata_expand]: /dotnet/api/microsoft.azure.batch.odatadetaillevel
+[odata_filter]: /dotnet/api/microsoft.azure.batch.odatadetaillevel
+[odata_select]: /dotnet/api/microsoft.azure.batch.odatadetaillevel
 
-[net_list_certs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.certificateoperations.listcertificates.aspx
-[net_list_compute_nodes]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.listcomputenodes.aspx
-[net_list_job_schedules]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobscheduleoperations.listjobschedules.aspx
-[net_list_jobprep_status]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobpreparationandreleasetaskstatus.aspx
-[net_list_jobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
-[net_list_nodefiles]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listnodefiles.aspx
-[net_list_pools]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.listpools.aspx
-[net_list_schedule_jobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobscheduleoperations.listjobs.aspx
-[net_list_task_files]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.listnodefiles.aspx
-[net_list_tasks]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listtasks.aspx
+[net_list_certs]: /dotnet/api/microsoft.azure.batch.certificateoperations
+[net_list_compute_nodes]: /dotnet/api/microsoft.azure.batch.pooloperations
+[net_list_job_schedules]: /dotnet/api/microsoft.azure.batch.jobscheduleoperations
+[net_list_jobprep_status]: /dotnet/api/microsoft.azure.batch.joboperations
+[net_list_jobs]: /dotnet/api/microsoft.azure.batch.joboperations
+[net_list_nodefiles]: /dotnet/api/microsoft.azure.batch.joboperations
+[net_list_pools]: /dotnet/api/microsoft.azure.batch.pooloperations
+[net_list_schedule_jobs]: /dotnet/api/microsoft.azure.batch.jobscheduleoperations
+[net_list_task_files]: /dotnet/api/microsoft.azure.batch.cloudtask
+[net_list_tasks]: /dotnet/api/microsoft.azure.batch.joboperations
 
-[rest_list_certs]: https://msdn.microsoft.com/library/azure/dn820154.aspx
-[rest_list_compute_nodes]: https://msdn.microsoft.com/library/azure/dn820159.aspx
-[rest_list_job_schedules]: https://msdn.microsoft.com/library/azure/mt282174.aspx
-[rest_list_jobprep_status]: https://msdn.microsoft.com/library/azure/mt282170.aspx
-[rest_list_jobs]: https://msdn.microsoft.com/library/azure/dn820117.aspx
-[rest_list_nodefiles]: https://msdn.microsoft.com/library/azure/dn820151.aspx
-[rest_list_pools]: https://msdn.microsoft.com/library/azure/dn820101.aspx
-[rest_list_schedule_jobs]: https://msdn.microsoft.com/library/azure/mt282169.aspx
-[rest_list_task_files]: https://msdn.microsoft.com/library/azure/dn820142.aspx
-[rest_list_tasks]: https://msdn.microsoft.com/library/azure/dn820187.aspx
+[rest_list_certs]: /rest/api/batchservice/certificate/list
+[rest_list_compute_nodes]: /rest/api/batchservice/computenode/list
+[rest_list_job_schedules]: /rest/api/batchservice/jobschedule/list
+[rest_list_jobprep_status]: /rest/api/batchservice/job/listpreparationandreleasetaskstatus
+[rest_list_jobs]: /rest/api/batchservice/job/list
+[rest_list_nodefiles]: /rest/api/batchservice/file/listfromcomputenode
+[rest_list_pools]: /rest/api/batchservice/pool/list
+[rest_list_schedule_jobs]: /rest/api/batchservice/job/listfromjobschedule
+[rest_list_task_files]: /rest/api/batchservice/file/listfromtask
+[rest_list_tasks]: /rest/api/batchservice/task/list
 
-[rest_get_cert]: https://msdn.microsoft.com/library/azure/dn820176.aspx
-[rest_get_job]: https://msdn.microsoft.com/library/azure/dn820106.aspx
-[rest_get_node]: https://msdn.microsoft.com/library/azure/dn820168.aspx
-[rest_get_pool]: https://msdn.microsoft.com/library/azure/dn820165.aspx
-[rest_get_schedule]: https://msdn.microsoft.com/library/azure/mt282171.aspx
-[rest_get_task]: https://msdn.microsoft.com/library/azure/dn820133.aspx
+[rest_get_cert]: /rest/api/batchservice/certificate/get
+[rest_get_job]: /rest/api/batchservice/job/get
+[rest_get_node]: /rest/api/batchservice/computenode/get
+[rest_get_pool]: /rest/api/batchservice/pool/get
+[rest_get_schedule]: /rest/api/batchservice/jobschedule/get
+[rest_get_task]: /rest/api/batchservice/task/get
 
-[net_cert]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.certificate.aspx
-[net_job]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
-[net_node]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenode.aspx
-[net_pool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
-[net_schedule]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjobschedule.aspx
-[net_task]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
+[net_cert]: /dotnet/api/microsoft.azure.batch.certificate
+[net_job]: /dotnet/api/microsoft.azure.batch.cloudjob
+[net_node]: /dotnet/api/microsoft.azure.batch.computenode
+[net_pool]: /dotnet/api/microsoft.azure.batch.cloudpool
+[net_schedule]: /dotnet/api/microsoft.azure.batch.cloudjobschedule
+[net_task]: /dotnet/api/microsoft.azure.batch.cloudtask
 
 [rest_get_task_counts]: /rest/api/batchservice/get-the-task-counts-for-a-job
 [rest_get_node_counts]: /rest/api/batchservice/account/listpoolnodecounts
