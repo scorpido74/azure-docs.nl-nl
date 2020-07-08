@@ -10,10 +10,9 @@ ms.date: 04/30/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: dd5d9c721c3e0204a66367b76654f9a917e26ba6
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82884629"
 ---
 # <a name="soft-delete-for-blob-storage"></a>Voorlopig verwijderen voor Blob Storage
@@ -83,12 +82,12 @@ Met zacht verwijderen worden uw gegevens niet opgeslagen in gevallen waarin cont
 
 De volgende tabel bevat details over het verwachte gedrag wanneer zacht verwijderen is ingeschakeld:
 
-| REST API bewerking | Resourcetype | Beschrijving | Wijziging in gedrag |
+| REST API bewerking | Resourcetype | Description | Wijziging in gedrag |
 |--------------------|---------------|-------------|--------------------|
 | [Verwijderen](/rest/api/storagerp/StorageAccounts/Delete) | Account | Hiermee verwijdert u het opslag account, inclusief alle containers en blobs die het bevat.                           | Geen wijziging. Containers en blobs in het verwijderde account kunnen niet worden hersteld. |
 | [Container verwijderen](/rest/api/storageservices/delete-container) | Container | Hiermee verwijdert u de container, inclusief alle blobs die deze bevat. | Geen wijziging. Blobs in de verwijderde container kunnen niet worden hersteld. |
 | [BLOB plaatsen](/rest/api/storageservices/put-blob) | Blok-, toevoeg-en pagina-blobs | Hiermee maakt u een nieuwe BLOB of vervangt u een bestaande BLOB binnen een container | Als deze wordt gebruikt om een bestaande BLOB te vervangen, wordt automatisch een moment opname van de status van de BLOB vóór de aanroep gegenereerd. Dit geldt ook voor een eerder zachte verwijderde BLOB als en alleen als deze wordt vervangen door een BLOB van hetzelfde type (blok, toevoegen of pagina). Als deze wordt vervangen door een BLOB van een ander type, worden alle bestaande voorlopig verwijderde gegevens permanent verlopen. |
-| [Blob verwijderen](/rest/api/storageservices/delete-blob) | Blok-, toevoeg-en pagina-blobs | Hiermee wordt een BLOB-of BLOB-moment opname gemarkeerd voor verwijdering. De BLOB of moment opname wordt later verwijderd tijdens het opschonen van de verzameling | Als deze wordt gebruikt om een BLOB-moment opname te verwijderen, wordt die moment opname gemarkeerd als zacht verwijderd. Als deze wordt gebruikt om een BLOB te verwijderen, wordt die BLOB gemarkeerd als zacht verwijderd. |
+| [BLOB verwijderen](/rest/api/storageservices/delete-blob) | Blok-, toevoeg-en pagina-blobs | Hiermee wordt een BLOB-of BLOB-moment opname gemarkeerd voor verwijdering. De BLOB of moment opname wordt later verwijderd tijdens het opschonen van de verzameling | Als deze wordt gebruikt om een BLOB-moment opname te verwijderen, wordt die moment opname gemarkeerd als zacht verwijderd. Als deze wordt gebruikt om een BLOB te verwijderen, wordt die BLOB gemarkeerd als zacht verwijderd. |
 | [BLOB kopiëren](/rest/api/storageservices/copy-blob) | Blok-, toevoeg-en pagina-blobs | Kopieert een bron-BLOB naar een bestemmings-Blob in hetzelfde opslag account of in een ander opslag account. | Als deze wordt gebruikt om een bestaande BLOB te vervangen, wordt automatisch een moment opname van de status van de BLOB vóór de aanroep gegenereerd. Dit geldt ook voor een eerder zachte verwijderde BLOB als en alleen als deze wordt vervangen door een BLOB van hetzelfde type (blok, toevoegen of pagina). Als deze wordt vervangen door een BLOB van een ander type, worden alle bestaande voorlopig verwijderde gegevens permanent verlopen. |
 | [Blok keren](/rest/api/storageservices/put-block) | Blok-blobs | Hiermee maakt u een nieuw blok dat moet worden doorgevoerd als onderdeel van een blok-blob. | Als wordt gebruikt om een blok door te voeren op een blob die actief is, is er geen wijziging. Als wordt gebruikt om een blok door te voeren op een blob die zacht is verwijderd, wordt een nieuwe BLOB gemaakt en wordt automatisch een moment opname gegenereerd om de status van de zachte verwijderde BLOB vast te leggen. |
 | [Blokkerings lijst plaatsen](/rest/api/storageservices/put-block-list) | Blok-blobs | Hiermee wordt een BLOB doorgevoerd door de set blok-Id's op te geven waaruit de blok-BLOB bestaat. | Als deze wordt gebruikt om een bestaande BLOB te vervangen, wordt automatisch een moment opname van de status van de BLOB vóór de aanroep gegenereerd. Dit geldt ook voor een eerder zachte verwijderde BLOB als en alleen als dit een blok-blob is. Als deze wordt vervangen door een BLOB van een ander type, worden alle bestaande voorlopig verwijderde gegevens permanent verlopen. |

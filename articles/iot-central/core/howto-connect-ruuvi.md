@@ -11,15 +11,14 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 93e4d3d0bed9090573d2b6ee87a29b86ccd72e42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758952"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>Een RuuviTag-sensor verbinden met uw Azure IoT Central-toepassing
 
-*Dit artikel is van toepassing op oplossingen bouwers en ontwikkel aars van apparaten.*
+*Dit artikel is van toepassing op oplossingenbouwers en apparaatontwikkelaars.*
 
 In dit artikel wordt beschreven hoe u, als een oplossings functie voor oplossingen, een RuuviTag-sensor kunt verbinden met uw Microsoft Azure IoT Central toepassing.
 
@@ -45,8 +44,8 @@ Als u een RuuviTag-sensor wilt toevoegen aan uw Azure IoT Central-toepassings ex
 
 Een sjabloon voor een RuuviTag-apparaat toevoegen:
 
-1. Ga naar het tabblad ***device templates*** in het linkerdeel venster, selecteer **+ Nieuw**: ![nieuwe sjabloon](./media/howto-connect-ruuvi/devicetemplate-new.png) maken de pagina biedt een optie voor het maken van ***een aangepaste sjabloon*** of het gebruik van ***een vooraf geconfigureerde*** sjabloon voor een apparaat
-1. Selecteer de sjabloon RuuviTag in de lijst met vooraf geconfigureerde Apparaatinstellingen, zoals hieronder wordt weer gegeven ![: Selecteer RuuviTag Device Temp late](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
+1. Ga naar het tabblad ***device templates*** in het linkerdeel venster, selecteer **+ Nieuw**: ![ nieuwe sjabloon maken ](./media/howto-connect-ruuvi/devicetemplate-new.png) de pagina biedt een optie voor het ***maken van een aangepaste sjabloon*** of het ***gebruik van een vooraf geconfigureerde*** sjabloon voor een apparaat
+1. Selecteer de sjabloon RuuviTag in de lijst met vooraf geconfigureerde Apparaatinstellingen, zoals hieronder wordt weer gegeven: ![ Selecteer RuuviTag Device Temp late](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
 1. Selecteer ***volgende: aanpassen*** om door te gaan naar de volgende stap.
 1. Selecteer in het volgende scherm de optie ***maken*** om de C500-apparaatprofiel voor te bereiden in uw IOT Central-toepassing.
 

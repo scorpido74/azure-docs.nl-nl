@@ -14,10 +14,9 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: abc4836b5e8729eec45a0eb2cd8b5fa7be6b1ce4
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82890559"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Serialisatie van token cache in MSAL.NET
@@ -39,14 +38,14 @@ Vergeet niet dat aangepaste serialisatie niet beschikbaar is op mobiele platform
 De volgende klassen en interfaces worden gebruikt in de serialisatie van de token cache:
 
 - `ITokenCache`, waarmee gebeurtenissen worden gedefinieerd voor het abonneren op aanvragen voor de serialisatie van tokens en methoden om de cache te serialiseren of deserialiseren in verschillende indelingen (ADAL v 3.0, MSAL 2. x en MSAL 3. x = ADAL v 5.0).
-- `TokenCacheCallback`is een call back aan de gebeurtenissen door gegeven, zodat u de serialisatie kunt afhandelen. Ze worden aangeroepen met argumenten van het type `TokenCacheNotificationArgs`.
+- `TokenCacheCallback`is een call back aan de gebeurtenissen door gegeven, zodat u de serialisatie kunt afhandelen. Ze worden aangeroepen met argumenten van het type `TokenCacheNotificationArgs` .
 - `TokenCacheNotificationArgs`biedt alleen de `ClientId` toepassing en een verwijzing naar de gebruiker waarvoor het token beschikbaar is.
 
   ![Klassediagram](media/msal-net-token-cache-serialization/class-diagram.png)
 
 > [!IMPORTANT]
-> MSAL.NET maakt token caches voor u en biedt u de `IToken` cache wanneer u een toepassing `UserTokenCache` en `AppTokenCache` eigenschappen aanroept. U moet de interface zelf niet zelf implementeren. Uw verantwoordelijkheid, wanneer u een aangepaste token cache-serialisatie implementeert, is:
-> - Reageren op `BeforeAccess` en `AfterAccess` "gebeurtenissen" (of hun async-smaak). De `BeforeAccess` gemachtigde is verantwoordelijk voor het deserialiseren van de cache, `AfterAccess` terwijl deze verantwoordelijk is voor het serialiseren van de cache.
+> MSAL.NET maakt token caches voor u en biedt u de `IToken` cache wanneer u een toepassing `UserTokenCache` en eigenschappen aanroept `AppTokenCache` . U moet de interface zelf niet zelf implementeren. Uw verantwoordelijkheid, wanneer u een aangepaste token cache-serialisatie implementeert, is:
+> - Reageren op `BeforeAccess` en `AfterAccess` "gebeurtenissen" (of hun async-smaak). De `BeforeAccess` gemachtigde is verantwoordelijk voor het deserialiseren van de cache, terwijl deze `AfterAccess` verantwoordelijk is voor het serialiseren van de cache.
 > - Onderdeel van deze gebeurtenissen Store of het laden van blobs, die door het gebeurtenis argument worden door gegeven aan de gewenste opslag.
 
 De strategieën verschillen, afhankelijk van of u een token cache-serialisatie schrijft voor een [open bare client toepassing](msal-client-applications.md) (Desktop) of een [vertrouwelijke client toepassing](msal-client-applications.md)) (Web-app/Web-API, daemon-app).
@@ -64,7 +63,7 @@ De token cache-serialisatie aanpassen om de status voor eenmalige aanmelding te 
 
 Hieronder ziet u een voor beeld van een Naïve-implementatie van aangepaste serialisatie van een token cache voor desktop toepassingen. Hier is de token cache van de gebruiker een bestand in dezelfde map als de toepassing.
 
-Nadat u de toepassing hebt gemaakt, schakelt u de serialisatie in door `TokenCacheHelper.EnableSerialization()` de methode aan te roepen `UserTokenCache`en de toepassing door te geven.
+Nadat u de toepassing hebt gemaakt, schakelt u de serialisatie in door de `TokenCacheHelper.EnableSerialization()` methode aan te roepen en de toepassing door te geven `UserTokenCache` .
 
 ```csharp
 app = PublicClientApplicationBuilder.Create(ClientId)
@@ -278,11 +277,11 @@ Bewaar in web apps of Web-Api's één token cache per account.  Voor web-apps mo
 De [micro soft. Identity. Web](https://github.com/AzureAD/microsoft-identity-web) -bibliotheek biedt een preview NuGet-pakket [micro soft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) met de token cache-serialisatie:
 
 
-| Extensie methode | Micro soft. Identity. Web-sub-naam ruimte | Beschrijving  |
+| Extensie methode | Micro soft. Identity. Web-sub-naam ruimte | Description  |
 | ---------------- | --------- | ------------ |
 | `AddInMemoryTokenCaches` | `TokenCacheProviders.InMemory` | In geheugen token cache-serialisatie. Deze implementatie is geweldig in voor beelden. Het is ook handig in productie toepassingen die u niet bedenkt als de token cache verloren gaat wanneer de web-app opnieuw wordt gestart. `AddInMemoryTokenCaches`neemt een optionele para meter van `MsalMemoryTokenCacheOptions` het type waarmee u de duur kunt opgeven waarna de cache vermelding verloopt, tenzij deze wordt gebruikt.
 | `AddSessionTokenCaches` | `TokenCacheProviders.Session` | De token cache is gebonden aan de gebruikers sessie. Deze optie is niet ideaal als het ID-token veel claims bevat omdat de cookie te groot wordt.
-| `AddDistributedTokenCaches` | `TokenCacheProviders.Distributed` | De token cache is een adapter die voldoet `IDistributedCache` aan de ASP.net core-implementatie, zodat u kunt kiezen tussen een gedistribueerde geheugen cache, een redis-cache, een gedistribueerde NCache of een SQL server cache. Zie https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cachevoor meer informatie `IDistributedCache` over de implementaties.
+| `AddDistributedTokenCaches` | `TokenCacheProviders.Distributed` | De token cache is een adapter die voldoet `IDistributedCache` aan de ASP.net core-implementatie, zodat u kunt kiezen tussen een gedistribueerde geheugen cache, een redis-cache, een gedistribueerde NCache of een SQL server cache. Zie voor meer informatie over de `IDistributedCache` implementaties https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache .
 
 Eenvoudige case met de cache in het geheugen:
 

@@ -6,10 +6,9 @@ author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
 ms.openlocfilehash: c287a2315f2b2319a6873ce84ee0e4e48bec8444
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82836747"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Toepassings wijzigings analyse (preview) gebruiken in Azure Monitor
@@ -79,7 +78,7 @@ Klik in een resource om alle wijzigingen weer te geven. Als dat nodig is, zoomt 
 
 ![Scherm afbeelding van wijzigings gegevens](./media/change-analysis/change-details.png)
 
-Gebruik de knop feedback verzenden in de Blade of het e-mail changeanalysisteam@microsoft.combericht voor elke feedback.
+Gebruik de knop feedback verzenden in de Blade of het e-mail bericht voor elke feedback changeanalysisteam@microsoft.com .
 
 ![Scherm afbeelding van de knop feedback op de Blade wijzigings analyse](./media/change-analysis/change-analysis-feedback.png)
 
@@ -109,7 +108,7 @@ Analyse van toepassings wijzigingen is een zelfstandige detectie in de web-app d
 
     ![Scherm opname van de gebruikers interface voor het inschakelen van een analyse](./media/change-analysis/change-analysis-on.png)
 
-5. Als u de wijzigings analyse wilt openen, selecteert u **diagnoses en problemen** > oplossen**Beschik baarheid en** > **crashes van toepassing**. U ziet een grafiek met een overzicht van het type wijzigingen in de loop van de tijd, samen met details over deze wijzigingen. Standaard worden wijzigingen in de afgelopen 24 uur weer gegeven om onmiddellijke problemen op te lossen.
+5. Als u de wijzigings analyse wilt openen, selecteert u **diagnoses en problemen oplossen**  >  **Beschik baarheid en**  >  **crashes van toepassing**. U ziet een grafiek met een overzicht van het type wijzigingen in de loop van de tijd, samen met details over deze wijzigingen. Standaard worden wijzigingen in de afgelopen 24 uur weer gegeven om onmiddellijke problemen op te lossen.
 
      ![Scherm opname van de weer gave diff wijzigen](./media/change-analysis/change-view.png)
 

@@ -6,10 +6,9 @@ ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
 ms.openlocfilehash: a614d6b5d0cf5c6c1df5ffcb90e56960d6b8a2a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82025030"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Implementeren op toegewezen hosts
@@ -37,8 +36,8 @@ De `sku` eigenschap kan een van de volgende waarden hebben:
 ## <a name="modify-your-json-deployment-template"></a>De JSON-implementatie sjabloon wijzigen
 
 Wijzig of Voeg in uw implementatie sjabloon de volgende eigenschappen toe:
-* Stel `resources` `apiVersion` onder in op `2019-12-01`.
-* Voeg onder de eigenschappen van de container groep `sku` een eigenschap met `Dedicated`waarde toe.
+* `resources`Stel onder in `apiVersion` op `2019-12-01` .
+* Voeg onder de eigenschappen van de container groep een `sku` eigenschap met waarde toe `Dedicated` .
 
 Hier volgt een voorbeeld fragment voor het gedeelte resources van een sjabloon voor container groep implementatie die gebruikmaakt van de toegewezen SKU:
 

@@ -1,5 +1,5 @@
 ---
-title: machine learning pijp lijnen door lopen en ontwikkelen
+title: Machine learning-pijplijnen doorlopen en ontwikkelen
 titleSuffix: Azure Machine Learning
 description: Patronen, procedures en tips voor snelle ontwikkeling
 services: machine-learning
@@ -10,13 +10,12 @@ ms.author: laobri
 author: lobrien
 ms.date: 05/01/2020
 ms.openlocfilehash: 2ea353469ed111eebb591aa6ba86c652683cc2f0
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82858195"
 ---
-# <a name="iterating-and-evolving-machine-learning-pipelines"></a>machine learning pijp lijnen door lopen en ontwikkelen
+# <a name="iterating-and-evolving-machine-learning-pipelines"></a>Machine learning-pijplijnen doorlopen en ontwikkelen
 
 Azure Machine Learning-pijp lijnen bieden een efficiënte manier om uw code te modularize, resultaten opnieuw te gebruiken en uw reken resources te optimaliseren. Hier volgen enkele praktische tips en procedures voor het werken met pijp lijnen.
 
@@ -30,7 +29,7 @@ Er zijn verschillende opties om aan de slag te gaan als uw pijp lijnen nieuw zij
 
 ## <a name="how-do-you-modularize-pipeline-code"></a>Hoe kunt u pijplijn code modularize? 
 
-Modules en de `ModuleStep` -klasse bieden u een goede kans om uw ml code te modularize. Het moet echter wel worden bewaard, maar het verplaatsen van de stappen van de pijp lijn is duurder dan een functie aanroep. De vraag is dat u niet zoveel te vragen hebt: zijn deze functies en gegevens conceptueel anders dan die in deze andere sectie? " maar ik wil dat deze functies en gegevens afzonderlijk worden ontwikkeld? " of ' is deze reken kracht duur en kan ik de uitvoer opnieuw gebruiken? ' Zie thisn'tebook voor meer informatie [over het maken van een module, ModuleVersion en gebruiken in een pijp lijn met ModuleStep](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-modulestep.ipynb).
+Modules en de- `ModuleStep` klasse bieden u een goede kans om uw ml code te modularize. Het moet echter wel worden bewaard, maar het verplaatsen van de stappen van de pijp lijn is duurder dan een functie aanroep. De vraag is dat u niet zoveel te vragen hebt: zijn deze functies en gegevens conceptueel anders dan die in deze andere sectie? " maar ik wil dat deze functies en gegevens afzonderlijk worden ontwikkeld? " of ' is deze reken kracht duur en kan ik de uitvoer opnieuw gebruiken? ' Zie thisn'tebook voor meer informatie [over het maken van een module, ModuleVersion en gebruiken in een pijp lijn met ModuleStep](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-modulestep.ipynb).
 
 Zoals eerder besproken, is het scheiden van de gegevens voorbereiding uit training vaak een van de mogelijkheden. Soms is de gegevens voorbereiding complex en tijdrovend genoeg om het proces in afzonderlijke pijplijn stappen te verstoren. Andere mogelijkheden zijn het testen en analyseren van post training. 
 
@@ -48,7 +47,7 @@ Als u snel wilt herhalen, kunt u uw pijp lijn klonen, een pijp lijn maken en de 
 
 Een afzonderlijke pijp lijn is een natuurlijke lijn voor het splitsen van de inspanningen. Meerdere ontwikkel aars of zelfs meerdere teams kunnen met verschillende stappen werken, zolang de gegevens en argumenten die tussen de stappen worden geplaatst, zijn overeengekomen. 
 
-Tijdens de actieve ontwikkeling kunt u resultaten `PipelineRun` ophalen `StepRun` en uitvoeren vanuit de werk ruimte, deze objecten gebruiken om de uiteindelijke en tussenliggende uitvoer te downloaden en deze artefacten te gebruiken voor uw eigen modulaire werk.
+Tijdens de actieve ontwikkeling kunt u `PipelineRun` resultaten ophalen en `StepRun` uitvoeren vanuit de werk ruimte, deze objecten gebruiken om de uiteindelijke en tussenliggende uitvoer te downloaden en deze artefacten te gebruiken voor uw eigen modulaire werk.
 
 ## <a name="use-pipelines-to-test-techniques-in-isolation"></a>Pijp lijnen gebruiken om technieken in isolatie te testen
 

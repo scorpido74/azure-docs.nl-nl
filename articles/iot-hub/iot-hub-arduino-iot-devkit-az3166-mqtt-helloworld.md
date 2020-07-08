@@ -11,10 +11,9 @@ ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
 ms.openlocfilehash: 600e64ef5bc3329f0116359066bdcdaf42c13e2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733493"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Berichten verzenden naar een MQTT-server
@@ -49,11 +48,11 @@ De aan de slag- [hand leiding](https://docs.microsoft.com/azure/iot-hub/iot-hub-
 Vouw de sectie **ARDUINO-voor beelden** aan de linkerkant uit, blader naar **voor beelden voor MXCHIP AZ3166 > MQTT**en selecteer **MQTTClient**. Er wordt een nieuw versus code venster geopend met daarin een projectmap.
 
 > [!NOTE]
-> U kunt ook een voor beeld openen vanuit het opdracht palet. Gebruik `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) om het opdracht palet te openen, typ **Arduino**en zoek en selecteer vervolgens **Arduino: voor beelden**.
+> U kunt ook een voor beeld openen vanuit het opdracht palet. Gebruik `Ctrl+Shift+P` (macOS: `Cmd+Shift+P` ) om het opdracht palet te openen, typ **Arduino**en zoek en selecteer vervolgens **Arduino: voor beelden**.
 
 ## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>Bouw en upload de Arduino-schets naar de DevKit
 
-Typ `Ctrl+P` (macOS: `Cmd+P`) om uit `task device-upload`te voeren. Nadat het uploaden is voltooid, wordt de DevKit opnieuw gestart en uitgevoerd.
+Typ `Ctrl+P` (macOS: `Cmd+P` ) om uit te voeren `task device-upload` . Nadat het uploaden is voltooid, wordt de DevKit opnieuw gestart en uitgevoerd.
 
 ![apparaat uploaden](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
 
@@ -64,11 +63,11 @@ Typ `Ctrl+P` (macOS: `Cmd+P`) om uit `task device-upload`te voeren. Nadat het up
 
 In VS code kunt u deze procedure volgen om de seriële monitor te openen en in te stellen:
 
-1. Klik op `COM[X]` het woord op de status balk om de juiste COM-poort `STMicroelectronics`in ![te stellen met: set-COM-Port](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
+1. Klik op het `COM[X]` woord op de status balk om de juiste COM-poort in te stellen met `STMicroelectronics` : ![ set-COM-Port](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
 
-2. Klik op het pictogram netstroom op de status balk om de seriële monitor te ![openen: seriële monitor](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
+2. Klik op het pictogram netstroom op de status balk om de seriële monitor te openen: ![ seriële monitor](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
   
-3. Klik op de status balk op het nummer dat de baud-rate vertegenwoordigt en stel deze `115200`in ![op: set-baud-rate](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
+3. Klik op de status balk op het nummer dat de baud-rate vertegenwoordigt en stel deze in op `115200` : ![ set-baud-rate](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
 
 In de seriële monitor worden alle berichten weer gegeven die door de voorbeeld schets worden verzonden. De schets verbindt de DevKit met Wi-Fi. Zodra de Wi-Fi-verbinding is gelukt, verzendt de schets een bericht naar de MQTT-Broker. Daarna verzendt het voor beeld herhaaldelijk twee "iot.eclipse.org"-berichten die respectievelijk gebruikmaken van QoS 0 en QoS 1.
 
@@ -81,7 +80,7 @@ Als u problemen ondervindt, raadpleegt u de [Veelgestelde vragen over IOT DevKit
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Een verbinding maken tussen IoT DevKit AZ3166 en Azure IoT Hub in de Cloud](iot-hub-arduino-iot-devkit-az3166-get-started.md)
 * [Schud, schud voor een Tweet](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)

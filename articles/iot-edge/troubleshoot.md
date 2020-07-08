@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 9b6265bed138960a3839091ed1593413fc85710a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82858593"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>Problemen met uw IoT Edge apparaat oplossen
@@ -21,7 +20,7 @@ Als u problemen ondervindt met het uitvoeren van Azure IoT Edge in uw omgeving, 
 
 ## <a name="run-the-check-command"></a>Voer de opdracht ' check ' uit
 
-De eerste stap bij het oplossen van problemen met IoT Edge moet `check` de opdracht gebruiken, waarmee een verzameling configuratie-en connectiviteits tests voor veelvoorkomende problemen wordt uitgevoerd. De `check` opdracht is beschikbaar in [Release 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) en hoger.
+De eerste stap bij het oplossen van problemen met IoT Edge moet de `check` opdracht gebruiken, waarmee een verzameling configuratie-en connectiviteits tests voor veelvoorkomende problemen wordt uitgevoerd. De `check` opdracht is beschikbaar in [Release 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) en hoger.
 
 >[!NOTE]
 >Het hulp programma voor probleem oplossing kan geen connectiviteit controles uitvoeren als de IoT Edge apparaat zich achter een proxy server bevindt.
@@ -50,9 +49,9 @@ Zie [IOT Edge problemen met controles oplossen](https://github.com/Azure/iotedge
 
 ## <a name="gather-debug-information-with-support-bundle-command"></a>Informatie over fout opsporing verzamelen met de opdracht ' ondersteunings bundel '
 
-Wanneer u logboeken van een IoT Edge apparaat wilt verzamelen, kunt u de `support-bundle` opdracht het beste gebruiken. Met deze opdracht worden standaard module, IoT Edge Security Manager en logboeken van de container `iotedge check` -engine, JSON-uitvoer en andere nuttige informatie over fout opsporing verzameld. Ze worden gecomprimeerd tot één bestand, zodat het eenvoudig kan worden gedeeld. De `support-bundle` opdracht is beschikbaar in [Release 1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) en hoger.
+Wanneer u logboeken van een IoT Edge apparaat wilt verzamelen, kunt u de opdracht het beste gebruiken `support-bundle` . Met deze opdracht worden standaard module, IoT Edge Security Manager en logboeken van de container-engine, `iotedge check` JSON-uitvoer en andere nuttige informatie over fout opsporing verzameld. Ze worden gecomprimeerd tot één bestand, zodat het eenvoudig kan worden gedeeld. De `support-bundle` opdracht is beschikbaar in [Release 1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) en hoger.
 
-Voer de `support-bundle` opdracht uit met `--since` de vlag om op te geven hoelang van het verleden u logboeken wilt ophalen. U krijgt `6h` bijvoorbeeld Logboeken sinds de laatste zes uur, `6d` sinds de laatste zes dagen sinds `6m` de laatste zes minuten, enzovoort. Neem de `--help` vlag op om een volledige lijst met opties weer te geven.
+Voer de `support-bundle` opdracht uit met de `--since` vlag om op te geven hoelang van het verleden u logboeken wilt ophalen. U `6h` krijgt bijvoorbeeld Logboeken sinds de laatste zes uur, sinds de laatste zes `6d` dagen `6m` sinds de laatste zes minuten, enzovoort. Neem de `--help` vlag op om een volledige lijst met opties weer te geven.
 
 Op Linux:
 
@@ -67,11 +66,11 @@ iotedge support-bundle --since 6h
 ```
 
 > [!WARNING]
-> De uitvoer van `support-bundle` de opdracht kan de namen van host, apparaat en module bevatten, informatie die is vastgelegd door uw modules, enzovoort. Houd rekening met het volgende als u de uitvoer in een openbaar forum deelt.
+> De uitvoer van de `support-bundle` opdracht kan de namen van host, apparaat en module bevatten, informatie die is vastgelegd door uw modules, enzovoort. Houd rekening met het volgende als u de uitvoer in een openbaar forum deelt.
 
 ## <a name="check-your-iot-edge-version"></a>Controleer uw IoT Edge versie
 
-Als u een oudere versie van IoT Edge hebt, kunt u het probleem mogelijk oplossen door een upgrade uit te voeren. Het `iotedge check` hulp programma controleert of de IOT Edge Security daemon de meest recente versie is, maar controleert niet de versies van de modules IOT Edge hub en agent. Als u de versie van de runtime modules op uw apparaat wilt controleren, gebruikt `iotedge logs edgeAgent` u `iotedge logs edgeHub`de opdrachten en. Het versie nummer wordt in de logboeken gedeclareerd wanneer de module wordt gestart.
+Als u een oudere versie van IoT Edge hebt, kunt u het probleem mogelijk oplossen door een upgrade uit te voeren. Het `iotedge check` hulp programma controleert of de IOT Edge Security daemon de meest recente versie is, maar controleert niet de versies van de modules IOT Edge hub en agent. Als u de versie van de runtime modules op uw apparaat wilt controleren, gebruikt u de opdrachten `iotedge logs edgeAgent` en `iotedge logs edgeHub` . Het versie nummer wordt in de logboeken gedeclareerd wanneer de module wordt gestart.
 
 Zie [IOT Edge Security daemon en runtime bijwerken](how-to-update-iot-edge.md)voor instructies voor het bijwerken van uw apparaat.
 
@@ -195,7 +194,7 @@ iotedge logs <container name>
 
 ## <a name="view-the-messages-going-through-the-iot-edge-hub"></a>De berichten weer geven die via de IoT Edge hub worden verzonden
 
-U kunt de berichten van de IoT Edge hub bekijken en inzichten verzamelen uit uitgebreide logboeken van de runtime-containers. Als u uitgebreide logboeken op deze containers wilt inschakelen, `RuntimeLogLevel` stelt u in het configuratie bestand van uw yaml in. Het bestand openen:
+U kunt de berichten van de IoT Edge hub bekijken en inzichten verzamelen uit uitgebreide logboeken van de runtime-containers. Als u uitgebreide logboeken op deze containers wilt inschakelen, stelt u `RuntimeLogLevel` in het configuratie bestand van uw yaml in. Het bestand openen:
 
 Op Linux:
 
@@ -255,7 +254,7 @@ Zie [een communicatie protocol kiezen](../iot-hub/iot-hub-devguide-protocols.md)
 
 Hoewel IoT Edge een verbeterde configuratie biedt voor het beveiligen van Azure IoT Edge runtime en geïmplementeerde modules, is het nog steeds afhankelijk van de onderliggende computer-en netwerk configuratie. Daarom is het van cruciaal belang om ervoor te zorgen dat de juiste netwerk-en firewall regels worden ingesteld voor beveiligde Edge-to-Cloud communicatie. De volgende tabel kan worden gebruikt als richt lijn bij de configuratie van firewall regels voor de onderliggende servers waarop Azure IoT Edge runtime wordt gehost:
 
-|Protocol|Poort|Binnenkomende|Verzendt|Richtlijnen|
+|Protocol|Poort|Binnenkomende|Verzendt|Hulp|
 |--|--|--|--|--|
 |MQTT|8883|GEBLOKKEERD (standaard)|GEBLOKKEERD (standaard)|<ul> <li>Configureer uitgaand (uitgaand) dat moet worden geopend wanneer MQTT wordt gebruikt als communicatie protocol.<li>1883 voor MQTT wordt niet ondersteund door IoT Edge. <li>Binnenkomende (binnenkomende) verbindingen moeten worden geblokkeerd.</ul>|
 |AMQP|5671|GEBLOKKEERD (standaard)|OPEN (standaard)|<ul> <li>Het standaard communicatie protocol voor IoT Edge. <li> Moet worden geconfigureerd om te worden geopend als Azure IoT Edge niet is geconfigureerd voor andere ondersteunde protocollen of als AMQP het gewenste communicatie protocol is.<li>5672 voor AMQP wordt niet ondersteund door IoT Edge.<li>Deze poort blok keren wanneer Azure IoT Edge gebruikmaakt van een ander IoT Hub ondersteund protocol.<li>Binnenkomende (binnenkomende) verbindingen moeten worden geblokkeerd.</ul></ul>|

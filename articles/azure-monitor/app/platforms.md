@@ -5,18 +5,17 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.reviewer: olegan
 ms.openlocfilehash: 153d4ad3d95c182dcc4f2aa3bad857d7e1984cc2
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82891114"
 ---
 # <a name="supported-languages"></a>Ondersteunde talen
 
 * [C#|VB (.NET)](../../azure-monitor/app/asp-net.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
-* [Javascript](../../azure-monitor/app/javascript.md)
-* [Node. JS](../../azure-monitor/app/nodejs.md)
+* [JavaScript](../../azure-monitor/app/javascript.md)
+* [Node.JS](../../azure-monitor/app/nodejs.md)
 * [Python](../../azure-monitor/app/opencensus-python.md)
 
 ## <a name="supported-platforms-and-frameworks"></a>Ondersteunde platforms en frameworks
@@ -33,7 +32,7 @@ ms.locfileid: "82891114"
 * [Android](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Java EE](../../azure-monitor/app/java-get-started.md)
-* [Node. JS](https://www.npmjs.com/package/applicationinsights)
+* [Node.JS](https://www.npmjs.com/package/applicationinsights)
 * [Python](../../azure-monitor/app/opencensus-python.md)
 * [Universele Windows-app](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Windows-bureaubladtoepassingen, -services en -werkrollen](../../azure-monitor/app/windows-desktop.md)

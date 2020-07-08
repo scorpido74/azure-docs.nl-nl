@@ -11,10 +11,9 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: 5d047aa3c5c937e3b84b8fa672101bc801221067
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82871362"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Wijzigen hoe een opslag account wordt gerepliceerd
@@ -192,7 +191,7 @@ Als u uw opslag account migreert van GRS naar LRS, zijn er geen extra kosten, ma
 > [!IMPORTANT]
 > Als u uw opslag account migreert van RA-GRS naar GRS of LRS, wordt dat account gefactureerd als RA-GRS voor een extra periode van 30 dagen na de datum waarop deze is geconverteerd.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [Azure Storage redundantie](storage-redundancy.md)
 - [De eigenschap van de laatste synchronisatie tijd voor een opslag account controleren](last-sync-time-get.md)

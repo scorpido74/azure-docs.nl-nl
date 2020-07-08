@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: a2fe7daf1476f19f6a6eea83174342fa1273fe14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81867966"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Snelstartgids-een Privécloud configureren
@@ -58,7 +57,7 @@ Persoonlijke Clouds worden beheerd via de CloudSimple-Portal. Ze hebben hun eige
 
 11. Klik op **volgende: controleren en maken**.
 12. Controleer de instellingen. Als u instellingen wilt wijzigen, klikt u op **vorige**.
-13. Klik op **maken**.
+13. Klik op **Create**.
 
 Het inrichtings proces voor de privécloud wordt gestart.  Het kan tot twee uur duren voordat de Privécloud is ingericht.
 
@@ -114,7 +113,7 @@ VPN-client is nodig om vanaf uw computer verbinding te maken met CloudSimple.  D
 1. Start de CloudSimple-Portal en selecteer **netwerk**.
 2. Selecteer **VPN gateway**.
 3. Klik in de lijst met VPN-gateways op de punt-naar-site-VPN-gateway.
-4. Selecteer **Gebruikers**.
+4. Selecteer **gebruikers**.
 5. Klik op **mijn VPN-configuratie downloaden**.
 
     ![VPN-configuratie downloaden](media/download-p2s-vpn-configuration.png)
@@ -140,7 +139,7 @@ Nadat u een Privécloud hebt gemaakt, maakt u een VLAN waar u uw werk belasting/
 5. Selecteer een VLAN-ID in de lijst.  
 6. Voer de naam van een subnet in om het subnet te identificeren.
 7. Geef het CIDR-bereik en-masker van het subnet op.  Dit bereik mag niet overlappen met bestaande subnetten.
-8. Klik op **verzenden**.
+8. Klik op **Submit**
 
     ![Details van VLAN/subnet maken](media/create-new-vlan-subnet-details.png)
 

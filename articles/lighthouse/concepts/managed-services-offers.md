@@ -4,10 +4,9 @@ description: Met beheerde services kunnen service providers resource beheer aanb
 ms.date: 05/04/2020
 ms.topic: conceptual
 ms.openlocfilehash: 975c9ab98229626a513404b2092b266a9e284279
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792289"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Aanbiedingen voor beheerde service in Azure Marketplace

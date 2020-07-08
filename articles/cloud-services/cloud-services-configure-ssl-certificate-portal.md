@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
 ms.openlocfilehash: c69b74cf91d8e097f8ad8a9ba2a16f3375f483ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82024843"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>TLS configureren voor een toepassing in azure
@@ -34,7 +33,7 @@ Het certificaat moet voldoen aan de volgende vereisten voor TLS/SSL-certificaten
 
 * Het certificaat moet een open bare sleutel bevatten.
 * Het certificaat moet worden gemaakt voor sleutel uitwisseling, exporteerbaar naar een pfx-bestand (Personal Information Exchange).
-* De onderwerpnaam van het certificaat moet overeenkomen met het domein dat wordt gebruikt voor toegang tot de Cloud service. U kunt geen TLS/SSL-certificaat verkrijgen van een certificerings instantie (CA) voor het cloudapp.net-domein. U moet een aangepaste domein naam verkrijgen die u kunt gebruiken om toegang te krijgen tot uw service. Wanneer u een certificaat van een certificerings instantie aanvraagt, moet de onderwerpnaam van het certificaat overeenkomen met de aangepaste domein naam die wordt gebruikt voor toegang tot uw toepassing. Als uw aangepaste domein naam bijvoorbeeld **contoso.com** is, vraagt u een certificaat aan bij uw CA voor ***. contoso.com** of **www\.contoso.com**.
+* De onderwerpnaam van het certificaat moet overeenkomen met het domein dat wordt gebruikt voor toegang tot de Cloud service. U kunt geen TLS/SSL-certificaat verkrijgen van een certificerings instantie (CA) voor het cloudapp.net-domein. U moet een aangepaste domein naam verkrijgen die u kunt gebruiken om toegang te krijgen tot uw service. Wanneer u een certificaat van een certificerings instantie aanvraagt, moet de onderwerpnaam van het certificaat overeenkomen met de aangepaste domein naam die wordt gebruikt voor toegang tot uw toepassing. Als uw aangepaste domein naam bijvoorbeeld **contoso.com** is, vraagt u een certificaat aan bij uw CA voor ***. contoso.com** of **www \. contoso.com**.
 * Het certificaat moet mini maal 2048 bits versleuteling gebruiken.
 
 Voor test doeleinden kunt u een zelfondertekend certificaat [maken](cloud-services-certs-create.md) en gebruiken. Een zelfondertekend certificaat wordt niet geverifieerd via een certificerings instantie en kan het domein cloudapp.net als de URL van de website gebruiken. De volgende taak maakt bijvoorbeeld gebruik van een zelfondertekend certificaat waarin de algemene naam (CN) die in het certificaat wordt gebruikt, **sslexample.cloudapp.net**is.
@@ -74,9 +73,9 @@ Uw toepassing moet worden geconfigureerd voor het gebruik van het certificaat en
 
    De sectie **certificaten** definieert de naam van het certificaat, de locatie en de naam van het archief waar het zich bevindt.
 
-   Permissions`permissionLevel` (Attribute) kunnen worden ingesteld op een van de volgende waarden:
+   Permissions ( `permissionLevel` Attribute) kunnen worden ingesteld op een van de volgende waarden:
 
-   | Machtigings waarde | Beschrijving |
+   | Machtigings waarde | Description |
    | --- | --- |
    | limitedOrElevated |**(Standaard)** Alle rollen processen hebben toegang tot de persoonlijke sleutel. |
    | verhoogde |Alleen verhoogde processen hebben toegang tot de persoonlijke sleutel. |
@@ -139,7 +138,7 @@ Verbinding maken met de Azure Portal en...
 
     ![Uw Cloud service publiceren](media/cloud-services-configure-ssl-certificate-portal/browse.png)
 
-2. Klik op **certificaten**.
+2. Klik op **Certificaten**.
 
     ![Klik op het pictogram certificaten](media/cloud-services-configure-ssl-certificate-portal/certificate-item.png)
 

@@ -4,10 +4,9 @@ description: Meer informatie over het werken met uw blauw drukken-definities als
 ms.date: 05/06/2020
 ms.topic: how-to
 ms.openlocfilehash: 7cc6bc241dc6b7b4baa669e64a0d5e43641a55b8
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82864042"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Blauw druk-definities importeren en exporteren met Power shell
@@ -38,9 +37,9 @@ Als deze nog niet is geïnstalleerd, volgt u de instructies in [add de module AZ
 Voordat u de blauw drukken gaat bekijken en importeren, bekijken we hoe de bestanden waaruit de definitie van de blauw druk bestaat, zijn gestructureerd. Een definitie van een blauw druk moet worden opgeslagen in een eigen map.
 
 > [!IMPORTANT]
-> Als er geen waarde wordt door gegeven **Name** aan de para meter `Import-AzBlueprintWithArtifact` name van de cmdlet, wordt de naam van de map waarvan de definitie van de blauw druk is opgeslagen, gebruikt.
+> Als er geen waarde wordt door gegeven aan de para meter **name** van de `Import-AzBlueprintWithArtifact` cmdlet, wordt de naam van de map waarvan de definitie van de blauw druk is opgeslagen, gebruikt.
 
-Samen met de definitie van de blauw druk, die `blueprint.json`moet worden benoemd, zijn de artefacten waarvan de definitie van de blauw druk is samengesteld. Elk artefact moet zich in de submap met de `artifacts`naam bevindt.
+Samen met de definitie van de blauw druk, die moet worden benoemd `blueprint.json` , zijn de artefacten waarvan de definitie van de blauw druk is samengesteld. Elk artefact moet zich in de submap met de naam bevindt `artifacts` .
 Samen, de structuur van uw blauw druk-definitie als JSON-bestanden in mappen moet er als volgt uitzien:
 
 ```text
@@ -69,7 +68,7 @@ De stappen voor het exporteren van de definitie van de blauw druk zijn eenvoudig
 - **Versie** (optioneel)
   - Hiermee geeft u de versie op die moet worden uitgevoerd als het referentie object **blauw** drukken verwijzingen naar meer dan één versie bevat.
 
-1. Een verwijzing naar de definitie van de blauw druk ophalen om uit het abonnement `{subId}`te exporteren, weer gegeven als:
+1. Een verwijzing naar de definitie van de blauw druk ophalen om uit het abonnement te exporteren, weer gegeven als `{subId}` :
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell

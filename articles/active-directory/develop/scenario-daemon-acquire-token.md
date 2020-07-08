@@ -12,19 +12,18 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: d755573b53eb63d85165fb73fe4b97298dbeff09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81868999"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Daemon-app die web-Api's aanroept-een Token ophalen
 
-Nadat u een vertrouwelijke client toepassing hebt gemaakt, kunt u een token voor de app verkrijgen door het `AcquireTokenForClient`bereik aan te roepen, door te geven en eventueel een vernieuwing van het token te forceren.
+Nadat u een vertrouwelijke client toepassing hebt gemaakt, kunt u een token voor de app verkrijgen door `AcquireTokenForClient` het bereik aan te roepen, door te geven en eventueel een vernieuwing van het token te forceren.
 
 ## <a name="scopes-to-request"></a>Te aanvragen scopes
 
-Het bereik dat moet worden aangevraagd voor een client referentie stroom is de naam van de resource `/.default`gevolgd door. Deze notatie vertelt Azure Active Directory (Azure AD) voor het gebruik van de *machtigingen op toepassings niveau* die statisch zijn gedeclareerd tijdens de registratie van de toepassing. Daarnaast moeten deze API-machtigingen worden verleend door een Tenant beheerder.
+Het bereik dat moet worden aangevraagd voor een client referentie stroom is de naam van de resource gevolgd door `/.default` . Deze notatie vertelt Azure Active Directory (Azure AD) voor het gebruik van de *machtigingen op toepassings niveau* die statisch zijn gedeclareerd tijdens de registratie van de toepassing. Daarnaast moeten deze API-machtigingen worden verleend door een Tenant beheerder.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -53,15 +52,15 @@ final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default"
 
 ### <a name="azure-ad-v10-resources"></a>Azure AD (v 1.0)-resources
 
-Het bereik dat wordt gebruikt voor client referenties moet altijd de resource-ID `/.default`zijn, gevolgd door.
+Het bereik dat wordt gebruikt voor client referenties moet altijd de resource-ID zijn, gevolgd door `/.default` .
 
 > [!IMPORTANT]
 > Wanneer MSAL een toegangs token aanvraagt voor een resource die een versie 1,0-toegangs token accepteert, parseert Azure AD de gewenste doel groep uit het aangevraagde bereik door alles vóór de laatste slash te nemen en deze als resource-id te gebruiken.
-> Als, als Azure SQL Database (**https:\//database.Windows.net**), de resource verwacht dat een doel groep eindigt met een slash (voor Azure SQL database `https://database.windows.net/`), moet u een bereik van `https://database.windows.net//.default`aanvragen. (Let op de dubbele slash.) Zie ook MSAL.NET issue [#747: de afsluitende slash van de resource-URL wordt wegge laten, wat een SQL-verificatie fout heeft veroorzaakt](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
+> Als, als Azure SQL Database (**https: \/ /database.Windows.net**), de resource verwacht dat een doel groep eindigt met een slash (voor Azure SQL database `https://database.windows.net/` ), moet u een bereik van aanvragen `https://database.windows.net//.default` . (Let op de dubbele slash.) Zie ook MSAL.NET issue [#747: de afsluitende slash van de resource-URL wordt wegge laten, wat een SQL-verificatie fout heeft veroorzaakt](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient-API
 
-Voor het verkrijgen van een token voor de app gebruikt `AcquireTokenForClient` u of het equivalent ervan, afhankelijk van het platform.
+Voor het verkrijgen van een token voor de app gebruikt u `AcquireTokenForClient` of het equivalent ervan, afhankelijk van het platform.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -202,13 +201,13 @@ Zie de documentatie over het [micro soft-identiteits platform en de OAuth 2,0-cl
 
 ## <a name="application-token-cache"></a>Toepassings token cache
 
-In MSAL.NET `AcquireTokenForClient` wordt de toepassings token cache gebruikt. (Alle andere AcquireToken*xx* -methoden gebruiken de token cache van de gebruiker.) Roep `AcquireTokenSilent` niet aan voordat u `AcquireTokenForClient`belt, `AcquireTokenSilent` omdat de cache van de *gebruikers* token wordt gebruikt. `AcquireTokenForClient`Hiermee wordt de cache van het *toepassings* token zelf gecontroleerd en bijgewerkt.
+In MSAL.NET `AcquireTokenForClient` wordt de toepassings token cache gebruikt. (Alle andere AcquireToken*xx* -methoden gebruiken de token cache van de gebruiker.) Roep niet `AcquireTokenSilent` aan voordat u belt `AcquireTokenForClient` , omdat `AcquireTokenSilent` de cache van de *gebruikers* token wordt gebruikt. `AcquireTokenForClient`Hiermee wordt de cache van het *toepassings* token zelf gecontroleerd en bijgewerkt.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
 ### <a name="did-you-use-the-resourcedefault-scope"></a>Hebt u het resource/.-standaard bereik gebruikt?
 
-Als er een fout bericht wordt weer gegeven met de melding dat u een ongeldig bereik hebt gebruikt, hebt `resource/.default` u waarschijnlijk geen gebruik gemaakt van het bereik.
+Als er een fout bericht wordt weer gegeven met de melding dat u een ongeldig bereik hebt gebruikt, hebt u waarschijnlijk geen gebruik gemaakt van het `resource/.default` bereik.
 
 ### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>Bent u verg eten om beheerders toestemming te geven? Daemon-apps zijn vereist!
 

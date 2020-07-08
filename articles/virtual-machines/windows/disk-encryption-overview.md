@@ -9,10 +9,9 @@ ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
 ms.openlocfilehash: 5648dc1a915f2d38dc7811e6fe23ec76d0aa6f23
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857275"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Azure Disk Encryption voor Windows-Vm's 
@@ -52,7 +51,7 @@ Azure Disk Encryption is niet beschikbaar op virtuele machines van de [2e genera
 
 ## <a name="networking-requirements"></a>Netwerk vereisten
 Om Azure Disk Encryption in te scha kelen, moeten de virtuele machines voldoen aan de volgende vereisten voor netwerk eindpunt configuratie:
-  - Om een token te krijgen om verbinding te maken met uw sleutel kluis, moet de Windows-VM verbinding kunnen maken met een \[Azure Active Directory\]-eind punt, login.microsoftonline.com.
+  - Om een token te krijgen om verbinding te maken met uw sleutel kluis, moet de Windows-VM verbinding kunnen maken met een Azure Active Directory-eind punt, \[ login.microsoftonline.com \] .
   - Voor het schrijven van de versleutelings sleutels naar uw sleutel kluis moet de Windows-VM verbinding kunnen maken met het eind punt van de sleutel kluis.
   - De Windows-VM moet verbinding kunnen maken met een Azure Storage-eind punt dat als host fungeert voor de Azure extension-opslag plaats en een Azure-opslag account dat als host fungeert voor de VHD-bestanden.
   -  Als uw beveiligings beleid de toegang tot het Internet beperkt met Azure-Vm's, kunt u de voor gaande URI omzetten en een specifieke regel configureren om uitgaande connectiviteit met de IP-adressen toe te staan. Zie [Azure Key Vault achter een firewall](../../key-vault/general/access-behind-firewall.md)voor meer informatie.    
@@ -62,7 +61,7 @@ Om Azure Disk Encryption in te scha kelen, moeten de virtuele machines voldoen a
 
 Azure Disk Encryption gebruikt de externe BitLocker-sleutel beveiliging voor Windows-Vm's. Voor virtuele machines die zijn toegevoegd aan een domein, moet u geen groeps beleid pushen waarmee TPM-beveiligingen worden afgedwongen. Zie [referentie voor BitLocker-Groepsbeleid](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)voor informatie over het groeps beleid voor het toestaan van BitLocker zonder compatibele TPM.
 
-Het BitLocker-beleid voor virtuele machines die lid zijn van een domein met aangepast groeps beleid moet de volgende instelling hebben: [gebruikers opslag configureren voor BitLocker-herstel gegevens-> herstel sleutel van 256-bits toestaan](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption mislukt wanneer aangepaste groeps beleids instellingen voor BitLocker incompatibel zijn. Op computers die niet over de juiste beleids instelling beschikken, past u het nieuwe beleid toe, dwingt u het nieuwe beleid af om bij te werken (GPUpdate. exe/Force), en vervolgens moet u de computer mogelijk opnieuw opstarten.
+Het BitLocker-beleid voor virtuele machines die lid zijn van een domein met aangepast groeps beleid moet de volgende instelling hebben: [gebruikers opslag configureren voor BitLocker-herstel gegevens-> herstel sleutel van 256-bits toestaan](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption mislukt wanneer aangepaste groeps beleids instellingen voor BitLocker incompatibel zijn. Op computers die niet over de juiste beleids instelling beschikken, past u het nieuwe beleid toe, dwingt u het nieuwe beleid af om bij te werken (gpupdate.exe/Force) en moet u de computer mogelijk opnieuw opstarten.
 
 Azure Disk Encryption mislukt als groeps beleid op domein niveau het AES-CBC-algoritme blokkeert dat door BitLocker wordt gebruikt.
 

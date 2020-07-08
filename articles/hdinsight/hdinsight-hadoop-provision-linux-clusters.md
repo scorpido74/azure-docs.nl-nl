@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 04/30/2020
 ms.openlocfilehash: 4eaa9c4e3d200eedd57c468639c1af3830911d1d
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82889260"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Clusters in HDInsight instellen met Apache Hadoop, Apache Spark, Apache Kafka en meer
@@ -34,7 +33,7 @@ In de volgende tabel ziet u de verschillende methoden die u kunt gebruiken om ee
 
 | Clusters die zijn gemaakt met | Webbrowser | Opdrachtregel | REST-API | SDK |
 | --- |:---:|:---:|:---:|:---:|
-| [Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
+| [Azure-portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
 | [Azure-CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
@@ -47,7 +46,7 @@ Dit artikel begeleidt u bij het instellen van de [Azure Portal](https://portal.a
 
 ![opties voor hdinsight maken aangepaste snelle](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png)
 
-### <a name="project-details"></a>Project Details
+### <a name="project-details"></a>Projectgegevens
 
 [Azure Resource Manager](../azure-resource-manager/management/overview.md) helpt u bij het werken met de resources in uw toepassing als een groep, een Azure- [resource groep](../azure-resource-manager/management/overview.md#resource-groups)genoemd. U kunt in één gecoördineerde bewerking alle resources voor uw toepassing implementeren, bijwerken, bewaken of verwijderen.
 
@@ -98,13 +97,13 @@ Met HDInsight-clusters kunt u twee gebruikers accounts configureren tijdens het 
 De HTTP-gebruikers naam heeft de volgende beperkingen:
 
 * Toegestane speciale tekens: `_` en`@`
-* Tekens zijn niet toegestaan: #;. "'\/,: '! *? $ ({}) [] <>|&--= +% ~ ^ ruimte
+* Tekens zijn niet toegestaan: #;. "', \/ : '! *? $ () {} [] <>|&--= +% ~ ^ ruimte
 * Maximale lengte: 20
 
 De SSH-gebruikers naam heeft de volgende beperkingen:
 
-* Toegestane speciale tekens:`_` en`@`
-* Tekens zijn niet toegestaan: #;. "'\/,: '! *? $ ({}) [] <>|&--= +% ~ ^ ruimte
+* Toegestane speciale tekens: `_` en`@`
+* Tekens zijn niet toegestaan: #;. "', \/ : '! *? $ () {} [] <>|&--= +% ~ ^ ruimte
 * Maximale lengte: 64
 * Gereserveerde namen: Hadoop, users, oozie, Hive, mapred, ambari-QA, Zookeeper, TEZ, hdfs, sqoop, garens, hcat, AMS, hbase, Storm, Administrator, admin, User, gebruiker1, test,, test1, user3, admin1, 1, 123, a, actuser, adm, Admin2, ASPNET, backup, console, David, gast, John, owner, root, Server, SQL, ondersteuning, support_388945a0, sys, Test2, Test3, user4, user5, Spark
 
@@ -266,21 +265,21 @@ Sommige systeem eigen Java-onderdelen, zoals Apache mahout en trapsgewijs, kunne
 
 Soms wilt u tijdens het aanmaak proces de volgende configuratie bestanden configureren:
 
-* clusterIdentity. XML
-* bestand core-site. XML
-* gateway. XML
-* hbase-env. XML
-* hbase-site. XML
-* hdfs-site. XML
-* Hive-env. XML
-* Hive-site. XML
+* clusterIdentity.xml
+* core-site.xml
+* gateway.xml
+* hbase-env.xml
+* hbase-site.xml
+* hdfs-site.xml
+* hive-env.xml
+* hive-site.xml
 * mapred-site
-* oozie-site. XML
-* oozie-env. XML
-* Storm-site. XML
-* TEZ-site. XML
-* webhcat-site. XML
-* yarn-site. XML
+* oozie-site.xml
+* oozie-env.xml
+* storm-site.xml
+* tez-site.xml
+* webhcat-site.xml
+* yarn-site.xml
 
 Zie [HDInsight-clusters aanpassen met Boots trap](hdinsight-hadoop-customize-cluster-bootstrap.md)voor meer informatie.
 

@@ -11,15 +11,14 @@ ms.workload: infrastructure-services
 ms.date: 03/10/2020
 ms.author: sharadag
 ms.openlocfilehash: 6d8a6d6f0b05b9b7fd0144959c82b6a2c9e659a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81768315"
 ---
 # <a name="wildcard-domains"></a>Joker tekens domeinen
 
-Met uitzonde ring van Apex-domeinen en subdomeinen kunt u een domein naam voor joker tekens toewijzen aan de lijst met front-end-hosts of aangepaste domeinen in uw Azure front-deur profiel. Het gebruik van joker tekens in uw Azure front-deur configuratie vereenvoudigt het routeren van verkeer voor meerdere subdomeinen voor een API, toepassing of website uit dezelfde routerings regel. U hoeft de configuratie niet te wijzigen om elk subdomein afzonderlijk toe te voegen of op te geven. U kunt bijvoorbeeld het bewerkings plan voor, `customer1.contoso.com` `customer2.contoso.com`en `customerN.contoso.com` opgeven met behulp van dezelfde routerings regel om het domein `*.contoso.com`met het Joker teken toe te voegen.
+Met uitzonde ring van Apex-domeinen en subdomeinen kunt u een domein naam voor joker tekens toewijzen aan de lijst met front-end-hosts of aangepaste domeinen in uw Azure front-deur profiel. Het gebruik van joker tekens in uw Azure front-deur configuratie vereenvoudigt het routeren van verkeer voor meerdere subdomeinen voor een API, toepassing of website uit dezelfde routerings regel. U hoeft de configuratie niet te wijzigen om elk subdomein afzonderlijk toe te voegen of op te geven. U kunt bijvoorbeeld het bewerkings plan voor `customer1.contoso.com` , en opgeven met `customer2.contoso.com` `customerN.contoso.com` behulp van dezelfde routerings regel om het domein met het Joker teken toe te voegen `*.contoso.com` .
 
 De belangrijkste scenario's die zijn verbeterd met ondersteuning voor joker tekens zijn onder andere:
 
@@ -31,7 +30,7 @@ De belangrijkste scenario's die zijn verbeterd met ondersteuning voor joker teke
 
 ## <a name="adding-wildcard-domains"></a>Joker tekens toevoegen aan domeinen
 
-U kunt een Joker teken domein toevoegen onder de sectie voor front-end-hosts of-domeinen. Net als bij subdomeinen valideert Azure front-deur dat er CNAME-record toewijzing is voor uw Joker teken domein. Deze DNS-toewijzing kan een directe CNAME-record toewijzing `*.contoso.com` zijn, `contoso.azurefd.net`zoals toegewezen aan. U kunt ook afdverify tijdelijke toewijzing gebruiken. Zo wordt bijvoorbeeld `afdverify.contoso.com` gekoppeld om `afdverify.contoso.azurefd.net` de CNAME-record toewijzing voor het Joker teken te valideren.
+U kunt een Joker teken domein toevoegen onder de sectie voor front-end-hosts of-domeinen. Net als bij subdomeinen valideert Azure front-deur dat er CNAME-record toewijzing is voor uw Joker teken domein. Deze DNS-toewijzing kan een directe CNAME-record toewijzing zijn, zoals `*.contoso.com` toegewezen aan `contoso.azurefd.net` . U kunt ook afdverify tijdelijke toewijzing gebruiken. Zo wordt bijvoorbeeld `afdverify.contoso.com` gekoppeld om `afdverify.contoso.azurefd.net` de CNAME-record toewijzing voor het Joker teken te valideren.
 
 > [!NOTE]
 > Azure DNS ondersteunt recordsets met jokertekens.
@@ -40,7 +39,7 @@ U kunt meerdere subdomeinen met één niveau van het Joker teken domein in front
 
 - Het definiëren van een andere route voor een subdomein dan de rest van de domeinen (van het Joker teken domein).
 
-- Een ander WAF-beleid hebben voor een specifiek subdomein. `*.contoso.com` Hiermee kan bijvoorbeeld worden toegevoegd `foo.contoso.com` zonder dat opnieuw een domein eigendom moet worden bewezen. Maar dit is niet `foo.bar.contoso.com` toegestaan omdat het geen subdomein van één niveau `*.contoso.com`is van. Om toe `foo.bar.contoso.com` te voegen zonder de validatie `*.bar.contosonews.com` van de domein eigenaar, moet worden toegevoegd.
+- Een ander WAF-beleid hebben voor een specifiek subdomein. `*.contoso.com`Hiermee kan bijvoorbeeld worden toegevoegd `foo.contoso.com` zonder dat opnieuw een domein eigendom moet worden bewezen. Maar dit is niet toegestaan `foo.bar.contoso.com` omdat het geen subdomein van één niveau is van `*.contoso.com` . Om toe te voegen zonder de validatie van de `foo.bar.contoso.com` domein eigenaar, `*.bar.contosonews.com` moet worden toegevoegd.
 
 U kunt Joker teken domeinen en de bijbehorende subdomeinen toevoegen met bepaalde beperkingen:
 
@@ -72,7 +71,7 @@ Als u niet wilt dat een WAF-beleid voor een subdomein wordt uitgevoerd, kunt u e
 Wanneer u een routerings regel configureert, kunt u een Joker teken domein als een front-end-host selecteren. U kunt ook een ander route gedrag hebben voor joker tekens en subdomeinen. Zoals beschreven in de [manier waarop Azure front-deur een route overeenkomst](front-door-route-matching.md)gebruikt, wordt de meest specifieke overeenkomst voor het domein in verschillende routerings regels gekozen tijdens runtime.
 
 > [!IMPORTANT]
-> U moet overeenkomende paden hebben in de regels voor door sturen of als uw clients fouten zien. U hebt bijvoorbeeld twee routerings regels als route 1 (`*.foo.com/*` toegewezen aan de back-end-groep a) en de route`bar.foo.com/somePath/*` 2 (toegewezen aan de back-end-pool B). Vervolgens ontvangt een aanvraag voor `bar.foo.com/anotherPath/*`. Azure front deur selecteert route 2 op basis van een specifiekere domein overeenkomst, alleen om geen overeenkomende paden te vinden in de routes.
+> U moet overeenkomende paden hebben in de regels voor door sturen of als uw clients fouten zien. U hebt bijvoorbeeld twee routerings regels als route 1 ( `*.foo.com/*` toegewezen aan de back-end-groep a) en de route 2 ( `bar.foo.com/somePath/*` toegewezen aan de back-end-pool B). Vervolgens ontvangt een aanvraag voor `bar.foo.com/anotherPath/*` . Azure front deur selecteert route 2 op basis van een specifiekere domein overeenkomst, alleen om geen overeenkomende paden te vinden in de routes.
 
 ## <a name="next-steps"></a>Volgende stappen
 

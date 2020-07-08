@@ -10,19 +10,18 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 0e24bcb54fd26d4a3d983681b3348ef736b277cf
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82884343"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>BLOB-versie beheer inschakelen en beheren
 
 U kunt BLOB-versie beheer (preview) voor het opslag account op elk gewenst moment in-of uitschakelen met behulp van de Azure Portal of een Azure Resource Manager sjabloon.
 
-## <a name="enable-blob-versioning"></a>BLOB-versie beheer inschakelen
+## <a name="enable-blob-versioning"></a>Blobversiebeheer inschakelen
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
 BLOB-versie beheer inschakelen in de Azure Portal:
 
@@ -37,7 +36,7 @@ BLOB-versie beheer inschakelen in de Azure Portal:
 Als u BLOB-versie beheer met een sjabloon wilt inschakelen, maakt u een sjabloon met de eigenschap **IsVersioningEnabled** in **waar**. In de volgende stappen wordt beschreven hoe u een sjabloon maakt in de Azure Portal.
 
 1. Kies in het Azure Portal **een resource maken**.
-1. In **Marketplace doorzoeken** typt u **sjabloonimplementatie**. Druk vervolgens op **ENTER**.
+1. Typ in **de Marketplace zoeken de** **sjabloon implementatie**en druk vervolgens op **Enter**.
 1. Kies **Sjabloonimlementatie**, kies **maken**en kies vervolgens **uw eigen sjabloon bouwen in de editor**.
 1. Plak in de sjabloon editor de volgende JSON. Vervang de tijdelijke plaatsaanduiding `<accountName>` door de naam van uw opslagaccount.
 1. Sla de sjabloon op.

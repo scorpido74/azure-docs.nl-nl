@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
 ms.openlocfilehash: 0d122a56035e58bd5065da8fde56246da6478d54
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82871269"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Gebeurtenissen vastleggen in azure Event Hubs in azure API Management
@@ -41,12 +40,12 @@ Zodra uw logboek is geconfigureerd in API Management, kunt u het beleid voor eve
 1. Blader naar de APIM-instantie.
 2. Selecteer het tabblad API.
 3. Selecteer de API waaraan u het beleid wilt toevoegen. In dit voor beeld voegen we een beleid toe aan de **echo-API** in het product **Unlimited** .
-4. Selecteer **alle bewerkingen**.
+4. Selecteer **Alle bewerkingen**.
 5. Selecteer boven aan het scherm het tabblad ontwerpen.
 6. Klik in het venster inkomend of uitgaand verkeer op het drie hoekje (naast het potlood).
 7. Selecteer de code-editor. Zie [beleid instellen of bewerken](set-edit-policies.md)voor meer informatie.
-8. Plaats de cursor in de `inbound` sectie `outbound` of beleids regel.
-9. Selecteer in het venster aan de rechter kant het **Geavanceerde beleid** > **logboek op EventHub**. Hiermee wordt de `log-to-eventhub` sjabloon voor de beleids verklaring ingevoegd.
+8. Plaats de cursor in de `inbound` `outbound` sectie of beleids regel.
+9. Selecteer in het venster aan de rechter kant het **Geavanceerde beleid**  >  **logboek op EventHub**. Hiermee wordt de `log-to-eventhub` sjabloon voor de beleids verklaring ingevoegd.
 
 ```xml
 <log-to-eventhub logger-id="logger-id">
@@ -61,9 +60,9 @@ Zodra uw logboek is geconfigureerd in API Management, kunt u het beleid voor eve
     }
 </log-to-eventhub>
 ```
-Vervang `logger-id` door de waarde die u hebt `{loggerId}` gebruikt in de aanvraag-URL om de logger in de vorige stap te maken.
+Vervang door `logger-id` de waarde die u hebt gebruikt `{loggerId}` in de aanvraag-URL om de logger in de vorige stap te maken.
 
-U kunt elke expressie gebruiken die een teken reeks retourneert als de waarde van `log-to-eventhub` het element. In dit voor beeld wordt een teken reeks in JSON-indeling met de datum en tijd, de service naam, de aanvraag-id, het IP-adres van de aanvraag en de bewerkings naam vastgelegd.
+U kunt elke expressie gebruiken die een teken reeks retourneert als de waarde van het `log-to-eventhub` element. In dit voor beeld wordt een teken reeks in JSON-indeling met de datum en tijd, de service naam, de aanvraag-id, het IP-adres van de aanvraag en de bewerkings naam vastgelegd.
 
 Klik op **Opslaan** om de bijgewerkte beleids configuratie op te slaan. Zodra het beleid is opgeslagen, is het actief en worden gebeurtenissen geregistreerd in de aangewezen Event hub.
 

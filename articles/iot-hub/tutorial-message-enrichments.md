@@ -9,10 +9,9 @@ ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 78aee7829e58feede3360f30f10260903713c52f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81770085"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Zelf studie: verrijkingen van Azure IoT Hub-berichten gebruiken
@@ -41,7 +40,7 @@ Hier volgen de taken die u uitvoert om deze zelf studie te volt ooien:
 * U hebt een abonnement op Azure nodig. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 * Installeer [Visual Studio](https://www.visualstudio.com/).
 
-* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in deze zelf studie maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+* Zorg ervoor dat de poort 8883 is geopend in de firewall. Het voor beeld van het apparaat in deze zelf studie maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort is in sommige netwerkomgevingen van bedrijven en onderwijsinstellingen mogelijk geblokkeerd. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) voor meer informatie en manieren om dit probleem te omzeilen.
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -51,7 +50,7 @@ Hier volgen de taken die u uitvoert om deze zelf studie te volt ooien:
 Down load de [IOT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) -voor beelden van github en pak deze uit. Deze opslag plaats bevat verschillende toepassingen, scripts en Resource Manager-sjablonen. De items die voor deze zelf studie moeten worden gebruikt, zijn als volgt:
 
 * Voor de hand matige methode is er een CLI-script dat wordt gebruikt om de resources te maken. Dit script bevindt zich in/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli. azcli. Met dit script worden de resources gemaakt en wordt de bericht routering geconfigureerd. Nadat u dit script hebt uitgevoerd, maakt u de bericht verrijkingen hand matig met behulp van de [Azure Portal](https://portal.azure.com).
-* Voor de geautomatiseerde methode is er een Azure Resource Manager sjabloon. De sjabloon bevindt zich in/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/template_msgenrichments. json. Met deze sjabloon maakt u de resources, configureert u de bericht Routering en configureert u vervolgens de verrijkingen van het bericht.
+* Voor de geautomatiseerde methode is er een Azure Resource Manager sjabloon. De sjabloon bevindt zich in/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/template_msgenrichments.jsop. Met deze sjabloon maakt u de resources, configureert u de bericht Routering en configureert u vervolgens de verrijkingen van het bericht.
 * De derde toepassing die u gebruikt, is de app voor het simuleren van apparaten, die u gebruikt om berichten te verzenden naar de IoT-hub en de verrijkingen van het bericht te testen.
 
 ## <a name="manually-set-up-and-configure-by-using-the-azure-cli"></a>Hand matig instellen en configureren met behulp van de Azure CLI
@@ -77,7 +76,7 @@ Als u dit nog niet hebt gedaan, opent u een Azure [Cloud shell-venster](https://
 
 Dit zijn de resources die zijn gemaakt door het script. *Verrijkt* betekent dat de resource is bedoeld voor berichten met verrijkingen. *Oorspronkelijk* betekent dat de resource is bedoeld voor berichten die niet zijn verrijkt.
 
-| Naam | Waarde |
+| Name | Waarde |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | container naam | Origineel  |
@@ -268,7 +267,7 @@ Op dit moment worden de resources allemaal ingesteld en wordt de bericht routeri
    > [!NOTE]
    > Als uw apparaat geen dubbele waarde heeft, wordt de door u in deze plaats in te voegen stempel als teken reeks weer gegeven voor de waarde in de verrijkingen van het bericht. Als u de dubbele gegevens van het apparaat wilt zien, gaat u naar uw hub in de portal en selecteert u **IOT-apparaten**. Selecteer uw apparaat en selecteer vervolgens onder aan de pagina onder aan het **apparaat** .
    >
-   > U kunt de dubbele informatie bewerken om tags toe te voegen, zoals locatie, en deze op een specifieke waarde instellen. Zie voor meer informatie [apparaat Apparaatdubbels begrijpen en gebruiken in IOT hub](iot-hub-devguide-device-twins.md).
+   > U kunt de dubbele informatie bewerken om tags toe te voegen, zoals locatie, en deze op een specifieke waarde instellen. Zie [Apparaatdubbels begrijpen en gebruiken in IoT Hub](iot-hub-devguide-device-twins.md) voor meer informatie.
 
 3. Wanneer u klaar bent, moet het deel venster er ongeveer als volgt uitzien:
 
@@ -287,7 +286,7 @@ U kunt een resource manager-sjabloon gebruiken om de resources, bericht Routerin
 
 1. Selecteer in het deel venster **aangepaste implementatie** de optie **uw eigen sjabloon bouwen in de editor**.
 
-1. Selecteer in het deel venster **sjabloon bewerken** de optie **bestand laden**. Windows Verkenner wordt weer gegeven. Zoek het bestand **template_messageenrichments. json** in het uitgepakte bestand opslag plaats in **/IOT-hub/tutorials/Routing/SimulatedDevice/resources**. 
+1. Selecteer in het deel venster **sjabloon bewerken** de optie **bestand laden**. Windows Verkenner wordt weer gegeven. Zoek het **template_messageenrichments.js** bestand in het uitgepakte bestand opslag plaats in **/IOT-hub/tutorials/Routing/SimulatedDevice/resources**. 
 
    ![Sjabloon selecteren op de lokale computer](./media/tutorial-message-enrichments/template-select.png)
 
@@ -297,7 +296,7 @@ U kunt een resource manager-sjabloon gebruiken om de resources, bericht Routerin
 
    Hier vindt u de resources die zijn gemaakt door het laden van de sjabloon. **Verrijkt** betekent dat de resource is bedoeld voor berichten met verrijkingen. **Oorspronkelijk** betekent dat de resource is bedoeld voor berichten die niet zijn verrijkt. Dit zijn dezelfde waarden die worden gebruikt in het Azure CLI-script.
 
-   | Naam | Waarde |
+   | Name | Waarde |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | container naam | Origineel  |
@@ -330,13 +329,13 @@ Als u de verrijkingen van het bericht wilt weer geven, selecteert u **resource g
 
 Nu de verrijkingen van het bericht zijn geconfigureerd voor het eind punt, voert u de toepassing voor gesimuleerde apparaten uit om berichten te verzenden naar de IoT-hub. De hub is ingesteld met instellingen die de volgende taken uitvoeren:
 
-* Berichten die naar de ContosoStorageEndpointOriginal van het opslag eindpunt worden doorgestuurd, worden niet verrijkt en worden opgeslagen `original`in de opslag container.
+* Berichten die naar de ContosoStorageEndpointOriginal van het opslag eindpunt worden doorgestuurd, worden niet verrijkt en worden opgeslagen in de opslag container `original` .
 
-* Berichten die naar de ContosoStorageEndpointEnriched van het opslag eindpunt worden doorgestuurd, worden verrijkt en opgeslagen `enriched`in de opslag container.
+* Berichten die naar de ContosoStorageEndpointEnriched van het opslag eindpunt worden doorgestuurd, worden verrijkt en opgeslagen in de opslag container `enriched` .
 
 De toepassing van het gesimuleerde apparaat is een van de toepassingen in de uitgepakte down load. De toepassing verzendt berichten voor elk van de verschillende routerings methoden voor berichten in de [zelf studie voor route ring](tutorial-routing.md), met inbegrip van Azure Storage.
 
-Dubbel klik op het oplossings bestand **IoT_SimulatedDevice. SLN** om de code te openen in Visual Studio en open vervolgens **Program.cs**. Vervang de naam van de IoT-hub `{your hub name}`door de markering. De indeling van de naam van de IoT-hub is **{uw naam van de hub}. Azure-devices.net**. Voor deze zelf studie is de hostnaam van de hub ContosoTestHubMsgEn.azure-devices.net. Vervang vervolgens de apparaatnaam die u eerder hebt opgeslagen tijdens het uitvoeren van het script om de resources voor de `{your device key}`markering te maken.
+Dubbel klik op het oplossings bestand **IoT_SimulatedDevice. SLN** om de code te openen in Visual Studio en open vervolgens **Program.cs**. Vervang de naam van de IoT-hub door de markering `{your hub name}` . De indeling van de naam van de IoT-hub is **{uw naam van de hub}. Azure-devices.net**. Voor deze zelf studie is de hostnaam van de hub ContosoTestHubMsgEn.azure-devices.net. Vervang vervolgens de apparaatnaam die u eerder hebt opgeslagen tijdens het uitvoeren van het script om de resources voor de markering te maken `{your device key}` .
 
 Als u de apparaatcode niet hebt, kunt u deze ophalen uit de portal. Nadat u zich hebt aangemeld, gaat u naar **resource groepen**, selecteert u de resource groep en selecteert u vervolgens uw IOT-hub. Zoek naar **IOT-apparaten** voor uw test apparaat en selecteer uw apparaat. Selecteer het Kopieer pictogram naast **primaire sleutel** om het naar het klem bord te kopiëren.
 
@@ -352,7 +351,7 @@ Als u de apparaatcode niet hebt, kunt u deze ophalen uit de portal. Nadat u zich
 
 Voer de console toepassing enkele minuten uit. De berichten die worden verzonden, worden weer gegeven in het console scherm van de toepassing.
 
-Deze app verzendt elke seconde een nieuw apparaat-naar-cloud-bericht naar de IoT Hub. Het bericht bevat een JSON-geserialiseerd object met een apparaat-id, temperatuur, vochtigheid en berichtniveau, die als standaardwaarde `normal` heeft. Er wordt wille keurig een niveau van `critical` of `storage`toegewezen, waardoor het bericht wordt doorgestuurd naar het opslag account of naar het standaard eindpunt. De berichten die worden verzonden naar de uitgebreide container in het opslag account, worden **verrijkt** .
+Deze app verzendt elke seconde een nieuw apparaat-naar-cloud-bericht naar de IoT Hub. Het bericht bevat een JSON-geserialiseerd object met een apparaat-id, temperatuur, vochtigheid en berichtniveau, die als standaardwaarde `normal` heeft. Er wordt wille keurig een niveau van `critical` of toegewezen `storage` , waardoor het bericht wordt doorgestuurd naar het opslag account of naar het standaard eindpunt. De berichten die worden verzonden naar de uitgebreide container in het opslag account, worden **verrijkt** .
 
 Nadat er meerdere opslag berichten zijn verzonden, bekijkt u de gegevens.
 
@@ -386,7 +385,7 @@ Als u alle resources wilt verwijderen die u in deze zelf studie hebt gemaakt, ve
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>De Azure CLI gebruiken om resources op te schonen
 
-U kunt de resourcegroep verwijderen met de opdracht [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). Terughalen `$resourceGroup` dat is ingesteld op **ContosoResourcesMsgEn** aan het begin van deze zelf studie.
+U kunt de resourcegroep verwijderen met de opdracht [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete). Terughalen dat `$resourceGroup` is ingesteld op **ContosoResourcesMsgEn** aan het begin van deze zelf studie.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

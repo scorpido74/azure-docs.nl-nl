@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.custom: seodec18~~~~
 ms.openlocfilehash: 010f7b908ceb9c8d07208db1312d8af8d4e27051
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82838515"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Maak een referentie gegevensverzameling voor uw Time Series Insights-omgeving met behulp van de Azure Portal
@@ -64,11 +63,11 @@ Referentie gegevens worden niet met terugwerkende kracht samengevoegd. Daarom wo
    - Plak de gegevens in de tekst editor. Selecteer vervolgens de knop **referentie gegevens parseren** .
    - Selecteer de knop **bestand kiezen** om gegevens uit een lokaal tekst bestand toe te voegen.
 
-   Plak bijvoorbeeld CSV-gegevens: [ ![geplakte CSV-gegevens](media/add-reference-data-set/select-csv-and-enter-data.png)](media/add-reference-data-set/select-csv-and-enter-data.png#lightbox)
+   Plak bijvoorbeeld CSV-gegevens: [ ![ geplakte CSV-gegevens](media/add-reference-data-set/select-csv-and-enter-data.png)](media/add-reference-data-set/select-csv-and-enter-data.png#lightbox)
 
-   Plak bijvoorbeeld JSON-matrix gegevens: [ ![JSON-gegevens plakken](media/add-reference-data-set/select-json-option-and-enter-data.png)](media/add-reference-data-set/select-json-option-and-enter-data.png#lightbox)
+   Plak bijvoorbeeld JSON-matrix gegevens: [ ![ JSON-gegevens plakken](media/add-reference-data-set/select-json-option-and-enter-data.png)](media/add-reference-data-set/select-json-option-and-enter-data.png#lightbox)
 
-   Als er een fout optreedt bij het parseren van de gegevens waarden, wordt de fout rood weer gegeven aan de onderkant van `CSV parsing error, no rows extracted`de pagina, zoals.
+   Als er een fout optreedt bij het parseren van de gegevens waarden, wordt de fout rood weer gegeven aan de onderkant van de pagina, zoals `CSV parsing error, no rows extracted` .
 
 1. Zodra de gegevens zijn geparseerd, wordt een gegevens raster weer gegeven waarin de kolommen en rijen worden weer gegeven die de gegevens vertegenwoordigen. Controleer het gegevens raster om te controleren of het juist is.
 

@@ -5,10 +5,9 @@ ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
 ms.openlocfilehash: e02c23623062f5cb3e4c597b0bb257b30aa9f44a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81769774"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Overzicht van waarschuwingen in Microsoft Azure 
@@ -170,7 +169,7 @@ Wanneer u een waarschuwing selecteert, geeft deze pagina Details van de waarschu
 
 De pagina waarschuwings Details bevat de volgende secties:
 
-| Sectie | Beschrijving |
+| Sectie | Description |
 |:---|:---|
 | Samenvatting | Hiermee worden de eigenschappen en andere belang rijke informatie over de waarschuwing weer gegeven. |
 | Geschiedenis | Een lijst met alle acties die worden uitgevoerd door de waarschuwing en eventuele wijzigingen aan de waarschuwing. Momenteel beperkt tot status wijzigingen. |
@@ -178,7 +177,7 @@ De pagina waarschuwings Details bevat de volgende secties:
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Op rollen gebaseerd toegangs beheer (RBAC) voor uw waarschuwings instanties
 
-Voor het gebruik en het beheer van waarschuwings instanties moet de gebruiker beschikken over de ingebouwde RBAC-rollen van de bewaking van de [Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) of [bewakings lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader). Deze rollen worden met elk Azure Resource Manager bereik ondersteund, van het abonnements niveau tot gedetailleerde toewijzingen op het niveau van een resource. Als een gebruiker bijvoorbeeld alleen toegang voor de bewaking van inzenders voor `ContosoVM1`de virtuele machine heeft, kan die gebruiker alleen waarschuwingen gebruiken `ContosoVM1`en beheren die zijn gegenereerd op.
+Voor het gebruik en het beheer van waarschuwings instanties moet de gebruiker beschikken over de ingebouwde RBAC-rollen van de bewaking van de [Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) of [bewakings lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader). Deze rollen worden met elk Azure Resource Manager bereik ondersteund, van het abonnements niveau tot gedetailleerde toewijzingen op het niveau van een resource. Als een gebruiker bijvoorbeeld alleen toegang voor de bewaking van inzenders voor de virtuele machine heeft `ContosoVM1` , kan die gebruiker alleen waarschuwingen gebruiken en beheren die zijn gegenereerd op `ContosoVM1` .
 
 ## <a name="manage-your-alert-instances-programmatically"></a>Uw waarschuwings instanties programmatisch beheren
 

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
 ms.openlocfilehash: 5921fc9038e53f34e23f6fd97111c71b29699dc5
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82793139"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>Een upgrade uitvoeren van de Service Fabric versie die wordt uitgevoerd op uw cluster 
@@ -26,7 +25,7 @@ U kunt uw cluster alleen upgraden naar de nieuwe versie als u een configuratie v
 Met twee afzonderlijke werk stromen kan uw cluster worden bijgewerkt naar de nieuwste versie of een ondersteunde Service Fabric versie. Een werk stroom is voor clusters die verbinding hebben om de nieuwste versie automatisch te downloaden. De andere werk stroom is voor clusters die geen verbinding hebben om de nieuwste Service Fabric-versie te downloaden.
 
 ## <a name="enable-auto-upgrade-of-the-service-fabric-version-of-your-cluster"></a>Automatisch bijwerken inschakelen van de Service Fabric versie van uw cluster
-Stel de `fabricClusterAutoupgradeEnabled` cluster configuratie in op *waar*om het cluster zo in te stellen dat updates van service Fabric worden gedownload wanneer micro soft een nieuwe versie loslaat. Als u hand matig een ondersteunde versie van Service Fabric wilt selecteren waarvan u het cluster wilt maken, stelt `fabricClusterAutoupgradeEnabled` u de cluster configuratie in op *Onwaar*.
+Stel de `fabricClusterAutoupgradeEnabled` cluster configuratie in op *waar*om het cluster zo in te stellen dat updates van service Fabric worden gedownload wanneer micro soft een nieuwe versie loslaat. Als u hand matig een ondersteunde versie van Service Fabric wilt selecteren waarvan u het cluster wilt maken, stelt u de `fabricClusterAutoupgradeEnabled` cluster configuratie in op *Onwaar*.
 
 ## <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>Clusters bijwerken die verbinding hebben om de nieuwste code en configuratie te downloaden
 Gebruik deze stappen om uw cluster bij te werken naar een ondersteunde versie als uw cluster knooppunten een Internet verbinding met het [micro soft Download centrum](https://download.microsoft.com)hebben.
@@ -94,7 +93,7 @@ Gebruik deze stappen om uw cluster bij te werken naar een ondersteunde versie al
 >
 
 ### <a name="auto-provisioning-vs-manual-provisioning"></a>Automatisch inrichten versus hand matige inrichting
-Als u automatisch downloaden en registreren voor de nieuwste code versie wilt inschakelen, stelt u de Service Fabric Update service in. Zie *tools\servicefabricupdateservice.zip\ Readme_InstructionsAndHowTos. txt* in het [zelfstandige pakket](service-fabric-cluster-standalone-package-contents.md)voor instructies.
+Als u automatisch downloaden en registreren voor de nieuwste code versie wilt inschakelen, stelt u de Service Fabric Update service in. Zie *Tools\ServiceFabricUpdateService.zip\Readme_InstructionsAndHowTos.txt* in het [zelfstandige pakket](service-fabric-cluster-standalone-package-contents.md)voor instructies.
 
 Volg deze instructies voor het hand matige proces.
 

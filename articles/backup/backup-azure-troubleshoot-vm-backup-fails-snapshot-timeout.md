@@ -6,10 +6,9 @@ ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
 ms.openlocfilehash: 3ee84c0c868f47dca1aee0401865563a326df3db
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82864399"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup fout oplossen: problemen met de agent of extensie
@@ -45,7 +44,7 @@ Nadat u een virtuele machine voor de Azure Backup-service hebt geregistreerd en 
 
 **Oorzaak 4: er [zijn geen configuratie opties voor de VM-agent ingesteld (voor Linux-vm's)](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
 
-**Oorzaak 5: de [oplossing voor toepassings beheer blokkeert IaaSBcdrExtension. exe](#application-control-solution-is-blocking-iaasbcdrextensionexe)**
+**Oorzaak 5: de [oplossing voor toepassings beheer blokkeert IaaSBcdrExtension.exe](#application-control-solution-is-blocking-iaasbcdrextensionexe)**
 
 ## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed: de virtuele machine heeft een mislukte inrichtings status
 
@@ -70,7 +69,7 @@ Deze fout treedt op wanneer een van de uitbrei dingen de virtuele machine inrich
 Aanbevolen actie:<br>
 U kunt dit probleem oplossen door de vergren deling van de resource groep van de virtuele machine te verwijderen en de bewerking opnieuw uit te voeren om het opschonen te activeren.
 > [!NOTE]
-> Backup-service maakt een afzonderlijke resource groep dan de resource groep van de virtuele machine om de herstel punt verzameling op te slaan. Klanten wordt aangeraden de resource groep die is gemaakt voor gebruik door de back-upservice niet te vergren delen. De naamgevings indeling van de resource groep die is gemaakt door de back`<Geo>`-`<number>` upservice is: AzureBackupRG_ _ bijvoorbeeld: AzureBackupRG_northeurope_1
+> Backup-service maakt een afzonderlijke resource groep dan de resource groep van de virtuele machine om de herstel punt verzameling op te slaan. Klanten wordt aangeraden de resource groep die is gemaakt voor gebruik door de back-upservice niet te vergren delen. De naamgevings indeling van de resource groep die is gemaakt door de back-upservice is: AzureBackupRG_ `<Geo>` _ `<number>` bijvoorbeeld: AzureBackupRG_northeurope_1
 
 **Stap 1: [de vergren deling van de resource groep voor het herstel punt verwijderen](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **Stap 2: [herstel punt verzameling opschonen](#clean_up_restore_point_collection)**<br>
@@ -205,13 +204,13 @@ Als u uitgebreide logboek registratie voor waagent nodig hebt, voert u de volgen
 Een configuratie bestand (/etc/waagent.conf) regelt de acties van waagent. Opties voor configuratie bestand **extensies. enable** moet zijn ingesteld op **y** en **inrichting.** voor het werken moet de agent worden ingesteld op **auto** .
 Zie voor een volledige lijst met opties voor het configuratie bestand van de VM-agent<https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
-### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>IaaSBcdrExtension. exe wordt geblokkeerd door de oplossing voor toepassings beheer
+### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>De oplossing voor toepassings beheer blokkeert IaaSBcdrExtension.exe
 
-Als u [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (of een andere oplossing voor toepassings beheer) uitvoert en de regels zijn gebaseerd op een uitgever of pad, kunnen ze de uitvoering van het uitvoer bare bestand **IaaSBcdrExtension. exe** blok keren.
+Als u [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (of een andere oplossing voor toepassings beheer) uitvoert en de regels zijn gebaseerd op een uitgever of pad, kunnen ze ervoor zorgen dat het uitvoer bare bestand van **IaaSBcdrExtension.exe** niet kan worden uitgevoerd.
 
 #### <a name="solution"></a>Oplossing
 
-Sluit het `/var/lib` pad of het uitvoer bare bestand **IaaSBcdrExtension. exe** uit van AppLocker (of andere software voor toepassings beheer.)
+Sluit het `/var/lib` pad of het uitvoer bare **IaaSBcdrExtension.exe** uit van AppLocker (of andere software voor toepassings beheer).
 
 ### <a name="the-snapshot-status-cant-be-retrieved-or-a-snapshot-cant-be-taken"></a><a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>De status van de moment opname kan niet worden opgehaald, of een moment opname kan niet worden gemaakt
 
@@ -229,7 +228,7 @@ De volgende voor waarden kunnen ertoe leiden dat de momentopname taak mislukt:
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>Vergren deling van de resource groep herstel punt verwijderen
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2. Ga naar de **optie alle resources**en selecteer de resource groep voor de verzameling van herstel punten in`<Geo>`de`<number>`volgende indeling AzureBackupRG_ _.
+2. Ga naar de **optie alle resources**en selecteer de resource groep voor de verzameling van herstel punten in de volgende indeling AzureBackupRG_ `<Geo>` _ `<number>` .
 3. Selecteer in de sectie **instellingen** de optie **vergren** delen om de vergren delingen weer te geven.
 4. Als u de vergren deling wilt verwijderen, selecteert u het weglatings teken en klikt u op **verwijderen**.
 
@@ -258,12 +257,12 @@ Nadat u de vergren deling hebt verwijderd, moet u een back-up op aanvraag starte
 Voer de volgende stappen uit om de verzameling met herstel punten hand matig te wissen, wat niet wordt gewist vanwege de vergren deling van de resource groep:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2. Klik in het menu **hub** op **alle resources**en selecteer de resource groep met de volgende indeling AzureBackupRG_`<Geo>`_`<number>` waar de virtuele machine zich bevindt.
+2. Klik in het menu **hub** op **alle resources**en selecteer de resource groep met de volgende indeling AzureBackupRG_ `<Geo>` _ `<number>` waar de virtuele machine zich bevindt.
 
     ![Vergren deling verwijderen](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
 3. Klik op resource groep, het deel venster **overzicht** wordt weer gegeven.
-4. Selecteer de optie **verborgen typen weer geven** om alle verborgen resources weer te geven. Selecteer de herstel punt verzamelingen met de volgende indeling AzureBackupRG_`<VMName>`_`<number>`.
+4. Selecteer de optie **verborgen typen weer geven** om alle verborgen resources weer te geven. Selecteer de herstel punt verzamelingen met de volgende indeling AzureBackupRG_ `<VMName>` _ `<number>` .
 
     ![Vergren deling verwijderen](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
 

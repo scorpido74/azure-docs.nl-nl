@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
 ms.openlocfilehash: b6b32f9eadc6677bad591f4040981c4c95bf1f76
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82871238"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Optimaliseer uw SQL-omgeving met de SQL Server Health Check-oplossing in Azure Monitor
@@ -38,7 +37,7 @@ Nadat u de oplossing hebt toegevoegd en een evaluatie is voltooid, wordt de same
 * Een Log Analytics-werk ruimte om de SQL Health Check-oplossing toe te voegen vanuit Azure Marketplace in de Azure Portal. Als u de oplossing wilt installeren, moet u een beheerder of Inzender zijn in het Azure-abonnement.
 
   > [!NOTE]
-  > Nadat u de oplossing hebt toegevoegd, wordt het bestand AdvisorAssessment. exe toegevoegd aan servers met agents. Configuratie gegevens worden gelezen en vervolgens naar Azure Monitor in de Cloud verzonden voor verwerking. Logica wordt toegepast op de ontvangen gegevens en de gegevens worden vastgelegd door de cloudservice.
+  > Nadat u de oplossing hebt toegevoegd, wordt het AdvisorAssessment.exe-bestand toegevoegd aan servers met agents. Configuratie gegevens worden gelezen en vervolgens naar Azure Monitor in de Cloud verzonden voor verwerking. Logica wordt toegepast op de ontvangen gegevens en de gegevens worden vastgelegd door de cloudservice.
   >
   >
 
@@ -177,8 +176,8 @@ Als u aanbevelingen hebt die u wilt negeren, kunt u een tekst bestand maken dat 
 
 3. Kies de aanbevelingen die u wilt negeren. In de volgende procedure gebruikt u de waarden voor RecommendationId.
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Een IgnoreRecommendations. txt-tekst bestand maken en gebruiken
-1. Maak een bestand met de naam IgnoreRecommendations. txt.
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Een IgnoreRecommendations.txt tekst bestand maken en gebruiken
+1. Maak een bestand met de naam IgnoreRecommendations.txt.
 2. Plak of typ elke RecommendationId voor elke aanbeveling die Azure Monitor wilt negeren op een afzonderlijke regel en sla het bestand op en sluit het.
 3. Plaats het bestand in de volgende map op elke computer waar u wilt dat Azure Monitor aanbevelingen negeert.
    * Op computers met micro soft Monitoring Agent (rechtstreeks verbonden of via Operations Manager)- *Systeem station*: \Program Files\Microsoft monitoring Agent\Agent
@@ -192,7 +191,7 @@ Als u aanbevelingen hebt die u wilt negeren, kunt u een tekst bestand maken dat 
     ```
     SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-3. Als u later besluit dat u genegeerde aanbevelingen wilt zien, verwijdert u de IgnoreRecommendations. txt-bestanden of verwijdert u RecommendationIDs van de andere.
+3. Als u later besluit dat u genegeerde aanbevelingen wilt zien, verwijdert u eventuele IgnoreRecommendations.txt-bestanden of verwijdert u de RecommendationIDs uit deze.
 
 ## <a name="sql-health-check-solution-faq"></a>Veelgestelde vragen over oplossingen van SQL-statuscontrole
 
@@ -226,7 +225,7 @@ De resultaten kunnen vervolgens naar Excel worden geëxporteerd voor verdere con
 
 *Wat is de naam van het proces dat het verzamelen van gegevens doet?*
 
-* AdvisorAssessment. exe
+* AdvisorAssessment.exe
 
 *Hoe lang duurt het voordat gegevens worden verzameld?*
 

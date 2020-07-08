@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 1ffa116f6877b58d54c22f918b4e83574b85860c
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82800716"
 ---
 # <a name="http-features"></a>HTTP-functies
@@ -41,29 +40,29 @@ Zie het [artikel http-api's](durable-functions-http-api.md) voor een volledige b
 
 De [Orchestration-client binding](durable-functions-bindings.md#orchestration-client) stelt api's beschikbaar die handige nettoladingen voor HTTP-antwoorden kunnen genereren. Het kan bijvoorbeeld een antwoord met koppelingen naar beheer-Api's maken voor een specifiek Orchestration-exemplaar. In de volgende voor beelden ziet u een HTTP-trigger-functie die laat zien hoe u deze API gebruikt voor een nieuw exemplaar van Orchestration:
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-**index. js**
+**index.js**
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-**function. json**
+**function.json**
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
 
 ---
 
-Het starten van een Orchestrator-functie met behulp van de eerder weer gegeven HTTP-trigger functies kan worden uitgevoerd met behulp van een HTTP-client. Met de volgende krul opdracht start u een Orchestrator- `DoWork`functie met de naam:
+Het starten van een Orchestrator-functie met behulp van de eerder weer gegeven HTTP-trigger functies kan worden uitgevoerd met behulp van een HTTP-client. Met de volgende krul opdracht start u een Orchestrator-functie met de naam `DoWork` :
 
 ```bash
 curl -X POST https://localhost:7071/orchestrators/DoWork -H "Content-Length: 0" -i
 ```
 
-Hier volgt een voor beeld van een antwoord voor een indeling `abc123` met de id. Sommige gegevens zijn verwijderd voor duidelijkheid.
+Hier volgt een voor beeld van een antwoord voor een indeling met `abc123` de id. Sommige gegevens zijn verwijderd voor duidelijkheid.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -80,7 +79,7 @@ Retry-After: 10
 }
 ```
 
-In het vorige voor beeld is elk van de velden die `Uri` eindigen op, overeenkomen met een ingebouwde HTTP API. U kunt deze Api's gebruiken om het doel exemplaar van Orchestrator te beheren.
+In het vorige voor beeld is elk van de velden die eindigen op, `Uri` overeenkomen met een ingebouwde HTTP API. U kunt deze Api's gebruiken om het doel exemplaar van Orchestrator te beheren.
 
 > [!NOTE]
 > De indeling van de webhook-Url's is afhankelijk van de versie van de Azure Functions host die u uitvoert. Het vorige voor beeld is voor de Azure Functions 2,0-host.
@@ -114,7 +113,7 @@ Met ingang van Durable Functions 2,0 kunnen Orchestrations HTTP-Api's systeem ei
 
 In de volgende voorbeeld code ziet u een Orchestrator-functie waarmee een uitgaande HTTP-aanvraag wordt gedaan:
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -172,7 +171,7 @@ Durable Functions ondersteunt systeem eigen aanroepen naar Api's die Azure Activ
 
 De volgende code is een voor beeld van een .NET Orchestrator-functie. De functie maakt geverifieerde aanroepen om een virtuele machine opnieuw op te starten met behulp van de Azure Resource Manager [virtuele machines rest API](https://docs.microsoft.com/rest/api/compute/virtualmachines).
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RestartVm")]
@@ -224,7 +223,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-In het vorige voor beeld is `tokenSource` de para meter geconfigureerd voor het verkrijgen van Azure AD-tokens voor [Azure Resource Manager](../../azure-resource-manager/management/overview.md). De tokens worden geïdentificeerd door de resource- `https://management.core.windows.net`URI. In het voor beeld wordt ervan uitgegaan dat de huidige functie-app lokaal wordt uitgevoerd of is geïmplementeerd als een functie-app met een beheerde identiteit. Er wordt van uitgegaan dat de lokale identiteit of de beheerde identiteit gemachtigd is voor het beheren van virtuele `myRG`machines in de opgegeven resource groep.
+In het vorige voor beeld `tokenSource` is de para meter geconfigureerd voor het verkrijgen van Azure AD-tokens voor [Azure Resource Manager](../../azure-resource-manager/management/overview.md). De tokens worden geïdentificeerd door de resource-URI `https://management.core.windows.net` . In het voor beeld wordt ervan uitgegaan dat de huidige functie-app lokaal wordt uitgevoerd of is geïmplementeerd als een functie-app met een beheerde identiteit. Er wordt van uitgegaan dat de lokale identiteit of de beheerde identiteit gemachtigd is voor het beheren van virtuele machines in de opgegeven resource groep `myRG` .
 
 Tijdens runtime retourneert de geconfigureerde token bron automatisch een OAuth 2,0-toegangs token. De bron voegt vervolgens het token toe als een Bearer-token aan de autorisatie-header van de uitgaande aanvraag. Dit model is een verbetering ten aanzien van het hand matig toevoegen van autorisatie headers aan HTTP-aanvragen om de volgende redenen:
 

@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 06/24/2019
 ms.author: danis
 ms.openlocfilehash: c41368b311708d5ead36d589cf9c320787e596ec
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792306"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Een bestaande installatie kopie van een virtuele Linux Azure-machine voorbereiden voor gebruik met Cloud-init
@@ -36,7 +35,7 @@ Werk de `cloud_init_modules` sectie in `/etc/cloud/cloud.cfg` om de volgende mod
 - mounts
 ```
 
-Hier volgt een voor beeld van hoe een sectie voor `cloud_init_modules` algemeen gebruik eruitziet.
+Hier volgt een voor beeld van hoe een sectie voor algemeen gebruik `cloud_init_modules` eruitziet.
 
 ```bash
 cloud_init_modules:
@@ -55,7 +54,7 @@ cloud_init_modules:
  - ssh
 ```
 
-Een aantal taken met betrekking tot het inrichten en het verwerken van tijdelijke schijven moeten worden bijgewerkt in `/etc/waagent.conf`. Voer de volgende opdrachten uit om de juiste instellingen bij te werken.
+Een aantal taken met betrekking tot het inrichten en het verwerken van tijdelijke schijven moeten worden bijgewerkt in `/etc/waagent.conf` . Voer de volgende opdrachten uit om de juiste instellingen bij te werken.
 
 ```bash
 sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
@@ -65,7 +64,7 @@ sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.co
 cloud-init clean
 ```
 
-Alleen Azure toestaan als gegevens bron voor de Azure Linux-agent door een nieuw bestand `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg` te maken met een editor van uw keuze met de volgende regel:
+Alleen Azure toestaan als gegevens bron voor de Azure Linux-agent door een nieuw bestand te maken `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg` met een editor van uw keuze met de volgende regel:
 
 ```bash
 # Azure Data Source config
@@ -82,7 +81,7 @@ Voor CentOS-installatie kopieën waarvoor swapfile is ingeschakeld, kunt u de vo
 sudo swapoff /mnt/resource/swapfile
 ```
 
-Controleer of de swapfile-verwijzing is `/etc/fstab` verwijderd uit-deze moet er ongeveer uitzien als in de volgende uitvoer:
+Controleer of de swapfile-verwijzing is verwijderd uit `/etc/fstab` -deze moet er ongeveer uitzien als in de volgende uitvoer:
 
 ```output
 # /etc/fstab

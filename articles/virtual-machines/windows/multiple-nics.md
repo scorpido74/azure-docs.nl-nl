@@ -8,10 +8,9 @@ ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
 ms.openlocfilehash: 6651ae21694022be86d8db08737c609aed3df569
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81870260"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Een virtuele Windows-machine met meerdere Nic's maken en beheren
@@ -75,7 +74,7 @@ Doorgaans maakt u ook een [netwerk beveiligings groep](../../virtual-network/sec
 ### <a name="create-the-virtual-machine"></a>De virtuele machine maken
 Begin nu met het maken van de VM-configuratie. Voor elke VM-grootte geldt een limiet voor het totale aantal Nic's dat u aan een virtuele machine kunt toevoegen. Zie [Windows VM-grootten](sizes.md)voor meer informatie.
 
-1. Stel uw VM-referenties als `$cred` volgt in op de variabele:
+1. Stel uw VM-referenties als volgt in op de `$cred` variabele:
 
     ```powershell
     $cred = Get-Credential
@@ -152,7 +151,7 @@ U kunt een virtuele NIC toevoegen aan een bestaande virtuele machine door de toe
     ```
 
     ### <a name="primary-virtual-nics"></a>Primaire virtuele Nic's
-    Een van de Nic's op een multi-NIC-VM moet primair zijn. Als een van de bestaande virtuele Nic's op de VM al als primair is ingesteld, kunt u deze stap overs Laan. In het volgende voor beeld wordt ervan uitgegaan dat twee virtuele Nic's nu aanwezig zijn op een VM en u de eerste NIC`[0]`() als primair wilt toevoegen:
+    Een van de Nic's op een multi-NIC-VM moet primair zijn. Als een van de bestaande virtuele Nic's op de VM al als primair is ingesteld, kunt u deze stap overs Laan. In het volgende voor beeld wordt ervan uitgegaan dat twee virtuele Nic's nu aanwezig zijn op een VM en u de eerste NIC ( `[0]` ) als primair wilt toevoegen:
         
     ```powershell
     # List existing NICs on the VM and find which one is primary
@@ -198,7 +197,7 @@ Als u een virtuele NIC van een bestaande VM wilt verwijderen, moet u de toewijzi
     $nicId = (Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" -Name "myNic3").Id   
     ```
 
-4. Verwijder de NIC met [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) en werk de virtuele machine bij met [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm). In het volgende voor beeld wordt MyNic3 verwijderd zoals verkregen in de vorige stap: *myNic3* `$nicId`
+4. Verwijder de NIC met [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) en werk de virtuele machine bij met [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm). In het volgende voor beeld wordt *myNic3* verwijderd zoals verkregen `$nicId` in de vorige stap:
 
     ```powershell
     Remove-AzVMNetworkInterface -VM $vm -NetworkInterfaceIDs $nicId | `
@@ -275,7 +274,7 @@ Azure wijst een standaard gateway toe aan de eerste (primaire) netwerk interface
       netsh advfirewall firewall add rule name=Allow-ping protocol=icmpv4 dir=in action=allow
       ```
   
-5. Als u wilt bevestigen dat de toegevoegde route zich in de route tabel `route print` bevindt, voert u de opdracht in, die de uitvoer retourneert, zoals in de volgende tekst:
+5. Als u wilt bevestigen dat de toegevoegde route zich in de route tabel bevindt, voert u de `route print` opdracht in, die de uitvoer retourneert, zoals in de volgende tekst:
 
     ```
     ===========================================================================

@@ -8,10 +8,9 @@ ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: legacy
 ms.openlocfilehash: 406eda6902ae451c7fdf79e1bd1215c035a66750
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792221"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Een kopie van een virtuele Linux-machine maken met behulp van Azure CLI en Managed Disks
@@ -22,7 +21,7 @@ U kunt ook [een virtuele machine uploaden en maken op basis van een VHD](upload-
 
 ## <a name="prerequisites"></a>Vereisten
 
--   Installeer de [Azure CLI](/cli/azure/install-az-cli2).
+-   Installeer de [Azure cli](/cli/azure/install-az-cli2).
 
 -   Meld u aan bij een Azure-account met [AZ login](/cli/azure/reference-index#az-login).
 
@@ -115,7 +114,7 @@ Als u een virtuele netwerk infrastructuur voor de gekopieerde Vm's wilt maken, v
 
 Maak een virtuele machine met behulp van [AZ VM Create](/cli/azure/vm#az-vm-create).
 
-Geef als volgt de gekopieerde, beheerde schijf op die moet`--attach-os-disk`worden gebruikt als de besturingssysteem schijf ():
+Geef als volgt de gekopieerde, beheerde schijf op die moet worden gebruikt als de besturingssysteem schijf ( `--attach-os-disk` ):
 
 ```azurecli
 az vm create --resource-group myResourceGroup \

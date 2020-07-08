@@ -10,19 +10,18 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 59e29be2aade993c8aeae64b4aa4918b36a26b26
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82797134"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image"></a>Een schaalset maken op basis van een gegeneraliseerde installatie kopie
 
 Een schaalset maken van een gegeneraliseerde installatie kopie-versie die is opgeslagen in een [Galerie met gedeelde afbeeldingen](shared-image-galleries.md) met behulp van de Azure cli. Zie [instanties van een schaalset maken op basis van een gespecialiseerde](instance-specialized-image-version-cli.md)afbeelding als u een schaalset wilt maken met behulp van een gespecialiseerde afbeeldings versie.
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelf studie gebruikmaken van de Azure CLI-versie 2.4.0 of hoger. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.4.0 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
-Vervang resource namen naar behoefte in dit voor beeld. 
+Vervang resourcenamen naar behoefte in dit voorbeeld. 
 
 De afbeeldings definities in een galerie weer geven met behulp van [AZ sig Image List-definitie lijst](/cli/azure/sig/image-definition#az-sig-image-definition-list) om de naam en id van de definities weer te geven.
 
@@ -36,9 +35,9 @@ az sig image-definition list \
    --output tsv
 ```
 
-Maak de schaalset met [`az vmss create`](/cli/azure/vmss#az-vmss-create)behulp van. 
+Maak de schaalset met behulp van [`az vmss create`](/cli/azure/vmss#az-vmss-create) . 
 
-Gebruik de definitie-ID van `--image` de installatie kopie om de instanties van de schaalset te maken op basis van de meest recente versie van de installatie kopie die beschikbaar is. U kunt ook instanties van een schaalset maken op basis van een specifieke versie door de versie-ID `--image`van de installatie kopie op te geven voor. Houd er rekening mee dat automatisering met behulp van een specifieke versie van de installatie kopie kan mislukken als deze specifieke installatie kopie versie niet beschikbaar is omdat deze is verwijderd of uit de regio is verwijderd. U kunt het beste de definitie-ID van de installatie kopie gebruiken voor het maken van uw nieuwe VM, tenzij een specifieke installatie kopie versie vereist is.
+Gebruik de definitie-ID van de installatie kopie `--image` om de instanties van de schaalset te maken op basis van de meest recente versie van de installatie kopie die beschikbaar is. U kunt ook instanties van een schaalset maken op basis van een specifieke versie door de versie-ID van de installatie kopie op te geven voor `--image` . Houd er rekening mee dat automatisering met behulp van een specifieke versie van de installatie kopie kan mislukken als deze specifieke installatie kopie versie niet beschikbaar is omdat deze is verwijderd of uit de regio is verwijderd. U kunt het beste de definitie-ID van de installatie kopie gebruiken voor het maken van uw nieuwe VM, tenzij een specifieke installatie kopie versie vereist is.
 
 In dit voor beeld maken we instanties van de nieuwste versie van de *myImageDefinition* -installatie kopie.
 

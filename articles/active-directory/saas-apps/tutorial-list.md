@@ -18,10 +18,9 @@ ms.custom: it-pro
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be265eee32a739bdfc2d4c3b746e01cd0c5ec06a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82130500"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>Tutorials for integrating SaaS applications with Azure Active Directory (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
@@ -51,7 +50,7 @@ Als u meer zelf studies wilt zoeken, gebruikt u de inhouds opgave aan de linkerk
 | ![logo](./media/tutorial-list/active-directory-saas-amazon-web-service-tutorial.png)| [Amazon Web Services-console (AWS)](amazon-web-service-tutorial.md)| [Amazon Web Services-console (AWS)-rollen inrichten](amazon-web-service-tutorial.md#configure-azure-ad-sso) |
 | ![logo](./media/tutorial-list/active-directory-saas-alibaba-tutorial.png)| [Alibaba Cloud service (functie-basis-SSO)](alibaba-cloud-service-role-based-sso-tutorial.md)| |
 | ![logo](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [Google Cloud Platform](google-apps-tutorial.md)| [Google Cloud Platform-gebruikers inrichting](google-apps-provisioning-tutorial.md) |
-| ![logo](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [SalesForce](salesforce-tutorial.md)| [Sales Force-gebruikers inrichten](salesforce-provisioning-tutorial.md) |
+| ![logo](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)| [Sales Force-gebruikers inrichten](salesforce-provisioning-tutorial.md) |
 | ![logo](./media/tutorial-list/active-directory-saas-sapboc-tutorial.png)| [SAP Cloud-identiteits platform](saphana-tutorial.md)|[SAP Cloud Identity platform-Provisioning](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial) |
 
 ## <a name="oneclick-sso"></a>OneClick SSO

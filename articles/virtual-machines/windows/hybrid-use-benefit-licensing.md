@@ -8,10 +8,9 @@ ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
 ms.openlocfilehash: f84d4fcd85f1e718f414e63bbe76fd29fa32427d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81869570"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit voor Windows Server
@@ -66,7 +65,7 @@ az vm create \
 ```
 
 ### <a name="template"></a>Template
-In uw Resource Manager-sjablonen moet u een `licenseType` extra para meter opgeven. U kunt meer lezen over het [ontwerpen van Azure Resource Manager sjablonen](../../resource-group-authoring-templates.md)
+In uw Resource Manager-sjablonen moet u een extra para meter `licenseType` opgeven. U kunt meer lezen over het [ontwerpen van Azure Resource Manager sjablonen](../../resource-group-authoring-templates.md)
 ```json
 "properties": {
     "licenseType": "Windows_Server",
@@ -162,7 +161,7 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 ```
 
 ## <a name="deploy-a-virtual-machine-scale-set-with-azure-hybrid-benefit-for-windows-server"></a>Een Schaalset voor virtuele machines implementeren met Azure Hybrid Benefit voor Windows Server
-In de Resource Manager-sjablonen van de virtuele-machine Scale set `licenseType` moet een extra para meter worden opgegeven in de eigenschap VirtualMachineProfile. U kunt dit doen tijdens het maken of bijwerken van uw schaalset via ARM-sjabloon, Power shell, Azure CLI of REST.
+In de Resource Manager-sjablonen van de virtuele-machine Scale set moet een extra para meter `licenseType` worden opgegeven in de eigenschap VirtualMachineProfile. U kunt dit doen tijdens het maken of bijwerken van uw schaalset via ARM-sjabloon, Power shell, Azure CLI of REST.
 
 In het volgende voor beeld wordt een ARM-sjabloon gebruikt met een Windows Server 2016 Data Center-installatie kopie:
 ```json

@@ -8,10 +8,9 @@ ms.date: 05/05/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: aa98a13b84e89c90e29525fb6743ac33faf1d917
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82871294"
 ---
 # <a name="backup-and-restore"></a>Back-ups en herstellen
@@ -58,7 +57,7 @@ Voordat u een back-up maakt, moet u de opslag instellingen voor uw server config
 
 1. Klik in SSMS met de rechter muisknop op een Data Base > **Maak een back-up**.
 
-2. Klik in**back-** **updatabasebestand** > op **Bladeren**.
+2. Klik in back- **updatabasebestand**  >  **Backup file**op **Bladeren**.
 
 3. Controleer in het dialoog venster **bestand opslaan als** het mappad en typ een naam voor het back-upbestand. 
 

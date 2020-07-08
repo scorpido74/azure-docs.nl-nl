@@ -4,10 +4,9 @@ description: Configureer omgekeerde proxy zo dat beveiligde end-to-end-communica
 ms.topic: conceptual
 ms.date: 08/10/2017
 ms.openlocfilehash: e88a81108f38efefe413024fb2b41bbd82f297b2
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82858525"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Verbinding maken met een beveiligde service met de omgekeerde proxy
@@ -20,7 +19,7 @@ In dit artikel wordt uitgelegd hoe u een veilige verbinding tot stand brengt tus
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Beveiligde verbinding tot stand brengen tussen de omgekeerde proxy en services 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>Omgekeerde proxy verificatie bij Services:
-De omgekeerde proxy identificeert zichzelf bij Services met behulp van het certificaat. Voor Azure-clusters wordt het certificaat opgegeven met de eigenschap ***reverseProxyCertificate*** in het [resource type](../azure-resource-manager/templates/template-syntax.md) [**micro soft. ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) van de Resource Manager-sjabloon. Voor zelfstandige clusters wordt het certificaat opgegeven met de ***ReverseProxyCertificate*** of de eigenschap ***ReverseProxyCertificateCommonNames*** in het gedeelte **beveiliging** van ClusterConfig. json. Zie [reverse proxy inschakelen op zelfstandige clusters](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)voor meer informatie. 
+De omgekeerde proxy identificeert zichzelf bij Services met behulp van het certificaat. Voor Azure-clusters wordt het certificaat opgegeven met de eigenschap ***reverseProxyCertificate*** in het [resource type](../azure-resource-manager/templates/template-syntax.md) [**micro soft. ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) van de Resource Manager-sjabloon. Voor zelfstandige clusters wordt het certificaat opgegeven met de ***ReverseProxyCertificate*** of de eigenschap ***ReverseProxyCertificateCommonNames*** in het gedeelte **beveiliging** van ClusterConfig.jsop. Zie [reverse proxy inschakelen op zelfstandige clusters](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)voor meer informatie. 
 
 Services kunnen de logica implementeren om het certificaat te verifiëren dat door de omgekeerde proxy wordt aangeboden. De services kunnen de geaccepteerde client certificaat gegevens opgeven als configuratie-instellingen in het configuratie pakket. Dit kan tijdens runtime worden gelezen en wordt gebruikt om het certificaat te valideren dat door de omgekeerde proxy wordt aangeboden. Raadpleeg [toepassings parameters beheren](service-fabric-manage-multiple-environment-app-configuration.md) om de configuratie-instellingen toe te voegen. 
 

@@ -10,10 +10,9 @@ ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f51b9ecf8e300af6b1e3f11d8431de7a282ab342
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759347"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Een Fully Qualified Domain Name maken in de Azure Portal voor een Linux-VM
@@ -25,7 +24,7 @@ In dit artikel wordt ervan uitgegaan dat u al een virtuele machine hebt gemaakt.
 
 [!INCLUDE [virtual-machines-common-portal-create-fqdn](../../../includes/virtual-machines-common-portal-create-fqdn.md)]
 
-U kunt nu extern verbinding maken met de virtuele machine met behulp van deze `ssh azureuser@mydns.westus.cloudapp.azure.com`DNS-naam, zoals bij.
+U kunt nu extern verbinding maken met de virtuele machine met behulp van deze DNS-naam, zoals bij `ssh azureuser@mydns.westus.cloudapp.azure.com` .
 
 ## <a name="next-steps"></a>Volgende stappen
 Nu uw VM een open bare IP-en DNS-naam heeft, kunt u algemene toepassings raamwerken of-services implementeren, zoals nginx, MongoDB, docker, enzovoort.

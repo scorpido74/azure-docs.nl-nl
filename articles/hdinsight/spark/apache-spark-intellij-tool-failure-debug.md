@@ -10,10 +10,9 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
 ms.openlocfilehash: 052b12817b788ff38f0fab72a5420896b062c732
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857428"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Fout bij het opsporen van Spark-taken met Azure-toolkit voor IntelliJ (preview-versie)
@@ -58,7 +57,7 @@ Een Spark 2.3.2-project maken om de fout opsporing voort te zetten, fout in het 
 
    d. Selecteer **Finish**.
 
-3. Selecteer **src** > **Main** > **scala** om de code in het project te openen. In dit voor beeld wordt het script **AgeMean_Div ()** gebruikt.
+3. Selecteer **src**  >  **Main**  >  **scala** om de code in het project te openen. In dit voor beeld wordt het script **AgeMean_Div ()** gebruikt.
 
 ## <a name="run-a-spark-scalajava-application-on-an-hdinsight-cluster"></a>Een Spark scala/Java-toepassing uitvoeren op een HDInsight-cluster
 
@@ -68,7 +67,7 @@ Maak een Spark scala/Java-toepassing en voer de toepassing uit op een Spark-clus
 
    ![HDI IntelliJ configuratie toevoegen](./media/apache-spark-intellij-tool-failure-debug/hdinsight-add-new-configuration.png)
 
-2. Selecteer in het dialoog venster **configuraties voor uitvoeren/fout opsporing** het plus teken**+**(). Selecteer vervolgens de optie **Apache Spark op HDInsight** .
+2. Selecteer in het dialoog venster **configuraties voor uitvoeren/fout opsporing** het plus teken ( **+** ). Selecteer vervolgens de optie **Apache Spark op HDInsight** .
 
    ![Nieuwe configuratie IntelliJ toevoegen](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
 
@@ -90,7 +89,7 @@ Maak een Spark scala/Java-toepassing en voer de toepassing uit op een Spark-clus
 
 Als het verzenden van de taak mislukt, kunt u het mislukte taak profiel downloaden naar de lokale computer voor verdere fout opsporing.
 
-1. Open **Microsoft Azure Storage Explorer**, zoek het HDInsight-account van het cluster voor de mislukte taak, down load de mislukte taak resources van de overeenkomstige locatie: **\\\hdp\spark2-Events. Spark\\\<-failures Application id>** naar een lokale map. In het venster **activiteiten** wordt de voortgang van het downloaden weer gegeven.
+1. Open **Microsoft Azure Storage Explorer**, zoek het HDInsight-account van het cluster voor de mislukte taak, down load de mislukte taak resources van de overeenkomstige locatie: **\hdp\spark2-events \\ . Spark \\ \<application ID> -failures** naar een lokale map. In het venster **activiteiten** wordt de voortgang van het downloaden weer gegeven.
 
    ![Fout bij het downloaden van Azure Storage Explorer](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 

@@ -11,10 +11,9 @@ ms.author: aashishb
 author: aashishb
 ms.date: 04/27/2020
 ms.openlocfilehash: e9a43f4a7da39869e002e2da9fb9638381e57cb8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82856029"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Naslag informatie voor Azure machine learning monitoring-gegevens
@@ -42,7 +41,7 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Machine Learni
 | ResourceGroupName | Naam van de resource groep |
 | JobName | De naam van de taak |
 | ClusterId | ID van het cluster |
-| Type | Type taak gebeurtenis, bijvoorbeeld JobSubmitted, JobRunning, JobFailed, JobSucceeded, enzovoort. |
+| EventType | Type taak gebeurtenis, bijvoorbeeld JobSubmitted, JobRunning, JobFailed, JobSucceeded, enzovoort. |
 | ExecutionState | De status van de taak (de uitvoering), bijvoorbeeld in de wachtrij, actief, geslaagd, mislukt |
 | ErrorDetails | Details van taak fout |
 | CreationApiVersion | API-versie die wordt gebruikt om de taak te maken |
@@ -73,7 +72,7 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Machine Learni
 | MinimumNodeCount | Minimum aantal knoop punten van het cluster |
 | MaximumNodeCount | Maximum aantal knoop punten van het cluster |
 | NodeDeallocationOption | Hoe de toewijzing van het knoop punt moet worden opgeheven |
-| Uitgever | Uitgever van het cluster type |
+| Publisher | Uitgever van het cluster type |
 | Aanbieding | Aanbod waarmee het cluster is gemaakt |
 | Sku | SKU van het knoop punt/de virtuele machine die in het cluster is gemaakt |
 | Versie | Versie van de installatie kopie die wordt gebruikt tijdens het maken van het knoop punt/VM |
@@ -81,7 +80,7 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Machine Learni
 | AllocationState | Cluster toewijzings status |
 | CurrentNodeCount | Huidig aantal knoop punten van het cluster |
 | TargetNodeCount | Aantal doel knooppunten van het cluster tijdens het omhoog/omlaag schalen |
-| Type | Type gebeurtenis tijdens het maken van het cluster. |
+| EventType | Type gebeurtenis tijdens het maken van het cluster. |
 | NodeIdleTimeSecondsBeforeScaleDown | Niet-actieve tijd in seconden voordat het cluster omlaag wordt geschaald |
 | PreemptedNodeCount | Telling van het aantal knoop punten van het cluster |
 | IsResizeGrow | Vlag waarmee wordt aangegeven dat het cluster omhoog wordt geschaald |
@@ -109,7 +108,7 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Machine Learni
 | VmSize | VM-grootte van het knoop punt |
 | VmFamilyName | De VM-familie waartoe het knoop punt behoort |
 | VmPriority | Prioriteit van het knoop punt dat speciaal is gemaakt/LowPriority |
-| Uitgever | Uitgever van de VM-installatie kopie, bijvoorbeeld micro soft-dsvm |
+| Publisher | Uitgever van de VM-installatie kopie, bijvoorbeeld micro soft-dsvm |
 | Aanbieding | Aanbieding gekoppeld aan het maken van een virtuele machine |
 | Sku | SKU van het knoop punt/VM gemaakt |
 | Versie | Versie van de installatie kopie die wordt gebruikt tijdens het maken van het knoop punt/VM |
@@ -128,37 +127,37 @@ In de volgende tabellen worden de platform gegevens weer gegeven die zijn verzam
 
 **Model**
 
-| Gegevens | Eenheid | Beschrijving |
+| Gegevens | Eenheid | Description |
 | ----- | ----- | ----- |
-| Model implementeren is mislukt | Aantal | Het aantal model implementaties dat is mislukt. |
-| Model implementeren gestart | Aantal | Het aantal model implementaties is gestart. |
-| Model implementeren is voltooid | Aantal | Het aantal model implementaties dat is geslaagd. |
-| Model register mislukt | Aantal | Het aantal model registraties dat is mislukt. |
-| Model registratie is voltooid | Aantal | Het aantal model registraties dat is geslaagd. |
+| Model implementeren is mislukt | Count | Het aantal model implementaties dat is mislukt. |
+| Model implementeren gestart | Count | Het aantal model implementaties is gestart. |
+| Model implementeren is voltooid | Count | Het aantal model implementaties dat is geslaagd. |
+| Model register mislukt | Count | Het aantal model registraties dat is mislukt. |
+| Model registratie is voltooid | Count | Het aantal model registraties dat is geslaagd. |
 
-**Quotum**
+**Quota**
 
 Quota gegevens zijn alleen voor het berekenen van Azure Machine Learning.
 
-| Gegevens | Eenheid | Beschrijving |
+| Gegevens | Eenheid | Description |
 | ----- | ----- | ----- |
-| Actieve kernen | Aantal | Het aantal actieve reken kernen. |
-| Actieve knoop punten | Aantal | Het aantal actieve knoop punten. |
-| Niet-actieve kernen | Aantal | Het aantal niet-actieve Compute-kernen. |
-| Niet-actieve knoop punten | Aantal | Het aantal niet-actieve reken knooppunten. |
-| Kernen verlaten | Aantal | Het aantal Leave-kernen. |
-| Knoop punten verlaten | Aantal | Het aantal knoop punten dat de poort verlaat. |
-| Afgebroken kernen | Aantal | Het aantal afgebroken kernen. |
-| Knoop punten die zijn afgebroken | Aantal | Het aantal knoop punten dat is afgebroken. |
+| Actieve kernen | Count | Het aantal actieve reken kernen. |
+| Actieve knoop punten | Count | Het aantal actieve knoop punten. |
+| Niet-actieve kernen | Count | Het aantal niet-actieve Compute-kernen. |
+| Niet-actieve knoop punten | Count | Het aantal niet-actieve reken knooppunten. |
+| Kernen verlaten | Count | Het aantal Leave-kernen. |
+| Knoop punten verlaten | Count | Het aantal knoop punten dat de poort verlaat. |
+| Afgebroken kernen | Count | Het aantal afgebroken kernen. |
+| Knoop punten die zijn afgebroken | Count | Het aantal knoop punten dat is afgebroken. |
 | Percentage quotum gebruik | Percentage | Het percentage van de gebruikte quota. |
-| Totaal aantal cores | Aantal | Het totale aantal kernen. |
-| Totaal aantal knoop punten | Aantal | Het totale aantal knoop punten. |
-| Onbruikbaar aantal kern geheugens | Aantal | Het aantal onbruikbaar kern geheugens. |
-| Niet-bruikbare knoop punten | Aantal | Het aantal niet-bruikbare knoop punten. |
+| Totaal aantal cores | Count | Het totale aantal kernen. |
+| Totaal aantal knoop punten | Count | Het totale aantal knoop punten. |
+| Onbruikbaar aantal kern geheugens | Count | Het aantal onbruikbaar kern geheugens. |
+| Niet-bruikbare knoop punten | Count | Het aantal niet-bruikbare knoop punten. |
 
 Hieronder ziet u dimensies die kunnen worden gebruikt voor het filteren van quotum metrieken:
 
-| Dimensie | Metriek (en) beschikbaar met | Beschrijving |
+| Dimensie | Metriek (en) beschikbaar met | Description |
 | ---- | ---- | ---- |
 | Clusternaam | Alle quota gegevens | De naam van het reken exemplaar. |
 | Naam van VM-familie | Percentage quotum gebruik | De naam van de VM-familie die door het cluster wordt gebruikt. |
@@ -166,33 +165,33 @@ Hieronder ziet u dimensies die kunnen worden gebruikt voor het filteren van quot
 
 **Resource**
 
-| Gegevens | Eenheid | Beschrijving |
+| Gegevens | Eenheid | Description |
 | ----- | ----- | ----- |
 | CpuUtilization | Percentage | Hoeveel procent van de CPU voor een bepaald knoop punt is gebruikt tijdens een uitvoering/taak. Deze metrische gegevens worden alleen gepubliceerd wanneer een taak wordt uitgevoerd op een knoop punt. Eén taak kan gebruikmaken van een of meer knoop punten. Deze metriek wordt per knoop punt gepubliceerd. |
 | GpuUtilization | Percentage | Hoeveel percentage van de GPU voor een bepaald knoop punt is gebruikt tijdens een uitvoering/taak. Eén knoop punt kan een of meer Gpu's hebben. Deze metrische gegevens worden per GPU per knoop punt gepubliceerd. |
 
 Hieronder ziet u dimensies die kunnen worden gebruikt voor het filteren van metrische gegevens voor resources:
 
-| Dimensie | Beschrijving |
+| Dimensie | Description |
 | ----- | ----- |
 | CreatedTime | |
 | DeviceId | ID van het apparaat (GPU). Alleen beschikbaar voor GpuUtilization. |
 | NodeId | De ID van het knoop punt dat is gemaakt waarbij de taak wordt uitgevoerd. |
 | RunId | ID van de uitvoeringsrun/taak. |
 
-**Uitvoeringsrun**
+**Uitvoeren**
 
 Informatie over trainings uitvoeringen.
 
-| Gegevens | Eenheid | Beschrijving |
+| Gegevens | Eenheid | Description |
 | ----- | ----- | ----- |
-| Voltooide uitvoeringen | Aantal | Het aantal voltooide uitvoeringen. |
-| Mislukte uitvoeringen | Aantal | Het aantal mislukte uitvoeringen. |
-| Gestart uitvoeringen | Aantal | Het aantal gestarte uitvoeringen. |
+| Voltooide uitvoeringen | Count | Het aantal voltooide uitvoeringen. |
+| Mislukte uitvoeringen | Count | Het aantal mislukte uitvoeringen. |
+| Gestart uitvoeringen | Count | Het aantal gestarte uitvoeringen. |
 
 Hieronder ziet u dimensies die kunnen worden gebruikt voor het filteren van metrische gegevens voor uitvoering:
 
-| Dimensie | Beschrijving |
+| Dimensie | Description |
 | ---- | ---- |
 | ComputeType | Het reken type dat wordt gebruikt voor de uitvoering. |
 | PipelineStepType | Het type [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py) dat wordt gebruikt in de uitvoering. |

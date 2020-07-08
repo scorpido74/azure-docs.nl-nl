@@ -10,10 +10,9 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: f0c21626c664f2d72b534ebae7f0a257620be07d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81767065"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Verklarende woorden lijst voor de preview-versie van IoT Plug en Play
@@ -99,7 +98,7 @@ Een connection string de gegevens die nodig zijn om verbinding te maken met een 
 - IoT Hub verbindings reeksen kunnen back-end-oplossingen en hulpprogram ma's gebruiken om veilig verbinding te maken met de service gerichte eind punten op een IoT-hub. Deze oplossingen en hulpprogram ma's beheren de IoT-hub en de apparaten die ermee zijn verbonden.
 - De verbindings reeksen voor bedrijfs model opslagplaatsen bieden back-end-oplossingen en hulpprogram ma's om veilig verbinding te maken met een [bedrijfs model opslagplaats](#company-model-repository). Deze oplossingen en hulpprogram ma's gebruiken of beheren de hulp modellen en [interfaces](#interface) van het [apparaat](#device-capability-model) in de opslag plaats.
 
-## <a name="device-capability-model"></a>Mogelijkheidsprofiel
+## <a name="device-capability-model"></a>Apparaatondersteuningsprofiel
 
 Een mogelijkheidsprofiel beschrijft een IOT- [Plug en Play apparaat](#iot-plug-and-play-device) en definieert de set [interfaces](#interface) die door het apparaat worden geïmplementeerd. Een mogelijkheidsprofiel komt doorgaans overeen met een fysiek apparaat, product of SKU. U gebruikt de [Digital-dubbele definitie taal](#digital-twin-definition-language) om een mogelijkheidsprofiel te definiëren.
 

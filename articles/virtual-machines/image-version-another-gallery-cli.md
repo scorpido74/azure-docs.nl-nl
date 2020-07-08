@@ -10,10 +10,9 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: add08d7b8ef39322f03e0faf78959b08a6ae2a14
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82797056"
 ---
 # <a name="copy-an-image-from-another-gallery"></a>Een afbeelding uit een andere galerie kopiëren
@@ -131,11 +130,11 @@ az sig image-definition create \
 ```
 
 
-## <a name="create-the-image-version"></a>De versie van de installatie kopie maken
+## <a name="create-the-image-version"></a>De installatiekopieversie maken
 
 Maak een versie met behulp van [AZ Image Gallery Create-Image galerie-version](/cli/azure/sig/image-version#az-sig-image-version-create). U moet de ID van de beheerde installatie kopie door geven om te gebruiken als basis voor het maken van de installatie kopie versie. U kunt [AZ Image List](/cli/azure/image?view#az-image-list) gebruiken om informatie over installatie kopieën in een resource groep op te halen. 
 
-Toegestane tekens voor de versie van de installatie kopie zijn getallen en punten. Getallen moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion*. *MinorVersion*. *Patch*.
+Toegestane tekens voor een installatiekopieversie zijn cijfers en punten. Cijfers moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion*.*MinorVersion*.*Patch*.
 
 In dit voor beeld is de versie van onze installatie kopie *1.0.0* en we gaan 1 replica maken in de regio *Zuid-Centraal VS* en 1 replica in de regio *VS-Oost* met zone-redundante opslag.
 
@@ -152,9 +151,9 @@ az sig image-version create \
 ```
 
 > [!NOTE]
-> U moet wachten tot de versie van de installatie kopie volledig is gebouwd en gerepliceerd voordat u dezelfde beheerde installatie kopie kunt gebruiken om een andere versie van de installatie kopie te maken.
+> U moet wachten tot de installatiekopieversie volledig is gebouwd en gerepliceerd voordat u dezelfde beheerde installatiekopie kunt gebruiken om een andere versie van de installatiekopie te maken.
 >
-> U kunt uw installatie kopie ook opslaan in Premiun-opslag door `--storage-account-type  premium_lrs`een toevoeg-of [zone-redundante opslag](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) door toe te voegen `--storage-account-type  standard_zrs` wanneer u de versie van de installatie kopie maakt.
+> U kunt uw installatiekopie ook opslaan in Premium Storage door een `--storage-account-type  premium_lrs` toe te voegen, of in [Zone-redundante opslag](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) door `--storage-account-type  standard_zrs` toe te voegen wanneer u de installatiekopieversie maakt.
 >
 
 ## <a name="next-steps"></a>Volgende stappen

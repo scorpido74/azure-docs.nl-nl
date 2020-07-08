@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/27/2020
 ms.openlocfilehash: 2503c26ac0348739bbf117c3538af797833ce8b8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857640"
 ---
 # <a name="transformation-with-azure-databricks"></a>Transformatie met Azure Databricks
@@ -36,7 +35,7 @@ Ter vereenvoudiging maakt de sjabloon in deze zelf studie geen geplande trigger.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure Blob-opslag account met een container `sinkdata` met de naam voor gebruik als sink.
+- Een Azure Blob-opslag account met een container met de naam `sinkdata` voor gebruik als sink.
 
   Noteer de naam van het opslag account, de container naam en de toegangs sleutel. U hebt deze waarden later in de sjabloon nodig.
 
@@ -47,8 +46,8 @@ Ter vereenvoudiging maakt de sjabloon in deze zelf studie geen geplande trigger.
 Een **trans formatie** -notitie blok importeren in uw Databricks-werk ruimte:
 
 1. Meld u aan bij uw Azure Databricks-werk ruimte en selecteer vervolgens **importeren**.
-       ![Menu opdracht voor het importeren van](media/solution-template-Databricks-notebook/import-notebook.png) een werk ruimte die het pad van de werk ruimte kan verschillen van het bestand dat wordt weer gegeven, maar onthoud het later.
-1. Selecteer **importeren vanuit: URL**. Voer `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`in het tekstvak in.
+       ![Menu opdracht voor het importeren van een werk ruimte ](media/solution-template-Databricks-notebook/import-notebook.png) die het pad van de werk ruimte kan verschillen van het bestand dat wordt weer gegeven, maar onthoud het later.
+1. Selecteer **importeren vanuit: URL**. Voer in het tekstvak in `https://adflabstaging1.blob.core.windows.net/share/Transformations.html` .
 
    ![Selecties voor het importeren van een notitie blok](media/solution-template-Databricks-notebook/import-from-url.png)
 
@@ -56,7 +55,7 @@ Een **trans formatie** -notitie blok importeren in uw Databricks-werk ruimte:
 
    Ga in het geïmporteerde notitie blok naar **opdracht 5** , zoals wordt weer gegeven in het volgende code fragment.
 
-   - Vervang `<storage name>`en `<access key>` door uw eigen opslag verbindings gegevens.
+   - Vervang `<storage name>` en `<access key>` door uw eigen opslag verbindings gegevens.
    - Gebruik het opslag account bij de `sinkdata` container.
 
     ```python
@@ -90,7 +89,7 @@ Een **trans formatie** -notitie blok importeren in uw Databricks-werk ruimte:
 
     ![Knop genereren](media/solution-template-Databricks-notebook/generate-new-token.png)
 
-   *Sla het toegangs token* op voor later gebruik bij het maken van een Databricks-gekoppelde service. Het toegangs token ziet er ongeveer `dapi32db32cbb4w6eee18b7d87e45exxxxxx`als volgt uit.
+   *Sla het toegangs token* op voor later gebruik bij het maken van een Databricks-gekoppelde service. Het toegangs token ziet er ongeveer als volgt uit `dapi32db32cbb4w6eee18b7d87e45exxxxxx` .
 
 ## <a name="how-to-use-this-template"></a>Deze sjabloon gebruiken
 
@@ -132,13 +131,13 @@ In de nieuwe pijp lijn worden de meeste instellingen automatisch geconfigureerd 
 
 1. Controleer in het bestand **gegevens kopiëren** **naar BLOB**de tabbladen **bron** en **sink** . Wijzig de instellingen indien nodig.
 
-   - ![Tabblad Bron van **bron**](media/solution-template-Databricks-notebook/copy-source-settings.png)
+   - Tabblad Bron van **bron** ![](media/solution-template-Databricks-notebook/copy-source-settings.png)
 
-   - ![Tabblad Sink van **sink**](media/solution-template-Databricks-notebook/copy-sink-settings.png)
+   - Tabblad Sink van **sink** ![](media/solution-template-Databricks-notebook/copy-sink-settings.png)
 
 1. Controleer de paden en instellingen naar behoefte in de **trans formatie**van de **notitieblok** activiteit en werk deze bij.
 
-   **Databricks gekoppelde service** moet vooraf zijn ingevuld met de waarde uit een vorige stap, zoals wordt weer gegeven: ![gevulde waarde voor de gekoppelde Databricks-service](media/solution-template-Databricks-notebook/notebook-activity.png)
+   **Databricks gekoppelde service** moet vooraf zijn ingevuld met de waarde uit een vorige stap, zoals wordt weer gegeven: ![ gevulde waarde voor de gekoppelde Databricks-service](media/solution-template-Databricks-notebook/notebook-activity.png)
 
    De instellingen van het **notitie blok** controleren:
   
@@ -150,7 +149,7 @@ In de nieuwe pijp lijn worden de meeste instellingen automatisch geconfigureerd 
 
        ![Basis parameters](media/solution-template-Databricks-notebook/base-parameters.png)
 
-1. Controleer of de **pijplijn parameters** overeenkomen met wat wordt weer gegeven in de volgende ![scherm afbeelding: pijplijn parameters](media/solution-template-Databricks-notebook/pipeline-parameters.png)
+1. Controleer of de **pijplijn parameters** overeenkomen met wat wordt weer gegeven in de volgende scherm afbeelding: ![ pijplijn parameters](media/solution-template-Databricks-notebook/pipeline-parameters.png)
 
 1. Verbinding maken met uw gegevens sets.
 
@@ -167,9 +166,9 @@ In de nieuwe pijp lijn worden de meeste instellingen automatisch geconfigureerd 
 
    - **DestinationFilesDataset** : de gegevens naar de Sink-doel locatie kopiëren. Gebruik de volgende waarden:
 
-     - **Gekoppelde service** - `sinkBlob_LS`, die in een vorige stap is gemaakt.
+     - **Gekoppelde service**  -  `sinkBlob_LS` , die in een vorige stap is gemaakt.
 
-     - **Bestandspad.** - `sinkdata/staged_sink`
+     - **Bestandspad**  -  `sinkdata/staged_sink` .
 
        ![Selecties voor de gekoppelde service en het bestandspad voor DestinationFilesDataset](media/solution-template-Databricks-notebook/destination-dataset.png)
 

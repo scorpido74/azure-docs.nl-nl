@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: d7fb7b6b409a4e24be97ee61fc7ba1f0c0a93202
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792629"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Een Apache HBase-cluster migreren naar een nieuwe versie
@@ -176,7 +175,7 @@ Voer de volgende stappen uit om uw Apache HBase-cluster in azure HDInsight bij t
 
 1. Voer het vorige script opnieuw uit om ervoor te zorgen dat alle recente gegevens in de geheugen opslag worden leeg gemaakt.
 
-1. Meld u aan bij [Apache Ambari](https://ambari.apache.org/) op het oude cluster`https://OLDCLUSTERNAME.azurehdidnsight.net`() en stop de HBase-Services. Wanneer u wordt gevraagd om te bevestigen dat u de services wilt stoppen, schakelt u het selectie vakje onderhouds modus inschakelen voor HBase in. Zie [HDInsight-clusters beheren met behulp van de Ambari-webgebruikersinterface](../hdinsight-hadoop-manage-ambari.md)voor meer informatie over het maken van verbinding met en het gebruik van Ambari.
+1. Meld u aan bij [Apache Ambari](https://ambari.apache.org/) op het oude cluster ( `https://OLDCLUSTERNAME.azurehdidnsight.net` ) en stop de HBase-Services. Wanneer u wordt gevraagd om te bevestigen dat u de services wilt stoppen, schakelt u het selectie vakje onderhouds modus inschakelen voor HBase in. Zie [HDInsight-clusters beheren met behulp van de Ambari-webgebruikersinterface](../hdinsight-hadoop-manage-ambari.md)voor meer informatie over het maken van verbinding met en het gebruik van Ambari.
 
     ![Klik in Ambari op Services > HBase > stop onder service acties](./media/apache-hbase-migrate-new-version/stop-hbase-services1.png)
 
@@ -195,9 +194,9 @@ Voer de volgende stappen uit om uw Apache HBase-cluster in azure HDInsight bij t
     ![Wijzig in Ambari de container naam voor HBase rootdir](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
 
 1. Als u HDInsight 3,6 bijwerkt naar 4,0, volgt u de onderstaande stappen en gaat u verder met stap 10:
-    1. Start alle vereiste services in Ambari opnieuw door **Services** > **opnieuw starten vereist**te selecteren.
+    1. Start alle vereiste services in Ambari opnieuw door **Services**  >  **opnieuw starten vereist**te selecteren.
     1. Stop de HBase-service.
-    1. SSH naar het Zookeeper-knoop punt en voer [zkCli](https://github.com/go-zkcli/zkcli) de zkCli `rmr /hbase-unsecure` -opdracht uit om de HBase root znode van Zookeeper te verwijderen.
+    1. SSH naar het Zookeeper-knoop punt en voer de [zkCli](https://github.com/go-zkcli/zkcli) -opdracht `rmr /hbase-unsecure` uit om de HBase root znode van Zookeeper te verwijderen.
     1. Start HBase opnieuw.
 
 1. Als u een upgrade uitvoert naar een andere HDInsight-versie dan 4,0, voert u de volgende stappen uit:

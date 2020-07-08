@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
 ms.openlocfilehash: 089858c789bb11245e98f32047cabb4117ece904
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82838583"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Red Hat Enterprise Linux-installatie kopieën (RHEL) die beschikbaar zijn in azure
@@ -31,7 +30,7 @@ Dit is een lijst met RHEL-installatie kopieën die beschikbaar zijn in Azure. Te
 > [!NOTE]
 > Onbewerkte afbeeldingen worden niet meer geproduceerd in het voor deel van LVM-gepartitioneerde installatie kopieën. LVM biedt verschillende voor delen ten opzichte van het oudere schema voor onbewerkte (niet-LVM), waaronder aanzienlijk meer flexibele opties voor het wijzigen van de partitie.
 
-Aanbieding| SKU | Partitionering | Inrichten | Opmerkingen
+Aanbieding| SKU | Partitionering | Inrichten | Notities
 :----|:----|:-------------|:-------------|:-----
 RHEL          | 6.7      | UITGANG    | Linux-agent |
 |             | 6.8      | UITGANG    | Linux-agent |
@@ -40,7 +39,7 @@ RHEL          | 6.7      | UITGANG    | Linux-agent |
 |             | 7-RAW    | UITGANG    | Linux-agent | RHEL 7. x-familie van installatie kopieën. <br> Standaard gekoppeld aan reguliere opslag plaatsen (niet EUS).
 |             | 7-LVM    | LVM    | Linux-agent | RHEL 7. x-familie van installatie kopieën. <br> Standaard gekoppeld aan reguliere opslag plaatsen (niet EUS). Als u op zoek bent naar een standaard RHEL-installatie kopie die u wilt implementeren, gebruikt u deze set installatie kopieën en/of de generatie 2.
 |             | 7lvm-Gen2| LVM    | Linux-agent | Generatie 2, RHEL 7. x-familie van installatie kopieën. <br> Standaard gekoppeld aan reguliere opslag plaatsen (niet EUS). Als u op zoek bent naar een standaard RHEL-installatie kopie die u wilt implementeren, gebruikt u deze set installatie kopieën en/of het equivalent van de eerste generatie.
-|             | 7-RAW-CI | RAW-CI | Cloud-init  | RHEL 7. x-familie van installatie kopieën. <br> Standaard gekoppeld aan reguliere opslag plaatsen (niet EUS).
+|             | 7-RAW-CI | RAW-CI | cloud-init  | RHEL 7. x-familie van installatie kopieën. <br> Standaard gekoppeld aan reguliere opslag plaatsen (niet EUS).
 |             | 7.2      | UITGANG    | Linux-agent |
 |             | 7.3      | UITGANG    | Linux-agent |
 |             | 7.4      | UITGANG    | Linux-agent | Is vanaf april 2019 standaard gekoppeld aan EUS-opslag plaatsen.

@@ -9,10 +9,9 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: cc9f3b54d427a30b587d8335f6ce9b013f407374
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792561"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure Disk Encryption met Azure AD (vorige versie)
@@ -30,7 +29,7 @@ De informatie in deze secties blijft hetzelfde:
 ## <a name="networking-and-group-policy"></a>Netwerken en groepsbeleid
 
 Als u de functie Azure Disk Encryption wilt inschakelen met behulp van de oudere AAD-parameter syntaxis, moeten de IaaS-Vm's (Infrastructure as a Service) voldoen aan de volgende vereisten voor netwerk eindpunt configuratie: 
-  - Als u een token wilt ontvangen om verbinding te maken met uw sleutel kluis, moet de IaaS-VM verbinding kunnen maken met een \[Azure\]AD-eind punt login.microsoftonline.com.
+  - Als u een token wilt ontvangen om verbinding te maken met uw sleutel kluis, moet de IaaS-VM verbinding kunnen maken met een Azure AD-eind punt \[ login.microsoftonline.com \] .
   - Als u de versleutelings sleutels naar uw sleutel kluis wilt schrijven, moet de IaaS-VM verbinding kunnen maken met het eind punt van de sleutel kluis.
   - De IaaS-VM moet verbinding kunnen maken met een Azure Storage-eind punt dat als host fungeert voor de Azure extension-opslag plaats en een Azure-opslag account dat als host fungeert voor de VHD-bestanden.
   -  Als uw beveiligings beleid de toegang tot het Internet beperkt met Azure-Vm's, kunt u de voor gaande URI omzetten en een specifieke regel configureren om uitgaande connectiviteit met de IP-adressen toe te staan. Zie [Azure Key Vault achter een firewall](../../key-vault/general/access-behind-firewall.md)voor meer informatie.
@@ -48,7 +47,7 @@ Als u de functie Azure Disk Encryption wilt inschakelen met behulp van de oudere
 ### <a name="group-policy"></a>Groepsbeleid
  - De Azure Disk Encryption oplossing maakt gebruik van de BitLocker externe sleutel beveiliging voor Windows IaaS Vm's. Voor virtuele machines die zijn gekoppeld aan een domein, moet u geen groeps beleid pushen waarmee TPM-beveiligingen worden afgedwongen. Zie voor informatie over de groepsbeleid voor de optie **BitLocker toestaan zonder compatibele TPM**, [BitLocker-Groepsbeleid verwijzing](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
 
-- Het BitLocker-beleid op virtuele machines die lid zijn van een domein met een aangepaste groepsbeleid moet de volgende instelling bevatten: [gebruikers opslag van BitLocker-herstel gegevens configureren-> 256-bits herstel sleutel toestaan](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption mislukt wanneer aangepaste groepsbeleid instellingen voor BitLocker incompatibel zijn. Op computers die niet over de juiste beleids instelling beschikken, past u het nieuwe beleid toe, dwingt u het nieuwe beleid af (GPUpdate. exe/Force) en start u het opnieuw als dat is vereist. 
+- Het BitLocker-beleid op virtuele machines die lid zijn van een domein met een aangepaste groepsbeleid moet de volgende instelling bevatten: [gebruikers opslag van BitLocker-herstel gegevens configureren-> 256-bits herstel sleutel toestaan](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption mislukt wanneer aangepaste groepsbeleid instellingen voor BitLocker incompatibel zijn. Op computers die niet over de juiste beleids instelling beschikken, past u het nieuwe beleid toe, dwingt u het nieuwe beleid af om bij te werken (gpupdate.exe/Force) en start u vervolgens opnieuw op als dat is vereist. 
 
 ## <a name="encryption-key-storage-requirements"></a>Opslag vereisten voor de versleutelings sleutel 
 

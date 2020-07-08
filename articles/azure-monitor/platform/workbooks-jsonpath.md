@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
 ms.openlocfilehash: 58a2657f6b9aee101384146c4ebb43023953bfcb
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82892210"
 ---
 # <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>JSONPath gebruiken om JSON-gegevens in werkmappen te transformeren
@@ -27,7 +26,7 @@ Met behulp van JSONPath-trans formatie kunnen schrijvers van werkmappen JSON omz
 ## <a name="using-jsonpath"></a>JSONPath gebruiken
 
 1. Schakel de werkmap over naar de bewerkings modus door te klikken op het item werkbalk opdracht *bewerken* .
-2. Gebruik de *Add* > koppeling add*query* toevoegen om een besturings element query toe te voegen aan de werkmap.
+2. Gebruik de koppeling *add*  >  *query* toevoegen om een besturings element query toe te voegen aan de werkmap.
 3. Selecteer de gegevens bron als *JSON*.
 4. De JSON-editor gebruiken om het volgende JSON-fragment in te voeren
     ```json
@@ -69,7 +68,7 @@ We gaan ervan uit dat we het bovenstaande JSON-object hebben gezien als een repr
 1. Selecteer het tabblad *resultaten instellingen* en schakel de resultaat indeling naar *JSON-pad*.
 2. Pas de volgende instellingen voor het JSON-pad toe:
 
-    Tabel JSON-pad `$.store.books`:. Dit veld vertegenwoordigt het pad naar de hoofdmap van de tabel. In dit geval zorgen we voor de inventaris van de winkel. Het pad naar de tabel filtert de JSON met de boek gegevens.
+    Tabel JSON-pad: `$.store.books` . Dit veld vertegenwoordigt het pad naar de hoofdmap van de tabel. In dit geval zorgen we voor de inventaris van de winkel. Het pad naar de tabel filtert de JSON met de boek gegevens.
 
    | Kolom-Id's | Kolom-JSON-pad |
    |:-----------|:-----------------|

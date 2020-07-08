@@ -1,6 +1,6 @@
 ---
 title: Windows java-apps configureren
-description: Meer informatie over het configureren van Java-Apps voor uitvoering op de Windows VM-exemplaren in Azure App Service. In dit artikel vindt u de meest voorkomende configuratie taken.
+description: Meer informatie over het configureren van Java-Apps voor uitvoering op de Windows VM-exemplaren in Azure App Service. In dit artikel worden de meest algemene configuratietaken beschreven.
 keywords: Azure app service, Web-app, Windows, OSS, java
 author: jasonfreeberg
 ms.devlang: java
@@ -10,10 +10,9 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 1e42096e7ab950e5d8046ec6140c01b24643cb87
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82891472"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Een Windows java-app configureren voor Azure App Service
@@ -28,7 +27,7 @@ U kunt de [Azure web app-invoeg toepassing voor maven gebruiken voor](/java/api/
 
 Anders is uw implementatie methode afhankelijk van het type archief:
 
-- Als u een WAR-bestand wilt implementeren in Tomcat `/api/wardeploy/` , gebruikt u het eind punt om het archief bestand te plaatsen. Raadpleeg [deze documentatie](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)voor meer informatie over deze API.
+- Als u een WAR-bestand wilt implementeren in Tomcat, gebruikt u het `/api/wardeploy/` eind punt om het archief bestand te plaatsen. Raadpleeg [deze documentatie](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)voor meer informatie over deze API.
 - Gebruik het `/api/zipdeploy/` eind punt van de kudu-site om jar-bestanden te implementeren in Java SE. Raadpleeg [deze documentatie](https://docs.microsoft.com/azure/app-service/deploy-zip#rest)voor meer informatie over deze API.
 
 Implementeer uw War niet met FTP. Het FTP-hulp programma is ontworpen voor het uploaden van opstart scripts, afhankelijkheden of andere runtime bestanden. Het is niet de beste keuze voor het implementeren van web-apps.
@@ -43,7 +42,7 @@ Alle Java-Runtimes op App Service met behulp van de Azul-JVMs worden geleverd me
 
 Als u een getimede opname wilt maken, hebt u de PID (proces-ID) van de Java-toepassing nodig. Als u de PID wilt vinden, opent u een browser voor de SCM-site van uw web-app op https://<uw-site naam>. scm.azurewebsites.net/ProcessExplorer/. Op deze pagina worden de actieve processen in uw web-app weer gegeven. Zoek het proces met de naam ' Java ' in de tabel en kopieer de bijbehorende PID (proces-ID).
 
-Open vervolgens de **console fout opsporing** in de bovenste werk balk van de SCM-site en voer de volgende opdracht uit. Vervang `<pid>` door de proces-id die u eerder hebt gekopieerd. Met deze opdracht wordt een registratie van 30 seconden voor het maken van een profilering van uw Java- `timed_recording_example.jfr` toepassing gestart `D:\home` en wordt een bestand met de naam in de map gegenereerd.
+Open vervolgens de **console fout opsporing** in de bovenste werk balk van de SCM-site en voer de volgende opdracht uit. Vervang door `<pid>` de proces-id die u eerder hebt gekopieerd. Met deze opdracht wordt een registratie van 30 seconden voor het maken van een profilering van uw Java-toepassing gestart en wordt een bestand `timed_recording_example.jfr` met de naam in de `D:\home` map gegenereerd.
 
 ```
 jcmd <pid> JFR.start name=TimedRecording settings=profile duration=30s filename="D:\home\timed_recording_example.JFR"
@@ -51,7 +50,7 @@ jcmd <pid> JFR.start name=TimedRecording settings=profile duration=30s filename=
 
 Raadpleeg de [Jcmd-opdracht verwijzing](https://docs.oracle.com/javacomponents/jmc-5-5/jfr-runtime-guide/comline.htm#JFRRT190)voor meer informatie.
 
-#### <a name="analyze-jfr-files"></a>Bestanden `.jfr` analyseren
+#### <a name="analyze-jfr-files"></a>`.jfr`Bestanden analyseren
 
 Gebruik [FTPS](deploy-ftp.md) om uw JFR-bestand te downloaden naar uw lokale computer. Down load en Installeer [Zulu Mission Control](https://www.azul.com/products/zulu-mission-control/)om het JFR-bestand te analyseren. Zie de [Azul-documentatie](https://docs.azul.com/zmc/) en de [installatie-instructies](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control)voor instructies voor Zulu-missie beheer.
 
@@ -80,9 +79,9 @@ Azure App Service biedt geen ondersteuning voor het afstemmen en aanpassen van h
 
 ### <a name="set-java-runtime-options"></a>Java runtime-opties instellen
 
-Als u toegewezen geheugen of andere JVM runtime opties wilt instellen, maakt u een `JAVA_OPTS` app- [instelling](configure-common.md#configure-app-settings) met de naam met de opties. App Service geeft deze instelling als een omgevings variabele door aan de Java-runtime wanneer deze wordt gestart.
+Als u toegewezen geheugen of andere JVM runtime opties wilt instellen, maakt u een [app-instelling](configure-common.md#configure-app-settings) `JAVA_OPTS` met de naam met de opties. App Service geeft deze instelling als een omgevings variabele door aan de Java-runtime wanneer deze wordt gestart.
 
-Maak in de Azure Portal onder **Toepassings instellingen** voor de web-app een nieuwe app-instelling met `JAVA_OPTS` de naam die de aanvullende instellingen bevat, `-Xms512m -Xmx1204m`zoals.
+Maak in de Azure Portal onder **Toepassings instellingen** voor de web-app een nieuwe app-instelling `JAVA_OPTS` met de naam die de aanvullende instellingen bevat, zoals `-Xms512m -Xmx1204m` .
 
 Als u de app-instelling wilt configureren vanuit de Maven-invoeg toepassing, voegt u instellingen/waarde-tags toe in de sectie Azure-invoeg toepassing. In het volgende voor beeld wordt een specifieke minimale en maximale grootte voor Java-heap ingesteld:
 
@@ -122,7 +121,7 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 ### <a name="set-default-character-encoding"></a>Standaard teken codering instellen
 
-Maak in de Azure Portal onder **Toepassings instellingen** voor de web-app een nieuwe app-instelling met `JAVA_OPTS` de naam `-Dfile.encoding=UTF-8`met waarde.
+Maak in de Azure Portal onder **Toepassings instellingen** voor de web-app een nieuwe app-instelling met de naam `JAVA_OPTS` met waarde `-Dfile.encoding=UTF-8` .
 
 U kunt de app-instelling ook configureren met behulp van de App Service maven-invoeg toepassing. Voeg de instellingen naam en waarde tags toe aan de configuratie van de invoeg toepassing:
 
@@ -149,7 +148,7 @@ Stel app-verificatie in het Azure Portal in met de optie **verificatie en autori
 
 #### <a name="tomcat"></a>Tomcat
 
-Uw Tomcat-toepassing kan rechtstreeks vanuit de servlet toegang krijgen tot de claims van de gebruiker door het Principal-object naar een kaart object te casten. Het kaart object wijst elk claim type toe aan een verzameling van de claims voor dat type. In de onderstaande code `request` is een exemplaar van. `HttpServletRequest`
+Uw Tomcat-toepassing kan rechtstreeks vanuit de servlet toegang krijgen tot de claims van de gebruiker door het Principal-object naar een kaart object te casten. Het kaart object wijst elk claim type toe aan een verzameling van de claims voor dat type. In de onderstaande code `request` is een exemplaar van `HttpServletRequest` .
 
 ```java
 Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
@@ -169,7 +168,7 @@ for (Object key : map.keySet()) {
     }
 ```
 
-Als u gebruikers wilt afmelden, `/.auth/ext/logout` gebruikt u het pad. Raadpleeg de documentatie over [app service verificatie en autorisatie gebruik](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to)om andere acties uit te voeren. Er is ook officiële documentatie over de Tomcat [HttpServletRequest-interface](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) en de bijbehorende methoden. De volgende servlet-methoden worden ook gehydrateerd op basis van uw App Service configuratie:
+Als u gebruikers wilt afmelden, gebruikt u het `/.auth/ext/logout` pad. Raadpleeg de documentatie over [app service verificatie en autorisatie gebruik](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to)om andere acties uit te voeren. Er is ook officiële documentatie over de Tomcat [HttpServletRequest-interface](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) en de bijbehorende methoden. De volgende servlet-methoden worden ook gehydrateerd op basis van uw App Service configuratie:
 
 ```java
 public boolean isSecure()
@@ -179,7 +178,7 @@ public String getScheme()
 public int getServerPort()
 ```
 
-Als u deze functie wilt uitschakelen, maakt u een `WEBSITE_AUTH_SKIP_PRINCIPAL` toepassings instelling met de `1`naam met een waarde van. Als u alle Servlet-filters die zijn toegevoegd door App Service wilt uitschakelen `WEBSITE_SKIP_FILTERS` , maakt u een `1`instelling met de naam met een waarde van.
+Als u deze functie wilt uitschakelen, maakt u een toepassings instelling `WEBSITE_AUTH_SKIP_PRINCIPAL` met de naam met een waarde van `1` . Als u alle Servlet-filters die zijn toegevoegd door App Service wilt uitschakelen, maakt u een instelling `WEBSITE_SKIP_FILTERS` met de naam met een waarde van `1` .
 
 ### <a name="configure-tlsssl"></a>TLS/SSL configureren
 
@@ -191,7 +190,7 @@ Volg de instructies in het gedeelte [een aangepaste DNS-naam beveiligen met een 
 
 Volg eerst de instructies voor het [verlenen van toegang tot Key Vault van uw app](app-service-key-vault-references.md#granting-your-app-access-to-key-vault) en het [maken van een verwijzing naar een sleutel kluis in een toepassings instelling](app-service-key-vault-references.md#reference-syntax). U kunt controleren of de verwijzing naar het geheim wordt omgezet door de omgevings variabele af te drukken terwijl u extern toegang hebt tot de App Service Terminal.
 
-Als u deze geheimen wilt injecteren in het configuratie bestand voor de lente of het Tomcat, gebruikt`${MY_ENV_VAR}`u de syntaxis voor het injecteren van omgevings variabelen (). Raadpleeg deze documentatie over [externe configuraties](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)voor lente configuratie bestanden.
+Als u deze geheimen wilt injecteren in het configuratie bestand voor de lente of het Tomcat, gebruikt u de syntaxis voor het injecteren van omgevings variabelen ( `${MY_ENV_VAR}` ). Raadpleeg deze documentatie over [externe configuraties](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)voor lente configuratie bestanden.
 
 
 ## <a name="configure-apm-platforms"></a>APM-platforms configureren
@@ -201,26 +200,26 @@ In deze sectie wordt beschreven hoe u Java-toepassingen die zijn geïmplementeer
 ### <a name="configure-new-relic"></a>Nieuwe Relic configureren
 
 1. Een nieuw Relic-account maken op [NewRelic.com](https://newrelic.com/signup)
-2. Down load de Java-Agent van NewRelic. deze heeft een bestands naam die lijkt op *newrelic-Java-x. x. x. zip*.
+2. Down load de Java-Agent van NewRelic. deze heeft een bestands naam die vergelijkbaar is met *newrelic-java-x.x.x.zip*.
 3. Kopieer uw licentie sleutel, u hebt deze later nodig om de agent te configureren.
 4. Gebruik de [kudu-console](https://github.com/projectkudu/kudu/wiki/Kudu-console) om een nieuwe directory */Home/site/wwwroot/apm*te maken.
 5. Upload de uitgepakte nieuwe Relic Java-Agent bestanden naar een map onder */Home/site/wwwroot/apm*. De bestanden voor uw agent moeten in */Home/site/wwwroot/apm/newrelic*zijn.
 6. Wijzig het YAML-bestand op */Home/site/wwwroot/apm/newrelic/newrelic.yml* en vervang de tijdelijke aanduiding voor de licentie waarde door uw eigen licentie code.
 7. In de Azure Portal, bladert u naar uw toepassing in App Service en maakt u een nieuwe toepassings instelling.
-    - Als uw app **Java SE**gebruikt, maakt u een omgevings variabele `JAVA_OPTS` met de naam `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`met de waarde.
-    - Als u **Tomcat**gebruikt, maakt u een omgevings variabele `CATALINA_OPTS` met de naam `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`met de waarde.
+    - Als uw app **Java SE**gebruikt, maakt u een omgevings variabele `JAVA_OPTS` met de naam met de waarde `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
+    - Als u **Tomcat**gebruikt, maakt u een omgevings variabele `CATALINA_OPTS` met de naam met de waarde `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
 
 ### <a name="configure-appdynamics"></a>AppDynamics configureren
 
 1. Een AppDynamics-account maken op [AppDynamics.com](https://www.appdynamics.com/community/register/)
-2. De Java-agent downloaden van de AppDynamics-website, de bestands naam is vergelijkbaar met *AppServerAgent-x. x. x. xxxxx. zip*
+2. De Java-agent downloaden van de AppDynamics-website, de bestands naam is vergelijkbaar met *AppServerAgent-x.x.x.xxxxx.zip*
 3. Gebruik de [kudu-console](https://github.com/projectkudu/kudu/wiki/Kudu-console) om een nieuwe directory */Home/site/wwwroot/apm*te maken.
 4. Upload de Java-Agent bestanden naar een map onder */Home/site/wwwroot/apm*. De bestanden voor uw agent moeten in */Home/site/wwwroot/apm/appdynamics*zijn.
 5. In de Azure Portal, bladert u naar uw toepassing in App Service en maakt u een nieuwe toepassings instelling.
-    - Als u **Java SE**gebruikt, maakt u een omgevings variabele `JAVA_OPTS` met de naam `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` met `<app-name>` de waarde waar de naam van uw app service is.
-    - Als u **Tomcat**gebruikt, maakt u een omgevings variabele `CATALINA_OPTS` met de naam `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` met `<app-name>` de waarde waar de naam van uw app service is.
+    - Als u **Java SE**gebruikt, maakt u een omgevings variabele `JAVA_OPTS` met de naam met de waarde `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` waar de naam van `<app-name>` uw app service is.
+    - Als u **Tomcat**gebruikt, maakt u een omgevings variabele `CATALINA_OPTS` met de naam met de waarde `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` waar de naam van `<app-name>` uw app service is.
 
->  Als u al een omgevings variabele voor `JAVA_OPTS` of `CATALINA_OPTS`hebt, voegt `-javaagent:/...` u de optie toe aan het einde van de huidige waarde.
+>  Als u al een omgevings variabele voor `JAVA_OPTS` of hebt `CATALINA_OPTS` , voegt u de `-javaagent:/...` optie toe aan het einde van de huidige waarde.
 
 ## <a name="data-sources"></a>Gegevensbronnen
 
@@ -234,7 +233,7 @@ Deze instructies zijn van toepassing op alle database verbindingen. U moet tijde
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Downloaden](https://dev.mysql.com/downloads/connector/j/) (Selecteer ' platform onafhankelijk ') |
 | SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Downloaden](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
 
-Als u Tomcat wilt configureren voor het gebruik van de Java Data Base Connectivity (JDBC) of de Java Persistence API ( `CATALINA_OPTS` JPA), moet u eerst de omgevings variabele aanpassen die in Tomcat wordt gelezen tijdens het opstarten. Stel deze waarden in via een app-instelling in de [maven-invoeg toepassing van app service](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md):
+Als u Tomcat wilt configureren voor het gebruik van de Java Data Base Connectivity (JDBC) of de Java Persistence API (JPA), moet u eerst de `CATALINA_OPTS` omgevings variabele aanpassen die in Tomcat wordt gelezen tijdens het opstarten. Stel deze waarden in via een app-instelling in de [maven-invoeg toepassing van app service](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md):
 
 ```xml
 <appSettings>
@@ -245,15 +244,15 @@ Als u Tomcat wilt configureren voor het gebruik van de Java Data Base Connectivi
 </appSettings>
 ```
 
-Of stel de omgevings variabelen in op de pagina **configuratie** > **Toepassings instellingen** in het Azure Portal.
+Of stel de omgevings variabelen in op de pagina **configuratie**  >  **Toepassings instellingen** in het Azure Portal.
 
 Bepaal vervolgens of de gegevens bron beschikbaar moet zijn voor één toepassing of voor alle toepassingen die worden uitgevoerd op de Tomcat-servlet.
 
 #### <a name="application-level-data-sources"></a>Gegevens bronnen op toepassings niveau
 
-1. Maak een *context. XML-* bestand in de *META-INF/* map van uw project. Maak de *META-INF/-* map als deze niet bestaat.
+1. Maak een *context.xml* -bestand in de *META-INF/-* map van uw project. Maak de *META-INF/-* map als deze niet bestaat.
 
-2. Voeg in *context. XML*een `Context` element toe om de gegevens bron te koppelen aan een JNDI-adres. Vervang de `driverClassName` tijdelijke aanduiding door de naam van de klasse van uw stuur programma uit de bovenstaande tabel.
+2. Voeg in *context.xml*een `Context` element toe om de gegevens bron te koppelen aan een JNDI-adres. Vervang de `driverClassName` tijdelijke aanduiding door de naam van de klasse van uw stuur programma uit de bovenstaande tabel.
 
     ```xml
     <Context>
@@ -268,7 +267,7 @@ Bepaal vervolgens of de gegevens bron beschikbaar moet zijn voor één toepassin
     </Context>
     ```
 
-3. Werk de *Web. XML* van uw toepassing bij om de gegevens bron in uw toepassing te gebruiken.
+3. Werk de *web.xml* van uw toepassing bij om de gegevens bron in uw toepassing te gebruiken.
 
     ```xml
     <resource-env-ref>
@@ -301,14 +300,14 @@ U kunt ook een FTP-client gebruiken om het JDBC-stuur programma te uploaden. Vol
 
 Als u de Tomcat `server.xml` of andere configuratie bestanden wilt bewerken, moet u eerst een notitie maken van de primaire versie van Tomcat in de portal.
 
-1. Zoek de Tomcat Home Directory voor uw versie door de `env` opdracht uit te voeren. Zoek naar de omgevings variabele die begint `AZURE_TOMCAT`met en overeenkomt met uw primaire versie. Bijvoorbeeld: verwijst `AZURE_TOMCAT85_HOME` naar de Tomcat-map voor tomcat 8,5.
-1. Wanneer u de Tomcat-basismap voor uw versie hebt geïdentificeerd, kopieert u de configuratiemap naar `D:\home`. Als `AZURE_TOMCAT85_HOME` er bijvoorbeeld een waarde van `D:\Program Files (x86)\apache-tomcat-8.5.37`is, is `D:\home\apache-tomcat-8.5.37`het nieuwe pad van de gekopieerde map.
+1. Zoek de Tomcat Home Directory voor uw versie door de opdracht uit te voeren `env` . Zoek naar de omgevings variabele die begint met `AZURE_TOMCAT` en overeenkomt met uw primaire versie. Bijvoorbeeld: `AZURE_TOMCAT85_HOME` verwijst naar de Tomcat-map voor Tomcat 8,5.
+1. Wanneer u de Tomcat-basismap voor uw versie hebt geïdentificeerd, kopieert u de configuratiemap naar `D:\home` . Als `AZURE_TOMCAT85_HOME` er bijvoorbeeld een waarde van `D:\Program Files (x86)\apache-tomcat-8.5.37` is, is het nieuwe pad van de gekopieerde map `D:\home\apache-tomcat-8.5.37` .
 
 Start ten slotte App Service opnieuw. Uw implementaties moeten naar `D:\home\site\wwwroot\webapps` net zo eerder gaan.
 
 ## <a name="configure-java-se"></a>Java SE configureren
 
-Bij het uitvoeren van een. JAR- `server.port` toepassing op Java SE op Windows wordt door gegeven als opdracht regel optie wanneer uw toepassing wordt gestart. U kunt de HTTP-poort hand matig oplossen op basis van `HTTP_PLATFORM_PORT`de omgevings variabele. De waarde van deze omgevings variabele is de HTTP-poort waarover uw toepassing luistert. 
+Bij het uitvoeren van een. JAR-toepassing op Java SE op Windows `server.port` wordt door gegeven als opdracht regel optie wanneer uw toepassing wordt gestart. U kunt de HTTP-poort hand matig oplossen op basis van de omgevings variabele `HTTP_PLATFORM_PORT` . De waarde van deze omgevings variabele is de HTTP-poort waarover uw toepassing luistert. 
 
 ## <a name="java-runtime-statement-of-support"></a>Java runtime-instructie van ondersteuning
 

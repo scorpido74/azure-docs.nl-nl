@@ -9,10 +9,9 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
 ms.openlocfilehash: d34481587fd48e2eddfd268c39f6bc4f7c4e0c76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81869421"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>MATLAB-clusters voor gedistribueerde computing maken op virtuele Azure-machines
@@ -47,7 +46,7 @@ De volgende stappen op hoog niveau zijn vereist om virtuele Azure-machines te ge
    * Gebruik het meegeleverde Power shell-script of gebruik de Quick Start-sjabloon om een cluster te maken op basis van de installatie kopie van de virtuele machine.   
    * Beheer de clusters met behulp van het opgegeven Power shell-script, waarmee u clusters kunt weer geven, onderbreken, hervatten en verwijderen.
 
-## <a name="cluster-configurations"></a>Cluster configuraties
+## <a name="cluster-configurations"></a>Clusterconfiguraties
 Op dit moment kunt u met het script en de sjabloon voor het maken van het cluster een topologie met één gedistribueerde computing-server maken. Als u wilt, maakt u een of meer extra clusters, waarbij elk cluster een verschillend aantal werk-Vm's heeft, met behulp van verschillende VM-grootten, enzovoort.
 
 ### <a name="matlab-client-and-cluster-in-azure"></a>MATLAB-client en-cluster in azure

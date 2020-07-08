@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: robinsh
 ms.openlocfilehash: 60d0ef30a1c7d948a9e837a8bc37c76ace415545
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82024962"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Automatische IoT-apparaat-en module beheer met Azure CLI
@@ -44,7 +43,7 @@ Automatische configuraties worden voor de eerste keer uitgevoerd, kort nadat de 
 
 ## <a name="implement-twins"></a>Apparaatdubbels implementeren
 
-Voor automatische apparaatconfiguratie is het gebruik van apparaatdubbels vereist om de status van de Cloud en de apparaten te synchroniseren.  Zie voor meer informatie [apparaat Apparaatdubbels begrijpen en gebruiken in IOT hub](iot-hub-devguide-device-twins.md).
+Voor automatische apparaatconfiguratie is het gebruik van apparaatdubbels vereist om de status van de Cloud en de apparaten te synchroniseren.  Zie [Apparaatdubbels begrijpen en gebruiken in IoT Hub](iot-hub-devguide-device-twins.md) voor meer informatie.
 
 Voor automatische module configuraties moet module apparaatdubbels worden gebruikt om de status van de Cloud en modules te synchroniseren. Zie voor meer informatie de [module Apparaatdubbels begrijpen en gebruiken in IOT hub](iot-hub-devguide-module-twins.md).
 
@@ -79,7 +78,7 @@ Hier volgt een voor beeld van een basis doel inhoud voor een automatische appara
 }
 ```
 
-Automatische module configuraties gedragen zich op vergelijk bare `moduleContent` `deviceContent`wijze, maar u kunt het doel niet gebruiken.
+Automatische module configuraties gedragen zich op vergelijk bare wijze, maar u kunt het doel `moduleContent` niet gebruiken `deviceContent` .
 
 ```json
 {
@@ -105,7 +104,7 @@ Hier volgen enkele voor beelden van metrische query's:
 }
 ```
 
-Metrische query's voor modules zijn ook vergelijkbaar met query's voor apparaten, maar u selecteert voor `moduleId` van `devices.modules`. Bijvoorbeeld: 
+Metrische query's voor modules zijn ook vergelijkbaar met query's voor apparaten, maar u selecteert voor `moduleId` van `devices.modules` . Bijvoorbeeld: 
 
 ```json
 {
@@ -128,7 +127,7 @@ Gebruik de volgende opdracht om een configuratie te maken:
      --metrics [metric queries]
 ```
 
-* --**config-id** : de naam van de configuratie die wordt gemaakt in de IOT-hub. Geef uw configuratie een unieke naam van Maxi maal 128 kleine letters. Vermijd spaties en de volgende ongeldige tekens: `& ^ [ ] { } \ | " < > /`.
+* --**config-id** : de naam van de configuratie die wordt gemaakt in de IOT-hub. Geef uw configuratie een unieke naam van Maxi maal 128 kleine letters. Vermijd spaties en de volgende ongeldige tekens: `& ^ [ ] { } \ | " < > /` .
 
 * --**labels** : Voeg labels toe om uw configuratie bij te houden. Labels zijn naam-, waardeparen die uw implementatie beschrijven. Bijvoorbeeld `HostPlatform, Linux` of `Version, 3.0.1`
 
@@ -172,11 +171,11 @@ az iot hub configuration show-metric --config-id [configuration id] \
 
 * --**config-id** : de naam van de implementatie die in de IOT-hub bestaat.
 
-* --**metrische waarde-id** : de naam van de metriek waarvoor u bijvoorbeeld `appliedCount`de lijst met apparaat-Id's of module-id's wilt weer geven.
+* --**metrische waarde-id** : de naam van de metriek waarvoor u bijvoorbeeld de lijst met apparaat-id's of module-id's wilt weer geven `appliedCount` .
 
-* --**naaf naam** : naam van de IOT-hub waarin de implementatie zich bevindt. De hub moet zich in het huidige abonnement benemen. Schakel over naar het gewenste abonnement met de `az account set -s [subscription name]`opdracht.
+* --**naaf naam** : naam van de IOT-hub waarin de implementatie zich bevindt. De hub moet zich in het huidige abonnement benemen. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]` .
 
-* --het type **metrische waarde-type** -metrisch `system` kan `user`of zijn.  Systeem metrieken zijn `targetedCount` en `appliedCount`. Alle andere metrische gegevens zijn metrische gegevens van de gebruiker.
+* --het type **metrische waarde-type** -metrisch kan `system` of zijn `user` .  Systeem metrieken zijn `targetedCount` en `appliedCount` . Alle andere metrische gegevens zijn metrische gegevens van de gebruiker.
 
 ## <a name="modify-a-configuration"></a>Een configuratie wijzigen
 
@@ -199,7 +198,7 @@ az iot hub configuration update --config-id [configuration id] \
 
 * --**config-id** : de naam van de configuratie die in de IOT-hub bestaat.
 
-* --de naam van de **hub** -naam van de IOT-hub waarin de configuratie bestaat. De hub moet zich in het huidige abonnement benemen. Schakel over naar het gewenste abonnement met de `az account set -s [subscription name]`opdracht.
+* --de naam van de **hub** -naam van de IOT-hub waarin de configuratie bestaat. De hub moet zich in het huidige abonnement benemen. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]` .
 
 * --**Stel** een eigenschap in de configuratie in. U kunt de volgende eigenschappen bijwerken:
 
@@ -222,7 +221,7 @@ az iot hub configuration delete --config-id [configuration id] \
 
 * --**config-id** : de naam van de configuratie die in de IOT-hub bestaat.
 
-* --de naam van de **hub** -naam van de IOT-hub waarin de configuratie bestaat. De hub moet zich in het huidige abonnement benemen. Schakel over naar het gewenste abonnement met de `az account set -s [subscription name]`opdracht.
+* --de naam van de **hub** -naam van de IOT-hub waarin de configuratie bestaat. De hub moet zich in het huidige abonnement benemen. Schakel over naar het gewenste abonnement met de opdracht `az account set -s [subscription name]` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -5,15 +5,14 @@ services: container-service
 ms.topic: article
 ms.date: 05/06/2020
 ms.openlocfilehash: 87f4dc18fc595242117e10233d4fecd77e66373f
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82890885"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Gebruik Azure-functies voor toegangs beheer op basis van rollen om toegang te definiëren tot het Kubernetes-configuratie bestand in azure Kubernetes service (AKS)
 
-U kunt met het `kubectl` hulp programma communiceren met Kubernetes-clusters. De Azure CLI biedt een eenvoudige manier om de toegangs referenties en configuratie gegevens op te halen om verbinding te maken met `kubectl`uw AKS-clusters met behulp van. Als u wilt beperken wie de gegevens van de Kubernetes-configuratie (*kubeconfig*) kan ophalen en de machtigingen die ze hebben, te beperken, kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC).
+U kunt met het hulp programma communiceren met Kubernetes-clusters `kubectl` . De Azure CLI biedt een eenvoudige manier om de toegangs referenties en configuratie gegevens op te halen om verbinding te maken met uw AKS-clusters met behulp van `kubectl` . Als u wilt beperken wie de gegevens van de Kubernetes-configuratie (*kubeconfig*) kan ophalen en de machtigingen die ze hebben, te beperken, kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC).
 
 Dit artikel laat u zien hoe u RBAC-rollen kunt toewijzen die de configuratie-informatie voor een AKS-cluster beperken.
 
@@ -21,11 +20,11 @@ Dit artikel laat u zien hoe u RBAC-rollen kunt toewijzen die de configuratie-inf
 
 In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluster. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS Quick Start [met behulp van de Azure cli][aks-quickstart-cli] of [met behulp van de Azure Portal][aks-quickstart-portal].
 
-Voor dit artikel moet u ook de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
+Voor dit artikel moet u ook de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="available-cluster-roles-permissions"></a>Beschik bare machtigingen voor cluster rollen
 
-Wanneer u met het hulp programma met een AKS `kubectl` -cluster communiceert, wordt er een configuratie bestand gebruikt waarmee de verbindings gegevens van de cluster worden gedefinieerd. Dit configuratie bestand wordt doorgaans opgeslagen in *~/.Kube/config*. Er kunnen meerdere clusters worden gedefinieerd in dit *kubeconfig* -bestand. U schakelt tussen clusters met behulp van de opdracht [kubectl config use-context][kubectl-config-use-context] .
+Wanneer u met het hulp programma met een AKS-cluster communiceert `kubectl` , wordt er een configuratie bestand gebruikt waarmee de verbindings gegevens van de cluster worden gedefinieerd. Dit configuratie bestand wordt doorgaans opgeslagen in *~/.Kube/config*. Er kunnen meerdere clusters worden gedefinieerd in dit *kubeconfig* -bestand. U schakelt tussen clusters met behulp van de opdracht [kubectl config use-context][kubectl-config-use-context] .
 
 Met de opdracht [AZ AKS Get-credentials][az-aks-get-credentials] kunt u de toegangs referenties voor een AKS-cluster ophalen en deze samen voegen in het *kubeconfig* -bestand. U kunt op rollen gebaseerd toegangs beheer (RBAC) van Azure gebruiken om de toegang tot deze referenties te beheren. Met deze Azure RBAC-rollen kunt u bepalen wie het *kubeconfig* -bestand kan ophalen en welke machtigingen ze vervolgens hebben in het cluster.
 
@@ -71,7 +70,7 @@ az role assignment create \
 ```
 
 > [!TIP]
-> Als u machtigingen wilt toewijzen aan een Azure AD-groep, werkt u `--assignee` de para meter die wordt weer gegeven in het vorige voor beeld bij met de object-id voor de *groep* in plaats van een *gebruiker*. Als u de object-ID voor een groep wilt ophalen, gebruikt u de opdracht [AZ Ad Group show][az-ad-group-show] . In het volgende voor beeld wordt de object-ID van de Azure AD-groep met de naam *appdev*opgehaald:`az ad group show --group appdev --query objectId -o tsv`
+> Als u machtigingen wilt toewijzen aan een Azure AD-groep, werkt u de `--assignee` para meter die wordt weer gegeven in het vorige voor beeld bij met de object-id voor de *groep* in plaats van een *gebruiker*. Als u de object-ID voor een groep wilt ophalen, gebruikt u de opdracht [AZ Ad Group show][az-ad-group-show] . In het volgende voor beeld wordt de object-ID van de Azure AD-groep met de naam *appdev*opgehaald:`az ad group show --group appdev --query objectId -o tsv`
 
 U kunt de voor gaande toewijzing wijzigen naar de *gebruikersrol cluster* als dat nodig is.
 
@@ -127,7 +126,7 @@ users:
 
 ## <a name="remove-role-permissions"></a>Rolmachtigingen verwijderen
 
-Als u roltoewijzingen wilt verwijderen, gebruikt u de opdracht [AZ Role Assignment delete][az-role-assignment-delete] . Geef de account-ID en de cluster bron-ID op, zoals deze in de vorige opdrachten zijn verkregen. Als u de rol hebt toegewezen aan een groep in plaats van een gebruiker, geeft u de juiste groeps object-ID op in `--assignee` plaats van account object-id voor de para meter:
+Als u roltoewijzingen wilt verwijderen, gebruikt u de opdracht [AZ Role Assignment delete][az-role-assignment-delete] . Geef de account-ID en de cluster bron-ID op, zoals deze in de vorige opdrachten zijn verkregen. Als u de rol hebt toegewezen aan een groep in plaats van een gebruiker, geeft u de juiste groeps object-ID op in plaats van account object-ID voor de `--assignee` para meter:
 
 ```azurecli-interactive
 az role assignment delete --assignee $ACCOUNT_ID --scope $AKS_CLUSTER

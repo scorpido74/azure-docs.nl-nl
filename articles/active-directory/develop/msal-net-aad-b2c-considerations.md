@@ -14,10 +14,9 @@ ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 3aac63369dffa5b8ba0b9e55b5063ad8136c95cf
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82883223"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>MSAL.NET gebruiken om gebruikers aan te melden met sociale identiteiten
@@ -25,7 +24,7 @@ ms.locfileid: "82883223"
 U kunt MSAL.NET gebruiken om gebruikers met sociale identiteiten aan te melden met behulp van [Azure Active Directory B2C (Azure AD B2C)](https://aka.ms/aadb2c). Azure AD B2C is gebaseerd op het principe van beleid. In MSAL.NET, waarmee een beleid wordt gezet om een instantie te leveren.
 
 - Wanneer u een instantie van de open bare client toepassing maakt, moet u het beleid opgeven als onderdeel van de certificerings instantie.
-- Als u een beleid wilt Toep assen, roept u een onderdrukking `AcquireTokenInteractive` van die de `authority` para meter accepteert.
+- Als u een beleid wilt Toep assen, roept u een onderdrukking van `AcquireTokenInteractive` die de `authority` para meter accepteert.
 
 Dit artikel is van toepassing op MSAL.NET 3. x. Zie [Azure AD B2C specifieke informatie in MSAL 2. x](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-Specifics-MSAL-2.x) in de MSAL.net-wiki op GitHub voor MSAL.net 2. x.
 
@@ -41,7 +40,7 @@ Zie [omleidings-Url's instellen op b2clogin.com](../../active-directory-b2c/b2cl
 
 ## <a name="instantiating-the-application"></a>De toepassing instantiëren
 
-Geef de instantie op door `WithB2CAuthority()` aan te roepen wanneer u het toepassings object maakt:
+Geef de instantie op door aan te roepen `WithB2CAuthority()` Wanneer u het toepassings object maakt:
 
 ```csharp
 // Azure AD B2C Coordinates
@@ -76,7 +75,7 @@ AuthenticationResult ar = await application.AcquireTokenInteractive(scopes)
 
 In het voor gaande code fragment:
 
-- `policy`is een teken reeks met de naam van uw Azure AD B2C gebruikers stroom of aangepast beleid (bijvoorbeeld `PolicySignUpSignIn`).
+- `policy`is een teken reeks met de naam van uw Azure AD B2C gebruikers stroom of aangepast beleid (bijvoorbeeld `PolicySignUpSignIn` ).
 - `ParentActivityOrWindow`is vereist voor Android (de activiteit) en is optioneel voor andere platforms die ondersteuning bieden voor een bovenliggende UI zoals Windows in micro soft Windows en UIViewController in iOS. Zie [WithParentActivityOrWindow](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow) op de MSAL-wiki voor meer informatie over het dialoog venster voor de gebruikers interface.
 - `GetAccountByPolicy(IEnumerable<IAccount>, string)`is een methode die een account voor een bepaald beleid zoekt. Bijvoorbeeld:
 
@@ -93,7 +92,7 @@ In het voor gaande code fragment:
   }
   ```
 
-Het Toep assen van een gebruikers stroom of aangepast beleid (bijvoorbeeld voor het bewerken van het profiel van de gebruiker of het opnieuw instellen van het `AcquireTokenInteractive`wacht woord), wordt momenteel uitgevoerd door aan te roepen. Voor deze twee beleids regels gebruikt u niet het geretourneerde token/verificatie resultaat.
+Het Toep assen van een gebruikers stroom of aangepast beleid (bijvoorbeeld voor het bewerken van het profiel van de gebruiker of het opnieuw instellen van het wacht woord), wordt momenteel uitgevoerd door aan te roepen `AcquireTokenInteractive` . Voor deze twee beleids regels gebruikt u niet het geretourneerde token/verificatie resultaat.
 
 ## <a name="profile-edit-policies"></a>Beleid voor profiel bewerking
 
@@ -136,7 +135,7 @@ Door gebruikers naam/wacht woord te gebruiken in een ROPC-stroom, worden er dive
 
 Maak in uw Azure AD B2C-Tenant een nieuwe gebruikers stroom en selecteer **Aanmelden met ROPC** om ROPC in te scha kelen voor de gebruikers stroom. Zie [Configure the resource owner password data flow](/azure/active-directory-b2c/configure-ropc)voor meer informatie.
 
-`IPublicClientApplication`bevat de `AcquireTokenByUsernamePassword` -methode:
+`IPublicClientApplication`bevat de- `AcquireTokenByUsernamePassword` methode:
 
 ```csharp
 AcquireTokenByUsernamePassword(
@@ -157,7 +156,7 @@ De ROPC-stroom **werkt alleen voor lokale accounts**, waarbij uw gebruikers zijn
 
 ## <a name="google-auth-and-embedded-webview"></a>Google auth en embedded webweergave
 
-Als u Google als id-provider gebruikt, raden we u aan om de systeem browser te gebruiken als Google [verificatie van Inge sloten webweergave](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)niet toestaat. `login.microsoftonline.com` Is momenteel een vertrouwde instantie met Google en werkt met een Inge sloten webweergave. `b2clogin.com` Is echter geen vertrouwde instantie met Google, zodat gebruikers geen verificatie kunnen uitvoeren.
+Als u Google als id-provider gebruikt, raden we u aan om de systeem browser te gebruiken als Google [verificatie van Inge sloten webweergave](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)niet toestaat. Is momenteel `login.microsoftonline.com` een vertrouwde instantie met Google en werkt met een Inge sloten webweergave. Is echter `b2clogin.com` geen vertrouwde instantie met Google, zodat gebruikers geen verificatie kunnen uitvoeren.
 
 Er wordt een update voor dit [probleem](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688) geboden als er iets wordt gewijzigd.
 
@@ -174,7 +173,7 @@ Momenteel heeft MSAL.NET twee claims nodig om een token cache sleutel te bouwen:
 
 Beide claims ontbreken mogelijk in Azure AD B2C scenario's, omdat niet alle leveranciers van sociale identiteiten (Facebook, Google en anderen) ze retour neren in de tokens die ze retour neren naar Azure AD B2C.
 
-Een symptoom van een dergelijk scenario is dat MSAL.NET retourneert `Missing from the token response` wanneer u de `preferred_username` claim waarde opent in tokens die zijn uitgegeven door Azure AD B2C. MSAL gebruikt de `Missing from the token response` waarde voor `preferred_username` voor het onderhouden van cache Kruis compatibiliteit tussen bibliotheken.
+Een symptoom van een dergelijk scenario is dat MSAL.NET retourneert `Missing from the token response` Wanneer u de `preferred_username` claim waarde opent in tokens die zijn uitgegeven door Azure AD B2C. MSAL gebruikt de `Missing from the token response` waarde voor voor het `preferred_username` onderhouden van cache Kruis compatibiliteit tussen bibliotheken.
 
 ### <a name="workarounds"></a>Tijdelijke oplossingen
 
@@ -182,11 +181,11 @@ Een symptoom van een dergelijk scenario is dat MSAL.NET retourneert `Missing fro
 
 De voorgestelde tijdelijke oplossing is het gebruik [van caching op basis van beleid](#acquire-a-token-to-apply-a-policy) dat eerder is beschreven.
 
-U kunt de `tid` claim ook gebruiken als u [aangepaste beleids regels](../../active-directory-b2c/custom-policy-get-started.md) gebruikt in azure AD B2C. Aangepaste beleids regels kunnen aanvullende claims naar uw toepassing retour neren met behulp van de [trans formatie van claims](/azure/active-directory-b2c/claims-transformation-technical-profile).
+U kunt de claim ook gebruiken `tid` Als u [aangepaste beleids regels](../../active-directory-b2c/custom-policy-get-started.md) gebruikt in azure AD B2C. Aangepaste beleids regels kunnen aanvullende claims naar uw toepassing retour neren met behulp van de [trans formatie van claims](/azure/active-directory-b2c/claims-transformation-technical-profile).
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>Risico beperking voor ' ontbreekt in het token antwoord '
 
-Een optie is om de `name` claim te gebruiken in `preferred_username`plaats van. Als u de `name` claim wilt toevoegen aan de id-tokens die zijn uitgegeven door Azure AD B2C, selecteert u **weergave naam** wanneer u de gebruikers stroom configureert.
+Een optie is om de claim te gebruiken `name` in plaats van `preferred_username` . Als u de claim wilt toevoegen aan de `name` ID-tokens die zijn uitgegeven door Azure AD B2C, selecteert u **weergave naam** wanneer u de gebruikers stroom configureert.
 
 Zie [zelf studie: gebruikers stromen maken in azure AD B2C](../../active-directory-b2c/tutorial-create-user-flows.md)voor meer informatie over het opgeven welke claims door uw gebruikers stromen worden geretourneerd.
 

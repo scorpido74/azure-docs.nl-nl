@@ -9,10 +9,9 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 2ce3afb533aa33b88b15510eacc88c0884811cc6
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792595"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Azure Disk Encryption met Azure AD inschakelen op virtuele Linux-machines (vorige versie)
@@ -146,7 +145,7 @@ De volgende tabel bevat de para meters van Resource Manager-sjablonen voor besta
 | --- | --- |
 | AADClientID | De client-ID van de Azure AD-toepassing met machtigingen voor het schrijven van geheimen naar de sleutel kluis. |
 | AADClientSecret | Client geheim van de Azure AD-toepassing met machtigingen voor het schrijven van geheimen naar uw sleutel kluis. |
-| keyVaultName | De naam van de sleutel kluis waarnaar de sleutel moet worden geüpload. U kunt deze ophalen met behulp van de Azure `az keyvault show --name "MySecureVault" --query KVresourceGroup`cli-opdracht. |
+| keyVaultName | De naam van de sleutel kluis waarnaar de sleutel moet worden geüpload. U kunt deze ophalen met behulp van de Azure CLI-opdracht `az keyvault show --name "MySecureVault" --query KVresourceGroup` . |
 |  keyEncryptionKeyURL | De URL van de coderings sleutel die wordt gebruikt om de gegenereerde sleutel te versleutelen. Deze para meter is optioneel als u **nokek** selecteert in de vervolg keuzelijst **UseExistingKek** . Als u **Kek** selecteert in de vervolg keuzelijst **UseExistingKek** , moet u de _keyEncryptionKeyURL_ -waarde invoeren. |
 | volumeType | Type volume waarop de versleutelings bewerking wordt uitgevoerd. Geldige ondersteunde waarden zijn _besturings systeem_ of _alle_. (Zie Ondersteunde Linux-distributies en hun versies voor besturings systeem-en gegevens schijven in de sectie vereisten eerder.) |
 | sequenceVersion | Sequentie versie van de BitLocker-bewerking. Verhoog dit versie nummer elke keer dat er een schijf versleutelings bewerking wordt uitgevoerd op dezelfde VM. |

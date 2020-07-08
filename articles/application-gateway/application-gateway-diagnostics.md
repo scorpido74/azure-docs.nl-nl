@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.openlocfilehash: 6829efa007e9e67866bdc0efbca4d095155c35e2
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82889708"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Back-end status-en Diagnostische logboeken voor Application Gateway
@@ -39,7 +38,7 @@ Het status rapport van de back-end weerspiegelt de uitvoer van de Application Ga
 
 ### <a name="view-back-end-health-through-the-portal"></a>Status van de back-end weer geven via de portal
 
-In de portal wordt de status van de back-end automatisch ontvangen. In een bestaande toepassings gateway selecteert u **Monitoring** > **status van back-end**controleren.
+In de portal wordt de status van de back-end automatisch ontvangen. In een bestaande toepassings gateway selecteert u **Monitoring**  >  **status van back-end**controleren.
 
 Elk lid van de back-end-pool wordt op deze pagina vermeld (of het nu een NIC, IP of FQDN-naam is). De naam van de back-end, de poort, de HTTP-instellingen voor de back-end en de integriteits status worden weer gegeven. Geldige waarden voor de integriteits status zijn **in orde**, **beschadigd**en **onbekend**.
 
@@ -50,7 +49,7 @@ Elk lid van de back-end-pool wordt op deze pagina vermeld (of het nu een NIC, IP
 
 ### <a name="view-back-end-health-through-powershell"></a>Status van de back-end weer geven via Power shell
 
-De volgende Power shell-code laat zien hoe u de status van de back `Get-AzApplicationGatewayBackendHealth` -end kunt weer geven met behulp van de cmdlet:
+De volgende Power shell-code laat zien hoe u de status van de back-end kunt weer geven met behulp van de `Get-AzApplicationGatewayBackendHealth` cmdlet:
 
 ```powershell
 Get-AzApplicationGatewayBackendHealth -Name ApplicationGateway1 -ResourceGroupName Contoso
@@ -113,11 +112,11 @@ U hebt drie opties voor het opslaan van uw logboeken:
 
 Activiteitenlogboekregistratie is automatisch ingeschakeld voor elke Resource Manager-resource. U moet logboek registratie van toegang en prestaties inschakelen om te beginnen met het verzamelen van de gegevens die beschikbaar zijn via deze logboeken. Als u logboek registratie wilt inschakelen, gebruikt u de volgende stappen:
 
-1. Noteer de resource-ID van uw opslagaccount waar de logboekgegevens worden opgeslagen. Deze waarde heeft de volgende indeling: /abonnementen/\<subscriptionId\>/resourceGroups/\<resourcegroepnaam\>/providers/Microsoft.Storage/storageAccounts/\<opslagaccountnaam\>. U kunt elk opslagaccount in uw abonnement gebruiken. U kunt de Azure-portal gebruiken om deze informatie te vinden.
+1. Noteer de resource-ID van uw opslagaccount waar de logboekgegevens worden opgeslagen. Deze waarde is van het formulier:/Subscriptions/ \<subscriptionId\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Storage/storageAccounts/ \<storage account name\> . U kunt elk opslagaccount in uw abonnement gebruiken. U kunt de Azure-portal gebruiken om deze informatie te vinden.
 
     ![Portal: Resource-ID voor opslag account](./media/application-gateway-diagnostics/diagnostics1.png)
 
-2. Noteer de resource-ID van uw toepassings gateway waarvoor logboek registratie is ingeschakeld. Deze\<waarde heeft de indeling:/Subscriptions/subscriptionId\>/ResourceGroups/\<resource groep name\>/providers/Microsoft.Network/applicationGateways/\<Application Gateway name.\> U kunt de portal gebruiken om deze informatie te vinden.
+2. Noteer de resource-ID van uw toepassings gateway waarvoor logboek registratie is ingeschakeld. Deze waarde is van het formulier:/Subscriptions/ \<subscriptionId\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Network/applicationGateways/ \<application gateway name\> . U kunt de portal gebruiken om deze informatie te vinden.
 
     ![Portal: Resource-ID voor toepassings gateway](./media/application-gateway-diagnostics/diagnostics2.png)
 

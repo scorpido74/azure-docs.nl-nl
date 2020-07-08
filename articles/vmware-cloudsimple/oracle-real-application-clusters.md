@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: f657e18d7185d6b3c63ac8f1424da9d36d4189e9
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82793037"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimaliseer uw CloudSimple-Privécloud voor het installeren van Oracle RAC
@@ -44,16 +43,16 @@ Virtuele Oracle RAC-machines hebben meerdere schijven die worden gebruikt voor e
 
 In het volgende voor beeld worden de schijven gebruikt die in de onderstaande tabel zijn gedefinieerd.
 
-| Schijf                                      | Doel                                       | Gedeelde schijf |
+| Schijf                                      | Functie                                       | Gedeelde schijf |
 |-------------------------------------------|-----------------------------------------------|-------------|
-| Besturingssysteem                                        | Besturingssysteemschijf                         | Nee          |
-| YRASTER                                      | Installatie locatie voor Oracle grid software     | Nee          |
-| ENDDATABASE                                  | Installatie locatie voor Oracle data base-software | Nee          |
-| ORAHOME                                   | Basis locatie voor binaire bestanden van Oracle-data base    | Nee          |
-| BESTAND1, BESTAND2, DATA3, DATA4                | Schijf waarop Oracle-database bestanden worden opgeslagen   | Ja         |
-| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Logboek schijven opnieuw uitvoeren                                | Ja         |
-| OCR1, OCR2, OCR3, OCR4, OCR5              | Stem schijven                                  | Ja         |
-| FRA1, FRA2                                | Schijven voor snel herstel gebied                      | Ja         |
+| OS                                        | Besturingssysteemschijf                         | No          |
+| YRASTER                                      | Installatie locatie voor Oracle grid software     | No          |
+| ENDDATABASE                                  | Installatie locatie voor Oracle data base-software | No          |
+| ORAHOME                                   | Basis locatie voor binaire bestanden van Oracle-data base    | No          |
+| BESTAND1, BESTAND2, DATA3, DATA4                | Schijf waarop Oracle-database bestanden worden opgeslagen   | Yes         |
+| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Logboek schijven opnieuw uitvoeren                                | Yes         |
+| OCR1, OCR2, OCR3, OCR4, OCR5              | Stem schijven                                  | Yes         |
+| FRA1, FRA2                                | Schijven voor snel herstel gebied                      | Yes         |
 
 ![Schijf configuratie van de virtuele Oracle-machine](media/oracle-vmdk.png)
 
@@ -174,8 +173,8 @@ met vSAN-beleid worden de fouten gedefinieerd die moeten worden toegestaan en sc
 3. Selecteer in het menu links **VM-opslag beleid** en selecteer vervolgens **een VM-opslag beleid maken**.
 4. Voer een duidelijke naam in voor het beleid en klik op **volgende**.
 5. Selecteer in de sectie **beleids structuur** de optie **regels inschakelen voor vSAN-opslag** en klik op **volgende**.
-6. Selecteer in de sectie**Beschik baarheid** van **vSAN** >  **geen** voor site ramp tolerantie. Selecteer de optie voor **RAID-mirroring** voor de gewenste FTT als u niet wilt dat deze kan worden toegelaten.
-    ![vSAN-](media/oracle-rac-storage-wizard-vsan.png)instellingen.
+6. Selecteer in **vSAN**de  >  sectie**Beschik baarheid** van vSAN **geen** voor site ramp tolerantie. Selecteer de optie voor **RAID-mirroring** voor de gewenste FTT als u niet wilt dat deze kan worden toegelaten.
+    ![vSAN-instellingen ](media/oracle-rac-storage-wizard-vsan.png) .
 7. Selecteer in de sectie **Geavanceerd** het aantal schijf Stripes per object. Voor object ruimte reservering selecteert u **dik ingericht**. Selecteer **object controlesom uitschakelen**. Klik op **volgende**.
 8. Volg de instructies op het scherm om de lijst met compatibele vSAN-gegevens opslag te bekijken, de instellingen te controleren en de installatie te volt ooien.
 
@@ -247,11 +246,11 @@ Regels voor affiniteit tussen de virtuele machine en de host zorgen ervoor dat d
 2. Meld u aan bij de vSphere-client van uw Privécloud.
 3. Selecteer in de vSphere-client het cluster waar Oracle Vm's worden geïmplementeerd en klik op **configureren**.
 4. Onder configureren selecteert u **virtuele machines/hostgroepen**.
-5. Klik **+** op.
+5. Klik op **+** .
 6. Voeg een VM-groep toe. Selecteer de **VM-groep** als het type. Voer de naam van de groep in. Selecteer de virtuele machines en klik vervolgens op **OK** om de groep te maken.
 6. Voeg een hostgroep toe. Selecteer **hostgroep** als het type. Voer de naam van de groep in. Selecteer de hosts waar de virtuele machines worden uitgevoerd en klik vervolgens op **OK** om de groep te maken.
 7. Als u een regel wilt maken, klikt u op **virtuele machine/host-regels**.
-8. Klik **+** op.
+8. Klik op **+** .
 9. Voer een naam in voor de regel en Schakel **inschakelen in**.
 10. Selecteer **virtual machines als host**voor het regel type.
 11. Selecteer de VM-groep die de Oracle Vm's bevat.
@@ -259,7 +258,7 @@ Regels voor affiniteit tussen de virtuele machine en de host zorgen ervoor dat d
 13. Selecteer de hostgroep die u hebt gemaakt.
 14. Klik op **OK** om de regel te maken.
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Referenties
 
 * [Over vSAN-beleid](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-08911FD3-2462-4C1C-AE81-0D4DBC8F7990.html)
 * [VMware multi-Writer-kenmerk voor gedeelde Vmdk's](https://docs.vmware.com/en/VMware-Cloud-on-AWS/solutions/VMware-Cloud-on-AWS.df6735f8b729fee463802083d46fdc75/GUID-A7642A82B3D6C5F7806DB40A3F2766D9.html)

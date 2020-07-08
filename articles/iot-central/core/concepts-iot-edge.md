@@ -8,15 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 89d068fbd835a5b4f8886a2ed77691f94a701bb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759101"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge apparaten verbinden met een Azure IoT Central-toepassing
 
-*Dit artikel is van toepassing op oplossingen bouwers en ontwikkel aars van apparaten.*
+*Dit artikel is van toepassing op oplossingenbouwers en apparaatontwikkelaars.*
 
 IoT Edge bestaat uit drie onderdelen:
 
@@ -30,7 +29,7 @@ Met een **apparaatprofiel** worden de mogelijkheden van uw apparaat en IOT Edge 
 
 ## <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>De relaties van downstream-apparaten met een gateway en modules
 
-Downstream-apparaten kunnen via de `$edgeHub` module verbinding maken met een IOT Edge gateway-apparaat. Dit IoT Edge apparaat wordt in dit scenario een transparante gateway.
+Downstream-apparaten kunnen via de module verbinding maken met een IoT Edge gateway-apparaat `$edgeHub` . Dit IoT Edge apparaat wordt in dit scenario een transparante gateway.
 
 ![Diagram van transparante gateway](./media/concepts-iot-edge/gateway-transparent.png)
 
@@ -38,11 +37,11 @@ Downstream-apparaten kunnen ook via een aangepaste module verbinding maken met e
 
 ![Diagram van de verbinding van de aangepaste module](./media/concepts-iot-edge/gateway-module.png)
 
-In het volgende diagram ziet u een verbinding met een IoT Edge gateway apparaat via beide typen modules ( `$edgeHub`aangepast en).  
+In het volgende diagram ziet u een verbinding met een IoT Edge gateway apparaat via beide typen modules (aangepast en `$edgeHub` ).  
 
 ![Diagram van verbinding maken via beide verbindings modules](./media/concepts-iot-edge/gateway-module-transparent.png)
 
-Ten slotte kunnen downstream-apparaten via meerdere aangepaste modules verbinding maken met een IoT Edge gateway-apparaat. In het volgende diagram ziet u downstream-apparaten die verbinding maken via een aangepaste Modbus-module, een `$edgeHub` afgeleide aangepaste module en de module. 
+Ten slotte kunnen downstream-apparaten via meerdere aangepaste modules verbinding maken met een IoT Edge gateway-apparaat. In het volgende diagram ziet u downstream-apparaten die verbinding maken via een aangepaste Modbus-module, een afgeleide aangepaste module en de `$edgeHub` module. 
 
 ![Diagram van verbinding maken via meerdere aangepaste modules](./media/concepts-iot-edge/gateway-module2-transparent.png)
 

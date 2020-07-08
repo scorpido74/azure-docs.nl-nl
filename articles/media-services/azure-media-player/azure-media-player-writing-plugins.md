@@ -7,10 +7,9 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.openlocfilehash: 7902dfdf81d8e44921a5218d56effc90f433f02d
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857400"
 ---
 # <a name="writing-plugins-for-azure-media-player"></a>Invoeg toepassingen schrijven voor Azure Media Player #
@@ -33,7 +32,7 @@ Schrijf uw Java script in een functie zoals:
     }).call(this);
 ```
 
-U kunt uw code rechtstreeks in uw HTML-pagina binnen `<script>` Tags of in een extern java script-bestand schrijven. Als u dit wel doet, moet u het Java script-bestand toevoegen aan `<head>` de van uw HTML-pagina *na* het amp-script.
+U kunt uw code rechtstreeks in uw HTML-pagina binnen `<script>` Tags of in een extern java script-bestand schrijven. Als u dit wel doet, moet u het Java script-bestand toevoegen aan de `<head>` van uw HTML-pagina *na* het amp-script.
 
 Voorbeeld:
 
@@ -91,4 +90,4 @@ De [Galerie met invoeg](https://aka.ms/ampplugins) toepassingen bevat verschille
 
 ## <a name="next-steps"></a>Volgende stappen ##
 
-- [Snelstartgids Azure Media Player](azure-media-player-quickstart.md)
+- [Quickstart voor Azure Media Player](azure-media-player-quickstart.md)

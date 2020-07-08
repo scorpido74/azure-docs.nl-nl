@@ -11,10 +11,9 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: e1eb105671883d88d8fe34b9741d402d311556a9
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82859014"
 ---
 # <a name="use-geo-redundancy-to-design-highly-available-applications"></a>Geo-redundantie gebruiken om Maxi maal beschik bare toepassingen te ontwerpen
@@ -196,7 +195,7 @@ Geografisch redundante opslag werkt door trans acties te repliceren van de prima
 
 In de volgende tabel ziet u een voor beeld van wat er kan gebeuren wanneer u de details van een werk nemer bijwerkt om ze lid te maken van de rol *Administrators* . Voor dit voor beeld moet u de entiteit **werk nemer** bijwerken en een entiteit **rol beheerder** bijwerken met een telling van het totale aantal beheerders. U ziet hoe de updates in de secundaire regio in de juiste volg orde worden toegepast.
 
-| **Tegelijk** | **Transactie**                                            | **Replicatie**                       | **Tijdstip van de laatste synchronisatie** | **Daardoor** |
+| **Tijd** | **Transactie**                                            | **Replicatie**                       | **Tijdstip van de laatste synchronisatie** | **Resultaat** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | Trans actie A: <br> Werk nemer invoegen <br> entiteit in primaire |                                   |                    | Trans actie A ingevoegd op primaire,<br> nog niet gerepliceerd. |
 | T1       |                                                            | Trans actie A <br> gerepliceerd naar<br> primaire | T1 | Trans actie A gerepliceerd naar secundair. <br>Laatste synchronisatie tijd bijgewerkt.    |

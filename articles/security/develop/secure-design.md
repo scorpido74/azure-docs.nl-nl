@@ -14,10 +14,9 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 533f287693ca8aac76a3233674d95f3f49d4ae22
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857172"
 ---
 # <a name="design-secure-applications-on-azure"></a>Veilige toepassingen ontwerpen in azure
@@ -27,7 +26,7 @@ In dit artikel komen de volgende SDL-fasen aan bod:
 
 - Training
 - Vereisten
-- Ontwerpen
+- Ontwerp
 
 ## <a name="training"></a>Training
 Voordat u begint met het ontwikkelen van uw Cloud toepassing, is het tijd om inzicht te krijgen in de beveiliging en privacy van Azure. Als u deze stap uitvoert, kunt u het aantal en de ernst van de zwakke plekken in uw toepassing beperken. U bent er meer voor bereid om op de juiste manier te reageren op de steeds veranderende bedreigings breedte.
@@ -97,7 +96,7 @@ U wilt echter ook [aannemen dat er](https://docs.microsoft.com/azure/devops/lear
 
   - Hoe kan ik de aanval herstellen, zoals gegevens lekken of knoeien?
 
-## <a name="design"></a>Ontwerpen
+## <a name="design"></a>Ontwerp
 
 De ontwerp fase is essentieel voor het opstellen van aanbevolen procedures voor ontwerp-en functionele specificaties. Het is ook essentieel voor het uitvoeren van een risico analyse waardoor beveiligings-en privacy-problemen in een project worden verholpen.
 
@@ -128,7 +127,7 @@ U kunt profiteren van Ide's (Full-complete Integrated Development Environments) 
 
 Micro soft biedt diverse [talen, frameworks en hulpprogram ma's](https://docs.microsoft.com/azure/index?pivot=sdkstools&panel=sdkstools-all) die u kunt gebruiken om toepassingen te ontwikkelen in Azure. Een voor beeld is [Azure voor .net-en .net core-ontwikkel aars](https://docs.microsoft.com/dotnet/azure/). Voor elke taal en elk Framework dat we bieden, vindt u Quick starts, zelf studies en API-verwijzingen waarmee u snel aan de slag kunt.
 
-Azure biedt tal van services die u kunt gebruiken voor het hosten van websites en webtoepassingen. Met deze services kunt u ontwikkelen in uw favoriete taal, of dat nu .NET, .NET core, Java, Ruby, node. js, PHP of python is.
+Azure biedt tal van services die u kunt gebruiken voor het hosten van websites en webtoepassingen. Met deze services kunt u ontwikkelen in uw favoriete taal, of dat nu .NET, .NET core, Java, Ruby, Node.js, PHP of python is.
 [Azure App Service web apps](../../app-service/overview.md) (Web apps) is een van deze services.
 
 Web Apps voegt de kracht van Microsoft Azure toe aan uw toepassing. Het bevat beveiliging, taak verdeling, automatisch schalen en geautomatiseerd beheer. U kunt ook profiteren van de DevOps-mogelijkheden in Web Apps, zoals pakket beheer, faserings omgevingen, aangepaste domeinen, SSL/TLS-certificaten en doorlopende implementatie vanuit Azure DevOps, GitHub, docker hub en andere bronnen.
@@ -151,7 +150,7 @@ Ter ondersteuning van het proces van bedreigings modellering hebben we de [sdl-T
 
 Het ontwerpen van het ontwerp van de toepassing en het opsommen van [STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) Threats: vervalsing, knoeien, afwijzing, vrijgeven van informatie, denial of service en uitbrei ding van bevoegdheden: in alle vertrouwens grenzen is een doel matige manier bewezen om ontwerp fouten vroegtijdig op te vangen. De volgende tabel geeft een lijst van de STRIDE-bedreigingen en biedt enkele voor beelden van oplossingen die gebruikmaken van de functies van Azure. Deze oplossingen werken niet in elke situatie.
 
-| Bestaat | Beveiligings eigenschap | Potentieel beperking van het Azure-platform |
+| Bedreiging | Beveiligings eigenschap | Potentieel beperking van het Azure-platform |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Adresvervalsing (spoofing)               | Verificatie        | [HTTPS-verbindingen vereisen](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
 | Knoeien              | Gegevensintegriteit             | SSL/TLS-certificaten valideren. Toepassingen die gebruikmaken van SSL/TLS moeten de X. 509-certificaten van de entiteiten waarmee ze verbinding maken, volledig controleren. Gebruik Azure Key Vault certificaten om [uw x509-certificaten te beheren](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates). |

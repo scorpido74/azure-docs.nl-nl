@@ -10,10 +10,9 @@ ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
 ms.openlocfilehash: 38cfab8a3b73eeef28249f53bd2f5c56e26b21a1
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82854111"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Een zelf-hostende gateway implementeren op Kubernetes
@@ -22,7 +21,7 @@ In dit artikel worden de stappen beschreven voor het implementeren van het zelf-
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Lees de volgende snelstartgids: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
+- Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
 - Maak een Kubernetes-cluster.
    > [!TIP]
    > [Clusters met één knoop punt](https://kubernetes.io/docs/setup/#learning-environment) werken goed voor ontwikkelings-en evaluatie doeleinden. Gebruik [Kubernetes Certified](https://kubernetes.io/partners/#conformance) multi-node clusters on-premises of in de Cloud voor productie werkbelastingen.
@@ -110,7 +109,7 @@ Zie de [Kubernetes-website](https://kubernetes.io/docs/concepts/services-network
 ### <a name="configuration-backup"></a>Configuratie back-up
 Zie [zelf-hostende gateway-overzicht](self-hosted-gateway-overview.md#connectivity-to-azure)voor meer informatie over het gedrag van zelf-hostende gateway in de aanwezigheid van een tijdelijke Azure-verbindings onderbreking.
 
-Configureer een lokaal opslag volume voor de zelf-hostende gateway container, zodat er een back-up van de meest recente gedownloade configuratie kan worden opgeslagen. Als de verbinding is verbroken, kan het opslag volume de back-up gebruiken wanneer de computer opnieuw wordt opgestart. Het pad naar het volume koppelt moet zijn <code>/apim/config</code>. Bekijk een voor beeld op [github](https://github.com/Azure/api-management-self-hosted-gateway/blob/master/examples/self-hosted-gateway-with-configuration-backup.yaml).
+Configureer een lokaal opslag volume voor de zelf-hostende gateway container, zodat er een back-up van de meest recente gedownloade configuratie kan worden opgeslagen. Als de verbinding is verbroken, kan het opslag volume de back-up gebruiken wanneer de computer opnieuw wordt opgestart. Het pad naar het volume koppelt moet zijn <code>/apim/config</code> . Bekijk een voor beeld op [github](https://github.com/Azure/api-management-self-hosted-gateway/blob/master/examples/self-hosted-gateway-with-configuration-backup.yaml).
 Zie de [Kubernetes-website](https://kubernetes.io/docs/concepts/storage/volumes/)voor meer informatie over opslag in Kubernetes.
 
 ### <a name="local-logs-and-metrics"></a>Lokale logboeken en metrische gegevens

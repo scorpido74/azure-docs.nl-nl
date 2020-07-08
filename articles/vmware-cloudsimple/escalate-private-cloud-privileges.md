@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 63dc18c522a1e2e3b03bdf806945e0be67774b18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81870479"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Persoonlijke Cloud vCenter-bevoegdheden escaleren vanuit de CloudSimple-Portal
@@ -63,7 +62,7 @@ De escalatie van bevoegdheden begint en eindigt tot het einde van het geselectee
 
 Als u meer tijd nodig hebt om uw taken te volt ooien, kunt u de escalatie periode van de bevoegdheid uitbreiden.  Kies het extra tijds interval voor het escaleren waarmee u de beheer taken kunt volt ooien.
 
-1. Selecteer op de **resources** > **persoonlijke** Clouds in de CloudSimple-Portal de privécloud waarvoor u de escalatie van bevoegdheden wilt uitbreiden.
+1. Selecteer op de **resources**  >  **persoonlijke** Clouds in de CloudSimple-Portal de privécloud waarvoor u de escalatie van bevoegdheden wilt uitbreiden.
 
 2. Klik onder aan het tabblad samen vatting op **uitbrei ding van bevoegdheden uitbreiden**.
 
@@ -77,7 +76,7 @@ Als u meer tijd nodig hebt om uw taken te volt ooien, kunt u de escalatie period
 
 Als uw beheer taken zijn voltooid, moet u uw bevoegdheden deactiveren.  
 
-1. Selecteer op de **resources** > **persoonlijke** Clouds in de CloudSimple-Portal de privécloud waarvoor u de bevoegdheden wilt deescaleren.
+1. Selecteer op de **resources**  >  **persoonlijke** Clouds in de CloudSimple-Portal de privécloud waarvoor u de bevoegdheden wilt deescaleren.
 
 2. Klik op **deactiveren**.
 

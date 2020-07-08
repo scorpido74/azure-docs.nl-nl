@@ -16,10 +16,9 @@ ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48b9f2dc64d1d3ddd8253a253dcab8ef972032f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81869748"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Zelf studie: LinkedIn Sales Navigator configureren voor automatische gebruikers inrichting
@@ -99,7 +98,7 @@ De eerste stap bestaat uit het ophalen van uw LinkedIn-toegangs token. Als u een
 
 11. Vul de volgende velden in onder **beheerders referenties** :
 
-    * Voer https://developer.linkedin.comin het veld **Tenant-URL** in.
+    * Voer in het veld **Tenant-URL** in https://developer.linkedin.com .
 
     * In het veld **geheim token** voert u het toegangs token in dat u in stap 1 hebt gegenereerd en klikt u op **verbinding testen** .
 
@@ -124,4 +123,4 @@ Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-p
 ## <a name="additional-resources"></a>Aanvullende resources
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

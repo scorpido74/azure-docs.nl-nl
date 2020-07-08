@@ -5,10 +5,9 @@ ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.openlocfilehash: 5705b70dd210c336fc2baa4da07f96f2ad249f64
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82800648"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Veelgestelde vragen: back-ups maken van virtuele Azure-machines
@@ -65,7 +64,7 @@ Ja. Back-ups worden uitgevoerd wanneer een machine wordt afgesloten. Het herstel
 
 Ja. U kunt de back-uptaak annuleren in een status van het maken van de **moment opname** . U kunt een taak niet annuleren als de gegevens overdracht van de moment opname wordt uitgevoerd.
 
-### <a name="i-enabled-a-lock-on-the-resource-group-created-by-azure-backup-service-for-example-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>Ik heb een vergren deling ingeschakeld voor de resource groep die is gemaakt door Azure Backup `AzureBackupRG_<geo>_<number>`service (bijvoorbeeld). Worden mijn back-ups gewoon uitgevoerd?
+### <a name="i-enabled-a-lock-on-the-resource-group-created-by-azure-backup-service-for-example-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>Ik heb een vergren deling ingeschakeld voor de resource groep die is gemaakt door Azure Backup Service (bijvoorbeeld `AzureBackupRG_<geo>_<number>` ). Worden mijn back-ups gewoon uitgevoerd?
 
 Als u de resource groep die is gemaakt door de Azure Backup-Service vergrendelt, mislukken back-ups als er een maximum limiet van 18 herstel punten is.
 
@@ -143,7 +142,7 @@ Met de functie voor [direct terugzetten](backup-instant-restore-capability.md) k
 
 ### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>Wat gebeurt er wanneer de sleutel kluis instellingen voor de versleutelde VM worden gewijzigd?
 
-Nadat u de sleutel kluis instellingen voor de versleutelde virtuele machine hebt gewijzigd, blijven back-ups werken met de nieuwe set details. Na het herstellen van een herstel punt vóór de wijziging, moet u echter de geheimen in een sleutel kluis herstellen voordat u de virtuele machine kunt maken. Zie dit [artikel](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret)voor meer informatie.
+Nadat u de sleutel kluis instellingen voor de versleutelde virtuele machine hebt gewijzigd, blijven back-ups werken met de nieuwe set details. Na het herstellen van een herstel punt vóór de wijziging, moet u echter de geheimen in een sleutel kluis herstellen voordat u de virtuele machine kunt maken. Zie dit [artikel](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret) voor meer informatie.
 
 Voor bewerkingen zoals geheime/sleutel rollen is deze stap niet vereist en dezelfde sleutel kluis kan na het herstellen worden gebruikt.
 
@@ -166,9 +165,9 @@ Er wordt een back-up van de virtuele machine gemaakt met behulp van de instellin
 2. Voer de volgende stappen uit om virtuele machines te verplaatsen die zijn geconfigureerd met Azure Backup:
 
    1. Zoek de locatie van de virtuele machine.
-   2. Een resource groep zoeken met het volgende naamgevings patroon `AzureBackupRG_<location of your VM>_1`:. Bijvoorbeeld *AzureBackupRG_westus2_1*
+   2. Een resource groep zoeken met het volgende naamgevings patroon: `AzureBackupRG_<location of your VM>_1` . Bijvoorbeeld *AzureBackupRG_westus2_1*
    3. Selecteer in het Azure Portal de optie **verborgen typen weer geven**.
-   4. Zoek de resource met het type **micro soft. Compute/restorePointCollections** die het `AzureBackup_<name of your VM that you're trying to move>_###########`naamgevings patroon heeft.
+   4. Zoek de resource met het type **micro soft. Compute/restorePointCollections** die het naamgevings patroon heeft `AzureBackup_<name of your VM that you're trying to move>_###########` .
    5. Deze resource verwijderen. Met deze bewerking worden alleen de directe herstel punten verwijderd, niet de gegevens waarvan een back-up is gemaakt in de kluis.
    6. Nadat de bewerking delete is voltooid, kunt u de virtuele machine verplaatsen.
 

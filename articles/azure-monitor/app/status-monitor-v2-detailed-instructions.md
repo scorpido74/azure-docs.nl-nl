@@ -6,10 +6,9 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 8f6134e8f8fdb9af3f578afaf0670c32a3896e01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81766863"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights-agent (voorheen met de naam Status Monitor v2): gedetailleerde instructies
@@ -32,7 +31,7 @@ Power Shell heeft machtigingen op beheerders niveau nodig om wijzigingen aan te 
 - Naslag [informatie: over uitvoerings beleid](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) en [Set-ExecutionPolicy](
 https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
 ).
-- Opdracht: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`.
+- Opdracht: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process` .
 - Optionele para meter:
     - `-Force`. De bevestigings prompt wordt omzeild.
 
@@ -50,7 +49,7 @@ https:/go.microsoft.com/fwlink/?LinkID=135170.
 
 ## <a name="prerequisites-for-powershell"></a>Vereisten voor Power shell
 
-Controleer uw exemplaar van Power shell door de `$PSVersionTable` opdracht uit te voeren.
+Controleer uw exemplaar van Power shell door de opdracht uit te voeren `$PSVersionTable` .
 Met deze opdracht wordt de volgende uitvoer gegenereerd:
 
 
@@ -82,7 +81,7 @@ Met deze stappen wordt de server voor bereid om modules te downloaden van PowerS
 2. Installeer de NuGet-pakket provider.
     - Beschrijving: u hebt deze provider nodig om te communiceren met op NuGet gebaseerde opslag plaatsen zoals PowerShell Gallery.
     - Referentie: [install-package provider](https://docs.microsoft.com/powershell/module/packagemanagement/install-packageprovider?view=powershell-6).
-    - Opdracht: `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201`.
+    - Opdracht: `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201` .
     - Optionele para meters:
         - `-Proxy`. Hiermee geeft u een proxy server voor de aanvraag op.
         - `-Force`. De bevestigings prompt wordt omzeild.
@@ -100,7 +99,7 @@ Met deze stappen wordt de server voor bereid om modules te downloaden van PowerS
 3. Configureer PowerShell Gallery als een vertrouwde opslag plaats.
     - Beschrijving: standaard is PowerShell Gallery een niet-vertrouwde opslag plaats.
     - Verwijzing: [set-PSRepository](https://docs.microsoft.com/powershell/module/powershellget/set-psrepository?view=powershell-6).
-    - Opdracht: `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted`.
+    - Opdracht: `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted` .
     - Optionele para meter:
         - `-Proxy`. Hiermee geeft u een proxy server voor de aanvraag op.
 
@@ -112,12 +111,12 @@ Met deze stappen wordt de server voor bereid om modules te downloaden van PowerS
         'PSGallery'?
         [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"):
 
-    U kunt deze wijziging bevestigen en alle PSRepositories controleren door de `Get-PSRepository` opdracht uit te voeren.
+    U kunt deze wijziging bevestigen en alle PSRepositories controleren door de opdracht uit te voeren `Get-PSRepository` .
 
 4. Installeer de nieuwste versie van PowerShellGet.
-    - Beschrijving: deze module bevat het hulp programma waarmee u andere modules van PowerShell Gallery kunt ophalen. Versie 1.0.0.1 wordt geleverd met Windows 10 en Windows Server. Versie 1.6.0 of hoger is vereist. Voer de `Get-Command -Module PowerShellGet` opdracht uit om te bepalen welke versie is geïnstalleerd.
+    - Beschrijving: deze module bevat het hulp programma waarmee u andere modules van PowerShell Gallery kunt ophalen. Versie 1.0.0.1 wordt geleverd met Windows 10 en Windows Server. Versie 1.6.0 of hoger is vereist. Voer de opdracht uit om te bepalen welke versie is geïnstalleerd `Get-Command -Module PowerShellGet` .
     - Naslag informatie: [PowerShellGet installeren](/powershell/scripting/gallery/installing-psget).
-    - Opdracht: `Install-Module -Name PowerShellGet`.
+    - Opdracht: `Install-Module -Name PowerShellGet` .
     - Optionele para meters:
         - `-Proxy`. Hiermee geeft u een proxy server voor de aanvraag op.
         - `-Force`. Hiermee wordt de waarschuwing ' reeds geïnstalleerd ' omzeild en wordt de nieuwste versie geïnstalleerd.
@@ -141,7 +140,7 @@ Met deze stappen wordt de module AZ. ApplicationMonitor gedownload van PowerShel
 2. Voer Power shell uit als beheerder met een verhoogd uitvoerings beleid.
 3. Installeer de module AZ. ApplicationMonitor.
     - Verwijzing: [install-module](https://docs.microsoft.com/powershell/module/powershellget/install-module?view=powershell-6).
-    - Opdracht: `Install-Module -Name Az.ApplicationMonitor`.
+    - Opdracht: `Install-Module -Name Az.ApplicationMonitor` .
     - Optionele para meters:
         - `-Proxy`. Hiermee geeft u een proxy server voor de aanvraag op.
         - `-AllowPrerelease`. Hiermee kunnen alpha-en bèta versies worden geïnstalleerd.
@@ -200,19 +199,19 @@ Als u de module in een andere Directory installeert, importeert u de module hand
 > Sla de inhoud van het pakket op in de gewenste runtime Directory en controleer of de toegangs machtigingen lezen maar niet schrijven toestaan.
 
 1. Wijzig de extensie in. zip en pak de inhoud van het pakket uit in de gewenste installatie directory.
-2. Zoek het bestandspad AZ. ApplicationMonitor. psd1.
+2. Zoek het bestandspad van Az.ApplicationMonitor.psd1.
 3. Voer Power shell uit als beheerder met een verhoogd uitvoerings beleid.
-4. Laad de module met behulp `Import-Module Az.ApplicationMonitor.psd1` van de opdracht.
+4. Laad de module met behulp van de `Import-Module Az.ApplicationMonitor.psd1` opdracht.
     
 
 ## <a name="route-traffic-through-a-proxy"></a>Verkeer via een proxy routeren
 
 Wanneer u een computer op uw particuliere intranet bewaakt, moet u HTTP-verkeer via een proxy routeren.
 
-De Power shell-opdrachten voor het downloaden en installeren van AZ. ApplicationMonitor van `-Proxy` de PowerShell Gallery een para meter ondersteunen.
+De Power shell-opdrachten voor het downloaden en installeren van AZ. ApplicationMonitor van de PowerShell Gallery een `-Proxy` para meter ondersteunen.
 Raadpleeg de voor gaande instructies wanneer u de installatie scripts schrijft.
 
-De telemetrie van uw app naar micro soft moet worden verzonden met de Application Insights SDK. We raden u aan proxy-instellingen voor uw app te configureren in het bestand Web. config. Zie [Application Insights FAQ: proxy passthrough (Engelstalig](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough)) voor meer informatie.
+De telemetrie van uw app naar micro soft moet worden verzonden met de Application Insights SDK. U kunt het beste proxy-instellingen voor uw app configureren in uw web.config-bestand. Zie [Application Insights FAQ: proxy passthrough (Engelstalig](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough)) voor meer informatie.
 
 
 ## <a name="enable-monitoring"></a>Bewaking inschakelen

@@ -16,10 +16,9 @@ ms.date: 07/12/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23d2694aa4936090367cf881379f81911ae70f9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81870545"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Zelf studie: integratie Azure Active Directory met Jobscience
@@ -134,7 +133,7 @@ In deze sectie schakelt u eenmalige aanmelding voor Azure AD in de Azure Portal 
 
 1. Ga naar **Setup**.
    
-   ![Instellen](./media/jobscience-tutorial/IC784358.png "Instellen")
+   ![Installatie](./media/jobscience-tutorial/IC784358.png "Instellen")
 
 1. Klik in het navigatie deel venster links in de sectie **beheren** op **domein beheer** om de gerelateerde sectie uit te vouwen en klik vervolgens op **mijn domein** om de pagina **mijn domein** te openen. 
    
@@ -172,7 +171,7 @@ In deze sectie schakelt u eenmalige aanmelding voor Azure AD in de Azure Portal 
 
     f. Als **SAML-identiteits locatie**selecteert u **identiteit in het NameIdentfier-element van de instructie subject**.
 
-    g. Plak in het tekstvak **ID-provider aanmeld-URL** de waarde van de **service-URL voor eenmalige SAML-aanmelding**die u van Azure Portal hebt gekopieerd.
+    bijvoorbeeld Plak in het tekstvak **ID-provider aanmeld-URL** de waarde van de **service-URL voor eenmalige SAML-aanmelding**die u van Azure Portal hebt gekopieerd.
 
     h. Plak in het tekstvak voor de **Afmeldings-URL van de identiteits provider** de waarde van de **afmeldings-URL**, die u van Azure Portal hebt gekopieerd.
 
@@ -194,7 +193,7 @@ In deze sectie schakelt u eenmalige aanmelding voor Azure AD in de Azure Portal 
 
     ![Beveiligingsmaatregelen](./media/jobscience-tutorial/ic784368.png "Beveiligingsmaatregelen")
     
-    Klik in de bovenstaande stap op het SSO-profiel dat u hebt gemaakt. Op deze pagina wordt de URL voor eenmalige aanmelding voor uw bedrijf weer gegeven `https://companyname.my.salesforce.com?so=companyid`(bijvoorbeeld.    
+    Klik in de bovenstaande stap op het SSO-profiel dat u hebt gemaakt. Op deze pagina wordt de URL voor eenmalige aanmelding voor uw bedrijf weer gegeven (bijvoorbeeld `https://companyname.my.salesforce.com?so=companyid` .    
 
 > [!TIP]
 > U kunt nu een beknopte versie van deze instructies in [Azure Portal](https://portal.azure.com) lezen terwijl u de app instelt!  Klik nadat u deze app onder **Active Directory > Bedrijfstoepassingen** hebt toegevoegd op het tabblad **Eenmalige aanmelding** en open de ingesloten documentatie via het gedeelte **Configuratie** onderaan. U vindt hier meer informatie over de Inge sloten documentatie functie: [documentatie voor Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -229,7 +228,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     c. Selecteer **wacht woord weer geven** en noteer de waarde van het **wacht woord**.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
  
 ### <a name="creating-a-jobscience-test-user"></a>Een Jobscience-test gebruiker maken
 
@@ -245,7 +244,7 @@ Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij Jobscience
 
 1. Ga naar Setup.
    
-   ![Instellen](./media/jobscience-tutorial/ic784358.png "Instellen")
+   ![Installatie](./media/jobscience-tutorial/ic784358.png "Instellen")
 1. Ga naar gebruikers van gebruikers **beheren \> **.
    
    ![Gebruikers](./media/jobscience-tutorial/ic784369.png "Gebruikers")
@@ -264,7 +263,7 @@ Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij Jobscience
 
    d. Typ in het tekstvak **Email** het e-mailadres van de gebruiker, bijvoorbeeld Brittasimon@contoso.com.
 
-   e. Typ in het tekstvak **gebruikers naam** de gebruikers naam van de gebruiker zoals Brittasimon@contoso.com.
+   e. Typ in het tekstvak **gebruikers naam** de gebruikers naam van de gebruiker zoals Brittasimon@contoso.com .
 
    f. Typ in het tekstvak **bijnaam** de Nick naam van de gebruiker, zoals Simon.
 
@@ -314,7 +313,7 @@ Zie [Introduction to the Access Panel](../user-help/active-directory-saas-access
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](tutorial-list.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 <!--Image references-->
 

@@ -13,10 +13,9 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 214d379525f2ee534415d713aa298ec858a84c92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81868833"
 ---
 # <a name="protected-web-api-app-registration"></a>Beveiligde web-API: app-registratie
@@ -56,7 +55,7 @@ Andere specifieke instellingen voor web-Api's zijn de beschik bare API en de wee
 
 ### <a name="application-id-uri-and-scopes"></a>URI en bereiken van de toepassings-ID
 
-Bereiken hebben meestal het formulier `resourceURI/scopeName`. Voor Microsoft Graph hebben de bereiken snelkoppelingen. `User.Read` Is bijvoorbeeld een snelkoppeling voor `https://graph.microsoft.com/user.read`.
+Bereiken hebben meestal het formulier `resourceURI/scopeName` . Voor Microsoft Graph hebben de bereiken snelkoppelingen. `User.Read`Is bijvoorbeeld een snelkoppeling voor `https://graph.microsoft.com/user.read` .
 
 Tijdens de registratie van de app moet u deze para meters definiëren:
 
@@ -64,7 +63,7 @@ Tijdens de registratie van de app moet u deze para meters definiëren:
 - Een of meer scopes
 - Een of meer app-rollen
 
-De portal voor toepassings registratie raadt u standaard aan de resource-URI `api://{clientId}`te gebruiken. Deze URI is uniek, maar niet leesbaar. Als u de URI wijzigt, moet u ervoor zorgen dat de nieuwe waarde uniek is.
+De portal voor toepassings registratie raadt u standaard aan de resource-URI te gebruiken `api://{clientId}` . Deze URI is uniek, maar niet leesbaar. Als u de URI wijzigt, moet u ervoor zorgen dat de nieuwe waarde uniek is.
 
 Voor client toepassingen worden scopes weer gegeven als *gedelegeerde machtigingen* en app-rollen weer gegeven als *toepassings machtigingen* voor uw web-API.
 
@@ -77,7 +76,7 @@ Bereiken worden ook weer gegeven in het venster met toestemming dat wordt gepres
 
 1. Selecteer **een API beschikbaar** maken in de registratie van de toepassing.
 1. Selecteer **Een bereik toevoegen**.
-1. Als u hierom wordt gevraagd, accepteert u de voorgestelde`api://{clientId}`URI voor de toepassings-id () door **opslaan en door gaan**te selecteren.
+1. Als u hierom wordt gevraagd, accepteert u de voorgestelde URI voor de toepassings-ID ( `api://{clientId}` ) door **opslaan en door gaan**te selecteren.
 1. Geef deze waarden op:
     - Selecteer **Scope naam** en voer **access_as_user**in.
     - Selecteer **wie toestemming kan** geven en zorg ervoor dat **beheerders en gebruikers** zijn geselecteerd.
@@ -100,13 +99,13 @@ In deze sectie leert u hoe u de beveiligde web-API kunt registreren, zodat de da
 Als u toepassings machtigingen beschikbaar wilt maken, moet u het manifest bewerken.
 
 1. Selecteer in de registratie van de toepassing voor uw toepassing **manifest**.
-1. Als u het manifest wilt bewerken, `appRoles` gaat u naar de instelling en voegt u toepassings rollen toe. De roldefinities zijn opgenomen in het volgende voor beeld-JSON-blok.
-1. Stel `allowedMemberTypes` niets in `"Application"` op.
-1. Zorg ervoor `id` dat u een unieke GUID hebt.
-1. Zorg ervoor `displayName` dat `value` ze geen spaties bevatten.
+1. Als u het manifest wilt bewerken, gaat u naar de `appRoles` instelling en voegt u toepassings rollen toe. De roldefinities zijn opgenomen in het volgende voor beeld-JSON-blok.
+1. `allowedMemberTypes`Stel niets in op `"Application"` .
+1. Zorg ervoor dat u `id` een unieke GUID hebt.
+1. Zorg ervoor dat ze `displayName` `value` geen spaties bevatten.
 1. Sla het manifest op.
 
-In het volgende voor beeld wordt de `appRoles`inhoud weer gegeven van, `id` waarbij de waarde van een unieke GUID kan zijn.
+In het volgende voor beeld wordt de inhoud weer gegeven van `appRoles` , waarbij de waarde van `id` een unieke GUID kan zijn.
 
 ```json
 "appRoles": [
@@ -141,11 +140,11 @@ Deze verhoogde beveiliging toe te voegen:
 
    > [!IMPORTANT]
    >
-   > Als u de **gebruikers toewijzing** hebt ingesteld op vereist? in azure **AD worden de**toewijzingen van de app-rollen van een client gecontroleerd wanneer deze een web API-toegangs token aanvraagt. Als de client niet is toegewezen aan de app-rollen, retourneert Azure AD de fout melding "invalid_client: AADSTS501051: \<de naam\> van de toepassings toepassing is niet toegewezen aan \<een rol\>voor de Web-API.
+   > Als u de **gebruikers toewijzing** hebt ingesteld op vereist? in azure **AD worden de**toewijzingen van de app-rollen van een client gecontroleerd wanneer deze een web API-toegangs token aanvraagt. Als de client niet is toegewezen aan de app-rollen, retourneert Azure AD de fout melding "invalid_client: AADSTS501051: \<application name\> de toepassing is niet toegewezen aan een rol voor de \<web API\> ".
    >
    > Als u de **gebruikers toewijzing verplicht stelt?** ingesteld op **Nee**, worden de toewijzingen van de app-rollen niet door Azure AD gecontroleerd wanneer een client een toegangs token voor uw web-API aanvraagt. Elke daemon-client, wat betekent dat elke client die gebruikmaakt van de client referentie stroom, een toegangs token voor de API kan krijgen door de doel groep op te geven. Elke toepassing kan toegang krijgen tot de API zonder dat hiervoor machtigingen moeten worden gevraagd.
    >
-   > Maar zoals beschreven in de vorige sectie, kan uw web-API altijd controleren of de toepassing de juiste rol heeft, die door de Tenant beheerder wordt geautoriseerd. De API voert deze verificatie uit door te valideren dat het toegangs token een rol claim heeft en dat de waarde voor deze claim juist is. In het vorige JSON-voor beeld is `access_as_application`de waarde.
+   > Maar zoals beschreven in de vorige sectie, kan uw web-API altijd controleren of de toepassing de juiste rol heeft, die door de Tenant beheerder wordt geautoriseerd. De API voert deze verificatie uit door te valideren dat het toegangs token een rol claim heeft en dat de waarde voor deze claim juist is. In het vorige JSON-voor beeld is de waarde `access_as_application` .
 
 1. Selecteer **Opslaan**.
 

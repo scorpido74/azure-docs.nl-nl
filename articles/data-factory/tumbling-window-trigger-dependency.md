@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/29/2019
 ms.openlocfilehash: 3b417e7c4589f3a4214400a877812d196a63349b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82870036"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Een afhankelijkheid voor een tumblingvenstertrigger maken
@@ -79,11 +78,11 @@ Een tumblingvenstertriggers-venster trigger met een afhankelijkheid heeft de vol
 
 De volgende tabel bevat de lijst met kenmerken die nodig zijn voor het definiëren van een Tumblingvenstertriggers-venster afhankelijkheid.
 
-| **Naam van eigenschap** | **Beschrijving**  | **Type** | **Vereist** |
+| **Eigenschaps naam** | **Beschrijving**  | **Type** | **Vereist** |
 |---|---|---|---|
-| type  | Alle bestaande tumblingvenstertriggers-venster triggers worden weer gegeven in deze vervolg keuzelijst. Kies de trigger voor het maken van afhankelijkheden.  | TumblingWindowTriggerDependencyReference of SelfDependencyTumblingWindowTriggerReference | Ja |
+| type  | Alle bestaande tumblingvenstertriggers-venster triggers worden weer gegeven in deze vervolg keuzelijst. Kies de trigger voor het maken van afhankelijkheden.  | TumblingWindowTriggerDependencyReference of SelfDependencyTumblingWindowTriggerReference | Yes |
 | offset | Verschuiving van de afhankelijkheids trigger. Geef een waarde op in de indeling van de tijd en zowel negatieve als positieve verschuivingen zijn toegestaan. Deze eigenschap is verplicht als de trigger afhankelijk is van zichzelf en in alle andere gevallen optioneel is. De Self-afhankelijkheid moet altijd een negatieve verschuiving zijn. Als er geen waarde is opgegeven, is het venster hetzelfde als de trigger. | Periode<br/>(UU: mm: SS) | Zelf afhankelijkheid: Ja<br/>Overige: Nee |
-| grootte | Grootte van het tumblingvenstertriggers-venster van de afhankelijkheid. Geef een positieve time span-waarde op. Deze eigenschap is optioneel. | Periode<br/>(UU: mm: SS) | Nee  |
+| grootte | Grootte van het tumblingvenstertriggers-venster van de afhankelijkheid. Geef een positieve time span-waarde op. Deze eigenschap is optioneel. | Periode<br/>(UU: mm: SS) | No  |
 
 > [!NOTE]
 > Een trigger voor een tumblingvenstertriggers-venster kan afhankelijk zijn van een maximum van vijf andere triggers.

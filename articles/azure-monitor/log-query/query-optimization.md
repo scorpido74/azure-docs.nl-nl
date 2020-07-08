@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
 ms.openlocfilehash: 9ae0aec6b87a746ed1f141dcf98f599acd20ab3a
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82864246"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Logboek query's in Azure Monitor optimaliseren
@@ -112,7 +111,7 @@ Heartbeat
 
 Hoewel sommige aggregatie opdrachten zoals [Max ()](/azure/kusto/query/max-aggfunction), [Sum ()](/azure/kusto/query/sum-aggfunction), [Count (](/azure/kusto/query/count-aggfunction)) en [AVG ()](/azure/kusto/query/avg-aggfunction) een laag CPU-effect hebben vanwege hun logica, zijn andere complexer, en zijn er heuristische en schattingen opgenomen die ervoor zorgen dat ze efficiënt kunnen worden uitgevoerd. Zo maakt [DCount ()](/azure/kusto/query/dcount-aggfunction) gebruik van het HyperLogLog-algoritme om een nauw keurigheid te bieden voor het aantal grote sets gegevens, zonder dat elke waarde daad werkelijk wordt geteld. de percentiel functies voeren vergelijk bare benaderingen uit met behulp van het dichtstbijzijnde rang percentiel-algoritme. Enkele van de opdrachten bevatten optionele para meters om de impact te verminderen. De functie [makenset ()](/azure/kusto/query/makeset-aggfunction) heeft bijvoorbeeld een optionele para meter voor het definiëren van de maximale set grootte, die aanzienlijk van invloed is op de CPU en het geheugen.
 
-Opdrachten voor [samen voegen](/azure/kusto/query/joinoperator?pivots=azuremonitor) en [samen vattingen](/azure/kusto/query/summarizeoperator) kunnen een hoog CPU-gebruik veroorzaken wanneer ze een grote set gegevens verwerken. Hun complexiteit is rechtstreeks gerelateerd aan het aantal mogelijke waarden, aangeduid als *kardinaliteit*, van de kolommen die worden gebruikt als de `by` in-samenvatten of als de koppelings kenmerken. Raadpleeg de documentatie artikelen en optimaliserings tips voor uitleg en Optima Lise ring van deelname en samenvatten.
+Opdrachten voor [samen voegen](/azure/kusto/query/joinoperator?pivots=azuremonitor) en [samen vattingen](/azure/kusto/query/summarizeoperator) kunnen een hoog CPU-gebruik veroorzaken wanneer ze een grote set gegevens verwerken. Hun complexiteit is rechtstreeks gerelateerd aan het aantal mogelijke waarden, aangeduid als *kardinaliteit*, van de kolommen die worden gebruikt als de in- `by` samenvatten of als de koppelings kenmerken. Raadpleeg de documentatie artikelen en optimaliserings tips voor uitleg en Optima Lise ring van deelname en samenvatten.
 
 De volgende query's produceren bijvoorbeeld precies hetzelfde resultaat omdat **CounterPath** altijd een-op-een is toegewezen aan **CounterName** en **object naam**. De tweede is efficiënter naarmate de aggregatie dimensie kleiner is:
 
@@ -204,7 +203,7 @@ Perf
 
 ### <a name="add-early-filters-to-the-query"></a>Vroege filters toevoegen aan de query
 
-Een andere methode om het gegevens volume te verminderen, is om de [voor waarden van](/azure/kusto/query/whereoperator) de query te vervroegen. Het Azure Data Explorer-platform bevat een cache waarmee u kunt zien welke partities gegevens bevatten die relevant zijn voor een specifieke where-voor waarde. Als een query bijvoorbeeld bevat `where EventID == 4624` , zou deze de query alleen distribueren naar knoop punten die partities met overeenkomende gebeurtenissen verwerken.
+Een andere methode om het gegevens volume te verminderen, is om de [voor waarden van](/azure/kusto/query/whereoperator) de query te vervroegen. Het Azure Data Explorer-platform bevat een cache waarmee u kunt zien welke partities gegevens bevatten die relevant zijn voor een specifieke where-voor waarde. Als een query bijvoorbeeld bevat, `where EventID == 4624` zou deze de query alleen distribueren naar knoop punten die partities met overeenkomende gebeurtenissen verwerken.
 
 De volgende voorbeeld query's produceren precies hetzelfde resultaat, maar de tweede is efficiënter:
 

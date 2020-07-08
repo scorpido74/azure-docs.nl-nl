@@ -14,10 +14,9 @@ ms.tgt_pltfrm: vm-linux
 ms.date: 05/05/2020
 ms.author: kaib
 ms.openlocfilehash: d6605aa77cfa746f60fc3b23e120267a2614f7b1
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82864680"
 ---
 # <a name="chroot-environment-in-a-linux-rescue-vm"></a>Chroot-omgeving in een Linux-hulpverlenings-VM
@@ -36,7 +35,7 @@ In dit artikel wordt beschreven hoe u problemen met de chroot-omgeving kunt oplo
 
       `#sudo su -`
 
-   1. Zoek de schijf met `dmesg` behulp van (de methode die u gebruikt om de nieuwe schijf te detecteren) kan verschillen. In het volgende voor beeld wordt **dmesg** gebruikt om te filteren op **SCSI** -schijven:
+   1. Zoek de schijf met behulp van `dmesg` (de methode die u gebruikt om de nieuwe schijf te detecteren) kan verschillen. In het volgende voor beeld wordt **dmesg** gebruikt om te filteren op **SCSI** -schijven:
 
       `dmesg | grep SCSI`
 
@@ -84,7 +83,7 @@ In dit artikel wordt beschreven hoe u problemen met de chroot-omgeving kunt oplo
       ```
 
       > [!NOTE]
-      > Als het fout `unable to unmount /rescue`bericht, voegt u de optie-l toe aan de umount-opdracht.
+      > Als het fout bericht `unable to unmount /rescue` , voegt u de optie-l toe aan de umount-opdracht.
       >
       > Voorbeeld: `umount -l /rescue`
 
@@ -103,7 +102,7 @@ In dit artikel wordt beschreven hoe u problemen met de chroot-omgeving kunt oplo
 
       `#sudo su -`
 
-   1. Zoek de schijf met `dmesg` behulp van (de methode die u gebruikt om de nieuwe schijf te detecteren) kan verschillen. In het volgende voor beeld wordt **dmesg** gebruikt om te filteren op **SCSI** -schijven:
+   1. Zoek de schijf met behulp van `dmesg` (de methode die u gebruikt om de nieuwe schijf te detecteren) kan verschillen. In het volgende voor beeld wordt **dmesg** gebruikt om te filteren op **SCSI** -schijven:
 
       `dmesg | grep SCSI`
 
@@ -151,7 +150,7 @@ In dit artikel wordt beschreven hoe u problemen met de chroot-omgeving kunt oplo
       ```
 
       > [!NOTE]
-      > Als het fout `unable to unmount /rescue`bericht, voegt u de optie-l toe aan de umount-opdracht.
+      > Als het fout bericht `unable to unmount /rescue` , voegt u de optie-l toe aan de umount-opdracht.
       >
       > Voorbeeld: `umount -l /rescue`
 
@@ -173,7 +172,7 @@ In dit artikel wordt beschreven hoe u problemen met de chroot-omgeving kunt oplo
 
       `#sudo su -`
 
-   1. Zoek de schijf met `dmesg` behulp van (de methode die u gebruikt om de nieuwe schijf te detecteren) kan verschillen. In het volgende voor beeld wordt **dmesg** gebruikt om te filteren op **SCSI** -schijven:
+   1. Zoek de schijf met behulp van `dmesg` (de methode die u gebruikt om de nieuwe schijf te detecteren) kan verschillen. In het volgende voor beeld wordt **dmesg** gebruikt om te filteren op **SCSI** -schijven:
 
       `dmesg | grep SCSI`
 
@@ -264,7 +263,7 @@ In dit artikel wordt beschreven hoe u problemen met de chroot-omgeving kunt oplo
       ```
 
       > [!NOTE]
-      > Als het fout `unable to unmount /rescue`bericht, voegt u de optie-l toe aan de umount-opdracht.
+      > Als het fout bericht `unable to unmount /rescue` , voegt u de optie-l toe aan de umount-opdracht.
       >
       > Voorbeeld: `umount -l /rescue`
 
@@ -286,7 +285,7 @@ In dit artikel wordt beschreven hoe u problemen met de chroot-omgeving kunt oplo
 
       `#sudo su -`
 
-   1. Zoek de schijf met `dmesg` behulp van (de methode die u gebruikt om de nieuwe schijf te detecteren) kan verschillen. In het volgende voor beeld wordt **dmesg** gebruikt om te filteren op **SCSI** -schijven:
+   1. Zoek de schijf met behulp van `dmesg` (de methode die u gebruikt om de nieuwe schijf te detecteren) kan verschillen. In het volgende voor beeld wordt **dmesg** gebruikt om te filteren op **SCSI** -schijven:
 
       `dmesg | grep SCSI`
 
@@ -374,7 +373,7 @@ In dit artikel wordt beschreven hoe u problemen met de chroot-omgeving kunt oplo
       ```
 
       > [!NOTE]
-      > Als het fout `unable to unmount /rescue`bericht, voegt u de optie-l toe aan de umount-opdracht.
+      > Als het fout bericht `unable to unmount /rescue` , voegt u de optie-l toe aan de umount-opdracht.
       >
       > Voorbeeld: `umount -l /rescue`
 
@@ -393,7 +392,7 @@ In dit artikel wordt beschreven hoe u problemen met de chroot-omgeving kunt oplo
 
       `#sudo su -`
 
-   1. Zoek de schijf met `dmesg` behulp van (de methode die u gebruikt om de nieuwe schijf te detecteren) kan verschillen. In het volgende voor beeld wordt **dmesg** gebruikt om te filteren op **SCSI** -schijven:
+   1. Zoek de schijf met behulp van `dmesg` (de methode die u gebruikt om de nieuwe schijf te detecteren) kan verschillen. In het volgende voor beeld wordt **dmesg** gebruikt om te filteren op **SCSI** -schijven:
 
       `dmesg | grep SCSI`
 
@@ -443,7 +442,7 @@ In dit artikel wordt beschreven hoe u problemen met de chroot-omgeving kunt oplo
       ```
 
       > [!NOTE]
-      > Als het fout `unable to unmount /rescue`bericht, voegt u de optie-l toe aan de umount-opdracht.
+      > Als het fout bericht `unable to unmount /rescue` , voegt u de optie-l toe aan de umount-opdracht.
       >
       > Voorbeeld: `umount -l /rescue`
 
@@ -462,7 +461,7 @@ In dit artikel wordt beschreven hoe u problemen met de chroot-omgeving kunt oplo
 
       `#sudo su -`
 
-   1. Zoek de schijf met `dmesg` behulp van (de methode die u gebruikt om de nieuwe schijf te detecteren) kan verschillen. In het volgende voor beeld wordt **dmesg** gebruikt om te filteren op **SCSI** -schijven:
+   1. Zoek de schijf met behulp van `dmesg` (de methode die u gebruikt om de nieuwe schijf te detecteren) kan verschillen. In het volgende voor beeld wordt **dmesg** gebruikt om te filteren op **SCSI** -schijven:
 
       `dmesg | grep SCSI`
 
@@ -512,7 +511,7 @@ In dit artikel wordt beschreven hoe u problemen met de chroot-omgeving kunt oplo
       ```
 
       > [!NOTE]
-      > Als het fout `unable to unmount /rescue`bericht, voegt u de optie-l toe aan de umount-opdracht.
+      > Als het fout bericht `unable to unmount /rescue` , voegt u de optie-l toe aan de umount-opdracht.
       >
       > Voorbeeld: `umount -l /rescue`
 

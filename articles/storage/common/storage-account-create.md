@@ -10,10 +10,9 @@ ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 7ff7db383a74ce01f7f1a7bf49a33e41f91decf8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82853498"
 ---
 # <a name="create-an-azure-storage-account"></a>Een Azure Storage-account maken
@@ -79,7 +78,7 @@ Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Meld u aan bij uw Azure-abonnement `Connect-AzAccount` met de opdracht en volg de instructies op het scherm om te verifiëren.
+Meld u aan bij uw Azure-abonnement met de `Connect-AzAccount` opdracht en volg de instructies op het scherm om te verifiëren.
 
 ```powershell
 Connect-AzAccount
@@ -142,7 +141,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 ```
 
 > [!IMPORTANT]
-> Als u [Azure data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)wilt gebruiken, neemt `-EnableHierarchicalNamespace $True` u in deze lijst met para meters op.
+> Als u [Azure data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)wilt gebruiken, neemt u `-EnableHierarchicalNamespace $True` in deze lijst met para meters op.
 
 Als u een v2-opslag account voor algemeen gebruik met een andere replicatie optie wilt maken, vervangt u de gewenste waarde in de onderstaande tabel voor de para meter **SkuName** .
 
@@ -153,7 +152,7 @@ Als u een v2-opslag account voor algemeen gebruik met een andere replicatie opti
 |Geografisch redundante opslag (GRS)     |Standard_GRS         |
 |Geografisch redundante opslag met leestoegang (GRS)     |Standard_RAGRS         |
 |Geografisch zone-redundante opslag (GZRS)    |Standard_GZRS         |
-|Geo-zone-redundante opslag met lees toegang (RA-GZRS)    |Standard_RAGZRS         |
+|Leestoegang tot geografische zone-redundante opslag (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
@@ -185,7 +184,7 @@ az storage account create \
 ```
 
 > [!IMPORTANT]
-> Als u [Azure data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)wilt gebruiken, neemt `--enable-hierarchical-namespace true` u in deze lijst met para meters op. 
+> Als u [Azure data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)wilt gebruiken, neemt u `--enable-hierarchical-namespace true` in deze lijst met para meters op. 
 
 Als u een v2-opslag account voor algemeen gebruik met een andere replicatie optie wilt maken, vervangt u de gewenste waarde in de onderstaande tabel voor de **SKU** -para meter.
 
@@ -196,7 +195,7 @@ Als u een v2-opslag account voor algemeen gebruik met een andere replicatie opti
 |Geografisch redundante opslag (GRS)     |Standard_GRS         |
 |Geografisch redundante opslag met leestoegang (GRS)     |Standard_RAGRS         |
 |Geografisch zone-redundante opslag (GZRS)    |Standard_GZRS         |
-|Geo-zone-redundante opslag met lees toegang (RA-GZRS)    |Standard_RAGZRS         |
+|Leestoegang tot geografische zone-redundante opslag (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="template"></a>[Sjabloon](#tab/template)
 
@@ -220,7 +219,7 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 ```
 
 > [!NOTE]
-> Deze sjabloon fungeert alleen als voor beeld. Er zijn veel instellingen voor het opslag account die niet zijn geconfigureerd als onderdeel van deze sjabloon. Als u bijvoorbeeld [Azure data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)wilt gebruiken, wijzigt u deze sjabloon door de `isHnsEnabledad` eigenschap van het `StorageAccountPropertiesCreateParameters` object in te stellen op. `true` 
+> Deze sjabloon fungeert alleen als voor beeld. Er zijn veel instellingen voor het opslag account die niet zijn geconfigureerd als onderdeel van deze sjabloon. Als u bijvoorbeeld [Azure data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)wilt gebruiken, wijzigt u deze sjabloon door de `isHnsEnabledad` eigenschap van het `StorageAccountPropertiesCreateParameters` object in te stellen op `true` . 
 
 Zie voor meer informatie over het wijzigen van deze sjabloon of het maken van nieuwe sjablonen:
 
@@ -239,7 +238,7 @@ Als u een opslag account verwijdert, wordt het hele account verwijderd, inclusie
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Navigeer naar het opslag account in de [Azure Portal](https://portal.azure.com).
-1. Klik op **verwijderen**.
+1. Klik op **Verwijderen**.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

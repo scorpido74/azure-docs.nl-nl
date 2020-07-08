@@ -9,10 +9,9 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
 ms.openlocfilehash: b576fc99e2f203bb3d690a8135ee76cee26b3de8
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792357"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>B2B AS2-berichten ontvangen en bevestigen met behulp van Azure Logic Apps en Enterprise Integration Pack
@@ -45,7 +44,7 @@ In dit voor beeld wordt de Logic app designer in de Azure Portal gebruikt, maar 
 
 1. Open in de [Azure Portal](https://portal.azure.com)uw lege logische app in de ontwerp functie voor logische apps.
 
-1. Voer `when a http request`in het zoekvak in en selecteer **Wanneer een HTTP-aanvraag wordt ontvangen** om te gebruiken als de trigger.
+1. Voer in het zoekvak in `when a http request` en selecteer **Wanneer een HTTP-aanvraag wordt ontvangen** om te gebruiken als de trigger.
 
    ![Selecteer trigger aanvragen om de werk stroom van uw logische app te starten](./media/logic-apps-enterprise-integration-b2b/select-http-request-trigger.png)
 
@@ -67,17 +66,17 @@ Voeg nu de B2B-acties toe die u wilt gebruiken. In dit voor beeld worden AS2-en 
 
    ![Nog een stap toevoegen aan de werk stroom van uw logische app](./media/logic-apps-enterprise-integration-b2b/add-new-action-under-trigger.png)
 
-1. Onder **Kies een actie**, typt `as2 decode`u in het zoekvak en selecteert u **AS2 decode (v2)**.
+1. Onder **Kies een actie**, typt u in het zoekvak `as2 decode` en selecteert u **AS2 decode (v2)**.
 
    ![Zoek en selecteer ' AS2 decode (v2) '](./media/logic-apps-enterprise-integration-b2b/add-as2-decode-action.png)
 
-1. Voer voor het **bericht om de eigenschap te decoderen** de invoer in die door de AS2-actie moet worden `body` gedecodeerd. Dit is de inhoud die wordt ontvangen door de HTTP-aanvraag trigger. U kunt deze inhoud op verschillende manieren opgeven als invoer, hetzij uit de lijst met dynamische inhoud hetzij als een expressie:
+1. Voer voor het **bericht om de eigenschap te decoderen** de invoer in die door de AS2-actie moet worden gedecodeerd. Dit is de `body` inhoud die wordt ontvangen door de HTTP-aanvraag trigger. U kunt deze inhoud op verschillende manieren opgeven als invoer, hetzij uit de lijst met dynamische inhoud hetzij als een expressie:
 
    * Als u wilt selecteren uit een lijst met de beschik bare trigger uitvoer, klikt u in het vak **bericht om te decoderen** . Nadat de lijst met dynamische inhoud wordt weer gegeven, selecteert u onder **Wanneer een HTTP-aanvraag wordt ontvangen**de waarde van de eigenschap **Body** , bijvoorbeeld:
 
      ![Selecteer de waarde body van de trigger](./media/logic-apps-enterprise-integration-b2b/select-body-content-from-trigger.png)
 
-   * Als u een expressie wilt invoeren die naar de `body` uitvoer van de trigger verwijst, klikt u in het vak **bericht om te decoderen** . Nadat de lijst met dynamische inhoud wordt weer gegeven, selecteert u **expressie**. Voer in de expressie-editor hier de expressie in en selecteer **OK**:
+   * Als u een expressie wilt invoeren die naar de uitvoer van de trigger verwijst `body` , klikt u in het vak **bericht om te decoderen** . Nadat de lijst met dynamische inhoud wordt weer gegeven, selecteert u **expressie**. Voer in de expressie-editor hier de expressie in en selecteer **OK**:
 
      `triggerOutputs()['body']`
 
@@ -89,9 +88,9 @@ Voeg nu de B2B-acties toe die u wilt gebruiken. In dit voor beeld worden AS2-en 
 
      ![Uitvoer van opgeloste hoofd tekst van trigger](./media/logic-apps-enterprise-integration-b2b/resolved-trigger-outputs-body-expression.png)
 
-1. Voer voor de eigenschap **bericht koppen** eventuele headers in die vereist zijn voor de AS2-actie, die worden `headers` beschreven door de inhoud die wordt ontvangen door de HTTP-aanvraag trigger.
+1. Voer voor de eigenschap **bericht koppen** eventuele headers in die vereist zijn voor de AS2-actie, die worden beschreven door de `headers` inhoud die wordt ontvangen door de HTTP-aanvraag trigger.
 
-   Klik in het vak **bericht headers** om een expressie `headers` in te voeren die naar de uitvoer van de trigger verwijst. Nadat de lijst met dynamische inhoud wordt weer gegeven, selecteert u **expressie**. Voer in de expressie-editor hier de expressie in en selecteer **OK**:
+   `headers`Klik in het vak **bericht headers** om een expressie in te voeren die naar de uitvoer van de trigger verwijst. Nadat de lijst met dynamische inhoud wordt weer gegeven, selecteert u **expressie**. Voer in de expressie-editor hier de expressie in en selecteer **OK**:
 
    `triggerOutputs()['Headers']`
 
@@ -117,13 +116,13 @@ Als u de handels partner wilt melden dat het bericht is ontvangen, kunt u een an
 
    `@body('AS2_Decode')?['AS2Message']?['MdnExpected']`
 
-   Controleer in het middelste vak of de vergelijkings bewerking is ingesteld `is equal to`op. Voer in het vak aan de rechter kant de waarde `Expected`in. Als u de expressie wilt ophalen die als dit token moet worden omgezet, schakelt u tussen de ontwerp functie en de code weergave.
+   Controleer in het middelste vak of de vergelijkings bewerking is ingesteld op `is equal to` . Voer in het vak aan de rechter kant de waarde in `Expected` . Als u de expressie wilt ophalen die als dit token moet worden omgezet, schakelt u tussen de ontwerp functie en de code weergave.
 
    ![Vorm van voor waarde met beslissings paden](./media/logic-apps-enterprise-integration-b2b/expression-for-evaluating-condition.png)
 
 1. Geef nu de antwoorden op om te retour neren of de **AS2-Decoderings** actie slaagt of niet.
 
-   1. Selecteer **een actie toevoegen** **voor het geval** dat de **AS2-decoderings** actie slaagt. Onder **Kies een actie**, typt `response`u in het zoekvak en selecteert u **antwoord**.
+   1. Selecteer **een actie toevoegen** **voor het geval** dat de **AS2-decoderings** actie slaagt. Onder **Kies een actie**, typt u in het zoekvak `response` en selecteert u **antwoord**.
 
       ![Zoek en selecteer de actie ' reactie '](./media/logic-apps-enterprise-integration-b2b/select-http-response-action.png)
 
@@ -141,7 +140,7 @@ Als u de handels partner wilt melden dat het bericht is ontvangen, kunt u een an
 
       ![Omgezette expressie voor toegang tot AS2 MDN](./media/logic-apps-enterprise-integration-b2b/response-action-success-resolved-expression.png)
 
-   1. Als de **AS2-Decoderings** actie mislukt, selecteert u in de shape **indien onwaar** **een actie toevoegen**. Onder **Kies een actie**, typt `response`u in het zoekvak en selecteert u **antwoord**. Stel de **reactie** actie in om de gewenste status en fout te retour neren.
+   1. Als de **AS2-Decoderings** actie mislukt, selecteert u in de shape **indien onwaar** **een actie toevoegen**. Onder **Kies een actie**, typt u in het zoekvak `response` en selecteert u **antwoord**. Stel de **reactie** actie in om de gewenste status en fout te retour neren.
 
 1. Sla uw logische app op.
 
@@ -149,7 +148,7 @@ Als u de handels partner wilt melden dat het bericht is ontvangen, kunt u een an
 
 1. Voeg nu de actie **X12-bericht decoderen** toe. Selecteer **een actie toevoegen**onder de actie **reactie** .
 
-1. Onder **Kies een actie**, typt `x12 decode`u in het zoekvak en selecteert u **X12-bericht decoderen**.
+1. Onder **Kies een actie**, typt u in het zoekvak `x12 decode` en selecteert u **X12-bericht decoderen**.
 
    ![Zoek en selecteer de actie X12-bericht decoderen](./media/logic-apps-enterprise-integration-b2b/add-x12-decode-action.png)
 
@@ -174,7 +173,7 @@ Als u de handels partner wilt melden dat het bericht is ontvangen, kunt u een an
 U bent nu klaar met het instellen van uw B2B Logic-app. In een echte wereld-app wilt u mogelijk de gedecodeerde X12-gegevens opslaan in een LOB-app (line-of-Business) of een gegevens archief. Zie bijvoorbeeld de volgende artikelen:
 
 * [Verbinding maken met SAP-systemen in Azure Logic Apps](../logic-apps/logic-apps-using-sap-connector.md)
-* [SFTP-bestanden bewaken, maken en beheren met SSH en Azure Logic Apps](../connectors/connectors-sftp-ssh.md)
+* [SFTP-bestanden bewaken, maken en beheren met behulp van SSH en Azure Logic Apps](../connectors/connectors-sftp-ssh.md)
 
 Als u uw eigen LOB-Apps wilt verbinden en deze Api's wilt gebruiken in uw logische app, kunt u meer acties toevoegen of [aangepaste api's schrijven](../logic-apps/logic-apps-create-api-app.md).
 
